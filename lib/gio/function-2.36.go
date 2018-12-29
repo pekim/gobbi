@@ -23,8 +23,8 @@ import "unsafe"
 import "C"
 
 // DbusAddressEscapeValue is a wrapper around the C function g_dbus_address_escape_value.
-func DbusAddressEscapeValue(string string) string {
-	c_string := C.CString(string)
+func DbusAddressEscapeValue(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_address_escape_value(c_string)

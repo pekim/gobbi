@@ -1236,7 +1236,17 @@ func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile st
 	return retGo
 }
 
-// Unsupported : gtk_rc_get_default_files : no return type
+// RcGetDefaultFiles is a wrapper around the C function gtk_rc_get_default_files.
+func RcGetDefaultFiles() []string {
+	retC := C.gtk_rc_get_default_files()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // RcGetImModuleFile is a wrapper around the C function gtk_rc_get_im_module_file.
 func RcGetImModuleFile() string {

@@ -57,6 +57,10 @@ func (t *TypeGeneratorInterface) isSupportedAsParamC() (supported bool, reason s
 	return true, ""
 }
 
+func (t *TypeGeneratorInterface) isSupportedAsArrayReturnValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorInterface) isSupportedAsReturnValue() (supported bool, reason string) {
 	if t.iface.Blacklist {
 		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
@@ -224,6 +228,11 @@ func (t *TypeGeneratorInterface) generateReturnCToGo(g *jen.Group, isParam bool,
 				Qual("unsafe", "Pointer").
 				Call(cVarRef))
 	}
+}
+
+func (t *TypeGeneratorInterface) generateArrayReturnCToGo(g *jen.Group, isParam bool,
+	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
+	panic("unsupported")
 }
 
 func (t *TypeGeneratorInterface) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

@@ -245,8 +245,8 @@ func VariantNewSignature(signature string) *Variant {
 }
 
 // VariantNewString is a wrapper around the C function g_variant_new_string.
-func VariantNewString(string string) *Variant {
-	c_string := C.CString(string)
+func VariantNewString(string_ string) *Variant {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_variant_new_string(c_string)
@@ -305,8 +305,8 @@ func VariantNewVariant(value *Variant) *Variant {
 }
 
 // VariantIsObjectPath is a wrapper around the C function g_variant_is_object_path.
-func VariantIsObjectPath(string string) bool {
-	c_string := C.CString(string)
+func VariantIsObjectPath(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_variant_is_object_path(c_string)
@@ -316,8 +316,8 @@ func VariantIsObjectPath(string string) bool {
 }
 
 // VariantIsSignature is a wrapper around the C function g_variant_is_signature.
-func VariantIsSignature(string string) bool {
-	c_string := C.CString(string)
+func VariantIsSignature(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_variant_is_signature(c_string)
@@ -355,7 +355,22 @@ func (recv *Variant) DupString() (string, uint64) {
 	return retGo, length
 }
 
-// Unsupported : g_variant_dup_strv : no return type
+// DupStrv is a wrapper around the C function g_variant_dup_strv.
+func (recv *Variant) DupStrv() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.g_variant_dup_strv((*C.GVariant)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // Equal is a wrapper around the C function g_variant_equal.
 func (recv *Variant) Equal(two uintptr) bool {
@@ -433,7 +448,7 @@ func (recv *Variant) GetDouble() float64 {
 	return retGo
 }
 
-// Unsupported : g_variant_get_fixed_array : no return type
+// Unsupported : g_variant_get_fixed_array : array return type :
 
 // GetHandle is a wrapper around the C function g_variant_get_handle.
 func (recv *Variant) GetHandle() int32 {
@@ -508,7 +523,21 @@ func (recv *Variant) GetString() (string, uint64) {
 	return retGo, length
 }
 
-// Unsupported : g_variant_get_strv : no return type
+// GetStrv is a wrapper around the C function g_variant_get_strv.
+func (recv *Variant) GetStrv() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.g_variant_get_strv((*C.GVariant)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // GetType is a wrapper around the C function g_variant_get_type.
 func (recv *Variant) GetType() *VariantType {
@@ -626,10 +655,10 @@ func (recv *Variant) Print(typeAnnotate bool) string {
 }
 
 // PrintString is a wrapper around the C function g_variant_print_string.
-func (recv *Variant) PrintString(string *String, typeAnnotate bool) *String {
+func (recv *Variant) PrintString(string_ *String, typeAnnotate bool) *String {
 	c_string := (*C.GString)(C.NULL)
-	if string != nil {
-		c_string = (*C.GString)(string.ToC())
+	if string_ != nil {
+		c_string = (*C.GString)(string_.ToC())
 	}
 
 	c_type_annotate :=
@@ -863,8 +892,8 @@ func VariantTypeNew(typeString string) *VariantType {
 }
 
 // VariantTypeStringScan is a wrapper around the C function g_variant_type_string_scan.
-func VariantTypeStringScan(string string, limit string) (bool, string) {
-	c_string := C.CString(string)
+func VariantTypeStringScan(string_ string, limit string) (bool, string) {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_limit := C.CString(limit)

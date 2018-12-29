@@ -952,7 +952,17 @@ func (recv *Widget) GetActionGroup(prefix string) *gio.ActionGroup {
 	return retGo
 }
 
-// Unsupported : gtk_widget_list_action_prefixes : no return type
+// ListActionPrefixes is a wrapper around the C function gtk_widget_list_action_prefixes.
+func (recv *Widget) ListActionPrefixes() []string {
+	retC := C.gtk_widget_list_action_prefixes((*C.GtkWidget)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // GetTitlebar is a wrapper around the C function gtk_window_get_titlebar.
 func (recv *Window) GetTitlebar() *Widget {

@@ -90,9 +90,61 @@ func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellab
 
 // Unsupported : g_mount_guess_content_type : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_guess_content_type_finish : no return type
+// GuessContentTypeFinish is a wrapper around the C function g_mount_guess_content_type_finish.
+func (recv *Mount) GuessContentTypeFinish(result *AsyncResult) ([]string, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_mount_guess_content_type_sync : no return type
+	var cThrowableError *C.GError
+
+	retC := C.g_mount_guess_content_type_finish((*C.GMount)(recv.native), c_result, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// GuessContentTypeSync is a wrapper around the C function g_mount_guess_content_type_sync.
+func (recv *Mount) GuessContentTypeSync(forceRescan bool, cancellable *Cancellable) ([]string, error) {
+	c_force_rescan :=
+		boolToGboolean(forceRescan)
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_mount_guess_content_type_sync((*C.GMount)(recv.native), c_force_rescan, c_cancellable, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // GetActivationRoot is a wrapper around the C function g_volume_get_activation_root.
 func (recv *Volume) GetActivationRoot() *File {

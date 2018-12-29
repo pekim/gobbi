@@ -291,7 +291,22 @@ func (recv *RecentChooser) GetSortType() RecentSortType {
 	return retGo
 }
 
-// Unsupported : gtk_recent_chooser_get_uris : no return type
+// GetUris is a wrapper around the C function gtk_recent_chooser_get_uris.
+func (recv *RecentChooser) GetUris() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.gtk_recent_chooser_get_uris((*C.GtkRecentChooser)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // ListFilters is a wrapper around the C function gtk_recent_chooser_list_filters.
 func (recv *RecentChooser) ListFilters() *glib.SList {

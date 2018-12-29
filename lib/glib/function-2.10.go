@@ -15,8 +15,8 @@ import "unsafe"
 import "C"
 
 // InternStaticString is a wrapper around the C function g_intern_static_string.
-func InternStaticString(string string) string {
-	c_string := C.CString(string)
+func InternStaticString(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_intern_static_string(c_string)
@@ -26,8 +26,8 @@ func InternStaticString(string string) string {
 }
 
 // InternString is a wrapper around the C function g_intern_string.
-func InternString(string string) string {
-	c_string := C.CString(string)
+func InternString(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_intern_string(c_string)

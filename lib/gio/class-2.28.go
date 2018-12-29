@@ -608,7 +608,22 @@ func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 	return
 }
 
-// Unsupported : g_application_command_line_get_arguments : no return type
+// GetArguments is a wrapper around the C function g_application_command_line_get_arguments.
+func (recv *ApplicationCommandLine) GetArguments() ([]string, int32) {
+	var c_argc C.int
+
+	retC := C.g_application_command_line_get_arguments((*C.GApplicationCommandLine)(recv.native), &c_argc)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	argc := (int32)(c_argc)
+
+	return retGo, argc
+}
 
 // GetCwd is a wrapper around the C function g_application_command_line_get_cwd.
 func (recv *ApplicationCommandLine) GetCwd() string {
@@ -618,7 +633,17 @@ func (recv *ApplicationCommandLine) GetCwd() string {
 	return retGo
 }
 
-// Unsupported : g_application_command_line_get_environ : no return type
+// GetEnviron is a wrapper around the C function g_application_command_line_get_environ.
+func (recv *ApplicationCommandLine) GetEnviron() []string {
+	retC := C.g_application_command_line_get_environ((*C.GApplicationCommandLine)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // GetExitStatus is a wrapper around the C function g_application_command_line_get_exit_status.
 func (recv *ApplicationCommandLine) GetExitStatus() int32 {
@@ -728,7 +753,18 @@ func IOStreamSpliceFinish(result *AsyncResult) (bool, error) {
 
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// g_settings_list_relocatable_schemas : no return type
+// SettingsListRelocatableSchemas is a wrapper around the C function g_settings_list_relocatable_schemas.
+func SettingsListRelocatableSchemas() []string {
+	retC := C.g_settings_list_relocatable_schemas()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
+
 // GetRange is a wrapper around the C function g_settings_get_range.
 func (recv *Settings) GetRange(key string) *glib.Variant {
 	c_key := C.CString(key)

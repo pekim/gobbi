@@ -78,9 +78,34 @@ func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 	return
 }
 
-// Unsupported : gtk_application_get_accels_for_action : no return type
+// GetAccelsForAction is a wrapper around the C function gtk_application_get_accels_for_action.
+func (recv *Application) GetAccelsForAction(detailedActionName string) []string {
+	c_detailed_action_name := C.CString(detailedActionName)
+	defer C.free(unsafe.Pointer(c_detailed_action_name))
 
-// Unsupported : gtk_application_list_action_descriptions : no return type
+	retC := C.gtk_application_get_accels_for_action((*C.GtkApplication)(recv.native), c_detailed_action_name)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
+
+// ListActionDescriptions is a wrapper around the C function gtk_application_list_action_descriptions.
+func (recv *Application) ListActionDescriptions() []string {
+	retC := C.gtk_application_list_action_descriptions((*C.GtkApplication)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels :
 

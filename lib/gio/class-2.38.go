@@ -101,7 +101,17 @@ func (recv *DesktopAppInfo) LaunchAction(actionName string, launchContext *AppLa
 	return
 }
 
-// Unsupported : g_desktop_app_info_list_actions : no return type
+// ListActions is a wrapper around the C function g_desktop_app_info_list_actions.
+func (recv *DesktopAppInfo) ListActions() []string {
+	retC := C.g_desktop_app_info_list_actions((*C.GDesktopAppInfo)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // RemoveAll is a wrapper around the C function g_menu_remove_all.
 func (recv *Menu) RemoveAll() {

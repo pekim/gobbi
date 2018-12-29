@@ -143,7 +143,20 @@ func (recv *FileIOStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error
 	return retGo, goError
 }
 
-// Unsupported : g_file_info_get_attribute_stringv : no return type
+// GetAttributeStringv is a wrapper around the C function g_file_info_get_attribute_stringv.
+func (recv *FileInfo) GetAttributeStringv(attribute string) []string {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	retC := C.g_file_info_get_attribute_stringv((*C.GFileInfo)(recv.native), c_attribute)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // HasNamespace is a wrapper around the C function g_file_info_has_namespace.
 func (recv *FileInfo) HasNamespace(nameSpace string) bool {
@@ -302,8 +315,8 @@ func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 }
 
 // InetAddressNewFromString is a wrapper around the C function g_inet_address_new_from_string.
-func InetAddressNewFromString(string string) *InetAddress {
-	c_string := C.CString(string)
+func InetAddressNewFromString(string_ string) *InetAddress {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_inet_address_new_from_string(c_string)
@@ -2576,7 +2589,7 @@ func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_unix_fd_message_steal_fds : no return type
+// Unsupported : g_unix_fd_message_steal_fds : array return type :
 
 // UnixSocketAddressNew is a wrapper around the C function g_unix_socket_address_new.
 func UnixSocketAddressNew(path string) *UnixSocketAddress {

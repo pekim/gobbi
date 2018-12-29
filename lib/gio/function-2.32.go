@@ -25,7 +25,33 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_resources_enumerate_children : no return type
+// ResourcesEnumerateChildren is a wrapper around the C function g_resources_enumerate_children.
+func ResourcesEnumerateChildren(path string, lookupFlags ResourceLookupFlags) ([]string, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_lookup_flags := (C.GResourceLookupFlags)(lookupFlags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resources_enumerate_children(c_path, c_lookup_flags, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // ResourcesGetInfo is a wrapper around the C function g_resources_get_info.
 func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {

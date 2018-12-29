@@ -43,6 +43,10 @@ func (t *TypeGeneratorEnumeration) isSupportedAsField() (supported bool, reason 
 	return true, ""
 }
 
+func (t *TypeGeneratorEnumeration) isSupportedAsArrayReturnValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorEnumeration) isSupportedAsReturnValue() (supported bool, reason string) {
 	return true, ""
 }
@@ -110,6 +114,11 @@ func (t *TypeGeneratorEnumeration) generateReturnCToGo(g *jen.Group, isParam boo
 		Op(":=").
 		Parens(jen.Do(t.typ.qname.generate)).
 		Parens(jen.Id(cVarName))
+}
+
+func (t *TypeGeneratorEnumeration) generateArrayReturnCToGo(g *jen.Group, isParam bool,
+	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
+	panic("unsupported")
 }
 
 func (t *TypeGeneratorEnumeration) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

@@ -24,7 +24,7 @@ func ArrayGetElementSize(array []uintptr) uint32 {
 	return retGo
 }
 
-// g_array_ref : no return type
+// g_array_ref : array return type :
 // ArrayUnref is a wrapper around the C function g_array_unref.
 func ArrayUnref(array []uintptr) {
 	c_array := &array[0]

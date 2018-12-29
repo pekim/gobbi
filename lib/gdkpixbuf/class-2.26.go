@@ -80,4 +80,4 @@ func (recv *Pixbuf) GetByteLength() uint64 {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_get_pixels_with_length : no return type
+// Unsupported : gdk_pixbuf_get_pixels_with_length : array return type :

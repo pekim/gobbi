@@ -62,7 +62,35 @@ func (recv *BookmarkFile) Free() {
 
 // Unsupported : g_bookmark_file_get_app_info : unsupported parameter stamp : no type generator for glong (time_t*) for param stamp
 
-// Unsupported : g_bookmark_file_get_applications : no return type
+// GetApplications is a wrapper around the C function g_bookmark_file_get_applications.
+func (recv *BookmarkFile) GetApplications(uri string) ([]string, uint64, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_get_applications((*C.GBookmarkFile)(recv.native), c_uri, &c_length, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goError
+}
 
 // GetDescription is a wrapper around the C function g_bookmark_file_get_description.
 func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
@@ -86,7 +114,35 @@ func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_bookmark_file_get_groups : no return type
+// GetGroups is a wrapper around the C function g_bookmark_file_get_groups.
+func (recv *BookmarkFile) GetGroups(uri string) ([]string, uint64, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_get_groups((*C.GBookmarkFile)(recv.native), c_uri, &c_length, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goError
+}
 
 // GetIcon is a wrapper around the C function g_bookmark_file_get_icon.
 func (recv *BookmarkFile) GetIcon(uri string) (bool, string, string, error) {
@@ -194,7 +250,22 @@ func (recv *BookmarkFile) GetTitle(uri string) (string, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_bookmark_file_get_uris : no return type
+// GetUris is a wrapper around the C function g_bookmark_file_get_uris.
+func (recv *BookmarkFile) GetUris() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.g_bookmark_file_get_uris((*C.GBookmarkFile)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // Unsupported : g_bookmark_file_get_visited : no return generator
 
@@ -497,7 +568,7 @@ func (recv *BookmarkFile) SetTitle(uri string, title string) {
 
 // Unsupported : g_bookmark_file_set_visited : unsupported parameter visited : no type generator for glong (time_t) for param visited
 
-// Unsupported : g_bookmark_file_to_data : no return type
+// Unsupported : g_bookmark_file_to_data : array return type :
 
 // ToFile is a wrapper around the C function g_bookmark_file_to_file.
 func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
@@ -568,7 +639,7 @@ func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_key_file_get_double_list : no return type
+// Unsupported : g_key_file_get_double_list : array return type :
 
 // SetDouble is a wrapper around the C function g_key_file_set_double.
 func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {

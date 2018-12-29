@@ -26,4 +26,4 @@ func (recv *TreeRowReference) Copy() *TreeRowReference {
 
 // Unsupported : gtk_widget_class_find_style_property : return type : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_widget_class_list_style_properties : no return type
+// Unsupported : gtk_widget_class_list_style_properties : array return type :

@@ -216,7 +216,7 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 
 	return g.
 		Do(func(s *jen.Statement) {
-			if f.ReturnValue.Type.Name != "none" {
+			if (f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none") || f.ReturnValue.Array != nil {
 				s.
 					Id("retC").
 					Op(":=")
@@ -268,7 +268,8 @@ func (f *Function) generateGoReturnVars(g *jen.Group) {
 
 func (f *Function) generateReturn(g *jen.Group) {
 	g.ReturnFunc(func(g *jen.Group) {
-		if f.ReturnValue.Type.Name != "none" {
+		if (f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none") ||
+			f.ReturnValue.Array != nil {
 			g.Id("retGo")
 		}
 
@@ -278,7 +279,7 @@ func (f *Function) generateReturn(g *jen.Group) {
 }
 
 func (f *Function) generateReturnGoVar(g *jen.Group) {
-	if f.ReturnValue.Type.Name != "none" {
+	if f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none" {
 		f.ReturnValue.generateCToGo(g, "retC", "retGo")
 
 		r := f.ctorRecord
@@ -299,6 +300,11 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 						Parens(jen.Id("retC"))))
 		}
 	}
+
+	if f.ReturnValue.Array != nil {
+		f.ReturnValue.generateArrayCToGo(g, "retC", "retGo")
+	}
+
 	g.Line()
 }
 

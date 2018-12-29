@@ -146,7 +146,7 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType gobject.Type
 
 // Unsupported : gtk_test_init : unsupported parameter argcp : array length param argcp is pointer (int*)
 
-// Unsupported : gtk_test_list_all_types : no return type
+// Unsupported : gtk_test_list_all_types : array return type :
 
 // TestRegisterAllTypes is a wrapper around the C function gtk_test_register_all_types.
 func TestRegisterAllTypes() {
@@ -215,13 +215,13 @@ func TestTextGet(widget *Widget) string {
 }
 
 // TestTextSet is a wrapper around the C function gtk_test_text_set.
-func TestTextSet(widget *Widget, string string) {
+func TestTextSet(widget *Widget, string_ string) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
 		c_widget = (*C.GtkWidget)(widget.ToC())
 	}
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	C.gtk_test_text_set(c_widget, c_string)

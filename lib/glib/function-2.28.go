@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,9 +14,34 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_get_environ : no return type
+// GetEnviron is a wrapper around the C function g_get_environ.
+func GetEnviron() []string {
+	retC := C.g_get_environ()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
 
-// Unsupported : g_get_locale_variants : no return type
+	return retGo
+}
+
+// GetLocaleVariants is a wrapper around the C function g_get_locale_variants.
+func GetLocaleVariants(locale string) []string {
+	c_locale := C.CString(locale)
+	defer C.free(unsafe.Pointer(c_locale))
+
+	retC := C.g_get_locale_variants(c_locale)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.
 func GetMonotonicTime() int64 {

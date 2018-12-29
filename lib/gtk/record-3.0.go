@@ -41,7 +41,7 @@ func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) 
 
 // Unsupported : gtk_cell_area_class_install_cell_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_cell_area_class_list_cell_properties : no return type
+// Unsupported : gtk_cell_area_class_list_cell_properties : array return type :
 
 // GradientNewLinear is a wrapper around the C function gtk_gradient_new_linear.
 func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Gradient {
@@ -148,7 +148,7 @@ func RequisitionNew() *Requisition {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_get_data_with_length : no return type
+// Unsupported : gtk_selection_data_get_data_with_length : array return type :
 
 // SymbolicColorNewAlpha is a wrapper around the C function gtk_symbolic_color_new_alpha.
 func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
@@ -256,7 +256,7 @@ func (recv *SymbolicColor) Unref() {
 	return
 }
 
-// Unsupported : gtk_tree_path_get_indices_with_depth : no return type
+// Unsupported : gtk_tree_path_get_indices_with_depth : array return type :
 
 // WidgetPathNew is a wrapper around the C function gtk_widget_path_new.
 func WidgetPathNew() *WidgetPath {

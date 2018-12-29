@@ -18,4 +18,4 @@ func (recv *Layout) GetCharacterCount() int32 {
 	return retGo
 }
 
-// Unsupported : pango_layout_get_log_attrs_readonly : no return type
+// Unsupported : pango_layout_get_log_attrs_readonly : array return type :

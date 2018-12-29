@@ -3860,7 +3860,7 @@ func (recv *ContainerClass) HandleBorderWidth() {
 
 // Unsupported : gtk_container_class_install_child_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_container_class_list_child_properties : no return type
+// Unsupported : gtk_container_class_list_child_properties : array return type :
 
 // ContainerPrivate is a wrapper around the C record GtkContainerPrivate.
 type ContainerPrivate struct {

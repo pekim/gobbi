@@ -82,7 +82,7 @@ func (recv *Array) Equals(other *Array) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// g_array_append_vals : no return type
+// g_array_append_vals : array return type :
 // ArrayFree is a wrapper around the C function g_array_free.
 func ArrayFree(array []uintptr, freeSegment bool) string {
 	c_array := &array[0]
@@ -97,13 +97,13 @@ func ArrayFree(array []uintptr, freeSegment bool) string {
 	return retGo
 }
 
-// g_array_insert_vals : no return type
-// g_array_new : no return type
-// g_array_prepend_vals : no return type
-// g_array_remove_index : no return type
-// g_array_remove_index_fast : no return type
-// g_array_set_size : no return type
-// g_array_sized_new : no return type
+// g_array_insert_vals : array return type :
+// g_array_new : array return type :
+// g_array_prepend_vals : array return type :
+// g_array_remove_index : array return type :
+// g_array_remove_index_fast : array return type :
+// g_array_set_size : array return type :
+// g_array_sized_new : array return type :
 // g_array_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
 // g_array_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 // AsyncQueue is a wrapper around the C record GAsyncQueue.
@@ -5341,8 +5341,8 @@ func (recv *StringChunk) Free() {
 }
 
 // Insert is a wrapper around the C function g_string_chunk_insert.
-func (recv *StringChunk) Insert(string string) string {
-	c_string := C.CString(string)
+func (recv *StringChunk) Insert(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_string_chunk_insert((*C.GStringChunk)(recv.native), c_string)
@@ -5353,8 +5353,8 @@ func (recv *StringChunk) Insert(string string) string {
 }
 
 // InsertConst is a wrapper around the C function g_string_chunk_insert_const.
-func (recv *StringChunk) InsertConst(string string) string {
-	c_string := C.CString(string)
+func (recv *StringChunk) InsertConst(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_string_chunk_insert_const((*C.GStringChunk)(recv.native), c_string)

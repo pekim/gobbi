@@ -799,8 +799,8 @@ func (recv *TimeZone) Unref() {
 }
 
 // VariantNewBytestring is a wrapper around the C function g_variant_new_bytestring.
-func VariantNewBytestring(string []uint8) *Variant {
-	c_string := &string[0]
+func VariantNewBytestring(string_ []uint8) *Variant {
+	c_string := &string_[0]
 
 	retC := C.g_variant_new_bytestring((*C.gchar)(unsafe.Pointer(c_string)))
 	retGo := VariantNewFromC(unsafe.Pointer(retC))
@@ -820,13 +820,42 @@ func (recv *Variant) Compare(two uintptr) int32 {
 	return retGo
 }
 
-// Unsupported : g_variant_dup_bytestring : no return type
+// Unsupported : g_variant_dup_bytestring : array return type :
 
-// Unsupported : g_variant_dup_bytestring_array : no return type
+// DupBytestringArray is a wrapper around the C function g_variant_dup_bytestring_array.
+func (recv *Variant) DupBytestringArray() ([]string, uint64) {
+	var c_length C.gsize
 
-// Unsupported : g_variant_get_bytestring : no return type
+	retC := C.g_variant_dup_bytestring_array((*C.GVariant)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
 
-// Unsupported : g_variant_get_bytestring_array : no return type
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
+
+// Unsupported : g_variant_get_bytestring : array return type :
+
+// GetBytestringArray is a wrapper around the C function g_variant_get_bytestring_array.
+func (recv *Variant) GetBytestringArray() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.g_variant_get_bytestring_array((*C.GVariant)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // IsFloating is a wrapper around the C function g_variant_is_floating.
 func (recv *Variant) IsFloating() bool {

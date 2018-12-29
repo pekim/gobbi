@@ -61,7 +61,7 @@ func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_key_file_get_boolean_list : no return type
+// Unsupported : g_key_file_get_boolean_list : array return type :
 
 // GetComment is a wrapper around the C function g_key_file_get_comment.
 func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
@@ -88,7 +88,22 @@ func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_key_file_get_groups : no return type
+// GetGroups is a wrapper around the C function g_key_file_get_groups.
+func (recv *KeyFile) GetGroups() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.g_key_file_get_groups((*C.GKeyFile)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // GetInteger is a wrapper around the C function g_key_file_get_integer.
 func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
@@ -114,9 +129,37 @@ func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_key_file_get_integer_list : no return type
+// Unsupported : g_key_file_get_integer_list : array return type :
 
-// Unsupported : g_key_file_get_keys : no return type
+// GetKeys is a wrapper around the C function g_key_file_get_keys.
+func (recv *KeyFile) GetKeys(groupName string) ([]string, uint64, error) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_key_file_get_keys((*C.GKeyFile)(recv.native), c_group_name, &c_length, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goError
+}
 
 // GetLocaleString is a wrapper around the C function g_key_file_get_locale_string.
 func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string) (string, error) {
@@ -146,7 +189,41 @@ func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string
 	return retGo, goError
 }
 
-// Unsupported : g_key_file_get_locale_string_list : no return type
+// GetLocaleStringList is a wrapper around the C function g_key_file_get_locale_string_list.
+func (recv *KeyFile) GetLocaleStringList(groupName string, key string, locale string) ([]string, uint64, error) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_locale := C.CString(locale)
+	defer C.free(unsafe.Pointer(c_locale))
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_key_file_get_locale_string_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_locale, &c_length, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goError
+}
 
 // GetStartGroup is a wrapper around the C function g_key_file_get_start_group.
 func (recv *KeyFile) GetStartGroup() string {
@@ -182,7 +259,38 @@ func (recv *KeyFile) GetString(groupName string, key string) (string, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_key_file_get_string_list : no return type
+// GetStringList is a wrapper around the C function g_key_file_get_string_list.
+func (recv *KeyFile) GetStringList(groupName string, key string) ([]string, uint64, error) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_key_file_get_string_list((*C.GKeyFile)(recv.native), c_group_name, c_key, &c_length, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goError
+}
 
 // GetValue is a wrapper around the C function g_key_file_get_value.
 func (recv *KeyFile) GetValue(groupName string, key string) (string, error) {
@@ -491,7 +599,7 @@ func (recv *KeyFile) SetListSeparator(separator rune) {
 }
 
 // SetLocaleString is a wrapper around the C function g_key_file_set_locale_string.
-func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string, string string) {
+func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string, string_ string) {
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
 
@@ -501,7 +609,7 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	c_locale := C.CString(locale)
 	defer C.free(unsafe.Pointer(c_locale))
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	C.g_key_file_set_locale_string((*C.GKeyFile)(recv.native), c_group_name, c_key, c_locale, c_string)
@@ -512,14 +620,14 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 // Unsupported : g_key_file_set_locale_string_list : unsupported parameter list :
 
 // SetString is a wrapper around the C function g_key_file_set_string.
-func (recv *KeyFile) SetString(groupName string, key string, string string) {
+func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
 
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	C.g_key_file_set_string((*C.GKeyFile)(recv.native), c_group_name, c_key, c_string)

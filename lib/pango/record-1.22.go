@@ -137,4 +137,4 @@ func (recv *GlyphItemIter) PrevCluster() bool {
 	return retGo
 }
 
-// Unsupported : pango_language_get_scripts : no return type
+// Unsupported : pango_language_get_scripts : array return type :

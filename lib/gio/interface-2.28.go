@@ -554,7 +554,18 @@ func (recv *ActionGroup) HasAction(actionName string) bool {
 	return retGo
 }
 
-// Unsupported : g_action_group_list_actions : no return type
+// ListActions is a wrapper around the C function g_action_group_list_actions.
+func (recv *ActionGroup) ListActions() []string {
+	retC := C.g_action_group_list_actions((*C.GActionGroup)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // AppInfoGetFallbackForType is a wrapper around the C function g_app_info_get_fallback_for_type.
 func AppInfoGetFallbackForType(contentType string) *glib.List {

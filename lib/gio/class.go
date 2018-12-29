@@ -520,7 +520,7 @@ func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 	return retGo
 }
 
-// Unsupported : g_buffered_input_stream_peek_buffer : no return type
+// Unsupported : g_buffered_input_stream_peek_buffer : array return type :
 
 // ReadByte is a wrapper around the C function g_buffered_input_stream_read_byte.
 func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
@@ -1468,7 +1468,7 @@ func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) 
 	return retGo, goError
 }
 
-// Unsupported : g_data_input_stream_read_line : no return type
+// Unsupported : g_data_input_stream_read_line : array return type :
 
 // ReadUint16 is a wrapper around the C function g_data_input_stream_read_uint16.
 func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
@@ -1969,7 +1969,7 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	return retGo
 }
 
-// g_desktop_app_info_search : no return type
+// g_desktop_app_info_search : no type for array return
 // DesktopAppInfoSetDesktopEnv is a wrapper around the C function g_desktop_app_info_set_desktop_env.
 func DesktopAppInfoSetDesktopEnv(desktopEnv string) {
 	c_desktop_env := C.CString(desktopEnv)
@@ -2761,7 +2761,21 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 	return retGo
 }
 
-// Unsupported : g_file_info_list_attributes : no return type
+// ListAttributes is a wrapper around the C function g_file_info_list_attributes.
+func (recv *FileInfo) ListAttributes(nameSpace string) []string {
+	c_name_space := C.CString(nameSpace)
+	defer C.free(unsafe.Pointer(c_name_space))
+
+	retC := C.g_file_info_list_attributes((*C.GFileInfo)(recv.native), c_name_space)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // RemoveAttribute is a wrapper around the C function g_file_info_remove_attribute.
 func (recv *FileInfo) RemoveAttribute(attribute string) {
@@ -3471,7 +3485,21 @@ func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 	return retGo
 }
 
-// Unsupported : g_filename_completer_get_completions : no return type
+// GetCompletions is a wrapper around the C function g_filename_completer_get_completions.
+func (recv *FilenameCompleter) GetCompletions(initialText string) []string {
+	c_initial_text := C.CString(initialText)
+	defer C.free(unsafe.Pointer(c_initial_text))
+
+	retC := C.g_filename_completer_get_completions((*C.GFilenameCompleter)(recv.native), c_initial_text)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // SetDirsOnly is a wrapper around the C function g_filename_completer_set_dirs_only.
 func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
@@ -5489,9 +5517,31 @@ func (recv *Settings) Apply() {
 
 // Unsupported : g_settings_get_mapped : unsupported parameter mapping : no type generator for SettingsGetMapping (GSettingsGetMapping) for param mapping
 
-// Unsupported : g_settings_list_children : no return type
+// ListChildren is a wrapper around the C function g_settings_list_children.
+func (recv *Settings) ListChildren() []string {
+	retC := C.g_settings_list_children((*C.GSettings)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
 
-// Unsupported : g_settings_list_keys : no return type
+	return retGo
+}
+
+// ListKeys is a wrapper around the C function g_settings_list_keys.
+func (recv *Settings) ListKeys() []string {
+	retC := C.g_settings_list_keys((*C.GSettings)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // Reset is a wrapper around the C function g_settings_reset.
 func (recv *Settings) Reset(key string) {
@@ -6335,7 +6385,17 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 	return
 }
 
-// Unsupported : g_themed_icon_get_names : no return type
+// GetNames is a wrapper around the C function g_themed_icon_get_names.
+func (recv *ThemedIcon) GetNames() []string {
+	retC := C.g_themed_icon_get_names((*C.GThemedIcon)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // Icon returns the Icon interface implemented by ThemedIcon
 func (recv *ThemedIcon) Icon() *Icon {
@@ -7006,7 +7066,17 @@ func (recv *Vfs) GetFileForUri(uri string) *File {
 	return retGo
 }
 
-// Unsupported : g_vfs_get_supported_uri_schemes : no return type
+// GetSupportedUriSchemes is a wrapper around the C function g_vfs_get_supported_uri_schemes.
+func (recv *Vfs) GetSupportedUriSchemes() []string {
+	retC := C.g_vfs_get_supported_uri_schemes((*C.GVfs)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // IsActive is a wrapper around the C function g_vfs_is_active.
 func (recv *Vfs) IsActive() bool {

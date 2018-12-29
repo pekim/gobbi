@@ -34,4 +34,17 @@ func ContentTypeFromMimeType(mimeType string) string {
 	return retGo
 }
 
-// Unsupported : g_content_type_guess_for_tree : no return type
+// ContentTypeGuessForTree is a wrapper around the C function g_content_type_guess_for_tree.
+func ContentTypeGuessForTree(root *File) []string {
+	c_root := (*C.GFile)(root.ToC())
+
+	retC := C.g_content_type_guess_for_tree(c_root)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}

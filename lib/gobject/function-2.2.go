@@ -10,4 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_type_interface_prerequisites : no return type
+// Unsupported : g_type_interface_prerequisites : array return type :

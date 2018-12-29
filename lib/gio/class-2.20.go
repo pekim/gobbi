@@ -38,7 +38,7 @@ import "C"
 
 // Unsupported : g_data_input_stream_read_line_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_data_input_stream_read_line_finish : no return type
+// Unsupported : g_data_input_stream_read_line_finish : array return type :
 
 // Unsupported : g_data_input_stream_read_until_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 

@@ -1226,7 +1226,7 @@ func (recv *DBusMessage) GetHeader(headerField DBusMessageHeaderField) *glib.Var
 	return retGo
 }
 
-// Unsupported : g_dbus_message_get_header_fields : no return type
+// Unsupported : g_dbus_message_get_header_fields : array return type :
 
 // GetInterface is a wrapper around the C function g_dbus_message_get_interface.
 func (recv *DBusMessage) GetInterface() string {
@@ -1535,7 +1535,7 @@ func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 	return
 }
 
-// Unsupported : g_dbus_message_to_blob : no return type
+// Unsupported : g_dbus_message_to_blob : array return type :
 
 // ToGerror is a wrapper around the C function g_dbus_message_to_gerror.
 func (recv *DBusMessage) ToGerror() (bool, error) {
@@ -2075,7 +2075,18 @@ func (recv *DBusProxy) GetCachedProperty(propertyName string) *glib.Variant {
 	return retGo
 }
 
-// Unsupported : g_dbus_proxy_get_cached_property_names : no return type
+// GetCachedPropertyNames is a wrapper around the C function g_dbus_proxy_get_cached_property_names.
+func (recv *DBusProxy) GetCachedPropertyNames() []string {
+	retC := C.g_dbus_proxy_get_cached_property_names((*C.GDBusProxy)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetConnection is a wrapper around the C function g_dbus_proxy_get_connection.
 func (recv *DBusProxy) GetConnection() *DBusConnection {
@@ -2811,7 +2822,18 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 	return retGo
 }
 
-// g_settings_list_schemas : no return type
+// SettingsListSchemas is a wrapper around the C function g_settings_list_schemas.
+func SettingsListSchemas() []string {
+	retC := C.g_settings_list_schemas()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
+
 // SettingsUnbind is a wrapper around the C function g_settings_unbind.
 func SettingsUnbind(object uintptr, property string) {
 	c_object := (C.gpointer)(object)
@@ -2968,7 +2990,21 @@ func (recv *Settings) GetString(key string) string {
 	return retGo
 }
 
-// Unsupported : g_settings_get_strv : no return type
+// GetStrv is a wrapper around the C function g_settings_get_strv.
+func (recv *Settings) GetStrv(key string) []string {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	retC := C.g_settings_get_strv((*C.GSettings)(recv.native), c_key)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetValue is a wrapper around the C function g_settings_get_value.
 func (recv *Settings) GetValue(key string) *glib.Variant {

@@ -14,7 +14,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// g_array_remove_range : no return type
+// g_array_remove_range : array return type :
 // g_hash_table_find : unsupported parameter predicate : no type generator for HRFunc (GHRFunc) for param predicate
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
@@ -305,8 +305,8 @@ func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 }
 
 // InsertLen is a wrapper around the C function g_string_chunk_insert_len.
-func (recv *StringChunk) InsertLen(string string, len int64) string {
-	c_string := C.CString(string)
+func (recv *StringChunk) InsertLen(string_ string, len int64) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_len := (C.gssize)(len)

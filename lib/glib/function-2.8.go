@@ -116,7 +116,18 @@ func GetHostName() string {
 	return retGo
 }
 
-// Unsupported : g_listenv : no return type
+// Listenv is a wrapper around the C function g_listenv.
+func Listenv() []string {
+	retC := C.g_listenv()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // MkdirWithParents is a wrapper around the C function g_mkdir_with_parents.
 func MkdirWithParents(pathname string, mode int32) int32 {

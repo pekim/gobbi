@@ -1107,7 +1107,7 @@ func (recv *ObjectClass) Equals(other *ObjectClass) bool {
 
 // Unsupported : g_object_class_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : g_object_class_list_properties : no return type
+// Unsupported : g_object_class_list_properties : array return type :
 
 // ObjectConstructParam is a wrapper around the C record GObjectConstructParam.
 type ObjectConstructParam struct {
@@ -1214,7 +1214,7 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_pool_list : no return type
+// Unsupported : g_param_spec_pool_list : array return type :
 
 // ListOwned is a wrapper around the C function g_param_spec_pool_list_owned.
 func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {

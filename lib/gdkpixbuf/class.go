@@ -388,7 +388,7 @@ func (recv *Pixbuf) GetOption(key string) string {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_get_pixels : no return type
+// Unsupported : gdk_pixbuf_get_pixels : array return type :
 
 // GetRowstride is a wrapper around the C function gdk_pixbuf_get_rowstride.
 func (recv *Pixbuf) GetRowstride() int32 {

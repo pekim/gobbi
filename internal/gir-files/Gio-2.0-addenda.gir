@@ -22,6 +22,10 @@
       <function blacklist="true" c:identifier="g_settings_backend_get_default"/>
     </class>
 
+    <class name="IOModule">
+      <function blacklist="true" c:identifier="g_io_module_query"/>
+    </class>
+
     <!-- needs glib.Bytes, which requires a specific version of glib -->
     <class name="OutputStream">
       <method blacklist="true" c:identifier="g_output_stream_write_bytes"/>

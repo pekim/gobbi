@@ -75,7 +75,18 @@ func (recv *MatchInfo) Fetch(matchNum int32) string {
 	return retGo
 }
 
-// Unsupported : g_match_info_fetch_all : no return type
+// FetchAll is a wrapper around the C function g_match_info_fetch_all.
+func (recv *MatchInfo) FetchAll() []string {
+	retC := C.g_match_info_fetch_all((*C.GMatchInfo)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // FetchNamed is a wrapper around the C function g_match_info_fetch_named.
 func (recv *MatchInfo) FetchNamed(name string) string {
@@ -307,11 +318,11 @@ func RegexCheckReplacement(replacement string) (bool, bool, error) {
 
 // g_regex_escape_string : unsupported parameter string :
 // RegexMatchSimple is a wrapper around the C function g_regex_match_simple.
-func RegexMatchSimple(pattern string, string string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
+func RegexMatchSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
 	c_pattern := C.CString(pattern)
 	defer C.free(unsafe.Pointer(c_pattern))
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_compile_options := (C.GRegexCompileFlags)(compileOptions)
@@ -324,7 +335,29 @@ func RegexMatchSimple(pattern string, string string, compileOptions RegexCompile
 	return retGo
 }
 
-// g_regex_split_simple : no return type
+// RegexSplitSimple is a wrapper around the C function g_regex_split_simple.
+func RegexSplitSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) []string {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	c_string := C.CString(string_)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_compile_options := (C.GRegexCompileFlags)(compileOptions)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	retC := C.g_regex_split_simple(c_pattern, c_string, c_compile_options, c_match_options)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
+
 // GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.
 func (recv *Regex) GetCaptureCount() int32 {
 	retC := C.g_regex_get_capture_count((*C.GRegex)(recv.native))
@@ -361,8 +394,8 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 }
 
 // Match is a wrapper around the C function g_regex_match.
-func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
-	c_string := C.CString(string)
+func (recv *Regex) Match(string_ string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_match_options := (C.GRegexMatchFlags)(matchOptions)
@@ -378,8 +411,8 @@ func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, *Ma
 }
 
 // MatchAll is a wrapper around the C function g_regex_match_all.
-func (recv *Regex) MatchAll(string string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
-	c_string := C.CString(string)
+func (recv *Regex) MatchAll(string_ string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_match_options := (C.GRegexMatchFlags)(matchOptions)
@@ -412,7 +445,23 @@ func (recv *Regex) Ref() *Regex {
 
 // Unsupported : g_regex_replace_literal : unsupported parameter string :
 
-// Unsupported : g_regex_split : no return type
+// Split is a wrapper around the C function g_regex_split.
+func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) []string {
+	c_string := C.CString(string_)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	retC := C.g_regex_split((*C.GRegex)(recv.native), c_string, c_match_options)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // Unsupported : g_regex_split_full : unsupported parameter string :
 

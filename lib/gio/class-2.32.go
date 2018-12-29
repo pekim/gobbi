@@ -56,7 +56,18 @@ import (
 */
 import "C"
 
-// Unsupported : g_app_launch_context_get_environment : no return type
+// GetEnvironment is a wrapper around the C function g_app_launch_context_get_environment.
+func (recv *AppLaunchContext) GetEnvironment() []string {
+	retC := C.g_app_launch_context_get_environment((*C.GAppLaunchContext)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // Setenv is a wrapper around the C function g_app_launch_context_setenv.
 func (recv *AppLaunchContext) Setenv(variable string, value string) {
@@ -241,7 +252,17 @@ func DBusMenuModelGet(connection *DBusConnection, busName string, objectPath str
 	return retGo
 }
 
-// Unsupported : g_desktop_app_info_get_keywords : no return type
+// GetKeywords is a wrapper around the C function g_desktop_app_info_get_keywords.
+func (recv *DesktopAppInfo) GetKeywords() []string {
+	retC := C.g_desktop_app_info_get_keywords((*C.GDesktopAppInfo)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // InetAddressMask is a wrapper around the C record GInetAddressMask.
 type InetAddressMask struct {

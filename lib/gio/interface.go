@@ -920,7 +920,18 @@ func (recv *Drive) EjectFinish(result *AsyncResult) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_drive_enumerate_identifiers : no return type
+// EnumerateIdentifiers is a wrapper around the C function g_drive_enumerate_identifiers.
+func (recv *Drive) EnumerateIdentifiers() []string {
+	retC := C.g_drive_enumerate_identifiers((*C.GDrive)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetIcon is a wrapper around the C function g_drive_get_icon.
 func (recv *Drive) GetIcon() *Icon {
@@ -3203,7 +3214,18 @@ func (recv *Volume) EjectFinish(result *AsyncResult) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_volume_enumerate_identifiers : no return type
+// EnumerateIdentifiers is a wrapper around the C function g_volume_enumerate_identifiers.
+func (recv *Volume) EnumerateIdentifiers() []string {
+	retC := C.g_volume_enumerate_identifiers((*C.GVolume)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetDrive is a wrapper around the C function g_volume_get_drive.
 func (recv *Volume) GetDrive() *Drive {

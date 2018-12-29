@@ -21,6 +21,10 @@ func (r *ReturnValue) init(ns *Namespace) {
 	if r.Type != nil {
 		r.Type.init(ns)
 	}
+
+	if r.Array != nil && r.Array.Type != nil {
+		r.Array.init(ns)
+	}
 }
 
 func (r *ReturnValue) mergeAddenda(addenda *ReturnValue) {
@@ -39,6 +43,22 @@ func (r *ReturnValue) mergeAddenda(addenda *ReturnValue) {
 }
 
 func (r *ReturnValue) isSupported() (bool, string) {
+	if r.Array != nil {
+		if r.Array.Type == nil {
+			return false, "no type for array return"
+		}
+		if r.Array.Type.generator == nil {
+			return false, fmt.Sprintf("no type generator for %s (%s) for array return",
+				r.Array.Type.Name, r.Array.Type.CType)
+		}
+
+		if supported, reason := r.Array.Type.generator.isSupportedAsArrayReturnValue(); !supported {
+			return false, fmt.Sprintf("array return type : %s", reason)
+		}
+
+		return true, ""
+	}
+
 	if r.Type == nil {
 		return false, "no return type"
 	}
@@ -59,11 +79,15 @@ func (r *ReturnValue) isSupported() (bool, string) {
 }
 
 func (r *ReturnValue) generateFunctionDeclaration(g *jen.Group) {
-	if r.Type.Name == "none" {
+	if r.Type != nil && r.Type.Name == "none" {
 		return
 	}
 
-	r.Type.generator.generateReturnFunctionDeclaration(g)
+	if r.Array != nil {
+		r.Array.generateReturnDeclaration(g)
+	} else {
+		r.Type.generator.generateReturnFunctionDeclaration(g)
+	}
 }
 
 func (r *ReturnValue) generateFunctionDeclarationCtype(g *jen.Group) {
@@ -81,5 +105,11 @@ func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName str
 
 	r.Type.generator.generateReturnCToGo(g, false, cVarName, goVarName,
 		r.Type.fullGoPackageName(),
+		r.TransferOwnership, r.Nullable)
+}
+
+func (r *ReturnValue) generateArrayCToGo(g *jen.Group, cVarName string, goVarName string) {
+	r.Array.Type.generator.generateArrayReturnCToGo(g, false, cVarName, goVarName,
+		r.Array.Type.fullGoPackageName(),
 		r.TransferOwnership, r.Nullable)
 }

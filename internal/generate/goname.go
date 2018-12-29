@@ -6,15 +6,23 @@ import (
 	"unicode/utf8"
 )
 
-var reservedWords = map[string]bool{
+var cNameReservedWords = map[string]bool{
 	"func":      true,
 	"interface": true,
 	"select":    true,
 	"type":      true,
 }
 
+var goNameReservedWords = map[string]bool{
+	"func":      true,
+	"interface": true,
+	"select":    true,
+	"string":    true,
+	"type":      true,
+}
+
 func makeSafeCName(cName string) string {
-	if _, isReserved := reservedWords[cName]; isReserved {
+	if _, isReserved := cNameReservedWords[cName]; isReserved {
 		return "_" + cName
 	}
 
@@ -24,7 +32,7 @@ func makeSafeCName(cName string) string {
 func makeGoName(cName string) string {
 	name := makeGoNameInternal(cName, false)
 
-	if _, isReserved := reservedWords[name]; isReserved {
+	if _, isReserved := goNameReservedWords[name]; isReserved {
 		name += "_"
 	}
 

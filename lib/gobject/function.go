@@ -534,7 +534,7 @@ func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quar
 	return retGo
 }
 
-// Unsupported : g_signal_list_ids : no return type
+// Unsupported : g_signal_list_ids : array return type :
 
 // SignalLookup is a wrapper around the C function g_signal_lookup.
 func SignalLookup(name string, itype Type) uint32 {
@@ -878,7 +878,7 @@ func TypeCheckValueHolds(value *Value, type_ Type) bool {
 	return retGo
 }
 
-// Unsupported : g_type_children : no return type
+// Unsupported : g_type_children : array return type :
 
 // TypeCreateInstance is a wrapper around the C function g_type_create_instance.
 func TypeCreateInstance(type_ Type) *TypeInstance {
@@ -979,7 +979,7 @@ func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 	return
 }
 
-// Unsupported : g_type_interfaces : no return type
+// Unsupported : g_type_interfaces : array return type :
 
 // TypeIsA is a wrapper around the C function g_type_is_a.
 func TypeIsA(type_ Type, isAType Type) bool {

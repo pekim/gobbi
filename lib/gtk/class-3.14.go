@@ -209,7 +209,21 @@ import (
 */
 import "C"
 
-// Unsupported : gtk_application_get_actions_for_accel : no return type
+// GetActionsForAccel is a wrapper around the C function gtk_application_get_actions_for_accel.
+func (recv *Application) GetActionsForAccel(accel string) []string {
+	c_accel := C.CString(accel)
+	defer C.free(unsafe.Pointer(c_accel))
+
+	retC := C.gtk_application_get_actions_for_accel((*C.GtkApplication)(recv.native), c_accel)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetMenuById is a wrapper around the C function gtk_application_get_menu_by_id.
 func (recv *Application) GetMenuById(id string) *gio.Menu {

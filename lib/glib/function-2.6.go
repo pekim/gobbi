@@ -54,11 +54,41 @@ func FilenameDisplayName(filename string) string {
 
 // Unsupported : g_get_filename_charsets : unsupported parameter charsets : in string with indirection level of 3
 
-// Unsupported : g_get_language_names : no return type
+// GetLanguageNames is a wrapper around the C function g_get_language_names.
+func GetLanguageNames() []string {
+	retC := C.g_get_language_names()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
 
-// Unsupported : g_get_system_config_dirs : no return type
+	return retGo
+}
 
-// Unsupported : g_get_system_data_dirs : no return type
+// GetSystemConfigDirs is a wrapper around the C function g_get_system_config_dirs.
+func GetSystemConfigDirs() []string {
+	retC := C.g_get_system_config_dirs()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
+
+// GetSystemDataDirs is a wrapper around the C function g_get_system_data_dirs.
+func GetSystemDataDirs() []string {
+	retC := C.g_get_system_data_dirs()
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
 func GetUserCacheDir() string {
@@ -110,4 +140,18 @@ func Unlink(filename string) int32 {
 	return retGo
 }
 
-// Unsupported : g_uri_list_extract_uris : no return type
+// UriListExtractUris is a wrapper around the C function g_uri_list_extract_uris.
+func UriListExtractUris(uriList string) []string {
+	c_uri_list := C.CString(uriList)
+	defer C.free(unsafe.Pointer(c_uri_list))
+
+	retC := C.g_uri_list_extract_uris(c_uri_list)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}

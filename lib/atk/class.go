@@ -1480,7 +1480,7 @@ func (recv *Relation) GetRelationType() RelationType {
 	return retGo
 }
 
-// Unsupported : atk_relation_get_target : no return type
+// Unsupported : atk_relation_get_target : array return type :
 
 // RemoveTarget is a wrapper around the C function atk_relation_remove_target.
 func (recv *Relation) RemoveTarget(target *Object) bool {

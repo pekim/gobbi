@@ -154,8 +154,8 @@ func (recv *MatchInfo) Unref() {
 }
 
 // RegexEscapeNul is a wrapper around the C function g_regex_escape_nul.
-func RegexEscapeNul(string string, length int32) string {
-	c_string := C.CString(string)
+func RegexEscapeNul(string_ string, length int32) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_length := (C.gint)(length)
@@ -169,6 +169,35 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_variant_new_objv : unsupported parameter strv :
 
-// Unsupported : g_variant_dup_objv : no return type
+// DupObjv is a wrapper around the C function g_variant_dup_objv.
+func (recv *Variant) DupObjv() ([]string, uint64) {
+	var c_length C.gsize
 
-// Unsupported : g_variant_get_objv : no return type
+	retC := C.g_variant_dup_objv((*C.GVariant)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
+
+// GetObjv is a wrapper around the C function g_variant_get_objv.
+func (recv *Variant) GetObjv() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.g_variant_get_objv((*C.GVariant)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}

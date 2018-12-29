@@ -79,8 +79,8 @@ func SetApplicationName(applicationName string) {
 }
 
 // Sprintf is a wrapper around the C function g_sprintf.
-func Sprintf(string string, format string, args ...interface{}) int32 {
-	c_string := C.CString(string)
+func Sprintf(string_ string, format string, args ...interface{}) int32 {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	goFormattedString := fmt.Sprintf(format, args...)

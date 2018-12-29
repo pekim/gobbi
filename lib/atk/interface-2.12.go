@@ -112,7 +112,7 @@ func (recv *Document) GetPageCount() int32 {
 	return retGo
 }
 
-// Unsupported : atk_table_cell_get_column_header_cells : no return type
+// Unsupported : atk_table_cell_get_column_header_cells : array return type :
 
 // GetColumnSpan is a wrapper around the C function atk_table_cell_get_column_span.
 func (recv *TableCell) GetColumnSpan() int32 {
@@ -162,7 +162,7 @@ func (recv *TableCell) GetRowColumnSpan() (bool, int32, int32, int32, int32) {
 	return retGo, row, column, rowSpan, columnSpan
 }
 
-// Unsupported : atk_table_cell_get_row_header_cells : no return type
+// Unsupported : atk_table_cell_get_row_header_cells : array return type :
 
 // GetRowSpan is a wrapper around the C function atk_table_cell_get_row_span.
 func (recv *TableCell) GetRowSpan() int32 {

@@ -378,7 +378,7 @@ func BitStorage(number uint64) uint32 {
 
 // Blacklisted : g_byte_array_free
 
-// Unsupported : g_byte_array_new : no return type
+// Unsupported : g_byte_array_new : array return type :
 
 // ClearError is a wrapper around the C function g_clear_error.
 func ClearError() error {
@@ -397,7 +397,7 @@ func ClearError() error {
 	return goError
 }
 
-// Unsupported : g_convert : no return type
+// Unsupported : g_convert : array return type :
 
 // ConvertErrorQuark is a wrapper around the C function g_convert_error_quark.
 func ConvertErrorQuark() Quark {
@@ -407,7 +407,7 @@ func ConvertErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_convert_with_fallback : no return type
+// Unsupported : g_convert_with_fallback : array return type :
 
 // Unsupported : g_convert_with_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
@@ -900,7 +900,7 @@ func IoCreateWatch(channel *IOChannel, condition IOCondition) *Source {
 	return retGo
 }
 
-// Unsupported : g_locale_from_utf8 : no return type
+// Unsupported : g_locale_from_utf8 : array return type :
 
 // LocaleToUtf8 is a wrapper around the C function g_locale_to_utf8.
 func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
@@ -1195,7 +1195,7 @@ func PathSkipRoot(fileName string) string {
 }
 
 // PatternMatch is a wrapper around the C function g_pattern_match.
-func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, stringReversed string) bool {
+func PatternMatch(pspec *PatternSpec, stringLength uint32, string_ string, stringReversed string) bool {
 	c_pspec := (*C.GPatternSpec)(C.NULL)
 	if pspec != nil {
 		c_pspec = (*C.GPatternSpec)(pspec.ToC())
@@ -1203,7 +1203,7 @@ func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, string
 
 	c_string_length := (C.guint)(stringLength)
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_string_reversed := C.CString(stringReversed)
@@ -1216,11 +1216,11 @@ func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, string
 }
 
 // PatternMatchSimple is a wrapper around the C function g_pattern_match_simple.
-func PatternMatchSimple(pattern string, string string) bool {
+func PatternMatchSimple(pattern string, string_ string) bool {
 	c_pattern := C.CString(pattern)
 	defer C.free(unsafe.Pointer(c_pattern))
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_pattern_match_simple(c_pattern, c_string)
@@ -1230,13 +1230,13 @@ func PatternMatchSimple(pattern string, string string) bool {
 }
 
 // PatternMatchString is a wrapper around the C function g_pattern_match_string.
-func PatternMatchString(pspec *PatternSpec, string string) bool {
+func PatternMatchString(pspec *PatternSpec, string_ string) bool {
 	c_pspec := (*C.GPatternSpec)(C.NULL)
 	if pspec != nil {
 		c_pspec = (*C.GPatternSpec)(pspec.ToC())
 	}
 
-	c_string := C.CString(string)
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_pattern_match_string(c_pspec, c_string)
@@ -1288,8 +1288,8 @@ func PropagateError(src *Error) *Error {
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 
 // QuarkFromStaticString is a wrapper around the C function g_quark_from_static_string.
-func QuarkFromStaticString(string string) Quark {
-	c_string := C.CString(string)
+func QuarkFromStaticString(string_ string) Quark {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_quark_from_static_string(c_string)
@@ -1299,8 +1299,8 @@ func QuarkFromStaticString(string string) Quark {
 }
 
 // QuarkFromString is a wrapper around the C function g_quark_from_string.
-func QuarkFromString(string string) Quark {
-	c_string := C.CString(string)
+func QuarkFromString(string_ string) Quark {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_quark_from_string(c_string)
@@ -1320,8 +1320,8 @@ func QuarkToString(quark Quark) string {
 }
 
 // QuarkTryString is a wrapper around the C function g_quark_try_string.
-func QuarkTryString(string string) Quark {
-	c_string := C.CString(string)
+func QuarkTryString(string_ string) Quark {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_quark_try_string(c_string)
@@ -1508,8 +1508,8 @@ func SliceSetConfig(ckey SliceConfig, value int64) {
 }
 
 // Snprintf is a wrapper around the C function g_snprintf.
-func Snprintf(string string, n uint64, format string, args ...interface{}) int32 {
-	c_string := C.CString(string)
+func Snprintf(string_ string, n uint64, format string, args ...interface{}) int32 {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_n := (C.gulong)(n)
@@ -1626,8 +1626,8 @@ func StrHash(v uintptr) uint32 {
 }
 
 // Strcanon is a wrapper around the C function g_strcanon.
-func Strcanon(string string, validChars string, substitutor rune) string {
-	c_string := C.CString(string)
+func Strcanon(string_ string, validChars string, substitutor rune) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_valid_chars := C.CString(validChars)
@@ -1657,8 +1657,8 @@ func Strcasecmp(s1 string, s2 string) int32 {
 }
 
 // Strchomp is a wrapper around the C function g_strchomp.
-func Strchomp(string string) string {
-	c_string := C.CString(string)
+func Strchomp(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strchomp(c_string)
@@ -1669,8 +1669,8 @@ func Strchomp(string string) string {
 }
 
 // Strchug is a wrapper around the C function g_strchug.
-func Strchug(string string) string {
-	c_string := C.CString(string)
+func Strchug(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strchug(c_string)
@@ -1695,8 +1695,8 @@ func Strcompress(source string) string {
 // Unsupported : g_strconcat : unsupported parameter ... : varargs
 
 // Strdelimit is a wrapper around the C function g_strdelimit.
-func Strdelimit(string string, delimiters string, newDelimiter rune) string {
-	c_string := C.CString(string)
+func Strdelimit(string_ string, delimiters string, newDelimiter rune) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_delimiters := C.CString(delimiters)
@@ -1712,8 +1712,8 @@ func Strdelimit(string string, delimiters string, newDelimiter rune) string {
 }
 
 // Strdown is a wrapper around the C function g_strdown.
-func Strdown(string string) string {
-	c_string := C.CString(string)
+func Strdown(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strdown(c_string)
@@ -1893,8 +1893,8 @@ func Strnfill(length uint64, fillChar rune) string {
 }
 
 // Strreverse is a wrapper around the C function g_strreverse.
-func Strreverse(string string) string {
-	c_string := C.CString(string)
+func Strreverse(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strreverse(c_string)
@@ -1945,7 +1945,25 @@ func Strsignal(signum int32) string {
 	return retGo
 }
 
-// Unsupported : g_strsplit : no return type
+// Strsplit is a wrapper around the C function g_strsplit.
+func Strsplit(string_ string, delimiter string, maxTokens int32) []string {
+	c_string := C.CString(string_)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_delimiter := C.CString(delimiter)
+	defer C.free(unsafe.Pointer(c_delimiter))
+
+	c_max_tokens := (C.gint)(maxTokens)
+
+	retC := C.g_strsplit(c_string, c_delimiter, c_max_tokens)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // StrstrLen is a wrapper around the C function g_strstr_len.
 func StrstrLen(haystack string, haystackLen int64, needle string) string {
@@ -1980,8 +1998,8 @@ func Strtod(nptr string) (float64, string) {
 }
 
 // Strup is a wrapper around the C function g_strup.
-func Strup(string string) string {
-	c_string := C.CString(string)
+func Strup(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strup(c_string)
@@ -2340,8 +2358,8 @@ func UnicharXdigitValue(c rune) int32 {
 // Blacklisted : g_unicode_canonical_decomposition
 
 // UnicodeCanonicalOrdering is a wrapper around the C function g_unicode_canonical_ordering.
-func UnicodeCanonicalOrdering(string rune, len uint64) {
-	c_string := (C.gunichar)(string)
+func UnicodeCanonicalOrdering(string_ rune, len uint64) {
+	c_string := (C.gunichar)(string_)
 
 	c_len := (C.gsize)(len)
 

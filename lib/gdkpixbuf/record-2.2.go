@@ -21,9 +21,31 @@ func (recv *PixbufFormat) GetDescription() string {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_format_get_extensions : no return type
+// GetExtensions is a wrapper around the C function gdk_pixbuf_format_get_extensions.
+func (recv *PixbufFormat) GetExtensions() []string {
+	retC := C.gdk_pixbuf_format_get_extensions((*C.GdkPixbufFormat)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
 
-// Unsupported : gdk_pixbuf_format_get_mime_types : no return type
+	return retGo
+}
+
+// GetMimeTypes is a wrapper around the C function gdk_pixbuf_format_get_mime_types.
+func (recv *PixbufFormat) GetMimeTypes() []string {
+	retC := C.gdk_pixbuf_format_get_mime_types((*C.GdkPixbufFormat)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // GetName is a wrapper around the C function gdk_pixbuf_format_get_name.
 func (recv *PixbufFormat) GetName() string {

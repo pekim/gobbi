@@ -13,7 +13,7 @@ import "unsafe"
 import "C"
 
 // atk_text_free_ranges : unsupported parameter ranges :
-// Unsupported : atk_text_get_bounded_ranges : no return type
+// Unsupported : atk_text_get_bounded_ranges : array return type :
 
 // GetRangeExtents is a wrapper around the C function atk_text_get_range_extents.
 func (recv *Text) GetRangeExtents(startOffset int32, endOffset int32, coordType CoordType) *TextRectangle {

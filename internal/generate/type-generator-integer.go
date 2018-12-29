@@ -46,6 +46,10 @@ func (t *TypeGeneratorInteger) isSupportedAsField() (supported bool, reason stri
 	return true, ""
 }
 
+func (t *TypeGeneratorInteger) isSupportedAsArrayReturnValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reason string) {
 	return true, ""
 }
@@ -145,6 +149,11 @@ func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
 				s.Id(cVarName)
 			}
 		}))
+}
+
+func (t *TypeGeneratorInteger) generateArrayReturnCToGo(g *jen.Group, isParam bool,
+	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
+	panic("unsupported")
 }
 
 func (t *TypeGeneratorInteger) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

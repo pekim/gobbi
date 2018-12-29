@@ -12,6 +12,7 @@ type TypeGenerator interface {
 	isSupportedAsParamC() (supported bool, reason string)
 	isSupportedAsArrayParam(direction string) (supported bool, reason string)
 	isSupportedAsArrayParamC(direction string) (supported bool, reason string)
+	isSupportedAsArrayReturnValue() (supported bool, reason string)
 	isSupportedAsReturnValue() (supported bool, reason string)
 	isSupportedAsReturnCValue() (supported bool, reason string)
 
@@ -31,5 +32,7 @@ type TypeGenerator interface {
 	generateReturnFunctionDeclaration(g *jen.Group)
 	generateReturnFunctionDeclarationCtype(g *jen.Group)
 	generateReturnCToGo(g *jen.Group, isParam bool, cVarName string, goVarName string, pkg string,
+		transferOwnership string, nullable bool)
+	generateArrayReturnCToGo(g *jen.Group, isParam bool, cVarName string, goVarName string, pkg string,
 		transferOwnership string, nullable bool)
 }

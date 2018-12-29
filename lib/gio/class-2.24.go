@@ -129,7 +129,8 @@ func (recv *DesktopAppInfo) GetFilename() string {
 	return retGo
 }
 
-// g_io_module_query : no return type
+// Blacklisted : g_io_module_query
+
 // IsClosing is a wrapper around the C function g_output_stream_is_closing.
 func (recv *OutputStream) IsClosing() bool {
 	retC := C.g_output_stream_is_closing((*C.GOutputStream)(recv.native))
@@ -237,9 +238,9 @@ func (recv *UnixFDList) GetLength() int32 {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_list_peek_fds : no return type
+// Unsupported : g_unix_fd_list_peek_fds : array return type :
 
-// Unsupported : g_unix_fd_list_steal_fds : no return type
+// Unsupported : g_unix_fd_list_steal_fds : array return type :
 
 // UnixFDMessageNewWithFdList is a wrapper around the C function g_unix_fd_message_new_with_fd_list.
 func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {

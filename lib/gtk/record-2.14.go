@@ -25,7 +25,7 @@ func BorderNew() *Border {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_get_data : no return type
+// Unsupported : gtk_selection_data_get_data : array return type :
 
 // GetDataType is a wrapper around the C function gtk_selection_data_get_data_type.
 func (recv *SelectionData) GetDataType() gdk.Atom {

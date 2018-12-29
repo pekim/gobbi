@@ -25,7 +25,17 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_app_info_get_supported_types : no return type
+// GetSupportedTypes is a wrapper around the C function g_app_info_get_supported_types.
+func (recv *AppInfo) GetSupportedTypes() []string {
+	retC := C.g_app_info_get_supported_types((*C.GAppInfo)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // IsTagged is a wrapper around the C function g_async_result_is_tagged.
 func (recv *AsyncResult) IsTagged(sourceTag uintptr) bool {

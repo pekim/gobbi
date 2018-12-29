@@ -828,7 +828,7 @@ func CellRendererSpinNew() *CellRendererSpin {
 
 // Unsupported : gtk_clipboard_request_rich_text : unsupported parameter callback : no type generator for ClipboardRichTextReceivedFunc (GtkClipboardRichTextReceivedFunc) for param callback
 
-// Unsupported : gtk_clipboard_wait_for_rich_text : no return type
+// Unsupported : gtk_clipboard_wait_for_rich_text : array return type :
 
 // WaitIsRichTextAvailable is a wrapper around the C function gtk_clipboard_wait_is_rich_text_available.
 func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
@@ -2487,7 +2487,7 @@ func (recv *PrintSettings) GetOutputBin() string {
 	return retGo
 }
 
-// Unsupported : gtk_print_settings_get_page_ranges : no return type
+// Unsupported : gtk_print_settings_get_page_ranges : array return type :
 
 // GetPageSet is a wrapper around the C function gtk_print_settings_get_page_set.
 func (recv *PrintSettings) GetPageSet() PageSet {
@@ -3912,7 +3912,7 @@ func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_get_deserialize_formats : no return type
+// Unsupported : gtk_text_buffer_get_deserialize_formats : array return type :
 
 // GetHasSelection is a wrapper around the C function gtk_text_buffer_get_has_selection.
 func (recv *TextBuffer) GetHasSelection() bool {
@@ -3930,7 +3930,7 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_get_serialize_formats : no return type
+// Unsupported : gtk_text_buffer_get_serialize_formats : array return type :
 
 // Unsupported : gtk_text_buffer_register_deserialize_format : unsupported parameter function : no type generator for TextBufferDeserializeFunc (GtkTextBufferDeserializeFunc) for param function
 
@@ -3958,7 +3958,7 @@ func (recv *TextBuffer) RegisterSerializeTagset(tagsetName string) gdk.Atom {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_serialize : no return type
+// Unsupported : gtk_text_buffer_serialize : array return type :
 
 // UnregisterDeserializeFormat is a wrapper around the C function gtk_text_buffer_unregister_deserialize_format.
 func (recv *TextBuffer) UnregisterDeserializeFormat(format *gdk.Atom) {

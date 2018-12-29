@@ -125,7 +125,25 @@ func StripContext(msgid string, msgval string) string {
 	return retGo
 }
 
-// Unsupported : g_strsplit_set : no return type
+// StrsplitSet is a wrapper around the C function g_strsplit_set.
+func StrsplitSet(string_ string, delimiters string, maxTokens int32) []string {
+	c_string := C.CString(string_)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_delimiters := C.CString(delimiters)
+	defer C.free(unsafe.Pointer(c_delimiters))
+
+	c_max_tokens := (C.gint)(maxTokens)
+
+	retC := C.g_strsplit_set(c_string, c_delimiters, c_max_tokens)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // UnicharGetMirrorChar is a wrapper around the C function g_unichar_get_mirror_char.
 func UnicharGetMirrorChar(ch rune, mirroredCh rune) bool {

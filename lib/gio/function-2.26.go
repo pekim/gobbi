@@ -308,8 +308,8 @@ func DbusGenerateGuid() string {
 }
 
 // DbusIsAddress is a wrapper around the C function g_dbus_is_address.
-func DbusIsAddress(string string) bool {
-	c_string := C.CString(string)
+func DbusIsAddress(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_address(c_string)
@@ -319,8 +319,8 @@ func DbusIsAddress(string string) bool {
 }
 
 // DbusIsGuid is a wrapper around the C function g_dbus_is_guid.
-func DbusIsGuid(string string) bool {
-	c_string := C.CString(string)
+func DbusIsGuid(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_guid(c_string)
@@ -330,8 +330,8 @@ func DbusIsGuid(string string) bool {
 }
 
 // DbusIsInterfaceName is a wrapper around the C function g_dbus_is_interface_name.
-func DbusIsInterfaceName(string string) bool {
-	c_string := C.CString(string)
+func DbusIsInterfaceName(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_interface_name(c_string)
@@ -341,8 +341,8 @@ func DbusIsInterfaceName(string string) bool {
 }
 
 // DbusIsMemberName is a wrapper around the C function g_dbus_is_member_name.
-func DbusIsMemberName(string string) bool {
-	c_string := C.CString(string)
+func DbusIsMemberName(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_member_name(c_string)
@@ -352,8 +352,8 @@ func DbusIsMemberName(string string) bool {
 }
 
 // DbusIsName is a wrapper around the C function g_dbus_is_name.
-func DbusIsName(string string) bool {
-	c_string := C.CString(string)
+func DbusIsName(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_name(c_string)
@@ -363,8 +363,8 @@ func DbusIsName(string string) bool {
 }
 
 // DbusIsSupportedAddress is a wrapper around the C function g_dbus_is_supported_address.
-func DbusIsSupportedAddress(string string) (bool, error) {
-	c_string := C.CString(string)
+func DbusIsSupportedAddress(string_ string) (bool, error) {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	var cThrowableError *C.GError
@@ -384,8 +384,8 @@ func DbusIsSupportedAddress(string string) (bool, error) {
 }
 
 // DbusIsUniqueName is a wrapper around the C function g_dbus_is_unique_name.
-func DbusIsUniqueName(string string) bool {
-	c_string := C.CString(string)
+func DbusIsUniqueName(string_ string) bool {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_unique_name(c_string)

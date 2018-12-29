@@ -831,8 +831,8 @@ func (recv *EditableText) DeleteText(startPos int32, endPos int32) {
 }
 
 // InsertText is a wrapper around the C function atk_editable_text_insert_text.
-func (recv *EditableText) InsertText(string string, length int32, position int32) {
-	c_string := C.CString(string)
+func (recv *EditableText) InsertText(string_ string, length int32, position int32) {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	c_length := (C.gint)(length)
@@ -856,8 +856,8 @@ func (recv *EditableText) PasteText(position int32) {
 // Blacklisted : atk_editable_text_set_run_attributes
 
 // SetTextContents is a wrapper around the C function atk_editable_text_set_text_contents.
-func (recv *EditableText) SetTextContents(string string) {
-	c_string := C.CString(string)
+func (recv *EditableText) SetTextContents(string_ string) {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	C.atk_editable_text_set_text_contents((*C.AtkEditableText)(recv.native), c_string)

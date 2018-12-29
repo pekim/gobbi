@@ -194,7 +194,33 @@ func ResourceLoad(filename string) (*Resource, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_resource_enumerate_children : no return type
+// EnumerateChildren is a wrapper around the C function g_resource_enumerate_children.
+func (recv *Resource) EnumerateChildren(path string, lookupFlags ResourceLookupFlags) ([]string, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_lookup_flags := (C.GResourceLookupFlags)(lookupFlags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resource_enumerate_children((*C.GResource)(recv.native), c_path, c_lookup_flags, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // GetInfo is a wrapper around the C function g_resource_get_info.
 func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {

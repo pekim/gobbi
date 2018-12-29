@@ -36,6 +36,10 @@ func (a *Array) generateDeclaration(g *jen.Group, goVarName string) {
 	a.Type.generator.generateArrayDeclaration(g, goVarName)
 }
 
+func (a *Array) generateReturnDeclaration(g *jen.Group) {
+	a.Type.generator.generateArrayDeclaration(g, "")
+}
+
 func (a *Array) generateDeclarationC(g *jen.Group, cVarName string) {
 	g.
 		Id(cVarName).

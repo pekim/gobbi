@@ -273,7 +273,22 @@ func (recv *RecentInfo) GetAge() int32 {
 
 // Unsupported : gtk_recent_info_get_application_info : unsupported parameter time_ : no type generator for glong (time_t*) for param time_
 
-// Unsupported : gtk_recent_info_get_applications : no return type
+// GetApplications is a wrapper around the C function gtk_recent_info_get_applications.
+func (recv *RecentInfo) GetApplications() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.gtk_recent_info_get_applications((*C.GtkRecentInfo)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // GetDescription is a wrapper around the C function gtk_recent_info_get_description.
 func (recv *RecentInfo) GetDescription() string {
@@ -291,7 +306,22 @@ func (recv *RecentInfo) GetDisplayName() string {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_groups : no return type
+// GetGroups is a wrapper around the C function gtk_recent_info_get_groups.
+func (recv *RecentInfo) GetGroups() ([]string, uint64) {
+	var c_length C.gsize
+
+	retC := C.gtk_recent_info_get_groups((*C.GtkRecentInfo)(recv.native), &c_length)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	length := (uint64)(c_length)
+
+	return retGo, length
+}
 
 // GetIcon is a wrapper around the C function gtk_recent_info_get_icon.
 func (recv *RecentInfo) GetIcon(size int32) *gdkpixbuf.Pixbuf {

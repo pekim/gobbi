@@ -287,7 +287,21 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 
 // Unsupported : pango_skip_space : unsupported parameter pos : in string with indirection level of 2
 
-// Unsupported : pango_split_file_list : no return type
+// SplitFileList is a wrapper around the C function pango_split_file_list.
+func SplitFileList(str string) []string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	retC := C.pango_split_file_list(c_str)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // TrimString is a wrapper around the C function pango_trim_string.
 func TrimString(str string) string {

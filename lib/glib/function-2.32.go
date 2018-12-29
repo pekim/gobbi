@@ -12,7 +12,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_byte_array_new_take : no return type
+// Unsupported : g_byte_array_new_take : array return type :
 
 // Unsupported : g_environ_getenv : unsupported parameter envp :
 

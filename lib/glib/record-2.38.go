@@ -44,8 +44,8 @@ func VariantNewPrintf(formatString string, args ...interface{}) *Variant {
 }
 
 // VariantNewTakeString is a wrapper around the C function g_variant_new_take_string.
-func VariantNewTakeString(string string) *Variant {
-	c_string := C.CString(string)
+func VariantNewTakeString(string_ string) *Variant {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_variant_new_take_string(c_string)

@@ -30,8 +30,6 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_regex_escape_string : unsupported parameter string :
 
-// Unsupported : g_regex_split_simple : no return type
-
 // SliceCopy is a wrapper around the C function g_slice_copy.
 func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
 	c_block_size := (C.gsize)(blockSize)

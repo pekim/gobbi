@@ -284,7 +284,18 @@ func cellrenderercombo_changedHandler(_ *C.GObject, c_path_string *C.gchar, c_ne
 
 // Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc (GtkClipboardURIReceivedFunc) for param callback
 
-// Unsupported : gtk_clipboard_wait_for_uris : no return type
+// WaitForUris is a wrapper around the C function gtk_clipboard_wait_for_uris.
+func (recv *Clipboard) WaitForUris() []string {
+	retC := C.gtk_clipboard_wait_for_uris((*C.GtkClipboard)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // WaitIsUrisAvailable is a wrapper around the C function gtk_clipboard_wait_is_uris_available.
 func (recv *Clipboard) WaitIsUrisAvailable() bool {

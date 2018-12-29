@@ -41,7 +41,7 @@ func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *Pri
 
 // Unsupported : gtk_target_table_free : unsupported parameter targets :
 
-// Unsupported : gtk_target_table_new_from_list : no return type
+// Unsupported : gtk_target_table_new_from_list : array return type :
 
 // Unsupported : gtk_targets_include_image : unsupported parameter targets :
 

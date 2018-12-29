@@ -70,9 +70,29 @@ func AboutDialogNew() *AboutDialog {
 	return retGo
 }
 
-// Unsupported : gtk_about_dialog_get_artists : no return type
+// GetArtists is a wrapper around the C function gtk_about_dialog_get_artists.
+func (recv *AboutDialog) GetArtists() []string {
+	retC := C.gtk_about_dialog_get_artists((*C.GtkAboutDialog)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
 
-// Unsupported : gtk_about_dialog_get_authors : no return type
+	return retGo
+}
+
+// GetAuthors is a wrapper around the C function gtk_about_dialog_get_authors.
+func (recv *AboutDialog) GetAuthors() []string {
+	retC := C.gtk_about_dialog_get_authors((*C.GtkAboutDialog)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // GetComments is a wrapper around the C function gtk_about_dialog_get_comments.
 func (recv *AboutDialog) GetComments() string {
@@ -90,7 +110,17 @@ func (recv *AboutDialog) GetCopyright() string {
 	return retGo
 }
 
-// Unsupported : gtk_about_dialog_get_documenters : no return type
+// GetDocumenters is a wrapper around the C function gtk_about_dialog_get_documenters.
+func (recv *AboutDialog) GetDocumenters() []string {
+	retC := C.gtk_about_dialog_get_documenters((*C.GtkAboutDialog)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+
+	return retGo
+}
 
 // GetLicense is a wrapper around the C function gtk_about_dialog_get_license.
 func (recv *AboutDialog) GetLicense() string {
@@ -275,8 +305,8 @@ func (recv *Action) SetVisible(visible bool) {
 }
 
 // TranslateString is a wrapper around the C function gtk_action_group_translate_string.
-func (recv *ActionGroup) TranslateString(string string) string {
-	c_string := C.CString(string)
+func (recv *ActionGroup) TranslateString(string_ string) string {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.gtk_action_group_translate_string((*C.GtkActionGroup)(recv.native), c_string)
@@ -904,7 +934,7 @@ func (recv *FileFilter) AddPixbufFormats() {
 	return
 }
 
-// Unsupported : gtk_icon_theme_get_icon_sizes : no return type
+// Unsupported : gtk_icon_theme_get_icon_sizes : array return type :
 
 // IconViewNew is a wrapper around the C function gtk_icon_view_new.
 func IconViewNew() *IconView {

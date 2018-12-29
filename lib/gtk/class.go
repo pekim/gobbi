@@ -2171,7 +2171,7 @@ func (recv *AccelGroup) Lock() {
 	return
 }
 
-// Unsupported : gtk_accel_group_query : no return type
+// Unsupported : gtk_accel_group_query : array return type :
 
 // Unlock is a wrapper around the C function gtk_accel_group_unlock.
 func (recv *AccelGroup) Unlock() {
@@ -2250,8 +2250,8 @@ func CastToAccelLabel(object *gobject.Object) *AccelLabel {
 }
 
 // AccelLabelNew is a wrapper around the C function gtk_accel_label_new.
-func AccelLabelNew(string string) *AccelLabel {
-	c_string := C.CString(string)
+func AccelLabelNew(string_ string) *AccelLabel {
+	c_string := C.CString(string_)
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.gtk_accel_label_new(c_string)
@@ -10353,7 +10353,7 @@ var signalEntryInsertAtCursorMap = make(map[int]signalEntryInsertAtCursorDetail)
 var signalEntryInsertAtCursorLock sync.RWMutex
 
 // EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
-type EntrySignalInsertAtCursorCallback func(string string)
+type EntrySignalInsertAtCursorCallback func(string_ string)
 
 /*
 ConnectInsertAtCursor connects the callback to the 'insert-at-cursor' signal for the Entry.
@@ -10398,11 +10398,11 @@ func entry_insertAtCursorHandler(_ *C.GObject, c_string *C.gchar, data C.gpointe
 	signalEntryInsertAtCursorLock.RLock()
 	defer signalEntryInsertAtCursorLock.RUnlock()
 
-	string := C.GoString(c_string)
+	string_ := C.GoString(c_string)
 
 	index := int(uintptr(data))
 	callback := signalEntryInsertAtCursorMap[index].callback
-	callback(string)
+	callback(string_)
 }
 
 // Unsupported signal 'move-cursor' for Entry : unsupported parameter step : type MovementStep :
@@ -32411,7 +32411,7 @@ var signalTextViewInsertAtCursorMap = make(map[int]signalTextViewInsertAtCursorD
 var signalTextViewInsertAtCursorLock sync.RWMutex
 
 // TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
-type TextViewSignalInsertAtCursorCallback func(string string)
+type TextViewSignalInsertAtCursorCallback func(string_ string)
 
 /*
 ConnectInsertAtCursor connects the callback to the 'insert-at-cursor' signal for the TextView.
@@ -32456,11 +32456,11 @@ func textview_insertAtCursorHandler(_ *C.GObject, c_string *C.gchar, data C.gpoi
 	signalTextViewInsertAtCursorLock.RLock()
 	defer signalTextViewInsertAtCursorLock.RUnlock()
 
-	string := C.GoString(c_string)
+	string_ := C.GoString(c_string)
 
 	index := int(uintptr(data))
 	callback := signalTextViewInsertAtCursorMap[index].callback
-	callback(string)
+	callback(string_)
 }
 
 // Unsupported signal 'move-cursor' for TextView : unsupported parameter step : type MovementStep :

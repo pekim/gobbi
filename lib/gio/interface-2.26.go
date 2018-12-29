@@ -167,11 +167,63 @@ func (recv *ProxyResolver) IsSupported() bool {
 	return retGo
 }
 
-// Unsupported : g_proxy_resolver_lookup : no return type
+// Lookup is a wrapper around the C function g_proxy_resolver_lookup.
+func (recv *ProxyResolver) Lookup(uri string, cancellable *Cancellable) ([]string, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_proxy_resolver_lookup((*C.GProxyResolver)(recv.native), c_uri, c_cancellable, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // Unsupported : g_proxy_resolver_lookup_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_proxy_resolver_lookup_finish : no return type
+// LookupFinish is a wrapper around the C function g_proxy_resolver_lookup_finish.
+func (recv *ProxyResolver) LookupFinish(result *AsyncResult) ([]string, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_proxy_resolver_lookup_finish((*C.GProxyResolver)(recv.native), c_result, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // ProxyEnumerate is a wrapper around the C function g_socket_connectable_proxy_enumerate.
 func (recv *SocketConnectable) ProxyEnumerate() *SocketAddressEnumerator {

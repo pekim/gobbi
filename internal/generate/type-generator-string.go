@@ -1,5 +1,6 @@
 package generate
 
+import "C"
 import (
 	"fmt"
 	"strings"
@@ -42,6 +43,10 @@ func (t *TypeGeneratorString) isSupportedAsParamC() (supported bool, reason stri
 	return true, ""
 }
 
+func (t *TypeGeneratorString) isSupportedAsArrayReturnValue() (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorString) isSupportedAsReturnValue() (supported bool, reason string) {
 	if t.typ.indirectLevel > 1 {
 		return false, fmt.Sprintf("string with indirection level of %d",
@@ -62,10 +67,16 @@ func (t *TypeGeneratorString) generateDeclaration(g *jen.Group, goVarName string
 }
 
 func (t *TypeGeneratorString) generateArrayDeclaration(g *jen.Group, goVarName string) {
-	g.
-		Id(goVarName).
-		Index().
-		Do(t.typ.qname.generate)
+	if goVarName != "" {
+		g.
+			Id(goVarName).
+			Index().
+			Do(t.typ.qname.generate)
+	} else {
+		g.
+			Index().
+			Do(t.typ.qname.generate)
+	}
 }
 
 func (t *TypeGeneratorString) generateArrayDeclarationC(g *jen.Group, cVarName string) {
@@ -151,6 +162,65 @@ func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, isParam bool,
 		Call(jen.
 			Qual("unsafe", "Pointer").
 			Call(jen.Id(cVarName)))
+}
+
+func (t *TypeGeneratorString) generateArrayReturnCToGo(g *jen.Group, isParam bool,
+	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool,
+) {
+	g.
+		// retGo := []string{}
+		Id(goVarName).
+		Op(":=").
+		Index().
+		String().
+		Values()
+
+	g.
+		// for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		For(
+			jen.Id("p").Op(":=").Id("retC"),
+			jen.Op("*").Id("p").Op("!=").Nil(),
+			jen.
+				Id("p").
+				Op("=").
+				Parens(jen.
+					Op("**").
+					Qual("C", "char")).
+				Parens(jen.Qual("C", "gpointer").Parens(jen.
+					Parens(jen.
+						Id("uintptr").Parens(jen.Qual("C", "gpointer").Parens(jen.Id("p"))).
+						Op("+").
+						Id("uintptr").Parens(jen.Qual("C", "sizeof_gpointer"))))),
+		).
+		BlockFunc(func(g *jen.Group) {
+			g.
+				// s := C.GoString(*p)
+				Id("s").
+				Op(":=").
+				Qual("C", "GoString").
+				Call(jen.Op("*").Id("p"))
+
+			g.
+				// retGo = append(retGo, s)
+				Id("retGo").
+				Op("=").
+				Append(
+					jen.Id("retGo"),
+					jen.Id("s"),
+				)
+		})
+
+	if transferOwnership == "none" {
+		// the library will be responsible for the memory
+		return
+	}
+
+	if transferOwnership == "full" {
+		g.
+			Defer().
+			Qual("C", "g_strfreev").
+			Call(jen.Id(cVarName))
+	}
 }
 
 func (t *TypeGeneratorString) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

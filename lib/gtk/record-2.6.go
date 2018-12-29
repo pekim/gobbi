@@ -30,7 +30,18 @@ func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_get_uris : no return type
+// GetUris is a wrapper around the C function gtk_selection_data_get_uris.
+func (recv *SelectionData) GetUris() []string {
+	retC := C.gtk_selection_data_get_uris((*C.GtkSelectionData)(recv.native))
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	return retGo
+}
 
 // SetPixbuf is a wrapper around the C function gtk_selection_data_set_pixbuf.
 func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {

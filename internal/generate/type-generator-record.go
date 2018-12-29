@@ -57,6 +57,10 @@ func (t *TypeGeneratorRecord) isSupportedAsParamC() (supported bool, reason stri
 	return true, ""
 }
 
+func (t *TypeGeneratorRecord) isSupportedAsArrayReturnValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorRecord) isSupportedAsReturnValue() (supported bool, reason string) {
 	if t.record.Blacklist {
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
@@ -238,6 +242,11 @@ func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, isParam bool,
 				Qual("unsafe", "Pointer").
 				Call(cVarRef))
 	}
+}
+
+func (t *TypeGeneratorRecord) generateArrayReturnCToGo(g *jen.Group, isParam bool,
+	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
+	panic("unsupported")
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
