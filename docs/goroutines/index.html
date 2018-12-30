@@ -176,11 +176,15 @@
     
     
     
-    <p>All calls to gtk functions should be performed on
+    
+
+<p>All calls to gtk functions should be performed on
 the main thread.
 To perform such a call from a goroutine,
 use <code>glib.IdleAdd</code> to schedule invocation of a
 callback function on the main thread.</p>
+
+<h2 id="idleadd"><code>IdleAdd</code></h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">IdleAdd</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#00a8c8">bool</span> <span style="color:#111">{</span>
     <span style="color:#75af00">someLabel</span><span style="color:#111">.</span><span style="color:#75af00">SetText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some text&#34;</span><span style="color:#111">)</span>
     <span style="color:#00a8c8">return</span> <span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">SOURCE_REMOVE</span>
@@ -189,6 +193,19 @@ callback function on the main thread.</p>
 called again next time the main loop is idle.
 Alternatively return <code>glib.SOURCE_CONTINUE</code> to have
 the function called again.</p>
+
+<h2 id="idleaddonce"><code>IdleAddOnce</code></h2>
+
+<p>Alternatively, <code>glib.IdleAddOnce</code>
+schedules a <em>single</em> invocation of a
+callback function on the main thread.
+Unlike <code>glib.IdleAdd</code> no value needs to be returned
+to avoid subsequent invocations of the callback.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">IdleAddOnce</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">someLabel</span><span style="color:#111">.</span><span style="color:#75af00">SetText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some text&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">})</span></code></pre></div>
+<p><code>IdleAddOnce</code> is a convenience provided by gobbi.
+It has no direct equivalent in the glib C library.</p>
 
 
     
