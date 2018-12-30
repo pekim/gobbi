@@ -45,7 +45,7 @@ func (ns *Namespace) generatePackageFile() {
 
 func (ns *Namespace) generateBooleanFile() {
 	ns.generateFile("boolean", func(f *jen.File) {
-		ns.cgoPreambleHeaders(f)
+		ns.cgoPreambleHeaders(f, Version{})
 
 		f.
 			Func().
@@ -62,7 +62,7 @@ func (ns *Namespace) generateBooleanFile() {
 	})
 }
 
-func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
+func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
 	/*
 	 * Suppress C compiler warnings about deprecated functions.
 	 *
@@ -77,7 +77,7 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
 	file.CgoPreamble("#cgo CFLAGS: -Wno-format-security")
 	file.CgoPreamble("#cgo CFLAGS: -Wno-incompatible-pointer-types")
 
-	ns.repo.CIncludes.generate(file)
+	ns.repo.CIncludes.generate(file, version)
 
 	file.CgoPreamble("#include <stdlib.h>")
 }
@@ -98,7 +98,7 @@ func (ns *Namespace) generateGeneratables(typeName string, generatables Generata
 func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
-		ns.cgoPreambleHeaders(f)
+		ns.cgoPreambleHeaders(f, version)
 		ns.generateVersionDebugFunction(f, version.value)
 
 		for _, entity := range generatables.entities() {

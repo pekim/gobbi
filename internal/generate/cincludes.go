@@ -7,13 +7,16 @@ import (
 )
 
 type CInclude struct {
-	Name string `xml:"name,attr"`
+	Name    string `xml:"name,attr"`
+	Version string `xml:"version,attr"`
 }
 
 type CIncludes []*CInclude
 
-func (cc CIncludes) generate(f *jen.File) {
+func (cc CIncludes) generate(f *jen.File, version Version) {
 	for _, cInclude := range cc {
-		f.CgoPreamble(fmt.Sprintf("#include <%s>", cInclude.Name))
+		if cInclude.Version == "" || version.GTE(VersionNew(cInclude.Version)) {
+			f.CgoPreamble(fmt.Sprintf("#include <%s>", cInclude.Name))
+		}
 	}
 }

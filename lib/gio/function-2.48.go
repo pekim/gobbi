@@ -17,5 +17,6 @@ package gio
 // #include <gio/gunixmounts.h>
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
+// #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
