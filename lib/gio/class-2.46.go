@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -25,6 +26,15 @@ import (
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
+/*
+
+	void socketlistener_eventHandler(GObject *, GSocketListenerEvent, GSocket *, gpointer);
+
+	static gulong SocketListener_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", G_CALLBACK(socketlistener_eventHandler), data);
+	}
+
+*/
 import "C"
 
 // RegisterObjectWithClosures is a wrapper around the C function g_dbus_connection_register_object_with_closures.
@@ -70,4 +80,66 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 
 // Unsupported : g_list_store_sort : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
 
-// Unsupported signal 'event' for SocketListener : unsupported parameter event : type SocketListenerEvent :
+type signalSocketListenerEventDetail struct {
+	callback  SocketListenerSignalEventCallback
+	handlerID C.gulong
+}
+
+var signalSocketListenerEventId int
+var signalSocketListenerEventMap = make(map[int]signalSocketListenerEventDetail)
+var signalSocketListenerEventLock sync.RWMutex
+
+// SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
+type SocketListenerSignalEventCallback func(event SocketListenerEvent, socket *Socket)
+
+/*
+ConnectEvent connects the callback to the 'event' signal for the SocketListener.
+
+The returned value represents the connection, and may be passed to DisconnectEvent to remove it.
+*/
+func (recv *SocketListener) ConnectEvent(callback SocketListenerSignalEventCallback) int {
+	signalSocketListenerEventLock.Lock()
+	defer signalSocketListenerEventLock.Unlock()
+
+	signalSocketListenerEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.SocketListener_signal_connect_event(instance, C.gpointer(uintptr(signalSocketListenerEventId)))
+
+	detail := signalSocketListenerEventDetail{callback, handlerID}
+	signalSocketListenerEventMap[signalSocketListenerEventId] = detail
+
+	return signalSocketListenerEventId
+}
+
+/*
+DisconnectEvent disconnects a callback from the 'event' signal for the SocketListener.
+
+The connectionID should be a value returned from a call to ConnectEvent.
+*/
+func (recv *SocketListener) DisconnectEvent(connectionID int) {
+	signalSocketListenerEventLock.Lock()
+	defer signalSocketListenerEventLock.Unlock()
+
+	detail, exists := signalSocketListenerEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSocketListenerEventMap, connectionID)
+}
+
+//export socketlistener_eventHandler
+func socketlistener_eventHandler(_ *C.GObject, c_event C.GSocketListenerEvent, c_socket *C.GSocket, data C.gpointer) {
+	signalSocketListenerEventLock.RLock()
+	defer signalSocketListenerEventLock.RUnlock()
+
+	event := SocketListenerEvent(c_event)
+
+	socket := SocketNewFromC(unsafe.Pointer(c_socket))
+
+	index := int(uintptr(data))
+	callback := signalSocketListenerEventMap[index].callback
+	callback(event, socket)
+}

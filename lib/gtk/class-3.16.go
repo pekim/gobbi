@@ -49,6 +49,24 @@ import (
 */
 /*
 
+	void scrolledwindow_edgeOvershotHandler(GObject *, GtkPositionType, gpointer);
+
+	static gulong ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edge-overshot", G_CALLBACK(scrolledwindow_edgeOvershotHandler), data);
+	}
+
+*/
+/*
+
+	void scrolledwindow_edgeReachedHandler(GObject *, GtkPositionType, gpointer);
+
+	static gulong ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edge-reached", G_CALLBACK(scrolledwindow_edgeReachedHandler), data);
+	}
+
+*/
+/*
+
 	void searchentry_nextMatchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
@@ -71,6 +89,15 @@ import (
 
 	static gulong SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "stop-search", G_CALLBACK(searchentry_stopSearchHandler), data);
+	}
+
+*/
+/*
+
+	gboolean textview_extendSelectionHandler(GObject *, GtkTextExtendSelection, GtkTextIter *, GtkTextIter *, GtkTextIter *, gpointer);
+
+	static gulong TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "extend-selection", G_CALLBACK(textview_extendSelectionHandler), data);
 	}
 
 */
@@ -626,9 +653,129 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 	return
 }
 
-// Unsupported signal 'edge-overshot' for ScrolledWindow : unsupported parameter pos : type PositionType :
+type signalScrolledWindowEdgeOvershotDetail struct {
+	callback  ScrolledWindowSignalEdgeOvershotCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'edge-reached' for ScrolledWindow : unsupported parameter pos : type PositionType :
+var signalScrolledWindowEdgeOvershotId int
+var signalScrolledWindowEdgeOvershotMap = make(map[int]signalScrolledWindowEdgeOvershotDetail)
+var signalScrolledWindowEdgeOvershotLock sync.RWMutex
+
+// ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
+type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
+
+/*
+ConnectEdgeOvershot connects the callback to the 'edge-overshot' signal for the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to DisconnectEdgeOvershot to remove it.
+*/
+func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdgeOvershotCallback) int {
+	signalScrolledWindowEdgeOvershotLock.Lock()
+	defer signalScrolledWindowEdgeOvershotLock.Unlock()
+
+	signalScrolledWindowEdgeOvershotId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ScrolledWindow_signal_connect_edge_overshot(instance, C.gpointer(uintptr(signalScrolledWindowEdgeOvershotId)))
+
+	detail := signalScrolledWindowEdgeOvershotDetail{callback, handlerID}
+	signalScrolledWindowEdgeOvershotMap[signalScrolledWindowEdgeOvershotId] = detail
+
+	return signalScrolledWindowEdgeOvershotId
+}
+
+/*
+DisconnectEdgeOvershot disconnects a callback from the 'edge-overshot' signal for the ScrolledWindow.
+
+The connectionID should be a value returned from a call to ConnectEdgeOvershot.
+*/
+func (recv *ScrolledWindow) DisconnectEdgeOvershot(connectionID int) {
+	signalScrolledWindowEdgeOvershotLock.Lock()
+	defer signalScrolledWindowEdgeOvershotLock.Unlock()
+
+	detail, exists := signalScrolledWindowEdgeOvershotMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalScrolledWindowEdgeOvershotMap, connectionID)
+}
+
+//export scrolledwindow_edgeOvershotHandler
+func scrolledwindow_edgeOvershotHandler(_ *C.GObject, c_pos C.GtkPositionType, data C.gpointer) {
+	signalScrolledWindowEdgeOvershotLock.RLock()
+	defer signalScrolledWindowEdgeOvershotLock.RUnlock()
+
+	pos := PositionType(c_pos)
+
+	index := int(uintptr(data))
+	callback := signalScrolledWindowEdgeOvershotMap[index].callback
+	callback(pos)
+}
+
+type signalScrolledWindowEdgeReachedDetail struct {
+	callback  ScrolledWindowSignalEdgeReachedCallback
+	handlerID C.gulong
+}
+
+var signalScrolledWindowEdgeReachedId int
+var signalScrolledWindowEdgeReachedMap = make(map[int]signalScrolledWindowEdgeReachedDetail)
+var signalScrolledWindowEdgeReachedLock sync.RWMutex
+
+// ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
+type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
+
+/*
+ConnectEdgeReached connects the callback to the 'edge-reached' signal for the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to DisconnectEdgeReached to remove it.
+*/
+func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdgeReachedCallback) int {
+	signalScrolledWindowEdgeReachedLock.Lock()
+	defer signalScrolledWindowEdgeReachedLock.Unlock()
+
+	signalScrolledWindowEdgeReachedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ScrolledWindow_signal_connect_edge_reached(instance, C.gpointer(uintptr(signalScrolledWindowEdgeReachedId)))
+
+	detail := signalScrolledWindowEdgeReachedDetail{callback, handlerID}
+	signalScrolledWindowEdgeReachedMap[signalScrolledWindowEdgeReachedId] = detail
+
+	return signalScrolledWindowEdgeReachedId
+}
+
+/*
+DisconnectEdgeReached disconnects a callback from the 'edge-reached' signal for the ScrolledWindow.
+
+The connectionID should be a value returned from a call to ConnectEdgeReached.
+*/
+func (recv *ScrolledWindow) DisconnectEdgeReached(connectionID int) {
+	signalScrolledWindowEdgeReachedLock.Lock()
+	defer signalScrolledWindowEdgeReachedLock.Unlock()
+
+	detail, exists := signalScrolledWindowEdgeReachedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalScrolledWindowEdgeReachedMap, connectionID)
+}
+
+//export scrolledwindow_edgeReachedHandler
+func scrolledwindow_edgeReachedHandler(_ *C.GObject, c_pos C.GtkPositionType, data C.gpointer) {
+	signalScrolledWindowEdgeReachedLock.RLock()
+	defer signalScrolledWindowEdgeReachedLock.RUnlock()
+
+	pos := PositionType(c_pos)
+
+	index := int(uintptr(data))
+	callback := signalScrolledWindowEdgeReachedMap[index].callback
+	callback(pos)
+}
 
 // GetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_get_overlay_scrolling.
 func (recv *ScrolledWindow) GetOverlayScrolling() bool {
@@ -916,7 +1063,76 @@ func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 	return
 }
 
-// Unsupported signal 'extend-selection' for TextView : unsupported parameter granularity : type TextExtendSelection :
+type signalTextViewExtendSelectionDetail struct {
+	callback  TextViewSignalExtendSelectionCallback
+	handlerID C.gulong
+}
+
+var signalTextViewExtendSelectionId int
+var signalTextViewExtendSelectionMap = make(map[int]signalTextViewExtendSelectionDetail)
+var signalTextViewExtendSelectionLock sync.RWMutex
+
+// TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
+type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
+
+/*
+ConnectExtendSelection connects the callback to the 'extend-selection' signal for the TextView.
+
+The returned value represents the connection, and may be passed to DisconnectExtendSelection to remove it.
+*/
+func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelectionCallback) int {
+	signalTextViewExtendSelectionLock.Lock()
+	defer signalTextViewExtendSelectionLock.Unlock()
+
+	signalTextViewExtendSelectionId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.TextView_signal_connect_extend_selection(instance, C.gpointer(uintptr(signalTextViewExtendSelectionId)))
+
+	detail := signalTextViewExtendSelectionDetail{callback, handlerID}
+	signalTextViewExtendSelectionMap[signalTextViewExtendSelectionId] = detail
+
+	return signalTextViewExtendSelectionId
+}
+
+/*
+DisconnectExtendSelection disconnects a callback from the 'extend-selection' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectExtendSelection.
+*/
+func (recv *TextView) DisconnectExtendSelection(connectionID int) {
+	signalTextViewExtendSelectionLock.Lock()
+	defer signalTextViewExtendSelectionLock.Unlock()
+
+	detail, exists := signalTextViewExtendSelectionMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextViewExtendSelectionMap, connectionID)
+}
+
+//export textview_extendSelectionHandler
+func textview_extendSelectionHandler(_ *C.GObject, c_granularity C.GtkTextExtendSelection, c_location *C.GtkTextIter, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) C.gboolean {
+	signalTextViewExtendSelectionLock.RLock()
+	defer signalTextViewExtendSelectionLock.RUnlock()
+
+	granularity := TextExtendSelection(c_granularity)
+
+	location := TextIterNewFromC(unsafe.Pointer(c_location))
+
+	start := TextIterNewFromC(unsafe.Pointer(c_start))
+
+	end := TextIterNewFromC(unsafe.Pointer(c_end))
+
+	index := int(uintptr(data))
+	callback := signalTextViewExtendSelectionMap[index].callback
+	retGo := callback(granularity, location, start, end)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // GetMonospace is a wrapper around the C function gtk_text_view_get_monospace.
 func (recv *TextView) GetMonospace() bool {

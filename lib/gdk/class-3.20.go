@@ -34,6 +34,24 @@ import (
 */
 /*
 
+	void dragcontext_actionChangedHandler(GObject *, GdkDragAction, gpointer);
+
+	static gulong DragContext_signal_connect_action_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-changed", G_CALLBACK(dragcontext_actionChangedHandler), data);
+	}
+
+*/
+/*
+
+	void dragcontext_cancelHandler(GObject *, GdkDragCancelReason, gpointer);
+
+	static gulong DragContext_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", G_CALLBACK(dragcontext_cancelHandler), data);
+	}
+
+*/
+/*
+
 	void dragcontext_dndFinishedHandler(GObject *, gpointer);
 
 	static gulong DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
@@ -200,9 +218,129 @@ func (recv *Display) ListSeats() *glib.List {
 	return retGo
 }
 
-// Unsupported signal 'action-changed' for DragContext : unsupported parameter action : type DragAction :
+type signalDragContextActionChangedDetail struct {
+	callback  DragContextSignalActionChangedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'cancel' for DragContext : unsupported parameter reason : type DragCancelReason :
+var signalDragContextActionChangedId int
+var signalDragContextActionChangedMap = make(map[int]signalDragContextActionChangedDetail)
+var signalDragContextActionChangedLock sync.RWMutex
+
+// DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
+type DragContextSignalActionChangedCallback func(action DragAction)
+
+/*
+ConnectActionChanged connects the callback to the 'action-changed' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectActionChanged to remove it.
+*/
+func (recv *DragContext) ConnectActionChanged(callback DragContextSignalActionChangedCallback) int {
+	signalDragContextActionChangedLock.Lock()
+	defer signalDragContextActionChangedLock.Unlock()
+
+	signalDragContextActionChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DragContext_signal_connect_action_changed(instance, C.gpointer(uintptr(signalDragContextActionChangedId)))
+
+	detail := signalDragContextActionChangedDetail{callback, handlerID}
+	signalDragContextActionChangedMap[signalDragContextActionChangedId] = detail
+
+	return signalDragContextActionChangedId
+}
+
+/*
+DisconnectActionChanged disconnects a callback from the 'action-changed' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectActionChanged.
+*/
+func (recv *DragContext) DisconnectActionChanged(connectionID int) {
+	signalDragContextActionChangedLock.Lock()
+	defer signalDragContextActionChangedLock.Unlock()
+
+	detail, exists := signalDragContextActionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDragContextActionChangedMap, connectionID)
+}
+
+//export dragcontext_actionChangedHandler
+func dragcontext_actionChangedHandler(_ *C.GObject, c_action C.GdkDragAction, data C.gpointer) {
+	signalDragContextActionChangedLock.RLock()
+	defer signalDragContextActionChangedLock.RUnlock()
+
+	action := DragAction(c_action)
+
+	index := int(uintptr(data))
+	callback := signalDragContextActionChangedMap[index].callback
+	callback(action)
+}
+
+type signalDragContextCancelDetail struct {
+	callback  DragContextSignalCancelCallback
+	handlerID C.gulong
+}
+
+var signalDragContextCancelId int
+var signalDragContextCancelMap = make(map[int]signalDragContextCancelDetail)
+var signalDragContextCancelLock sync.RWMutex
+
+// DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
+type DragContextSignalCancelCallback func(reason DragCancelReason)
+
+/*
+ConnectCancel connects the callback to the 'cancel' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectCancel to remove it.
+*/
+func (recv *DragContext) ConnectCancel(callback DragContextSignalCancelCallback) int {
+	signalDragContextCancelLock.Lock()
+	defer signalDragContextCancelLock.Unlock()
+
+	signalDragContextCancelId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DragContext_signal_connect_cancel(instance, C.gpointer(uintptr(signalDragContextCancelId)))
+
+	detail := signalDragContextCancelDetail{callback, handlerID}
+	signalDragContextCancelMap[signalDragContextCancelId] = detail
+
+	return signalDragContextCancelId
+}
+
+/*
+DisconnectCancel disconnects a callback from the 'cancel' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectCancel.
+*/
+func (recv *DragContext) DisconnectCancel(connectionID int) {
+	signalDragContextCancelLock.Lock()
+	defer signalDragContextCancelLock.Unlock()
+
+	detail, exists := signalDragContextCancelMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDragContextCancelMap, connectionID)
+}
+
+//export dragcontext_cancelHandler
+func dragcontext_cancelHandler(_ *C.GObject, c_reason C.GdkDragCancelReason, data C.gpointer) {
+	signalDragContextCancelLock.RLock()
+	defer signalDragContextCancelLock.RUnlock()
+
+	reason := DragCancelReason(c_reason)
+
+	index := int(uintptr(data))
+	callback := signalDragContextCancelMap[index].callback
+	callback(reason)
+}
 
 type signalDragContextDndFinishedDetail struct {
 	callback  DragContextSignalDndFinishedCallback

@@ -37,10 +37,37 @@ import (
 */
 /*
 
+	void filemonitor_changedHandler(GObject *, GFile *, GFile *, GFileMonitorEvent, gpointer);
+
+	static gulong FileMonitor_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", G_CALLBACK(filemonitor_changedHandler), data);
+	}
+
+*/
+/*
+
 	void filenamecompleter_gotCompletionDataHandler(GObject *, gpointer);
 
 	static gulong FilenameCompleter_signal_connect_got_completion_data(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "got-completion-data", G_CALLBACK(filenamecompleter_gotCompletionDataHandler), data);
+	}
+
+*/
+/*
+
+	void mountoperation_askPasswordHandler(GObject *, gchar*, gchar*, gchar*, GAskPasswordFlags, gpointer);
+
+	static gulong MountOperation_signal_connect_ask_password(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "ask-password", G_CALLBACK(mountoperation_askPasswordHandler), data);
+	}
+
+*/
+/*
+
+	void mountoperation_replyHandler(GObject *, GMountOperationResult, gpointer);
+
+	static gulong MountOperation_signal_connect_reply(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "reply", G_CALLBACK(mountoperation_replyHandler), data);
 	}
 
 */
@@ -3198,7 +3225,71 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromC(object.ToC())
 }
 
-// Unsupported signal 'changed' for FileMonitor : unsupported parameter event_type : type FileMonitorEvent :
+type signalFileMonitorChangedDetail struct {
+	callback  FileMonitorSignalChangedCallback
+	handlerID C.gulong
+}
+
+var signalFileMonitorChangedId int
+var signalFileMonitorChangedMap = make(map[int]signalFileMonitorChangedDetail)
+var signalFileMonitorChangedLock sync.RWMutex
+
+// FileMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a FileMonitor.
+type FileMonitorSignalChangedCallback func(file *File, otherFile *File, eventType FileMonitorEvent)
+
+/*
+ConnectChanged connects the callback to the 'changed' signal for the FileMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *FileMonitor) ConnectChanged(callback FileMonitorSignalChangedCallback) int {
+	signalFileMonitorChangedLock.Lock()
+	defer signalFileMonitorChangedLock.Unlock()
+
+	signalFileMonitorChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.FileMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalFileMonitorChangedId)))
+
+	detail := signalFileMonitorChangedDetail{callback, handlerID}
+	signalFileMonitorChangedMap[signalFileMonitorChangedId] = detail
+
+	return signalFileMonitorChangedId
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the FileMonitor.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *FileMonitor) DisconnectChanged(connectionID int) {
+	signalFileMonitorChangedLock.Lock()
+	defer signalFileMonitorChangedLock.Unlock()
+
+	detail, exists := signalFileMonitorChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalFileMonitorChangedMap, connectionID)
+}
+
+//export filemonitor_changedHandler
+func filemonitor_changedHandler(_ *C.GObject, c_file *C.GFile, c_other_file *C.GFile, c_event_type C.GFileMonitorEvent, data C.gpointer) {
+	signalFileMonitorChangedLock.RLock()
+	defer signalFileMonitorChangedLock.RUnlock()
+
+	file := FileNewFromC(unsafe.Pointer(c_file))
+
+	otherFile := FileNewFromC(unsafe.Pointer(c_other_file))
+
+	eventType := FileMonitorEvent(c_event_type)
+
+	index := int(uintptr(data))
+	callback := signalFileMonitorChangedMap[index].callback
+	callback(file, otherFile, eventType)
+}
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
@@ -4419,11 +4510,137 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
 }
 
-// Unsupported signal 'ask-password' for MountOperation : unsupported parameter flags : type AskPasswordFlags :
+type signalMountOperationAskPasswordDetail struct {
+	callback  MountOperationSignalAskPasswordCallback
+	handlerID C.gulong
+}
+
+var signalMountOperationAskPasswordId int
+var signalMountOperationAskPasswordMap = make(map[int]signalMountOperationAskPasswordDetail)
+var signalMountOperationAskPasswordLock sync.RWMutex
+
+// MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
+type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
+
+/*
+ConnectAskPassword connects the callback to the 'ask-password' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectAskPassword to remove it.
+*/
+func (recv *MountOperation) ConnectAskPassword(callback MountOperationSignalAskPasswordCallback) int {
+	signalMountOperationAskPasswordLock.Lock()
+	defer signalMountOperationAskPasswordLock.Unlock()
+
+	signalMountOperationAskPasswordId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.MountOperation_signal_connect_ask_password(instance, C.gpointer(uintptr(signalMountOperationAskPasswordId)))
+
+	detail := signalMountOperationAskPasswordDetail{callback, handlerID}
+	signalMountOperationAskPasswordMap[signalMountOperationAskPasswordId] = detail
+
+	return signalMountOperationAskPasswordId
+}
+
+/*
+DisconnectAskPassword disconnects a callback from the 'ask-password' signal for the MountOperation.
+
+The connectionID should be a value returned from a call to ConnectAskPassword.
+*/
+func (recv *MountOperation) DisconnectAskPassword(connectionID int) {
+	signalMountOperationAskPasswordLock.Lock()
+	defer signalMountOperationAskPasswordLock.Unlock()
+
+	detail, exists := signalMountOperationAskPasswordMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMountOperationAskPasswordMap, connectionID)
+}
+
+//export mountoperation_askPasswordHandler
+func mountoperation_askPasswordHandler(_ *C.GObject, c_message *C.gchar, c_default_user *C.gchar, c_default_domain *C.gchar, c_flags C.GAskPasswordFlags, data C.gpointer) {
+	signalMountOperationAskPasswordLock.RLock()
+	defer signalMountOperationAskPasswordLock.RUnlock()
+
+	message := C.GoString(c_message)
+
+	defaultUser := C.GoString(c_default_user)
+
+	defaultDomain := C.GoString(c_default_domain)
+
+	flags := AskPasswordFlags(c_flags)
+
+	index := int(uintptr(data))
+	callback := signalMountOperationAskPasswordMap[index].callback
+	callback(message, defaultUser, defaultDomain, flags)
+}
 
 // Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices :
 
-// Unsupported signal 'reply' for MountOperation : unsupported parameter result : type MountOperationResult :
+type signalMountOperationReplyDetail struct {
+	callback  MountOperationSignalReplyCallback
+	handlerID C.gulong
+}
+
+var signalMountOperationReplyId int
+var signalMountOperationReplyMap = make(map[int]signalMountOperationReplyDetail)
+var signalMountOperationReplyLock sync.RWMutex
+
+// MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
+type MountOperationSignalReplyCallback func(result MountOperationResult)
+
+/*
+ConnectReply connects the callback to the 'reply' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectReply to remove it.
+*/
+func (recv *MountOperation) ConnectReply(callback MountOperationSignalReplyCallback) int {
+	signalMountOperationReplyLock.Lock()
+	defer signalMountOperationReplyLock.Unlock()
+
+	signalMountOperationReplyId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.MountOperation_signal_connect_reply(instance, C.gpointer(uintptr(signalMountOperationReplyId)))
+
+	detail := signalMountOperationReplyDetail{callback, handlerID}
+	signalMountOperationReplyMap[signalMountOperationReplyId] = detail
+
+	return signalMountOperationReplyId
+}
+
+/*
+DisconnectReply disconnects a callback from the 'reply' signal for the MountOperation.
+
+The connectionID should be a value returned from a call to ConnectReply.
+*/
+func (recv *MountOperation) DisconnectReply(connectionID int) {
+	signalMountOperationReplyLock.Lock()
+	defer signalMountOperationReplyLock.Unlock()
+
+	detail, exists := signalMountOperationReplyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMountOperationReplyMap, connectionID)
+}
+
+//export mountoperation_replyHandler
+func mountoperation_replyHandler(_ *C.GObject, c_result C.GMountOperationResult, data C.gpointer) {
+	signalMountOperationReplyLock.RLock()
+	defer signalMountOperationReplyLock.RUnlock()
+
+	result := MountOperationResult(c_result)
+
+	index := int(uintptr(data))
+	callback := signalMountOperationReplyMap[index].callback
+	callback(result)
+}
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {

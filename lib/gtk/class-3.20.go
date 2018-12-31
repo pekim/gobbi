@@ -39,6 +39,15 @@ import (
 */
 /*
 
+	void placessidebar_showOtherLocationsWithFlagsHandler(GObject *, GtkPlacesOpenFlags, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-other-locations-with-flags", G_CALLBACK(placessidebar_showOtherLocationsWithFlagsHandler), data);
+	}
+
+*/
+/*
+
 	void placessidebar_unmountHandler(GObject *, GMountOperation *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
@@ -538,7 +547,67 @@ func placessidebar_mountHandler(_ *C.GObject, c_mount_operation *C.GMountOperati
 	callback(mountOperation)
 }
 
-// Unsupported signal 'show-other-locations-with-flags' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
+type signalPlacesSidebarShowOtherLocationsWithFlagsDetail struct {
+	callback  PlacesSidebarSignalShowOtherLocationsWithFlagsCallback
+	handlerID C.gulong
+}
+
+var signalPlacesSidebarShowOtherLocationsWithFlagsId int
+var signalPlacesSidebarShowOtherLocationsWithFlagsMap = make(map[int]signalPlacesSidebarShowOtherLocationsWithFlagsDetail)
+var signalPlacesSidebarShowOtherLocationsWithFlagsLock sync.RWMutex
+
+// PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
+
+/*
+ConnectShowOtherLocationsWithFlags connects the callback to the 'show-other-locations-with-flags' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectShowOtherLocationsWithFlags to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowOtherLocationsWithFlags(callback PlacesSidebarSignalShowOtherLocationsWithFlagsCallback) int {
+	signalPlacesSidebarShowOtherLocationsWithFlagsLock.Lock()
+	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.Unlock()
+
+	signalPlacesSidebarShowOtherLocationsWithFlagsId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_show_other_locations_with_flags(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsWithFlagsId)))
+
+	detail := signalPlacesSidebarShowOtherLocationsWithFlagsDetail{callback, handlerID}
+	signalPlacesSidebarShowOtherLocationsWithFlagsMap[signalPlacesSidebarShowOtherLocationsWithFlagsId] = detail
+
+	return signalPlacesSidebarShowOtherLocationsWithFlagsId
+}
+
+/*
+DisconnectShowOtherLocationsWithFlags disconnects a callback from the 'show-other-locations-with-flags' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectShowOtherLocationsWithFlags.
+*/
+func (recv *PlacesSidebar) DisconnectShowOtherLocationsWithFlags(connectionID int) {
+	signalPlacesSidebarShowOtherLocationsWithFlagsLock.Lock()
+	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.Unlock()
+
+	detail, exists := signalPlacesSidebarShowOtherLocationsWithFlagsMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarShowOtherLocationsWithFlagsMap, connectionID)
+}
+
+//export placessidebar_showOtherLocationsWithFlagsHandler
+func placessidebar_showOtherLocationsWithFlagsHandler(_ *C.GObject, c_open_flags C.GtkPlacesOpenFlags, data C.gpointer) {
+	signalPlacesSidebarShowOtherLocationsWithFlagsLock.RLock()
+	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.RUnlock()
+
+	openFlags := PlacesOpenFlags(c_open_flags)
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarShowOtherLocationsWithFlagsMap[index].callback
+	callback(openFlags)
+}
 
 type signalPlacesSidebarUnmountDetail struct {
 	callback  PlacesSidebarSignalUnmountCallback

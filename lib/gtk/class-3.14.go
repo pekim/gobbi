@@ -56,6 +56,15 @@ import (
 */
 /*
 
+	void gesture_sequenceStateChangedHandler(GObject *, GdkEventSequence *, GtkEventSequenceState, gpointer);
+
+	static gulong Gesture_signal_connect_sequence_state_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "sequence-state-changed", G_CALLBACK(gesture_sequenceStateChangedHandler), data);
+	}
+
+*/
+/*
+
 	void gesture_updateHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
@@ -132,6 +141,15 @@ import (
 
 	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "stopped", G_CALLBACK(gesturemultipress_stoppedHandler), data);
+	}
+
+*/
+/*
+
+	void gesturepan_panHandler(GObject *, GtkPanDirection, gdouble, gpointer);
+
+	static gulong GesturePan_signal_connect_pan(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pan", G_CALLBACK(gesturepan_panHandler), data);
 	}
 
 */
@@ -540,7 +558,69 @@ func gesture_endHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpo
 	callback(sequence)
 }
 
-// Unsupported signal 'sequence-state-changed' for Gesture : unsupported parameter state : type EventSequenceState :
+type signalGestureSequenceStateChangedDetail struct {
+	callback  GestureSignalSequenceStateChangedCallback
+	handlerID C.gulong
+}
+
+var signalGestureSequenceStateChangedId int
+var signalGestureSequenceStateChangedMap = make(map[int]signalGestureSequenceStateChangedDetail)
+var signalGestureSequenceStateChangedLock sync.RWMutex
+
+// GestureSignalSequenceStateChangedCallback is a callback function for a 'sequence-state-changed' signal emitted from a Gesture.
+type GestureSignalSequenceStateChangedCallback func(sequence *gdk.EventSequence, state EventSequenceState)
+
+/*
+ConnectSequenceStateChanged connects the callback to the 'sequence-state-changed' signal for the Gesture.
+
+The returned value represents the connection, and may be passed to DisconnectSequenceStateChanged to remove it.
+*/
+func (recv *Gesture) ConnectSequenceStateChanged(callback GestureSignalSequenceStateChangedCallback) int {
+	signalGestureSequenceStateChangedLock.Lock()
+	defer signalGestureSequenceStateChangedLock.Unlock()
+
+	signalGestureSequenceStateChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Gesture_signal_connect_sequence_state_changed(instance, C.gpointer(uintptr(signalGestureSequenceStateChangedId)))
+
+	detail := signalGestureSequenceStateChangedDetail{callback, handlerID}
+	signalGestureSequenceStateChangedMap[signalGestureSequenceStateChangedId] = detail
+
+	return signalGestureSequenceStateChangedId
+}
+
+/*
+DisconnectSequenceStateChanged disconnects a callback from the 'sequence-state-changed' signal for the Gesture.
+
+The connectionID should be a value returned from a call to ConnectSequenceStateChanged.
+*/
+func (recv *Gesture) DisconnectSequenceStateChanged(connectionID int) {
+	signalGestureSequenceStateChangedLock.Lock()
+	defer signalGestureSequenceStateChangedLock.Unlock()
+
+	detail, exists := signalGestureSequenceStateChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureSequenceStateChangedMap, connectionID)
+}
+
+//export gesture_sequenceStateChangedHandler
+func gesture_sequenceStateChangedHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, c_state C.GtkEventSequenceState, data C.gpointer) {
+	signalGestureSequenceStateChangedLock.RLock()
+	defer signalGestureSequenceStateChangedLock.RUnlock()
+
+	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
+
+	state := EventSequenceState(c_state)
+
+	index := int(uintptr(data))
+	callback := signalGestureSequenceStateChangedMap[index].callback
+	callback(sequence, state)
+}
 
 type signalGestureUpdateDetail struct {
 	callback  GestureSignalUpdateCallback
@@ -1434,7 +1514,69 @@ func (recv *GestureMultiPress) SetArea(rect *gdk.Rectangle) {
 	return
 }
 
-// Unsupported signal 'pan' for GesturePan : unsupported parameter direction : type PanDirection :
+type signalGesturePanPanDetail struct {
+	callback  GesturePanSignalPanCallback
+	handlerID C.gulong
+}
+
+var signalGesturePanPanId int
+var signalGesturePanPanMap = make(map[int]signalGesturePanPanDetail)
+var signalGesturePanPanLock sync.RWMutex
+
+// GesturePanSignalPanCallback is a callback function for a 'pan' signal emitted from a GesturePan.
+type GesturePanSignalPanCallback func(direction PanDirection, offset float64)
+
+/*
+ConnectPan connects the callback to the 'pan' signal for the GesturePan.
+
+The returned value represents the connection, and may be passed to DisconnectPan to remove it.
+*/
+func (recv *GesturePan) ConnectPan(callback GesturePanSignalPanCallback) int {
+	signalGesturePanPanLock.Lock()
+	defer signalGesturePanPanLock.Unlock()
+
+	signalGesturePanPanId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GesturePan_signal_connect_pan(instance, C.gpointer(uintptr(signalGesturePanPanId)))
+
+	detail := signalGesturePanPanDetail{callback, handlerID}
+	signalGesturePanPanMap[signalGesturePanPanId] = detail
+
+	return signalGesturePanPanId
+}
+
+/*
+DisconnectPan disconnects a callback from the 'pan' signal for the GesturePan.
+
+The connectionID should be a value returned from a call to ConnectPan.
+*/
+func (recv *GesturePan) DisconnectPan(connectionID int) {
+	signalGesturePanPanLock.Lock()
+	defer signalGesturePanPanLock.Unlock()
+
+	detail, exists := signalGesturePanPanMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGesturePanPanMap, connectionID)
+}
+
+//export gesturepan_panHandler
+func gesturepan_panHandler(_ *C.GObject, c_direction C.GtkPanDirection, c_offset C.gdouble, data C.gpointer) {
+	signalGesturePanPanLock.RLock()
+	defer signalGesturePanPanLock.RUnlock()
+
+	direction := PanDirection(c_direction)
+
+	offset := float64(c_offset)
+
+	index := int(uintptr(data))
+	callback := signalGesturePanPanMap[index].callback
+	callback(direction, offset)
+}
 
 // GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
 func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {

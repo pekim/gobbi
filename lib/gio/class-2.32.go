@@ -54,6 +54,15 @@ import (
 		return g_menu_model_get_item_attribute(model, item_index, attribute, format_string);
     }
 */
+/*
+
+	void socketclient_eventHandler(GObject *, GSocketClientEvent, GSocketConnectable *, GIOStream *, gpointer);
+
+	static gulong SocketClient_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", G_CALLBACK(socketclient_eventHandler), data);
+	}
+
+*/
 import "C"
 
 // GetEnvironment is a wrapper around the C function g_app_launch_context_get_environment.
@@ -1518,7 +1527,71 @@ func (recv *Socket) SetTtl(ttl uint32) {
 	return
 }
 
-// Unsupported signal 'event' for SocketClient : unsupported parameter event : type SocketClientEvent :
+type signalSocketClientEventDetail struct {
+	callback  SocketClientSignalEventCallback
+	handlerID C.gulong
+}
+
+var signalSocketClientEventId int
+var signalSocketClientEventMap = make(map[int]signalSocketClientEventDetail)
+var signalSocketClientEventLock sync.RWMutex
+
+// SocketClientSignalEventCallback is a callback function for a 'event' signal emitted from a SocketClient.
+type SocketClientSignalEventCallback func(event SocketClientEvent, connectable *SocketConnectable, connection *IOStream)
+
+/*
+ConnectEvent connects the callback to the 'event' signal for the SocketClient.
+
+The returned value represents the connection, and may be passed to DisconnectEvent to remove it.
+*/
+func (recv *SocketClient) ConnectEvent(callback SocketClientSignalEventCallback) int {
+	signalSocketClientEventLock.Lock()
+	defer signalSocketClientEventLock.Unlock()
+
+	signalSocketClientEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.SocketClient_signal_connect_event(instance, C.gpointer(uintptr(signalSocketClientEventId)))
+
+	detail := signalSocketClientEventDetail{callback, handlerID}
+	signalSocketClientEventMap[signalSocketClientEventId] = detail
+
+	return signalSocketClientEventId
+}
+
+/*
+DisconnectEvent disconnects a callback from the 'event' signal for the SocketClient.
+
+The connectionID should be a value returned from a call to ConnectEvent.
+*/
+func (recv *SocketClient) DisconnectEvent(connectionID int) {
+	signalSocketClientEventLock.Lock()
+	defer signalSocketClientEventLock.Unlock()
+
+	detail, exists := signalSocketClientEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSocketClientEventMap, connectionID)
+}
+
+//export socketclient_eventHandler
+func socketclient_eventHandler(_ *C.GObject, c_event C.GSocketClientEvent, c_connectable *C.GSocketConnectable, c_connection *C.GIOStream, data C.gpointer) {
+	signalSocketClientEventLock.RLock()
+	defer signalSocketClientEventLock.RUnlock()
+
+	event := SocketClientEvent(c_event)
+
+	connectable := SocketConnectableNewFromC(unsafe.Pointer(c_connectable))
+
+	connection := IOStreamNewFromC(unsafe.Pointer(c_connection))
+
+	index := int(uintptr(data))
+	callback := signalSocketClientEventMap[index].callback
+	callback(event, connectable, connection)
+}
 
 // Connect is a wrapper around the C function g_socket_connection_connect.
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {

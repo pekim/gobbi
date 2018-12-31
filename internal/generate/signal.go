@@ -151,20 +151,31 @@ func (s *Signal) generateCgoPreamble() {
 
 func (s *Signal) cTypeDeclaration(typ *Type) string {
 	cDeclaration := typ.CType
+	qname := QNameNew(s.Namespace, typ.Name)
 
 	if cDeclaration == "" {
-		qname := QNameNew(s.Namespace, typ.Name)
 		record, found := qname.namespace.recordOrClassRecordForName(qname.name)
-		if !found {
-			iface, found := qname.namespace.interfaceForName(qname.name)
-			if !found {
-				panic(fmt.Sprintf("Not found class, record, or interface %s, for signal %s, for class %s",
-					qname.name, s.Name, s.record.Name))
-			}
-			cDeclaration = iface.CType + " *"
-		} else {
-			cDeclaration = record.CType + " *"
+		if found {
+			return record.CType + " *"
 		}
+
+		iface, found := qname.namespace.interfaceForName(qname.name)
+		if found {
+			return iface.CType + " *"
+		}
+
+		bitfield, found := qname.namespace.bitfieldForName(qname.name)
+		if found {
+			return bitfield.CType
+		}
+
+		enum, found := qname.namespace.enumForName(qname.name)
+		if found {
+			return enum.CType
+		}
+
+		panic(fmt.Sprintf("Not found bitfield, class, enum interface, or record %s, for signal %s, for %s",
+			qname.name, s.Name, s.record.Name))
 	}
 
 	return cDeclaration

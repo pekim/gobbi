@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -25,6 +26,15 @@ import (
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
+/*
+
+	gboolean dtlsconnection_acceptCertificateHandler(GObject *, GTlsCertificate *, GTlsCertificateFlags, gpointer);
+
+	static gulong DtlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accept-certificate", G_CALLBACK(dtlsconnection_acceptCertificateHandler), data);
+	}
+
+*/
 import "C"
 
 // DatagramBased is a wrapper around the C record GDatagramBased.
@@ -225,7 +235,72 @@ func (recv *DtlsConnection) Equals(other *DtlsConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported signal 'accept-certificate' for DtlsConnection : unsupported parameter errors : type TlsCertificateFlags :
+type signalDtlsConnectionAcceptCertificateDetail struct {
+	callback  DtlsConnectionSignalAcceptCertificateCallback
+	handlerID C.gulong
+}
+
+var signalDtlsConnectionAcceptCertificateId int
+var signalDtlsConnectionAcceptCertificateMap = make(map[int]signalDtlsConnectionAcceptCertificateDetail)
+var signalDtlsConnectionAcceptCertificateLock sync.RWMutex
+
+// DtlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a DtlsConnection.
+type DtlsConnectionSignalAcceptCertificateCallback func(peerCert *TlsCertificate, errors TlsCertificateFlags) bool
+
+/*
+ConnectAcceptCertificate connects the callback to the 'accept-certificate' signal for the DtlsConnection.
+
+The returned value represents the connection, and may be passed to DisconnectAcceptCertificate to remove it.
+*/
+func (recv *DtlsConnection) ConnectAcceptCertificate(callback DtlsConnectionSignalAcceptCertificateCallback) int {
+	signalDtlsConnectionAcceptCertificateLock.Lock()
+	defer signalDtlsConnectionAcceptCertificateLock.Unlock()
+
+	signalDtlsConnectionAcceptCertificateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DtlsConnection_signal_connect_accept_certificate(instance, C.gpointer(uintptr(signalDtlsConnectionAcceptCertificateId)))
+
+	detail := signalDtlsConnectionAcceptCertificateDetail{callback, handlerID}
+	signalDtlsConnectionAcceptCertificateMap[signalDtlsConnectionAcceptCertificateId] = detail
+
+	return signalDtlsConnectionAcceptCertificateId
+}
+
+/*
+DisconnectAcceptCertificate disconnects a callback from the 'accept-certificate' signal for the DtlsConnection.
+
+The connectionID should be a value returned from a call to ConnectAcceptCertificate.
+*/
+func (recv *DtlsConnection) DisconnectAcceptCertificate(connectionID int) {
+	signalDtlsConnectionAcceptCertificateLock.Lock()
+	defer signalDtlsConnectionAcceptCertificateLock.Unlock()
+
+	detail, exists := signalDtlsConnectionAcceptCertificateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDtlsConnectionAcceptCertificateMap, connectionID)
+}
+
+//export dtlsconnection_acceptCertificateHandler
+func dtlsconnection_acceptCertificateHandler(_ *C.GObject, c_peer_cert *C.GTlsCertificate, c_errors C.GTlsCertificateFlags, data C.gpointer) C.gboolean {
+	signalDtlsConnectionAcceptCertificateLock.RLock()
+	defer signalDtlsConnectionAcceptCertificateLock.RUnlock()
+
+	peerCert := TlsCertificateNewFromC(unsafe.Pointer(c_peer_cert))
+
+	errors := TlsCertificateFlags(c_errors)
+
+	index := int(uintptr(data))
+	callback := signalDtlsConnectionAcceptCertificateMap[index].callback
+	retGo := callback(peerCert, errors)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // Close is a wrapper around the C function g_dtls_connection_close.
 func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {

@@ -22,6 +22,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	void accelmap_changedHandler(GObject *, gchar*, guint, guint, gpointer);
+
+	static gulong AccelMap_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", G_CALLBACK(accelmap_changedHandler), data);
+	}
+
+*/
+/*
+
 	void action_activateHandler(GObject *, gpointer);
 
 	static gulong Action_signal_connect_activate(gpointer instance, gpointer data) {
@@ -217,7 +226,71 @@ import (
 */
 import "C"
 
-// Unsupported signal 'changed' for AccelMap : unsupported parameter accel_mods : type Gdk.ModifierType :
+type signalAccelMapChangedDetail struct {
+	callback  AccelMapSignalChangedCallback
+	handlerID C.gulong
+}
+
+var signalAccelMapChangedId int
+var signalAccelMapChangedMap = make(map[int]signalAccelMapChangedDetail)
+var signalAccelMapChangedLock sync.RWMutex
+
+// AccelMapSignalChangedCallback is a callback function for a 'changed' signal emitted from a AccelMap.
+type AccelMapSignalChangedCallback func(accelPath string, accelKey uint32, accelMods gdk.ModifierType)
+
+/*
+ConnectChanged connects the callback to the 'changed' signal for the AccelMap.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *AccelMap) ConnectChanged(callback AccelMapSignalChangedCallback) int {
+	signalAccelMapChangedLock.Lock()
+	defer signalAccelMapChangedLock.Unlock()
+
+	signalAccelMapChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AccelMap_signal_connect_changed(instance, C.gpointer(uintptr(signalAccelMapChangedId)))
+
+	detail := signalAccelMapChangedDetail{callback, handlerID}
+	signalAccelMapChangedMap[signalAccelMapChangedId] = detail
+
+	return signalAccelMapChangedId
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the AccelMap.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *AccelMap) DisconnectChanged(connectionID int) {
+	signalAccelMapChangedLock.Lock()
+	defer signalAccelMapChangedLock.Unlock()
+
+	detail, exists := signalAccelMapChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAccelMapChangedMap, connectionID)
+}
+
+//export accelmap_changedHandler
+func accelmap_changedHandler(_ *C.GObject, c_accel_path *C.gchar, c_accel_key C.guint, c_accel_mods C.guint, data C.gpointer) {
+	signalAccelMapChangedLock.RLock()
+	defer signalAccelMapChangedLock.RUnlock()
+
+	accelPath := C.GoString(c_accel_path)
+
+	accelKey := uint32(c_accel_key)
+
+	accelMods := gdk.ModifierType(c_accel_mods)
+
+	index := int(uintptr(data))
+	callback := signalAccelMapChangedMap[index].callback
+	callback(accelPath, accelKey, accelMods)
+}
 
 // AccelMapGet is a wrapper around the C function gtk_accel_map_get.
 func AccelMapGet() *AccelMap {

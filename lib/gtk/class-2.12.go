@@ -21,6 +21,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	void combobox_moveActiveHandler(GObject *, GtkScrollType, gpointer);
+
+	static gulong ComboBox_signal_connect_move_active(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-active", G_CALLBACK(combobox_moveActiveHandler), data);
+	}
+
+*/
+/*
+
 	gboolean combobox_popdownHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
@@ -97,6 +106,24 @@ import (
 
 	static gulong ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "value-changed", G_CALLBACK(scalebutton_valueChangedHandler), data);
+	}
+
+*/
+/*
+
+	gboolean widget_dragFailedHandler(GObject *, GdkDragContext *, GtkDragResult, gpointer);
+
+	static gulong Widget_signal_connect_drag_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-failed", G_CALLBACK(widget_dragFailedHandler), data);
+	}
+
+*/
+/*
+
+	gboolean widget_keynavFailedHandler(GObject *, GtkDirectionType, gpointer);
+
+	static gulong Widget_signal_connect_keynav_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "keynav-failed", G_CALLBACK(widget_keynavFailedHandler), data);
 	}
 
 */
@@ -286,7 +313,67 @@ func (recv *Builder) ValueFromStringType(type_ gobject.Type, string_ string) (bo
 	return retGo, value, goError
 }
 
-// Unsupported signal 'move-active' for ComboBox : unsupported parameter scroll_type : type ScrollType :
+type signalComboBoxMoveActiveDetail struct {
+	callback  ComboBoxSignalMoveActiveCallback
+	handlerID C.gulong
+}
+
+var signalComboBoxMoveActiveId int
+var signalComboBoxMoveActiveMap = make(map[int]signalComboBoxMoveActiveDetail)
+var signalComboBoxMoveActiveLock sync.RWMutex
+
+// ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
+type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
+
+/*
+ConnectMoveActive connects the callback to the 'move-active' signal for the ComboBox.
+
+The returned value represents the connection, and may be passed to DisconnectMoveActive to remove it.
+*/
+func (recv *ComboBox) ConnectMoveActive(callback ComboBoxSignalMoveActiveCallback) int {
+	signalComboBoxMoveActiveLock.Lock()
+	defer signalComboBoxMoveActiveLock.Unlock()
+
+	signalComboBoxMoveActiveId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ComboBox_signal_connect_move_active(instance, C.gpointer(uintptr(signalComboBoxMoveActiveId)))
+
+	detail := signalComboBoxMoveActiveDetail{callback, handlerID}
+	signalComboBoxMoveActiveMap[signalComboBoxMoveActiveId] = detail
+
+	return signalComboBoxMoveActiveId
+}
+
+/*
+DisconnectMoveActive disconnects a callback from the 'move-active' signal for the ComboBox.
+
+The connectionID should be a value returned from a call to ConnectMoveActive.
+*/
+func (recv *ComboBox) DisconnectMoveActive(connectionID int) {
+	signalComboBoxMoveActiveLock.Lock()
+	defer signalComboBoxMoveActiveLock.Unlock()
+
+	detail, exists := signalComboBoxMoveActiveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalComboBoxMoveActiveMap, connectionID)
+}
+
+//export combobox_moveActiveHandler
+func combobox_moveActiveHandler(_ *C.GObject, c_scroll_type C.GtkScrollType, data C.gpointer) {
+	signalComboBoxMoveActiveLock.RLock()
+	defer signalComboBoxMoveActiveLock.RUnlock()
+
+	scrollType := ScrollType(c_scroll_type)
+
+	index := int(uintptr(data))
+	callback := signalComboBoxMoveActiveMap[index].callback
+	callback(scrollType)
+}
 
 type signalComboBoxPopdownDetail struct {
 	callback  ComboBoxSignalPopdownCallback
@@ -1809,9 +1896,137 @@ func VolumeButtonNew() *VolumeButton {
 	return retGo
 }
 
-// Unsupported signal 'drag-failed' for Widget : unsupported parameter result : type DragResult :
+type signalWidgetDragFailedDetail struct {
+	callback  WidgetSignalDragFailedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'keynav-failed' for Widget : unsupported parameter direction : type DirectionType :
+var signalWidgetDragFailedId int
+var signalWidgetDragFailedMap = make(map[int]signalWidgetDragFailedDetail)
+var signalWidgetDragFailedLock sync.RWMutex
+
+// WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
+type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
+
+/*
+ConnectDragFailed connects the callback to the 'drag-failed' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDragFailed to remove it.
+*/
+func (recv *Widget) ConnectDragFailed(callback WidgetSignalDragFailedCallback) int {
+	signalWidgetDragFailedLock.Lock()
+	defer signalWidgetDragFailedLock.Unlock()
+
+	signalWidgetDragFailedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_drag_failed(instance, C.gpointer(uintptr(signalWidgetDragFailedId)))
+
+	detail := signalWidgetDragFailedDetail{callback, handlerID}
+	signalWidgetDragFailedMap[signalWidgetDragFailedId] = detail
+
+	return signalWidgetDragFailedId
+}
+
+/*
+DisconnectDragFailed disconnects a callback from the 'drag-failed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragFailed.
+*/
+func (recv *Widget) DisconnectDragFailed(connectionID int) {
+	signalWidgetDragFailedLock.Lock()
+	defer signalWidgetDragFailedLock.Unlock()
+
+	detail, exists := signalWidgetDragFailedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetDragFailedMap, connectionID)
+}
+
+//export widget_dragFailedHandler
+func widget_dragFailedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_result C.GtkDragResult, data C.gpointer) C.gboolean {
+	signalWidgetDragFailedLock.RLock()
+	defer signalWidgetDragFailedLock.RUnlock()
+
+	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
+
+	result := DragResult(c_result)
+
+	index := int(uintptr(data))
+	callback := signalWidgetDragFailedMap[index].callback
+	retGo := callback(context, result)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
+
+type signalWidgetKeynavFailedDetail struct {
+	callback  WidgetSignalKeynavFailedCallback
+	handlerID C.gulong
+}
+
+var signalWidgetKeynavFailedId int
+var signalWidgetKeynavFailedMap = make(map[int]signalWidgetKeynavFailedDetail)
+var signalWidgetKeynavFailedLock sync.RWMutex
+
+// WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
+type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
+
+/*
+ConnectKeynavFailed connects the callback to the 'keynav-failed' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectKeynavFailed to remove it.
+*/
+func (recv *Widget) ConnectKeynavFailed(callback WidgetSignalKeynavFailedCallback) int {
+	signalWidgetKeynavFailedLock.Lock()
+	defer signalWidgetKeynavFailedLock.Unlock()
+
+	signalWidgetKeynavFailedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_keynav_failed(instance, C.gpointer(uintptr(signalWidgetKeynavFailedId)))
+
+	detail := signalWidgetKeynavFailedDetail{callback, handlerID}
+	signalWidgetKeynavFailedMap[signalWidgetKeynavFailedId] = detail
+
+	return signalWidgetKeynavFailedId
+}
+
+/*
+DisconnectKeynavFailed disconnects a callback from the 'keynav-failed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectKeynavFailed.
+*/
+func (recv *Widget) DisconnectKeynavFailed(connectionID int) {
+	signalWidgetKeynavFailedLock.Lock()
+	defer signalWidgetKeynavFailedLock.Unlock()
+
+	detail, exists := signalWidgetKeynavFailedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetKeynavFailedMap, connectionID)
+}
+
+//export widget_keynavFailedHandler
+func widget_keynavFailedHandler(_ *C.GObject, c_direction C.GtkDirectionType, data C.gpointer) C.gboolean {
+	signalWidgetKeynavFailedLock.RLock()
+	defer signalWidgetKeynavFailedLock.RUnlock()
+
+	direction := DirectionType(c_direction)
+
+	index := int(uintptr(data))
+	callback := signalWidgetKeynavFailedMap[index].callback
+	retGo := callback(direction)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 type signalWidgetQueryTooltipDetail struct {
 	callback  WidgetSignalQueryTooltipCallback

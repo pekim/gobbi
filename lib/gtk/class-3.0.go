@@ -78,6 +78,15 @@ import (
 */
 /*
 
+	void widget_stateFlagsChangedHandler(GObject *, GtkStateFlags, gpointer);
+
+	static gulong Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-flags-changed", G_CALLBACK(widget_stateFlagsChangedHandler), data);
+	}
+
+*/
+/*
+
 	void widget_styleUpdatedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
@@ -3256,7 +3265,67 @@ func widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) C.gboole
 	return retC
 }
 
-// Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :
+type signalWidgetStateFlagsChangedDetail struct {
+	callback  WidgetSignalStateFlagsChangedCallback
+	handlerID C.gulong
+}
+
+var signalWidgetStateFlagsChangedId int
+var signalWidgetStateFlagsChangedMap = make(map[int]signalWidgetStateFlagsChangedDetail)
+var signalWidgetStateFlagsChangedLock sync.RWMutex
+
+// WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
+type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
+
+/*
+ConnectStateFlagsChanged connects the callback to the 'state-flags-changed' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectStateFlagsChanged to remove it.
+*/
+func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChangedCallback) int {
+	signalWidgetStateFlagsChangedLock.Lock()
+	defer signalWidgetStateFlagsChangedLock.Unlock()
+
+	signalWidgetStateFlagsChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_state_flags_changed(instance, C.gpointer(uintptr(signalWidgetStateFlagsChangedId)))
+
+	detail := signalWidgetStateFlagsChangedDetail{callback, handlerID}
+	signalWidgetStateFlagsChangedMap[signalWidgetStateFlagsChangedId] = detail
+
+	return signalWidgetStateFlagsChangedId
+}
+
+/*
+DisconnectStateFlagsChanged disconnects a callback from the 'state-flags-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectStateFlagsChanged.
+*/
+func (recv *Widget) DisconnectStateFlagsChanged(connectionID int) {
+	signalWidgetStateFlagsChangedLock.Lock()
+	defer signalWidgetStateFlagsChangedLock.Unlock()
+
+	detail, exists := signalWidgetStateFlagsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetStateFlagsChangedMap, connectionID)
+}
+
+//export widget_stateFlagsChangedHandler
+func widget_stateFlagsChangedHandler(_ *C.GObject, c_flags C.GtkStateFlags, data C.gpointer) {
+	signalWidgetStateFlagsChangedLock.RLock()
+	defer signalWidgetStateFlagsChangedLock.RUnlock()
+
+	flags := StateFlags(c_flags)
+
+	index := int(uintptr(data))
+	callback := signalWidgetStateFlagsChangedMap[index].callback
+	callback(flags)
+}
 
 type signalWidgetStyleUpdatedDetail struct {
 	callback  WidgetSignalStyleUpdatedCallback

@@ -77,6 +77,15 @@ import (
 */
 /*
 
+	void placessidebar_openLocationHandler(GObject *, GFile *, GtkPlacesOpenFlags, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_open_location(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "open-location", G_CALLBACK(placessidebar_openLocationHandler), data);
+	}
+
+*/
+/*
+
 	void placessidebar_populatePopupHandler(GObject *, GtkWidget *, GFile *, GVolume *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
@@ -1238,7 +1247,69 @@ func placessidebar_dragPerformDropHandler(_ *C.GObject, c_dest_file *C.GFile, c_
 	callback(destFile, sourceFileList, action)
 }
 
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
+type signalPlacesSidebarOpenLocationDetail struct {
+	callback  PlacesSidebarSignalOpenLocationCallback
+	handlerID C.gulong
+}
+
+var signalPlacesSidebarOpenLocationId int
+var signalPlacesSidebarOpenLocationMap = make(map[int]signalPlacesSidebarOpenLocationDetail)
+var signalPlacesSidebarOpenLocationLock sync.RWMutex
+
+// PlacesSidebarSignalOpenLocationCallback is a callback function for a 'open-location' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalOpenLocationCallback func(location *gio.File, openFlags PlacesOpenFlags)
+
+/*
+ConnectOpenLocation connects the callback to the 'open-location' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectOpenLocation to remove it.
+*/
+func (recv *PlacesSidebar) ConnectOpenLocation(callback PlacesSidebarSignalOpenLocationCallback) int {
+	signalPlacesSidebarOpenLocationLock.Lock()
+	defer signalPlacesSidebarOpenLocationLock.Unlock()
+
+	signalPlacesSidebarOpenLocationId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_open_location(instance, C.gpointer(uintptr(signalPlacesSidebarOpenLocationId)))
+
+	detail := signalPlacesSidebarOpenLocationDetail{callback, handlerID}
+	signalPlacesSidebarOpenLocationMap[signalPlacesSidebarOpenLocationId] = detail
+
+	return signalPlacesSidebarOpenLocationId
+}
+
+/*
+DisconnectOpenLocation disconnects a callback from the 'open-location' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectOpenLocation.
+*/
+func (recv *PlacesSidebar) DisconnectOpenLocation(connectionID int) {
+	signalPlacesSidebarOpenLocationLock.Lock()
+	defer signalPlacesSidebarOpenLocationLock.Unlock()
+
+	detail, exists := signalPlacesSidebarOpenLocationMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarOpenLocationMap, connectionID)
+}
+
+//export placessidebar_openLocationHandler
+func placessidebar_openLocationHandler(_ *C.GObject, c_location *C.GFile, c_open_flags C.GtkPlacesOpenFlags, data C.gpointer) {
+	signalPlacesSidebarOpenLocationLock.RLock()
+	defer signalPlacesSidebarOpenLocationLock.RUnlock()
+
+	location := gio.FileNewFromC(unsafe.Pointer(c_location))
+
+	openFlags := PlacesOpenFlags(c_open_flags)
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarOpenLocationMap[index].callback
+	callback(location, openFlags)
+}
 
 type signalPlacesSidebarPopulatePopupDetail struct {
 	callback  PlacesSidebarSignalPopulatePopupCallback

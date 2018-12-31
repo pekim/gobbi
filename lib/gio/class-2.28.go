@@ -93,6 +93,15 @@ import (
 	}
 
 */
+/*
+
+	gboolean tlsconnection_acceptCertificateHandler(GObject *, GTlsCertificate *, GTlsCertificateFlags, gpointer);
+
+	static gulong TlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accept-certificate", G_CALLBACK(tlsconnection_acceptCertificateHandler), data);
+	}
+
+*/
 import "C"
 
 // Application is a wrapper around the C record GApplication.
@@ -1300,7 +1309,72 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
 
-// Unsupported signal 'accept-certificate' for TlsConnection : unsupported parameter errors : type TlsCertificateFlags :
+type signalTlsConnectionAcceptCertificateDetail struct {
+	callback  TlsConnectionSignalAcceptCertificateCallback
+	handlerID C.gulong
+}
+
+var signalTlsConnectionAcceptCertificateId int
+var signalTlsConnectionAcceptCertificateMap = make(map[int]signalTlsConnectionAcceptCertificateDetail)
+var signalTlsConnectionAcceptCertificateLock sync.RWMutex
+
+// TlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a TlsConnection.
+type TlsConnectionSignalAcceptCertificateCallback func(peerCert *TlsCertificate, errors TlsCertificateFlags) bool
+
+/*
+ConnectAcceptCertificate connects the callback to the 'accept-certificate' signal for the TlsConnection.
+
+The returned value represents the connection, and may be passed to DisconnectAcceptCertificate to remove it.
+*/
+func (recv *TlsConnection) ConnectAcceptCertificate(callback TlsConnectionSignalAcceptCertificateCallback) int {
+	signalTlsConnectionAcceptCertificateLock.Lock()
+	defer signalTlsConnectionAcceptCertificateLock.Unlock()
+
+	signalTlsConnectionAcceptCertificateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.TlsConnection_signal_connect_accept_certificate(instance, C.gpointer(uintptr(signalTlsConnectionAcceptCertificateId)))
+
+	detail := signalTlsConnectionAcceptCertificateDetail{callback, handlerID}
+	signalTlsConnectionAcceptCertificateMap[signalTlsConnectionAcceptCertificateId] = detail
+
+	return signalTlsConnectionAcceptCertificateId
+}
+
+/*
+DisconnectAcceptCertificate disconnects a callback from the 'accept-certificate' signal for the TlsConnection.
+
+The connectionID should be a value returned from a call to ConnectAcceptCertificate.
+*/
+func (recv *TlsConnection) DisconnectAcceptCertificate(connectionID int) {
+	signalTlsConnectionAcceptCertificateLock.Lock()
+	defer signalTlsConnectionAcceptCertificateLock.Unlock()
+
+	detail, exists := signalTlsConnectionAcceptCertificateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTlsConnectionAcceptCertificateMap, connectionID)
+}
+
+//export tlsconnection_acceptCertificateHandler
+func tlsconnection_acceptCertificateHandler(_ *C.GObject, c_peer_cert *C.GTlsCertificate, c_errors C.GTlsCertificateFlags, data C.gpointer) C.gboolean {
+	signalTlsConnectionAcceptCertificateLock.RLock()
+	defer signalTlsConnectionAcceptCertificateLock.RUnlock()
+
+	peerCert := TlsCertificateNewFromC(unsafe.Pointer(c_peer_cert))
+
+	errors := TlsCertificateFlags(c_errors)
+
+	index := int(uintptr(data))
+	callback := signalTlsConnectionAcceptCertificateMap[index].callback
+	retGo := callback(peerCert, errors)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {

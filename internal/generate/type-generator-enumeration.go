@@ -2,7 +2,6 @@ package generate
 
 import (
 	"fmt"
-
 	"github.com/dave/jennifer/jen"
 )
 
@@ -36,7 +35,7 @@ func (t *TypeGeneratorEnumeration) isSupportedAsArrayParamC(direction string) (s
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsParamC() (supported bool, reason string) {
-	return false, ""
+	return true, ""
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsField() (supported bool, reason string) {
@@ -71,7 +70,8 @@ func (t *TypeGeneratorEnumeration) generateArrayDeclaration(g *jen.Group, goVarN
 func (t *TypeGeneratorEnumeration) generateArrayDeclarationC(g *jen.Group, cVarName string) {
 }
 
-func (t *TypeGeneratorEnumeration) generateDeclarationC(g *jen.Group, goVarName string) {
+func (t *TypeGeneratorEnumeration) generateDeclarationC(g *jen.Group, cVarName string) {
+	g.Id(cVarName).Qual("C", t.enum.CType)
 }
 
 func (t *TypeGeneratorEnumeration) generateParamCallArgument(g *jen.Group, cVarName string) {
@@ -91,6 +91,11 @@ func (t *TypeGeneratorEnumeration) generateParamCVar(g *jen.Group, cVarName stri
 }
 
 func (t *TypeGeneratorEnumeration) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, pkg string) {
+	g.
+		Id(goVarName).
+		Op(":=").
+		Do(t.typ.qname.generate).
+		Parens(jen.Id(cVarName))
 }
 
 func (t *TypeGeneratorEnumeration) generateParamOutCVar(g *jen.Group, cVarName string) {

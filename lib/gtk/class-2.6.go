@@ -60,6 +60,15 @@ import (
 		return gtk_message_dialog_format_secondary_text(message_dialog, message_format);
     }
 */
+/*
+
+	gboolean range_changeValueHandler(GObject *, GtkScrollType, gdouble, gpointer);
+
+	static gulong Range_signal_connect_change_value(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-value", G_CALLBACK(range_changeValueHandler), data);
+	}
+
+*/
 import "C"
 
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
@@ -1486,7 +1495,72 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 	return
 }
 
-// Unsupported signal 'change-value' for Range : unsupported parameter scroll : type ScrollType :
+type signalRangeChangeValueDetail struct {
+	callback  RangeSignalChangeValueCallback
+	handlerID C.gulong
+}
+
+var signalRangeChangeValueId int
+var signalRangeChangeValueMap = make(map[int]signalRangeChangeValueDetail)
+var signalRangeChangeValueLock sync.RWMutex
+
+// RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
+type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
+
+/*
+ConnectChangeValue connects the callback to the 'change-value' signal for the Range.
+
+The returned value represents the connection, and may be passed to DisconnectChangeValue to remove it.
+*/
+func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) int {
+	signalRangeChangeValueLock.Lock()
+	defer signalRangeChangeValueLock.Unlock()
+
+	signalRangeChangeValueId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Range_signal_connect_change_value(instance, C.gpointer(uintptr(signalRangeChangeValueId)))
+
+	detail := signalRangeChangeValueDetail{callback, handlerID}
+	signalRangeChangeValueMap[signalRangeChangeValueId] = detail
+
+	return signalRangeChangeValueId
+}
+
+/*
+DisconnectChangeValue disconnects a callback from the 'change-value' signal for the Range.
+
+The connectionID should be a value returned from a call to ConnectChangeValue.
+*/
+func (recv *Range) DisconnectChangeValue(connectionID int) {
+	signalRangeChangeValueLock.Lock()
+	defer signalRangeChangeValueLock.Unlock()
+
+	detail, exists := signalRangeChangeValueMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalRangeChangeValueMap, connectionID)
+}
+
+//export range_changeValueHandler
+func range_changeValueHandler(_ *C.GObject, c_scroll C.GtkScrollType, c_value C.gdouble, data C.gpointer) C.gboolean {
+	signalRangeChangeValueLock.RLock()
+	defer signalRangeChangeValueLock.RUnlock()
+
+	scroll := ScrollType(c_scroll)
+
+	value := float64(c_value)
+
+	index := int(uintptr(data))
+	callback := signalRangeChangeValueMap[index].callback
+	retGo := callback(scroll, value)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // Backspace is a wrapper around the C function gtk_text_buffer_backspace.
 func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEditable bool) bool {

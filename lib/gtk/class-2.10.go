@@ -69,6 +69,15 @@ import (
 */
 /*
 
+	void cellrendereraccel_accelEditedHandler(GObject *, gchar*, guint, guint, guint, gpointer);
+
+	static gulong CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-edited", G_CALLBACK(cellrendereraccel_accelEditedHandler), data);
+	}
+
+*/
+/*
+
 	void notebook_pageAddedHandler(GObject *, GtkWidget *, guint, gpointer);
 
 	static gulong Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
@@ -118,6 +127,15 @@ import (
 
 	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "custom-widget-apply", G_CALLBACK(printoperation_customWidgetApplyHandler), data);
+	}
+
+*/
+/*
+
+	void printoperation_doneHandler(GObject *, GtkPrintOperationResult, gpointer);
+
+	static gulong PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "done", G_CALLBACK(printoperation_doneHandler), data);
 	}
 
 */
@@ -808,7 +826,73 @@ func cellrendereraccel_accelClearedHandler(_ *C.GObject, c_path_string *C.gchar,
 	callback(pathString)
 }
 
-// Unsupported signal 'accel-edited' for CellRendererAccel : unsupported parameter accel_mods : type Gdk.ModifierType :
+type signalCellRendererAccelAccelEditedDetail struct {
+	callback  CellRendererAccelSignalAccelEditedCallback
+	handlerID C.gulong
+}
+
+var signalCellRendererAccelAccelEditedId int
+var signalCellRendererAccelAccelEditedMap = make(map[int]signalCellRendererAccelAccelEditedDetail)
+var signalCellRendererAccelAccelEditedLock sync.RWMutex
+
+// CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
+type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
+
+/*
+ConnectAccelEdited connects the callback to the 'accel-edited' signal for the CellRendererAccel.
+
+The returned value represents the connection, and may be passed to DisconnectAccelEdited to remove it.
+*/
+func (recv *CellRendererAccel) ConnectAccelEdited(callback CellRendererAccelSignalAccelEditedCallback) int {
+	signalCellRendererAccelAccelEditedLock.Lock()
+	defer signalCellRendererAccelAccelEditedLock.Unlock()
+
+	signalCellRendererAccelAccelEditedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellRendererAccel_signal_connect_accel_edited(instance, C.gpointer(uintptr(signalCellRendererAccelAccelEditedId)))
+
+	detail := signalCellRendererAccelAccelEditedDetail{callback, handlerID}
+	signalCellRendererAccelAccelEditedMap[signalCellRendererAccelAccelEditedId] = detail
+
+	return signalCellRendererAccelAccelEditedId
+}
+
+/*
+DisconnectAccelEdited disconnects a callback from the 'accel-edited' signal for the CellRendererAccel.
+
+The connectionID should be a value returned from a call to ConnectAccelEdited.
+*/
+func (recv *CellRendererAccel) DisconnectAccelEdited(connectionID int) {
+	signalCellRendererAccelAccelEditedLock.Lock()
+	defer signalCellRendererAccelAccelEditedLock.Unlock()
+
+	detail, exists := signalCellRendererAccelAccelEditedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellRendererAccelAccelEditedMap, connectionID)
+}
+
+//export cellrendereraccel_accelEditedHandler
+func cellrendereraccel_accelEditedHandler(_ *C.GObject, c_path_string *C.gchar, c_accel_key C.guint, c_accel_mods C.guint, c_hardware_keycode C.guint, data C.gpointer) {
+	signalCellRendererAccelAccelEditedLock.RLock()
+	defer signalCellRendererAccelAccelEditedLock.RUnlock()
+
+	pathString := C.GoString(c_path_string)
+
+	accelKey := uint32(c_accel_key)
+
+	accelMods := gdk.ModifierType(c_accel_mods)
+
+	hardwareKeycode := uint32(c_hardware_keycode)
+
+	index := int(uintptr(data))
+	callback := signalCellRendererAccelAccelEditedMap[index].callback
+	callback(pathString, accelKey, accelMods, hardwareKeycode)
+}
 
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
 func CellRendererAccelNew() *CellRendererAccel {
@@ -1692,7 +1776,67 @@ func printoperation_customWidgetApplyHandler(_ *C.GObject, c_widget *C.GtkWidget
 	callback(widget)
 }
 
-// Unsupported signal 'done' for PrintOperation : unsupported parameter result : type PrintOperationResult :
+type signalPrintOperationDoneDetail struct {
+	callback  PrintOperationSignalDoneCallback
+	handlerID C.gulong
+}
+
+var signalPrintOperationDoneId int
+var signalPrintOperationDoneMap = make(map[int]signalPrintOperationDoneDetail)
+var signalPrintOperationDoneLock sync.RWMutex
+
+// PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
+type PrintOperationSignalDoneCallback func(result PrintOperationResult)
+
+/*
+ConnectDone connects the callback to the 'done' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectDone to remove it.
+*/
+func (recv *PrintOperation) ConnectDone(callback PrintOperationSignalDoneCallback) int {
+	signalPrintOperationDoneLock.Lock()
+	defer signalPrintOperationDoneLock.Unlock()
+
+	signalPrintOperationDoneId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PrintOperation_signal_connect_done(instance, C.gpointer(uintptr(signalPrintOperationDoneId)))
+
+	detail := signalPrintOperationDoneDetail{callback, handlerID}
+	signalPrintOperationDoneMap[signalPrintOperationDoneId] = detail
+
+	return signalPrintOperationDoneId
+}
+
+/*
+DisconnectDone disconnects a callback from the 'done' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectDone.
+*/
+func (recv *PrintOperation) DisconnectDone(connectionID int) {
+	signalPrintOperationDoneLock.Lock()
+	defer signalPrintOperationDoneLock.Unlock()
+
+	detail, exists := signalPrintOperationDoneMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPrintOperationDoneMap, connectionID)
+}
+
+//export printoperation_doneHandler
+func printoperation_doneHandler(_ *C.GObject, c_result C.GtkPrintOperationResult, data C.gpointer) {
+	signalPrintOperationDoneLock.RLock()
+	defer signalPrintOperationDoneLock.RUnlock()
+
+	result := PrintOperationResult(c_result)
+
+	index := int(uintptr(data))
+	callback := signalPrintOperationDoneMap[index].callback
+	callback(result)
+}
 
 type signalPrintOperationDrawPageDetail struct {
 	callback  PrintOperationSignalDrawPageCallback

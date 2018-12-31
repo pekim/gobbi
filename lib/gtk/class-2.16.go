@@ -21,6 +21,24 @@ import (
 // #include <stdlib.h>
 /*
 
+	void entry_iconPressHandler(GObject *, GtkEntryIconPosition, GdkEventButton *, gpointer);
+
+	static gulong Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "icon-press", G_CALLBACK(entry_iconPressHandler), data);
+	}
+
+*/
+/*
+
+	void entry_iconReleaseHandler(GObject *, GtkEntryIconPosition, GdkEventButton *, gpointer);
+
+	static gulong Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "icon-release", G_CALLBACK(entry_iconReleaseHandler), data);
+	}
+
+*/
+/*
+
 	gboolean statusicon_queryTooltipHandler(GObject *, gint, gint, gboolean, GtkTooltip *, gpointer);
 
 	static gulong StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
@@ -236,9 +254,133 @@ func (recv *CellView) GetModel() *TreeModel {
 	return retGo
 }
 
-// Unsupported signal 'icon-press' for Entry : unsupported parameter icon_pos : type EntryIconPosition :
+type signalEntryIconPressDetail struct {
+	callback  EntrySignalIconPressCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'icon-release' for Entry : unsupported parameter icon_pos : type EntryIconPosition :
+var signalEntryIconPressId int
+var signalEntryIconPressMap = make(map[int]signalEntryIconPressDetail)
+var signalEntryIconPressLock sync.RWMutex
+
+// EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
+type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
+
+/*
+ConnectIconPress connects the callback to the 'icon-press' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectIconPress to remove it.
+*/
+func (recv *Entry) ConnectIconPress(callback EntrySignalIconPressCallback) int {
+	signalEntryIconPressLock.Lock()
+	defer signalEntryIconPressLock.Unlock()
+
+	signalEntryIconPressId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Entry_signal_connect_icon_press(instance, C.gpointer(uintptr(signalEntryIconPressId)))
+
+	detail := signalEntryIconPressDetail{callback, handlerID}
+	signalEntryIconPressMap[signalEntryIconPressId] = detail
+
+	return signalEntryIconPressId
+}
+
+/*
+DisconnectIconPress disconnects a callback from the 'icon-press' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectIconPress.
+*/
+func (recv *Entry) DisconnectIconPress(connectionID int) {
+	signalEntryIconPressLock.Lock()
+	defer signalEntryIconPressLock.Unlock()
+
+	detail, exists := signalEntryIconPressMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryIconPressMap, connectionID)
+}
+
+//export entry_iconPressHandler
+func entry_iconPressHandler(_ *C.GObject, c_icon_pos C.GtkEntryIconPosition, c_event *C.GdkEventButton, data C.gpointer) {
+	signalEntryIconPressLock.RLock()
+	defer signalEntryIconPressLock.RUnlock()
+
+	iconPos := EntryIconPosition(c_icon_pos)
+
+	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalEntryIconPressMap[index].callback
+	callback(iconPos, event)
+}
+
+type signalEntryIconReleaseDetail struct {
+	callback  EntrySignalIconReleaseCallback
+	handlerID C.gulong
+}
+
+var signalEntryIconReleaseId int
+var signalEntryIconReleaseMap = make(map[int]signalEntryIconReleaseDetail)
+var signalEntryIconReleaseLock sync.RWMutex
+
+// EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
+type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
+
+/*
+ConnectIconRelease connects the callback to the 'icon-release' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectIconRelease to remove it.
+*/
+func (recv *Entry) ConnectIconRelease(callback EntrySignalIconReleaseCallback) int {
+	signalEntryIconReleaseLock.Lock()
+	defer signalEntryIconReleaseLock.Unlock()
+
+	signalEntryIconReleaseId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Entry_signal_connect_icon_release(instance, C.gpointer(uintptr(signalEntryIconReleaseId)))
+
+	detail := signalEntryIconReleaseDetail{callback, handlerID}
+	signalEntryIconReleaseMap[signalEntryIconReleaseId] = detail
+
+	return signalEntryIconReleaseId
+}
+
+/*
+DisconnectIconRelease disconnects a callback from the 'icon-release' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectIconRelease.
+*/
+func (recv *Entry) DisconnectIconRelease(connectionID int) {
+	signalEntryIconReleaseLock.Lock()
+	defer signalEntryIconReleaseLock.Unlock()
+
+	detail, exists := signalEntryIconReleaseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryIconReleaseMap, connectionID)
+}
+
+//export entry_iconReleaseHandler
+func entry_iconReleaseHandler(_ *C.GObject, c_icon_pos C.GtkEntryIconPosition, c_event *C.GdkEventButton, data C.gpointer) {
+	signalEntryIconReleaseLock.RLock()
+	defer signalEntryIconReleaseLock.RUnlock()
+
+	iconPos := EntryIconPosition(c_icon_pos)
+
+	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalEntryIconReleaseMap[index].callback
+	callback(iconPos, event)
+}
 
 // GetCurrentIconDragSource is a wrapper around the C function gtk_entry_get_current_icon_drag_source.
 func (recv *Entry) GetCurrentIconDragSource() int32 {
