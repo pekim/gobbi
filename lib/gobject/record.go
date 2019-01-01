@@ -1103,9 +1103,30 @@ func (recv *ObjectClass) Equals(other *ObjectClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported : g_object_class_find_property : return type : Blacklisted record : GParamSpec
+// FindProperty is a wrapper around the C function g_object_class_find_property.
+func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
 
-// Unsupported : g_object_class_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+	retC := C.g_object_class_find_property((*C.GObjectClass)(recv.native), c_property_name)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// InstallProperty is a wrapper around the C function g_object_class_install_property.
+func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
+	c_property_id := (C.guint)(propertyId)
+
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.g_object_class_install_property((*C.GObjectClass)(recv.native), c_property_id, c_pspec)
+
+	return
+}
 
 // Unsupported : g_object_class_list_properties : array return type :
 
@@ -1212,7 +1233,19 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 	return retGo
 }
 
-// Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : Blacklisted record : GParamSpec
+// Insert is a wrapper around the C function g_param_spec_pool_insert.
+func (recv *ParamSpecPool) Insert(pspec *ParamSpec, ownerType Type) {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_owner_type := (C.GType)(ownerType)
+
+	C.g_param_spec_pool_insert((*C.GParamSpecPool)(recv.native), c_pspec, c_owner_type)
+
+	return
+}
 
 // Unsupported : g_param_spec_pool_list : array return type :
 
@@ -1226,9 +1259,33 @@ func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {
 	return retGo
 }
 
-// Unsupported : g_param_spec_pool_lookup : return type : Blacklisted record : GParamSpec
+// Lookup is a wrapper around the C function g_param_spec_pool_lookup.
+func (recv *ParamSpecPool) Lookup(paramName string, ownerType Type, walkAncestors bool) *ParamSpec {
+	c_param_name := C.CString(paramName)
+	defer C.free(unsafe.Pointer(c_param_name))
 
-// Unsupported : g_param_spec_pool_remove : unsupported parameter pspec : Blacklisted record : GParamSpec
+	c_owner_type := (C.GType)(ownerType)
+
+	c_walk_ancestors :=
+		boolToGboolean(walkAncestors)
+
+	retC := C.g_param_spec_pool_lookup((*C.GParamSpecPool)(recv.native), c_param_name, c_owner_type, c_walk_ancestors)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Remove is a wrapper around the C function g_param_spec_pool_remove.
+func (recv *ParamSpecPool) Remove(pspec *ParamSpec) {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.g_param_spec_pool_remove((*C.GParamSpecPool)(recv.native), c_pspec)
+
+	return
+}
 
 // ParamSpecTypeInfo is a wrapper around the C record GParamSpecTypeInfo.
 type ParamSpecTypeInfo struct {
@@ -1922,7 +1979,13 @@ func (recv *Value) DupObject() uintptr {
 	return retGo
 }
 
-// Unsupported : g_value_dup_param : return type : Blacklisted record : GParamSpec
+// DupParam is a wrapper around the C function g_value_dup_param.
+func (recv *Value) DupParam() *ParamSpec {
+	retC := C.g_value_dup_param((*C.GValue)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DupString is a wrapper around the C function g_value_dup_string.
 func (recv *Value) DupString() string {
@@ -2029,7 +2092,13 @@ func (recv *Value) GetObject() uintptr {
 	return retGo
 }
 
-// Unsupported : g_value_get_param : return type : Blacklisted record : GParamSpec
+// GetParam is a wrapper around the C function g_value_get_param.
+func (recv *Value) GetParam() *ParamSpec {
+	retC := C.g_value_get_param((*C.GValue)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetPointer is a wrapper around the C function g_value_get_pointer.
 func (recv *Value) GetPointer() uintptr {
@@ -2232,9 +2301,29 @@ func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
 	return
 }
 
-// Unsupported : g_value_set_param : unsupported parameter param : Blacklisted record : GParamSpec
+// SetParam is a wrapper around the C function g_value_set_param.
+func (recv *Value) SetParam(param *ParamSpec) {
+	c_param := (*C.GParamSpec)(C.NULL)
+	if param != nil {
+		c_param = (*C.GParamSpec)(param.ToC())
+	}
 
-// Unsupported : g_value_set_param_take_ownership : unsupported parameter param : Blacklisted record : GParamSpec
+	C.g_value_set_param((*C.GValue)(recv.native), c_param)
+
+	return
+}
+
+// SetParamTakeOwnership is a wrapper around the C function g_value_set_param_take_ownership.
+func (recv *Value) SetParamTakeOwnership(param *ParamSpec) {
+	c_param := (*C.GParamSpec)(C.NULL)
+	if param != nil {
+		c_param = (*C.GParamSpec)(param.ToC())
+	}
+
+	C.g_value_set_param_take_ownership((*C.GValue)(recv.native), c_param)
+
+	return
+}
 
 // SetPointer is a wrapper around the C function g_value_set_pointer.
 func (recv *Value) SetPointer(vPointer uintptr) {

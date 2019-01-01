@@ -3,7 +3,10 @@
 
 package gtk
 
-import "unsafe"
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -24,6 +27,15 @@ func (recv *TreeRowReference) Copy() *TreeRowReference {
 	return retGo
 }
 
-// Unsupported : gtk_widget_class_find_style_property : return type : Blacklisted record : GParamSpec
+// FindStyleProperty is a wrapper around the C function gtk_widget_class_find_style_property.
+func (recv *WidgetClass) FindStyleProperty(propertyName string) *gobject.ParamSpec {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	retC := C.gtk_widget_class_find_style_property((*C.GtkWidgetClass)(recv.native), c_property_name)
+	retGo := gobject.ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gtk_widget_class_list_style_properties : array return type :

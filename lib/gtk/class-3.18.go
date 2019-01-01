@@ -6,6 +6,7 @@ package gtk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 	"unsafe"
@@ -57,7 +58,22 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 	return
 }
 
-// Unsupported : gtk_container_child_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
+// ChildNotifyByPspec is a wrapper around the C function gtk_container_child_notify_by_pspec.
+func (recv *Container) ChildNotifyByPspec(child *Widget, pspec *gobject.ParamSpec) {
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
+
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.gtk_container_child_notify_by_pspec((*C.GtkContainer)(recv.native), c_child, c_pspec)
+
+	return
+}
 
 // Unsupported : gtk_flow_box_bind_model : unsupported parameter create_widget_func : no type generator for FlowBoxCreateWidgetFunc (GtkFlowBoxCreateWidgetFunc) for param create_widget_func
 

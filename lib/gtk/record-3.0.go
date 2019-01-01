@@ -37,9 +37,30 @@ func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) 
 	return retGo
 }
 
-// Unsupported : gtk_cell_area_class_find_cell_property : return type : Blacklisted record : GParamSpec
+// FindCellProperty is a wrapper around the C function gtk_cell_area_class_find_cell_property.
+func (recv *CellAreaClass) FindCellProperty(propertyName string) *gobject.ParamSpec {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
 
-// Unsupported : gtk_cell_area_class_install_cell_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+	retC := C.gtk_cell_area_class_find_cell_property((*C.GtkCellAreaClass)(recv.native), c_property_name)
+	retGo := gobject.ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// InstallCellProperty is a wrapper around the C function gtk_cell_area_class_install_cell_property.
+func (recv *CellAreaClass) InstallCellProperty(propertyId uint32, pspec *gobject.ParamSpec) {
+	c_property_id := (C.guint)(propertyId)
+
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.gtk_cell_area_class_install_cell_property((*C.GtkCellAreaClass)(recv.native), c_property_id, c_pspec)
+
+	return
+}
 
 // Unsupported : gtk_cell_area_class_list_cell_properties : array return type :
 

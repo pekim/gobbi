@@ -12,9 +12,42 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// g_object_interface_find_property : return type : Blacklisted record : GParamSpec
-// g_object_interface_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+// ObjectInterfaceFindProperty is a wrapper around the C function g_object_interface_find_property.
+func ObjectInterfaceFindProperty(gIface uintptr, propertyName string) *ParamSpec {
+	c_g_iface := (C.gpointer)(gIface)
+
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	retC := C.g_object_interface_find_property(c_g_iface, c_property_name)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ObjectInterfaceInstallProperty is a wrapper around the C function g_object_interface_install_property.
+func ObjectInterfaceInstallProperty(gIface uintptr, pspec *ParamSpec) {
+	c_g_iface := (C.gpointer)(gIface)
+
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.g_object_interface_install_property(c_g_iface, c_pspec)
+
+	return
+}
+
 // g_object_interface_list_properties : array return type :
+// GetRedirectTarget is a wrapper around the C function g_param_spec_get_redirect_target.
+func (recv *ParamSpec) GetRedirectTarget() *ParamSpec {
+	retC := C.g_param_spec_get_redirect_target((*C.GParamSpec)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {
 	native *C.GParamSpecOverride
@@ -41,4 +74,9 @@ func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
 // Equals compares this ParamSpecOverride with another ParamSpecOverride, and returns true if they represent the same GObject.
 func (recv *ParamSpecOverride) Equals(other *ParamSpecOverride) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }

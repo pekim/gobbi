@@ -5,6 +5,7 @@ package gtk
 
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -169,7 +170,29 @@ func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 	return retGo
 }
 
-// Unsupported : gtk_style_provider_get_style_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+// GetStyleProperty is a wrapper around the C function gtk_style_provider_get_style_property.
+func (recv *StyleProvider) GetStyleProperty(path *WidgetPath, state StateFlags, pspec *gobject.ParamSpec) (bool, *gobject.Value) {
+	c_path := (*C.GtkWidgetPath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkWidgetPath)(path.ToC())
+	}
+
+	c_state := (C.GtkStateFlags)(state)
+
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	var c_value C.GValue
+
+	retC := C.gtk_style_provider_get_style_property((*C.GtkStyleProvider)(recv.native), c_path, c_state, c_pspec, &c_value)
+	retGo := retC == C.TRUE
+
+	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
+
+	return retGo, value
+}
 
 // IterPrevious is a wrapper around the C function gtk_tree_model_iter_previous.
 func (recv *TreeModel) IterPrevious(iter *TreeIter) bool {

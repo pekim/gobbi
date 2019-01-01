@@ -1364,16 +1364,6 @@ func RcParseString(rcString string) {
 	return
 }
 
-// Unsupported : gtk_rc_property_parse_border : unsupported parameter pspec : Blacklisted record : GParamSpec
-
-// Unsupported : gtk_rc_property_parse_color : unsupported parameter pspec : Blacklisted record : GParamSpec
-
-// Unsupported : gtk_rc_property_parse_enum : unsupported parameter pspec : Blacklisted record : GParamSpec
-
-// Unsupported : gtk_rc_property_parse_flags : unsupported parameter pspec : Blacklisted record : GParamSpec
-
-// Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
-
 // RcReparseAll is a wrapper around the C function gtk_rc_reparse_all.
 func RcReparseAll() bool {
 	retC := C.gtk_rc_reparse_all()

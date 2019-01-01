@@ -31,7 +31,13 @@
     <function c:identifier="g_param_spec_int64" goname="ParamSpecInt64_"/>
     <function c:identifier="g_param_spec_long" goname="ParamLong_"/>
 
+    <function c:identifier="g_param_spec_boxed" goname="ParamSpecBoxed_"/>
+    <function c:identifier="g_param_spec_enum" goname="ParamSpecEnum_"/>
+    <function c:identifier="g_param_spec_flags" goname="ParamSpecFlags_"/>
+    <function c:identifier="g_param_spec_object" goname="ParamSpecObject_"/>
+    <function c:identifier="g_param_spec_param" goname="ParamSpecParam_"/>
     <function c:identifier="g_param_spec_pointer" goname="ParamSpecPointer_"/>
+    <function c:identifier="g_param_spec_override" goname="ParamSpecOverride_"/>
     <function c:identifier="g_param_spec_string" goname="ParamSpecString_"/>
     <function c:identifier="g_param_spec_unichar" goname="ParamSpecUnichar_"/>
     <function c:identifier="g_param_spec_value_array" goname="ParamSpecValueArray_"/>
@@ -46,36 +52,6 @@
     <class name="InitiallyUnowned" fieldsPrivate="true"/>
     <class name="Object" fieldsPrivate="true"/>
 
-    <class blacklist="true" name="ParamSpec"/>
-    <class blacklist="true" name="ParamSpecBoolean"/>
-    <class blacklist="true" name="ParamSpecBoxed"/>
-    <class blacklist="true" name="ParamSpecChar"/>
-    <class blacklist="true" name="ParamSpecDouble"/>
-    <class blacklist="true" name="ParamSpecEnum"/>
-    <class blacklist="true" name="ParamSpecFlags"/>
-    <class blacklist="true" name="ParamSpecFloat"/>
-    <class blacklist="true" name="ParamSpecInt"/>
-    <class blacklist="true" name="ParamSpecInt64"/>
-    <class blacklist="true" name="ParamSpecLong"/>
-    <class blacklist="true" name="ParamSpecObject"/>
-    <class blacklist="true" name="ParamSpecParam"/>
-    <class blacklist="true" name="ParamSpecPointer"/>
-    <class blacklist="true" name="ParamSpecString"/>
-    <class blacklist="true" name="ParamSpecUChar"/>
-    <class blacklist="true" name="ParamSpecUInt"/>
-    <class blacklist="true" name="ParamSpecUInt64"/>
-    <class blacklist="true" name="ParamSpecULong"/>
-    <class blacklist="true" name="ParamSpecUnichar"/>
-    <class blacklist="true" name="ParamSpecValueArray"/>
     <class blacklist="true" name="TypeModule"/>
-
-    <!--<record name="Closure" blacklist="true">-->
-      <!--&lt;!&ndash;-->
-      <!--<method blacklist="true" c:identifier="g_closure_add_finalize_notifier"/>-->
-      <!--<method blacklist="true" c:identifier="g_closure_add_invalidate_notifier"/>-->
-      <!--<method blacklist="true" c:identifier="g_closure_set_marshal"/>-->
-      <!--<method blacklist="true" c:identifier="g_closure_set_meta_marshal"/>-->
-      <!--&ndash;&gt;-->
-    <!--</record>-->
   </namespace>
 </repository>

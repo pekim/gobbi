@@ -3849,7 +3849,7 @@ func (recv *ContainerClass) Equals(other *ContainerClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported : gtk_container_class_find_child_property : return type : Blacklisted record : GParamSpec
+// Blacklisted : gtk_container_class_find_child_property
 
 // HandleBorderWidth is a wrapper around the C function gtk_container_class_handle_border_width.
 func (recv *ContainerClass) HandleBorderWidth() {
@@ -3858,7 +3858,19 @@ func (recv *ContainerClass) HandleBorderWidth() {
 	return
 }
 
-// Unsupported : gtk_container_class_install_child_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+// InstallChildProperty is a wrapper around the C function gtk_container_class_install_child_property.
+func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobject.ParamSpec) {
+	c_property_id := (C.guint)(propertyId)
+
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.gtk_container_class_install_child_property((*C.GtkContainerClass)(recv.native), c_property_id, c_pspec)
+
+	return
+}
 
 // Unsupported : gtk_container_class_list_child_properties : array return type :
 
@@ -10223,11 +10235,121 @@ func (recv *RcProperty) Equals(other *RcProperty) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// gtk_rc_property_parse_border : unsupported parameter pspec : Blacklisted record : GParamSpec
-// gtk_rc_property_parse_color : unsupported parameter pspec : Blacklisted record : GParamSpec
-// gtk_rc_property_parse_enum : unsupported parameter pspec : Blacklisted record : GParamSpec
-// gtk_rc_property_parse_flags : unsupported parameter pspec : Blacklisted record : GParamSpec
-// gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
+// RcPropertyParseBorder is a wrapper around the C function gtk_rc_property_parse_border.
+func RcPropertyParseBorder(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_gstring := (*C.GString)(C.NULL)
+	if gstring != nil {
+		c_gstring = (*C.GString)(gstring.ToC())
+	}
+
+	c_property_value := (*C.GValue)(C.NULL)
+	if propertyValue != nil {
+		c_property_value = (*C.GValue)(propertyValue.ToC())
+	}
+
+	retC := C.gtk_rc_property_parse_border(c_pspec, c_gstring, c_property_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// RcPropertyParseColor is a wrapper around the C function gtk_rc_property_parse_color.
+func RcPropertyParseColor(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_gstring := (*C.GString)(C.NULL)
+	if gstring != nil {
+		c_gstring = (*C.GString)(gstring.ToC())
+	}
+
+	c_property_value := (*C.GValue)(C.NULL)
+	if propertyValue != nil {
+		c_property_value = (*C.GValue)(propertyValue.ToC())
+	}
+
+	retC := C.gtk_rc_property_parse_color(c_pspec, c_gstring, c_property_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// RcPropertyParseEnum is a wrapper around the C function gtk_rc_property_parse_enum.
+func RcPropertyParseEnum(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_gstring := (*C.GString)(C.NULL)
+	if gstring != nil {
+		c_gstring = (*C.GString)(gstring.ToC())
+	}
+
+	c_property_value := (*C.GValue)(C.NULL)
+	if propertyValue != nil {
+		c_property_value = (*C.GValue)(propertyValue.ToC())
+	}
+
+	retC := C.gtk_rc_property_parse_enum(c_pspec, c_gstring, c_property_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// RcPropertyParseFlags is a wrapper around the C function gtk_rc_property_parse_flags.
+func RcPropertyParseFlags(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_gstring := (*C.GString)(C.NULL)
+	if gstring != nil {
+		c_gstring = (*C.GString)(gstring.ToC())
+	}
+
+	c_property_value := (*C.GValue)(C.NULL)
+	if propertyValue != nil {
+		c_property_value = (*C.GValue)(propertyValue.ToC())
+	}
+
+	retC := C.gtk_rc_property_parse_flags(c_pspec, c_gstring, c_property_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// RcPropertyParseRequisition is a wrapper around the C function gtk_rc_property_parse_requisition.
+func RcPropertyParseRequisition(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_gstring := (*C.GString)(C.NULL)
+	if gstring != nil {
+		c_gstring = (*C.GString)(gstring.ToC())
+	}
+
+	c_property_value := (*C.GValue)(C.NULL)
+	if propertyValue != nil {
+		c_property_value = (*C.GValue)(propertyValue.ToC())
+	}
+
+	retC := C.gtk_rc_property_parse_requisition(c_pspec, c_gstring, c_property_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
 // RcStyleClass is a wrapper around the C record GtkRcStyleClass.
 type RcStyleClass struct {
 	native *C.GtkRcStyleClass
@@ -16698,9 +16820,19 @@ func (recv *WidgetClass) Equals(other *WidgetClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported : gtk_widget_class_install_style_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+// InstallStyleProperty is a wrapper around the C function gtk_widget_class_install_style_property.
+func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
 
-// Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter pspec : Blacklisted record : GParamSpec
+	C.gtk_widget_class_install_style_property((*C.GtkWidgetClass)(recv.native), c_pspec)
+
+	return
+}
+
+// Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter parser : no type generator for RcPropertyParser (GtkRcPropertyParser) for param parser
 
 // WidgetClassPrivate is a wrapper around the C record GtkWidgetClassPrivate.
 type WidgetClassPrivate struct {

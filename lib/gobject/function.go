@@ -217,45 +217,472 @@ func GtypeGetType() Type {
 	return retGo
 }
 
-// Unsupported : g_param_spec_boolean : return type : Blacklisted record : GParamSpec
+// ParamSpecBoolean_ is a wrapper around the C function g_param_spec_boolean.
+func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_param_spec_boxed : return type : Blacklisted record : GParamSpec
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
 
-// Unsupported : g_param_spec_char : return type : Blacklisted record : GParamSpec
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
 
-// Unsupported : g_param_spec_double : return type : Blacklisted record : GParamSpec
+	c_default_value :=
+		boolToGboolean(defaultValue)
 
-// Unsupported : g_param_spec_enum : return type : Blacklisted record : GParamSpec
+	c_flags := (C.GParamFlags)(flags)
 
-// Unsupported : g_param_spec_flags : return type : Blacklisted record : GParamSpec
+	retC := C.g_param_spec_boolean(c_name, c_nick, c_blurb, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_param_spec_float : return type : Blacklisted record : GParamSpec
+	return retGo
+}
 
-// Unsupported : g_param_spec_int : return type : Blacklisted record : GParamSpec
+// ParamSpecBoxed_ is a wrapper around the C function g_param_spec_boxed.
+func ParamSpecBoxed_(name string, nick string, blurb string, boxedType Type, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_param_spec_int64 : return type : Blacklisted record : GParamSpec
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
 
-// Unsupported : g_param_spec_long : return type : Blacklisted record : GParamSpec
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
 
-// Unsupported : g_param_spec_object : return type : Blacklisted record : GParamSpec
+	c_boxed_type := (C.GType)(boxedType)
 
-// Unsupported : g_param_spec_param : return type : Blacklisted record : GParamSpec
+	c_flags := (C.GParamFlags)(flags)
 
-// Unsupported : g_param_spec_pointer : return type : Blacklisted record : GParamSpec
+	retC := C.g_param_spec_boxed(c_name, c_nick, c_blurb, c_boxed_type, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_param_spec_string : return type : Blacklisted record : GParamSpec
+	return retGo
+}
 
-// Unsupported : g_param_spec_uchar : return type : Blacklisted record : GParamSpec
+// ParamSpecChar_ is a wrapper around the C function g_param_spec_char.
+func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_param_spec_uint : return type : Blacklisted record : GParamSpec
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
 
-// Unsupported : g_param_spec_uint64 : return type : Blacklisted record : GParamSpec
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
 
-// Unsupported : g_param_spec_ulong : return type : Blacklisted record : GParamSpec
+	c_minimum := (C.gint8)(minimum)
 
-// Unsupported : g_param_spec_unichar : return type : Blacklisted record : GParamSpec
+	c_maximum := (C.gint8)(maximum)
 
-// Unsupported : g_param_spec_value_array : unsupported parameter element_spec : Blacklisted record : GParamSpec
+	c_default_value := (C.gint8)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_char(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecDouble_ is a wrapper around the C function g_param_spec_double.
+func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.gdouble)(minimum)
+
+	c_maximum := (C.gdouble)(maximum)
+
+	c_default_value := (C.gdouble)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_double(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecEnum_ is a wrapper around the C function g_param_spec_enum.
+func ParamSpecEnum_(name string, nick string, blurb string, enumType Type, defaultValue int32, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_enum_type := (C.GType)(enumType)
+
+	c_default_value := (C.gint)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_enum(c_name, c_nick, c_blurb, c_enum_type, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecFlags_ is a wrapper around the C function g_param_spec_flags.
+func ParamSpecFlags_(name string, nick string, blurb string, flagsType Type, defaultValue uint32, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_flags_type := (C.GType)(flagsType)
+
+	c_default_value := (C.guint)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_flags(c_name, c_nick, c_blurb, c_flags_type, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecFloat_ is a wrapper around the C function g_param_spec_float.
+func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.gfloat)(minimum)
+
+	c_maximum := (C.gfloat)(maximum)
+
+	c_default_value := (C.gfloat)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_float(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecInt_ is a wrapper around the C function g_param_spec_int.
+func ParamSpecInt_(name string, nick string, blurb string, minimum int32, maximum int32, defaultValue int32, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.gint)(minimum)
+
+	c_maximum := (C.gint)(maximum)
+
+	c_default_value := (C.gint)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_int(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecInt64_ is a wrapper around the C function g_param_spec_int64.
+func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.gint64)(minimum)
+
+	c_maximum := (C.gint64)(maximum)
+
+	c_default_value := (C.gint64)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_int64(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamLong_ is a wrapper around the C function g_param_spec_long.
+func ParamLong_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.glong)(minimum)
+
+	c_maximum := (C.glong)(maximum)
+
+	c_default_value := (C.glong)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_long(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecObject_ is a wrapper around the C function g_param_spec_object.
+func ParamSpecObject_(name string, nick string, blurb string, objectType Type, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_object_type := (C.GType)(objectType)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_object(c_name, c_nick, c_blurb, c_object_type, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecParam_ is a wrapper around the C function g_param_spec_param.
+func ParamSpecParam_(name string, nick string, blurb string, paramType Type, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_param_type := (C.GType)(paramType)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_param(c_name, c_nick, c_blurb, c_param_type, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecPointer_ is a wrapper around the C function g_param_spec_pointer.
+func ParamSpecPointer_(name string, nick string, blurb string, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_pointer(c_name, c_nick, c_blurb, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecString_ is a wrapper around the C function g_param_spec_string.
+func ParamSpecString_(name string, nick string, blurb string, defaultValue string, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_default_value := C.CString(defaultValue)
+	defer C.free(unsafe.Pointer(c_default_value))
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_string(c_name, c_nick, c_blurb, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecUchar is a wrapper around the C function g_param_spec_uchar.
+func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.guint8)(minimum)
+
+	c_maximum := (C.guint8)(maximum)
+
+	c_default_value := (C.guint8)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_uchar(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecUint is a wrapper around the C function g_param_spec_uint.
+func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, defaultValue uint32, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.guint)(minimum)
+
+	c_maximum := (C.guint)(maximum)
+
+	c_default_value := (C.guint)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_uint(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecUint64 is a wrapper around the C function g_param_spec_uint64.
+func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.guint64)(minimum)
+
+	c_maximum := (C.guint64)(maximum)
+
+	c_default_value := (C.guint64)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_uint64(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecUlong is a wrapper around the C function g_param_spec_ulong.
+func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_minimum := (C.gulong)(minimum)
+
+	c_maximum := (C.gulong)(maximum)
+
+	c_default_value := (C.gulong)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_ulong(c_name, c_nick, c_blurb, c_minimum, c_maximum, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecUnichar_ is a wrapper around the C function g_param_spec_unichar.
+func ParamSpecUnichar_(name string, nick string, blurb string, defaultValue rune, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_default_value := (C.gunichar)(defaultValue)
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_unichar(c_name, c_nick, c_blurb, c_default_value, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ParamSpecValueArray_ is a wrapper around the C function g_param_spec_value_array.
+func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *ParamSpec, flags ParamFlags) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	c_blurb := C.CString(blurb)
+	defer C.free(unsafe.Pointer(c_blurb))
+
+	c_element_spec := (*C.GParamSpec)(C.NULL)
+	if elementSpec != nil {
+		c_element_spec = (*C.GParamSpec)(elementSpec.ToC())
+	}
+
+	c_flags := (C.GParamFlags)(flags)
+
+	retC := C.g_param_spec_value_array(c_name, c_nick, c_blurb, c_element_spec, c_flags)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ParamTypeRegisterStatic is a wrapper around the C function g_param_type_register_static.
 func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
@@ -273,15 +700,107 @@ func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
 	return retGo
 }
 
-// Unsupported : g_param_value_convert : unsupported parameter pspec : Blacklisted record : GParamSpec
+// ParamValueConvert is a wrapper around the C function g_param_value_convert.
+func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
 
-// Unsupported : g_param_value_defaults : unsupported parameter pspec : Blacklisted record : GParamSpec
+	c_src_value := (*C.GValue)(C.NULL)
+	if srcValue != nil {
+		c_src_value = (*C.GValue)(srcValue.ToC())
+	}
 
-// Unsupported : g_param_value_set_default : unsupported parameter pspec : Blacklisted record : GParamSpec
+	c_dest_value := (*C.GValue)(C.NULL)
+	if destValue != nil {
+		c_dest_value = (*C.GValue)(destValue.ToC())
+	}
 
-// Unsupported : g_param_value_validate : unsupported parameter pspec : Blacklisted record : GParamSpec
+	c_strict_validation :=
+		boolToGboolean(strictValidation)
 
-// Unsupported : g_param_values_cmp : unsupported parameter pspec : Blacklisted record : GParamSpec
+	retC := C.g_param_value_convert(c_pspec, c_src_value, c_dest_value, c_strict_validation)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ParamValueDefaults is a wrapper around the C function g_param_value_defaults.
+func ParamValueDefaults(pspec *ParamSpec, value *Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
+
+	retC := C.g_param_value_defaults(c_pspec, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ParamValueSetDefault is a wrapper around the C function g_param_value_set_default.
+func ParamValueSetDefault(pspec *ParamSpec, value *Value) {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
+
+	C.g_param_value_set_default(c_pspec, c_value)
+
+	return
+}
+
+// ParamValueValidate is a wrapper around the C function g_param_value_validate.
+func ParamValueValidate(pspec *ParamSpec, value *Value) bool {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
+
+	retC := C.g_param_value_validate(c_pspec, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ParamValuesCmp is a wrapper around the C function g_param_values_cmp.
+func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int32 {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	c_value1 := (*C.GValue)(C.NULL)
+	if value1 != nil {
+		c_value1 = (*C.GValue)(value1.ToC())
+	}
+
+	c_value2 := (*C.GValue)(C.NULL)
+	if value2 != nil {
+		c_value2 = (*C.GValue)(value2.ToC())
+	}
+
+	retC := C.g_param_values_cmp(c_pspec, c_value1, c_value2)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // PointerTypeRegisterStatic is a wrapper around the C function g_pointer_type_register_static.
 func PointerTypeRegisterStatic(name string) Type {

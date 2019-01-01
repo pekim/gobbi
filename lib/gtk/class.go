@@ -1679,6 +1679,15 @@ import (
 */
 /*
 
+	void widget_childNotifyHandler(GObject *, GParamSpec *, gpointer);
+
+	static gulong Widget_signal_connect_child_notify(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-notify", G_CALLBACK(widget_childNotifyHandler), data);
+	}
+
+*/
+/*
+
 	void widget_compositedChangedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
@@ -28881,8 +28890,19 @@ func SettingsGetDefault() *Settings {
 	return retGo
 }
 
-// gtk_settings_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
-// gtk_settings_install_property_parser : unsupported parameter pspec : Blacklisted record : GParamSpec
+// SettingsInstallProperty is a wrapper around the C function gtk_settings_install_property.
+func SettingsInstallProperty(pspec *gobject.ParamSpec) {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.gtk_settings_install_property(c_pspec)
+
+	return
+}
+
+// gtk_settings_install_property_parser : unsupported parameter parser : no type generator for RcPropertyParser (GtkRcPropertyParser) for param parser
 // SetDoubleProperty is a wrapper around the C function gtk_settings_set_double_property.
 func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin string) {
 	c_name := C.CString(name)
@@ -41143,7 +41163,67 @@ func widget_canActivateAccelHandler(_ *C.GObject, c_signal_id C.guint, data C.gp
 	return retC
 }
 
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : type GObject.ParamSpec : Blacklisted record : GParamSpec
+type signalWidgetChildNotifyDetail struct {
+	callback  WidgetSignalChildNotifyCallback
+	handlerID C.gulong
+}
+
+var signalWidgetChildNotifyId int
+var signalWidgetChildNotifyMap = make(map[int]signalWidgetChildNotifyDetail)
+var signalWidgetChildNotifyLock sync.RWMutex
+
+// WidgetSignalChildNotifyCallback is a callback function for a 'child-notify' signal emitted from a Widget.
+type WidgetSignalChildNotifyCallback func(childProperty *gobject.ParamSpec)
+
+/*
+ConnectChildNotify connects the callback to the 'child-notify' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectChildNotify to remove it.
+*/
+func (recv *Widget) ConnectChildNotify(callback WidgetSignalChildNotifyCallback) int {
+	signalWidgetChildNotifyLock.Lock()
+	defer signalWidgetChildNotifyLock.Unlock()
+
+	signalWidgetChildNotifyId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_child_notify(instance, C.gpointer(uintptr(signalWidgetChildNotifyId)))
+
+	detail := signalWidgetChildNotifyDetail{callback, handlerID}
+	signalWidgetChildNotifyMap[signalWidgetChildNotifyId] = detail
+
+	return signalWidgetChildNotifyId
+}
+
+/*
+DisconnectChildNotify disconnects a callback from the 'child-notify' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectChildNotify.
+*/
+func (recv *Widget) DisconnectChildNotify(connectionID int) {
+	signalWidgetChildNotifyLock.Lock()
+	defer signalWidgetChildNotifyLock.Unlock()
+
+	detail, exists := signalWidgetChildNotifyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetChildNotifyMap, connectionID)
+}
+
+//export widget_childNotifyHandler
+func widget_childNotifyHandler(_ *C.GObject, c_child_property *C.GParamSpec, data C.gpointer) {
+	signalWidgetChildNotifyLock.RLock()
+	defer signalWidgetChildNotifyLock.RUnlock()
+
+	childProperty := gobject.ParamSpecNewFromC(unsafe.Pointer(c_child_property))
+
+	index := int(uintptr(data))
+	callback := signalWidgetChildNotifyMap[index].callback
+	callback(childProperty)
+}
 
 type signalWidgetCompositedChangedDetail struct {
 	callback  WidgetSignalCompositedChangedCallback

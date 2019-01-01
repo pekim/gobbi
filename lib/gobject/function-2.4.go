@@ -3,6 +3,8 @@
 
 package gobject
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -10,7 +12,21 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_param_spec_override : unsupported parameter overridden : Blacklisted record : GParamSpec
+// ParamSpecOverride_ is a wrapper around the C function g_param_spec_override.
+func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_overridden := (*C.GParamSpec)(C.NULL)
+	if overridden != nil {
+		c_overridden = (*C.GParamSpec)(overridden.ToC())
+	}
+
+	retC := C.g_param_spec_override(c_name, c_overridden)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {

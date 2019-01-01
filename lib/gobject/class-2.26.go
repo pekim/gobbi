@@ -150,7 +150,17 @@ func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintp
 	return retGo
 }
 
-// Unsupported : g_object_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
+// NotifyByPspec is a wrapper around the C function g_object_notify_by_pspec.
+func (recv *Object) NotifyByPspec(pspec *ParamSpec) {
+	c_pspec := (*C.GParamSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GParamSpec)(pspec.ToC())
+	}
+
+	C.g_object_notify_by_pspec((*C.GObject)(recv.native), c_pspec)
+
+	return
+}
 
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {
@@ -180,4 +190,9 @@ func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 // Equals compares this ParamSpecVariant with another ParamSpecVariant, and returns true if they represent the same GObject.
 func (recv *ParamSpecVariant) Equals(other *ParamSpecVariant) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }

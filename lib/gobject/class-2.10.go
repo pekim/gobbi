@@ -35,6 +35,14 @@ func (recv *Object) RefSink() uintptr {
 	return retGo
 }
 
+// RefSink is a wrapper around the C function g_param_spec_ref_sink.
+func (recv *ParamSpec) RefSink() *ParamSpec {
+	retC := C.g_param_spec_ref_sink((*C.GParamSpec)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // ParamSpecGType is a wrapper around the C record GParamSpecGType.
 type ParamSpecGType struct {
 	native *C.GParamSpecGType
@@ -66,4 +74,9 @@ func (recv *ParamSpecGType) ToC() unsafe.Pointer {
 // Equals compares this ParamSpecGType with another ParamSpecGType, and returns true if they represent the same GObject.
 func (recv *ParamSpecGType) Equals(other *ParamSpecGType) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecGType) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
