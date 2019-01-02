@@ -56,11 +56,11 @@
 	"content": " connecting To connect an object to a signal that it emits, call one of the object\u0026rsquo;s Connect... methods.\nThe connect methods all accept a handler argument that is a function with a specific signature. Some handlers have no parameters, others have one or more parameters that provide event-specific information.\nbutton := gtk.ButtonNewWithLabel(\u0026#34;a button\u0026#34;) button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK)) button.Widget().ConnectMotionNotifyEvent( func(event *gdk.EventMotion) bool { fmt.Println(event.Y, event.Y) return false }) Remember that it may be necessary to upcast to access the desired connect method.\ndisconnecting All of the Connect... methods return a handler id. The id may be used later to disconnect the handler.\nconnectId := button.ConnectClicked(func() { ... }) ... button.DisconnectClicked(connectId) notify signal for a single property ConnectNotifyProperty connects the callback to the notify signal for a specific property of an Object.\nFor example, to connect to the notify signal for the \u0026ldquo;title\u0026rdquo; property of a window.\nwindow := gtk.WindowNew(...) window.Object().ConnectNotifyProperty( \u0026#34;title\u0026#34;, func(pspec *gobject.ParamSpec, ) { fmt.Println(\u0026#34;title property changed\u0026#34;) }) In that example it is the notify::title signal that is being connected to.\nThe returned value represents the connection, and may be passed to DisconnectNotify to remove it.\nConnectNotifyProperty is a special case, and has no direct equivalent in the GObject library.\n"
 },
 {
-	"uri": "https://pekim.github.io/gobbi/format-functions/",
-	"title": "Format functions",
+	"uri": "https://pekim.github.io/gobbi/variadic-functions/",
+	"title": "Variadic functions",
 	"tags": [],
 	"description": "",
-	"content": "Some C library variadic functions accept trailing arguments that include a printf style format string followed by arguments to insert in to the format string. gtk_message_dialog_new is an example of such a function.\nThe equivalent functions in gobbi accept fmt package compatible arguments. This is because fmt.Sprint is used to format a string before passing it as the last argument to the wrapped C function.\nA much simplified representation of such a function might help to make this clearer.\nfunc SomeRepresentativeFunction( a string, b int, format string, args ...interface{}, ) { c_a := C.String(a) c_b := C.int(b) formattedString := fmt.Sprintf(format, args...) c_formattedString := C.String(formattedString) C.some_representative_function(c_a, c_b, c_formattedString) }"
+	"content": " Some C library functions are variadic. Unfortunately cgo does not support calling variadic C functions.\nformat functions Some C library variadic functions accept trailing arguments that include a printf style format string followed by arguments to insert in to the format string. gtk_message_dialog_new is an example of such a function.\nThe equivalent functions in gobbi accept fmt package compatible arguments. This is because fmt.Sprint is used to format a string before passing it as the last argument to the wrapped C function.\nA much simplified representation of such a function might help to make this clearer.\nfunc SomeRepresentativeFunction( a string, b int, format string, args ...interface{}, ) { c_a := C.String(a) c_b := C.int(b) formattedString := fmt.Sprintf(format, args...) c_formattedString := C.String(formattedString) C.some_representative_function(c_a, c_b, c_formattedString) } unsupported variadic functions Many variadic functions are not supported by gobbi because it would be impractical to automatically generate code that would support them.\narray functions In some cases there is another function that accepts an array as the final argument instead. For example gtk_list_store_new is not supported, but gtk_list_store_newv is supported as gtk.ListStoreNewv.\nmultiple functions There are other variadac functions that do not have an array equivalent version, but their functionality can be achieved through a combination of functions.\nAn example of this is the unsupported gtk_text_buffer_create_tag function. A work around might be code like this.\ntag := gtk.TextTagNew(\u0026#34;my_tag_name\u0026#34;) tagTable := gtk.TextTagTableNew() tagTable.Add(tag) buffer := gtk.TextBufferNew(tagTable) editable := gobject.ValueNew(gobject.TYPE_BOOLEAN) editable.SetBoolean(false) tag.Object().SetProperty(\u0026#34;property-name\u0026#34;, editable) indent := gobject.ValueNew(gobject.TYPE_INT) indent.SetInt(4) tag.Object().SetProperty(\u0026#34;indent\u0026#34;, indent)"
 },
 {
 	"uri": "https://pekim.github.io/gobbi/reference-counting/",
@@ -75,13 +75,6 @@
 	"tags": [],
 	"description": "",
 	"content": " Minimal API docs are generated, and are available at https://godoc.org/github.com/pekim/gobbi.\nlibrary functions For most library API functions the generated documentation says little more than what function is being wrapped. The Gnome API Reference documentation should be referenced for details of the APIs.\ngobbi-specific functions The documentation for gobbi-specific functions should be of some use.\n"
-},
-{
-	"uri": "https://pekim.github.io/gobbi/summary-base/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": " Summary  Introduction Getting started Application lifecycle\n Build tags (library versions)\n Casting\n Goroutines\n gobject.Value\n Signal handling API  "
 },
 {
 	"uri": "https://pekim.github.io/gobbi/_footer/",
