@@ -15,8 +15,8 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ParamSpecVariant is a wrapper around the C function g_param_spec_variant.
-func ParamSpecVariant(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags ParamFlags) *ParamSpec {
+// ParamSpecVariant_ is a wrapper around the C function g_param_spec_variant.
+func ParamSpecVariant_(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags ParamFlags) *ParamSpec {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 

@@ -41,6 +41,7 @@
     <function c:identifier="g_param_spec_string" goname="ParamSpecString_"/>
     <function c:identifier="g_param_spec_unichar" goname="ParamSpecUnichar_"/>
     <function c:identifier="g_param_spec_value_array" goname="ParamSpecValueArray_"/>
+    <function c:identifier="g_param_spec_variant" goname="ParamSpecVariant_"/>
 
     <function c:identifier="g_type_query" goname="TypeQuery_"/>
 
