@@ -15,9 +15,8 @@ package gobject
 
 */
 import "C"
-import "unsafe"
 
-// "notify::%s"
+import "unsafe"
 
 /*
 ConnectNotifyProperty connects the callback to the 'notify' signal
