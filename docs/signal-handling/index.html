@@ -209,6 +209,30 @@ The id may be used later to disconnect the handler.</p>
     <span style="color:#f92672">...</span>
     
     <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">DisconnectClicked</span><span style="color:#111">(</span><span style="color:#75af00">connectId</span><span style="color:#111">)</span></code></pre></div>
+<h2 id="notify-signal-for-a-single-property">notify signal for a single property</h2>
+
+<p><code>ConnectNotifyProperty</code> connects the callback
+to the <code>notify</code> signal
+for a specific property of an Object.</p>
+
+<p>For example, to connect to the notify signal
+for the &ldquo;title&rdquo; property of a window.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span>
+
+    <span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Object</span><span style="color:#111">().</span><span style="color:#75af00">ConnectNotifyProperty</span><span style="color:#111">(</span>
+        <span style="color:#d88200">&#34;title&#34;</span><span style="color:#111">,</span> <span style="color:#00a8c8">func</span><span style="color:#111">(</span><span style="color:#75af00">pspec</span> <span style="color:#f92672">*</span><span style="color:#75af00">gobject</span><span style="color:#111">.</span><span style="color:#75af00">ParamSpec</span><span style="color:#111">,</span>
+    <span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">fmt</span><span style="color:#111">.</span><span style="color:#75af00">Println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;title property changed&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">})</span></code></pre></div>
+<p>In that example it is the <code>notify::title</code> signal
+that is being connected to.</p>
+
+<p>The returned value represents the connection,
+and may be passed to <code>DisconnectNotify</code> to remove it.</p>
+
+<p><code>ConnectNotifyProperty</code> is a special case,
+and has no direct equivalent in the GObject library.</p>
+
 
     
     

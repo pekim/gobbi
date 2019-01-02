@@ -40,3 +40,30 @@ The id may be used later to disconnect the handler.
     
     button.DisconnectClicked(connectId)
 ```
+
+## notify signal for a single property
+`ConnectNotifyProperty` connects the callback
+to the `notify` signal
+for a specific property of an Object.
+
+For example, to connect to the notify signal
+for the "title" property of a window.
+
+```go
+    window := gtk.WindowNew(...)
+
+    window.Object().ConnectNotifyProperty(
+        "title", func(pspec *gobject.ParamSpec,
+    ) {
+        fmt.Println("title property changed")
+    })
+```
+
+In that example it is the `notify::title` signal
+that is being connected to.
+
+The returned value represents the connection,
+and may be passed to `DisconnectNotify` to remove it.
+
+`ConnectNotifyProperty` is a special case,
+and has no direct equivalent in the GObject library.
