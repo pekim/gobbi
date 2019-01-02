@@ -74,3 +74,24 @@ func TestArrayParam(t *testing.T) {
 	store := gtk.ListStoreNewv([]gobject.Type{gobject.TYPE_BOOLEAN, gobject.TYPE_INT})
 	assert.NotNil(t, store)
 }
+
+func TestConnectNotify(t *testing.T) {
+	notifyCount := 0
+	label := gtk.LabelNew("a")
+
+	label.Object().ConnectNotify(func(pspec *gobject.ParamSpec) {
+		notifyCount++
+	})
+
+	label.Object().ConnectNotifyProperty("label", func(pspec *gobject.ParamSpec) {
+		notifyCount++
+	})
+
+	label.Object().ConnectNotifyProperty("non-such-property", func(pspec *gobject.ParamSpec) {
+		notifyCount++
+	})
+
+	label.SetText("b")
+
+	assert.Equal(t, 2, notifyCount)
+}
