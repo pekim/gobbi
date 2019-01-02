@@ -34,7 +34,8 @@ article section.page h1:first-of-type {
     text-transform: none;
 }
 
-article section.page h2 {
+article section.page h2,
+article section.page h3 {
     margin-top: 2.5rem;
 }
 
