@@ -103,11 +103,14 @@ func (recv *Binding) GetTargetProperty() string {
 }
 
 // BindProperty is a wrapper around the C function g_object_bind_property.
-func (recv *Object) BindProperty(sourceProperty string, target uintptr, targetProperty string, flags BindingFlags) *Binding {
+func (recv *Object) BindProperty(sourceProperty string, target *Object, targetProperty string, flags BindingFlags) *Binding {
 	c_source_property := C.CString(sourceProperty)
 	defer C.free(unsafe.Pointer(c_source_property))
 
-	c_target := (C.gpointer)(target)
+	c_target := (C.gpointer)(C.NULL)
+	if target != nil {
+		c_target = (C.gpointer)(target.ToC())
+	}
 
 	c_target_property := C.CString(targetProperty)
 	defer C.free(unsafe.Pointer(c_target_property))
@@ -123,11 +126,14 @@ func (recv *Object) BindProperty(sourceProperty string, target uintptr, targetPr
 // Unsupported : g_object_bind_property_full : unsupported parameter transform_to : no type generator for BindingTransformFunc (GBindingTransformFunc) for param transform_to
 
 // BindPropertyWithClosures is a wrapper around the C function g_object_bind_property_with_closures.
-func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintptr, targetProperty string, flags BindingFlags, transformTo *Closure, transformFrom *Closure) *Binding {
+func (recv *Object) BindPropertyWithClosures(sourceProperty string, target *Object, targetProperty string, flags BindingFlags, transformTo *Closure, transformFrom *Closure) *Binding {
 	c_source_property := C.CString(sourceProperty)
 	defer C.free(unsafe.Pointer(c_source_property))
 
-	c_target := (C.gpointer)(target)
+	c_target := (C.gpointer)(C.NULL)
+	if target != nil {
+		c_target = (C.gpointer)(target.ToC())
+	}
 
 	c_target_property := C.CString(targetProperty)
 	defer C.free(unsafe.Pointer(c_target_property))

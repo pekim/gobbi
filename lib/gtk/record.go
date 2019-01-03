@@ -1471,16 +1471,7 @@ func (recv *BindingSet) Equals(other *BindingSet) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// BindingSetByClass is a wrapper around the C function gtk_binding_set_by_class.
-func BindingSetByClass(objectClass uintptr) *BindingSet {
-	c_object_class := (C.gpointer)(objectClass)
-
-	retC := C.gtk_binding_set_by_class(c_object_class)
-	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// gtk_binding_set_by_class : unsupported parameter object_class : no type generator for gpointer (gpointer) for param object_class
 // BindingSetFind is a wrapper around the C function gtk_binding_set_find.
 func BindingSetFind(setName string) *BindingSet {
 	c_set_name := C.CString(setName)
@@ -10838,8 +10829,8 @@ func (recv *RendererCellAccessiblePrivate) Equals(other *RendererCellAccessibleP
 
 // RequestedSize is a wrapper around the C record GtkRequestedSize.
 type RequestedSize struct {
-	native      *C.GtkRequestedSize
-	Data        uintptr
+	native *C.GtkRequestedSize
+	// data : no type generator for gpointer, gpointer
 	MinimumSize int32
 	NaturalSize int32
 }
@@ -10851,7 +10842,6 @@ func RequestedSizeNewFromC(u unsafe.Pointer) *RequestedSize {
 	}
 
 	g := &RequestedSize{
-		Data:        (uintptr)(c.data),
 		MinimumSize: (int32)(c.minimum_size),
 		NaturalSize: (int32)(c.natural_size),
 		native:      c,
@@ -10861,8 +10851,6 @@ func RequestedSizeNewFromC(u unsafe.Pointer) *RequestedSize {
 }
 
 func (recv *RequestedSize) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.gpointer)(recv.Data)
 	recv.native.minimum_size =
 		(C.gint)(recv.MinimumSize)
 	recv.native.natural_size =
@@ -12315,7 +12303,7 @@ func (recv *StatusbarAccessiblePrivate) Equals(other *StatusbarAccessiblePrivate
 type StatusbarClass struct {
 	native *C.GtkStatusbarClass
 	// parent_class : record
-	Reserved uintptr
+	// reserved : no type generator for gpointer, gpointer
 	// no type for text_pushed
 	// no type for text_popped
 	// no type for _gtk_reserved1
@@ -12330,17 +12318,12 @@ func StatusbarClassNewFromC(u unsafe.Pointer) *StatusbarClass {
 		return nil
 	}
 
-	g := &StatusbarClass{
-		Reserved: (uintptr)(c.reserved),
-		native:   c,
-	}
+	g := &StatusbarClass{native: c}
 
 	return g
 }
 
 func (recv *StatusbarClass) ToC() unsafe.Pointer {
-	recv.native.reserved =
-		(C.gpointer)(recv.Reserved)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -15457,11 +15440,11 @@ func (recv *TreeDragSourceIface) Equals(other *TreeDragSourceIface) bool {
 
 // TreeIter is a wrapper around the C record GtkTreeIter.
 type TreeIter struct {
-	native    *C.GtkTreeIter
-	Stamp     int32
-	UserData  uintptr
-	UserData2 uintptr
-	UserData3 uintptr
+	native *C.GtkTreeIter
+	Stamp  int32
+	// user_data : no type generator for gpointer, gpointer
+	// user_data2 : no type generator for gpointer, gpointer
+	// user_data3 : no type generator for gpointer, gpointer
 }
 
 func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
@@ -15471,11 +15454,8 @@ func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
 	}
 
 	g := &TreeIter{
-		Stamp:     (int32)(c.stamp),
-		UserData:  (uintptr)(c.user_data),
-		UserData2: (uintptr)(c.user_data2),
-		UserData3: (uintptr)(c.user_data3),
-		native:    c,
+		Stamp:  (int32)(c.stamp),
+		native: c,
 	}
 
 	return g
@@ -15484,12 +15464,6 @@ func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
 func (recv *TreeIter) ToC() unsafe.Pointer {
 	recv.native.stamp =
 		(C.gint)(recv.Stamp)
-	recv.native.user_data =
-		(C.gpointer)(recv.UserData)
-	recv.native.user_data2 =
-		(C.gpointer)(recv.UserData2)
-	recv.native.user_data3 =
-		(C.gpointer)(recv.UserData3)
 
 	return (unsafe.Pointer)(recv.native)
 }

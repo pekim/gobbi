@@ -142,15 +142,7 @@ func MkdirWithParents(pathname string, mode int32) int32 {
 	return retGo
 }
 
-// TryMalloc0 is a wrapper around the C function g_try_malloc0.
-func TryMalloc0(nBytes uint64) uintptr {
-	c_n_bytes := (C.gsize)(nBytes)
-
-	retC := C.g_try_malloc0(c_n_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_try_malloc0 : no return generator
 
 // Utf8CollateKeyForFilename is a wrapper around the C function g_utf8_collate_key_for_filename.
 func Utf8CollateKeyForFilename(str string, len int64) string {

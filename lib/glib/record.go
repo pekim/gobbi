@@ -82,30 +82,17 @@ func (recv *Array) Equals(other *Array) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// g_array_append_vals : array return type :
-// ArrayFree is a wrapper around the C function g_array_free.
-func ArrayFree(array []uintptr, freeSegment bool) string {
-	c_array := &array[0]
-
-	c_free_segment :=
-		boolToGboolean(freeSegment)
-
-	retC := C.g_array_free((*C.GArray)(unsafe.Pointer(c_array)), c_free_segment)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// g_array_insert_vals : array return type :
-// g_array_new : array return type :
-// g_array_prepend_vals : array return type :
-// g_array_remove_index : array return type :
-// g_array_remove_index_fast : array return type :
-// g_array_set_size : array return type :
-// g_array_sized_new : array return type :
-// g_array_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
-// g_array_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
+// g_array_append_vals : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_free : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_insert_vals : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_new : no type generator for gpointer (gpointer) for array return
+// g_array_prepend_vals : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_remove_index : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_remove_index_fast : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_set_size : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_sized_new : no type generator for gpointer (gpointer) for array return
+// g_array_sort : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_sort_with_data : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // AsyncQueue is a wrapper around the C record GAsyncQueue.
 type AsyncQueue struct {
 	native *C.GAsyncQueue
@@ -163,39 +150,13 @@ func (recv *AsyncQueue) Lock() {
 	return
 }
 
-// Pop is a wrapper around the C function g_async_queue_pop.
-func (recv *AsyncQueue) Pop() uintptr {
-	retC := C.g_async_queue_pop((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_async_queue_pop : no return generator
 
-	return retGo
-}
+// Unsupported : g_async_queue_pop_unlocked : no return generator
 
-// PopUnlocked is a wrapper around the C function g_async_queue_pop_unlocked.
-func (recv *AsyncQueue) PopUnlocked() uintptr {
-	retC := C.g_async_queue_pop_unlocked((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_async_queue_push : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	return retGo
-}
-
-// Push is a wrapper around the C function g_async_queue_push.
-func (recv *AsyncQueue) Push(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.g_async_queue_push((*C.GAsyncQueue)(recv.native), c_data)
-
-	return
-}
-
-// PushUnlocked is a wrapper around the C function g_async_queue_push_unlocked.
-func (recv *AsyncQueue) PushUnlocked(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.g_async_queue_push_unlocked((*C.GAsyncQueue)(recv.native), c_data)
-
-	return
-}
+// Unsupported : g_async_queue_push_unlocked : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Ref is a wrapper around the C function g_async_queue_ref.
 func (recv *AsyncQueue) Ref() *AsyncQueue {
@@ -212,67 +173,17 @@ func (recv *AsyncQueue) RefUnlocked() {
 	return
 }
 
-// TimedPop is a wrapper around the C function g_async_queue_timed_pop.
-func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
-	c_end_time := (*C.GTimeVal)(C.NULL)
-	if endTime != nil {
-		c_end_time = (*C.GTimeVal)(endTime.ToC())
-	}
+// Unsupported : g_async_queue_timed_pop : no return generator
 
-	retC := C.g_async_queue_timed_pop((*C.GAsyncQueue)(recv.native), c_end_time)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_async_queue_timed_pop_unlocked : no return generator
 
-	return retGo
-}
+// Unsupported : g_async_queue_timeout_pop : no return generator
 
-// TimedPopUnlocked is a wrapper around the C function g_async_queue_timed_pop_unlocked.
-func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
-	c_end_time := (*C.GTimeVal)(C.NULL)
-	if endTime != nil {
-		c_end_time = (*C.GTimeVal)(endTime.ToC())
-	}
+// Unsupported : g_async_queue_timeout_pop_unlocked : no return generator
 
-	retC := C.g_async_queue_timed_pop_unlocked((*C.GAsyncQueue)(recv.native), c_end_time)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_async_queue_try_pop : no return generator
 
-	return retGo
-}
-
-// TimeoutPop is a wrapper around the C function g_async_queue_timeout_pop.
-func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
-	c_timeout := (C.guint64)(timeout)
-
-	retC := C.g_async_queue_timeout_pop((*C.GAsyncQueue)(recv.native), c_timeout)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TimeoutPopUnlocked is a wrapper around the C function g_async_queue_timeout_pop_unlocked.
-func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
-	c_timeout := (C.guint64)(timeout)
-
-	retC := C.g_async_queue_timeout_pop_unlocked((*C.GAsyncQueue)(recv.native), c_timeout)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TryPop is a wrapper around the C function g_async_queue_try_pop.
-func (recv *AsyncQueue) TryPop() uintptr {
-	retC := C.g_async_queue_try_pop((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TryPopUnlocked is a wrapper around the C function g_async_queue_try_pop_unlocked.
-func (recv *AsyncQueue) TryPopUnlocked() uintptr {
-	retC := C.g_async_queue_try_pop_unlocked((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_async_queue_try_pop_unlocked : no return generator
 
 // Unlock is a wrapper around the C function g_async_queue_unlock.
 func (recv *AsyncQueue) Unlock() {
@@ -1121,95 +1032,13 @@ func HashTableDestroy(hashTable *HashTable) {
 // g_hash_table_foreach : unsupported parameter func : no type generator for HFunc (GHFunc) for param func
 // g_hash_table_foreach_remove : unsupported parameter func : no type generator for HRFunc (GHRFunc) for param func
 // g_hash_table_foreach_steal : unsupported parameter func : no type generator for HRFunc (GHRFunc) for param func
-// HashTableInsert is a wrapper around the C function g_hash_table_insert.
-func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gpointer)(key)
-
-	c_value := (C.gpointer)(value)
-
-	retC := C.g_hash_table_insert(c_hash_table, c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HashTableLookup is a wrapper around the C function g_hash_table_lookup.
-func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_lookup(c_hash_table, c_key)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HashTableLookupExtended is a wrapper around the C function g_hash_table_lookup_extended.
-func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uintptr, uintptr) {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_lookup_key := (C.gconstpointer)(lookupKey)
-
-	var c_orig_key C.gpointer
-
-	var c_value C.gpointer
-
-	retC := C.g_hash_table_lookup_extended(c_hash_table, c_lookup_key, &c_orig_key, &c_value)
-	retGo := retC == C.TRUE
-
-	origKey := (uintptr)(unsafe.Pointer(&c_orig_key))
-
-	value := (uintptr)(unsafe.Pointer(&c_value))
-
-	return retGo, origKey, value
-}
-
+// g_hash_table_insert : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+// g_hash_table_lookup : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
+// g_hash_table_lookup_extended : unsupported parameter lookup_key : no type generator for gpointer (gconstpointer) for param lookup_key
 // g_hash_table_new : unsupported parameter hash_func : no type generator for HashFunc (GHashFunc) for param hash_func
 // g_hash_table_new_full : unsupported parameter hash_func : no type generator for HashFunc (GHashFunc) for param hash_func
-// HashTableRemove is a wrapper around the C function g_hash_table_remove.
-func HashTableRemove(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_remove(c_hash_table, c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HashTableReplace is a wrapper around the C function g_hash_table_replace.
-func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gpointer)(key)
-
-	c_value := (C.gpointer)(value)
-
-	retC := C.g_hash_table_replace(c_hash_table, c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
+// g_hash_table_remove : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
+// g_hash_table_replace : unsupported parameter key : no type generator for gpointer (gpointer) for param key
 // HashTableSize is a wrapper around the C function g_hash_table_size.
 func HashTableSize(hashTable *HashTable) uint32 {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1223,21 +1052,7 @@ func HashTableSize(hashTable *HashTable) uint32 {
 	return retGo
 }
 
-// HashTableSteal is a wrapper around the C function g_hash_table_steal.
-func HashTableSteal(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_steal(c_hash_table, c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
+// g_hash_table_steal : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 // HashTableIter is a wrapper around the C record GHashTableIter.
 type HashTableIter struct {
 	native *C.GHashTableIter
@@ -1273,13 +1088,13 @@ func (recv *HashTableIter) Equals(other *HashTableIter) bool {
 // Hook is a wrapper around the C record GHook.
 type Hook struct {
 	native *C.GHook
-	Data   uintptr
+	// data : no type generator for gpointer, gpointer
 	// next : record
 	// prev : record
 	RefCount uint32
 	HookId   uint64
 	Flags    uint32
-	Func     uintptr
+	// _func : no type generator for gpointer, gpointer
 	// destroy : no type generator for DestroyNotify, GDestroyNotify
 }
 
@@ -1290,9 +1105,7 @@ func HookNewFromC(u unsafe.Pointer) *Hook {
 	}
 
 	g := &Hook{
-		Data:     (uintptr)(c.data),
 		Flags:    (uint32)(c.flags),
-		Func:     (uintptr)(c._func),
 		HookId:   (uint64)(c.hook_id),
 		RefCount: (uint32)(c.ref_count),
 		native:   c,
@@ -1302,16 +1115,12 @@ func HookNewFromC(u unsafe.Pointer) *Hook {
 }
 
 func (recv *Hook) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.gpointer)(recv.Data)
 	recv.native.ref_count =
 		(C.guint)(recv.RefCount)
 	recv.native.hook_id =
 		(C.gulong)(recv.HookId)
 	recv.native.flags =
 		(C.guint)(recv.Flags)
-	recv.native._func =
-		(C.gpointer)(recv.Func)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -1367,62 +1176,9 @@ func HookDestroyLink(hookList *HookList, hook *Hook) {
 }
 
 // g_hook_find : unsupported parameter func : no type generator for HookFindFunc (GHookFindFunc) for param func
-// HookFindData is a wrapper around the C function g_hook_find_data.
-func HookFindData(hookList *HookList, needValids bool, data uintptr) *Hook {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_need_valids :=
-		boolToGboolean(needValids)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_hook_find_data(c_hook_list, c_need_valids, c_data)
-	retGo := HookNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HookFindFunc is a wrapper around the C function g_hook_find_func.
-func HookFindFunc(hookList *HookList, needValids bool, func_ uintptr) *Hook {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_need_valids :=
-		boolToGboolean(needValids)
-
-	c_func := (C.gpointer)(func_)
-
-	retC := C.g_hook_find_func(c_hook_list, c_need_valids, c_func)
-	retGo := HookNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HookFindFuncData is a wrapper around the C function g_hook_find_func_data.
-func HookFindFuncData(hookList *HookList, needValids bool, func_ uintptr, data uintptr) *Hook {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_need_valids :=
-		boolToGboolean(needValids)
-
-	c_func := (C.gpointer)(func_)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_hook_find_func_data(c_hook_list, c_need_valids, c_func, c_data)
-	retGo := HookNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_hook_find_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_hook_find_func : unsupported parameter func : no type generator for gpointer (gpointer) for param func
+// g_hook_find_func_data : unsupported parameter func : no type generator for gpointer (gpointer) for param func
 // HookFirstValid is a wrapper around the C function g_hook_first_valid.
 func HookFirstValid(hookList *HookList, mayBeInCall bool) *Hook {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1587,7 +1343,7 @@ type HookList struct {
 	// Bitfield not supported : 16 hook_size
 	// Bitfield not supported :  1 is_setup
 	// hooks : record
-	Dummy3 uintptr
+	// dummy3 : no type generator for gpointer, gpointer
 	// finalize_hook : no type generator for HookFinalizeFunc, GHookFinalizeFunc
 	// no type for dummy
 }
@@ -1599,7 +1355,6 @@ func HookListNewFromC(u unsafe.Pointer) *HookList {
 	}
 
 	g := &HookList{
-		Dummy3: (uintptr)(c.dummy3),
 		SeqId:  (uint64)(c.seq_id),
 		native: c,
 	}
@@ -1610,8 +1365,6 @@ func HookListNewFromC(u unsafe.Pointer) *HookList {
 func (recv *HookList) ToC() unsafe.Pointer {
 	recv.native.seq_id =
 		(C.gulong)(recv.SeqId)
-	recv.native.dummy3 =
-		(C.gpointer)(recv.Dummy3)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -2240,7 +1993,7 @@ func KeyFileErrorQuark() Quark {
 // List is a wrapper around the C record GList.
 type List struct {
 	native *C.GList
-	Data   uintptr
+	// data : no type generator for gpointer, gpointer
 	// next : record
 	// prev : record
 }
@@ -2251,17 +2004,12 @@ func ListNewFromC(u unsafe.Pointer) *List {
 		return nil
 	}
 
-	g := &List{
-		Data:   (uintptr)(c.data),
-		native: c,
-	}
+	g := &List{native: c}
 
 	return g
 }
 
 func (recv *List) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.gpointer)(recv.Data)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -2279,21 +2027,7 @@ func ListAlloc() *List {
 	return retGo
 }
 
-// ListAppend is a wrapper around the C function g_list_append.
-func ListAppend(list *List, data uintptr) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_list_append(c_list, c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_list_append : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // ListConcat is a wrapper around the C function g_list_concat.
 func ListConcat(list1 *List, list2 *List) *List {
 	c_list1 := (*C.GList)(C.NULL)
@@ -2343,22 +2077,8 @@ func ListDeleteLink(list *List, link *List) *List {
 	return retGo
 }
 
-// ListFind is a wrapper around the C function g_list_find.
-func ListFind(list *List, data uintptr) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_list_find(c_list, c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// g_list_find_custom : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// g_list_find : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
+// g_list_find_custom : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 // ListFirst is a wrapper around the C function g_list_first.
 func ListFirst(list *List) *List {
 	c_list := (*C.GList)(C.NULL)
@@ -2397,59 +2117,10 @@ func ListFree1(list *List) {
 	return
 }
 
-// ListIndex is a wrapper around the C function g_list_index.
-func ListIndex(list *List, data uintptr) int32 {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_list_index(c_list, c_data)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// ListInsert is a wrapper around the C function g_list_insert.
-func ListInsert(list *List, data uintptr, position int32) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	c_position := (C.gint)(position)
-
-	retC := C.g_list_insert(c_list, c_data, c_position)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ListInsertBefore is a wrapper around the C function g_list_insert_before.
-func ListInsertBefore(list *List, sibling *List, data uintptr) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_sibling := (*C.GList)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GList)(sibling.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_list_insert_before(c_list, c_sibling, c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// g_list_insert_sorted : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// g_list_index : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
+// g_list_insert : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_list_insert_before : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_list_insert_sorted : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // ListLast is a wrapper around the C function g_list_last.
 func ListLast(list *List) *List {
 	c_list := (*C.GList)(C.NULL)
@@ -2491,21 +2162,7 @@ func ListNth(list *List, n uint32) *List {
 	return retGo
 }
 
-// ListNthData is a wrapper around the C function g_list_nth_data.
-func ListNthData(list *List, n uint32) uintptr {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_n := (C.guint)(n)
-
-	retC := C.g_list_nth_data(c_list, c_n)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_list_nth_data : no return generator
 // ListNthPrev is a wrapper around the C function g_list_nth_prev.
 func ListNthPrev(list *List, n uint32) *List {
 	c_list := (*C.GList)(C.NULL)
@@ -2539,51 +2196,9 @@ func ListPosition(list *List, llink *List) int32 {
 	return retGo
 }
 
-// ListPrepend is a wrapper around the C function g_list_prepend.
-func ListPrepend(list *List, data uintptr) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_list_prepend(c_list, c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ListRemove is a wrapper around the C function g_list_remove.
-func ListRemove(list *List, data uintptr) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_list_remove(c_list, c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ListRemoveAll is a wrapper around the C function g_list_remove_all.
-func ListRemoveAll(list *List, data uintptr) *List {
-	c_list := (*C.GList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_list_remove_all(c_list, c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_list_prepend : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_list_remove : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
+// g_list_remove_all : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 // ListRemoveLink is a wrapper around the C function g_list_remove_link.
 func ListRemoveLink(list *List, llink *List) *List {
 	c_list := (*C.GList)(C.NULL)
@@ -2690,20 +2305,7 @@ func (recv *MainContext) Dispatch() {
 	return
 }
 
-// FindSourceByFuncsUserData is a wrapper around the C function g_main_context_find_source_by_funcs_user_data.
-func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData uintptr) *Source {
-	c_funcs := (*C.GSourceFuncs)(C.NULL)
-	if funcs != nil {
-		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
-	}
-
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.g_main_context_find_source_by_funcs_user_data((*C.GMainContext)(recv.native), c_funcs, c_user_data)
-	retGo := SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_main_context_find_source_by_funcs_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // FindSourceById is a wrapper around the C function g_main_context_find_source_by_id.
 func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
@@ -2715,15 +2317,7 @@ func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	return retGo
 }
 
-// FindSourceByUserData is a wrapper around the C function g_main_context_find_source_by_user_data.
-func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.g_main_context_find_source_by_user_data((*C.GMainContext)(recv.native), c_user_data)
-	retGo := SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_main_context_find_source_by_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // Unsupported : g_main_context_get_poll_func : no return generator
 
@@ -2949,7 +2543,7 @@ func (recv *MarkupParseContext) Equals(other *MarkupParseContext) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // EndParse is a wrapper around the C function g_markup_parse_context_end_parse.
 func (recv *MarkupParseContext) EndParse() (bool, error) {
@@ -3102,7 +2696,7 @@ func (recv *MemVTable) Equals(other *MemVTable) bool {
 // Node is a wrapper around the C record GNode.
 type Node struct {
 	native *C.GNode
-	Data   uintptr
+	// data : no type generator for gpointer, gpointer
 	// next : record
 	// prev : record
 	// parent : record
@@ -3115,17 +2709,12 @@ func NodeNewFromC(u unsafe.Pointer) *Node {
 		return nil
 	}
 
-	g := &Node{
-		Data:   (uintptr)(c.data),
-		native: c,
-	}
+	g := &Node{native: c}
 
 	return g
 }
 
 func (recv *Node) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.gpointer)(recv.Data)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -3135,25 +2724,8 @@ func (recv *Node) Equals(other *Node) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// NodeNew is a wrapper around the C function g_node_new.
-func NodeNew(data uintptr) *Node {
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_node_new(c_data)
-	retGo := NodeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ChildIndex is a wrapper around the C function g_node_child_index.
-func (recv *Node) ChildIndex(data uintptr) int32 {
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_node_child_index((*C.GNode)(recv.native), c_data)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// g_node_new : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : g_node_child_index : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // ChildPosition is a wrapper around the C function g_node_child_position.
 func (recv *Node) ChildPosition(child *Node) int32 {
@@ -3193,31 +2765,9 @@ func (recv *Node) Destroy() {
 	return
 }
 
-// Find is a wrapper around the C function g_node_find.
-func (recv *Node) Find(order TraverseType, flags TraverseFlags, data uintptr) *Node {
-	c_order := (C.GTraverseType)(order)
+// Unsupported : g_node_find : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	c_flags := (C.GTraverseFlags)(flags)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_node_find((*C.GNode)(recv.native), c_order, c_flags, c_data)
-	retGo := NodeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FindChild is a wrapper around the C function g_node_find_child.
-func (recv *Node) FindChild(flags TraverseFlags, data uintptr) *Node {
-	c_flags := (C.GTraverseFlags)(flags)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_node_find_child((*C.GNode)(recv.native), c_flags, c_data)
-	retGo := NodeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_node_find_child : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // FirstSibling is a wrapper around the C function g_node_first_sibling.
 func (recv *Node) FirstSibling() *Node {
@@ -3408,12 +2958,12 @@ func (recv *OptionContext) Equals(other *OptionContext) bool {
 
 // OptionEntry is a wrapper around the C record GOptionEntry.
 type OptionEntry struct {
-	native         *C.GOptionEntry
-	LongName       string
-	ShortName      rune
-	Flags          int32
-	Arg            OptionArg
-	ArgData        uintptr
+	native    *C.GOptionEntry
+	LongName  string
+	ShortName rune
+	Flags     int32
+	Arg       OptionArg
+	// arg_data : no type generator for gpointer, gpointer
 	Description    string
 	ArgDescription string
 }
@@ -3426,7 +2976,6 @@ func OptionEntryNewFromC(u unsafe.Pointer) *OptionEntry {
 
 	g := &OptionEntry{
 		Arg:            (OptionArg)(c.arg),
-		ArgData:        (uintptr)(c.arg_data),
 		ArgDescription: C.GoString(c.arg_description),
 		Description:    C.GoString(c.description),
 		Flags:          (int32)(c.flags),
@@ -3447,8 +2996,6 @@ func (recv *OptionEntry) ToC() unsafe.Pointer {
 		(C.gint)(recv.Flags)
 	recv.native.arg =
 		(C.GOptionArg)(recv.Arg)
-	recv.native.arg_data =
-		(C.gpointer)(recv.ArgData)
 	recv.native.description =
 		C.CString(recv.Description)
 	recv.native.arg_description =
@@ -3614,22 +3161,9 @@ func (recv *Private) Equals(other *Private) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Get is a wrapper around the C function g_private_get.
-func (recv *Private) Get() uintptr {
-	retC := C.g_private_get((*C.GPrivate)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_private_get : no return generator
 
-	return retGo
-}
-
-// Set is a wrapper around the C function g_private_set.
-func (recv *Private) Set(value uintptr) {
-	c_value := (C.gpointer)(value)
-
-	C.g_private_set((*C.GPrivate)(recv.native), c_value)
-
-	return
-}
+// Unsupported : g_private_set : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
 // Blacklisted : GPtrArray
 
@@ -3690,29 +3224,11 @@ func (recv *Queue) IsEmpty() bool {
 	return retGo
 }
 
-// PeekHead is a wrapper around the C function g_queue_peek_head.
-func (recv *Queue) PeekHead() uintptr {
-	retC := C.g_queue_peek_head((*C.GQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_queue_peek_head : no return generator
 
-	return retGo
-}
+// Unsupported : g_queue_peek_tail : no return generator
 
-// PeekTail is a wrapper around the C function g_queue_peek_tail.
-func (recv *Queue) PeekTail() uintptr {
-	retC := C.g_queue_peek_tail((*C.GQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PopHead is a wrapper around the C function g_queue_pop_head.
-func (recv *Queue) PopHead() uintptr {
-	retC := C.g_queue_pop_head((*C.GQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_queue_pop_head : no return generator
 
 // PopHeadLink is a wrapper around the C function g_queue_pop_head_link.
 func (recv *Queue) PopHeadLink() *List {
@@ -3722,13 +3238,7 @@ func (recv *Queue) PopHeadLink() *List {
 	return retGo
 }
 
-// PopTail is a wrapper around the C function g_queue_pop_tail.
-func (recv *Queue) PopTail() uintptr {
-	retC := C.g_queue_pop_tail((*C.GQueue)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_queue_pop_tail : no return generator
 
 // PopTailLink is a wrapper around the C function g_queue_pop_tail_link.
 func (recv *Queue) PopTailLink() *List {
@@ -3738,14 +3248,7 @@ func (recv *Queue) PopTailLink() *List {
 	return retGo
 }
 
-// PushHead is a wrapper around the C function g_queue_push_head.
-func (recv *Queue) PushHead(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.g_queue_push_head((*C.GQueue)(recv.native), c_data)
-
-	return
-}
+// Unsupported : g_queue_push_head : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // PushHeadLink is a wrapper around the C function g_queue_push_head_link.
 func (recv *Queue) PushHeadLink(link *List) {
@@ -3759,14 +3262,7 @@ func (recv *Queue) PushHeadLink(link *List) {
 	return
 }
 
-// PushTail is a wrapper around the C function g_queue_push_tail.
-func (recv *Queue) PushTail(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.g_queue_push_tail((*C.GQueue)(recv.native), c_data)
-
-	return
-}
+// Unsupported : g_queue_push_tail : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // PushTailLink is a wrapper around the C function g_queue_push_tail_link.
 func (recv *Queue) PushTailLink(link *List) {
@@ -3883,7 +3379,7 @@ func (recv *Rand) SetSeed(seed uint32) {
 // SList is a wrapper around the C record GSList.
 type SList struct {
 	native *C.GSList
-	Data   uintptr
+	// data : no type generator for gpointer, gpointer
 	// next : record
 }
 
@@ -3893,17 +3389,12 @@ func SListNewFromC(u unsafe.Pointer) *SList {
 		return nil
 	}
 
-	g := &SList{
-		Data:   (uintptr)(c.data),
-		native: c,
-	}
+	g := &SList{native: c}
 
 	return g
 }
 
 func (recv *SList) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.gpointer)(recv.Data)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -3921,21 +3412,7 @@ func SListAlloc() *SList {
 	return retGo
 }
 
-// SListAppend is a wrapper around the C function g_slist_append.
-func SListAppend(list *SList, data uintptr) *SList {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_slist_append(c_list, c_data)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_slist_append : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // SListConcat is a wrapper around the C function g_slist_concat.
 func SListConcat(list1 *SList, list2 *SList) *SList {
 	c_list1 := (*C.GSList)(C.NULL)
@@ -3985,22 +3462,8 @@ func SListDeleteLink(list *SList, link *SList) *SList {
 	return retGo
 }
 
-// SListFind is a wrapper around the C function g_slist_find.
-func SListFind(list *SList, data uintptr) *SList {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_slist_find(c_list, c_data)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// g_slist_find_custom : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// g_slist_find : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
+// g_slist_find_custom : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 // g_slist_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
 // SListFree is a wrapper around the C function g_slist_free.
 func SListFree(list *SList) {
@@ -4026,59 +3489,10 @@ func SListFree1(list *SList) {
 	return
 }
 
-// SListIndex is a wrapper around the C function g_slist_index.
-func SListIndex(list *SList, data uintptr) int32 {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_slist_index(c_list, c_data)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// SListInsert is a wrapper around the C function g_slist_insert.
-func SListInsert(list *SList, data uintptr, position int32) *SList {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	c_position := (C.gint)(position)
-
-	retC := C.g_slist_insert(c_list, c_data, c_position)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SListInsertBefore is a wrapper around the C function g_slist_insert_before.
-func SListInsertBefore(slist *SList, sibling *SList, data uintptr) *SList {
-	c_slist := (*C.GSList)(C.NULL)
-	if slist != nil {
-		c_slist = (*C.GSList)(slist.ToC())
-	}
-
-	c_sibling := (*C.GSList)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GSList)(sibling.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_slist_insert_before(c_slist, c_sibling, c_data)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// g_slist_insert_sorted : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// g_slist_index : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
+// g_slist_insert : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_slist_insert_before : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_slist_insert_sorted : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // SListLast is a wrapper around the C function g_slist_last.
 func SListLast(list *SList) *SList {
 	c_list := (*C.GSList)(C.NULL)
@@ -4120,21 +3534,7 @@ func SListNth(list *SList, n uint32) *SList {
 	return retGo
 }
 
-// SListNthData is a wrapper around the C function g_slist_nth_data.
-func SListNthData(list *SList, n uint32) uintptr {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_n := (C.guint)(n)
-
-	retC := C.g_slist_nth_data(c_list, c_n)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_slist_nth_data : no return generator
 // SListPosition is a wrapper around the C function g_slist_position.
 func SListPosition(list *SList, llink *SList) int32 {
 	c_list := (*C.GSList)(C.NULL)
@@ -4153,51 +3553,9 @@ func SListPosition(list *SList, llink *SList) int32 {
 	return retGo
 }
 
-// SListPrepend is a wrapper around the C function g_slist_prepend.
-func SListPrepend(list *SList, data uintptr) *SList {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_slist_prepend(c_list, c_data)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SListRemove is a wrapper around the C function g_slist_remove.
-func SListRemove(list *SList, data uintptr) *SList {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_slist_remove(c_list, c_data)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SListRemoveAll is a wrapper around the C function g_slist_remove_all.
-func SListRemoveAll(list *SList, data uintptr) *SList {
-	c_list := (*C.GSList)(C.NULL)
-	if list != nil {
-		c_list = (*C.GSList)(list.ToC())
-	}
-
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_slist_remove_all(c_list, c_data)
-	retGo := SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_slist_prepend : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// g_slist_remove : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
+// g_slist_remove_all : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 // SListRemoveLink is a wrapper around the C function g_slist_remove_link.
 func SListRemoveLink(list *SList, link *SList) *SList {
 	c_list := (*C.GSList)(C.NULL)
@@ -4233,8 +3591,8 @@ func SListReverse(list *SList) *SList {
 // g_slist_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 // Scanner is a wrapper around the C record GScanner.
 type Scanner struct {
-	native         *C.GScanner
-	UserData       uintptr
+	native *C.GScanner
+	// user_data : no type generator for gpointer, gpointer
 	MaxParseErrors uint32
 	ParseErrors    uint32
 	InputName      string
@@ -4273,7 +3631,6 @@ func ScannerNewFromC(u unsafe.Pointer) *Scanner {
 		ParseErrors:    (uint32)(c.parse_errors),
 		Position:       (uint32)(c.position),
 		Token:          (TokenType)(c.token),
-		UserData:       (uintptr)(c.user_data),
 		native:         c,
 	}
 
@@ -4281,8 +3638,6 @@ func ScannerNewFromC(u unsafe.Pointer) *Scanner {
 }
 
 func (recv *Scanner) ToC() unsafe.Pointer {
-	recv.native.user_data =
-		(C.gpointer)(recv.UserData)
 	recv.native.max_parse_errors =
 		(C.guint)(recv.MaxParseErrors)
 	recv.native.parse_errors =
@@ -4404,16 +3759,7 @@ func (recv *Scanner) InputText(text string, textLen uint32) {
 	return
 }
 
-// LookupSymbol is a wrapper around the C function g_scanner_lookup_symbol.
-func (recv *Scanner) LookupSymbol(symbol string) uintptr {
-	c_symbol := C.CString(symbol)
-	defer C.free(unsafe.Pointer(c_symbol))
-
-	retC := C.g_scanner_lookup_symbol((*C.GScanner)(recv.native), c_symbol)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_scanner_lookup_symbol : no return generator
 
 // PeekNextToken is a wrapper around the C function g_scanner_peek_next_token.
 func (recv *Scanner) PeekNextToken() TokenType {
@@ -4423,34 +3769,11 @@ func (recv *Scanner) PeekNextToken() TokenType {
 	return retGo
 }
 
-// ScopeAddSymbol is a wrapper around the C function g_scanner_scope_add_symbol.
-func (recv *Scanner) ScopeAddSymbol(scopeId uint32, symbol string, value uintptr) {
-	c_scope_id := (C.guint)(scopeId)
-
-	c_symbol := C.CString(symbol)
-	defer C.free(unsafe.Pointer(c_symbol))
-
-	c_value := (C.gpointer)(value)
-
-	C.g_scanner_scope_add_symbol((*C.GScanner)(recv.native), c_scope_id, c_symbol, c_value)
-
-	return
-}
+// Unsupported : g_scanner_scope_add_symbol : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
 // Unsupported : g_scanner_scope_foreach_symbol : unsupported parameter func : no type generator for HFunc (GHFunc) for param func
 
-// ScopeLookupSymbol is a wrapper around the C function g_scanner_scope_lookup_symbol.
-func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
-	c_scope_id := (C.guint)(scopeId)
-
-	c_symbol := C.CString(symbol)
-	defer C.free(unsafe.Pointer(c_symbol))
-
-	retC := C.g_scanner_scope_lookup_symbol((*C.GScanner)(recv.native), c_scope_id, c_symbol)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_scanner_scope_lookup_symbol : no return generator
 
 // ScopeRemoveSymbol is a wrapper around the C function g_scanner_scope_remove_symbol.
 func (recv *Scanner) ScopeRemoveSymbol(scopeId uint32, symbol string) {
@@ -4698,31 +4021,8 @@ func SourceRemove(tag uint32) bool {
 	return retGo
 }
 
-// SourceRemoveByFuncsUserData is a wrapper around the C function g_source_remove_by_funcs_user_data.
-func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
-	c_funcs := (*C.GSourceFuncs)(C.NULL)
-	if funcs != nil {
-		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
-	}
-
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.g_source_remove_by_funcs_user_data(c_funcs, c_user_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SourceRemoveByUserData is a wrapper around the C function g_source_remove_by_user_data.
-func SourceRemoveByUserData(userData uintptr) bool {
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.g_source_remove_by_user_data(c_user_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
+// g_source_remove_by_funcs_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// g_source_remove_by_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 // AddPoll is a wrapper around the C function g_source_add_poll.
 func (recv *Source) AddPoll(fd *PollFD) {
 	c_fd := (*C.GPollFD)(C.NULL)
@@ -4834,19 +4134,7 @@ func (recv *Source) RemovePoll(fd *PollFD) {
 
 // Unsupported : g_source_set_callback : unsupported parameter func : no type generator for SourceFunc (GSourceFunc) for param func
 
-// SetCallbackIndirect is a wrapper around the C function g_source_set_callback_indirect.
-func (recv *Source) SetCallbackIndirect(callbackData uintptr, callbackFuncs *SourceCallbackFuncs) {
-	c_callback_data := (C.gpointer)(callbackData)
-
-	c_callback_funcs := (*C.GSourceCallbackFuncs)(C.NULL)
-	if callbackFuncs != nil {
-		c_callback_funcs = (*C.GSourceCallbackFuncs)(callbackFuncs.ToC())
-	}
-
-	C.g_source_set_callback_indirect((*C.GSource)(recv.native), c_callback_data, c_callback_funcs)
-
-	return
-}
+// Unsupported : g_source_set_callback_indirect : unsupported parameter callback_data : no type generator for gpointer (gpointer) for param callback_data
 
 // SetCanRecurse is a wrapper around the C function g_source_set_can_recurse.
 func (recv *Source) SetCanRecurse(canRecurse bool) {
@@ -5506,15 +4794,7 @@ func ThreadErrorQuark() Quark {
 	return retGo
 }
 
-// ThreadExit is a wrapper around the C function g_thread_exit.
-func ThreadExit(retval uintptr) {
-	c_retval := (C.gpointer)(retval)
-
-	C.g_thread_exit(c_retval)
-
-	return
-}
-
+// g_thread_exit : unsupported parameter retval : no type generator for gpointer (gpointer) for param retval
 // ThreadSelf is a wrapper around the C function g_thread_self.
 func ThreadSelf() *Thread {
 	retC := C.g_thread_self()
@@ -5530,19 +4810,13 @@ func ThreadYield() {
 	return
 }
 
-// Join is a wrapper around the C function g_thread_join.
-func (recv *Thread) Join() uintptr {
-	retC := C.g_thread_join((*C.GThread)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_thread_join : no return generator
 
 // ThreadPool is a wrapper around the C record GThreadPool.
 type ThreadPool struct {
 	native *C.GThreadPool
 	// _func : no type generator for Func, GFunc
-	UserData  uintptr
+	// user_data : no type generator for gpointer, gpointer
 	Exclusive bool
 }
 
@@ -5554,7 +4828,6 @@ func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
 
 	g := &ThreadPool{
 		Exclusive: c.exclusive == C.TRUE,
-		UserData:  (uintptr)(c.user_data),
 		native:    c,
 	}
 
@@ -5562,8 +4835,6 @@ func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
 }
 
 func (recv *ThreadPool) ToC() unsafe.Pointer {
-	recv.native.user_data =
-		(C.gpointer)(recv.UserData)
 	recv.native.exclusive =
 		boolToGboolean(recv.Exclusive)
 
@@ -5637,25 +4908,7 @@ func (recv *ThreadPool) GetNumThreads() uint32 {
 	return retGo
 }
 
-// Push is a wrapper around the C function g_thread_pool_push.
-func (recv *ThreadPool) Push(data uintptr) (bool, error) {
-	c_data := (C.gpointer)(data)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_thread_pool_push((*C.GThreadPool)(recv.native), c_data, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Unsupported : g_thread_pool_push : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // SetMaxThreads is a wrapper around the C function g_thread_pool_set_max_threads.
 func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
@@ -5842,46 +5095,9 @@ func TrashStackHeight(stackP *TrashStack) uint32 {
 	return retGo
 }
 
-// TrashStackPeek is a wrapper around the C function g_trash_stack_peek.
-func TrashStackPeek(stackP *TrashStack) uintptr {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	retC := C.g_trash_stack_peek(c_stack_p)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TrashStackPop is a wrapper around the C function g_trash_stack_pop.
-func TrashStackPop(stackP *TrashStack) uintptr {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	retC := C.g_trash_stack_pop(c_stack_p)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TrashStackPush is a wrapper around the C function g_trash_stack_push.
-func TrashStackPush(stackP *TrashStack, dataP uintptr) {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	c_data_p := (C.gpointer)(dataP)
-
-	C.g_trash_stack_push(c_stack_p, c_data_p)
-
-	return
-}
-
+// g_trash_stack_peek : no return generator
+// g_trash_stack_pop : no return generator
+// g_trash_stack_push : unsupported parameter data_p : no type generator for gpointer (gpointer) for param data_p
 // Tree is a wrapper around the C record GTree.
 type Tree struct {
 	native *C.GTree
@@ -5928,40 +5144,11 @@ func (recv *Tree) Height() int32 {
 	return retGo
 }
 
-// Insert is a wrapper around the C function g_tree_insert.
-func (recv *Tree) Insert(key uintptr, value uintptr) {
-	c_key := (C.gpointer)(key)
+// Unsupported : g_tree_insert : unsupported parameter key : no type generator for gpointer (gpointer) for param key
 
-	c_value := (C.gpointer)(value)
+// Unsupported : g_tree_lookup : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 
-	C.g_tree_insert((*C.GTree)(recv.native), c_key, c_value)
-
-	return
-}
-
-// Lookup is a wrapper around the C function g_tree_lookup.
-func (recv *Tree) Lookup(key uintptr) uintptr {
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_tree_lookup((*C.GTree)(recv.native), c_key)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LookupExtended is a wrapper around the C function g_tree_lookup_extended.
-func (recv *Tree) LookupExtended(lookupKey uintptr, origKey uintptr, value uintptr) bool {
-	c_lookup_key := (C.gconstpointer)(lookupKey)
-
-	c_orig_key := (C.gpointer)(origKey)
-
-	c_value := (C.gpointer)(value)
-
-	retC := C.g_tree_lookup_extended((*C.GTree)(recv.native), c_lookup_key, &c_orig_key, &c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : g_tree_lookup_extended : unsupported parameter lookup_key : no type generator for gpointer (gconstpointer) for param lookup_key
 
 // Nnodes is a wrapper around the C function g_tree_nnodes.
 func (recv *Tree) Nnodes() int32 {
@@ -5971,38 +5158,13 @@ func (recv *Tree) Nnodes() int32 {
 	return retGo
 }
 
-// Remove is a wrapper around the C function g_tree_remove.
-func (recv *Tree) Remove(key uintptr) bool {
-	c_key := (C.gconstpointer)(key)
+// Unsupported : g_tree_remove : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 
-	retC := C.g_tree_remove((*C.GTree)(recv.native), c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Replace is a wrapper around the C function g_tree_replace.
-func (recv *Tree) Replace(key uintptr, value uintptr) {
-	c_key := (C.gpointer)(key)
-
-	c_value := (C.gpointer)(value)
-
-	C.g_tree_replace((*C.GTree)(recv.native), c_key, c_value)
-
-	return
-}
+// Unsupported : g_tree_replace : unsupported parameter key : no type generator for gpointer (gpointer) for param key
 
 // Unsupported : g_tree_search : unsupported parameter search_func : no type generator for CompareFunc (GCompareFunc) for param search_func
 
-// Steal is a wrapper around the C function g_tree_steal.
-func (recv *Tree) Steal(key uintptr) bool {
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_tree_steal((*C.GTree)(recv.native), c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : g_tree_steal : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc (GTraverseFunc) for param traverse_func
 
@@ -6179,8 +5341,11 @@ func (recv *VariantType) Element() *VariantType {
 }
 
 // Equal is a wrapper around the C function g_variant_type_equal.
-func (recv *VariantType) Equal(type2 uintptr) bool {
-	c_type2 := (C.gconstpointer)(type2)
+func (recv *VariantType) Equal(type2 *VariantType) bool {
+	c_type2 := (C.gconstpointer)(C.NULL)
+	if type2 != nil {
+		c_type2 = (C.gconstpointer)(type2.ToC())
+	}
 
 	retC := C.g_variant_type_equal((C.gconstpointer)(recv.native), c_type2)
 	retGo := retC == C.TRUE

@@ -14,6 +14,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// Unsupported : g_date_time_compare : unsupported parameter dt1 : no type generator for gpointer (gconstpointer) for param dt1
+
+// Unsupported : g_date_time_equal : unsupported parameter dt1 : no type generator for gpointer (gconstpointer) for param dt1
+
+// Unsupported : g_date_time_hash : unsupported parameter datetime : no type generator for gpointer (gconstpointer) for param datetime
+
 // Dcgettext is a wrapper around the C function g_dcgettext.
 func Dcgettext(domain string, msgid string, category int32) string {
 	c_domain := C.CString(domain)

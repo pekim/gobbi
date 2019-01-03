@@ -799,7 +799,7 @@ func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 	return
 }
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_option_group_new : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // AddEntries is a wrapper around the C function g_option_group_add_entries.
 func (recv *OptionGroup) AddEntries(entries *OptionEntry) {

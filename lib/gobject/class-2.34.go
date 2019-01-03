@@ -14,6 +14,6 @@ import "C"
 
 // Unsupported : g_object_dup_qdata : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc (GDuplicateFunc) for param dup_func
 
-// Unsupported : g_object_replace_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_object_replace_data : unsupported parameter oldval : no type generator for gpointer (gpointer) for param oldval
 
-// Unsupported : g_object_replace_qdata : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_object_replace_qdata : unsupported parameter oldval : no type generator for gpointer (gpointer) for param oldval

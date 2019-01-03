@@ -14,30 +14,55 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BoxedCopy is a wrapper around the C function g_boxed_copy.
-func BoxedCopy(boxedType Type, srcBoxed uintptr) uintptr {
-	c_boxed_type := (C.GType)(boxedType)
+// Unsupported : g_boxed_copy : unsupported parameter src_boxed : no type generator for gpointer (gconstpointer) for param src_boxed
 
-	c_src_boxed := (C.gconstpointer)(srcBoxed)
-
-	retC := C.g_boxed_copy(c_boxed_type, c_src_boxed)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// BoxedFree is a wrapper around the C function g_boxed_free.
-func BoxedFree(boxedType Type, boxed uintptr) {
-	c_boxed_type := (C.GType)(boxedType)
-
-	c_boxed := (C.gpointer)(boxed)
-
-	C.g_boxed_free(c_boxed_type, c_boxed)
-
-	return
-}
+// Unsupported : g_boxed_free : unsupported parameter boxed : no type generator for gpointer (gpointer) for param boxed
 
 // Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc (GBoxedCopyFunc) for param boxed_copy
+
+// Unsupported : g_cclosure_marshal_BOOLEAN__BOXED_BOXED : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_BOOLEAN__FLAGS : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_STRING__OBJECT_POINTER : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__BOOLEAN : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__BOXED : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__CHAR : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__DOUBLE : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__ENUM : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__FLAGS : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__FLOAT : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__INT : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__LONG : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__OBJECT : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__PARAM : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__POINTER : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__STRING : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__UCHAR : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__UINT : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__UINT_POINTER : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__ULONG : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__VARIANT : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
+
+// Unsupported : g_cclosure_marshal_VOID__VOID : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint
 
 // Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
@@ -818,8 +843,11 @@ func PointerTypeRegisterStatic(name string) Type {
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params :
 
 // SignalConnectClosure is a wrapper around the C function g_signal_connect_closure.
-func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Closure, after bool) uint64 {
-	c_instance := (C.gpointer)(instance)
+func SignalConnectClosure(instance *Object, detailedSignal string, closure *Closure, after bool) uint64 {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_detailed_signal := C.CString(detailedSignal)
 	defer C.free(unsafe.Pointer(c_detailed_signal))
@@ -839,8 +867,11 @@ func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Clos
 }
 
 // SignalConnectClosureById is a wrapper around the C function g_signal_connect_closure_by_id.
-func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
-	c_instance := (C.gpointer)(instance)
+func SignalConnectClosureById(instance *Object, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_signal_id := (C.guint)(signalId)
 
@@ -873,8 +904,11 @@ func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Qua
 // Unsupported : g_signal_emitv : unsupported parameter instance_and_params :
 
 // SignalGetInvocationHint is a wrapper around the C function g_signal_get_invocation_hint.
-func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
-	c_instance := (C.gpointer)(instance)
+func SignalGetInvocationHint(instance *Object) *SignalInvocationHint {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	retC := C.g_signal_get_invocation_hint(c_instance)
 	retGo := SignalInvocationHintNewFromC(unsafe.Pointer(retC))
@@ -883,8 +917,11 @@ func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
 }
 
 // SignalHandlerBlock is a wrapper around the C function g_signal_handler_block.
-func SignalHandlerBlock(instance uintptr, handlerId uint64) {
-	c_instance := (C.gpointer)(instance)
+func SignalHandlerBlock(instance *Object, handlerId uint64) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_handler_id := (C.gulong)(handlerId)
 
@@ -894,8 +931,11 @@ func SignalHandlerBlock(instance uintptr, handlerId uint64) {
 }
 
 // SignalHandlerDisconnect is a wrapper around the C function g_signal_handler_disconnect.
-func SignalHandlerDisconnect(instance uintptr, handlerId uint64) {
-	c_instance := (C.gpointer)(instance)
+func SignalHandlerDisconnect(instance *Object, handlerId uint64) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_handler_id := (C.gulong)(handlerId)
 
@@ -904,34 +944,14 @@ func SignalHandlerDisconnect(instance uintptr, handlerId uint64) {
 	return
 }
 
-// SignalHandlerFind is a wrapper around the C function g_signal_handler_find.
-func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint64 {
-	c_instance := (C.gpointer)(instance)
-
-	c_mask := (C.GSignalMatchType)(mask)
-
-	c_signal_id := (C.guint)(signalId)
-
-	c_detail := (C.GQuark)(detail)
-
-	c_closure := (*C.GClosure)(C.NULL)
-	if closure != nil {
-		c_closure = (*C.GClosure)(closure.ToC())
-	}
-
-	c_func := (C.gpointer)(func_)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_signal_handler_find(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Unsupported : g_signal_handler_find : unsupported parameter func : no type generator for gpointer (gpointer) for param func
 
 // SignalHandlerIsConnected is a wrapper around the C function g_signal_handler_is_connected.
-func SignalHandlerIsConnected(instance uintptr, handlerId uint64) bool {
-	c_instance := (C.gpointer)(instance)
+func SignalHandlerIsConnected(instance *Object, handlerId uint64) bool {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_handler_id := (C.gulong)(handlerId)
 
@@ -942,8 +962,11 @@ func SignalHandlerIsConnected(instance uintptr, handlerId uint64) bool {
 }
 
 // SignalHandlerUnblock is a wrapper around the C function g_signal_handler_unblock.
-func SignalHandlerUnblock(instance uintptr, handlerId uint64) {
-	c_instance := (C.gpointer)(instance)
+func SignalHandlerUnblock(instance *Object, handlerId uint64) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_handler_id := (C.gulong)(handlerId)
 
@@ -952,93 +975,30 @@ func SignalHandlerUnblock(instance uintptr, handlerId uint64) {
 	return
 }
 
-// SignalHandlersBlockMatched is a wrapper around the C function g_signal_handlers_block_matched.
-func SignalHandlersBlockMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
-	c_instance := (C.gpointer)(instance)
-
-	c_mask := (C.GSignalMatchType)(mask)
-
-	c_signal_id := (C.guint)(signalId)
-
-	c_detail := (C.GQuark)(detail)
-
-	c_closure := (*C.GClosure)(C.NULL)
-	if closure != nil {
-		c_closure = (*C.GClosure)(closure.ToC())
-	}
-
-	c_func := (C.gpointer)(func_)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_signal_handlers_block_matched(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_signal_handlers_block_matched : unsupported parameter func : no type generator for gpointer (gpointer) for param func
 
 // SignalHandlersDestroy is a wrapper around the C function g_signal_handlers_destroy.
-func SignalHandlersDestroy(instance uintptr) {
-	c_instance := (C.gpointer)(instance)
+func SignalHandlersDestroy(instance *Object) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	C.g_signal_handlers_destroy(c_instance)
 
 	return
 }
 
-// SignalHandlersDisconnectMatched is a wrapper around the C function g_signal_handlers_disconnect_matched.
-func SignalHandlersDisconnectMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
-	c_instance := (C.gpointer)(instance)
+// Unsupported : g_signal_handlers_disconnect_matched : unsupported parameter func : no type generator for gpointer (gpointer) for param func
 
-	c_mask := (C.GSignalMatchType)(mask)
-
-	c_signal_id := (C.guint)(signalId)
-
-	c_detail := (C.GQuark)(detail)
-
-	c_closure := (*C.GClosure)(C.NULL)
-	if closure != nil {
-		c_closure = (*C.GClosure)(closure.ToC())
-	}
-
-	c_func := (C.gpointer)(func_)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_signal_handlers_disconnect_matched(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// SignalHandlersUnblockMatched is a wrapper around the C function g_signal_handlers_unblock_matched.
-func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
-	c_instance := (C.gpointer)(instance)
-
-	c_mask := (C.GSignalMatchType)(mask)
-
-	c_signal_id := (C.guint)(signalId)
-
-	c_detail := (C.GQuark)(detail)
-
-	c_closure := (*C.GClosure)(C.NULL)
-	if closure != nil {
-		c_closure = (*C.GClosure)(closure.ToC())
-	}
-
-	c_func := (C.gpointer)(func_)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_signal_handlers_unblock_matched(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_signal_handlers_unblock_matched : unsupported parameter func : no type generator for gpointer (gpointer) for param func
 
 // SignalHasHandlerPending is a wrapper around the C function g_signal_has_handler_pending.
-func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
-	c_instance := (C.gpointer)(instance)
+func SignalHasHandlerPending(instance *Object, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_signal_id := (C.guint)(signalId)
 
@@ -1149,8 +1109,11 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 }
 
 // SignalStopEmission is a wrapper around the C function g_signal_stop_emission.
-func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
-	c_instance := (C.gpointer)(instance)
+func SignalStopEmission(instance *Object, signalId uint32, detail glib.Quark) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_signal_id := (C.guint)(signalId)
 
@@ -1162,8 +1125,11 @@ func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
 }
 
 // SignalStopEmissionByName is a wrapper around the C function g_signal_stop_emission_by_name.
-func SignalStopEmissionByName(instance uintptr, detailedSignal string) {
-	c_instance := (C.gpointer)(instance)
+func SignalStopEmissionByName(instance *Object, detailedSignal string) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
 	c_detailed_signal := C.CString(detailedSignal)
 	defer C.free(unsafe.Pointer(c_detailed_signal))
@@ -1228,7 +1194,7 @@ func StrdupValueContents(value *Value) string {
 	return retGo
 }
 
-// Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
+// Unsupported : g_type_add_class_cache_func : unsupported parameter cache_data : no type generator for gpointer (gpointer) for param cache_data
 
 // TypeAddInstancePrivate is a wrapper around the C function g_type_add_instance_private.
 func TypeAddInstancePrivate(classType Type, privateSize uint64) int32 {
@@ -1399,6 +1365,8 @@ func TypeCheckValueHolds(value *Value, type_ Type) bool {
 
 // Unsupported : g_type_children : array return type :
 
+// Unsupported : g_type_class_adjust_private_offset : unsupported parameter g_class : no type generator for gpointer (gpointer) for param g_class
+
 // TypeCreateInstance is a wrapper around the C function g_type_create_instance.
 func TypeCreateInstance(type_ Type) *TypeInstance {
 	c_type := (C.GType)(type_)
@@ -1470,17 +1438,7 @@ func TypeGetPlugin(type_ Type) *TypePlugin {
 	return retGo
 }
 
-// TypeGetQdata is a wrapper around the C function g_type_get_qdata.
-func TypeGetQdata(type_ Type, quark glib.Quark) uintptr {
-	c_type := (C.GType)(type_)
-
-	c_quark := (C.GQuark)(quark)
-
-	retC := C.g_type_get_qdata(c_type, c_quark)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_type_get_qdata : no return generator
 
 // TypeInit is a wrapper around the C function g_type_init.
 func TypeInit() {
@@ -1655,20 +1613,9 @@ func TypeRegisterStatic(parentType Type, typeName string, info *TypeInfo, flags 
 	return retGo
 }
 
-// Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
+// Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_data : no type generator for gpointer (gpointer) for param cache_data
 
-// TypeSetQdata is a wrapper around the C function g_type_set_qdata.
-func TypeSetQdata(type_ Type, quark glib.Quark, data uintptr) {
-	c_type := (C.GType)(type_)
-
-	c_quark := (C.GQuark)(quark)
-
-	c_data := (C.gpointer)(data)
-
-	C.g_type_set_qdata(c_type, c_quark, c_data)
-
-	return
-}
+// Unsupported : g_type_set_qdata : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // TypeTestFlags is a wrapper around the C function g_type_test_flags.
 func TypeTestFlags(type_ Type, flags uint32) bool {

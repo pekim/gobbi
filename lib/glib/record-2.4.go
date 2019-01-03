@@ -14,7 +14,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// g_array_remove_range : array return type :
+// g_array_remove_range : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // g_hash_table_find : unsupported parameter predicate : no type generator for HRFunc (GHRFunc) for param predicate
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
@@ -22,7 +22,7 @@ import "C"
 type Once struct {
 	native *C.GOnce
 	Status OnceStatus
-	Retval uintptr
+	// retval : no type generator for gpointer, volatile gpointer
 }
 
 func OnceNewFromC(u unsafe.Pointer) *Once {
@@ -32,7 +32,6 @@ func OnceNewFromC(u unsafe.Pointer) *Once {
 	}
 
 	g := &Once{
-		Retval: (uintptr)(c.retval),
 		Status: (OnceStatus)(c.status),
 		native: c,
 	}
@@ -43,8 +42,6 @@ func OnceNewFromC(u unsafe.Pointer) *Once {
 func (recv *Once) ToC() unsafe.Pointer {
 	recv.native.status =
 		(C.GOnceStatus)(recv.Status)
-	recv.native.retval =
-		(C.gpointer)(recv.Retval)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -76,17 +73,9 @@ func (recv *Queue) DeleteLink(link *List) {
 	return
 }
 
-// Find is a wrapper around the C function g_queue_find.
-func (recv *Queue) Find(data uintptr) *List {
-	c_data := (C.gconstpointer)(data)
+// Unsupported : g_queue_find : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 
-	retC := C.g_queue_find((*C.GQueue)(recv.native), c_data)
-	retGo := ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : g_queue_find_custom : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// Unsupported : g_queue_find_custom : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 
 // Unsupported : g_queue_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
 
@@ -98,45 +87,13 @@ func (recv *Queue) GetLength() uint32 {
 	return retGo
 }
 
-// Index is a wrapper around the C function g_queue_index.
-func (recv *Queue) Index(data uintptr) int32 {
-	c_data := (C.gconstpointer)(data)
+// Unsupported : g_queue_index : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 
-	retC := C.g_queue_index((*C.GQueue)(recv.native), c_data)
-	retGo := (int32)(retC)
+// Unsupported : g_queue_insert_after : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	return retGo
-}
+// Unsupported : g_queue_insert_before : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// InsertAfter is a wrapper around the C function g_queue_insert_after.
-func (recv *Queue) InsertAfter(sibling *List, data uintptr) {
-	c_sibling := (*C.GList)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GList)(sibling.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	C.g_queue_insert_after((*C.GQueue)(recv.native), c_sibling, c_data)
-
-	return
-}
-
-// InsertBefore is a wrapper around the C function g_queue_insert_before.
-func (recv *Queue) InsertBefore(sibling *List, data uintptr) {
-	c_sibling := (*C.GList)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GList)(sibling.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	C.g_queue_insert_before((*C.GQueue)(recv.native), c_sibling, c_data)
-
-	return
-}
-
-// Unsupported : g_queue_insert_sorted : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
+// Unsupported : g_queue_insert_sorted : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // LinkIndex is a wrapper around the C function g_queue_link_index.
 func (recv *Queue) LinkIndex(link *List) int32 {
@@ -159,15 +116,7 @@ func (recv *Queue) PeekHeadLink() *List {
 	return retGo
 }
 
-// PeekNth is a wrapper around the C function g_queue_peek_nth.
-func (recv *Queue) PeekNth(n uint32) uintptr {
-	c_n := (C.guint)(n)
-
-	retC := C.g_queue_peek_nth((*C.GQueue)(recv.native), c_n)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_queue_peek_nth : no return generator
 
 // PeekNthLink is a wrapper around the C function g_queue_peek_nth_link.
 func (recv *Queue) PeekNthLink(n uint32) *List {
@@ -187,15 +136,7 @@ func (recv *Queue) PeekTailLink() *List {
 	return retGo
 }
 
-// PopNth is a wrapper around the C function g_queue_pop_nth.
-func (recv *Queue) PopNth(n uint32) uintptr {
-	c_n := (C.guint)(n)
-
-	retC := C.g_queue_pop_nth((*C.GQueue)(recv.native), c_n)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_queue_pop_nth : no return generator
 
 // PopNthLink is a wrapper around the C function g_queue_pop_nth_link.
 func (recv *Queue) PopNthLink(n uint32) *List {
@@ -207,16 +148,7 @@ func (recv *Queue) PopNthLink(n uint32) *List {
 	return retGo
 }
 
-// PushNth is a wrapper around the C function g_queue_push_nth.
-func (recv *Queue) PushNth(data uintptr, n int32) {
-	c_data := (C.gpointer)(data)
-
-	c_n := (C.gint)(n)
-
-	C.g_queue_push_nth((*C.GQueue)(recv.native), c_data, c_n)
-
-	return
-}
+// Unsupported : g_queue_push_nth : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // PushNthLink is a wrapper around the C function g_queue_push_nth_link.
 func (recv *Queue) PushNthLink(n int32, link *List) {
@@ -232,25 +164,9 @@ func (recv *Queue) PushNthLink(n int32, link *List) {
 	return
 }
 
-// Remove is a wrapper around the C function g_queue_remove.
-func (recv *Queue) Remove(data uintptr) bool {
-	c_data := (C.gconstpointer)(data)
+// Unsupported : g_queue_remove : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 
-	retC := C.g_queue_remove((*C.GQueue)(recv.native), c_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RemoveAll is a wrapper around the C function g_queue_remove_all.
-func (recv *Queue) RemoveAll(data uintptr) uint32 {
-	c_data := (C.gconstpointer)(data)
-
-	retC := C.g_queue_remove_all((*C.GQueue)(recv.native), c_data)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_queue_remove_all : unsupported parameter data : no type generator for gpointer (gconstpointer) for param data
 
 // Reverse is a wrapper around the C function g_queue_reverse.
 func (recv *Queue) Reverse() {

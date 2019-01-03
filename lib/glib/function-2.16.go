@@ -158,7 +158,7 @@ func Strcmp0(str1 string, str2 string) int32 {
 	return retGo
 }
 
-// Unsupported : g_test_add_data_func : unsupported parameter test_func : no type generator for TestDataFunc (GTestDataFunc) for param test_func
+// Unsupported : g_test_add_data_func : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
 
 // Unsupported : g_test_add_func : unsupported parameter test_func : no type generator for TestFunc (GTestFunc) for param test_func
 
@@ -182,7 +182,7 @@ func TestBugBase(uriPattern string) {
 	return
 }
 
-// Unsupported : g_test_create_case : unsupported parameter data_setup : no type generator for TestFixtureFunc (GTestFixtureFunc) for param data_setup
+// Unsupported : g_test_create_case : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
 
 // TestCreateSuite is a wrapper around the C function g_test_create_suite.
 func TestCreateSuite(suiteName string) *TestSuite {
@@ -244,14 +244,7 @@ func TestMinimizedResult(minimizedQuantity float64, format string, args ...inter
 
 // Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
 
-// TestQueueFree is a wrapper around the C function g_test_queue_free.
-func TestQueueFree(gfreePointer uintptr) {
-	c_gfree_pointer := (C.gpointer)(gfreePointer)
-
-	C.g_test_queue_free(c_gfree_pointer)
-
-	return
-}
+// Unsupported : g_test_queue_free : unsupported parameter gfree_pointer : no type generator for gpointer (gpointer) for param gfree_pointer
 
 // TestRandDouble is a wrapper around the C function g_test_rand_double.
 func TestRandDouble() float64 {

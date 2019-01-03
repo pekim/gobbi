@@ -137,6 +137,8 @@ func ContentTypesGetRegistered() *glib.List {
 	return retGo
 }
 
+// Unsupported : g_icon_hash : unsupported parameter icon : no type generator for gpointer (gconstpointer) for param icon
+
 // IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int32) IOErrorEnum {
 	c_err_no := (C.gint)(errNo)

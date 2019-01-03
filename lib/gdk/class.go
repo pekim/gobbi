@@ -2121,16 +2121,7 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function gdk_window_get_user_data.
-func (recv *Window) GetUserData() uintptr {
-	var c_data C.gpointer
-
-	C.gdk_window_get_user_data((*C.GdkWindow)(recv.native), &c_data)
-
-	data := (uintptr)(unsafe.Pointer(&c_data))
-
-	return data
-}
+// Unsupported : gdk_window_get_user_data : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
 
 // GetVisibleRegion is a wrapper around the C function gdk_window_get_visible_region.
 func (recv *Window) GetVisibleRegion() *cairo.Region {
@@ -2532,8 +2523,11 @@ func (recv *Window) SetTypeHint(hint WindowTypeHint) {
 }
 
 // SetUserData is a wrapper around the C function gdk_window_set_user_data.
-func (recv *Window) SetUserData(userData uintptr) {
-	c_user_data := (C.gpointer)(userData)
+func (recv *Window) SetUserData(userData *gobject.Object) {
+	c_user_data := (C.gpointer)(C.NULL)
+	if userData != nil {
+		c_user_data = (C.gpointer)(userData.ToC())
+	}
 
 	C.gdk_window_set_user_data((*C.GdkWindow)(recv.native), c_user_data)
 

@@ -43,7 +43,7 @@ func (recv *KeyFile) LoadFromBytes(bytes *Bytes, flags KeyFileFlags) (bool, erro
 type LogField struct {
 	native *C.GLogField
 	Key    string
-	Value  uintptr
+	// value : no type generator for gpointer, gconstpointer
 	Length int64
 }
 
@@ -56,7 +56,6 @@ func LogFieldNewFromC(u unsafe.Pointer) *LogField {
 	g := &LogField{
 		Key:    C.GoString(c.key),
 		Length: (int64)(c.length),
-		Value:  (uintptr)(c.value),
 		native: c,
 	}
 
@@ -66,8 +65,6 @@ func LogFieldNewFromC(u unsafe.Pointer) *LogField {
 func (recv *LogField) ToC() unsafe.Pointer {
 	recv.native.key =
 		C.CString(recv.Key)
-	recv.native.value =
-		(C.gconstpointer)(recv.Value)
 	recv.native.length =
 		(C.gssize)(recv.Length)
 

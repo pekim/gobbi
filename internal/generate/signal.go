@@ -88,6 +88,12 @@ func (s *Signal) supported() (bool, string) {
 		return supported, reason
 	}
 
+	for _, param := range s.Parameters {
+		if param.Type != nil && param.Type.CType == "gpointer" {
+			return false, fmt.Sprintf("param %s : gpointer", param.Name)
+		}
+	}
+
 	if s.ReturnValue != nil && s.ReturnValue.Type.Name != "none" {
 		if supported, reason := s.ReturnValue.Type.generator.isSupportedAsReturnCValue(); !supported {
 			return supported, fmt.Sprintf("return value %s : %s", s.ReturnValue.Type.Name, reason)

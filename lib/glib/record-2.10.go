@@ -14,9 +14,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_async_queue_push_sorted : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
+// Unsupported : g_async_queue_push_sorted : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// Unsupported : g_async_queue_push_sorted_unlocked : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
+// Unsupported : g_async_queue_push_sorted_unlocked : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_async_queue_sort : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
@@ -61,7 +61,7 @@ func HashTableUnref(hashTable *HashTable) {
 	return
 }
 
-// g_list_insert_sorted_with_data : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
+// g_list_insert_sorted_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // IsOwner is a wrapper around the C function g_main_context_is_owner.
 func (recv *MainContext) IsOwner() bool {
 	retC := C.g_main_context_is_owner((*C.GMainContext)(recv.native))
@@ -70,7 +70,7 @@ func (recv *MainContext) IsOwner() bool {
 	return retGo
 }
 
-// g_slist_insert_sorted_with_data : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
+// g_slist_insert_sorted_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
 func ThreadPoolGetMaxIdleTime() uint32 {
 	retC := C.g_thread_pool_get_max_idle_time()

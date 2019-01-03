@@ -12,50 +12,12 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// PushFront is a wrapper around the C function g_async_queue_push_front.
-func (recv *AsyncQueue) PushFront(item uintptr) {
-	c_item := (C.gpointer)(item)
+// Unsupported : g_async_queue_push_front : unsupported parameter item : no type generator for gpointer (gpointer) for param item
 
-	C.g_async_queue_push_front((*C.GAsyncQueue)(recv.native), c_item)
+// Unsupported : g_async_queue_push_front_unlocked : unsupported parameter item : no type generator for gpointer (gpointer) for param item
 
-	return
-}
+// Unsupported : g_async_queue_remove : unsupported parameter item : no type generator for gpointer (gpointer) for param item
 
-// PushFrontUnlocked is a wrapper around the C function g_async_queue_push_front_unlocked.
-func (recv *AsyncQueue) PushFrontUnlocked(item uintptr) {
-	c_item := (C.gpointer)(item)
+// Unsupported : g_async_queue_remove_unlocked : unsupported parameter item : no type generator for gpointer (gpointer) for param item
 
-	C.g_async_queue_push_front_unlocked((*C.GAsyncQueue)(recv.native), c_item)
-
-	return
-}
-
-// Remove is a wrapper around the C function g_async_queue_remove.
-func (recv *AsyncQueue) Remove(item uintptr) bool {
-	c_item := (C.gpointer)(item)
-
-	retC := C.g_async_queue_remove((*C.GAsyncQueue)(recv.native), c_item)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RemoveUnlocked is a wrapper around the C function g_async_queue_remove_unlocked.
-func (recv *AsyncQueue) RemoveUnlocked(item uintptr) bool {
-	c_item := (C.gpointer)(item)
-
-	retC := C.g_async_queue_remove_unlocked((*C.GAsyncQueue)(recv.native), c_item)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// MoveToFront is a wrapper around the C function g_thread_pool_move_to_front.
-func (recv *ThreadPool) MoveToFront(data uintptr) bool {
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_thread_pool_move_to_front((*C.GThreadPool)(recv.native), c_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : g_thread_pool_move_to_front : unsupported parameter data : no type generator for gpointer (gpointer) for param data

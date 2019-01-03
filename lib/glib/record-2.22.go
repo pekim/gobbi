@@ -14,26 +14,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ArrayGetElementSize is a wrapper around the C function g_array_get_element_size.
-func ArrayGetElementSize(array []uintptr) uint32 {
-	c_array := &array[0]
-
-	retC := C.g_array_get_element_size((*C.GArray)(unsafe.Pointer(c_array)))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// g_array_ref : array return type :
-// ArrayUnref is a wrapper around the C function g_array_unref.
-func ArrayUnref(array []uintptr) {
-	c_array := &array[0]
-
-	C.g_array_unref((*C.GArray)(unsafe.Pointer(c_array)))
-
-	return
-}
-
+// g_array_get_element_size : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_ref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
+// g_array_unref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.

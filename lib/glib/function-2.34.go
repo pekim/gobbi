@@ -14,7 +14,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer (gpointer*) for param pp
 
 // ComputeChecksumForBytes is a wrapper around the C function g_compute_checksum_for_bytes.
 func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
@@ -34,7 +34,7 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 
 // Unsupported : g_datalist_id_dup_data : unsupported parameter dup_func : no type generator for DuplicateFunc (GDuplicateFunc) for param dup_func
 
-// Unsupported : g_datalist_id_replace_data : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_datalist_id_replace_data : unsupported parameter oldval : no type generator for gpointer (gpointer) for param oldval
 
 // SpawnCheckExitStatus is a wrapper around the C function g_spawn_check_exit_status.
 func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
@@ -56,7 +56,7 @@ func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no type generator for TestDataFunc (GTestDataFunc) for param test_func
+// Unsupported : g_test_add_data_func_full : unsupported parameter test_data : no type generator for gpointer (gpointer) for param test_data
 
 // TestExpectMessage is a wrapper around the C function g_test_expect_message.
 func TestExpectMessage(logDomain string, logLevel LogLevelFlags, pattern string) {

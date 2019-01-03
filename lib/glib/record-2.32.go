@@ -14,7 +14,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// g_array_set_clear_func : unsupported parameter clear_func : no type generator for DestroyNotify (GDestroyNotify) for param clear_func
+// g_array_set_clear_func : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // Bytes is a wrapper around the C record GBytes.
 type Bytes struct {
 	native *C.GBytes
@@ -80,8 +80,11 @@ func BytesNewTake(data []uint8) *Bytes {
 // Unsupported : g_bytes_new_with_free_func : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
 // Compare is a wrapper around the C function g_bytes_compare.
-func (recv *Bytes) Compare(bytes2 uintptr) int32 {
-	c_bytes2 := (C.gconstpointer)(bytes2)
+func (recv *Bytes) Compare(bytes2 *Bytes) int32 {
+	c_bytes2 := (C.gconstpointer)(C.NULL)
+	if bytes2 != nil {
+		c_bytes2 = (C.gconstpointer)(bytes2.ToC())
+	}
 
 	retC := C.g_bytes_compare((C.gconstpointer)(recv.native), c_bytes2)
 	retGo := (int32)(retC)
@@ -90,8 +93,11 @@ func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 }
 
 // Equal is a wrapper around the C function g_bytes_equal.
-func (recv *Bytes) Equal(bytes2 uintptr) bool {
-	c_bytes2 := (C.gconstpointer)(bytes2)
+func (recv *Bytes) Equal(bytes2 *Bytes) bool {
+	c_bytes2 := (C.gconstpointer)(C.NULL)
+	if bytes2 != nil {
+		c_bytes2 = (C.gconstpointer)(bytes2.ToC())
+	}
 
 	retC := C.g_bytes_equal((C.gconstpointer)(recv.native), c_bytes2)
 	retGo := retC == C.TRUE
@@ -164,36 +170,8 @@ func (recv *Cond) Init() {
 
 // Unsupported : g_cond_wait_until : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
-// HashTableAdd is a wrapper around the C function g_hash_table_add.
-func HashTableAdd(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gpointer)(key)
-
-	retC := C.g_hash_table_add(c_hash_table, c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HashTableContains is a wrapper around the C function g_hash_table_contains.
-func HashTableContains(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_contains(c_hash_table, c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
+// g_hash_table_add : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+// g_hash_table_contains : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 // Ref is a wrapper around the C function g_key_file_ref.
 func (recv *KeyFile) Ref() *KeyFile {
 	retC := C.g_key_file_ref((*C.GKeyFile)(recv.native))
@@ -240,14 +218,7 @@ func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 	return retGo, goError
 }
 
-// Replace is a wrapper around the C function g_private_replace.
-func (recv *Private) Replace(value uintptr) {
-	c_value := (C.gpointer)(value)
-
-	C.g_private_replace((*C.GPrivate)(recv.native), c_value)
-
-	return
-}
+// Unsupported : g_private_replace : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
 // Unsupported : g_queue_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
@@ -420,21 +391,4 @@ func (recv *Thread) Unref() {
 	return
 }
 
-// VariantNewFixedArray is a wrapper around the C function g_variant_new_fixed_array.
-func VariantNewFixedArray(elementType *VariantType, elements uintptr, nElements uint64, elementSize uint64) *Variant {
-	c_element_type := (*C.GVariantType)(C.NULL)
-	if elementType != nil {
-		c_element_type = (*C.GVariantType)(elementType.ToC())
-	}
-
-	c_elements := (C.gconstpointer)(elements)
-
-	c_n_elements := (C.gsize)(nElements)
-
-	c_element_size := (C.gsize)(elementSize)
-
-	retC := C.g_variant_new_fixed_array(c_element_type, c_elements, c_n_elements, c_element_size)
-	retGo := VariantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_variant_new_fixed_array : unsupported parameter elements : no type generator for gpointer (gconstpointer) for param elements

@@ -495,7 +495,7 @@ type AttrShape struct {
 	// attr : record
 	// ink_rect : record
 	// logical_rect : record
-	Data uintptr
+	// data : no type generator for gpointer, gpointer
 	// copy_func : no type generator for AttrDataCopyFunc, PangoAttrDataCopyFunc
 	// destroy_func : no type generator for GLib.DestroyNotify, GDestroyNotify
 }
@@ -506,17 +506,12 @@ func AttrShapeNewFromC(u unsafe.Pointer) *AttrShape {
 		return nil
 	}
 
-	g := &AttrShape{
-		Data:   (uintptr)(c.data),
-		native: c,
-	}
+	g := &AttrShape{native: c}
 
 	return g
 }
 
 func (recv *AttrShape) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.gpointer)(recv.Data)
 
 	return (unsafe.Pointer)(recv.native)
 }

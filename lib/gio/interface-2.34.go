@@ -37,15 +37,7 @@ func (recv *AppInfo) GetSupportedTypes() []string {
 	return retGo
 }
 
-// IsTagged is a wrapper around the C function g_async_result_is_tagged.
-func (recv *AsyncResult) IsTagged(sourceTag uintptr) bool {
-	c_source_tag := (C.gpointer)(sourceTag)
-
-	retC := C.g_async_result_is_tagged((*C.GAsyncResult)(recv.native), c_source_tag)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : g_async_result_is_tagged : unsupported parameter source_tag : no type generator for gpointer (gpointer) for param source_tag
 
 // LegacyPropagateError is a wrapper around the C function g_async_result_legacy_propagate_error.
 func (recv *AsyncResult) LegacyPropagateError() (bool, error) {

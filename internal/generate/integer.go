@@ -28,9 +28,9 @@ var integerCTypeMap = map[string]string{
 	"gchar":    "rune",
 	"gunichar": "rune",
 
-	"gpointer":      "uintptr",
-	"gconstpointer": "uintptr",
-	"goffset":       "uint64",
-	"gsize":         "uint64",
-	"gssize":        "int64",
+	//"gpointer":      "uintptr",
+	//"gconstpointer": "uintptr",
+	"goffset": "uint64",
+	"gsize":   "uint64",
+	"gssize":  "int64",
 }

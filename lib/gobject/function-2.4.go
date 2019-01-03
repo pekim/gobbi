@@ -28,60 +28,40 @@ func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 	return retGo
 }
 
-// SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
-func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
-	c_ihint := (*C.GSignalInvocationHint)(C.NULL)
-	if ihint != nil {
-		c_ihint = (*C.GSignalInvocationHint)(ihint.ToC())
-	}
+// Unsupported : g_signal_accumulator_true_handled : unsupported parameter dummy : no type generator for gpointer (gpointer) for param dummy
 
-	c_return_accu := (*C.GValue)(C.NULL)
-	if returnAccu != nil {
-		c_return_accu = (*C.GValue)(returnAccu.ToC())
-	}
-
-	c_handler_return := (*C.GValue)(C.NULL)
-	if handlerReturn != nil {
-		c_handler_return = (*C.GValue)(handlerReturn.ToC())
-	}
-
-	c_dummy := (C.gpointer)(dummy)
-
-	retC := C.g_signal_accumulator_true_handled(c_ihint, c_return_accu, c_handler_return, c_dummy)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
+// Unsupported : g_type_add_interface_check : unsupported parameter check_data : no type generator for gpointer (gpointer) for param check_data
 
 // TypeDefaultInterfacePeek is a wrapper around the C function g_type_default_interface_peek.
-func TypeDefaultInterfacePeek(gType Type) uintptr {
+func TypeDefaultInterfacePeek(gType Type) TypeInterface {
 	c_g_type := (C.GType)(gType)
 
 	retC := C.g_type_default_interface_peek(c_g_type)
-	retGo := (uintptr)(retC)
+	retGo := *TypeInterfaceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // TypeDefaultInterfaceRef is a wrapper around the C function g_type_default_interface_ref.
-func TypeDefaultInterfaceRef(gType Type) uintptr {
+func TypeDefaultInterfaceRef(gType Type) TypeInterface {
 	c_g_type := (C.GType)(gType)
 
 	retC := C.g_type_default_interface_ref(c_g_type)
-	retGo := (uintptr)(retC)
+	retGo := *TypeInterfaceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // TypeDefaultInterfaceUnref is a wrapper around the C function g_type_default_interface_unref.
-func TypeDefaultInterfaceUnref(gIface uintptr) {
-	c_g_iface := (C.gpointer)(gIface)
+func TypeDefaultInterfaceUnref(gIface *TypeInterface) {
+	c_g_iface := (C.gpointer)(C.NULL)
+	if gIface != nil {
+		c_g_iface = (C.gpointer)(gIface.ToC())
+	}
 
 	C.g_type_default_interface_unref(c_g_iface)
 
 	return
 }
 
-// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
+// Unsupported : g_type_remove_interface_check : unsupported parameter check_data : no type generator for gpointer (gpointer) for param check_data

@@ -25,11 +25,11 @@ func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 }
 
 // TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
-func TypeClassPeekStatic(type_ Type) uintptr {
+func TypeClassPeekStatic(type_ Type) TypeClass {
 	c_type := (C.GType)(type_)
 
 	retC := C.g_type_class_peek_static(c_type)
-	retGo := (uintptr)(retC)
+	retGo := *TypeClassNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -43,23 +43,9 @@ func (recv *TypeClass) AddPrivate(privateSize uint64) {
 	return
 }
 
-// TakeBoxed is a wrapper around the C function g_value_take_boxed.
-func (recv *Value) TakeBoxed(vBoxed uintptr) {
-	c_v_boxed := (C.gconstpointer)(vBoxed)
+// Unsupported : g_value_take_boxed : unsupported parameter v_boxed : no type generator for gpointer (gconstpointer) for param v_boxed
 
-	C.g_value_take_boxed((*C.GValue)(recv.native), c_v_boxed)
-
-	return
-}
-
-// TakeObject is a wrapper around the C function g_value_take_object.
-func (recv *Value) TakeObject(vObject uintptr) {
-	c_v_object := (C.gpointer)(vObject)
-
-	C.g_value_take_object((*C.GValue)(recv.native), c_v_object)
-
-	return
-}
+// Unsupported : g_value_take_object : unsupported parameter v_object : no type generator for gpointer (gpointer) for param v_object
 
 // TakeParam is a wrapper around the C function g_value_take_param.
 func (recv *Value) TakeParam(param *ParamSpec) {

@@ -5,7 +5,6 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -127,23 +126,7 @@ func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// SimpleAsyncResultIsValid is a wrapper around the C function g_simple_async_result_is_valid.
-func SimpleAsyncResultIsValid(result *AsyncResult, source *gobject.Object, sourceTag uintptr) bool {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	c_source := (*C.GObject)(C.NULL)
-	if source != nil {
-		c_source = (*C.GObject)(source.ToC())
-	}
-
-	c_source_tag := (C.gpointer)(sourceTag)
-
-	retC := C.g_simple_async_result_is_valid(c_result, c_source, c_source_tag)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
+// g_simple_async_result_is_valid : unsupported parameter source_tag : no type generator for gpointer (gpointer) for param source_tag
 // GetCloseFd is a wrapper around the C function g_unix_input_stream_get_close_fd.
 func (recv *UnixInputStream) GetCloseFd() bool {
 	retC := C.g_unix_input_stream_get_close_fd((*C.GUnixInputStream)(recv.native))

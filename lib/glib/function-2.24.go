@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -48,78 +46,14 @@ func BitUnlock(address int32, lockBit int32) {
 	return
 }
 
-// Malloc0N is a wrapper around the C function g_malloc0_n.
-func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
-	c_n_blocks := (C.gsize)(nBlocks)
+// Unsupported : g_malloc0_n : no return generator
 
-	c_n_block_bytes := (C.gsize)(nBlockBytes)
+// Unsupported : g_malloc_n : no return generator
 
-	retC := C.g_malloc0_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_realloc_n : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
-	return retGo
-}
+// Unsupported : g_try_malloc0_n : no return generator
 
-// MallocN is a wrapper around the C function g_malloc_n.
-func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
-	c_n_blocks := (C.gsize)(nBlocks)
+// Unsupported : g_try_malloc_n : no return generator
 
-	c_n_block_bytes := (C.gsize)(nBlockBytes)
-
-	retC := C.g_malloc_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ReallocN is a wrapper around the C function g_realloc_n.
-func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
-	c_mem := (C.gpointer)(mem)
-
-	c_n_blocks := (C.gsize)(nBlocks)
-
-	c_n_block_bytes := (C.gsize)(nBlockBytes)
-
-	retC := C.g_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TryMalloc0N is a wrapper around the C function g_try_malloc0_n.
-func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
-	c_n_blocks := (C.gsize)(nBlocks)
-
-	c_n_block_bytes := (C.gsize)(nBlockBytes)
-
-	retC := C.g_try_malloc0_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TryMallocN is a wrapper around the C function g_try_malloc_n.
-func TryMallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
-	c_n_blocks := (C.gsize)(nBlocks)
-
-	c_n_block_bytes := (C.gsize)(nBlockBytes)
-
-	retC := C.g_try_malloc_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TryReallocN is a wrapper around the C function g_try_realloc_n.
-func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
-	c_mem := (C.gpointer)(mem)
-
-	c_n_blocks := (C.gsize)(nBlocks)
-
-	c_n_block_bytes := (C.gsize)(nBlockBytes)
-
-	retC := C.g_try_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_try_realloc_n : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem

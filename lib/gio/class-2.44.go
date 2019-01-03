@@ -29,8 +29,11 @@ import (
 import "C"
 
 // BindBusyProperty is a wrapper around the C function g_application_bind_busy_property.
-func (recv *Application) BindBusyProperty(object uintptr, property string) {
-	c_object := (C.gpointer)(object)
+func (recv *Application) BindBusyProperty(object *gobject.Object, property string) {
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	c_property := C.CString(property)
 	defer C.free(unsafe.Pointer(c_property))
@@ -49,8 +52,11 @@ func (recv *Application) GetIsBusy() bool {
 }
 
 // UnbindBusyProperty is a wrapper around the C function g_application_unbind_busy_property.
-func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
-	c_object := (C.gpointer)(object)
+func (recv *Application) UnbindBusyProperty(object *gobject.Object, property string) {
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	c_property := C.CString(property)
 	defer C.free(unsafe.Pointer(c_property))
@@ -132,8 +138,11 @@ func ListStoreNew(itemType gobject.Type) *ListStore {
 }
 
 // Append is a wrapper around the C function g_list_store_append.
-func (recv *ListStore) Append(item uintptr) {
-	c_item := (C.gpointer)(item)
+func (recv *ListStore) Append(item *gobject.Object) {
+	c_item := (C.gpointer)(C.NULL)
+	if item != nil {
+		c_item = (C.gpointer)(item.ToC())
+	}
 
 	C.g_list_store_append((*C.GListStore)(recv.native), c_item)
 
@@ -141,10 +150,13 @@ func (recv *ListStore) Append(item uintptr) {
 }
 
 // Insert is a wrapper around the C function g_list_store_insert.
-func (recv *ListStore) Insert(position uint32, item uintptr) {
+func (recv *ListStore) Insert(position uint32, item *gobject.Object) {
 	c_position := (C.guint)(position)
 
-	c_item := (C.gpointer)(item)
+	c_item := (C.gpointer)(C.NULL)
+	if item != nil {
+		c_item = (C.gpointer)(item.ToC())
+	}
 
 	C.g_list_store_insert((*C.GListStore)(recv.native), c_position, c_item)
 

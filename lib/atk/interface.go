@@ -747,13 +747,7 @@ func document_reloadHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetDocument is a wrapper around the C function atk_document_get_document.
-func (recv *Document) GetDocument() uintptr {
-	retC := C.atk_document_get_document((*C.AtkDocument)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : atk_document_get_document : no return generator
 
 // GetDocumentType is a wrapper around the C function atk_document_get_document_type.
 func (recv *Document) GetDocumentType() string {

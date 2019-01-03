@@ -95,6 +95,8 @@ func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
 	return retGo
 }
 
+// Unsupported : gtk_binding_set_by_class : unsupported parameter object_class : no type generator for gpointer (gpointer) for param object_class
+
 // BindingsActivate is a wrapper around the C function gtk_bindings_activate.
 func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.ModifierType) bool {
 	c_object := (*C.GObject)(C.NULL)

@@ -890,15 +890,6 @@ import (
 */
 /*
 
-	void menuitem_toggleSizeRequestHandler(GObject *, gpointer, gpointer);
-
-	static gulong MenuItem_signal_connect_toggle_size_request(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-size-request", G_CALLBACK(menuitem_toggleSizeRequestHandler), data);
-	}
-
-*/
-/*
-
 	void menushell_activateCurrentHandler(GObject *, gboolean, gpointer);
 
 	static gulong MenuShell_signal_connect_activate_current(gpointer instance, gpointer data) {
@@ -2822,8 +2813,8 @@ func AccelMapChangeEntry(accelPath string, accelKey uint32, accelMods gdk.Modifi
 	return retGo
 }
 
-// gtk_accel_map_foreach : unsupported parameter foreach_func : no type generator for AccelMapForeach (GtkAccelMapForeach) for param foreach_func
-// gtk_accel_map_foreach_unfiltered : unsupported parameter foreach_func : no type generator for AccelMapForeach (GtkAccelMapForeach) for param foreach_func
+// gtk_accel_map_foreach : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// gtk_accel_map_foreach_unfiltered : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // AccelMapLoad is a wrapper around the C function gtk_accel_map_load.
 func AccelMapLoad(fileName string) {
 	c_file_name := C.CString(fileName)
@@ -21896,67 +21887,7 @@ func menuitem_toggleSizeAllocateHandler(_ *C.GObject, c_object C.gint, data C.gp
 	callback(object)
 }
 
-type signalMenuItemToggleSizeRequestDetail struct {
-	callback  MenuItemSignalToggleSizeRequestCallback
-	handlerID C.gulong
-}
-
-var signalMenuItemToggleSizeRequestId int
-var signalMenuItemToggleSizeRequestMap = make(map[int]signalMenuItemToggleSizeRequestDetail)
-var signalMenuItemToggleSizeRequestLock sync.RWMutex
-
-// MenuItemSignalToggleSizeRequestCallback is a callback function for a 'toggle-size-request' signal emitted from a MenuItem.
-type MenuItemSignalToggleSizeRequestCallback func(object uintptr)
-
-/*
-ConnectToggleSizeRequest connects the callback to the 'toggle-size-request' signal for the MenuItem.
-
-The returned value represents the connection, and may be passed to DisconnectToggleSizeRequest to remove it.
-*/
-func (recv *MenuItem) ConnectToggleSizeRequest(callback MenuItemSignalToggleSizeRequestCallback) int {
-	signalMenuItemToggleSizeRequestLock.Lock()
-	defer signalMenuItemToggleSizeRequestLock.Unlock()
-
-	signalMenuItemToggleSizeRequestId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.MenuItem_signal_connect_toggle_size_request(instance, C.gpointer(uintptr(signalMenuItemToggleSizeRequestId)))
-
-	detail := signalMenuItemToggleSizeRequestDetail{callback, handlerID}
-	signalMenuItemToggleSizeRequestMap[signalMenuItemToggleSizeRequestId] = detail
-
-	return signalMenuItemToggleSizeRequestId
-}
-
-/*
-DisconnectToggleSizeRequest disconnects a callback from the 'toggle-size-request' signal for the MenuItem.
-
-The connectionID should be a value returned from a call to ConnectToggleSizeRequest.
-*/
-func (recv *MenuItem) DisconnectToggleSizeRequest(connectionID int) {
-	signalMenuItemToggleSizeRequestLock.Lock()
-	defer signalMenuItemToggleSizeRequestLock.Unlock()
-
-	detail, exists := signalMenuItemToggleSizeRequestMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalMenuItemToggleSizeRequestMap, connectionID)
-}
-
-//export menuitem_toggleSizeRequestHandler
-func menuitem_toggleSizeRequestHandler(_ *C.GObject, c_object C.gpointer, data C.gpointer) {
-	signalMenuItemToggleSizeRequestLock.RLock()
-	defer signalMenuItemToggleSizeRequestLock.RUnlock()
-
-	object := uintptr(c_object)
-
-	index := int(uintptr(data))
-	callback := signalMenuItemToggleSizeRequestMap[index].callback
-	callback(object)
-}
+// Unsupported signal 'toggle-size-request' for MenuItem : unsupported parameter object : no type generator for gpointer, gpointer
 
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
 func MenuItemNew() *MenuItem {
@@ -37283,13 +37214,7 @@ func (recv *TreeSelection) GetTreeView() *TreeView {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function gtk_tree_selection_get_user_data.
-func (recv *TreeSelection) GetUserData() uintptr {
-	retC := C.gtk_tree_selection_get_user_data((*C.GtkTreeSelection)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gtk_tree_selection_get_user_data : no return generator
 
 // IterIsSelected is a wrapper around the C function gtk_tree_selection_iter_is_selected.
 func (recv *TreeSelection) IterIsSelected(iter *TreeIter) bool {

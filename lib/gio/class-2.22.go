@@ -1345,21 +1345,7 @@ func (recv *Socket) SpeaksIpv4() bool {
 	return retGo
 }
 
-// SocketAddressNewFromNative is a wrapper around the C function g_socket_address_new_from_native.
-func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
-	c_native := (C.gpointer)(native)
-
-	c_len := (C.gsize)(len)
-
-	retC := C.g_socket_address_new_from_native(c_native, c_len)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Unsupported : g_socket_address_new_from_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
 
 // GetFamily is a wrapper around the C function g_socket_address_get_family.
 func (recv *SocketAddress) GetFamily() SocketFamily {
@@ -1377,27 +1363,7 @@ func (recv *SocketAddress) GetNativeSize() int64 {
 	return retGo
 }
 
-// ToNative is a wrapper around the C function g_socket_address_to_native.
-func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) {
-	c_dest := (C.gpointer)(dest)
-
-	c_destlen := (C.gsize)(destlen)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_address_to_native((*C.GSocketAddress)(recv.native), c_dest, c_destlen, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Unsupported : g_socket_address_to_native : unsupported parameter dest : no type generator for gpointer (gpointer) for param dest
 
 // SocketClient is a wrapper around the C record GSocketClient.
 type SocketClient struct {
@@ -1856,14 +1822,7 @@ func (recv *SocketControlMessage) GetSize() uint64 {
 	return retGo
 }
 
-// Serialize is a wrapper around the C function g_socket_control_message_serialize.
-func (recv *SocketControlMessage) Serialize(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.g_socket_control_message_serialize((*C.GSocketControlMessage)(recv.native), c_data)
-
-	return
-}
+// Unsupported : g_socket_control_message_serialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // SocketListener is a wrapper around the C record GSocketListener.
 type SocketListener struct {

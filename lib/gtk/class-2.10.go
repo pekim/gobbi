@@ -3832,7 +3832,7 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 }
 
 // StatusIconPositionMenu is a wrapper around the C function gtk_status_icon_position_menu.
-func StatusIconPositionMenu(menu *Menu, x int32, y int32, userData uintptr) bool {
+func StatusIconPositionMenu(menu *Menu, x int32, y int32, userData *StatusIcon) bool {
 	c_menu := (*C.GtkMenu)(C.NULL)
 	if menu != nil {
 		c_menu = (*C.GtkMenu)(menu.ToC())
@@ -3844,7 +3844,10 @@ func StatusIconPositionMenu(menu *Menu, x int32, y int32, userData uintptr) bool
 
 	var c_push_in C.gboolean
 
-	c_user_data := (C.gpointer)(userData)
+	c_user_data := (C.gpointer)(C.NULL)
+	if userData != nil {
+		c_user_data = (C.gpointer)(userData.ToC())
+	}
 
 	C.gtk_status_icon_position_menu(c_menu, &c_x, &c_y, &c_push_in, c_user_data)
 

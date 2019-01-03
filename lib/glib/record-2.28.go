@@ -29,9 +29,9 @@ import "C"
 // Unsupported : g_main_context_invoke_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
 // g_slist_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
-// Unsupported : g_sequence_lookup : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
+// Unsupported : g_sequence_lookup : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// Unsupported : g_sequence_lookup_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
+// Unsupported : g_sequence_lookup_iter : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // AddChildSource is a wrapper around the C function g_source_add_child_source.
 func (recv *Source) AddChildSource(childSource *Source) {

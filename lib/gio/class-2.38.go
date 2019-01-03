@@ -178,11 +178,14 @@ func CastToPropertyAction(object *gobject.Object) *PropertyAction {
 }
 
 // PropertyActionNew is a wrapper around the C function g_property_action_new.
-func PropertyActionNew(name string, object uintptr, propertyName string) *PropertyAction {
+func PropertyActionNew(name string, object *gobject.Object, propertyName string) *PropertyAction {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_object := (C.gpointer)(object)
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))

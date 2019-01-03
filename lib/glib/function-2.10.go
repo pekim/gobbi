@@ -36,46 +36,10 @@ func InternString(string_ string) string {
 	return retGo
 }
 
-// SliceAlloc is a wrapper around the C function g_slice_alloc.
-func SliceAlloc(blockSize uint64) uintptr {
-	c_block_size := (C.gsize)(blockSize)
+// Unsupported : g_slice_alloc : no return generator
 
-	retC := C.g_slice_alloc(c_block_size)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_slice_alloc0 : no return generator
 
-	return retGo
-}
+// Unsupported : g_slice_free1 : unsupported parameter mem_block : no type generator for gpointer (gpointer) for param mem_block
 
-// SliceAlloc0 is a wrapper around the C function g_slice_alloc0.
-func SliceAlloc0(blockSize uint64) uintptr {
-	c_block_size := (C.gsize)(blockSize)
-
-	retC := C.g_slice_alloc0(c_block_size)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SliceFree1 is a wrapper around the C function g_slice_free1.
-func SliceFree1(blockSize uint64, memBlock uintptr) {
-	c_block_size := (C.gsize)(blockSize)
-
-	c_mem_block := (C.gpointer)(memBlock)
-
-	C.g_slice_free1(c_block_size, c_mem_block)
-
-	return
-}
-
-// SliceFreeChainWithOffset is a wrapper around the C function g_slice_free_chain_with_offset.
-func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uint64) {
-	c_block_size := (C.gsize)(blockSize)
-
-	c_mem_chain := (C.gpointer)(memChain)
-
-	c_next_offset := (C.gsize)(nextOffset)
-
-	C.g_slice_free_chain_with_offset(c_block_size, c_mem_chain, c_next_offset)
-
-	return
-}
+// Unsupported : g_slice_free_chain_with_offset : unsupported parameter mem_chain : no type generator for gpointer (gpointer) for param mem_chain

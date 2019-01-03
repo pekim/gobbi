@@ -76,4 +76,6 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 	return retGo, outNum, goError
 }
 
-// Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter equal_func : no type generator for EqualFunc (GEqualFunc) for param equal_func
+// Unsupported : g_ptr_array_find : unsupported parameter haystack : no type generator for gpointer (gpointer) for array param haystack
+
+// Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter haystack : no type generator for gpointer (gpointer) for array param haystack

@@ -148,15 +148,7 @@ func CredentialsNew() *Credentials {
 	return retGo
 }
 
-// GetNative is a wrapper around the C function g_credentials_get_native.
-func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
-	c_native_type := (C.GCredentialsType)(nativeType)
-
-	retC := C.g_credentials_get_native((*C.GCredentials)(recv.native), c_native_type)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_credentials_get_native : no return generator
 
 // Unsupported : g_credentials_get_unix_user : no return generator
 
@@ -183,16 +175,7 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error)
 	return retGo, goError
 }
 
-// SetNative is a wrapper around the C function g_credentials_set_native.
-func (recv *Credentials) SetNative(nativeType CredentialsType, native uintptr) {
-	c_native_type := (C.GCredentialsType)(nativeType)
-
-	c_native := (C.gpointer)(native)
-
-	C.g_credentials_set_native((*C.GCredentials)(recv.native), c_native_type, c_native)
-
-	return
-}
+// Unsupported : g_credentials_set_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
 
 // Unsupported : g_credentials_set_unix_user : unsupported parameter uid : no type generator for guint (uid_t) for param uid
 
@@ -848,9 +831,9 @@ func (recv *DBusConnection) IsClosed() bool {
 	return retGo
 }
 
-// Unsupported : g_dbus_connection_register_object : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify (GDestroyNotify) for param user_data_free_func
+// Unsupported : g_dbus_connection_register_object : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
-// Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify (GDestroyNotify) for param user_data_free_func
+// Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // RemoveFilter is a wrapper around the C function g_dbus_connection_remove_filter.
 func (recv *DBusConnection) RemoveFilter(filterId uint32) {
@@ -1666,13 +1649,7 @@ func (recv *DBusMethodInvocation) GetSender() string {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function g_dbus_method_invocation_get_user_data.
-func (recv *DBusMethodInvocation) GetUserData() uintptr {
-	retC := C.g_dbus_method_invocation_get_user_data((*C.GDBusMethodInvocation)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_dbus_method_invocation_get_user_data : no return generator
 
 // ReturnDbusError is a wrapper around the C function g_dbus_method_invocation_return_dbus_error.
 func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage string) {
@@ -2427,13 +2404,7 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 // Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// StealData is a wrapper around the C function g_memory_output_stream_steal_data.
-func (recv *MemoryOutputStream) StealData() uintptr {
-	retC := C.g_memory_output_stream_steal_data((*C.GMemoryOutputStream)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_memory_output_stream_steal_data : no return generator
 
 // NetworkAddressParseUri is a wrapper around the C function g_network_address_parse_uri.
 func NetworkAddressParseUri(uri string, defaultPort uint16) (*NetworkAddress, error) {
@@ -2835,8 +2806,11 @@ func SettingsListSchemas() []string {
 }
 
 // SettingsUnbind is a wrapper around the C function g_settings_unbind.
-func SettingsUnbind(object uintptr, property string) {
-	c_object := (C.gpointer)(object)
+func SettingsUnbind(object *gobject.Object, property string) {
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	c_property := C.CString(property)
 	defer C.free(unsafe.Pointer(c_property))
@@ -2847,11 +2821,14 @@ func SettingsUnbind(object uintptr, property string) {
 }
 
 // Bind is a wrapper around the C function g_settings_bind.
-func (recv *Settings) Bind(key string, object uintptr, property string, flags SettingsBindFlags) {
+func (recv *Settings) Bind(key string, object *gobject.Object, property string, flags SettingsBindFlags) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_object := (C.gpointer)(object)
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	c_property := C.CString(property)
 	defer C.free(unsafe.Pointer(c_property))
@@ -2866,11 +2843,14 @@ func (recv *Settings) Bind(key string, object uintptr, property string, flags Se
 // Unsupported : g_settings_bind_with_mapping : unsupported parameter get_mapping : no type generator for SettingsBindGetMapping (GSettingsBindGetMapping) for param get_mapping
 
 // BindWritable is a wrapper around the C function g_settings_bind_writable.
-func (recv *Settings) BindWritable(key string, object uintptr, property string, inverted bool) {
+func (recv *Settings) BindWritable(key string, object *gobject.Object, property string, inverted bool) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_object := (C.gpointer)(object)
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	c_property := C.CString(property)
 	defer C.free(unsafe.Pointer(c_property))
@@ -3116,13 +3096,13 @@ func (recv *Settings) SetValue(key string, value *glib.Variant) bool {
 }
 
 // g_settings_backend_flatten_tree : unsupported parameter keys : output array param keys
-// Blacklisted : g_settings_backend_changed
+// Unsupported : g_settings_backend_changed : unsupported parameter origin_tag : no type generator for gpointer (gpointer) for param origin_tag
 
-// Blacklisted : g_settings_backend_changed_tree
+// Unsupported : g_settings_backend_changed_tree : unsupported parameter origin_tag : no type generator for gpointer (gpointer) for param origin_tag
 
 // Unsupported : g_settings_backend_keys_changed : unsupported parameter items :
 
-// Blacklisted : g_settings_backend_path_changed
+// Unsupported : g_settings_backend_path_changed : unsupported parameter origin_tag : no type generator for gpointer (gpointer) for param origin_tag
 
 // Blacklisted : g_settings_backend_path_writable_changed
 

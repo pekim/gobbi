@@ -13,8 +13,11 @@ import "unsafe"
 import "C"
 
 // ObjectInterfaceFindProperty is a wrapper around the C function g_object_interface_find_property.
-func ObjectInterfaceFindProperty(gIface uintptr, propertyName string) *ParamSpec {
-	c_g_iface := (C.gpointer)(gIface)
+func ObjectInterfaceFindProperty(gIface *TypeInterface, propertyName string) *ParamSpec {
+	c_g_iface := (C.gpointer)(C.NULL)
+	if gIface != nil {
+		c_g_iface = (C.gpointer)(gIface.ToC())
+	}
 
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
@@ -26,8 +29,11 @@ func ObjectInterfaceFindProperty(gIface uintptr, propertyName string) *ParamSpec
 }
 
 // ObjectInterfaceInstallProperty is a wrapper around the C function g_object_interface_install_property.
-func ObjectInterfaceInstallProperty(gIface uintptr, pspec *ParamSpec) {
-	c_g_iface := (C.gpointer)(gIface)
+func ObjectInterfaceInstallProperty(gIface *TypeInterface, pspec *ParamSpec) {
+	c_g_iface := (C.gpointer)(C.NULL)
+	if gIface != nil {
+		c_g_iface = (C.gpointer)(gIface.ToC())
+	}
 
 	c_pspec := (*C.GParamSpec)(C.NULL)
 	if pspec != nil {

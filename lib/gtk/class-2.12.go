@@ -220,14 +220,7 @@ func (recv *Builder) AddFromString(buffer string, length uint64) (uint32, error)
 	return retGo, goError
 }
 
-// ConnectSignals is a wrapper around the C function gtk_builder_connect_signals.
-func (recv *Builder) ConnectSignals(userData uintptr) {
-	c_user_data := (C.gpointer)(userData)
-
-	C.gtk_builder_connect_signals((*C.GtkBuilder)(recv.native), c_user_data)
-
-	return
-}
+// Unsupported : gtk_builder_connect_signals : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // Unsupported : gtk_builder_connect_signals_full : unsupported parameter func : no type generator for BuilderConnectFunc (GtkBuilderConnectFunc) for param func
 

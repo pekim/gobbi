@@ -19,3 +19,7 @@ import "C"
 // Unsupported : g_environ_setenv : unsupported parameter envp :
 
 // Unsupported : g_environ_unsetenv : unsupported parameter envp :
+
+// Unsupported : g_hash_table_add : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+
+// Unsupported : g_hash_table_contains : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key

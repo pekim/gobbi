@@ -579,13 +579,7 @@ func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function g_async_result_get_user_data.
-func (recv *AsyncResult) GetUserData() uintptr {
-	retC := C.g_async_result_get_user_data((*C.GAsyncResult)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_async_result_get_user_data : no return generator
 
 // DBusObject is a wrapper around the C record GDBusObject.
 type DBusObject struct {
@@ -2046,37 +2040,7 @@ func (recv *File) ResolveRelativePath(relativePath string) *File {
 	return retGo
 }
 
-// SetAttribute is a wrapper around the C function g_file_set_attribute.
-func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_type := (C.GFileAttributeType)(type_)
-
-	c_value_p := (C.gpointer)(valueP)
-
-	c_flags := (C.GFileQueryInfoFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_set_attribute((*C.GFile)(recv.native), c_attribute, c_type, c_value_p, c_flags, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Unsupported : g_file_set_attribute : unsupported parameter value_p : no type generator for gpointer (gpointer) for param value_p
 
 // SetAttributeByteString is a wrapper around the C function g_file_set_attribute_byte_string.
 func (recv *File) SetAttributeByteString(attribute string, value string, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
@@ -2461,16 +2425,7 @@ func (recv *Icon) Equals(other *Icon) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// IconHash is a wrapper around the C function g_icon_hash.
-func IconHash(icon uintptr) uint32 {
-	c_icon := (C.gconstpointer)(icon)
-
-	retC := C.g_icon_hash(c_icon)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
+// g_icon_hash : unsupported parameter icon : no type generator for gpointer (gconstpointer) for param icon
 // Equal is a wrapper around the C function g_icon_equal.
 func (recv *Icon) Equal(icon2 *Icon) bool {
 	c_icon2 := (*C.GIcon)(icon2.ToC())

@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -49,8 +50,11 @@ func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 }
 
 // PollableSourceNewFull is a wrapper around the C function g_pollable_source_new_full.
-func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
-	c_pollable_stream := (C.gpointer)(pollableStream)
+func PollableSourceNewFull(pollableStream *gobject.Object, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
+	c_pollable_stream := (C.gpointer)(C.NULL)
+	if pollableStream != nil {
+		c_pollable_stream = (C.gpointer)(pollableStream.ToC())
+	}
 
 	c_child_source := (*C.GSource)(C.NULL)
 	if childSource != nil {

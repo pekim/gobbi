@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -21,32 +19,8 @@ func (recv *Checksum) Reset() {
 	return
 }
 
-// GetUserData is a wrapper around the C function g_markup_parse_context_get_user_data.
-func (recv *MarkupParseContext) GetUserData() uintptr {
-	retC := C.g_markup_parse_context_get_user_data((*C.GMarkupParseContext)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_markup_parse_context_get_user_data : no return generator
 
-	return retGo
-}
+// Unsupported : g_markup_parse_context_pop : no return generator
 
-// Pop is a wrapper around the C function g_markup_parse_context_pop.
-func (recv *MarkupParseContext) Pop() uintptr {
-	retC := C.g_markup_parse_context_pop((*C.GMarkupParseContext)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Push is a wrapper around the C function g_markup_parse_context_push.
-func (recv *MarkupParseContext) Push(parser *MarkupParser, userData uintptr) {
-	c_parser := (*C.GMarkupParser)(C.NULL)
-	if parser != nil {
-		c_parser = (*C.GMarkupParser)(parser.ToC())
-	}
-
-	c_user_data := (C.gpointer)(userData)
-
-	C.g_markup_parse_context_push((*C.GMarkupParseContext)(recv.native), c_parser, c_user_data)
-
-	return
-}
+// Unsupported : g_markup_parse_context_push : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data

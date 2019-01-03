@@ -473,34 +473,8 @@ func (recv *Regex) Unref() {
 }
 
 // g_sequence_foreach_range : unsupported parameter func : no type generator for Func (GFunc) for param func
-// SequenceGet is a wrapper around the C function g_sequence_get.
-func SequenceGet(iter *SequenceIter) uintptr {
-	c_iter := (*C.GSequenceIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GSequenceIter)(iter.ToC())
-	}
-
-	retC := C.g_sequence_get(c_iter)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SequenceInsertBefore is a wrapper around the C function g_sequence_insert_before.
-func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
-	c_iter := (*C.GSequenceIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GSequenceIter)(iter.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_sequence_insert_before(c_iter, c_data)
-	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_sequence_get : no return generator
+// g_sequence_insert_before : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // SequenceMove is a wrapper around the C function g_sequence_move.
 func SequenceMove(src *SequenceIter, dest *SequenceIter) {
 	c_src := (*C.GSequenceIter)(C.NULL)
@@ -588,20 +562,7 @@ func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
 	return
 }
 
-// SequenceSet is a wrapper around the C function g_sequence_set.
-func SequenceSet(iter *SequenceIter, data uintptr) {
-	c_iter := (*C.GSequenceIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GSequenceIter)(iter.ToC())
-	}
-
-	c_data := (C.gpointer)(data)
-
-	C.g_sequence_set(c_iter, c_data)
-
-	return
-}
-
+// g_sequence_set : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // g_sequence_sort_changed : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
 // g_sequence_sort_changed_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
 // SequenceSwap is a wrapper around the C function g_sequence_swap.
@@ -621,15 +582,7 @@ func SequenceSwap(a *SequenceIter, b *SequenceIter) {
 	return
 }
 
-// Append is a wrapper around the C function g_sequence_append.
-func (recv *Sequence) Append(data uintptr) *SequenceIter {
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_sequence_append((*C.GSequence)(recv.native), c_data)
-	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_sequence_append : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_sequence_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
 
@@ -674,23 +627,15 @@ func (recv *Sequence) GetLength() int32 {
 	return retGo
 }
 
-// Unsupported : g_sequence_insert_sorted : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
+// Unsupported : g_sequence_insert_sorted : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// Unsupported : g_sequence_insert_sorted_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
+// Unsupported : g_sequence_insert_sorted_iter : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// Prepend is a wrapper around the C function g_sequence_prepend.
-func (recv *Sequence) Prepend(data uintptr) *SequenceIter {
-	c_data := (C.gpointer)(data)
+// Unsupported : g_sequence_prepend : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	retC := C.g_sequence_prepend((*C.GSequence)(recv.native), c_data)
-	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
+// Unsupported : g_sequence_search : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	return retGo
-}
-
-// Unsupported : g_sequence_search : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
-
-// Unsupported : g_sequence_search_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
+// Unsupported : g_sequence_search_iter : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_sequence_sort : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
 

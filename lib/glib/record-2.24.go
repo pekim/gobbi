@@ -373,8 +373,11 @@ func (recv *Variant) DupStrv() ([]string, uint64) {
 }
 
 // Equal is a wrapper around the C function g_variant_equal.
-func (recv *Variant) Equal(two uintptr) bool {
-	c_two := (C.gconstpointer)(two)
+func (recv *Variant) Equal(two *Variant) bool {
+	c_two := (C.gconstpointer)(C.NULL)
+	if two != nil {
+		c_two = (C.gconstpointer)(two.ToC())
+	}
 
 	retC := C.g_variant_equal((C.gconstpointer)(recv.native), c_two)
 	retGo := retC == C.TRUE
@@ -432,13 +435,7 @@ func (recv *Variant) GetChildValue(index uint64) *Variant {
 	return retGo
 }
 
-// GetData is a wrapper around the C function g_variant_get_data.
-func (recv *Variant) GetData() uintptr {
-	retC := C.g_variant_get_data((*C.GVariant)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_variant_get_data : no return generator
 
 // GetDouble is a wrapper around the C function g_variant_get_double.
 func (recv *Variant) GetDouble() float64 {
@@ -448,7 +445,7 @@ func (recv *Variant) GetDouble() float64 {
 	return retGo
 }
 
-// Unsupported : g_variant_get_fixed_array : array return type :
+// Unsupported : g_variant_get_fixed_array : no type generator for gpointer (gconstpointer) for array return
 
 // GetHandle is a wrapper around the C function g_variant_get_handle.
 func (recv *Variant) GetHandle() int32 {
@@ -686,14 +683,7 @@ func (recv *Variant) RefSink() *Variant {
 	return retGo
 }
 
-// Store is a wrapper around the C function g_variant_store.
-func (recv *Variant) Store(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.g_variant_store((*C.GVariant)(recv.native), c_data)
-
-	return
-}
+// Unsupported : g_variant_store : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // TakeRef is a wrapper around the C function g_variant_take_ref.
 func (recv *Variant) TakeRef() *Variant {

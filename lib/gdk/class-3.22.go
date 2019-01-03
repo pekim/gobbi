@@ -70,15 +70,6 @@ import (
 	}
 
 */
-/*
-
-	void window_movedToRectHandler(GObject *, gpointer, gpointer, gboolean, gboolean, gpointer);
-
-	static gulong Window_signal_connect_moved_to_rect(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "moved-to-rect", G_CALLBACK(window_movedToRectHandler), data);
-	}
-
-*/
 import "C"
 
 type signalDeviceToolChangedDetail struct {
@@ -889,73 +880,7 @@ func (recv *Seat) GetDisplay() *Display {
 	return retGo
 }
 
-type signalWindowMovedToRectDetail struct {
-	callback  WindowSignalMovedToRectCallback
-	handlerID C.gulong
-}
-
-var signalWindowMovedToRectId int
-var signalWindowMovedToRectMap = make(map[int]signalWindowMovedToRectDetail)
-var signalWindowMovedToRectLock sync.RWMutex
-
-// WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
-type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
-
-/*
-ConnectMovedToRect connects the callback to the 'moved-to-rect' signal for the Window.
-
-The returned value represents the connection, and may be passed to DisconnectMovedToRect to remove it.
-*/
-func (recv *Window) ConnectMovedToRect(callback WindowSignalMovedToRectCallback) int {
-	signalWindowMovedToRectLock.Lock()
-	defer signalWindowMovedToRectLock.Unlock()
-
-	signalWindowMovedToRectId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Window_signal_connect_moved_to_rect(instance, C.gpointer(uintptr(signalWindowMovedToRectId)))
-
-	detail := signalWindowMovedToRectDetail{callback, handlerID}
-	signalWindowMovedToRectMap[signalWindowMovedToRectId] = detail
-
-	return signalWindowMovedToRectId
-}
-
-/*
-DisconnectMovedToRect disconnects a callback from the 'moved-to-rect' signal for the Window.
-
-The connectionID should be a value returned from a call to ConnectMovedToRect.
-*/
-func (recv *Window) DisconnectMovedToRect(connectionID int) {
-	signalWindowMovedToRectLock.Lock()
-	defer signalWindowMovedToRectLock.Unlock()
-
-	detail, exists := signalWindowMovedToRectMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalWindowMovedToRectMap, connectionID)
-}
-
-//export window_movedToRectHandler
-func window_movedToRectHandler(_ *C.GObject, c_flipped_rect C.gpointer, c_final_rect C.gpointer, c_flipped_x C.gboolean, c_flipped_y C.gboolean, data C.gpointer) {
-	signalWindowMovedToRectLock.RLock()
-	defer signalWindowMovedToRectLock.RUnlock()
-
-	flippedRect := uintptr(c_flipped_rect)
-
-	finalRect := uintptr(c_final_rect)
-
-	flippedX := c_flipped_x == C.TRUE
-
-	flippedY := c_flipped_y == C.TRUE
-
-	index := int(uintptr(data))
-	callback := signalWindowMovedToRectMap[index].callback
-	callback(flippedRect, finalRect, flippedX, flippedY)
-}
+// Unsupported signal 'moved-to-rect' for Window : unsupported parameter flipped_rect : no type generator for gpointer, gpointer
 
 // BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {

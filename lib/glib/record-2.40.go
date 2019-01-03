@@ -29,7 +29,7 @@ import (
 */
 import "C"
 
-// g_hash_table_get_keys_as_array : array return type :
+// g_hash_table_get_keys_as_array : no type generator for gpointer (gpointer) for array return
 // SaveToFile is a wrapper around the C function g_key_file_save_to_file.
 func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 	c_filename := C.CString(filename)

@@ -425,53 +425,13 @@ func DatalistClear(datalist *Data) {
 
 // Unsupported : g_datalist_foreach : unsupported parameter func : no type generator for DataForeachFunc (GDataForeachFunc) for param func
 
-// DatalistGetData is a wrapper around the C function g_datalist_get_data.
-func DatalistGetData(datalist *Data, key string) uintptr {
-	c_datalist := (**C.GData)(C.NULL)
-	if datalist != nil {
-		c_datalist = (**C.GData)(datalist.ToC())
-	}
+// Unsupported : g_datalist_get_data : no return generator
 
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
+// Unsupported : g_datalist_id_get_data : no return generator
 
-	retC := C.g_datalist_get_data(c_datalist, c_key)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_datalist_id_remove_no_notify : no return generator
 
-	return retGo
-}
-
-// DatalistIdGetData is a wrapper around the C function g_datalist_id_get_data.
-func DatalistIdGetData(datalist *Data, keyId Quark) uintptr {
-	c_datalist := (**C.GData)(C.NULL)
-	if datalist != nil {
-		c_datalist = (**C.GData)(datalist.ToC())
-	}
-
-	c_key_id := (C.GQuark)(keyId)
-
-	retC := C.g_datalist_id_get_data(c_datalist, c_key_id)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DatalistIdRemoveNoNotify is a wrapper around the C function g_datalist_id_remove_no_notify.
-func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) uintptr {
-	c_datalist := (**C.GData)(C.NULL)
-	if datalist != nil {
-		c_datalist = (**C.GData)(datalist.ToC())
-	}
-
-	c_key_id := (C.GQuark)(keyId)
-
-	retC := C.g_datalist_id_remove_no_notify(c_datalist, c_key_id)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // DatalistInit is a wrapper around the C function g_datalist_init.
 func DatalistInit(datalist *Data) {
@@ -485,64 +445,19 @@ func DatalistInit(datalist *Data) {
 	return
 }
 
-// DatasetDestroy is a wrapper around the C function g_dataset_destroy.
-func DatasetDestroy(datasetLocation uintptr) {
-	c_dataset_location := (C.gconstpointer)(datasetLocation)
+// Unsupported : g_dataset_destroy : unsupported parameter dataset_location : no type generator for gpointer (gconstpointer) for param dataset_location
 
-	C.g_dataset_destroy(c_dataset_location)
+// Unsupported : g_dataset_foreach : unsupported parameter dataset_location : no type generator for gpointer (gconstpointer) for param dataset_location
 
-	return
-}
+// Unsupported : g_dataset_id_get_data : unsupported parameter dataset_location : no type generator for gpointer (gconstpointer) for param dataset_location
 
-// Unsupported : g_dataset_foreach : unsupported parameter func : no type generator for DataForeachFunc (GDataForeachFunc) for param func
+// Unsupported : g_dataset_id_remove_no_notify : unsupported parameter dataset_location : no type generator for gpointer (gconstpointer) for param dataset_location
 
-// DatasetIdGetData is a wrapper around the C function g_dataset_id_get_data.
-func DatasetIdGetData(datasetLocation uintptr, keyId Quark) uintptr {
-	c_dataset_location := (C.gconstpointer)(datasetLocation)
+// Unsupported : g_dataset_id_set_data_full : unsupported parameter dataset_location : no type generator for gpointer (gconstpointer) for param dataset_location
 
-	c_key_id := (C.GQuark)(keyId)
+// Unsupported : g_direct_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
-	retC := C.g_dataset_id_get_data(c_dataset_location, c_key_id)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DatasetIdRemoveNoNotify is a wrapper around the C function g_dataset_id_remove_no_notify.
-func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
-	c_dataset_location := (C.gconstpointer)(datasetLocation)
-
-	c_key_id := (C.GQuark)(keyId)
-
-	retC := C.g_dataset_id_remove_no_notify(c_dataset_location, c_key_id)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : g_dataset_id_set_data_full : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
-
-// DirectEqual is a wrapper around the C function g_direct_equal.
-func DirectEqual(v1 uintptr, v2 uintptr) bool {
-	c_v1 := (C.gconstpointer)(v1)
-
-	c_v2 := (C.gconstpointer)(v2)
-
-	retC := C.g_direct_equal(c_v1, c_v2)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DirectHash is a wrapper around the C function g_direct_hash.
-func DirectHash(v uintptr) uint32 {
-	c_v := (C.gconstpointer)(v)
-
-	retC := C.g_direct_hash(c_v)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_direct_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
 // FileErrorFromErrno is a wrapper around the C function g_file_error_from_errno.
 func FileErrorFromErrno(errNo int32) FileError {
@@ -731,14 +646,7 @@ func FindProgramInPath(program string) string {
 	return retGo
 }
 
-// Free is a wrapper around the C function g_free.
-func Free(mem uintptr) {
-	c_mem := (C.gpointer)(mem)
-
-	C.g_free(c_mem)
-
-	return
-}
+// Unsupported : g_free : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
 // GetCharset is a wrapper around the C function g_get_charset.
 func GetCharset() (bool, string) {
@@ -833,6 +741,18 @@ func Getenv(variable string) string {
 	return retGo
 }
 
+// Unsupported : g_hash_table_insert : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+
+// Unsupported : g_hash_table_lookup : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
+
+// Unsupported : g_hash_table_lookup_extended : unsupported parameter lookup_key : no type generator for gpointer (gconstpointer) for param lookup_key
+
+// Unsupported : g_hash_table_remove : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
+
+// Unsupported : g_hash_table_replace : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+
+// Unsupported : g_hash_table_steal : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
+
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
 // Unsupported : g_iconv_open : return type : Blacklisted record : GIConv
@@ -841,15 +761,7 @@ func Getenv(variable string) string {
 
 // Unsupported : g_idle_add_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
-// IdleRemoveByData is a wrapper around the C function g_idle_remove_by_data.
-func IdleRemoveByData(data uintptr) bool {
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_idle_remove_by_data(c_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : g_idle_remove_by_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // IdleSourceNew is a wrapper around the C function g_idle_source_new.
 func IdleSourceNew() *Source {
@@ -859,27 +771,9 @@ func IdleSourceNew() *Source {
 	return retGo
 }
 
-// IntEqual is a wrapper around the C function g_int_equal.
-func IntEqual(v1 uintptr, v2 uintptr) bool {
-	c_v1 := (C.gconstpointer)(v1)
+// Unsupported : g_int_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
-	c_v2 := (C.gconstpointer)(v2)
-
-	retC := C.g_int_equal(c_v1, c_v2)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IntHash is a wrapper around the C function g_int_hash.
-func IntHash(v uintptr) uint32 {
-	c_v := (C.gconstpointer)(v)
-
-	retC := C.g_int_hash(c_v)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_int_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
 // Unsupported : g_io_add_watch : unsupported parameter func : no type generator for IOFunc (GIOFunc) for param func
 
@@ -949,22 +843,7 @@ func Log(logDomain string, logLevel LogLevelFlags, format string, args ...interf
 	return
 }
 
-// LogDefaultHandler is a wrapper around the C function g_log_default_handler.
-func LogDefaultHandler(logDomain string, logLevel LogLevelFlags, message string, unusedData uintptr) {
-	c_log_domain := C.CString(logDomain)
-	defer C.free(unsafe.Pointer(c_log_domain))
-
-	c_log_level := (C.GLogLevelFlags)(logLevel)
-
-	c_message := C.CString(message)
-	defer C.free(unsafe.Pointer(c_message))
-
-	c_unused_data := (C.gpointer)(unusedData)
-
-	C.g_log_default_handler(c_log_domain, c_log_level, c_message, c_unused_data)
-
-	return
-}
+// Unsupported : g_log_default_handler : unsupported parameter unused_data : no type generator for gpointer (gpointer) for param unused_data
 
 // LogRemoveHandler is a wrapper around the C function g_log_remove_handler.
 func LogRemoveHandler(logDomain string, handlerId uint32) {
@@ -1015,25 +894,9 @@ func MainDepth() int32 {
 	return retGo
 }
 
-// Malloc is a wrapper around the C function g_malloc.
-func Malloc(nBytes uint64) uintptr {
-	c_n_bytes := (C.gsize)(nBytes)
+// Unsupported : g_malloc : no return generator
 
-	retC := C.g_malloc(c_n_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Malloc0 is a wrapper around the C function g_malloc0.
-func Malloc0(nBytes uint64) uintptr {
-	c_n_bytes := (C.gsize)(nBytes)
-
-	retC := C.g_malloc0(c_n_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_malloc0 : no return generator
 
 // MarkupErrorQuark is a wrapper around the C function g_markup_error_quark.
 func MarkupErrorQuark() Quark {
@@ -1084,17 +947,7 @@ func MemSetVtable(vtable *MemVTable) {
 	return
 }
 
-// Memdup is a wrapper around the C function g_memdup.
-func Memdup(mem uintptr, byteSize uint32) uintptr {
-	c_mem := (C.gconstpointer)(mem)
-
-	c_byte_size := (C.guint)(byteSize)
-
-	retC := C.g_memdup(c_mem, c_byte_size)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_memdup : unsupported parameter mem : no type generator for gpointer (gconstpointer) for param mem
 
 // Mkstemp is a wrapper around the C function g_mkstemp.
 func Mkstemp(tmpl string) int32 {
@@ -1107,14 +960,7 @@ func Mkstemp(tmpl string) int32 {
 	return retGo
 }
 
-// NullifyPointer is a wrapper around the C function g_nullify_pointer.
-func NullifyPointer(nullifyLocation uintptr) {
-	c_nullify_location := (C.gpointer)(nullifyLocation)
-
-	C.g_nullify_pointer(&c_nullify_location)
-
-	return
-}
+// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer (gpointer*) for param nullify_location
 
 // Blacklisted : g_number_parser_error_quark
 
@@ -1285,7 +1131,7 @@ func PropagateError(src *Error) *Error {
 	return dest
 }
 
-// Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
+// Unsupported : g_qsort_with_data : unsupported parameter pbase : no type generator for gpointer (gconstpointer) for param pbase
 
 // QuarkFromStaticString is a wrapper around the C function g_quark_from_static_string.
 func QuarkFromStaticString(string_ string) Quark {
@@ -1379,17 +1225,7 @@ func RandomSetSeed(seed uint32) {
 	return
 }
 
-// Realloc is a wrapper around the C function g_realloc.
-func Realloc(mem uintptr, nBytes uint64) uintptr {
-	c_mem := (C.gpointer)(mem)
-
-	c_n_bytes := (C.gsize)(nBytes)
-
-	retC := C.g_realloc(c_mem, c_n_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_realloc : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
 // ReturnIfFailWarning is a wrapper around the C function g_return_if_fail_warning.
 func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
@@ -1524,6 +1360,10 @@ func Snprintf(string_ string, n uint64, format string, args ...interface{}) int3
 	return retGo
 }
 
+// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+
+// Unsupported : g_source_remove_by_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+
 // SpacedPrimesClosest is a wrapper around the C function g_spaced_primes_closest.
 func SpacedPrimesClosest(num uint32) uint32 {
 	c_num := (C.guint)(num)
@@ -1603,27 +1443,9 @@ func Stpcpy(dest string, src string) string {
 	return retGo
 }
 
-// StrEqual is a wrapper around the C function g_str_equal.
-func StrEqual(v1 uintptr, v2 uintptr) bool {
-	c_v1 := (C.gconstpointer)(v1)
+// Unsupported : g_str_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
-	c_v2 := (C.gconstpointer)(v2)
-
-	retC := C.g_str_equal(c_v1, c_v2)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// StrHash is a wrapper around the C function g_str_hash.
-func StrHash(v uintptr) uint32 {
-	c_v := (C.gconstpointer)(v)
-
-	retC := C.g_str_hash(c_v)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_str_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
 // Strcanon is a wrapper around the C function g_strcanon.
 func Strcanon(string_ string, validChars string, substitutor rune) string {
@@ -2011,7 +1833,7 @@ func Strup(string_ string) string {
 
 // Blacklisted : g_strv_get_type
 
-// Unsupported : g_test_add_vtable : unsupported parameter data_setup : no type generator for TestFixtureFunc (GTestFixtureFunc) for param data_setup
+// Unsupported : g_test_add_vtable : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
 
 // TestAssertExpectedMessagesInternal is a wrapper around the C function g_test_assert_expected_messages_internal.
 func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
@@ -2064,6 +1886,8 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 	return
 }
 
+// Unsupported : g_thread_exit : unsupported parameter retval : no type generator for gpointer (gpointer) for param retval
+
 // Unsupported : g_timeout_add : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
 // Unsupported : g_timeout_add_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
@@ -2078,27 +1902,15 @@ func TimeoutSourceNew(interval uint32) *Source {
 	return retGo
 }
 
-// TryMalloc is a wrapper around the C function g_try_malloc.
-func TryMalloc(nBytes uint64) uintptr {
-	c_n_bytes := (C.gsize)(nBytes)
+// Unsupported : g_trash_stack_peek : no return generator
 
-	retC := C.g_try_malloc(c_n_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_trash_stack_pop : no return generator
 
-	return retGo
-}
+// Unsupported : g_trash_stack_push : unsupported parameter data_p : no type generator for gpointer (gpointer) for param data_p
 
-// TryRealloc is a wrapper around the C function g_try_realloc.
-func TryRealloc(mem uintptr, nBytes uint64) uintptr {
-	c_mem := (C.gpointer)(mem)
+// Unsupported : g_try_malloc : no return generator
 
-	c_n_bytes := (C.gsize)(nBytes)
-
-	retC := C.g_try_realloc(c_mem, c_n_bytes)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_try_realloc : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
 // Unsupported : g_ucs4_to_utf16 : no return generator
 

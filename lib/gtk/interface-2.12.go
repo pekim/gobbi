@@ -54,78 +54,11 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 	return retGo
 }
 
-// CustomFinished is a wrapper around the C function gtk_buildable_custom_finished.
-func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
+// Unsupported : gtk_buildable_custom_finished : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	c_child := (*C.GObject)(C.NULL)
-	if child != nil {
-		c_child = (*C.GObject)(child.ToC())
-	}
+// Unsupported : gtk_buildable_custom_tag_end : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
 
-	c_tagname := C.CString(tagname)
-	defer C.free(unsafe.Pointer(c_tagname))
-
-	c_data := (C.gpointer)(data)
-
-	C.gtk_buildable_custom_finished((*C.GtkBuildable)(recv.native), c_builder, c_child, c_tagname, c_data)
-
-	return
-}
-
-// CustomTagEnd is a wrapper around the C function gtk_buildable_custom_tag_end.
-func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
-
-	c_child := (*C.GObject)(C.NULL)
-	if child != nil {
-		c_child = (*C.GObject)(child.ToC())
-	}
-
-	c_tagname := C.CString(tagname)
-	defer C.free(unsafe.Pointer(c_tagname))
-
-	c_data := (C.gpointer)(data)
-
-	C.gtk_buildable_custom_tag_end((*C.GtkBuildable)(recv.native), c_builder, c_child, c_tagname, &c_data)
-
-	return
-}
-
-// CustomTagStart is a wrapper around the C function gtk_buildable_custom_tag_start.
-func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, tagname string) (bool, *glib.MarkupParser, uintptr) {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
-
-	c_child := (*C.GObject)(C.NULL)
-	if child != nil {
-		c_child = (*C.GObject)(child.ToC())
-	}
-
-	c_tagname := C.CString(tagname)
-	defer C.free(unsafe.Pointer(c_tagname))
-
-	var c_parser C.GMarkupParser
-
-	var c_data C.gpointer
-
-	retC := C.gtk_buildable_custom_tag_start((*C.GtkBuildable)(recv.native), c_builder, c_child, c_tagname, &c_parser, &c_data)
-	retGo := retC == C.TRUE
-
-	parser := glib.MarkupParserNewFromC(unsafe.Pointer(&c_parser))
-
-	data := (uintptr)(unsafe.Pointer(&c_data))
-
-	return retGo, parser, data
-}
+// Unsupported : gtk_buildable_custom_tag_start : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
 
 // GetInternalChild is a wrapper around the C function gtk_buildable_get_internal_child.
 func (recv *Buildable) GetInternalChild(builder *Builder, childname string) *gobject.Object {

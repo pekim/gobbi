@@ -3,6 +3,8 @@
 
 package gobject
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -35,16 +37,19 @@ func (recv *WeakRef) Clear() {
 }
 
 // Get is a wrapper around the C function g_weak_ref_get.
-func (recv *WeakRef) Get() uintptr {
+func (recv *WeakRef) Get() Object {
 	retC := C.g_weak_ref_get((*C.GWeakRef)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // Init is a wrapper around the C function g_weak_ref_init.
-func (recv *WeakRef) Init(object uintptr) {
-	c_object := (C.gpointer)(object)
+func (recv *WeakRef) Init(object *Object) {
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	C.g_weak_ref_init((*C.GWeakRef)(recv.native), c_object)
 
@@ -52,8 +57,11 @@ func (recv *WeakRef) Init(object uintptr) {
 }
 
 // Set is a wrapper around the C function g_weak_ref_set.
-func (recv *WeakRef) Set(object uintptr) {
-	c_object := (C.gpointer)(object)
+func (recv *WeakRef) Set(object *Object) {
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
 
 	C.g_weak_ref_set((*C.GWeakRef)(recv.native), c_object)
 

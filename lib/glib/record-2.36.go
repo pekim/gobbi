@@ -29,47 +29,13 @@ func (recv *MarkupParseContext) Unref() {
 	return
 }
 
-// AddUnixFd is a wrapper around the C function g_source_add_unix_fd.
-func (recv *Source) AddUnixFd(fd int32, events IOCondition) uintptr {
-	c_fd := (C.gint)(fd)
+// Unsupported : g_source_add_unix_fd : no return generator
 
-	c_events := (C.GIOCondition)(events)
+// Unsupported : g_source_modify_unix_fd : unsupported parameter tag : no type generator for gpointer (gpointer) for param tag
 
-	retC := C.g_source_add_unix_fd((*C.GSource)(recv.native), c_fd, c_events)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_source_query_unix_fd : unsupported parameter tag : no type generator for gpointer (gpointer) for param tag
 
-	return retGo
-}
-
-// ModifyUnixFd is a wrapper around the C function g_source_modify_unix_fd.
-func (recv *Source) ModifyUnixFd(tag uintptr, newEvents IOCondition) {
-	c_tag := (C.gpointer)(tag)
-
-	c_new_events := (C.GIOCondition)(newEvents)
-
-	C.g_source_modify_unix_fd((*C.GSource)(recv.native), c_tag, c_new_events)
-
-	return
-}
-
-// QueryUnixFd is a wrapper around the C function g_source_query_unix_fd.
-func (recv *Source) QueryUnixFd(tag uintptr) IOCondition {
-	c_tag := (C.gpointer)(tag)
-
-	retC := C.g_source_query_unix_fd((*C.GSource)(recv.native), c_tag)
-	retGo := (IOCondition)(retC)
-
-	return retGo
-}
-
-// RemoveUnixFd is a wrapper around the C function g_source_remove_unix_fd.
-func (recv *Source) RemoveUnixFd(tag uintptr) {
-	c_tag := (C.gpointer)(tag)
-
-	C.g_source_remove_unix_fd((*C.GSource)(recv.native), c_tag)
-
-	return
-}
+// Unsupported : g_source_remove_unix_fd : unsupported parameter tag : no type generator for gpointer (gpointer) for param tag
 
 // SetReadyTime is a wrapper around the C function g_source_set_ready_time.
 func (recv *Source) SetReadyTime(readyTime int64) {

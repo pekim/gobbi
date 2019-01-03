@@ -5,7 +5,6 @@ package gdk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
-	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
 
@@ -94,15 +93,7 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 
 // Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint (cairo_format_t) for param format
 
-// GetChildrenWithUserData is a wrapper around the C function gdk_window_get_children_with_user_data.
-func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.gdk_window_get_children_with_user_data((*C.GdkWindow)(recv.native), c_user_data)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gdk_window_get_children_with_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // Unsupported : gdk_window_get_device_position_double : unsupported parameter mask : GdkModifierType* with indirection level of 1
 

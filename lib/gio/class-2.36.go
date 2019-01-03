@@ -6,6 +6,7 @@ package gio
 import (
 	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -354,10 +355,13 @@ func (recv *SocketClient) SetProxyResolver(proxyResolver *ProxyResolver) {
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TaskIsValid is a wrapper around the C function g_task_is_valid.
-func TaskIsValid(result uintptr, sourceObject uintptr) bool {
-	c_result := (C.gpointer)(result)
+func TaskIsValid(result *AsyncResult, sourceObject *gobject.Object) bool {
+	c_result := (C.gpointer)(result.ToC())
 
-	c_source_object := (C.gpointer)(sourceObject)
+	c_source_object := (C.gpointer)(C.NULL)
+	if sourceObject != nil {
+		c_source_object = (C.gpointer)(sourceObject.ToC())
+	}
 
 	retC := C.g_task_is_valid(c_result, c_source_object)
 	retGo := retC == C.TRUE
@@ -410,28 +414,16 @@ func (recv *Task) GetReturnOnCancel() bool {
 }
 
 // GetSourceObject is a wrapper around the C function g_task_get_source_object.
-func (recv *Task) GetSourceObject() uintptr {
+func (recv *Task) GetSourceObject() gobject.Object {
 	retC := C.g_task_get_source_object((*C.GTask)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := *gobject.ObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// GetSourceTag is a wrapper around the C function g_task_get_source_tag.
-func (recv *Task) GetSourceTag() uintptr {
-	retC := C.g_task_get_source_tag((*C.GTask)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_task_get_source_tag : no return generator
 
-	return retGo
-}
-
-// GetTaskData is a wrapper around the C function g_task_get_task_data.
-func (recv *Task) GetTaskData() uintptr {
-	retC := C.g_task_get_task_data((*C.GTask)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_task_get_task_data : no return generator
 
 // HadError is a wrapper around the C function g_task_had_error.
 func (recv *Task) HadError() bool {
@@ -477,23 +469,7 @@ func (recv *Task) PropagateInt() (int64, error) {
 	return retGo, goError
 }
 
-// PropagatePointer is a wrapper around the C function g_task_propagate_pointer.
-func (recv *Task) PropagatePointer() (uintptr, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_task_propagate_pointer((*C.GTask)(recv.native), &cThrowableError)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Unsupported : g_task_propagate_pointer : no return generator
 
 // ReturnBoolean is a wrapper around the C function g_task_return_boolean.
 func (recv *Task) ReturnBoolean(result bool) {
@@ -549,7 +525,7 @@ func (recv *Task) ReturnNewError(domain glib.Quark, code int32, format string, a
 	return
 }
 
-// Unsupported : g_task_return_pointer : unsupported parameter result_destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param result_destroy
+// Unsupported : g_task_return_pointer : unsupported parameter result : no type generator for gpointer (gpointer) for param result
 
 // Unsupported : g_task_run_in_thread : unsupported parameter task_func : no type generator for TaskThreadFunc (GTaskThreadFunc) for param task_func
 
@@ -585,13 +561,6 @@ func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 	return retGo
 }
 
-// SetSourceTag is a wrapper around the C function g_task_set_source_tag.
-func (recv *Task) SetSourceTag(sourceTag uintptr) {
-	c_source_tag := (C.gpointer)(sourceTag)
+// Unsupported : g_task_set_source_tag : unsupported parameter source_tag : no type generator for gpointer (gpointer) for param source_tag
 
-	C.g_task_set_source_tag((*C.GTask)(recv.native), c_source_tag)
-
-	return
-}
-
-// Unsupported : g_task_set_task_data : unsupported parameter task_data_destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param task_data_destroy
+// Unsupported : g_task_set_task_data : unsupported parameter task_data : no type generator for gpointer (gpointer) for param task_data

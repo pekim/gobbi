@@ -14,27 +14,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DoubleEqual is a wrapper around the C function g_double_equal.
-func DoubleEqual(v1 uintptr, v2 uintptr) bool {
-	c_v1 := (C.gconstpointer)(v1)
+// Unsupported : g_double_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
-	c_v2 := (C.gconstpointer)(v2)
-
-	retC := C.g_double_equal(c_v1, c_v2)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DoubleHash is a wrapper around the C function g_double_hash.
-func DoubleHash(v uintptr) uint32 {
-	c_v := (C.gconstpointer)(v)
-
-	retC := C.g_double_hash(c_v)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_double_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
 // HostnameIsAsciiEncoded is a wrapper around the C function g_hostname_is_ascii_encoded.
 func HostnameIsAsciiEncoded(hostname string) bool {
@@ -93,27 +75,9 @@ func HostnameToUnicode(hostname string) string {
 	return retGo
 }
 
-// Int64Equal is a wrapper around the C function g_int64_equal.
-func Int64Equal(v1 uintptr, v2 uintptr) bool {
-	c_v1 := (C.gconstpointer)(v1)
+// Unsupported : g_int64_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
-	c_v2 := (C.gconstpointer)(v2)
-
-	retC := C.g_int64_equal(c_v1, c_v2)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Int64Hash is a wrapper around the C function g_int64_hash.
-func Int64Hash(v uintptr) uint32 {
-	c_v := (C.gconstpointer)(v)
-
-	retC := C.g_int64_hash(c_v)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Unsupported : g_int64_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
 // MkstempFull is a wrapper around the C function g_mkstemp_full.
 func MkstempFull(tmpl string, flags int32, mode int32) int32 {

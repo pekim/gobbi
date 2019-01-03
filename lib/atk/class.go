@@ -25,37 +25,10 @@ import (
 */
 /*
 
-	void object_activeDescendantChangedHandler(GObject *, gpointer, gpointer);
-
-	static gulong Object_signal_connect_active_descendant_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "active-descendant-changed", G_CALLBACK(object_activeDescendantChangedHandler), data);
-	}
-
-*/
-/*
-
-	void object_childrenChangedHandler(GObject *, guint, gpointer, gpointer);
-
-	static gulong Object_signal_connect_children_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "children-changed", G_CALLBACK(object_childrenChangedHandler), data);
-	}
-
-*/
-/*
-
 	void object_focusEventHandler(GObject *, gboolean, gpointer);
 
 	static gulong Object_signal_connect_focus_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "focus-event", G_CALLBACK(object_focusEventHandler), data);
-	}
-
-*/
-/*
-
-	void object_propertyChangeHandler(GObject *, gpointer, gpointer);
-
-	static gulong Object_signal_connect_property_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "property-change", G_CALLBACK(object_propertyChangeHandler), data);
 	}
 
 */
@@ -618,131 +591,9 @@ func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
-type signalObjectActiveDescendantChangedDetail struct {
-	callback  ObjectSignalActiveDescendantChangedCallback
-	handlerID C.gulong
-}
+// Unsupported signal 'active-descendant-changed' for Object : unsupported parameter arg1 : no type generator for gpointer, gpointer
 
-var signalObjectActiveDescendantChangedId int
-var signalObjectActiveDescendantChangedMap = make(map[int]signalObjectActiveDescendantChangedDetail)
-var signalObjectActiveDescendantChangedLock sync.RWMutex
-
-// ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
-type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
-
-/*
-ConnectActiveDescendantChanged connects the callback to the 'active-descendant-changed' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectActiveDescendantChanged to remove it.
-*/
-func (recv *Object) ConnectActiveDescendantChanged(callback ObjectSignalActiveDescendantChangedCallback) int {
-	signalObjectActiveDescendantChangedLock.Lock()
-	defer signalObjectActiveDescendantChangedLock.Unlock()
-
-	signalObjectActiveDescendantChangedId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Object_signal_connect_active_descendant_changed(instance, C.gpointer(uintptr(signalObjectActiveDescendantChangedId)))
-
-	detail := signalObjectActiveDescendantChangedDetail{callback, handlerID}
-	signalObjectActiveDescendantChangedMap[signalObjectActiveDescendantChangedId] = detail
-
-	return signalObjectActiveDescendantChangedId
-}
-
-/*
-DisconnectActiveDescendantChanged disconnects a callback from the 'active-descendant-changed' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectActiveDescendantChanged.
-*/
-func (recv *Object) DisconnectActiveDescendantChanged(connectionID int) {
-	signalObjectActiveDescendantChangedLock.Lock()
-	defer signalObjectActiveDescendantChangedLock.Unlock()
-
-	detail, exists := signalObjectActiveDescendantChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalObjectActiveDescendantChangedMap, connectionID)
-}
-
-//export object_activeDescendantChangedHandler
-func object_activeDescendantChangedHandler(_ *C.GObject, c_arg1 C.gpointer, data C.gpointer) {
-	signalObjectActiveDescendantChangedLock.RLock()
-	defer signalObjectActiveDescendantChangedLock.RUnlock()
-
-	arg1 := uintptr(c_arg1)
-
-	index := int(uintptr(data))
-	callback := signalObjectActiveDescendantChangedMap[index].callback
-	callback(arg1)
-}
-
-type signalObjectChildrenChangedDetail struct {
-	callback  ObjectSignalChildrenChangedCallback
-	handlerID C.gulong
-}
-
-var signalObjectChildrenChangedId int
-var signalObjectChildrenChangedMap = make(map[int]signalObjectChildrenChangedDetail)
-var signalObjectChildrenChangedLock sync.RWMutex
-
-// ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
-type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
-
-/*
-ConnectChildrenChanged connects the callback to the 'children-changed' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectChildrenChanged to remove it.
-*/
-func (recv *Object) ConnectChildrenChanged(callback ObjectSignalChildrenChangedCallback) int {
-	signalObjectChildrenChangedLock.Lock()
-	defer signalObjectChildrenChangedLock.Unlock()
-
-	signalObjectChildrenChangedId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Object_signal_connect_children_changed(instance, C.gpointer(uintptr(signalObjectChildrenChangedId)))
-
-	detail := signalObjectChildrenChangedDetail{callback, handlerID}
-	signalObjectChildrenChangedMap[signalObjectChildrenChangedId] = detail
-
-	return signalObjectChildrenChangedId
-}
-
-/*
-DisconnectChildrenChanged disconnects a callback from the 'children-changed' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectChildrenChanged.
-*/
-func (recv *Object) DisconnectChildrenChanged(connectionID int) {
-	signalObjectChildrenChangedLock.Lock()
-	defer signalObjectChildrenChangedLock.Unlock()
-
-	detail, exists := signalObjectChildrenChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalObjectChildrenChangedMap, connectionID)
-}
-
-//export object_childrenChangedHandler
-func object_childrenChangedHandler(_ *C.GObject, c_arg1 C.guint, c_arg2 C.gpointer, data C.gpointer) {
-	signalObjectChildrenChangedLock.RLock()
-	defer signalObjectChildrenChangedLock.RUnlock()
-
-	arg1 := uint32(c_arg1)
-
-	arg2 := uintptr(c_arg2)
-
-	index := int(uintptr(data))
-	callback := signalObjectChildrenChangedMap[index].callback
-	callback(arg1, arg2)
-}
+// Unsupported signal 'children-changed' for Object : unsupported parameter arg2 : no type generator for gpointer, gpointer
 
 type signalObjectFocusEventDetail struct {
 	callback  ObjectSignalFocusEventCallback
@@ -806,67 +657,7 @@ func object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) 
 	callback(arg1)
 }
 
-type signalObjectPropertyChangeDetail struct {
-	callback  ObjectSignalPropertyChangeCallback
-	handlerID C.gulong
-}
-
-var signalObjectPropertyChangeId int
-var signalObjectPropertyChangeMap = make(map[int]signalObjectPropertyChangeDetail)
-var signalObjectPropertyChangeLock sync.RWMutex
-
-// ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
-type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
-
-/*
-ConnectPropertyChange connects the callback to the 'property-change' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectPropertyChange to remove it.
-*/
-func (recv *Object) ConnectPropertyChange(callback ObjectSignalPropertyChangeCallback) int {
-	signalObjectPropertyChangeLock.Lock()
-	defer signalObjectPropertyChangeLock.Unlock()
-
-	signalObjectPropertyChangeId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Object_signal_connect_property_change(instance, C.gpointer(uintptr(signalObjectPropertyChangeId)))
-
-	detail := signalObjectPropertyChangeDetail{callback, handlerID}
-	signalObjectPropertyChangeMap[signalObjectPropertyChangeId] = detail
-
-	return signalObjectPropertyChangeId
-}
-
-/*
-DisconnectPropertyChange disconnects a callback from the 'property-change' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectPropertyChange.
-*/
-func (recv *Object) DisconnectPropertyChange(connectionID int) {
-	signalObjectPropertyChangeLock.Lock()
-	defer signalObjectPropertyChangeLock.Unlock()
-
-	detail, exists := signalObjectPropertyChangeMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalObjectPropertyChangeMap, connectionID)
-}
-
-//export object_propertyChangeHandler
-func object_propertyChangeHandler(_ *C.GObject, c_arg1 C.gpointer, data C.gpointer) {
-	signalObjectPropertyChangeLock.RLock()
-	defer signalObjectPropertyChangeLock.RUnlock()
-
-	arg1 := uintptr(c_arg1)
-
-	index := int(uintptr(data))
-	callback := signalObjectPropertyChangeMap[index].callback
-	callback(arg1)
-}
+// Unsupported signal 'property-change' for Object : unsupported parameter arg1 : no type generator for gpointer, gpointer
 
 type signalObjectStateChangeDetail struct {
 	callback  ObjectSignalStateChangeCallback
@@ -1073,14 +864,7 @@ func (recv *Object) GetRole() Role {
 	return retGo
 }
 
-// Initialize is a wrapper around the C function atk_object_initialize.
-func (recv *Object) Initialize(data uintptr) {
-	c_data := (C.gpointer)(data)
-
-	C.atk_object_initialize((*C.AtkObject)(recv.native), c_data)
-
-	return
-}
+// Unsupported : atk_object_initialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // NotifyStateChange is a wrapper around the C function atk_object_notify_state_change.
 func (recv *Object) NotifyStateChange(state State, value bool) {

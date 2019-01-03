@@ -30,17 +30,13 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_regex_escape_string : unsupported parameter string :
 
-// SliceCopy is a wrapper around the C function g_slice_copy.
-func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
-	c_block_size := (C.gsize)(blockSize)
+// Unsupported : g_sequence_get : no return generator
 
-	c_mem_block := (C.gconstpointer)(memBlock)
+// Unsupported : g_sequence_insert_before : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	retC := C.g_slice_copy(c_block_size, c_mem_block)
-	retGo := (uintptr)(unsafe.Pointer(retC))
+// Unsupported : g_sequence_set : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	return retGo
-}
+// Unsupported : g_slice_copy : unsupported parameter mem_block : no type generator for gpointer (gconstpointer) for param mem_block
 
 // Unsupported : g_timeout_add_seconds : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 

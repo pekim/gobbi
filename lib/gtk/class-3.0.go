@@ -2447,14 +2447,7 @@ func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
 	return
 }
 
-// CancelAnimations is a wrapper around the C function gtk_style_context_cancel_animations.
-func (recv *StyleContext) CancelAnimations(regionId uintptr) {
-	c_region_id := (C.gpointer)(regionId)
-
-	C.gtk_style_context_cancel_animations((*C.GtkStyleContext)(recv.native), c_region_id)
-
-	return
-}
+// Unsupported : gtk_style_context_cancel_animations : unsupported parameter region_id : no type generator for gpointer (gpointer) for param region_id
 
 // Unsupported : gtk_style_context_get : unsupported parameter ... : varargs
 
@@ -2636,24 +2629,7 @@ func (recv *StyleContext) ListRegions() *glib.List {
 	return retGo
 }
 
-// NotifyStateChange is a wrapper around the C function gtk_style_context_notify_state_change.
-func (recv *StyleContext) NotifyStateChange(window *gdk.Window, regionId uintptr, state StateType, stateValue bool) {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	c_region_id := (C.gpointer)(regionId)
-
-	c_state := (C.GtkStateType)(state)
-
-	c_state_value :=
-		boolToGboolean(stateValue)
-
-	C.gtk_style_context_notify_state_change((*C.GtkStyleContext)(recv.native), c_window, c_region_id, c_state, c_state_value)
-
-	return
-}
+// Unsupported : gtk_style_context_notify_state_change : unsupported parameter region_id : no type generator for gpointer (gpointer) for param region_id
 
 // PopAnimatableRegion is a wrapper around the C function gtk_style_context_pop_animatable_region.
 func (recv *StyleContext) PopAnimatableRegion() {
@@ -2662,14 +2638,7 @@ func (recv *StyleContext) PopAnimatableRegion() {
 	return
 }
 
-// PushAnimatableRegion is a wrapper around the C function gtk_style_context_push_animatable_region.
-func (recv *StyleContext) PushAnimatableRegion(regionId uintptr) {
-	c_region_id := (C.gpointer)(regionId)
-
-	C.gtk_style_context_push_animatable_region((*C.GtkStyleContext)(recv.native), c_region_id)
-
-	return
-}
+// Unsupported : gtk_style_context_push_animatable_region : unsupported parameter region_id : no type generator for gpointer (gpointer) for param region_id
 
 // RemoveClass is a wrapper around the C function gtk_style_context_remove_class.
 func (recv *StyleContext) RemoveClass(className string) {

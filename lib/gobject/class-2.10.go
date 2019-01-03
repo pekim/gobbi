@@ -28,9 +28,9 @@ func (recv *Object) IsFloating() bool {
 }
 
 // RefSink is a wrapper around the C function g_object_ref_sink.
-func (recv *Object) RefSink() uintptr {
+func (recv *Object) RefSink() Object {
 	retC := C.g_object_ref_sink((C.gpointer)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

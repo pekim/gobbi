@@ -12,7 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// pango_attr_shape_new_with_data : unsupported parameter copy_func : no type generator for AttrDataCopyFunc (PangoAttrDataCopyFunc) for param copy_func
+// pango_attr_shape_new_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // AttrSizeNewAbsolute is a wrapper around the C function pango_attr_size_new_absolute.
 func AttrSizeNewAbsolute(size int32) *Attribute {
 	c_size := (C.int)(size)

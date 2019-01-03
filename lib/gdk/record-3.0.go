@@ -21,8 +21,11 @@ func (recv *RGBA) Copy() *RGBA {
 }
 
 // Equal is a wrapper around the C function gdk_rgba_equal.
-func (recv *RGBA) Equal(p2 uintptr) bool {
-	c_p2 := (C.gconstpointer)(p2)
+func (recv *RGBA) Equal(p2 *RGBA) bool {
+	c_p2 := (C.gconstpointer)(C.NULL)
+	if p2 != nil {
+		c_p2 = (C.gconstpointer)(p2.ToC())
+	}
 
 	retC := C.gdk_rgba_equal((C.gconstpointer)(recv.native), c_p2)
 	retGo := retC == C.TRUE

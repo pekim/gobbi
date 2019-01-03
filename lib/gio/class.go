@@ -2814,19 +2814,7 @@ func (recv *FileInfo) RemoveAttribute(attribute string) {
 	return
 }
 
-// SetAttribute is a wrapper around the C function g_file_info_set_attribute.
-func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_type := (C.GFileAttributeType)(type_)
-
-	c_value_p := (C.gpointer)(valueP)
-
-	C.g_file_info_set_attribute((*C.GFileInfo)(recv.native), c_attribute, c_type, c_value_p)
-
-	return
-}
+// Unsupported : g_file_info_set_attribute : unsupported parameter value_p : no type generator for gpointer (gpointer) for param value_p
 
 // SetAttributeBoolean is a wrapper around the C function g_file_info_set_attribute_boolean.
 func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
@@ -4433,15 +4421,9 @@ func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 	return MemoryOutputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
+// Unsupported : g_memory_output_stream_new : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// GetData is a wrapper around the C function g_memory_output_stream_get_data.
-func (recv *MemoryOutputStream) GetData() uintptr {
-	retC := C.g_memory_output_stream_get_data((*C.GMemoryOutputStream)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_memory_output_stream_get_data : no return generator
 
 // GetSize is a wrapper around the C function g_memory_output_stream_get_size.
 func (recv *MemoryOutputStream) GetSize() uint64 {
@@ -5979,13 +5961,7 @@ func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	return retGo
 }
 
-// GetOpResGpointer is a wrapper around the C function g_simple_async_result_get_op_res_gpointer.
-func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
-	retC := C.g_simple_async_result_get_op_res_gpointer((*C.GSimpleAsyncResult)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_simple_async_result_get_op_res_gpointer : no return generator
 
 // GetOpResGssize is a wrapper around the C function g_simple_async_result_get_op_res_gssize.
 func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
@@ -5995,13 +5971,7 @@ func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 	return retGo
 }
 
-// GetSourceTag is a wrapper around the C function g_simple_async_result_get_source_tag.
-func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
-	retC := C.g_simple_async_result_get_source_tag((*C.GSimpleAsyncResult)(recv.native))
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_simple_async_result_get_source_tag : no return generator
 
 // PropagateError is a wrapper around the C function g_simple_async_result_propagate_error.
 func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
@@ -6072,7 +6042,7 @@ func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	return
 }
 
-// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy_op_res
+// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter op_res : no type generator for gpointer (gpointer) for param op_res
 
 // SetOpResGssize is a wrapper around the C function g_simple_async_result_set_op_res_gssize.
 func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {

@@ -3,7 +3,6 @@
 package gobject
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -174,26 +173,8 @@ func object_notifyHandler(_ *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) 
 
 // Unsupported : g_object_newv : unsupported parameter parameters :
 
-// ObjectCompatControl is a wrapper around the C function g_object_compat_control.
-func ObjectCompatControl(what uint64, data uintptr) uint64 {
-	c_what := (C.gsize)(what)
-
-	c_data := (C.gpointer)(data)
-
-	retC := C.g_object_compat_control(c_what, c_data)
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// AddWeakPointer is a wrapper around the C function g_object_add_weak_pointer.
-func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
-	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)
-
-	C.g_object_add_weak_pointer((*C.GObject)(recv.native), &c_weak_pointer_location)
-
-	return
-}
+// g_object_compat_control : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : g_object_add_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer (gpointer*) for param weak_pointer_location
 
 // Unsupported : g_object_connect : unsupported parameter ... : varargs
 
@@ -208,16 +189,7 @@ func (recv *Object) FreezeNotify() {
 
 // Unsupported : g_object_get : unsupported parameter ... : varargs
 
-// GetData is a wrapper around the C function g_object_get_data.
-func (recv *Object) GetData(key string) uintptr {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	retC := C.g_object_get_data((*C.GObject)(recv.native), c_key)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_object_get_data : no return generator
 
 // GetProperty is a wrapper around the C function g_object_get_property.
 func (recv *Object) GetProperty(propertyName string, value *Value) {
@@ -234,15 +206,7 @@ func (recv *Object) GetProperty(propertyName string, value *Value) {
 	return
 }
 
-// GetQdata is a wrapper around the C function g_object_get_qdata.
-func (recv *Object) GetQdata(quark glib.Quark) uintptr {
-	c_quark := (C.GQuark)(quark)
-
-	retC := C.g_object_get_qdata((*C.GObject)(recv.native), c_quark)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_object_get_qdata : no return generator
 
 // Unsupported : g_object_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
@@ -257,21 +221,14 @@ func (recv *Object) Notify(propertyName string) {
 }
 
 // Ref is a wrapper around the C function g_object_ref.
-func (recv *Object) Ref() uintptr {
+func (recv *Object) Ref() Object {
 	retC := C.g_object_ref((C.gpointer)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// RemoveWeakPointer is a wrapper around the C function g_object_remove_weak_pointer.
-func (recv *Object) RemoveWeakPointer(weakPointerLocation uintptr) {
-	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)
-
-	C.g_object_remove_weak_pointer((*C.GObject)(recv.native), &c_weak_pointer_location)
-
-	return
-}
+// Unsupported : g_object_remove_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer (gpointer*) for param weak_pointer_location
 
 // RunDispose is a wrapper around the C function g_object_run_dispose.
 func (recv *Object) RunDispose() {
@@ -282,19 +239,9 @@ func (recv *Object) RunDispose() {
 
 // Unsupported : g_object_set : unsupported parameter ... : varargs
 
-// SetData is a wrapper around the C function g_object_set_data.
-func (recv *Object) SetData(key string, data uintptr) {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
+// Unsupported : g_object_set_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	c_data := (C.gpointer)(data)
-
-	C.g_object_set_data((*C.GObject)(recv.native), c_key, c_data)
-
-	return
-}
-
-// Unsupported : g_object_set_data_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_object_set_data_full : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // SetProperty is a wrapper around the C function g_object_set_property.
 func (recv *Object) SetProperty(propertyName string, value *Value) {
@@ -311,41 +258,15 @@ func (recv *Object) SetProperty(propertyName string, value *Value) {
 	return
 }
 
-// SetQdata is a wrapper around the C function g_object_set_qdata.
-func (recv *Object) SetQdata(quark glib.Quark, data uintptr) {
-	c_quark := (C.GQuark)(quark)
+// Unsupported : g_object_set_qdata : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	c_data := (C.gpointer)(data)
-
-	C.g_object_set_qdata((*C.GObject)(recv.native), c_quark, c_data)
-
-	return
-}
-
-// Unsupported : g_object_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_object_set_qdata_full : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_object_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// StealData is a wrapper around the C function g_object_steal_data.
-func (recv *Object) StealData(key string) uintptr {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
+// Unsupported : g_object_steal_data : no return generator
 
-	retC := C.g_object_steal_data((*C.GObject)(recv.native), c_key)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// StealQdata is a wrapper around the C function g_object_steal_qdata.
-func (recv *Object) StealQdata(quark glib.Quark) uintptr {
-	c_quark := (C.GQuark)(quark)
-
-	retC := C.g_object_steal_qdata((*C.GObject)(recv.native), c_quark)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_object_steal_qdata : no return generator
 
 // ThawNotify is a wrapper around the C function g_object_thaw_notify.
 func (recv *Object) ThawNotify() {
@@ -428,7 +349,7 @@ func (recv *ParamSpec) Equals(other *ParamSpec) bool {
 }
 
 // ParamSpecInternal is a wrapper around the C function g_param_spec_internal.
-func ParamSpecInternal(paramType Type, name string, nick string, blurb string, flags ParamFlags) uintptr {
+func ParamSpecInternal(paramType Type, name string, nick string, blurb string, flags ParamFlags) ParamSpec {
 	c_param_type := (C.GType)(paramType)
 
 	c_name := C.CString(name)
@@ -443,7 +364,7 @@ func ParamSpecInternal(paramType Type, name string, nick string, blurb string, f
 	c_flags := (C.GParamFlags)(flags)
 
 	retC := C.g_param_spec_internal(c_param_type, c_name, c_nick, c_blurb, c_flags)
-	retGo := (uintptr)(retC)
+	retGo := *ParamSpecNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -472,15 +393,7 @@ func (recv *ParamSpec) GetNick() string {
 	return retGo
 }
 
-// GetQdata is a wrapper around the C function g_param_spec_get_qdata.
-func (recv *ParamSpec) GetQdata(quark glib.Quark) uintptr {
-	c_quark := (C.GQuark)(quark)
-
-	retC := C.g_param_spec_get_qdata((*C.GParamSpec)(recv.native), c_quark)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_param_spec_get_qdata : no return generator
 
 // Ref is a wrapper around the C function g_param_spec_ref.
 func (recv *ParamSpec) Ref() *ParamSpec {
@@ -490,18 +403,9 @@ func (recv *ParamSpec) Ref() *ParamSpec {
 	return retGo
 }
 
-// SetQdata is a wrapper around the C function g_param_spec_set_qdata.
-func (recv *ParamSpec) SetQdata(quark glib.Quark, data uintptr) {
-	c_quark := (C.GQuark)(quark)
+// Unsupported : g_param_spec_set_qdata : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-	c_data := (C.gpointer)(data)
-
-	C.g_param_spec_set_qdata((*C.GParamSpec)(recv.native), c_quark, c_data)
-
-	return
-}
-
-// Unsupported : g_param_spec_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
+// Unsupported : g_param_spec_set_qdata_full : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Sink is a wrapper around the C function g_param_spec_sink.
 func (recv *ParamSpec) Sink() {
@@ -510,15 +414,7 @@ func (recv *ParamSpec) Sink() {
 	return
 }
 
-// StealQdata is a wrapper around the C function g_param_spec_steal_qdata.
-func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
-	c_quark := (C.GQuark)(quark)
-
-	retC := C.g_param_spec_steal_qdata((*C.GParamSpec)(recv.native), c_quark)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_param_spec_steal_qdata : no return generator
 
 // Unref is a wrapper around the C function g_param_spec_unref.
 func (recv *ParamSpec) Unref() {

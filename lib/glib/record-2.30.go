@@ -36,14 +36,7 @@ func DirMakeTmp(tmpl string) (string, error) {
 	return retGo, goError
 }
 
-// Replace is a wrapper around the C function g_hash_table_iter_replace.
-func (recv *HashTableIter) Replace(value uintptr) {
-	c_value := (C.gpointer)(value)
-
-	C.g_hash_table_iter_replace((*C.GHashTableIter)(recv.native), c_value)
-
-	return
-}
+// Unsupported : g_hash_table_iter_replace : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
 // Hmac is a wrapper around the C record GHmac.
 type Hmac struct {

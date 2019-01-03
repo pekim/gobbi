@@ -85,8 +85,8 @@ func (recv *InitableIface) Equals(other *InitableIface) bool {
 // InputVector is a wrapper around the C record GInputVector.
 type InputVector struct {
 	native *C.GInputVector
-	Buffer uintptr
-	Size   uint64
+	// buffer : no type generator for gpointer, gpointer
+	Size uint64
 }
 
 func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
@@ -96,7 +96,6 @@ func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
 	}
 
 	g := &InputVector{
-		Buffer: (uintptr)(c.buffer),
 		Size:   (uint64)(c.size),
 		native: c,
 	}
@@ -105,8 +104,6 @@ func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
 }
 
 func (recv *InputVector) ToC() unsafe.Pointer {
-	recv.native.buffer =
-		(C.gpointer)(recv.Buffer)
 	recv.native.size =
 		(C.gsize)(recv.Size)
 
@@ -121,8 +118,8 @@ func (recv *InputVector) Equals(other *InputVector) bool {
 // OutputVector is a wrapper around the C record GOutputVector.
 type OutputVector struct {
 	native *C.GOutputVector
-	Buffer uintptr
-	Size   uint64
+	// buffer : no type generator for gpointer, gconstpointer
+	Size uint64
 }
 
 func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
@@ -132,7 +129,6 @@ func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
 	}
 
 	g := &OutputVector{
-		Buffer: (uintptr)(c.buffer),
 		Size:   (uint64)(c.size),
 		native: c,
 	}
@@ -141,8 +137,6 @@ func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
 }
 
 func (recv *OutputVector) ToC() unsafe.Pointer {
-	recv.native.buffer =
-		(C.gconstpointer)(recv.Buffer)
 	recv.native.size =
 		(C.gsize)(recv.Size)
 

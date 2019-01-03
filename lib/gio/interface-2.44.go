@@ -102,15 +102,7 @@ func listmodel_itemsChangedHandler(_ *C.GObject, c_position C.guint, c_removed C
 	callback(position, removed, added)
 }
 
-// GetItem is a wrapper around the C function g_list_model_get_item.
-func (recv *ListModel) GetItem(position uint32) uintptr {
-	c_position := (C.guint)(position)
-
-	retC := C.g_list_model_get_item((*C.GListModel)(recv.native), c_position)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_list_model_get_item : no return generator
 
 // GetItemType is a wrapper around the C function g_list_model_get_item_type.
 func (recv *ListModel) GetItemType() gobject.Type {
