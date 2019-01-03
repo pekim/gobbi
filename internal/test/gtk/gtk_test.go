@@ -75,6 +75,9 @@ func TestArrayParam(t *testing.T) {
 	assert.NotNil(t, store)
 }
 
+// The ConnectNotify & ConnectNotifyProperty functions are from the gobject package.
+// But there's no notify signal in that package that is suitable for this test.
+// So it's much easier to test it in this package.
 func TestConnectNotify(t *testing.T) {
 	notifyCount := 0
 	label := gtk.LabelNew("a")
@@ -94,4 +97,18 @@ func TestConnectNotify(t *testing.T) {
 	label.SetText("b")
 
 	assert.Equal(t, 2, notifyCount)
+}
+
+// The BindProperty function is from the gobject package.
+// But there's a paucity of easy to use signals in that package.
+// So it's much easier to test it in this package.
+func TestObjectBindProperty(t *testing.T) {
+	label1 := gtk.LabelNew("1")
+	label2 := gtk.LabelNew("2")
+
+	label1.Object().BindProperty("label", label2.Object(), "label", gobject.BINDING_DEFAULT)
+
+	assert.Equal(t, "2", label2.GetText())
+	label1.SetText("1 changed")
+	assert.Equal(t, "1 changed", label2.GetText())
 }
