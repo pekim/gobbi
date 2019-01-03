@@ -91,7 +91,21 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 	return retGo
 }
 
-// Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint (cairo_format_t) for param format
+// CreateSimilarImageSurface is a wrapper around the C function gdk_window_create_similar_image_surface.
+func (recv *Window) CreateSimilarImageSurface(format int32, width int32, height int32, scale int32) *cairo.Surface {
+	c_format := (C.cairo_format_t)(format)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	c_scale := (C.int)(scale)
+
+	retC := C.gdk_window_create_similar_image_surface((*C.GdkWindow)(recv.native), c_format, c_width, c_height, c_scale)
+	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gdk_window_get_children_with_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 

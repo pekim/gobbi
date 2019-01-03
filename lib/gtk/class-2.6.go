@@ -1275,7 +1275,20 @@ func ImageNewFromIconName(iconName string, size IconSize) *Image {
 	return retGo
 }
 
-// Unsupported : gtk_image_get_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
+// GetIconName is a wrapper around the C function gtk_image_get_icon_name.
+func (recv *Image) GetIconName() (string, int32) {
+	var c_icon_name *C.gchar
+
+	var c_size C.GtkIconSize
+
+	C.gtk_image_get_icon_name((*C.GtkImage)(recv.native), &c_icon_name, &c_size)
+
+	iconName := C.GoString(c_icon_name)
+
+	size := (int32)(c_size)
+
+	return iconName, size
+}
 
 // GetPixelSize is a wrapper around the C function gtk_image_get_pixel_size.
 func (recv *Image) GetPixelSize() int32 {

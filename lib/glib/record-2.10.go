@@ -22,7 +22,14 @@ import "C"
 
 // Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
-// Unsupported : g_date_set_time_t : unsupported parameter timet : no type generator for glong (time_t) for param timet
+// SetTimeT is a wrapper around the C function g_date_set_time_t.
+func (recv *Date) SetTimeT(timet int64) {
+	c_timet := (C.time_t)(timet)
+
+	C.g_date_set_time_t((*C.GDate)(recv.native), c_timet)
+
+	return
+}
 
 // SetTimeVal is a wrapper around the C function g_date_set_time_val.
 func (recv *Date) SetTimeVal(timeval *TimeVal) {

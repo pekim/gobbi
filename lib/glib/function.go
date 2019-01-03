@@ -242,7 +242,7 @@ func AssertionMessage(domain string, file string, line int32, func_ string, mess
 	return
 }
 
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter numtype : no type generator for gchar (char) for param numtype
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double (long double) for param arg1
 
 // AssertionMessageCmpstr is a wrapper around the C function g_assertion_message_cmpstr.
 func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
@@ -1912,7 +1912,7 @@ func TimeoutSourceNew(interval uint32) *Source {
 
 // Unsupported : g_try_realloc : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
-// Unsupported : g_ucs4_to_utf16 : no return generator
+// Blacklisted : g_ucs4_to_utf16
 
 // Ucs4ToUtf8 is a wrapper around the C function g_ucs4_to_utf8.
 func Ucs4ToUtf8(str rune, len int64) (string, int64, int64, error) {
@@ -2191,9 +2191,38 @@ func Usleep(microseconds uint64) {
 	return
 }
 
-// Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no type generator for guint16 (const gunichar2*) for param str
+// Blacklisted : g_utf16_to_ucs4
 
-// Unsupported : g_utf16_to_utf8 : unsupported parameter str : no type generator for guint16 (const gunichar2*) for param str
+// Utf16ToUtf8 is a wrapper around the C function g_utf16_to_utf8.
+func Utf16ToUtf8(str uint16, len int64) (string, int64, int64, error) {
+	c_str := (C.gunichar2)(str)
+
+	c_len := (C.glong)(len)
+
+	var c_items_read C.glong
+
+	var c_items_written C.glong
+
+	var cThrowableError *C.GError
+
+	retC := C.g_utf16_to_utf8(&c_str, c_len, &c_items_read, &c_items_written, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	itemsRead := (int64)(c_items_read)
+
+	itemsWritten := (int64)(c_items_written)
+
+	return retGo, itemsRead, itemsWritten, goError
+}
 
 // Utf8Casefold is a wrapper around the C function g_utf8_casefold.
 func Utf8Casefold(str string, len int64) string {
@@ -2441,7 +2470,7 @@ func Utf8Strup(str string, len int64) string {
 
 // Blacklisted : g_utf8_to_ucs4_fast
 
-// Unsupported : g_utf8_to_utf16 : no return generator
+// Blacklisted : g_utf8_to_utf16
 
 // Utf8Validate is a wrapper around the C function g_utf8_validate.
 func Utf8Validate(str []uint8) (bool, string) {

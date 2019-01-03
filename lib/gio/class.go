@@ -2754,9 +2754,9 @@ func (recv *FileInfo) GetName() string {
 }
 
 // GetSize is a wrapper around the C function g_file_info_get_size.
-func (recv *FileInfo) GetSize() uint64 {
+func (recv *FileInfo) GetSize() int64 {
 	retC := C.g_file_info_get_size((*C.GFileInfo)(recv.native))
-	retGo := (uint64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }
@@ -3023,7 +3023,7 @@ func (recv *FileInfo) SetName(name string) {
 }
 
 // SetSize is a wrapper around the C function g_file_info_set_size.
-func (recv *FileInfo) SetSize(size uint64) {
+func (recv *FileInfo) SetSize(size int64) {
 	c_size := (C.goffset)(size)
 
 	C.g_file_info_set_size((*C.GFileInfo)(recv.native), c_size)

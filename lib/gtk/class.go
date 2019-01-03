@@ -18219,7 +18219,20 @@ func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	return retGo
 }
 
-// Unsupported : gtk_image_get_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
+// GetIconSet is a wrapper around the C function gtk_image_get_icon_set.
+func (recv *Image) GetIconSet() (*IconSet, int32) {
+	var c_icon_set *C.GtkIconSet
+
+	var c_size C.GtkIconSize
+
+	C.gtk_image_get_icon_set((*C.GtkImage)(recv.native), &c_icon_set, &c_size)
+
+	iconSet := IconSetNewFromC(unsafe.Pointer(c_icon_set))
+
+	size := (int32)(c_size)
+
+	return iconSet, size
+}
 
 // GetPixbuf is a wrapper around the C function gtk_image_get_pixbuf.
 func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
@@ -18234,7 +18247,20 @@ func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// Unsupported : gtk_image_get_stock : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
+// GetStock is a wrapper around the C function gtk_image_get_stock.
+func (recv *Image) GetStock() (string, int32) {
+	var c_stock_id *C.gchar
+
+	var c_size C.GtkIconSize
+
+	C.gtk_image_get_stock((*C.GtkImage)(recv.native), &c_stock_id, &c_size)
+
+	stockId := C.GoString(c_stock_id)
+
+	size := (int32)(c_size)
+
+	return stockId, size
+}
 
 // GetStorageType is a wrapper around the C function gtk_image_get_storage_type.
 func (recv *Image) GetStorageType() ImageType {

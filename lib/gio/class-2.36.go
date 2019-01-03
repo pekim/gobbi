@@ -190,7 +190,23 @@ func (recv *ApplicationCommandLine) CreateFileForArg(arg string) *File {
 	return retGo
 }
 
-// Unsupported : g_credentials_get_unix_pid : no return generator
+// GetUnixPid is a wrapper around the C function g_credentials_get_unix_pid.
+func (recv *Credentials) GetUnixPid() (int32, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_credentials_get_unix_pid((*C.GCredentials)(recv.native), &cThrowableError)
+	retGo := (int32)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // GetBoolean is a wrapper around the C function g_desktop_app_info_get_boolean.
 func (recv *DesktopAppInfo) GetBoolean(key string) bool {

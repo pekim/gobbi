@@ -26,7 +26,27 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_application_add_main_option : unsupported parameter short_name : no type generator for gchar (char) for param short_name
+// AddMainOption is a wrapper around the C function g_application_add_main_option.
+func (recv *Application) AddMainOption(longName string, shortName rune, flags glib.OptionFlags, arg glib.OptionArg, description string, argDescription string) {
+	c_long_name := C.CString(longName)
+	defer C.free(unsafe.Pointer(c_long_name))
+
+	c_short_name := (C.char)(shortName)
+
+	c_flags := (C.GOptionFlags)(flags)
+
+	c_arg := (C.GOptionArg)(arg)
+
+	c_description := C.CString(description)
+	defer C.free(unsafe.Pointer(c_description))
+
+	c_arg_description := C.CString(argDescription)
+	defer C.free(unsafe.Pointer(c_arg_description))
+
+	C.g_application_add_main_option((*C.GApplication)(recv.native), c_long_name, c_short_name, c_flags, c_arg, c_description, c_arg_description)
+
+	return
+}
 
 // GetResourceBasePath is a wrapper around the C function g_application_get_resource_base_path.
 func (recv *Application) GetResourceBasePath() string {

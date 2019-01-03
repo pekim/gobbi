@@ -788,7 +788,7 @@ func editable_deleteTextHandler(_ *C.GObject, c_start_pos C.gint, c_end_pos C.gi
 	callback(startPos, endPos)
 }
 
-// Unsupported signal 'insert-text' for Editable : unsupported parameter position : no type generator for gint, gpointer
+// Unsupported signal 'insert-text' for Editable : param position : gpointer
 
 // CopyClipboard is a wrapper around the C function gtk_editable_copy_clipboard.
 func (recv *Editable) CopyClipboard() {

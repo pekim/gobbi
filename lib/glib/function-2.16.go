@@ -95,7 +95,7 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 }
 
 // FormatSizeForDisplay is a wrapper around the C function g_format_size_for_display.
-func FormatSizeForDisplay(size uint64) string {
+func FormatSizeForDisplay(size int64) string {
 	c_size := (C.goffset)(size)
 
 	retC := C.g_format_size_for_display(c_size)

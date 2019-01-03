@@ -58,9 +58,63 @@ func (recv *BookmarkFile) Free() {
 	return
 }
 
-// Unsupported : g_bookmark_file_get_added : no return generator
+// GetAdded is a wrapper around the C function g_bookmark_file_get_added.
+func (recv *BookmarkFile) GetAdded(uri string) (int64, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
 
-// Unsupported : g_bookmark_file_get_app_info : unsupported parameter stamp : no type generator for glong (time_t*) for param stamp
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_get_added((*C.GBookmarkFile)(recv.native), c_uri, &cThrowableError)
+	retGo := (int64)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// GetAppInfo is a wrapper around the C function g_bookmark_file_get_app_info.
+func (recv *BookmarkFile) GetAppInfo(uri string, name string) (bool, string, uint32, int64, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	var c_exec *C.gchar
+
+	var c_count C.guint
+
+	var c_stamp C.time_t
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_get_app_info((*C.GBookmarkFile)(recv.native), c_uri, c_name, &c_exec, &c_count, &c_stamp, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	exec := C.GoString(c_exec)
+	defer C.free(unsafe.Pointer(c_exec))
+
+	count := (uint32)(c_count)
+
+	stamp := (int64)(c_stamp)
+
+	return retGo, exec, count, stamp, goError
+}
 
 // GetApplications is a wrapper around the C function g_bookmark_file_get_applications.
 func (recv *BookmarkFile) GetApplications(uri string) ([]string, uint64, error) {
@@ -218,7 +272,26 @@ func (recv *BookmarkFile) GetMimeType(uri string) (string, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_bookmark_file_get_modified : no return generator
+// GetModified is a wrapper around the C function g_bookmark_file_get_modified.
+func (recv *BookmarkFile) GetModified(uri string) (int64, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_get_modified((*C.GBookmarkFile)(recv.native), c_uri, &cThrowableError)
+	retGo := (int64)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // GetSize is a wrapper around the C function g_bookmark_file_get_size.
 func (recv *BookmarkFile) GetSize() int32 {
@@ -267,7 +340,26 @@ func (recv *BookmarkFile) GetUris() ([]string, uint64) {
 	return retGo, length
 }
 
-// Unsupported : g_bookmark_file_get_visited : no return generator
+// GetVisited is a wrapper around the C function g_bookmark_file_get_visited.
+func (recv *BookmarkFile) GetVisited(uri string) (int64, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_get_visited((*C.GBookmarkFile)(recv.native), c_uri, &cThrowableError)
+	retGo := (int64)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // HasApplication is a wrapper around the C function g_bookmark_file_has_application.
 func (recv *BookmarkFile) HasApplication(uri string, name string) (bool, error) {
@@ -490,9 +582,48 @@ func (recv *BookmarkFile) RemoveItem(uri string) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_bookmark_file_set_added : unsupported parameter added : no type generator for glong (time_t) for param added
+// SetAdded is a wrapper around the C function g_bookmark_file_set_added.
+func (recv *BookmarkFile) SetAdded(uri string, added int64) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
 
-// Unsupported : g_bookmark_file_set_app_info : unsupported parameter stamp : no type generator for glong (time_t) for param stamp
+	c_added := (C.time_t)(added)
+
+	C.g_bookmark_file_set_added((*C.GBookmarkFile)(recv.native), c_uri, c_added)
+
+	return
+}
+
+// SetAppInfo is a wrapper around the C function g_bookmark_file_set_app_info.
+func (recv *BookmarkFile) SetAppInfo(uri string, name string, exec string, count int32, stamp int64) (bool, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_exec := C.CString(exec)
+	defer C.free(unsafe.Pointer(c_exec))
+
+	c_count := (C.gint)(count)
+
+	c_stamp := (C.time_t)(stamp)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_set_app_info((*C.GBookmarkFile)(recv.native), c_uri, c_name, c_exec, c_count, c_stamp, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // SetDescription is a wrapper around the C function g_bookmark_file_set_description.
 func (recv *BookmarkFile) SetDescription(uri string, description string) {
@@ -551,7 +682,17 @@ func (recv *BookmarkFile) SetMimeType(uri string, mimeType string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_modified : unsupported parameter modified : no type generator for glong (time_t) for param modified
+// SetModified is a wrapper around the C function g_bookmark_file_set_modified.
+func (recv *BookmarkFile) SetModified(uri string, modified int64) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_modified := (C.time_t)(modified)
+
+	C.g_bookmark_file_set_modified((*C.GBookmarkFile)(recv.native), c_uri, c_modified)
+
+	return
+}
 
 // SetTitle is a wrapper around the C function g_bookmark_file_set_title.
 func (recv *BookmarkFile) SetTitle(uri string, title string) {
@@ -566,7 +707,17 @@ func (recv *BookmarkFile) SetTitle(uri string, title string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_visited : unsupported parameter visited : no type generator for glong (time_t) for param visited
+// SetVisited is a wrapper around the C function g_bookmark_file_set_visited.
+func (recv *BookmarkFile) SetVisited(uri string, visited int64) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_visited := (C.time_t)(visited)
+
+	C.g_bookmark_file_set_visited((*C.GBookmarkFile)(recv.native), c_uri, c_visited)
+
+	return
+}
 
 // Unsupported : g_bookmark_file_to_data : array return type :
 

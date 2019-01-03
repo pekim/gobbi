@@ -43,6 +43,11 @@
     <function blacklist="true" c:identifier="g_utf8_to_ucs4_fast"/>
     <function blacklist="true" c:identifier="g_byte_array_free"/>
 
+    <function blacklist="true" c:identifier="ucs4_to_utf16"/>
+    <function blacklist="true" c:identifier="g_ucs4_to_utf16"/>
+    <function blacklist="true" c:identifier="g_utf8_to_utf16"/>
+    <function blacklist="true" c:identifier="g_utf16_to_ucs4"/>
+
     <!--cgo-gcc-prolog: In function ‘_cgo_5905a9f56549_Cfunc_g_atomic_pointer_get’:-->
     <!--/usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_3’ is negative-->
     <function blacklist="true" c:identifier="g_atomic_pointer_get"/>

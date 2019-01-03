@@ -150,7 +150,23 @@ func CredentialsNew() *Credentials {
 
 // Unsupported : g_credentials_get_native : no return generator
 
-// Unsupported : g_credentials_get_unix_user : no return generator
+// GetUnixUser is a wrapper around the C function g_credentials_get_unix_user.
+func (recv *Credentials) GetUnixUser() (uint32, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_credentials_get_unix_user((*C.GCredentials)(recv.native), &cThrowableError)
+	retGo := (uint32)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // IsSameUser is a wrapper around the C function g_credentials_is_same_user.
 func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error) {
@@ -177,7 +193,25 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error)
 
 // Unsupported : g_credentials_set_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
 
-// Unsupported : g_credentials_set_unix_user : unsupported parameter uid : no type generator for guint (uid_t) for param uid
+// SetUnixUser is a wrapper around the C function g_credentials_set_unix_user.
+func (recv *Credentials) SetUnixUser(uid uint32) (bool, error) {
+	c_uid := (C.uid_t)(uid)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_credentials_set_unix_user((*C.GCredentials)(recv.native), c_uid, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // ToString is a wrapper around the C function g_credentials_to_string.
 func (recv *Credentials) ToString() string {

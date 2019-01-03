@@ -625,7 +625,20 @@ func ImageNewFromGicon(icon *gio.Icon, size IconSize) *Image {
 	return retGo
 }
 
-// Unsupported : gtk_image_get_gicon : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
+// GetGicon is a wrapper around the C function gtk_image_get_gicon.
+func (recv *Image) GetGicon() (*gio.Icon, int32) {
+	var c_gicon *C.GIcon
+
+	var c_size C.GtkIconSize
+
+	C.gtk_image_get_gicon((*C.GtkImage)(recv.native), &c_gicon, &c_size)
+
+	gicon := gio.IconNewFromC(unsafe.Pointer(c_gicon))
+
+	size := (int32)(c_size)
+
+	return gicon, size
+}
 
 // SetFromGicon is a wrapper around the C function gtk_image_set_from_gicon.
 func (recv *Image) SetFromGicon(icon *gio.Icon, size IconSize) {

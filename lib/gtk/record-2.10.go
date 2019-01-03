@@ -261,7 +261,13 @@ func (recv *RecentInfo) Exists() bool {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_added : no return generator
+// GetAdded is a wrapper around the C function gtk_recent_info_get_added.
+func (recv *RecentInfo) GetAdded() int64 {
+	retC := C.gtk_recent_info_get_added((*C.GtkRecentInfo)(recv.native))
+	retGo := (int64)(retC)
+
+	return retGo
+}
 
 // GetAge is a wrapper around the C function gtk_recent_info_get_age.
 func (recv *RecentInfo) GetAge() int32 {
@@ -271,7 +277,28 @@ func (recv *RecentInfo) GetAge() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_application_info : unsupported parameter time_ : no type generator for glong (time_t*) for param time_
+// GetApplicationInfo is a wrapper around the C function gtk_recent_info_get_application_info.
+func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32, int64) {
+	c_app_name := C.CString(appName)
+	defer C.free(unsafe.Pointer(c_app_name))
+
+	var c_app_exec *C.gchar
+
+	var c_count C.guint
+
+	var c_time_ C.time_t
+
+	retC := C.gtk_recent_info_get_application_info((*C.GtkRecentInfo)(recv.native), c_app_name, &c_app_exec, &c_count, &c_time_)
+	retGo := retC == C.TRUE
+
+	appExec := C.GoString(c_app_exec)
+
+	count := (uint32)(c_count)
+
+	time := (int64)(c_time_)
+
+	return retGo, appExec, count, time
+}
 
 // GetApplications is a wrapper around the C function gtk_recent_info_get_applications.
 func (recv *RecentInfo) GetApplications() ([]string, uint64) {
@@ -346,7 +373,13 @@ func (recv *RecentInfo) GetMimeType() string {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_modified : no return generator
+// GetModified is a wrapper around the C function gtk_recent_info_get_modified.
+func (recv *RecentInfo) GetModified() int64 {
+	retC := C.gtk_recent_info_get_modified((*C.GtkRecentInfo)(recv.native))
+	retGo := (int64)(retC)
+
+	return retGo
+}
 
 // GetPrivateHint is a wrapper around the C function gtk_recent_info_get_private_hint.
 func (recv *RecentInfo) GetPrivateHint() bool {
@@ -382,7 +415,13 @@ func (recv *RecentInfo) GetUriDisplay() string {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_visited : no return generator
+// GetVisited is a wrapper around the C function gtk_recent_info_get_visited.
+func (recv *RecentInfo) GetVisited() int64 {
+	retC := C.gtk_recent_info_get_visited((*C.GtkRecentInfo)(recv.native))
+	retGo := (int64)(retC)
+
+	return retGo
+}
 
 // HasApplication is a wrapper around the C function gtk_recent_info_has_application.
 func (recv *RecentInfo) HasApplication(appName string) bool {

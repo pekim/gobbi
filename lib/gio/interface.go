@@ -2900,7 +2900,7 @@ func (recv *Seekable) CanTruncate() bool {
 }
 
 // Seek is a wrapper around the C function g_seekable_seek.
-func (recv *Seekable) Seek(offset uint64, type_ glib.SeekType, cancellable *Cancellable) (bool, error) {
+func (recv *Seekable) Seek(offset int64, type_ glib.SeekType, cancellable *Cancellable) (bool, error) {
 	c_offset := (C.goffset)(offset)
 
 	c_type := (C.GSeekType)(type_)
@@ -2927,15 +2927,15 @@ func (recv *Seekable) Seek(offset uint64, type_ glib.SeekType, cancellable *Canc
 }
 
 // Tell is a wrapper around the C function g_seekable_tell.
-func (recv *Seekable) Tell() uint64 {
+func (recv *Seekable) Tell() int64 {
 	retC := C.g_seekable_tell((*C.GSeekable)(recv.native))
-	retGo := (uint64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }
 
 // Truncate is a wrapper around the C function g_seekable_truncate.
-func (recv *Seekable) Truncate(offset uint64, cancellable *Cancellable) (bool, error) {
+func (recv *Seekable) Truncate(offset int64, cancellable *Cancellable) (bool, error) {
 	c_offset := (C.goffset)(offset)
 
 	c_cancellable := (*C.GCancellable)(C.NULL)

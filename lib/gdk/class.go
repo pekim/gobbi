@@ -1776,7 +1776,7 @@ func CastToWindow(object *gobject.Object) *Window {
 }
 
 // WindowNew is a wrapper around the C function gdk_window_new.
-func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {
+func WindowNew(parent *Window, attributes *WindowAttr, attributesMask WindowAttributesType) *Window {
 	c_parent := (*C.GdkWindow)(C.NULL)
 	if parent != nil {
 		c_parent = (*C.GdkWindow)(parent.ToC())
