@@ -1833,8 +1833,6 @@ func Strup(string_ string) string {
 
 // Blacklisted : g_strv_get_type
 
-// Unsupported : g_test_add_vtable : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
-
 // TestAssertExpectedMessagesInternal is a wrapper around the C function g_test_assert_expected_messages_internal.
 func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
 	c_domain := C.CString(domain)

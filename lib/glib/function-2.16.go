@@ -158,8 +158,6 @@ func Strcmp0(str1 string, str2 string) int32 {
 	return retGo
 }
 
-// Unsupported : g_test_add_data_func : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
-
 // Unsupported : g_test_add_func : unsupported parameter test_func : no type generator for TestFunc (GTestFunc) for param test_func
 
 // TestBug is a wrapper around the C function g_test_bug.
@@ -181,8 +179,6 @@ func TestBugBase(uriPattern string) {
 
 	return
 }
-
-// Unsupported : g_test_create_case : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
 
 // TestCreateSuite is a wrapper around the C function g_test_create_suite.
 func TestCreateSuite(suiteName string) *TestSuite {

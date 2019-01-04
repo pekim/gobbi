@@ -217,6 +217,31 @@ func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x floa
 	return
 }
 
+// RenderBackground is a wrapper around the C function gtk_render_background.
+func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
+
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_background(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
+
 // RenderCheck is a wrapper around the C function gtk_render_check.
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)

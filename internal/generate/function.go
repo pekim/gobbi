@@ -81,6 +81,9 @@ func (f *Function) mergeAddenda(addenda *Function) {
 	if addenda.GoName != "" {
 		f.GoName = addenda.GoName
 	}
+	if addenda.Version != "" {
+		f.Version = addenda.Version
+	}
 }
 
 func (f *Function) blacklisted() (bool, string) {
