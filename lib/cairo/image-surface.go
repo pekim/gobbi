@@ -67,5 +67,10 @@ func (surface *Surface) Destroy() {
 	C.cairo_surface_destroy(c_surface)
 }
 
+func (surface *Surface) Reference() {
+	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	C.cairo_surface_reference(c_surface)
+}
+
 //unsigned char *
 //cairo_image_surface_get_data (cairo_surface_t *surface);
