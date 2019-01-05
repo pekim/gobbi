@@ -173,13 +173,10 @@ func (ctx *Context) GetAntiAlias() Antialias {
 
 func (ctx *Context) SetDash(dashes []float64, offset float64) {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
-	c_dashes := make([]C.double, len(dashes), len(dashes))
-	for i, dash := range dashes {
-		c_dashes[i] = C.double(dash)
-	}
+	c_dashes := (*C.double)(&dashes[0])
 	c_num_dashes := C.int(len(dashes))
 	c_offset := (C.double)(offset)
-	C.cairo_set_dash(c_ctx, &c_dashes[0], c_num_dashes, c_offset)
+	C.cairo_set_dash(c_ctx, c_dashes, c_num_dashes, c_offset)
 }
 
 func (ctx *Context) GetDashCount() int {
@@ -196,11 +193,7 @@ func (ctx *Context) GetDash() ([]float64, float64) {
 	var c_offset C.double
 
 	C.cairo_get_dash(c_ctx, &c_dashes[0], &c_offset)
-
-	dashes := make([]float64, dashCount, dashCount)
-	for i, dash := range c_dashes {
-		dashes[i] = float64(dash)
-	}
+	dashes := (*[1 << 30]float64)(unsafe.Pointer(&c_dashes[0]))[:dashCount:dashCount]
 
 	return dashes, float64(c_offset)
 }
