@@ -219,7 +219,13 @@ func (ctx *Context) GetDash() ([]float64, float64) {
 //void 	cairo_reset_clip ()
 //void 	cairo_rectangle_list_destroy ()
 //cairo_rectangle_list_t * 	cairo_copy_clip_rectangle_list ()
-//void 	cairo_fill ()
+
+func (ctx *Context) Fill() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	C.cairo_fill(c_ctx)
+}
+
 //void 	cairo_fill_preserve ()
 //void 	cairo_fill_extents ()
 //cairo_bool_t 	cairo_in_fill ()
@@ -236,20 +242,3 @@ func (ctx *Context) GetDash() ([]float64, float64) {
 //unsigned int 	cairo_get_reference_count ()
 //cairo_status_t 	cairo_set_user_data ()
 //void * 	cairo_get_user_data ()
-
-func (ctx *Context) Arc(xc float64, yc float64, radius float64, angle1 float64, angle2 float64) {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	c_xc := (C.double)(xc)
-	c_yc := (C.double)(yc)
-	c_radius := (C.double)(radius)
-	c_angle1 := (C.double)(angle1)
-	c_angle2 := (C.double)(angle2)
-
-	C.cairo_arc(c_ctx, c_xc, c_yc, c_radius, c_angle1, c_angle2)
-}
-
-func (ctx *Context) Fill() {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-
-	C.cairo_fill(c_ctx)
-}
