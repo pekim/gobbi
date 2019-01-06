@@ -42,8 +42,15 @@ func (ctx *Context) ClipExtents() (float64, float64, float64, float64) {
 	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
 }
 
-//void 	cairo_rectangle_list_destroy ()
-//cairo_rectangle_list_t * 	cairo_copy_clip_rectangle_list ()
+// cairo_rectangle_list_destroy is not exposed through an exported function.
+// It is taken care of by a finalizer for RectangleList.
+
+func (ctx *Context) CopyClipRectangleList() *RectangleList {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_copy_clip_rectangle_list(c_ctx)
+	return rectangleListNew(retC)
+}
 
 func (ctx *Context) GetReferenceCount() int {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
