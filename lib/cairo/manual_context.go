@@ -7,6 +7,9 @@ import (
 	"unsafe"
 )
 
+// The functions in this file are in the same order as they are
+// documented at https://cairographics.org/manual/cairo-cairo-t.html.
+
 func Create(surface *Surface) *Context {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
 
@@ -198,20 +201,97 @@ func (ctx *Context) GetDash() ([]float64, float64) {
 	return dashes, float64(c_offset)
 }
 
-//void 	cairo_set_fill_rule ()
-//cairo_fill_rule_t 	cairo_get_fill_rule ()
-//void 	cairo_set_line_cap ()
-//cairo_line_cap_t 	cairo_get_line_cap ()
-//void 	cairo_set_line_join ()
-//cairo_line_join_t 	cairo_get_line_join ()
-//void 	cairo_set_line_width ()
-//double 	cairo_get_line_width ()
-//void 	cairo_set_miter_limit ()
-//double 	cairo_get_miter_limit ()
-//void 	cairo_set_operator ()
-//cairo_operator_t 	cairo_get_operator ()
-//void 	cairo_set_tolerance ()
-//double 	cairo_get_tolerance ()
+func (ctx *Context) SetFillRule(fillRule FillRule) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_fillRule := (C.cairo_fill_rule_t)(fillRule)
+	C.cairo_set_fill_rule(c_ctx, c_fillRule)
+}
+
+func (ctx *Context) GetFillRule() FillRule {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_fill_rule(c_ctx)
+	return FillRule(retC)
+}
+
+func (ctx *Context) SetLineCap(lineCap LineCap) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_lineCap := (C.cairo_line_cap_t)(lineCap)
+	C.cairo_set_line_cap(c_ctx, c_lineCap)
+}
+
+func (ctx *Context) GetLineCap() LineCap {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_line_cap(c_ctx)
+	return LineCap(retC)
+}
+
+func (ctx *Context) SetLineJoin(lineJoin LineJoin) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_lineJoin := (C.cairo_line_join_t)(lineJoin)
+	C.cairo_set_line_join(c_ctx, c_lineJoin)
+}
+
+func (ctx *Context) GetLineJoin() LineJoin {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_line_join(c_ctx)
+	return LineJoin(retC)
+}
+
+func (ctx *Context) SetLineWidth(lineWidth float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_lineWidth := (C.double)(lineWidth)
+	C.cairo_set_line_width(c_ctx, c_lineWidth)
+}
+
+func (ctx *Context) GetLineWidth() float64 {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_line_width(c_ctx)
+	return float64(retC)
+}
+
+func (ctx *Context) SetMiterLimit(miterLimit float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_miterLimit := (C.double)(miterLimit)
+	C.cairo_set_miter_limit(c_ctx, c_miterLimit)
+}
+
+func (ctx *Context) GetMiterLimit() float64 {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_miter_limit(c_ctx)
+	return float64(retC)
+}
+
+func (ctx *Context) SetOperator(operator Operator) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_operator := (C.cairo_operator_t)(operator)
+	C.cairo_set_operator(c_ctx, c_operator)
+}
+
+func (ctx *Context) GetOperator() Operator {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_operator(c_ctx)
+	return Operator(retC)
+}
+
+func (ctx *Context) SetTolerance(tolerance float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_tolerance := (C.double)(tolerance)
+	C.cairo_set_tolerance(c_ctx, c_tolerance)
+}
+
+func (ctx *Context) GetTolerance() float64 {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_tolerance(c_ctx)
+	return float64(retC)
+}
+
 //void 	cairo_clip ()
 //void 	cairo_clip_preserve ()
 //void 	cairo_clip_extents ()
