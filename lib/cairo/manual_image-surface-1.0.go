@@ -1,3 +1,5 @@
+// +build cairo_1.0 cairo_1.2 cairo_1.4 cairo_1.6 cairo_1.10
+
 package cairo
 
 import (
@@ -28,37 +30,36 @@ func ImageSurfaceCreate(format Format, width int, height int) *Surface {
 	return retGo
 }
 
-func ImageSurfaceCreateForData(data []byte, format Format, width int, height int, stride int) *Surface {
-	panic("Need to figure out a sensible API for the data.")
+//func ImageSurfaceCreateForData(data []byte, format Format, width int, height int, stride int) *Surface {
+//	panic("Need to figure out a sensible API for the data.")
+//
+//	//c_data := (*C.uchar)(&data[0])
+//	//c_format := (C.cairo_format_t)(format)
+//	//c_width := (C.gint)(width)
+//	//c_height := (C.gint)(height)
+//	//c_stride := (C.gint)(stride)
+//	//
+//	//retC := C.cairo_image_surface_create_for_data(c_data, c_format, c_width, c_height, c_stride)
+//	//retGo := SurfaceNewFromC(unsafe.Pointer(retC))
+//	//
+//	//runtime.SetFinalizer(retGo, func(o *Surface) {
+//	//	o.Destroy()
+//	//})
+//	//
+//	//return retGo
+//}
 
-	//c_data := (*C.uchar)(&data[0])
-	//c_format := (C.cairo_format_t)(format)
-	//c_width := (C.gint)(width)
-	//c_height := (C.gint)(height)
-	//c_stride := (C.gint)(stride)
-	//
-	//retC := C.cairo_image_surface_create_for_data(c_data, c_format, c_width, c_height, c_stride)
-	//retGo := SurfaceNewFromC(unsafe.Pointer(retC))
-	//
-	//runtime.SetFinalizer(retGo, func(o *Surface) {
-	//	o.Destroy()
-	//})
-	//
-	//return retGo
-}
+func (surface *Surface) GetWidth() int {
+	c_surface := (*C.cairo_surface_t)(surface.ToC())
 
-func FormatStridForWidth(format Format, width int) int {
-	c_format := (C.cairo_format_t)(format)
-	c_width := (C.gint)(width)
-
-	retC := C.cairo_format_stride_for_width(c_format, c_width)
+	retC := C.cairo_image_surface_get_width(c_surface)
 	return int(retC)
 }
 
-func (surface *Surface) GetReferenceCount() int {
+func (surface *Surface) GetHeight() int {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
 
-	retC := C.cairo_surface_get_reference_count(c_surface)
+	retC := C.cairo_image_surface_get_height(c_surface)
 	return int(retC)
 }
 
