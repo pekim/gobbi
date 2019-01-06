@@ -25,13 +25,6 @@ func Create(surface *Surface) *Context {
 	return retGo
 }
 
-func (ctx *Context) GetReferenceCount() int {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-
-	retC := C.cairo_get_reference_count(c_ctx)
-	return int(retC)
-}
-
 func (ctx *Context) Reference() {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 	C.cairo_reference(c_ctx)
@@ -247,28 +240,100 @@ func (ctx *Context) ResetClip() {
 	C.cairo_reset_clip(c_ctx)
 }
 
-//void 	cairo_rectangle_list_destroy ()
-//cairo_rectangle_list_t * 	cairo_copy_clip_rectangle_list ()
-
 func (ctx *Context) Fill() {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 
 	C.cairo_fill(c_ctx)
 }
 
-//void 	cairo_fill_preserve ()
-//void 	cairo_fill_extents ()
-//cairo_bool_t 	cairo_in_fill ()
-//void 	cairo_mask ()
-//void 	cairo_mask_surface ()
-//void 	cairo_paint ()
-//void 	cairo_paint_with_alpha ()
-//void 	cairo_stroke ()
-//void 	cairo_stroke_preserve ()
-//void 	cairo_stroke_extents ()
-//cairo_bool_t 	cairo_in_stroke ()
-//void 	cairo_copy_page ()
-//void 	cairo_show_page ()
-//unsigned int 	cairo_get_reference_count ()
-//cairo_status_t 	cairo_set_user_data ()
-//void * 	cairo_get_user_data ()
+func (ctx *Context) FillPreserve() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_fill_preserve(c_ctx)
+}
+
+func (ctx *Context) FillExtents() (float64, float64, float64, float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_x1 C.double
+	var c_y1 C.double
+	var c_x2 C.double
+	var c_y2 C.double
+
+	C.cairo_fill_extents(c_ctx, &c_x1, &c_y1, &c_x2, &c_y2)
+
+	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
+}
+
+func (ctx *Context) InFill(x float64, y float64) bool {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_x := (C.double)(x)
+	c_y := (C.double)(y)
+
+	retC := C.cairo_in_fill(c_ctx, c_x, c_y)
+	return retC == 1
+}
+
+func (ctx *Context) Mask(pattern *Pattern) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_pattern := (*C.cairo_pattern_t)(pattern.ToC())
+	C.cairo_mask(c_ctx, c_pattern)
+}
+
+func (ctx *Context) SetMaskSurface(surface *Surface, surfaceX float64, surfaceY float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surfaceX := (C.double)(surfaceX)
+	c_surfaceY := (C.double)(surfaceY)
+	C.cairo_set_source_surface(c_ctx, c_surface, c_surfaceX, c_surfaceY)
+}
+
+func (ctx *Context) Paint() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_paint(c_ctx)
+}
+
+func (ctx *Context) PaintWithAlpha(alpha float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_alpha := (C.double)(alpha)
+	C.cairo_paint_with_alpha(c_ctx, c_alpha)
+}
+
+func (ctx *Context) Stroke() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_stroke(c_ctx)
+}
+
+func (ctx *Context) StrokePreserve() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_stroke_preserve(c_ctx)
+}
+
+func (ctx *Context) StrokeExtents() (float64, float64, float64, float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_x1 C.double
+	var c_y1 C.double
+	var c_x2 C.double
+	var c_y2 C.double
+
+	C.cairo_stroke_extents(c_ctx, &c_x1, &c_y1, &c_x2, &c_y2)
+
+	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
+}
+
+func (ctx *Context) InStroke(x float64, y float64) bool {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_x := (C.double)(x)
+	c_y := (C.double)(y)
+
+	retC := C.cairo_in_stroke(c_ctx, c_x, c_y)
+	return retC == 1
+}
+
+func (ctx *Context) CopyPage() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_copy_page(c_ctx)
+}
+
+func (ctx *Context) ShowPage() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_show_page(c_ctx)
+}

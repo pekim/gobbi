@@ -41,3 +41,16 @@ func (ctx *Context) ClipExtents() (float64, float64, float64, float64) {
 
 	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
 }
+
+//void 	cairo_rectangle_list_destroy ()
+//cairo_rectangle_list_t * 	cairo_copy_clip_rectangle_list ()
+
+func (ctx *Context) GetReferenceCount() int {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_reference_count(c_ctx)
+	return int(retC)
+}
+
+//cairo_status_t 	cairo_set_user_data ()
+//void * 	cairo_get_user_data ()
