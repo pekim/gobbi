@@ -1,3 +1,5 @@
+// +build cairo_1.0 cairo_1.2 cairo_1.4 cairo_1.10
+
 package cairo
 
 // #include <cairo/cairo.h>
@@ -71,47 +73,12 @@ func (ctx *Context) GetTarget() *Surface {
 	return retGo
 }
 
-func (ctx *Context) PushGroup() {
+func (ctx *Context) SetDash(dashes []float64, offset float64) {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
-	C.cairo_push_group(c_ctx)
-}
-
-func (ctx *Context) PushGroupWithContent(content Content) {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	c_content := (C.cairo_content_t)(content)
-	C.cairo_push_group_with_content(c_ctx, c_content)
-}
-
-func (ctx *Context) PopGroup() *Pattern {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-
-	retC := C.cairo_pop_group(c_ctx)
-	retGo := PatternNewFromC(unsafe.Pointer(retC))
-
-	runtime.SetFinalizer(retGo, func(o *Pattern) {
-		o.Destroy()
-	})
-
-	return retGo
-}
-
-func (ctx *Context) PopGroupToSource() {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	C.cairo_pop_group_to_source(c_ctx)
-}
-
-func (ctx *Context) GetGroupTarget() *Surface {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-
-	retC := C.cairo_get_group_target(c_ctx)
-	retGo := SurfaceNewFromC(unsafe.Pointer(retC))
-
-	retGo.Reference()
-	runtime.SetFinalizer(retGo, func(o *Surface) {
-		o.Destroy()
-	})
-
-	return retGo
+	c_dashes := (*C.double)(&dashes[0])
+	c_num_dashes := C.int(len(dashes))
+	c_offset := (C.double)(offset)
+	C.cairo_set_dash(c_ctx, c_dashes, c_num_dashes, c_offset)
 }
 
 func (ctx *Context) SetSourceRGB(red float64, green float64, blue float64) {
@@ -172,33 +139,6 @@ func (ctx *Context) GetAntiAlias() Antialias {
 
 	retC := C.cairo_get_antialias(c_ctx)
 	return Antialias(retC)
-}
-
-func (ctx *Context) SetDash(dashes []float64, offset float64) {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	c_dashes := (*C.double)(&dashes[0])
-	c_num_dashes := C.int(len(dashes))
-	c_offset := (C.double)(offset)
-	C.cairo_set_dash(c_ctx, c_dashes, c_num_dashes, c_offset)
-}
-
-func (ctx *Context) GetDashCount() int {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-
-	retC := C.cairo_get_dash_count(c_ctx)
-	return int(retC)
-}
-
-func (ctx *Context) GetDash() ([]float64, float64) {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	dashCount := ctx.GetDashCount()
-	c_dashes := make([]C.double, dashCount, dashCount)
-	var c_offset C.double
-
-	C.cairo_get_dash(c_ctx, &c_dashes[0], &c_offset)
-	dashes := (*[1 << 30]float64)(unsafe.Pointer(&c_dashes[0]))[:dashCount:dashCount]
-
-	return dashes, float64(c_offset)
 }
 
 func (ctx *Context) SetFillRule(fillRule FillRule) {
@@ -300,27 +240,6 @@ func (ctx *Context) Clip() {
 func (ctx *Context) ClipPreserve() {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 	C.cairo_clip_preserve(c_ctx)
-}
-
-func (ctx *Context) ClipExtents() (float64, float64, float64, float64) {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	var c_x1 C.double
-	var c_y1 C.double
-	var c_x2 C.double
-	var c_y2 C.double
-
-	C.cairo_clip_extents(c_ctx, &c_x1, &c_y1, &c_x2, &c_y2)
-
-	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
-}
-
-func (ctx *Context) InClip(x float64, y float64) bool {
-	c_ctx := (*C.cairo_t)(ctx.ToC())
-	c_x := (C.double)(x)
-	c_y := (C.double)(y)
-
-	retC := C.cairo_in_clip(c_ctx, c_x, c_y)
-	return retC == 1
 }
 
 func (ctx *Context) ResetClip() {
