@@ -292,11 +292,42 @@ func (ctx *Context) GetTolerance() float64 {
 	return float64(retC)
 }
 
-//void 	cairo_clip ()
-//void 	cairo_clip_preserve ()
-//void 	cairo_clip_extents ()
-//cairo_bool_t 	cairo_in_clip ()
-//void 	cairo_reset_clip ()
+func (ctx *Context) Clip() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_clip(c_ctx)
+}
+
+func (ctx *Context) ClipPreserve() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_clip_preserve(c_ctx)
+}
+
+func (ctx *Context) ClipExtents() (float64, float64, float64, float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_x1 C.double
+	var c_y1 C.double
+	var c_x2 C.double
+	var c_y2 C.double
+
+	C.cairo_clip_extents(c_ctx, &c_x1, &c_y1, &c_x2, &c_y2)
+
+	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
+}
+
+func (ctx *Context) InClip(x float64, y float64) bool {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_x := (C.double)(x)
+	c_y := (C.double)(y)
+
+	retC := C.cairo_in_clip(c_ctx, c_x, c_y)
+	return retC == 1
+}
+
+func (ctx *Context) ResetClip() {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	C.cairo_reset_clip(c_ctx)
+}
+
 //void 	cairo_rectangle_list_destroy ()
 //cairo_rectangle_list_t * 	cairo_copy_clip_rectangle_list ()
 
