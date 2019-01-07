@@ -90,31 +90,7 @@ func (recv *Surface) Equals(other *Surface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Matrix is a wrapper around the C record cairo_matrix_t.
-type Matrix struct {
-	native *C.cairo_matrix_t
-}
-
-func MatrixNewFromC(u unsafe.Pointer) *Matrix {
-	c := (*C.cairo_matrix_t)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Matrix{native: c}
-
-	return g
-}
-
-func (recv *Matrix) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this Matrix with another Matrix, and returns true if they represent the same GObject.
-func (recv *Matrix) Equals(other *Matrix) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : cairo_matrix_t
 
 // Pattern is a wrapper around the C record cairo_pattern_t.
 type Pattern struct {

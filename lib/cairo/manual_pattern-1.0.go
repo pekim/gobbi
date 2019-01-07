@@ -133,5 +133,17 @@ func (p *Pattern) GetFilter() Filter {
 	return Filter(retC)
 }
 
-//void 	cairo_pattern_set_matrix ()
-//void 	cairo_pattern_get_matrix ()
+func (p *Pattern) SetMatrix(matrix Matrix) {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	c_matrix := matrix.toC()
+
+	C.cairo_pattern_set_matrix(c_p, c_matrix)
+}
+
+func (p *Pattern) GetMatrix() Matrix {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	var c_matrix C.cairo_matrix_t
+
+	C.cairo_pattern_get_matrix(c_p, &c_matrix)
+	return matrixFromC(&c_matrix)
+}

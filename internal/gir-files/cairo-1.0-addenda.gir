@@ -9,5 +9,6 @@
 
   <namespace>
     <function blacklist="true" c:identifier="cairo_image_surface_create"/>
+    <record blacklist="true" name="Matrix"/>
   </namespace>
 </repository>
