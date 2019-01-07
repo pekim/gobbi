@@ -24,9 +24,9 @@ func TestCopyClipRectangleList(t *testing.T) {
 	surface := cairo.ImageSurfaceCreate(cairo.CAIRO_FORMAT_ARGB32, 10, 10)
 	cr := cairo.Create(surface)
 
-	rectangleList := cr.CopyClipRectangleList()
+	rectangles, status := cr.CopyClipRectangleList()
 
-	assert.Equal(t, cairo.CAIRO_STATUS_SUCCESS, rectangleList.Status)
-	assert.Equal(t, 1, len(rectangleList.Rectangles))
-	assert.Equal(t, cairo.Rectangle{0, 0, 10, 10}, rectangleList.Rectangles[0])
+	assert.Equal(t, cairo.CAIRO_STATUS_SUCCESS, status)
+	assert.Equal(t, 1, len(rectangles))
+	assert.Equal(t, cairo.Rectangle{0, 0, 10, 10}, rectangles[0])
 }
