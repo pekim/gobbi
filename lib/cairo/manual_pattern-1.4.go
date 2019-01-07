@@ -10,12 +10,10 @@ func (p *Pattern) GetReferenceCount() int {
 	return int(retC)
 }
 
-func (p *Pattern) Reference() {
+func (p *Pattern) GetColorStopCount() (int, Status) {
 	c_p := (*C.cairo_pattern_t)(p.ToC())
-	C.cairo_pattern_reference(c_p)
-}
+	var count C.int
 
-func (p *Pattern) Destroy() {
-	c_p := (*C.cairo_pattern_t)(p.ToC())
-	C.cairo_pattern_destroy(c_p)
+	retC := C.cairo_pattern_get_color_stop_count(c_p, &count)
+	return int(count), Status(retC)
 }
