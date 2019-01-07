@@ -14,3 +14,15 @@ func (ctx *Context) HasCurrentPoint() bool {
 
 	return retC == 1
 }
+
+func (ctx *Context) PathExtents() (float64, float64, float64, float64) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_x1 C.double
+	var c_y1 C.double
+	var c_x2 C.double
+	var c_y2 C.double
+
+	C.cairo_path_extents(c_ctx, &c_x1, &c_y1, &c_x2, &c_y2)
+
+	return float64(c_x1), float64(c_y1), float64(c_x2), float64(c_y2)
+}
