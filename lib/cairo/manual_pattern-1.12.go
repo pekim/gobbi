@@ -64,9 +64,68 @@ func (p *Pattern) MeshSetControlPoint(pointNum uint, x float64, y float64) {
 	C.cairo_mesh_pattern_set_control_point(c_p, c_pointNum, c_x, c_y)
 }
 
-//void 	cairo_mesh_pattern_set_corner_color_rgb ()
-//void 	cairo_mesh_pattern_set_corner_color_rgba ()
-//cairo_status_t 	cairo_mesh_pattern_get_patch_count ()
-//cairo_path_t * 	cairo_mesh_pattern_get_path ()
-//cairo_status_t 	cairo_mesh_pattern_get_control_point ()
-//cairo_status_t 	cairo_mesh_pattern_get_corner_color_rgba ()
+func (p *Pattern) MeshSetCornerColorRGB(cornerNum uint, red float64, green float64, blue float64) {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	c_cornerNum := C.uint(cornerNum)
+	c_red := (C.double)(red)
+	c_green := (C.double)(green)
+	c_blue := (C.double)(blue)
+
+	C.cairo_mesh_pattern_set_corner_color_rgb(c_p, c_cornerNum, c_red, c_green, c_blue)
+}
+
+func (p *Pattern) MeshSetCornerColorRGBA(cornerNum uint, red float64, green float64, blue float64, alpha float64) {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	c_cornerNum := C.uint(cornerNum)
+	c_red := (C.double)(red)
+	c_green := (C.double)(green)
+	c_blue := (C.double)(blue)
+	c_alpha := (C.double)(alpha)
+
+	C.cairo_mesh_pattern_set_corner_color_rgba(c_p, c_cornerNum, c_red, c_green, c_blue, c_alpha)
+}
+
+func (p *Pattern) MeshGetPatchCount() (uint, Status) {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	var count C.uint
+
+	retC := C.cairo_mesh_pattern_get_patch_count(c_p, &count)
+	return uint(count), Status(retC)
+}
+
+func (p *Pattern) MeshGetPath(patchNum uint) *Path {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	c_patchNum := C.uint(patchNum)
+
+	retC := C.cairo_mesh_pattern_get_path(c_p, c_patchNum)
+	retGo := PathNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+func (p *Pattern) MeshGetControlPoint(patchNum uint, pointNum uint) (float64, float64, Status) {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	c_patchNum := C.uint(patchNum)
+	c_pointNum := C.uint(pointNum)
+	var c_x C.double
+	var c_y C.double
+
+	retC := C.cairo_mesh_pattern_get_control_point(c_p, c_patchNum, c_pointNum, &c_x, &c_y)
+
+	return float64(c_x), float64(c_y), Status(retC)
+}
+
+func (p *Pattern) MeshGetCornerColorRGBA(patchNum uint, pointNum uint) (float64, float64, float64, float64, Status) {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+	c_patchNum := C.uint(patchNum)
+	c_pointNum := C.uint(pointNum)
+	var c_red C.double
+	var c_green C.double
+	var c_blue C.double
+	var c_alpha C.double
+
+	retC := C.cairo_mesh_pattern_get_corner_color_rgba(c_p, c_patchNum, c_pointNum,
+		&c_red, &c_green, &c_blue, &c_alpha)
+
+	return float64(c_red), float64(c_green), float64(c_blue), float64(c_alpha), Status(retC)
+}
