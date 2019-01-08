@@ -27,7 +27,7 @@ func (p *Pattern) AddColorStopRGBA(offset float64, red float64, green float64, b
 	C.cairo_pattern_add_color_stop_rgba(c_p, c_offset, c_red, c_green, c_blue, c_alpha)
 }
 
-func CreateRGB(red float64, green float64, blue float64) *Pattern {
+func PatternCreateRGB(red float64, green float64, blue float64) *Pattern {
 	c_red := (C.double)(red)
 	c_green := (C.double)(green)
 	c_blue := (C.double)(blue)
@@ -38,7 +38,7 @@ func CreateRGB(red float64, green float64, blue float64) *Pattern {
 	return retGo
 }
 
-func CreateRGBA(red float64, green float64, blue float64, alpha float64) *Pattern {
+func PatternCreateRGBA(red float64, green float64, blue float64, alpha float64) *Pattern {
 	c_red := (C.double)(red)
 	c_green := (C.double)(green)
 	c_blue := (C.double)(blue)
@@ -50,7 +50,7 @@ func CreateRGBA(red float64, green float64, blue float64, alpha float64) *Patter
 	return retGo
 }
 
-func (s *Surface) CreatePattern() *Pattern {
+func (s *Surface) PatternCreate() *Pattern {
 	c_s := (*C.cairo_surface_t)(s.ToC())
 
 	retC := C.cairo_pattern_create_for_surface(c_s)
@@ -59,7 +59,7 @@ func (s *Surface) CreatePattern() *Pattern {
 	return retGo
 }
 
-func CreateLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Pattern {
+func PatternCreateLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Pattern {
 	c_x0 := (C.double)(x0)
 	c_y0 := (C.double)(y0)
 	c_x1 := (C.double)(x1)
@@ -71,7 +71,7 @@ func CreateLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Pattern {
 	return retGo
 }
 
-func CreateRadial(
+func PatternCreateRadial(
 	cx0 float64, cy0 float64, radius0 float64,
 	cx1 float64, cy1 float64, radius1 float64,
 ) *Pattern {
