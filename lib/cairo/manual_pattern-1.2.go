@@ -5,4 +5,9 @@ package cairo
 // #include <cairo/cairo.h>
 import "C"
 
-//cairo_pattern_type_t 	cairo_pattern_get_type ()
+func (p *Pattern) GetType() PatternType {
+	c_p := (*C.cairo_pattern_t)(p.ToC())
+
+	retC := C.cairo_pattern_get_type(c_p)
+	return PatternType(retC)
+}
