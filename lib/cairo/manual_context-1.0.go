@@ -19,18 +19,18 @@ func Create(surface *Surface) *Context {
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
 
 	runtime.SetFinalizer(retGo, func(o *Context) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo
 }
 
-func (ctx *Context) Reference() {
+func (ctx *Context) reference() {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 	C.cairo_reference(c_ctx)
 }
 
-func (ctx *Context) Destroy() {
+func (ctx *Context) destroy() {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 	C.cairo_destroy(c_ctx)
 }
@@ -58,9 +58,9 @@ func (ctx *Context) GetTarget() *Surface {
 	retC := C.cairo_get_target(c_ctx)
 	retGo := SurfaceNewFromC(unsafe.Pointer(retC))
 
-	retGo.Reference()
+	retGo.reference()
 	runtime.SetFinalizer(retGo, func(o *Surface) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo
@@ -113,9 +113,9 @@ func (ctx *Context) GetSource() *Pattern {
 	retC := C.cairo_get_source(c_ctx)
 	retGo := PatternNewFromC(unsafe.Pointer(retC))
 
-	retGo.Reference()
+	retGo.reference()
 	runtime.SetFinalizer(retGo, func(o *Pattern) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo

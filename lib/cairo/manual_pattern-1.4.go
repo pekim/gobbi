@@ -6,7 +6,7 @@ package cairo
 import "C"
 import "unsafe"
 
-func (p *Pattern) GetReferenceCount() int {
+func (p *Pattern) getReferenceCount() int {
 	c_p := (*C.cairo_pattern_t)(p.ToC())
 
 	retC := C.cairo_pattern_get_reference_count(c_p)

@@ -88,12 +88,12 @@ func PatternCreateRadial(
 	return retGo
 }
 
-func (p *Pattern) Reference() {
+func (p *Pattern) reference() {
 	c_p := (*C.cairo_pattern_t)(p.ToC())
 	C.cairo_pattern_reference(c_p)
 }
 
-func (p *Pattern) Destroy() {
+func (p *Pattern) destroy() {
 	c_p := (*C.cairo_pattern_t)(p.ToC())
 	C.cairo_pattern_destroy(c_p)
 }

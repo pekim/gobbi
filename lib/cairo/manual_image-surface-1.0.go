@@ -24,7 +24,7 @@ func ImageSurfaceCreate(format Format, width int, height int) *Surface {
 	retGo := SurfaceNewFromC(unsafe.Pointer(retC))
 
 	runtime.SetFinalizer(retGo, func(o *Surface) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo
@@ -63,12 +63,12 @@ func (surface *Surface) GetHeight() int {
 	return int(retC)
 }
 
-func (surface *Surface) Destroy() {
+func (surface *Surface) destroy() {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
 	C.cairo_surface_destroy(c_surface)
 }
 
-func (surface *Surface) Reference() {
+func (surface *Surface) reference() {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
 	C.cairo_surface_reference(c_surface)
 }

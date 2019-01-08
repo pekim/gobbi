@@ -21,7 +21,7 @@ func (ctx *Context) CopyPath() *Path {
 	retGo := PathNewFromC(unsafe.Pointer(retC))
 
 	runtime.SetFinalizer(retGo, func(o *Path) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo
@@ -34,13 +34,13 @@ func (ctx *Context) CopyPathFlat() *Path {
 	retGo := PathNewFromC(unsafe.Pointer(retC))
 
 	runtime.SetFinalizer(retGo, func(o *Path) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo
 }
 
-func (path *Path) Destroy() {
+func (path *Path) destroy() {
 	c_path := (*C.cairo_path_t)(path.ToC())
 	C.cairo_path_destroy(c_path)
 }

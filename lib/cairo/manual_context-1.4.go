@@ -64,7 +64,7 @@ func (ctx *Context) CopyClipRectangleList() ([]Rectangle, Status) {
 	return rectangles, status
 }
 
-func (ctx *Context) GetReferenceCount() int {
+func (ctx *Context) getReferenceCount() int {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 
 	retC := C.cairo_get_reference_count(c_ctx)

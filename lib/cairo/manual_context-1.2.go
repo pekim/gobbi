@@ -30,7 +30,7 @@ func (ctx *Context) PopGroup() *Pattern {
 	retGo := PatternNewFromC(unsafe.Pointer(retC))
 
 	runtime.SetFinalizer(retGo, func(o *Pattern) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo
@@ -47,9 +47,9 @@ func (ctx *Context) GetGroupTarget() *Surface {
 	retC := C.cairo_get_group_target(c_ctx)
 	retGo := SurfaceNewFromC(unsafe.Pointer(retC))
 
-	retGo.Reference()
+	retGo.reference()
 	runtime.SetFinalizer(retGo, func(o *Surface) {
-		o.Destroy()
+		o.destroy()
 	})
 
 	return retGo

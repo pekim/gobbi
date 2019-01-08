@@ -10,7 +10,7 @@ package cairo
 // #include <stdlib.h>
 import "C"
 
-func (surface *Surface) GetReferenceCount() int {
+func (surface *Surface) getReferenceCount() int {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
 
 	retC := C.cairo_surface_get_reference_count(c_surface)
