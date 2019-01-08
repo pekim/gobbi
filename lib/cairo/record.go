@@ -248,46 +248,4 @@ func (recv *Path) Equals(other *Path) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// RectangleInt is a wrapper around the C record cairo_rectangle_int_t.
-type RectangleInt struct {
-	native *C.cairo_rectangle_int_t
-	X      int32
-	Y      int32
-	Width  int32
-	Height int32
-}
-
-func RectangleIntNewFromC(u unsafe.Pointer) *RectangleInt {
-	c := (*C.cairo_rectangle_int_t)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RectangleInt{
-		Height: (int32)(c.height),
-		Width:  (int32)(c.width),
-		X:      (int32)(c.x),
-		Y:      (int32)(c.y),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *RectangleInt) ToC() unsafe.Pointer {
-	recv.native.x =
-		(C.gint)(recv.X)
-	recv.native.y =
-		(C.gint)(recv.Y)
-	recv.native.width =
-		(C.gint)(recv.Width)
-	recv.native.height =
-		(C.gint)(recv.Height)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this RectangleInt with another RectangleInt, and returns true if they represent the same GObject.
-func (recv *RectangleInt) Equals(other *RectangleInt) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : cairo_rectangle_int_t
