@@ -90,5 +90,10 @@ func (p *Pattern) GetRadialCircles() (float64, float64, float64, float64, float6
 		Status(retC)
 }
 
-//cairo_status_t 	cairo_pattern_set_user_data ()
-//void * 	cairo_pattern_get_user_data ()
+// The user_data functions would be a little more complicatedd
+// to support than most other cairo functions.
+// And there should be little need for them in a Go application.
+// Use of a closure will usually suffice.
+//
+// cairo_pattern_set_user_data ()
+// cairo_pattern_get_user_data ()

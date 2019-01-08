@@ -71,5 +71,10 @@ func (ctx *Context) GetReferenceCount() int {
 	return int(retC)
 }
 
-//cairo_status_t 	cairo_set_user_data ()
-//void * 	cairo_get_user_data ()
+// The user_data functions would be a little more complicatedd
+// to support than most other cairo functions.
+// And there should be little need for them in a Go application.
+// Use of a closure will usually suffice.
+//
+// cairo_set_user_data ()
+// cairo_get_user_data ()

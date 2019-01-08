@@ -73,5 +73,9 @@ func (surface *Surface) Reference() {
 	C.cairo_surface_reference(c_surface)
 }
 
-//unsigned char *
-//cairo_image_surface_get_data (cairo_surface_t *surface);
+// The user_data functions would be a little more complicatedd
+// to support than most other cairo functions.
+// And there should be little need for them in a Go application.
+// Use of a closure will usually suffice.
+//
+// cairo_image_surface_get_data (cairo_surface_t *surface);
