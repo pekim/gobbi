@@ -116,4 +116,115 @@ func (r *Region) IsEmpty() bool {
 	return retC == 1
 }
 
-// cairo_user_data_key_t
+func (r *Region) ContainsPoint(x int, y int) bool {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_x := C.int(x)
+	c_y := C.int(y)
+
+	retC := C.cairo_region_contains_point(c_r, c_x, c_y)
+	return retC == 1
+}
+
+func (r *Region) ContainsRectangle(rectangle RectangleInt) RegionOverlap {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_rectangle := rectangle.toC()
+
+	retC := C.cairo_region_contains_rectangle(c_r, &c_rectangle)
+	return RegionOverlap(retC)
+}
+
+func (r *Region) Equal(other *Region) bool {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_other := (*C.cairo_region_t)(other.ToC())
+
+	retC := C.cairo_region_equal(c_r, c_other)
+	return retC == 1
+}
+
+func (r *Region) Translate(dx int, dy int) {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_dx := C.int(dx)
+	c_dy := C.int(dy)
+
+	C.cairo_region_translate(c_r, c_dx, c_dy)
+}
+
+// Intersect updates the Region r with the intersection of
+// r and other.
+func (r *Region) Intersect(other *Region) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_other := (*C.cairo_region_t)(other.ToC())
+
+	retC := C.cairo_region_intersect(c_r, c_other)
+	return Status(retC)
+}
+
+// IntersectRectangle updates the Region r with the intersection of
+// r and rectangle.
+func (r *Region) IntersectRectangle(rectangle RectangleInt) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_rectangle := rectangle.toC()
+
+	retC := C.cairo_region_intersect_rectangle(c_r, &c_rectangle)
+	return Status(retC)
+}
+
+// Subtract updates the Region r with the result of subtracting
+// other from r.
+func (r *Region) Subtract(other *Region) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_other := (*C.cairo_region_t)(other.ToC())
+
+	retC := C.cairo_region_subtract(c_r, c_other)
+	return Status(retC)
+}
+
+// SubtractRectangle updates the Region r with the result of subtracting
+// rectangle from r.
+func (r *Region) SubtractRectangle(rectangle RectangleInt) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_rectangle := rectangle.toC()
+
+	retC := C.cairo_region_subtract_rectangle(c_r, &c_rectangle)
+	return Status(retC)
+}
+
+// Union updates the Region r with the union of
+// r and other.
+func (r *Region) Union(other *Region) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_other := (*C.cairo_region_t)(other.ToC())
+
+	retC := C.cairo_region_union(c_r, c_other)
+	return Status(retC)
+}
+
+// UnionRectangle updates the Region r with the union of
+// r and rectangle.
+func (r *Region) UnionRectangle(rectangle RectangleInt) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_rectangle := rectangle.toC()
+
+	retC := C.cairo_region_union_rectangle(c_r, &c_rectangle)
+	return Status(retC)
+}
+
+// Xor updates the Region r with the exclusive difference of
+// r and other.
+func (r *Region) Xor(other *Region) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_other := (*C.cairo_region_t)(other.ToC())
+
+	retC := C.cairo_region_xor(c_r, c_other)
+	return Status(retC)
+}
+
+// XorRectangle updates the Region r with the exclusive difference of
+// r and rectangle.
+func (r *Region) XorRectangle(rectangle RectangleInt) Status {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	c_rectangle := rectangle.toC()
+
+	retC := C.cairo_region_xor_rectangle(c_r, &c_rectangle)
+	return Status(retC)
+}
