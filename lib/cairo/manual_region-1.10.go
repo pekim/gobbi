@@ -84,3 +84,36 @@ func (r *Region) Status() Status {
 
 	return Status(retC)
 }
+
+func (r *Region) GetExtents() RectangleInt {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	var c_extents C.cairo_rectangle_int_t
+
+	C.cairo_region_get_extents(c_r, &c_extents)
+
+	return rectangleIntFromC(&c_extents)
+}
+
+func (r *Region) NumRectangles() int {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	retC := C.cairo_region_num_rectangles(c_r)
+
+	return int(retC)
+}
+
+func (r *Region) GetRectangle(nth int) RectangleInt {
+	c_r := (*C.cairo_region_t)(r.ToC())
+	var c_rectangle C.cairo_rectangle_int_t
+
+	C.cairo_region_get_extents(c_r, &c_rectangle)
+	return rectangleIntFromC(&c_rectangle)
+}
+
+func (r *Region) IsEmpty() bool {
+	c_r := (*C.cairo_region_t)(r.ToC())
+
+	retC := C.cairo_region_is_empty(c_r)
+	return retC == 1
+}
+
+// cairo_user_data_key_t
