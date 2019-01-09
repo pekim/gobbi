@@ -21,8 +21,8 @@ func rectangleIntFromC(r *C.cairo_rectangle_int_t) RectangleInt {
 	}
 }
 
-func (r RectangleInt) toC() *C.cairo_rectangle_int_t {
-	return &C.cairo_rectangle_int_t{
+func (r RectangleInt) toC() C.cairo_rectangle_int_t {
+	return C.cairo_rectangle_int_t{
 		x:      C.int(r.X),
 		y:      C.int(r.X),
 		width:  C.int(r.Width),
