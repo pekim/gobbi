@@ -5,7 +5,10 @@ package cairo
 // #include <cairo/cairo.h>
 // #include <stdlib.h>
 import "C"
-import "unsafe"
+import (
+	"runtime"
+	"unsafe"
+)
 
 // The functions in this file are in the same order as they are
 // documented at https://cairographics.org/manual/cairo-text.html.
@@ -44,23 +47,64 @@ func (ctx *Context) GetFontMatrix() Matrix {
 	return matrixFromC(&c_matrix)
 }
 
-func (ctx *Context) SetFontOptions(options FontOptions) {
+func (ctx *Context) SetFontOptions(options *FontOptions) {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
 	c_options := (*C.cairo_font_options_t)(options.ToC())
 
 	C.cairo_set_font_options(c_ctx, c_options)
 }
 
-// void	cairo_select_font_face ()
-// void	cairo_set_font_size ()
-// void	cairo_set_font_matrix ()
-// void	cairo_get_font_matrix ()
-// void	cairo_set_font_options ()
-// void	cairo_get_font_options ()
-// void	cairo_set_font_face ()
-// cairo_font_face_t *	cairo_get_font_face ()
-// void	cairo_show_text ()
-// void	cairo_show_glyphs ()
+func (ctx *Context) GetFontOptions() *FontOptions {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_options C.cairo_font_options_t
+
+	C.cairo_get_font_options(c_ctx, &c_options)
+	return FontOptionsNewFromC(unsafe.Pointer(&c_options))
+}
+
+func (ctx *Context) SetFontFace(fontFace *FontFace) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_fontFace := (*C.cairo_font_face_t)(fontFace.ToC())
+
+	C.cairo_set_font_face(c_ctx, c_fontFace)
+}
+
+func (ctx *Context) GetFontFace() *FontFace {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	retC := C.cairo_get_font_face(c_ctx)
+	retGo := FontFaceNewFromC(unsafe.Pointer(retC))
+
+	retGo.reference()
+	runtime.SetFinalizer(retGo, func(o *FontFace) {
+		o.destroy()
+	})
+
+	return retGo
+}
+
+func (ctx *Context) ShowText(text string) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	C.cairo_show_text(c_ctx, c_text)
+}
+
+func (ctx *Context) ShowGlyphs(glyphs []Glyph) {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_numGlyphs, c_glyphs := glyphsToC(glyphs)
+
+	C.cairo_show_glyphs(c_ctx, &c_glyphs[0], c_numGlyphs)
+}
+
+//func (ctx *Context) FontExtends() FontExtents {
+//	c_ctx := (*C.cairo_t)(ctx.ToC())
+//
+//	C.cairo_font_extents(c_ctx, &c_extents)
+//}
+
 // void	cairo_font_extents ()
 // void	cairo_text_extents ()
 // void	cairo_glyph_extents ()

@@ -137,14 +137,7 @@ func (ctx *Context) Rectangle(x float64, y float64, width float64, height float6
 
 func (ctx *Context) GlyphPath(glyphs []Glyph) {
 	c_ctx := (*C.cairo_t)(ctx.ToC())
-
-	numGlyphs := len(glyphs)
-	c_numGlyphs := C.int(numGlyphs)
-
-	c_glyphs := make([]C.cairo_glyph_t, numGlyphs, numGlyphs)
-	for i, glyph := range glyphs {
-		c_glyphs[i] = glyph.toC()
-	}
+	c_numGlyphs, c_glyphs := glyphsToC(glyphs)
 
 	C.cairo_glyph_path(c_ctx, &c_glyphs[0], c_numGlyphs)
 }

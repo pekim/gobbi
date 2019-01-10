@@ -18,3 +18,15 @@ func (g Glyph) toC() C.cairo_glyph_t {
 		y:     C.double(g.Y),
 	}
 }
+
+func glyphsToC(glyphs []Glyph) (C.int, []C.cairo_glyph_t) {
+	numGlyphs := len(glyphs)
+	c_numGlyphs := C.int(numGlyphs)
+
+	c_glyphs := make([]C.cairo_glyph_t, numGlyphs, numGlyphs)
+	for i, glyph := range glyphs {
+		c_glyphs[i] = glyph.toC()
+	}
+
+	return c_numGlyphs, c_glyphs
+}
