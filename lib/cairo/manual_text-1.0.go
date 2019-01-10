@@ -99,11 +99,14 @@ func (ctx *Context) ShowGlyphs(glyphs []Glyph) {
 	C.cairo_show_glyphs(c_ctx, &c_glyphs[0], c_numGlyphs)
 }
 
-//func (ctx *Context) FontExtends() FontExtents {
-//	c_ctx := (*C.cairo_t)(ctx.ToC())
-//
-//	C.cairo_font_extents(c_ctx, &c_extents)
-//}
+func (ctx *Context) FontExtents() FontExtents {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_extents C.cairo_font_extents_t
+
+	C.cairo_font_extents(c_ctx, &c_extents)
+
+	return fontExtentsFromC(&c_extents)
+}
 
 // void	cairo_font_extents ()
 // void	cairo_text_extents ()
