@@ -5,7 +5,9 @@ package cairo
 // #include <cairo/cairo.h>
 // #include <stdlib.h>
 import "C"
-import "unsafe"
+import (
+	"unsafe"
+)
 
 // The functions in this file are in the same order as they are
 // documented at https://cairographics.org/manual/cairo-text.html.
@@ -22,9 +24,29 @@ func ToyFontFaceCreate(family string, slant FontSlant, weight FontWeight) {
 	C.cairo_toy_font_face_create(c_family, c_slant, c_weight)
 }
 
-// const char *	cairo_toy_font_face_get_family ()
-// cairo_font_slant_t	cairo_toy_font_face_get_slant ()
-// cairo_font_weight_t	cairo_toy_font_face_get_weight ()
+func (ff *FontFace) ToyFontFaceGetFamily() string {
+	c_ff := (*C.cairo_font_face_t)(ff.ToC())
+
+	retC := C.cairo_toy_font_face_get_family(c_ff)
+	return C.GoString(retC)
+}
+
+func (ff *FontFace) ToyFontFaceGetSlant() FontSlant {
+	c_ff := (*C.cairo_font_face_t)(ff.ToC())
+
+	retC := C.cairo_toy_font_face_get_slant(c_ff)
+	return FontSlant(retC)
+}
+
+func (ff *FontFace) ToyFontFaceGetWeight() FontWeight {
+	c_ff := (*C.cairo_font_face_t)(ff.ToC())
+
+	retC := C.cairo_toy_font_face_get_weight(c_ff)
+	return FontWeight(retC)
+}
+
+// There should be no need to implement these functions.
+//
 // cairo_glyph_t *	cairo_glyph_allocate ()
 // void	cairo_glyph_free ()
 // cairo_text_cluster_t *	cairo_text_cluster_allocate ()
