@@ -22,7 +22,6 @@ func ToyFontFaceCreate(family string, slant FontSlant, weight FontWeight) {
 	C.cairo_toy_font_face_create(c_family, c_slant, c_weight)
 }
 
-// cairo_font_face_t *	cairo_toy_font_face_create ()
 // const char *	cairo_toy_font_face_get_family ()
 // cairo_font_slant_t	cairo_toy_font_face_get_slant ()
 // cairo_font_weight_t	cairo_toy_font_face_get_weight ()

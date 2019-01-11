@@ -1,4 +1,4 @@
-// +build cairo_1.4 cairo_1.6 cairo_1.10 cairo_1.12
+// +build cairo_1.4 cairo_1.6 cairo_1.8 cairo_1.10 cairo_1.12
 
 package cairo
 
