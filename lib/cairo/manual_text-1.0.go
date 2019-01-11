@@ -108,9 +108,27 @@ func (ctx *Context) FontExtents() FontExtents {
 	return fontExtentsFromC(&c_extents)
 }
 
-// void	cairo_font_extents ()
-// void	cairo_text_extents ()
-// void	cairo_glyph_extents ()
+func (ctx *Context) TextExtents(text string) TextExtents {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	var c_extents C.cairo_text_extents_t
+
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	C.cairo_text_extents(c_ctx, c_text, &c_extents)
+
+	return textExtentsFromC(&c_extents)
+}
+
+func (ctx *Context) GlyphExtents(glyphs []Glyph) TextExtents {
+	c_ctx := (*C.cairo_t)(ctx.ToC())
+	c_numGlyphs, c_glyphs := glyphsToC(glyphs)
+	var c_extents C.cairo_text_extents_t
+
+	C.cairo_glyph_extents(c_ctx, &c_glyphs[0], c_numGlyphs, &c_extents)
+
+	return textExtentsFromC(&c_extents)
+}
 
 // 1.2
 // cairo_scaled_font_t *	cairo_get_scaled_font ()
