@@ -129,20 +129,3 @@ func (ctx *Context) GlyphExtents(glyphs []Glyph) TextExtents {
 
 	return textExtentsFromC(&c_extents)
 }
-
-// 1.2
-// cairo_scaled_font_t *	cairo_get_scaled_font ()
-
-// 1.4
-// void	cairo_set_scaled_font ()
-
-// 1.8
-// void	cairo_show_text_glyphs ()
-// cairo_font_face_t *	cairo_toy_font_face_create ()
-// const char *	cairo_toy_font_face_get_family ()
-// cairo_font_slant_t	cairo_toy_font_face_get_slant ()
-// cairo_font_weight_t	cairo_toy_font_face_get_weight ()
-// cairo_glyph_t *	cairo_glyph_allocate ()
-// void	cairo_glyph_free ()
-// cairo_text_cluster_t *	cairo_text_cluster_allocate ()
-// void	cairo_text_cluster_free ()

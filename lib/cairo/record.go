@@ -212,14 +212,14 @@ func ScaledFontNewFromC(u unsafe.Pointer) *ScaledFont {
 	return g
 }
 
-func (recv *ScaledFont) ToC() unsafe.Pointer {
+func (sc *ScaledFont) ToC() unsafe.Pointer {
 
-	return (unsafe.Pointer)(recv.native)
+	return (unsafe.Pointer)(sc.native)
 }
 
 // Equals compares this ScaledFont with another ScaledFont, and returns true if they represent the same GObject.
-func (recv *ScaledFont) Equals(other *ScaledFont) bool {
-	return other.ToC() == recv.ToC()
+func (sc *ScaledFont) Equals(other *ScaledFont) bool {
+	return other.ToC() == sc.ToC()
 }
 
 // Path is a wrapper around the C record cairo_path_t.
