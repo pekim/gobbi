@@ -3,8 +3,17 @@ package cairo
 import (
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
+
+func TestVersion(t *testing.T) {
+	assert.True(t, cairo.Version() > 0)
+}
+
+func TestVersionString(t *testing.T) {
+	assert.True(t, strings.HasPrefix(cairo.VersionString(), "1."))
+}
 
 func TestDashes(t *testing.T) {
 	surface := cairo.ImageSurfaceCreate(cairo.CAIRO_FORMAT_ARGB32, 10, 10)
