@@ -20,13 +20,7 @@ func (recv *FontFamily) IsMonospace() bool {
 	return retGo
 }
 
-// GetShapeEngineType is a wrapper around the C function pango_font_map_get_shape_engine_type.
-func (recv *FontMap) GetShapeEngineType() string {
-	retC := C.pango_font_map_get_shape_engine_type((*C.PangoFontMap)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : pango_font_map_get_shape_engine_type
 
 // Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc (PangoFontsetForeachFunc) for param func
 

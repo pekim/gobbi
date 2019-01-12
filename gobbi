@@ -3,7 +3,7 @@ set -e
 set -u
 
 exampleDir=example
-tags="cairo_1.12 gobject_2.26 glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.36 gtk_3.18"
+tags="cairo_1.12 gobject_2.26 glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.36 gtk_3.18 pango_1.38 pangocairo_1.22"
 
 usage () {
     echo "Usage:"

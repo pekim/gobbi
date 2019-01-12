@@ -14,7 +14,7 @@ type Gir struct {
 }
 
 func FromRoot(name, version string) {
-	girs := girNewRoot("Gtk", "3.0")
+	girs := girNewRoot(name, version)
 
 	for _, gir := range girs {
 		gir.generate()

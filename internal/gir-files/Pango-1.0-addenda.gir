@@ -8,6 +8,10 @@
     <class blacklist="true" name="Engine"/>
     <class blacklist="true" name="FontsetSimple"/>
 
+    <class name="FontMap">
+      <method blacklist="true" c:identifier="pango_font_map_get_shape_engine_type"/>
+    </class>
+
     <class name="Layout">
       <method blacklist="true" c:identifier="pango_layout_set_markup_with_accel"/>
     </class>
