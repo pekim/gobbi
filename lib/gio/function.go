@@ -89,13 +89,14 @@ func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	c_data := &data[0]
+	c_data_array := make([]C.guchar, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_data_size := (C.gsize)(len(data))
 
 	var c_result_uncertain C.gboolean
 
-	retC := C.g_content_type_guess(c_filename, (*C.guchar)(unsafe.Pointer(c_data)), c_data_size, &c_result_uncertain)
+	retC := C.g_content_type_guess(c_filename, c_data, c_data_size, &c_result_uncertain)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 

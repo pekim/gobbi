@@ -1074,7 +1074,8 @@ func DBusMessageNew() *DBusMessage {
 
 // DBusMessageNewFromBlob is a wrapper around the C function g_dbus_message_new_from_blob.
 func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
-	c_blob := &blob[0]
+	c_blob_array := make([]C.guint8, len(blob), len(blob))
+	c_blob := &c_blob_array[0]
 
 	c_blob_len := (C.gsize)(len(blob))
 
@@ -1082,7 +1083,7 @@ func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DB
 
 	var cThrowableError *C.GError
 
-	retC := C.g_dbus_message_new_from_blob((*C.guchar)(unsafe.Pointer(c_blob)), c_blob_len, c_capabilities, &cThrowableError)
+	retC := C.g_dbus_message_new_from_blob(c_blob, c_blob_len, c_capabilities, &cThrowableError)
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {
@@ -1147,13 +1148,14 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 
 // DBusMessageBytesNeeded is a wrapper around the C function g_dbus_message_bytes_needed.
 func DBusMessageBytesNeeded(blob []uint8) (int64, error) {
-	c_blob := &blob[0]
+	c_blob_array := make([]C.guint8, len(blob), len(blob))
+	c_blob := &c_blob_array[0]
 
 	c_blob_len := (C.gsize)(len(blob))
 
 	var cThrowableError *C.GError
 
-	retC := C.g_dbus_message_bytes_needed((*C.guchar)(unsafe.Pointer(c_blob)), c_blob_len, &cThrowableError)
+	retC := C.g_dbus_message_bytes_needed(c_blob, c_blob_len, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -3111,7 +3113,19 @@ func (recv *Settings) SetString(key string, value string) bool {
 	return retGo
 }
 
-// Unsupported : g_settings_set_strv : unsupported parameter value :
+// SetStrv is a wrapper around the C function g_settings_set_strv.
+func (recv *Settings) SetStrv(key string, value []string) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_value_array := make([]*C.gchar, len(value), len(value))
+	c_value := &c_value_array[0]
+
+	retC := C.g_settings_set_strv((*C.GSettings)(recv.native), c_key, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // SetValue is a wrapper around the C function g_settings_set_value.
 func (recv *Settings) SetValue(key string, value *glib.Variant) bool {
@@ -3134,7 +3148,7 @@ func (recv *Settings) SetValue(key string, value *glib.Variant) bool {
 
 // Unsupported : g_settings_backend_changed_tree : unsupported parameter origin_tag : no type generator for gpointer (gpointer) for param origin_tag
 
-// Unsupported : g_settings_backend_keys_changed : unsupported parameter items :
+// Unsupported : g_settings_backend_keys_changed : unsupported parameter origin_tag : no type generator for gpointer (gpointer) for param origin_tag
 
 // Unsupported : g_settings_backend_path_changed : unsupported parameter origin_tag : no type generator for gpointer (gpointer) for param origin_tag
 
@@ -3185,7 +3199,8 @@ func (recv *Socket) GetTimeout() uint32 {
 
 // ReceiveWithBlocking is a wrapper around the C function g_socket_receive_with_blocking.
 func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_size := (C.gsize)(len(buffer))
 
@@ -3199,7 +3214,7 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 
 	var cThrowableError *C.GError
 
-	retC := C.g_socket_receive_with_blocking((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_blocking, c_cancellable, &cThrowableError)
+	retC := C.g_socket_receive_with_blocking((*C.GSocket)(recv.native), c_buffer, c_size, c_blocking, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -3215,7 +3230,8 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 
 // SendWithBlocking is a wrapper around the C function g_socket_send_with_blocking.
 func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_size := (C.gsize)(len(buffer))
 
@@ -3229,7 +3245,7 @@ func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable 
 
 	var cThrowableError *C.GError
 
-	retC := C.g_socket_send_with_blocking((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_blocking, c_cancellable, &cThrowableError)
+	retC := C.g_socket_send_with_blocking((*C.GSocket)(recv.native), c_buffer, c_size, c_blocking, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -3484,13 +3500,14 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 
 // UnixSocketAddressNewWithType is a wrapper around the C function g_unix_socket_address_new_with_type.
 func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
-	c_path := &path[0]
+	c_path_array := make([]C.gchar, len(path), len(path))
+	c_path := &c_path_array[0]
 
 	c_path_len := (C.gint)(len(path))
 
 	c_type := (C.GUnixSocketAddressType)(type_)
 
-	retC := C.g_unix_socket_address_new_with_type((*C.gchar)(unsafe.Pointer(c_path)), c_path_len, c_type)
+	retC := C.g_unix_socket_address_new_with_type(c_path, c_path_len, c_type)
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {

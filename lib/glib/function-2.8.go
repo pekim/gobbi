@@ -27,9 +27,32 @@ func Access(filename string, mode int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_build_filenamev : unsupported parameter args :
+// BuildFilenamev is a wrapper around the C function g_build_filenamev.
+func BuildFilenamev(args []string) string {
+	c_args_array := make([]*C.char, len(args), len(args))
+	c_args := &c_args_array[0]
 
-// Unsupported : g_build_pathv : unsupported parameter args :
+	retC := C.g_build_filenamev(c_args)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// BuildPathv is a wrapper around the C function g_build_pathv.
+func BuildPathv(separator string, args []string) string {
+	c_separator := C.CString(separator)
+	defer C.free(unsafe.Pointer(c_separator))
+
+	c_args_array := make([]*C.char, len(args), len(args))
+	c_args := &c_args_array[0]
+
+	retC := C.g_build_pathv(c_separator, c_args)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Chdir is a wrapper around the C function g_chdir.
 func Chdir(path string) int32 {
@@ -88,13 +111,14 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	c_contents := &contents[0]
+	c_contents_array := make([]C.guint8, len(contents), len(contents))
+	c_contents := &c_contents_array[0]
 
 	c_length := (C.gssize)(len(contents))
 
 	var cThrowableError *C.GError
 
-	retC := C.g_file_set_contents(c_filename, (*C.gchar)(unsafe.Pointer(c_contents)), c_length, &cThrowableError)
+	retC := C.g_file_set_contents(c_filename, c_contents, c_length, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil

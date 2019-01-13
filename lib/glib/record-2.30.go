@@ -68,11 +68,12 @@ func (recv *Hmac) Equals(other *Hmac) bool {
 func HmacNew(digestType ChecksumType, key []uint8) *Hmac {
 	c_digest_type := (C.GChecksumType)(digestType)
 
-	c_key := &key[0]
+	c_key_array := make([]C.guchar, len(key), len(key))
+	c_key := &c_key_array[0]
 
 	c_key_len := (C.gsize)(len(key))
 
-	retC := C.g_hmac_new(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len)
+	retC := C.g_hmac_new(c_digest_type, c_key, c_key_len)
 	retGo := HmacNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -122,11 +123,12 @@ func (recv *Hmac) Unref() {
 
 // Update is a wrapper around the C function g_hmac_update.
 func (recv *Hmac) Update(data []uint8) {
-	c_data := &data[0]
+	c_data_array := make([]C.guchar, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_length := (C.gssize)(len(data))
 
-	C.g_hmac_update((*C.GHmac)(recv.native), (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+	C.g_hmac_update((*C.GHmac)(recv.native), c_data, c_length)
 
 	return
 }
@@ -160,7 +162,18 @@ func RegexEscapeNul(string_ string, length int32) string {
 	return retGo
 }
 
-// Unsupported : g_variant_new_objv : unsupported parameter strv :
+// VariantNewObjv is a wrapper around the C function g_variant_new_objv.
+func VariantNewObjv(strv []string) *Variant {
+	c_strv_array := make([]*C.char, len(strv), len(strv))
+	c_strv := &c_strv_array[0]
+
+	c_length := (C.gssize)(len(strv))
+
+	retC := C.g_variant_new_objv(c_strv, c_length)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DupObjv is a wrapper around the C function g_variant_dup_objv.
 func (recv *Variant) DupObjv() ([]string, uint64) {

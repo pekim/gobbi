@@ -1944,7 +1944,8 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 
 // ReplaceContents is a wrapper around the C function g_file_replace_contents.
 func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (bool, string, error) {
-	c_contents := &contents[0]
+	c_contents_array := make([]C.guint8, len(contents), len(contents))
+	c_contents := &c_contents_array[0]
 
 	c_length := (C.gsize)(len(contents))
 
@@ -1965,7 +1966,7 @@ func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool
 
 	var cThrowableError *C.GError
 
-	retC := C.g_file_replace_contents((*C.GFile)(recv.native), (*C.char)(unsafe.Pointer(c_contents)), c_length, c_etag, c_make_backup, c_flags, &c_new_etag, c_cancellable, &cThrowableError)
+	retC := C.g_file_replace_contents((*C.GFile)(recv.native), c_contents, c_length, c_etag, c_make_backup, c_flags, &c_new_etag, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil

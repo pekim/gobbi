@@ -61,11 +61,13 @@ func (recv *Converter) Equals(other *Converter) bool {
 
 // Convert is a wrapper around the C function g_converter_convert.
 func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
-	c_inbuf := &inbuf[0]
+	c_inbuf_array := make([]C.guint8, len(inbuf), len(inbuf))
+	c_inbuf := &c_inbuf_array[0]
 
 	c_inbuf_size := (C.gsize)(len(inbuf))
 
-	c_outbuf := &outbuf[0]
+	c_outbuf_array := make([]C.guint8, len(outbuf), len(outbuf))
+	c_outbuf := &c_outbuf_array[0]
 
 	c_outbuf_size := (C.gsize)(len(outbuf))
 
@@ -77,7 +79,7 @@ func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFla
 
 	var cThrowableError *C.GError
 
-	retC := C.g_converter_convert((*C.GConverter)(recv.native), (unsafe.Pointer(c_inbuf)), c_inbuf_size, (unsafe.Pointer(c_outbuf)), c_outbuf_size, c_flags, &c_bytes_read, &c_bytes_written, &cThrowableError)
+	retC := C.g_converter_convert((*C.GConverter)(recv.native), c_inbuf, c_inbuf_size, c_outbuf, c_outbuf_size, c_flags, &c_bytes_read, &c_bytes_written, &cThrowableError)
 	retGo := (ConverterResult)(retC)
 
 	var goError error = nil

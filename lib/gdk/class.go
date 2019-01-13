@@ -392,13 +392,14 @@ func DeviceGrabInfoLibgtkOnly(display *Display, device *Device) (bool, *Window, 
 
 // GetAxis is a wrapper around the C function gdk_device_get_axis.
 func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
-	c_axes := &axes[0]
+	c_axes_array := make([]C.gdouble, len(axes), len(axes))
+	c_axes := &c_axes_array[0]
 
 	c_use := (C.GdkAxisUse)(use)
 
 	var c_value C.gdouble
 
-	retC := C.gdk_device_get_axis((*C.GdkDevice)(recv.native), (*C.gdouble)(unsafe.Pointer(c_axes)), c_use, &c_value)
+	retC := C.gdk_device_get_axis((*C.GdkDevice)(recv.native), c_axes, c_use, &c_value)
 	retGo := retC == C.TRUE
 
 	value := (float64)(c_value)

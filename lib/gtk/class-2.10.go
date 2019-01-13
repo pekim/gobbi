@@ -4003,13 +4003,14 @@ func (recv *TextBuffer) Deserialize(contentBuffer *TextBuffer, format *gdk.Atom,
 		c_iter = (*C.GtkTextIter)(iter.ToC())
 	}
 
-	c_data := &data[0]
+	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_length := (C.gsize)(len(data))
 
 	var cThrowableError *C.GError
 
-	retC := C.gtk_text_buffer_deserialize((*C.GtkTextBuffer)(recv.native), c_content_buffer, c_format, c_iter, (*C.guint8)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
+	retC := C.gtk_text_buffer_deserialize((*C.GtkTextBuffer)(recv.native), c_content_buffer, c_format, c_iter, c_data, c_length, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil

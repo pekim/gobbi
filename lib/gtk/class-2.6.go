@@ -187,9 +187,25 @@ func (recv *AboutDialog) GetWebsiteLabel() string {
 	return retGo
 }
 
-// Unsupported : gtk_about_dialog_set_artists : unsupported parameter artists :
+// SetArtists is a wrapper around the C function gtk_about_dialog_set_artists.
+func (recv *AboutDialog) SetArtists(artists []string) {
+	c_artists_array := make([]*C.gchar, len(artists), len(artists))
+	c_artists := &c_artists_array[0]
 
-// Unsupported : gtk_about_dialog_set_authors : unsupported parameter authors :
+	C.gtk_about_dialog_set_artists((*C.GtkAboutDialog)(recv.native), c_artists)
+
+	return
+}
+
+// SetAuthors is a wrapper around the C function gtk_about_dialog_set_authors.
+func (recv *AboutDialog) SetAuthors(authors []string) {
+	c_authors_array := make([]*C.gchar, len(authors), len(authors))
+	c_authors := &c_authors_array[0]
+
+	C.gtk_about_dialog_set_authors((*C.GtkAboutDialog)(recv.native), c_authors)
+
+	return
+}
 
 // SetComments is a wrapper around the C function gtk_about_dialog_set_comments.
 func (recv *AboutDialog) SetComments(comments string) {
@@ -211,7 +227,15 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 	return
 }
 
-// Unsupported : gtk_about_dialog_set_documenters : unsupported parameter documenters :
+// SetDocumenters is a wrapper around the C function gtk_about_dialog_set_documenters.
+func (recv *AboutDialog) SetDocumenters(documenters []string) {
+	c_documenters_array := make([]*C.gchar, len(documenters), len(documenters))
+	c_documenters := &c_documenters_array[0]
+
+	C.gtk_about_dialog_set_documenters((*C.GtkAboutDialog)(recv.native), c_documenters)
+
+	return
+}
 
 // SetLicense is a wrapper around the C function gtk_about_dialog_set_license.
 func (recv *AboutDialog) SetLicense(license string) {
@@ -752,9 +776,10 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 	c_n_params := (C.gint)(len(newOrder))
 
-	c_new_order := &newOrder[0]
+	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
+	c_new_order := &c_new_order_array[0]
 
-	C.gtk_dialog_set_alternative_button_order_from_array((*C.GtkDialog)(recv.native), c_n_params, (*C.gint)(unsafe.Pointer(c_new_order)))
+	C.gtk_dialog_set_alternative_button_order_from_array((*C.GtkDialog)(recv.native), c_n_params, c_new_order)
 
 	return
 }

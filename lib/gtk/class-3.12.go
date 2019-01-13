@@ -107,7 +107,18 @@ func (recv *Application) ListActionDescriptions() []string {
 	return retGo
 }
 
-// Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels :
+// SetAccelsForAction is a wrapper around the C function gtk_application_set_accels_for_action.
+func (recv *Application) SetAccelsForAction(detailedActionName string, accels []string) {
+	c_detailed_action_name := C.CString(detailedActionName)
+	defer C.free(unsafe.Pointer(c_detailed_action_name))
+
+	c_accels_array := make([]*C.gchar, len(accels), len(accels))
+	c_accels := &c_accels_array[0]
+
+	C.gtk_application_set_accels_for_action((*C.GtkApplication)(recv.native), c_detailed_action_name, c_accels)
+
+	return
+}
 
 // GetCenterWidget is a wrapper around the C function gtk_box_get_center_widget.
 func (recv *Box) GetCenterWidget() *Widget {

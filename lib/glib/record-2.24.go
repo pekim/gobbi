@@ -255,7 +255,18 @@ func VariantNewString(string_ string) *Variant {
 	return retGo
 }
 
-// Unsupported : g_variant_new_strv : unsupported parameter strv :
+// VariantNewStrv is a wrapper around the C function g_variant_new_strv.
+func VariantNewStrv(strv []string) *Variant {
+	c_strv_array := make([]*C.char, len(strv), len(strv))
+	c_strv := &c_strv_array[0]
+
+	c_length := (C.gssize)(len(strv))
+
+	retC := C.g_variant_new_strv(c_strv, c_length)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_variant_new_tuple : unsupported parameter children :
 

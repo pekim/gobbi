@@ -10017,13 +10017,14 @@ func CssProviderGetNamed(name string, variant string) *CssProvider {
 
 // LoadFromData is a wrapper around the C function gtk_css_provider_load_from_data.
 func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
-	c_data := &data[0]
+	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_length := (C.gssize)(len(data))
 
 	var cThrowableError *C.GError
 
-	retC := C.gtk_css_provider_load_from_data((*C.GtkCssProvider)(recv.native), (*C.gchar)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
+	retC := C.gtk_css_provider_load_from_data((*C.GtkCssProvider)(recv.native), c_data, c_length, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil
@@ -17057,13 +17058,14 @@ func IMContextSimpleNew() *IMContextSimple {
 
 // AddTable is a wrapper around the C function gtk_im_context_simple_add_table.
 func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int32) {
-	c_data := &data[0]
+	c_data_array := make([]C.guint16, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_max_seq_len := (C.gint)(maxSeqLen)
 
 	c_n_seqs := (C.gint)(nSeqs)
 
-	C.gtk_im_context_simple_add_table((*C.GtkIMContextSimple)(recv.native), (*C.guint16)(unsafe.Pointer(c_data)), c_max_seq_len, c_n_seqs)
+	C.gtk_im_context_simple_add_table((*C.GtkIMContextSimple)(recv.native), c_data, c_max_seq_len, c_n_seqs)
 
 	return
 }
@@ -20573,9 +20575,10 @@ func CastToListStore(object *gobject.Object) *ListStore {
 func ListStoreNewv(types []gobject.Type) *ListStore {
 	c_n_columns := (C.gint)(len(types))
 
-	c_types := &types[0]
+	c_types_array := make([]C.GType, len(types), len(types))
+	c_types := &c_types_array[0]
 
-	retC := C.gtk_list_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	retC := C.gtk_list_store_newv(c_n_columns, c_types)
 	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {
@@ -20678,9 +20681,10 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
 
-	c_types := &types[0]
+	c_types_array := make([]C.GType, len(types), len(types))
+	c_types := &c_types_array[0]
 
-	C.gtk_list_store_set_column_types((*C.GtkListStore)(recv.native), c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	C.gtk_list_store_set_column_types((*C.GtkListStore)(recv.native), c_n_columns, c_types)
 
 	return
 }
@@ -37415,9 +37419,10 @@ func CastToTreeStore(object *gobject.Object) *TreeStore {
 func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	c_n_columns := (C.gint)(len(types))
 
-	c_types := &types[0]
+	c_types_array := make([]C.GType, len(types), len(types))
+	c_types := &c_types_array[0]
 
-	retC := C.gtk_tree_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	retC := C.gtk_tree_store_newv(c_n_columns, c_types)
 	retGo := TreeStoreNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {
@@ -37576,9 +37581,10 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
 
-	c_types := &types[0]
+	c_types_array := make([]C.GType, len(types), len(types))
+	c_types := &c_types_array[0]
 
-	C.gtk_tree_store_set_column_types((*C.GtkTreeStore)(recv.native), c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	C.gtk_tree_store_set_column_types((*C.GtkTreeStore)(recv.native), c_n_columns, c_types)
 
 	return
 }

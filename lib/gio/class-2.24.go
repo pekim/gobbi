@@ -176,11 +176,12 @@ func UnixFDListNew() *UnixFDList {
 
 // UnixFDListNewFromArray is a wrapper around the C function g_unix_fd_list_new_from_array.
 func UnixFDListNewFromArray(fds []int32) *UnixFDList {
-	c_fds := &fds[0]
+	c_fds_array := make([]C.gint, len(fds), len(fds))
+	c_fds := &c_fds_array[0]
 
 	c_n_fds := (C.gint)(len(fds))
 
-	retC := C.g_unix_fd_list_new_from_array((*C.gint)(unsafe.Pointer(c_fds)), c_n_fds)
+	retC := C.g_unix_fd_list_new_from_array(c_fds, c_n_fds)
 	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {

@@ -41,7 +41,8 @@ func (recv *Device) GetAssociatedDevice() *Device {
 
 // GetAxisValue is a wrapper around the C function gdk_device_get_axis_value.
 func (recv *Device) GetAxisValue(axes []float64, axisLabel *Atom) (bool, float64) {
-	c_axes := &axes[0]
+	c_axes_array := make([]C.gdouble, len(axes), len(axes))
+	c_axes := &c_axes_array[0]
 
 	c_axis_label := (C.GdkAtom)(C.NULL)
 	if axisLabel != nil {
@@ -50,7 +51,7 @@ func (recv *Device) GetAxisValue(axes []float64, axisLabel *Atom) (bool, float64
 
 	var c_value C.gdouble
 
-	retC := C.gdk_device_get_axis_value((*C.GdkDevice)(recv.native), (*C.gdouble)(unsafe.Pointer(c_axes)), c_axis_label, &c_value)
+	retC := C.gdk_device_get_axis_value((*C.GdkDevice)(recv.native), c_axes, c_axis_label, &c_value)
 	retGo := retC == C.TRUE
 
 	value := (float64)(c_value)

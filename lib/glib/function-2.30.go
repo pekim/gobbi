@@ -62,15 +62,17 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) string {
 	c_digest_type := (C.GChecksumType)(digestType)
 
-	c_key := &key[0]
+	c_key_array := make([]C.guchar, len(key), len(key))
+	c_key := &c_key_array[0]
 
 	c_key_len := (C.gsize)(len(key))
 
-	c_data := &data[0]
+	c_data_array := make([]C.guchar, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_length := (C.gsize)(len(data))
 
-	retC := C.g_compute_hmac_for_data(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len, (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+	retC := C.g_compute_hmac_for_data(c_digest_type, c_key, c_key_len, c_data, c_length)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
@@ -81,7 +83,8 @@ func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) stri
 func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) string {
 	c_digest_type := (C.GChecksumType)(digestType)
 
-	c_key := &key[0]
+	c_key_array := make([]C.guchar, len(key), len(key))
+	c_key := &c_key_array[0]
 
 	c_key_len := (C.gsize)(len(key))
 
@@ -90,7 +93,7 @@ func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) stri
 
 	c_length := (C.gssize)(len(str))
 
-	retC := C.g_compute_hmac_for_string(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len, c_str, c_length)
+	retC := C.g_compute_hmac_for_string(c_digest_type, c_key, c_key_len, c_str, c_length)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 

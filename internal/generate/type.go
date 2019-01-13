@@ -25,6 +25,12 @@ func (t *Type) init(ns *Namespace) {
 	t.cTypeName = strings.TrimRight(cType, "*")
 	t.indirectLevel = len(cType) - len(t.cTypeName)
 
+	if t.Name == "utf8" || t.Name == "filename" {
+		if t.CType == "" {
+			t.CType = "gchar*"
+		}
+	}
+
 	if t.CType == "GtkIconSize" && t.Name == "gint" {
 		t.Name = "IconSize"
 	}

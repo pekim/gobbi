@@ -56,7 +56,16 @@ func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_set_uris : unsupported parameter uris :
+// SetUris is a wrapper around the C function gtk_selection_data_set_uris.
+func (recv *SelectionData) SetUris(uris []string) bool {
+	c_uris_array := make([]*C.gchar, len(uris), len(uris))
+	c_uris := &c_uris_array[0]
+
+	retC := C.gtk_selection_data_set_uris((*C.GtkSelectionData)(recv.native), c_uris)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // TargetsIncludeImage is a wrapper around the C function gtk_selection_data_targets_include_image.
 func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {

@@ -51,11 +51,12 @@ import "C"
 func ComputeChecksumForData(checksumType ChecksumType, data []uint8) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)
 
-	c_data := &data[0]
+	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data := &c_data_array[0]
 
 	c_length := (C.gsize)(len(data))
 
-	retC := C.g_compute_checksum_for_data(c_checksum_type, (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+	retC := C.g_compute_checksum_for_data(c_checksum_type, c_data, c_length)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 

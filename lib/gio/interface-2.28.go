@@ -646,7 +646,8 @@ func (recv *PollableInputStream) IsReadable() bool {
 
 // ReadNonblocking is a wrapper around the C function g_pollable_input_stream_read_nonblocking.
 func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -657,7 +658,7 @@ func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Ca
 
 	var cThrowableError *C.GError
 
-	retC := C.g_pollable_input_stream_read_nonblocking((*C.GPollableInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retC := C.g_pollable_input_stream_read_nonblocking((*C.GPollableInputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -728,7 +729,8 @@ func (recv *PollableOutputStream) IsWritable() bool {
 
 // WriteNonblocking is a wrapper around the C function g_pollable_output_stream_write_nonblocking.
 func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -739,7 +741,7 @@ func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *
 
 	var cThrowableError *C.GError
 
-	retC := C.g_pollable_output_stream_write_nonblocking((*C.GPollableOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retC := C.g_pollable_output_stream_write_nonblocking((*C.GPollableOutputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil

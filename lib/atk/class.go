@@ -1555,11 +1555,12 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 
 // AddStates is a wrapper around the C function atk_state_set_add_states.
 func (recv *StateSet) AddStates(types []StateType) {
-	c_types := &types[0]
+	c_types_array := make([]C.AtkStateType, len(types), len(types))
+	c_types := &c_types_array[0]
 
 	c_n_types := (C.gint)(len(types))
 
-	C.atk_state_set_add_states((*C.AtkStateSet)(recv.native), (*C.AtkStateType)(unsafe.Pointer(c_types)), c_n_types)
+	C.atk_state_set_add_states((*C.AtkStateSet)(recv.native), c_types, c_n_types)
 
 	return
 }
@@ -1596,11 +1597,12 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 
 // ContainsStates is a wrapper around the C function atk_state_set_contains_states.
 func (recv *StateSet) ContainsStates(types []StateType) bool {
-	c_types := &types[0]
+	c_types_array := make([]C.AtkStateType, len(types), len(types))
+	c_types := &c_types_array[0]
 
 	c_n_types := (C.gint)(len(types))
 
-	retC := C.atk_state_set_contains_states((*C.AtkStateSet)(recv.native), (*C.AtkStateType)(unsafe.Pointer(c_types)), c_n_types)
+	retC := C.atk_state_set_contains_states((*C.AtkStateSet)(recv.native), c_types, c_n_types)
 	retGo := retC == C.TRUE
 
 	return retGo

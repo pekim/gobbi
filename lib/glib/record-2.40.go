@@ -51,7 +51,26 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_option_context_parse_strv : unsupported parameter arguments :
+// ParseStrv is a wrapper around the C function g_option_context_parse_strv.
+func (recv *OptionContext) ParseStrv(arguments []string) (bool, error) {
+	c_arguments_array := make([]**C.gchar, len(arguments), len(arguments))
+	c_arguments := &c_arguments_array[0]
+
+	var cThrowableError *C.GError
+
+	retC := C.g_option_context_parse_strv((*C.GOptionContext)(recv.native), c_arguments, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
 func VariantParseErrorPrintContext(error *Error, sourceStr string) string {

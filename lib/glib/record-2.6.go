@@ -521,11 +521,12 @@ func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_list := &list[0]
+	c_list_array := make([]C.gboolean, len(list), len(list))
+	c_list := &c_list_array[0]
 
 	c_length := (C.gsize)(len(list))
 
-	C.g_key_file_set_boolean_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gboolean)(unsafe.Pointer(c_list)), c_length)
+	C.g_key_file_set_boolean_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_list, c_length)
 
 	return
 }
@@ -580,11 +581,12 @@ func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) 
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_list := &list[0]
+	c_list_array := make([]C.gint, len(list), len(list))
+	c_list := &c_list_array[0]
 
 	c_length := (C.gsize)(len(list))
 
-	C.g_key_file_set_integer_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gint)(unsafe.Pointer(c_list)), c_length)
+	C.g_key_file_set_integer_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_list, c_length)
 
 	return
 }
@@ -617,7 +619,26 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	return
 }
 
-// Unsupported : g_key_file_set_locale_string_list : unsupported parameter list :
+// SetLocaleStringList is a wrapper around the C function g_key_file_set_locale_string_list.
+func (recv *KeyFile) SetLocaleStringList(groupName string, key string, locale string, list []string) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_locale := C.CString(locale)
+	defer C.free(unsafe.Pointer(c_locale))
+
+	c_list_array := make([]C.gchar, len(list), len(list))
+	c_list := &c_list_array[0]
+
+	c_length := (C.gsize)(len(list))
+
+	C.g_key_file_set_locale_string_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_locale, c_list, c_length)
+
+	return
+}
 
 // SetString is a wrapper around the C function g_key_file_set_string.
 func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
@@ -635,7 +656,23 @@ func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
 	return
 }
 
-// Unsupported : g_key_file_set_string_list : unsupported parameter list :
+// SetStringList is a wrapper around the C function g_key_file_set_string_list.
+func (recv *KeyFile) SetStringList(groupName string, key string, list []string) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_list_array := make([]*C.char, len(list), len(list))
+	c_list := &c_list_array[0]
+
+	c_length := (C.gsize)(len(list))
+
+	C.g_key_file_set_string_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_list, c_length)
+
+	return
+}
 
 // SetValue is a wrapper around the C function g_key_file_set_value.
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {

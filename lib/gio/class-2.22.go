@@ -300,11 +300,12 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 
 // InetAddressNewFromBytes is a wrapper around the C function g_inet_address_new_from_bytes.
 func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
-	c_bytes := &bytes[0]
+	c_bytes_array := make([]C.guint8, len(bytes), len(bytes))
+	c_bytes := &c_bytes_array[0]
 
 	c_family := (C.GSocketFamily)(family)
 
-	retC := C.g_inet_address_new_from_bytes((*C.guint8)(unsafe.Pointer(c_bytes)), c_family)
+	retC := C.g_inet_address_new_from_bytes(c_bytes, c_family)
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {
@@ -1165,7 +1166,8 @@ func (recv *Socket) Listen() (bool, error) {
 
 // Receive is a wrapper around the C function g_socket_receive.
 func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_size := (C.gsize)(len(buffer))
 
@@ -1176,7 +1178,7 @@ func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, er
 
 	var cThrowableError *C.GError
 
-	retC := C.g_socket_receive((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retC := C.g_socket_receive((*C.GSocket)(recv.native), c_buffer, c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -1194,7 +1196,8 @@ func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, er
 func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64, *SocketAddress, error) {
 	var c_address *C.GSocketAddress
 
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_size := (C.gsize)(len(buffer))
 
@@ -1205,7 +1208,7 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 
 	var cThrowableError *C.GError
 
-	retC := C.g_socket_receive_from((*C.GSocket)(recv.native), &c_address, (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retC := C.g_socket_receive_from((*C.GSocket)(recv.native), &c_address, c_buffer, c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -1225,7 +1228,8 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 
 // Send is a wrapper around the C function g_socket_send.
 func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_size := (C.gsize)(len(buffer))
 
@@ -1236,7 +1240,7 @@ func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error
 
 	var cThrowableError *C.GError
 
-	retC := C.g_socket_send((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retC := C.g_socket_send((*C.GSocket)(recv.native), c_buffer, c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -1259,7 +1263,8 @@ func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *
 		c_address = (*C.GSocketAddress)(address.ToC())
 	}
 
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer := &c_buffer_array[0]
 
 	c_size := (C.gsize)(len(buffer))
 
@@ -1270,7 +1275,7 @@ func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *
 
 	var cThrowableError *C.GError
 
-	retC := C.g_socket_send_to((*C.GSocket)(recv.native), c_address, (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retC := C.g_socket_send_to((*C.GSocket)(recv.native), c_address, c_buffer, c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -1790,9 +1795,10 @@ func SocketControlMessageDeserialize(level int32, type_ int32, data []uint8) *So
 
 	c_size := (C.gsize)(len(data))
 
-	c_data := &data[0]
+	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data := &c_data_array[0]
 
-	retC := C.g_socket_control_message_deserialize(c_level, c_type, c_size, (C.gpointer)(unsafe.Pointer(c_data)))
+	retC := C.g_socket_control_message_deserialize(c_level, c_type, c_size, c_data)
 	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo

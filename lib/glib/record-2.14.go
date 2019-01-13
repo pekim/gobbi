@@ -40,7 +40,36 @@ func HashTableGetValues(hashTable *HashTable) *List {
 	return retGo
 }
 
-// Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs :
+// LoadFromDirs is a wrapper around the C function g_key_file_load_from_dirs.
+func (recv *KeyFile) LoadFromDirs(file string, searchDirs []string, flags KeyFileFlags) (bool, string, error) {
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_search_dirs_array := make([]*C.char, len(searchDirs), len(searchDirs))
+	c_search_dirs := &c_search_dirs_array[0]
+
+	var c_full_path *C.gchar
+
+	c_flags := (C.GKeyFileFlags)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_key_file_load_from_dirs((*C.GKeyFile)(recv.native), c_file, c_search_dirs, &c_full_path, c_flags, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	fullPath := C.GoString(c_full_path)
+	defer C.free(unsafe.Pointer(c_full_path))
+
+	return retGo, fullPath, goError
+}
 
 // ExpandReferences is a wrapper around the C function g_match_info_expand_references.
 func (recv *MatchInfo) ExpandReferences(stringToExpand string) (string, error) {
@@ -316,7 +345,20 @@ func RegexCheckReplacement(replacement string) (bool, bool, error) {
 	return retGo, hasReferences, goError
 }
 
-// g_regex_escape_string : unsupported parameter string :
+// RegexEscapeString is a wrapper around the C function g_regex_escape_string.
+func RegexEscapeString(string_ []string) string {
+	c_string_array := make([]C.gchar, len(string_), len(string_))
+	c_string := &c_string_array[0]
+
+	c_length := (C.gint)(len(string_))
+
+	retC := C.g_regex_escape_string(c_string, c_length)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // RegexMatchSimple is a wrapper around the C function g_regex_match_simple.
 func RegexMatchSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
 	c_pattern := C.CString(pattern)
@@ -427,9 +469,67 @@ func (recv *Regex) MatchAll(string_ string, matchOptions RegexMatchFlags) (bool,
 	return retGo, matchInfo
 }
 
-// Unsupported : g_regex_match_all_full : unsupported parameter string :
+// MatchAllFull is a wrapper around the C function g_regex_match_all_full.
+func (recv *Regex) MatchAllFull(string_ []string, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo, error) {
+	c_string_array := make([]C.gchar, len(string_), len(string_))
+	c_string := &c_string_array[0]
 
-// Unsupported : g_regex_match_full : unsupported parameter string :
+	c_string_len := (C.gssize)(len(string_))
+
+	c_start_position := (C.gint)(startPosition)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var c_match_info *C.GMatchInfo
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_match_all_full((*C.GRegex)(recv.native), c_string, c_string_len, c_start_position, c_match_options, &c_match_info, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	return retGo, matchInfo, goError
+}
+
+// MatchFull is a wrapper around the C function g_regex_match_full.
+func (recv *Regex) MatchFull(string_ []string, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo, error) {
+	c_string_array := make([]C.gchar, len(string_), len(string_))
+	c_string := &c_string_array[0]
+
+	c_string_len := (C.gssize)(len(string_))
+
+	c_start_position := (C.gint)(startPosition)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var c_match_info *C.GMatchInfo
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_match_full((*C.GRegex)(recv.native), c_string, c_string_len, c_start_position, c_match_options, &c_match_info, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	return retGo, matchInfo, goError
+}
 
 // Ref is a wrapper around the C function g_regex_ref.
 func (recv *Regex) Ref() *Regex {
@@ -439,11 +539,69 @@ func (recv *Regex) Ref() *Regex {
 	return retGo
 }
 
-// Unsupported : g_regex_replace : unsupported parameter string :
+// Replace is a wrapper around the C function g_regex_replace.
+func (recv *Regex) Replace(string_ []string, startPosition int32, replacement string, matchOptions RegexMatchFlags) (string, error) {
+	c_string_array := make([]C.gchar, len(string_), len(string_))
+	c_string := &c_string_array[0]
 
-// Unsupported : g_regex_replace_eval : unsupported parameter string :
+	c_string_len := (C.gssize)(len(string_))
 
-// Unsupported : g_regex_replace_literal : unsupported parameter string :
+	c_start_position := (C.gint)(startPosition)
+
+	c_replacement := C.CString(replacement)
+	defer C.free(unsafe.Pointer(c_replacement))
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_replace((*C.GRegex)(recv.native), c_string, c_string_len, c_start_position, c_replacement, c_match_options, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// Unsupported : g_regex_replace_eval : unsupported parameter eval : no type generator for RegexEvalCallback (GRegexEvalCallback) for param eval
+
+// ReplaceLiteral is a wrapper around the C function g_regex_replace_literal.
+func (recv *Regex) ReplaceLiteral(string_ []string, startPosition int32, replacement string, matchOptions RegexMatchFlags) (string, error) {
+	c_string_array := make([]C.gchar, len(string_), len(string_))
+	c_string := &c_string_array[0]
+
+	c_string_len := (C.gssize)(len(string_))
+
+	c_start_position := (C.gint)(startPosition)
+
+	c_replacement := C.CString(replacement)
+	defer C.free(unsafe.Pointer(c_replacement))
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_replace_literal((*C.GRegex)(recv.native), c_string, c_string_len, c_start_position, c_replacement, c_match_options, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // Split is a wrapper around the C function g_regex_split.
 func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) []string {
@@ -463,7 +621,39 @@ func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) []string 
 	return retGo
 }
 
-// Unsupported : g_regex_split_full : unsupported parameter string :
+// SplitFull is a wrapper around the C function g_regex_split_full.
+func (recv *Regex) SplitFull(string_ []string, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) ([]string, error) {
+	c_string_array := make([]C.gchar, len(string_), len(string_))
+	c_string := &c_string_array[0]
+
+	c_string_len := (C.gssize)(len(string_))
+
+	c_start_position := (C.gint)(startPosition)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	c_max_tokens := (C.gint)(maxTokens)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_split_full((*C.GRegex)(recv.native), c_string, c_string_len, c_start_position, c_match_options, c_max_tokens, &cThrowableError)
+	retGo := []string{}
+	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
+		s := C.GoString(*p)
+		retGo = append(retGo, s)
+	}
+	defer C.g_strfreev(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // Unref is a wrapper around the C function g_regex_unref.
 func (recv *Regex) Unref() {

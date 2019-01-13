@@ -19,7 +19,18 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_about_dialog_add_credit_section : unsupported parameter people :
+// AddCreditSection is a wrapper around the C function gtk_about_dialog_add_credit_section.
+func (recv *AboutDialog) AddCreditSection(sectionName string, people []string) {
+	c_section_name := C.CString(sectionName)
+	defer C.free(unsafe.Pointer(c_section_name))
+
+	c_people_array := make([]*C.gchar, len(people), len(people))
+	c_people := &c_people_array[0]
+
+	C.gtk_about_dialog_add_credit_section((*C.GtkAboutDialog)(recv.native), c_section_name, c_people)
+
+	return
+}
 
 // AddAccelerator is a wrapper around the C function gtk_application_add_accelerator.
 func (recv *Application) AddAccelerator(accelerator string, actionName string, parameter *glib.Variant) {
@@ -188,7 +199,29 @@ func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 	return retGo, goError
 }
 
-// Unsupported : gtk_builder_add_objects_from_resource : unsupported parameter object_ids :
+// AddObjectsFromResource is a wrapper around the C function gtk_builder_add_objects_from_resource.
+func (recv *Builder) AddObjectsFromResource(resourcePath string, objectIds []string) (uint32, error) {
+	c_resource_path := C.CString(resourcePath)
+	defer C.free(unsafe.Pointer(c_resource_path))
+
+	c_object_ids_array := make([]*C.char, len(objectIds), len(objectIds))
+	c_object_ids := &c_object_ids_array[0]
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_builder_add_objects_from_resource((*C.GtkBuilder)(recv.native), c_resource_path, c_object_ids, &cThrowableError)
+	retGo := (uint32)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // ColorChooserDialogNew is a wrapper around the C function gtk_color_chooser_dialog_new.
 func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {

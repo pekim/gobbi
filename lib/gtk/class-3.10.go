@@ -426,7 +426,27 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 	return retGo, goError
 }
 
-// Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names :
+// ChooseIconForScale is a wrapper around the C function gtk_icon_theme_choose_icon_for_scale.
+func (recv *IconTheme) ChooseIconForScale(iconNames []string, size int32, scale int32, flags IconLookupFlags) *IconInfo {
+	c_icon_names_array := make([]C.gchar, len(iconNames), len(iconNames))
+	c_icon_names := &c_icon_names_array[0]
+
+	c_size := (C.gint)(size)
+
+	c_scale := (C.gint)(scale)
+
+	c_flags := (C.GtkIconLookupFlags)(flags)
+
+	retC := C.gtk_icon_theme_choose_icon_for_scale((*C.GtkIconTheme)(recv.native), c_icon_names, c_size, c_scale, c_flags)
+	var retGo (*IconInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // LoadIconForScale is a wrapper around the C function gtk_icon_theme_load_icon_for_scale.
 func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {

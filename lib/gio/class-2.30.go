@@ -1451,7 +1451,8 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*Tl
 
 // LookupCertificatesIssuedBy is a wrapper around the C function g_tls_database_lookup_certificates_issued_by.
 func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
-	c_issuer_raw_dn := &issuerRawDn[0]
+	c_issuer_raw_dn_array := make([]C.guint8, len(issuerRawDn), len(issuerRawDn))
+	c_issuer_raw_dn := &c_issuer_raw_dn_array[0]
 
 	c_interaction := (*C.GTlsInteraction)(C.NULL)
 	if interaction != nil {
@@ -1467,7 +1468,7 @@ func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interac
 
 	var cThrowableError *C.GError
 
-	retC := C.g_tls_database_lookup_certificates_issued_by((*C.GTlsDatabase)(recv.native), (*C.GByteArray)(unsafe.Pointer(c_issuer_raw_dn)), c_interaction, c_flags, c_cancellable, &cThrowableError)
+	retC := C.g_tls_database_lookup_certificates_issued_by((*C.GTlsDatabase)(recv.native), c_issuer_raw_dn, c_interaction, c_flags, c_cancellable, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
 	var goError error = nil
@@ -1805,11 +1806,12 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 
 // SetValue is a wrapper around the C function g_tls_password_set_value.
 func (recv *TlsPassword) SetValue(value []uint8) {
-	c_value := &value[0]
+	c_value_array := make([]C.guchar, len(value), len(value))
+	c_value := &c_value_array[0]
 
 	c_length := (C.gssize)(len(value))
 
-	C.g_tls_password_set_value((*C.GTlsPassword)(recv.native), (*C.guchar)(unsafe.Pointer(c_value)), c_length)
+	C.g_tls_password_set_value((*C.GTlsPassword)(recv.native), c_value, c_length)
 
 	return
 }

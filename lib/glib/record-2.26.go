@@ -769,15 +769,27 @@ func (recv *TimeZone) Unref() {
 
 // VariantNewBytestring is a wrapper around the C function g_variant_new_bytestring.
 func VariantNewBytestring(string_ []uint8) *Variant {
-	c_string := &string_[0]
+	c_string_array := make([]C.guint8, len(string_), len(string_))
+	c_string := &c_string_array[0]
 
-	retC := C.g_variant_new_bytestring((*C.gchar)(unsafe.Pointer(c_string)))
+	retC := C.g_variant_new_bytestring(c_string)
 	retGo := VariantNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// Unsupported : g_variant_new_bytestring_array : unsupported parameter strv :
+// VariantNewBytestringArray is a wrapper around the C function g_variant_new_bytestring_array.
+func VariantNewBytestringArray(strv []string) *Variant {
+	c_strv_array := make([]*C.gchar, len(strv), len(strv))
+	c_strv := &c_strv_array[0]
+
+	c_length := (C.gssize)(len(strv))
+
+	retC := C.g_variant_new_bytestring_array(c_strv, c_length)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Compare is a wrapper around the C function g_variant_compare.
 func (recv *Variant) Compare(two *Variant) int32 {

@@ -47,11 +47,24 @@ func (a *Array) generateDeclarationC(g *jen.Group, cVarName string) {
 }
 
 func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
+	cVarArrayName := cVarName + "_array"
+
+	g.
+		Id(cVarArrayName).
+		Op(":=").
+		Make(jen.
+			Index().
+			Op(strings.Repeat("*", a.Type.indirectLevel)).
+			Qual("C", a.Type.cTypeName),
+			jen.Len(jen.Id(goVarName)),
+			jen.Len(jen.Id(goVarName)),
+		)
+
 	g.
 		Id(cVarName).
 		Op(":=").
 		Op("&").
-		Id(goVarName).
+		Id(cVarArrayName).
 		Index(jen.Lit(0))
 }
 
@@ -117,23 +130,25 @@ func (a *Array) generateParamGoVar(g *jen.Group, param *Parameter) {
 }
 
 func (a *Array) generateParamCallArgument(g *jen.Group, cVarName string) {
-	cType := strings.TrimRight(a.CType, "*")
-	indirectLevel := len(a.CType) - len(cType)
-	if indirectLevel == 0 && !strings.HasSuffix(a.CType, "pointer") {
-		indirectLevel = 1
-	}
-	indirect := strings.Repeat("*", indirectLevel)
+	g.Id(cVarName)
 
-	if a.CType == "void*" {
-		g.
-			Parens(jen.
-				Qual("unsafe", "Pointer").
-				Call(jen.Id(cVarName)))
-	} else {
-		g.
-			Parens(jen.Op(indirect).Qual("C", cType)).
-			Parens(jen.
-				Qual("unsafe", "Pointer").
-				Call(jen.Id(cVarName)))
-	}
+	//cType := strings.TrimRight(a.CType, "*")
+	//indirectLevel := len(a.CType) - len(cType)
+	//if indirectLevel == 0 && !strings.HasSuffix(a.CType, "pointer") {
+	//	indirectLevel = 1
+	//}
+	//indirect := strings.Repeat("*", indirectLevel)
+	//
+	//if a.CType == "void*" {
+	//	g.
+	//		Parens(jen.
+	//			Qual("unsafe", "Pointer").
+	//			Call(jen.Id(cVarName)))
+	//} else {
+	//	g.
+	//		Parens(jen.Op(indirect).Qual("C", cType)).
+	//		Parens(jen.
+	//			Qual("unsafe", "Pointer").
+	//			Call(jen.Id(cVarName)))
+	//}
 }
