@@ -17,9 +17,16 @@ func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	c_logical_widths := &logicalWidths[0]
+	c_logical_widths_array := make([]C.int, len(logicalWidths)+1, len(logicalWidths)+1)
+	for i, item := range logicalWidths {
+		c := (C.int)(item)
+		c_logical_widths_array[i] = c
+	}
+	c_logical_widths_array[len(logicalWidths)] = 0
+	c_logical_widths_arrayPtr := &c_logical_widths_array[0]
+	c_logical_widths := (*C.int)(unsafe.Pointer(c_logical_widths_arrayPtr))
 
-	C.pango_glyph_item_get_logical_widths((*C.PangoGlyphItem)(recv.native), c_text, (*C.int)(unsafe.Pointer(c_logical_widths)))
+	C.pango_glyph_item_get_logical_widths((*C.PangoGlyphItem)(recv.native), c_text, c_logical_widths)
 
 	return
 }

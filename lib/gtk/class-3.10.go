@@ -426,7 +426,7 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 	return retGo, goError
 }
 
-// Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names :
+// Blacklisted : gtk_icon_theme_choose_icon_for_scale
 
 // LoadIconForScale is a wrapper around the C function gtk_icon_theme_load_icon_for_scale.
 func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {

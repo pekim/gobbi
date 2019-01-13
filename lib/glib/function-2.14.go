@@ -28,8 +28,6 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_once_init_leave : unsupported parameter location : no type generator for gpointer (void*) for param location
 
-// Unsupported : g_regex_escape_string : unsupported parameter string :
-
 // Unsupported : g_sequence_get : no return generator
 
 // Unsupported : g_sequence_insert_before : unsupported parameter data : no type generator for gpointer (gpointer) for param data

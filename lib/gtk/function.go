@@ -1398,7 +1398,22 @@ func RcScannerNew() *glib.Scanner {
 	return retGo
 }
 
-// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames :
+// RcSetDefaultFiles is a wrapper around the C function gtk_rc_set_default_files.
+func RcSetDefaultFiles(filenames []string) {
+	c_filenames_array := make([]*C.gchar, len(filenames)+1, len(filenames)+1)
+	for i, item := range filenames {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_filenames_array[i] = c
+	}
+	c_filenames_array[len(filenames)] = nil
+	c_filenames_arrayPtr := &c_filenames_array[0]
+	c_filenames := (**C.gchar)(unsafe.Pointer(c_filenames_arrayPtr))
+
+	C.gtk_rc_set_default_files(c_filenames)
+
+	return
+}
 
 // SelectionAddTarget is a wrapper around the C function gtk_selection_add_target.
 func SelectionAddTarget(widget *Widget, selection *gdk.Atom, target *gdk.Atom, info uint32) {

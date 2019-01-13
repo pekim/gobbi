@@ -178,9 +178,69 @@ func (recv *Adjustment) SetUpper(upper float64) {
 	return
 }
 
-// Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids :
+// AddObjectsFromFile is a wrapper around the C function gtk_builder_add_objects_from_file.
+func (recv *Builder) AddObjectsFromFile(filename string, objectIds []string) (uint32, error) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
 
-// Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids :
+	c_object_ids_array := make([]*C.gchar, len(objectIds)+1, len(objectIds)+1)
+	for i, item := range objectIds {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_object_ids_array[i] = c
+	}
+	c_object_ids_array[len(objectIds)] = nil
+	c_object_ids_arrayPtr := &c_object_ids_array[0]
+	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_builder_add_objects_from_file((*C.GtkBuilder)(recv.native), c_filename, c_object_ids, &cThrowableError)
+	retGo := (uint32)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// AddObjectsFromString is a wrapper around the C function gtk_builder_add_objects_from_string.
+func (recv *Builder) AddObjectsFromString(buffer string, length uint64, objectIds []string) (uint32, error) {
+	c_buffer := C.CString(buffer)
+	defer C.free(unsafe.Pointer(c_buffer))
+
+	c_length := (C.gsize)(length)
+
+	c_object_ids_array := make([]*C.gchar, len(objectIds)+1, len(objectIds)+1)
+	for i, item := range objectIds {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_object_ids_array[i] = c
+	}
+	c_object_ids_array[len(objectIds)] = nil
+	c_object_ids_arrayPtr := &c_object_ids_array[0]
+	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_builder_add_objects_from_string((*C.GtkBuilder)(recv.native), c_buffer, c_length, c_object_ids, &cThrowableError)
+	retGo := (uint32)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // GetDetailHeightRows is a wrapper around the C function gtk_calendar_get_detail_height_rows.
 func (recv *Calendar) GetDetailHeightRows() int32 {

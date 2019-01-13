@@ -35,11 +35,18 @@ func (recv *TreeModel) RowsReorderedWithLength(path *TreePath, iter *TreeIter, n
 		c_iter = (*C.GtkTreeIter)(iter.ToC())
 	}
 
-	c_new_order := &newOrder[0]
+	c_new_order_array := make([]C.gint, len(newOrder)+1, len(newOrder)+1)
+	for i, item := range newOrder {
+		c := (C.gint)(item)
+		c_new_order_array[i] = c
+	}
+	c_new_order_array[len(newOrder)] = 0
+	c_new_order_arrayPtr := &c_new_order_array[0]
+	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 
 	c_length := (C.gint)(len(newOrder))
 
-	C.gtk_tree_model_rows_reordered_with_length((*C.GtkTreeModel)(recv.native), c_path, c_iter, (*C.gint)(unsafe.Pointer(c_new_order)), c_length)
+	C.gtk_tree_model_rows_reordered_with_length((*C.GtkTreeModel)(recv.native), c_path, c_iter, c_new_order, c_length)
 
 	return
 }

@@ -32,7 +32,7 @@ func (t *TypeGeneratorString) isSupportedAsParam(direction string) (supported bo
 }
 
 func (t *TypeGeneratorString) isSupportedAsArrayParam(direction string) (supported bool, reason string) {
-	return false, ""
+	return true, ""
 }
 
 func (t *TypeGeneratorString) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {

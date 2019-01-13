@@ -697,7 +697,7 @@ func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_icon_theme_choose_icon : unsupported parameter icon_names :
+// Blacklisted : gtk_icon_theme_choose_icon
 
 // ListContexts is a wrapper around the C function gtk_icon_theme_list_contexts.
 func (recv *IconTheme) ListContexts() *glib.List {
@@ -1453,7 +1453,31 @@ func scalebutton_valueChangedHandler(_ *C.GObject, c_value C.gdouble, data C.gpo
 	callback(value)
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter icons :
+// ScaleButtonNew is a wrapper around the C function gtk_scale_button_new.
+func ScaleButtonNew(size IconSize, min float64, max float64, step float64, icons []string) *ScaleButton {
+	c_size := (C.GtkIconSize)(size)
+
+	c_min := (C.gdouble)(min)
+
+	c_max := (C.gdouble)(max)
+
+	c_step := (C.gdouble)(step)
+
+	c_icons_array := make([]*C.gchar, len(icons)+1, len(icons)+1)
+	for i, item := range icons {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_icons_array[i] = c
+	}
+	c_icons_array[len(icons)] = nil
+	c_icons_arrayPtr := &c_icons_array[0]
+	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
+
+	retC := C.gtk_scale_button_new(c_size, c_min, c_max, c_step, c_icons)
+	retGo := ScaleButtonNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAdjustment is a wrapper around the C function gtk_scale_button_get_adjustment.
 func (recv *ScaleButton) GetAdjustment() *Adjustment {
@@ -1483,7 +1507,22 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 	return
 }
 
-// Unsupported : gtk_scale_button_set_icons : unsupported parameter icons :
+// SetIcons is a wrapper around the C function gtk_scale_button_set_icons.
+func (recv *ScaleButton) SetIcons(icons []string) {
+	c_icons_array := make([]*C.gchar, len(icons)+1, len(icons)+1)
+	for i, item := range icons {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_icons_array[i] = c
+	}
+	c_icons_array[len(icons)] = nil
+	c_icons_arrayPtr := &c_icons_array[0]
+	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
+
+	C.gtk_scale_button_set_icons((*C.GtkScaleButton)(recv.native), c_icons)
+
+	return
+}
 
 // SetValue is a wrapper around the C function gtk_scale_button_set_value.
 func (recv *ScaleButton) SetValue(value float64) {

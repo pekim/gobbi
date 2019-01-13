@@ -535,13 +535,20 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 
 // Peek is a wrapper around the C function g_buffered_input_stream_peek.
 func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
+	for i, item := range buffer {
+		c := (C.guint8)(item)
+		c_buffer_array[i] = c
+	}
+	c_buffer_array[len(buffer)] = 0
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_offset := (C.gsize)(offset)
 
 	c_count := (C.gsize)(len(buffer))
 
-	retC := C.g_buffered_input_stream_peek((*C.GBufferedInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_offset, c_count)
+	retC := C.g_buffered_input_stream_peek((*C.GBufferedInputStream)(recv.native), c_buffer, c_offset, c_count)
 	retGo := (uint64)(retC)
 
 	return retGo
@@ -2906,7 +2913,25 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	return
 }
 
-// Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value :
+// SetAttributeStringv is a wrapper around the C function g_file_info_set_attribute_stringv.
+func (recv *FileInfo) SetAttributeStringv(attribute string, attrValue []string) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value_array := make([]*C.gchar, len(attrValue)+1, len(attrValue)+1)
+	for i, item := range attrValue {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_attr_value_array[i] = c
+	}
+	c_attr_value_array[len(attrValue)] = nil
+	c_attr_value_arrayPtr := &c_attr_value_array[0]
+	c_attr_value := (**C.char)(unsafe.Pointer(c_attr_value_arrayPtr))
+
+	C.g_file_info_set_attribute_stringv((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
 
 // SetAttributeUint32 is a wrapper around the C function g_file_info_set_attribute_uint32.
 func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
@@ -4092,7 +4117,14 @@ func (recv *InputStream) IsClosed() bool {
 
 // Read is a wrapper around the C function g_input_stream_read.
 func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
+	for i, item := range buffer {
+		c := (C.guint8)(item)
+		c_buffer_array[i] = c
+	}
+	c_buffer_array[len(buffer)] = 0
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -4103,7 +4135,7 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 
 	var cThrowableError *C.GError
 
-	retC := C.g_input_stream_read((*C.GInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retC := C.g_input_stream_read((*C.GInputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -4119,7 +4151,14 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 
 // ReadAll is a wrapper around the C function g_input_stream_read_all.
 func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
+	for i, item := range buffer {
+		c := (C.guint8)(item)
+		c_buffer_array[i] = c
+	}
+	c_buffer_array[len(buffer)] = 0
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -4132,7 +4171,7 @@ func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool
 
 	var cThrowableError *C.GError
 
-	retC := C.g_input_stream_read_all((*C.GInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, &c_bytes_read, c_cancellable, &cThrowableError)
+	retC := C.g_input_stream_read_all((*C.GInputStream)(recv.native), c_buffer, c_count, &c_bytes_read, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil
@@ -5146,7 +5185,14 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 
 // Write is a wrapper around the C function g_output_stream_write.
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
+	for i, item := range buffer {
+		c := (C.guint8)(item)
+		c_buffer_array[i] = c
+	}
+	c_buffer_array[len(buffer)] = 0
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -5157,7 +5203,7 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 
 	var cThrowableError *C.GError
 
-	retC := C.g_output_stream_write((*C.GOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retC := C.g_output_stream_write((*C.GOutputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
 	var goError error = nil
@@ -5173,7 +5219,14 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 
 // WriteAll is a wrapper around the C function g_output_stream_write_all.
 func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
-	c_buffer := &buffer[0]
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
+	for i, item := range buffer {
+		c := (C.guint8)(item)
+		c_buffer_array[i] = c
+	}
+	c_buffer_array[len(buffer)] = 0
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -5186,7 +5239,7 @@ func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bo
 
 	var cThrowableError *C.GError
 
-	retC := C.g_output_stream_write_all((*C.GOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, &c_bytes_written, c_cancellable, &cThrowableError)
+	retC := C.g_output_stream_write_all((*C.GOutputStream)(recv.native), c_buffer, c_count, &c_bytes_written, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil
@@ -6545,7 +6598,29 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
+// ThemedIconNewFromNames is a wrapper around the C function g_themed_icon_new_from_names.
+func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
+	c_iconnames_array := make([]*C.char, len(iconnames)+1, len(iconnames)+1)
+	for i, item := range iconnames {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_iconnames_array[i] = c
+	}
+	c_iconnames_array[len(iconnames)] = nil
+	c_iconnames_arrayPtr := &c_iconnames_array[0]
+	c_iconnames := (**C.char)(unsafe.Pointer(c_iconnames_arrayPtr))
+
+	c_len := (C.int)(len(iconnames))
+
+	retC := C.g_themed_icon_new_from_names(c_iconnames, c_len)
+	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
 func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
@@ -7148,11 +7223,18 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 
 // UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
 func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
-	c_path := &path[0]
+	c_path_array := make([]C.gchar, len(path)+1, len(path)+1)
+	for i, item := range path {
+		c := (C.gchar)(item)
+		c_path_array[i] = c
+	}
+	c_path_array[len(path)] = 0
+	c_path_arrayPtr := &c_path_array[0]
+	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
 
 	c_path_len := (C.gint)(len(path))
 
-	retC := C.g_unix_socket_address_new_abstract((*C.gchar)(unsafe.Pointer(c_path)), c_path_len)
+	retC := C.g_unix_socket_address_new_abstract(c_path, c_path_len)
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	if retC != nil {

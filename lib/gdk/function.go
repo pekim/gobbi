@@ -491,11 +491,18 @@ func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin
 
 	c_y_origin := (C.gint)(yOrigin)
 
-	c_index_ranges := &indexRanges[0]
+	c_index_ranges_array := make([]C.gint, len(indexRanges)+1, len(indexRanges)+1)
+	for i, item := range indexRanges {
+		c := (C.gint)(item)
+		c_index_ranges_array[i] = c
+	}
+	c_index_ranges_array[len(indexRanges)] = 0
+	c_index_ranges_arrayPtr := &c_index_ranges_array[0]
+	c_index_ranges := (*C.gint)(unsafe.Pointer(c_index_ranges_arrayPtr))
 
 	c_n_ranges := (C.gint)(nRanges)
 
-	retC := C.gdk_pango_layout_line_get_clip_region(c_line, c_x_origin, c_y_origin, (*C.gint)(unsafe.Pointer(c_index_ranges)), c_n_ranges)
+	retC := C.gdk_pango_layout_line_get_clip_region(c_line, c_x_origin, c_y_origin, c_index_ranges, c_n_ranges)
 	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
 
 	return retGo

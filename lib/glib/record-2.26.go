@@ -599,22 +599,6 @@ func (recv *KeyFile) SetUint64(groupName string, key string, value uint64) {
 	return
 }
 
-// GetCompileFlags is a wrapper around the C function g_regex_get_compile_flags.
-func (recv *Regex) GetCompileFlags() RegexCompileFlags {
-	retC := C.g_regex_get_compile_flags((*C.GRegex)(recv.native))
-	retGo := (RegexCompileFlags)(retC)
-
-	return retGo
-}
-
-// GetMatchFlags is a wrapper around the C function g_regex_get_match_flags.
-func (recv *Regex) GetMatchFlags() RegexMatchFlags {
-	retC := C.g_regex_get_match_flags((*C.GRegex)(recv.native))
-	retGo := (RegexMatchFlags)(retC)
-
-	return retGo
-}
-
 // SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
 func SourceSetNameById(tag uint32, name string) {
 	c_tag := (C.guint)(tag)
@@ -769,15 +753,40 @@ func (recv *TimeZone) Unref() {
 
 // VariantNewBytestring is a wrapper around the C function g_variant_new_bytestring.
 func VariantNewBytestring(string_ []uint8) *Variant {
-	c_string := &string_[0]
+	c_string_array := make([]C.guint8, len(string_)+1, len(string_)+1)
+	for i, item := range string_ {
+		c := (C.guint8)(item)
+		c_string_array[i] = c
+	}
+	c_string_array[len(string_)] = 0
+	c_string_arrayPtr := &c_string_array[0]
+	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
-	retC := C.g_variant_new_bytestring((*C.gchar)(unsafe.Pointer(c_string)))
+	retC := C.g_variant_new_bytestring(c_string)
 	retGo := VariantNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// Unsupported : g_variant_new_bytestring_array : unsupported parameter strv :
+// VariantNewBytestringArray is a wrapper around the C function g_variant_new_bytestring_array.
+func VariantNewBytestringArray(strv []string) *Variant {
+	c_strv_array := make([]*C.gchar, len(strv)+1, len(strv)+1)
+	for i, item := range strv {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_strv_array[i] = c
+	}
+	c_strv_array[len(strv)] = nil
+	c_strv_arrayPtr := &c_strv_array[0]
+	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
+
+	c_length := (C.gssize)(len(strv))
+
+	retC := C.g_variant_new_bytestring_array(c_strv, c_length)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Compare is a wrapper around the C function g_variant_compare.
 func (recv *Variant) Compare(two *Variant) int32 {

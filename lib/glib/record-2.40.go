@@ -51,7 +51,7 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_option_context_parse_strv : unsupported parameter arguments :
+// Blacklisted : g_option_context_parse_strv
 
 // VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
 func VariantParseErrorPrintContext(error *Error, sourceStr string) string {

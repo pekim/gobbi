@@ -521,11 +521,19 @@ func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_list := &list[0]
+	c_list_array := make([]C.gboolean, len(list)+1, len(list)+1)
+	for i, item := range list {
+		c :=
+			boolToGboolean(item)
+		c_list_array[i] = c
+	}
+	c_list_array[len(list)] = 0
+	c_list_arrayPtr := &c_list_array[0]
+	c_list := (*C.gboolean)(unsafe.Pointer(c_list_arrayPtr))
 
 	c_length := (C.gsize)(len(list))
 
-	C.g_key_file_set_boolean_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gboolean)(unsafe.Pointer(c_list)), c_length)
+	C.g_key_file_set_boolean_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_list, c_length)
 
 	return
 }
@@ -580,11 +588,18 @@ func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) 
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_list := &list[0]
+	c_list_array := make([]C.gint, len(list)+1, len(list)+1)
+	for i, item := range list {
+		c := (C.gint)(item)
+		c_list_array[i] = c
+	}
+	c_list_array[len(list)] = 0
+	c_list_arrayPtr := &c_list_array[0]
+	c_list := (*C.gint)(unsafe.Pointer(c_list_arrayPtr))
 
 	c_length := (C.gsize)(len(list))
 
-	C.g_key_file_set_integer_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gint)(unsafe.Pointer(c_list)), c_length)
+	C.g_key_file_set_integer_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_list, c_length)
 
 	return
 }
@@ -617,7 +632,7 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	return
 }
 
-// Unsupported : g_key_file_set_locale_string_list : unsupported parameter list :
+// Blacklisted : g_key_file_set_locale_string_list
 
 // SetString is a wrapper around the C function g_key_file_set_string.
 func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
@@ -635,7 +650,7 @@ func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
 	return
 }
 
-// Unsupported : g_key_file_set_string_list : unsupported parameter list :
+// Blacklisted : g_key_file_set_string_list
 
 // SetValue is a wrapper around the C function g_key_file_set_value.
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {

@@ -2436,7 +2436,7 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path :
+// Blacklisted : gtk_icon_theme_set_search_path
 
 // Attach is a wrapper around the C function gtk_menu_attach.
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {

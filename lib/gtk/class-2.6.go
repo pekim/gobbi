@@ -187,9 +187,39 @@ func (recv *AboutDialog) GetWebsiteLabel() string {
 	return retGo
 }
 
-// Unsupported : gtk_about_dialog_set_artists : unsupported parameter artists :
+// SetArtists is a wrapper around the C function gtk_about_dialog_set_artists.
+func (recv *AboutDialog) SetArtists(artists []string) {
+	c_artists_array := make([]*C.gchar, len(artists)+1, len(artists)+1)
+	for i, item := range artists {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_artists_array[i] = c
+	}
+	c_artists_array[len(artists)] = nil
+	c_artists_arrayPtr := &c_artists_array[0]
+	c_artists := (**C.gchar)(unsafe.Pointer(c_artists_arrayPtr))
 
-// Unsupported : gtk_about_dialog_set_authors : unsupported parameter authors :
+	C.gtk_about_dialog_set_artists((*C.GtkAboutDialog)(recv.native), c_artists)
+
+	return
+}
+
+// SetAuthors is a wrapper around the C function gtk_about_dialog_set_authors.
+func (recv *AboutDialog) SetAuthors(authors []string) {
+	c_authors_array := make([]*C.gchar, len(authors)+1, len(authors)+1)
+	for i, item := range authors {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_authors_array[i] = c
+	}
+	c_authors_array[len(authors)] = nil
+	c_authors_arrayPtr := &c_authors_array[0]
+	c_authors := (**C.gchar)(unsafe.Pointer(c_authors_arrayPtr))
+
+	C.gtk_about_dialog_set_authors((*C.GtkAboutDialog)(recv.native), c_authors)
+
+	return
+}
 
 // SetComments is a wrapper around the C function gtk_about_dialog_set_comments.
 func (recv *AboutDialog) SetComments(comments string) {
@@ -211,7 +241,22 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 	return
 }
 
-// Unsupported : gtk_about_dialog_set_documenters : unsupported parameter documenters :
+// SetDocumenters is a wrapper around the C function gtk_about_dialog_set_documenters.
+func (recv *AboutDialog) SetDocumenters(documenters []string) {
+	c_documenters_array := make([]*C.gchar, len(documenters)+1, len(documenters)+1)
+	for i, item := range documenters {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_documenters_array[i] = c
+	}
+	c_documenters_array[len(documenters)] = nil
+	c_documenters_arrayPtr := &c_documenters_array[0]
+	c_documenters := (**C.gchar)(unsafe.Pointer(c_documenters_arrayPtr))
+
+	C.gtk_about_dialog_set_documenters((*C.GtkAboutDialog)(recv.native), c_documenters)
+
+	return
+}
 
 // SetLicense is a wrapper around the C function gtk_about_dialog_set_license.
 func (recv *AboutDialog) SetLicense(license string) {
@@ -752,9 +797,16 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 	c_n_params := (C.gint)(len(newOrder))
 
-	c_new_order := &newOrder[0]
+	c_new_order_array := make([]C.gint, len(newOrder)+1, len(newOrder)+1)
+	for i, item := range newOrder {
+		c := (C.gint)(item)
+		c_new_order_array[i] = c
+	}
+	c_new_order_array[len(newOrder)] = 0
+	c_new_order_arrayPtr := &c_new_order_array[0]
+	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 
-	C.gtk_dialog_set_alternative_button_order_from_array((*C.GtkDialog)(recv.native), c_n_params, (*C.gint)(unsafe.Pointer(c_new_order)))
+	C.gtk_dialog_set_alternative_button_order_from_array((*C.GtkDialog)(recv.native), c_n_params, c_new_order)
 
 	return
 }

@@ -422,13 +422,20 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 
 // LoadFromData is a wrapper around the C function g_bookmark_file_load_from_data.
 func (recv *BookmarkFile) LoadFromData(data []uint8) (bool, error) {
-	c_data := &data[0]
+	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
+	for i, item := range data {
+		c := (C.guint8)(item)
+		c_data_array[i] = c
+	}
+	c_data_array[len(data)] = 0
+	c_data_arrayPtr := &c_data_array[0]
+	c_data := (*C.gchar)(unsafe.Pointer(c_data_arrayPtr))
 
 	c_length := (C.gsize)(len(data))
 
 	var cThrowableError *C.GError
 
-	retC := C.g_bookmark_file_load_from_data((*C.GBookmarkFile)(recv.native), (*C.gchar)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
+	retC := C.g_bookmark_file_load_from_data((*C.GBookmarkFile)(recv.native), c_data, c_length, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	var goError error = nil
@@ -638,7 +645,27 @@ func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_groups : unsupported parameter groups :
+// SetGroups is a wrapper around the C function g_bookmark_file_set_groups.
+func (recv *BookmarkFile) SetGroups(uri string, groups []string) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_groups_array := make([]*C.gchar, len(groups)+1, len(groups)+1)
+	for i, item := range groups {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_groups_array[i] = c
+	}
+	c_groups_array[len(groups)] = nil
+	c_groups_arrayPtr := &c_groups_array[0]
+	c_groups := (**C.gchar)(unsafe.Pointer(c_groups_arrayPtr))
+
+	c_length := (C.gsize)(len(groups))
+
+	C.g_bookmark_file_set_groups((*C.GBookmarkFile)(recv.native), c_uri, c_groups, c_length)
+
+	return
+}
 
 // SetIcon is a wrapper around the C function g_bookmark_file_set_icon.
 func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
@@ -815,11 +842,18 @@ func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64)
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_list := &list[0]
+	c_list_array := make([]C.gdouble, len(list)+1, len(list)+1)
+	for i, item := range list {
+		c := (C.gdouble)(item)
+		c_list_array[i] = c
+	}
+	c_list_array[len(list)] = 0
+	c_list_arrayPtr := &c_list_array[0]
+	c_list := (*C.gdouble)(unsafe.Pointer(c_list_arrayPtr))
 
 	c_length := (C.gsize)(len(list))
 
-	C.g_key_file_set_double_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gdouble)(unsafe.Pointer(c_list)), c_length)
+	C.g_key_file_set_double_list((*C.GKeyFile)(recv.native), c_group_name, c_key, c_list, c_length)
 
 	return
 }

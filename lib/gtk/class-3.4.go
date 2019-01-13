@@ -19,7 +19,25 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_about_dialog_add_credit_section : unsupported parameter people :
+// AddCreditSection is a wrapper around the C function gtk_about_dialog_add_credit_section.
+func (recv *AboutDialog) AddCreditSection(sectionName string, people []string) {
+	c_section_name := C.CString(sectionName)
+	defer C.free(unsafe.Pointer(c_section_name))
+
+	c_people_array := make([]*C.gchar, len(people)+1, len(people)+1)
+	for i, item := range people {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_people_array[i] = c
+	}
+	c_people_array[len(people)] = nil
+	c_people_arrayPtr := &c_people_array[0]
+	c_people := (**C.gchar)(unsafe.Pointer(c_people_arrayPtr))
+
+	C.gtk_about_dialog_add_credit_section((*C.GtkAboutDialog)(recv.native), c_section_name, c_people)
+
+	return
+}
 
 // AddAccelerator is a wrapper around the C function gtk_application_add_accelerator.
 func (recv *Application) AddAccelerator(accelerator string, actionName string, parameter *glib.Variant) {
@@ -188,7 +206,36 @@ func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 	return retGo, goError
 }
 
-// Unsupported : gtk_builder_add_objects_from_resource : unsupported parameter object_ids :
+// AddObjectsFromResource is a wrapper around the C function gtk_builder_add_objects_from_resource.
+func (recv *Builder) AddObjectsFromResource(resourcePath string, objectIds []string) (uint32, error) {
+	c_resource_path := C.CString(resourcePath)
+	defer C.free(unsafe.Pointer(c_resource_path))
+
+	c_object_ids_array := make([]*C.gchar, len(objectIds)+1, len(objectIds)+1)
+	for i, item := range objectIds {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_object_ids_array[i] = c
+	}
+	c_object_ids_array[len(objectIds)] = nil
+	c_object_ids_arrayPtr := &c_object_ids_array[0]
+	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_builder_add_objects_from_resource((*C.GtkBuilder)(recv.native), c_resource_path, c_object_ids, &cThrowableError)
+	retGo := (uint32)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // ColorChooserDialogNew is a wrapper around the C function gtk_color_chooser_dialog_new.
 func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {

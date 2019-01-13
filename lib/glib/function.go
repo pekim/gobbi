@@ -798,7 +798,14 @@ func IoCreateWatch(channel *IOChannel, condition IOCondition) *Source {
 
 // LocaleToUtf8 is a wrapper around the C function g_locale_to_utf8.
 func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
-	c_opsysstring := &opsysstring[0]
+	c_opsysstring_array := make([]C.guint8, len(opsysstring)+1, len(opsysstring)+1)
+	for i, item := range opsysstring {
+		c := (C.guint8)(item)
+		c_opsysstring_array[i] = c
+	}
+	c_opsysstring_array[len(opsysstring)] = 0
+	c_opsysstring_arrayPtr := &c_opsysstring_array[0]
+	c_opsysstring := (*C.gchar)(unsafe.Pointer(c_opsysstring_arrayPtr))
 
 	c_len := (C.gssize)(len(opsysstring))
 
@@ -808,7 +815,7 @@ func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 
 	var cThrowableError *C.GError
 
-	retC := C.g_locale_to_utf8((*C.gchar)(unsafe.Pointer(c_opsysstring)), c_len, &c_bytes_read, &c_bytes_written, &cThrowableError)
+	retC := C.g_locale_to_utf8(c_opsysstring, c_len, &c_bytes_read, &c_bytes_written, &cThrowableError)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
@@ -1374,9 +1381,9 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	return retGo
 }
 
-// Unsupported : g_spawn_async : unsupported parameter argv :
+// Unsupported : g_spawn_async : unsupported parameter child_setup : no type generator for SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
-// Unsupported : g_spawn_async_with_pipes : unsupported parameter argv :
+// Unsupported : g_spawn_async_with_pipes : unsupported parameter child_setup : no type generator for SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
 // SpawnClosePid is a wrapper around the C function g_spawn_close_pid.
 func SpawnClosePid(pid Pid) {
@@ -1426,7 +1433,7 @@ func SpawnExitErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_spawn_sync : unsupported parameter argv :
+// Unsupported : g_spawn_sync : unsupported parameter child_setup : no type generator for SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
 // Stpcpy is a wrapper around the C function g_stpcpy.
 func Stpcpy(dest string, src string) string {
@@ -2472,13 +2479,20 @@ func Utf8Strup(str string, len int64) string {
 
 // Utf8Validate is a wrapper around the C function g_utf8_validate.
 func Utf8Validate(str []uint8) (bool, string) {
-	c_str := &str[0]
+	c_str_array := make([]C.guint8, len(str)+1, len(str)+1)
+	for i, item := range str {
+		c := (C.guint8)(item)
+		c_str_array[i] = c
+	}
+	c_str_array[len(str)] = 0
+	c_str_arrayPtr := &c_str_array[0]
+	c_str := (*C.gchar)(unsafe.Pointer(c_str_arrayPtr))
 
 	c_max_len := (C.gssize)(len(str))
 
 	var c_end *C.gchar
 
-	retC := C.g_utf8_validate((*C.gchar)(unsafe.Pointer(c_str)), c_max_len, &c_end)
+	retC := C.g_utf8_validate(c_str, c_max_len, &c_end)
 	retGo := retC == C.TRUE
 
 	end := C.GoString(c_end)

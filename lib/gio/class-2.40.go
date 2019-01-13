@@ -616,7 +616,39 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Unsupported : g_subprocess_new : unsupported parameter ... : varargs
 
-// Unsupported : g_subprocess_newv : unsupported parameter argv :
+// SubprocessNewv is a wrapper around the C function g_subprocess_newv.
+func SubprocessNewv(argv []string, flags SubprocessFlags) (*Subprocess, error) {
+	c_argv_array := make([]*C.gchar, len(argv)+1, len(argv)+1)
+	for i, item := range argv {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_argv_array[i] = c
+	}
+	c_argv_array[len(argv)] = nil
+	c_argv_arrayPtr := &c_argv_array[0]
+	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
+
+	c_flags := (C.GSubprocessFlags)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_newv(c_argv, c_flags, &cThrowableError)
+	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // Communicate is a wrapper around the C function g_subprocess_communicate.
 func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, *glib.Bytes, *glib.Bytes, error) {
@@ -1022,7 +1054,22 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	return
 }
 
-// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env :
+// SetEnviron is a wrapper around the C function g_subprocess_launcher_set_environ.
+func (recv *SubprocessLauncher) SetEnviron(env []string) {
+	c_env_array := make([]*C.gchar, len(env)+1, len(env)+1)
+	for i, item := range env {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_env_array[i] = c
+	}
+	c_env_array[len(env)] = nil
+	c_env_arrayPtr := &c_env_array[0]
+	c_env := (**C.gchar)(unsafe.Pointer(c_env_arrayPtr))
+
+	C.g_subprocess_launcher_set_environ((*C.GSubprocessLauncher)(recv.native), c_env)
+
+	return
+}
 
 // SetFlags is a wrapper around the C function g_subprocess_launcher_set_flags.
 func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
@@ -1081,7 +1128,33 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // Unsupported : g_subprocess_launcher_spawn : unsupported parameter ... : varargs
 
-// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv :
+// Spawnv is a wrapper around the C function g_subprocess_launcher_spawnv.
+func (recv *SubprocessLauncher) Spawnv(argv []string) (*Subprocess, error) {
+	c_argv_array := make([]*C.gchar, len(argv)+1, len(argv)+1)
+	for i, item := range argv {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_argv_array[i] = c
+	}
+	c_argv_array[len(argv)] = nil
+	c_argv_arrayPtr := &c_argv_array[0]
+	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_launcher_spawnv((*C.GSubprocessLauncher)(recv.native), c_argv, &cThrowableError)
+	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // TakeFd is a wrapper around the C function g_subprocess_launcher_take_fd.
 func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {

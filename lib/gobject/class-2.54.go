@@ -10,8 +10,8 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_new_with_properties : unsupported parameter names :
+// Unsupported : g_object_new_with_properties : unsupported parameter values :
 
-// Unsupported : g_object_getv : unsupported parameter names :
+// Unsupported : g_object_getv : unsupported parameter values :
 
-// Unsupported : g_object_setv : unsupported parameter names :
+// Unsupported : g_object_setv : unsupported parameter values :
