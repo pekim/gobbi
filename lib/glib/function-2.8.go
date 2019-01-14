@@ -31,8 +31,8 @@ func Access(filename string, mode int32) int32 {
 func BuildFilenamev(args []string) string {
 	c_args_array := make([]*C.gchar, len(args), len(args))
 	for i, item := range args {
-		g := args[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_args_array[i] = c
 	}
 	c_args_arrayPtr := &c_args_array[0]
@@ -52,8 +52,8 @@ func BuildPathv(separator string, args []string) string {
 
 	c_args_array := make([]*C.gchar, len(args), len(args))
 	for i, item := range args {
-		g := args[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_args_array[i] = c
 	}
 	c_args_arrayPtr := &c_args_array[0]
@@ -125,8 +125,7 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 
 	c_contents_array := make([]C.guint8, len(contents), len(contents))
 	for i, item := range contents {
-		g := contents[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_contents_array[i] = c
 	}
 	c_contents_arrayPtr := &c_contents_array[0]

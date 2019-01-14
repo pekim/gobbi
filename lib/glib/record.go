@@ -1880,8 +1880,7 @@ func (recv *IOChannel) Write(buf string, count uint64, bytesWritten uint64) IOEr
 func (recv *IOChannel) WriteChars(buf []uint8, count int64) (IOStatus, uint64, error) {
 	c_buf_array := make([]C.guint8, len(buf), len(buf))
 	for i, item := range buf {
-		g := buf[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buf_array[i] = c
 	}
 	c_buf_arrayPtr := &c_buf_array[0]

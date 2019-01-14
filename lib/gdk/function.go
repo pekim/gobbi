@@ -493,8 +493,7 @@ func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin
 
 	c_index_ranges_array := make([]C.gint, len(indexRanges), len(indexRanges))
 	for i, item := range indexRanges {
-		g := indexRanges[i]
-		c := (C.gint)(g)
+		c := (C.gint)(item)
 		c_index_ranges_array[i] = c
 	}
 	c_index_ranges_arrayPtr := &c_index_ranges_array[0]

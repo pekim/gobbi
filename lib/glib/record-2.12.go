@@ -424,8 +424,7 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 func (recv *BookmarkFile) LoadFromData(data []uint8) (bool, error) {
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -652,8 +651,8 @@ func (recv *BookmarkFile) SetGroups(uri string, groups []string) {
 
 	c_groups_array := make([]*C.gchar, len(groups), len(groups))
 	for i, item := range groups {
-		g := groups[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_groups_array[i] = c
 	}
 	c_groups_arrayPtr := &c_groups_array[0]
@@ -843,8 +842,7 @@ func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64)
 
 	c_list_array := make([]C.gdouble, len(list), len(list))
 	for i, item := range list {
-		g := list[i]
-		c := (C.gdouble)(g)
+		c := (C.gdouble)(item)
 		c_list_array[i] = c
 	}
 	c_list_arrayPtr := &c_list_array[0]

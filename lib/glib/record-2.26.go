@@ -599,22 +599,6 @@ func (recv *KeyFile) SetUint64(groupName string, key string, value uint64) {
 	return
 }
 
-// GetCompileFlags is a wrapper around the C function g_regex_get_compile_flags.
-func (recv *Regex) GetCompileFlags() RegexCompileFlags {
-	retC := C.g_regex_get_compile_flags((*C.GRegex)(recv.native))
-	retGo := (RegexCompileFlags)(retC)
-
-	return retGo
-}
-
-// GetMatchFlags is a wrapper around the C function g_regex_get_match_flags.
-func (recv *Regex) GetMatchFlags() RegexMatchFlags {
-	retC := C.g_regex_get_match_flags((*C.GRegex)(recv.native))
-	retGo := (RegexMatchFlags)(retC)
-
-	return retGo
-}
-
 // SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
 func SourceSetNameById(tag uint32, name string) {
 	c_tag := (C.guint)(tag)
@@ -771,8 +755,7 @@ func (recv *TimeZone) Unref() {
 func VariantNewBytestring(string_ []uint8) *Variant {
 	c_string_array := make([]C.guint8, len(string_), len(string_))
 	for i, item := range string_ {
-		g := string_[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_string_array[i] = c
 	}
 	c_string_arrayPtr := &c_string_array[0]
@@ -788,8 +771,8 @@ func VariantNewBytestring(string_ []uint8) *Variant {
 func VariantNewBytestringArray(strv []string) *Variant {
 	c_strv_array := make([]*C.gchar, len(strv), len(strv))
 	for i, item := range strv {
-		g := strv[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_strv_array[i] = c
 	}
 	c_strv_arrayPtr := &c_strv_array[0]

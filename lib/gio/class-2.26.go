@@ -1076,8 +1076,7 @@ func DBusMessageNew() *DBusMessage {
 func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
 	c_blob_array := make([]C.guint8, len(blob), len(blob))
 	for i, item := range blob {
-		g := blob[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_blob_array[i] = c
 	}
 	c_blob_arrayPtr := &c_blob_array[0]
@@ -1156,8 +1155,7 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 func DBusMessageBytesNeeded(blob []uint8) (int64, error) {
 	c_blob_array := make([]C.guint8, len(blob), len(blob))
 	for i, item := range blob {
-		g := blob[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_blob_array[i] = c
 	}
 	c_blob_arrayPtr := &c_blob_array[0]
@@ -3132,8 +3130,8 @@ func (recv *Settings) SetStrv(key string, value []string) bool {
 
 	c_value_array := make([]*C.gchar, len(value), len(value))
 	for i, item := range value {
-		g := value[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_value_array[i] = c
 	}
 	c_value_arrayPtr := &c_value_array[0]
@@ -3219,8 +3217,7 @@ func (recv *Socket) GetTimeout() uint32 {
 func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -3256,8 +3253,7 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -3532,8 +3528,7 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
 	c_path_array := make([]C.gchar, len(path), len(path))
 	for i, item := range path {
-		g := path[i]
-		c := (C.gchar)(g)
+		c := (C.gchar)(item)
 		c_path_array[i] = c
 	}
 	c_path_arrayPtr := &c_path_array[0]

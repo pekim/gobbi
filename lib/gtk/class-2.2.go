@@ -129,8 +129,7 @@ func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 func (recv *ListStore) Reorder(newOrder []int32) {
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
 	for i, item := range newOrder {
-		g := newOrder[i]
-		c := (C.gint)(g)
+		c := (C.gint)(item)
 		c_new_order_array[i] = c
 	}
 	c_new_order_arrayPtr := &c_new_order_array[0]
@@ -307,8 +306,7 @@ func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
 
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
 	for i, item := range newOrder {
-		g := newOrder[i]
-		c := (C.gint)(g)
+		c := (C.gint)(item)
 		c_new_order_array[i] = c
 	}
 	c_new_order_arrayPtr := &c_new_order_array[0]

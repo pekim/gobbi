@@ -537,8 +537,7 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -2920,8 +2919,8 @@ func (recv *FileInfo) SetAttributeStringv(attribute string, attrValue []string) 
 
 	c_attr_value_array := make([]*C.gchar, len(attrValue), len(attrValue))
 	for i, item := range attrValue {
-		g := attrValue[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_attr_value_array[i] = c
 	}
 	c_attr_value_arrayPtr := &c_attr_value_array[0]
@@ -4118,8 +4117,7 @@ func (recv *InputStream) IsClosed() bool {
 func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -4152,8 +4150,7 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -5186,8 +5183,7 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -5220,8 +5216,7 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -6601,8 +6596,8 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
 	c_iconnames_array := make([]*C.char, len(iconnames), len(iconnames))
 	for i, item := range iconnames {
-		g := iconnames[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_iconnames_array[i] = c
 	}
 	c_iconnames_arrayPtr := &c_iconnames_array[0]
@@ -7223,8 +7218,7 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	c_path_array := make([]C.gchar, len(path), len(path))
 	for i, item := range path {
-		g := path[i]
-		c := (C.gchar)(g)
+		c := (C.gchar)(item)
 		c_path_array[i] = c
 	}
 	c_path_arrayPtr := &c_path_array[0]

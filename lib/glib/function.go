@@ -800,8 +800,7 @@ func IoCreateWatch(channel *IOChannel, condition IOCondition) *Source {
 func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 	c_opsysstring_array := make([]C.guint8, len(opsysstring), len(opsysstring))
 	for i, item := range opsysstring {
-		g := opsysstring[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_opsysstring_array[i] = c
 	}
 	c_opsysstring_arrayPtr := &c_opsysstring_array[0]
@@ -2481,8 +2480,7 @@ func Utf8Strup(str string, len int64) string {
 func Utf8Validate(str []uint8) (bool, string) {
 	c_str_array := make([]C.guint8, len(str), len(str))
 	for i, item := range str {
-		g := str[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_str_array[i] = c
 	}
 	c_str_arrayPtr := &c_str_array[0]

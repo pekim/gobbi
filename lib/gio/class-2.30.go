@@ -1453,8 +1453,7 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*Tl
 func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
 	c_issuer_raw_dn_array := make([]C.guint8, len(issuerRawDn), len(issuerRawDn))
 	for i, item := range issuerRawDn {
-		g := issuerRawDn[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_issuer_raw_dn_array[i] = c
 	}
 	c_issuer_raw_dn_arrayPtr := &c_issuer_raw_dn_array[0]
@@ -1814,8 +1813,7 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 func (recv *TlsPassword) SetValue(value []uint8) {
 	c_value_array := make([]C.guchar, len(value), len(value))
 	for i, item := range value {
-		g := value[i]
-		c := (C.guchar)(g)
+		c := (C.guchar)(item)
 		c_value_array[i] = c
 	}
 	c_value_arrayPtr := &c_value_array[0]

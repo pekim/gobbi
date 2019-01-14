@@ -60,8 +60,8 @@ func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 func (recv *SelectionData) SetUris(uris []string) bool {
 	c_uris_array := make([]*C.gchar, len(uris), len(uris))
 	for i, item := range uris {
-		g := uris[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_uris_array[i] = c
 	}
 	c_uris_arrayPtr := &c_uris_array[0]

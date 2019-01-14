@@ -24,8 +24,8 @@ func (recv *FileChooser) AddChoice(id string, label string, options []string, op
 
 	c_options_array := make([]*C.char, len(options), len(options))
 	for i, item := range options {
-		g := options[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_options_array[i] = c
 	}
 	c_options_arrayPtr := &c_options_array[0]
@@ -33,8 +33,8 @@ func (recv *FileChooser) AddChoice(id string, label string, options []string, op
 
 	c_option_labels_array := make([]*C.char, len(optionLabels), len(optionLabels))
 	for i, item := range optionLabels {
-		g := optionLabels[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_option_labels_array[i] = c
 	}
 	c_option_labels_arrayPtr := &c_option_labels_array[0]

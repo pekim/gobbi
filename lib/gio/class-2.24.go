@@ -178,8 +178,7 @@ func UnixFDListNew() *UnixFDList {
 func UnixFDListNewFromArray(fds []int32) *UnixFDList {
 	c_fds_array := make([]C.gint, len(fds), len(fds))
 	for i, item := range fds {
-		g := fds[i]
-		c := (C.gint)(g)
+		c := (C.gint)(item)
 		c_fds_array[i] = c
 	}
 	c_fds_arrayPtr := &c_fds_array[0]

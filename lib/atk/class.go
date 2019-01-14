@@ -1557,8 +1557,7 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 func (recv *StateSet) AddStates(types []StateType) {
 	c_types_array := make([]C.AtkStateType, len(types), len(types))
 	for i, item := range types {
-		g := types[i]
-		c := (C.AtkStateType)(g)
+		c := (C.AtkStateType)(item)
 		c_types_array[i] = c
 	}
 	c_types_arrayPtr := &c_types_array[0]
@@ -1605,8 +1604,7 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 func (recv *StateSet) ContainsStates(types []StateType) bool {
 	c_types_array := make([]C.AtkStateType, len(types), len(types))
 	for i, item := range types {
-		g := types[i]
-		c := (C.AtkStateType)(g)
+		c := (C.AtkStateType)(item)
 		c_types_array[i] = c
 	}
 	c_types_arrayPtr := &c_types_array[0]

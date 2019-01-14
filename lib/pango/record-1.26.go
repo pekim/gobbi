@@ -19,8 +19,7 @@ func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
 
 	c_logical_widths_array := make([]C.int, len(logicalWidths), len(logicalWidths))
 	for i, item := range logicalWidths {
-		g := logicalWidths[i]
-		c := (C.int)(g)
+		c := (C.int)(item)
 		c_logical_widths_array[i] = c
 	}
 	c_logical_widths_arrayPtr := &c_logical_widths_array[0]

@@ -64,8 +64,7 @@ func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) stri
 
 	c_key_array := make([]C.guchar, len(key), len(key))
 	for i, item := range key {
-		g := key[i]
-		c := (C.guchar)(g)
+		c := (C.guchar)(item)
 		c_key_array[i] = c
 	}
 	c_key_arrayPtr := &c_key_array[0]
@@ -75,8 +74,7 @@ func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) stri
 
 	c_data_array := make([]C.guchar, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guchar)(g)
+		c := (C.guchar)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -97,8 +95,7 @@ func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) stri
 
 	c_key_array := make([]C.guchar, len(key), len(key))
 	for i, item := range key {
-		g := key[i]
-		c := (C.guchar)(g)
+		c := (C.guchar)(item)
 		c_key_array[i] = c
 	}
 	c_key_arrayPtr := &c_key_array[0]

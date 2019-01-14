@@ -620,8 +620,8 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 func SubprocessNewv(argv []string, flags SubprocessFlags) (*Subprocess, error) {
 	c_argv_array := make([]*C.gchar, len(argv), len(argv))
 	for i, item := range argv {
-		g := argv[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_argv_array[i] = c
 	}
 	c_argv_arrayPtr := &c_argv_array[0]
@@ -1057,8 +1057,8 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 func (recv *SubprocessLauncher) SetEnviron(env []string) {
 	c_env_array := make([]*C.gchar, len(env), len(env))
 	for i, item := range env {
-		g := env[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_env_array[i] = c
 	}
 	c_env_arrayPtr := &c_env_array[0]
@@ -1130,8 +1130,8 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 func (recv *SubprocessLauncher) Spawnv(argv []string) (*Subprocess, error) {
 	c_argv_array := make([]*C.gchar, len(argv), len(argv))
 	for i, item := range argv {
-		g := argv[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_argv_array[i] = c
 	}
 	c_argv_arrayPtr := &c_argv_array[0]

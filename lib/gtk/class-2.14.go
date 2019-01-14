@@ -185,8 +185,8 @@ func (recv *Builder) AddObjectsFromFile(filename string, objectIds []string) (ui
 
 	c_object_ids_array := make([]*C.gchar, len(objectIds), len(objectIds))
 	for i, item := range objectIds {
-		g := objectIds[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_object_ids_array[i] = c
 	}
 	c_object_ids_arrayPtr := &c_object_ids_array[0]
@@ -217,8 +217,8 @@ func (recv *Builder) AddObjectsFromString(buffer string, length uint64, objectId
 
 	c_object_ids_array := make([]*C.gchar, len(objectIds), len(objectIds))
 	for i, item := range objectIds {
-		g := objectIds[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_object_ids_array[i] = c
 	}
 	c_object_ids_arrayPtr := &c_object_ids_array[0]

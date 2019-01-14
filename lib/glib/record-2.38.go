@@ -23,14 +23,6 @@ import (
 */
 import "C"
 
-// GetMaxLookbehind is a wrapper around the C function g_regex_get_max_lookbehind.
-func (recv *Regex) GetMaxLookbehind() int32 {
-	retC := C.g_regex_get_max_lookbehind((*C.GRegex)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
 // VariantNewPrintf is a wrapper around the C function g_variant_new_printf.
 func VariantNewPrintf(formatString string, args ...interface{}) *Variant {
 	goFormattedString := fmt.Sprintf(formatString, args...)

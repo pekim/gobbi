@@ -91,8 +91,7 @@ func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 
 	c_data_array := make([]C.guchar, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guchar)(g)
+		c := (C.guchar)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]

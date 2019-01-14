@@ -394,8 +394,7 @@ func DeviceGrabInfoLibgtkOnly(display *Display, device *Device) (bool, *Window, 
 func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
 	c_axes_array := make([]C.gdouble, len(axes), len(axes))
 	for i, item := range axes {
-		g := axes[i]
-		c := (C.gdouble)(g)
+		c := (C.gdouble)(item)
 		c_axes_array[i] = c
 	}
 	c_axes_arrayPtr := &c_axes_array[0]

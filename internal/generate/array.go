@@ -76,8 +76,7 @@ func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName strin
 				Id(goVarName),
 		).
 		BlockFunc(func(g *jen.Group) {
-			g.Id("g").Op(":=").Id(goVarName).Index(jen.Id("i"))
-			a.Type.generator.generateParamCVar(g, "c", "g", "")
+			a.Type.generator.generateParamCVar(g, "c", "item", transferOwnership)
 
 			g.
 				Id(cVarArrayName).

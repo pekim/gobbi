@@ -45,8 +45,7 @@ func (recv *Bytes) Equals(other *Bytes) bool {
 func BytesNew(data []uint8) *Bytes {
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -64,8 +63,7 @@ func BytesNew(data []uint8) *Bytes {
 func BytesNewStatic(data []uint8) *Bytes {
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -83,8 +81,7 @@ func BytesNewStatic(data []uint8) *Bytes {
 func BytesNewTake(data []uint8) *Bytes {
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]

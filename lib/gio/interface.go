@@ -1946,8 +1946,7 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (bool, string, error) {
 	c_contents_array := make([]C.guint8, len(contents), len(contents))
 	for i, item := range contents {
-		g := contents[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_contents_array[i] = c
 	}
 	c_contents_arrayPtr := &c_contents_array[0]

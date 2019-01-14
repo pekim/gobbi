@@ -259,8 +259,8 @@ func VariantNewString(string_ string) *Variant {
 func VariantNewStrv(strv []string) *Variant {
 	c_strv_array := make([]*C.gchar, len(strv), len(strv))
 	for i, item := range strv {
-		g := strv[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_strv_array[i] = c
 	}
 	c_strv_arrayPtr := &c_strv_array[0]

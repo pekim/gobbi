@@ -157,8 +157,7 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -191,8 +190,8 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 func PixbufNewFromXpmData(data []string) *Pixbuf {
 	c_data_array := make([]*C.char, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -485,8 +484,8 @@ func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, op
 
 	c_option_keys_array := make([]*C.char, len(optionKeys), len(optionKeys))
 	for i, item := range optionKeys {
-		g := optionKeys[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_option_keys_array[i] = c
 	}
 	c_option_keys_arrayPtr := &c_option_keys_array[0]
@@ -494,8 +493,8 @@ func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, op
 
 	c_option_values_array := make([]*C.char, len(optionValues), len(optionValues))
 	for i, item := range optionValues {
-		g := optionValues[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_option_values_array[i] = c
 	}
 	c_option_values_arrayPtr := &c_option_values_array[0]
@@ -1170,8 +1169,7 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	c_buf_array := make([]C.guchar, len(buf), len(buf))
 	for i, item := range buf {
-		g := buf[i]
-		c := (C.guchar)(g)
+		c := (C.guchar)(item)
 		c_buf_array[i] = c
 	}
 	c_buf_arrayPtr := &c_buf_array[0]

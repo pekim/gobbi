@@ -808,8 +808,7 @@ func (recv *Coverage) Equals(other *Coverage) bool {
 func CoverageFromBytes(bytes []uint8) *Coverage {
 	c_bytes_array := make([]C.guint8, len(bytes), len(bytes))
 	for i, item := range bytes {
-		g := bytes[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_bytes_array[i] = c
 	}
 	c_bytes_arrayPtr := &c_bytes_array[0]

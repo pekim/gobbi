@@ -523,9 +523,8 @@ func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
 
 	c_list_array := make([]C.gboolean, len(list), len(list))
 	for i, item := range list {
-		g := list[i]
 		c :=
-			boolToGboolean(g)
+			boolToGboolean(item)
 		c_list_array[i] = c
 	}
 	c_list_arrayPtr := &c_list_array[0]
@@ -590,8 +589,7 @@ func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) 
 
 	c_list_array := make([]C.gint, len(list), len(list))
 	for i, item := range list {
-		g := list[i]
-		c := (C.gint)(g)
+		c := (C.gint)(item)
 		c_list_array[i] = c
 	}
 	c_list_arrayPtr := &c_list_array[0]

@@ -51,32 +51,7 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 	return retGo, goError
 }
 
-// ParseStrv is a wrapper around the C function g_option_context_parse_strv.
-func (recv *OptionContext) ParseStrv(arguments []string) (bool, error) {
-	c_arguments_array := make([]**C.gchar, len(arguments), len(arguments))
-	for i, item := range arguments {
-		g := arguments[i]
-		c := C.CString(g)
-		c_arguments_array[i] = c
-	}
-	c_arguments_arrayPtr := &c_arguments_array[0]
-	c_arguments := (***C.gchar)(unsafe.Pointer(c_arguments_arrayPtr))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_option_context_parse_strv((*C.GOptionContext)(recv.native), c_arguments, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_option_context_parse_strv
 
 // VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
 func VariantParseErrorPrintContext(error *Error, sourceStr string) string {

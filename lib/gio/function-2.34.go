@@ -81,8 +81,7 @@ func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, canc
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -123,8 +122,7 @@ func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, ca
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -165,8 +163,7 @@ func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool,
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]

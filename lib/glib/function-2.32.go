@@ -20,8 +20,8 @@ import "C"
 func EnvironGetenv(envp []string, variable string) string {
 	c_envp_array := make([]*C.gchar, len(envp), len(envp))
 	for i, item := range envp {
-		g := envp[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_envp_array[i] = c
 	}
 	c_envp_arrayPtr := &c_envp_array[0]
@@ -40,8 +40,7 @@ func EnvironGetenv(envp []string, variable string) string {
 func EnvironSetenv(envp []string, variable string, value string, overwrite bool) []string {
 	c_envp_array := make([]*C.gchar, len(envp), len(envp))
 	for i, item := range envp {
-		g := envp[i]
-		c := C.CString(g)
+		c := C.CString(item)
 		c_envp_array[i] = c
 	}
 	c_envp_arrayPtr := &c_envp_array[0]
@@ -71,8 +70,7 @@ func EnvironSetenv(envp []string, variable string, value string, overwrite bool)
 func EnvironUnsetenv(envp []string, variable string) []string {
 	c_envp_array := make([]*C.gchar, len(envp), len(envp))
 	for i, item := range envp {
-		g := envp[i]
-		c := C.CString(g)
+		c := C.CString(item)
 		c_envp_array[i] = c
 	}
 	c_envp_arrayPtr := &c_envp_array[0]

@@ -23,14 +23,6 @@ func (recv *MappedFile) GetBytes() *Bytes {
 	return retGo
 }
 
-// GetHasCrOrLf is a wrapper around the C function g_regex_get_has_cr_or_lf.
-func (recv *Regex) GetHasCrOrLf() bool {
-	retC := C.g_regex_get_has_cr_or_lf((*C.GRegex)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
 // g_slist_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
 // FreeToBytes is a wrapper around the C function g_string_free_to_bytes.
 func (recv *String) FreeToBytes() *Bytes {

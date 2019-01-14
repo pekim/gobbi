@@ -63,8 +63,7 @@ func (recv *Converter) Equals(other *Converter) bool {
 func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
 	c_inbuf_array := make([]C.guint8, len(inbuf), len(inbuf))
 	for i, item := range inbuf {
-		g := inbuf[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_inbuf_array[i] = c
 	}
 	c_inbuf_arrayPtr := &c_inbuf_array[0]
@@ -74,8 +73,7 @@ func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFla
 
 	c_outbuf_array := make([]C.guint8, len(outbuf), len(outbuf))
 	for i, item := range outbuf {
-		g := outbuf[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_outbuf_array[i] = c
 	}
 	c_outbuf_arrayPtr := &c_outbuf_array[0]

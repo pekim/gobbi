@@ -648,8 +648,7 @@ func (recv *PollableInputStream) IsReadable() bool {
 func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -737,8 +736,7 @@ func (recv *PollableOutputStream) IsWritable() bool {
 func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]

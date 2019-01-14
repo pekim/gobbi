@@ -1402,8 +1402,8 @@ func RcScannerNew() *glib.Scanner {
 func RcSetDefaultFiles(filenames []string) {
 	c_filenames_array := make([]*C.gchar, len(filenames), len(filenames))
 	for i, item := range filenames {
-		g := filenames[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_filenames_array[i] = c
 	}
 	c_filenames_arrayPtr := &c_filenames_array[0]

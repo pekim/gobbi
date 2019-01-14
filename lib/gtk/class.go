@@ -10019,8 +10019,7 @@ func CssProviderGetNamed(name string, variant string) *CssProvider {
 func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -17066,8 +17065,7 @@ func IMContextSimpleNew() *IMContextSimple {
 func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int32) {
 	c_data_array := make([]C.guint16, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint16)(g)
+		c := (C.guint16)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
@@ -20589,8 +20587,7 @@ func ListStoreNewv(types []gobject.Type) *ListStore {
 
 	c_types_array := make([]C.GType, len(types), len(types))
 	for i, item := range types {
-		g := types[i]
-		c := (C.GType)(g)
+		c := (C.GType)(item)
 		c_types_array[i] = c
 	}
 	c_types_arrayPtr := &c_types_array[0]
@@ -20701,8 +20698,7 @@ func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 
 	c_types_array := make([]C.GType, len(types), len(types))
 	for i, item := range types {
-		g := types[i]
-		c := (C.GType)(g)
+		c := (C.GType)(item)
 		c_types_array[i] = c
 	}
 	c_types_arrayPtr := &c_types_array[0]
@@ -37445,8 +37441,7 @@ func TreeStoreNewv(types []gobject.Type) *TreeStore {
 
 	c_types_array := make([]C.GType, len(types), len(types))
 	for i, item := range types {
-		g := types[i]
-		c := (C.GType)(g)
+		c := (C.GType)(item)
 		c_types_array[i] = c
 	}
 	c_types_arrayPtr := &c_types_array[0]
@@ -37613,8 +37608,7 @@ func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 
 	c_types_array := make([]C.GType, len(types), len(types))
 	for i, item := range types {
-		g := types[i]
-		c := (C.GType)(g)
+		c := (C.GType)(item)
 		c_types_array[i] = c
 	}
 	c_types_arrayPtr := &c_types_array[0]

@@ -191,8 +191,8 @@ func (recv *AboutDialog) GetWebsiteLabel() string {
 func (recv *AboutDialog) SetArtists(artists []string) {
 	c_artists_array := make([]*C.gchar, len(artists), len(artists))
 	for i, item := range artists {
-		g := artists[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_artists_array[i] = c
 	}
 	c_artists_arrayPtr := &c_artists_array[0]
@@ -207,8 +207,8 @@ func (recv *AboutDialog) SetArtists(artists []string) {
 func (recv *AboutDialog) SetAuthors(authors []string) {
 	c_authors_array := make([]*C.gchar, len(authors), len(authors))
 	for i, item := range authors {
-		g := authors[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_authors_array[i] = c
 	}
 	c_authors_arrayPtr := &c_authors_array[0]
@@ -243,8 +243,8 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 func (recv *AboutDialog) SetDocumenters(documenters []string) {
 	c_documenters_array := make([]*C.gchar, len(documenters), len(documenters))
 	for i, item := range documenters {
-		g := documenters[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_documenters_array[i] = c
 	}
 	c_documenters_arrayPtr := &c_documenters_array[0]
@@ -796,8 +796,7 @@ func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
 	for i, item := range newOrder {
-		g := newOrder[i]
-		c := (C.gint)(g)
+		c := (C.gint)(item)
 		c_new_order_array[i] = c
 	}
 	c_new_order_arrayPtr := &c_new_order_array[0]

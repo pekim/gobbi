@@ -126,9 +126,13 @@
     <!-- the types in some method do not appear to match the data in gir file -->
     <record blacklist="true" name="IConv"/>
 
+    <record blacklist="true" name="Regex"/>
     <record name="KeyFile">
       <method blacklist="true" c:identifier="g_key_file_set_locale_string_list"/>
       <method blacklist="true" c:identifier="g_key_file_set_string_list"/>
+    </record>
+    <record name="OptionContext">
+      <method blacklist="true" c:identifier="g_option_context_parse_strv"/>
     </record>
   </namespace>
 </repository>

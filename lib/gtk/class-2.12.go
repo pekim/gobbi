@@ -1465,8 +1465,8 @@ func ScaleButtonNew(size IconSize, min float64, max float64, step float64, icons
 
 	c_icons_array := make([]*C.gchar, len(icons), len(icons))
 	for i, item := range icons {
-		g := icons[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_icons_array[i] = c
 	}
 	c_icons_arrayPtr := &c_icons_array[0]
@@ -1510,8 +1510,8 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 func (recv *ScaleButton) SetIcons(icons []string) {
 	c_icons_array := make([]*C.gchar, len(icons), len(icons))
 	for i, item := range icons {
-		g := icons[i]
-		c := C.CString(g)
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
 		c_icons_array[i] = c
 	}
 	c_icons_arrayPtr := &c_icons_array[0]

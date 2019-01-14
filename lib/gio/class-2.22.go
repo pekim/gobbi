@@ -302,8 +302,7 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 	c_bytes_array := make([]C.guint8, len(bytes), len(bytes))
 	for i, item := range bytes {
-		g := bytes[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_bytes_array[i] = c
 	}
 	c_bytes_arrayPtr := &c_bytes_array[0]
@@ -1174,8 +1173,7 @@ func (recv *Socket) Listen() (bool, error) {
 func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -1210,8 +1208,7 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -1248,8 +1245,7 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -1289,8 +1285,7 @@ func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
 	for i, item := range buffer {
-		g := buffer[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
@@ -1827,8 +1822,7 @@ func SocketControlMessageDeserialize(level int32, type_ int32, data []uint8) *So
 
 	c_data_array := make([]C.guint8, len(data), len(data))
 	for i, item := range data {
-		g := data[i]
-		c := (C.guint8)(g)
+		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
 	c_data_arrayPtr := &c_data_array[0]
