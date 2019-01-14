@@ -46,6 +46,11 @@ func (recv *KeyFile) LoadFromDirs(file string, searchDirs []string, flags KeyFil
 	defer C.free(unsafe.Pointer(c_file))
 
 	c_search_dirs_array := make([]*C.gchar, len(searchDirs), len(searchDirs))
+	for i, item := range searchDirs {
+		g := searchDirs[i]
+		c := C.CString(g)
+		c_search_dirs_array[i] = c
+	}
 	c_search_dirs_arrayPtr := &c_search_dirs_array[0]
 	c_search_dirs := (**C.gchar)(unsafe.Pointer(c_search_dirs_arrayPtr))
 
@@ -349,6 +354,11 @@ func RegexCheckReplacement(replacement string) (bool, bool, error) {
 // RegexEscapeString is a wrapper around the C function g_regex_escape_string.
 func RegexEscapeString(string_ []string) string {
 	c_string_array := make([]C.gchar, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := C.CString(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
@@ -474,6 +484,11 @@ func (recv *Regex) MatchAll(string_ string, matchOptions RegexMatchFlags) (bool,
 // MatchAllFull is a wrapper around the C function g_regex_match_all_full.
 func (recv *Regex) MatchAllFull(string_ []string, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo, error) {
 	c_string_array := make([]C.gchar, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := C.CString(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
@@ -506,6 +521,11 @@ func (recv *Regex) MatchAllFull(string_ []string, startPosition int32, matchOpti
 // MatchFull is a wrapper around the C function g_regex_match_full.
 func (recv *Regex) MatchFull(string_ []string, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo, error) {
 	c_string_array := make([]C.gchar, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := C.CString(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
@@ -546,6 +566,11 @@ func (recv *Regex) Ref() *Regex {
 // Replace is a wrapper around the C function g_regex_replace.
 func (recv *Regex) Replace(string_ []string, startPosition int32, replacement string, matchOptions RegexMatchFlags) (string, error) {
 	c_string_array := make([]C.gchar, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := C.CString(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
@@ -580,6 +605,11 @@ func (recv *Regex) Replace(string_ []string, startPosition int32, replacement st
 // ReplaceLiteral is a wrapper around the C function g_regex_replace_literal.
 func (recv *Regex) ReplaceLiteral(string_ []string, startPosition int32, replacement string, matchOptions RegexMatchFlags) (string, error) {
 	c_string_array := make([]C.gchar, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := C.CString(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
@@ -630,6 +660,11 @@ func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) []string 
 // SplitFull is a wrapper around the C function g_regex_split_full.
 func (recv *Regex) SplitFull(string_ []string, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) ([]string, error) {
 	c_string_array := make([]C.gchar, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := C.CString(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 

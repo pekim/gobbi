@@ -4004,6 +4004,11 @@ func (recv *TextBuffer) Deserialize(contentBuffer *TextBuffer, format *gdk.Atom,
 	}
 
 	c_data_array := make([]C.guint8, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint8)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guint8)(unsafe.Pointer(c_data_arrayPtr))
 

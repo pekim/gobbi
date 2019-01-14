@@ -190,6 +190,11 @@ func (recv *AboutDialog) GetWebsiteLabel() string {
 // SetArtists is a wrapper around the C function gtk_about_dialog_set_artists.
 func (recv *AboutDialog) SetArtists(artists []string) {
 	c_artists_array := make([]*C.gchar, len(artists), len(artists))
+	for i, item := range artists {
+		g := artists[i]
+		c := C.CString(g)
+		c_artists_array[i] = c
+	}
 	c_artists_arrayPtr := &c_artists_array[0]
 	c_artists := (**C.gchar)(unsafe.Pointer(c_artists_arrayPtr))
 
@@ -201,6 +206,11 @@ func (recv *AboutDialog) SetArtists(artists []string) {
 // SetAuthors is a wrapper around the C function gtk_about_dialog_set_authors.
 func (recv *AboutDialog) SetAuthors(authors []string) {
 	c_authors_array := make([]*C.gchar, len(authors), len(authors))
+	for i, item := range authors {
+		g := authors[i]
+		c := C.CString(g)
+		c_authors_array[i] = c
+	}
 	c_authors_arrayPtr := &c_authors_array[0]
 	c_authors := (**C.gchar)(unsafe.Pointer(c_authors_arrayPtr))
 
@@ -232,6 +242,11 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 // SetDocumenters is a wrapper around the C function gtk_about_dialog_set_documenters.
 func (recv *AboutDialog) SetDocumenters(documenters []string) {
 	c_documenters_array := make([]*C.gchar, len(documenters), len(documenters))
+	for i, item := range documenters {
+		g := documenters[i]
+		c := C.CString(g)
+		c_documenters_array[i] = c
+	}
 	c_documenters_arrayPtr := &c_documenters_array[0]
 	c_documenters := (**C.gchar)(unsafe.Pointer(c_documenters_arrayPtr))
 
@@ -780,6 +795,11 @@ func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 	c_n_params := (C.gint)(len(newOrder))
 
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
+	for i, item := range newOrder {
+		g := newOrder[i]
+		c := (C.gint)(g)
+		c_new_order_array[i] = c
+	}
 	c_new_order_arrayPtr := &c_new_order_array[0]
 	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 

@@ -156,6 +156,11 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	c_data_length := (C.gint)(len(data))
 
 	c_data_array := make([]C.guint8, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint8)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guint8)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -185,6 +190,11 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 // PixbufNewFromXpmData is a wrapper around the C function gdk_pixbuf_new_from_xpm_data.
 func PixbufNewFromXpmData(data []string) *Pixbuf {
 	c_data_array := make([]*C.char, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := C.CString(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (**C.char)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -474,10 +484,20 @@ func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, op
 	defer C.free(unsafe.Pointer(c_type))
 
 	c_option_keys_array := make([]*C.char, len(optionKeys), len(optionKeys))
+	for i, item := range optionKeys {
+		g := optionKeys[i]
+		c := C.CString(g)
+		c_option_keys_array[i] = c
+	}
 	c_option_keys_arrayPtr := &c_option_keys_array[0]
 	c_option_keys := (**C.char)(unsafe.Pointer(c_option_keys_arrayPtr))
 
 	c_option_values_array := make([]*C.char, len(optionValues), len(optionValues))
+	for i, item := range optionValues {
+		g := optionValues[i]
+		c := C.CString(g)
+		c_option_values_array[i] = c
+	}
 	c_option_values_arrayPtr := &c_option_values_array[0]
 	c_option_values := (**C.char)(unsafe.Pointer(c_option_values_arrayPtr))
 
@@ -1149,6 +1169,11 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 // Write is a wrapper around the C function gdk_pixbuf_loader_write.
 func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	c_buf_array := make([]C.guchar, len(buf), len(buf))
+	for i, item := range buf {
+		g := buf[i]
+		c := (C.guchar)(g)
+		c_buf_array[i] = c
+	}
 	c_buf_arrayPtr := &c_buf_array[0]
 	c_buf := (*C.guchar)(unsafe.Pointer(c_buf_arrayPtr))
 

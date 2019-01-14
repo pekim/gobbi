@@ -423,6 +423,11 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 // LoadFromData is a wrapper around the C function g_bookmark_file_load_from_data.
 func (recv *BookmarkFile) LoadFromData(data []uint8) (bool, error) {
 	c_data_array := make([]C.guint8, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint8)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.gchar)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -646,6 +651,11 @@ func (recv *BookmarkFile) SetGroups(uri string, groups []string) {
 	defer C.free(unsafe.Pointer(c_uri))
 
 	c_groups_array := make([]*C.gchar, len(groups), len(groups))
+	for i, item := range groups {
+		g := groups[i]
+		c := C.CString(g)
+		c_groups_array[i] = c
+	}
 	c_groups_arrayPtr := &c_groups_array[0]
 	c_groups := (**C.gchar)(unsafe.Pointer(c_groups_arrayPtr))
 
@@ -832,6 +842,11 @@ func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64)
 	defer C.free(unsafe.Pointer(c_key))
 
 	c_list_array := make([]C.gdouble, len(list), len(list))
+	for i, item := range list {
+		g := list[i]
+		c := (C.gdouble)(g)
+		c_list_array[i] = c
+	}
 	c_list_arrayPtr := &c_list_array[0]
 	c_list := (*C.gdouble)(unsafe.Pointer(c_list_arrayPtr))
 

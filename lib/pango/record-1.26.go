@@ -18,6 +18,11 @@ func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
 	defer C.free(unsafe.Pointer(c_text))
 
 	c_logical_widths_array := make([]C.int, len(logicalWidths), len(logicalWidths))
+	for i, item := range logicalWidths {
+		g := logicalWidths[i]
+		c := (C.int)(g)
+		c_logical_widths_array[i] = c
+	}
 	c_logical_widths_arrayPtr := &c_logical_widths_array[0]
 	c_logical_widths := (*C.int)(unsafe.Pointer(c_logical_widths_arrayPtr))
 

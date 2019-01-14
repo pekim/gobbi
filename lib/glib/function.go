@@ -799,6 +799,11 @@ func IoCreateWatch(channel *IOChannel, condition IOCondition) *Source {
 // LocaleToUtf8 is a wrapper around the C function g_locale_to_utf8.
 func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 	c_opsysstring_array := make([]C.guint8, len(opsysstring), len(opsysstring))
+	for i, item := range opsysstring {
+		g := opsysstring[i]
+		c := (C.guint8)(g)
+		c_opsysstring_array[i] = c
+	}
 	c_opsysstring_arrayPtr := &c_opsysstring_array[0]
 	c_opsysstring := (*C.gchar)(unsafe.Pointer(c_opsysstring_arrayPtr))
 
@@ -2475,6 +2480,11 @@ func Utf8Strup(str string, len int64) string {
 // Utf8Validate is a wrapper around the C function g_utf8_validate.
 func Utf8Validate(str []uint8) (bool, string) {
 	c_str_array := make([]C.guint8, len(str), len(str))
+	for i, item := range str {
+		g := str[i]
+		c := (C.guint8)(g)
+		c_str_array[i] = c
+	}
 	c_str_arrayPtr := &c_str_array[0]
 	c_str := (*C.gchar)(unsafe.Pointer(c_str_arrayPtr))
 

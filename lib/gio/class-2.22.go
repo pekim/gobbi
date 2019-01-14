@@ -301,6 +301,11 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 // InetAddressNewFromBytes is a wrapper around the C function g_inet_address_new_from_bytes.
 func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 	c_bytes_array := make([]C.guint8, len(bytes), len(bytes))
+	for i, item := range bytes {
+		g := bytes[i]
+		c := (C.guint8)(g)
+		c_bytes_array[i] = c
+	}
 	c_bytes_arrayPtr := &c_bytes_array[0]
 	c_bytes := (*C.guint8)(unsafe.Pointer(c_bytes_arrayPtr))
 
@@ -1168,6 +1173,11 @@ func (recv *Socket) Listen() (bool, error) {
 // Receive is a wrapper around the C function g_socket_receive.
 func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	for i, item := range buffer {
+		g := buffer[i]
+		c := (C.guint8)(g)
+		c_buffer_array[i] = c
+	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -1199,6 +1209,11 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 	var c_address *C.GSocketAddress
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	for i, item := range buffer {
+		g := buffer[i]
+		c := (C.guint8)(g)
+		c_buffer_array[i] = c
+	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -1232,6 +1247,11 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 // Send is a wrapper around the C function g_socket_send.
 func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	for i, item := range buffer {
+		g := buffer[i]
+		c := (C.guint8)(g)
+		c_buffer_array[i] = c
+	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -1268,6 +1288,11 @@ func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *
 	}
 
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	for i, item := range buffer {
+		g := buffer[i]
+		c := (C.guint8)(g)
+		c_buffer_array[i] = c
+	}
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -1801,6 +1826,11 @@ func SocketControlMessageDeserialize(level int32, type_ int32, data []uint8) *So
 	c_size := (C.gsize)(len(data))
 
 	c_data_array := make([]C.guint8, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint8)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (C.gpointer)(unsafe.Pointer(c_data_arrayPtr))
 

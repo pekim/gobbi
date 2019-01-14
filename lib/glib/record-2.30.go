@@ -69,6 +69,11 @@ func HmacNew(digestType ChecksumType, key []uint8) *Hmac {
 	c_digest_type := (C.GChecksumType)(digestType)
 
 	c_key_array := make([]C.guchar, len(key), len(key))
+	for i, item := range key {
+		g := key[i]
+		c := (C.guchar)(g)
+		c_key_array[i] = c
+	}
 	c_key_arrayPtr := &c_key_array[0]
 	c_key := (*C.guchar)(unsafe.Pointer(c_key_arrayPtr))
 
@@ -125,6 +130,11 @@ func (recv *Hmac) Unref() {
 // Update is a wrapper around the C function g_hmac_update.
 func (recv *Hmac) Update(data []uint8) {
 	c_data_array := make([]C.guchar, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guchar)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -167,6 +177,11 @@ func RegexEscapeNul(string_ string, length int32) string {
 // VariantNewObjv is a wrapper around the C function g_variant_new_objv.
 func VariantNewObjv(strv []string) *Variant {
 	c_strv_array := make([]*C.gchar, len(strv), len(strv))
+	for i, item := range strv {
+		g := strv[i]
+		c := C.CString(g)
+		c_strv_array[i] = c
+	}
 	c_strv_arrayPtr := &c_strv_array[0]
 	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
 

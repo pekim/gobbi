@@ -36,6 +36,11 @@ func (recv *TreeModel) RowsReorderedWithLength(path *TreePath, iter *TreeIter, n
 	}
 
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
+	for i, item := range newOrder {
+		g := newOrder[i]
+		c := (C.gint)(g)
+		c_new_order_array[i] = c
+	}
 	c_new_order_arrayPtr := &c_new_order_array[0]
 	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 

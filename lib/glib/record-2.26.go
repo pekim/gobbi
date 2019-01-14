@@ -770,6 +770,11 @@ func (recv *TimeZone) Unref() {
 // VariantNewBytestring is a wrapper around the C function g_variant_new_bytestring.
 func VariantNewBytestring(string_ []uint8) *Variant {
 	c_string_array := make([]C.guint8, len(string_), len(string_))
+	for i, item := range string_ {
+		g := string_[i]
+		c := (C.guint8)(g)
+		c_string_array[i] = c
+	}
 	c_string_arrayPtr := &c_string_array[0]
 	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
 
@@ -782,6 +787,11 @@ func VariantNewBytestring(string_ []uint8) *Variant {
 // VariantNewBytestringArray is a wrapper around the C function g_variant_new_bytestring_array.
 func VariantNewBytestringArray(strv []string) *Variant {
 	c_strv_array := make([]*C.gchar, len(strv), len(strv))
+	for i, item := range strv {
+		g := strv[i]
+		c := C.CString(g)
+		c_strv_array[i] = c
+	}
 	c_strv_arrayPtr := &c_strv_array[0]
 	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
 

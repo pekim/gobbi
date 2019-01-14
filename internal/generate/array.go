@@ -64,6 +64,28 @@ func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName strin
 
 	cVarArrayNamePtr := cVarArrayName + "Ptr"
 
+	g.
+		// for i, item := range goVarName {
+		For(
+			jen.
+				Id("i").
+				Op(",").
+				Id("item").
+				Op(":=").
+				Range().
+				Id(goVarName),
+		).
+		BlockFunc(func(g *jen.Group) {
+			g.Id("g").Op(":=").Id(goVarName).Index(jen.Id("i"))
+			a.Type.generator.generateParamCVar(g, "c", "g", "")
+
+			g.
+				Id(cVarArrayName).
+				Index(jen.Id("i")).
+				Op("=").
+				Id("c")
+		})
+
 	// c_?_arrayPtr := &c_?_array[0]
 	g.
 		Id(cVarArrayNamePtr).

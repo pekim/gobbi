@@ -42,6 +42,11 @@ func (recv *Device) GetAssociatedDevice() *Device {
 // GetAxisValue is a wrapper around the C function gdk_device_get_axis_value.
 func (recv *Device) GetAxisValue(axes []float64, axisLabel *Atom) (bool, float64) {
 	c_axes_array := make([]C.gdouble, len(axes), len(axes))
+	for i, item := range axes {
+		g := axes[i]
+		c := (C.gdouble)(g)
+		c_axes_array[i] = c
+	}
 	c_axes_arrayPtr := &c_axes_array[0]
 	c_axes := (*C.gdouble)(unsafe.Pointer(c_axes_arrayPtr))
 

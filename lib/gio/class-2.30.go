@@ -1452,6 +1452,11 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*Tl
 // LookupCertificatesIssuedBy is a wrapper around the C function g_tls_database_lookup_certificates_issued_by.
 func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
 	c_issuer_raw_dn_array := make([]C.guint8, len(issuerRawDn), len(issuerRawDn))
+	for i, item := range issuerRawDn {
+		g := issuerRawDn[i]
+		c := (C.guint8)(g)
+		c_issuer_raw_dn_array[i] = c
+	}
 	c_issuer_raw_dn_arrayPtr := &c_issuer_raw_dn_array[0]
 	c_issuer_raw_dn := (*C.GByteArray)(unsafe.Pointer(c_issuer_raw_dn_arrayPtr))
 
@@ -1808,6 +1813,11 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 // SetValue is a wrapper around the C function g_tls_password_set_value.
 func (recv *TlsPassword) SetValue(value []uint8) {
 	c_value_array := make([]C.guchar, len(value), len(value))
+	for i, item := range value {
+		g := value[i]
+		c := (C.guchar)(g)
+		c_value_array[i] = c
+	}
 	c_value_arrayPtr := &c_value_array[0]
 	c_value := (*C.guchar)(unsafe.Pointer(c_value_arrayPtr))
 

@@ -1464,6 +1464,11 @@ func ScaleButtonNew(size IconSize, min float64, max float64, step float64, icons
 	c_step := (C.gdouble)(step)
 
 	c_icons_array := make([]*C.gchar, len(icons), len(icons))
+	for i, item := range icons {
+		g := icons[i]
+		c := C.CString(g)
+		c_icons_array[i] = c
+	}
 	c_icons_arrayPtr := &c_icons_array[0]
 	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
 
@@ -1504,6 +1509,11 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 // SetIcons is a wrapper around the C function gtk_scale_button_set_icons.
 func (recv *ScaleButton) SetIcons(icons []string) {
 	c_icons_array := make([]*C.gchar, len(icons), len(icons))
+	for i, item := range icons {
+		g := icons[i]
+		c := C.CString(g)
+		c_icons_array[i] = c
+	}
 	c_icons_arrayPtr := &c_icons_array[0]
 	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
 

@@ -19,6 +19,11 @@ import "C"
 // EnvironGetenv is a wrapper around the C function g_environ_getenv.
 func EnvironGetenv(envp []string, variable string) string {
 	c_envp_array := make([]*C.gchar, len(envp), len(envp))
+	for i, item := range envp {
+		g := envp[i]
+		c := C.CString(g)
+		c_envp_array[i] = c
+	}
 	c_envp_arrayPtr := &c_envp_array[0]
 	c_envp := (**C.gchar)(unsafe.Pointer(c_envp_arrayPtr))
 
@@ -34,6 +39,11 @@ func EnvironGetenv(envp []string, variable string) string {
 // EnvironSetenv is a wrapper around the C function g_environ_setenv.
 func EnvironSetenv(envp []string, variable string, value string, overwrite bool) []string {
 	c_envp_array := make([]*C.gchar, len(envp), len(envp))
+	for i, item := range envp {
+		g := envp[i]
+		c := C.CString(g)
+		c_envp_array[i] = c
+	}
 	c_envp_arrayPtr := &c_envp_array[0]
 	c_envp := (**C.gchar)(unsafe.Pointer(c_envp_arrayPtr))
 
@@ -60,6 +70,11 @@ func EnvironSetenv(envp []string, variable string, value string, overwrite bool)
 // EnvironUnsetenv is a wrapper around the C function g_environ_unsetenv.
 func EnvironUnsetenv(envp []string, variable string) []string {
 	c_envp_array := make([]*C.gchar, len(envp), len(envp))
+	for i, item := range envp {
+		g := envp[i]
+		c := C.CString(g)
+		c_envp_array[i] = c
+	}
 	c_envp_arrayPtr := &c_envp_array[0]
 	c_envp := (**C.gchar)(unsafe.Pointer(c_envp_arrayPtr))
 

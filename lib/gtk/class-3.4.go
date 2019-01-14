@@ -25,6 +25,11 @@ func (recv *AboutDialog) AddCreditSection(sectionName string, people []string) {
 	defer C.free(unsafe.Pointer(c_section_name))
 
 	c_people_array := make([]*C.gchar, len(people), len(people))
+	for i, item := range people {
+		g := people[i]
+		c := C.CString(g)
+		c_people_array[i] = c
+	}
 	c_people_arrayPtr := &c_people_array[0]
 	c_people := (**C.gchar)(unsafe.Pointer(c_people_arrayPtr))
 
@@ -206,6 +211,11 @@ func (recv *Builder) AddObjectsFromResource(resourcePath string, objectIds []str
 	defer C.free(unsafe.Pointer(c_resource_path))
 
 	c_object_ids_array := make([]*C.gchar, len(objectIds), len(objectIds))
+	for i, item := range objectIds {
+		g := objectIds[i]
+		c := C.CString(g)
+		c_object_ids_array[i] = c
+	}
 	c_object_ids_arrayPtr := &c_object_ids_array[0]
 	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
 

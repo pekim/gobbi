@@ -90,6 +90,11 @@ func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	c_data_array := make([]C.guchar, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guchar)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 

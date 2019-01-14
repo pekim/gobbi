@@ -522,6 +522,12 @@ func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
 	defer C.free(unsafe.Pointer(c_key))
 
 	c_list_array := make([]C.gboolean, len(list), len(list))
+	for i, item := range list {
+		g := list[i]
+		c :=
+			boolToGboolean(g)
+		c_list_array[i] = c
+	}
 	c_list_arrayPtr := &c_list_array[0]
 	c_list := (*C.gboolean)(unsafe.Pointer(c_list_arrayPtr))
 
@@ -583,6 +589,11 @@ func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) 
 	defer C.free(unsafe.Pointer(c_key))
 
 	c_list_array := make([]C.gint, len(list), len(list))
+	for i, item := range list {
+		g := list[i]
+		c := (C.gint)(g)
+		c_list_array[i] = c
+	}
 	c_list_arrayPtr := &c_list_array[0]
 	c_list := (*C.gint)(unsafe.Pointer(c_list_arrayPtr))
 

@@ -11460,6 +11460,11 @@ func (recv *SelectionData) Set(type_ *gdk.Atom, format int32, data []uint8) {
 	c_format := (C.gint)(format)
 
 	c_data_array := make([]C.guchar, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guchar)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -15940,6 +15945,11 @@ func TreeRowReferenceReordered(proxy *gobject.Object, path *TreePath, iter *Tree
 	}
 
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
+	for i, item := range newOrder {
+		g := newOrder[i]
+		c := (C.gint)(g)
+		c_new_order_array[i] = c
+	}
 	c_new_order_arrayPtr := &c_new_order_array[0]
 	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 

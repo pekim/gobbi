@@ -807,6 +807,11 @@ func (recv *Coverage) Equals(other *Coverage) bool {
 // CoverageFromBytes is a wrapper around the C function pango_coverage_from_bytes.
 func CoverageFromBytes(bytes []uint8) *Coverage {
 	c_bytes_array := make([]C.guint8, len(bytes), len(bytes))
+	for i, item := range bytes {
+		g := bytes[i]
+		c := (C.guint8)(g)
+		c_bytes_array[i] = c
+	}
 	c_bytes_arrayPtr := &c_bytes_array[0]
 	c_bytes := (*C.guchar)(unsafe.Pointer(c_bytes_arrayPtr))
 

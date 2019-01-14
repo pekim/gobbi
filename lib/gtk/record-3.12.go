@@ -17,6 +17,11 @@ import "C"
 // TreePathNewFromIndicesv is a wrapper around the C function gtk_tree_path_new_from_indicesv.
 func TreePathNewFromIndicesv(indices []int32) *TreePath {
 	c_indices_array := make([]C.gint, len(indices), len(indices))
+	for i, item := range indices {
+		g := indices[i]
+		c := (C.gint)(g)
+		c_indices_array[i] = c
+	}
 	c_indices_arrayPtr := &c_indices_array[0]
 	c_indices := (*C.gint)(unsafe.Pointer(c_indices_arrayPtr))
 

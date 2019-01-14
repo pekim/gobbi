@@ -10018,6 +10018,11 @@ func CssProviderGetNamed(name string, variant string) *CssProvider {
 // LoadFromData is a wrapper around the C function gtk_css_provider_load_from_data.
 func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	c_data_array := make([]C.guint8, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint8)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.gchar)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -17060,6 +17065,11 @@ func IMContextSimpleNew() *IMContextSimple {
 // AddTable is a wrapper around the C function gtk_im_context_simple_add_table.
 func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int32) {
 	c_data_array := make([]C.guint16, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint16)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guint16)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -20578,6 +20588,11 @@ func ListStoreNewv(types []gobject.Type) *ListStore {
 	c_n_columns := (C.gint)(len(types))
 
 	c_types_array := make([]C.GType, len(types), len(types))
+	for i, item := range types {
+		g := types[i]
+		c := (C.GType)(g)
+		c_types_array[i] = c
+	}
 	c_types_arrayPtr := &c_types_array[0]
 	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
 
@@ -20685,6 +20700,11 @@ func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
 
 	c_types_array := make([]C.GType, len(types), len(types))
+	for i, item := range types {
+		g := types[i]
+		c := (C.GType)(g)
+		c_types_array[i] = c
+	}
 	c_types_arrayPtr := &c_types_array[0]
 	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
 
@@ -37424,6 +37444,11 @@ func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	c_n_columns := (C.gint)(len(types))
 
 	c_types_array := make([]C.GType, len(types), len(types))
+	for i, item := range types {
+		g := types[i]
+		c := (C.GType)(g)
+		c_types_array[i] = c
+	}
 	c_types_arrayPtr := &c_types_array[0]
 	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
 
@@ -37587,6 +37612,11 @@ func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
 
 	c_types_array := make([]C.GType, len(types), len(types))
+	for i, item := range types {
+		g := types[i]
+		c := (C.GType)(g)
+		c_types_array[i] = c
+	}
 	c_types_arrayPtr := &c_types_array[0]
 	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
 

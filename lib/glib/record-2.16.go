@@ -98,6 +98,11 @@ func (recv *Checksum) GetString() string {
 // Update is a wrapper around the C function g_checksum_update.
 func (recv *Checksum) Update(data []uint8) {
 	c_data_array := make([]C.guint8, len(data), len(data))
+	for i, item := range data {
+		g := data[i]
+		c := (C.guint8)(g)
+		c_data_array[i] = c
+	}
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 
