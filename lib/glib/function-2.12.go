@@ -37,11 +37,12 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 
 // Base64Encode is a wrapper around the C function g_base64_encode.
 func Base64Encode(data []uint8) string {
-	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
 	for i, item := range data {
 		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
+	c_data_array[len(data)] = 0
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 

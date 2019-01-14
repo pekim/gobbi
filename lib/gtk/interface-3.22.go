@@ -22,21 +22,23 @@ func (recv *FileChooser) AddChoice(id string, label string, options []string, op
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_options_array := make([]*C.char, len(options), len(options))
+	c_options_array := make([]*C.char, len(options)+1, len(options)+1)
 	for i, item := range options {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_options_array[i] = c
 	}
+	c_options_array[len(options)] = nil
 	c_options_arrayPtr := &c_options_array[0]
 	c_options := (**C.char)(unsafe.Pointer(c_options_arrayPtr))
 
-	c_option_labels_array := make([]*C.char, len(optionLabels), len(optionLabels))
+	c_option_labels_array := make([]*C.char, len(optionLabels)+1, len(optionLabels)+1)
 	for i, item := range optionLabels {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_option_labels_array[i] = c
 	}
+	c_option_labels_array[len(optionLabels)] = nil
 	c_option_labels_arrayPtr := &c_option_labels_array[0]
 	c_option_labels := (**C.char)(unsafe.Pointer(c_option_labels_arrayPtr))
 

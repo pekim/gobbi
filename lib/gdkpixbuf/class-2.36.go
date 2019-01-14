@@ -50,21 +50,23 @@ func (recv *Pixbuf) SaveToStreamv(stream *gio.OutputStream, type_ string, option
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
 
-	c_option_keys_array := make([]*C.char, len(optionKeys), len(optionKeys))
+	c_option_keys_array := make([]*C.char, len(optionKeys)+1, len(optionKeys)+1)
 	for i, item := range optionKeys {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_option_keys_array[i] = c
 	}
+	c_option_keys_array[len(optionKeys)] = nil
 	c_option_keys_arrayPtr := &c_option_keys_array[0]
 	c_option_keys := (**C.char)(unsafe.Pointer(c_option_keys_arrayPtr))
 
-	c_option_values_array := make([]*C.char, len(optionValues), len(optionValues))
+	c_option_values_array := make([]*C.char, len(optionValues)+1, len(optionValues)+1)
 	for i, item := range optionValues {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_option_values_array[i] = c
 	}
+	c_option_values_array[len(optionValues)] = nil
 	c_option_values_arrayPtr := &c_option_values_array[0]
 	c_option_values := (**C.char)(unsafe.Pointer(c_option_values_arrayPtr))
 

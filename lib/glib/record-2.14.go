@@ -45,12 +45,13 @@ func (recv *KeyFile) LoadFromDirs(file string, searchDirs []string, flags KeyFil
 	c_file := C.CString(file)
 	defer C.free(unsafe.Pointer(c_file))
 
-	c_search_dirs_array := make([]*C.gchar, len(searchDirs), len(searchDirs))
+	c_search_dirs_array := make([]*C.gchar, len(searchDirs)+1, len(searchDirs)+1)
 	for i, item := range searchDirs {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_search_dirs_array[i] = c
 	}
+	c_search_dirs_array[len(searchDirs)] = nil
 	c_search_dirs_arrayPtr := &c_search_dirs_array[0]
 	c_search_dirs := (**C.gchar)(unsafe.Pointer(c_search_dirs_arrayPtr))
 

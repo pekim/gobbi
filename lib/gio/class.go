@@ -535,11 +535,12 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 
 // Peek is a wrapper around the C function g_buffered_input_stream_peek.
 func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -2917,12 +2918,13 @@ func (recv *FileInfo) SetAttributeStringv(attribute string, attrValue []string) 
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
 
-	c_attr_value_array := make([]*C.gchar, len(attrValue), len(attrValue))
+	c_attr_value_array := make([]*C.gchar, len(attrValue)+1, len(attrValue)+1)
 	for i, item := range attrValue {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_attr_value_array[i] = c
 	}
+	c_attr_value_array[len(attrValue)] = nil
 	c_attr_value_arrayPtr := &c_attr_value_array[0]
 	c_attr_value := (**C.char)(unsafe.Pointer(c_attr_value_arrayPtr))
 
@@ -4115,11 +4117,12 @@ func (recv *InputStream) IsClosed() bool {
 
 // Read is a wrapper around the C function g_input_stream_read.
 func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -4148,11 +4151,12 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 
 // ReadAll is a wrapper around the C function g_input_stream_read_all.
 func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -5181,11 +5185,12 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 
 // Write is a wrapper around the C function g_output_stream_write.
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -5214,11 +5219,12 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 
 // WriteAll is a wrapper around the C function g_output_stream_write_all.
 func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -6594,12 +6600,13 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 
 // ThemedIconNewFromNames is a wrapper around the C function g_themed_icon_new_from_names.
 func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
-	c_iconnames_array := make([]*C.char, len(iconnames), len(iconnames))
+	c_iconnames_array := make([]*C.char, len(iconnames)+1, len(iconnames)+1)
 	for i, item := range iconnames {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_iconnames_array[i] = c
 	}
+	c_iconnames_array[len(iconnames)] = nil
 	c_iconnames_arrayPtr := &c_iconnames_array[0]
 	c_iconnames := (**C.char)(unsafe.Pointer(c_iconnames_arrayPtr))
 
@@ -7216,11 +7223,12 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 
 // UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
 func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
-	c_path_array := make([]C.gchar, len(path), len(path))
+	c_path_array := make([]C.gchar, len(path)+1, len(path)+1)
 	for i, item := range path {
 		c := (C.gchar)(item)
 		c_path_array[i] = c
 	}
+	c_path_array[len(path)] = 0
 	c_path_arrayPtr := &c_path_array[0]
 	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
 

@@ -50,7 +50,7 @@ func (a *Array) generateDeclarationC(g *jen.Group, cVarName string) {
 func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	cVarArrayName := cVarName + "_array"
 
-	// c_?_array := make([]C..., len(?), len(?))
+	// c_?_array := make([]C..., len(?)+1, len(?)+1)
 	g.
 		Id(cVarArrayName).
 		Op(":=").
@@ -58,8 +58,8 @@ func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName strin
 			Index().
 			Op(strings.Repeat("*", a.Type.indirectLevel)).
 			Qual("C", a.Type.cTypeName),
-			jen.Len(jen.Id(goVarName)),
-			jen.Len(jen.Id(goVarName)),
+			jen.Len(jen.Id(goVarName)).Op("+").Lit(1),
+			jen.Len(jen.Id(goVarName)).Op("+").Lit(1),
 		)
 
 	cVarArrayNamePtr := cVarArrayName + "Ptr"
@@ -84,6 +84,21 @@ func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName strin
 				Op("=").
 				Id("c")
 		})
+
+	// terminate array with a nil or 0
+	if strings.HasSuffix(a.CType, "**") {
+		g.
+			Id(cVarArrayName).
+			Index(jen.Len(jen.Id(goVarName))).
+			Op("=").
+			Nil()
+	} else {
+		g.
+			Id(cVarArrayName).
+			Index(jen.Len(jen.Id(goVarName))).
+			Op("=").
+			Lit(0)
+	}
 
 	// c_?_arrayPtr := &c_?_array[0]
 	g.

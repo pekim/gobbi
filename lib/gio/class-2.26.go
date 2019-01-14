@@ -1074,11 +1074,12 @@ func DBusMessageNew() *DBusMessage {
 
 // DBusMessageNewFromBlob is a wrapper around the C function g_dbus_message_new_from_blob.
 func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
-	c_blob_array := make([]C.guint8, len(blob), len(blob))
+	c_blob_array := make([]C.guint8, len(blob)+1, len(blob)+1)
 	for i, item := range blob {
 		c := (C.guint8)(item)
 		c_blob_array[i] = c
 	}
+	c_blob_array[len(blob)] = 0
 	c_blob_arrayPtr := &c_blob_array[0]
 	c_blob := (*C.guchar)(unsafe.Pointer(c_blob_arrayPtr))
 
@@ -1153,11 +1154,12 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 
 // DBusMessageBytesNeeded is a wrapper around the C function g_dbus_message_bytes_needed.
 func DBusMessageBytesNeeded(blob []uint8) (int64, error) {
-	c_blob_array := make([]C.guint8, len(blob), len(blob))
+	c_blob_array := make([]C.guint8, len(blob)+1, len(blob)+1)
 	for i, item := range blob {
 		c := (C.guint8)(item)
 		c_blob_array[i] = c
 	}
+	c_blob_array[len(blob)] = 0
 	c_blob_arrayPtr := &c_blob_array[0]
 	c_blob := (*C.guchar)(unsafe.Pointer(c_blob_arrayPtr))
 
@@ -3128,12 +3130,13 @@ func (recv *Settings) SetStrv(key string, value []string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	c_value_array := make([]*C.gchar, len(value), len(value))
+	c_value_array := make([]*C.gchar, len(value)+1, len(value)+1)
 	for i, item := range value {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_value_array[i] = c
 	}
+	c_value_array[len(value)] = nil
 	c_value_arrayPtr := &c_value_array[0]
 	c_value := (**C.gchar)(unsafe.Pointer(c_value_arrayPtr))
 
@@ -3215,11 +3218,12 @@ func (recv *Socket) GetTimeout() uint32 {
 
 // ReceiveWithBlocking is a wrapper around the C function g_socket_receive_with_blocking.
 func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -3251,11 +3255,12 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 
 // SendWithBlocking is a wrapper around the C function g_socket_send_with_blocking.
 func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -3526,11 +3531,12 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 
 // UnixSocketAddressNewWithType is a wrapper around the C function g_unix_socket_address_new_with_type.
 func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
-	c_path_array := make([]C.gchar, len(path), len(path))
+	c_path_array := make([]C.gchar, len(path)+1, len(path)+1)
 	for i, item := range path {
 		c := (C.gchar)(item)
 		c_path_array[i] = c
 	}
+	c_path_array[len(path)] = 0
 	c_path_arrayPtr := &c_path_array[0]
 	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
 

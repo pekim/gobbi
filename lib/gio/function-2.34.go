@@ -79,11 +79,12 @@ func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, canc
 		c_stream = (*C.GInputStream)(stream.ToC())
 	}
 
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -120,11 +121,12 @@ func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, ca
 		c_stream = (*C.GOutputStream)(stream.ToC())
 	}
 
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -161,11 +163,12 @@ func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool,
 		c_stream = (*C.GOutputStream)(stream.ToC())
 	}
 
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 

@@ -646,11 +646,12 @@ func (recv *PollableInputStream) IsReadable() bool {
 
 // ReadNonblocking is a wrapper around the C function g_pollable_input_stream_read_nonblocking.
 func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
@@ -734,11 +735,12 @@ func (recv *PollableOutputStream) IsWritable() bool {
 
 // WriteNonblocking is a wrapper around the C function g_pollable_output_stream_write_nonblocking.
 func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
+	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
 	for i, item := range buffer {
 		c := (C.guint8)(item)
 		c_buffer_array[i] = c
 	}
+	c_buffer_array[len(buffer)] = 0
 	c_buffer_arrayPtr := &c_buffer_array[0]
 	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 

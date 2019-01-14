@@ -112,12 +112,13 @@ func (recv *Application) SetAccelsForAction(detailedActionName string, accels []
 	c_detailed_action_name := C.CString(detailedActionName)
 	defer C.free(unsafe.Pointer(c_detailed_action_name))
 
-	c_accels_array := make([]*C.gchar, len(accels), len(accels))
+	c_accels_array := make([]*C.gchar, len(accels)+1, len(accels)+1)
 	for i, item := range accels {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_accels_array[i] = c
 	}
+	c_accels_array[len(accels)] = nil
 	c_accels_arrayPtr := &c_accels_array[0]
 	c_accels := (**C.gchar)(unsafe.Pointer(c_accels_arrayPtr))
 

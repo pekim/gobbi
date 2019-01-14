@@ -29,12 +29,13 @@ func Access(filename string, mode int32) int32 {
 
 // BuildFilenamev is a wrapper around the C function g_build_filenamev.
 func BuildFilenamev(args []string) string {
-	c_args_array := make([]*C.gchar, len(args), len(args))
+	c_args_array := make([]*C.gchar, len(args)+1, len(args)+1)
 	for i, item := range args {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_args_array[i] = c
 	}
+	c_args_array[len(args)] = nil
 	c_args_arrayPtr := &c_args_array[0]
 	c_args := (**C.gchar)(unsafe.Pointer(c_args_arrayPtr))
 
@@ -50,12 +51,13 @@ func BuildPathv(separator string, args []string) string {
 	c_separator := C.CString(separator)
 	defer C.free(unsafe.Pointer(c_separator))
 
-	c_args_array := make([]*C.gchar, len(args), len(args))
+	c_args_array := make([]*C.gchar, len(args)+1, len(args)+1)
 	for i, item := range args {
 		c := C.CString(item)
 		defer C.free(unsafe.Pointer(c))
 		c_args_array[i] = c
 	}
+	c_args_array[len(args)] = nil
 	c_args_arrayPtr := &c_args_array[0]
 	c_args := (**C.gchar)(unsafe.Pointer(c_args_arrayPtr))
 
@@ -123,11 +125,12 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	c_contents_array := make([]C.guint8, len(contents), len(contents))
+	c_contents_array := make([]C.guint8, len(contents)+1, len(contents)+1)
 	for i, item := range contents {
 		c := (C.guint8)(item)
 		c_contents_array[i] = c
 	}
+	c_contents_array[len(contents)] = 0
 	c_contents_arrayPtr := &c_contents_array[0]
 	c_contents := (*C.gchar)(unsafe.Pointer(c_contents_arrayPtr))
 

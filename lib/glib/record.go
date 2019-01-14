@@ -1878,11 +1878,12 @@ func (recv *IOChannel) Write(buf string, count uint64, bytesWritten uint64) IOEr
 
 // WriteChars is a wrapper around the C function g_io_channel_write_chars.
 func (recv *IOChannel) WriteChars(buf []uint8, count int64) (IOStatus, uint64, error) {
-	c_buf_array := make([]C.guint8, len(buf), len(buf))
+	c_buf_array := make([]C.guint8, len(buf)+1, len(buf)+1)
 	for i, item := range buf {
 		c := (C.guint8)(item)
 		c_buf_array[i] = c
 	}
+	c_buf_array[len(buf)] = 0
 	c_buf_arrayPtr := &c_buf_array[0]
 	c_buf := (*C.gchar)(unsafe.Pointer(c_buf_arrayPtr))
 

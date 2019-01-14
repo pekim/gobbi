@@ -43,11 +43,12 @@ func (recv *Bytes) Equals(other *Bytes) bool {
 
 // BytesNew is a wrapper around the C function g_bytes_new.
 func BytesNew(data []uint8) *Bytes {
-	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
 	for i, item := range data {
 		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
+	c_data_array[len(data)] = 0
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (C.gconstpointer)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -61,11 +62,12 @@ func BytesNew(data []uint8) *Bytes {
 
 // BytesNewStatic is a wrapper around the C function g_bytes_new_static.
 func BytesNewStatic(data []uint8) *Bytes {
-	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
 	for i, item := range data {
 		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
+	c_data_array[len(data)] = 0
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (C.gconstpointer)(unsafe.Pointer(c_data_arrayPtr))
 
@@ -79,11 +81,12 @@ func BytesNewStatic(data []uint8) *Bytes {
 
 // BytesNewTake is a wrapper around the C function g_bytes_new_take.
 func BytesNewTake(data []uint8) *Bytes {
-	c_data_array := make([]C.guint8, len(data), len(data))
+	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
 	for i, item := range data {
 		c := (C.guint8)(item)
 		c_data_array[i] = c
 	}
+	c_data_array[len(data)] = 0
 	c_data_arrayPtr := &c_data_array[0]
 	c_data := (C.gpointer)(unsafe.Pointer(c_data_arrayPtr))
 

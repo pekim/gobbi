@@ -1555,11 +1555,12 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 
 // AddStates is a wrapper around the C function atk_state_set_add_states.
 func (recv *StateSet) AddStates(types []StateType) {
-	c_types_array := make([]C.AtkStateType, len(types), len(types))
+	c_types_array := make([]C.AtkStateType, len(types)+1, len(types)+1)
 	for i, item := range types {
 		c := (C.AtkStateType)(item)
 		c_types_array[i] = c
 	}
+	c_types_array[len(types)] = 0
 	c_types_arrayPtr := &c_types_array[0]
 	c_types := (*C.AtkStateType)(unsafe.Pointer(c_types_arrayPtr))
 
@@ -1602,11 +1603,12 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 
 // ContainsStates is a wrapper around the C function atk_state_set_contains_states.
 func (recv *StateSet) ContainsStates(types []StateType) bool {
-	c_types_array := make([]C.AtkStateType, len(types), len(types))
+	c_types_array := make([]C.AtkStateType, len(types)+1, len(types)+1)
 	for i, item := range types {
 		c := (C.AtkStateType)(item)
 		c_types_array[i] = c
 	}
+	c_types_array[len(types)] = 0
 	c_types_arrayPtr := &c_types_array[0]
 	c_types := (*C.AtkStateType)(unsafe.Pointer(c_types_arrayPtr))
 
