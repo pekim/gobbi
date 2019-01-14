@@ -2436,18 +2436,7 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// SetSearchPath is a wrapper around the C function gtk_icon_theme_set_search_path.
-func (recv *IconTheme) SetSearchPath(path []string) {
-	c_path_array := make([]*C.gchar, len(path), len(path))
-	c_path_arrayPtr := &c_path_array[0]
-	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
-
-	c_n_elements := (C.gint)(len(path))
-
-	C.gtk_icon_theme_set_search_path((*C.GtkIconTheme)(recv.native), c_path, c_n_elements)
-
-	return
-}
+// Blacklisted : gtk_icon_theme_set_search_path
 
 // Attach is a wrapper around the C function gtk_menu_attach.
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {

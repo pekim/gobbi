@@ -697,26 +697,7 @@ func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ChooseIcon is a wrapper around the C function gtk_icon_theme_choose_icon.
-func (recv *IconTheme) ChooseIcon(iconNames []string, size int32, flags IconLookupFlags) *IconInfo {
-	c_icon_names_array := make([]C.gchar, len(iconNames), len(iconNames))
-	c_icon_names_arrayPtr := &c_icon_names_array[0]
-	c_icon_names := (*C.gchar)(unsafe.Pointer(c_icon_names_arrayPtr))
-
-	c_size := (C.gint)(size)
-
-	c_flags := (C.GtkIconLookupFlags)(flags)
-
-	retC := C.gtk_icon_theme_choose_icon((*C.GtkIconTheme)(recv.native), c_icon_names, c_size, c_flags)
-	var retGo (*IconInfo)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gtk_icon_theme_choose_icon
 
 // ListContexts is a wrapper around the C function gtk_icon_theme_list_contexts.
 func (recv *IconTheme) ListContexts() *glib.List {

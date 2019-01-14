@@ -158,6 +158,12 @@
     <class version="3.20" name="ShortcutsShortcut"/>
     <class version="3.20" name="ShortcutsWindow"/>
 
+    <class name="IconTheme">
+      <method blacklist="true" c:identifier="gtk_icon_theme_choose_icon"/>
+      <method blacklist="true" c:identifier="gtk_icon_theme_set_search_path"/>
+      <method blacklist="true" c:identifier="gtk_icon_theme_choose_icon_for_scale"/>
+    </class>
+
     <record version="3.20" name="FileChooserNativeClass"/>
     <record version="3.20" name="NativeDialogClass"/>
     <record version="3.20" name="PadActionEntry"/>
