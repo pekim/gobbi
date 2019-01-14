@@ -257,8 +257,9 @@ func VariantNewString(string_ string) *Variant {
 
 // VariantNewStrv is a wrapper around the C function g_variant_new_strv.
 func VariantNewStrv(strv []string) *Variant {
-	c_strv_array := make([]*C.char, len(strv), len(strv))
-	c_strv := &c_strv_array[0]
+	c_strv_array := make([]*C.gchar, len(strv), len(strv))
+	c_strv_arrayPtr := &c_strv_array[0]
+	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
 
 	c_length := (C.gssize)(len(strv))
 

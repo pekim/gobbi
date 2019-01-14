@@ -128,7 +128,8 @@ func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 // Reorder is a wrapper around the C function gtk_list_store_reorder.
 func (recv *ListStore) Reorder(newOrder []int32) {
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
-	c_new_order := &c_new_order_array[0]
+	c_new_order_arrayPtr := &c_new_order_array[0]
+	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 
 	C.gtk_list_store_reorder((*C.GtkListStore)(recv.native), c_new_order)
 
@@ -300,7 +301,8 @@ func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
 	}
 
 	c_new_order_array := make([]C.gint, len(newOrder), len(newOrder))
-	c_new_order := &c_new_order_array[0]
+	c_new_order_arrayPtr := &c_new_order_array[0]
+	c_new_order := (*C.gint)(unsafe.Pointer(c_new_order_arrayPtr))
 
 	C.gtk_tree_store_reorder((*C.GtkTreeStore)(recv.native), c_parent, c_new_order)
 

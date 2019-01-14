@@ -700,7 +700,8 @@ func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 // ChooseIcon is a wrapper around the C function gtk_icon_theme_choose_icon.
 func (recv *IconTheme) ChooseIcon(iconNames []string, size int32, flags IconLookupFlags) *IconInfo {
 	c_icon_names_array := make([]C.gchar, len(iconNames), len(iconNames))
-	c_icon_names := &c_icon_names_array[0]
+	c_icon_names_arrayPtr := &c_icon_names_array[0]
+	c_icon_names := (*C.gchar)(unsafe.Pointer(c_icon_names_arrayPtr))
 
 	c_size := (C.gint)(size)
 
@@ -1482,7 +1483,8 @@ func ScaleButtonNew(size IconSize, min float64, max float64, step float64, icons
 	c_step := (C.gdouble)(step)
 
 	c_icons_array := make([]*C.gchar, len(icons), len(icons))
-	c_icons := &c_icons_array[0]
+	c_icons_arrayPtr := &c_icons_array[0]
+	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
 
 	retC := C.gtk_scale_button_new(c_size, c_min, c_max, c_step, c_icons)
 	retGo := ScaleButtonNewFromC(unsafe.Pointer(retC))
@@ -1521,7 +1523,8 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 // SetIcons is a wrapper around the C function gtk_scale_button_set_icons.
 func (recv *ScaleButton) SetIcons(icons []string) {
 	c_icons_array := make([]*C.gchar, len(icons), len(icons))
-	c_icons := &c_icons_array[0]
+	c_icons_arrayPtr := &c_icons_array[0]
+	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
 
 	C.gtk_scale_button_set_icons((*C.GtkScaleButton)(recv.native), c_icons)
 

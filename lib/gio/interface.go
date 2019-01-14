@@ -1945,7 +1945,8 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 // ReplaceContents is a wrapper around the C function g_file_replace_contents.
 func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (bool, string, error) {
 	c_contents_array := make([]C.guint8, len(contents), len(contents))
-	c_contents := &c_contents_array[0]
+	c_contents_arrayPtr := &c_contents_array[0]
+	c_contents := (*C.char)(unsafe.Pointer(c_contents_arrayPtr))
 
 	c_length := (C.gsize)(len(contents))
 

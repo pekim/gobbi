@@ -113,7 +113,8 @@ func (recv *Application) SetAccelsForAction(detailedActionName string, accels []
 	defer C.free(unsafe.Pointer(c_detailed_action_name))
 
 	c_accels_array := make([]*C.gchar, len(accels), len(accels))
-	c_accels := &c_accels_array[0]
+	c_accels_arrayPtr := &c_accels_array[0]
+	c_accels := (**C.gchar)(unsafe.Pointer(c_accels_arrayPtr))
 
 	C.gtk_application_set_accels_for_action((*C.GtkApplication)(recv.native), c_detailed_action_name, c_accels)
 

@@ -183,8 +183,9 @@ func (recv *Builder) AddObjectsFromFile(filename string, objectIds []string) (ui
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	c_object_ids_array := make([]*C.char, len(objectIds), len(objectIds))
-	c_object_ids := &c_object_ids_array[0]
+	c_object_ids_array := make([]*C.gchar, len(objectIds), len(objectIds))
+	c_object_ids_arrayPtr := &c_object_ids_array[0]
+	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
 
 	var cThrowableError *C.GError
 
@@ -209,8 +210,9 @@ func (recv *Builder) AddObjectsFromString(buffer string, length uint64, objectId
 
 	c_length := (C.gsize)(length)
 
-	c_object_ids_array := make([]*C.char, len(objectIds), len(objectIds))
-	c_object_ids := &c_object_ids_array[0]
+	c_object_ids_array := make([]*C.gchar, len(objectIds), len(objectIds))
+	c_object_ids_arrayPtr := &c_object_ids_array[0]
+	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
 
 	var cThrowableError *C.GError
 

@@ -23,10 +23,12 @@ func (recv *FileChooser) AddChoice(id string, label string, options []string, op
 	defer C.free(unsafe.Pointer(c_label))
 
 	c_options_array := make([]*C.char, len(options), len(options))
-	c_options := &c_options_array[0]
+	c_options_arrayPtr := &c_options_array[0]
+	c_options := (**C.char)(unsafe.Pointer(c_options_arrayPtr))
 
 	c_option_labels_array := make([]*C.char, len(optionLabels), len(optionLabels))
-	c_option_labels := &c_option_labels_array[0]
+	c_option_labels_arrayPtr := &c_option_labels_array[0]
+	c_option_labels := (**C.char)(unsafe.Pointer(c_option_labels_arrayPtr))
 
 	C.gtk_file_chooser_add_choice((*C.GtkFileChooser)(recv.native), c_id, c_label, c_options, c_option_labels)
 

@@ -59,7 +59,8 @@ func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 // SetUris is a wrapper around the C function gtk_selection_data_set_uris.
 func (recv *SelectionData) SetUris(uris []string) bool {
 	c_uris_array := make([]*C.gchar, len(uris), len(uris))
-	c_uris := &c_uris_array[0]
+	c_uris_arrayPtr := &c_uris_array[0]
+	c_uris := (**C.gchar)(unsafe.Pointer(c_uris_arrayPtr))
 
 	retC := C.gtk_selection_data_set_uris((*C.GtkSelectionData)(recv.native), c_uris)
 	retGo := retC == C.TRUE

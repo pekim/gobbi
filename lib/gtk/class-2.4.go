@@ -2438,8 +2438,9 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 
 // SetSearchPath is a wrapper around the C function gtk_icon_theme_set_search_path.
 func (recv *IconTheme) SetSearchPath(path []string) {
-	c_path_array := make([]*C.char, len(path), len(path))
-	c_path := &c_path_array[0]
+	c_path_array := make([]*C.gchar, len(path), len(path))
+	c_path_arrayPtr := &c_path_array[0]
+	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
 
 	c_n_elements := (C.gint)(len(path))
 

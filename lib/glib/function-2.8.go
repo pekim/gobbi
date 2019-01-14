@@ -29,8 +29,9 @@ func Access(filename string, mode int32) int32 {
 
 // BuildFilenamev is a wrapper around the C function g_build_filenamev.
 func BuildFilenamev(args []string) string {
-	c_args_array := make([]*C.char, len(args), len(args))
-	c_args := &c_args_array[0]
+	c_args_array := make([]*C.gchar, len(args), len(args))
+	c_args_arrayPtr := &c_args_array[0]
+	c_args := (**C.gchar)(unsafe.Pointer(c_args_arrayPtr))
 
 	retC := C.g_build_filenamev(c_args)
 	retGo := C.GoString(retC)
@@ -44,8 +45,9 @@ func BuildPathv(separator string, args []string) string {
 	c_separator := C.CString(separator)
 	defer C.free(unsafe.Pointer(c_separator))
 
-	c_args_array := make([]*C.char, len(args), len(args))
-	c_args := &c_args_array[0]
+	c_args_array := make([]*C.gchar, len(args), len(args))
+	c_args_arrayPtr := &c_args_array[0]
+	c_args := (**C.gchar)(unsafe.Pointer(c_args_arrayPtr))
 
 	retC := C.g_build_pathv(c_separator, c_args)
 	retGo := C.GoString(retC)
@@ -112,7 +114,8 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	c_contents_array := make([]C.guint8, len(contents), len(contents))
-	c_contents := &c_contents_array[0]
+	c_contents_arrayPtr := &c_contents_array[0]
+	c_contents := (*C.gchar)(unsafe.Pointer(c_contents_arrayPtr))
 
 	c_length := (C.gssize)(len(contents))
 

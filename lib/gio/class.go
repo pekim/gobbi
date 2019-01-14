@@ -536,7 +536,8 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 // Peek is a wrapper around the C function g_buffered_input_stream_peek.
 func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
-	c_buffer := &c_buffer_array[0]
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_offset := (C.gsize)(offset)
 
@@ -2912,8 +2913,9 @@ func (recv *FileInfo) SetAttributeStringv(attribute string, attrValue []string) 
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
 
-	c_attr_value_array := make([]*C.char, len(attrValue), len(attrValue))
-	c_attr_value := &c_attr_value_array[0]
+	c_attr_value_array := make([]*C.gchar, len(attrValue), len(attrValue))
+	c_attr_value_arrayPtr := &c_attr_value_array[0]
+	c_attr_value := (**C.char)(unsafe.Pointer(c_attr_value_arrayPtr))
 
 	C.g_file_info_set_attribute_stringv((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
 
@@ -4105,7 +4107,8 @@ func (recv *InputStream) IsClosed() bool {
 // Read is a wrapper around the C function g_input_stream_read.
 func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
-	c_buffer := &c_buffer_array[0]
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -4133,7 +4136,8 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 // ReadAll is a wrapper around the C function g_input_stream_read_all.
 func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
-	c_buffer := &c_buffer_array[0]
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -5161,7 +5165,8 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 // Write is a wrapper around the C function g_output_stream_write.
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
-	c_buffer := &c_buffer_array[0]
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -5189,7 +5194,8 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 // WriteAll is a wrapper around the C function g_output_stream_write_all.
 func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer_array := make([]C.guint8, len(buffer), len(buffer))
-	c_buffer := &c_buffer_array[0]
+	c_buffer_arrayPtr := &c_buffer_array[0]
+	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
 
 	c_count := (C.gsize)(len(buffer))
 
@@ -6564,7 +6570,8 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 // ThemedIconNewFromNames is a wrapper around the C function g_themed_icon_new_from_names.
 func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
 	c_iconnames_array := make([]*C.char, len(iconnames), len(iconnames))
-	c_iconnames := &c_iconnames_array[0]
+	c_iconnames_arrayPtr := &c_iconnames_array[0]
+	c_iconnames := (**C.char)(unsafe.Pointer(c_iconnames_arrayPtr))
 
 	c_len := (C.int)(len(iconnames))
 
@@ -7180,7 +7187,8 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 // UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
 func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	c_path_array := make([]C.gchar, len(path), len(path))
-	c_path := &c_path_array[0]
+	c_path_arrayPtr := &c_path_array[0]
+	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
 
 	c_path_len := (C.gint)(len(path))
 

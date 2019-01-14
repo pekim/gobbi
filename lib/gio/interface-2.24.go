@@ -62,12 +62,14 @@ func (recv *Converter) Equals(other *Converter) bool {
 // Convert is a wrapper around the C function g_converter_convert.
 func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
 	c_inbuf_array := make([]C.guint8, len(inbuf), len(inbuf))
-	c_inbuf := &c_inbuf_array[0]
+	c_inbuf_arrayPtr := &c_inbuf_array[0]
+	c_inbuf := (unsafe.Pointer(c_inbuf_arrayPtr))
 
 	c_inbuf_size := (C.gsize)(len(inbuf))
 
 	c_outbuf_array := make([]C.guint8, len(outbuf), len(outbuf))
-	c_outbuf := &c_outbuf_array[0]
+	c_outbuf_arrayPtr := &c_outbuf_array[0]
+	c_outbuf := (unsafe.Pointer(c_outbuf_arrayPtr))
 
 	c_outbuf_size := (C.gsize)(len(outbuf))
 

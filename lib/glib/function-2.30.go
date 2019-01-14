@@ -63,12 +63,14 @@ func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) stri
 	c_digest_type := (C.GChecksumType)(digestType)
 
 	c_key_array := make([]C.guchar, len(key), len(key))
-	c_key := &c_key_array[0]
+	c_key_arrayPtr := &c_key_array[0]
+	c_key := (*C.guchar)(unsafe.Pointer(c_key_arrayPtr))
 
 	c_key_len := (C.gsize)(len(key))
 
 	c_data_array := make([]C.guchar, len(data), len(data))
-	c_data := &c_data_array[0]
+	c_data_arrayPtr := &c_data_array[0]
+	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 
 	c_length := (C.gsize)(len(data))
 
@@ -84,7 +86,8 @@ func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) stri
 	c_digest_type := (C.GChecksumType)(digestType)
 
 	c_key_array := make([]C.guchar, len(key), len(key))
-	c_key := &c_key_array[0]
+	c_key_arrayPtr := &c_key_array[0]
+	c_key := (*C.guchar)(unsafe.Pointer(c_key_arrayPtr))
 
 	c_key_len := (C.gsize)(len(key))
 

@@ -618,8 +618,9 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // SubprocessNewv is a wrapper around the C function g_subprocess_newv.
 func SubprocessNewv(argv []string, flags SubprocessFlags) (*Subprocess, error) {
-	c_argv_array := make([]*C.char, len(argv), len(argv))
-	c_argv := &c_argv_array[0]
+	c_argv_array := make([]*C.gchar, len(argv), len(argv))
+	c_argv_arrayPtr := &c_argv_array[0]
+	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
 
 	c_flags := (C.GSubprocessFlags)(flags)
 
@@ -1049,8 +1050,9 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 
 // SetEnviron is a wrapper around the C function g_subprocess_launcher_set_environ.
 func (recv *SubprocessLauncher) SetEnviron(env []string) {
-	c_env_array := make([]*C.char, len(env), len(env))
-	c_env := &c_env_array[0]
+	c_env_array := make([]*C.gchar, len(env), len(env))
+	c_env_arrayPtr := &c_env_array[0]
+	c_env := (**C.gchar)(unsafe.Pointer(c_env_arrayPtr))
 
 	C.g_subprocess_launcher_set_environ((*C.GSubprocessLauncher)(recv.native), c_env)
 
@@ -1116,8 +1118,9 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // Spawnv is a wrapper around the C function g_subprocess_launcher_spawnv.
 func (recv *SubprocessLauncher) Spawnv(argv []string) (*Subprocess, error) {
-	c_argv_array := make([]*C.char, len(argv), len(argv))
-	c_argv := &c_argv_array[0]
+	c_argv_array := make([]*C.gchar, len(argv), len(argv))
+	c_argv_arrayPtr := &c_argv_array[0]
+	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
 
 	var cThrowableError *C.GError
 

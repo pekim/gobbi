@@ -429,7 +429,8 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 // ChooseIconForScale is a wrapper around the C function gtk_icon_theme_choose_icon_for_scale.
 func (recv *IconTheme) ChooseIconForScale(iconNames []string, size int32, scale int32, flags IconLookupFlags) *IconInfo {
 	c_icon_names_array := make([]C.gchar, len(iconNames), len(iconNames))
-	c_icon_names := &c_icon_names_array[0]
+	c_icon_names_arrayPtr := &c_icon_names_array[0]
+	c_icon_names := (*C.gchar)(unsafe.Pointer(c_icon_names_arrayPtr))
 
 	c_size := (C.gint)(size)
 

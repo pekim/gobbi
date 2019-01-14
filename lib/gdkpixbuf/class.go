@@ -156,7 +156,8 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	c_data_length := (C.gint)(len(data))
 
 	c_data_array := make([]C.guint8, len(data), len(data))
-	c_data := &c_data_array[0]
+	c_data_arrayPtr := &c_data_array[0]
+	c_data := (*C.guint8)(unsafe.Pointer(c_data_arrayPtr))
 
 	c_copy_pixels :=
 		boolToGboolean(copyPixels)
@@ -184,7 +185,8 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 // PixbufNewFromXpmData is a wrapper around the C function gdk_pixbuf_new_from_xpm_data.
 func PixbufNewFromXpmData(data []string) *Pixbuf {
 	c_data_array := make([]*C.char, len(data), len(data))
-	c_data := &c_data_array[0]
+	c_data_arrayPtr := &c_data_array[0]
+	c_data := (**C.char)(unsafe.Pointer(c_data_arrayPtr))
 
 	retC := C.gdk_pixbuf_new_from_xpm_data(c_data)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
@@ -472,10 +474,12 @@ func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, op
 	defer C.free(unsafe.Pointer(c_type))
 
 	c_option_keys_array := make([]*C.char, len(optionKeys), len(optionKeys))
-	c_option_keys := &c_option_keys_array[0]
+	c_option_keys_arrayPtr := &c_option_keys_array[0]
+	c_option_keys := (**C.char)(unsafe.Pointer(c_option_keys_arrayPtr))
 
 	c_option_values_array := make([]*C.char, len(optionValues), len(optionValues))
-	c_option_values := &c_option_values_array[0]
+	c_option_values_arrayPtr := &c_option_values_array[0]
+	c_option_values := (**C.char)(unsafe.Pointer(c_option_values_arrayPtr))
 
 	var cThrowableError *C.GError
 
@@ -1145,7 +1149,8 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 // Write is a wrapper around the C function gdk_pixbuf_loader_write.
 func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	c_buf_array := make([]C.guchar, len(buf), len(buf))
-	c_buf := &c_buf_array[0]
+	c_buf_arrayPtr := &c_buf_array[0]
+	c_buf := (*C.guchar)(unsafe.Pointer(c_buf_arrayPtr))
 
 	c_count := (C.gsize)(len(buf))
 

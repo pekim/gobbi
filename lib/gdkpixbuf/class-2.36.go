@@ -51,10 +51,12 @@ func (recv *Pixbuf) SaveToStreamv(stream *gio.OutputStream, type_ string, option
 	defer C.free(unsafe.Pointer(c_type))
 
 	c_option_keys_array := make([]*C.char, len(optionKeys), len(optionKeys))
-	c_option_keys := &c_option_keys_array[0]
+	c_option_keys_arrayPtr := &c_option_keys_array[0]
+	c_option_keys := (**C.char)(unsafe.Pointer(c_option_keys_arrayPtr))
 
 	c_option_values_array := make([]*C.char, len(optionValues), len(optionValues))
-	c_option_values := &c_option_values_array[0]
+	c_option_values_arrayPtr := &c_option_values_array[0]
+	c_option_values := (**C.char)(unsafe.Pointer(c_option_values_arrayPtr))
 
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {

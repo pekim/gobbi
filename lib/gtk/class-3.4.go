@@ -25,7 +25,8 @@ func (recv *AboutDialog) AddCreditSection(sectionName string, people []string) {
 	defer C.free(unsafe.Pointer(c_section_name))
 
 	c_people_array := make([]*C.gchar, len(people), len(people))
-	c_people := &c_people_array[0]
+	c_people_arrayPtr := &c_people_array[0]
+	c_people := (**C.gchar)(unsafe.Pointer(c_people_arrayPtr))
 
 	C.gtk_about_dialog_add_credit_section((*C.GtkAboutDialog)(recv.native), c_section_name, c_people)
 
@@ -204,8 +205,9 @@ func (recv *Builder) AddObjectsFromResource(resourcePath string, objectIds []str
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
 
-	c_object_ids_array := make([]*C.char, len(objectIds), len(objectIds))
-	c_object_ids := &c_object_ids_array[0]
+	c_object_ids_array := make([]*C.gchar, len(objectIds), len(objectIds))
+	c_object_ids_arrayPtr := &c_object_ids_array[0]
+	c_object_ids := (**C.gchar)(unsafe.Pointer(c_object_ids_arrayPtr))
 
 	var cThrowableError *C.GError
 

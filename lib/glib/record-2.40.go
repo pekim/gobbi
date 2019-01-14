@@ -54,7 +54,8 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 // ParseStrv is a wrapper around the C function g_option_context_parse_strv.
 func (recv *OptionContext) ParseStrv(arguments []string) (bool, error) {
 	c_arguments_array := make([]**C.gchar, len(arguments), len(arguments))
-	c_arguments := &c_arguments_array[0]
+	c_arguments_arrayPtr := &c_arguments_array[0]
+	c_arguments := (***C.gchar)(unsafe.Pointer(c_arguments_arrayPtr))
 
 	var cThrowableError *C.GError
 

@@ -1400,8 +1400,9 @@ func RcScannerNew() *glib.Scanner {
 
 // RcSetDefaultFiles is a wrapper around the C function gtk_rc_set_default_files.
 func RcSetDefaultFiles(filenames []string) {
-	c_filenames_array := make([]*C.char, len(filenames), len(filenames))
-	c_filenames := &c_filenames_array[0]
+	c_filenames_array := make([]*C.gchar, len(filenames), len(filenames))
+	c_filenames_arrayPtr := &c_filenames_array[0]
+	c_filenames := (**C.gchar)(unsafe.Pointer(c_filenames_arrayPtr))
 
 	C.gtk_rc_set_default_files(c_filenames)
 

@@ -90,7 +90,8 @@ func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	c_data_array := make([]C.guchar, len(data), len(data))
-	c_data := &c_data_array[0]
+	c_data_arrayPtr := &c_data_array[0]
+	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
 
 	c_data_size := (C.gsize)(len(data))
 

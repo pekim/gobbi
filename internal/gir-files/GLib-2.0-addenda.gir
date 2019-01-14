@@ -125,5 +125,10 @@
 
     <!-- the types in some method do not appear to match the data in gir file -->
     <record blacklist="true" name="IConv"/>
+
+    <record name="KeyFile">
+      <method blacklist="true" c:identifier="g_key_file_set_locale_string_list"/>
+      <method blacklist="true" c:identifier="g_key_file_set_string_list"/>
+    </record>
   </namespace>
 </repository>
