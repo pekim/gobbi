@@ -95,6 +95,9 @@ func draw(cr *cairo.Context, widget *gtk.Widget, angle float64) bool {
 	layout := widget.CreatePangoLayout("Hello\nworld")
 	layout.SetFontDescription(fd)
 
+	// Get the extents of the text.
+	textWidth, textHeight := layout.GetPixelSize()
+
 	x := (width) / 2
 	y := (height) / 2
 
@@ -102,7 +105,7 @@ func draw(cr *cairo.Context, widget *gtk.Widget, angle float64) bool {
 	cr.Rotate(angle)
 
 	// Draw the text.
-	cr.MoveTo(0, 0)
+	cr.MoveTo(0-(float64(textWidth)/2), 0-(float64(textHeight)/2))
 	pangocairo.ShowLayout(cr, layout)
 
 	return false
