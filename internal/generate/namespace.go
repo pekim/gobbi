@@ -96,6 +96,7 @@ func (ns *Namespace) generate() {
 	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)
 	ns.generateGeneratables("class", ns.Classes)
+	ns.generateGeneratables("callback", ns.Callbacks)
 	ns.generateGeneratables("constant", ns.Constants)
 	ns.generateGeneratables("enum", ns.Enumerations)
 	ns.generateGeneratables("function", ns.Functions)
