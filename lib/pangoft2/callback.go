@@ -9,4 +9,4 @@ package pangoft2
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : SubstituteFunc

@@ -9,42 +9,54 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// potentially support callback : BaseFinalizeFunc
-// potentially support callback : BaseInitFunc
-// Unsupported :  : unsupported parameter boxed : no type generator for gpointer (gpointer) for param boxed
+// potentially supported callback : BaseFinalizeFunc
 
-// Unsupported :  : unsupported parameter boxed : no type generator for gpointer (gpointer) for param boxed
+// potentially supported callback : BaseInitFunc
 
-// potentially support callback : Callback
-// Unsupported :  : unsupported parameter class_data : no type generator for gpointer (gpointer) for param class_data
+// Unsupported : callback BoxedCopyFunc : unsupported parameter boxed : no type generator for gpointer (gpointer) for param boxed
 
-// Unsupported :  : unsupported parameter class_data : no type generator for gpointer (gpointer) for param class_data
+// Unsupported : callback BoxedFreeFunc : unsupported parameter boxed : no type generator for gpointer (gpointer) for param boxed
 
-// Unsupported :  : unsupported parameter param_values :
+// potentially supported callback : Callback
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : callback ClassFinalizeFunc : unsupported parameter class_data : no type generator for gpointer (gpointer) for param class_data
 
-// potentially support callback : InstanceInitFunc
-// Unsupported :  : unsupported parameter iface_data : no type generator for gpointer (gpointer) for param iface_data
+// Unsupported : callback ClassInitFunc : unsupported parameter class_data : no type generator for gpointer (gpointer) for param class_data
 
-// Unsupported :  : unsupported parameter iface_data : no type generator for gpointer (gpointer) for param iface_data
+// Unsupported : callback ClosureMarshal : unsupported parameter param_values :
 
-// potentially support callback : ObjectFinalizeFunc
-// potentially support callback : ObjectGetPropertyFunc
-// potentially support callback : ObjectSetPropertyFunc
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : ClosureNotify
 
-// Unsupported :  : unsupported parameter param_values :
+// potentially supported callback : InstanceInitFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : callback InterfaceFinalizeFunc : unsupported parameter iface_data : no type generator for gpointer (gpointer) for param iface_data
 
-// Unsupported :  : unsupported parameter cache_data : no type generator for gpointer (gpointer) for param cache_data
+// Unsupported : callback InterfaceInitFunc : unsupported parameter iface_data : no type generator for gpointer (gpointer) for param iface_data
 
-// potentially support callback : TypePluginCompleteInterfaceInfo
-// potentially support callback : TypePluginCompleteTypeInfo
-// potentially support callback : TypePluginUnuse
-// potentially support callback : TypePluginUse
-// Unsupported :  : unsupported parameter args : no type generator for va_list (va_list) for param args
+// potentially supported callback : ObjectFinalizeFunc
 
-// potentially support callback : ValueTransform
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : ObjectGetPropertyFunc
+
+// potentially supported callback : ObjectSetPropertyFunc
+
+// potentially supported callback : SignalAccumulator
+
+// Unsupported : callback SignalEmissionHook : unsupported parameter param_values :
+
+// potentially supported callback : ToggleNotify
+
+// Unsupported : callback TypeClassCacheFunc : unsupported parameter cache_data : no type generator for gpointer (gpointer) for param cache_data
+
+// potentially supported callback : TypePluginCompleteInterfaceInfo
+
+// potentially supported callback : TypePluginCompleteTypeInfo
+
+// potentially supported callback : TypePluginUnuse
+
+// potentially supported callback : TypePluginUse
+
+// Unsupported : callback VaClosureMarshal : unsupported parameter args : no type generator for va_list (va_list) for param args
+
+// potentially supported callback : ValueTransform
+
+// potentially supported callback : WeakNotify

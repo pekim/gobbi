@@ -19,22 +19,22 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : AsyncReadyCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DesktopAppLaunchCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : FileProgressCallback
 
-// Unsupported :  : unsupported parameter callback_data : no type generator for gpointer (gpointer) for param callback_data
+// Unsupported : callback FileReadMoreCallback : unsupported parameter callback_data : no type generator for gpointer (gpointer) for param callback_data
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : IOSchedulerJobFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : ReallocFunc : no return generator
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : SettingsBindGetMapping
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : SettingsBindSetMapping
 
-// Unsupported :  : unsupported parameter result : no type generator for gpointer (gpointer*) for param result
+// Unsupported : callback SettingsGetMapping : unsupported parameter result : no type generator for gpointer (gpointer*) for param result
 
-// potentially support callback : SimpleAsyncThreadFunc
+// potentially supported callback : SimpleAsyncThreadFunc

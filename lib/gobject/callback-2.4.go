@@ -10,4 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter check_data : no type generator for gpointer (gpointer) for param check_data
+// Unsupported : callback TypeInterfaceCheckFunc : unsupported parameter check_data : no type generator for gpointer (gpointer) for param check_data

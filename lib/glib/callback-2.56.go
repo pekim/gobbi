@@ -12,4 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// potentially support callback : ClearHandleFunc
+// potentially supported callback : ClearHandleFunc

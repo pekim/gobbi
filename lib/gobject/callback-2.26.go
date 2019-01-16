@@ -10,4 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : BindingTransformFunc

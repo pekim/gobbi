@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -20,26 +21,24 @@ func (c *Callback) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	g.Commentf("potentially support callback : %s", c.Name)
+	g.Commentf("potentially supported callback : %s", c.Name)
+	g.Line()
+}
 
-	//if blacklisted, detail := f.blacklisted(); blacklisted {
-	//	g.Commentf("Blacklisted : %s", detail)
-	//	g.Line()
-	//	return
-	//}
-	//
-	//if f.Parameters.hasFormatArgs() {
-	//	f.generateFormatArgsCWrapper()
-	//}
-	//
-	//g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
-	//
-	//g.
-	//	Func().
-	//	Do(f.generateReceiverDeclaration).
-	//	Id(f.GoName).                                         // name
-	//	ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
-	//	ParamsFunc(f.generateReturnDeclaration).              // returns
-	//	BlockFunc(f.generateBody).                            // body
-	//	Line()
+func (c *Callback) supported() (supported bool, reason string) {
+	for _, p := range c.Parameters {
+		if p.Name == "data" || p.Name == "user_data" {
+			continue
+		}
+
+		if supported, reason := p.isSupported(); !supported {
+			return supported, fmt.Sprintf("callback %s : unsupported parameter %s : %s", c.Name, p.Name, reason)
+		}
+	}
+
+	if supported, reason := c.ReturnValue.isSupported(); !supported {
+		return false, fmt.Sprintf("%s : %s", c.Name, reason)
+	}
+
+	return true, ""
 }

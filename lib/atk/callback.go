@@ -9,11 +9,14 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// potentially support callback : EventListener
-// potentially support callback : EventListenerInit
-// potentially support callback : FocusHandler
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : EventListener
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : EventListenerInit
 
-// potentially support callback : PropertyChangeHandler
+// potentially supported callback : FocusHandler
+
+// potentially supported callback : Function
+
+// potentially supported callback : KeySnoopFunc
+
+// potentially supported callback : PropertyChangeHandler

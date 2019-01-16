@@ -12,4 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter fields :
+// Unsupported : callback LogWriterFunc : unsupported parameter fields :

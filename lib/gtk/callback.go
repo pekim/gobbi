@@ -11,85 +11,90 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// potentially support callback : AccelGroupActivate
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : AccelGroupActivate
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : AccelMapForeach
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : AssistantPageFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : Callback
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : CellAllocCallback
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : CellCallback
 
-// Unsupported :  : unsupported parameter user_data_or_owner : no type generator for gpointer (gpointer) for param user_data_or_owner
+// potentially supported callback : CellLayoutDataFunc
 
-// Unsupported :  : unsupported parameter user_data_or_owner : no type generator for gpointer (gpointer) for param user_data_or_owner
+// Unsupported : callback ClipboardClearFunc : unsupported parameter user_data_or_owner : no type generator for gpointer (gpointer) for param user_data_or_owner
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : callback ClipboardGetFunc : unsupported parameter user_data_or_owner : no type generator for gpointer (gpointer) for param user_data_or_owner
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : ClipboardReceivedFunc
 
-// Unsupported :  : unsupported parameter colors :
+// potentially supported callback : ClipboardTextReceivedFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// Unsupported : callback ColorSelectionChangePaletteFunc : unsupported parameter colors :
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : EntryCompletionMatchFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : FileFilterFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : FontFilterFunc
 
-// Unsupported :  : unsupported parameter func_data : no type generator for gpointer (gpointer) for param func_data
+// potentially supported callback : IconViewForeachFunc
 
-// potentially support callback : MenuDetachFunc
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// Unsupported : callback KeySnoopFunc : unsupported parameter func_data : no type generator for gpointer (gpointer) for param func_data
 
-// potentially support callback : ModuleInitFunc
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : MenuDetachFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : MenuPositionFunc
 
-// potentially support callback : RcPropertyParser
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : ModuleInitFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : PageSetupDoneFunc
 
-// potentially support callback : StylePropertyParser
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : PrintSettingsFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : RcPropertyParser
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : RecentFilterFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : RecentSortFunc
 
-// Unsupported :  : unsupported parameter func_data : no type generator for gpointer (gpointer) for param func_data
+// potentially supported callback : StylePropertyParser
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TextBufferDeserializeFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : TextBufferSerializeFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : TextCharPredicate
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TextTagTableForeach
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : callback TranslateFunc : unsupported parameter func_data : no type generator for gpointer (gpointer) for param func_data
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TreeCellDataFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TreeDestroyCountFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TreeIterCompareFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TreeModelFilterModifyFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : TreeModelFilterVisibleFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : TreeModelForeachFunc
 
-// Unsupported :  : unsupported parameter search_data : no type generator for gpointer (gpointer) for param search_data
+// potentially supported callback : TreeSelectionForeachFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : TreeSelectionFunc
+
+// potentially supported callback : TreeViewColumnDropFunc
+
+// potentially supported callback : TreeViewMappingFunc
+
+// potentially supported callback : TreeViewRowSeparatorFunc
+
+// Unsupported : callback TreeViewSearchEqualFunc : unsupported parameter search_data : no type generator for gpointer (gpointer) for param search_data
+
+// potentially supported callback : TreeViewSearchPositionFunc

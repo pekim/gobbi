@@ -9,6 +9,6 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gconstpointer) for param user_data
+// Unsupported : AttrDataCopyFunc : no return generator
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : AttrFilterFunc

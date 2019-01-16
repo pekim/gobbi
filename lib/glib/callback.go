@@ -11,72 +11,78 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : ChildWatchFunc
 
-// Unsupported :  : unsupported parameter a : no type generator for gpointer (gconstpointer) for param a
+// Unsupported : callback CompareDataFunc : unsupported parameter a : no type generator for gpointer (gconstpointer) for param a
 
-// Unsupported :  : unsupported parameter a : no type generator for gpointer (gconstpointer) for param a
+// Unsupported : callback CompareFunc : unsupported parameter a : no type generator for gpointer (gconstpointer) for param a
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : DataForeachFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : DestroyNotify
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : DuplicateFunc : no return generator
 
-// Unsupported :  : unsupported parameter a : no type generator for gpointer (gconstpointer) for param a
+// Unsupported : callback EqualFunc : unsupported parameter a : no type generator for gpointer (gconstpointer) for param a
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : FreeFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : Func
 
-// Unsupported :  : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+// Unsupported : callback HFunc : unsupported parameter key : no type generator for gpointer (gpointer) for param key
 
-// Unsupported :  : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+// Unsupported : callback HRFunc : unsupported parameter key : no type generator for gpointer (gpointer) for param key
 
-// Unsupported :  : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
+// Unsupported : callback HashFunc : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : HookCheckFunc
 
-// Unsupported :  : unsupported parameter marshal_data : no type generator for gpointer (gpointer) for param marshal_data
+// Unsupported : callback HookCheckMarshaller : unsupported parameter marshal_data : no type generator for gpointer (gpointer) for param marshal_data
 
-// potentially support callback : HookCompareFunc
-// potentially support callback : HookFinalizeFunc
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : HookCompareFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : HookFinalizeFunc
 
-// Unsupported :  : unsupported parameter marshal_data : no type generator for gpointer (gpointer) for param marshal_data
+// potentially supported callback : HookFindFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : HookFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// Unsupported : callback HookMarshaller : unsupported parameter marshal_data : no type generator for gpointer (gpointer) for param marshal_data
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : IOFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : LogFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : NodeForeachFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : NodeTraverseFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : OptionArgFunc
 
-// potentially support callback : PollFunc
-// potentially support callback : PrintFunc
-// potentially support callback : ScannerMsgFunc
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : OptionErrorFunc
 
-// potentially support callback : SourceDummyMarshal
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : OptionParseFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : PollFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : PrintFunc
 
-// Unsupported :  : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// potentially supported callback : ScannerMsgFunc
 
-// Unsupported :  : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+// potentially supported callback : SequenceIterCompareFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : SourceDummyMarshal
 
-// potentially support callback : VoidFunc
+// potentially supported callback : SourceFunc
+
+// potentially supported callback : SpawnChildSetupFunc
+
+// Unsupported : ThreadFunc : no return generator
+
+// potentially supported callback : TranslateFunc
+
+// Unsupported : callback TraverseFunc : unsupported parameter key : no type generator for gpointer (gpointer) for param key
+
+// potentially supported callback : UnixFDSourceFunc
+
+// potentially supported callback : VoidFunc

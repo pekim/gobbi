@@ -20,28 +20,28 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : BusAcquiredCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : BusNameAcquiredCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : BusNameAppearedCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : BusNameLostCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : BusNameVanishedCallback
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DBusInterfaceGetPropertyFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DBusInterfaceMethodCallFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DBusInterfaceSetPropertyFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DBusMessageFilterFunction
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DBusSignalCallback
 
-// Unsupported :  : unsupported parameter out_user_data : no type generator for gpointer (gpointer*) for param out_user_data
+// Unsupported : callback DBusSubtreeDispatchFunc : unsupported parameter out_user_data : no type generator for gpointer (gpointer*) for param out_user_data
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// potentially supported callback : DBusSubtreeEnumerateFunc
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// Unsupported : DBusSubtreeIntrospectFunc : return type : record with indirection level of 2

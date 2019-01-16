@@ -12,8 +12,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter user_data : no type generator for gpointer (gconstpointer) for param user_data
+// potentially supported callback : TestDataFunc
 
-// Unsupported :  : unsupported parameter fixture : no type generator for gpointer (gpointer) for param fixture
+// Unsupported : callback TestFixtureFunc : unsupported parameter fixture : no type generator for gpointer (gpointer) for param fixture
 
-// potentially support callback : TestFunc
+// potentially supported callback : TestFunc

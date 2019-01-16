@@ -12,4 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported :  : unsupported parameter atoms :
+// Unsupported : callback ClipboardTargetsReceivedFunc : unsupported parameter atoms :

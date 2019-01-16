@@ -10,4 +10,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// potentially support callback : WindowInvalidateHandlerFunc
+// potentially supported callback : WindowInvalidateHandlerFunc
