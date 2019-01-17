@@ -3,6 +3,8 @@
 
 package gdk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,3 +16,10 @@ package gdk
 
 */
 import "C"
+
+var callbackSeatgrabpreparefuncId int
+var callbackSeatgrabpreparefuncMap = make(map[int]SeatgrabpreparefuncCallback)
+var callbackSeatgrabpreparefuncLock sync.RWMutex
+
+// SeatgrabpreparefuncCallback is a callback function for a 'SeatGrabPrepareFunc' callback.
+type SeatgrabpreparefuncCallback func(seat *Seat, window *Window)

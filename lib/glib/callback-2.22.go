@@ -3,6 +3,8 @@
 
 package glib
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +18,10 @@ package glib
 
 */
 import "C"
+
+var callbackTestlogfatalfuncId int
+var callbackTestlogfatalfuncMap = make(map[int]TestlogfatalfuncCallback)
+var callbackTestlogfatalfuncLock sync.RWMutex
+
+// TestlogfatalfuncCallback is a callback function for a 'TestLogFatalFunc' callback.
+type TestlogfatalfuncCallback func(logDomain string, logLevel LogLevelFlags, message string) bool

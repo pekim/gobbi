@@ -3,6 +3,8 @@
 
 package gio
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -25,3 +27,10 @@ package gio
 
 */
 import "C"
+
+var callbackFilemeasureprogresscallbackId int
+var callbackFilemeasureprogresscallbackMap = make(map[int]FilemeasureprogresscallbackCallback)
+var callbackFilemeasureprogresscallbackLock sync.RWMutex
+
+// FilemeasureprogresscallbackCallback is a callback function for a 'FileMeasureProgressCallback' callback.
+type FilemeasureprogresscallbackCallback func(reporting bool, currentSize uint64, numDirs uint64, numFiles uint64)

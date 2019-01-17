@@ -3,6 +3,11 @@
 
 package gio
 
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -25,3 +30,10 @@ package gio
 
 */
 import "C"
+
+var callbackDatagrambasedsourcefuncId int
+var callbackDatagrambasedsourcefuncMap = make(map[int]DatagrambasedsourcefuncCallback)
+var callbackDatagrambasedsourcefuncLock sync.RWMutex
+
+// DatagrambasedsourcefuncCallback is a callback function for a 'DatagramBasedSourceFunc' callback.
+type DatagrambasedsourcefuncCallback func(datagramBased *DatagramBased, condition glib.IOCondition) bool

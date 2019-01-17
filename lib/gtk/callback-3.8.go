@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +21,10 @@ package gtk
 
 */
 import "C"
+
+var callbackTickcallbackId int
+var callbackTickcallbackMap = make(map[int]TickcallbackCallback)
+var callbackTickcallbackLock sync.RWMutex
+
+// TickcallbackCallback is a callback function for a 'TickCallback' callback.
+type TickcallbackCallback func(widget *Widget, frameClock *gdk.FrameClock) bool

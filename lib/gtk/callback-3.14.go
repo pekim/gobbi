@@ -3,6 +3,8 @@
 
 package gtk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +18,10 @@ package gtk
 
 */
 import "C"
+
+var callbackListboxforeachfuncId int
+var callbackListboxforeachfuncMap = make(map[int]ListboxforeachfuncCallback)
+var callbackListboxforeachfuncLock sync.RWMutex
+
+// ListboxforeachfuncCallback is a callback function for a 'ListBoxForeachFunc' callback.
+type ListboxforeachfuncCallback func(box *ListBox, row *ListBoxRow)

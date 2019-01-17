@@ -3,6 +3,11 @@
 
 package gio
 
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -24,3 +29,10 @@ package gio
 
 */
 import "C"
+
+var callbackDbusproxytypefuncId int
+var callbackDbusproxytypefuncMap = make(map[int]DbusproxytypefuncCallback)
+var callbackDbusproxytypefuncLock sync.RWMutex
+
+// DbusproxytypefuncCallback is a callback function for a 'DBusProxyTypeFunc' callback.
+type DbusproxytypefuncCallback func(manager *DBusObjectManagerClient, objectPath string, interfaceName string) gobject.Type

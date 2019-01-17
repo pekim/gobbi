@@ -3,6 +3,11 @@
 
 package gio
 
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -24,3 +29,10 @@ package gio
 
 */
 import "C"
+
+var callbackSocketsourcefuncId int
+var callbackSocketsourcefuncMap = make(map[int]SocketsourcefuncCallback)
+var callbackSocketsourcefuncLock sync.RWMutex
+
+// SocketsourcefuncCallback is a callback function for a 'SocketSourceFunc' callback.
+type SocketsourcefuncCallback func(socket *Socket, condition glib.IOCondition) bool

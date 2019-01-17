@@ -3,6 +3,11 @@
 
 package gio
 
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -29,3 +34,17 @@ package gio
 
 */
 import "C"
+
+var callbackCancellablesourcefuncId int
+var callbackCancellablesourcefuncMap = make(map[int]CancellablesourcefuncCallback)
+var callbackCancellablesourcefuncLock sync.RWMutex
+
+// CancellablesourcefuncCallback is a callback function for a 'CancellableSourceFunc' callback.
+type CancellablesourcefuncCallback func(cancellable *Cancellable) bool
+
+var callbackPollablesourcefuncId int
+var callbackPollablesourcefuncMap = make(map[int]PollablesourcefuncCallback)
+var callbackPollablesourcefuncLock sync.RWMutex
+
+// PollablesourcefuncCallback is a callback function for a 'PollableSourceFunc' callback.
+type PollablesourcefuncCallback func(pollableStream *gobject.Object) bool

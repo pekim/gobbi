@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +21,10 @@ package gtk
 
 */
 import "C"
+
+var callbackClipboardrichtextreceivedfuncId int
+var callbackClipboardrichtextreceivedfuncMap = make(map[int]ClipboardrichtextreceivedfuncCallback)
+var callbackClipboardrichtextreceivedfuncLock sync.RWMutex
+
+// ClipboardrichtextreceivedfuncCallback is a callback function for a 'ClipboardRichTextReceivedFunc' callback.
+type ClipboardrichtextreceivedfuncCallback func(clipboard *Clipboard, format *gdk.Atom, text string, length uint64)

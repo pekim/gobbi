@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +21,10 @@ package gtk
 
 */
 import "C"
+
+var callbackBuilderconnectfuncId int
+var callbackBuilderconnectfuncMap = make(map[int]BuilderconnectfuncCallback)
+var callbackBuilderconnectfuncLock sync.RWMutex
+
+// BuilderconnectfuncCallback is a callback function for a 'BuilderConnectFunc' callback.
+type BuilderconnectfuncCallback func(builder *Builder, object *gobject.Object, signalName string, handlerName string, connectObject *gobject.Object, flags gobject.ConnectFlags)

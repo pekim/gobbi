@@ -3,6 +3,8 @@
 
 package gtk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -26,3 +28,24 @@ package gtk
 
 */
 import "C"
+
+var callbackListboxfilterfuncId int
+var callbackListboxfilterfuncMap = make(map[int]ListboxfilterfuncCallback)
+var callbackListboxfilterfuncLock sync.RWMutex
+
+// ListboxfilterfuncCallback is a callback function for a 'ListBoxFilterFunc' callback.
+type ListboxfilterfuncCallback func(row *ListBoxRow) bool
+
+var callbackListboxsortfuncId int
+var callbackListboxsortfuncMap = make(map[int]ListboxsortfuncCallback)
+var callbackListboxsortfuncLock sync.RWMutex
+
+// ListboxsortfuncCallback is a callback function for a 'ListBoxSortFunc' callback.
+type ListboxsortfuncCallback func(row1 *ListBoxRow, row2 *ListBoxRow) int32
+
+var callbackListboxupdateheaderfuncId int
+var callbackListboxupdateheaderfuncMap = make(map[int]ListboxupdateheaderfuncCallback)
+var callbackListboxupdateheaderfuncLock sync.RWMutex
+
+// ListboxupdateheaderfuncCallback is a callback function for a 'ListBoxUpdateHeaderFunc' callback.
+type ListboxupdateheaderfuncCallback func(row *ListBoxRow, before *ListBoxRow)

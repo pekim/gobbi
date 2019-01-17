@@ -3,6 +3,8 @@
 
 package glib
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +18,10 @@ package glib
 
 */
 import "C"
+
+var callbackRegexevalcallbackId int
+var callbackRegexevalcallbackMap = make(map[int]RegexevalcallbackCallback)
+var callbackRegexevalcallbackLock sync.RWMutex
+
+// RegexevalcallbackCallback is a callback function for a 'RegexEvalCallback' callback.
+type RegexevalcallbackCallback func(matchInfo *MatchInfo, result *String) bool

@@ -74,8 +74,8 @@ func (c *Callback) generate(g *jen.Group, version *Version) {
 	}
 
 	c.generateCgoPreamble()
-	//c.generateVariables(g)
-	//c.generateCallbackType(g)
+	c.generateVariables(g)
+	c.generateCallbackType(g)
 	//c.generateConnectFunction(g)
 	//c.generateDisconnectFunction(g)
 	//c.generateHandlerFunction(g)
@@ -104,6 +104,14 @@ func (c *Callback) generateCgoPreamble() {
 			c.goNameHandler,
 			handlerParams,
 		))
+}
+
+func (c *Callback) generateVariables(g *jen.Group) {
+	g.Var().Id(c.varNameId).Int()
+	g.Var().Id(c.varNameMap).Op("=").Make(jen.Map(jen.Int()).Id(c.callbackTypeName))
+	g.Var().Id(c.varNameLock).Qual("sync", "RWMutex")
+
+	g.Line()
 }
 
 func (c *Callback) cTypeDeclaration(typ *Type) string {
@@ -136,4 +144,32 @@ func (c *Callback) cTypeDeclaration(typ *Type) string {
 	}
 
 	return cDeclaration
+}
+
+func (c *Callback) generateCallbackType(g *jen.Group) {
+	params := Parameters{}
+	for _, p := range c.Parameters {
+		if p.Name == "data" || p.Name == "user_data" {
+			continue
+		}
+
+		params = append(params, p)
+	}
+
+	g.Commentf("%s is a callback function for a '%s' callback.",
+		c.callbackTypeName,
+		c.Name)
+
+	g.
+		Type().
+		Id(c.callbackTypeName).
+		Func().
+		ParamsFunc(params.generateFunctionDeclaration).
+		ParamsFunc(c.generateCallbackReturnDeclaration)
+
+	g.Line()
+}
+
+func (c *Callback) generateCallbackReturnDeclaration(g *jen.Group) {
+	c.ReturnValue.generateFunctionDeclaration(g)
 }

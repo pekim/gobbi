@@ -3,6 +3,8 @@
 
 package glib
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -22,4 +24,18 @@ package glib
 */
 import "C"
 
+var callbackTestdatafuncId int
+var callbackTestdatafuncMap = make(map[int]TestdatafuncCallback)
+var callbackTestdatafuncLock sync.RWMutex
+
+// TestdatafuncCallback is a callback function for a 'TestDataFunc' callback.
+type TestdatafuncCallback func()
+
 // Unsupported : callback TestFixtureFunc : unsupported parameter fixture : no type generator for gpointer (gpointer) for param fixture
+
+var callbackTestfuncId int
+var callbackTestfuncMap = make(map[int]TestfuncCallback)
+var callbackTestfuncLock sync.RWMutex
+
+// TestfuncCallback is a callback function for a 'TestFunc' callback.
+type TestfuncCallback func()

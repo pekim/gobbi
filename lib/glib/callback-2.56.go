@@ -3,6 +3,8 @@
 
 package glib
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +18,10 @@ package glib
 
 */
 import "C"
+
+var callbackClearhandlefuncId int
+var callbackClearhandlefuncMap = make(map[int]ClearhandlefuncCallback)
+var callbackClearhandlefuncLock sync.RWMutex
+
+// ClearhandlefuncCallback is a callback function for a 'ClearHandleFunc' callback.
+type ClearhandlefuncCallback func(handleId uint32)

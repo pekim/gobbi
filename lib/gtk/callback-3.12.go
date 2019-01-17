@@ -3,6 +3,8 @@
 
 package gtk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -26,3 +28,24 @@ package gtk
 
 */
 import "C"
+
+var callbackFlowboxfilterfuncId int
+var callbackFlowboxfilterfuncMap = make(map[int]FlowboxfilterfuncCallback)
+var callbackFlowboxfilterfuncLock sync.RWMutex
+
+// FlowboxfilterfuncCallback is a callback function for a 'FlowBoxFilterFunc' callback.
+type FlowboxfilterfuncCallback func(child *FlowBoxChild) bool
+
+var callbackFlowboxforeachfuncId int
+var callbackFlowboxforeachfuncMap = make(map[int]FlowboxforeachfuncCallback)
+var callbackFlowboxforeachfuncLock sync.RWMutex
+
+// FlowboxforeachfuncCallback is a callback function for a 'FlowBoxForeachFunc' callback.
+type FlowboxforeachfuncCallback func(box *FlowBox, child *FlowBoxChild)
+
+var callbackFlowboxsortfuncId int
+var callbackFlowboxsortfuncMap = make(map[int]FlowboxsortfuncCallback)
+var callbackFlowboxsortfuncLock sync.RWMutex
+
+// FlowboxsortfuncCallback is a callback function for a 'FlowBoxSortFunc' callback.
+type FlowboxsortfuncCallback func(child1 *FlowBoxChild, child2 *FlowBoxChild) int32

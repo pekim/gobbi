@@ -3,6 +3,8 @@
 
 package gdkpixbuf
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,3 +16,10 @@ package gdkpixbuf
 
 */
 import "C"
+
+var callbackPixbufsavefuncId int
+var callbackPixbufsavefuncMap = make(map[int]PixbufsavefuncCallback)
+var callbackPixbufsavefuncLock sync.RWMutex
+
+// PixbufsavefuncCallback is a callback function for a 'PixbufSaveFunc' callback.
+type PixbufsavefuncCallback func(buf []uint8) bool

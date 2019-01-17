@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +21,10 @@ package gtk
 
 */
 import "C"
+
+var callbackFlowboxcreatewidgetfuncId int
+var callbackFlowboxcreatewidgetfuncMap = make(map[int]FlowboxcreatewidgetfuncCallback)
+var callbackFlowboxcreatewidgetfuncLock sync.RWMutex
+
+// FlowboxcreatewidgetfuncCallback is a callback function for a 'FlowBoxCreateWidgetFunc' callback.
+type FlowboxcreatewidgetfuncCallback func(item *gobject.Object) *Widget

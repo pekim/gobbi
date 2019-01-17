@@ -3,6 +3,12 @@
 
 package gtk
 
+import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -22,4 +28,18 @@ package gtk
 */
 import "C"
 
+var callbackAccelgroupfindfuncId int
+var callbackAccelgroupfindfuncMap = make(map[int]AccelgroupfindfuncCallback)
+var callbackAccelgroupfindfuncLock sync.RWMutex
+
+// AccelgroupfindfuncCallback is a callback function for a 'AccelGroupFindFunc' callback.
+type AccelgroupfindfuncCallback func(key *AccelKey, closure *gobject.Closure) bool
+
 // Unsupported : callback ColorSelectionChangePaletteWithScreenFunc : unsupported parameter colors :
+
+var callbackModuledisplayinitfuncId int
+var callbackModuledisplayinitfuncMap = make(map[int]ModuledisplayinitfuncCallback)
+var callbackModuledisplayinitfuncLock sync.RWMutex
+
+// ModuledisplayinitfuncCallback is a callback function for a 'ModuleDisplayInitFunc' callback.
+type ModuledisplayinitfuncCallback func(display *gdk.Display)

@@ -3,6 +3,8 @@
 
 package gio
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -25,3 +27,10 @@ package gio
 
 */
 import "C"
+
+var callbackVfsfilelookupfuncId int
+var callbackVfsfilelookupfuncMap = make(map[int]VfsfilelookupfuncCallback)
+var callbackVfsfilelookupfuncLock sync.RWMutex
+
+// VfsfilelookupfuncCallback is a callback function for a 'VfsFileLookupFunc' callback.
+type VfsfilelookupfuncCallback func(vfs *Vfs, identifier string) *File

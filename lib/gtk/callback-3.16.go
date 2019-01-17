@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +21,10 @@ package gtk
 
 */
 import "C"
+
+var callbackListboxcreatewidgetfuncId int
+var callbackListboxcreatewidgetfuncMap = make(map[int]ListboxcreatewidgetfuncCallback)
+var callbackListboxcreatewidgetfuncLock sync.RWMutex
+
+// ListboxcreatewidgetfuncCallback is a callback function for a 'ListBoxCreateWidgetFunc' callback.
+type ListboxcreatewidgetfuncCallback func(item *gobject.Object) *Widget

@@ -2,6 +2,12 @@
 
 package pangocairo
 
+import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
+	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -13,3 +19,10 @@ package pangocairo
 
 */
 import "C"
+
+var callbackShaperendererfuncId int
+var callbackShaperendererfuncMap = make(map[int]ShaperendererfuncCallback)
+var callbackShaperendererfuncLock sync.RWMutex
+
+// ShaperendererfuncCallback is a callback function for a 'ShapeRendererFunc' callback.
+type ShaperendererfuncCallback func(cr *cairo.Context, attr *pango.AttrShape, doPath bool)

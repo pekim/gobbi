@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,3 +21,10 @@ package gtk
 
 */
 import "C"
+
+var callbackClipboardimagereceivedfuncId int
+var callbackClipboardimagereceivedfuncMap = make(map[int]ClipboardimagereceivedfuncCallback)
+var callbackClipboardimagereceivedfuncLock sync.RWMutex
+
+// ClipboardimagereceivedfuncCallback is a callback function for a 'ClipboardImageReceivedFunc' callback.
+type ClipboardimagereceivedfuncCallback func(clipboard *Clipboard, pixbuf *gdkpixbuf.Pixbuf)

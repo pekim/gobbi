@@ -3,6 +3,8 @@
 
 package pango
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,3 +16,10 @@ package pango
 
 */
 import "C"
+
+var callbackFontsetforeachfuncId int
+var callbackFontsetforeachfuncMap = make(map[int]FontsetforeachfuncCallback)
+var callbackFontsetforeachfuncLock sync.RWMutex
+
+// FontsetforeachfuncCallback is a callback function for a 'FontsetForeachFunc' callback.
+type FontsetforeachfuncCallback func(fontset *Fontset, font *Font) bool

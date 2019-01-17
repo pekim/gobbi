@@ -3,6 +3,11 @@
 
 package gdk
 
+import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,3 +19,10 @@ package gdk
 
 */
 import "C"
+
+var callbackWindowinvalidatehandlerfuncId int
+var callbackWindowinvalidatehandlerfuncMap = make(map[int]WindowinvalidatehandlerfuncCallback)
+var callbackWindowinvalidatehandlerfuncLock sync.RWMutex
+
+// WindowinvalidatehandlerfuncCallback is a callback function for a 'WindowInvalidateHandlerFunc' callback.
+type WindowinvalidatehandlerfuncCallback func(window *Window, region *cairo.Region)

@@ -3,6 +3,11 @@
 
 package gio
 
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -69,6 +74,76 @@ package gio
 
 */
 import "C"
+
+var callbackBusacquiredcallbackId int
+var callbackBusacquiredcallbackMap = make(map[int]BusacquiredcallbackCallback)
+var callbackBusacquiredcallbackLock sync.RWMutex
+
+// BusacquiredcallbackCallback is a callback function for a 'BusAcquiredCallback' callback.
+type BusacquiredcallbackCallback func(connection *DBusConnection, name string)
+
+var callbackBusnameacquiredcallbackId int
+var callbackBusnameacquiredcallbackMap = make(map[int]BusnameacquiredcallbackCallback)
+var callbackBusnameacquiredcallbackLock sync.RWMutex
+
+// BusnameacquiredcallbackCallback is a callback function for a 'BusNameAcquiredCallback' callback.
+type BusnameacquiredcallbackCallback func(connection *DBusConnection, name string)
+
+var callbackBusnameappearedcallbackId int
+var callbackBusnameappearedcallbackMap = make(map[int]BusnameappearedcallbackCallback)
+var callbackBusnameappearedcallbackLock sync.RWMutex
+
+// BusnameappearedcallbackCallback is a callback function for a 'BusNameAppearedCallback' callback.
+type BusnameappearedcallbackCallback func(connection *DBusConnection, name string, nameOwner string)
+
+var callbackBusnamelostcallbackId int
+var callbackBusnamelostcallbackMap = make(map[int]BusnamelostcallbackCallback)
+var callbackBusnamelostcallbackLock sync.RWMutex
+
+// BusnamelostcallbackCallback is a callback function for a 'BusNameLostCallback' callback.
+type BusnamelostcallbackCallback func(connection *DBusConnection, name string)
+
+var callbackBusnamevanishedcallbackId int
+var callbackBusnamevanishedcallbackMap = make(map[int]BusnamevanishedcallbackCallback)
+var callbackBusnamevanishedcallbackLock sync.RWMutex
+
+// BusnamevanishedcallbackCallback is a callback function for a 'BusNameVanishedCallback' callback.
+type BusnamevanishedcallbackCallback func(connection *DBusConnection, name string)
+
+var callbackDbusinterfacegetpropertyfuncId int
+var callbackDbusinterfacegetpropertyfuncMap = make(map[int]DbusinterfacegetpropertyfuncCallback)
+var callbackDbusinterfacegetpropertyfuncLock sync.RWMutex
+
+// DbusinterfacegetpropertyfuncCallback is a callback function for a 'DBusInterfaceGetPropertyFunc' callback.
+type DbusinterfacegetpropertyfuncCallback func(connection *DBusConnection, sender string, objectPath string, interfaceName string, propertyName string, error *glib.Error) *glib.Variant
+
+var callbackDbusinterfacemethodcallfuncId int
+var callbackDbusinterfacemethodcallfuncMap = make(map[int]DbusinterfacemethodcallfuncCallback)
+var callbackDbusinterfacemethodcallfuncLock sync.RWMutex
+
+// DbusinterfacemethodcallfuncCallback is a callback function for a 'DBusInterfaceMethodCallFunc' callback.
+type DbusinterfacemethodcallfuncCallback func(connection *DBusConnection, sender string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, invocation *DBusMethodInvocation)
+
+var callbackDbusinterfacesetpropertyfuncId int
+var callbackDbusinterfacesetpropertyfuncMap = make(map[int]DbusinterfacesetpropertyfuncCallback)
+var callbackDbusinterfacesetpropertyfuncLock sync.RWMutex
+
+// DbusinterfacesetpropertyfuncCallback is a callback function for a 'DBusInterfaceSetPropertyFunc' callback.
+type DbusinterfacesetpropertyfuncCallback func(connection *DBusConnection, sender string, objectPath string, interfaceName string, propertyName string, value *glib.Variant, error *glib.Error) bool
+
+var callbackDbusmessagefilterfunctionId int
+var callbackDbusmessagefilterfunctionMap = make(map[int]DbusmessagefilterfunctionCallback)
+var callbackDbusmessagefilterfunctionLock sync.RWMutex
+
+// DbusmessagefilterfunctionCallback is a callback function for a 'DBusMessageFilterFunction' callback.
+type DbusmessagefilterfunctionCallback func(connection *DBusConnection, message *DBusMessage, incoming bool) *DBusMessage
+
+var callbackDbussignalcallbackId int
+var callbackDbussignalcallbackMap = make(map[int]DbussignalcallbackCallback)
+var callbackDbussignalcallbackLock sync.RWMutex
+
+// DbussignalcallbackCallback is a callback function for a 'DBusSignalCallback' callback.
+type DbussignalcallbackCallback func(connection *DBusConnection, senderName string, objectPath string, interfaceName string, signalName string, parameters *glib.Variant)
 
 // Unsupported : callback DBusSubtreeDispatchFunc : unsupported parameter out_user_data : no type generator for gpointer (gpointer*) for param out_user_data
 

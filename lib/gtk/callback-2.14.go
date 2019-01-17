@@ -3,6 +3,8 @@
 
 package gtk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -21,3 +23,17 @@ package gtk
 
 */
 import "C"
+
+var callbackCalendardetailfuncId int
+var callbackCalendardetailfuncMap = make(map[int]CalendardetailfuncCallback)
+var callbackCalendardetailfuncLock sync.RWMutex
+
+// CalendardetailfuncCallback is a callback function for a 'CalendarDetailFunc' callback.
+type CalendardetailfuncCallback func(calendar *Calendar, year uint32, month uint32, day uint32) string
+
+var callbackClipboardurireceivedfuncId int
+var callbackClipboardurireceivedfuncMap = make(map[int]ClipboardurireceivedfuncCallback)
+var callbackClipboardurireceivedfuncLock sync.RWMutex
+
+// ClipboardurireceivedfuncCallback is a callback function for a 'ClipboardURIReceivedFunc' callback.
+type ClipboardurireceivedfuncCallback func(clipboard *Clipboard, uris []string)

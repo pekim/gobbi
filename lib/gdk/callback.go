@@ -2,6 +2,8 @@
 
 package gdk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,3 +19,10 @@ import "C"
 // Unsupported : callback EventFunc : unsupported parameter event : no type generator for Event (GdkEvent*) for param event
 
 // Unsupported : callback FilterFunc : unsupported parameter xevent : no type generator for XEvent (GdkXEvent*) for param xevent
+
+var callbackWindowchildfuncId int
+var callbackWindowchildfuncMap = make(map[int]WindowchildfuncCallback)
+var callbackWindowchildfuncLock sync.RWMutex
+
+// WindowchildfuncCallback is a callback function for a 'WindowChildFunc' callback.
+type WindowchildfuncCallback func(window *Window) bool

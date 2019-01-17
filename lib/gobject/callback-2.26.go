@@ -3,6 +3,8 @@
 
 package gobject
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,3 +16,10 @@ package gobject
 
 */
 import "C"
+
+var callbackBindingtransformfuncId int
+var callbackBindingtransformfuncMap = make(map[int]BindingtransformfuncCallback)
+var callbackBindingtransformfuncLock sync.RWMutex
+
+// BindingtransformfuncCallback is a callback function for a 'BindingTransformFunc' callback.
+type BindingtransformfuncCallback func(binding *Binding, fromValue *Value, toValue *Value) bool
