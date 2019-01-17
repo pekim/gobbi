@@ -10,10 +10,16 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	gboolean callback_accelgroupfindfuncHandler(GObject *, GtkAccelKey*, GClosure*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_moduledisplayinitfuncHandler(GObject *, GdkDisplay*, gpointer);
+
+*/
 import "C"
 
-// potentially supported callback : AccelGroupFindFunc
-
 // Unsupported : callback ColorSelectionChangePaletteWithScreenFunc : unsupported parameter colors :
-
-// potentially supported callback : ModuleDisplayInitFunc

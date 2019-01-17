@@ -10,6 +10,9 @@ package glib
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : TestLogFatalFunc
+	gboolean callback_testlogfatalfuncHandler(GObject *, const gchar*, GLogLevelFlags, const gchar*, gpointer, gpointer);
+
+*/
+import "C"

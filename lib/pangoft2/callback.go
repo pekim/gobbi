@@ -7,6 +7,9 @@ package pangoft2
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <pango/pangoft2.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : SubstituteFunc
+	void callback_substitutefuncHandler(GObject *, FcPattern*, gpointer, gpointer);
+
+*/
+import "C"

@@ -8,6 +8,9 @@ package gobject
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib-object.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : BindingTransformFunc
+	gboolean callback_bindingtransformfuncHandler(GObject *, GBinding*, const GValue*, GValue*, gpointer, gpointer);
+
+*/
+import "C"

@@ -10,6 +10,9 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : ClipboardRichTextReceivedFunc
+	void callback_clipboardrichtextreceivedfuncHandler(GObject *, GtkClipboard*, GdkAtom, const guint8*, gsize, gpointer, gpointer);
+
+*/
+import "C"

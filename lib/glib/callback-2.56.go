@@ -10,6 +10,9 @@ package glib
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : ClearHandleFunc
+	void callback_clearhandlefuncHandler(GObject *, guint, gpointer);
+
+*/
+import "C"

@@ -10,10 +10,16 @@ package glib
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	void callback_testdatafuncHandler(GObject *, gconstpointer, gpointer);
+
+*/
+/*
+
+	void callback_testfuncHandler(GObject *, gpointer);
+
+*/
 import "C"
 
-// potentially supported callback : TestDataFunc
-
 // Unsupported : callback TestFixtureFunc : unsupported parameter fixture : no type generator for gpointer (gpointer) for param fixture
-
-// potentially supported callback : TestFunc

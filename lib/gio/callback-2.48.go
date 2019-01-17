@@ -19,6 +19,9 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : DatagramBasedSourceFunc
+	gboolean callback_datagrambasedsourcefuncHandler(GObject *, GDatagramBased*, GIOCondition, gpointer, gpointer);
+
+*/
+import "C"

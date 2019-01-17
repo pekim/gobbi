@@ -8,6 +8,9 @@ package pango
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <pango/pango.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : FontsetForeachFunc
+	gboolean callback_fontsetforeachfuncHandler(GObject *, PangoFontset*, PangoFont*, gpointer, gpointer);
+
+*/
+import "C"

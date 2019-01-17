@@ -19,6 +19,9 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : VfsFileLookupFunc
+	GFile* callback_vfsfilelookupfuncHandler(GObject *, GVfs*, const char*, gpointer, gpointer);
+
+*/
+import "C"

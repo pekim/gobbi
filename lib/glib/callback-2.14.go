@@ -10,6 +10,9 @@ package glib
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : RegexEvalCallback
+	gboolean callback_regexevalcallbackHandler(GObject *, const GMatchInfo*, GString*, gpointer, gpointer);
+
+*/
+import "C"

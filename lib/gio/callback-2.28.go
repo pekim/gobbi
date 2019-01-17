@@ -18,8 +18,14 @@ package gio
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	gboolean callback_cancellablesourcefuncHandler(GObject *, GCancellable*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_pollablesourcefuncHandler(GObject *, GObject*, gpointer, gpointer);
+
+*/
 import "C"
-
-// potentially supported callback : CancellableSourceFunc
-
-// potentially supported callback : PollableSourceFunc

@@ -7,6 +7,9 @@ package gdkpixbuf
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : PixbufDestroyNotify
+	void callback_pixbufdestroynotifyHandler(GObject *, guchar*, gpointer, gpointer);
+
+*/
+import "C"

@@ -10,6 +10,9 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : ListBoxCreateWidgetFunc
+	GtkWidget* callback_listboxcreatewidgetfuncHandler(GObject *, gpointer, gpointer, gpointer);
+
+*/
+import "C"

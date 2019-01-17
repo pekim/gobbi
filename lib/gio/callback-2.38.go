@@ -19,6 +19,9 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : FileMeasureProgressCallback
+	void callback_filemeasureprogresscallbackHandler(GObject *, gboolean, guint64, guint64, guint64, gpointer, gpointer);
+
+*/
+import "C"

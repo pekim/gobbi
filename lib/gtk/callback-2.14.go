@@ -10,8 +10,14 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	gchar* callback_calendardetailfuncHandler(GObject *, GtkCalendar*, guint, guint, guint, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_clipboardurireceivedfuncHandler(GObject *, GtkClipboard*, gchar**, gpointer, gpointer);
+
+*/
 import "C"
-
-// potentially supported callback : CalendarDetailFunc
-
-// potentially supported callback : ClipboardURIReceivedFunc

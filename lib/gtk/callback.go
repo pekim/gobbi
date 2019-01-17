@@ -9,92 +9,203 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	gboolean callback_accelgroupactivateHandler(GObject *, GtkAccelGroup*, GObject*, guint, GdkModifierType, gpointer);
+
+*/
+/*
+
+	void callback_accelmapforeachHandler(GObject *, gpointer, const gchar*, guint, GdkModifierType, gboolean, gpointer);
+
+*/
+/*
+
+	gint callback_assistantpagefuncHandler(GObject *, gint, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_callbackHandler(GObject *, GtkWidget*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_cellalloccallbackHandler(GObject *, GtkCellRenderer*, const GdkRectangle*, const GdkRectangle*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_cellcallbackHandler(GObject *, GtkCellRenderer*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_celllayoutdatafuncHandler(GObject *, GtkCellLayout*, GtkCellRenderer*, GtkTreeModel*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_clipboardreceivedfuncHandler(GObject *, GtkClipboard*, GtkSelectionData*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_clipboardtextreceivedfuncHandler(GObject *, GtkClipboard*, const gchar*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_entrycompletionmatchfuncHandler(GObject *, GtkEntryCompletion*, const gchar*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_filefilterfuncHandler(GObject *, const GtkFileFilterInfo*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_fontfilterfuncHandler(GObject *, const PangoFontFamily*, const PangoFontFace*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_iconviewforeachfuncHandler(GObject *, GtkIconView*, GtkTreePath*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_menudetachfuncHandler(GObject *, GtkWidget*, GtkMenu*, gpointer);
+
+*/
+/*
+
+	void callback_menupositionfuncHandler(GObject *, GtkMenu*, gint*, gint*, gboolean*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_pagesetupdonefuncHandler(GObject *, GtkPageSetup*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_printsettingsfuncHandler(GObject *, const gchar*, const gchar*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_rcpropertyparserHandler(GObject *, const GParamSpec*, const GString*, GValue*, gpointer);
+
+*/
+/*
+
+	gboolean callback_recentfilterfuncHandler(GObject *, const GtkRecentFilterInfo*, gpointer, gpointer);
+
+*/
+/*
+
+	gint callback_recentsortfuncHandler(GObject *, GtkRecentInfo*, GtkRecentInfo*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_stylepropertyparserHandler(GObject *, const gchar*, GValue*, gpointer);
+
+*/
+/*
+
+	gboolean callback_textbufferdeserializefuncHandler(GObject *, GtkTextBuffer*, GtkTextBuffer*, GtkTextIter*, guint8*, gsize, gboolean, gpointer, gpointer);
+
+*/
+/*
+
+	guint8* callback_textbufferserializefuncHandler(GObject *, GtkTextBuffer*, GtkTextBuffer*, const GtkTextIter*, const GtkTextIter*, gsize*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_textcharpredicateHandler(GObject *, gunichar, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_texttagtableforeachHandler(GObject *, GtkTextTag*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_treecelldatafuncHandler(GObject *, GtkTreeViewColumn*, GtkCellRenderer*, GtkTreeModel*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_treedestroycountfuncHandler(GObject *, GtkTreeView*, GtkTreePath*, gint, gpointer, gpointer);
+
+*/
+/*
+
+	gint callback_treeitercomparefuncHandler(GObject *, GtkTreeModel*, GtkTreeIter*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_treemodelfiltermodifyfuncHandler(GObject *, GtkTreeModel*, GtkTreeIter*, GValue*, gint, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_treemodelfiltervisiblefuncHandler(GObject *, GtkTreeModel*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_treemodelforeachfuncHandler(GObject *, GtkTreeModel*, GtkTreePath*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_treeselectionforeachfuncHandler(GObject *, GtkTreeModel*, GtkTreePath*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_treeselectionfuncHandler(GObject *, GtkTreeSelection*, GtkTreeModel*, GtkTreePath*, gboolean, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_treeviewcolumndropfuncHandler(GObject *, GtkTreeView*, GtkTreeViewColumn*, GtkTreeViewColumn*, GtkTreeViewColumn*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_treeviewmappingfuncHandler(GObject *, GtkTreeView*, GtkTreePath*, gpointer, gpointer);
+
+*/
+/*
+
+	gboolean callback_treeviewrowseparatorfuncHandler(GObject *, GtkTreeModel*, GtkTreeIter*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_treeviewsearchpositionfuncHandler(GObject *, GtkTreeView*, GtkWidget*, gpointer, gpointer);
+
+*/
 import "C"
-
-// potentially supported callback : AccelGroupActivate
-
-// potentially supported callback : AccelMapForeach
-
-// potentially supported callback : AssistantPageFunc
-
-// potentially supported callback : Callback
-
-// potentially supported callback : CellAllocCallback
-
-// potentially supported callback : CellCallback
-
-// potentially supported callback : CellLayoutDataFunc
 
 // Unsupported : callback ClipboardClearFunc : unsupported parameter user_data_or_owner : no type generator for gpointer (gpointer) for param user_data_or_owner
 
 // Unsupported : callback ClipboardGetFunc : unsupported parameter user_data_or_owner : no type generator for gpointer (gpointer) for param user_data_or_owner
 
-// potentially supported callback : ClipboardReceivedFunc
-
-// potentially supported callback : ClipboardTextReceivedFunc
-
 // Unsupported : callback ColorSelectionChangePaletteFunc : unsupported parameter colors :
-
-// potentially supported callback : EntryCompletionMatchFunc
-
-// potentially supported callback : FileFilterFunc
-
-// potentially supported callback : FontFilterFunc
-
-// potentially supported callback : IconViewForeachFunc
 
 // Unsupported : callback KeySnoopFunc : unsupported parameter func_data : no type generator for gpointer (gpointer) for param func_data
 
-// potentially supported callback : MenuDetachFunc
-
-// potentially supported callback : MenuPositionFunc
-
-// potentially supported callback : ModuleInitFunc
-
-// potentially supported callback : PageSetupDoneFunc
-
-// potentially supported callback : PrintSettingsFunc
-
-// potentially supported callback : RcPropertyParser
-
-// potentially supported callback : RecentFilterFunc
-
-// potentially supported callback : RecentSortFunc
-
-// potentially supported callback : StylePropertyParser
-
-// potentially supported callback : TextBufferDeserializeFunc
-
-// potentially supported callback : TextBufferSerializeFunc
-
-// potentially supported callback : TextCharPredicate
-
-// potentially supported callback : TextTagTableForeach
+// Unsupported : callback ModuleInitFunc : unsupported ignore parameter argv
 
 // Unsupported : callback TranslateFunc : unsupported parameter func_data : no type generator for gpointer (gpointer) for param func_data
 
-// potentially supported callback : TreeCellDataFunc
-
-// potentially supported callback : TreeDestroyCountFunc
-
-// potentially supported callback : TreeIterCompareFunc
-
-// potentially supported callback : TreeModelFilterModifyFunc
-
-// potentially supported callback : TreeModelFilterVisibleFunc
-
-// potentially supported callback : TreeModelForeachFunc
-
-// potentially supported callback : TreeSelectionForeachFunc
-
-// potentially supported callback : TreeSelectionFunc
-
-// potentially supported callback : TreeViewColumnDropFunc
-
-// potentially supported callback : TreeViewMappingFunc
-
-// potentially supported callback : TreeViewRowSeparatorFunc
-
 // Unsupported : callback TreeViewSearchEqualFunc : unsupported parameter search_data : no type generator for gpointer (gpointer) for param search_data
-
-// potentially supported callback : TreeViewSearchPositionFunc

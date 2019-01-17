@@ -10,6 +10,9 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : TickCallback
+	gboolean callback_tickcallbackHandler(GObject *, GtkWidget*, GdkFrameClock*, gpointer, gpointer);
+
+*/
+import "C"

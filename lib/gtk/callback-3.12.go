@@ -10,10 +10,19 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	gboolean callback_flowboxfilterfuncHandler(GObject *, GtkFlowBoxChild*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_flowboxforeachfuncHandler(GObject *, GtkFlowBox*, GtkFlowBoxChild*, gpointer, gpointer);
+
+*/
+/*
+
+	gint callback_flowboxsortfuncHandler(GObject *, GtkFlowBoxChild*, GtkFlowBoxChild*, gpointer, gpointer);
+
+*/
 import "C"
-
-// potentially supported callback : FlowBoxFilterFunc
-
-// potentially supported callback : FlowBoxForeachFunc
-
-// potentially supported callback : FlowBoxSortFunc

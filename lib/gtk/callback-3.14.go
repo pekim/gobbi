@@ -10,6 +10,9 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : ListBoxForeachFunc
+	void callback_listboxforeachfuncHandler(GObject *, GtkListBox*, GtkListBoxRow*, gpointer, gpointer);
+
+*/
+import "C"

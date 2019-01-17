@@ -8,6 +8,9 @@ package gdk
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : SeatGrabPrepareFunc
+	void callback_seatgrabpreparefuncHandler(GObject *, GdkSeat*, GdkWindow*, gpointer, gpointer);
+
+*/
+import "C"

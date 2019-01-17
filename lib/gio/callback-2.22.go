@@ -18,6 +18,9 @@ package gio
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : SocketSourceFunc
+	gboolean callback_socketsourcefuncHandler(GObject *, GSocket*, GIOCondition, gpointer, gpointer);
+
+*/
+import "C"

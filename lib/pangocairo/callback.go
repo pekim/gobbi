@@ -7,6 +7,9 @@ package pangocairo
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <pango/pangocairo.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : ShapeRendererFunc
+	void callback_shaperendererfuncHandler(GObject *, cairo_t*, PangoAttrShape*, gboolean, gpointer, gpointer);
+
+*/
+import "C"

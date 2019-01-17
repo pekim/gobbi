@@ -10,10 +10,19 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	gboolean callback_listboxfilterfuncHandler(GObject *, GtkListBoxRow*, gpointer, gpointer);
+
+*/
+/*
+
+	gint callback_listboxsortfuncHandler(GObject *, GtkListBoxRow*, GtkListBoxRow*, gpointer, gpointer);
+
+*/
+/*
+
+	void callback_listboxupdateheaderfuncHandler(GObject *, GtkListBoxRow*, GtkListBoxRow*, gpointer, gpointer);
+
+*/
 import "C"
-
-// potentially supported callback : ListBoxFilterFunc
-
-// potentially supported callback : ListBoxSortFunc
-
-// potentially supported callback : ListBoxUpdateHeaderFunc

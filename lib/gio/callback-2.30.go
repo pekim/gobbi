@@ -18,6 +18,9 @@ package gio
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : DBusProxyTypeFunc
+	GType callback_dbusproxytypefuncHandler(GObject *, GDBusObjectManagerClient*, const gchar*, const gchar*, gpointer, gpointer);
+
+*/
+import "C"

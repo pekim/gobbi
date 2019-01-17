@@ -10,6 +10,9 @@ package gtk
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : BuilderConnectFunc
+	void callback_builderconnectfuncHandler(GObject *, GtkBuilder*, GObject*, const gchar*, const gchar*, GObject*, GConnectFlags, gpointer, gpointer);
+
+*/
+import "C"

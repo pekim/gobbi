@@ -8,6 +8,9 @@ package gdk
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : WindowInvalidateHandlerFunc
+	void callback_windowinvalidatehandlerfuncHandler(GObject *, GdkWindow*, cairo_region_t*, gpointer);
+
+*/
+import "C"

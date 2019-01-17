@@ -8,6 +8,9 @@ package gdkpixbuf
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
-import "C"
+/*
 
-// potentially supported callback : PixbufSaveFunc
+	gboolean callback_pixbufsavefuncHandler(GObject *, gchar*, gsize, GError**, gpointer, gpointer);
+
+*/
+import "C"
