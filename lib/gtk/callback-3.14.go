@@ -3,7 +3,10 @@
 
 package gtk
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -25,3 +28,17 @@ var callbackListboxforeachfuncLock sync.RWMutex
 
 // ListboxforeachfuncCallback is a callback function for a 'ListBoxForeachFunc' callback.
 type ListboxforeachfuncCallback func(box *ListBox, row *ListBoxRow)
+
+//export callback_listboxforeachfuncHandler
+func callback_listboxforeachfuncHandler(_ *C.GObject, c_box *C.GtkListBox, c_row *C.GtkListBoxRow, data C.gpointer) {
+	callbackListboxforeachfuncLock.RLock()
+	defer callbackListboxforeachfuncLock.RUnlock()
+
+	box := ListBoxNewFromC(unsafe.Pointer(c_box))
+
+	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
+
+	index := int(uintptr(data))
+	callback := callbackListboxforeachfuncMap[index].callback
+	callback(box, row, userData)
+}

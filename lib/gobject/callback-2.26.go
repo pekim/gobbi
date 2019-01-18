@@ -3,7 +3,10 @@
 
 package gobject
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -23,3 +26,22 @@ var callbackBindingtransformfuncLock sync.RWMutex
 
 // BindingtransformfuncCallback is a callback function for a 'BindingTransformFunc' callback.
 type BindingtransformfuncCallback func(binding *Binding, fromValue *Value, toValue *Value) bool
+
+//export callback_bindingtransformfuncHandler
+func callback_bindingtransformfuncHandler(_ *C.GObject, c_binding *C.GBinding, c_from_value *C.GValue, c_to_value *C.GValue, data C.gpointer) C.gboolean {
+	callbackBindingtransformfuncLock.RLock()
+	defer callbackBindingtransformfuncLock.RUnlock()
+
+	binding := BindingNewFromC(unsafe.Pointer(c_binding))
+
+	fromValue := ValueNewFromC(unsafe.Pointer(c_from_value))
+
+	toValue := ValueNewFromC(unsafe.Pointer(c_to_value))
+
+	index := int(uintptr(data))
+	callback := callbackBindingtransformfuncMap[index].callback
+	retGo := callback(binding, fromValue, toValue, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

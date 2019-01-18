@@ -6,6 +6,7 @@ package gio
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -36,3 +37,22 @@ var callbackDbusproxytypefuncLock sync.RWMutex
 
 // DbusproxytypefuncCallback is a callback function for a 'DBusProxyTypeFunc' callback.
 type DbusproxytypefuncCallback func(manager *DBusObjectManagerClient, objectPath string, interfaceName string) gobject.Type
+
+//export callback_dbusproxytypefuncHandler
+func callback_dbusproxytypefuncHandler(_ *C.GObject, c_manager *C.GDBusObjectManagerClient, c_object_path *C.gchar, c_interface_name *C.gchar, data C.gpointer) C.GType {
+	callbackDbusproxytypefuncLock.RLock()
+	defer callbackDbusproxytypefuncLock.RUnlock()
+
+	manager := DBusObjectManagerClientNewFromC(unsafe.Pointer(c_manager))
+
+	objectPath := C.GoString(c_object_path)
+
+	interfaceName := C.GoString(c_interface_name)
+
+	index := int(uintptr(data))
+	callback := callbackDbusproxytypefuncMap[index].callback
+	retGo := callback(manager, objectPath, interfaceName, userData)
+	retC :=
+		(C.GType)(retGo)
+	return retC
+}

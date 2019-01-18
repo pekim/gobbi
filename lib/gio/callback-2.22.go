@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -36,3 +37,20 @@ var callbackSocketsourcefuncLock sync.RWMutex
 
 // SocketsourcefuncCallback is a callback function for a 'SocketSourceFunc' callback.
 type SocketsourcefuncCallback func(socket *Socket, condition glib.IOCondition) bool
+
+//export callback_socketsourcefuncHandler
+func callback_socketsourcefuncHandler(_ *C.GObject, c_socket *C.GSocket, c_condition C.GIOCondition, data C.gpointer) C.gboolean {
+	callbackSocketsourcefuncLock.RLock()
+	defer callbackSocketsourcefuncLock.RUnlock()
+
+	socket := SocketNewFromC(unsafe.Pointer(c_socket))
+
+	condition := glib.IOCondition(c_condition)
+
+	index := int(uintptr(data))
+	callback := callbackSocketsourcefuncMap[index].callback
+	retGo := callback(socket, condition, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

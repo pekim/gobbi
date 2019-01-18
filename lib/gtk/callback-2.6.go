@@ -6,6 +6,7 @@ package gtk
 import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -28,3 +29,17 @@ var callbackClipboardimagereceivedfuncLock sync.RWMutex
 
 // ClipboardimagereceivedfuncCallback is a callback function for a 'ClipboardImageReceivedFunc' callback.
 type ClipboardimagereceivedfuncCallback func(clipboard *Clipboard, pixbuf *gdkpixbuf.Pixbuf)
+
+//export callback_clipboardimagereceivedfuncHandler
+func callback_clipboardimagereceivedfuncHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, c_pixbuf *C.GdkPixbuf, data C.gpointer) {
+	callbackClipboardimagereceivedfuncLock.RLock()
+	defer callbackClipboardimagereceivedfuncLock.RUnlock()
+
+	clipboard := ClipboardNewFromC(unsafe.Pointer(c_clipboard))
+
+	pixbuf := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(c_pixbuf))
+
+	index := int(uintptr(data))
+	callback := callbackClipboardimagereceivedfuncMap[index].callback
+	callback(clipboard, pixbuf, data)
+}

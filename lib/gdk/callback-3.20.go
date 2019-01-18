@@ -3,7 +3,10 @@
 
 package gdk
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -23,3 +26,17 @@ var callbackSeatgrabpreparefuncLock sync.RWMutex
 
 // SeatgrabpreparefuncCallback is a callback function for a 'SeatGrabPrepareFunc' callback.
 type SeatgrabpreparefuncCallback func(seat *Seat, window *Window)
+
+//export callback_seatgrabpreparefuncHandler
+func callback_seatgrabpreparefuncHandler(_ *C.GObject, c_seat *C.GdkSeat, c_window *C.GdkWindow, data C.gpointer) {
+	callbackSeatgrabpreparefuncLock.RLock()
+	defer callbackSeatgrabpreparefuncLock.RUnlock()
+
+	seat := SeatNewFromC(unsafe.Pointer(c_seat))
+
+	window := WindowNewFromC(unsafe.Pointer(c_window))
+
+	index := int(uintptr(data))
+	callback := callbackSeatgrabpreparefuncMap[index].callback
+	callback(seat, window, userData)
+}

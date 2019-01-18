@@ -6,6 +6,7 @@ package gio
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -42,9 +43,39 @@ var callbackCancellablesourcefuncLock sync.RWMutex
 // CancellablesourcefuncCallback is a callback function for a 'CancellableSourceFunc' callback.
 type CancellablesourcefuncCallback func(cancellable *Cancellable) bool
 
+//export callback_cancellablesourcefuncHandler
+func callback_cancellablesourcefuncHandler(_ *C.GObject, c_cancellable *C.GCancellable, data C.gpointer) C.gboolean {
+	callbackCancellablesourcefuncLock.RLock()
+	defer callbackCancellablesourcefuncLock.RUnlock()
+
+	cancellable := CancellableNewFromC(unsafe.Pointer(c_cancellable))
+
+	index := int(uintptr(data))
+	callback := callbackCancellablesourcefuncMap[index].callback
+	retGo := callback(cancellable, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
+
 var callbackPollablesourcefuncId int
 var callbackPollablesourcefuncMap = make(map[int]PollablesourcefuncCallback)
 var callbackPollablesourcefuncLock sync.RWMutex
 
 // PollablesourcefuncCallback is a callback function for a 'PollableSourceFunc' callback.
 type PollablesourcefuncCallback func(pollableStream *gobject.Object) bool
+
+//export callback_pollablesourcefuncHandler
+func callback_pollablesourcefuncHandler(_ *C.GObject, c_pollable_stream *C.GObject, data C.gpointer) C.gboolean {
+	callbackPollablesourcefuncLock.RLock()
+	defer callbackPollablesourcefuncLock.RUnlock()
+
+	pollableStream := gobject.ObjectNewFromC(unsafe.Pointer(c_pollable_stream))
+
+	index := int(uintptr(data))
+	callback := callbackPollablesourcefuncMap[index].callback
+	retGo := callback(pollableStream, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

@@ -3,7 +3,10 @@
 
 package glib
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -26,3 +29,20 @@ var callbackRegexevalcallbackLock sync.RWMutex
 
 // RegexevalcallbackCallback is a callback function for a 'RegexEvalCallback' callback.
 type RegexevalcallbackCallback func(matchInfo *MatchInfo, result *String) bool
+
+//export callback_regexevalcallbackHandler
+func callback_regexevalcallbackHandler(_ *C.GObject, c_match_info *C.GMatchInfo, c_result *C.GString, data C.gpointer) C.gboolean {
+	callbackRegexevalcallbackLock.RLock()
+	defer callbackRegexevalcallbackLock.RUnlock()
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	result := StringNewFromC(unsafe.Pointer(c_result))
+
+	index := int(uintptr(data))
+	callback := callbackRegexevalcallbackMap[index].callback
+	retGo := callback(matchInfo, result, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

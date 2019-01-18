@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -37,3 +38,20 @@ var callbackDatagrambasedsourcefuncLock sync.RWMutex
 
 // DatagrambasedsourcefuncCallback is a callback function for a 'DatagramBasedSourceFunc' callback.
 type DatagrambasedsourcefuncCallback func(datagramBased *DatagramBased, condition glib.IOCondition) bool
+
+//export callback_datagrambasedsourcefuncHandler
+func callback_datagrambasedsourcefuncHandler(_ *C.GObject, c_datagram_based *C.GDatagramBased, c_condition C.GIOCondition, data C.gpointer) C.gboolean {
+	callbackDatagrambasedsourcefuncLock.RLock()
+	defer callbackDatagrambasedsourcefuncLock.RUnlock()
+
+	datagramBased := DatagramBasedNewFromC(unsafe.Pointer(c_datagram_based))
+
+	condition := glib.IOCondition(c_condition)
+
+	index := int(uintptr(data))
+	callback := callbackDatagrambasedsourcefuncMap[index].callback
+	retGo := callback(datagramBased, condition, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

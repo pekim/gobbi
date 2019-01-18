@@ -26,3 +26,22 @@ var callbackTestlogfatalfuncLock sync.RWMutex
 
 // TestlogfatalfuncCallback is a callback function for a 'TestLogFatalFunc' callback.
 type TestlogfatalfuncCallback func(logDomain string, logLevel LogLevelFlags, message string) bool
+
+//export callback_testlogfatalfuncHandler
+func callback_testlogfatalfuncHandler(_ *C.GObject, c_log_domain *C.gchar, c_log_level C.GLogLevelFlags, c_message *C.gchar, data C.gpointer) C.gboolean {
+	callbackTestlogfatalfuncLock.RLock()
+	defer callbackTestlogfatalfuncLock.RUnlock()
+
+	logDomain := C.GoString(c_log_domain)
+
+	logLevel := LogLevelFlags(c_log_level)
+
+	message := C.GoString(c_message)
+
+	index := int(uintptr(data))
+	callback := callbackTestlogfatalfuncMap[index].callback
+	retGo := callback(logDomain, logLevel, message, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

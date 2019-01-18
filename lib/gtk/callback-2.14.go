@@ -3,7 +3,10 @@
 
 package gtk
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -17,11 +20,6 @@ import "sync"
 	gchar* callback_calendardetailfuncHandler(GObject *, GtkCalendar*, guint, guint, guint, gpointer, gpointer);
 
 */
-/*
-
-	void callback_clipboardurireceivedfuncHandler(GObject *, GtkClipboard*, gchar**, gpointer, gpointer);
-
-*/
 import "C"
 
 var callbackCalendardetailfuncId int
@@ -31,9 +29,25 @@ var callbackCalendardetailfuncLock sync.RWMutex
 // CalendardetailfuncCallback is a callback function for a 'CalendarDetailFunc' callback.
 type CalendardetailfuncCallback func(calendar *Calendar, year uint32, month uint32, day uint32) string
 
-var callbackClipboardurireceivedfuncId int
-var callbackClipboardurireceivedfuncMap = make(map[int]ClipboardurireceivedfuncCallback)
-var callbackClipboardurireceivedfuncLock sync.RWMutex
+//export callback_calendardetailfuncHandler
+func callback_calendardetailfuncHandler(_ *C.GObject, c_calendar *C.GtkCalendar, c_year C.guint, c_month C.guint, c_day C.guint, data C.gpointer) {
+	callbackCalendardetailfuncLock.RLock()
+	defer callbackCalendardetailfuncLock.RUnlock()
 
-// ClipboardurireceivedfuncCallback is a callback function for a 'ClipboardURIReceivedFunc' callback.
-type ClipboardurireceivedfuncCallback func(clipboard *Clipboard, uris []string)
+	calendar := CalendarNewFromC(unsafe.Pointer(c_calendar))
+
+	year := uint32(c_year)
+
+	month := uint32(c_month)
+
+	day := uint32(c_day)
+
+	index := int(uintptr(data))
+	callback := callbackCalendardetailfuncMap[index].callback
+	retGo := callback(calendar, year, month, day, userData)
+	retC :=
+		C.CString(retGo)
+	return retC
+}
+
+// Unsupported : callback ClipboardURIReceivedFunc : unsupported parameter uris, array type interface not found

@@ -6,6 +6,7 @@ package gtk
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -28,3 +29,18 @@ var callbackListboxcreatewidgetfuncLock sync.RWMutex
 
 // ListboxcreatewidgetfuncCallback is a callback function for a 'ListBoxCreateWidgetFunc' callback.
 type ListboxcreatewidgetfuncCallback func(item *gobject.Object) *Widget
+
+//export callback_listboxcreatewidgetfuncHandler
+func callback_listboxcreatewidgetfuncHandler(_ *C.GObject, c_item *C.GObject, data C.gpointer) **C.GtkWidget {
+	callbackListboxcreatewidgetfuncLock.RLock()
+	defer callbackListboxcreatewidgetfuncLock.RUnlock()
+
+	item := gobject.ObjectNewFromC(unsafe.Pointer(c_item))
+
+	index := int(uintptr(data))
+	callback := callbackListboxcreatewidgetfuncMap[index].callback
+	retGo := callback(item, userData)
+	retC :=
+		(*C.GtkWidget)(retGo.ToC())
+	return retC
+}

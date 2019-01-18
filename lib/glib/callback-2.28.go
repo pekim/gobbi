@@ -32,6 +32,16 @@ var callbackTestdatafuncLock sync.RWMutex
 // TestdatafuncCallback is a callback function for a 'TestDataFunc' callback.
 type TestdatafuncCallback func()
 
+//export callback_testdatafuncHandler
+func callback_testdatafuncHandler(_ *C.GObject, data C.gpointer) {
+	callbackTestdatafuncLock.RLock()
+	defer callbackTestdatafuncLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := callbackTestdatafuncMap[index].callback
+	callback(userData)
+}
+
 // Unsupported : callback TestFixtureFunc : unsupported parameter fixture : no type generator for gpointer (gpointer) for param fixture
 
 var callbackTestfuncId int
@@ -40,3 +50,13 @@ var callbackTestfuncLock sync.RWMutex
 
 // TestfuncCallback is a callback function for a 'TestFunc' callback.
 type TestfuncCallback func()
+
+//export callback_testfuncHandler
+func callback_testfuncHandler(_ *C.GObject, data C.gpointer) {
+	callbackTestfuncLock.RLock()
+	defer callbackTestfuncLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := callbackTestfuncMap[index].callback
+	callback()
+}

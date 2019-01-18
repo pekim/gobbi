@@ -2,7 +2,10 @@
 
 package gdk
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -26,3 +29,18 @@ var callbackWindowchildfuncLock sync.RWMutex
 
 // WindowchildfuncCallback is a callback function for a 'WindowChildFunc' callback.
 type WindowchildfuncCallback func(window *Window) bool
+
+//export callback_windowchildfuncHandler
+func callback_windowchildfuncHandler(_ *C.GObject, c_window *C.GdkWindow, data C.gpointer) C.gboolean {
+	callbackWindowchildfuncLock.RLock()
+	defer callbackWindowchildfuncLock.RUnlock()
+
+	window := WindowNewFromC(unsafe.Pointer(c_window))
+
+	index := int(uintptr(data))
+	callback := callbackWindowchildfuncMap[index].callback
+	retGo := callback(window, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

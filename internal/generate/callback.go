@@ -49,6 +49,26 @@ func (c *Callback) supported() (supported bool, reason string) {
 		if p.Type != nil && p.Type.Name == "ignore" {
 			return supported, fmt.Sprintf("callback %s : unsupported ignore parameter %s", c.Name, p.Name)
 		}
+
+		if p.Type != nil && (p.Direction == "out" || p.Direction == "inout") {
+			return supported, fmt.Sprintf("callback %s : unsupported parameter %s, direction %s",
+				c.Name, p.Name, p.Direction)
+		}
+
+		if p.Type != nil && p.Type.CType == "gsize*" {
+			return supported, fmt.Sprintf("callback %s : unsupported parameter %s, gsize*",
+				c.Name, p.Name)
+		}
+
+		if p.Array != nil {
+			qname := QNameNew(p.Array.Type.Namespace, p.Array.Type.Name)
+			_, found := qname.namespace.interfaceForName(qname.name)
+			if !found {
+				return false, fmt.Sprintf(
+					"callback %s : unsupported parameter %s, array type interface not found", c.Name, p.Name)
+			}
+
+		}
 	}
 
 	if supported, reason := c.ReturnValue.isSupported(); !supported {
@@ -77,8 +97,7 @@ func (c *Callback) generate(g *jen.Group, version *Version) {
 	c.generateVariables(g)
 	c.generateCallbackType(g)
 	//c.generateConnectFunction(g)
-	//c.generateDisconnectFunction(g)
-	//c.generateHandlerFunction(g)
+	c.generateHandlerFunction(g)
 }
 
 func (c *Callback) generateCgoPreamble() {
@@ -172,4 +191,101 @@ func (c *Callback) generateCallbackType(g *jen.Group) {
 
 func (c *Callback) generateCallbackReturnDeclaration(g *jen.Group) {
 	c.ReturnValue.generateFunctionDeclaration(g)
+}
+
+func (c *Callback) generateHandlerFunction(g *jen.Group) {
+	params := Parameters{}
+	for _, p := range c.Parameters {
+		if p.Name == "data" || p.Name == "user_data" {
+			continue
+		}
+
+		params = append(params, p)
+	}
+
+	g.Commentf("//export %s", c.goNameHandler)
+
+	g.
+		Func().
+		Id(c.goNameHandler).
+		ParamsFunc(c.generateHandlerParameters).
+		ParamsFunc(c.ReturnValue.generateFunctionDeclarationCtype).
+		BlockFunc(func(g *jen.Group) {
+			c.generateLockUnlock(g, true)
+			g.Line()
+
+			params.generateGoVars(g)
+			c.generateHandlerCall(g)
+			c.generateHandlerReturn(g)
+		})
+
+	g.Line()
+}
+
+func (c *Callback) generateHandlerParameters(g *jen.Group) {
+	params := Parameters{}
+	for _, p := range c.Parameters {
+		if p.Name == "data" || p.Name == "user_data" {
+			continue
+		}
+
+		params = append(params, p)
+	}
+
+	g.Id("_").Op("*").Qual("C", "GObject")
+	params.generateFunctionDeclarationCtypes(g)
+	g.Id("data").Qual("C", "gpointer")
+}
+
+func (c *Callback) generateLockUnlock(g *jen.Group, readonly bool) {
+	lockFunction := "Lock"
+	unlockFunction := "Unlock"
+	if readonly {
+		lockFunction = "RLock"
+		unlockFunction = "RUnlock"
+	}
+
+	//	var callbackCelllayoutdatafuncLock sync.RWMutex.Lock()
+	g.Id(c.varNameLock).Op(".").Id(lockFunction).Call()
+
+	//	defer var callbackCelllayoutdatafuncLock sync.RWMutex.Unlock()
+	g.Defer().Id(c.varNameLock).Op(".").Id(unlockFunction).Call()
+}
+
+func (c *Callback) generateHandlerCall(g *jen.Group) {
+	// index := int(c_index)
+	g.Id("index").Op(":=").Int().Call(jen.Uintptr().Call(jen.Id("data")))
+
+	//	callback := callbackCelllayoutdatafuncMap[callbackCelllayoutdatafuncId].callback
+	g.Id("callback").Op(":=").Id(c.varNameMap).Index(jen.Id("index")).Dot("callback")
+
+	if c.ReturnValue.Type.Name != "none" {
+		// retGo := callback(...)
+		g.Id("retGo").Op(":=").Id("callback").CallFunc(c.generateHandleCallParams)
+	} else {
+		// callback(...)
+		g.Id("callback").CallFunc(c.generateHandleCallParams)
+	}
+}
+
+func (c *Callback) generateHandleCallParams(g *jen.Group) {
+	for _, p := range c.Parameters {
+		if p.arrayLengthFor != nil {
+			continue
+		}
+
+		g.Id(p.goVarName)
+	}
+}
+
+func (c *Callback) generateHandlerReturn(g *jen.Group) {
+	if c.ReturnValue.Type.Name == "none" {
+		return
+	}
+
+	g.Id("retC").Op(":=")
+	c.ReturnValue.Type.generator.generateGoToC(g, jen.Id("retGo"))
+
+	g.Return().Id("retC")
+
 }

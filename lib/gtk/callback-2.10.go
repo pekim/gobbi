@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -28,3 +29,21 @@ var callbackClipboardrichtextreceivedfuncLock sync.RWMutex
 
 // ClipboardrichtextreceivedfuncCallback is a callback function for a 'ClipboardRichTextReceivedFunc' callback.
 type ClipboardrichtextreceivedfuncCallback func(clipboard *Clipboard, format *gdk.Atom, text string, length uint64)
+
+//export callback_clipboardrichtextreceivedfuncHandler
+func callback_clipboardrichtextreceivedfuncHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, c_format *C.GdkAtom, c_text *C.guint8, c_length C.gsize, data C.gpointer) {
+	callbackClipboardrichtextreceivedfuncLock.RLock()
+	defer callbackClipboardrichtextreceivedfuncLock.RUnlock()
+
+	clipboard := ClipboardNewFromC(unsafe.Pointer(c_clipboard))
+
+	format := gdk.AtomNewFromC(unsafe.Pointer(c_format))
+
+	text := C.GoString(c_text)
+
+	length := uint64(c_length)
+
+	index := int(uintptr(data))
+	callback := callbackClipboardrichtextreceivedfuncMap[index].callback
+	callback(clipboard, format, text, length, data)
+}

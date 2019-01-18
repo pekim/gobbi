@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -28,3 +29,20 @@ var callbackTickcallbackLock sync.RWMutex
 
 // TickcallbackCallback is a callback function for a 'TickCallback' callback.
 type TickcallbackCallback func(widget *Widget, frameClock *gdk.FrameClock) bool
+
+//export callback_tickcallbackHandler
+func callback_tickcallbackHandler(_ *C.GObject, c_widget *C.GtkWidget, c_frame_clock *C.GdkFrameClock, data C.gpointer) C.gboolean {
+	callbackTickcallbackLock.RLock()
+	defer callbackTickcallbackLock.RUnlock()
+
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
+
+	frameClock := gdk.FrameClockNewFromC(unsafe.Pointer(c_frame_clock))
+
+	index := int(uintptr(data))
+	callback := callbackTickcallbackMap[index].callback
+	retGo := callback(widget, frameClock, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}

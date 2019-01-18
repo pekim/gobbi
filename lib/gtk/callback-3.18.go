@@ -6,6 +6,7 @@ package gtk
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -28,3 +29,18 @@ var callbackFlowboxcreatewidgetfuncLock sync.RWMutex
 
 // FlowboxcreatewidgetfuncCallback is a callback function for a 'FlowBoxCreateWidgetFunc' callback.
 type FlowboxcreatewidgetfuncCallback func(item *gobject.Object) *Widget
+
+//export callback_flowboxcreatewidgetfuncHandler
+func callback_flowboxcreatewidgetfuncHandler(_ *C.GObject, c_item *C.GObject, data C.gpointer) **C.GtkWidget {
+	callbackFlowboxcreatewidgetfuncLock.RLock()
+	defer callbackFlowboxcreatewidgetfuncLock.RUnlock()
+
+	item := gobject.ObjectNewFromC(unsafe.Pointer(c_item))
+
+	index := int(uintptr(data))
+	callback := callbackFlowboxcreatewidgetfuncMap[index].callback
+	retGo := callback(item, userData)
+	retC :=
+		(*C.GtkWidget)(retGo.ToC())
+	return retC
+}

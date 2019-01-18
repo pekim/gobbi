@@ -6,6 +6,7 @@ package gtk
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -28,3 +29,25 @@ var callbackBuilderconnectfuncLock sync.RWMutex
 
 // BuilderconnectfuncCallback is a callback function for a 'BuilderConnectFunc' callback.
 type BuilderconnectfuncCallback func(builder *Builder, object *gobject.Object, signalName string, handlerName string, connectObject *gobject.Object, flags gobject.ConnectFlags)
+
+//export callback_builderconnectfuncHandler
+func callback_builderconnectfuncHandler(_ *C.GObject, c_builder *C.GtkBuilder, c_object *C.GObject, c_signal_name *C.gchar, c_handler_name *C.gchar, c_connect_object *C.GObject, c_flags C.GConnectFlags, data C.gpointer) {
+	callbackBuilderconnectfuncLock.RLock()
+	defer callbackBuilderconnectfuncLock.RUnlock()
+
+	builder := BuilderNewFromC(unsafe.Pointer(c_builder))
+
+	object := gobject.ObjectNewFromC(unsafe.Pointer(c_object))
+
+	signalName := C.GoString(c_signal_name)
+
+	handlerName := C.GoString(c_handler_name)
+
+	connectObject := gobject.ObjectNewFromC(unsafe.Pointer(c_connect_object))
+
+	flags := gobject.ConnectFlags(c_flags)
+
+	index := int(uintptr(data))
+	callback := callbackBuilderconnectfuncMap[index].callback
+	callback(builder, object, signalName, handlerName, connectObject, flags, userData)
+}

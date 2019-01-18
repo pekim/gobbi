@@ -3,7 +3,10 @@
 
 package pango
 
-import "sync"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -23,3 +26,20 @@ var callbackFontsetforeachfuncLock sync.RWMutex
 
 // FontsetforeachfuncCallback is a callback function for a 'FontsetForeachFunc' callback.
 type FontsetforeachfuncCallback func(fontset *Fontset, font *Font) bool
+
+//export callback_fontsetforeachfuncHandler
+func callback_fontsetforeachfuncHandler(_ *C.GObject, c_fontset *C.PangoFontset, c_font *C.PangoFont, data C.gpointer) C.gboolean {
+	callbackFontsetforeachfuncLock.RLock()
+	defer callbackFontsetforeachfuncLock.RUnlock()
+
+	fontset := FontsetNewFromC(unsafe.Pointer(c_fontset))
+
+	font := FontNewFromC(unsafe.Pointer(c_font))
+
+	index := int(uintptr(data))
+	callback := callbackFontsetforeachfuncMap[index].callback
+	retGo := callback(fontset, font, userData)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
