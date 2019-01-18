@@ -7,6 +7,8 @@
   <!-- required header files -->
   <c:include name="glib/gstdio.h"/>
   <c:include name="glib-unix.h"/>
+  <!-- required for GObject references in generated callback file -->
+  <c:include name="glib-object.h"/>
 
   <namespace>
     <!-- avoid a name clash with the function file_test (go name FileTest) -->
