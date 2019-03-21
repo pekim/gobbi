@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	GtkWidget* callback_flowboxcreatewidgetfuncHandler(GObject *, gpointer, gpointer, gpointer);
+	GtkWidget* callback_flowboxcreatewidgetfuncHandler(GObject *, gpointer, gpointer);
 
 */
 import "C"
@@ -31,15 +31,15 @@ var callbackFlowboxcreatewidgetfuncLock sync.RWMutex
 type FlowboxcreatewidgetfuncCallback func(item *gobject.Object) *Widget
 
 //export callback_flowboxcreatewidgetfuncHandler
-func callback_flowboxcreatewidgetfuncHandler(_ *C.GObject, c_item *C.GObject, data C.gpointer) **C.GtkWidget {
+func callback_flowboxcreatewidgetfuncHandler(_ *C.GObject, c_item *C.GObject, c_user_data C.gpointer) **C.GtkWidget {
 	callbackFlowboxcreatewidgetfuncLock.RLock()
 	defer callbackFlowboxcreatewidgetfuncLock.RUnlock()
 
 	item := gobject.ObjectNewFromC(unsafe.Pointer(c_item))
 
-	index := int(uintptr(data))
-	callback := callbackFlowboxcreatewidgetfuncMap[index].callback
-	retGo := callback(item, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackFlowboxcreatewidgetfuncMap[index]
+	retGo := callback(item)
 	retC :=
 		(*C.GtkWidget)(retGo.ToC())
 	return retC

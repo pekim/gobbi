@@ -15,7 +15,7 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	gboolean callback_testlogfatalfuncHandler(GObject *, const gchar*, GLogLevelFlags, const gchar*, gpointer, gpointer);
+	gboolean callback_testlogfatalfuncHandler(GObject *, gchar*, GLogLevelFlags, gchar*, gpointer);
 
 */
 import "C"
@@ -28,7 +28,7 @@ var callbackTestlogfatalfuncLock sync.RWMutex
 type TestlogfatalfuncCallback func(logDomain string, logLevel LogLevelFlags, message string) bool
 
 //export callback_testlogfatalfuncHandler
-func callback_testlogfatalfuncHandler(_ *C.GObject, c_log_domain *C.gchar, c_log_level C.GLogLevelFlags, c_message *C.gchar, data C.gpointer) C.gboolean {
+func callback_testlogfatalfuncHandler(_ *C.GObject, c_log_domain *C.gchar, c_log_level C.GLogLevelFlags, c_message *C.gchar, c_user_data C.gpointer) C.gboolean {
 	callbackTestlogfatalfuncLock.RLock()
 	defer callbackTestlogfatalfuncLock.RUnlock()
 
@@ -38,9 +38,9 @@ func callback_testlogfatalfuncHandler(_ *C.GObject, c_log_domain *C.gchar, c_log
 
 	message := C.GoString(c_message)
 
-	index := int(uintptr(data))
-	callback := callbackTestlogfatalfuncMap[index].callback
-	retGo := callback(logDomain, logLevel, message, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackTestlogfatalfuncMap[index]
+	retGo := callback(logDomain, logLevel, message)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

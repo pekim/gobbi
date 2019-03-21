@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	GtkWidget* callback_listboxcreatewidgetfuncHandler(GObject *, gpointer, gpointer, gpointer);
+	GtkWidget* callback_listboxcreatewidgetfuncHandler(GObject *, gpointer, gpointer);
 
 */
 import "C"
@@ -31,15 +31,15 @@ var callbackListboxcreatewidgetfuncLock sync.RWMutex
 type ListboxcreatewidgetfuncCallback func(item *gobject.Object) *Widget
 
 //export callback_listboxcreatewidgetfuncHandler
-func callback_listboxcreatewidgetfuncHandler(_ *C.GObject, c_item *C.GObject, data C.gpointer) **C.GtkWidget {
+func callback_listboxcreatewidgetfuncHandler(_ *C.GObject, c_item *C.GObject, c_user_data C.gpointer) **C.GtkWidget {
 	callbackListboxcreatewidgetfuncLock.RLock()
 	defer callbackListboxcreatewidgetfuncLock.RUnlock()
 
 	item := gobject.ObjectNewFromC(unsafe.Pointer(c_item))
 
-	index := int(uintptr(data))
-	callback := callbackListboxcreatewidgetfuncMap[index].callback
-	retGo := callback(item, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackListboxcreatewidgetfuncMap[index]
+	retGo := callback(item)
 	retC :=
 		(*C.GtkWidget)(retGo.ToC())
 	return retC

@@ -26,12 +26,12 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_cancellablesourcefuncHandler(GObject *, GCancellable*, gpointer, gpointer);
+	gboolean callback_cancellablesourcefuncHandler(GObject *, GCancellable*, gpointer);
 
 */
 /*
 
-	gboolean callback_pollablesourcefuncHandler(GObject *, GObject*, gpointer, gpointer);
+	gboolean callback_pollablesourcefuncHandler(GObject *, GObject*, gpointer);
 
 */
 import "C"
@@ -44,15 +44,15 @@ var callbackCancellablesourcefuncLock sync.RWMutex
 type CancellablesourcefuncCallback func(cancellable *Cancellable) bool
 
 //export callback_cancellablesourcefuncHandler
-func callback_cancellablesourcefuncHandler(_ *C.GObject, c_cancellable *C.GCancellable, data C.gpointer) C.gboolean {
+func callback_cancellablesourcefuncHandler(_ *C.GObject, c_cancellable *C.GCancellable, c_user_data C.gpointer) C.gboolean {
 	callbackCancellablesourcefuncLock.RLock()
 	defer callbackCancellablesourcefuncLock.RUnlock()
 
 	cancellable := CancellableNewFromC(unsafe.Pointer(c_cancellable))
 
-	index := int(uintptr(data))
-	callback := callbackCancellablesourcefuncMap[index].callback
-	retGo := callback(cancellable, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackCancellablesourcefuncMap[index]
+	retGo := callback(cancellable)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -66,15 +66,15 @@ var callbackPollablesourcefuncLock sync.RWMutex
 type PollablesourcefuncCallback func(pollableStream *gobject.Object) bool
 
 //export callback_pollablesourcefuncHandler
-func callback_pollablesourcefuncHandler(_ *C.GObject, c_pollable_stream *C.GObject, data C.gpointer) C.gboolean {
+func callback_pollablesourcefuncHandler(_ *C.GObject, c_pollable_stream *C.GObject, c_user_data C.gpointer) C.gboolean {
 	callbackPollablesourcefuncLock.RLock()
 	defer callbackPollablesourcefuncLock.RUnlock()
 
 	pollableStream := gobject.ObjectNewFromC(unsafe.Pointer(c_pollable_stream))
 
-	index := int(uintptr(data))
-	callback := callbackPollablesourcefuncMap[index].callback
-	retGo := callback(pollableStream, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackPollablesourcefuncMap[index]
+	retGo := callback(pollableStream)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -19,12 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_accelgroupfindfuncHandler(GObject *, GtkAccelKey*, GClosure*, gpointer, gpointer);
-
-*/
-/*
-
-	void callback_moduledisplayinitfuncHandler(GObject *, GdkDisplay*, gpointer);
+	gboolean callback_accelgroupfindfuncHandler(GObject *, GtkAccelKey*, GClosure*, gpointer);
 
 */
 import "C"
@@ -37,7 +31,7 @@ var callbackAccelgroupfindfuncLock sync.RWMutex
 type AccelgroupfindfuncCallback func(key *AccelKey, closure *gobject.Closure) bool
 
 //export callback_accelgroupfindfuncHandler
-func callback_accelgroupfindfuncHandler(_ *C.GObject, c_key *C.GtkAccelKey, c_closure *C.GClosure, data C.gpointer) C.gboolean {
+func callback_accelgroupfindfuncHandler(_ *C.GObject, c_key *C.GtkAccelKey, c_closure *C.GClosure, c_data C.gpointer) C.gboolean {
 	callbackAccelgroupfindfuncLock.RLock()
 	defer callbackAccelgroupfindfuncLock.RUnlock()
 
@@ -45,31 +39,14 @@ func callback_accelgroupfindfuncHandler(_ *C.GObject, c_key *C.GtkAccelKey, c_cl
 
 	closure := gobject.ClosureNewFromC(unsafe.Pointer(c_closure))
 
-	index := int(uintptr(data))
-	callback := callbackAccelgroupfindfuncMap[index].callback
-	retGo := callback(key, closure, data)
+	index := int(uintptr(c_data))
+	callback := callbackAccelgroupfindfuncMap[index]
+	retGo := callback(key, closure)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
 }
 
-// Unsupported : callback ColorSelectionChangePaletteWithScreenFunc : unsupported parameter colors :
+// Unsupported : callback ColorSelectionChangePaletteWithScreenFunc : no [user_]data param
 
-var callbackModuledisplayinitfuncId int
-var callbackModuledisplayinitfuncMap = make(map[int]ModuledisplayinitfuncCallback)
-var callbackModuledisplayinitfuncLock sync.RWMutex
-
-// ModuledisplayinitfuncCallback is a callback function for a 'ModuleDisplayInitFunc' callback.
-type ModuledisplayinitfuncCallback func(display *gdk.Display)
-
-//export callback_moduledisplayinitfuncHandler
-func callback_moduledisplayinitfuncHandler(_ *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
-	callbackModuledisplayinitfuncLock.RLock()
-	defer callbackModuledisplayinitfuncLock.RUnlock()
-
-	display := gdk.DisplayNewFromC(unsafe.Pointer(c_display))
-
-	index := int(uintptr(data))
-	callback := callbackModuledisplayinitfuncMap[index].callback
-	callback(display)
-}
+// Unsupported : callback ModuleDisplayInitFunc : no [user_]data param

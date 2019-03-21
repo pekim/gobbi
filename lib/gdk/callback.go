@@ -14,7 +14,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_windowchildfuncHandler(GObject *, GdkWindow*, gpointer, gpointer);
+	gboolean callback_windowchildfuncHandler(GObject *, GdkWindow*, gpointer);
 
 */
 import "C"
@@ -31,15 +31,15 @@ var callbackWindowchildfuncLock sync.RWMutex
 type WindowchildfuncCallback func(window *Window) bool
 
 //export callback_windowchildfuncHandler
-func callback_windowchildfuncHandler(_ *C.GObject, c_window *C.GdkWindow, data C.gpointer) C.gboolean {
+func callback_windowchildfuncHandler(_ *C.GObject, c_window *C.GdkWindow, c_user_data C.gpointer) C.gboolean {
 	callbackWindowchildfuncLock.RLock()
 	defer callbackWindowchildfuncLock.RUnlock()
 
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
-	index := int(uintptr(data))
-	callback := callbackWindowchildfuncMap[index].callback
-	retGo := callback(window, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackWindowchildfuncMap[index]
+	retGo := callback(window)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

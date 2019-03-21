@@ -15,7 +15,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_seatgrabpreparefuncHandler(GObject *, GdkSeat*, GdkWindow*, gpointer, gpointer);
+	void callback_seatgrabpreparefuncHandler(GObject *, GdkSeat*, GdkWindow*, gpointer);
 
 */
 import "C"
@@ -28,7 +28,7 @@ var callbackSeatgrabpreparefuncLock sync.RWMutex
 type SeatgrabpreparefuncCallback func(seat *Seat, window *Window)
 
 //export callback_seatgrabpreparefuncHandler
-func callback_seatgrabpreparefuncHandler(_ *C.GObject, c_seat *C.GdkSeat, c_window *C.GdkWindow, data C.gpointer) {
+func callback_seatgrabpreparefuncHandler(_ *C.GObject, c_seat *C.GdkSeat, c_window *C.GdkWindow, c_user_data C.gpointer) {
 	callbackSeatgrabpreparefuncLock.RLock()
 	defer callbackSeatgrabpreparefuncLock.RUnlock()
 
@@ -36,7 +36,7 @@ func callback_seatgrabpreparefuncHandler(_ *C.GObject, c_seat *C.GdkSeat, c_wind
 
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
-	index := int(uintptr(data))
-	callback := callbackSeatgrabpreparefuncMap[index].callback
-	callback(seat, window, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackSeatgrabpreparefuncMap[index]
+	callback(seat, window)
 }

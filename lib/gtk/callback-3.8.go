@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_tickcallbackHandler(GObject *, GtkWidget*, GdkFrameClock*, gpointer, gpointer);
+	gboolean callback_tickcallbackHandler(GObject *, GtkWidget*, GdkFrameClock*, gpointer);
 
 */
 import "C"
@@ -31,7 +31,7 @@ var callbackTickcallbackLock sync.RWMutex
 type TickcallbackCallback func(widget *Widget, frameClock *gdk.FrameClock) bool
 
 //export callback_tickcallbackHandler
-func callback_tickcallbackHandler(_ *C.GObject, c_widget *C.GtkWidget, c_frame_clock *C.GdkFrameClock, data C.gpointer) C.gboolean {
+func callback_tickcallbackHandler(_ *C.GObject, c_widget *C.GtkWidget, c_frame_clock *C.GdkFrameClock, c_user_data C.gpointer) C.gboolean {
 	callbackTickcallbackLock.RLock()
 	defer callbackTickcallbackLock.RUnlock()
 
@@ -39,9 +39,9 @@ func callback_tickcallbackHandler(_ *C.GObject, c_widget *C.GtkWidget, c_frame_c
 
 	frameClock := gdk.FrameClockNewFromC(unsafe.Pointer(c_frame_clock))
 
-	index := int(uintptr(data))
-	callback := callbackTickcallbackMap[index].callback
-	retGo := callback(widget, frameClock, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackTickcallbackMap[index]
+	retGo := callback(widget, frameClock)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

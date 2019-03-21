@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_regexevalcallbackHandler(GObject *, const GMatchInfo*, GString*, gpointer, gpointer);
+	gboolean callback_regexevalcallbackHandler(GObject *, GMatchInfo*, GString*, gpointer);
 
 */
 import "C"
@@ -31,7 +31,7 @@ var callbackRegexevalcallbackLock sync.RWMutex
 type RegexevalcallbackCallback func(matchInfo *MatchInfo, result *String) bool
 
 //export callback_regexevalcallbackHandler
-func callback_regexevalcallbackHandler(_ *C.GObject, c_match_info *C.GMatchInfo, c_result *C.GString, data C.gpointer) C.gboolean {
+func callback_regexevalcallbackHandler(_ *C.GObject, c_match_info *C.GMatchInfo, c_result *C.GString, c_user_data C.gpointer) C.gboolean {
 	callbackRegexevalcallbackLock.RLock()
 	defer callbackRegexevalcallbackLock.RUnlock()
 
@@ -39,9 +39,9 @@ func callback_regexevalcallbackHandler(_ *C.GObject, c_match_info *C.GMatchInfo,
 
 	result := StringNewFromC(unsafe.Pointer(c_result))
 
-	index := int(uintptr(data))
-	callback := callbackRegexevalcallbackMap[index].callback
-	retGo := callback(matchInfo, result, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackRegexevalcallbackMap[index]
+	retGo := callback(matchInfo, result)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

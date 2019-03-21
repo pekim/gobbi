@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi/lib/glib"
-	"github.com/pekim/gobbi/lib/gobject"
-	"github.com/pekim/gobbi/lib/gtk"
 	"os"
 	"runtime"
 	"time"
+
+	"github.com/pekim/gobbi/lib/glib"
+	"github.com/pekim/gobbi/lib/gobject"
+	"github.com/pekim/gobbi/lib/gtk"
 )
 
 // #include <malloc.h>

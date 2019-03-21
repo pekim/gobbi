@@ -26,52 +26,52 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_busacquiredcallbackHandler(GObject *, GDBusConnection*, const gchar*, gpointer, gpointer);
+	void callback_busacquiredcallbackHandler(GObject *, GDBusConnection*, gchar*, gpointer);
 
 */
 /*
 
-	void callback_busnameacquiredcallbackHandler(GObject *, GDBusConnection*, const gchar*, gpointer, gpointer);
+	void callback_busnameacquiredcallbackHandler(GObject *, GDBusConnection*, gchar*, gpointer);
 
 */
 /*
 
-	void callback_busnameappearedcallbackHandler(GObject *, GDBusConnection*, const gchar*, const gchar*, gpointer, gpointer);
+	void callback_busnameappearedcallbackHandler(GObject *, GDBusConnection*, gchar*, gchar*, gpointer);
 
 */
 /*
 
-	void callback_busnamelostcallbackHandler(GObject *, GDBusConnection*, const gchar*, gpointer, gpointer);
+	void callback_busnamelostcallbackHandler(GObject *, GDBusConnection*, gchar*, gpointer);
 
 */
 /*
 
-	void callback_busnamevanishedcallbackHandler(GObject *, GDBusConnection*, const gchar*, gpointer, gpointer);
+	void callback_busnamevanishedcallbackHandler(GObject *, GDBusConnection*, gchar*, gpointer);
 
 */
 /*
 
-	GVariant* callback_dbusinterfacegetpropertyfuncHandler(GObject *, GDBusConnection*, const gchar*, const gchar*, const gchar*, const gchar*, GError**, gpointer, gpointer);
+	GVariant* callback_dbusinterfacegetpropertyfuncHandler(GObject *, GDBusConnection*, gchar*, gchar*, gchar*, gchar*, GError**, gpointer);
 
 */
 /*
 
-	void callback_dbusinterfacemethodcallfuncHandler(GObject *, GDBusConnection*, const gchar*, const gchar*, const gchar*, const gchar*, GVariant*, GDBusMethodInvocation*, gpointer, gpointer);
+	void callback_dbusinterfacemethodcallfuncHandler(GObject *, GDBusConnection*, gchar*, gchar*, gchar*, gchar*, GVariant*, GDBusMethodInvocation*, gpointer);
 
 */
 /*
 
-	gboolean callback_dbusinterfacesetpropertyfuncHandler(GObject *, GDBusConnection*, const gchar*, const gchar*, const gchar*, const gchar*, GVariant*, GError**, gpointer, gpointer);
+	gboolean callback_dbusinterfacesetpropertyfuncHandler(GObject *, GDBusConnection*, gchar*, gchar*, gchar*, gchar*, GVariant*, GError**, gpointer);
 
 */
 /*
 
-	GDBusMessage* callback_dbusmessagefilterfunctionHandler(GObject *, GDBusConnection*, GDBusMessage*, gboolean, gpointer, gpointer);
+	GDBusMessage* callback_dbusmessagefilterfunctionHandler(GObject *, GDBusConnection*, GDBusMessage*, gboolean, gpointer);
 
 */
 /*
 
-	void callback_dbussignalcallbackHandler(GObject *, GDBusConnection*, const gchar*, const gchar*, const gchar*, const gchar*, GVariant*, gpointer, gpointer);
+	void callback_dbussignalcallbackHandler(GObject *, GDBusConnection*, gchar*, gchar*, gchar*, gchar*, GVariant*, gpointer);
 
 */
 import "C"
@@ -84,7 +84,7 @@ var callbackBusacquiredcallbackLock sync.RWMutex
 type BusacquiredcallbackCallback func(connection *DBusConnection, name string)
 
 //export callback_busacquiredcallbackHandler
-func callback_busacquiredcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, data C.gpointer) {
+func callback_busacquiredcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, c_user_data C.gpointer) {
 	callbackBusacquiredcallbackLock.RLock()
 	defer callbackBusacquiredcallbackLock.RUnlock()
 
@@ -92,9 +92,9 @@ func callback_busacquiredcallbackHandler(_ *C.GObject, c_connection *C.GDBusConn
 
 	name := C.GoString(c_name)
 
-	index := int(uintptr(data))
-	callback := callbackBusacquiredcallbackMap[index].callback
-	callback(connection, name, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBusacquiredcallbackMap[index]
+	callback(connection, name)
 }
 
 var callbackBusnameacquiredcallbackId int
@@ -105,7 +105,7 @@ var callbackBusnameacquiredcallbackLock sync.RWMutex
 type BusnameacquiredcallbackCallback func(connection *DBusConnection, name string)
 
 //export callback_busnameacquiredcallbackHandler
-func callback_busnameacquiredcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, data C.gpointer) {
+func callback_busnameacquiredcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, c_user_data C.gpointer) {
 	callbackBusnameacquiredcallbackLock.RLock()
 	defer callbackBusnameacquiredcallbackLock.RUnlock()
 
@@ -113,9 +113,9 @@ func callback_busnameacquiredcallbackHandler(_ *C.GObject, c_connection *C.GDBus
 
 	name := C.GoString(c_name)
 
-	index := int(uintptr(data))
-	callback := callbackBusnameacquiredcallbackMap[index].callback
-	callback(connection, name, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBusnameacquiredcallbackMap[index]
+	callback(connection, name)
 }
 
 var callbackBusnameappearedcallbackId int
@@ -126,7 +126,7 @@ var callbackBusnameappearedcallbackLock sync.RWMutex
 type BusnameappearedcallbackCallback func(connection *DBusConnection, name string, nameOwner string)
 
 //export callback_busnameappearedcallbackHandler
-func callback_busnameappearedcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, c_name_owner *C.gchar, data C.gpointer) {
+func callback_busnameappearedcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, c_name_owner *C.gchar, c_user_data C.gpointer) {
 	callbackBusnameappearedcallbackLock.RLock()
 	defer callbackBusnameappearedcallbackLock.RUnlock()
 
@@ -136,9 +136,9 @@ func callback_busnameappearedcallbackHandler(_ *C.GObject, c_connection *C.GDBus
 
 	nameOwner := C.GoString(c_name_owner)
 
-	index := int(uintptr(data))
-	callback := callbackBusnameappearedcallbackMap[index].callback
-	callback(connection, name, nameOwner, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBusnameappearedcallbackMap[index]
+	callback(connection, name, nameOwner)
 }
 
 var callbackBusnamelostcallbackId int
@@ -149,7 +149,7 @@ var callbackBusnamelostcallbackLock sync.RWMutex
 type BusnamelostcallbackCallback func(connection *DBusConnection, name string)
 
 //export callback_busnamelostcallbackHandler
-func callback_busnamelostcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, data C.gpointer) {
+func callback_busnamelostcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, c_user_data C.gpointer) {
 	callbackBusnamelostcallbackLock.RLock()
 	defer callbackBusnamelostcallbackLock.RUnlock()
 
@@ -157,9 +157,9 @@ func callback_busnamelostcallbackHandler(_ *C.GObject, c_connection *C.GDBusConn
 
 	name := C.GoString(c_name)
 
-	index := int(uintptr(data))
-	callback := callbackBusnamelostcallbackMap[index].callback
-	callback(connection, name, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBusnamelostcallbackMap[index]
+	callback(connection, name)
 }
 
 var callbackBusnamevanishedcallbackId int
@@ -170,7 +170,7 @@ var callbackBusnamevanishedcallbackLock sync.RWMutex
 type BusnamevanishedcallbackCallback func(connection *DBusConnection, name string)
 
 //export callback_busnamevanishedcallbackHandler
-func callback_busnamevanishedcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, data C.gpointer) {
+func callback_busnamevanishedcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_name *C.gchar, c_user_data C.gpointer) {
 	callbackBusnamevanishedcallbackLock.RLock()
 	defer callbackBusnamevanishedcallbackLock.RUnlock()
 
@@ -178,9 +178,9 @@ func callback_busnamevanishedcallbackHandler(_ *C.GObject, c_connection *C.GDBus
 
 	name := C.GoString(c_name)
 
-	index := int(uintptr(data))
-	callback := callbackBusnamevanishedcallbackMap[index].callback
-	callback(connection, name, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBusnamevanishedcallbackMap[index]
+	callback(connection, name)
 }
 
 var callbackDbusinterfacegetpropertyfuncId int
@@ -191,7 +191,7 @@ var callbackDbusinterfacegetpropertyfuncLock sync.RWMutex
 type DbusinterfacegetpropertyfuncCallback func(connection *DBusConnection, sender string, objectPath string, interfaceName string, propertyName string, error *glib.Error) *glib.Variant
 
 //export callback_dbusinterfacegetpropertyfuncHandler
-func callback_dbusinterfacegetpropertyfuncHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_property_name *C.gchar, c_error *C.GError, data C.gpointer) **C.GVariant {
+func callback_dbusinterfacegetpropertyfuncHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_property_name *C.gchar, c_error *C.GError, c_user_data C.gpointer) **C.GVariant {
 	callbackDbusinterfacegetpropertyfuncLock.RLock()
 	defer callbackDbusinterfacegetpropertyfuncLock.RUnlock()
 
@@ -207,9 +207,9 @@ func callback_dbusinterfacegetpropertyfuncHandler(_ *C.GObject, c_connection *C.
 
 	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
 
-	index := int(uintptr(data))
-	callback := callbackDbusinterfacegetpropertyfuncMap[index].callback
-	retGo := callback(connection, sender, objectPath, interfaceName, propertyName, error, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDbusinterfacegetpropertyfuncMap[index]
+	retGo := callback(connection, sender, objectPath, interfaceName, propertyName, error)
 	retC :=
 		(*C.GVariant)(retGo.ToC())
 	return retC
@@ -223,7 +223,7 @@ var callbackDbusinterfacemethodcallfuncLock sync.RWMutex
 type DbusinterfacemethodcallfuncCallback func(connection *DBusConnection, sender string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, invocation *DBusMethodInvocation)
 
 //export callback_dbusinterfacemethodcallfuncHandler
-func callback_dbusinterfacemethodcallfuncHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_method_name *C.gchar, c_parameters *C.GVariant, c_invocation *C.GDBusMethodInvocation, data C.gpointer) {
+func callback_dbusinterfacemethodcallfuncHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_method_name *C.gchar, c_parameters *C.GVariant, c_invocation *C.GDBusMethodInvocation, c_user_data C.gpointer) {
 	callbackDbusinterfacemethodcallfuncLock.RLock()
 	defer callbackDbusinterfacemethodcallfuncLock.RUnlock()
 
@@ -241,9 +241,9 @@ func callback_dbusinterfacemethodcallfuncHandler(_ *C.GObject, c_connection *C.G
 
 	invocation := DBusMethodInvocationNewFromC(unsafe.Pointer(c_invocation))
 
-	index := int(uintptr(data))
-	callback := callbackDbusinterfacemethodcallfuncMap[index].callback
-	callback(connection, sender, objectPath, interfaceName, methodName, parameters, invocation, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDbusinterfacemethodcallfuncMap[index]
+	callback(connection, sender, objectPath, interfaceName, methodName, parameters, invocation)
 }
 
 var callbackDbusinterfacesetpropertyfuncId int
@@ -254,7 +254,7 @@ var callbackDbusinterfacesetpropertyfuncLock sync.RWMutex
 type DbusinterfacesetpropertyfuncCallback func(connection *DBusConnection, sender string, objectPath string, interfaceName string, propertyName string, value *glib.Variant, error *glib.Error) bool
 
 //export callback_dbusinterfacesetpropertyfuncHandler
-func callback_dbusinterfacesetpropertyfuncHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_property_name *C.gchar, c_value *C.GVariant, c_error *C.GError, data C.gpointer) C.gboolean {
+func callback_dbusinterfacesetpropertyfuncHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_property_name *C.gchar, c_value *C.GVariant, c_error *C.GError, c_user_data C.gpointer) C.gboolean {
 	callbackDbusinterfacesetpropertyfuncLock.RLock()
 	defer callbackDbusinterfacesetpropertyfuncLock.RUnlock()
 
@@ -272,9 +272,9 @@ func callback_dbusinterfacesetpropertyfuncHandler(_ *C.GObject, c_connection *C.
 
 	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
 
-	index := int(uintptr(data))
-	callback := callbackDbusinterfacesetpropertyfuncMap[index].callback
-	retGo := callback(connection, sender, objectPath, interfaceName, propertyName, value, error, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDbusinterfacesetpropertyfuncMap[index]
+	retGo := callback(connection, sender, objectPath, interfaceName, propertyName, value, error)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -288,7 +288,7 @@ var callbackDbusmessagefilterfunctionLock sync.RWMutex
 type DbusmessagefilterfunctionCallback func(connection *DBusConnection, message *DBusMessage, incoming bool) *DBusMessage
 
 //export callback_dbusmessagefilterfunctionHandler
-func callback_dbusmessagefilterfunctionHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_message *C.GDBusMessage, c_incoming C.gboolean, data C.gpointer) **C.GDBusMessage {
+func callback_dbusmessagefilterfunctionHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_message *C.GDBusMessage, c_incoming C.gboolean, c_user_data C.gpointer) **C.GDBusMessage {
 	callbackDbusmessagefilterfunctionLock.RLock()
 	defer callbackDbusmessagefilterfunctionLock.RUnlock()
 
@@ -298,9 +298,9 @@ func callback_dbusmessagefilterfunctionHandler(_ *C.GObject, c_connection *C.GDB
 
 	incoming := c_incoming == C.TRUE
 
-	index := int(uintptr(data))
-	callback := callbackDbusmessagefilterfunctionMap[index].callback
-	retGo := callback(connection, message, incoming, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDbusmessagefilterfunctionMap[index]
+	retGo := callback(connection, message, incoming)
 	retC :=
 		(*C.GDBusMessage)(retGo.ToC())
 	return retC
@@ -314,7 +314,7 @@ var callbackDbussignalcallbackLock sync.RWMutex
 type DbussignalcallbackCallback func(connection *DBusConnection, senderName string, objectPath string, interfaceName string, signalName string, parameters *glib.Variant)
 
 //export callback_dbussignalcallbackHandler
-func callback_dbussignalcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender_name *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_signal_name *C.gchar, c_parameters *C.GVariant, data C.gpointer) {
+func callback_dbussignalcallbackHandler(_ *C.GObject, c_connection *C.GDBusConnection, c_sender_name *C.gchar, c_object_path *C.gchar, c_interface_name *C.gchar, c_signal_name *C.gchar, c_parameters *C.GVariant, c_user_data C.gpointer) {
 	callbackDbussignalcallbackLock.RLock()
 	defer callbackDbussignalcallbackLock.RUnlock()
 
@@ -330,9 +330,9 @@ func callback_dbussignalcallbackHandler(_ *C.GObject, c_connection *C.GDBusConne
 
 	parameters := glib.VariantNewFromC(unsafe.Pointer(c_parameters))
 
-	index := int(uintptr(data))
-	callback := callbackDbussignalcallbackMap[index].callback
-	callback(connection, senderName, objectPath, interfaceName, signalName, parameters, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDbussignalcallbackMap[index]
+	callback(connection, senderName, objectPath, interfaceName, signalName, parameters)
 }
 
 // Unsupported : callback DBusSubtreeDispatchFunc : unsupported parameter out_user_data : no type generator for gpointer (gpointer*) for param out_user_data

@@ -21,4 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : callback TaskThreadFunc : unsupported parameter task_data : no type generator for gpointer (gpointer) for param task_data
+// Unsupported : callback TaskThreadFunc : no [user_]data param

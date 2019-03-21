@@ -15,12 +15,7 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void callback_testdatafuncHandler(GObject *, gconstpointer, gpointer);
-
-*/
-/*
-
-	void callback_testfuncHandler(GObject *, gpointer);
+	void callback_testdatafuncHandler(GObject *, gpointer);
 
 */
 import "C"
@@ -33,30 +28,15 @@ var callbackTestdatafuncLock sync.RWMutex
 type TestdatafuncCallback func()
 
 //export callback_testdatafuncHandler
-func callback_testdatafuncHandler(_ *C.GObject, data C.gpointer) {
+func callback_testdatafuncHandler(_ *C.GObject, c_user_data C.gpointer) {
 	callbackTestdatafuncLock.RLock()
 	defer callbackTestdatafuncLock.RUnlock()
 
-	index := int(uintptr(data))
-	callback := callbackTestdatafuncMap[index].callback
-	callback(userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackTestdatafuncMap[index]
+	callback()
 }
 
 // Unsupported : callback TestFixtureFunc : unsupported parameter fixture : no type generator for gpointer (gpointer) for param fixture
 
-var callbackTestfuncId int
-var callbackTestfuncMap = make(map[int]TestfuncCallback)
-var callbackTestfuncLock sync.RWMutex
-
-// TestfuncCallback is a callback function for a 'TestFunc' callback.
-type TestfuncCallback func()
-
-//export callback_testfuncHandler
-func callback_testfuncHandler(_ *C.GObject, data C.gpointer) {
-	callbackTestfuncLock.RLock()
-	defer callbackTestfuncLock.RUnlock()
-
-	index := int(uintptr(data))
-	callback := callbackTestfuncMap[index].callback
-	callback()
-}
+// Unsupported : callback TestFunc : no [user_]data param

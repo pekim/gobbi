@@ -15,7 +15,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_fontsetforeachfuncHandler(GObject *, PangoFontset*, PangoFont*, gpointer, gpointer);
+	gboolean callback_fontsetforeachfuncHandler(GObject *, PangoFontset*, PangoFont*, gpointer);
 
 */
 import "C"
@@ -28,7 +28,7 @@ var callbackFontsetforeachfuncLock sync.RWMutex
 type FontsetforeachfuncCallback func(fontset *Fontset, font *Font) bool
 
 //export callback_fontsetforeachfuncHandler
-func callback_fontsetforeachfuncHandler(_ *C.GObject, c_fontset *C.PangoFontset, c_font *C.PangoFont, data C.gpointer) C.gboolean {
+func callback_fontsetforeachfuncHandler(_ *C.GObject, c_fontset *C.PangoFontset, c_font *C.PangoFont, c_user_data C.gpointer) C.gboolean {
 	callbackFontsetforeachfuncLock.RLock()
 	defer callbackFontsetforeachfuncLock.RUnlock()
 
@@ -36,9 +36,9 @@ func callback_fontsetforeachfuncHandler(_ *C.GObject, c_fontset *C.PangoFontset,
 
 	font := FontNewFromC(unsafe.Pointer(c_font))
 
-	index := int(uintptr(data))
-	callback := callbackFontsetforeachfuncMap[index].callback
-	retGo := callback(fontset, font, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackFontsetforeachfuncMap[index]
+	retGo := callback(fontset, font)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

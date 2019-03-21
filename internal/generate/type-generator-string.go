@@ -141,6 +141,7 @@ func (t *TypeGeneratorString) generateReturnFunctionDeclaration(g *jen.Group) {
 }
 
 func (t *TypeGeneratorString) generateReturnFunctionDeclarationCtype(g *jen.Group) {
+	g.Op("*").Qual("C", "GString")
 }
 
 func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, isParam bool,

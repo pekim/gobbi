@@ -17,7 +17,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_listboxforeachfuncHandler(GObject *, GtkListBox*, GtkListBoxRow*, gpointer, gpointer);
+	void callback_listboxforeachfuncHandler(GObject *, GtkListBox*, GtkListBoxRow*, gpointer);
 
 */
 import "C"
@@ -30,7 +30,7 @@ var callbackListboxforeachfuncLock sync.RWMutex
 type ListboxforeachfuncCallback func(box *ListBox, row *ListBoxRow)
 
 //export callback_listboxforeachfuncHandler
-func callback_listboxforeachfuncHandler(_ *C.GObject, c_box *C.GtkListBox, c_row *C.GtkListBoxRow, data C.gpointer) {
+func callback_listboxforeachfuncHandler(_ *C.GObject, c_box *C.GtkListBox, c_row *C.GtkListBoxRow, c_user_data C.gpointer) {
 	callbackListboxforeachfuncLock.RLock()
 	defer callbackListboxforeachfuncLock.RUnlock()
 
@@ -38,7 +38,7 @@ func callback_listboxforeachfuncHandler(_ *C.GObject, c_box *C.GtkListBox, c_row
 
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
-	index := int(uintptr(data))
-	callback := callbackListboxforeachfuncMap[index].callback
-	callback(box, row, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackListboxforeachfuncMap[index]
+	callback(box, row)
 }

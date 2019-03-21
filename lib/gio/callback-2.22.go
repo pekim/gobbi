@@ -26,7 +26,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_socketsourcefuncHandler(GObject *, GSocket*, GIOCondition, gpointer, gpointer);
+	gboolean callback_socketsourcefuncHandler(GObject *, GSocket*, GIOCondition, gpointer);
 
 */
 import "C"
@@ -39,7 +39,7 @@ var callbackSocketsourcefuncLock sync.RWMutex
 type SocketsourcefuncCallback func(socket *Socket, condition glib.IOCondition) bool
 
 //export callback_socketsourcefuncHandler
-func callback_socketsourcefuncHandler(_ *C.GObject, c_socket *C.GSocket, c_condition C.GIOCondition, data C.gpointer) C.gboolean {
+func callback_socketsourcefuncHandler(_ *C.GObject, c_socket *C.GSocket, c_condition C.GIOCondition, c_user_data C.gpointer) C.gboolean {
 	callbackSocketsourcefuncLock.RLock()
 	defer callbackSocketsourcefuncLock.RUnlock()
 
@@ -47,9 +47,9 @@ func callback_socketsourcefuncHandler(_ *C.GObject, c_socket *C.GSocket, c_condi
 
 	condition := glib.IOCondition(c_condition)
 
-	index := int(uintptr(data))
-	callback := callbackSocketsourcefuncMap[index].callback
-	retGo := callback(socket, condition, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackSocketsourcefuncMap[index]
+	retGo := callback(socket, condition)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

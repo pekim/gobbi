@@ -15,7 +15,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_bindingtransformfuncHandler(GObject *, GBinding*, const GValue*, GValue*, gpointer, gpointer);
+	gboolean callback_bindingtransformfuncHandler(GObject *, GBinding*, GValue*, GValue*, gpointer);
 
 */
 import "C"
@@ -28,7 +28,7 @@ var callbackBindingtransformfuncLock sync.RWMutex
 type BindingtransformfuncCallback func(binding *Binding, fromValue *Value, toValue *Value) bool
 
 //export callback_bindingtransformfuncHandler
-func callback_bindingtransformfuncHandler(_ *C.GObject, c_binding *C.GBinding, c_from_value *C.GValue, c_to_value *C.GValue, data C.gpointer) C.gboolean {
+func callback_bindingtransformfuncHandler(_ *C.GObject, c_binding *C.GBinding, c_from_value *C.GValue, c_to_value *C.GValue, c_user_data C.gpointer) C.gboolean {
 	callbackBindingtransformfuncLock.RLock()
 	defer callbackBindingtransformfuncLock.RUnlock()
 
@@ -38,9 +38,9 @@ func callback_bindingtransformfuncHandler(_ *C.GObject, c_binding *C.GBinding, c
 
 	toValue := ValueNewFromC(unsafe.Pointer(c_to_value))
 
-	index := int(uintptr(data))
-	callback := callbackBindingtransformfuncMap[index].callback
-	retGo := callback(binding, fromValue, toValue, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBindingtransformfuncMap[index]
+	retGo := callback(binding, fromValue, toValue)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

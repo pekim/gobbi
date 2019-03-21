@@ -15,7 +15,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_substitutefuncHandler(GObject *, FcPattern*, gpointer, gpointer);
+	void callback_substitutefuncHandler(GObject *, FcPattern*, gpointer);
 
 */
 import "C"
@@ -28,13 +28,13 @@ var callbackSubstitutefuncLock sync.RWMutex
 type SubstitutefuncCallback func(pattern *fontconfig.Pattern)
 
 //export callback_substitutefuncHandler
-func callback_substitutefuncHandler(_ *C.GObject, c_pattern *C.FcPattern, data C.gpointer) {
+func callback_substitutefuncHandler(_ *C.GObject, c_pattern *C.FcPattern, c_data C.gpointer) {
 	callbackSubstitutefuncLock.RLock()
 	defer callbackSubstitutefuncLock.RUnlock()
 
 	pattern := fontconfig.PatternNewFromC(unsafe.Pointer(c_pattern))
 
-	index := int(uintptr(data))
-	callback := callbackSubstitutefuncMap[index].callback
-	callback(pattern, data)
+	index := int(uintptr(c_data))
+	callback := callbackSubstitutefuncMap[index]
+	callback(pattern)
 }

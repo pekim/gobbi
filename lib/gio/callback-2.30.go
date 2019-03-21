@@ -26,7 +26,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	GType callback_dbusproxytypefuncHandler(GObject *, GDBusObjectManagerClient*, const gchar*, const gchar*, gpointer, gpointer);
+	GType callback_dbusproxytypefuncHandler(GObject *, GDBusObjectManagerClient*, gchar*, gchar*, gpointer);
 
 */
 import "C"
@@ -39,7 +39,7 @@ var callbackDbusproxytypefuncLock sync.RWMutex
 type DbusproxytypefuncCallback func(manager *DBusObjectManagerClient, objectPath string, interfaceName string) gobject.Type
 
 //export callback_dbusproxytypefuncHandler
-func callback_dbusproxytypefuncHandler(_ *C.GObject, c_manager *C.GDBusObjectManagerClient, c_object_path *C.gchar, c_interface_name *C.gchar, data C.gpointer) C.GType {
+func callback_dbusproxytypefuncHandler(_ *C.GObject, c_manager *C.GDBusObjectManagerClient, c_object_path *C.gchar, c_interface_name *C.gchar, c_user_data C.gpointer) C.GType {
 	callbackDbusproxytypefuncLock.RLock()
 	defer callbackDbusproxytypefuncLock.RUnlock()
 
@@ -49,9 +49,9 @@ func callback_dbusproxytypefuncHandler(_ *C.GObject, c_manager *C.GDBusObjectMan
 
 	interfaceName := C.GoString(c_interface_name)
 
-	index := int(uintptr(data))
-	callback := callbackDbusproxytypefuncMap[index].callback
-	retGo := callback(manager, objectPath, interfaceName, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDbusproxytypefuncMap[index]
+	retGo := callback(manager, objectPath, interfaceName)
 	retC :=
 		(C.GType)(retGo)
 	return retC

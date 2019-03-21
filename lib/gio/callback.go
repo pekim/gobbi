@@ -26,37 +26,32 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_asyncreadycallbackHandler(GObject *, GObject*, GAsyncResult*, gpointer, gpointer);
+	void callback_asyncreadycallbackHandler(GObject *, GObject*, GAsyncResult*, gpointer);
 
 */
 /*
 
-	void callback_desktopapplaunchcallbackHandler(GObject *, GDesktopAppInfo*, GPid, gpointer, gpointer);
+	void callback_desktopapplaunchcallbackHandler(GObject *, GDesktopAppInfo*, GPid, gpointer);
 
 */
 /*
 
-	void callback_fileprogresscallbackHandler(GObject *, goffset, goffset, gpointer, gpointer);
+	void callback_fileprogresscallbackHandler(GObject *, goffset, goffset, gpointer);
 
 */
 /*
 
-	gboolean callback_ioschedulerjobfuncHandler(GObject *, GIOSchedulerJob*, GCancellable*, gpointer, gpointer);
+	gboolean callback_ioschedulerjobfuncHandler(GObject *, GIOSchedulerJob*, GCancellable*, gpointer);
 
 */
 /*
 
-	gboolean callback_settingsbindgetmappingHandler(GObject *, GValue*, GVariant*, gpointer, gpointer);
+	gboolean callback_settingsbindgetmappingHandler(GObject *, GValue*, GVariant*, gpointer);
 
 */
 /*
 
-	GVariant* callback_settingsbindsetmappingHandler(GObject *, const GValue*, const GVariantType*, gpointer, gpointer);
-
-*/
-/*
-
-	void callback_simpleasyncthreadfuncHandler(GObject *, GSimpleAsyncResult*, GObject*, GCancellable*, gpointer);
+	GVariant* callback_settingsbindsetmappingHandler(GObject *, GValue*, GVariantType*, gpointer);
 
 */
 import "C"
@@ -69,7 +64,7 @@ var callbackAsyncreadycallbackLock sync.RWMutex
 type AsyncreadycallbackCallback func(sourceObject *gobject.Object, res *AsyncResult)
 
 //export callback_asyncreadycallbackHandler
-func callback_asyncreadycallbackHandler(_ *C.GObject, c_source_object *C.GObject, c_res *C.GAsyncResult, data C.gpointer) {
+func callback_asyncreadycallbackHandler(_ *C.GObject, c_source_object *C.GObject, c_res *C.GAsyncResult, c_user_data C.gpointer) {
 	callbackAsyncreadycallbackLock.RLock()
 	defer callbackAsyncreadycallbackLock.RUnlock()
 
@@ -77,9 +72,9 @@ func callback_asyncreadycallbackHandler(_ *C.GObject, c_source_object *C.GObject
 
 	res := AsyncResultNewFromC(unsafe.Pointer(c_res))
 
-	index := int(uintptr(data))
-	callback := callbackAsyncreadycallbackMap[index].callback
-	callback(sourceObject, res, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackAsyncreadycallbackMap[index]
+	callback(sourceObject, res)
 }
 
 var callbackDesktopapplaunchcallbackId int
@@ -90,7 +85,7 @@ var callbackDesktopapplaunchcallbackLock sync.RWMutex
 type DesktopapplaunchcallbackCallback func(appinfo *DesktopAppInfo, pid glib.Pid)
 
 //export callback_desktopapplaunchcallbackHandler
-func callback_desktopapplaunchcallbackHandler(_ *C.GObject, c_appinfo *C.GDesktopAppInfo, c_pid C.GPid, data C.gpointer) {
+func callback_desktopapplaunchcallbackHandler(_ *C.GObject, c_appinfo *C.GDesktopAppInfo, c_pid C.GPid, c_user_data C.gpointer) {
 	callbackDesktopapplaunchcallbackLock.RLock()
 	defer callbackDesktopapplaunchcallbackLock.RUnlock()
 
@@ -98,9 +93,9 @@ func callback_desktopapplaunchcallbackHandler(_ *C.GObject, c_appinfo *C.GDeskto
 
 	pid := (c_pid)
 
-	index := int(uintptr(data))
-	callback := callbackDesktopapplaunchcallbackMap[index].callback
-	callback(appinfo, pid, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDesktopapplaunchcallbackMap[index]
+	callback(appinfo, pid)
 }
 
 var callbackFileprogresscallbackId int
@@ -111,7 +106,7 @@ var callbackFileprogresscallbackLock sync.RWMutex
 type FileprogresscallbackCallback func(currentNumBytes int64, totalNumBytes int64)
 
 //export callback_fileprogresscallbackHandler
-func callback_fileprogresscallbackHandler(_ *C.GObject, c_current_num_bytes C.goffset, c_total_num_bytes C.goffset, data C.gpointer) {
+func callback_fileprogresscallbackHandler(_ *C.GObject, c_current_num_bytes C.goffset, c_total_num_bytes C.goffset, c_user_data C.gpointer) {
 	callbackFileprogresscallbackLock.RLock()
 	defer callbackFileprogresscallbackLock.RUnlock()
 
@@ -119,12 +114,12 @@ func callback_fileprogresscallbackHandler(_ *C.GObject, c_current_num_bytes C.go
 
 	totalNumBytes := uint64(c_total_num_bytes)
 
-	index := int(uintptr(data))
-	callback := callbackFileprogresscallbackMap[index].callback
-	callback(currentNumBytes, totalNumBytes, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackFileprogresscallbackMap[index]
+	callback(currentNumBytes, totalNumBytes)
 }
 
-// Unsupported : callback FileReadMoreCallback : unsupported parameter callback_data : no type generator for gpointer (gpointer) for param callback_data
+// Unsupported : callback FileReadMoreCallback : no [user_]data param
 
 var callbackIoschedulerjobfuncId int
 var callbackIoschedulerjobfuncMap = make(map[int]IoschedulerjobfuncCallback)
@@ -134,7 +129,7 @@ var callbackIoschedulerjobfuncLock sync.RWMutex
 type IoschedulerjobfuncCallback func(job *IOSchedulerJob, cancellable *Cancellable) bool
 
 //export callback_ioschedulerjobfuncHandler
-func callback_ioschedulerjobfuncHandler(_ *C.GObject, c_job *C.GIOSchedulerJob, c_cancellable *C.GCancellable, data C.gpointer) C.gboolean {
+func callback_ioschedulerjobfuncHandler(_ *C.GObject, c_job *C.GIOSchedulerJob, c_cancellable *C.GCancellable, c_user_data C.gpointer) C.gboolean {
 	callbackIoschedulerjobfuncLock.RLock()
 	defer callbackIoschedulerjobfuncLock.RUnlock()
 
@@ -142,9 +137,9 @@ func callback_ioschedulerjobfuncHandler(_ *C.GObject, c_job *C.GIOSchedulerJob, 
 
 	cancellable := CancellableNewFromC(unsafe.Pointer(c_cancellable))
 
-	index := int(uintptr(data))
-	callback := callbackIoschedulerjobfuncMap[index].callback
-	retGo := callback(job, cancellable, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackIoschedulerjobfuncMap[index]
+	retGo := callback(job, cancellable)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -160,7 +155,7 @@ var callbackSettingsbindgetmappingLock sync.RWMutex
 type SettingsbindgetmappingCallback func(value *gobject.Value, variant *glib.Variant) bool
 
 //export callback_settingsbindgetmappingHandler
-func callback_settingsbindgetmappingHandler(_ *C.GObject, c_value *C.GValue, c_variant *C.GVariant, data C.gpointer) C.gboolean {
+func callback_settingsbindgetmappingHandler(_ *C.GObject, c_value *C.GValue, c_variant *C.GVariant, c_user_data C.gpointer) C.gboolean {
 	callbackSettingsbindgetmappingLock.RLock()
 	defer callbackSettingsbindgetmappingLock.RUnlock()
 
@@ -168,9 +163,9 @@ func callback_settingsbindgetmappingHandler(_ *C.GObject, c_value *C.GValue, c_v
 
 	variant := glib.VariantNewFromC(unsafe.Pointer(c_variant))
 
-	index := int(uintptr(data))
-	callback := callbackSettingsbindgetmappingMap[index].callback
-	retGo := callback(value, variant, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackSettingsbindgetmappingMap[index]
+	retGo := callback(value, variant)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -184,7 +179,7 @@ var callbackSettingsbindsetmappingLock sync.RWMutex
 type SettingsbindsetmappingCallback func(value *gobject.Value, expectedType *glib.VariantType) *glib.Variant
 
 //export callback_settingsbindsetmappingHandler
-func callback_settingsbindsetmappingHandler(_ *C.GObject, c_value *C.GValue, c_expected_type *C.GVariantType, data C.gpointer) **C.GVariant {
+func callback_settingsbindsetmappingHandler(_ *C.GObject, c_value *C.GValue, c_expected_type *C.GVariantType, c_user_data C.gpointer) **C.GVariant {
 	callbackSettingsbindsetmappingLock.RLock()
 	defer callbackSettingsbindsetmappingLock.RUnlock()
 
@@ -192,9 +187,9 @@ func callback_settingsbindsetmappingHandler(_ *C.GObject, c_value *C.GValue, c_e
 
 	expectedType := glib.VariantTypeNewFromC(unsafe.Pointer(c_expected_type))
 
-	index := int(uintptr(data))
-	callback := callbackSettingsbindsetmappingMap[index].callback
-	retGo := callback(value, expectedType, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackSettingsbindsetmappingMap[index]
+	retGo := callback(value, expectedType)
 	retC :=
 		(*C.GVariant)(retGo.ToC())
 	return retC
@@ -202,25 +197,4 @@ func callback_settingsbindsetmappingHandler(_ *C.GObject, c_value *C.GValue, c_e
 
 // Unsupported : callback SettingsGetMapping : unsupported parameter result : no type generator for gpointer (gpointer*) for param result
 
-var callbackSimpleasyncthreadfuncId int
-var callbackSimpleasyncthreadfuncMap = make(map[int]SimpleasyncthreadfuncCallback)
-var callbackSimpleasyncthreadfuncLock sync.RWMutex
-
-// SimpleasyncthreadfuncCallback is a callback function for a 'SimpleAsyncThreadFunc' callback.
-type SimpleasyncthreadfuncCallback func(res *SimpleAsyncResult, object *gobject.Object, cancellable *Cancellable)
-
-//export callback_simpleasyncthreadfuncHandler
-func callback_simpleasyncthreadfuncHandler(_ *C.GObject, c_res *C.GSimpleAsyncResult, c_object *C.GObject, c_cancellable *C.GCancellable, data C.gpointer) {
-	callbackSimpleasyncthreadfuncLock.RLock()
-	defer callbackSimpleasyncthreadfuncLock.RUnlock()
-
-	res := SimpleAsyncResultNewFromC(unsafe.Pointer(c_res))
-
-	object := gobject.ObjectNewFromC(unsafe.Pointer(c_object))
-
-	cancellable := CancellableNewFromC(unsafe.Pointer(c_cancellable))
-
-	index := int(uintptr(data))
-	callback := callbackSimpleasyncthreadfuncMap[index].callback
-	callback(res, object, cancellable)
-}
+// Unsupported : callback SimpleAsyncThreadFunc : no [user_]data param

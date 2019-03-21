@@ -16,7 +16,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_shaperendererfuncHandler(GObject *, cairo_t*, PangoAttrShape*, gboolean, gpointer, gpointer);
+	void callback_shaperendererfuncHandler(GObject *, cairo_t*, PangoAttrShape*, gboolean, gpointer);
 
 */
 import "C"
@@ -29,7 +29,7 @@ var callbackShaperendererfuncLock sync.RWMutex
 type ShaperendererfuncCallback func(cr *cairo.Context, attr *pango.AttrShape, doPath bool)
 
 //export callback_shaperendererfuncHandler
-func callback_shaperendererfuncHandler(_ *C.GObject, c_cr *C.cairo_t, c_attr *C.PangoAttrShape, c_do_path C.gboolean, data C.gpointer) {
+func callback_shaperendererfuncHandler(_ *C.GObject, c_cr *C.cairo_t, c_attr *C.PangoAttrShape, c_do_path C.gboolean, c_data C.gpointer) {
 	callbackShaperendererfuncLock.RLock()
 	defer callbackShaperendererfuncLock.RUnlock()
 
@@ -39,7 +39,7 @@ func callback_shaperendererfuncHandler(_ *C.GObject, c_cr *C.cairo_t, c_attr *C.
 
 	doPath := c_do_path == C.TRUE
 
-	index := int(uintptr(data))
-	callback := callbackShaperendererfuncMap[index].callback
-	callback(cr, attr, doPath, data)
+	index := int(uintptr(c_data))
+	callback := callbackShaperendererfuncMap[index]
+	callback(cr, attr, doPath)
 }

@@ -17,7 +17,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gchar* callback_calendardetailfuncHandler(GObject *, GtkCalendar*, guint, guint, guint, gpointer, gpointer);
+	gchar* callback_calendardetailfuncHandler(GObject *, GtkCalendar*, guint, guint, guint, gpointer);
 
 */
 import "C"
@@ -30,7 +30,7 @@ var callbackCalendardetailfuncLock sync.RWMutex
 type CalendardetailfuncCallback func(calendar *Calendar, year uint32, month uint32, day uint32) string
 
 //export callback_calendardetailfuncHandler
-func callback_calendardetailfuncHandler(_ *C.GObject, c_calendar *C.GtkCalendar, c_year C.guint, c_month C.guint, c_day C.guint, data C.gpointer) {
+func callback_calendardetailfuncHandler(_ *C.GObject, c_calendar *C.GtkCalendar, c_year C.guint, c_month C.guint, c_day C.guint, c_user_data C.gpointer) *C.GString {
 	callbackCalendardetailfuncLock.RLock()
 	defer callbackCalendardetailfuncLock.RUnlock()
 
@@ -42,9 +42,9 @@ func callback_calendardetailfuncHandler(_ *C.GObject, c_calendar *C.GtkCalendar,
 
 	day := uint32(c_day)
 
-	index := int(uintptr(data))
-	callback := callbackCalendardetailfuncMap[index].callback
-	retGo := callback(calendar, year, month, day, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackCalendardetailfuncMap[index]
+	retGo := callback(calendar, year, month, day)
 	retC :=
 		C.CString(retGo)
 	return retC

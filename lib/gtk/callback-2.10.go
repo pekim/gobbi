@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_clipboardrichtextreceivedfuncHandler(GObject *, GtkClipboard*, GdkAtom, const guint8*, gsize, gpointer, gpointer);
+	void callback_clipboardrichtextreceivedfuncHandler(GObject *, GtkClipboard*, GdkAtom, guint8*, gsize, gpointer);
 
 */
 import "C"
@@ -31,7 +31,7 @@ var callbackClipboardrichtextreceivedfuncLock sync.RWMutex
 type ClipboardrichtextreceivedfuncCallback func(clipboard *Clipboard, format *gdk.Atom, text string, length uint64)
 
 //export callback_clipboardrichtextreceivedfuncHandler
-func callback_clipboardrichtextreceivedfuncHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, c_format *C.GdkAtom, c_text *C.guint8, c_length C.gsize, data C.gpointer) {
+func callback_clipboardrichtextreceivedfuncHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, c_format *C.GdkAtom, c_text *C.guint8, c_length C.gsize, c_data C.gpointer) {
 	callbackClipboardrichtextreceivedfuncLock.RLock()
 	defer callbackClipboardrichtextreceivedfuncLock.RUnlock()
 
@@ -43,7 +43,7 @@ func callback_clipboardrichtextreceivedfuncHandler(_ *C.GObject, c_clipboard *C.
 
 	length := uint64(c_length)
 
-	index := int(uintptr(data))
-	callback := callbackClipboardrichtextreceivedfuncMap[index].callback
-	callback(clipboard, format, text, length, data)
+	index := int(uintptr(c_data))
+	callback := callbackClipboardrichtextreceivedfuncMap[index]
+	callback(clipboard, format, text, length)
 }

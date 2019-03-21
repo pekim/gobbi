@@ -26,7 +26,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	GFile* callback_vfsfilelookupfuncHandler(GObject *, GVfs*, const char*, gpointer, gpointer);
+	GFile* callback_vfsfilelookupfuncHandler(GObject *, GVfs*, char*, gpointer);
 
 */
 import "C"
@@ -39,7 +39,7 @@ var callbackVfsfilelookupfuncLock sync.RWMutex
 type VfsfilelookupfuncCallback func(vfs *Vfs, identifier string) *File
 
 //export callback_vfsfilelookupfuncHandler
-func callback_vfsfilelookupfuncHandler(_ *C.GObject, c_vfs *C.GVfs, c_identifier *C.char, data C.gpointer) **C.GFile {
+func callback_vfsfilelookupfuncHandler(_ *C.GObject, c_vfs *C.GVfs, c_identifier *C.char, c_user_data C.gpointer) **C.GFile {
 	callbackVfsfilelookupfuncLock.RLock()
 	defer callbackVfsfilelookupfuncLock.RUnlock()
 
@@ -47,9 +47,9 @@ func callback_vfsfilelookupfuncHandler(_ *C.GObject, c_vfs *C.GVfs, c_identifier
 
 	identifier := C.GoString(c_identifier)
 
-	index := int(uintptr(data))
-	callback := callbackVfsfilelookupfuncMap[index].callback
-	retGo := callback(vfs, identifier, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackVfsfilelookupfuncMap[index]
+	retGo := callback(vfs, identifier)
 	retC :=
 		(*C.GFile)(retGo.ToC())
 	return retC

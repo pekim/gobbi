@@ -15,11 +15,31 @@ type Callback struct {
 	varNameLock      string
 	goNameHandler    string
 	callbackTypeName string
+	dataParam        *Parameter
 }
 
 func (c *Callback) init(ns *Namespace) {
 	c.Function.init(ns, nil, "")
+	c.initDataParam()
 	c.initNames()
+}
+
+func (c *Callback) initDataParam() {
+	// Favour "user_data" param over "data" param, as in some
+	// cases both are present in parameters.
+
+	for _, p := range c.Parameters {
+		if p.Name == "data" && c.dataParam == nil {
+			c.dataParam = p
+		}
+		if p.Name == "user_data" {
+			c.dataParam = p
+		}
+	}
+
+	if c.dataParam != nil {
+		c.dataParam.Type.generator = TypeGeneratorGpointerNew(c.dataParam.Type)
+	}
 }
 
 func (c *Callback) initNames() {
@@ -37,8 +57,12 @@ func (c *Callback) initNames() {
 }
 
 func (c *Callback) supported() (supported bool, reason string) {
+	if c.dataParam == nil {
+		return false, fmt.Sprintf("callback %s : no [user_]data param", c.Name)
+	}
+
 	for _, p := range c.Parameters {
-		if p.Name == "data" || p.Name == "user_data" {
+		if p == c.dataParam {
 			continue
 		}
 
@@ -97,7 +121,7 @@ func (c *Callback) generate(g *jen.Group, version *Version) {
 	c.generateVariables(g)
 	c.generateCallbackType(g)
 	//c.generateConnectFunction(g)
-	c.generateHandlerFunction(g)
+	c.generateGoHandlerFunction(g)
 }
 
 func (c *Callback) generateCgoPreamble() {
@@ -107,11 +131,13 @@ func (c *Callback) generateCgoPreamble() {
 	for _, param := range c.Parameters {
 		if param.Array != nil {
 			params = append(params, param.Array.CType)
+		} else if param == c.dataParam {
+			params = append(params, "gpointer")
 		} else {
-			params = append(params, c.cTypeDeclaration(param.Type))
+			cType := strings.TrimPrefix(c.cTypeDeclaration(param.Type), "const ")
+			params = append(params, cType)
 		}
 	}
-	params = append(params, "gpointer")
 	handlerParams := strings.Join(params, ", ")
 
 	c.Namespace.jenFile.CgoPreamble(
@@ -168,7 +194,7 @@ func (c *Callback) cTypeDeclaration(typ *Type) string {
 func (c *Callback) generateCallbackType(g *jen.Group) {
 	params := Parameters{}
 	for _, p := range c.Parameters {
-		if p.Name == "data" || p.Name == "user_data" {
+		if p == c.dataParam {
 			continue
 		}
 
@@ -193,10 +219,10 @@ func (c *Callback) generateCallbackReturnDeclaration(g *jen.Group) {
 	c.ReturnValue.generateFunctionDeclaration(g)
 }
 
-func (c *Callback) generateHandlerFunction(g *jen.Group) {
+func (c *Callback) generateGoHandlerFunction(g *jen.Group) {
 	params := Parameters{}
 	for _, p := range c.Parameters {
-		if p.Name == "data" || p.Name == "user_data" {
+		if p == c.dataParam {
 			continue
 		}
 
@@ -223,18 +249,19 @@ func (c *Callback) generateHandlerFunction(g *jen.Group) {
 }
 
 func (c *Callback) generateHandlerParameters(g *jen.Group) {
-	params := Parameters{}
-	for _, p := range c.Parameters {
-		if p.Name == "data" || p.Name == "user_data" {
-			continue
-		}
-
-		params = append(params, p)
-	}
+	//params := Parameters{}
+	//for _, p := range c.Parameters {
+	//	if p == c.dataParam {
+	//		continue
+	//	}
+	//
+	//	params = append(params, p)
+	//}
+	params := c.Parameters
 
 	g.Id("_").Op("*").Qual("C", "GObject")
 	params.generateFunctionDeclarationCtypes(g)
-	g.Id("data").Qual("C", "gpointer")
+	//g.Id(c.dataParam.Name).Qual("C", "gpointer")
 }
 
 func (c *Callback) generateLockUnlock(g *jen.Group, readonly bool) {
@@ -254,10 +281,10 @@ func (c *Callback) generateLockUnlock(g *jen.Group, readonly bool) {
 
 func (c *Callback) generateHandlerCall(g *jen.Group) {
 	// index := int(c_index)
-	g.Id("index").Op(":=").Int().Call(jen.Uintptr().Call(jen.Id("data")))
+	g.Id("index").Op(":=").Int().Call(jen.Uintptr().Call(jen.Id(c.dataParam.cVarName)))
 
 	//	callback := callbackCelllayoutdatafuncMap[callbackCelllayoutdatafuncId].callback
-	g.Id("callback").Op(":=").Id(c.varNameMap).Index(jen.Id("index")).Dot("callback")
+	g.Id("callback").Op(":=").Id(c.varNameMap).Index(jen.Id("index"))
 
 	if c.ReturnValue.Type.Name != "none" {
 		// retGo := callback(...)
@@ -271,6 +298,9 @@ func (c *Callback) generateHandlerCall(g *jen.Group) {
 func (c *Callback) generateHandleCallParams(g *jen.Group) {
 	for _, p := range c.Parameters {
 		if p.arrayLengthFor != nil {
+			continue
+		}
+		if p == c.dataParam {
 			continue
 		}
 

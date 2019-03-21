@@ -17,17 +17,17 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_listboxfilterfuncHandler(GObject *, GtkListBoxRow*, gpointer, gpointer);
+	gboolean callback_listboxfilterfuncHandler(GObject *, GtkListBoxRow*, gpointer);
 
 */
 /*
 
-	gint callback_listboxsortfuncHandler(GObject *, GtkListBoxRow*, GtkListBoxRow*, gpointer, gpointer);
+	gint callback_listboxsortfuncHandler(GObject *, GtkListBoxRow*, GtkListBoxRow*, gpointer);
 
 */
 /*
 
-	void callback_listboxupdateheaderfuncHandler(GObject *, GtkListBoxRow*, GtkListBoxRow*, gpointer, gpointer);
+	void callback_listboxupdateheaderfuncHandler(GObject *, GtkListBoxRow*, GtkListBoxRow*, gpointer);
 
 */
 import "C"
@@ -40,15 +40,15 @@ var callbackListboxfilterfuncLock sync.RWMutex
 type ListboxfilterfuncCallback func(row *ListBoxRow) bool
 
 //export callback_listboxfilterfuncHandler
-func callback_listboxfilterfuncHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) C.gboolean {
+func callback_listboxfilterfuncHandler(_ *C.GObject, c_row *C.GtkListBoxRow, c_user_data C.gpointer) C.gboolean {
 	callbackListboxfilterfuncLock.RLock()
 	defer callbackListboxfilterfuncLock.RUnlock()
 
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
-	index := int(uintptr(data))
-	callback := callbackListboxfilterfuncMap[index].callback
-	retGo := callback(row, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackListboxfilterfuncMap[index]
+	retGo := callback(row)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -62,7 +62,7 @@ var callbackListboxsortfuncLock sync.RWMutex
 type ListboxsortfuncCallback func(row1 *ListBoxRow, row2 *ListBoxRow) int32
 
 //export callback_listboxsortfuncHandler
-func callback_listboxsortfuncHandler(_ *C.GObject, c_row1 *C.GtkListBoxRow, c_row2 *C.GtkListBoxRow, data C.gpointer) C.gint {
+func callback_listboxsortfuncHandler(_ *C.GObject, c_row1 *C.GtkListBoxRow, c_row2 *C.GtkListBoxRow, c_user_data C.gpointer) C.gint {
 	callbackListboxsortfuncLock.RLock()
 	defer callbackListboxsortfuncLock.RUnlock()
 
@@ -70,9 +70,9 @@ func callback_listboxsortfuncHandler(_ *C.GObject, c_row1 *C.GtkListBoxRow, c_ro
 
 	row2 := ListBoxRowNewFromC(unsafe.Pointer(c_row2))
 
-	index := int(uintptr(data))
-	callback := callbackListboxsortfuncMap[index].callback
-	retGo := callback(row1, row2, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackListboxsortfuncMap[index]
+	retGo := callback(row1, row2)
 	retC :=
 		(C.gint)(retGo)
 	return retC
@@ -86,7 +86,7 @@ var callbackListboxupdateheaderfuncLock sync.RWMutex
 type ListboxupdateheaderfuncCallback func(row *ListBoxRow, before *ListBoxRow)
 
 //export callback_listboxupdateheaderfuncHandler
-func callback_listboxupdateheaderfuncHandler(_ *C.GObject, c_row *C.GtkListBoxRow, c_before *C.GtkListBoxRow, data C.gpointer) {
+func callback_listboxupdateheaderfuncHandler(_ *C.GObject, c_row *C.GtkListBoxRow, c_before *C.GtkListBoxRow, c_user_data C.gpointer) {
 	callbackListboxupdateheaderfuncLock.RLock()
 	defer callbackListboxupdateheaderfuncLock.RUnlock()
 
@@ -94,7 +94,7 @@ func callback_listboxupdateheaderfuncHandler(_ *C.GObject, c_row *C.GtkListBoxRo
 
 	before := ListBoxRowNewFromC(unsafe.Pointer(c_before))
 
-	index := int(uintptr(data))
-	callback := callbackListboxupdateheaderfuncMap[index].callback
-	callback(row, before, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackListboxupdateheaderfuncMap[index]
+	callback(row, before)
 }

@@ -14,7 +14,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_attrfilterfuncHandler(GObject *, PangoAttribute*, gpointer, gpointer);
+	gboolean callback_attrfilterfuncHandler(GObject *, PangoAttribute*, gpointer);
 
 */
 import "C"
@@ -29,15 +29,15 @@ var callbackAttrfilterfuncLock sync.RWMutex
 type AttrfilterfuncCallback func(attribute *Attribute) bool
 
 //export callback_attrfilterfuncHandler
-func callback_attrfilterfuncHandler(_ *C.GObject, c_attribute *C.PangoAttribute, data C.gpointer) C.gboolean {
+func callback_attrfilterfuncHandler(_ *C.GObject, c_attribute *C.PangoAttribute, c_user_data C.gpointer) C.gboolean {
 	callbackAttrfilterfuncLock.RLock()
 	defer callbackAttrfilterfuncLock.RUnlock()
 
 	attribute := AttributeNewFromC(unsafe.Pointer(c_attribute))
 
-	index := int(uintptr(data))
-	callback := callbackAttrfilterfuncMap[index].callback
-	retGo := callback(attribute, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackAttrfilterfuncMap[index]
+	retGo := callback(attribute)
 	retC :=
 		boolToGboolean(retGo)
 	return retC

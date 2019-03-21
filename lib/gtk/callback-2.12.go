@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_builderconnectfuncHandler(GObject *, GtkBuilder*, GObject*, const gchar*, const gchar*, GObject*, GConnectFlags, gpointer, gpointer);
+	void callback_builderconnectfuncHandler(GObject *, GtkBuilder*, GObject*, gchar*, gchar*, GObject*, GConnectFlags, gpointer);
 
 */
 import "C"
@@ -31,7 +31,7 @@ var callbackBuilderconnectfuncLock sync.RWMutex
 type BuilderconnectfuncCallback func(builder *Builder, object *gobject.Object, signalName string, handlerName string, connectObject *gobject.Object, flags gobject.ConnectFlags)
 
 //export callback_builderconnectfuncHandler
-func callback_builderconnectfuncHandler(_ *C.GObject, c_builder *C.GtkBuilder, c_object *C.GObject, c_signal_name *C.gchar, c_handler_name *C.gchar, c_connect_object *C.GObject, c_flags C.GConnectFlags, data C.gpointer) {
+func callback_builderconnectfuncHandler(_ *C.GObject, c_builder *C.GtkBuilder, c_object *C.GObject, c_signal_name *C.gchar, c_handler_name *C.gchar, c_connect_object *C.GObject, c_flags C.GConnectFlags, c_user_data C.gpointer) {
 	callbackBuilderconnectfuncLock.RLock()
 	defer callbackBuilderconnectfuncLock.RUnlock()
 
@@ -47,7 +47,7 @@ func callback_builderconnectfuncHandler(_ *C.GObject, c_builder *C.GtkBuilder, c
 
 	flags := gobject.ConnectFlags(c_flags)
 
-	index := int(uintptr(data))
-	callback := callbackBuilderconnectfuncMap[index].callback
-	callback(builder, object, signalName, handlerName, connectObject, flags, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackBuilderconnectfuncMap[index]
+	callback(builder, object, signalName, handlerName, connectObject, flags)
 }

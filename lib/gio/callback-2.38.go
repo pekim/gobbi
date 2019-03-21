@@ -23,7 +23,7 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void callback_filemeasureprogresscallbackHandler(GObject *, gboolean, guint64, guint64, guint64, gpointer, gpointer);
+	void callback_filemeasureprogresscallbackHandler(GObject *, gboolean, guint64, guint64, guint64, gpointer);
 
 */
 import "C"
@@ -36,7 +36,7 @@ var callbackFilemeasureprogresscallbackLock sync.RWMutex
 type FilemeasureprogresscallbackCallback func(reporting bool, currentSize uint64, numDirs uint64, numFiles uint64)
 
 //export callback_filemeasureprogresscallbackHandler
-func callback_filemeasureprogresscallbackHandler(_ *C.GObject, c_reporting C.gboolean, c_current_size C.guint64, c_num_dirs C.guint64, c_num_files C.guint64, data C.gpointer) {
+func callback_filemeasureprogresscallbackHandler(_ *C.GObject, c_reporting C.gboolean, c_current_size C.guint64, c_num_dirs C.guint64, c_num_files C.guint64, c_user_data C.gpointer) {
 	callbackFilemeasureprogresscallbackLock.RLock()
 	defer callbackFilemeasureprogresscallbackLock.RUnlock()
 
@@ -48,7 +48,7 @@ func callback_filemeasureprogresscallbackHandler(_ *C.GObject, c_reporting C.gbo
 
 	numFiles := uint64(c_num_files)
 
-	index := int(uintptr(data))
-	callback := callbackFilemeasureprogresscallbackMap[index].callback
-	callback(reporting, currentSize, numDirs, numFiles, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackFilemeasureprogresscallbackMap[index]
+	callback(reporting, currentSize, numDirs, numFiles)
 }

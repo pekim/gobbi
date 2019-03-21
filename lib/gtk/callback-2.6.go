@@ -18,7 +18,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	void callback_clipboardimagereceivedfuncHandler(GObject *, GtkClipboard*, GdkPixbuf*, gpointer, gpointer);
+	void callback_clipboardimagereceivedfuncHandler(GObject *, GtkClipboard*, GdkPixbuf*, gpointer);
 
 */
 import "C"
@@ -31,7 +31,7 @@ var callbackClipboardimagereceivedfuncLock sync.RWMutex
 type ClipboardimagereceivedfuncCallback func(clipboard *Clipboard, pixbuf *gdkpixbuf.Pixbuf)
 
 //export callback_clipboardimagereceivedfuncHandler
-func callback_clipboardimagereceivedfuncHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, c_pixbuf *C.GdkPixbuf, data C.gpointer) {
+func callback_clipboardimagereceivedfuncHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, c_pixbuf *C.GdkPixbuf, c_data C.gpointer) {
 	callbackClipboardimagereceivedfuncLock.RLock()
 	defer callbackClipboardimagereceivedfuncLock.RUnlock()
 
@@ -39,7 +39,7 @@ func callback_clipboardimagereceivedfuncHandler(_ *C.GObject, c_clipboard *C.Gtk
 
 	pixbuf := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(c_pixbuf))
 
-	index := int(uintptr(data))
-	callback := callbackClipboardimagereceivedfuncMap[index].callback
-	callback(clipboard, pixbuf, data)
+	index := int(uintptr(c_data))
+	callback := callbackClipboardimagereceivedfuncMap[index]
+	callback(clipboard, pixbuf)
 }

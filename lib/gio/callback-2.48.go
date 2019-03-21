@@ -27,7 +27,7 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean callback_datagrambasedsourcefuncHandler(GObject *, GDatagramBased*, GIOCondition, gpointer, gpointer);
+	gboolean callback_datagrambasedsourcefuncHandler(GObject *, GDatagramBased*, GIOCondition, gpointer);
 
 */
 import "C"
@@ -40,7 +40,7 @@ var callbackDatagrambasedsourcefuncLock sync.RWMutex
 type DatagrambasedsourcefuncCallback func(datagramBased *DatagramBased, condition glib.IOCondition) bool
 
 //export callback_datagrambasedsourcefuncHandler
-func callback_datagrambasedsourcefuncHandler(_ *C.GObject, c_datagram_based *C.GDatagramBased, c_condition C.GIOCondition, data C.gpointer) C.gboolean {
+func callback_datagrambasedsourcefuncHandler(_ *C.GObject, c_datagram_based *C.GDatagramBased, c_condition C.GIOCondition, c_user_data C.gpointer) C.gboolean {
 	callbackDatagrambasedsourcefuncLock.RLock()
 	defer callbackDatagrambasedsourcefuncLock.RUnlock()
 
@@ -48,9 +48,9 @@ func callback_datagrambasedsourcefuncHandler(_ *C.GObject, c_datagram_based *C.G
 
 	condition := glib.IOCondition(c_condition)
 
-	index := int(uintptr(data))
-	callback := callbackDatagrambasedsourcefuncMap[index].callback
-	retGo := callback(datagramBased, condition, userData)
+	index := int(uintptr(c_user_data))
+	callback := callbackDatagrambasedsourcefuncMap[index]
+	retGo := callback(datagramBased, condition)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
