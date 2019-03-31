@@ -52,7 +52,7 @@ sources after one invocation. That is, the callback will only be called once.
 func IdleAddOnce(callback IdleAddOnceCallback) {
 	IdleAdd(func() bool {
 		callback()
-		return SOURCE_REMOVE
+		return false
 	})
 }
 
