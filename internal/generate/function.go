@@ -123,20 +123,22 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	if f.Parameters.hasFormatArgs() {
-		f.generateFormatArgsCWrapper()
-	}
+	f.Namespace.callFile.addFunctionName(f.CIdentifier)
 
-	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
-
-	g.
-		Func().
-		Do(f.generateReceiverDeclaration).
-		Id(f.GoName).                                         // name
-		ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
-		ParamsFunc(f.generateReturnDeclaration).              // returns
-		BlockFunc(f.generateBody).                            // body
-		Line()
+	//if f.Parameters.hasFormatArgs() {
+	//	f.generateFormatArgsCWrapper()
+	//}
+	//
+	//g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
+	//
+	//g.
+	//	Func().
+	//	Do(f.generateReceiverDeclaration).
+	//	Id(f.GoName).                                         // name
+	//	ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
+	//	ParamsFunc(f.generateReturnDeclaration).              // returns
+	//	BlockFunc(f.generateBody).                            // body
+	//	Line()
 }
 
 func (f *Function) generateFormatArgsCWrapper() {

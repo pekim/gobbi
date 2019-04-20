@@ -25,6 +25,7 @@ type Namespace struct {
 	Interfaces          Interfaces   `xml:"interface"`
 
 	repo              *Repository
+	callFile          *CallFile
 	jenFile           *jen.File
 	goPackageName     string
 	fullGoPackageName string
@@ -80,13 +81,14 @@ func (ns *Namespace) blacklisted() bool {
 	return ns.Blacklist
 }
 
-func (ns *Namespace) generate() {
+func (ns *Namespace) generate(callFile *CallFile) {
 	if ns.Blacklist {
 		return
 	}
 
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
+	ns.callFile = callFile
 	ns.generateLibDir()
 
 	//ns.generatePackageFile()
@@ -98,7 +100,7 @@ func (ns *Namespace) generate() {
 	//ns.generateGeneratables("class", ns.Classes)
 	ns.generateGeneratables("constant", ns.Constants)
 	//ns.generateGeneratables("enum", ns.Enumerations)
-	//ns.generateGeneratables("function", ns.Functions)
+	ns.generateGeneratables("function", ns.Functions)
 	//ns.generateGeneratables("interface", ns.Interfaces)
 	//ns.generateGeneratables("record", ns.Records)
 }

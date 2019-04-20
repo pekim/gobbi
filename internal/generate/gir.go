@@ -14,11 +14,13 @@ type Gir struct {
 }
 
 func FromRoot(name, version string) {
+	callFile := CallFile{}
 	girs := girNewRoot(name, version)
 
 	for _, gir := range girs {
-		gir.generate()
+		gir.generate(&callFile)
 	}
+	callFile.generate()
 }
 
 func girNewRoot(name string, version string) []*Gir {
@@ -76,8 +78,8 @@ func girNew(name string, version string, girs map[string]*Gir) {
 	return
 }
 
-func (g *Gir) generate() {
-	g.repo.Generate()
+func (g *Gir) generate(callFile *CallFile) {
+	g.repo.Generate(callFile)
 }
 
 func (g *Gir) LoadFile(filename string, required bool) *Repository {

@@ -22,8 +22,12 @@ func (r *Repository) MergeAddenda(addenda *Repository) {
 	r.Namespace.mergeAddenda(addenda.Namespace)
 }
 
-func (r *Repository) Generate() {
-	r.Namespace.generate()
+func (r *Repository) Generate(callFile *CallFile) {
+	for _, p := range r.Packages {
+		callFile.packageNames = append(callFile.packageNames, p.Name)
+	}
+
+	r.Namespace.generate(callFile)
 }
 
 type Package struct {
