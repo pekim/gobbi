@@ -19,7 +19,7 @@ type CallFile struct {
 func (cf *CallFile) generate() {
 	cf.setLibraryNames()
 	cf.sortFunctionNames()
-	//fmt.Println("g_printf", cf.functionNameIndexes["g_printf"])
+	fmt.Println("g_printf", cf.functionNameIndexes["g_printf"])
 
 	filepath := projectFilepath("lib", "internal", "call", "call.c")
 	file, err := os.OpenFile(filepath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
