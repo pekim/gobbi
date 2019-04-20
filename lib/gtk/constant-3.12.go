@@ -3,15 +3,6 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-const STYLE_CLASS_DESTRUCTIVE_ACTION string = C.GTK_STYLE_CLASS_DESTRUCTIVE_ACTION
-const STYLE_CLASS_NEEDS_ATTENTION string = C.GTK_STYLE_CLASS_NEEDS_ATTENTION
-const STYLE_CLASS_SUGGESTED_ACTION string = C.GTK_STYLE_CLASS_SUGGESTED_ACTION
+const STYLE_CLASS_DESTRUCTIVE_ACTION string = "destructive-action"
+const STYLE_CLASS_NEEDS_ATTENTION string = "needs-attention"
+const STYLE_CLASS_SUGGESTED_ACTION string = "suggested-action"

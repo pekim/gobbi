@@ -3,16 +3,7 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-const LEVEL_BAR_OFFSET_HIGH string = C.GTK_LEVEL_BAR_OFFSET_HIGH
-const LEVEL_BAR_OFFSET_LOW string = C.GTK_LEVEL_BAR_OFFSET_LOW
-const PRINT_SETTINGS_OUTPUT_BASENAME string = C.GTK_PRINT_SETTINGS_OUTPUT_BASENAME
-const PRINT_SETTINGS_OUTPUT_DIR string = C.GTK_PRINT_SETTINGS_OUTPUT_DIR
+const LEVEL_BAR_OFFSET_HIGH string = "high"
+const LEVEL_BAR_OFFSET_LOW string = "low"
+const PRINT_SETTINGS_OUTPUT_BASENAME string = "output-basename"
+const PRINT_SETTINGS_OUTPUT_DIR string = "output-dir"

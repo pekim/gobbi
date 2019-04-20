@@ -43,44 +43,42 @@ func (ns *Namespace) generatePackageFile() {
 	})
 }
 
-func (ns *Namespace) generateBooleanFile() {
-	ns.generateFile("boolean", func(f *jen.File) {
-		ns.cgoPreambleHeaders(f, Version{})
+//func (ns *Namespace) generateBooleanFile() {
+//	ns.generateFile("boolean", func(f *jen.File) {
+//		f.
+//			Func().
+//			Id("boolToGboolean").
+//			Params(jen.Id("b").Id("bool")).
+//			Parens(jen.Qual("C", "gboolean")).
+//			BlockFunc(func(g *jen.Group) {
+//				g.
+//					If(jen.Id("b")).
+//					Block(jen.Return(jen.Qual("C", "TRUE")))
+//
+//				g.Return(jen.Qual("C", "FALSE"))
+//			})
+//	})
+//}
 
-		f.
-			Func().
-			Id("boolToGboolean").
-			Params(jen.Id("b").Id("bool")).
-			Parens(jen.Qual("C", "gboolean")).
-			BlockFunc(func(g *jen.Group) {
-				g.
-					If(jen.Id("b")).
-					Block(jen.Return(jen.Qual("C", "TRUE")))
-
-				g.Return(jen.Qual("C", "FALSE"))
-			})
-	})
-}
-
-func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
-	/*
-	 * Suppress C compiler warnings about deprecated functions.
-	 *
-	 * There are api functions that are deprecated from various
-	 * library versions. The compilers warnings are noisy as
-	 * they will be emitted regardless of whether such functions
-	 * are used or not by an application.
-	 */
-	file.CgoPreamble("#cgo CFLAGS: -Wno-deprecated-declarations")
-
-	// Suppress C compiler warnings from format function wrappers.
-	file.CgoPreamble("#cgo CFLAGS: -Wno-format-security")
-	file.CgoPreamble("#cgo CFLAGS: -Wno-incompatible-pointer-types")
-
-	ns.repo.CIncludes.generate(file, version)
-
-	file.CgoPreamble("#include <stdlib.h>")
-}
+//func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
+//	/*
+//	 * Suppress C compiler warnings about deprecated functions.
+//	 *
+//	 * There are api functions that are deprecated from various
+//	 * library versions. The compilers warnings are noisy as
+//	 * they will be emitted regardless of whether such functions
+//	 * are used or not by an application.
+//	 */
+//	file.CgoPreamble("#cgo CFLAGS: -Wno-deprecated-declarations")
+//
+//	// Suppress C compiler warnings from format function wrappers.
+//	file.CgoPreamble("#cgo CFLAGS: -Wno-format-security")
+//	file.CgoPreamble("#cgo CFLAGS: -Wno-incompatible-pointer-types")
+//
+//	ns.repo.CIncludes.generate(file, version)
+//
+//	file.CgoPreamble("#include <stdlib.h>")
+//}
 
 func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
 	// file for non version-specific entities
@@ -98,7 +96,7 @@ func (ns *Namespace) generateGeneratables(typeName string, generatables Generata
 func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
-		ns.cgoPreambleHeaders(f, version)
+		//ns.cgoPreambleHeaders(f, version)
 		ns.generateVersionDebugFunction(f, version.value)
 
 		for _, entity := range generatables.entities() {

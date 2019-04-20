@@ -3,15 +3,6 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
-const GINTPTR_FORMAT string = C.G_GINTPTR_FORMAT
-const GINTPTR_MODIFIER string = C.G_GINTPTR_MODIFIER
-const GUINTPTR_FORMAT string = C.G_GUINTPTR_FORMAT
+const GINTPTR_FORMAT string = "li"
+const GINTPTR_MODIFIER string = "l"
+const GUINTPTR_FORMAT string = "lu"
