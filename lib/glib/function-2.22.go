@@ -27,7 +27,8 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
 func ReloadUserSpecialDirsCache() {
-	call.Function(2834)
+	data := call.Data{}
+	call.Function(2834, data)
 	return
 }
 

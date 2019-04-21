@@ -23,7 +23,8 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Version is a wrapper around the C function pango_version.
 func Version() int32 {
-	call.Function(9286)
+	data := call.Data{}
+	call.Function(9286, data)
 	retGo := int32(3)
 
 	return retGo

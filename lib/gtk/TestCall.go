@@ -5,5 +5,6 @@ import (
 )
 
 func TestCall() {
-	call.Function(2683)
+	d := call.Data{}
+	call.Function(2683, d)
 }

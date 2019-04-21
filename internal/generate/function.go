@@ -205,10 +205,19 @@ func (f *Function) generateReturnDeclaration(g *jen.Group) {
 func (f *Function) generateBody(g *jen.Group) {
 	functionIndex := f.Namespace.callFile.functionNameIndexes[f.CIdentifier]
 
+	//d := call.Data{}
+	g.
+		Id("data").
+		Op(":=").
+		Qual("github.com/pekim/gobbi/lib/internal/call", "Data").
+		Values(jen.DictFunc(func(d jen.Dict) {
+		}))
+
 	g.
 		Qual("github.com/pekim/gobbi/lib/internal/call", "Function").
 		ParamsFunc(func(g *jen.Group) {
 			g.Lit(functionIndex)
+			g.Id("data")
 		})
 
 	//f.generateCParameterVars(g)

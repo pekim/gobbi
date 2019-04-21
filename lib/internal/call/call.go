@@ -1,16 +1,23 @@
 package call
 
-/*
-	#cgo LDFLAGS: -ldl -lavcall
-
-	#include "call.h"
-*/
+// #cgo LDFLAGS: -ldl -lavcall
+// #include "call.h"
 import "C"
 
 import (
 	"errors"
 	"log"
 )
+
+type ReturnType int
+
+const (
+	RT_INT = C.rt_int
+)
+
+type Data struct {
+	ReturnType ReturnType
+}
 
 func init() {
 	err := open()
@@ -28,7 +35,7 @@ func open() error {
 	return nil
 }
 
-func Function(index int) {
+func Function(index int, data Data) {
 	C.call_function(C.int(index))
 }
 
