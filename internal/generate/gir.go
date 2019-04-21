@@ -15,7 +15,8 @@ type Gir struct {
 
 func FromRoot(name, version string) {
 	callFile := CallFile{}
-	girs := girNewRoot(name, version)
+	girs := girNewRoot(name, version, &callFile)
+	callFile.sortFunctionNames()
 
 	for _, gir := range girs {
 		gir.generate(&callFile)
@@ -23,7 +24,7 @@ func FromRoot(name, version string) {
 	callFile.generate()
 }
 
-func girNewRoot(name string, version string) []*Gir {
+func girNewRoot(name string, version string, callFile *CallFile) []*Gir {
 	girsMap := map[string]*Gir{}
 	girNew(name, version, girsMap)
 
@@ -42,7 +43,7 @@ func girNewRoot(name string, version string) []*Gir {
 
 	// initialise each namespace
 	for _, ns := range nn {
-		ns.repo.Init()
+		ns.repo.Init(callFile)
 	}
 
 	girs := []*Gir{}

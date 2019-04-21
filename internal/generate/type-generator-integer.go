@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/dave/jennifer/jen"
 )
@@ -51,6 +52,18 @@ func (t *TypeGeneratorInteger) isSupportedAsArrayReturnValue() (supported bool, 
 }
 
 func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reason string) {
+	if strings.HasPrefix(t.typ.Name, "G") || t.typ.Name == "Quark" {
+		return false, ""
+	}
+
+	if strings.Contains(t.typ.Name, ".") {
+		return false, ""
+	}
+
+	if t.typ.Name != "gint" {
+		return false, ""
+	}
+
 	return true, ""
 }
 

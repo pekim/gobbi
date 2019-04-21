@@ -3,4 +3,12 @@
 
 package glib
 
+// Unsupported : g_str_is_ascii : return type :
+
+// Unsupported : g_str_match_string : return type :
+
+// Unsupported : g_str_to_ascii : return type :
+
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : output array param ascii_alternates
+
+// Unsupported : g_variant_parse_error_print_context : return type :

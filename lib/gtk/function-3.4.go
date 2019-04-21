@@ -3,4 +3,8 @@
 
 package gtk
 
+// Unsupported : gtk_accelerator_get_label_with_keycode : return type :
+
+// Unsupported : gtk_accelerator_name_with_keycode : return type :
+
 // Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : output array param accelerator_codes

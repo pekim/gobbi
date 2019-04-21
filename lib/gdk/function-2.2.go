@@ -3,6 +3,22 @@
 
 package gdk
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
 // Unsupported : gdk_drag_find_window_for_screen : unsupported parameter protocol : GdkDragProtocol* with indirection level of 1
+
+// Unsupported : gdk_get_display_arg_name : return type :
+
+// NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
+func NotifyStartupComplete() {
+	call.Function(4571)
+	return
+}
+
+// Unsupported : gdk_pango_context_get_for_screen : return type :
+
+// Unsupported : gdk_selection_owner_get_for_display : return type :
+
+// Unsupported : gdk_selection_owner_set_for_display : return type :
 
 // Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter list : output array param list

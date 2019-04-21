@@ -3,6 +3,20 @@
 
 package gdk
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
+// DisableMultidevice is a wrapper around the C function gdk_disable_multidevice.
+func DisableMultidevice() {
+	call.Function(4396)
+	return
+}
+
+// ErrorTrapPopIgnored is a wrapper around the C function gdk_error_trap_pop_ignored.
+func ErrorTrapPopIgnored() {
+	call.Function(4480)
+	return
+}
+
 // Unsupported : gdk_events_get_angle : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
 // Unsupported : gdk_events_get_center : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1

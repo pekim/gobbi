@@ -3,6 +3,16 @@
 
 package glib
 
+// Unsupported : g_get_environ : array return type :
+
+// Unsupported : g_get_locale_variants : array return type :
+
+// Unsupported : g_get_monotonic_time : return type :
+
+// Unsupported : g_get_real_time : return type :
+
+// Unsupported : g_get_user_runtime_dir : return type :
+
 // Unsupported : g_test_add_data_func : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data
 
 // Unsupported : g_test_add_vtable : unsupported parameter test_data : no type generator for gpointer (gconstpointer) for param test_data

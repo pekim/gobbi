@@ -3,12 +3,32 @@
 
 package glib
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
 // Unsupported : g_double_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
 // Unsupported : g_double_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
+// Unsupported : g_hostname_is_ascii_encoded : return type :
+
+// Unsupported : g_hostname_is_ip_address : return type :
+
+// Unsupported : g_hostname_is_non_ascii : return type :
+
+// Unsupported : g_hostname_to_ascii : return type :
+
+// Unsupported : g_hostname_to_unicode : return type :
+
 // Unsupported : g_int64_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
 // Unsupported : g_int64_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
+
+// Unsupported : g_main_context_get_thread_default : return type :
+
+// ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
+func ReloadUserSpecialDirsCache() {
+	call.Function(2834)
+	return
+}
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc (GTestLogFatalFunc) for param log_func

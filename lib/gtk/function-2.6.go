@@ -3,6 +3,12 @@
 
 package gtk
 
+// Unsupported : gtk_accelerator_get_label : return type :
+
+// Unsupported : gtk_alternative_dialog_button_order : return type :
+
+// Unsupported : gtk_get_option_group : return type :
+
 // Unsupported : gtk_init_with_args : unsupported parameter entries :
 
 // Unsupported : gtk_show_about_dialog : unsupported parameter ... : varargs

@@ -3,4 +3,14 @@
 
 package pango
 
+// Unsupported : pango_attr_fallback_new : return type :
+
+// Unsupported : pango_find_base_dir : return type :
+
+// Unsupported : pango_itemize_with_base_dir : return type :
+
 // Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
+
+// Unsupported : pango_script_for_unichar : return type :
+
+// Unsupported : pango_script_get_sample_language : return type :

@@ -35,8 +35,9 @@ type Namespace struct {
 	namespaces        map[string]*Namespace
 }
 
-func (ns *Namespace) init(repo *Repository) {
+func (ns *Namespace) init(repo *Repository, callFile *CallFile) {
 	ns.repo = repo
+	ns.callFile = callFile
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
@@ -81,14 +82,13 @@ func (ns *Namespace) blacklisted() bool {
 	return ns.Blacklist
 }
 
-func (ns *Namespace) generate(callFile *CallFile) {
+func (ns *Namespace) generate() {
 	if ns.Blacklist {
 		return
 	}
 
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
-	ns.callFile = callFile
 	ns.generateLibDir()
 
 	//ns.generatePackageFile()

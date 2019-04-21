@@ -3,10 +3,38 @@
 
 package gtk
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
+// Unsupported : gtk_show_uri : return type :
+
+// Unsupported : gtk_test_create_simple_window : return type :
+
 // Unsupported : gtk_test_create_widget : unsupported parameter ... : varargs
 
 // Unsupported : gtk_test_display_button_window : unsupported parameter ... : varargs
 
+// Unsupported : gtk_test_find_label : return type :
+
+// Unsupported : gtk_test_find_sibling : return type :
+
+// Unsupported : gtk_test_find_widget : return type :
+
 // Unsupported : gtk_test_init : unsupported parameter argcp : array length param argcp is pointer (int*)
 
 // Unsupported : gtk_test_list_all_types : array return type :
+
+// TestRegisterAllTypes is a wrapper around the C function gtk_test_register_all_types.
+func TestRegisterAllTypes() {
+	call.Function(7732)
+	return
+}
+
+// Unsupported : gtk_test_slider_get_value : return type :
+
+// Unsupported : gtk_test_spin_button_click : return type :
+
+// Unsupported : gtk_test_text_get : return type :
+
+// Unsupported : gtk_test_widget_click : return type :
+
+// Unsupported : gtk_test_widget_send_key : return type :

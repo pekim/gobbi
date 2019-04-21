@@ -4,3 +4,5 @@
 package gio
 
 // Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Unsupported : g_app_info_launch_default_for_uri_finish : return type :

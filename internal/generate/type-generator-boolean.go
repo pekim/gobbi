@@ -39,7 +39,8 @@ func (t *TypeGeneratorBoolean) isSupportedAsArrayReturnValue() (supported bool, 
 }
 
 func (t *TypeGeneratorBoolean) isSupportedAsReturnValue() (supported bool, reason string) {
-	return true, ""
+	return false, ""
+	//return true, ""
 }
 
 func (t *TypeGeneratorBoolean) isSupportedAsReturnCValue() (supported bool, reason string) {

@@ -3,4 +3,4 @@
 
 package glib
 
-// Blacklisted : g_strv_contains
+// Unsupported : g_strv_contains : return type :

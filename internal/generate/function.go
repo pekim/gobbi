@@ -35,6 +35,7 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace, receiver *Record, namePrefix string) {
 	f.Namespace = ns
+	f.Namespace.callFile.addFunctionName(f.CIdentifier)
 	f.receiver = receiver
 	if f.GoName == "" {
 		f.GoName = makeExportedGoName(f.Name)
@@ -123,22 +124,24 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	f.Namespace.callFile.addFunctionName(f.CIdentifier)
-
 	//if f.Parameters.hasFormatArgs() {
 	//	f.generateFormatArgsCWrapper()
 	//}
-	//
-	//g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
-	//
-	//g.
-	//	Func().
-	//	Do(f.generateReceiverDeclaration).
-	//	Id(f.GoName).                                         // name
-	//	ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
-	//	ParamsFunc(f.generateReturnDeclaration).              // returns
-	//	BlockFunc(f.generateBody).                            // body
-	//	Line()
+
+	if len(f.Parameters) > 0 {
+		return
+	}
+
+	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
+
+	g.
+		Func().
+		Do(f.generateReceiverDeclaration).
+		Id(f.GoName).                                         // name
+		ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
+		ParamsFunc(f.generateReturnDeclaration).              // returns
+		BlockFunc(f.generateBody).                            // body
+		Line()
 }
 
 func (f *Function) generateFormatArgsCWrapper() {
@@ -200,11 +203,19 @@ func (f *Function) generateReturnDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateBody(g *jen.Group) {
-	f.generateCParameterVars(g)
-	f.generateCall(g)
+	functionIndex := f.Namespace.callFile.functionNameIndexes[f.CIdentifier]
 
+	g.
+		Qual("github.com/pekim/gobbi/lib/internal/call", "Function").
+		ParamsFunc(func(g *jen.Group) {
+			g.Lit(functionIndex)
+		})
+
+	//f.generateCParameterVars(g)
+	//f.generateCall(g)
+	//
 	f.generateGoReturnVars(g)
-	f.generateOutputParamsGoVars(g)
+	//f.generateOutputParamsGoVars(g)
 	f.generateReturn(g)
 }
 
@@ -268,7 +279,7 @@ func (f *Function) generateOutputParamsGoVars(g *jen.Group) {
 
 func (f *Function) generateGoReturnVars(g *jen.Group) {
 	f.generateReturnGoVar(g)
-	f.generateThrowableReturnGoVar(g)
+	//f.generateThrowableReturnGoVar(g)
 }
 
 func (f *Function) generateReturn(g *jen.Group) {
@@ -278,37 +289,47 @@ func (f *Function) generateReturn(g *jen.Group) {
 			g.Id("retGo")
 		}
 
-		f.Parameters.generateOutputParamsReturns(g)
-		f.generateThrowableReturn(g)
+		//f.Parameters.generateOutputParamsReturns(g)
+		//f.generateThrowableReturn(g)
 	})
 }
 
 func (f *Function) generateReturnGoVar(g *jen.Group) {
-	if f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none" {
-		f.ReturnValue.generateCToGo(g, "retC", "retGo")
-
-		r := f.ctorRecord
-		if f.ctorRecord != nil &&
-			r.isDerivedFrom("gobject", "Object") &&
-			!r.isDerivedFrom("gobject", "InitiallyUnowned") {
-
-			g.Line()
-
-			// A call to a ...NewFromC function will have incremented the ref
-			// count (to 2). So decrement it back to 1.
-			g.
-				If(jen.Id("retC").Op("!=").Nil()).
-				Block(jen.
-					Qual("C", "g_object_unref").
-					Call(jen.
-						Parens(jen.Qual("C", "gpointer")).
-						Parens(jen.Id("retC"))))
-		}
+	if f.ReturnValue.Type == nil || f.ReturnValue.Type.Name == "none" {
+		return
 	}
 
-	if f.ReturnValue.Array != nil {
-		f.ReturnValue.generateArrayCToGo(g, "retC", "retGo")
-	}
+	g.
+		Id("retGo").
+		Op(":=").
+		Id("int32").
+		Parens(jen.Lit(3))
+
+	//if f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none" {
+	//	f.ReturnValue.generateCToGo(g, "retC", "retGo")
+	//
+	//	r := f.ctorRecord
+	//	if f.ctorRecord != nil &&
+	//		r.isDerivedFrom("gobject", "Object") &&
+	//		!r.isDerivedFrom("gobject", "InitiallyUnowned") {
+	//
+	//		g.Line()
+	//
+	//		// A call to a ...NewFromC function will have incremented the ref
+	//		// count (to 2). So decrement it back to 1.
+	//		g.
+	//			If(jen.Id("retC").Op("!=").Nil()).
+	//			Block(jen.
+	//				Qual("C", "g_object_unref").
+	//				Call(jen.
+	//					Parens(jen.Qual("C", "gpointer")).
+	//					Parens(jen.Id("retC"))))
+	//	}
+	//}
+	//
+	//if f.ReturnValue.Array != nil {
+	//	f.ReturnValue.generateArrayCToGo(g, "retC", "retGo")
+	//}
 
 	g.Line()
 }

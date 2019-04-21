@@ -3,6 +3,8 @@
 
 package glib
 
+// Unsupported : g_bit_trylock : return type :
+
 // Unsupported : g_malloc0_n : no return generator
 
 // Unsupported : g_malloc_n : no return generator
@@ -14,3 +16,9 @@ package glib
 // Unsupported : g_try_malloc_n : no return generator
 
 // Unsupported : g_try_realloc_n : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
+
+// Unsupported : g_variant_is_object_path : return type :
+
+// Unsupported : g_variant_is_signature : return type :
+
+// Unsupported : g_variant_type_string_scan : return type :

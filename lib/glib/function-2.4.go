@@ -5,9 +5,9 @@ package glib
 
 // Blacklisted : g_atomic_int_add
 
-// Blacklisted : g_atomic_int_compare_and_exchange
+// Unsupported : g_atomic_int_compare_and_exchange : return type :
 
-// Blacklisted : g_atomic_int_dec_and_test
+// Unsupported : g_atomic_int_dec_and_test : return type :
 
 // Blacklisted : g_atomic_int_exchange_and_add
 
@@ -27,6 +27,20 @@ package glib
 
 // Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc (GChildWatchFunc) for param function
 
+// Unsupported : g_child_watch_source_new : return type :
+
+// Unsupported : g_file_read_link : return type :
+
+// Unsupported : g_markup_printf_escaped : return type :
+
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list (va_list) for param args
+
+// Unsupported : g_setenv : return type :
+
+// Unsupported : g_strip_context : return type :
+
+// Unsupported : g_strsplit_set : array return type :
+
+// Unsupported : g_unichar_get_mirror_char : return type :
 
 // Unsupported : g_vasprintf : unsupported parameter string : in string with indirection level of 2

@@ -8,3 +8,5 @@ package glib
 // Unsupported : g_date_time_equal : unsupported parameter dt1 : no type generator for gpointer (gconstpointer) for param dt1
 
 // Unsupported : g_date_time_hash : unsupported parameter datetime : no type generator for gpointer (gconstpointer) for param datetime
+
+// Unsupported : g_dcgettext : return type :

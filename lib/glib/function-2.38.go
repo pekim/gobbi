@@ -3,6 +3,20 @@
 
 package glib
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
 // Unsupported : g_test_build_filename : unsupported parameter ... : varargs
 
+// Unsupported : g_test_failed : return type :
+
+// Unsupported : g_test_get_dir : return type :
+
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
+
+// TestSetNonfatalAssertions is a wrapper around the C function g_test_set_nonfatal_assertions.
+func TestSetNonfatalAssertions() {
+	call.Function(3570)
+	return
+}
+
+// Unsupported : g_test_subprocess : return type :

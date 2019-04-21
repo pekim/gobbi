@@ -3,6 +3,10 @@
 
 package glib
 
+// Unsupported : g_intern_static_string : return type :
+
+// Unsupported : g_intern_string : return type :
+
 // Unsupported : g_slice_alloc : no return generator
 
 // Unsupported : g_slice_alloc0 : no return generator
@@ -10,3 +14,5 @@ package glib
 // Unsupported : g_slice_free1 : unsupported parameter mem_block : no type generator for gpointer (gpointer) for param mem_block
 
 // Unsupported : g_slice_free_chain_with_offset : unsupported parameter mem_chain : no type generator for gpointer (gpointer) for param mem_chain
+
+// Unsupported : g_thread_pool_get_max_idle_time : return type :

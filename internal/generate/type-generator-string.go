@@ -44,16 +44,18 @@ func (t *TypeGeneratorString) isSupportedAsParamC() (supported bool, reason stri
 }
 
 func (t *TypeGeneratorString) isSupportedAsArrayReturnValue() (supported bool, reason string) {
-	return true, ""
+	return false, ""
+	//return true, ""
 }
 
 func (t *TypeGeneratorString) isSupportedAsReturnValue() (supported bool, reason string) {
-	if t.typ.indirectLevel > 1 {
-		return false, fmt.Sprintf("string with indirection level of %d",
-			t.typ.indirectLevel)
-	}
-
-	return true, ""
+	return false, ""
+	//if t.typ.indirectLevel > 1 {
+	//	return false, fmt.Sprintf("string with indirection level of %d",
+	//		t.typ.indirectLevel)
+	//}
+	//
+	//return true, ""
 }
 
 func (t *TypeGeneratorString) isSupportedAsReturnCValue() (supported bool, reason string) {

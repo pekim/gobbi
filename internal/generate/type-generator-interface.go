@@ -62,16 +62,17 @@ func (t *TypeGeneratorInterface) isSupportedAsArrayReturnValue() (supported bool
 }
 
 func (t *TypeGeneratorInterface) isSupportedAsReturnValue() (supported bool, reason string) {
-	if t.iface.Blacklist {
-		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
-	}
-
-	if t.typ.indirectLevel > 1 {
-		return false, fmt.Sprintf("interface with indirection level of %d",
-			t.typ.indirectLevel)
-	}
-
-	return true, ""
+	return false, ""
+	//if t.iface.Blacklist {
+	//	return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
+	//}
+	//
+	//if t.typ.indirectLevel > 1 {
+	//	return false, fmt.Sprintf("interface with indirection level of %d",
+	//		t.typ.indirectLevel)
+	//}
+	//
+	//return true, ""
 }
 
 func (t *TypeGeneratorInterface) isSupportedAsReturnCValue() (supported bool, reason string) {

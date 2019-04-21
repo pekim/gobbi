@@ -3,6 +3,10 @@
 
 package gdk
 
+// Unsupported : gdk_test_simulate_button : return type :
+
+// Unsupported : gdk_test_simulate_key : return type :
+
 // Unsupported : gdk_threads_add_timeout_seconds : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
 // Unsupported : gdk_threads_add_timeout_seconds_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function

@@ -13,8 +13,8 @@ type Repository struct {
 	Namespace *Namespace `xml:"namespace"`
 }
 
-func (r *Repository) Init() {
-	r.Namespace.init(r)
+func (r *Repository) Init(callFile *CallFile) {
+	r.Namespace.init(r, callFile)
 }
 
 func (r *Repository) MergeAddenda(addenda *Repository) {
@@ -27,7 +27,7 @@ func (r *Repository) Generate(callFile *CallFile) {
 		callFile.packageNames = append(callFile.packageNames, p.Name)
 	}
 
-	r.Namespace.generate(callFile)
+	r.Namespace.generate()
 }
 
 type Package struct {

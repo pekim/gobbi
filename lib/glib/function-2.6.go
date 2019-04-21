@@ -3,8 +3,28 @@
 
 package glib
 
+// Unsupported : glib_check_version : return type :
+
+// Unsupported : g_filename_display_basename : return type :
+
+// Unsupported : g_filename_display_name : return type :
+
 // Unsupported : g_get_filename_charsets : unsupported parameter charsets : in string with indirection level of 3
+
+// Unsupported : g_get_language_names : array return type :
+
+// Unsupported : g_get_system_config_dirs : array return type :
+
+// Unsupported : g_get_system_data_dirs : array return type :
+
+// Unsupported : g_get_user_cache_dir : return type :
+
+// Unsupported : g_get_user_config_dir : return type :
+
+// Unsupported : g_get_user_data_dir : return type :
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
 
 // Unsupported : g_strv_length : unsupported parameter str_array : in string with indirection level of 2
+
+// Unsupported : g_uri_list_extract_uris : array return type :

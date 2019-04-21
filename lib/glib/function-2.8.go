@@ -3,4 +3,18 @@
 
 package glib
 
+// Unsupported : g_build_filenamev : return type :
+
+// Unsupported : g_build_pathv : return type :
+
+// Unsupported : g_datalist_get_flags : return type :
+
+// Unsupported : g_file_set_contents : return type :
+
+// Unsupported : g_get_host_name : return type :
+
+// Unsupported : g_listenv : array return type :
+
 // Unsupported : g_try_malloc0 : no return generator
+
+// Unsupported : g_utf8_collate_key_for_filename : return type :

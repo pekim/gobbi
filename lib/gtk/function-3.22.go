@@ -2,3 +2,5 @@
 // +build gtk_3.22 gtk_3.22.6 gtk_3.22.26 gtk_3.22.29
 
 package gtk
+
+// Unsupported : gtk_show_uri_on_window : return type :

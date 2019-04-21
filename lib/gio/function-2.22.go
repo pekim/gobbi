@@ -6,3 +6,7 @@ package gio
 // Unsupported : g_async_initable_newv_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_initable_newv : unsupported parameter parameters :
+
+// Unsupported : g_resolver_error_quark : return type :
+
+// Unsupported : g_srv_target_list_sort : return type :

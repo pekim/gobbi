@@ -3,8 +3,22 @@
 
 package gio
 
-// Blacklisted : g_memory_settings_backend_new
+// Unsupported : g_app_info_get_fallback_for_type : return type :
 
-// Blacklisted : g_null_settings_backend_new
+// Unsupported : g_app_info_get_recommended_for_type : return type :
+
+// Unsupported : g_memory_settings_backend_new : return type :
+
+// Unsupported : g_null_settings_backend_new : return type :
+
+// Unsupported : g_pollable_source_new : return type :
 
 // Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Unsupported : g_tls_backend_get_default : return type :
+
+// Unsupported : g_tls_client_connection_new : return type :
+
+// Unsupported : g_tls_error_quark : return type :
+
+// Unsupported : g_tls_server_connection_new : return type :

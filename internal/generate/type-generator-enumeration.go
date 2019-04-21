@@ -47,7 +47,8 @@ func (t *TypeGeneratorEnumeration) isSupportedAsArrayReturnValue() (supported bo
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsReturnValue() (supported bool, reason string) {
-	return true, ""
+	return false, ""
+	//return true, ""
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsReturnCValue() (supported bool, reason string) {

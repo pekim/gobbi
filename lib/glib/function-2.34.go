@@ -5,8 +5,12 @@ package glib
 
 // Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer (gpointer*) for param pp
 
+// Unsupported : g_compute_checksum_for_bytes : return type :
+
 // Unsupported : g_datalist_id_dup_data : unsupported parameter dup_func : no type generator for DuplicateFunc (GDuplicateFunc) for param dup_func
 
 // Unsupported : g_datalist_id_replace_data : unsupported parameter oldval : no type generator for gpointer (gpointer) for param oldval
+
+// Unsupported : g_spawn_check_exit_status : return type :
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_data : no type generator for gpointer (gpointer) for param test_data

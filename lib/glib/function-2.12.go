@@ -3,10 +3,20 @@
 
 package glib
 
+// Unsupported : g_ascii_strtoll : return type :
+
 // Unsupported : g_base64_decode : array return type :
 
 // Unsupported : g_base64_decode_step : unsupported parameter out : output array param out
 
+// Unsupported : g_base64_encode : return type :
+
 // Unsupported : g_base64_encode_close : unsupported parameter out : output array param out
 
 // Unsupported : g_base64_encode_step : unsupported parameter out : output array param out
+
+// Unsupported : g_main_current_source : return type :
+
+// Unsupported : g_time_val_from_iso8601 : return type :
+
+// Unsupported : g_unichar_iswide_cjk : return type :

@@ -3,6 +3,12 @@
 
 package glib
 
+// Unsupported : g_close : return type :
+
+// Unsupported : g_get_num_processors : return type :
+
 // Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc (GUnixFDSourceFunc) for param function
 
 // Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc (GUnixFDSourceFunc) for param function
+
+// Unsupported : g_unix_fd_source_new : return type :

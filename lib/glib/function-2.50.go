@@ -3,6 +3,8 @@
 
 package glib
 
+// Unsupported : g_compute_hmac_for_bytes : return type :
+
 // Unsupported : g_log_set_writer_func : unsupported parameter func : no type generator for LogWriterFunc (GLogWriterFunc) for param func
 
 // Unsupported : g_log_structured : unsupported parameter ... : varargs
@@ -13,6 +15,10 @@ package glib
 
 // Unsupported : g_log_writer_format_fields : unsupported parameter fields :
 
+// Unsupported : g_log_writer_is_journald : return type :
+
 // Unsupported : g_log_writer_journald : unsupported parameter fields :
 
 // Unsupported : g_log_writer_standard_streams : unsupported parameter fields :
+
+// Unsupported : g_log_writer_supports_color : return type :

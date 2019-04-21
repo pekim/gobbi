@@ -62,6 +62,7 @@ func (t *TypeGeneratorRecord) isSupportedAsArrayReturnValue() (supported bool, r
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsReturnValue() (supported bool, reason string) {
+	return false, ""
 	if t.record.Blacklist {
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
 	}

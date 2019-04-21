@@ -3,8 +3,16 @@
 
 package gobject
 
+// Unsupported : g_param_spec_override : return type :
+
 // Unsupported : g_signal_accumulator_true_handled : unsupported parameter dummy : no type generator for gpointer (gpointer) for param dummy
 
 // Unsupported : g_type_add_interface_check : unsupported parameter check_data : no type generator for gpointer (gpointer) for param check_data
+
+// Unsupported : g_type_class_peek_static : return type :
+
+// Unsupported : g_type_default_interface_peek : return type :
+
+// Unsupported : g_type_default_interface_ref : return type :
 
 // Unsupported : g_type_remove_interface_check : unsupported parameter check_data : no type generator for gpointer (gpointer) for param check_data

@@ -3,6 +3,12 @@
 
 package gtk
 
+// Unsupported : gtk_paper_size_get_default : return type :
+
+// Unsupported : gtk_print_error_quark : return type :
+
+// Unsupported : gtk_print_run_page_setup_dialog : return type :
+
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc (GtkPageSetupDoneFunc) for param done_cb
 
 // Unsupported : gtk_target_table_free : unsupported parameter targets :
