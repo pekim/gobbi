@@ -61,7 +61,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 // IoSchedulerCancelAllJobs is a wrapper around the C function g_io_scheduler_cancel_all_jobs.
 func IoSchedulerCancelAllJobs() {
 	data := call.Data{}
-	call.Function(2065, data)
+	call.Function(1853, data)
 	return
 }
 

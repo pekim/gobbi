@@ -35,7 +35,9 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace, receiver *Record, namePrefix string) {
 	f.Namespace = ns
-	f.Namespace.callFile.addFunctionName(f.CIdentifier)
+	if !f.Blacklist && f.CIdentifier != "" {
+		f.Namespace.callFile.addFunctionName(f.CIdentifier)
+	}
 	f.receiver = receiver
 	if f.GoName == "" {
 		f.GoName = makeExportedGoName(f.Name)

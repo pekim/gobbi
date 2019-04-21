@@ -12,6 +12,6 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 // NetworkingInit is a wrapper around the C function g_networking_init.
 func NetworkingInit() {
 	data := call.Data{}
-	call.Function(2430, data)
+	call.Function(2213, data)
 	return
 }

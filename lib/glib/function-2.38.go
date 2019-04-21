@@ -16,7 +16,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 // TestSetNonfatalAssertions is a wrapper around the C function g_test_set_nonfatal_assertions.
 func TestSetNonfatalAssertions() {
 	data := call.Data{}
-	call.Function(3570, data)
+	call.Function(3336, data)
 	return
 }
 

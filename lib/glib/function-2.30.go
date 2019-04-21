@@ -44,7 +44,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 // TestFail is a wrapper around the C function g_test_fail.
 func TestFail() {
 	data := call.Data{}
-	call.Function(3545, data)
+	call.Function(3311, data)
 	return
 }
 
