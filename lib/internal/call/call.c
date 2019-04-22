@@ -1,4 +1,3 @@
-
 #include <avcall.h>
 #include <dlfcn.h>
 #include <stdio.h>
@@ -12,22 +11,6 @@ extern char *library_names[];
 extern int function_count;
 extern void *functions[];
 extern char *function_names[];
-
-void call_function(int function_index, CallData* data) {
-	void* fn = get_function(function_index);
-	if (!fn) {
-		printf("failed to load function %d, %s\n", function_index, function_names[function_index]);
-		exit(1);
-	}
-
-	int ret;
-	av_alist alist;
-	//av_start_void (alist, fn);
-	av_start_int (alist, fn, &ret);
-	av_ptr(alist, char*, "qaz %d\n");
-	av_int(alist, 42);
-	av_call(alist);
-}
 
 char* open() {
     char *error;
@@ -49,6 +32,28 @@ void close() {
 	for ( i = 0; i < library_count; i++ ) {
 	    dlclose(library_handles[i]);
 	}
+}
+
+void call_function(int function_index, CallData* data) {
+	void* fn = get_function(function_index);
+	if (!fn) {
+		fprintf(stderr, "failed to load function %d, %s\n", function_index, function_names[function_index]);
+		exit(1);
+	}
+
+	av_alist alist;
+
+    switch (data->return_type) {
+    case rt_int:
+       	av_start_int (alist, fn, &data->return_int);
+        break;
+    default:
+        av_start_void (alist, fn);
+    }
+
+	av_ptr(alist, char*, "qaz %d\n");
+	av_int(alist, 42);
+	av_call(alist);
 }
 
 void *get_function(int function_index) {

@@ -1,11 +1,14 @@
 package call
 
-// #cgo LDFLAGS: -ldl -lavcall
+// #cgo LDFLAGS: -ldl
+// #cgo LDFLAGS: -lavcall
+//
 // #include "call.h"
 import "C"
 
 import (
 	"errors"
+	"fmt"
 	"log"
 )
 
@@ -41,6 +44,7 @@ func Function(index int, data Data) {
 	}
 
 	C.call_function(C.int(index), &cData)
+	fmt.Println(cData.return_int)
 }
 
 func Close() {

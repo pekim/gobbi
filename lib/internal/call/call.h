@@ -4,6 +4,7 @@ typedef enum return_type {
 
 typedef struct call_data {
     ReturnType return_type;
+    int return_int;
 } CallData;
 
 char* open();
