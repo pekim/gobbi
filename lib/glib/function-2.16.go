@@ -41,9 +41,9 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 func TestRun() int32 {
 	data := call.Data{ReturnType: call.RT_INT}
 	call.Function(3334, &data)
-	retGo := int32(data.ReturnInt)
+	ret := int32(data.ReturnInt)
 
-	return retGo
+	return ret
 }
 
 // Unsupported : g_test_timer_elapsed : return type :

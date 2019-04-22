@@ -306,7 +306,7 @@ func (f *Function) generateReturn(g *jen.Group) {
 	g.ReturnFunc(func(g *jen.Group) {
 		if (f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none") ||
 			f.ReturnValue.Array != nil {
-			g.Id("retGo")
+			g.Id("ret")
 		}
 
 		//f.Parameters.generateOutputParamsReturns(g)
@@ -324,20 +324,20 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 		// do nothing
 	case "int":
 		g.
-			Id("retGo").
+			Id("ret").
 			Op(":=").
 			Id("int32").
 			Parens(jen.Id("data").Dot("ReturnInt"))
 	}
 
 	//g.
-	//	Id("retGo").
+	//	Id("ret").
 	//	Op(":=").
 	//	Id("int32").
 	//	Parens(jen.Lit(3))
 
 	//if f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none" {
-	//	f.ReturnValue.generateCToGo(g, "retC", "retGo")
+	//	f.ReturnValue.generateCToGo(g, "retC", "ret")
 	//
 	//	r := f.ctorRecord
 	//	if f.ctorRecord != nil &&
@@ -359,7 +359,7 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 	//}
 	//
 	//if f.ReturnValue.Array != nil {
-	//	f.ReturnValue.generateArrayCToGo(g, "retC", "retGo")
+	//	f.ReturnValue.generateArrayCToGo(g, "retC", "ret")
 	//}
 
 	g.Line()

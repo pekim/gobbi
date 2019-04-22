@@ -202,7 +202,7 @@ func MainDepth() int32 {
 	data := call.Data{}
 	call.Function(2018, &data)
 
-	return retGo
+	return ret
 }
 
 // Unsupported : g_malloc : no return generator

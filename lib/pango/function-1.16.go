@@ -25,9 +25,9 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 func Version() int32 {
 	data := call.Data{ReturnType: call.RT_INT}
 	call.Function(9015, &data)
-	retGo := int32(data.ReturnInt)
+	ret := int32(data.ReturnInt)
 
-	return retGo
+	return ret
 }
 
 // Unsupported : pango_version_check : return type :

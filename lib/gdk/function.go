@@ -32,7 +32,7 @@ func ErrorTrapPop() int32 {
 	data := call.Data{}
 	call.Function(4230, &data)
 
-	return retGo
+	return ret
 }
 
 // ErrorTrapPush is a wrapper around the C function gdk_error_trap_push.
