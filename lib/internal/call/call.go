@@ -36,7 +36,11 @@ func open() error {
 }
 
 func Function(index int, data Data) {
-	C.call_function(C.int(index))
+	cData := C.CallData{
+		return_type: C.ReturnType(data.ReturnType),
+	}
+
+	C.call_function(C.int(index), &cData)
 }
 
 func Close() {

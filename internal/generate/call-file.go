@@ -18,39 +18,32 @@ type CallFile struct {
 
 func (cf *CallFile) generate() {
 	cf.setLibraryNames()
-	//cf.sortFunctionNames()
 	fmt.Println("g_printf", cf.functionNameIndexes["g_printf"])
 
-	filepath := projectFilepath("lib", "internal", "call", "call.c")
+	filepath := projectFilepath("lib", "internal", "call", "call_data.c")
 	file, err := os.OpenFile(filepath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		panic(err)
 	}
 	cf.file = file
-	defer file.Close()
 
-	cf.writeIncludeStatements()
 	cf.writeLibraryGlobals()
 	cf.writeFunctionGlobals()
-	cf.writeOpenFunction()
-	cf.writeCloseFunction()
-	cf.writeGetFunctionFunction()
-	cf.writeCallFunctionFunction()
-}
 
-func (cf *CallFile) writeIncludeStatements() {
-	cf.write(`
-#include <avcall.h>
-#include <dlfcn.h>
-#include <stdio.h>
-#include <stdlib.h>
-	`)
+	err = file.Close()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func (cf *CallFile) writeLibraryGlobals() {
 	cf.write(`
+int library_count = %d;
+`, len(cf.libraryNames))
+
+	cf.write(`
 void *library_handles[%d];
-	`, len(cf.libraryNames))
+`, len(cf.libraryNames))
 
 	cf.write(`
 char *library_names[] = {%s};
@@ -59,86 +52,16 @@ char *library_names[] = {%s};
 
 func (cf *CallFile) writeFunctionGlobals() {
 	cf.write(`
+int function_count = %d;
+	`, len(cf.functionNames))
+
+	cf.write(`
 void *functions[%d];
 	`, len(cf.functionNames))
 
 	cf.write(`
 char *function_names[] = {%s};
 	`, "\n\t\""+strings.Join(cf.functionNames, "\",\n\t\"")+"\"\n")
-}
-
-func (cf *CallFile) writeOpenFunction() {
-	cf.write(`
-char* open() {
-    char *error;
-
-	int i;
-	for ( i = 0; i < %d; i++ ) {
-		library_handles[i] = dlopen(library_names[i], RTLD_LAZY);
-		if (!library_handles[i])
-		{
-			return dlerror();
-		}
-	}
-
-    return NULL;
-}
-	`, len(cf.libraryNames))
-}
-
-func (cf *CallFile) writeCloseFunction() {
-	cf.write(`
-void close() {
-	int i;
-	for ( i = 0; i < %d; i++ ) {
-	    dlclose(library_handles[i]);
-	}
-}
-	`, len(cf.libraryNames))
-}
-
-func (cf *CallFile) writeGetFunctionFunction() {
-	cf.write(`
-void *get_function(int function_index) {
-	char *function_name = function_names[function_index];
-	void *fn = functions[function_index];
-	if (fn) {
-		return fn; 
-	}
-
-	int i;
-	for ( i = 0; i < %d; i++ ) {
-		fn = dlsym(library_handles[i], function_name);
-		if (fn)
-		{
-			functions[function_index] = fn;
-			return fn;
-		}
-	}
-
-	return NULL;
-}
-	`, len(cf.libraryNames))
-}
-
-func (cf *CallFile) writeCallFunctionFunction() {
-	cf.write(`
-void call_function(int function_index) {
-	void* fn = get_function(function_index);
-	if (!fn) {
-		printf("failed to load function %%d, %%s\n", function_index, function_names[function_index]);
-		exit(1);
-	}
-
-	int ret;
-	av_alist alist;
-	//av_start_void (alist, fn);
-	av_start_int (alist, fn, &ret);
-	av_ptr(alist, char*, "qaz %%d\n");
-	av_int(alist, 42);
-	av_call(alist);
-}
-	`)
 }
 
 func (cf *CallFile) write(format string, args ...interface{}) {
