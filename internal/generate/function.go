@@ -213,13 +213,22 @@ func (f *Function) generateBody(g *jen.Group) {
 		Op(":=").
 		Qual("github.com/pekim/gobbi/lib/internal/call", "Data").
 		Values(jen.DictFunc(func(d jen.Dict) {
+			//fmt.Println(f.ReturnValue.Type.Name, f.ReturnValue.Type.CType)
+
+			switch f.ReturnValue.Type.CType {
+			case "void":
+				d[jen.Id("ReturnType")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_VOID")
+			case "int":
+				d[jen.Id("ReturnType")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_INT")
+			}
 		}))
 
 	g.
 		Qual("github.com/pekim/gobbi/lib/internal/call", "Function").
 		ParamsFunc(func(g *jen.Group) {
 			g.Lit(functionIndex)
-			g.Id("data")
+
+			g.Op("&").Id("data")
 		})
 
 	//f.generateCParameterVars(g)
@@ -310,11 +319,22 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 		return
 	}
 
-	g.
-		Id("retGo").
-		Op(":=").
-		Id("int32").
-		Parens(jen.Lit(3))
+	switch f.ReturnValue.Type.CType {
+	case "void":
+		// do nothing
+	case "int":
+		g.
+			Id("retGo").
+			Op(":=").
+			Id("int32").
+			Parens(jen.Id("data").Dot("ReturnInt"))
+	}
+
+	//g.
+	//	Id("retGo").
+	//	Op(":=").
+	//	Id("int32").
+	//	Parens(jen.Lit(3))
 
 	//if f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none" {
 	//	f.ReturnValue.generateCToGo(g, "retC", "retGo")

@@ -1,5 +1,9 @@
 package glib
 
+//func TestMainDepth(t *testing.T) {
+//	assert.Equal(t, int32(13801), glib.MainDepth())
+//}
+
 //func TestCleanBuild(t *testing.T) {
 //	assert.Equal(t, glib.AsciiType(16), glib.ASCII_GRAPH)
 //}

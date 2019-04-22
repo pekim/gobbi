@@ -8,18 +8,19 @@ import "C"
 
 import (
 	"errors"
-	"fmt"
 	"log"
 )
 
 type ReturnType int
 
 const (
-	RT_INT = C.rt_int
+	RT_VOID = C.rt_void
+	RT_INT  = C.rt_int
 )
 
 type Data struct {
 	ReturnType ReturnType
+	ReturnInt  int
 }
 
 func init() {
@@ -38,13 +39,19 @@ func open() error {
 	return nil
 }
 
-func Function(index int, data Data) {
+func Function(index int, data *Data) {
 	cData := C.CallData{
 		return_type: C.ReturnType(data.ReturnType),
 	}
 
 	C.call_function(C.int(index), &cData)
-	fmt.Println(cData.return_int)
+
+	switch data.ReturnType {
+	case RT_INT:
+		data.ReturnInt = int(cData.return_int)
+	case RT_VOID:
+		// nothing
+	}
 }
 
 func Close() {

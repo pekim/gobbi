@@ -47,6 +47,7 @@ void call_function(int function_index, CallData* data) {
     case rt_int:
        	av_start_int (alist, fn, &data->return_int);
         break;
+    case rt_void:
     default:
         av_start_void (alist, fn);
     }

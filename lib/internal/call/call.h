@@ -1,5 +1,6 @@
 typedef enum return_type {
-    rt_int
+    rt_void,
+    rt_int,
 } ReturnType;
 
 typedef struct call_data {

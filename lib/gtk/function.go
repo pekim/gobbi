@@ -32,8 +32,8 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // DisableSetlocale is a wrapper around the C function gtk_disable_setlocale.
 func DisableSetlocale() {
-	data := call.Data{}
-	call.Function(5471, data)
+	data := call.Data{ReturnType: call.RT_VOID}
+	call.Function(5471, &data)
 	return
 }
 
@@ -75,8 +75,8 @@ func DisableSetlocale() {
 
 // Main is a wrapper around the C function gtk_main.
 func Main() {
-	data := call.Data{}
-	call.Function(6390, data)
+	data := call.Data{ReturnType: call.RT_VOID}
+	call.Function(6390, &data)
 	return
 }
 
@@ -90,8 +90,8 @@ func Main() {
 
 // MainQuit is a wrapper around the C function gtk_main_quit.
 func MainQuit() {
-	data := call.Data{}
-	call.Function(6395, data)
+	data := call.Data{ReturnType: call.RT_VOID}
+	call.Function(6395, &data)
 	return
 }
 

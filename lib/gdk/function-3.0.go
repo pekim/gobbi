@@ -7,15 +7,15 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // DisableMultidevice is a wrapper around the C function gdk_disable_multidevice.
 func DisableMultidevice() {
-	data := call.Data{}
-	call.Function(4147, data)
+	data := call.Data{ReturnType: call.RT_VOID}
+	call.Function(4147, &data)
 	return
 }
 
 // ErrorTrapPopIgnored is a wrapper around the C function gdk_error_trap_pop_ignored.
 func ErrorTrapPopIgnored() {
-	data := call.Data{}
-	call.Function(4231, data)
+	data := call.Data{ReturnType: call.RT_VOID}
+	call.Function(4231, &data)
 	return
 }
 

@@ -39,9 +39,9 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // TestRun is a wrapper around the C function g_test_run.
 func TestRun() int32 {
-	data := call.Data{}
-	call.Function(3334, data)
-	retGo := int32(3)
+	data := call.Data{ReturnType: call.RT_INT}
+	call.Function(3334, &data)
+	retGo := int32(data.ReturnInt)
 
 	return retGo
 }
@@ -52,8 +52,8 @@ func TestRun() int32 {
 
 // TestTimerStart is a wrapper around the C function g_test_timer_start.
 func TestTimerStart() {
-	data := call.Data{}
-	call.Function(3343, data)
+	data := call.Data{ReturnType: call.RT_VOID}
+	call.Function(3343, &data)
 	return
 }
 
