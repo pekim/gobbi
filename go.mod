@@ -9,6 +9,5 @@ require (
 	github.com/monochromegane/go-gitignore v0.0.0-20160105113617-38717d0a108c // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/testify v1.2.2
-	github.com/urfave/cli v1.20.0 // indirect
 	golang.org/x/text v0.3.0 // indirect
 )
