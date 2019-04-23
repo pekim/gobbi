@@ -3,8 +3,6 @@
 
 package gio
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -22,12 +20,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// IoModulesScanAllInDirectory is a wrapper around the C function g_io_modules_scan_all_in_directory.
-func IoModulesScanAllInDirectory(dirname string) {
-	c_dirname := C.CString(dirname)
-	defer C.free(unsafe.Pointer(c_dirname))
-
-	C.g_io_modules_scan_all_in_directory(c_dirname)
-
-	return
-}
+// Blacklisted : g_io_modules_scan_all_in_directory

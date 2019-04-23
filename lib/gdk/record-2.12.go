@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,11 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ToString is a wrapper around the C function gdk_color_to_string.
-func (recv *Color) ToString() string {
-	retC := C.gdk_color_to_string((*C.GdkColor)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_color_to_string

@@ -20,3 +20,11 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : g_action_name_is_valid
+
+// Blacklisted : g_action_parse_detailed_name
+
+// Blacklisted : g_action_print_detailed_name
+
+// Blacklisted : g_icon_deserialize

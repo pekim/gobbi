@@ -12,47 +12,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ObjectInterfaceFindProperty is a wrapper around the C function g_object_interface_find_property.
-func ObjectInterfaceFindProperty(gIface *TypeInterface, propertyName string) *ParamSpec {
-	c_g_iface := (C.gpointer)(C.NULL)
-	if gIface != nil {
-		c_g_iface = (C.gpointer)(gIface.ToC())
-	}
+// Blacklisted : g_object_interface_find_property
 
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	retC := C.g_object_interface_find_property(c_g_iface, c_property_name)
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ObjectInterfaceInstallProperty is a wrapper around the C function g_object_interface_install_property.
-func ObjectInterfaceInstallProperty(gIface *TypeInterface, pspec *ParamSpec) {
-	c_g_iface := (C.gpointer)(C.NULL)
-	if gIface != nil {
-		c_g_iface = (C.gpointer)(gIface.ToC())
-	}
-
-	c_pspec := (*C.GParamSpec)(C.NULL)
-	if pspec != nil {
-		c_pspec = (*C.GParamSpec)(pspec.ToC())
-	}
-
-	C.g_object_interface_install_property(c_g_iface, c_pspec)
-
-	return
-}
+// Blacklisted : g_object_interface_install_property
 
 // g_object_interface_list_properties : array return type :
-// GetRedirectTarget is a wrapper around the C function g_param_spec_get_redirect_target.
-func (recv *ParamSpec) GetRedirectTarget() *ParamSpec {
-	retC := C.g_param_spec_get_redirect_target((*C.GParamSpec)(recv.native))
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_param_spec_get_redirect_target
 
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {

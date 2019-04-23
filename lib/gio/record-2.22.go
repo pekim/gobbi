@@ -3,10 +3,7 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -148,79 +145,18 @@ func (recv *OutputVector) Equals(other *OutputVector) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SrvTargetNew is a wrapper around the C function g_srv_target_new.
-func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
+// Blacklisted : g_srv_target_new
 
-	c_port := (C.guint16)(port)
+// Blacklisted : g_srv_target_list_sort
 
-	c_priority := (C.guint16)(priority)
+// Blacklisted : g_srv_target_copy
 
-	c_weight := (C.guint16)(weight)
+// Blacklisted : g_srv_target_free
 
-	retC := C.g_srv_target_new(c_hostname, c_port, c_priority, c_weight)
-	retGo := SrvTargetNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_srv_target_get_hostname
 
-	return retGo
-}
+// Blacklisted : g_srv_target_get_port
 
-// SrvTargetListSort is a wrapper around the C function g_srv_target_list_sort.
-func SrvTargetListSort(targets *glib.List) *glib.List {
-	c_targets := (*C.GList)(C.NULL)
-	if targets != nil {
-		c_targets = (*C.GList)(targets.ToC())
-	}
+// Blacklisted : g_srv_target_get_priority
 
-	retC := C.g_srv_target_list_sort(c_targets)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Copy is a wrapper around the C function g_srv_target_copy.
-func (recv *SrvTarget) Copy() *SrvTarget {
-	retC := C.g_srv_target_copy((*C.GSrvTarget)(recv.native))
-	retGo := SrvTargetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Free is a wrapper around the C function g_srv_target_free.
-func (recv *SrvTarget) Free() {
-	C.g_srv_target_free((*C.GSrvTarget)(recv.native))
-
-	return
-}
-
-// GetHostname is a wrapper around the C function g_srv_target_get_hostname.
-func (recv *SrvTarget) GetHostname() string {
-	retC := C.g_srv_target_get_hostname((*C.GSrvTarget)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetPort is a wrapper around the C function g_srv_target_get_port.
-func (recv *SrvTarget) GetPort() uint16 {
-	retC := C.g_srv_target_get_port((*C.GSrvTarget)(recv.native))
-	retGo := (uint16)(retC)
-
-	return retGo
-}
-
-// GetPriority is a wrapper around the C function g_srv_target_get_priority.
-func (recv *SrvTarget) GetPriority() uint16 {
-	retC := C.g_srv_target_get_priority((*C.GSrvTarget)(recv.native))
-	retGo := (uint16)(retC)
-
-	return retGo
-}
-
-// GetWeight is a wrapper around the C function g_srv_target_get_weight.
-func (recv *SrvTarget) GetWeight() uint16 {
-	retC := C.g_srv_target_get_weight((*C.GSrvTarget)(recv.native))
-	retGo := (uint16)(retC)
-
-	return retGo
-}
+// Blacklisted : g_srv_target_get_weight

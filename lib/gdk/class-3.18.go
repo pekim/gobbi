@@ -10,28 +10,8 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// GetScrollLockState is a wrapper around the C function gdk_keymap_get_scroll_lock_state.
-func (recv *Keymap) GetScrollLockState() bool {
-	retC := C.gdk_keymap_get_scroll_lock_state((*C.GdkKeymap)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_keymap_get_scroll_lock_state
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_pass_through
 
-// GetPassThrough is a wrapper around the C function gdk_window_get_pass_through.
-func (recv *Window) GetPassThrough() bool {
-	retC := C.gdk_window_get_pass_through((*C.GdkWindow)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetPassThrough is a wrapper around the C function gdk_window_set_pass_through.
-func (recv *Window) SetPassThrough(passThrough bool) {
-	c_pass_through :=
-		boolToGboolean(passThrough)
-
-	C.gdk_window_set_pass_through((*C.GdkWindow)(recv.native), c_pass_through)
-
-	return
-}
+// Blacklisted : gdk_window_set_pass_through

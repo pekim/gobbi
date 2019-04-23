@@ -20,3 +20,7 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : g_dtls_client_connection_new
+
+// Blacklisted : g_dtls_server_connection_new

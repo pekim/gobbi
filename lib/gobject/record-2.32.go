@@ -3,8 +3,6 @@
 
 package gobject
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,37 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetSchar is a wrapper around the C function g_value_get_schar.
-func (recv *Value) GetSchar() int8 {
-	retC := C.g_value_get_schar((*C.GValue)(recv.native))
-	retGo := (int8)(retC)
+// Blacklisted : g_value_get_schar
 
-	return retGo
-}
+// Blacklisted : g_value_set_schar
 
-// SetSchar is a wrapper around the C function g_value_set_schar.
-func (recv *Value) SetSchar(vChar int8) {
-	c_v_char := (C.gint8)(vChar)
+// Blacklisted : g_weak_ref_clear
 
-	C.g_value_set_schar((*C.GValue)(recv.native), c_v_char)
-
-	return
-}
-
-// Clear is a wrapper around the C function g_weak_ref_clear.
-func (recv *WeakRef) Clear() {
-	C.g_weak_ref_clear((*C.GWeakRef)(recv.native))
-
-	return
-}
-
-// Get is a wrapper around the C function g_weak_ref_get.
-func (recv *WeakRef) Get() Object {
-	retC := C.g_weak_ref_get((*C.GWeakRef)(recv.native))
-	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_weak_ref_get
 
 // Init is a wrapper around the C function g_weak_ref_init.
 func (recv *WeakRef) Init(object *Object) {
@@ -56,14 +30,4 @@ func (recv *WeakRef) Init(object *Object) {
 	return
 }
 
-// Set is a wrapper around the C function g_weak_ref_set.
-func (recv *WeakRef) Set(object *Object) {
-	c_object := (C.gpointer)(C.NULL)
-	if object != nil {
-		c_object = (C.gpointer)(object.ToC())
-	}
-
-	C.g_weak_ref_set((*C.GWeakRef)(recv.native), c_object)
-
-	return
-}
+// Blacklisted : g_weak_ref_set

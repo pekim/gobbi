@@ -53,19 +53,9 @@ func (recv *DBusInterfaceIface) Equals(other *DBusInterfaceIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CacheBuild is a wrapper around the C function g_dbus_interface_info_cache_build.
-func (recv *DBusInterfaceInfo) CacheBuild() {
-	C.g_dbus_interface_info_cache_build((*C.GDBusInterfaceInfo)(recv.native))
+// Blacklisted : g_dbus_interface_info_cache_build
 
-	return
-}
-
-// CacheRelease is a wrapper around the C function g_dbus_interface_info_cache_release.
-func (recv *DBusInterfaceInfo) CacheRelease() {
-	C.g_dbus_interface_info_cache_release((*C.GDBusInterfaceInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_interface_info_cache_release
 
 // DBusInterfaceSkeletonClass is a wrapper around the C record GDBusInterfaceSkeletonClass.
 type DBusInterfaceSkeletonClass struct {
@@ -309,32 +299,11 @@ func (recv *IOModuleScope) Equals(other *IOModuleScope) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// IOModuleScopeNew is a wrapper around the C function g_io_module_scope_new.
-func IOModuleScopeNew(flags IOModuleScopeFlags) *IOModuleScope {
-	c_flags := (C.GIOModuleScopeFlags)(flags)
+// Blacklisted : g_io_module_scope_new
 
-	retC := C.g_io_module_scope_new(c_flags)
-	retGo := IOModuleScopeNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_io_module_scope_block
 
-	return retGo
-}
-
-// Block is a wrapper around the C function g_io_module_scope_block.
-func (recv *IOModuleScope) Block(basename string) {
-	c_basename := C.CString(basename)
-	defer C.free(unsafe.Pointer(c_basename))
-
-	C.g_io_module_scope_block((*C.GIOModuleScope)(recv.native), c_basename)
-
-	return
-}
-
-// Free is a wrapper around the C function g_io_module_scope_free.
-func (recv *IOModuleScope) Free() {
-	C.g_io_module_scope_free((*C.GIOModuleScope)(recv.native))
-
-	return
-}
+// Blacklisted : g_io_module_scope_free
 
 // TlsDatabaseClass is a wrapper around the C record GTlsDatabaseClass.
 type TlsDatabaseClass struct {

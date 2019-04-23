@@ -3,8 +3,6 @@
 
 package gio
 
-import glib "github.com/pekim/gobbi/lib/glib"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -42,13 +40,7 @@ const (
 	TLS_ERROR_EOF                  TlsError = 6
 )
 
-// TlsErrorQuark is a wrapper around the C function g_tls_error_quark.
-func TlsErrorQuark() glib.Quark {
-	retC := C.g_tls_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
+// Blacklisted : g_tls_error_quark
 
 type TlsRehandshakeMode C.GTlsRehandshakeMode
 

@@ -4,7 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
 )
@@ -35,150 +34,31 @@ import (
 */
 import "C"
 
-// DesktopAppInfoNewFromKeyfile is a wrapper around the C function g_desktop_app_info_new_from_keyfile.
-func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
-	c_key_file := (*C.GKeyFile)(C.NULL)
-	if keyFile != nil {
-		c_key_file = (*C.GKeyFile)(keyFile.ToC())
-	}
+// Blacklisted : g_desktop_app_info_new_from_keyfile
 
-	retC := C.g_desktop_app_info_new_from_keyfile(c_key_file)
-	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_emblem_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_emblem_new_with_origin
 
-	return retGo
-}
+// Blacklisted : g_emblem_get_icon
 
-// EmblemNew is a wrapper around the C function g_emblem_new.
-func EmblemNew(icon *Icon) *Emblem {
-	c_icon := (*C.GIcon)(icon.ToC())
+// Blacklisted : g_emblem_get_origin
 
-	retC := C.g_emblem_new(c_icon)
-	retGo := EmblemNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_emblemed_icon_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_emblemed_icon_add_emblem
 
-	return retGo
-}
+// Blacklisted : g_emblemed_icon_get_emblems
 
-// EmblemNewWithOrigin is a wrapper around the C function g_emblem_new_with_origin.
-func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
-	c_icon := (*C.GIcon)(icon.ToC())
+// Blacklisted : g_emblemed_icon_get_icon
 
-	c_origin := (C.GEmblemOrigin)(origin)
+// Blacklisted : g_file_enumerator_get_container
 
-	retC := C.g_emblem_new_with_origin(c_icon, c_origin)
-	retGo := EmblemNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_memory_output_stream_get_data_size
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_themed_icon_prepend_name
 
-	return retGo
-}
-
-// GetIcon is a wrapper around the C function g_emblem_get_icon.
-func (recv *Emblem) GetIcon() *Icon {
-	retC := C.g_emblem_get_icon((*C.GEmblem)(recv.native))
-	retGo := IconNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetOrigin is a wrapper around the C function g_emblem_get_origin.
-func (recv *Emblem) GetOrigin() EmblemOrigin {
-	retC := C.g_emblem_get_origin((*C.GEmblem)(recv.native))
-	retGo := (EmblemOrigin)(retC)
-
-	return retGo
-}
-
-// EmblemedIconNew is a wrapper around the C function g_emblemed_icon_new.
-func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	c_emblem := (*C.GEmblem)(C.NULL)
-	if emblem != nil {
-		c_emblem = (*C.GEmblem)(emblem.ToC())
-	}
-
-	retC := C.g_emblemed_icon_new(c_icon, c_emblem)
-	retGo := EmblemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// AddEmblem is a wrapper around the C function g_emblemed_icon_add_emblem.
-func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
-	c_emblem := (*C.GEmblem)(C.NULL)
-	if emblem != nil {
-		c_emblem = (*C.GEmblem)(emblem.ToC())
-	}
-
-	C.g_emblemed_icon_add_emblem((*C.GEmblemedIcon)(recv.native), c_emblem)
-
-	return
-}
-
-// GetEmblems is a wrapper around the C function g_emblemed_icon_get_emblems.
-func (recv *EmblemedIcon) GetEmblems() *glib.List {
-	retC := C.g_emblemed_icon_get_emblems((*C.GEmblemedIcon)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetIcon is a wrapper around the C function g_emblemed_icon_get_icon.
-func (recv *EmblemedIcon) GetIcon() *Icon {
-	retC := C.g_emblemed_icon_get_icon((*C.GEmblemedIcon)(recv.native))
-	retGo := IconNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetContainer is a wrapper around the C function g_file_enumerator_get_container.
-func (recv *FileEnumerator) GetContainer() *File {
-	retC := C.g_file_enumerator_get_container((*C.GFileEnumerator)(recv.native))
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetDataSize is a wrapper around the C function g_memory_output_stream_get_data_size.
-func (recv *MemoryOutputStream) GetDataSize() uint64 {
-	retC := C.g_memory_output_stream_get_data_size((*C.GMemoryOutputStream)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// PrependName is a wrapper around the C function g_themed_icon_prepend_name.
-func (recv *ThemedIcon) PrependName(iconname string) {
-	c_iconname := C.CString(iconname)
-	defer C.free(unsafe.Pointer(c_iconname))
-
-	C.g_themed_icon_prepend_name((*C.GThemedIcon)(recv.native), c_iconname)
-
-	return
-}
-
-// SetRateLimit is a wrapper around the C function g_unix_mount_monitor_set_rate_limit.
-func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
-	c_limit_msec := (C.int)(limitMsec)
-
-	C.g_unix_mount_monitor_set_rate_limit((*C.GUnixMountMonitor)(recv.native), c_limit_msec)
-
-	return
-}
+// Blacklisted : g_unix_mount_monitor_set_rate_limit
 
 type signalVolumeMonitorDriveEjectButtonDetail struct {
 	callback  VolumeMonitorSignalDriveEjectButtonCallback

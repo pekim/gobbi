@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,91 +12,30 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : g_byte_array_unref
+
 // Unsupported : g_double_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
 // Unsupported : g_double_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
-// HostnameIsAsciiEncoded is a wrapper around the C function g_hostname_is_ascii_encoded.
-func HostnameIsAsciiEncoded(hostname string) bool {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
+// Blacklisted : g_hostname_is_ascii_encoded
 
-	retC := C.g_hostname_is_ascii_encoded(c_hostname)
-	retGo := retC == C.TRUE
+// Blacklisted : g_hostname_is_ip_address
 
-	return retGo
-}
+// Blacklisted : g_hostname_is_non_ascii
 
-// HostnameIsIpAddress is a wrapper around the C function g_hostname_is_ip_address.
-func HostnameIsIpAddress(hostname string) bool {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
+// Blacklisted : g_hostname_to_ascii
 
-	retC := C.g_hostname_is_ip_address(c_hostname)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HostnameIsNonAscii is a wrapper around the C function g_hostname_is_non_ascii.
-func HostnameIsNonAscii(hostname string) bool {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	retC := C.g_hostname_is_non_ascii(c_hostname)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HostnameToAscii is a wrapper around the C function g_hostname_to_ascii.
-func HostnameToAscii(hostname string) string {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	retC := C.g_hostname_to_ascii(c_hostname)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HostnameToUnicode is a wrapper around the C function g_hostname_to_unicode.
-func HostnameToUnicode(hostname string) string {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	retC := C.g_hostname_to_unicode(c_hostname)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_hostname_to_unicode
 
 // Unsupported : g_int64_equal : unsupported parameter v1 : no type generator for gpointer (gconstpointer) for param v1
 
 // Unsupported : g_int64_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
-// MkstempFull is a wrapper around the C function g_mkstemp_full.
-func MkstempFull(tmpl string, flags int32, mode int32) int32 {
-	c_tmpl := C.CString(tmpl)
-	defer C.free(unsafe.Pointer(c_tmpl))
+// Blacklisted : g_main_context_get_thread_default
 
-	c_flags := (C.gint)(flags)
+// Blacklisted : g_mkstemp_full
 
-	c_mode := (C.gint)(mode)
-
-	retC := C.g_mkstemp_full(c_tmpl, c_flags, c_mode)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
-func ReloadUserSpecialDirsCache() {
-	C.g_reload_user_special_dirs_cache()
-
-	return
-}
+// Blacklisted : g_reload_user_special_dirs_cache
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc (GTestLogFatalFunc) for param log_func

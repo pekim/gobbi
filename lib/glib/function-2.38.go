@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,71 +14,18 @@ import "C"
 
 // Unsupported : g_test_build_filename : unsupported parameter ... : varargs
 
-// TestFailed is a wrapper around the C function g_test_failed.
-func TestFailed() bool {
-	retC := C.g_test_failed()
-	retGo := retC == C.TRUE
+// Blacklisted : g_test_failed
 
-	return retGo
-}
-
-// TestGetDir is a wrapper around the C function g_test_get_dir.
-func TestGetDir(fileType TestFileType) string {
-	c_file_type := (C.GTestFileType)(fileType)
-
-	retC := C.g_test_get_dir(c_file_type)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_test_get_dir
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// TestIncomplete is a wrapper around the C function g_test_incomplete.
-func TestIncomplete(msg string) {
-	c_msg := C.CString(msg)
-	defer C.free(unsafe.Pointer(c_msg))
+// Blacklisted : g_test_incomplete
 
-	C.g_test_incomplete(c_msg)
+// Blacklisted : g_test_set_nonfatal_assertions
 
-	return
-}
+// Blacklisted : g_test_skip
 
-// TestSetNonfatalAssertions is a wrapper around the C function g_test_set_nonfatal_assertions.
-func TestSetNonfatalAssertions() {
-	C.g_test_set_nonfatal_assertions()
+// Blacklisted : g_test_subprocess
 
-	return
-}
-
-// TestSkip is a wrapper around the C function g_test_skip.
-func TestSkip(msg string) {
-	c_msg := C.CString(msg)
-	defer C.free(unsafe.Pointer(c_msg))
-
-	C.g_test_skip(c_msg)
-
-	return
-}
-
-// TestSubprocess is a wrapper around the C function g_test_subprocess.
-func TestSubprocess() bool {
-	retC := C.g_test_subprocess()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// TestTrapSubprocess is a wrapper around the C function g_test_trap_subprocess.
-func TestTrapSubprocess(testPath string, usecTimeout uint64, testFlags TestSubprocessFlags) {
-	c_test_path := C.CString(testPath)
-	defer C.free(unsafe.Pointer(c_test_path))
-
-	c_usec_timeout := (C.guint64)(usecTimeout)
-
-	c_test_flags := (C.GTestSubprocessFlags)(testFlags)
-
-	C.g_test_trap_subprocess(c_test_path, c_usec_timeout, c_test_flags)
-
-	return
-}
+// Blacklisted : g_test_trap_subprocess

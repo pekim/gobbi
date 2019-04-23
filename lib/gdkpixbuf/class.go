@@ -101,28 +101,7 @@ func CastToPixbuf(object *gobject.Object) *Pixbuf {
 	return PixbufNewFromC(object.ToC())
 }
 
-// PixbufNew is a wrapper around the C function gdk_pixbuf_new.
-func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32) *Pixbuf {
-	c_colorspace := (C.GdkColorspace)(colorspace)
-
-	c_has_alpha :=
-		boolToGboolean(hasAlpha)
-
-	c_bits_per_sample := (C.int)(bitsPerSample)
-
-	c_width := (C.int)(width)
-
-	c_height := (C.int)(height)
-
-	retC := C.gdk_pixbuf_new(c_colorspace, c_has_alpha, c_bits_per_sample, c_width, c_height)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_new
 
 // Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
 
@@ -151,425 +130,58 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	return retGo, goError
 }
 
-// PixbufNewFromInline is a wrapper around the C function gdk_pixbuf_new_from_inline.
-func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
-	c_data_length := (C.gint)(len(data))
+// Blacklisted : gdk_pixbuf_new_from_inline
 
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (*C.guint8)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_copy_pixels :=
-		boolToGboolean(copyPixels)
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_new_from_inline(c_data_length, c_data, c_copy_pixels, &cThrowableError)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PixbufNewFromXpmData is a wrapper around the C function gdk_pixbuf_new_from_xpm_data.
-func PixbufNewFromXpmData(data []string) *Pixbuf {
-	c_data_array := make([]*C.char, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = nil
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (**C.char)(unsafe.Pointer(c_data_arrayPtr))
-
-	retC := C.gdk_pixbuf_new_from_xpm_data(c_data)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_new_from_xpm_data
 
 // gdk_pixbuf_from_pixdata : unsupported parameter pixdata : Blacklisted record : GdkPixdata
-// AddAlpha is a wrapper around the C function gdk_pixbuf_add_alpha.
-func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
-	c_substitute_color :=
-		boolToGboolean(substituteColor)
+// Blacklisted : gdk_pixbuf_add_alpha
 
-	c_r := (C.guchar)(r)
+// Blacklisted : gdk_pixbuf_composite
 
-	c_g := (C.guchar)(g)
+// Blacklisted : gdk_pixbuf_composite_color
 
-	c_b := (C.guchar)(b)
+// Blacklisted : gdk_pixbuf_composite_color_simple
 
-	retC := C.gdk_pixbuf_add_alpha((*C.GdkPixbuf)(recv.native), c_substitute_color, c_r, c_g, c_b)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_pixbuf_copy
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_copy_area
 
-// Composite is a wrapper around the C function gdk_pixbuf_composite.
-func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32) {
-	c_dest := (*C.GdkPixbuf)(C.NULL)
-	if dest != nil {
-		c_dest = (*C.GdkPixbuf)(dest.ToC())
-	}
+// Blacklisted : gdk_pixbuf_fill
 
-	c_dest_x := (C.int)(destX)
+// Blacklisted : gdk_pixbuf_get_bits_per_sample
 
-	c_dest_y := (C.int)(destY)
+// Blacklisted : gdk_pixbuf_get_colorspace
 
-	c_dest_width := (C.int)(destWidth)
+// Blacklisted : gdk_pixbuf_get_has_alpha
 
-	c_dest_height := (C.int)(destHeight)
+// Blacklisted : gdk_pixbuf_get_height
 
-	c_offset_x := (C.double)(offsetX)
+// Blacklisted : gdk_pixbuf_get_n_channels
 
-	c_offset_y := (C.double)(offsetY)
-
-	c_scale_x := (C.double)(scaleX)
-
-	c_scale_y := (C.double)(scaleY)
-
-	c_interp_type := (C.GdkInterpType)(interpType)
-
-	c_overall_alpha := (C.int)(overallAlpha)
-
-	C.gdk_pixbuf_composite((*C.GdkPixbuf)(recv.native), c_dest, c_dest_x, c_dest_y, c_dest_width, c_dest_height, c_offset_x, c_offset_y, c_scale_x, c_scale_y, c_interp_type, c_overall_alpha)
-
-	return
-}
-
-// CompositeColor is a wrapper around the C function gdk_pixbuf_composite_color.
-func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32, checkX int32, checkY int32, checkSize int32, color1 uint32, color2 uint32) {
-	c_dest := (*C.GdkPixbuf)(C.NULL)
-	if dest != nil {
-		c_dest = (*C.GdkPixbuf)(dest.ToC())
-	}
-
-	c_dest_x := (C.int)(destX)
-
-	c_dest_y := (C.int)(destY)
-
-	c_dest_width := (C.int)(destWidth)
-
-	c_dest_height := (C.int)(destHeight)
-
-	c_offset_x := (C.double)(offsetX)
-
-	c_offset_y := (C.double)(offsetY)
-
-	c_scale_x := (C.double)(scaleX)
-
-	c_scale_y := (C.double)(scaleY)
-
-	c_interp_type := (C.GdkInterpType)(interpType)
-
-	c_overall_alpha := (C.int)(overallAlpha)
-
-	c_check_x := (C.int)(checkX)
-
-	c_check_y := (C.int)(checkY)
-
-	c_check_size := (C.int)(checkSize)
-
-	c_color1 := (C.guint32)(color1)
-
-	c_color2 := (C.guint32)(color2)
-
-	C.gdk_pixbuf_composite_color((*C.GdkPixbuf)(recv.native), c_dest, c_dest_x, c_dest_y, c_dest_width, c_dest_height, c_offset_x, c_offset_y, c_scale_x, c_scale_y, c_interp_type, c_overall_alpha, c_check_x, c_check_y, c_check_size, c_color1, c_color2)
-
-	return
-}
-
-// CompositeColorSimple is a wrapper around the C function gdk_pixbuf_composite_color_simple.
-func (recv *Pixbuf) CompositeColorSimple(destWidth int32, destHeight int32, interpType InterpType, overallAlpha int32, checkSize int32, color1 uint32, color2 uint32) *Pixbuf {
-	c_dest_width := (C.int)(destWidth)
-
-	c_dest_height := (C.int)(destHeight)
-
-	c_interp_type := (C.GdkInterpType)(interpType)
-
-	c_overall_alpha := (C.int)(overallAlpha)
-
-	c_check_size := (C.int)(checkSize)
-
-	c_color1 := (C.guint32)(color1)
-
-	c_color2 := (C.guint32)(color2)
-
-	retC := C.gdk_pixbuf_composite_color_simple((*C.GdkPixbuf)(recv.native), c_dest_width, c_dest_height, c_interp_type, c_overall_alpha, c_check_size, c_color1, c_color2)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Copy is a wrapper around the C function gdk_pixbuf_copy.
-func (recv *Pixbuf) Copy() *Pixbuf {
-	retC := C.gdk_pixbuf_copy((*C.GdkPixbuf)(recv.native))
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CopyArea is a wrapper around the C function gdk_pixbuf_copy_area.
-func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, destPixbuf *Pixbuf, destX int32, destY int32) {
-	c_src_x := (C.int)(srcX)
-
-	c_src_y := (C.int)(srcY)
-
-	c_width := (C.int)(width)
-
-	c_height := (C.int)(height)
-
-	c_dest_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if destPixbuf != nil {
-		c_dest_pixbuf = (*C.GdkPixbuf)(destPixbuf.ToC())
-	}
-
-	c_dest_x := (C.int)(destX)
-
-	c_dest_y := (C.int)(destY)
-
-	C.gdk_pixbuf_copy_area((*C.GdkPixbuf)(recv.native), c_src_x, c_src_y, c_width, c_height, c_dest_pixbuf, c_dest_x, c_dest_y)
-
-	return
-}
-
-// Fill is a wrapper around the C function gdk_pixbuf_fill.
-func (recv *Pixbuf) Fill(pixel uint32) {
-	c_pixel := (C.guint32)(pixel)
-
-	C.gdk_pixbuf_fill((*C.GdkPixbuf)(recv.native), c_pixel)
-
-	return
-}
-
-// GetBitsPerSample is a wrapper around the C function gdk_pixbuf_get_bits_per_sample.
-func (recv *Pixbuf) GetBitsPerSample() int32 {
-	retC := C.gdk_pixbuf_get_bits_per_sample((*C.GdkPixbuf)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetColorspace is a wrapper around the C function gdk_pixbuf_get_colorspace.
-func (recv *Pixbuf) GetColorspace() Colorspace {
-	retC := C.gdk_pixbuf_get_colorspace((*C.GdkPixbuf)(recv.native))
-	retGo := (Colorspace)(retC)
-
-	return retGo
-}
-
-// GetHasAlpha is a wrapper around the C function gdk_pixbuf_get_has_alpha.
-func (recv *Pixbuf) GetHasAlpha() bool {
-	retC := C.gdk_pixbuf_get_has_alpha((*C.GdkPixbuf)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetHeight is a wrapper around the C function gdk_pixbuf_get_height.
-func (recv *Pixbuf) GetHeight() int32 {
-	retC := C.gdk_pixbuf_get_height((*C.GdkPixbuf)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetNChannels is a wrapper around the C function gdk_pixbuf_get_n_channels.
-func (recv *Pixbuf) GetNChannels() int32 {
-	retC := C.gdk_pixbuf_get_n_channels((*C.GdkPixbuf)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetOption is a wrapper around the C function gdk_pixbuf_get_option.
-func (recv *Pixbuf) GetOption(key string) string {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	retC := C.gdk_pixbuf_get_option((*C.GdkPixbuf)(recv.native), c_key)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_get_option
 
 // Unsupported : gdk_pixbuf_get_pixels : array return type :
 
-// GetRowstride is a wrapper around the C function gdk_pixbuf_get_rowstride.
-func (recv *Pixbuf) GetRowstride() int32 {
-	retC := C.gdk_pixbuf_get_rowstride((*C.GdkPixbuf)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gdk_pixbuf_get_rowstride
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_get_width
 
-// GetWidth is a wrapper around the C function gdk_pixbuf_get_width.
-func (recv *Pixbuf) GetWidth() int32 {
-	retC := C.gdk_pixbuf_get_width((*C.GdkPixbuf)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gdk_pixbuf_new_subpixbuf
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_ref
 
-// NewSubpixbuf is a wrapper around the C function gdk_pixbuf_new_subpixbuf.
-func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int32) *Pixbuf {
-	c_src_x := (C.int)(srcX)
-
-	c_src_y := (C.int)(srcY)
-
-	c_width := (C.int)(width)
-
-	c_height := (C.int)(height)
-
-	retC := C.gdk_pixbuf_new_subpixbuf((*C.GdkPixbuf)(recv.native), c_src_x, c_src_y, c_width, c_height)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function gdk_pixbuf_ref.
-func (recv *Pixbuf) Ref() *Pixbuf {
-	retC := C.gdk_pixbuf_ref((*C.GdkPixbuf)(recv.native))
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SaturateAndPixelate is a wrapper around the C function gdk_pixbuf_saturate_and_pixelate.
-func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixelate bool) {
-	c_dest := (*C.GdkPixbuf)(C.NULL)
-	if dest != nil {
-		c_dest = (*C.GdkPixbuf)(dest.ToC())
-	}
-
-	c_saturation := (C.gfloat)(saturation)
-
-	c_pixelate :=
-		boolToGboolean(pixelate)
-
-	C.gdk_pixbuf_saturate_and_pixelate((*C.GdkPixbuf)(recv.native), c_dest, c_saturation, c_pixelate)
-
-	return
-}
+// Blacklisted : gdk_pixbuf_saturate_and_pixelate
 
 // Unsupported : gdk_pixbuf_save : unsupported parameter ... : varargs
 
-// Savev is a wrapper around the C function gdk_pixbuf_savev.
-func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, optionValues []string) (bool, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
+// Blacklisted : gdk_pixbuf_savev
 
-	c_type := C.CString(type_)
-	defer C.free(unsafe.Pointer(c_type))
+// Blacklisted : gdk_pixbuf_scale
 
-	c_option_keys_array := make([]*C.char, len(optionKeys)+1, len(optionKeys)+1)
-	for i, item := range optionKeys {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_option_keys_array[i] = c
-	}
-	c_option_keys_array[len(optionKeys)] = nil
-	c_option_keys_arrayPtr := &c_option_keys_array[0]
-	c_option_keys := (**C.char)(unsafe.Pointer(c_option_keys_arrayPtr))
+// Blacklisted : gdk_pixbuf_scale_simple
 
-	c_option_values_array := make([]*C.char, len(optionValues)+1, len(optionValues)+1)
-	for i, item := range optionValues {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_option_values_array[i] = c
-	}
-	c_option_values_array[len(optionValues)] = nil
-	c_option_values_arrayPtr := &c_option_values_array[0]
-	c_option_values := (**C.char)(unsafe.Pointer(c_option_values_arrayPtr))
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_savev((*C.GdkPixbuf)(recv.native), c_filename, c_type, c_option_keys, c_option_values, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Scale is a wrapper around the C function gdk_pixbuf_scale.
-func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
-	c_dest := (*C.GdkPixbuf)(C.NULL)
-	if dest != nil {
-		c_dest = (*C.GdkPixbuf)(dest.ToC())
-	}
-
-	c_dest_x := (C.int)(destX)
-
-	c_dest_y := (C.int)(destY)
-
-	c_dest_width := (C.int)(destWidth)
-
-	c_dest_height := (C.int)(destHeight)
-
-	c_offset_x := (C.double)(offsetX)
-
-	c_offset_y := (C.double)(offsetY)
-
-	c_scale_x := (C.double)(scaleX)
-
-	c_scale_y := (C.double)(scaleY)
-
-	c_interp_type := (C.GdkInterpType)(interpType)
-
-	C.gdk_pixbuf_scale((*C.GdkPixbuf)(recv.native), c_dest, c_dest_x, c_dest_y, c_dest_width, c_dest_height, c_offset_x, c_offset_y, c_scale_x, c_scale_y, c_interp_type)
-
-	return
-}
-
-// ScaleSimple is a wrapper around the C function gdk_pixbuf_scale_simple.
-func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType InterpType) *Pixbuf {
-	c_dest_width := (C.int)(destWidth)
-
-	c_dest_height := (C.int)(destHeight)
-
-	c_interp_type := (C.GdkInterpType)(interpType)
-
-	retC := C.gdk_pixbuf_scale_simple((*C.GdkPixbuf)(recv.native), c_dest_width, c_dest_height, c_interp_type)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function gdk_pixbuf_unref.
-func (recv *Pixbuf) Unref() {
-	C.gdk_pixbuf_unref((*C.GdkPixbuf)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_pixbuf_unref
 
 // Icon returns the Icon interface implemented by Pixbuf
 func (recv *Pixbuf) Icon() *gio.Icon {
@@ -628,90 +240,21 @@ func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
 	return PixbufAnimationNewFromC(object.ToC())
 }
 
-// PixbufAnimationNewFromFile is a wrapper around the C function gdk_pixbuf_animation_new_from_file.
-func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
+// Blacklisted : gdk_pixbuf_animation_new_from_file
 
-	var cThrowableError *C.GError
+// Blacklisted : gdk_pixbuf_animation_get_height
 
-	retC := C.gdk_pixbuf_animation_new_from_file(c_filename, &cThrowableError)
-	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_pixbuf_animation_get_iter
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : gdk_pixbuf_animation_get_static_image
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : gdk_pixbuf_animation_get_width
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : gdk_pixbuf_animation_is_static_image
 
-	return retGo, goError
-}
+// Blacklisted : gdk_pixbuf_animation_ref
 
-// GetHeight is a wrapper around the C function gdk_pixbuf_animation_get_height.
-func (recv *PixbufAnimation) GetHeight() int32 {
-	retC := C.gdk_pixbuf_animation_get_height((*C.GdkPixbufAnimation)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetIter is a wrapper around the C function gdk_pixbuf_animation_get_iter.
-func (recv *PixbufAnimation) GetIter(startTime *glib.TimeVal) *PixbufAnimationIter {
-	c_start_time := (*C.GTimeVal)(C.NULL)
-	if startTime != nil {
-		c_start_time = (*C.GTimeVal)(startTime.ToC())
-	}
-
-	retC := C.gdk_pixbuf_animation_get_iter((*C.GdkPixbufAnimation)(recv.native), c_start_time)
-	retGo := PixbufAnimationIterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetStaticImage is a wrapper around the C function gdk_pixbuf_animation_get_static_image.
-func (recv *PixbufAnimation) GetStaticImage() *Pixbuf {
-	retC := C.gdk_pixbuf_animation_get_static_image((*C.GdkPixbufAnimation)(recv.native))
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetWidth is a wrapper around the C function gdk_pixbuf_animation_get_width.
-func (recv *PixbufAnimation) GetWidth() int32 {
-	retC := C.gdk_pixbuf_animation_get_width((*C.GdkPixbufAnimation)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// IsStaticImage is a wrapper around the C function gdk_pixbuf_animation_is_static_image.
-func (recv *PixbufAnimation) IsStaticImage() bool {
-	retC := C.gdk_pixbuf_animation_is_static_image((*C.GdkPixbufAnimation)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function gdk_pixbuf_animation_ref.
-func (recv *PixbufAnimation) Ref() *PixbufAnimation {
-	retC := C.gdk_pixbuf_animation_ref((*C.GdkPixbufAnimation)(recv.native))
-	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function gdk_pixbuf_animation_unref.
-func (recv *PixbufAnimation) Unref() {
-	C.gdk_pixbuf_animation_unref((*C.GdkPixbufAnimation)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_pixbuf_animation_unref
 
 // PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
@@ -760,42 +303,13 @@ func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
 	return PixbufAnimationIterNewFromC(object.ToC())
 }
 
-// Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
-func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
-	c_current_time := (*C.GTimeVal)(C.NULL)
-	if currentTime != nil {
-		c_current_time = (*C.GTimeVal)(currentTime.ToC())
-	}
+// Blacklisted : gdk_pixbuf_animation_iter_advance
 
-	retC := C.gdk_pixbuf_animation_iter_advance((*C.GdkPixbufAnimationIter)(recv.native), c_current_time)
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_pixbuf_animation_iter_get_delay_time
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_animation_iter_get_pixbuf
 
-// GetDelayTime is a wrapper around the C function gdk_pixbuf_animation_iter_get_delay_time.
-func (recv *PixbufAnimationIter) GetDelayTime() int32 {
-	retC := C.gdk_pixbuf_animation_iter_get_delay_time((*C.GdkPixbufAnimationIter)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetPixbuf is a wrapper around the C function gdk_pixbuf_animation_iter_get_pixbuf.
-func (recv *PixbufAnimationIter) GetPixbuf() *Pixbuf {
-	retC := C.gdk_pixbuf_animation_iter_get_pixbuf((*C.GdkPixbufAnimationIter)(recv.native))
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// OnCurrentlyLoadingFrame is a wrapper around the C function gdk_pixbuf_animation_iter_on_currently_loading_frame.
-func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
-	retC := C.gdk_pixbuf_animation_iter_on_currently_loading_frame((*C.GdkPixbufAnimationIter)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_animation_iter_on_currently_loading_frame
 
 // PixbufLoader is a wrapper around the C record GdkPixbufLoader.
 type PixbufLoader struct {
@@ -1098,105 +612,17 @@ func pixbufloader_sizePreparedHandler(_ *C.GObject, c_width C.gint, c_height C.g
 	callback(width, height)
 }
 
-// PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
-func PixbufLoaderNew() *PixbufLoader {
-	retC := C.gdk_pixbuf_loader_new()
-	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_pixbuf_loader_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : gdk_pixbuf_loader_new_with_type
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_loader_close
 
-// PixbufLoaderNewWithType is a wrapper around the C function gdk_pixbuf_loader_new_with_type.
-func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
-	c_image_type := C.CString(imageType)
-	defer C.free(unsafe.Pointer(c_image_type))
+// Blacklisted : gdk_pixbuf_loader_get_animation
 
-	var cThrowableError *C.GError
+// Blacklisted : gdk_pixbuf_loader_get_pixbuf
 
-	retC := C.gdk_pixbuf_loader_new_with_type(c_image_type, &cThrowableError)
-	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Close is a wrapper around the C function gdk_pixbuf_loader_close.
-func (recv *PixbufLoader) Close() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_loader_close((*C.GdkPixbufLoader)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GetAnimation is a wrapper around the C function gdk_pixbuf_loader_get_animation.
-func (recv *PixbufLoader) GetAnimation() *PixbufAnimation {
-	retC := C.gdk_pixbuf_loader_get_animation((*C.GdkPixbufLoader)(recv.native))
-	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetPixbuf is a wrapper around the C function gdk_pixbuf_loader_get_pixbuf.
-func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
-	retC := C.gdk_pixbuf_loader_get_pixbuf((*C.GdkPixbufLoader)(recv.native))
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Write is a wrapper around the C function gdk_pixbuf_loader_write.
-func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
-	c_buf_array := make([]C.guchar, len(buf)+1, len(buf)+1)
-	for i, item := range buf {
-		c := (C.guchar)(item)
-		c_buf_array[i] = c
-	}
-	c_buf_array[len(buf)] = 0
-	c_buf_arrayPtr := &c_buf_array[0]
-	c_buf := (*C.guchar)(unsafe.Pointer(c_buf_arrayPtr))
-
-	c_count := (C.gsize)(len(buf))
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_loader_write((*C.GdkPixbufLoader)(recv.native), c_buf, c_count, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : gdk_pixbuf_loader_write
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {

@@ -3,13 +3,7 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	gio "github.com/pekim/gobbi/lib/gio"
-	pango "github.com/pekim/gobbi/lib/pango"
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -29,171 +23,35 @@ import (
 */
 import "C"
 
-// SetAccel is a wrapper around the C function gtk_accel_label_set_accel.
-func (recv *AccelLabel) SetAccel(acceleratorKey uint32, acceleratorMods gdk.ModifierType) {
-	c_accelerator_key := (C.guint)(acceleratorKey)
+// Blacklisted : gtk_accel_label_set_accel
 
-	c_accelerator_mods := (C.GdkModifierType)(acceleratorMods)
+// Blacklisted : gtk_action_group_get_accel_group
 
-	C.gtk_accel_label_set_accel((*C.GtkAccelLabel)(recv.native), c_accelerator_key, c_accelerator_mods)
+// Blacklisted : gtk_action_group_set_accel_group
 
-	return
-}
+// Blacklisted : gtk_application_get_active_window
 
-// GetAccelGroup is a wrapper around the C function gtk_action_group_get_accel_group.
-func (recv *ActionGroup) GetAccelGroup() *AccelGroup {
-	retC := C.gtk_action_group_get_accel_group((*C.GtkActionGroup)(recv.native))
-	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_application_get_window_by_id
 
-	return retGo
-}
+// Blacklisted : gtk_application_window_get_id
 
-// SetAccelGroup is a wrapper around the C function gtk_action_group_set_accel_group.
-func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
-	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
-	if accelGroup != nil {
-		c_accel_group = (*C.GtkAccelGroup)(accelGroup.ToC())
-	}
+// Blacklisted : gtk_button_get_always_show_image
 
-	C.gtk_action_group_set_accel_group((*C.GtkActionGroup)(recv.native), c_accel_group)
+// Blacklisted : gtk_button_set_always_show_image
 
-	return
-}
+// Blacklisted : gtk_entry_get_attributes
 
-// GetActiveWindow is a wrapper around the C function gtk_application_get_active_window.
-func (recv *Application) GetActiveWindow() *Window {
-	retC := C.gtk_application_get_active_window((*C.GtkApplication)(recv.native))
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_entry_get_input_hints
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_input_purpose
 
-// GetWindowById is a wrapper around the C function gtk_application_get_window_by_id.
-func (recv *Application) GetWindowById(id uint32) *Window {
-	c_id := (C.guint)(id)
+// Blacklisted : gtk_entry_set_attributes
 
-	retC := C.gtk_application_get_window_by_id((*C.GtkApplication)(recv.native), c_id)
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_entry_set_input_hints
 
-	return retGo
-}
+// Blacklisted : gtk_entry_set_input_purpose
 
-// GetId is a wrapper around the C function gtk_application_window_get_id.
-func (recv *ApplicationWindow) GetId() uint32 {
-	retC := C.gtk_application_window_get_id((*C.GtkApplicationWindow)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// GetAlwaysShowImage is a wrapper around the C function gtk_button_get_always_show_image.
-func (recv *Button) GetAlwaysShowImage() bool {
-	retC := C.gtk_button_get_always_show_image((*C.GtkButton)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetAlwaysShowImage is a wrapper around the C function gtk_button_set_always_show_image.
-func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
-	c_always_show :=
-		boolToGboolean(alwaysShow)
-
-	C.gtk_button_set_always_show_image((*C.GtkButton)(recv.native), c_always_show)
-
-	return
-}
-
-// GetAttributes is a wrapper around the C function gtk_entry_get_attributes.
-func (recv *Entry) GetAttributes() *pango.AttrList {
-	retC := C.gtk_entry_get_attributes((*C.GtkEntry)(recv.native))
-	var retGo (*pango.AttrList)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = pango.AttrListNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetInputHints is a wrapper around the C function gtk_entry_get_input_hints.
-func (recv *Entry) GetInputHints() InputHints {
-	retC := C.gtk_entry_get_input_hints((*C.GtkEntry)(recv.native))
-	retGo := (InputHints)(retC)
-
-	return retGo
-}
-
-// GetInputPurpose is a wrapper around the C function gtk_entry_get_input_purpose.
-func (recv *Entry) GetInputPurpose() InputPurpose {
-	retC := C.gtk_entry_get_input_purpose((*C.GtkEntry)(recv.native))
-	retGo := (InputPurpose)(retC)
-
-	return retGo
-}
-
-// SetAttributes is a wrapper around the C function gtk_entry_set_attributes.
-func (recv *Entry) SetAttributes(attrs *pango.AttrList) {
-	c_attrs := (*C.PangoAttrList)(C.NULL)
-	if attrs != nil {
-		c_attrs = (*C.PangoAttrList)(attrs.ToC())
-	}
-
-	C.gtk_entry_set_attributes((*C.GtkEntry)(recv.native), c_attrs)
-
-	return
-}
-
-// SetInputHints is a wrapper around the C function gtk_entry_set_input_hints.
-func (recv *Entry) SetInputHints(hints InputHints) {
-	c_hints := (C.GtkInputHints)(hints)
-
-	C.gtk_entry_set_input_hints((*C.GtkEntry)(recv.native), c_hints)
-
-	return
-}
-
-// SetInputPurpose is a wrapper around the C function gtk_entry_set_input_purpose.
-func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
-	c_purpose := (C.GtkInputPurpose)(purpose)
-
-	C.gtk_entry_set_input_purpose((*C.GtkEntry)(recv.native), c_purpose)
-
-	return
-}
-
-// GetCellRect is a wrapper around the C function gtk_icon_view_get_cell_rect.
-func (recv *IconView) GetCellRect(path *TreePath, cell *CellRenderer) (bool, *gdk.Rectangle) {
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	c_cell := (*C.GtkCellRenderer)(C.NULL)
-	if cell != nil {
-		c_cell = (*C.GtkCellRenderer)(cell.ToC())
-	}
-
-	var c_rect C.GdkRectangle
-
-	retC := C.gtk_icon_view_get_cell_rect((*C.GtkIconView)(recv.native), c_path, c_cell, &c_rect)
-	retGo := retC == C.TRUE
-
-	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
-
-	return retGo, rect
-}
+// Blacklisted : gtk_icon_view_get_cell_rect
 
 type signalLevelBarOffsetChangedDetail struct {
 	callback  LevelBarSignalOffsetChangedCallback
@@ -257,299 +115,60 @@ func levelbar_offsetChangedHandler(_ *C.GObject, c_name *C.gchar, data C.gpointe
 	callback(name)
 }
 
-// LevelBarNew is a wrapper around the C function gtk_level_bar_new.
-func LevelBarNew() *LevelBar {
-	retC := C.gtk_level_bar_new()
-	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_level_bar_new
 
-	return retGo
-}
+// Blacklisted : gtk_level_bar_new_for_interval
 
-// LevelBarNewForInterval is a wrapper around the C function gtk_level_bar_new_for_interval.
-func LevelBarNewForInterval(minValue float64, maxValue float64) *LevelBar {
-	c_min_value := (C.gdouble)(minValue)
+// Blacklisted : gtk_level_bar_add_offset_value
 
-	c_max_value := (C.gdouble)(maxValue)
+// Blacklisted : gtk_level_bar_get_max_value
 
-	retC := C.gtk_level_bar_new_for_interval(c_min_value, c_max_value)
-	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_level_bar_get_min_value
 
-	return retGo
-}
+// Blacklisted : gtk_level_bar_get_mode
 
-// AddOffsetValue is a wrapper around the C function gtk_level_bar_add_offset_value.
-func (recv *LevelBar) AddOffsetValue(name string, value float64) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : gtk_level_bar_get_offset_value
 
-	c_value := (C.gdouble)(value)
+// Blacklisted : gtk_level_bar_get_value
 
-	C.gtk_level_bar_add_offset_value((*C.GtkLevelBar)(recv.native), c_name, c_value)
+// Blacklisted : gtk_level_bar_remove_offset_value
 
-	return
-}
+// Blacklisted : gtk_level_bar_set_max_value
 
-// GetMaxValue is a wrapper around the C function gtk_level_bar_get_max_value.
-func (recv *LevelBar) GetMaxValue() float64 {
-	retC := C.gtk_level_bar_get_max_value((*C.GtkLevelBar)(recv.native))
-	retGo := (float64)(retC)
+// Blacklisted : gtk_level_bar_set_min_value
 
-	return retGo
-}
+// Blacklisted : gtk_level_bar_set_mode
 
-// GetMinValue is a wrapper around the C function gtk_level_bar_get_min_value.
-func (recv *LevelBar) GetMinValue() float64 {
-	retC := C.gtk_level_bar_get_min_value((*C.GtkLevelBar)(recv.native))
-	retGo := (float64)(retC)
+// Blacklisted : gtk_level_bar_set_value
 
-	return retGo
-}
+// Blacklisted : gtk_menu_button_new
 
-// GetMode is a wrapper around the C function gtk_level_bar_get_mode.
-func (recv *LevelBar) GetMode() LevelBarMode {
-	retC := C.gtk_level_bar_get_mode((*C.GtkLevelBar)(recv.native))
-	retGo := (LevelBarMode)(retC)
+// Blacklisted : gtk_menu_button_get_align_widget
 
-	return retGo
-}
+// Blacklisted : gtk_menu_button_get_direction
 
-// GetOffsetValue is a wrapper around the C function gtk_level_bar_get_offset_value.
-func (recv *LevelBar) GetOffsetValue(name string) (bool, float64) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : gtk_menu_button_get_menu_model
 
-	var c_value C.gdouble
+// Blacklisted : gtk_menu_button_get_popup
 
-	retC := C.gtk_level_bar_get_offset_value((*C.GtkLevelBar)(recv.native), c_name, &c_value)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_menu_button_set_align_widget
 
-	value := (float64)(c_value)
+// Blacklisted : gtk_menu_button_set_direction
 
-	return retGo, value
-}
+// Blacklisted : gtk_menu_button_set_menu_model
 
-// GetValue is a wrapper around the C function gtk_level_bar_get_value.
-func (recv *LevelBar) GetValue() float64 {
-	retC := C.gtk_level_bar_get_value((*C.GtkLevelBar)(recv.native))
-	retGo := (float64)(retC)
+// Blacklisted : gtk_menu_button_set_popup
 
-	return retGo
-}
+// Blacklisted : gtk_menu_shell_bind_model
 
-// RemoveOffsetValue is a wrapper around the C function gtk_level_bar_remove_offset_value.
-func (recv *LevelBar) RemoveOffsetValue(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : gtk_search_entry_new
 
-	C.gtk_level_bar_remove_offset_value((*C.GtkLevelBar)(recv.native), c_name)
+// Blacklisted : gtk_text_view_get_input_hints
 
-	return
-}
+// Blacklisted : gtk_text_view_get_input_purpose
 
-// SetMaxValue is a wrapper around the C function gtk_level_bar_set_max_value.
-func (recv *LevelBar) SetMaxValue(value float64) {
-	c_value := (C.gdouble)(value)
+// Blacklisted : gtk_text_view_set_input_hints
 
-	C.gtk_level_bar_set_max_value((*C.GtkLevelBar)(recv.native), c_value)
+// Blacklisted : gtk_text_view_set_input_purpose
 
-	return
-}
-
-// SetMinValue is a wrapper around the C function gtk_level_bar_set_min_value.
-func (recv *LevelBar) SetMinValue(value float64) {
-	c_value := (C.gdouble)(value)
-
-	C.gtk_level_bar_set_min_value((*C.GtkLevelBar)(recv.native), c_value)
-
-	return
-}
-
-// SetMode is a wrapper around the C function gtk_level_bar_set_mode.
-func (recv *LevelBar) SetMode(mode LevelBarMode) {
-	c_mode := (C.GtkLevelBarMode)(mode)
-
-	C.gtk_level_bar_set_mode((*C.GtkLevelBar)(recv.native), c_mode)
-
-	return
-}
-
-// SetValue is a wrapper around the C function gtk_level_bar_set_value.
-func (recv *LevelBar) SetValue(value float64) {
-	c_value := (C.gdouble)(value)
-
-	C.gtk_level_bar_set_value((*C.GtkLevelBar)(recv.native), c_value)
-
-	return
-}
-
-// MenuButtonNew is a wrapper around the C function gtk_menu_button_new.
-func MenuButtonNew() *MenuButton {
-	retC := C.gtk_menu_button_new()
-	retGo := MenuButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetAlignWidget is a wrapper around the C function gtk_menu_button_get_align_widget.
-func (recv *MenuButton) GetAlignWidget() *Widget {
-	retC := C.gtk_menu_button_get_align_widget((*C.GtkMenuButton)(recv.native))
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetDirection is a wrapper around the C function gtk_menu_button_get_direction.
-func (recv *MenuButton) GetDirection() ArrowType {
-	retC := C.gtk_menu_button_get_direction((*C.GtkMenuButton)(recv.native))
-	retGo := (ArrowType)(retC)
-
-	return retGo
-}
-
-// GetMenuModel is a wrapper around the C function gtk_menu_button_get_menu_model.
-func (recv *MenuButton) GetMenuModel() *gio.MenuModel {
-	retC := C.gtk_menu_button_get_menu_model((*C.GtkMenuButton)(recv.native))
-	var retGo (*gio.MenuModel)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gio.MenuModelNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetPopup is a wrapper around the C function gtk_menu_button_get_popup.
-func (recv *MenuButton) GetPopup() *Menu {
-	retC := C.gtk_menu_button_get_popup((*C.GtkMenuButton)(recv.native))
-	var retGo (*Menu)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = MenuNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// SetAlignWidget is a wrapper around the C function gtk_menu_button_set_align_widget.
-func (recv *MenuButton) SetAlignWidget(alignWidget *Widget) {
-	c_align_widget := (*C.GtkWidget)(C.NULL)
-	if alignWidget != nil {
-		c_align_widget = (*C.GtkWidget)(alignWidget.ToC())
-	}
-
-	C.gtk_menu_button_set_align_widget((*C.GtkMenuButton)(recv.native), c_align_widget)
-
-	return
-}
-
-// SetDirection is a wrapper around the C function gtk_menu_button_set_direction.
-func (recv *MenuButton) SetDirection(direction ArrowType) {
-	c_direction := (C.GtkArrowType)(direction)
-
-	C.gtk_menu_button_set_direction((*C.GtkMenuButton)(recv.native), c_direction)
-
-	return
-}
-
-// SetMenuModel is a wrapper around the C function gtk_menu_button_set_menu_model.
-func (recv *MenuButton) SetMenuModel(menuModel *gio.MenuModel) {
-	c_menu_model := (*C.GMenuModel)(C.NULL)
-	if menuModel != nil {
-		c_menu_model = (*C.GMenuModel)(menuModel.ToC())
-	}
-
-	C.gtk_menu_button_set_menu_model((*C.GtkMenuButton)(recv.native), c_menu_model)
-
-	return
-}
-
-// SetPopup is a wrapper around the C function gtk_menu_button_set_popup.
-func (recv *MenuButton) SetPopup(menu *Widget) {
-	c_menu := (*C.GtkWidget)(C.NULL)
-	if menu != nil {
-		c_menu = (*C.GtkWidget)(menu.ToC())
-	}
-
-	C.gtk_menu_button_set_popup((*C.GtkMenuButton)(recv.native), c_menu)
-
-	return
-}
-
-// BindModel is a wrapper around the C function gtk_menu_shell_bind_model.
-func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, withSeparators bool) {
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	c_action_namespace := C.CString(actionNamespace)
-	defer C.free(unsafe.Pointer(c_action_namespace))
-
-	c_with_separators :=
-		boolToGboolean(withSeparators)
-
-	C.gtk_menu_shell_bind_model((*C.GtkMenuShell)(recv.native), c_model, c_action_namespace, c_with_separators)
-
-	return
-}
-
-// SearchEntryNew is a wrapper around the C function gtk_search_entry_new.
-func SearchEntryNew() *SearchEntry {
-	retC := C.gtk_search_entry_new()
-	retGo := SearchEntryNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetInputHints is a wrapper around the C function gtk_text_view_get_input_hints.
-func (recv *TextView) GetInputHints() InputHints {
-	retC := C.gtk_text_view_get_input_hints((*C.GtkTextView)(recv.native))
-	retGo := (InputHints)(retC)
-
-	return retGo
-}
-
-// GetInputPurpose is a wrapper around the C function gtk_text_view_get_input_purpose.
-func (recv *TextView) GetInputPurpose() InputPurpose {
-	retC := C.gtk_text_view_get_input_purpose((*C.GtkTextView)(recv.native))
-	retGo := (InputPurpose)(retC)
-
-	return retGo
-}
-
-// SetInputHints is a wrapper around the C function gtk_text_view_set_input_hints.
-func (recv *TextView) SetInputHints(hints InputHints) {
-	c_hints := (C.GtkInputHints)(hints)
-
-	C.gtk_text_view_set_input_hints((*C.GtkTextView)(recv.native), c_hints)
-
-	return
-}
-
-// SetInputPurpose is a wrapper around the C function gtk_text_view_set_input_purpose.
-func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
-	c_purpose := (C.GtkInputPurpose)(purpose)
-
-	C.gtk_text_view_set_input_purpose((*C.GtkTextView)(recv.native), c_purpose)
-
-	return
-}
-
-// InsertActionGroup is a wrapper around the C function gtk_widget_insert_action_group.
-func (recv *Widget) InsertActionGroup(name string, group *gio.ActionGroup) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_group := (*C.GActionGroup)(group.ToC())
-
-	C.gtk_widget_insert_action_group((*C.GtkWidget)(recv.native), c_name, c_group)
-
-	return
-}
+// Blacklisted : gtk_widget_insert_action_group

@@ -12,10 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// GetElement is a wrapper around the C function g_markup_parse_context_get_element.
-func (recv *MarkupParseContext) GetElement() string {
-	retC := C.g_markup_parse_context_get_element((*C.GMarkupParseContext)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_markup_parse_context_get_element

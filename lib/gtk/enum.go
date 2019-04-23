@@ -2,11 +2,6 @@
 
 package gtk
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -89,13 +84,7 @@ const (
 	GTK_BUILDER_ERROR_INVALID_ID             BuilderError = 13
 )
 
-// BuilderErrorQuark is a wrapper around the C function gtk_builder_error_quark.
-func BuilderErrorQuark() glib.Quark {
-	retC := C.gtk_builder_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
+// Blacklisted : gtk_builder_error_quark
 
 type ButtonBoxStyle C.GtkButtonBoxStyle
 
@@ -163,13 +152,7 @@ const (
 	GTK_CSS_PROVIDER_ERROR_UNKNOWN_VALUE CssProviderError = 5
 )
 
-// CssProviderErrorQuark is a wrapper around the C function gtk_css_provider_error_quark.
-func CssProviderErrorQuark() glib.Quark {
-	retC := C.gtk_css_provider_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
+// Blacklisted : gtk_css_provider_error_quark
 
 type DeleteType C.GtkDeleteType
 
@@ -261,71 +244,15 @@ const (
 	GTK_ICON_SIZE_DIALOG        IconSize = 6
 )
 
-// IconSizeFromName is a wrapper around the C function gtk_icon_size_from_name.
-func IconSizeFromName(name string) IconSize {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : gtk_icon_size_from_name
 
-	retC := C.gtk_icon_size_from_name(c_name)
-	retGo := (IconSize)(retC)
+// Blacklisted : gtk_icon_size_get_name
 
-	return retGo
-}
+// Blacklisted : gtk_icon_size_lookup
 
-// IconSizeGetName is a wrapper around the C function gtk_icon_size_get_name.
-func IconSizeGetName(size IconSize) string {
-	c_size := (C.GtkIconSize)(size)
+// Blacklisted : gtk_icon_size_register
 
-	retC := C.gtk_icon_size_get_name(c_size)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// IconSizeLookup is a wrapper around the C function gtk_icon_size_lookup.
-func IconSizeLookup(size IconSize) (bool, int32, int32) {
-	c_size := (C.GtkIconSize)(size)
-
-	var c_width C.gint
-
-	var c_height C.gint
-
-	retC := C.gtk_icon_size_lookup(c_size, &c_width, &c_height)
-	retGo := retC == C.TRUE
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return retGo, width, height
-}
-
-// IconSizeRegister is a wrapper around the C function gtk_icon_size_register.
-func IconSizeRegister(name string, width int32, height int32) IconSize {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	retC := C.gtk_icon_size_register(c_name, c_width, c_height)
-	retGo := (IconSize)(retC)
-
-	return retGo
-}
-
-// IconSizeRegisterAlias is a wrapper around the C function gtk_icon_size_register_alias.
-func IconSizeRegisterAlias(alias string, target IconSize) {
-	c_alias := C.CString(alias)
-	defer C.free(unsafe.Pointer(c_alias))
-
-	c_target := (C.GtkIconSize)(target)
-
-	C.gtk_icon_size_register_alias(c_alias, c_target)
-
-	return
-}
+// Blacklisted : gtk_icon_size_register_alias
 
 type IconThemeError C.GtkIconThemeError
 
@@ -334,13 +261,7 @@ const (
 	GTK_ICON_THEME_FAILED    IconThemeError = 1
 )
 
-// IconThemeErrorQuark is a wrapper around the C function gtk_icon_theme_error_quark.
-func IconThemeErrorQuark() glib.Quark {
-	retC := C.gtk_icon_theme_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
+// Blacklisted : gtk_icon_theme_error_quark
 
 type IconViewDropPosition C.GtkIconViewDropPosition
 

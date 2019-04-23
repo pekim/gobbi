@@ -37,28 +37,9 @@ func (recv *Atom) Equals(other *Atom) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// AtomIntern is a wrapper around the C function gdk_atom_intern.
-func AtomIntern(atomName string, onlyIfExists bool) Atom {
-	c_atom_name := C.CString(atomName)
-	defer C.free(unsafe.Pointer(c_atom_name))
+// Blacklisted : gdk_atom_intern
 
-	c_only_if_exists :=
-		boolToGboolean(onlyIfExists)
-
-	retC := C.gdk_atom_intern(c_atom_name, c_only_if_exists)
-	retGo := *AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Name is a wrapper around the C function gdk_atom_name.
-func (recv *Atom) Name() string {
-	retC := C.gdk_atom_name((C.GdkAtom)(*recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_atom_name
 
 // Color is a wrapper around the C record GdkColor.
 type Color struct {
@@ -104,56 +85,15 @@ func (recv *Color) Equals(other *Color) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ColorParse is a wrapper around the C function gdk_color_parse.
-func ColorParse(spec string) (bool, *Color) {
-	c_spec := C.CString(spec)
-	defer C.free(unsafe.Pointer(c_spec))
+// Blacklisted : gdk_color_parse
 
-	var c_color C.GdkColor
+// Blacklisted : gdk_color_copy
 
-	retC := C.gdk_color_parse(c_spec, &c_color)
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_color_equal
 
-	color := ColorNewFromC(unsafe.Pointer(&c_color))
+// Blacklisted : gdk_color_free
 
-	return retGo, color
-}
-
-// Copy is a wrapper around the C function gdk_color_copy.
-func (recv *Color) Copy() *Color {
-	retC := C.gdk_color_copy((*C.GdkColor)(recv.native))
-	retGo := ColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Equal is a wrapper around the C function gdk_color_equal.
-func (recv *Color) Equal(colorb *Color) bool {
-	c_colorb := (*C.GdkColor)(C.NULL)
-	if colorb != nil {
-		c_colorb = (*C.GdkColor)(colorb.ToC())
-	}
-
-	retC := C.gdk_color_equal((*C.GdkColor)(recv.native), c_colorb)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Free is a wrapper around the C function gdk_color_free.
-func (recv *Color) Free() {
-	C.gdk_color_free((*C.GdkColor)(recv.native))
-
-	return
-}
-
-// Hash is a wrapper around the C function gdk_color_hash.
-func (recv *Color) Hash() uint32 {
-	retC := C.gdk_color_hash((*C.GdkColor)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_color_hash
 
 // EventAny is a wrapper around the C record GdkEventAny.
 type EventAny struct {
@@ -1326,13 +1266,7 @@ func (recv *FrameTimings) Equals(other *FrameTimings) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetFrameTime is a wrapper around the C function gdk_frame_timings_get_frame_time.
-func (recv *FrameTimings) GetFrameTime() int64 {
-	retC := C.gdk_frame_timings_get_frame_time((*C.GdkFrameTimings)(recv.native))
-	retGo := (int64)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_frame_timings_get_frame_time
 
 // Geometry is a wrapper around the C record GdkGeometry.
 type Geometry struct {
@@ -1570,38 +1504,9 @@ func (recv *Rectangle) Equals(other *Rectangle) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Intersect is a wrapper around the C function gdk_rectangle_intersect.
-func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle) {
-	c_src2 := (*C.GdkRectangle)(C.NULL)
-	if src2 != nil {
-		c_src2 = (*C.GdkRectangle)(src2.ToC())
-	}
+// Blacklisted : gdk_rectangle_intersect
 
-	var c_dest C.GdkRectangle
-
-	retC := C.gdk_rectangle_intersect((*C.GdkRectangle)(recv.native), c_src2, &c_dest)
-	retGo := retC == C.TRUE
-
-	dest := RectangleNewFromC(unsafe.Pointer(&c_dest))
-
-	return retGo, dest
-}
-
-// Union is a wrapper around the C function gdk_rectangle_union.
-func (recv *Rectangle) Union(src2 *Rectangle) *Rectangle {
-	c_src2 := (*C.GdkRectangle)(C.NULL)
-	if src2 != nil {
-		c_src2 = (*C.GdkRectangle)(src2.ToC())
-	}
-
-	var c_dest C.GdkRectangle
-
-	C.gdk_rectangle_union((*C.GdkRectangle)(recv.native), c_src2, &c_dest)
-
-	dest := RectangleNewFromC(unsafe.Pointer(&c_dest))
-
-	return dest
-}
+// Blacklisted : gdk_rectangle_union
 
 // TimeCoord is a wrapper around the C record GdkTimeCoord.
 type TimeCoord struct {

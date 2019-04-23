@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,32 +12,8 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BindingsActivateEvent is a wrapper around the C function gtk_bindings_activate_event.
-func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
-	c_object := (*C.GObject)(C.NULL)
-	if object != nil {
-		c_object = (*C.GObject)(object.ToC())
-	}
+// Blacklisted : gtk_bindings_activate_event
 
-	c_event := (*C.GdkEventKey)(C.NULL)
-	if event != nil {
-		c_event = (*C.GdkEventKey)(event.ToC())
-	}
+// Blacklisted : gtk_file_chooser_error_quark
 
-	retC := C.gtk_bindings_activate_event(c_object, c_event)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RcResetStyles is a wrapper around the C function gtk_rc_reset_styles.
-func RcResetStyles(settings *Settings) {
-	c_settings := (*C.GtkSettings)(C.NULL)
-	if settings != nil {
-		c_settings = (*C.GtkSettings)(settings.ToC())
-	}
-
-	C.gtk_rc_reset_styles(c_settings)
-
-	return
-}
+// Blacklisted : gtk_rc_reset_styles

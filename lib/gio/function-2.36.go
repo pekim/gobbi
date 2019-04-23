@@ -3,8 +3,6 @@
 
 package gio
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -23,17 +21,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DbusAddressEscapeValue is a wrapper around the C function g_dbus_address_escape_value.
-func DbusAddressEscapeValue(string_ string) string {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
+// Blacklisted : g_dbus_address_escape_value
 
-	retC := C.g_dbus_address_escape_value(c_string)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_file_new_for_commandline_arg_and_cwd
 
 // NetworkingInit is a wrapper around the C function g_networking_init.
 func NetworkingInit() {

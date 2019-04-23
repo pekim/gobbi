@@ -14,20 +14,6 @@ import "C"
 
 // Unsupported signal 'confirm-overwrite' for FileChooser : return value FileChooserConfirmation :
 
-// GetDoOverwriteConfirmation is a wrapper around the C function gtk_file_chooser_get_do_overwrite_confirmation.
-func (recv *FileChooser) GetDoOverwriteConfirmation() bool {
-	retC := C.gtk_file_chooser_get_do_overwrite_confirmation((*C.GtkFileChooser)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_file_chooser_get_do_overwrite_confirmation
 
-	return retGo
-}
-
-// SetDoOverwriteConfirmation is a wrapper around the C function gtk_file_chooser_set_do_overwrite_confirmation.
-func (recv *FileChooser) SetDoOverwriteConfirmation(doOverwriteConfirmation bool) {
-	c_do_overwrite_confirmation :=
-		boolToGboolean(doOverwriteConfirmation)
-
-	C.gtk_file_chooser_set_do_overwrite_confirmation((*C.GtkFileChooser)(recv.native), c_do_overwrite_confirmation)
-
-	return
-}
+// Blacklisted : gtk_file_chooser_set_do_overwrite_confirmation

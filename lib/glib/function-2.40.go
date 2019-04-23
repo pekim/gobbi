@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,47 +12,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// StrIsAscii is a wrapper around the C function g_str_is_ascii.
-func StrIsAscii(str string) bool {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
+// Blacklisted : g_str_is_ascii
 
-	retC := C.g_str_is_ascii(c_str)
-	retGo := retC == C.TRUE
+// Blacklisted : g_str_match_string
 
-	return retGo
-}
-
-// StrMatchString is a wrapper around the C function g_str_match_string.
-func StrMatchString(searchTerm string, potentialHit string, acceptAlternates bool) bool {
-	c_search_term := C.CString(searchTerm)
-	defer C.free(unsafe.Pointer(c_search_term))
-
-	c_potential_hit := C.CString(potentialHit)
-	defer C.free(unsafe.Pointer(c_potential_hit))
-
-	c_accept_alternates :=
-		boolToGboolean(acceptAlternates)
-
-	retC := C.g_str_match_string(c_search_term, c_potential_hit, c_accept_alternates)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// StrToAscii is a wrapper around the C function g_str_to_ascii.
-func StrToAscii(str string, fromLocale string) string {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	c_from_locale := C.CString(fromLocale)
-	defer C.free(unsafe.Pointer(c_from_locale))
-
-	retC := C.g_str_to_ascii(c_str, c_from_locale)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_str_to_ascii
 
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : output array param ascii_alternates
+
+// Blacklisted : g_variant_parse_error_print_context

@@ -3,10 +3,7 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -25,13 +22,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetDisplayName is a wrapper around the C function g_app_info_get_display_name.
-func (recv *AppInfo) GetDisplayName() string {
-	retC := C.g_app_info_get_display_name((*C.GAppInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_app_info_get_display_name
 
 // Converter is a wrapper around the C record GConverter.
 type Converter struct {
@@ -59,77 +50,10 @@ func (recv *Converter) Equals(other *Converter) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Convert is a wrapper around the C function g_converter_convert.
-func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
-	c_inbuf_array := make([]C.guint8, len(inbuf)+1, len(inbuf)+1)
-	for i, item := range inbuf {
-		c := (C.guint8)(item)
-		c_inbuf_array[i] = c
-	}
-	c_inbuf_array[len(inbuf)] = 0
-	c_inbuf_arrayPtr := &c_inbuf_array[0]
-	c_inbuf := (unsafe.Pointer(c_inbuf_arrayPtr))
+// Blacklisted : g_converter_convert
 
-	c_inbuf_size := (C.gsize)(len(inbuf))
+// Blacklisted : g_converter_reset
 
-	c_outbuf_array := make([]C.guint8, len(outbuf)+1, len(outbuf)+1)
-	for i, item := range outbuf {
-		c := (C.guint8)(item)
-		c_outbuf_array[i] = c
-	}
-	c_outbuf_array[len(outbuf)] = 0
-	c_outbuf_arrayPtr := &c_outbuf_array[0]
-	c_outbuf := (unsafe.Pointer(c_outbuf_arrayPtr))
+// Blacklisted : g_file_has_parent
 
-	c_outbuf_size := (C.gsize)(len(outbuf))
-
-	c_flags := (C.GConverterFlags)(flags)
-
-	var c_bytes_read C.gsize
-
-	var c_bytes_written C.gsize
-
-	var cThrowableError *C.GError
-
-	retC := C.g_converter_convert((*C.GConverter)(recv.native), c_inbuf, c_inbuf_size, c_outbuf, c_outbuf_size, c_flags, &c_bytes_read, &c_bytes_written, &cThrowableError)
-	retGo := (ConverterResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	bytesRead := (uint64)(c_bytes_read)
-
-	bytesWritten := (uint64)(c_bytes_written)
-
-	return retGo, bytesRead, bytesWritten, goError
-}
-
-// Reset is a wrapper around the C function g_converter_reset.
-func (recv *Converter) Reset() {
-	C.g_converter_reset((*C.GConverter)(recv.native))
-
-	return
-}
-
-// HasParent is a wrapper around the C function g_file_has_parent.
-func (recv *File) HasParent(parent *File) bool {
-	c_parent := (*C.GFile)(parent.ToC())
-
-	retC := C.g_file_has_parent((*C.GFile)(recv.native), c_parent)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetFd is a wrapper around the C function g_file_descriptor_based_get_fd.
-func (recv *FileDescriptorBased) GetFd() int32 {
-	retC := C.g_file_descriptor_based_get_fd((*C.GFileDescriptorBased)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_file_descriptor_based_get_fd

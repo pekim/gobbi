@@ -12,20 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetShowHidden is a wrapper around the C function gtk_file_chooser_get_show_hidden.
-func (recv *FileChooser) GetShowHidden() bool {
-	retC := C.gtk_file_chooser_get_show_hidden((*C.GtkFileChooser)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_file_chooser_get_show_hidden
 
-	return retGo
-}
-
-// SetShowHidden is a wrapper around the C function gtk_file_chooser_set_show_hidden.
-func (recv *FileChooser) SetShowHidden(showHidden bool) {
-	c_show_hidden :=
-		boolToGboolean(showHidden)
-
-	C.gtk_file_chooser_set_show_hidden((*C.GtkFileChooser)(recv.native), c_show_hidden)
-
-	return
-}
+// Blacklisted : gtk_file_chooser_set_show_hidden

@@ -10,10 +10,4 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// GetVersion is a wrapper around the C function atk_get_version.
-func GetVersion() string {
-	retC := C.atk_get_version()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : atk_get_version

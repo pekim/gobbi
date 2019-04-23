@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,144 +12,32 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// CheckVersion is a wrapper around the C function glib_check_version.
-func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
-	c_required_major := (C.guint)(requiredMajor)
+// Blacklisted : glib_check_version
 
-	c_required_minor := (C.guint)(requiredMinor)
+// Blacklisted : g_filename_display_basename
 
-	c_required_micro := (C.guint)(requiredMicro)
-
-	retC := C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// FilenameDisplayBasename is a wrapper around the C function g_filename_display_basename.
-func FilenameDisplayBasename(filename string) string {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_filename_display_basename(c_filename)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FilenameDisplayName is a wrapper around the C function g_filename_display_name.
-func FilenameDisplayName(filename string) string {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_filename_display_name(c_filename)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_filename_display_name
 
 // Unsupported : g_get_filename_charsets : unsupported parameter charsets : in string with indirection level of 3
 
-// GetLanguageNames is a wrapper around the C function g_get_language_names.
-func GetLanguageNames() []string {
-	retC := C.g_get_language_names()
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
+// Blacklisted : g_get_language_names
 
-	return retGo
-}
+// Blacklisted : g_get_system_config_dirs
 
-// GetSystemConfigDirs is a wrapper around the C function g_get_system_config_dirs.
-func GetSystemConfigDirs() []string {
-	retC := C.g_get_system_config_dirs()
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
+// Blacklisted : g_get_system_data_dirs
 
-	return retGo
-}
+// Blacklisted : g_get_user_cache_dir
 
-// GetSystemDataDirs is a wrapper around the C function g_get_system_data_dirs.
-func GetSystemDataDirs() []string {
-	retC := C.g_get_system_data_dirs()
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
+// Blacklisted : g_get_user_config_dir
 
-	return retGo
-}
-
-// GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
-func GetUserCacheDir() string {
-	retC := C.g_get_user_cache_dir()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetUserConfigDir is a wrapper around the C function g_get_user_config_dir.
-func GetUserConfigDir() string {
-	retC := C.g_get_user_config_dir()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
-func GetUserDataDir() string {
-	retC := C.g_get_user_data_dir()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_get_user_data_dir
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
 
-// Rmdir is a wrapper around the C function g_rmdir.
-func Rmdir(filename string) int32 {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_rmdir(c_filename)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_rmdir
 
 // Unsupported : g_strv_length : unsupported parameter str_array : in string with indirection level of 2
 
-// Unlink is a wrapper around the C function g_unlink.
-func Unlink(filename string) int32 {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
+// Blacklisted : g_unlink
 
-	retC := C.g_unlink(c_filename)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// UriListExtractUris is a wrapper around the C function g_uri_list_extract_uris.
-func UriListExtractUris(uriList string) []string {
-	c_uri_list := C.CString(uriList)
-	defer C.free(unsafe.Pointer(c_uri_list))
-
-	retC := C.g_uri_list_extract_uris(c_uri_list)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
+// Blacklisted : g_uri_list_extract_uris

@@ -3,12 +3,6 @@
 
 package gtk
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -18,41 +12,9 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AddChild is a wrapper around the C function gtk_buildable_add_child.
-func (recv *Buildable) AddChild(builder *Builder, child *gobject.Object, type_ string) {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
+// Blacklisted : gtk_buildable_add_child
 
-	c_child := (*C.GObject)(C.NULL)
-	if child != nil {
-		c_child = (*C.GObject)(child.ToC())
-	}
-
-	c_type := C.CString(type_)
-	defer C.free(unsafe.Pointer(c_type))
-
-	C.gtk_buildable_add_child((*C.GtkBuildable)(recv.native), c_builder, c_child, c_type)
-
-	return
-}
-
-// ConstructChild is a wrapper around the C function gtk_buildable_construct_child.
-func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Object {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
-
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gtk_buildable_construct_child((*C.GtkBuildable)(recv.native), c_builder, c_name)
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_buildable_construct_child
 
 // Unsupported : gtk_buildable_custom_finished : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
@@ -60,76 +22,14 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 
 // Unsupported : gtk_buildable_custom_tag_start : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
 
-// GetInternalChild is a wrapper around the C function gtk_buildable_get_internal_child.
-func (recv *Buildable) GetInternalChild(builder *Builder, childname string) *gobject.Object {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
+// Blacklisted : gtk_buildable_get_internal_child
 
-	c_childname := C.CString(childname)
-	defer C.free(unsafe.Pointer(c_childname))
+// Blacklisted : gtk_buildable_get_name
 
-	retC := C.gtk_buildable_get_internal_child((*C.GtkBuildable)(recv.native), c_builder, c_childname)
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_buildable_parser_finished
 
-	return retGo
-}
+// Blacklisted : gtk_buildable_set_buildable_property
 
-// GetName is a wrapper around the C function gtk_buildable_get_name.
-func (recv *Buildable) GetName() string {
-	retC := C.gtk_buildable_get_name((*C.GtkBuildable)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_buildable_set_name
 
-	return retGo
-}
-
-// ParserFinished is a wrapper around the C function gtk_buildable_parser_finished.
-func (recv *Buildable) ParserFinished(builder *Builder) {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
-
-	C.gtk_buildable_parser_finished((*C.GtkBuildable)(recv.native), c_builder)
-
-	return
-}
-
-// SetBuildableProperty is a wrapper around the C function gtk_buildable_set_buildable_property.
-func (recv *Buildable) SetBuildableProperty(builder *Builder, name string, value *gobject.Value) {
-	c_builder := (*C.GtkBuilder)(C.NULL)
-	if builder != nil {
-		c_builder = (*C.GtkBuilder)(builder.ToC())
-	}
-
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_value := (*C.GValue)(C.NULL)
-	if value != nil {
-		c_value = (*C.GValue)(value.ToC())
-	}
-
-	C.gtk_buildable_set_buildable_property((*C.GtkBuildable)(recv.native), c_builder, c_name, c_value)
-
-	return
-}
-
-// SetName is a wrapper around the C function gtk_buildable_set_name.
-func (recv *Buildable) SetName(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.gtk_buildable_set_name((*C.GtkBuildable)(recv.native), c_name)
-
-	return
-}
-
-// GetCells is a wrapper around the C function gtk_cell_layout_get_cells.
-func (recv *CellLayout) GetCells() *glib.List {
-	retC := C.gtk_cell_layout_get_cells((*C.GtkCellLayout)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_cell_layout_get_cells

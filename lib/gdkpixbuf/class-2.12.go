@@ -3,8 +3,6 @@
 
 package gdkpixbuf
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,10 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ApplyEmbeddedOrientation is a wrapper around the C function gdk_pixbuf_apply_embedded_orientation.
-func (recv *Pixbuf) ApplyEmbeddedOrientation() *Pixbuf {
-	retC := C.gdk_pixbuf_apply_embedded_orientation((*C.GdkPixbuf)(recv.native))
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_apply_embedded_orientation

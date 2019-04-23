@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,82 +10,18 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ToString is a wrapper around the C function pango_color_to_string.
-func (recv *Color) ToString() string {
-	retC := C.pango_color_to_string((*C.PangoColor)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : pango_color_to_string
 
-	return retGo
-}
+// Blacklisted : pango_font_description_get_gravity
 
-// GetGravity is a wrapper around the C function pango_font_description_get_gravity.
-func (recv *FontDescription) GetGravity() Gravity {
-	retC := C.pango_font_description_get_gravity((*C.PangoFontDescription)(recv.native))
-	retGo := (Gravity)(retC)
+// Blacklisted : pango_font_description_set_gravity
 
-	return retGo
-}
+// Blacklisted : pango_language_get_default
 
-// SetGravity is a wrapper around the C function pango_font_description_set_gravity.
-func (recv *FontDescription) SetGravity(gravity Gravity) {
-	c_gravity := (C.PangoGravity)(gravity)
+// Blacklisted : pango_matrix_transform_distance
 
-	C.pango_font_description_set_gravity((*C.PangoFontDescription)(recv.native), c_gravity)
+// Blacklisted : pango_matrix_transform_pixel_rectangle
 
-	return
-}
+// Blacklisted : pango_matrix_transform_point
 
-// LanguageGetDefault is a wrapper around the C function pango_language_get_default.
-func LanguageGetDefault() *Language {
-	retC := C.pango_language_get_default()
-	retGo := LanguageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TransformDistance is a wrapper around the C function pango_matrix_transform_distance.
-func (recv *Matrix) TransformDistance(dx float64, dy float64) {
-	c_dx := (C.double)(dx)
-
-	c_dy := (C.double)(dy)
-
-	C.pango_matrix_transform_distance((*C.PangoMatrix)(recv.native), &c_dx, &c_dy)
-
-	return
-}
-
-// TransformPixelRectangle is a wrapper around the C function pango_matrix_transform_pixel_rectangle.
-func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) {
-	c_rect := (*C.PangoRectangle)(C.NULL)
-	if rect != nil {
-		c_rect = (*C.PangoRectangle)(rect.ToC())
-	}
-
-	C.pango_matrix_transform_pixel_rectangle((*C.PangoMatrix)(recv.native), c_rect)
-
-	return
-}
-
-// TransformPoint is a wrapper around the C function pango_matrix_transform_point.
-func (recv *Matrix) TransformPoint(x float64, y float64) {
-	c_x := (C.double)(x)
-
-	c_y := (C.double)(y)
-
-	C.pango_matrix_transform_point((*C.PangoMatrix)(recv.native), &c_x, &c_y)
-
-	return
-}
-
-// TransformRectangle is a wrapper around the C function pango_matrix_transform_rectangle.
-func (recv *Matrix) TransformRectangle(rect *Rectangle) {
-	c_rect := (*C.PangoRectangle)(C.NULL)
-	if rect != nil {
-		c_rect = (*C.PangoRectangle)(rect.ToC())
-	}
-
-	C.pango_matrix_transform_rectangle((*C.PangoMatrix)(recv.native), c_rect)
-
-	return
-}
+// Blacklisted : pango_matrix_transform_rectangle

@@ -10,33 +10,10 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Changed is a wrapper around the C function pango_context_changed.
-func (recv *Context) Changed() {
-	C.pango_context_changed((*C.PangoContext)(recv.native))
+// Blacklisted : pango_context_changed
 
-	return
-}
+// Blacklisted : pango_context_get_serial
 
-// GetSerial is a wrapper around the C function pango_context_get_serial.
-func (recv *Context) GetSerial() uint32 {
-	retC := C.pango_context_get_serial((*C.PangoContext)(recv.native))
-	retGo := (uint32)(retC)
+// Blacklisted : pango_font_map_get_serial
 
-	return retGo
-}
-
-// GetSerial is a wrapper around the C function pango_font_map_get_serial.
-func (recv *FontMap) GetSerial() uint32 {
-	retC := C.pango_font_map_get_serial((*C.PangoFontMap)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// GetSerial is a wrapper around the C function pango_layout_get_serial.
-func (recv *Layout) GetSerial() uint32 {
-	retC := C.pango_layout_get_serial((*C.PangoLayout)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Blacklisted : pango_layout_get_serial

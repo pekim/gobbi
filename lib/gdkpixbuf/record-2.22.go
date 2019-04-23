@@ -3,8 +3,6 @@
 
 package gdkpixbuf
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,17 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Copy is a wrapper around the C function gdk_pixbuf_format_copy.
-func (recv *PixbufFormat) Copy() *PixbufFormat {
-	retC := C.gdk_pixbuf_format_copy((*C.GdkPixbufFormat)(recv.native))
-	retGo := PixbufFormatNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_pixbuf_format_copy
 
-	return retGo
-}
-
-// Free is a wrapper around the C function gdk_pixbuf_format_free.
-func (recv *PixbufFormat) Free() {
-	C.gdk_pixbuf_format_free((*C.GdkPixbufFormat)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_pixbuf_format_free

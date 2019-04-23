@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	pango "github.com/pekim/gobbi/lib/pango"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,27 +12,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetFontMap is a wrapper around the C function gtk_font_chooser_get_font_map.
-func (recv *FontChooser) GetFontMap() *pango.FontMap {
-	retC := C.gtk_font_chooser_get_font_map((*C.GtkFontChooser)(recv.native))
-	var retGo (*pango.FontMap)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = pango.FontMapNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_font_chooser_get_font_map
 
-	return retGo
-}
-
-// SetFontMap is a wrapper around the C function gtk_font_chooser_set_font_map.
-func (recv *FontChooser) SetFontMap(fontmap *pango.FontMap) {
-	c_fontmap := (*C.PangoFontMap)(C.NULL)
-	if fontmap != nil {
-		c_fontmap = (*C.PangoFontMap)(fontmap.ToC())
-	}
-
-	C.gtk_font_chooser_set_font_map((*C.GtkFontChooser)(recv.native), c_fontmap)
-
-	return
-}
+// Blacklisted : gtk_font_chooser_set_font_map

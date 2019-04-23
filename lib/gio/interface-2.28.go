@@ -5,7 +5,6 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -63,80 +62,19 @@ import (
 */
 import "C"
 
-// Activate is a wrapper around the C function g_action_activate.
-func (recv *Action) Activate(parameter *glib.Variant) {
-	c_parameter := (*C.GVariant)(C.NULL)
-	if parameter != nil {
-		c_parameter = (*C.GVariant)(parameter.ToC())
-	}
+// Blacklisted : g_action_activate
 
-	C.g_action_activate((*C.GAction)(recv.native), c_parameter)
+// Blacklisted : g_action_get_enabled
 
-	return
-}
+// Blacklisted : g_action_get_name
 
-// GetEnabled is a wrapper around the C function g_action_get_enabled.
-func (recv *Action) GetEnabled() bool {
-	retC := C.g_action_get_enabled((*C.GAction)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_action_get_parameter_type
 
-	return retGo
-}
+// Blacklisted : g_action_get_state
 
-// GetName is a wrapper around the C function g_action_get_name.
-func (recv *Action) GetName() string {
-	retC := C.g_action_get_name((*C.GAction)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_action_get_state_hint
 
-	return retGo
-}
-
-// GetParameterType is a wrapper around the C function g_action_get_parameter_type.
-func (recv *Action) GetParameterType() *glib.VariantType {
-	retC := C.g_action_get_parameter_type((*C.GAction)(recv.native))
-	var retGo (*glib.VariantType)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetState is a wrapper around the C function g_action_get_state.
-func (recv *Action) GetState() *glib.Variant {
-	retC := C.g_action_get_state((*C.GAction)(recv.native))
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetStateHint is a wrapper around the C function g_action_get_state_hint.
-func (recv *Action) GetStateHint() *glib.Variant {
-	retC := C.g_action_get_state_hint((*C.GAction)(recv.native))
-	var retGo (*glib.Variant)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetStateType is a wrapper around the C function g_action_get_state_type.
-func (recv *Action) GetStateType() *glib.VariantType {
-	retC := C.g_action_get_state_type((*C.GAction)(recv.native))
-	var retGo (*glib.VariantType)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_action_get_state_type
 
 type signalActionGroupActionAddedDetail struct {
 	callback  ActionGroupSignalActionAddedCallback
@@ -390,204 +328,35 @@ func actiongroup_actionStateChangedHandler(_ *C.GObject, c_action_name *C.gchar,
 	callback(actionName, value)
 }
 
-// ActionAdded is a wrapper around the C function g_action_group_action_added.
-func (recv *ActionGroup) ActionAdded(actionName string) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
+// Blacklisted : g_action_group_action_added
 
-	C.g_action_group_action_added((*C.GActionGroup)(recv.native), c_action_name)
+// Blacklisted : g_action_group_action_enabled_changed
 
-	return
-}
+// Blacklisted : g_action_group_action_removed
 
-// ActionEnabledChanged is a wrapper around the C function g_action_group_action_enabled_changed.
-func (recv *ActionGroup) ActionEnabledChanged(actionName string, enabled bool) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
+// Blacklisted : g_action_group_action_state_changed
 
-	c_enabled :=
-		boolToGboolean(enabled)
+// Blacklisted : g_action_group_activate_action
 
-	C.g_action_group_action_enabled_changed((*C.GActionGroup)(recv.native), c_action_name, c_enabled)
+// Blacklisted : g_action_group_change_action_state
 
-	return
-}
+// Blacklisted : g_action_group_get_action_enabled
 
-// ActionRemoved is a wrapper around the C function g_action_group_action_removed.
-func (recv *ActionGroup) ActionRemoved(actionName string) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
+// Blacklisted : g_action_group_get_action_parameter_type
 
-	C.g_action_group_action_removed((*C.GActionGroup)(recv.native), c_action_name)
+// Blacklisted : g_action_group_get_action_state
 
-	return
-}
+// Blacklisted : g_action_group_get_action_state_hint
 
-// ActionStateChanged is a wrapper around the C function g_action_group_action_state_changed.
-func (recv *ActionGroup) ActionStateChanged(actionName string, state *glib.Variant) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
+// Blacklisted : g_action_group_get_action_state_type
 
-	c_state := (*C.GVariant)(C.NULL)
-	if state != nil {
-		c_state = (*C.GVariant)(state.ToC())
-	}
+// Blacklisted : g_action_group_has_action
 
-	C.g_action_group_action_state_changed((*C.GActionGroup)(recv.native), c_action_name, c_state)
+// Blacklisted : g_action_group_list_actions
 
-	return
-}
+// Blacklisted : g_app_info_get_fallback_for_type
 
-// ActivateAction is a wrapper around the C function g_action_group_activate_action.
-func (recv *ActionGroup) ActivateAction(actionName string, parameter *glib.Variant) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	c_parameter := (*C.GVariant)(C.NULL)
-	if parameter != nil {
-		c_parameter = (*C.GVariant)(parameter.ToC())
-	}
-
-	C.g_action_group_activate_action((*C.GActionGroup)(recv.native), c_action_name, c_parameter)
-
-	return
-}
-
-// ChangeActionState is a wrapper around the C function g_action_group_change_action_state.
-func (recv *ActionGroup) ChangeActionState(actionName string, value *glib.Variant) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	c_value := (*C.GVariant)(C.NULL)
-	if value != nil {
-		c_value = (*C.GVariant)(value.ToC())
-	}
-
-	C.g_action_group_change_action_state((*C.GActionGroup)(recv.native), c_action_name, c_value)
-
-	return
-}
-
-// GetActionEnabled is a wrapper around the C function g_action_group_get_action_enabled.
-func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_group_get_action_enabled((*C.GActionGroup)(recv.native), c_action_name)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetActionParameterType is a wrapper around the C function g_action_group_get_action_parameter_type.
-func (recv *ActionGroup) GetActionParameterType(actionName string) *glib.VariantType {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_group_get_action_parameter_type((*C.GActionGroup)(recv.native), c_action_name)
-	var retGo (*glib.VariantType)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetActionState is a wrapper around the C function g_action_group_get_action_state.
-func (recv *ActionGroup) GetActionState(actionName string) *glib.Variant {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_group_get_action_state((*C.GActionGroup)(recv.native), c_action_name)
-	var retGo (*glib.Variant)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetActionStateHint is a wrapper around the C function g_action_group_get_action_state_hint.
-func (recv *ActionGroup) GetActionStateHint(actionName string) *glib.Variant {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_group_get_action_state_hint((*C.GActionGroup)(recv.native), c_action_name)
-	var retGo (*glib.Variant)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetActionStateType is a wrapper around the C function g_action_group_get_action_state_type.
-func (recv *ActionGroup) GetActionStateType(actionName string) *glib.VariantType {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_group_get_action_state_type((*C.GActionGroup)(recv.native), c_action_name)
-	var retGo (*glib.VariantType)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// HasAction is a wrapper around the C function g_action_group_has_action.
-func (recv *ActionGroup) HasAction(actionName string) bool {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_group_has_action((*C.GActionGroup)(recv.native), c_action_name)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ListActions is a wrapper around the C function g_action_group_list_actions.
-func (recv *ActionGroup) ListActions() []string {
-	retC := C.g_action_group_list_actions((*C.GActionGroup)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
-
-// AppInfoGetFallbackForType is a wrapper around the C function g_app_info_get_fallback_for_type.
-func AppInfoGetFallbackForType(contentType string) *glib.List {
-	c_content_type := C.CString(contentType)
-	defer C.free(unsafe.Pointer(c_content_type))
-
-	retC := C.g_app_info_get_fallback_for_type(c_content_type)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AppInfoGetRecommendedForType is a wrapper around the C function g_app_info_get_recommended_for_type.
-func AppInfoGetRecommendedForType(contentType string) *glib.List {
-	c_content_type := C.CString(contentType)
-	defer C.free(unsafe.Pointer(c_content_type))
-
-	retC := C.g_app_info_get_recommended_for_type(c_content_type)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_app_info_get_recommended_for_type
 
 // PollableInputStream is a wrapper around the C record GPollableInputStream.
 type PollableInputStream struct {
@@ -615,68 +384,13 @@ func (recv *PollableInputStream) Equals(other *PollableInputStream) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CanPoll is a wrapper around the C function g_pollable_input_stream_can_poll.
-func (recv *PollableInputStream) CanPoll() bool {
-	retC := C.g_pollable_input_stream_can_poll((*C.GPollableInputStream)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_pollable_input_stream_can_poll
 
-	return retGo
-}
+// Blacklisted : g_pollable_input_stream_create_source
 
-// CreateSource is a wrapper around the C function g_pollable_input_stream_create_source.
-func (recv *PollableInputStream) CreateSource(cancellable *Cancellable) *glib.Source {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
+// Blacklisted : g_pollable_input_stream_is_readable
 
-	retC := C.g_pollable_input_stream_create_source((*C.GPollableInputStream)(recv.native), c_cancellable)
-	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IsReadable is a wrapper around the C function g_pollable_input_stream_is_readable.
-func (recv *PollableInputStream) IsReadable() bool {
-	retC := C.g_pollable_input_stream_is_readable((*C.GPollableInputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ReadNonblocking is a wrapper around the C function g_pollable_input_stream_read_nonblocking.
-func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_count := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_pollable_input_stream_read_nonblocking((*C.GPollableInputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_pollable_input_stream_read_nonblocking
 
 // PollableOutputStream is a wrapper around the C record GPollableOutputStream.
 type PollableOutputStream struct {
@@ -704,68 +418,13 @@ func (recv *PollableOutputStream) Equals(other *PollableOutputStream) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CanPoll is a wrapper around the C function g_pollable_output_stream_can_poll.
-func (recv *PollableOutputStream) CanPoll() bool {
-	retC := C.g_pollable_output_stream_can_poll((*C.GPollableOutputStream)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_pollable_output_stream_can_poll
 
-	return retGo
-}
+// Blacklisted : g_pollable_output_stream_create_source
 
-// CreateSource is a wrapper around the C function g_pollable_output_stream_create_source.
-func (recv *PollableOutputStream) CreateSource(cancellable *Cancellable) *glib.Source {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
+// Blacklisted : g_pollable_output_stream_is_writable
 
-	retC := C.g_pollable_output_stream_create_source((*C.GPollableOutputStream)(recv.native), c_cancellable)
-	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IsWritable is a wrapper around the C function g_pollable_output_stream_is_writable.
-func (recv *PollableOutputStream) IsWritable() bool {
-	retC := C.g_pollable_output_stream_is_writable((*C.GPollableOutputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// WriteNonblocking is a wrapper around the C function g_pollable_output_stream_write_nonblocking.
-func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_count := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_pollable_output_stream_write_nonblocking((*C.GPollableOutputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_pollable_output_stream_write_nonblocking
 
 // TlsBackend is a wrapper around the C record GTlsBackend.
 type TlsBackend struct {
@@ -793,45 +452,15 @@ func (recv *TlsBackend) Equals(other *TlsBackend) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsBackendGetDefault is a wrapper around the C function g_tls_backend_get_default.
-func TlsBackendGetDefault() *TlsBackend {
-	retC := C.g_tls_backend_get_default()
-	retGo := TlsBackendNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_tls_backend_get_default
 
-	return retGo
-}
+// Blacklisted : g_tls_backend_get_certificate_type
 
-// GetCertificateType is a wrapper around the C function g_tls_backend_get_certificate_type.
-func (recv *TlsBackend) GetCertificateType() gobject.Type {
-	retC := C.g_tls_backend_get_certificate_type((*C.GTlsBackend)(recv.native))
-	retGo := (gobject.Type)(retC)
+// Blacklisted : g_tls_backend_get_client_connection_type
 
-	return retGo
-}
+// Blacklisted : g_tls_backend_get_server_connection_type
 
-// GetClientConnectionType is a wrapper around the C function g_tls_backend_get_client_connection_type.
-func (recv *TlsBackend) GetClientConnectionType() gobject.Type {
-	retC := C.g_tls_backend_get_client_connection_type((*C.GTlsBackend)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// GetServerConnectionType is a wrapper around the C function g_tls_backend_get_server_connection_type.
-func (recv *TlsBackend) GetServerConnectionType() gobject.Type {
-	retC := C.g_tls_backend_get_server_connection_type((*C.GTlsBackend)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// SupportsTls is a wrapper around the C function g_tls_backend_supports_tls.
-func (recv *TlsBackend) SupportsTls() bool {
-	retC := C.g_tls_backend_supports_tls((*C.GTlsBackend)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_tls_backend_supports_tls
 
 // TlsClientConnection is a wrapper around the C record GTlsClientConnection.
 type TlsClientConnection struct {
@@ -859,90 +488,21 @@ func (recv *TlsClientConnection) Equals(other *TlsClientConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsClientConnectionNew is a wrapper around the C function g_tls_client_connection_new.
-func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnectable) (*TlsClientConnection, error) {
-	c_base_io_stream := (*C.GIOStream)(C.NULL)
-	if baseIoStream != nil {
-		c_base_io_stream = (*C.GIOStream)(baseIoStream.ToC())
-	}
+// Blacklisted : g_tls_client_connection_new
 
-	c_server_identity := (*C.GSocketConnectable)(serverIdentity.ToC())
+// Blacklisted : g_tls_client_connection_get_accepted_cas
 
-	var cThrowableError *C.GError
+// Blacklisted : g_tls_client_connection_get_server_identity
 
-	retC := C.g_tls_client_connection_new(c_base_io_stream, c_server_identity, &cThrowableError)
-	retGo := TlsClientConnectionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_tls_client_connection_get_use_ssl3
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_tls_client_connection_get_validation_flags
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_tls_client_connection_set_server_identity
 
-	return retGo, goError
-}
+// Blacklisted : g_tls_client_connection_set_use_ssl3
 
-// GetAcceptedCas is a wrapper around the C function g_tls_client_connection_get_accepted_cas.
-func (recv *TlsClientConnection) GetAcceptedCas() *glib.List {
-	retC := C.g_tls_client_connection_get_accepted_cas((*C.GTlsClientConnection)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetServerIdentity is a wrapper around the C function g_tls_client_connection_get_server_identity.
-func (recv *TlsClientConnection) GetServerIdentity() *SocketConnectable {
-	retC := C.g_tls_client_connection_get_server_identity((*C.GTlsClientConnection)(recv.native))
-	retGo := SocketConnectableNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetUseSsl3 is a wrapper around the C function g_tls_client_connection_get_use_ssl3.
-func (recv *TlsClientConnection) GetUseSsl3() bool {
-	retC := C.g_tls_client_connection_get_use_ssl3((*C.GTlsClientConnection)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetValidationFlags is a wrapper around the C function g_tls_client_connection_get_validation_flags.
-func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
-	retC := C.g_tls_client_connection_get_validation_flags((*C.GTlsClientConnection)(recv.native))
-	retGo := (TlsCertificateFlags)(retC)
-
-	return retGo
-}
-
-// SetServerIdentity is a wrapper around the C function g_tls_client_connection_set_server_identity.
-func (recv *TlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
-	c_identity := (*C.GSocketConnectable)(identity.ToC())
-
-	C.g_tls_client_connection_set_server_identity((*C.GTlsClientConnection)(recv.native), c_identity)
-
-	return
-}
-
-// SetUseSsl3 is a wrapper around the C function g_tls_client_connection_set_use_ssl3.
-func (recv *TlsClientConnection) SetUseSsl3(useSsl3 bool) {
-	c_use_ssl3 :=
-		boolToGboolean(useSsl3)
-
-	C.g_tls_client_connection_set_use_ssl3((*C.GTlsClientConnection)(recv.native), c_use_ssl3)
-
-	return
-}
-
-// SetValidationFlags is a wrapper around the C function g_tls_client_connection_set_validation_flags.
-func (recv *TlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
-	c_flags := (C.GTlsCertificateFlags)(flags)
-
-	C.g_tls_client_connection_set_validation_flags((*C.GTlsClientConnection)(recv.native), c_flags)
-
-	return
-}
+// Blacklisted : g_tls_client_connection_set_validation_flags
 
 // TlsServerConnection is a wrapper around the C record GTlsServerConnection.
 type TlsServerConnection struct {
@@ -970,30 +530,4 @@ func (recv *TlsServerConnection) Equals(other *TlsServerConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsServerConnectionNew is a wrapper around the C function g_tls_server_connection_new.
-func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate) (*TlsServerConnection, error) {
-	c_base_io_stream := (*C.GIOStream)(C.NULL)
-	if baseIoStream != nil {
-		c_base_io_stream = (*C.GIOStream)(baseIoStream.ToC())
-	}
-
-	c_certificate := (*C.GTlsCertificate)(C.NULL)
-	if certificate != nil {
-		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_server_connection_new(c_base_io_stream, c_certificate, &cThrowableError)
-	retGo := TlsServerConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_server_connection_new

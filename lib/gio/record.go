@@ -2,11 +2,7 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -1117,61 +1113,17 @@ func (recv *FileAttributeInfoList) Equals(other *FileAttributeInfoList) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileAttributeInfoListNew is a wrapper around the C function g_file_attribute_info_list_new.
-func FileAttributeInfoListNew() *FileAttributeInfoList {
-	retC := C.g_file_attribute_info_list_new()
-	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_file_attribute_info_list_new
 
-	return retGo
-}
+// Blacklisted : g_file_attribute_info_list_add
 
-// Add is a wrapper around the C function g_file_attribute_info_list_add.
-func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, flags FileAttributeInfoFlags) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : g_file_attribute_info_list_dup
 
-	c_type := (C.GFileAttributeType)(type_)
+// Blacklisted : g_file_attribute_info_list_lookup
 
-	c_flags := (C.GFileAttributeInfoFlags)(flags)
+// Blacklisted : g_file_attribute_info_list_ref
 
-	C.g_file_attribute_info_list_add((*C.GFileAttributeInfoList)(recv.native), c_name, c_type, c_flags)
-
-	return
-}
-
-// Dup is a wrapper around the C function g_file_attribute_info_list_dup.
-func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
-	retC := C.g_file_attribute_info_list_dup((*C.GFileAttributeInfoList)(recv.native))
-	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Lookup is a wrapper around the C function g_file_attribute_info_list_lookup.
-func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_file_attribute_info_list_lookup((*C.GFileAttributeInfoList)(recv.native), c_name)
-	retGo := FileAttributeInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function g_file_attribute_info_list_ref.
-func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
-	retC := C.g_file_attribute_info_list_ref((*C.GFileAttributeInfoList)(recv.native))
-	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_file_attribute_info_list_unref.
-func (recv *FileAttributeInfoList) Unref() {
-	C.g_file_attribute_info_list_unref((*C.GFileAttributeInfoList)(recv.native))
-
-	return
-}
+// Blacklisted : g_file_attribute_info_list_unref
 
 // FileAttributeMatcher is a wrapper around the C record GFileAttributeMatcher.
 type FileAttributeMatcher struct {
@@ -1199,85 +1151,21 @@ func (recv *FileAttributeMatcher) Equals(other *FileAttributeMatcher) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileAttributeMatcherNew is a wrapper around the C function g_file_attribute_matcher_new.
-func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
-	c_attributes := C.CString(attributes)
-	defer C.free(unsafe.Pointer(c_attributes))
+// Blacklisted : g_file_attribute_matcher_new
 
-	retC := C.g_file_attribute_matcher_new(c_attributes)
-	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_file_attribute_matcher_enumerate_namespace
 
-	return retGo
-}
+// Blacklisted : g_file_attribute_matcher_enumerate_next
 
-// EnumerateNamespace is a wrapper around the C function g_file_attribute_matcher_enumerate_namespace.
-func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
-	c_ns := C.CString(ns)
-	defer C.free(unsafe.Pointer(c_ns))
+// Blacklisted : g_file_attribute_matcher_matches
 
-	retC := C.g_file_attribute_matcher_enumerate_namespace((*C.GFileAttributeMatcher)(recv.native), c_ns)
-	retGo := retC == C.TRUE
+// Blacklisted : g_file_attribute_matcher_matches_only
 
-	return retGo
-}
+// Blacklisted : g_file_attribute_matcher_ref
 
-// EnumerateNext is a wrapper around the C function g_file_attribute_matcher_enumerate_next.
-func (recv *FileAttributeMatcher) EnumerateNext() string {
-	retC := C.g_file_attribute_matcher_enumerate_next((*C.GFileAttributeMatcher)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_file_attribute_matcher_subtract
 
-	return retGo
-}
-
-// Matches is a wrapper around the C function g_file_attribute_matcher_matches.
-func (recv *FileAttributeMatcher) Matches(attribute string) bool {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_attribute_matcher_matches((*C.GFileAttributeMatcher)(recv.native), c_attribute)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// MatchesOnly is a wrapper around the C function g_file_attribute_matcher_matches_only.
-func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_attribute_matcher_matches_only((*C.GFileAttributeMatcher)(recv.native), c_attribute)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function g_file_attribute_matcher_ref.
-func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
-	retC := C.g_file_attribute_matcher_ref((*C.GFileAttributeMatcher)(recv.native))
-	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Subtract is a wrapper around the C function g_file_attribute_matcher_subtract.
-func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *FileAttributeMatcher {
-	c_subtract := (*C.GFileAttributeMatcher)(C.NULL)
-	if subtract != nil {
-		c_subtract = (*C.GFileAttributeMatcher)(subtract.ToC())
-	}
-
-	retC := C.g_file_attribute_matcher_subtract((*C.GFileAttributeMatcher)(recv.native), c_subtract)
-	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_file_attribute_matcher_unref.
-func (recv *FileAttributeMatcher) Unref() {
-	C.g_file_attribute_matcher_unref((*C.GFileAttributeMatcher)(recv.native))
-
-	return
-}
+// Blacklisted : g_file_attribute_matcher_unref
 
 // FileDescriptorBasedIface is a wrapper around the C record GFileDescriptorBasedIface.
 type FileDescriptorBasedIface struct {
@@ -1935,37 +1823,13 @@ func (recv *IOExtension) Equals(other *IOExtension) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetName is a wrapper around the C function g_io_extension_get_name.
-func (recv *IOExtension) GetName() string {
-	retC := C.g_io_extension_get_name((*C.GIOExtension)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_io_extension_get_name
 
-	return retGo
-}
+// Blacklisted : g_io_extension_get_priority
 
-// GetPriority is a wrapper around the C function g_io_extension_get_priority.
-func (recv *IOExtension) GetPriority() int32 {
-	retC := C.g_io_extension_get_priority((*C.GIOExtension)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : g_io_extension_get_type
 
-	return retGo
-}
-
-// GetType is a wrapper around the C function g_io_extension_get_type.
-func (recv *IOExtension) GetType() gobject.Type {
-	retC := C.g_io_extension_get_type((*C.GIOExtension)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// RefClass is a wrapper around the C function g_io_extension_ref_class.
-func (recv *IOExtension) RefClass() *gobject.TypeClass {
-	retC := C.g_io_extension_ref_class((*C.GIOExtension)(recv.native))
-	retGo := gobject.TypeClassNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_io_extension_ref_class
 
 // IOExtensionPoint is a wrapper around the C record GIOExtensionPoint.
 type IOExtensionPoint struct {
@@ -1993,81 +1857,19 @@ func (recv *IOExtensionPoint) Equals(other *IOExtensionPoint) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// IOExtensionPointImplement is a wrapper around the C function g_io_extension_point_implement.
-func IOExtensionPointImplement(extensionPointName string, type_ gobject.Type, extensionName string, priority int32) *IOExtension {
-	c_extension_point_name := C.CString(extensionPointName)
-	defer C.free(unsafe.Pointer(c_extension_point_name))
+// Blacklisted : g_io_extension_point_implement
 
-	c_type := (C.GType)(type_)
+// Blacklisted : g_io_extension_point_lookup
 
-	c_extension_name := C.CString(extensionName)
-	defer C.free(unsafe.Pointer(c_extension_name))
+// Blacklisted : g_io_extension_point_register
 
-	c_priority := (C.gint)(priority)
+// Blacklisted : g_io_extension_point_get_extension_by_name
 
-	retC := C.g_io_extension_point_implement(c_extension_point_name, c_type, c_extension_name, c_priority)
-	retGo := IOExtensionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_io_extension_point_get_extensions
 
-	return retGo
-}
+// Blacklisted : g_io_extension_point_get_required_type
 
-// IOExtensionPointLookup is a wrapper around the C function g_io_extension_point_lookup.
-func IOExtensionPointLookup(name string) *IOExtensionPoint {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_io_extension_point_lookup(c_name)
-	retGo := IOExtensionPointNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IOExtensionPointRegister is a wrapper around the C function g_io_extension_point_register.
-func IOExtensionPointRegister(name string) *IOExtensionPoint {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_io_extension_point_register(c_name)
-	retGo := IOExtensionPointNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetExtensionByName is a wrapper around the C function g_io_extension_point_get_extension_by_name.
-func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_io_extension_point_get_extension_by_name((*C.GIOExtensionPoint)(recv.native), c_name)
-	retGo := IOExtensionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetExtensions is a wrapper around the C function g_io_extension_point_get_extensions.
-func (recv *IOExtensionPoint) GetExtensions() *glib.List {
-	retC := C.g_io_extension_point_get_extensions((*C.GIOExtensionPoint)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetRequiredType is a wrapper around the C function g_io_extension_point_get_required_type.
-func (recv *IOExtensionPoint) GetRequiredType() gobject.Type {
-	retC := C.g_io_extension_point_get_required_type((*C.GIOExtensionPoint)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// SetRequiredType is a wrapper around the C function g_io_extension_point_set_required_type.
-func (recv *IOExtensionPoint) SetRequiredType(type_ gobject.Type) {
-	c_type := (C.GType)(type_)
-
-	C.g_io_extension_point_set_required_type((*C.GIOExtensionPoint)(recv.native), c_type)
-
-	return
-}
+// Blacklisted : g_io_extension_point_set_required_type
 
 // IOModuleClass is a wrapper around the C record GIOModuleClass.
 type IOModuleClass struct {
@@ -4985,98 +4787,27 @@ func (recv *UnixMountPoint) Equals(other *UnixMountPoint) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Compare is a wrapper around the C function g_unix_mount_point_compare.
-func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
-	c_mount2 := (*C.GUnixMountPoint)(C.NULL)
-	if mount2 != nil {
-		c_mount2 = (*C.GUnixMountPoint)(mount2.ToC())
-	}
+// Blacklisted : g_unix_mount_point_compare
 
-	retC := C.g_unix_mount_point_compare((*C.GUnixMountPoint)(recv.native), c_mount2)
-	retGo := (int32)(retC)
+// Blacklisted : g_unix_mount_point_free
 
-	return retGo
-}
+// Blacklisted : g_unix_mount_point_get_device_path
 
-// Free is a wrapper around the C function g_unix_mount_point_free.
-func (recv *UnixMountPoint) Free() {
-	C.g_unix_mount_point_free((*C.GUnixMountPoint)(recv.native))
+// Blacklisted : g_unix_mount_point_get_fs_type
 
-	return
-}
+// Blacklisted : g_unix_mount_point_get_mount_path
 
-// GetDevicePath is a wrapper around the C function g_unix_mount_point_get_device_path.
-func (recv *UnixMountPoint) GetDevicePath() string {
-	retC := C.g_unix_mount_point_get_device_path((*C.GUnixMountPoint)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_unix_mount_point_guess_can_eject
 
-	return retGo
-}
+// Blacklisted : g_unix_mount_point_guess_icon
 
-// GetFsType is a wrapper around the C function g_unix_mount_point_get_fs_type.
-func (recv *UnixMountPoint) GetFsType() string {
-	retC := C.g_unix_mount_point_get_fs_type((*C.GUnixMountPoint)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_unix_mount_point_guess_name
 
-	return retGo
-}
+// Blacklisted : g_unix_mount_point_is_loopback
 
-// GetMountPath is a wrapper around the C function g_unix_mount_point_get_mount_path.
-func (recv *UnixMountPoint) GetMountPath() string {
-	retC := C.g_unix_mount_point_get_mount_path((*C.GUnixMountPoint)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_unix_mount_point_is_readonly
 
-	return retGo
-}
-
-// GuessCanEject is a wrapper around the C function g_unix_mount_point_guess_can_eject.
-func (recv *UnixMountPoint) GuessCanEject() bool {
-	retC := C.g_unix_mount_point_guess_can_eject((*C.GUnixMountPoint)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GuessIcon is a wrapper around the C function g_unix_mount_point_guess_icon.
-func (recv *UnixMountPoint) GuessIcon() *Icon {
-	retC := C.g_unix_mount_point_guess_icon((*C.GUnixMountPoint)(recv.native))
-	retGo := IconNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GuessName is a wrapper around the C function g_unix_mount_point_guess_name.
-func (recv *UnixMountPoint) GuessName() string {
-	retC := C.g_unix_mount_point_guess_name((*C.GUnixMountPoint)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IsLoopback is a wrapper around the C function g_unix_mount_point_is_loopback.
-func (recv *UnixMountPoint) IsLoopback() bool {
-	retC := C.g_unix_mount_point_is_loopback((*C.GUnixMountPoint)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsReadonly is a wrapper around the C function g_unix_mount_point_is_readonly.
-func (recv *UnixMountPoint) IsReadonly() bool {
-	retC := C.g_unix_mount_point_is_readonly((*C.GUnixMountPoint)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsUserMountable is a wrapper around the C function g_unix_mount_point_is_user_mountable.
-func (recv *UnixMountPoint) IsUserMountable() bool {
-	retC := C.g_unix_mount_point_is_user_mountable((*C.GUnixMountPoint)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_unix_mount_point_is_user_mountable
 
 // UnixOutputStreamClass is a wrapper around the C record GUnixOutputStreamClass.
 type UnixOutputStreamClass struct {

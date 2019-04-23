@@ -10,15 +10,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// DragDropSucceeded is a wrapper around the C function gdk_drag_drop_succeeded.
-func DragDropSucceeded(context *DragContext) bool {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	retC := C.gdk_drag_drop_succeeded(c_context)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_drag_drop_succeeded

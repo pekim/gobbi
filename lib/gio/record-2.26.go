@@ -3,10 +3,7 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -93,20 +90,9 @@ func (recv *DBusAnnotationInfo) Equals(other *DBusAnnotationInfo) bool {
 }
 
 // g_dbus_annotation_info_lookup : unsupported parameter annotations :
-// Ref is a wrapper around the C function g_dbus_annotation_info_ref.
-func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
-	retC := C.g_dbus_annotation_info_ref((*C.GDBusAnnotationInfo)(recv.native))
-	retGo := DBusAnnotationInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_annotation_info_ref
 
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_annotation_info_unref.
-func (recv *DBusAnnotationInfo) Unref() {
-	C.g_dbus_annotation_info_unref((*C.GDBusAnnotationInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_annotation_info_unref
 
 // DBusArgInfo is a wrapper around the C record GDBusArgInfo.
 type DBusArgInfo struct {
@@ -149,20 +135,9 @@ func (recv *DBusArgInfo) Equals(other *DBusArgInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Ref is a wrapper around the C function g_dbus_arg_info_ref.
-func (recv *DBusArgInfo) Ref() *DBusArgInfo {
-	retC := C.g_dbus_arg_info_ref((*C.GDBusArgInfo)(recv.native))
-	retGo := DBusArgInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_arg_info_ref
 
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_arg_info_unref.
-func (recv *DBusArgInfo) Unref() {
-	C.g_dbus_arg_info_unref((*C.GDBusArgInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_arg_info_unref
 
 // DBusErrorEntry is a wrapper around the C record GDBusErrorEntry.
 type DBusErrorEntry struct {
@@ -240,67 +215,17 @@ func (recv *DBusInterfaceInfo) Equals(other *DBusInterfaceInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GenerateXml is a wrapper around the C function g_dbus_interface_info_generate_xml.
-func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
-	c_indent := (C.guint)(indent)
+// Blacklisted : g_dbus_interface_info_generate_xml
 
-	c_string_builder := (*C.GString)(C.NULL)
-	if stringBuilder != nil {
-		c_string_builder = (*C.GString)(stringBuilder.ToC())
-	}
+// Blacklisted : g_dbus_interface_info_lookup_method
 
-	C.g_dbus_interface_info_generate_xml((*C.GDBusInterfaceInfo)(recv.native), c_indent, c_string_builder)
+// Blacklisted : g_dbus_interface_info_lookup_property
 
-	return
-}
+// Blacklisted : g_dbus_interface_info_lookup_signal
 
-// LookupMethod is a wrapper around the C function g_dbus_interface_info_lookup_method.
-func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : g_dbus_interface_info_ref
 
-	retC := C.g_dbus_interface_info_lookup_method((*C.GDBusInterfaceInfo)(recv.native), c_name)
-	retGo := DBusMethodInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LookupProperty is a wrapper around the C function g_dbus_interface_info_lookup_property.
-func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_dbus_interface_info_lookup_property((*C.GDBusInterfaceInfo)(recv.native), c_name)
-	retGo := DBusPropertyInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LookupSignal is a wrapper around the C function g_dbus_interface_info_lookup_signal.
-func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_dbus_interface_info_lookup_signal((*C.GDBusInterfaceInfo)(recv.native), c_name)
-	retGo := DBusSignalInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function g_dbus_interface_info_ref.
-func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
-	retC := C.g_dbus_interface_info_ref((*C.GDBusInterfaceInfo)(recv.native))
-	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_interface_info_unref.
-func (recv *DBusInterfaceInfo) Unref() {
-	C.g_dbus_interface_info_unref((*C.GDBusInterfaceInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_interface_info_unref
 
 // DBusInterfaceVTable is a wrapper around the C record GDBusInterfaceVTable.
 type DBusInterfaceVTable struct {
@@ -371,20 +296,9 @@ func (recv *DBusMethodInfo) Equals(other *DBusMethodInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Ref is a wrapper around the C function g_dbus_method_info_ref.
-func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
-	retC := C.g_dbus_method_info_ref((*C.GDBusMethodInfo)(recv.native))
-	retGo := DBusMethodInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_method_info_ref
 
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_method_info_unref.
-func (recv *DBusMethodInfo) Unref() {
-	C.g_dbus_method_info_unref((*C.GDBusMethodInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_method_info_unref
 
 // DBusNodeInfo is a wrapper around the C record GDBusNodeInfo.
 type DBusNodeInfo struct {
@@ -425,66 +339,15 @@ func (recv *DBusNodeInfo) Equals(other *DBusNodeInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DBusNodeInfoNewForXml is a wrapper around the C function g_dbus_node_info_new_for_xml.
-func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
-	c_xml_data := C.CString(xmlData)
-	defer C.free(unsafe.Pointer(c_xml_data))
+// Blacklisted : g_dbus_node_info_new_for_xml
 
-	var cThrowableError *C.GError
+// Blacklisted : g_dbus_node_info_generate_xml
 
-	retC := C.g_dbus_node_info_new_for_xml(c_xml_data, &cThrowableError)
-	retGo := DBusNodeInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_node_info_lookup_interface
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_dbus_node_info_ref
 
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GenerateXml is a wrapper around the C function g_dbus_node_info_generate_xml.
-func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
-	c_indent := (C.guint)(indent)
-
-	c_string_builder := (*C.GString)(C.NULL)
-	if stringBuilder != nil {
-		c_string_builder = (*C.GString)(stringBuilder.ToC())
-	}
-
-	C.g_dbus_node_info_generate_xml((*C.GDBusNodeInfo)(recv.native), c_indent, c_string_builder)
-
-	return
-}
-
-// LookupInterface is a wrapper around the C function g_dbus_node_info_lookup_interface.
-func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_dbus_node_info_lookup_interface((*C.GDBusNodeInfo)(recv.native), c_name)
-	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function g_dbus_node_info_ref.
-func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
-	retC := C.g_dbus_node_info_ref((*C.GDBusNodeInfo)(recv.native))
-	retGo := DBusNodeInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_node_info_unref.
-func (recv *DBusNodeInfo) Unref() {
-	C.g_dbus_node_info_unref((*C.GDBusNodeInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_node_info_unref
 
 // DBusPropertyInfo is a wrapper around the C record GDBusPropertyInfo.
 type DBusPropertyInfo struct {
@@ -531,20 +394,9 @@ func (recv *DBusPropertyInfo) Equals(other *DBusPropertyInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Ref is a wrapper around the C function g_dbus_property_info_ref.
-func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
-	retC := C.g_dbus_property_info_ref((*C.GDBusPropertyInfo)(recv.native))
-	retGo := DBusPropertyInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_property_info_ref
 
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_property_info_unref.
-func (recv *DBusPropertyInfo) Unref() {
-	C.g_dbus_property_info_unref((*C.GDBusPropertyInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_property_info_unref
 
 // DBusProxyClass is a wrapper around the C record GDBusProxyClass.
 type DBusProxyClass struct {
@@ -614,20 +466,9 @@ func (recv *DBusSignalInfo) Equals(other *DBusSignalInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Ref is a wrapper around the C function g_dbus_signal_info_ref.
-func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
-	retC := C.g_dbus_signal_info_ref((*C.GDBusSignalInfo)(recv.native))
-	retGo := DBusSignalInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_signal_info_ref
 
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_dbus_signal_info_unref.
-func (recv *DBusSignalInfo) Unref() {
-	C.g_dbus_signal_info_unref((*C.GDBusSignalInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_dbus_signal_info_unref
 
 // DBusSubtreeVTable is a wrapper around the C record GDBusSubtreeVTable.
 type DBusSubtreeVTable struct {

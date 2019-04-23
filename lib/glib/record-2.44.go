@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,35 +12,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetStrictPosix is a wrapper around the C function g_option_context_get_strict_posix.
-func (recv *OptionContext) GetStrictPosix() bool {
-	retC := C.g_option_context_get_strict_posix((*C.GOptionContext)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_option_context_get_strict_posix
 
-	return retGo
-}
+// Blacklisted : g_option_context_set_strict_posix
 
-// SetStrictPosix is a wrapper around the C function g_option_context_set_strict_posix.
-func (recv *OptionContext) SetStrictPosix(strictPosix bool) {
-	c_strict_posix :=
-		boolToGboolean(strictPosix)
+// Blacklisted : g_option_group_ref
 
-	C.g_option_context_set_strict_posix((*C.GOptionContext)(recv.native), c_strict_posix)
-
-	return
-}
-
-// Ref is a wrapper around the C function g_option_group_ref.
-func (recv *OptionGroup) Ref() *OptionGroup {
-	retC := C.g_option_group_ref((*C.GOptionGroup)(recv.native))
-	retGo := OptionGroupNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_option_group_unref.
-func (recv *OptionGroup) Unref() {
-	C.g_option_group_unref((*C.GOptionGroup)(recv.native))
-
-	return
-}
+// Blacklisted : g_option_group_unref

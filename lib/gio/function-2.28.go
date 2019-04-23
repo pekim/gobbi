@@ -3,12 +3,6 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -26,21 +20,22 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : g_app_info_get_fallback_for_type
+
+// Blacklisted : g_app_info_get_recommended_for_type
+
 // Blacklisted : g_memory_settings_backend_new
 
 // Blacklisted : g_null_settings_backend_new
 
-// PollableSourceNew is a wrapper around the C function g_pollable_source_new.
-func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
-	c_pollable_stream := (*C.GObject)(C.NULL)
-	if pollableStream != nil {
-		c_pollable_stream = (*C.GObject)(pollableStream.ToC())
-	}
-
-	retC := C.g_pollable_source_new(c_pollable_stream)
-	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_pollable_source_new
 
 // Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Blacklisted : g_tls_backend_get_default
+
+// Blacklisted : g_tls_client_connection_new
+
+// Blacklisted : g_tls_error_quark
+
+// Blacklisted : g_tls_server_connection_new

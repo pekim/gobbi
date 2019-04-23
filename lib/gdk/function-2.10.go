@@ -9,3 +9,5 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : gdk_atom_intern_static_string

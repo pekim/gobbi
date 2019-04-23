@@ -5,9 +5,6 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
-	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -66,193 +63,47 @@ import (
 */
 import "C"
 
-// BlockActivate is a wrapper around the C function gtk_action_block_activate.
-func (recv *Action) BlockActivate() {
-	C.gtk_action_block_activate((*C.GtkAction)(recv.native))
+// Blacklisted : gtk_action_block_activate
 
-	return
-}
+// Blacklisted : gtk_action_get_gicon
 
-// GetGicon is a wrapper around the C function gtk_action_get_gicon.
-func (recv *Action) GetGicon() *gio.Icon {
-	retC := C.gtk_action_get_gicon((*C.GtkAction)(recv.native))
-	retGo := gio.IconNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_action_get_icon_name
 
-	return retGo
-}
+// Blacklisted : gtk_action_get_is_important
 
-// GetIconName is a wrapper around the C function gtk_action_get_icon_name.
-func (recv *Action) GetIconName() string {
-	retC := C.gtk_action_get_icon_name((*C.GtkAction)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_action_get_label
 
-	return retGo
-}
+// Blacklisted : gtk_action_get_short_label
 
-// GetIsImportant is a wrapper around the C function gtk_action_get_is_important.
-func (recv *Action) GetIsImportant() bool {
-	retC := C.gtk_action_get_is_important((*C.GtkAction)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_action_get_stock_id
 
-	return retGo
-}
+// Blacklisted : gtk_action_get_tooltip
 
-// GetLabel is a wrapper around the C function gtk_action_get_label.
-func (recv *Action) GetLabel() string {
-	retC := C.gtk_action_get_label((*C.GtkAction)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_action_get_visible_horizontal
 
-	return retGo
-}
+// Blacklisted : gtk_action_get_visible_vertical
 
-// GetShortLabel is a wrapper around the C function gtk_action_get_short_label.
-func (recv *Action) GetShortLabel() string {
-	retC := C.gtk_action_get_short_label((*C.GtkAction)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_action_set_gicon
 
-	return retGo
-}
+// Blacklisted : gtk_action_set_icon_name
 
-// GetStockId is a wrapper around the C function gtk_action_get_stock_id.
-func (recv *Action) GetStockId() string {
-	retC := C.gtk_action_get_stock_id((*C.GtkAction)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_action_set_is_important
 
-	return retGo
-}
+// Blacklisted : gtk_action_set_label
 
-// GetTooltip is a wrapper around the C function gtk_action_get_tooltip.
-func (recv *Action) GetTooltip() string {
-	retC := C.gtk_action_get_tooltip((*C.GtkAction)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_action_set_short_label
 
-	return retGo
-}
+// Blacklisted : gtk_action_set_stock_id
 
-// GetVisibleHorizontal is a wrapper around the C function gtk_action_get_visible_horizontal.
-func (recv *Action) GetVisibleHorizontal() bool {
-	retC := C.gtk_action_get_visible_horizontal((*C.GtkAction)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_action_set_tooltip
 
-	return retGo
-}
+// Blacklisted : gtk_action_set_visible_horizontal
 
-// GetVisibleVertical is a wrapper around the C function gtk_action_get_visible_vertical.
-func (recv *Action) GetVisibleVertical() bool {
-	retC := C.gtk_action_get_visible_vertical((*C.GtkAction)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_action_set_visible_vertical
 
-	return retGo
-}
+// Blacklisted : gtk_action_unblock_activate
 
-// SetGicon is a wrapper around the C function gtk_action_set_gicon.
-func (recv *Action) SetGicon(icon *gio.Icon) {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.gtk_action_set_gicon((*C.GtkAction)(recv.native), c_icon)
-
-	return
-}
-
-// SetIconName is a wrapper around the C function gtk_action_set_icon_name.
-func (recv *Action) SetIconName(iconName string) {
-	c_icon_name := C.CString(iconName)
-	defer C.free(unsafe.Pointer(c_icon_name))
-
-	C.gtk_action_set_icon_name((*C.GtkAction)(recv.native), c_icon_name)
-
-	return
-}
-
-// SetIsImportant is a wrapper around the C function gtk_action_set_is_important.
-func (recv *Action) SetIsImportant(isImportant bool) {
-	c_is_important :=
-		boolToGboolean(isImportant)
-
-	C.gtk_action_set_is_important((*C.GtkAction)(recv.native), c_is_important)
-
-	return
-}
-
-// SetLabel is a wrapper around the C function gtk_action_set_label.
-func (recv *Action) SetLabel(label string) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	C.gtk_action_set_label((*C.GtkAction)(recv.native), c_label)
-
-	return
-}
-
-// SetShortLabel is a wrapper around the C function gtk_action_set_short_label.
-func (recv *Action) SetShortLabel(shortLabel string) {
-	c_short_label := C.CString(shortLabel)
-	defer C.free(unsafe.Pointer(c_short_label))
-
-	C.gtk_action_set_short_label((*C.GtkAction)(recv.native), c_short_label)
-
-	return
-}
-
-// SetStockId is a wrapper around the C function gtk_action_set_stock_id.
-func (recv *Action) SetStockId(stockId string) {
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	C.gtk_action_set_stock_id((*C.GtkAction)(recv.native), c_stock_id)
-
-	return
-}
-
-// SetTooltip is a wrapper around the C function gtk_action_set_tooltip.
-func (recv *Action) SetTooltip(tooltip string) {
-	c_tooltip := C.CString(tooltip)
-	defer C.free(unsafe.Pointer(c_tooltip))
-
-	C.gtk_action_set_tooltip((*C.GtkAction)(recv.native), c_tooltip)
-
-	return
-}
-
-// SetVisibleHorizontal is a wrapper around the C function gtk_action_set_visible_horizontal.
-func (recv *Action) SetVisibleHorizontal(visibleHorizontal bool) {
-	c_visible_horizontal :=
-		boolToGboolean(visibleHorizontal)
-
-	C.gtk_action_set_visible_horizontal((*C.GtkAction)(recv.native), c_visible_horizontal)
-
-	return
-}
-
-// SetVisibleVertical is a wrapper around the C function gtk_action_set_visible_vertical.
-func (recv *Action) SetVisibleVertical(visibleVertical bool) {
-	c_visible_vertical :=
-		boolToGboolean(visibleVertical)
-
-	C.gtk_action_set_visible_vertical((*C.GtkAction)(recv.native), c_visible_vertical)
-
-	return
-}
-
-// UnblockActivate is a wrapper around the C function gtk_action_unblock_activate.
-func (recv *Action) UnblockActivate() {
-	C.gtk_action_unblock_activate((*C.GtkAction)(recv.native))
-
-	return
-}
-
-// GetModel is a wrapper around the C function gtk_cell_view_get_model.
-func (recv *CellView) GetModel() *TreeModel {
-	retC := C.gtk_cell_view_get_model((*C.GtkCellView)(recv.native))
-	var retGo (*TreeModel)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = TreeModelNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gtk_cell_view_get_model
 
 type signalEntryIconPressDetail struct {
 	callback  EntrySignalIconPressCallback
@@ -382,469 +233,97 @@ func entry_iconReleaseHandler(_ *C.GObject, c_icon_pos C.GtkEntryIconPosition, c
 	callback(iconPos, event)
 }
 
-// GetCurrentIconDragSource is a wrapper around the C function gtk_entry_get_current_icon_drag_source.
-func (recv *Entry) GetCurrentIconDragSource() int32 {
-	retC := C.gtk_entry_get_current_icon_drag_source((*C.GtkEntry)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gtk_entry_get_current_icon_drag_source
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_icon_activatable
 
-// GetIconActivatable is a wrapper around the C function gtk_entry_get_icon_activatable.
-func (recv *Entry) GetIconActivatable(iconPos EntryIconPosition) bool {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_get_icon_at_pos
 
-	retC := C.gtk_entry_get_icon_activatable((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_entry_get_icon_gicon
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_icon_name
 
-// GetIconAtPos is a wrapper around the C function gtk_entry_get_icon_at_pos.
-func (recv *Entry) GetIconAtPos(x int32, y int32) int32 {
-	c_x := (C.gint)(x)
+// Blacklisted : gtk_entry_get_icon_pixbuf
 
-	c_y := (C.gint)(y)
+// Blacklisted : gtk_entry_get_icon_sensitive
 
-	retC := C.gtk_entry_get_icon_at_pos((*C.GtkEntry)(recv.native), c_x, c_y)
-	retGo := (int32)(retC)
+// Blacklisted : gtk_entry_get_icon_stock
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_icon_storage_type
 
-// GetIconGicon is a wrapper around the C function gtk_entry_get_icon_gicon.
-func (recv *Entry) GetIconGicon(iconPos EntryIconPosition) *gio.Icon {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_get_icon_tooltip_markup
 
-	retC := C.gtk_entry_get_icon_gicon((*C.GtkEntry)(recv.native), c_icon_pos)
-	var retGo (*gio.Icon)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gio.IconNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_entry_get_icon_tooltip_text
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_progress_fraction
 
-// GetIconName is a wrapper around the C function gtk_entry_get_icon_name.
-func (recv *Entry) GetIconName(iconPos EntryIconPosition) string {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_get_progress_pulse_step
 
-	retC := C.gtk_entry_get_icon_name((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_entry_progress_pulse
 
-	return retGo
-}
+// Blacklisted : gtk_entry_set_icon_activatable
 
-// GetIconPixbuf is a wrapper around the C function gtk_entry_get_icon_pixbuf.
-func (recv *Entry) GetIconPixbuf(iconPos EntryIconPosition) *gdkpixbuf.Pixbuf {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_set_icon_drag_source
 
-	retC := C.gtk_entry_get_icon_pixbuf((*C.GtkEntry)(recv.native), c_icon_pos)
-	var retGo (*gdkpixbuf.Pixbuf)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_entry_set_icon_from_gicon
 
-	return retGo
-}
+// Blacklisted : gtk_entry_set_icon_from_icon_name
 
-// GetIconSensitive is a wrapper around the C function gtk_entry_get_icon_sensitive.
-func (recv *Entry) GetIconSensitive(iconPos EntryIconPosition) bool {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_set_icon_from_pixbuf
 
-	retC := C.gtk_entry_get_icon_sensitive((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_entry_set_icon_from_stock
 
-	return retGo
-}
+// Blacklisted : gtk_entry_set_icon_sensitive
 
-// GetIconStock is a wrapper around the C function gtk_entry_get_icon_stock.
-func (recv *Entry) GetIconStock(iconPos EntryIconPosition) string {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_set_icon_tooltip_markup
 
-	retC := C.gtk_entry_get_icon_stock((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_entry_set_icon_tooltip_text
 
-	return retGo
-}
+// Blacklisted : gtk_entry_set_progress_fraction
 
-// GetIconStorageType is a wrapper around the C function gtk_entry_get_icon_storage_type.
-func (recv *Entry) GetIconStorageType(iconPos EntryIconPosition) ImageType {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_entry_set_progress_pulse_step
 
-	retC := C.gtk_entry_get_icon_storage_type((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := (ImageType)(retC)
+// Blacklisted : gtk_entry_unset_invisible_char
 
-	return retGo
-}
+// Blacklisted : gtk_im_multicontext_get_context_id
 
-// GetIconTooltipMarkup is a wrapper around the C function gtk_entry_get_icon_tooltip_markup.
-func (recv *Entry) GetIconTooltipMarkup(iconPos EntryIconPosition) string {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_im_multicontext_set_context_id
 
-	retC := C.gtk_entry_get_icon_tooltip_markup((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_image_menu_item_get_always_show_image
 
-	return retGo
-}
+// Blacklisted : gtk_image_menu_item_get_use_stock
 
-// GetIconTooltipText is a wrapper around the C function gtk_entry_get_icon_tooltip_text.
-func (recv *Entry) GetIconTooltipText(iconPos EntryIconPosition) string {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_image_menu_item_set_accel_group
 
-	retC := C.gtk_entry_get_icon_tooltip_text((*C.GtkEntry)(recv.native), c_icon_pos)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_image_menu_item_set_always_show_image
 
-	return retGo
-}
+// Blacklisted : gtk_image_menu_item_set_use_stock
 
-// GetProgressFraction is a wrapper around the C function gtk_entry_get_progress_fraction.
-func (recv *Entry) GetProgressFraction() float64 {
-	retC := C.gtk_entry_get_progress_fraction((*C.GtkEntry)(recv.native))
-	retGo := (float64)(retC)
+// Blacklisted : gtk_menu_item_get_label
 
-	return retGo
-}
+// Blacklisted : gtk_menu_item_get_use_underline
 
-// GetProgressPulseStep is a wrapper around the C function gtk_entry_get_progress_pulse_step.
-func (recv *Entry) GetProgressPulseStep() float64 {
-	retC := C.gtk_entry_get_progress_pulse_step((*C.GtkEntry)(recv.native))
-	retGo := (float64)(retC)
+// Blacklisted : gtk_menu_item_set_label
 
-	return retGo
-}
+// Blacklisted : gtk_menu_item_set_use_underline
 
-// ProgressPulse is a wrapper around the C function gtk_entry_progress_pulse.
-func (recv *Entry) ProgressPulse() {
-	C.gtk_entry_progress_pulse((*C.GtkEntry)(recv.native))
+// Blacklisted : gtk_print_operation_draw_page_finish
 
-	return
-}
+// Blacklisted : gtk_print_operation_set_defer_drawing
 
-// SetIconActivatable is a wrapper around the C function gtk_entry_set_icon_activatable.
-func (recv *Entry) SetIconActivatable(iconPos EntryIconPosition, activatable bool) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_print_settings_get_printer_lpi
 
-	c_activatable :=
-		boolToGboolean(activatable)
+// Blacklisted : gtk_print_settings_get_resolution_x
 
-	C.gtk_entry_set_icon_activatable((*C.GtkEntry)(recv.native), c_icon_pos, c_activatable)
+// Blacklisted : gtk_print_settings_get_resolution_y
 
-	return
-}
+// Blacklisted : gtk_print_settings_set_printer_lpi
 
-// SetIconDragSource is a wrapper around the C function gtk_entry_set_icon_drag_source.
-func (recv *Entry) SetIconDragSource(iconPos EntryIconPosition, targetList *TargetList, actions gdk.DragAction) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+// Blacklisted : gtk_print_settings_set_resolution_xy
 
-	c_target_list := (*C.GtkTargetList)(C.NULL)
-	if targetList != nil {
-		c_target_list = (*C.GtkTargetList)(targetList.ToC())
-	}
+// Blacklisted : gtk_scale_add_mark
 
-	c_actions := (C.GdkDragAction)(actions)
-
-	C.gtk_entry_set_icon_drag_source((*C.GtkEntry)(recv.native), c_icon_pos, c_target_list, c_actions)
-
-	return
-}
-
-// SetIconFromGicon is a wrapper around the C function gtk_entry_set_icon_from_gicon.
-func (recv *Entry) SetIconFromGicon(iconPos EntryIconPosition, icon *gio.Icon) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.gtk_entry_set_icon_from_gicon((*C.GtkEntry)(recv.native), c_icon_pos, c_icon)
-
-	return
-}
-
-// SetIconFromIconName is a wrapper around the C function gtk_entry_set_icon_from_icon_name.
-func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName string) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_icon_name := C.CString(iconName)
-	defer C.free(unsafe.Pointer(c_icon_name))
-
-	C.gtk_entry_set_icon_from_icon_name((*C.GtkEntry)(recv.native), c_icon_pos, c_icon_name)
-
-	return
-}
-
-// SetIconFromPixbuf is a wrapper around the C function gtk_entry_set_icon_from_pixbuf.
-func (recv *Entry) SetIconFromPixbuf(iconPos EntryIconPosition, pixbuf *gdkpixbuf.Pixbuf) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	C.gtk_entry_set_icon_from_pixbuf((*C.GtkEntry)(recv.native), c_icon_pos, c_pixbuf)
-
-	return
-}
-
-// SetIconFromStock is a wrapper around the C function gtk_entry_set_icon_from_stock.
-func (recv *Entry) SetIconFromStock(iconPos EntryIconPosition, stockId string) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	C.gtk_entry_set_icon_from_stock((*C.GtkEntry)(recv.native), c_icon_pos, c_stock_id)
-
-	return
-}
-
-// SetIconSensitive is a wrapper around the C function gtk_entry_set_icon_sensitive.
-func (recv *Entry) SetIconSensitive(iconPos EntryIconPosition, sensitive bool) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_sensitive :=
-		boolToGboolean(sensitive)
-
-	C.gtk_entry_set_icon_sensitive((*C.GtkEntry)(recv.native), c_icon_pos, c_sensitive)
-
-	return
-}
-
-// SetIconTooltipMarkup is a wrapper around the C function gtk_entry_set_icon_tooltip_markup.
-func (recv *Entry) SetIconTooltipMarkup(iconPos EntryIconPosition, tooltip string) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_tooltip := C.CString(tooltip)
-	defer C.free(unsafe.Pointer(c_tooltip))
-
-	C.gtk_entry_set_icon_tooltip_markup((*C.GtkEntry)(recv.native), c_icon_pos, c_tooltip)
-
-	return
-}
-
-// SetIconTooltipText is a wrapper around the C function gtk_entry_set_icon_tooltip_text.
-func (recv *Entry) SetIconTooltipText(iconPos EntryIconPosition, tooltip string) {
-	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
-
-	c_tooltip := C.CString(tooltip)
-	defer C.free(unsafe.Pointer(c_tooltip))
-
-	C.gtk_entry_set_icon_tooltip_text((*C.GtkEntry)(recv.native), c_icon_pos, c_tooltip)
-
-	return
-}
-
-// SetProgressFraction is a wrapper around the C function gtk_entry_set_progress_fraction.
-func (recv *Entry) SetProgressFraction(fraction float64) {
-	c_fraction := (C.gdouble)(fraction)
-
-	C.gtk_entry_set_progress_fraction((*C.GtkEntry)(recv.native), c_fraction)
-
-	return
-}
-
-// SetProgressPulseStep is a wrapper around the C function gtk_entry_set_progress_pulse_step.
-func (recv *Entry) SetProgressPulseStep(fraction float64) {
-	c_fraction := (C.gdouble)(fraction)
-
-	C.gtk_entry_set_progress_pulse_step((*C.GtkEntry)(recv.native), c_fraction)
-
-	return
-}
-
-// UnsetInvisibleChar is a wrapper around the C function gtk_entry_unset_invisible_char.
-func (recv *Entry) UnsetInvisibleChar() {
-	C.gtk_entry_unset_invisible_char((*C.GtkEntry)(recv.native))
-
-	return
-}
-
-// GetContextId is a wrapper around the C function gtk_im_multicontext_get_context_id.
-func (recv *IMMulticontext) GetContextId() string {
-	retC := C.gtk_im_multicontext_get_context_id((*C.GtkIMMulticontext)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// SetContextId is a wrapper around the C function gtk_im_multicontext_set_context_id.
-func (recv *IMMulticontext) SetContextId(contextId string) {
-	c_context_id := C.CString(contextId)
-	defer C.free(unsafe.Pointer(c_context_id))
-
-	C.gtk_im_multicontext_set_context_id((*C.GtkIMMulticontext)(recv.native), c_context_id)
-
-	return
-}
-
-// GetAlwaysShowImage is a wrapper around the C function gtk_image_menu_item_get_always_show_image.
-func (recv *ImageMenuItem) GetAlwaysShowImage() bool {
-	retC := C.gtk_image_menu_item_get_always_show_image((*C.GtkImageMenuItem)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetUseStock is a wrapper around the C function gtk_image_menu_item_get_use_stock.
-func (recv *ImageMenuItem) GetUseStock() bool {
-	retC := C.gtk_image_menu_item_get_use_stock((*C.GtkImageMenuItem)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetAccelGroup is a wrapper around the C function gtk_image_menu_item_set_accel_group.
-func (recv *ImageMenuItem) SetAccelGroup(accelGroup *AccelGroup) {
-	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
-	if accelGroup != nil {
-		c_accel_group = (*C.GtkAccelGroup)(accelGroup.ToC())
-	}
-
-	C.gtk_image_menu_item_set_accel_group((*C.GtkImageMenuItem)(recv.native), c_accel_group)
-
-	return
-}
-
-// SetAlwaysShowImage is a wrapper around the C function gtk_image_menu_item_set_always_show_image.
-func (recv *ImageMenuItem) SetAlwaysShowImage(alwaysShow bool) {
-	c_always_show :=
-		boolToGboolean(alwaysShow)
-
-	C.gtk_image_menu_item_set_always_show_image((*C.GtkImageMenuItem)(recv.native), c_always_show)
-
-	return
-}
-
-// SetUseStock is a wrapper around the C function gtk_image_menu_item_set_use_stock.
-func (recv *ImageMenuItem) SetUseStock(useStock bool) {
-	c_use_stock :=
-		boolToGboolean(useStock)
-
-	C.gtk_image_menu_item_set_use_stock((*C.GtkImageMenuItem)(recv.native), c_use_stock)
-
-	return
-}
-
-// GetLabel is a wrapper around the C function gtk_menu_item_get_label.
-func (recv *MenuItem) GetLabel() string {
-	retC := C.gtk_menu_item_get_label((*C.GtkMenuItem)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetUseUnderline is a wrapper around the C function gtk_menu_item_get_use_underline.
-func (recv *MenuItem) GetUseUnderline() bool {
-	retC := C.gtk_menu_item_get_use_underline((*C.GtkMenuItem)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetLabel is a wrapper around the C function gtk_menu_item_set_label.
-func (recv *MenuItem) SetLabel(label string) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	C.gtk_menu_item_set_label((*C.GtkMenuItem)(recv.native), c_label)
-
-	return
-}
-
-// SetUseUnderline is a wrapper around the C function gtk_menu_item_set_use_underline.
-func (recv *MenuItem) SetUseUnderline(setting bool) {
-	c_setting :=
-		boolToGboolean(setting)
-
-	C.gtk_menu_item_set_use_underline((*C.GtkMenuItem)(recv.native), c_setting)
-
-	return
-}
-
-// DrawPageFinish is a wrapper around the C function gtk_print_operation_draw_page_finish.
-func (recv *PrintOperation) DrawPageFinish() {
-	C.gtk_print_operation_draw_page_finish((*C.GtkPrintOperation)(recv.native))
-
-	return
-}
-
-// SetDeferDrawing is a wrapper around the C function gtk_print_operation_set_defer_drawing.
-func (recv *PrintOperation) SetDeferDrawing() {
-	C.gtk_print_operation_set_defer_drawing((*C.GtkPrintOperation)(recv.native))
-
-	return
-}
-
-// GetPrinterLpi is a wrapper around the C function gtk_print_settings_get_printer_lpi.
-func (recv *PrintSettings) GetPrinterLpi() float64 {
-	retC := C.gtk_print_settings_get_printer_lpi((*C.GtkPrintSettings)(recv.native))
-	retGo := (float64)(retC)
-
-	return retGo
-}
-
-// GetResolutionX is a wrapper around the C function gtk_print_settings_get_resolution_x.
-func (recv *PrintSettings) GetResolutionX() int32 {
-	retC := C.gtk_print_settings_get_resolution_x((*C.GtkPrintSettings)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetResolutionY is a wrapper around the C function gtk_print_settings_get_resolution_y.
-func (recv *PrintSettings) GetResolutionY() int32 {
-	retC := C.gtk_print_settings_get_resolution_y((*C.GtkPrintSettings)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// SetPrinterLpi is a wrapper around the C function gtk_print_settings_set_printer_lpi.
-func (recv *PrintSettings) SetPrinterLpi(lpi float64) {
-	c_lpi := (C.gdouble)(lpi)
-
-	C.gtk_print_settings_set_printer_lpi((*C.GtkPrintSettings)(recv.native), c_lpi)
-
-	return
-}
-
-// SetResolutionXy is a wrapper around the C function gtk_print_settings_set_resolution_xy.
-func (recv *PrintSettings) SetResolutionXy(resolutionX int32, resolutionY int32) {
-	c_resolution_x := (C.gint)(resolutionX)
-
-	c_resolution_y := (C.gint)(resolutionY)
-
-	C.gtk_print_settings_set_resolution_xy((*C.GtkPrintSettings)(recv.native), c_resolution_x, c_resolution_y)
-
-	return
-}
-
-// AddMark is a wrapper around the C function gtk_scale_add_mark.
-func (recv *Scale) AddMark(value float64, position PositionType, markup string) {
-	c_value := (C.gdouble)(value)
-
-	c_position := (C.GtkPositionType)(position)
-
-	c_markup := C.CString(markup)
-	defer C.free(unsafe.Pointer(c_markup))
-
-	C.gtk_scale_add_mark((*C.GtkScale)(recv.native), c_value, c_position, c_markup)
-
-	return
-}
-
-// ClearMarks is a wrapper around the C function gtk_scale_clear_marks.
-func (recv *Scale) ClearMarks() {
-	C.gtk_scale_clear_marks((*C.GtkScale)(recv.native))
-
-	return
-}
+// Blacklisted : gtk_scale_clear_marks
 
 type signalStatusIconQueryTooltipDetail struct {
 	callback  StatusIconSignalQueryTooltipCallback
@@ -982,79 +461,21 @@ func statusicon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data
 	return retC
 }
 
-// GetHasTooltip is a wrapper around the C function gtk_status_icon_get_has_tooltip.
-func (recv *StatusIcon) GetHasTooltip() bool {
-	retC := C.gtk_status_icon_get_has_tooltip((*C.GtkStatusIcon)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_status_icon_get_has_tooltip
 
-	return retGo
-}
+// Blacklisted : gtk_status_icon_get_tooltip_markup
 
-// GetTooltipMarkup is a wrapper around the C function gtk_status_icon_get_tooltip_markup.
-func (recv *StatusIcon) GetTooltipMarkup() string {
-	retC := C.gtk_status_icon_get_tooltip_markup((*C.GtkStatusIcon)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_status_icon_get_tooltip_text
 
-	return retGo
-}
+// Blacklisted : gtk_status_icon_set_has_tooltip
 
-// GetTooltipText is a wrapper around the C function gtk_status_icon_get_tooltip_text.
-func (recv *StatusIcon) GetTooltipText() string {
-	retC := C.gtk_status_icon_get_tooltip_text((*C.GtkStatusIcon)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_status_icon_set_tooltip_markup
 
-	return retGo
-}
-
-// SetHasTooltip is a wrapper around the C function gtk_status_icon_set_has_tooltip.
-func (recv *StatusIcon) SetHasTooltip(hasTooltip bool) {
-	c_has_tooltip :=
-		boolToGboolean(hasTooltip)
-
-	C.gtk_status_icon_set_has_tooltip((*C.GtkStatusIcon)(recv.native), c_has_tooltip)
-
-	return
-}
-
-// SetTooltipMarkup is a wrapper around the C function gtk_status_icon_set_tooltip_markup.
-func (recv *StatusIcon) SetTooltipMarkup(markup string) {
-	c_markup := C.CString(markup)
-	defer C.free(unsafe.Pointer(c_markup))
-
-	C.gtk_status_icon_set_tooltip_markup((*C.GtkStatusIcon)(recv.native), c_markup)
-
-	return
-}
-
-// SetTooltipText is a wrapper around the C function gtk_status_icon_set_tooltip_text.
-func (recv *StatusIcon) SetTooltipText(text string) {
-	c_text := C.CString(text)
-	defer C.free(unsafe.Pointer(c_text))
-
-	C.gtk_status_icon_set_tooltip_text((*C.GtkStatusIcon)(recv.native), c_text)
-
-	return
-}
+// Blacklisted : gtk_status_icon_set_tooltip_text
 
 // Unsupported : gtk_style_get : unsupported parameter ... : varargs
 
-// GetStyleProperty is a wrapper around the C function gtk_style_get_style_property.
-func (recv *Style) GetStyleProperty(widgetType gobject.Type, propertyName string) *gobject.Value {
-	c_widget_type := (C.GType)(widgetType)
-
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	var c_value C.GValue
-
-	C.gtk_style_get_style_property((*C.GtkStyle)(recv.native), c_widget_type, c_property_name, &c_value)
-
-	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
-
-	return value
-}
+// Blacklisted : gtk_style_get_style_property
 
 // Unsupported : gtk_style_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
@@ -1120,10 +541,4 @@ func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data
 	callback(clipboard)
 }
 
-// WindowGetDefaultIconName is a wrapper around the C function gtk_window_get_default_icon_name.
-func WindowGetDefaultIconName() string {
-	retC := C.gtk_window_get_default_icon_name()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : gtk_window_get_default_icon_name

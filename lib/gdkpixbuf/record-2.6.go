@@ -3,8 +3,6 @@
 
 package gdkpixbuf
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,37 +10,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetLicense is a wrapper around the C function gdk_pixbuf_format_get_license.
-func (recv *PixbufFormat) GetLicense() string {
-	retC := C.gdk_pixbuf_format_get_license((*C.GdkPixbufFormat)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gdk_pixbuf_format_get_license
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_format_is_disabled
 
-// IsDisabled is a wrapper around the C function gdk_pixbuf_format_is_disabled.
-func (recv *PixbufFormat) IsDisabled() bool {
-	retC := C.gdk_pixbuf_format_is_disabled((*C.GdkPixbufFormat)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_pixbuf_format_is_scalable
 
-	return retGo
-}
-
-// IsScalable is a wrapper around the C function gdk_pixbuf_format_is_scalable.
-func (recv *PixbufFormat) IsScalable() bool {
-	retC := C.gdk_pixbuf_format_is_scalable((*C.GdkPixbufFormat)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetDisabled is a wrapper around the C function gdk_pixbuf_format_set_disabled.
-func (recv *PixbufFormat) SetDisabled(disabled bool) {
-	c_disabled :=
-		boolToGboolean(disabled)
-
-	C.gdk_pixbuf_format_set_disabled((*C.GdkPixbufFormat)(recv.native), c_disabled)
-
-	return
-}
+// Blacklisted : gdk_pixbuf_format_set_disabled

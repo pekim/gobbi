@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,30 +12,4 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ShowUriOnWindow is a wrapper around the C function gtk_show_uri_on_window.
-func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) (bool, error) {
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	c_timestamp := (C.guint32)(timestamp)
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_show_uri_on_window(c_parent, c_uri, c_timestamp, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : gtk_show_uri_on_window

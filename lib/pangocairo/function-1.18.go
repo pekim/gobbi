@@ -13,3 +13,5 @@ import "C"
 // Unsupported : pango_cairo_context_get_shape_renderer : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
 
 // Unsupported : pango_cairo_context_set_shape_renderer : unsupported parameter func : no type generator for ShapeRendererFunc (PangoCairoShapeRendererFunc) for param func
+
+// Blacklisted : pango_cairo_font_map_new_for_font_type

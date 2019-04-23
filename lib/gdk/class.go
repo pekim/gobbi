@@ -3,11 +3,8 @@
 package gdk
 
 import (
-	cairo "github.com/pekim/gobbi/lib/cairo"
 	gio "github.com/pekim/gobbi/lib/gio"
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	pango "github.com/pekim/gobbi/lib/pango"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -227,34 +224,11 @@ func CastToCursor(object *gobject.Object) *Cursor {
 	return CursorNewFromC(object.ToC())
 }
 
-// CursorNew is a wrapper around the C function gdk_cursor_new.
-func CursorNew(cursorType CursorType) *Cursor {
-	c_cursor_type := (C.GdkCursorType)(cursorType)
+// Blacklisted : gdk_cursor_new
 
-	retC := C.gdk_cursor_new(c_cursor_type)
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_cursor_ref
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function gdk_cursor_ref.
-func (recv *Cursor) Ref() *Cursor {
-	retC := C.gdk_cursor_ref((*C.GdkCursor)(recv.native))
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function gdk_cursor_unref.
-func (recv *Cursor) Unref() {
-	C.gdk_cursor_unref((*C.GdkCursor)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_cursor_unref
 
 // Device is a wrapper around the C record GdkDevice.
 type Device struct {
@@ -364,105 +338,21 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 }
 
 // gdk_device_free_history : unsupported parameter events :
-// DeviceGrabInfoLibgtkOnly is a wrapper around the C function gdk_device_grab_info_libgtk_only.
-func DeviceGrabInfoLibgtkOnly(display *Display, device *Device) (bool, *Window, bool) {
-	c_display := (*C.GdkDisplay)(C.NULL)
-	if display != nil {
-		c_display = (*C.GdkDisplay)(display.ToC())
-	}
+// Blacklisted : gdk_device_grab_info_libgtk_only
 
-	c_device := (*C.GdkDevice)(C.NULL)
-	if device != nil {
-		c_device = (*C.GdkDevice)(device.ToC())
-	}
-
-	var c_grab_window *C.GdkWindow
-
-	var c_owner_events C.gboolean
-
-	retC := C.gdk_device_grab_info_libgtk_only(c_display, c_device, &c_grab_window, &c_owner_events)
-	retGo := retC == C.TRUE
-
-	grabWindow := WindowNewFromC(unsafe.Pointer(c_grab_window))
-
-	ownerEvents := c_owner_events == C.TRUE
-
-	return retGo, grabWindow, ownerEvents
-}
-
-// GetAxis is a wrapper around the C function gdk_device_get_axis.
-func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
-	c_axes_array := make([]C.gdouble, len(axes)+1, len(axes)+1)
-	for i, item := range axes {
-		c := (C.gdouble)(item)
-		c_axes_array[i] = c
-	}
-	c_axes_array[len(axes)] = 0
-	c_axes_arrayPtr := &c_axes_array[0]
-	c_axes := (*C.gdouble)(unsafe.Pointer(c_axes_arrayPtr))
-
-	c_use := (C.GdkAxisUse)(use)
-
-	var c_value C.gdouble
-
-	retC := C.gdk_device_get_axis((*C.GdkDevice)(recv.native), c_axes, c_use, &c_value)
-	retGo := retC == C.TRUE
-
-	value := (float64)(c_value)
-
-	return retGo, value
-}
+// Blacklisted : gdk_device_get_axis
 
 // Unsupported : gdk_device_get_history : unsupported parameter events : output array param events
 
 // Unsupported : gdk_device_get_state : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// ListSlaveDevices is a wrapper around the C function gdk_device_list_slave_devices.
-func (recv *Device) ListSlaveDevices() *glib.List {
-	retC := C.gdk_device_list_slave_devices((*C.GdkDevice)(recv.native))
-	var retGo (*glib.List)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.ListNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_device_list_slave_devices
 
-	return retGo
-}
+// Blacklisted : gdk_device_set_axis_use
 
-// SetAxisUse is a wrapper around the C function gdk_device_set_axis_use.
-func (recv *Device) SetAxisUse(index uint32, use AxisUse) {
-	c_index_ := (C.guint)(index)
+// Blacklisted : gdk_device_set_key
 
-	c_use := (C.GdkAxisUse)(use)
-
-	C.gdk_device_set_axis_use((*C.GdkDevice)(recv.native), c_index_, c_use)
-
-	return
-}
-
-// SetKey is a wrapper around the C function gdk_device_set_key.
-func (recv *Device) SetKey(index uint32, keyval uint32, modifiers ModifierType) {
-	c_index_ := (C.guint)(index)
-
-	c_keyval := (C.guint)(keyval)
-
-	c_modifiers := (C.GdkModifierType)(modifiers)
-
-	C.gdk_device_set_key((*C.GdkDevice)(recv.native), c_index_, c_keyval, c_modifiers)
-
-	return
-}
-
-// SetMode is a wrapper around the C function gdk_device_set_mode.
-func (recv *Device) SetMode(mode InputMode) bool {
-	c_mode := (C.GdkInputMode)(mode)
-
-	retC := C.gdk_device_set_mode((*C.GdkDevice)(recv.native), c_mode)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_device_set_mode
 
 // DeviceManager is a wrapper around the C record GdkDeviceManager.
 type DeviceManager struct {
@@ -804,31 +694,9 @@ func display_openedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// DisplayOpenDefaultLibgtkOnly is a wrapper around the C function gdk_display_open_default_libgtk_only.
-func DisplayOpenDefaultLibgtkOnly() *Display {
-	retC := C.gdk_display_open_default_libgtk_only()
-	var retGo (*Display)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = DisplayNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_display_open_default_libgtk_only
 
-	return retGo
-}
-
-// DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
-func (recv *Display) DeviceIsGrabbed(device *Device) bool {
-	c_device := (*C.GdkDevice)(C.NULL)
-	if device != nil {
-		c_device = (*C.GdkDevice)(device.ToC())
-	}
-
-	retC := C.gdk_display_device_is_grabbed((*C.GdkDisplay)(recv.native), c_device)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_display_device_is_grabbed
 
 // DisplayManager is a wrapper around the C record GdkDisplayManager.
 type DisplayManager struct {
@@ -924,25 +792,9 @@ func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromC(object.ToC())
 }
 
-// GetDevice is a wrapper around the C function gdk_drag_context_get_device.
-func (recv *DragContext) GetDevice() *Device {
-	retC := C.gdk_drag_context_get_device((*C.GdkDragContext)(recv.native))
-	retGo := DeviceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_drag_context_get_device
 
-	return retGo
-}
-
-// SetDevice is a wrapper around the C function gdk_drag_context_set_device.
-func (recv *DragContext) SetDevice(device *Device) {
-	c_device := (*C.GdkDevice)(C.NULL)
-	if device != nil {
-		c_device = (*C.GdkDevice)(device.ToC())
-	}
-
-	C.gdk_drag_context_set_device((*C.GdkDragContext)(recv.native), c_device)
-
-	return
-}
+// Blacklisted : gdk_drag_context_set_device
 
 // FrameClock is a wrapper around the C record GdkFrameClock.
 type FrameClock struct {
@@ -1505,38 +1357,15 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromC(object.ToC())
 }
 
-// KeymapGetDefault is a wrapper around the C function gdk_keymap_get_default.
-func KeymapGetDefault() *Keymap {
-	retC := C.gdk_keymap_get_default()
-	retGo := KeymapNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_keymap_get_default
 
-	return retGo
-}
-
-// GetDirection is a wrapper around the C function gdk_keymap_get_direction.
-func (recv *Keymap) GetDirection() pango.Direction {
-	retC := C.gdk_keymap_get_direction((*C.GdkKeymap)(recv.native))
-	retGo := (pango.Direction)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_keymap_get_direction
 
 // Unsupported : gdk_keymap_get_entries_for_keycode : unsupported parameter keys : output array param keys
 
 // Unsupported : gdk_keymap_get_entries_for_keyval : unsupported parameter keys : output array param keys
 
-// LookupKey is a wrapper around the C function gdk_keymap_lookup_key.
-func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
-	c_key := (*C.GdkKeymapKey)(C.NULL)
-	if key != nil {
-		c_key = (*C.GdkKeymapKey)(key.ToC())
-	}
-
-	retC := C.gdk_keymap_lookup_key((*C.GdkKeymap)(recv.native), c_key)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_keymap_lookup_key
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
 
@@ -1587,37 +1416,13 @@ func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromC(object.ToC())
 }
 
-// ScreenHeight is a wrapper around the C function gdk_screen_height.
-func ScreenHeight() int32 {
-	retC := C.gdk_screen_height()
-	retGo := (int32)(retC)
+// Blacklisted : gdk_screen_height
 
-	return retGo
-}
+// Blacklisted : gdk_screen_height_mm
 
-// ScreenHeightMm is a wrapper around the C function gdk_screen_height_mm.
-func ScreenHeightMm() int32 {
-	retC := C.gdk_screen_height_mm()
-	retGo := (int32)(retC)
+// Blacklisted : gdk_screen_width
 
-	return retGo
-}
-
-// ScreenWidth is a wrapper around the C function gdk_screen_width.
-func ScreenWidth() int32 {
-	retC := C.gdk_screen_width()
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// ScreenWidthMm is a wrapper around the C function gdk_screen_width_mm.
-func ScreenWidthMm() int32 {
-	retC := C.gdk_screen_width_mm()
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_screen_width_mm
 
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
@@ -1666,74 +1471,19 @@ func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromC(object.ToC())
 }
 
-// VisualGetBest is a wrapper around the C function gdk_visual_get_best.
-func VisualGetBest() *Visual {
-	retC := C.gdk_visual_get_best()
-	retGo := VisualNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_visual_get_best
 
-	return retGo
-}
+// Blacklisted : gdk_visual_get_best_depth
 
-// VisualGetBestDepth is a wrapper around the C function gdk_visual_get_best_depth.
-func VisualGetBestDepth() int32 {
-	retC := C.gdk_visual_get_best_depth()
-	retGo := (int32)(retC)
+// Blacklisted : gdk_visual_get_best_type
 
-	return retGo
-}
+// Blacklisted : gdk_visual_get_best_with_both
 
-// VisualGetBestType is a wrapper around the C function gdk_visual_get_best_type.
-func VisualGetBestType() VisualType {
-	retC := C.gdk_visual_get_best_type()
-	retGo := (VisualType)(retC)
+// Blacklisted : gdk_visual_get_best_with_depth
 
-	return retGo
-}
+// Blacklisted : gdk_visual_get_best_with_type
 
-// VisualGetBestWithBoth is a wrapper around the C function gdk_visual_get_best_with_both.
-func VisualGetBestWithBoth(depth int32, visualType VisualType) *Visual {
-	c_depth := (C.gint)(depth)
-
-	c_visual_type := (C.GdkVisualType)(visualType)
-
-	retC := C.gdk_visual_get_best_with_both(c_depth, c_visual_type)
-	var retGo (*Visual)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = VisualNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// VisualGetBestWithDepth is a wrapper around the C function gdk_visual_get_best_with_depth.
-func VisualGetBestWithDepth(depth int32) *Visual {
-	c_depth := (C.gint)(depth)
-
-	retC := C.gdk_visual_get_best_with_depth(c_depth)
-	retGo := VisualNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// VisualGetBestWithType is a wrapper around the C function gdk_visual_get_best_with_type.
-func VisualGetBestWithType(visualType VisualType) *Visual {
-	c_visual_type := (C.GdkVisualType)(visualType)
-
-	retC := C.gdk_visual_get_best_with_type(c_visual_type)
-	retGo := VisualNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// VisualGetSystem is a wrapper around the C function gdk_visual_get_system.
-func VisualGetSystem() *Visual {
-	retC := C.gdk_visual_get_system()
-	retGo := VisualNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_visual_get_system
 
 // Window is a wrapper around the C record GdkWindow.
 type Window struct {
@@ -1806,129 +1556,25 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask WindowAttr
 	return retGo
 }
 
-// WindowAtPointer is a wrapper around the C function gdk_window_at_pointer.
-func WindowAtPointer() (*Window, int32, int32) {
-	var c_win_x C.gint
+// Blacklisted : gdk_window_at_pointer
 
-	var c_win_y C.gint
+// Blacklisted : gdk_window_constrain_size
 
-	retC := C.gdk_window_at_pointer(&c_win_x, &c_win_y)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_window_process_all_updates
 
-	winX := (int32)(c_win_x)
-
-	winY := (int32)(c_win_y)
-
-	return retGo, winX, winY
-}
-
-// WindowConstrainSize is a wrapper around the C function gdk_window_constrain_size.
-func WindowConstrainSize(geometry *Geometry, flags WindowHints, width int32, height int32) (int32, int32) {
-	c_geometry := (*C.GdkGeometry)(C.NULL)
-	if geometry != nil {
-		c_geometry = (*C.GdkGeometry)(geometry.ToC())
-	}
-
-	c_flags := (C.GdkWindowHints)(flags)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	var c_new_width C.gint
-
-	var c_new_height C.gint
-
-	C.gdk_window_constrain_size(c_geometry, c_flags, c_width, c_height, &c_new_width, &c_new_height)
-
-	newWidth := (int32)(c_new_width)
-
-	newHeight := (int32)(c_new_height)
-
-	return newWidth, newHeight
-}
-
-// WindowProcessAllUpdates is a wrapper around the C function gdk_window_process_all_updates.
-func WindowProcessAllUpdates() {
-	C.gdk_window_process_all_updates()
-
-	return
-}
-
-// WindowSetDebugUpdates is a wrapper around the C function gdk_window_set_debug_updates.
-func WindowSetDebugUpdates(setting bool) {
-	c_setting :=
-		boolToGboolean(setting)
-
-	C.gdk_window_set_debug_updates(c_setting)
-
-	return
-}
+// Blacklisted : gdk_window_set_debug_updates
 
 // Unsupported : gdk_window_add_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function
 
-// BeginMoveDrag is a wrapper around the C function gdk_window_begin_move_drag.
-func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
-	c_button := (C.gint)(button)
+// Blacklisted : gdk_window_begin_move_drag
 
-	c_root_x := (C.gint)(rootX)
+// Blacklisted : gdk_window_begin_paint_rect
 
-	c_root_y := (C.gint)(rootY)
+// Blacklisted : gdk_window_begin_paint_region
 
-	c_timestamp := (C.guint32)(timestamp)
+// Blacklisted : gdk_window_begin_resize_drag
 
-	C.gdk_window_begin_move_drag((*C.GdkWindow)(recv.native), c_button, c_root_x, c_root_y, c_timestamp)
-
-	return
-}
-
-// BeginPaintRect is a wrapper around the C function gdk_window_begin_paint_rect.
-func (recv *Window) BeginPaintRect(rectangle *Rectangle) {
-	c_rectangle := (*C.GdkRectangle)(C.NULL)
-	if rectangle != nil {
-		c_rectangle = (*C.GdkRectangle)(rectangle.ToC())
-	}
-
-	C.gdk_window_begin_paint_rect((*C.GdkWindow)(recv.native), c_rectangle)
-
-	return
-}
-
-// BeginPaintRegion is a wrapper around the C function gdk_window_begin_paint_region.
-func (recv *Window) BeginPaintRegion(region *cairo.Region) {
-	c_region := (*C.cairo_region_t)(C.NULL)
-	if region != nil {
-		c_region = (*C.cairo_region_t)(region.ToC())
-	}
-
-	C.gdk_window_begin_paint_region((*C.GdkWindow)(recv.native), c_region)
-
-	return
-}
-
-// BeginResizeDrag is a wrapper around the C function gdk_window_begin_resize_drag.
-func (recv *Window) BeginResizeDrag(edge WindowEdge, button int32, rootX int32, rootY int32, timestamp uint32) {
-	c_edge := (C.GdkWindowEdge)(edge)
-
-	c_button := (C.gint)(button)
-
-	c_root_x := (C.gint)(rootX)
-
-	c_root_y := (C.gint)(rootY)
-
-	c_timestamp := (C.guint32)(timestamp)
-
-	C.gdk_window_begin_resize_drag((*C.GdkWindow)(recv.native), c_edge, c_button, c_root_x, c_root_y, c_timestamp)
-
-	return
-}
-
-// Deiconify is a wrapper around the C function gdk_window_deiconify.
-func (recv *Window) Deiconify() {
-	C.gdk_window_deiconify((*C.GdkWindow)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_window_deiconify
 
 // Destroy is a wrapper around the C function gdk_window_destroy.
 func (recv *Window) Destroy() {
@@ -1939,266 +1585,63 @@ func (recv *Window) Destroy() {
 
 // Blacklisted : gdk_window_destroy_notify
 
-// EndPaint is a wrapper around the C function gdk_window_end_paint.
-func (recv *Window) EndPaint() {
-	C.gdk_window_end_paint((*C.GdkWindow)(recv.native))
+// Blacklisted : gdk_window_end_paint
 
-	return
-}
+// Blacklisted : gdk_window_focus
 
-// Focus is a wrapper around the C function gdk_window_focus.
-func (recv *Window) Focus(timestamp uint32) {
-	c_timestamp := (C.guint32)(timestamp)
+// Blacklisted : gdk_window_freeze_toplevel_updates_libgtk_only
 
-	C.gdk_window_focus((*C.GdkWindow)(recv.native), c_timestamp)
+// Blacklisted : gdk_window_freeze_updates
 
-	return
-}
+// Blacklisted : gdk_window_fullscreen_on_monitor
 
-// FreezeToplevelUpdatesLibgtkOnly is a wrapper around the C function gdk_window_freeze_toplevel_updates_libgtk_only.
-func (recv *Window) FreezeToplevelUpdatesLibgtkOnly() {
-	C.gdk_window_freeze_toplevel_updates_libgtk_only((*C.GdkWindow)(recv.native))
+// Blacklisted : gdk_window_get_children
 
-	return
-}
-
-// FreezeUpdates is a wrapper around the C function gdk_window_freeze_updates.
-func (recv *Window) FreezeUpdates() {
-	C.gdk_window_freeze_updates((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// FullscreenOnMonitor is a wrapper around the C function gdk_window_fullscreen_on_monitor.
-func (recv *Window) FullscreenOnMonitor(monitor int32) {
-	c_monitor := (C.gint)(monitor)
-
-	C.gdk_window_fullscreen_on_monitor((*C.GdkWindow)(recv.native), c_monitor)
-
-	return
-}
-
-// GetChildren is a wrapper around the C function gdk_window_get_children.
-func (recv *Window) GetChildren() *glib.List {
-	retC := C.gdk_window_get_children((*C.GdkWindow)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetClipRegion is a wrapper around the C function gdk_window_get_clip_region.
-func (recv *Window) GetClipRegion() *cairo.Region {
-	retC := C.gdk_window_get_clip_region((*C.GdkWindow)(recv.native))
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_window_get_clip_region
 
 // Unsupported : gdk_window_get_decorations : unsupported parameter decorations : GdkWMDecoration* with indirection level of 1
 
-// GetEvents is a wrapper around the C function gdk_window_get_events.
-func (recv *Window) GetEvents() EventMask {
-	retC := C.gdk_window_get_events((*C.GdkWindow)(recv.native))
-	retGo := (EventMask)(retC)
+// Blacklisted : gdk_window_get_events
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_frame_extents
 
-// GetFrameExtents is a wrapper around the C function gdk_window_get_frame_extents.
-func (recv *Window) GetFrameExtents() *Rectangle {
-	var c_rect C.GdkRectangle
+// Blacklisted : gdk_window_get_geometry
 
-	C.gdk_window_get_frame_extents((*C.GdkWindow)(recv.native), &c_rect)
+// Blacklisted : gdk_window_get_origin
 
-	rect := RectangleNewFromC(unsafe.Pointer(&c_rect))
-
-	return rect
-}
-
-// GetGeometry is a wrapper around the C function gdk_window_get_geometry.
-func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
-	var c_x C.gint
-
-	var c_y C.gint
-
-	var c_width C.gint
-
-	var c_height C.gint
-
-	C.gdk_window_get_geometry((*C.GdkWindow)(recv.native), &c_x, &c_y, &c_width, &c_height)
-
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return x, y, width, height
-}
-
-// GetOrigin is a wrapper around the C function gdk_window_get_origin.
-func (recv *Window) GetOrigin() (int32, int32, int32) {
-	var c_x C.gint
-
-	var c_y C.gint
-
-	retC := C.gdk_window_get_origin((*C.GdkWindow)(recv.native), &c_x, &c_y)
-	retGo := (int32)(retC)
-
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	return retGo, x, y
-}
-
-// GetParent is a wrapper around the C function gdk_window_get_parent.
-func (recv *Window) GetParent() *Window {
-	retC := C.gdk_window_get_parent((*C.GdkWindow)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_window_get_parent
 
 // Unsupported : gdk_window_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// GetPosition is a wrapper around the C function gdk_window_get_position.
-func (recv *Window) GetPosition() (int32, int32) {
-	var c_x C.gint
+// Blacklisted : gdk_window_get_position
 
-	var c_y C.gint
+// Blacklisted : gdk_window_get_root_origin
 
-	C.gdk_window_get_position((*C.GdkWindow)(recv.native), &c_x, &c_y)
+// Blacklisted : gdk_window_get_source_events
 
-	x := (int32)(c_x)
+// Blacklisted : gdk_window_get_state
 
-	y := (int32)(c_y)
+// Blacklisted : gdk_window_get_toplevel
 
-	return x, y
-}
-
-// GetRootOrigin is a wrapper around the C function gdk_window_get_root_origin.
-func (recv *Window) GetRootOrigin() (int32, int32) {
-	var c_x C.gint
-
-	var c_y C.gint
-
-	C.gdk_window_get_root_origin((*C.GdkWindow)(recv.native), &c_x, &c_y)
-
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	return x, y
-}
-
-// GetSourceEvents is a wrapper around the C function gdk_window_get_source_events.
-func (recv *Window) GetSourceEvents(source InputSource) EventMask {
-	c_source := (C.GdkInputSource)(source)
-
-	retC := C.gdk_window_get_source_events((*C.GdkWindow)(recv.native), c_source)
-	retGo := (EventMask)(retC)
-
-	return retGo
-}
-
-// GetState is a wrapper around the C function gdk_window_get_state.
-func (recv *Window) GetState() WindowState {
-	retC := C.gdk_window_get_state((*C.GdkWindow)(recv.native))
-	retGo := (WindowState)(retC)
-
-	return retGo
-}
-
-// GetToplevel is a wrapper around the C function gdk_window_get_toplevel.
-func (recv *Window) GetToplevel() *Window {
-	retC := C.gdk_window_get_toplevel((*C.GdkWindow)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetUpdateArea is a wrapper around the C function gdk_window_get_update_area.
-func (recv *Window) GetUpdateArea() *cairo.Region {
-	retC := C.gdk_window_get_update_area((*C.GdkWindow)(recv.native))
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_window_get_update_area
 
 // Unsupported : gdk_window_get_user_data : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
 
-// GetVisibleRegion is a wrapper around the C function gdk_window_get_visible_region.
-func (recv *Window) GetVisibleRegion() *cairo.Region {
-	retC := C.gdk_window_get_visible_region((*C.GdkWindow)(recv.native))
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_window_get_visible_region
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_window_type
 
-// GetWindowType is a wrapper around the C function gdk_window_get_window_type.
-func (recv *Window) GetWindowType() WindowType {
-	retC := C.gdk_window_get_window_type((*C.GdkWindow)(recv.native))
-	retGo := (WindowType)(retC)
+// Blacklisted : gdk_window_hide
 
-	return retGo
-}
-
-// Hide is a wrapper around the C function gdk_window_hide.
-func (recv *Window) Hide() {
-	C.gdk_window_hide((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// Iconify is a wrapper around the C function gdk_window_iconify.
-func (recv *Window) Iconify() {
-	C.gdk_window_iconify((*C.GdkWindow)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_window_iconify
 
 // Unsupported : gdk_window_invalidate_maybe_recurse : unsupported parameter child_func : no type generator for WindowChildFunc (GdkWindowChildFunc) for param child_func
 
-// InvalidateRect is a wrapper around the C function gdk_window_invalidate_rect.
-func (recv *Window) InvalidateRect(rect *Rectangle, invalidateChildren bool) {
-	c_rect := (*C.GdkRectangle)(C.NULL)
-	if rect != nil {
-		c_rect = (*C.GdkRectangle)(rect.ToC())
-	}
+// Blacklisted : gdk_window_invalidate_rect
 
-	c_invalidate_children :=
-		boolToGboolean(invalidateChildren)
+// Blacklisted : gdk_window_invalidate_region
 
-	C.gdk_window_invalidate_rect((*C.GdkWindow)(recv.native), c_rect, c_invalidate_children)
-
-	return
-}
-
-// InvalidateRegion is a wrapper around the C function gdk_window_invalidate_region.
-func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bool) {
-	c_region := (*C.cairo_region_t)(C.NULL)
-	if region != nil {
-		c_region = (*C.cairo_region_t)(region.ToC())
-	}
-
-	c_invalidate_children :=
-		boolToGboolean(invalidateChildren)
-
-	C.gdk_window_invalidate_region((*C.GdkWindow)(recv.native), c_region, c_invalidate_children)
-
-	return
-}
-
-// IsViewable is a wrapper around the C function gdk_window_is_viewable.
-func (recv *Window) IsViewable() bool {
-	retC := C.gdk_window_is_viewable((*C.GdkWindow)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_window_is_viewable
 
 // IsVisible is a wrapper around the C function gdk_window_is_visible.
 func (recv *Window) IsVisible() bool {
@@ -2208,295 +1651,63 @@ func (recv *Window) IsVisible() bool {
 	return retGo
 }
 
-// Lower is a wrapper around the C function gdk_window_lower.
-func (recv *Window) Lower() {
-	C.gdk_window_lower((*C.GdkWindow)(recv.native))
+// Blacklisted : gdk_window_lower
 
-	return
-}
+// Blacklisted : gdk_window_maximize
 
-// Maximize is a wrapper around the C function gdk_window_maximize.
-func (recv *Window) Maximize() {
-	C.gdk_window_maximize((*C.GdkWindow)(recv.native))
+// Blacklisted : gdk_window_merge_child_shapes
 
-	return
-}
+// Blacklisted : gdk_window_move
 
-// MergeChildShapes is a wrapper around the C function gdk_window_merge_child_shapes.
-func (recv *Window) MergeChildShapes() {
-	C.gdk_window_merge_child_shapes((*C.GdkWindow)(recv.native))
+// Blacklisted : gdk_window_move_resize
 
-	return
-}
+// Blacklisted : gdk_window_peek_children
 
-// Move is a wrapper around the C function gdk_window_move.
-func (recv *Window) Move(x int32, y int32) {
-	c_x := (C.gint)(x)
+// Blacklisted : gdk_window_process_updates
 
-	c_y := (C.gint)(y)
+// Blacklisted : gdk_window_raise
 
-	C.gdk_window_move((*C.GdkWindow)(recv.native), c_x, c_y)
-
-	return
-}
-
-// MoveResize is a wrapper around the C function gdk_window_move_resize.
-func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gdk_window_move_resize((*C.GdkWindow)(recv.native), c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PeekChildren is a wrapper around the C function gdk_window_peek_children.
-func (recv *Window) PeekChildren() *glib.List {
-	retC := C.gdk_window_peek_children((*C.GdkWindow)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ProcessUpdates is a wrapper around the C function gdk_window_process_updates.
-func (recv *Window) ProcessUpdates(updateChildren bool) {
-	c_update_children :=
-		boolToGboolean(updateChildren)
-
-	C.gdk_window_process_updates((*C.GdkWindow)(recv.native), c_update_children)
-
-	return
-}
-
-// Raise is a wrapper around the C function gdk_window_raise.
-func (recv *Window) Raise() {
-	C.gdk_window_raise((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// RegisterDnd is a wrapper around the C function gdk_window_register_dnd.
-func (recv *Window) RegisterDnd() {
-	C.gdk_window_register_dnd((*C.GdkWindow)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_window_register_dnd
 
 // Unsupported : gdk_window_remove_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function
 
-// Reparent is a wrapper around the C function gdk_window_reparent.
-func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
-	c_new_parent := (*C.GdkWindow)(C.NULL)
-	if newParent != nil {
-		c_new_parent = (*C.GdkWindow)(newParent.ToC())
-	}
+// Blacklisted : gdk_window_reparent
 
-	c_x := (C.gint)(x)
+// Blacklisted : gdk_window_resize
 
-	c_y := (C.gint)(y)
+// Blacklisted : gdk_window_scroll
 
-	C.gdk_window_reparent((*C.GdkWindow)(recv.native), c_new_parent, c_x, c_y)
+// Blacklisted : gdk_window_set_background
 
-	return
-}
+// Blacklisted : gdk_window_set_background_pattern
 
-// Resize is a wrapper around the C function gdk_window_resize.
-func (recv *Window) Resize(width int32, height int32) {
-	c_width := (C.gint)(width)
+// Blacklisted : gdk_window_set_background_rgba
 
-	c_height := (C.gint)(height)
+// Blacklisted : gdk_window_set_child_shapes
 
-	C.gdk_window_resize((*C.GdkWindow)(recv.native), c_width, c_height)
+// Blacklisted : gdk_window_set_cursor
 
-	return
-}
+// Blacklisted : gdk_window_set_decorations
 
-// Scroll is a wrapper around the C function gdk_window_scroll.
-func (recv *Window) Scroll(dx int32, dy int32) {
-	c_dx := (C.gint)(dx)
+// Blacklisted : gdk_window_set_events
 
-	c_dy := (C.gint)(dy)
+// Blacklisted : gdk_window_set_functions
 
-	C.gdk_window_scroll((*C.GdkWindow)(recv.native), c_dx, c_dy)
+// Blacklisted : gdk_window_set_geometry_hints
 
-	return
-}
+// Blacklisted : gdk_window_set_group
 
-// SetBackground is a wrapper around the C function gdk_window_set_background.
-func (recv *Window) SetBackground(color *Color) {
-	c_color := (*C.GdkColor)(C.NULL)
-	if color != nil {
-		c_color = (*C.GdkColor)(color.ToC())
-	}
+// Blacklisted : gdk_window_set_icon_list
 
-	C.gdk_window_set_background((*C.GdkWindow)(recv.native), c_color)
+// Blacklisted : gdk_window_set_icon_name
 
-	return
-}
+// Blacklisted : gdk_window_set_modal_hint
 
-// SetBackgroundPattern is a wrapper around the C function gdk_window_set_background_pattern.
-func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
-	c_pattern := (*C.cairo_pattern_t)(C.NULL)
-	if pattern != nil {
-		c_pattern = (*C.cairo_pattern_t)(pattern.ToC())
-	}
+// Blacklisted : gdk_window_set_override_redirect
 
-	C.gdk_window_set_background_pattern((*C.GdkWindow)(recv.native), c_pattern)
+// Blacklisted : gdk_window_set_role
 
-	return
-}
-
-// SetBackgroundRgba is a wrapper around the C function gdk_window_set_background_rgba.
-func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
-	c_rgba := (*C.GdkRGBA)(C.NULL)
-	if rgba != nil {
-		c_rgba = (*C.GdkRGBA)(rgba.ToC())
-	}
-
-	C.gdk_window_set_background_rgba((*C.GdkWindow)(recv.native), c_rgba)
-
-	return
-}
-
-// SetChildShapes is a wrapper around the C function gdk_window_set_child_shapes.
-func (recv *Window) SetChildShapes() {
-	C.gdk_window_set_child_shapes((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// SetCursor is a wrapper around the C function gdk_window_set_cursor.
-func (recv *Window) SetCursor(cursor *Cursor) {
-	c_cursor := (*C.GdkCursor)(C.NULL)
-	if cursor != nil {
-		c_cursor = (*C.GdkCursor)(cursor.ToC())
-	}
-
-	C.gdk_window_set_cursor((*C.GdkWindow)(recv.native), c_cursor)
-
-	return
-}
-
-// SetDecorations is a wrapper around the C function gdk_window_set_decorations.
-func (recv *Window) SetDecorations(decorations WMDecoration) {
-	c_decorations := (C.GdkWMDecoration)(decorations)
-
-	C.gdk_window_set_decorations((*C.GdkWindow)(recv.native), c_decorations)
-
-	return
-}
-
-// SetEvents is a wrapper around the C function gdk_window_set_events.
-func (recv *Window) SetEvents(eventMask EventMask) {
-	c_event_mask := (C.GdkEventMask)(eventMask)
-
-	C.gdk_window_set_events((*C.GdkWindow)(recv.native), c_event_mask)
-
-	return
-}
-
-// SetFunctions is a wrapper around the C function gdk_window_set_functions.
-func (recv *Window) SetFunctions(functions WMFunction) {
-	c_functions := (C.GdkWMFunction)(functions)
-
-	C.gdk_window_set_functions((*C.GdkWindow)(recv.native), c_functions)
-
-	return
-}
-
-// SetGeometryHints is a wrapper around the C function gdk_window_set_geometry_hints.
-func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
-	c_geometry := (*C.GdkGeometry)(C.NULL)
-	if geometry != nil {
-		c_geometry = (*C.GdkGeometry)(geometry.ToC())
-	}
-
-	c_geom_mask := (C.GdkWindowHints)(geomMask)
-
-	C.gdk_window_set_geometry_hints((*C.GdkWindow)(recv.native), c_geometry, c_geom_mask)
-
-	return
-}
-
-// SetGroup is a wrapper around the C function gdk_window_set_group.
-func (recv *Window) SetGroup(leader *Window) {
-	c_leader := (*C.GdkWindow)(C.NULL)
-	if leader != nil {
-		c_leader = (*C.GdkWindow)(leader.ToC())
-	}
-
-	C.gdk_window_set_group((*C.GdkWindow)(recv.native), c_leader)
-
-	return
-}
-
-// SetIconList is a wrapper around the C function gdk_window_set_icon_list.
-func (recv *Window) SetIconList(pixbufs *glib.List) {
-	c_pixbufs := (*C.GList)(C.NULL)
-	if pixbufs != nil {
-		c_pixbufs = (*C.GList)(pixbufs.ToC())
-	}
-
-	C.gdk_window_set_icon_list((*C.GdkWindow)(recv.native), c_pixbufs)
-
-	return
-}
-
-// SetIconName is a wrapper around the C function gdk_window_set_icon_name.
-func (recv *Window) SetIconName(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.gdk_window_set_icon_name((*C.GdkWindow)(recv.native), c_name)
-
-	return
-}
-
-// SetModalHint is a wrapper around the C function gdk_window_set_modal_hint.
-func (recv *Window) SetModalHint(modal bool) {
-	c_modal :=
-		boolToGboolean(modal)
-
-	C.gdk_window_set_modal_hint((*C.GdkWindow)(recv.native), c_modal)
-
-	return
-}
-
-// SetOverrideRedirect is a wrapper around the C function gdk_window_set_override_redirect.
-func (recv *Window) SetOverrideRedirect(overrideRedirect bool) {
-	c_override_redirect :=
-		boolToGboolean(overrideRedirect)
-
-	C.gdk_window_set_override_redirect((*C.GdkWindow)(recv.native), c_override_redirect)
-
-	return
-}
-
-// SetRole is a wrapper around the C function gdk_window_set_role.
-func (recv *Window) SetRole(role string) {
-	c_role := C.CString(role)
-	defer C.free(unsafe.Pointer(c_role))
-
-	C.gdk_window_set_role((*C.GdkWindow)(recv.native), c_role)
-
-	return
-}
-
-// SetStaticGravities is a wrapper around the C function gdk_window_set_static_gravities.
-func (recv *Window) SetStaticGravities(useStatic bool) bool {
-	c_use_static :=
-		boolToGboolean(useStatic)
-
-	retC := C.gdk_window_set_static_gravities((*C.GdkWindow)(recv.native), c_use_static)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_window_set_static_gravities
 
 // SetTitle is a wrapper around the C function gdk_window_set_title.
 func (recv *Window) SetTitle(title string) {
@@ -2508,107 +1719,26 @@ func (recv *Window) SetTitle(title string) {
 	return
 }
 
-// SetTransientFor is a wrapper around the C function gdk_window_set_transient_for.
-func (recv *Window) SetTransientFor(parent *Window) {
-	c_parent := (*C.GdkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GdkWindow)(parent.ToC())
-	}
+// Blacklisted : gdk_window_set_transient_for
 
-	C.gdk_window_set_transient_for((*C.GdkWindow)(recv.native), c_parent)
+// Blacklisted : gdk_window_set_type_hint
 
-	return
-}
+// Blacklisted : gdk_window_set_user_data
 
-// SetTypeHint is a wrapper around the C function gdk_window_set_type_hint.
-func (recv *Window) SetTypeHint(hint WindowTypeHint) {
-	c_hint := (C.GdkWindowTypeHint)(hint)
+// Blacklisted : gdk_window_shape_combine_region
 
-	C.gdk_window_set_type_hint((*C.GdkWindow)(recv.native), c_hint)
+// Blacklisted : gdk_window_show
 
-	return
-}
+// Blacklisted : gdk_window_show_unraised
 
-// SetUserData is a wrapper around the C function gdk_window_set_user_data.
-func (recv *Window) SetUserData(userData *gobject.Object) {
-	c_user_data := (C.gpointer)(C.NULL)
-	if userData != nil {
-		c_user_data = (C.gpointer)(userData.ToC())
-	}
+// Blacklisted : gdk_window_stick
 
-	C.gdk_window_set_user_data((*C.GdkWindow)(recv.native), c_user_data)
+// Blacklisted : gdk_window_thaw_toplevel_updates_libgtk_only
 
-	return
-}
+// Blacklisted : gdk_window_thaw_updates
 
-// ShapeCombineRegion is a wrapper around the C function gdk_window_shape_combine_region.
-func (recv *Window) ShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
-	c_shape_region := (*C.cairo_region_t)(C.NULL)
-	if shapeRegion != nil {
-		c_shape_region = (*C.cairo_region_t)(shapeRegion.ToC())
-	}
+// Blacklisted : gdk_window_unmaximize
 
-	c_offset_x := (C.gint)(offsetX)
+// Blacklisted : gdk_window_unstick
 
-	c_offset_y := (C.gint)(offsetY)
-
-	C.gdk_window_shape_combine_region((*C.GdkWindow)(recv.native), c_shape_region, c_offset_x, c_offset_y)
-
-	return
-}
-
-// Show is a wrapper around the C function gdk_window_show.
-func (recv *Window) Show() {
-	C.gdk_window_show((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// ShowUnraised is a wrapper around the C function gdk_window_show_unraised.
-func (recv *Window) ShowUnraised() {
-	C.gdk_window_show_unraised((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// Stick is a wrapper around the C function gdk_window_stick.
-func (recv *Window) Stick() {
-	C.gdk_window_stick((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// ThawToplevelUpdatesLibgtkOnly is a wrapper around the C function gdk_window_thaw_toplevel_updates_libgtk_only.
-func (recv *Window) ThawToplevelUpdatesLibgtkOnly() {
-	C.gdk_window_thaw_toplevel_updates_libgtk_only((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// ThawUpdates is a wrapper around the C function gdk_window_thaw_updates.
-func (recv *Window) ThawUpdates() {
-	C.gdk_window_thaw_updates((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// Unmaximize is a wrapper around the C function gdk_window_unmaximize.
-func (recv *Window) Unmaximize() {
-	C.gdk_window_unmaximize((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// Unstick is a wrapper around the C function gdk_window_unstick.
-func (recv *Window) Unstick() {
-	C.gdk_window_unstick((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// Withdraw is a wrapper around the C function gdk_window_withdraw.
-func (recv *Window) Withdraw() {
-	C.gdk_window_withdraw((*C.GdkWindow)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_window_withdraw

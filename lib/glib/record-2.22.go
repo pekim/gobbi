@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -19,47 +17,14 @@ import "C"
 // g_array_unref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
-func MainContextGetThreadDefault() *MainContext {
-	retC := C.g_main_context_get_thread_default()
-	retGo := MainContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_main_context_get_thread_default
 
-	return retGo
-}
+// Blacklisted : g_main_context_pop_thread_default
 
-// PopThreadDefault is a wrapper around the C function g_main_context_pop_thread_default.
-func (recv *MainContext) PopThreadDefault() {
-	C.g_main_context_pop_thread_default((*C.GMainContext)(recv.native))
+// Blacklisted : g_main_context_push_thread_default
 
-	return
-}
+// Blacklisted : g_mapped_file_ref
 
-// PushThreadDefault is a wrapper around the C function g_main_context_push_thread_default.
-func (recv *MainContext) PushThreadDefault() {
-	C.g_main_context_push_thread_default((*C.GMainContext)(recv.native))
+// Blacklisted : g_tree_ref
 
-	return
-}
-
-// Ref is a wrapper around the C function g_mapped_file_ref.
-func (recv *MappedFile) Ref() *MappedFile {
-	retC := C.g_mapped_file_ref((*C.GMappedFile)(recv.native))
-	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Ref is a wrapper around the C function g_tree_ref.
-func (recv *Tree) Ref() *Tree {
-	retC := C.g_tree_ref((*C.GTree)(recv.native))
-	retGo := TreeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unref is a wrapper around the C function g_tree_unref.
-func (recv *Tree) Unref() {
-	C.g_tree_unref((*C.GTree)(recv.native))
-
-	return
-}
+// Blacklisted : g_tree_unref

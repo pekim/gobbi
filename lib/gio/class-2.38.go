@@ -4,7 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"unsafe"
@@ -28,107 +27,25 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// MarkBusy is a wrapper around the C function g_application_mark_busy.
-func (recv *Application) MarkBusy() {
-	C.g_application_mark_busy((*C.GApplication)(recv.native))
+// Blacklisted : g_application_mark_busy
 
-	return
-}
+// Blacklisted : g_application_unmark_busy
 
-// UnmarkBusy is a wrapper around the C function g_application_unmark_busy.
-func (recv *Application) UnmarkBusy() {
-	C.g_application_unmark_busy((*C.GApplication)(recv.native))
+// Blacklisted : g_bytes_icon_new
 
-	return
-}
+// Blacklisted : g_bytes_icon_get_bytes
 
-// BytesIconNew is a wrapper around the C function g_bytes_icon_new.
-func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
+// Blacklisted : g_dbus_method_invocation_get_property_info
 
-	retC := C.g_bytes_icon_new(c_bytes)
-	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_desktop_app_info_get_action_name
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_desktop_app_info_launch_action
 
-	return retGo
-}
+// Blacklisted : g_desktop_app_info_list_actions
 
-// GetBytes is a wrapper around the C function g_bytes_icon_get_bytes.
-func (recv *BytesIcon) GetBytes() *glib.Bytes {
-	retC := C.g_bytes_icon_get_bytes((*C.GBytesIcon)(recv.native))
-	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_menu_remove_all
 
-	return retGo
-}
-
-// GetPropertyInfo is a wrapper around the C function g_dbus_method_invocation_get_property_info.
-func (recv *DBusMethodInvocation) GetPropertyInfo() *DBusPropertyInfo {
-	retC := C.g_dbus_method_invocation_get_property_info((*C.GDBusMethodInvocation)(recv.native))
-	retGo := DBusPropertyInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetActionName is a wrapper around the C function g_desktop_app_info_get_action_name.
-func (recv *DesktopAppInfo) GetActionName(actionName string) string {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_desktop_app_info_get_action_name((*C.GDesktopAppInfo)(recv.native), c_action_name)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LaunchAction is a wrapper around the C function g_desktop_app_info_launch_action.
-func (recv *DesktopAppInfo) LaunchAction(actionName string, launchContext *AppLaunchContext) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	c_launch_context := (*C.GAppLaunchContext)(C.NULL)
-	if launchContext != nil {
-		c_launch_context = (*C.GAppLaunchContext)(launchContext.ToC())
-	}
-
-	C.g_desktop_app_info_launch_action((*C.GDesktopAppInfo)(recv.native), c_action_name, c_launch_context)
-
-	return
-}
-
-// ListActions is a wrapper around the C function g_desktop_app_info_list_actions.
-func (recv *DesktopAppInfo) ListActions() []string {
-	retC := C.g_desktop_app_info_list_actions((*C.GDesktopAppInfo)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
-
-// RemoveAll is a wrapper around the C function g_menu_remove_all.
-func (recv *Menu) RemoveAll() {
-	C.g_menu_remove_all((*C.GMenu)(recv.native))
-
-	return
-}
-
-// SetIcon is a wrapper around the C function g_menu_item_set_icon.
-func (recv *MenuItem) SetIcon(icon *Icon) {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.g_menu_item_set_icon((*C.GMenuItem)(recv.native), c_icon)
-
-	return
-}
+// Blacklisted : g_menu_item_set_icon
 
 // PropertyAction is a wrapper around the C record GPropertyAction.
 type PropertyAction struct {
@@ -177,25 +94,4 @@ func CastToPropertyAction(object *gobject.Object) *PropertyAction {
 	return PropertyActionNewFromC(object.ToC())
 }
 
-// PropertyActionNew is a wrapper around the C function g_property_action_new.
-func PropertyActionNew(name string, object *gobject.Object, propertyName string) *PropertyAction {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_object := (C.gpointer)(C.NULL)
-	if object != nil {
-		c_object = (C.gpointer)(object.ToC())
-	}
-
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	retC := C.g_property_action_new(c_name, c_object, c_property_name)
-	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_property_action_new

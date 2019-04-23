@@ -10,16 +10,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// ClearObject is a wrapper around the C function g_clear_object.
-func ClearObject(objectPtr *Object) {
-	c_object_ptr := (**C.GObject)(C.NULL)
-	if objectPtr != nil {
-		c_object_ptr = (**C.GObject)(objectPtr.ToC())
-	}
-
-	C.g_clear_object(c_object_ptr)
-
-	return
-}
+// Blacklisted : g_clear_object
 
 // Unsupported : g_signal_accumulator_first_wins : unsupported parameter dummy : no type generator for gpointer (gpointer) for param dummy

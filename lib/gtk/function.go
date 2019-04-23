@@ -2,16 +2,6 @@
 
 package gtk
 
-import (
-	cairo "github.com/pekim/gobbi/lib/cairo"
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	pango "github.com/pekim/gobbi/lib/pango"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -21,336 +11,87 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AccelGroupsActivate is a wrapper around the C function gtk_accel_groups_activate.
-func AccelGroupsActivate(object *gobject.Object, accelKey uint32, accelMods gdk.ModifierType) bool {
-	c_object := (*C.GObject)(C.NULL)
-	if object != nil {
-		c_object = (*C.GObject)(object.ToC())
-	}
+// Blacklisted : gtk_accel_groups_activate
 
-	c_accel_key := (C.guint)(accelKey)
+// Blacklisted : gtk_accel_groups_from_object
 
-	c_accel_mods := (C.GdkModifierType)(accelMods)
+// Blacklisted : gtk_accelerator_get_default_mod_mask
 
-	retC := C.gtk_accel_groups_activate(c_object, c_accel_key, c_accel_mods)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// AccelGroupsFromObject is a wrapper around the C function gtk_accel_groups_from_object.
-func AccelGroupsFromObject(object *gobject.Object) *glib.SList {
-	c_object := (*C.GObject)(C.NULL)
-	if object != nil {
-		c_object = (*C.GObject)(object.ToC())
-	}
-
-	retC := C.gtk_accel_groups_from_object(c_object)
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AcceleratorGetDefaultModMask is a wrapper around the C function gtk_accelerator_get_default_mod_mask.
-func AcceleratorGetDefaultModMask() gdk.ModifierType {
-	retC := C.gtk_accelerator_get_default_mod_mask()
-	retGo := (gdk.ModifierType)(retC)
-
-	return retGo
-}
-
-// AcceleratorName is a wrapper around the C function gtk_accelerator_name.
-func AcceleratorName(acceleratorKey uint32, acceleratorMods gdk.ModifierType) string {
-	c_accelerator_key := (C.guint)(acceleratorKey)
-
-	c_accelerator_mods := (C.GdkModifierType)(acceleratorMods)
-
-	retC := C.gtk_accelerator_name(c_accelerator_key, c_accelerator_mods)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_accelerator_name
 
 // Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// AcceleratorSetDefaultModMask is a wrapper around the C function gtk_accelerator_set_default_mod_mask.
-func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
-	c_default_mod_mask := (C.GdkModifierType)(defaultModMask)
+// Blacklisted : gtk_accelerator_set_default_mod_mask
 
-	C.gtk_accelerator_set_default_mod_mask(c_default_mod_mask)
+// Blacklisted : gtk_accelerator_valid
 
-	return
-}
+// Blacklisted : gtk_binding_entry_add_signall
 
-// AcceleratorValid is a wrapper around the C function gtk_accelerator_valid.
-func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
-	c_keyval := (C.guint)(keyval)
-
-	c_modifiers := (C.GdkModifierType)(modifiers)
-
-	retC := C.gtk_accelerator_valid(c_keyval, c_modifiers)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_binding_entry_remove
 
 // Unsupported : gtk_binding_set_by_class : unsupported parameter object_class : no type generator for gpointer (gpointer) for param object_class
 
-// BindingsActivate is a wrapper around the C function gtk_bindings_activate.
-func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.ModifierType) bool {
-	c_object := (*C.GObject)(C.NULL)
-	if object != nil {
-		c_object = (*C.GObject)(object.ToC())
-	}
+// Blacklisted : gtk_binding_set_find
 
-	c_keyval := (C.guint)(keyval)
+// Blacklisted : gtk_binding_set_new
 
-	c_modifiers := (C.GdkModifierType)(modifiers)
+// Blacklisted : gtk_bindings_activate
 
-	retC := C.gtk_bindings_activate(c_object, c_keyval, c_modifiers)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_builder_error_quark
 
-	return retGo
-}
+// Blacklisted : gtk_check_version
 
-// CheckVersion is a wrapper around the C function gtk_check_version.
-func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
-	c_required_major := (C.guint)(requiredMajor)
+// Blacklisted : gtk_css_provider_error_quark
 
-	c_required_minor := (C.guint)(requiredMinor)
+// Blacklisted : gtk_disable_setlocale
 
-	c_required_micro := (C.guint)(requiredMicro)
+// Blacklisted : gtk_distribute_natural_allocation
 
-	retC := C.gtk_check_version(c_required_major, c_required_minor, c_required_micro)
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_drag_finish
 
-	return retGo
-}
+// Blacklisted : gtk_drag_get_source_widget
 
-// DisableSetlocale is a wrapper around the C function gtk_disable_setlocale.
-func DisableSetlocale() {
-	C.gtk_disable_setlocale()
+// Blacklisted : gtk_drag_set_icon_default
 
-	return
-}
+// Blacklisted : gtk_drag_set_icon_pixbuf
 
-// DistributeNaturalAllocation is a wrapper around the C function gtk_distribute_natural_allocation.
-func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes *RequestedSize) int32 {
-	c_extra_space := (C.gint)(extraSpace)
+// Blacklisted : gtk_drag_set_icon_stock
 
-	c_n_requested_sizes := (C.guint)(nRequestedSizes)
+// Blacklisted : gtk_drag_set_icon_surface
 
-	c_sizes := (*C.GtkRequestedSize)(C.NULL)
-	if sizes != nil {
-		c_sizes = (*C.GtkRequestedSize)(sizes.ToC())
-	}
+// Blacklisted : gtk_drag_set_icon_widget
 
-	retC := C.gtk_distribute_natural_allocation(c_extra_space, c_n_requested_sizes, c_sizes)
-	retGo := (int32)(retC)
+// Blacklisted : gtk_events_pending
 
-	return retGo
-}
-
-// DragFinish is a wrapper around the C function gtk_drag_finish.
-func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_success :=
-		boolToGboolean(success)
-
-	c_del :=
-		boolToGboolean(del)
-
-	c_time_ := (C.guint32)(time)
-
-	C.gtk_drag_finish(c_context, c_success, c_del, c_time_)
-
-	return
-}
-
-// DragGetSourceWidget is a wrapper around the C function gtk_drag_get_source_widget.
-func DragGetSourceWidget(context *gdk.DragContext) *Widget {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	retC := C.gtk_drag_get_source_widget(c_context)
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// DragSetIconDefault is a wrapper around the C function gtk_drag_set_icon_default.
-func DragSetIconDefault(context *gdk.DragContext) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	C.gtk_drag_set_icon_default(c_context)
-
-	return
-}
-
-// DragSetIconPixbuf is a wrapper around the C function gtk_drag_set_icon_pixbuf.
-func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int32, hotY int32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	c_hot_x := (C.gint)(hotX)
-
-	c_hot_y := (C.gint)(hotY)
-
-	C.gtk_drag_set_icon_pixbuf(c_context, c_pixbuf, c_hot_x, c_hot_y)
-
-	return
-}
-
-// DragSetIconStock is a wrapper around the C function gtk_drag_set_icon_stock.
-func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int32, hotY int32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	c_hot_x := (C.gint)(hotX)
-
-	c_hot_y := (C.gint)(hotY)
-
-	C.gtk_drag_set_icon_stock(c_context, c_stock_id, c_hot_x, c_hot_y)
-
-	return
-}
-
-// DragSetIconSurface is a wrapper around the C function gtk_drag_set_icon_surface.
-func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_surface := (*C.cairo_surface_t)(C.NULL)
-	if surface != nil {
-		c_surface = (*C.cairo_surface_t)(surface.ToC())
-	}
-
-	C.gtk_drag_set_icon_surface(c_context, c_surface)
-
-	return
-}
-
-// DragSetIconWidget is a wrapper around the C function gtk_drag_set_icon_widget.
-func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int32, hotY int32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_hot_x := (C.gint)(hotX)
-
-	c_hot_y := (C.gint)(hotY)
-
-	C.gtk_drag_set_icon_widget(c_context, c_widget, c_hot_x, c_hot_y)
-
-	return
-}
-
-// EventsPending is a wrapper around the C function gtk_events_pending.
-func EventsPending() bool {
-	retC := C.gtk_events_pending()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// False is a wrapper around the C function gtk_false.
-func False() bool {
-	retC := C.gtk_false()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_false
 
 // Unsupported : gtk_get_current_event : no return generator
 
-// GetCurrentEventDevice is a wrapper around the C function gtk_get_current_event_device.
-func GetCurrentEventDevice() *gdk.Device {
-	retC := C.gtk_get_current_event_device()
-	var retGo (*gdk.Device)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gdk.DeviceNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gtk_get_current_event_device
 
 // Unsupported : gtk_get_current_event_state : unsupported parameter state : GdkModifierType* with indirection level of 1
 
-// GetCurrentEventTime is a wrapper around the C function gtk_get_current_event_time.
-func GetCurrentEventTime() uint32 {
-	retC := C.gtk_get_current_event_time()
-	retGo := (uint32)(retC)
+// Blacklisted : gtk_get_current_event_time
 
-	return retGo
-}
+// Blacklisted : gtk_get_debug_flags
 
-// GetDebugFlags is a wrapper around the C function gtk_get_debug_flags.
-func GetDebugFlags() uint32 {
-	retC := C.gtk_get_debug_flags()
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// GetDefaultLanguage is a wrapper around the C function gtk_get_default_language.
-func GetDefaultLanguage() *pango.Language {
-	retC := C.gtk_get_default_language()
-	retGo := pango.LanguageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_get_default_language
 
 // Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// GrabGetCurrent is a wrapper around the C function gtk_grab_get_current.
-func GrabGetCurrent() *Widget {
-	retC := C.gtk_grab_get_current()
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_grab_get_current
 
-	return retGo
-}
+// Blacklisted : gtk_icon_size_from_name
+
+// Blacklisted : gtk_icon_size_get_name
+
+// Blacklisted : gtk_icon_size_lookup
+
+// Blacklisted : gtk_icon_size_register
+
+// Blacklisted : gtk_icon_size_register_alias
+
+// Blacklisted : gtk_icon_theme_error_quark
 
 // Init is a wrapper around the C function gtk_init.
 func Init(args []string) []string {
@@ -363,1239 +104,150 @@ func Init(args []string) []string {
 	return args
 }
 
-// InitCheck is a wrapper around the C function gtk_init_check.
-func InitCheck(args []string) (bool, []string) {
-	cArgc, cArgv := argsIn(args)
-
-	retC := C.gtk_init_check(&cArgc, &cArgv)
-	retGo := retC == C.TRUE
-
-	args = argsOut(cArgc, cArgv)
-
-	return retGo, args
-}
+// Blacklisted : gtk_init_check
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc (GtkKeySnoopFunc) for param snooper
 
-// KeySnooperRemove is a wrapper around the C function gtk_key_snooper_remove.
-func KeySnooperRemove(snooperHandlerId uint32) {
-	c_snooper_handler_id := (C.guint)(snooperHandlerId)
+// Blacklisted : gtk_key_snooper_remove
 
-	C.gtk_key_snooper_remove(c_snooper_handler_id)
-
-	return
-}
-
-// Main is a wrapper around the C function gtk_main.
-func Main() {
-	C.gtk_main()
-
-	return
-}
+// Blacklisted : gtk_main
 
 // Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// MainIteration is a wrapper around the C function gtk_main_iteration.
-func MainIteration() bool {
-	retC := C.gtk_main_iteration()
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_main_iteration
 
-	return retGo
-}
+// Blacklisted : gtk_main_iteration_do
 
-// MainIterationDo is a wrapper around the C function gtk_main_iteration_do.
-func MainIterationDo(blocking bool) bool {
-	c_blocking :=
-		boolToGboolean(blocking)
+// Blacklisted : gtk_main_level
 
-	retC := C.gtk_main_iteration_do(c_blocking)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_main_quit
 
-	return retGo
-}
+// Blacklisted : gtk_paint_arrow
 
-// MainLevel is a wrapper around the C function gtk_main_level.
-func MainLevel() uint32 {
-	retC := C.gtk_main_level()
-	retGo := (uint32)(retC)
+// Blacklisted : gtk_paint_box
 
-	return retGo
-}
+// Blacklisted : gtk_paint_box_gap
 
-// MainQuit is a wrapper around the C function gtk_main_quit.
-func MainQuit() {
-	C.gtk_main_quit()
+// Blacklisted : gtk_paint_check
 
-	return
-}
+// Blacklisted : gtk_paint_diamond
 
-// PaintArrow is a wrapper around the C function gtk_paint_arrow.
-func PaintArrow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
+// Blacklisted : gtk_paint_expander
 
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
+// Blacklisted : gtk_paint_extension
 
-	c_state_type := (C.GtkStateType)(stateType)
+// Blacklisted : gtk_paint_flat_box
 
-	c_shadow_type := (C.GtkShadowType)(shadowType)
+// Blacklisted : gtk_paint_focus
 
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
+// Blacklisted : gtk_paint_handle
 
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
+// Blacklisted : gtk_paint_hline
 
-	c_arrow_type := (C.GtkArrowType)(arrowType)
+// Blacklisted : gtk_paint_layout
 
-	c_fill :=
-		boolToGboolean(fill)
+// Blacklisted : gtk_paint_option
 
-	c_x := (C.gint)(x)
+// Blacklisted : gtk_paint_resize_grip
 
-	c_y := (C.gint)(y)
+// Blacklisted : gtk_paint_shadow
 
-	c_width := (C.gint)(width)
+// Blacklisted : gtk_paint_shadow_gap
 
-	c_height := (C.gint)(height)
+// Blacklisted : gtk_paint_slider
 
-	C.gtk_paint_arrow(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_arrow_type, c_fill, c_x, c_y, c_width, c_height)
+// Blacklisted : gtk_paint_spinner
 
-	return
-}
+// Blacklisted : gtk_paint_tab
 
-// PaintBox is a wrapper around the C function gtk_paint_box.
-func PaintBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
+// Blacklisted : gtk_paint_vline
 
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_box(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintBoxGap is a wrapper around the C function gtk_paint_box_gap.
-func PaintBoxGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	c_gap_side := (C.GtkPositionType)(gapSide)
-
-	c_gap_x := (C.gint)(gapX)
-
-	c_gap_width := (C.gint)(gapWidth)
-
-	C.gtk_paint_box_gap(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_gap_side, c_gap_x, c_gap_width)
-
-	return
-}
-
-// PaintCheck is a wrapper around the C function gtk_paint_check.
-func PaintCheck(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_check(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintDiamond is a wrapper around the C function gtk_paint_diamond.
-func PaintDiamond(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_diamond(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintExpander is a wrapper around the C function gtk_paint_expander.
-func PaintExpander(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, expanderStyle ExpanderStyle) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_expander_style := (C.GtkExpanderStyle)(expanderStyle)
-
-	C.gtk_paint_expander(c_style, c_cr, c_state_type, c_widget, c_detail, c_x, c_y, c_expander_style)
-
-	return
-}
-
-// PaintExtension is a wrapper around the C function gtk_paint_extension.
-func PaintExtension(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	c_gap_side := (C.GtkPositionType)(gapSide)
-
-	C.gtk_paint_extension(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_gap_side)
-
-	return
-}
-
-// PaintFlatBox is a wrapper around the C function gtk_paint_flat_box.
-func PaintFlatBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_flat_box(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintFocus is a wrapper around the C function gtk_paint_focus.
-func PaintFocus(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_focus(c_style, c_cr, c_state_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintHandle is a wrapper around the C function gtk_paint_handle.
-func PaintHandle(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	c_orientation := (C.GtkOrientation)(orientation)
-
-	C.gtk_paint_handle(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_orientation)
-
-	return
-}
-
-// PaintHline is a wrapper around the C function gtk_paint_hline.
-func PaintHline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x1 int32, x2 int32, y int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x1 := (C.gint)(x1)
-
-	c_x2 := (C.gint)(x2)
-
-	c_y := (C.gint)(y)
-
-	C.gtk_paint_hline(c_style, c_cr, c_state_type, c_widget, c_detail, c_x1, c_x2, c_y)
-
-	return
-}
-
-// PaintLayout is a wrapper around the C function gtk_paint_layout.
-func PaintLayout(style *Style, cr *cairo.Context, stateType StateType, useText bool, widget *Widget, detail string, x int32, y int32, layout *pango.Layout) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_use_text :=
-		boolToGboolean(useText)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_layout := (*C.PangoLayout)(C.NULL)
-	if layout != nil {
-		c_layout = (*C.PangoLayout)(layout.ToC())
-	}
-
-	C.gtk_paint_layout(c_style, c_cr, c_state_type, c_use_text, c_widget, c_detail, c_x, c_y, c_layout)
-
-	return
-}
-
-// PaintOption is a wrapper around the C function gtk_paint_option.
-func PaintOption(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_option(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintResizeGrip is a wrapper around the C function gtk_paint_resize_grip.
-func PaintResizeGrip(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, edge gdk.WindowEdge, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_edge := (C.GdkWindowEdge)(edge)
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_resize_grip(c_style, c_cr, c_state_type, c_widget, c_detail, c_edge, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintShadow is a wrapper around the C function gtk_paint_shadow.
-func PaintShadow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_shadow(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintShadowGap is a wrapper around the C function gtk_paint_shadow_gap.
-func PaintShadowGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	c_gap_side := (C.GtkPositionType)(gapSide)
-
-	c_gap_x := (C.gint)(gapX)
-
-	c_gap_width := (C.gint)(gapWidth)
-
-	C.gtk_paint_shadow_gap(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_gap_side, c_gap_x, c_gap_width)
-
-	return
-}
-
-// PaintSlider is a wrapper around the C function gtk_paint_slider.
-func PaintSlider(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	c_orientation := (C.GtkOrientation)(orientation)
-
-	C.gtk_paint_slider(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_orientation)
-
-	return
-}
-
-// PaintSpinner is a wrapper around the C function gtk_paint_spinner.
-func PaintSpinner(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, step uint32, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_step := (C.guint)(step)
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_spinner(c_style, c_cr, c_state_type, c_widget, c_detail, c_step, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintTab is a wrapper around the C function gtk_paint_tab.
-func PaintTab(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	C.gtk_paint_tab(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
-
-	return
-}
-
-// PaintVline is a wrapper around the C function gtk_paint_vline.
-func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, y1 int32, y2 int32, x int32) {
-	c_style := (*C.GtkStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkStyle)(style.ToC())
-	}
-
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_state_type := (C.GtkStateType)(stateType)
-
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_detail := C.CString(detail)
-	defer C.free(unsafe.Pointer(c_detail))
-
-	c_y1_ := (C.gint)(y1)
-
-	c_y2_ := (C.gint)(y2)
-
-	c_x := (C.gint)(x)
-
-	C.gtk_paint_vline(c_style, c_cr, c_state_type, c_widget, c_detail, c_y1_, c_y2_, c_x)
-
-	return
-}
-
-// ParseArgs is a wrapper around the C function gtk_parse_args.
-func ParseArgs(args []string) (bool, []string) {
-	cArgc, cArgv := argsIn(args)
-
-	retC := C.gtk_parse_args(&cArgc, &cArgv)
-	retGo := retC == C.TRUE
-
-	args = argsOut(cArgc, cArgv)
-
-	return retGo, args
-}
+// Blacklisted : gtk_parse_args
 
 // Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// RcAddDefaultFile is a wrapper around the C function gtk_rc_add_default_file.
-func RcAddDefaultFile(filename string) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
+// Blacklisted : gtk_rc_add_default_file
 
-	C.gtk_rc_add_default_file(c_filename)
+// Blacklisted : gtk_rc_find_module_in_path
 
-	return
-}
+// Blacklisted : gtk_rc_find_pixmap_in_path
 
-// RcFindModuleInPath is a wrapper around the C function gtk_rc_find_module_in_path.
-func RcFindModuleInPath(moduleFile string) string {
-	c_module_file := C.CString(moduleFile)
-	defer C.free(unsafe.Pointer(c_module_file))
+// Blacklisted : gtk_rc_get_default_files
 
-	retC := C.gtk_rc_find_module_in_path(c_module_file)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_rc_get_im_module_file
 
-	return retGo
-}
+// Blacklisted : gtk_rc_get_im_module_path
 
-// RcFindPixmapInPath is a wrapper around the C function gtk_rc_find_pixmap_in_path.
-func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) string {
-	c_settings := (*C.GtkSettings)(C.NULL)
-	if settings != nil {
-		c_settings = (*C.GtkSettings)(settings.ToC())
-	}
+// Blacklisted : gtk_rc_get_module_dir
 
-	c_scanner := (*C.GScanner)(C.NULL)
-	if scanner != nil {
-		c_scanner = (*C.GScanner)(scanner.ToC())
-	}
+// Blacklisted : gtk_rc_get_style
 
-	c_pixmap_file := C.CString(pixmapFile)
-	defer C.free(unsafe.Pointer(c_pixmap_file))
+// Blacklisted : gtk_rc_get_style_by_paths
 
-	retC := C.gtk_rc_find_pixmap_in_path(c_settings, c_scanner, c_pixmap_file)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_rc_get_theme_dir
 
-	return retGo
-}
+// Blacklisted : gtk_rc_parse
 
-// RcGetDefaultFiles is a wrapper around the C function gtk_rc_get_default_files.
-func RcGetDefaultFiles() []string {
-	retC := C.gtk_rc_get_default_files()
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
-
-// RcGetImModuleFile is a wrapper around the C function gtk_rc_get_im_module_file.
-func RcGetImModuleFile() string {
-	retC := C.gtk_rc_get_im_module_file()
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RcGetImModulePath is a wrapper around the C function gtk_rc_get_im_module_path.
-func RcGetImModulePath() string {
-	retC := C.gtk_rc_get_im_module_path()
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RcGetModuleDir is a wrapper around the C function gtk_rc_get_module_dir.
-func RcGetModuleDir() string {
-	retC := C.gtk_rc_get_module_dir()
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RcGetStyle is a wrapper around the C function gtk_rc_get_style.
-func RcGetStyle(widget *Widget) *Style {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_rc_get_style(c_widget)
-	retGo := StyleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RcGetStyleByPaths is a wrapper around the C function gtk_rc_get_style_by_paths.
-func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ gobject.Type) *Style {
-	c_settings := (*C.GtkSettings)(C.NULL)
-	if settings != nil {
-		c_settings = (*C.GtkSettings)(settings.ToC())
-	}
-
-	c_widget_path := C.CString(widgetPath)
-	defer C.free(unsafe.Pointer(c_widget_path))
-
-	c_class_path := C.CString(classPath)
-	defer C.free(unsafe.Pointer(c_class_path))
-
-	c_type := (C.GType)(type_)
-
-	retC := C.gtk_rc_get_style_by_paths(c_settings, c_widget_path, c_class_path, c_type)
-	var retGo (*Style)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = StyleNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// RcGetThemeDir is a wrapper around the C function gtk_rc_get_theme_dir.
-func RcGetThemeDir() string {
-	retC := C.gtk_rc_get_theme_dir()
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RcParse is a wrapper around the C function gtk_rc_parse.
-func RcParse(filename string) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	C.gtk_rc_parse(c_filename)
-
-	return
-}
-
-// RcParseColor is a wrapper around the C function gtk_rc_parse_color.
-func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
-	c_scanner := (*C.GScanner)(C.NULL)
-	if scanner != nil {
-		c_scanner = (*C.GScanner)(scanner.ToC())
-	}
-
-	var c_color C.GdkColor
-
-	retC := C.gtk_rc_parse_color(c_scanner, &c_color)
-	retGo := (uint32)(retC)
-
-	color := gdk.ColorNewFromC(unsafe.Pointer(&c_color))
-
-	return retGo, color
-}
+// Blacklisted : gtk_rc_parse_color
 
 // Unsupported : gtk_rc_parse_priority : unsupported parameter priority : GtkPathPriorityType* with indirection level of 1
 
 // Unsupported : gtk_rc_parse_state : unsupported parameter state : GtkStateType* with indirection level of 1
 
-// RcParseString is a wrapper around the C function gtk_rc_parse_string.
-func RcParseString(rcString string) {
-	c_rc_string := C.CString(rcString)
-	defer C.free(unsafe.Pointer(c_rc_string))
+// Blacklisted : gtk_rc_parse_string
 
-	C.gtk_rc_parse_string(c_rc_string)
+// Blacklisted : gtk_rc_property_parse_border
 
-	return
-}
+// Blacklisted : gtk_rc_property_parse_color
 
-// RcReparseAll is a wrapper around the C function gtk_rc_reparse_all.
-func RcReparseAll() bool {
-	retC := C.gtk_rc_reparse_all()
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_rc_property_parse_enum
 
-	return retGo
-}
+// Blacklisted : gtk_rc_property_parse_flags
 
-// RcReparseAllForSettings is a wrapper around the C function gtk_rc_reparse_all_for_settings.
-func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
-	c_settings := (*C.GtkSettings)(C.NULL)
-	if settings != nil {
-		c_settings = (*C.GtkSettings)(settings.ToC())
-	}
+// Blacklisted : gtk_rc_property_parse_requisition
 
-	c_force_load :=
-		boolToGboolean(forceLoad)
+// Blacklisted : gtk_rc_reparse_all
 
-	retC := C.gtk_rc_reparse_all_for_settings(c_settings, c_force_load)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_rc_reparse_all_for_settings
 
-	return retGo
-}
+// Blacklisted : gtk_rc_scanner_new
 
-// RcScannerNew is a wrapper around the C function gtk_rc_scanner_new.
-func RcScannerNew() *glib.Scanner {
-	retC := C.gtk_rc_scanner_new()
-	retGo := glib.ScannerNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_rc_set_default_files
 
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_error_quark
 
-// RcSetDefaultFiles is a wrapper around the C function gtk_rc_set_default_files.
-func RcSetDefaultFiles(filenames []string) {
-	c_filenames_array := make([]*C.gchar, len(filenames)+1, len(filenames)+1)
-	for i, item := range filenames {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_filenames_array[i] = c
-	}
-	c_filenames_array[len(filenames)] = nil
-	c_filenames_arrayPtr := &c_filenames_array[0]
-	c_filenames := (**C.gchar)(unsafe.Pointer(c_filenames_arrayPtr))
+// Blacklisted : gtk_recent_manager_error_quark
 
-	C.gtk_rc_set_default_files(c_filenames)
-
-	return
-}
-
-// SelectionAddTarget is a wrapper around the C function gtk_selection_add_target.
-func SelectionAddTarget(widget *Widget, selection *gdk.Atom, target *gdk.Atom, info uint32) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
-
-	c_target := (C.GdkAtom)(C.NULL)
-	if target != nil {
-		c_target = (C.GdkAtom)(target.ToC())
-	}
-
-	c_info := (C.guint)(info)
-
-	C.gtk_selection_add_target(c_widget, c_selection, c_target, c_info)
-
-	return
-}
+// Blacklisted : gtk_selection_add_target
 
 // Unsupported : gtk_selection_add_targets : unsupported parameter targets :
 
-// SelectionClearTargets is a wrapper around the C function gtk_selection_clear_targets.
-func SelectionClearTargets(widget *Widget, selection *gdk.Atom) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
+// Blacklisted : gtk_selection_clear_targets
 
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
+// Blacklisted : gtk_selection_convert
 
-	C.gtk_selection_clear_targets(c_widget, c_selection)
+// Blacklisted : gtk_selection_owner_set
 
-	return
-}
+// Blacklisted : gtk_selection_remove_all
 
-// SelectionConvert is a wrapper around the C function gtk_selection_convert.
-func SelectionConvert(widget *Widget, selection *gdk.Atom, target *gdk.Atom, time uint32) bool {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
-
-	c_target := (C.GdkAtom)(C.NULL)
-	if target != nil {
-		c_target = (C.GdkAtom)(target.ToC())
-	}
-
-	c_time_ := (C.guint32)(time)
-
-	retC := C.gtk_selection_convert(c_widget, c_selection, c_target, c_time_)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SelectionOwnerSet is a wrapper around the C function gtk_selection_owner_set.
-func SelectionOwnerSet(widget *Widget, selection *gdk.Atom, time uint32) bool {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
-
-	c_time_ := (C.guint32)(time)
-
-	retC := C.gtk_selection_owner_set(c_widget, c_selection, c_time_)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SelectionRemoveAll is a wrapper around the C function gtk_selection_remove_all.
-func SelectionRemoveAll(widget *Widget) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	C.gtk_selection_remove_all(c_widget)
-
-	return
-}
-
-// SetDebugFlags is a wrapper around the C function gtk_set_debug_flags.
-func SetDebugFlags(flags uint32) {
-	c_flags := (C.guint)(flags)
-
-	C.gtk_set_debug_flags(c_flags)
-
-	return
-}
+// Blacklisted : gtk_set_debug_flags
 
 // Unsupported : gtk_stock_add : unsupported parameter items :
 
 // Unsupported : gtk_stock_add_static : unsupported parameter items :
 
-// StockListIds is a wrapper around the C function gtk_stock_list_ids.
-func StockListIds() *glib.SList {
-	retC := C.gtk_stock_list_ids()
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_stock_list_ids
 
-	return retGo
-}
+// Blacklisted : gtk_stock_lookup
 
-// StockLookup is a wrapper around the C function gtk_stock_lookup.
-func StockLookup(stockId string) (bool, *StockItem) {
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
+// Blacklisted : gtk_tree_get_row_drag_data
 
-	var c_item C.GtkStockItem
+// Blacklisted : gtk_tree_row_reference_deleted
 
-	retC := C.gtk_stock_lookup(c_stock_id, &c_item)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_tree_row_reference_inserted
 
-	item := StockItemNewFromC(unsafe.Pointer(&c_item))
+// Blacklisted : gtk_tree_row_reference_reordered
 
-	return retGo, item
-}
+// Blacklisted : gtk_tree_set_row_drag_data
 
-// TreeGetRowDragData is a wrapper around the C function gtk_tree_get_row_drag_data.
-func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePath) {
-	c_selection_data := (*C.GtkSelectionData)(C.NULL)
-	if selectionData != nil {
-		c_selection_data = (*C.GtkSelectionData)(selectionData.ToC())
-	}
-
-	var c_tree_model *C.GtkTreeModel
-
-	var c_path *C.GtkTreePath
-
-	retC := C.gtk_tree_get_row_drag_data(c_selection_data, &c_tree_model, &c_path)
-	retGo := retC == C.TRUE
-
-	treeModel := TreeModelNewFromC(unsafe.Pointer(c_tree_model))
-
-	path := TreePathNewFromC(unsafe.Pointer(c_path))
-
-	return retGo, treeModel, path
-}
-
-// TreeSetRowDragData is a wrapper around the C function gtk_tree_set_row_drag_data.
-func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) bool {
-	c_selection_data := (*C.GtkSelectionData)(C.NULL)
-	if selectionData != nil {
-		c_selection_data = (*C.GtkSelectionData)(selectionData.ToC())
-	}
-
-	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
-
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	retC := C.gtk_tree_set_row_drag_data(c_selection_data, c_tree_model, c_path)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// True is a wrapper around the C function gtk_true.
-func True() bool {
-	retC := C.gtk_true()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_true

@@ -3,11 +3,7 @@
 
 package gio
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -104,54 +100,12 @@ func listmodel_itemsChangedHandler(_ *C.GObject, c_position C.guint, c_removed C
 
 // Unsupported : g_list_model_get_item : no return generator
 
-// GetItemType is a wrapper around the C function g_list_model_get_item_type.
-func (recv *ListModel) GetItemType() gobject.Type {
-	retC := C.g_list_model_get_item_type((*C.GListModel)(recv.native))
-	retGo := (gobject.Type)(retC)
+// Blacklisted : g_list_model_get_item_type
 
-	return retGo
-}
+// Blacklisted : g_list_model_get_n_items
 
-// GetNItems is a wrapper around the C function g_list_model_get_n_items.
-func (recv *ListModel) GetNItems() uint32 {
-	retC := C.g_list_model_get_n_items((*C.GListModel)(recv.native))
-	retGo := (uint32)(retC)
+// Blacklisted : g_list_model_get_object
 
-	return retGo
-}
+// Blacklisted : g_list_model_items_changed
 
-// GetObject is a wrapper around the C function g_list_model_get_object.
-func (recv *ListModel) GetObject(position uint32) *gobject.Object {
-	c_position := (C.guint)(position)
-
-	retC := C.g_list_model_get_object((*C.GListModel)(recv.native), c_position)
-	var retGo (*gobject.Object)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gobject.ObjectNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// ItemsChanged is a wrapper around the C function g_list_model_items_changed.
-func (recv *ListModel) ItemsChanged(position uint32, removed uint32, added uint32) {
-	c_position := (C.guint)(position)
-
-	c_removed := (C.guint)(removed)
-
-	c_added := (C.guint)(added)
-
-	C.g_list_model_items_changed((*C.GListModel)(recv.native), c_position, c_removed, c_added)
-
-	return
-}
-
-// GetConnectivity is a wrapper around the C function g_network_monitor_get_connectivity.
-func (recv *NetworkMonitor) GetConnectivity() NetworkConnectivity {
-	retC := C.g_network_monitor_get_connectivity((*C.GNetworkMonitor)(recv.native))
-	retGo := (NetworkConnectivity)(retC)
-
-	return retGo
-}
+// Blacklisted : g_network_monitor_get_connectivity

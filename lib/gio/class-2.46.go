@@ -4,8 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -37,46 +35,7 @@ import (
 */
 import "C"
 
-// RegisterObjectWithClosures is a wrapper around the C function g_dbus_connection_register_object_with_closures.
-func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interfaceInfo *DBusInterfaceInfo, methodCallClosure *gobject.Closure, getPropertyClosure *gobject.Closure, setPropertyClosure *gobject.Closure) (uint32, error) {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	c_interface_info := (*C.GDBusInterfaceInfo)(C.NULL)
-	if interfaceInfo != nil {
-		c_interface_info = (*C.GDBusInterfaceInfo)(interfaceInfo.ToC())
-	}
-
-	c_method_call_closure := (*C.GClosure)(C.NULL)
-	if methodCallClosure != nil {
-		c_method_call_closure = (*C.GClosure)(methodCallClosure.ToC())
-	}
-
-	c_get_property_closure := (*C.GClosure)(C.NULL)
-	if getPropertyClosure != nil {
-		c_get_property_closure = (*C.GClosure)(getPropertyClosure.ToC())
-	}
-
-	c_set_property_closure := (*C.GClosure)(C.NULL)
-	if setPropertyClosure != nil {
-		c_set_property_closure = (*C.GClosure)(setPropertyClosure.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_connection_register_object_with_closures((*C.GDBusConnection)(recv.native), c_object_path, c_interface_info, c_method_call_closure, c_get_property_closure, c_set_property_closure, &cThrowableError)
-	retGo := (uint32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dbus_connection_register_object_with_closures
 
 // Unsupported : g_list_store_sort : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
 

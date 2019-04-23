@@ -3,8 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,28 +12,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// PrintRunPageSetupDialog is a wrapper around the C function gtk_print_run_page_setup_dialog.
-func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
+// Blacklisted : gtk_paper_size_get_default
 
-	c_page_setup := (*C.GtkPageSetup)(C.NULL)
-	if pageSetup != nil {
-		c_page_setup = (*C.GtkPageSetup)(pageSetup.ToC())
-	}
+// Blacklisted : gtk_print_error_quark
 
-	c_settings := (*C.GtkPrintSettings)(C.NULL)
-	if settings != nil {
-		c_settings = (*C.GtkPrintSettings)(settings.ToC())
-	}
-
-	retC := C.gtk_print_run_page_setup_dialog(c_parent, c_page_setup, c_settings)
-	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_print_run_page_setup_dialog
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc (GtkPageSetupDoneFunc) for param done_cb
 

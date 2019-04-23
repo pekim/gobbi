@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -15,33 +13,9 @@ import "unsafe"
 import "C"
 
 // g_list_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
-// GetBytes is a wrapper around the C function g_mapped_file_get_bytes.
-func (recv *MappedFile) GetBytes() *Bytes {
-	retC := C.g_mapped_file_get_bytes((*C.GMappedFile)(recv.native))
-	retGo := BytesNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_mapped_file_get_bytes
 
 // g_slist_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
-// FreeToBytes is a wrapper around the C function g_string_free_to_bytes.
-func (recv *String) FreeToBytes() *Bytes {
-	retC := C.g_string_free_to_bytes((*C.GString)(recv.native))
-	retGo := BytesNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_string_free_to_bytes
 
-	return retGo
-}
-
-// CheckFormatString is a wrapper around the C function g_variant_check_format_string.
-func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) bool {
-	c_format_string := C.CString(formatString)
-	defer C.free(unsafe.Pointer(c_format_string))
-
-	c_copy_only :=
-		boolToGboolean(copyOnly)
-
-	retC := C.g_variant_check_format_string((*C.GVariant)(recv.native), c_format_string, c_copy_only)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_variant_check_format_string

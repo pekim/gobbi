@@ -10,10 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// GetInstancePrivateOffset is a wrapper around the C function g_type_class_get_instance_private_offset.
-func (recv *TypeClass) GetInstancePrivateOffset() int32 {
-	retC := C.g_type_class_get_instance_private_offset((C.gpointer)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_type_class_get_instance_private_offset

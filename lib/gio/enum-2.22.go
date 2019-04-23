@@ -3,8 +3,6 @@
 
 package gio
 
-import glib "github.com/pekim/gobbi/lib/glib"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -40,13 +38,7 @@ const (
 	RESOLVER_ERROR_INTERNAL          ResolverError = 2
 )
 
-// ResolverErrorQuark is a wrapper around the C function g_resolver_error_quark.
-func ResolverErrorQuark() glib.Quark {
-	retC := C.g_resolver_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
+// Blacklisted : g_resolver_error_quark
 
 type SocketFamily C.GSocketFamily
 

@@ -12,44 +12,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetStrikethroughPosition is a wrapper around the C function pango_font_metrics_get_strikethrough_position.
-func (recv *FontMetrics) GetStrikethroughPosition() int32 {
-	retC := C.pango_font_metrics_get_strikethrough_position((*C.PangoFontMetrics)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : pango_font_metrics_get_strikethrough_position
 
-	return retGo
-}
+// Blacklisted : pango_font_metrics_get_strikethrough_thickness
 
-// GetStrikethroughThickness is a wrapper around the C function pango_font_metrics_get_strikethrough_thickness.
-func (recv *FontMetrics) GetStrikethroughThickness() int32 {
-	retC := C.pango_font_metrics_get_strikethrough_thickness((*C.PangoFontMetrics)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : pango_font_metrics_get_underline_position
 
-	return retGo
-}
+// Blacklisted : pango_font_metrics_get_underline_thickness
 
-// GetUnderlinePosition is a wrapper around the C function pango_font_metrics_get_underline_position.
-func (recv *FontMetrics) GetUnderlinePosition() int32 {
-	retC := C.pango_font_metrics_get_underline_position((*C.PangoFontMetrics)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetUnderlineThickness is a wrapper around the C function pango_font_metrics_get_underline_thickness.
-func (recv *FontMetrics) GetUnderlineThickness() int32 {
-	retC := C.pango_font_metrics_get_underline_thickness((*C.PangoFontMetrics)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// Free is a wrapper around the C function pango_glyph_item_free.
-func (recv *GlyphItem) Free() {
-	C.pango_glyph_item_free((*C.PangoGlyphItem)(recv.native))
-
-	return
-}
+// Blacklisted : pango_glyph_item_free
 
 // Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs :
 
@@ -105,65 +76,14 @@ func (recv *Matrix) Equals(other *Matrix) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Concat is a wrapper around the C function pango_matrix_concat.
-func (recv *Matrix) Concat(newMatrix *Matrix) {
-	c_new_matrix := (*C.PangoMatrix)(C.NULL)
-	if newMatrix != nil {
-		c_new_matrix = (*C.PangoMatrix)(newMatrix.ToC())
-	}
+// Blacklisted : pango_matrix_concat
 
-	C.pango_matrix_concat((*C.PangoMatrix)(recv.native), c_new_matrix)
+// Blacklisted : pango_matrix_copy
 
-	return
-}
+// Blacklisted : pango_matrix_free
 
-// Copy is a wrapper around the C function pango_matrix_copy.
-func (recv *Matrix) Copy() *Matrix {
-	retC := C.pango_matrix_copy((*C.PangoMatrix)(recv.native))
-	var retGo (*Matrix)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = MatrixNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : pango_matrix_rotate
 
-	return retGo
-}
+// Blacklisted : pango_matrix_scale
 
-// Free is a wrapper around the C function pango_matrix_free.
-func (recv *Matrix) Free() {
-	C.pango_matrix_free((*C.PangoMatrix)(recv.native))
-
-	return
-}
-
-// Rotate is a wrapper around the C function pango_matrix_rotate.
-func (recv *Matrix) Rotate(degrees float64) {
-	c_degrees := (C.double)(degrees)
-
-	C.pango_matrix_rotate((*C.PangoMatrix)(recv.native), c_degrees)
-
-	return
-}
-
-// Scale is a wrapper around the C function pango_matrix_scale.
-func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
-	c_scale_x := (C.double)(scaleX)
-
-	c_scale_y := (C.double)(scaleY)
-
-	C.pango_matrix_scale((*C.PangoMatrix)(recv.native), c_scale_x, c_scale_y)
-
-	return
-}
-
-// Translate is a wrapper around the C function pango_matrix_translate.
-func (recv *Matrix) Translate(tx float64, ty float64) {
-	c_tx := (C.double)(tx)
-
-	c_ty := (C.double)(ty)
-
-	C.pango_matrix_translate((*C.PangoMatrix)(recv.native), c_tx, c_ty)
-
-	return
-}
+// Blacklisted : pango_matrix_translate

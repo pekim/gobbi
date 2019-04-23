@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	cairo "github.com/pekim/gobbi/lib/cairo"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -134,13 +133,7 @@ func device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpo
 	callback(tool)
 }
 
-// GetAxes is a wrapper around the C function gdk_device_get_axes.
-func (recv *Device) GetAxes() AxisFlags {
-	retC := C.gdk_device_get_axes((*C.GdkDevice)(recv.native))
-	retGo := (AxisFlags)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_device_get_axes
 
 // DeviceTool is a wrapper around the C record GdkDeviceTool.
 type DeviceTool struct {
@@ -189,29 +182,11 @@ func CastToDeviceTool(object *gobject.Object) *DeviceTool {
 	return DeviceToolNewFromC(object.ToC())
 }
 
-// GetHardwareId is a wrapper around the C function gdk_device_tool_get_hardware_id.
-func (recv *DeviceTool) GetHardwareId() uint64 {
-	retC := C.gdk_device_tool_get_hardware_id((*C.GdkDeviceTool)(recv.native))
-	retGo := (uint64)(retC)
+// Blacklisted : gdk_device_tool_get_hardware_id
 
-	return retGo
-}
+// Blacklisted : gdk_device_tool_get_serial
 
-// GetSerial is a wrapper around the C function gdk_device_tool_get_serial.
-func (recv *DeviceTool) GetSerial() uint64 {
-	retC := C.gdk_device_tool_get_serial((*C.GdkDeviceTool)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// GetToolType is a wrapper around the C function gdk_device_tool_get_tool_type.
-func (recv *DeviceTool) GetToolType() DeviceToolType {
-	retC := C.gdk_device_tool_get_tool_type((*C.GdkDeviceTool)(recv.native))
-	retGo := (DeviceToolType)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_device_tool_get_tool_type
 
 type signalDisplayMonitorAddedDetail struct {
 	callback  DisplaySignalMonitorAddedCallback
@@ -337,66 +312,15 @@ func display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C
 	callback(monitor)
 }
 
-// GetMonitor is a wrapper around the C function gdk_display_get_monitor.
-func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
-	c_monitor_num := (C.int)(monitorNum)
+// Blacklisted : gdk_display_get_monitor
 
-	retC := C.gdk_display_get_monitor((*C.GdkDisplay)(recv.native), c_monitor_num)
-	var retGo (*Monitor)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = MonitorNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_display_get_monitor_at_point
 
-	return retGo
-}
+// Blacklisted : gdk_display_get_monitor_at_window
 
-// GetMonitorAtPoint is a wrapper around the C function gdk_display_get_monitor_at_point.
-func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
-	c_x := (C.int)(x)
+// Blacklisted : gdk_display_get_n_monitors
 
-	c_y := (C.int)(y)
-
-	retC := C.gdk_display_get_monitor_at_point((*C.GdkDisplay)(recv.native), c_x, c_y)
-	retGo := MonitorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetMonitorAtWindow is a wrapper around the C function gdk_display_get_monitor_at_window.
-func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	retC := C.gdk_display_get_monitor_at_window((*C.GdkDisplay)(recv.native), c_window)
-	retGo := MonitorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetNMonitors is a wrapper around the C function gdk_display_get_n_monitors.
-func (recv *Display) GetNMonitors() int32 {
-	retC := C.gdk_display_get_n_monitors((*C.GdkDisplay)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetPrimaryMonitor is a wrapper around the C function gdk_display_get_primary_monitor.
-func (recv *Display) GetPrimaryMonitor() *Monitor {
-	retC := C.gdk_display_get_primary_monitor((*C.GdkDisplay)(recv.native))
-	var retGo (*Monitor)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = MonitorNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gdk_display_get_primary_monitor
 
 // DrawingContext is a wrapper around the C record GdkDrawingContext.
 type DrawingContext struct {
@@ -445,59 +369,17 @@ func CastToDrawingContext(object *gobject.Object) *DrawingContext {
 	return DrawingContextNewFromC(object.ToC())
 }
 
-// GetCairoContext is a wrapper around the C function gdk_drawing_context_get_cairo_context.
-func (recv *DrawingContext) GetCairoContext() *cairo.Context {
-	retC := C.gdk_drawing_context_get_cairo_context((*C.GdkDrawingContext)(recv.native))
-	retGo := cairo.ContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_drawing_context_get_cairo_context
 
-	return retGo
-}
+// Blacklisted : gdk_drawing_context_get_clip
 
-// GetClip is a wrapper around the C function gdk_drawing_context_get_clip.
-func (recv *DrawingContext) GetClip() *cairo.Region {
-	retC := C.gdk_drawing_context_get_clip((*C.GdkDrawingContext)(recv.native))
-	var retGo (*cairo.Region)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = cairo.RegionNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_drawing_context_get_window
 
-	return retGo
-}
+// Blacklisted : gdk_drawing_context_is_valid
 
-// GetWindow is a wrapper around the C function gdk_drawing_context_get_window.
-func (recv *DrawingContext) GetWindow() *Window {
-	retC := C.gdk_drawing_context_get_window((*C.GdkDrawingContext)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_gl_context_get_use_es
 
-	return retGo
-}
-
-// IsValid is a wrapper around the C function gdk_drawing_context_is_valid.
-func (recv *DrawingContext) IsValid() bool {
-	retC := C.gdk_drawing_context_is_valid((*C.GdkDrawingContext)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetUseEs is a wrapper around the C function gdk_gl_context_get_use_es.
-func (recv *GLContext) GetUseEs() bool {
-	retC := C.gdk_gl_context_get_use_es((*C.GdkGLContext)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetUseEs is a wrapper around the C function gdk_gl_context_set_use_es.
-func (recv *GLContext) SetUseEs(useEs int32) {
-	c_use_es := (C.int)(useEs)
-
-	C.gdk_gl_context_set_use_es((*C.GdkGLContext)(recv.native), c_use_es)
-
-	return
-}
+// Blacklisted : gdk_gl_context_set_use_es
 
 // Monitor is a wrapper around the C record GdkMonitor.
 type Monitor struct {
@@ -606,99 +488,27 @@ func monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetDisplay is a wrapper around the C function gdk_monitor_get_display.
-func (recv *Monitor) GetDisplay() *Display {
-	retC := C.gdk_monitor_get_display((*C.GdkMonitor)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_monitor_get_display
 
-	return retGo
-}
+// Blacklisted : gdk_monitor_get_geometry
 
-// GetGeometry is a wrapper around the C function gdk_monitor_get_geometry.
-func (recv *Monitor) GetGeometry() *Rectangle {
-	var c_geometry C.GdkRectangle
+// Blacklisted : gdk_monitor_get_height_mm
 
-	C.gdk_monitor_get_geometry((*C.GdkMonitor)(recv.native), &c_geometry)
+// Blacklisted : gdk_monitor_get_manufacturer
 
-	geometry := RectangleNewFromC(unsafe.Pointer(&c_geometry))
+// Blacklisted : gdk_monitor_get_model
 
-	return geometry
-}
+// Blacklisted : gdk_monitor_get_refresh_rate
 
-// GetHeightMm is a wrapper around the C function gdk_monitor_get_height_mm.
-func (recv *Monitor) GetHeightMm() int32 {
-	retC := C.gdk_monitor_get_height_mm((*C.GdkMonitor)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gdk_monitor_get_scale_factor
 
-	return retGo
-}
+// Blacklisted : gdk_monitor_get_subpixel_layout
 
-// GetManufacturer is a wrapper around the C function gdk_monitor_get_manufacturer.
-func (recv *Monitor) GetManufacturer() string {
-	retC := C.gdk_monitor_get_manufacturer((*C.GdkMonitor)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gdk_monitor_get_width_mm
 
-	return retGo
-}
+// Blacklisted : gdk_monitor_get_workarea
 
-// GetModel is a wrapper around the C function gdk_monitor_get_model.
-func (recv *Monitor) GetModel() string {
-	retC := C.gdk_monitor_get_model((*C.GdkMonitor)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetRefreshRate is a wrapper around the C function gdk_monitor_get_refresh_rate.
-func (recv *Monitor) GetRefreshRate() int32 {
-	retC := C.gdk_monitor_get_refresh_rate((*C.GdkMonitor)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetScaleFactor is a wrapper around the C function gdk_monitor_get_scale_factor.
-func (recv *Monitor) GetScaleFactor() int32 {
-	retC := C.gdk_monitor_get_scale_factor((*C.GdkMonitor)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetSubpixelLayout is a wrapper around the C function gdk_monitor_get_subpixel_layout.
-func (recv *Monitor) GetSubpixelLayout() SubpixelLayout {
-	retC := C.gdk_monitor_get_subpixel_layout((*C.GdkMonitor)(recv.native))
-	retGo := (SubpixelLayout)(retC)
-
-	return retGo
-}
-
-// GetWidthMm is a wrapper around the C function gdk_monitor_get_width_mm.
-func (recv *Monitor) GetWidthMm() int32 {
-	retC := C.gdk_monitor_get_width_mm((*C.GdkMonitor)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetWorkarea is a wrapper around the C function gdk_monitor_get_workarea.
-func (recv *Monitor) GetWorkarea() *Rectangle {
-	var c_workarea C.GdkRectangle
-
-	C.gdk_monitor_get_workarea((*C.GdkMonitor)(recv.native), &c_workarea)
-
-	workarea := RectangleNewFromC(unsafe.Pointer(&c_workarea))
-
-	return workarea
-}
-
-// IsPrimary is a wrapper around the C function gdk_monitor_is_primary.
-func (recv *Monitor) IsPrimary() bool {
-	retC := C.gdk_monitor_is_primary((*C.GdkMonitor)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_monitor_is_primary
 
 // Seat is a wrapper around the C record GdkSeat.
 type Seat struct {
@@ -872,37 +682,10 @@ func seat_toolRemovedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpoin
 	callback(tool)
 }
 
-// GetDisplay is a wrapper around the C function gdk_seat_get_display.
-func (recv *Seat) GetDisplay() *Display {
-	retC := C.gdk_seat_get_display((*C.GdkSeat)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_seat_get_display
 
 // Unsupported signal 'moved-to-rect' for Window : unsupported parameter flipped_rect : no type generator for gpointer, gpointer
 
-// BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
-func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
-	c_region := (*C.cairo_region_t)(C.NULL)
-	if region != nil {
-		c_region = (*C.cairo_region_t)(region.ToC())
-	}
+// Blacklisted : gdk_window_begin_draw_frame
 
-	retC := C.gdk_window_begin_draw_frame((*C.GdkWindow)(recv.native), c_region)
-	retGo := DrawingContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// EndDrawFrame is a wrapper around the C function gdk_window_end_draw_frame.
-func (recv *Window) EndDrawFrame(context *DrawingContext) {
-	c_context := (*C.GdkDrawingContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDrawingContext)(context.ToC())
-	}
-
-	C.gdk_window_end_draw_frame((*C.GdkWindow)(recv.native), c_context)
-
-	return
-}
+// Blacklisted : gdk_window_end_draw_frame

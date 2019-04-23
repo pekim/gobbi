@@ -9,6 +9,7 @@ usage () {
     echo "Usage:"
     echo "  gobbi -h                       Show this help"
     echo "  gobbi build                    Generate libraries and docs, and run tests"
+    echo "  gobbi builddev                 Generate  partial libraries, and run tests"
     echo "  gobbi docs                     Generate documentation"
     echo "  gobbi generate                 Generate libraries"
     echo "  gobbi test                     Run tests"
@@ -32,6 +33,12 @@ build () {
     test
 }
 
+builddev () {
+    generate && \
+    echo "" && \
+    testdev
+}
+
 generate () {
     go run internal/cmd/generate/*.go
 }
@@ -42,6 +49,10 @@ docs () {
 
 test () {
     go test -tags "$tags" github.com/pekim/gobbi/internal/test/...
+}
+
+testdev () {
+    go test github.com/pekim/gobbi/internal/test/...
 }
 
 examples () {
@@ -77,6 +88,9 @@ processSubcommand () {
   case "$subCommand" in
     build)
       build
+      ;;
+    builddev)
+      builddev
       ;;
     docs)
       docs

@@ -100,26 +100,9 @@ func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 	return GObjectAccessibleNewFromC(object.ToC())
 }
 
-// GObjectAccessibleForObject is a wrapper around the C function atk_gobject_accessible_for_object.
-func GObjectAccessibleForObject(obj *gobject.Object) *Object {
-	c_obj := (*C.GObject)(C.NULL)
-	if obj != nil {
-		c_obj = (*C.GObject)(obj.ToC())
-	}
+// Blacklisted : atk_gobject_accessible_for_object
 
-	retC := C.atk_gobject_accessible_for_object(c_obj)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
-func (recv *GObjectAccessible) GetObject() *gobject.Object {
-	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : atk_gobject_accessible_get_object
 
 // Hyperlink is a wrapper around the C record AtkHyperlink.
 type Hyperlink struct {
@@ -229,66 +212,19 @@ func hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
-func (recv *Hyperlink) GetEndIndex() int32 {
-	retC := C.atk_hyperlink_get_end_index((*C.AtkHyperlink)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : atk_hyperlink_get_end_index
 
-	return retGo
-}
+// Blacklisted : atk_hyperlink_get_n_anchors
 
-// GetNAnchors is a wrapper around the C function atk_hyperlink_get_n_anchors.
-func (recv *Hyperlink) GetNAnchors() int32 {
-	retC := C.atk_hyperlink_get_n_anchors((*C.AtkHyperlink)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : atk_hyperlink_get_object
 
-	return retGo
-}
+// Blacklisted : atk_hyperlink_get_start_index
 
-// GetObject is a wrapper around the C function atk_hyperlink_get_object.
-func (recv *Hyperlink) GetObject(i int32) *Object {
-	c_i := (C.gint)(i)
+// Blacklisted : atk_hyperlink_get_uri
 
-	retC := C.atk_hyperlink_get_object((*C.AtkHyperlink)(recv.native), c_i)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_hyperlink_is_inline
 
-	return retGo
-}
-
-// GetStartIndex is a wrapper around the C function atk_hyperlink_get_start_index.
-func (recv *Hyperlink) GetStartIndex() int32 {
-	retC := C.atk_hyperlink_get_start_index((*C.AtkHyperlink)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetUri is a wrapper around the C function atk_hyperlink_get_uri.
-func (recv *Hyperlink) GetUri(i int32) string {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_hyperlink_get_uri((*C.AtkHyperlink)(recv.native), c_i)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IsInline is a wrapper around the C function atk_hyperlink_is_inline.
-func (recv *Hyperlink) IsInline() bool {
-	retC := C.atk_hyperlink_is_inline((*C.AtkHyperlink)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsValid is a wrapper around the C function atk_hyperlink_is_valid.
-func (recv *Hyperlink) IsValid() bool {
-	retC := C.atk_hyperlink_is_valid((*C.AtkHyperlink)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_hyperlink_is_valid
 
 // Action returns the Action interface implemented by Hyperlink
 func (recv *Hyperlink) Action() *Action {
@@ -391,22 +327,7 @@ func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 	return NoOpObjectNewFromC(object.ToC())
 }
 
-// NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
-func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
-	c_obj := (*C.GObject)(C.NULL)
-	if obj != nil {
-		c_obj = (*C.GObject)(obj.ToC())
-	}
-
-	retC := C.atk_no_op_object_new(c_obj)
-	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : atk_no_op_object_new
 
 // Action returns the Action interface implemented by NoOpObject
 func (recv *NoOpObject) Action() *Action {
@@ -521,17 +442,7 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 	return NoOpObjectFactoryNewFromC(object.ToC())
 }
 
-// NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
-func NoOpObjectFactoryNew() *NoOpObjectFactory {
-	retC := C.atk_no_op_object_factory_new()
-	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : atk_no_op_object_factory_new
 
 // Object is a wrapper around the C record AtkObject.
 type Object struct {
@@ -783,199 +694,49 @@ func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddRelationship is a wrapper around the C function atk_object_add_relationship.
-func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {
-	c_relationship := (C.AtkRelationType)(relationship)
-
-	c_target := (*C.AtkObject)(C.NULL)
-	if target != nil {
-		c_target = (*C.AtkObject)(target.ToC())
-	}
-
-	retC := C.atk_object_add_relationship((*C.AtkObject)(recv.native), c_relationship, c_target)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_object_add_relationship
 
 // Unsupported : atk_object_connect_property_change_handler : unsupported parameter handler : no type generator for PropertyChangeHandler (AtkPropertyChangeHandler*) for param handler
 
-// GetDescription is a wrapper around the C function atk_object_get_description.
-func (recv *Object) GetDescription() string {
-	retC := C.atk_object_get_description((*C.AtkObject)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : atk_object_get_description
 
-	return retGo
-}
+// Blacklisted : atk_object_get_index_in_parent
 
-// GetIndexInParent is a wrapper around the C function atk_object_get_index_in_parent.
-func (recv *Object) GetIndexInParent() int32 {
-	retC := C.atk_object_get_index_in_parent((*C.AtkObject)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : atk_object_get_layer
 
-	return retGo
-}
+// Blacklisted : atk_object_get_mdi_zorder
 
-// GetLayer is a wrapper around the C function atk_object_get_layer.
-func (recv *Object) GetLayer() Layer {
-	retC := C.atk_object_get_layer((*C.AtkObject)(recv.native))
-	retGo := (Layer)(retC)
+// Blacklisted : atk_object_get_n_accessible_children
 
-	return retGo
-}
+// Blacklisted : atk_object_get_name
 
-// GetMdiZorder is a wrapper around the C function atk_object_get_mdi_zorder.
-func (recv *Object) GetMdiZorder() int32 {
-	retC := C.atk_object_get_mdi_zorder((*C.AtkObject)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : atk_object_get_parent
 
-	return retGo
-}
-
-// GetNAccessibleChildren is a wrapper around the C function atk_object_get_n_accessible_children.
-func (recv *Object) GetNAccessibleChildren() int32 {
-	retC := C.atk_object_get_n_accessible_children((*C.AtkObject)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetName is a wrapper around the C function atk_object_get_name.
-func (recv *Object) GetName() string {
-	retC := C.atk_object_get_name((*C.AtkObject)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetParent is a wrapper around the C function atk_object_get_parent.
-func (recv *Object) GetParent() *Object {
-	retC := C.atk_object_get_parent((*C.AtkObject)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetRole is a wrapper around the C function atk_object_get_role.
-func (recv *Object) GetRole() Role {
-	retC := C.atk_object_get_role((*C.AtkObject)(recv.native))
-	retGo := (Role)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_object_get_role
 
 // Unsupported : atk_object_initialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// NotifyStateChange is a wrapper around the C function atk_object_notify_state_change.
-func (recv *Object) NotifyStateChange(state State, value bool) {
-	c_state := (C.AtkState)(state)
+// Blacklisted : atk_object_notify_state_change
 
-	c_value :=
-		boolToGboolean(value)
+// Blacklisted : atk_object_peek_parent
 
-	C.atk_object_notify_state_change((*C.AtkObject)(recv.native), c_state, c_value)
+// Blacklisted : atk_object_ref_accessible_child
 
-	return
-}
+// Blacklisted : atk_object_ref_relation_set
 
-// PeekParent is a wrapper around the C function atk_object_peek_parent.
-func (recv *Object) PeekParent() *Object {
-	retC := C.atk_object_peek_parent((*C.AtkObject)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_object_ref_state_set
 
-	return retGo
-}
+// Blacklisted : atk_object_remove_property_change_handler
 
-// RefAccessibleChild is a wrapper around the C function atk_object_ref_accessible_child.
-func (recv *Object) RefAccessibleChild(i int32) *Object {
-	c_i := (C.gint)(i)
+// Blacklisted : atk_object_remove_relationship
 
-	retC := C.atk_object_ref_accessible_child((*C.AtkObject)(recv.native), c_i)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_object_set_description
 
-	return retGo
-}
+// Blacklisted : atk_object_set_name
 
-// RefRelationSet is a wrapper around the C function atk_object_ref_relation_set.
-func (recv *Object) RefRelationSet() *RelationSet {
-	retC := C.atk_object_ref_relation_set((*C.AtkObject)(recv.native))
-	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_object_set_parent
 
-	return retGo
-}
-
-// RefStateSet is a wrapper around the C function atk_object_ref_state_set.
-func (recv *Object) RefStateSet() *StateSet {
-	retC := C.atk_object_ref_state_set((*C.AtkObject)(recv.native))
-	retGo := StateSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RemovePropertyChangeHandler is a wrapper around the C function atk_object_remove_property_change_handler.
-func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
-	c_handler_id := (C.guint)(handlerId)
-
-	C.atk_object_remove_property_change_handler((*C.AtkObject)(recv.native), c_handler_id)
-
-	return
-}
-
-// RemoveRelationship is a wrapper around the C function atk_object_remove_relationship.
-func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
-	c_relationship := (C.AtkRelationType)(relationship)
-
-	c_target := (*C.AtkObject)(C.NULL)
-	if target != nil {
-		c_target = (*C.AtkObject)(target.ToC())
-	}
-
-	retC := C.atk_object_remove_relationship((*C.AtkObject)(recv.native), c_relationship, c_target)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetDescription is a wrapper around the C function atk_object_set_description.
-func (recv *Object) SetDescription(description string) {
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
-
-	C.atk_object_set_description((*C.AtkObject)(recv.native), c_description)
-
-	return
-}
-
-// SetName is a wrapper around the C function atk_object_set_name.
-func (recv *Object) SetName(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.atk_object_set_name((*C.AtkObject)(recv.native), c_name)
-
-	return
-}
-
-// SetParent is a wrapper around the C function atk_object_set_parent.
-func (recv *Object) SetParent(parent *Object) {
-	c_parent := (*C.AtkObject)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.AtkObject)(parent.ToC())
-	}
-
-	C.atk_object_set_parent((*C.AtkObject)(recv.native), c_parent)
-
-	return
-}
-
-// SetRole is a wrapper around the C function atk_object_set_role.
-func (recv *Object) SetRole(role Role) {
-	c_role := (C.AtkRole)(role)
-
-	C.atk_object_set_role((*C.AtkObject)(recv.native), c_role)
-
-	return
-}
+// Blacklisted : atk_object_set_role
 
 // ObjectFactory is a wrapper around the C record AtkObjectFactory.
 type ObjectFactory struct {
@@ -1025,33 +786,11 @@ func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 	return ObjectFactoryNewFromC(object.ToC())
 }
 
-// CreateAccessible is a wrapper around the C function atk_object_factory_create_accessible.
-func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
-	c_obj := (*C.GObject)(C.NULL)
-	if obj != nil {
-		c_obj = (*C.GObject)(obj.ToC())
-	}
+// Blacklisted : atk_object_factory_create_accessible
 
-	retC := C.atk_object_factory_create_accessible((*C.AtkObjectFactory)(recv.native), c_obj)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_object_factory_get_accessible_type
 
-	return retGo
-}
-
-// GetAccessibleType is a wrapper around the C function atk_object_factory_get_accessible_type.
-func (recv *ObjectFactory) GetAccessibleType() gobject.Type {
-	retC := C.atk_object_factory_get_accessible_type((*C.AtkObjectFactory)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// Invalidate is a wrapper around the C function atk_object_factory_invalidate.
-func (recv *ObjectFactory) Invalidate() {
-	C.atk_object_factory_invalidate((*C.AtkObjectFactory)(recv.native))
-
-	return
-}
+// Blacklisted : atk_object_factory_invalidate
 
 // Plug is a wrapper around the C record AtkPlug.
 type Plug struct {
@@ -1101,17 +840,7 @@ func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromC(object.ToC())
 }
 
-// PlugNew is a wrapper around the C function atk_plug_new.
-func PlugNew() *Plug {
-	retC := C.atk_plug_new()
-	retGo := PlugNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : atk_plug_new
 
 // Component returns the Component interface implemented by Plug
 func (recv *Plug) Component() *Component {
@@ -1168,36 +897,11 @@ func CastToRegistry(object *gobject.Object) *Registry {
 	return RegistryNewFromC(object.ToC())
 }
 
-// GetFactory is a wrapper around the C function atk_registry_get_factory.
-func (recv *Registry) GetFactory(type_ gobject.Type) *ObjectFactory {
-	c_type := (C.GType)(type_)
+// Blacklisted : atk_registry_get_factory
 
-	retC := C.atk_registry_get_factory((*C.AtkRegistry)(recv.native), c_type)
-	retGo := ObjectFactoryNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_registry_get_factory_type
 
-	return retGo
-}
-
-// GetFactoryType is a wrapper around the C function atk_registry_get_factory_type.
-func (recv *Registry) GetFactoryType(type_ gobject.Type) gobject.Type {
-	c_type := (C.GType)(type_)
-
-	retC := C.atk_registry_get_factory_type((*C.AtkRegistry)(recv.native), c_type)
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// SetFactoryType is a wrapper around the C function atk_registry_set_factory_type.
-func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Type) {
-	c_type := (C.GType)(type_)
-
-	c_factory_type := (C.GType)(factoryType)
-
-	C.atk_registry_set_factory_type((*C.AtkRegistry)(recv.native), c_type, c_factory_type)
-
-	return
-}
+// Blacklisted : atk_registry_set_factory_type
 
 // Relation is a wrapper around the C record AtkRelation.
 type Relation struct {
@@ -1256,28 +960,11 @@ func CastToRelation(object *gobject.Object) *Relation {
 
 // Unsupported : atk_relation_new : unsupported parameter targets :
 
-// GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
-func (recv *Relation) GetRelationType() RelationType {
-	retC := C.atk_relation_get_relation_type((*C.AtkRelation)(recv.native))
-	retGo := (RelationType)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_relation_get_relation_type
 
 // Unsupported : atk_relation_get_target : array return type :
 
-// RemoveTarget is a wrapper around the C function atk_relation_remove_target.
-func (recv *Relation) RemoveTarget(target *Object) bool {
-	c_target := (*C.AtkObject)(C.NULL)
-	if target != nil {
-		c_target = (*C.AtkObject)(target.ToC())
-	}
-
-	retC := C.atk_relation_remove_target((*C.AtkRelation)(recv.native), c_target)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_relation_remove_target
 
 // RelationSet is a wrapper around the C record AtkRelationSet.
 type RelationSet struct {
@@ -1328,94 +1015,21 @@ func CastToRelationSet(object *gobject.Object) *RelationSet {
 	return RelationSetNewFromC(object.ToC())
 }
 
-// RelationSetNew is a wrapper around the C function atk_relation_set_new.
-func RelationSetNew() *RelationSet {
-	retC := C.atk_relation_set_new()
-	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_relation_set_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : atk_relation_set_add
 
-	return retGo
-}
+// Blacklisted : atk_relation_set_contains
 
-// Add is a wrapper around the C function atk_relation_set_add.
-func (recv *RelationSet) Add(relation *Relation) {
-	c_relation := (*C.AtkRelation)(C.NULL)
-	if relation != nil {
-		c_relation = (*C.AtkRelation)(relation.ToC())
-	}
+// Blacklisted : atk_relation_set_contains_target
 
-	C.atk_relation_set_add((*C.AtkRelationSet)(recv.native), c_relation)
+// Blacklisted : atk_relation_set_get_n_relations
 
-	return
-}
+// Blacklisted : atk_relation_set_get_relation
 
-// Contains is a wrapper around the C function atk_relation_set_contains.
-func (recv *RelationSet) Contains(relationship RelationType) bool {
-	c_relationship := (C.AtkRelationType)(relationship)
+// Blacklisted : atk_relation_set_get_relation_by_type
 
-	retC := C.atk_relation_set_contains((*C.AtkRelationSet)(recv.native), c_relationship)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ContainsTarget is a wrapper around the C function atk_relation_set_contains_target.
-func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Object) bool {
-	c_relationship := (C.AtkRelationType)(relationship)
-
-	c_target := (*C.AtkObject)(C.NULL)
-	if target != nil {
-		c_target = (*C.AtkObject)(target.ToC())
-	}
-
-	retC := C.atk_relation_set_contains_target((*C.AtkRelationSet)(recv.native), c_relationship, c_target)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetNRelations is a wrapper around the C function atk_relation_set_get_n_relations.
-func (recv *RelationSet) GetNRelations() int32 {
-	retC := C.atk_relation_set_get_n_relations((*C.AtkRelationSet)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetRelation is a wrapper around the C function atk_relation_set_get_relation.
-func (recv *RelationSet) GetRelation(i int32) *Relation {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_relation_set_get_relation((*C.AtkRelationSet)(recv.native), c_i)
-	retGo := RelationNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetRelationByType is a wrapper around the C function atk_relation_set_get_relation_by_type.
-func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation {
-	c_relationship := (C.AtkRelationType)(relationship)
-
-	retC := C.atk_relation_set_get_relation_by_type((*C.AtkRelationSet)(recv.native), c_relationship)
-	retGo := RelationNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Remove is a wrapper around the C function atk_relation_set_remove.
-func (recv *RelationSet) Remove(relation *Relation) {
-	c_relation := (*C.AtkRelation)(C.NULL)
-	if relation != nil {
-		c_relation = (*C.AtkRelation)(relation.ToC())
-	}
-
-	C.atk_relation_set_remove((*C.AtkRelationSet)(recv.native), c_relation)
-
-	return
-}
+// Blacklisted : atk_relation_set_remove
 
 // Socket is a wrapper around the C record AtkSocket.
 type Socket struct {
@@ -1466,17 +1080,7 @@ func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
 }
 
-// SocketNew is a wrapper around the C function atk_socket_new.
-func SocketNew() *Socket {
-	retC := C.atk_socket_new()
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : atk_socket_new
 
 // Component returns the Component interface implemented by Socket
 func (recv *Socket) Component() *Component {
@@ -1531,143 +1135,27 @@ func CastToStateSet(object *gobject.Object) *StateSet {
 	return StateSetNewFromC(object.ToC())
 }
 
-// StateSetNew is a wrapper around the C function atk_state_set_new.
-func StateSetNew() *StateSet {
-	retC := C.atk_state_set_new()
-	retGo := StateSetNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_state_set_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : atk_state_set_add_state
 
-	return retGo
-}
+// Blacklisted : atk_state_set_add_states
 
-// AddState is a wrapper around the C function atk_state_set_add_state.
-func (recv *StateSet) AddState(type_ StateType) bool {
-	c_type := (C.AtkStateType)(type_)
+// Blacklisted : atk_state_set_and_sets
 
-	retC := C.atk_state_set_add_state((*C.AtkStateSet)(recv.native), c_type)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_state_set_clear_states
 
-	return retGo
-}
+// Blacklisted : atk_state_set_contains_state
 
-// AddStates is a wrapper around the C function atk_state_set_add_states.
-func (recv *StateSet) AddStates(types []StateType) {
-	c_types_array := make([]C.AtkStateType, len(types)+1, len(types)+1)
-	for i, item := range types {
-		c := (C.AtkStateType)(item)
-		c_types_array[i] = c
-	}
-	c_types_array[len(types)] = 0
-	c_types_arrayPtr := &c_types_array[0]
-	c_types := (*C.AtkStateType)(unsafe.Pointer(c_types_arrayPtr))
+// Blacklisted : atk_state_set_contains_states
 
-	c_n_types := (C.gint)(len(types))
+// Blacklisted : atk_state_set_is_empty
 
-	C.atk_state_set_add_states((*C.AtkStateSet)(recv.native), c_types, c_n_types)
+// Blacklisted : atk_state_set_or_sets
 
-	return
-}
+// Blacklisted : atk_state_set_remove_state
 
-// AndSets is a wrapper around the C function atk_state_set_and_sets.
-func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
-	c_compare_set := (*C.AtkStateSet)(C.NULL)
-	if compareSet != nil {
-		c_compare_set = (*C.AtkStateSet)(compareSet.ToC())
-	}
-
-	retC := C.atk_state_set_and_sets((*C.AtkStateSet)(recv.native), c_compare_set)
-	retGo := StateSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ClearStates is a wrapper around the C function atk_state_set_clear_states.
-func (recv *StateSet) ClearStates() {
-	C.atk_state_set_clear_states((*C.AtkStateSet)(recv.native))
-
-	return
-}
-
-// ContainsState is a wrapper around the C function atk_state_set_contains_state.
-func (recv *StateSet) ContainsState(type_ StateType) bool {
-	c_type := (C.AtkStateType)(type_)
-
-	retC := C.atk_state_set_contains_state((*C.AtkStateSet)(recv.native), c_type)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ContainsStates is a wrapper around the C function atk_state_set_contains_states.
-func (recv *StateSet) ContainsStates(types []StateType) bool {
-	c_types_array := make([]C.AtkStateType, len(types)+1, len(types)+1)
-	for i, item := range types {
-		c := (C.AtkStateType)(item)
-		c_types_array[i] = c
-	}
-	c_types_array[len(types)] = 0
-	c_types_arrayPtr := &c_types_array[0]
-	c_types := (*C.AtkStateType)(unsafe.Pointer(c_types_arrayPtr))
-
-	c_n_types := (C.gint)(len(types))
-
-	retC := C.atk_state_set_contains_states((*C.AtkStateSet)(recv.native), c_types, c_n_types)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsEmpty is a wrapper around the C function atk_state_set_is_empty.
-func (recv *StateSet) IsEmpty() bool {
-	retC := C.atk_state_set_is_empty((*C.AtkStateSet)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// OrSets is a wrapper around the C function atk_state_set_or_sets.
-func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
-	c_compare_set := (*C.AtkStateSet)(C.NULL)
-	if compareSet != nil {
-		c_compare_set = (*C.AtkStateSet)(compareSet.ToC())
-	}
-
-	retC := C.atk_state_set_or_sets((*C.AtkStateSet)(recv.native), c_compare_set)
-	var retGo (*StateSet)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = StateSetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// RemoveState is a wrapper around the C function atk_state_set_remove_state.
-func (recv *StateSet) RemoveState(type_ StateType) bool {
-	c_type := (C.AtkStateType)(type_)
-
-	retC := C.atk_state_set_remove_state((*C.AtkStateSet)(recv.native), c_type)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// XorSets is a wrapper around the C function atk_state_set_xor_sets.
-func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
-	c_compare_set := (*C.AtkStateSet)(C.NULL)
-	if compareSet != nil {
-		c_compare_set = (*C.AtkStateSet)(compareSet.ToC())
-	}
-
-	retC := C.atk_state_set_xor_sets((*C.AtkStateSet)(recv.native), c_compare_set)
-	retGo := StateSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : atk_state_set_xor_sets
 
 // Util is a wrapper around the C record AtkUtil.
 type Util struct {

@@ -9,3 +9,7 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : pango_attr_type_get_name
+
+// Blacklisted : pango_bidi_type_for_unichar

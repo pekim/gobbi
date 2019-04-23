@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,18 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Ref is a wrapper around the C function pango_attr_list_ref.
-func (recv *AttrList) Ref() *AttrList {
-	retC := C.pango_attr_list_ref((*C.PangoAttrList)(recv.native))
-	retGo := AttrListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_attr_list_ref
 
-	return retGo
-}
-
-// Ref is a wrapper around the C function pango_layout_line_ref.
-func (recv *LayoutLine) Ref() *LayoutLine {
-	retC := C.pango_layout_line_ref((*C.PangoLayoutLine)(recv.native))
-	retGo := LayoutLineNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_layout_line_ref

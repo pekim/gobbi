@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	pango "github.com/pekim/gobbi/lib/pango"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,34 +12,10 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetEllipsizeMode is a wrapper around the C function gtk_tool_shell_get_ellipsize_mode.
-func (recv *ToolShell) GetEllipsizeMode() pango.EllipsizeMode {
-	retC := C.gtk_tool_shell_get_ellipsize_mode((*C.GtkToolShell)(recv.native))
-	retGo := (pango.EllipsizeMode)(retC)
+// Blacklisted : gtk_tool_shell_get_ellipsize_mode
 
-	return retGo
-}
+// Blacklisted : gtk_tool_shell_get_text_alignment
 
-// GetTextAlignment is a wrapper around the C function gtk_tool_shell_get_text_alignment.
-func (recv *ToolShell) GetTextAlignment() float32 {
-	retC := C.gtk_tool_shell_get_text_alignment((*C.GtkToolShell)(recv.native))
-	retGo := (float32)(retC)
+// Blacklisted : gtk_tool_shell_get_text_orientation
 
-	return retGo
-}
-
-// GetTextOrientation is a wrapper around the C function gtk_tool_shell_get_text_orientation.
-func (recv *ToolShell) GetTextOrientation() Orientation {
-	retC := C.gtk_tool_shell_get_text_orientation((*C.GtkToolShell)(recv.native))
-	retGo := (Orientation)(retC)
-
-	return retGo
-}
-
-// GetTextSizeGroup is a wrapper around the C function gtk_tool_shell_get_text_size_group.
-func (recv *ToolShell) GetTextSizeGroup() *SizeGroup {
-	retC := C.gtk_tool_shell_get_text_size_group((*C.GtkToolShell)(recv.native))
-	retGo := SizeGroupNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_tool_shell_get_text_size_group

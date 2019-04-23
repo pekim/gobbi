@@ -10,10 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// TypeGetTypeRegistrationSerial is a wrapper around the C function g_type_get_type_registration_serial.
-func TypeGetTypeRegistrationSerial() uint32 {
-	retC := C.g_type_get_type_registration_serial()
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_type_get_type_registration_serial

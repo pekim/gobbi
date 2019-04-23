@@ -62,45 +62,15 @@ func CastToBinding(object *Object) *Binding {
 	return BindingNewFromC(object.ToC())
 }
 
-// GetFlags is a wrapper around the C function g_binding_get_flags.
-func (recv *Binding) GetFlags() BindingFlags {
-	retC := C.g_binding_get_flags((*C.GBinding)(recv.native))
-	retGo := (BindingFlags)(retC)
+// Blacklisted : g_binding_get_flags
 
-	return retGo
-}
+// Blacklisted : g_binding_get_source
 
-// GetSource is a wrapper around the C function g_binding_get_source.
-func (recv *Binding) GetSource() *Object {
-	retC := C.g_binding_get_source((*C.GBinding)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_binding_get_source_property
 
-	return retGo
-}
+// Blacklisted : g_binding_get_target
 
-// GetSourceProperty is a wrapper around the C function g_binding_get_source_property.
-func (recv *Binding) GetSourceProperty() string {
-	retC := C.g_binding_get_source_property((*C.GBinding)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetTarget is a wrapper around the C function g_binding_get_target.
-func (recv *Binding) GetTarget() *Object {
-	retC := C.g_binding_get_target((*C.GBinding)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetTargetProperty is a wrapper around the C function g_binding_get_target_property.
-func (recv *Binding) GetTargetProperty() string {
-	retC := C.g_binding_get_target_property((*C.GBinding)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_binding_get_target_property
 
 // BindProperty is a wrapper around the C function g_object_bind_property.
 func (recv *Object) BindProperty(sourceProperty string, target *Object, targetProperty string, flags BindingFlags) *Binding {
@@ -125,48 +95,9 @@ func (recv *Object) BindProperty(sourceProperty string, target *Object, targetPr
 
 // Unsupported : g_object_bind_property_full : unsupported parameter transform_to : no type generator for BindingTransformFunc (GBindingTransformFunc) for param transform_to
 
-// BindPropertyWithClosures is a wrapper around the C function g_object_bind_property_with_closures.
-func (recv *Object) BindPropertyWithClosures(sourceProperty string, target *Object, targetProperty string, flags BindingFlags, transformTo *Closure, transformFrom *Closure) *Binding {
-	c_source_property := C.CString(sourceProperty)
-	defer C.free(unsafe.Pointer(c_source_property))
+// Blacklisted : g_object_bind_property_with_closures
 
-	c_target := (C.gpointer)(C.NULL)
-	if target != nil {
-		c_target = (C.gpointer)(target.ToC())
-	}
-
-	c_target_property := C.CString(targetProperty)
-	defer C.free(unsafe.Pointer(c_target_property))
-
-	c_flags := (C.GBindingFlags)(flags)
-
-	c_transform_to := (*C.GClosure)(C.NULL)
-	if transformTo != nil {
-		c_transform_to = (*C.GClosure)(transformTo.ToC())
-	}
-
-	c_transform_from := (*C.GClosure)(C.NULL)
-	if transformFrom != nil {
-		c_transform_from = (*C.GClosure)(transformFrom.ToC())
-	}
-
-	retC := C.g_object_bind_property_with_closures((C.gpointer)(recv.native), c_source_property, c_target, c_target_property, c_flags, c_transform_to, c_transform_from)
-	retGo := BindingNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// NotifyByPspec is a wrapper around the C function g_object_notify_by_pspec.
-func (recv *Object) NotifyByPspec(pspec *ParamSpec) {
-	c_pspec := (*C.GParamSpec)(C.NULL)
-	if pspec != nil {
-		c_pspec = (*C.GParamSpec)(pspec.ToC())
-	}
-
-	C.g_object_notify_by_pspec((*C.GObject)(recv.native), c_pspec)
-
-	return
-}
+// Blacklisted : g_object_notify_by_pspec
 
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {

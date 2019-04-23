@@ -2,15 +2,6 @@
 
 package gdk
 
-import (
-	cairo "github.com/pekim/gobbi/lib/cairo"
-	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	pango "github.com/pekim/gobbi/lib/pango"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -18,220 +9,39 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AddOptionEntriesLibgtkOnly is a wrapper around the C function gdk_add_option_entries_libgtk_only.
-func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
-	c_group := (*C.GOptionGroup)(C.NULL)
-	if group != nil {
-		c_group = (*C.GOptionGroup)(group.ToC())
-	}
-
-	C.gdk_add_option_entries_libgtk_only(c_group)
-
-	return
-}
+// Blacklisted : gdk_add_option_entries_libgtk_only
 
 // Blacklisted : gdk_atom_intern
 
-// Beep is a wrapper around the C function gdk_beep.
-func Beep() {
-	C.gdk_beep()
-
-	return
-}
+// Blacklisted : gdk_beep
 
 // Blacklisted : gdk_cairo_get_clip_rectangle
 
-// CairoRegionCreateFromSurface is a wrapper around the C function gdk_cairo_region_create_from_surface.
-func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
-	c_surface := (*C.cairo_surface_t)(C.NULL)
-	if surface != nil {
-		c_surface = (*C.cairo_surface_t)(surface.ToC())
-	}
-
-	retC := C.gdk_cairo_region_create_from_surface(c_surface)
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_cairo_region_create_from_surface
 
 // Blacklisted : gdk_color_parse
 
-// DragAbort is a wrapper around the C function gdk_drag_abort.
-func DragAbort(context *DragContext, time uint32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
+// Blacklisted : gdk_drag_abort
 
-	c_time_ := (C.guint32)(time)
+// Blacklisted : gdk_drag_begin
 
-	C.gdk_drag_abort(c_context, c_time_)
+// Blacklisted : gdk_drag_begin_for_device
 
-	return
-}
+// Blacklisted : gdk_drag_drop
 
-// DragBegin is a wrapper around the C function gdk_drag_begin.
-func DragBegin(window *Window, targets *glib.List) *DragContext {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
+// Blacklisted : gdk_drag_get_selection
 
-	c_targets := (*C.GList)(C.NULL)
-	if targets != nil {
-		c_targets = (*C.GList)(targets.ToC())
-	}
+// Blacklisted : gdk_drag_motion
 
-	retC := C.gdk_drag_begin(c_window, c_targets)
-	retGo := DragContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_drag_status
 
-	return retGo
-}
+// Blacklisted : gdk_drop_finish
 
-// DragBeginForDevice is a wrapper around the C function gdk_drag_begin_for_device.
-func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *DragContext {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
+// Blacklisted : gdk_drop_reply
 
-	c_device := (*C.GdkDevice)(C.NULL)
-	if device != nil {
-		c_device = (*C.GdkDevice)(device.ToC())
-	}
+// Blacklisted : gdk_error_trap_pop
 
-	c_targets := (*C.GList)(C.NULL)
-	if targets != nil {
-		c_targets = (*C.GList)(targets.ToC())
-	}
-
-	retC := C.gdk_drag_begin_for_device(c_window, c_device, c_targets)
-	retGo := DragContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DragDrop is a wrapper around the C function gdk_drag_drop.
-func DragDrop(context *DragContext, time uint32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_drag_drop(c_context, c_time_)
-
-	return
-}
-
-// DragGetSelection is a wrapper around the C function gdk_drag_get_selection.
-func DragGetSelection(context *DragContext) Atom {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	retC := C.gdk_drag_get_selection(c_context)
-	retGo := *AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DragMotion is a wrapper around the C function gdk_drag_motion.
-func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int32, yRoot int32, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_dest_window := (*C.GdkWindow)(C.NULL)
-	if destWindow != nil {
-		c_dest_window = (*C.GdkWindow)(destWindow.ToC())
-	}
-
-	c_protocol := (C.GdkDragProtocol)(protocol)
-
-	c_x_root := (C.gint)(xRoot)
-
-	c_y_root := (C.gint)(yRoot)
-
-	c_suggested_action := (C.GdkDragAction)(suggestedAction)
-
-	c_possible_actions := (C.GdkDragAction)(possibleActions)
-
-	c_time_ := (C.guint32)(time)
-
-	retC := C.gdk_drag_motion(c_context, c_dest_window, c_protocol, c_x_root, c_y_root, c_suggested_action, c_possible_actions, c_time_)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DragStatus is a wrapper around the C function gdk_drag_status.
-func DragStatus(context *DragContext, action DragAction, time uint32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_action := (C.GdkDragAction)(action)
-
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_drag_status(c_context, c_action, c_time_)
-
-	return
-}
-
-// DropFinish is a wrapper around the C function gdk_drop_finish.
-func DropFinish(context *DragContext, success bool, time uint32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_success :=
-		boolToGboolean(success)
-
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_drop_finish(c_context, c_success, c_time_)
-
-	return
-}
-
-// DropReply is a wrapper around the C function gdk_drop_reply.
-func DropReply(context *DragContext, accepted bool, time uint32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_accepted :=
-		boolToGboolean(accepted)
-
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_drop_reply(c_context, c_accepted, c_time_)
-
-	return
-}
-
-// ErrorTrapPop is a wrapper around the C function gdk_error_trap_pop.
-func ErrorTrapPop() int32 {
-	retC := C.gdk_error_trap_pop()
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// ErrorTrapPush is a wrapper around the C function gdk_error_trap_push.
-func ErrorTrapPush() {
-	C.gdk_error_trap_push()
-
-	return
-}
+// Blacklisted : gdk_error_trap_push
 
 // Unsupported : gdk_event_get : no return generator
 
@@ -239,13 +49,7 @@ func ErrorTrapPush() {
 
 // Unsupported : gdk_event_peek : no return generator
 
-// EventsPending is a wrapper around the C function gdk_events_pending.
-func EventsPending() bool {
-	retC := C.gdk_events_pending()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_events_pending
 
 // Flush is a wrapper around the C function gdk_flush.
 func Flush() {
@@ -254,38 +58,15 @@ func Flush() {
 	return
 }
 
-// GetDefaultRootWindow is a wrapper around the C function gdk_get_default_root_window.
-func GetDefaultRootWindow() *Window {
-	retC := C.gdk_get_default_root_window()
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_get_default_root_window
 
-	return retGo
-}
+// Blacklisted : gdk_get_display
 
-// GetDisplay is a wrapper around the C function gdk_get_display.
-func GetDisplay() string {
-	retC := C.gdk_get_display()
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gdk_get_program_class
 
-	return retGo
-}
+// Blacklisted : gdk_get_show_events
 
-// GetProgramClass is a wrapper around the C function gdk_get_program_class.
-func GetProgramClass() string {
-	retC := C.gdk_get_program_class()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetShowEvents is a wrapper around the C function gdk_get_show_events.
-func GetShowEvents() bool {
-	retC := C.gdk_get_show_events()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_gl_error_quark
 
 // Init is a wrapper around the C function gdk_init.
 func Init(args []string) []string {
@@ -298,368 +79,53 @@ func Init(args []string) []string {
 	return args
 }
 
-// InitCheck is a wrapper around the C function gdk_init_check.
-func InitCheck(args []string) (bool, []string) {
-	cArgc, cArgv := argsIn(args)
+// Blacklisted : gdk_init_check
 
-	retC := C.gdk_init_check(&cArgc, &cArgv)
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_keyboard_grab
 
-	args = argsOut(cArgc, cArgv)
+// Blacklisted : gdk_keyboard_ungrab
 
-	return retGo, args
-}
+// Blacklisted : gdk_keyval_convert_case
 
-// KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
-func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
+// Blacklisted : gdk_keyval_from_name
 
-	c_owner_events :=
-		boolToGboolean(ownerEvents)
+// Blacklisted : gdk_keyval_is_lower
 
-	c_time_ := (C.guint32)(time)
+// Blacklisted : gdk_keyval_is_upper
 
-	retC := C.gdk_keyboard_grab(c_window, c_owner_events, c_time_)
-	retGo := (GrabStatus)(retC)
+// Blacklisted : gdk_keyval_name
 
-	return retGo
-}
+// Blacklisted : gdk_keyval_to_lower
 
-// KeyboardUngrab is a wrapper around the C function gdk_keyboard_ungrab.
-func KeyboardUngrab(time uint32) {
-	c_time_ := (C.guint32)(time)
+// Blacklisted : gdk_keyval_to_unicode
 
-	C.gdk_keyboard_ungrab(c_time_)
+// Blacklisted : gdk_keyval_to_upper
 
-	return
-}
+// Blacklisted : gdk_list_visuals
 
-// KeyvalConvertCase is a wrapper around the C function gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
-	c_symbol := (C.guint)(symbol)
+// Blacklisted : gdk_offscreen_window_get_surface
 
-	var c_lower C.guint
+// Blacklisted : gdk_pango_context_get
 
-	var c_upper C.guint
+// Blacklisted : gdk_pango_layout_get_clip_region
 
-	C.gdk_keyval_convert_case(c_symbol, &c_lower, &c_upper)
+// Blacklisted : gdk_pango_layout_line_get_clip_region
 
-	lower := (uint32)(c_lower)
+// Blacklisted : gdk_pixbuf_get_from_surface
 
-	upper := (uint32)(c_upper)
+// Blacklisted : gdk_pixbuf_get_from_window
 
-	return lower, upper
-}
+// Blacklisted : gdk_pointer_grab
 
-// KeyvalFromName is a wrapper around the C function gdk_keyval_from_name.
-func KeyvalFromName(keyvalName string) uint32 {
-	c_keyval_name := C.CString(keyvalName)
-	defer C.free(unsafe.Pointer(c_keyval_name))
+// Blacklisted : gdk_pointer_is_grabbed
 
-	retC := C.gdk_keyval_from_name(c_keyval_name)
-	retGo := (uint32)(retC)
+// Blacklisted : gdk_pointer_ungrab
 
-	return retGo
-}
+// Blacklisted : gdk_pre_parse_libgtk_only
 
-// KeyvalIsLower is a wrapper around the C function gdk_keyval_is_lower.
-func KeyvalIsLower(keyval uint32) bool {
-	c_keyval := (C.guint)(keyval)
+// Blacklisted : gdk_property_change
 
-	retC := C.gdk_keyval_is_lower(c_keyval)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// KeyvalIsUpper is a wrapper around the C function gdk_keyval_is_upper.
-func KeyvalIsUpper(keyval uint32) bool {
-	c_keyval := (C.guint)(keyval)
-
-	retC := C.gdk_keyval_is_upper(c_keyval)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// KeyvalName is a wrapper around the C function gdk_keyval_name.
-func KeyvalName(keyval uint32) string {
-	c_keyval := (C.guint)(keyval)
-
-	retC := C.gdk_keyval_name(c_keyval)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// KeyvalToLower is a wrapper around the C function gdk_keyval_to_lower.
-func KeyvalToLower(keyval uint32) uint32 {
-	c_keyval := (C.guint)(keyval)
-
-	retC := C.gdk_keyval_to_lower(c_keyval)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// KeyvalToUnicode is a wrapper around the C function gdk_keyval_to_unicode.
-func KeyvalToUnicode(keyval uint32) uint32 {
-	c_keyval := (C.guint)(keyval)
-
-	retC := C.gdk_keyval_to_unicode(c_keyval)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// KeyvalToUpper is a wrapper around the C function gdk_keyval_to_upper.
-func KeyvalToUpper(keyval uint32) uint32 {
-	c_keyval := (C.guint)(keyval)
-
-	retC := C.gdk_keyval_to_upper(c_keyval)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// ListVisuals is a wrapper around the C function gdk_list_visuals.
-func ListVisuals() *glib.List {
-	retC := C.gdk_list_visuals()
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// OffscreenWindowGetSurface is a wrapper around the C function gdk_offscreen_window_get_surface.
-func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	retC := C.gdk_offscreen_window_get_surface(c_window)
-	var retGo (*cairo.Surface)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = cairo.SurfaceNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// PangoContextGet is a wrapper around the C function gdk_pango_context_get.
-func PangoContextGet() *pango.Context {
-	retC := C.gdk_pango_context_get()
-	retGo := pango.ContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PangoLayoutGetClipRegion is a wrapper around the C function gdk_pango_layout_get_clip_region.
-func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32, indexRanges int32, nRanges int32) *cairo.Region {
-	c_layout := (*C.PangoLayout)(C.NULL)
-	if layout != nil {
-		c_layout = (*C.PangoLayout)(layout.ToC())
-	}
-
-	c_x_origin := (C.gint)(xOrigin)
-
-	c_y_origin := (C.gint)(yOrigin)
-
-	c_index_ranges := (C.gint)(indexRanges)
-
-	c_n_ranges := (C.gint)(nRanges)
-
-	retC := C.gdk_pango_layout_get_clip_region(c_layout, c_x_origin, c_y_origin, &c_index_ranges, c_n_ranges)
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PangoLayoutLineGetClipRegion is a wrapper around the C function gdk_pango_layout_line_get_clip_region.
-func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin int32, indexRanges []int32, nRanges int32) *cairo.Region {
-	c_line := (*C.PangoLayoutLine)(C.NULL)
-	if line != nil {
-		c_line = (*C.PangoLayoutLine)(line.ToC())
-	}
-
-	c_x_origin := (C.gint)(xOrigin)
-
-	c_y_origin := (C.gint)(yOrigin)
-
-	c_index_ranges_array := make([]C.gint, len(indexRanges)+1, len(indexRanges)+1)
-	for i, item := range indexRanges {
-		c := (C.gint)(item)
-		c_index_ranges_array[i] = c
-	}
-	c_index_ranges_array[len(indexRanges)] = 0
-	c_index_ranges_arrayPtr := &c_index_ranges_array[0]
-	c_index_ranges := (*C.gint)(unsafe.Pointer(c_index_ranges_arrayPtr))
-
-	c_n_ranges := (C.gint)(nRanges)
-
-	retC := C.gdk_pango_layout_line_get_clip_region(c_line, c_x_origin, c_y_origin, c_index_ranges, c_n_ranges)
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
-func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
-	c_surface := (*C.cairo_surface_t)(C.NULL)
-	if surface != nil {
-		c_surface = (*C.cairo_surface_t)(surface.ToC())
-	}
-
-	c_src_x := (C.gint)(srcX)
-
-	c_src_y := (C.gint)(srcY)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	retC := C.gdk_pixbuf_get_from_surface(c_surface, c_src_x, c_src_y, c_width, c_height)
-	var retGo (*gdkpixbuf.Pixbuf)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// PixbufGetFromWindow is a wrapper around the C function gdk_pixbuf_get_from_window.
-func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	c_src_x := (C.gint)(srcX)
-
-	c_src_y := (C.gint)(srcY)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	retC := C.gdk_pixbuf_get_from_window(c_window, c_src_x, c_src_y, c_width, c_height)
-	var retGo (*gdkpixbuf.Pixbuf)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// PointerGrab is a wrapper around the C function gdk_pointer_grab.
-func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineTo *Window, cursor *Cursor, time uint32) GrabStatus {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	c_owner_events :=
-		boolToGboolean(ownerEvents)
-
-	c_event_mask := (C.GdkEventMask)(eventMask)
-
-	c_confine_to := (*C.GdkWindow)(C.NULL)
-	if confineTo != nil {
-		c_confine_to = (*C.GdkWindow)(confineTo.ToC())
-	}
-
-	c_cursor := (*C.GdkCursor)(C.NULL)
-	if cursor != nil {
-		c_cursor = (*C.GdkCursor)(cursor.ToC())
-	}
-
-	c_time_ := (C.guint32)(time)
-
-	retC := C.gdk_pointer_grab(c_window, c_owner_events, c_event_mask, c_confine_to, c_cursor, c_time_)
-	retGo := (GrabStatus)(retC)
-
-	return retGo
-}
-
-// PointerIsGrabbed is a wrapper around the C function gdk_pointer_is_grabbed.
-func PointerIsGrabbed() bool {
-	retC := C.gdk_pointer_is_grabbed()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// PointerUngrab is a wrapper around the C function gdk_pointer_ungrab.
-func PointerUngrab(time uint32) {
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_pointer_ungrab(c_time_)
-
-	return
-}
-
-// PreParseLibgtkOnly is a wrapper around the C function gdk_pre_parse_libgtk_only.
-func PreParseLibgtkOnly() {
-	C.gdk_pre_parse_libgtk_only()
-
-	return
-}
-
-// PropertyChange is a wrapper around the C function gdk_property_change.
-func PropertyChange(window *Window, property *Atom, type_ *Atom, format int32, mode PropMode, data uint8, nelements int32) {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	c_property := (C.GdkAtom)(C.NULL)
-	if property != nil {
-		c_property = (C.GdkAtom)(property.ToC())
-	}
-
-	c_type := (C.GdkAtom)(C.NULL)
-	if type_ != nil {
-		c_type = (C.GdkAtom)(type_.ToC())
-	}
-
-	c_format := (C.gint)(format)
-
-	c_mode := (C.GdkPropMode)(mode)
-
-	c_data := (C.guchar)(data)
-
-	c_nelements := (C.gint)(nelements)
-
-	C.gdk_property_change(c_window, c_property, c_type, c_format, c_mode, &c_data, c_nelements)
-
-	return
-}
-
-// PropertyDelete is a wrapper around the C function gdk_property_delete.
-func PropertyDelete(window *Window, property *Atom) {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	c_property := (C.GdkAtom)(C.NULL)
-	if property != nil {
-		c_property = (C.GdkAtom)(property.ToC())
-	}
-
-	C.gdk_property_delete(c_window, c_property)
-
-	return
-}
+// Blacklisted : gdk_property_delete
 
 // Unsupported : gdk_property_get : unsupported parameter actual_length : array length param actual_length is pointer (gint*)
 
@@ -667,188 +133,32 @@ func PropertyDelete(window *Window, property *Atom) {
 
 // Unsupported : gdk_query_visual_types : unsupported parameter visual_types : output array param visual_types
 
-// SelectionConvert is a wrapper around the C function gdk_selection_convert.
-func SelectionConvert(requestor *Window, selection *Atom, target *Atom, time uint32) {
-	c_requestor := (*C.GdkWindow)(C.NULL)
-	if requestor != nil {
-		c_requestor = (*C.GdkWindow)(requestor.ToC())
-	}
+// Blacklisted : gdk_selection_convert
 
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
+// Blacklisted : gdk_selection_owner_get
 
-	c_target := (C.GdkAtom)(C.NULL)
-	if target != nil {
-		c_target = (C.GdkAtom)(target.ToC())
-	}
-
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_selection_convert(c_requestor, c_selection, c_target, c_time_)
-
-	return
-}
-
-// SelectionOwnerGet is a wrapper around the C function gdk_selection_owner_get.
-func SelectionOwnerGet(selection *Atom) *Window {
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
-
-	retC := C.gdk_selection_owner_get(c_selection)
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// SelectionOwnerSet is a wrapper around the C function gdk_selection_owner_set.
-func SelectionOwnerSet(owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
-	c_owner := (*C.GdkWindow)(C.NULL)
-	if owner != nil {
-		c_owner = (*C.GdkWindow)(owner.ToC())
-	}
-
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
-
-	c_time_ := (C.guint32)(time)
-
-	c_send_event :=
-		boolToGboolean(sendEvent)
-
-	retC := C.gdk_selection_owner_set(c_owner, c_selection, c_time_, c_send_event)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_selection_owner_set
 
 // Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
 
-// SelectionSendNotify is a wrapper around the C function gdk_selection_send_notify.
-func SelectionSendNotify(requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
-	c_requestor := (*C.GdkWindow)(C.NULL)
-	if requestor != nil {
-		c_requestor = (*C.GdkWindow)(requestor.ToC())
-	}
+// Blacklisted : gdk_selection_send_notify
 
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
+// Blacklisted : gdk_set_double_click_time
 
-	c_target := (C.GdkAtom)(C.NULL)
-	if target != nil {
-		c_target = (C.GdkAtom)(target.ToC())
-	}
+// Blacklisted : gdk_set_program_class
 
-	c_property := (C.GdkAtom)(C.NULL)
-	if property != nil {
-		c_property = (C.GdkAtom)(property.ToC())
-	}
+// Blacklisted : gdk_set_show_events
 
-	c_time_ := (C.guint32)(time)
-
-	C.gdk_selection_send_notify(c_requestor, c_selection, c_target, c_property, c_time_)
-
-	return
-}
-
-// SetDoubleClickTime is a wrapper around the C function gdk_set_double_click_time.
-func SetDoubleClickTime(msec uint32) {
-	c_msec := (C.guint)(msec)
-
-	C.gdk_set_double_click_time(c_msec)
-
-	return
-}
-
-// SetProgramClass is a wrapper around the C function gdk_set_program_class.
-func SetProgramClass(programClass string) {
-	c_program_class := C.CString(programClass)
-	defer C.free(unsafe.Pointer(c_program_class))
-
-	C.gdk_set_program_class(c_program_class)
-
-	return
-}
-
-// SetShowEvents is a wrapper around the C function gdk_set_show_events.
-func SetShowEvents(showEvents bool) {
-	c_show_events :=
-		boolToGboolean(showEvents)
-
-	C.gdk_set_show_events(c_show_events)
-
-	return
-}
-
-// SettingGet is a wrapper around the C function gdk_setting_get.
-func SettingGet(name string, value *gobject.Value) bool {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_value := (*C.GValue)(C.NULL)
-	if value != nil {
-		c_value = (*C.GValue)(value.ToC())
-	}
-
-	retC := C.gdk_setting_get(c_name, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_setting_get
 
 // Blacklisted : gdk_synthesize_window_state
 
-// ThreadsEnter is a wrapper around the C function gdk_threads_enter.
-func ThreadsEnter() {
-	C.gdk_threads_enter()
+// Blacklisted : gdk_threads_enter
 
-	return
-}
+// Blacklisted : gdk_threads_init
 
-// ThreadsInit is a wrapper around the C function gdk_threads_init.
-func ThreadsInit() {
-	C.gdk_threads_init()
+// Blacklisted : gdk_threads_leave
 
-	return
-}
+// Blacklisted : gdk_unicode_to_keyval
 
-// ThreadsLeave is a wrapper around the C function gdk_threads_leave.
-func ThreadsLeave() {
-	C.gdk_threads_leave()
-
-	return
-}
-
-// UnicodeToKeyval is a wrapper around the C function gdk_unicode_to_keyval.
-func UnicodeToKeyval(wc uint32) uint32 {
-	c_wc := (C.guint32)(wc)
-
-	retC := C.gdk_unicode_to_keyval(c_wc)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// Utf8ToStringTarget is a wrapper around the C function gdk_utf8_to_string_target.
-func Utf8ToStringTarget(str string) string {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	retC := C.gdk_utf8_to_string_target(c_str)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_utf8_to_string_target

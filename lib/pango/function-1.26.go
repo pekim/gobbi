@@ -9,3 +9,5 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : pango_gravity_get_for_script_and_width

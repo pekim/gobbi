@@ -48,18 +48,6 @@ import (
 */
 /*
 
-	static void _g_notification_add_button_with_target(GNotification* notification, const gchar* label, const gchar* action, const gchar* target_format) {
-		return g_notification_add_button_with_target(notification, label, action, target_format);
-    }
-*/
-/*
-
-	static void _g_notification_set_default_action_and_target(GNotification* notification, const gchar* action, const gchar* target_format) {
-		return g_notification_set_default_action_and_target(notification, action, target_format);
-    }
-*/
-/*
-
 	static gboolean _g_output_stream_printf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
 		return g_output_stream_printf(stream, bytes_written, cancellable, error, format);
     }
@@ -173,13 +161,7 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AppInfoMonitorGet is a wrapper around the C function g_app_info_monitor_get.
-func AppInfoMonitorGet() *AppInfoMonitor {
-	retC := C.g_app_info_monitor_get()
-	retGo := AppInfoMonitorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_app_info_monitor_get
 
 type signalApplicationHandleLocalOptionsDetail struct {
 	callback  ApplicationSignalHandleLocalOptionsCallback
@@ -248,67 +230,15 @@ func application_handleLocalOptionsHandler(_ *C.GObject, c_options *C.GVariantDi
 
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries :
 
-// AddOptionGroup is a wrapper around the C function g_application_add_option_group.
-func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
-	c_group := (*C.GOptionGroup)(C.NULL)
-	if group != nil {
-		c_group = (*C.GOptionGroup)(group.ToC())
-	}
+// Blacklisted : g_application_add_option_group
 
-	C.g_application_add_option_group((*C.GApplication)(recv.native), c_group)
+// Blacklisted : g_application_send_notification
 
-	return
-}
+// Blacklisted : g_application_withdraw_notification
 
-// SendNotification is a wrapper around the C function g_application_send_notification.
-func (recv *Application) SendNotification(id string, notification *Notification) {
-	c_id := C.CString(id)
-	defer C.free(unsafe.Pointer(c_id))
+// Blacklisted : g_application_command_line_get_options_dict
 
-	c_notification := (*C.GNotification)(C.NULL)
-	if notification != nil {
-		c_notification = (*C.GNotification)(notification.ToC())
-	}
-
-	C.g_application_send_notification((*C.GApplication)(recv.native), c_id, c_notification)
-
-	return
-}
-
-// WithdrawNotification is a wrapper around the C function g_application_withdraw_notification.
-func (recv *Application) WithdrawNotification(id string) {
-	c_id := C.CString(id)
-	defer C.free(unsafe.Pointer(c_id))
-
-	C.g_application_withdraw_notification((*C.GApplication)(recv.native), c_id)
-
-	return
-}
-
-// GetOptionsDict is a wrapper around the C function g_application_command_line_get_options_dict.
-func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
-	retC := C.g_application_command_line_get_options_dict((*C.GApplicationCommandLine)(recv.native))
-	retGo := glib.VariantDictNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// InetSocketAddressNewFromString is a wrapper around the C function g_inet_socket_address_new_from_string.
-func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
-	c_address := C.CString(address)
-	defer C.free(unsafe.Pointer(c_address))
-
-	c_port := (C.guint)(port)
-
-	retC := C.g_inet_socket_address_new_from_string(c_address, c_port)
-	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_inet_socket_address_new_from_string
 
 // Notification is a wrapper around the C record GNotification.
 type Notification struct {
@@ -357,135 +287,25 @@ func CastToNotification(object *gobject.Object) *Notification {
 	return NotificationNewFromC(object.ToC())
 }
 
-// NotificationNew is a wrapper around the C function g_notification_new.
-func NotificationNew(title string) *Notification {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
+// Blacklisted : g_notification_new
 
-	retC := C.g_notification_new(c_title)
-	retGo := NotificationNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_notification_add_button
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_notification_add_button_with_target
 
-	return retGo
-}
+// Blacklisted : g_notification_add_button_with_target_value
 
-// AddButton is a wrapper around the C function g_notification_add_button.
-func (recv *Notification) AddButton(label string, detailedAction string) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_notification_set_body
 
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
+// Blacklisted : g_notification_set_default_action
 
-	C.g_notification_add_button((*C.GNotification)(recv.native), c_label, c_detailed_action)
+// Blacklisted : g_notification_set_default_action_and_target
 
-	return
-}
+// Blacklisted : g_notification_set_default_action_and_target_value
 
-// AddButtonWithTarget is a wrapper around the C function g_notification_add_button_with_target.
-func (recv *Notification) AddButtonWithTarget(label string, action string, targetFormat string, args ...interface{}) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_notification_set_icon
 
-	c_action := C.CString(action)
-	defer C.free(unsafe.Pointer(c_action))
-
-	goFormattedString := fmt.Sprintf(targetFormat, args...)
-	c_target_format := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_target_format))
-
-	C._g_notification_add_button_with_target((*C.GNotification)(recv.native), c_label, c_action, c_target_format)
-
-	return
-}
-
-// AddButtonWithTargetValue is a wrapper around the C function g_notification_add_button_with_target_value.
-func (recv *Notification) AddButtonWithTargetValue(label string, action string, target *glib.Variant) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_action := C.CString(action)
-	defer C.free(unsafe.Pointer(c_action))
-
-	c_target := (*C.GVariant)(C.NULL)
-	if target != nil {
-		c_target = (*C.GVariant)(target.ToC())
-	}
-
-	C.g_notification_add_button_with_target_value((*C.GNotification)(recv.native), c_label, c_action, c_target)
-
-	return
-}
-
-// SetBody is a wrapper around the C function g_notification_set_body.
-func (recv *Notification) SetBody(body string) {
-	c_body := C.CString(body)
-	defer C.free(unsafe.Pointer(c_body))
-
-	C.g_notification_set_body((*C.GNotification)(recv.native), c_body)
-
-	return
-}
-
-// SetDefaultAction is a wrapper around the C function g_notification_set_default_action.
-func (recv *Notification) SetDefaultAction(detailedAction string) {
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
-
-	C.g_notification_set_default_action((*C.GNotification)(recv.native), c_detailed_action)
-
-	return
-}
-
-// SetDefaultActionAndTarget is a wrapper around the C function g_notification_set_default_action_and_target.
-func (recv *Notification) SetDefaultActionAndTarget(action string, targetFormat string, args ...interface{}) {
-	c_action := C.CString(action)
-	defer C.free(unsafe.Pointer(c_action))
-
-	goFormattedString := fmt.Sprintf(targetFormat, args...)
-	c_target_format := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_target_format))
-
-	C._g_notification_set_default_action_and_target((*C.GNotification)(recv.native), c_action, c_target_format)
-
-	return
-}
-
-// SetDefaultActionAndTargetValue is a wrapper around the C function g_notification_set_default_action_and_target_value.
-func (recv *Notification) SetDefaultActionAndTargetValue(action string, target *glib.Variant) {
-	c_action := C.CString(action)
-	defer C.free(unsafe.Pointer(c_action))
-
-	c_target := (*C.GVariant)(C.NULL)
-	if target != nil {
-		c_target = (*C.GVariant)(target.ToC())
-	}
-
-	C.g_notification_set_default_action_and_target_value((*C.GNotification)(recv.native), c_action, c_target)
-
-	return
-}
-
-// SetIcon is a wrapper around the C function g_notification_set_icon.
-func (recv *Notification) SetIcon(icon *Icon) {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.g_notification_set_icon((*C.GNotification)(recv.native), c_icon)
-
-	return
-}
-
-// SetPriority is a wrapper around the C function g_notification_set_priority.
-func (recv *Notification) SetPriority(priority NotificationPriority) {
-	c_priority := (C.GNotificationPriority)(priority)
-
-	C.g_notification_set_priority((*C.GNotification)(recv.native), c_priority)
-
-	return
-}
+// Blacklisted : g_notification_set_priority
 
 // SetTitle is a wrapper around the C function g_notification_set_title.
 func (recv *Notification) SetTitle(title string) {
@@ -497,15 +317,7 @@ func (recv *Notification) SetTitle(title string) {
 	return
 }
 
-// SetUrgent is a wrapper around the C function g_notification_set_urgent.
-func (recv *Notification) SetUrgent(urgent bool) {
-	c_urgent :=
-		boolToGboolean(urgent)
-
-	C.g_notification_set_urgent((*C.GNotification)(recv.native), c_urgent)
-
-	return
-}
+// Blacklisted : g_notification_set_urgent
 
 // Printf is a wrapper around the C function g_output_stream_printf.
 func (recv *OutputStream) Printf(cancellable *Cancellable, error *glib.Error, format string, args ...interface{}) (bool, uint64) {
@@ -535,37 +347,9 @@ func (recv *OutputStream) Printf(cancellable *Cancellable, error *glib.Error, fo
 
 // Unsupported : g_output_stream_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// GetDefaultValue is a wrapper around the C function g_settings_get_default_value.
-func (recv *Settings) GetDefaultValue(key string) *glib.Variant {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
+// Blacklisted : g_settings_get_default_value
 
-	retC := C.g_settings_get_default_value((*C.GSettings)(recv.native), c_key)
-	var retGo (*glib.Variant)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetUserValue is a wrapper around the C function g_settings_get_user_value.
-func (recv *Settings) GetUserValue(key string) *glib.Variant {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	retC := C.g_settings_get_user_value((*C.GSettings)(recv.native), c_key)
-	var retGo (*glib.Variant)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_settings_get_user_value
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -616,359 +400,55 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Unsupported : g_subprocess_new : unsupported parameter ... : varargs
 
-// SubprocessNewv is a wrapper around the C function g_subprocess_newv.
-func SubprocessNewv(argv []string, flags SubprocessFlags) (*Subprocess, error) {
-	c_argv_array := make([]*C.gchar, len(argv)+1, len(argv)+1)
-	for i, item := range argv {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_argv_array[i] = c
-	}
-	c_argv_array[len(argv)] = nil
-	c_argv_arrayPtr := &c_argv_array[0]
-	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
+// Blacklisted : g_subprocess_newv
 
-	c_flags := (C.GSubprocessFlags)(flags)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_newv(c_argv, c_flags, &cThrowableError)
-	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Communicate is a wrapper around the C function g_subprocess_communicate.
-func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, *glib.Bytes, *glib.Bytes, error) {
-	c_stdin_buf := (*C.GBytes)(C.NULL)
-	if stdinBuf != nil {
-		c_stdin_buf = (*C.GBytes)(stdinBuf.ToC())
-	}
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var c_stdout_buf *C.GBytes
-
-	var c_stderr_buf *C.GBytes
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_communicate((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	stdoutBuf := glib.BytesNewFromC(unsafe.Pointer(c_stdout_buf))
-
-	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
-
-	return retGo, stdoutBuf, stderrBuf, goError
-}
+// Blacklisted : g_subprocess_communicate
 
 // Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CommunicateFinish is a wrapper around the C function g_subprocess_communicate_finish.
-func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Bytes, *glib.Bytes, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_subprocess_communicate_finish
 
-	var c_stdout_buf *C.GBytes
-
-	var c_stderr_buf *C.GBytes
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_communicate_finish((*C.GSubprocess)(recv.native), c_result, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	stdoutBuf := glib.BytesNewFromC(unsafe.Pointer(c_stdout_buf))
-
-	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
-
-	return retGo, stdoutBuf, stderrBuf, goError
-}
-
-// CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
-func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
-	c_stdin_buf := C.CString(stdinBuf)
-	defer C.free(unsafe.Pointer(c_stdin_buf))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var c_stdout_buf *C.char
-
-	var c_stderr_buf *C.char
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_communicate_utf8((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	stdoutBuf := C.GoString(c_stdout_buf)
-	defer C.free(unsafe.Pointer(c_stdout_buf))
-
-	stderrBuf := C.GoString(c_stderr_buf)
-	defer C.free(unsafe.Pointer(c_stderr_buf))
-
-	return retGo, stdoutBuf, stderrBuf, goError
-}
+// Blacklisted : g_subprocess_communicate_utf8
 
 // Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CommunicateUtf8Finish is a wrapper around the C function g_subprocess_communicate_utf8_finish.
-func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string, string, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_subprocess_communicate_utf8_finish
 
-	var c_stdout_buf *C.char
+// Blacklisted : g_subprocess_force_exit
 
-	var c_stderr_buf *C.char
+// Blacklisted : g_subprocess_get_exit_status
 
-	var cThrowableError *C.GError
+// Blacklisted : g_subprocess_get_identifier
 
-	retC := C.g_subprocess_communicate_utf8_finish((*C.GSubprocess)(recv.native), c_result, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_subprocess_get_if_exited
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_subprocess_get_if_signaled
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_subprocess_get_status
 
-	stdoutBuf := C.GoString(c_stdout_buf)
-	defer C.free(unsafe.Pointer(c_stdout_buf))
+// Blacklisted : g_subprocess_get_stderr_pipe
 
-	stderrBuf := C.GoString(c_stderr_buf)
-	defer C.free(unsafe.Pointer(c_stderr_buf))
+// Blacklisted : g_subprocess_get_stdin_pipe
 
-	return retGo, stdoutBuf, stderrBuf, goError
-}
+// Blacklisted : g_subprocess_get_stdout_pipe
 
-// ForceExit is a wrapper around the C function g_subprocess_force_exit.
-func (recv *Subprocess) ForceExit() {
-	C.g_subprocess_force_exit((*C.GSubprocess)(recv.native))
+// Blacklisted : g_subprocess_get_successful
 
-	return
-}
+// Blacklisted : g_subprocess_get_term_sig
 
-// GetExitStatus is a wrapper around the C function g_subprocess_get_exit_status.
-func (recv *Subprocess) GetExitStatus() int32 {
-	retC := C.g_subprocess_get_exit_status((*C.GSubprocess)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : g_subprocess_send_signal
 
-	return retGo
-}
-
-// GetIdentifier is a wrapper around the C function g_subprocess_get_identifier.
-func (recv *Subprocess) GetIdentifier() string {
-	retC := C.g_subprocess_get_identifier((*C.GSubprocess)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetIfExited is a wrapper around the C function g_subprocess_get_if_exited.
-func (recv *Subprocess) GetIfExited() bool {
-	retC := C.g_subprocess_get_if_exited((*C.GSubprocess)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIfSignaled is a wrapper around the C function g_subprocess_get_if_signaled.
-func (recv *Subprocess) GetIfSignaled() bool {
-	retC := C.g_subprocess_get_if_signaled((*C.GSubprocess)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetStatus is a wrapper around the C function g_subprocess_get_status.
-func (recv *Subprocess) GetStatus() int32 {
-	retC := C.g_subprocess_get_status((*C.GSubprocess)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetStderrPipe is a wrapper around the C function g_subprocess_get_stderr_pipe.
-func (recv *Subprocess) GetStderrPipe() *InputStream {
-	retC := C.g_subprocess_get_stderr_pipe((*C.GSubprocess)(recv.native))
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetStdinPipe is a wrapper around the C function g_subprocess_get_stdin_pipe.
-func (recv *Subprocess) GetStdinPipe() *OutputStream {
-	retC := C.g_subprocess_get_stdin_pipe((*C.GSubprocess)(recv.native))
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetStdoutPipe is a wrapper around the C function g_subprocess_get_stdout_pipe.
-func (recv *Subprocess) GetStdoutPipe() *InputStream {
-	retC := C.g_subprocess_get_stdout_pipe((*C.GSubprocess)(recv.native))
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetSuccessful is a wrapper around the C function g_subprocess_get_successful.
-func (recv *Subprocess) GetSuccessful() bool {
-	retC := C.g_subprocess_get_successful((*C.GSubprocess)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetTermSig is a wrapper around the C function g_subprocess_get_term_sig.
-func (recv *Subprocess) GetTermSig() int32 {
-	retC := C.g_subprocess_get_term_sig((*C.GSubprocess)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// SendSignal is a wrapper around the C function g_subprocess_send_signal.
-func (recv *Subprocess) SendSignal(signalNum int32) {
-	c_signal_num := (C.gint)(signalNum)
-
-	C.g_subprocess_send_signal((*C.GSubprocess)(recv.native), c_signal_num)
-
-	return
-}
-
-// Wait is a wrapper around the C function g_subprocess_wait.
-func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_wait((*C.GSubprocess)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_subprocess_wait
 
 // Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WaitCheck is a wrapper around the C function g_subprocess_wait_check.
-func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_wait_check((*C.GSubprocess)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_subprocess_wait_check
 
 // Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WaitCheckFinish is a wrapper around the C function g_subprocess_wait_check_finish.
-func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_subprocess_wait_check_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_wait_check_finish((*C.GSubprocess)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// WaitFinish is a wrapper around the C function g_subprocess_wait_finish.
-func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_wait_finish((*C.GSubprocess)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_subprocess_wait_finish
 
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
 type SubprocessLauncher struct {
@@ -1017,271 +497,44 @@ func CastToSubprocessLauncher(object *gobject.Object) *SubprocessLauncher {
 	return SubprocessLauncherNewFromC(object.ToC())
 }
 
-// SubprocessLauncherNew is a wrapper around the C function g_subprocess_launcher_new.
-func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
-	c_flags := (C.GSubprocessFlags)(flags)
+// Blacklisted : g_subprocess_launcher_new
 
-	retC := C.g_subprocess_launcher_new(c_flags)
-	retGo := SubprocessLauncherNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// Getenv is a wrapper around the C function g_subprocess_launcher_getenv.
-func (recv *SubprocessLauncher) Getenv(variable string) string {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
-
-	retC := C.g_subprocess_launcher_getenv((*C.GSubprocessLauncher)(recv.native), c_variable)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_subprocess_launcher_getenv
 
 // Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
-// SetCwd is a wrapper around the C function g_subprocess_launcher_set_cwd.
-func (recv *SubprocessLauncher) SetCwd(cwd string) {
-	c_cwd := C.CString(cwd)
-	defer C.free(unsafe.Pointer(c_cwd))
+// Blacklisted : g_subprocess_launcher_set_cwd
 
-	C.g_subprocess_launcher_set_cwd((*C.GSubprocessLauncher)(recv.native), c_cwd)
+// Blacklisted : g_subprocess_launcher_set_environ
 
-	return
-}
+// Blacklisted : g_subprocess_launcher_set_flags
 
-// SetEnviron is a wrapper around the C function g_subprocess_launcher_set_environ.
-func (recv *SubprocessLauncher) SetEnviron(env []string) {
-	c_env_array := make([]*C.gchar, len(env)+1, len(env)+1)
-	for i, item := range env {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_env_array[i] = c
-	}
-	c_env_array[len(env)] = nil
-	c_env_arrayPtr := &c_env_array[0]
-	c_env := (**C.gchar)(unsafe.Pointer(c_env_arrayPtr))
+// Blacklisted : g_subprocess_launcher_set_stderr_file_path
 
-	C.g_subprocess_launcher_set_environ((*C.GSubprocessLauncher)(recv.native), c_env)
+// Blacklisted : g_subprocess_launcher_set_stdin_file_path
 
-	return
-}
+// Blacklisted : g_subprocess_launcher_set_stdout_file_path
 
-// SetFlags is a wrapper around the C function g_subprocess_launcher_set_flags.
-func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
-	c_flags := (C.GSubprocessFlags)(flags)
-
-	C.g_subprocess_launcher_set_flags((*C.GSubprocessLauncher)(recv.native), c_flags)
-
-	return
-}
-
-// SetStderrFilePath is a wrapper around the C function g_subprocess_launcher_set_stderr_file_path.
-func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	C.g_subprocess_launcher_set_stderr_file_path((*C.GSubprocessLauncher)(recv.native), c_path)
-
-	return
-}
-
-// SetStdinFilePath is a wrapper around the C function g_subprocess_launcher_set_stdin_file_path.
-func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	C.g_subprocess_launcher_set_stdin_file_path((*C.GSubprocessLauncher)(recv.native), c_path)
-
-	return
-}
-
-// SetStdoutFilePath is a wrapper around the C function g_subprocess_launcher_set_stdout_file_path.
-func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	C.g_subprocess_launcher_set_stdout_file_path((*C.GSubprocessLauncher)(recv.native), c_path)
-
-	return
-}
-
-// Setenv is a wrapper around the C function g_subprocess_launcher_setenv.
-func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
-
-	c_value := C.CString(value)
-	defer C.free(unsafe.Pointer(c_value))
-
-	c_overwrite :=
-		boolToGboolean(overwrite)
-
-	C.g_subprocess_launcher_setenv((*C.GSubprocessLauncher)(recv.native), c_variable, c_value, c_overwrite)
-
-	return
-}
+// Blacklisted : g_subprocess_launcher_setenv
 
 // Unsupported : g_subprocess_launcher_spawn : unsupported parameter ... : varargs
 
-// Spawnv is a wrapper around the C function g_subprocess_launcher_spawnv.
-func (recv *SubprocessLauncher) Spawnv(argv []string) (*Subprocess, error) {
-	c_argv_array := make([]*C.gchar, len(argv)+1, len(argv)+1)
-	for i, item := range argv {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_argv_array[i] = c
-	}
-	c_argv_array[len(argv)] = nil
-	c_argv_arrayPtr := &c_argv_array[0]
-	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
+// Blacklisted : g_subprocess_launcher_spawnv
 
-	var cThrowableError *C.GError
+// Blacklisted : g_subprocess_launcher_take_fd
 
-	retC := C.g_subprocess_launcher_spawnv((*C.GSubprocessLauncher)(recv.native), c_argv, &cThrowableError)
-	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_subprocess_launcher_take_stderr_fd
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_subprocess_launcher_take_stdin_fd
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_subprocess_launcher_take_stdout_fd
 
-	return retGo, goError
-}
+// Blacklisted : g_subprocess_launcher_unsetenv
 
-// TakeFd is a wrapper around the C function g_subprocess_launcher_take_fd.
-func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
-	c_source_fd := (C.gint)(sourceFd)
+// Blacklisted : g_tls_interaction_invoke_request_certificate
 
-	c_target_fd := (C.gint)(targetFd)
-
-	C.g_subprocess_launcher_take_fd((*C.GSubprocessLauncher)(recv.native), c_source_fd, c_target_fd)
-
-	return
-}
-
-// TakeStderrFd is a wrapper around the C function g_subprocess_launcher_take_stderr_fd.
-func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
-	c_fd := (C.gint)(fd)
-
-	C.g_subprocess_launcher_take_stderr_fd((*C.GSubprocessLauncher)(recv.native), c_fd)
-
-	return
-}
-
-// TakeStdinFd is a wrapper around the C function g_subprocess_launcher_take_stdin_fd.
-func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
-	c_fd := (C.gint)(fd)
-
-	C.g_subprocess_launcher_take_stdin_fd((*C.GSubprocessLauncher)(recv.native), c_fd)
-
-	return
-}
-
-// TakeStdoutFd is a wrapper around the C function g_subprocess_launcher_take_stdout_fd.
-func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
-	c_fd := (C.gint)(fd)
-
-	C.g_subprocess_launcher_take_stdout_fd((*C.GSubprocessLauncher)(recv.native), c_fd)
-
-	return
-}
-
-// Unsetenv is a wrapper around the C function g_subprocess_launcher_unsetenv.
-func (recv *SubprocessLauncher) Unsetenv(variable string) {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
-
-	C.g_subprocess_launcher_unsetenv((*C.GSubprocessLauncher)(recv.native), c_variable)
-
-	return
-}
-
-// InvokeRequestCertificate is a wrapper around the C function g_tls_interaction_invoke_request_certificate.
-func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_connection := (*C.GTlsConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GTlsConnection)(connection.ToC())
-	}
-
-	c_flags := (C.GTlsCertificateRequestFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_interaction_invoke_request_certificate((*C.GTlsInteraction)(recv.native), c_connection, c_flags, c_cancellable, &cThrowableError)
-	retGo := (TlsInteractionResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// RequestCertificate is a wrapper around the C function g_tls_interaction_request_certificate.
-func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_connection := (*C.GTlsConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GTlsConnection)(connection.ToC())
-	}
-
-	c_flags := (C.GTlsCertificateRequestFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_interaction_request_certificate((*C.GTlsInteraction)(recv.native), c_connection, c_flags, c_cancellable, &cThrowableError)
-	retGo := (TlsInteractionResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_interaction_request_certificate
 
 // Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// RequestCertificateFinish is a wrapper around the C function g_tls_interaction_request_certificate_finish.
-func (recv *TlsInteraction) RequestCertificateFinish(result *AsyncResult) (TlsInteractionResult, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_interaction_request_certificate_finish((*C.GTlsInteraction)(recv.native), c_result, &cThrowableError)
-	retGo := (TlsInteractionResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_interaction_request_certificate_finish

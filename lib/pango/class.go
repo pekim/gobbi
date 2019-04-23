@@ -3,7 +3,6 @@
 package pango
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"unsafe"
@@ -75,135 +74,27 @@ func ContextNew() *Context {
 	return retGo
 }
 
-// GetBaseDir is a wrapper around the C function pango_context_get_base_dir.
-func (recv *Context) GetBaseDir() Direction {
-	retC := C.pango_context_get_base_dir((*C.PangoContext)(recv.native))
-	retGo := (Direction)(retC)
+// Blacklisted : pango_context_get_base_dir
 
-	return retGo
-}
+// Blacklisted : pango_context_get_font_description
 
-// GetFontDescription is a wrapper around the C function pango_context_get_font_description.
-func (recv *Context) GetFontDescription() *FontDescription {
-	retC := C.pango_context_get_font_description((*C.PangoContext)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_context_get_language
 
-	return retGo
-}
-
-// GetLanguage is a wrapper around the C function pango_context_get_language.
-func (recv *Context) GetLanguage() *Language {
-	retC := C.pango_context_get_language((*C.PangoContext)(recv.native))
-	retGo := LanguageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetMetrics is a wrapper around the C function pango_context_get_metrics.
-func (recv *Context) GetMetrics(desc *FontDescription, language *Language) *FontMetrics {
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
-
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
-
-	retC := C.pango_context_get_metrics((*C.PangoContext)(recv.native), c_desc, c_language)
-	retGo := FontMetricsNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_context_get_metrics
 
 // Unsupported : pango_context_list_families : unsupported parameter families : output array param families
 
-// LoadFont is a wrapper around the C function pango_context_load_font.
-func (recv *Context) LoadFont(desc *FontDescription) *Font {
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
+// Blacklisted : pango_context_load_font
 
-	retC := C.pango_context_load_font((*C.PangoContext)(recv.native), c_desc)
-	var retGo (*Font)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FontNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : pango_context_load_fontset
 
-	return retGo
-}
+// Blacklisted : pango_context_set_base_dir
 
-// LoadFontset is a wrapper around the C function pango_context_load_fontset.
-func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fontset {
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
+// Blacklisted : pango_context_set_font_description
 
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
+// Blacklisted : pango_context_set_font_map
 
-	retC := C.pango_context_load_fontset((*C.PangoContext)(recv.native), c_desc, c_language)
-	var retGo (*Fontset)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FontsetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// SetBaseDir is a wrapper around the C function pango_context_set_base_dir.
-func (recv *Context) SetBaseDir(direction Direction) {
-	c_direction := (C.PangoDirection)(direction)
-
-	C.pango_context_set_base_dir((*C.PangoContext)(recv.native), c_direction)
-
-	return
-}
-
-// SetFontDescription is a wrapper around the C function pango_context_set_font_description.
-func (recv *Context) SetFontDescription(desc *FontDescription) {
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
-
-	C.pango_context_set_font_description((*C.PangoContext)(recv.native), c_desc)
-
-	return
-}
-
-// SetFontMap is a wrapper around the C function pango_context_set_font_map.
-func (recv *Context) SetFontMap(fontMap *FontMap) {
-	c_font_map := (*C.PangoFontMap)(C.NULL)
-	if fontMap != nil {
-		c_font_map = (*C.PangoFontMap)(fontMap.ToC())
-	}
-
-	C.pango_context_set_font_map((*C.PangoContext)(recv.native), c_font_map)
-
-	return
-}
-
-// SetLanguage is a wrapper around the C function pango_context_set_language.
-func (recv *Context) SetLanguage(language *Language) {
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
-
-	C.pango_context_set_language((*C.PangoContext)(recv.native), c_language)
-
-	return
-}
+// Blacklisted : pango_context_set_language
 
 // Blacklisted : PangoEngine
 
@@ -342,71 +233,15 @@ func CastToFont(object *gobject.Object) *Font {
 }
 
 // pango_font_descriptions_free : unsupported parameter descs :
-// Describe is a wrapper around the C function pango_font_describe.
-func (recv *Font) Describe() *FontDescription {
-	retC := C.pango_font_describe((*C.PangoFont)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_font_describe
 
-	return retGo
-}
+// Blacklisted : pango_font_find_shaper
 
-// FindShaper is a wrapper around the C function pango_font_find_shaper.
-func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
+// Blacklisted : pango_font_get_coverage
 
-	c_ch := (C.guint32)(ch)
+// Blacklisted : pango_font_get_glyph_extents
 
-	retC := C.pango_font_find_shaper((*C.PangoFont)(recv.native), c_language, c_ch)
-	retGo := EngineShapeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetCoverage is a wrapper around the C function pango_font_get_coverage.
-func (recv *Font) GetCoverage(language *Language) *Coverage {
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
-
-	retC := C.pango_font_get_coverage((*C.PangoFont)(recv.native), c_language)
-	retGo := CoverageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetGlyphExtents is a wrapper around the C function pango_font_get_glyph_extents.
-func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
-	c_glyph := (C.PangoGlyph)(glyph)
-
-	var c_ink_rect C.PangoRectangle
-
-	var c_logical_rect C.PangoRectangle
-
-	C.pango_font_get_glyph_extents((*C.PangoFont)(recv.native), c_glyph, &c_ink_rect, &c_logical_rect)
-
-	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
-
-	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
-
-	return inkRect, logicalRect
-}
-
-// GetMetrics is a wrapper around the C function pango_font_get_metrics.
-func (recv *Font) GetMetrics(language *Language) *FontMetrics {
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
-
-	retC := C.pango_font_get_metrics((*C.PangoFont)(recv.native), c_language)
-	retGo := FontMetricsNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_font_get_metrics
 
 // FontFace is a wrapper around the C record PangoFontFace.
 type FontFace struct {
@@ -456,21 +291,9 @@ func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromC(object.ToC())
 }
 
-// Describe is a wrapper around the C function pango_font_face_describe.
-func (recv *FontFace) Describe() *FontDescription {
-	retC := C.pango_font_face_describe((*C.PangoFontFace)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_font_face_describe
 
-	return retGo
-}
-
-// GetFaceName is a wrapper around the C function pango_font_face_get_face_name.
-func (recv *FontFace) GetFaceName() string {
-	retC := C.pango_font_face_get_face_name((*C.PangoFontFace)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : pango_font_face_get_face_name
 
 // FontFamily is a wrapper around the C record PangoFontFamily.
 type FontFamily struct {
@@ -520,13 +343,7 @@ func CastToFontFamily(object *gobject.Object) *FontFamily {
 	return FontFamilyNewFromC(object.ToC())
 }
 
-// GetName is a wrapper around the C function pango_font_family_get_name.
-func (recv *FontFamily) GetName() string {
-	retC := C.pango_font_family_get_name((*C.PangoFontFamily)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : pango_font_family_get_name
 
 // Unsupported : pango_font_family_list_faces : unsupported parameter faces : output array param faces
 
@@ -580,56 +397,9 @@ func CastToFontMap(object *gobject.Object) *FontMap {
 
 // Unsupported : pango_font_map_list_families : unsupported parameter families : output array param families
 
-// LoadFont is a wrapper around the C function pango_font_map_load_font.
-func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
-	c_context := (*C.PangoContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.PangoContext)(context.ToC())
-	}
+// Blacklisted : pango_font_map_load_font
 
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
-
-	retC := C.pango_font_map_load_font((*C.PangoFontMap)(recv.native), c_context, c_desc)
-	var retGo (*Font)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FontNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// LoadFontset is a wrapper around the C function pango_font_map_load_fontset.
-func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, language *Language) *Fontset {
-	c_context := (*C.PangoContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.PangoContext)(context.ToC())
-	}
-
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
-
-	c_language := (*C.PangoLanguage)(C.NULL)
-	if language != nil {
-		c_language = (*C.PangoLanguage)(language.ToC())
-	}
-
-	retC := C.pango_font_map_load_fontset((*C.PangoFontMap)(recv.native), c_context, c_desc, c_language)
-	var retGo (*Fontset)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FontsetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : pango_font_map_load_fontset
 
 // Fontset is a wrapper around the C record PangoFontset.
 type Fontset struct {
@@ -679,23 +449,9 @@ func CastToFontset(object *gobject.Object) *Fontset {
 	return FontsetNewFromC(object.ToC())
 }
 
-// GetFont is a wrapper around the C function pango_fontset_get_font.
-func (recv *Fontset) GetFont(wc uint32) *Font {
-	c_wc := (C.guint)(wc)
+// Blacklisted : pango_fontset_get_font
 
-	retC := C.pango_fontset_get_font((*C.PangoFontset)(recv.native), c_wc)
-	retGo := FontNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetMetrics is a wrapper around the C function pango_fontset_get_metrics.
-func (recv *Fontset) GetMetrics() *FontMetrics {
-	retC := C.pango_fontset_get_metrics((*C.PangoFontset)(recv.native))
-	retGo := FontMetricsNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_fontset_get_metrics
 
 // Blacklisted : PangoFontsetSimple
 
@@ -746,218 +502,47 @@ func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())
 }
 
-// LayoutNew is a wrapper around the C function pango_layout_new.
-func LayoutNew(context *Context) *Layout {
-	c_context := (*C.PangoContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.PangoContext)(context.ToC())
-	}
+// Blacklisted : pango_layout_new
 
-	retC := C.pango_layout_new(c_context)
-	retGo := LayoutNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_layout_context_changed
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : pango_layout_copy
 
-	return retGo
-}
+// Blacklisted : pango_layout_get_alignment
 
-// ContextChanged is a wrapper around the C function pango_layout_context_changed.
-func (recv *Layout) ContextChanged() {
-	C.pango_layout_context_changed((*C.PangoLayout)(recv.native))
+// Blacklisted : pango_layout_get_attributes
 
-	return
-}
+// Blacklisted : pango_layout_get_context
 
-// Copy is a wrapper around the C function pango_layout_copy.
-func (recv *Layout) Copy() *Layout {
-	retC := C.pango_layout_copy((*C.PangoLayout)(recv.native))
-	retGo := LayoutNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_layout_get_cursor_pos
 
-	return retGo
-}
+// Blacklisted : pango_layout_get_extents
 
-// GetAlignment is a wrapper around the C function pango_layout_get_alignment.
-func (recv *Layout) GetAlignment() Alignment {
-	retC := C.pango_layout_get_alignment((*C.PangoLayout)(recv.native))
-	retGo := (Alignment)(retC)
-
-	return retGo
-}
-
-// GetAttributes is a wrapper around the C function pango_layout_get_attributes.
-func (recv *Layout) GetAttributes() *AttrList {
-	retC := C.pango_layout_get_attributes((*C.PangoLayout)(recv.native))
-	retGo := AttrListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetContext is a wrapper around the C function pango_layout_get_context.
-func (recv *Layout) GetContext() *Context {
-	retC := C.pango_layout_get_context((*C.PangoLayout)(recv.native))
-	retGo := ContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetCursorPos is a wrapper around the C function pango_layout_get_cursor_pos.
-func (recv *Layout) GetCursorPos(index int32) (*Rectangle, *Rectangle) {
-	c_index_ := (C.int)(index)
-
-	var c_strong_pos C.PangoRectangle
-
-	var c_weak_pos C.PangoRectangle
-
-	C.pango_layout_get_cursor_pos((*C.PangoLayout)(recv.native), c_index_, &c_strong_pos, &c_weak_pos)
-
-	strongPos := RectangleNewFromC(unsafe.Pointer(&c_strong_pos))
-
-	weakPos := RectangleNewFromC(unsafe.Pointer(&c_weak_pos))
-
-	return strongPos, weakPos
-}
-
-// GetExtents is a wrapper around the C function pango_layout_get_extents.
-func (recv *Layout) GetExtents() (*Rectangle, *Rectangle) {
-	var c_ink_rect C.PangoRectangle
-
-	var c_logical_rect C.PangoRectangle
-
-	C.pango_layout_get_extents((*C.PangoLayout)(recv.native), &c_ink_rect, &c_logical_rect)
-
-	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
-
-	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
-
-	return inkRect, logicalRect
-}
-
-// GetIndent is a wrapper around the C function pango_layout_get_indent.
-func (recv *Layout) GetIndent() int32 {
-	retC := C.pango_layout_get_indent((*C.PangoLayout)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : pango_layout_get_indent
 
 // Unsupported : pango_layout_get_iter : return type : Blacklisted record : PangoLayoutIter
 
-// GetJustify is a wrapper around the C function pango_layout_get_justify.
-func (recv *Layout) GetJustify() bool {
-	retC := C.pango_layout_get_justify((*C.PangoLayout)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : pango_layout_get_justify
 
-	return retGo
-}
+// Blacklisted : pango_layout_get_line
 
-// GetLine is a wrapper around the C function pango_layout_get_line.
-func (recv *Layout) GetLine(line int32) *LayoutLine {
-	c_line := (C.int)(line)
+// Blacklisted : pango_layout_get_line_count
 
-	retC := C.pango_layout_get_line((*C.PangoLayout)(recv.native), c_line)
-	var retGo (*LayoutLine)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = LayoutLineNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetLineCount is a wrapper around the C function pango_layout_get_line_count.
-func (recv *Layout) GetLineCount() int32 {
-	retC := C.pango_layout_get_line_count((*C.PangoLayout)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetLines is a wrapper around the C function pango_layout_get_lines.
-func (recv *Layout) GetLines() *glib.SList {
-	retC := C.pango_layout_get_lines((*C.PangoLayout)(recv.native))
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_layout_get_lines
 
 // Unsupported : pango_layout_get_log_attrs : unsupported parameter attrs : output array param attrs
 
-// GetPixelExtents is a wrapper around the C function pango_layout_get_pixel_extents.
-func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
-	var c_ink_rect C.PangoRectangle
+// Blacklisted : pango_layout_get_pixel_extents
 
-	var c_logical_rect C.PangoRectangle
+// Blacklisted : pango_layout_get_pixel_size
 
-	C.pango_layout_get_pixel_extents((*C.PangoLayout)(recv.native), &c_ink_rect, &c_logical_rect)
+// Blacklisted : pango_layout_get_single_paragraph_mode
 
-	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
+// Blacklisted : pango_layout_get_size
 
-	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
+// Blacklisted : pango_layout_get_spacing
 
-	return inkRect, logicalRect
-}
-
-// GetPixelSize is a wrapper around the C function pango_layout_get_pixel_size.
-func (recv *Layout) GetPixelSize() (int32, int32) {
-	var c_width C.int
-
-	var c_height C.int
-
-	C.pango_layout_get_pixel_size((*C.PangoLayout)(recv.native), &c_width, &c_height)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return width, height
-}
-
-// GetSingleParagraphMode is a wrapper around the C function pango_layout_get_single_paragraph_mode.
-func (recv *Layout) GetSingleParagraphMode() bool {
-	retC := C.pango_layout_get_single_paragraph_mode((*C.PangoLayout)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetSize is a wrapper around the C function pango_layout_get_size.
-func (recv *Layout) GetSize() (int32, int32) {
-	var c_width C.int
-
-	var c_height C.int
-
-	C.pango_layout_get_size((*C.PangoLayout)(recv.native), &c_width, &c_height)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return width, height
-}
-
-// GetSpacing is a wrapper around the C function pango_layout_get_spacing.
-func (recv *Layout) GetSpacing() int32 {
-	retC := C.pango_layout_get_spacing((*C.PangoLayout)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetTabs is a wrapper around the C function pango_layout_get_tabs.
-func (recv *Layout) GetTabs() *TabArray {
-	retC := C.pango_layout_get_tabs((*C.PangoLayout)(recv.native))
-	var retGo (*TabArray)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = TabArrayNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : pango_layout_get_tabs
 
 // GetText is a wrapper around the C function pango_layout_get_text.
 func (recv *Layout) GetText() string {
@@ -967,175 +552,35 @@ func (recv *Layout) GetText() string {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function pango_layout_get_width.
-func (recv *Layout) GetWidth() int32 {
-	retC := C.pango_layout_get_width((*C.PangoLayout)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : pango_layout_get_width
 
-	return retGo
-}
+// Blacklisted : pango_layout_get_wrap
 
-// GetWrap is a wrapper around the C function pango_layout_get_wrap.
-func (recv *Layout) GetWrap() WrapMode {
-	retC := C.pango_layout_get_wrap((*C.PangoLayout)(recv.native))
-	retGo := (WrapMode)(retC)
+// Blacklisted : pango_layout_index_to_line_x
 
-	return retGo
-}
+// Blacklisted : pango_layout_index_to_pos
 
-// IndexToLineX is a wrapper around the C function pango_layout_index_to_line_x.
-func (recv *Layout) IndexToLineX(index int32, trailing bool) (int32, int32) {
-	c_index_ := (C.int)(index)
+// Blacklisted : pango_layout_move_cursor_visually
 
-	c_trailing :=
-		boolToGboolean(trailing)
+// Blacklisted : pango_layout_set_alignment
 
-	var c_line C.int
+// Blacklisted : pango_layout_set_attributes
 
-	var c_x_pos C.int
+// Blacklisted : pango_layout_set_font_description
 
-	C.pango_layout_index_to_line_x((*C.PangoLayout)(recv.native), c_index_, c_trailing, &c_line, &c_x_pos)
+// Blacklisted : pango_layout_set_indent
 
-	line := (int32)(c_line)
+// Blacklisted : pango_layout_set_justify
 
-	xPos := (int32)(c_x_pos)
-
-	return line, xPos
-}
-
-// IndexToPos is a wrapper around the C function pango_layout_index_to_pos.
-func (recv *Layout) IndexToPos(index int32) *Rectangle {
-	c_index_ := (C.int)(index)
-
-	var c_pos C.PangoRectangle
-
-	C.pango_layout_index_to_pos((*C.PangoLayout)(recv.native), c_index_, &c_pos)
-
-	pos := RectangleNewFromC(unsafe.Pointer(&c_pos))
-
-	return pos
-}
-
-// MoveCursorVisually is a wrapper around the C function pango_layout_move_cursor_visually.
-func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing int32, direction int32) (int32, int32) {
-	c_strong :=
-		boolToGboolean(strong)
-
-	c_old_index := (C.int)(oldIndex)
-
-	c_old_trailing := (C.int)(oldTrailing)
-
-	c_direction := (C.int)(direction)
-
-	var c_new_index C.int
-
-	var c_new_trailing C.int
-
-	C.pango_layout_move_cursor_visually((*C.PangoLayout)(recv.native), c_strong, c_old_index, c_old_trailing, c_direction, &c_new_index, &c_new_trailing)
-
-	newIndex := (int32)(c_new_index)
-
-	newTrailing := (int32)(c_new_trailing)
-
-	return newIndex, newTrailing
-}
-
-// SetAlignment is a wrapper around the C function pango_layout_set_alignment.
-func (recv *Layout) SetAlignment(alignment Alignment) {
-	c_alignment := (C.PangoAlignment)(alignment)
-
-	C.pango_layout_set_alignment((*C.PangoLayout)(recv.native), c_alignment)
-
-	return
-}
-
-// SetAttributes is a wrapper around the C function pango_layout_set_attributes.
-func (recv *Layout) SetAttributes(attrs *AttrList) {
-	c_attrs := (*C.PangoAttrList)(C.NULL)
-	if attrs != nil {
-		c_attrs = (*C.PangoAttrList)(attrs.ToC())
-	}
-
-	C.pango_layout_set_attributes((*C.PangoLayout)(recv.native), c_attrs)
-
-	return
-}
-
-// SetFontDescription is a wrapper around the C function pango_layout_set_font_description.
-func (recv *Layout) SetFontDescription(desc *FontDescription) {
-	c_desc := (*C.PangoFontDescription)(C.NULL)
-	if desc != nil {
-		c_desc = (*C.PangoFontDescription)(desc.ToC())
-	}
-
-	C.pango_layout_set_font_description((*C.PangoLayout)(recv.native), c_desc)
-
-	return
-}
-
-// SetIndent is a wrapper around the C function pango_layout_set_indent.
-func (recv *Layout) SetIndent(indent int32) {
-	c_indent := (C.int)(indent)
-
-	C.pango_layout_set_indent((*C.PangoLayout)(recv.native), c_indent)
-
-	return
-}
-
-// SetJustify is a wrapper around the C function pango_layout_set_justify.
-func (recv *Layout) SetJustify(justify bool) {
-	c_justify :=
-		boolToGboolean(justify)
-
-	C.pango_layout_set_justify((*C.PangoLayout)(recv.native), c_justify)
-
-	return
-}
-
-// SetMarkup is a wrapper around the C function pango_layout_set_markup.
-func (recv *Layout) SetMarkup(markup string, length int32) {
-	c_markup := C.CString(markup)
-	defer C.free(unsafe.Pointer(c_markup))
-
-	c_length := (C.int)(length)
-
-	C.pango_layout_set_markup((*C.PangoLayout)(recv.native), c_markup, c_length)
-
-	return
-}
+// Blacklisted : pango_layout_set_markup
 
 // Blacklisted : pango_layout_set_markup_with_accel
 
-// SetSingleParagraphMode is a wrapper around the C function pango_layout_set_single_paragraph_mode.
-func (recv *Layout) SetSingleParagraphMode(setting bool) {
-	c_setting :=
-		boolToGboolean(setting)
+// Blacklisted : pango_layout_set_single_paragraph_mode
 
-	C.pango_layout_set_single_paragraph_mode((*C.PangoLayout)(recv.native), c_setting)
+// Blacklisted : pango_layout_set_spacing
 
-	return
-}
-
-// SetSpacing is a wrapper around the C function pango_layout_set_spacing.
-func (recv *Layout) SetSpacing(spacing int32) {
-	c_spacing := (C.int)(spacing)
-
-	C.pango_layout_set_spacing((*C.PangoLayout)(recv.native), c_spacing)
-
-	return
-}
-
-// SetTabs is a wrapper around the C function pango_layout_set_tabs.
-func (recv *Layout) SetTabs(tabs *TabArray) {
-	c_tabs := (*C.PangoTabArray)(C.NULL)
-	if tabs != nil {
-		c_tabs = (*C.PangoTabArray)(tabs.ToC())
-	}
-
-	C.pango_layout_set_tabs((*C.PangoLayout)(recv.native), c_tabs)
-
-	return
-}
+// Blacklisted : pango_layout_set_tabs
 
 // SetText is a wrapper around the C function pango_layout_set_text.
 func (recv *Layout) SetText(text string, length int32) {
@@ -1149,40 +594,8 @@ func (recv *Layout) SetText(text string, length int32) {
 	return
 }
 
-// SetWidth is a wrapper around the C function pango_layout_set_width.
-func (recv *Layout) SetWidth(width int32) {
-	c_width := (C.int)(width)
+// Blacklisted : pango_layout_set_width
 
-	C.pango_layout_set_width((*C.PangoLayout)(recv.native), c_width)
+// Blacklisted : pango_layout_set_wrap
 
-	return
-}
-
-// SetWrap is a wrapper around the C function pango_layout_set_wrap.
-func (recv *Layout) SetWrap(wrap WrapMode) {
-	c_wrap := (C.PangoWrapMode)(wrap)
-
-	C.pango_layout_set_wrap((*C.PangoLayout)(recv.native), c_wrap)
-
-	return
-}
-
-// XyToIndex is a wrapper around the C function pango_layout_xy_to_index.
-func (recv *Layout) XyToIndex(x int32, y int32) (bool, int32, int32) {
-	c_x := (C.int)(x)
-
-	c_y := (C.int)(y)
-
-	var c_index_ C.int
-
-	var c_trailing C.int
-
-	retC := C.pango_layout_xy_to_index((*C.PangoLayout)(recv.native), c_x, c_y, &c_index_, &c_trailing)
-	retGo := retC == C.TRUE
-
-	index := (int32)(c_index_)
-
-	trailing := (int32)(c_trailing)
-
-	return retGo, index, trailing
-}
+// Blacklisted : pango_layout_xy_to_index

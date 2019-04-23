@@ -3,12 +3,6 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -18,24 +12,8 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// RcParseColorFull is a wrapper around the C function gtk_rc_parse_color_full.
-func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color) {
-	c_scanner := (*C.GScanner)(C.NULL)
-	if scanner != nil {
-		c_scanner = (*C.GScanner)(scanner.ToC())
-	}
+// Blacklisted : gtk_binding_entry_skip
 
-	c_style := (*C.GtkRcStyle)(C.NULL)
-	if style != nil {
-		c_style = (*C.GtkRcStyle)(style.ToC())
-	}
+// Blacklisted : gtk_paper_size_get_paper_sizes
 
-	var c_color C.GdkColor
-
-	retC := C.gtk_rc_parse_color_full(c_scanner, c_style, &c_color)
-	retGo := (uint32)(retC)
-
-	color := gdk.ColorNewFromC(unsafe.Pointer(&c_color))
-
-	return retGo, color
-}
+// Blacklisted : gtk_rc_parse_color_full

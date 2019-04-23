@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,65 +12,24 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AsciiStrtoll is a wrapper around the C function g_ascii_strtoll.
-func AsciiStrtoll(nptr string, base uint32) (int64, string) {
-	c_nptr := C.CString(nptr)
-	defer C.free(unsafe.Pointer(c_nptr))
-
-	var c_endptr *C.gchar
-
-	c_base := (C.guint)(base)
-
-	retC := C.g_ascii_strtoll(c_nptr, &c_endptr, c_base)
-	retGo := (int64)(retC)
-
-	endptr := C.GoString(c_endptr)
-
-	return retGo, endptr
-}
+// Blacklisted : g_ascii_strtoll
 
 // Unsupported : g_base64_decode : array return type :
 
 // Unsupported : g_base64_decode_step : unsupported parameter out : output array param out
 
-// Base64Encode is a wrapper around the C function g_base64_encode.
-func Base64Encode(data []uint8) string {
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_len := (C.gsize)(len(data))
-
-	retC := C.g_base64_encode(c_data, c_len)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_base64_encode
 
 // Unsupported : g_base64_encode_close : unsupported parameter out : output array param out
 
 // Unsupported : g_base64_encode_step : unsupported parameter out : output array param out
 
-// MainCurrentSource is a wrapper around the C function g_main_current_source.
-func MainCurrentSource() *Source {
-	retC := C.g_main_current_source()
-	retGo := SourceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_hash_table_remove_all
 
-	return retGo
-}
+// Blacklisted : g_hash_table_steal_all
 
-// UnicharIswideCjk is a wrapper around the C function g_unichar_iswide_cjk.
-func UnicharIswideCjk(c rune) bool {
-	c_c := (C.gunichar)(c)
+// Blacklisted : g_main_current_source
 
-	retC := C.g_unichar_iswide_cjk(c_c)
-	retGo := retC == C.TRUE
+// Blacklisted : g_time_val_from_iso8601
 
-	return retGo
-}
+// Blacklisted : g_unichar_iswide_cjk

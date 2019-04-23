@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,119 +10,26 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// BeginUpdating is a wrapper around the C function gdk_frame_clock_begin_updating.
-func (recv *FrameClock) BeginUpdating() {
-	C.gdk_frame_clock_begin_updating((*C.GdkFrameClock)(recv.native))
+// Blacklisted : gdk_frame_clock_begin_updating
 
-	return
-}
+// Blacklisted : gdk_frame_clock_end_updating
 
-// EndUpdating is a wrapper around the C function gdk_frame_clock_end_updating.
-func (recv *FrameClock) EndUpdating() {
-	C.gdk_frame_clock_end_updating((*C.GdkFrameClock)(recv.native))
+// Blacklisted : gdk_frame_clock_get_current_timings
 
-	return
-}
+// Blacklisted : gdk_frame_clock_get_frame_counter
 
-// GetCurrentTimings is a wrapper around the C function gdk_frame_clock_get_current_timings.
-func (recv *FrameClock) GetCurrentTimings() *FrameTimings {
-	retC := C.gdk_frame_clock_get_current_timings((*C.GdkFrameClock)(recv.native))
-	var retGo (*FrameTimings)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FrameTimingsNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_frame_clock_get_frame_time
 
-	return retGo
-}
+// Blacklisted : gdk_frame_clock_get_history_start
 
-// GetFrameCounter is a wrapper around the C function gdk_frame_clock_get_frame_counter.
-func (recv *FrameClock) GetFrameCounter() int64 {
-	retC := C.gdk_frame_clock_get_frame_counter((*C.GdkFrameClock)(recv.native))
-	retGo := (int64)(retC)
+// Blacklisted : gdk_frame_clock_get_refresh_info
 
-	return retGo
-}
+// Blacklisted : gdk_frame_clock_get_timings
 
-// GetFrameTime is a wrapper around the C function gdk_frame_clock_get_frame_time.
-func (recv *FrameClock) GetFrameTime() int64 {
-	retC := C.gdk_frame_clock_get_frame_time((*C.GdkFrameClock)(recv.native))
-	retGo := (int64)(retC)
+// Blacklisted : gdk_frame_clock_request_phase
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_frame_clock
 
-// GetHistoryStart is a wrapper around the C function gdk_frame_clock_get_history_start.
-func (recv *FrameClock) GetHistoryStart() int64 {
-	retC := C.gdk_frame_clock_get_history_start((*C.GdkFrameClock)(recv.native))
-	retGo := (int64)(retC)
+// Blacklisted : gdk_window_get_fullscreen_mode
 
-	return retGo
-}
-
-// GetRefreshInfo is a wrapper around the C function gdk_frame_clock_get_refresh_info.
-func (recv *FrameClock) GetRefreshInfo(baseTime int64) (int64, int64) {
-	c_base_time := (C.gint64)(baseTime)
-
-	var c_refresh_interval_return C.gint64
-
-	var c_presentation_time_return C.gint64
-
-	C.gdk_frame_clock_get_refresh_info((*C.GdkFrameClock)(recv.native), c_base_time, &c_refresh_interval_return, &c_presentation_time_return)
-
-	refreshIntervalReturn := (int64)(c_refresh_interval_return)
-
-	presentationTimeReturn := (int64)(c_presentation_time_return)
-
-	return refreshIntervalReturn, presentationTimeReturn
-}
-
-// GetTimings is a wrapper around the C function gdk_frame_clock_get_timings.
-func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
-	c_frame_counter := (C.gint64)(frameCounter)
-
-	retC := C.gdk_frame_clock_get_timings((*C.GdkFrameClock)(recv.native), c_frame_counter)
-	var retGo (*FrameTimings)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FrameTimingsNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// RequestPhase is a wrapper around the C function gdk_frame_clock_request_phase.
-func (recv *FrameClock) RequestPhase(phase FrameClockPhase) {
-	c_phase := (C.GdkFrameClockPhase)(phase)
-
-	C.gdk_frame_clock_request_phase((*C.GdkFrameClock)(recv.native), c_phase)
-
-	return
-}
-
-// GetFrameClock is a wrapper around the C function gdk_window_get_frame_clock.
-func (recv *Window) GetFrameClock() *FrameClock {
-	retC := C.gdk_window_get_frame_clock((*C.GdkWindow)(recv.native))
-	retGo := FrameClockNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetFullscreenMode is a wrapper around the C function gdk_window_get_fullscreen_mode.
-func (recv *Window) GetFullscreenMode() FullscreenMode {
-	retC := C.gdk_window_get_fullscreen_mode((*C.GdkWindow)(recv.native))
-	retGo := (FullscreenMode)(retC)
-
-	return retGo
-}
-
-// SetFullscreenMode is a wrapper around the C function gdk_window_set_fullscreen_mode.
-func (recv *Window) SetFullscreenMode(mode FullscreenMode) {
-	c_mode := (C.GdkFullscreenMode)(mode)
-
-	C.gdk_window_set_fullscreen_mode((*C.GdkWindow)(recv.native), c_mode)
-
-	return
-}
+// Blacklisted : gdk_window_set_fullscreen_mode

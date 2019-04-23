@@ -12,12 +12,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Reset is a wrapper around the C function g_checksum_reset.
-func (recv *Checksum) Reset() {
-	C.g_checksum_reset((*C.GChecksum)(recv.native))
-
-	return
-}
+// Blacklisted : g_checksum_reset
 
 // Unsupported : g_markup_parse_context_get_user_data : no return generator
 

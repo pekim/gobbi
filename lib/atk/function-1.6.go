@@ -3,8 +3,6 @@
 
 package atk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,10 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetFocusObject is a wrapper around the C function atk_get_focus_object.
-func GetFocusObject() *Object {
-	retC := C.atk_get_focus_object()
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : atk_get_focus_object

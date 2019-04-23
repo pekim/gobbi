@@ -3,12 +3,6 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -18,42 +12,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AcceleratorGetLabel is a wrapper around the C function gtk_accelerator_get_label.
-func AcceleratorGetLabel(acceleratorKey uint32, acceleratorMods gdk.ModifierType) string {
-	c_accelerator_key := (C.guint)(acceleratorKey)
+// Blacklisted : gtk_accelerator_get_label
 
-	c_accelerator_mods := (C.GdkModifierType)(acceleratorMods)
+// Blacklisted : gtk_alternative_dialog_button_order
 
-	retC := C.gtk_accelerator_get_label(c_accelerator_key, c_accelerator_mods)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AlternativeDialogButtonOrder is a wrapper around the C function gtk_alternative_dialog_button_order.
-func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
-	c_screen := (*C.GdkScreen)(C.NULL)
-	if screen != nil {
-		c_screen = (*C.GdkScreen)(screen.ToC())
-	}
-
-	retC := C.gtk_alternative_dialog_button_order(c_screen)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetOptionGroup is a wrapper around the C function gtk_get_option_group.
-func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
-	c_open_default_display :=
-		boolToGboolean(openDefaultDisplay)
-
-	retC := C.gtk_get_option_group(c_open_default_display)
-	retGo := glib.OptionGroupNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_get_option_group
 
 // Unsupported : gtk_init_with_args : unsupported parameter entries :
 

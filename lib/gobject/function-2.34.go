@@ -10,11 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// TypeEnsure is a wrapper around the C function g_type_ensure.
-func TypeEnsure(type_ Type) {
-	c_type := (C.GType)(type_)
-
-	C.g_type_ensure(c_type)
-
-	return
-}
+// Blacklisted : g_type_ensure

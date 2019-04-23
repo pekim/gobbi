@@ -3,11 +3,6 @@
 
 package glib
 
-import (
-	"fmt"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -15,12 +10,6 @@ import (
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
-/*
-
-	static gboolean _g_variant_lookup(GVariant* dictionary, const gchar* key, const gchar* format_string) {
-		return g_variant_lookup(dictionary, key, format_string);
-    }
-*/
 import "C"
 
 // g_list_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
@@ -33,65 +22,12 @@ import "C"
 
 // Unsupported : g_sequence_lookup_iter : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// AddChildSource is a wrapper around the C function g_source_add_child_source.
-func (recv *Source) AddChildSource(childSource *Source) {
-	c_child_source := (*C.GSource)(C.NULL)
-	if childSource != nil {
-		c_child_source = (*C.GSource)(childSource.ToC())
-	}
+// Blacklisted : g_source_add_child_source
 
-	C.g_source_add_child_source((*C.GSource)(recv.native), c_child_source)
+// Blacklisted : g_source_get_time
 
-	return
-}
+// Blacklisted : g_source_remove_child_source
 
-// GetTime is a wrapper around the C function g_source_get_time.
-func (recv *Source) GetTime() int64 {
-	retC := C.g_source_get_time((*C.GSource)(recv.native))
-	retGo := (int64)(retC)
+// Blacklisted : g_variant_lookup
 
-	return retGo
-}
-
-// RemoveChildSource is a wrapper around the C function g_source_remove_child_source.
-func (recv *Source) RemoveChildSource(childSource *Source) {
-	c_child_source := (*C.GSource)(C.NULL)
-	if childSource != nil {
-		c_child_source = (*C.GSource)(childSource.ToC())
-	}
-
-	C.g_source_remove_child_source((*C.GSource)(recv.native), c_child_source)
-
-	return
-}
-
-// Lookup is a wrapper around the C function g_variant_lookup.
-func (recv *Variant) Lookup(key string, formatString string, args ...interface{}) bool {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	goFormattedString := fmt.Sprintf(formatString, args...)
-	c_format_string := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format_string))
-
-	retC := C._g_variant_lookup((*C.GVariant)(recv.native), c_key, c_format_string)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// LookupValue is a wrapper around the C function g_variant_lookup_value.
-func (recv *Variant) LookupValue(key string, expectedType *VariantType) *Variant {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	c_expected_type := (*C.GVariantType)(C.NULL)
-	if expectedType != nil {
-		c_expected_type = (*C.GVariantType)(expectedType.ToC())
-	}
-
-	retC := C.g_variant_lookup_value((*C.GVariant)(recv.native), c_key, c_expected_type)
-	retGo := VariantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_variant_lookup_value

@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,48 +10,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetLastEventWindow is a wrapper around the C function gdk_device_get_last_event_window.
-func (recv *Device) GetLastEventWindow() *Window {
-	retC := C.gdk_device_get_last_event_window((*C.GdkDevice)(recv.native))
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_device_get_last_event_window
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_event_compression
 
-// GetEventCompression is a wrapper around the C function gdk_window_get_event_compression.
-func (recv *Window) GetEventCompression() bool {
-	retC := C.gdk_window_get_event_compression((*C.GdkWindow)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_window_set_event_compression
 
-	return retGo
-}
-
-// SetEventCompression is a wrapper around the C function gdk_window_set_event_compression.
-func (recv *Window) SetEventCompression(eventCompression bool) {
-	c_event_compression :=
-		boolToGboolean(eventCompression)
-
-	C.gdk_window_set_event_compression((*C.GdkWindow)(recv.native), c_event_compression)
-
-	return
-}
-
-// SetShadowWidth is a wrapper around the C function gdk_window_set_shadow_width.
-func (recv *Window) SetShadowWidth(left int32, right int32, top int32, bottom int32) {
-	c_left := (C.gint)(left)
-
-	c_right := (C.gint)(right)
-
-	c_top := (C.gint)(top)
-
-	c_bottom := (C.gint)(bottom)
-
-	C.gdk_window_set_shadow_width((*C.GdkWindow)(recv.native), c_left, c_right, c_top, c_bottom)
-
-	return
-}
+// Blacklisted : gdk_window_set_shadow_width

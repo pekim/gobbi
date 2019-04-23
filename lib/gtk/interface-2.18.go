@@ -12,20 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetCreateFolders is a wrapper around the C function gtk_file_chooser_get_create_folders.
-func (recv *FileChooser) GetCreateFolders() bool {
-	retC := C.gtk_file_chooser_get_create_folders((*C.GtkFileChooser)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_file_chooser_get_create_folders
 
-	return retGo
-}
-
-// SetCreateFolders is a wrapper around the C function gtk_file_chooser_set_create_folders.
-func (recv *FileChooser) SetCreateFolders(createFolders bool) {
-	c_create_folders :=
-		boolToGboolean(createFolders)
-
-	C.gtk_file_chooser_set_create_folders((*C.GtkFileChooser)(recv.native), c_create_folders)
-
-	return
-}
+// Blacklisted : gtk_file_chooser_set_create_folders

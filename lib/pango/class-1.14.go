@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,10 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DescribeWithAbsoluteSize is a wrapper around the C function pango_font_describe_with_absolute_size.
-func (recv *Font) DescribeWithAbsoluteSize() *FontDescription {
-	retC := C.pango_font_describe_with_absolute_size((*C.PangoFont)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_font_describe_with_absolute_size

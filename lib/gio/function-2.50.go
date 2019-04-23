@@ -22,3 +22,5 @@ package gio
 import "C"
 
 // Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Blacklisted : g_app_info_launch_default_for_uri_finish

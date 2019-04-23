@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -20,18 +18,6 @@ import "C"
 
 // Unsupported : g_date_time_hash : unsupported parameter datetime : no type generator for gpointer (gconstpointer) for param datetime
 
-// Dcgettext is a wrapper around the C function g_dcgettext.
-func Dcgettext(domain string, msgid string, category int32) string {
-	c_domain := C.CString(domain)
-	defer C.free(unsafe.Pointer(c_domain))
+// Blacklisted : g_dcgettext
 
-	c_msgid := C.CString(msgid)
-	defer C.free(unsafe.Pointer(c_msgid))
-
-	c_category := (C.gint)(category)
-
-	retC := C.g_dcgettext(c_domain, c_msgid, c_category)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_source_set_name_by_id

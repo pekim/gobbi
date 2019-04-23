@@ -23,3 +23,7 @@ import "C"
 // Unsupported : g_async_initable_newv_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_initable_newv : unsupported parameter parameters :
+
+// Blacklisted : g_resolver_error_quark
+
+// Blacklisted : g_srv_target_list_sort

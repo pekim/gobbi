@@ -4,9 +4,7 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
-	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
 )
@@ -20,12 +18,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	static void _gtk_actionable_set_action_target(GtkActionable* actionable, const gchar* format_string) {
-		return gtk_actionable_set_action_target(actionable, format_string);
-    }
-*/
-/*
-
 	void colorchooser_colorActivatedHandler(GObject *, GdkRGBA *, gpointer);
 
 	static gulong ColorChooser_signal_connect_color_activated(gpointer instance, gpointer data) {
@@ -35,64 +27,17 @@ import (
 */
 import "C"
 
-// GetActionName is a wrapper around the C function gtk_actionable_get_action_name.
-func (recv *Actionable) GetActionName() string {
-	retC := C.gtk_actionable_get_action_name((*C.GtkActionable)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_actionable_get_action_name
 
-	return retGo
-}
+// Blacklisted : gtk_actionable_get_action_target_value
 
-// GetActionTargetValue is a wrapper around the C function gtk_actionable_get_action_target_value.
-func (recv *Actionable) GetActionTargetValue() *glib.Variant {
-	retC := C.gtk_actionable_get_action_target_value((*C.GtkActionable)(recv.native))
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_actionable_set_action_name
 
-	return retGo
-}
+// Blacklisted : gtk_actionable_set_action_target
 
-// SetActionName is a wrapper around the C function gtk_actionable_set_action_name.
-func (recv *Actionable) SetActionName(actionName string) {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
+// Blacklisted : gtk_actionable_set_action_target_value
 
-	C.gtk_actionable_set_action_name((*C.GtkActionable)(recv.native), c_action_name)
-
-	return
-}
-
-// SetActionTarget is a wrapper around the C function gtk_actionable_set_action_target.
-func (recv *Actionable) SetActionTarget(formatString string, args ...interface{}) {
-	goFormattedString := fmt.Sprintf(formatString, args...)
-	c_format_string := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format_string))
-
-	C._gtk_actionable_set_action_target((*C.GtkActionable)(recv.native), c_format_string)
-
-	return
-}
-
-// SetActionTargetValue is a wrapper around the C function gtk_actionable_set_action_target_value.
-func (recv *Actionable) SetActionTargetValue(targetValue *glib.Variant) {
-	c_target_value := (*C.GVariant)(C.NULL)
-	if targetValue != nil {
-		c_target_value = (*C.GVariant)(targetValue.ToC())
-	}
-
-	C.gtk_actionable_set_action_target_value((*C.GtkActionable)(recv.native), c_target_value)
-
-	return
-}
-
-// SetDetailedActionName is a wrapper around the C function gtk_actionable_set_detailed_action_name.
-func (recv *Actionable) SetDetailedActionName(detailedActionName string) {
-	c_detailed_action_name := C.CString(detailedActionName)
-	defer C.free(unsafe.Pointer(c_detailed_action_name))
-
-	C.gtk_actionable_set_detailed_action_name((*C.GtkActionable)(recv.native), c_detailed_action_name)
-
-	return
-}
+// Blacklisted : gtk_actionable_set_detailed_action_name
 
 type signalColorChooserColorActivatedDetail struct {
 	callback  ColorChooserSignalColorActivatedCallback
@@ -158,43 +103,10 @@ func colorchooser_colorActivatedHandler(_ *C.GObject, c_color *C.GdkRGBA, data C
 
 // Unsupported : gtk_color_chooser_add_palette : unsupported parameter colors :
 
-// GetRgba is a wrapper around the C function gtk_color_chooser_get_rgba.
-func (recv *ColorChooser) GetRgba() *gdk.RGBA {
-	var c_color C.GdkRGBA
+// Blacklisted : gtk_color_chooser_get_rgba
 
-	C.gtk_color_chooser_get_rgba((*C.GtkColorChooser)(recv.native), &c_color)
+// Blacklisted : gtk_color_chooser_get_use_alpha
 
-	color := gdk.RGBANewFromC(unsafe.Pointer(&c_color))
+// Blacklisted : gtk_color_chooser_set_rgba
 
-	return color
-}
-
-// GetUseAlpha is a wrapper around the C function gtk_color_chooser_get_use_alpha.
-func (recv *ColorChooser) GetUseAlpha() bool {
-	retC := C.gtk_color_chooser_get_use_alpha((*C.GtkColorChooser)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetRgba is a wrapper around the C function gtk_color_chooser_set_rgba.
-func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
-	c_color := (*C.GdkRGBA)(C.NULL)
-	if color != nil {
-		c_color = (*C.GdkRGBA)(color.ToC())
-	}
-
-	C.gtk_color_chooser_set_rgba((*C.GtkColorChooser)(recv.native), c_color)
-
-	return
-}
-
-// SetUseAlpha is a wrapper around the C function gtk_color_chooser_set_use_alpha.
-func (recv *ColorChooser) SetUseAlpha(useAlpha bool) {
-	c_use_alpha :=
-		boolToGboolean(useAlpha)
-
-	C.gtk_color_chooser_set_use_alpha((*C.GtkColorChooser)(recv.native), c_use_alpha)
-
-	return
-}
+// Blacklisted : gtk_color_chooser_set_use_alpha

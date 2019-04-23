@@ -10,13 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// QuantizeLineGeometry is a wrapper around the C function pango_quantize_line_geometry.
-func QuantizeLineGeometry(thickness int32, position int32) {
-	c_thickness := (C.int)(thickness)
-
-	c_position := (C.int)(position)
-
-	C.pango_quantize_line_geometry(&c_thickness, &c_position)
-
-	return
-}
+// Blacklisted : pango_quantize_line_geometry

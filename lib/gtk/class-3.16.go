@@ -5,8 +5,6 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
-	gio "github.com/pekim/gobbi/lib/gio"
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -103,35 +101,11 @@ import (
 */
 import "C"
 
-// ClipboardGetDefault is a wrapper around the C function gtk_clipboard_get_default.
-func ClipboardGetDefault(display *gdk.Display) *Clipboard {
-	c_display := (*C.GdkDisplay)(C.NULL)
-	if display != nil {
-		c_display = (*C.GdkDisplay)(display.ToC())
-	}
+// Blacklisted : gtk_clipboard_get_default
 
-	retC := C.gtk_clipboard_get_default(c_display)
-	retGo := ClipboardNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_css_provider_load_from_resource
 
-	return retGo
-}
-
-// LoadFromResource is a wrapper around the C function gtk_css_provider_load_from_resource.
-func (recv *CssProvider) LoadFromResource(resourcePath string) {
-	c_resource_path := C.CString(resourcePath)
-	defer C.free(unsafe.Pointer(c_resource_path))
-
-	C.gtk_css_provider_load_from_resource((*C.GtkCssProvider)(recv.native), c_resource_path)
-
-	return
-}
-
-// GrabFocusWithoutSelecting is a wrapper around the C function gtk_entry_grab_focus_without_selecting.
-func (recv *Entry) GrabFocusWithoutSelecting() {
-	C.gtk_entry_grab_focus_without_selecting((*C.GtkEntry)(recv.native))
-
-	return
-}
+// Blacklisted : gtk_entry_grab_focus_without_selecting
 
 // GLArea is a wrapper around the C record GtkGLArea.
 type GLArea struct {
@@ -383,275 +357,65 @@ func glarea_resizeHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.
 	callback(width, height)
 }
 
-// GLAreaNew is a wrapper around the C function gtk_gl_area_new.
-func GLAreaNew() *GLArea {
-	retC := C.gtk_gl_area_new()
-	retGo := GLAreaNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_gl_area_new
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_attach_buffers
 
-// AttachBuffers is a wrapper around the C function gtk_gl_area_attach_buffers.
-func (recv *GLArea) AttachBuffers() {
-	C.gtk_gl_area_attach_buffers((*C.GtkGLArea)(recv.native))
+// Blacklisted : gtk_gl_area_get_auto_render
 
-	return
-}
+// Blacklisted : gtk_gl_area_get_context
 
-// GetAutoRender is a wrapper around the C function gtk_gl_area_get_auto_render.
-func (recv *GLArea) GetAutoRender() bool {
-	retC := C.gtk_gl_area_get_auto_render((*C.GtkGLArea)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_gl_area_get_error
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_get_has_alpha
 
-// GetContext is a wrapper around the C function gtk_gl_area_get_context.
-func (recv *GLArea) GetContext() *gdk.GLContext {
-	retC := C.gtk_gl_area_get_context((*C.GtkGLArea)(recv.native))
-	retGo := gdk.GLContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_gl_area_get_has_depth_buffer
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_get_has_stencil_buffer
 
-// GetError is a wrapper around the C function gtk_gl_area_get_error.
-func (recv *GLArea) GetError() *glib.Error {
-	retC := C.gtk_gl_area_get_error((*C.GtkGLArea)(recv.native))
-	var retGo (*glib.Error)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = glib.ErrorNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_gl_area_get_required_version
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_make_current
 
-// GetHasAlpha is a wrapper around the C function gtk_gl_area_get_has_alpha.
-func (recv *GLArea) GetHasAlpha() bool {
-	retC := C.gtk_gl_area_get_has_alpha((*C.GtkGLArea)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_gl_area_queue_render
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_set_auto_render
 
-// GetHasDepthBuffer is a wrapper around the C function gtk_gl_area_get_has_depth_buffer.
-func (recv *GLArea) GetHasDepthBuffer() bool {
-	retC := C.gtk_gl_area_get_has_depth_buffer((*C.GtkGLArea)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_gl_area_set_error
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_set_has_alpha
 
-// GetHasStencilBuffer is a wrapper around the C function gtk_gl_area_get_has_stencil_buffer.
-func (recv *GLArea) GetHasStencilBuffer() bool {
-	retC := C.gtk_gl_area_get_has_stencil_buffer((*C.GtkGLArea)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_gl_area_set_has_depth_buffer
 
-	return retGo
-}
+// Blacklisted : gtk_gl_area_set_has_stencil_buffer
 
-// GetRequiredVersion is a wrapper around the C function gtk_gl_area_get_required_version.
-func (recv *GLArea) GetRequiredVersion() (int32, int32) {
-	var c_major C.gint
+// Blacklisted : gtk_gl_area_set_required_version
 
-	var c_minor C.gint
+// Blacklisted : gtk_label_get_xalign
 
-	C.gtk_gl_area_get_required_version((*C.GtkGLArea)(recv.native), &c_major, &c_minor)
+// Blacklisted : gtk_label_get_yalign
 
-	major := (int32)(c_major)
+// Blacklisted : gtk_label_set_xalign
 
-	minor := (int32)(c_minor)
-
-	return major, minor
-}
-
-// MakeCurrent is a wrapper around the C function gtk_gl_area_make_current.
-func (recv *GLArea) MakeCurrent() {
-	C.gtk_gl_area_make_current((*C.GtkGLArea)(recv.native))
-
-	return
-}
-
-// QueueRender is a wrapper around the C function gtk_gl_area_queue_render.
-func (recv *GLArea) QueueRender() {
-	C.gtk_gl_area_queue_render((*C.GtkGLArea)(recv.native))
-
-	return
-}
-
-// SetAutoRender is a wrapper around the C function gtk_gl_area_set_auto_render.
-func (recv *GLArea) SetAutoRender(autoRender bool) {
-	c_auto_render :=
-		boolToGboolean(autoRender)
-
-	C.gtk_gl_area_set_auto_render((*C.GtkGLArea)(recv.native), c_auto_render)
-
-	return
-}
-
-// SetError is a wrapper around the C function gtk_gl_area_set_error.
-func (recv *GLArea) SetError(error *glib.Error) {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	C.gtk_gl_area_set_error((*C.GtkGLArea)(recv.native), c_error)
-
-	return
-}
-
-// SetHasAlpha is a wrapper around the C function gtk_gl_area_set_has_alpha.
-func (recv *GLArea) SetHasAlpha(hasAlpha bool) {
-	c_has_alpha :=
-		boolToGboolean(hasAlpha)
-
-	C.gtk_gl_area_set_has_alpha((*C.GtkGLArea)(recv.native), c_has_alpha)
-
-	return
-}
-
-// SetHasDepthBuffer is a wrapper around the C function gtk_gl_area_set_has_depth_buffer.
-func (recv *GLArea) SetHasDepthBuffer(hasDepthBuffer bool) {
-	c_has_depth_buffer :=
-		boolToGboolean(hasDepthBuffer)
-
-	C.gtk_gl_area_set_has_depth_buffer((*C.GtkGLArea)(recv.native), c_has_depth_buffer)
-
-	return
-}
-
-// SetHasStencilBuffer is a wrapper around the C function gtk_gl_area_set_has_stencil_buffer.
-func (recv *GLArea) SetHasStencilBuffer(hasStencilBuffer bool) {
-	c_has_stencil_buffer :=
-		boolToGboolean(hasStencilBuffer)
-
-	C.gtk_gl_area_set_has_stencil_buffer((*C.GtkGLArea)(recv.native), c_has_stencil_buffer)
-
-	return
-}
-
-// SetRequiredVersion is a wrapper around the C function gtk_gl_area_set_required_version.
-func (recv *GLArea) SetRequiredVersion(major int32, minor int32) {
-	c_major := (C.gint)(major)
-
-	c_minor := (C.gint)(minor)
-
-	C.gtk_gl_area_set_required_version((*C.GtkGLArea)(recv.native), c_major, c_minor)
-
-	return
-}
-
-// GetXalign is a wrapper around the C function gtk_label_get_xalign.
-func (recv *Label) GetXalign() float32 {
-	retC := C.gtk_label_get_xalign((*C.GtkLabel)(recv.native))
-	retGo := (float32)(retC)
-
-	return retGo
-}
-
-// GetYalign is a wrapper around the C function gtk_label_get_yalign.
-func (recv *Label) GetYalign() float32 {
-	retC := C.gtk_label_get_yalign((*C.GtkLabel)(recv.native))
-	retGo := (float32)(retC)
-
-	return retGo
-}
-
-// SetXalign is a wrapper around the C function gtk_label_set_xalign.
-func (recv *Label) SetXalign(xalign float32) {
-	c_xalign := (C.gfloat)(xalign)
-
-	C.gtk_label_set_xalign((*C.GtkLabel)(recv.native), c_xalign)
-
-	return
-}
-
-// SetYalign is a wrapper around the C function gtk_label_set_yalign.
-func (recv *Label) SetYalign(yalign float32) {
-	c_yalign := (C.gfloat)(yalign)
-
-	C.gtk_label_set_yalign((*C.GtkLabel)(recv.native), c_yalign)
-
-	return
-}
+// Blacklisted : gtk_label_set_yalign
 
 // Unsupported : gtk_list_box_bind_model : unsupported parameter create_widget_func : no type generator for ListBoxCreateWidgetFunc (GtkListBoxCreateWidgetFunc) for param create_widget_func
 
-// ModelButtonNew is a wrapper around the C function gtk_model_button_new.
-func ModelButtonNew() *ModelButton {
-	retC := C.gtk_model_button_new()
-	retGo := ModelButtonNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_model_button_new
 
-	return retGo
-}
+// Blacklisted : gtk_notebook_detach_tab
 
-// DetachTab is a wrapper around the C function gtk_notebook_detach_tab.
-func (recv *Notebook) DetachTab(child *Widget) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
+// Blacklisted : gtk_paned_get_wide_handle
 
-	C.gtk_notebook_detach_tab((*C.GtkNotebook)(recv.native), c_child)
+// Blacklisted : gtk_paned_set_wide_handle
 
-	return
-}
+// Blacklisted : gtk_popover_get_transitions_enabled
 
-// GetWideHandle is a wrapper around the C function gtk_paned_get_wide_handle.
-func (recv *Paned) GetWideHandle() bool {
-	retC := C.gtk_paned_get_wide_handle((*C.GtkPaned)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_popover_set_transitions_enabled
 
-	return retGo
-}
+// Blacklisted : gtk_popover_menu_new
 
-// SetWideHandle is a wrapper around the C function gtk_paned_set_wide_handle.
-func (recv *Paned) SetWideHandle(wide bool) {
-	c_wide :=
-		boolToGboolean(wide)
-
-	C.gtk_paned_set_wide_handle((*C.GtkPaned)(recv.native), c_wide)
-
-	return
-}
-
-// GetTransitionsEnabled is a wrapper around the C function gtk_popover_get_transitions_enabled.
-func (recv *Popover) GetTransitionsEnabled() bool {
-	retC := C.gtk_popover_get_transitions_enabled((*C.GtkPopover)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetTransitionsEnabled is a wrapper around the C function gtk_popover_set_transitions_enabled.
-func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
-	c_transitions_enabled :=
-		boolToGboolean(transitionsEnabled)
-
-	C.gtk_popover_set_transitions_enabled((*C.GtkPopover)(recv.native), c_transitions_enabled)
-
-	return
-}
-
-// PopoverMenuNew is a wrapper around the C function gtk_popover_menu_new.
-func PopoverMenuNew() *PopoverMenu {
-	retC := C.gtk_popover_menu_new()
-	retGo := PopoverMenuNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// OpenSubmenu is a wrapper around the C function gtk_popover_menu_open_submenu.
-func (recv *PopoverMenu) OpenSubmenu(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.gtk_popover_menu_open_submenu((*C.GtkPopoverMenu)(recv.native), c_name)
-
-	return
-}
+// Blacklisted : gtk_popover_menu_open_submenu
 
 type signalScrolledWindowEdgeOvershotDetail struct {
 	callback  ScrolledWindowSignalEdgeOvershotCallback
@@ -777,23 +541,9 @@ func scrolledwindow_edgeReachedHandler(_ *C.GObject, c_pos C.GtkPositionType, da
 	callback(pos)
 }
 
-// GetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_get_overlay_scrolling.
-func (recv *ScrolledWindow) GetOverlayScrolling() bool {
-	retC := C.gtk_scrolled_window_get_overlay_scrolling((*C.GtkScrolledWindow)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_scrolled_window_get_overlay_scrolling
 
-	return retGo
-}
-
-// SetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_set_overlay_scrolling.
-func (recv *ScrolledWindow) SetOverlayScrolling(overlayScrolling bool) {
-	c_overlay_scrolling :=
-		boolToGboolean(overlayScrolling)
-
-	C.gtk_scrolled_window_set_overlay_scrolling((*C.GtkScrolledWindow)(recv.native), c_overlay_scrolling)
-
-	return
-}
+// Blacklisted : gtk_scrolled_window_set_overlay_scrolling
 
 type signalSearchEntryNextMatchDetail struct {
 	callback  SearchEntrySignalNextMatchCallback
@@ -977,91 +727,21 @@ func searchentry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// GetHhomogeneous is a wrapper around the C function gtk_stack_get_hhomogeneous.
-func (recv *Stack) GetHhomogeneous() bool {
-	retC := C.gtk_stack_get_hhomogeneous((*C.GtkStack)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_stack_get_hhomogeneous
 
-	return retGo
-}
+// Blacklisted : gtk_stack_get_vhomogeneous
 
-// GetVhomogeneous is a wrapper around the C function gtk_stack_get_vhomogeneous.
-func (recv *Stack) GetVhomogeneous() bool {
-	retC := C.gtk_stack_get_vhomogeneous((*C.GtkStack)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_stack_set_hhomogeneous
 
-	return retGo
-}
+// Blacklisted : gtk_stack_set_vhomogeneous
 
-// SetHhomogeneous is a wrapper around the C function gtk_stack_set_hhomogeneous.
-func (recv *Stack) SetHhomogeneous(hhomogeneous bool) {
-	c_hhomogeneous :=
-		boolToGboolean(hhomogeneous)
+// Blacklisted : gtk_stack_sidebar_new
 
-	C.gtk_stack_set_hhomogeneous((*C.GtkStack)(recv.native), c_hhomogeneous)
+// Blacklisted : gtk_stack_sidebar_get_stack
 
-	return
-}
+// Blacklisted : gtk_stack_sidebar_set_stack
 
-// SetVhomogeneous is a wrapper around the C function gtk_stack_set_vhomogeneous.
-func (recv *Stack) SetVhomogeneous(vhomogeneous bool) {
-	c_vhomogeneous :=
-		boolToGboolean(vhomogeneous)
-
-	C.gtk_stack_set_vhomogeneous((*C.GtkStack)(recv.native), c_vhomogeneous)
-
-	return
-}
-
-// StackSidebarNew is a wrapper around the C function gtk_stack_sidebar_new.
-func StackSidebarNew() *StackSidebar {
-	retC := C.gtk_stack_sidebar_new()
-	retGo := StackSidebarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetStack is a wrapper around the C function gtk_stack_sidebar_get_stack.
-func (recv *StackSidebar) GetStack() *Stack {
-	retC := C.gtk_stack_sidebar_get_stack((*C.GtkStackSidebar)(recv.native))
-	var retGo (*Stack)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = StackNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// SetStack is a wrapper around the C function gtk_stack_sidebar_set_stack.
-func (recv *StackSidebar) SetStack(stack *Stack) {
-	c_stack := (*C.GtkStack)(C.NULL)
-	if stack != nil {
-		c_stack = (*C.GtkStack)(stack.ToC())
-	}
-
-	C.gtk_stack_sidebar_set_stack((*C.GtkStackSidebar)(recv.native), c_stack)
-
-	return
-}
-
-// InsertMarkup is a wrapper around the C function gtk_text_buffer_insert_markup.
-func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
-	c_iter := (*C.GtkTextIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GtkTextIter)(iter.ToC())
-	}
-
-	c_markup := C.CString(markup)
-	defer C.free(unsafe.Pointer(c_markup))
-
-	c_len := (C.gint)(len)
-
-	C.gtk_text_buffer_insert_markup((*C.GtkTextBuffer)(recv.native), c_iter, c_markup, c_len)
-
-	return
-}
+// Blacklisted : gtk_text_buffer_insert_markup
 
 type signalTextViewExtendSelectionDetail struct {
 	callback  TextViewSignalExtendSelectionCallback
@@ -1134,61 +814,12 @@ func textview_extendSelectionHandler(_ *C.GObject, c_granularity C.GtkTextExtend
 	return retC
 }
 
-// GetMonospace is a wrapper around the C function gtk_text_view_get_monospace.
-func (recv *TextView) GetMonospace() bool {
-	retC := C.gtk_text_view_get_monospace((*C.GtkTextView)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_text_view_get_monospace
 
-	return retGo
-}
+// Blacklisted : gtk_text_view_set_monospace
 
-// SetMonospace is a wrapper around the C function gtk_text_view_set_monospace.
-func (recv *TextView) SetMonospace(monospace bool) {
-	c_monospace :=
-		boolToGboolean(monospace)
+// Blacklisted : gtk_widget_get_action_group
 
-	C.gtk_text_view_set_monospace((*C.GtkTextView)(recv.native), c_monospace)
+// Blacklisted : gtk_widget_list_action_prefixes
 
-	return
-}
-
-// GetActionGroup is a wrapper around the C function gtk_widget_get_action_group.
-func (recv *Widget) GetActionGroup(prefix string) *gio.ActionGroup {
-	c_prefix := C.CString(prefix)
-	defer C.free(unsafe.Pointer(c_prefix))
-
-	retC := C.gtk_widget_get_action_group((*C.GtkWidget)(recv.native), c_prefix)
-	var retGo (*gio.ActionGroup)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gio.ActionGroupNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// ListActionPrefixes is a wrapper around the C function gtk_widget_list_action_prefixes.
-func (recv *Widget) ListActionPrefixes() []string {
-	retC := C.gtk_widget_list_action_prefixes((*C.GtkWidget)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
-
-// GetTitlebar is a wrapper around the C function gtk_window_get_titlebar.
-func (recv *Window) GetTitlebar() *Widget {
-	retC := C.gtk_window_get_titlebar((*C.GtkWindow)(recv.native))
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gtk_window_get_titlebar

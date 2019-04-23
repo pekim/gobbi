@@ -10,20 +10,6 @@ package gdkpixbuf
 // #include <stdlib.h>
 import "C"
 
-// GetLoop is a wrapper around the C function gdk_pixbuf_simple_anim_get_loop.
-func (recv *PixbufSimpleAnim) GetLoop() bool {
-	retC := C.gdk_pixbuf_simple_anim_get_loop((*C.GdkPixbufSimpleAnim)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_pixbuf_simple_anim_get_loop
 
-	return retGo
-}
-
-// SetLoop is a wrapper around the C function gdk_pixbuf_simple_anim_set_loop.
-func (recv *PixbufSimpleAnim) SetLoop(loop bool) {
-	c_loop :=
-		boolToGboolean(loop)
-
-	C.gdk_pixbuf_simple_anim_set_loop((*C.GdkPixbufSimpleAnim)(recv.native), c_loop)
-
-	return
-}
+// Blacklisted : gdk_pixbuf_simple_anim_set_loop

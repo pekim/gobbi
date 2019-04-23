@@ -12,39 +12,11 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// BitLock is a wrapper around the C function g_bit_lock.
-func BitLock(address int32, lockBit int32) {
-	c_address := (C.gint)(address)
+// Blacklisted : g_bit_lock
 
-	c_lock_bit := (C.gint)(lockBit)
+// Blacklisted : g_bit_trylock
 
-	C.g_bit_lock(&c_address, c_lock_bit)
-
-	return
-}
-
-// BitTrylock is a wrapper around the C function g_bit_trylock.
-func BitTrylock(address int32, lockBit int32) bool {
-	c_address := (C.gint)(address)
-
-	c_lock_bit := (C.gint)(lockBit)
-
-	retC := C.g_bit_trylock(&c_address, c_lock_bit)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// BitUnlock is a wrapper around the C function g_bit_unlock.
-func BitUnlock(address int32, lockBit int32) {
-	c_address := (C.gint)(address)
-
-	c_lock_bit := (C.gint)(lockBit)
-
-	C.g_bit_unlock(&c_address, c_lock_bit)
-
-	return
-}
+// Blacklisted : g_bit_unlock
 
 // Unsupported : g_malloc0_n : no return generator
 
@@ -57,3 +29,9 @@ func BitUnlock(address int32, lockBit int32) {
 // Unsupported : g_try_malloc_n : no return generator
 
 // Unsupported : g_try_realloc_n : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
+
+// Blacklisted : g_variant_is_object_path
+
+// Blacklisted : g_variant_is_signature
+
+// Blacklisted : g_variant_type_string_scan

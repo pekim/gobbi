@@ -3,8 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,81 +12,18 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DoSetRelatedAction is a wrapper around the C function gtk_activatable_do_set_related_action.
-func (recv *Activatable) DoSetRelatedAction(action *Action) {
-	c_action := (*C.GtkAction)(C.NULL)
-	if action != nil {
-		c_action = (*C.GtkAction)(action.ToC())
-	}
+// Blacklisted : gtk_activatable_do_set_related_action
 
-	C.gtk_activatable_do_set_related_action((*C.GtkActivatable)(recv.native), c_action)
+// Blacklisted : gtk_activatable_get_related_action
 
-	return
-}
+// Blacklisted : gtk_activatable_get_use_action_appearance
 
-// GetRelatedAction is a wrapper around the C function gtk_activatable_get_related_action.
-func (recv *Activatable) GetRelatedAction() *Action {
-	retC := C.gtk_activatable_get_related_action((*C.GtkActivatable)(recv.native))
-	retGo := ActionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_activatable_set_related_action
 
-	return retGo
-}
+// Blacklisted : gtk_activatable_set_use_action_appearance
 
-// GetUseActionAppearance is a wrapper around the C function gtk_activatable_get_use_action_appearance.
-func (recv *Activatable) GetUseActionAppearance() bool {
-	retC := C.gtk_activatable_get_use_action_appearance((*C.GtkActivatable)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_activatable_sync_action_properties
 
-	return retGo
-}
+// Blacklisted : gtk_orientable_get_orientation
 
-// SetRelatedAction is a wrapper around the C function gtk_activatable_set_related_action.
-func (recv *Activatable) SetRelatedAction(action *Action) {
-	c_action := (*C.GtkAction)(C.NULL)
-	if action != nil {
-		c_action = (*C.GtkAction)(action.ToC())
-	}
-
-	C.gtk_activatable_set_related_action((*C.GtkActivatable)(recv.native), c_action)
-
-	return
-}
-
-// SetUseActionAppearance is a wrapper around the C function gtk_activatable_set_use_action_appearance.
-func (recv *Activatable) SetUseActionAppearance(useAppearance bool) {
-	c_use_appearance :=
-		boolToGboolean(useAppearance)
-
-	C.gtk_activatable_set_use_action_appearance((*C.GtkActivatable)(recv.native), c_use_appearance)
-
-	return
-}
-
-// SyncActionProperties is a wrapper around the C function gtk_activatable_sync_action_properties.
-func (recv *Activatable) SyncActionProperties(action *Action) {
-	c_action := (*C.GtkAction)(C.NULL)
-	if action != nil {
-		c_action = (*C.GtkAction)(action.ToC())
-	}
-
-	C.gtk_activatable_sync_action_properties((*C.GtkActivatable)(recv.native), c_action)
-
-	return
-}
-
-// GetOrientation is a wrapper around the C function gtk_orientable_get_orientation.
-func (recv *Orientable) GetOrientation() Orientation {
-	retC := C.gtk_orientable_get_orientation((*C.GtkOrientable)(recv.native))
-	retGo := (Orientation)(retC)
-
-	return retGo
-}
-
-// SetOrientation is a wrapper around the C function gtk_orientable_set_orientation.
-func (recv *Orientable) SetOrientation(orientation Orientation) {
-	c_orientation := (C.GtkOrientation)(orientation)
-
-	C.gtk_orientable_set_orientation((*C.GtkOrientable)(recv.native), c_orientation)
-
-	return
-}
+// Blacklisted : gtk_orientable_set_orientation

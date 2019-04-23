@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
 )
@@ -70,13 +69,7 @@ import (
 */
 import "C"
 
-// GetSeat is a wrapper around the C function gdk_device_get_seat.
-func (recv *Device) GetSeat() *Seat {
-	retC := C.gdk_device_get_seat((*C.GdkDevice)(recv.native))
-	retGo := SeatNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_device_get_seat
 
 type signalDisplaySeatAddedDetail struct {
 	callback  DisplaySignalSeatAddedCallback
@@ -202,21 +195,9 @@ func display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer
 	callback(seat)
 }
 
-// GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
-func (recv *Display) GetDefaultSeat() *Seat {
-	retC := C.gdk_display_get_default_seat((*C.GdkDisplay)(recv.native))
-	retGo := SeatNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_display_get_default_seat
 
-	return retGo
-}
-
-// ListSeats is a wrapper around the C function gdk_display_list_seats.
-func (recv *Display) ListSeats() *glib.List {
-	retC := C.gdk_display_list_seats((*C.GdkDisplay)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_display_list_seats
 
 type signalDragContextActionChangedDetail struct {
 	callback  DragContextSignalActionChangedCallback
@@ -464,49 +445,10 @@ func dragcontext_dropPerformedHandler(_ *C.GObject, c_time C.gint, data C.gpoint
 	callback(time)
 }
 
-// GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
-func (recv *DragContext) GetDragWindow() *Window {
-	retC := C.gdk_drag_context_get_drag_window((*C.GdkDragContext)(recv.native))
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_drag_context_get_drag_window
 
-	return retGo
-}
+// Blacklisted : gdk_drag_context_manage_dnd
 
-// ManageDnd is a wrapper around the C function gdk_drag_context_manage_dnd.
-func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
-	c_ipc_window := (*C.GdkWindow)(C.NULL)
-	if ipcWindow != nil {
-		c_ipc_window = (*C.GdkWindow)(ipcWindow.ToC())
-	}
+// Blacklisted : gdk_drag_context_set_hotspot
 
-	c_actions := (C.GdkDragAction)(actions)
-
-	retC := C.gdk_drag_context_manage_dnd((*C.GdkDragContext)(recv.native), c_ipc_window, c_actions)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetHotspot is a wrapper around the C function gdk_drag_context_set_hotspot.
-func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
-	c_hot_x := (C.gint)(hotX)
-
-	c_hot_y := (C.gint)(hotY)
-
-	C.gdk_drag_context_set_hotspot((*C.GdkDragContext)(recv.native), c_hot_x, c_hot_y)
-
-	return
-}
-
-// IsLegacy is a wrapper around the C function gdk_gl_context_is_legacy.
-func (recv *GLContext) IsLegacy() bool {
-	retC := C.gdk_gl_context_is_legacy((*C.GdkGLContext)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_gl_context_is_legacy

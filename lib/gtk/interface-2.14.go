@@ -3,12 +3,6 @@
 
 package gtk
 
-import (
-	gio "github.com/pekim/gobbi/lib/gio"
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -18,147 +12,28 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_get_current_folder_file.
-func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
-	retC := C.gtk_file_chooser_get_current_folder_file((*C.GtkFileChooser)(recv.native))
-	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_file_chooser_get_current_folder_file
 
-	return retGo
-}
+// Blacklisted : gtk_file_chooser_get_file
 
-// GetFile is a wrapper around the C function gtk_file_chooser_get_file.
-func (recv *FileChooser) GetFile() *gio.File {
-	retC := C.gtk_file_chooser_get_file((*C.GtkFileChooser)(recv.native))
-	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_file_chooser_get_files
 
-	return retGo
-}
+// Blacklisted : gtk_file_chooser_get_preview_file
 
-// GetFiles is a wrapper around the C function gtk_file_chooser_get_files.
-func (recv *FileChooser) GetFiles() *glib.SList {
-	retC := C.gtk_file_chooser_get_files((*C.GtkFileChooser)(recv.native))
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_file_chooser_select_file
 
-	return retGo
-}
+// Blacklisted : gtk_file_chooser_set_current_folder_file
 
-// GetPreviewFile is a wrapper around the C function gtk_file_chooser_get_preview_file.
-func (recv *FileChooser) GetPreviewFile() *gio.File {
-	retC := C.gtk_file_chooser_get_preview_file((*C.GtkFileChooser)(recv.native))
-	var retGo (*gio.File)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gio.FileNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_file_chooser_set_file
 
-	return retGo
-}
+// Blacklisted : gtk_file_chooser_unselect_file
 
-// SelectFile is a wrapper around the C function gtk_file_chooser_select_file.
-func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
-	c_file := (*C.GFile)(file.ToC())
+// Blacklisted : gtk_tool_shell_get_icon_size
 
-	var cThrowableError *C.GError
+// Blacklisted : gtk_tool_shell_get_orientation
 
-	retC := C.gtk_file_chooser_select_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_tool_shell_get_relief_style
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : gtk_tool_shell_get_style
 
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_set_current_folder_file.
-func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
-	c_file := (*C.GFile)(file.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_file_chooser_set_current_folder_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetFile is a wrapper around the C function gtk_file_chooser_set_file.
-func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
-	c_file := (*C.GFile)(file.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_file_chooser_set_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// UnselectFile is a wrapper around the C function gtk_file_chooser_unselect_file.
-func (recv *FileChooser) UnselectFile(file *gio.File) {
-	c_file := (*C.GFile)(file.ToC())
-
-	C.gtk_file_chooser_unselect_file((*C.GtkFileChooser)(recv.native), c_file)
-
-	return
-}
-
-// GetIconSize is a wrapper around the C function gtk_tool_shell_get_icon_size.
-func (recv *ToolShell) GetIconSize() IconSize {
-	retC := C.gtk_tool_shell_get_icon_size((*C.GtkToolShell)(recv.native))
-	retGo := (IconSize)(retC)
-
-	return retGo
-}
-
-// GetOrientation is a wrapper around the C function gtk_tool_shell_get_orientation.
-func (recv *ToolShell) GetOrientation() Orientation {
-	retC := C.gtk_tool_shell_get_orientation((*C.GtkToolShell)(recv.native))
-	retGo := (Orientation)(retC)
-
-	return retGo
-}
-
-// GetReliefStyle is a wrapper around the C function gtk_tool_shell_get_relief_style.
-func (recv *ToolShell) GetReliefStyle() ReliefStyle {
-	retC := C.gtk_tool_shell_get_relief_style((*C.GtkToolShell)(recv.native))
-	retGo := (ReliefStyle)(retC)
-
-	return retGo
-}
-
-// GetStyle is a wrapper around the C function gtk_tool_shell_get_style.
-func (recv *ToolShell) GetStyle() ToolbarStyle {
-	retC := C.gtk_tool_shell_get_style((*C.GtkToolShell)(recv.native))
-	retGo := (ToolbarStyle)(retC)
-
-	return retGo
-}
-
-// RebuildMenu is a wrapper around the C function gtk_tool_shell_rebuild_menu.
-func (recv *ToolShell) RebuildMenu() {
-	C.gtk_tool_shell_rebuild_menu((*C.GtkToolShell)(recv.native))
-
-	return
-}
+// Blacklisted : gtk_tool_shell_rebuild_menu

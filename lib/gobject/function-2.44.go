@@ -10,12 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// TypeGetInstanceCount is a wrapper around the C function g_type_get_instance_count.
-func TypeGetInstanceCount(type_ Type) int32 {
-	c_type := (C.GType)(type_)
-
-	retC := C.g_type_get_instance_count(c_type)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_type_get_instance_count

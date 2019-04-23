@@ -3,10 +3,7 @@
 
 package gdk
 
-import (
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -95,13 +92,7 @@ func window_pickEmbeddedChildHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble,
 
 // Unsupported signal 'to-embedder' for Window : unsupported parameter embedder_x : direction is 'out'
 
-// EnsureNative is a wrapper around the C function gdk_window_ensure_native.
-func (recv *Window) EnsureNative() bool {
-	retC := C.gdk_window_ensure_native((*C.GdkWindow)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_window_ensure_native
 
 // Flush is a wrapper around the C function gdk_window_flush.
 func (recv *Window) Flush() {
@@ -110,64 +101,12 @@ func (recv *Window) Flush() {
 	return
 }
 
-// GeometryChanged is a wrapper around the C function gdk_window_geometry_changed.
-func (recv *Window) GeometryChanged() {
-	C.gdk_window_geometry_changed((*C.GdkWindow)(recv.native))
+// Blacklisted : gdk_window_geometry_changed
 
-	return
-}
+// Blacklisted : gdk_window_get_cursor
 
-// GetCursor is a wrapper around the C function gdk_window_get_cursor.
-func (recv *Window) GetCursor() *Cursor {
-	retC := C.gdk_window_get_cursor((*C.GdkWindow)(recv.native))
-	var retGo (*Cursor)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = CursorNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_window_get_root_coords
 
-	return retGo
-}
+// Blacklisted : gdk_window_is_destroyed
 
-// GetRootCoords is a wrapper around the C function gdk_window_get_root_coords.
-func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	var c_root_x C.gint
-
-	var c_root_y C.gint
-
-	C.gdk_window_get_root_coords((*C.GdkWindow)(recv.native), c_x, c_y, &c_root_x, &c_root_y)
-
-	rootX := (int32)(c_root_x)
-
-	rootY := (int32)(c_root_y)
-
-	return rootX, rootY
-}
-
-// IsDestroyed is a wrapper around the C function gdk_window_is_destroyed.
-func (recv *Window) IsDestroyed() bool {
-	retC := C.gdk_window_is_destroyed((*C.GdkWindow)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Restack is a wrapper around the C function gdk_window_restack.
-func (recv *Window) Restack(sibling *Window, above bool) {
-	c_sibling := (*C.GdkWindow)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GdkWindow)(sibling.ToC())
-	}
-
-	c_above :=
-		boolToGboolean(above)
-
-	C.gdk_window_restack((*C.GdkWindow)(recv.native), c_sibling, c_above)
-
-	return
-}
+// Blacklisted : gdk_window_restack

@@ -4,8 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -63,57 +61,11 @@ func (recv *DatagramBased) Equals(other *DatagramBased) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ConditionCheck is a wrapper around the C function g_datagram_based_condition_check.
-func (recv *DatagramBased) ConditionCheck(condition glib.IOCondition) glib.IOCondition {
-	c_condition := (C.GIOCondition)(condition)
+// Blacklisted : g_datagram_based_condition_check
 
-	retC := C.g_datagram_based_condition_check((*C.GDatagramBased)(recv.native), c_condition)
-	retGo := (glib.IOCondition)(retC)
+// Blacklisted : g_datagram_based_condition_wait
 
-	return retGo
-}
-
-// ConditionWait is a wrapper around the C function g_datagram_based_condition_wait.
-func (recv *DatagramBased) ConditionWait(condition glib.IOCondition, timeout int64, cancellable *Cancellable) (bool, error) {
-	c_condition := (C.GIOCondition)(condition)
-
-	c_timeout := (C.gint64)(timeout)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_datagram_based_condition_wait((*C.GDatagramBased)(recv.native), c_condition, c_timeout, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// CreateSource is a wrapper around the C function g_datagram_based_create_source.
-func (recv *DatagramBased) CreateSource(condition glib.IOCondition, cancellable *Cancellable) *glib.Source {
-	c_condition := (C.GIOCondition)(condition)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	retC := C.g_datagram_based_create_source((*C.GDatagramBased)(recv.native), c_condition, c_cancellable)
-	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_datagram_based_create_source
 
 // Unsupported : g_datagram_based_receive_messages : unsupported parameter messages :
 
@@ -145,69 +97,17 @@ func (recv *DtlsClientConnection) Equals(other *DtlsClientConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DtlsClientConnectionNew is a wrapper around the C function g_dtls_client_connection_new.
-func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketConnectable) (*DtlsClientConnection, error) {
-	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
+// Blacklisted : g_dtls_client_connection_new
 
-	c_server_identity := (*C.GSocketConnectable)(serverIdentity.ToC())
+// Blacklisted : g_dtls_client_connection_get_accepted_cas
 
-	var cThrowableError *C.GError
+// Blacklisted : g_dtls_client_connection_get_server_identity
 
-	retC := C.g_dtls_client_connection_new(c_base_socket, c_server_identity, &cThrowableError)
-	retGo := DtlsClientConnectionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dtls_client_connection_get_validation_flags
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_dtls_client_connection_set_server_identity
 
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GetAcceptedCas is a wrapper around the C function g_dtls_client_connection_get_accepted_cas.
-func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
-	retC := C.g_dtls_client_connection_get_accepted_cas((*C.GDtlsClientConnection)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetServerIdentity is a wrapper around the C function g_dtls_client_connection_get_server_identity.
-func (recv *DtlsClientConnection) GetServerIdentity() *SocketConnectable {
-	retC := C.g_dtls_client_connection_get_server_identity((*C.GDtlsClientConnection)(recv.native))
-	retGo := SocketConnectableNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetValidationFlags is a wrapper around the C function g_dtls_client_connection_get_validation_flags.
-func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
-	retC := C.g_dtls_client_connection_get_validation_flags((*C.GDtlsClientConnection)(recv.native))
-	retGo := (TlsCertificateFlags)(retC)
-
-	return retGo
-}
-
-// SetServerIdentity is a wrapper around the C function g_dtls_client_connection_set_server_identity.
-func (recv *DtlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
-	c_identity := (*C.GSocketConnectable)(identity.ToC())
-
-	C.g_dtls_client_connection_set_server_identity((*C.GDtlsClientConnection)(recv.native), c_identity)
-
-	return
-}
-
-// SetValidationFlags is a wrapper around the C function g_dtls_client_connection_set_validation_flags.
-func (recv *DtlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
-	c_flags := (C.GTlsCertificateFlags)(flags)
-
-	C.g_dtls_client_connection_set_validation_flags((*C.GDtlsClientConnection)(recv.native), c_flags)
-
-	return
-}
+// Blacklisted : g_dtls_client_connection_set_validation_flags
 
 // DtlsConnection is a wrapper around the C record GDtlsConnection.
 type DtlsConnection struct {
@@ -302,272 +202,49 @@ func dtlsconnection_acceptCertificateHandler(_ *C.GObject, c_peer_cert *C.GTlsCe
 	return retC
 }
 
-// Close is a wrapper around the C function g_dtls_connection_close.
-func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dtls_connection_close((*C.GDtlsConnection)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dtls_connection_close
 
 // Unsupported : g_dtls_connection_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_dtls_connection_close_finish.
-func (recv *DtlsConnection) CloseFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_dtls_connection_close_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_dtls_connection_emit_accept_certificate
 
-	retC := C.g_dtls_connection_close_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_dtls_connection_get_certificate
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_dtls_connection_get_database
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_dtls_connection_get_interaction
 
-	return retGo, goError
-}
+// Blacklisted : g_dtls_connection_get_peer_certificate
 
-// EmitAcceptCertificate is a wrapper around the C function g_dtls_connection_emit_accept_certificate.
-func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
-	c_peer_cert := (*C.GTlsCertificate)(C.NULL)
-	if peerCert != nil {
-		c_peer_cert = (*C.GTlsCertificate)(peerCert.ToC())
-	}
+// Blacklisted : g_dtls_connection_get_peer_certificate_errors
 
-	c_errors := (C.GTlsCertificateFlags)(errors)
+// Blacklisted : g_dtls_connection_get_rehandshake_mode
 
-	retC := C.g_dtls_connection_emit_accept_certificate((*C.GDtlsConnection)(recv.native), c_peer_cert, c_errors)
-	retGo := retC == C.TRUE
+// Blacklisted : g_dtls_connection_get_require_close_notify
 
-	return retGo
-}
-
-// GetCertificate is a wrapper around the C function g_dtls_connection_get_certificate.
-func (recv *DtlsConnection) GetCertificate() *TlsCertificate {
-	retC := C.g_dtls_connection_get_certificate((*C.GDtlsConnection)(recv.native))
-	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetDatabase is a wrapper around the C function g_dtls_connection_get_database.
-func (recv *DtlsConnection) GetDatabase() *TlsDatabase {
-	retC := C.g_dtls_connection_get_database((*C.GDtlsConnection)(recv.native))
-	retGo := TlsDatabaseNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetInteraction is a wrapper around the C function g_dtls_connection_get_interaction.
-func (recv *DtlsConnection) GetInteraction() *TlsInteraction {
-	retC := C.g_dtls_connection_get_interaction((*C.GDtlsConnection)(recv.native))
-	retGo := TlsInteractionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetPeerCertificate is a wrapper around the C function g_dtls_connection_get_peer_certificate.
-func (recv *DtlsConnection) GetPeerCertificate() *TlsCertificate {
-	retC := C.g_dtls_connection_get_peer_certificate((*C.GDtlsConnection)(recv.native))
-	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetPeerCertificateErrors is a wrapper around the C function g_dtls_connection_get_peer_certificate_errors.
-func (recv *DtlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
-	retC := C.g_dtls_connection_get_peer_certificate_errors((*C.GDtlsConnection)(recv.native))
-	retGo := (TlsCertificateFlags)(retC)
-
-	return retGo
-}
-
-// GetRehandshakeMode is a wrapper around the C function g_dtls_connection_get_rehandshake_mode.
-func (recv *DtlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
-	retC := C.g_dtls_connection_get_rehandshake_mode((*C.GDtlsConnection)(recv.native))
-	retGo := (TlsRehandshakeMode)(retC)
-
-	return retGo
-}
-
-// GetRequireCloseNotify is a wrapper around the C function g_dtls_connection_get_require_close_notify.
-func (recv *DtlsConnection) GetRequireCloseNotify() bool {
-	retC := C.g_dtls_connection_get_require_close_notify((*C.GDtlsConnection)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Handshake is a wrapper around the C function g_dtls_connection_handshake.
-func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dtls_connection_handshake((*C.GDtlsConnection)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dtls_connection_handshake
 
 // Unsupported : g_dtls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// HandshakeFinish is a wrapper around the C function g_dtls_connection_handshake_finish.
-func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_dtls_connection_handshake_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_dtls_connection_set_certificate
 
-	retC := C.g_dtls_connection_handshake_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_dtls_connection_set_database
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_dtls_connection_set_interaction
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_dtls_connection_set_rehandshake_mode
 
-	return retGo, goError
-}
+// Blacklisted : g_dtls_connection_set_require_close_notify
 
-// SetCertificate is a wrapper around the C function g_dtls_connection_set_certificate.
-func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
-	c_certificate := (*C.GTlsCertificate)(C.NULL)
-	if certificate != nil {
-		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
-	}
-
-	C.g_dtls_connection_set_certificate((*C.GDtlsConnection)(recv.native), c_certificate)
-
-	return
-}
-
-// SetDatabase is a wrapper around the C function g_dtls_connection_set_database.
-func (recv *DtlsConnection) SetDatabase(database *TlsDatabase) {
-	c_database := (*C.GTlsDatabase)(C.NULL)
-	if database != nil {
-		c_database = (*C.GTlsDatabase)(database.ToC())
-	}
-
-	C.g_dtls_connection_set_database((*C.GDtlsConnection)(recv.native), c_database)
-
-	return
-}
-
-// SetInteraction is a wrapper around the C function g_dtls_connection_set_interaction.
-func (recv *DtlsConnection) SetInteraction(interaction *TlsInteraction) {
-	c_interaction := (*C.GTlsInteraction)(C.NULL)
-	if interaction != nil {
-		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
-	}
-
-	C.g_dtls_connection_set_interaction((*C.GDtlsConnection)(recv.native), c_interaction)
-
-	return
-}
-
-// SetRehandshakeMode is a wrapper around the C function g_dtls_connection_set_rehandshake_mode.
-func (recv *DtlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
-	c_mode := (C.GTlsRehandshakeMode)(mode)
-
-	C.g_dtls_connection_set_rehandshake_mode((*C.GDtlsConnection)(recv.native), c_mode)
-
-	return
-}
-
-// SetRequireCloseNotify is a wrapper around the C function g_dtls_connection_set_require_close_notify.
-func (recv *DtlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
-	c_require_close_notify :=
-		boolToGboolean(requireCloseNotify)
-
-	C.g_dtls_connection_set_require_close_notify((*C.GDtlsConnection)(recv.native), c_require_close_notify)
-
-	return
-}
-
-// Shutdown is a wrapper around the C function g_dtls_connection_shutdown.
-func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, cancellable *Cancellable) (bool, error) {
-	c_shutdown_read :=
-		boolToGboolean(shutdownRead)
-
-	c_shutdown_write :=
-		boolToGboolean(shutdownWrite)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dtls_connection_shutdown((*C.GDtlsConnection)(recv.native), c_shutdown_read, c_shutdown_write, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dtls_connection_shutdown
 
 // Unsupported : g_dtls_connection_shutdown_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ShutdownFinish is a wrapper around the C function g_dtls_connection_shutdown_finish.
-func (recv *DtlsConnection) ShutdownFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dtls_connection_shutdown_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dtls_connection_shutdown_finish
 
 // DtlsServerConnection is a wrapper around the C record GDtlsServerConnection.
 type DtlsServerConnection struct {
@@ -595,60 +272,12 @@ func (recv *DtlsServerConnection) Equals(other *DtlsServerConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DtlsServerConnectionNew is a wrapper around the C function g_dtls_server_connection_new.
-func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertificate) (*DtlsServerConnection, error) {
-	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
+// Blacklisted : g_dtls_server_connection_new
 
-	c_certificate := (*C.GTlsCertificate)(C.NULL)
-	if certificate != nil {
-		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
-	}
+// Blacklisted : g_socket_connectable_to_string
 
-	var cThrowableError *C.GError
+// Blacklisted : g_tls_backend_get_dtls_client_connection_type
 
-	retC := C.g_dtls_server_connection_new(c_base_socket, c_certificate, &cThrowableError)
-	retGo := DtlsServerConnectionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_tls_backend_get_dtls_server_connection_type
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ToString is a wrapper around the C function g_socket_connectable_to_string.
-func (recv *SocketConnectable) ToString() string {
-	retC := C.g_socket_connectable_to_string((*C.GSocketConnectable)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetDtlsClientConnectionType is a wrapper around the C function g_tls_backend_get_dtls_client_connection_type.
-func (recv *TlsBackend) GetDtlsClientConnectionType() gobject.Type {
-	retC := C.g_tls_backend_get_dtls_client_connection_type((*C.GTlsBackend)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// GetDtlsServerConnectionType is a wrapper around the C function g_tls_backend_get_dtls_server_connection_type.
-func (recv *TlsBackend) GetDtlsServerConnectionType() gobject.Type {
-	retC := C.g_tls_backend_get_dtls_server_connection_type((*C.GTlsBackend)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
-
-// SupportsDtls is a wrapper around the C function g_tls_backend_supports_dtls.
-func (recv *TlsBackend) SupportsDtls() bool {
-	retC := C.g_tls_backend_supports_dtls((*C.GTlsBackend)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_tls_backend_supports_dtls

@@ -3,12 +3,6 @@
 
 package gdk
 
-import (
-	cairo "github.com/pekim/gobbi/lib/cairo"
-	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -16,87 +10,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CairoCreate is a wrapper around the C function gdk_cairo_create.
-func CairoCreate(window *Window) *cairo.Context {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
+// Blacklisted : gdk_cairo_create
 
-	retC := C.gdk_cairo_create(c_window)
-	retGo := cairo.ContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_cairo_rectangle
 
-	return retGo
-}
+// Blacklisted : gdk_cairo_region
 
-// CairoRectangle is a wrapper around the C function gdk_cairo_rectangle.
-func CairoRectangle(cr *cairo.Context, rectangle *Rectangle) {
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
+// Blacklisted : gdk_cairo_set_source_color
 
-	c_rectangle := (*C.GdkRectangle)(C.NULL)
-	if rectangle != nil {
-		c_rectangle = (*C.GdkRectangle)(rectangle.ToC())
-	}
-
-	C.gdk_cairo_rectangle(c_cr, c_rectangle)
-
-	return
-}
-
-// CairoRegion is a wrapper around the C function gdk_cairo_region.
-func CairoRegion(cr *cairo.Context, region *cairo.Region) {
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_region := (*C.cairo_region_t)(C.NULL)
-	if region != nil {
-		c_region = (*C.cairo_region_t)(region.ToC())
-	}
-
-	C.gdk_cairo_region(c_cr, c_region)
-
-	return
-}
-
-// CairoSetSourceColor is a wrapper around the C function gdk_cairo_set_source_color.
-func CairoSetSourceColor(cr *cairo.Context, color *Color) {
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_color := (*C.GdkColor)(C.NULL)
-	if color != nil {
-		c_color = (*C.GdkColor)(color.ToC())
-	}
-
-	C.gdk_cairo_set_source_color(c_cr, c_color)
-
-	return
-}
-
-// CairoSetSourcePixbuf is a wrapper around the C function gdk_cairo_set_source_pixbuf.
-func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
-
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	c_pixbuf_x := (C.gdouble)(pixbufX)
-
-	c_pixbuf_y := (C.gdouble)(pixbufY)
-
-	C.gdk_cairo_set_source_pixbuf(c_cr, c_pixbuf, c_pixbuf_x, c_pixbuf_y)
-
-	return
-}
+// Blacklisted : gdk_cairo_set_source_pixbuf

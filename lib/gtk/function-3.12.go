@@ -12,10 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetLocaleDirection is a wrapper around the C function gtk_get_locale_direction.
-func GetLocaleDirection() TextDirection {
-	retC := C.gtk_get_locale_direction()
-	retGo := (TextDirection)(retC)
-
-	return retGo
-}
+// Blacklisted : gtk_get_locale_direction

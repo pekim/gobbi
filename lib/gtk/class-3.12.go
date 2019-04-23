@@ -3,13 +3,6 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	gio "github.com/pekim/gobbi/lib/gio"
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -21,713 +14,148 @@ import "C"
 
 // Unsupported : gtk_accel_label_get_accel : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// ActionBarNew is a wrapper around the C function gtk_action_bar_new.
-func ActionBarNew() *ActionBar {
-	retC := C.gtk_action_bar_new()
-	retGo := ActionBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetCenterWidget is a wrapper around the C function gtk_action_bar_get_center_widget.
-func (recv *ActionBar) GetCenterWidget() *Widget {
-	retC := C.gtk_action_bar_get_center_widget((*C.GtkActionBar)(recv.native))
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// PackEnd is a wrapper around the C function gtk_action_bar_pack_end.
-func (recv *ActionBar) PackEnd(child *Widget) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
-
-	C.gtk_action_bar_pack_end((*C.GtkActionBar)(recv.native), c_child)
-
-	return
-}
-
-// PackStart is a wrapper around the C function gtk_action_bar_pack_start.
-func (recv *ActionBar) PackStart(child *Widget) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
-
-	C.gtk_action_bar_pack_start((*C.GtkActionBar)(recv.native), c_child)
-
-	return
-}
-
-// SetCenterWidget is a wrapper around the C function gtk_action_bar_set_center_widget.
-func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
-	c_center_widget := (*C.GtkWidget)(C.NULL)
-	if centerWidget != nil {
-		c_center_widget = (*C.GtkWidget)(centerWidget.ToC())
-	}
-
-	C.gtk_action_bar_set_center_widget((*C.GtkActionBar)(recv.native), c_center_widget)
-
-	return
-}
-
-// GetAccelsForAction is a wrapper around the C function gtk_application_get_accels_for_action.
-func (recv *Application) GetAccelsForAction(detailedActionName string) []string {
-	c_detailed_action_name := C.CString(detailedActionName)
-	defer C.free(unsafe.Pointer(c_detailed_action_name))
-
-	retC := C.gtk_application_get_accels_for_action((*C.GtkApplication)(recv.native), c_detailed_action_name)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
-
-// ListActionDescriptions is a wrapper around the C function gtk_application_list_action_descriptions.
-func (recv *Application) ListActionDescriptions() []string {
-	retC := C.gtk_application_list_action_descriptions((*C.GtkApplication)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
-
-// SetAccelsForAction is a wrapper around the C function gtk_application_set_accels_for_action.
-func (recv *Application) SetAccelsForAction(detailedActionName string, accels []string) {
-	c_detailed_action_name := C.CString(detailedActionName)
-	defer C.free(unsafe.Pointer(c_detailed_action_name))
-
-	c_accels_array := make([]*C.gchar, len(accels)+1, len(accels)+1)
-	for i, item := range accels {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_accels_array[i] = c
-	}
-	c_accels_array[len(accels)] = nil
-	c_accels_arrayPtr := &c_accels_array[0]
-	c_accels := (**C.gchar)(unsafe.Pointer(c_accels_arrayPtr))
-
-	C.gtk_application_set_accels_for_action((*C.GtkApplication)(recv.native), c_detailed_action_name, c_accels)
-
-	return
-}
-
-// GetCenterWidget is a wrapper around the C function gtk_box_get_center_widget.
-func (recv *Box) GetCenterWidget() *Widget {
-	retC := C.gtk_box_get_center_widget((*C.GtkBox)(recv.native))
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// SetCenterWidget is a wrapper around the C function gtk_box_set_center_widget.
-func (recv *Box) SetCenterWidget(widget *Widget) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	C.gtk_box_set_center_widget((*C.GtkBox)(recv.native), c_widget)
+// Blacklisted : gtk_action_bar_new
 
-	return
-}
-
-// GetHeaderBar is a wrapper around the C function gtk_dialog_get_header_bar.
-func (recv *Dialog) GetHeaderBar() *Widget {
-	retC := C.gtk_dialog_get_header_bar((*C.GtkDialog)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_action_bar_get_center_widget
 
-	return retGo
-}
-
-// GetMaxWidthChars is a wrapper around the C function gtk_entry_get_max_width_chars.
-func (recv *Entry) GetMaxWidthChars() int32 {
-	retC := C.gtk_entry_get_max_width_chars((*C.GtkEntry)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gtk_action_bar_pack_end
 
-	return retGo
-}
-
-// SetMaxWidthChars is a wrapper around the C function gtk_entry_set_max_width_chars.
-func (recv *Entry) SetMaxWidthChars(nChars int32) {
-	c_n_chars := (C.gint)(nChars)
-
-	C.gtk_entry_set_max_width_chars((*C.GtkEntry)(recv.native), c_n_chars)
+// Blacklisted : gtk_action_bar_pack_start
 
-	return
-}
+// Blacklisted : gtk_action_bar_set_center_widget
 
-// FlowBoxNew is a wrapper around the C function gtk_flow_box_new.
-func FlowBoxNew() *FlowBox {
-	retC := C.gtk_flow_box_new()
-	retGo := FlowBoxNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_application_get_accels_for_action
 
-	return retGo
-}
+// Blacklisted : gtk_application_list_action_descriptions
 
-// GetActivateOnSingleClick is a wrapper around the C function gtk_flow_box_get_activate_on_single_click.
-func (recv *FlowBox) GetActivateOnSingleClick() bool {
-	retC := C.gtk_flow_box_get_activate_on_single_click((*C.GtkFlowBox)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_application_set_accels_for_action
 
-	return retGo
-}
+// Blacklisted : gtk_box_get_center_widget
 
-// GetChildAtIndex is a wrapper around the C function gtk_flow_box_get_child_at_index.
-func (recv *FlowBox) GetChildAtIndex(idx int32) *FlowBoxChild {
-	c_idx := (C.gint)(idx)
+// Blacklisted : gtk_box_set_center_widget
 
-	retC := C.gtk_flow_box_get_child_at_index((*C.GtkFlowBox)(recv.native), c_idx)
-	var retGo (*FlowBoxChild)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FlowBoxChildNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_dialog_get_header_bar
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_max_width_chars
 
-// GetColumnSpacing is a wrapper around the C function gtk_flow_box_get_column_spacing.
-func (recv *FlowBox) GetColumnSpacing() uint32 {
-	retC := C.gtk_flow_box_get_column_spacing((*C.GtkFlowBox)(recv.native))
-	retGo := (uint32)(retC)
+// Blacklisted : gtk_entry_set_max_width_chars
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_new
 
-// GetHomogeneous is a wrapper around the C function gtk_flow_box_get_homogeneous.
-func (recv *FlowBox) GetHomogeneous() bool {
-	retC := C.gtk_flow_box_get_homogeneous((*C.GtkFlowBox)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_flow_box_get_activate_on_single_click
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_get_child_at_index
 
-// GetMaxChildrenPerLine is a wrapper around the C function gtk_flow_box_get_max_children_per_line.
-func (recv *FlowBox) GetMaxChildrenPerLine() uint32 {
-	retC := C.gtk_flow_box_get_max_children_per_line((*C.GtkFlowBox)(recv.native))
-	retGo := (uint32)(retC)
+// Blacklisted : gtk_flow_box_get_column_spacing
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_get_homogeneous
 
-// GetMinChildrenPerLine is a wrapper around the C function gtk_flow_box_get_min_children_per_line.
-func (recv *FlowBox) GetMinChildrenPerLine() uint32 {
-	retC := C.gtk_flow_box_get_min_children_per_line((*C.GtkFlowBox)(recv.native))
-	retGo := (uint32)(retC)
+// Blacklisted : gtk_flow_box_get_max_children_per_line
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_get_min_children_per_line
 
-// GetRowSpacing is a wrapper around the C function gtk_flow_box_get_row_spacing.
-func (recv *FlowBox) GetRowSpacing() uint32 {
-	retC := C.gtk_flow_box_get_row_spacing((*C.GtkFlowBox)(recv.native))
-	retGo := (uint32)(retC)
+// Blacklisted : gtk_flow_box_get_row_spacing
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_get_selected_children
 
-// GetSelectedChildren is a wrapper around the C function gtk_flow_box_get_selected_children.
-func (recv *FlowBox) GetSelectedChildren() *glib.List {
-	retC := C.gtk_flow_box_get_selected_children((*C.GtkFlowBox)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_flow_box_get_selection_mode
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_insert
 
-// GetSelectionMode is a wrapper around the C function gtk_flow_box_get_selection_mode.
-func (recv *FlowBox) GetSelectionMode() SelectionMode {
-	retC := C.gtk_flow_box_get_selection_mode((*C.GtkFlowBox)(recv.native))
-	retGo := (SelectionMode)(retC)
+// Blacklisted : gtk_flow_box_invalidate_filter
 
-	return retGo
-}
+// Blacklisted : gtk_flow_box_invalidate_sort
 
-// Insert is a wrapper around the C function gtk_flow_box_insert.
-func (recv *FlowBox) Insert(widget *Widget, position int32) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
+// Blacklisted : gtk_flow_box_select_all
 
-	c_position := (C.gint)(position)
-
-	C.gtk_flow_box_insert((*C.GtkFlowBox)(recv.native), c_widget, c_position)
-
-	return
-}
-
-// InvalidateFilter is a wrapper around the C function gtk_flow_box_invalidate_filter.
-func (recv *FlowBox) InvalidateFilter() {
-	C.gtk_flow_box_invalidate_filter((*C.GtkFlowBox)(recv.native))
-
-	return
-}
-
-// InvalidateSort is a wrapper around the C function gtk_flow_box_invalidate_sort.
-func (recv *FlowBox) InvalidateSort() {
-	C.gtk_flow_box_invalidate_sort((*C.GtkFlowBox)(recv.native))
-
-	return
-}
-
-// SelectAll is a wrapper around the C function gtk_flow_box_select_all.
-func (recv *FlowBox) SelectAll() {
-	C.gtk_flow_box_select_all((*C.GtkFlowBox)(recv.native))
-
-	return
-}
-
-// SelectChild is a wrapper around the C function gtk_flow_box_select_child.
-func (recv *FlowBox) SelectChild(child *FlowBoxChild) {
-	c_child := (*C.GtkFlowBoxChild)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkFlowBoxChild)(child.ToC())
-	}
-
-	C.gtk_flow_box_select_child((*C.GtkFlowBox)(recv.native), c_child)
-
-	return
-}
+// Blacklisted : gtk_flow_box_select_child
 
 // Unsupported : gtk_flow_box_selected_foreach : unsupported parameter func : no type generator for FlowBoxForeachFunc (GtkFlowBoxForeachFunc) for param func
 
-// SetActivateOnSingleClick is a wrapper around the C function gtk_flow_box_set_activate_on_single_click.
-func (recv *FlowBox) SetActivateOnSingleClick(single bool) {
-	c_single :=
-		boolToGboolean(single)
+// Blacklisted : gtk_flow_box_set_activate_on_single_click
 
-	C.gtk_flow_box_set_activate_on_single_click((*C.GtkFlowBox)(recv.native), c_single)
-
-	return
-}
-
-// SetColumnSpacing is a wrapper around the C function gtk_flow_box_set_column_spacing.
-func (recv *FlowBox) SetColumnSpacing(spacing uint32) {
-	c_spacing := (C.guint)(spacing)
-
-	C.gtk_flow_box_set_column_spacing((*C.GtkFlowBox)(recv.native), c_spacing)
-
-	return
-}
+// Blacklisted : gtk_flow_box_set_column_spacing
 
 // Unsupported : gtk_flow_box_set_filter_func : unsupported parameter filter_func : no type generator for FlowBoxFilterFunc (GtkFlowBoxFilterFunc) for param filter_func
 
-// SetHadjustment is a wrapper around the C function gtk_flow_box_set_hadjustment.
-func (recv *FlowBox) SetHadjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
+// Blacklisted : gtk_flow_box_set_hadjustment
 
-	C.gtk_flow_box_set_hadjustment((*C.GtkFlowBox)(recv.native), c_adjustment)
+// Blacklisted : gtk_flow_box_set_homogeneous
 
-	return
-}
+// Blacklisted : gtk_flow_box_set_max_children_per_line
 
-// SetHomogeneous is a wrapper around the C function gtk_flow_box_set_homogeneous.
-func (recv *FlowBox) SetHomogeneous(homogeneous bool) {
-	c_homogeneous :=
-		boolToGboolean(homogeneous)
+// Blacklisted : gtk_flow_box_set_min_children_per_line
 
-	C.gtk_flow_box_set_homogeneous((*C.GtkFlowBox)(recv.native), c_homogeneous)
+// Blacklisted : gtk_flow_box_set_row_spacing
 
-	return
-}
-
-// SetMaxChildrenPerLine is a wrapper around the C function gtk_flow_box_set_max_children_per_line.
-func (recv *FlowBox) SetMaxChildrenPerLine(nChildren uint32) {
-	c_n_children := (C.guint)(nChildren)
-
-	C.gtk_flow_box_set_max_children_per_line((*C.GtkFlowBox)(recv.native), c_n_children)
-
-	return
-}
-
-// SetMinChildrenPerLine is a wrapper around the C function gtk_flow_box_set_min_children_per_line.
-func (recv *FlowBox) SetMinChildrenPerLine(nChildren uint32) {
-	c_n_children := (C.guint)(nChildren)
-
-	C.gtk_flow_box_set_min_children_per_line((*C.GtkFlowBox)(recv.native), c_n_children)
-
-	return
-}
-
-// SetRowSpacing is a wrapper around the C function gtk_flow_box_set_row_spacing.
-func (recv *FlowBox) SetRowSpacing(spacing uint32) {
-	c_spacing := (C.guint)(spacing)
-
-	C.gtk_flow_box_set_row_spacing((*C.GtkFlowBox)(recv.native), c_spacing)
-
-	return
-}
-
-// SetSelectionMode is a wrapper around the C function gtk_flow_box_set_selection_mode.
-func (recv *FlowBox) SetSelectionMode(mode SelectionMode) {
-	c_mode := (C.GtkSelectionMode)(mode)
-
-	C.gtk_flow_box_set_selection_mode((*C.GtkFlowBox)(recv.native), c_mode)
-
-	return
-}
+// Blacklisted : gtk_flow_box_set_selection_mode
 
 // Unsupported : gtk_flow_box_set_sort_func : unsupported parameter sort_func : no type generator for FlowBoxSortFunc (GtkFlowBoxSortFunc) for param sort_func
 
-// SetVadjustment is a wrapper around the C function gtk_flow_box_set_vadjustment.
-func (recv *FlowBox) SetVadjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
+// Blacklisted : gtk_flow_box_set_vadjustment
 
-	C.gtk_flow_box_set_vadjustment((*C.GtkFlowBox)(recv.native), c_adjustment)
+// Blacklisted : gtk_flow_box_unselect_all
 
-	return
-}
+// Blacklisted : gtk_flow_box_unselect_child
 
-// UnselectAll is a wrapper around the C function gtk_flow_box_unselect_all.
-func (recv *FlowBox) UnselectAll() {
-	C.gtk_flow_box_unselect_all((*C.GtkFlowBox)(recv.native))
-
-	return
-}
-
-// UnselectChild is a wrapper around the C function gtk_flow_box_unselect_child.
-func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
-	c_child := (*C.GtkFlowBoxChild)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkFlowBoxChild)(child.ToC())
-	}
-
-	C.gtk_flow_box_unselect_child((*C.GtkFlowBox)(recv.native), c_child)
+// Blacklisted : gtk_flow_box_child_new
 
-	return
-}
-
-// FlowBoxChildNew is a wrapper around the C function gtk_flow_box_child_new.
-func FlowBoxChildNew() *FlowBoxChild {
-	retC := C.gtk_flow_box_child_new()
-	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Changed is a wrapper around the C function gtk_flow_box_child_changed.
-func (recv *FlowBoxChild) Changed() {
-	C.gtk_flow_box_child_changed((*C.GtkFlowBoxChild)(recv.native))
-
-	return
-}
-
-// GetIndex is a wrapper around the C function gtk_flow_box_child_get_index.
-func (recv *FlowBoxChild) GetIndex() int32 {
-	retC := C.gtk_flow_box_child_get_index((*C.GtkFlowBoxChild)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gtk_flow_box_child_changed
 
-	return retGo
-}
-
-// IsSelected is a wrapper around the C function gtk_flow_box_child_is_selected.
-func (recv *FlowBoxChild) IsSelected() bool {
-	retC := C.gtk_flow_box_child_is_selected((*C.GtkFlowBoxChild)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_flow_box_child_get_index
 
-	return retGo
-}
-
-// GetDecorationLayout is a wrapper around the C function gtk_header_bar_get_decoration_layout.
-func (recv *HeaderBar) GetDecorationLayout() string {
-	retC := C.gtk_header_bar_get_decoration_layout((*C.GtkHeaderBar)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_flow_box_child_is_selected
 
-	return retGo
-}
+// Blacklisted : gtk_header_bar_get_decoration_layout
 
-// GetHasSubtitle is a wrapper around the C function gtk_header_bar_get_has_subtitle.
-func (recv *HeaderBar) GetHasSubtitle() bool {
-	retC := C.gtk_header_bar_get_has_subtitle((*C.GtkHeaderBar)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_header_bar_get_has_subtitle
 
-	return retGo
-}
+// Blacklisted : gtk_header_bar_set_decoration_layout
 
-// SetDecorationLayout is a wrapper around the C function gtk_header_bar_set_decoration_layout.
-func (recv *HeaderBar) SetDecorationLayout(layout string) {
-	c_layout := C.CString(layout)
-	defer C.free(unsafe.Pointer(c_layout))
+// Blacklisted : gtk_header_bar_set_has_subtitle
 
-	C.gtk_header_bar_set_decoration_layout((*C.GtkHeaderBar)(recv.native), c_layout)
+// Blacklisted : gtk_icon_info_is_symbolic
 
-	return
-}
+// Blacklisted : gtk_menu_button_get_popover
 
-// SetHasSubtitle is a wrapper around the C function gtk_header_bar_set_has_subtitle.
-func (recv *HeaderBar) SetHasSubtitle(setting bool) {
-	c_setting :=
-		boolToGboolean(setting)
+// Blacklisted : gtk_menu_button_get_use_popover
 
-	C.gtk_header_bar_set_has_subtitle((*C.GtkHeaderBar)(recv.native), c_setting)
-
-	return
-}
-
-// IsSymbolic is a wrapper around the C function gtk_icon_info_is_symbolic.
-func (recv *IconInfo) IsSymbolic() bool {
-	retC := C.gtk_icon_info_is_symbolic((*C.GtkIconInfo)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetPopover is a wrapper around the C function gtk_menu_button_get_popover.
-func (recv *MenuButton) GetPopover() *Popover {
-	retC := C.gtk_menu_button_get_popover((*C.GtkMenuButton)(recv.native))
-	var retGo (*Popover)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = PopoverNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetUsePopover is a wrapper around the C function gtk_menu_button_get_use_popover.
-func (recv *MenuButton) GetUsePopover() bool {
-	retC := C.gtk_menu_button_get_use_popover((*C.GtkMenuButton)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetPopover is a wrapper around the C function gtk_menu_button_set_popover.
-func (recv *MenuButton) SetPopover(popover *Widget) {
-	c_popover := (*C.GtkWidget)(C.NULL)
-	if popover != nil {
-		c_popover = (*C.GtkWidget)(popover.ToC())
-	}
-
-	C.gtk_menu_button_set_popover((*C.GtkMenuButton)(recv.native), c_popover)
-
-	return
-}
-
-// SetUsePopover is a wrapper around the C function gtk_menu_button_set_use_popover.
-func (recv *MenuButton) SetUsePopover(usePopover bool) {
-	c_use_popover :=
-		boolToGboolean(usePopover)
-
-	C.gtk_menu_button_set_use_popover((*C.GtkMenuButton)(recv.native), c_use_popover)
-
-	return
-}
+// Blacklisted : gtk_menu_button_set_popover
 
-// GetLocalOnly is a wrapper around the C function gtk_places_sidebar_get_local_only.
-func (recv *PlacesSidebar) GetLocalOnly() bool {
-	retC := C.gtk_places_sidebar_get_local_only((*C.GtkPlacesSidebar)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_menu_button_set_use_popover
 
-// SetLocalOnly is a wrapper around the C function gtk_places_sidebar_set_local_only.
-func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
-	c_local_only :=
-		boolToGboolean(localOnly)
+// Blacklisted : gtk_places_sidebar_get_local_only
 
-	C.gtk_places_sidebar_set_local_only((*C.GtkPlacesSidebar)(recv.native), c_local_only)
+// Blacklisted : gtk_places_sidebar_set_local_only
 
-	return
-}
-
-// PopoverNew is a wrapper around the C function gtk_popover_new.
-func PopoverNew(relativeTo *Widget) *Popover {
-	c_relative_to := (*C.GtkWidget)(C.NULL)
-	if relativeTo != nil {
-		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
-	}
+// Blacklisted : gtk_popover_new
 
-	retC := C.gtk_popover_new(c_relative_to)
-	retGo := PopoverNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_popover_new_from_model
 
-	return retGo
-}
+// Blacklisted : gtk_popover_bind_model
 
-// PopoverNewFromModel is a wrapper around the C function gtk_popover_new_from_model.
-func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
-	c_relative_to := (*C.GtkWidget)(C.NULL)
-	if relativeTo != nil {
-		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
-	}
-
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	retC := C.gtk_popover_new_from_model(c_relative_to, c_model)
-	retGo := PopoverNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// BindModel is a wrapper around the C function gtk_popover_bind_model.
-func (recv *Popover) BindModel(model *gio.MenuModel, actionNamespace string) {
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
+// Blacklisted : gtk_popover_get_modal
 
-	c_action_namespace := C.CString(actionNamespace)
-	defer C.free(unsafe.Pointer(c_action_namespace))
-
-	C.gtk_popover_bind_model((*C.GtkPopover)(recv.native), c_model, c_action_namespace)
-
-	return
-}
+// Blacklisted : gtk_popover_get_relative_to
 
-// GetModal is a wrapper around the C function gtk_popover_get_modal.
-func (recv *Popover) GetModal() bool {
-	retC := C.gtk_popover_get_modal((*C.GtkPopover)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_popover_set_modal
 
-// GetRelativeTo is a wrapper around the C function gtk_popover_get_relative_to.
-func (recv *Popover) GetRelativeTo() *Widget {
-	retC := C.gtk_popover_get_relative_to((*C.GtkPopover)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_popover_set_pointing_to
 
-	return retGo
-}
+// Blacklisted : gtk_popover_set_position
 
-// SetModal is a wrapper around the C function gtk_popover_set_modal.
-func (recv *Popover) SetModal(modal bool) {
-	c_modal :=
-		boolToGboolean(modal)
+// Blacklisted : gtk_popover_set_relative_to
 
-	C.gtk_popover_set_modal((*C.GtkPopover)(recv.native), c_modal)
+// Blacklisted : gtk_stack_get_child_by_name
 
-	return
-}
+// Blacklisted : gtk_stack_get_transition_running
 
-// SetPointingTo is a wrapper around the C function gtk_popover_set_pointing_to.
-func (recv *Popover) SetPointingTo(rect *gdk.Rectangle) {
-	c_rect := (*C.GdkRectangle)(C.NULL)
-	if rect != nil {
-		c_rect = (*C.GdkRectangle)(rect.ToC())
-	}
+// Blacklisted : gtk_widget_get_margin_end
 
-	C.gtk_popover_set_pointing_to((*C.GtkPopover)(recv.native), c_rect)
+// Blacklisted : gtk_widget_get_margin_start
 
-	return
-}
+// Blacklisted : gtk_widget_set_margin_end
 
-// SetPosition is a wrapper around the C function gtk_popover_set_position.
-func (recv *Popover) SetPosition(position PositionType) {
-	c_position := (C.GtkPositionType)(position)
+// Blacklisted : gtk_widget_set_margin_start
 
-	C.gtk_popover_set_position((*C.GtkPopover)(recv.native), c_position)
-
-	return
-}
-
-// SetRelativeTo is a wrapper around the C function gtk_popover_set_relative_to.
-func (recv *Popover) SetRelativeTo(relativeTo *Widget) {
-	c_relative_to := (*C.GtkWidget)(C.NULL)
-	if relativeTo != nil {
-		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
-	}
-
-	C.gtk_popover_set_relative_to((*C.GtkPopover)(recv.native), c_relative_to)
-
-	return
-}
-
-// GetChildByName is a wrapper around the C function gtk_stack_get_child_by_name.
-func (recv *Stack) GetChildByName(name string) *Widget {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gtk_stack_get_child_by_name((*C.GtkStack)(recv.native), c_name)
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetTransitionRunning is a wrapper around the C function gtk_stack_get_transition_running.
-func (recv *Stack) GetTransitionRunning() bool {
-	retC := C.gtk_stack_get_transition_running((*C.GtkStack)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetMarginEnd is a wrapper around the C function gtk_widget_get_margin_end.
-func (recv *Widget) GetMarginEnd() int32 {
-	retC := C.gtk_widget_get_margin_end((*C.GtkWidget)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetMarginStart is a wrapper around the C function gtk_widget_get_margin_start.
-func (recv *Widget) GetMarginStart() int32 {
-	retC := C.gtk_widget_get_margin_start((*C.GtkWidget)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// SetMarginEnd is a wrapper around the C function gtk_widget_set_margin_end.
-func (recv *Widget) SetMarginEnd(margin int32) {
-	c_margin := (C.gint)(margin)
-
-	C.gtk_widget_set_margin_end((*C.GtkWidget)(recv.native), c_margin)
-
-	return
-}
-
-// SetMarginStart is a wrapper around the C function gtk_widget_set_margin_start.
-func (recv *Widget) SetMarginStart(margin int32) {
-	c_margin := (C.gint)(margin)
-
-	C.gtk_widget_set_margin_start((*C.GtkWidget)(recv.native), c_margin)
-
-	return
-}
-
-// IsMaximized is a wrapper around the C function gtk_window_is_maximized.
-func (recv *Window) IsMaximized() bool {
-	retC := C.gtk_window_is_maximized((*C.GtkWindow)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_window_is_maximized

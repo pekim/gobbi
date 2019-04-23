@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,15 +10,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// NotifyStartupCompleteWithId is a wrapper around the C function gdk_notify_startup_complete_with_id.
-func NotifyStartupCompleteWithId(startupId string) {
-	c_startup_id := C.CString(startupId)
-	defer C.free(unsafe.Pointer(c_startup_id))
+// Blacklisted : gdk_event_request_motions
 
-	C.gdk_notify_startup_complete_with_id(c_startup_id)
-
-	return
-}
+// Blacklisted : gdk_notify_startup_complete_with_id
 
 // Unsupported : gdk_threads_add_idle : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 

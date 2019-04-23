@@ -3,11 +3,7 @@
 
 package gtk
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -36,31 +32,11 @@ import (
 */
 import "C"
 
-// EndPreview is a wrapper around the C function gtk_print_operation_preview_end_preview.
-func (recv *PrintOperationPreview) EndPreview() {
-	C.gtk_print_operation_preview_end_preview((*C.GtkPrintOperationPreview)(recv.native))
+// Blacklisted : gtk_print_operation_preview_end_preview
 
-	return
-}
+// Blacklisted : gtk_print_operation_preview_is_selected
 
-// IsSelected is a wrapper around the C function gtk_print_operation_preview_is_selected.
-func (recv *PrintOperationPreview) IsSelected(pageNr int32) bool {
-	c_page_nr := (C.gint)(pageNr)
-
-	retC := C.gtk_print_operation_preview_is_selected((*C.GtkPrintOperationPreview)(recv.native), c_page_nr)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RenderPage is a wrapper around the C function gtk_print_operation_preview_render_page.
-func (recv *PrintOperationPreview) RenderPage(pageNr int32) {
-	c_page_nr := (C.gint)(pageNr)
-
-	C.gtk_print_operation_preview_render_page((*C.GtkPrintOperationPreview)(recv.native), c_page_nr)
-
-	return
-}
+// Blacklisted : gtk_print_operation_preview_render_page
 
 type signalRecentChooserItemActivatedDetail struct {
 	callback  RecentChooserSignalItemActivatedCallback
@@ -182,306 +158,64 @@ func recentchooser_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddFilter is a wrapper around the C function gtk_recent_chooser_add_filter.
-func (recv *RecentChooser) AddFilter(filter *RecentFilter) {
-	c_filter := (*C.GtkRecentFilter)(C.NULL)
-	if filter != nil {
-		c_filter = (*C.GtkRecentFilter)(filter.ToC())
-	}
-
-	C.gtk_recent_chooser_add_filter((*C.GtkRecentChooser)(recv.native), c_filter)
-
-	return
-}
-
-// GetCurrentItem is a wrapper around the C function gtk_recent_chooser_get_current_item.
-func (recv *RecentChooser) GetCurrentItem() *RecentInfo {
-	retC := C.gtk_recent_chooser_get_current_item((*C.GtkRecentChooser)(recv.native))
-	retGo := RecentInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetCurrentUri is a wrapper around the C function gtk_recent_chooser_get_current_uri.
-func (recv *RecentChooser) GetCurrentUri() string {
-	retC := C.gtk_recent_chooser_get_current_uri((*C.GtkRecentChooser)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetFilter is a wrapper around the C function gtk_recent_chooser_get_filter.
-func (recv *RecentChooser) GetFilter() *RecentFilter {
-	retC := C.gtk_recent_chooser_get_filter((*C.GtkRecentChooser)(recv.native))
-	retGo := RecentFilterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetItems is a wrapper around the C function gtk_recent_chooser_get_items.
-func (recv *RecentChooser) GetItems() *glib.List {
-	retC := C.gtk_recent_chooser_get_items((*C.GtkRecentChooser)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetLimit is a wrapper around the C function gtk_recent_chooser_get_limit.
-func (recv *RecentChooser) GetLimit() int32 {
-	retC := C.gtk_recent_chooser_get_limit((*C.GtkRecentChooser)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetLocalOnly is a wrapper around the C function gtk_recent_chooser_get_local_only.
-func (recv *RecentChooser) GetLocalOnly() bool {
-	retC := C.gtk_recent_chooser_get_local_only((*C.GtkRecentChooser)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_add_filter
 
-// GetSelectMultiple is a wrapper around the C function gtk_recent_chooser_get_select_multiple.
-func (recv *RecentChooser) GetSelectMultiple() bool {
-	retC := C.gtk_recent_chooser_get_select_multiple((*C.GtkRecentChooser)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_get_current_item
 
-// GetShowIcons is a wrapper around the C function gtk_recent_chooser_get_show_icons.
-func (recv *RecentChooser) GetShowIcons() bool {
-	retC := C.gtk_recent_chooser_get_show_icons((*C.GtkRecentChooser)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_get_current_uri
 
-// GetShowNotFound is a wrapper around the C function gtk_recent_chooser_get_show_not_found.
-func (recv *RecentChooser) GetShowNotFound() bool {
-	retC := C.gtk_recent_chooser_get_show_not_found((*C.GtkRecentChooser)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_recent_chooser_get_filter
 
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_get_items
 
-// GetShowPrivate is a wrapper around the C function gtk_recent_chooser_get_show_private.
-func (recv *RecentChooser) GetShowPrivate() bool {
-	retC := C.gtk_recent_chooser_get_show_private((*C.GtkRecentChooser)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_recent_chooser_get_limit
 
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_get_local_only
 
-// GetShowTips is a wrapper around the C function gtk_recent_chooser_get_show_tips.
-func (recv *RecentChooser) GetShowTips() bool {
-	retC := C.gtk_recent_chooser_get_show_tips((*C.GtkRecentChooser)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_recent_chooser_get_select_multiple
 
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_get_show_icons
 
-// GetSortType is a wrapper around the C function gtk_recent_chooser_get_sort_type.
-func (recv *RecentChooser) GetSortType() RecentSortType {
-	retC := C.gtk_recent_chooser_get_sort_type((*C.GtkRecentChooser)(recv.native))
-	retGo := (RecentSortType)(retC)
+// Blacklisted : gtk_recent_chooser_get_show_not_found
 
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_get_show_private
 
-// GetUris is a wrapper around the C function gtk_recent_chooser_get_uris.
-func (recv *RecentChooser) GetUris() ([]string, uint64) {
-	var c_length C.gsize
+// Blacklisted : gtk_recent_chooser_get_show_tips
 
-	retC := C.gtk_recent_chooser_get_uris((*C.GtkRecentChooser)(recv.native), &c_length)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
+// Blacklisted : gtk_recent_chooser_get_sort_type
 
-	length := (uint64)(c_length)
+// Blacklisted : gtk_recent_chooser_get_uris
 
-	return retGo, length
-}
+// Blacklisted : gtk_recent_chooser_list_filters
 
-// ListFilters is a wrapper around the C function gtk_recent_chooser_list_filters.
-func (recv *RecentChooser) ListFilters() *glib.SList {
-	retC := C.gtk_recent_chooser_list_filters((*C.GtkRecentChooser)(recv.native))
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_recent_chooser_remove_filter
 
-	return retGo
-}
+// Blacklisted : gtk_recent_chooser_select_all
 
-// RemoveFilter is a wrapper around the C function gtk_recent_chooser_remove_filter.
-func (recv *RecentChooser) RemoveFilter(filter *RecentFilter) {
-	c_filter := (*C.GtkRecentFilter)(C.NULL)
-	if filter != nil {
-		c_filter = (*C.GtkRecentFilter)(filter.ToC())
-	}
+// Blacklisted : gtk_recent_chooser_select_uri
 
-	C.gtk_recent_chooser_remove_filter((*C.GtkRecentChooser)(recv.native), c_filter)
+// Blacklisted : gtk_recent_chooser_set_current_uri
 
-	return
-}
+// Blacklisted : gtk_recent_chooser_set_filter
 
-// SelectAll is a wrapper around the C function gtk_recent_chooser_select_all.
-func (recv *RecentChooser) SelectAll() {
-	C.gtk_recent_chooser_select_all((*C.GtkRecentChooser)(recv.native))
+// Blacklisted : gtk_recent_chooser_set_limit
 
-	return
-}
+// Blacklisted : gtk_recent_chooser_set_local_only
 
-// SelectUri is a wrapper around the C function gtk_recent_chooser_select_uri.
-func (recv *RecentChooser) SelectUri(uri string) (bool, error) {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
+// Blacklisted : gtk_recent_chooser_set_select_multiple
 
-	var cThrowableError *C.GError
+// Blacklisted : gtk_recent_chooser_set_show_icons
 
-	retC := C.gtk_recent_chooser_select_uri((*C.GtkRecentChooser)(recv.native), c_uri, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_recent_chooser_set_show_not_found
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : gtk_recent_chooser_set_show_private
 
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetCurrentUri is a wrapper around the C function gtk_recent_chooser_set_current_uri.
-func (recv *RecentChooser) SetCurrentUri(uri string) (bool, error) {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_recent_chooser_set_current_uri((*C.GtkRecentChooser)(recv.native), c_uri, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetFilter is a wrapper around the C function gtk_recent_chooser_set_filter.
-func (recv *RecentChooser) SetFilter(filter *RecentFilter) {
-	c_filter := (*C.GtkRecentFilter)(C.NULL)
-	if filter != nil {
-		c_filter = (*C.GtkRecentFilter)(filter.ToC())
-	}
-
-	C.gtk_recent_chooser_set_filter((*C.GtkRecentChooser)(recv.native), c_filter)
-
-	return
-}
-
-// SetLimit is a wrapper around the C function gtk_recent_chooser_set_limit.
-func (recv *RecentChooser) SetLimit(limit int32) {
-	c_limit := (C.gint)(limit)
-
-	C.gtk_recent_chooser_set_limit((*C.GtkRecentChooser)(recv.native), c_limit)
-
-	return
-}
-
-// SetLocalOnly is a wrapper around the C function gtk_recent_chooser_set_local_only.
-func (recv *RecentChooser) SetLocalOnly(localOnly bool) {
-	c_local_only :=
-		boolToGboolean(localOnly)
-
-	C.gtk_recent_chooser_set_local_only((*C.GtkRecentChooser)(recv.native), c_local_only)
-
-	return
-}
-
-// SetSelectMultiple is a wrapper around the C function gtk_recent_chooser_set_select_multiple.
-func (recv *RecentChooser) SetSelectMultiple(selectMultiple bool) {
-	c_select_multiple :=
-		boolToGboolean(selectMultiple)
-
-	C.gtk_recent_chooser_set_select_multiple((*C.GtkRecentChooser)(recv.native), c_select_multiple)
-
-	return
-}
-
-// SetShowIcons is a wrapper around the C function gtk_recent_chooser_set_show_icons.
-func (recv *RecentChooser) SetShowIcons(showIcons bool) {
-	c_show_icons :=
-		boolToGboolean(showIcons)
-
-	C.gtk_recent_chooser_set_show_icons((*C.GtkRecentChooser)(recv.native), c_show_icons)
-
-	return
-}
-
-// SetShowNotFound is a wrapper around the C function gtk_recent_chooser_set_show_not_found.
-func (recv *RecentChooser) SetShowNotFound(showNotFound bool) {
-	c_show_not_found :=
-		boolToGboolean(showNotFound)
-
-	C.gtk_recent_chooser_set_show_not_found((*C.GtkRecentChooser)(recv.native), c_show_not_found)
-
-	return
-}
-
-// SetShowPrivate is a wrapper around the C function gtk_recent_chooser_set_show_private.
-func (recv *RecentChooser) SetShowPrivate(showPrivate bool) {
-	c_show_private :=
-		boolToGboolean(showPrivate)
-
-	C.gtk_recent_chooser_set_show_private((*C.GtkRecentChooser)(recv.native), c_show_private)
-
-	return
-}
-
-// SetShowTips is a wrapper around the C function gtk_recent_chooser_set_show_tips.
-func (recv *RecentChooser) SetShowTips(showTips bool) {
-	c_show_tips :=
-		boolToGboolean(showTips)
-
-	C.gtk_recent_chooser_set_show_tips((*C.GtkRecentChooser)(recv.native), c_show_tips)
-
-	return
-}
+// Blacklisted : gtk_recent_chooser_set_show_tips
 
 // Unsupported : gtk_recent_chooser_set_sort_func : unsupported parameter sort_func : no type generator for RecentSortFunc (GtkRecentSortFunc) for param sort_func
 
-// SetSortType is a wrapper around the C function gtk_recent_chooser_set_sort_type.
-func (recv *RecentChooser) SetSortType(sortType RecentSortType) {
-	c_sort_type := (C.GtkRecentSortType)(sortType)
+// Blacklisted : gtk_recent_chooser_set_sort_type
 
-	C.gtk_recent_chooser_set_sort_type((*C.GtkRecentChooser)(recv.native), c_sort_type)
+// Blacklisted : gtk_recent_chooser_unselect_all
 
-	return
-}
-
-// UnselectAll is a wrapper around the C function gtk_recent_chooser_unselect_all.
-func (recv *RecentChooser) UnselectAll() {
-	C.gtk_recent_chooser_unselect_all((*C.GtkRecentChooser)(recv.native))
-
-	return
-}
-
-// UnselectUri is a wrapper around the C function gtk_recent_chooser_unselect_uri.
-func (recv *RecentChooser) UnselectUri(uri string) {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	C.gtk_recent_chooser_unselect_uri((*C.GtkRecentChooser)(recv.native), c_uri)
-
-	return
-}
+// Blacklisted : gtk_recent_chooser_unselect_uri

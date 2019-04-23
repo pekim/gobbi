@@ -10,10 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// GetFontScaleFactor is a wrapper around the C function pango_matrix_get_font_scale_factor.
-func (recv *Matrix) GetFontScaleFactor() float64 {
-	retC := C.pango_matrix_get_font_scale_factor((*C.PangoMatrix)(recv.native))
-	retGo := (float64)(retC)
-
-	return retGo
-}
+// Blacklisted : pango_matrix_get_font_scale_factor

@@ -34,12 +34,4 @@ const (
 	PANGO_BIDI_TYPE_ON  BidiType = 18
 )
 
-// BidiTypeForUnichar is a wrapper around the C function pango_bidi_type_for_unichar.
-func BidiTypeForUnichar(ch rune) BidiType {
-	c_ch := (C.gunichar)(ch)
-
-	retC := C.pango_bidi_type_for_unichar(c_ch)
-	retGo := (BidiType)(retC)
-
-	return retGo
-}
+// Blacklisted : pango_bidi_type_for_unichar

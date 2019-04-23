@@ -80,38 +80,12 @@ func FontMapNew() *FontMap {
 	return retGo
 }
 
-// FontMapForDisplay is a wrapper around the C function pango_ft2_font_map_for_display.
-func FontMapForDisplay() *pango.FontMap {
-	retC := C.pango_ft2_font_map_for_display()
-	retGo := pango.FontMapNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_ft2_font_map_for_display
 
-	return retGo
-}
-
-// CreateContext is a wrapper around the C function pango_ft2_font_map_create_context.
-func (recv *FontMap) CreateContext() *pango.Context {
-	retC := C.pango_ft2_font_map_create_context((*C.PangoFT2FontMap)(recv.native))
-	retGo := pango.ContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_ft2_font_map_create_context
 
 // Unsupported : pango_ft2_font_map_set_default_substitute : unsupported parameter func : no type generator for SubstituteFunc (PangoFT2SubstituteFunc) for param func
 
-// SetResolution is a wrapper around the C function pango_ft2_font_map_set_resolution.
-func (recv *FontMap) SetResolution(dpiX float64, dpiY float64) {
-	c_dpi_x := (C.double)(dpiX)
+// Blacklisted : pango_ft2_font_map_set_resolution
 
-	c_dpi_y := (C.double)(dpiY)
-
-	C.pango_ft2_font_map_set_resolution((*C.PangoFT2FontMap)(recv.native), c_dpi_x, c_dpi_y)
-
-	return
-}
-
-// SubstituteChanged is a wrapper around the C function pango_ft2_font_map_substitute_changed.
-func (recv *FontMap) SubstituteChanged() {
-	C.pango_ft2_font_map_substitute_changed((*C.PangoFT2FontMap)(recv.native))
-
-	return
-}
+// Blacklisted : pango_ft2_font_map_substitute_changed

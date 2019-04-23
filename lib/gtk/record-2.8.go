@@ -3,8 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,46 +12,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// BackwardVisibleLine is a wrapper around the C function gtk_text_iter_backward_visible_line.
-func (recv *TextIter) BackwardVisibleLine() bool {
-	retC := C.gtk_text_iter_backward_visible_line((*C.GtkTextIter)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_text_iter_backward_visible_line
 
-	return retGo
-}
+// Blacklisted : gtk_text_iter_backward_visible_lines
 
-// BackwardVisibleLines is a wrapper around the C function gtk_text_iter_backward_visible_lines.
-func (recv *TextIter) BackwardVisibleLines(count int32) bool {
-	c_count := (C.gint)(count)
+// Blacklisted : gtk_text_iter_forward_visible_line
 
-	retC := C.gtk_text_iter_backward_visible_lines((*C.GtkTextIter)(recv.native), c_count)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_text_iter_forward_visible_lines
 
-	return retGo
-}
-
-// ForwardVisibleLine is a wrapper around the C function gtk_text_iter_forward_visible_line.
-func (recv *TextIter) ForwardVisibleLine() bool {
-	retC := C.gtk_text_iter_forward_visible_line((*C.GtkTextIter)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ForwardVisibleLines is a wrapper around the C function gtk_text_iter_forward_visible_lines.
-func (recv *TextIter) ForwardVisibleLines(count int32) bool {
-	c_count := (C.gint)(count)
-
-	retC := C.gtk_text_iter_forward_visible_lines((*C.GtkTextIter)(recv.native), c_count)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetModel is a wrapper around the C function gtk_tree_row_reference_get_model.
-func (recv *TreeRowReference) GetModel() *TreeModel {
-	retC := C.gtk_tree_row_reference_get_model((*C.GtkTreeRowReference)(recv.native))
-	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_tree_row_reference_get_model

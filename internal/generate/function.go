@@ -87,7 +87,51 @@ func (f *Function) mergeAddenda(addenda *Function) {
 }
 
 func (f *Function) blacklisted() (bool, string) {
-	return f.Blacklist, f.CIdentifier
+	wl := []string{
+		"Strreverse",
+		"QuarkFromString",
+		"QuarkToString",
+		"DateNewDmy",
+		"AsciiDigitValue",
+		"InternString",
+		"AsciiStrup",
+		"FileOpenTmp",
+		"FilenameFromUri",
+		"GetDay",
+		"GetMonth",
+		"GetYear",
+		"GetDayOfYear",
+		"FontMapNew",
+		"Printf",
+		"Init",
+		"ContextNew",
+		"ApplicationNew",
+		"NetworkingInit",
+		"FLush",
+		"PixbufNewFromFile",
+		"Flush",
+		"WindowNew",
+		"GetTitle",
+		"LabelNew",
+		"ListStoreNewv",
+		"Destroy",
+		"IsVisible",
+		"ShowAll",
+		"SetTitle",
+		"SetText",
+		"GetText",
+		"BindProperty",
+	}
+	for _, n := range wl {
+		if n == f.GoName {
+			//fmt.Println(f.GoName)
+			return f.Blacklist, f.CIdentifier
+		}
+	}
+
+	return true, f.CIdentifier
+
+	//return f.Blacklist, f.CIdentifier
 }
 
 func (f *Function) supported() (supported bool, reason string) {

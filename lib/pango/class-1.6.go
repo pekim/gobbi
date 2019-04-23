@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,52 +10,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetFontMap is a wrapper around the C function pango_context_get_font_map.
-func (recv *Context) GetFontMap() *FontMap {
-	retC := C.pango_context_get_font_map((*C.PangoContext)(recv.native))
-	retGo := FontMapNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_context_get_font_map
 
-	return retGo
-}
+// Blacklisted : pango_context_get_matrix
 
-// GetMatrix is a wrapper around the C function pango_context_get_matrix.
-func (recv *Context) GetMatrix() *Matrix {
-	retC := C.pango_context_get_matrix((*C.PangoContext)(recv.native))
-	var retGo (*Matrix)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = MatrixNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : pango_context_set_matrix
 
-	return retGo
-}
+// Blacklisted : pango_layout_get_ellipsize
 
-// SetMatrix is a wrapper around the C function pango_context_set_matrix.
-func (recv *Context) SetMatrix(matrix *Matrix) {
-	c_matrix := (*C.PangoMatrix)(C.NULL)
-	if matrix != nil {
-		c_matrix = (*C.PangoMatrix)(matrix.ToC())
-	}
-
-	C.pango_context_set_matrix((*C.PangoContext)(recv.native), c_matrix)
-
-	return
-}
-
-// GetEllipsize is a wrapper around the C function pango_layout_get_ellipsize.
-func (recv *Layout) GetEllipsize() EllipsizeMode {
-	retC := C.pango_layout_get_ellipsize((*C.PangoLayout)(recv.native))
-	retGo := (EllipsizeMode)(retC)
-
-	return retGo
-}
-
-// SetEllipsize is a wrapper around the C function pango_layout_set_ellipsize.
-func (recv *Layout) SetEllipsize(ellipsize EllipsizeMode) {
-	c_ellipsize := (C.PangoEllipsizeMode)(ellipsize)
-
-	C.pango_layout_set_ellipsize((*C.PangoLayout)(recv.native), c_ellipsize)
-
-	return
-}
+// Blacklisted : pango_layout_set_ellipsize

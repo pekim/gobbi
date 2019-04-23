@@ -3,11 +3,6 @@
 
 package glib
 
-import (
-	"fmt"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -15,12 +10,6 @@ import (
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
-/*
-
-	static gchar* _g_markup_printf_escaped(const char* format) {
-		return g_markup_printf_escaped(format);
-    }
-*/
 import "C"
 
 // Blacklisted : g_atomic_int_add
@@ -47,124 +36,22 @@ import "C"
 
 // Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc (GChildWatchFunc) for param function
 
-// ChildWatchSourceNew is a wrapper around the C function g_child_watch_source_new.
-func ChildWatchSourceNew(pid Pid) *Source {
-	c_pid := (C.GPid)(pid)
+// Blacklisted : g_child_watch_source_new
 
-	retC := C.g_child_watch_source_new(c_pid)
-	retGo := SourceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_file_read_link
 
-	return retGo
-}
-
-// FileReadLink is a wrapper around the C function g_file_read_link.
-func FileReadLink(filename string) (string, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_read_link(c_filename, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// MarkupPrintfEscaped is a wrapper around the C function g_markup_printf_escaped.
-func MarkupPrintfEscaped(format string, args ...interface{}) string {
-	goFormattedString := fmt.Sprintf(format, args...)
-	c_format := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format))
-
-	retC := C._g_markup_printf_escaped(c_format)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_markup_printf_escaped
 
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Setenv is a wrapper around the C function g_setenv.
-func Setenv(variable string, value string, overwrite bool) bool {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
+// Blacklisted : g_setenv
 
-	c_value := C.CString(value)
-	defer C.free(unsafe.Pointer(c_value))
+// Blacklisted : g_strip_context
 
-	c_overwrite :=
-		boolToGboolean(overwrite)
+// Blacklisted : g_strsplit_set
 
-	retC := C.g_setenv(c_variable, c_value, c_overwrite)
-	retGo := retC == C.TRUE
+// Blacklisted : g_unichar_get_mirror_char
 
-	return retGo
-}
-
-// StripContext is a wrapper around the C function g_strip_context.
-func StripContext(msgid string, msgval string) string {
-	c_msgid := C.CString(msgid)
-	defer C.free(unsafe.Pointer(c_msgid))
-
-	c_msgval := C.CString(msgval)
-	defer C.free(unsafe.Pointer(c_msgval))
-
-	retC := C.g_strip_context(c_msgid, c_msgval)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// StrsplitSet is a wrapper around the C function g_strsplit_set.
-func StrsplitSet(string_ string, delimiters string, maxTokens int32) []string {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	c_delimiters := C.CString(delimiters)
-	defer C.free(unsafe.Pointer(c_delimiters))
-
-	c_max_tokens := (C.gint)(maxTokens)
-
-	retC := C.g_strsplit_set(c_string, c_delimiters, c_max_tokens)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
-
-// UnicharGetMirrorChar is a wrapper around the C function g_unichar_get_mirror_char.
-func UnicharGetMirrorChar(ch rune, mirroredCh rune) bool {
-	c_ch := (C.gunichar)(ch)
-
-	c_mirrored_ch := (C.gunichar)(mirroredCh)
-
-	retC := C.g_unichar_get_mirror_char(c_ch, &c_mirrored_ch)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Unsetenv is a wrapper around the C function g_unsetenv.
-func Unsetenv(variable string) {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
-
-	C.g_unsetenv(c_variable)
-
-	return
-}
+// Blacklisted : g_unsetenv
 
 // Unsupported : g_vasprintf : unsupported parameter string : in string with indirection level of 2

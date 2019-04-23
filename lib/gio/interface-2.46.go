@@ -21,19 +21,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// GetNetworkMetered is a wrapper around the C function g_network_monitor_get_network_metered.
-func (recv *NetworkMonitor) GetNetworkMetered() bool {
-	retC := C.g_network_monitor_get_network_metered((*C.GNetworkMonitor)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_network_monitor_get_network_metered
 
-	return retGo
-}
-
-// CopySessionState is a wrapper around the C function g_tls_client_connection_copy_session_state.
-func (recv *TlsClientConnection) CopySessionState(source *TlsClientConnection) {
-	c_source := (*C.GTlsClientConnection)(source.ToC())
-
-	C.g_tls_client_connection_copy_session_state((*C.GTlsClientConnection)(recv.native), c_source)
-
-	return
-}
+// Blacklisted : g_tls_client_connection_copy_session_state

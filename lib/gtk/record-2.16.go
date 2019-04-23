@@ -3,10 +3,7 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -46,10 +43,4 @@ func (recv *ActivatableIface) Equals(other *ActivatableIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetSelection is a wrapper around the C function gtk_selection_data_get_selection.
-func (recv *SelectionData) GetSelection() gdk.Atom {
-	retC := C.gtk_selection_data_get_selection((*C.GtkSelectionData)(recv.native))
-	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_selection_data_get_selection

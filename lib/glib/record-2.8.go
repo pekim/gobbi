@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,50 +12,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// MappedFileNew is a wrapper around the C function g_mapped_file_new.
-func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
+// Blacklisted : g_mapped_file_new
 
-	c_writable :=
-		boolToGboolean(writable)
+// Blacklisted : g_mapped_file_free
 
-	var cThrowableError *C.GError
+// Blacklisted : g_mapped_file_get_contents
 
-	retC := C.g_mapped_file_new(c_filename, c_writable, &cThrowableError)
-	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Free is a wrapper around the C function g_mapped_file_free.
-func (recv *MappedFile) Free() {
-	C.g_mapped_file_free((*C.GMappedFile)(recv.native))
-
-	return
-}
-
-// GetContents is a wrapper around the C function g_mapped_file_get_contents.
-func (recv *MappedFile) GetContents() string {
-	retC := C.g_mapped_file_get_contents((*C.GMappedFile)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetLength is a wrapper around the C function g_mapped_file_get_length.
-func (recv *MappedFile) GetLength() uint64 {
-	retC := C.g_mapped_file_get_length((*C.GMappedFile)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_mapped_file_get_length

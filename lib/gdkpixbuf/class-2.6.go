@@ -3,11 +3,6 @@
 
 package gdkpixbuf
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -15,65 +10,8 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromFileAtScale is a wrapper around the C function gdk_pixbuf_new_from_file_at_scale.
-func PixbufNewFromFileAtScale(filename string, width int32, height int32, preserveAspectRatio bool) (*Pixbuf, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
+// Blacklisted : gdk_pixbuf_new_from_file_at_scale
 
-	c_width := (C.int)(width)
+// Blacklisted : gdk_pixbuf_flip
 
-	c_height := (C.int)(height)
-
-	c_preserve_aspect_ratio :=
-		boolToGboolean(preserveAspectRatio)
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_new_from_file_at_scale(c_filename, c_width, c_height, c_preserve_aspect_ratio, &cThrowableError)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Flip is a wrapper around the C function gdk_pixbuf_flip.
-func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
-	c_horizontal :=
-		boolToGboolean(horizontal)
-
-	retC := C.gdk_pixbuf_flip((*C.GdkPixbuf)(recv.native), c_horizontal)
-	var retGo (*Pixbuf)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = PixbufNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// RotateSimple is a wrapper around the C function gdk_pixbuf_rotate_simple.
-func (recv *Pixbuf) RotateSimple(angle PixbufRotation) *Pixbuf {
-	c_angle := (C.GdkPixbufRotation)(angle)
-
-	retC := C.gdk_pixbuf_rotate_simple((*C.GdkPixbuf)(recv.native), c_angle)
-	var retGo (*Pixbuf)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = PixbufNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_rotate_simple

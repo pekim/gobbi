@@ -14,19 +14,4 @@ import "C"
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter out_len : array length param out_len is pointer (gsize*)
 
-// Poll is a wrapper around the C function g_poll.
-func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
-	c_fds := (*C.GPollFD)(C.NULL)
-	if fds != nil {
-		c_fds = (*C.GPollFD)(fds.ToC())
-	}
-
-	c_nfds := (C.guint)(nfds)
-
-	c_timeout := (C.gint)(timeout)
-
-	retC := C.g_poll(c_fds, c_nfds, c_timeout)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_poll

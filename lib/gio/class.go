@@ -3,7 +3,6 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -106,12 +105,6 @@ import (
 		return g_signal_connect(instance, "writable-changed", G_CALLBACK(settings_writableChangedHandler), data);
 	}
 
-*/
-/*
-
-	static void _g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
-		return g_simple_async_result_set_error(simple, domain, code, format);
-    }
 */
 /*
 
@@ -272,59 +265,13 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
-// AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
-func AppLaunchContextNew() *AppLaunchContext {
-	retC := C.g_app_launch_context_new()
-	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_app_launch_context_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_app_launch_context_get_display
 
-	return retGo
-}
+// Blacklisted : g_app_launch_context_get_startup_notify_id
 
-// GetDisplay is a wrapper around the C function g_app_launch_context_get_display.
-func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string {
-	c_info := (*C.GAppInfo)(info.ToC())
-
-	c_files := (*C.GList)(C.NULL)
-	if files != nil {
-		c_files = (*C.GList)(files.ToC())
-	}
-
-	retC := C.g_app_launch_context_get_display((*C.GAppLaunchContext)(recv.native), c_info, c_files)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetStartupNotifyId is a wrapper around the C function g_app_launch_context_get_startup_notify_id.
-func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List) string {
-	c_info := (*C.GAppInfo)(info.ToC())
-
-	c_files := (*C.GList)(C.NULL)
-	if files != nil {
-		c_files = (*C.GList)(files.ToC())
-	}
-
-	retC := C.g_app_launch_context_get_startup_notify_id((*C.GAppLaunchContext)(recv.native), c_info, c_files)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LaunchFailed is a wrapper around the C function g_app_launch_context_launch_failed.
-func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
-	c_startup_notify_id := C.CString(startupNotifyId)
-	defer C.free(unsafe.Pointer(c_startup_notify_id))
-
-	C.g_app_launch_context_launch_failed((*C.GAppLaunchContext)(recv.native), c_startup_notify_id)
-
-	return
-}
+// Blacklisted : g_app_launch_context_launch_failed
 
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
@@ -434,159 +381,27 @@ func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 	return BufferedInputStreamNewFromC(object.ToC())
 }
 
-// BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
-func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
+// Blacklisted : g_buffered_input_stream_new
 
-	retC := C.g_buffered_input_stream_new(c_base_stream)
-	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_buffered_input_stream_new_sized
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// BufferedInputStreamNewSized is a wrapper around the C function g_buffered_input_stream_new_sized.
-func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	c_size := (C.gsize)(size)
-
-	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
-	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// Fill is a wrapper around the C function g_buffered_input_stream_fill.
-func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (int64, error) {
-	c_count := (C.gssize)(count)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_buffered_input_stream_fill((*C.GBufferedInputStream)(recv.native), c_count, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_buffered_input_stream_fill
 
 // Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// FillFinish is a wrapper around the C function g_buffered_input_stream_fill_finish.
-func (recv *BufferedInputStream) FillFinish(result *AsyncResult) (int64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_buffered_input_stream_fill_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_buffered_input_stream_get_available
 
-	retC := C.g_buffered_input_stream_fill_finish((*C.GBufferedInputStream)(recv.native), c_result, &cThrowableError)
-	retGo := (int64)(retC)
+// Blacklisted : g_buffered_input_stream_get_buffer_size
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GetAvailable is a wrapper around the C function g_buffered_input_stream_get_available.
-func (recv *BufferedInputStream) GetAvailable() uint64 {
-	retC := C.g_buffered_input_stream_get_available((*C.GBufferedInputStream)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// GetBufferSize is a wrapper around the C function g_buffered_input_stream_get_buffer_size.
-func (recv *BufferedInputStream) GetBufferSize() uint64 {
-	retC := C.g_buffered_input_stream_get_buffer_size((*C.GBufferedInputStream)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// Peek is a wrapper around the C function g_buffered_input_stream_peek.
-func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_offset := (C.gsize)(offset)
-
-	c_count := (C.gsize)(len(buffer))
-
-	retC := C.g_buffered_input_stream_peek((*C.GBufferedInputStream)(recv.native), c_buffer, c_offset, c_count)
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_buffered_input_stream_peek
 
 // Unsupported : g_buffered_input_stream_peek_buffer : array return type :
 
-// ReadByte is a wrapper around the C function g_buffered_input_stream_read_byte.
-func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
+// Blacklisted : g_buffered_input_stream_read_byte
 
-	var cThrowableError *C.GError
-
-	retC := C.g_buffered_input_stream_read_byte((*C.GBufferedInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (int32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetBufferSize is a wrapper around the C function g_buffered_input_stream_set_buffer_size.
-func (recv *BufferedInputStream) SetBufferSize(size uint64) {
-	c_size := (C.gsize)(size)
-
-	C.g_buffered_input_stream_set_buffer_size((*C.GBufferedInputStream)(recv.native), c_size)
-
-	return
-}
+// Blacklisted : g_buffered_input_stream_set_buffer_size
 
 // Seekable returns the Seekable interface implemented by BufferedInputStream
 func (recv *BufferedInputStream) Seekable() *Seekable {
@@ -652,76 +467,17 @@ func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 	return BufferedOutputStreamNewFromC(object.ToC())
 }
 
-// BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
-func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
+// Blacklisted : g_buffered_output_stream_new
 
-	retC := C.g_buffered_output_stream_new(c_base_stream)
-	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_buffered_output_stream_new_sized
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_buffered_output_stream_get_auto_grow
 
-	return retGo
-}
+// Blacklisted : g_buffered_output_stream_get_buffer_size
 
-// BufferedOutputStreamNewSized is a wrapper around the C function g_buffered_output_stream_new_sized.
-func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
+// Blacklisted : g_buffered_output_stream_set_auto_grow
 
-	c_size := (C.gsize)(size)
-
-	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
-	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetAutoGrow is a wrapper around the C function g_buffered_output_stream_get_auto_grow.
-func (recv *BufferedOutputStream) GetAutoGrow() bool {
-	retC := C.g_buffered_output_stream_get_auto_grow((*C.GBufferedOutputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetBufferSize is a wrapper around the C function g_buffered_output_stream_get_buffer_size.
-func (recv *BufferedOutputStream) GetBufferSize() uint64 {
-	retC := C.g_buffered_output_stream_get_buffer_size((*C.GBufferedOutputStream)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// SetAutoGrow is a wrapper around the C function g_buffered_output_stream_set_auto_grow.
-func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
-	c_auto_grow :=
-		boolToGboolean(autoGrow)
-
-	C.g_buffered_output_stream_set_auto_grow((*C.GBufferedOutputStream)(recv.native), c_auto_grow)
-
-	return
-}
-
-// SetBufferSize is a wrapper around the C function g_buffered_output_stream_set_buffer_size.
-func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
-	c_size := (C.gsize)(size)
-
-	C.g_buffered_output_stream_set_buffer_size((*C.GBufferedOutputStream)(recv.native), c_size)
-
-	return
-}
+// Blacklisted : g_buffered_output_stream_set_buffer_size
 
 // Seekable returns the Seekable interface implemented by BufferedOutputStream
 func (recv *BufferedOutputStream) Seekable() *Seekable {
@@ -894,92 +650,23 @@ func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CancellableNew is a wrapper around the C function g_cancellable_new.
-func CancellableNew() *Cancellable {
-	retC := C.g_cancellable_new()
-	retGo := CancellableNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_cancellable_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_cancellable_get_current
 
-	return retGo
-}
+// Blacklisted : g_cancellable_cancel
 
-// CancellableGetCurrent is a wrapper around the C function g_cancellable_get_current.
-func CancellableGetCurrent() *Cancellable {
-	retC := C.g_cancellable_get_current()
-	var retGo (*Cancellable)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = CancellableNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : g_cancellable_get_fd
 
-	return retGo
-}
+// Blacklisted : g_cancellable_is_cancelled
 
-// Cancel is a wrapper around the C function g_cancellable_cancel.
-func (recv *Cancellable) Cancel() {
-	C.g_cancellable_cancel((*C.GCancellable)(recv.native))
+// Blacklisted : g_cancellable_pop_current
 
-	return
-}
+// Blacklisted : g_cancellable_push_current
 
-// GetFd is a wrapper around the C function g_cancellable_get_fd.
-func (recv *Cancellable) GetFd() int32 {
-	retC := C.g_cancellable_get_fd((*C.GCancellable)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : g_cancellable_reset
 
-	return retGo
-}
-
-// IsCancelled is a wrapper around the C function g_cancellable_is_cancelled.
-func (recv *Cancellable) IsCancelled() bool {
-	retC := C.g_cancellable_is_cancelled((*C.GCancellable)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// PopCurrent is a wrapper around the C function g_cancellable_pop_current.
-func (recv *Cancellable) PopCurrent() {
-	C.g_cancellable_pop_current((*C.GCancellable)(recv.native))
-
-	return
-}
-
-// PushCurrent is a wrapper around the C function g_cancellable_push_current.
-func (recv *Cancellable) PushCurrent() {
-	C.g_cancellable_push_current((*C.GCancellable)(recv.native))
-
-	return
-}
-
-// Reset is a wrapper around the C function g_cancellable_reset.
-func (recv *Cancellable) Reset() {
-	C.g_cancellable_reset((*C.GCancellable)(recv.native))
-
-	return
-}
-
-// SetErrorIfCancelled is a wrapper around the C function g_cancellable_set_error_if_cancelled.
-func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_cancellable_set_error_if_cancelled((*C.GCancellable)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_cancellable_set_error_if_cancelled
 
 // CharsetConverter is a wrapper around the C record GCharsetConverter.
 type CharsetConverter struct {
@@ -1097,24 +784,7 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
 }
 
-// ConverterInputStreamNew is a wrapper around the C function g_converter_input_stream_new.
-func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	c_converter := (*C.GConverter)(converter.ToC())
-
-	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
-	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_converter_input_stream_new
 
 // PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
@@ -1180,24 +850,7 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 	return ConverterOutputStreamNewFromC(object.ToC())
 }
 
-// ConverterOutputStreamNew is a wrapper around the C function g_converter_output_stream_new.
-func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
-
-	c_converter := (*C.GConverter)(converter.ToC())
-
-	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
-	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_converter_output_stream_new
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
 func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
@@ -1377,250 +1030,33 @@ func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 	return DataInputStreamNewFromC(object.ToC())
 }
 
-// DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
-func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
+// Blacklisted : g_data_input_stream_new
 
-	retC := C.g_data_input_stream_new(c_base_stream)
-	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_data_input_stream_get_byte_order
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_data_input_stream_get_newline_type
 
-	return retGo
-}
+// Blacklisted : g_data_input_stream_read_byte
 
-// GetByteOrder is a wrapper around the C function g_data_input_stream_get_byte_order.
-func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
-	retC := C.g_data_input_stream_get_byte_order((*C.GDataInputStream)(recv.native))
-	retGo := (DataStreamByteOrder)(retC)
+// Blacklisted : g_data_input_stream_read_int16
 
-	return retGo
-}
+// Blacklisted : g_data_input_stream_read_int32
 
-// GetNewlineType is a wrapper around the C function g_data_input_stream_get_newline_type.
-func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
-	retC := C.g_data_input_stream_get_newline_type((*C.GDataInputStream)(recv.native))
-	retGo := (DataStreamNewlineType)(retC)
-
-	return retGo
-}
-
-// ReadByte is a wrapper around the C function g_data_input_stream_read_byte.
-func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_byte((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (uint8)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReadInt16 is a wrapper around the C function g_data_input_stream_read_int16.
-func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_int16((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (int16)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReadInt32 is a wrapper around the C function g_data_input_stream_read_int32.
-func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_int32((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (int32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReadInt64 is a wrapper around the C function g_data_input_stream_read_int64.
-func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_int64((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_data_input_stream_read_int64
 
 // Unsupported : g_data_input_stream_read_line : array return type :
 
-// ReadUint16 is a wrapper around the C function g_data_input_stream_read_uint16.
-func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
+// Blacklisted : g_data_input_stream_read_uint16
 
-	var cThrowableError *C.GError
+// Blacklisted : g_data_input_stream_read_uint32
 
-	retC := C.g_data_input_stream_read_uint16((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (uint16)(retC)
+// Blacklisted : g_data_input_stream_read_uint64
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_data_input_stream_read_until
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_data_input_stream_set_byte_order
 
-	return retGo, goError
-}
-
-// ReadUint32 is a wrapper around the C function g_data_input_stream_read_uint32.
-func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_uint32((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (uint32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReadUint64 is a wrapper around the C function g_data_input_stream_read_uint64.
-func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_uint64((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (uint64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReadUntil is a wrapper around the C function g_data_input_stream_read_until.
-func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellable) (string, uint64, error) {
-	c_stop_chars := C.CString(stopChars)
-	defer C.free(unsafe.Pointer(c_stop_chars))
-
-	var c_length C.gsize
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_until((*C.GDataInputStream)(recv.native), c_stop_chars, &c_length, c_cancellable, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	length := (uint64)(c_length)
-
-	return retGo, length, goError
-}
-
-// SetByteOrder is a wrapper around the C function g_data_input_stream_set_byte_order.
-func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
-	c_order := (C.GDataStreamByteOrder)(order)
-
-	C.g_data_input_stream_set_byte_order((*C.GDataInputStream)(recv.native), c_order)
-
-	return
-}
-
-// SetNewlineType is a wrapper around the C function g_data_input_stream_set_newline_type.
-func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
-	c_type := (C.GDataStreamNewlineType)(type_)
-
-	C.g_data_input_stream_set_newline_type((*C.GDataInputStream)(recv.native), c_type)
-
-	return
-}
+// Blacklisted : g_data_input_stream_set_newline_type
 
 // Seekable returns the Seekable interface implemented by DataInputStream
 func (recv *DataInputStream) Seekable() *Seekable {
@@ -1686,240 +1122,27 @@ func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 	return DataOutputStreamNewFromC(object.ToC())
 }
 
-// DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
-func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
+// Blacklisted : g_data_output_stream_new
 
-	retC := C.g_data_output_stream_new(c_base_stream)
-	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_data_output_stream_get_byte_order
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_data_output_stream_put_byte
 
-	return retGo
-}
+// Blacklisted : g_data_output_stream_put_int16
 
-// GetByteOrder is a wrapper around the C function g_data_output_stream_get_byte_order.
-func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
-	retC := C.g_data_output_stream_get_byte_order((*C.GDataOutputStream)(recv.native))
-	retGo := (DataStreamByteOrder)(retC)
+// Blacklisted : g_data_output_stream_put_int32
 
-	return retGo
-}
+// Blacklisted : g_data_output_stream_put_int64
 
-// PutByte is a wrapper around the C function g_data_output_stream_put_byte.
-func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (bool, error) {
-	c_data := (C.guchar)(data)
+// Blacklisted : g_data_output_stream_put_string
 
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
+// Blacklisted : g_data_output_stream_put_uint16
 
-	var cThrowableError *C.GError
+// Blacklisted : g_data_output_stream_put_uint32
 
-	retC := C.g_data_output_stream_put_byte((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_data_output_stream_put_uint64
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutInt16 is a wrapper around the C function g_data_output_stream_put_int16.
-func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bool, error) {
-	c_data := (C.gint16)(data)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_int16((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutInt32 is a wrapper around the C function g_data_output_stream_put_int32.
-func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bool, error) {
-	c_data := (C.gint32)(data)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_int32((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutInt64 is a wrapper around the C function g_data_output_stream_put_int64.
-func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bool, error) {
-	c_data := (C.gint64)(data)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_int64((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutString is a wrapper around the C function g_data_output_stream_put_string.
-func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (bool, error) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_string((*C.GDataOutputStream)(recv.native), c_str, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutUint16 is a wrapper around the C function g_data_output_stream_put_uint16.
-func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (bool, error) {
-	c_data := (C.guint16)(data)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_uint16((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutUint32 is a wrapper around the C function g_data_output_stream_put_uint32.
-func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (bool, error) {
-	c_data := (C.guint32)(data)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_uint32((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PutUint64 is a wrapper around the C function g_data_output_stream_put_uint64.
-func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (bool, error) {
-	c_data := (C.guint64)(data)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_output_stream_put_uint64((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetByteOrder is a wrapper around the C function g_data_output_stream_set_byte_order.
-func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
-	c_order := (C.GDataStreamByteOrder)(order)
-
-	C.g_data_output_stream_set_byte_order((*C.GDataOutputStream)(recv.native), c_order)
-
-	return
-}
+// Blacklisted : g_data_output_stream_set_byte_order
 
 // Seekable returns the Seekable interface implemented by DataOutputStream
 func (recv *DataOutputStream) Seekable() *Seekable {
@@ -1973,70 +1196,18 @@ func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
 	return DesktopAppInfoNewFromC(object.ToC())
 }
 
-// DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
-func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
-	c_desktop_id := C.CString(desktopId)
-	defer C.free(unsafe.Pointer(c_desktop_id))
+// Blacklisted : g_desktop_app_info_new
 
-	retC := C.g_desktop_app_info_new(c_desktop_id)
-	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// DesktopAppInfoNewFromFilename is a wrapper around the C function g_desktop_app_info_new_from_filename.
-func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_desktop_app_info_new_from_filename(c_filename)
-	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_desktop_app_info_new_from_filename
 
 // g_desktop_app_info_search : no type for array return
-// DesktopAppInfoSetDesktopEnv is a wrapper around the C function g_desktop_app_info_set_desktop_env.
-func DesktopAppInfoSetDesktopEnv(desktopEnv string) {
-	c_desktop_env := C.CString(desktopEnv)
-	defer C.free(unsafe.Pointer(c_desktop_env))
+// Blacklisted : g_desktop_app_info_set_desktop_env
 
-	C.g_desktop_app_info_set_desktop_env(c_desktop_env)
+// Blacklisted : g_desktop_app_info_get_categories
 
-	return
-}
+// Blacklisted : g_desktop_app_info_get_generic_name
 
-// GetCategories is a wrapper around the C function g_desktop_app_info_get_categories.
-func (recv *DesktopAppInfo) GetCategories() string {
-	retC := C.g_desktop_app_info_get_categories((*C.GDesktopAppInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetGenericName is a wrapper around the C function g_desktop_app_info_get_generic_name.
-func (recv *DesktopAppInfo) GetGenericName() string {
-	retC := C.g_desktop_app_info_get_generic_name((*C.GDesktopAppInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetIsHidden is a wrapper around the C function g_desktop_app_info_get_is_hidden.
-func (recv *DesktopAppInfo) GetIsHidden() bool {
-	retC := C.g_desktop_app_info_get_is_hidden((*C.GDesktopAppInfo)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_desktop_app_info_get_is_hidden
 
 // Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc (GSpawnChildSetupFunc) for param user_setup
 
@@ -2200,126 +1371,23 @@ func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
 	return FileEnumeratorNewFromC(object.ToC())
 }
 
-// Close is a wrapper around the C function g_file_enumerator_close.
-func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_enumerator_close((*C.GFileEnumerator)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_enumerator_close
 
 // Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_file_enumerator_close_finish.
-func (recv *FileEnumerator) CloseFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_file_enumerator_close_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_file_enumerator_has_pending
 
-	retC := C.g_file_enumerator_close_finish((*C.GFileEnumerator)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_file_enumerator_is_closed
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// HasPending is a wrapper around the C function g_file_enumerator_has_pending.
-func (recv *FileEnumerator) HasPending() bool {
-	retC := C.g_file_enumerator_has_pending((*C.GFileEnumerator)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsClosed is a wrapper around the C function g_file_enumerator_is_closed.
-func (recv *FileEnumerator) IsClosed() bool {
-	retC := C.g_file_enumerator_is_closed((*C.GFileEnumerator)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// NextFile is a wrapper around the C function g_file_enumerator_next_file.
-func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_enumerator_next_file((*C.GFileEnumerator)(recv.native), c_cancellable, &cThrowableError)
-	var retGo (*FileInfo)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = FileInfoNewFromC(unsafe.Pointer(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_enumerator_next_file
 
 // Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// NextFilesFinish is a wrapper around the C function g_file_enumerator_next_files_finish.
-func (recv *FileEnumerator) NextFilesFinish(result *AsyncResult) (*glib.List, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_file_enumerator_next_files_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_file_enumerator_next_files_finish((*C.GFileEnumerator)(recv.native), c_result, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetPending is a wrapper around the C function g_file_enumerator_set_pending.
-func (recv *FileEnumerator) SetPending(pending bool) {
-	c_pending :=
-		boolToGboolean(pending)
-
-	C.g_file_enumerator_set_pending((*C.GFileEnumerator)(recv.native), c_pending)
-
-	return
-}
+// Blacklisted : g_file_enumerator_set_pending
 
 // FileIOStream is a wrapper around the C record GFileIOStream.
 type FileIOStream struct {
@@ -2427,27 +1495,9 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromC(object.ToC())
 }
 
-// FileIconNew is a wrapper around the C function g_file_icon_new.
-func FileIconNew(file *File) *FileIcon {
-	c_file := (*C.GFile)(file.ToC())
+// Blacklisted : g_file_icon_new
 
-	retC := C.g_file_icon_new(c_file)
-	retGo := FileIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetFile is a wrapper around the C function g_file_icon_get_file.
-func (recv *FileIcon) GetFile() *File {
-	retC := C.g_file_icon_get_file((*C.GFileIcon)(recv.native))
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_file_icon_get_file
 
 // Icon returns the Icon interface implemented by FileIcon
 func (recv *FileIcon) Icon() *Icon {
@@ -2506,581 +1556,119 @@ func CastToFileInfo(object *gobject.Object) *FileInfo {
 	return FileInfoNewFromC(object.ToC())
 }
 
-// FileInfoNew is a wrapper around the C function g_file_info_new.
-func FileInfoNew() *FileInfo {
-	retC := C.g_file_info_new()
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_file_info_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_file_info_clear_status
 
-	return retGo
-}
+// Blacklisted : g_file_info_copy_into
 
-// ClearStatus is a wrapper around the C function g_file_info_clear_status.
-func (recv *FileInfo) ClearStatus() {
-	C.g_file_info_clear_status((*C.GFileInfo)(recv.native))
+// Blacklisted : g_file_info_dup
 
-	return
-}
+// Blacklisted : g_file_info_get_attribute_as_string
 
-// CopyInto is a wrapper around the C function g_file_info_copy_into.
-func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
-	c_dest_info := (*C.GFileInfo)(C.NULL)
-	if destInfo != nil {
-		c_dest_info = (*C.GFileInfo)(destInfo.ToC())
-	}
+// Blacklisted : g_file_info_get_attribute_boolean
 
-	C.g_file_info_copy_into((*C.GFileInfo)(recv.native), c_dest_info)
-
-	return
-}
-
-// Dup is a wrapper around the C function g_file_info_dup.
-func (recv *FileInfo) Dup() *FileInfo {
-	retC := C.g_file_info_dup((*C.GFileInfo)(recv.native))
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetAttributeAsString is a wrapper around the C function g_file_info_get_attribute_as_string.
-func (recv *FileInfo) GetAttributeAsString(attribute string) string {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_info_get_attribute_as_string((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetAttributeBoolean is a wrapper around the C function g_file_info_get_attribute_boolean.
-func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_info_get_attribute_boolean((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetAttributeByteString is a wrapper around the C function g_file_info_get_attribute_byte_string.
-func (recv *FileInfo) GetAttributeByteString(attribute string) string {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_info_get_attribute_byte_string((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_file_info_get_attribute_byte_string
 
 // Unsupported : g_file_info_get_attribute_data : unsupported parameter type : GFileAttributeType* with indirection level of 1
 
-// GetAttributeInt32 is a wrapper around the C function g_file_info_get_attribute_int32.
-func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_attribute_int32
 
-	retC := C.g_file_info_get_attribute_int32((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (int32)(retC)
+// Blacklisted : g_file_info_get_attribute_int64
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_attribute_object
 
-// GetAttributeInt64 is a wrapper around the C function g_file_info_get_attribute_int64.
-func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_attribute_status
 
-	retC := C.g_file_info_get_attribute_int64((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (int64)(retC)
+// Blacklisted : g_file_info_get_attribute_string
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_attribute_type
 
-// GetAttributeObject is a wrapper around the C function g_file_info_get_attribute_object.
-func (recv *FileInfo) GetAttributeObject(attribute string) *gobject.Object {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_attribute_uint32
 
-	retC := C.g_file_info_get_attribute_object((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_file_info_get_attribute_uint64
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_content_type
 
-// GetAttributeStatus is a wrapper around the C function g_file_info_get_attribute_status.
-func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_display_name
 
-	retC := C.g_file_info_get_attribute_status((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (FileAttributeStatus)(retC)
+// Blacklisted : g_file_info_get_edit_name
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_etag
 
-// GetAttributeString is a wrapper around the C function g_file_info_get_attribute_string.
-func (recv *FileInfo) GetAttributeString(attribute string) string {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_file_type
 
-	retC := C.g_file_info_get_attribute_string((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := C.GoString(retC)
+// Blacklisted : g_file_info_get_icon
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_is_backup
 
-// GetAttributeType is a wrapper around the C function g_file_info_get_attribute_type.
-func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_is_hidden
 
-	retC := C.g_file_info_get_attribute_type((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (FileAttributeType)(retC)
+// Blacklisted : g_file_info_get_is_symlink
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_modification_time
 
-// GetAttributeUint32 is a wrapper around the C function g_file_info_get_attribute_uint32.
-func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_name
 
-	retC := C.g_file_info_get_attribute_uint32((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (uint32)(retC)
+// Blacklisted : g_file_info_get_size
 
-	return retGo
-}
+// Blacklisted : g_file_info_get_sort_order
 
-// GetAttributeUint64 is a wrapper around the C function g_file_info_get_attribute_uint64.
-func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_get_symlink_target
 
-	retC := C.g_file_info_get_attribute_uint64((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (uint64)(retC)
+// Blacklisted : g_file_info_has_attribute
 
-	return retGo
-}
+// Blacklisted : g_file_info_list_attributes
 
-// GetContentType is a wrapper around the C function g_file_info_get_content_type.
-func (recv *FileInfo) GetContentType() string {
-	retC := C.g_file_info_get_content_type((*C.GFileInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetDisplayName is a wrapper around the C function g_file_info_get_display_name.
-func (recv *FileInfo) GetDisplayName() string {
-	retC := C.g_file_info_get_display_name((*C.GFileInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetEditName is a wrapper around the C function g_file_info_get_edit_name.
-func (recv *FileInfo) GetEditName() string {
-	retC := C.g_file_info_get_edit_name((*C.GFileInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetEtag is a wrapper around the C function g_file_info_get_etag.
-func (recv *FileInfo) GetEtag() string {
-	retC := C.g_file_info_get_etag((*C.GFileInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetFileType is a wrapper around the C function g_file_info_get_file_type.
-func (recv *FileInfo) GetFileType() FileType {
-	retC := C.g_file_info_get_file_type((*C.GFileInfo)(recv.native))
-	retGo := (FileType)(retC)
-
-	return retGo
-}
-
-// GetIcon is a wrapper around the C function g_file_info_get_icon.
-func (recv *FileInfo) GetIcon() *Icon {
-	retC := C.g_file_info_get_icon((*C.GFileInfo)(recv.native))
-	retGo := IconNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetIsBackup is a wrapper around the C function g_file_info_get_is_backup.
-func (recv *FileInfo) GetIsBackup() bool {
-	retC := C.g_file_info_get_is_backup((*C.GFileInfo)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsHidden is a wrapper around the C function g_file_info_get_is_hidden.
-func (recv *FileInfo) GetIsHidden() bool {
-	retC := C.g_file_info_get_is_hidden((*C.GFileInfo)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsSymlink is a wrapper around the C function g_file_info_get_is_symlink.
-func (recv *FileInfo) GetIsSymlink() bool {
-	retC := C.g_file_info_get_is_symlink((*C.GFileInfo)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetModificationTime is a wrapper around the C function g_file_info_get_modification_time.
-func (recv *FileInfo) GetModificationTime() *glib.TimeVal {
-	var c_result C.GTimeVal
-
-	C.g_file_info_get_modification_time((*C.GFileInfo)(recv.native), &c_result)
-
-	result := glib.TimeValNewFromC(unsafe.Pointer(&c_result))
-
-	return result
-}
-
-// GetName is a wrapper around the C function g_file_info_get_name.
-func (recv *FileInfo) GetName() string {
-	retC := C.g_file_info_get_name((*C.GFileInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetSize is a wrapper around the C function g_file_info_get_size.
-func (recv *FileInfo) GetSize() int64 {
-	retC := C.g_file_info_get_size((*C.GFileInfo)(recv.native))
-	retGo := (int64)(retC)
-
-	return retGo
-}
-
-// GetSortOrder is a wrapper around the C function g_file_info_get_sort_order.
-func (recv *FileInfo) GetSortOrder() int32 {
-	retC := C.g_file_info_get_sort_order((*C.GFileInfo)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetSymlinkTarget is a wrapper around the C function g_file_info_get_symlink_target.
-func (recv *FileInfo) GetSymlinkTarget() string {
-	retC := C.g_file_info_get_symlink_target((*C.GFileInfo)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// HasAttribute is a wrapper around the C function g_file_info_has_attribute.
-func (recv *FileInfo) HasAttribute(attribute string) bool {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_info_has_attribute((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ListAttributes is a wrapper around the C function g_file_info_list_attributes.
-func (recv *FileInfo) ListAttributes(nameSpace string) []string {
-	c_name_space := C.CString(nameSpace)
-	defer C.free(unsafe.Pointer(c_name_space))
-
-	retC := C.g_file_info_list_attributes((*C.GFileInfo)(recv.native), c_name_space)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
-
-// RemoveAttribute is a wrapper around the C function g_file_info_remove_attribute.
-func (recv *FileInfo) RemoveAttribute(attribute string) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	C.g_file_info_remove_attribute((*C.GFileInfo)(recv.native), c_attribute)
-
-	return
-}
+// Blacklisted : g_file_info_remove_attribute
 
 // Unsupported : g_file_info_set_attribute : unsupported parameter value_p : no type generator for gpointer (gpointer) for param value_p
 
-// SetAttributeBoolean is a wrapper around the C function g_file_info_set_attribute_boolean.
-func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_set_attribute_boolean
 
-	c_attr_value :=
-		boolToGboolean(attrValue)
+// Blacklisted : g_file_info_set_attribute_byte_string
 
-	C.g_file_info_set_attribute_boolean((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+// Blacklisted : g_file_info_set_attribute_int32
 
-	return
-}
+// Blacklisted : g_file_info_set_attribute_int64
 
-// SetAttributeByteString is a wrapper around the C function g_file_info_set_attribute_byte_string.
-func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_set_attribute_mask
 
-	c_attr_value := C.CString(attrValue)
-	defer C.free(unsafe.Pointer(c_attr_value))
+// Blacklisted : g_file_info_set_attribute_object
 
-	C.g_file_info_set_attribute_byte_string((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+// Blacklisted : g_file_info_set_attribute_string
 
-	return
-}
+// Blacklisted : g_file_info_set_attribute_stringv
 
-// SetAttributeInt32 is a wrapper around the C function g_file_info_set_attribute_int32.
-func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_set_attribute_uint32
 
-	c_attr_value := (C.gint32)(attrValue)
+// Blacklisted : g_file_info_set_attribute_uint64
 
-	C.g_file_info_set_attribute_int32((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+// Blacklisted : g_file_info_set_content_type
 
-	return
-}
+// Blacklisted : g_file_info_set_display_name
 
-// SetAttributeInt64 is a wrapper around the C function g_file_info_set_attribute_int64.
-func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_set_edit_name
 
-	c_attr_value := (C.gint64)(attrValue)
+// Blacklisted : g_file_info_set_file_type
 
-	C.g_file_info_set_attribute_int64((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+// Blacklisted : g_file_info_set_icon
 
-	return
-}
+// Blacklisted : g_file_info_set_is_hidden
 
-// SetAttributeMask is a wrapper around the C function g_file_info_set_attribute_mask.
-func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
-	c_mask := (*C.GFileAttributeMatcher)(C.NULL)
-	if mask != nil {
-		c_mask = (*C.GFileAttributeMatcher)(mask.ToC())
-	}
+// Blacklisted : g_file_info_set_is_symlink
 
-	C.g_file_info_set_attribute_mask((*C.GFileInfo)(recv.native), c_mask)
+// Blacklisted : g_file_info_set_modification_time
 
-	return
-}
+// Blacklisted : g_file_info_set_name
 
-// SetAttributeObject is a wrapper around the C function g_file_info_set_attribute_object.
-func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Object) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_file_info_set_size
 
-	c_attr_value := (*C.GObject)(C.NULL)
-	if attrValue != nil {
-		c_attr_value = (*C.GObject)(attrValue.ToC())
-	}
+// Blacklisted : g_file_info_set_sort_order
 
-	C.g_file_info_set_attribute_object((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+// Blacklisted : g_file_info_set_symlink_target
 
-	return
-}
-
-// SetAttributeString is a wrapper around the C function g_file_info_set_attribute_string.
-func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_attr_value := C.CString(attrValue)
-	defer C.free(unsafe.Pointer(c_attr_value))
-
-	C.g_file_info_set_attribute_string((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
-
-	return
-}
-
-// SetAttributeStringv is a wrapper around the C function g_file_info_set_attribute_stringv.
-func (recv *FileInfo) SetAttributeStringv(attribute string, attrValue []string) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_attr_value_array := make([]*C.gchar, len(attrValue)+1, len(attrValue)+1)
-	for i, item := range attrValue {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_attr_value_array[i] = c
-	}
-	c_attr_value_array[len(attrValue)] = nil
-	c_attr_value_arrayPtr := &c_attr_value_array[0]
-	c_attr_value := (**C.char)(unsafe.Pointer(c_attr_value_arrayPtr))
-
-	C.g_file_info_set_attribute_stringv((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
-
-	return
-}
-
-// SetAttributeUint32 is a wrapper around the C function g_file_info_set_attribute_uint32.
-func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_attr_value := (C.guint32)(attrValue)
-
-	C.g_file_info_set_attribute_uint32((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
-
-	return
-}
-
-// SetAttributeUint64 is a wrapper around the C function g_file_info_set_attribute_uint64.
-func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_attr_value := (C.guint64)(attrValue)
-
-	C.g_file_info_set_attribute_uint64((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
-
-	return
-}
-
-// SetContentType is a wrapper around the C function g_file_info_set_content_type.
-func (recv *FileInfo) SetContentType(contentType string) {
-	c_content_type := C.CString(contentType)
-	defer C.free(unsafe.Pointer(c_content_type))
-
-	C.g_file_info_set_content_type((*C.GFileInfo)(recv.native), c_content_type)
-
-	return
-}
-
-// SetDisplayName is a wrapper around the C function g_file_info_set_display_name.
-func (recv *FileInfo) SetDisplayName(displayName string) {
-	c_display_name := C.CString(displayName)
-	defer C.free(unsafe.Pointer(c_display_name))
-
-	C.g_file_info_set_display_name((*C.GFileInfo)(recv.native), c_display_name)
-
-	return
-}
-
-// SetEditName is a wrapper around the C function g_file_info_set_edit_name.
-func (recv *FileInfo) SetEditName(editName string) {
-	c_edit_name := C.CString(editName)
-	defer C.free(unsafe.Pointer(c_edit_name))
-
-	C.g_file_info_set_edit_name((*C.GFileInfo)(recv.native), c_edit_name)
-
-	return
-}
-
-// SetFileType is a wrapper around the C function g_file_info_set_file_type.
-func (recv *FileInfo) SetFileType(type_ FileType) {
-	c_type := (C.GFileType)(type_)
-
-	C.g_file_info_set_file_type((*C.GFileInfo)(recv.native), c_type)
-
-	return
-}
-
-// SetIcon is a wrapper around the C function g_file_info_set_icon.
-func (recv *FileInfo) SetIcon(icon *Icon) {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.g_file_info_set_icon((*C.GFileInfo)(recv.native), c_icon)
-
-	return
-}
-
-// SetIsHidden is a wrapper around the C function g_file_info_set_is_hidden.
-func (recv *FileInfo) SetIsHidden(isHidden bool) {
-	c_is_hidden :=
-		boolToGboolean(isHidden)
-
-	C.g_file_info_set_is_hidden((*C.GFileInfo)(recv.native), c_is_hidden)
-
-	return
-}
-
-// SetIsSymlink is a wrapper around the C function g_file_info_set_is_symlink.
-func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
-	c_is_symlink :=
-		boolToGboolean(isSymlink)
-
-	C.g_file_info_set_is_symlink((*C.GFileInfo)(recv.native), c_is_symlink)
-
-	return
-}
-
-// SetModificationTime is a wrapper around the C function g_file_info_set_modification_time.
-func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
-	c_mtime := (*C.GTimeVal)(C.NULL)
-	if mtime != nil {
-		c_mtime = (*C.GTimeVal)(mtime.ToC())
-	}
-
-	C.g_file_info_set_modification_time((*C.GFileInfo)(recv.native), c_mtime)
-
-	return
-}
-
-// SetName is a wrapper around the C function g_file_info_set_name.
-func (recv *FileInfo) SetName(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.g_file_info_set_name((*C.GFileInfo)(recv.native), c_name)
-
-	return
-}
-
-// SetSize is a wrapper around the C function g_file_info_set_size.
-func (recv *FileInfo) SetSize(size int64) {
-	c_size := (C.goffset)(size)
-
-	C.g_file_info_set_size((*C.GFileInfo)(recv.native), c_size)
-
-	return
-}
-
-// SetSortOrder is a wrapper around the C function g_file_info_set_sort_order.
-func (recv *FileInfo) SetSortOrder(sortOrder int32) {
-	c_sort_order := (C.gint32)(sortOrder)
-
-	C.g_file_info_set_sort_order((*C.GFileInfo)(recv.native), c_sort_order)
-
-	return
-}
-
-// SetSymlinkTarget is a wrapper around the C function g_file_info_set_symlink_target.
-func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
-	c_symlink_target := C.CString(symlinkTarget)
-	defer C.free(unsafe.Pointer(c_symlink_target))
-
-	C.g_file_info_set_symlink_target((*C.GFileInfo)(recv.native), c_symlink_target)
-
-	return
-}
-
-// UnsetAttributeMask is a wrapper around the C function g_file_info_unset_attribute_mask.
-func (recv *FileInfo) UnsetAttributeMask() {
-	C.g_file_info_unset_attribute_mask((*C.GFileInfo)(recv.native))
-
-	return
-}
+// Blacklisted : g_file_info_unset_attribute_mask
 
 // FileInputStream is a wrapper around the C record GFileInputStream.
 type FileInputStream struct {
@@ -3136,53 +1724,11 @@ func CastToFileInputStream(object *gobject.Object) *FileInputStream {
 	return FileInputStreamNewFromC(object.ToC())
 }
 
-// QueryInfo is a wrapper around the C function g_file_input_stream_query_info.
-func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
-	c_attributes := C.CString(attributes)
-	defer C.free(unsafe.Pointer(c_attributes))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_input_stream_query_info((*C.GFileInputStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_input_stream_query_info
 
 // Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// QueryInfoFinish is a wrapper around the C function g_file_input_stream_query_info_finish.
-func (recv *FileInputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_input_stream_query_info_finish((*C.GFileInputStream)(recv.native), c_result, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_input_stream_query_info_finish
 
 // Seekable returns the Seekable interface implemented by FileInputStream
 func (recv *FileInputStream) Seekable() *Seekable {
@@ -3304,43 +1850,13 @@ func filemonitor_changedHandler(_ *C.GObject, c_file *C.GFile, c_other_file *C.G
 	callback(file, otherFile, eventType)
 }
 
-// Cancel is a wrapper around the C function g_file_monitor_cancel.
-func (recv *FileMonitor) Cancel() bool {
-	retC := C.g_file_monitor_cancel((*C.GFileMonitor)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_file_monitor_cancel
 
-	return retGo
-}
+// Blacklisted : g_file_monitor_emit_event
 
-// EmitEvent is a wrapper around the C function g_file_monitor_emit_event.
-func (recv *FileMonitor) EmitEvent(child *File, otherFile *File, eventType FileMonitorEvent) {
-	c_child := (*C.GFile)(child.ToC())
+// Blacklisted : g_file_monitor_is_cancelled
 
-	c_other_file := (*C.GFile)(otherFile.ToC())
-
-	c_event_type := (C.GFileMonitorEvent)(eventType)
-
-	C.g_file_monitor_emit_event((*C.GFileMonitor)(recv.native), c_child, c_other_file, c_event_type)
-
-	return
-}
-
-// IsCancelled is a wrapper around the C function g_file_monitor_is_cancelled.
-func (recv *FileMonitor) IsCancelled() bool {
-	retC := C.g_file_monitor_is_cancelled((*C.GFileMonitor)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetRateLimit is a wrapper around the C function g_file_monitor_set_rate_limit.
-func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
-	c_limit_msecs := (C.gint)(limitMsecs)
-
-	C.g_file_monitor_set_rate_limit((*C.GFileMonitor)(recv.native), c_limit_msecs)
-
-	return
-}
+// Blacklisted : g_file_monitor_set_rate_limit
 
 // FileOutputStream is a wrapper around the C record GFileOutputStream.
 type FileOutputStream struct {
@@ -3396,62 +1912,13 @@ func CastToFileOutputStream(object *gobject.Object) *FileOutputStream {
 	return FileOutputStreamNewFromC(object.ToC())
 }
 
-// GetEtag is a wrapper around the C function g_file_output_stream_get_etag.
-func (recv *FileOutputStream) GetEtag() string {
-	retC := C.g_file_output_stream_get_etag((*C.GFileOutputStream)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : g_file_output_stream_get_etag
 
-	return retGo
-}
-
-// QueryInfo is a wrapper around the C function g_file_output_stream_query_info.
-func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
-	c_attributes := C.CString(attributes)
-	defer C.free(unsafe.Pointer(c_attributes))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_output_stream_query_info((*C.GFileOutputStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_output_stream_query_info
 
 // Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// QueryInfoFinish is a wrapper around the C function g_file_output_stream_query_info_finish.
-func (recv *FileOutputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_output_stream_query_info_finish((*C.GFileOutputStream)(recv.native), c_result, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_output_stream_query_info_finish
 
 // Seekable returns the Seekable interface implemented by FileOutputStream
 func (recv *FileOutputStream) Seekable() *Seekable {
@@ -3565,55 +2032,13 @@ func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
-func FilenameCompleterNew() *FilenameCompleter {
-	retC := C.g_filename_completer_new()
-	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_filename_completer_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_filename_completer_get_completion_suffix
 
-	return retGo
-}
+// Blacklisted : g_filename_completer_get_completions
 
-// GetCompletionSuffix is a wrapper around the C function g_filename_completer_get_completion_suffix.
-func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
-	c_initial_text := C.CString(initialText)
-	defer C.free(unsafe.Pointer(c_initial_text))
-
-	retC := C.g_filename_completer_get_completion_suffix((*C.GFilenameCompleter)(recv.native), c_initial_text)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetCompletions is a wrapper around the C function g_filename_completer_get_completions.
-func (recv *FilenameCompleter) GetCompletions(initialText string) []string {
-	c_initial_text := C.CString(initialText)
-	defer C.free(unsafe.Pointer(c_initial_text))
-
-	retC := C.g_filename_completer_get_completions((*C.GFilenameCompleter)(recv.native), c_initial_text)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
-
-// SetDirsOnly is a wrapper around the C function g_filename_completer_set_dirs_only.
-func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
-	c_dirs_only :=
-		boolToGboolean(dirsOnly)
-
-	C.g_filename_completer_set_dirs_only((*C.GFilenameCompleter)(recv.native), c_dirs_only)
-
-	return
-}
+// Blacklisted : g_filename_completer_set_dirs_only
 
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
@@ -3669,31 +2094,11 @@ func CastToFilterInputStream(object *gobject.Object) *FilterInputStream {
 	return FilterInputStreamNewFromC(object.ToC())
 }
 
-// GetBaseStream is a wrapper around the C function g_filter_input_stream_get_base_stream.
-func (recv *FilterInputStream) GetBaseStream() *InputStream {
-	retC := C.g_filter_input_stream_get_base_stream((*C.GFilterInputStream)(recv.native))
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_filter_input_stream_get_base_stream
 
-	return retGo
-}
+// Blacklisted : g_filter_input_stream_get_close_base_stream
 
-// GetCloseBaseStream is a wrapper around the C function g_filter_input_stream_get_close_base_stream.
-func (recv *FilterInputStream) GetCloseBaseStream() bool {
-	retC := C.g_filter_input_stream_get_close_base_stream((*C.GFilterInputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetCloseBaseStream is a wrapper around the C function g_filter_input_stream_set_close_base_stream.
-func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
-	c_close_base :=
-		boolToGboolean(closeBase)
-
-	C.g_filter_input_stream_set_close_base_stream((*C.GFilterInputStream)(recv.native), c_close_base)
-
-	return
-}
+// Blacklisted : g_filter_input_stream_set_close_base_stream
 
 // FilterOutputStream is a wrapper around the C record GFilterOutputStream.
 type FilterOutputStream struct {
@@ -3749,31 +2154,11 @@ func CastToFilterOutputStream(object *gobject.Object) *FilterOutputStream {
 	return FilterOutputStreamNewFromC(object.ToC())
 }
 
-// GetBaseStream is a wrapper around the C function g_filter_output_stream_get_base_stream.
-func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
-	retC := C.g_filter_output_stream_get_base_stream((*C.GFilterOutputStream)(recv.native))
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_filter_output_stream_get_base_stream
 
-	return retGo
-}
+// Blacklisted : g_filter_output_stream_get_close_base_stream
 
-// GetCloseBaseStream is a wrapper around the C function g_filter_output_stream_get_close_base_stream.
-func (recv *FilterOutputStream) GetCloseBaseStream() bool {
-	retC := C.g_filter_output_stream_get_close_base_stream((*C.GFilterOutputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetCloseBaseStream is a wrapper around the C function g_filter_output_stream_set_close_base_stream.
-func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
-	c_close_base :=
-		boolToGboolean(closeBase)
-
-	C.g_filter_output_stream_set_close_base_stream((*C.GFilterOutputStream)(recv.native), c_close_base)
-
-	return
-}
+// Blacklisted : g_filter_output_stream_set_close_base_stream
 
 // IOModule is a wrapper around the C record GIOModule.
 type IOModule struct {
@@ -3817,20 +2202,7 @@ func CastToIOModule(object *gobject.Object) *IOModule {
 	return IOModuleNewFromC(object.ToC())
 }
 
-// IOModuleNew is a wrapper around the C function g_io_module_new.
-func IOModuleNew(filename string) *IOModule {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_io_module_new(c_filename)
-	retGo := IOModuleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_io_module_new
 
 // Blacklisted : g_io_module_load
 
@@ -4047,232 +2419,33 @@ func CastToInputStream(object *gobject.Object) *InputStream {
 	return InputStreamNewFromC(object.ToC())
 }
 
-// ClearPending is a wrapper around the C function g_input_stream_clear_pending.
-func (recv *InputStream) ClearPending() {
-	C.g_input_stream_clear_pending((*C.GInputStream)(recv.native))
+// Blacklisted : g_input_stream_clear_pending
 
-	return
-}
-
-// Close is a wrapper around the C function g_input_stream_close.
-func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_input_stream_close((*C.GInputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_input_stream_close
 
 // Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_input_stream_close_finish.
-func (recv *InputStream) CloseFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_input_stream_close_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_input_stream_has_pending
 
-	retC := C.g_input_stream_close_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_input_stream_is_closed
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_input_stream_read
 
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// HasPending is a wrapper around the C function g_input_stream_has_pending.
-func (recv *InputStream) HasPending() bool {
-	retC := C.g_input_stream_has_pending((*C.GInputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsClosed is a wrapper around the C function g_input_stream_is_closed.
-func (recv *InputStream) IsClosed() bool {
-	retC := C.g_input_stream_is_closed((*C.GInputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Read is a wrapper around the C function g_input_stream_read.
-func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_count := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_input_stream_read((*C.GInputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReadAll is a wrapper around the C function g_input_stream_read_all.
-func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_count := (C.gsize)(len(buffer))
-
-	var c_bytes_read C.gsize
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_input_stream_read_all((*C.GInputStream)(recv.native), c_buffer, c_count, &c_bytes_read, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	bytesRead := (uint64)(c_bytes_read)
-
-	return retGo, bytesRead, goError
-}
+// Blacklisted : g_input_stream_read_all
 
 // Unsupported : g_input_stream_read_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReadFinish is a wrapper around the C function g_input_stream_read_finish.
-func (recv *InputStream) ReadFinish(result *AsyncResult) (int64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_input_stream_read_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_input_stream_set_pending
 
-	retC := C.g_input_stream_read_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetPending is a wrapper around the C function g_input_stream_set_pending.
-func (recv *InputStream) SetPending() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_input_stream_set_pending((*C.GInputStream)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Skip is a wrapper around the C function g_input_stream_skip.
-func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, error) {
-	c_count := (C.gsize)(count)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_input_stream_skip((*C.GInputStream)(recv.native), c_count, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_input_stream_skip
 
 // Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// SkipFinish is a wrapper around the C function g_input_stream_skip_finish.
-func (recv *InputStream) SkipFinish(result *AsyncResult) (int64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_input_stream_skip_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_input_stream_skip_finish
 
 // ListStore is a wrapper around the C record GListStore.
 type ListStore struct {
@@ -4380,17 +2553,7 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 	return MemoryInputStreamNewFromC(object.ToC())
 }
 
-// MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
-func MemoryInputStreamNew() *MemoryInputStream {
-	retC := C.g_memory_input_stream_new()
-	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_memory_input_stream_new
 
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
@@ -4464,13 +2627,7 @@ func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 
 // Unsupported : g_memory_output_stream_get_data : no return generator
 
-// GetSize is a wrapper around the C function g_memory_output_stream_get_size.
-func (recv *MemoryOutputStream) GetSize() uint64 {
-	retC := C.g_memory_output_stream_get_size((*C.GMemoryOutputStream)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_memory_output_stream_get_size
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by MemoryOutputStream
 func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
@@ -4663,132 +2820,33 @@ func mountoperation_replyHandler(_ *C.GObject, c_result C.GMountOperationResult,
 	callback(result)
 }
 
-// MountOperationNew is a wrapper around the C function g_mount_operation_new.
-func MountOperationNew() *MountOperation {
-	retC := C.g_mount_operation_new()
-	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_mount_operation_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_mount_operation_get_anonymous
 
-	return retGo
-}
+// Blacklisted : g_mount_operation_get_choice
 
-// GetAnonymous is a wrapper around the C function g_mount_operation_get_anonymous.
-func (recv *MountOperation) GetAnonymous() bool {
-	retC := C.g_mount_operation_get_anonymous((*C.GMountOperation)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_mount_operation_get_domain
 
-	return retGo
-}
+// Blacklisted : g_mount_operation_get_password
 
-// GetChoice is a wrapper around the C function g_mount_operation_get_choice.
-func (recv *MountOperation) GetChoice() int32 {
-	retC := C.g_mount_operation_get_choice((*C.GMountOperation)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : g_mount_operation_get_password_save
 
-	return retGo
-}
+// Blacklisted : g_mount_operation_get_username
 
-// GetDomain is a wrapper around the C function g_mount_operation_get_domain.
-func (recv *MountOperation) GetDomain() string {
-	retC := C.g_mount_operation_get_domain((*C.GMountOperation)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_mount_operation_reply
 
-	return retGo
-}
+// Blacklisted : g_mount_operation_set_anonymous
 
-// GetPassword is a wrapper around the C function g_mount_operation_get_password.
-func (recv *MountOperation) GetPassword() string {
-	retC := C.g_mount_operation_get_password((*C.GMountOperation)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_mount_operation_set_choice
 
-	return retGo
-}
+// Blacklisted : g_mount_operation_set_domain
 
-// GetPasswordSave is a wrapper around the C function g_mount_operation_get_password_save.
-func (recv *MountOperation) GetPasswordSave() PasswordSave {
-	retC := C.g_mount_operation_get_password_save((*C.GMountOperation)(recv.native))
-	retGo := (PasswordSave)(retC)
+// Blacklisted : g_mount_operation_set_password
 
-	return retGo
-}
+// Blacklisted : g_mount_operation_set_password_save
 
-// GetUsername is a wrapper around the C function g_mount_operation_get_username.
-func (recv *MountOperation) GetUsername() string {
-	retC := C.g_mount_operation_get_username((*C.GMountOperation)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// Reply is a wrapper around the C function g_mount_operation_reply.
-func (recv *MountOperation) Reply(result MountOperationResult) {
-	c_result := (C.GMountOperationResult)(result)
-
-	C.g_mount_operation_reply((*C.GMountOperation)(recv.native), c_result)
-
-	return
-}
-
-// SetAnonymous is a wrapper around the C function g_mount_operation_set_anonymous.
-func (recv *MountOperation) SetAnonymous(anonymous bool) {
-	c_anonymous :=
-		boolToGboolean(anonymous)
-
-	C.g_mount_operation_set_anonymous((*C.GMountOperation)(recv.native), c_anonymous)
-
-	return
-}
-
-// SetChoice is a wrapper around the C function g_mount_operation_set_choice.
-func (recv *MountOperation) SetChoice(choice int32) {
-	c_choice := (C.int)(choice)
-
-	C.g_mount_operation_set_choice((*C.GMountOperation)(recv.native), c_choice)
-
-	return
-}
-
-// SetDomain is a wrapper around the C function g_mount_operation_set_domain.
-func (recv *MountOperation) SetDomain(domain string) {
-	c_domain := C.CString(domain)
-	defer C.free(unsafe.Pointer(c_domain))
-
-	C.g_mount_operation_set_domain((*C.GMountOperation)(recv.native), c_domain)
-
-	return
-}
-
-// SetPassword is a wrapper around the C function g_mount_operation_set_password.
-func (recv *MountOperation) SetPassword(password string) {
-	c_password := C.CString(password)
-	defer C.free(unsafe.Pointer(c_password))
-
-	C.g_mount_operation_set_password((*C.GMountOperation)(recv.native), c_password)
-
-	return
-}
-
-// SetPasswordSave is a wrapper around the C function g_mount_operation_set_password_save.
-func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
-	c_save := (C.GPasswordSave)(save)
-
-	C.g_mount_operation_set_password_save((*C.GMountOperation)(recv.native), c_save)
-
-	return
-}
-
-// SetUsername is a wrapper around the C function g_mount_operation_set_username.
-func (recv *MountOperation) SetUsername(username string) {
-	c_username := C.CString(username)
-	defer C.free(unsafe.Pointer(c_username))
-
-	C.g_mount_operation_set_username((*C.GMountOperation)(recv.native), c_username)
-
-	return
-}
+// Blacklisted : g_mount_operation_set_username
 
 // NativeVolumeMonitor is a wrapper around the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
@@ -5000,57 +3058,13 @@ func CastToOutputStream(object *gobject.Object) *OutputStream {
 	return OutputStreamNewFromC(object.ToC())
 }
 
-// ClearPending is a wrapper around the C function g_output_stream_clear_pending.
-func (recv *OutputStream) ClearPending() {
-	C.g_output_stream_clear_pending((*C.GOutputStream)(recv.native))
+// Blacklisted : g_output_stream_clear_pending
 
-	return
-}
-
-// Close is a wrapper around the C function g_output_stream_close.
-func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_close((*C.GOutputStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_output_stream_close
 
 // Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_output_stream_close_finish.
-func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_close_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_output_stream_close_finish
 
 // Flush is a wrapper around the C function g_output_stream_flush.
 func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
@@ -5077,183 +3091,23 @@ func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// FlushFinish is a wrapper around the C function g_output_stream_flush_finish.
-func (recv *OutputStream) FlushFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_output_stream_flush_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_output_stream_has_pending
 
-	retC := C.g_output_stream_flush_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_output_stream_is_closed
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_output_stream_set_pending
 
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// HasPending is a wrapper around the C function g_output_stream_has_pending.
-func (recv *OutputStream) HasPending() bool {
-	retC := C.g_output_stream_has_pending((*C.GOutputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsClosed is a wrapper around the C function g_output_stream_is_closed.
-func (recv *OutputStream) IsClosed() bool {
-	retC := C.g_output_stream_is_closed((*C.GOutputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetPending is a wrapper around the C function g_output_stream_set_pending.
-func (recv *OutputStream) SetPending() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_set_pending((*C.GOutputStream)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Splice is a wrapper around the C function g_output_stream_splice.
-func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFlags, cancellable *Cancellable) (int64, error) {
-	c_source := (*C.GInputStream)(C.NULL)
-	if source != nil {
-		c_source = (*C.GInputStream)(source.ToC())
-	}
-
-	c_flags := (C.GOutputStreamSpliceFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_splice((*C.GOutputStream)(recv.native), c_source, c_flags, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_output_stream_splice
 
 // Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// SpliceFinish is a wrapper around the C function g_output_stream_splice_finish.
-func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_output_stream_splice_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_output_stream_write
 
-	retC := C.g_output_stream_splice_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Write is a wrapper around the C function g_output_stream_write.
-func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_count := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_write((*C.GOutputStream)(recv.native), c_buffer, c_count, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// WriteAll is a wrapper around the C function g_output_stream_write_all.
-func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_count := (C.gsize)(len(buffer))
-
-	var c_bytes_written C.gsize
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_write_all((*C.GOutputStream)(recv.native), c_buffer, c_count, &c_bytes_written, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	bytesWritten := (uint64)(c_bytes_written)
-
-	return retGo, bytesWritten, goError
-}
+// Blacklisted : g_output_stream_write_all
 
 // Unsupported : g_output_stream_write_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
@@ -5261,45 +3115,9 @@ func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bo
 
 // Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WriteBytesFinish is a wrapper around the C function g_output_stream_write_bytes_finish.
-func (recv *OutputStream) WriteBytesFinish(result *AsyncResult) (int64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_output_stream_write_bytes_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_write_bytes_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// WriteFinish is a wrapper around the C function g_output_stream_write_finish.
-func (recv *OutputStream) WriteFinish(result *AsyncResult) (int64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_write_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_output_stream_write_finish
 
 // Permission is a wrapper around the C record GPermission.
 type Permission struct {
@@ -5753,90 +3571,23 @@ func settings_writableChangedHandler(_ *C.GObject, c_key *C.gchar, data C.gpoint
 	callback(key)
 }
 
-// SettingsSync is a wrapper around the C function g_settings_sync.
-func SettingsSync() {
-	C.g_settings_sync()
+// Blacklisted : g_settings_sync
 
-	return
-}
-
-// Apply is a wrapper around the C function g_settings_apply.
-func (recv *Settings) Apply() {
-	C.g_settings_apply((*C.GSettings)(recv.native))
-
-	return
-}
+// Blacklisted : g_settings_apply
 
 // Unsupported : g_settings_get_mapped : unsupported parameter mapping : no type generator for SettingsGetMapping (GSettingsGetMapping) for param mapping
 
-// ListChildren is a wrapper around the C function g_settings_list_children.
-func (recv *Settings) ListChildren() []string {
-	retC := C.g_settings_list_children((*C.GSettings)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
+// Blacklisted : g_settings_list_children
 
-	return retGo
-}
+// Blacklisted : g_settings_list_keys
 
-// ListKeys is a wrapper around the C function g_settings_list_keys.
-func (recv *Settings) ListKeys() []string {
-	retC := C.g_settings_list_keys((*C.GSettings)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
+// Blacklisted : g_settings_reset
 
-	return retGo
-}
+// Blacklisted : g_settings_revert
 
-// Reset is a wrapper around the C function g_settings_reset.
-func (recv *Settings) Reset(key string) {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
+// Blacklisted : g_settings_set_enum
 
-	C.g_settings_reset((*C.GSettings)(recv.native), c_key)
-
-	return
-}
-
-// Revert is a wrapper around the C function g_settings_revert.
-func (recv *Settings) Revert() {
-	C.g_settings_revert((*C.GSettings)(recv.native))
-
-	return
-}
-
-// SetEnum is a wrapper around the C function g_settings_set_enum.
-func (recv *Settings) SetEnum(key string, value int32) bool {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	c_value := (C.gint)(value)
-
-	retC := C.g_settings_set_enum((*C.GSettings)(recv.native), c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetFlags is a wrapper around the C function g_settings_set_flags.
-func (recv *Settings) SetFlags(key string, value uint32) bool {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	c_value := (C.guint)(value)
-
-	retC := C.g_settings_set_flags((*C.GSettings)(recv.native), c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_settings_set_flags
 
 // SettingsBackend is a wrapper around the C record GSettingsBackend.
 type SettingsBackend struct {
@@ -5992,119 +3743,35 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Complete is a wrapper around the C function g_simple_async_result_complete.
-func (recv *SimpleAsyncResult) Complete() {
-	C.g_simple_async_result_complete((*C.GSimpleAsyncResult)(recv.native))
+// Blacklisted : g_simple_async_result_complete
 
-	return
-}
+// Blacklisted : g_simple_async_result_complete_in_idle
 
-// CompleteInIdle is a wrapper around the C function g_simple_async_result_complete_in_idle.
-func (recv *SimpleAsyncResult) CompleteInIdle() {
-	C.g_simple_async_result_complete_in_idle((*C.GSimpleAsyncResult)(recv.native))
-
-	return
-}
-
-// GetOpResGboolean is a wrapper around the C function g_simple_async_result_get_op_res_gboolean.
-func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
-	retC := C.g_simple_async_result_get_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_simple_async_result_get_op_res_gboolean
 
 // Unsupported : g_simple_async_result_get_op_res_gpointer : no return generator
 
-// GetOpResGssize is a wrapper around the C function g_simple_async_result_get_op_res_gssize.
-func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
-	retC := C.g_simple_async_result_get_op_res_gssize((*C.GSimpleAsyncResult)(recv.native))
-	retGo := (int64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_simple_async_result_get_op_res_gssize
 
 // Unsupported : g_simple_async_result_get_source_tag : no return generator
 
-// PropagateError is a wrapper around the C function g_simple_async_result_propagate_error.
-func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_simple_async_result_propagate_error((*C.GSimpleAsyncResult)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_simple_async_result_propagate_error
 
 // Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc (GSimpleAsyncThreadFunc) for param func
 
-// SetError is a wrapper around the C function g_simple_async_result_set_error.
-func (recv *SimpleAsyncResult) SetError(domain glib.Quark, code int32, format string, args ...interface{}) {
-	c_domain := (C.GQuark)(domain)
-
-	c_code := (C.gint)(code)
-
-	goFormattedString := fmt.Sprintf(format, args...)
-	c_format := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format))
-
-	C._g_simple_async_result_set_error((*C.GSimpleAsyncResult)(recv.native), c_domain, c_code, c_format)
-
-	return
-}
+// Blacklisted : g_simple_async_result_set_error
 
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
-func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
+// Blacklisted : g_simple_async_result_set_from_error
 
-	C.g_simple_async_result_set_from_error((*C.GSimpleAsyncResult)(recv.native), c_error)
+// Blacklisted : g_simple_async_result_set_handle_cancellation
 
-	return
-}
-
-// SetHandleCancellation is a wrapper around the C function g_simple_async_result_set_handle_cancellation.
-func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
-	c_handle_cancellation :=
-		boolToGboolean(handleCancellation)
-
-	C.g_simple_async_result_set_handle_cancellation((*C.GSimpleAsyncResult)(recv.native), c_handle_cancellation)
-
-	return
-}
-
-// SetOpResGboolean is a wrapper around the C function g_simple_async_result_set_op_res_gboolean.
-func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
-	c_op_res :=
-		boolToGboolean(opRes)
-
-	C.g_simple_async_result_set_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native), c_op_res)
-
-	return
-}
+// Blacklisted : g_simple_async_result_set_op_res_gboolean
 
 // Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter op_res : no type generator for gpointer (gpointer) for param op_res
 
-// SetOpResGssize is a wrapper around the C function g_simple_async_result_set_op_res_gssize.
-func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
-	c_op_res := (C.gssize)(opRes)
-
-	C.g_simple_async_result_set_op_res_gssize((*C.GSimpleAsyncResult)(recv.native), c_op_res)
-
-	return
-}
+// Blacklisted : g_simple_async_result_set_op_res_gssize
 
 // AsyncResult returns the AsyncResult interface implemented by SimpleAsyncResult
 func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
@@ -6318,50 +3985,11 @@ func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumera
 	return SocketAddressEnumeratorNewFromC(object.ToC())
 }
 
-// Next is a wrapper around the C function g_socket_address_enumerator_next.
-func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddress, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_address_enumerator_next((*C.GSocketAddressEnumerator)(recv.native), c_cancellable, &cThrowableError)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_address_enumerator_next
 
 // Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// NextFinish is a wrapper around the C function g_socket_address_enumerator_next_finish.
-func (recv *SocketAddressEnumerator) NextFinish(result *AsyncResult) (*SocketAddress, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_address_enumerator_next_finish((*C.GSocketAddressEnumerator)(recv.native), c_result, &cThrowableError)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_address_enumerator_next_finish
 
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
@@ -6528,13 +4156,7 @@ func CastToTcpWrapperConnection(object *gobject.Object) *TcpWrapperConnection {
 	return TcpWrapperConnectionNewFromC(object.ToC())
 }
 
-// GetBaseIoStream is a wrapper around the C function g_tcp_wrapper_connection_get_base_io_stream.
-func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
-	retC := C.g_tcp_wrapper_connection_get_base_io_stream((*C.GTcpWrapperConnection)(recv.native))
-	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_tcp_wrapper_connection_get_base_io_stream
 
 // ThemedIcon is a wrapper around the C record GThemedIcon.
 type ThemedIcon struct {
@@ -6583,81 +4205,15 @@ func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
 	return ThemedIconNewFromC(object.ToC())
 }
 
-// ThemedIconNew is a wrapper around the C function g_themed_icon_new.
-func ThemedIconNew(iconname string) *ThemedIcon {
-	c_iconname := C.CString(iconname)
-	defer C.free(unsafe.Pointer(c_iconname))
+// Blacklisted : g_themed_icon_new
 
-	retC := C.g_themed_icon_new(c_iconname)
-	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_themed_icon_new_from_names
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_themed_icon_new_with_default_fallbacks
 
-	return retGo
-}
+// Blacklisted : g_themed_icon_append_name
 
-// ThemedIconNewFromNames is a wrapper around the C function g_themed_icon_new_from_names.
-func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
-	c_iconnames_array := make([]*C.char, len(iconnames)+1, len(iconnames)+1)
-	for i, item := range iconnames {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_iconnames_array[i] = c
-	}
-	c_iconnames_array[len(iconnames)] = nil
-	c_iconnames_arrayPtr := &c_iconnames_array[0]
-	c_iconnames := (**C.char)(unsafe.Pointer(c_iconnames_arrayPtr))
-
-	c_len := (C.int)(len(iconnames))
-
-	retC := C.g_themed_icon_new_from_names(c_iconnames, c_len)
-	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
-func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
-	c_iconname := C.CString(iconname)
-	defer C.free(unsafe.Pointer(c_iconname))
-
-	retC := C.g_themed_icon_new_with_default_fallbacks(c_iconname)
-	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// AppendName is a wrapper around the C function g_themed_icon_append_name.
-func (recv *ThemedIcon) AppendName(iconname string) {
-	c_iconname := C.CString(iconname)
-	defer C.free(unsafe.Pointer(c_iconname))
-
-	C.g_themed_icon_append_name((*C.GThemedIcon)(recv.native), c_iconname)
-
-	return
-}
-
-// GetNames is a wrapper around the C function g_themed_icon_get_names.
-func (recv *ThemedIcon) GetNames() []string {
-	retC := C.g_themed_icon_get_names((*C.GThemedIcon)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
+// Blacklisted : g_themed_icon_get_names
 
 // Icon returns the Icon interface implemented by ThemedIcon
 func (recv *ThemedIcon) Icon() *Icon {
@@ -6880,22 +4436,7 @@ func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
 	return UnixInputStreamNewFromC(object.ToC())
 }
 
-// UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
-func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
-	c_fd := (C.gint)(fd)
-
-	c_close_fd :=
-		boolToGboolean(closeFd)
-
-	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
-	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_unix_input_stream_new
 
 // FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixInputStream
 func (recv *UnixInputStream) FileDescriptorBased() *FileDescriptorBased {
@@ -7074,17 +4615,7 @@ func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
-func UnixMountMonitorNew() *UnixMountMonitor {
-	retC := C.g_unix_mount_monitor_new()
-	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_unix_mount_monitor_new
 
 // UnixOutputStream is a wrapper around the C record GUnixOutputStream.
 type UnixOutputStream struct {
@@ -7140,22 +4671,7 @@ func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
 	return UnixOutputStreamNewFromC(object.ToC())
 }
 
-// UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
-func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
-	c_fd := (C.gint)(fd)
-
-	c_close_fd :=
-		boolToGboolean(closeFd)
-
-	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
-	retGo := UnixOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_unix_output_stream_new
 
 // FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixOutputStream
 func (recv *UnixOutputStream) FileDescriptorBased() *FileDescriptorBased {
@@ -7221,28 +4737,7 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromC(object.ToC())
 }
 
-// UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
-func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
-	c_path_array := make([]C.gchar, len(path)+1, len(path)+1)
-	for i, item := range path {
-		c := (C.gchar)(item)
-		c_path_array[i] = c
-	}
-	c_path_array[len(path)] = 0
-	c_path_arrayPtr := &c_path_array[0]
-	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
-
-	c_path_len := (C.gint)(len(path))
-
-	retC := C.g_unix_socket_address_new_abstract(c_path, c_path_len)
-	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : g_unix_socket_address_new_abstract
 
 // SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress
 func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
@@ -7297,74 +4792,19 @@ func CastToVfs(object *gobject.Object) *Vfs {
 	return VfsNewFromC(object.ToC())
 }
 
-// VfsGetDefault is a wrapper around the C function g_vfs_get_default.
-func VfsGetDefault() *Vfs {
-	retC := C.g_vfs_get_default()
-	retGo := VfsNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_vfs_get_default
 
-	return retGo
-}
+// Blacklisted : g_vfs_get_local
 
-// VfsGetLocal is a wrapper around the C function g_vfs_get_local.
-func VfsGetLocal() *Vfs {
-	retC := C.g_vfs_get_local()
-	retGo := VfsNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_vfs_get_file_for_path
 
-	return retGo
-}
+// Blacklisted : g_vfs_get_file_for_uri
 
-// GetFileForPath is a wrapper around the C function g_vfs_get_file_for_path.
-func (recv *Vfs) GetFileForPath(path string) *File {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
+// Blacklisted : g_vfs_get_supported_uri_schemes
 
-	retC := C.g_vfs_get_file_for_path((*C.GVfs)(recv.native), c_path)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_vfs_is_active
 
-	return retGo
-}
-
-// GetFileForUri is a wrapper around the C function g_vfs_get_file_for_uri.
-func (recv *Vfs) GetFileForUri(uri string) *File {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	retC := C.g_vfs_get_file_for_uri((*C.GVfs)(recv.native), c_uri)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetSupportedUriSchemes is a wrapper around the C function g_vfs_get_supported_uri_schemes.
-func (recv *Vfs) GetSupportedUriSchemes() []string {
-	retC := C.g_vfs_get_supported_uri_schemes((*C.GVfs)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
-
-// IsActive is a wrapper around the C function g_vfs_is_active.
-func (recv *Vfs) IsActive() bool {
-	retC := C.g_vfs_is_active((*C.GVfs)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ParseName is a wrapper around the C function g_vfs_parse_name.
-func (recv *Vfs) ParseName(parseName string) *File {
-	c_parse_name := C.CString(parseName)
-	defer C.free(unsafe.Pointer(c_parse_name))
-
-	retC := C.g_vfs_parse_name((*C.GVfs)(recv.native), c_parse_name)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_vfs_parse_name
 
 // VolumeMonitor is a wrapper around the C record GVolumeMonitor.
 type VolumeMonitor struct {
@@ -8035,69 +5475,19 @@ func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data 
 	callback(volume)
 }
 
-// VolumeMonitorAdoptOrphanMount is a wrapper around the C function g_volume_monitor_adopt_orphan_mount.
-func VolumeMonitorAdoptOrphanMount(mount *Mount) *Volume {
-	c_mount := (*C.GMount)(mount.ToC())
+// Blacklisted : g_volume_monitor_adopt_orphan_mount
 
-	retC := C.g_volume_monitor_adopt_orphan_mount(c_mount)
-	retGo := VolumeNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_volume_monitor_get
 
-	return retGo
-}
+// Blacklisted : g_volume_monitor_get_connected_drives
 
-// VolumeMonitorGet is a wrapper around the C function g_volume_monitor_get.
-func VolumeMonitorGet() *VolumeMonitor {
-	retC := C.g_volume_monitor_get()
-	retGo := VolumeMonitorNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_volume_monitor_get_mount_for_uuid
 
-	return retGo
-}
+// Blacklisted : g_volume_monitor_get_mounts
 
-// GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
-func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
-	retC := C.g_volume_monitor_get_connected_drives((*C.GVolumeMonitor)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_volume_monitor_get_volume_for_uuid
 
-	return retGo
-}
-
-// GetMountForUuid is a wrapper around the C function g_volume_monitor_get_mount_for_uuid.
-func (recv *VolumeMonitor) GetMountForUuid(uuid string) *Mount {
-	c_uuid := C.CString(uuid)
-	defer C.free(unsafe.Pointer(c_uuid))
-
-	retC := C.g_volume_monitor_get_mount_for_uuid((*C.GVolumeMonitor)(recv.native), c_uuid)
-	retGo := MountNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetMounts is a wrapper around the C function g_volume_monitor_get_mounts.
-func (recv *VolumeMonitor) GetMounts() *glib.List {
-	retC := C.g_volume_monitor_get_mounts((*C.GVolumeMonitor)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetVolumeForUuid is a wrapper around the C function g_volume_monitor_get_volume_for_uuid.
-func (recv *VolumeMonitor) GetVolumeForUuid(uuid string) *Volume {
-	c_uuid := C.CString(uuid)
-	defer C.free(unsafe.Pointer(c_uuid))
-
-	retC := C.g_volume_monitor_get_volume_for_uuid((*C.GVolumeMonitor)(recv.native), c_uuid)
-	retGo := VolumeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetVolumes is a wrapper around the C function g_volume_monitor_get_volumes.
-func (recv *VolumeMonitor) GetVolumes() *glib.List {
-	retC := C.g_volume_monitor_get_volumes((*C.GVolumeMonitor)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_volume_monitor_get_volumes
 
 // ZlibCompressor is a wrapper around the C record GZlibCompressor.
 type ZlibCompressor struct {

@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -84,30 +83,9 @@ import (
 */
 import "C"
 
-// GetHelpOverlay is a wrapper around the C function gtk_application_window_get_help_overlay.
-func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
-	retC := C.gtk_application_window_get_help_overlay((*C.GtkApplicationWindow)(recv.native))
-	var retGo (*ShortcutsWindow)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = ShortcutsWindowNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_application_window_get_help_overlay
 
-	return retGo
-}
-
-// SetHelpOverlay is a wrapper around the C function gtk_application_window_set_help_overlay.
-func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
-	c_help_overlay := (*C.GtkShortcutsWindow)(C.NULL)
-	if helpOverlay != nil {
-		c_help_overlay = (*C.GtkShortcutsWindow)(helpOverlay.ToC())
-	}
-
-	C.gtk_application_window_set_help_overlay((*C.GtkApplicationWindow)(recv.native), c_help_overlay)
-
-	return
-}
+// Blacklisted : gtk_application_window_set_help_overlay
 
 // FileChooserNative is a wrapper around the C record GtkFileChooserNative.
 type FileChooserNative struct {
@@ -161,69 +139,15 @@ func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
 	return FileChooserNativeNewFromC(object.ToC())
 }
 
-// FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
-func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
+// Blacklisted : gtk_file_chooser_native_new
 
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
+// Blacklisted : gtk_file_chooser_native_get_accept_label
 
-	c_action := (C.GtkFileChooserAction)(action)
+// Blacklisted : gtk_file_chooser_native_get_cancel_label
 
-	c_accept_label := C.CString(acceptLabel)
-	defer C.free(unsafe.Pointer(c_accept_label))
+// Blacklisted : gtk_file_chooser_native_set_accept_label
 
-	c_cancel_label := C.CString(cancelLabel)
-	defer C.free(unsafe.Pointer(c_cancel_label))
-
-	retC := C.gtk_file_chooser_native_new(c_title, c_parent, c_action, c_accept_label, c_cancel_label)
-	retGo := FileChooserNativeNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetAcceptLabel is a wrapper around the C function gtk_file_chooser_native_get_accept_label.
-func (recv *FileChooserNative) GetAcceptLabel() string {
-	retC := C.gtk_file_chooser_native_get_accept_label((*C.GtkFileChooserNative)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetCancelLabel is a wrapper around the C function gtk_file_chooser_native_get_cancel_label.
-func (recv *FileChooserNative) GetCancelLabel() string {
-	retC := C.gtk_file_chooser_native_get_cancel_label((*C.GtkFileChooserNative)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// SetAcceptLabel is a wrapper around the C function gtk_file_chooser_native_set_accept_label.
-func (recv *FileChooserNative) SetAcceptLabel(acceptLabel string) {
-	c_accept_label := C.CString(acceptLabel)
-	defer C.free(unsafe.Pointer(c_accept_label))
-
-	C.gtk_file_chooser_native_set_accept_label((*C.GtkFileChooserNative)(recv.native), c_accept_label)
-
-	return
-}
-
-// SetCancelLabel is a wrapper around the C function gtk_file_chooser_native_set_cancel_label.
-func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
-	c_cancel_label := C.CString(cancelLabel)
-	defer C.free(unsafe.Pointer(c_cancel_label))
-
-	C.gtk_file_chooser_native_set_cancel_label((*C.GtkFileChooserNative)(recv.native), c_cancel_label)
-
-	return
-}
+// Blacklisted : gtk_file_chooser_native_set_cancel_label
 
 // NativeDialog is a wrapper around the C record GtkNativeDialog.
 type NativeDialog struct {
@@ -342,13 +266,7 @@ func (recv *NativeDialog) Destroy() {
 	return
 }
 
-// GetModal is a wrapper around the C function gtk_native_dialog_get_modal.
-func (recv *NativeDialog) GetModal() bool {
-	retC := C.gtk_native_dialog_get_modal((*C.GtkNativeDialog)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_native_dialog_get_modal
 
 // GetTitle is a wrapper around the C function gtk_native_dialog_get_title.
 func (recv *NativeDialog) GetTitle() string {
@@ -358,51 +276,15 @@ func (recv *NativeDialog) GetTitle() string {
 	return retGo
 }
 
-// GetTransientFor is a wrapper around the C function gtk_native_dialog_get_transient_for.
-func (recv *NativeDialog) GetTransientFor() *Window {
-	retC := C.gtk_native_dialog_get_transient_for((*C.GtkNativeDialog)(recv.native))
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gtk_native_dialog_get_transient_for
 
-	return retGo
-}
+// Blacklisted : gtk_native_dialog_get_visible
 
-// GetVisible is a wrapper around the C function gtk_native_dialog_get_visible.
-func (recv *NativeDialog) GetVisible() bool {
-	retC := C.gtk_native_dialog_get_visible((*C.GtkNativeDialog)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_native_dialog_hide
 
-	return retGo
-}
+// Blacklisted : gtk_native_dialog_run
 
-// Hide is a wrapper around the C function gtk_native_dialog_hide.
-func (recv *NativeDialog) Hide() {
-	C.gtk_native_dialog_hide((*C.GtkNativeDialog)(recv.native))
-
-	return
-}
-
-// Run is a wrapper around the C function gtk_native_dialog_run.
-func (recv *NativeDialog) Run() int32 {
-	retC := C.gtk_native_dialog_run((*C.GtkNativeDialog)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// SetModal is a wrapper around the C function gtk_native_dialog_set_modal.
-func (recv *NativeDialog) SetModal(modal bool) {
-	c_modal :=
-		boolToGboolean(modal)
-
-	C.gtk_native_dialog_set_modal((*C.GtkNativeDialog)(recv.native), c_modal)
-
-	return
-}
+// Blacklisted : gtk_native_dialog_set_modal
 
 // SetTitle is a wrapper around the C function gtk_native_dialog_set_title.
 func (recv *NativeDialog) SetTitle(title string) {
@@ -414,24 +296,9 @@ func (recv *NativeDialog) SetTitle(title string) {
 	return
 }
 
-// SetTransientFor is a wrapper around the C function gtk_native_dialog_set_transient_for.
-func (recv *NativeDialog) SetTransientFor(parent *Window) {
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
+// Blacklisted : gtk_native_dialog_set_transient_for
 
-	C.gtk_native_dialog_set_transient_for((*C.GtkNativeDialog)(recv.native), c_parent)
-
-	return
-}
-
-// Show is a wrapper around the C function gtk_native_dialog_show.
-func (recv *NativeDialog) Show() {
-	C.gtk_native_dialog_show((*C.GtkNativeDialog)(recv.native))
-
-	return
-}
+// Blacklisted : gtk_native_dialog_show
 
 // PadController is a wrapper around the C record GtkPadController.
 type PadController struct {
@@ -671,32 +538,11 @@ func placessidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOpera
 	callback(mountOperation)
 }
 
-// GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
-func (recv *Popover) GetConstrainTo() PopoverConstraint {
-	retC := C.gtk_popover_get_constrain_to((*C.GtkPopover)(recv.native))
-	retGo := (PopoverConstraint)(retC)
+// Blacklisted : gtk_popover_get_constrain_to
 
-	return retGo
-}
+// Blacklisted : gtk_popover_set_constrain_to
 
-// SetConstrainTo is a wrapper around the C function gtk_popover_set_constrain_to.
-func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
-	c_constraint := (C.GtkPopoverConstraint)(constraint)
-
-	C.gtk_popover_set_constrain_to((*C.GtkPopover)(recv.native), c_constraint)
-
-	return
-}
-
-// ResetProperty is a wrapper around the C function gtk_settings_reset_property.
-func (recv *Settings) ResetProperty(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.gtk_settings_reset_property((*C.GtkSettings)(recv.native), c_name)
-
-	return
-}
+// Blacklisted : gtk_settings_reset_property
 
 // ShortcutLabel is a wrapper around the C record GtkShortcutLabel.
 type ShortcutLabel struct {
@@ -1224,70 +1070,16 @@ func shortcutswindow_searchHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ToString is a wrapper around the C function gtk_style_context_to_string.
-func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
-	c_flags := (C.GtkStyleContextPrintFlags)(flags)
+// Blacklisted : gtk_style_context_to_string
 
-	retC := C.gtk_style_context_to_string((*C.GtkStyleContext)(recv.native), c_flags)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_text_tag_changed
 
-	return retGo
-}
+// Blacklisted : gtk_text_view_reset_cursor_blink
 
-// Changed is a wrapper around the C function gtk_text_tag_changed.
-func (recv *TextTag) Changed(sizeChanged bool) {
-	c_size_changed :=
-		boolToGboolean(sizeChanged)
+// Blacklisted : gtk_widget_get_allocated_size
 
-	C.gtk_text_tag_changed((*C.GtkTextTag)(recv.native), c_size_changed)
+// Blacklisted : gtk_widget_get_focus_on_click
 
-	return
-}
+// Blacklisted : gtk_widget_queue_allocate
 
-// ResetCursorBlink is a wrapper around the C function gtk_text_view_reset_cursor_blink.
-func (recv *TextView) ResetCursorBlink() {
-	C.gtk_text_view_reset_cursor_blink((*C.GtkTextView)(recv.native))
-
-	return
-}
-
-// GetAllocatedSize is a wrapper around the C function gtk_widget_get_allocated_size.
-func (recv *Widget) GetAllocatedSize() (*gdk.Rectangle, int32) {
-	var c_allocation C.GdkRectangle
-
-	var c_baseline C.int
-
-	C.gtk_widget_get_allocated_size((*C.GtkWidget)(recv.native), &c_allocation, &c_baseline)
-
-	allocation := gdk.RectangleNewFromC(unsafe.Pointer(&c_allocation))
-
-	baseline := (int32)(c_baseline)
-
-	return allocation, baseline
-}
-
-// GetFocusOnClick is a wrapper around the C function gtk_widget_get_focus_on_click.
-func (recv *Widget) GetFocusOnClick() bool {
-	retC := C.gtk_widget_get_focus_on_click((*C.GtkWidget)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// QueueAllocate is a wrapper around the C function gtk_widget_queue_allocate.
-func (recv *Widget) QueueAllocate() {
-	C.gtk_widget_queue_allocate((*C.GtkWidget)(recv.native))
-
-	return
-}
-
-// SetFocusOnClick is a wrapper around the C function gtk_widget_set_focus_on_click.
-func (recv *Widget) SetFocusOnClick(focusOnClick bool) {
-	c_focus_on_click :=
-		boolToGboolean(focusOnClick)
-
-	C.gtk_widget_set_focus_on_click((*C.GtkWidget)(recv.native), c_focus_on_click)
-
-	return
-}
+// Blacklisted : gtk_widget_set_focus_on_click

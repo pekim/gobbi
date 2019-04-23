@@ -12,10 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// IsEmpty is a wrapper around the C function g_sequence_is_empty.
-func (recv *Sequence) IsEmpty() bool {
-	retC := C.g_sequence_is_empty((*C.GSequence)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_sequence_is_empty

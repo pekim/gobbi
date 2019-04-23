@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,23 +12,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// DragSetIconName is a wrapper around the C function gtk_drag_set_icon_name.
-func DragSetIconName(context *gdk.DragContext, iconName string, hotX int32, hotY int32) {
-	c_context := (*C.GdkDragContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GdkDragContext)(context.ToC())
-	}
-
-	c_icon_name := C.CString(iconName)
-	defer C.free(unsafe.Pointer(c_icon_name))
-
-	c_hot_x := (C.gint)(hotX)
-
-	c_hot_y := (C.gint)(hotY)
-
-	C.gtk_drag_set_icon_name(c_context, c_icon_name, c_hot_x, c_hot_y)
-
-	return
-}
+// Blacklisted : gtk_drag_set_icon_name
 
 // Unsupported : gtk_stock_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GtkTranslateFunc) for param func

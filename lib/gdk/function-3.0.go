@@ -3,8 +3,6 @@
 
 package gdk
 
-import cairo "github.com/pekim/gobbi/lib/cairo"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,36 +10,11 @@ import cairo "github.com/pekim/gobbi/lib/cairo"
 // #include <stdlib.h>
 import "C"
 
-// CairoSetSourceRgba is a wrapper around the C function gdk_cairo_set_source_rgba.
-func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
-	c_cr := (*C.cairo_t)(C.NULL)
-	if cr != nil {
-		c_cr = (*C.cairo_t)(cr.ToC())
-	}
+// Blacklisted : gdk_cairo_set_source_rgba
 
-	c_rgba := (*C.GdkRGBA)(C.NULL)
-	if rgba != nil {
-		c_rgba = (*C.GdkRGBA)(rgba.ToC())
-	}
+// Blacklisted : gdk_disable_multidevice
 
-	C.gdk_cairo_set_source_rgba(c_cr, c_rgba)
-
-	return
-}
-
-// DisableMultidevice is a wrapper around the C function gdk_disable_multidevice.
-func DisableMultidevice() {
-	C.gdk_disable_multidevice()
-
-	return
-}
-
-// ErrorTrapPopIgnored is a wrapper around the C function gdk_error_trap_pop_ignored.
-func ErrorTrapPopIgnored() {
-	C.gdk_error_trap_pop_ignored()
-
-	return
-}
+// Blacklisted : gdk_error_trap_pop_ignored
 
 // Unsupported : gdk_events_get_angle : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 

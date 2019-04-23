@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -24,15 +22,4 @@ func (recv *Attribute) Init(klass *AttrClass) {
 	return
 }
 
-// Copy is a wrapper around the C function pango_glyph_item_copy.
-func (recv *GlyphItem) Copy() *GlyphItem {
-	retC := C.pango_glyph_item_copy((*C.PangoGlyphItem)(recv.native))
-	var retGo (*GlyphItem)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = GlyphItemNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : pango_glyph_item_copy

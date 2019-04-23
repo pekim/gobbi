@@ -66,87 +66,9 @@ import "C"
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CallWithUnixFdListFinish is a wrapper around the C function g_dbus_connection_call_with_unix_fd_list_finish.
-func (recv *DBusConnection) CallWithUnixFdListFinish(res *AsyncResult) (*glib.Variant, *UnixFDList, error) {
-	var c_out_fd_list *C.GUnixFDList
+// Blacklisted : g_dbus_connection_call_with_unix_fd_list_finish
 
-	c_res := (*C.GAsyncResult)(res.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_connection_call_with_unix_fd_list_finish((*C.GDBusConnection)(recv.native), &c_out_fd_list, c_res, &cThrowableError)
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
-
-	return retGo, outFdList, goError
-}
-
-// CallWithUnixFdListSync is a wrapper around the C function g_dbus_connection_call_with_unix_fd_list_sync.
-func (recv *DBusConnection) CallWithUnixFdListSync(busName string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, replyType *glib.VariantType, flags DBusCallFlags, timeoutMsec int32, fdList *UnixFDList, cancellable *Cancellable) (*glib.Variant, *UnixFDList, error) {
-	c_bus_name := C.CString(busName)
-	defer C.free(unsafe.Pointer(c_bus_name))
-
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	c_interface_name := C.CString(interfaceName)
-	defer C.free(unsafe.Pointer(c_interface_name))
-
-	c_method_name := C.CString(methodName)
-	defer C.free(unsafe.Pointer(c_method_name))
-
-	c_parameters := (*C.GVariant)(C.NULL)
-	if parameters != nil {
-		c_parameters = (*C.GVariant)(parameters.ToC())
-	}
-
-	c_reply_type := (*C.GVariantType)(C.NULL)
-	if replyType != nil {
-		c_reply_type = (*C.GVariantType)(replyType.ToC())
-	}
-
-	c_flags := (C.GDBusCallFlags)(flags)
-
-	c_timeout_msec := (C.gint)(timeoutMsec)
-
-	c_fd_list := (*C.GUnixFDList)(C.NULL)
-	if fdList != nil {
-		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
-	}
-
-	var c_out_fd_list *C.GUnixFDList
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_connection_call_with_unix_fd_list_sync((*C.GDBusConnection)(recv.native), c_bus_name, c_object_path, c_interface_name, c_method_name, c_parameters, c_reply_type, c_flags, c_timeout_msec, c_fd_list, &c_out_fd_list, c_cancellable, &cThrowableError)
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
-
-	return retGo, outFdList, goError
-}
+// Blacklisted : g_dbus_connection_call_with_unix_fd_list_sync
 
 // DBusInterfaceSkeleton is a wrapper around the C record GDBusInterfaceSkeleton.
 type DBusInterfaceSkeleton struct {
@@ -262,31 +184,7 @@ func dbusinterfaceskeleton_gAuthorizeMethodHandler(_ *C.GObject, c_invocation *C
 	return retC
 }
 
-// Export is a wrapper around the C function g_dbus_interface_skeleton_export.
-func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_interface_skeleton_export((*C.GDBusInterfaceSkeleton)(recv.native), c_connection, c_object_path, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dbus_interface_skeleton_export
 
 // Flush is a wrapper around the C function g_dbus_interface_skeleton_flush.
 func (recv *DBusInterfaceSkeleton) Flush() {
@@ -295,98 +193,25 @@ func (recv *DBusInterfaceSkeleton) Flush() {
 	return
 }
 
-// GetConnection is a wrapper around the C function g_dbus_interface_skeleton_get_connection.
-func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
-	retC := C.g_dbus_interface_skeleton_get_connection((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_interface_skeleton_get_connection
 
-	return retGo
-}
+// Blacklisted : g_dbus_interface_skeleton_get_flags
 
-// GetFlags is a wrapper around the C function g_dbus_interface_skeleton_get_flags.
-func (recv *DBusInterfaceSkeleton) GetFlags() DBusInterfaceSkeletonFlags {
-	retC := C.g_dbus_interface_skeleton_get_flags((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := (DBusInterfaceSkeletonFlags)(retC)
+// Blacklisted : g_dbus_interface_skeleton_get_info
 
-	return retGo
-}
+// Blacklisted : g_dbus_interface_skeleton_get_object_path
 
-// GetInfo is a wrapper around the C function g_dbus_interface_skeleton_get_info.
-func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
-	retC := C.g_dbus_interface_skeleton_get_info((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_interface_skeleton_get_properties
 
-	return retGo
-}
+// Blacklisted : g_dbus_interface_skeleton_get_vtable
 
-// GetObjectPath is a wrapper around the C function g_dbus_interface_skeleton_get_object_path.
-func (recv *DBusInterfaceSkeleton) GetObjectPath() string {
-	retC := C.g_dbus_interface_skeleton_get_object_path((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_dbus_interface_skeleton_set_flags
 
-	return retGo
-}
+// Blacklisted : g_dbus_interface_skeleton_unexport
 
-// GetProperties is a wrapper around the C function g_dbus_interface_skeleton_get_properties.
-func (recv *DBusInterfaceSkeleton) GetProperties() *glib.Variant {
-	retC := C.g_dbus_interface_skeleton_get_properties((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_method_invocation_return_value_with_unix_fd_list
 
-	return retGo
-}
-
-// GetVtable is a wrapper around the C function g_dbus_interface_skeleton_get_vtable.
-func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
-	retC := C.g_dbus_interface_skeleton_get_vtable((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := DBusInterfaceVTableNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SetFlags is a wrapper around the C function g_dbus_interface_skeleton_set_flags.
-func (recv *DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
-	c_flags := (C.GDBusInterfaceSkeletonFlags)(flags)
-
-	C.g_dbus_interface_skeleton_set_flags((*C.GDBusInterfaceSkeleton)(recv.native), c_flags)
-
-	return
-}
-
-// Unexport is a wrapper around the C function g_dbus_interface_skeleton_unexport.
-func (recv *DBusInterfaceSkeleton) Unexport() {
-	C.g_dbus_interface_skeleton_unexport((*C.GDBusInterfaceSkeleton)(recv.native))
-
-	return
-}
-
-// ReturnValueWithUnixFdList is a wrapper around the C function g_dbus_method_invocation_return_value_with_unix_fd_list.
-func (recv *DBusMethodInvocation) ReturnValueWithUnixFdList(parameters *glib.Variant, fdList *UnixFDList) {
-	c_parameters := (*C.GVariant)(C.NULL)
-	if parameters != nil {
-		c_parameters = (*C.GVariant)(parameters.ToC())
-	}
-
-	c_fd_list := (*C.GUnixFDList)(C.NULL)
-	if fdList != nil {
-		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
-	}
-
-	C.g_dbus_method_invocation_return_value_with_unix_fd_list((*C.GDBusMethodInvocation)(recv.native), c_parameters, c_fd_list)
-
-	return
-}
-
-// TakeError is a wrapper around the C function g_dbus_method_invocation_take_error.
-func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	C.g_dbus_method_invocation_take_error((*C.GDBusMethodInvocation)(recv.native), c_error)
-
-	return
-}
+// Blacklisted : g_dbus_method_invocation_take_error
 
 // DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
 type DBusObjectManagerClient struct {
@@ -509,53 +334,9 @@ func dbusobjectmanagerclient_interfaceProxySignalHandler(_ *C.GObject, c_object_
 	callback(objectProxy, interfaceProxy, senderName, signalName, parameters)
 }
 
-// DBusObjectManagerClientNewFinish is a wrapper around the C function g_dbus_object_manager_client_new_finish.
-func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
-	c_res := (*C.GAsyncResult)(res.ToC())
+// Blacklisted : g_dbus_object_manager_client_new_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
-	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// DBusObjectManagerClientNewForBusFinish is a wrapper around the C function g_dbus_object_manager_client_new_for_bus_finish.
-func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
-	c_res := (*C.GAsyncResult)(res.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
-	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_dbus_object_manager_client_new_for_bus_finish
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
@@ -563,38 +344,13 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 
 // g_dbus_object_manager_client_new : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 // g_dbus_object_manager_client_new_for_bus : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-// GetConnection is a wrapper around the C function g_dbus_object_manager_client_get_connection.
-func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
-	retC := C.g_dbus_object_manager_client_get_connection((*C.GDBusObjectManagerClient)(recv.native))
-	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_object_manager_client_get_connection
 
-	return retGo
-}
+// Blacklisted : g_dbus_object_manager_client_get_flags
 
-// GetFlags is a wrapper around the C function g_dbus_object_manager_client_get_flags.
-func (recv *DBusObjectManagerClient) GetFlags() DBusObjectManagerClientFlags {
-	retC := C.g_dbus_object_manager_client_get_flags((*C.GDBusObjectManagerClient)(recv.native))
-	retGo := (DBusObjectManagerClientFlags)(retC)
+// Blacklisted : g_dbus_object_manager_client_get_name
 
-	return retGo
-}
-
-// GetName is a wrapper around the C function g_dbus_object_manager_client_get_name.
-func (recv *DBusObjectManagerClient) GetName() string {
-	retC := C.g_dbus_object_manager_client_get_name((*C.GDBusObjectManagerClient)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetNameOwner is a wrapper around the C function g_dbus_object_manager_client_get_name_owner.
-func (recv *DBusObjectManagerClient) GetNameOwner() string {
-	retC := C.g_dbus_object_manager_client_get_name_owner((*C.GDBusObjectManagerClient)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_dbus_object_manager_client_get_name_owner
 
 // DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
 type DBusObjectManagerServer struct {
@@ -645,75 +401,17 @@ func CastToDBusObjectManagerServer(object *gobject.Object) *DBusObjectManagerSer
 	return DBusObjectManagerServerNewFromC(object.ToC())
 }
 
-// DBusObjectManagerServerNew is a wrapper around the C function g_dbus_object_manager_server_new.
-func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
+// Blacklisted : g_dbus_object_manager_server_new
 
-	retC := C.g_dbus_object_manager_server_new(c_object_path)
-	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_object_manager_server_export
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_dbus_object_manager_server_export_uniquely
 
-	return retGo
-}
+// Blacklisted : g_dbus_object_manager_server_get_connection
 
-// Export is a wrapper around the C function g_dbus_object_manager_server_export.
-func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
-	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
-	if object != nil {
-		c_object = (*C.GDBusObjectSkeleton)(object.ToC())
-	}
+// Blacklisted : g_dbus_object_manager_server_set_connection
 
-	C.g_dbus_object_manager_server_export((*C.GDBusObjectManagerServer)(recv.native), c_object)
-
-	return
-}
-
-// ExportUniquely is a wrapper around the C function g_dbus_object_manager_server_export_uniquely.
-func (recv *DBusObjectManagerServer) ExportUniquely(object *DBusObjectSkeleton) {
-	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
-	if object != nil {
-		c_object = (*C.GDBusObjectSkeleton)(object.ToC())
-	}
-
-	C.g_dbus_object_manager_server_export_uniquely((*C.GDBusObjectManagerServer)(recv.native), c_object)
-
-	return
-}
-
-// GetConnection is a wrapper around the C function g_dbus_object_manager_server_get_connection.
-func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
-	retC := C.g_dbus_object_manager_server_get_connection((*C.GDBusObjectManagerServer)(recv.native))
-	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SetConnection is a wrapper around the C function g_dbus_object_manager_server_set_connection.
-func (recv *DBusObjectManagerServer) SetConnection(connection *DBusConnection) {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	C.g_dbus_object_manager_server_set_connection((*C.GDBusObjectManagerServer)(recv.native), c_connection)
-
-	return
-}
-
-// Unexport is a wrapper around the C function g_dbus_object_manager_server_unexport.
-func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_object_manager_server_unexport((*C.GDBusObjectManagerServer)(recv.native), c_object_path)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_dbus_object_manager_server_unexport
 
 // DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
 type DBusObjectProxy struct {
@@ -764,33 +462,9 @@ func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
 	return DBusObjectProxyNewFromC(object.ToC())
 }
 
-// DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
-func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
+// Blacklisted : g_dbus_object_proxy_new
 
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
-	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetConnection is a wrapper around the C function g_dbus_object_proxy_get_connection.
-func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
-	retC := C.g_dbus_object_proxy_get_connection((*C.GDBusObjectProxy)(recv.native))
-	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_dbus_object_proxy_get_connection
 
 // DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
 type DBusObjectSkeleton struct {
@@ -908,32 +582,9 @@ func dbusobjectskeleton_authorizeMethodHandler(_ *C.GObject, c_interface *C.GDBu
 	return retC
 }
 
-// DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
-func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
+// Blacklisted : g_dbus_object_skeleton_new
 
-	retC := C.g_dbus_object_skeleton_new(c_object_path)
-	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// AddInterface is a wrapper around the C function g_dbus_object_skeleton_add_interface.
-func (recv *DBusObjectSkeleton) AddInterface(interface_ *DBusInterfaceSkeleton) {
-	c_interface_ := (*C.GDBusInterfaceSkeleton)(C.NULL)
-	if interface_ != nil {
-		c_interface_ = (*C.GDBusInterfaceSkeleton)(interface_.ToC())
-	}
-
-	C.g_dbus_object_skeleton_add_interface((*C.GDBusObjectSkeleton)(recv.native), c_interface_)
-
-	return
-}
+// Blacklisted : g_dbus_object_skeleton_add_interface
 
 // Flush is a wrapper around the C function g_dbus_object_skeleton_flush.
 func (recv *DBusObjectSkeleton) Flush() {
@@ -942,216 +593,31 @@ func (recv *DBusObjectSkeleton) Flush() {
 	return
 }
 
-// RemoveInterface is a wrapper around the C function g_dbus_object_skeleton_remove_interface.
-func (recv *DBusObjectSkeleton) RemoveInterface(interface_ *DBusInterfaceSkeleton) {
-	c_interface_ := (*C.GDBusInterfaceSkeleton)(C.NULL)
-	if interface_ != nil {
-		c_interface_ = (*C.GDBusInterfaceSkeleton)(interface_.ToC())
-	}
+// Blacklisted : g_dbus_object_skeleton_remove_interface
 
-	C.g_dbus_object_skeleton_remove_interface((*C.GDBusObjectSkeleton)(recv.native), c_interface_)
+// Blacklisted : g_dbus_object_skeleton_remove_interface_by_name
 
-	return
-}
-
-// RemoveInterfaceByName is a wrapper around the C function g_dbus_object_skeleton_remove_interface_by_name.
-func (recv *DBusObjectSkeleton) RemoveInterfaceByName(interfaceName string) {
-	c_interface_name := C.CString(interfaceName)
-	defer C.free(unsafe.Pointer(c_interface_name))
-
-	C.g_dbus_object_skeleton_remove_interface_by_name((*C.GDBusObjectSkeleton)(recv.native), c_interface_name)
-
-	return
-}
-
-// SetObjectPath is a wrapper around the C function g_dbus_object_skeleton_set_object_path.
-func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	C.g_dbus_object_skeleton_set_object_path((*C.GDBusObjectSkeleton)(recv.native), c_object_path)
-
-	return
-}
+// Blacklisted : g_dbus_object_skeleton_set_object_path
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CallWithUnixFdListFinish is a wrapper around the C function g_dbus_proxy_call_with_unix_fd_list_finish.
-func (recv *DBusProxy) CallWithUnixFdListFinish(res *AsyncResult) (*glib.Variant, *UnixFDList, error) {
-	var c_out_fd_list *C.GUnixFDList
+// Blacklisted : g_dbus_proxy_call_with_unix_fd_list_finish
 
-	c_res := (*C.GAsyncResult)(res.ToC())
+// Blacklisted : g_dbus_proxy_call_with_unix_fd_list_sync
 
-	var cThrowableError *C.GError
+// Blacklisted : g_data_input_stream_read_line_finish_utf8
 
-	retC := C.g_dbus_proxy_call_with_unix_fd_list_finish((*C.GDBusProxy)(recv.native), &c_out_fd_list, c_res, &cThrowableError)
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_data_input_stream_read_line_utf8
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_desktop_app_info_get_nodisplay
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_desktop_app_info_get_show_in
 
-	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
+// Blacklisted : g_inet_address_equal
 
-	return retGo, outFdList, goError
-}
+// Blacklisted : g_settings_get_uint
 
-// CallWithUnixFdListSync is a wrapper around the C function g_dbus_proxy_call_with_unix_fd_list_sync.
-func (recv *DBusProxy) CallWithUnixFdListSync(methodName string, parameters *glib.Variant, flags DBusCallFlags, timeoutMsec int32, fdList *UnixFDList, cancellable *Cancellable) (*glib.Variant, *UnixFDList, error) {
-	c_method_name := C.CString(methodName)
-	defer C.free(unsafe.Pointer(c_method_name))
-
-	c_parameters := (*C.GVariant)(C.NULL)
-	if parameters != nil {
-		c_parameters = (*C.GVariant)(parameters.ToC())
-	}
-
-	c_flags := (C.GDBusCallFlags)(flags)
-
-	c_timeout_msec := (C.gint)(timeoutMsec)
-
-	c_fd_list := (*C.GUnixFDList)(C.NULL)
-	if fdList != nil {
-		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
-	}
-
-	var c_out_fd_list *C.GUnixFDList
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_proxy_call_with_unix_fd_list_sync((*C.GDBusProxy)(recv.native), c_method_name, c_parameters, c_flags, c_timeout_msec, c_fd_list, &c_out_fd_list, c_cancellable, &cThrowableError)
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
-
-	return retGo, outFdList, goError
-}
-
-// ReadLineFinishUtf8 is a wrapper around the C function g_data_input_stream_read_line_finish_utf8.
-func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, uint64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var c_length C.gsize
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_line_finish_utf8((*C.GDataInputStream)(recv.native), c_result, &c_length, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	length := (uint64)(c_length)
-
-	return retGo, length, goError
-}
-
-// ReadLineUtf8 is a wrapper around the C function g_data_input_stream_read_line_utf8.
-func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64, error) {
-	var c_length C.gsize
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_line_utf8((*C.GDataInputStream)(recv.native), &c_length, c_cancellable, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	length := (uint64)(c_length)
-
-	return retGo, length, goError
-}
-
-// GetNodisplay is a wrapper around the C function g_desktop_app_info_get_nodisplay.
-func (recv *DesktopAppInfo) GetNodisplay() bool {
-	retC := C.g_desktop_app_info_get_nodisplay((*C.GDesktopAppInfo)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetShowIn is a wrapper around the C function g_desktop_app_info_get_show_in.
-func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
-	c_desktop_env := C.CString(desktopEnv)
-	defer C.free(unsafe.Pointer(c_desktop_env))
-
-	retC := C.g_desktop_app_info_get_show_in((*C.GDesktopAppInfo)(recv.native), c_desktop_env)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Equal is a wrapper around the C function g_inet_address_equal.
-func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
-	c_other_address := (*C.GInetAddress)(C.NULL)
-	if otherAddress != nil {
-		c_other_address = (*C.GInetAddress)(otherAddress.ToC())
-	}
-
-	retC := C.g_inet_address_equal((*C.GInetAddress)(recv.native), c_other_address)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetUint is a wrapper around the C function g_settings_get_uint.
-func (recv *Settings) GetUint(key string) uint32 {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	retC := C.g_settings_get_uint((*C.GSettings)(recv.native), c_key)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// SetUint is a wrapper around the C function g_settings_set_uint.
-func (recv *Settings) SetUint(key string, value uint32) bool {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	c_value := (C.guint)(value)
-
-	retC := C.g_settings_set_uint((*C.GSettings)(recv.native), c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_settings_set_uint
 
 type signalSimpleActionChangeStateDetail struct {
 	callback  SimpleActionSignalChangeStateCallback
@@ -1215,59 +681,17 @@ func simpleaction_changeStateHandler(_ *C.GObject, c_value *C.GVariant, data C.g
 	callback(value)
 }
 
-// SetState is a wrapper around the C function g_simple_action_set_state.
-func (recv *SimpleAction) SetState(value *glib.Variant) {
-	c_value := (*C.GVariant)(C.NULL)
-	if value != nil {
-		c_value = (*C.GVariant)(value.ToC())
-	}
-
-	C.g_simple_action_set_state((*C.GSimpleAction)(recv.native), c_value)
-
-	return
-}
+// Blacklisted : g_simple_action_set_state
 
 // Unsupported : g_simple_action_group_add_entries : unsupported parameter entries :
 
-// GetDatabase is a wrapper around the C function g_tls_connection_get_database.
-func (recv *TlsConnection) GetDatabase() *TlsDatabase {
-	retC := C.g_tls_connection_get_database((*C.GTlsConnection)(recv.native))
-	retGo := TlsDatabaseNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_tls_connection_get_database
 
-	return retGo
-}
+// Blacklisted : g_tls_connection_get_interaction
 
-// GetInteraction is a wrapper around the C function g_tls_connection_get_interaction.
-func (recv *TlsConnection) GetInteraction() *TlsInteraction {
-	retC := C.g_tls_connection_get_interaction((*C.GTlsConnection)(recv.native))
-	retGo := TlsInteractionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_tls_connection_set_database
 
-	return retGo
-}
-
-// SetDatabase is a wrapper around the C function g_tls_connection_set_database.
-func (recv *TlsConnection) SetDatabase(database *TlsDatabase) {
-	c_database := (*C.GTlsDatabase)(C.NULL)
-	if database != nil {
-		c_database = (*C.GTlsDatabase)(database.ToC())
-	}
-
-	C.g_tls_connection_set_database((*C.GTlsConnection)(recv.native), c_database)
-
-	return
-}
-
-// SetInteraction is a wrapper around the C function g_tls_connection_set_interaction.
-func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
-	c_interaction := (*C.GTlsInteraction)(C.NULL)
-	if interaction != nil {
-		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
-	}
-
-	C.g_tls_connection_set_interaction((*C.GTlsConnection)(recv.native), c_interaction)
-
-	return
-}
+// Blacklisted : g_tls_connection_set_interaction
 
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
 type TlsDatabase struct {
@@ -1318,259 +742,31 @@ func CastToTlsDatabase(object *gobject.Object) *TlsDatabase {
 	return TlsDatabaseNewFromC(object.ToC())
 }
 
-// CreateCertificateHandle is a wrapper around the C function g_tls_database_create_certificate_handle.
-func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) string {
-	c_certificate := (*C.GTlsCertificate)(C.NULL)
-	if certificate != nil {
-		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
-	}
+// Blacklisted : g_tls_database_create_certificate_handle
 
-	retC := C.g_tls_database_create_certificate_handle((*C.GTlsDatabase)(recv.native), c_certificate)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LookupCertificateForHandle is a wrapper around the C function g_tls_database_lookup_certificate_for_handle.
-func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
-	c_handle := C.CString(handle)
-	defer C.free(unsafe.Pointer(c_handle))
-
-	c_interaction := (*C.GTlsInteraction)(C.NULL)
-	if interaction != nil {
-		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
-	}
-
-	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_lookup_certificate_for_handle((*C.GTlsDatabase)(recv.native), c_handle, c_interaction, c_flags, c_cancellable, &cThrowableError)
-	var retGo (*TlsCertificate)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = TlsCertificateNewFromC(unsafe.Pointer(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_database_lookup_certificate_for_handle
 
 // Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// LookupCertificateForHandleFinish is a wrapper around the C function g_tls_database_lookup_certificate_for_handle_finish.
-func (recv *TlsDatabase) LookupCertificateForHandleFinish(result *AsyncResult) (*TlsCertificate, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_tls_database_lookup_certificate_for_handle_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_lookup_certificate_for_handle_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
-	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// LookupCertificateIssuer is a wrapper around the C function g_tls_database_lookup_certificate_issuer.
-func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
-	c_certificate := (*C.GTlsCertificate)(C.NULL)
-	if certificate != nil {
-		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
-	}
-
-	c_interaction := (*C.GTlsInteraction)(C.NULL)
-	if interaction != nil {
-		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
-	}
-
-	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_lookup_certificate_issuer((*C.GTlsDatabase)(recv.native), c_certificate, c_interaction, c_flags, c_cancellable, &cThrowableError)
-	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_database_lookup_certificate_issuer
 
 // Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// LookupCertificateIssuerFinish is a wrapper around the C function g_tls_database_lookup_certificate_issuer_finish.
-func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*TlsCertificate, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_tls_database_lookup_certificate_issuer_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_lookup_certificate_issuer_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
-	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// LookupCertificatesIssuedBy is a wrapper around the C function g_tls_database_lookup_certificates_issued_by.
-func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
-	c_issuer_raw_dn_array := make([]C.guint8, len(issuerRawDn)+1, len(issuerRawDn)+1)
-	for i, item := range issuerRawDn {
-		c := (C.guint8)(item)
-		c_issuer_raw_dn_array[i] = c
-	}
-	c_issuer_raw_dn_array[len(issuerRawDn)] = 0
-	c_issuer_raw_dn_arrayPtr := &c_issuer_raw_dn_array[0]
-	c_issuer_raw_dn := (*C.GByteArray)(unsafe.Pointer(c_issuer_raw_dn_arrayPtr))
-
-	c_interaction := (*C.GTlsInteraction)(C.NULL)
-	if interaction != nil {
-		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
-	}
-
-	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_lookup_certificates_issued_by((*C.GTlsDatabase)(recv.native), c_issuer_raw_dn, c_interaction, c_flags, c_cancellable, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_database_lookup_certificates_issued_by
 
 // Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// LookupCertificatesIssuedByFinish is a wrapper around the C function g_tls_database_lookup_certificates_issued_by_finish.
-func (recv *TlsDatabase) LookupCertificatesIssuedByFinish(result *AsyncResult) (*glib.List, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_tls_database_lookup_certificates_issued_by_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_lookup_certificates_issued_by_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// VerifyChain is a wrapper around the C function g_tls_database_verify_chain.
-func (recv *TlsDatabase) VerifyChain(chain *TlsCertificate, purpose string, identity *SocketConnectable, interaction *TlsInteraction, flags TlsDatabaseVerifyFlags, cancellable *Cancellable) (TlsCertificateFlags, error) {
-	c_chain := (*C.GTlsCertificate)(C.NULL)
-	if chain != nil {
-		c_chain = (*C.GTlsCertificate)(chain.ToC())
-	}
-
-	c_purpose := C.CString(purpose)
-	defer C.free(unsafe.Pointer(c_purpose))
-
-	c_identity := (*C.GSocketConnectable)(identity.ToC())
-
-	c_interaction := (*C.GTlsInteraction)(C.NULL)
-	if interaction != nil {
-		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
-	}
-
-	c_flags := (C.GTlsDatabaseVerifyFlags)(flags)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_verify_chain((*C.GTlsDatabase)(recv.native), c_chain, c_purpose, c_identity, c_interaction, c_flags, c_cancellable, &cThrowableError)
-	retGo := (TlsCertificateFlags)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_database_verify_chain
 
 // Unsupported : g_tls_database_verify_chain_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// VerifyChainFinish is a wrapper around the C function g_tls_database_verify_chain_finish.
-func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateFlags, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_database_verify_chain_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
-	retGo := (TlsCertificateFlags)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_database_verify_chain_finish
 
 // TlsInteraction is a wrapper around the C record GTlsInteraction.
 type TlsInteraction struct {
@@ -1621,83 +817,13 @@ func CastToTlsInteraction(object *gobject.Object) *TlsInteraction {
 	return TlsInteractionNewFromC(object.ToC())
 }
 
-// AskPassword is a wrapper around the C function g_tls_interaction_ask_password.
-func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_password := (*C.GTlsPassword)(C.NULL)
-	if password != nil {
-		c_password = (*C.GTlsPassword)(password.ToC())
-	}
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_interaction_ask_password((*C.GTlsInteraction)(recv.native), c_password, c_cancellable, &cThrowableError)
-	retGo := (TlsInteractionResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_interaction_ask_password
 
 // Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// AskPasswordFinish is a wrapper around the C function g_tls_interaction_ask_password_finish.
-func (recv *TlsInteraction) AskPasswordFinish(result *AsyncResult) (TlsInteractionResult, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_tls_interaction_ask_password_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_interaction_ask_password_finish((*C.GTlsInteraction)(recv.native), c_result, &cThrowableError)
-	retGo := (TlsInteractionResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// InvokeAskPassword is a wrapper around the C function g_tls_interaction_invoke_ask_password.
-func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_password := (*C.GTlsPassword)(C.NULL)
-	if password != nil {
-		c_password = (*C.GTlsPassword)(password.ToC())
-	}
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_interaction_invoke_ask_password((*C.GTlsInteraction)(recv.native), c_password, c_cancellable, &cThrowableError)
-	retGo := (TlsInteractionResult)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_interaction_invoke_ask_password
 
 // TlsPassword is a wrapper around the C record GTlsPassword.
 type TlsPassword struct {
@@ -1748,94 +874,22 @@ func CastToTlsPassword(object *gobject.Object) *TlsPassword {
 	return TlsPasswordNewFromC(object.ToC())
 }
 
-// TlsPasswordNew is a wrapper around the C function g_tls_password_new.
-func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
-	c_flags := (C.GTlsPasswordFlags)(flags)
+// Blacklisted : g_tls_password_new
 
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
+// Blacklisted : g_tls_password_get_description
 
-	retC := C.g_tls_password_new(c_flags, c_description)
-	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetDescription is a wrapper around the C function g_tls_password_get_description.
-func (recv *TlsPassword) GetDescription() string {
-	retC := C.g_tls_password_get_description((*C.GTlsPassword)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetFlags is a wrapper around the C function g_tls_password_get_flags.
-func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
-	retC := C.g_tls_password_get_flags((*C.GTlsPassword)(recv.native))
-	retGo := (TlsPasswordFlags)(retC)
-
-	return retGo
-}
+// Blacklisted : g_tls_password_get_flags
 
 // Blacklisted : g_tls_password_get_value
 
-// GetWarning is a wrapper around the C function g_tls_password_get_warning.
-func (recv *TlsPassword) GetWarning() string {
-	retC := C.g_tls_password_get_warning((*C.GTlsPassword)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_tls_password_get_warning
 
-	return retGo
-}
+// Blacklisted : g_tls_password_set_description
 
-// SetDescription is a wrapper around the C function g_tls_password_set_description.
-func (recv *TlsPassword) SetDescription(description string) {
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
+// Blacklisted : g_tls_password_set_flags
 
-	C.g_tls_password_set_description((*C.GTlsPassword)(recv.native), c_description)
-
-	return
-}
-
-// SetFlags is a wrapper around the C function g_tls_password_set_flags.
-func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
-	c_flags := (C.GTlsPasswordFlags)(flags)
-
-	C.g_tls_password_set_flags((*C.GTlsPassword)(recv.native), c_flags)
-
-	return
-}
-
-// SetValue is a wrapper around the C function g_tls_password_set_value.
-func (recv *TlsPassword) SetValue(value []uint8) {
-	c_value_array := make([]C.guchar, len(value)+1, len(value)+1)
-	for i, item := range value {
-		c := (C.guchar)(item)
-		c_value_array[i] = c
-	}
-	c_value_array[len(value)] = 0
-	c_value_arrayPtr := &c_value_array[0]
-	c_value := (*C.guchar)(unsafe.Pointer(c_value_arrayPtr))
-
-	c_length := (C.gssize)(len(value))
-
-	C.g_tls_password_set_value((*C.GTlsPassword)(recv.native), c_value, c_length)
-
-	return
-}
+// Blacklisted : g_tls_password_set_value
 
 // Unsupported : g_tls_password_set_value_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
-// SetWarning is a wrapper around the C function g_tls_password_set_warning.
-func (recv *TlsPassword) SetWarning(warning string) {
-	c_warning := C.CString(warning)
-	defer C.free(unsafe.Pointer(c_warning))
-
-	C.g_tls_password_set_warning((*C.GTlsPassword)(recv.native), c_warning)
-
-	return
-}
+// Blacklisted : g_tls_password_set_warning

@@ -3,8 +3,6 @@
 
 package gobject
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,23 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ParamSpecGtype is a wrapper around the C function g_param_spec_gtype.
-func ParamSpecGtype(name string, nick string, blurb string, isAType Type, flags ParamFlags) *ParamSpec {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_nick := C.CString(nick)
-	defer C.free(unsafe.Pointer(c_nick))
-
-	c_blurb := C.CString(blurb)
-	defer C.free(unsafe.Pointer(c_blurb))
-
-	c_is_a_type := (C.GType)(isAType)
-
-	c_flags := (C.GParamFlags)(flags)
-
-	retC := C.g_param_spec_gtype(c_name, c_nick, c_blurb, c_is_a_type, c_flags)
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_param_spec_gtype

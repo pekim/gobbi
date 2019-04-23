@@ -10,12 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// IsZeroWidth is a wrapper around the C function pango_is_zero_width.
-func IsZeroWidth(ch rune) bool {
-	c_ch := (C.gunichar)(ch)
-
-	retC := C.pango_is_zero_width(c_ch)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : pango_is_zero_width

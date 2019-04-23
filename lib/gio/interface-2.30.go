@@ -4,8 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -81,17 +79,7 @@ import (
 */
 import "C"
 
-// ChangeState is a wrapper around the C function g_action_change_state.
-func (recv *Action) ChangeState(value *glib.Variant) {
-	c_value := (*C.GVariant)(C.NULL)
-	if value != nil {
-		c_value = (*C.GVariant)(value.ToC())
-	}
-
-	C.g_action_change_state((*C.GAction)(recv.native), c_value)
-
-	return
-}
+// Blacklisted : g_action_change_state
 
 // DBusInterface is a wrapper around the C record GDBusInterface.
 type DBusInterface struct {
@@ -119,30 +107,11 @@ func (recv *DBusInterface) Equals(other *DBusInterface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetInfo is a wrapper around the C function g_dbus_interface_get_info.
-func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
-	retC := C.g_dbus_interface_get_info((*C.GDBusInterface)(recv.native))
-	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_interface_get_info
 
-	return retGo
-}
+// Blacklisted : g_dbus_interface_get_object
 
-// GetObject is a wrapper around the C function g_dbus_interface_get_object.
-func (recv *DBusInterface) GetObject() *DBusObject {
-	retC := C.g_dbus_interface_get_object((*C.GDBusInterface)(recv.native))
-	retGo := DBusObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SetObject is a wrapper around the C function g_dbus_interface_set_object.
-func (recv *DBusInterface) SetObject(object *DBusObject) {
-	c_object := (*C.GDBusObject)(object.ToC())
-
-	C.g_dbus_interface_set_object((*C.GDBusInterface)(recv.native), c_object)
-
-	return
-}
+// Blacklisted : g_dbus_interface_set_object
 
 type signalDBusObjectInterfaceAddedDetail struct {
 	callback  DBusObjectSignalInterfaceAddedCallback
@@ -268,32 +237,11 @@ func dbusobject_interfaceRemovedHandler(_ *C.GObject, c_interface *C.GDBusInterf
 	callback(interface_)
 }
 
-// GetInterface is a wrapper around the C function g_dbus_object_get_interface.
-func (recv *DBusObject) GetInterface(interfaceName string) *DBusInterface {
-	c_interface_name := C.CString(interfaceName)
-	defer C.free(unsafe.Pointer(c_interface_name))
+// Blacklisted : g_dbus_object_get_interface
 
-	retC := C.g_dbus_object_get_interface((*C.GDBusObject)(recv.native), c_interface_name)
-	retGo := DBusInterfaceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_object_get_interfaces
 
-	return retGo
-}
-
-// GetInterfaces is a wrapper around the C function g_dbus_object_get_interfaces.
-func (recv *DBusObject) GetInterfaces() *glib.List {
-	retC := C.g_dbus_object_get_interfaces((*C.GDBusObject)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetObjectPath is a wrapper around the C function g_dbus_object_get_object_path.
-func (recv *DBusObject) GetObjectPath() string {
-	retC := C.g_dbus_object_get_object_path((*C.GDBusObject)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_dbus_object_get_object_path
 
 type signalDBusObjectManagerInterfaceAddedDetail struct {
 	callback  DBusObjectManagerSignalInterfaceAddedCallback
@@ -547,62 +495,17 @@ func dbusobjectmanager_objectRemovedHandler(_ *C.GObject, c_object *C.GDBusObjec
 	callback(object)
 }
 
-// GetInterface is a wrapper around the C function g_dbus_object_manager_get_interface.
-func (recv *DBusObjectManager) GetInterface(objectPath string, interfaceName string) *DBusInterface {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
+// Blacklisted : g_dbus_object_manager_get_interface
 
-	c_interface_name := C.CString(interfaceName)
-	defer C.free(unsafe.Pointer(c_interface_name))
+// Blacklisted : g_dbus_object_manager_get_object
 
-	retC := C.g_dbus_object_manager_get_interface((*C.GDBusObjectManager)(recv.native), c_object_path, c_interface_name)
-	retGo := DBusInterfaceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_object_manager_get_object_path
 
-	return retGo
-}
+// Blacklisted : g_dbus_object_manager_get_objects
 
-// GetObject is a wrapper around the C function g_dbus_object_manager_get_object.
-func (recv *DBusObjectManager) GetObject(objectPath string) *DBusObject {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
+// Blacklisted : g_tls_backend_get_default_database
 
-	retC := C.g_dbus_object_manager_get_object((*C.GDBusObjectManager)(recv.native), c_object_path)
-	retGo := DBusObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetObjectPath is a wrapper around the C function g_dbus_object_manager_get_object_path.
-func (recv *DBusObjectManager) GetObjectPath() string {
-	retC := C.g_dbus_object_manager_get_object_path((*C.GDBusObjectManager)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetObjects is a wrapper around the C function g_dbus_object_manager_get_objects.
-func (recv *DBusObjectManager) GetObjects() *glib.List {
-	retC := C.g_dbus_object_manager_get_objects((*C.GDBusObjectManager)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetDefaultDatabase is a wrapper around the C function g_tls_backend_get_default_database.
-func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
-	retC := C.g_tls_backend_get_default_database((*C.GTlsBackend)(recv.native))
-	retGo := TlsDatabaseNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetFileDatabaseType is a wrapper around the C function g_tls_backend_get_file_database_type.
-func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
-	retC := C.g_tls_backend_get_file_database_type((*C.GTlsBackend)(recv.native))
-	retGo := (gobject.Type)(retC)
-
-	return retGo
-}
+// Blacklisted : g_tls_backend_get_file_database_type
 
 // TlsFileDatabase is a wrapper around the C record GTlsFileDatabase.
 type TlsFileDatabase struct {
@@ -630,23 +533,4 @@ func (recv *TlsFileDatabase) Equals(other *TlsFileDatabase) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsFileDatabaseNew is a wrapper around the C function g_tls_file_database_new.
-func TlsFileDatabaseNew(anchors string) (*TlsFileDatabase, error) {
-	c_anchors := C.CString(anchors)
-	defer C.free(unsafe.Pointer(c_anchors))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_file_database_new(c_anchors, &cThrowableError)
-	retGo := TlsFileDatabaseNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_tls_file_database_new

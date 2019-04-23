@@ -14,16 +14,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// InternStaticString is a wrapper around the C function g_intern_static_string.
-func InternStaticString(string_ string) string {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
+// Blacklisted : g_hash_table_unref
 
-	retC := C.g_intern_static_string(c_string)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_intern_static_string
 
 // InternString is a wrapper around the C function g_intern_string.
 func InternString(string_ string) string {
@@ -43,3 +36,7 @@ func InternString(string_ string) string {
 // Unsupported : g_slice_free1 : unsupported parameter mem_block : no type generator for gpointer (gpointer) for param mem_block
 
 // Unsupported : g_slice_free_chain_with_offset : unsupported parameter mem_chain : no type generator for gpointer (gpointer) for param mem_chain
+
+// Blacklisted : g_thread_pool_get_max_idle_time
+
+// Blacklisted : g_thread_pool_set_max_idle_time

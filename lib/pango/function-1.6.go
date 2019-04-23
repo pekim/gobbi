@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,12 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AttrLetterSpacingNew is a wrapper around the C function pango_attr_letter_spacing_new.
-func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
-	c_letter_spacing := (C.int)(letterSpacing)
-
-	retC := C.pango_attr_letter_spacing_new(c_letter_spacing)
-	retGo := AttributeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : pango_attr_letter_spacing_new

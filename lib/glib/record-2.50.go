@@ -14,30 +14,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// LoadFromBytes is a wrapper around the C function g_key_file_load_from_bytes.
-func (recv *KeyFile) LoadFromBytes(bytes *Bytes, flags KeyFileFlags) (bool, error) {
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
-
-	c_flags := (C.GKeyFileFlags)(flags)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_key_file_load_from_bytes((*C.GKeyFile)(recv.native), c_bytes, c_flags, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_key_file_load_from_bytes
 
 // LogField is a wrapper around the C record GLogField.
 type LogField struct {

@@ -41,85 +41,21 @@ func (recv *Checksum) Equals(other *Checksum) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ChecksumNew is a wrapper around the C function g_checksum_new.
-func ChecksumNew(checksumType ChecksumType) *Checksum {
-	c_checksum_type := (C.GChecksumType)(checksumType)
+// Blacklisted : g_checksum_new
 
-	retC := C.g_checksum_new(c_checksum_type)
-	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_checksum_type_get_length
 
-	return retGo
-}
+// Blacklisted : g_checksum_copy
 
-// ChecksumTypeGetLength is a wrapper around the C function g_checksum_type_get_length.
-func ChecksumTypeGetLength(checksumType ChecksumType) int64 {
-	c_checksum_type := (C.GChecksumType)(checksumType)
+// Blacklisted : g_checksum_free
 
-	retC := C.g_checksum_type_get_length(c_checksum_type)
-	retGo := (int64)(retC)
+// Blacklisted : g_checksum_get_digest
 
-	return retGo
-}
+// Blacklisted : g_checksum_get_string
 
-// Copy is a wrapper around the C function g_checksum_copy.
-func (recv *Checksum) Copy() *Checksum {
-	retC := C.g_checksum_copy((*C.GChecksum)(recv.native))
-	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_checksum_update
 
-	return retGo
-}
-
-// Free is a wrapper around the C function g_checksum_free.
-func (recv *Checksum) Free() {
-	C.g_checksum_free((*C.GChecksum)(recv.native))
-
-	return
-}
-
-// GetDigest is a wrapper around the C function g_checksum_get_digest.
-func (recv *Checksum) GetDigest(buffer uint8, digestLen uint64) {
-	c_buffer := (C.guint8)(buffer)
-
-	c_digest_len := (C.gsize)(digestLen)
-
-	C.g_checksum_get_digest((*C.GChecksum)(recv.native), &c_buffer, &c_digest_len)
-
-	return
-}
-
-// GetString is a wrapper around the C function g_checksum_get_string.
-func (recv *Checksum) GetString() string {
-	retC := C.g_checksum_get_string((*C.GChecksum)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// Update is a wrapper around the C function g_checksum_update.
-func (recv *Checksum) Update(data []uint8) {
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (*C.guchar)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_length := (C.gssize)(len(data))
-
-	C.g_checksum_update((*C.GChecksum)(recv.native), c_data, c_length)
-
-	return
-}
-
-// GetHashTable is a wrapper around the C function g_hash_table_iter_get_hash_table.
-func (recv *HashTableIter) GetHashTable() *HashTable {
-	retC := C.g_hash_table_iter_get_hash_table((*C.GHashTableIter)(recv.native))
-	retGo := HashTableNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_hash_table_iter_get_hash_table
 
 // Init is a wrapper around the C function g_hash_table_iter_init.
 func (recv *HashTableIter) Init(hashTable *HashTable) {
@@ -135,65 +71,14 @@ func (recv *HashTableIter) Init(hashTable *HashTable) {
 
 // Unsupported : g_hash_table_iter_next : unsupported parameter key : no type generator for gpointer (gpointer*) for param key
 
-// Remove is a wrapper around the C function g_hash_table_iter_remove.
-func (recv *HashTableIter) Remove() {
-	C.g_hash_table_iter_remove((*C.GHashTableIter)(recv.native))
+// Blacklisted : g_hash_table_iter_remove
 
-	return
-}
+// Blacklisted : g_hash_table_iter_steal
 
-// Steal is a wrapper around the C function g_hash_table_iter_steal.
-func (recv *HashTableIter) Steal() {
-	C.g_hash_table_iter_steal((*C.GHashTableIter)(recv.native))
+// Blacklisted : g_markup_parse_context_get_element_stack
 
-	return
-}
+// Blacklisted : g_string_append_uri_escaped
 
-// GetElementStack is a wrapper around the C function g_markup_parse_context_get_element_stack.
-func (recv *MarkupParseContext) GetElementStack() *SList {
-	retC := C.g_markup_parse_context_get_element_stack((*C.GMarkupParseContext)(recv.native))
-	retGo := SListNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_test_suite_add
 
-	return retGo
-}
-
-// AppendUriEscaped is a wrapper around the C function g_string_append_uri_escaped.
-func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed string, allowUtf8 bool) *String {
-	c_unescaped := C.CString(unescaped)
-	defer C.free(unsafe.Pointer(c_unescaped))
-
-	c_reserved_chars_allowed := C.CString(reservedCharsAllowed)
-	defer C.free(unsafe.Pointer(c_reserved_chars_allowed))
-
-	c_allow_utf8 :=
-		boolToGboolean(allowUtf8)
-
-	retC := C.g_string_append_uri_escaped((*C.GString)(recv.native), c_unescaped, c_reserved_chars_allowed, c_allow_utf8)
-	retGo := StringNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Add is a wrapper around the C function g_test_suite_add.
-func (recv *TestSuite) Add(testCase *TestCase) {
-	c_test_case := (*C.GTestCase)(C.NULL)
-	if testCase != nil {
-		c_test_case = (*C.GTestCase)(testCase.ToC())
-	}
-
-	C.g_test_suite_add((*C.GTestSuite)(recv.native), c_test_case)
-
-	return
-}
-
-// AddSuite is a wrapper around the C function g_test_suite_add_suite.
-func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
-	c_nestedsuite := (*C.GTestSuite)(C.NULL)
-	if nestedsuite != nil {
-		c_nestedsuite = (*C.GTestSuite)(nestedsuite.ToC())
-	}
-
-	C.g_test_suite_add_suite((*C.GTestSuite)(recv.native), c_nestedsuite)
-
-	return
-}
+// Blacklisted : g_test_suite_add_suite

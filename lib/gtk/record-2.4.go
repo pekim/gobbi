@@ -12,74 +12,18 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// BackwardVisibleCursorPosition is a wrapper around the C function gtk_text_iter_backward_visible_cursor_position.
-func (recv *TextIter) BackwardVisibleCursorPosition() bool {
-	retC := C.gtk_text_iter_backward_visible_cursor_position((*C.GtkTextIter)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_text_iter_backward_visible_cursor_position
 
-	return retGo
-}
+// Blacklisted : gtk_text_iter_backward_visible_cursor_positions
 
-// BackwardVisibleCursorPositions is a wrapper around the C function gtk_text_iter_backward_visible_cursor_positions.
-func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
-	c_count := (C.gint)(count)
+// Blacklisted : gtk_text_iter_backward_visible_word_start
 
-	retC := C.gtk_text_iter_backward_visible_cursor_positions((*C.GtkTextIter)(recv.native), c_count)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_text_iter_backward_visible_word_starts
 
-	return retGo
-}
+// Blacklisted : gtk_text_iter_forward_visible_cursor_position
 
-// BackwardVisibleWordStart is a wrapper around the C function gtk_text_iter_backward_visible_word_start.
-func (recv *TextIter) BackwardVisibleWordStart() bool {
-	retC := C.gtk_text_iter_backward_visible_word_start((*C.GtkTextIter)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_text_iter_forward_visible_cursor_positions
 
-	return retGo
-}
+// Blacklisted : gtk_text_iter_forward_visible_word_end
 
-// BackwardVisibleWordStarts is a wrapper around the C function gtk_text_iter_backward_visible_word_starts.
-func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
-	c_count := (C.gint)(count)
-
-	retC := C.gtk_text_iter_backward_visible_word_starts((*C.GtkTextIter)(recv.native), c_count)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ForwardVisibleCursorPosition is a wrapper around the C function gtk_text_iter_forward_visible_cursor_position.
-func (recv *TextIter) ForwardVisibleCursorPosition() bool {
-	retC := C.gtk_text_iter_forward_visible_cursor_position((*C.GtkTextIter)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ForwardVisibleCursorPositions is a wrapper around the C function gtk_text_iter_forward_visible_cursor_positions.
-func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
-	c_count := (C.gint)(count)
-
-	retC := C.gtk_text_iter_forward_visible_cursor_positions((*C.GtkTextIter)(recv.native), c_count)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ForwardVisibleWordEnd is a wrapper around the C function gtk_text_iter_forward_visible_word_end.
-func (recv *TextIter) ForwardVisibleWordEnd() bool {
-	retC := C.gtk_text_iter_forward_visible_word_end((*C.GtkTextIter)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ForwardVisibleWordEnds is a wrapper around the C function gtk_text_iter_forward_visible_word_ends.
-func (recv *TextIter) ForwardVisibleWordEnds(count int32) bool {
-	c_count := (C.gint)(count)
-
-	retC := C.gtk_text_iter_forward_visible_word_ends((*C.GtkTextIter)(recv.native), c_count)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gtk_text_iter_forward_visible_word_ends

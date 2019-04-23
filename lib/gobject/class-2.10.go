@@ -12,36 +12,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ForceFloating is a wrapper around the C function g_object_force_floating.
-func (recv *Object) ForceFloating() {
-	C.g_object_force_floating((*C.GObject)(recv.native))
+// Blacklisted : g_object_force_floating
 
-	return
-}
+// Blacklisted : g_object_is_floating
 
-// IsFloating is a wrapper around the C function g_object_is_floating.
-func (recv *Object) IsFloating() bool {
-	retC := C.g_object_is_floating((C.gpointer)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_object_ref_sink
 
-	return retGo
-}
-
-// RefSink is a wrapper around the C function g_object_ref_sink.
-func (recv *Object) RefSink() Object {
-	retC := C.g_object_ref_sink((C.gpointer)(recv.native))
-	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RefSink is a wrapper around the C function g_param_spec_ref_sink.
-func (recv *ParamSpec) RefSink() *ParamSpec {
-	retC := C.g_param_spec_ref_sink((*C.GParamSpec)(recv.native))
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_param_spec_ref_sink
 
 // ParamSpecGType is a wrapper around the C record GParamSpecGType.
 type ParamSpecGType struct {

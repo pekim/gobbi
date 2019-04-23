@@ -2,8 +2,6 @@
 
 package gdkpixbuf
 
-import glib "github.com/pekim/gobbi/lib/glib"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -45,13 +43,7 @@ const (
 	GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION  PixbufError = 6
 )
 
-// PixbufErrorQuark is a wrapper around the C function gdk_pixbuf_error_quark.
-func PixbufErrorQuark() glib.Quark {
-	retC := C.gdk_pixbuf_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_error_quark
 
 type PixbufRotation C.GdkPixbufRotation
 

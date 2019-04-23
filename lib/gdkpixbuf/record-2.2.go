@@ -3,8 +3,6 @@
 
 package gdkpixbuf
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,54 +10,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetDescription is a wrapper around the C function gdk_pixbuf_format_get_description.
-func (recv *PixbufFormat) GetDescription() string {
-	retC := C.gdk_pixbuf_format_get_description((*C.GdkPixbufFormat)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gdk_pixbuf_format_get_description
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_format_get_extensions
 
-// GetExtensions is a wrapper around the C function gdk_pixbuf_format_get_extensions.
-func (recv *PixbufFormat) GetExtensions() []string {
-	retC := C.gdk_pixbuf_format_get_extensions((*C.GdkPixbufFormat)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
+// Blacklisted : gdk_pixbuf_format_get_mime_types
 
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_format_get_name
 
-// GetMimeTypes is a wrapper around the C function gdk_pixbuf_format_get_mime_types.
-func (recv *PixbufFormat) GetMimeTypes() []string {
-	retC := C.gdk_pixbuf_format_get_mime_types((*C.GdkPixbufFormat)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
-
-	return retGo
-}
-
-// GetName is a wrapper around the C function gdk_pixbuf_format_get_name.
-func (recv *PixbufFormat) GetName() string {
-	retC := C.gdk_pixbuf_format_get_name((*C.GdkPixbufFormat)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IsWritable is a wrapper around the C function gdk_pixbuf_format_is_writable.
-func (recv *PixbufFormat) IsWritable() bool {
-	retC := C.gdk_pixbuf_format_is_writable((*C.GdkPixbufFormat)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_format_is_writable

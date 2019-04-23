@@ -180,62 +180,25 @@ func object_notifyHandler(_ *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) 
 
 // Unsupported : g_object_disconnect : unsupported parameter ... : varargs
 
-// FreezeNotify is a wrapper around the C function g_object_freeze_notify.
-func (recv *Object) FreezeNotify() {
-	C.g_object_freeze_notify((*C.GObject)(recv.native))
-
-	return
-}
+// Blacklisted : g_object_freeze_notify
 
 // Unsupported : g_object_get : unsupported parameter ... : varargs
 
 // Unsupported : g_object_get_data : no return generator
 
-// GetProperty is a wrapper around the C function g_object_get_property.
-func (recv *Object) GetProperty(propertyName string, value *Value) {
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	c_value := (*C.GValue)(C.NULL)
-	if value != nil {
-		c_value = (*C.GValue)(value.ToC())
-	}
-
-	C.g_object_get_property((*C.GObject)(recv.native), c_property_name, c_value)
-
-	return
-}
+// Blacklisted : g_object_get_property
 
 // Unsupported : g_object_get_qdata : no return generator
 
 // Unsupported : g_object_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Notify is a wrapper around the C function g_object_notify.
-func (recv *Object) Notify(propertyName string) {
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
+// Blacklisted : g_object_notify
 
-	C.g_object_notify((*C.GObject)(recv.native), c_property_name)
-
-	return
-}
-
-// Ref is a wrapper around the C function g_object_ref.
-func (recv *Object) Ref() Object {
-	retC := C.g_object_ref((C.gpointer)(recv.native))
-	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_object_ref
 
 // Unsupported : g_object_remove_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer (gpointer*) for param weak_pointer_location
 
-// RunDispose is a wrapper around the C function g_object_run_dispose.
-func (recv *Object) RunDispose() {
-	C.g_object_run_dispose((*C.GObject)(recv.native))
-
-	return
-}
+// Blacklisted : g_object_run_dispose
 
 // Unsupported : g_object_set : unsupported parameter ... : varargs
 
@@ -243,20 +206,7 @@ func (recv *Object) RunDispose() {
 
 // Unsupported : g_object_set_data_full : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// SetProperty is a wrapper around the C function g_object_set_property.
-func (recv *Object) SetProperty(propertyName string, value *Value) {
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	c_value := (*C.GValue)(C.NULL)
-	if value != nil {
-		c_value = (*C.GValue)(value.ToC())
-	}
-
-	C.g_object_set_property((*C.GObject)(recv.native), c_property_name, c_value)
-
-	return
-}
+// Blacklisted : g_object_set_property
 
 // Unsupported : g_object_set_qdata : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
@@ -268,31 +218,11 @@ func (recv *Object) SetProperty(propertyName string, value *Value) {
 
 // Unsupported : g_object_steal_qdata : no return generator
 
-// ThawNotify is a wrapper around the C function g_object_thaw_notify.
-func (recv *Object) ThawNotify() {
-	C.g_object_thaw_notify((*C.GObject)(recv.native))
+// Blacklisted : g_object_thaw_notify
 
-	return
-}
+// Blacklisted : g_object_unref
 
-// Unref is a wrapper around the C function g_object_unref.
-func (recv *Object) Unref() {
-	C.g_object_unref((C.gpointer)(recv.native))
-
-	return
-}
-
-// WatchClosure is a wrapper around the C function g_object_watch_closure.
-func (recv *Object) WatchClosure(closure *Closure) {
-	c_closure := (*C.GClosure)(C.NULL)
-	if closure != nil {
-		c_closure = (*C.GClosure)(closure.ToC())
-	}
-
-	C.g_object_watch_closure((*C.GObject)(recv.native), c_closure)
-
-	return
-}
+// Blacklisted : g_object_watch_closure
 
 // Unsupported : g_object_weak_ref : unsupported parameter notify : no type generator for WeakNotify (GWeakNotify) for param notify
 
@@ -348,80 +278,27 @@ func (recv *ParamSpec) Equals(other *ParamSpec) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ParamSpecInternal is a wrapper around the C function g_param_spec_internal.
-func ParamSpecInternal(paramType Type, name string, nick string, blurb string, flags ParamFlags) ParamSpec {
-	c_param_type := (C.GType)(paramType)
+// Blacklisted : g_param_spec_internal
 
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : g_param_spec_get_blurb
 
-	c_nick := C.CString(nick)
-	defer C.free(unsafe.Pointer(c_nick))
+// Blacklisted : g_param_spec_get_name
 
-	c_blurb := C.CString(blurb)
-	defer C.free(unsafe.Pointer(c_blurb))
-
-	c_flags := (C.GParamFlags)(flags)
-
-	retC := C.g_param_spec_internal(c_param_type, c_name, c_nick, c_blurb, c_flags)
-	retGo := *ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetBlurb is a wrapper around the C function g_param_spec_get_blurb.
-func (recv *ParamSpec) GetBlurb() string {
-	retC := C.g_param_spec_get_blurb((*C.GParamSpec)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetName is a wrapper around the C function g_param_spec_get_name.
-func (recv *ParamSpec) GetName() string {
-	retC := C.g_param_spec_get_name((*C.GParamSpec)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetNick is a wrapper around the C function g_param_spec_get_nick.
-func (recv *ParamSpec) GetNick() string {
-	retC := C.g_param_spec_get_nick((*C.GParamSpec)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_param_spec_get_nick
 
 // Unsupported : g_param_spec_get_qdata : no return generator
 
-// Ref is a wrapper around the C function g_param_spec_ref.
-func (recv *ParamSpec) Ref() *ParamSpec {
-	retC := C.g_param_spec_ref((*C.GParamSpec)(recv.native))
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_param_spec_ref
 
 // Unsupported : g_param_spec_set_qdata : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_param_spec_set_qdata_full : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
-// Sink is a wrapper around the C function g_param_spec_sink.
-func (recv *ParamSpec) Sink() {
-	C.g_param_spec_sink((*C.GParamSpec)(recv.native))
-
-	return
-}
+// Blacklisted : g_param_spec_sink
 
 // Unsupported : g_param_spec_steal_qdata : no return generator
 
-// Unref is a wrapper around the C function g_param_spec_unref.
-func (recv *ParamSpec) Unref() {
-	C.g_param_spec_unref((*C.GParamSpec)(recv.native))
-
-	return
-}
+// Blacklisted : g_param_spec_unref
 
 // ParamSpecBoolean is a wrapper around the C record GParamSpecBoolean.
 type ParamSpecBoolean struct {

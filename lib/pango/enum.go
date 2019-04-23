@@ -2,8 +2,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -50,16 +48,7 @@ const (
 	PANGO_ATTR_BACKGROUND_ALPHA    AttrType = 25
 )
 
-// AttrTypeRegister is a wrapper around the C function pango_attr_type_register.
-func AttrTypeRegister(name string) AttrType {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.pango_attr_type_register(c_name)
-	retGo := (AttrType)(retC)
-
-	return retGo
-}
+// Blacklisted : pango_attr_type_register
 
 type CoverageLevel C.PangoCoverageLevel
 

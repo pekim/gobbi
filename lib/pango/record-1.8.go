@@ -13,32 +13,11 @@ import "unsafe"
 import "C"
 
 // pango_attr_shape_new_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// AttrSizeNewAbsolute is a wrapper around the C function pango_attr_size_new_absolute.
-func AttrSizeNewAbsolute(size int32) *Attribute {
-	c_size := (C.int)(size)
+// Blacklisted : pango_attr_size_new_absolute
 
-	retC := C.pango_attr_size_new_absolute(c_size)
-	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+// Blacklisted : pango_font_description_get_size_is_absolute
 
-	return retGo
-}
-
-// GetSizeIsAbsolute is a wrapper around the C function pango_font_description_get_size_is_absolute.
-func (recv *FontDescription) GetSizeIsAbsolute() bool {
-	retC := C.pango_font_description_get_size_is_absolute((*C.PangoFontDescription)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetAbsoluteSize is a wrapper around the C function pango_font_description_set_absolute_size.
-func (recv *FontDescription) SetAbsoluteSize(size float64) {
-	c_size := (C.double)(size)
-
-	C.pango_font_description_set_absolute_size((*C.PangoFontDescription)(recv.native), c_size)
-
-	return
-}
+// Blacklisted : pango_font_description_set_absolute_size
 
 // RendererClass is a wrapper around the C record PangoRendererClass.
 type RendererClass struct {

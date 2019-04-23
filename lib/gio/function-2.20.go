@@ -19,3 +19,7 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : g_app_info_reset_type_associations
+
+// Blacklisted : g_icon_new_for_string

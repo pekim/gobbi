@@ -2,8 +2,6 @@
 
 package atk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -21,73 +19,50 @@ import "C"
 
 // Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit (AtkEventListenerInit) for param init
 
-// FocusTrackerNotify is a wrapper around the C function atk_focus_tracker_notify.
-func FocusTrackerNotify(object *Object) {
-	c_object := (*C.AtkObject)(C.NULL)
-	if object != nil {
-		c_object = (*C.AtkObject)(object.ToC())
-	}
+// Blacklisted : atk_focus_tracker_notify
 
-	C.atk_focus_tracker_notify(c_object)
+// Blacklisted : atk_get_default_registry
 
-	return
-}
+// Blacklisted : atk_get_root
 
-// GetDefaultRegistry is a wrapper around the C function atk_get_default_registry.
-func GetDefaultRegistry() *Registry {
-	retC := C.atk_get_default_registry()
-	retGo := RegistryNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_get_toolkit_name
 
-	return retGo
-}
+// Blacklisted : atk_get_toolkit_version
 
-// GetRoot is a wrapper around the C function atk_get_root.
-func GetRoot() *Object {
-	retC := C.atk_get_root()
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_relation_type_for_name
 
-	return retGo
-}
+// Blacklisted : atk_relation_type_get_name
 
-// GetToolkitName is a wrapper around the C function atk_get_toolkit_name.
-func GetToolkitName() string {
-	retC := C.atk_get_toolkit_name()
-	retGo := C.GoString(retC)
+// Blacklisted : atk_relation_type_register
 
-	return retGo
-}
+// Blacklisted : atk_remove_focus_tracker
 
-// GetToolkitVersion is a wrapper around the C function atk_get_toolkit_version.
-func GetToolkitVersion() string {
-	retC := C.atk_get_toolkit_version()
-	retGo := C.GoString(retC)
+// Blacklisted : atk_remove_global_event_listener
 
-	return retGo
-}
+// Blacklisted : atk_remove_key_event_listener
 
-// RemoveFocusTracker is a wrapper around the C function atk_remove_focus_tracker.
-func RemoveFocusTracker(trackerId uint32) {
-	c_tracker_id := (C.guint)(trackerId)
+// Blacklisted : atk_role_for_name
 
-	C.atk_remove_focus_tracker(c_tracker_id)
+// Blacklisted : atk_role_get_localized_name
 
-	return
-}
+// Blacklisted : atk_role_get_name
 
-// RemoveGlobalEventListener is a wrapper around the C function atk_remove_global_event_listener.
-func RemoveGlobalEventListener(listenerId uint32) {
-	c_listener_id := (C.guint)(listenerId)
+// Blacklisted : atk_role_register
 
-	C.atk_remove_global_event_listener(c_listener_id)
+// Blacklisted : atk_state_type_for_name
 
-	return
-}
+// Blacklisted : atk_state_type_get_name
 
-// RemoveKeyEventListener is a wrapper around the C function atk_remove_key_event_listener.
-func RemoveKeyEventListener(listenerId uint32) {
-	c_listener_id := (C.guint)(listenerId)
+// Blacklisted : atk_state_type_register
 
-	C.atk_remove_key_event_listener(c_listener_id)
+// Blacklisted : atk_text_attribute_for_name
 
-	return
-}
+// Blacklisted : atk_text_attribute_get_name
+
+// Blacklisted : atk_text_attribute_get_value
+
+// Blacklisted : atk_text_attribute_register
+
+// Blacklisted : atk_value_type_get_localized_name
+
+// Blacklisted : atk_value_type_get_name

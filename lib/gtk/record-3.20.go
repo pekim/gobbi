@@ -282,55 +282,12 @@ func (recv *ShortcutsWindowClass) Equals(other *ShortcutsWindowClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// StartsTag is a wrapper around the C function gtk_text_iter_starts_tag.
-func (recv *TextIter) StartsTag(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(C.NULL)
-	if tag != nil {
-		c_tag = (*C.GtkTextTag)(tag.ToC())
-	}
+// Blacklisted : gtk_text_iter_starts_tag
 
-	retC := C.gtk_text_iter_starts_tag((*C.GtkTextIter)(recv.native), c_tag)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_widget_class_get_css_name
 
-	return retGo
-}
+// Blacklisted : gtk_widget_class_set_css_name
 
-// GetCssName is a wrapper around the C function gtk_widget_class_get_css_name.
-func (recv *WidgetClass) GetCssName() string {
-	retC := C.gtk_widget_class_get_css_name((*C.GtkWidgetClass)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_widget_path_iter_get_object_name
 
-	return retGo
-}
-
-// SetCssName is a wrapper around the C function gtk_widget_class_set_css_name.
-func (recv *WidgetClass) SetCssName(name string) {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.gtk_widget_class_set_css_name((*C.GtkWidgetClass)(recv.native), c_name)
-
-	return
-}
-
-// IterGetObjectName is a wrapper around the C function gtk_widget_path_iter_get_object_name.
-func (recv *WidgetPath) IterGetObjectName(pos int32) string {
-	c_pos := (C.gint)(pos)
-
-	retC := C.gtk_widget_path_iter_get_object_name((*C.GtkWidgetPath)(recv.native), c_pos)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// IterSetObjectName is a wrapper around the C function gtk_widget_path_iter_set_object_name.
-func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
-	c_pos := (C.gint)(pos)
-
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	C.gtk_widget_path_iter_set_object_name((*C.GtkWidgetPath)(recv.native), c_pos, c_name)
-
-	return
-}
+// Blacklisted : gtk_widget_path_iter_set_object_name

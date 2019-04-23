@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	gio "github.com/pekim/gobbi/lib/gio"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,15 +12,4 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetGicon is a wrapper around the C function gtk_recent_info_get_gicon.
-func (recv *RecentInfo) GetGicon() *gio.Icon {
-	retC := C.gtk_recent_info_get_gicon((*C.GtkRecentInfo)(recv.native))
-	var retGo (*gio.Icon)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = gio.IconNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : gtk_recent_info_get_gicon

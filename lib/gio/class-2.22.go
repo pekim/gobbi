@@ -4,7 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -57,736 +56,129 @@ import "C"
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback (GCallback) for param callback
 
-// Disconnect is a wrapper around the C function g_cancellable_disconnect.
-func (recv *Cancellable) Disconnect(handlerId uint64) {
-	c_handler_id := (C.gulong)(handlerId)
+// Blacklisted : g_cancellable_disconnect
 
-	C.g_cancellable_disconnect((*C.GCancellable)(recv.native), c_handler_id)
+// Blacklisted : g_cancellable_make_pollfd
 
-	return
-}
+// Blacklisted : g_cancellable_release_fd
 
-// MakePollfd is a wrapper around the C function g_cancellable_make_pollfd.
-func (recv *Cancellable) MakePollfd(pollfd *glib.PollFD) bool {
-	c_pollfd := (*C.GPollFD)(C.NULL)
-	if pollfd != nil {
-		c_pollfd = (*C.GPollFD)(pollfd.ToC())
-	}
+// Blacklisted : g_file_io_stream_get_etag
 
-	retC := C.g_cancellable_make_pollfd((*C.GCancellable)(recv.native), c_pollfd)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ReleaseFd is a wrapper around the C function g_cancellable_release_fd.
-func (recv *Cancellable) ReleaseFd() {
-	C.g_cancellable_release_fd((*C.GCancellable)(recv.native))
-
-	return
-}
-
-// GetEtag is a wrapper around the C function g_file_io_stream_get_etag.
-func (recv *FileIOStream) GetEtag() string {
-	retC := C.g_file_io_stream_get_etag((*C.GFileIOStream)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// QueryInfo is a wrapper around the C function g_file_io_stream_query_info.
-func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
-	c_attributes := C.CString(attributes)
-	defer C.free(unsafe.Pointer(c_attributes))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_file_io_stream_query_info((*C.GFileIOStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_file_io_stream_query_info
 
 // Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// QueryInfoFinish is a wrapper around the C function g_file_io_stream_query_info_finish.
-func (recv *FileIOStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_file_io_stream_query_info_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_file_info_get_attribute_stringv
 
-	retC := C.g_file_io_stream_query_info_finish((*C.GFileIOStream)(recv.native), c_result, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_file_info_has_namespace
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_file_info_set_attribute_status
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_io_stream_clear_pending
 
-	return retGo, goError
-}
-
-// GetAttributeStringv is a wrapper around the C function g_file_info_get_attribute_stringv.
-func (recv *FileInfo) GetAttributeStringv(attribute string) []string {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	retC := C.g_file_info_get_attribute_stringv((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
-
-// HasNamespace is a wrapper around the C function g_file_info_has_namespace.
-func (recv *FileInfo) HasNamespace(nameSpace string) bool {
-	c_name_space := C.CString(nameSpace)
-	defer C.free(unsafe.Pointer(c_name_space))
-
-	retC := C.g_file_info_has_namespace((*C.GFileInfo)(recv.native), c_name_space)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetAttributeStatus is a wrapper around the C function g_file_info_set_attribute_status.
-func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatus) bool {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_status := (C.GFileAttributeStatus)(status)
-
-	retC := C.g_file_info_set_attribute_status((*C.GFileInfo)(recv.native), c_attribute, c_status)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ClearPending is a wrapper around the C function g_io_stream_clear_pending.
-func (recv *IOStream) ClearPending() {
-	C.g_io_stream_clear_pending((*C.GIOStream)(recv.native))
-
-	return
-}
-
-// Close is a wrapper around the C function g_io_stream_close.
-func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_io_stream_close((*C.GIOStream)(recv.native), c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_io_stream_close
 
 // Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_io_stream_close_finish.
-func (recv *IOStream) CloseFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_io_stream_close_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_io_stream_get_input_stream
 
-	retC := C.g_io_stream_close_finish((*C.GIOStream)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_io_stream_get_output_stream
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_io_stream_has_pending
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_io_stream_is_closed
 
-	return retGo, goError
-}
+// Blacklisted : g_io_stream_set_pending
 
-// GetInputStream is a wrapper around the C function g_io_stream_get_input_stream.
-func (recv *IOStream) GetInputStream() *InputStream {
-	retC := C.g_io_stream_get_input_stream((*C.GIOStream)(recv.native))
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_inet_address_new_any
 
-	return retGo
-}
+// Blacklisted : g_inet_address_new_from_bytes
 
-// GetOutputStream is a wrapper around the C function g_io_stream_get_output_stream.
-func (recv *IOStream) GetOutputStream() *OutputStream {
-	retC := C.g_io_stream_get_output_stream((*C.GIOStream)(recv.native))
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_inet_address_new_from_string
 
-	return retGo
-}
+// Blacklisted : g_inet_address_new_loopback
 
-// HasPending is a wrapper around the C function g_io_stream_has_pending.
-func (recv *IOStream) HasPending() bool {
-	retC := C.g_io_stream_has_pending((*C.GIOStream)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_inet_address_get_family
 
-	return retGo
-}
+// Blacklisted : g_inet_address_get_is_any
 
-// IsClosed is a wrapper around the C function g_io_stream_is_closed.
-func (recv *IOStream) IsClosed() bool {
-	retC := C.g_io_stream_is_closed((*C.GIOStream)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_inet_address_get_is_link_local
 
-	return retGo
-}
+// Blacklisted : g_inet_address_get_is_loopback
 
-// SetPending is a wrapper around the C function g_io_stream_set_pending.
-func (recv *IOStream) SetPending() (bool, error) {
-	var cThrowableError *C.GError
+// Blacklisted : g_inet_address_get_is_mc_global
 
-	retC := C.g_io_stream_set_pending((*C.GIOStream)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
+// Blacklisted : g_inet_address_get_is_mc_link_local
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_inet_address_get_is_mc_node_local
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_inet_address_get_is_mc_org_local
 
-	return retGo, goError
-}
+// Blacklisted : g_inet_address_get_is_mc_site_local
 
-// InetAddressNewAny is a wrapper around the C function g_inet_address_new_any.
-func InetAddressNewAny(family SocketFamily) *InetAddress {
-	c_family := (C.GSocketFamily)(family)
+// Blacklisted : g_inet_address_get_is_multicast
 
-	retC := C.g_inet_address_new_any(c_family)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_inet_address_get_is_site_local
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// InetAddressNewFromBytes is a wrapper around the C function g_inet_address_new_from_bytes.
-func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
-	c_bytes_array := make([]C.guint8, len(bytes)+1, len(bytes)+1)
-	for i, item := range bytes {
-		c := (C.guint8)(item)
-		c_bytes_array[i] = c
-	}
-	c_bytes_array[len(bytes)] = 0
-	c_bytes_arrayPtr := &c_bytes_array[0]
-	c_bytes := (*C.guint8)(unsafe.Pointer(c_bytes_arrayPtr))
-
-	c_family := (C.GSocketFamily)(family)
-
-	retC := C.g_inet_address_new_from_bytes(c_bytes, c_family)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// InetAddressNewFromString is a wrapper around the C function g_inet_address_new_from_string.
-func InetAddressNewFromString(string_ string) *InetAddress {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	retC := C.g_inet_address_new_from_string(c_string)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// InetAddressNewLoopback is a wrapper around the C function g_inet_address_new_loopback.
-func InetAddressNewLoopback(family SocketFamily) *InetAddress {
-	c_family := (C.GSocketFamily)(family)
-
-	retC := C.g_inet_address_new_loopback(c_family)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetFamily is a wrapper around the C function g_inet_address_get_family.
-func (recv *InetAddress) GetFamily() SocketFamily {
-	retC := C.g_inet_address_get_family((*C.GInetAddress)(recv.native))
-	retGo := (SocketFamily)(retC)
-
-	return retGo
-}
-
-// GetIsAny is a wrapper around the C function g_inet_address_get_is_any.
-func (recv *InetAddress) GetIsAny() bool {
-	retC := C.g_inet_address_get_is_any((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsLinkLocal is a wrapper around the C function g_inet_address_get_is_link_local.
-func (recv *InetAddress) GetIsLinkLocal() bool {
-	retC := C.g_inet_address_get_is_link_local((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsLoopback is a wrapper around the C function g_inet_address_get_is_loopback.
-func (recv *InetAddress) GetIsLoopback() bool {
-	retC := C.g_inet_address_get_is_loopback((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsMcGlobal is a wrapper around the C function g_inet_address_get_is_mc_global.
-func (recv *InetAddress) GetIsMcGlobal() bool {
-	retC := C.g_inet_address_get_is_mc_global((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsMcLinkLocal is a wrapper around the C function g_inet_address_get_is_mc_link_local.
-func (recv *InetAddress) GetIsMcLinkLocal() bool {
-	retC := C.g_inet_address_get_is_mc_link_local((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsMcNodeLocal is a wrapper around the C function g_inet_address_get_is_mc_node_local.
-func (recv *InetAddress) GetIsMcNodeLocal() bool {
-	retC := C.g_inet_address_get_is_mc_node_local((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsMcOrgLocal is a wrapper around the C function g_inet_address_get_is_mc_org_local.
-func (recv *InetAddress) GetIsMcOrgLocal() bool {
-	retC := C.g_inet_address_get_is_mc_org_local((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsMcSiteLocal is a wrapper around the C function g_inet_address_get_is_mc_site_local.
-func (recv *InetAddress) GetIsMcSiteLocal() bool {
-	retC := C.g_inet_address_get_is_mc_site_local((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsMulticast is a wrapper around the C function g_inet_address_get_is_multicast.
-func (recv *InetAddress) GetIsMulticast() bool {
-	retC := C.g_inet_address_get_is_multicast((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsSiteLocal is a wrapper around the C function g_inet_address_get_is_site_local.
-func (recv *InetAddress) GetIsSiteLocal() bool {
-	retC := C.g_inet_address_get_is_site_local((*C.GInetAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetNativeSize is a wrapper around the C function g_inet_address_get_native_size.
-func (recv *InetAddress) GetNativeSize() uint64 {
-	retC := C.g_inet_address_get_native_size((*C.GInetAddress)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_inet_address_get_native_size
 
 // Blacklisted : g_inet_address_to_bytes
 
-// ToString is a wrapper around the C function g_inet_address_to_string.
-func (recv *InetAddress) ToString() string {
-	retC := C.g_inet_address_to_string((*C.GInetAddress)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : g_inet_address_to_string
 
-	return retGo
-}
+// Blacklisted : g_inet_socket_address_new
 
-// InetSocketAddressNew is a wrapper around the C function g_inet_socket_address_new.
-func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress {
-	c_address := (*C.GInetAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GInetAddress)(address.ToC())
-	}
+// Blacklisted : g_inet_socket_address_get_address
 
-	c_port := (C.guint16)(port)
-
-	retC := C.g_inet_socket_address_new(c_address, c_port)
-	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetAddress is a wrapper around the C function g_inet_socket_address_get_address.
-func (recv *InetSocketAddress) GetAddress() *InetAddress {
-	retC := C.g_inet_socket_address_get_address((*C.GInetSocketAddress)(recv.native))
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetPort is a wrapper around the C function g_inet_socket_address_get_port.
-func (recv *InetSocketAddress) GetPort() uint16 {
-	retC := C.g_inet_socket_address_get_port((*C.GInetSocketAddress)(recv.native))
-	retGo := (uint16)(retC)
-
-	return retGo
-}
+// Blacklisted : g_inet_socket_address_get_port
 
 // Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes :
 
-// NetworkAddressNew is a wrapper around the C function g_network_address_new.
-func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
+// Blacklisted : g_network_address_new
 
-	c_port := (C.guint16)(port)
+// Blacklisted : g_network_address_parse
 
-	retC := C.g_network_address_new(c_hostname, c_port)
-	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_network_address_get_hostname
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_network_address_get_port
 
-	return retGo
-}
+// Blacklisted : g_network_service_new
 
-// NetworkAddressParse is a wrapper around the C function g_network_address_parse.
-func NetworkAddressParse(hostAndPort string, defaultPort uint16) (*NetworkAddress, error) {
-	c_host_and_port := C.CString(hostAndPort)
-	defer C.free(unsafe.Pointer(c_host_and_port))
+// Blacklisted : g_network_service_get_domain
 
-	c_default_port := (C.guint16)(defaultPort)
+// Blacklisted : g_network_service_get_protocol
 
-	var cThrowableError *C.GError
+// Blacklisted : g_network_service_get_service
 
-	retC := C.g_network_address_parse(c_host_and_port, c_default_port, &cThrowableError)
-	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_resolver_free_addresses
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_resolver_free_targets
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_resolver_get_default
 
-	return retGo, goError
-}
-
-// GetHostname is a wrapper around the C function g_network_address_get_hostname.
-func (recv *NetworkAddress) GetHostname() string {
-	retC := C.g_network_address_get_hostname((*C.GNetworkAddress)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetPort is a wrapper around the C function g_network_address_get_port.
-func (recv *NetworkAddress) GetPort() uint16 {
-	retC := C.g_network_address_get_port((*C.GNetworkAddress)(recv.native))
-	retGo := (uint16)(retC)
-
-	return retGo
-}
-
-// NetworkServiceNew is a wrapper around the C function g_network_service_new.
-func NetworkServiceNew(service string, protocol string, domain string) *NetworkService {
-	c_service := C.CString(service)
-	defer C.free(unsafe.Pointer(c_service))
-
-	c_protocol := C.CString(protocol)
-	defer C.free(unsafe.Pointer(c_protocol))
-
-	c_domain := C.CString(domain)
-	defer C.free(unsafe.Pointer(c_domain))
-
-	retC := C.g_network_service_new(c_service, c_protocol, c_domain)
-	retGo := NetworkServiceNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// GetDomain is a wrapper around the C function g_network_service_get_domain.
-func (recv *NetworkService) GetDomain() string {
-	retC := C.g_network_service_get_domain((*C.GNetworkService)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetProtocol is a wrapper around the C function g_network_service_get_protocol.
-func (recv *NetworkService) GetProtocol() string {
-	retC := C.g_network_service_get_protocol((*C.GNetworkService)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetService is a wrapper around the C function g_network_service_get_service.
-func (recv *NetworkService) GetService() string {
-	retC := C.g_network_service_get_service((*C.GNetworkService)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// ResolverFreeAddresses is a wrapper around the C function g_resolver_free_addresses.
-func ResolverFreeAddresses(addresses *glib.List) {
-	c_addresses := (*C.GList)(C.NULL)
-	if addresses != nil {
-		c_addresses = (*C.GList)(addresses.ToC())
-	}
-
-	C.g_resolver_free_addresses(c_addresses)
-
-	return
-}
-
-// ResolverFreeTargets is a wrapper around the C function g_resolver_free_targets.
-func ResolverFreeTargets(targets *glib.List) {
-	c_targets := (*C.GList)(C.NULL)
-	if targets != nil {
-		c_targets = (*C.GList)(targets.ToC())
-	}
-
-	C.g_resolver_free_targets(c_targets)
-
-	return
-}
-
-// ResolverGetDefault is a wrapper around the C function g_resolver_get_default.
-func ResolverGetDefault() *Resolver {
-	retC := C.g_resolver_get_default()
-	retGo := ResolverNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LookupByAddress is a wrapper around the C function g_resolver_lookup_by_address.
-func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancellable) (string, error) {
-	c_address := (*C.GInetAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GInetAddress)(address.ToC())
-	}
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_resolver_lookup_by_address((*C.GResolver)(recv.native), c_address, c_cancellable, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_resolver_lookup_by_address
 
 // Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// LookupByAddressFinish is a wrapper around the C function g_resolver_lookup_by_address_finish.
-func (recv *Resolver) LookupByAddressFinish(result *AsyncResult) (string, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_resolver_lookup_by_address_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_resolver_lookup_by_address_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// LookupByName is a wrapper around the C function g_resolver_lookup_by_name.
-func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*glib.List, error) {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_resolver_lookup_by_name((*C.GResolver)(recv.native), c_hostname, c_cancellable, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_resolver_lookup_by_name
 
 // Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// LookupByNameFinish is a wrapper around the C function g_resolver_lookup_by_name_finish.
-func (recv *Resolver) LookupByNameFinish(result *AsyncResult) (*glib.List, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_resolver_lookup_by_name_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_resolver_lookup_by_name_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// LookupService is a wrapper around the C function g_resolver_lookup_service.
-func (recv *Resolver) LookupService(service string, protocol string, domain string, cancellable *Cancellable) (*glib.List, error) {
-	c_service := C.CString(service)
-	defer C.free(unsafe.Pointer(c_service))
-
-	c_protocol := C.CString(protocol)
-	defer C.free(unsafe.Pointer(c_protocol))
-
-	c_domain := C.CString(domain)
-	defer C.free(unsafe.Pointer(c_domain))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_resolver_lookup_service((*C.GResolver)(recv.native), c_service, c_protocol, c_domain, c_cancellable, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_resolver_lookup_service
 
 // Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// LookupServiceFinish is a wrapper around the C function g_resolver_lookup_service_finish.
-func (recv *Resolver) LookupServiceFinish(result *AsyncResult) (*glib.List, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_resolver_lookup_service_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_resolver_lookup_service_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetDefault is a wrapper around the C function g_resolver_set_default.
-func (recv *Resolver) SetDefault() {
-	C.g_resolver_set_default((*C.GResolver)(recv.native))
-
-	return
-}
+// Blacklisted : g_resolver_set_default
 
 // Socket is a wrapper around the C record GSocket.
 type Socket struct {
@@ -837,566 +229,79 @@ func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
 }
 
-// SocketNew is a wrapper around the C function g_socket_new.
-func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (*Socket, error) {
-	c_family := (C.GSocketFamily)(family)
+// Blacklisted : g_socket_new
 
-	c_type := (C.GSocketType)(type_)
+// Blacklisted : g_socket_new_from_fd
 
-	c_protocol := (C.GSocketProtocol)(protocol)
+// Blacklisted : g_socket_accept
 
-	var cThrowableError *C.GError
+// Blacklisted : g_socket_bind
 
-	retC := C.g_socket_new(c_family, c_type, c_protocol, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_check_connect_result
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_socket_close
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_socket_condition_check
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_socket_condition_wait
 
-	return retGo, goError
-}
+// Blacklisted : g_socket_connect
 
-// SocketNewFromFd is a wrapper around the C function g_socket_new_from_fd.
-func SocketNewFromFd(fd int32) (*Socket, error) {
-	c_fd := (C.gint)(fd)
+// Blacklisted : g_socket_connection_factory_create_connection
 
-	var cThrowableError *C.GError
+// Blacklisted : g_socket_create_source
 
-	retC := C.g_socket_new_from_fd(c_fd, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_get_blocking
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_socket_get_family
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_socket_get_fd
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_socket_get_keepalive
 
-	return retGo, goError
-}
-
-// Accept is a wrapper around the C function g_socket_accept.
-func (recv *Socket) Accept(cancellable *Cancellable) (*Socket, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_accept((*C.GSocket)(recv.native), c_cancellable, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Bind is a wrapper around the C function g_socket_bind.
-func (recv *Socket) Bind(address *SocketAddress, allowReuse bool) (bool, error) {
-	c_address := (*C.GSocketAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GSocketAddress)(address.ToC())
-	}
-
-	c_allow_reuse :=
-		boolToGboolean(allowReuse)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_bind((*C.GSocket)(recv.native), c_address, c_allow_reuse, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// CheckConnectResult is a wrapper around the C function g_socket_check_connect_result.
-func (recv *Socket) CheckConnectResult() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_check_connect_result((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Close is a wrapper around the C function g_socket_close.
-func (recv *Socket) Close() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_close((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ConditionCheck is a wrapper around the C function g_socket_condition_check.
-func (recv *Socket) ConditionCheck(condition glib.IOCondition) glib.IOCondition {
-	c_condition := (C.GIOCondition)(condition)
-
-	retC := C.g_socket_condition_check((*C.GSocket)(recv.native), c_condition)
-	retGo := (glib.IOCondition)(retC)
-
-	return retGo
-}
-
-// ConditionWait is a wrapper around the C function g_socket_condition_wait.
-func (recv *Socket) ConditionWait(condition glib.IOCondition, cancellable *Cancellable) (bool, error) {
-	c_condition := (C.GIOCondition)(condition)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_condition_wait((*C.GSocket)(recv.native), c_condition, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Connect is a wrapper around the C function g_socket_connect.
-func (recv *Socket) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
-	c_address := (*C.GSocketAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GSocketAddress)(address.ToC())
-	}
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_connect((*C.GSocket)(recv.native), c_address, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ConnectionFactoryCreateConnection is a wrapper around the C function g_socket_connection_factory_create_connection.
-func (recv *Socket) ConnectionFactoryCreateConnection() *SocketConnection {
-	retC := C.g_socket_connection_factory_create_connection((*C.GSocket)(recv.native))
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CreateSource is a wrapper around the C function g_socket_create_source.
-func (recv *Socket) CreateSource(condition glib.IOCondition, cancellable *Cancellable) *glib.Source {
-	c_condition := (C.GIOCondition)(condition)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	retC := C.g_socket_create_source((*C.GSocket)(recv.native), c_condition, c_cancellable)
-	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetBlocking is a wrapper around the C function g_socket_get_blocking.
-func (recv *Socket) GetBlocking() bool {
-	retC := C.g_socket_get_blocking((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetFamily is a wrapper around the C function g_socket_get_family.
-func (recv *Socket) GetFamily() SocketFamily {
-	retC := C.g_socket_get_family((*C.GSocket)(recv.native))
-	retGo := (SocketFamily)(retC)
-
-	return retGo
-}
-
-// GetFd is a wrapper around the C function g_socket_get_fd.
-func (recv *Socket) GetFd() int32 {
-	retC := C.g_socket_get_fd((*C.GSocket)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetKeepalive is a wrapper around the C function g_socket_get_keepalive.
-func (recv *Socket) GetKeepalive() bool {
-	retC := C.g_socket_get_keepalive((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetListenBacklog is a wrapper around the C function g_socket_get_listen_backlog.
-func (recv *Socket) GetListenBacklog() int32 {
-	retC := C.g_socket_get_listen_backlog((*C.GSocket)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_socket_get_listen_backlog
 
 // Blacklisted : g_socket_get_local_address
 
-// GetProtocol is a wrapper around the C function g_socket_get_protocol.
-func (recv *Socket) GetProtocol() SocketProtocol {
-	retC := C.g_socket_get_protocol((*C.GSocket)(recv.native))
-	retGo := (SocketProtocol)(retC)
+// Blacklisted : g_socket_get_protocol
 
-	return retGo
-}
+// Blacklisted : g_socket_get_remote_address
 
-// GetRemoteAddress is a wrapper around the C function g_socket_get_remote_address.
-func (recv *Socket) GetRemoteAddress() (*SocketAddress, error) {
-	var cThrowableError *C.GError
+// Blacklisted : g_socket_get_socket_type
 
-	retC := C.g_socket_get_remote_address((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_is_closed
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_socket_is_connected
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_socket_listen
 
-	return retGo, goError
-}
+// Blacklisted : g_socket_receive
 
-// GetSocketType is a wrapper around the C function g_socket_get_socket_type.
-func (recv *Socket) GetSocketType() SocketType {
-	retC := C.g_socket_get_socket_type((*C.GSocket)(recv.native))
-	retGo := (SocketType)(retC)
-
-	return retGo
-}
-
-// IsClosed is a wrapper around the C function g_socket_is_closed.
-func (recv *Socket) IsClosed() bool {
-	retC := C.g_socket_is_closed((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// IsConnected is a wrapper around the C function g_socket_is_connected.
-func (recv *Socket) IsConnected() bool {
-	retC := C.g_socket_is_connected((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Listen is a wrapper around the C function g_socket_listen.
-func (recv *Socket) Listen() (bool, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listen((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Receive is a wrapper around the C function g_socket_receive.
-func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_size := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_receive((*C.GSocket)(recv.native), c_buffer, c_size, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ReceiveFrom is a wrapper around the C function g_socket_receive_from.
-func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64, *SocketAddress, error) {
-	var c_address *C.GSocketAddress
-
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_size := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_receive_from((*C.GSocket)(recv.native), &c_address, c_buffer, c_size, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	address := SocketAddressNewFromC(unsafe.Pointer(c_address))
-
-	return retGo, address, goError
-}
+// Blacklisted : g_socket_receive_from
 
 // Unsupported : g_socket_receive_message : unsupported parameter vectors :
 
-// Send is a wrapper around the C function g_socket_send.
-func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
-
-	c_size := (C.gsize)(len(buffer))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_send((*C.GSocket)(recv.native), c_buffer, c_size, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_send
 
 // Unsupported : g_socket_send_message : unsupported parameter vectors :
 
-// SendTo is a wrapper around the C function g_socket_send_to.
-func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_address := (*C.GSocketAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GSocketAddress)(address.ToC())
-	}
+// Blacklisted : g_socket_send_to
 
-	c_buffer_array := make([]C.guint8, len(buffer)+1, len(buffer)+1)
-	for i, item := range buffer {
-		c := (C.guint8)(item)
-		c_buffer_array[i] = c
-	}
-	c_buffer_array[len(buffer)] = 0
-	c_buffer_arrayPtr := &c_buffer_array[0]
-	c_buffer := (*C.gchar)(unsafe.Pointer(c_buffer_arrayPtr))
+// Blacklisted : g_socket_set_blocking
 
-	c_size := (C.gsize)(len(buffer))
+// Blacklisted : g_socket_set_keepalive
 
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
+// Blacklisted : g_socket_set_listen_backlog
 
-	var cThrowableError *C.GError
+// Blacklisted : g_socket_shutdown
 
-	retC := C.g_socket_send_to((*C.GSocket)(recv.native), c_address, c_buffer, c_size, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetBlocking is a wrapper around the C function g_socket_set_blocking.
-func (recv *Socket) SetBlocking(blocking bool) {
-	c_blocking :=
-		boolToGboolean(blocking)
-
-	C.g_socket_set_blocking((*C.GSocket)(recv.native), c_blocking)
-
-	return
-}
-
-// SetKeepalive is a wrapper around the C function g_socket_set_keepalive.
-func (recv *Socket) SetKeepalive(keepalive bool) {
-	c_keepalive :=
-		boolToGboolean(keepalive)
-
-	C.g_socket_set_keepalive((*C.GSocket)(recv.native), c_keepalive)
-
-	return
-}
-
-// SetListenBacklog is a wrapper around the C function g_socket_set_listen_backlog.
-func (recv *Socket) SetListenBacklog(backlog int32) {
-	c_backlog := (C.gint)(backlog)
-
-	C.g_socket_set_listen_backlog((*C.GSocket)(recv.native), c_backlog)
-
-	return
-}
-
-// Shutdown is a wrapper around the C function g_socket_shutdown.
-func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error) {
-	c_shutdown_read :=
-		boolToGboolean(shutdownRead)
-
-	c_shutdown_write :=
-		boolToGboolean(shutdownWrite)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_shutdown((*C.GSocket)(recv.native), c_shutdown_read, c_shutdown_write, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SpeaksIpv4 is a wrapper around the C function g_socket_speaks_ipv4.
-func (recv *Socket) SpeaksIpv4() bool {
-	retC := C.g_socket_speaks_ipv4((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_socket_speaks_ipv4
 
 // Unsupported : g_socket_address_new_from_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
 
-// GetFamily is a wrapper around the C function g_socket_address_get_family.
-func (recv *SocketAddress) GetFamily() SocketFamily {
-	retC := C.g_socket_address_get_family((*C.GSocketAddress)(recv.native))
-	retGo := (SocketFamily)(retC)
+// Blacklisted : g_socket_address_get_family
 
-	return retGo
-}
-
-// GetNativeSize is a wrapper around the C function g_socket_address_get_native_size.
-func (recv *SocketAddress) GetNativeSize() int64 {
-	retC := C.g_socket_address_get_native_size((*C.GSocketAddress)(recv.native))
-	retGo := (int64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_socket_address_get_native_size
 
 // Unsupported : g_socket_address_to_native : unsupported parameter dest : no type generator for gpointer (gpointer) for param dest
 
@@ -1449,246 +354,43 @@ func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromC(object.ToC())
 }
 
-// SocketClientNew is a wrapper around the C function g_socket_client_new.
-func SocketClientNew() *SocketClient {
-	retC := C.g_socket_client_new()
-	retGo := SocketClientNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_client_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_socket_client_add_application_proxy
 
-	return retGo
-}
-
-// AddApplicationProxy is a wrapper around the C function g_socket_client_add_application_proxy.
-func (recv *SocketClient) AddApplicationProxy(protocol string) {
-	c_protocol := C.CString(protocol)
-	defer C.free(unsafe.Pointer(c_protocol))
-
-	C.g_socket_client_add_application_proxy((*C.GSocketClient)(recv.native), c_protocol)
-
-	return
-}
-
-// Connect is a wrapper around the C function g_socket_client_connect.
-func (recv *SocketClient) Connect(connectable *SocketConnectable, cancellable *Cancellable) (*SocketConnection, error) {
-	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_client_connect((*C.GSocketClient)(recv.native), c_connectable, c_cancellable, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_client_connect
 
 // Unsupported : g_socket_client_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ConnectFinish is a wrapper around the C function g_socket_client_connect_finish.
-func (recv *SocketClient) ConnectFinish(result *AsyncResult) (*SocketConnection, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_socket_client_connect_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_client_connect_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ConnectToHost is a wrapper around the C function g_socket_client_connect_to_host.
-func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
-	c_host_and_port := C.CString(hostAndPort)
-	defer C.free(unsafe.Pointer(c_host_and_port))
-
-	c_default_port := (C.guint16)(defaultPort)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_client_connect_to_host((*C.GSocketClient)(recv.native), c_host_and_port, c_default_port, c_cancellable, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_client_connect_to_host
 
 // Unsupported : g_socket_client_connect_to_host_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ConnectToHostFinish is a wrapper around the C function g_socket_client_connect_to_host_finish.
-func (recv *SocketClient) ConnectToHostFinish(result *AsyncResult) (*SocketConnection, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_socket_client_connect_to_host_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_client_connect_to_host_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ConnectToService is a wrapper around the C function g_socket_client_connect_to_service.
-func (recv *SocketClient) ConnectToService(domain string, service string, cancellable *Cancellable) (*SocketConnection, error) {
-	c_domain := C.CString(domain)
-	defer C.free(unsafe.Pointer(c_domain))
-
-	c_service := C.CString(service)
-	defer C.free(unsafe.Pointer(c_service))
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_client_connect_to_service((*C.GSocketClient)(recv.native), c_domain, c_service, c_cancellable, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_client_connect_to_service
 
 // Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ConnectToServiceFinish is a wrapper around the C function g_socket_client_connect_to_service_finish.
-func (recv *SocketClient) ConnectToServiceFinish(result *AsyncResult) (*SocketConnection, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_socket_client_connect_to_service_finish
 
-	var cThrowableError *C.GError
+// Blacklisted : g_socket_client_get_family
 
-	retC := C.g_socket_client_connect_to_service_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_client_get_local_address
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_socket_client_get_protocol
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_socket_client_get_socket_type
 
-	return retGo, goError
-}
+// Blacklisted : g_socket_client_set_family
 
-// GetFamily is a wrapper around the C function g_socket_client_get_family.
-func (recv *SocketClient) GetFamily() SocketFamily {
-	retC := C.g_socket_client_get_family((*C.GSocketClient)(recv.native))
-	retGo := (SocketFamily)(retC)
+// Blacklisted : g_socket_client_set_local_address
 
-	return retGo
-}
+// Blacklisted : g_socket_client_set_protocol
 
-// GetLocalAddress is a wrapper around the C function g_socket_client_get_local_address.
-func (recv *SocketClient) GetLocalAddress() *SocketAddress {
-	retC := C.g_socket_client_get_local_address((*C.GSocketClient)(recv.native))
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetProtocol is a wrapper around the C function g_socket_client_get_protocol.
-func (recv *SocketClient) GetProtocol() SocketProtocol {
-	retC := C.g_socket_client_get_protocol((*C.GSocketClient)(recv.native))
-	retGo := (SocketProtocol)(retC)
-
-	return retGo
-}
-
-// GetSocketType is a wrapper around the C function g_socket_client_get_socket_type.
-func (recv *SocketClient) GetSocketType() SocketType {
-	retC := C.g_socket_client_get_socket_type((*C.GSocketClient)(recv.native))
-	retGo := (SocketType)(retC)
-
-	return retGo
-}
-
-// SetFamily is a wrapper around the C function g_socket_client_set_family.
-func (recv *SocketClient) SetFamily(family SocketFamily) {
-	c_family := (C.GSocketFamily)(family)
-
-	C.g_socket_client_set_family((*C.GSocketClient)(recv.native), c_family)
-
-	return
-}
-
-// SetLocalAddress is a wrapper around the C function g_socket_client_set_local_address.
-func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
-	c_address := (*C.GSocketAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GSocketAddress)(address.ToC())
-	}
-
-	C.g_socket_client_set_local_address((*C.GSocketClient)(recv.native), c_address)
-
-	return
-}
-
-// SetProtocol is a wrapper around the C function g_socket_client_set_protocol.
-func (recv *SocketClient) SetProtocol(protocol SocketProtocol) {
-	c_protocol := (C.GSocketProtocol)(protocol)
-
-	C.g_socket_client_set_protocol((*C.GSocketClient)(recv.native), c_protocol)
-
-	return
-}
-
-// SetSocketType is a wrapper around the C function g_socket_client_set_socket_type.
-func (recv *SocketClient) SetSocketType(type_ SocketType) {
-	c_type := (C.GSocketType)(type_)
-
-	C.g_socket_client_set_socket_type((*C.GSocketClient)(recv.native), c_type)
-
-	return
-}
+// Blacklisted : g_socket_client_set_socket_type
 
 // SocketConnection is a wrapper around the C record GSocketConnection.
 type SocketConnection struct {
@@ -1744,125 +446,23 @@ func CastToSocketConnection(object *gobject.Object) *SocketConnection {
 	return SocketConnectionNewFromC(object.ToC())
 }
 
-// SocketConnectionFactoryLookupType is a wrapper around the C function g_socket_connection_factory_lookup_type.
-func SocketConnectionFactoryLookupType(family SocketFamily, type_ SocketType, protocolId int32) gobject.Type {
-	c_family := (C.GSocketFamily)(family)
+// Blacklisted : g_socket_connection_factory_lookup_type
 
-	c_type := (C.GSocketType)(type_)
+// Blacklisted : g_socket_connection_factory_register_type
 
-	c_protocol_id := (C.gint)(protocolId)
+// Blacklisted : g_socket_connection_get_local_address
 
-	retC := C.g_socket_connection_factory_lookup_type(c_family, c_type, c_protocol_id)
-	retGo := (gobject.Type)(retC)
+// Blacklisted : g_socket_connection_get_remote_address
 
-	return retGo
-}
+// Blacklisted : g_socket_connection_get_socket
 
-// SocketConnectionFactoryRegisterType is a wrapper around the C function g_socket_connection_factory_register_type.
-func SocketConnectionFactoryRegisterType(gType gobject.Type, family SocketFamily, type_ SocketType, protocol int32) {
-	c_g_type := (C.GType)(gType)
+// Blacklisted : g_socket_control_message_deserialize
 
-	c_family := (C.GSocketFamily)(family)
+// Blacklisted : g_socket_control_message_get_level
 
-	c_type := (C.GSocketType)(type_)
+// Blacklisted : g_socket_control_message_get_msg_type
 
-	c_protocol := (C.gint)(protocol)
-
-	C.g_socket_connection_factory_register_type(c_g_type, c_family, c_type, c_protocol)
-
-	return
-}
-
-// GetLocalAddress is a wrapper around the C function g_socket_connection_get_local_address.
-func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_connection_get_local_address((*C.GSocketConnection)(recv.native), &cThrowableError)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GetRemoteAddress is a wrapper around the C function g_socket_connection_get_remote_address.
-func (recv *SocketConnection) GetRemoteAddress() (*SocketAddress, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_connection_get_remote_address((*C.GSocketConnection)(recv.native), &cThrowableError)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GetSocket is a wrapper around the C function g_socket_connection_get_socket.
-func (recv *SocketConnection) GetSocket() *Socket {
-	retC := C.g_socket_connection_get_socket((*C.GSocketConnection)(recv.native))
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SocketControlMessageDeserialize is a wrapper around the C function g_socket_control_message_deserialize.
-func SocketControlMessageDeserialize(level int32, type_ int32, data []uint8) *SocketControlMessage {
-	c_level := (C.int)(level)
-
-	c_type := (C.int)(type_)
-
-	c_size := (C.gsize)(len(data))
-
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (C.gpointer)(unsafe.Pointer(c_data_arrayPtr))
-
-	retC := C.g_socket_control_message_deserialize(c_level, c_type, c_size, c_data)
-	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetLevel is a wrapper around the C function g_socket_control_message_get_level.
-func (recv *SocketControlMessage) GetLevel() int32 {
-	retC := C.g_socket_control_message_get_level((*C.GSocketControlMessage)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetMsgType is a wrapper around the C function g_socket_control_message_get_msg_type.
-func (recv *SocketControlMessage) GetMsgType() int32 {
-	retC := C.g_socket_control_message_get_msg_type((*C.GSocketControlMessage)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetSize is a wrapper around the C function g_socket_control_message_get_size.
-func (recv *SocketControlMessage) GetSize() uint64 {
-	retC := C.g_socket_control_message_get_size((*C.GSocketControlMessage)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_socket_control_message_get_size
 
 // Unsupported : g_socket_control_message_serialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
@@ -1915,228 +515,29 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 	return SocketListenerNewFromC(object.ToC())
 }
 
-// SocketListenerNew is a wrapper around the C function g_socket_listener_new.
-func SocketListenerNew() *SocketListener {
-	retC := C.g_socket_listener_new()
-	retGo := SocketListenerNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_listener_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// Accept is a wrapper around the C function g_socket_listener_accept.
-func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection, *gobject.Object, error) {
-	var c_source_object *C.GObject
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_accept((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
-
-	return retGo, sourceObject, goError
-}
+// Blacklisted : g_socket_listener_accept
 
 // Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// AcceptFinish is a wrapper around the C function g_socket_listener_accept_finish.
-func (recv *SocketListener) AcceptFinish(result *AsyncResult) (*SocketConnection, *gobject.Object, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_socket_listener_accept_finish
 
-	var c_source_object *C.GObject
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_accept_finish((*C.GSocketListener)(recv.native), c_result, &c_source_object, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
-
-	return retGo, sourceObject, goError
-}
-
-// AcceptSocket is a wrapper around the C function g_socket_listener_accept_socket.
-func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, *gobject.Object, error) {
-	var c_source_object *C.GObject
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_accept_socket((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
-
-	return retGo, sourceObject, goError
-}
+// Blacklisted : g_socket_listener_accept_socket
 
 // Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// AcceptSocketFinish is a wrapper around the C function g_socket_listener_accept_socket_finish.
-func (recv *SocketListener) AcceptSocketFinish(result *AsyncResult) (*Socket, *gobject.Object, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_socket_listener_accept_socket_finish
 
-	var c_source_object *C.GObject
+// Blacklisted : g_socket_listener_add_address
 
-	var cThrowableError *C.GError
+// Blacklisted : g_socket_listener_add_inet_port
 
-	retC := C.g_socket_listener_accept_socket_finish((*C.GSocketListener)(recv.native), c_result, &c_source_object, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_listener_add_socket
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_socket_listener_close
 
-		C.g_error_free(cThrowableError)
-	}
-
-	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
-
-	return retGo, sourceObject, goError
-}
-
-// AddAddress is a wrapper around the C function g_socket_listener_add_address.
-func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType, protocol SocketProtocol, sourceObject *gobject.Object) (bool, *SocketAddress, error) {
-	c_address := (*C.GSocketAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GSocketAddress)(address.ToC())
-	}
-
-	c_type := (C.GSocketType)(type_)
-
-	c_protocol := (C.GSocketProtocol)(protocol)
-
-	c_source_object := (*C.GObject)(C.NULL)
-	if sourceObject != nil {
-		c_source_object = (*C.GObject)(sourceObject.ToC())
-	}
-
-	var c_effective_address *C.GSocketAddress
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_add_address((*C.GSocketListener)(recv.native), c_address, c_type, c_protocol, c_source_object, &c_effective_address, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	effectiveAddress := SocketAddressNewFromC(unsafe.Pointer(c_effective_address))
-
-	return retGo, effectiveAddress, goError
-}
-
-// AddInetPort is a wrapper around the C function g_socket_listener_add_inet_port.
-func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Object) (bool, error) {
-	c_port := (C.guint16)(port)
-
-	c_source_object := (*C.GObject)(C.NULL)
-	if sourceObject != nil {
-		c_source_object = (*C.GObject)(sourceObject.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_add_inet_port((*C.GSocketListener)(recv.native), c_port, c_source_object, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// AddSocket is a wrapper around the C function g_socket_listener_add_socket.
-func (recv *SocketListener) AddSocket(socket *Socket, sourceObject *gobject.Object) (bool, error) {
-	c_socket := (*C.GSocket)(C.NULL)
-	if socket != nil {
-		c_socket = (*C.GSocket)(socket.ToC())
-	}
-
-	c_source_object := (*C.GObject)(C.NULL)
-	if sourceObject != nil {
-		c_source_object = (*C.GObject)(sourceObject.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_add_socket((*C.GSocketListener)(recv.native), c_socket, c_source_object, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Close is a wrapper around the C function g_socket_listener_close.
-func (recv *SocketListener) Close() {
-	C.g_socket_listener_close((*C.GSocketListener)(recv.native))
-
-	return
-}
-
-// SetBacklog is a wrapper around the C function g_socket_listener_set_backlog.
-func (recv *SocketListener) SetBacklog(listenBacklog int32) {
-	c_listen_backlog := (C.int)(listenBacklog)
-
-	C.g_socket_listener_set_backlog((*C.GSocketListener)(recv.native), c_listen_backlog)
-
-	return
-}
+// Blacklisted : g_socket_listener_set_backlog
 
 // SocketService is a wrapper around the C record GSocketService.
 type SocketService struct {
@@ -2259,39 +660,13 @@ func socketservice_incomingHandler(_ *C.GObject, c_connection *C.GSocketConnecti
 	return retC
 }
 
-// SocketServiceNew is a wrapper around the C function g_socket_service_new.
-func SocketServiceNew() *SocketService {
-	retC := C.g_socket_service_new()
-	retGo := SocketServiceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_service_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_socket_service_is_active
 
-	return retGo
-}
+// Blacklisted : g_socket_service_start
 
-// IsActive is a wrapper around the C function g_socket_service_is_active.
-func (recv *SocketService) IsActive() bool {
-	retC := C.g_socket_service_is_active((*C.GSocketService)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Start is a wrapper around the C function g_socket_service_start.
-func (recv *SocketService) Start() {
-	C.g_socket_service_start((*C.GSocketService)(recv.native))
-
-	return
-}
-
-// Stop is a wrapper around the C function g_socket_service_stop.
-func (recv *SocketService) Stop() {
-	C.g_socket_service_stop((*C.GSocketService)(recv.native))
-
-	return
-}
+// Blacklisted : g_socket_service_stop
 
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
@@ -2352,23 +727,9 @@ func CastToTcpConnection(object *gobject.Object) *TcpConnection {
 	return TcpConnectionNewFromC(object.ToC())
 }
 
-// GetGracefulDisconnect is a wrapper around the C function g_tcp_connection_get_graceful_disconnect.
-func (recv *TcpConnection) GetGracefulDisconnect() bool {
-	retC := C.g_tcp_connection_get_graceful_disconnect((*C.GTcpConnection)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_tcp_connection_get_graceful_disconnect
 
-	return retGo
-}
-
-// SetGracefulDisconnect is a wrapper around the C function g_tcp_connection_set_graceful_disconnect.
-func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
-	c_graceful_disconnect :=
-		boolToGboolean(gracefulDisconnect)
-
-	C.g_tcp_connection_set_graceful_disconnect((*C.GTcpConnection)(recv.native), c_graceful_disconnect)
-
-	return
-}
+// Blacklisted : g_tcp_connection_set_graceful_disconnect
 
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {
@@ -2496,148 +857,27 @@ func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConne
 	return retC
 }
 
-// ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
-func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
-	c_max_threads := (C.int)(maxThreads)
+// Blacklisted : g_threaded_socket_service_new
 
-	retC := C.g_threaded_socket_service_new(c_max_threads)
-	retGo := ThreadedSocketServiceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_unix_connection_receive_fd
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_unix_connection_send_fd
 
-	return retGo
-}
+// Blacklisted : g_unix_fd_message_new
 
-// ReceiveFd is a wrapper around the C function g_unix_connection_receive_fd.
-func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_unix_connection_receive_fd((*C.GUnixConnection)(recv.native), c_cancellable, &cThrowableError)
-	retGo := (int32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SendFd is a wrapper around the C function g_unix_connection_send_fd.
-func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, error) {
-	c_fd := (C.gint)(fd)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_unix_connection_send_fd((*C.GUnixConnection)(recv.native), c_fd, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
-func UnixFDMessageNew() *UnixFDMessage {
-	retC := C.g_unix_fd_message_new()
-	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// AppendFd is a wrapper around the C function g_unix_fd_message_append_fd.
-func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
-	c_fd := (C.gint)(fd)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_unix_fd_message_append_fd((*C.GUnixFDMessage)(recv.native), c_fd, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_unix_fd_message_append_fd
 
 // Unsupported : g_unix_fd_message_steal_fds : array return type :
 
-// UnixSocketAddressNew is a wrapper around the C function g_unix_socket_address_new.
-func UnixSocketAddressNew(path string) *UnixSocketAddress {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
+// Blacklisted : g_unix_socket_address_new
 
-	retC := C.g_unix_socket_address_new(c_path)
-	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_unix_socket_address_abstract_names_supported
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_unix_socket_address_get_is_abstract
 
-	return retGo
-}
+// Blacklisted : g_unix_socket_address_get_path
 
-// UnixSocketAddressAbstractNamesSupported is a wrapper around the C function g_unix_socket_address_abstract_names_supported.
-func UnixSocketAddressAbstractNamesSupported() bool {
-	retC := C.g_unix_socket_address_abstract_names_supported()
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetIsAbstract is a wrapper around the C function g_unix_socket_address_get_is_abstract.
-func (recv *UnixSocketAddress) GetIsAbstract() bool {
-	retC := C.g_unix_socket_address_get_is_abstract((*C.GUnixSocketAddress)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetPath is a wrapper around the C function g_unix_socket_address_get_path.
-func (recv *UnixSocketAddress) GetPath() string {
-	retC := C.g_unix_socket_address_get_path((*C.GUnixSocketAddress)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetPathLen is a wrapper around the C function g_unix_socket_address_get_path_len.
-func (recv *UnixSocketAddress) GetPathLen() uint64 {
-	retC := C.g_unix_socket_address_get_path_len((*C.GUnixSocketAddress)(recv.native))
-	retGo := (uint64)(retC)
-
-	return retGo
-}
+// Blacklisted : g_unix_socket_address_get_path_len
 
 type signalVolumeMonitorDriveStopButtonDetail struct {
 	callback  VolumeMonitorSignalDriveStopButtonCallback

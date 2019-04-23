@@ -3,11 +3,7 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -41,30 +37,7 @@ import "C"
 
 // Unsupported : g_data_input_stream_read_until_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReadUntilFinish is a wrapper around the C function g_data_input_stream_read_until_finish.
-func (recv *DataInputStream) ReadUntilFinish(result *AsyncResult) (string, uint64, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var c_length C.gsize
-
-	var cThrowableError *C.GError
-
-	retC := C.g_data_input_stream_read_until_finish((*C.GDataInputStream)(recv.native), c_result, &c_length, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	length := (uint64)(c_length)
-
-	return retGo, length, goError
-}
+// Blacklisted : g_data_input_stream_read_until_finish
 
 type signalMountOperationAbortedDetail struct {
 	callback  MountOperationSignalAbortedCallback
@@ -127,54 +100,14 @@ func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 }
 
 // g_simple_async_result_is_valid : unsupported parameter source_tag : no type generator for gpointer (gpointer) for param source_tag
-// GetCloseFd is a wrapper around the C function g_unix_input_stream_get_close_fd.
-func (recv *UnixInputStream) GetCloseFd() bool {
-	retC := C.g_unix_input_stream_get_close_fd((*C.GUnixInputStream)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_unix_input_stream_get_close_fd
 
-	return retGo
-}
+// Blacklisted : g_unix_input_stream_get_fd
 
-// GetFd is a wrapper around the C function g_unix_input_stream_get_fd.
-func (recv *UnixInputStream) GetFd() int32 {
-	retC := C.g_unix_input_stream_get_fd((*C.GUnixInputStream)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : g_unix_input_stream_set_close_fd
 
-	return retGo
-}
+// Blacklisted : g_unix_output_stream_get_close_fd
 
-// SetCloseFd is a wrapper around the C function g_unix_input_stream_set_close_fd.
-func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
-	c_close_fd :=
-		boolToGboolean(closeFd)
+// Blacklisted : g_unix_output_stream_get_fd
 
-	C.g_unix_input_stream_set_close_fd((*C.GUnixInputStream)(recv.native), c_close_fd)
-
-	return
-}
-
-// GetCloseFd is a wrapper around the C function g_unix_output_stream_get_close_fd.
-func (recv *UnixOutputStream) GetCloseFd() bool {
-	retC := C.g_unix_output_stream_get_close_fd((*C.GUnixOutputStream)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetFd is a wrapper around the C function g_unix_output_stream_get_fd.
-func (recv *UnixOutputStream) GetFd() int32 {
-	retC := C.g_unix_output_stream_get_fd((*C.GUnixOutputStream)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// SetCloseFd is a wrapper around the C function g_unix_output_stream_set_close_fd.
-func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
-	c_close_fd :=
-		boolToGboolean(closeFd)
-
-	C.g_unix_output_stream_set_close_fd((*C.GUnixOutputStream)(recv.native), c_close_fd)
-
-	return
-}
+// Blacklisted : g_unix_output_stream_set_close_fd

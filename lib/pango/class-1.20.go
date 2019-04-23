@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,45 +10,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetHeight is a wrapper around the C function pango_layout_get_height.
-func (recv *Layout) GetHeight() int32 {
-	retC := C.pango_layout_get_height((*C.PangoLayout)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : pango_layout_get_height
 
-	return retGo
-}
+// Blacklisted : pango_layout_set_height
 
-// SetHeight is a wrapper around the C function pango_layout_set_height.
-func (recv *Layout) SetHeight(height int32) {
-	c_height := (C.int)(height)
+// Blacklisted : pango_renderer_get_layout
 
-	C.pango_layout_set_height((*C.PangoLayout)(recv.native), c_height)
-
-	return
-}
-
-// GetLayout is a wrapper around the C function pango_renderer_get_layout.
-func (recv *Renderer) GetLayout() *Layout {
-	retC := C.pango_renderer_get_layout((*C.PangoRenderer)(recv.native))
-	var retGo (*Layout)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = LayoutNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetLayoutLine is a wrapper around the C function pango_renderer_get_layout_line.
-func (recv *Renderer) GetLayoutLine() *LayoutLine {
-	retC := C.pango_renderer_get_layout_line((*C.PangoRenderer)(recv.native))
-	var retGo (*LayoutLine)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = LayoutLineNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : pango_renderer_get_layout_line

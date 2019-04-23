@@ -10,57 +10,16 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// RequestSelectionNotification is a wrapper around the C function gdk_display_request_selection_notification.
-func (recv *Display) RequestSelectionNotification(selection *Atom) bool {
-	c_selection := (C.GdkAtom)(C.NULL)
-	if selection != nil {
-		c_selection = (C.GdkAtom)(selection.ToC())
-	}
-
-	retC := C.gdk_display_request_selection_notification((*C.GdkDisplay)(recv.native), c_selection)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_display_request_selection_notification
 
 // Unsupported : gdk_display_store_clipboard : unsupported parameter targets :
 
-// SupportsClipboardPersistence is a wrapper around the C function gdk_display_supports_clipboard_persistence.
-func (recv *Display) SupportsClipboardPersistence() bool {
-	retC := C.gdk_display_supports_clipboard_persistence((*C.GdkDisplay)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_display_supports_clipboard_persistence
 
-	return retGo
-}
+// Blacklisted : gdk_display_supports_selection_notification
 
-// SupportsSelectionNotification is a wrapper around the C function gdk_display_supports_selection_notification.
-func (recv *Display) SupportsSelectionNotification() bool {
-	retC := C.gdk_display_supports_selection_notification((*C.GdkDisplay)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gdk_window_configure_finished
 
-	return retGo
-}
+// Blacklisted : gdk_window_enable_synchronized_configure
 
-// ConfigureFinished is a wrapper around the C function gdk_window_configure_finished.
-func (recv *Window) ConfigureFinished() {
-	C.gdk_window_configure_finished((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// EnableSynchronizedConfigure is a wrapper around the C function gdk_window_enable_synchronized_configure.
-func (recv *Window) EnableSynchronizedConfigure() {
-	C.gdk_window_enable_synchronized_configure((*C.GdkWindow)(recv.native))
-
-	return
-}
-
-// SetFocusOnMap is a wrapper around the C function gdk_window_set_focus_on_map.
-func (recv *Window) SetFocusOnMap(focusOnMap bool) {
-	c_focus_on_map :=
-		boolToGboolean(focusOnMap)
-
-	C.gdk_window_set_focus_on_map((*C.GdkWindow)(recv.native), c_focus_on_map)
-
-	return
-}
+// Blacklisted : gdk_window_set_focus_on_map

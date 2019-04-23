@@ -10,9 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Changed is a wrapper around the C function pango_font_map_changed.
-func (recv *FontMap) Changed() {
-	C.pango_font_map_changed((*C.PangoFontMap)(recv.native))
-
-	return
-}
+// Blacklisted : pango_font_map_changed

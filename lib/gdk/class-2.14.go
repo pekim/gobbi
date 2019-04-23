@@ -3,11 +3,7 @@
 
 package gdk
 
-import (
-	gio "github.com/pekim/gobbi/lib/gio"
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -25,78 +21,19 @@ import (
 */
 import "C"
 
-// AppLaunchContextNew is a wrapper around the C function gdk_app_launch_context_new.
-func AppLaunchContextNew() *AppLaunchContext {
-	retC := C.gdk_app_launch_context_new()
-	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_app_launch_context_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : gdk_app_launch_context_set_desktop
 
-	return retGo
-}
+// Blacklisted : gdk_app_launch_context_set_display
 
-// SetDesktop is a wrapper around the C function gdk_app_launch_context_set_desktop.
-func (recv *AppLaunchContext) SetDesktop(desktop int32) {
-	c_desktop := (C.gint)(desktop)
+// Blacklisted : gdk_app_launch_context_set_icon
 
-	C.gdk_app_launch_context_set_desktop((*C.GdkAppLaunchContext)(recv.native), c_desktop)
+// Blacklisted : gdk_app_launch_context_set_icon_name
 
-	return
-}
+// Blacklisted : gdk_app_launch_context_set_screen
 
-// SetDisplay is a wrapper around the C function gdk_app_launch_context_set_display.
-func (recv *AppLaunchContext) SetDisplay(display *Display) {
-	c_display := (*C.GdkDisplay)(C.NULL)
-	if display != nil {
-		c_display = (*C.GdkDisplay)(display.ToC())
-	}
-
-	C.gdk_app_launch_context_set_display((*C.GdkAppLaunchContext)(recv.native), c_display)
-
-	return
-}
-
-// SetIcon is a wrapper around the C function gdk_app_launch_context_set_icon.
-func (recv *AppLaunchContext) SetIcon(icon *gio.Icon) {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.gdk_app_launch_context_set_icon((*C.GdkAppLaunchContext)(recv.native), c_icon)
-
-	return
-}
-
-// SetIconName is a wrapper around the C function gdk_app_launch_context_set_icon_name.
-func (recv *AppLaunchContext) SetIconName(iconName string) {
-	c_icon_name := C.CString(iconName)
-	defer C.free(unsafe.Pointer(c_icon_name))
-
-	C.gdk_app_launch_context_set_icon_name((*C.GdkAppLaunchContext)(recv.native), c_icon_name)
-
-	return
-}
-
-// SetScreen is a wrapper around the C function gdk_app_launch_context_set_screen.
-func (recv *AppLaunchContext) SetScreen(screen *Screen) {
-	c_screen := (*C.GdkScreen)(C.NULL)
-	if screen != nil {
-		c_screen = (*C.GdkScreen)(screen.ToC())
-	}
-
-	C.gdk_app_launch_context_set_screen((*C.GdkAppLaunchContext)(recv.native), c_screen)
-
-	return
-}
-
-// SetTimestamp is a wrapper around the C function gdk_app_launch_context_set_timestamp.
-func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
-	c_timestamp := (C.guint32)(timestamp)
-
-	C.gdk_app_launch_context_set_timestamp((*C.GdkAppLaunchContext)(recv.native), c_timestamp)
-
-	return
-}
+// Blacklisted : gdk_app_launch_context_set_timestamp
 
 type signalScreenMonitorsChangedDetail struct {
 	callback  ScreenSignalMonitorsChangedCallback
@@ -158,33 +95,8 @@ func screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.
-func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {
-	c_monitor_num := (C.gint)(monitorNum)
+// Blacklisted : gdk_screen_get_monitor_height_mm
 
-	retC := C.gdk_screen_get_monitor_height_mm((*C.GdkScreen)(recv.native), c_monitor_num)
-	retGo := (int32)(retC)
+// Blacklisted : gdk_screen_get_monitor_plug_name
 
-	return retGo
-}
-
-// GetMonitorPlugName is a wrapper around the C function gdk_screen_get_monitor_plug_name.
-func (recv *Screen) GetMonitorPlugName(monitorNum int32) string {
-	c_monitor_num := (C.gint)(monitorNum)
-
-	retC := C.gdk_screen_get_monitor_plug_name((*C.GdkScreen)(recv.native), c_monitor_num)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetMonitorWidthMm is a wrapper around the C function gdk_screen_get_monitor_width_mm.
-func (recv *Screen) GetMonitorWidthMm(monitorNum int32) int32 {
-	c_monitor_num := (C.gint)(monitorNum)
-
-	retC := C.gdk_screen_get_monitor_width_mm((*C.GdkScreen)(recv.native), c_monitor_num)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_screen_get_monitor_width_mm

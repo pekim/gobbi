@@ -12,20 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetRevealed is a wrapper around the C function gtk_info_bar_get_revealed.
-func (recv *InfoBar) GetRevealed() bool {
-	retC := C.gtk_info_bar_get_revealed((*C.GtkInfoBar)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_info_bar_get_revealed
 
-	return retGo
-}
-
-// SetRevealed is a wrapper around the C function gtk_info_bar_set_revealed.
-func (recv *InfoBar) SetRevealed(revealed bool) {
-	c_revealed :=
-		boolToGboolean(revealed)
-
-	C.gtk_info_bar_set_revealed((*C.GtkInfoBar)(recv.native), c_revealed)
-
-	return
-}
+// Blacklisted : gtk_info_bar_set_revealed

@@ -12,23 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// IterGetState is a wrapper around the C function gtk_widget_path_iter_get_state.
-func (recv *WidgetPath) IterGetState(pos int32) StateFlags {
-	c_pos := (C.gint)(pos)
+// Blacklisted : gtk_widget_path_iter_get_state
 
-	retC := C.gtk_widget_path_iter_get_state((*C.GtkWidgetPath)(recv.native), c_pos)
-	retGo := (StateFlags)(retC)
-
-	return retGo
-}
-
-// IterSetState is a wrapper around the C function gtk_widget_path_iter_set_state.
-func (recv *WidgetPath) IterSetState(pos int32, state StateFlags) {
-	c_pos := (C.gint)(pos)
-
-	c_state := (C.GtkStateFlags)(state)
-
-	C.gtk_widget_path_iter_set_state((*C.GtkWidgetPath)(recv.native), c_pos, c_state)
-
-	return
-}
+// Blacklisted : gtk_widget_path_iter_set_state

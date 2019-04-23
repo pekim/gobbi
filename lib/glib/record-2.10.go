@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -22,77 +20,20 @@ import "C"
 
 // Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
-// SetTimeT is a wrapper around the C function g_date_set_time_t.
-func (recv *Date) SetTimeT(timet int64) {
-	c_timet := (C.time_t)(timet)
+// Blacklisted : g_date_set_time_t
 
-	C.g_date_set_time_t((*C.GDate)(recv.native), c_timet)
+// Blacklisted : g_date_set_time_val
 
-	return
-}
+// Blacklisted : g_hash_table_ref
 
-// SetTimeVal is a wrapper around the C function g_date_set_time_val.
-func (recv *Date) SetTimeVal(timeval *TimeVal) {
-	c_timeval := (*C.GTimeVal)(C.NULL)
-	if timeval != nil {
-		c_timeval = (*C.GTimeVal)(timeval.ToC())
-	}
-
-	C.g_date_set_time_val((*C.GDate)(recv.native), c_timeval)
-
-	return
-}
-
-// HashTableRef is a wrapper around the C function g_hash_table_ref.
-func HashTableRef(hashTable *HashTable) *HashTable {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	retC := C.g_hash_table_ref(c_hash_table)
-	retGo := HashTableNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HashTableUnref is a wrapper around the C function g_hash_table_unref.
-func HashTableUnref(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	C.g_hash_table_unref(c_hash_table)
-
-	return
-}
+// Blacklisted : g_hash_table_unref
 
 // g_list_insert_sorted_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// IsOwner is a wrapper around the C function g_main_context_is_owner.
-func (recv *MainContext) IsOwner() bool {
-	retC := C.g_main_context_is_owner((*C.GMainContext)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_main_context_is_owner
 
 // g_slist_insert_sorted_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
-func ThreadPoolGetMaxIdleTime() uint32 {
-	retC := C.g_thread_pool_get_max_idle_time()
-	retGo := (uint32)(retC)
+// Blacklisted : g_thread_pool_get_max_idle_time
 
-	return retGo
-}
-
-// ThreadPoolSetMaxIdleTime is a wrapper around the C function g_thread_pool_set_max_idle_time.
-func ThreadPoolSetMaxIdleTime(interval uint32) {
-	c_interval := (C.guint)(interval)
-
-	C.g_thread_pool_set_max_idle_time(c_interval)
-
-	return
-}
+// Blacklisted : g_thread_pool_set_max_idle_time
 
 // Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func

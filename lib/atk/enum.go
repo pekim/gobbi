@@ -2,8 +2,6 @@
 
 package atk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -66,37 +64,11 @@ const (
 	ATK_RELATION_LAST_DEFINED     RelationType = 21
 )
 
-// RelationTypeForName is a wrapper around the C function atk_relation_type_for_name.
-func RelationTypeForName(name string) RelationType {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : atk_relation_type_for_name
 
-	retC := C.atk_relation_type_for_name(c_name)
-	retGo := (RelationType)(retC)
+// Blacklisted : atk_relation_type_get_name
 
-	return retGo
-}
-
-// RelationTypeGetName is a wrapper around the C function atk_relation_type_get_name.
-func RelationTypeGetName(type_ RelationType) string {
-	c_type := (C.AtkRelationType)(type_)
-
-	retC := C.atk_relation_type_get_name(c_type)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// RelationTypeRegister is a wrapper around the C function atk_relation_type_register.
-func RelationTypeRegister(name string) RelationType {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.atk_relation_type_register(c_name)
-	retGo := (RelationType)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_relation_type_register
 
 type Role C.AtkRole
 
@@ -227,47 +199,13 @@ const (
 	ATK_ROLE_LAST_DEFINED          Role = 123
 )
 
-// RoleForName is a wrapper around the C function atk_role_for_name.
-func RoleForName(name string) Role {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : atk_role_for_name
 
-	retC := C.atk_role_for_name(c_name)
-	retGo := (Role)(retC)
+// Blacklisted : atk_role_get_localized_name
 
-	return retGo
-}
+// Blacklisted : atk_role_get_name
 
-// RoleGetLocalizedName is a wrapper around the C function atk_role_get_localized_name.
-func RoleGetLocalizedName(role Role) string {
-	c_role := (C.AtkRole)(role)
-
-	retC := C.atk_role_get_localized_name(c_role)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// RoleGetName is a wrapper around the C function atk_role_get_name.
-func RoleGetName(role Role) string {
-	c_role := (C.AtkRole)(role)
-
-	retC := C.atk_role_get_name(c_role)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// RoleRegister is a wrapper around the C function atk_role_register.
-func RoleRegister(name string) Role {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.atk_role_register(c_name)
-	retGo := (Role)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_role_register
 
 type StateType C.AtkStateType
 
@@ -318,37 +256,11 @@ const (
 	ATK_STATE_LAST_DEFINED            StateType = 43
 )
 
-// StateTypeForName is a wrapper around the C function atk_state_type_for_name.
-func StateTypeForName(name string) StateType {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : atk_state_type_for_name
 
-	retC := C.atk_state_type_for_name(c_name)
-	retGo := (StateType)(retC)
+// Blacklisted : atk_state_type_get_name
 
-	return retGo
-}
-
-// StateTypeGetName is a wrapper around the C function atk_state_type_get_name.
-func StateTypeGetName(type_ StateType) string {
-	c_type := (C.AtkStateType)(type_)
-
-	retC := C.atk_state_type_get_name(c_type)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// StateTypeRegister is a wrapper around the C function atk_state_type_register.
-func StateTypeRegister(name string) StateType {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.atk_state_type_register(c_name)
-	retGo := (StateType)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_state_type_register
 
 type TextAttribute C.AtkTextAttribute
 
@@ -384,49 +296,13 @@ const (
 	ATK_TEXT_ATTR_LAST_DEFINED       TextAttribute = 28
 )
 
-// TextAttributeForName is a wrapper around the C function atk_text_attribute_for_name.
-func TextAttributeForName(name string) TextAttribute {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
+// Blacklisted : atk_text_attribute_for_name
 
-	retC := C.atk_text_attribute_for_name(c_name)
-	retGo := (TextAttribute)(retC)
+// Blacklisted : atk_text_attribute_get_name
 
-	return retGo
-}
+// Blacklisted : atk_text_attribute_get_value
 
-// TextAttributeGetName is a wrapper around the C function atk_text_attribute_get_name.
-func TextAttributeGetName(attr TextAttribute) string {
-	c_attr := (C.AtkTextAttribute)(attr)
-
-	retC := C.atk_text_attribute_get_name(c_attr)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// TextAttributeGetValue is a wrapper around the C function atk_text_attribute_get_value.
-func TextAttributeGetValue(attr TextAttribute, index int32) string {
-	c_attr := (C.AtkTextAttribute)(attr)
-
-	c_index_ := (C.gint)(index)
-
-	retC := C.atk_text_attribute_get_value(c_attr, c_index_)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// TextAttributeRegister is a wrapper around the C function atk_text_attribute_register.
-func TextAttributeRegister(name string) TextAttribute {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.atk_text_attribute_register(c_name)
-	retGo := (TextAttribute)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_text_attribute_register
 
 type TextBoundary C.AtkTextBoundary
 
@@ -480,22 +356,6 @@ const (
 	ATK_VALUE_LAST_DEFINED ValueType = 15
 )
 
-// ValueTypeGetLocalizedName is a wrapper around the C function atk_value_type_get_localized_name.
-func ValueTypeGetLocalizedName(valueType ValueType) string {
-	c_value_type := (C.AtkValueType)(valueType)
+// Blacklisted : atk_value_type_get_localized_name
 
-	retC := C.atk_value_type_get_localized_name(c_value_type)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// ValueTypeGetName is a wrapper around the C function atk_value_type_get_name.
-func ValueTypeGetName(valueType ValueType) string {
-	c_value_type := (C.AtkValueType)(valueType)
-
-	retC := C.atk_value_type_get_name(c_value_type)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : atk_value_type_get_name

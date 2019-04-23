@@ -4,8 +4,6 @@
 package gio
 
 import (
-	"fmt"
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -29,30 +27,12 @@ import (
 // #include <stdlib.h>
 /*
 
-	static void _g_menu_item_set_action_and_target(GMenuItem* menu_item, const gchar* action, const gchar* format_string) {
-		return g_menu_item_set_action_and_target(menu_item, action, format_string);
-    }
-*/
-/*
-
-	static void _g_menu_item_set_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
-		return g_menu_item_set_attribute(menu_item, attribute, format_string);
-    }
-*/
-/*
-
 	void menumodel_itemsChangedHandler(GObject *, gint, gint, gint, gpointer);
 
 	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "items-changed", G_CALLBACK(menumodel_itemsChangedHandler), data);
 	}
 
-*/
-/*
-
-	static gboolean _g_menu_model_get_item_attribute(GMenuModel* model, gint item_index, const gchar* attribute, const gchar* format_string) {
-		return g_menu_model_get_item_attribute(model, item_index, attribute, format_string);
-    }
 */
 /*
 
@@ -65,213 +45,37 @@ import (
 */
 import "C"
 
-// GetEnvironment is a wrapper around the C function g_app_launch_context_get_environment.
-func (recv *AppLaunchContext) GetEnvironment() []string {
-	retC := C.g_app_launch_context_get_environment((*C.GAppLaunchContext)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
+// Blacklisted : g_app_launch_context_get_environment
 
-	return retGo
-}
+// Blacklisted : g_app_launch_context_setenv
 
-// Setenv is a wrapper around the C function g_app_launch_context_setenv.
-func (recv *AppLaunchContext) Setenv(variable string, value string) {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
+// Blacklisted : g_app_launch_context_unsetenv
 
-	c_value := C.CString(value)
-	defer C.free(unsafe.Pointer(c_value))
+// Blacklisted : g_application_get_default
 
-	C.g_app_launch_context_setenv((*C.GAppLaunchContext)(recv.native), c_variable, c_value)
+// Blacklisted : g_application_quit
 
-	return
-}
+// Blacklisted : g_application_set_default
 
-// Unsetenv is a wrapper around the C function g_app_launch_context_unsetenv.
-func (recv *AppLaunchContext) Unsetenv(variable string) {
-	c_variable := C.CString(variable)
-	defer C.free(unsafe.Pointer(c_variable))
+// Blacklisted : g_dbus_action_group_get
 
-	C.g_app_launch_context_unsetenv((*C.GAppLaunchContext)(recv.native), c_variable)
+// Blacklisted : g_dbus_connection_export_action_group
 
-	return
-}
+// Blacklisted : g_dbus_connection_export_menu_model
 
-// ApplicationGetDefault is a wrapper around the C function g_application_get_default.
-func ApplicationGetDefault() *Application {
-	retC := C.g_application_get_default()
-	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_dbus_connection_unexport_action_group
 
-	return retGo
-}
+// Blacklisted : g_dbus_connection_unexport_menu_model
 
-// Quit is a wrapper around the C function g_application_quit.
-func (recv *Application) Quit() {
-	C.g_application_quit((*C.GApplication)(recv.native))
+// Blacklisted : g_dbus_interface_skeleton_get_connections
 
-	return
-}
+// Blacklisted : g_dbus_interface_skeleton_has_connection
 
-// SetDefault is a wrapper around the C function g_application_set_default.
-func (recv *Application) SetDefault() {
-	C.g_application_set_default((*C.GApplication)(recv.native))
+// Blacklisted : g_dbus_interface_skeleton_unexport_from_connection
 
-	return
-}
+// Blacklisted : g_dbus_menu_model_get
 
-// DBusActionGroupGet is a wrapper around the C function g_dbus_action_group_get.
-func DBusActionGroupGet(connection *DBusConnection, busName string, objectPath string) *DBusActionGroup {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	c_bus_name := C.CString(busName)
-	defer C.free(unsafe.Pointer(c_bus_name))
-
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_action_group_get(c_connection, c_bus_name, c_object_path)
-	retGo := DBusActionGroupNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ExportActionGroup is a wrapper around the C function g_dbus_connection_export_action_group.
-func (recv *DBusConnection) ExportActionGroup(objectPath string, actionGroup *ActionGroup) (uint32, error) {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	c_action_group := (*C.GActionGroup)(actionGroup.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_connection_export_action_group((*C.GDBusConnection)(recv.native), c_object_path, c_action_group, &cThrowableError)
-	retGo := (uint32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// ExportMenuModel is a wrapper around the C function g_dbus_connection_export_menu_model.
-func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) (uint32, error) {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	c_menu := (*C.GMenuModel)(C.NULL)
-	if menu != nil {
-		c_menu = (*C.GMenuModel)(menu.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_connection_export_menu_model((*C.GDBusConnection)(recv.native), c_object_path, c_menu, &cThrowableError)
-	retGo := (uint32)(retC)
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// UnexportActionGroup is a wrapper around the C function g_dbus_connection_unexport_action_group.
-func (recv *DBusConnection) UnexportActionGroup(exportId uint32) {
-	c_export_id := (C.guint)(exportId)
-
-	C.g_dbus_connection_unexport_action_group((*C.GDBusConnection)(recv.native), c_export_id)
-
-	return
-}
-
-// UnexportMenuModel is a wrapper around the C function g_dbus_connection_unexport_menu_model.
-func (recv *DBusConnection) UnexportMenuModel(exportId uint32) {
-	c_export_id := (C.guint)(exportId)
-
-	C.g_dbus_connection_unexport_menu_model((*C.GDBusConnection)(recv.native), c_export_id)
-
-	return
-}
-
-// GetConnections is a wrapper around the C function g_dbus_interface_skeleton_get_connections.
-func (recv *DBusInterfaceSkeleton) GetConnections() *glib.List {
-	retC := C.g_dbus_interface_skeleton_get_connections((*C.GDBusInterfaceSkeleton)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HasConnection is a wrapper around the C function g_dbus_interface_skeleton_has_connection.
-func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) bool {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	retC := C.g_dbus_interface_skeleton_has_connection((*C.GDBusInterfaceSkeleton)(recv.native), c_connection)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// UnexportFromConnection is a wrapper around the C function g_dbus_interface_skeleton_unexport_from_connection.
-func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnection) {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	C.g_dbus_interface_skeleton_unexport_from_connection((*C.GDBusInterfaceSkeleton)(recv.native), c_connection)
-
-	return
-}
-
-// DBusMenuModelGet is a wrapper around the C function g_dbus_menu_model_get.
-func DBusMenuModelGet(connection *DBusConnection, busName string, objectPath string) *DBusMenuModel {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	c_bus_name := C.CString(busName)
-	defer C.free(unsafe.Pointer(c_bus_name))
-
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_menu_model_get(c_connection, c_bus_name, c_object_path)
-	retGo := DBusMenuModelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetKeywords is a wrapper around the C function g_desktop_app_info_get_keywords.
-func (recv *DesktopAppInfo) GetKeywords() []string {
-	retC := C.g_desktop_app_info_get_keywords((*C.GDesktopAppInfo)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-
-	return retGo
-}
+// Blacklisted : g_desktop_app_info_get_keywords
 
 // InetAddressMask is a wrapper around the C record GInetAddressMask.
 type InetAddressMask struct {
@@ -322,134 +126,25 @@ func CastToInetAddressMask(object *gobject.Object) *InetAddressMask {
 	return InetAddressMaskNewFromC(object.ToC())
 }
 
-// InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
-func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, error) {
-	c_addr := (*C.GInetAddress)(C.NULL)
-	if addr != nil {
-		c_addr = (*C.GInetAddress)(addr.ToC())
-	}
+// Blacklisted : g_inet_address_mask_new
 
-	c_length := (C.guint)(length)
+// Blacklisted : g_inet_address_mask_new_from_string
 
-	var cThrowableError *C.GError
+// Blacklisted : g_inet_address_mask_equal
 
-	retC := C.g_inet_address_mask_new(c_addr, c_length, &cThrowableError)
-	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_inet_address_mask_get_address
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_inet_address_mask_get_family
 
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
+// Blacklisted : g_inet_address_mask_get_length
 
-		C.g_error_free(cThrowableError)
-	}
+// Blacklisted : g_inet_address_mask_matches
 
-	return retGo, goError
-}
+// Blacklisted : g_inet_address_mask_to_string
 
-// InetAddressMaskNewFromString is a wrapper around the C function g_inet_address_mask_new_from_string.
-func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
-	c_mask_string := C.CString(maskString)
-	defer C.free(unsafe.Pointer(c_mask_string))
+// Blacklisted : g_inet_socket_address_get_flowinfo
 
-	var cThrowableError *C.GError
-
-	retC := C.g_inet_address_mask_new_from_string(c_mask_string, &cThrowableError)
-	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Equal is a wrapper around the C function g_inet_address_mask_equal.
-func (recv *InetAddressMask) Equal(mask2 *InetAddressMask) bool {
-	c_mask2 := (*C.GInetAddressMask)(C.NULL)
-	if mask2 != nil {
-		c_mask2 = (*C.GInetAddressMask)(mask2.ToC())
-	}
-
-	retC := C.g_inet_address_mask_equal((*C.GInetAddressMask)(recv.native), c_mask2)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetAddress is a wrapper around the C function g_inet_address_mask_get_address.
-func (recv *InetAddressMask) GetAddress() *InetAddress {
-	retC := C.g_inet_address_mask_get_address((*C.GInetAddressMask)(recv.native))
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetFamily is a wrapper around the C function g_inet_address_mask_get_family.
-func (recv *InetAddressMask) GetFamily() SocketFamily {
-	retC := C.g_inet_address_mask_get_family((*C.GInetAddressMask)(recv.native))
-	retGo := (SocketFamily)(retC)
-
-	return retGo
-}
-
-// GetLength is a wrapper around the C function g_inet_address_mask_get_length.
-func (recv *InetAddressMask) GetLength() uint32 {
-	retC := C.g_inet_address_mask_get_length((*C.GInetAddressMask)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// Matches is a wrapper around the C function g_inet_address_mask_matches.
-func (recv *InetAddressMask) Matches(address *InetAddress) bool {
-	c_address := (*C.GInetAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GInetAddress)(address.ToC())
-	}
-
-	retC := C.g_inet_address_mask_matches((*C.GInetAddressMask)(recv.native), c_address)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ToString is a wrapper around the C function g_inet_address_mask_to_string.
-func (recv *InetAddressMask) ToString() string {
-	retC := C.g_inet_address_mask_to_string((*C.GInetAddressMask)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetFlowinfo is a wrapper around the C function g_inet_socket_address_get_flowinfo.
-func (recv *InetSocketAddress) GetFlowinfo() uint32 {
-	retC := C.g_inet_socket_address_get_flowinfo((*C.GInetSocketAddress)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// GetScopeId is a wrapper around the C function g_inet_socket_address_get_scope_id.
-func (recv *InetSocketAddress) GetScopeId() uint32 {
-	retC := C.g_inet_socket_address_get_scope_id((*C.GInetSocketAddress)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_inet_socket_address_get_scope_id
 
 // Menu is a wrapper around the C record GMenu.
 type Menu struct {
@@ -503,206 +198,35 @@ func CastToMenu(object *gobject.Object) *Menu {
 	return MenuNewFromC(object.ToC())
 }
 
-// MenuNew is a wrapper around the C function g_menu_new.
-func MenuNew() *Menu {
-	retC := C.g_menu_new()
-	retGo := MenuNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_menu_new
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_menu_append
 
-	return retGo
-}
+// Blacklisted : g_menu_append_item
 
-// Append is a wrapper around the C function g_menu_append.
-func (recv *Menu) Append(label string, detailedAction string) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_menu_append_section
 
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
+// Blacklisted : g_menu_append_submenu
 
-	C.g_menu_append((*C.GMenu)(recv.native), c_label, c_detailed_action)
+// Blacklisted : g_menu_freeze
 
-	return
-}
+// Blacklisted : g_menu_insert
 
-// AppendItem is a wrapper around the C function g_menu_append_item.
-func (recv *Menu) AppendItem(item *MenuItem) {
-	c_item := (*C.GMenuItem)(C.NULL)
-	if item != nil {
-		c_item = (*C.GMenuItem)(item.ToC())
-	}
+// Blacklisted : g_menu_insert_item
 
-	C.g_menu_append_item((*C.GMenu)(recv.native), c_item)
+// Blacklisted : g_menu_insert_section
 
-	return
-}
+// Blacklisted : g_menu_insert_submenu
 
-// AppendSection is a wrapper around the C function g_menu_append_section.
-func (recv *Menu) AppendSection(label string, section *MenuModel) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_menu_prepend
 
-	c_section := (*C.GMenuModel)(C.NULL)
-	if section != nil {
-		c_section = (*C.GMenuModel)(section.ToC())
-	}
+// Blacklisted : g_menu_prepend_item
 
-	C.g_menu_append_section((*C.GMenu)(recv.native), c_label, c_section)
+// Blacklisted : g_menu_prepend_section
 
-	return
-}
+// Blacklisted : g_menu_prepend_submenu
 
-// AppendSubmenu is a wrapper around the C function g_menu_append_submenu.
-func (recv *Menu) AppendSubmenu(label string, submenu *MenuModel) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_submenu := (*C.GMenuModel)(C.NULL)
-	if submenu != nil {
-		c_submenu = (*C.GMenuModel)(submenu.ToC())
-	}
-
-	C.g_menu_append_submenu((*C.GMenu)(recv.native), c_label, c_submenu)
-
-	return
-}
-
-// Freeze is a wrapper around the C function g_menu_freeze.
-func (recv *Menu) Freeze() {
-	C.g_menu_freeze((*C.GMenu)(recv.native))
-
-	return
-}
-
-// Insert is a wrapper around the C function g_menu_insert.
-func (recv *Menu) Insert(position int32, label string, detailedAction string) {
-	c_position := (C.gint)(position)
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
-
-	C.g_menu_insert((*C.GMenu)(recv.native), c_position, c_label, c_detailed_action)
-
-	return
-}
-
-// InsertItem is a wrapper around the C function g_menu_insert_item.
-func (recv *Menu) InsertItem(position int32, item *MenuItem) {
-	c_position := (C.gint)(position)
-
-	c_item := (*C.GMenuItem)(C.NULL)
-	if item != nil {
-		c_item = (*C.GMenuItem)(item.ToC())
-	}
-
-	C.g_menu_insert_item((*C.GMenu)(recv.native), c_position, c_item)
-
-	return
-}
-
-// InsertSection is a wrapper around the C function g_menu_insert_section.
-func (recv *Menu) InsertSection(position int32, label string, section *MenuModel) {
-	c_position := (C.gint)(position)
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_section := (*C.GMenuModel)(C.NULL)
-	if section != nil {
-		c_section = (*C.GMenuModel)(section.ToC())
-	}
-
-	C.g_menu_insert_section((*C.GMenu)(recv.native), c_position, c_label, c_section)
-
-	return
-}
-
-// InsertSubmenu is a wrapper around the C function g_menu_insert_submenu.
-func (recv *Menu) InsertSubmenu(position int32, label string, submenu *MenuModel) {
-	c_position := (C.gint)(position)
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_submenu := (*C.GMenuModel)(C.NULL)
-	if submenu != nil {
-		c_submenu = (*C.GMenuModel)(submenu.ToC())
-	}
-
-	C.g_menu_insert_submenu((*C.GMenu)(recv.native), c_position, c_label, c_submenu)
-
-	return
-}
-
-// Prepend is a wrapper around the C function g_menu_prepend.
-func (recv *Menu) Prepend(label string, detailedAction string) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
-
-	C.g_menu_prepend((*C.GMenu)(recv.native), c_label, c_detailed_action)
-
-	return
-}
-
-// PrependItem is a wrapper around the C function g_menu_prepend_item.
-func (recv *Menu) PrependItem(item *MenuItem) {
-	c_item := (*C.GMenuItem)(C.NULL)
-	if item != nil {
-		c_item = (*C.GMenuItem)(item.ToC())
-	}
-
-	C.g_menu_prepend_item((*C.GMenu)(recv.native), c_item)
-
-	return
-}
-
-// PrependSection is a wrapper around the C function g_menu_prepend_section.
-func (recv *Menu) PrependSection(label string, section *MenuModel) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_section := (*C.GMenuModel)(C.NULL)
-	if section != nil {
-		c_section = (*C.GMenuModel)(section.ToC())
-	}
-
-	C.g_menu_prepend_section((*C.GMenu)(recv.native), c_label, c_section)
-
-	return
-}
-
-// PrependSubmenu is a wrapper around the C function g_menu_prepend_submenu.
-func (recv *Menu) PrependSubmenu(label string, submenu *MenuModel) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_submenu := (*C.GMenuModel)(C.NULL)
-	if submenu != nil {
-		c_submenu = (*C.GMenuModel)(submenu.ToC())
-	}
-
-	C.g_menu_prepend_submenu((*C.GMenu)(recv.native), c_label, c_submenu)
-
-	return
-}
-
-// Remove is a wrapper around the C function g_menu_remove.
-func (recv *Menu) Remove(position int32) {
-	c_position := (C.gint)(position)
-
-	C.g_menu_remove((*C.GMenu)(recv.native), c_position)
-
-	return
-}
+// Blacklisted : g_menu_remove
 
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
 type MenuAttributeIter struct {
@@ -753,45 +277,13 @@ func CastToMenuAttributeIter(object *gobject.Object) *MenuAttributeIter {
 	return MenuAttributeIterNewFromC(object.ToC())
 }
 
-// GetName is a wrapper around the C function g_menu_attribute_iter_get_name.
-func (recv *MenuAttributeIter) GetName() string {
-	retC := C.g_menu_attribute_iter_get_name((*C.GMenuAttributeIter)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_menu_attribute_iter_get_name
 
-	return retGo
-}
+// Blacklisted : g_menu_attribute_iter_get_next
 
-// GetNext is a wrapper around the C function g_menu_attribute_iter_get_next.
-func (recv *MenuAttributeIter) GetNext() (bool, string, *glib.Variant) {
-	var c_out_name *C.gchar
+// Blacklisted : g_menu_attribute_iter_get_value
 
-	var c_value *C.GVariant
-
-	retC := C.g_menu_attribute_iter_get_next((*C.GMenuAttributeIter)(recv.native), &c_out_name, &c_value)
-	retGo := retC == C.TRUE
-
-	outName := C.GoString(c_out_name)
-
-	value := glib.VariantNewFromC(unsafe.Pointer(c_value))
-
-	return retGo, outName, value
-}
-
-// GetValue is a wrapper around the C function g_menu_attribute_iter_get_value.
-func (recv *MenuAttributeIter) GetValue() *glib.Variant {
-	retC := C.g_menu_attribute_iter_get_value((*C.GMenuAttributeIter)(recv.native))
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Next is a wrapper around the C function g_menu_attribute_iter_next.
-func (recv *MenuAttributeIter) Next() bool {
-	retC := C.g_menu_attribute_iter_next((*C.GMenuAttributeIter)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_menu_attribute_iter_next
 
 // MenuItem is a wrapper around the C record GMenuItem.
 type MenuItem struct {
@@ -840,180 +332,29 @@ func CastToMenuItem(object *gobject.Object) *MenuItem {
 	return MenuItemNewFromC(object.ToC())
 }
 
-// MenuItemNew is a wrapper around the C function g_menu_item_new.
-func MenuItemNew(label string, detailedAction string) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_menu_item_new
 
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
+// Blacklisted : g_menu_item_new_section
 
-	retC := C.g_menu_item_new(c_label, c_detailed_action)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_menu_item_new_submenu
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_menu_item_set_action_and_target
 
-	return retGo
-}
+// Blacklisted : g_menu_item_set_action_and_target_value
 
-// MenuItemNewSection is a wrapper around the C function g_menu_item_new_section.
-func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_menu_item_set_attribute
 
-	c_section := (*C.GMenuModel)(C.NULL)
-	if section != nil {
-		c_section = (*C.GMenuModel)(section.ToC())
-	}
+// Blacklisted : g_menu_item_set_attribute_value
 
-	retC := C.g_menu_item_new_section(c_label, c_section)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_menu_item_set_detailed_action
 
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
+// Blacklisted : g_menu_item_set_label
 
-	return retGo
-}
+// Blacklisted : g_menu_item_set_link
 
-// MenuItemNewSubmenu is a wrapper around the C function g_menu_item_new_submenu.
-func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
+// Blacklisted : g_menu_item_set_section
 
-	c_submenu := (*C.GMenuModel)(C.NULL)
-	if submenu != nil {
-		c_submenu = (*C.GMenuModel)(submenu.ToC())
-	}
-
-	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// SetActionAndTarget is a wrapper around the C function g_menu_item_set_action_and_target.
-func (recv *MenuItem) SetActionAndTarget(action string, formatString string, args ...interface{}) {
-	c_action := C.CString(action)
-	defer C.free(unsafe.Pointer(c_action))
-
-	goFormattedString := fmt.Sprintf(formatString, args...)
-	c_format_string := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format_string))
-
-	C._g_menu_item_set_action_and_target((*C.GMenuItem)(recv.native), c_action, c_format_string)
-
-	return
-}
-
-// SetActionAndTargetValue is a wrapper around the C function g_menu_item_set_action_and_target_value.
-func (recv *MenuItem) SetActionAndTargetValue(action string, targetValue *glib.Variant) {
-	c_action := C.CString(action)
-	defer C.free(unsafe.Pointer(c_action))
-
-	c_target_value := (*C.GVariant)(C.NULL)
-	if targetValue != nil {
-		c_target_value = (*C.GVariant)(targetValue.ToC())
-	}
-
-	C.g_menu_item_set_action_and_target_value((*C.GMenuItem)(recv.native), c_action, c_target_value)
-
-	return
-}
-
-// SetAttribute is a wrapper around the C function g_menu_item_set_attribute.
-func (recv *MenuItem) SetAttribute(attribute string, formatString string, args ...interface{}) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	goFormattedString := fmt.Sprintf(formatString, args...)
-	c_format_string := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format_string))
-
-	C._g_menu_item_set_attribute((*C.GMenuItem)(recv.native), c_attribute, c_format_string)
-
-	return
-}
-
-// SetAttributeValue is a wrapper around the C function g_menu_item_set_attribute_value.
-func (recv *MenuItem) SetAttributeValue(attribute string, value *glib.Variant) {
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
-
-	c_value := (*C.GVariant)(C.NULL)
-	if value != nil {
-		c_value = (*C.GVariant)(value.ToC())
-	}
-
-	C.g_menu_item_set_attribute_value((*C.GMenuItem)(recv.native), c_attribute, c_value)
-
-	return
-}
-
-// SetDetailedAction is a wrapper around the C function g_menu_item_set_detailed_action.
-func (recv *MenuItem) SetDetailedAction(detailedAction string) {
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
-
-	C.g_menu_item_set_detailed_action((*C.GMenuItem)(recv.native), c_detailed_action)
-
-	return
-}
-
-// SetLabel is a wrapper around the C function g_menu_item_set_label.
-func (recv *MenuItem) SetLabel(label string) {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	C.g_menu_item_set_label((*C.GMenuItem)(recv.native), c_label)
-
-	return
-}
-
-// SetLink is a wrapper around the C function g_menu_item_set_link.
-func (recv *MenuItem) SetLink(link string, model *MenuModel) {
-	c_link := C.CString(link)
-	defer C.free(unsafe.Pointer(c_link))
-
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	C.g_menu_item_set_link((*C.GMenuItem)(recv.native), c_link, c_model)
-
-	return
-}
-
-// SetSection is a wrapper around the C function g_menu_item_set_section.
-func (recv *MenuItem) SetSection(section *MenuModel) {
-	c_section := (*C.GMenuModel)(C.NULL)
-	if section != nil {
-		c_section = (*C.GMenuModel)(section.ToC())
-	}
-
-	C.g_menu_item_set_section((*C.GMenuItem)(recv.native), c_section)
-
-	return
-}
-
-// SetSubmenu is a wrapper around the C function g_menu_item_set_submenu.
-func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
-	c_submenu := (*C.GMenuModel)(C.NULL)
-	if submenu != nil {
-		c_submenu = (*C.GMenuModel)(submenu.ToC())
-	}
-
-	C.g_menu_item_set_submenu((*C.GMenuItem)(recv.native), c_submenu)
-
-	return
-}
+// Blacklisted : g_menu_item_set_submenu
 
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
 type MenuLinkIter struct {
@@ -1064,45 +405,13 @@ func CastToMenuLinkIter(object *gobject.Object) *MenuLinkIter {
 	return MenuLinkIterNewFromC(object.ToC())
 }
 
-// GetName is a wrapper around the C function g_menu_link_iter_get_name.
-func (recv *MenuLinkIter) GetName() string {
-	retC := C.g_menu_link_iter_get_name((*C.GMenuLinkIter)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : g_menu_link_iter_get_name
 
-	return retGo
-}
+// Blacklisted : g_menu_link_iter_get_next
 
-// GetNext is a wrapper around the C function g_menu_link_iter_get_next.
-func (recv *MenuLinkIter) GetNext() (bool, string, *MenuModel) {
-	var c_out_link *C.gchar
+// Blacklisted : g_menu_link_iter_get_value
 
-	var c_value *C.GMenuModel
-
-	retC := C.g_menu_link_iter_get_next((*C.GMenuLinkIter)(recv.native), &c_out_link, &c_value)
-	retGo := retC == C.TRUE
-
-	outLink := C.GoString(c_out_link)
-
-	value := MenuModelNewFromC(unsafe.Pointer(c_value))
-
-	return retGo, outLink, value
-}
-
-// GetValue is a wrapper around the C function g_menu_link_iter_get_value.
-func (recv *MenuLinkIter) GetValue() *MenuModel {
-	retC := C.g_menu_link_iter_get_value((*C.GMenuLinkIter)(recv.native))
-	retGo := MenuModelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Next is a wrapper around the C function g_menu_link_iter_next.
-func (recv *MenuLinkIter) Next() bool {
-	retC := C.g_menu_link_iter_next((*C.GMenuLinkIter)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_menu_link_iter_next
 
 // MenuModel is a wrapper around the C record GMenuModel.
 type MenuModel struct {
@@ -1219,313 +528,51 @@ func menumodel_itemsChangedHandler(_ *C.GObject, c_position C.gint, c_removed C.
 	callback(position, removed, added)
 }
 
-// GetItemAttribute is a wrapper around the C function g_menu_model_get_item_attribute.
-func (recv *MenuModel) GetItemAttribute(itemIndex int32, attribute string, formatString string, args ...interface{}) bool {
-	c_item_index := (C.gint)(itemIndex)
+// Blacklisted : g_menu_model_get_item_attribute
 
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_menu_model_get_item_attribute_value
 
-	goFormattedString := fmt.Sprintf(formatString, args...)
-	c_format_string := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format_string))
+// Blacklisted : g_menu_model_get_item_link
 
-	retC := C._g_menu_model_get_item_attribute((*C.GMenuModel)(recv.native), c_item_index, c_attribute, c_format_string)
-	retGo := retC == C.TRUE
+// Blacklisted : g_menu_model_get_n_items
 
-	return retGo
-}
+// Blacklisted : g_menu_model_is_mutable
 
-// GetItemAttributeValue is a wrapper around the C function g_menu_model_get_item_attribute_value.
-func (recv *MenuModel) GetItemAttributeValue(itemIndex int32, attribute string, expectedType *glib.VariantType) *glib.Variant {
-	c_item_index := (C.gint)(itemIndex)
+// Blacklisted : g_menu_model_items_changed
 
-	c_attribute := C.CString(attribute)
-	defer C.free(unsafe.Pointer(c_attribute))
+// Blacklisted : g_menu_model_iterate_item_attributes
 
-	c_expected_type := (*C.GVariantType)(C.NULL)
-	if expectedType != nil {
-		c_expected_type = (*C.GVariantType)(expectedType.ToC())
-	}
+// Blacklisted : g_menu_model_iterate_item_links
 
-	retC := C.g_menu_model_get_item_attribute_value((*C.GMenuModel)(recv.native), c_item_index, c_attribute, c_expected_type)
-	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_settings_new_full
 
-	return retGo
-}
+// Blacklisted : g_settings_create_action
 
-// GetItemLink is a wrapper around the C function g_menu_model_get_item_link.
-func (recv *MenuModel) GetItemLink(itemIndex int32, link string) *MenuModel {
-	c_item_index := (C.gint)(itemIndex)
+// Blacklisted : g_simple_async_result_set_check_cancellable
 
-	c_link := C.CString(link)
-	defer C.free(unsafe.Pointer(c_link))
+// Blacklisted : g_socket_condition_timed_wait
 
-	retC := C.g_menu_model_get_item_link((*C.GMenuModel)(recv.native), c_item_index, c_link)
-	retGo := MenuModelNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_socket_get_available_bytes
 
-	return retGo
-}
+// Blacklisted : g_socket_get_broadcast
 
-// GetNItems is a wrapper around the C function g_menu_model_get_n_items.
-func (recv *MenuModel) GetNItems() int32 {
-	retC := C.g_menu_model_get_n_items((*C.GMenuModel)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : g_socket_get_multicast_loopback
 
-	return retGo
-}
+// Blacklisted : g_socket_get_multicast_ttl
 
-// IsMutable is a wrapper around the C function g_menu_model_is_mutable.
-func (recv *MenuModel) IsMutable() bool {
-	retC := C.g_menu_model_is_mutable((*C.GMenuModel)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : g_socket_get_ttl
 
-	return retGo
-}
+// Blacklisted : g_socket_join_multicast_group
 
-// ItemsChanged is a wrapper around the C function g_menu_model_items_changed.
-func (recv *MenuModel) ItemsChanged(position int32, removed int32, added int32) {
-	c_position := (C.gint)(position)
+// Blacklisted : g_socket_leave_multicast_group
 
-	c_removed := (C.gint)(removed)
+// Blacklisted : g_socket_set_broadcast
 
-	c_added := (C.gint)(added)
+// Blacklisted : g_socket_set_multicast_loopback
 
-	C.g_menu_model_items_changed((*C.GMenuModel)(recv.native), c_position, c_removed, c_added)
+// Blacklisted : g_socket_set_multicast_ttl
 
-	return
-}
-
-// IterateItemAttributes is a wrapper around the C function g_menu_model_iterate_item_attributes.
-func (recv *MenuModel) IterateItemAttributes(itemIndex int32) *MenuAttributeIter {
-	c_item_index := (C.gint)(itemIndex)
-
-	retC := C.g_menu_model_iterate_item_attributes((*C.GMenuModel)(recv.native), c_item_index)
-	retGo := MenuAttributeIterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IterateItemLinks is a wrapper around the C function g_menu_model_iterate_item_links.
-func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
-	c_item_index := (C.gint)(itemIndex)
-
-	retC := C.g_menu_model_iterate_item_links((*C.GMenuModel)(recv.native), c_item_index)
-	retGo := MenuLinkIterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SettingsNewFull is a wrapper around the C function g_settings_new_full.
-func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
-	c_schema := (*C.GSettingsSchema)(C.NULL)
-	if schema != nil {
-		c_schema = (*C.GSettingsSchema)(schema.ToC())
-	}
-
-	c_backend := (*C.GSettingsBackend)(C.NULL)
-	if backend != nil {
-		c_backend = (*C.GSettingsBackend)(backend.ToC())
-	}
-
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	retC := C.g_settings_new_full(c_schema, c_backend, c_path)
-	retGo := SettingsNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// CreateAction is a wrapper around the C function g_settings_create_action.
-func (recv *Settings) CreateAction(key string) *Action {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	retC := C.g_settings_create_action((*C.GSettings)(recv.native), c_key)
-	retGo := ActionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SetCheckCancellable is a wrapper around the C function g_simple_async_result_set_check_cancellable.
-func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable) {
-	c_check_cancellable := (*C.GCancellable)(C.NULL)
-	if checkCancellable != nil {
-		c_check_cancellable = (*C.GCancellable)(checkCancellable.ToC())
-	}
-
-	C.g_simple_async_result_set_check_cancellable((*C.GSimpleAsyncResult)(recv.native), c_check_cancellable)
-
-	return
-}
-
-// ConditionTimedWait is a wrapper around the C function g_socket_condition_timed_wait.
-func (recv *Socket) ConditionTimedWait(condition glib.IOCondition, timeout int64, cancellable *Cancellable) (bool, error) {
-	c_condition := (C.GIOCondition)(condition)
-
-	c_timeout := (C.gint64)(timeout)
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_condition_timed_wait((*C.GSocket)(recv.native), c_condition, c_timeout, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// GetAvailableBytes is a wrapper around the C function g_socket_get_available_bytes.
-func (recv *Socket) GetAvailableBytes() int64 {
-	retC := C.g_socket_get_available_bytes((*C.GSocket)(recv.native))
-	retGo := (int64)(retC)
-
-	return retGo
-}
-
-// GetBroadcast is a wrapper around the C function g_socket_get_broadcast.
-func (recv *Socket) GetBroadcast() bool {
-	retC := C.g_socket_get_broadcast((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetMulticastLoopback is a wrapper around the C function g_socket_get_multicast_loopback.
-func (recv *Socket) GetMulticastLoopback() bool {
-	retC := C.g_socket_get_multicast_loopback((*C.GSocket)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetMulticastTtl is a wrapper around the C function g_socket_get_multicast_ttl.
-func (recv *Socket) GetMulticastTtl() uint32 {
-	retC := C.g_socket_get_multicast_ttl((*C.GSocket)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// GetTtl is a wrapper around the C function g_socket_get_ttl.
-func (recv *Socket) GetTtl() uint32 {
-	retC := C.g_socket_get_ttl((*C.GSocket)(recv.native))
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// JoinMulticastGroup is a wrapper around the C function g_socket_join_multicast_group.
-func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) (bool, error) {
-	c_group := (*C.GInetAddress)(C.NULL)
-	if group != nil {
-		c_group = (*C.GInetAddress)(group.ToC())
-	}
-
-	c_source_specific :=
-		boolToGboolean(sourceSpecific)
-
-	c_iface := C.CString(iface)
-	defer C.free(unsafe.Pointer(c_iface))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_join_multicast_group((*C.GSocket)(recv.native), c_group, c_source_specific, c_iface, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// LeaveMulticastGroup is a wrapper around the C function g_socket_leave_multicast_group.
-func (recv *Socket) LeaveMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) (bool, error) {
-	c_group := (*C.GInetAddress)(C.NULL)
-	if group != nil {
-		c_group = (*C.GInetAddress)(group.ToC())
-	}
-
-	c_source_specific :=
-		boolToGboolean(sourceSpecific)
-
-	c_iface := C.CString(iface)
-	defer C.free(unsafe.Pointer(c_iface))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_leave_multicast_group((*C.GSocket)(recv.native), c_group, c_source_specific, c_iface, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SetBroadcast is a wrapper around the C function g_socket_set_broadcast.
-func (recv *Socket) SetBroadcast(broadcast bool) {
-	c_broadcast :=
-		boolToGboolean(broadcast)
-
-	C.g_socket_set_broadcast((*C.GSocket)(recv.native), c_broadcast)
-
-	return
-}
-
-// SetMulticastLoopback is a wrapper around the C function g_socket_set_multicast_loopback.
-func (recv *Socket) SetMulticastLoopback(loopback bool) {
-	c_loopback :=
-		boolToGboolean(loopback)
-
-	C.g_socket_set_multicast_loopback((*C.GSocket)(recv.native), c_loopback)
-
-	return
-}
-
-// SetMulticastTtl is a wrapper around the C function g_socket_set_multicast_ttl.
-func (recv *Socket) SetMulticastTtl(ttl uint32) {
-	c_ttl := (C.guint)(ttl)
-
-	C.g_socket_set_multicast_ttl((*C.GSocket)(recv.native), c_ttl)
-
-	return
-}
-
-// SetTtl is a wrapper around the C function g_socket_set_ttl.
-func (recv *Socket) SetTtl(ttl uint32) {
-	c_ttl := (C.guint)(ttl)
-
-	C.g_socket_set_ttl((*C.GSocket)(recv.native), c_ttl)
-
-	return
-}
+// Blacklisted : g_socket_set_ttl
 
 type signalSocketClientEventDetail struct {
 	callback  SocketClientSignalEventCallback
@@ -1593,104 +640,18 @@ func socketclient_eventHandler(_ *C.GObject, c_event C.GSocketClientEvent, c_con
 	callback(event, connectable, connection)
 }
 
-// Connect is a wrapper around the C function g_socket_connection_connect.
-func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
-	c_address := (*C.GSocketAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GSocketAddress)(address.ToC())
-	}
-
-	c_cancellable := (*C.GCancellable)(C.NULL)
-	if cancellable != nil {
-		c_cancellable = (*C.GCancellable)(cancellable.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_connection_connect((*C.GSocketConnection)(recv.native), c_address, c_cancellable, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_socket_connection_connect
 
 // Unsupported : g_socket_connection_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ConnectFinish is a wrapper around the C function g_socket_connection_connect_finish.
-func (recv *SocketConnection) ConnectFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
+// Blacklisted : g_socket_connection_connect_finish
 
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_connection_connect_finish((*C.GSocketConnection)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// IsConnected is a wrapper around the C function g_socket_connection_is_connected.
-func (recv *SocketConnection) IsConnected() bool {
-	retC := C.g_socket_connection_is_connected((*C.GSocketConnection)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : g_socket_connection_is_connected
 
 // Unsupported : g_unix_connection_receive_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReceiveCredentialsFinish is a wrapper around the C function g_unix_connection_receive_credentials_finish.
-func (recv *UnixConnection) ReceiveCredentialsFinish(result *AsyncResult) (*Credentials, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_unix_connection_receive_credentials_finish((*C.GUnixConnection)(recv.native), c_result, &cThrowableError)
-	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_unix_connection_receive_credentials_finish
 
 // Unsupported : g_unix_connection_send_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// SendCredentialsFinish is a wrapper around the C function g_unix_connection_send_credentials_finish.
-func (recv *UnixConnection) SendCredentialsFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_unix_connection_send_credentials_finish((*C.GUnixConnection)(recv.native), c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
+// Blacklisted : g_unix_connection_send_credentials_finish

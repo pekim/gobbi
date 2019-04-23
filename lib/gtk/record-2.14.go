@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	gdk "github.com/pekim/gobbi/lib/gdk"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,52 +12,16 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BorderNew is a wrapper around the C function gtk_border_new.
-func BorderNew() *Border {
-	retC := C.gtk_border_new()
-	retGo := BorderNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_border_new
 
 // Unsupported : gtk_selection_data_get_data : array return type :
 
-// GetDataType is a wrapper around the C function gtk_selection_data_get_data_type.
-func (recv *SelectionData) GetDataType() gdk.Atom {
-	retC := C.gtk_selection_data_get_data_type((*C.GtkSelectionData)(recv.native))
-	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_selection_data_get_data_type
 
-	return retGo
-}
+// Blacklisted : gtk_selection_data_get_display
 
-// GetDisplay is a wrapper around the C function gtk_selection_data_get_display.
-func (recv *SelectionData) GetDisplay() *gdk.Display {
-	retC := C.gtk_selection_data_get_display((*C.GtkSelectionData)(recv.native))
-	retGo := gdk.DisplayNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_selection_data_get_format
 
-	return retGo
-}
+// Blacklisted : gtk_selection_data_get_length
 
-// GetFormat is a wrapper around the C function gtk_selection_data_get_format.
-func (recv *SelectionData) GetFormat() int32 {
-	retC := C.gtk_selection_data_get_format((*C.GtkSelectionData)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetLength is a wrapper around the C function gtk_selection_data_get_length.
-func (recv *SelectionData) GetLength() int32 {
-	retC := C.gtk_selection_data_get_length((*C.GtkSelectionData)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetTarget is a wrapper around the C function gtk_selection_data_get_target.
-func (recv *SelectionData) GetTarget() gdk.Atom {
-	retC := C.gtk_selection_data_get_target((*C.GtkSelectionData)(recv.native))
-	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_selection_data_get_target

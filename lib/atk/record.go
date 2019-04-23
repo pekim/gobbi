@@ -377,13 +377,7 @@ func (recv *Implementor) Equals(other *Implementor) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// RefAccessible is a wrapper around the C function atk_implementor_ref_accessible.
-func (recv *Implementor) RefAccessible() *Object {
-	retC := C.atk_implementor_ref_accessible((*C.AtkImplementor)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : atk_implementor_ref_accessible
 
 // KeyEventStruct is a wrapper around the C record AtkKeyEventStruct.
 type KeyEventStruct struct {

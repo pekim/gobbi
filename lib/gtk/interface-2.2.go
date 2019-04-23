@@ -3,8 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,16 +12,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetStringFromIter is a wrapper around the C function gtk_tree_model_get_string_from_iter.
-func (recv *TreeModel) GetStringFromIter(iter *TreeIter) string {
-	c_iter := (*C.GtkTreeIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GtkTreeIter)(iter.ToC())
-	}
-
-	retC := C.gtk_tree_model_get_string_from_iter((*C.GtkTreeModel)(recv.native), c_iter)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_tree_model_get_string_from_iter

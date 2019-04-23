@@ -10,58 +10,20 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// GetAxisUse is a wrapper around the C function gdk_device_get_axis_use.
-func (recv *Device) GetAxisUse(index uint32) AxisUse {
-	c_index_ := (C.guint)(index)
+// Blacklisted : gdk_device_get_axis_use
 
-	retC := C.gdk_device_get_axis_use((*C.GdkDevice)(recv.native), c_index_)
-	retGo := (AxisUse)(retC)
-
-	return retGo
-}
-
-// GetHasCursor is a wrapper around the C function gdk_device_get_has_cursor.
-func (recv *Device) GetHasCursor() bool {
-	retC := C.gdk_device_get_has_cursor((*C.GdkDevice)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_device_get_has_cursor
 
 // Unsupported : gdk_device_get_key : unsupported parameter modifiers : GdkModifierType* with indirection level of 1
 
-// GetMode is a wrapper around the C function gdk_device_get_mode.
-func (recv *Device) GetMode() InputMode {
-	retC := C.gdk_device_get_mode((*C.GdkDevice)(recv.native))
-	retGo := (InputMode)(retC)
+// Blacklisted : gdk_device_get_mode
 
-	return retGo
-}
+// Blacklisted : gdk_device_get_name
 
-// GetName is a wrapper around the C function gdk_device_get_name.
-func (recv *Device) GetName() string {
-	retC := C.gdk_device_get_name((*C.GdkDevice)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetSource is a wrapper around the C function gdk_device_get_source.
-func (recv *Device) GetSource() InputSource {
-	retC := C.gdk_device_get_source((*C.GdkDevice)(recv.native))
-	retGo := (InputSource)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_device_get_source
 
 // Unsupported : gdk_keymap_add_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
 
 // Unsupported : gdk_keymap_map_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
 
-// GetPrimaryMonitor is a wrapper around the C function gdk_screen_get_primary_monitor.
-func (recv *Screen) GetPrimaryMonitor() int32 {
-	retC := C.gdk_screen_get_primary_monitor((*C.GdkScreen)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_screen_get_primary_monitor

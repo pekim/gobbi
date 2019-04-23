@@ -85,20 +85,6 @@ func placessidebar_showStarredLocationHandler(_ *C.GObject, c_object C.GtkPlaces
 	callback(object)
 }
 
-// GetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_get_show_starred_location.
-func (recv *PlacesSidebar) GetShowStarredLocation() bool {
-	retC := C.gtk_places_sidebar_get_show_starred_location((*C.GtkPlacesSidebar)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_places_sidebar_get_show_starred_location
 
-	return retGo
-}
-
-// SetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_set_show_starred_location.
-func (recv *PlacesSidebar) SetShowStarredLocation(showStarredLocation bool) {
-	c_show_starred_location :=
-		boolToGboolean(showStarredLocation)
-
-	C.gtk_places_sidebar_set_show_starred_location((*C.GtkPlacesSidebar)(recv.native), c_show_starred_location)
-
-	return
-}
+// Blacklisted : gtk_places_sidebar_set_show_starred_location

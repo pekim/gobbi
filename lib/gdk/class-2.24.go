@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,50 +10,14 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetNKeys is a wrapper around the C function gdk_device_get_n_keys.
-func (recv *Device) GetNKeys() int32 {
-	retC := C.gdk_device_get_n_keys((*C.GdkDevice)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gdk_device_get_n_keys
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_display
 
-// GetDisplay is a wrapper around the C function gdk_window_get_display.
-func (recv *Window) GetDisplay() *Display {
-	retC := C.gdk_window_get_display((*C.GdkWindow)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gdk_window_get_height
 
-	return retGo
-}
+// Blacklisted : gdk_window_get_screen
 
-// GetHeight is a wrapper around the C function gdk_window_get_height.
-func (recv *Window) GetHeight() int32 {
-	retC := C.gdk_window_get_height((*C.GdkWindow)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gdk_window_get_visual
 
-	return retGo
-}
-
-// GetScreen is a wrapper around the C function gdk_window_get_screen.
-func (recv *Window) GetScreen() *Screen {
-	retC := C.gdk_window_get_screen((*C.GdkWindow)(recv.native))
-	retGo := ScreenNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetVisual is a wrapper around the C function gdk_window_get_visual.
-func (recv *Window) GetVisual() *Visual {
-	retC := C.gdk_window_get_visual((*C.GdkWindow)(recv.native))
-	retGo := VisualNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetWidth is a wrapper around the C function gdk_window_get_width.
-func (recv *Window) GetWidth() int32 {
-	retC := C.gdk_window_get_width((*C.GdkWindow)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_window_get_width

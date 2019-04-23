@@ -3,11 +3,6 @@
 
 package gtk
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -19,23 +14,8 @@ import "C"
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
-// Copy is a wrapper around the C function gtk_tree_row_reference_copy.
-func (recv *TreeRowReference) Copy() *TreeRowReference {
-	retC := C.gtk_tree_row_reference_copy((*C.GtkTreeRowReference)(recv.native))
-	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_tree_row_reference_copy
 
-	return retGo
-}
-
-// FindStyleProperty is a wrapper around the C function gtk_widget_class_find_style_property.
-func (recv *WidgetClass) FindStyleProperty(propertyName string) *gobject.ParamSpec {
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	retC := C.gtk_widget_class_find_style_property((*C.GtkWidgetClass)(recv.native), c_property_name)
-	retGo := gobject.ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_widget_class_find_style_property
 
 // Unsupported : gtk_widget_class_list_style_properties : array return type :

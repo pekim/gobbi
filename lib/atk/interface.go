@@ -3,8 +3,6 @@
 package atk
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -213,76 +211,19 @@ func (recv *Action) Equals(other *Action) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DoAction is a wrapper around the C function atk_action_do_action.
-func (recv *Action) DoAction(i int32) bool {
-	c_i := (C.gint)(i)
+// Blacklisted : atk_action_do_action
 
-	retC := C.atk_action_do_action((*C.AtkAction)(recv.native), c_i)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_action_get_description
 
-	return retGo
-}
+// Blacklisted : atk_action_get_keybinding
 
-// GetDescription is a wrapper around the C function atk_action_get_description.
-func (recv *Action) GetDescription(i int32) string {
-	c_i := (C.gint)(i)
+// Blacklisted : atk_action_get_localized_name
 
-	retC := C.atk_action_get_description((*C.AtkAction)(recv.native), c_i)
-	retGo := C.GoString(retC)
+// Blacklisted : atk_action_get_n_actions
 
-	return retGo
-}
+// Blacklisted : atk_action_get_name
 
-// GetKeybinding is a wrapper around the C function atk_action_get_keybinding.
-func (recv *Action) GetKeybinding(i int32) string {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_action_get_keybinding((*C.AtkAction)(recv.native), c_i)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetLocalizedName is a wrapper around the C function atk_action_get_localized_name.
-func (recv *Action) GetLocalizedName(i int32) string {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_action_get_localized_name((*C.AtkAction)(recv.native), c_i)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetNActions is a wrapper around the C function atk_action_get_n_actions.
-func (recv *Action) GetNActions() int32 {
-	retC := C.atk_action_get_n_actions((*C.AtkAction)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetName is a wrapper around the C function atk_action_get_name.
-func (recv *Action) GetName(i int32) string {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_action_get_name((*C.AtkAction)(recv.native), c_i)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// SetDescription is a wrapper around the C function atk_action_set_description.
-func (recv *Action) SetDescription(i int32, desc string) bool {
-	c_i := (C.gint)(i)
-
-	c_desc := C.CString(desc)
-	defer C.free(unsafe.Pointer(c_desc))
-
-	retC := C.atk_action_set_description((*C.AtkAction)(recv.native), c_i, c_desc)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_action_set_description
 
 // Component is a wrapper around the C record AtkComponent.
 type Component struct {
@@ -374,172 +315,29 @@ func component_boundsChangedHandler(_ *C.GObject, c_arg1 *C.AtkRectangle, data C
 
 // Unsupported : atk_component_add_focus_handler : unsupported parameter handler : no type generator for FocusHandler (AtkFocusHandler) for param handler
 
-// Contains is a wrapper around the C function atk_component_contains.
-func (recv *Component) Contains(x int32, y int32, coordType CoordType) bool {
-	c_x := (C.gint)(x)
+// Blacklisted : atk_component_contains
 
-	c_y := (C.gint)(y)
+// Blacklisted : atk_component_get_extents
 
-	c_coord_type := (C.AtkCoordType)(coordType)
+// Blacklisted : atk_component_get_layer
 
-	retC := C.atk_component_contains((*C.AtkComponent)(recv.native), c_x, c_y, c_coord_type)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_component_get_mdi_zorder
 
-	return retGo
-}
+// Blacklisted : atk_component_get_position
 
-// GetExtents is a wrapper around the C function atk_component_get_extents.
-func (recv *Component) GetExtents(coordType CoordType) (int32, int32, int32, int32) {
-	var c_x C.gint
+// Blacklisted : atk_component_get_size
 
-	var c_y C.gint
+// Blacklisted : atk_component_grab_focus
 
-	var c_width C.gint
+// Blacklisted : atk_component_ref_accessible_at_point
 
-	var c_height C.gint
+// Blacklisted : atk_component_remove_focus_handler
 
-	c_coord_type := (C.AtkCoordType)(coordType)
+// Blacklisted : atk_component_set_extents
 
-	C.atk_component_get_extents((*C.AtkComponent)(recv.native), &c_x, &c_y, &c_width, &c_height, c_coord_type)
+// Blacklisted : atk_component_set_position
 
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return x, y, width, height
-}
-
-// GetLayer is a wrapper around the C function atk_component_get_layer.
-func (recv *Component) GetLayer() Layer {
-	retC := C.atk_component_get_layer((*C.AtkComponent)(recv.native))
-	retGo := (Layer)(retC)
-
-	return retGo
-}
-
-// GetMdiZorder is a wrapper around the C function atk_component_get_mdi_zorder.
-func (recv *Component) GetMdiZorder() int32 {
-	retC := C.atk_component_get_mdi_zorder((*C.AtkComponent)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetPosition is a wrapper around the C function atk_component_get_position.
-func (recv *Component) GetPosition(coordType CoordType) (int32, int32) {
-	var c_x C.gint
-
-	var c_y C.gint
-
-	c_coord_type := (C.AtkCoordType)(coordType)
-
-	C.atk_component_get_position((*C.AtkComponent)(recv.native), &c_x, &c_y, c_coord_type)
-
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	return x, y
-}
-
-// GetSize is a wrapper around the C function atk_component_get_size.
-func (recv *Component) GetSize() (int32, int32) {
-	var c_width C.gint
-
-	var c_height C.gint
-
-	C.atk_component_get_size((*C.AtkComponent)(recv.native), &c_width, &c_height)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return width, height
-}
-
-// GrabFocus is a wrapper around the C function atk_component_grab_focus.
-func (recv *Component) GrabFocus() bool {
-	retC := C.atk_component_grab_focus((*C.AtkComponent)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RefAccessibleAtPoint is a wrapper around the C function atk_component_ref_accessible_at_point.
-func (recv *Component) RefAccessibleAtPoint(x int32, y int32, coordType CoordType) *Object {
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_coord_type := (C.AtkCoordType)(coordType)
-
-	retC := C.atk_component_ref_accessible_at_point((*C.AtkComponent)(recv.native), c_x, c_y, c_coord_type)
-	var retGo (*Object)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = ObjectNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// RemoveFocusHandler is a wrapper around the C function atk_component_remove_focus_handler.
-func (recv *Component) RemoveFocusHandler(handlerId uint32) {
-	c_handler_id := (C.guint)(handlerId)
-
-	C.atk_component_remove_focus_handler((*C.AtkComponent)(recv.native), c_handler_id)
-
-	return
-}
-
-// SetExtents is a wrapper around the C function atk_component_set_extents.
-func (recv *Component) SetExtents(x int32, y int32, width int32, height int32, coordType CoordType) bool {
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	c_coord_type := (C.AtkCoordType)(coordType)
-
-	retC := C.atk_component_set_extents((*C.AtkComponent)(recv.native), c_x, c_y, c_width, c_height, c_coord_type)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetPosition is a wrapper around the C function atk_component_set_position.
-func (recv *Component) SetPosition(x int32, y int32, coordType CoordType) bool {
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_coord_type := (C.AtkCoordType)(coordType)
-
-	retC := C.atk_component_set_position((*C.AtkComponent)(recv.native), c_x, c_y, c_coord_type)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetSize is a wrapper around the C function atk_component_set_size.
-func (recv *Component) SetSize(width int32, height int32) bool {
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	retC := C.atk_component_set_size((*C.AtkComponent)(recv.native), c_width, c_height)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_component_set_size
 
 // Document is a wrapper around the C record AtkDocument.
 type Document struct {
@@ -749,21 +547,9 @@ func document_reloadHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : atk_document_get_document : no return generator
 
-// GetDocumentType is a wrapper around the C function atk_document_get_document_type.
-func (recv *Document) GetDocumentType() string {
-	retC := C.atk_document_get_document_type((*C.AtkDocument)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : atk_document_get_document_type
 
-	return retGo
-}
-
-// GetLocale is a wrapper around the C function atk_document_get_locale.
-func (recv *Document) GetLocale() string {
-	retC := C.atk_document_get_locale((*C.AtkDocument)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : atk_document_get_locale
 
 // EditableText is a wrapper around the C record AtkEditableText.
 type EditableText struct {
@@ -791,73 +577,19 @@ func (recv *EditableText) Equals(other *EditableText) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CopyText is a wrapper around the C function atk_editable_text_copy_text.
-func (recv *EditableText) CopyText(startPos int32, endPos int32) {
-	c_start_pos := (C.gint)(startPos)
+// Blacklisted : atk_editable_text_copy_text
 
-	c_end_pos := (C.gint)(endPos)
+// Blacklisted : atk_editable_text_cut_text
 
-	C.atk_editable_text_copy_text((*C.AtkEditableText)(recv.native), c_start_pos, c_end_pos)
+// Blacklisted : atk_editable_text_delete_text
 
-	return
-}
+// Blacklisted : atk_editable_text_insert_text
 
-// CutText is a wrapper around the C function atk_editable_text_cut_text.
-func (recv *EditableText) CutText(startPos int32, endPos int32) {
-	c_start_pos := (C.gint)(startPos)
-
-	c_end_pos := (C.gint)(endPos)
-
-	C.atk_editable_text_cut_text((*C.AtkEditableText)(recv.native), c_start_pos, c_end_pos)
-
-	return
-}
-
-// DeleteText is a wrapper around the C function atk_editable_text_delete_text.
-func (recv *EditableText) DeleteText(startPos int32, endPos int32) {
-	c_start_pos := (C.gint)(startPos)
-
-	c_end_pos := (C.gint)(endPos)
-
-	C.atk_editable_text_delete_text((*C.AtkEditableText)(recv.native), c_start_pos, c_end_pos)
-
-	return
-}
-
-// InsertText is a wrapper around the C function atk_editable_text_insert_text.
-func (recv *EditableText) InsertText(string_ string, length int32, position int32) {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	c_length := (C.gint)(length)
-
-	c_position := (C.gint)(position)
-
-	C.atk_editable_text_insert_text((*C.AtkEditableText)(recv.native), c_string, c_length, &c_position)
-
-	return
-}
-
-// PasteText is a wrapper around the C function atk_editable_text_paste_text.
-func (recv *EditableText) PasteText(position int32) {
-	c_position := (C.gint)(position)
-
-	C.atk_editable_text_paste_text((*C.AtkEditableText)(recv.native), c_position)
-
-	return
-}
+// Blacklisted : atk_editable_text_paste_text
 
 // Blacklisted : atk_editable_text_set_run_attributes
 
-// SetTextContents is a wrapper around the C function atk_editable_text_set_text_contents.
-func (recv *EditableText) SetTextContents(string_ string) {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	C.atk_editable_text_set_text_contents((*C.AtkEditableText)(recv.native), c_string)
-
-	return
-}
+// Blacklisted : atk_editable_text_set_text_contents
 
 // HyperlinkImpl is a wrapper around the C record AtkHyperlinkImpl.
 type HyperlinkImpl struct {
@@ -973,33 +705,11 @@ func hypertext_linkSelectedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer)
 	callback(arg1)
 }
 
-// GetLink is a wrapper around the C function atk_hypertext_get_link.
-func (recv *Hypertext) GetLink(linkIndex int32) *Hyperlink {
-	c_link_index := (C.gint)(linkIndex)
+// Blacklisted : atk_hypertext_get_link
 
-	retC := C.atk_hypertext_get_link((*C.AtkHypertext)(recv.native), c_link_index)
-	retGo := HyperlinkNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_hypertext_get_link_index
 
-	return retGo
-}
-
-// GetLinkIndex is a wrapper around the C function atk_hypertext_get_link_index.
-func (recv *Hypertext) GetLinkIndex(charIndex int32) int32 {
-	c_char_index := (C.gint)(charIndex)
-
-	retC := C.atk_hypertext_get_link_index((*C.AtkHypertext)(recv.native), c_char_index)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetNLinks is a wrapper around the C function atk_hypertext_get_n_links.
-func (recv *Hypertext) GetNLinks() int32 {
-	retC := C.atk_hypertext_get_n_links((*C.AtkHypertext)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_hypertext_get_n_links
 
 // Image is a wrapper around the C record AtkImage.
 type Image struct {
@@ -1027,56 +737,13 @@ func (recv *Image) Equals(other *Image) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetImageDescription is a wrapper around the C function atk_image_get_image_description.
-func (recv *Image) GetImageDescription() string {
-	retC := C.atk_image_get_image_description((*C.AtkImage)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : atk_image_get_image_description
 
-	return retGo
-}
+// Blacklisted : atk_image_get_image_position
 
-// GetImagePosition is a wrapper around the C function atk_image_get_image_position.
-func (recv *Image) GetImagePosition(coordType CoordType) (int32, int32) {
-	var c_x C.gint
+// Blacklisted : atk_image_get_image_size
 
-	var c_y C.gint
-
-	c_coord_type := (C.AtkCoordType)(coordType)
-
-	C.atk_image_get_image_position((*C.AtkImage)(recv.native), &c_x, &c_y, c_coord_type)
-
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	return x, y
-}
-
-// GetImageSize is a wrapper around the C function atk_image_get_image_size.
-func (recv *Image) GetImageSize() (int32, int32) {
-	var c_width C.gint
-
-	var c_height C.gint
-
-	C.atk_image_get_image_size((*C.AtkImage)(recv.native), &c_width, &c_height)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return width, height
-}
-
-// SetImageDescription is a wrapper around the C function atk_image_set_image_description.
-func (recv *Image) SetImageDescription(description string) bool {
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
-
-	retC := C.atk_image_set_image_description((*C.AtkImage)(recv.native), c_description)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_image_set_image_description
 
 // ImplementorIface is a wrapper around the C record AtkImplementorIface.
 type ImplementorIface struct {
@@ -1190,74 +857,19 @@ func selection_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddSelection is a wrapper around the C function atk_selection_add_selection.
-func (recv *Selection) AddSelection(i int32) bool {
-	c_i := (C.gint)(i)
+// Blacklisted : atk_selection_add_selection
 
-	retC := C.atk_selection_add_selection((*C.AtkSelection)(recv.native), c_i)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_selection_clear_selection
 
-	return retGo
-}
+// Blacklisted : atk_selection_get_selection_count
 
-// ClearSelection is a wrapper around the C function atk_selection_clear_selection.
-func (recv *Selection) ClearSelection() bool {
-	retC := C.atk_selection_clear_selection((*C.AtkSelection)(recv.native))
-	retGo := retC == C.TRUE
+// Blacklisted : atk_selection_is_child_selected
 
-	return retGo
-}
+// Blacklisted : atk_selection_ref_selection
 
-// GetSelectionCount is a wrapper around the C function atk_selection_get_selection_count.
-func (recv *Selection) GetSelectionCount() int32 {
-	retC := C.atk_selection_get_selection_count((*C.AtkSelection)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : atk_selection_remove_selection
 
-	return retGo
-}
-
-// IsChildSelected is a wrapper around the C function atk_selection_is_child_selected.
-func (recv *Selection) IsChildSelected(i int32) bool {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_selection_is_child_selected((*C.AtkSelection)(recv.native), c_i)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RefSelection is a wrapper around the C function atk_selection_ref_selection.
-func (recv *Selection) RefSelection(i int32) *Object {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_selection_ref_selection((*C.AtkSelection)(recv.native), c_i)
-	var retGo (*Object)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = ObjectNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// RemoveSelection is a wrapper around the C function atk_selection_remove_selection.
-func (recv *Selection) RemoveSelection(i int32) bool {
-	c_i := (C.gint)(i)
-
-	retC := C.atk_selection_remove_selection((*C.AtkSelection)(recv.native), c_i)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SelectAllSelection is a wrapper around the C function atk_selection_select_all_selection.
-func (recv *Selection) SelectAllSelection() bool {
-	retC := C.atk_selection_select_all_selection((*C.AtkSelection)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_selection_select_all_selection
 
 // StreamableContent is a wrapper around the C record AtkStreamableContent.
 type StreamableContent struct {
@@ -1285,34 +897,11 @@ func (recv *StreamableContent) Equals(other *StreamableContent) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetMimeType is a wrapper around the C function atk_streamable_content_get_mime_type.
-func (recv *StreamableContent) GetMimeType(i int32) string {
-	c_i := (C.gint)(i)
+// Blacklisted : atk_streamable_content_get_mime_type
 
-	retC := C.atk_streamable_content_get_mime_type((*C.AtkStreamableContent)(recv.native), c_i)
-	retGo := C.GoString(retC)
+// Blacklisted : atk_streamable_content_get_n_mime_types
 
-	return retGo
-}
-
-// GetNMimeTypes is a wrapper around the C function atk_streamable_content_get_n_mime_types.
-func (recv *StreamableContent) GetNMimeTypes() int32 {
-	retC := C.atk_streamable_content_get_n_mime_types((*C.AtkStreamableContent)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetStream is a wrapper around the C function atk_streamable_content_get_stream.
-func (recv *StreamableContent) GetStream(mimeType string) *glib.IOChannel {
-	c_mime_type := C.CString(mimeType)
-	defer C.free(unsafe.Pointer(c_mime_type))
-
-	retC := C.atk_streamable_content_get_stream((*C.AtkStreamableContent)(recv.native), c_mime_type)
-	retGo := glib.IOChannelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : atk_streamable_content_get_stream
 
 // Table is a wrapper around the C record AtkTable.
 type Table struct {
@@ -1776,312 +1365,63 @@ func table_rowReorderedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddColumnSelection is a wrapper around the C function atk_table_add_column_selection.
-func (recv *Table) AddColumnSelection(column int32) bool {
-	c_column := (C.gint)(column)
+// Blacklisted : atk_table_add_column_selection
 
-	retC := C.atk_table_add_column_selection((*C.AtkTable)(recv.native), c_column)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_table_add_row_selection
 
-	return retGo
-}
+// Blacklisted : atk_table_get_caption
 
-// AddRowSelection is a wrapper around the C function atk_table_add_row_selection.
-func (recv *Table) AddRowSelection(row int32) bool {
-	c_row := (C.gint)(row)
+// Blacklisted : atk_table_get_column_at_index
 
-	retC := C.atk_table_add_row_selection((*C.AtkTable)(recv.native), c_row)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_table_get_column_description
 
-	return retGo
-}
+// Blacklisted : atk_table_get_column_extent_at
 
-// GetCaption is a wrapper around the C function atk_table_get_caption.
-func (recv *Table) GetCaption() *Object {
-	retC := C.atk_table_get_caption((*C.AtkTable)(recv.native))
-	var retGo (*Object)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = ObjectNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : atk_table_get_column_header
 
-	return retGo
-}
+// Blacklisted : atk_table_get_index_at
 
-// GetColumnAtIndex is a wrapper around the C function atk_table_get_column_at_index.
-func (recv *Table) GetColumnAtIndex(index int32) int32 {
-	c_index_ := (C.gint)(index)
+// Blacklisted : atk_table_get_n_columns
 
-	retC := C.atk_table_get_column_at_index((*C.AtkTable)(recv.native), c_index_)
-	retGo := (int32)(retC)
+// Blacklisted : atk_table_get_n_rows
 
-	return retGo
-}
+// Blacklisted : atk_table_get_row_at_index
 
-// GetColumnDescription is a wrapper around the C function atk_table_get_column_description.
-func (recv *Table) GetColumnDescription(column int32) string {
-	c_column := (C.gint)(column)
+// Blacklisted : atk_table_get_row_description
 
-	retC := C.atk_table_get_column_description((*C.AtkTable)(recv.native), c_column)
-	retGo := C.GoString(retC)
+// Blacklisted : atk_table_get_row_extent_at
 
-	return retGo
-}
-
-// GetColumnExtentAt is a wrapper around the C function atk_table_get_column_extent_at.
-func (recv *Table) GetColumnExtentAt(row int32, column int32) int32 {
-	c_row := (C.gint)(row)
-
-	c_column := (C.gint)(column)
-
-	retC := C.atk_table_get_column_extent_at((*C.AtkTable)(recv.native), c_row, c_column)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetColumnHeader is a wrapper around the C function atk_table_get_column_header.
-func (recv *Table) GetColumnHeader(column int32) *Object {
-	c_column := (C.gint)(column)
-
-	retC := C.atk_table_get_column_header((*C.AtkTable)(recv.native), c_column)
-	var retGo (*Object)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = ObjectNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// GetIndexAt is a wrapper around the C function atk_table_get_index_at.
-func (recv *Table) GetIndexAt(row int32, column int32) int32 {
-	c_row := (C.gint)(row)
-
-	c_column := (C.gint)(column)
-
-	retC := C.atk_table_get_index_at((*C.AtkTable)(recv.native), c_row, c_column)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetNColumns is a wrapper around the C function atk_table_get_n_columns.
-func (recv *Table) GetNColumns() int32 {
-	retC := C.atk_table_get_n_columns((*C.AtkTable)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetNRows is a wrapper around the C function atk_table_get_n_rows.
-func (recv *Table) GetNRows() int32 {
-	retC := C.atk_table_get_n_rows((*C.AtkTable)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetRowAtIndex is a wrapper around the C function atk_table_get_row_at_index.
-func (recv *Table) GetRowAtIndex(index int32) int32 {
-	c_index_ := (C.gint)(index)
-
-	retC := C.atk_table_get_row_at_index((*C.AtkTable)(recv.native), c_index_)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetRowDescription is a wrapper around the C function atk_table_get_row_description.
-func (recv *Table) GetRowDescription(row int32) string {
-	c_row := (C.gint)(row)
-
-	retC := C.atk_table_get_row_description((*C.AtkTable)(recv.native), c_row)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetRowExtentAt is a wrapper around the C function atk_table_get_row_extent_at.
-func (recv *Table) GetRowExtentAt(row int32, column int32) int32 {
-	c_row := (C.gint)(row)
-
-	c_column := (C.gint)(column)
-
-	retC := C.atk_table_get_row_extent_at((*C.AtkTable)(recv.native), c_row, c_column)
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetRowHeader is a wrapper around the C function atk_table_get_row_header.
-func (recv *Table) GetRowHeader(row int32) *Object {
-	c_row := (C.gint)(row)
-
-	retC := C.atk_table_get_row_header((*C.AtkTable)(recv.native), c_row)
-	var retGo (*Object)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = ObjectNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
+// Blacklisted : atk_table_get_row_header
 
 // Unsupported : atk_table_get_selected_columns : unsupported parameter selected : gint** with indirection level of 2
 
 // Unsupported : atk_table_get_selected_rows : unsupported parameter selected : gint** with indirection level of 2
 
-// GetSummary is a wrapper around the C function atk_table_get_summary.
-func (recv *Table) GetSummary() *Object {
-	retC := C.atk_table_get_summary((*C.AtkTable)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+// Blacklisted : atk_table_get_summary
 
-	return retGo
-}
+// Blacklisted : atk_table_is_column_selected
 
-// IsColumnSelected is a wrapper around the C function atk_table_is_column_selected.
-func (recv *Table) IsColumnSelected(column int32) bool {
-	c_column := (C.gint)(column)
+// Blacklisted : atk_table_is_row_selected
 
-	retC := C.atk_table_is_column_selected((*C.AtkTable)(recv.native), c_column)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_table_is_selected
 
-	return retGo
-}
+// Blacklisted : atk_table_ref_at
 
-// IsRowSelected is a wrapper around the C function atk_table_is_row_selected.
-func (recv *Table) IsRowSelected(row int32) bool {
-	c_row := (C.gint)(row)
+// Blacklisted : atk_table_remove_column_selection
 
-	retC := C.atk_table_is_row_selected((*C.AtkTable)(recv.native), c_row)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_table_remove_row_selection
 
-	return retGo
-}
+// Blacklisted : atk_table_set_caption
 
-// IsSelected is a wrapper around the C function atk_table_is_selected.
-func (recv *Table) IsSelected(row int32, column int32) bool {
-	c_row := (C.gint)(row)
+// Blacklisted : atk_table_set_column_description
 
-	c_column := (C.gint)(column)
+// Blacklisted : atk_table_set_column_header
 
-	retC := C.atk_table_is_selected((*C.AtkTable)(recv.native), c_row, c_column)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_table_set_row_description
 
-	return retGo
-}
+// Blacklisted : atk_table_set_row_header
 
-// RefAt is a wrapper around the C function atk_table_ref_at.
-func (recv *Table) RefAt(row int32, column int32) *Object {
-	c_row := (C.gint)(row)
-
-	c_column := (C.gint)(column)
-
-	retC := C.atk_table_ref_at((*C.AtkTable)(recv.native), c_row, c_column)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RemoveColumnSelection is a wrapper around the C function atk_table_remove_column_selection.
-func (recv *Table) RemoveColumnSelection(column int32) bool {
-	c_column := (C.gint)(column)
-
-	retC := C.atk_table_remove_column_selection((*C.AtkTable)(recv.native), c_column)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RemoveRowSelection is a wrapper around the C function atk_table_remove_row_selection.
-func (recv *Table) RemoveRowSelection(row int32) bool {
-	c_row := (C.gint)(row)
-
-	retC := C.atk_table_remove_row_selection((*C.AtkTable)(recv.native), c_row)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetCaption is a wrapper around the C function atk_table_set_caption.
-func (recv *Table) SetCaption(caption *Object) {
-	c_caption := (*C.AtkObject)(C.NULL)
-	if caption != nil {
-		c_caption = (*C.AtkObject)(caption.ToC())
-	}
-
-	C.atk_table_set_caption((*C.AtkTable)(recv.native), c_caption)
-
-	return
-}
-
-// SetColumnDescription is a wrapper around the C function atk_table_set_column_description.
-func (recv *Table) SetColumnDescription(column int32, description string) {
-	c_column := (C.gint)(column)
-
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
-
-	C.atk_table_set_column_description((*C.AtkTable)(recv.native), c_column, c_description)
-
-	return
-}
-
-// SetColumnHeader is a wrapper around the C function atk_table_set_column_header.
-func (recv *Table) SetColumnHeader(column int32, header *Object) {
-	c_column := (C.gint)(column)
-
-	c_header := (*C.AtkObject)(C.NULL)
-	if header != nil {
-		c_header = (*C.AtkObject)(header.ToC())
-	}
-
-	C.atk_table_set_column_header((*C.AtkTable)(recv.native), c_column, c_header)
-
-	return
-}
-
-// SetRowDescription is a wrapper around the C function atk_table_set_row_description.
-func (recv *Table) SetRowDescription(row int32, description string) {
-	c_row := (C.gint)(row)
-
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
-
-	C.atk_table_set_row_description((*C.AtkTable)(recv.native), c_row, c_description)
-
-	return
-}
-
-// SetRowHeader is a wrapper around the C function atk_table_set_row_header.
-func (recv *Table) SetRowHeader(row int32, header *Object) {
-	c_row := (C.gint)(row)
-
-	c_header := (*C.AtkObject)(C.NULL)
-	if header != nil {
-		c_header = (*C.AtkObject)(header.ToC())
-	}
-
-	C.atk_table_set_row_header((*C.AtkTable)(recv.native), c_row, c_header)
-
-	return
-}
-
-// SetSummary is a wrapper around the C function atk_table_set_summary.
-func (recv *Table) SetSummary(accessible *Object) {
-	c_accessible := (*C.AtkObject)(C.NULL)
-	if accessible != nil {
-		c_accessible = (*C.AtkObject)(accessible.ToC())
-	}
-
-	C.atk_table_set_summary((*C.AtkTable)(recv.native), c_accessible)
-
-	return
-}
+// Blacklisted : atk_table_set_summary
 
 // TableCell is a wrapper around the C record AtkTableCell.
 type TableCell struct {
@@ -2513,115 +1853,25 @@ func text_textSelectionChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddSelection is a wrapper around the C function atk_text_add_selection.
-func (recv *Text) AddSelection(startOffset int32, endOffset int32) bool {
-	c_start_offset := (C.gint)(startOffset)
+// Blacklisted : atk_text_add_selection
 
-	c_end_offset := (C.gint)(endOffset)
+// Blacklisted : atk_text_get_caret_offset
 
-	retC := C.atk_text_add_selection((*C.AtkText)(recv.native), c_start_offset, c_end_offset)
-	retGo := retC == C.TRUE
+// Blacklisted : atk_text_get_character_at_offset
 
-	return retGo
-}
+// Blacklisted : atk_text_get_character_count
 
-// GetCaretOffset is a wrapper around the C function atk_text_get_caret_offset.
-func (recv *Text) GetCaretOffset() int32 {
-	retC := C.atk_text_get_caret_offset((*C.AtkText)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetCharacterAtOffset is a wrapper around the C function atk_text_get_character_at_offset.
-func (recv *Text) GetCharacterAtOffset(offset int32) rune {
-	c_offset := (C.gint)(offset)
-
-	retC := C.atk_text_get_character_at_offset((*C.AtkText)(recv.native), c_offset)
-	retGo := (rune)(retC)
-
-	return retGo
-}
-
-// GetCharacterCount is a wrapper around the C function atk_text_get_character_count.
-func (recv *Text) GetCharacterCount() int32 {
-	retC := C.atk_text_get_character_count((*C.AtkText)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// GetCharacterExtents is a wrapper around the C function atk_text_get_character_extents.
-func (recv *Text) GetCharacterExtents(offset int32, coords CoordType) (int32, int32, int32, int32) {
-	c_offset := (C.gint)(offset)
-
-	var c_x C.gint
-
-	var c_y C.gint
-
-	var c_width C.gint
-
-	var c_height C.gint
-
-	c_coords := (C.AtkCoordType)(coords)
-
-	C.atk_text_get_character_extents((*C.AtkText)(recv.native), c_offset, &c_x, &c_y, &c_width, &c_height, c_coords)
-
-	x := (int32)(c_x)
-
-	y := (int32)(c_y)
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return x, y, width, height
-}
+// Blacklisted : atk_text_get_character_extents
 
 // Blacklisted : atk_text_get_default_attributes
 
-// GetNSelections is a wrapper around the C function atk_text_get_n_selections.
-func (recv *Text) GetNSelections() int32 {
-	retC := C.atk_text_get_n_selections((*C.AtkText)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : atk_text_get_n_selections
 
-	return retGo
-}
-
-// GetOffsetAtPoint is a wrapper around the C function atk_text_get_offset_at_point.
-func (recv *Text) GetOffsetAtPoint(x int32, y int32, coords CoordType) int32 {
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	c_coords := (C.AtkCoordType)(coords)
-
-	retC := C.atk_text_get_offset_at_point((*C.AtkText)(recv.native), c_x, c_y, c_coords)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : atk_text_get_offset_at_point
 
 // Blacklisted : atk_text_get_run_attributes
 
-// GetSelection is a wrapper around the C function atk_text_get_selection.
-func (recv *Text) GetSelection(selectionNum int32) (string, int32, int32) {
-	c_selection_num := (C.gint)(selectionNum)
-
-	var c_start_offset C.gint
-
-	var c_end_offset C.gint
-
-	retC := C.atk_text_get_selection((*C.AtkText)(recv.native), c_selection_num, &c_start_offset, &c_end_offset)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	startOffset := (int32)(c_start_offset)
-
-	endOffset := (int32)(c_end_offset)
-
-	return retGo, startOffset, endOffset
-}
+// Blacklisted : atk_text_get_selection
 
 // GetText is a wrapper around the C function atk_text_get_text.
 func (recv *Text) GetText(startOffset int32, endOffset int32) string {
@@ -2636,102 +1886,17 @@ func (recv *Text) GetText(startOffset int32, endOffset int32) string {
 	return retGo
 }
 
-// GetTextAfterOffset is a wrapper around the C function atk_text_get_text_after_offset.
-func (recv *Text) GetTextAfterOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
-	c_offset := (C.gint)(offset)
+// Blacklisted : atk_text_get_text_after_offset
 
-	c_boundary_type := (C.AtkTextBoundary)(boundaryType)
+// Blacklisted : atk_text_get_text_at_offset
 
-	var c_start_offset C.gint
+// Blacklisted : atk_text_get_text_before_offset
 
-	var c_end_offset C.gint
+// Blacklisted : atk_text_remove_selection
 
-	retC := C.atk_text_get_text_after_offset((*C.AtkText)(recv.native), c_offset, c_boundary_type, &c_start_offset, &c_end_offset)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : atk_text_set_caret_offset
 
-	startOffset := (int32)(c_start_offset)
-
-	endOffset := (int32)(c_end_offset)
-
-	return retGo, startOffset, endOffset
-}
-
-// GetTextAtOffset is a wrapper around the C function atk_text_get_text_at_offset.
-func (recv *Text) GetTextAtOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
-	c_offset := (C.gint)(offset)
-
-	c_boundary_type := (C.AtkTextBoundary)(boundaryType)
-
-	var c_start_offset C.gint
-
-	var c_end_offset C.gint
-
-	retC := C.atk_text_get_text_at_offset((*C.AtkText)(recv.native), c_offset, c_boundary_type, &c_start_offset, &c_end_offset)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	startOffset := (int32)(c_start_offset)
-
-	endOffset := (int32)(c_end_offset)
-
-	return retGo, startOffset, endOffset
-}
-
-// GetTextBeforeOffset is a wrapper around the C function atk_text_get_text_before_offset.
-func (recv *Text) GetTextBeforeOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
-	c_offset := (C.gint)(offset)
-
-	c_boundary_type := (C.AtkTextBoundary)(boundaryType)
-
-	var c_start_offset C.gint
-
-	var c_end_offset C.gint
-
-	retC := C.atk_text_get_text_before_offset((*C.AtkText)(recv.native), c_offset, c_boundary_type, &c_start_offset, &c_end_offset)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	startOffset := (int32)(c_start_offset)
-
-	endOffset := (int32)(c_end_offset)
-
-	return retGo, startOffset, endOffset
-}
-
-// RemoveSelection is a wrapper around the C function atk_text_remove_selection.
-func (recv *Text) RemoveSelection(selectionNum int32) bool {
-	c_selection_num := (C.gint)(selectionNum)
-
-	retC := C.atk_text_remove_selection((*C.AtkText)(recv.native), c_selection_num)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetCaretOffset is a wrapper around the C function atk_text_set_caret_offset.
-func (recv *Text) SetCaretOffset(offset int32) bool {
-	c_offset := (C.gint)(offset)
-
-	retC := C.atk_text_set_caret_offset((*C.AtkText)(recv.native), c_offset)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetSelection is a wrapper around the C function atk_text_set_selection.
-func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset int32) bool {
-	c_selection_num := (C.gint)(selectionNum)
-
-	c_start_offset := (C.gint)(startOffset)
-
-	c_end_offset := (C.gint)(endOffset)
-
-	retC := C.atk_text_set_selection((*C.AtkText)(recv.native), c_selection_num, c_start_offset, c_end_offset)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_text_set_selection
 
 // Value is a wrapper around the C record AtkValue.
 type Value struct {
@@ -2759,51 +1924,13 @@ func (recv *Value) Equals(other *Value) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// GetCurrentValue is a wrapper around the C function atk_value_get_current_value.
-func (recv *Value) GetCurrentValue() *gobject.Value {
-	var c_value C.GValue
+// Blacklisted : atk_value_get_current_value
 
-	C.atk_value_get_current_value((*C.AtkValue)(recv.native), &c_value)
+// Blacklisted : atk_value_get_maximum_value
 
-	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
+// Blacklisted : atk_value_get_minimum_value
 
-	return value
-}
-
-// GetMaximumValue is a wrapper around the C function atk_value_get_maximum_value.
-func (recv *Value) GetMaximumValue() *gobject.Value {
-	var c_value C.GValue
-
-	C.atk_value_get_maximum_value((*C.AtkValue)(recv.native), &c_value)
-
-	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
-
-	return value
-}
-
-// GetMinimumValue is a wrapper around the C function atk_value_get_minimum_value.
-func (recv *Value) GetMinimumValue() *gobject.Value {
-	var c_value C.GValue
-
-	C.atk_value_get_minimum_value((*C.AtkValue)(recv.native), &c_value)
-
-	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
-
-	return value
-}
-
-// SetCurrentValue is a wrapper around the C function atk_value_set_current_value.
-func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
-	c_value := (*C.GValue)(C.NULL)
-	if value != nil {
-		c_value = (*C.GValue)(value.ToC())
-	}
-
-	retC := C.atk_value_set_current_value((*C.AtkValue)(recv.native), c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : atk_value_set_current_value
 
 // Window is a wrapper around the C record AtkWindow.
 type Window struct {

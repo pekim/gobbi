@@ -96,23 +96,6 @@ func (recv *OutputMessage) Equals(other *OutputMessage) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ListChildren is a wrapper around the C function g_settings_schema_list_children.
-func (recv *SettingsSchema) ListChildren() []string {
-	retC := C.g_settings_schema_list_children((*C.GSettingsSchema)(recv.native))
-	retGo := []string{}
-	for p := retC; *p != nil; p = (**C.char)(C.gpointer((uintptr(C.gpointer(p)) + uintptr(C.sizeof_gpointer)))) {
-		s := C.GoString(*p)
-		retGo = append(retGo, s)
-	}
-	defer C.g_strfreev(retC)
+// Blacklisted : g_settings_schema_list_children
 
-	return retGo
-}
-
-// GetName is a wrapper around the C function g_settings_schema_key_get_name.
-func (recv *SettingsSchemaKey) GetName() string {
-	retC := C.g_settings_schema_key_get_name((*C.GSettingsSchemaKey)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Blacklisted : g_settings_schema_key_get_name

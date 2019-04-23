@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	gio "github.com/pekim/gobbi/lib/gio"
 	"sync"
 	"unsafe"
 )
@@ -45,31 +44,11 @@ import (
 */
 import "C"
 
-// GetMinimumIncrement is a wrapper around the C function gtk_adjustment_get_minimum_increment.
-func (recv *Adjustment) GetMinimumIncrement() float64 {
-	retC := C.gtk_adjustment_get_minimum_increment((*C.GtkAdjustment)(recv.native))
-	retGo := (float64)(retC)
+// Blacklisted : gtk_adjustment_get_minimum_increment
 
-	return retGo
-}
+// Blacklisted : gtk_app_chooser_button_get_show_default_item
 
-// GetShowDefaultItem is a wrapper around the C function gtk_app_chooser_button_get_show_default_item.
-func (recv *AppChooserButton) GetShowDefaultItem() bool {
-	retC := C.gtk_app_chooser_button_get_show_default_item((*C.GtkAppChooserButton)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetShowDefaultItem is a wrapper around the C function gtk_app_chooser_button_set_show_default_item.
-func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
-	c_setting :=
-		boolToGboolean(setting)
-
-	C.gtk_app_chooser_button_set_show_default_item((*C.GtkAppChooserButton)(recv.native), c_setting)
-
-	return
-}
+// Blacklisted : gtk_app_chooser_button_set_show_default_item
 
 type signalApplicationWindowAddedDetail struct {
 	callback  ApplicationSignalWindowAddedCallback
@@ -195,208 +174,41 @@ func application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data 
 	callback(window)
 }
 
-// RemovePage is a wrapper around the C function gtk_assistant_remove_page.
-func (recv *Assistant) RemovePage(pageNum int32) {
-	c_page_num := (C.gint)(pageNum)
+// Blacklisted : gtk_assistant_remove_page
 
-	C.gtk_assistant_remove_page((*C.GtkAssistant)(recv.native), c_page_num)
+// Blacklisted : gtk_button_box_get_child_non_homogeneous
 
-	return
-}
+// Blacklisted : gtk_button_box_set_child_non_homogeneous
 
-// GetChildNonHomogeneous is a wrapper around the C function gtk_button_box_get_child_non_homogeneous.
-func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
+// Blacklisted : gtk_container_child_notify
 
-	retC := C.gtk_button_box_get_child_non_homogeneous((*C.GtkButtonBox)(recv.native), c_child)
-	retGo := retC == C.TRUE
+// Blacklisted : gtk_css_provider_to_string
 
-	return retGo
-}
+// Blacklisted : gtk_entry_get_placeholder_text
 
-// SetChildNonHomogeneous is a wrapper around the C function gtk_button_box_set_child_non_homogeneous.
-func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
+// Blacklisted : gtk_entry_set_placeholder_text
 
-	c_non_homogeneous :=
-		boolToGboolean(nonHomogeneous)
+// Blacklisted : gtk_expander_get_resize_toplevel
 
-	C.gtk_button_box_set_child_non_homogeneous((*C.GtkButtonBox)(recv.native), c_child, c_non_homogeneous)
+// Blacklisted : gtk_expander_set_resize_toplevel
 
-	return
-}
+// Blacklisted : gtk_font_chooser_dialog_new
 
-// ChildNotify is a wrapper around the C function gtk_container_child_notify.
-func (recv *Container) ChildNotify(child *Widget, childProperty string) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
+// Blacklisted : gtk_font_chooser_widget_new
 
-	c_child_property := C.CString(childProperty)
-	defer C.free(unsafe.Pointer(c_child_property))
+// Blacklisted : gtk_grid_get_child_at
 
-	C.gtk_container_child_notify((*C.GtkContainer)(recv.native), c_child, c_child_property)
+// Blacklisted : gtk_grid_insert_column
 
-	return
-}
+// Blacklisted : gtk_grid_insert_next_to
 
-// ToString is a wrapper around the C function gtk_css_provider_to_string.
-func (recv *CssProvider) ToString() string {
-	retC := C.gtk_css_provider_to_string((*C.GtkCssProvider)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
+// Blacklisted : gtk_grid_insert_row
 
-	return retGo
-}
+// Blacklisted : gtk_lock_button_new
 
-// GetPlaceholderText is a wrapper around the C function gtk_entry_get_placeholder_text.
-func (recv *Entry) GetPlaceholderText() string {
-	retC := C.gtk_entry_get_placeholder_text((*C.GtkEntry)(recv.native))
-	retGo := C.GoString(retC)
+// Blacklisted : gtk_lock_button_get_permission
 
-	return retGo
-}
-
-// SetPlaceholderText is a wrapper around the C function gtk_entry_set_placeholder_text.
-func (recv *Entry) SetPlaceholderText(text string) {
-	c_text := C.CString(text)
-	defer C.free(unsafe.Pointer(c_text))
-
-	C.gtk_entry_set_placeholder_text((*C.GtkEntry)(recv.native), c_text)
-
-	return
-}
-
-// GetResizeToplevel is a wrapper around the C function gtk_expander_get_resize_toplevel.
-func (recv *Expander) GetResizeToplevel() bool {
-	retC := C.gtk_expander_get_resize_toplevel((*C.GtkExpander)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetResizeToplevel is a wrapper around the C function gtk_expander_set_resize_toplevel.
-func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
-	c_resize_toplevel :=
-		boolToGboolean(resizeToplevel)
-
-	C.gtk_expander_set_resize_toplevel((*C.GtkExpander)(recv.native), c_resize_toplevel)
-
-	return
-}
-
-// FontChooserDialogNew is a wrapper around the C function gtk_font_chooser_dialog_new.
-func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
-
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	retC := C.gtk_font_chooser_dialog_new(c_title, c_parent)
-	retGo := FontChooserDialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FontChooserWidgetNew is a wrapper around the C function gtk_font_chooser_widget_new.
-func FontChooserWidgetNew() *FontChooserWidget {
-	retC := C.gtk_font_chooser_widget_new()
-	retGo := FontChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetChildAt is a wrapper around the C function gtk_grid_get_child_at.
-func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
-	c_left := (C.gint)(left)
-
-	c_top := (C.gint)(top)
-
-	retC := C.gtk_grid_get_child_at((*C.GtkGrid)(recv.native), c_left, c_top)
-	var retGo (*Widget)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WidgetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// InsertColumn is a wrapper around the C function gtk_grid_insert_column.
-func (recv *Grid) InsertColumn(position int32) {
-	c_position := (C.gint)(position)
-
-	C.gtk_grid_insert_column((*C.GtkGrid)(recv.native), c_position)
-
-	return
-}
-
-// InsertNextTo is a wrapper around the C function gtk_grid_insert_next_to.
-func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
-	c_sibling := (*C.GtkWidget)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GtkWidget)(sibling.ToC())
-	}
-
-	c_side := (C.GtkPositionType)(side)
-
-	C.gtk_grid_insert_next_to((*C.GtkGrid)(recv.native), c_sibling, c_side)
-
-	return
-}
-
-// InsertRow is a wrapper around the C function gtk_grid_insert_row.
-func (recv *Grid) InsertRow(position int32) {
-	c_position := (C.gint)(position)
-
-	C.gtk_grid_insert_row((*C.GtkGrid)(recv.native), c_position)
-
-	return
-}
-
-// LockButtonNew is a wrapper around the C function gtk_lock_button_new.
-func LockButtonNew(permission *gio.Permission) *LockButton {
-	c_permission := (*C.GPermission)(C.NULL)
-	if permission != nil {
-		c_permission = (*C.GPermission)(permission.ToC())
-	}
-
-	retC := C.gtk_lock_button_new(c_permission)
-	retGo := LockButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetPermission is a wrapper around the C function gtk_lock_button_get_permission.
-func (recv *LockButton) GetPermission() *gio.Permission {
-	retC := C.gtk_lock_button_get_permission((*C.GtkLockButton)(recv.native))
-	retGo := gio.PermissionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SetPermission is a wrapper around the C function gtk_lock_button_set_permission.
-func (recv *LockButton) SetPermission(permission *gio.Permission) {
-	c_permission := (*C.GPermission)(C.NULL)
-	if permission != nil {
-		c_permission = (*C.GPermission)(permission.ToC())
-	}
-
-	C.gtk_lock_button_set_permission((*C.GtkLockButton)(recv.native), c_permission)
-
-	return
-}
+// Blacklisted : gtk_lock_button_set_permission
 
 type signalMenuShellInsertDetail struct {
 	callback  MenuShellSignalInsertCallback
@@ -462,65 +274,16 @@ func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gi
 	callback(child, position)
 }
 
-// OverlayNew is a wrapper around the C function gtk_overlay_new.
-func OverlayNew() *Overlay {
-	retC := C.gtk_overlay_new()
-	retGo := OverlayNewFromC(unsafe.Pointer(retC))
+// Blacklisted : gtk_overlay_new
 
-	return retGo
-}
+// Blacklisted : gtk_overlay_add_overlay
 
-// AddOverlay is a wrapper around the C function gtk_overlay_add_overlay.
-func (recv *Overlay) AddOverlay(widget *Widget) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
+// Blacklisted : gtk_tree_view_column_get_x_offset
 
-	C.gtk_overlay_add_overlay((*C.GtkOverlay)(recv.native), c_widget)
+// Blacklisted : gtk_drag_source_set_icon_gicon
 
-	return
-}
+// Blacklisted : gtk_widget_has_visible_focus
 
-// GetXOffset is a wrapper around the C function gtk_tree_view_column_get_x_offset.
-func (recv *TreeViewColumn) GetXOffset() int32 {
-	retC := C.gtk_tree_view_column_get_x_offset((*C.GtkTreeViewColumn)(recv.native))
-	retGo := (int32)(retC)
+// Blacklisted : gtk_window_get_focus_visible
 
-	return retGo
-}
-
-// DragSourceSetIconGicon is a wrapper around the C function gtk_drag_source_set_icon_gicon.
-func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	C.gtk_drag_source_set_icon_gicon((*C.GtkWidget)(recv.native), c_icon)
-
-	return
-}
-
-// HasVisibleFocus is a wrapper around the C function gtk_widget_has_visible_focus.
-func (recv *Widget) HasVisibleFocus() bool {
-	retC := C.gtk_widget_has_visible_focus((*C.GtkWidget)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// GetFocusVisible is a wrapper around the C function gtk_window_get_focus_visible.
-func (recv *Window) GetFocusVisible() bool {
-	retC := C.gtk_window_get_focus_visible((*C.GtkWindow)(recv.native))
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SetFocusVisible is a wrapper around the C function gtk_window_set_focus_visible.
-func (recv *Window) SetFocusVisible(setting bool) {
-	c_setting :=
-		boolToGboolean(setting)
-
-	C.gtk_window_set_focus_visible((*C.GtkWindow)(recv.native), c_setting)
-
-	return
-}
+// Blacklisted : gtk_window_set_focus_visible

@@ -3,8 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,15 +12,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// SymbolicColorNewWin32 is a wrapper around the C function gtk_symbolic_color_new_win32.
-func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
-	c_theme_class := C.CString(themeClass)
-	defer C.free(unsafe.Pointer(c_theme_class))
-
-	c_id := (C.gint)(id)
-
-	retC := C.gtk_symbolic_color_new_win32(c_theme_class, c_id)
-	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_symbolic_color_new_win32

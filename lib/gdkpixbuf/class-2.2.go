@@ -3,11 +3,6 @@
 
 package gdkpixbuf
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -15,36 +10,10 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufGetFormats is a wrapper around the C function gdk_pixbuf_get_formats.
-func PixbufGetFormats() *glib.SList {
-	retC := C.gdk_pixbuf_get_formats()
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_get_formats
 
 // Blacklisted : gdk_pixbuf_set_option
 
-// GetFormat is a wrapper around the C function gdk_pixbuf_loader_get_format.
-func (recv *PixbufLoader) GetFormat() *PixbufFormat {
-	retC := C.gdk_pixbuf_loader_get_format((*C.GdkPixbufLoader)(recv.native))
-	var retGo (*PixbufFormat)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = PixbufFormatNewFromC(unsafe.Pointer(retC))
-	}
+// Blacklisted : gdk_pixbuf_loader_get_format
 
-	return retGo
-}
-
-// SetSize is a wrapper around the C function gdk_pixbuf_loader_set_size.
-func (recv *PixbufLoader) SetSize(width int32, height int32) {
-	c_width := (C.int)(width)
-
-	c_height := (C.int)(height)
-
-	C.gdk_pixbuf_loader_set_size((*C.GdkPixbufLoader)(recv.native), c_width, c_height)
-
-	return
-}
+// Blacklisted : gdk_pixbuf_loader_set_size

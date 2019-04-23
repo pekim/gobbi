@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,37 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// OffscreenWindowGetEmbedder is a wrapper around the C function gdk_offscreen_window_get_embedder.
-func OffscreenWindowGetEmbedder(window *Window) *Window {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
+// Blacklisted : gdk_offscreen_window_get_embedder
 
-	retC := C.gdk_offscreen_window_get_embedder(c_window)
-	var retGo (*Window)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = WindowNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// OffscreenWindowSetEmbedder is a wrapper around the C function gdk_offscreen_window_set_embedder.
-func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
-	c_window := (*C.GdkWindow)(C.NULL)
-	if window != nil {
-		c_window = (*C.GdkWindow)(window.ToC())
-	}
-
-	c_embedder := (*C.GdkWindow)(C.NULL)
-	if embedder != nil {
-		c_embedder = (*C.GdkWindow)(embedder.ToC())
-	}
-
-	C.gdk_offscreen_window_set_embedder(c_window, c_embedder)
-
-	return
-}
+// Blacklisted : gdk_offscreen_window_set_embedder
