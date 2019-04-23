@@ -93,6 +93,14 @@ func (e *Enumeration) blacklisted() (bool, string) {
 		"DirectionType",
 		"CrossingMode",
 		"NotifyType",
+		"PropertyState",
+		"ScrollDirection",
+		"WidgetHelpType",
+		"StateType",
+		"EventVisibility",
+		"EventWindowState",
+		"WindowState",
+		"VisibilityState",
 	}
 	for _, n := range wl {
 		if n == e.Name {

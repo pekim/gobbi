@@ -12,6 +12,10 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : gtk_label_get_lines
+
+// Blacklisted : gtk_label_set_lines
+
 // Unsupported : gtk_drag_begin_with_coordinates : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // Blacklisted : gtk_widget_get_allocated_baseline

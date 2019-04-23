@@ -9,3 +9,5 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : gdk_screen_get_primary_monitor

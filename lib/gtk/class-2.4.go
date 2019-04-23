@@ -60,6 +60,24 @@ import (
 	}
 
 */
+/*
+
+	void style_realizeHandler(GObject *, gpointer);
+
+	static gulong Style_signal_connect_realize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "realize", G_CALLBACK(style_realizeHandler), data);
+	}
+
+*/
+/*
+
+	void style_unrealizeHandler(GObject *, gpointer);
+
+	static gulong Style_signal_connect_unrealize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unrealize", G_CALLBACK(style_unrealizeHandler), data);
+	}
+
+*/
 import "C"
 
 type signalActionActivateDetail struct {
@@ -447,6 +465,126 @@ func actiongroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.
 // Blacklisted : gtk_action_group_set_translation_domain
 
 // Blacklisted : gtk_action_group_set_visible
+
+type signalStyleRealizeDetail struct {
+	callback  StyleSignalRealizeCallback
+	handlerID C.gulong
+}
+
+var signalStyleRealizeId int
+var signalStyleRealizeMap = make(map[int]signalStyleRealizeDetail)
+var signalStyleRealizeLock sync.RWMutex
+
+// StyleSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Style.
+type StyleSignalRealizeCallback func()
+
+/*
+ConnectRealize connects the callback to the 'realize' signal for the Style.
+
+The returned value represents the connection, and may be passed to DisconnectRealize to remove it.
+*/
+func (recv *Style) ConnectRealize(callback StyleSignalRealizeCallback) int {
+	signalStyleRealizeLock.Lock()
+	defer signalStyleRealizeLock.Unlock()
+
+	signalStyleRealizeId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Style_signal_connect_realize(instance, C.gpointer(uintptr(signalStyleRealizeId)))
+
+	detail := signalStyleRealizeDetail{callback, handlerID}
+	signalStyleRealizeMap[signalStyleRealizeId] = detail
+
+	return signalStyleRealizeId
+}
+
+/*
+DisconnectRealize disconnects a callback from the 'realize' signal for the Style.
+
+The connectionID should be a value returned from a call to ConnectRealize.
+*/
+func (recv *Style) DisconnectRealize(connectionID int) {
+	signalStyleRealizeLock.Lock()
+	defer signalStyleRealizeLock.Unlock()
+
+	detail, exists := signalStyleRealizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalStyleRealizeMap, connectionID)
+}
+
+//export style_realizeHandler
+func style_realizeHandler(_ *C.GObject, data C.gpointer) {
+	signalStyleRealizeLock.RLock()
+	defer signalStyleRealizeLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := signalStyleRealizeMap[index].callback
+	callback()
+}
+
+type signalStyleUnrealizeDetail struct {
+	callback  StyleSignalUnrealizeCallback
+	handlerID C.gulong
+}
+
+var signalStyleUnrealizeId int
+var signalStyleUnrealizeMap = make(map[int]signalStyleUnrealizeDetail)
+var signalStyleUnrealizeLock sync.RWMutex
+
+// StyleSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Style.
+type StyleSignalUnrealizeCallback func()
+
+/*
+ConnectUnrealize connects the callback to the 'unrealize' signal for the Style.
+
+The returned value represents the connection, and may be passed to DisconnectUnrealize to remove it.
+*/
+func (recv *Style) ConnectUnrealize(callback StyleSignalUnrealizeCallback) int {
+	signalStyleUnrealizeLock.Lock()
+	defer signalStyleUnrealizeLock.Unlock()
+
+	signalStyleUnrealizeId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Style_signal_connect_unrealize(instance, C.gpointer(uintptr(signalStyleUnrealizeId)))
+
+	detail := signalStyleUnrealizeDetail{callback, handlerID}
+	signalStyleUnrealizeMap[signalStyleUnrealizeId] = detail
+
+	return signalStyleUnrealizeId
+}
+
+/*
+DisconnectUnrealize disconnects a callback from the 'unrealize' signal for the Style.
+
+The connectionID should be a value returned from a call to ConnectUnrealize.
+*/
+func (recv *Style) DisconnectUnrealize(connectionID int) {
+	signalStyleUnrealizeLock.Lock()
+	defer signalStyleUnrealizeLock.Unlock()
+
+	detail, exists := signalStyleUnrealizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalStyleUnrealizeMap, connectionID)
+}
+
+//export style_unrealizeHandler
+func style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
+	signalStyleUnrealizeLock.RLock()
+	defer signalStyleUnrealizeLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := signalStyleUnrealizeMap[index].callback
+	callback()
+}
 
 // Blacklisted : gtk_widget_add_mnemonic_label
 

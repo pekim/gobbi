@@ -14,6 +14,14 @@ import "C"
 
 // Blacklisted : GtkGLArea
 
+// Blacklisted : gtk_label_get_xalign
+
+// Blacklisted : gtk_label_get_yalign
+
+// Blacklisted : gtk_label_set_xalign
+
+// Blacklisted : gtk_label_set_yalign
+
 // Blacklisted : gtk_widget_get_action_group
 
 // Blacklisted : gtk_widget_list_action_prefixes

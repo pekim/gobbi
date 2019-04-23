@@ -15,7 +15,42 @@ import "C"
 
 // Blacklisted : GdkColor
 
-// Blacklisted : GdkEventAny
+// EventAny is a wrapper around the C record GdkEventAny.
+type EventAny struct {
+	native *C.GdkEventAny
+	Type   EventType
+	// window : record
+	SendEvent int8
+}
+
+func EventAnyNewFromC(u unsafe.Pointer) *EventAny {
+	c := (*C.GdkEventAny)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventAny{
+		SendEvent: (int8)(c.send_event),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventAny) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventAny with another EventAny, and returns true if they represent the same GObject.
+func (recv *EventAny) Equals(other *EventAny) bool {
+	return other.ToC() == recv.ToC()
+}
 
 // EventButton is a wrapper around the C record GdkEventButton.
 type EventButton struct {
@@ -256,7 +291,46 @@ func (recv *EventExpose) Equals(other *EventExpose) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Blacklisted : GdkEventFocus
+// EventFocus is a wrapper around the C record GdkEventFocus.
+type EventFocus struct {
+	native *C.GdkEventFocus
+	Type   EventType
+	// window : record
+	SendEvent int8
+	In        int16
+}
+
+func EventFocusNewFromC(u unsafe.Pointer) *EventFocus {
+	c := (*C.GdkEventFocus)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventFocus{
+		In:        (int16)(c.in),
+		SendEvent: (int8)(c.send_event),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventFocus) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.in =
+		(C.gint16)(recv.In)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventFocus with another EventFocus, and returns true if they represent the same GObject.
+func (recv *EventFocus) Equals(other *EventFocus) bool {
+	return other.ToC() == recv.ToC()
+}
 
 // EventKey is a wrapper around the C record GdkEventKey.
 type EventKey struct {
@@ -324,15 +398,280 @@ func (recv *EventKey) Equals(other *EventKey) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Blacklisted : GdkEventMotion
+// EventMotion is a wrapper around the C record GdkEventMotion.
+type EventMotion struct {
+	native *C.GdkEventMotion
+	Type   EventType
+	// window : record
+	SendEvent int8
+	Time      uint32
+	X         float64
+	Y         float64
+	// axes : gdouble* with indirection level of 1
+	State  ModifierType
+	IsHint int16
+	// device : record
+	XRoot float64
+	YRoot float64
+}
 
-// Blacklisted : GdkEventProperty
+func EventMotionNewFromC(u unsafe.Pointer) *EventMotion {
+	c := (*C.GdkEventMotion)(u)
+	if c == nil {
+		return nil
+	}
 
-// Blacklisted : GdkEventProximity
+	g := &EventMotion{
+		IsHint:    (int16)(c.is_hint),
+		SendEvent: (int8)(c.send_event),
+		State:     (ModifierType)(c.state),
+		Time:      (uint32)(c.time),
+		Type:      (EventType)(c._type),
+		X:         (float64)(c.x),
+		XRoot:     (float64)(c.x_root),
+		Y:         (float64)(c.y),
+		YRoot:     (float64)(c.y_root),
+		native:    c,
+	}
 
-// Blacklisted : GdkEventScroll
+	return g
+}
 
-// Blacklisted : GdkEventSelection
+func (recv *EventMotion) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.time =
+		(C.guint32)(recv.Time)
+	recv.native.x =
+		(C.gdouble)(recv.X)
+	recv.native.y =
+		(C.gdouble)(recv.Y)
+	recv.native.state =
+		(C.guint)(recv.State)
+	recv.native.is_hint =
+		(C.gint16)(recv.IsHint)
+	recv.native.x_root =
+		(C.gdouble)(recv.XRoot)
+	recv.native.y_root =
+		(C.gdouble)(recv.YRoot)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventMotion with another EventMotion, and returns true if they represent the same GObject.
+func (recv *EventMotion) Equals(other *EventMotion) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// EventProperty is a wrapper around the C record GdkEventProperty.
+type EventProperty struct {
+	native *C.GdkEventProperty
+	Type   EventType
+	// window : record
+	SendEvent int8
+	// atom : record
+	Time  uint32
+	State PropertyState
+}
+
+func EventPropertyNewFromC(u unsafe.Pointer) *EventProperty {
+	c := (*C.GdkEventProperty)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventProperty{
+		SendEvent: (int8)(c.send_event),
+		State:     (PropertyState)(c.state),
+		Time:      (uint32)(c.time),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventProperty) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.time =
+		(C.guint32)(recv.Time)
+	recv.native.state =
+		(C.guint)(recv.State)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventProperty with another EventProperty, and returns true if they represent the same GObject.
+func (recv *EventProperty) Equals(other *EventProperty) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// EventProximity is a wrapper around the C record GdkEventProximity.
+type EventProximity struct {
+	native *C.GdkEventProximity
+	Type   EventType
+	// window : record
+	SendEvent int8
+	Time      uint32
+	// device : record
+}
+
+func EventProximityNewFromC(u unsafe.Pointer) *EventProximity {
+	c := (*C.GdkEventProximity)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventProximity{
+		SendEvent: (int8)(c.send_event),
+		Time:      (uint32)(c.time),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventProximity) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.time =
+		(C.guint32)(recv.Time)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventProximity with another EventProximity, and returns true if they represent the same GObject.
+func (recv *EventProximity) Equals(other *EventProximity) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// EventScroll is a wrapper around the C record GdkEventScroll.
+type EventScroll struct {
+	native *C.GdkEventScroll
+	Type   EventType
+	// window : record
+	SendEvent int8
+	Time      uint32
+	X         float64
+	Y         float64
+	State     ModifierType
+	Direction ScrollDirection
+	// device : record
+	XRoot  float64
+	YRoot  float64
+	DeltaX float64
+	DeltaY float64
+	// Bitfield not supported :  1 is_stop
+}
+
+func EventScrollNewFromC(u unsafe.Pointer) *EventScroll {
+	c := (*C.GdkEventScroll)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventScroll{
+		DeltaX:    (float64)(c.delta_x),
+		DeltaY:    (float64)(c.delta_y),
+		Direction: (ScrollDirection)(c.direction),
+		SendEvent: (int8)(c.send_event),
+		State:     (ModifierType)(c.state),
+		Time:      (uint32)(c.time),
+		Type:      (EventType)(c._type),
+		X:         (float64)(c.x),
+		XRoot:     (float64)(c.x_root),
+		Y:         (float64)(c.y),
+		YRoot:     (float64)(c.y_root),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventScroll) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.time =
+		(C.guint32)(recv.Time)
+	recv.native.x =
+		(C.gdouble)(recv.X)
+	recv.native.y =
+		(C.gdouble)(recv.Y)
+	recv.native.state =
+		(C.guint)(recv.State)
+	recv.native.direction =
+		(C.GdkScrollDirection)(recv.Direction)
+	recv.native.x_root =
+		(C.gdouble)(recv.XRoot)
+	recv.native.y_root =
+		(C.gdouble)(recv.YRoot)
+	recv.native.delta_x =
+		(C.gdouble)(recv.DeltaX)
+	recv.native.delta_y =
+		(C.gdouble)(recv.DeltaY)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventScroll with another EventScroll, and returns true if they represent the same GObject.
+func (recv *EventScroll) Equals(other *EventScroll) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// EventSelection is a wrapper around the C record GdkEventSelection.
+type EventSelection struct {
+	native *C.GdkEventSelection
+	Type   EventType
+	// window : record
+	SendEvent int8
+	// selection : record
+	// target : record
+	// property : record
+	Time uint32
+	// requestor : record
+}
+
+func EventSelectionNewFromC(u unsafe.Pointer) *EventSelection {
+	c := (*C.GdkEventSelection)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventSelection{
+		SendEvent: (int8)(c.send_event),
+		Time:      (uint32)(c.time),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventSelection) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.time =
+		(C.guint32)(recv.Time)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventSelection with another EventSelection, and returns true if they represent the same GObject.
+func (recv *EventSelection) Equals(other *EventSelection) bool {
+	return other.ToC() == recv.ToC()
+}
 
 // Blacklisted : GdkEventSequence
 
@@ -344,9 +683,91 @@ func (recv *EventKey) Equals(other *EventKey) bool {
 
 // Blacklisted : GdkEventTouchpadSwipe
 
-// Blacklisted : GdkEventVisibility
+// EventVisibility is a wrapper around the C record GdkEventVisibility.
+type EventVisibility struct {
+	native *C.GdkEventVisibility
+	Type   EventType
+	// window : record
+	SendEvent int8
+	State     VisibilityState
+}
 
-// Blacklisted : GdkEventWindowState
+func EventVisibilityNewFromC(u unsafe.Pointer) *EventVisibility {
+	c := (*C.GdkEventVisibility)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventVisibility{
+		SendEvent: (int8)(c.send_event),
+		State:     (VisibilityState)(c.state),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventVisibility) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.state =
+		(C.GdkVisibilityState)(recv.State)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventVisibility with another EventVisibility, and returns true if they represent the same GObject.
+func (recv *EventVisibility) Equals(other *EventVisibility) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// EventWindowState is a wrapper around the C record GdkEventWindowState.
+type EventWindowState struct {
+	native *C.GdkEventWindowState
+	Type   EventType
+	// window : record
+	SendEvent      int8
+	ChangedMask    WindowState
+	NewWindowState WindowState
+}
+
+func EventWindowStateNewFromC(u unsafe.Pointer) *EventWindowState {
+	c := (*C.GdkEventWindowState)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventWindowState{
+		ChangedMask:    (WindowState)(c.changed_mask),
+		NewWindowState: (WindowState)(c.new_window_state),
+		SendEvent:      (int8)(c.send_event),
+		Type:           (EventType)(c._type),
+		native:         c,
+	}
+
+	return g
+}
+
+func (recv *EventWindowState) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+	recv.native.send_event =
+		(C.gint8)(recv.SendEvent)
+	recv.native.changed_mask =
+		(C.GdkWindowState)(recv.ChangedMask)
+	recv.native.new_window_state =
+		(C.GdkWindowState)(recv.NewWindowState)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventWindowState with another EventWindowState, and returns true if they represent the same GObject.
+func (recv *EventWindowState) Equals(other *EventWindowState) bool {
+	return other.ToC() == recv.ToC()
+}
 
 // Blacklisted : GdkFrameClockClass
 

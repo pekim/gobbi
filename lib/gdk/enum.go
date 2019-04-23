@@ -116,9 +116,22 @@ const (
 
 // Blacklisted : GdkPropMode
 
-// Blacklisted : guint
+type PropertyState C.guint
 
-// Blacklisted : GdkScrollDirection
+const (
+	GDK_PROPERTY_NEW_VALUE PropertyState = 0
+	GDK_PROPERTY_DELETE    PropertyState = 1
+)
+
+type ScrollDirection C.GdkScrollDirection
+
+const (
+	GDK_SCROLL_UP     ScrollDirection = 0
+	GDK_SCROLL_DOWN   ScrollDirection = 1
+	GDK_SCROLL_LEFT   ScrollDirection = 2
+	GDK_SCROLL_RIGHT  ScrollDirection = 3
+	GDK_SCROLL_SMOOTH ScrollDirection = 4
+)
 
 // Blacklisted : GdkSettingAction
 
@@ -134,7 +147,13 @@ const (
 
 // Blacklisted : GdkTouchpadGesturePhase
 
-// Blacklisted : GdkVisibilityState
+type VisibilityState C.GdkVisibilityState
+
+const (
+	GDK_VISIBILITY_UNOBSCURED     VisibilityState = 0
+	GDK_VISIBILITY_PARTIAL        VisibilityState = 1
+	GDK_VISIBILITY_FULLY_OBSCURED VisibilityState = 2
+)
 
 // Blacklisted : GdkVisualType
 

@@ -84,7 +84,60 @@ func CastToDragContext(object *gobject.Object) *DragContext {
 
 // Blacklisted : GdkKeymap
 
-// Blacklisted : GdkScreen
+// Screen is a wrapper around the C record GdkScreen.
+type Screen struct {
+	native *C.GdkScreen
+}
+
+func ScreenNewFromC(u unsafe.Pointer) *Screen {
+	c := (*C.GdkScreen)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Screen{native: c}
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Screen) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
+
+	return g
+}
+
+func (recv *Screen) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Screen with another Screen, and returns true if they represent the same GObject.
+func (recv *Screen) Equals(other *Screen) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Object upcasts to *Object
+func (recv *Screen) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitrary Object to Screen.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Screen.
+func CastToScreen(object *gobject.Object) *Screen {
+	return ScreenNewFromC(object.ToC())
+}
+
+// Blacklisted : gdk_screen_height
+
+// Blacklisted : gdk_screen_height_mm
+
+// Blacklisted : gdk_screen_width
+
+// Blacklisted : gdk_screen_width_mm
 
 // Blacklisted : GdkVisual
 

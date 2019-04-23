@@ -52,4 +52,10 @@ import "C"
 
 // Blacklisted : gtk_action_unblock_activate
 
+// Unsupported : gtk_style_get : unsupported parameter ... : varargs
+
+// Blacklisted : gtk_style_get_style_property
+
+// Unsupported : gtk_style_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+
 // Blacklisted : gtk_window_get_default_icon_name

@@ -157,7 +157,17 @@ const (
 
 // Blacklisted : GtkStackTransitionType
 
-// Blacklisted : GtkStateType
+type StateType C.GtkStateType
+
+const (
+	GTK_STATE_NORMAL       StateType = 0
+	GTK_STATE_ACTIVE       StateType = 1
+	GTK_STATE_PRELIGHT     StateType = 2
+	GTK_STATE_SELECTED     StateType = 3
+	GTK_STATE_INSENSITIVE  StateType = 4
+	GTK_STATE_INCONSISTENT StateType = 5
+	GTK_STATE_FOCUSED      StateType = 6
+)
 
 // Blacklisted : GtkTextBufferTargetInfo
 
@@ -185,7 +195,12 @@ const (
 
 // Blacklisted : GtkUnit
 
-// Blacklisted : GtkWidgetHelpType
+type WidgetHelpType C.GtkWidgetHelpType
+
+const (
+	GTK_WIDGET_HELP_TOOLTIP    WidgetHelpType = 0
+	GTK_WIDGET_HELP_WHATS_THIS WidgetHelpType = 1
+)
 
 // Blacklisted : GtkWindowPosition
 

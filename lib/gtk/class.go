@@ -57,6 +57,33 @@ import (
 */
 /*
 
+	void label_copyClipboardHandler(GObject *, gpointer);
+
+	static gulong Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(label_copyClipboardHandler), data);
+	}
+
+*/
+/*
+
+	void label_moveCursorHandler(GObject *, GtkMovementStep, gint, gboolean, gpointer);
+
+	static gulong Label_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", G_CALLBACK(label_moveCursorHandler), data);
+	}
+
+*/
+/*
+
+	void label_populatePopupHandler(GObject *, GtkMenu *, gpointer);
+
+	static gulong Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", G_CALLBACK(label_populatePopupHandler), data);
+	}
+
+*/
+/*
+
 	void widget_accelClosuresChangedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_accel_closures_changed(gpointer instance, gpointer data) {
@@ -1453,7 +1480,348 @@ func (recv *Container) Buildable() *Buildable {
 
 // Blacklisted : GtkInvisible
 
-// Blacklisted : GtkLabel
+// Label is a wrapper around the C record GtkLabel.
+type Label struct {
+	native *C.GtkLabel
+	// misc : record
+	// Private : priv
+}
+
+func LabelNewFromC(u unsafe.Pointer) *Label {
+	c := (*C.GtkLabel)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Label{native: c}
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Label) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
+
+	return g
+}
+
+func (recv *Label) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Label with another Label, and returns true if they represent the same GObject.
+func (recv *Label) Equals(other *Label) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Misc upcasts to *Misc
+func (recv *Label) Misc() *Misc {
+	return MiscNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Label) Widget() *Widget {
+	return recv.Misc().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Label) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Misc().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Label) Object() *gobject.Object {
+	return recv.Misc().Object()
+}
+
+// CastToWidget down casts any arbitrary Object to Label.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Label.
+func CastToLabel(object *gobject.Object) *Label {
+	return LabelNewFromC(object.ToC())
+}
+
+type signalLabelCopyClipboardDetail struct {
+	callback  LabelSignalCopyClipboardCallback
+	handlerID C.gulong
+}
+
+var signalLabelCopyClipboardId int
+var signalLabelCopyClipboardMap = make(map[int]signalLabelCopyClipboardDetail)
+var signalLabelCopyClipboardLock sync.RWMutex
+
+// LabelSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Label.
+type LabelSignalCopyClipboardCallback func()
+
+/*
+ConnectCopyClipboard connects the callback to the 'copy-clipboard' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectCopyClipboard to remove it.
+*/
+func (recv *Label) ConnectCopyClipboard(callback LabelSignalCopyClipboardCallback) int {
+	signalLabelCopyClipboardLock.Lock()
+	defer signalLabelCopyClipboardLock.Unlock()
+
+	signalLabelCopyClipboardId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Label_signal_connect_copy_clipboard(instance, C.gpointer(uintptr(signalLabelCopyClipboardId)))
+
+	detail := signalLabelCopyClipboardDetail{callback, handlerID}
+	signalLabelCopyClipboardMap[signalLabelCopyClipboardId] = detail
+
+	return signalLabelCopyClipboardId
+}
+
+/*
+DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectCopyClipboard.
+*/
+func (recv *Label) DisconnectCopyClipboard(connectionID int) {
+	signalLabelCopyClipboardLock.Lock()
+	defer signalLabelCopyClipboardLock.Unlock()
+
+	detail, exists := signalLabelCopyClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalLabelCopyClipboardMap, connectionID)
+}
+
+//export label_copyClipboardHandler
+func label_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalLabelCopyClipboardLock.RLock()
+	defer signalLabelCopyClipboardLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := signalLabelCopyClipboardMap[index].callback
+	callback()
+}
+
+type signalLabelMoveCursorDetail struct {
+	callback  LabelSignalMoveCursorCallback
+	handlerID C.gulong
+}
+
+var signalLabelMoveCursorId int
+var signalLabelMoveCursorMap = make(map[int]signalLabelMoveCursorDetail)
+var signalLabelMoveCursorLock sync.RWMutex
+
+// LabelSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Label.
+type LabelSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
+
+/*
+ConnectMoveCursor connects the callback to the 'move-cursor' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectMoveCursor to remove it.
+*/
+func (recv *Label) ConnectMoveCursor(callback LabelSignalMoveCursorCallback) int {
+	signalLabelMoveCursorLock.Lock()
+	defer signalLabelMoveCursorLock.Unlock()
+
+	signalLabelMoveCursorId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Label_signal_connect_move_cursor(instance, C.gpointer(uintptr(signalLabelMoveCursorId)))
+
+	detail := signalLabelMoveCursorDetail{callback, handlerID}
+	signalLabelMoveCursorMap[signalLabelMoveCursorId] = detail
+
+	return signalLabelMoveCursorId
+}
+
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *Label) DisconnectMoveCursor(connectionID int) {
+	signalLabelMoveCursorLock.Lock()
+	defer signalLabelMoveCursorLock.Unlock()
+
+	detail, exists := signalLabelMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalLabelMoveCursorMap, connectionID)
+}
+
+//export label_moveCursorHandler
+func label_moveCursorHandler(_ *C.GObject, c_step C.GtkMovementStep, c_count C.gint, c_extend_selection C.gboolean, data C.gpointer) {
+	signalLabelMoveCursorLock.RLock()
+	defer signalLabelMoveCursorLock.RUnlock()
+
+	step := MovementStep(c_step)
+
+	count := int32(c_count)
+
+	extendSelection := c_extend_selection == C.TRUE
+
+	index := int(uintptr(data))
+	callback := signalLabelMoveCursorMap[index].callback
+	callback(step, count, extendSelection)
+}
+
+type signalLabelPopulatePopupDetail struct {
+	callback  LabelSignalPopulatePopupCallback
+	handlerID C.gulong
+}
+
+var signalLabelPopulatePopupId int
+var signalLabelPopulatePopupMap = make(map[int]signalLabelPopulatePopupDetail)
+var signalLabelPopulatePopupLock sync.RWMutex
+
+// LabelSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Label.
+type LabelSignalPopulatePopupCallback func(menu *Menu)
+
+/*
+ConnectPopulatePopup connects the callback to the 'populate-popup' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectPopulatePopup to remove it.
+*/
+func (recv *Label) ConnectPopulatePopup(callback LabelSignalPopulatePopupCallback) int {
+	signalLabelPopulatePopupLock.Lock()
+	defer signalLabelPopulatePopupLock.Unlock()
+
+	signalLabelPopulatePopupId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Label_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalLabelPopulatePopupId)))
+
+	detail := signalLabelPopulatePopupDetail{callback, handlerID}
+	signalLabelPopulatePopupMap[signalLabelPopulatePopupId] = detail
+
+	return signalLabelPopulatePopupId
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *Label) DisconnectPopulatePopup(connectionID int) {
+	signalLabelPopulatePopupLock.Lock()
+	defer signalLabelPopulatePopupLock.Unlock()
+
+	detail, exists := signalLabelPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalLabelPopulatePopupMap, connectionID)
+}
+
+//export label_populatePopupHandler
+func label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer) {
+	signalLabelPopulatePopupLock.RLock()
+	defer signalLabelPopulatePopupLock.RUnlock()
+
+	menu := MenuNewFromC(unsafe.Pointer(c_menu))
+
+	index := int(uintptr(data))
+	callback := signalLabelPopulatePopupMap[index].callback
+	callback(menu)
+}
+
+// LabelNew is a wrapper around the C function gtk_label_new.
+func LabelNew(str string) *Label {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	retC := C.gtk_label_new(c_str)
+	retGo := LabelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Blacklisted : gtk_label_new_with_mnemonic
+
+// Blacklisted : gtk_label_get_attributes
+
+// Blacklisted : gtk_label_get_justify
+
+// Blacklisted : gtk_label_get_label
+
+// Blacklisted : gtk_label_get_layout
+
+// Blacklisted : gtk_label_get_layout_offsets
+
+// Blacklisted : gtk_label_get_line_wrap
+
+// Blacklisted : gtk_label_get_mnemonic_keyval
+
+// Blacklisted : gtk_label_get_mnemonic_widget
+
+// Blacklisted : gtk_label_get_selectable
+
+// Blacklisted : gtk_label_get_selection_bounds
+
+// GetText is a wrapper around the C function gtk_label_get_text.
+func (recv *Label) GetText() string {
+	retC := C.gtk_label_get_text((*C.GtkLabel)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Blacklisted : gtk_label_get_use_markup
+
+// Blacklisted : gtk_label_get_use_underline
+
+// Blacklisted : gtk_label_select_region
+
+// Blacklisted : gtk_label_set_attributes
+
+// Blacklisted : gtk_label_set_justify
+
+// Blacklisted : gtk_label_set_label
+
+// Blacklisted : gtk_label_set_line_wrap
+
+// Blacklisted : gtk_label_set_markup
+
+// Blacklisted : gtk_label_set_markup_with_mnemonic
+
+// Blacklisted : gtk_label_set_mnemonic_widget
+
+// Blacklisted : gtk_label_set_pattern
+
+// Blacklisted : gtk_label_set_selectable
+
+// SetText is a wrapper around the C function gtk_label_set_text.
+func (recv *Label) SetText(str string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	C.gtk_label_set_text((*C.GtkLabel)(recv.native), c_str)
+
+	return
+}
+
+// Blacklisted : gtk_label_set_text_with_mnemonic
+
+// Blacklisted : gtk_label_set_use_markup
+
+// Blacklisted : gtk_label_set_use_underline
+
+// ImplementorIface returns the ImplementorIface interface implemented by Label
+func (recv *Label) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+// Buildable returns the Buildable interface implemented by Label
+func (recv *Label) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
 
 // Blacklisted : GtkLabelAccessible
 
@@ -1475,7 +1843,126 @@ func (recv *Container) Buildable() *Buildable {
 
 // Blacklisted : GtkListBoxRowAccessible
 
-// Blacklisted : GtkListStore
+// ListStore is a wrapper around the C record GtkListStore.
+type ListStore struct {
+	native *C.GtkListStore
+	// parent : record
+	// Private : priv
+}
+
+func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
+	c := (*C.GtkListStore)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &ListStore{native: c}
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ListStore) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
+
+	return g
+}
+
+func (recv *ListStore) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListStore with another ListStore, and returns true if they represent the same GObject.
+func (recv *ListStore) Equals(other *ListStore) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Object upcasts to *Object
+func (recv *ListStore) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitrary Object to ListStore.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListStore.
+func CastToListStore(object *gobject.Object) *ListStore {
+	return ListStoreNewFromC(object.ToC())
+}
+
+// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
+
+// ListStoreNewv is a wrapper around the C function gtk_list_store_newv.
+func ListStoreNewv(types []gobject.Type) *ListStore {
+	c_n_columns := (C.gint)(len(types))
+
+	c_types_array := make([]C.GType, len(types)+1, len(types)+1)
+	for i, item := range types {
+		c := (C.GType)(item)
+		c_types_array[i] = c
+	}
+	c_types_array[len(types)] = 0
+	c_types_arrayPtr := &c_types_array[0]
+	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
+
+	retC := C.gtk_list_store_newv(c_n_columns, c_types)
+	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// Blacklisted : gtk_list_store_append
+
+// Blacklisted : gtk_list_store_clear
+
+// Blacklisted : gtk_list_store_insert
+
+// Blacklisted : gtk_list_store_insert_after
+
+// Blacklisted : gtk_list_store_insert_before
+
+// Blacklisted : gtk_list_store_prepend
+
+// Blacklisted : gtk_list_store_remove
+
+// Unsupported : gtk_list_store_set : unsupported parameter ... : varargs
+
+// Blacklisted : gtk_list_store_set_column_types
+
+// Unsupported : gtk_list_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+
+// Blacklisted : gtk_list_store_set_value
+
+// Buildable returns the Buildable interface implemented by ListStore
+func (recv *ListStore) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+// TreeDragDest returns the TreeDragDest interface implemented by ListStore
+func (recv *ListStore) TreeDragDest() *TreeDragDest {
+	return TreeDragDestNewFromC(recv.ToC())
+}
+
+// TreeDragSource returns the TreeDragSource interface implemented by ListStore
+func (recv *ListStore) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromC(recv.ToC())
+}
+
+// TreeModel returns the TreeModel interface implemented by ListStore
+func (recv *ListStore) TreeModel() *TreeModel {
+	return TreeModelNewFromC(recv.ToC())
+}
+
+// TreeSortable returns the TreeSortable interface implemented by ListStore
+func (recv *ListStore) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromC(recv.ToC())
+}
 
 // Blacklisted : GtkLockButton
 
@@ -1631,7 +2118,98 @@ func (recv *Container) Buildable() *Buildable {
 
 // Blacklisted : GtkStatusbarAccessible
 
-// Blacklisted : GtkStyle
+// Style is a wrapper around the C record GtkStyle.
+type Style struct {
+	native *C.GtkStyle
+	// Private : parent_instance
+	// no type for fg
+	// no type for bg
+	// no type for light
+	// no type for dark
+	// no type for mid
+	// no type for text
+	// no type for base
+	// no type for text_aa
+	// black : record
+	// white : record
+	// font_desc : record
+	Xthickness int32
+	Ythickness int32
+	// no type for background
+	// Private : attach_count
+	// Private : visual
+	// Private : private_font_desc
+	// Private : rc_style
+	// Private : styles
+	// Private : property_cache
+	// Private : icon_factories
+}
+
+func StyleNewFromC(u unsafe.Pointer) *Style {
+	c := (*C.GtkStyle)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Style{
+		Xthickness: (int32)(c.xthickness),
+		Ythickness: (int32)(c.ythickness),
+		native:     c,
+	}
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Style) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
+
+	return g
+}
+
+func (recv *Style) ToC() unsafe.Pointer {
+	recv.native.xthickness =
+		(C.gint)(recv.Xthickness)
+	recv.native.ythickness =
+		(C.gint)(recv.Ythickness)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Style with another Style, and returns true if they represent the same GObject.
+func (recv *Style) Equals(other *Style) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Object upcasts to *Object
+func (recv *Style) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitrary Object to Style.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Style.
+func CastToStyle(object *gobject.Object) *Style {
+	return StyleNewFromC(object.ToC())
+}
+
+// Blacklisted : gtk_style_new
+
+// Blacklisted : gtk_style_apply_default_background
+
+// Blacklisted : gtk_style_attach
+
+// Blacklisted : gtk_style_copy
+
+// Blacklisted : gtk_style_detach
+
+// Blacklisted : gtk_style_lookup_icon_set
+
+// Blacklisted : gtk_style_render_icon
+
+// Blacklisted : gtk_style_set_background
 
 // Blacklisted : GtkStyleContext
 

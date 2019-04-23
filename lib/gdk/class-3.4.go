@@ -10,6 +10,8 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : gdk_screen_get_monitor_workarea
+
 // Blacklisted : gdk_window_begin_move_drag_for_device
 
 // Blacklisted : gdk_window_begin_resize_drag_for_device

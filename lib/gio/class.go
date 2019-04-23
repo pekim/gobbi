@@ -134,7 +134,57 @@ func CastToApplicationCommandLine(object *gobject.Object) *ApplicationCommandLin
 
 // Blacklisted : GInputStream
 
-// Blacklisted : GListStore
+// ListStore is a wrapper around the C record GListStore.
+type ListStore struct {
+	native *C.GListStore
+}
+
+func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
+	c := (*C.GListStore)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &ListStore{native: c}
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ListStore) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
+
+	return g
+}
+
+func (recv *ListStore) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListStore with another ListStore, and returns true if they represent the same GObject.
+func (recv *ListStore) Equals(other *ListStore) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Object upcasts to *Object
+func (recv *ListStore) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitrary Object to ListStore.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListStore.
+func CastToListStore(object *gobject.Object) *ListStore {
+	return ListStoreNewFromC(object.ToC())
+}
+
+// ListModel returns the ListModel interface implemented by ListStore
+func (recv *ListStore) ListModel() *ListModel {
+	return ListModelNewFromC(recv.ToC())
+}
 
 // Blacklisted : GMemoryInputStream
 

@@ -344,7 +344,31 @@ func (recv *Icon) Equals(other *Icon) bool {
 // g_icon_hash : unsupported parameter icon : no type generator for gpointer (gconstpointer) for param icon
 // Blacklisted : g_icon_equal
 
-// Blacklisted : GListModel
+// ListModel is a wrapper around the C record GListModel.
+type ListModel struct {
+	native *C.GListModel
+}
+
+func ListModelNewFromC(u unsafe.Pointer) *ListModel {
+	c := (*C.GListModel)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &ListModel{native: c}
+
+	return g
+}
+
+func (recv *ListModel) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListModel with another ListModel, and returns true if they represent the same GObject.
+func (recv *ListModel) Equals(other *ListModel) bool {
+	return other.ToC() == recv.ToC()
+}
 
 // LoadableIcon is a wrapper around the C record GLoadableIcon.
 type LoadableIcon struct {

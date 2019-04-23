@@ -12,6 +12,16 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : gtk_list_store_iter_is_valid
+
+// Blacklisted : gtk_list_store_move_after
+
+// Blacklisted : gtk_list_store_move_before
+
+// Blacklisted : gtk_list_store_reorder
+
+// Blacklisted : gtk_list_store_swap
+
 // Blacklisted : gtk_widget_get_clipboard
 
 // Blacklisted : gtk_widget_get_display

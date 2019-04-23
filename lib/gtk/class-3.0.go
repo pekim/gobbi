@@ -69,6 +69,8 @@ func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Applicati
 
 // Blacklisted : gtk_application_remove_window
 
+// Blacklisted : gtk_style_has_context
+
 type signalWidgetDrawDetail struct {
 	callback  WidgetSignalDrawCallback
 	handlerID C.gulong

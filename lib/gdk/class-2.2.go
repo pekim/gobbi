@@ -3,12 +3,117 @@
 
 package gdk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void screen_sizeChangedHandler(GObject *, gpointer);
+
+	static gulong Screen_signal_connect_size_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-changed", G_CALLBACK(screen_sizeChangedHandler), data);
+	}
+
+*/
 import "C"
+
+type signalScreenSizeChangedDetail struct {
+	callback  ScreenSignalSizeChangedCallback
+	handlerID C.gulong
+}
+
+var signalScreenSizeChangedId int
+var signalScreenSizeChangedMap = make(map[int]signalScreenSizeChangedDetail)
+var signalScreenSizeChangedLock sync.RWMutex
+
+// ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
+type ScreenSignalSizeChangedCallback func()
+
+/*
+ConnectSizeChanged connects the callback to the 'size-changed' signal for the Screen.
+
+The returned value represents the connection, and may be passed to DisconnectSizeChanged to remove it.
+*/
+func (recv *Screen) ConnectSizeChanged(callback ScreenSignalSizeChangedCallback) int {
+	signalScreenSizeChangedLock.Lock()
+	defer signalScreenSizeChangedLock.Unlock()
+
+	signalScreenSizeChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Screen_signal_connect_size_changed(instance, C.gpointer(uintptr(signalScreenSizeChangedId)))
+
+	detail := signalScreenSizeChangedDetail{callback, handlerID}
+	signalScreenSizeChangedMap[signalScreenSizeChangedId] = detail
+
+	return signalScreenSizeChangedId
+}
+
+/*
+DisconnectSizeChanged disconnects a callback from the 'size-changed' signal for the Screen.
+
+The connectionID should be a value returned from a call to ConnectSizeChanged.
+*/
+func (recv *Screen) DisconnectSizeChanged(connectionID int) {
+	signalScreenSizeChangedLock.Lock()
+	defer signalScreenSizeChangedLock.Unlock()
+
+	detail, exists := signalScreenSizeChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalScreenSizeChangedMap, connectionID)
+}
+
+//export screen_sizeChangedHandler
+func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalScreenSizeChangedLock.RLock()
+	defer signalScreenSizeChangedLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := signalScreenSizeChangedMap[index].callback
+	callback()
+}
+
+// Blacklisted : gdk_screen_get_default
+
+// Blacklisted : gdk_screen_get_display
+
+// Blacklisted : gdk_screen_get_height
+
+// Blacklisted : gdk_screen_get_height_mm
+
+// Blacklisted : gdk_screen_get_monitor_at_point
+
+// Blacklisted : gdk_screen_get_monitor_at_window
+
+// Blacklisted : gdk_screen_get_monitor_geometry
+
+// Blacklisted : gdk_screen_get_n_monitors
+
+// Blacklisted : gdk_screen_get_number
+
+// Blacklisted : gdk_screen_get_root_window
+
+// Blacklisted : gdk_screen_get_setting
+
+// Blacklisted : gdk_screen_get_system_visual
+
+// Blacklisted : gdk_screen_get_toplevel_windows
+
+// Blacklisted : gdk_screen_get_width
+
+// Blacklisted : gdk_screen_get_width_mm
+
+// Blacklisted : gdk_screen_list_visuals
+
+// Blacklisted : gdk_screen_make_display_name
 
 // Blacklisted : gdk_window_fullscreen
 

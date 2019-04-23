@@ -165,7 +165,60 @@ const (
 
 // Blacklisted : atk_role_register
 
-// Blacklisted : AtkStateType
+type StateType C.AtkStateType
+
+const (
+	ATK_STATE_INVALID                 StateType = 0
+	ATK_STATE_ACTIVE                  StateType = 1
+	ATK_STATE_ARMED                   StateType = 2
+	ATK_STATE_BUSY                    StateType = 3
+	ATK_STATE_CHECKED                 StateType = 4
+	ATK_STATE_DEFUNCT                 StateType = 5
+	ATK_STATE_EDITABLE                StateType = 6
+	ATK_STATE_ENABLED                 StateType = 7
+	ATK_STATE_EXPANDABLE              StateType = 8
+	ATK_STATE_EXPANDED                StateType = 9
+	ATK_STATE_FOCUSABLE               StateType = 10
+	ATK_STATE_FOCUSED                 StateType = 11
+	ATK_STATE_HORIZONTAL              StateType = 12
+	ATK_STATE_ICONIFIED               StateType = 13
+	ATK_STATE_MODAL                   StateType = 14
+	ATK_STATE_MULTI_LINE              StateType = 15
+	ATK_STATE_MULTISELECTABLE         StateType = 16
+	ATK_STATE_OPAQUE                  StateType = 17
+	ATK_STATE_PRESSED                 StateType = 18
+	ATK_STATE_RESIZABLE               StateType = 19
+	ATK_STATE_SELECTABLE              StateType = 20
+	ATK_STATE_SELECTED                StateType = 21
+	ATK_STATE_SENSITIVE               StateType = 22
+	ATK_STATE_SHOWING                 StateType = 23
+	ATK_STATE_SINGLE_LINE             StateType = 24
+	ATK_STATE_STALE                   StateType = 25
+	ATK_STATE_TRANSIENT               StateType = 26
+	ATK_STATE_VERTICAL                StateType = 27
+	ATK_STATE_VISIBLE                 StateType = 28
+	ATK_STATE_MANAGES_DESCENDANTS     StateType = 29
+	ATK_STATE_INDETERMINATE           StateType = 30
+	ATK_STATE_TRUNCATED               StateType = 31
+	ATK_STATE_REQUIRED                StateType = 32
+	ATK_STATE_INVALID_ENTRY           StateType = 33
+	ATK_STATE_SUPPORTS_AUTOCOMPLETION StateType = 34
+	ATK_STATE_SELECTABLE_TEXT         StateType = 35
+	ATK_STATE_DEFAULT                 StateType = 36
+	ATK_STATE_ANIMATED                StateType = 37
+	ATK_STATE_VISITED                 StateType = 38
+	ATK_STATE_CHECKABLE               StateType = 39
+	ATK_STATE_HAS_POPUP               StateType = 40
+	ATK_STATE_HAS_TOOLTIP             StateType = 41
+	ATK_STATE_READ_ONLY               StateType = 42
+	ATK_STATE_LAST_DEFINED            StateType = 43
+)
+
+// Blacklisted : atk_state_type_for_name
+
+// Blacklisted : atk_state_type_get_name
+
+// Blacklisted : atk_state_type_register
 
 // Blacklisted : AtkTextAttribute
 

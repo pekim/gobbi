@@ -12,7 +12,13 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : gtk_label_get_line_wrap_mode
+
+// Blacklisted : gtk_label_set_line_wrap_mode
+
 // Blacklisted : GtkRecentManager
+
+// Blacklisted : gtk_style_lookup_color
 
 // Blacklisted : gtk_drag_dest_get_track_motion
 

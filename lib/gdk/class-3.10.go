@@ -10,6 +10,8 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : gdk_screen_get_monitor_scale_factor
+
 // Blacklisted : gdk_window_create_similar_image_surface
 
 // Unsupported : gdk_window_get_children_with_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data

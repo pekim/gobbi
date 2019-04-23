@@ -20,6 +20,30 @@ import "C"
 
 // Blacklisted : gtk_action_group_translate_string
 
+// Blacklisted : gtk_label_get_angle
+
+// Blacklisted : gtk_label_get_ellipsize
+
+// Blacklisted : gtk_label_get_max_width_chars
+
+// Blacklisted : gtk_label_get_single_line_mode
+
+// Blacklisted : gtk_label_get_width_chars
+
+// Blacklisted : gtk_label_set_angle
+
+// Blacklisted : gtk_label_set_ellipsize
+
+// Blacklisted : gtk_label_set_max_width_chars
+
+// Blacklisted : gtk_label_set_single_line_mode
+
+// Blacklisted : gtk_label_set_width_chars
+
+// Unsupported : gtk_list_store_insert_with_values : unsupported parameter ... : varargs
+
+// Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter values :
+
 // Blacklisted : gtk_drag_dest_add_image_targets
 
 // Blacklisted : gtk_drag_dest_add_text_targets

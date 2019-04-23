@@ -69,4 +69,24 @@ const (
 
 // Blacklisted : GdkWindowHints
 
-// Blacklisted : GdkWindowState
+type WindowState C.GdkWindowState
+
+const (
+	GDK_WINDOW_STATE_WITHDRAWN        WindowState = 1
+	GDK_WINDOW_STATE_ICONIFIED        WindowState = 2
+	GDK_WINDOW_STATE_MAXIMIZED        WindowState = 4
+	GDK_WINDOW_STATE_STICKY           WindowState = 8
+	GDK_WINDOW_STATE_FULLSCREEN       WindowState = 16
+	GDK_WINDOW_STATE_ABOVE            WindowState = 32
+	GDK_WINDOW_STATE_BELOW            WindowState = 64
+	GDK_WINDOW_STATE_FOCUSED          WindowState = 128
+	GDK_WINDOW_STATE_TILED            WindowState = 256
+	GDK_WINDOW_STATE_TOP_TILED        WindowState = 512
+	GDK_WINDOW_STATE_TOP_RESIZABLE    WindowState = 1024
+	GDK_WINDOW_STATE_RIGHT_TILED      WindowState = 2048
+	GDK_WINDOW_STATE_RIGHT_RESIZABLE  WindowState = 4096
+	GDK_WINDOW_STATE_BOTTOM_TILED     WindowState = 8192
+	GDK_WINDOW_STATE_BOTTOM_RESIZABLE WindowState = 16384
+	GDK_WINDOW_STATE_LEFT_TILED       WindowState = 32768
+	GDK_WINDOW_STATE_LEFT_RESIZABLE   WindowState = 65536
+)

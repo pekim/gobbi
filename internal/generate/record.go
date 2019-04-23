@@ -94,6 +94,21 @@ func (r *Record) blacklisted() (bool, string) {
 		"EventCrossing",
 		"EventKey",
 		"SelectionData",
+		"EventFocus",
+		"EventAny",
+		"EventMotion",
+		"EventProperty",
+		"EventProximity",
+		"EventScroll",
+		"EventSelection",
+		"Screen",
+		"Style",
+		"EventVisibility",
+		"EventWindowState",
+		"Application",
+		"ListStore",
+		"Label",
+		"ListModel",
 	}
 	for _, n := range wl {
 		if n == r.GoName {

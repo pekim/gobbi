@@ -96,6 +96,18 @@ func (ns *Namespace) generateGeneratables(typeName string, generatables Generata
 // generateEntityVersionedFile generates a file for Generatables that
 // meet the version criterion.
 func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
+	hasGeneratableEntities := false
+	for _, entity := range generatables.entities() {
+		blacklisted, _ := entity.blacklisted()
+		if !blacklisted {
+			hasGeneratableEntities = true
+			break
+		}
+	}
+	if !hasGeneratableEntities {
+		return
+	}
+
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f, version)

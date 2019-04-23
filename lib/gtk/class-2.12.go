@@ -47,6 +47,8 @@ import "C"
 
 // Blacklisted : gtk_action_create_menu
 
+// Unsupported : gtk_list_store_set_valuesv : unsupported parameter values :
+
 // Blacklisted : gtk_tooltip_trigger_tooltip_query
 
 // Blacklisted : gtk_tooltip_set_custom

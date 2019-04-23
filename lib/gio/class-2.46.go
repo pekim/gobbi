@@ -20,3 +20,5 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
+
+// Unsupported : g_list_store_sort : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func

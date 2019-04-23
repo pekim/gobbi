@@ -34,19 +34,8 @@ build () {
 }
 
 builddev () {
+    grep -r -l "This is a generated file" lib/ | xargs rm -f && \
     generate && \
-    echo "" && \
-
-    find lib -type f -name "*.go" | \
-    while read f
-    do
-        grep -A9000 'import "C"' $f | \
-        grep -v "^$" | \
-        grep -v "^// " | \
-        grep -v 'import "C"'
-        echo $?
-    done
-
     echo "" && \
     testdev
 }
@@ -65,7 +54,8 @@ test () {
 
 # tags="cairo_1.12 gobject_2.26 glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.36 gtk_3.18 pango_1.38 pangocairo_1.22"
 testdev () {
-    go test github.com/pekim/gobbi/internal/test/...
+    devTags="cairo_1.4 glib_2.24 gio_2.36 pangocairo_1.10"
+    go test -tags "$devTags" github.com/pekim/gobbi/internal/test/...
 }
 
 examples () {

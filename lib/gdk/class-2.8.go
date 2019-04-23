@@ -10,6 +10,8 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : gdk_screen_get_rgba_visual
+
 // Blacklisted : gdk_window_move_region
 
 // Blacklisted : gdk_window_set_urgency_hint

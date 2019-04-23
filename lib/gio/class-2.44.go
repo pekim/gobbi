@@ -27,4 +27,18 @@ import "C"
 
 // Blacklisted : g_application_unbind_busy_property
 
+// Blacklisted : g_list_store_new
+
+// Blacklisted : g_list_store_append
+
+// Blacklisted : g_list_store_insert
+
+// Unsupported : g_list_store_insert_sorted : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
+
+// Blacklisted : g_list_store_remove
+
+// Blacklisted : g_list_store_remove_all
+
+// Unsupported : g_list_store_splice : unsupported parameter additions :
+
 // Blacklisted : GSimpleIOStream
