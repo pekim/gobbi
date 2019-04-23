@@ -37,15 +37,15 @@ builddev () {
     generate && \
     echo "" && \
 
-#    find lib -type f -name "*.go" | \
-#    while read f
-#    do
-#        grep -A9000 'import "C"' $f | \
-#        grep -v "^$" | \
-#        grep -v "^// " | \
-#        grep -v 'import "C"'
-#        echo $?
-#    done
+    find lib -type f -name "*.go" | \
+    while read f
+    do
+        grep -A9000 'import "C"' $f | \
+        grep -v "^$" | \
+        grep -v "^// " | \
+        grep -v 'import "C"'
+        echo $?
+    done
 
     echo "" && \
     testdev
