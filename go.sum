@@ -6,7 +6,7 @@ github.com/dave/jennifer v1.0.3 h1:znKlhYnG7ER1bVoeZQ5RxAbbnGToSmPa2HHz8VDytMQ=
 github.com/dave/jennifer v1.0.3/go.mod h1:fIb+770HOpJ2fmN9EPPKOqm1vMGhB+TwXKMZhrIygKg=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/karrick/godirwalk v1.7.3 h1:UP4CfXf1LfNwXrX6vqWf1DOhuiFRn2hXsqtRAQlQOUQ=
+github.com/karrick/godirwalk v1.7.3 h1:e5iv87oxunQtG7S9MB10jrINLmF7HecFSjiTYKO7P2c=
 github.com/karrick/godirwalk v1.7.3/go.mod h1:2c9FRhkDxdIbgkOnCEvnSWs71Bhugbl46shStcFDJ34=
 github.com/monochromegane/go-gitignore v0.0.0-20160105113617-38717d0a108c h1:RRUev95N3Gq4Aog4avFzXJA2V8fgXmND+cvcH7KLMyk=
 github.com/monochromegane/go-gitignore v0.0.0-20160105113617-38717d0a108c/go.mod h1:Pm3mSP3c5uWn86xMLZ5Sa7JB9GsEZySvHYXCTK4E9q4=
@@ -16,7 +16,6 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.2.2 h1:bSDNvY7ZPG5RlJ8otE/7V6gMiyenm9RtJ7IUVIAoJ1w=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
-github.com/urfave/cli v1.20.0 h1:fDqGv3UG/4jbVl/QkFwEdddtEDjh/5Ov6X+0B/3bPaw=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
 golang.org/x/text v0.3.0 h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
