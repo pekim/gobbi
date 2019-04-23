@@ -12,11 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type ApplicationInhibitFlags C.GtkApplicationInhibitFlags
-
-const (
-	GTK_APPLICATION_INHIBIT_LOGOUT  ApplicationInhibitFlags = 1
-	GTK_APPLICATION_INHIBIT_SWITCH  ApplicationInhibitFlags = 2
-	GTK_APPLICATION_INHIBIT_SUSPEND ApplicationInhibitFlags = 4
-	GTK_APPLICATION_INHIBIT_IDLE    ApplicationInhibitFlags = 8
-)
+// Blacklisted : GtkApplicationInhibitFlags

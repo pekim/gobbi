@@ -9,7 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_renderer_get_alpha
-
-// Blacklisted : pango_renderer_set_alpha

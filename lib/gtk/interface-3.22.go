@@ -11,11 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_file_chooser_add_choice
-
-// Blacklisted : gtk_file_chooser_get_choice
-
-// Blacklisted : gtk_file_chooser_remove_choice
-
-// Blacklisted : gtk_file_chooser_set_choice

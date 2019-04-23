@@ -10,8 +10,12 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-const BUTTON_MIDDLE int32 = C.GDK_BUTTON_MIDDLE
-const BUTTON_PRIMARY int32 = C.GDK_BUTTON_PRIMARY
-const BUTTON_SECONDARY int32 = C.GDK_BUTTON_SECONDARY
-const EVENT_PROPAGATE bool = false // C.GDK_EVENT_PROPAGATE
-const EVENT_STOP bool = true       // C.GDK_EVENT_STOP
+// Blacklisted : BUTTON_MIDDLE
+
+// Blacklisted : BUTTON_PRIMARY
+
+// Blacklisted : BUTTON_SECONDARY
+
+// Blacklisted : EVENT_PROPAGATE
+
+// Blacklisted : EVENT_STOP

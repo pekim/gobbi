@@ -9,5 +9,3 @@ package atk
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : atk_hyperlink_is_selected_link

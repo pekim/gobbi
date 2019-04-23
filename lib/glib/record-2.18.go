@@ -11,11 +11,3 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_checksum_reset
-
-// Unsupported : g_markup_parse_context_get_user_data : no return generator
-
-// Unsupported : g_markup_parse_context_pop : no return generator
-
-// Unsupported : g_markup_parse_context_push : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data

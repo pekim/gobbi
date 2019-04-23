@@ -15,5 +15,3 @@ import "C"
 // Blacklisted : pango_context_get_serial
 
 // Blacklisted : pango_font_map_get_serial
-
-// Blacklisted : pango_layout_get_serial

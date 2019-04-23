@@ -12,28 +12,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_async_queue_push_sorted : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-
-// Unsupported : g_async_queue_push_sorted_unlocked : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-
-// Unsupported : g_async_queue_sort : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
-
-// Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
-
 // Blacklisted : g_date_set_time_t
 
 // Blacklisted : g_date_set_time_val
 
-// Blacklisted : g_hash_table_ref
-
-// Blacklisted : g_hash_table_unref
-
-// g_list_insert_sorted_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// Blacklisted : g_main_context_is_owner
-
 // g_slist_insert_sorted_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// Blacklisted : g_thread_pool_get_max_idle_time
-
-// Blacklisted : g_thread_pool_set_max_idle_time
-
-// Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func

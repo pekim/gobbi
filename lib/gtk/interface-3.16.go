@@ -11,5 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_scrollable_get_border

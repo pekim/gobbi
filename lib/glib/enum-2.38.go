@@ -12,9 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-type TestFileType C.GTestFileType
-
-const (
-	TEST_DIST  TestFileType = 0
-	TEST_BUILT TestFileType = 1
-)
+// Blacklisted : GTestFileType

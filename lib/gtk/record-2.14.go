@@ -12,8 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gtk_border_new
-
 // Unsupported : gtk_selection_data_get_data : array return type :
 
 // Blacklisted : gtk_selection_data_get_data_type

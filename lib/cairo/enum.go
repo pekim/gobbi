@@ -131,11 +131,7 @@ const (
 	CAIRO_LINE_JOIN_BEVEL LineJoin = 2
 )
 
-type TextClusterFlags C.cairo_text_cluster_flags_t
-
-const (
-	CAIRO_TEXT_CLUSTER_FLAG_BACKWARD TextClusterFlags = 1
-)
+// Blacklisted : cairo_text_cluster_flags_t
 
 type FontSlant C.cairo_font_slant_t
 
@@ -152,33 +148,11 @@ const (
 	CAIRO_FONT_WEIGHT_BOLD   FontWeight = 1
 )
 
-type SubpixelOrder C.cairo_subpixel_order_t
+// Blacklisted : cairo_subpixel_order_t
 
-const (
-	CAIRO_SUBPIXEL_ORDER_DEFAULT SubpixelOrder = 0
-	CAIRO_SUBPIXEL_ORDER_RGB     SubpixelOrder = 1
-	CAIRO_SUBPIXEL_ORDER_BGR     SubpixelOrder = 2
-	CAIRO_SUBPIXEL_ORDER_VRGB    SubpixelOrder = 3
-	CAIRO_SUBPIXEL_ORDER_VBGR    SubpixelOrder = 4
-)
+// Blacklisted : cairo_hint_style_t
 
-type HintStyle C.cairo_hint_style_t
-
-const (
-	CAIRO_HINT_STYLE_DEFAULT HintStyle = 0
-	CAIRO_HINT_STYLE_NONE    HintStyle = 1
-	CAIRO_HINT_STYLE_SLIGHT  HintStyle = 2
-	CAIRO_HINT_STYLE_MEDIUM  HintStyle = 3
-	CAIRO_HINT_STYLE_FULL    HintStyle = 4
-)
-
-type HintMetrics C.cairo_hint_metrics_t
-
-const (
-	CAIRO_HINT_METRICS_DEFAULT HintMetrics = 0
-	CAIRO_HINT_METRICS_OFF     HintMetrics = 1
-	CAIRO_HINT_METRICS_ON      HintMetrics = 2
-)
+// Blacklisted : cairo_hint_metrics_t
 
 type FontType C.cairo_font_type_t
 
@@ -190,58 +164,11 @@ const (
 	CAIRO_FONT_TYPE_USER   FontType = 4
 )
 
-type PathDataType C.cairo_path_data_type_t
+// Blacklisted : cairo_path_data_type_t
 
-const (
-	CAIRO_PATH_MOVE_TO    PathDataType = 0
-	CAIRO_PATH_LINE_TO    PathDataType = 1
-	CAIRO_PATH_CURVE_TO   PathDataType = 2
-	CAIRO_PATH_CLOSE_PATH PathDataType = 3
-)
+// Blacklisted : cairo_device_type_t
 
-type DeviceType C.cairo_device_type_t
-
-const (
-	CAIRO_DEVICE_TYPE_DRM     DeviceType = 0
-	CAIRO_DEVICE_TYPE_GL      DeviceType = 1
-	CAIRO_DEVICE_TYPE_SCRIPT  DeviceType = 2
-	CAIRO_DEVICE_TYPE_XCB     DeviceType = 3
-	CAIRO_DEVICE_TYPE_XLIB    DeviceType = 4
-	CAIRO_DEVICE_TYPE_XML     DeviceType = 5
-	CAIRO_DEVICE_TYPE_COGL    DeviceType = 6
-	CAIRO_DEVICE_TYPE_WIN32   DeviceType = 7
-	CAIRO_DEVICE_TYPE_INVALID DeviceType = -1
-)
-
-type SurfaceType C.cairo_surface_type_t
-
-const (
-	CAIRO_SURFACE_TYPE_IMAGE          SurfaceType = 0
-	CAIRO_SURFACE_TYPE_PDF            SurfaceType = 1
-	CAIRO_SURFACE_TYPE_PS             SurfaceType = 2
-	CAIRO_SURFACE_TYPE_XLIB           SurfaceType = 3
-	CAIRO_SURFACE_TYPE_XCB            SurfaceType = 4
-	CAIRO_SURFACE_TYPE_GLITZ          SurfaceType = 5
-	CAIRO_SURFACE_TYPE_QUARTZ         SurfaceType = 6
-	CAIRO_SURFACE_TYPE_WIN32          SurfaceType = 7
-	CAIRO_SURFACE_TYPE_BEOS           SurfaceType = 8
-	CAIRO_SURFACE_TYPE_DIRECTFB       SurfaceType = 9
-	CAIRO_SURFACE_TYPE_SVG            SurfaceType = 10
-	CAIRO_SURFACE_TYPE_OS2            SurfaceType = 11
-	CAIRO_SURFACE_TYPE_WIN32_PRINTING SurfaceType = 12
-	CAIRO_SURFACE_TYPE_QUARTZ_IMAGE   SurfaceType = 13
-	CAIRO_SURFACE_TYPE_SCRIPT         SurfaceType = 14
-	CAIRO_SURFACE_TYPE_QT             SurfaceType = 15
-	CAIRO_SURFACE_TYPE_RECORDING      SurfaceType = 16
-	CAIRO_SURFACE_TYPE_VG             SurfaceType = 17
-	CAIRO_SURFACE_TYPE_GL             SurfaceType = 18
-	CAIRO_SURFACE_TYPE_DRM            SurfaceType = 19
-	CAIRO_SURFACE_TYPE_TEE            SurfaceType = 20
-	CAIRO_SURFACE_TYPE_XML            SurfaceType = 21
-	CAIRO_SURFACE_TYPE_SKIA           SurfaceType = 22
-	CAIRO_SURFACE_TYPE_SUBSURFACE     SurfaceType = 23
-	CAIRO_SURFACE_TYPE_COGL           SurfaceType = 24
-)
+// Blacklisted : cairo_surface_type_t
 
 type Format C.cairo_format_t
 

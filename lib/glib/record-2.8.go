@@ -11,11 +11,3 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_mapped_file_new
-
-// Blacklisted : g_mapped_file_free
-
-// Blacklisted : g_mapped_file_get_contents
-
-// Blacklisted : g_mapped_file_get_length

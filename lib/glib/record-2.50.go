@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -14,41 +12,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : g_key_file_load_from_bytes
-
-// LogField is a wrapper around the C record GLogField.
-type LogField struct {
-	native *C.GLogField
-	Key    string
-	// value : no type generator for gpointer, gconstpointer
-	Length int64
-}
-
-func LogFieldNewFromC(u unsafe.Pointer) *LogField {
-	c := (*C.GLogField)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &LogField{
-		Key:    C.GoString(c.key),
-		Length: (int64)(c.length),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *LogField) ToC() unsafe.Pointer {
-	recv.native.key =
-		C.CString(recv.Key)
-	recv.native.length =
-		(C.gssize)(recv.Length)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this LogField with another LogField, and returns true if they represent the same GObject.
-func (recv *LogField) Equals(other *LogField) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : GLogField

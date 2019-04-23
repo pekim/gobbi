@@ -10,4 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-const ATTR_INDEX_FROM_TEXT_BEGINNING int32 = C.PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING
+// Blacklisted : ATTR_INDEX_FROM_TEXT_BEGINNING

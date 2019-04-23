@@ -10,10 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_display_supports_composite
-
-// Blacklisted : gdk_keymap_have_bidi_layouts
-
 // Blacklisted : gdk_window_beep
 
 // Blacklisted : gdk_window_set_composited

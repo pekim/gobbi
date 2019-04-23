@@ -11,13 +11,3 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : g_async_queue_push_front : unsupported parameter item : no type generator for gpointer (gpointer) for param item
-
-// Unsupported : g_async_queue_push_front_unlocked : unsupported parameter item : no type generator for gpointer (gpointer) for param item
-
-// Unsupported : g_async_queue_remove : unsupported parameter item : no type generator for gpointer (gpointer) for param item
-
-// Unsupported : g_async_queue_remove_unlocked : unsupported parameter item : no type generator for gpointer (gpointer) for param item
-
-// Unsupported : g_thread_pool_move_to_front : unsupported parameter data : no type generator for gpointer (gpointer) for param data

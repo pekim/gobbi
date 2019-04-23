@@ -19,9 +19,3 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_settings_schema_key_get_description
-
-// Blacklisted : g_settings_schema_key_get_summary
-
-// Blacklisted : g_unix_mount_point_guess_symbolic_icon

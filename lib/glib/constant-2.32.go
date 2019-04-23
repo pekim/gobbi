@@ -12,7 +12,10 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const SOURCE_CONTINUE bool = true // C.G_SOURCE_CONTINUE
-const SOURCE_REMOVE bool = false  // C.G_SOURCE_REMOVE
-const UNICHAR_MAX_DECOMPOSITION_LENGTH int32 = C.G_UNICHAR_MAX_DECOMPOSITION_LENGTH
-const VERSION_MIN_REQUIRED int32 = C.GLIB_VERSION_MIN_REQUIRED
+// Blacklisted : SOURCE_CONTINUE
+
+// Blacklisted : SOURCE_REMOVE
+
+// Blacklisted : UNICHAR_MAX_DECOMPOSITION_LENGTH
+
+// Blacklisted : VERSION_MIN_REQUIRED

@@ -9,47 +9,12 @@ package gdkpixbuf
 // #include <stdlib.h>
 import "C"
 
-type Colorspace C.GdkColorspace
+// Blacklisted : GdkColorspace
 
-const (
-	GDK_COLORSPACE_RGB Colorspace = 0
-)
+// Blacklisted : GdkInterpType
 
-type InterpType C.GdkInterpType
+// Blacklisted : GdkPixbufAlphaMode
 
-const (
-	GDK_INTERP_NEAREST  InterpType = 0
-	GDK_INTERP_TILES    InterpType = 1
-	GDK_INTERP_BILINEAR InterpType = 2
-	GDK_INTERP_HYPER    InterpType = 3
-)
+// Blacklisted : GdkPixbufError
 
-type PixbufAlphaMode C.GdkPixbufAlphaMode
-
-const (
-	GDK_PIXBUF_ALPHA_BILEVEL PixbufAlphaMode = 0
-	GDK_PIXBUF_ALPHA_FULL    PixbufAlphaMode = 1
-)
-
-type PixbufError C.GdkPixbufError
-
-const (
-	GDK_PIXBUF_ERROR_CORRUPT_IMAGE         PixbufError = 0
-	GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY   PixbufError = 1
-	GDK_PIXBUF_ERROR_BAD_OPTION            PixbufError = 2
-	GDK_PIXBUF_ERROR_UNKNOWN_TYPE          PixbufError = 3
-	GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION PixbufError = 4
-	GDK_PIXBUF_ERROR_FAILED                PixbufError = 5
-	GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION  PixbufError = 6
-)
-
-// Blacklisted : gdk_pixbuf_error_quark
-
-type PixbufRotation C.GdkPixbufRotation
-
-const (
-	GDK_PIXBUF_ROTATE_NONE             PixbufRotation = 0
-	GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE PixbufRotation = 90
-	GDK_PIXBUF_ROTATE_UPSIDEDOWN       PixbufRotation = 180
-	GDK_PIXBUF_ROTATE_CLOCKWISE        PixbufRotation = 270
-)
+// Blacklisted : GdkPixbufRotation

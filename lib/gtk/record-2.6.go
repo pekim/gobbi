@@ -21,9 +21,3 @@ import "C"
 // Blacklisted : gtk_selection_data_set_uris
 
 // Blacklisted : gtk_selection_data_targets_include_image
-
-// Blacklisted : gtk_target_list_add_image_targets
-
-// Blacklisted : gtk_target_list_add_text_targets
-
-// Blacklisted : gtk_target_list_add_uri_targets

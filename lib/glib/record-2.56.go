@@ -13,7 +13,3 @@ package glib
 import "C"
 
 // Blacklisted : g_date_copy
-
-// Blacklisted : g_date_time_new_from_iso8601
-
-// Blacklisted : g_key_file_get_locale_for_key

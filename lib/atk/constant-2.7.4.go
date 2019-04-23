@@ -10,8 +10,12 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-const BINARY_AGE int32 = C.ATK_BINARY_AGE
-const INTERFACE_AGE int32 = C.ATK_INTERFACE_AGE
-const MAJOR_VERSION int32 = C.ATK_MAJOR_VERSION
-const MICRO_VERSION int32 = C.ATK_MICRO_VERSION
-const MINOR_VERSION int32 = C.ATK_MINOR_VERSION
+// Blacklisted : BINARY_AGE
+
+// Blacklisted : INTERFACE_AGE
+
+// Blacklisted : MAJOR_VERSION
+
+// Blacklisted : MICRO_VERSION
+
+// Blacklisted : MINOR_VERSION

@@ -9,5 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_font_get_font_map

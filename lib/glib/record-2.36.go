@@ -12,20 +12,6 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : g_markup_parse_context_ref
-
-// Blacklisted : g_markup_parse_context_unref
-
-// Unsupported : g_source_add_unix_fd : no return generator
-
-// Unsupported : g_source_modify_unix_fd : unsupported parameter tag : no type generator for gpointer (gpointer) for param tag
-
-// Unsupported : g_source_query_unix_fd : unsupported parameter tag : no type generator for gpointer (gpointer) for param tag
-
-// Unsupported : g_source_remove_unix_fd : unsupported parameter tag : no type generator for gpointer (gpointer) for param tag
-
-// Blacklisted : g_source_set_ready_time
-
 // Blacklisted : g_variant_new_from_bytes
 
 // Blacklisted : g_variant_get_data_as_bytes

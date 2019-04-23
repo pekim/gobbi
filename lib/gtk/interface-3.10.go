@@ -11,7 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_file_chooser_get_current_name
-
-// Blacklisted : gtk_tree_model_rows_reordered_with_length

@@ -9,5 +9,3 @@ package gobject
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_type_class_get_instance_private_offset

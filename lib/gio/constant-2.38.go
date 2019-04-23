@@ -21,4 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const MENU_ATTRIBUTE_ICON string = C.G_MENU_ATTRIBUTE_ICON
+// Blacklisted : MENU_ATTRIBUTE_ICON

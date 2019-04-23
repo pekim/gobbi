@@ -55,7 +55,54 @@ func (e *Enumeration) mergeAddenda(addenda *Enumeration) {
 }
 
 func (e *Enumeration) blacklisted() (bool, string) {
-	return e.Blacklist, e.CType
+	wl := []string{
+		"BindingFlags",
+		"ParamFlags",
+		"Status",
+		"Antialias",
+		"DateMonth",
+		"FillRule",
+		"LineCap",
+		"LineJoin",
+		"Operator",
+		"Content",
+		"FontType",
+		"SignalFlags",
+		"Format",
+		"Extend",
+		"Filter",
+		"PatternType",
+		"AsciiType",
+		"RegionOverlap",
+		"FontSlant",
+		"FontWeight",
+		"Role",
+		"Layer",
+		"HyperlinkStateFlags",
+		"WindowWindowClass",
+		"WindowType",
+		"WindowTypeHint",
+		"ApplicationFlags",
+		"WindowAttributesType",
+		"EventType",
+		"ModifierType",
+		"DragResult",
+		"DirectionType",
+		"StateFlags",
+		"TextDirection",
+		"DirectionType",
+		"CrossingMode",
+		"NotifyType",
+	}
+	for _, n := range wl {
+		if n == e.Name {
+			return e.Blacklist, e.CType
+		}
+	}
+
+	return true, e.CType
+
+	//return e.Blacklist, e.CType
 }
 
 func (e *Enumeration) supported() (supported bool, reason string) {

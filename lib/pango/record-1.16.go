@@ -9,19 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_color_to_string
-
-// Blacklisted : pango_font_description_get_gravity
-
-// Blacklisted : pango_font_description_set_gravity
-
-// Blacklisted : pango_language_get_default
-
-// Blacklisted : pango_matrix_transform_distance
-
-// Blacklisted : pango_matrix_transform_pixel_rectangle
-
-// Blacklisted : pango_matrix_transform_point
-
-// Blacklisted : pango_matrix_transform_rectangle

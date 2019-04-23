@@ -20,15 +20,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type ResourceFlags C.GResourceFlags
+// Blacklisted : GResourceFlags
 
-const (
-	RESOURCE_FLAGS_NONE       ResourceFlags = 0
-	RESOURCE_FLAGS_COMPRESSED ResourceFlags = 1
-)
-
-type ResourceLookupFlags C.GResourceLookupFlags
-
-const (
-	RESOURCE_LOOKUP_FLAGS_NONE ResourceLookupFlags = 0
-)
+// Blacklisted : GResourceLookupFlags

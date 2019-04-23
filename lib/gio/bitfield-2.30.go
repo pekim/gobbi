@@ -20,31 +20,10 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type DBusInterfaceSkeletonFlags C.GDBusInterfaceSkeletonFlags
+// Blacklisted : GDBusInterfaceSkeletonFlags
 
-const (
-	DBUS_INTERFACE_SKELETON_FLAGS_NONE                                DBusInterfaceSkeletonFlags = 0
-	DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD DBusInterfaceSkeletonFlags = 1
-)
+// Blacklisted : GDBusObjectManagerClientFlags
 
-type DBusObjectManagerClientFlags C.GDBusObjectManagerClientFlags
+// Blacklisted : GTlsDatabaseVerifyFlags
 
-const (
-	DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE              DBusObjectManagerClientFlags = 0
-	DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START DBusObjectManagerClientFlags = 1
-)
-
-type TlsDatabaseVerifyFlags C.GTlsDatabaseVerifyFlags
-
-const (
-	TLS_DATABASE_VERIFY_NONE TlsDatabaseVerifyFlags = 0
-)
-
-type TlsPasswordFlags C.GTlsPasswordFlags
-
-const (
-	TLS_PASSWORD_NONE       TlsPasswordFlags = 0
-	TLS_PASSWORD_RETRY      TlsPasswordFlags = 2
-	TLS_PASSWORD_MANY_TRIES TlsPasswordFlags = 4
-	TLS_PASSWORD_FINAL_TRY  TlsPasswordFlags = 8
-)
+// Blacklisted : GTlsPasswordFlags

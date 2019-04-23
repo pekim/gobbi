@@ -20,17 +20,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type DriveStartFlags C.GDriveStartFlags
+// Blacklisted : GDriveStartFlags
 
-const (
-	DRIVE_START_NONE DriveStartFlags = 0
-)
-
-type SocketMsgFlags C.GSocketMsgFlags
-
-const (
-	SOCKET_MSG_NONE      SocketMsgFlags = 0
-	SOCKET_MSG_OOB       SocketMsgFlags = 1
-	SOCKET_MSG_PEEK      SocketMsgFlags = 2
-	SOCKET_MSG_DONTROUTE SocketMsgFlags = 4
-)
+// Blacklisted : GSocketMsgFlags

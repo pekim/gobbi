@@ -9,17 +9,3 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_frame_timings_get_complete
-
-// Blacklisted : gdk_frame_timings_get_frame_counter
-
-// Blacklisted : gdk_frame_timings_get_predicted_presentation_time
-
-// Blacklisted : gdk_frame_timings_get_presentation_time
-
-// Blacklisted : gdk_frame_timings_get_refresh_interval
-
-// Blacklisted : gdk_frame_timings_ref
-
-// Blacklisted : gdk_frame_timings_unref

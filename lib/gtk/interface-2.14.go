@@ -11,29 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_file_chooser_get_current_folder_file
-
-// Blacklisted : gtk_file_chooser_get_file
-
-// Blacklisted : gtk_file_chooser_get_files
-
-// Blacklisted : gtk_file_chooser_get_preview_file
-
-// Blacklisted : gtk_file_chooser_select_file
-
-// Blacklisted : gtk_file_chooser_set_current_folder_file
-
-// Blacklisted : gtk_file_chooser_set_file
-
-// Blacklisted : gtk_file_chooser_unselect_file
-
-// Blacklisted : gtk_tool_shell_get_icon_size
-
-// Blacklisted : gtk_tool_shell_get_orientation
-
-// Blacklisted : gtk_tool_shell_get_relief_style
-
-// Blacklisted : gtk_tool_shell_get_style
-
-// Blacklisted : gtk_tool_shell_rebuild_menu

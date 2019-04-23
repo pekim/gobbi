@@ -11,5 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_tree_path_new_from_indicesv

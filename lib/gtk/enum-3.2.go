@@ -12,16 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type CssSectionType C.GtkCssSectionType
-
-const (
-	GTK_CSS_SECTION_DOCUMENT         CssSectionType = 0
-	GTK_CSS_SECTION_IMPORT           CssSectionType = 1
-	GTK_CSS_SECTION_COLOR_DEFINITION CssSectionType = 2
-	GTK_CSS_SECTION_BINDING_SET      CssSectionType = 3
-	GTK_CSS_SECTION_RULESET          CssSectionType = 4
-	GTK_CSS_SECTION_SELECTOR         CssSectionType = 5
-	GTK_CSS_SECTION_DECLARATION      CssSectionType = 6
-	GTK_CSS_SECTION_VALUE            CssSectionType = 7
-	GTK_CSS_SECTION_KEYFRAMES        CssSectionType = 8
-)
+// Blacklisted : GtkCssSectionType

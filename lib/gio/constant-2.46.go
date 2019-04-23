@@ -21,4 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_STANDARD_IS_VOLATILE string = C.G_FILE_ATTRIBUTE_STANDARD_IS_VOLATILE
+// Blacklisted : FILE_ATTRIBUTE_STANDARD_IS_VOLATILE

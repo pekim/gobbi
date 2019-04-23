@@ -9,11 +9,3 @@ package gdkpixbuf
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_pixbuf_animation_new_from_resource
-
-// Blacklisted : gdk_pixbuf_animation_new_from_stream
-
-// Blacklisted : gdk_pixbuf_animation_new_from_stream_finish
-
-// gdk_pixbuf_animation_new_from_stream_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback

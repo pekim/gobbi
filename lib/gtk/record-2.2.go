@@ -11,11 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Blacklisted : gtk_tree_row_reference_copy
-
-// Blacklisted : gtk_widget_class_find_style_property
-
-// Unsupported : gtk_widget_class_list_style_properties : array return type :

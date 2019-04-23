@@ -20,10 +20,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type ConverterFlags C.GConverterFlags
-
-const (
-	CONVERTER_NO_FLAGS     ConverterFlags = 0
-	CONVERTER_INPUT_AT_END ConverterFlags = 1
-	CONVERTER_FLUSH        ConverterFlags = 2
-)
+// Blacklisted : GConverterFlags

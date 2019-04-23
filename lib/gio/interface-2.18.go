@@ -25,11 +25,3 @@ import "C"
 // Blacklisted : g_file_monitor
 
 // Blacklisted : g_file_query_file_type
-
-// Unsupported : g_mount_guess_content_type : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Blacklisted : g_mount_guess_content_type_finish
-
-// Blacklisted : g_mount_guess_content_type_sync
-
-// Blacklisted : g_volume_get_activation_root

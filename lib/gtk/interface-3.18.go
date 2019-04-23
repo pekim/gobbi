@@ -11,7 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_font_chooser_get_font_map
-
-// Blacklisted : gtk_font_chooser_set_font_map

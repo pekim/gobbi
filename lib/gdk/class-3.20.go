@@ -3,34 +3,13 @@
 
 package gdk
 
-import (
-	"sync"
-	"unsafe"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
-/*
-
-	void display_seatAddedHandler(GObject *, GdkSeat *, gpointer);
-
-	static gulong Display_signal_connect_seat_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-added", G_CALLBACK(display_seatAddedHandler), data);
-	}
-
-*/
-/*
-
-	void display_seatRemovedHandler(GObject *, GdkSeat *, gpointer);
-
-	static gulong Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-removed", G_CALLBACK(display_seatRemovedHandler), data);
-	}
-
-*/
 /*
 
 	void dragcontext_actionChangedHandler(GObject *, GdkDragAction, gpointer);
@@ -68,136 +47,6 @@ import (
 
 */
 import "C"
-
-// Blacklisted : gdk_device_get_seat
-
-type signalDisplaySeatAddedDetail struct {
-	callback  DisplaySignalSeatAddedCallback
-	handlerID C.gulong
-}
-
-var signalDisplaySeatAddedId int
-var signalDisplaySeatAddedMap = make(map[int]signalDisplaySeatAddedDetail)
-var signalDisplaySeatAddedLock sync.RWMutex
-
-// DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
-type DisplaySignalSeatAddedCallback func(seat *Seat)
-
-/*
-ConnectSeatAdded connects the callback to the 'seat-added' signal for the Display.
-
-The returned value represents the connection, and may be passed to DisconnectSeatAdded to remove it.
-*/
-func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) int {
-	signalDisplaySeatAddedLock.Lock()
-	defer signalDisplaySeatAddedLock.Unlock()
-
-	signalDisplaySeatAddedId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
-
-	detail := signalDisplaySeatAddedDetail{callback, handlerID}
-	signalDisplaySeatAddedMap[signalDisplaySeatAddedId] = detail
-
-	return signalDisplaySeatAddedId
-}
-
-/*
-DisconnectSeatAdded disconnects a callback from the 'seat-added' signal for the Display.
-
-The connectionID should be a value returned from a call to ConnectSeatAdded.
-*/
-func (recv *Display) DisconnectSeatAdded(connectionID int) {
-	signalDisplaySeatAddedLock.Lock()
-	defer signalDisplaySeatAddedLock.Unlock()
-
-	detail, exists := signalDisplaySeatAddedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalDisplaySeatAddedMap, connectionID)
-}
-
-//export display_seatAddedHandler
-func display_seatAddedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
-	signalDisplaySeatAddedLock.RLock()
-	defer signalDisplaySeatAddedLock.RUnlock()
-
-	seat := SeatNewFromC(unsafe.Pointer(c_seat))
-
-	index := int(uintptr(data))
-	callback := signalDisplaySeatAddedMap[index].callback
-	callback(seat)
-}
-
-type signalDisplaySeatRemovedDetail struct {
-	callback  DisplaySignalSeatRemovedCallback
-	handlerID C.gulong
-}
-
-var signalDisplaySeatRemovedId int
-var signalDisplaySeatRemovedMap = make(map[int]signalDisplaySeatRemovedDetail)
-var signalDisplaySeatRemovedLock sync.RWMutex
-
-// DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
-type DisplaySignalSeatRemovedCallback func(seat *Seat)
-
-/*
-ConnectSeatRemoved connects the callback to the 'seat-removed' signal for the Display.
-
-The returned value represents the connection, and may be passed to DisconnectSeatRemoved to remove it.
-*/
-func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallback) int {
-	signalDisplaySeatRemovedLock.Lock()
-	defer signalDisplaySeatRemovedLock.Unlock()
-
-	signalDisplaySeatRemovedId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
-
-	detail := signalDisplaySeatRemovedDetail{callback, handlerID}
-	signalDisplaySeatRemovedMap[signalDisplaySeatRemovedId] = detail
-
-	return signalDisplaySeatRemovedId
-}
-
-/*
-DisconnectSeatRemoved disconnects a callback from the 'seat-removed' signal for the Display.
-
-The connectionID should be a value returned from a call to ConnectSeatRemoved.
-*/
-func (recv *Display) DisconnectSeatRemoved(connectionID int) {
-	signalDisplaySeatRemovedLock.Lock()
-	defer signalDisplaySeatRemovedLock.Unlock()
-
-	detail, exists := signalDisplaySeatRemovedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalDisplaySeatRemovedMap, connectionID)
-}
-
-//export display_seatRemovedHandler
-func display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
-	signalDisplaySeatRemovedLock.RLock()
-	defer signalDisplaySeatRemovedLock.RUnlock()
-
-	seat := SeatNewFromC(unsafe.Pointer(c_seat))
-
-	index := int(uintptr(data))
-	callback := signalDisplaySeatRemovedMap[index].callback
-	callback(seat)
-}
-
-// Blacklisted : gdk_display_get_default_seat
-
-// Blacklisted : gdk_display_list_seats
 
 type signalDragContextActionChangedDetail struct {
 	callback  DragContextSignalActionChangedCallback
@@ -450,5 +299,3 @@ func dragcontext_dropPerformedHandler(_ *C.GObject, c_time C.gint, data C.gpoint
 // Blacklisted : gdk_drag_context_manage_dnd
 
 // Blacklisted : gdk_drag_context_set_hotspot
-
-// Blacklisted : gdk_gl_context_is_legacy

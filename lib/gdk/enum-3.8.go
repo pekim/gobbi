@@ -10,9 +10,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-type FullscreenMode C.GdkFullscreenMode
-
-const (
-	GDK_FULLSCREEN_ON_CURRENT_MONITOR FullscreenMode = 0
-	GDK_FULLSCREEN_ON_ALL_MONITORS    FullscreenMode = 1
-)
+// Blacklisted : GdkFullscreenMode

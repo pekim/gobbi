@@ -21,4 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const MENU_ATTRIBUTE_ACTION_NAMESPACE string = C.G_MENU_ATTRIBUTE_ACTION_NAMESPACE
+// Blacklisted : MENU_ATTRIBUTE_ACTION_NAMESPACE

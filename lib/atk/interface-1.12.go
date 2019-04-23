@@ -10,18 +10,4 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : atk_component_get_alpha
-
-// Blacklisted : atk_document_get_attribute_value
-
-// Blacklisted : atk_document_get_attributes
-
-// Blacklisted : atk_document_set_attribute_value
-
-// Blacklisted : atk_hyperlink_impl_get_hyperlink
-
-// Blacklisted : atk_image_get_image_locale
-
-// Blacklisted : atk_streamable_content_get_uri
-
 // Blacklisted : atk_value_get_minimum_increment

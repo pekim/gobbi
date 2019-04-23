@@ -9,9 +9,3 @@ package atk
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : atk_plug_get_id
-
-// Blacklisted : atk_socket_embed
-
-// Blacklisted : atk_socket_is_occupied

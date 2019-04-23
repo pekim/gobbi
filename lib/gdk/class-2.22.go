@@ -10,10 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_cursor_get_cursor_type
-
-// Blacklisted : gdk_display_is_closed
-
 // Blacklisted : gdk_drag_context_get_actions
 
 // Blacklisted : gdk_drag_context_get_selected_action
@@ -23,22 +19,6 @@ import "C"
 // Blacklisted : gdk_drag_context_get_suggested_action
 
 // Blacklisted : gdk_drag_context_list_targets
-
-// Blacklisted : gdk_visual_get_bits_per_rgb
-
-// Blacklisted : gdk_visual_get_blue_pixel_details
-
-// Blacklisted : gdk_visual_get_byte_order
-
-// Blacklisted : gdk_visual_get_colormap_size
-
-// Blacklisted : gdk_visual_get_depth
-
-// Blacklisted : gdk_visual_get_green_pixel_details
-
-// Blacklisted : gdk_visual_get_red_pixel_details
-
-// Blacklisted : gdk_visual_get_visual_type
 
 // Blacklisted : gdk_window_coords_from_parent
 

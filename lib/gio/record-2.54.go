@@ -20,5 +20,3 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_unix_mount_point_copy

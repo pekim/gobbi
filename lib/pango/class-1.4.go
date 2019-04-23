@@ -12,12 +12,4 @@ import "C"
 
 // Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : output array param sizes
 
-// Blacklisted : pango_font_family_is_monospace
-
 // Blacklisted : pango_font_map_get_shape_engine_type
-
-// Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc (PangoFontsetForeachFunc) for param func
-
-// Blacklisted : pango_layout_get_auto_dir
-
-// Blacklisted : pango_layout_set_auto_dir

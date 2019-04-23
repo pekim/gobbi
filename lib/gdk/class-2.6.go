@@ -10,14 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_display_request_selection_notification
-
-// Unsupported : gdk_display_store_clipboard : unsupported parameter targets :
-
-// Blacklisted : gdk_display_supports_clipboard_persistence
-
-// Blacklisted : gdk_display_supports_selection_notification
-
 // Blacklisted : gdk_window_configure_finished
 
 // Blacklisted : gdk_window_enable_synchronized_configure

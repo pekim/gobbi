@@ -12,10 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type FileChooserConfirmation C.GtkFileChooserConfirmation
-
-const (
-	GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM         FileChooserConfirmation = 0
-	GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME FileChooserConfirmation = 1
-	GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN    FileChooserConfirmation = 2
-)
+// Blacklisted : GtkFileChooserConfirmation

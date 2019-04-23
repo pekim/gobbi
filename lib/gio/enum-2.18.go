@@ -20,11 +20,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type EmblemOrigin C.GEmblemOrigin
-
-const (
-	EMBLEM_ORIGIN_UNKNOWN      EmblemOrigin = 0
-	EMBLEM_ORIGIN_DEVICE       EmblemOrigin = 1
-	EMBLEM_ORIGIN_LIVEMETADATA EmblemOrigin = 2
-	EMBLEM_ORIGIN_TAG          EmblemOrigin = 3
-)
+// Blacklisted : GEmblemOrigin

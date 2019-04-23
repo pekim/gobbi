@@ -3,8 +3,6 @@
 
 package pango
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,50 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// pango_attr_shape_new_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// Blacklisted : pango_attr_size_new_absolute
-
-// Blacklisted : pango_font_description_get_size_is_absolute
-
-// Blacklisted : pango_font_description_set_absolute_size
-
-// RendererClass is a wrapper around the C record PangoRendererClass.
-type RendererClass struct {
-	native *C.PangoRendererClass
-	// Private : parent_class
-	// no type for draw_glyphs
-	// no type for draw_rectangle
-	// no type for draw_error_underline
-	// no type for draw_shape
-	// no type for draw_trapezoid
-	// no type for draw_glyph
-	// no type for part_changed
-	// no type for begin
-	// no type for end
-	// no type for prepare_run
-	// no type for draw_glyph_item
-	// no type for _pango_reserved2
-	// no type for _pango_reserved3
-	// no type for _pango_reserved4
-}
-
-func RendererClassNewFromC(u unsafe.Pointer) *RendererClass {
-	c := (*C.PangoRendererClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RendererClass{native: c}
-
-	return g
-}
-
-func (recv *RendererClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this RendererClass with another RendererClass, and returns true if they represent the same GObject.
-func (recv *RendererClass) Equals(other *RendererClass) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : PangoRendererClass

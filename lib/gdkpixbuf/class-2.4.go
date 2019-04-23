@@ -21,5 +21,3 @@ import "C"
 // Unsupported : gdk_pixbuf_save_to_callback : unsupported parameter save_func : no type generator for PixbufSaveFunc (GdkPixbufSaveFunc) for param save_func
 
 // Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc (GdkPixbufSaveFunc) for param save_func
-
-// Blacklisted : gdk_pixbuf_loader_new_with_mime_type

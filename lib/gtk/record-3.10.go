@@ -11,15 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_icon_set_render_icon_surface
-
-// Unsupported : gtk_widget_class_bind_template_callback_full : unsupported parameter callback_symbol : no type generator for GObject.Callback (GCallback) for param callback_symbol
-
-// Blacklisted : gtk_widget_class_bind_template_child_full
-
-// Unsupported : gtk_widget_class_set_connect_func : unsupported parameter connect_func : no type generator for BuilderConnectFunc (GtkBuilderConnectFunc) for param connect_func
-
-// Blacklisted : gtk_widget_class_set_template
-
-// Blacklisted : gtk_widget_class_set_template_from_resource

@@ -11,5 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : gtk_container_class_install_child_properties : unsupported parameter pspecs :

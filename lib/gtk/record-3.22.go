@@ -11,7 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_paper_size_new_from_gvariant
-
-// Blacklisted : gtk_paper_size_to_gvariant

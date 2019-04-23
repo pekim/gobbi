@@ -38,31 +38,7 @@ func (recv *Context) Equals(other *Context) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Device is a wrapper around the C record cairo_device_t.
-type Device struct {
-	native *C.cairo_device_t
-}
-
-func DeviceNewFromC(u unsafe.Pointer) *Device {
-	c := (*C.cairo_device_t)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Device{native: c}
-
-	return g
-}
-
-func (recv *Device) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this Device with another Device, and returns true if they represent the same GObject.
-func (recv *Device) Equals(other *Device) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : cairo_device_t
 
 // Surface is a wrapper around the C record cairo_surface_t.
 type Surface struct {

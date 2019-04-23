@@ -12,9 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-type NumberParserError C.GNumberParserError
-
-const (
-	NUMBER_PARSER_ERROR_INVALID       NumberParserError = 0
-	NUMBER_PARSER_ERROR_OUT_OF_BOUNDS NumberParserError = 1
-)
+// Blacklisted : GNumberParserError

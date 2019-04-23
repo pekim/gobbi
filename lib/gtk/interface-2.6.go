@@ -11,7 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_file_chooser_get_show_hidden
-
-// Blacklisted : gtk_file_chooser_set_show_hidden

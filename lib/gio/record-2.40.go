@@ -20,21 +20,3 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_settings_schema_get_key
-
-// Blacklisted : g_settings_schema_has_key
-
-// Blacklisted : g_settings_schema_key_get_default_value
-
-// Blacklisted : g_settings_schema_key_get_range
-
-// Blacklisted : g_settings_schema_key_get_value_type
-
-// Blacklisted : g_settings_schema_key_range_check
-
-// Blacklisted : g_settings_schema_key_ref
-
-// Blacklisted : g_settings_schema_key_unref
-
-// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : output array param non_relocatable

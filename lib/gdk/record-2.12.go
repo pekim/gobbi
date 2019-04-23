@@ -9,5 +9,3 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_color_to_string

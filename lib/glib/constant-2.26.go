@@ -12,8 +12,12 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const TIME_SPAN_DAY int64 = C.G_TIME_SPAN_DAY
-const TIME_SPAN_HOUR int64 = C.G_TIME_SPAN_HOUR
-const TIME_SPAN_MILLISECOND int64 = C.G_TIME_SPAN_MILLISECOND
-const TIME_SPAN_MINUTE int64 = C.G_TIME_SPAN_MINUTE
-const TIME_SPAN_SECOND int64 = C.G_TIME_SPAN_SECOND
+// Blacklisted : TIME_SPAN_DAY
+
+// Blacklisted : TIME_SPAN_HOUR
+
+// Blacklisted : TIME_SPAN_MILLISECOND
+
+// Blacklisted : TIME_SPAN_MINUTE
+
+// Blacklisted : TIME_SPAN_SECOND

@@ -11,9 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported signal 'confirm-overwrite' for FileChooser : return value FileChooserConfirmation :
-
-// Blacklisted : gtk_file_chooser_get_do_overwrite_confirmation
-
-// Blacklisted : gtk_file_chooser_set_do_overwrite_confirmation

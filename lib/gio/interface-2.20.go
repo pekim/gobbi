@@ -20,20 +20,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : g_app_info_reset_type_associations
-
-// Blacklisted : g_app_info_can_delete
-
-// Blacklisted : g_app_info_delete
-
-// Blacklisted : g_app_info_get_commandline
-
 // Blacklisted : g_icon_new_for_string
 
 // Blacklisted : g_icon_to_string
-
-// Blacklisted : g_mount_is_shadowed
-
-// Blacklisted : g_mount_shadow
-
-// Blacklisted : g_mount_unshadow

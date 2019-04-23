@@ -11,11 +11,3 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_option_context_get_strict_posix
-
-// Blacklisted : g_option_context_set_strict_posix
-
-// Blacklisted : g_option_group_ref
-
-// Blacklisted : g_option_group_unref

@@ -11,5 +11,3 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_markup_parse_context_get_element

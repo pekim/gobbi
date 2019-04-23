@@ -20,12 +20,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type ResolverRecordType C.GResolverRecordType
-
-const (
-	RESOLVER_RECORD_SRV ResolverRecordType = 1
-	RESOLVER_RECORD_MX  ResolverRecordType = 2
-	RESOLVER_RECORD_TXT ResolverRecordType = 3
-	RESOLVER_RECORD_SOA ResolverRecordType = 4
-	RESOLVER_RECORD_NS  ResolverRecordType = 5
-)
+// Blacklisted : GResolverRecordType

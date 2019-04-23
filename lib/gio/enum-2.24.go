@@ -20,19 +20,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type ConverterResult C.GConverterResult
+// Blacklisted : GConverterResult
 
-const (
-	CONVERTER_ERROR     ConverterResult = 0
-	CONVERTER_CONVERTED ConverterResult = 1
-	CONVERTER_FINISHED  ConverterResult = 2
-	CONVERTER_FLUSHED   ConverterResult = 3
-)
-
-type ZlibCompressorFormat C.GZlibCompressorFormat
-
-const (
-	ZLIB_COMPRESSOR_FORMAT_ZLIB ZlibCompressorFormat = 0
-	ZLIB_COMPRESSOR_FORMAT_GZIP ZlibCompressorFormat = 1
-	ZLIB_COMPRESSOR_FORMAT_RAW  ZlibCompressorFormat = 2
-)
+// Blacklisted : GZlibCompressorFormat

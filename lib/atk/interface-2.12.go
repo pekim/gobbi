@@ -12,15 +12,6 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void document_pageChangedHandler(GObject *, gint, gpointer);
-
-	static gulong Document_signal_connect_page_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-changed", G_CALLBACK(document_pageChangedHandler), data);
-	}
-
-*/
-/*
-
 	void value_valueChangedHandler(GObject *, gdouble, gchar*, gpointer);
 
 	static gulong Value_signal_connect_value_changed(gpointer instance, gpointer data) {
@@ -29,86 +20,6 @@ import "sync"
 
 */
 import "C"
-
-type signalDocumentPageChangedDetail struct {
-	callback  DocumentSignalPageChangedCallback
-	handlerID C.gulong
-}
-
-var signalDocumentPageChangedId int
-var signalDocumentPageChangedMap = make(map[int]signalDocumentPageChangedDetail)
-var signalDocumentPageChangedLock sync.RWMutex
-
-// DocumentSignalPageChangedCallback is a callback function for a 'page-changed' signal emitted from a Document.
-type DocumentSignalPageChangedCallback func(pageNumber int32)
-
-/*
-ConnectPageChanged connects the callback to the 'page-changed' signal for the Document.
-
-The returned value represents the connection, and may be passed to DisconnectPageChanged to remove it.
-*/
-func (recv *Document) ConnectPageChanged(callback DocumentSignalPageChangedCallback) int {
-	signalDocumentPageChangedLock.Lock()
-	defer signalDocumentPageChangedLock.Unlock()
-
-	signalDocumentPageChangedId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Document_signal_connect_page_changed(instance, C.gpointer(uintptr(signalDocumentPageChangedId)))
-
-	detail := signalDocumentPageChangedDetail{callback, handlerID}
-	signalDocumentPageChangedMap[signalDocumentPageChangedId] = detail
-
-	return signalDocumentPageChangedId
-}
-
-/*
-DisconnectPageChanged disconnects a callback from the 'page-changed' signal for the Document.
-
-The connectionID should be a value returned from a call to ConnectPageChanged.
-*/
-func (recv *Document) DisconnectPageChanged(connectionID int) {
-	signalDocumentPageChangedLock.Lock()
-	defer signalDocumentPageChangedLock.Unlock()
-
-	detail, exists := signalDocumentPageChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalDocumentPageChangedMap, connectionID)
-}
-
-//export document_pageChangedHandler
-func document_pageChangedHandler(_ *C.GObject, c_page_number C.gint, data C.gpointer) {
-	signalDocumentPageChangedLock.RLock()
-	defer signalDocumentPageChangedLock.RUnlock()
-
-	pageNumber := int32(c_page_number)
-
-	index := int(uintptr(data))
-	callback := signalDocumentPageChangedMap[index].callback
-	callback(pageNumber)
-}
-
-// Blacklisted : atk_document_get_current_page_number
-
-// Blacklisted : atk_document_get_page_count
-
-// Unsupported : atk_table_cell_get_column_header_cells : array return type :
-
-// Blacklisted : atk_table_cell_get_column_span
-
-// Blacklisted : atk_table_cell_get_position
-
-// Blacklisted : atk_table_cell_get_row_column_span
-
-// Unsupported : atk_table_cell_get_row_header_cells : array return type :
-
-// Blacklisted : atk_table_cell_get_row_span
-
-// Blacklisted : atk_table_cell_get_table
 
 type signalValueValueChangedDetail struct {
 	callback  ValueSignalValueChangedCallback

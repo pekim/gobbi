@@ -9,5 +9,3 @@ package gdkpixbuf
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_pixbuf_format_is_save_option_supported

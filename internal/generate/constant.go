@@ -43,7 +43,16 @@ func (c *Constant) mergeAddenda(addenda *Constant) {
 }
 
 func (c *Constant) blacklisted() (bool, string) {
-	return c.Blacklist, c.Name
+	wl := []string{}
+	for _, n := range wl {
+		if n == c.Name {
+			return c.Blacklist, c.Name
+		}
+	}
+
+	return true, c.Name
+
+	//return c.Blacklist, c.Name
 }
 
 func (c *Constant) supported() (supported bool, reason string) {

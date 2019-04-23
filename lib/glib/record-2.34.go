@@ -12,10 +12,5 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// g_list_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
-// Blacklisted : g_mapped_file_get_bytes
-
 // g_slist_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
-// Blacklisted : g_string_free_to_bytes
-
 // Blacklisted : g_variant_check_format_string

@@ -11,7 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_info_bar_get_revealed
-
-// Blacklisted : gtk_info_bar_set_revealed

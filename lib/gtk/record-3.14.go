@@ -11,7 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_widget_path_iter_get_state
-
-// Blacklisted : gtk_widget_path_iter_set_state

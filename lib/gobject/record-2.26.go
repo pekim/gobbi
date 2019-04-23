@@ -10,8 +10,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_class_install_properties : unsupported parameter pspecs :
-
 // Blacklisted : g_value_dup_variant
 
 // Blacklisted : g_value_get_variant

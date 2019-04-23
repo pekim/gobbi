@@ -33,22 +33,7 @@ import (
 	}
 
 */
-/*
-
-	void menushell_insertHandler(GObject *, GtkWidget *, gint, gpointer);
-
-	static gulong MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert", G_CALLBACK(menushell_insertHandler), data);
-	}
-
-*/
 import "C"
-
-// Blacklisted : gtk_adjustment_get_minimum_increment
-
-// Blacklisted : gtk_app_chooser_button_get_show_default_item
-
-// Blacklisted : gtk_app_chooser_button_set_show_default_item
 
 type signalApplicationWindowAddedDetail struct {
 	callback  ApplicationSignalWindowAddedCallback
@@ -174,111 +159,7 @@ func application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data 
 	callback(window)
 }
 
-// Blacklisted : gtk_assistant_remove_page
-
-// Blacklisted : gtk_button_box_get_child_non_homogeneous
-
-// Blacklisted : gtk_button_box_set_child_non_homogeneous
-
 // Blacklisted : gtk_container_child_notify
-
-// Blacklisted : gtk_css_provider_to_string
-
-// Blacklisted : gtk_entry_get_placeholder_text
-
-// Blacklisted : gtk_entry_set_placeholder_text
-
-// Blacklisted : gtk_expander_get_resize_toplevel
-
-// Blacklisted : gtk_expander_set_resize_toplevel
-
-// Blacklisted : gtk_font_chooser_dialog_new
-
-// Blacklisted : gtk_font_chooser_widget_new
-
-// Blacklisted : gtk_grid_get_child_at
-
-// Blacklisted : gtk_grid_insert_column
-
-// Blacklisted : gtk_grid_insert_next_to
-
-// Blacklisted : gtk_grid_insert_row
-
-// Blacklisted : gtk_lock_button_new
-
-// Blacklisted : gtk_lock_button_get_permission
-
-// Blacklisted : gtk_lock_button_set_permission
-
-type signalMenuShellInsertDetail struct {
-	callback  MenuShellSignalInsertCallback
-	handlerID C.gulong
-}
-
-var signalMenuShellInsertId int
-var signalMenuShellInsertMap = make(map[int]signalMenuShellInsertDetail)
-var signalMenuShellInsertLock sync.RWMutex
-
-// MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
-type MenuShellSignalInsertCallback func(child *Widget, position int32)
-
-/*
-ConnectInsert connects the callback to the 'insert' signal for the MenuShell.
-
-The returned value represents the connection, and may be passed to DisconnectInsert to remove it.
-*/
-func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) int {
-	signalMenuShellInsertLock.Lock()
-	defer signalMenuShellInsertLock.Unlock()
-
-	signalMenuShellInsertId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.MenuShell_signal_connect_insert(instance, C.gpointer(uintptr(signalMenuShellInsertId)))
-
-	detail := signalMenuShellInsertDetail{callback, handlerID}
-	signalMenuShellInsertMap[signalMenuShellInsertId] = detail
-
-	return signalMenuShellInsertId
-}
-
-/*
-DisconnectInsert disconnects a callback from the 'insert' signal for the MenuShell.
-
-The connectionID should be a value returned from a call to ConnectInsert.
-*/
-func (recv *MenuShell) DisconnectInsert(connectionID int) {
-	signalMenuShellInsertLock.Lock()
-	defer signalMenuShellInsertLock.Unlock()
-
-	detail, exists := signalMenuShellInsertMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalMenuShellInsertMap, connectionID)
-}
-
-//export menushell_insertHandler
-func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gint, data C.gpointer) {
-	signalMenuShellInsertLock.RLock()
-	defer signalMenuShellInsertLock.RUnlock()
-
-	child := WidgetNewFromC(unsafe.Pointer(c_child))
-
-	position := int32(c_position)
-
-	index := int(uintptr(data))
-	callback := signalMenuShellInsertMap[index].callback
-	callback(child, position)
-}
-
-// Blacklisted : gtk_overlay_new
-
-// Blacklisted : gtk_overlay_add_overlay
-
-// Blacklisted : gtk_tree_view_column_get_x_offset
 
 // Blacklisted : gtk_drag_source_set_icon_gicon
 

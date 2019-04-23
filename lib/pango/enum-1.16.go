@@ -10,26 +10,6 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-type Gravity C.PangoGravity
+// Blacklisted : PangoGravity
 
-const (
-	PANGO_GRAVITY_SOUTH Gravity = 0
-	PANGO_GRAVITY_EAST  Gravity = 1
-	PANGO_GRAVITY_NORTH Gravity = 2
-	PANGO_GRAVITY_WEST  Gravity = 3
-	PANGO_GRAVITY_AUTO  Gravity = 4
-)
-
-// Blacklisted : pango_gravity_get_for_matrix
-
-// Blacklisted : pango_gravity_get_for_script
-
-// Blacklisted : pango_gravity_to_rotation
-
-type GravityHint C.PangoGravityHint
-
-const (
-	PANGO_GRAVITY_HINT_NATURAL GravityHint = 0
-	PANGO_GRAVITY_HINT_STRONG  GravityHint = 1
-	PANGO_GRAVITY_HINT_LINE    GravityHint = 2
-)
+// Blacklisted : PangoGravityHint

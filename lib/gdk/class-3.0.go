@@ -24,51 +24,9 @@ import (
 */
 import "C"
 
-// Blacklisted : gdk_device_get_associated_device
-
-// Blacklisted : gdk_device_get_axis_value
-
-// Blacklisted : gdk_device_get_device_type
-
-// Blacklisted : gdk_device_get_display
-
-// Blacklisted : gdk_device_get_n_axes
-
-// Blacklisted : gdk_device_get_position
-
-// Blacklisted : gdk_device_get_window_at_position
-
-// Blacklisted : gdk_device_get_window_at_position_double
-
-// Blacklisted : gdk_device_grab
-
-// Blacklisted : gdk_device_list_axes
-
-// Blacklisted : gdk_device_ungrab
-
-// Blacklisted : gdk_device_warp
-
-// Blacklisted : gdk_device_manager_get_client_pointer
-
-// Blacklisted : gdk_device_manager_get_display
-
-// Blacklisted : gdk_device_manager_list_devices
-
-// Blacklisted : gdk_display_get_app_launch_context
-
-// Blacklisted : gdk_display_get_device_manager
-
-// Blacklisted : gdk_display_has_pending
-
-// Blacklisted : gdk_display_notify_startup_complete
-
-// Blacklisted : gdk_display_manager_open_display
-
 // Blacklisted : gdk_drag_context_get_dest_window
 
 // Blacklisted : gdk_drag_context_get_protocol
-
-// Blacklisted : gdk_keymap_get_num_lock_state
 
 type signalWindowCreateSurfaceDetail struct {
 	callback  WindowSignalCreateSurfaceCallback

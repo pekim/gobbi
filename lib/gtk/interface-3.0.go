@@ -11,35 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_app_chooser_get_app_info
-
-// Blacklisted : gtk_app_chooser_get_content_type
-
-// Blacklisted : gtk_app_chooser_refresh
-
-// Blacklisted : gtk_cell_layout_get_area
-
-// Blacklisted : gtk_scrollable_get_hadjustment
-
-// Blacklisted : gtk_scrollable_get_hscroll_policy
-
-// Blacklisted : gtk_scrollable_get_vadjustment
-
-// Blacklisted : gtk_scrollable_get_vscroll_policy
-
-// Blacklisted : gtk_scrollable_set_hadjustment
-
-// Blacklisted : gtk_scrollable_set_hscroll_policy
-
-// Blacklisted : gtk_scrollable_set_vadjustment
-
-// Blacklisted : gtk_scrollable_set_vscroll_policy
-
-// Blacklisted : gtk_style_provider_get_icon_factory
-
-// Blacklisted : gtk_style_provider_get_style
-
-// Blacklisted : gtk_style_provider_get_style_property
-
-// Blacklisted : gtk_tree_model_iter_previous

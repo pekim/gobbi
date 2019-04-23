@@ -9,20 +9,9 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-type CoordType C.AtkCoordType
+// Blacklisted : AtkCoordType
 
-const (
-	ATK_XY_SCREEN CoordType = 0
-	ATK_XY_WINDOW CoordType = 1
-)
-
-type KeyEventType C.AtkKeyEventType
-
-const (
-	ATK_KEY_EVENT_PRESS        KeyEventType = 0
-	ATK_KEY_EVENT_RELEASE      KeyEventType = 1
-	ATK_KEY_EVENT_LAST_DEFINED KeyEventType = 2
-)
+// Blacklisted : AtkKeyEventType
 
 type Layer C.AtkLayer
 
@@ -37,38 +26,7 @@ const (
 	ATK_LAYER_WINDOW     Layer = 7
 )
 
-type RelationType C.AtkRelationType
-
-const (
-	ATK_RELATION_NULL             RelationType = 0
-	ATK_RELATION_CONTROLLED_BY    RelationType = 1
-	ATK_RELATION_CONTROLLER_FOR   RelationType = 2
-	ATK_RELATION_LABEL_FOR        RelationType = 3
-	ATK_RELATION_LABELLED_BY      RelationType = 4
-	ATK_RELATION_MEMBER_OF        RelationType = 5
-	ATK_RELATION_NODE_CHILD_OF    RelationType = 6
-	ATK_RELATION_FLOWS_TO         RelationType = 7
-	ATK_RELATION_FLOWS_FROM       RelationType = 8
-	ATK_RELATION_SUBWINDOW_OF     RelationType = 9
-	ATK_RELATION_EMBEDS           RelationType = 10
-	ATK_RELATION_EMBEDDED_BY      RelationType = 11
-	ATK_RELATION_POPUP_FOR        RelationType = 12
-	ATK_RELATION_PARENT_WINDOW_OF RelationType = 13
-	ATK_RELATION_DESCRIBED_BY     RelationType = 14
-	ATK_RELATION_DESCRIPTION_FOR  RelationType = 15
-	ATK_RELATION_NODE_PARENT_OF   RelationType = 16
-	ATK_RELATION_DETAILS          RelationType = 17
-	ATK_RELATION_DETAILS_FOR      RelationType = 18
-	ATK_RELATION_ERROR_MESSAGE    RelationType = 19
-	ATK_RELATION_ERROR_FOR        RelationType = 20
-	ATK_RELATION_LAST_DEFINED     RelationType = 21
-)
-
-// Blacklisted : atk_relation_type_for_name
-
-// Blacklisted : atk_relation_type_get_name
-
-// Blacklisted : atk_relation_type_register
+// Blacklisted : AtkRelationType
 
 type Role C.AtkRole
 
@@ -207,155 +165,14 @@ const (
 
 // Blacklisted : atk_role_register
 
-type StateType C.AtkStateType
+// Blacklisted : AtkStateType
 
-const (
-	ATK_STATE_INVALID                 StateType = 0
-	ATK_STATE_ACTIVE                  StateType = 1
-	ATK_STATE_ARMED                   StateType = 2
-	ATK_STATE_BUSY                    StateType = 3
-	ATK_STATE_CHECKED                 StateType = 4
-	ATK_STATE_DEFUNCT                 StateType = 5
-	ATK_STATE_EDITABLE                StateType = 6
-	ATK_STATE_ENABLED                 StateType = 7
-	ATK_STATE_EXPANDABLE              StateType = 8
-	ATK_STATE_EXPANDED                StateType = 9
-	ATK_STATE_FOCUSABLE               StateType = 10
-	ATK_STATE_FOCUSED                 StateType = 11
-	ATK_STATE_HORIZONTAL              StateType = 12
-	ATK_STATE_ICONIFIED               StateType = 13
-	ATK_STATE_MODAL                   StateType = 14
-	ATK_STATE_MULTI_LINE              StateType = 15
-	ATK_STATE_MULTISELECTABLE         StateType = 16
-	ATK_STATE_OPAQUE                  StateType = 17
-	ATK_STATE_PRESSED                 StateType = 18
-	ATK_STATE_RESIZABLE               StateType = 19
-	ATK_STATE_SELECTABLE              StateType = 20
-	ATK_STATE_SELECTED                StateType = 21
-	ATK_STATE_SENSITIVE               StateType = 22
-	ATK_STATE_SHOWING                 StateType = 23
-	ATK_STATE_SINGLE_LINE             StateType = 24
-	ATK_STATE_STALE                   StateType = 25
-	ATK_STATE_TRANSIENT               StateType = 26
-	ATK_STATE_VERTICAL                StateType = 27
-	ATK_STATE_VISIBLE                 StateType = 28
-	ATK_STATE_MANAGES_DESCENDANTS     StateType = 29
-	ATK_STATE_INDETERMINATE           StateType = 30
-	ATK_STATE_TRUNCATED               StateType = 31
-	ATK_STATE_REQUIRED                StateType = 32
-	ATK_STATE_INVALID_ENTRY           StateType = 33
-	ATK_STATE_SUPPORTS_AUTOCOMPLETION StateType = 34
-	ATK_STATE_SELECTABLE_TEXT         StateType = 35
-	ATK_STATE_DEFAULT                 StateType = 36
-	ATK_STATE_ANIMATED                StateType = 37
-	ATK_STATE_VISITED                 StateType = 38
-	ATK_STATE_CHECKABLE               StateType = 39
-	ATK_STATE_HAS_POPUP               StateType = 40
-	ATK_STATE_HAS_TOOLTIP             StateType = 41
-	ATK_STATE_READ_ONLY               StateType = 42
-	ATK_STATE_LAST_DEFINED            StateType = 43
-)
+// Blacklisted : AtkTextAttribute
 
-// Blacklisted : atk_state_type_for_name
+// Blacklisted : AtkTextBoundary
 
-// Blacklisted : atk_state_type_get_name
+// Blacklisted : AtkTextClipType
 
-// Blacklisted : atk_state_type_register
+// Blacklisted : AtkTextGranularity
 
-type TextAttribute C.AtkTextAttribute
-
-const (
-	ATK_TEXT_ATTR_INVALID            TextAttribute = 0
-	ATK_TEXT_ATTR_LEFT_MARGIN        TextAttribute = 1
-	ATK_TEXT_ATTR_RIGHT_MARGIN       TextAttribute = 2
-	ATK_TEXT_ATTR_INDENT             TextAttribute = 3
-	ATK_TEXT_ATTR_INVISIBLE          TextAttribute = 4
-	ATK_TEXT_ATTR_EDITABLE           TextAttribute = 5
-	ATK_TEXT_ATTR_PIXELS_ABOVE_LINES TextAttribute = 6
-	ATK_TEXT_ATTR_PIXELS_BELOW_LINES TextAttribute = 7
-	ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP TextAttribute = 8
-	ATK_TEXT_ATTR_BG_FULL_HEIGHT     TextAttribute = 9
-	ATK_TEXT_ATTR_RISE               TextAttribute = 10
-	ATK_TEXT_ATTR_UNDERLINE          TextAttribute = 11
-	ATK_TEXT_ATTR_STRIKETHROUGH      TextAttribute = 12
-	ATK_TEXT_ATTR_SIZE               TextAttribute = 13
-	ATK_TEXT_ATTR_SCALE              TextAttribute = 14
-	ATK_TEXT_ATTR_WEIGHT             TextAttribute = 15
-	ATK_TEXT_ATTR_LANGUAGE           TextAttribute = 16
-	ATK_TEXT_ATTR_FAMILY_NAME        TextAttribute = 17
-	ATK_TEXT_ATTR_BG_COLOR           TextAttribute = 18
-	ATK_TEXT_ATTR_FG_COLOR           TextAttribute = 19
-	ATK_TEXT_ATTR_BG_STIPPLE         TextAttribute = 20
-	ATK_TEXT_ATTR_FG_STIPPLE         TextAttribute = 21
-	ATK_TEXT_ATTR_WRAP_MODE          TextAttribute = 22
-	ATK_TEXT_ATTR_DIRECTION          TextAttribute = 23
-	ATK_TEXT_ATTR_JUSTIFICATION      TextAttribute = 24
-	ATK_TEXT_ATTR_STRETCH            TextAttribute = 25
-	ATK_TEXT_ATTR_VARIANT            TextAttribute = 26
-	ATK_TEXT_ATTR_STYLE              TextAttribute = 27
-	ATK_TEXT_ATTR_LAST_DEFINED       TextAttribute = 28
-)
-
-// Blacklisted : atk_text_attribute_for_name
-
-// Blacklisted : atk_text_attribute_get_name
-
-// Blacklisted : atk_text_attribute_get_value
-
-// Blacklisted : atk_text_attribute_register
-
-type TextBoundary C.AtkTextBoundary
-
-const (
-	ATK_TEXT_BOUNDARY_CHAR           TextBoundary = 0
-	ATK_TEXT_BOUNDARY_WORD_START     TextBoundary = 1
-	ATK_TEXT_BOUNDARY_WORD_END       TextBoundary = 2
-	ATK_TEXT_BOUNDARY_SENTENCE_START TextBoundary = 3
-	ATK_TEXT_BOUNDARY_SENTENCE_END   TextBoundary = 4
-	ATK_TEXT_BOUNDARY_LINE_START     TextBoundary = 5
-	ATK_TEXT_BOUNDARY_LINE_END       TextBoundary = 6
-)
-
-type TextClipType C.AtkTextClipType
-
-const (
-	ATK_TEXT_CLIP_NONE TextClipType = 0
-	ATK_TEXT_CLIP_MIN  TextClipType = 1
-	ATK_TEXT_CLIP_MAX  TextClipType = 2
-	ATK_TEXT_CLIP_BOTH TextClipType = 3
-)
-
-type TextGranularity C.AtkTextGranularity
-
-const (
-	ATK_TEXT_GRANULARITY_CHAR      TextGranularity = 0
-	ATK_TEXT_GRANULARITY_WORD      TextGranularity = 1
-	ATK_TEXT_GRANULARITY_SENTENCE  TextGranularity = 2
-	ATK_TEXT_GRANULARITY_LINE      TextGranularity = 3
-	ATK_TEXT_GRANULARITY_PARAGRAPH TextGranularity = 4
-)
-
-type ValueType C.AtkValueType
-
-const (
-	ATK_VALUE_VERY_WEAK    ValueType = 0
-	ATK_VALUE_WEAK         ValueType = 1
-	ATK_VALUE_ACCEPTABLE   ValueType = 2
-	ATK_VALUE_STRONG       ValueType = 3
-	ATK_VALUE_VERY_STRONG  ValueType = 4
-	ATK_VALUE_VERY_LOW     ValueType = 5
-	ATK_VALUE_LOW          ValueType = 6
-	ATK_VALUE_MEDIUM       ValueType = 7
-	ATK_VALUE_HIGH         ValueType = 8
-	ATK_VALUE_VERY_HIGH    ValueType = 9
-	ATK_VALUE_VERY_BAD     ValueType = 10
-	ATK_VALUE_BAD          ValueType = 11
-	ATK_VALUE_GOOD         ValueType = 12
-	ATK_VALUE_VERY_GOOD    ValueType = 13
-	ATK_VALUE_BEST         ValueType = 14
-	ATK_VALUE_LAST_DEFINED ValueType = 15
-)
-
-// Blacklisted : atk_value_type_get_localized_name
-
-// Blacklisted : atk_value_type_get_name
+// Blacklisted : AtkValueType

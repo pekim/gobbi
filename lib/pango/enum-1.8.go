@@ -10,11 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-type RenderPart C.PangoRenderPart
-
-const (
-	PANGO_RENDER_PART_FOREGROUND    RenderPart = 0
-	PANGO_RENDER_PART_BACKGROUND    RenderPart = 1
-	PANGO_RENDER_PART_UNDERLINE     RenderPart = 2
-	PANGO_RENDER_PART_STRIKETHROUGH RenderPart = 3
-)
+// Blacklisted : PangoRenderPart

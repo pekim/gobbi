@@ -9,13 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_language_includes_script
-
-// Blacklisted : pango_script_iter_new
-
-// Blacklisted : pango_script_iter_free
-
-// Unsupported : pango_script_iter_get_range : unsupported parameter script : PangoScript* with indirection level of 1
-
-// Blacklisted : pango_script_iter_next

@@ -11,11 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_binding_entry_skip
-
-// Blacklisted : gtk_paper_size_new_from_key_file
-
-// Blacklisted : gtk_paper_size_get_paper_sizes
-
-// Blacklisted : gtk_paper_size_to_key_file

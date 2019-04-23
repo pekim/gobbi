@@ -3,8 +3,6 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,53 +10,4 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// EventOwnerChange is a wrapper around the C record GdkEventOwnerChange.
-type EventOwnerChange struct {
-	native *C.GdkEventOwnerChange
-	Type   EventType
-	// window : record
-	SendEvent int8
-	// owner : record
-	Reason OwnerChange
-	// selection : record
-	Time          uint32
-	SelectionTime uint32
-}
-
-func EventOwnerChangeNewFromC(u unsafe.Pointer) *EventOwnerChange {
-	c := (*C.GdkEventOwnerChange)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EventOwnerChange{
-		Reason:        (OwnerChange)(c.reason),
-		SelectionTime: (uint32)(c.selection_time),
-		SendEvent:     (int8)(c.send_event),
-		Time:          (uint32)(c.time),
-		Type:          (EventType)(c._type),
-		native:        c,
-	}
-
-	return g
-}
-
-func (recv *EventOwnerChange) ToC() unsafe.Pointer {
-	recv.native._type =
-		(C.GdkEventType)(recv.Type)
-	recv.native.send_event =
-		(C.gint8)(recv.SendEvent)
-	recv.native.reason =
-		(C.GdkOwnerChange)(recv.Reason)
-	recv.native.time =
-		(C.guint32)(recv.Time)
-	recv.native.selection_time =
-		(C.guint32)(recv.SelectionTime)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this EventOwnerChange with another EventOwnerChange, and returns true if they represent the same GObject.
-func (recv *EventOwnerChange) Equals(other *EventOwnerChange) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : GdkEventOwnerChange

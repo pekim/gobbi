@@ -12,10 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type PadActionType C.GtkPadActionType
-
-const (
-	GTK_PAD_ACTION_BUTTON PadActionType = 0
-	GTK_PAD_ACTION_RING   PadActionType = 1
-	GTK_PAD_ACTION_STRIP  PadActionType = 2
-)
+// Blacklisted : GtkPadActionType

@@ -9,5 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_matrix_get_font_scale_factor

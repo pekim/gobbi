@@ -9,11 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_layout_get_height
-
-// Blacklisted : pango_layout_set_height
-
-// Blacklisted : pango_renderer_get_layout
-
-// Blacklisted : pango_renderer_get_layout_line

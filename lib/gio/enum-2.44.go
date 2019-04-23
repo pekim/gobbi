@@ -21,11 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type NetworkConnectivity C.GNetworkConnectivity
-
-const (
-	NETWORK_CONNECTIVITY_LOCAL   NetworkConnectivity = 1
-	NETWORK_CONNECTIVITY_LIMITED NetworkConnectivity = 2
-	NETWORK_CONNECTIVITY_PORTAL  NetworkConnectivity = 3
-	NETWORK_CONNECTIVITY_FULL    NetworkConnectivity = 4
-)
+// Blacklisted : GNetworkConnectivity

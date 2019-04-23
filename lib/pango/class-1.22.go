@@ -11,7 +11,3 @@ package pango
 import "C"
 
 // Blacklisted : pango_font_map_create_context
-
-// Blacklisted : pango_layout_get_baseline
-
-// Blacklisted : pango_renderer_draw_glyph_item

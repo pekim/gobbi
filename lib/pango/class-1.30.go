@@ -9,7 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_layout_get_character_count
-
-// Unsupported : pango_layout_get_log_attrs_readonly : array return type :

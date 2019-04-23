@@ -9,9 +9,3 @@ package atk
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : atk_misc_get_instance
-
-// Blacklisted : atk_misc_threads_enter
-
-// Blacklisted : atk_misc_threads_leave

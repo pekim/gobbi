@@ -11,11 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_tool_shell_get_ellipsize_mode
-
-// Blacklisted : gtk_tool_shell_get_text_alignment
-
-// Blacklisted : gtk_tool_shell_get_text_orientation
-
-// Blacklisted : gtk_tool_shell_get_text_size_group

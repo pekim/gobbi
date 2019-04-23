@@ -9,7 +9,3 @@ package gdkpixbuf
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_pixbuf_simple_anim_new
-
-// Blacklisted : gdk_pixbuf_simple_anim_add_frame

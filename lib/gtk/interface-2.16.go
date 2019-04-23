@@ -11,19 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_activatable_do_set_related_action
-
-// Blacklisted : gtk_activatable_get_related_action
-
-// Blacklisted : gtk_activatable_get_use_action_appearance
-
-// Blacklisted : gtk_activatable_set_related_action
-
-// Blacklisted : gtk_activatable_set_use_action_appearance
-
-// Blacklisted : gtk_activatable_sync_action_properties
-
-// Blacklisted : gtk_orientable_get_orientation
-
-// Blacklisted : gtk_orientable_set_orientation

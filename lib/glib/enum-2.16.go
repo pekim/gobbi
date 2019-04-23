@@ -12,12 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-type ChecksumType C.GChecksumType
-
-const (
-	CHECKSUM_MD5    ChecksumType = 0
-	CHECKSUM_SHA1   ChecksumType = 1
-	CHECKSUM_SHA256 ChecksumType = 2
-	CHECKSUM_SHA512 ChecksumType = 3
-	CHECKSUM_SHA384 ChecksumType = 4
-)
+// Blacklisted : GChecksumType

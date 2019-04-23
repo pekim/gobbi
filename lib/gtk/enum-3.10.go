@@ -12,10 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type BaselinePosition C.GtkBaselinePosition
-
-const (
-	GTK_BASELINE_POSITION_TOP    BaselinePosition = 0
-	GTK_BASELINE_POSITION_CENTER BaselinePosition = 1
-	GTK_BASELINE_POSITION_BOTTOM BaselinePosition = 2
-)
+// Blacklisted : GtkBaselinePosition

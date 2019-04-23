@@ -20,7 +20,3 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_network_monitor_get_network_metered
-
-// Blacklisted : g_tls_client_connection_copy_session_state

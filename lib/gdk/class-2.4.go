@@ -10,27 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_cursor_new_from_pixbuf
-
-// Flush is a wrapper around the C function gdk_display_flush.
-func (recv *Display) Flush() {
-	C.gdk_display_flush((*C.GdkDisplay)(recv.native))
-
-	return
-}
-
-// Blacklisted : gdk_display_get_default_cursor_size
-
-// Blacklisted : gdk_display_get_default_group
-
-// Blacklisted : gdk_display_get_maximal_cursor_size
-
-// Blacklisted : gdk_display_set_double_click_distance
-
-// Blacklisted : gdk_display_supports_cursor_alpha
-
-// Blacklisted : gdk_display_supports_cursor_color
-
 // Blacklisted : gdk_window_get_group
 
 // Blacklisted : gdk_window_set_accept_focus

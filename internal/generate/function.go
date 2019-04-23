@@ -124,7 +124,6 @@ func (f *Function) blacklisted() (bool, string) {
 	}
 	for _, n := range wl {
 		if n == f.GoName {
-			//fmt.Println(f.GoName)
 			return f.Blacklist, f.CIdentifier
 		}
 	}

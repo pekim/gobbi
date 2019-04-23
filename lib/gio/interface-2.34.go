@@ -20,18 +20,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : g_app_info_get_supported_types
-
-// Unsupported : g_async_result_is_tagged : unsupported parameter source_tag : no type generator for gpointer (gpointer) for param source_tag
-
-// Blacklisted : g_async_result_legacy_propagate_error
-
-// Blacklisted : g_drive_get_symbolic_icon
-
 // Unsupported : g_file_delete_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Blacklisted : g_file_delete_finish
-
-// Blacklisted : g_mount_get_symbolic_icon
-
-// Blacklisted : g_volume_get_symbolic_icon

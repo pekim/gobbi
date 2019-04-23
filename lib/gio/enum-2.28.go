@@ -20,32 +20,8 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type TlsAuthenticationMode C.GTlsAuthenticationMode
+// Blacklisted : GTlsAuthenticationMode
 
-const (
-	TLS_AUTHENTICATION_NONE      TlsAuthenticationMode = 0
-	TLS_AUTHENTICATION_REQUESTED TlsAuthenticationMode = 1
-	TLS_AUTHENTICATION_REQUIRED  TlsAuthenticationMode = 2
-)
+// Blacklisted : GTlsError
 
-type TlsError C.GTlsError
-
-const (
-	TLS_ERROR_UNAVAILABLE          TlsError = 0
-	TLS_ERROR_MISC                 TlsError = 1
-	TLS_ERROR_BAD_CERTIFICATE      TlsError = 2
-	TLS_ERROR_NOT_TLS              TlsError = 3
-	TLS_ERROR_HANDSHAKE            TlsError = 4
-	TLS_ERROR_CERTIFICATE_REQUIRED TlsError = 5
-	TLS_ERROR_EOF                  TlsError = 6
-)
-
-// Blacklisted : g_tls_error_quark
-
-type TlsRehandshakeMode C.GTlsRehandshakeMode
-
-const (
-	TLS_REHANDSHAKE_NEVER    TlsRehandshakeMode = 0
-	TLS_REHANDSHAKE_SAFELY   TlsRehandshakeMode = 1
-	TLS_REHANDSHAKE_UNSAFELY TlsRehandshakeMode = 2
-)
+// Blacklisted : GTlsRehandshakeMode

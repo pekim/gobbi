@@ -11,27 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_font_chooser_get_font
-
-// Blacklisted : gtk_font_chooser_get_font_desc
-
-// Blacklisted : gtk_font_chooser_get_font_face
-
-// Blacklisted : gtk_font_chooser_get_font_family
-
-// Blacklisted : gtk_font_chooser_get_font_size
-
-// Blacklisted : gtk_font_chooser_get_preview_text
-
-// Blacklisted : gtk_font_chooser_get_show_preview_entry
-
-// Unsupported : gtk_font_chooser_set_filter_func : unsupported parameter filter : no type generator for FontFilterFunc (GtkFontFilterFunc) for param filter
-
-// Blacklisted : gtk_font_chooser_set_font
-
-// Blacklisted : gtk_font_chooser_set_font_desc
-
-// Blacklisted : gtk_font_chooser_set_preview_text
-
-// Blacklisted : gtk_font_chooser_set_show_preview_entry

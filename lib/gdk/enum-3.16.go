@@ -10,10 +10,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-type GLError C.GdkGLError
-
-const (
-	GDK_GL_ERROR_NOT_AVAILABLE       GLError = 0
-	GDK_GL_ERROR_UNSUPPORTED_FORMAT  GLError = 1
-	GDK_GL_ERROR_UNSUPPORTED_PROFILE GLError = 2
-)
+// Blacklisted : GdkGLError

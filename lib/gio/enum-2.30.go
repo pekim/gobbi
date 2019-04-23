@@ -20,24 +20,8 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type IOModuleScopeFlags C.GIOModuleScopeFlags
+// Blacklisted : GIOModuleScopeFlags
 
-const (
-	IO_MODULE_SCOPE_NONE             IOModuleScopeFlags = 0
-	IO_MODULE_SCOPE_BLOCK_DUPLICATES IOModuleScopeFlags = 1
-)
+// Blacklisted : GTlsDatabaseLookupFlags
 
-type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
-
-const (
-	TLS_DATABASE_LOOKUP_NONE    TlsDatabaseLookupFlags = 0
-	TLS_DATABASE_LOOKUP_KEYPAIR TlsDatabaseLookupFlags = 1
-)
-
-type TlsInteractionResult C.GTlsInteractionResult
-
-const (
-	TLS_INTERACTION_UNHANDLED TlsInteractionResult = 0
-	TLS_INTERACTION_HANDLED   TlsInteractionResult = 1
-	TLS_INTERACTION_FAILED    TlsInteractionResult = 2
-)
+// Blacklisted : GTlsInteractionResult

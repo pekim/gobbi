@@ -12,10 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-type OnceStatus C.GOnceStatus
-
-const (
-	ONCE_STATUS_NOTCALLED OnceStatus = 0
-	ONCE_STATUS_PROGRESS  OnceStatus = 1
-	ONCE_STATUS_READY     OnceStatus = 2
-)
+// Blacklisted : GOnceStatus

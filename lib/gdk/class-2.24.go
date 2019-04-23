@@ -10,8 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_device_get_n_keys
-
 // Blacklisted : gdk_window_get_display
 
 // Blacklisted : gdk_window_get_height

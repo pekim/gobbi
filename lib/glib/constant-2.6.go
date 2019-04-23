@@ -12,8 +12,12 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const GSIZE_FORMAT string = C.G_GSIZE_FORMAT
-const GSIZE_MODIFIER string = C.G_GSIZE_MODIFIER
-const GSSIZE_FORMAT string = C.G_GSSIZE_FORMAT
-const GSSIZE_MODIFIER string = C.G_GSSIZE_MODIFIER
-const OPTION_REMAINING string = C.G_OPTION_REMAINING
+// Blacklisted : GSIZE_FORMAT
+
+// Blacklisted : GSIZE_MODIFIER
+
+// Blacklisted : GSSIZE_FORMAT
+
+// Blacklisted : GSSIZE_MODIFIER
+
+// Blacklisted : OPTION_REMAINING

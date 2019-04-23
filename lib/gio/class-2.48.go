@@ -20,5 +20,3 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : g_socket_receive_messages : unsupported parameter messages :

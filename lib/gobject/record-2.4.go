@@ -10,12 +10,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : g_object_class_override_property
-
-// Blacklisted : g_type_class_peek_static
-
-// Blacklisted : g_type_class_add_private
-
 // Unsupported : g_value_take_boxed : unsupported parameter v_boxed : no type generator for gpointer (gconstpointer) for param v_boxed
 
 // Unsupported : g_value_take_object : unsupported parameter v_object : no type generator for gpointer (gpointer) for param v_object

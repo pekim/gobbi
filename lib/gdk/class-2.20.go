@@ -9,21 +9,3 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_device_get_axis_use
-
-// Blacklisted : gdk_device_get_has_cursor
-
-// Unsupported : gdk_device_get_key : unsupported parameter modifiers : GdkModifierType* with indirection level of 1
-
-// Blacklisted : gdk_device_get_mode
-
-// Blacklisted : gdk_device_get_name
-
-// Blacklisted : gdk_device_get_source
-
-// Unsupported : gdk_keymap_add_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
-
-// Unsupported : gdk_keymap_map_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
-
-// Blacklisted : gdk_screen_get_primary_monitor

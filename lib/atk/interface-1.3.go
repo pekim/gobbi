@@ -9,8 +9,3 @@ package atk
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-// atk_text_free_ranges : unsupported parameter ranges :
-// Unsupported : atk_text_get_bounded_ranges : array return type :
-
-// Blacklisted : atk_text_get_range_extents

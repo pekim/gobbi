@@ -15,7 +15,3 @@ import "C"
 // Blacklisted : pango_context_get_matrix
 
 // Blacklisted : pango_context_set_matrix
-
-// Blacklisted : pango_layout_get_ellipsize
-
-// Blacklisted : pango_layout_set_ellipsize

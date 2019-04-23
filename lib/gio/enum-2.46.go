@@ -21,11 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type SocketListenerEvent C.GSocketListenerEvent
-
-const (
-	SOCKET_LISTENER_BINDING   SocketListenerEvent = 0
-	SOCKET_LISTENER_BOUND     SocketListenerEvent = 1
-	SOCKET_LISTENER_LISTENING SocketListenerEvent = 2
-	SOCKET_LISTENER_LISTENED  SocketListenerEvent = 3
-)
+// Blacklisted : GSocketListenerEvent

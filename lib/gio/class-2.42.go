@@ -26,5 +26,3 @@ import "C"
 // Blacklisted : g_application_get_resource_base_path
 
 // Blacklisted : g_application_set_resource_base_path
-
-// Blacklisted : g_desktop_app_info_get_implementations

@@ -19,13 +19,3 @@ import "C"
 // Blacklisted : pango_context_set_base_gravity
 
 // Blacklisted : pango_context_set_gravity_hint
-
-// Blacklisted : pango_layout_get_line_readonly
-
-// Blacklisted : pango_layout_get_lines_readonly
-
-// Blacklisted : pango_layout_get_unknown_glyphs_count
-
-// Blacklisted : pango_layout_is_ellipsized
-
-// Blacklisted : pango_layout_is_wrapped

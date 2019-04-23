@@ -12,19 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// g_array_get_element_size : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
-// g_array_ref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
-// g_array_unref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
-// Blacklisted : g_main_context_get_thread_default
-
-// Blacklisted : g_main_context_pop_thread_default
-
-// Blacklisted : g_main_context_push_thread_default
-
-// Blacklisted : g_mapped_file_ref
-
-// Blacklisted : g_tree_ref
-
-// Blacklisted : g_tree_unref

@@ -2,8 +2,6 @@
 
 package gdkpixbuf
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,87 +9,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// PixbufFormat is a wrapper around the C record GdkPixbufFormat.
-type PixbufFormat struct {
-	native *C.GdkPixbufFormat
-}
+// Blacklisted : GdkPixbufFormat
 
-func PixbufFormatNewFromC(u unsafe.Pointer) *PixbufFormat {
-	c := (*C.GdkPixbufFormat)(u)
-	if c == nil {
-		return nil
-	}
+// Blacklisted : GdkPixbufLoaderClass
 
-	g := &PixbufFormat{native: c}
-
-	return g
-}
-
-func (recv *PixbufFormat) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this PixbufFormat with another PixbufFormat, and returns true if they represent the same GObject.
-func (recv *PixbufFormat) Equals(other *PixbufFormat) bool {
-	return other.ToC() == recv.ToC()
-}
-
-// PixbufLoaderClass is a wrapper around the C record GdkPixbufLoaderClass.
-type PixbufLoaderClass struct {
-	native *C.GdkPixbufLoaderClass
-	// parent_class : record
-	// no type for size_prepared
-	// no type for area_prepared
-	// no type for area_updated
-	// no type for closed
-}
-
-func PixbufLoaderClassNewFromC(u unsafe.Pointer) *PixbufLoaderClass {
-	c := (*C.GdkPixbufLoaderClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PixbufLoaderClass{native: c}
-
-	return g
-}
-
-func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this PixbufLoaderClass with another PixbufLoaderClass, and returns true if they represent the same GObject.
-func (recv *PixbufLoaderClass) Equals(other *PixbufLoaderClass) bool {
-	return other.ToC() == recv.ToC()
-}
-
-// PixbufSimpleAnimClass is a wrapper around the C record GdkPixbufSimpleAnimClass.
-type PixbufSimpleAnimClass struct {
-	native *C.GdkPixbufSimpleAnimClass
-}
-
-func PixbufSimpleAnimClassNewFromC(u unsafe.Pointer) *PixbufSimpleAnimClass {
-	c := (*C.GdkPixbufSimpleAnimClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PixbufSimpleAnimClass{native: c}
-
-	return g
-}
-
-func (recv *PixbufSimpleAnimClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this PixbufSimpleAnimClass with another PixbufSimpleAnimClass, and returns true if they represent the same GObject.
-func (recv *PixbufSimpleAnimClass) Equals(other *PixbufSimpleAnimClass) bool {
-	return other.ToC() == recv.ToC()
-}
+// Blacklisted : GdkPixbufSimpleAnimClass
 
 // Blacklisted : GdkPixdata

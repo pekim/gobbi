@@ -12,24 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type InputPurpose C.GtkInputPurpose
+// Blacklisted : GtkInputPurpose
 
-const (
-	GTK_INPUT_PURPOSE_FREE_FORM InputPurpose = 0
-	GTK_INPUT_PURPOSE_ALPHA     InputPurpose = 1
-	GTK_INPUT_PURPOSE_DIGITS    InputPurpose = 2
-	GTK_INPUT_PURPOSE_NUMBER    InputPurpose = 3
-	GTK_INPUT_PURPOSE_PHONE     InputPurpose = 4
-	GTK_INPUT_PURPOSE_URL       InputPurpose = 5
-	GTK_INPUT_PURPOSE_EMAIL     InputPurpose = 6
-	GTK_INPUT_PURPOSE_NAME      InputPurpose = 7
-	GTK_INPUT_PURPOSE_PASSWORD  InputPurpose = 8
-	GTK_INPUT_PURPOSE_PIN       InputPurpose = 9
-)
-
-type LevelBarMode C.GtkLevelBarMode
-
-const (
-	GTK_LEVEL_BAR_MODE_CONTINUOUS LevelBarMode = 0
-	GTK_LEVEL_BAR_MODE_DISCRETE   LevelBarMode = 1
-)
+// Blacklisted : GtkLevelBarMode

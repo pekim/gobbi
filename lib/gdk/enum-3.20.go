@@ -10,10 +10,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-type DragCancelReason C.GdkDragCancelReason
-
-const (
-	GDK_DRAG_CANCEL_NO_TARGET      DragCancelReason = 0
-	GDK_DRAG_CANCEL_USER_CANCELLED DragCancelReason = 1
-	GDK_DRAG_CANCEL_ERROR          DragCancelReason = 2
-)
+// Blacklisted : GdkDragCancelReason

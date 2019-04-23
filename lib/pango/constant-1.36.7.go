@@ -10,4 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-const ANALYSIS_FLAG_IS_ELLIPSIS int32 = C.PANGO_ANALYSIS_FLAG_IS_ELLIPSIS
+// Blacklisted : ANALYSIS_FLAG_IS_ELLIPSIS

@@ -12,36 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gtk_builder_expose_object
-
-// Unsupported : gtk_icon_info_load_icon_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Blacklisted : gtk_icon_info_load_icon_finish
-
-// Unsupported : gtk_icon_info_load_symbolic_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Blacklisted : gtk_icon_info_load_symbolic_finish
-
-// Unsupported : gtk_icon_info_load_symbolic_for_context_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Blacklisted : gtk_icon_info_load_symbolic_for_context_finish
-
-// Blacklisted : gtk_icon_view_get_activate_on_single_click
-
-// Blacklisted : gtk_icon_view_set_activate_on_single_click
-
-// Blacklisted : gtk_level_bar_get_inverted
-
-// Blacklisted : gtk_level_bar_set_inverted
-
-// Blacklisted : gtk_style_context_get_frame_clock
-
-// Blacklisted : gtk_style_context_set_frame_clock
-
-// Blacklisted : gtk_tree_view_get_activate_on_single_click
-
-// Blacklisted : gtk_tree_view_set_activate_on_single_click
-
 // Unsupported : gtk_widget_add_tick_callback : unsupported parameter callback : no type generator for TickCallback (GtkTickCallback) for param callback
 
 // Blacklisted : gtk_widget_get_frame_clock

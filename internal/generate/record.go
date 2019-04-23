@@ -47,7 +47,63 @@ func (r *Record) version() string {
 }
 
 func (r *Record) blacklisted() (bool, string) {
-	return r.Blacklist, r.CType
+	wl := []string{
+		"Surface",
+		"Context",
+		"Pixbuf",
+		"Application",
+		"FontMap",
+		"Pattern",
+		"FontFace",
+		"Path",
+		"Object",
+		"Region",
+		"Error",
+		"Binding",
+		"ParamSpec",
+		"Value",
+		"FontOptions",
+		"ScaledFont",
+		"Date",
+		"GlyphItem",
+		"SList",
+		"ApplicationCommandLine",
+		"File",
+		"Icon",
+		"LoadableIcon",
+		"Rectangle",
+		"Window",
+		"ActionGroup",
+		"ActionMap",
+		"WindowAttr",
+		"Variant",
+		"Action",
+		"Widget",
+		"Buildable",
+		"Bin",
+		"Container",
+		"Widget",
+		"DragContext",
+		"Tooltip",
+		"EventExpose",
+		"EventGrabBroken",
+		"InitiallyUnowned",
+		"ImplementorIface",
+		"EventButton",
+		"EventConfigure",
+		"EventCrossing",
+		"EventKey",
+		"SelectionData",
+	}
+	for _, n := range wl {
+		if n == r.GoName {
+			return r.Blacklist, r.CType
+		}
+	}
+
+	return true, r.CType
+
+	//return r.Blacklist, r.CType
 }
 
 func (r *Record) supported() (supported bool, reason string) {

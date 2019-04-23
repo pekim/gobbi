@@ -9,15 +9,3 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_rgba_copy
-
-// Blacklisted : gdk_rgba_equal
-
-// Blacklisted : gdk_rgba_free
-
-// Blacklisted : gdk_rgba_hash
-
-// Blacklisted : gdk_rgba_parse
-
-// Blacklisted : gdk_rgba_to_string

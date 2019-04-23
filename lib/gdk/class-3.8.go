@@ -10,24 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_frame_clock_begin_updating
-
-// Blacklisted : gdk_frame_clock_end_updating
-
-// Blacklisted : gdk_frame_clock_get_current_timings
-
-// Blacklisted : gdk_frame_clock_get_frame_counter
-
-// Blacklisted : gdk_frame_clock_get_frame_time
-
-// Blacklisted : gdk_frame_clock_get_history_start
-
-// Blacklisted : gdk_frame_clock_get_refresh_info
-
-// Blacklisted : gdk_frame_clock_get_timings
-
-// Blacklisted : gdk_frame_clock_request_phase
-
 // Blacklisted : gdk_window_get_frame_clock
 
 // Blacklisted : gdk_window_get_fullscreen_mode

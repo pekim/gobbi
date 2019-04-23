@@ -13,7 +13,3 @@ import "C"
 // Blacklisted : gdk_pixbuf_get_formats
 
 // Blacklisted : gdk_pixbuf_set_option
-
-// Blacklisted : gdk_pixbuf_loader_get_format
-
-// Blacklisted : gdk_pixbuf_loader_set_size

@@ -9,15 +9,3 @@ package atk
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : atk_range_new
-
-// Blacklisted : atk_range_copy
-
-// Blacklisted : atk_range_free
-
-// Blacklisted : atk_range_get_description
-
-// Blacklisted : atk_range_get_lower_limit
-
-// Blacklisted : atk_range_get_upper_limit

@@ -3,82 +3,9 @@
 
 package gdk
 
-import "sync"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
-/*
-
-	void keymap_stateChangedHandler(GObject *, gpointer);
-
-	static gulong Keymap_signal_connect_state_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-changed", G_CALLBACK(keymap_stateChangedHandler), data);
-	}
-
-*/
 import "C"
-
-type signalKeymapStateChangedDetail struct {
-	callback  KeymapSignalStateChangedCallback
-	handlerID C.gulong
-}
-
-var signalKeymapStateChangedId int
-var signalKeymapStateChangedMap = make(map[int]signalKeymapStateChangedDetail)
-var signalKeymapStateChangedLock sync.RWMutex
-
-// KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
-type KeymapSignalStateChangedCallback func()
-
-/*
-ConnectStateChanged connects the callback to the 'state-changed' signal for the Keymap.
-
-The returned value represents the connection, and may be passed to DisconnectStateChanged to remove it.
-*/
-func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallback) int {
-	signalKeymapStateChangedLock.Lock()
-	defer signalKeymapStateChangedLock.Unlock()
-
-	signalKeymapStateChangedId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
-
-	detail := signalKeymapStateChangedDetail{callback, handlerID}
-	signalKeymapStateChangedMap[signalKeymapStateChangedId] = detail
-
-	return signalKeymapStateChangedId
-}
-
-/*
-DisconnectStateChanged disconnects a callback from the 'state-changed' signal for the Keymap.
-
-The connectionID should be a value returned from a call to ConnectStateChanged.
-*/
-func (recv *Keymap) DisconnectStateChanged(connectionID int) {
-	signalKeymapStateChangedLock.Lock()
-	defer signalKeymapStateChangedLock.Unlock()
-
-	detail, exists := signalKeymapStateChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalKeymapStateChangedMap, connectionID)
-}
-
-//export keymap_stateChangedHandler
-func keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
-	signalKeymapStateChangedLock.RLock()
-	defer signalKeymapStateChangedLock.RUnlock()
-
-	index := int(uintptr(data))
-	callback := signalKeymapStateChangedMap[index].callback
-	callback()
-}
-
-// Blacklisted : gdk_keymap_get_caps_lock_state

@@ -11,13 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_text_iter_backward_visible_line
-
-// Blacklisted : gtk_text_iter_backward_visible_lines
-
-// Blacklisted : gtk_text_iter_forward_visible_line
-
-// Blacklisted : gtk_text_iter_forward_visible_lines
-
-// Blacklisted : gtk_tree_row_reference_get_model

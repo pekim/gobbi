@@ -10,8 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_keymap_get_scroll_lock_state
-
 // Blacklisted : gdk_window_get_pass_through
 
 // Blacklisted : gdk_window_set_pass_through

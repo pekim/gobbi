@@ -10,8 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_device_get_last_event_window
-
 // Blacklisted : gdk_window_get_event_compression
 
 // Blacklisted : gdk_window_set_event_compression

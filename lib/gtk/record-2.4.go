@@ -11,19 +11,3 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gtk_text_iter_backward_visible_cursor_position
-
-// Blacklisted : gtk_text_iter_backward_visible_cursor_positions
-
-// Blacklisted : gtk_text_iter_backward_visible_word_start
-
-// Blacklisted : gtk_text_iter_backward_visible_word_starts
-
-// Blacklisted : gtk_text_iter_forward_visible_cursor_position
-
-// Blacklisted : gtk_text_iter_forward_visible_cursor_positions
-
-// Blacklisted : gtk_text_iter_forward_visible_word_end
-
-// Blacklisted : gtk_text_iter_forward_visible_word_ends

@@ -20,8 +20,3 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-// g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-// Blacklisted : g_app_info_launch_default_for_uri_finish
-
-// Blacklisted : g_drive_is_removable

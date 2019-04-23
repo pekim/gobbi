@@ -20,4 +20,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const PROXY_EXTENSION_POINT_NAME string = C.G_PROXY_EXTENSION_POINT_NAME
+// Blacklisted : PROXY_EXTENSION_POINT_NAME

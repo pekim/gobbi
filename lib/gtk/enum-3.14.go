@@ -12,28 +12,8 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type EventSequenceState C.GtkEventSequenceState
+// Blacklisted : GtkEventSequenceState
 
-const (
-	GTK_EVENT_SEQUENCE_NONE    EventSequenceState = 0
-	GTK_EVENT_SEQUENCE_CLAIMED EventSequenceState = 1
-	GTK_EVENT_SEQUENCE_DENIED  EventSequenceState = 2
-)
+// Blacklisted : GtkPanDirection
 
-type PanDirection C.GtkPanDirection
-
-const (
-	GTK_PAN_DIRECTION_LEFT  PanDirection = 0
-	GTK_PAN_DIRECTION_RIGHT PanDirection = 1
-	GTK_PAN_DIRECTION_UP    PanDirection = 2
-	GTK_PAN_DIRECTION_DOWN  PanDirection = 3
-)
-
-type PropagationPhase C.GtkPropagationPhase
-
-const (
-	GTK_PHASE_NONE    PropagationPhase = 0
-	GTK_PHASE_CAPTURE PropagationPhase = 1
-	GTK_PHASE_BUBBLE  PropagationPhase = 2
-	GTK_PHASE_TARGET  PropagationPhase = 3
-)
+// Blacklisted : GtkPropagationPhase

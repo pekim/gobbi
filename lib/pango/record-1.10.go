@@ -9,7 +9,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : pango_attr_list_ref
-
-// Blacklisted : pango_layout_line_ref

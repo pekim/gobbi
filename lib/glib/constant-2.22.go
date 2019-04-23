@@ -12,6 +12,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const GINTPTR_FORMAT string = C.G_GINTPTR_FORMAT
-const GINTPTR_MODIFIER string = C.G_GINTPTR_MODIFIER
-const GUINTPTR_FORMAT string = C.G_GUINTPTR_FORMAT
+// Blacklisted : GINTPTR_FORMAT
+
+// Blacklisted : GINTPTR_MODIFIER
+
+// Blacklisted : GUINTPTR_FORMAT

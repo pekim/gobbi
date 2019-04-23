@@ -12,59 +12,6 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gtk_clipboard_get_for_display
-
-// Blacklisted : gtk_clipboard_get_display
-
-// gtk_color_selection_set_change_palette_with_screen_hook : unsupported parameter func : no type generator for ColorSelectionChangePaletteWithScreenFunc (GtkColorSelectionChangePaletteWithScreenFunc) for param func
-// Blacklisted : gtk_invisible_new_for_screen
-
-// Blacklisted : gtk_invisible_get_screen
-
-// Blacklisted : gtk_invisible_set_screen
-
-// Blacklisted : gtk_list_store_iter_is_valid
-
-// Blacklisted : gtk_list_store_move_after
-
-// Blacklisted : gtk_list_store_move_before
-
-// Blacklisted : gtk_list_store_reorder
-
-// Blacklisted : gtk_list_store_swap
-
-// Blacklisted : gtk_menu_set_screen
-
-// Blacklisted : gtk_menu_shell_select_first
-
-// Blacklisted : gtk_notebook_get_n_pages
-
-// Blacklisted : gtk_settings_get_for_screen
-
-// Blacklisted : gtk_tree_model_sort_iter_is_valid
-
-// Blacklisted : gtk_tree_selection_count_selected_rows
-
-// Blacklisted : gtk_tree_selection_get_selected_rows
-
-// Blacklisted : gtk_tree_selection_unselect_range
-
-// Blacklisted : gtk_tree_store_iter_is_valid
-
-// Blacklisted : gtk_tree_store_move_after
-
-// Blacklisted : gtk_tree_store_move_before
-
-// Blacklisted : gtk_tree_store_reorder
-
-// Blacklisted : gtk_tree_store_swap
-
-// Blacklisted : gtk_tree_view_expand_to_path
-
-// Blacklisted : gtk_tree_view_set_cursor_on_cell
-
-// Blacklisted : gtk_tree_view_column_focus_cell
-
 // Blacklisted : gtk_widget_get_clipboard
 
 // Blacklisted : gtk_widget_get_display

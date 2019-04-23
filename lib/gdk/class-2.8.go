@@ -10,14 +10,6 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : gdk_cursor_new_from_name
-
-// Blacklisted : gdk_cursor_get_image
-
-// Blacklisted : gdk_display_warp_pointer
-
-// Blacklisted : gdk_screen_get_rgba_visual
-
 // Blacklisted : gdk_window_move_region
 
 // Blacklisted : gdk_window_set_urgency_hint

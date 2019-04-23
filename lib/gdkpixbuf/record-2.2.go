@@ -9,13 +9,3 @@ package gdkpixbuf
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : gdk_pixbuf_format_get_description
-
-// Blacklisted : gdk_pixbuf_format_get_extensions
-
-// Blacklisted : gdk_pixbuf_format_get_mime_types
-
-// Blacklisted : gdk_pixbuf_format_get_name
-
-// Blacklisted : gdk_pixbuf_format_is_writable

@@ -9,7 +9,3 @@ package atk
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : atk_relation_add_target
-
-// Blacklisted : atk_relation_set_add_relation_by_type

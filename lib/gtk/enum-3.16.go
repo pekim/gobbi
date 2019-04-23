@@ -12,9 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type TextExtendSelection C.GtkTextExtendSelection
-
-const (
-	GTK_TEXT_EXTEND_SELECTION_WORD TextExtendSelection = 0
-	GTK_TEXT_EXTEND_SELECTION_LINE TextExtendSelection = 1
-)
+// Blacklisted : GtkTextExtendSelection

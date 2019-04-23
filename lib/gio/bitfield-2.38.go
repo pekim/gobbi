@@ -21,11 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type FileMeasureFlags C.GFileMeasureFlags
-
-const (
-	FILE_MEASURE_NONE             FileMeasureFlags = 0
-	FILE_MEASURE_REPORT_ANY_ERROR FileMeasureFlags = 2
-	FILE_MEASURE_APPARENT_SIZE    FileMeasureFlags = 4
-	FILE_MEASURE_NO_XDEV          FileMeasureFlags = 8
-)
+// Blacklisted : GFileMeasureFlags

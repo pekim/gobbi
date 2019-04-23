@@ -21,8 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type TlsCertificateRequestFlags C.GTlsCertificateRequestFlags
-
-const (
-	TLS_CERTIFICATE_REQUEST_NONE TlsCertificateRequestFlags = 0
-)
+// Blacklisted : GTlsCertificateRequestFlags

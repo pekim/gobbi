@@ -20,8 +20,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type TestDBusFlags C.GTestDBusFlags
-
-const (
-	TEST_DBUS_NONE TestDBusFlags = 0
-)
+// Blacklisted : GTestDBusFlags

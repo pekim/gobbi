@@ -99,37 +99,4 @@ func (recv *Object) BindProperty(sourceProperty string, target *Object, targetPr
 
 // Blacklisted : g_object_notify_by_pspec
 
-// ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
-type ParamSpecVariant struct {
-	native *C.GParamSpecVariant
-	// parent_instance : record
-	// _type : record
-	// default_value : record
-	// Private : padding
-}
-
-func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
-	c := (*C.GParamSpecVariant)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ParamSpecVariant{native: c}
-
-	return g
-}
-
-func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Equals compares this ParamSpecVariant with another ParamSpecVariant, and returns true if they represent the same GObject.
-func (recv *ParamSpecVariant) Equals(other *ParamSpecVariant) bool {
-	return other.ToC() == recv.ToC()
-}
-
-// ParamSpec upcasts to *ParamSpec
-func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
-	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
-}
+// Blacklisted : GParamSpecVariant

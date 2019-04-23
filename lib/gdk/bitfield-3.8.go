@@ -10,15 +10,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-type FrameClockPhase C.GdkFrameClockPhase
-
-const (
-	GDK_FRAME_CLOCK_PHASE_NONE          FrameClockPhase = 0
-	GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS  FrameClockPhase = 1
-	GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT  FrameClockPhase = 2
-	GDK_FRAME_CLOCK_PHASE_UPDATE        FrameClockPhase = 4
-	GDK_FRAME_CLOCK_PHASE_LAYOUT        FrameClockPhase = 8
-	GDK_FRAME_CLOCK_PHASE_PAINT         FrameClockPhase = 16
-	GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS FrameClockPhase = 32
-	GDK_FRAME_CLOCK_PHASE_AFTER_PAINT   FrameClockPhase = 64
-)
+// Blacklisted : GdkFrameClockPhase

@@ -21,11 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-type NotificationPriority C.GNotificationPriority
-
-const (
-	NOTIFICATION_PRIORITY_NORMAL NotificationPriority = 0
-	NOTIFICATION_PRIORITY_LOW    NotificationPriority = 1
-	NOTIFICATION_PRIORITY_HIGH   NotificationPriority = 2
-	NOTIFICATION_PRIORITY_URGENT NotificationPriority = 3
-)
+// Blacklisted : GNotificationPriority

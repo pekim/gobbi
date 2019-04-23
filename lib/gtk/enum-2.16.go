@@ -12,9 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-type EntryIconPosition C.GtkEntryIconPosition
-
-const (
-	GTK_ENTRY_ICON_PRIMARY   EntryIconPosition = 0
-	GTK_ENTRY_ICON_SECONDARY EntryIconPosition = 1
-)
+// Blacklisted : GtkEntryIconPosition

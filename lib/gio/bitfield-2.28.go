@@ -33,24 +33,6 @@ const (
 	APPLICATION_CAN_OVERRIDE_APP_ID  ApplicationFlags = 64
 )
 
-type IOStreamSpliceFlags C.GIOStreamSpliceFlags
+// Blacklisted : GIOStreamSpliceFlags
 
-const (
-	IO_STREAM_SPLICE_NONE          IOStreamSpliceFlags = 0
-	IO_STREAM_SPLICE_CLOSE_STREAM1 IOStreamSpliceFlags = 1
-	IO_STREAM_SPLICE_CLOSE_STREAM2 IOStreamSpliceFlags = 2
-	IO_STREAM_SPLICE_WAIT_FOR_BOTH IOStreamSpliceFlags = 4
-)
-
-type TlsCertificateFlags C.GTlsCertificateFlags
-
-const (
-	TLS_CERTIFICATE_UNKNOWN_CA    TlsCertificateFlags = 1
-	TLS_CERTIFICATE_BAD_IDENTITY  TlsCertificateFlags = 2
-	TLS_CERTIFICATE_NOT_ACTIVATED TlsCertificateFlags = 4
-	TLS_CERTIFICATE_EXPIRED       TlsCertificateFlags = 8
-	TLS_CERTIFICATE_REVOKED       TlsCertificateFlags = 16
-	TLS_CERTIFICATE_INSECURE      TlsCertificateFlags = 32
-	TLS_CERTIFICATE_GENERIC_ERROR TlsCertificateFlags = 64
-	TLS_CERTIFICATE_VALIDATE_ALL  TlsCertificateFlags = 127
-)
+// Blacklisted : GTlsCertificateFlags

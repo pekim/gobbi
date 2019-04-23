@@ -10,10 +10,6 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : pango_attr_iterator_get_attrs
-
-// Unsupported : pango_attr_list_filter : unsupported parameter func : no type generator for AttrFilterFunc (PangoAttrFilterFunc) for param func
-
 // Blacklisted : pango_glyph_item_apply_attrs
 
 // Blacklisted : pango_glyph_item_split

@@ -31,5 +31,3 @@ import "C"
 // Blacklisted : gtk_buildable_set_buildable_property
 
 // Blacklisted : gtk_buildable_set_name
-
-// Blacklisted : gtk_cell_layout_get_cells

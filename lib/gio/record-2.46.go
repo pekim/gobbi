@@ -20,5 +20,3 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : g_settings_schema_list_keys
