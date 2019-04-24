@@ -41,7 +41,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 func TestRun() int32 {
 	data := call.Data{Return: call.Return{Type: call.RT_INT}}
 	call.Function(3334, &data)
-	ret := int32(data.Return.Int)
+	ret := data.Return.Int32()
 
 	return ret
 }

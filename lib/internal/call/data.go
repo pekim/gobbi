@@ -11,12 +11,14 @@ const (
 )
 
 type Return struct {
-	Type ReturnType
-	Int  int
+	Type  ReturnType
+	value interface{}
+}
+
+func (r *Return) Int32() int32 {
+	return int32(r.value.(C.int))
 }
 
 type Data struct {
 	Return Return
 }
-
-//func (d*Data)

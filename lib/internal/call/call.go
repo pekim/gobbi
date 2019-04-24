@@ -36,7 +36,7 @@ func Function(index int, data *Data) {
 
 	switch data.Return.Type {
 	case RT_INT:
-		data.Return.Int = int(cData.return_int)
+		data.Return.value = cData.return_int
 	case RT_VOID:
 		// nothing
 	}

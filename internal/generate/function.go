@@ -332,8 +332,7 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 		g.
 			Id("ret").
 			Op(":=").
-			Id("int32").
-			Parens(jen.Id("data").Dot("Return").Dot("Int"))
+			Id("data").Dot("Return").Dot("Int32").Call()
 	}
 
 	//g.
