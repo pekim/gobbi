@@ -6,8 +6,13 @@ import (
 	"testing"
 )
 
-func TestGetNumProcessors(t *testing.T) {
+func TestReturnUint32(t *testing.T) {
 	assert.True(t, glib.GetNumProcessors() >= 2)
+}
+
+func TestReturnFloat64(t *testing.T) {
+	assert.True(t, glib.RandomDouble() >= 0)
+	assert.True(t, glib.RandomDouble() <= 1)
 }
 
 //func TestMainDepth(t *testing.T) {
