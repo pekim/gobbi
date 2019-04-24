@@ -17,7 +17,7 @@ char* open() {
 
 	int i;
 	for ( i = 0; i < library_count; i++ ) {
-		library_handles[i] = dlopen(library_names[i], RTLD_LAZY);
+		library_handles[i] = dlopen(library_names[i], RTLD_LAZY | RTLD_GLOBAL);
 		if (!library_handles[i])
 		{
 			return dlerror();
@@ -61,8 +61,8 @@ void call_function(int function_index, CallData* data) {
         av_start_void (alist, fn);
     }
 
-	av_ptr(alist, char*, "qaz %d\n");
-	av_int(alist, 42);
+//	av_ptr(alist, char*, "qaz %d\n");
+//	av_int(alist, 42);
 	av_call(alist);
 }
 
@@ -73,15 +73,12 @@ void *get_function(int function_index) {
 		return fn;
 	}
 
-	int i;
-	for ( i = 0; i < library_count; i++ ) {
-		fn = dlsym(library_handles[i], function_name);
-		if (fn)
-		{
-			functions[function_index] = fn;
-			return fn;
-		}
-	}
+    fn = dlsym(library_handles[library_count - 1], function_name);
+    if (fn)
+    {
+        functions[function_index] = fn;
+        return fn;
+    }
 
 	return NULL;
 }
