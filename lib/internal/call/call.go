@@ -11,18 +11,6 @@ import (
 	"log"
 )
 
-type ReturnType int
-
-const (
-	RT_VOID = C.rt_void
-	RT_INT  = C.rt_int
-)
-
-type Data struct {
-	ReturnType ReturnType
-	ReturnInt  int
-}
-
 func init() {
 	err := open()
 	if err != nil {
@@ -41,14 +29,14 @@ func open() error {
 
 func Function(index int, data *Data) {
 	cData := C.CallData{
-		return_type: C.ReturnType(data.ReturnType),
+		return_type: C.ReturnType(data.Return.Type),
 	}
 
 	C.call_function(C.int(index), &cData)
 
-	switch data.ReturnType {
+	switch data.Return.Type {
 	case RT_INT:
-		data.ReturnInt = int(cData.return_int)
+		data.Return.Int = int(cData.return_int)
 	case RT_VOID:
 		// nothing
 	}

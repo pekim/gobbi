@@ -215,12 +215,16 @@ func (f *Function) generateBody(g *jen.Group) {
 		Values(jen.DictFunc(func(d jen.Dict) {
 			//fmt.Println(f.ReturnValue.Type.Name, f.ReturnValue.Type.CType)
 
-			switch f.ReturnValue.Type.CType {
-			case "void":
-				d[jen.Id("ReturnType")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_VOID")
-			case "int":
-				d[jen.Id("ReturnType")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_INT")
-			}
+			d[jen.Id("Return")] = jen.
+				Qual("github.com/pekim/gobbi/lib/internal/call", "Return").
+				Values(jen.DictFunc(func(d jen.Dict) {
+					switch f.ReturnValue.Type.CType {
+					case "void":
+						d[jen.Id("Type")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_VOID")
+					case "int":
+						d[jen.Id("Type")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_INT")
+					}
+				}))
 		}))
 
 	g.
@@ -327,7 +331,7 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 			Id("ret").
 			Op(":=").
 			Id("int32").
-			Parens(jen.Id("data").Dot("ReturnInt"))
+			Parens(jen.Id("data").Dot("Return").Dot("Int"))
 	}
 
 	//g.

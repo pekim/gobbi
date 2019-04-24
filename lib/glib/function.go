@@ -38,7 +38,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // ClearError is a wrapper around the C function g_clear_error.
 func ClearError() error {
-	data := call.Data{ReturnType: call.RT_VOID}
+	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
 	call.Function(711, &data)
 	return
 }
@@ -199,7 +199,7 @@ func ClearError() error {
 
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
-	data := call.Data{}
+	data := call.Data{Return: call.Return{}}
 	call.Function(2018, &data)
 
 	return ret
@@ -217,7 +217,7 @@ func MainDepth() int32 {
 
 // MemProfile is a wrapper around the C function g_mem_profile.
 func MemProfile() {
-	data := call.Data{ReturnType: call.RT_VOID}
+	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
 	call.Function(2071, &data)
 	return
 }
