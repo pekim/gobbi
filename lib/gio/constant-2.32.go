@@ -20,9 +20,9 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_FILESYSTEM_USED string = C.G_FILE_ATTRIBUTE_FILESYSTEM_USED
-const MENU_ATTRIBUTE_ACTION string = C.G_MENU_ATTRIBUTE_ACTION
-const MENU_ATTRIBUTE_LABEL string = C.G_MENU_ATTRIBUTE_LABEL
-const MENU_ATTRIBUTE_TARGET string = C.G_MENU_ATTRIBUTE_TARGET
-const MENU_LINK_SECTION string = C.G_MENU_LINK_SECTION
-const MENU_LINK_SUBMENU string = C.G_MENU_LINK_SUBMENU
+const FILE_ATTRIBUTE_FILESYSTEM_USED string = "filesystem::used"
+const MENU_ATTRIBUTE_ACTION string = "action"
+const MENU_ATTRIBUTE_LABEL string = "label"
+const MENU_ATTRIBUTE_TARGET string = "target"
+const MENU_LINK_SECTION string = "section"
+const MENU_LINK_SUBMENU string = "submenu"

@@ -20,4 +20,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON string = C.G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
+const FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON string = "standard::symbolic-icon"

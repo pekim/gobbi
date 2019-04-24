@@ -12,5 +12,5 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const KEY_FILE_DESKTOP_KEY_ACTIONS string = C.G_KEY_FILE_DESKTOP_KEY_ACTIONS
-const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE string = C.G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE
+const KEY_FILE_DESKTOP_KEY_ACTIONS string = "Actions"
+const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE string = "DBusActivatable"

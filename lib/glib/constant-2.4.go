@@ -12,15 +12,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const GINT16_MODIFIER string = C.G_GINT16_MODIFIER
-const GINT32_MODIFIER string = C.G_GINT32_MODIFIER
-const GINT64_MODIFIER string = C.G_GINT64_MODIFIER
-const MAXINT16 int16 = C.G_MAXINT16
-const MAXINT32 int32 = C.G_MAXINT32
-const MAXINT8 int8 = C.G_MAXINT8
-const MAXUINT16 uint16 = C.G_MAXUINT16
-const MAXUINT32 uint32 = C.G_MAXUINT32
-const MAXUINT8 uint8 = C.G_MAXUINT8
-const MININT16 int16 = C.G_MININT16
-const MININT32 int32 = C.G_MININT32
-const MININT8 int8 = C.G_MININT8
+const GINT16_MODIFIER string = "h"
+const GINT32_MODIFIER string = ""
+const GINT64_MODIFIER string = "l"
+const MAXINT16 int16 = 32767
+const MAXINT32 int32 = 2147483647
+const MAXINT8 int8 = 127
+const MAXUINT16 uint16 = 65535
+const MAXUINT32 uint32 = 4294967295
+const MAXUINT8 uint8 = 255
+const MININT16 int16 = -32768
+const MININT32 int32 = -2147483648
+const MININT8 int8 = -128

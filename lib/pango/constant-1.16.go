@@ -10,4 +10,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-const ANALYSIS_FLAG_CENTERED_BASELINE int32 = C.PANGO_ANALYSIS_FLAG_CENTERED_BASELINE
+const ANALYSIS_FLAG_CENTERED_BASELINE int32 = 1

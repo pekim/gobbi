@@ -20,5 +20,5 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_PREVIEW_ICON string = C.G_FILE_ATTRIBUTE_PREVIEW_ICON
-const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE string = C.G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE
+const FILE_ATTRIBUTE_PREVIEW_ICON string = "preview::icon"
+const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE string = "standard::allocated-size"

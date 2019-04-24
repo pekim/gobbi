@@ -20,5 +20,5 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_TRASH_DELETION_DATE string = C.G_FILE_ATTRIBUTE_TRASH_DELETION_DATE
-const FILE_ATTRIBUTE_TRASH_ORIG_PATH string = C.G_FILE_ATTRIBUTE_TRASH_ORIG_PATH
+const FILE_ATTRIBUTE_TRASH_DELETION_DATE string = "trash::deletion-date"
+const FILE_ATTRIBUTE_TRASH_ORIG_PATH string = "trash::orig-path"

@@ -19,7 +19,7 @@ import "C"
 
 // Blacklisted : RENDER_TYPE_NONE
 
-const SCALE int32 = C.PANGO_SCALE
+const SCALE int32 = 1024
 
 // Blacklisted : UNKNOWN_GLYPH_HEIGHT
 

@@ -21,4 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID string = C.G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID string = "thumbnail::is-valid"

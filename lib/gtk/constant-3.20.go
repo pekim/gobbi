@@ -12,4 +12,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-const LEVEL_BAR_OFFSET_FULL string = C.GTK_LEVEL_BAR_OFFSET_FULL
+const LEVEL_BAR_OFFSET_FULL string = "full"

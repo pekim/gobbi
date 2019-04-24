@@ -12,4 +12,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const PID_FORMAT string = C.G_PID_FORMAT
+const PID_FORMAT string = "i"

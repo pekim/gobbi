@@ -9,4 +9,4 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-const VERSION_MIN_REQUIRED int32 = C.ATK_VERSION_MIN_REQUIRED
+const VERSION_MIN_REQUIRED int32 = 2

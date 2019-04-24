@@ -12,8 +12,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-const GSIZE_FORMAT string = C.G_GSIZE_FORMAT
-const GSIZE_MODIFIER string = C.G_GSIZE_MODIFIER
-const GSSIZE_FORMAT string = C.G_GSSIZE_FORMAT
-const GSSIZE_MODIFIER string = C.G_GSSIZE_MODIFIER
-const OPTION_REMAINING string = C.G_OPTION_REMAINING
+const GSIZE_FORMAT string = "lu"
+const GSIZE_MODIFIER string = "l"
+const GSSIZE_FORMAT string = "li"
+const GSSIZE_MODIFIER string = "l"
+const OPTION_REMAINING string = ""

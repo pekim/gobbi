@@ -9,13 +9,13 @@ package gdkpixbuf
 // #include <stdlib.h>
 import "C"
 
-const PIXBUF_FEATURES_H int32 = C.GDK_PIXBUF_FEATURES_H
+const PIXBUF_FEATURES_H int32 = 1
 
 // Blacklisted : PIXBUF_MAGIC_NUMBER
 
-const PIXBUF_MAJOR int32 = C.GDK_PIXBUF_MAJOR
-const PIXBUF_MICRO int32 = C.GDK_PIXBUF_MICRO
-const PIXBUF_MINOR int32 = C.GDK_PIXBUF_MINOR
-const PIXBUF_VERSION string = C.GDK_PIXBUF_VERSION
+const PIXBUF_MAJOR int32 = 2
+const PIXBUF_MICRO int32 = 11
+const PIXBUF_MINOR int32 = 36
+const PIXBUF_VERSION string = "2.36.11"
 
 // Blacklisted : PIXDATA_HEADER_LENGTH

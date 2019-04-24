@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"strconv"
 )
 
 type Constant struct {
@@ -16,7 +17,8 @@ type Constant struct {
 	Doc       *Doc   `xml:"doc"`
 	Type      *Type  `xml:"type"`
 
-	goTypeName string
+	goTypeName     string
+	goLiteralValue interface{}
 }
 
 func (c *Constant) init(ns *Namespace) {
@@ -27,9 +29,11 @@ func (c *Constant) init(ns *Namespace) {
 		c.goTypeName = "bool"
 	case "utf8":
 		c.goTypeName = "string"
+		c.goLiteralValue = c.Value
 	default:
 		if goTypeName, found := integerCTypeMap[c.Type.Name]; found {
 			c.goTypeName = goTypeName
+			c.goLiteralValue, _ = strconv.Atoi(c.Value)
 		}
 	}
 }
@@ -76,5 +80,5 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Id(c.Name).
 		Id(c.goTypeName).
 		Op("=").
-		Qual("C", c.CType)
+		Lit(c.goLiteralValue)
 }

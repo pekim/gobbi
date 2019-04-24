@@ -21,4 +21,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-const FILE_ATTRIBUTE_RECENT_MODIFIED string = C.G_FILE_ATTRIBUTE_RECENT_MODIFIED
+const FILE_ATTRIBUTE_RECENT_MODIFIED string = "recent::modified"
