@@ -7,6 +7,8 @@ import (
 	"github.com/dave/jennifer/jen"
 )
 
+const callPkg = "github.com/pekim/gobbi/lib/internal/call"
+
 type Function struct {
 	Namespace *Namespace
 
@@ -211,24 +213,24 @@ func (f *Function) generateBody(g *jen.Group) {
 	g.
 		Id("data").
 		Op(":=").
-		Qual("github.com/pekim/gobbi/lib/internal/call", "Data").
+		Qual(callPkg, "Data").
 		Values(jen.DictFunc(func(d jen.Dict) {
 			//fmt.Println(f.ReturnValue.Type.Name, f.ReturnValue.Type.CType)
 
 			d[jen.Id("Return")] = jen.
-				Qual("github.com/pekim/gobbi/lib/internal/call", "Return").
+				Qual(callPkg, "Return").
 				Values(jen.DictFunc(func(d jen.Dict) {
 					switch f.ReturnValue.Type.CType {
 					case "void":
-						d[jen.Id("Type")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_VOID")
+						d[jen.Id("Type")] = jen.Qual(callPkg, "RT_VOID")
 					case "int":
-						d[jen.Id("Type")] = jen.Qual("github.com/pekim/gobbi/lib/internal/call", "RT_INT")
+						d[jen.Id("Type")] = jen.Qual(callPkg, "RT_INT")
 					}
 				}))
 		}))
 
 	g.
-		Qual("github.com/pekim/gobbi/lib/internal/call", "Function").
+		Qual(callPkg, "Function").
 		ParamsFunc(func(g *jen.Group) {
 			g.Lit(functionIndex)
 
