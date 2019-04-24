@@ -7,8 +7,6 @@ package glib
 
 // Unsupported : g_build_pathv : return type :
 
-// Unsupported : g_datalist_get_flags : return type :
-
 // Unsupported : g_file_set_contents : return type :
 
 // Unsupported : g_get_host_name : return type :

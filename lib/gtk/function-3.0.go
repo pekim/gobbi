@@ -3,18 +3,55 @@
 
 package gtk
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
 // Unsupported : gtk_binding_entry_add_signal_from_string : return type :
 
 // Unsupported : gtk_cairo_should_draw_window : return type :
 
-// Unsupported : gtk_get_binary_age : return type :
+// GetBinaryAge is a wrapper around the C function gtk_get_binary_age.
+func GetBinaryAge() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5902, &data)
+	ret := data.Return.Uint32()
 
-// Unsupported : gtk_get_interface_age : return type :
+	return ret
+}
 
-// Unsupported : gtk_get_major_version : return type :
+// GetInterfaceAge is a wrapper around the C function gtk_get_interface_age.
+func GetInterfaceAge() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5910, &data)
+	ret := data.Return.Uint32()
 
-// Unsupported : gtk_get_micro_version : return type :
+	return ret
+}
 
-// Unsupported : gtk_get_minor_version : return type :
+// GetMajorVersion is a wrapper around the C function gtk_get_major_version.
+func GetMajorVersion() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5912, &data)
+	ret := data.Return.Uint32()
+
+	return ret
+}
+
+// GetMicroVersion is a wrapper around the C function gtk_get_micro_version.
+func GetMicroVersion() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5913, &data)
+	ret := data.Return.Uint32()
+
+	return ret
+}
+
+// GetMinorVersion is a wrapper around the C function gtk_get_minor_version.
+func GetMinorVersion() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5914, &data)
+	ret := data.Return.Uint32()
+
+	return ret
+}
 
 // Unsupported : gtk_render_icon_pixbuf : return type :

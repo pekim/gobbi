@@ -3,13 +3,29 @@
 
 package glib
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
 // Unsupported : g_get_environ : array return type :
 
 // Unsupported : g_get_locale_variants : array return type :
 
-// Unsupported : g_get_monotonic_time : return type :
+// GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.
+func GetMonotonicTime() int64 {
+	data := call.Data{Return: call.Return{Type: call.RT_LONG}}
+	call.Function(1610, &data)
+	ret := data.Return.Int64()
 
-// Unsupported : g_get_real_time : return type :
+	return ret
+}
+
+// GetRealTime is a wrapper around the C function g_get_real_time.
+func GetRealTime() int64 {
+	data := call.Data{Return: call.Return{Type: call.RT_LONG}}
+	call.Function(1614, &data)
+	ret := data.Return.Int64()
+
+	return ret
+}
 
 // Unsupported : g_get_user_runtime_dir : return type :
 

@@ -30,8 +30,6 @@ func TestRegisterAllTypes() {
 	return
 }
 
-// Unsupported : gtk_test_slider_get_value : return type :
-
 // Unsupported : gtk_test_spin_button_click : return type :
 
 // Unsupported : gtk_test_text_get : return type :

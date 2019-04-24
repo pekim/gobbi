@@ -10,13 +10,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Unsupported : g_ascii_strdown : return type :
 
-// Unsupported : g_ascii_strtod : return type :
-
 // Unsupported : g_ascii_strup : return type :
-
-// Unsupported : g_ascii_tolower : return type :
-
-// Unsupported : g_ascii_toupper : return type :
 
 // Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double (long double) for param arg1
 
@@ -24,24 +18,17 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Unsupported : g_basename : return type :
 
-// Unsupported : g_bit_storage : return type :
-
 // Unsupported : g_bookmark_file_error_quark : return type :
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
 // Unsupported : g_build_path : unsupported parameter ... : varargs
 
-// Unsupported : g_byte_array_free : return type :
+// Blacklisted : g_byte_array_free
 
 // Unsupported : g_byte_array_new : array return type :
 
-// ClearError is a wrapper around the C function g_clear_error.
-func ClearError() error {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
-	call.Function(711, &data)
-	return
-}
+// Unsupported : throws
 
 // Unsupported : g_convert : array return type :
 
@@ -71,15 +58,7 @@ func ClearError() error {
 
 // Unsupported : g_dataset_id_set_data_full : unsupported parameter dataset_location : no type generator for gpointer (gconstpointer) for param dataset_location
 
-// Unsupported : g_date_get_days_in_month : return type :
-
-// Unsupported : g_date_get_monday_weeks_in_year : return type :
-
-// Unsupported : g_date_get_sunday_weeks_in_year : return type :
-
 // Unsupported : g_date_is_leap_year : return type :
-
-// Unsupported : g_date_strftime : return type :
 
 // Unsupported : g_date_valid_day : return type :
 
@@ -102,6 +81,8 @@ func ClearError() error {
 // Unsupported : g_file_error_quark : return type :
 
 // Unsupported : g_file_get_contents : unsupported parameter contents : output array param contents
+
+// Unsupported : throws
 
 // Unsupported : g_file_test : return type :
 
@@ -144,8 +125,6 @@ func ClearError() error {
 // Unsupported : g_hash_table_remove : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 
 // Unsupported : g_hash_table_replace : unsupported parameter key : no type generator for gpointer (gpointer) for param key
-
-// Unsupported : g_hash_table_size : return type :
 
 // Unsupported : g_hash_table_steal : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
 
@@ -201,6 +180,7 @@ func ClearError() error {
 func MainDepth() int32 {
 	data := call.Data{Return: call.Return{Type: call.RT_INT}}
 	call.Function(2018, &data)
+	ret := data.Return.Int32()
 
 	return ret
 }
@@ -258,13 +238,23 @@ func MemProfile() {
 
 // Unsupported : g_quark_try_string : return type :
 
-// Unsupported : g_random_double : return type :
+// RandomDouble is a wrapper around the C function g_random_double.
+func RandomDouble() float64 {
+	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	call.Function(2567, &data)
+	ret := data.Return.Float64()
 
-// Unsupported : g_random_double_range : return type :
+	return ret
+}
 
-// Unsupported : g_random_int : return type :
+// RandomInt is a wrapper around the C function g_random_int.
+func RandomInt() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(2569, &data)
+	ret := data.Return.Uint32()
 
-// Unsupported : g_random_int_range : return type :
+	return ret
+}
 
 // Unsupported : g_realloc : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
@@ -282,17 +272,13 @@ func MemProfile() {
 
 // Unsupported : g_shell_unquote : return type :
 
-// Unsupported : g_slice_get_config : return type :
-
-// Unsupported : g_slice_get_config_state : return type :
+// Blacklisted : g_slice_get_config_state
 
 // Unsupported : g_source_remove : return type :
 
 // Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // Unsupported : g_source_remove_by_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
-
-// Unsupported : g_spaced_primes_closest : return type :
 
 // Unsupported : g_spawn_async : unsupported parameter child_setup : no type generator for SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
@@ -352,10 +338,6 @@ func MemProfile() {
 
 // Unsupported : g_strjoinv : unsupported parameter str_array : in string with indirection level of 2
 
-// Unsupported : g_strlcat : return type :
-
-// Unsupported : g_strlcpy : return type :
-
 // Unsupported : g_strndup : return type :
 
 // Unsupported : g_strnfill : return type :
@@ -372,8 +354,6 @@ func MemProfile() {
 
 // Unsupported : g_strstr_len : return type :
 
-// Unsupported : g_strtod : return type :
-
 // Unsupported : g_strup : return type :
 
 // Unsupported : g_strv_get_type : return type :
@@ -384,8 +364,6 @@ func MemProfile() {
 
 // Unsupported : g_thread_exit : unsupported parameter retval : no type generator for gpointer (gpointer) for param retval
 
-// Unsupported : g_thread_pool_get_num_unused_threads : return type :
-
 // Unsupported : g_thread_self : return type :
 
 // Unsupported : g_timeout_add : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
@@ -393,8 +371,6 @@ func MemProfile() {
 // Unsupported : g_timeout_add_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
 // Unsupported : g_timeout_source_new : return type :
-
-// Unsupported : g_trash_stack_height : return type :
 
 // Unsupported : g_trash_stack_peek : no return generator
 
@@ -406,7 +382,7 @@ func MemProfile() {
 
 // Unsupported : g_try_realloc : unsupported parameter mem : no type generator for gpointer (gpointer) for param mem
 
-// Unsupported : g_ucs4_to_utf16 : return type :
+// Unsupported : throws
 
 // Unsupported : g_ucs4_to_utf8 : return type :
 
@@ -442,21 +418,15 @@ func MemProfile() {
 
 // Blacklisted : g_unichar_to_utf8
 
-// Unsupported : g_unichar_tolower : return type :
-
-// Unsupported : g_unichar_totitle : return type :
-
-// Unsupported : g_unichar_toupper : return type :
-
 // Unsupported : g_unichar_type : return type :
 
 // Unsupported : g_unichar_validate : return type :
 
-// Unsupported : g_unicode_canonical_decomposition : return type :
+// Blacklisted : g_unicode_canonical_decomposition
 
 // Unsupported : g_unix_error_quark : return type :
 
-// Unsupported : g_utf16_to_ucs4 : return type :
+// Unsupported : throws
 
 // Unsupported : g_utf16_to_utf8 : return type :
 
@@ -468,15 +438,9 @@ func MemProfile() {
 
 // Unsupported : g_utf8_find_prev_char : return type :
 
-// Unsupported : g_utf8_get_char : return type :
-
-// Unsupported : g_utf8_get_char_validated : return type :
-
 // Unsupported : g_utf8_normalize : return type :
 
 // Unsupported : g_utf8_offset_to_pointer : return type :
-
-// Unsupported : g_utf8_pointer_to_offset : return type :
 
 // Unsupported : g_utf8_prev_char : return type :
 
@@ -484,19 +448,17 @@ func MemProfile() {
 
 // Unsupported : g_utf8_strdown : return type :
 
-// Unsupported : g_utf8_strlen : return type :
-
 // Unsupported : g_utf8_strncpy : return type :
 
 // Unsupported : g_utf8_strrchr : return type :
 
 // Unsupported : g_utf8_strup : return type :
 
-// Unsupported : g_utf8_to_ucs4 : return type :
+// Unsupported : throws
 
-// Unsupported : g_utf8_to_ucs4_fast : return type :
+// Blacklisted : g_utf8_to_ucs4_fast
 
-// Unsupported : g_utf8_to_utf16 : return type :
+// Unsupported : throws
 
 // Unsupported : g_utf8_validate : return type :
 

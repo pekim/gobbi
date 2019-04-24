@@ -5,12 +5,6 @@ package glib
 
 import call "github.com/pekim/gobbi/lib/internal/call"
 
-// Unsupported : g_atomic_int_and : return type :
-
-// Unsupported : g_atomic_int_or : return type :
-
-// Unsupported : g_atomic_int_xor : return type :
-
 // Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
 
 // Unsupported : g_atomic_pointer_and : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
@@ -52,11 +46,7 @@ func TestFail() {
 
 // Unsupported : g_unichar_decompose : return type :
 
-// Unsupported : g_unichar_fully_decompose : return type :
-
 // Unsupported : g_unicode_script_from_iso15924 : return type :
-
-// Unsupported : g_unicode_script_to_iso15924 : return type :
 
 // Unsupported : g_unix_open_pipe : return type :
 

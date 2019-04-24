@@ -9,6 +9,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 func GetBinaryAge() uint32 {
 	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
 	call.Function(39, &data)
+	ret := data.Return.Uint32()
 
 	return ret
 }
@@ -17,6 +18,7 @@ func GetBinaryAge() uint32 {
 func GetInterfaceAge() uint32 {
 	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
 	call.Function(42, &data)
+	ret := data.Return.Uint32()
 
 	return ret
 }
@@ -25,6 +27,7 @@ func GetInterfaceAge() uint32 {
 func GetMajorVersion() uint32 {
 	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
 	call.Function(43, &data)
+	ret := data.Return.Uint32()
 
 	return ret
 }
@@ -33,6 +36,7 @@ func GetMajorVersion() uint32 {
 func GetMicroVersion() uint32 {
 	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
 	call.Function(44, &data)
+	ret := data.Return.Uint32()
 
 	return ret
 }
@@ -41,6 +45,7 @@ func GetMicroVersion() uint32 {
 func GetMinorVersion() uint32 {
 	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
 	call.Function(45, &data)
+	ret := data.Return.Uint32()
 
 	return ret
 }

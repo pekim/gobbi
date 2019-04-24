@@ -104,6 +104,10 @@ func (f *Function) supported() (supported bool, reason string) {
 		return false, fmt.Sprintf("%s : %s", f.CIdentifier, reason)
 	}
 
+	if f.Throws == 1 {
+		return false, "throws"
+	}
+
 	return true, ""
 }
 
@@ -322,14 +326,29 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 		return
 	}
 
-	switch f.ReturnValue.Type.CType {
+	switch integerCTypeMap[f.ReturnValue.Type.CType] {
 	case "void":
 		// do nothing
-	case "int":
+	case "int", "int32":
 		g.
 			Id("ret").
 			Op(":=").
 			Id("data").Dot("Return").Dot("Int32").Call()
+	case "uint32":
+		g.
+			Id("ret").
+			Op(":=").
+			Id("data").Dot("Return").Dot("Uint32").Call()
+	case "int64":
+		g.
+			Id("ret").
+			Op(":=").
+			Id("data").Dot("Return").Dot("Int64").Call()
+	case "float64":
+		g.
+			Id("ret").
+			Op(":=").
+			Id("data").Dot("Return").Dot("Float64").Call()
 	}
 
 	//g.

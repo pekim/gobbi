@@ -5,8 +5,6 @@ package glib
 
 import call "github.com/pekim/gobbi/lib/internal/call"
 
-// Unsupported : g_checksum_type_get_length : return type :
-
 // Unsupported : g_compute_checksum_for_data : return type :
 
 // Unsupported : g_compute_checksum_for_string : return type :
@@ -29,13 +27,23 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Unsupported : g_test_queue_free : unsupported parameter gfree_pointer : no type generator for gpointer (gpointer) for param gfree_pointer
 
-// Unsupported : g_test_rand_double : return type :
+// TestRandDouble is a wrapper around the C function g_test_rand_double.
+func TestRandDouble() float64 {
+	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	call.Function(3330, &data)
+	ret := data.Return.Float64()
 
-// Unsupported : g_test_rand_double_range : return type :
+	return ret
+}
 
-// Unsupported : g_test_rand_int : return type :
+// TestRandInt is a wrapper around the C function g_test_rand_int.
+func TestRandInt() int32 {
+	data := call.Data{Return: call.Return{Type: call.RT_INT}}
+	call.Function(3332, &data)
+	ret := data.Return.Int32()
 
-// Unsupported : g_test_rand_int_range : return type :
+	return ret
+}
 
 // TestRun is a wrapper around the C function g_test_run.
 func TestRun() int32 {
@@ -46,9 +54,23 @@ func TestRun() int32 {
 	return ret
 }
 
-// Unsupported : g_test_timer_elapsed : return type :
+// TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
+func TestTimerElapsed() float64 {
+	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	call.Function(3341, &data)
+	ret := data.Return.Float64()
 
-// Unsupported : g_test_timer_last : return type :
+	return ret
+}
+
+// TestTimerLast is a wrapper around the C function g_test_timer_last.
+func TestTimerLast() float64 {
+	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	call.Function(3342, &data)
+	ret := data.Return.Float64()
+
+	return ret
+}
 
 // TestTimerStart is a wrapper around the C function g_test_timer_start.
 func TestTimerStart() {

@@ -3,9 +3,18 @@
 
 package glib
 
+import call "github.com/pekim/gobbi/lib/internal/call"
+
 // Unsupported : g_close : return type :
 
-// Unsupported : g_get_num_processors : return type :
+// GetNumProcessors is a wrapper around the C function g_get_num_processors.
+func GetNumProcessors() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(1611, &data)
+	ret := data.Return.Uint32()
+
+	return ret
+}
 
 // Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc (GUnixFDSourceFunc) for param function
 

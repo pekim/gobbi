@@ -45,10 +45,16 @@ void call_function(int function_index, CallData* data) {
 
     switch (data->return_type) {
     case rt_int:
-       	av_start_int (alist, fn, &data->return_int);
+       	av_start_int (alist, fn, &data->value_int);
         break;
     case rt_uint:
-       	av_start_uint (alist, fn, &data->return_int);
+       	av_start_uint (alist, fn, &data->value_uint);
+        break;
+    case rt_long:
+       	av_start_long (alist, fn, &data->value_long);
+        break;
+    case rt_double:
+       	av_start_double (alist, fn, &data->value_double);
         break;
     case rt_void:
     default:

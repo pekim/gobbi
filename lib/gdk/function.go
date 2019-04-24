@@ -31,6 +31,7 @@ func Beep() {
 func ErrorTrapPop() int32 {
 	data := call.Data{Return: call.Return{Type: call.RT_INT}}
 	call.Function(4230, &data)
+	ret := data.Return.Int32()
 
 	return ret
 }

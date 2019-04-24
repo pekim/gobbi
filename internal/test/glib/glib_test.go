@@ -1,5 +1,15 @@
 package glib
 
+import (
+	"github.com/pekim/gobbi/lib/glib"
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
+
+func TestGetNumProcessors(t *testing.T) {
+	assert.True(t, glib.GetNumProcessors() >= 2)
+}
+
 //func TestMainDepth(t *testing.T) {
 //	assert.Equal(t, int32(13801), glib.MainDepth())
 //}

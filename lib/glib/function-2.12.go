@@ -3,8 +3,6 @@
 
 package glib
 
-// Unsupported : g_ascii_strtoll : return type :
-
 // Unsupported : g_base64_decode : array return type :
 
 // Unsupported : g_base64_decode_step : unsupported parameter out : output array param out

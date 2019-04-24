@@ -136,10 +136,6 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params :
 
-// Unsupported : g_signal_connect_closure : return type :
-
-// Unsupported : g_signal_connect_closure_by_id : return type :
-
 // Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
 
 // Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
@@ -167,8 +163,6 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 // Unsupported : g_signal_has_handler_pending : return type :
 
 // Unsupported : g_signal_list_ids : array return type :
-
-// Unsupported : g_signal_lookup : return type :
 
 // Unsupported : g_signal_name : return type :
 
@@ -213,8 +207,6 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 // Unsupported : g_type_class_ref : return type :
 
 // Unsupported : g_type_create_instance : return type :
-
-// Unsupported : g_type_depth : return type :
 
 // Unsupported : g_type_from_name : return type :
 

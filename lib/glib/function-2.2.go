@@ -3,8 +3,6 @@
 
 package glib
 
-// Unsupported : g_ascii_strtoull : return type :
-
 // Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer (FILE*) for param file
 
 // Unsupported : g_get_application_name : return type :

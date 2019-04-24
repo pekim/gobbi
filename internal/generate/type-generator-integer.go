@@ -196,10 +196,14 @@ func (t *TypeGeneratorInteger) generateCallReturnType() string {
 	switch t.typ.CType {
 	case "void":
 		return "RT_VOID"
-	case "int", "gint":
+	case "int", "gint", "gint32":
 		return "RT_INT"
-	case "guint":
+	case "gint64":
+		return "RT_LONG"
+	case "guint", "guint32":
 		return "RT_UINT"
+	case "gdouble", "double":
+		return "RT_DOUBLE"
 	}
 
 	panic(fmt.Sprintf("Return type not supported : %s", t.typ.CType))

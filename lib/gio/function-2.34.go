@@ -9,6 +9,10 @@ package gio
 
 // Unsupported : g_pollable_source_new_full : return type :
 
+// Unsupported : throws
+
+// Unsupported : throws
+
 // Unsupported : g_pollable_stream_write_all : return type :
 
 // Unsupported : g_unix_mount_guess_symbolic_icon : return type :

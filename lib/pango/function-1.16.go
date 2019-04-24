@@ -13,13 +13,9 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Unsupported : pango_gravity_get_for_script : return type :
 
-// Unsupported : pango_gravity_to_rotation : return type :
-
 // Unsupported : pango_language_get_default : return type :
 
 // Unsupported : pango_parse_enum : return type :
-
-// Unsupported : pango_units_to_double : return type :
 
 // Version is a wrapper around the C function pango_version.
 func Version() int32 {

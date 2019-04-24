@@ -4,5 +4,3 @@
 package gtk
 
 // Unsupported : gtk_paper_size_get_paper_sizes : return type :
-
-// Unsupported : gtk_rc_parse_color_full : return type :

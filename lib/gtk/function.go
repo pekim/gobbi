@@ -49,9 +49,23 @@ func DisableSetlocale() {
 
 // Unsupported : gtk_get_current_event_state : unsupported parameter state : GdkModifierType* with indirection level of 1
 
-// Unsupported : gtk_get_current_event_time : return type :
+// GetCurrentEventTime is a wrapper around the C function gtk_get_current_event_time.
+func GetCurrentEventTime() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5906, &data)
+	ret := data.Return.Uint32()
 
-// Unsupported : gtk_get_debug_flags : return type :
+	return ret
+}
+
+// GetDebugFlags is a wrapper around the C function gtk_get_debug_flags.
+func GetDebugFlags() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(5907, &data)
+	ret := data.Return.Uint32()
+
+	return ret
+}
 
 // Unsupported : gtk_get_default_language : return type :
 
@@ -86,7 +100,14 @@ func Main() {
 
 // Unsupported : gtk_main_iteration_do : return type :
 
-// Unsupported : gtk_main_level : return type :
+// MainLevel is a wrapper around the C function gtk_main_level.
+func MainLevel() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(6394, &data)
+	ret := data.Return.Uint32()
+
+	return ret
+}
 
 // MainQuit is a wrapper around the C function gtk_main_quit.
 func MainQuit() {
@@ -116,8 +137,6 @@ func MainQuit() {
 // Unsupported : gtk_rc_get_style_by_paths : return type :
 
 // Unsupported : gtk_rc_get_theme_dir : return type :
-
-// Unsupported : gtk_rc_parse_color : return type :
 
 // Unsupported : gtk_rc_parse_priority : unsupported parameter priority : GtkPathPriorityType* with indirection level of 1
 
