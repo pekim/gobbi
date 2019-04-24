@@ -29,7 +29,7 @@ func Beep() {
 
 // ErrorTrapPop is a wrapper around the C function gdk_error_trap_pop.
 func ErrorTrapPop() int32 {
-	data := call.Data{Return: call.Return{}}
+	data := call.Data{Return: call.Return{Type: call.RT_INT}}
 	call.Function(4230, &data)
 
 	return ret

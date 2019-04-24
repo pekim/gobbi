@@ -6,6 +6,7 @@ import (
 )
 
 type TypeGeneratorEnumeration struct {
+	TypeGeneratorPanic
 	typ  *Type
 	enum *Enumeration
 }

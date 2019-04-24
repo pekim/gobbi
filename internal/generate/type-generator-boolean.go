@@ -5,6 +5,7 @@ import (
 )
 
 type TypeGeneratorBoolean struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 

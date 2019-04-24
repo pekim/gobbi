@@ -215,23 +215,20 @@ func (f *Function) generateBody(g *jen.Group) {
 		Op(":=").
 		Qual(callPkg, "Data").
 		Values(jen.DictFunc(func(d jen.Dict) {
-			//fmt.Println(f.ReturnValue.Type.Name, f.ReturnValue.Type.CType)
-
 			d[jen.Id("Return")] = jen.
 				Qual(callPkg, "Return").
 				Values(jen.DictFunc(func(d jen.Dict) {
-					switch f.ReturnValue.Type.CType {
-					case "void":
+					if f.ReturnValue.Type.generator != nil {
+						d[jen.Id("Type")] = jen.Qual(callPkg, f.ReturnValue.Type.generator.generateCallReturnType())
+					} else {
 						d[jen.Id("Type")] = jen.Qual(callPkg, "RT_VOID")
-					case "int":
-						d[jen.Id("Type")] = jen.Qual(callPkg, "RT_INT")
 					}
 				}))
 		}))
 
 	g.
 		Qual(callPkg, "Function").
-		ParamsFunc(func(g *jen.Group) {
+		CallFunc(func(g *jen.Group) {
 			g.Lit(functionIndex)
 
 			g.Op("&").Id("data")

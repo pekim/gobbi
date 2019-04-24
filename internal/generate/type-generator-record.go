@@ -7,6 +7,7 @@ import (
 )
 
 type TypeGeneratorRecord struct {
+	TypeGeneratorPanic
 	typ    *Type
 	record *Record
 }

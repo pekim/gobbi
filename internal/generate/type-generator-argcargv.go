@@ -5,6 +5,7 @@ import (
 )
 
 type TypeGeneratorArgcArgv struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 

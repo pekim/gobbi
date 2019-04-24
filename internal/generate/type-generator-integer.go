@@ -8,6 +8,7 @@ import (
 )
 
 type TypeGeneratorInteger struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 
@@ -189,4 +190,15 @@ func (t *TypeGeneratorInteger) generateGoToC(g *jen.Group, goVarReference *jen.S
 	g.
 		Parens(jen.Qual("C", t.typ.cTypeName)).
 		Parens(goVarReference)
+}
+
+func (t *TypeGeneratorInteger) generateCallReturnType() string {
+	switch t.typ.CType {
+	case "void":
+		return "RT_VOID"
+	case "int", "gint":
+		return "RT_INT"
+	}
+
+	panic(fmt.Sprintf("Return type not supported : %s", t.typ.CType))
 }

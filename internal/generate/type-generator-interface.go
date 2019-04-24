@@ -7,6 +7,7 @@ import (
 )
 
 type TypeGeneratorInterface struct {
+	TypeGeneratorPanic
 	typ   *Type
 	iface *Interface
 }

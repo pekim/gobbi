@@ -199,7 +199,7 @@ func ClearError() error {
 
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
-	data := call.Data{Return: call.Return{}}
+	data := call.Data{Return: call.Return{Type: call.RT_INT}}
 	call.Function(2018, &data)
 
 	return ret

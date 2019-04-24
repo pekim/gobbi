@@ -5,6 +5,7 @@ import (
 )
 
 type TypeGeneratorIgnore struct {
+	TypeGeneratorPanic
 }
 
 func TypeGeneratorIgnoreNew(typ *Type) *TypeGeneratorIgnore {
