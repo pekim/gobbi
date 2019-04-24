@@ -12,5 +12,10 @@ import (
 //}
 
 func TestVersion(t *testing.T) {
-	assert.Equal(t, int32(13801), pango.Version())
+	version := int(pango.Version())
+	major := version / 10000
+	minor := (version - major) / 100
+
+	assert.Equal(t, 1, major)
+	assert.Equal(t, 0, minor%2) // even -> stable, odd -> unstable
 }
