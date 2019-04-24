@@ -8,6 +8,7 @@ type ReturnType int
 const (
 	RT_VOID = C.rt_void
 	RT_INT  = C.rt_int
+	RT_UINT = C.rt_uint
 )
 
 type Return struct {

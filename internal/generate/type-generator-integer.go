@@ -61,9 +61,9 @@ func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reaso
 		return false, ""
 	}
 
-	if t.typ.Name != "gint" {
-		return false, ""
-	}
+	//if t.typ.Name != "gint" {
+	//	return false, ""
+	//}
 
 	return true, ""
 }
@@ -198,6 +198,8 @@ func (t *TypeGeneratorInteger) generateCallReturnType() string {
 		return "RT_VOID"
 	case "int", "gint":
 		return "RT_INT"
+	case "guint":
+		return "RT_UINT"
 	}
 
 	panic(fmt.Sprintf("Return type not supported : %s", t.typ.CType))

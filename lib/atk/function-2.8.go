@@ -3,12 +3,44 @@
 
 package atk
 
-// Unsupported : atk_get_binary_age : return type :
+import call "github.com/pekim/gobbi/lib/internal/call"
 
-// Unsupported : atk_get_interface_age : return type :
+// GetBinaryAge is a wrapper around the C function atk_get_binary_age.
+func GetBinaryAge() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(39, &data)
 
-// Unsupported : atk_get_major_version : return type :
+	return ret
+}
 
-// Unsupported : atk_get_micro_version : return type :
+// GetInterfaceAge is a wrapper around the C function atk_get_interface_age.
+func GetInterfaceAge() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(42, &data)
 
-// Unsupported : atk_get_minor_version : return type :
+	return ret
+}
+
+// GetMajorVersion is a wrapper around the C function atk_get_major_version.
+func GetMajorVersion() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(43, &data)
+
+	return ret
+}
+
+// GetMicroVersion is a wrapper around the C function atk_get_micro_version.
+func GetMicroVersion() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(44, &data)
+
+	return ret
+}
+
+// GetMinorVersion is a wrapper around the C function atk_get_minor_version.
+func GetMinorVersion() uint32 {
+	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	call.Function(45, &data)
+
+	return ret
+}

@@ -71,19 +71,11 @@ func Flush() {
 
 // Unsupported : gdk_keyboard_grab : return type :
 
-// Unsupported : gdk_keyval_from_name : return type :
-
 // Unsupported : gdk_keyval_is_lower : return type :
 
 // Unsupported : gdk_keyval_is_upper : return type :
 
 // Unsupported : gdk_keyval_name : return type :
-
-// Unsupported : gdk_keyval_to_lower : return type :
-
-// Unsupported : gdk_keyval_to_unicode : return type :
-
-// Unsupported : gdk_keyval_to_upper : return type :
 
 // Unsupported : gdk_list_visuals : return type :
 
@@ -146,7 +138,5 @@ func ThreadsLeave() {
 	call.Function(4531, &data)
 	return
 }
-
-// Unsupported : gdk_unicode_to_keyval : return type :
 
 // Unsupported : gdk_utf8_to_string_target : return type :
