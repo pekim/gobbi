@@ -3,16 +3,7 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-type EventSequenceState C.GtkEventSequenceState
+type EventSequenceState int
 
 const (
 	GTK_EVENT_SEQUENCE_NONE    EventSequenceState = 0
@@ -20,7 +11,7 @@ const (
 	GTK_EVENT_SEQUENCE_DENIED  EventSequenceState = 2
 )
 
-type PanDirection C.GtkPanDirection
+type PanDirection int
 
 const (
 	GTK_PAN_DIRECTION_LEFT  PanDirection = 0
@@ -29,7 +20,7 @@ const (
 	GTK_PAN_DIRECTION_DOWN  PanDirection = 3
 )
 
-type PropagationPhase C.GtkPropagationPhase
+type PropagationPhase int
 
 const (
 	GTK_PHASE_NONE    PropagationPhase = 0

@@ -3,24 +3,7 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type BusNameOwnerFlags C.GBusNameOwnerFlags
+type BusNameOwnerFlags int
 
 const (
 	BUS_NAME_OWNER_FLAGS_NONE              BusNameOwnerFlags = 0
@@ -29,14 +12,14 @@ const (
 	BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE      BusNameOwnerFlags = 4
 )
 
-type BusNameWatcherFlags C.GBusNameWatcherFlags
+type BusNameWatcherFlags int
 
 const (
 	BUS_NAME_WATCHER_FLAGS_NONE       BusNameWatcherFlags = 0
 	BUS_NAME_WATCHER_FLAGS_AUTO_START BusNameWatcherFlags = 1
 )
 
-type DBusCallFlags C.GDBusCallFlags
+type DBusCallFlags int
 
 const (
 	DBUS_CALL_FLAGS_NONE                            DBusCallFlags = 0
@@ -44,14 +27,14 @@ const (
 	DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION DBusCallFlags = 2
 )
 
-type DBusCapabilityFlags C.GDBusCapabilityFlags
+type DBusCapabilityFlags int
 
 const (
 	DBUS_CAPABILITY_FLAGS_NONE            DBusCapabilityFlags = 0
 	DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING DBusCapabilityFlags = 1
 )
 
-type DBusConnectionFlags C.GDBusConnectionFlags
+type DBusConnectionFlags int
 
 const (
 	DBUS_CONNECTION_FLAGS_NONE                           DBusConnectionFlags = 0
@@ -62,7 +45,7 @@ const (
 	DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING       DBusConnectionFlags = 16
 )
 
-type DBusMessageFlags C.GDBusMessageFlags
+type DBusMessageFlags int
 
 const (
 	DBUS_MESSAGE_FLAGS_NONE                            DBusMessageFlags = 0
@@ -71,7 +54,7 @@ const (
 	DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION DBusMessageFlags = 4
 )
 
-type DBusPropertyInfoFlags C.GDBusPropertyInfoFlags
+type DBusPropertyInfoFlags int
 
 const (
 	DBUS_PROPERTY_INFO_FLAGS_NONE     DBusPropertyInfoFlags = 0
@@ -79,7 +62,7 @@ const (
 	DBUS_PROPERTY_INFO_FLAGS_WRITABLE DBusPropertyInfoFlags = 2
 )
 
-type DBusProxyFlags C.GDBusProxyFlags
+type DBusProxyFlags int
 
 const (
 	DBUS_PROXY_FLAGS_NONE                              DBusProxyFlags = 0
@@ -90,14 +73,14 @@ const (
 	DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION DBusProxyFlags = 16
 )
 
-type DBusSendMessageFlags C.GDBusSendMessageFlags
+type DBusSendMessageFlags int
 
 const (
 	DBUS_SEND_MESSAGE_FLAGS_NONE            DBusSendMessageFlags = 0
 	DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL DBusSendMessageFlags = 1
 )
 
-type DBusServerFlags C.GDBusServerFlags
+type DBusServerFlags int
 
 const (
 	DBUS_SERVER_FLAGS_NONE                           DBusServerFlags = 0
@@ -105,7 +88,7 @@ const (
 	DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS DBusServerFlags = 2
 )
 
-type DBusSignalFlags C.GDBusSignalFlags
+type DBusSignalFlags int
 
 const (
 	DBUS_SIGNAL_FLAGS_NONE                 DBusSignalFlags = 0
@@ -114,7 +97,7 @@ const (
 	DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH      DBusSignalFlags = 4
 )
 
-type DBusSubtreeFlags C.GDBusSubtreeFlags
+type DBusSubtreeFlags int
 
 const (
 	DBUS_SUBTREE_FLAGS_NONE                           DBusSubtreeFlags = 0

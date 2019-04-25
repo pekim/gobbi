@@ -3,24 +3,7 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type ApplicationFlags C.GApplicationFlags
+type ApplicationFlags int
 
 const (
 	APPLICATION_FLAGS_NONE           ApplicationFlags = 0
@@ -33,7 +16,7 @@ const (
 	APPLICATION_CAN_OVERRIDE_APP_ID  ApplicationFlags = 64
 )
 
-type IOStreamSpliceFlags C.GIOStreamSpliceFlags
+type IOStreamSpliceFlags int
 
 const (
 	IO_STREAM_SPLICE_NONE          IOStreamSpliceFlags = 0
@@ -42,7 +25,7 @@ const (
 	IO_STREAM_SPLICE_WAIT_FOR_BOTH IOStreamSpliceFlags = 4
 )
 
-type TlsCertificateFlags C.GTlsCertificateFlags
+type TlsCertificateFlags int
 
 const (
 	TLS_CERTIFICATE_UNKNOWN_CA    TlsCertificateFlags = 1

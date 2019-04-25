@@ -2,14 +2,7 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-type DragAction C.GdkDragAction
+type DragAction int
 
 const (
 	GDK_ACTION_DEFAULT DragAction = 1
@@ -20,7 +13,7 @@ const (
 	GDK_ACTION_ASK     DragAction = 32
 )
 
-type EventMask C.GdkEventMask
+type EventMask int
 
 const (
 	GDK_EXPOSURE_MASK            EventMask = 2
@@ -51,7 +44,7 @@ const (
 	GDK_ALL_EVENTS_MASK          EventMask = 67108862
 )
 
-type ModifierType C.guint
+type ModifierType int
 
 const (
 	GDK_SHIFT_MASK                ModifierType = 1
@@ -88,7 +81,7 @@ const (
 	GDK_MODIFIER_MASK             ModifierType = 1543512063
 )
 
-type WMDecoration C.GdkWMDecoration
+type WMDecoration int
 
 const (
 	GDK_DECOR_ALL      WMDecoration = 1
@@ -100,7 +93,7 @@ const (
 	GDK_DECOR_MAXIMIZE WMDecoration = 64
 )
 
-type WMFunction C.GdkWMFunction
+type WMFunction int
 
 const (
 	GDK_FUNC_ALL      WMFunction = 1
@@ -111,7 +104,7 @@ const (
 	GDK_FUNC_CLOSE    WMFunction = 32
 )
 
-type WindowAttributesType C.GdkWindowAttributesType
+type WindowAttributesType int
 
 const (
 	GDK_WA_TITLE     WindowAttributesType = 2
@@ -124,7 +117,7 @@ const (
 	GDK_WA_TYPE_HINT WindowAttributesType = 256
 )
 
-type WindowHints C.GdkWindowHints
+type WindowHints int
 
 const (
 	GDK_HINT_POS         WindowHints = 1
@@ -138,7 +131,7 @@ const (
 	GDK_HINT_USER_SIZE   WindowHints = 256
 )
 
-type WindowState C.GdkWindowState
+type WindowState int
 
 const (
 	GDK_WINDOW_STATE_WITHDRAWN        WindowState = 1

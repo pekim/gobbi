@@ -2,22 +2,18 @@
 
 package gdkpixbuf
 
-import glib "github.com/pekim/gobbi/lib/glib"
+import (
+	"C"
+	glib "github.com/pekim/gobbi/lib/glib"
+)
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
-import "C"
-
-type Colorspace C.GdkColorspace
+type Colorspace int
 
 const (
 	GDK_COLORSPACE_RGB Colorspace = 0
 )
 
-type InterpType C.GdkInterpType
+type InterpType int
 
 const (
 	GDK_INTERP_NEAREST  InterpType = 0
@@ -26,14 +22,14 @@ const (
 	GDK_INTERP_HYPER    InterpType = 3
 )
 
-type PixbufAlphaMode C.GdkPixbufAlphaMode
+type PixbufAlphaMode int
 
 const (
 	GDK_PIXBUF_ALPHA_BILEVEL PixbufAlphaMode = 0
 	GDK_PIXBUF_ALPHA_FULL    PixbufAlphaMode = 1
 )
 
-type PixbufError C.GdkPixbufError
+type PixbufError int
 
 const (
 	GDK_PIXBUF_ERROR_CORRUPT_IMAGE         PixbufError = 0
@@ -53,7 +49,7 @@ func PixbufErrorQuark() glib.Quark {
 	return retGo
 }
 
-type PixbufRotation C.GdkPixbufRotation
+type PixbufRotation int
 
 const (
 	GDK_PIXBUF_ROTATE_NONE             PixbufRotation = 0

@@ -2,16 +2,7 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
-type BookmarkFileError C.GBookmarkFileError
+type BookmarkFileError int
 
 const (
 	BOOKMARK_FILE_ERROR_INVALID_URI        BookmarkFileError = 0
@@ -24,7 +15,7 @@ const (
 	BOOKMARK_FILE_ERROR_FILE_NOT_FOUND     BookmarkFileError = 7
 )
 
-type ConvertError C.GConvertError
+type ConvertError int
 
 const (
 	CONVERT_ERROR_NO_CONVERSION     ConvertError = 0
@@ -37,7 +28,7 @@ const (
 	CONVERT_ERROR_EMBEDDED_NUL      ConvertError = 7
 )
 
-type DateDMY C.GDateDMY
+type DateDMY int
 
 const (
 	DATE_DAY   DateDMY = 0
@@ -45,7 +36,7 @@ const (
 	DATE_YEAR  DateDMY = 2
 )
 
-type DateMonth C.GDateMonth
+type DateMonth int
 
 const (
 	DATE_BAD_MONTH DateMonth = 0
@@ -63,7 +54,7 @@ const (
 	DATE_DECEMBER  DateMonth = 12
 )
 
-type DateWeekday C.GDateWeekday
+type DateWeekday int
 
 const (
 	DATE_BAD_WEEKDAY DateWeekday = 0
@@ -76,7 +67,7 @@ const (
 	DATE_SUNDAY      DateWeekday = 7
 )
 
-type ErrorType C.GErrorType
+type ErrorType int
 
 const (
 	ERR_UNKNOWN              ErrorType = 0
@@ -89,7 +80,7 @@ const (
 	ERR_FLOAT_MALFORMED      ErrorType = 7
 )
 
-type FileError C.GFileError
+type FileError int
 
 const (
 	FILE_ERROR_EXIST       FileError = 0
@@ -119,7 +110,7 @@ const (
 	FILE_ERROR_FAILED      FileError = 24
 )
 
-type IOChannelError C.GIOChannelError
+type IOChannelError int
 
 const (
 	IO_CHANNEL_ERROR_FBIG     IOChannelError = 0
@@ -133,7 +124,7 @@ const (
 	IO_CHANNEL_ERROR_FAILED   IOChannelError = 8
 )
 
-type IOError C.GIOError
+type IOError int
 
 const (
 	IO_ERROR_NONE    IOError = 0
@@ -142,7 +133,7 @@ const (
 	IO_ERROR_UNKNOWN IOError = 3
 )
 
-type IOStatus C.GIOStatus
+type IOStatus int
 
 const (
 	IO_STATUS_ERROR  IOStatus = 0
@@ -151,7 +142,7 @@ const (
 	IO_STATUS_AGAIN  IOStatus = 3
 )
 
-type KeyFileError C.GKeyFileError
+type KeyFileError int
 
 const (
 	KEY_FILE_ERROR_UNKNOWN_ENCODING KeyFileError = 0
@@ -162,7 +153,7 @@ const (
 	KEY_FILE_ERROR_INVALID_VALUE    KeyFileError = 5
 )
 
-type MarkupError C.GMarkupError
+type MarkupError int
 
 const (
 	MARKUP_ERROR_BAD_UTF8          MarkupError = 0
@@ -174,7 +165,7 @@ const (
 	MARKUP_ERROR_MISSING_ATTRIBUTE MarkupError = 6
 )
 
-type NormalizeMode C.GNormalizeMode
+type NormalizeMode int
 
 const (
 	NORMALIZE_DEFAULT         NormalizeMode = 0
@@ -187,7 +178,7 @@ const (
 	NORMALIZE_NFKC            NormalizeMode = 3
 )
 
-type OptionArg C.GOptionArg
+type OptionArg int
 
 const (
 	OPTION_ARG_NONE           OptionArg = 0
@@ -201,7 +192,7 @@ const (
 	OPTION_ARG_INT64          OptionArg = 8
 )
 
-type OptionError C.GOptionError
+type OptionError int
 
 const (
 	OPTION_ERROR_UNKNOWN_OPTION OptionError = 0
@@ -209,7 +200,7 @@ const (
 	OPTION_ERROR_FAILED         OptionError = 2
 )
 
-type SeekType C.GSeekType
+type SeekType int
 
 const (
 	SEEK_CUR SeekType = 0
@@ -217,7 +208,7 @@ const (
 	SEEK_END SeekType = 2
 )
 
-type ShellError C.GShellError
+type ShellError int
 
 const (
 	SHELL_ERROR_BAD_QUOTING  ShellError = 0
@@ -225,7 +216,7 @@ const (
 	SHELL_ERROR_FAILED       ShellError = 2
 )
 
-type SliceConfig C.GSliceConfig
+type SliceConfig int
 
 const (
 	SLICE_CONFIG_ALWAYS_MALLOC      SliceConfig = 1
@@ -236,7 +227,7 @@ const (
 	SLICE_CONFIG_CONTENTION_COUNTER SliceConfig = 6
 )
 
-type SpawnError C.GSpawnError
+type SpawnError int
 
 const (
 	SPAWN_ERROR_FORK        SpawnError = 0
@@ -262,7 +253,7 @@ const (
 	SPAWN_ERROR_FAILED      SpawnError = 19
 )
 
-type TestLogType C.GTestLogType
+type TestLogType int
 
 const (
 	TEST_LOG_NONE         TestLogType = 0
@@ -281,13 +272,13 @@ const (
 
 // Blacklisted : GTestResult
 
-type ThreadError C.GThreadError
+type ThreadError int
 
 const (
 	THREAD_ERROR_AGAIN ThreadError = 0
 )
 
-type TimeType C.GTimeType
+type TimeType int
 
 const (
 	TIME_TYPE_STANDARD  TimeType = 0
@@ -295,7 +286,7 @@ const (
 	TIME_TYPE_UNIVERSAL TimeType = 2
 )
 
-type TokenType C.GTokenType
+type TokenType int
 
 const (
 	TOKEN_EOF             TokenType = 0
@@ -323,7 +314,7 @@ const (
 	TOKEN_COMMENT_MULTI   TokenType = 269
 )
 
-type TraverseType C.GTraverseType
+type TraverseType int
 
 const (
 	IN_ORDER    TraverseType = 0
@@ -332,7 +323,7 @@ const (
 	LEVEL_ORDER TraverseType = 3
 )
 
-type UnicodeBreakType C.GUnicodeBreakType
+type UnicodeBreakType int
 
 const (
 	UNICODE_BREAK_MANDATORY                    UnicodeBreakType = 0
@@ -380,7 +371,7 @@ const (
 	UNICODE_BREAK_ZERO_WIDTH_JOINER            UnicodeBreakType = 42
 )
 
-type UnicodeScript C.GUnicodeScript
+type UnicodeScript int
 
 const (
 	UNICODE_SCRIPT_INVALID_CODE           UnicodeScript = -1
@@ -528,7 +519,7 @@ const (
 	UNICODE_SCRIPT_ZANABAZAR_SQUARE       UnicodeScript = 141
 )
 
-type UnicodeType C.GUnicodeType
+type UnicodeType int
 
 const (
 	UNICODE_CONTROL             UnicodeType = 0
@@ -563,7 +554,7 @@ const (
 	UNICODE_SPACE_SEPARATOR     UnicodeType = 29
 )
 
-type VariantParseError C.GVariantParseError
+type VariantParseError int
 
 const (
 	VARIANT_PARSE_ERROR_FAILED                       VariantParseError = 0

@@ -3,14 +3,7 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-type FrameClockPhase C.GdkFrameClockPhase
+type FrameClockPhase int
 
 const (
 	GDK_FRAME_CLOCK_PHASE_NONE          FrameClockPhase = 0

@@ -3,23 +3,14 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-type RecentChooserError C.GtkRecentChooserError
+type RecentChooserError int
 
 const (
 	GTK_RECENT_CHOOSER_ERROR_NOT_FOUND   RecentChooserError = 0
 	GTK_RECENT_CHOOSER_ERROR_INVALID_URI RecentChooserError = 1
 )
 
-type RecentManagerError C.GtkRecentManagerError
+type RecentManagerError int
 
 const (
 	GTK_RECENT_MANAGER_ERROR_NOT_FOUND        RecentManagerError = 0
@@ -31,7 +22,7 @@ const (
 	GTK_RECENT_MANAGER_ERROR_UNKNOWN          RecentManagerError = 6
 )
 
-type RecentSortType C.GtkRecentSortType
+type RecentSortType int
 
 const (
 	GTK_RECENT_SORT_NONE   RecentSortType = 0

@@ -3,20 +3,12 @@
 package gtk
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-type Align C.GtkAlign
+type Align int
 
 const (
 	GTK_ALIGN_FILL     Align = 0
@@ -26,7 +18,7 @@ const (
 	GTK_ALIGN_BASELINE Align = 4
 )
 
-type ArrowPlacement C.GtkArrowPlacement
+type ArrowPlacement int
 
 const (
 	GTK_ARROWS_BOTH  ArrowPlacement = 0
@@ -34,7 +26,7 @@ const (
 	GTK_ARROWS_END   ArrowPlacement = 2
 )
 
-type ArrowType C.GtkArrowType
+type ArrowType int
 
 const (
 	GTK_ARROW_UP    ArrowType = 0
@@ -44,7 +36,7 @@ const (
 	GTK_ARROW_NONE  ArrowType = 4
 )
 
-type AssistantPageType C.GtkAssistantPageType
+type AssistantPageType int
 
 const (
 	GTK_ASSISTANT_PAGE_CONTENT  AssistantPageType = 0
@@ -55,7 +47,7 @@ const (
 	GTK_ASSISTANT_PAGE_CUSTOM   AssistantPageType = 5
 )
 
-type BorderStyle C.GtkBorderStyle
+type BorderStyle int
 
 const (
 	GTK_BORDER_STYLE_NONE   BorderStyle = 0
@@ -70,7 +62,7 @@ const (
 	GTK_BORDER_STYLE_RIDGE  BorderStyle = 9
 )
 
-type BuilderError C.GtkBuilderError
+type BuilderError int
 
 const (
 	GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION  BuilderError = 0
@@ -97,7 +89,7 @@ func BuilderErrorQuark() glib.Quark {
 	return retGo
 }
 
-type ButtonBoxStyle C.GtkButtonBoxStyle
+type ButtonBoxStyle int
 
 const (
 	GTK_BUTTONBOX_SPREAD ButtonBoxStyle = 1
@@ -108,7 +100,7 @@ const (
 	GTK_BUTTONBOX_EXPAND ButtonBoxStyle = 6
 )
 
-type ButtonRole C.GtkButtonRole
+type ButtonRole int
 
 const (
 	GTK_BUTTON_ROLE_NORMAL ButtonRole = 0
@@ -116,7 +108,7 @@ const (
 	GTK_BUTTON_ROLE_RADIO  ButtonRole = 2
 )
 
-type ButtonsType C.GtkButtonsType
+type ButtonsType int
 
 const (
 	GTK_BUTTONS_NONE      ButtonsType = 0
@@ -127,7 +119,7 @@ const (
 	GTK_BUTTONS_OK_CANCEL ButtonsType = 5
 )
 
-type CellRendererAccelMode C.GtkCellRendererAccelMode
+type CellRendererAccelMode int
 
 const (
 	GTK_CELL_RENDERER_ACCEL_MODE_GTK          CellRendererAccelMode = 0
@@ -135,7 +127,7 @@ const (
 	GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP CellRendererAccelMode = 2
 )
 
-type CellRendererMode C.GtkCellRendererMode
+type CellRendererMode int
 
 const (
 	GTK_CELL_RENDERER_MODE_INERT       CellRendererMode = 0
@@ -143,7 +135,7 @@ const (
 	GTK_CELL_RENDERER_MODE_EDITABLE    CellRendererMode = 2
 )
 
-type CornerType C.GtkCornerType
+type CornerType int
 
 const (
 	GTK_CORNER_TOP_LEFT     CornerType = 0
@@ -152,7 +144,7 @@ const (
 	GTK_CORNER_BOTTOM_RIGHT CornerType = 3
 )
 
-type CssProviderError C.GtkCssProviderError
+type CssProviderError int
 
 const (
 	GTK_CSS_PROVIDER_ERROR_FAILED        CssProviderError = 0
@@ -171,7 +163,7 @@ func CssProviderErrorQuark() glib.Quark {
 	return retGo
 }
 
-type DeleteType C.GtkDeleteType
+type DeleteType int
 
 const (
 	GTK_DELETE_CHARS             DeleteType = 0
@@ -184,7 +176,7 @@ const (
 	GTK_DELETE_WHITESPACE        DeleteType = 7
 )
 
-type DirectionType C.GtkDirectionType
+type DirectionType int
 
 const (
 	GTK_DIR_TAB_FORWARD  DirectionType = 0
@@ -195,7 +187,7 @@ const (
 	GTK_DIR_RIGHT        DirectionType = 5
 )
 
-type DragResult C.GtkDragResult
+type DragResult int
 
 const (
 	GTK_DRAG_RESULT_SUCCESS         DragResult = 0
@@ -206,7 +198,7 @@ const (
 	GTK_DRAG_RESULT_ERROR           DragResult = 5
 )
 
-type ExpanderStyle C.GtkExpanderStyle
+type ExpanderStyle int
 
 const (
 	GTK_EXPANDER_COLLAPSED      ExpanderStyle = 0
@@ -215,7 +207,7 @@ const (
 	GTK_EXPANDER_EXPANDED       ExpanderStyle = 3
 )
 
-type FileChooserAction C.GtkFileChooserAction
+type FileChooserAction int
 
 const (
 	GTK_FILE_CHOOSER_ACTION_OPEN          FileChooserAction = 0
@@ -224,7 +216,7 @@ const (
 	GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER FileChooserAction = 3
 )
 
-type FileChooserError C.GtkFileChooserError
+type FileChooserError int
 
 const (
 	GTK_FILE_CHOOSER_ERROR_NONEXISTENT         FileChooserError = 0
@@ -233,7 +225,7 @@ const (
 	GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME FileChooserError = 3
 )
 
-type IMPreeditStyle C.GtkIMPreeditStyle
+type IMPreeditStyle int
 
 const (
 	GTK_IM_PREEDIT_NOTHING  IMPreeditStyle = 0
@@ -241,7 +233,7 @@ const (
 	GTK_IM_PREEDIT_NONE     IMPreeditStyle = 2
 )
 
-type IMStatusStyle C.GtkIMStatusStyle
+type IMStatusStyle int
 
 const (
 	GTK_IM_STATUS_NOTHING  IMStatusStyle = 0
@@ -249,7 +241,7 @@ const (
 	GTK_IM_STATUS_NONE     IMStatusStyle = 2
 )
 
-type IconSize C.GtkIconSize
+type IconSize int
 
 const (
 	GTK_ICON_SIZE_INVALID       IconSize = 0
@@ -327,7 +319,7 @@ func IconSizeRegisterAlias(alias string, target IconSize) {
 	return
 }
 
-type IconThemeError C.GtkIconThemeError
+type IconThemeError int
 
 const (
 	GTK_ICON_THEME_NOT_FOUND IconThemeError = 0
@@ -342,7 +334,7 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-type IconViewDropPosition C.GtkIconViewDropPosition
+type IconViewDropPosition int
 
 const (
 	GTK_ICON_VIEW_NO_DROP    IconViewDropPosition = 0
@@ -353,7 +345,7 @@ const (
 	GTK_ICON_VIEW_DROP_BELOW IconViewDropPosition = 5
 )
 
-type ImageType C.GtkImageType
+type ImageType int
 
 const (
 	GTK_IMAGE_EMPTY     ImageType = 0
@@ -366,7 +358,7 @@ const (
 	GTK_IMAGE_SURFACE   ImageType = 7
 )
 
-type Justification C.GtkJustification
+type Justification int
 
 const (
 	GTK_JUSTIFY_LEFT   Justification = 0
@@ -375,7 +367,7 @@ const (
 	GTK_JUSTIFY_FILL   Justification = 3
 )
 
-type MenuDirectionType C.GtkMenuDirectionType
+type MenuDirectionType int
 
 const (
 	GTK_MENU_DIR_PARENT MenuDirectionType = 0
@@ -384,7 +376,7 @@ const (
 	GTK_MENU_DIR_PREV   MenuDirectionType = 3
 )
 
-type MessageType C.GtkMessageType
+type MessageType int
 
 const (
 	GTK_MESSAGE_INFO     MessageType = 0
@@ -394,7 +386,7 @@ const (
 	GTK_MESSAGE_OTHER    MessageType = 4
 )
 
-type MovementStep C.GtkMovementStep
+type MovementStep int
 
 const (
 	GTK_MOVEMENT_LOGICAL_POSITIONS MovementStep = 0
@@ -409,14 +401,14 @@ const (
 	GTK_MOVEMENT_HORIZONTAL_PAGES  MovementStep = 9
 )
 
-type NotebookTab C.GtkNotebookTab
+type NotebookTab int
 
 const (
 	GTK_NOTEBOOK_TAB_FIRST NotebookTab = 0
 	GTK_NOTEBOOK_TAB_LAST  NotebookTab = 1
 )
 
-type NumberUpLayout C.GtkNumberUpLayout
+type NumberUpLayout int
 
 const (
 	GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM NumberUpLayout = 0
@@ -429,14 +421,14 @@ const (
 	GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT NumberUpLayout = 7
 )
 
-type Orientation C.GtkOrientation
+type Orientation int
 
 const (
 	GTK_ORIENTATION_HORIZONTAL Orientation = 0
 	GTK_ORIENTATION_VERTICAL   Orientation = 1
 )
 
-type PackDirection C.GtkPackDirection
+type PackDirection int
 
 const (
 	GTK_PACK_DIRECTION_LTR PackDirection = 0
@@ -445,14 +437,14 @@ const (
 	GTK_PACK_DIRECTION_BTT PackDirection = 3
 )
 
-type PackType C.GtkPackType
+type PackType int
 
 const (
 	GTK_PACK_START PackType = 0
 	GTK_PACK_END   PackType = 1
 )
 
-type PageOrientation C.GtkPageOrientation
+type PageOrientation int
 
 const (
 	GTK_PAGE_ORIENTATION_PORTRAIT          PageOrientation = 0
@@ -461,7 +453,7 @@ const (
 	GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE PageOrientation = 3
 )
 
-type PageSet C.GtkPageSet
+type PageSet int
 
 const (
 	GTK_PAGE_SET_ALL  PageSet = 0
@@ -469,7 +461,7 @@ const (
 	GTK_PAGE_SET_ODD  PageSet = 2
 )
 
-type PathPriorityType C.GtkPathPriorityType
+type PathPriorityType int
 
 const (
 	GTK_PATH_PRIO_LOWEST      PathPriorityType = 0
@@ -480,7 +472,7 @@ const (
 	GTK_PATH_PRIO_HIGHEST     PathPriorityType = 15
 )
 
-type PathType C.GtkPathType
+type PathType int
 
 const (
 	GTK_PATH_WIDGET       PathType = 0
@@ -488,7 +480,7 @@ const (
 	GTK_PATH_CLASS        PathType = 2
 )
 
-type PolicyType C.GtkPolicyType
+type PolicyType int
 
 const (
 	GTK_POLICY_ALWAYS    PolicyType = 0
@@ -497,7 +489,7 @@ const (
 	GTK_POLICY_EXTERNAL  PolicyType = 3
 )
 
-type PositionType C.GtkPositionType
+type PositionType int
 
 const (
 	GTK_POS_LEFT   PositionType = 0
@@ -506,7 +498,7 @@ const (
 	GTK_POS_BOTTOM PositionType = 3
 )
 
-type PrintDuplex C.GtkPrintDuplex
+type PrintDuplex int
 
 const (
 	GTK_PRINT_DUPLEX_SIMPLEX    PrintDuplex = 0
@@ -514,7 +506,7 @@ const (
 	GTK_PRINT_DUPLEX_VERTICAL   PrintDuplex = 2
 )
 
-type PrintError C.GtkPrintError
+type PrintError int
 
 const (
 	GTK_PRINT_ERROR_GENERAL        PrintError = 0
@@ -523,7 +515,7 @@ const (
 	GTK_PRINT_ERROR_INVALID_FILE   PrintError = 3
 )
 
-type PrintOperationAction C.GtkPrintOperationAction
+type PrintOperationAction int
 
 const (
 	GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG PrintOperationAction = 0
@@ -532,7 +524,7 @@ const (
 	GTK_PRINT_OPERATION_ACTION_EXPORT       PrintOperationAction = 3
 )
 
-type PrintOperationResult C.GtkPrintOperationResult
+type PrintOperationResult int
 
 const (
 	GTK_PRINT_OPERATION_RESULT_ERROR       PrintOperationResult = 0
@@ -541,7 +533,7 @@ const (
 	GTK_PRINT_OPERATION_RESULT_IN_PROGRESS PrintOperationResult = 3
 )
 
-type PrintPages C.GtkPrintPages
+type PrintPages int
 
 const (
 	GTK_PRINT_PAGES_ALL       PrintPages = 0
@@ -550,7 +542,7 @@ const (
 	GTK_PRINT_PAGES_SELECTION PrintPages = 3
 )
 
-type PrintQuality C.GtkPrintQuality
+type PrintQuality int
 
 const (
 	GTK_PRINT_QUALITY_LOW    PrintQuality = 0
@@ -559,7 +551,7 @@ const (
 	GTK_PRINT_QUALITY_DRAFT  PrintQuality = 3
 )
 
-type PrintStatus C.GtkPrintStatus
+type PrintStatus int
 
 const (
 	GTK_PRINT_STATUS_INITIAL          PrintStatus = 0
@@ -573,7 +565,7 @@ const (
 	GTK_PRINT_STATUS_FINISHED_ABORTED PrintStatus = 8
 )
 
-type RcTokenType C.GtkRcTokenType
+type RcTokenType int
 
 const (
 	GTK_RC_TOKEN_INVALID        RcTokenType = 270
@@ -618,7 +610,7 @@ const (
 	GTK_RC_TOKEN_LAST           RcTokenType = 309
 )
 
-type ReliefStyle C.GtkReliefStyle
+type ReliefStyle int
 
 const (
 	GTK_RELIEF_NORMAL ReliefStyle = 0
@@ -626,7 +618,7 @@ const (
 	GTK_RELIEF_NONE   ReliefStyle = 2
 )
 
-type ResizeMode C.GtkResizeMode
+type ResizeMode int
 
 const (
 	GTK_RESIZE_PARENT    ResizeMode = 0
@@ -634,7 +626,7 @@ const (
 	GTK_RESIZE_IMMEDIATE ResizeMode = 2
 )
 
-type ResponseType C.GtkResponseType
+type ResponseType int
 
 const (
 	GTK_RESPONSE_NONE         ResponseType = -1
@@ -650,7 +642,7 @@ const (
 	GTK_RESPONSE_HELP         ResponseType = -11
 )
 
-type RevealerTransitionType C.GtkRevealerTransitionType
+type RevealerTransitionType int
 
 const (
 	GTK_REVEALER_TRANSITION_TYPE_NONE        RevealerTransitionType = 0
@@ -661,7 +653,7 @@ const (
 	GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN  RevealerTransitionType = 5
 )
 
-type ScrollStep C.GtkScrollStep
+type ScrollStep int
 
 const (
 	GTK_SCROLL_STEPS            ScrollStep = 0
@@ -672,7 +664,7 @@ const (
 	GTK_SCROLL_HORIZONTAL_ENDS  ScrollStep = 5
 )
 
-type ScrollType C.GtkScrollType
+type ScrollType int
 
 const (
 	GTK_SCROLL_NONE          ScrollType = 0
@@ -693,14 +685,14 @@ const (
 	GTK_SCROLL_END           ScrollType = 15
 )
 
-type ScrollablePolicy C.GtkScrollablePolicy
+type ScrollablePolicy int
 
 const (
 	GTK_SCROLL_MINIMUM ScrollablePolicy = 0
 	GTK_SCROLL_NATURAL ScrollablePolicy = 1
 )
 
-type SelectionMode C.GtkSelectionMode
+type SelectionMode int
 
 const (
 	GTK_SELECTION_NONE     SelectionMode = 0
@@ -709,7 +701,7 @@ const (
 	GTK_SELECTION_MULTIPLE SelectionMode = 3
 )
 
-type SensitivityType C.GtkSensitivityType
+type SensitivityType int
 
 const (
 	GTK_SENSITIVITY_AUTO SensitivityType = 0
@@ -717,7 +709,7 @@ const (
 	GTK_SENSITIVITY_OFF  SensitivityType = 2
 )
 
-type ShadowType C.GtkShadowType
+type ShadowType int
 
 const (
 	GTK_SHADOW_NONE       ShadowType = 0
@@ -727,7 +719,7 @@ const (
 	GTK_SHADOW_ETCHED_OUT ShadowType = 4
 )
 
-type SizeGroupMode C.GtkSizeGroupMode
+type SizeGroupMode int
 
 const (
 	GTK_SIZE_GROUP_NONE       SizeGroupMode = 0
@@ -736,7 +728,7 @@ const (
 	GTK_SIZE_GROUP_BOTH       SizeGroupMode = 3
 )
 
-type SizeRequestMode C.GtkSizeRequestMode
+type SizeRequestMode int
 
 const (
 	GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH SizeRequestMode = 0
@@ -744,21 +736,21 @@ const (
 	GTK_SIZE_REQUEST_CONSTANT_SIZE    SizeRequestMode = 2
 )
 
-type SortType C.GtkSortType
+type SortType int
 
 const (
 	GTK_SORT_ASCENDING  SortType = 0
 	GTK_SORT_DESCENDING SortType = 1
 )
 
-type SpinButtonUpdatePolicy C.GtkSpinButtonUpdatePolicy
+type SpinButtonUpdatePolicy int
 
 const (
 	GTK_UPDATE_ALWAYS   SpinButtonUpdatePolicy = 0
 	GTK_UPDATE_IF_VALID SpinButtonUpdatePolicy = 1
 )
 
-type SpinType C.GtkSpinType
+type SpinType int
 
 const (
 	GTK_SPIN_STEP_FORWARD  SpinType = 0
@@ -770,7 +762,7 @@ const (
 	GTK_SPIN_USER_DEFINED  SpinType = 6
 )
 
-type StackTransitionType C.GtkStackTransitionType
+type StackTransitionType int
 
 const (
 	GTK_STACK_TRANSITION_TYPE_NONE             StackTransitionType = 0
@@ -795,7 +787,7 @@ const (
 	GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT  StackTransitionType = 19
 )
 
-type StateType C.GtkStateType
+type StateType int
 
 const (
 	GTK_STATE_NORMAL       StateType = 0
@@ -807,7 +799,7 @@ const (
 	GTK_STATE_FOCUSED      StateType = 6
 )
 
-type TextBufferTargetInfo C.GtkTextBufferTargetInfo
+type TextBufferTargetInfo int
 
 const (
 	GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS TextBufferTargetInfo = -1
@@ -815,7 +807,7 @@ const (
 	GTK_TEXT_BUFFER_TARGET_INFO_TEXT            TextBufferTargetInfo = -3
 )
 
-type TextDirection C.GtkTextDirection
+type TextDirection int
 
 const (
 	GTK_TEXT_DIR_NONE TextDirection = 0
@@ -823,7 +815,7 @@ const (
 	GTK_TEXT_DIR_RTL  TextDirection = 2
 )
 
-type TextViewLayer C.GtkTextViewLayer
+type TextViewLayer int
 
 const (
 	GTK_TEXT_VIEW_LAYER_BELOW      TextViewLayer = 0
@@ -832,7 +824,7 @@ const (
 	GTK_TEXT_VIEW_LAYER_ABOVE_TEXT TextViewLayer = 3
 )
 
-type TextWindowType C.GtkTextWindowType
+type TextWindowType int
 
 const (
 	GTK_TEXT_WINDOW_PRIVATE TextWindowType = 0
@@ -844,14 +836,14 @@ const (
 	GTK_TEXT_WINDOW_BOTTOM  TextWindowType = 6
 )
 
-type ToolbarSpaceStyle C.GtkToolbarSpaceStyle
+type ToolbarSpaceStyle int
 
 const (
 	GTK_TOOLBAR_SPACE_EMPTY ToolbarSpaceStyle = 0
 	GTK_TOOLBAR_SPACE_LINE  ToolbarSpaceStyle = 1
 )
 
-type ToolbarStyle C.GtkToolbarStyle
+type ToolbarStyle int
 
 const (
 	GTK_TOOLBAR_ICONS      ToolbarStyle = 0
@@ -860,7 +852,7 @@ const (
 	GTK_TOOLBAR_BOTH_HORIZ ToolbarStyle = 3
 )
 
-type TreeViewColumnSizing C.GtkTreeViewColumnSizing
+type TreeViewColumnSizing int
 
 const (
 	GTK_TREE_VIEW_COLUMN_GROW_ONLY TreeViewColumnSizing = 0
@@ -868,7 +860,7 @@ const (
 	GTK_TREE_VIEW_COLUMN_FIXED     TreeViewColumnSizing = 2
 )
 
-type TreeViewDropPosition C.GtkTreeViewDropPosition
+type TreeViewDropPosition int
 
 const (
 	GTK_TREE_VIEW_DROP_BEFORE         TreeViewDropPosition = 0
@@ -877,7 +869,7 @@ const (
 	GTK_TREE_VIEW_DROP_INTO_OR_AFTER  TreeViewDropPosition = 3
 )
 
-type TreeViewGridLines C.GtkTreeViewGridLines
+type TreeViewGridLines int
 
 const (
 	GTK_TREE_VIEW_GRID_LINES_NONE       TreeViewGridLines = 0
@@ -886,7 +878,7 @@ const (
 	GTK_TREE_VIEW_GRID_LINES_BOTH       TreeViewGridLines = 3
 )
 
-type Unit C.GtkUnit
+type Unit int
 
 const (
 	GTK_UNIT_NONE   Unit = 0
@@ -895,14 +887,14 @@ const (
 	GTK_UNIT_MM     Unit = 3
 )
 
-type WidgetHelpType C.GtkWidgetHelpType
+type WidgetHelpType int
 
 const (
 	GTK_WIDGET_HELP_TOOLTIP    WidgetHelpType = 0
 	GTK_WIDGET_HELP_WHATS_THIS WidgetHelpType = 1
 )
 
-type WindowPosition C.GtkWindowPosition
+type WindowPosition int
 
 const (
 	GTK_WIN_POS_NONE             WindowPosition = 0
@@ -912,14 +904,14 @@ const (
 	GTK_WIN_POS_CENTER_ON_PARENT WindowPosition = 4
 )
 
-type WindowType C.GtkWindowType
+type WindowType int
 
 const (
 	GTK_WINDOW_TOPLEVEL WindowType = 0
 	GTK_WINDOW_POPUP    WindowType = 1
 )
 
-type WrapMode C.GtkWrapMode
+type WrapMode int
 
 const (
 	GTK_WRAP_NONE      WrapMode = 0

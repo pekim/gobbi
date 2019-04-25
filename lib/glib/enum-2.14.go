@@ -3,16 +3,7 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
-type RegexError C.GRegexError
+type RegexError int
 
 const (
 	REGEX_ERROR_COMPILE                                      RegexError = 0
@@ -74,7 +65,7 @@ const (
 	REGEX_ERROR_CHARACTER_VALUE_TOO_LARGE                    RegexError = 176
 )
 
-type UserDirectory C.GUserDirectory
+type UserDirectory int
 
 const (
 	USER_DIRECTORY_DESKTOP      UserDirectory = 0

@@ -2,14 +2,7 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-type AxisUse C.GdkAxisUse
+type AxisUse int
 
 const (
 	GDK_AXIS_IGNORE   AxisUse = 0
@@ -25,14 +18,14 @@ const (
 	GDK_AXIS_LAST     AxisUse = 10
 )
 
-type ByteOrder C.GdkByteOrder
+type ByteOrder int
 
 const (
 	GDK_LSB_FIRST ByteOrder = 0
 	GDK_MSB_FIRST ByteOrder = 1
 )
 
-type CrossingMode C.GdkCrossingMode
+type CrossingMode int
 
 const (
 	GDK_CROSSING_NORMAL        CrossingMode = 0
@@ -46,7 +39,7 @@ const (
 	GDK_CROSSING_DEVICE_SWITCH CrossingMode = 8
 )
 
-type CursorType C.GdkCursorType
+type CursorType int
 
 const (
 	GDK_X_CURSOR            CursorType = 0
@@ -131,7 +124,7 @@ const (
 	GDK_CURSOR_IS_PIXMAP    CursorType = -1
 )
 
-type DeviceType C.GdkDeviceType
+type DeviceType int
 
 const (
 	GDK_DEVICE_TYPE_MASTER   DeviceType = 0
@@ -139,7 +132,7 @@ const (
 	GDK_DEVICE_TYPE_FLOATING DeviceType = 2
 )
 
-type DragProtocol C.GdkDragProtocol
+type DragProtocol int
 
 const (
 	GDK_DRAG_PROTO_NONE            DragProtocol = 0
@@ -152,7 +145,7 @@ const (
 	GDK_DRAG_PROTO_WAYLAND         DragProtocol = 7
 )
 
-type EventType C.GdkEventType
+type EventType int
 
 const (
 	GDK_NOTHING             EventType = -1
@@ -208,7 +201,7 @@ const (
 	GDK_EVENT_LAST          EventType = 48
 )
 
-type FilterReturn C.GdkFilterReturn
+type FilterReturn int
 
 const (
 	GDK_FILTER_CONTINUE  FilterReturn = 0
@@ -216,7 +209,7 @@ const (
 	GDK_FILTER_REMOVE    FilterReturn = 2
 )
 
-type GrabOwnership C.GdkGrabOwnership
+type GrabOwnership int
 
 const (
 	GDK_OWNERSHIP_NONE        GrabOwnership = 0
@@ -224,7 +217,7 @@ const (
 	GDK_OWNERSHIP_APPLICATION GrabOwnership = 2
 )
 
-type GrabStatus C.GdkGrabStatus
+type GrabStatus int
 
 const (
 	GDK_GRAB_SUCCESS         GrabStatus = 0
@@ -235,7 +228,7 @@ const (
 	GDK_GRAB_FAILED          GrabStatus = 5
 )
 
-type Gravity C.GdkGravity
+type Gravity int
 
 const (
 	GDK_GRAVITY_NORTH_WEST Gravity = 1
@@ -250,7 +243,7 @@ const (
 	GDK_GRAVITY_STATIC     Gravity = 10
 )
 
-type InputMode C.GdkInputMode
+type InputMode int
 
 const (
 	GDK_MODE_DISABLED InputMode = 0
@@ -258,7 +251,7 @@ const (
 	GDK_MODE_WINDOW   InputMode = 2
 )
 
-type InputSource C.GdkInputSource
+type InputSource int
 
 const (
 	GDK_SOURCE_MOUSE       InputSource = 0
@@ -272,7 +265,7 @@ const (
 	GDK_SOURCE_TABLET_PAD  InputSource = 8
 )
 
-type NotifyType C.GdkNotifyType
+type NotifyType int
 
 const (
 	GDK_NOTIFY_ANCESTOR          NotifyType = 0
@@ -283,7 +276,7 @@ const (
 	GDK_NOTIFY_UNKNOWN           NotifyType = 5
 )
 
-type OwnerChange C.GdkOwnerChange
+type OwnerChange int
 
 const (
 	GDK_OWNER_CHANGE_NEW_OWNER OwnerChange = 0
@@ -291,7 +284,7 @@ const (
 	GDK_OWNER_CHANGE_CLOSE     OwnerChange = 2
 )
 
-type PropMode C.GdkPropMode
+type PropMode int
 
 const (
 	GDK_PROP_MODE_REPLACE PropMode = 0
@@ -299,14 +292,14 @@ const (
 	GDK_PROP_MODE_APPEND  PropMode = 2
 )
 
-type PropertyState C.guint
+type PropertyState int
 
 const (
 	GDK_PROPERTY_NEW_VALUE PropertyState = 0
 	GDK_PROPERTY_DELETE    PropertyState = 1
 )
 
-type ScrollDirection C.GdkScrollDirection
+type ScrollDirection int
 
 const (
 	GDK_SCROLL_UP     ScrollDirection = 0
@@ -316,7 +309,7 @@ const (
 	GDK_SCROLL_SMOOTH ScrollDirection = 4
 )
 
-type SettingAction C.GdkSettingAction
+type SettingAction int
 
 const (
 	GDK_SETTING_ACTION_NEW     SettingAction = 0
@@ -324,7 +317,7 @@ const (
 	GDK_SETTING_ACTION_DELETED SettingAction = 2
 )
 
-type Status C.GdkStatus
+type Status int
 
 const (
 	GDK_OK          Status = 0
@@ -334,7 +327,7 @@ const (
 	GDK_ERROR_MEM   Status = -4
 )
 
-type TouchpadGesturePhase C.GdkTouchpadGesturePhase
+type TouchpadGesturePhase int
 
 const (
 	GDK_TOUCHPAD_GESTURE_PHASE_BEGIN  TouchpadGesturePhase = 0
@@ -343,7 +336,7 @@ const (
 	GDK_TOUCHPAD_GESTURE_PHASE_CANCEL TouchpadGesturePhase = 3
 )
 
-type VisibilityState C.GdkVisibilityState
+type VisibilityState int
 
 const (
 	GDK_VISIBILITY_UNOBSCURED     VisibilityState = 0
@@ -351,7 +344,7 @@ const (
 	GDK_VISIBILITY_FULLY_OBSCURED VisibilityState = 2
 )
 
-type VisualType C.GdkVisualType
+type VisualType int
 
 const (
 	GDK_VISUAL_STATIC_GRAY  VisualType = 0
@@ -362,7 +355,7 @@ const (
 	GDK_VISUAL_DIRECT_COLOR VisualType = 5
 )
 
-type WindowEdge C.GdkWindowEdge
+type WindowEdge int
 
 const (
 	GDK_WINDOW_EDGE_NORTH_WEST WindowEdge = 0
@@ -375,7 +368,7 @@ const (
 	GDK_WINDOW_EDGE_SOUTH_EAST WindowEdge = 7
 )
 
-type WindowType C.GdkWindowType
+type WindowType int
 
 const (
 	GDK_WINDOW_ROOT       WindowType = 0
@@ -387,7 +380,7 @@ const (
 	GDK_WINDOW_SUBSURFACE WindowType = 6
 )
 
-type WindowTypeHint C.GdkWindowTypeHint
+type WindowTypeHint int
 
 const (
 	GDK_WINDOW_TYPE_HINT_NORMAL        WindowTypeHint = 0
@@ -406,7 +399,7 @@ const (
 	GDK_WINDOW_TYPE_HINT_DND           WindowTypeHint = 13
 )
 
-type WindowWindowClass C.GdkWindowWindowClass
+type WindowWindowClass int
 
 const (
 	GDK_INPUT_OUTPUT WindowWindowClass = 0

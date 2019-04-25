@@ -2,15 +2,7 @@
 
 package cairo
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib/gstdio.h>
-// #include <cairo/cairo.h>
-// #include <stdlib.h>
-import "C"
-
-type Status C.cairo_status_t
+type Status int
 
 const (
 	CAIRO_STATUS_SUCCESS                   Status = 0
@@ -54,7 +46,7 @@ const (
 	CAIRO_STATUS_JBIG2_GLOBAL_MISSING      Status = 38
 )
 
-type Content C.cairo_content_t
+type Content int
 
 const (
 	CAIRO_CONTENT_COLOR       Content = 4096
@@ -62,7 +54,7 @@ const (
 	CAIRO_CONTENT_COLOR_ALPHA Content = 12288
 )
 
-type Operator C.cairo_operator_t
+type Operator int
 
 const (
 	CAIRO_OPERATOR_CLEAR          Operator = 0
@@ -96,7 +88,7 @@ const (
 	CAIRO_OPERATOR_HSL_LUMINOSITY Operator = 28
 )
 
-type Antialias C.cairo_antialias_t
+type Antialias int
 
 const (
 	CAIRO_ANTIALIAS_DEFAULT  Antialias = 0
@@ -108,14 +100,14 @@ const (
 	CAIRO_ANTIALIAS_BEST     Antialias = 6
 )
 
-type FillRule C.cairo_fill_rule_t
+type FillRule int
 
 const (
 	CAIRO_FILL_RULE_WINDING  FillRule = 0
 	CAIRO_FILL_RULE_EVEN_ODD FillRule = 1
 )
 
-type LineCap C.cairo_line_cap_t
+type LineCap int
 
 const (
 	CAIRO_LINE_CAP_BUTT   LineCap = 0
@@ -123,7 +115,7 @@ const (
 	CAIRO_LINE_CAP_SQUARE LineCap = 2
 )
 
-type LineJoin C.cairo_line_join_t
+type LineJoin int
 
 const (
 	CAIRO_LINE_JOIN_MITER LineJoin = 0
@@ -131,13 +123,13 @@ const (
 	CAIRO_LINE_JOIN_BEVEL LineJoin = 2
 )
 
-type TextClusterFlags C.cairo_text_cluster_flags_t
+type TextClusterFlags int
 
 const (
 	CAIRO_TEXT_CLUSTER_FLAG_BACKWARD TextClusterFlags = 1
 )
 
-type FontSlant C.cairo_font_slant_t
+type FontSlant int
 
 const (
 	CAIRO_FONT_SLANT_NORMAL  FontSlant = 0
@@ -145,14 +137,14 @@ const (
 	CAIRO_FONT_SLANT_OBLIQUE FontSlant = 2
 )
 
-type FontWeight C.cairo_font_weight_t
+type FontWeight int
 
 const (
 	CAIRO_FONT_WEIGHT_NORMAL FontWeight = 0
 	CAIRO_FONT_WEIGHT_BOLD   FontWeight = 1
 )
 
-type SubpixelOrder C.cairo_subpixel_order_t
+type SubpixelOrder int
 
 const (
 	CAIRO_SUBPIXEL_ORDER_DEFAULT SubpixelOrder = 0
@@ -162,7 +154,7 @@ const (
 	CAIRO_SUBPIXEL_ORDER_VBGR    SubpixelOrder = 4
 )
 
-type HintStyle C.cairo_hint_style_t
+type HintStyle int
 
 const (
 	CAIRO_HINT_STYLE_DEFAULT HintStyle = 0
@@ -172,7 +164,7 @@ const (
 	CAIRO_HINT_STYLE_FULL    HintStyle = 4
 )
 
-type HintMetrics C.cairo_hint_metrics_t
+type HintMetrics int
 
 const (
 	CAIRO_HINT_METRICS_DEFAULT HintMetrics = 0
@@ -180,7 +172,7 @@ const (
 	CAIRO_HINT_METRICS_ON      HintMetrics = 2
 )
 
-type FontType C.cairo_font_type_t
+type FontType int
 
 const (
 	CAIRO_FONT_TYPE_TOY    FontType = 0
@@ -190,7 +182,7 @@ const (
 	CAIRO_FONT_TYPE_USER   FontType = 4
 )
 
-type PathDataType C.cairo_path_data_type_t
+type PathDataType int
 
 const (
 	CAIRO_PATH_MOVE_TO    PathDataType = 0
@@ -199,7 +191,7 @@ const (
 	CAIRO_PATH_CLOSE_PATH PathDataType = 3
 )
 
-type DeviceType C.cairo_device_type_t
+type DeviceType int
 
 const (
 	CAIRO_DEVICE_TYPE_DRM     DeviceType = 0
@@ -213,7 +205,7 @@ const (
 	CAIRO_DEVICE_TYPE_INVALID DeviceType = -1
 )
 
-type SurfaceType C.cairo_surface_type_t
+type SurfaceType int
 
 const (
 	CAIRO_SURFACE_TYPE_IMAGE          SurfaceType = 0
@@ -243,7 +235,7 @@ const (
 	CAIRO_SURFACE_TYPE_COGL           SurfaceType = 24
 )
 
-type Format C.cairo_format_t
+type Format int
 
 const (
 	CAIRO_FORMAT_INVALID   Format = -1
@@ -255,7 +247,7 @@ const (
 	CAIRO_FORMAT_RGB30     Format = 5
 )
 
-type PatternType C.cairo_pattern_type_t
+type PatternType int
 
 const (
 	CAIRO_PATTERN_TYPE_SOLID         PatternType = 0
@@ -266,7 +258,7 @@ const (
 	CAIRO_PATTERN_TYPE_RASTER_SOURCE PatternType = 5
 )
 
-type Extend C.cairo_extend_t
+type Extend int
 
 const (
 	CAIRO_EXTEND_NONE    Extend = 0
@@ -275,7 +267,7 @@ const (
 	CAIRO_EXTEND_PAD     Extend = 3
 )
 
-type Filter C.cairo_filter_t
+type Filter int
 
 const (
 	CAIRO_FILTER_FAST     Filter = 0
@@ -286,7 +278,7 @@ const (
 	CAIRO_FILTER_GAUSSIAN Filter = 5
 )
 
-type RegionOverlap C.cairo_region_overlap_t
+type RegionOverlap int
 
 const (
 	CAIRO_REGION_OVERLAP_IN   RegionOverlap = 0

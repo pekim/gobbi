@@ -2,24 +2,7 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type AppInfoCreateFlags C.GAppInfoCreateFlags
+type AppInfoCreateFlags int
 
 const (
 	APP_INFO_CREATE_NONE                          AppInfoCreateFlags = 0
@@ -28,7 +11,7 @@ const (
 	APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION AppInfoCreateFlags = 4
 )
 
-type AskPasswordFlags C.GAskPasswordFlags
+type AskPasswordFlags int
 
 const (
 	ASK_PASSWORD_NEED_PASSWORD       AskPasswordFlags = 1
@@ -38,7 +21,7 @@ const (
 	ASK_PASSWORD_ANONYMOUS_SUPPORTED AskPasswordFlags = 16
 )
 
-type FileAttributeInfoFlags C.GFileAttributeInfoFlags
+type FileAttributeInfoFlags int
 
 const (
 	FILE_ATTRIBUTE_INFO_NONE            FileAttributeInfoFlags = 0
@@ -46,7 +29,7 @@ const (
 	FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED FileAttributeInfoFlags = 2
 )
 
-type FileCopyFlags C.GFileCopyFlags
+type FileCopyFlags int
 
 const (
 	FILE_COPY_NONE                 FileCopyFlags = 0
@@ -58,7 +41,7 @@ const (
 	FILE_COPY_TARGET_DEFAULT_PERMS FileCopyFlags = 32
 )
 
-type FileCreateFlags C.GFileCreateFlags
+type FileCreateFlags int
 
 const (
 	FILE_CREATE_NONE                FileCreateFlags = 0
@@ -66,7 +49,7 @@ const (
 	FILE_CREATE_REPLACE_DESTINATION FileCreateFlags = 2
 )
 
-type FileMonitorFlags C.GFileMonitorFlags
+type FileMonitorFlags int
 
 const (
 	FILE_MONITOR_NONE             FileMonitorFlags = 0
@@ -76,27 +59,27 @@ const (
 	FILE_MONITOR_WATCH_MOVES      FileMonitorFlags = 8
 )
 
-type FileQueryInfoFlags C.GFileQueryInfoFlags
+type FileQueryInfoFlags int
 
 const (
 	FILE_QUERY_INFO_NONE              FileQueryInfoFlags = 0
 	FILE_QUERY_INFO_NOFOLLOW_SYMLINKS FileQueryInfoFlags = 1
 )
 
-type MountMountFlags C.GMountMountFlags
+type MountMountFlags int
 
 const (
 	MOUNT_MOUNT_NONE MountMountFlags = 0
 )
 
-type MountUnmountFlags C.GMountUnmountFlags
+type MountUnmountFlags int
 
 const (
 	MOUNT_UNMOUNT_NONE  MountUnmountFlags = 0
 	MOUNT_UNMOUNT_FORCE MountUnmountFlags = 1
 )
 
-type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
+type OutputStreamSpliceFlags int
 
 const (
 	OUTPUT_STREAM_SPLICE_NONE         OutputStreamSpliceFlags = 0
@@ -104,7 +87,7 @@ const (
 	OUTPUT_STREAM_SPLICE_CLOSE_TARGET OutputStreamSpliceFlags = 2
 )
 
-type SettingsBindFlags C.GSettingsBindFlags
+type SettingsBindFlags int
 
 const (
 	SETTINGS_BIND_DEFAULT        SettingsBindFlags = 0

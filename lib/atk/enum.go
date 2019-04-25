@@ -2,23 +2,19 @@
 
 package atk
 
-import "unsafe"
+import (
+	"C"
+	"unsafe"
+)
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <atk/atk.h>
-// #include <stdlib.h>
-import "C"
-
-type CoordType C.AtkCoordType
+type CoordType int
 
 const (
 	ATK_XY_SCREEN CoordType = 0
 	ATK_XY_WINDOW CoordType = 1
 )
 
-type KeyEventType C.AtkKeyEventType
+type KeyEventType int
 
 const (
 	ATK_KEY_EVENT_PRESS        KeyEventType = 0
@@ -26,7 +22,7 @@ const (
 	ATK_KEY_EVENT_LAST_DEFINED KeyEventType = 2
 )
 
-type Layer C.AtkLayer
+type Layer int
 
 const (
 	ATK_LAYER_INVALID    Layer = 0
@@ -39,7 +35,7 @@ const (
 	ATK_LAYER_WINDOW     Layer = 7
 )
 
-type RelationType C.AtkRelationType
+type RelationType int
 
 const (
 	ATK_RELATION_NULL             RelationType = 0
@@ -98,7 +94,7 @@ func RelationTypeRegister(name string) RelationType {
 	return retGo
 }
 
-type Role C.AtkRole
+type Role int
 
 const (
 	ATK_ROLE_INVALID               Role = 0
@@ -269,7 +265,7 @@ func RoleRegister(name string) Role {
 	return retGo
 }
 
-type StateType C.AtkStateType
+type StateType int
 
 const (
 	ATK_STATE_INVALID                 StateType = 0
@@ -350,7 +346,7 @@ func StateTypeRegister(name string) StateType {
 	return retGo
 }
 
-type TextAttribute C.AtkTextAttribute
+type TextAttribute int
 
 const (
 	ATK_TEXT_ATTR_INVALID            TextAttribute = 0
@@ -428,7 +424,7 @@ func TextAttributeRegister(name string) TextAttribute {
 	return retGo
 }
 
-type TextBoundary C.AtkTextBoundary
+type TextBoundary int
 
 const (
 	ATK_TEXT_BOUNDARY_CHAR           TextBoundary = 0
@@ -440,7 +436,7 @@ const (
 	ATK_TEXT_BOUNDARY_LINE_END       TextBoundary = 6
 )
 
-type TextClipType C.AtkTextClipType
+type TextClipType int
 
 const (
 	ATK_TEXT_CLIP_NONE TextClipType = 0
@@ -449,7 +445,7 @@ const (
 	ATK_TEXT_CLIP_BOTH TextClipType = 3
 )
 
-type TextGranularity C.AtkTextGranularity
+type TextGranularity int
 
 const (
 	ATK_TEXT_GRANULARITY_CHAR      TextGranularity = 0
@@ -459,7 +455,7 @@ const (
 	ATK_TEXT_GRANULARITY_PARAGRAPH TextGranularity = 4
 )
 
-type ValueType C.AtkValueType
+type ValueType int
 
 const (
 	ATK_VALUE_VERY_WEAK    ValueType = 0

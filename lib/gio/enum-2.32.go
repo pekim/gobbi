@@ -3,26 +3,12 @@
 
 package gio
 
-import glib "github.com/pekim/gobbi/lib/glib"
+import (
+	"C"
+	glib "github.com/pekim/gobbi/lib/glib"
+)
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type ResourceError C.GResourceError
+type ResourceError int
 
 const (
 	RESOURCE_ERROR_NOT_FOUND ResourceError = 0
@@ -37,7 +23,7 @@ func ResourceErrorQuark() glib.Quark {
 	return retGo
 }
 
-type SocketClientEvent C.GSocketClientEvent
+type SocketClientEvent int
 
 const (
 	SOCKET_CLIENT_RESOLVING         SocketClientEvent = 0

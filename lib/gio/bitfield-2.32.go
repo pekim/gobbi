@@ -3,31 +3,14 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type ResourceFlags C.GResourceFlags
+type ResourceFlags int
 
 const (
 	RESOURCE_FLAGS_NONE       ResourceFlags = 0
 	RESOURCE_FLAGS_COMPRESSED ResourceFlags = 1
 )
 
-type ResourceLookupFlags C.GResourceLookupFlags
+type ResourceLookupFlags int
 
 const (
 	RESOURCE_LOOKUP_FLAGS_NONE ResourceLookupFlags = 0

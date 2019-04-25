@@ -2,16 +2,7 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
-type AsciiType C.GAsciiType
+type AsciiType int
 
 const (
 	ASCII_ALNUM  AsciiType = 1
@@ -27,7 +18,7 @@ const (
 	ASCII_XDIGIT AsciiType = 1024
 )
 
-type GFileTest C.GFileTest
+type GFileTest int
 
 const (
 	FILE_TEST_IS_REGULAR    GFileTest = 1
@@ -37,7 +28,7 @@ const (
 	FILE_TEST_EXISTS        GFileTest = 16
 )
 
-type FormatSizeFlags C.GFormatSizeFlags
+type FormatSizeFlags int
 
 const (
 	FORMAT_SIZE_DEFAULT     FormatSizeFlags = 0
@@ -46,7 +37,7 @@ const (
 	FORMAT_SIZE_BITS        FormatSizeFlags = 4
 )
 
-type HookFlagMask C.GHookFlagMask
+type HookFlagMask int
 
 const (
 	HOOK_FLAG_ACTIVE  HookFlagMask = 1
@@ -54,7 +45,7 @@ const (
 	HOOK_FLAG_MASK    HookFlagMask = 15
 )
 
-type IOCondition C.GIOCondition
+type IOCondition int
 
 const (
 	IO_IN   IOCondition = 1
@@ -65,7 +56,7 @@ const (
 	IO_NVAL IOCondition = 32
 )
 
-type IOFlags C.GIOFlags
+type IOFlags int
 
 const (
 	IO_FLAG_APPEND       IOFlags = 1
@@ -79,7 +70,7 @@ const (
 	IO_FLAG_SET_MASK     IOFlags = 3
 )
 
-type KeyFileFlags C.GKeyFileFlags
+type KeyFileFlags int
 
 const (
 	KEY_FILE_NONE              KeyFileFlags = 0
@@ -87,7 +78,7 @@ const (
 	KEY_FILE_KEEP_TRANSLATIONS KeyFileFlags = 2
 )
 
-type LogLevelFlags C.GLogLevelFlags
+type LogLevelFlags int
 
 const (
 	LOG_FLAG_RECURSION LogLevelFlags = 1
@@ -101,7 +92,7 @@ const (
 	LOG_LEVEL_MASK     LogLevelFlags = -4
 )
 
-type MarkupCollectType C.GMarkupCollectType
+type MarkupCollectType int
 
 const (
 	MARKUP_COLLECT_INVALID  MarkupCollectType = 0
@@ -112,7 +103,7 @@ const (
 	MARKUP_COLLECT_OPTIONAL MarkupCollectType = 65536
 )
 
-type MarkupParseFlags C.GMarkupParseFlags
+type MarkupParseFlags int
 
 const (
 	MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG MarkupParseFlags = 1
@@ -121,7 +112,7 @@ const (
 	MARKUP_IGNORE_QUALIFIED                 MarkupParseFlags = 8
 )
 
-type OptionFlags C.GOptionFlags
+type OptionFlags int
 
 const (
 	OPTION_FLAG_NONE         OptionFlags = 0
@@ -134,7 +125,7 @@ const (
 	OPTION_FLAG_NOALIAS      OptionFlags = 64
 )
 
-type SpawnFlags C.GSpawnFlags
+type SpawnFlags int
 
 const (
 	SPAWN_DEFAULT                SpawnFlags = 0
@@ -149,7 +140,7 @@ const (
 	SPAWN_CLOEXEC_PIPES          SpawnFlags = 256
 )
 
-type TestSubprocessFlags C.GTestSubprocessFlags
+type TestSubprocessFlags int
 
 const (
 	TEST_SUBPROCESS_INHERIT_STDIN  TestSubprocessFlags = 1
@@ -157,7 +148,7 @@ const (
 	TEST_SUBPROCESS_INHERIT_STDERR TestSubprocessFlags = 4
 )
 
-type TestTrapFlags C.GTestTrapFlags
+type TestTrapFlags int
 
 const (
 	TEST_TRAP_SILENCE_STDOUT TestTrapFlags = 128
@@ -165,7 +156,7 @@ const (
 	TEST_TRAP_INHERIT_STDIN  TestTrapFlags = 512
 )
 
-type TraverseFlags C.GTraverseFlags
+type TraverseFlags int
 
 const (
 	TRAVERSE_LEAVES     TraverseFlags = 1

@@ -3,16 +3,7 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
-type RegexCompileFlags C.GRegexCompileFlags
+type RegexCompileFlags int
 
 const (
 	REGEX_CASELESS          RegexCompileFlags = 1
@@ -35,7 +26,7 @@ const (
 	REGEX_JAVASCRIPT_COMPAT RegexCompileFlags = 33554432
 )
 
-type RegexMatchFlags C.GRegexMatchFlags
+type RegexMatchFlags int
 
 const (
 	REGEX_MATCH_ANCHORED         RegexMatchFlags = 16

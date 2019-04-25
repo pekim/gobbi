@@ -94,10 +94,10 @@ func (ns *Namespace) generate() {
 
 	ns.generateBooleanFile()
 	ns.generateGeneratables("alias", ns.Aliases, false)
-	ns.generateGeneratables("bitfield", ns.Bitfields, true)
+	ns.generateGeneratables("bitfield", ns.Bitfields, false)
 	ns.generateGeneratables("class", ns.Classes, true)
 	ns.generateGeneratables("constant", ns.Constants, false)
-	ns.generateGeneratables("enum", ns.Enumerations, true)
+	ns.generateGeneratables("enum", ns.Enumerations, false)
 	ns.generateGeneratables("function", ns.Functions, true)
 	ns.generateGeneratables("interface", ns.Interfaces, true)
 	ns.generateGeneratables("record", ns.Records, true)

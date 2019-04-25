@@ -3,14 +3,7 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-type GLError C.GdkGLError
+type GLError int
 
 const (
 	GDK_GL_ERROR_NOT_AVAILABLE       GLError = 0

@@ -2,16 +2,7 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-type AccelFlags C.GtkAccelFlags
+type AccelFlags int
 
 const (
 	GTK_ACCEL_VISIBLE AccelFlags = 1
@@ -19,7 +10,7 @@ const (
 	GTK_ACCEL_MASK    AccelFlags = 7
 )
 
-type AttachOptions C.GtkAttachOptions
+type AttachOptions int
 
 const (
 	GTK_EXPAND AttachOptions = 1
@@ -27,7 +18,7 @@ const (
 	GTK_FILL   AttachOptions = 4
 )
 
-type CalendarDisplayOptions C.GtkCalendarDisplayOptions
+type CalendarDisplayOptions int
 
 const (
 	GTK_CALENDAR_SHOW_HEADING      CalendarDisplayOptions = 1
@@ -37,7 +28,7 @@ const (
 	GTK_CALENDAR_SHOW_DETAILS      CalendarDisplayOptions = 32
 )
 
-type CellRendererState C.GtkCellRendererState
+type CellRendererState int
 
 const (
 	GTK_CELL_RENDERER_SELECTED    CellRendererState = 1
@@ -49,7 +40,7 @@ const (
 	GTK_CELL_RENDERER_EXPANDED    CellRendererState = 64
 )
 
-type DebugFlag C.GtkDebugFlag
+type DebugFlag int
 
 const (
 	GTK_DEBUG_MISC           DebugFlag = 1
@@ -76,7 +67,7 @@ const (
 	GTK_DEBUG_LAYOUT         DebugFlag = 2097152
 )
 
-type DestDefaults C.GtkDestDefaults
+type DestDefaults int
 
 const (
 	GTK_DEST_DEFAULT_MOTION    DestDefaults = 1
@@ -85,7 +76,7 @@ const (
 	GTK_DEST_DEFAULT_ALL       DestDefaults = 7
 )
 
-type DialogFlags C.GtkDialogFlags
+type DialogFlags int
 
 const (
 	GTK_DIALOG_MODAL               DialogFlags = 1
@@ -93,7 +84,7 @@ const (
 	GTK_DIALOG_USE_HEADER_BAR      DialogFlags = 4
 )
 
-type FileFilterFlags C.GtkFileFilterFlags
+type FileFilterFlags int
 
 const (
 	GTK_FILE_FILTER_FILENAME     FileFilterFlags = 1
@@ -102,7 +93,7 @@ const (
 	GTK_FILE_FILTER_MIME_TYPE    FileFilterFlags = 8
 )
 
-type IconLookupFlags C.GtkIconLookupFlags
+type IconLookupFlags int
 
 const (
 	GTK_ICON_LOOKUP_NO_SVG           IconLookupFlags = 1
@@ -116,7 +107,7 @@ const (
 	GTK_ICON_LOOKUP_DIR_RTL          IconLookupFlags = 256
 )
 
-type JunctionSides C.GtkJunctionSides
+type JunctionSides int
 
 const (
 	GTK_JUNCTION_NONE               JunctionSides = 0
@@ -130,7 +121,7 @@ const (
 	GTK_JUNCTION_RIGHT              JunctionSides = 10
 )
 
-type PlacesOpenFlags C.GtkPlacesOpenFlags
+type PlacesOpenFlags int
 
 const (
 	GTK_PLACES_OPEN_NORMAL     PlacesOpenFlags = 1
@@ -138,7 +129,7 @@ const (
 	GTK_PLACES_OPEN_NEW_WINDOW PlacesOpenFlags = 4
 )
 
-type RcFlags C.GtkRcFlags
+type RcFlags int
 
 const (
 	GTK_RC_FG   RcFlags = 1
@@ -147,7 +138,7 @@ const (
 	GTK_RC_BASE RcFlags = 8
 )
 
-type RecentFilterFlags C.GtkRecentFilterFlags
+type RecentFilterFlags int
 
 const (
 	GTK_RECENT_FILTER_URI          RecentFilterFlags = 1
@@ -158,7 +149,7 @@ const (
 	GTK_RECENT_FILTER_AGE          RecentFilterFlags = 32
 )
 
-type RegionFlags C.GtkRegionFlags
+type RegionFlags int
 
 const (
 	GTK_REGION_EVEN   RegionFlags = 1
@@ -169,7 +160,7 @@ const (
 	GTK_REGION_SORTED RegionFlags = 32
 )
 
-type StateFlags C.GtkStateFlags
+type StateFlags int
 
 const (
 	GTK_STATE_FLAG_NORMAL       StateFlags = 0
@@ -188,7 +179,7 @@ const (
 	GTK_STATE_FLAG_DROP_ACTIVE  StateFlags = 4096
 )
 
-type TargetFlags C.GtkTargetFlags
+type TargetFlags int
 
 const (
 	GTK_TARGET_SAME_APP     TargetFlags = 1
@@ -197,7 +188,7 @@ const (
 	GTK_TARGET_OTHER_WIDGET TargetFlags = 8
 )
 
-type TextSearchFlags C.GtkTextSearchFlags
+type TextSearchFlags int
 
 const (
 	GTK_TEXT_SEARCH_VISIBLE_ONLY     TextSearchFlags = 1
@@ -205,21 +196,21 @@ const (
 	GTK_TEXT_SEARCH_CASE_INSENSITIVE TextSearchFlags = 4
 )
 
-type ToolPaletteDragTargets C.GtkToolPaletteDragTargets
+type ToolPaletteDragTargets int
 
 const (
 	GTK_TOOL_PALETTE_DRAG_ITEMS  ToolPaletteDragTargets = 1
 	GTK_TOOL_PALETTE_DRAG_GROUPS ToolPaletteDragTargets = 2
 )
 
-type TreeModelFlags C.GtkTreeModelFlags
+type TreeModelFlags int
 
 const (
 	GTK_TREE_MODEL_ITERS_PERSIST TreeModelFlags = 1
 	GTK_TREE_MODEL_LIST_ONLY     TreeModelFlags = 2
 )
 
-type UIManagerItemType C.GtkUIManagerItemType
+type UIManagerItemType int
 
 const (
 	GTK_UI_MANAGER_AUTO              UIManagerItemType = 0

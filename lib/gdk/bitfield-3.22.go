@@ -3,14 +3,7 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-type AnchorHints C.GdkAnchorHints
+type AnchorHints int
 
 const (
 	GDK_ANCHOR_FLIP_X   AnchorHints = 1
@@ -24,7 +17,7 @@ const (
 	GDK_ANCHOR_RESIZE   AnchorHints = 48
 )
 
-type AxisFlags C.GdkAxisFlags
+type AxisFlags int
 
 const (
 	GDK_AXIS_FLAG_X        AxisFlags = 2

@@ -3,26 +3,12 @@
 
 package gio
 
-import glib "github.com/pekim/gobbi/lib/glib"
+import (
+	"C"
+	glib "github.com/pekim/gobbi/lib/glib"
+)
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type TlsAuthenticationMode C.GTlsAuthenticationMode
+type TlsAuthenticationMode int
 
 const (
 	TLS_AUTHENTICATION_NONE      TlsAuthenticationMode = 0
@@ -30,7 +16,7 @@ const (
 	TLS_AUTHENTICATION_REQUIRED  TlsAuthenticationMode = 2
 )
 
-type TlsError C.GTlsError
+type TlsError int
 
 const (
 	TLS_ERROR_UNAVAILABLE          TlsError = 0
@@ -50,7 +36,7 @@ func TlsErrorQuark() glib.Quark {
 	return retGo
 }
 
-type TlsRehandshakeMode C.GTlsRehandshakeMode
+type TlsRehandshakeMode int
 
 const (
 	TLS_REHANDSHAKE_NEVER    TlsRehandshakeMode = 0

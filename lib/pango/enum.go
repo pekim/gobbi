@@ -2,16 +2,12 @@
 
 package pango
 
-import "unsafe"
+import (
+	"C"
+	"unsafe"
+)
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
-
-type Alignment C.PangoAlignment
+type Alignment int
 
 const (
 	PANGO_ALIGN_LEFT   Alignment = 0
@@ -19,7 +15,7 @@ const (
 	PANGO_ALIGN_RIGHT  Alignment = 2
 )
 
-type AttrType C.PangoAttrType
+type AttrType int
 
 const (
 	PANGO_ATTR_INVALID             AttrType = 0
@@ -61,7 +57,7 @@ func AttrTypeRegister(name string) AttrType {
 	return retGo
 }
 
-type CoverageLevel C.PangoCoverageLevel
+type CoverageLevel int
 
 const (
 	PANGO_COVERAGE_NONE        CoverageLevel = 0
@@ -70,7 +66,7 @@ const (
 	PANGO_COVERAGE_EXACT       CoverageLevel = 3
 )
 
-type Direction C.PangoDirection
+type Direction int
 
 const (
 	PANGO_DIRECTION_LTR      Direction = 0
@@ -82,7 +78,7 @@ const (
 	PANGO_DIRECTION_NEUTRAL  Direction = 6
 )
 
-type EllipsizeMode C.PangoEllipsizeMode
+type EllipsizeMode int
 
 const (
 	PANGO_ELLIPSIZE_NONE   EllipsizeMode = 0
@@ -91,7 +87,7 @@ const (
 	PANGO_ELLIPSIZE_END    EllipsizeMode = 3
 )
 
-type Script C.PangoScript
+type Script int
 
 const (
 	PANGO_SCRIPT_INVALID_CODE          Script = -1
@@ -214,7 +210,7 @@ const (
 	PANGO_SCRIPT_SIGNWRITING           Script = 116
 )
 
-type Stretch C.PangoStretch
+type Stretch int
 
 const (
 	PANGO_STRETCH_ULTRA_CONDENSED Stretch = 0
@@ -228,7 +224,7 @@ const (
 	PANGO_STRETCH_ULTRA_EXPANDED  Stretch = 8
 )
 
-type Style C.PangoStyle
+type Style int
 
 const (
 	PANGO_STYLE_NORMAL  Style = 0
@@ -236,13 +232,13 @@ const (
 	PANGO_STYLE_ITALIC  Style = 2
 )
 
-type TabAlign C.PangoTabAlign
+type TabAlign int
 
 const (
 	PANGO_TAB_LEFT TabAlign = 0
 )
 
-type Underline C.PangoUnderline
+type Underline int
 
 const (
 	PANGO_UNDERLINE_NONE   Underline = 0
@@ -252,14 +248,14 @@ const (
 	PANGO_UNDERLINE_ERROR  Underline = 4
 )
 
-type Variant C.PangoVariant
+type Variant int
 
 const (
 	PANGO_VARIANT_NORMAL     Variant = 0
 	PANGO_VARIANT_SMALL_CAPS Variant = 1
 )
 
-type Weight C.PangoWeight
+type Weight int
 
 const (
 	PANGO_WEIGHT_THIN       Weight = 100
@@ -276,7 +272,7 @@ const (
 	PANGO_WEIGHT_ULTRAHEAVY Weight = 1000
 )
 
-type WrapMode C.PangoWrapMode
+type WrapMode int
 
 const (
 	PANGO_WRAP_WORD      WrapMode = 0

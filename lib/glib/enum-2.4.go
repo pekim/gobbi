@@ -3,16 +3,7 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
-type OnceStatus C.GOnceStatus
+type OnceStatus int
 
 const (
 	ONCE_STATUS_NOTCALLED OnceStatus = 0

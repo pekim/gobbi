@@ -71,7 +71,8 @@ func (e *Enumeration) generate(g *jen.Group, version *Version) {
 	g.
 		Type().
 		Id(e.goTypeName).
-		Qual("C", e.CType)
+		Int()
+		//Qual("C", e.CType)
 
 	// define members
 	g.Const().DefsFunc(func(g *jen.Group) {

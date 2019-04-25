@@ -3,38 +3,21 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type IOModuleScopeFlags C.GIOModuleScopeFlags
+type IOModuleScopeFlags int
 
 const (
 	IO_MODULE_SCOPE_NONE             IOModuleScopeFlags = 0
 	IO_MODULE_SCOPE_BLOCK_DUPLICATES IOModuleScopeFlags = 1
 )
 
-type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
+type TlsDatabaseLookupFlags int
 
 const (
 	TLS_DATABASE_LOOKUP_NONE    TlsDatabaseLookupFlags = 0
 	TLS_DATABASE_LOOKUP_KEYPAIR TlsDatabaseLookupFlags = 1
 )
 
-type TlsInteractionResult C.GTlsInteractionResult
+type TlsInteractionResult int
 
 const (
 	TLS_INTERACTION_UNHANDLED TlsInteractionResult = 0

@@ -3,26 +3,12 @@
 
 package gio
 
-import glib "github.com/pekim/gobbi/lib/glib"
+import (
+	"C"
+	glib "github.com/pekim/gobbi/lib/glib"
+)
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type DriveStartStopType C.GDriveStartStopType
+type DriveStartStopType int
 
 const (
 	DRIVE_START_STOP_TYPE_UNKNOWN   DriveStartStopType = 0
@@ -32,7 +18,7 @@ const (
 	DRIVE_START_STOP_TYPE_PASSWORD  DriveStartStopType = 4
 )
 
-type ResolverError C.GResolverError
+type ResolverError int
 
 const (
 	RESOLVER_ERROR_NOT_FOUND         ResolverError = 0
@@ -48,7 +34,7 @@ func ResolverErrorQuark() glib.Quark {
 	return retGo
 }
 
-type SocketFamily C.GSocketFamily
+type SocketFamily int
 
 const (
 	SOCKET_FAMILY_INVALID SocketFamily = 0
@@ -57,7 +43,7 @@ const (
 	SOCKET_FAMILY_IPV6    SocketFamily = 10
 )
 
-type SocketProtocol C.GSocketProtocol
+type SocketProtocol int
 
 const (
 	SOCKET_PROTOCOL_UNKNOWN SocketProtocol = -1
@@ -67,7 +53,7 @@ const (
 	SOCKET_PROTOCOL_SCTP    SocketProtocol = 132
 )
 
-type SocketType C.GSocketType
+type SocketType int
 
 const (
 	SOCKET_TYPE_INVALID   SocketType = 0

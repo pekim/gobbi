@@ -3,14 +3,7 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-type DevicePadFeature C.GdkDevicePadFeature
+type DevicePadFeature int
 
 const (
 	GDK_DEVICE_PAD_FEATURE_BUTTON DevicePadFeature = 0
@@ -18,7 +11,7 @@ const (
 	GDK_DEVICE_PAD_FEATURE_STRIP  DevicePadFeature = 2
 )
 
-type DeviceToolType C.GdkDeviceToolType
+type DeviceToolType int
 
 const (
 	GDK_DEVICE_TOOL_TYPE_UNKNOWN  DeviceToolType = 0
@@ -31,7 +24,7 @@ const (
 	GDK_DEVICE_TOOL_TYPE_LENS     DeviceToolType = 7
 )
 
-type SubpixelLayout C.GdkSubpixelLayout
+type SubpixelLayout int
 
 const (
 	GDK_SUBPIXEL_LAYOUT_UNKNOWN        SubpixelLayout = 0

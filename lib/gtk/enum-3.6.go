@@ -3,16 +3,7 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-type InputPurpose C.GtkInputPurpose
+type InputPurpose int
 
 const (
 	GTK_INPUT_PURPOSE_FREE_FORM InputPurpose = 0
@@ -27,7 +18,7 @@ const (
 	GTK_INPUT_PURPOSE_PIN       InputPurpose = 9
 )
 
-type LevelBarMode C.GtkLevelBarMode
+type LevelBarMode int
 
 const (
 	GTK_LEVEL_BAR_MODE_CONTINUOUS LevelBarMode = 0

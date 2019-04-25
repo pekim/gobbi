@@ -3,23 +3,14 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-type PopoverConstraint C.GtkPopoverConstraint
+type PopoverConstraint int
 
 const (
 	GTK_POPOVER_CONSTRAINT_NONE   PopoverConstraint = 0
 	GTK_POPOVER_CONSTRAINT_WINDOW PopoverConstraint = 1
 )
 
-type ShortcutType C.GtkShortcutType
+type ShortcutType int
 
 const (
 	GTK_SHORTCUT_ACCELERATOR                     ShortcutType = 0

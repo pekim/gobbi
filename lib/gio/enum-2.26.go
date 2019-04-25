@@ -9,21 +9,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	static void _g_dbus_error_set_dbus_error(GError** error, const gchar* dbus_error_name, const gchar* dbus_error_message, const gchar* format) {
@@ -32,7 +17,7 @@ import (
 */
 import "C"
 
-type BusType C.GBusType
+type BusType int
 
 const (
 	BUS_TYPE_STARTER BusType = -1
@@ -41,7 +26,7 @@ const (
 	BUS_TYPE_SESSION BusType = 2
 )
 
-type CredentialsType C.GCredentialsType
+type CredentialsType int
 
 const (
 	CREDENTIALS_TYPE_INVALID              CredentialsType = 0
@@ -52,7 +37,7 @@ const (
 	CREDENTIALS_TYPE_NETBSD_UNPCBID       CredentialsType = 5
 )
 
-type DBusError C.GDBusError
+type DBusError int
 
 const (
 	DBUS_ERROR_FAILED                           DBusError = 0
@@ -224,14 +209,14 @@ func DBusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusError
 	return retGo
 }
 
-type DBusMessageByteOrder C.GDBusMessageByteOrder
+type DBusMessageByteOrder int
 
 const (
 	DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN    DBusMessageByteOrder = 66
 	DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN DBusMessageByteOrder = 108
 )
 
-type DBusMessageHeaderField C.GDBusMessageHeaderField
+type DBusMessageHeaderField int
 
 const (
 	DBUS_MESSAGE_HEADER_FIELD_INVALID      DBusMessageHeaderField = 0
@@ -246,7 +231,7 @@ const (
 	DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS DBusMessageHeaderField = 9
 )
 
-type DBusMessageType C.GDBusMessageType
+type DBusMessageType int
 
 const (
 	DBUS_MESSAGE_TYPE_INVALID       DBusMessageType = 0
@@ -256,7 +241,7 @@ const (
 	DBUS_MESSAGE_TYPE_SIGNAL        DBusMessageType = 4
 )
 
-type UnixSocketAddressType C.GUnixSocketAddressType
+type UnixSocketAddressType int
 
 const (
 	UNIX_SOCKET_ADDRESS_INVALID         UnixSocketAddressType = 0

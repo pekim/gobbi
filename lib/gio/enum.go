@@ -2,24 +2,7 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type DataStreamByteOrder C.GDataStreamByteOrder
+type DataStreamByteOrder int
 
 const (
 	DATA_STREAM_BYTE_ORDER_BIG_ENDIAN    DataStreamByteOrder = 0
@@ -27,7 +10,7 @@ const (
 	DATA_STREAM_BYTE_ORDER_HOST_ENDIAN   DataStreamByteOrder = 2
 )
 
-type DataStreamNewlineType C.GDataStreamNewlineType
+type DataStreamNewlineType int
 
 const (
 	DATA_STREAM_NEWLINE_TYPE_LF    DataStreamNewlineType = 0
@@ -36,7 +19,7 @@ const (
 	DATA_STREAM_NEWLINE_TYPE_ANY   DataStreamNewlineType = 3
 )
 
-type FileAttributeStatus C.GFileAttributeStatus
+type FileAttributeStatus int
 
 const (
 	FILE_ATTRIBUTE_STATUS_UNSET         FileAttributeStatus = 0
@@ -44,7 +27,7 @@ const (
 	FILE_ATTRIBUTE_STATUS_ERROR_SETTING FileAttributeStatus = 2
 )
 
-type FileAttributeType C.GFileAttributeType
+type FileAttributeType int
 
 const (
 	FILE_ATTRIBUTE_TYPE_INVALID     FileAttributeType = 0
@@ -59,7 +42,7 @@ const (
 	FILE_ATTRIBUTE_TYPE_STRINGV     FileAttributeType = 9
 )
 
-type FileMonitorEvent C.GFileMonitorEvent
+type FileMonitorEvent int
 
 const (
 	FILE_MONITOR_EVENT_CHANGED           FileMonitorEvent = 0
@@ -75,7 +58,7 @@ const (
 	FILE_MONITOR_EVENT_MOVED_OUT         FileMonitorEvent = 10
 )
 
-type FileType C.GFileType
+type FileType int
 
 const (
 	FILE_TYPE_UNKNOWN       FileType = 0
@@ -87,7 +70,7 @@ const (
 	FILE_TYPE_MOUNTABLE     FileType = 6
 )
 
-type FilesystemPreviewType C.GFilesystemPreviewType
+type FilesystemPreviewType int
 
 const (
 	FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS FilesystemPreviewType = 0
@@ -95,7 +78,7 @@ const (
 	FILESYSTEM_PREVIEW_TYPE_NEVER     FilesystemPreviewType = 2
 )
 
-type IOErrorEnum C.GIOErrorEnum
+type IOErrorEnum int
 
 const (
 	IO_ERROR_FAILED              IOErrorEnum = 0
@@ -148,7 +131,7 @@ const (
 	IO_ERROR_MESSAGE_TOO_LARGE   IOErrorEnum = 46
 )
 
-type MountOperationResult C.GMountOperationResult
+type MountOperationResult int
 
 const (
 	MOUNT_OPERATION_HANDLED   MountOperationResult = 0
@@ -156,7 +139,7 @@ const (
 	MOUNT_OPERATION_UNHANDLED MountOperationResult = 2
 )
 
-type PasswordSave C.GPasswordSave
+type PasswordSave int
 
 const (
 	PASSWORD_SAVE_NEVER       PasswordSave = 0

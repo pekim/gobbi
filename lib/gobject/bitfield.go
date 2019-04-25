@@ -2,21 +2,14 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
-
-type ConnectFlags C.GConnectFlags
+type ConnectFlags int
 
 const (
 	CONNECT_AFTER   ConnectFlags = 1
 	CONNECT_SWAPPED ConnectFlags = 2
 )
 
-type ParamFlags C.GParamFlags
+type ParamFlags int
 
 const (
 	PARAM_READABLE        ParamFlags = 1
@@ -34,7 +27,7 @@ const (
 // Blacklisted member : G_PARAM_DEPRECATED
 )
 
-type SignalFlags C.GSignalFlags
+type SignalFlags int
 
 const (
 	SIGNAL_RUN_FIRST    SignalFlags = 1
@@ -48,7 +41,7 @@ const (
 	SIGNAL_DEPRECATED   SignalFlags = 256
 )
 
-type SignalMatchType C.GSignalMatchType
+type SignalMatchType int
 
 const (
 	SIGNAL_MATCH_ID        SignalMatchType = 1
@@ -59,7 +52,7 @@ const (
 	SIGNAL_MATCH_UNBLOCKED SignalMatchType = 32
 )
 
-type TypeDebugFlags C.GTypeDebugFlags
+type TypeDebugFlags int
 
 const (
 	TYPE_DEBUG_NONE           TypeDebugFlags = 0
@@ -69,14 +62,14 @@ const (
 	TYPE_DEBUG_MASK           TypeDebugFlags = 7
 )
 
-type TypeFlags C.GTypeFlags
+type TypeFlags int
 
 const (
 	TYPE_FLAG_ABSTRACT       TypeFlags = 16
 	TYPE_FLAG_VALUE_ABSTRACT TypeFlags = 32
 )
 
-type TypeFundamentalFlags C.GTypeFundamentalFlags
+type TypeFundamentalFlags int
 
 const (
 	TYPE_FLAG_CLASSED        TypeFundamentalFlags = 1

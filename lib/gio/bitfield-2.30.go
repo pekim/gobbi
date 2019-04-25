@@ -3,44 +3,27 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
-type DBusInterfaceSkeletonFlags C.GDBusInterfaceSkeletonFlags
+type DBusInterfaceSkeletonFlags int
 
 const (
 	DBUS_INTERFACE_SKELETON_FLAGS_NONE                                DBusInterfaceSkeletonFlags = 0
 	DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD DBusInterfaceSkeletonFlags = 1
 )
 
-type DBusObjectManagerClientFlags C.GDBusObjectManagerClientFlags
+type DBusObjectManagerClientFlags int
 
 const (
 	DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE              DBusObjectManagerClientFlags = 0
 	DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START DBusObjectManagerClientFlags = 1
 )
 
-type TlsDatabaseVerifyFlags C.GTlsDatabaseVerifyFlags
+type TlsDatabaseVerifyFlags int
 
 const (
 	TLS_DATABASE_VERIFY_NONE TlsDatabaseVerifyFlags = 0
 )
 
-type TlsPasswordFlags C.GTlsPasswordFlags
+type TlsPasswordFlags int
 
 const (
 	TLS_PASSWORD_NONE       TlsPasswordFlags = 0
