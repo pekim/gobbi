@@ -99,7 +99,7 @@ func (ns *Namespace) generateEntityVersionedFile(filename string, version Versio
 
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
-		if generatables.needCgo() {
+		if generatables.needCgo(version) {
 			ns.cgoPreambleHeaders(f, version)
 		}
 		ns.generateVersionDebugFunction(f, version.value)

@@ -71,6 +71,6 @@ func (ii Interfaces) mergeAddenda(addenda Interfaces) {
 
 func (ii Interfaces) generateDocs(ns *Namespace, typeName string) {}
 
-func (ii Interfaces) needCgo() bool {
+func (ii Interfaces) needCgo(version Version) bool {
 	return true
 }

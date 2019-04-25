@@ -42,6 +42,6 @@ func (aa Aliases) mergeAddenda(addenda Aliases) {
 
 func (aa Aliases) generateDocs(ns *Namespace, typeName string) {}
 
-func (aa Aliases) needCgo() bool {
+func (aa Aliases) needCgo(version Version) bool {
 	return false
 }

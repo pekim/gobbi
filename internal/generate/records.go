@@ -61,6 +61,6 @@ func (rr Records) mergeAddenda(addenda Records) {
 
 func (rr Records) generateDocs(ns *Namespace, typeName string) {}
 
-func (rr Records) needCgo() bool {
+func (rr Records) needCgo(version Version) bool {
 	return true
 }

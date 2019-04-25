@@ -48,6 +48,26 @@ func (ee Enumerations) mergeAddenda(addenda Enumerations) {
 	}
 }
 
-func (ee Enumerations) needCgo() bool {
+func (ee Enumerations) needCgo(version Version) bool {
+	for _, e := range ee {
+		if e.Blacklist {
+			continue
+		}
+
+		for _, f := range e.Functions {
+			if f.Blacklist {
+				continue
+			}
+			if !supportedByVersion(f, &version) {
+				continue
+			}
+
+			supported, _ := f.supported()
+			if supported && !f.Blacklist {
+				return true
+			}
+		}
+	}
+
 	return false
 }

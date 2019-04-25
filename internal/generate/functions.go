@@ -60,6 +60,6 @@ func (ff Functions) generate(g *jen.Group, version *Version) {
 
 func (ff Functions) generateDocs(ns *Namespace, typeName string) {}
 
-func (ff Functions) needCgo() bool {
+func (ff Functions) needCgo(version Version) bool {
 	return true
 }

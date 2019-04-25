@@ -48,6 +48,6 @@ func (cc Constants) mergeAddenda(addenda Constants) {
 	}
 }
 
-func (cc Constants) needCgo() bool {
+func (cc Constants) needCgo(version Version) bool {
 	return false
 }

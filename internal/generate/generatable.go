@@ -14,5 +14,5 @@ type Generatable interface {
 type Generatables interface {
 	VersionLister
 	entities() []Generatable
-	needCgo() bool
+	needCgo(version Version) bool
 }

@@ -61,6 +61,6 @@ func (cc Classes) mergeAddenda(addenda Classes) {
 
 func (cc Classes) generateDocs(ns *Namespace, typeName string) {}
 
-func (cc Classes) needCgo() bool {
+func (cc Classes) needCgo(version Version) bool {
 	return true
 }

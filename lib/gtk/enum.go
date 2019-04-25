@@ -3,10 +3,18 @@
 package gtk
 
 import (
-	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
+
+// #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
+// #include <gtk/gtk-a11y.h>
+// #include <gtk/gtk.h>
+// #include <gtk/gtkx.h>
+// #include <stdlib.h>
+import "C"
 
 type Align int
 
