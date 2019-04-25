@@ -2,13 +2,6 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
 const CURRENT_TIME int32 = 0
 const KEY_0 int32 = 48
 const KEY_1 int32 = 49

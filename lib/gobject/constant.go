@@ -2,13 +2,6 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
-
 const PARAM_MASK int32 = 255
 const PARAM_STATIC_STRINGS int32 = 224
 const PARAM_USER_SHIFT int32 = 8

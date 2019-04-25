@@ -2,23 +2,6 @@
 
 package gio
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
-
 const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME string = "gio-desktop-app-info-lookup"
 const FILE_ATTRIBUTE_ACCESS_CAN_DELETE string = "access::can-delete"
 const FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE string = "access::can-execute"

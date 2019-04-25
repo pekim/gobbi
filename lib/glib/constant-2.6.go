@@ -3,15 +3,6 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
 const GSIZE_FORMAT string = "lu"
 const GSIZE_MODIFIER string = "l"
 const GSSIZE_FORMAT string = "li"

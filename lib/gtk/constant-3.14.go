@@ -3,15 +3,6 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
 const STYLE_CLASS_CSD string = "csd"
 const STYLE_CLASS_FLAT string = "flat"
 const STYLE_CLASS_MESSAGE_DIALOG string = "message-dialog"

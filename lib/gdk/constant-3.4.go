@@ -3,13 +3,6 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
 const BUTTON_MIDDLE int32 = 2
 const BUTTON_PRIMARY int32 = 1
 const BUTTON_SECONDARY int32 = 3

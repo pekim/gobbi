@@ -3,15 +3,6 @@
 
 package gtk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
 const LEVEL_BAR_OFFSET_HIGH string = "high"
 const LEVEL_BAR_OFFSET_LOW string = "low"
 const PRINT_SETTINGS_OUTPUT_BASENAME string = "output-basename"
