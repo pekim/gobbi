@@ -82,25 +82,24 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
 	file.CgoPreamble("#include <stdlib.h>")
 }
 
-func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables, useCgo bool) {
+func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
 	// file for non version-specific entities
-	ns.generateEntityVersionedFile(typeName, Version{}, generatables, useCgo)
+	ns.generateEntityVersionedFile(typeName, Version{}, generatables)
 
 	// files for version-specific entities
 	versions := ns.getCollectionVersions(generatables)
 	for _, version := range versions {
-		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables, useCgo)
+		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
 	}
 }
 
 // generateEntityVersionedFile generates a file for Generatables that
 // meet the version criterion.
-func (ns *Namespace) generateEntityVersionedFile(filename string, version Version,
-	generatables Generatables, useCgo bool) {
+func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
 
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
-		if useCgo {
+		if generatables.needCgo() {
 			ns.cgoPreambleHeaders(f, version)
 		}
 		ns.generateVersionDebugFunction(f, version.value)

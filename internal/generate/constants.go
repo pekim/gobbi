@@ -47,3 +47,7 @@ func (cc Constants) mergeAddenda(addenda Constants) {
 		}
 	}
 }
+
+func (cc Constants) needCgo() bool {
+	return false
+}

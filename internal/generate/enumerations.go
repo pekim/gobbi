@@ -47,3 +47,7 @@ func (ee Enumerations) mergeAddenda(addenda Enumerations) {
 		}
 	}
 }
+
+func (ee Enumerations) needCgo() bool {
+	return false
+}

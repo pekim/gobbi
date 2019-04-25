@@ -70,3 +70,7 @@ func (ii Interfaces) mergeAddenda(addenda Interfaces) {
 }
 
 func (ii Interfaces) generateDocs(ns *Namespace, typeName string) {}
+
+func (ii Interfaces) needCgo() bool {
+	return true
+}
