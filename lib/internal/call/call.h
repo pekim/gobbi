@@ -1,13 +1,13 @@
-typedef enum return_type {
-    rt_void,
-    rt_int,
-    rt_uint,
-    rt_long,
-    rt_double,
-} ReturnType;
+typedef enum type {
+    type_void,
+    type_int,
+    type_uint,
+    type_long,
+    type_double,
+} Type;
 
 typedef struct call_data {
-    ReturnType return_type;
+    Type return_type;
 
     int value_int;
     unsigned int value_uint;

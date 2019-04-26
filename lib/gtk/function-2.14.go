@@ -25,7 +25,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // TestRegisterAllTypes is a wrapper around the C function gtk_test_register_all_types.
 func TestRegisterAllTypes() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(7472, &data)
 	return
 }

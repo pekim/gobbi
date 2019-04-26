@@ -9,7 +9,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
 func GetNumProcessors() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(1611, &data)
 	ret := data.Return.Uint32()
 

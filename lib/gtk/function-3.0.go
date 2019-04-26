@@ -11,7 +11,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // GetBinaryAge is a wrapper around the C function gtk_get_binary_age.
 func GetBinaryAge() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(5902, &data)
 	ret := data.Return.Uint32()
 
@@ -20,7 +20,7 @@ func GetBinaryAge() uint32 {
 
 // GetInterfaceAge is a wrapper around the C function gtk_get_interface_age.
 func GetInterfaceAge() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(5910, &data)
 	ret := data.Return.Uint32()
 
@@ -29,7 +29,7 @@ func GetInterfaceAge() uint32 {
 
 // GetMajorVersion is a wrapper around the C function gtk_get_major_version.
 func GetMajorVersion() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(5912, &data)
 	ret := data.Return.Uint32()
 
@@ -38,7 +38,7 @@ func GetMajorVersion() uint32 {
 
 // GetMicroVersion is a wrapper around the C function gtk_get_micro_version.
 func GetMicroVersion() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(5913, &data)
 	ret := data.Return.Uint32()
 
@@ -47,7 +47,7 @@ func GetMicroVersion() uint32 {
 
 // GetMinorVersion is a wrapper around the C function gtk_get_minor_version.
 func GetMinorVersion() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(5914, &data)
 	ret := data.Return.Uint32()
 

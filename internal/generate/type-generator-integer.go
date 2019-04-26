@@ -186,15 +186,15 @@ func (t *TypeGeneratorInteger) generateGoToC(g *jen.Group, goVarReference *jen.S
 func (t *TypeGeneratorInteger) generateCallReturnType() string {
 	switch t.typ.CType {
 	case "void":
-		return "RT_VOID"
+		return "TYPE_VOID"
 	case "int", "gint", "gint32":
-		return "RT_INT"
+		return "TYPE_INT"
 	case "gint64":
-		return "RT_LONG"
+		return "TYPE_LONG"
 	case "guint", "guint32":
-		return "RT_UINT"
+		return "TYPE_UINT"
 	case "gdouble", "double":
-		return "RT_DOUBLE"
+		return "TYPE_DOUBLE"
 	}
 
 	panic(fmt.Sprintf("Return type not supported : %s", t.typ.CType))

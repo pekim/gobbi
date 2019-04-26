@@ -178,7 +178,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
-	data := call.Data{Return: call.Return{Type: call.RT_INT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_INT}}
 	call.Function(2018, &data)
 	ret := data.Return.Int32()
 
@@ -197,7 +197,7 @@ func MainDepth() int32 {
 
 // MemProfile is a wrapper around the C function g_mem_profile.
 func MemProfile() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(2071, &data)
 	return
 }
@@ -240,7 +240,7 @@ func MemProfile() {
 
 // RandomDouble is a wrapper around the C function g_random_double.
 func RandomDouble() float64 {
-	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_DOUBLE}}
 	call.Function(2567, &data)
 	ret := data.Return.Float64()
 
@@ -249,7 +249,7 @@ func RandomDouble() float64 {
 
 // RandomInt is a wrapper around the C function g_random_int.
 func RandomInt() uint32 {
-	data := call.Data{Return: call.Return{Type: call.RT_UINT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
 	call.Function(2569, &data)
 	ret := data.Return.Uint32()
 

@@ -220,7 +220,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // TypeInit is a wrapper around the C function g_type_init.
 func TypeInit() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(3573, &data)
 	return
 }

@@ -219,9 +219,9 @@ func (f *Function) generateBody(g *jen.Group) {
 		Qual(callPkg, "Data").
 		Values(jen.DictFunc(func(d jen.Dict) {
 			f.ReturnValue.generatePopulateCallData(d)
+			f.generateCallDataParameters(d)
 		}))
 
-	//f.generateCParameterVars(g)
 	f.generateCall(g)
 	//
 	f.generateGoReturnVars(g)
@@ -229,9 +229,9 @@ func (f *Function) generateBody(g *jen.Group) {
 	f.generateReturn(g)
 }
 
-func (f *Function) generateCParameterVars(g *jen.Group) {
-	f.Parameters.generateCVars(g)
-	f.generateThrowableErrorCVar(g)
+func (f *Function) generateCallDataParameters(d jen.Dict) {
+	//f.Parameters.generateCallData(d)
+	//f.generateThrowableErrorCVar(g)
 }
 
 func (f *Function) generateCall(g *jen.Group) {

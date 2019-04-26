@@ -44,19 +44,19 @@ void call_function(int function_index, CallData* data) {
 	av_alist alist;
 
     switch (data->return_type) {
-    case rt_int:
+    case type_int:
        	av_start_int (alist, fn, &data->value_int);
         break;
-    case rt_uint:
+    case type_uint:
        	av_start_uint (alist, fn, &data->value_uint);
         break;
-    case rt_long:
+    case type_long:
        	av_start_long (alist, fn, &data->value_long);
         break;
-    case rt_double:
+    case type_double:
        	av_start_double (alist, fn, &data->value_double);
         break;
-    case rt_void:
+    case type_void:
     default:
         av_start_void (alist, fn);
     }

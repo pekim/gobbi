@@ -8,7 +8,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // Beep is a wrapper around the C function gdk_beep.
 func Beep() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4074, &data)
 	return
 }
@@ -29,7 +29,7 @@ func Beep() {
 
 // ErrorTrapPop is a wrapper around the C function gdk_error_trap_pop.
 func ErrorTrapPop() int32 {
-	data := call.Data{Return: call.Return{Type: call.RT_INT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_INT}}
 	call.Function(4230, &data)
 	ret := data.Return.Int32()
 
@@ -38,7 +38,7 @@ func ErrorTrapPop() int32 {
 
 // ErrorTrapPush is a wrapper around the C function gdk_error_trap_push.
 func ErrorTrapPush() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4232, &data)
 	return
 }
@@ -53,7 +53,7 @@ func ErrorTrapPush() {
 
 // Flush is a wrapper around the C function gdk_flush.
 func Flush() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4241, &data)
 	return
 }
@@ -98,7 +98,7 @@ func Flush() {
 
 // PreParseLibgtkOnly is a wrapper around the C function gdk_pre_parse_libgtk_only.
 func PreParseLibgtkOnly() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4449, &data)
 	return
 }
@@ -121,21 +121,21 @@ func PreParseLibgtkOnly() {
 
 // ThreadsEnter is a wrapper around the C function gdk_threads_enter.
 func ThreadsEnter() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4529, &data)
 	return
 }
 
 // ThreadsInit is a wrapper around the C function gdk_threads_init.
 func ThreadsInit() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4530, &data)
 	return
 }
 
 // ThreadsLeave is a wrapper around the C function gdk_threads_leave.
 func ThreadsLeave() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(4531, &data)
 	return
 }

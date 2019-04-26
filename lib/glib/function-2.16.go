@@ -29,7 +29,7 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // TestRandDouble is a wrapper around the C function g_test_rand_double.
 func TestRandDouble() float64 {
-	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_DOUBLE}}
 	call.Function(3330, &data)
 	ret := data.Return.Float64()
 
@@ -38,7 +38,7 @@ func TestRandDouble() float64 {
 
 // TestRandInt is a wrapper around the C function g_test_rand_int.
 func TestRandInt() int32 {
-	data := call.Data{Return: call.Return{Type: call.RT_INT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_INT}}
 	call.Function(3332, &data)
 	ret := data.Return.Int32()
 
@@ -47,7 +47,7 @@ func TestRandInt() int32 {
 
 // TestRun is a wrapper around the C function g_test_run.
 func TestRun() int32 {
-	data := call.Data{Return: call.Return{Type: call.RT_INT}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_INT}}
 	call.Function(3334, &data)
 	ret := data.Return.Int32()
 
@@ -56,7 +56,7 @@ func TestRun() int32 {
 
 // TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
 func TestTimerElapsed() float64 {
-	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_DOUBLE}}
 	call.Function(3341, &data)
 	ret := data.Return.Float64()
 
@@ -65,7 +65,7 @@ func TestTimerElapsed() float64 {
 
 // TestTimerLast is a wrapper around the C function g_test_timer_last.
 func TestTimerLast() float64 {
-	data := call.Data{Return: call.Return{Type: call.RT_DOUBLE}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_DOUBLE}}
 	call.Function(3342, &data)
 	ret := data.Return.Float64()
 
@@ -74,7 +74,7 @@ func TestTimerLast() float64 {
 
 // TestTimerStart is a wrapper around the C function g_test_timer_start.
 func TestTimerStart() {
-	data := call.Data{Return: call.Return{Type: call.RT_VOID}}
+	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
 	call.Function(3343, &data)
 	return
 }

@@ -29,21 +29,21 @@ func open() error {
 
 func Function(index int, data *Data) {
 	cData := C.CallData{
-		return_type: C.ReturnType(data.Return.Type),
+		return_type: C.Type(data.Return.Type),
 	}
 
 	C.call_function(C.int(index), &cData)
 
 	switch data.Return.Type {
-	case RT_INT:
+	case TYPE_INT:
 		data.Return.value = cData.value_int
-	case RT_UINT:
+	case TYPE_UINT:
 		data.Return.value = cData.value_uint
-	case RT_LONG:
+	case TYPE_LONG:
 		data.Return.value = cData.value_long
-	case RT_DOUBLE:
+	case TYPE_DOUBLE:
 		data.Return.value = cData.value_double
-	case RT_VOID:
+	case TYPE_VOID:
 		// nothing
 	}
 }
