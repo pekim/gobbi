@@ -61,10 +61,6 @@ func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reaso
 		return false, ""
 	}
 
-	//if t.typ.Name != "gint" {
-	//	return false, ""
-	//}
-
 	return true, ""
 }
 
@@ -163,11 +159,6 @@ func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
 				s.Id(cVarName)
 			}
 		}))
-}
-
-func (t *TypeGeneratorInteger) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorInteger) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
