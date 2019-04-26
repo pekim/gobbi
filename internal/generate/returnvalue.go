@@ -113,3 +113,15 @@ func (r *ReturnValue) generateArrayCToGo(g *jen.Group, cVarName string, goVarNam
 		r.Array.Type.fullGoPackageName(),
 		r.TransferOwnership, r.Nullable)
 }
+
+func (r *ReturnValue) generatePopulateCallData(callData jen.Dict) {
+	callData[jen.Id("Return")] = jen.
+		Qual(callPkg, "Return").
+		Values(jen.DictFunc(func(d jen.Dict) {
+			if r.Type.generator != nil {
+				d[jen.Id("Type")] = jen.Qual(callPkg, r.Type.generator.generateCallReturnType())
+			} else {
+				d[jen.Id("Type")] = jen.Qual(callPkg, "RT_VOID")
+			}
+		}))
+}

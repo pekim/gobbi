@@ -8,6 +8,7 @@ import (
 )
 
 const callPkg = "github.com/pekim/gobbi/lib/internal/call"
+const callDataVarName = "data"
 
 type Function struct {
 	Namespace *Namespace
@@ -211,35 +212,17 @@ func (f *Function) generateReturnDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateBody(g *jen.Group) {
-	functionIndex := f.Namespace.callFile.functionNameIndexes[f.CIdentifier]
-
-	//d := call.Data{}
+	// d := call.Data{...}
 	g.
-		Id("data").
+		Id(callDataVarName).
 		Op(":=").
 		Qual(callPkg, "Data").
 		Values(jen.DictFunc(func(d jen.Dict) {
-			d[jen.Id("Return")] = jen.
-				Qual(callPkg, "Return").
-				Values(jen.DictFunc(func(d jen.Dict) {
-					if f.ReturnValue.Type.generator != nil {
-						d[jen.Id("Type")] = jen.Qual(callPkg, f.ReturnValue.Type.generator.generateCallReturnType())
-					} else {
-						d[jen.Id("Type")] = jen.Qual(callPkg, "RT_VOID")
-					}
-				}))
+			f.ReturnValue.generatePopulateCallData(d)
 		}))
 
-	g.
-		Qual(callPkg, "Function").
-		CallFunc(func(g *jen.Group) {
-			g.Lit(functionIndex)
-
-			g.Op("&").Id("data")
-		})
-
 	//f.generateCParameterVars(g)
-	//f.generateCall(g)
+	f.generateCall(g)
 	//
 	f.generateGoReturnVars(g)
 	//f.generateOutputParamsGoVars(g)
@@ -251,29 +234,15 @@ func (f *Function) generateCParameterVars(g *jen.Group) {
 	f.generateThrowableErrorCVar(g)
 }
 
-func (f *Function) generateCall(g *jen.Group) *jen.Statement {
-	cIdentifier := f.CIdentifier
-	if f.Parameters.hasFormatArgs() {
-		cIdentifier = "_" + f.CIdentifier
-	}
+func (f *Function) generateCall(g *jen.Group) {
+	functionIndex := f.Namespace.callFile.functionNameIndexes[f.CIdentifier]
 
-	return g.
-		Do(func(s *jen.Statement) {
-			if (f.ReturnValue.Type != nil && f.ReturnValue.Type.Name != "none") || f.ReturnValue.Array != nil {
-				s.
-					Id("retC").
-					Op(":=")
-			}
-		}).
-		Qual("C", cIdentifier).
+	g.
+		Qual(callPkg, "Function").
 		CallFunc(func(g *jen.Group) {
-			// Assumption that receiver is always first argument.
-			// If turns out not to be true, will need to look at
-			// using <InstanceParameter> position.
-			f.generateReceiverArgument(g)
+			g.Lit(functionIndex)
 
-			f.Parameters.generateCallArguments(g)
-			f.generateThrowableCallArgument(g)
+			g.Op("&").Id(callDataVarName)
 		})
 }
 
