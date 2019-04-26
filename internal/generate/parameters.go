@@ -135,9 +135,9 @@ func (pp Parameters) generateFunctionDeclarationCtypes(g *jen.Group) {
 	}
 }
 
-func (pp Parameters) generateCVars(g *jen.Group) {
+func (pp Parameters) generateCallData(g *jen.Group) {
 	for _, p := range pp {
-		p.generateCVar(g)
+		p.generateCallData(g)
 	}
 }
 

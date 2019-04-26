@@ -32,7 +32,10 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // DisableSetlocale is a wrapper around the C function gtk_disable_setlocale.
 func DisableSetlocale() {
-	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
 	call.Function(5471, &data)
 	return
 }
@@ -51,7 +54,10 @@ func DisableSetlocale() {
 
 // GetCurrentEventTime is a wrapper around the C function gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
-	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_UINT},
+	}
 	call.Function(5906, &data)
 	ret := data.Return.Uint32()
 
@@ -60,7 +66,10 @@ func GetCurrentEventTime() uint32 {
 
 // GetDebugFlags is a wrapper around the C function gtk_get_debug_flags.
 func GetDebugFlags() uint32 {
-	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_UINT},
+	}
 	call.Function(5907, &data)
 	ret := data.Return.Uint32()
 
@@ -89,7 +98,10 @@ func GetDebugFlags() uint32 {
 
 // Main is a wrapper around the C function gtk_main.
 func Main() {
-	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
 	call.Function(6390, &data)
 	return
 }
@@ -102,7 +114,10 @@ func Main() {
 
 // MainLevel is a wrapper around the C function gtk_main_level.
 func MainLevel() uint32 {
-	data := call.Data{Return: call.Value{Type: call.TYPE_UINT}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_UINT},
+	}
 	call.Function(6394, &data)
 	ret := data.Return.Uint32()
 
@@ -111,7 +126,10 @@ func MainLevel() uint32 {
 
 // MainQuit is a wrapper around the C function gtk_main_quit.
 func MainQuit() {
-	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
 	call.Function(6395, &data)
 	return
 }

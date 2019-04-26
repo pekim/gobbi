@@ -11,7 +11,10 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
 func NotifyStartupComplete() {
-	data := call.Data{Return: call.Value{Type: call.TYPE_VOID}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
 	call.Function(4322, &data)
 	return
 }

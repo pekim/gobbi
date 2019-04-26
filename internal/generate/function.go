@@ -229,8 +229,14 @@ func (f *Function) generateBody(g *jen.Group) {
 	f.generateReturn(g)
 }
 
-func (f *Function) generateCallDataParameters(d jen.Dict) {
-	//f.Parameters.generateCallData(d)
+func (f *Function) generateCallDataParameters(callData jen.Dict) {
+	callData[jen.Id("Params")] = jen.
+		Index().
+		Qual(callPkg, "Value").
+		ValuesFunc(func(g *jen.Group) {
+			f.Parameters.generateCallData(g)
+		})
+
 	//f.generateThrowableErrorCVar(g)
 }
 

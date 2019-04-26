@@ -180,25 +180,35 @@ func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
 	}
 }
 
-func (p *Parameter) generateCVar(g *jen.Group) {
-	if p.Direction == "out" {
-		p.Type.generator.generateParamOutCVar(g, p.cVarName)
-	} else if p.Array != nil {
-		p.Array.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
-	} else if p.arrayLengthFor != nil {
-		p.Array.generateArrayLenParamCVar(g, p.cVarName, p.arrayLengthFor.goVarName, p.Type.CType)
-	} else if p.stringLengthFor != nil {
-		p.generateCVarForStringLength(g)
-	} else if p.formatArgs {
-		// Already handled with the paired formatString argument.
-	} else if p.formatString {
-		p.generateFormattedStringCVar(g)
-		p.Type.generator.generateParamCVar(g, p.cVarName, "goFormattedString", p.TransferOwnership)
-	} else {
-		p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
-	}
+func (p *Parameter) generateCallData(g *jen.Group) {
+	g.
+		Qual(callPkg, "Value").
+		Values(jen.DictFunc(func(d jen.Dict) {
+			if p.Type.generator != nil {
+				d[jen.Id("Type")] = jen.Qual(callPkg, p.Type.generator.generateCallReturnType())
+			} else {
+				d[jen.Id("Type")] = jen.Qual(callPkg, "TYPE_VOID")
+			}
+		}))
 
-	g.Line()
+	//if p.Direction == "out" {
+	//	p.Type.generator.generateParamOutCVar(g, p.cVarName)
+	//} else if p.Array != nil {
+	//	p.Array.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
+	//} else if p.arrayLengthFor != nil {
+	//	p.Array.generateArrayLenParamCVar(g, p.cVarName, p.arrayLengthFor.goVarName, p.Type.CType)
+	//} else if p.stringLengthFor != nil {
+	//	p.generateCVarForStringLength(g)
+	//} else if p.formatArgs {
+	//	// Already handled with the paired formatString argument.
+	//} else if p.formatString {
+	//	p.generateFormattedStringCVar(g)
+	//	p.Type.generator.generateParamCVar(g, p.cVarName, "goFormattedString", p.TransferOwnership)
+	//} else {
+	//	p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
+	//}
+	//
+	//g.Line()
 }
 
 func (p *Parameter) generateFormattedStringCVar(g *jen.Group) {

@@ -11,7 +11,10 @@ import call "github.com/pekim/gobbi/lib/internal/call"
 
 // GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.
 func GetMonotonicTime() int64 {
-	data := call.Data{Return: call.Value{Type: call.TYPE_LONG}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_LONG},
+	}
 	call.Function(1610, &data)
 	ret := data.Return.Int64()
 
@@ -20,7 +23,10 @@ func GetMonotonicTime() int64 {
 
 // GetRealTime is a wrapper around the C function g_get_real_time.
 func GetRealTime() int64 {
-	data := call.Data{Return: call.Value{Type: call.TYPE_LONG}}
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_LONG},
+	}
 	call.Function(1614, &data)
 	ret := data.Return.Int64()
 
