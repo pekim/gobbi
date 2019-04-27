@@ -56,3 +56,11 @@ func TestFormattedSrc(t *testing.T) {
 			"import \"fmt\""+"\n",
 		f.formattedSrc())
 }
+
+//func TestWrite(t *testing.T) {
+//	f := New("qaz", "./qqq")
+//	f.imprt("fmt")
+//	f.gobbiImprt("glib")
+//
+//	f.Write()
+//}

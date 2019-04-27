@@ -3,6 +3,7 @@ package file
 import (
 	"fmt"
 	"go/format"
+	"io/ioutil"
 	"log"
 	"sort"
 )
@@ -50,7 +51,10 @@ func (f *File) importsSrc() string {
 }
 
 func (f *File) Write() {
-
+	err := ioutil.WriteFile(f.filepath, f.formattedSrc(), 0644)
+	if err != nil {
+		log.Fatalf("Failed to write file %s : %s", f.filepath, err)
+	}
 }
 
 func (f *File) packageSrc() string {
