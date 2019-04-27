@@ -1,6 +1,11 @@
 package file
 
-import "fmt"
+import (
+	"fmt"
+	"go/format"
+	"log"
+	"sort"
+)
 
 const basePkg = "github.com/pekim/gobbi"
 
@@ -28,9 +33,17 @@ func (f *File) gobbiImprt(pkg string) {
 }
 
 func (f *File) importsSrc() string {
-	imports := ""
+	// get package names, and sort them
+	importNames := []string{}
 	for imprt, _ := range f.imports {
-		imports += fmt.Sprintf("import %s\n", imprt)
+		importNames = append(importNames, imprt)
+	}
+	sort.Strings(importNames)
+
+	// create a string of import statements, each on a line
+	imports := ""
+	for _, imprt := range importNames {
+		imports += fmt.Sprintf("import \"%s\"\n", imprt)
 	}
 
 	return imports + "\n"
@@ -45,11 +58,17 @@ func (f *File) packageSrc() string {
 }
 
 func (f *File) src() string {
-	return f.packageSrc() +
+	return "" +
+		f.packageSrc() +
 		f.importsSrc() +
 		f.contents
 }
 
 func (f *File) formattedSrc() string {
-	return f.src()
+	src, err := format.Source([]byte(f.src()))
+	if err != nil {
+		log.Fatalf("Failed to format source for %s : %s", f.filepath, err)
+	}
+
+	return string(src)
 }
