@@ -11,7 +11,8 @@ usage () {
     echo "  gobbi build                    Generate libraries and docs, and run tests"
     echo "  gobbi docs                     Generate documentation"
     echo "  gobbi generate                 Generate libraries"
-    echo "  gobbi test                     Run tests"
+    echo "  gobbi test                     Run tests - for generated gobbi packages"
+    echo "  gobbi testinternal             Run tests - for internal packages"
     echo "  gobbi examples                 List the available examples"
     echo "  gobbi example <example-name>   Run an example"
 
@@ -42,6 +43,10 @@ docs () {
 
 test () {
     go test -tags "$tags" github.com/pekim/gobbi/test/...
+}
+
+testinternal () {
+    go test $(go list github.com/pekim/gobbi/internal/... | grep -v template)
 }
 
 examples () {
@@ -86,6 +91,9 @@ processSubcommand () {
       ;;
     test)
       test
+      ;;
+    testinternal)
+      testinternal
       ;;
     examples)
       examples
