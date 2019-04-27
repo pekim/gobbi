@@ -32,6 +32,18 @@ func TestImportsOrder(t *testing.T) {
 		f.importsSrc())
 }
 
+func TestImportsSamePackage(t *testing.T) {
+	f := New("gtk", "")
+	f.gobbiImprt("glib")
+	f.gobbiImprt("gtk")
+
+	assert.Equal(t,
+		""+
+			"import \"github.com/pekim/gobbi/glib\""+"\n"+
+			"\n",
+		f.importsSrc())
+}
+
 func TestSrc(t *testing.T) {
 	f := New("pkg", "")
 	f.imprt("fmt")
@@ -54,7 +66,7 @@ func TestFormattedSrc(t *testing.T) {
 			"package pkg"+"\n"+
 			"\n"+
 			"import \"fmt\""+"\n",
-		f.formattedSrc())
+		string(f.formattedSrc()))
 }
 
 //func TestWrite(t *testing.T) {

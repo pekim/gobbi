@@ -30,6 +30,10 @@ func (f *File) imprt(pkg string) {
 }
 
 func (f *File) gobbiImprt(pkg string) {
+	if pkg == f.pkg {
+		return
+	}
+
 	f.imprt(basePkg + "/" + pkg)
 }
 
@@ -68,11 +72,21 @@ func (f *File) src() string {
 		f.contents
 }
 
-func (f *File) formattedSrc() string {
+func (f *File) formattedSrc() []byte {
 	src, err := format.Source([]byte(f.src()))
 	if err != nil {
 		log.Fatalf("Failed to format source for %s : %s", f.filepath, err)
 	}
 
-	return string(src)
+	return src
+}
+
+func (f *File) Qualified(pkg string, id string) string {
+	f.imprt(pkg)
+	return pkg + "." + "id"
+}
+
+func (f *File) GobbiQualified(pkg string, id string) string {
+	f.gobbiImprt(pkg)
+	return pkg + "." + "id"
 }
