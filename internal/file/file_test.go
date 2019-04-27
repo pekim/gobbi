@@ -44,6 +44,38 @@ func TestImportsSamePackage(t *testing.T) {
 		f.importsSrc())
 }
 
+func TestAddConstInt(t *testing.T) {
+	f := New("", "")
+	f.AddConstInt("name", 42)
+
+	assert.Equal(t, "const name int = 42\n", f.contents)
+}
+
+func TestAddConstString(t *testing.T) {
+	f := New("", "")
+	f.AddConstString("name", "qaz")
+
+	assert.Equal(t, "const name string = \"qaz\"\n", f.contents)
+}
+
+func TestAddConsts(t *testing.T) {
+	f := New("", "")
+	f.AddConsts("int32", func(add func(name string, value int)) {
+		add("one", 1)
+		add("two", 2)
+		add("three", 3)
+	})
+
+	assert.Equal(t,
+		`const (
+	one int32 = 1
+	two = 2
+	three = 3
+)
+
+`, f.contents)
+}
+
 func TestSrc(t *testing.T) {
 	f := New("pkg", "")
 	f.imprt("fmt")

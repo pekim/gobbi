@@ -90,3 +90,27 @@ func (f *File) GobbiQualified(pkg string, id string) string {
 	f.gobbiImprt(pkg)
 	return pkg + "." + "id"
 }
+
+func (f *File) AddConstInt(name string, value int) {
+	f.contents += fmt.Sprintf("const %s int = %d\n", name, value)
+}
+
+func (f *File) AddConstString(name string, value string) {
+	f.contents += fmt.Sprintf("const %s string = \"%s\"\n", name, value)
+}
+
+func (f *File) AddConsts(typ string, cb func(add func(name string, value int))) {
+	f.contents += "const (\n"
+
+	usedType := false
+	cb(func(name string, value int) {
+		if !usedType {
+			usedType = true
+			f.contents += fmt.Sprintf("\t%s %s = %d\n", name, typ, value)
+		} else {
+			f.contents += fmt.Sprintf("\t%s = %d\n", name, value)
+		}
+	})
+
+	f.contents += ")\n\n"
+}
