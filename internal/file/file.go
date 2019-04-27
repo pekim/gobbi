@@ -51,7 +51,15 @@ func (f *File) importsSrc() string {
 		imports += fmt.Sprintf("import \"%s\"\n", imprt)
 	}
 
-	return imports + "\n"
+	return imports
+}
+
+func (f *File) generatedFileComment() string {
+	return "// This is a generated file - DO NOT EDIT\n"
+}
+
+func (f *File) buildTagsSrc() string {
+	return ""
 }
 
 func (f *File) Write() {
@@ -62,13 +70,18 @@ func (f *File) Write() {
 }
 
 func (f *File) packageSrc() string {
-	return fmt.Sprintf("package %s\n\n", f.pkg)
+	return fmt.Sprintf("package %s\n", f.pkg)
 }
 
 func (f *File) src() string {
 	return "" +
+		f.generatedFileComment() +
+		f.buildTagsSrc() +
+		"\n" +
 		f.packageSrc() +
+		"\n" +
 		f.importsSrc() +
+		"\n" +
 		f.contents
 }
 

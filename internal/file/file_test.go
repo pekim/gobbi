@@ -14,8 +14,7 @@ func TestImportsSrc(t *testing.T) {
 	assert.Equal(t,
 		""+
 			"import \"fmt\""+"\n"+
-			"import \"github.com/pekim/gobbi/glib\""+"\n"+
-			"\n",
+			"import \"github.com/pekim/gobbi/glib\""+"\n",
 		f.importsSrc())
 }
 
@@ -27,8 +26,7 @@ func TestImportsOrder(t *testing.T) {
 	assert.Equal(t,
 		""+
 			"import \"fmt\""+"\n"+
-			"import \"github.com/pekim/gobbi/glib\""+"\n"+
-			"\n",
+			"import \"github.com/pekim/gobbi/glib\""+"\n",
 		f.importsSrc())
 }
 
@@ -39,8 +37,7 @@ func TestImportsSamePackage(t *testing.T) {
 
 	assert.Equal(t,
 		""+
-			"import \"github.com/pekim/gobbi/glib\""+"\n"+
-			"\n",
+			"import \"github.com/pekim/gobbi/glib\""+"\n",
 		f.importsSrc())
 }
 
@@ -82,6 +79,8 @@ func TestSrc(t *testing.T) {
 
 	assert.Equal(t,
 		""+
+			"// This is a generated file - DO NOT EDIT\n"+
+			"\n"+
 			"package pkg"+"\n"+
 			"\n"+
 			"import \"fmt\""+"\n"+
@@ -95,6 +94,8 @@ func TestFormattedSrc(t *testing.T) {
 
 	assert.Equal(t,
 		""+
+			"// This is a generated file - DO NOT EDIT\n"+
+			"\n"+
 			"package pkg"+"\n"+
 			"\n"+
 			"import \"fmt\""+"\n",
