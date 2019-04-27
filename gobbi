@@ -41,7 +41,7 @@ docs () {
 }
 
 test () {
-    go test -tags "$tags" github.com/pekim/gobbi/internal/test/...
+    go test -tags "$tags" github.com/pekim/gobbi/test/...
 }
 
 examples () {
