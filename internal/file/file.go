@@ -104,26 +104,35 @@ func (f *File) GobbiQualified(pkg string, id string) string {
 	return pkg + "." + "id"
 }
 
+func (f *File) Line(text string) {
+	f.contents += text + "\n"
+}
+
+func (f *File) Linef(format string, args ...interface{}) {
+	f.Line(fmt.Sprintf(format, args...))
+}
+
 func (f *File) AddConstInt(name string, value int) {
-	f.contents += fmt.Sprintf("const %s int = %d\n", name, value)
+	f.Linef("const %s int = %d", name, value)
 }
 
 func (f *File) AddConstString(name string, value string) {
-	f.contents += fmt.Sprintf("const %s string = \"%s\"\n", name, value)
+	f.Linef("const %s string = \"%s\"", name, value)
 }
 
 func (f *File) AddConsts(typ string, cb func(add func(name string, value int))) {
-	f.contents += "const (\n"
+	f.Line("const (")
 
 	usedType := false
 	cb(func(name string, value int) {
 		if !usedType {
 			usedType = true
-			f.contents += fmt.Sprintf("\t%s %s = %d\n", name, typ, value)
+			f.Linef("\t%s %s = %d", name, typ, value)
 		} else {
-			f.contents += fmt.Sprintf("\t%s = %d\n", name, value)
+			f.Linef("\t%s = %d", name, value)
 		}
 	})
 
-	f.contents += ")\n\n"
+	f.Line(")")
+	f.Line("")
 }
