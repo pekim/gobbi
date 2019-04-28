@@ -26,6 +26,8 @@ example () {
 }
 
 build () {
+    testinternal && \
+    echo "" && \
     generate && \
     echo "" && \
     # docs && \
