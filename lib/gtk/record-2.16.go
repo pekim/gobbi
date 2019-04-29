@@ -12,3 +12,18 @@ type ActivatableIface struct {
 	// no type for update
 	// no type for sync_action_properties
 }
+
+func ActivatableIfaceNewFromC(u unsafe.Pointer) *ActivatableIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ActivatableIface{native: u}
+
+	return g
+}
+
+func (recv *ActivatableIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

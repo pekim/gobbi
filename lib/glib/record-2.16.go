@@ -9,3 +9,18 @@ import "unsafe"
 type Checksum struct {
 	native unsafe.Pointer
 }
+
+func ChecksumNewFromC(u unsafe.Pointer) *Checksum {
+	if u == nil {
+		return nil
+	}
+
+	g := &Checksum{native: u}
+
+	return g
+}
+
+func (recv *Checksum) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

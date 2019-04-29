@@ -17,3 +17,18 @@ type GlyphItemIter struct {
 	EndIndex   int32
 	EndChar    int32
 }
+
+func GlyphItemIterNewFromC(u unsafe.Pointer) *GlyphItemIter {
+	if u == nil {
+		return nil
+	}
+
+	g := &GlyphItemIter{native: u}
+
+	return g
+}
+
+func (recv *GlyphItemIter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

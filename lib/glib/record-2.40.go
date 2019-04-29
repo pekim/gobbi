@@ -9,3 +9,18 @@ import "unsafe"
 type VariantDict struct {
 	native unsafe.Pointer
 }
+
+func VariantDictNewFromC(u unsafe.Pointer) *VariantDict {
+	if u == nil {
+		return nil
+	}
+
+	g := &VariantDict{native: u}
+
+	return g
+}
+
+func (recv *VariantDict) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

@@ -15,6 +15,21 @@ type DBusInterfaceIface struct {
 	// no type for dup_object
 }
 
+func DBusInterfaceIfaceNewFromC(u unsafe.Pointer) *DBusInterfaceIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusInterfaceIface{native: u}
+
+	return g
+}
+
+func (recv *DBusInterfaceIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusInterfaceSkeletonClass is a wrapper around the C record GDBusInterfaceSkeletonClass.
 type DBusInterfaceSkeletonClass struct {
 	native unsafe.Pointer
@@ -28,6 +43,21 @@ type DBusInterfaceSkeletonClass struct {
 	// Private : signal_padding
 }
 
+func DBusInterfaceSkeletonClassNewFromC(u unsafe.Pointer) *DBusInterfaceSkeletonClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusInterfaceSkeletonClass{native: u}
+
+	return g
+}
+
+func (recv *DBusInterfaceSkeletonClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusObjectIface is a wrapper around the C record GDBusObjectIface.
 type DBusObjectIface struct {
 	native unsafe.Pointer
@@ -39,6 +69,21 @@ type DBusObjectIface struct {
 	// no type for interface_removed
 }
 
+func DBusObjectIfaceNewFromC(u unsafe.Pointer) *DBusObjectIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectIface{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusObjectManagerClientClass is a wrapper around the C record GDBusObjectManagerClientClass.
 type DBusObjectManagerClientClass struct {
 	native unsafe.Pointer
@@ -46,6 +91,21 @@ type DBusObjectManagerClientClass struct {
 	// no type for interface_proxy_signal
 	// no type for interface_proxy_properties_changed
 	// Private : padding
+}
+
+func DBusObjectManagerClientClassNewFromC(u unsafe.Pointer) *DBusObjectManagerClientClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectManagerClientClass{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectManagerClientClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerIface is a wrapper around the C record GDBusObjectManagerIface.
@@ -62,6 +122,21 @@ type DBusObjectManagerIface struct {
 	// no type for interface_removed
 }
 
+func DBusObjectManagerIfaceNewFromC(u unsafe.Pointer) *DBusObjectManagerIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectManagerIface{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectManagerIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusObjectManagerServerClass is a wrapper around the C record GDBusObjectManagerServerClass.
 type DBusObjectManagerServerClass struct {
 	native unsafe.Pointer
@@ -69,11 +144,41 @@ type DBusObjectManagerServerClass struct {
 	// Private : padding
 }
 
+func DBusObjectManagerServerClassNewFromC(u unsafe.Pointer) *DBusObjectManagerServerClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectManagerServerClass{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectManagerServerClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusObjectProxyClass is a wrapper around the C record GDBusObjectProxyClass.
 type DBusObjectProxyClass struct {
 	native unsafe.Pointer
 	// parent_class : record
 	// Private : padding
+}
+
+func DBusObjectProxyClassNewFromC(u unsafe.Pointer) *DBusObjectProxyClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectProxyClass{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectProxyClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectSkeletonClass is a wrapper around the C record GDBusObjectSkeletonClass.
@@ -84,9 +189,39 @@ type DBusObjectSkeletonClass struct {
 	// Private : padding
 }
 
+func DBusObjectSkeletonClassNewFromC(u unsafe.Pointer) *DBusObjectSkeletonClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectSkeletonClass{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // IOModuleScope is a wrapper around the C record GIOModuleScope.
 type IOModuleScope struct {
 	native unsafe.Pointer
+}
+
+func IOModuleScopeNewFromC(u unsafe.Pointer) *IOModuleScope {
+	if u == nil {
+		return nil
+	}
+
+	g := &IOModuleScope{native: u}
+
+	return g
+}
+
+func (recv *IOModuleScope) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsDatabaseClass is a wrapper around the C record GTlsDatabaseClass.
@@ -109,6 +244,21 @@ type TlsDatabaseClass struct {
 	// Private : padding
 }
 
+func TlsDatabaseClassNewFromC(u unsafe.Pointer) *TlsDatabaseClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &TlsDatabaseClass{native: u}
+
+	return g
+}
+
+func (recv *TlsDatabaseClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TlsInteractionClass is a wrapper around the C record GTlsInteractionClass.
 type TlsInteractionClass struct {
 	native unsafe.Pointer
@@ -120,4 +270,19 @@ type TlsInteractionClass struct {
 	// no type for request_certificate_async
 	// no type for request_certificate_finish
 	// Private : padding
+}
+
+func TlsInteractionClassNewFromC(u unsafe.Pointer) *TlsInteractionClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &TlsInteractionClass{native: u}
+
+	return g
+}
+
+func (recv *TlsInteractionClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

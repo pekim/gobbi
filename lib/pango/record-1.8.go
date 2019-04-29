@@ -24,3 +24,18 @@ type RendererClass struct {
 	// no type for _pango_reserved3
 	// no type for _pango_reserved4
 }
+
+func RendererClassNewFromC(u unsafe.Pointer) *RendererClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &RendererClass{native: u}
+
+	return g
+}
+
+func (recv *RendererClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

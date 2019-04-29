@@ -16,21 +16,14 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 		ParamsFunc(r.generateParams).
 		ParamsFunc(r.generateReturnDeclaration).
 		BlockFunc(func(g *jen.Group) {
-			// convert unsafe.Pointer arg to C type
-			g.
-				Id("c").
-				Op(":=").
-				Parens(jen.Id("*").Qual("C", r.CType)).
-				Parens(jen.Id("u"))
-
-			// If the C parameter is nil, do not create a Go struct.
+			// If the parameter is nil, do not create a Go struct.
 			// Instead, return nil.
-			g.If(jen.Id("c").Op("==").Nil()).
+			g.If(jen.Id("u").Op("==").Nil()).
 				Block(jen.Return(jen.Nil()))
 			g.Line()
 
 			r.generateCreateGoStruct(g)
-			r.generateObjectRefManagement(g)
+			//r.generateObjectRefManagement(g)
 			g.Line()
 
 			g.
@@ -63,25 +56,25 @@ func (r *RecordNewFromCFunc) generateCreateGoStruct(g *jen.Group) {
 }
 
 func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
-	d[jen.Id("native")] = jen.Id("c")
+	d[jen.Id("native")] = jen.Id("u")
 
-	if r.FieldsPrivate {
-		return
-	}
-
-	for _, f := range r.Fields {
-		if supported, _ := f.supported(); !supported {
-			continue
-		}
-
-		cValue := jen.
-			Id("c").
-			Op(".").
-			Id(f.Name)
-
-		d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(
-			f.Namespace.fullGoPackageName, cValue)
-	}
+	//if r.FieldsPrivate {
+	//	return
+	//}
+	//
+	//for _, f := range r.Fields {
+	//	if supported, _ := f.supported(); !supported {
+	//		continue
+	//	}
+	//
+	//	cValue := jen.
+	//		Id("c").
+	//		Op(".").
+	//		Id(f.Name)
+	//
+	//	d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(
+	//		f.Namespace.fullGoPackageName, cValue)
+	//}
 }
 
 func (r *RecordNewFromCFunc) generateObjectRefManagement(g *jen.Group) {

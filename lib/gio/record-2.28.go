@@ -25,6 +25,21 @@ type ActionGroupInterface struct {
 	// no type for query_action
 }
 
+func ActionGroupInterfaceNewFromC(u unsafe.Pointer) *ActionGroupInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ActionGroupInterface{native: u}
+
+	return g
+}
+
+func (recv *ActionGroupInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ActionInterface is a wrapper around the C record GActionInterface.
 type ActionInterface struct {
 	native unsafe.Pointer
@@ -37,6 +52,21 @@ type ActionInterface struct {
 	// no type for get_state
 	// no type for change_state
 	// no type for activate
+}
+
+func ActionInterfaceNewFromC(u unsafe.Pointer) *ActionInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ActionInterface{native: u}
+
+	return g
+}
+
+func (recv *ActionInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ApplicationClass is a wrapper around the C record GApplicationClass.
@@ -60,6 +90,21 @@ type ApplicationClass struct {
 	// Private : padding
 }
 
+func ApplicationClassNewFromC(u unsafe.Pointer) *ApplicationClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &ApplicationClass{native: u}
+
+	return g
+}
+
+func (recv *ApplicationClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ApplicationCommandLineClass is a wrapper around the C record GApplicationCommandLineClass.
 type ApplicationCommandLineClass struct {
 	native unsafe.Pointer
@@ -68,6 +113,21 @@ type ApplicationCommandLineClass struct {
 	// no type for printerr_literal
 	// no type for get_stdin
 	// Private : padding
+}
+
+func ApplicationCommandLineClassNewFromC(u unsafe.Pointer) *ApplicationCommandLineClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &ApplicationCommandLineClass{native: u}
+
+	return g
+}
+
+func (recv *ApplicationCommandLineClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PollableInputStreamInterface is a wrapper around the C record GPollableInputStreamInterface.
@@ -80,6 +140,21 @@ type PollableInputStreamInterface struct {
 	// no type for read_nonblocking
 }
 
+func PollableInputStreamInterfaceNewFromC(u unsafe.Pointer) *PollableInputStreamInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &PollableInputStreamInterface{native: u}
+
+	return g
+}
+
+func (recv *PollableInputStreamInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // PollableOutputStreamInterface is a wrapper around the C record GPollableOutputStreamInterface.
 type PollableOutputStreamInterface struct {
 	native unsafe.Pointer
@@ -88,6 +163,21 @@ type PollableOutputStreamInterface struct {
 	// no type for is_writable
 	// no type for create_source
 	// no type for write_nonblocking
+}
+
+func PollableOutputStreamInterfaceNewFromC(u unsafe.Pointer) *PollableOutputStreamInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &PollableOutputStreamInterface{native: u}
+
+	return g
+}
+
+func (recv *PollableOutputStreamInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsBackendInterface is a wrapper around the C record GTlsBackendInterface.
@@ -103,4 +193,19 @@ type TlsBackendInterface struct {
 	// no type for supports_dtls
 	// no type for get_dtls_client_connection_type
 	// no type for get_dtls_server_connection_type
+}
+
+func TlsBackendInterfaceNewFromC(u unsafe.Pointer) *TlsBackendInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &TlsBackendInterface{native: u}
+
+	return g
+}
+
+func (recv *TlsBackendInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

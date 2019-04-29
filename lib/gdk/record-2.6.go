@@ -17,3 +17,18 @@ type EventOwnerChange struct {
 	Time          uint32
 	SelectionTime uint32
 }
+
+func EventOwnerChangeNewFromC(u unsafe.Pointer) *EventOwnerChange {
+	if u == nil {
+		return nil
+	}
+
+	g := &EventOwnerChange{native: u}
+
+	return g
+}
+
+func (recv *EventOwnerChange) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

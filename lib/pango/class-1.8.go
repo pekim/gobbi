@@ -15,3 +15,18 @@ type Renderer struct {
 	// matrix : record
 	// Private : priv
 }
+
+func RendererNewFromC(u unsafe.Pointer) *Renderer {
+	if u == nil {
+		return nil
+	}
+
+	g := &Renderer{native: u}
+
+	return g
+}
+
+func (recv *Renderer) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

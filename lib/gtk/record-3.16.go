@@ -14,3 +14,18 @@ type GLAreaClass struct {
 	// no type for create_context
 	// Private : _padding
 }
+
+func GLAreaClassNewFromC(u unsafe.Pointer) *GLAreaClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &GLAreaClass{native: u}
+
+	return g
+}
+
+func (recv *GLAreaClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

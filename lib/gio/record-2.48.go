@@ -16,10 +16,40 @@ type DatagramBasedInterface struct {
 	// no type for condition_wait
 }
 
+func DatagramBasedInterfaceNewFromC(u unsafe.Pointer) *DatagramBasedInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DatagramBasedInterface{native: u}
+
+	return g
+}
+
+func (recv *DatagramBasedInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DtlsClientConnectionInterface is a wrapper around the C record GDtlsClientConnectionInterface.
 type DtlsClientConnectionInterface struct {
 	native unsafe.Pointer
 	// g_iface : record
+}
+
+func DtlsClientConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsClientConnectionInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DtlsClientConnectionInterface{native: u}
+
+	return g
+}
+
+func (recv *DtlsClientConnectionInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DtlsConnectionInterface is a wrapper around the C record GDtlsConnectionInterface.
@@ -35,10 +65,40 @@ type DtlsConnectionInterface struct {
 	// no type for shutdown_finish
 }
 
+func DtlsConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsConnectionInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DtlsConnectionInterface{native: u}
+
+	return g
+}
+
+func (recv *DtlsConnectionInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DtlsServerConnectionInterface is a wrapper around the C record GDtlsServerConnectionInterface.
 type DtlsServerConnectionInterface struct {
 	native unsafe.Pointer
 	// g_iface : record
+}
+
+func DtlsServerConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsServerConnectionInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DtlsServerConnectionInterface{native: u}
+
+	return g
+}
+
+func (recv *DtlsServerConnectionInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InputMessage is a wrapper around the C record GInputMessage.
@@ -51,4 +111,19 @@ type InputMessage struct {
 	Flags         int32
 	// no type for control_messages
 	// num_control_messages : guint* with indirection level of 1
+}
+
+func InputMessageNewFromC(u unsafe.Pointer) *InputMessage {
+	if u == nil {
+		return nil
+	}
+
+	g := &InputMessage{native: u}
+
+	return g
+}
+
+func (recv *InputMessage) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

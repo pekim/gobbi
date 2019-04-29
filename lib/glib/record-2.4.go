@@ -11,3 +11,18 @@ type Once struct {
 	Status OnceStatus
 	// retval : no type generator for gpointer, volatile gpointer
 }
+
+func OnceNewFromC(u unsafe.Pointer) *Once {
+	if u == nil {
+		return nil
+	}
+
+	g := &Once{native: u}
+
+	return g
+}
+
+func (recv *Once) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

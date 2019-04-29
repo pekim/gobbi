@@ -9,3 +9,18 @@ import "unsafe"
 type TestDBus struct {
 	native unsafe.Pointer
 }
+
+func TestDBusNewFromC(u unsafe.Pointer) *TestDBus {
+	if u == nil {
+		return nil
+	}
+
+	g := &TestDBus{native: u}
+
+	return g
+}
+
+func (recv *TestDBus) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

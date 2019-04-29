@@ -12,3 +12,18 @@ type ConverterIface struct {
 	// no type for convert
 	// no type for reset
 }
+
+func ConverterIfaceNewFromC(u unsafe.Pointer) *ConverterIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ConverterIface{native: u}
+
+	return g
+}
+
+func (recv *ConverterIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

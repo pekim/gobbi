@@ -12,3 +12,18 @@ type LogField struct {
 	// value : no type generator for gpointer, gconstpointer
 	Length int64
 }
+
+func LogFieldNewFromC(u unsafe.Pointer) *LogField {
+	if u == nil {
+		return nil
+	}
+
+	g := &LogField{native: u}
+
+	return g
+}
+
+func (recv *LogField) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

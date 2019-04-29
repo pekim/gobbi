@@ -15,3 +15,18 @@ type Matrix struct {
 	X0     float64
 	Y0     float64
 }
+
+func MatrixNewFromC(u unsafe.Pointer) *Matrix {
+	if u == nil {
+		return nil
+	}
+
+	g := &Matrix{native: u}
+
+	return g
+}
+
+func (recv *Matrix) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

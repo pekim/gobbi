@@ -11,3 +11,18 @@ type ParamSpecGType struct {
 	// parent_instance : record
 	IsAType Type
 }
+
+func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
+	if u == nil {
+		return nil
+	}
+
+	g := &ParamSpecGType{native: u}
+
+	return g
+}
+
+func (recv *ParamSpecGType) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

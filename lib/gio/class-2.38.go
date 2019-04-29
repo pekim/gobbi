@@ -9,3 +9,18 @@ import "unsafe"
 type PropertyAction struct {
 	native unsafe.Pointer
 }
+
+func PropertyActionNewFromC(u unsafe.Pointer) *PropertyAction {
+	if u == nil {
+		return nil
+	}
+
+	g := &PropertyAction{native: u}
+
+	return g
+}
+
+func (recv *PropertyAction) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

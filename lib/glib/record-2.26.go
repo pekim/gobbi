@@ -10,7 +10,37 @@ type DateTime struct {
 	native unsafe.Pointer
 }
 
+func DateTimeNewFromC(u unsafe.Pointer) *DateTime {
+	if u == nil {
+		return nil
+	}
+
+	g := &DateTime{native: u}
+
+	return g
+}
+
+func (recv *DateTime) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TimeZone is a wrapper around the C record GTimeZone.
 type TimeZone struct {
 	native unsafe.Pointer
+}
+
+func TimeZoneNewFromC(u unsafe.Pointer) *TimeZone {
+	if u == nil {
+		return nil
+	}
+
+	g := &TimeZone{native: u}
+
+	return g
+}
+
+func (recv *TimeZone) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

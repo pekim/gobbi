@@ -10,6 +10,21 @@ type Binding struct {
 	native unsafe.Pointer
 }
 
+func BindingNewFromC(u unsafe.Pointer) *Binding {
+	if u == nil {
+		return nil
+	}
+
+	g := &Binding{native: u}
+
+	return g
+}
+
+func (recv *Binding) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {
 	native unsafe.Pointer
@@ -17,4 +32,19 @@ type ParamSpecVariant struct {
 	// _type : record
 	// default_value : record
 	// Private : padding
+}
+
+func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
+	if u == nil {
+		return nil
+	}
+
+	g := &ParamSpecVariant{native: u}
+
+	return g
+}
+
+func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

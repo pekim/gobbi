@@ -11,3 +11,18 @@ type ParamSpecOverride struct {
 	// Private : parent_instance
 	// Private : overridden
 }
+
+func ParamSpecOverrideNewFromC(u unsafe.Pointer) *ParamSpecOverride {
+	if u == nil {
+		return nil
+	}
+
+	g := &ParamSpecOverride{native: u}
+
+	return g
+}
+
+func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

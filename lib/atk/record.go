@@ -17,11 +17,41 @@ type ActionIface struct {
 	// no type for get_localized_name
 }
 
+func ActionIfaceNewFromC(u unsafe.Pointer) *ActionIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ActionIface{native: u}
+
+	return g
+}
+
+func (recv *ActionIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Attribute is a wrapper around the C record AtkAttribute.
 type Attribute struct {
 	native unsafe.Pointer
 	Name   string
 	Value  string
+}
+
+func AttributeNewFromC(u unsafe.Pointer) *Attribute {
+	if u == nil {
+		return nil
+	}
+
+	g := &Attribute{native: u}
+
+	return g
+}
+
+func (recv *Attribute) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ComponentIface is a wrapper around the C record AtkComponentIface.
@@ -45,6 +75,21 @@ type ComponentIface struct {
 	// no type for get_alpha
 }
 
+func ComponentIfaceNewFromC(u unsafe.Pointer) *ComponentIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ComponentIface{native: u}
+
+	return g
+}
+
+func (recv *ComponentIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DocumentIface is a wrapper around the C record AtkDocumentIface.
 type DocumentIface struct {
 	native unsafe.Pointer
@@ -57,6 +102,21 @@ type DocumentIface struct {
 	// no type for set_document_attribute
 	// no type for get_current_page_number
 	// no type for get_page_count
+}
+
+func DocumentIfaceNewFromC(u unsafe.Pointer) *DocumentIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &DocumentIface{native: u}
+
+	return g
+}
+
+func (recv *DocumentIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // EditableTextIface is a wrapper around the C record AtkEditableTextIface.
@@ -72,12 +132,42 @@ type EditableTextIface struct {
 	// no type for paste_text
 }
 
+func EditableTextIfaceNewFromC(u unsafe.Pointer) *EditableTextIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &EditableTextIface{native: u}
+
+	return g
+}
+
+func (recv *EditableTextIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // GObjectAccessibleClass is a wrapper around the C record AtkGObjectAccessibleClass.
 type GObjectAccessibleClass struct {
 	native unsafe.Pointer
 	// parent_class : record
 	// pad1 : no type generator for Function, AtkFunction
 	// pad2 : no type generator for Function, AtkFunction
+}
+
+func GObjectAccessibleClassNewFromC(u unsafe.Pointer) *GObjectAccessibleClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &GObjectAccessibleClass{native: u}
+
+	return g
+}
+
+func (recv *GObjectAccessibleClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // HyperlinkClass is a wrapper around the C record AtkHyperlinkClass.
@@ -96,11 +186,41 @@ type HyperlinkClass struct {
 	// pad1 : no type generator for Function, AtkFunction
 }
 
+func HyperlinkClassNewFromC(u unsafe.Pointer) *HyperlinkClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &HyperlinkClass{native: u}
+
+	return g
+}
+
+func (recv *HyperlinkClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // HyperlinkImplIface is a wrapper around the C record AtkHyperlinkImplIface.
 type HyperlinkImplIface struct {
 	native unsafe.Pointer
 	// parent : record
 	// no type for get_hyperlink
+}
+
+func HyperlinkImplIfaceNewFromC(u unsafe.Pointer) *HyperlinkImplIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &HyperlinkImplIface{native: u}
+
+	return g
+}
+
+func (recv *HyperlinkImplIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // HypertextIface is a wrapper around the C record AtkHypertextIface.
@@ -111,6 +231,21 @@ type HypertextIface struct {
 	// no type for get_n_links
 	// no type for get_link_index
 	// no type for link_selected
+}
+
+func HypertextIfaceNewFromC(u unsafe.Pointer) *HypertextIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &HypertextIface{native: u}
+
+	return g
+}
+
+func (recv *HypertextIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImageIface is a wrapper around the C record AtkImageIface.
@@ -124,9 +259,39 @@ type ImageIface struct {
 	// no type for get_image_locale
 }
 
+func ImageIfaceNewFromC(u unsafe.Pointer) *ImageIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ImageIface{native: u}
+
+	return g
+}
+
+func (recv *ImageIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Implementor is a wrapper around the C record AtkImplementor.
 type Implementor struct {
 	native unsafe.Pointer
+}
+
+func ImplementorNewFromC(u unsafe.Pointer) *Implementor {
+	if u == nil {
+		return nil
+	}
+
+	g := &Implementor{native: u}
+
+	return g
+}
+
+func (recv *Implementor) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // KeyEventStruct is a wrapper around the C record AtkKeyEventStruct.
@@ -141,6 +306,21 @@ type KeyEventStruct struct {
 	Timestamp uint32
 }
 
+func KeyEventStructNewFromC(u unsafe.Pointer) *KeyEventStruct {
+	if u == nil {
+		return nil
+	}
+
+	g := &KeyEventStruct{native: u}
+
+	return g
+}
+
+func (recv *KeyEventStruct) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // MiscClass is a wrapper around the C record AtkMiscClass.
 type MiscClass struct {
 	native unsafe.Pointer
@@ -150,16 +330,61 @@ type MiscClass struct {
 	// no type for vfuncs
 }
 
+func MiscClassNewFromC(u unsafe.Pointer) *MiscClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &MiscClass{native: u}
+
+	return g
+}
+
+func (recv *MiscClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // NoOpObjectClass is a wrapper around the C record AtkNoOpObjectClass.
 type NoOpObjectClass struct {
 	native unsafe.Pointer
 	// parent_class : record
 }
 
+func NoOpObjectClassNewFromC(u unsafe.Pointer) *NoOpObjectClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &NoOpObjectClass{native: u}
+
+	return g
+}
+
+func (recv *NoOpObjectClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // NoOpObjectFactoryClass is a wrapper around the C record AtkNoOpObjectFactoryClass.
 type NoOpObjectFactoryClass struct {
 	native unsafe.Pointer
 	// parent_class : record
+}
+
+func NoOpObjectFactoryClassNewFromC(u unsafe.Pointer) *NoOpObjectFactoryClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &NoOpObjectFactoryClass{native: u}
+
+	return g
+}
+
+func (recv *NoOpObjectFactoryClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ObjectClass is a wrapper around the C record AtkObjectClass.
@@ -195,6 +420,21 @@ type ObjectClass struct {
 	// pad1 : no type generator for Function, AtkFunction
 }
 
+func ObjectClassNewFromC(u unsafe.Pointer) *ObjectClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &ObjectClass{native: u}
+
+	return g
+}
+
+func (recv *ObjectClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ObjectFactoryClass is a wrapper around the C record AtkObjectFactoryClass.
 type ObjectFactoryClass struct {
 	native unsafe.Pointer
@@ -206,11 +446,41 @@ type ObjectFactoryClass struct {
 	// pad2 : no type generator for Function, AtkFunction
 }
 
+func ObjectFactoryClassNewFromC(u unsafe.Pointer) *ObjectFactoryClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &ObjectFactoryClass{native: u}
+
+	return g
+}
+
+func (recv *ObjectFactoryClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // PlugClass is a wrapper around the C record AtkPlugClass.
 type PlugClass struct {
 	native unsafe.Pointer
 	// parent_class : record
 	// no type for get_object_id
+}
+
+func PlugClassNewFromC(u unsafe.Pointer) *PlugClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &PlugClass{native: u}
+
+	return g
+}
+
+func (recv *PlugClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PropertyValues is a wrapper around the C record AtkPropertyValues.
@@ -221,9 +491,39 @@ type PropertyValues struct {
 	// new_value : record
 }
 
+func PropertyValuesNewFromC(u unsafe.Pointer) *PropertyValues {
+	if u == nil {
+		return nil
+	}
+
+	g := &PropertyValues{native: u}
+
+	return g
+}
+
+func (recv *PropertyValues) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Range is a wrapper around the C record AtkRange.
 type Range struct {
 	native unsafe.Pointer
+}
+
+func RangeNewFromC(u unsafe.Pointer) *Range {
+	if u == nil {
+		return nil
+	}
+
+	g := &Range{native: u}
+
+	return g
+}
+
+func (recv *Range) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Rectangle is a wrapper around the C record AtkRectangle.
@@ -235,10 +535,40 @@ type Rectangle struct {
 	Height int32
 }
 
+func RectangleNewFromC(u unsafe.Pointer) *Rectangle {
+	if u == nil {
+		return nil
+	}
+
+	g := &Rectangle{native: u}
+
+	return g
+}
+
+func (recv *Rectangle) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // RegistryClass is a wrapper around the C record AtkRegistryClass.
 type RegistryClass struct {
 	native unsafe.Pointer
 	// parent_class : record
+}
+
+func RegistryClassNewFromC(u unsafe.Pointer) *RegistryClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &RegistryClass{native: u}
+
+	return g
+}
+
+func (recv *RegistryClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // RelationClass is a wrapper around the C record AtkRelationClass.
@@ -247,12 +577,42 @@ type RelationClass struct {
 	// parent : record
 }
 
+func RelationClassNewFromC(u unsafe.Pointer) *RelationClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &RelationClass{native: u}
+
+	return g
+}
+
+func (recv *RelationClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // RelationSetClass is a wrapper around the C record AtkRelationSetClass.
 type RelationSetClass struct {
 	native unsafe.Pointer
 	// parent : record
 	// pad1 : no type generator for Function, AtkFunction
 	// pad2 : no type generator for Function, AtkFunction
+}
+
+func RelationSetClassNewFromC(u unsafe.Pointer) *RelationSetClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &RelationSetClass{native: u}
+
+	return g
+}
+
+func (recv *RelationSetClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SelectionIface is a wrapper around the C record AtkSelectionIface.
@@ -269,6 +629,21 @@ type SelectionIface struct {
 	// no type for selection_changed
 }
 
+func SelectionIfaceNewFromC(u unsafe.Pointer) *SelectionIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &SelectionIface{native: u}
+
+	return g
+}
+
+func (recv *SelectionIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // SocketClass is a wrapper around the C record AtkSocketClass.
 type SocketClass struct {
 	native unsafe.Pointer
@@ -276,10 +651,40 @@ type SocketClass struct {
 	// no type for embed
 }
 
+func SocketClassNewFromC(u unsafe.Pointer) *SocketClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &SocketClass{native: u}
+
+	return g
+}
+
+func (recv *SocketClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // StateSetClass is a wrapper around the C record AtkStateSetClass.
 type StateSetClass struct {
 	native unsafe.Pointer
 	// parent : record
+}
+
+func StateSetClassNewFromC(u unsafe.Pointer) *StateSetClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &StateSetClass{native: u}
+
+	return g
+}
+
+func (recv *StateSetClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // StreamableContentIface is a wrapper around the C record AtkStreamableContentIface.
@@ -295,6 +700,21 @@ type StreamableContentIface struct {
 	// pad3 : no type generator for Function, AtkFunction
 }
 
+func StreamableContentIfaceNewFromC(u unsafe.Pointer) *StreamableContentIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &StreamableContentIface{native: u}
+
+	return g
+}
+
+func (recv *StreamableContentIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TableCellIface is a wrapper around the C record AtkTableCellIface.
 type TableCellIface struct {
 	native unsafe.Pointer
@@ -306,6 +726,21 @@ type TableCellIface struct {
 	// no type for get_row_header_cells
 	// no type for get_row_column_span
 	// no type for get_table
+}
+
+func TableCellIfaceNewFromC(u unsafe.Pointer) *TableCellIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &TableCellIface{native: u}
+
+	return g
+}
+
+func (recv *TableCellIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TableIface is a wrapper around the C record AtkTableIface.
@@ -350,6 +785,21 @@ type TableIface struct {
 	// no type for model_changed
 }
 
+func TableIfaceNewFromC(u unsafe.Pointer) *TableIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &TableIface{native: u}
+
+	return g
+}
+
+func (recv *TableIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TextIface is a wrapper around the C record AtkTextIface.
 type TextIface struct {
 	native unsafe.Pointer
@@ -380,6 +830,21 @@ type TextIface struct {
 	// no type for get_string_at_offset
 }
 
+func TextIfaceNewFromC(u unsafe.Pointer) *TextIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextIface{native: u}
+
+	return g
+}
+
+func (recv *TextIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TextRange is a wrapper around the C record AtkTextRange.
 type TextRange struct {
 	native unsafe.Pointer
@@ -389,6 +854,21 @@ type TextRange struct {
 	Content     string
 }
 
+func TextRangeNewFromC(u unsafe.Pointer) *TextRange {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextRange{native: u}
+
+	return g
+}
+
+func (recv *TextRange) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TextRectangle is a wrapper around the C record AtkTextRectangle.
 type TextRectangle struct {
 	native unsafe.Pointer
@@ -396,6 +876,21 @@ type TextRectangle struct {
 	Y      int32
 	Width  int32
 	Height int32
+}
+
+func TextRectangleNewFromC(u unsafe.Pointer) *TextRectangle {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextRectangle{native: u}
+
+	return g
+}
+
+func (recv *TextRectangle) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UtilClass is a wrapper around the C record AtkUtilClass.
@@ -409,6 +904,21 @@ type UtilClass struct {
 	// no type for get_root
 	// no type for get_toolkit_name
 	// no type for get_toolkit_version
+}
+
+func UtilClassNewFromC(u unsafe.Pointer) *UtilClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &UtilClass{native: u}
+
+	return g
+}
+
+func (recv *UtilClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ValueIface is a wrapper around the C record AtkValueIface.
@@ -427,8 +937,38 @@ type ValueIface struct {
 	// no type for set_value
 }
 
+func ValueIfaceNewFromC(u unsafe.Pointer) *ValueIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ValueIface{native: u}
+
+	return g
+}
+
+func (recv *ValueIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // WindowIface is a wrapper around the C record AtkWindowIface.
 type WindowIface struct {
 	native unsafe.Pointer
 	// parent : record
+}
+
+func WindowIfaceNewFromC(u unsafe.Pointer) *WindowIface {
+	if u == nil {
+		return nil
+	}
+
+	g := &WindowIface{native: u}
+
+	return g
+}
+
+func (recv *WindowIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

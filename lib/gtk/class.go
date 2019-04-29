@@ -15,6 +15,21 @@ type AboutDialog struct {
 	// Private : priv
 }
 
+func AboutDialogNewFromC(u unsafe.Pointer) *AboutDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &AboutDialog{native: u}
+
+	return g
+}
+
+func (recv *AboutDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by AboutDialog
 func (recv *AboutDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -32,11 +47,41 @@ type AccelGroup struct {
 	// priv : record
 }
 
+func AccelGroupNewFromC(u unsafe.Pointer) *AccelGroup {
+	if u == nil {
+		return nil
+	}
+
+	g := &AccelGroup{native: u}
+
+	return g
+}
+
+func (recv *AccelGroup) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // AccelLabel is a wrapper around the C record GtkAccelLabel.
 type AccelLabel struct {
 	native unsafe.Pointer
 	// label : record
 	// priv : record
+}
+
+func AccelLabelNewFromC(u unsafe.Pointer) *AccelLabel {
+	if u == nil {
+		return nil
+	}
+
+	g := &AccelLabel{native: u}
+
+	return g
+}
+
+func (recv *AccelLabel) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by AccelLabel
@@ -54,6 +99,21 @@ type AccelMap struct {
 	native unsafe.Pointer
 }
 
+func AccelMapNewFromC(u unsafe.Pointer) *AccelMap {
+	if u == nil {
+		return nil
+	}
+
+	g := &AccelMap{native: u}
+
+	return g
+}
+
+func (recv *AccelMap) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Accessible is a wrapper around the C record GtkAccessible.
 type Accessible struct {
 	native unsafe.Pointer
@@ -61,11 +121,41 @@ type Accessible struct {
 	// Private : priv
 }
 
+func AccessibleNewFromC(u unsafe.Pointer) *Accessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &Accessible{native: u}
+
+	return g
+}
+
+func (recv *Accessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action is a wrapper around the C record GtkAction.
 type Action struct {
 	native unsafe.Pointer
 	// object : record
 	// Private : private_data
+}
+
+func ActionNewFromC(u unsafe.Pointer) *Action {
+	if u == nil {
+		return nil
+	}
+
+	g := &Action{native: u}
+
+	return g
+}
+
+func (recv *Action) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by Action
@@ -77,6 +167,21 @@ func (recv *Action) Buildable() *Buildable {
 type ActionBar struct {
 	native unsafe.Pointer
 	// Private : bin
+}
+
+func ActionBarNewFromC(u unsafe.Pointer) *ActionBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &ActionBar{native: u}
+
+	return g
+}
+
+func (recv *ActionBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ActionBar
@@ -96,6 +201,21 @@ type ActionGroup struct {
 	// Private : priv
 }
 
+func ActionGroupNewFromC(u unsafe.Pointer) *ActionGroup {
+	if u == nil {
+		return nil
+	}
+
+	g := &ActionGroup{native: u}
+
+	return g
+}
+
+func (recv *ActionGroup) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by ActionGroup
 func (recv *ActionGroup) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -108,11 +228,41 @@ type Adjustment struct {
 	// priv : record
 }
 
+func AdjustmentNewFromC(u unsafe.Pointer) *Adjustment {
+	if u == nil {
+		return nil
+	}
+
+	g := &Adjustment{native: u}
+
+	return g
+}
+
+func (recv *Adjustment) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Alignment is a wrapper around the C record GtkAlignment.
 type Alignment struct {
 	native unsafe.Pointer
 	// bin : record
 	// Private : priv
+}
+
+func AlignmentNewFromC(u unsafe.Pointer) *Alignment {
+	if u == nil {
+		return nil
+	}
+
+	g := &Alignment{native: u}
+
+	return g
+}
+
+func (recv *Alignment) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Alignment
@@ -130,6 +280,21 @@ type AppChooserButton struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func AppChooserButtonNewFromC(u unsafe.Pointer) *AppChooserButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &AppChooserButton{native: u}
+
+	return g
+}
+
+func (recv *AppChooserButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by AppChooserButton
@@ -164,6 +329,21 @@ type AppChooserDialog struct {
 	// Private : priv
 }
 
+func AppChooserDialogNewFromC(u unsafe.Pointer) *AppChooserDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &AppChooserDialog{native: u}
+
+	return g
+}
+
+func (recv *AppChooserDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by AppChooserDialog
 func (recv *AppChooserDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -184,6 +364,21 @@ type AppChooserWidget struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func AppChooserWidgetNewFromC(u unsafe.Pointer) *AppChooserWidget {
+	if u == nil {
+		return nil
+	}
+
+	g := &AppChooserWidget{native: u}
+
+	return g
+}
+
+func (recv *AppChooserWidget) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by AppChooserWidget
@@ -213,6 +408,21 @@ type Application struct {
 	// Private : priv
 }
 
+func ApplicationNewFromC(u unsafe.Pointer) *Application {
+	if u == nil {
+		return nil
+	}
+
+	g := &Application{native: u}
+
+	return g
+}
+
+func (recv *Application) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ActionGroup returns the ActionGroup interface implemented by Application
 func (recv *Application) ActionGroup() *gio.ActionGroup {
 	return gio.ActionGroupNewFromC(recv.ToC())
@@ -228,6 +438,21 @@ type ApplicationWindow struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func ApplicationWindowNewFromC(u unsafe.Pointer) *ApplicationWindow {
+	if u == nil {
+		return nil
+	}
+
+	g := &ApplicationWindow{native: u}
+
+	return g
+}
+
+func (recv *ApplicationWindow) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ApplicationWindow
@@ -257,6 +482,21 @@ type Arrow struct {
 	// Private : priv
 }
 
+func ArrowNewFromC(u unsafe.Pointer) *Arrow {
+	if u == nil {
+		return nil
+	}
+
+	g := &Arrow{native: u}
+
+	return g
+}
+
+func (recv *Arrow) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Arrow
 func (recv *Arrow) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -272,6 +512,21 @@ type ArrowAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func ArrowAccessibleNewFromC(u unsafe.Pointer) *ArrowAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ArrowAccessible{native: u}
+
+	return g
+}
+
+func (recv *ArrowAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by ArrowAccessible
@@ -291,6 +546,21 @@ type AspectFrame struct {
 	// Private : priv
 }
 
+func AspectFrameNewFromC(u unsafe.Pointer) *AspectFrame {
+	if u == nil {
+		return nil
+	}
+
+	g := &AspectFrame{native: u}
+
+	return g
+}
+
+func (recv *AspectFrame) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by AspectFrame
 func (recv *AspectFrame) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -306,6 +576,21 @@ type Assistant struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func AssistantNewFromC(u unsafe.Pointer) *Assistant {
+	if u == nil {
+		return nil
+	}
+
+	g := &Assistant{native: u}
+
+	return g
+}
+
+func (recv *Assistant) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Assistant
@@ -325,6 +610,21 @@ type Bin struct {
 	// Private : priv
 }
 
+func BinNewFromC(u unsafe.Pointer) *Bin {
+	if u == nil {
+		return nil
+	}
+
+	g := &Bin{native: u}
+
+	return g
+}
+
+func (recv *Bin) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Bin
 func (recv *Bin) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -342,6 +642,21 @@ type BooleanCellAccessible struct {
 	// priv : record
 }
 
+func BooleanCellAccessibleNewFromC(u unsafe.Pointer) *BooleanCellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &BooleanCellAccessible{native: u}
+
+	return g
+}
+
+func (recv *BooleanCellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by BooleanCellAccessible
 func (recv *BooleanCellAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -357,6 +672,21 @@ type Box struct {
 	native unsafe.Pointer
 	// container : record
 	// Private : priv
+}
+
+func BoxNewFromC(u unsafe.Pointer) *Box {
+	if u == nil {
+		return nil
+	}
+
+	g := &Box{native: u}
+
+	return g
+}
+
+func (recv *Box) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Box
@@ -381,11 +711,41 @@ type Builder struct {
 	// priv : record
 }
 
+func BuilderNewFromC(u unsafe.Pointer) *Builder {
+	if u == nil {
+		return nil
+	}
+
+	g := &Builder{native: u}
+
+	return g
+}
+
+func (recv *Builder) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Button is a wrapper around the C record GtkButton.
 type Button struct {
 	native unsafe.Pointer
 	// Private : bin
 	// Private : priv
+}
+
+func ButtonNewFromC(u unsafe.Pointer) *Button {
+	if u == nil {
+		return nil
+	}
+
+	g := &Button{native: u}
+
+	return g
+}
+
+func (recv *Button) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Button
@@ -415,6 +775,21 @@ type ButtonAccessible struct {
 	// priv : record
 }
 
+func ButtonAccessibleNewFromC(u unsafe.Pointer) *ButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *ButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by ButtonAccessible
 func (recv *ButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -435,6 +810,21 @@ type ButtonBox struct {
 	native unsafe.Pointer
 	// box : record
 	// Private : priv
+}
+
+func ButtonBoxNewFromC(u unsafe.Pointer) *ButtonBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &ButtonBox{native: u}
+
+	return g
+}
+
+func (recv *ButtonBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ButtonBox
@@ -459,6 +849,21 @@ type Calendar struct {
 	// priv : record
 }
 
+func CalendarNewFromC(u unsafe.Pointer) *Calendar {
+	if u == nil {
+		return nil
+	}
+
+	g := &Calendar{native: u}
+
+	return g
+}
+
+func (recv *Calendar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Calendar
 func (recv *Calendar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -474,6 +879,21 @@ type CellAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func CellAccessibleNewFromC(u unsafe.Pointer) *CellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellAccessible{native: u}
+
+	return g
+}
+
+func (recv *CellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Action returns the Action interface implemented by CellAccessible
@@ -493,6 +913,21 @@ type CellArea struct {
 	// Private : priv
 }
 
+func CellAreaNewFromC(u unsafe.Pointer) *CellArea {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellArea{native: u}
+
+	return g
+}
+
+func (recv *CellArea) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by CellArea
 func (recv *CellArea) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -508,6 +943,21 @@ type CellAreaBox struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func CellAreaBoxNewFromC(u unsafe.Pointer) *CellAreaBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellAreaBox{native: u}
+
+	return g
+}
+
+func (recv *CellAreaBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by CellAreaBox
@@ -532,11 +982,41 @@ type CellAreaContext struct {
 	// Private : priv
 }
 
+func CellAreaContextNewFromC(u unsafe.Pointer) *CellAreaContext {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellAreaContext{native: u}
+
+	return g
+}
+
+func (recv *CellAreaContext) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // CellRenderer is a wrapper around the C record GtkCellRenderer.
 type CellRenderer struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func CellRendererNewFromC(u unsafe.Pointer) *CellRenderer {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRenderer{native: u}
+
+	return g
+}
+
+func (recv *CellRenderer) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CellRendererAccel is a wrapper around the C record GtkCellRendererAccel.
@@ -546,11 +1026,41 @@ type CellRendererAccel struct {
 	// Private : priv
 }
 
+func CellRendererAccelNewFromC(u unsafe.Pointer) *CellRendererAccel {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererAccel{native: u}
+
+	return g
+}
+
+func (recv *CellRendererAccel) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
 type CellRendererCombo struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func CellRendererComboNewFromC(u unsafe.Pointer) *CellRendererCombo {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererCombo{native: u}
+
+	return g
+}
+
+func (recv *CellRendererCombo) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
@@ -560,11 +1070,41 @@ type CellRendererPixbuf struct {
 	// Private : priv
 }
 
+func CellRendererPixbufNewFromC(u unsafe.Pointer) *CellRendererPixbuf {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererPixbuf{native: u}
+
+	return g
+}
+
+func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // CellRendererProgress is a wrapper around the C record GtkCellRendererProgress.
 type CellRendererProgress struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func CellRendererProgressNewFromC(u unsafe.Pointer) *CellRendererProgress {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererProgress{native: u}
+
+	return g
+}
+
+func (recv *CellRendererProgress) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Orientable returns the Orientable interface implemented by CellRendererProgress
@@ -579,11 +1119,41 @@ type CellRendererSpin struct {
 	// Private : priv
 }
 
+func CellRendererSpinNewFromC(u unsafe.Pointer) *CellRendererSpin {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererSpin{native: u}
+
+	return g
+}
+
+func (recv *CellRendererSpin) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // CellRendererSpinner is a wrapper around the C record GtkCellRendererSpinner.
 type CellRendererSpinner struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func CellRendererSpinnerNewFromC(u unsafe.Pointer) *CellRendererSpinner {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererSpinner{native: u}
+
+	return g
+}
+
+func (recv *CellRendererSpinner) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CellRendererText is a wrapper around the C record GtkCellRendererText.
@@ -593,6 +1163,21 @@ type CellRendererText struct {
 	// Private : priv
 }
 
+func CellRendererTextNewFromC(u unsafe.Pointer) *CellRendererText {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererText{native: u}
+
+	return g
+}
+
+func (recv *CellRendererText) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // CellRendererToggle is a wrapper around the C record GtkCellRendererToggle.
 type CellRendererToggle struct {
 	native unsafe.Pointer
@@ -600,11 +1185,41 @@ type CellRendererToggle struct {
 	// Private : priv
 }
 
+func CellRendererToggleNewFromC(u unsafe.Pointer) *CellRendererToggle {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellRendererToggle{native: u}
+
+	return g
+}
+
+func (recv *CellRendererToggle) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // CellView is a wrapper around the C record GtkCellView.
 type CellView struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func CellViewNewFromC(u unsafe.Pointer) *CellView {
+	if u == nil {
+		return nil
+	}
+
+	g := &CellView{native: u}
+
+	return g
+}
+
+func (recv *CellView) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by CellView
@@ -631,6 +1246,21 @@ func (recv *CellView) Orientable() *Orientable {
 type CheckButton struct {
 	native unsafe.Pointer
 	// toggle_button : record
+}
+
+func CheckButtonNewFromC(u unsafe.Pointer) *CheckButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &CheckButton{native: u}
+
+	return g
+}
+
+func (recv *CheckButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by CheckButton
@@ -660,6 +1290,21 @@ type CheckMenuItem struct {
 	// Private : priv
 }
 
+func CheckMenuItemNewFromC(u unsafe.Pointer) *CheckMenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &CheckMenuItem{native: u}
+
+	return g
+}
+
+func (recv *CheckMenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by CheckMenuItem
 func (recv *CheckMenuItem) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -687,6 +1332,21 @@ type CheckMenuItemAccessible struct {
 	// priv : record
 }
 
+func CheckMenuItemAccessibleNewFromC(u unsafe.Pointer) *CheckMenuItemAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &CheckMenuItemAccessible{native: u}
+
+	return g
+}
+
+func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by CheckMenuItemAccessible
 func (recv *CheckMenuItemAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -707,11 +1367,41 @@ type Clipboard struct {
 	native unsafe.Pointer
 }
 
+func ClipboardNewFromC(u unsafe.Pointer) *Clipboard {
+	if u == nil {
+		return nil
+	}
+
+	g := &Clipboard{native: u}
+
+	return g
+}
+
+func (recv *Clipboard) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ColorButton is a wrapper around the C record GtkColorButton.
 type ColorButton struct {
 	native unsafe.Pointer
 	// button : record
 	// Private : priv
+}
+
+func ColorButtonNewFromC(u unsafe.Pointer) *ColorButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &ColorButton{native: u}
+
+	return g
+}
+
+func (recv *ColorButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ColorButton
@@ -746,6 +1436,21 @@ type ColorChooserDialog struct {
 	// Private : priv
 }
 
+func ColorChooserDialogNewFromC(u unsafe.Pointer) *ColorChooserDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &ColorChooserDialog{native: u}
+
+	return g
+}
+
+func (recv *ColorChooserDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ColorChooserDialog
 func (recv *ColorChooserDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -766,6 +1471,21 @@ type ColorChooserWidget struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func ColorChooserWidgetNewFromC(u unsafe.Pointer) *ColorChooserWidget {
+	if u == nil {
+		return nil
+	}
+
+	g := &ColorChooserWidget{native: u}
+
+	return g
+}
+
+func (recv *ColorChooserWidget) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ColorChooserWidget
@@ -795,6 +1515,21 @@ type ColorSelection struct {
 	// Private : private_data
 }
 
+func ColorSelectionNewFromC(u unsafe.Pointer) *ColorSelection {
+	if u == nil {
+		return nil
+	}
+
+	g := &ColorSelection{native: u}
+
+	return g
+}
+
+func (recv *ColorSelection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ColorSelection
 func (recv *ColorSelection) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -817,6 +1552,21 @@ type ColorSelectionDialog struct {
 	// Private : priv
 }
 
+func ColorSelectionDialogNewFromC(u unsafe.Pointer) *ColorSelectionDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &ColorSelectionDialog{native: u}
+
+	return g
+}
+
+func (recv *ColorSelectionDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ColorSelectionDialog
 func (recv *ColorSelectionDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -832,6 +1582,21 @@ type ComboBox struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func ComboBoxNewFromC(u unsafe.Pointer) *ComboBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &ComboBox{native: u}
+
+	return g
+}
+
+func (recv *ComboBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ComboBox
@@ -861,6 +1626,21 @@ type ComboBoxAccessible struct {
 	// priv : record
 }
 
+func ComboBoxAccessibleNewFromC(u unsafe.Pointer) *ComboBoxAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ComboBoxAccessible{native: u}
+
+	return g
+}
+
+func (recv *ComboBoxAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by ComboBoxAccessible
 func (recv *ComboBoxAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -881,6 +1661,21 @@ type ComboBoxText struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func ComboBoxTextNewFromC(u unsafe.Pointer) *ComboBoxText {
+	if u == nil {
+		return nil
+	}
+
+	g := &ComboBoxText{native: u}
+
+	return g
+}
+
+func (recv *ComboBoxText) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ComboBoxText
@@ -910,6 +1705,21 @@ type Container struct {
 	// Private : priv
 }
 
+func ContainerNewFromC(u unsafe.Pointer) *Container {
+	if u == nil {
+		return nil
+	}
+
+	g := &Container{native: u}
+
+	return g
+}
+
+func (recv *Container) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Container
 func (recv *Container) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -927,6 +1737,21 @@ type ContainerAccessible struct {
 	// priv : record
 }
 
+func ContainerAccessibleNewFromC(u unsafe.Pointer) *ContainerAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ContainerAccessible{native: u}
+
+	return g
+}
+
+func (recv *ContainerAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ContainerAccessible
 func (recv *ContainerAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -937,6 +1762,21 @@ type ContainerCellAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func ContainerCellAccessibleNewFromC(u unsafe.Pointer) *ContainerCellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ContainerCellAccessible{native: u}
+
+	return g
+}
+
+func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Action returns the Action interface implemented by ContainerCellAccessible
@@ -956,6 +1796,21 @@ type CssProvider struct {
 	// priv : record
 }
 
+func CssProviderNewFromC(u unsafe.Pointer) *CssProvider {
+	if u == nil {
+		return nil
+	}
+
+	g := &CssProvider{native: u}
+
+	return g
+}
+
+func (recv *CssProvider) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // StyleProvider returns the StyleProvider interface implemented by CssProvider
 func (recv *CssProvider) StyleProvider() *StyleProvider {
 	return StyleProviderNewFromC(recv.ToC())
@@ -966,6 +1821,21 @@ type Dialog struct {
 	native unsafe.Pointer
 	// window : record
 	// Private : priv
+}
+
+func DialogNewFromC(u unsafe.Pointer) *Dialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &Dialog{native: u}
+
+	return g
+}
+
+func (recv *Dialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Dialog
@@ -985,6 +1855,21 @@ type DrawingArea struct {
 	// Private : dummy
 }
 
+func DrawingAreaNewFromC(u unsafe.Pointer) *DrawingArea {
+	if u == nil {
+		return nil
+	}
+
+	g := &DrawingArea{native: u}
+
+	return g
+}
+
+func (recv *DrawingArea) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by DrawingArea
 func (recv *DrawingArea) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1000,6 +1885,21 @@ type Entry struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func EntryNewFromC(u unsafe.Pointer) *Entry {
+	if u == nil {
+		return nil
+	}
+
+	g := &Entry{native: u}
+
+	return g
+}
+
+func (recv *Entry) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Entry
@@ -1029,6 +1929,21 @@ type EntryAccessible struct {
 	// priv : record
 }
 
+func EntryAccessibleNewFromC(u unsafe.Pointer) *EntryAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &EntryAccessible{native: u}
+
+	return g
+}
+
+func (recv *EntryAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by EntryAccessible
 func (recv *EntryAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -1056,11 +1971,41 @@ type EntryBuffer struct {
 	// Private : priv
 }
 
+func EntryBufferNewFromC(u unsafe.Pointer) *EntryBuffer {
+	if u == nil {
+		return nil
+	}
+
+	g := &EntryBuffer{native: u}
+
+	return g
+}
+
+func (recv *EntryBuffer) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
 type EntryCompletion struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func EntryCompletionNewFromC(u unsafe.Pointer) *EntryCompletion {
+	if u == nil {
+		return nil
+	}
+
+	g := &EntryCompletion{native: u}
+
+	return g
+}
+
+func (recv *EntryCompletion) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by EntryCompletion
@@ -1082,6 +2027,21 @@ type EventBox struct {
 	// Private : priv
 }
 
+func EventBoxNewFromC(u unsafe.Pointer) *EventBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &EventBox{native: u}
+
+	return g
+}
+
+func (recv *EventBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by EventBox
 func (recv *EventBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1097,11 +2057,41 @@ type EventController struct {
 	native unsafe.Pointer
 }
 
+func EventControllerNewFromC(u unsafe.Pointer) *EventController {
+	if u == nil {
+		return nil
+	}
+
+	g := &EventController{native: u}
+
+	return g
+}
+
+func (recv *EventController) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Expander is a wrapper around the C record GtkExpander.
 type Expander struct {
 	native unsafe.Pointer
 	// bin : record
 	// priv : record
+}
+
+func ExpanderNewFromC(u unsafe.Pointer) *Expander {
+	if u == nil {
+		return nil
+	}
+
+	g := &Expander{native: u}
+
+	return g
+}
+
+func (recv *Expander) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Expander
@@ -1121,6 +2111,21 @@ type ExpanderAccessible struct {
 	// priv : record
 }
 
+func ExpanderAccessibleNewFromC(u unsafe.Pointer) *ExpanderAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ExpanderAccessible{native: u}
+
+	return g
+}
+
+func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by ExpanderAccessible
 func (recv *ExpanderAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -1136,6 +2141,21 @@ type FileChooserButton struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func FileChooserButtonNewFromC(u unsafe.Pointer) *FileChooserButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &FileChooserButton{native: u}
+
+	return g
+}
+
+func (recv *FileChooserButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by FileChooserButton
@@ -1165,6 +2185,21 @@ type FileChooserDialog struct {
 	// priv : record
 }
 
+func FileChooserDialogNewFromC(u unsafe.Pointer) *FileChooserDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &FileChooserDialog{native: u}
+
+	return g
+}
+
+func (recv *FileChooserDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by FileChooserDialog
 func (recv *FileChooserDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1185,6 +2220,21 @@ type FileChooserWidget struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func FileChooserWidgetNewFromC(u unsafe.Pointer) *FileChooserWidget {
+	if u == nil {
+		return nil
+	}
+
+	g := &FileChooserWidget{native: u}
+
+	return g
+}
+
+func (recv *FileChooserWidget) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by FileChooserWidget
@@ -1212,6 +2262,21 @@ type FileFilter struct {
 	native unsafe.Pointer
 }
 
+func FileFilterNewFromC(u unsafe.Pointer) *FileFilter {
+	if u == nil {
+		return nil
+	}
+
+	g := &FileFilter{native: u}
+
+	return g
+}
+
+func (recv *FileFilter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by FileFilter
 func (recv *FileFilter) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -1222,6 +2287,21 @@ type Fixed struct {
 	native unsafe.Pointer
 	// container : record
 	// Private : priv
+}
+
+func FixedNewFromC(u unsafe.Pointer) *Fixed {
+	if u == nil {
+		return nil
+	}
+
+	g := &Fixed{native: u}
+
+	return g
+}
+
+func (recv *Fixed) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Fixed
@@ -1238,6 +2318,21 @@ func (recv *Fixed) Buildable() *Buildable {
 type FlowBox struct {
 	native unsafe.Pointer
 	// container : record
+}
+
+func FlowBoxNewFromC(u unsafe.Pointer) *FlowBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &FlowBox{native: u}
+
+	return g
+}
+
+func (recv *FlowBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by FlowBox
@@ -1262,6 +2357,21 @@ type FlowBoxAccessible struct {
 	// priv : record
 }
 
+func FlowBoxAccessibleNewFromC(u unsafe.Pointer) *FlowBoxAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &FlowBoxAccessible{native: u}
+
+	return g
+}
+
+func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by FlowBoxAccessible
 func (recv *FlowBoxAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -1276,6 +2386,21 @@ func (recv *FlowBoxAccessible) Selection() *atk.Selection {
 type FlowBoxChild struct {
 	native unsafe.Pointer
 	// parent_instance : record
+}
+
+func FlowBoxChildNewFromC(u unsafe.Pointer) *FlowBoxChild {
+	if u == nil {
+		return nil
+	}
+
+	g := &FlowBoxChild{native: u}
+
+	return g
+}
+
+func (recv *FlowBoxChild) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by FlowBoxChild
@@ -1294,6 +2419,21 @@ type FlowBoxChildAccessible struct {
 	// parent : record
 }
 
+func FlowBoxChildAccessibleNewFromC(u unsafe.Pointer) *FlowBoxChildAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &FlowBoxChildAccessible{native: u}
+
+	return g
+}
+
+func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by FlowBoxChildAccessible
 func (recv *FlowBoxChildAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -1304,6 +2444,21 @@ type FontButton struct {
 	native unsafe.Pointer
 	// button : record
 	// Private : priv
+}
+
+func FontButtonNewFromC(u unsafe.Pointer) *FontButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &FontButton{native: u}
+
+	return g
+}
+
+func (recv *FontButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by FontButton
@@ -1338,6 +2493,21 @@ type FontChooserDialog struct {
 	// Private : priv
 }
 
+func FontChooserDialogNewFromC(u unsafe.Pointer) *FontChooserDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &FontChooserDialog{native: u}
+
+	return g
+}
+
+func (recv *FontChooserDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by FontChooserDialog
 func (recv *FontChooserDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1358,6 +2528,21 @@ type FontChooserWidget struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func FontChooserWidgetNewFromC(u unsafe.Pointer) *FontChooserWidget {
+	if u == nil {
+		return nil
+	}
+
+	g := &FontChooserWidget{native: u}
+
+	return g
+}
+
+func (recv *FontChooserWidget) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by FontChooserWidget
@@ -1387,6 +2572,21 @@ type FontSelection struct {
 	// Private : priv
 }
 
+func FontSelectionNewFromC(u unsafe.Pointer) *FontSelection {
+	if u == nil {
+		return nil
+	}
+
+	g := &FontSelection{native: u}
+
+	return g
+}
+
+func (recv *FontSelection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by FontSelection
 func (recv *FontSelection) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1409,6 +2609,21 @@ type FontSelectionDialog struct {
 	// Private : priv
 }
 
+func FontSelectionDialogNewFromC(u unsafe.Pointer) *FontSelectionDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &FontSelectionDialog{native: u}
+
+	return g
+}
+
+func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by FontSelectionDialog
 func (recv *FontSelectionDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1424,6 +2639,21 @@ type Frame struct {
 	native unsafe.Pointer
 	// bin : record
 	// Private : priv
+}
+
+func FrameNewFromC(u unsafe.Pointer) *Frame {
+	if u == nil {
+		return nil
+	}
+
+	g := &Frame{native: u}
+
+	return g
+}
+
+func (recv *Frame) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Frame
@@ -1443,6 +2673,21 @@ type FrameAccessible struct {
 	// priv : record
 }
 
+func FrameAccessibleNewFromC(u unsafe.Pointer) *FrameAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &FrameAccessible{native: u}
+
+	return g
+}
+
+func (recv *FrameAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by FrameAccessible
 func (recv *FrameAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -1453,9 +2698,39 @@ type Gesture struct {
 	native unsafe.Pointer
 }
 
+func GestureNewFromC(u unsafe.Pointer) *Gesture {
+	if u == nil {
+		return nil
+	}
+
+	g := &Gesture{native: u}
+
+	return g
+}
+
+func (recv *Gesture) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // GestureDrag is a wrapper around the C record GtkGestureDrag.
 type GestureDrag struct {
 	native unsafe.Pointer
+}
+
+func GestureDragNewFromC(u unsafe.Pointer) *GestureDrag {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureDrag{native: u}
+
+	return g
+}
+
+func (recv *GestureDrag) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
@@ -1463,9 +2738,39 @@ type GestureLongPress struct {
 	native unsafe.Pointer
 }
 
+func GestureLongPressNewFromC(u unsafe.Pointer) *GestureLongPress {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureLongPress{native: u}
+
+	return g
+}
+
+func (recv *GestureLongPress) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
 type GestureMultiPress struct {
 	native unsafe.Pointer
+}
+
+func GestureMultiPressNewFromC(u unsafe.Pointer) *GestureMultiPress {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureMultiPress{native: u}
+
+	return g
+}
+
+func (recv *GestureMultiPress) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GesturePan is a wrapper around the C record GtkGesturePan.
@@ -1473,9 +2778,39 @@ type GesturePan struct {
 	native unsafe.Pointer
 }
 
+func GesturePanNewFromC(u unsafe.Pointer) *GesturePan {
+	if u == nil {
+		return nil
+	}
+
+	g := &GesturePan{native: u}
+
+	return g
+}
+
+func (recv *GesturePan) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
 type GestureRotate struct {
 	native unsafe.Pointer
+}
+
+func GestureRotateNewFromC(u unsafe.Pointer) *GestureRotate {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureRotate{native: u}
+
+	return g
+}
+
+func (recv *GestureRotate) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
@@ -1483,9 +2818,39 @@ type GestureSingle struct {
 	native unsafe.Pointer
 }
 
+func GestureSingleNewFromC(u unsafe.Pointer) *GestureSingle {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureSingle{native: u}
+
+	return g
+}
+
+func (recv *GestureSingle) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // GestureSwipe is a wrapper around the C record GtkGestureSwipe.
 type GestureSwipe struct {
 	native unsafe.Pointer
+}
+
+func GestureSwipeNewFromC(u unsafe.Pointer) *GestureSwipe {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureSwipe{native: u}
+
+	return g
+}
+
+func (recv *GestureSwipe) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
@@ -1493,11 +2858,41 @@ type GestureZoom struct {
 	native unsafe.Pointer
 }
 
+func GestureZoomNewFromC(u unsafe.Pointer) *GestureZoom {
+	if u == nil {
+		return nil
+	}
+
+	g := &GestureZoom{native: u}
+
+	return g
+}
+
+func (recv *GestureZoom) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Grid is a wrapper around the C record GtkGrid.
 type Grid struct {
 	native unsafe.Pointer
 	// Private : container
 	// Private : priv
+}
+
+func GridNewFromC(u unsafe.Pointer) *Grid {
+	if u == nil {
+		return nil
+	}
+
+	g := &Grid{native: u}
+
+	return g
+}
+
+func (recv *Grid) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Grid
@@ -1521,6 +2916,21 @@ type HBox struct {
 	// box : record
 }
 
+func HBoxNewFromC(u unsafe.Pointer) *HBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &HBox{native: u}
+
+	return g
+}
+
+func (recv *HBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by HBox
 func (recv *HBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1542,6 +2952,21 @@ type HButtonBox struct {
 	// button_box : record
 }
 
+func HButtonBoxNewFromC(u unsafe.Pointer) *HButtonBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &HButtonBox{native: u}
+
+	return g
+}
+
+func (recv *HButtonBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by HButtonBox
 func (recv *HButtonBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1561,6 +2986,21 @@ func (recv *HButtonBox) Orientable() *Orientable {
 type HPaned struct {
 	native unsafe.Pointer
 	// paned : record
+}
+
+func HPanedNewFromC(u unsafe.Pointer) *HPaned {
+	if u == nil {
+		return nil
+	}
+
+	g := &HPaned{native: u}
+
+	return g
+}
+
+func (recv *HPaned) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by HPaned
@@ -1585,6 +3025,21 @@ type HSV struct {
 	// Private : priv
 }
 
+func HSVNewFromC(u unsafe.Pointer) *HSV {
+	if u == nil {
+		return nil
+	}
+
+	g := &HSV{native: u}
+
+	return g
+}
+
+func (recv *HSV) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by HSV
 func (recv *HSV) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1599,6 +3054,21 @@ func (recv *HSV) Buildable() *Buildable {
 type HScale struct {
 	native unsafe.Pointer
 	// scale : record
+}
+
+func HScaleNewFromC(u unsafe.Pointer) *HScale {
+	if u == nil {
+		return nil
+	}
+
+	g := &HScale{native: u}
+
+	return g
+}
+
+func (recv *HScale) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by HScale
@@ -1622,6 +3092,21 @@ type HScrollbar struct {
 	// scrollbar : record
 }
 
+func HScrollbarNewFromC(u unsafe.Pointer) *HScrollbar {
+	if u == nil {
+		return nil
+	}
+
+	g := &HScrollbar{native: u}
+
+	return g
+}
+
+func (recv *HScrollbar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by HScrollbar
 func (recv *HScrollbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1641,6 +3126,21 @@ func (recv *HScrollbar) Orientable() *Orientable {
 type HSeparator struct {
 	native unsafe.Pointer
 	// separator : record
+}
+
+func HSeparatorNewFromC(u unsafe.Pointer) *HSeparator {
+	if u == nil {
+		return nil
+	}
+
+	g := &HSeparator{native: u}
+
+	return g
+}
+
+func (recv *HSeparator) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by HSeparator
@@ -1665,6 +3165,21 @@ type HandleBox struct {
 	// Private : priv
 }
 
+func HandleBoxNewFromC(u unsafe.Pointer) *HandleBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &HandleBox{native: u}
+
+	return g
+}
+
+func (recv *HandleBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by HandleBox
 func (recv *HandleBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1679,6 +3194,21 @@ func (recv *HandleBox) Buildable() *Buildable {
 type HeaderBar struct {
 	native unsafe.Pointer
 	// container : record
+}
+
+func HeaderBarNewFromC(u unsafe.Pointer) *HeaderBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &HeaderBar{native: u}
+
+	return g
+}
+
+func (recv *HeaderBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by HeaderBar
@@ -1697,11 +3227,41 @@ type IMContext struct {
 	// parent_instance : record
 }
 
+func IMContextNewFromC(u unsafe.Pointer) *IMContext {
+	if u == nil {
+		return nil
+	}
+
+	g := &IMContext{native: u}
+
+	return g
+}
+
+func (recv *IMContext) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // IMContextSimple is a wrapper around the C record GtkIMContextSimple.
 type IMContextSimple struct {
 	native unsafe.Pointer
 	// object : record
 	// Private : priv
+}
+
+func IMContextSimpleNewFromC(u unsafe.Pointer) *IMContextSimple {
+	if u == nil {
+		return nil
+	}
+
+	g := &IMContextSimple{native: u}
+
+	return g
+}
+
+func (recv *IMContextSimple) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IMMulticontext is a wrapper around the C record GtkIMMulticontext.
@@ -1711,11 +3271,41 @@ type IMMulticontext struct {
 	// Private : priv
 }
 
+func IMMulticontextNewFromC(u unsafe.Pointer) *IMMulticontext {
+	if u == nil {
+		return nil
+	}
+
+	g := &IMMulticontext{native: u}
+
+	return g
+}
+
+func (recv *IMMulticontext) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // IconFactory is a wrapper around the C record GtkIconFactory.
 type IconFactory struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func IconFactoryNewFromC(u unsafe.Pointer) *IconFactory {
+	if u == nil {
+		return nil
+	}
+
+	g := &IconFactory{native: u}
+
+	return g
+}
+
+func (recv *IconFactory) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by IconFactory
@@ -1728,6 +3318,21 @@ type IconInfo struct {
 	native unsafe.Pointer
 }
 
+func IconInfoNewFromC(u unsafe.Pointer) *IconInfo {
+	if u == nil {
+		return nil
+	}
+
+	g := &IconInfo{native: u}
+
+	return g
+}
+
+func (recv *IconInfo) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // IconTheme is a wrapper around the C record GtkIconTheme.
 type IconTheme struct {
 	native unsafe.Pointer
@@ -1735,11 +3340,41 @@ type IconTheme struct {
 	// Private : priv
 }
 
+func IconThemeNewFromC(u unsafe.Pointer) *IconTheme {
+	if u == nil {
+		return nil
+	}
+
+	g := &IconTheme{native: u}
+
+	return g
+}
+
+func (recv *IconTheme) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // IconView is a wrapper around the C record GtkIconView.
 type IconView struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func IconViewNewFromC(u unsafe.Pointer) *IconView {
+	if u == nil {
+		return nil
+	}
+
+	g := &IconView{native: u}
+
+	return g
+}
+
+func (recv *IconView) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by IconView
@@ -1769,6 +3404,21 @@ type IconViewAccessible struct {
 	// priv : record
 }
 
+func IconViewAccessibleNewFromC(u unsafe.Pointer) *IconViewAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &IconViewAccessible{native: u}
+
+	return g
+}
+
+func (recv *IconViewAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by IconViewAccessible
 func (recv *IconViewAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -1784,6 +3434,21 @@ type Image struct {
 	native unsafe.Pointer
 	// misc : record
 	// Private : priv
+}
+
+func ImageNewFromC(u unsafe.Pointer) *Image {
+	if u == nil {
+		return nil
+	}
+
+	g := &Image{native: u}
+
+	return g
+}
+
+func (recv *Image) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Image
@@ -1803,6 +3468,21 @@ type ImageAccessible struct {
 	// priv : record
 }
 
+func ImageAccessibleNewFromC(u unsafe.Pointer) *ImageAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ImageAccessible{native: u}
+
+	return g
+}
+
+func (recv *ImageAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ImageAccessible
 func (recv *ImageAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -1818,6 +3498,21 @@ type ImageCellAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func ImageCellAccessibleNewFromC(u unsafe.Pointer) *ImageCellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ImageCellAccessible{native: u}
+
+	return g
+}
+
+func (recv *ImageCellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Action returns the Action interface implemented by ImageCellAccessible
@@ -1840,6 +3535,21 @@ type ImageMenuItem struct {
 	native unsafe.Pointer
 	// menu_item : record
 	// Private : priv
+}
+
+func ImageMenuItemNewFromC(u unsafe.Pointer) *ImageMenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &ImageMenuItem{native: u}
+
+	return g
+}
+
+func (recv *ImageMenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ImageMenuItem
@@ -1869,6 +3579,21 @@ type InfoBar struct {
 	// Private : priv
 }
 
+func InfoBarNewFromC(u unsafe.Pointer) *InfoBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &InfoBar{native: u}
+
+	return g
+}
+
+func (recv *InfoBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by InfoBar
 func (recv *InfoBar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1891,6 +3616,21 @@ type Invisible struct {
 	// Private : priv
 }
 
+func InvisibleNewFromC(u unsafe.Pointer) *Invisible {
+	if u == nil {
+		return nil
+	}
+
+	g := &Invisible{native: u}
+
+	return g
+}
+
+func (recv *Invisible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Invisible
 func (recv *Invisible) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1908,6 +3648,21 @@ type Label struct {
 	// Private : priv
 }
 
+func LabelNewFromC(u unsafe.Pointer) *Label {
+	if u == nil {
+		return nil
+	}
+
+	g := &Label{native: u}
+
+	return g
+}
+
+func (recv *Label) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Label
 func (recv *Label) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1923,6 +3678,21 @@ type LabelAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func LabelAccessibleNewFromC(u unsafe.Pointer) *LabelAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &LabelAccessible{native: u}
+
+	return g
+}
+
+func (recv *LabelAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by LabelAccessible
@@ -1947,6 +3717,21 @@ type Layout struct {
 	// Private : priv
 }
 
+func LayoutNewFromC(u unsafe.Pointer) *Layout {
+	if u == nil {
+		return nil
+	}
+
+	g := &Layout{native: u}
+
+	return g
+}
+
+func (recv *Layout) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Layout
 func (recv *Layout) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1967,6 +3752,21 @@ type LevelBar struct {
 	native unsafe.Pointer
 	// Private : parent
 	// Private : priv
+}
+
+func LevelBarNewFromC(u unsafe.Pointer) *LevelBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &LevelBar{native: u}
+
+	return g
+}
+
+func (recv *LevelBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by LevelBar
@@ -1991,6 +3791,21 @@ type LevelBarAccessible struct {
 	// priv : record
 }
 
+func LevelBarAccessibleNewFromC(u unsafe.Pointer) *LevelBarAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &LevelBarAccessible{native: u}
+
+	return g
+}
+
+func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by LevelBarAccessible
 func (recv *LevelBarAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2006,6 +3821,21 @@ type LinkButton struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func LinkButtonNewFromC(u unsafe.Pointer) *LinkButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &LinkButton{native: u}
+
+	return g
+}
+
+func (recv *LinkButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by LinkButton
@@ -2035,6 +3865,21 @@ type LinkButtonAccessible struct {
 	// priv : record
 }
 
+func LinkButtonAccessibleNewFromC(u unsafe.Pointer) *LinkButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &LinkButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *LinkButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by LinkButtonAccessible
 func (recv *LinkButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -2061,6 +3906,21 @@ type ListBox struct {
 	// parent_instance : record
 }
 
+func ListBoxNewFromC(u unsafe.Pointer) *ListBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &ListBox{native: u}
+
+	return g
+}
+
+func (recv *ListBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ListBox
 func (recv *ListBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2078,6 +3938,21 @@ type ListBoxAccessible struct {
 	// priv : record
 }
 
+func ListBoxAccessibleNewFromC(u unsafe.Pointer) *ListBoxAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ListBoxAccessible{native: u}
+
+	return g
+}
+
+func (recv *ListBoxAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ListBoxAccessible
 func (recv *ListBoxAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2092,6 +3967,21 @@ func (recv *ListBoxAccessible) Selection() *atk.Selection {
 type ListBoxRow struct {
 	native unsafe.Pointer
 	// parent_instance : record
+}
+
+func ListBoxRowNewFromC(u unsafe.Pointer) *ListBoxRow {
+	if u == nil {
+		return nil
+	}
+
+	g := &ListBoxRow{native: u}
+
+	return g
+}
+
+func (recv *ListBoxRow) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ListBoxRow
@@ -2115,6 +4005,21 @@ type ListBoxRowAccessible struct {
 	// parent : record
 }
 
+func ListBoxRowAccessibleNewFromC(u unsafe.Pointer) *ListBoxRowAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ListBoxRowAccessible{native: u}
+
+	return g
+}
+
+func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ListBoxRowAccessible
 func (recv *ListBoxRowAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2125,6 +4030,21 @@ type ListStore struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
+	if u == nil {
+		return nil
+	}
+
+	g := &ListStore{native: u}
+
+	return g
+}
+
+func (recv *ListStore) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by ListStore
@@ -2159,6 +4079,21 @@ type LockButton struct {
 	// priv : record
 }
 
+func LockButtonNewFromC(u unsafe.Pointer) *LockButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &LockButton{native: u}
+
+	return g
+}
+
+func (recv *LockButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by LockButton
 func (recv *LockButton) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2186,6 +4121,21 @@ type LockButtonAccessible struct {
 	// priv : record
 }
 
+func LockButtonAccessibleNewFromC(u unsafe.Pointer) *LockButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &LockButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *LockButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by LockButtonAccessible
 func (recv *LockButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -2208,6 +4158,21 @@ type Menu struct {
 	// Private : priv
 }
 
+func MenuNewFromC(u unsafe.Pointer) *Menu {
+	if u == nil {
+		return nil
+	}
+
+	g := &Menu{native: u}
+
+	return g
+}
+
+func (recv *Menu) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Menu
 func (recv *Menu) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2223,6 +4188,21 @@ type MenuAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func MenuAccessibleNewFromC(u unsafe.Pointer) *MenuAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuAccessible{native: u}
+
+	return g
+}
+
+func (recv *MenuAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by MenuAccessible
@@ -2242,6 +4222,21 @@ type MenuBar struct {
 	// Private : priv
 }
 
+func MenuBarNewFromC(u unsafe.Pointer) *MenuBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuBar{native: u}
+
+	return g
+}
+
+func (recv *MenuBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by MenuBar
 func (recv *MenuBar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2257,6 +4252,21 @@ type MenuButton struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func MenuButtonNewFromC(u unsafe.Pointer) *MenuButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuButton{native: u}
+
+	return g
+}
+
+func (recv *MenuButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by MenuButton
@@ -2286,6 +4296,21 @@ type MenuButtonAccessible struct {
 	// priv : record
 }
 
+func MenuButtonAccessibleNewFromC(u unsafe.Pointer) *MenuButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *MenuButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by MenuButtonAccessible
 func (recv *MenuButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -2306,6 +4331,21 @@ type MenuItem struct {
 	native unsafe.Pointer
 	// bin : record
 	// Private : priv
+}
+
+func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuItem{native: u}
+
+	return g
+}
+
+func (recv *MenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by MenuItem
@@ -2335,6 +4375,21 @@ type MenuItemAccessible struct {
 	// priv : record
 }
 
+func MenuItemAccessibleNewFromC(u unsafe.Pointer) *MenuItemAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuItemAccessible{native: u}
+
+	return g
+}
+
+func (recv *MenuItemAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by MenuItemAccessible
 func (recv *MenuItemAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -2357,6 +4412,21 @@ type MenuShell struct {
 	// Private : priv
 }
 
+func MenuShellNewFromC(u unsafe.Pointer) *MenuShell {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuShell{native: u}
+
+	return g
+}
+
+func (recv *MenuShell) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by MenuShell
 func (recv *MenuShell) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2374,6 +4444,21 @@ type MenuShellAccessible struct {
 	// priv : record
 }
 
+func MenuShellAccessibleNewFromC(u unsafe.Pointer) *MenuShellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuShellAccessible{native: u}
+
+	return g
+}
+
+func (recv *MenuShellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by MenuShellAccessible
 func (recv *MenuShellAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2389,6 +4474,21 @@ type MenuToolButton struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func MenuToolButtonNewFromC(u unsafe.Pointer) *MenuToolButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuToolButton{native: u}
+
+	return g
+}
+
+func (recv *MenuToolButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by MenuToolButton
@@ -2418,6 +4518,21 @@ type MessageDialog struct {
 	// Private : priv
 }
 
+func MessageDialogNewFromC(u unsafe.Pointer) *MessageDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &MessageDialog{native: u}
+
+	return g
+}
+
+func (recv *MessageDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by MessageDialog
 func (recv *MessageDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2435,6 +4550,21 @@ type Misc struct {
 	// Private : priv
 }
 
+func MiscNewFromC(u unsafe.Pointer) *Misc {
+	if u == nil {
+		return nil
+	}
+
+	g := &Misc{native: u}
+
+	return g
+}
+
+func (recv *Misc) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Misc
 func (recv *Misc) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2448,6 +4578,21 @@ func (recv *Misc) Buildable() *Buildable {
 // ModelButton is a wrapper around the C record GtkModelButton.
 type ModelButton struct {
 	native unsafe.Pointer
+}
+
+func ModelButtonNewFromC(u unsafe.Pointer) *ModelButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &ModelButton{native: u}
+
+	return g
+}
+
+func (recv *ModelButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ModelButton
@@ -2477,11 +4622,41 @@ type MountOperation struct {
 	// priv : record
 }
 
+func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
+	if u == nil {
+		return nil
+	}
+
+	g := &MountOperation{native: u}
+
+	return g
+}
+
+func (recv *MountOperation) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Notebook is a wrapper around the C record GtkNotebook.
 type Notebook struct {
 	native unsafe.Pointer
 	// Private : container
 	// Private : priv
+}
+
+func NotebookNewFromC(u unsafe.Pointer) *Notebook {
+	if u == nil {
+		return nil
+	}
+
+	g := &Notebook{native: u}
+
+	return g
+}
+
+func (recv *Notebook) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Notebook
@@ -2501,6 +4676,21 @@ type NotebookAccessible struct {
 	// priv : record
 }
 
+func NotebookAccessibleNewFromC(u unsafe.Pointer) *NotebookAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &NotebookAccessible{native: u}
+
+	return g
+}
+
+func (recv *NotebookAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by NotebookAccessible
 func (recv *NotebookAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2518,6 +4708,21 @@ type NotebookPageAccessible struct {
 	// priv : record
 }
 
+func NotebookPageAccessibleNewFromC(u unsafe.Pointer) *NotebookPageAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &NotebookPageAccessible{native: u}
+
+	return g
+}
+
+func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by NotebookPageAccessible
 func (recv *NotebookPageAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2530,6 +4735,21 @@ type NumerableIcon struct {
 	// Private : priv
 }
 
+func NumerableIconNewFromC(u unsafe.Pointer) *NumerableIcon {
+	if u == nil {
+		return nil
+	}
+
+	g := &NumerableIcon{native: u}
+
+	return g
+}
+
+func (recv *NumerableIcon) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Icon returns the Icon interface implemented by NumerableIcon
 func (recv *NumerableIcon) Icon() *gio.Icon {
 	return gio.IconNewFromC(recv.ToC())
@@ -2539,6 +4759,21 @@ func (recv *NumerableIcon) Icon() *gio.Icon {
 type OffscreenWindow struct {
 	native unsafe.Pointer
 	// parent_object : record
+}
+
+func OffscreenWindowNewFromC(u unsafe.Pointer) *OffscreenWindow {
+	if u == nil {
+		return nil
+	}
+
+	g := &OffscreenWindow{native: u}
+
+	return g
+}
+
+func (recv *OffscreenWindow) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by OffscreenWindow
@@ -2558,6 +4793,21 @@ type Overlay struct {
 	// priv : record
 }
 
+func OverlayNewFromC(u unsafe.Pointer) *Overlay {
+	if u == nil {
+		return nil
+	}
+
+	g := &Overlay{native: u}
+
+	return g
+}
+
+func (recv *Overlay) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Overlay
 func (recv *Overlay) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2573,11 +4823,41 @@ type PageSetup struct {
 	native unsafe.Pointer
 }
 
+func PageSetupNewFromC(u unsafe.Pointer) *PageSetup {
+	if u == nil {
+		return nil
+	}
+
+	g := &PageSetup{native: u}
+
+	return g
+}
+
+func (recv *PageSetup) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Paned is a wrapper around the C record GtkPaned.
 type Paned struct {
 	native unsafe.Pointer
 	// container : record
 	// Private : priv
+}
+
+func PanedNewFromC(u unsafe.Pointer) *Paned {
+	if u == nil {
+		return nil
+	}
+
+	g := &Paned{native: u}
+
+	return g
+}
+
+func (recv *Paned) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Paned
@@ -2602,6 +4882,21 @@ type PanedAccessible struct {
 	// priv : record
 }
 
+func PanedAccessibleNewFromC(u unsafe.Pointer) *PanedAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &PanedAccessible{native: u}
+
+	return g
+}
+
+func (recv *PanedAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by PanedAccessible
 func (recv *PanedAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2615,6 +4910,21 @@ func (recv *PanedAccessible) Value() *atk.Value {
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
 type PlacesSidebar struct {
 	native unsafe.Pointer
+}
+
+func PlacesSidebarNewFromC(u unsafe.Pointer) *PlacesSidebar {
+	if u == nil {
+		return nil
+	}
+
+	g := &PlacesSidebar{native: u}
+
+	return g
+}
+
+func (recv *PlacesSidebar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by PlacesSidebar
@@ -2636,6 +4946,21 @@ type Popover struct {
 	// Private : priv
 }
 
+func PopoverNewFromC(u unsafe.Pointer) *Popover {
+	if u == nil {
+		return nil
+	}
+
+	g := &Popover{native: u}
+
+	return g
+}
+
+func (recv *Popover) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Popover
 func (recv *Popover) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2652,6 +4977,21 @@ type PopoverAccessible struct {
 	// parent : record
 }
 
+func PopoverAccessibleNewFromC(u unsafe.Pointer) *PopoverAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &PopoverAccessible{native: u}
+
+	return g
+}
+
+func (recv *PopoverAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by PopoverAccessible
 func (recv *PopoverAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2660,6 +5000,21 @@ func (recv *PopoverAccessible) Component() *atk.Component {
 // PopoverMenu is a wrapper around the C record GtkPopoverMenu.
 type PopoverMenu struct {
 	native unsafe.Pointer
+}
+
+func PopoverMenuNewFromC(u unsafe.Pointer) *PopoverMenu {
+	if u == nil {
+		return nil
+	}
+
+	g := &PopoverMenu{native: u}
+
+	return g
+}
+
+func (recv *PopoverMenu) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by PopoverMenu
@@ -2677,11 +5032,41 @@ type PrintContext struct {
 	native unsafe.Pointer
 }
 
+func PrintContextNewFromC(u unsafe.Pointer) *PrintContext {
+	if u == nil {
+		return nil
+	}
+
+	g := &PrintContext{native: u}
+
+	return g
+}
+
+func (recv *PrintContext) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // PrintOperation is a wrapper around the C record GtkPrintOperation.
 type PrintOperation struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func PrintOperationNewFromC(u unsafe.Pointer) *PrintOperation {
+	if u == nil {
+		return nil
+	}
+
+	g := &PrintOperation{native: u}
+
+	return g
+}
+
+func (recv *PrintOperation) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PrintOperationPreview returns the PrintOperationPreview interface implemented by PrintOperation
@@ -2694,11 +5079,41 @@ type PrintSettings struct {
 	native unsafe.Pointer
 }
 
+func PrintSettingsNewFromC(u unsafe.Pointer) *PrintSettings {
+	if u == nil {
+		return nil
+	}
+
+	g := &PrintSettings{native: u}
+
+	return g
+}
+
+func (recv *PrintSettings) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ProgressBar is a wrapper around the C record GtkProgressBar.
 type ProgressBar struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func ProgressBarNewFromC(u unsafe.Pointer) *ProgressBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &ProgressBar{native: u}
+
+	return g
+}
+
+func (recv *ProgressBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ProgressBar
@@ -2723,6 +5138,21 @@ type ProgressBarAccessible struct {
 	// priv : record
 }
 
+func ProgressBarAccessibleNewFromC(u unsafe.Pointer) *ProgressBarAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ProgressBarAccessible{native: u}
+
+	return g
+}
+
+func (recv *ProgressBarAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ProgressBarAccessible
 func (recv *ProgressBarAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -2740,6 +5170,21 @@ type RadioAction struct {
 	// Private : private_data
 }
 
+func RadioActionNewFromC(u unsafe.Pointer) *RadioAction {
+	if u == nil {
+		return nil
+	}
+
+	g := &RadioAction{native: u}
+
+	return g
+}
+
+func (recv *RadioAction) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by RadioAction
 func (recv *RadioAction) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -2750,6 +5195,21 @@ type RadioButton struct {
 	native unsafe.Pointer
 	// check_button : record
 	// Private : priv
+}
+
+func RadioButtonNewFromC(u unsafe.Pointer) *RadioButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &RadioButton{native: u}
+
+	return g
+}
+
+func (recv *RadioButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by RadioButton
@@ -2779,6 +5239,21 @@ type RadioButtonAccessible struct {
 	// priv : record
 }
 
+func RadioButtonAccessibleNewFromC(u unsafe.Pointer) *RadioButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &RadioButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *RadioButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by RadioButtonAccessible
 func (recv *RadioButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -2799,6 +5274,21 @@ type RadioMenuItem struct {
 	native unsafe.Pointer
 	// check_menu_item : record
 	// Private : priv
+}
+
+func RadioMenuItemNewFromC(u unsafe.Pointer) *RadioMenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &RadioMenuItem{native: u}
+
+	return g
+}
+
+func (recv *RadioMenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by RadioMenuItem
@@ -2828,6 +5318,21 @@ type RadioMenuItemAccessible struct {
 	// priv : record
 }
 
+func RadioMenuItemAccessibleNewFromC(u unsafe.Pointer) *RadioMenuItemAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &RadioMenuItemAccessible{native: u}
+
+	return g
+}
+
+func (recv *RadioMenuItemAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by RadioMenuItemAccessible
 func (recv *RadioMenuItemAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -2847,6 +5352,21 @@ func (recv *RadioMenuItemAccessible) Selection() *atk.Selection {
 type RadioToolButton struct {
 	native unsafe.Pointer
 	// parent : record
+}
+
+func RadioToolButtonNewFromC(u unsafe.Pointer) *RadioToolButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &RadioToolButton{native: u}
+
+	return g
+}
+
+func (recv *RadioToolButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by RadioToolButton
@@ -2876,6 +5396,21 @@ type Range struct {
 	// priv : record
 }
 
+func RangeNewFromC(u unsafe.Pointer) *Range {
+	if u == nil {
+		return nil
+	}
+
+	g := &Range{native: u}
+
+	return g
+}
+
+func (recv *Range) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Range
 func (recv *Range) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2896,6 +5431,21 @@ type RangeAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func RangeAccessibleNewFromC(u unsafe.Pointer) *RangeAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &RangeAccessible{native: u}
+
+	return g
+}
+
+func (recv *RangeAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by RangeAccessible
@@ -2928,11 +5478,41 @@ type RcStyle struct {
 	// Private : engine_specified
 }
 
+func RcStyleNewFromC(u unsafe.Pointer) *RcStyle {
+	if u == nil {
+		return nil
+	}
+
+	g := &RcStyle{native: u}
+
+	return g
+}
+
+func (recv *RcStyle) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // RecentAction is a wrapper around the C record GtkRecentAction.
 type RecentAction struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func RecentActionNewFromC(u unsafe.Pointer) *RecentAction {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentAction{native: u}
+
+	return g
+}
+
+func (recv *RecentAction) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by RecentAction
@@ -2950,6 +5530,21 @@ type RecentChooserDialog struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func RecentChooserDialogNewFromC(u unsafe.Pointer) *RecentChooserDialog {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentChooserDialog{native: u}
+
+	return g
+}
+
+func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by RecentChooserDialog
@@ -2972,6 +5567,21 @@ type RecentChooserMenu struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func RecentChooserMenuNewFromC(u unsafe.Pointer) *RecentChooserMenu {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentChooserMenu{native: u}
+
+	return g
+}
+
+func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by RecentChooserMenu
@@ -3001,6 +5611,21 @@ type RecentChooserWidget struct {
 	// Private : priv
 }
 
+func RecentChooserWidgetNewFromC(u unsafe.Pointer) *RecentChooserWidget {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentChooserWidget{native: u}
+
+	return g
+}
+
+func (recv *RecentChooserWidget) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by RecentChooserWidget
 func (recv *RecentChooserWidget) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3026,6 +5651,21 @@ type RecentFilter struct {
 	native unsafe.Pointer
 }
 
+func RecentFilterNewFromC(u unsafe.Pointer) *RecentFilter {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentFilter{native: u}
+
+	return g
+}
+
+func (recv *RecentFilter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by RecentFilter
 func (recv *RecentFilter) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -3036,6 +5676,21 @@ type RendererCellAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func RendererCellAccessibleNewFromC(u unsafe.Pointer) *RendererCellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &RendererCellAccessible{native: u}
+
+	return g
+}
+
+func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Action returns the Action interface implemented by RendererCellAccessible
@@ -3054,6 +5709,21 @@ type Revealer struct {
 	// parent_instance : record
 }
 
+func RevealerNewFromC(u unsafe.Pointer) *Revealer {
+	if u == nil {
+		return nil
+	}
+
+	g := &Revealer{native: u}
+
+	return g
+}
+
+func (recv *Revealer) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Revealer
 func (recv *Revealer) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3069,6 +5739,21 @@ type Scale struct {
 	native unsafe.Pointer
 	// range : record
 	// Private : priv
+}
+
+func ScaleNewFromC(u unsafe.Pointer) *Scale {
+	if u == nil {
+		return nil
+	}
+
+	g := &Scale{native: u}
+
+	return g
+}
+
+func (recv *Scale) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Scale
@@ -3093,6 +5778,21 @@ type ScaleAccessible struct {
 	// priv : record
 }
 
+func ScaleAccessibleNewFromC(u unsafe.Pointer) *ScaleAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ScaleAccessible{native: u}
+
+	return g
+}
+
+func (recv *ScaleAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ScaleAccessible
 func (recv *ScaleAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -3108,6 +5808,21 @@ type ScaleButton struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func ScaleButtonNewFromC(u unsafe.Pointer) *ScaleButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &ScaleButton{native: u}
+
+	return g
+}
+
+func (recv *ScaleButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ScaleButton
@@ -3142,6 +5857,21 @@ type ScaleButtonAccessible struct {
 	// priv : record
 }
 
+func ScaleButtonAccessibleNewFromC(u unsafe.Pointer) *ScaleButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ScaleButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *ScaleButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by ScaleButtonAccessible
 func (recv *ScaleButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -3168,6 +5898,21 @@ type Scrollbar struct {
 	// range : record
 }
 
+func ScrollbarNewFromC(u unsafe.Pointer) *Scrollbar {
+	if u == nil {
+		return nil
+	}
+
+	g := &Scrollbar{native: u}
+
+	return g
+}
+
+func (recv *Scrollbar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Scrollbar
 func (recv *Scrollbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3190,6 +5935,21 @@ type ScrolledWindow struct {
 	// priv : record
 }
 
+func ScrolledWindowNewFromC(u unsafe.Pointer) *ScrolledWindow {
+	if u == nil {
+		return nil
+	}
+
+	g := &ScrolledWindow{native: u}
+
+	return g
+}
+
+func (recv *ScrolledWindow) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ScrolledWindow
 func (recv *ScrolledWindow) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3207,6 +5967,21 @@ type ScrolledWindowAccessible struct {
 	// priv : record
 }
 
+func ScrolledWindowAccessibleNewFromC(u unsafe.Pointer) *ScrolledWindowAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ScrolledWindowAccessible{native: u}
+
+	return g
+}
+
+func (recv *ScrolledWindowAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by ScrolledWindowAccessible
 func (recv *ScrolledWindowAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -3216,6 +5991,21 @@ func (recv *ScrolledWindowAccessible) Component() *atk.Component {
 type SearchBar struct {
 	native unsafe.Pointer
 	// Private : parent
+}
+
+func SearchBarNewFromC(u unsafe.Pointer) *SearchBar {
+	if u == nil {
+		return nil
+	}
+
+	g := &SearchBar{native: u}
+
+	return g
+}
+
+func (recv *SearchBar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by SearchBar
@@ -3232,6 +6022,21 @@ func (recv *SearchBar) Buildable() *Buildable {
 type SearchEntry struct {
 	native unsafe.Pointer
 	// parent : record
+}
+
+func SearchEntryNewFromC(u unsafe.Pointer) *SearchEntry {
+	if u == nil {
+		return nil
+	}
+
+	g := &SearchEntry{native: u}
+
+	return g
+}
+
+func (recv *SearchEntry) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by SearchEntry
@@ -3261,6 +6066,21 @@ type Separator struct {
 	// priv : record
 }
 
+func SeparatorNewFromC(u unsafe.Pointer) *Separator {
+	if u == nil {
+		return nil
+	}
+
+	g := &Separator{native: u}
+
+	return g
+}
+
+func (recv *Separator) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Separator
 func (recv *Separator) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3280,6 +6100,21 @@ func (recv *Separator) Orientable() *Orientable {
 type SeparatorMenuItem struct {
 	native unsafe.Pointer
 	// menu_item : record
+}
+
+func SeparatorMenuItemNewFromC(u unsafe.Pointer) *SeparatorMenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &SeparatorMenuItem{native: u}
+
+	return g
+}
+
+func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by SeparatorMenuItem
@@ -3309,6 +6144,21 @@ type SeparatorToolItem struct {
 	// Private : priv
 }
 
+func SeparatorToolItemNewFromC(u unsafe.Pointer) *SeparatorToolItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &SeparatorToolItem{native: u}
+
+	return g
+}
+
+func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by SeparatorToolItem
 func (recv *SeparatorToolItem) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3331,6 +6181,21 @@ type Settings struct {
 	// Private : priv
 }
 
+func SettingsNewFromC(u unsafe.Pointer) *Settings {
+	if u == nil {
+		return nil
+	}
+
+	g := &Settings{native: u}
+
+	return g
+}
+
+func (recv *Settings) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // StyleProvider returns the StyleProvider interface implemented by Settings
 func (recv *Settings) StyleProvider() *StyleProvider {
 	return StyleProviderNewFromC(recv.ToC())
@@ -3341,6 +6206,21 @@ type SizeGroup struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func SizeGroupNewFromC(u unsafe.Pointer) *SizeGroup {
+	if u == nil {
+		return nil
+	}
+
+	g := &SizeGroup{native: u}
+
+	return g
+}
+
+func (recv *SizeGroup) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by SizeGroup
@@ -3355,6 +6235,21 @@ type SpinButton struct {
 	native unsafe.Pointer
 	// entry : record
 	// Private : priv
+}
+
+func SpinButtonNewFromC(u unsafe.Pointer) *SpinButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &SpinButton{native: u}
+
+	return g
+}
+
+func (recv *SpinButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by SpinButton
@@ -3389,6 +6284,21 @@ type SpinButtonAccessible struct {
 	// priv : record
 }
 
+func SpinButtonAccessibleNewFromC(u unsafe.Pointer) *SpinButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &SpinButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *SpinButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by SpinButtonAccessible
 func (recv *SpinButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -3421,6 +6331,21 @@ type Spinner struct {
 	// Private : priv
 }
 
+func SpinnerNewFromC(u unsafe.Pointer) *Spinner {
+	if u == nil {
+		return nil
+	}
+
+	g := &Spinner{native: u}
+
+	return g
+}
+
+func (recv *Spinner) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Spinner
 func (recv *Spinner) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3438,6 +6363,21 @@ type SpinnerAccessible struct {
 	// priv : record
 }
 
+func SpinnerAccessibleNewFromC(u unsafe.Pointer) *SpinnerAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &SpinnerAccessible{native: u}
+
+	return g
+}
+
+func (recv *SpinnerAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by SpinnerAccessible
 func (recv *SpinnerAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -3452,6 +6392,21 @@ func (recv *SpinnerAccessible) Image() *atk.Image {
 type Stack struct {
 	native unsafe.Pointer
 	// parent_instance : record
+}
+
+func StackNewFromC(u unsafe.Pointer) *Stack {
+	if u == nil {
+		return nil
+	}
+
+	g := &Stack{native: u}
+
+	return g
+}
+
+func (recv *Stack) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Stack
@@ -3472,6 +6427,21 @@ type StackSidebar struct {
 	// parent : record
 }
 
+func StackSidebarNewFromC(u unsafe.Pointer) *StackSidebar {
+	if u == nil {
+		return nil
+	}
+
+	g := &StackSidebar{native: u}
+
+	return g
+}
+
+func (recv *StackSidebar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by StackSidebar
 func (recv *StackSidebar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3486,6 +6456,21 @@ func (recv *StackSidebar) Buildable() *Buildable {
 type StackSwitcher struct {
 	native unsafe.Pointer
 	// widget : record
+}
+
+func StackSwitcherNewFromC(u unsafe.Pointer) *StackSwitcher {
+	if u == nil {
+		return nil
+	}
+
+	g := &StackSwitcher{native: u}
+
+	return g
+}
+
+func (recv *StackSwitcher) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by StackSwitcher
@@ -3510,11 +6495,41 @@ type StatusIcon struct {
 	// priv : record
 }
 
+func StatusIconNewFromC(u unsafe.Pointer) *StatusIcon {
+	if u == nil {
+		return nil
+	}
+
+	g := &StatusIcon{native: u}
+
+	return g
+}
+
+func (recv *StatusIcon) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Statusbar is a wrapper around the C record GtkStatusbar.
 type Statusbar struct {
 	native unsafe.Pointer
 	// parent_widget : record
 	// Private : priv
+}
+
+func StatusbarNewFromC(u unsafe.Pointer) *Statusbar {
+	if u == nil {
+		return nil
+	}
+
+	g := &Statusbar{native: u}
+
+	return g
+}
+
+func (recv *Statusbar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Statusbar
@@ -3537,6 +6552,21 @@ type StatusbarAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func StatusbarAccessibleNewFromC(u unsafe.Pointer) *StatusbarAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &StatusbarAccessible{native: u}
+
+	return g
+}
+
+func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by StatusbarAccessible
@@ -3571,6 +6601,21 @@ type Style struct {
 	// Private : icon_factories
 }
 
+func StyleNewFromC(u unsafe.Pointer) *Style {
+	if u == nil {
+		return nil
+	}
+
+	g := &Style{native: u}
+
+	return g
+}
+
+func (recv *Style) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // StyleContext is a wrapper around the C record GtkStyleContext.
 type StyleContext struct {
 	native unsafe.Pointer
@@ -3578,11 +6623,41 @@ type StyleContext struct {
 	// priv : record
 }
 
+func StyleContextNewFromC(u unsafe.Pointer) *StyleContext {
+	if u == nil {
+		return nil
+	}
+
+	g := &StyleContext{native: u}
+
+	return g
+}
+
+func (recv *StyleContext) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // StyleProperties is a wrapper around the C record GtkStyleProperties.
 type StyleProperties struct {
 	native unsafe.Pointer
 	// Private : parent_object
 	// Private : priv
+}
+
+func StylePropertiesNewFromC(u unsafe.Pointer) *StyleProperties {
+	if u == nil {
+		return nil
+	}
+
+	g := &StyleProperties{native: u}
+
+	return g
+}
+
+func (recv *StyleProperties) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // StyleProvider returns the StyleProvider interface implemented by StyleProperties
@@ -3595,6 +6670,21 @@ type Switch struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func SwitchNewFromC(u unsafe.Pointer) *Switch {
+	if u == nil {
+		return nil
+	}
+
+	g := &Switch{native: u}
+
+	return g
+}
+
+func (recv *Switch) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Switch
@@ -3624,6 +6714,21 @@ type SwitchAccessible struct {
 	// priv : record
 }
 
+func SwitchAccessibleNewFromC(u unsafe.Pointer) *SwitchAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &SwitchAccessible{native: u}
+
+	return g
+}
+
+func (recv *SwitchAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by SwitchAccessible
 func (recv *SwitchAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -3641,6 +6746,21 @@ type Table struct {
 	// Private : priv
 }
 
+func TableNewFromC(u unsafe.Pointer) *Table {
+	if u == nil {
+		return nil
+	}
+
+	g := &Table{native: u}
+
+	return g
+}
+
+func (recv *Table) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Table
 func (recv *Table) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3656,6 +6776,21 @@ type TearoffMenuItem struct {
 	native unsafe.Pointer
 	// menu_item : record
 	// Private : priv
+}
+
+func TearoffMenuItemNewFromC(u unsafe.Pointer) *TearoffMenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &TearoffMenuItem{native: u}
+
+	return g
+}
+
+func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by TearoffMenuItem
@@ -3685,11 +6820,41 @@ type TextBuffer struct {
 	// priv : record
 }
 
+func TextBufferNewFromC(u unsafe.Pointer) *TextBuffer {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextBuffer{native: u}
+
+	return g
+}
+
+func (recv *TextBuffer) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TextCellAccessible is a wrapper around the C record GtkTextCellAccessible.
 type TextCellAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func TextCellAccessibleNewFromC(u unsafe.Pointer) *TextCellAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextCellAccessible{native: u}
+
+	return g
+}
+
+func (recv *TextCellAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Action returns the Action interface implemented by TextCellAccessible
@@ -3714,11 +6879,41 @@ type TextChildAnchor struct {
 	// Private : segment
 }
 
+func TextChildAnchorNewFromC(u unsafe.Pointer) *TextChildAnchor {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextChildAnchor{native: u}
+
+	return g
+}
+
+func (recv *TextChildAnchor) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TextMark is a wrapper around the C record GtkTextMark.
 type TextMark struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : segment
+}
+
+func TextMarkNewFromC(u unsafe.Pointer) *TextMark {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextMark{native: u}
+
+	return g
+}
+
+func (recv *TextMark) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TextTag is a wrapper around the C record GtkTextTag.
@@ -3728,11 +6923,41 @@ type TextTag struct {
 	// priv : record
 }
 
+func TextTagNewFromC(u unsafe.Pointer) *TextTag {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextTag{native: u}
+
+	return g
+}
+
+func (recv *TextTag) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TextTagTable is a wrapper around the C record GtkTextTagTable.
 type TextTagTable struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func TextTagTableNewFromC(u unsafe.Pointer) *TextTagTable {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextTagTable{native: u}
+
+	return g
+}
+
+func (recv *TextTagTable) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by TextTagTable
@@ -3745,6 +6970,21 @@ type TextView struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// Private : priv
+}
+
+func TextViewNewFromC(u unsafe.Pointer) *TextView {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextView{native: u}
+
+	return g
+}
+
+func (recv *TextView) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by TextView
@@ -3767,6 +7007,21 @@ type TextViewAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func TextViewAccessibleNewFromC(u unsafe.Pointer) *TextViewAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &TextViewAccessible{native: u}
+
+	return g
+}
+
+func (recv *TextViewAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by TextViewAccessible
@@ -3796,11 +7051,41 @@ type ThemingEngine struct {
 	// priv : record
 }
 
+func ThemingEngineNewFromC(u unsafe.Pointer) *ThemingEngine {
+	if u == nil {
+		return nil
+	}
+
+	g := &ThemingEngine{native: u}
+
+	return g
+}
+
+func (recv *ThemingEngine) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ToggleAction is a wrapper around the C record GtkToggleAction.
 type ToggleAction struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : private_data
+}
+
+func ToggleActionNewFromC(u unsafe.Pointer) *ToggleAction {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToggleAction{native: u}
+
+	return g
+}
+
+func (recv *ToggleAction) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by ToggleAction
@@ -3813,6 +7098,21 @@ type ToggleButton struct {
 	native unsafe.Pointer
 	// Private : button
 	// Private : priv
+}
+
+func ToggleButtonNewFromC(u unsafe.Pointer) *ToggleButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToggleButton{native: u}
+
+	return g
+}
+
+func (recv *ToggleButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ToggleButton
@@ -3842,6 +7142,21 @@ type ToggleButtonAccessible struct {
 	// priv : record
 }
 
+func ToggleButtonAccessibleNewFromC(u unsafe.Pointer) *ToggleButtonAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToggleButtonAccessible{native: u}
+
+	return g
+}
+
+func (recv *ToggleButtonAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Action returns the Action interface implemented by ToggleButtonAccessible
 func (recv *ToggleButtonAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -3862,6 +7177,21 @@ type ToggleToolButton struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func ToggleToolButtonNewFromC(u unsafe.Pointer) *ToggleToolButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToggleToolButton{native: u}
+
+	return g
+}
+
+func (recv *ToggleToolButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ToggleToolButton
@@ -3891,6 +7221,21 @@ type ToolButton struct {
 	// Private : priv
 }
 
+func ToolButtonNewFromC(u unsafe.Pointer) *ToolButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToolButton{native: u}
+
+	return g
+}
+
+func (recv *ToolButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ToolButton
 func (recv *ToolButton) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3918,6 +7263,21 @@ type ToolItem struct {
 	// Private : priv
 }
 
+func ToolItemNewFromC(u unsafe.Pointer) *ToolItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToolItem{native: u}
+
+	return g
+}
+
+func (recv *ToolItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ToolItem
 func (recv *ToolItem) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3940,6 +7300,21 @@ type ToolItemGroup struct {
 	// priv : record
 }
 
+func ToolItemGroupNewFromC(u unsafe.Pointer) *ToolItemGroup {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToolItemGroup{native: u}
+
+	return g
+}
+
+func (recv *ToolItemGroup) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by ToolItemGroup
 func (recv *ToolItemGroup) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3960,6 +7335,21 @@ type ToolPalette struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func ToolPaletteNewFromC(u unsafe.Pointer) *ToolPalette {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToolPalette{native: u}
+
+	return g
+}
+
+func (recv *ToolPalette) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by ToolPalette
@@ -3989,6 +7379,21 @@ type Toolbar struct {
 	// priv : record
 }
 
+func ToolbarNewFromC(u unsafe.Pointer) *Toolbar {
+	if u == nil {
+		return nil
+	}
+
+	g := &Toolbar{native: u}
+
+	return g
+}
+
+func (recv *Toolbar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Toolbar
 func (recv *Toolbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4014,6 +7419,21 @@ type Tooltip struct {
 	native unsafe.Pointer
 }
 
+func TooltipNewFromC(u unsafe.Pointer) *Tooltip {
+	if u == nil {
+		return nil
+	}
+
+	g := &Tooltip{native: u}
+
+	return g
+}
+
+func (recv *Tooltip) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ToplevelAccessible is a wrapper around the C record GtkToplevelAccessible.
 type ToplevelAccessible struct {
 	native unsafe.Pointer
@@ -4021,11 +7441,41 @@ type ToplevelAccessible struct {
 	// priv : record
 }
 
+func ToplevelAccessibleNewFromC(u unsafe.Pointer) *ToplevelAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &ToplevelAccessible{native: u}
+
+	return g
+}
+
+func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TreeModelFilter is a wrapper around the C record GtkTreeModelFilter.
 type TreeModelFilter struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func TreeModelFilterNewFromC(u unsafe.Pointer) *TreeModelFilter {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeModelFilter{native: u}
+
+	return g
+}
+
+func (recv *TreeModelFilter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TreeDragSource returns the TreeDragSource interface implemented by TreeModelFilter
@@ -4043,6 +7493,21 @@ type TreeModelSort struct {
 	native unsafe.Pointer
 	// parent : record
 	// Private : priv
+}
+
+func TreeModelSortNewFromC(u unsafe.Pointer) *TreeModelSort {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeModelSort{native: u}
+
+	return g
+}
+
+func (recv *TreeModelSort) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TreeDragSource returns the TreeDragSource interface implemented by TreeModelSort
@@ -4067,11 +7532,41 @@ type TreeSelection struct {
 	// Private : priv
 }
 
+func TreeSelectionNewFromC(u unsafe.Pointer) *TreeSelection {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeSelection{native: u}
+
+	return g
+}
+
+func (recv *TreeSelection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TreeStore is a wrapper around the C record GtkTreeStore.
 type TreeStore struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func TreeStoreNewFromC(u unsafe.Pointer) *TreeStore {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeStore{native: u}
+
+	return g
+}
+
+func (recv *TreeStore) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Buildable returns the Buildable interface implemented by TreeStore
@@ -4106,6 +7601,21 @@ type TreeView struct {
 	// Private : priv
 }
 
+func TreeViewNewFromC(u unsafe.Pointer) *TreeView {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeView{native: u}
+
+	return g
+}
+
+func (recv *TreeView) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by TreeView
 func (recv *TreeView) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4126,6 +7636,21 @@ type TreeViewAccessible struct {
 	native unsafe.Pointer
 	// parent : record
 	// priv : record
+}
+
+func TreeViewAccessibleNewFromC(u unsafe.Pointer) *TreeViewAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeViewAccessible{native: u}
+
+	return g
+}
+
+func (recv *TreeViewAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Component returns the Component interface implemented by TreeViewAccessible
@@ -4155,6 +7680,21 @@ type TreeViewColumn struct {
 	// priv : record
 }
 
+func TreeViewColumnNewFromC(u unsafe.Pointer) *TreeViewColumn {
+	if u == nil {
+		return nil
+	}
+
+	g := &TreeViewColumn{native: u}
+
+	return g
+}
+
+func (recv *TreeViewColumn) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by TreeViewColumn
 func (recv *TreeViewColumn) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -4172,6 +7712,21 @@ type UIManager struct {
 	// Private : private_data
 }
 
+func UIManagerNewFromC(u unsafe.Pointer) *UIManager {
+	if u == nil {
+		return nil
+	}
+
+	g := &UIManager{native: u}
+
+	return g
+}
+
+func (recv *UIManager) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Buildable returns the Buildable interface implemented by UIManager
 func (recv *UIManager) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -4181,6 +7736,21 @@ func (recv *UIManager) Buildable() *Buildable {
 type VBox struct {
 	native unsafe.Pointer
 	// box : record
+}
+
+func VBoxNewFromC(u unsafe.Pointer) *VBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &VBox{native: u}
+
+	return g
+}
+
+func (recv *VBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by VBox
@@ -4204,6 +7774,21 @@ type VButtonBox struct {
 	// button_box : record
 }
 
+func VButtonBoxNewFromC(u unsafe.Pointer) *VButtonBox {
+	if u == nil {
+		return nil
+	}
+
+	g := &VButtonBox{native: u}
+
+	return g
+}
+
+func (recv *VButtonBox) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by VButtonBox
 func (recv *VButtonBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4223,6 +7808,21 @@ func (recv *VButtonBox) Orientable() *Orientable {
 type VPaned struct {
 	native unsafe.Pointer
 	// paned : record
+}
+
+func VPanedNewFromC(u unsafe.Pointer) *VPaned {
+	if u == nil {
+		return nil
+	}
+
+	g := &VPaned{native: u}
+
+	return g
+}
+
+func (recv *VPaned) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by VPaned
@@ -4246,6 +7846,21 @@ type VScale struct {
 	// scale : record
 }
 
+func VScaleNewFromC(u unsafe.Pointer) *VScale {
+	if u == nil {
+		return nil
+	}
+
+	g := &VScale{native: u}
+
+	return g
+}
+
+func (recv *VScale) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by VScale
 func (recv *VScale) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4267,6 +7882,21 @@ type VScrollbar struct {
 	// scrollbar : record
 }
 
+func VScrollbarNewFromC(u unsafe.Pointer) *VScrollbar {
+	if u == nil {
+		return nil
+	}
+
+	g := &VScrollbar{native: u}
+
+	return g
+}
+
+func (recv *VScrollbar) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by VScrollbar
 func (recv *VScrollbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4286,6 +7916,21 @@ func (recv *VScrollbar) Orientable() *Orientable {
 type VSeparator struct {
 	native unsafe.Pointer
 	// separator : record
+}
+
+func VSeparatorNewFromC(u unsafe.Pointer) *VSeparator {
+	if u == nil {
+		return nil
+	}
+
+	g := &VSeparator{native: u}
+
+	return g
+}
+
+func (recv *VSeparator) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by VSeparator
@@ -4310,6 +7955,21 @@ type Viewport struct {
 	// Private : priv
 }
 
+func ViewportNewFromC(u unsafe.Pointer) *Viewport {
+	if u == nil {
+		return nil
+	}
+
+	g := &Viewport{native: u}
+
+	return g
+}
+
+func (recv *Viewport) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Viewport
 func (recv *Viewport) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4329,6 +7989,21 @@ func (recv *Viewport) Scrollable() *Scrollable {
 type VolumeButton struct {
 	native unsafe.Pointer
 	// parent : record
+}
+
+func VolumeButtonNewFromC(u unsafe.Pointer) *VolumeButton {
+	if u == nil {
+		return nil
+	}
+
+	g := &VolumeButton{native: u}
+
+	return g
+}
+
+func (recv *VolumeButton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by VolumeButton
@@ -4363,6 +8038,21 @@ type Widget struct {
 	// Private : priv
 }
 
+func WidgetNewFromC(u unsafe.Pointer) *Widget {
+	if u == nil {
+		return nil
+	}
+
+	g := &Widget{native: u}
+
+	return g
+}
+
+func (recv *Widget) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ImplementorIface returns the ImplementorIface interface implemented by Widget
 func (recv *Widget) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4380,6 +8070,21 @@ type WidgetAccessible struct {
 	// priv : record
 }
 
+func WidgetAccessibleNewFromC(u unsafe.Pointer) *WidgetAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &WidgetAccessible{native: u}
+
+	return g
+}
+
+func (recv *WidgetAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by WidgetAccessible
 func (recv *WidgetAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -4390,6 +8095,21 @@ type Window struct {
 	native unsafe.Pointer
 	// bin : record
 	// priv : record
+}
+
+func WindowNewFromC(u unsafe.Pointer) *Window {
+	if u == nil {
+		return nil
+	}
+
+	g := &Window{native: u}
+
+	return g
+}
+
+func (recv *Window) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Window
@@ -4409,6 +8129,21 @@ type WindowAccessible struct {
 	// priv : record
 }
 
+func WindowAccessibleNewFromC(u unsafe.Pointer) *WindowAccessible {
+	if u == nil {
+		return nil
+	}
+
+	g := &WindowAccessible{native: u}
+
+	return g
+}
+
+func (recv *WindowAccessible) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Component returns the Component interface implemented by WindowAccessible
 func (recv *WindowAccessible) Component() *atk.Component {
 	return atk.ComponentNewFromC(recv.ToC())
@@ -4424,4 +8159,19 @@ type WindowGroup struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func WindowGroupNewFromC(u unsafe.Pointer) *WindowGroup {
+	if u == nil {
+		return nil
+	}
+
+	g := &WindowGroup{native: u}
+
+	return g
+}
+
+func (recv *WindowGroup) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

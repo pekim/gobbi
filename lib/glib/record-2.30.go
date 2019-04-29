@@ -9,3 +9,18 @@ import "unsafe"
 type Hmac struct {
 	native unsafe.Pointer
 }
+
+func HmacNewFromC(u unsafe.Pointer) *Hmac {
+	if u == nil {
+		return nil
+	}
+
+	g := &Hmac{native: u}
+
+	return g
+}
+
+func (recv *Hmac) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

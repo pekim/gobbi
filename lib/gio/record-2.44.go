@@ -14,6 +14,21 @@ type ListModelInterface struct {
 	// no type for get_item
 }
 
+func ListModelInterfaceNewFromC(u unsafe.Pointer) *ListModelInterface {
+	if u == nil {
+		return nil
+	}
+
+	g := &ListModelInterface{native: u}
+
+	return g
+}
+
+func (recv *ListModelInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // OutputMessage is a wrapper around the C record GOutputMessage.
 type OutputMessage struct {
 	native unsafe.Pointer
@@ -23,4 +38,19 @@ type OutputMessage struct {
 	BytesSent  uint32
 	// no type for control_messages
 	NumControlMessages uint32
+}
+
+func OutputMessageNewFromC(u unsafe.Pointer) *OutputMessage {
+	if u == nil {
+		return nil
+	}
+
+	g := &OutputMessage{native: u}
+
+	return g
+}
+
+func (recv *OutputMessage) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

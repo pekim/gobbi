@@ -12,11 +12,41 @@ type Socket struct {
 	// priv : record
 }
 
+func SocketNewFromC(u unsafe.Pointer) *Socket {
+	if u == nil {
+		return nil
+	}
+
+	g := &Socket{native: u}
+
+	return g
+}
+
+func (recv *Socket) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // SocketClient is a wrapper around the C record GSocketClient.
 type SocketClient struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func SocketClientNewFromC(u unsafe.Pointer) *SocketClient {
+	if u == nil {
+		return nil
+	}
+
+	g := &SocketClient{native: u}
+
+	return g
+}
+
+func (recv *SocketClient) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketConnection is a wrapper around the C record GSocketConnection.
@@ -26,11 +56,41 @@ type SocketConnection struct {
 	// priv : record
 }
 
+func SocketConnectionNewFromC(u unsafe.Pointer) *SocketConnection {
+	if u == nil {
+		return nil
+	}
+
+	g := &SocketConnection{native: u}
+
+	return g
+}
+
+func (recv *SocketConnection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // SocketListener is a wrapper around the C record GSocketListener.
 type SocketListener struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func SocketListenerNewFromC(u unsafe.Pointer) *SocketListener {
+	if u == nil {
+		return nil
+	}
+
+	g := &SocketListener{native: u}
+
+	return g
+}
+
+func (recv *SocketListener) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketService is a wrapper around the C record GSocketService.
@@ -40,6 +100,21 @@ type SocketService struct {
 	// priv : record
 }
 
+func SocketServiceNewFromC(u unsafe.Pointer) *SocketService {
+	if u == nil {
+		return nil
+	}
+
+	g := &SocketService{native: u}
+
+	return g
+}
+
+func (recv *SocketService) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
 	native unsafe.Pointer
@@ -47,9 +122,39 @@ type TcpConnection struct {
 	// priv : record
 }
 
+func TcpConnectionNewFromC(u unsafe.Pointer) *TcpConnection {
+	if u == nil {
+		return nil
+	}
+
+	g := &TcpConnection{native: u}
+
+	return g
+}
+
+func (recv *TcpConnection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func ThreadedSocketServiceNewFromC(u unsafe.Pointer) *ThreadedSocketService {
+	if u == nil {
+		return nil
+	}
+
+	g := &ThreadedSocketService{native: u}
+
+	return g
+}
+
+func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

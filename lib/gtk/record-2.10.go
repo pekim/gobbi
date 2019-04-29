@@ -10,6 +10,21 @@ type RecentInfo struct {
 	native unsafe.Pointer
 }
 
+func RecentInfoNewFromC(u unsafe.Pointer) *RecentInfo {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentInfo{native: u}
+
+	return g
+}
+
+func (recv *RecentInfo) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // RecentManagerClass is a wrapper around the C record GtkRecentManagerClass.
 type RecentManagerClass struct {
 	native unsafe.Pointer
@@ -19,4 +34,19 @@ type RecentManagerClass struct {
 	// no type for _gtk_recent2
 	// no type for _gtk_recent3
 	// no type for _gtk_recent4
+}
+
+func RecentManagerClassNewFromC(u unsafe.Pointer) *RecentManagerClass {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentManagerClass{native: u}
+
+	return g
+}
+
+func (recv *RecentManagerClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

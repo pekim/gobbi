@@ -9,3 +9,18 @@ import "unsafe"
 type Variant struct {
 	native unsafe.Pointer
 }
+
+func VariantNewFromC(u unsafe.Pointer) *Variant {
+	if u == nil {
+		return nil
+	}
+
+	g := &Variant{native: u}
+
+	return g
+}
+
+func (recv *Variant) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

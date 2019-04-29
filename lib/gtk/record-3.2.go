@@ -9,3 +9,18 @@ import "unsafe"
 type CssSection struct {
 	native unsafe.Pointer
 }
+
+func CssSectionNewFromC(u unsafe.Pointer) *CssSection {
+	if u == nil {
+		return nil
+	}
+
+	g := &CssSection{native: u}
+
+	return g
+}
+
+func (recv *CssSection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

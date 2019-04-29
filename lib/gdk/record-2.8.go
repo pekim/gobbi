@@ -15,3 +15,18 @@ type EventGrabBroken struct {
 	Implicit  bool
 	// grab_window : record
 }
+
+func EventGrabBrokenNewFromC(u unsafe.Pointer) *EventGrabBroken {
+	if u == nil {
+		return nil
+	}
+
+	g := &EventGrabBroken{native: u}
+
+	return g
+}
+
+func (recv *EventGrabBroken) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

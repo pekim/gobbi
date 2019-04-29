@@ -27,7 +27,7 @@ func (r *RecordToCFunc) generateReturnDeclaration(g *jen.Group) {
 
 func (r *RecordToCFunc) generateBody(g *jen.Group) {
 	if !r.FieldsPrivate {
-		r.generateFieldsAssignment(g)
+		//r.generateFieldsAssignment(g)
 	}
 
 	g.Line()

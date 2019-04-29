@@ -9,3 +9,18 @@ import "unsafe"
 type SimpleIOStream struct {
 	native unsafe.Pointer
 }
+
+func SimpleIOStreamNewFromC(u unsafe.Pointer) *SimpleIOStream {
+	if u == nil {
+		return nil
+	}
+
+	g := &SimpleIOStream{native: u}
+
+	return g
+}
+
+func (recv *SimpleIOStream) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

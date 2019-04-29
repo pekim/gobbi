@@ -10,6 +10,21 @@ type Bytes struct {
 	native unsafe.Pointer
 }
 
+func BytesNewFromC(u unsafe.Pointer) *Bytes {
+	if u == nil {
+		return nil
+	}
+
+	g := &Bytes{native: u}
+
+	return g
+}
+
+func (recv *Bytes) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // RWLock is a wrapper around the C record GRWLock.
 type RWLock struct {
 	native unsafe.Pointer
@@ -17,9 +32,39 @@ type RWLock struct {
 	// Private : i
 }
 
+func RWLockNewFromC(u unsafe.Pointer) *RWLock {
+	if u == nil {
+		return nil
+	}
+
+	g := &RWLock{native: u}
+
+	return g
+}
+
+func (recv *RWLock) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // RecMutex is a wrapper around the C record GRecMutex.
 type RecMutex struct {
 	native unsafe.Pointer
 	// Private : p
 	// Private : i
+}
+
+func RecMutexNewFromC(u unsafe.Pointer) *RecMutex {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecMutex{native: u}
+
+	return g
+}
+
+func (recv *RecMutex) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

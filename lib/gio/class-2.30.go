@@ -12,11 +12,41 @@ type DBusInterfaceSkeleton struct {
 	// Private : priv
 }
 
+func DBusInterfaceSkeletonNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusInterfaceSkeleton{native: u}
+
+	return g
+}
+
+func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
 type DBusObjectManagerClient struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func DBusObjectManagerClientNewFromC(u unsafe.Pointer) *DBusObjectManagerClient {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectManagerClient{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
@@ -26,11 +56,41 @@ type DBusObjectManagerServer struct {
 	// Private : priv
 }
 
+func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectManagerServer{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
 type DBusObjectProxy struct {
 	native unsafe.Pointer
 	// Private : parent_instance
 	// Private : priv
+}
+
+func DBusObjectProxyNewFromC(u unsafe.Pointer) *DBusObjectProxy {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectProxy{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
@@ -40,11 +100,41 @@ type DBusObjectSkeleton struct {
 	// Private : priv
 }
 
+func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
+	if u == nil {
+		return nil
+	}
+
+	g := &DBusObjectSkeleton{native: u}
+
+	return g
+}
+
+func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
 type TlsDatabase struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
+	if u == nil {
+		return nil
+	}
+
+	g := &TlsDatabase{native: u}
+
+	return g
+}
+
+func (recv *TlsDatabase) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsInteraction is a wrapper around the C record GTlsInteraction.
@@ -54,9 +144,39 @@ type TlsInteraction struct {
 	// Private : priv
 }
 
+func TlsInteractionNewFromC(u unsafe.Pointer) *TlsInteraction {
+	if u == nil {
+		return nil
+	}
+
+	g := &TlsInteraction{native: u}
+
+	return g
+}
+
+func (recv *TlsInteraction) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // TlsPassword is a wrapper around the C record GTlsPassword.
 type TlsPassword struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
+	if u == nil {
+		return nil
+	}
+
+	g := &TlsPassword{native: u}
+
+	return g
+}
+
+func (recv *TlsPassword) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }

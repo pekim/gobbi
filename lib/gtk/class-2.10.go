@@ -11,3 +11,18 @@ type RecentManager struct {
 	// Private : parent_instance
 	// Private : priv
 }
+
+func RecentManagerNewFromC(u unsafe.Pointer) *RecentManager {
+	if u == nil {
+		return nil
+	}
+
+	g := &RecentManager{native: u}
+
+	return g
+}
+
+func (recv *RecentManager) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

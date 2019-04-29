@@ -12,9 +12,39 @@ type InetAddressMask struct {
 	// Private : priv
 }
 
+func InetAddressMaskNewFromC(u unsafe.Pointer) *InetAddressMask {
+	if u == nil {
+		return nil
+	}
+
+	g := &InetAddressMask{native: u}
+
+	return g
+}
+
+func (recv *InetAddressMask) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // Menu is a wrapper around the C record GMenu.
 type Menu struct {
 	native unsafe.Pointer
+}
+
+func MenuNewFromC(u unsafe.Pointer) *Menu {
+	if u == nil {
+		return nil
+	}
+
+	g := &Menu{native: u}
+
+	return g
+}
+
+func (recv *Menu) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
@@ -24,9 +54,39 @@ type MenuAttributeIter struct {
 	// priv : record
 }
 
+func MenuAttributeIterNewFromC(u unsafe.Pointer) *MenuAttributeIter {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuAttributeIter{native: u}
+
+	return g
+}
+
+func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // MenuItem is a wrapper around the C record GMenuItem.
 type MenuItem struct {
 	native unsafe.Pointer
+}
+
+func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuItem{native: u}
+
+	return g
+}
+
+func (recv *MenuItem) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
@@ -36,9 +96,39 @@ type MenuLinkIter struct {
 	// priv : record
 }
 
+func MenuLinkIterNewFromC(u unsafe.Pointer) *MenuLinkIter {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuLinkIter{native: u}
+
+	return g
+}
+
+func (recv *MenuLinkIter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // MenuModel is a wrapper around the C record GMenuModel.
 type MenuModel struct {
 	native unsafe.Pointer
 	// parent_instance : record
 	// priv : record
+}
+
+func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
+	if u == nil {
+		return nil
+	}
+
+	g := &MenuModel{native: u}
+
+	return g
+}
+
+func (recv *MenuModel) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
 }
