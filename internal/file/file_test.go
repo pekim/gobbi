@@ -5,6 +5,20 @@ import (
 	"testing"
 )
 
+func TestBuildTags(t *testing.T) {
+	f := New("pkg", "")
+	f.SetBuildTags("lib_1.2 lib_1.4")
+
+	assert.Equal(t,
+		""+
+			"// This is a generated file - DO NOT EDIT\n"+
+			"// +build lib_1.2 lib_1.4\n"+
+			"\n"+
+			"package pkg"+"\n"+
+			"\n\n",
+		f.src())
+}
+
 func TestImportsSrc(t *testing.T) {
 	f := New("", "")
 	f.imprt("fmt")

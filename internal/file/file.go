@@ -11,10 +11,11 @@ import (
 const basePkg = "github.com/pekim/gobbi"
 
 type File struct {
-	pkg      string
-	filepath string
-	imports  map[string]bool
-	contents string
+	pkg       string
+	buildTags string
+	filepath  string
+	imports   map[string]bool
+	contents  string
 }
 
 func New(pkg string, filepath string) *File {
@@ -23,6 +24,10 @@ func New(pkg string, filepath string) *File {
 		filepath: filepath,
 		imports:  make(map[string]bool),
 	}
+}
+
+func (f *File) SetBuildTags(tags string) {
+	f.buildTags = tags
 }
 
 func (f *File) imprt(pkg string) {
@@ -59,7 +64,10 @@ func (f *File) generatedFileComment() string {
 }
 
 func (f *File) buildTagsSrc() string {
-	return ""
+	if f.buildTags == "" {
+		return ""
+	}
+	return fmt.Sprintf("// +build %s\n", f.buildTags)
 }
 
 func (f *File) Write() {
