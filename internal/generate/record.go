@@ -74,18 +74,18 @@ func (r *Record) mergeAddenda(addenda *Record) {
 func (r *Record) generate(g *jen.Group, version *Version) {
 	if supportedByVersion(r, version) {
 		r.generateType(g)
-		(&RecordNewFromCFunc{r}).generate(g)
-		(&RecordToCFunc{r}).generate(g)
-		(&RecordEqualFunc{r}).generate(g)
-		r.generateUpcasts(g)
-		r.generateDowncast(g)
+		//(&RecordNewFromCFunc{r}).generate(g)
+		//(&RecordToCFunc{r}).generate(g)
+		//(&RecordEqualFunc{r}).generate(g)
+		//r.generateUpcasts(g)
+		//r.generateDowncast(g)
 	}
 
 	if r.Version == "" || version.GTE(VersionNew(r.Version)) {
-		r.Signals.generate(g, version, r.Version)
-		r.Constructors.generate(g, version)
-		r.Functions.generate(g, version)
-		r.Methods.generate(g, version)
+		//r.Signals.generate(g, version, r.Version)
+		//r.Constructors.generate(g, version)
+		//r.Functions.generate(g, version)
+		//r.Methods.generate(g, version)
 	}
 }
 
@@ -98,8 +98,7 @@ func (r *Record) generateType(g *jen.Group) {
 		StructFunc(func(g *jen.Group) {
 			g.
 				Id("native").
-				Op("*").
-				Qual("C", r.CType)
+				Qual("unsafe", "Pointer")
 
 			if r.FieldsPrivate {
 				g.Comment("All fields are private")

@@ -95,14 +95,14 @@ func (ns *Namespace) generate() {
 	//ns.generateTemplatedFiles()
 
 	//ns.generateBooleanFile()
-	//ns.generateGeneratables("alias", ns.Aliases)
+	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)
 	//ns.generateGeneratables("class", ns.Classes)
 	ns.generateGeneratables("constant", ns.Constants)
 	ns.generateGeneratables("enum", ns.Enumerations)
 	ns.generateGeneratables("function", ns.Functions)
 	//ns.generateGeneratables("interface", ns.Interfaces)
-	//ns.generateGeneratables("record", ns.Records)
+	ns.generateGeneratables("record", ns.Records)
 }
 
 func (ns *Namespace) aliasForName(name string) (*Alias, bool) {
