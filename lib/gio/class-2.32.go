@@ -27,6 +27,10 @@ func (recv *InetAddressMask) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_inet_address_mask_new : return type :
+
+// Unsupported : g_inet_address_mask_new_from_string : return type :
+
 // Menu is a wrapper around the C record GMenu.
 type Menu struct {
 	native unsafe.Pointer
@@ -46,6 +50,8 @@ func (recv *Menu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_menu_new : return type :
 
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
 type MenuAttributeIter struct {
@@ -88,6 +94,12 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_menu_item_new : return type :
+
+// Unsupported : g_menu_item_new_section : return type :
+
+// Unsupported : g_menu_item_new_submenu : return type :
 
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
 type MenuLinkIter struct {
@@ -132,3 +144,5 @@ func (recv *MenuModel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_settings_new_full : return type :

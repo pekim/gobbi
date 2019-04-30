@@ -24,3 +24,5 @@ func (recv *Hmac) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_variant_new_objv : return type :

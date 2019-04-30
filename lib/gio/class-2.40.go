@@ -25,6 +25,8 @@ func (recv *AppInfoMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_inet_socket_address_new_from_string : return type :
+
 // Notification is a wrapper around the C record GNotification.
 type Notification struct {
 	native unsafe.Pointer
@@ -44,6 +46,8 @@ func (recv *Notification) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_notification_new : return type :
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -65,6 +69,10 @@ func (recv *Subprocess) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_subprocess_new : unsupported parameter ... : varargs
+
+// Unsupported : g_subprocess_newv : return type :
+
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
 type SubprocessLauncher struct {
 	native unsafe.Pointer
@@ -84,3 +92,5 @@ func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_subprocess_launcher_new : return type :

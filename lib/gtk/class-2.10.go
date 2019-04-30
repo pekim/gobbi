@@ -5,6 +5,36 @@ package gtk
 
 import "unsafe"
 
+// Unsupported : gtk_assistant_new : return type :
+
+// Unsupported : gtk_cell_renderer_accel_new : return type :
+
+// Unsupported : gtk_cell_renderer_spin_new : return type :
+
+// Unsupported : gtk_link_button_new : return type :
+
+// Unsupported : gtk_link_button_new_with_label : return type :
+
+// Unsupported : gtk_page_setup_new : return type :
+
+// Unsupported : gtk_print_operation_new : return type :
+
+// Unsupported : gtk_print_settings_new : return type :
+
+// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
+
+// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
+
+// Unsupported : gtk_recent_chooser_menu_new : return type :
+
+// Unsupported : gtk_recent_chooser_menu_new_for_manager : return type :
+
+// Unsupported : gtk_recent_chooser_widget_new : return type :
+
+// Unsupported : gtk_recent_chooser_widget_new_for_manager : return type :
+
+// Unsupported : gtk_recent_filter_new : return type :
+
 // RecentManager is a wrapper around the C record GtkRecentManager.
 type RecentManager struct {
 	native unsafe.Pointer
@@ -26,3 +56,15 @@ func (recv *RecentManager) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_recent_manager_new : return type :
+
+// Unsupported : gtk_status_icon_new : return type :
+
+// Unsupported : gtk_status_icon_new_from_file : return type :
+
+// Unsupported : gtk_status_icon_new_from_icon_name : return type :
+
+// Unsupported : gtk_status_icon_new_from_pixbuf : return type :
+
+// Unsupported : gtk_status_icon_new_from_stock : return type :

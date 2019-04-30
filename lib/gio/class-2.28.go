@@ -27,6 +27,12 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_application_new : return type :
+
+// Unsupported : g_simple_action_new : return type :
+
+// Unsupported : g_simple_action_new_stateful : return type :
+
 // SimpleActionGroup is a wrapper around the C record GSimpleActionGroup.
 type SimpleActionGroup struct {
 	native unsafe.Pointer
@@ -49,6 +55,12 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_simple_action_group_new : return type :
+
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Unsupported : g_tcp_wrapper_connection_new : return type :
+
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
 	native unsafe.Pointer
@@ -70,6 +82,12 @@ func (recv *TlsCertificate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_tls_certificate_new_from_file : return type :
+
+// Unsupported : g_tls_certificate_new_from_files : return type :
+
+// Unsupported : g_tls_certificate_new_from_pem : return type :
 
 // TlsConnection is a wrapper around the C record GTlsConnection.
 type TlsConnection struct {

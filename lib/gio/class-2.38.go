@@ -5,6 +5,8 @@ package gio
 
 import "unsafe"
 
+// Unsupported : g_bytes_icon_new : return type :
+
 // PropertyAction is a wrapper around the C record GPropertyAction.
 type PropertyAction struct {
 	native unsafe.Pointer
@@ -24,3 +26,5 @@ func (recv *PropertyAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_property_action_new : return type :

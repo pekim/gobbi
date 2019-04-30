@@ -29,3 +29,5 @@ func (recv *GLAreaClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_paper_size_new_from_ipp : return type :

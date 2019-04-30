@@ -44,6 +44,8 @@ func (recv *Cursor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gdk_cursor_new : return type :
+
 // Device is a wrapper around the C record GdkDevice.
 type Device struct {
 	native unsafe.Pointer
@@ -263,3 +265,5 @@ func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gdk_window_new : return type :

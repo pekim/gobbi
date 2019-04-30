@@ -5,6 +5,12 @@ package gtk
 
 import "unsafe"
 
+// Unsupported : gtk_paper_size_new : return type :
+
+// Unsupported : gtk_paper_size_new_custom : return type :
+
+// Unsupported : gtk_paper_size_new_from_ppd : return type :
+
 // RecentInfo is a wrapper around the C record GtkRecentInfo.
 type RecentInfo struct {
 	native unsafe.Pointer

@@ -62,6 +62,8 @@ func (recv *AccelGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_accel_group_new : return type :
+
 // AccelLabel is a wrapper around the C record GtkAccelLabel.
 type AccelLabel struct {
 	native unsafe.Pointer
@@ -83,6 +85,8 @@ func (recv *AccelLabel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_accel_label_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by AccelLabel
 func (recv *AccelLabel) ImplementorIface() *atk.ImplementorIface {
@@ -243,6 +247,8 @@ func (recv *Adjustment) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_adjustment_new : return type :
+
 // Alignment is a wrapper around the C record GtkAlignment.
 type Alignment struct {
 	native unsafe.Pointer
@@ -264,6 +270,8 @@ func (recv *Alignment) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_alignment_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Alignment
 func (recv *Alignment) ImplementorIface() *atk.ImplementorIface {
@@ -497,6 +505,8 @@ func (recv *Arrow) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_arrow_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Arrow
 func (recv *Arrow) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -560,6 +570,8 @@ func (recv *AspectFrame) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_aspect_frame_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by AspectFrame
 func (recv *AspectFrame) ImplementorIface() *atk.ImplementorIface {
@@ -748,6 +760,14 @@ func (recv *Button) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_button_new : return type :
+
+// Unsupported : gtk_button_new_from_stock : return type :
+
+// Unsupported : gtk_button_new_with_label : return type :
+
+// Unsupported : gtk_button_new_with_mnemonic : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Button
 func (recv *Button) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -863,6 +883,8 @@ func (recv *Calendar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_calendar_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Calendar
 func (recv *Calendar) ImplementorIface() *atk.ImplementorIface {
@@ -1085,6 +1107,8 @@ func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_cell_renderer_pixbuf_new : return type :
+
 // CellRendererProgress is a wrapper around the C record GtkCellRendererProgress.
 type CellRendererProgress struct {
 	native unsafe.Pointer
@@ -1178,6 +1202,8 @@ func (recv *CellRendererText) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_cell_renderer_text_new : return type :
+
 // CellRendererToggle is a wrapper around the C record GtkCellRendererToggle.
 type CellRendererToggle struct {
 	native unsafe.Pointer
@@ -1199,6 +1225,8 @@ func (recv *CellRendererToggle) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_cell_renderer_toggle_new : return type :
 
 // CellView is a wrapper around the C record GtkCellView.
 type CellView struct {
@@ -1263,6 +1291,12 @@ func (recv *CheckButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_check_button_new : return type :
+
+// Unsupported : gtk_check_button_new_with_label : return type :
+
+// Unsupported : gtk_check_button_new_with_mnemonic : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by CheckButton
 func (recv *CheckButton) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1304,6 +1338,12 @@ func (recv *CheckMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_check_menu_item_new : return type :
+
+// Unsupported : gtk_check_menu_item_new_with_label : return type :
+
+// Unsupported : gtk_check_menu_item_new_with_mnemonic : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by CheckMenuItem
 func (recv *CheckMenuItem) ImplementorIface() *atk.ImplementorIface {
@@ -1530,6 +1570,8 @@ func (recv *ColorSelection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_color_selection_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by ColorSelection
 func (recv *ColorSelection) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1567,6 +1609,8 @@ func (recv *ColorSelectionDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_color_selection_dialog_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by ColorSelectionDialog
 func (recv *ColorSelectionDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1598,6 +1642,10 @@ func (recv *ComboBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_combo_box_new_with_area : return type :
+
+// Unsupported : gtk_combo_box_new_with_area_and_entry : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by ComboBox
 func (recv *ComboBox) ImplementorIface() *atk.ImplementorIface {
@@ -1779,6 +1827,8 @@ func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_container_cell_accessible_new : return type :
+
 // Action returns the Action interface implemented by ContainerCellAccessible
 func (recv *ContainerCellAccessible) Action() *atk.Action {
 	return atk.ActionNewFromC(recv.ToC())
@@ -1811,6 +1861,8 @@ func (recv *CssProvider) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_css_provider_new : return type :
+
 // StyleProvider returns the StyleProvider interface implemented by CssProvider
 func (recv *CssProvider) StyleProvider() *StyleProvider {
 	return StyleProviderNewFromC(recv.ToC())
@@ -1837,6 +1889,10 @@ func (recv *Dialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_dialog_new : return type :
+
+// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // ImplementorIface returns the ImplementorIface interface implemented by Dialog
 func (recv *Dialog) ImplementorIface() *atk.ImplementorIface {
@@ -1870,6 +1926,8 @@ func (recv *DrawingArea) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_drawing_area_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by DrawingArea
 func (recv *DrawingArea) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -1901,6 +1959,8 @@ func (recv *Entry) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_entry_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Entry
 func (recv *Entry) ImplementorIface() *atk.ImplementorIface {
@@ -2041,6 +2101,8 @@ func (recv *EventBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_event_box_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by EventBox
 func (recv *EventBox) ImplementorIface() *atk.ImplementorIface {
@@ -2303,6 +2365,8 @@ func (recv *Fixed) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_fixed_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Fixed
 func (recv *Fixed) ImplementorIface() *atk.ImplementorIface {
@@ -2587,6 +2651,8 @@ func (recv *FontSelection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_font_selection_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by FontSelection
 func (recv *FontSelection) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2624,6 +2690,8 @@ func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_font_selection_dialog_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by FontSelectionDialog
 func (recv *FontSelectionDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2655,6 +2723,8 @@ func (recv *Frame) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_frame_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Frame
 func (recv *Frame) ImplementorIface() *atk.ImplementorIface {
@@ -2895,6 +2965,8 @@ func (recv *Grid) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_grid_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Grid
 func (recv *Grid) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -2930,6 +3002,8 @@ func (recv *HBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_hbox_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by HBox
 func (recv *HBox) ImplementorIface() *atk.ImplementorIface {
@@ -2967,6 +3041,8 @@ func (recv *HButtonBox) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_hbutton_box_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by HButtonBox
 func (recv *HButtonBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3002,6 +3078,8 @@ func (recv *HPaned) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_hpaned_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by HPaned
 func (recv *HPaned) ImplementorIface() *atk.ImplementorIface {
@@ -3071,6 +3149,10 @@ func (recv *HScale) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_hscale_new : return type :
+
+// Unsupported : gtk_hscale_new_with_range : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by HScale
 func (recv *HScale) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3106,6 +3188,8 @@ func (recv *HScrollbar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_hscrollbar_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by HScrollbar
 func (recv *HScrollbar) ImplementorIface() *atk.ImplementorIface {
@@ -3143,6 +3227,8 @@ func (recv *HSeparator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_hseparator_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by HSeparator
 func (recv *HSeparator) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3179,6 +3265,8 @@ func (recv *HandleBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_handle_box_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by HandleBox
 func (recv *HandleBox) ImplementorIface() *atk.ImplementorIface {
@@ -3264,6 +3352,8 @@ func (recv *IMContextSimple) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_im_context_simple_new : return type :
+
 // IMMulticontext is a wrapper around the C record GtkIMMulticontext.
 type IMMulticontext struct {
 	native unsafe.Pointer
@@ -3286,6 +3376,8 @@ func (recv *IMMulticontext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_im_multicontext_new : return type :
+
 // IconFactory is a wrapper around the C record GtkIconFactory.
 type IconFactory struct {
 	native unsafe.Pointer
@@ -3307,6 +3399,8 @@ func (recv *IconFactory) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_icon_factory_new : return type :
 
 // Buildable returns the Buildable interface implemented by IconFactory
 func (recv *IconFactory) Buildable() *Buildable {
@@ -3451,6 +3545,18 @@ func (recv *Image) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_image_new : return type :
+
+// Unsupported : gtk_image_new_from_animation : return type :
+
+// Unsupported : gtk_image_new_from_file : return type :
+
+// Unsupported : gtk_image_new_from_icon_set : return type :
+
+// Unsupported : gtk_image_new_from_pixbuf : return type :
+
+// Unsupported : gtk_image_new_from_stock : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Image
 func (recv *Image) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3552,6 +3658,14 @@ func (recv *ImageMenuItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_image_menu_item_new : return type :
+
+// Unsupported : gtk_image_menu_item_new_from_stock : return type :
+
+// Unsupported : gtk_image_menu_item_new_with_label : return type :
+
+// Unsupported : gtk_image_menu_item_new_with_mnemonic : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by ImageMenuItem
 func (recv *ImageMenuItem) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3594,6 +3708,8 @@ func (recv *InfoBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
+
 // ImplementorIface returns the ImplementorIface interface implemented by InfoBar
 func (recv *InfoBar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3631,6 +3747,8 @@ func (recv *Invisible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_invisible_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Invisible
 func (recv *Invisible) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -3662,6 +3780,10 @@ func (recv *Label) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_label_new : return type :
+
+// Unsupported : gtk_label_new_with_mnemonic : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Label
 func (recv *Label) ImplementorIface() *atk.ImplementorIface {
@@ -3731,6 +3853,8 @@ func (recv *Layout) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_layout_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Layout
 func (recv *Layout) ImplementorIface() *atk.ImplementorIface {
@@ -4047,6 +4171,10 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
+
+// Unsupported : gtk_list_store_newv : return type :
+
 // Buildable returns the Buildable interface implemented by ListStore
 func (recv *ListStore) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -4173,6 +4301,8 @@ func (recv *Menu) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_menu_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Menu
 func (recv *Menu) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4236,6 +4366,8 @@ func (recv *MenuBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_menu_bar_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by MenuBar
 func (recv *MenuBar) ImplementorIface() *atk.ImplementorIface {
@@ -4347,6 +4479,12 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_menu_item_new : return type :
+
+// Unsupported : gtk_menu_item_new_with_label : return type :
+
+// Unsupported : gtk_menu_item_new_with_mnemonic : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by MenuItem
 func (recv *MenuItem) ImplementorIface() *atk.ImplementorIface {
@@ -4533,6 +4671,8 @@ func (recv *MessageDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_message_dialog_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by MessageDialog
 func (recv *MessageDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4659,6 +4799,8 @@ func (recv *Notebook) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_notebook_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Notebook
 func (recv *Notebook) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -4722,6 +4864,8 @@ func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_notebook_page_accessible_new : return type :
 
 // Component returns the Component interface implemented by NotebookPageAccessible
 func (recv *NotebookPageAccessible) Component() *atk.Component {
@@ -5116,6 +5260,8 @@ func (recv *ProgressBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_progress_bar_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by ProgressBar
 func (recv *ProgressBar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -5212,6 +5358,18 @@ func (recv *RadioButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_radio_button_new : return type :
+
+// Unsupported : gtk_radio_button_new_from_widget : return type :
+
+// Unsupported : gtk_radio_button_new_with_label : return type :
+
+// Unsupported : gtk_radio_button_new_with_label_from_widget : return type :
+
+// Unsupported : gtk_radio_button_new_with_mnemonic : return type :
+
+// Unsupported : gtk_radio_button_new_with_mnemonic_from_widget : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by RadioButton
 func (recv *RadioButton) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -5290,6 +5448,12 @@ func (recv *RadioMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_radio_menu_item_new : return type :
+
+// Unsupported : gtk_radio_menu_item_new_with_label : return type :
+
+// Unsupported : gtk_radio_menu_item_new_with_mnemonic : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by RadioMenuItem
 func (recv *RadioMenuItem) ImplementorIface() *atk.ImplementorIface {
@@ -5493,6 +5657,8 @@ func (recv *RcStyle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_rc_style_new : return type :
+
 // RecentAction is a wrapper around the C record GtkRecentAction.
 type RecentAction struct {
 	native unsafe.Pointer
@@ -5692,6 +5858,8 @@ func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_renderer_cell_accessible_new : return type :
 
 // Action returns the Action interface implemented by RendererCellAccessible
 func (recv *RendererCellAccessible) Action() *atk.Action {
@@ -5950,6 +6118,8 @@ func (recv *ScrolledWindow) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_scrolled_window_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by ScrolledWindow
 func (recv *ScrolledWindow) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -6117,6 +6287,8 @@ func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_separator_menu_item_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by SeparatorMenuItem
 func (recv *SeparatorMenuItem) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -6223,6 +6395,8 @@ func (recv *SizeGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_size_group_new : return type :
+
 // Buildable returns the Buildable interface implemented by SizeGroup
 func (recv *SizeGroup) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -6251,6 +6425,10 @@ func (recv *SpinButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_spin_button_new : return type :
+
+// Unsupported : gtk_spin_button_new_with_range : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by SpinButton
 func (recv *SpinButton) ImplementorIface() *atk.ImplementorIface {
@@ -6532,6 +6710,8 @@ func (recv *Statusbar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_statusbar_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Statusbar
 func (recv *Statusbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -6616,6 +6796,8 @@ func (recv *Style) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_style_new : return type :
+
 // StyleContext is a wrapper around the C record GtkStyleContext.
 type StyleContext struct {
 	native unsafe.Pointer
@@ -6638,6 +6820,8 @@ func (recv *StyleContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_style_context_new : return type :
+
 // StyleProperties is a wrapper around the C record GtkStyleProperties.
 type StyleProperties struct {
 	native unsafe.Pointer
@@ -6659,6 +6843,8 @@ func (recv *StyleProperties) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_style_properties_new : return type :
 
 // StyleProvider returns the StyleProvider interface implemented by StyleProperties
 func (recv *StyleProperties) StyleProvider() *StyleProvider {
@@ -6761,6 +6947,8 @@ func (recv *Table) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_table_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Table
 func (recv *Table) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -6792,6 +6980,8 @@ func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_tearoff_menu_item_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by TearoffMenuItem
 func (recv *TearoffMenuItem) ImplementorIface() *atk.ImplementorIface {
@@ -6834,6 +7024,8 @@ func (recv *TextBuffer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_text_buffer_new : return type :
 
 // TextCellAccessible is a wrapper around the C record GtkTextCellAccessible.
 type TextCellAccessible struct {
@@ -6894,6 +7086,8 @@ func (recv *TextChildAnchor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_text_child_anchor_new : return type :
+
 // TextMark is a wrapper around the C record GtkTextMark.
 type TextMark struct {
 	native unsafe.Pointer
@@ -6938,6 +7132,8 @@ func (recv *TextTag) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_text_tag_new : return type :
+
 // TextTagTable is a wrapper around the C record GtkTextTagTable.
 type TextTagTable struct {
 	native unsafe.Pointer
@@ -6959,6 +7155,8 @@ func (recv *TextTagTable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_text_tag_table_new : return type :
 
 // Buildable returns the Buildable interface implemented by TextTagTable
 func (recv *TextTagTable) Buildable() *Buildable {
@@ -6986,6 +7184,10 @@ func (recv *TextView) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_text_view_new : return type :
+
+// Unsupported : gtk_text_view_new_with_buffer : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by TextView
 func (recv *TextView) ImplementorIface() *atk.ImplementorIface {
@@ -7114,6 +7316,12 @@ func (recv *ToggleButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_toggle_button_new : return type :
+
+// Unsupported : gtk_toggle_button_new_with_label : return type :
+
+// Unsupported : gtk_toggle_button_new_with_mnemonic : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by ToggleButton
 func (recv *ToggleButton) ImplementorIface() *atk.ImplementorIface {
@@ -7394,6 +7602,8 @@ func (recv *Toolbar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_toolbar_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by Toolbar
 func (recv *Toolbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -7569,6 +7779,10 @@ func (recv *TreeStore) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
+
+// Unsupported : gtk_tree_store_newv : return type :
+
 // Buildable returns the Buildable interface implemented by TreeStore
 func (recv *TreeStore) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -7615,6 +7829,10 @@ func (recv *TreeView) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_tree_view_new : return type :
+
+// Unsupported : gtk_tree_view_new_with_model : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by TreeView
 func (recv *TreeView) ImplementorIface() *atk.ImplementorIface {
@@ -7695,6 +7913,10 @@ func (recv *TreeViewColumn) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_tree_view_column_new : return type :
+
+// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
 // Buildable returns the Buildable interface implemented by TreeViewColumn
 func (recv *TreeViewColumn) Buildable() *Buildable {
 	return BuildableNewFromC(recv.ToC())
@@ -7753,6 +7975,8 @@ func (recv *VBox) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_vbox_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by VBox
 func (recv *VBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -7788,6 +8012,8 @@ func (recv *VButtonBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_vbutton_box_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by VButtonBox
 func (recv *VButtonBox) ImplementorIface() *atk.ImplementorIface {
@@ -7825,6 +8051,8 @@ func (recv *VPaned) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_vpaned_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by VPaned
 func (recv *VPaned) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -7860,6 +8088,10 @@ func (recv *VScale) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_vscale_new : return type :
+
+// Unsupported : gtk_vscale_new_with_range : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by VScale
 func (recv *VScale) ImplementorIface() *atk.ImplementorIface {
@@ -7897,6 +8129,8 @@ func (recv *VScrollbar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_vscrollbar_new : return type :
+
 // ImplementorIface returns the ImplementorIface interface implemented by VScrollbar
 func (recv *VScrollbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -7932,6 +8166,8 @@ func (recv *VSeparator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_vseparator_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by VSeparator
 func (recv *VSeparator) ImplementorIface() *atk.ImplementorIface {
@@ -7969,6 +8205,8 @@ func (recv *Viewport) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_viewport_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Viewport
 func (recv *Viewport) ImplementorIface() *atk.ImplementorIface {
@@ -8053,6 +8291,8 @@ func (recv *Widget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
+
 // ImplementorIface returns the ImplementorIface interface implemented by Widget
 func (recv *Widget) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -8111,6 +8351,8 @@ func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_window_new : return type :
 
 // ImplementorIface returns the ImplementorIface interface implemented by Window
 func (recv *Window) ImplementorIface() *atk.ImplementorIface {
@@ -8175,3 +8417,5 @@ func (recv *WindowGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_window_group_new : return type :

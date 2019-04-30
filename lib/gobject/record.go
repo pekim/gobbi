@@ -62,6 +62,10 @@ func (recv *Closure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_closure_new_object : return type :
+
+// Unsupported : g_closure_new_simple : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+
 // ClosureNotifyData is a wrapper around the C record GClosureNotifyData.
 type ClosureNotifyData struct {
 	native unsafe.Pointer
@@ -698,6 +702,8 @@ func (recv *ValueArray) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_value_array_new : return type :
 
 // WeakRef is a wrapper around the C record GWeakRef.
 type WeakRef struct {

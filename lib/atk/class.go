@@ -93,6 +93,8 @@ func (recv *NoOpObject) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : atk_no_op_object_new : return type :
+
 // Action returns the Action interface implemented by NoOpObject
 func (recv *NoOpObject) Action() *Action {
 	return ActionNewFromC(recv.ToC())
@@ -174,6 +176,8 @@ func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : atk_no_op_object_factory_new : return type :
+
 // Object is a wrapper around the C record AtkObject.
 type Object struct {
 	native unsafe.Pointer
@@ -243,6 +247,8 @@ func (recv *Plug) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : atk_plug_new : return type :
+
 // Component returns the Component interface implemented by Plug
 func (recv *Plug) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
@@ -294,6 +300,8 @@ func (recv *Relation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : atk_relation_new : unsupported parameter targets :
+
 // RelationSet is a wrapper around the C record AtkRelationSet.
 type RelationSet struct {
 	native unsafe.Pointer
@@ -316,6 +324,8 @@ func (recv *RelationSet) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : atk_relation_set_new : return type :
+
 // Socket is a wrapper around the C record AtkSocket.
 type Socket struct {
 	native unsafe.Pointer
@@ -337,6 +347,8 @@ func (recv *Socket) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : atk_socket_new : return type :
 
 // Component returns the Component interface implemented by Socket
 func (recv *Socket) Component() *Component {
@@ -363,6 +375,8 @@ func (recv *StateSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : atk_state_set_new : return type :
 
 // Util is a wrapper around the C record AtkUtil.
 type Util struct {

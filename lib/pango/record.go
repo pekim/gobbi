@@ -207,6 +207,8 @@ func (recv *AttrList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : pango_attr_list_new : return type :
+
 // AttrShape is a wrapper around the C record PangoAttrShape.
 type AttrShape struct {
 	native unsafe.Pointer
@@ -396,6 +398,8 @@ func (recv *FontDescription) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : pango_font_description_new : return type :
+
 // Blacklisted : PangoFontFaceClass
 
 // Blacklisted : PangoFontFamilyClass
@@ -430,6 +434,8 @@ func (recv *FontMetrics) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : pango_font_metrics_new : return type :
 
 // Blacklisted : PangoFontsetClass
 
@@ -551,6 +557,8 @@ func (recv *Item) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : pango_item_new : return type :
 
 // Language is a wrapper around the C record PangoLanguage.
 type Language struct {
@@ -742,3 +750,7 @@ func (recv *TabArray) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : pango_tab_array_new : return type :
+
+// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

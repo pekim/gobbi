@@ -49,6 +49,14 @@ func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_dbus_object_manager_client_new_finish : return type :
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : return type :
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
+
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
+
 // DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
 type DBusObjectManagerServer struct {
 	native unsafe.Pointer
@@ -70,6 +78,8 @@ func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_dbus_object_manager_server_new : return type :
 
 // DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
 type DBusObjectProxy struct {
@@ -93,6 +103,8 @@ func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_dbus_object_proxy_new : return type :
+
 // DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
 type DBusObjectSkeleton struct {
 	native unsafe.Pointer
@@ -114,6 +126,8 @@ func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_dbus_object_skeleton_new : return type :
 
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
 type TlsDatabase struct {
@@ -180,3 +194,5 @@ func (recv *TlsPassword) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_tls_password_new : return type :

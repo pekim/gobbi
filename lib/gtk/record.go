@@ -4852,6 +4852,10 @@ func (recv *IconSet) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_icon_set_new : return type :
+
+// Unsupported : gtk_icon_set_new_from_pixbuf : return type :
+
 // IconSource is a wrapper around the C record GtkIconSource.
 type IconSource struct {
 	native unsafe.Pointer
@@ -4871,6 +4875,8 @@ func (recv *IconSource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_icon_source_new : return type :
 
 // IconThemeClass is a wrapper around the C record GtkIconThemeClass.
 type IconThemeClass struct {
@@ -9531,6 +9537,8 @@ func (recv *TargetEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_target_entry_new : return type :
+
 // TargetList is a wrapper around the C record GtkTargetList.
 type TargetList struct {
 	native unsafe.Pointer
@@ -9550,6 +9558,8 @@ func (recv *TargetList) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_target_list_new : unsupported parameter targets :
 
 // TargetPair is a wrapper around the C record GtkTargetPair.
 type TargetPair struct {
@@ -9688,6 +9698,8 @@ func (recv *TextAttributes) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_text_attributes_new : return type :
 
 // TextBTree is a wrapper around the C record GtkTextBTree.
 type TextBTree struct {
@@ -10898,6 +10910,12 @@ func (recv *TreePath) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_tree_path_new : return type :
+
+// Unsupported : gtk_tree_path_new_first : return type :
+
+// Unsupported : gtk_tree_path_new_from_string : return type :
+
 // TreeRowReference is a wrapper around the C record GtkTreeRowReference.
 type TreeRowReference struct {
 	native unsafe.Pointer
@@ -10917,6 +10935,10 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_tree_row_reference_new : return type :
+
+// Unsupported : gtk_tree_row_reference_new_proxy : return type :
 
 // TreeSelectionClass is a wrapper around the C record GtkTreeSelectionClass.
 type TreeSelectionClass struct {

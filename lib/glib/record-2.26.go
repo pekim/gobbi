@@ -25,6 +25,26 @@ func (recv *DateTime) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_date_time_new : return type :
+
+// Unsupported : g_date_time_new_from_timeval_local : return type :
+
+// Unsupported : g_date_time_new_from_timeval_utc : return type :
+
+// Unsupported : g_date_time_new_from_unix_local : return type :
+
+// Unsupported : g_date_time_new_from_unix_utc : return type :
+
+// Unsupported : g_date_time_new_local : return type :
+
+// Unsupported : g_date_time_new_now : return type :
+
+// Unsupported : g_date_time_new_now_local : return type :
+
+// Unsupported : g_date_time_new_now_utc : return type :
+
+// Unsupported : g_date_time_new_utc : return type :
+
 // TimeZone is a wrapper around the C record GTimeZone.
 type TimeZone struct {
 	native unsafe.Pointer
@@ -44,3 +64,13 @@ func (recv *TimeZone) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_time_zone_new : return type :
+
+// Unsupported : g_time_zone_new_local : return type :
+
+// Unsupported : g_time_zone_new_utc : return type :
+
+// Unsupported : g_variant_new_bytestring : return type :
+
+// Unsupported : g_variant_new_bytestring_array : return type :

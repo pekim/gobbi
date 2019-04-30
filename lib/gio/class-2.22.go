@@ -5,6 +5,20 @@ package gio
 
 import "unsafe"
 
+// Unsupported : g_inet_address_new_any : return type :
+
+// Unsupported : g_inet_address_new_from_bytes : return type :
+
+// Unsupported : g_inet_address_new_from_string : return type :
+
+// Unsupported : g_inet_address_new_loopback : return type :
+
+// Unsupported : g_inet_socket_address_new : return type :
+
+// Unsupported : g_network_address_new : return type :
+
+// Unsupported : g_network_service_new : return type :
+
 // Socket is a wrapper around the C record GSocket.
 type Socket struct {
 	native unsafe.Pointer
@@ -27,6 +41,12 @@ func (recv *Socket) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_socket_new : return type :
+
+// Unsupported : g_socket_new_from_fd : return type :
+
+// Unsupported : g_socket_address_new_from_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
+
 // SocketClient is a wrapper around the C record GSocketClient.
 type SocketClient struct {
 	native unsafe.Pointer
@@ -48,6 +68,8 @@ func (recv *SocketClient) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_socket_client_new : return type :
 
 // SocketConnection is a wrapper around the C record GSocketConnection.
 type SocketConnection struct {
@@ -93,6 +115,8 @@ func (recv *SocketListener) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_socket_listener_new : return type :
+
 // SocketService is a wrapper around the C record GSocketService.
 type SocketService struct {
 	native unsafe.Pointer
@@ -114,6 +138,8 @@ func (recv *SocketService) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_socket_service_new : return type :
 
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
@@ -158,3 +184,9 @@ func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_threaded_socket_service_new : return type :
+
+// Unsupported : g_unix_fd_message_new : return type :
+
+// Unsupported : g_unix_socket_address_new : return type :

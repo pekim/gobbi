@@ -25,6 +25,16 @@ func (recv *Bytes) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_bytes_new : return type :
+
+// Unsupported : g_bytes_new_static : return type :
+
+// Unsupported : g_bytes_new_take : return type :
+
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
+
+// Unsupported : g_mapped_file_new_from_fd : return type :
+
 // RWLock is a wrapper around the C record GRWLock.
 type RWLock struct {
 	native unsafe.Pointer
@@ -68,3 +78,9 @@ func (recv *RecMutex) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
+
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
+
+// Unsupported : g_variant_new_fixed_array : unsupported parameter elements : no type generator for gpointer (gconstpointer) for param elements

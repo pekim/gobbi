@@ -25,6 +25,8 @@ func (recv *Credentials) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_credentials_new : return type :
+
 // DBusAuthObserver is a wrapper around the C record GDBusAuthObserver.
 type DBusAuthObserver struct {
 	native unsafe.Pointer
@@ -44,6 +46,8 @@ func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_dbus_auth_observer_new : return type :
 
 // DBusConnection is a wrapper around the C record GDBusConnection.
 type DBusConnection struct {
@@ -65,6 +69,14 @@ func (recv *DBusConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_dbus_connection_new_finish : return type :
+
+// Unsupported : g_dbus_connection_new_for_address_finish : return type :
+
+// Unsupported : g_dbus_connection_new_for_address_sync : return type :
+
+// Unsupported : g_dbus_connection_new_sync : return type :
+
 // DBusMessage is a wrapper around the C record GDBusMessage.
 type DBusMessage struct {
 	native unsafe.Pointer
@@ -84,6 +96,14 @@ func (recv *DBusMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_dbus_message_new : return type :
+
+// Unsupported : g_dbus_message_new_from_blob : return type :
+
+// Unsupported : g_dbus_message_new_method_call : return type :
+
+// Unsupported : g_dbus_message_new_signal : return type :
 
 // DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
 type DBusMethodInvocation struct {
@@ -127,6 +147,14 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_dbus_proxy_new_finish : return type :
+
+// Unsupported : g_dbus_proxy_new_for_bus_finish : return type :
+
+// Unsupported : g_dbus_proxy_new_for_bus_sync : return type :
+
+// Unsupported : g_dbus_proxy_new_sync : return type :
+
 // DBusServer is a wrapper around the C record GDBusServer.
 type DBusServer struct {
 	native unsafe.Pointer
@@ -146,6 +174,8 @@ func (recv *DBusServer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_dbus_server_new_sync : return type :
 
 // ProxyAddress is a wrapper around the C record GProxyAddress.
 type ProxyAddress struct {
@@ -169,6 +199,18 @@ func (recv *ProxyAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_proxy_address_new : return type :
+
+// Unsupported : g_settings_new : return type :
+
+// Unsupported : g_settings_new_with_backend : return type :
+
+// Unsupported : g_settings_new_with_backend_and_path : return type :
+
+// Unsupported : g_settings_new_with_path : return type :
+
+// Unsupported : g_simple_permission_new : return type :
+
 // UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.
 type UnixCredentialsMessage struct {
 	native unsafe.Pointer
@@ -190,3 +232,9 @@ func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_unix_credentials_message_new : return type :
+
+// Unsupported : g_unix_credentials_message_new_with_credentials : return type :
+
+// Unsupported : g_unix_socket_address_new_with_type : return type :

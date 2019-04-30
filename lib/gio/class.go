@@ -29,6 +29,8 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_app_launch_context_new : return type :
+
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
 	native unsafe.Pointer
@@ -73,6 +75,10 @@ func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_buffered_input_stream_new : return type :
+
+// Unsupported : g_buffered_input_stream_new_sized : return type :
+
 // Seekable returns the Seekable interface implemented by BufferedInputStream
 func (recv *BufferedInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
@@ -99,6 +105,10 @@ func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_buffered_output_stream_new : return type :
+
+// Unsupported : g_buffered_output_stream_new_sized : return type :
 
 // Seekable returns the Seekable interface implemented by BufferedOutputStream
 func (recv *BufferedOutputStream) Seekable() *Seekable {
@@ -157,6 +167,8 @@ func (recv *Cancellable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_cancellable_new : return type :
+
 // CharsetConverter is a wrapper around the C record GCharsetConverter.
 type CharsetConverter struct {
 	native unsafe.Pointer
@@ -209,6 +221,8 @@ func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_converter_input_stream_new : return type :
+
 // PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
@@ -235,6 +249,8 @@ func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_converter_output_stream_new : return type :
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
 func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
@@ -313,6 +329,8 @@ func (recv *DataInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_data_input_stream_new : return type :
+
 // Seekable returns the Seekable interface implemented by DataInputStream
 func (recv *DataInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
@@ -340,6 +358,8 @@ func (recv *DataOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_data_output_stream_new : return type :
+
 // Seekable returns the Seekable interface implemented by DataOutputStream
 func (recv *DataOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
@@ -364,6 +384,10 @@ func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_desktop_app_info_new : return type :
+
+// Unsupported : g_desktop_app_info_new_from_filename : return type :
 
 // AppInfo returns the AppInfo interface implemented by DesktopAppInfo
 func (recv *DesktopAppInfo) AppInfo() *AppInfo {
@@ -491,6 +515,8 @@ func (recv *FileIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_file_icon_new : return type :
+
 // Icon returns the Icon interface implemented by FileIcon
 func (recv *FileIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
@@ -520,6 +546,8 @@ func (recv *FileInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_file_info_new : return type :
 
 // FileInputStream is a wrapper around the C record GFileInputStream.
 type FileInputStream struct {
@@ -617,6 +645,8 @@ func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_filename_completer_new : return type :
+
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
 	native unsafe.Pointer
@@ -680,6 +710,8 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_io_module_new : return type :
 
 // TypePlugin returns the TypePlugin interface implemented by IOModule
 func (recv *IOModule) TypePlugin() *gobject.TypePlugin {
@@ -826,6 +858,10 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_memory_input_stream_new : return type :
+
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
+
 // PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
 func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
@@ -858,6 +894,8 @@ func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_memory_output_stream_new : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+
 // PollableOutputStream returns the PollableOutputStream interface implemented by MemoryOutputStream
 func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
 	return PollableOutputStreamNewFromC(recv.ToC())
@@ -889,6 +927,8 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_mount_operation_new : return type :
 
 // NativeVolumeMonitor is a wrapper around the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
@@ -1142,6 +1182,12 @@ func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
 // AsyncResult returns the AsyncResult interface implemented by SimpleAsyncResult
 func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
 	return AsyncResultNewFromC(recv.ToC())
@@ -1330,6 +1376,12 @@ func (recv *ThemedIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_themed_icon_new : return type :
+
+// Unsupported : g_themed_icon_new_from_names : return type :
+
+// Unsupported : g_themed_icon_new_with_default_fallbacks : return type :
+
 // Icon returns the Icon interface implemented by ThemedIcon
 func (recv *ThemedIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
@@ -1423,6 +1475,8 @@ func (recv *UnixInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_unix_input_stream_new : return type :
+
 // FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixInputStream
 func (recv *UnixInputStream) FileDescriptorBased() *FileDescriptorBased {
 	return FileDescriptorBasedNewFromC(recv.ToC())
@@ -1453,6 +1507,8 @@ func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_unix_mount_monitor_new : return type :
+
 // UnixOutputStream is a wrapper around the C record GUnixOutputStream.
 type UnixOutputStream struct {
 	native unsafe.Pointer
@@ -1474,6 +1530,8 @@ func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_unix_output_stream_new : return type :
 
 // FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixOutputStream
 func (recv *UnixOutputStream) FileDescriptorBased() *FileDescriptorBased {
@@ -1506,6 +1564,8 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_unix_socket_address_new_abstract : return type :
 
 // SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress
 func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {

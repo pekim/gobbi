@@ -24,3 +24,5 @@ func (recv *Checksum) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_checksum_new : return type :

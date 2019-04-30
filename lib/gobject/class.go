@@ -46,6 +46,12 @@ func (recv *Object) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_object_new : unsupported parameter ... : varargs
+
+// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+
+// Unsupported : g_object_newv : unsupported parameter parameters :
+
 // ParamSpec is a wrapper around the C record GParamSpec.
 type ParamSpec struct {
 	native unsafe.Pointer

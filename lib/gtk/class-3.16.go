@@ -25,3 +25,11 @@ func (recv *GLArea) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_gl_area_new : return type :
+
+// Unsupported : gtk_model_button_new : return type :
+
+// Unsupported : gtk_popover_menu_new : return type :
+
+// Unsupported : gtk_stack_sidebar_new : return type :

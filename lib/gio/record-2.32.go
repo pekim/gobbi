@@ -97,6 +97,8 @@ func (recv *Resource) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_resource_new_from_data : return type :
+
 // SettingsSchema is a wrapper around the C record GSettingsSchema.
 type SettingsSchema struct {
 	native unsafe.Pointer
@@ -136,3 +138,5 @@ func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_settings_schema_source_new_from_directory : return type :

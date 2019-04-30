@@ -195,6 +195,8 @@ func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_dbus_node_info_new_for_xml : return type :
+
 // DBusPropertyInfo is a wrapper around the C record GDBusPropertyInfo.
 type DBusPropertyInfo struct {
 	native    unsafe.Pointer

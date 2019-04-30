@@ -853,6 +853,8 @@ func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_file_attribute_info_list_new : return type :
+
 // FileAttributeMatcher is a wrapper around the C record GFileAttributeMatcher.
 type FileAttributeMatcher struct {
 	native unsafe.Pointer
@@ -872,6 +874,8 @@ func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_file_attribute_matcher_new : return type :
 
 // FileDescriptorBasedIface is a wrapper around the C record GFileDescriptorBasedIface.
 type FileDescriptorBasedIface struct {

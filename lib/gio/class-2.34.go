@@ -5,6 +5,10 @@ package gio
 
 import "unsafe"
 
+// Unsupported : g_memory_input_stream_new_from_bytes : return type :
+
+// Unsupported : g_menu_item_new_from_model : return type :
+
 // TestDBus is a wrapper around the C record GTestDBus.
 type TestDBus struct {
 	native unsafe.Pointer
@@ -24,3 +28,5 @@ func (recv *TestDBus) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_test_dbus_new : return type :

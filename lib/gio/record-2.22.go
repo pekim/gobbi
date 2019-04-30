@@ -93,3 +93,5 @@ func (recv *OutputVector) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_srv_target_new : return type :

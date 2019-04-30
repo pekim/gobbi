@@ -25,6 +25,8 @@ func (recv *FileChooserNative) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_file_chooser_native_new : return type :
+
 // NativeDialog is a wrapper around the C record GtkNativeDialog.
 type NativeDialog struct {
 	native unsafe.Pointer

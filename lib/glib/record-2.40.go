@@ -24,3 +24,5 @@ func (recv *VariantDict) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_variant_dict_new : return type :

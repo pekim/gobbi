@@ -24,6 +24,8 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : pango_context_new : return type :
+
 // Blacklisted : PangoEngine
 
 // EngineLang is a wrapper around the C record PangoEngineLang.
@@ -194,3 +196,5 @@ func (recv *Layout) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : pango_layout_new : return type :
