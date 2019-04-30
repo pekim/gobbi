@@ -3,30 +3,8 @@
 
 package gio
 
-import "unsafe"
-
 // Unsupported : g_list_store_new : return type :
 
 // Unsupported : g_network_address_new_loopback : return type :
-
-// SimpleIOStream is a wrapper around the C record GSimpleIOStream.
-type SimpleIOStream struct {
-	native unsafe.Pointer
-}
-
-func SimpleIOStreamNewFromC(u unsafe.Pointer) *SimpleIOStream {
-	if u == nil {
-		return nil
-	}
-
-	g := &SimpleIOStream{native: u}
-
-	return g
-}
-
-func (recv *SimpleIOStream) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Unsupported : g_simple_io_stream_new : return type :

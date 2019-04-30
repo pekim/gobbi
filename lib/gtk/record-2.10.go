@@ -3,56 +3,8 @@
 
 package gtk
 
-import "unsafe"
-
 // Unsupported : gtk_paper_size_new : return type :
 
 // Unsupported : gtk_paper_size_new_custom : return type :
 
 // Unsupported : gtk_paper_size_new_from_ppd : return type :
-
-// RecentInfo is a wrapper around the C record GtkRecentInfo.
-type RecentInfo struct {
-	native unsafe.Pointer
-}
-
-func RecentInfoNewFromC(u unsafe.Pointer) *RecentInfo {
-	if u == nil {
-		return nil
-	}
-
-	g := &RecentInfo{native: u}
-
-	return g
-}
-
-func (recv *RecentInfo) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// RecentManagerClass is a wrapper around the C record GtkRecentManagerClass.
-type RecentManagerClass struct {
-	native unsafe.Pointer
-	// Private : parent_class
-	// no type for changed
-	// no type for _gtk_recent1
-	// no type for _gtk_recent2
-	// no type for _gtk_recent3
-	// no type for _gtk_recent4
-}
-
-func RecentManagerClassNewFromC(u unsafe.Pointer) *RecentManagerClass {
-	if u == nil {
-		return nil
-	}
-
-	g := &RecentManagerClass{native: u}
-
-	return g
-}
-
-func (recv *RecentManagerClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}

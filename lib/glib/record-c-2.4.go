@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,29 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
+
+// Once is a wrapper around the C record GOnce.
+type Once struct {
+	native *C.GOnce
+	Status OnceStatus
+	// retval : no type generator for gpointer, volatile gpointer
+}
+
+func OnceNewFromC(u unsafe.Pointer) *Once {
+	c := (*C.GOnce)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Once{
+		Status: (OnceStatus)(c.status),
+		native: c,
+	}
+
+	return g
+}
+
+func (recv *Once) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

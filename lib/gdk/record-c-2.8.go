@@ -3,9 +3,44 @@
 
 package gdk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+// EventGrabBroken is a wrapper around the C record GdkEventGrabBroken.
+type EventGrabBroken struct {
+	native *C.GdkEventGrabBroken
+	Type   EventType
+	// window : record
+	SendEvent int8
+	Keyboard  bool
+	Implicit  bool
+	// grab_window : record
+}
+
+func EventGrabBrokenNewFromC(u unsafe.Pointer) *EventGrabBroken {
+	c := (*C.GdkEventGrabBroken)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &EventGrabBroken{
+		Implicit:  c.implicit == C.TRUE,
+		Keyboard:  c.keyboard == C.TRUE,
+		SendEvent: (int8)(c.send_event),
+		Type:      (EventType)(c._type),
+		native:    c,
+	}
+
+	return g
+}
+
+func (recv *EventGrabBroken) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

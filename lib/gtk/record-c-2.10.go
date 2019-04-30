@@ -3,6 +3,8 @@
 
 package gtk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,51 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
+
+// RecentInfo is a wrapper around the C record GtkRecentInfo.
+type RecentInfo struct {
+	native *C.GtkRecentInfo
+}
+
+func RecentInfoNewFromC(u unsafe.Pointer) *RecentInfo {
+	c := (*C.GtkRecentInfo)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &RecentInfo{native: c}
+
+	return g
+}
+
+func (recv *RecentInfo) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// RecentManagerClass is a wrapper around the C record GtkRecentManagerClass.
+type RecentManagerClass struct {
+	native *C.GtkRecentManagerClass
+	// Private : parent_class
+	// no type for changed
+	// no type for _gtk_recent1
+	// no type for _gtk_recent2
+	// no type for _gtk_recent3
+	// no type for _gtk_recent4
+}
+
+func RecentManagerClassNewFromC(u unsafe.Pointer) *RecentManagerClass {
+	c := (*C.GtkRecentManagerClass)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &RecentManagerClass{native: c}
+
+	return g
+}
+
+func (recv *RecentManagerClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

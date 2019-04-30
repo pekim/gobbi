@@ -3,94 +3,12 @@
 
 package gio
 
-import "unsafe"
-
-// AppInfoMonitor is a wrapper around the C record GAppInfoMonitor.
-type AppInfoMonitor struct {
-	native unsafe.Pointer
-}
-
-func AppInfoMonitorNewFromC(u unsafe.Pointer) *AppInfoMonitor {
-	if u == nil {
-		return nil
-	}
-
-	g := &AppInfoMonitor{native: u}
-
-	return g
-}
-
-func (recv *AppInfoMonitor) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Unsupported : g_inet_socket_address_new_from_string : return type :
 
-// Notification is a wrapper around the C record GNotification.
-type Notification struct {
-	native unsafe.Pointer
-}
-
-func NotificationNewFromC(u unsafe.Pointer) *Notification {
-	if u == nil {
-		return nil
-	}
-
-	g := &Notification{native: u}
-
-	return g
-}
-
-func (recv *Notification) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Unsupported : g_notification_new : return type :
-
-// Subprocess is a wrapper around the C record GSubprocess.
-type Subprocess struct {
-	native unsafe.Pointer
-}
-
-func SubprocessNewFromC(u unsafe.Pointer) *Subprocess {
-	if u == nil {
-		return nil
-	}
-
-	g := &Subprocess{native: u}
-
-	return g
-}
-
-func (recv *Subprocess) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Unsupported : g_subprocess_new : unsupported parameter ... : varargs
 
 // Unsupported : g_subprocess_newv : return type :
-
-// SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
-type SubprocessLauncher struct {
-	native unsafe.Pointer
-}
-
-func SubprocessLauncherNewFromC(u unsafe.Pointer) *SubprocessLauncher {
-	if u == nil {
-		return nil
-	}
-
-	g := &SubprocessLauncher{native: u}
-
-	return g
-}
-
-func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Unsupported : g_subprocess_launcher_new : return type :

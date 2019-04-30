@@ -3,26 +3,4 @@
 
 package glib
 
-import "unsafe"
-
-// VariantDict is a wrapper around the C record GVariantDict.
-type VariantDict struct {
-	native unsafe.Pointer
-}
-
-func VariantDictNewFromC(u unsafe.Pointer) *VariantDict {
-	if u == nil {
-		return nil
-	}
-
-	g := &VariantDict{native: u}
-
-	return g
-}
-
-func (recv *VariantDict) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Unsupported : g_variant_dict_new : return type :

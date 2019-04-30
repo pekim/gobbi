@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,45 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
+
+// DateTime is a wrapper around the C record GDateTime.
+type DateTime struct {
+	native *C.GDateTime
+}
+
+func DateTimeNewFromC(u unsafe.Pointer) *DateTime {
+	c := (*C.GDateTime)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &DateTime{native: c}
+
+	return g
+}
+
+func (recv *DateTime) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// TimeZone is a wrapper around the C record GTimeZone.
+type TimeZone struct {
+	native *C.GTimeZone
+}
+
+func TimeZoneNewFromC(u unsafe.Pointer) *TimeZone {
+	c := (*C.GTimeZone)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &TimeZone{native: c}
+
+	return g
+}
+
+func (recv *TimeZone) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

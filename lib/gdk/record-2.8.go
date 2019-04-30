@@ -2,31 +2,3 @@
 // +build gdk_2.8 gdk_2.10 gdk_2.12 gdk_2.14 gdk_2.16 gdk_2.18 gdk_2.20 gdk_2.22 gdk_2.24 gdk_3.0 gdk_3.4 gdk_3.8 gdk_3.10 gdk_3.12 gdk_3.14 gdk_3.16 gdk_3.18 gdk_3.20 gdk_3.22
 
 package gdk
-
-import "unsafe"
-
-// EventGrabBroken is a wrapper around the C record GdkEventGrabBroken.
-type EventGrabBroken struct {
-	native unsafe.Pointer
-	Type   EventType
-	// window : record
-	SendEvent int8
-	Keyboard  bool
-	Implicit  bool
-	// grab_window : record
-}
-
-func EventGrabBrokenNewFromC(u unsafe.Pointer) *EventGrabBroken {
-	if u == nil {
-		return nil
-	}
-
-	g := &EventGrabBroken{native: u}
-
-	return g
-}
-
-func (recv *EventGrabBroken) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}

@@ -3,26 +3,4 @@
 
 package glib
 
-import "unsafe"
-
-// Checksum is a wrapper around the C record GChecksum.
-type Checksum struct {
-	native unsafe.Pointer
-}
-
-func ChecksumNewFromC(u unsafe.Pointer) *Checksum {
-	if u == nil {
-		return nil
-	}
-
-	g := &Checksum{native: u}
-
-	return g
-}
-
-func (recv *Checksum) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Unsupported : g_checksum_new : return type :

@@ -73,9 +73,9 @@ func (r *Record) mergeAddenda(addenda *Record) {
 
 func (r *Record) generate(g *jen.Group, version *Version) {
 	if supportedByVersion(r, version) {
-		r.generateType(g)
-		(&RecordNewFromCFunc{r}).generate(g)
-		(&RecordToCFunc{r}).generate(g)
+		//r.generateType(g)
+		//(&RecordNewFromCFunc{r}).generate(g)
+		//(&RecordToCFunc{r}).generate(g)
 		//(&RecordEqualFunc{r}).generate(g)
 		//r.generateUpcasts(g)
 		//r.generateDowncast(g)
@@ -98,7 +98,8 @@ func (r *Record) generateType(g *jen.Group) {
 		StructFunc(func(g *jen.Group) {
 			g.
 				Id("native").
-				Qual("unsafe", "Pointer")
+				Op("*").
+				Qual("C", r.CType)
 
 			if r.FieldsPrivate {
 				g.Comment("All fields are private")
@@ -145,4 +146,12 @@ func (r *Record) isDerivedFrom(goPackageName, goTypeName string) bool {
 }
 
 func (r *Record) generateC(g *jen.Group, version *Version) {
+	if supportedByVersion(r, version) {
+		r.generateType(g)
+		(&RecordNewFromCFunc{r}).generate(g)
+		(&RecordToCFunc{r}).generate(g)
+		//(&RecordEqualFunc{r}).generate(g)
+		//r.generateUpcasts(g)
+		//r.generateDowncast(g)
+	}
 }

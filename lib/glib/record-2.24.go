@@ -3,28 +3,6 @@
 
 package glib
 
-import "unsafe"
-
-// Variant is a wrapper around the C record GVariant.
-type Variant struct {
-	native unsafe.Pointer
-}
-
-func VariantNewFromC(u unsafe.Pointer) *Variant {
-	if u == nil {
-		return nil
-	}
-
-	g := &Variant{native: u}
-
-	return g
-}
-
-func (recv *Variant) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Unsupported : g_variant_new : return type :
 
 // Unsupported : g_variant_new_array : unsupported parameter children :

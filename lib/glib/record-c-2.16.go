@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,24 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
+
+// Checksum is a wrapper around the C record GChecksum.
+type Checksum struct {
+	native *C.GChecksum
+}
+
+func ChecksumNewFromC(u unsafe.Pointer) *Checksum {
+	c := (*C.GChecksum)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Checksum{native: c}
+
+	return g
+}
+
+func (recv *Checksum) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

@@ -3,8 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
 // Unsupported : gtk_assistant_new : return type :
 
 // Unsupported : gtk_cell_renderer_accel_new : return type :
@@ -34,28 +32,6 @@ import "unsafe"
 // Unsupported : gtk_recent_chooser_widget_new_for_manager : return type :
 
 // Unsupported : gtk_recent_filter_new : return type :
-
-// RecentManager is a wrapper around the C record GtkRecentManager.
-type RecentManager struct {
-	native unsafe.Pointer
-	// Private : parent_instance
-	// Private : priv
-}
-
-func RecentManagerNewFromC(u unsafe.Pointer) *RecentManager {
-	if u == nil {
-		return nil
-	}
-
-	g := &RecentManager{native: u}
-
-	return g
-}
-
-func (recv *RecentManager) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Unsupported : gtk_recent_manager_new : return type :
 

@@ -3,6 +3,8 @@
 
 package gtk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,27 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
+
+// ActivatableIface is a wrapper around the C record GtkActivatableIface.
+type ActivatableIface struct {
+	native *C.GtkActivatableIface
+	// Private : g_iface
+	// no type for update
+	// no type for sync_action_properties
+}
+
+func ActivatableIfaceNewFromC(u unsafe.Pointer) *ActivatableIface {
+	c := (*C.GtkActivatableIface)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &ActivatableIface{native: c}
+
+	return g
+}
+
+func (recv *ActivatableIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

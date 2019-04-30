@@ -3,6 +3,8 @@
 
 package gtk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,24 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
+
+// CssSection is a wrapper around the C record GtkCssSection.
+type CssSection struct {
+	native *C.GtkCssSection
+}
+
+func CssSectionNewFromC(u unsafe.Pointer) *CssSection {
+	c := (*C.GtkCssSection)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &CssSection{native: c}
+
+	return g
+}
+
+func (recv *CssSection) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

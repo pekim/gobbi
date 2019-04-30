@@ -3,29 +3,6 @@
 
 package gtk
 
-import "unsafe"
-
-// GLArea is a wrapper around the C record GtkGLArea.
-type GLArea struct {
-	native unsafe.Pointer
-	// Private : parent_instance
-}
-
-func GLAreaNewFromC(u unsafe.Pointer) *GLArea {
-	if u == nil {
-		return nil
-	}
-
-	g := &GLArea{native: u}
-
-	return g
-}
-
-func (recv *GLArea) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Unsupported : gtk_gl_area_new : return type :
 
 // Unsupported : gtk_model_button_new : return type :

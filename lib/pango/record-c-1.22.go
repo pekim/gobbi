@@ -3,9 +3,49 @@
 
 package pango
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
+
+// GlyphItemIter is a wrapper around the C record PangoGlyphItemIter.
+type GlyphItemIter struct {
+	native *C.PangoGlyphItemIter
+	// glyph_item : record
+	Text       string
+	StartGlyph int32
+	StartIndex int32
+	StartChar  int32
+	EndGlyph   int32
+	EndIndex   int32
+	EndChar    int32
+}
+
+func GlyphItemIterNewFromC(u unsafe.Pointer) *GlyphItemIter {
+	c := (*C.PangoGlyphItemIter)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &GlyphItemIter{
+		EndChar:    (int32)(c.end_char),
+		EndGlyph:   (int32)(c.end_glyph),
+		EndIndex:   (int32)(c.end_index),
+		StartChar:  (int32)(c.start_char),
+		StartGlyph: (int32)(c.start_glyph),
+		StartIndex: (int32)(c.start_index),
+		Text:       C.GoString(c.text),
+		native:     c,
+	}
+
+	return g
+}
+
+func (recv *GlyphItemIter) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

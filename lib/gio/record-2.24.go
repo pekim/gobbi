@@ -2,28 +2,3 @@
 // +build gio_2.24 gio_2.26 gio_2.28 gio_2.30 gio_2.32 gio_2.34 gio_2.36 gio_2.38 gio_2.40 gio_2.42 gio_2.44 gio_2.46 gio_2.48 gio_2.50 gio_2.52 gio_2.54 gio_2.56
 
 package gio
-
-import "unsafe"
-
-// ConverterIface is a wrapper around the C record GConverterIface.
-type ConverterIface struct {
-	native unsafe.Pointer
-	// g_iface : record
-	// no type for convert
-	// no type for reset
-}
-
-func ConverterIfaceNewFromC(u unsafe.Pointer) *ConverterIface {
-	if u == nil {
-		return nil
-	}
-
-	g := &ConverterIface{native: u}
-
-	return g
-}
-
-func (recv *ConverterIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
