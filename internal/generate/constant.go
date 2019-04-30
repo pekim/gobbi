@@ -78,3 +78,4 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Op("=").
 		Qual("C", c.CType)
 }
+func (c *Constant) generateC(g *jen.Group, version *Version) {}

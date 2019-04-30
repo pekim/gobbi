@@ -82,3 +82,5 @@ func (e *Enumeration) generate(g *jen.Group, version *Version) {
 
 	e.Functions.generate(g, version)
 }
+
+func (e *Enumeration) generateC(g *jen.Group, version *Version) {}

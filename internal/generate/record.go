@@ -144,3 +144,6 @@ func (r *Record) isDerivedFrom(goPackageName, goTypeName string) bool {
 		rec = parent
 	}
 }
+
+func (r *Record) generateC(g *jen.Group, version *Version) {
+}

@@ -62,3 +62,5 @@ func (a *Alias) generate(g *jen.Group, version *Version) {
 
 	g.Line()
 }
+
+func (a *Alias) generateC(g *jen.Group, version *Version) {}

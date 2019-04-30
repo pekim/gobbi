@@ -378,3 +378,5 @@ func (f *Function) generateThrowableCallArgument(g *jen.Group) {
 
 	f.throwableErrorType.generator.generateParamOutCallArgument(g, f.throwableErrorCVarName)
 }
+
+func (f *Function) generateC(g *jen.Group, version *Version) {}
