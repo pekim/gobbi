@@ -41,7 +41,12 @@ docs () {
 }
 
 test () {
-    go test -tags "$tags" github.com/pekim/gobbi/internal/test/...
+    flags=""
+    if (( $# > 0 )); then
+        flags=$1
+    fi
+
+    go test -tags "$tags" $flags github.com/pekim/gobbi/internal/test/...
 }
 
 examples () {
@@ -85,7 +90,7 @@ processSubcommand () {
       generate
       ;;
     test)
-      test
+      test $@
       ;;
     examples)
       examples
