@@ -11,3 +11,5 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : GRegex

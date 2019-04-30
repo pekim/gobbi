@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -19,3 +21,27 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
+
+// ConverterIface is a wrapper around the C record GConverterIface.
+type ConverterIface struct {
+	native *C.GConverterIface
+	// g_iface : record
+	// no type for convert
+	// no type for reset
+}
+
+func ConverterIfaceNewFromC(u unsafe.Pointer) *ConverterIface {
+	c := (*C.GConverterIface)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &ConverterIface{native: c}
+
+	return g
+}
+
+func (recv *ConverterIface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,24 @@ package glib
 // #include <glib-unix.h>
 // #include <stdlib.h>
 import "C"
+
+// Hmac is a wrapper around the C record GHmac.
+type Hmac struct {
+	native *C.GHmac
+}
+
+func HmacNewFromC(u unsafe.Pointer) *Hmac {
+	c := (*C.GHmac)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Hmac{native: c}
+
+	return g
+}
+
+func (recv *Hmac) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}

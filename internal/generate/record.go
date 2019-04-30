@@ -146,4 +146,12 @@ func (r *Record) isDerivedFrom(goPackageName, goTypeName string) bool {
 }
 
 func (r *Record) generateC(g *jen.Group, version *Version) {
+	if supportedByVersion(r, version) {
+		r.generateType(g)
+		(&RecordNewFromCFunc{r}).generate(g)
+		(&RecordToCFunc{r}).generate(g)
+		//(&RecordEqualFunc{r}).generate(g)
+		//r.generateUpcasts(g)
+		//r.generateDowncast(g)
+	}
 }
