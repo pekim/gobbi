@@ -82,3 +82,4 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Op("=").
 		Lit(c.goLiteralValue)
 }
+func (c *Constant) generateC(g *jen.Group, version *Version) {}

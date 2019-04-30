@@ -60,3 +60,7 @@ func (cc Classes) mergeAddenda(addenda Classes) {
 }
 
 func (cc Classes) generateDocs(ns *Namespace, typeName string) {}
+
+func (cc Classes) generatesC() bool {
+	return false
+}

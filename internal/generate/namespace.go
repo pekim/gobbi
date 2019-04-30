@@ -91,7 +91,7 @@ func (ns *Namespace) generate() {
 
 	ns.generateLibDir()
 
-	//ns.generatePackageFile()
+	ns.generatePackageFile()
 	//ns.generateTemplatedFiles()
 
 	//ns.generateBooleanFile()

@@ -70,3 +70,9 @@ func (ii Interfaces) mergeAddenda(addenda Interfaces) {
 }
 
 func (ii Interfaces) generateDocs(ns *Namespace, typeName string) {}
+
+func (ii Interfaces) generatesC() bool {
+	return false
+}
+
+func (ii Interfaces) generateC(g *jen.Group, version *Version) {}

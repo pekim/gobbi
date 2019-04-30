@@ -59,3 +59,7 @@ func (ff Functions) generate(g *jen.Group, version *Version) {
 }
 
 func (ff Functions) generateDocs(ns *Namespace, typeName string) {}
+
+func (ff Functions) generatesC() bool {
+	return false
+}

@@ -47,3 +47,7 @@ func (ee Enumerations) mergeAddenda(addenda Enumerations) {
 		}
 	}
 }
+
+func (ee Enumerations) generatesC() bool {
+	return false
+}
