@@ -80,23 +80,23 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
 	file.CgoPreamble("#include <stdlib.h>")
 }
 
-//func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
-//	// file for non version-specific entities
-//	//if generatables.generatesC() {
-//	//	ns.generateEntityVersionedFileC(typeName+"-c", Version{}, generatables)
-//	//}
-//	ns.generateEntityVersionedFile(typeName, Version{}, generatables)
-//
-//	// files for version-specific entities
-//	versions := ns.getCollectionVersions(generatables)
-//	for _, version := range versions {
-//		//if generatables.generatesC() {
-//		//	ns.generateEntityVersionedFileC(typeName+"-c-"+version.value, version, generatables)
-//		//}
-//
-//		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
-//	}
-//}
+func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
+	// file for non version-specific entities
+	//if generatables.generatesC() {
+	//	ns.generateEntityVersionedFileC(typeName+"-c", Version{}, generatables)
+	//}
+	ns.generateEntityVersionedFile(typeName, Version{}, generatables)
+
+	// files for version-specific entities
+	versions := ns.getCollectionVersions(generatables)
+	for _, version := range versions {
+		//if generatables.generatesC() {
+		//	ns.generateEntityVersionedFileC(typeName+"-c-"+version.value, version, generatables)
+		//}
+
+		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
+	}
+}
 
 func (ns *Namespace) generateEntityVersionedFileC(filename string, version Version,
 	generatablesCollections []Generatables) {
@@ -138,86 +138,43 @@ func (ns *Namespace) generateEntityVersionedFileC(filename string, version Versi
 	})
 }
 
-func (ns *Namespace) generateEntityVersionedFile(filename string, version Version,
-	generatablesCollections []Generatables) {
-
-	if !ns.someGeneratablesSupportVersion2(version, generatablesCollections) {
+// generateEntityVersionedFile generates a file for Generatables that
+// meet the version criterion.
+func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
+	if !ns.someGeneratablesSupportVersion(version, generatables) {
 		return
 	}
 
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
-		ns.cgoPreambleHeaders(f, version)
+		//ns.cgoPreambleHeaders(f, version)
 		ns.generateVersionDebugFunction(f, version.value)
 
-		for _, generatables := range generatablesCollections {
-			ns.buildConstraintsForVersion(f, version)
-			ns.generateVersionDebugFunction(f, version.value)
-
-			for _, entity := range generatables.entities() {
-				if supported, reason := entity.supported(); !supported {
-					if !supportedByVersion(entity, &version) {
-						continue
-					}
-
-					f.Commentf("Unsupported : %s", reason)
-					f.Line()
+		for _, entity := range generatables.entities() {
+			if supported, reason := entity.supported(); !supported {
+				if !supportedByVersion(entity, &version) {
 					continue
 				}
 
-				if blacklisted, detail := entity.blacklisted(); blacklisted {
-					if !supportedByVersion(entity, &version) {
-						continue
-					}
-
-					f.Commentf("Blacklisted : %s", detail)
-					f.Line()
-					continue
-				}
-
-				entity.generate(f.Group, &version)
+				f.Commentf("Unsupported : %s", reason)
+				f.Line()
+				continue
 			}
+
+			if blacklisted, detail := entity.blacklisted(); blacklisted {
+				if !supportedByVersion(entity, &version) {
+					continue
+				}
+
+				f.Commentf("Blacklisted : %s", detail)
+				f.Line()
+				continue
+			}
+
+			entity.generate(f.Group, &version)
 		}
 	})
 }
-
-// generateEntityVersionedFile generates a file for Generatables that
-// meet the version criterion.
-//func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
-//	if !ns.someGeneratablesSupportVersion(version, generatables) {
-//		return
-//	}
-//
-//	ns.generateFile(filename, func(f *jen.File) {
-//		ns.buildConstraintsForVersion(f, version)
-//		//ns.cgoPreambleHeaders(f, version)
-//		ns.generateVersionDebugFunction(f, version.value)
-//
-//		for _, entity := range generatables.entities() {
-//			if supported, reason := entity.supported(); !supported {
-//				if !supportedByVersion(entity, &version) {
-//					continue
-//				}
-//
-//				f.Commentf("Unsupported : %s", reason)
-//				f.Line()
-//				continue
-//			}
-//
-//			if blacklisted, detail := entity.blacklisted(); blacklisted {
-//				if !supportedByVersion(entity, &version) {
-//					continue
-//				}
-//
-//				f.Commentf("Blacklisted : %s", detail)
-//				f.Line()
-//				continue
-//			}
-//
-//			entity.generate(f.Group, &version)
-//		}
-//	})
-//}
 
 func (ns *Namespace) someGeneratablesSupportVersion(version Version, generatables Generatables) bool {
 	for _, entity := range generatables.entities() {
