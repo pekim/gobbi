@@ -84,54 +84,53 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
 
 func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
 	// file for non version-specific entities
-	if generatables.generatesC() {
-		ns.generateEntityVersionedFileC(typeName+"-c", Version{}, generatables)
-	}
+	//if generatables.generatesC() {
+	//	ns.generateEntityVersionedFileC(typeName+"-c", Version{}, generatables)
+	//}
 	ns.generateEntityVersionedFile(typeName, Version{}, generatables)
 
 	// files for version-specific entities
 	versions := ns.getCollectionVersions(generatables)
 	for _, version := range versions {
-		if generatables.generatesC() {
-			ns.generateEntityVersionedFileC(typeName+"-c-"+version.value, version, generatables)
-		}
+		//if generatables.generatesC() {
+		//	ns.generateEntityVersionedFileC(typeName+"-c-"+version.value, version, generatables)
+		//}
 
 		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
 	}
 }
 
-func (ns *Namespace) generateEntityVersionedFileC(filename string, version Version, generatables Generatables) {
-	if !ns.someGeneratablesSupportVersion(version, generatables) {
-		return
-	}
-
+func (ns *Namespace) generateEntityVersionedFileC(filename string, version Version,
+	generatablesCollections []Generatables) {
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f, version)
 		ns.generateVersionDebugFunction(f, version.value)
 
-		for _, entity := range generatables.entities() {
-			if supported, reason := entity.supported(); !supported {
-				if !supportedByVersion(entity, &version) {
+		for _, generatables := range generatablesCollections {
+			for _, entity := range generatables.entities() {
+				if supported, reason := entity.supported(); !supported {
+					if !supportedByVersion(entity, &version) {
+						continue
+					}
+
+					f.Commentf("Unsupported : %s", reason)
+					f.Line()
 					continue
 				}
 
-				f.Commentf("Unsupported : %s", reason)
-				f.Line()
-				continue
-			}
+				if blacklisted, detail := entity.blacklisted(); blacklisted {
+					if !supportedByVersion(entity, &version) {
+						continue
+					}
 
-			if blacklisted, detail := entity.blacklisted(); blacklisted {
-				if !supportedByVersion(entity, &version) {
+					f.Commentf("Blacklisted : %s", detail)
+					f.Line()
 					continue
 				}
 
-				f.Commentf("Blacklisted : %s", detail)
-				f.Line()
-				continue
+				entity.generateC(f.Group, &version)
 			}
-
-			entity.generateC(f.Group, &version)
 		}
 	})
 }

@@ -93,6 +93,30 @@ func (ns *Namespace) generate() {
 	ns.generateTemplatedFiles()
 
 	ns.generateBooleanFile()
+	//ns.generateEntityVersionedFileC("c", Version{})
+
+	allGeneratablesCollections := []Generatables{
+		ns.Aliases,
+		ns.Bitfields,
+		ns.Classes,
+		ns.Constants,
+		ns.Enumerations,
+		ns.Functions,
+		ns.Interfaces,
+		ns.Records,
+	}
+	allVersions := Versions{Version{}}
+	for _, generatables := range allGeneratablesCollections {
+		allVersions = append(allVersions, generatables.versionList()...)
+	}
+	allVersions = allVersions.dedupe()
+	allVersions.sort()
+
+	for _, version := range allVersions {
+		ns.generateEntityVersionedFileC("cgo-"+version.value, version, allGeneratablesCollections)
+	}
+
+	//ns.generateBooleanFile()
 	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)
 	ns.generateGeneratables("class", ns.Classes)
