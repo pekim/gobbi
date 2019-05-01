@@ -100,6 +100,11 @@ func (ns *Namespace) generateGeneratables(typeName string, generatables Generata
 
 func (ns *Namespace) generateEntityVersionedFileC(filename string, version Version,
 	generatablesCollections []Generatables) {
+
+	if !ns.someGeneratablesSupportVersion2(version, generatablesCollections) {
+		return
+	}
+
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f, version)
@@ -177,6 +182,20 @@ func (ns *Namespace) someGeneratablesSupportVersion(version Version, generatable
 
 		if supportedByVersion(entity, &version) && !blacklisted {
 			return true
+		}
+	}
+
+	return false
+}
+
+func (ns *Namespace) someGeneratablesSupportVersion2(version Version, generatablesCollections []Generatables) bool {
+	for _, generatables := range generatablesCollections {
+		for _, entity := range generatables.entities() {
+			blacklisted, _ := entity.blacklisted()
+
+			if supportedByVersion(entity, &version) && !blacklisted {
+				return true
+			}
 		}
 	}
 
