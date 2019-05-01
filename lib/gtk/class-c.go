@@ -5618,6 +5618,12 @@ func RcStyleNewFromC(u unsafe.Pointer) *RcStyle {
 }
 
 func (recv *RcStyle) ToC() unsafe.Pointer {
+	recv.native.name =
+		C.CString(recv.Name)
+	recv.native.xthickness =
+		(C.gint)(recv.Xthickness)
+	recv.native.ythickness =
+		(C.gint)(recv.Ythickness)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -6692,6 +6698,10 @@ func StyleNewFromC(u unsafe.Pointer) *Style {
 }
 
 func (recv *Style) ToC() unsafe.Pointer {
+	recv.native.xthickness =
+		(C.gint)(recv.Xthickness)
+	recv.native.ythickness =
+		(C.gint)(recv.Ythickness)
 
 	return (unsafe.Pointer)(recv.native)
 }

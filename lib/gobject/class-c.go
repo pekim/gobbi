@@ -101,6 +101,14 @@ func ParamSpecNewFromC(u unsafe.Pointer) *ParamSpec {
 }
 
 func (recv *ParamSpec) ToC() unsafe.Pointer {
+	recv.native.name =
+		C.CString(recv.Name)
+	recv.native.flags =
+		(C.GParamFlags)(recv.Flags)
+	recv.native.value_type =
+		(C.GType)(recv.ValueType)
+	recv.native.owner_type =
+		(C.GType)(recv.OwnerType)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -127,6 +135,8 @@ func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
 }
 
 func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
+	recv.native.default_value =
+		boolToGboolean(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -179,6 +189,12 @@ func ParamSpecCharNewFromC(u unsafe.Pointer) *ParamSpecChar {
 }
 
 func (recv *ParamSpecChar) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.gint8)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint8)(recv.Maximum)
+	recv.native.default_value =
+		(C.gint8)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -211,6 +227,14 @@ func ParamSpecDoubleNewFromC(u unsafe.Pointer) *ParamSpecDouble {
 }
 
 func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.gdouble)(recv.Minimum)
+	recv.native.maximum =
+		(C.gdouble)(recv.Maximum)
+	recv.native.default_value =
+		(C.gdouble)(recv.DefaultValue)
+	recv.native.epsilon =
+		(C.gdouble)(recv.Epsilon)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -238,6 +262,8 @@ func ParamSpecEnumNewFromC(u unsafe.Pointer) *ParamSpecEnum {
 }
 
 func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
+	recv.native.default_value =
+		(C.gint)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -265,6 +291,8 @@ func ParamSpecFlagsNewFromC(u unsafe.Pointer) *ParamSpecFlags {
 }
 
 func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
+	recv.native.default_value =
+		(C.guint)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -297,6 +325,14 @@ func ParamSpecFloatNewFromC(u unsafe.Pointer) *ParamSpecFloat {
 }
 
 func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.gfloat)(recv.Minimum)
+	recv.native.maximum =
+		(C.gfloat)(recv.Maximum)
+	recv.native.default_value =
+		(C.gfloat)(recv.DefaultValue)
+	recv.native.epsilon =
+		(C.gfloat)(recv.Epsilon)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -327,6 +363,12 @@ func ParamSpecIntNewFromC(u unsafe.Pointer) *ParamSpecInt {
 }
 
 func (recv *ParamSpecInt) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.gint)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint)(recv.Maximum)
+	recv.native.default_value =
+		(C.gint)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -357,6 +399,12 @@ func ParamSpecInt64NewFromC(u unsafe.Pointer) *ParamSpecInt64 {
 }
 
 func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.gint64)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint64)(recv.Maximum)
+	recv.native.default_value =
+		(C.gint64)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -387,6 +435,12 @@ func ParamSpecLongNewFromC(u unsafe.Pointer) *ParamSpecLong {
 }
 
 func (recv *ParamSpecLong) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.glong)(recv.Minimum)
+	recv.native.maximum =
+		(C.glong)(recv.Maximum)
+	recv.native.default_value =
+		(C.glong)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -487,6 +541,14 @@ func ParamSpecStringNewFromC(u unsafe.Pointer) *ParamSpecString {
 }
 
 func (recv *ParamSpecString) ToC() unsafe.Pointer {
+	recv.native.default_value =
+		C.CString(recv.DefaultValue)
+	recv.native.cset_first =
+		C.CString(recv.CsetFirst)
+	recv.native.cset_nth =
+		C.CString(recv.CsetNth)
+	recv.native.substitutor =
+		(C.gchar)(recv.Substitutor)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -517,6 +579,12 @@ func ParamSpecUCharNewFromC(u unsafe.Pointer) *ParamSpecUChar {
 }
 
 func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.guint8)(recv.Minimum)
+	recv.native.maximum =
+		(C.guint8)(recv.Maximum)
+	recv.native.default_value =
+		(C.guint8)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -547,6 +615,12 @@ func ParamSpecUIntNewFromC(u unsafe.Pointer) *ParamSpecUInt {
 }
 
 func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.guint)(recv.Minimum)
+	recv.native.maximum =
+		(C.guint)(recv.Maximum)
+	recv.native.default_value =
+		(C.guint)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -577,6 +651,12 @@ func ParamSpecUInt64NewFromC(u unsafe.Pointer) *ParamSpecUInt64 {
 }
 
 func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.guint64)(recv.Minimum)
+	recv.native.maximum =
+		(C.guint64)(recv.Maximum)
+	recv.native.default_value =
+		(C.guint64)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -607,6 +687,12 @@ func ParamSpecULongNewFromC(u unsafe.Pointer) *ParamSpecULong {
 }
 
 func (recv *ParamSpecULong) ToC() unsafe.Pointer {
+	recv.native.minimum =
+		(C.gulong)(recv.Minimum)
+	recv.native.maximum =
+		(C.gulong)(recv.Maximum)
+	recv.native.default_value =
+		(C.gulong)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -633,6 +719,8 @@ func ParamSpecUnicharNewFromC(u unsafe.Pointer) *ParamSpecUnichar {
 }
 
 func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
+	recv.native.default_value =
+		(C.gunichar)(recv.DefaultValue)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -660,6 +748,8 @@ func ParamSpecValueArrayNewFromC(u unsafe.Pointer) *ParamSpecValueArray {
 }
 
 func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
+	recv.native.fixed_n_elements =
+		(C.guint)(recv.FixedNElements)
 
 	return (unsafe.Pointer)(recv.native)
 }

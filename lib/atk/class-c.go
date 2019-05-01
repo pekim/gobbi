@@ -204,6 +204,14 @@ func ObjectNewFromC(u unsafe.Pointer) *Object {
 }
 
 func (recv *Object) ToC() unsafe.Pointer {
+	recv.native.description =
+		C.CString(recv.Description)
+	recv.native.name =
+		C.CString(recv.Name)
+	recv.native.role =
+		(C.AtkRole)(recv.Role)
+	recv.native.layer =
+		(C.AtkLayer)(recv.Layer)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -339,6 +347,8 @@ func RelationNewFromC(u unsafe.Pointer) *Relation {
 }
 
 func (recv *Relation) ToC() unsafe.Pointer {
+	recv.native.relationship =
+		(C.AtkRelationType)(recv.Relationship)
 
 	return (unsafe.Pointer)(recv.native)
 }

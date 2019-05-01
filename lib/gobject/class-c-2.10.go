@@ -34,6 +34,8 @@ func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
 }
 
 func (recv *ParamSpecGType) ToC() unsafe.Pointer {
+	recv.native.is_a_type =
+		(C.GType)(recv.IsAType)
 
 	return (unsafe.Pointer)(recv.native)
 }
