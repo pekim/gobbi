@@ -1,9 +1,0 @@
-// This is a generated file - DO NOT EDIT
-// +build gtk_3.6 gtk_3.8 gtk_3.10 gtk_3.12 gtk_3.14 gtk_3.16 gtk_3.18 gtk_3.20 gtk_3.22 gtk_3.22.6 gtk_3.22.26 gtk_3.22.29
-
-package gtk
-
-const LEVEL_BAR_OFFSET_HIGH string = "high"
-const LEVEL_BAR_OFFSET_LOW string = "low"
-const PRINT_SETTINGS_OUTPUT_BASENAME string = "output-basename"
-const PRINT_SETTINGS_OUTPUT_DIR string = "output-dir"

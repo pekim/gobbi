@@ -1,0 +1,3010 @@
+// This is a generated file - DO NOT EDIT
+
+package gdk
+
+import call "github.com/pekim/gobbi/lib/internal/call"
+
+// #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
+// #include <gdk/gdk.h>
+// #include <stdlib.h>
+import "C"
+
+// Unsupported : alias has no type generator for none, void
+
+type DragAction int
+
+const (
+	GDK_ACTION_DEFAULT DragAction = 1
+	GDK_ACTION_COPY    DragAction = 2
+	GDK_ACTION_MOVE    DragAction = 4
+	GDK_ACTION_LINK    DragAction = 8
+	GDK_ACTION_PRIVATE DragAction = 16
+	GDK_ACTION_ASK     DragAction = 32
+)
+
+type EventMask int
+
+const (
+	GDK_EXPOSURE_MASK            EventMask = 2
+	GDK_POINTER_MOTION_MASK      EventMask = 4
+	GDK_POINTER_MOTION_HINT_MASK EventMask = 8
+	GDK_BUTTON_MOTION_MASK       EventMask = 16
+	GDK_BUTTON1_MOTION_MASK      EventMask = 32
+	GDK_BUTTON2_MOTION_MASK      EventMask = 64
+	GDK_BUTTON3_MOTION_MASK      EventMask = 128
+	GDK_BUTTON_PRESS_MASK        EventMask = 256
+	GDK_BUTTON_RELEASE_MASK      EventMask = 512
+	GDK_KEY_PRESS_MASK           EventMask = 1024
+	GDK_KEY_RELEASE_MASK         EventMask = 2048
+	GDK_ENTER_NOTIFY_MASK        EventMask = 4096
+	GDK_LEAVE_NOTIFY_MASK        EventMask = 8192
+	GDK_FOCUS_CHANGE_MASK        EventMask = 16384
+	GDK_STRUCTURE_MASK           EventMask = 32768
+	GDK_PROPERTY_CHANGE_MASK     EventMask = 65536
+	GDK_VISIBILITY_NOTIFY_MASK   EventMask = 131072
+	GDK_PROXIMITY_IN_MASK        EventMask = 262144
+	GDK_PROXIMITY_OUT_MASK       EventMask = 524288
+	GDK_SUBSTRUCTURE_MASK        EventMask = 1048576
+	GDK_SCROLL_MASK              EventMask = 2097152
+	GDK_TOUCH_MASK               EventMask = 4194304
+	GDK_SMOOTH_SCROLL_MASK       EventMask = 8388608
+	GDK_TOUCHPAD_GESTURE_MASK    EventMask = 16777216
+	GDK_TABLET_PAD_MASK          EventMask = 33554432
+	GDK_ALL_EVENTS_MASK          EventMask = 67108862
+)
+
+type ModifierType int
+
+const (
+	GDK_SHIFT_MASK                ModifierType = 1
+	GDK_LOCK_MASK                 ModifierType = 2
+	GDK_CONTROL_MASK              ModifierType = 4
+	GDK_MOD1_MASK                 ModifierType = 8
+	GDK_MOD2_MASK                 ModifierType = 16
+	GDK_MOD3_MASK                 ModifierType = 32
+	GDK_MOD4_MASK                 ModifierType = 64
+	GDK_MOD5_MASK                 ModifierType = 128
+	GDK_BUTTON1_MASK              ModifierType = 256
+	GDK_BUTTON2_MASK              ModifierType = 512
+	GDK_BUTTON3_MASK              ModifierType = 1024
+	GDK_BUTTON4_MASK              ModifierType = 2048
+	GDK_BUTTON5_MASK              ModifierType = 4096
+	GDK_MODIFIER_RESERVED_13_MASK ModifierType = 8192
+	GDK_MODIFIER_RESERVED_14_MASK ModifierType = 16384
+	GDK_MODIFIER_RESERVED_15_MASK ModifierType = 32768
+	GDK_MODIFIER_RESERVED_16_MASK ModifierType = 65536
+	GDK_MODIFIER_RESERVED_17_MASK ModifierType = 131072
+	GDK_MODIFIER_RESERVED_18_MASK ModifierType = 262144
+	GDK_MODIFIER_RESERVED_19_MASK ModifierType = 524288
+	GDK_MODIFIER_RESERVED_20_MASK ModifierType = 1048576
+	GDK_MODIFIER_RESERVED_21_MASK ModifierType = 2097152
+	GDK_MODIFIER_RESERVED_22_MASK ModifierType = 4194304
+	GDK_MODIFIER_RESERVED_23_MASK ModifierType = 8388608
+	GDK_MODIFIER_RESERVED_24_MASK ModifierType = 16777216
+	GDK_MODIFIER_RESERVED_25_MASK ModifierType = 33554432
+	GDK_SUPER_MASK                ModifierType = 67108864
+	GDK_HYPER_MASK                ModifierType = 134217728
+	GDK_META_MASK                 ModifierType = 268435456
+	GDK_MODIFIER_RESERVED_29_MASK ModifierType = 536870912
+	GDK_RELEASE_MASK              ModifierType = 1073741824
+	GDK_MODIFIER_MASK             ModifierType = 1543512063
+)
+
+type WMDecoration int
+
+const (
+	GDK_DECOR_ALL      WMDecoration = 1
+	GDK_DECOR_BORDER   WMDecoration = 2
+	GDK_DECOR_RESIZEH  WMDecoration = 4
+	GDK_DECOR_TITLE    WMDecoration = 8
+	GDK_DECOR_MENU     WMDecoration = 16
+	GDK_DECOR_MINIMIZE WMDecoration = 32
+	GDK_DECOR_MAXIMIZE WMDecoration = 64
+)
+
+type WMFunction int
+
+const (
+	GDK_FUNC_ALL      WMFunction = 1
+	GDK_FUNC_RESIZE   WMFunction = 2
+	GDK_FUNC_MOVE     WMFunction = 4
+	GDK_FUNC_MINIMIZE WMFunction = 8
+	GDK_FUNC_MAXIMIZE WMFunction = 16
+	GDK_FUNC_CLOSE    WMFunction = 32
+)
+
+type WindowAttributesType int
+
+const (
+	GDK_WA_TITLE     WindowAttributesType = 2
+	GDK_WA_X         WindowAttributesType = 4
+	GDK_WA_Y         WindowAttributesType = 8
+	GDK_WA_CURSOR    WindowAttributesType = 16
+	GDK_WA_VISUAL    WindowAttributesType = 32
+	GDK_WA_WMCLASS   WindowAttributesType = 64
+	GDK_WA_NOREDIR   WindowAttributesType = 128
+	GDK_WA_TYPE_HINT WindowAttributesType = 256
+)
+
+type WindowHints int
+
+const (
+	GDK_HINT_POS         WindowHints = 1
+	GDK_HINT_MIN_SIZE    WindowHints = 2
+	GDK_HINT_MAX_SIZE    WindowHints = 4
+	GDK_HINT_BASE_SIZE   WindowHints = 8
+	GDK_HINT_ASPECT      WindowHints = 16
+	GDK_HINT_RESIZE_INC  WindowHints = 32
+	GDK_HINT_WIN_GRAVITY WindowHints = 64
+	GDK_HINT_USER_POS    WindowHints = 128
+	GDK_HINT_USER_SIZE   WindowHints = 256
+)
+
+type WindowState int
+
+const (
+	GDK_WINDOW_STATE_WITHDRAWN        WindowState = 1
+	GDK_WINDOW_STATE_ICONIFIED        WindowState = 2
+	GDK_WINDOW_STATE_MAXIMIZED        WindowState = 4
+	GDK_WINDOW_STATE_STICKY           WindowState = 8
+	GDK_WINDOW_STATE_FULLSCREEN       WindowState = 16
+	GDK_WINDOW_STATE_ABOVE            WindowState = 32
+	GDK_WINDOW_STATE_BELOW            WindowState = 64
+	GDK_WINDOW_STATE_FOCUSED          WindowState = 128
+	GDK_WINDOW_STATE_TILED            WindowState = 256
+	GDK_WINDOW_STATE_TOP_TILED        WindowState = 512
+	GDK_WINDOW_STATE_TOP_RESIZABLE    WindowState = 1024
+	GDK_WINDOW_STATE_RIGHT_TILED      WindowState = 2048
+	GDK_WINDOW_STATE_RIGHT_RESIZABLE  WindowState = 4096
+	GDK_WINDOW_STATE_BOTTOM_TILED     WindowState = 8192
+	GDK_WINDOW_STATE_BOTTOM_RESIZABLE WindowState = 16384
+	GDK_WINDOW_STATE_LEFT_TILED       WindowState = 32768
+	GDK_WINDOW_STATE_LEFT_RESIZABLE   WindowState = 65536
+)
+
+// Unsupported : gdk_cursor_new : return type :
+
+// Unsupported : gdk_window_new : return type :
+
+const CURRENT_TIME int32 = 0
+const KEY_0 int32 = 48
+const KEY_1 int32 = 49
+const KEY_2 int32 = 50
+const KEY_3 int32 = 51
+const KEY_3270_AltCursor int32 = 64784
+const KEY_3270_Attn int32 = 64782
+const KEY_3270_BackTab int32 = 64773
+const KEY_3270_ChangeScreen int32 = 64793
+const KEY_3270_Copy int32 = 64789
+const KEY_3270_CursorBlink int32 = 64783
+const KEY_3270_CursorSelect int32 = 64796
+const KEY_3270_DeleteWord int32 = 64794
+const KEY_3270_Duplicate int32 = 64769
+const KEY_3270_Enter int32 = 64798
+const KEY_3270_EraseEOF int32 = 64774
+const KEY_3270_EraseInput int32 = 64775
+const KEY_3270_ExSelect int32 = 64795
+const KEY_3270_FieldMark int32 = 64770
+const KEY_3270_Ident int32 = 64787
+const KEY_3270_Jump int32 = 64786
+const KEY_3270_KeyClick int32 = 64785
+const KEY_3270_Left2 int32 = 64772
+const KEY_3270_PA1 int32 = 64778
+const KEY_3270_PA2 int32 = 64779
+const KEY_3270_PA3 int32 = 64780
+const KEY_3270_Play int32 = 64790
+const KEY_3270_PrintScreen int32 = 64797
+const KEY_3270_Quit int32 = 64777
+const KEY_3270_Record int32 = 64792
+const KEY_3270_Reset int32 = 64776
+const KEY_3270_Right2 int32 = 64771
+const KEY_3270_Rule int32 = 64788
+const KEY_3270_Setup int32 = 64791
+const KEY_3270_Test int32 = 64781
+const KEY_4 int32 = 52
+const KEY_5 int32 = 53
+const KEY_6 int32 = 54
+const KEY_7 int32 = 55
+const KEY_8 int32 = 56
+const KEY_9 int32 = 57
+const KEY_A int32 = 65
+const KEY_AE int32 = 198
+const KEY_Aacute int32 = 193
+const KEY_Abelowdot int32 = 16785056
+const KEY_Abreve int32 = 451
+const KEY_Abreveacute int32 = 16785070
+const KEY_Abrevebelowdot int32 = 16785078
+const KEY_Abrevegrave int32 = 16785072
+const KEY_Abrevehook int32 = 16785074
+const KEY_Abrevetilde int32 = 16785076
+const KEY_AccessX_Enable int32 = 65136
+const KEY_AccessX_Feedback_Enable int32 = 65137
+const KEY_Acircumflex int32 = 194
+const KEY_Acircumflexacute int32 = 16785060
+const KEY_Acircumflexbelowdot int32 = 16785068
+const KEY_Acircumflexgrave int32 = 16785062
+const KEY_Acircumflexhook int32 = 16785064
+const KEY_Acircumflextilde int32 = 16785066
+const KEY_AddFavorite int32 = 269025081
+const KEY_Adiaeresis int32 = 196
+const KEY_Agrave int32 = 192
+const KEY_Ahook int32 = 16785058
+const KEY_Alt_L int32 = 65513
+const KEY_Alt_R int32 = 65514
+const KEY_Amacron int32 = 960
+const KEY_Aogonek int32 = 417
+const KEY_ApplicationLeft int32 = 269025104
+const KEY_ApplicationRight int32 = 269025105
+const KEY_Arabic_0 int32 = 16778848
+const KEY_Arabic_1 int32 = 16778849
+const KEY_Arabic_2 int32 = 16778850
+const KEY_Arabic_3 int32 = 16778851
+const KEY_Arabic_4 int32 = 16778852
+const KEY_Arabic_5 int32 = 16778853
+const KEY_Arabic_6 int32 = 16778854
+const KEY_Arabic_7 int32 = 16778855
+const KEY_Arabic_8 int32 = 16778856
+const KEY_Arabic_9 int32 = 16778857
+const KEY_Arabic_ain int32 = 1497
+const KEY_Arabic_alef int32 = 1479
+const KEY_Arabic_alefmaksura int32 = 1513
+const KEY_Arabic_beh int32 = 1480
+const KEY_Arabic_comma int32 = 1452
+const KEY_Arabic_dad int32 = 1494
+const KEY_Arabic_dal int32 = 1487
+const KEY_Arabic_damma int32 = 1519
+const KEY_Arabic_dammatan int32 = 1516
+const KEY_Arabic_ddal int32 = 16778888
+const KEY_Arabic_farsi_yeh int32 = 16778956
+const KEY_Arabic_fatha int32 = 1518
+const KEY_Arabic_fathatan int32 = 1515
+const KEY_Arabic_feh int32 = 1505
+const KEY_Arabic_fullstop int32 = 16778964
+const KEY_Arabic_gaf int32 = 16778927
+const KEY_Arabic_ghain int32 = 1498
+const KEY_Arabic_ha int32 = 1511
+const KEY_Arabic_hah int32 = 1485
+const KEY_Arabic_hamza int32 = 1473
+const KEY_Arabic_hamza_above int32 = 16778836
+const KEY_Arabic_hamza_below int32 = 16778837
+const KEY_Arabic_hamzaonalef int32 = 1475
+const KEY_Arabic_hamzaonwaw int32 = 1476
+const KEY_Arabic_hamzaonyeh int32 = 1478
+const KEY_Arabic_hamzaunderalef int32 = 1477
+const KEY_Arabic_heh int32 = 1511
+const KEY_Arabic_heh_doachashmee int32 = 16778942
+const KEY_Arabic_heh_goal int32 = 16778945
+const KEY_Arabic_jeem int32 = 1484
+const KEY_Arabic_jeh int32 = 16778904
+const KEY_Arabic_kaf int32 = 1507
+const KEY_Arabic_kasra int32 = 1520
+const KEY_Arabic_kasratan int32 = 1517
+const KEY_Arabic_keheh int32 = 16778921
+const KEY_Arabic_khah int32 = 1486
+const KEY_Arabic_lam int32 = 1508
+const KEY_Arabic_madda_above int32 = 16778835
+const KEY_Arabic_maddaonalef int32 = 1474
+const KEY_Arabic_meem int32 = 1509
+const KEY_Arabic_noon int32 = 1510
+const KEY_Arabic_noon_ghunna int32 = 16778938
+const KEY_Arabic_peh int32 = 16778878
+const KEY_Arabic_percent int32 = 16778858
+const KEY_Arabic_qaf int32 = 1506
+const KEY_Arabic_question_mark int32 = 1471
+const KEY_Arabic_ra int32 = 1489
+const KEY_Arabic_rreh int32 = 16778897
+const KEY_Arabic_sad int32 = 1493
+const KEY_Arabic_seen int32 = 1491
+const KEY_Arabic_semicolon int32 = 1467
+const KEY_Arabic_shadda int32 = 1521
+const KEY_Arabic_sheen int32 = 1492
+const KEY_Arabic_sukun int32 = 1522
+const KEY_Arabic_superscript_alef int32 = 16778864
+const KEY_Arabic_switch int32 = 65406
+const KEY_Arabic_tah int32 = 1495
+const KEY_Arabic_tatweel int32 = 1504
+const KEY_Arabic_tcheh int32 = 16778886
+const KEY_Arabic_teh int32 = 1482
+const KEY_Arabic_tehmarbuta int32 = 1481
+const KEY_Arabic_thal int32 = 1488
+const KEY_Arabic_theh int32 = 1483
+const KEY_Arabic_tteh int32 = 16778873
+const KEY_Arabic_veh int32 = 16778916
+const KEY_Arabic_waw int32 = 1512
+const KEY_Arabic_yeh int32 = 1514
+const KEY_Arabic_yeh_baree int32 = 16778962
+const KEY_Arabic_zah int32 = 1496
+const KEY_Arabic_zain int32 = 1490
+const KEY_Aring int32 = 197
+const KEY_Armenian_AT int32 = 16778552
+const KEY_Armenian_AYB int32 = 16778545
+const KEY_Armenian_BEN int32 = 16778546
+const KEY_Armenian_CHA int32 = 16778569
+const KEY_Armenian_DA int32 = 16778548
+const KEY_Armenian_DZA int32 = 16778561
+const KEY_Armenian_E int32 = 16778551
+const KEY_Armenian_FE int32 = 16778582
+const KEY_Armenian_GHAT int32 = 16778562
+const KEY_Armenian_GIM int32 = 16778547
+const KEY_Armenian_HI int32 = 16778565
+const KEY_Armenian_HO int32 = 16778560
+const KEY_Armenian_INI int32 = 16778555
+const KEY_Armenian_JE int32 = 16778571
+const KEY_Armenian_KE int32 = 16778580
+const KEY_Armenian_KEN int32 = 16778559
+const KEY_Armenian_KHE int32 = 16778557
+const KEY_Armenian_LYUN int32 = 16778556
+const KEY_Armenian_MEN int32 = 16778564
+const KEY_Armenian_NU int32 = 16778566
+const KEY_Armenian_O int32 = 16778581
+const KEY_Armenian_PE int32 = 16778570
+const KEY_Armenian_PYUR int32 = 16778579
+const KEY_Armenian_RA int32 = 16778572
+const KEY_Armenian_RE int32 = 16778576
+const KEY_Armenian_SE int32 = 16778573
+const KEY_Armenian_SHA int32 = 16778567
+const KEY_Armenian_TCHE int32 = 16778563
+const KEY_Armenian_TO int32 = 16778553
+const KEY_Armenian_TSA int32 = 16778558
+const KEY_Armenian_TSO int32 = 16778577
+const KEY_Armenian_TYUN int32 = 16778575
+const KEY_Armenian_VEV int32 = 16778574
+const KEY_Armenian_VO int32 = 16778568
+const KEY_Armenian_VYUN int32 = 16778578
+const KEY_Armenian_YECH int32 = 16778549
+const KEY_Armenian_ZA int32 = 16778550
+const KEY_Armenian_ZHE int32 = 16778554
+const KEY_Armenian_accent int32 = 16778587
+const KEY_Armenian_amanak int32 = 16778588
+const KEY_Armenian_apostrophe int32 = 16778586
+const KEY_Armenian_at int32 = 16778600
+const KEY_Armenian_ayb int32 = 16778593
+const KEY_Armenian_ben int32 = 16778594
+const KEY_Armenian_but int32 = 16778589
+const KEY_Armenian_cha int32 = 16778617
+const KEY_Armenian_da int32 = 16778596
+const KEY_Armenian_dza int32 = 16778609
+const KEY_Armenian_e int32 = 16778599
+const KEY_Armenian_exclam int32 = 16778588
+const KEY_Armenian_fe int32 = 16778630
+const KEY_Armenian_full_stop int32 = 16778633
+const KEY_Armenian_ghat int32 = 16778610
+const KEY_Armenian_gim int32 = 16778595
+const KEY_Armenian_hi int32 = 16778613
+const KEY_Armenian_ho int32 = 16778608
+const KEY_Armenian_hyphen int32 = 16778634
+const KEY_Armenian_ini int32 = 16778603
+const KEY_Armenian_je int32 = 16778619
+const KEY_Armenian_ke int32 = 16778628
+const KEY_Armenian_ken int32 = 16778607
+const KEY_Armenian_khe int32 = 16778605
+const KEY_Armenian_ligature_ew int32 = 16778631
+const KEY_Armenian_lyun int32 = 16778604
+const KEY_Armenian_men int32 = 16778612
+const KEY_Armenian_nu int32 = 16778614
+const KEY_Armenian_o int32 = 16778629
+const KEY_Armenian_paruyk int32 = 16778590
+const KEY_Armenian_pe int32 = 16778618
+const KEY_Armenian_pyur int32 = 16778627
+const KEY_Armenian_question int32 = 16778590
+const KEY_Armenian_ra int32 = 16778620
+const KEY_Armenian_re int32 = 16778624
+const KEY_Armenian_se int32 = 16778621
+const KEY_Armenian_separation_mark int32 = 16778589
+const KEY_Armenian_sha int32 = 16778615
+const KEY_Armenian_shesht int32 = 16778587
+const KEY_Armenian_tche int32 = 16778611
+const KEY_Armenian_to int32 = 16778601
+const KEY_Armenian_tsa int32 = 16778606
+const KEY_Armenian_tso int32 = 16778625
+const KEY_Armenian_tyun int32 = 16778623
+const KEY_Armenian_verjaket int32 = 16778633
+const KEY_Armenian_vev int32 = 16778622
+const KEY_Armenian_vo int32 = 16778616
+const KEY_Armenian_vyun int32 = 16778626
+const KEY_Armenian_yech int32 = 16778597
+const KEY_Armenian_yentamna int32 = 16778634
+const KEY_Armenian_za int32 = 16778598
+const KEY_Armenian_zhe int32 = 16778602
+const KEY_Atilde int32 = 195
+const KEY_AudibleBell_Enable int32 = 65146
+const KEY_AudioCycleTrack int32 = 269025179
+const KEY_AudioForward int32 = 269025175
+const KEY_AudioLowerVolume int32 = 269025041
+const KEY_AudioMedia int32 = 269025074
+const KEY_AudioMicMute int32 = 269025202
+const KEY_AudioMute int32 = 269025042
+const KEY_AudioNext int32 = 269025047
+const KEY_AudioPause int32 = 269025073
+const KEY_AudioPlay int32 = 269025044
+const KEY_AudioPrev int32 = 269025046
+const KEY_AudioRaiseVolume int32 = 269025043
+const KEY_AudioRandomPlay int32 = 269025177
+const KEY_AudioRecord int32 = 269025052
+const KEY_AudioRepeat int32 = 269025176
+const KEY_AudioRewind int32 = 269025086
+const KEY_AudioStop int32 = 269025045
+const KEY_Away int32 = 269025165
+const KEY_B int32 = 66
+const KEY_Babovedot int32 = 16784898
+const KEY_Back int32 = 269025062
+const KEY_BackForward int32 = 269025087
+const KEY_BackSpace int32 = 65288
+const KEY_Battery int32 = 269025171
+const KEY_Begin int32 = 65368
+const KEY_Blue int32 = 269025190
+const KEY_Bluetooth int32 = 269025172
+const KEY_Book int32 = 269025106
+const KEY_BounceKeys_Enable int32 = 65140
+const KEY_Break int32 = 65387
+const KEY_BrightnessAdjust int32 = 269025083
+const KEY_Byelorussian_SHORTU int32 = 1726
+const KEY_Byelorussian_shortu int32 = 1710
+const KEY_C int32 = 67
+const KEY_CD int32 = 269025107
+const KEY_CH int32 = 65186
+const KEY_C_H int32 = 65189
+const KEY_C_h int32 = 65188
+const KEY_Cabovedot int32 = 709
+const KEY_Cacute int32 = 454
+const KEY_Calculator int32 = 269025053
+const KEY_Calendar int32 = 269025056
+const KEY_Cancel int32 = 65385
+const KEY_Caps_Lock int32 = 65509
+const KEY_Ccaron int32 = 456
+const KEY_Ccedilla int32 = 199
+const KEY_Ccircumflex int32 = 710
+const KEY_Ch int32 = 65185
+const KEY_Clear int32 = 65291
+const KEY_ClearGrab int32 = 269024801
+const KEY_Close int32 = 269025110
+const KEY_Codeinput int32 = 65335
+const KEY_ColonSign int32 = 16785569
+const KEY_Community int32 = 269025085
+const KEY_ContrastAdjust int32 = 269025058
+const KEY_Control_L int32 = 65507
+const KEY_Control_R int32 = 65508
+const KEY_Copy int32 = 269025111
+const KEY_CruzeiroSign int32 = 16785570
+const KEY_Cut int32 = 269025112
+const KEY_CycleAngle int32 = 269025180
+const KEY_Cyrillic_A int32 = 1761
+const KEY_Cyrillic_BE int32 = 1762
+const KEY_Cyrillic_CHE int32 = 1790
+const KEY_Cyrillic_CHE_descender int32 = 16778422
+const KEY_Cyrillic_CHE_vertstroke int32 = 16778424
+const KEY_Cyrillic_DE int32 = 1764
+const KEY_Cyrillic_DZHE int32 = 1727
+const KEY_Cyrillic_E int32 = 1788
+const KEY_Cyrillic_EF int32 = 1766
+const KEY_Cyrillic_EL int32 = 1772
+const KEY_Cyrillic_EM int32 = 1773
+const KEY_Cyrillic_EN int32 = 1774
+const KEY_Cyrillic_EN_descender int32 = 16778402
+const KEY_Cyrillic_ER int32 = 1778
+const KEY_Cyrillic_ES int32 = 1779
+const KEY_Cyrillic_GHE int32 = 1767
+const KEY_Cyrillic_GHE_bar int32 = 16778386
+const KEY_Cyrillic_HA int32 = 1768
+const KEY_Cyrillic_HARDSIGN int32 = 1791
+const KEY_Cyrillic_HA_descender int32 = 16778418
+const KEY_Cyrillic_I int32 = 1769
+const KEY_Cyrillic_IE int32 = 1765
+const KEY_Cyrillic_IO int32 = 1715
+const KEY_Cyrillic_I_macron int32 = 16778466
+const KEY_Cyrillic_JE int32 = 1720
+const KEY_Cyrillic_KA int32 = 1771
+const KEY_Cyrillic_KA_descender int32 = 16778394
+const KEY_Cyrillic_KA_vertstroke int32 = 16778396
+const KEY_Cyrillic_LJE int32 = 1721
+const KEY_Cyrillic_NJE int32 = 1722
+const KEY_Cyrillic_O int32 = 1775
+const KEY_Cyrillic_O_bar int32 = 16778472
+const KEY_Cyrillic_PE int32 = 1776
+const KEY_Cyrillic_SCHWA int32 = 16778456
+const KEY_Cyrillic_SHA int32 = 1787
+const KEY_Cyrillic_SHCHA int32 = 1789
+const KEY_Cyrillic_SHHA int32 = 16778426
+const KEY_Cyrillic_SHORTI int32 = 1770
+const KEY_Cyrillic_SOFTSIGN int32 = 1784
+const KEY_Cyrillic_TE int32 = 1780
+const KEY_Cyrillic_TSE int32 = 1763
+const KEY_Cyrillic_U int32 = 1781
+const KEY_Cyrillic_U_macron int32 = 16778478
+const KEY_Cyrillic_U_straight int32 = 16778414
+const KEY_Cyrillic_U_straight_bar int32 = 16778416
+const KEY_Cyrillic_VE int32 = 1783
+const KEY_Cyrillic_YA int32 = 1777
+const KEY_Cyrillic_YERU int32 = 1785
+const KEY_Cyrillic_YU int32 = 1760
+const KEY_Cyrillic_ZE int32 = 1786
+const KEY_Cyrillic_ZHE int32 = 1782
+const KEY_Cyrillic_ZHE_descender int32 = 16778390
+const KEY_Cyrillic_a int32 = 1729
+const KEY_Cyrillic_be int32 = 1730
+const KEY_Cyrillic_che int32 = 1758
+const KEY_Cyrillic_che_descender int32 = 16778423
+const KEY_Cyrillic_che_vertstroke int32 = 16778425
+const KEY_Cyrillic_de int32 = 1732
+const KEY_Cyrillic_dzhe int32 = 1711
+const KEY_Cyrillic_e int32 = 1756
+const KEY_Cyrillic_ef int32 = 1734
+const KEY_Cyrillic_el int32 = 1740
+const KEY_Cyrillic_em int32 = 1741
+const KEY_Cyrillic_en int32 = 1742
+const KEY_Cyrillic_en_descender int32 = 16778403
+const KEY_Cyrillic_er int32 = 1746
+const KEY_Cyrillic_es int32 = 1747
+const KEY_Cyrillic_ghe int32 = 1735
+const KEY_Cyrillic_ghe_bar int32 = 16778387
+const KEY_Cyrillic_ha int32 = 1736
+const KEY_Cyrillic_ha_descender int32 = 16778419
+const KEY_Cyrillic_hardsign int32 = 1759
+const KEY_Cyrillic_i int32 = 1737
+const KEY_Cyrillic_i_macron int32 = 16778467
+const KEY_Cyrillic_ie int32 = 1733
+const KEY_Cyrillic_io int32 = 1699
+const KEY_Cyrillic_je int32 = 1704
+const KEY_Cyrillic_ka int32 = 1739
+const KEY_Cyrillic_ka_descender int32 = 16778395
+const KEY_Cyrillic_ka_vertstroke int32 = 16778397
+const KEY_Cyrillic_lje int32 = 1705
+const KEY_Cyrillic_nje int32 = 1706
+const KEY_Cyrillic_o int32 = 1743
+const KEY_Cyrillic_o_bar int32 = 16778473
+const KEY_Cyrillic_pe int32 = 1744
+const KEY_Cyrillic_schwa int32 = 16778457
+const KEY_Cyrillic_sha int32 = 1755
+const KEY_Cyrillic_shcha int32 = 1757
+const KEY_Cyrillic_shha int32 = 16778427
+const KEY_Cyrillic_shorti int32 = 1738
+const KEY_Cyrillic_softsign int32 = 1752
+const KEY_Cyrillic_te int32 = 1748
+const KEY_Cyrillic_tse int32 = 1731
+const KEY_Cyrillic_u int32 = 1749
+const KEY_Cyrillic_u_macron int32 = 16778479
+const KEY_Cyrillic_u_straight int32 = 16778415
+const KEY_Cyrillic_u_straight_bar int32 = 16778417
+const KEY_Cyrillic_ve int32 = 1751
+const KEY_Cyrillic_ya int32 = 1745
+const KEY_Cyrillic_yeru int32 = 1753
+const KEY_Cyrillic_yu int32 = 1728
+const KEY_Cyrillic_ze int32 = 1754
+const KEY_Cyrillic_zhe int32 = 1750
+const KEY_Cyrillic_zhe_descender int32 = 16778391
+const KEY_D int32 = 68
+const KEY_DOS int32 = 269025114
+const KEY_Dabovedot int32 = 16784906
+const KEY_Dcaron int32 = 463
+const KEY_Delete int32 = 65535
+const KEY_Display int32 = 269025113
+const KEY_Documents int32 = 269025115
+const KEY_DongSign int32 = 16785579
+const KEY_Down int32 = 65364
+const KEY_Dstroke int32 = 464
+const KEY_E int32 = 69
+const KEY_ENG int32 = 957
+const KEY_ETH int32 = 208
+const KEY_EZH int32 = 16777655
+const KEY_Eabovedot int32 = 972
+const KEY_Eacute int32 = 201
+const KEY_Ebelowdot int32 = 16785080
+const KEY_Ecaron int32 = 460
+const KEY_Ecircumflex int32 = 202
+const KEY_Ecircumflexacute int32 = 16785086
+const KEY_Ecircumflexbelowdot int32 = 16785094
+const KEY_Ecircumflexgrave int32 = 16785088
+const KEY_Ecircumflexhook int32 = 16785090
+const KEY_Ecircumflextilde int32 = 16785092
+const KEY_EcuSign int32 = 16785568
+const KEY_Ediaeresis int32 = 203
+const KEY_Egrave int32 = 200
+const KEY_Ehook int32 = 16785082
+const KEY_Eisu_Shift int32 = 65327
+const KEY_Eisu_toggle int32 = 65328
+const KEY_Eject int32 = 269025068
+const KEY_Emacron int32 = 938
+const KEY_End int32 = 65367
+const KEY_Eogonek int32 = 458
+const KEY_Escape int32 = 65307
+const KEY_Eth int32 = 208
+const KEY_Etilde int32 = 16785084
+const KEY_EuroSign int32 = 8364
+const KEY_Excel int32 = 269025116
+const KEY_Execute int32 = 65378
+const KEY_Explorer int32 = 269025117
+const KEY_F int32 = 70
+const KEY_F1 int32 = 65470
+const KEY_F10 int32 = 65479
+const KEY_F11 int32 = 65480
+const KEY_F12 int32 = 65481
+const KEY_F13 int32 = 65482
+const KEY_F14 int32 = 65483
+const KEY_F15 int32 = 65484
+const KEY_F16 int32 = 65485
+const KEY_F17 int32 = 65486
+const KEY_F18 int32 = 65487
+const KEY_F19 int32 = 65488
+const KEY_F2 int32 = 65471
+const KEY_F20 int32 = 65489
+const KEY_F21 int32 = 65490
+const KEY_F22 int32 = 65491
+const KEY_F23 int32 = 65492
+const KEY_F24 int32 = 65493
+const KEY_F25 int32 = 65494
+const KEY_F26 int32 = 65495
+const KEY_F27 int32 = 65496
+const KEY_F28 int32 = 65497
+const KEY_F29 int32 = 65498
+const KEY_F3 int32 = 65472
+const KEY_F30 int32 = 65499
+const KEY_F31 int32 = 65500
+const KEY_F32 int32 = 65501
+const KEY_F33 int32 = 65502
+const KEY_F34 int32 = 65503
+const KEY_F35 int32 = 65504
+const KEY_F4 int32 = 65473
+const KEY_F5 int32 = 65474
+const KEY_F6 int32 = 65475
+const KEY_F7 int32 = 65476
+const KEY_F8 int32 = 65477
+const KEY_F9 int32 = 65478
+const KEY_FFrancSign int32 = 16785571
+const KEY_Fabovedot int32 = 16784926
+const KEY_Farsi_0 int32 = 16778992
+const KEY_Farsi_1 int32 = 16778993
+const KEY_Farsi_2 int32 = 16778994
+const KEY_Farsi_3 int32 = 16778995
+const KEY_Farsi_4 int32 = 16778996
+const KEY_Farsi_5 int32 = 16778997
+const KEY_Farsi_6 int32 = 16778998
+const KEY_Farsi_7 int32 = 16778999
+const KEY_Farsi_8 int32 = 16779000
+const KEY_Farsi_9 int32 = 16779001
+const KEY_Farsi_yeh int32 = 16778956
+const KEY_Favorites int32 = 269025072
+const KEY_Finance int32 = 269025084
+const KEY_Find int32 = 65384
+const KEY_First_Virtual_Screen int32 = 65232
+const KEY_Forward int32 = 269025063
+const KEY_FrameBack int32 = 269025181
+const KEY_FrameForward int32 = 269025182
+const KEY_G int32 = 71
+const KEY_Gabovedot int32 = 725
+const KEY_Game int32 = 269025118
+const KEY_Gbreve int32 = 683
+const KEY_Gcaron int32 = 16777702
+const KEY_Gcedilla int32 = 939
+const KEY_Gcircumflex int32 = 728
+const KEY_Georgian_an int32 = 16781520
+const KEY_Georgian_ban int32 = 16781521
+const KEY_Georgian_can int32 = 16781546
+const KEY_Georgian_char int32 = 16781549
+const KEY_Georgian_chin int32 = 16781545
+const KEY_Georgian_cil int32 = 16781548
+const KEY_Georgian_don int32 = 16781523
+const KEY_Georgian_en int32 = 16781524
+const KEY_Georgian_fi int32 = 16781558
+const KEY_Georgian_gan int32 = 16781522
+const KEY_Georgian_ghan int32 = 16781542
+const KEY_Georgian_hae int32 = 16781552
+const KEY_Georgian_har int32 = 16781556
+const KEY_Georgian_he int32 = 16781553
+const KEY_Georgian_hie int32 = 16781554
+const KEY_Georgian_hoe int32 = 16781557
+const KEY_Georgian_in int32 = 16781528
+const KEY_Georgian_jhan int32 = 16781551
+const KEY_Georgian_jil int32 = 16781547
+const KEY_Georgian_kan int32 = 16781529
+const KEY_Georgian_khar int32 = 16781541
+const KEY_Georgian_las int32 = 16781530
+const KEY_Georgian_man int32 = 16781531
+const KEY_Georgian_nar int32 = 16781532
+const KEY_Georgian_on int32 = 16781533
+const KEY_Georgian_par int32 = 16781534
+const KEY_Georgian_phar int32 = 16781540
+const KEY_Georgian_qar int32 = 16781543
+const KEY_Georgian_rae int32 = 16781536
+const KEY_Georgian_san int32 = 16781537
+const KEY_Georgian_shin int32 = 16781544
+const KEY_Georgian_tan int32 = 16781527
+const KEY_Georgian_tar int32 = 16781538
+const KEY_Georgian_un int32 = 16781539
+const KEY_Georgian_vin int32 = 16781525
+const KEY_Georgian_we int32 = 16781555
+const KEY_Georgian_xan int32 = 16781550
+const KEY_Georgian_zen int32 = 16781526
+const KEY_Georgian_zhar int32 = 16781535
+const KEY_Go int32 = 269025119
+const KEY_Greek_ALPHA int32 = 1985
+const KEY_Greek_ALPHAaccent int32 = 1953
+const KEY_Greek_BETA int32 = 1986
+const KEY_Greek_CHI int32 = 2007
+const KEY_Greek_DELTA int32 = 1988
+const KEY_Greek_EPSILON int32 = 1989
+const KEY_Greek_EPSILONaccent int32 = 1954
+const KEY_Greek_ETA int32 = 1991
+const KEY_Greek_ETAaccent int32 = 1955
+const KEY_Greek_GAMMA int32 = 1987
+const KEY_Greek_IOTA int32 = 1993
+const KEY_Greek_IOTAaccent int32 = 1956
+const KEY_Greek_IOTAdiaeresis int32 = 1957
+const KEY_Greek_IOTAdieresis int32 = 1957
+const KEY_Greek_KAPPA int32 = 1994
+const KEY_Greek_LAMBDA int32 = 1995
+const KEY_Greek_LAMDA int32 = 1995
+const KEY_Greek_MU int32 = 1996
+const KEY_Greek_NU int32 = 1997
+const KEY_Greek_OMEGA int32 = 2009
+const KEY_Greek_OMEGAaccent int32 = 1963
+const KEY_Greek_OMICRON int32 = 1999
+const KEY_Greek_OMICRONaccent int32 = 1959
+const KEY_Greek_PHI int32 = 2006
+const KEY_Greek_PI int32 = 2000
+const KEY_Greek_PSI int32 = 2008
+const KEY_Greek_RHO int32 = 2001
+const KEY_Greek_SIGMA int32 = 2002
+const KEY_Greek_TAU int32 = 2004
+const KEY_Greek_THETA int32 = 1992
+const KEY_Greek_UPSILON int32 = 2005
+const KEY_Greek_UPSILONaccent int32 = 1960
+const KEY_Greek_UPSILONdieresis int32 = 1961
+const KEY_Greek_XI int32 = 1998
+const KEY_Greek_ZETA int32 = 1990
+const KEY_Greek_accentdieresis int32 = 1966
+const KEY_Greek_alpha int32 = 2017
+const KEY_Greek_alphaaccent int32 = 1969
+const KEY_Greek_beta int32 = 2018
+const KEY_Greek_chi int32 = 2039
+const KEY_Greek_delta int32 = 2020
+const KEY_Greek_epsilon int32 = 2021
+const KEY_Greek_epsilonaccent int32 = 1970
+const KEY_Greek_eta int32 = 2023
+const KEY_Greek_etaaccent int32 = 1971
+const KEY_Greek_finalsmallsigma int32 = 2035
+const KEY_Greek_gamma int32 = 2019
+const KEY_Greek_horizbar int32 = 1967
+const KEY_Greek_iota int32 = 2025
+const KEY_Greek_iotaaccent int32 = 1972
+const KEY_Greek_iotaaccentdieresis int32 = 1974
+const KEY_Greek_iotadieresis int32 = 1973
+const KEY_Greek_kappa int32 = 2026
+const KEY_Greek_lambda int32 = 2027
+const KEY_Greek_lamda int32 = 2027
+const KEY_Greek_mu int32 = 2028
+const KEY_Greek_nu int32 = 2029
+const KEY_Greek_omega int32 = 2041
+const KEY_Greek_omegaaccent int32 = 1979
+const KEY_Greek_omicron int32 = 2031
+const KEY_Greek_omicronaccent int32 = 1975
+const KEY_Greek_phi int32 = 2038
+const KEY_Greek_pi int32 = 2032
+const KEY_Greek_psi int32 = 2040
+const KEY_Greek_rho int32 = 2033
+const KEY_Greek_sigma int32 = 2034
+const KEY_Greek_switch int32 = 65406
+const KEY_Greek_tau int32 = 2036
+const KEY_Greek_theta int32 = 2024
+const KEY_Greek_upsilon int32 = 2037
+const KEY_Greek_upsilonaccent int32 = 1976
+const KEY_Greek_upsilonaccentdieresis int32 = 1978
+const KEY_Greek_upsilondieresis int32 = 1977
+const KEY_Greek_xi int32 = 2030
+const KEY_Greek_zeta int32 = 2022
+const KEY_Green int32 = 269025188
+const KEY_H int32 = 72
+const KEY_Hangul int32 = 65329
+const KEY_Hangul_A int32 = 3775
+const KEY_Hangul_AE int32 = 3776
+const KEY_Hangul_AraeA int32 = 3830
+const KEY_Hangul_AraeAE int32 = 3831
+const KEY_Hangul_Banja int32 = 65337
+const KEY_Hangul_Cieuc int32 = 3770
+const KEY_Hangul_Codeinput int32 = 65335
+const KEY_Hangul_Dikeud int32 = 3751
+const KEY_Hangul_E int32 = 3780
+const KEY_Hangul_EO int32 = 3779
+const KEY_Hangul_EU int32 = 3793
+const KEY_Hangul_End int32 = 65331
+const KEY_Hangul_Hanja int32 = 65332
+const KEY_Hangul_Hieuh int32 = 3774
+const KEY_Hangul_I int32 = 3795
+const KEY_Hangul_Ieung int32 = 3767
+const KEY_Hangul_J_Cieuc int32 = 3818
+const KEY_Hangul_J_Dikeud int32 = 3802
+const KEY_Hangul_J_Hieuh int32 = 3822
+const KEY_Hangul_J_Ieung int32 = 3816
+const KEY_Hangul_J_Jieuj int32 = 3817
+const KEY_Hangul_J_Khieuq int32 = 3819
+const KEY_Hangul_J_Kiyeog int32 = 3796
+const KEY_Hangul_J_KiyeogSios int32 = 3798
+const KEY_Hangul_J_KkogjiDalrinIeung int32 = 3833
+const KEY_Hangul_J_Mieum int32 = 3811
+const KEY_Hangul_J_Nieun int32 = 3799
+const KEY_Hangul_J_NieunHieuh int32 = 3801
+const KEY_Hangul_J_NieunJieuj int32 = 3800
+const KEY_Hangul_J_PanSios int32 = 3832
+const KEY_Hangul_J_Phieuf int32 = 3821
+const KEY_Hangul_J_Pieub int32 = 3812
+const KEY_Hangul_J_PieubSios int32 = 3813
+const KEY_Hangul_J_Rieul int32 = 3803
+const KEY_Hangul_J_RieulHieuh int32 = 3810
+const KEY_Hangul_J_RieulKiyeog int32 = 3804
+const KEY_Hangul_J_RieulMieum int32 = 3805
+const KEY_Hangul_J_RieulPhieuf int32 = 3809
+const KEY_Hangul_J_RieulPieub int32 = 3806
+const KEY_Hangul_J_RieulSios int32 = 3807
+const KEY_Hangul_J_RieulTieut int32 = 3808
+const KEY_Hangul_J_Sios int32 = 3814
+const KEY_Hangul_J_SsangKiyeog int32 = 3797
+const KEY_Hangul_J_SsangSios int32 = 3815
+const KEY_Hangul_J_Tieut int32 = 3820
+const KEY_Hangul_J_YeorinHieuh int32 = 3834
+const KEY_Hangul_Jamo int32 = 65333
+const KEY_Hangul_Jeonja int32 = 65336
+const KEY_Hangul_Jieuj int32 = 3768
+const KEY_Hangul_Khieuq int32 = 3771
+const KEY_Hangul_Kiyeog int32 = 3745
+const KEY_Hangul_KiyeogSios int32 = 3747
+const KEY_Hangul_KkogjiDalrinIeung int32 = 3827
+const KEY_Hangul_Mieum int32 = 3761
+const KEY_Hangul_MultipleCandidate int32 = 65341
+const KEY_Hangul_Nieun int32 = 3748
+const KEY_Hangul_NieunHieuh int32 = 3750
+const KEY_Hangul_NieunJieuj int32 = 3749
+const KEY_Hangul_O int32 = 3783
+const KEY_Hangul_OE int32 = 3786
+const KEY_Hangul_PanSios int32 = 3826
+const KEY_Hangul_Phieuf int32 = 3773
+const KEY_Hangul_Pieub int32 = 3762
+const KEY_Hangul_PieubSios int32 = 3764
+const KEY_Hangul_PostHanja int32 = 65339
+const KEY_Hangul_PreHanja int32 = 65338
+const KEY_Hangul_PreviousCandidate int32 = 65342
+const KEY_Hangul_Rieul int32 = 3753
+const KEY_Hangul_RieulHieuh int32 = 3760
+const KEY_Hangul_RieulKiyeog int32 = 3754
+const KEY_Hangul_RieulMieum int32 = 3755
+const KEY_Hangul_RieulPhieuf int32 = 3759
+const KEY_Hangul_RieulPieub int32 = 3756
+const KEY_Hangul_RieulSios int32 = 3757
+const KEY_Hangul_RieulTieut int32 = 3758
+const KEY_Hangul_RieulYeorinHieuh int32 = 3823
+const KEY_Hangul_Romaja int32 = 65334
+const KEY_Hangul_SingleCandidate int32 = 65340
+const KEY_Hangul_Sios int32 = 3765
+const KEY_Hangul_Special int32 = 65343
+const KEY_Hangul_SsangDikeud int32 = 3752
+const KEY_Hangul_SsangJieuj int32 = 3769
+const KEY_Hangul_SsangKiyeog int32 = 3746
+const KEY_Hangul_SsangPieub int32 = 3763
+const KEY_Hangul_SsangSios int32 = 3766
+const KEY_Hangul_Start int32 = 65330
+const KEY_Hangul_SunkyeongeumMieum int32 = 3824
+const KEY_Hangul_SunkyeongeumPhieuf int32 = 3828
+const KEY_Hangul_SunkyeongeumPieub int32 = 3825
+const KEY_Hangul_Tieut int32 = 3772
+const KEY_Hangul_U int32 = 3788
+const KEY_Hangul_WA int32 = 3784
+const KEY_Hangul_WAE int32 = 3785
+const KEY_Hangul_WE int32 = 3790
+const KEY_Hangul_WEO int32 = 3789
+const KEY_Hangul_WI int32 = 3791
+const KEY_Hangul_YA int32 = 3777
+const KEY_Hangul_YAE int32 = 3778
+const KEY_Hangul_YE int32 = 3782
+const KEY_Hangul_YEO int32 = 3781
+const KEY_Hangul_YI int32 = 3794
+const KEY_Hangul_YO int32 = 3787
+const KEY_Hangul_YU int32 = 3792
+const KEY_Hangul_YeorinHieuh int32 = 3829
+const KEY_Hangul_switch int32 = 65406
+const KEY_Hankaku int32 = 65321
+const KEY_Hcircumflex int32 = 678
+const KEY_Hebrew_switch int32 = 65406
+const KEY_Help int32 = 65386
+const KEY_Henkan int32 = 65315
+const KEY_Henkan_Mode int32 = 65315
+const KEY_Hibernate int32 = 269025192
+const KEY_Hiragana int32 = 65317
+const KEY_Hiragana_Katakana int32 = 65319
+const KEY_History int32 = 269025079
+const KEY_Home int32 = 65360
+const KEY_HomePage int32 = 269025048
+const KEY_HotLinks int32 = 269025082
+const KEY_Hstroke int32 = 673
+const KEY_Hyper_L int32 = 65517
+const KEY_Hyper_R int32 = 65518
+const KEY_I int32 = 73
+const KEY_ISO_Center_Object int32 = 65075
+const KEY_ISO_Continuous_Underline int32 = 65072
+const KEY_ISO_Discontinuous_Underline int32 = 65073
+const KEY_ISO_Emphasize int32 = 65074
+const KEY_ISO_Enter int32 = 65076
+const KEY_ISO_Fast_Cursor_Down int32 = 65071
+const KEY_ISO_Fast_Cursor_Left int32 = 65068
+const KEY_ISO_Fast_Cursor_Right int32 = 65069
+const KEY_ISO_Fast_Cursor_Up int32 = 65070
+const KEY_ISO_First_Group int32 = 65036
+const KEY_ISO_First_Group_Lock int32 = 65037
+const KEY_ISO_Group_Latch int32 = 65030
+const KEY_ISO_Group_Lock int32 = 65031
+const KEY_ISO_Group_Shift int32 = 65406
+const KEY_ISO_Last_Group int32 = 65038
+const KEY_ISO_Last_Group_Lock int32 = 65039
+const KEY_ISO_Left_Tab int32 = 65056
+const KEY_ISO_Level2_Latch int32 = 65026
+const KEY_ISO_Level3_Latch int32 = 65028
+const KEY_ISO_Level3_Lock int32 = 65029
+const KEY_ISO_Level3_Shift int32 = 65027
+const KEY_ISO_Level5_Latch int32 = 65042
+const KEY_ISO_Level5_Lock int32 = 65043
+const KEY_ISO_Level5_Shift int32 = 65041
+const KEY_ISO_Lock int32 = 65025
+const KEY_ISO_Move_Line_Down int32 = 65058
+const KEY_ISO_Move_Line_Up int32 = 65057
+const KEY_ISO_Next_Group int32 = 65032
+const KEY_ISO_Next_Group_Lock int32 = 65033
+const KEY_ISO_Partial_Line_Down int32 = 65060
+const KEY_ISO_Partial_Line_Up int32 = 65059
+const KEY_ISO_Partial_Space_Left int32 = 65061
+const KEY_ISO_Partial_Space_Right int32 = 65062
+const KEY_ISO_Prev_Group int32 = 65034
+const KEY_ISO_Prev_Group_Lock int32 = 65035
+const KEY_ISO_Release_Both_Margins int32 = 65067
+const KEY_ISO_Release_Margin_Left int32 = 65065
+const KEY_ISO_Release_Margin_Right int32 = 65066
+const KEY_ISO_Set_Margin_Left int32 = 65063
+const KEY_ISO_Set_Margin_Right int32 = 65064
+const KEY_Iabovedot int32 = 681
+const KEY_Iacute int32 = 205
+const KEY_Ibelowdot int32 = 16785098
+const KEY_Ibreve int32 = 16777516
+const KEY_Icircumflex int32 = 206
+const KEY_Idiaeresis int32 = 207
+const KEY_Igrave int32 = 204
+const KEY_Ihook int32 = 16785096
+const KEY_Imacron int32 = 975
+const KEY_Insert int32 = 65379
+const KEY_Iogonek int32 = 967
+const KEY_Itilde int32 = 933
+const KEY_J int32 = 74
+const KEY_Jcircumflex int32 = 684
+const KEY_K int32 = 75
+const KEY_KP_0 int32 = 65456
+const KEY_KP_1 int32 = 65457
+const KEY_KP_2 int32 = 65458
+const KEY_KP_3 int32 = 65459
+const KEY_KP_4 int32 = 65460
+const KEY_KP_5 int32 = 65461
+const KEY_KP_6 int32 = 65462
+const KEY_KP_7 int32 = 65463
+const KEY_KP_8 int32 = 65464
+const KEY_KP_9 int32 = 65465
+const KEY_KP_Add int32 = 65451
+const KEY_KP_Begin int32 = 65437
+const KEY_KP_Decimal int32 = 65454
+const KEY_KP_Delete int32 = 65439
+const KEY_KP_Divide int32 = 65455
+const KEY_KP_Down int32 = 65433
+const KEY_KP_End int32 = 65436
+const KEY_KP_Enter int32 = 65421
+const KEY_KP_Equal int32 = 65469
+const KEY_KP_F1 int32 = 65425
+const KEY_KP_F2 int32 = 65426
+const KEY_KP_F3 int32 = 65427
+const KEY_KP_F4 int32 = 65428
+const KEY_KP_Home int32 = 65429
+const KEY_KP_Insert int32 = 65438
+const KEY_KP_Left int32 = 65430
+const KEY_KP_Multiply int32 = 65450
+const KEY_KP_Next int32 = 65435
+const KEY_KP_Page_Down int32 = 65435
+const KEY_KP_Page_Up int32 = 65434
+const KEY_KP_Prior int32 = 65434
+const KEY_KP_Right int32 = 65432
+const KEY_KP_Separator int32 = 65452
+const KEY_KP_Space int32 = 65408
+const KEY_KP_Subtract int32 = 65453
+const KEY_KP_Tab int32 = 65417
+const KEY_KP_Up int32 = 65431
+const KEY_Kana_Lock int32 = 65325
+const KEY_Kana_Shift int32 = 65326
+const KEY_Kanji int32 = 65313
+const KEY_Kanji_Bangou int32 = 65335
+const KEY_Katakana int32 = 65318
+const KEY_KbdBrightnessDown int32 = 269025030
+const KEY_KbdBrightnessUp int32 = 269025029
+const KEY_KbdLightOnOff int32 = 269025028
+const KEY_Kcedilla int32 = 979
+const KEY_Korean_Won int32 = 3839
+const KEY_L int32 = 76
+const KEY_L1 int32 = 65480
+const KEY_L10 int32 = 65489
+const KEY_L2 int32 = 65481
+const KEY_L3 int32 = 65482
+const KEY_L4 int32 = 65483
+const KEY_L5 int32 = 65484
+const KEY_L6 int32 = 65485
+const KEY_L7 int32 = 65486
+const KEY_L8 int32 = 65487
+const KEY_L9 int32 = 65488
+const KEY_Lacute int32 = 453
+const KEY_Last_Virtual_Screen int32 = 65236
+const KEY_Launch0 int32 = 269025088
+const KEY_Launch1 int32 = 269025089
+const KEY_Launch2 int32 = 269025090
+const KEY_Launch3 int32 = 269025091
+const KEY_Launch4 int32 = 269025092
+const KEY_Launch5 int32 = 269025093
+const KEY_Launch6 int32 = 269025094
+const KEY_Launch7 int32 = 269025095
+const KEY_Launch8 int32 = 269025096
+const KEY_Launch9 int32 = 269025097
+const KEY_LaunchA int32 = 269025098
+const KEY_LaunchB int32 = 269025099
+const KEY_LaunchC int32 = 269025100
+const KEY_LaunchD int32 = 269025101
+const KEY_LaunchE int32 = 269025102
+const KEY_LaunchF int32 = 269025103
+const KEY_Lbelowdot int32 = 16784950
+const KEY_Lcaron int32 = 421
+const KEY_Lcedilla int32 = 934
+const KEY_Left int32 = 65361
+const KEY_LightBulb int32 = 269025077
+const KEY_Linefeed int32 = 65290
+const KEY_LiraSign int32 = 16785572
+const KEY_LogGrabInfo int32 = 269024805
+const KEY_LogOff int32 = 269025121
+const KEY_LogWindowTree int32 = 269024804
+const KEY_Lstroke int32 = 419
+const KEY_M int32 = 77
+const KEY_Mabovedot int32 = 16784960
+const KEY_Macedonia_DSE int32 = 1717
+const KEY_Macedonia_GJE int32 = 1714
+const KEY_Macedonia_KJE int32 = 1724
+const KEY_Macedonia_dse int32 = 1701
+const KEY_Macedonia_gje int32 = 1698
+const KEY_Macedonia_kje int32 = 1708
+const KEY_Mae_Koho int32 = 65342
+const KEY_Mail int32 = 269025049
+const KEY_MailForward int32 = 269025168
+const KEY_Market int32 = 269025122
+const KEY_Massyo int32 = 65324
+const KEY_Meeting int32 = 269025123
+const KEY_Memo int32 = 269025054
+const KEY_Menu int32 = 65383
+const KEY_MenuKB int32 = 269025125
+const KEY_MenuPB int32 = 269025126
+const KEY_Messenger int32 = 269025166
+const KEY_Meta_L int32 = 65511
+const KEY_Meta_R int32 = 65512
+const KEY_MillSign int32 = 16785573
+const KEY_ModeLock int32 = 269025025
+const KEY_Mode_switch int32 = 65406
+const KEY_MonBrightnessDown int32 = 269025027
+const KEY_MonBrightnessUp int32 = 269025026
+const KEY_MouseKeys_Accel_Enable int32 = 65143
+const KEY_MouseKeys_Enable int32 = 65142
+const KEY_Muhenkan int32 = 65314
+const KEY_Multi_key int32 = 65312
+const KEY_MultipleCandidate int32 = 65341
+const KEY_Music int32 = 269025170
+const KEY_MyComputer int32 = 269025075
+const KEY_MySites int32 = 269025127
+const KEY_N int32 = 78
+const KEY_Nacute int32 = 465
+const KEY_NairaSign int32 = 16785574
+const KEY_Ncaron int32 = 466
+const KEY_Ncedilla int32 = 977
+const KEY_New int32 = 269025128
+const KEY_NewSheqelSign int32 = 16785578
+const KEY_News int32 = 269025129
+const KEY_Next int32 = 65366
+const KEY_Next_VMode int32 = 269024802
+const KEY_Next_Virtual_Screen int32 = 65234
+const KEY_Ntilde int32 = 209
+const KEY_Num_Lock int32 = 65407
+const KEY_O int32 = 79
+const KEY_OE int32 = 5052
+const KEY_Oacute int32 = 211
+const KEY_Obarred int32 = 16777631
+const KEY_Obelowdot int32 = 16785100
+const KEY_Ocaron int32 = 16777681
+const KEY_Ocircumflex int32 = 212
+const KEY_Ocircumflexacute int32 = 16785104
+const KEY_Ocircumflexbelowdot int32 = 16785112
+const KEY_Ocircumflexgrave int32 = 16785106
+const KEY_Ocircumflexhook int32 = 16785108
+const KEY_Ocircumflextilde int32 = 16785110
+const KEY_Odiaeresis int32 = 214
+const KEY_Odoubleacute int32 = 469
+const KEY_OfficeHome int32 = 269025130
+const KEY_Ograve int32 = 210
+const KEY_Ohook int32 = 16785102
+const KEY_Ohorn int32 = 16777632
+const KEY_Ohornacute int32 = 16785114
+const KEY_Ohornbelowdot int32 = 16785122
+const KEY_Ohorngrave int32 = 16785116
+const KEY_Ohornhook int32 = 16785118
+const KEY_Ohorntilde int32 = 16785120
+const KEY_Omacron int32 = 978
+const KEY_Ooblique int32 = 216
+const KEY_Open int32 = 269025131
+const KEY_OpenURL int32 = 269025080
+const KEY_Option int32 = 269025132
+const KEY_Oslash int32 = 216
+const KEY_Otilde int32 = 213
+const KEY_Overlay1_Enable int32 = 65144
+const KEY_Overlay2_Enable int32 = 65145
+const KEY_P int32 = 80
+const KEY_Pabovedot int32 = 16784982
+const KEY_Page_Down int32 = 65366
+const KEY_Page_Up int32 = 65365
+const KEY_Paste int32 = 269025133
+const KEY_Pause int32 = 65299
+const KEY_PesetaSign int32 = 16785575
+const KEY_Phone int32 = 269025134
+const KEY_Pictures int32 = 269025169
+const KEY_Pointer_Accelerate int32 = 65274
+const KEY_Pointer_Button1 int32 = 65257
+const KEY_Pointer_Button2 int32 = 65258
+const KEY_Pointer_Button3 int32 = 65259
+const KEY_Pointer_Button4 int32 = 65260
+const KEY_Pointer_Button5 int32 = 65261
+const KEY_Pointer_Button_Dflt int32 = 65256
+const KEY_Pointer_DblClick1 int32 = 65263
+const KEY_Pointer_DblClick2 int32 = 65264
+const KEY_Pointer_DblClick3 int32 = 65265
+const KEY_Pointer_DblClick4 int32 = 65266
+const KEY_Pointer_DblClick5 int32 = 65267
+const KEY_Pointer_DblClick_Dflt int32 = 65262
+const KEY_Pointer_DfltBtnNext int32 = 65275
+const KEY_Pointer_DfltBtnPrev int32 = 65276
+const KEY_Pointer_Down int32 = 65251
+const KEY_Pointer_DownLeft int32 = 65254
+const KEY_Pointer_DownRight int32 = 65255
+const KEY_Pointer_Drag1 int32 = 65269
+const KEY_Pointer_Drag2 int32 = 65270
+const KEY_Pointer_Drag3 int32 = 65271
+const KEY_Pointer_Drag4 int32 = 65272
+const KEY_Pointer_Drag5 int32 = 65277
+const KEY_Pointer_Drag_Dflt int32 = 65268
+const KEY_Pointer_EnableKeys int32 = 65273
+const KEY_Pointer_Left int32 = 65248
+const KEY_Pointer_Right int32 = 65249
+const KEY_Pointer_Up int32 = 65250
+const KEY_Pointer_UpLeft int32 = 65252
+const KEY_Pointer_UpRight int32 = 65253
+const KEY_PowerDown int32 = 269025057
+const KEY_PowerOff int32 = 269025066
+const KEY_Prev_VMode int32 = 269024803
+const KEY_Prev_Virtual_Screen int32 = 65233
+const KEY_PreviousCandidate int32 = 65342
+const KEY_Print int32 = 65377
+const KEY_Prior int32 = 65365
+const KEY_Q int32 = 81
+const KEY_R int32 = 82
+const KEY_R1 int32 = 65490
+const KEY_R10 int32 = 65499
+const KEY_R11 int32 = 65500
+const KEY_R12 int32 = 65501
+const KEY_R13 int32 = 65502
+const KEY_R14 int32 = 65503
+const KEY_R15 int32 = 65504
+const KEY_R2 int32 = 65491
+const KEY_R3 int32 = 65492
+const KEY_R4 int32 = 65493
+const KEY_R5 int32 = 65494
+const KEY_R6 int32 = 65495
+const KEY_R7 int32 = 65496
+const KEY_R8 int32 = 65497
+const KEY_R9 int32 = 65498
+const KEY_Racute int32 = 448
+const KEY_Rcaron int32 = 472
+const KEY_Rcedilla int32 = 931
+const KEY_Red int32 = 269025187
+const KEY_Redo int32 = 65382
+const KEY_Refresh int32 = 269025065
+const KEY_Reload int32 = 269025139
+const KEY_RepeatKeys_Enable int32 = 65138
+const KEY_Reply int32 = 269025138
+const KEY_Return int32 = 65293
+const KEY_Right int32 = 65363
+const KEY_RockerDown int32 = 269025060
+const KEY_RockerEnter int32 = 269025061
+const KEY_RockerUp int32 = 269025059
+const KEY_Romaji int32 = 65316
+const KEY_RotateWindows int32 = 269025140
+const KEY_RotationKB int32 = 269025142
+const KEY_RotationPB int32 = 269025141
+const KEY_RupeeSign int32 = 16785576
+const KEY_S int32 = 83
+const KEY_SCHWA int32 = 16777615
+const KEY_Sabovedot int32 = 16784992
+const KEY_Sacute int32 = 422
+const KEY_Save int32 = 269025143
+const KEY_Scaron int32 = 425
+const KEY_Scedilla int32 = 426
+const KEY_Scircumflex int32 = 734
+const KEY_ScreenSaver int32 = 269025069
+const KEY_ScrollClick int32 = 269025146
+const KEY_ScrollDown int32 = 269025145
+const KEY_ScrollUp int32 = 269025144
+const KEY_Scroll_Lock int32 = 65300
+const KEY_Search int32 = 269025051
+const KEY_Select int32 = 65376
+const KEY_SelectButton int32 = 269025184
+const KEY_Send int32 = 269025147
+const KEY_Serbian_DJE int32 = 1713
+const KEY_Serbian_DZE int32 = 1727
+const KEY_Serbian_JE int32 = 1720
+const KEY_Serbian_LJE int32 = 1721
+const KEY_Serbian_NJE int32 = 1722
+const KEY_Serbian_TSHE int32 = 1723
+const KEY_Serbian_dje int32 = 1697
+const KEY_Serbian_dze int32 = 1711
+const KEY_Serbian_je int32 = 1704
+const KEY_Serbian_lje int32 = 1705
+const KEY_Serbian_nje int32 = 1706
+const KEY_Serbian_tshe int32 = 1707
+const KEY_Shift_L int32 = 65505
+const KEY_Shift_Lock int32 = 65510
+const KEY_Shift_R int32 = 65506
+const KEY_Shop int32 = 269025078
+const KEY_SingleCandidate int32 = 65340
+const KEY_Sinh_a int32 = 16780677
+const KEY_Sinh_aa int32 = 16780678
+const KEY_Sinh_aa2 int32 = 16780751
+const KEY_Sinh_ae int32 = 16780679
+const KEY_Sinh_ae2 int32 = 16780752
+const KEY_Sinh_aee int32 = 16780680
+const KEY_Sinh_aee2 int32 = 16780753
+const KEY_Sinh_ai int32 = 16780691
+const KEY_Sinh_ai2 int32 = 16780763
+const KEY_Sinh_al int32 = 16780746
+const KEY_Sinh_au int32 = 16780694
+const KEY_Sinh_au2 int32 = 16780766
+const KEY_Sinh_ba int32 = 16780726
+const KEY_Sinh_bha int32 = 16780727
+const KEY_Sinh_ca int32 = 16780704
+const KEY_Sinh_cha int32 = 16780705
+const KEY_Sinh_dda int32 = 16780713
+const KEY_Sinh_ddha int32 = 16780714
+const KEY_Sinh_dha int32 = 16780719
+const KEY_Sinh_dhha int32 = 16780720
+const KEY_Sinh_e int32 = 16780689
+const KEY_Sinh_e2 int32 = 16780761
+const KEY_Sinh_ee int32 = 16780690
+const KEY_Sinh_ee2 int32 = 16780762
+const KEY_Sinh_fa int32 = 16780742
+const KEY_Sinh_ga int32 = 16780700
+const KEY_Sinh_gha int32 = 16780701
+const KEY_Sinh_h2 int32 = 16780675
+const KEY_Sinh_ha int32 = 16780740
+const KEY_Sinh_i int32 = 16780681
+const KEY_Sinh_i2 int32 = 16780754
+const KEY_Sinh_ii int32 = 16780682
+const KEY_Sinh_ii2 int32 = 16780755
+const KEY_Sinh_ja int32 = 16780706
+const KEY_Sinh_jha int32 = 16780707
+const KEY_Sinh_jnya int32 = 16780709
+const KEY_Sinh_ka int32 = 16780698
+const KEY_Sinh_kha int32 = 16780699
+const KEY_Sinh_kunddaliya int32 = 16780788
+const KEY_Sinh_la int32 = 16780733
+const KEY_Sinh_lla int32 = 16780741
+const KEY_Sinh_lu int32 = 16780687
+const KEY_Sinh_lu2 int32 = 16780767
+const KEY_Sinh_luu int32 = 16780688
+const KEY_Sinh_luu2 int32 = 16780787
+const KEY_Sinh_ma int32 = 16780728
+const KEY_Sinh_mba int32 = 16780729
+const KEY_Sinh_na int32 = 16780721
+const KEY_Sinh_ndda int32 = 16780716
+const KEY_Sinh_ndha int32 = 16780723
+const KEY_Sinh_ng int32 = 16780674
+const KEY_Sinh_ng2 int32 = 16780702
+const KEY_Sinh_nga int32 = 16780703
+const KEY_Sinh_nja int32 = 16780710
+const KEY_Sinh_nna int32 = 16780715
+const KEY_Sinh_nya int32 = 16780708
+const KEY_Sinh_o int32 = 16780692
+const KEY_Sinh_o2 int32 = 16780764
+const KEY_Sinh_oo int32 = 16780693
+const KEY_Sinh_oo2 int32 = 16780765
+const KEY_Sinh_pa int32 = 16780724
+const KEY_Sinh_pha int32 = 16780725
+const KEY_Sinh_ra int32 = 16780731
+const KEY_Sinh_ri int32 = 16780685
+const KEY_Sinh_rii int32 = 16780686
+const KEY_Sinh_ru2 int32 = 16780760
+const KEY_Sinh_ruu2 int32 = 16780786
+const KEY_Sinh_sa int32 = 16780739
+const KEY_Sinh_sha int32 = 16780737
+const KEY_Sinh_ssha int32 = 16780738
+const KEY_Sinh_tha int32 = 16780717
+const KEY_Sinh_thha int32 = 16780718
+const KEY_Sinh_tta int32 = 16780711
+const KEY_Sinh_ttha int32 = 16780712
+const KEY_Sinh_u int32 = 16780683
+const KEY_Sinh_u2 int32 = 16780756
+const KEY_Sinh_uu int32 = 16780684
+const KEY_Sinh_uu2 int32 = 16780758
+const KEY_Sinh_va int32 = 16780736
+const KEY_Sinh_ya int32 = 16780730
+const KEY_Sleep int32 = 269025071
+const KEY_SlowKeys_Enable int32 = 65139
+const KEY_Spell int32 = 269025148
+const KEY_SplitScreen int32 = 269025149
+const KEY_Standby int32 = 269025040
+const KEY_Start int32 = 269025050
+const KEY_StickyKeys_Enable int32 = 65141
+const KEY_Stop int32 = 269025064
+const KEY_Subtitle int32 = 269025178
+const KEY_Super_L int32 = 65515
+const KEY_Super_R int32 = 65516
+const KEY_Support int32 = 269025150
+const KEY_Suspend int32 = 269025191
+const KEY_Switch_VT_1 int32 = 269024769
+const KEY_Switch_VT_10 int32 = 269024778
+const KEY_Switch_VT_11 int32 = 269024779
+const KEY_Switch_VT_12 int32 = 269024780
+const KEY_Switch_VT_2 int32 = 269024770
+const KEY_Switch_VT_3 int32 = 269024771
+const KEY_Switch_VT_4 int32 = 269024772
+const KEY_Switch_VT_5 int32 = 269024773
+const KEY_Switch_VT_6 int32 = 269024774
+const KEY_Switch_VT_7 int32 = 269024775
+const KEY_Switch_VT_8 int32 = 269024776
+const KEY_Switch_VT_9 int32 = 269024777
+const KEY_Sys_Req int32 = 65301
+const KEY_T int32 = 84
+const KEY_THORN int32 = 222
+const KEY_Tab int32 = 65289
+const KEY_Tabovedot int32 = 16785002
+const KEY_TaskPane int32 = 269025151
+const KEY_Tcaron int32 = 427
+const KEY_Tcedilla int32 = 478
+const KEY_Terminal int32 = 269025152
+const KEY_Terminate_Server int32 = 65237
+const KEY_Thai_baht int32 = 3551
+const KEY_Thai_bobaimai int32 = 3514
+const KEY_Thai_chochan int32 = 3496
+const KEY_Thai_chochang int32 = 3498
+const KEY_Thai_choching int32 = 3497
+const KEY_Thai_chochoe int32 = 3500
+const KEY_Thai_dochada int32 = 3502
+const KEY_Thai_dodek int32 = 3508
+const KEY_Thai_fofa int32 = 3517
+const KEY_Thai_fofan int32 = 3519
+const KEY_Thai_hohip int32 = 3531
+const KEY_Thai_honokhuk int32 = 3534
+const KEY_Thai_khokhai int32 = 3490
+const KEY_Thai_khokhon int32 = 3493
+const KEY_Thai_khokhuat int32 = 3491
+const KEY_Thai_khokhwai int32 = 3492
+const KEY_Thai_khorakhang int32 = 3494
+const KEY_Thai_kokai int32 = 3489
+const KEY_Thai_lakkhangyao int32 = 3557
+const KEY_Thai_lekchet int32 = 3575
+const KEY_Thai_lekha int32 = 3573
+const KEY_Thai_lekhok int32 = 3574
+const KEY_Thai_lekkao int32 = 3577
+const KEY_Thai_leknung int32 = 3569
+const KEY_Thai_lekpaet int32 = 3576
+const KEY_Thai_leksam int32 = 3571
+const KEY_Thai_leksi int32 = 3572
+const KEY_Thai_leksong int32 = 3570
+const KEY_Thai_leksun int32 = 3568
+const KEY_Thai_lochula int32 = 3532
+const KEY_Thai_loling int32 = 3525
+const KEY_Thai_lu int32 = 3526
+const KEY_Thai_maichattawa int32 = 3563
+const KEY_Thai_maiek int32 = 3560
+const KEY_Thai_maihanakat int32 = 3537
+const KEY_Thai_maihanakat_maitho int32 = 3550
+const KEY_Thai_maitaikhu int32 = 3559
+const KEY_Thai_maitho int32 = 3561
+const KEY_Thai_maitri int32 = 3562
+const KEY_Thai_maiyamok int32 = 3558
+const KEY_Thai_moma int32 = 3521
+const KEY_Thai_ngongu int32 = 3495
+const KEY_Thai_nikhahit int32 = 3565
+const KEY_Thai_nonen int32 = 3507
+const KEY_Thai_nonu int32 = 3513
+const KEY_Thai_oang int32 = 3533
+const KEY_Thai_paiyannoi int32 = 3535
+const KEY_Thai_phinthu int32 = 3546
+const KEY_Thai_phophan int32 = 3518
+const KEY_Thai_phophung int32 = 3516
+const KEY_Thai_phosamphao int32 = 3520
+const KEY_Thai_popla int32 = 3515
+const KEY_Thai_rorua int32 = 3523
+const KEY_Thai_ru int32 = 3524
+const KEY_Thai_saraa int32 = 3536
+const KEY_Thai_saraaa int32 = 3538
+const KEY_Thai_saraae int32 = 3553
+const KEY_Thai_saraaimaimalai int32 = 3556
+const KEY_Thai_saraaimaimuan int32 = 3555
+const KEY_Thai_saraam int32 = 3539
+const KEY_Thai_sarae int32 = 3552
+const KEY_Thai_sarai int32 = 3540
+const KEY_Thai_saraii int32 = 3541
+const KEY_Thai_sarao int32 = 3554
+const KEY_Thai_sarau int32 = 3544
+const KEY_Thai_saraue int32 = 3542
+const KEY_Thai_sarauee int32 = 3543
+const KEY_Thai_sarauu int32 = 3545
+const KEY_Thai_sorusi int32 = 3529
+const KEY_Thai_sosala int32 = 3528
+const KEY_Thai_soso int32 = 3499
+const KEY_Thai_sosua int32 = 3530
+const KEY_Thai_thanthakhat int32 = 3564
+const KEY_Thai_thonangmontho int32 = 3505
+const KEY_Thai_thophuthao int32 = 3506
+const KEY_Thai_thothahan int32 = 3511
+const KEY_Thai_thothan int32 = 3504
+const KEY_Thai_thothong int32 = 3512
+const KEY_Thai_thothung int32 = 3510
+const KEY_Thai_topatak int32 = 3503
+const KEY_Thai_totao int32 = 3509
+const KEY_Thai_wowaen int32 = 3527
+const KEY_Thai_yoyak int32 = 3522
+const KEY_Thai_yoying int32 = 3501
+const KEY_Thorn int32 = 222
+const KEY_Time int32 = 269025183
+const KEY_ToDoList int32 = 269025055
+const KEY_Tools int32 = 269025153
+const KEY_TopMenu int32 = 269025186
+const KEY_TouchpadOff int32 = 269025201
+const KEY_TouchpadOn int32 = 269025200
+const KEY_TouchpadToggle int32 = 269025193
+const KEY_Touroku int32 = 65323
+const KEY_Travel int32 = 269025154
+const KEY_Tslash int32 = 940
+const KEY_U int32 = 85
+const KEY_UWB int32 = 269025174
+const KEY_Uacute int32 = 218
+const KEY_Ubelowdot int32 = 16785124
+const KEY_Ubreve int32 = 733
+const KEY_Ucircumflex int32 = 219
+const KEY_Udiaeresis int32 = 220
+const KEY_Udoubleacute int32 = 475
+const KEY_Ugrave int32 = 217
+const KEY_Uhook int32 = 16785126
+const KEY_Uhorn int32 = 16777647
+const KEY_Uhornacute int32 = 16785128
+const KEY_Uhornbelowdot int32 = 16785136
+const KEY_Uhorngrave int32 = 16785130
+const KEY_Uhornhook int32 = 16785132
+const KEY_Uhorntilde int32 = 16785134
+const KEY_Ukrainian_GHE_WITH_UPTURN int32 = 1725
+const KEY_Ukrainian_I int32 = 1718
+const KEY_Ukrainian_IE int32 = 1716
+const KEY_Ukrainian_YI int32 = 1719
+const KEY_Ukrainian_ghe_with_upturn int32 = 1709
+const KEY_Ukrainian_i int32 = 1702
+const KEY_Ukrainian_ie int32 = 1700
+const KEY_Ukrainian_yi int32 = 1703
+const KEY_Ukranian_I int32 = 1718
+const KEY_Ukranian_JE int32 = 1716
+const KEY_Ukranian_YI int32 = 1719
+const KEY_Ukranian_i int32 = 1702
+const KEY_Ukranian_je int32 = 1700
+const KEY_Ukranian_yi int32 = 1703
+const KEY_Umacron int32 = 990
+const KEY_Undo int32 = 65381
+const KEY_Ungrab int32 = 269024800
+const KEY_Uogonek int32 = 985
+const KEY_Up int32 = 65362
+const KEY_Uring int32 = 473
+const KEY_User1KB int32 = 269025157
+const KEY_User2KB int32 = 269025158
+const KEY_UserPB int32 = 269025156
+const KEY_Utilde int32 = 989
+const KEY_V int32 = 86
+const KEY_VendorHome int32 = 269025076
+const KEY_Video int32 = 269025159
+const KEY_View int32 = 269025185
+const KEY_VoidSymbol int32 = 16777215
+const KEY_W int32 = 87
+const KEY_WLAN int32 = 269025173
+const KEY_WWW int32 = 269025070
+const KEY_Wacute int32 = 16785026
+const KEY_WakeUp int32 = 269025067
+const KEY_Wcircumflex int32 = 16777588
+const KEY_Wdiaeresis int32 = 16785028
+const KEY_WebCam int32 = 269025167
+const KEY_Wgrave int32 = 16785024
+const KEY_WheelButton int32 = 269025160
+const KEY_WindowClear int32 = 269025109
+const KEY_WonSign int32 = 16785577
+const KEY_Word int32 = 269025161
+const KEY_X int32 = 88
+const KEY_Xabovedot int32 = 16785034
+const KEY_Xfer int32 = 269025162
+const KEY_Y int32 = 89
+const KEY_Yacute int32 = 221
+const KEY_Ybelowdot int32 = 16785140
+const KEY_Ycircumflex int32 = 16777590
+const KEY_Ydiaeresis int32 = 5054
+const KEY_Yellow int32 = 269025189
+const KEY_Ygrave int32 = 16785138
+const KEY_Yhook int32 = 16785142
+const KEY_Ytilde int32 = 16785144
+const KEY_Z int32 = 90
+const KEY_Zabovedot int32 = 431
+const KEY_Zacute int32 = 428
+const KEY_Zcaron int32 = 430
+const KEY_Zen_Koho int32 = 65341
+const KEY_Zenkaku int32 = 65320
+const KEY_Zenkaku_Hankaku int32 = 65322
+const KEY_ZoomIn int32 = 269025163
+const KEY_ZoomOut int32 = 269025164
+const KEY_Zstroke int32 = 16777653
+const KEY_a int32 = 97
+const KEY_aacute int32 = 225
+const KEY_abelowdot int32 = 16785057
+const KEY_abovedot int32 = 511
+const KEY_abreve int32 = 483
+const KEY_abreveacute int32 = 16785071
+const KEY_abrevebelowdot int32 = 16785079
+const KEY_abrevegrave int32 = 16785073
+const KEY_abrevehook int32 = 16785075
+const KEY_abrevetilde int32 = 16785077
+const KEY_acircumflex int32 = 226
+const KEY_acircumflexacute int32 = 16785061
+const KEY_acircumflexbelowdot int32 = 16785069
+const KEY_acircumflexgrave int32 = 16785063
+const KEY_acircumflexhook int32 = 16785065
+const KEY_acircumflextilde int32 = 16785067
+const KEY_acute int32 = 180
+const KEY_adiaeresis int32 = 228
+const KEY_ae int32 = 230
+const KEY_agrave int32 = 224
+const KEY_ahook int32 = 16785059
+const KEY_amacron int32 = 992
+const KEY_ampersand int32 = 38
+const KEY_aogonek int32 = 433
+const KEY_apostrophe int32 = 39
+const KEY_approxeq int32 = 16785992
+const KEY_approximate int32 = 2248
+const KEY_aring int32 = 229
+const KEY_asciicircum int32 = 94
+const KEY_asciitilde int32 = 126
+const KEY_asterisk int32 = 42
+const KEY_at int32 = 64
+const KEY_atilde int32 = 227
+const KEY_b int32 = 98
+const KEY_babovedot int32 = 16784899
+const KEY_backslash int32 = 92
+const KEY_ballotcross int32 = 2804
+const KEY_bar int32 = 124
+const KEY_because int32 = 16785973
+const KEY_blank int32 = 2527
+const KEY_botintegral int32 = 2213
+const KEY_botleftparens int32 = 2220
+const KEY_botleftsqbracket int32 = 2216
+const KEY_botleftsummation int32 = 2226
+const KEY_botrightparens int32 = 2222
+const KEY_botrightsqbracket int32 = 2218
+const KEY_botrightsummation int32 = 2230
+const KEY_bott int32 = 2550
+const KEY_botvertsummationconnector int32 = 2228
+const KEY_braceleft int32 = 123
+const KEY_braceright int32 = 125
+const KEY_bracketleft int32 = 91
+const KEY_bracketright int32 = 93
+const KEY_braille_blank int32 = 16787456
+const KEY_braille_dot_1 int32 = 65521
+const KEY_braille_dot_10 int32 = 65530
+const KEY_braille_dot_2 int32 = 65522
+const KEY_braille_dot_3 int32 = 65523
+const KEY_braille_dot_4 int32 = 65524
+const KEY_braille_dot_5 int32 = 65525
+const KEY_braille_dot_6 int32 = 65526
+const KEY_braille_dot_7 int32 = 65527
+const KEY_braille_dot_8 int32 = 65528
+const KEY_braille_dot_9 int32 = 65529
+const KEY_braille_dots_1 int32 = 16787457
+const KEY_braille_dots_12 int32 = 16787459
+const KEY_braille_dots_123 int32 = 16787463
+const KEY_braille_dots_1234 int32 = 16787471
+const KEY_braille_dots_12345 int32 = 16787487
+const KEY_braille_dots_123456 int32 = 16787519
+const KEY_braille_dots_1234567 int32 = 16787583
+const KEY_braille_dots_12345678 int32 = 16787711
+const KEY_braille_dots_1234568 int32 = 16787647
+const KEY_braille_dots_123457 int32 = 16787551
+const KEY_braille_dots_1234578 int32 = 16787679
+const KEY_braille_dots_123458 int32 = 16787615
+const KEY_braille_dots_12346 int32 = 16787503
+const KEY_braille_dots_123467 int32 = 16787567
+const KEY_braille_dots_1234678 int32 = 16787695
+const KEY_braille_dots_123468 int32 = 16787631
+const KEY_braille_dots_12347 int32 = 16787535
+const KEY_braille_dots_123478 int32 = 16787663
+const KEY_braille_dots_12348 int32 = 16787599
+const KEY_braille_dots_1235 int32 = 16787479
+const KEY_braille_dots_12356 int32 = 16787511
+const KEY_braille_dots_123567 int32 = 16787575
+const KEY_braille_dots_1235678 int32 = 16787703
+const KEY_braille_dots_123568 int32 = 16787639
+const KEY_braille_dots_12357 int32 = 16787543
+const KEY_braille_dots_123578 int32 = 16787671
+const KEY_braille_dots_12358 int32 = 16787607
+const KEY_braille_dots_1236 int32 = 16787495
+const KEY_braille_dots_12367 int32 = 16787559
+const KEY_braille_dots_123678 int32 = 16787687
+const KEY_braille_dots_12368 int32 = 16787623
+const KEY_braille_dots_1237 int32 = 16787527
+const KEY_braille_dots_12378 int32 = 16787655
+const KEY_braille_dots_1238 int32 = 16787591
+const KEY_braille_dots_124 int32 = 16787467
+const KEY_braille_dots_1245 int32 = 16787483
+const KEY_braille_dots_12456 int32 = 16787515
+const KEY_braille_dots_124567 int32 = 16787579
+const KEY_braille_dots_1245678 int32 = 16787707
+const KEY_braille_dots_124568 int32 = 16787643
+const KEY_braille_dots_12457 int32 = 16787547
+const KEY_braille_dots_124578 int32 = 16787675
+const KEY_braille_dots_12458 int32 = 16787611
+const KEY_braille_dots_1246 int32 = 16787499
+const KEY_braille_dots_12467 int32 = 16787563
+const KEY_braille_dots_124678 int32 = 16787691
+const KEY_braille_dots_12468 int32 = 16787627
+const KEY_braille_dots_1247 int32 = 16787531
+const KEY_braille_dots_12478 int32 = 16787659
+const KEY_braille_dots_1248 int32 = 16787595
+const KEY_braille_dots_125 int32 = 16787475
+const KEY_braille_dots_1256 int32 = 16787507
+const KEY_braille_dots_12567 int32 = 16787571
+const KEY_braille_dots_125678 int32 = 16787699
+const KEY_braille_dots_12568 int32 = 16787635
+const KEY_braille_dots_1257 int32 = 16787539
+const KEY_braille_dots_12578 int32 = 16787667
+const KEY_braille_dots_1258 int32 = 16787603
+const KEY_braille_dots_126 int32 = 16787491
+const KEY_braille_dots_1267 int32 = 16787555
+const KEY_braille_dots_12678 int32 = 16787683
+const KEY_braille_dots_1268 int32 = 16787619
+const KEY_braille_dots_127 int32 = 16787523
+const KEY_braille_dots_1278 int32 = 16787651
+const KEY_braille_dots_128 int32 = 16787587
+const KEY_braille_dots_13 int32 = 16787461
+const KEY_braille_dots_134 int32 = 16787469
+const KEY_braille_dots_1345 int32 = 16787485
+const KEY_braille_dots_13456 int32 = 16787517
+const KEY_braille_dots_134567 int32 = 16787581
+const KEY_braille_dots_1345678 int32 = 16787709
+const KEY_braille_dots_134568 int32 = 16787645
+const KEY_braille_dots_13457 int32 = 16787549
+const KEY_braille_dots_134578 int32 = 16787677
+const KEY_braille_dots_13458 int32 = 16787613
+const KEY_braille_dots_1346 int32 = 16787501
+const KEY_braille_dots_13467 int32 = 16787565
+const KEY_braille_dots_134678 int32 = 16787693
+const KEY_braille_dots_13468 int32 = 16787629
+const KEY_braille_dots_1347 int32 = 16787533
+const KEY_braille_dots_13478 int32 = 16787661
+const KEY_braille_dots_1348 int32 = 16787597
+const KEY_braille_dots_135 int32 = 16787477
+const KEY_braille_dots_1356 int32 = 16787509
+const KEY_braille_dots_13567 int32 = 16787573
+const KEY_braille_dots_135678 int32 = 16787701
+const KEY_braille_dots_13568 int32 = 16787637
+const KEY_braille_dots_1357 int32 = 16787541
+const KEY_braille_dots_13578 int32 = 16787669
+const KEY_braille_dots_1358 int32 = 16787605
+const KEY_braille_dots_136 int32 = 16787493
+const KEY_braille_dots_1367 int32 = 16787557
+const KEY_braille_dots_13678 int32 = 16787685
+const KEY_braille_dots_1368 int32 = 16787621
+const KEY_braille_dots_137 int32 = 16787525
+const KEY_braille_dots_1378 int32 = 16787653
+const KEY_braille_dots_138 int32 = 16787589
+const KEY_braille_dots_14 int32 = 16787465
+const KEY_braille_dots_145 int32 = 16787481
+const KEY_braille_dots_1456 int32 = 16787513
+const KEY_braille_dots_14567 int32 = 16787577
+const KEY_braille_dots_145678 int32 = 16787705
+const KEY_braille_dots_14568 int32 = 16787641
+const KEY_braille_dots_1457 int32 = 16787545
+const KEY_braille_dots_14578 int32 = 16787673
+const KEY_braille_dots_1458 int32 = 16787609
+const KEY_braille_dots_146 int32 = 16787497
+const KEY_braille_dots_1467 int32 = 16787561
+const KEY_braille_dots_14678 int32 = 16787689
+const KEY_braille_dots_1468 int32 = 16787625
+const KEY_braille_dots_147 int32 = 16787529
+const KEY_braille_dots_1478 int32 = 16787657
+const KEY_braille_dots_148 int32 = 16787593
+const KEY_braille_dots_15 int32 = 16787473
+const KEY_braille_dots_156 int32 = 16787505
+const KEY_braille_dots_1567 int32 = 16787569
+const KEY_braille_dots_15678 int32 = 16787697
+const KEY_braille_dots_1568 int32 = 16787633
+const KEY_braille_dots_157 int32 = 16787537
+const KEY_braille_dots_1578 int32 = 16787665
+const KEY_braille_dots_158 int32 = 16787601
+const KEY_braille_dots_16 int32 = 16787489
+const KEY_braille_dots_167 int32 = 16787553
+const KEY_braille_dots_1678 int32 = 16787681
+const KEY_braille_dots_168 int32 = 16787617
+const KEY_braille_dots_17 int32 = 16787521
+const KEY_braille_dots_178 int32 = 16787649
+const KEY_braille_dots_18 int32 = 16787585
+const KEY_braille_dots_2 int32 = 16787458
+const KEY_braille_dots_23 int32 = 16787462
+const KEY_braille_dots_234 int32 = 16787470
+const KEY_braille_dots_2345 int32 = 16787486
+const KEY_braille_dots_23456 int32 = 16787518
+const KEY_braille_dots_234567 int32 = 16787582
+const KEY_braille_dots_2345678 int32 = 16787710
+const KEY_braille_dots_234568 int32 = 16787646
+const KEY_braille_dots_23457 int32 = 16787550
+const KEY_braille_dots_234578 int32 = 16787678
+const KEY_braille_dots_23458 int32 = 16787614
+const KEY_braille_dots_2346 int32 = 16787502
+const KEY_braille_dots_23467 int32 = 16787566
+const KEY_braille_dots_234678 int32 = 16787694
+const KEY_braille_dots_23468 int32 = 16787630
+const KEY_braille_dots_2347 int32 = 16787534
+const KEY_braille_dots_23478 int32 = 16787662
+const KEY_braille_dots_2348 int32 = 16787598
+const KEY_braille_dots_235 int32 = 16787478
+const KEY_braille_dots_2356 int32 = 16787510
+const KEY_braille_dots_23567 int32 = 16787574
+const KEY_braille_dots_235678 int32 = 16787702
+const KEY_braille_dots_23568 int32 = 16787638
+const KEY_braille_dots_2357 int32 = 16787542
+const KEY_braille_dots_23578 int32 = 16787670
+const KEY_braille_dots_2358 int32 = 16787606
+const KEY_braille_dots_236 int32 = 16787494
+const KEY_braille_dots_2367 int32 = 16787558
+const KEY_braille_dots_23678 int32 = 16787686
+const KEY_braille_dots_2368 int32 = 16787622
+const KEY_braille_dots_237 int32 = 16787526
+const KEY_braille_dots_2378 int32 = 16787654
+const KEY_braille_dots_238 int32 = 16787590
+const KEY_braille_dots_24 int32 = 16787466
+const KEY_braille_dots_245 int32 = 16787482
+const KEY_braille_dots_2456 int32 = 16787514
+const KEY_braille_dots_24567 int32 = 16787578
+const KEY_braille_dots_245678 int32 = 16787706
+const KEY_braille_dots_24568 int32 = 16787642
+const KEY_braille_dots_2457 int32 = 16787546
+const KEY_braille_dots_24578 int32 = 16787674
+const KEY_braille_dots_2458 int32 = 16787610
+const KEY_braille_dots_246 int32 = 16787498
+const KEY_braille_dots_2467 int32 = 16787562
+const KEY_braille_dots_24678 int32 = 16787690
+const KEY_braille_dots_2468 int32 = 16787626
+const KEY_braille_dots_247 int32 = 16787530
+const KEY_braille_dots_2478 int32 = 16787658
+const KEY_braille_dots_248 int32 = 16787594
+const KEY_braille_dots_25 int32 = 16787474
+const KEY_braille_dots_256 int32 = 16787506
+const KEY_braille_dots_2567 int32 = 16787570
+const KEY_braille_dots_25678 int32 = 16787698
+const KEY_braille_dots_2568 int32 = 16787634
+const KEY_braille_dots_257 int32 = 16787538
+const KEY_braille_dots_2578 int32 = 16787666
+const KEY_braille_dots_258 int32 = 16787602
+const KEY_braille_dots_26 int32 = 16787490
+const KEY_braille_dots_267 int32 = 16787554
+const KEY_braille_dots_2678 int32 = 16787682
+const KEY_braille_dots_268 int32 = 16787618
+const KEY_braille_dots_27 int32 = 16787522
+const KEY_braille_dots_278 int32 = 16787650
+const KEY_braille_dots_28 int32 = 16787586
+const KEY_braille_dots_3 int32 = 16787460
+const KEY_braille_dots_34 int32 = 16787468
+const KEY_braille_dots_345 int32 = 16787484
+const KEY_braille_dots_3456 int32 = 16787516
+const KEY_braille_dots_34567 int32 = 16787580
+const KEY_braille_dots_345678 int32 = 16787708
+const KEY_braille_dots_34568 int32 = 16787644
+const KEY_braille_dots_3457 int32 = 16787548
+const KEY_braille_dots_34578 int32 = 16787676
+const KEY_braille_dots_3458 int32 = 16787612
+const KEY_braille_dots_346 int32 = 16787500
+const KEY_braille_dots_3467 int32 = 16787564
+const KEY_braille_dots_34678 int32 = 16787692
+const KEY_braille_dots_3468 int32 = 16787628
+const KEY_braille_dots_347 int32 = 16787532
+const KEY_braille_dots_3478 int32 = 16787660
+const KEY_braille_dots_348 int32 = 16787596
+const KEY_braille_dots_35 int32 = 16787476
+const KEY_braille_dots_356 int32 = 16787508
+const KEY_braille_dots_3567 int32 = 16787572
+const KEY_braille_dots_35678 int32 = 16787700
+const KEY_braille_dots_3568 int32 = 16787636
+const KEY_braille_dots_357 int32 = 16787540
+const KEY_braille_dots_3578 int32 = 16787668
+const KEY_braille_dots_358 int32 = 16787604
+const KEY_braille_dots_36 int32 = 16787492
+const KEY_braille_dots_367 int32 = 16787556
+const KEY_braille_dots_3678 int32 = 16787684
+const KEY_braille_dots_368 int32 = 16787620
+const KEY_braille_dots_37 int32 = 16787524
+const KEY_braille_dots_378 int32 = 16787652
+const KEY_braille_dots_38 int32 = 16787588
+const KEY_braille_dots_4 int32 = 16787464
+const KEY_braille_dots_45 int32 = 16787480
+const KEY_braille_dots_456 int32 = 16787512
+const KEY_braille_dots_4567 int32 = 16787576
+const KEY_braille_dots_45678 int32 = 16787704
+const KEY_braille_dots_4568 int32 = 16787640
+const KEY_braille_dots_457 int32 = 16787544
+const KEY_braille_dots_4578 int32 = 16787672
+const KEY_braille_dots_458 int32 = 16787608
+const KEY_braille_dots_46 int32 = 16787496
+const KEY_braille_dots_467 int32 = 16787560
+const KEY_braille_dots_4678 int32 = 16787688
+const KEY_braille_dots_468 int32 = 16787624
+const KEY_braille_dots_47 int32 = 16787528
+const KEY_braille_dots_478 int32 = 16787656
+const KEY_braille_dots_48 int32 = 16787592
+const KEY_braille_dots_5 int32 = 16787472
+const KEY_braille_dots_56 int32 = 16787504
+const KEY_braille_dots_567 int32 = 16787568
+const KEY_braille_dots_5678 int32 = 16787696
+const KEY_braille_dots_568 int32 = 16787632
+const KEY_braille_dots_57 int32 = 16787536
+const KEY_braille_dots_578 int32 = 16787664
+const KEY_braille_dots_58 int32 = 16787600
+const KEY_braille_dots_6 int32 = 16787488
+const KEY_braille_dots_67 int32 = 16787552
+const KEY_braille_dots_678 int32 = 16787680
+const KEY_braille_dots_68 int32 = 16787616
+const KEY_braille_dots_7 int32 = 16787520
+const KEY_braille_dots_78 int32 = 16787648
+const KEY_braille_dots_8 int32 = 16787584
+const KEY_breve int32 = 418
+const KEY_brokenbar int32 = 166
+const KEY_c int32 = 99
+const KEY_c_h int32 = 65187
+const KEY_cabovedot int32 = 741
+const KEY_cacute int32 = 486
+const KEY_careof int32 = 2744
+const KEY_caret int32 = 2812
+const KEY_caron int32 = 439
+const KEY_ccaron int32 = 488
+const KEY_ccedilla int32 = 231
+const KEY_ccircumflex int32 = 742
+const KEY_cedilla int32 = 184
+const KEY_cent int32 = 162
+const KEY_ch int32 = 65184
+const KEY_checkerboard int32 = 2529
+const KEY_checkmark int32 = 2803
+const KEY_circle int32 = 3023
+const KEY_club int32 = 2796
+const KEY_colon int32 = 58
+const KEY_comma int32 = 44
+const KEY_containsas int32 = 16785931
+const KEY_copyright int32 = 169
+const KEY_cr int32 = 2532
+const KEY_crossinglines int32 = 2542
+const KEY_cuberoot int32 = 16785947
+const KEY_currency int32 = 164
+const KEY_cursor int32 = 2815
+const KEY_d int32 = 100
+const KEY_dabovedot int32 = 16784907
+const KEY_dagger int32 = 2801
+const KEY_dcaron int32 = 495
+const KEY_dead_A int32 = 65153
+const KEY_dead_E int32 = 65155
+const KEY_dead_I int32 = 65157
+const KEY_dead_O int32 = 65159
+const KEY_dead_U int32 = 65161
+const KEY_dead_a int32 = 65152
+const KEY_dead_abovecomma int32 = 65124
+const KEY_dead_abovedot int32 = 65110
+const KEY_dead_abovereversedcomma int32 = 65125
+const KEY_dead_abovering int32 = 65112
+const KEY_dead_acute int32 = 65105
+const KEY_dead_belowbreve int32 = 65131
+const KEY_dead_belowcircumflex int32 = 65129
+const KEY_dead_belowcomma int32 = 65134
+const KEY_dead_belowdiaeresis int32 = 65132
+const KEY_dead_belowdot int32 = 65120
+const KEY_dead_belowmacron int32 = 65128
+const KEY_dead_belowring int32 = 65127
+const KEY_dead_belowtilde int32 = 65130
+const KEY_dead_breve int32 = 65109
+const KEY_dead_capital_schwa int32 = 65163
+const KEY_dead_caron int32 = 65114
+const KEY_dead_cedilla int32 = 65115
+const KEY_dead_circumflex int32 = 65106
+const KEY_dead_currency int32 = 65135
+const KEY_dead_dasia int32 = 65125
+const KEY_dead_diaeresis int32 = 65111
+const KEY_dead_doubleacute int32 = 65113
+const KEY_dead_doublegrave int32 = 65126
+const KEY_dead_e int32 = 65154
+const KEY_dead_grave int32 = 65104
+const KEY_dead_greek int32 = 65164
+const KEY_dead_hook int32 = 65121
+const KEY_dead_horn int32 = 65122
+const KEY_dead_i int32 = 65156
+const KEY_dead_invertedbreve int32 = 65133
+const KEY_dead_iota int32 = 65117
+const KEY_dead_macron int32 = 65108
+const KEY_dead_o int32 = 65158
+const KEY_dead_ogonek int32 = 65116
+const KEY_dead_perispomeni int32 = 65107
+const KEY_dead_psili int32 = 65124
+const KEY_dead_semivoiced_sound int32 = 65119
+const KEY_dead_small_schwa int32 = 65162
+const KEY_dead_stroke int32 = 65123
+const KEY_dead_tilde int32 = 65107
+const KEY_dead_u int32 = 65160
+const KEY_dead_voiced_sound int32 = 65118
+const KEY_decimalpoint int32 = 2749
+const KEY_degree int32 = 176
+const KEY_diaeresis int32 = 168
+const KEY_diamond int32 = 2797
+const KEY_digitspace int32 = 2725
+const KEY_dintegral int32 = 16785964
+const KEY_division int32 = 247
+const KEY_dollar int32 = 36
+const KEY_doubbaselinedot int32 = 2735
+const KEY_doubleacute int32 = 445
+const KEY_doubledagger int32 = 2802
+const KEY_doublelowquotemark int32 = 2814
+const KEY_downarrow int32 = 2302
+const KEY_downcaret int32 = 2984
+const KEY_downshoe int32 = 3030
+const KEY_downstile int32 = 3012
+const KEY_downtack int32 = 3010
+const KEY_dstroke int32 = 496
+const KEY_e int32 = 101
+const KEY_eabovedot int32 = 1004
+const KEY_eacute int32 = 233
+const KEY_ebelowdot int32 = 16785081
+const KEY_ecaron int32 = 492
+const KEY_ecircumflex int32 = 234
+const KEY_ecircumflexacute int32 = 16785087
+const KEY_ecircumflexbelowdot int32 = 16785095
+const KEY_ecircumflexgrave int32 = 16785089
+const KEY_ecircumflexhook int32 = 16785091
+const KEY_ecircumflextilde int32 = 16785093
+const KEY_ediaeresis int32 = 235
+const KEY_egrave int32 = 232
+const KEY_ehook int32 = 16785083
+const KEY_eightsubscript int32 = 16785544
+const KEY_eightsuperior int32 = 16785528
+const KEY_elementof int32 = 16785928
+const KEY_ellipsis int32 = 2734
+const KEY_em3space int32 = 2723
+const KEY_em4space int32 = 2724
+const KEY_emacron int32 = 954
+const KEY_emdash int32 = 2729
+const KEY_emfilledcircle int32 = 2782
+const KEY_emfilledrect int32 = 2783
+const KEY_emopencircle int32 = 2766
+const KEY_emopenrectangle int32 = 2767
+const KEY_emptyset int32 = 16785925
+const KEY_emspace int32 = 2721
+const KEY_endash int32 = 2730
+const KEY_enfilledcircbullet int32 = 2790
+const KEY_enfilledsqbullet int32 = 2791
+const KEY_eng int32 = 959
+const KEY_enopencircbullet int32 = 2784
+const KEY_enopensquarebullet int32 = 2785
+const KEY_enspace int32 = 2722
+const KEY_eogonek int32 = 490
+const KEY_equal int32 = 61
+const KEY_eth int32 = 240
+const KEY_etilde int32 = 16785085
+const KEY_exclam int32 = 33
+const KEY_exclamdown int32 = 161
+const KEY_ezh int32 = 16777874
+const KEY_f int32 = 102
+const KEY_fabovedot int32 = 16784927
+const KEY_femalesymbol int32 = 2808
+const KEY_ff int32 = 2531
+const KEY_figdash int32 = 2747
+const KEY_filledlefttribullet int32 = 2780
+const KEY_filledrectbullet int32 = 2779
+const KEY_filledrighttribullet int32 = 2781
+const KEY_filledtribulletdown int32 = 2793
+const KEY_filledtribulletup int32 = 2792
+const KEY_fiveeighths int32 = 2757
+const KEY_fivesixths int32 = 2743
+const KEY_fivesubscript int32 = 16785541
+const KEY_fivesuperior int32 = 16785525
+const KEY_fourfifths int32 = 2741
+const KEY_foursubscript int32 = 16785540
+const KEY_foursuperior int32 = 16785524
+const KEY_fourthroot int32 = 16785948
+const KEY_function int32 = 2294
+const KEY_g int32 = 103
+const KEY_gabovedot int32 = 757
+const KEY_gbreve int32 = 699
+const KEY_gcaron int32 = 16777703
+const KEY_gcedilla int32 = 955
+const KEY_gcircumflex int32 = 760
+const KEY_grave int32 = 96
+const KEY_greater int32 = 62
+const KEY_greaterthanequal int32 = 2238
+const KEY_guillemotleft int32 = 171
+const KEY_guillemotright int32 = 187
+const KEY_h int32 = 104
+const KEY_hairspace int32 = 2728
+const KEY_hcircumflex int32 = 694
+const KEY_heart int32 = 2798
+const KEY_hebrew_aleph int32 = 3296
+const KEY_hebrew_ayin int32 = 3314
+const KEY_hebrew_bet int32 = 3297
+const KEY_hebrew_beth int32 = 3297
+const KEY_hebrew_chet int32 = 3303
+const KEY_hebrew_dalet int32 = 3299
+const KEY_hebrew_daleth int32 = 3299
+const KEY_hebrew_doublelowline int32 = 3295
+const KEY_hebrew_finalkaph int32 = 3306
+const KEY_hebrew_finalmem int32 = 3309
+const KEY_hebrew_finalnun int32 = 3311
+const KEY_hebrew_finalpe int32 = 3315
+const KEY_hebrew_finalzade int32 = 3317
+const KEY_hebrew_finalzadi int32 = 3317
+const KEY_hebrew_gimel int32 = 3298
+const KEY_hebrew_gimmel int32 = 3298
+const KEY_hebrew_he int32 = 3300
+const KEY_hebrew_het int32 = 3303
+const KEY_hebrew_kaph int32 = 3307
+const KEY_hebrew_kuf int32 = 3319
+const KEY_hebrew_lamed int32 = 3308
+const KEY_hebrew_mem int32 = 3310
+const KEY_hebrew_nun int32 = 3312
+const KEY_hebrew_pe int32 = 3316
+const KEY_hebrew_qoph int32 = 3319
+const KEY_hebrew_resh int32 = 3320
+const KEY_hebrew_samech int32 = 3313
+const KEY_hebrew_samekh int32 = 3313
+const KEY_hebrew_shin int32 = 3321
+const KEY_hebrew_taf int32 = 3322
+const KEY_hebrew_taw int32 = 3322
+const KEY_hebrew_tet int32 = 3304
+const KEY_hebrew_teth int32 = 3304
+const KEY_hebrew_waw int32 = 3301
+const KEY_hebrew_yod int32 = 3305
+const KEY_hebrew_zade int32 = 3318
+const KEY_hebrew_zadi int32 = 3318
+const KEY_hebrew_zain int32 = 3302
+const KEY_hebrew_zayin int32 = 3302
+const KEY_hexagram int32 = 2778
+const KEY_horizconnector int32 = 2211
+const KEY_horizlinescan1 int32 = 2543
+const KEY_horizlinescan3 int32 = 2544
+const KEY_horizlinescan5 int32 = 2545
+const KEY_horizlinescan7 int32 = 2546
+const KEY_horizlinescan9 int32 = 2547
+const KEY_hstroke int32 = 689
+const KEY_ht int32 = 2530
+const KEY_hyphen int32 = 173
+const KEY_i int32 = 105
+const KEY_iTouch int32 = 269025120
+const KEY_iacute int32 = 237
+const KEY_ibelowdot int32 = 16785099
+const KEY_ibreve int32 = 16777517
+const KEY_icircumflex int32 = 238
+const KEY_identical int32 = 2255
+const KEY_idiaeresis int32 = 239
+const KEY_idotless int32 = 697
+const KEY_ifonlyif int32 = 2253
+const KEY_igrave int32 = 236
+const KEY_ihook int32 = 16785097
+const KEY_imacron int32 = 1007
+const KEY_implies int32 = 2254
+const KEY_includedin int32 = 2266
+const KEY_includes int32 = 2267
+const KEY_infinity int32 = 2242
+const KEY_integral int32 = 2239
+const KEY_intersection int32 = 2268
+const KEY_iogonek int32 = 999
+const KEY_itilde int32 = 949
+const KEY_j int32 = 106
+const KEY_jcircumflex int32 = 700
+const KEY_jot int32 = 3018
+const KEY_k int32 = 107
+const KEY_kana_A int32 = 1201
+const KEY_kana_CHI int32 = 1217
+const KEY_kana_E int32 = 1204
+const KEY_kana_FU int32 = 1228
+const KEY_kana_HA int32 = 1226
+const KEY_kana_HE int32 = 1229
+const KEY_kana_HI int32 = 1227
+const KEY_kana_HO int32 = 1230
+const KEY_kana_HU int32 = 1228
+const KEY_kana_I int32 = 1202
+const KEY_kana_KA int32 = 1206
+const KEY_kana_KE int32 = 1209
+const KEY_kana_KI int32 = 1207
+const KEY_kana_KO int32 = 1210
+const KEY_kana_KU int32 = 1208
+const KEY_kana_MA int32 = 1231
+const KEY_kana_ME int32 = 1234
+const KEY_kana_MI int32 = 1232
+const KEY_kana_MO int32 = 1235
+const KEY_kana_MU int32 = 1233
+const KEY_kana_N int32 = 1245
+const KEY_kana_NA int32 = 1221
+const KEY_kana_NE int32 = 1224
+const KEY_kana_NI int32 = 1222
+const KEY_kana_NO int32 = 1225
+const KEY_kana_NU int32 = 1223
+const KEY_kana_O int32 = 1205
+const KEY_kana_RA int32 = 1239
+const KEY_kana_RE int32 = 1242
+const KEY_kana_RI int32 = 1240
+const KEY_kana_RO int32 = 1243
+const KEY_kana_RU int32 = 1241
+const KEY_kana_SA int32 = 1211
+const KEY_kana_SE int32 = 1214
+const KEY_kana_SHI int32 = 1212
+const KEY_kana_SO int32 = 1215
+const KEY_kana_SU int32 = 1213
+const KEY_kana_TA int32 = 1216
+const KEY_kana_TE int32 = 1219
+const KEY_kana_TI int32 = 1217
+const KEY_kana_TO int32 = 1220
+const KEY_kana_TSU int32 = 1218
+const KEY_kana_TU int32 = 1218
+const KEY_kana_U int32 = 1203
+const KEY_kana_WA int32 = 1244
+const KEY_kana_WO int32 = 1190
+const KEY_kana_YA int32 = 1236
+const KEY_kana_YO int32 = 1238
+const KEY_kana_YU int32 = 1237
+const KEY_kana_a int32 = 1191
+const KEY_kana_closingbracket int32 = 1187
+const KEY_kana_comma int32 = 1188
+const KEY_kana_conjunctive int32 = 1189
+const KEY_kana_e int32 = 1194
+const KEY_kana_fullstop int32 = 1185
+const KEY_kana_i int32 = 1192
+const KEY_kana_middledot int32 = 1189
+const KEY_kana_o int32 = 1195
+const KEY_kana_openingbracket int32 = 1186
+const KEY_kana_switch int32 = 65406
+const KEY_kana_tsu int32 = 1199
+const KEY_kana_tu int32 = 1199
+const KEY_kana_u int32 = 1193
+const KEY_kana_ya int32 = 1196
+const KEY_kana_yo int32 = 1198
+const KEY_kana_yu int32 = 1197
+const KEY_kappa int32 = 930
+const KEY_kcedilla int32 = 1011
+const KEY_kra int32 = 930
+const KEY_l int32 = 108
+const KEY_lacute int32 = 485
+const KEY_latincross int32 = 2777
+const KEY_lbelowdot int32 = 16784951
+const KEY_lcaron int32 = 437
+const KEY_lcedilla int32 = 950
+const KEY_leftanglebracket int32 = 2748
+const KEY_leftarrow int32 = 2299
+const KEY_leftcaret int32 = 2979
+const KEY_leftdoublequotemark int32 = 2770
+const KEY_leftmiddlecurlybrace int32 = 2223
+const KEY_leftopentriangle int32 = 2764
+const KEY_leftpointer int32 = 2794
+const KEY_leftradical int32 = 2209
+const KEY_leftshoe int32 = 3034
+const KEY_leftsinglequotemark int32 = 2768
+const KEY_leftt int32 = 2548
+const KEY_lefttack int32 = 3036
+const KEY_less int32 = 60
+const KEY_lessthanequal int32 = 2236
+const KEY_lf int32 = 2533
+const KEY_logicaland int32 = 2270
+const KEY_logicalor int32 = 2271
+const KEY_lowleftcorner int32 = 2541
+const KEY_lowrightcorner int32 = 2538
+const KEY_lstroke int32 = 435
+const KEY_m int32 = 109
+const KEY_mabovedot int32 = 16784961
+const KEY_macron int32 = 175
+const KEY_malesymbol int32 = 2807
+const KEY_maltesecross int32 = 2800
+const KEY_marker int32 = 2751
+const KEY_masculine int32 = 186
+const KEY_minus int32 = 45
+const KEY_minutes int32 = 2774
+const KEY_mu int32 = 181
+const KEY_multiply int32 = 215
+const KEY_musicalflat int32 = 2806
+const KEY_musicalsharp int32 = 2805
+const KEY_n int32 = 110
+const KEY_nabla int32 = 2245
+const KEY_nacute int32 = 497
+const KEY_ncaron int32 = 498
+const KEY_ncedilla int32 = 1009
+const KEY_ninesubscript int32 = 16785545
+const KEY_ninesuperior int32 = 16785529
+const KEY_nl int32 = 2536
+const KEY_nobreakspace int32 = 160
+const KEY_notapproxeq int32 = 16785991
+const KEY_notelementof int32 = 16785929
+const KEY_notequal int32 = 2237
+const KEY_notidentical int32 = 16786018
+const KEY_notsign int32 = 172
+const KEY_ntilde int32 = 241
+const KEY_numbersign int32 = 35
+const KEY_numerosign int32 = 1712
+const KEY_o int32 = 111
+const KEY_oacute int32 = 243
+const KEY_obarred int32 = 16777845
+const KEY_obelowdot int32 = 16785101
+const KEY_ocaron int32 = 16777682
+const KEY_ocircumflex int32 = 244
+const KEY_ocircumflexacute int32 = 16785105
+const KEY_ocircumflexbelowdot int32 = 16785113
+const KEY_ocircumflexgrave int32 = 16785107
+const KEY_ocircumflexhook int32 = 16785109
+const KEY_ocircumflextilde int32 = 16785111
+const KEY_odiaeresis int32 = 246
+const KEY_odoubleacute int32 = 501
+const KEY_oe int32 = 5053
+const KEY_ogonek int32 = 434
+const KEY_ograve int32 = 242
+const KEY_ohook int32 = 16785103
+const KEY_ohorn int32 = 16777633
+const KEY_ohornacute int32 = 16785115
+const KEY_ohornbelowdot int32 = 16785123
+const KEY_ohorngrave int32 = 16785117
+const KEY_ohornhook int32 = 16785119
+const KEY_ohorntilde int32 = 16785121
+const KEY_omacron int32 = 1010
+const KEY_oneeighth int32 = 2755
+const KEY_onefifth int32 = 2738
+const KEY_onehalf int32 = 189
+const KEY_onequarter int32 = 188
+const KEY_onesixth int32 = 2742
+const KEY_onesubscript int32 = 16785537
+const KEY_onesuperior int32 = 185
+const KEY_onethird int32 = 2736
+const KEY_ooblique int32 = 248
+const KEY_openrectbullet int32 = 2786
+const KEY_openstar int32 = 2789
+const KEY_opentribulletdown int32 = 2788
+const KEY_opentribulletup int32 = 2787
+const KEY_ordfeminine int32 = 170
+const KEY_oslash int32 = 248
+const KEY_otilde int32 = 245
+const KEY_overbar int32 = 3008
+const KEY_overline int32 = 1150
+const KEY_p int32 = 112
+const KEY_pabovedot int32 = 16784983
+const KEY_paragraph int32 = 182
+const KEY_parenleft int32 = 40
+const KEY_parenright int32 = 41
+const KEY_partdifferential int32 = 16785922
+const KEY_partialderivative int32 = 2287
+const KEY_percent int32 = 37
+const KEY_period int32 = 46
+const KEY_periodcentered int32 = 183
+const KEY_permille int32 = 2773
+const KEY_phonographcopyright int32 = 2811
+const KEY_plus int32 = 43
+const KEY_plusminus int32 = 177
+const KEY_prescription int32 = 2772
+const KEY_prolongedsound int32 = 1200
+const KEY_punctspace int32 = 2726
+const KEY_q int32 = 113
+const KEY_quad int32 = 3020
+const KEY_question int32 = 63
+const KEY_questiondown int32 = 191
+const KEY_quotedbl int32 = 34
+const KEY_quoteleft int32 = 96
+const KEY_quoteright int32 = 39
+const KEY_r int32 = 114
+const KEY_racute int32 = 480
+const KEY_radical int32 = 2262
+const KEY_rcaron int32 = 504
+const KEY_rcedilla int32 = 947
+const KEY_registered int32 = 174
+const KEY_rightanglebracket int32 = 2750
+const KEY_rightarrow int32 = 2301
+const KEY_rightcaret int32 = 2982
+const KEY_rightdoublequotemark int32 = 2771
+const KEY_rightmiddlecurlybrace int32 = 2224
+const KEY_rightmiddlesummation int32 = 2231
+const KEY_rightopentriangle int32 = 2765
+const KEY_rightpointer int32 = 2795
+const KEY_rightshoe int32 = 3032
+const KEY_rightsinglequotemark int32 = 2769
+const KEY_rightt int32 = 2549
+const KEY_righttack int32 = 3068
+const KEY_s int32 = 115
+const KEY_sabovedot int32 = 16784993
+const KEY_sacute int32 = 438
+const KEY_scaron int32 = 441
+const KEY_scedilla int32 = 442
+const KEY_schwa int32 = 16777817
+const KEY_scircumflex int32 = 766
+const KEY_script_switch int32 = 65406
+const KEY_seconds int32 = 2775
+const KEY_section int32 = 167
+const KEY_semicolon int32 = 59
+const KEY_semivoicedsound int32 = 1247
+const KEY_seveneighths int32 = 2758
+const KEY_sevensubscript int32 = 16785543
+const KEY_sevensuperior int32 = 16785527
+const KEY_signaturemark int32 = 2762
+const KEY_signifblank int32 = 2732
+const KEY_similarequal int32 = 2249
+const KEY_singlelowquotemark int32 = 2813
+const KEY_sixsubscript int32 = 16785542
+const KEY_sixsuperior int32 = 16785526
+const KEY_slash int32 = 47
+const KEY_soliddiamond int32 = 2528
+const KEY_space int32 = 32
+const KEY_squareroot int32 = 16785946
+const KEY_ssharp int32 = 223
+const KEY_sterling int32 = 163
+const KEY_stricteq int32 = 16786019
+const KEY_t int32 = 116
+const KEY_tabovedot int32 = 16785003
+const KEY_tcaron int32 = 443
+const KEY_tcedilla int32 = 510
+const KEY_telephone int32 = 2809
+const KEY_telephonerecorder int32 = 2810
+const KEY_therefore int32 = 2240
+const KEY_thinspace int32 = 2727
+const KEY_thorn int32 = 254
+const KEY_threeeighths int32 = 2756
+const KEY_threefifths int32 = 2740
+const KEY_threequarters int32 = 190
+const KEY_threesubscript int32 = 16785539
+const KEY_threesuperior int32 = 179
+const KEY_tintegral int32 = 16785965
+const KEY_topintegral int32 = 2212
+const KEY_topleftparens int32 = 2219
+const KEY_topleftradical int32 = 2210
+const KEY_topleftsqbracket int32 = 2215
+const KEY_topleftsummation int32 = 2225
+const KEY_toprightparens int32 = 2221
+const KEY_toprightsqbracket int32 = 2217
+const KEY_toprightsummation int32 = 2229
+const KEY_topt int32 = 2551
+const KEY_topvertsummationconnector int32 = 2227
+const KEY_trademark int32 = 2761
+const KEY_trademarkincircle int32 = 2763
+const KEY_tslash int32 = 956
+const KEY_twofifths int32 = 2739
+const KEY_twosubscript int32 = 16785538
+const KEY_twosuperior int32 = 178
+const KEY_twothirds int32 = 2737
+const KEY_u int32 = 117
+const KEY_uacute int32 = 250
+const KEY_ubelowdot int32 = 16785125
+const KEY_ubreve int32 = 765
+const KEY_ucircumflex int32 = 251
+const KEY_udiaeresis int32 = 252
+const KEY_udoubleacute int32 = 507
+const KEY_ugrave int32 = 249
+const KEY_uhook int32 = 16785127
+const KEY_uhorn int32 = 16777648
+const KEY_uhornacute int32 = 16785129
+const KEY_uhornbelowdot int32 = 16785137
+const KEY_uhorngrave int32 = 16785131
+const KEY_uhornhook int32 = 16785133
+const KEY_uhorntilde int32 = 16785135
+const KEY_umacron int32 = 1022
+const KEY_underbar int32 = 3014
+const KEY_underscore int32 = 95
+const KEY_union int32 = 2269
+const KEY_uogonek int32 = 1017
+const KEY_uparrow int32 = 2300
+const KEY_upcaret int32 = 2985
+const KEY_upleftcorner int32 = 2540
+const KEY_uprightcorner int32 = 2539
+const KEY_upshoe int32 = 3011
+const KEY_upstile int32 = 3027
+const KEY_uptack int32 = 3022
+const KEY_uring int32 = 505
+const KEY_utilde int32 = 1021
+const KEY_v int32 = 118
+const KEY_variation int32 = 2241
+const KEY_vertbar int32 = 2552
+const KEY_vertconnector int32 = 2214
+const KEY_voicedsound int32 = 1246
+const KEY_vt int32 = 2537
+const KEY_w int32 = 119
+const KEY_wacute int32 = 16785027
+const KEY_wcircumflex int32 = 16777589
+const KEY_wdiaeresis int32 = 16785029
+const KEY_wgrave int32 = 16785025
+const KEY_x int32 = 120
+const KEY_xabovedot int32 = 16785035
+const KEY_y int32 = 121
+const KEY_yacute int32 = 253
+const KEY_ybelowdot int32 = 16785141
+const KEY_ycircumflex int32 = 16777591
+const KEY_ydiaeresis int32 = 255
+const KEY_yen int32 = 165
+const KEY_ygrave int32 = 16785139
+const KEY_yhook int32 = 16785143
+const KEY_ytilde int32 = 16785145
+const KEY_z int32 = 122
+const KEY_zabovedot int32 = 447
+const KEY_zacute int32 = 444
+const KEY_zcaron int32 = 446
+const KEY_zerosubscript int32 = 16785536
+const KEY_zerosuperior int32 = 16785520
+const KEY_zstroke int32 = 16777654
+const MAX_TIMECOORD_AXES int32 = 128
+const PARENT_RELATIVE int32 = 1
+const PRIORITY_REDRAW int32 = 20
+
+type AxisUse int
+
+const (
+	GDK_AXIS_IGNORE   AxisUse = 0
+	GDK_AXIS_X        AxisUse = 1
+	GDK_AXIS_Y        AxisUse = 2
+	GDK_AXIS_PRESSURE AxisUse = 3
+	GDK_AXIS_XTILT    AxisUse = 4
+	GDK_AXIS_YTILT    AxisUse = 5
+	GDK_AXIS_WHEEL    AxisUse = 6
+	GDK_AXIS_DISTANCE AxisUse = 7
+	GDK_AXIS_ROTATION AxisUse = 8
+	GDK_AXIS_SLIDER   AxisUse = 9
+	GDK_AXIS_LAST     AxisUse = 10
+)
+
+type ByteOrder int
+
+const (
+	GDK_LSB_FIRST ByteOrder = 0
+	GDK_MSB_FIRST ByteOrder = 1
+)
+
+type CrossingMode int
+
+const (
+	GDK_CROSSING_NORMAL        CrossingMode = 0
+	GDK_CROSSING_GRAB          CrossingMode = 1
+	GDK_CROSSING_UNGRAB        CrossingMode = 2
+	GDK_CROSSING_GTK_GRAB      CrossingMode = 3
+	GDK_CROSSING_GTK_UNGRAB    CrossingMode = 4
+	GDK_CROSSING_STATE_CHANGED CrossingMode = 5
+	GDK_CROSSING_TOUCH_BEGIN   CrossingMode = 6
+	GDK_CROSSING_TOUCH_END     CrossingMode = 7
+	GDK_CROSSING_DEVICE_SWITCH CrossingMode = 8
+)
+
+type CursorType int
+
+const (
+	GDK_X_CURSOR            CursorType = 0
+	GDK_ARROW               CursorType = 2
+	GDK_BASED_ARROW_DOWN    CursorType = 4
+	GDK_BASED_ARROW_UP      CursorType = 6
+	GDK_BOAT                CursorType = 8
+	GDK_BOGOSITY            CursorType = 10
+	GDK_BOTTOM_LEFT_CORNER  CursorType = 12
+	GDK_BOTTOM_RIGHT_CORNER CursorType = 14
+	GDK_BOTTOM_SIDE         CursorType = 16
+	GDK_BOTTOM_TEE          CursorType = 18
+	GDK_BOX_SPIRAL          CursorType = 20
+	GDK_CENTER_PTR          CursorType = 22
+	GDK_CIRCLE              CursorType = 24
+	GDK_CLOCK               CursorType = 26
+	GDK_COFFEE_MUG          CursorType = 28
+	GDK_CROSS               CursorType = 30
+	GDK_CROSS_REVERSE       CursorType = 32
+	GDK_CROSSHAIR           CursorType = 34
+	GDK_DIAMOND_CROSS       CursorType = 36
+	GDK_DOT                 CursorType = 38
+	GDK_DOTBOX              CursorType = 40
+	GDK_DOUBLE_ARROW        CursorType = 42
+	GDK_DRAFT_LARGE         CursorType = 44
+	GDK_DRAFT_SMALL         CursorType = 46
+	GDK_DRAPED_BOX          CursorType = 48
+	GDK_EXCHANGE            CursorType = 50
+	GDK_FLEUR               CursorType = 52
+	GDK_GOBBLER             CursorType = 54
+	GDK_GUMBY               CursorType = 56
+	GDK_HAND1               CursorType = 58
+	GDK_HAND2               CursorType = 60
+	GDK_HEART               CursorType = 62
+	GDK_ICON                CursorType = 64
+	GDK_IRON_CROSS          CursorType = 66
+	GDK_LEFT_PTR            CursorType = 68
+	GDK_LEFT_SIDE           CursorType = 70
+	GDK_LEFT_TEE            CursorType = 72
+	GDK_LEFTBUTTON          CursorType = 74
+	GDK_LL_ANGLE            CursorType = 76
+	GDK_LR_ANGLE            CursorType = 78
+	GDK_MAN                 CursorType = 80
+	GDK_MIDDLEBUTTON        CursorType = 82
+	GDK_MOUSE               CursorType = 84
+	GDK_PENCIL              CursorType = 86
+	GDK_PIRATE              CursorType = 88
+	GDK_PLUS                CursorType = 90
+	GDK_QUESTION_ARROW      CursorType = 92
+	GDK_RIGHT_PTR           CursorType = 94
+	GDK_RIGHT_SIDE          CursorType = 96
+	GDK_RIGHT_TEE           CursorType = 98
+	GDK_RIGHTBUTTON         CursorType = 100
+	GDK_RTL_LOGO            CursorType = 102
+	GDK_SAILBOAT            CursorType = 104
+	GDK_SB_DOWN_ARROW       CursorType = 106
+	GDK_SB_H_DOUBLE_ARROW   CursorType = 108
+	GDK_SB_LEFT_ARROW       CursorType = 110
+	GDK_SB_RIGHT_ARROW      CursorType = 112
+	GDK_SB_UP_ARROW         CursorType = 114
+	GDK_SB_V_DOUBLE_ARROW   CursorType = 116
+	GDK_SHUTTLE             CursorType = 118
+	GDK_SIZING              CursorType = 120
+	GDK_SPIDER              CursorType = 122
+	GDK_SPRAYCAN            CursorType = 124
+	GDK_STAR                CursorType = 126
+	GDK_TARGET              CursorType = 128
+	GDK_TCROSS              CursorType = 130
+	GDK_TOP_LEFT_ARROW      CursorType = 132
+	GDK_TOP_LEFT_CORNER     CursorType = 134
+	GDK_TOP_RIGHT_CORNER    CursorType = 136
+	GDK_TOP_SIDE            CursorType = 138
+	GDK_TOP_TEE             CursorType = 140
+	GDK_TREK                CursorType = 142
+	GDK_UL_ANGLE            CursorType = 144
+	GDK_UMBRELLA            CursorType = 146
+	GDK_UR_ANGLE            CursorType = 148
+	GDK_WATCH               CursorType = 150
+	GDK_XTERM               CursorType = 152
+	GDK_LAST_CURSOR         CursorType = 153
+	GDK_BLANK_CURSOR        CursorType = -2
+	GDK_CURSOR_IS_PIXMAP    CursorType = -1
+)
+
+type DeviceType int
+
+const (
+	GDK_DEVICE_TYPE_MASTER   DeviceType = 0
+	GDK_DEVICE_TYPE_SLAVE    DeviceType = 1
+	GDK_DEVICE_TYPE_FLOATING DeviceType = 2
+)
+
+type DragProtocol int
+
+const (
+	GDK_DRAG_PROTO_NONE            DragProtocol = 0
+	GDK_DRAG_PROTO_MOTIF           DragProtocol = 1
+	GDK_DRAG_PROTO_XDND            DragProtocol = 2
+	GDK_DRAG_PROTO_ROOTWIN         DragProtocol = 3
+	GDK_DRAG_PROTO_WIN32_DROPFILES DragProtocol = 4
+	GDK_DRAG_PROTO_OLE2            DragProtocol = 5
+	GDK_DRAG_PROTO_LOCAL           DragProtocol = 6
+	GDK_DRAG_PROTO_WAYLAND         DragProtocol = 7
+)
+
+type EventType int
+
+const (
+	GDK_NOTHING             EventType = -1
+	GDK_DELETE              EventType = 0
+	GDK_DESTROY             EventType = 1
+	GDK_EXPOSE              EventType = 2
+	GDK_MOTION_NOTIFY       EventType = 3
+	GDK_BUTTON_PRESS        EventType = 4
+	GDK_2BUTTON_PRESS       EventType = 5
+	GDK_DOUBLE_BUTTON_PRESS EventType = 5
+	GDK_3BUTTON_PRESS       EventType = 6
+	GDK_TRIPLE_BUTTON_PRESS EventType = 6
+	GDK_BUTTON_RELEASE      EventType = 7
+	GDK_KEY_PRESS           EventType = 8
+	GDK_KEY_RELEASE         EventType = 9
+	GDK_ENTER_NOTIFY        EventType = 10
+	GDK_LEAVE_NOTIFY        EventType = 11
+	GDK_FOCUS_CHANGE        EventType = 12
+	GDK_CONFIGURE           EventType = 13
+	GDK_MAP                 EventType = 14
+	GDK_UNMAP               EventType = 15
+	GDK_PROPERTY_NOTIFY     EventType = 16
+	GDK_SELECTION_CLEAR     EventType = 17
+	GDK_SELECTION_REQUEST   EventType = 18
+	GDK_SELECTION_NOTIFY    EventType = 19
+	GDK_PROXIMITY_IN        EventType = 20
+	GDK_PROXIMITY_OUT       EventType = 21
+	GDK_DRAG_ENTER          EventType = 22
+	GDK_DRAG_LEAVE          EventType = 23
+	GDK_DRAG_MOTION         EventType = 24
+	GDK_DRAG_STATUS         EventType = 25
+	GDK_DROP_START          EventType = 26
+	GDK_DROP_FINISHED       EventType = 27
+	GDK_CLIENT_EVENT        EventType = 28
+	GDK_VISIBILITY_NOTIFY   EventType = 29
+	GDK_SCROLL              EventType = 31
+	GDK_WINDOW_STATE        EventType = 32
+	GDK_SETTING             EventType = 33
+	GDK_OWNER_CHANGE        EventType = 34
+	GDK_GRAB_BROKEN         EventType = 35
+	GDK_DAMAGE              EventType = 36
+	GDK_TOUCH_BEGIN         EventType = 37
+	GDK_TOUCH_UPDATE        EventType = 38
+	GDK_TOUCH_END           EventType = 39
+	GDK_TOUCH_CANCEL        EventType = 40
+	GDK_TOUCHPAD_SWIPE      EventType = 41
+	GDK_TOUCHPAD_PINCH      EventType = 42
+	GDK_PAD_BUTTON_PRESS    EventType = 43
+	GDK_PAD_BUTTON_RELEASE  EventType = 44
+	GDK_PAD_RING            EventType = 45
+	GDK_PAD_STRIP           EventType = 46
+	GDK_PAD_GROUP_MODE      EventType = 47
+	GDK_EVENT_LAST          EventType = 48
+)
+
+type FilterReturn int
+
+const (
+	GDK_FILTER_CONTINUE  FilterReturn = 0
+	GDK_FILTER_TRANSLATE FilterReturn = 1
+	GDK_FILTER_REMOVE    FilterReturn = 2
+)
+
+type GrabOwnership int
+
+const (
+	GDK_OWNERSHIP_NONE        GrabOwnership = 0
+	GDK_OWNERSHIP_WINDOW      GrabOwnership = 1
+	GDK_OWNERSHIP_APPLICATION GrabOwnership = 2
+)
+
+type GrabStatus int
+
+const (
+	GDK_GRAB_SUCCESS         GrabStatus = 0
+	GDK_GRAB_ALREADY_GRABBED GrabStatus = 1
+	GDK_GRAB_INVALID_TIME    GrabStatus = 2
+	GDK_GRAB_NOT_VIEWABLE    GrabStatus = 3
+	GDK_GRAB_FROZEN          GrabStatus = 4
+	GDK_GRAB_FAILED          GrabStatus = 5
+)
+
+type Gravity int
+
+const (
+	GDK_GRAVITY_NORTH_WEST Gravity = 1
+	GDK_GRAVITY_NORTH      Gravity = 2
+	GDK_GRAVITY_NORTH_EAST Gravity = 3
+	GDK_GRAVITY_WEST       Gravity = 4
+	GDK_GRAVITY_CENTER     Gravity = 5
+	GDK_GRAVITY_EAST       Gravity = 6
+	GDK_GRAVITY_SOUTH_WEST Gravity = 7
+	GDK_GRAVITY_SOUTH      Gravity = 8
+	GDK_GRAVITY_SOUTH_EAST Gravity = 9
+	GDK_GRAVITY_STATIC     Gravity = 10
+)
+
+type InputMode int
+
+const (
+	GDK_MODE_DISABLED InputMode = 0
+	GDK_MODE_SCREEN   InputMode = 1
+	GDK_MODE_WINDOW   InputMode = 2
+)
+
+type InputSource int
+
+const (
+	GDK_SOURCE_MOUSE       InputSource = 0
+	GDK_SOURCE_PEN         InputSource = 1
+	GDK_SOURCE_ERASER      InputSource = 2
+	GDK_SOURCE_CURSOR      InputSource = 3
+	GDK_SOURCE_KEYBOARD    InputSource = 4
+	GDK_SOURCE_TOUCHSCREEN InputSource = 5
+	GDK_SOURCE_TOUCHPAD    InputSource = 6
+	GDK_SOURCE_TRACKPOINT  InputSource = 7
+	GDK_SOURCE_TABLET_PAD  InputSource = 8
+)
+
+type NotifyType int
+
+const (
+	GDK_NOTIFY_ANCESTOR          NotifyType = 0
+	GDK_NOTIFY_VIRTUAL           NotifyType = 1
+	GDK_NOTIFY_INFERIOR          NotifyType = 2
+	GDK_NOTIFY_NONLINEAR         NotifyType = 3
+	GDK_NOTIFY_NONLINEAR_VIRTUAL NotifyType = 4
+	GDK_NOTIFY_UNKNOWN           NotifyType = 5
+)
+
+type OwnerChange int
+
+const (
+	GDK_OWNER_CHANGE_NEW_OWNER OwnerChange = 0
+	GDK_OWNER_CHANGE_DESTROY   OwnerChange = 1
+	GDK_OWNER_CHANGE_CLOSE     OwnerChange = 2
+)
+
+type PropMode int
+
+const (
+	GDK_PROP_MODE_REPLACE PropMode = 0
+	GDK_PROP_MODE_PREPEND PropMode = 1
+	GDK_PROP_MODE_APPEND  PropMode = 2
+)
+
+type PropertyState int
+
+const (
+	GDK_PROPERTY_NEW_VALUE PropertyState = 0
+	GDK_PROPERTY_DELETE    PropertyState = 1
+)
+
+type ScrollDirection int
+
+const (
+	GDK_SCROLL_UP     ScrollDirection = 0
+	GDK_SCROLL_DOWN   ScrollDirection = 1
+	GDK_SCROLL_LEFT   ScrollDirection = 2
+	GDK_SCROLL_RIGHT  ScrollDirection = 3
+	GDK_SCROLL_SMOOTH ScrollDirection = 4
+)
+
+type SettingAction int
+
+const (
+	GDK_SETTING_ACTION_NEW     SettingAction = 0
+	GDK_SETTING_ACTION_CHANGED SettingAction = 1
+	GDK_SETTING_ACTION_DELETED SettingAction = 2
+)
+
+type Status int
+
+const (
+	GDK_OK          Status = 0
+	GDK_ERROR       Status = -1
+	GDK_ERROR_PARAM Status = -2
+	GDK_ERROR_FILE  Status = -3
+	GDK_ERROR_MEM   Status = -4
+)
+
+type TouchpadGesturePhase int
+
+const (
+	GDK_TOUCHPAD_GESTURE_PHASE_BEGIN  TouchpadGesturePhase = 0
+	GDK_TOUCHPAD_GESTURE_PHASE_UPDATE TouchpadGesturePhase = 1
+	GDK_TOUCHPAD_GESTURE_PHASE_END    TouchpadGesturePhase = 2
+	GDK_TOUCHPAD_GESTURE_PHASE_CANCEL TouchpadGesturePhase = 3
+)
+
+type VisibilityState int
+
+const (
+	GDK_VISIBILITY_UNOBSCURED     VisibilityState = 0
+	GDK_VISIBILITY_PARTIAL        VisibilityState = 1
+	GDK_VISIBILITY_FULLY_OBSCURED VisibilityState = 2
+)
+
+type VisualType int
+
+const (
+	GDK_VISUAL_STATIC_GRAY  VisualType = 0
+	GDK_VISUAL_GRAYSCALE    VisualType = 1
+	GDK_VISUAL_STATIC_COLOR VisualType = 2
+	GDK_VISUAL_PSEUDO_COLOR VisualType = 3
+	GDK_VISUAL_TRUE_COLOR   VisualType = 4
+	GDK_VISUAL_DIRECT_COLOR VisualType = 5
+)
+
+type WindowEdge int
+
+const (
+	GDK_WINDOW_EDGE_NORTH_WEST WindowEdge = 0
+	GDK_WINDOW_EDGE_NORTH      WindowEdge = 1
+	GDK_WINDOW_EDGE_NORTH_EAST WindowEdge = 2
+	GDK_WINDOW_EDGE_WEST       WindowEdge = 3
+	GDK_WINDOW_EDGE_EAST       WindowEdge = 4
+	GDK_WINDOW_EDGE_SOUTH_WEST WindowEdge = 5
+	GDK_WINDOW_EDGE_SOUTH      WindowEdge = 6
+	GDK_WINDOW_EDGE_SOUTH_EAST WindowEdge = 7
+)
+
+type WindowType int
+
+const (
+	GDK_WINDOW_ROOT       WindowType = 0
+	GDK_WINDOW_TOPLEVEL   WindowType = 1
+	GDK_WINDOW_CHILD      WindowType = 2
+	GDK_WINDOW_TEMP       WindowType = 3
+	GDK_WINDOW_FOREIGN    WindowType = 4
+	GDK_WINDOW_OFFSCREEN  WindowType = 5
+	GDK_WINDOW_SUBSURFACE WindowType = 6
+)
+
+type WindowTypeHint int
+
+const (
+	GDK_WINDOW_TYPE_HINT_NORMAL        WindowTypeHint = 0
+	GDK_WINDOW_TYPE_HINT_DIALOG        WindowTypeHint = 1
+	GDK_WINDOW_TYPE_HINT_MENU          WindowTypeHint = 2
+	GDK_WINDOW_TYPE_HINT_TOOLBAR       WindowTypeHint = 3
+	GDK_WINDOW_TYPE_HINT_SPLASHSCREEN  WindowTypeHint = 4
+	GDK_WINDOW_TYPE_HINT_UTILITY       WindowTypeHint = 5
+	GDK_WINDOW_TYPE_HINT_DOCK          WindowTypeHint = 6
+	GDK_WINDOW_TYPE_HINT_DESKTOP       WindowTypeHint = 7
+	GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU WindowTypeHint = 8
+	GDK_WINDOW_TYPE_HINT_POPUP_MENU    WindowTypeHint = 9
+	GDK_WINDOW_TYPE_HINT_TOOLTIP       WindowTypeHint = 10
+	GDK_WINDOW_TYPE_HINT_NOTIFICATION  WindowTypeHint = 11
+	GDK_WINDOW_TYPE_HINT_COMBO         WindowTypeHint = 12
+	GDK_WINDOW_TYPE_HINT_DND           WindowTypeHint = 13
+)
+
+type WindowWindowClass int
+
+const (
+	GDK_INPUT_OUTPUT WindowWindowClass = 0
+	GDK_INPUT_ONLY   WindowWindowClass = 1
+)
+
+// Unsupported : gdk_atom_intern : return type :
+
+// Beep is a wrapper around the C function gdk_beep.
+func Beep() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4074, &data)
+	return
+}
+
+// Unsupported : gdk_cairo_get_clip_rectangle : return type :
+
+// Unsupported : gdk_cairo_region_create_from_surface : return type :
+
+// Unsupported : gdk_color_parse : return type :
+
+// Unsupported : gdk_drag_begin : return type :
+
+// Unsupported : gdk_drag_begin_for_device : return type :
+
+// Unsupported : gdk_drag_get_selection : return type :
+
+// Unsupported : gdk_drag_motion : return type :
+
+// ErrorTrapPop is a wrapper around the C function gdk_error_trap_pop.
+func ErrorTrapPop() int32 {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_INT},
+	}
+	call.Function(4230, &data)
+	ret := data.Return.Int32()
+
+	return ret
+}
+
+// ErrorTrapPush is a wrapper around the C function gdk_error_trap_push.
+func ErrorTrapPush() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4232, &data)
+	return
+}
+
+// Unsupported : gdk_event_get : no return generator
+
+// Unsupported : gdk_event_handler_set : unsupported parameter func : no type generator for EventFunc (GdkEventFunc) for param func
+
+// Unsupported : gdk_event_peek : no return generator
+
+// Unsupported : gdk_events_pending : return type :
+
+// Flush is a wrapper around the C function gdk_flush.
+func Flush() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4241, &data)
+	return
+}
+
+// Unsupported : gdk_get_default_root_window : return type :
+
+// Unsupported : gdk_get_display : return type :
+
+// Unsupported : gdk_get_program_class : return type :
+
+// Unsupported : gdk_get_show_events : return type :
+
+// Unsupported : gdk_gl_error_quark : return type :
+
+// Unsupported : gdk_init_check : return type :
+
+// Unsupported : gdk_keyboard_grab : return type :
+
+// Unsupported : gdk_keyval_is_lower : return type :
+
+// Unsupported : gdk_keyval_is_upper : return type :
+
+// Unsupported : gdk_keyval_name : return type :
+
+// Unsupported : gdk_list_visuals : return type :
+
+// Unsupported : gdk_offscreen_window_get_surface : return type :
+
+// Unsupported : gdk_pango_context_get : return type :
+
+// Unsupported : gdk_pango_layout_get_clip_region : return type :
+
+// Unsupported : gdk_pango_layout_line_get_clip_region : return type :
+
+// Unsupported : gdk_pixbuf_get_from_surface : return type :
+
+// Unsupported : gdk_pixbuf_get_from_window : return type :
+
+// Unsupported : gdk_pointer_grab : return type :
+
+// Unsupported : gdk_pointer_is_grabbed : return type :
+
+// PreParseLibgtkOnly is a wrapper around the C function gdk_pre_parse_libgtk_only.
+func PreParseLibgtkOnly() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4449, &data)
+	return
+}
+
+// Unsupported : gdk_property_get : unsupported parameter actual_length : array length param actual_length is pointer (gint*)
+
+// Unsupported : gdk_query_depths : unsupported parameter depths : output array param depths
+
+// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : output array param visual_types
+
+// Unsupported : gdk_selection_owner_get : return type :
+
+// Unsupported : gdk_selection_owner_set : return type :
+
+// Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
+
+// Unsupported : gdk_setting_get : return type :
+
+// Blacklisted : gdk_synthesize_window_state
+
+// ThreadsEnter is a wrapper around the C function gdk_threads_enter.
+func ThreadsEnter() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4529, &data)
+	return
+}
+
+// ThreadsInit is a wrapper around the C function gdk_threads_init.
+func ThreadsInit() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4530, &data)
+	return
+}
+
+// ThreadsLeave is a wrapper around the C function gdk_threads_leave.
+func ThreadsLeave() {
+	data := call.Data{
+		Params: []call.Value{},
+		Return: call.Value{Type: call.TYPE_VOID},
+	}
+	call.Function(4531, &data)
+	return
+}
+
+// Unsupported : gdk_utf8_to_string_target : return type :
