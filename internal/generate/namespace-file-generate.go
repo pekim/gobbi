@@ -139,9 +139,9 @@ func (ns *Namespace) generateEntityVersionedFileC(filename string, version Versi
 // generateEntityVersionedFile generates a file for Generatables that
 // meet the version criterion.
 func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
-	if !ns.someGeneratablesSupportVersion(version, generatables) {
-		return
-	}
+	//if !ns.someGeneratablesSupportVersion(version, generatables) {
+	//	return
+	//}
 
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
