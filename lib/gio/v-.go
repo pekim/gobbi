@@ -1,4 +1,4 @@
-// This is a generated file - DO NOT EDIT
+// Code generated - DO NOT EDIT.
 
 package gio
 

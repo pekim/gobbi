@@ -20,7 +20,9 @@ func (ns *Namespace) generateFile(name string, generateContent func(f *jen.File)
 	file := jen.NewFile(ns.goPackageName)
 	ns.jenFile = file
 
-	file.HeaderComment(("This is a generated file - DO NOT EDIT"))
+	// Use a standard generated file comment format.
+	// https://github.com/golang/go/issues/13560#issuecomment-288457920
+	file.HeaderComment(("Code generated - DO NOT EDIT."))
 	file.Line()
 
 	generateContent(file)
