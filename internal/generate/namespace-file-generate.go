@@ -82,47 +82,39 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
 	file.CgoPreamble("#include <stdlib.h>")
 }
 
-func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
-	// file for non version-specific entities
-	ns.generateEntityVersionedFile(typeName, Version{}, generatables)
-
-	// files for version-specific entities
-	versions := ns.getCollectionVersions(generatables)
-	for _, version := range versions {
-		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
-	}
-}
-
-// generateEntityVersionedFile generates a file for Generatables that
-// meet the version criterion.
-func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
+// generateVersionFiles generates a file for Generatables for each version.
+func (ns *Namespace) generateVersionFiles(filename string, version Version,
+	generatablesCollections []Generatables,
+) {
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f, version)
 		ns.generateVersionDebugFunction(f, version.value)
 
-		for _, entity := range generatables.entities() {
-			if supported, reason := entity.supported(); !supported {
-				if !supportedByVersion(entity, &version) {
+		for _, generatables := range generatablesCollections {
+			for _, entity := range generatables.entities() {
+				if supported, reason := entity.supported(); !supported {
+					if !supportedByVersion(entity, &version) {
+						continue
+					}
+
+					f.Commentf("Unsupported : %s", reason)
+					f.Line()
 					continue
 				}
 
-				f.Commentf("Unsupported : %s", reason)
-				f.Line()
-				continue
-			}
+				if blacklisted, detail := entity.blacklisted(); blacklisted {
+					if !supportedByVersion(entity, &version) {
+						continue
+					}
 
-			if blacklisted, detail := entity.blacklisted(); blacklisted {
-				if !supportedByVersion(entity, &version) {
+					f.Commentf("Blacklisted : %s", detail)
+					f.Line()
 					continue
 				}
 
-				f.Commentf("Blacklisted : %s", detail)
-				f.Line()
-				continue
+				entity.generate(f.Group, &version)
 			}
-
-			entity.generate(f.Group, &version)
 		}
 	})
 }

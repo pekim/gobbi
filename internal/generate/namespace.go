@@ -93,14 +93,27 @@ func (ns *Namespace) generate() {
 	ns.generateTemplatedFiles()
 
 	ns.generateBooleanFile()
-	ns.generateGeneratables("alias", ns.Aliases)
-	ns.generateGeneratables("bitfield", ns.Bitfields)
-	ns.generateGeneratables("class", ns.Classes)
-	ns.generateGeneratables("constant", ns.Constants)
-	ns.generateGeneratables("enum", ns.Enumerations)
-	ns.generateGeneratables("function", ns.Functions)
-	ns.generateGeneratables("interface", ns.Interfaces)
-	ns.generateGeneratables("record", ns.Records)
+
+	allGeneratablesCollections := []Generatables{
+		ns.Aliases,
+		ns.Bitfields,
+		ns.Classes,
+		ns.Constants,
+		ns.Enumerations,
+		ns.Functions,
+		ns.Interfaces,
+		ns.Records,
+	}
+	allVersions := Versions{Version{}}
+	for _, generatables := range allGeneratablesCollections {
+		allVersions = append(allVersions, generatables.versionList()...)
+	}
+	allVersions = allVersions.dedupe()
+	allVersions.sort()
+
+	for _, version := range allVersions {
+		ns.generateVersionFiles("v-"+version.value, version, allGeneratablesCollections)
+	}
 }
 
 func (ns *Namespace) aliasForName(name string) (*Alias, bool) {
