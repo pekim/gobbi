@@ -3,16 +3,10 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // GetEnviron is a wrapper around the C function g_get_environ.
 func GetEnviron() []string {

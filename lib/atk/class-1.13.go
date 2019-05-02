@@ -3,14 +3,10 @@
 
 package atk
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <atk/atk.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // MiscGetInstance is a wrapper around the C function atk_misc_get_instance.
 func MiscGetInstance() *Misc {

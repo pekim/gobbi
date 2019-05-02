@@ -10,21 +10,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	gboolean socketservice_incomingHandler(GObject *, GSocketConnection *, GObject *, gpointer);
@@ -283,72 +268,6 @@ func (recv *IOStream) SetPending() (bool, error) {
 	return retGo, goError
 }
 
-// InetAddressNewAny is a wrapper around the C function g_inet_address_new_any.
-func InetAddressNewAny(family SocketFamily) *InetAddress {
-	c_family := (C.GSocketFamily)(family)
-
-	retC := C.g_inet_address_new_any(c_family)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// InetAddressNewFromBytes is a wrapper around the C function g_inet_address_new_from_bytes.
-func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
-	c_bytes_array := make([]C.guint8, len(bytes)+1, len(bytes)+1)
-	for i, item := range bytes {
-		c := (C.guint8)(item)
-		c_bytes_array[i] = c
-	}
-	c_bytes_array[len(bytes)] = 0
-	c_bytes_arrayPtr := &c_bytes_array[0]
-	c_bytes := (*C.guint8)(unsafe.Pointer(c_bytes_arrayPtr))
-
-	c_family := (C.GSocketFamily)(family)
-
-	retC := C.g_inet_address_new_from_bytes(c_bytes, c_family)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// InetAddressNewFromString is a wrapper around the C function g_inet_address_new_from_string.
-func InetAddressNewFromString(string_ string) *InetAddress {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	retC := C.g_inet_address_new_from_string(c_string)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// InetAddressNewLoopback is a wrapper around the C function g_inet_address_new_loopback.
-func InetAddressNewLoopback(family SocketFamily) *InetAddress {
-	c_family := (C.GSocketFamily)(family)
-
-	retC := C.g_inet_address_new_loopback(c_family)
-	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetFamily is a wrapper around the C function g_inet_address_get_family.
 func (recv *InetAddress) GetFamily() SocketFamily {
 	retC := C.g_inet_address_get_family((*C.GInetAddress)(recv.native))
@@ -456,25 +375,6 @@ func (recv *InetAddress) ToString() string {
 	return retGo
 }
 
-// InetSocketAddressNew is a wrapper around the C function g_inet_socket_address_new.
-func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress {
-	c_address := (*C.GInetAddress)(C.NULL)
-	if address != nil {
-		c_address = (*C.GInetAddress)(address.ToC())
-	}
-
-	c_port := (C.guint16)(port)
-
-	retC := C.g_inet_socket_address_new(c_address, c_port)
-	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetAddress is a wrapper around the C function g_inet_socket_address_get_address.
 func (recv *InetSocketAddress) GetAddress() *InetAddress {
 	retC := C.g_inet_socket_address_get_address((*C.GInetSocketAddress)(recv.native))
@@ -492,23 +392,6 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 }
 
 // Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes :
-
-// NetworkAddressNew is a wrapper around the C function g_network_address_new.
-func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	c_port := (C.guint16)(port)
-
-	retC := C.g_network_address_new(c_hostname, c_port)
-	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // NetworkAddressParse is a wrapper around the C function g_network_address_parse.
 func NetworkAddressParse(hostAndPort string, defaultPort uint16) (*NetworkAddress, error) {
@@ -545,27 +428,6 @@ func (recv *NetworkAddress) GetHostname() string {
 func (recv *NetworkAddress) GetPort() uint16 {
 	retC := C.g_network_address_get_port((*C.GNetworkAddress)(recv.native))
 	retGo := (uint16)(retC)
-
-	return retGo
-}
-
-// NetworkServiceNew is a wrapper around the C function g_network_service_new.
-func NetworkServiceNew(service string, protocol string, domain string) *NetworkService {
-	c_service := C.CString(service)
-	defer C.free(unsafe.Pointer(c_service))
-
-	c_protocol := C.CString(protocol)
-	defer C.free(unsafe.Pointer(c_protocol))
-
-	c_domain := C.CString(domain)
-	defer C.free(unsafe.Pointer(c_domain))
-
-	retC := C.g_network_service_new(c_service, c_protocol, c_domain)
-	retGo := NetworkServiceNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
 
 	return retGo
 }
@@ -801,58 +663,6 @@ func (recv *Socket) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Socket.
 func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
-}
-
-// SocketNew is a wrapper around the C function g_socket_new.
-func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (*Socket, error) {
-	c_family := (C.GSocketFamily)(family)
-
-	c_type := (C.GSocketType)(type_)
-
-	c_protocol := (C.GSocketProtocol)(protocol)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_new(c_family, c_type, c_protocol, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// SocketNewFromFd is a wrapper around the C function g_socket_new_from_fd.
-func SocketNewFromFd(fd int32) (*Socket, error) {
-	c_fd := (C.gint)(fd)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_new_from_fd(c_fd, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
 }
 
 // Accept is a wrapper around the C function g_socket_accept.
@@ -1346,8 +1156,6 @@ func (recv *Socket) SpeaksIpv4() bool {
 	return retGo
 }
 
-// Unsupported : g_socket_address_new_from_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
-
 // GetFamily is a wrapper around the C function g_socket_address_get_family.
 func (recv *SocketAddress) GetFamily() SocketFamily {
 	retC := C.g_socket_address_get_family((*C.GSocketAddress)(recv.native))
@@ -1380,18 +1188,6 @@ func (recv *SocketClient) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketClient.
 func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromC(object.ToC())
-}
-
-// SocketClientNew is a wrapper around the C function g_socket_client_new.
-func SocketClientNew() *SocketClient {
-	retC := C.g_socket_client_new()
-	retGo := SocketClientNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddApplicationProxy is a wrapper around the C function g_socket_client_add_application_proxy.
@@ -1782,18 +1578,6 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 	return SocketListenerNewFromC(object.ToC())
 }
 
-// SocketListenerNew is a wrapper around the C function g_socket_listener_new.
-func SocketListenerNew() *SocketListener {
-	retC := C.g_socket_listener_new()
-	retGo := SocketListenerNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Accept is a wrapper around the C function g_socket_listener_accept.
 func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection, *gobject.Object, error) {
 	var c_source_object *C.GObject
@@ -2093,18 +1877,6 @@ func socketservice_incomingHandler(_ *C.GObject, c_connection *C.GSocketConnecti
 	return retC
 }
 
-// SocketServiceNew is a wrapper around the C function g_socket_service_new.
-func SocketServiceNew() *SocketService {
-	retC := C.g_socket_service_new()
-	retGo := SocketServiceNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // IsActive is a wrapper around the C function g_socket_service_is_active.
 func (recv *SocketService) IsActive() bool {
 	retC := C.g_socket_service_is_active((*C.GSocketService)(recv.native))
@@ -2264,20 +2036,6 @@ func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConne
 	return retC
 }
 
-// ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
-func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
-	c_max_threads := (C.int)(maxThreads)
-
-	retC := C.g_threaded_socket_service_new(c_max_threads)
-	retGo := ThreadedSocketServiceNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // ReceiveFd is a wrapper around the C function g_unix_connection_receive_fd.
 func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2326,18 +2084,6 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 	return retGo, goError
 }
 
-// UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
-func UnixFDMessageNew() *UnixFDMessage {
-	retC := C.g_unix_fd_message_new()
-	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // AppendFd is a wrapper around the C function g_unix_fd_message_append_fd.
 func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 	c_fd := (C.gint)(fd)
@@ -2359,21 +2105,6 @@ func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 }
 
 // Unsupported : g_unix_fd_message_steal_fds : array return type :
-
-// UnixSocketAddressNew is a wrapper around the C function g_unix_socket_address_new.
-func UnixSocketAddressNew(path string) *UnixSocketAddress {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	retC := C.g_unix_socket_address_new(c_path)
-	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // UnixSocketAddressAbstractNamesSupported is a wrapper around the C function g_unix_socket_address_abstract_names_supported.
 func UnixSocketAddressAbstractNamesSupported() bool {

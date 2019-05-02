@@ -4,28 +4,11 @@
 package gio
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <gio/gnetworking.h>
-// #include <stdlib.h>
-import "C"
 
 // BindBusyProperty is a wrapper around the C function g_application_bind_busy_property.
 func (recv *Application) BindBusyProperty(object *gobject.Object, property string) {
@@ -122,20 +105,6 @@ func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error
 	return retGo, bytesRead, goError
 }
 
-// ListStoreNew is a wrapper around the C function g_list_store_new.
-func ListStoreNew(itemType gobject.Type) *ListStore {
-	c_item_type := (C.GType)(itemType)
-
-	retC := C.g_list_store_new(c_item_type)
-	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Append is a wrapper around the C function g_list_store_append.
 func (recv *ListStore) Append(item *gobject.Object) {
 	c_item := (C.gpointer)(C.NULL)
@@ -181,20 +150,6 @@ func (recv *ListStore) RemoveAll() {
 }
 
 // Unsupported : g_list_store_splice : unsupported parameter additions :
-
-// NetworkAddressNewLoopback is a wrapper around the C function g_network_address_new_loopback.
-func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
-	c_port := (C.guint16)(port)
-
-	retC := C.g_network_address_new_loopback(c_port)
-	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // Unsupported : g_output_stream_write_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
@@ -253,28 +208,6 @@ func (recv *SimpleIOStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SimpleIOStream.
 func CastToSimpleIOStream(object *gobject.Object) *SimpleIOStream {
 	return SimpleIOStreamNewFromC(object.ToC())
-}
-
-// SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
-func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
-	c_input_stream := (*C.GInputStream)(C.NULL)
-	if inputStream != nil {
-		c_input_stream = (*C.GInputStream)(inputStream.ToC())
-	}
-
-	c_output_stream := (*C.GOutputStream)(C.NULL)
-	if outputStream != nil {
-		c_output_stream = (*C.GOutputStream)(outputStream.ToC())
-	}
-
-	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
-	retGo := SimpleIOStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Unsupported : g_socket_send_messages : unsupported parameter messages :

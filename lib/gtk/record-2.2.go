@@ -4,20 +4,10 @@
 package gtk
 
 import (
+	"C"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
 // Copy is a wrapper around the C function gtk_tree_row_reference_copy.
 func (recv *TreeRowReference) Copy() *TreeRowReference {

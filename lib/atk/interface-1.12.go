@@ -4,16 +4,10 @@
 package atk
 
 import (
+	"C"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <atk/atk.h>
-// #include <stdlib.h>
-import "C"
 
 // GetAlpha is a wrapper around the C function atk_component_get_alpha.
 func (recv *Component) GetAlpha() float64 {

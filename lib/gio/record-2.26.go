@@ -4,26 +4,10 @@
 package gio
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this CredentialsClass with another CredentialsClass, and returns true if they represent the same GObject.
 func (recv *CredentialsClass) Equals(other *CredentialsClass) bool {
@@ -171,27 +155,6 @@ func (recv *DBusMethodInfo) Unref() {
 // Equals compares this DBusNodeInfo with another DBusNodeInfo, and returns true if they represent the same GObject.
 func (recv *DBusNodeInfo) Equals(other *DBusNodeInfo) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DBusNodeInfoNewForXml is a wrapper around the C function g_dbus_node_info_new_for_xml.
-func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
-	c_xml_data := C.CString(xmlData)
-	defer C.free(unsafe.Pointer(c_xml_data))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_node_info_new_for_xml(c_xml_data, &cThrowableError)
-	retGo := DBusNodeInfoNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
 }
 
 // GenerateXml is a wrapper around the C function g_dbus_node_info_generate_xml.

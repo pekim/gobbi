@@ -4,16 +4,10 @@
 package gobject
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
 
 // Unsupported : g_object_class_install_properties : unsupported parameter pspecs :
 

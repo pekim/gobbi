@@ -4,42 +4,9 @@
 package gdk
 
 import (
-	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	"C"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-// CursorNewFromPixbuf is a wrapper around the C function gdk_cursor_new_from_pixbuf.
-func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y int32) *Cursor {
-	c_display := (*C.GdkDisplay)(C.NULL)
-	if display != nil {
-		c_display = (*C.GdkDisplay)(display.ToC())
-	}
-
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	retC := C.gdk_cursor_new_from_pixbuf(c_display, c_pixbuf, c_x, c_y)
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // Flush is a wrapper around the C function gdk_display_flush.
 func (recv *Display) Flush() {

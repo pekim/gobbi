@@ -8,13 +8,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	gboolean aboutdialog_activateLinkHandler(GObject *, gchar*, gpointer);
@@ -91,24 +84,6 @@ func aboutdialog_activateLinkHandler(_ *C.GObject, c_uri *C.gchar, data C.gpoint
 	return retC
 }
 
-// ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
-func ComboBoxNewWithEntry() *ComboBox {
-	retC := C.gtk_combo_box_new_with_entry()
-	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ComboBoxNewWithModelAndEntry is a wrapper around the C function gtk_combo_box_new_with_model_and_entry.
-func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
-	c_model := (*C.GtkTreeModel)(model.ToC())
-
-	retC := C.gtk_combo_box_new_with_model_and_entry(c_model)
-	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetEntryTextColumn is a wrapper around the C function gtk_combo_box_get_entry_text_column.
 func (recv *ComboBox) GetEntryTextColumn() int32 {
 	retC := C.gtk_combo_box_get_entry_text_column((*C.GtkComboBox)(recv.native))
@@ -132,22 +107,6 @@ func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 	C.gtk_combo_box_set_entry_text_column((*C.GtkComboBox)(recv.native), c_text_column)
 
 	return
-}
-
-// ComboBoxTextNew is a wrapper around the C function gtk_combo_box_text_new.
-func ComboBoxTextNew() *ComboBoxText {
-	retC := C.gtk_combo_box_text_new()
-	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ComboBoxTextNewWithEntry is a wrapper around the C function gtk_combo_box_text_new_with_entry.
-func ComboBoxTextNewWithEntry() *ComboBoxText {
-	retC := C.gtk_combo_box_text_new_with_entry()
-	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Append is a wrapper around the C function gtk_combo_box_text_append.

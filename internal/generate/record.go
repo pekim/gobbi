@@ -83,7 +83,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 
 	if r.Version == "" || version.GTE(VersionNew(r.Version)) {
 		r.Signals.generate(g, version, r.Version)
-		r.Constructors.generate(g, version)
+		//r.Constructors.generate(g, version)
 		r.Functions.generate(g, version)
 		r.Methods.generate(g, version)
 	}
@@ -153,5 +153,12 @@ func (r *Record) generateC(g *jen.Group, version *Version) {
 		//(&RecordEqualFunc{r}).generate(g)
 		//r.generateUpcasts(g)
 		//r.generateDowncast(g)
+	}
+
+	if r.Version == "" || version.GTE(VersionNew(r.Version)) {
+		//r.Signals.generate(g, version, r.Version)
+		r.Constructors.generate(g, version)
+		//r.Functions.generate(g, version)
+		//r.Methods.generate(g, version)
 	}
 }

@@ -3,6 +3,7 @@
 package gtk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -11,15 +12,6 @@ import (
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // AccelGroupsActivate is a wrapper around the C function gtk_accel_groups_activate.
 func AccelGroupsActivate(object *gobject.Object, accelKey uint32, accelMods gdk.ModifierType) bool {

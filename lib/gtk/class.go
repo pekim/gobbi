@@ -3,7 +3,6 @@
 package gtk
 
 import (
-	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -16,13 +15,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	gboolean accelgroup_accelActivateHandler(GObject *, GObject *, guint, guint, gpointer);
@@ -949,12 +941,6 @@ import (
 		return g_signal_connect(instance, "show-menu", G_CALLBACK(menutoolbutton_showMenuHandler), data);
 	}
 
-*/
-/*
-
-	static GtkMessageDialog* _gtk_message_dialog_new(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, const gchar* message_format) {
-		return gtk_message_dialog_new(parent, flags, type, buttons, message_format);
-    }
 */
 /*
 
@@ -2389,18 +2375,6 @@ func accelgroup_accelChangedHandler(_ *C.GObject, c_keyval C.guint, c_modifier C
 	callback(keyval, modifier, accelClosure)
 }
 
-// AccelGroupNew is a wrapper around the C function gtk_accel_group_new.
-func AccelGroupNew() *AccelGroup {
-	retC := C.gtk_accel_group_new()
-	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // AccelGroupFromAccelClosure is a wrapper around the C function gtk_accel_group_from_accel_closure.
 func AccelGroupFromAccelClosure(closure *gobject.Closure) *AccelGroup {
 	c_closure := (*C.GClosure)(C.NULL)
@@ -2548,17 +2522,6 @@ func (recv *AccelLabel) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a AccelLabel.
 func CastToAccelLabel(object *gobject.Object) *AccelLabel {
 	return AccelLabelNewFromC(object.ToC())
-}
-
-// AccelLabelNew is a wrapper around the C function gtk_accel_label_new.
-func AccelLabelNew(string_ string) *AccelLabel {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	retC := C.gtk_accel_label_new(c_string)
-	retGo := AccelLabelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetAccelWidget is a wrapper around the C function gtk_accel_label_get_accel_widget.
@@ -3001,26 +2964,6 @@ func adjustment_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AdjustmentNew is a wrapper around the C function gtk_adjustment_new.
-func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement float64, pageIncrement float64, pageSize float64) *Adjustment {
-	c_value := (C.gdouble)(value)
-
-	c_lower := (C.gdouble)(lower)
-
-	c_upper := (C.gdouble)(upper)
-
-	c_step_increment := (C.gdouble)(stepIncrement)
-
-	c_page_increment := (C.gdouble)(pageIncrement)
-
-	c_page_size := (C.gdouble)(pageSize)
-
-	retC := C.gtk_adjustment_new(c_value, c_lower, c_upper, c_step_increment, c_page_increment, c_page_size)
-	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Changed is a wrapper around the C function gtk_adjustment_changed.
 func (recv *Adjustment) Changed() {
 	C.gtk_adjustment_changed((*C.GtkAdjustment)(recv.native))
@@ -3097,22 +3040,6 @@ func (recv *Alignment) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Alignment.
 func CastToAlignment(object *gobject.Object) *Alignment {
 	return AlignmentNewFromC(object.ToC())
-}
-
-// AlignmentNew is a wrapper around the C function gtk_alignment_new.
-func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32) *Alignment {
-	c_xalign := (C.gfloat)(xalign)
-
-	c_yalign := (C.gfloat)(yalign)
-
-	c_xscale := (C.gfloat)(xscale)
-
-	c_yscale := (C.gfloat)(yscale)
-
-	retC := C.gtk_alignment_new(c_xalign, c_yalign, c_xscale, c_yscale)
-	retGo := AlignmentNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Set is a wrapper around the C function gtk_alignment_set.
@@ -3742,18 +3669,6 @@ func CastToArrow(object *gobject.Object) *Arrow {
 	return ArrowNewFromC(object.ToC())
 }
 
-// ArrowNew is a wrapper around the C function gtk_arrow_new.
-func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
-	c_arrow_type := (C.GtkArrowType)(arrowType)
-
-	c_shadow_type := (C.GtkShadowType)(shadowType)
-
-	retC := C.gtk_arrow_new(c_arrow_type, c_shadow_type)
-	retGo := ArrowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Set is a wrapper around the C function gtk_arrow_set.
 func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
 	c_arrow_type := (C.GtkArrowType)(arrowType)
@@ -3850,26 +3765,6 @@ func (recv *AspectFrame) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a AspectFrame.
 func CastToAspectFrame(object *gobject.Object) *AspectFrame {
 	return AspectFrameNewFromC(object.ToC())
-}
-
-// AspectFrameNew is a wrapper around the C function gtk_aspect_frame_new.
-func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32, obeyChild bool) *AspectFrame {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_xalign := (C.gfloat)(xalign)
-
-	c_yalign := (C.gfloat)(yalign)
-
-	c_ratio := (C.gfloat)(ratio)
-
-	c_obey_child :=
-		boolToGboolean(obeyChild)
-
-	retC := C.gtk_aspect_frame_new(c_label, c_xalign, c_yalign, c_ratio, c_obey_child)
-	retGo := AspectFrameNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Set is a wrapper around the C function gtk_aspect_frame_set.
@@ -4677,47 +4572,6 @@ func button_releasedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ButtonNew is a wrapper around the C function gtk_button_new.
-func ButtonNew() *Button {
-	retC := C.gtk_button_new()
-	retGo := ButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ButtonNewFromStock is a wrapper around the C function gtk_button_new_from_stock.
-func ButtonNewFromStock(stockId string) *Button {
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	retC := C.gtk_button_new_from_stock(c_stock_id)
-	retGo := ButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ButtonNewWithLabel is a wrapper around the C function gtk_button_new_with_label.
-func ButtonNewWithLabel(label string) *Button {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_button_new_with_label(c_label)
-	retGo := ButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ButtonNewWithMnemonic is a wrapper around the C function gtk_button_new_with_mnemonic.
-func ButtonNewWithMnemonic(label string) *Button {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_button_new_with_mnemonic(c_label)
-	retGo := ButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Clicked is a wrapper around the C function gtk_button_clicked.
 func (recv *Button) Clicked() {
 	C.gtk_button_clicked((*C.GtkButton)(recv.native))
@@ -5419,14 +5273,6 @@ func calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CalendarNew is a wrapper around the C function gtk_calendar_new.
-func CalendarNew() *Calendar {
-	retC := C.gtk_calendar_new()
-	retGo := CalendarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ClearMarks is a wrapper around the C function gtk_calendar_clear_marks.
 func (recv *Calendar) ClearMarks() {
 	C.gtk_calendar_clear_marks((*C.GtkCalendar)(recv.native))
@@ -5839,14 +5685,6 @@ func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
 	return CellRendererPixbufNewFromC(object.ToC())
 }
 
-// CellRendererPixbufNew is a wrapper around the C function gtk_cell_renderer_pixbuf_new.
-func CellRendererPixbufNew() *CellRendererPixbuf {
-	retC := C.gtk_cell_renderer_pixbuf_new()
-	retGo := CellRendererPixbufNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Equals compares this CellRendererProgress with another CellRendererProgress, and returns true if they represent the same GObject.
 func (recv *CellRendererProgress) Equals(other *CellRendererProgress) bool {
 	return other.ToC() == recv.ToC()
@@ -6025,14 +5863,6 @@ func cellrenderertext_editedHandler(_ *C.GObject, c_path *C.gchar, c_new_text *C
 	callback(path, newText)
 }
 
-// CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
-func CellRendererTextNew() *CellRendererText {
-	retC := C.gtk_cell_renderer_text_new()
-	retGo := CellRendererTextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // SetFixedHeightFromFont is a wrapper around the C function gtk_cell_renderer_text_set_fixed_height_from_font.
 func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 	c_number_of_rows := (C.gint)(numberOfRows)
@@ -6128,14 +5958,6 @@ func cellrenderertoggle_toggledHandler(_ *C.GObject, c_path *C.gchar, data C.gpo
 	index := int(uintptr(data))
 	callback := signalCellRendererToggleToggledMap[index].callback
 	callback(path)
-}
-
-// CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
-func CellRendererToggleNew() *CellRendererToggle {
-	retC := C.gtk_cell_renderer_toggle_new()
-	retGo := CellRendererToggleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetActive is a wrapper around the C function gtk_cell_renderer_toggle_get_active.
@@ -6266,36 +6088,6 @@ func CastToCheckButton(object *gobject.Object) *CheckButton {
 	return CheckButtonNewFromC(object.ToC())
 }
 
-// CheckButtonNew is a wrapper around the C function gtk_check_button_new.
-func CheckButtonNew() *CheckButton {
-	retC := C.gtk_check_button_new()
-	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CheckButtonNewWithLabel is a wrapper around the C function gtk_check_button_new_with_label.
-func CheckButtonNewWithLabel(label string) *CheckButton {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_check_button_new_with_label(c_label)
-	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CheckButtonNewWithMnemonic is a wrapper around the C function gtk_check_button_new_with_mnemonic.
-func CheckButtonNewWithMnemonic(label string) *CheckButton {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_check_button_new_with_mnemonic(c_label)
-	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by CheckButton
 func (recv *CheckButton) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -6415,36 +6207,6 @@ func checkmenuitem_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCheckMenuItemToggledMap[index].callback
 	callback()
-}
-
-// CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
-func CheckMenuItemNew() *CheckMenuItem {
-	retC := C.gtk_check_menu_item_new()
-	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CheckMenuItemNewWithLabel is a wrapper around the C function gtk_check_menu_item_new_with_label.
-func CheckMenuItemNewWithLabel(label string) *CheckMenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_check_menu_item_new_with_label(c_label)
-	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CheckMenuItemNewWithMnemonic is a wrapper around the C function gtk_check_menu_item_new_with_mnemonic.
-func CheckMenuItemNewWithMnemonic(label string) *CheckMenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_check_menu_item_new_with_mnemonic(c_label)
-	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetActive is a wrapper around the C function gtk_check_menu_item_get_active.
@@ -6944,14 +6706,6 @@ func colorselection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
-func ColorSelectionNew() *ColorSelection {
-	retC := C.gtk_color_selection_new()
-	retGo := ColorSelectionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // gtk_color_selection_palette_from_string : unsupported parameter colors : output array param colors
 // gtk_color_selection_palette_to_string : unsupported parameter colors :
 // GetCurrentAlpha is a wrapper around the C function gtk_color_selection_get_current_alpha.
@@ -7139,17 +6893,6 @@ func CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
 	return ColorSelectionDialogNewFromC(object.ToC())
 }
 
-// ColorSelectionDialogNew is a wrapper around the C function gtk_color_selection_dialog_new.
-func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
-
-	retC := C.gtk_color_selection_dialog_new(c_title)
-	retGo := ColorSelectionDialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by ColorSelectionDialog
 func (recv *ColorSelectionDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -7194,32 +6937,6 @@ func (recv *ComboBox) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ComboBox.
 func CastToComboBox(object *gobject.Object) *ComboBox {
 	return ComboBoxNewFromC(object.ToC())
-}
-
-// ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
-func ComboBoxNewWithArea(area *CellArea) *ComboBox {
-	c_area := (*C.GtkCellArea)(C.NULL)
-	if area != nil {
-		c_area = (*C.GtkCellArea)(area.ToC())
-	}
-
-	retC := C.gtk_combo_box_new_with_area(c_area)
-	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ComboBoxNewWithAreaAndEntry is a wrapper around the C function gtk_combo_box_new_with_area_and_entry.
-func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
-	c_area := (*C.GtkCellArea)(C.NULL)
-	if area != nil {
-		c_area = (*C.GtkCellArea)(area.ToC())
-	}
-
-	retC := C.gtk_combo_box_new_with_area_and_entry(c_area)
-	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetAddTearoffs is a wrapper around the C function gtk_combo_box_get_add_tearoffs.
@@ -7971,18 +7688,6 @@ func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessi
 	return ContainerCellAccessibleNewFromC(object.ToC())
 }
 
-// ContainerCellAccessibleNew is a wrapper around the C function gtk_container_cell_accessible_new.
-func ContainerCellAccessibleNew() *ContainerCellAccessible {
-	retC := C.gtk_container_cell_accessible_new()
-	retGo := ContainerCellAccessibleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // AddChild is a wrapper around the C function gtk_container_cell_accessible_add_child.
 func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
 	c_child := (*C.GtkCellAccessible)(C.NULL)
@@ -8103,18 +7808,6 @@ func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c
 	index := int(uintptr(data))
 	callback := signalCssProviderParsingErrorMap[index].callback
 	callback(section, error)
-}
-
-// CssProviderNew is a wrapper around the C function gtk_css_provider_new.
-func CssProviderNew() *CssProvider {
-	retC := C.gtk_css_provider_new()
-	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // CssProviderGetDefault is a wrapper around the C function gtk_css_provider_get_default.
@@ -8377,16 +8070,6 @@ func dialog_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer)
 	callback(responseId)
 }
 
-// DialogNew is a wrapper around the C function gtk_dialog_new.
-func DialogNew() *Dialog {
-	retC := C.gtk_dialog_new()
-	retGo := DialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // AddActionWidget is a wrapper around the C function gtk_dialog_add_action_widget.
 func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -8488,14 +8171,6 @@ func (recv *DrawingArea) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DrawingArea.
 func CastToDrawingArea(object *gobject.Object) *DrawingArea {
 	return DrawingAreaNewFromC(object.ToC())
-}
-
-// DrawingAreaNew is a wrapper around the C function gtk_drawing_area_new.
-func DrawingAreaNew() *DrawingArea {
-	retC := C.gtk_drawing_area_new()
-	retGo := DrawingAreaNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by DrawingArea
@@ -9148,14 +8823,6 @@ func entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// EntryNew is a wrapper around the C function gtk_entry_new.
-func EntryNew() *Entry {
-	retC := C.gtk_entry_new()
-	retGo := EntryNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetActivatesDefault is a wrapper around the C function gtk_entry_get_activates_default.
 func (recv *Entry) GetActivatesDefault() bool {
 	retC := C.gtk_entry_get_activates_default((*C.GtkEntry)(recv.native))
@@ -9466,14 +9133,6 @@ func (recv *EventBox) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a EventBox.
 func CastToEventBox(object *gobject.Object) *EventBox {
 	return EventBoxNewFromC(object.ToC())
-}
-
-// EventBoxNew is a wrapper around the C function gtk_event_box_new.
-func EventBoxNew() *EventBox {
-	retC := C.gtk_event_box_new()
-	retGo := EventBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by EventBox
@@ -10603,14 +10262,6 @@ func CastToFixed(object *gobject.Object) *Fixed {
 	return FixedNewFromC(object.ToC())
 }
 
-// FixedNew is a wrapper around the C function gtk_fixed_new.
-func FixedNew() *Fixed {
-	retC := C.gtk_fixed_new()
-	retGo := FixedNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Move is a wrapper around the C function gtk_fixed_move.
 func (recv *Fixed) Move(widget *Widget, x int32, y int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -11530,14 +11181,6 @@ func CastToFontSelection(object *gobject.Object) *FontSelection {
 	return FontSelectionNewFromC(object.ToC())
 }
 
-// FontSelectionNew is a wrapper around the C function gtk_font_selection_new.
-func FontSelectionNew() *FontSelection {
-	retC := C.gtk_font_selection_new()
-	retGo := FontSelectionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetFontName is a wrapper around the C function gtk_font_selection_get_font_name.
 func (recv *FontSelection) GetFontName() string {
 	retC := C.gtk_font_selection_get_font_name((*C.GtkFontSelection)(recv.native))
@@ -11637,17 +11280,6 @@ func CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
 	return FontSelectionDialogNewFromC(object.ToC())
 }
 
-// FontSelectionDialogNew is a wrapper around the C function gtk_font_selection_dialog_new.
-func FontSelectionDialogNew(title string) *FontSelectionDialog {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
-
-	retC := C.gtk_font_selection_dialog_new(c_title)
-	retGo := FontSelectionDialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetFontName is a wrapper around the C function gtk_font_selection_dialog_get_font_name.
 func (recv *FontSelectionDialog) GetFontName() string {
 	retC := C.gtk_font_selection_dialog_get_font_name((*C.GtkFontSelectionDialog)(recv.native))
@@ -11730,17 +11362,6 @@ func (recv *Frame) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Frame.
 func CastToFrame(object *gobject.Object) *Frame {
 	return FrameNewFromC(object.ToC())
-}
-
-// FrameNew is a wrapper around the C function gtk_frame_new.
-func FrameNew(label string) *Frame {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_frame_new(c_label)
-	retGo := FrameNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetLabel is a wrapper around the C function gtk_frame_get_label.
@@ -12167,14 +11788,6 @@ func CastToGrid(object *gobject.Object) *Grid {
 	return GridNewFromC(object.ToC())
 }
 
-// GridNew is a wrapper around the C function gtk_grid_new.
-func GridNew() *Grid {
-	retC := C.gtk_grid_new()
-	retGo := GridNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Attach is a wrapper around the C function gtk_grid_attach.
 func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, height int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -12339,19 +11952,6 @@ func CastToHBox(object *gobject.Object) *HBox {
 	return HBoxNewFromC(object.ToC())
 }
 
-// HBoxNew is a wrapper around the C function gtk_hbox_new.
-func HBoxNew(homogeneous bool, spacing int32) *HBox {
-	c_homogeneous :=
-		boolToGboolean(homogeneous)
-
-	c_spacing := (C.gint)(spacing)
-
-	retC := C.gtk_hbox_new(c_homogeneous, c_spacing)
-	retGo := HBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by HBox
 func (recv *HBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -12408,14 +12008,6 @@ func CastToHButtonBox(object *gobject.Object) *HButtonBox {
 	return HButtonBoxNewFromC(object.ToC())
 }
 
-// HButtonBoxNew is a wrapper around the C function gtk_hbutton_box_new.
-func HButtonBoxNew() *HButtonBox {
-	retC := C.gtk_hbutton_box_new()
-	retGo := HButtonBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by HButtonBox
 func (recv *HButtonBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -12465,14 +12057,6 @@ func (recv *HPaned) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a HPaned.
 func CastToHPaned(object *gobject.Object) *HPaned {
 	return HPanedNewFromC(object.ToC())
-}
-
-// HPanedNew is a wrapper around the C function gtk_hpaned_new.
-func HPanedNew() *HPaned {
-	retC := C.gtk_hpaned_new()
-	retGo := HPanedNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by HPaned
@@ -12684,33 +12268,6 @@ func CastToHScale(object *gobject.Object) *HScale {
 	return HScaleNewFromC(object.ToC())
 }
 
-// HScaleNew is a wrapper around the C function gtk_hscale_new.
-func HScaleNew(adjustment *Adjustment) *HScale {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
-
-	retC := C.gtk_hscale_new(c_adjustment)
-	retGo := HScaleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HScaleNewWithRange is a wrapper around the C function gtk_hscale_new_with_range.
-func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
-	c_min := (C.gdouble)(min)
-
-	c_max := (C.gdouble)(max)
-
-	c_step := (C.gdouble)(step)
-
-	retC := C.gtk_hscale_new_with_range(c_min, c_max, c_step)
-	retGo := HScaleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by HScale
 func (recv *HScale) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -12762,19 +12319,6 @@ func CastToHScrollbar(object *gobject.Object) *HScrollbar {
 	return HScrollbarNewFromC(object.ToC())
 }
 
-// HScrollbarNew is a wrapper around the C function gtk_hscrollbar_new.
-func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
-
-	retC := C.gtk_hscrollbar_new(c_adjustment)
-	retGo := HScrollbarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by HScrollbar
 func (recv *HScrollbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -12819,14 +12363,6 @@ func (recv *HSeparator) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a HSeparator.
 func CastToHSeparator(object *gobject.Object) *HSeparator {
 	return HSeparatorNewFromC(object.ToC())
-}
-
-// HSeparatorNew is a wrapper around the C function gtk_hseparator_new.
-func HSeparatorNew() *HSeparator {
-	retC := C.gtk_hseparator_new()
-	retGo := HSeparatorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by HSeparator
@@ -13002,14 +12538,6 @@ func handlebox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.
 	index := int(uintptr(data))
 	callback := signalHandleBoxChildDetachedMap[index].callback
 	callback(widget)
-}
-
-// HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
-func HandleBoxNew() *HandleBox {
-	retC := C.gtk_handle_box_new()
-	retGo := HandleBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetHandlePosition is a wrapper around the C function gtk_handle_box_get_handle_position.
@@ -13654,18 +13182,6 @@ func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
 	return IMContextSimpleNewFromC(object.ToC())
 }
 
-// IMContextSimpleNew is a wrapper around the C function gtk_im_context_simple_new.
-func IMContextSimpleNew() *IMContextSimple {
-	retC := C.gtk_im_context_simple_new()
-	retGo := IMContextSimpleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Blacklisted : gtk_im_context_simple_add_compose_file
 
 // AddTable is a wrapper around the C function gtk_im_context_simple_add_table.
@@ -13709,18 +13225,6 @@ func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
 	return IMMulticontextNewFromC(object.ToC())
 }
 
-// IMMulticontextNew is a wrapper around the C function gtk_im_multicontext_new.
-func IMMulticontextNew() *IMMulticontext {
-	retC := C.gtk_im_multicontext_new()
-	retGo := IMMulticontextNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // AppendMenuitems is a wrapper around the C function gtk_im_multicontext_append_menuitems.
 func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
 	c_menushell := (*C.GtkMenuShell)(C.NULL)
@@ -13747,18 +13251,6 @@ func (recv *IconFactory) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconFactory.
 func CastToIconFactory(object *gobject.Object) *IconFactory {
 	return IconFactoryNewFromC(object.ToC())
-}
-
-// IconFactoryNew is a wrapper around the C function gtk_icon_factory_new.
-func IconFactoryNew() *IconFactory {
-	retC := C.gtk_icon_factory_new()
-	retGo := IconFactoryNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // IconFactoryLookupDefault is a wrapper around the C function gtk_icon_factory_lookup_default.
@@ -14524,79 +14016,6 @@ func CastToImage(object *gobject.Object) *Image {
 	return ImageNewFromC(object.ToC())
 }
 
-// ImageNew is a wrapper around the C function gtk_image_new.
-func ImageNew() *Image {
-	retC := C.gtk_image_new()
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageNewFromAnimation is a wrapper around the C function gtk_image_new_from_animation.
-func ImageNewFromAnimation(animation *gdkpixbuf.PixbufAnimation) *Image {
-	c_animation := (*C.GdkPixbufAnimation)(C.NULL)
-	if animation != nil {
-		c_animation = (*C.GdkPixbufAnimation)(animation.ToC())
-	}
-
-	retC := C.gtk_image_new_from_animation(c_animation)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageNewFromFile is a wrapper around the C function gtk_image_new_from_file.
-func ImageNewFromFile(filename string) *Image {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.gtk_image_new_from_file(c_filename)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageNewFromIconSet is a wrapper around the C function gtk_image_new_from_icon_set.
-func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
-	c_icon_set := (*C.GtkIconSet)(C.NULL)
-	if iconSet != nil {
-		c_icon_set = (*C.GtkIconSet)(iconSet.ToC())
-	}
-
-	c_size := (C.GtkIconSize)(size)
-
-	retC := C.gtk_image_new_from_icon_set(c_icon_set, c_size)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageNewFromPixbuf is a wrapper around the C function gtk_image_new_from_pixbuf.
-func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	retC := C.gtk_image_new_from_pixbuf(c_pixbuf)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageNewFromStock is a wrapper around the C function gtk_image_new_from_stock.
-func ImageNewFromStock(stockId string, size IconSize) *Image {
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	c_size := (C.GtkIconSize)(size)
-
-	retC := C.gtk_image_new_from_stock(c_stock_id, c_size)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetAnimation is a wrapper around the C function gtk_image_get_animation.
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	retC := C.gtk_image_get_animation((*C.GtkImage)(recv.native))
@@ -14864,52 +14283,6 @@ func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
 	return ImageMenuItemNewFromC(object.ToC())
 }
 
-// ImageMenuItemNew is a wrapper around the C function gtk_image_menu_item_new.
-func ImageMenuItemNew() *ImageMenuItem {
-	retC := C.gtk_image_menu_item_new()
-	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageMenuItemNewFromStock is a wrapper around the C function gtk_image_menu_item_new_from_stock.
-func ImageMenuItemNewFromStock(stockId string, accelGroup *AccelGroup) *ImageMenuItem {
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
-	if accelGroup != nil {
-		c_accel_group = (*C.GtkAccelGroup)(accelGroup.ToC())
-	}
-
-	retC := C.gtk_image_menu_item_new_from_stock(c_stock_id, c_accel_group)
-	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageMenuItemNewWithLabel is a wrapper around the C function gtk_image_menu_item_new_with_label.
-func ImageMenuItemNewWithLabel(label string) *ImageMenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_image_menu_item_new_with_label(c_label)
-	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageMenuItemNewWithMnemonic is a wrapper around the C function gtk_image_menu_item_new_with_mnemonic.
-func ImageMenuItemNewWithMnemonic(label string) *ImageMenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_image_menu_item_new_with_mnemonic(c_label)
-	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetImage is a wrapper around the C function gtk_image_menu_item_get_image.
 func (recv *ImageMenuItem) GetImage() *Widget {
 	retC := C.gtk_image_menu_item_get_image((*C.GtkImageMenuItem)(recv.native))
@@ -14986,8 +14359,6 @@ func CastToInfoBar(object *gobject.Object) *InfoBar {
 	return InfoBarNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
 // ImplementorIface returns the ImplementorIface interface implemented by InfoBar
 func (recv *InfoBar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -15027,14 +14398,6 @@ func (recv *Invisible) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Invisible.
 func CastToInvisible(object *gobject.Object) *Invisible {
 	return InvisibleNewFromC(object.ToC())
-}
-
-// InvisibleNew is a wrapper around the C function gtk_invisible_new.
-func InvisibleNew() *Invisible {
-	retC := C.gtk_invisible_new()
-	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by Invisible
@@ -15264,28 +14627,6 @@ func label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer
 	index := int(uintptr(data))
 	callback := signalLabelPopulatePopupMap[index].callback
 	callback(menu)
-}
-
-// LabelNew is a wrapper around the C function gtk_label_new.
-func LabelNew(str string) *Label {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	retC := C.gtk_label_new(c_str)
-	retGo := LabelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LabelNewWithMnemonic is a wrapper around the C function gtk_label_new_with_mnemonic.
-func LabelNewWithMnemonic(str string) *Label {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	retC := C.gtk_label_new_with_mnemonic(c_str)
-	retGo := LabelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetAttributes is a wrapper around the C function gtk_label_get_attributes.
@@ -15641,24 +14982,6 @@ func (recv *Layout) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Layout.
 func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())
-}
-
-// LayoutNew is a wrapper around the C function gtk_layout_new.
-func LayoutNew(hadjustment *Adjustment, vadjustment *Adjustment) *Layout {
-	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
-	if hadjustment != nil {
-		c_hadjustment = (*C.GtkAdjustment)(hadjustment.ToC())
-	}
-
-	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
-	if vadjustment != nil {
-		c_vadjustment = (*C.GtkAdjustment)(vadjustment.ToC())
-	}
-
-	retC := C.gtk_layout_new(c_hadjustment, c_vadjustment)
-	retGo := LayoutNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetHadjustment is a wrapper around the C function gtk_layout_get_hadjustment.
@@ -16400,31 +15723,6 @@ func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// ListStoreNewv is a wrapper around the C function gtk_list_store_newv.
-func ListStoreNewv(types []gobject.Type) *ListStore {
-	c_n_columns := (C.gint)(len(types))
-
-	c_types_array := make([]C.GType, len(types)+1, len(types)+1)
-	for i, item := range types {
-		c := (C.GType)(item)
-		c_types_array[i] = c
-	}
-	c_types_array[len(types)] = 0
-	c_types_arrayPtr := &c_types_array[0]
-	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
-
-	retC := C.gtk_list_store_newv(c_n_columns, c_types)
-	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Append is a wrapper around the C function gtk_list_store_append.
 func (recv *ListStore) Append() *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -16788,14 +16086,6 @@ func menu_moveScrollHandler(_ *C.GObject, c_scroll_type C.GtkScrollType, data C.
 	callback(scrollType)
 }
 
-// MenuNew is a wrapper around the C function gtk_menu_new.
-func MenuNew() *Menu {
-	retC := C.gtk_menu_new()
-	retGo := MenuNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Unsupported : gtk_menu_attach_to_widget : unsupported parameter detacher : no type generator for MenuDetachFunc (GtkMenuDetachFunc) for param detacher
 
 // Detach is a wrapper around the C function gtk_menu_detach.
@@ -17016,14 +16306,6 @@ func (recv *MenuBar) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuBar.
 func CastToMenuBar(object *gobject.Object) *MenuBar {
 	return MenuBarNewFromC(object.ToC())
-}
-
-// MenuBarNew is a wrapper around the C function gtk_menu_bar_new.
-func MenuBarNew() *MenuBar {
-	retC := C.gtk_menu_bar_new()
-	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by MenuBar
@@ -17497,36 +16779,6 @@ func menuitem_toggleSizeAllocateHandler(_ *C.GObject, c_object C.gint, data C.gp
 }
 
 // Unsupported signal 'toggle-size-request' for MenuItem : unsupported parameter object : no type generator for gpointer, gpointer
-
-// MenuItemNew is a wrapper around the C function gtk_menu_item_new.
-func MenuItemNew() *MenuItem {
-	retC := C.gtk_menu_item_new()
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// MenuItemNewWithLabel is a wrapper around the C function gtk_menu_item_new_with_label.
-func MenuItemNewWithLabel(label string) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_menu_item_new_with_label(c_label)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// MenuItemNewWithMnemonic is a wrapper around the C function gtk_menu_item_new_with_mnemonic.
-func MenuItemNewWithMnemonic(label string) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_menu_item_new_with_mnemonic(c_label)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // Activate is a wrapper around the C function gtk_menu_item_activate.
 func (recv *MenuItem) Activate() {
@@ -18385,29 +17637,6 @@ func CastToMessageDialog(object *gobject.Object) *MessageDialog {
 	return MessageDialogNewFromC(object.ToC())
 }
 
-// MessageDialogNew is a wrapper around the C function gtk_message_dialog_new.
-func MessageDialogNew(parent *Window, flags DialogFlags, type_ MessageType, buttons ButtonsType, messageFormat string, args ...interface{}) *MessageDialog {
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	c_flags := (C.GtkDialogFlags)(flags)
-
-	c_type := (C.GtkMessageType)(type_)
-
-	c_buttons := (C.GtkButtonsType)(buttons)
-
-	goFormattedString := fmt.Sprintf(messageFormat, args...)
-	c_message_format := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_message_format))
-
-	retC := C._gtk_message_dialog_new(c_parent, c_flags, c_type, c_buttons, c_message_format)
-	retGo := MessageDialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by MessageDialog
 func (recv *MessageDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -19007,14 +18236,6 @@ func notebook_switchPageHandler(_ *C.GObject, c_page *C.GtkWidget, c_page_num C.
 	callback(page, pageNum)
 }
 
-// NotebookNew is a wrapper around the C function gtk_notebook_new.
-func NotebookNew() *Notebook {
-	retC := C.gtk_notebook_new()
-	retGo := NotebookNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AppendPage is a wrapper around the C function gtk_notebook_append_page.
 func (recv *Notebook) AppendPage(child *Widget, tabLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -19500,28 +18721,6 @@ func (recv *NotebookPageAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a NotebookPageAccessible.
 func CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessible {
 	return NotebookPageAccessibleNewFromC(object.ToC())
-}
-
-// NotebookPageAccessibleNew is a wrapper around the C function gtk_notebook_page_accessible_new.
-func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *NotebookPageAccessible {
-	c_notebook := (*C.GtkNotebookAccessible)(C.NULL)
-	if notebook != nil {
-		c_notebook = (*C.GtkNotebookAccessible)(notebook.ToC())
-	}
-
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
-
-	retC := C.gtk_notebook_page_accessible_new(c_notebook, c_child)
-	retGo := NotebookPageAccessibleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Invalidate is a wrapper around the C function gtk_notebook_page_accessible_invalidate.
@@ -20254,14 +19453,6 @@ func CastToProgressBar(object *gobject.Object) *ProgressBar {
 	return ProgressBarNewFromC(object.ToC())
 }
 
-// ProgressBarNew is a wrapper around the C function gtk_progress_bar_new.
-func ProgressBarNew() *ProgressBar {
-	retC := C.gtk_progress_bar_new()
-	retGo := ProgressBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetFraction is a wrapper around the C function gtk_progress_bar_get_fraction.
 func (recv *ProgressBar) GetFraction() float64 {
 	retC := C.gtk_progress_bar_get_fraction((*C.GtkProgressBar)(recv.native))
@@ -20472,96 +19663,6 @@ func CastToRadioButton(object *gobject.Object) *RadioButton {
 	return RadioButtonNewFromC(object.ToC())
 }
 
-// RadioButtonNew is a wrapper around the C function gtk_radio_button_new.
-func RadioButtonNew(group *glib.SList) *RadioButton {
-	c_group := (*C.GSList)(C.NULL)
-	if group != nil {
-		c_group = (*C.GSList)(group.ToC())
-	}
-
-	retC := C.gtk_radio_button_new(c_group)
-	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioButtonNewFromWidget is a wrapper around the C function gtk_radio_button_new_from_widget.
-func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
-	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
-	if radioGroupMember != nil {
-		c_radio_group_member = (*C.GtkRadioButton)(radioGroupMember.ToC())
-	}
-
-	retC := C.gtk_radio_button_new_from_widget(c_radio_group_member)
-	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioButtonNewWithLabel is a wrapper around the C function gtk_radio_button_new_with_label.
-func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
-	c_group := (*C.GSList)(C.NULL)
-	if group != nil {
-		c_group = (*C.GSList)(group.ToC())
-	}
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_radio_button_new_with_label(c_group, c_label)
-	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioButtonNewWithLabelFromWidget is a wrapper around the C function gtk_radio_button_new_with_label_from_widget.
-func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label string) *RadioButton {
-	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
-	if radioGroupMember != nil {
-		c_radio_group_member = (*C.GtkRadioButton)(radioGroupMember.ToC())
-	}
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_radio_button_new_with_label_from_widget(c_radio_group_member, c_label)
-	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioButtonNewWithMnemonic is a wrapper around the C function gtk_radio_button_new_with_mnemonic.
-func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
-	c_group := (*C.GSList)(C.NULL)
-	if group != nil {
-		c_group = (*C.GSList)(group.ToC())
-	}
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_radio_button_new_with_mnemonic(c_group, c_label)
-	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioButtonNewWithMnemonicFromWidget is a wrapper around the C function gtk_radio_button_new_with_mnemonic_from_widget.
-func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label string) *RadioButton {
-	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
-	if radioGroupMember != nil {
-		c_radio_group_member = (*C.GtkRadioButton)(radioGroupMember.ToC())
-	}
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_radio_button_new_with_mnemonic_from_widget(c_radio_group_member, c_label)
-	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetGroup is a wrapper around the C function gtk_radio_button_get_group.
 func (recv *RadioButton) GetGroup() *glib.SList {
 	retC := C.gtk_radio_button_get_group((*C.GtkRadioButton)(recv.native))
@@ -20762,51 +19863,6 @@ func radiomenuitem_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalRadioMenuItemGroupChangedMap[index].callback
 	callback()
-}
-
-// RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
-func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
-	c_group := (*C.GSList)(C.NULL)
-	if group != nil {
-		c_group = (*C.GSList)(group.ToC())
-	}
-
-	retC := C.gtk_radio_menu_item_new(c_group)
-	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioMenuItemNewWithLabel is a wrapper around the C function gtk_radio_menu_item_new_with_label.
-func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
-	c_group := (*C.GSList)(C.NULL)
-	if group != nil {
-		c_group = (*C.GSList)(group.ToC())
-	}
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_radio_menu_item_new_with_label(c_group, c_label)
-	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RadioMenuItemNewWithMnemonic is a wrapper around the C function gtk_radio_menu_item_new_with_mnemonic.
-func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuItem {
-	c_group := (*C.GSList)(C.NULL)
-	if group != nil {
-		c_group = (*C.GSList)(group.ToC())
-	}
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_radio_menu_item_new_with_mnemonic(c_group, c_label)
-	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetGroup is a wrapper around the C function gtk_radio_menu_item_get_group.
@@ -21330,18 +20386,6 @@ func CastToRcStyle(object *gobject.Object) *RcStyle {
 	return RcStyleNewFromC(object.ToC())
 }
 
-// RcStyleNew is a wrapper around the C function gtk_rc_style_new.
-func RcStyleNew() *RcStyle {
-	retC := C.gtk_rc_style_new()
-	retGo := RcStyleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Copy is a wrapper around the C function gtk_rc_style_copy.
 func (recv *RcStyle) Copy() *RcStyle {
 	retC := C.gtk_rc_style_copy((*C.GtkRcStyle)(recv.native))
@@ -21609,23 +20653,6 @@ func (recv *RendererCellAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RendererCellAccessible.
 func CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessible {
 	return RendererCellAccessibleNewFromC(object.ToC())
-}
-
-// RendererCellAccessibleNew is a wrapper around the C function gtk_renderer_cell_accessible_new.
-func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
-	c_renderer := (*C.GtkCellRenderer)(C.NULL)
-	if renderer != nil {
-		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
-	}
-
-	retC := C.gtk_renderer_cell_accessible_new(c_renderer)
-	retGo := RendererCellAccessibleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Action returns the Action interface implemented by RendererCellAccessible
@@ -22158,24 +21185,6 @@ func scrolledwindow_scrollChildHandler(_ *C.GObject, c_scroll C.GtkScrollType, c
 	return retC
 }
 
-// ScrolledWindowNew is a wrapper around the C function gtk_scrolled_window_new.
-func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *ScrolledWindow {
-	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
-	if hadjustment != nil {
-		c_hadjustment = (*C.GtkAdjustment)(hadjustment.ToC())
-	}
-
-	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
-	if vadjustment != nil {
-		c_vadjustment = (*C.GtkAdjustment)(vadjustment.ToC())
-	}
-
-	retC := C.gtk_scrolled_window_new(c_hadjustment, c_vadjustment)
-	retGo := ScrolledWindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AddWithViewport is a wrapper around the C function gtk_scrolled_window_add_with_viewport.
 func (recv *ScrolledWindow) AddWithViewport(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -22500,14 +21509,6 @@ func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
 	return SeparatorMenuItemNewFromC(object.ToC())
 }
 
-// SeparatorMenuItemNew is a wrapper around the C function gtk_separator_menu_item_new.
-func SeparatorMenuItemNew() *SeparatorMenuItem {
-	retC := C.gtk_separator_menu_item_new()
-	retGo := SeparatorMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by SeparatorMenuItem
 func (recv *SeparatorMenuItem) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -22706,20 +21707,6 @@ func (recv *SizeGroup) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SizeGroup.
 func CastToSizeGroup(object *gobject.Object) *SizeGroup {
 	return SizeGroupNewFromC(object.ToC())
-}
-
-// SizeGroupNew is a wrapper around the C function gtk_size_group_new.
-func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
-	c_mode := (C.GtkSizeGroupMode)(mode)
-
-	retC := C.gtk_size_group_new(c_mode)
-	retGo := SizeGroupNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddWidget is a wrapper around the C function gtk_size_group_add_widget.
@@ -22986,37 +21973,6 @@ func spinbutton_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSpinButtonValueChangedMap[index].callback
 	callback()
-}
-
-// SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
-func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *SpinButton {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
-
-	c_climb_rate := (C.gdouble)(climbRate)
-
-	c_digits := (C.guint)(digits)
-
-	retC := C.gtk_spin_button_new(c_adjustment, c_climb_rate, c_digits)
-	retGo := SpinButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SpinButtonNewWithRange is a wrapper around the C function gtk_spin_button_new_with_range.
-func SpinButtonNewWithRange(min float64, max float64, step float64) *SpinButton {
-	c_min := (C.gdouble)(min)
-
-	c_max := (C.gdouble)(max)
-
-	c_step := (C.gdouble)(step)
-
-	retC := C.gtk_spin_button_new_with_range(c_min, c_max, c_step)
-	retGo := SpinButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Configure is a wrapper around the C function gtk_spin_button_configure.
@@ -23711,14 +22667,6 @@ func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.g
 	callback(contextId, text)
 }
 
-// StatusbarNew is a wrapper around the C function gtk_statusbar_new.
-func StatusbarNew() *Statusbar {
-	retC := C.gtk_statusbar_new()
-	retGo := StatusbarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetContextId is a wrapper around the C function gtk_statusbar_get_context_id.
 func (recv *Statusbar) GetContextId(contextDescription string) uint32 {
 	c_context_description := C.CString(contextDescription)
@@ -23828,18 +22776,6 @@ func (recv *Style) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Style.
 func CastToStyle(object *gobject.Object) *Style {
 	return StyleNewFromC(object.ToC())
-}
-
-// StyleNew is a wrapper around the C function gtk_style_new.
-func StyleNew() *Style {
-	retC := C.gtk_style_new()
-	retGo := StyleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // ApplyDefaultBackground is a wrapper around the C function gtk_style_apply_default_background.
@@ -23965,18 +22901,6 @@ func CastToStyleContext(object *gobject.Object) *StyleContext {
 	return StyleContextNewFromC(object.ToC())
 }
 
-// StyleContextNew is a wrapper around the C function gtk_style_context_new.
-func StyleContextNew() *StyleContext {
-	retC := C.gtk_style_context_new()
-	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetScreen is a wrapper around the C function gtk_style_context_get_screen.
 func (recv *StyleContext) GetScreen() *gdk.Screen {
 	retC := C.gtk_style_context_get_screen((*C.GtkStyleContext)(recv.native))
@@ -24061,18 +22985,6 @@ func (recv *StyleProperties) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a StyleProperties.
 func CastToStyleProperties(object *gobject.Object) *StyleProperties {
 	return StylePropertiesNewFromC(object.ToC())
-}
-
-// StylePropertiesNew is a wrapper around the C function gtk_style_properties_new.
-func StylePropertiesNew() *StyleProperties {
-	retC := C.gtk_style_properties_new()
-	retGo := StylePropertiesNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Clear is a wrapper around the C function gtk_style_properties_clear.
@@ -24258,21 +23170,6 @@ func (recv *Table) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Table.
 func CastToTable(object *gobject.Object) *Table {
 	return TableNewFromC(object.ToC())
-}
-
-// TableNew is a wrapper around the C function gtk_table_new.
-func TableNew(rows uint32, columns uint32, homogeneous bool) *Table {
-	c_rows := (C.guint)(rows)
-
-	c_columns := (C.guint)(columns)
-
-	c_homogeneous :=
-		boolToGboolean(homogeneous)
-
-	retC := C.gtk_table_new(c_rows, c_columns, c_homogeneous)
-	retGo := TableNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Attach is a wrapper around the C function gtk_table_attach.
@@ -24477,14 +23374,6 @@ func (recv *TearoffMenuItem) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a TearoffMenuItem.
 func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
 	return TearoffMenuItemNewFromC(object.ToC())
-}
-
-// TearoffMenuItemNew is a wrapper around the C function gtk_tearoff_menu_item_new.
-func TearoffMenuItemNew() *TearoffMenuItem {
-	retC := C.gtk_tearoff_menu_item_new()
-	retGo := TearoffMenuItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by TearoffMenuItem
@@ -25277,23 +24166,6 @@ func textbuffer_removeTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.G
 	index := int(uintptr(data))
 	callback := signalTextBufferRemoveTagMap[index].callback
 	callback(tag, start, end)
-}
-
-// TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
-func TextBufferNew(table *TextTagTable) *TextBuffer {
-	c_table := (*C.GtkTextTagTable)(C.NULL)
-	if table != nil {
-		c_table = (*C.GtkTextTagTable)(table.ToC())
-	}
-
-	retC := C.gtk_text_buffer_new(c_table)
-	retGo := TextBufferNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddSelectionClipboard is a wrapper around the C function gtk_text_buffer_add_selection_clipboard.
@@ -26119,18 +24991,6 @@ func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
 	return TextChildAnchorNewFromC(object.ToC())
 }
 
-// TextChildAnchorNew is a wrapper around the C function gtk_text_child_anchor_new.
-func TextChildAnchorNew() *TextChildAnchor {
-	retC := C.gtk_text_child_anchor_new()
-	retGo := TextChildAnchorNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetDeleted is a wrapper around the C function gtk_text_child_anchor_get_deleted.
 func (recv *TextChildAnchor) GetDeleted() bool {
 	retC := C.gtk_text_child_anchor_get_deleted((*C.GtkTextChildAnchor)(recv.native))
@@ -26230,21 +25090,6 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 }
 
 // Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
-// TextTagNew is a wrapper around the C function gtk_text_tag_new.
-func TextTagNew(name string) *TextTag {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gtk_text_tag_new(c_name)
-	retGo := TextTagNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // Unsupported : gtk_text_tag_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
@@ -26467,18 +25312,6 @@ func texttagtable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gp
 	index := int(uintptr(data))
 	callback := signalTextTagTableTagRemovedMap[index].callback
 	callback(tag)
-}
-
-// TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
-func TextTagTableNew() *TextTagTable {
-	retC := C.gtk_text_tag_table_new()
-	retGo := TextTagTableNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Add is a wrapper around the C function gtk_text_tag_table_add.
@@ -27366,27 +26199,6 @@ func textview_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewToggleOverwriteMap[index].callback
 	callback()
-}
-
-// TextViewNew is a wrapper around the C function gtk_text_view_new.
-func TextViewNew() *TextView {
-	retC := C.gtk_text_view_new()
-	retGo := TextViewNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TextViewNewWithBuffer is a wrapper around the C function gtk_text_view_new_with_buffer.
-func TextViewNewWithBuffer(buffer *TextBuffer) *TextView {
-	c_buffer := (*C.GtkTextBuffer)(C.NULL)
-	if buffer != nil {
-		c_buffer = (*C.GtkTextBuffer)(buffer.ToC())
-	}
-
-	retC := C.gtk_text_view_new_with_buffer(c_buffer)
-	retGo := TextViewNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // AddChildAtAnchor is a wrapper around the C function gtk_text_view_add_child_at_anchor.
@@ -28287,36 +27099,6 @@ func togglebutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToggleButtonToggledMap[index].callback
 	callback()
-}
-
-// ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
-func ToggleButtonNew() *ToggleButton {
-	retC := C.gtk_toggle_button_new()
-	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ToggleButtonNewWithLabel is a wrapper around the C function gtk_toggle_button_new_with_label.
-func ToggleButtonNewWithLabel(label string) *ToggleButton {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_toggle_button_new_with_label(c_label)
-	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ToggleButtonNewWithMnemonic is a wrapper around the C function gtk_toggle_button_new_with_mnemonic.
-func ToggleButtonNewWithMnemonic(label string) *ToggleButton {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_toggle_button_new_with_mnemonic(c_label)
-	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetActive is a wrapper around the C function gtk_toggle_button_get_active.
@@ -29258,14 +28040,6 @@ func toolbar_styleChangedHandler(_ *C.GObject, c_style C.GtkToolbarStyle, data C
 	callback(style)
 }
 
-// ToolbarNew is a wrapper around the C function gtk_toolbar_new.
-func ToolbarNew() *Toolbar {
-	retC := C.gtk_toolbar_new()
-	retGo := ToolbarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetIconSize is a wrapper around the C function gtk_toolbar_get_icon_size.
 func (recv *Toolbar) GetIconSize() IconSize {
 	retC := C.gtk_toolbar_get_icon_size((*C.GtkToolbar)(recv.native))
@@ -29764,31 +28538,6 @@ func (recv *TreeStore) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeStore.
 func CastToTreeStore(object *gobject.Object) *TreeStore {
 	return TreeStoreNewFromC(object.ToC())
-}
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// TreeStoreNewv is a wrapper around the C function gtk_tree_store_newv.
-func TreeStoreNewv(types []gobject.Type) *TreeStore {
-	c_n_columns := (C.gint)(len(types))
-
-	c_types_array := make([]C.GType, len(types)+1, len(types)+1)
-	for i, item := range types {
-		c := (C.GType)(item)
-		c_types_array[i] = c
-	}
-	c_types_array[len(types)] = 0
-	c_types_arrayPtr := &c_types_array[0]
-	c_types := (*C.GType)(unsafe.Pointer(c_types_arrayPtr))
-
-	retC := C.gtk_tree_store_newv(c_n_columns, c_types)
-	retGo := TreeStoreNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Append is a wrapper around the C function gtk_tree_store_append.
@@ -30993,24 +29742,6 @@ func treeview_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	return retC
 }
 
-// TreeViewNew is a wrapper around the C function gtk_tree_view_new.
-func TreeViewNew() *TreeView {
-	retC := C.gtk_tree_view_new()
-	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TreeViewNewWithModel is a wrapper around the C function gtk_tree_view_new_with_model.
-func TreeViewNewWithModel(model *TreeModel) *TreeView {
-	c_model := (*C.GtkTreeModel)(model.ToC())
-
-	retC := C.gtk_tree_view_new_with_model(c_model)
-	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AppendColumn is a wrapper around the C function gtk_tree_view_append_column.
 func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
@@ -31735,16 +30466,6 @@ func treeviewcolumn_clickedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
-func TreeViewColumnNew() *TreeViewColumn {
-	retC := C.gtk_tree_view_column_new()
-	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
 // AddAttribute is a wrapper around the C function gtk_tree_view_column_add_attribute.
 func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute string, column int32) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -32243,19 +30964,6 @@ func CastToVBox(object *gobject.Object) *VBox {
 	return VBoxNewFromC(object.ToC())
 }
 
-// VBoxNew is a wrapper around the C function gtk_vbox_new.
-func VBoxNew(homogeneous bool, spacing int32) *VBox {
-	c_homogeneous :=
-		boolToGboolean(homogeneous)
-
-	c_spacing := (C.gint)(spacing)
-
-	retC := C.gtk_vbox_new(c_homogeneous, c_spacing)
-	retGo := VBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by VBox
 func (recv *VBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -32312,14 +31020,6 @@ func CastToVButtonBox(object *gobject.Object) *VButtonBox {
 	return VButtonBoxNewFromC(object.ToC())
 }
 
-// VButtonBoxNew is a wrapper around the C function gtk_vbutton_box_new.
-func VButtonBoxNew() *VButtonBox {
-	retC := C.gtk_vbutton_box_new()
-	retGo := VButtonBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by VButtonBox
 func (recv *VButtonBox) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -32369,14 +31069,6 @@ func (recv *VPaned) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a VPaned.
 func CastToVPaned(object *gobject.Object) *VPaned {
 	return VPanedNewFromC(object.ToC())
-}
-
-// VPanedNew is a wrapper around the C function gtk_vpaned_new.
-func VPanedNew() *VPaned {
-	retC := C.gtk_vpaned_new()
-	retGo := VPanedNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by VPaned
@@ -32430,33 +31122,6 @@ func CastToVScale(object *gobject.Object) *VScale {
 	return VScaleNewFromC(object.ToC())
 }
 
-// VScaleNew is a wrapper around the C function gtk_vscale_new.
-func VScaleNew(adjustment *Adjustment) *VScale {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
-
-	retC := C.gtk_vscale_new(c_adjustment)
-	retGo := VScaleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// VScaleNewWithRange is a wrapper around the C function gtk_vscale_new_with_range.
-func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
-	c_min := (C.gdouble)(min)
-
-	c_max := (C.gdouble)(max)
-
-	c_step := (C.gdouble)(step)
-
-	retC := C.gtk_vscale_new_with_range(c_min, c_max, c_step)
-	retGo := VScaleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by VScale
 func (recv *VScale) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -32508,19 +31173,6 @@ func CastToVScrollbar(object *gobject.Object) *VScrollbar {
 	return VScrollbarNewFromC(object.ToC())
 }
 
-// VScrollbarNew is a wrapper around the C function gtk_vscrollbar_new.
-func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
-	c_adjustment := (*C.GtkAdjustment)(C.NULL)
-	if adjustment != nil {
-		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
-	}
-
-	retC := C.gtk_vscrollbar_new(c_adjustment)
-	retGo := VScrollbarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ImplementorIface returns the ImplementorIface interface implemented by VScrollbar
 func (recv *VScrollbar) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -32565,14 +31217,6 @@ func (recv *VSeparator) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a VSeparator.
 func CastToVSeparator(object *gobject.Object) *VSeparator {
 	return VSeparatorNewFromC(object.ToC())
-}
-
-// VSeparatorNew is a wrapper around the C function gtk_vseparator_new.
-func VSeparatorNew() *VSeparator {
-	retC := C.gtk_vseparator_new()
-	retGo := VSeparatorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ImplementorIface returns the ImplementorIface interface implemented by VSeparator
@@ -32624,24 +31268,6 @@ func (recv *Viewport) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Viewport.
 func CastToViewport(object *gobject.Object) *Viewport {
 	return ViewportNewFromC(object.ToC())
-}
-
-// ViewportNew is a wrapper around the C function gtk_viewport_new.
-func ViewportNew(hadjustment *Adjustment, vadjustment *Adjustment) *Viewport {
-	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
-	if hadjustment != nil {
-		c_hadjustment = (*C.GtkAdjustment)(hadjustment.ToC())
-	}
-
-	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
-	if vadjustment != nil {
-		c_vadjustment = (*C.GtkAdjustment)(vadjustment.ToC())
-	}
-
-	retC := C.gtk_viewport_new(c_hadjustment, c_vadjustment)
-	retGo := ViewportNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetHadjustment is a wrapper around the C function gtk_viewport_get_hadjustment.
@@ -36388,8 +35014,6 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 	return retC
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
-
 // WidgetGetDefaultDirection is a wrapper around the C function gtk_widget_get_default_direction.
 func WidgetGetDefaultDirection() TextDirection {
 	retC := C.gtk_widget_get_default_direction()
@@ -38058,16 +36682,6 @@ func window_setFocusHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer
 	callback(object)
 }
 
-// WindowNew is a wrapper around the C function gtk_window_new.
-func WindowNew(type_ WindowType) *Window {
-	c_type := (C.GtkWindowType)(type_)
-
-	retC := C.gtk_window_new(c_type)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // WindowGetDefaultIconList is a wrapper around the C function gtk_window_get_default_icon_list.
 func WindowGetDefaultIconList() *glib.List {
 	retC := C.gtk_window_get_default_icon_list()
@@ -38733,18 +37347,6 @@ func (recv *WindowGroup) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a WindowGroup.
 func CastToWindowGroup(object *gobject.Object) *WindowGroup {
 	return WindowGroupNewFromC(object.ToC())
-}
-
-// WindowGroupNew is a wrapper around the C function gtk_window_group_new.
-func WindowGroupNew() *WindowGroup {
-	retC := C.gtk_window_group_new()
-	retGo := WindowGroupNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddWindow is a wrapper around the C function gtk_window_group_add_window.

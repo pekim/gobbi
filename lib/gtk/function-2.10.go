@@ -3,16 +3,10 @@
 
 package gtk
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // PrintRunPageSetupDialog is a wrapper around the C function gtk_print_run_page_setup_dialog.
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {

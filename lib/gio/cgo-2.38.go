@@ -4,6 +4,8 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"unsafe"
 )
@@ -25,6 +27,23 @@ import (
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
+
+// BytesIconNew is a wrapper around the C function g_bytes_icon_new.
+func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
+	c_bytes := (*C.GBytes)(C.NULL)
+	if bytes != nil {
+		c_bytes = (*C.GBytes)(bytes.ToC())
+	}
+
+	retC := C.g_bytes_icon_new(c_bytes)
+	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // PropertyAction is a wrapper around the C record GPropertyAction.
 type PropertyAction struct {
@@ -55,4 +74,27 @@ func PropertyActionNewFromC(u unsafe.Pointer) *PropertyAction {
 func (recv *PropertyAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// PropertyActionNew is a wrapper around the C function g_property_action_new.
+func PropertyActionNew(name string, object *gobject.Object, propertyName string) *PropertyAction {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_object := (C.gpointer)(C.NULL)
+	if object != nil {
+		c_object = (C.gpointer)(object.ToC())
+	}
+
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	retC := C.g_property_action_new(c_name, c_object, c_property_name)
+	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }

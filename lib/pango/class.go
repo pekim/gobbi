@@ -3,17 +3,11 @@
 package pango
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this Context with another Context, and returns true if they represent the same GObject.
 func (recv *Context) Equals(other *Context) bool {
@@ -29,18 +23,6 @@ func (recv *Context) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Context.
 func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromC(object.ToC())
-}
-
-// ContextNew is a wrapper around the C function pango_context_new.
-func ContextNew() *Context {
-	retC := C.pango_context_new()
-	retGo := ContextNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetBaseDir is a wrapper around the C function pango_context_get_base_dir.
@@ -457,23 +439,6 @@ func (recv *Layout) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Layout.
 func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())
-}
-
-// LayoutNew is a wrapper around the C function pango_layout_new.
-func LayoutNew(context *Context) *Layout {
-	c_context := (*C.PangoContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.PangoContext)(context.ToC())
-	}
-
-	retC := C.pango_layout_new(c_context)
-	retGo := LayoutNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // ContextChanged is a wrapper around the C function pango_layout_context_changed.

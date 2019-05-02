@@ -3,22 +3,14 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // g_array_get_element_size : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // g_array_ref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // g_array_unref : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
 func MainContextGetThreadDefault() *MainContext {
 	retC := C.g_main_context_get_thread_default()

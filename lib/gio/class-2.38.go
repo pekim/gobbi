@@ -4,28 +4,11 @@
 package gio
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <gio/gnetworking.h>
-// #include <stdlib.h>
-import "C"
 
 // MarkBusy is a wrapper around the C function g_application_mark_busy.
 func (recv *Application) MarkBusy() {
@@ -39,23 +22,6 @@ func (recv *Application) UnmarkBusy() {
 	C.g_application_unmark_busy((*C.GApplication)(recv.native))
 
 	return
-}
-
-// BytesIconNew is a wrapper around the C function g_bytes_icon_new.
-func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
-
-	retC := C.g_bytes_icon_new(c_bytes)
-	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetBytes is a wrapper around the C function g_bytes_icon_get_bytes.
@@ -143,27 +109,4 @@ func (recv *PropertyAction) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a PropertyAction.
 func CastToPropertyAction(object *gobject.Object) *PropertyAction {
 	return PropertyActionNewFromC(object.ToC())
-}
-
-// PropertyActionNew is a wrapper around the C function g_property_action_new.
-func PropertyActionNew(name string, object *gobject.Object, propertyName string) *PropertyAction {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_object := (C.gpointer)(C.NULL)
-	if object != nil {
-		c_object = (C.gpointer)(object.ToC())
-	}
-
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	retC := C.g_property_action_new(c_name, c_object, c_property_name)
-	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }

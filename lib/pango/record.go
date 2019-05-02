@@ -3,16 +3,10 @@
 package pango
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this Analysis with another Analysis, and returns true if they represent the same GObject.
 func (recv *Analysis) Equals(other *Analysis) bool {
@@ -158,14 +152,6 @@ func AttrLanguageNew(language *Language) *Attribute {
 // Equals compares this AttrList with another AttrList, and returns true if they represent the same GObject.
 func (recv *AttrList) Equals(other *AttrList) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// AttrListNew is a wrapper around the C function pango_attr_list_new.
-func AttrListNew() *AttrList {
-	retC := C.pango_attr_list_new()
-	retGo := AttrListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Change is a wrapper around the C function pango_attr_list_change.
@@ -477,14 +463,6 @@ func (recv *FontDescription) Equals(other *FontDescription) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FontDescriptionNew is a wrapper around the C function pango_font_description_new.
-func FontDescriptionNew() *FontDescription {
-	retC := C.pango_font_description_new()
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // FontDescriptionFromString is a wrapper around the C function pango_font_description_from_string.
 func FontDescriptionFromString(str string) *FontDescription {
 	c_str := C.CString(str)
@@ -757,8 +735,6 @@ func (recv *FontMetrics) Equals(other *FontMetrics) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Blacklisted : pango_font_metrics_new
-
 // GetApproximateCharWidth is a wrapper around the C function pango_font_metrics_get_approximate_char_width.
 func (recv *FontMetrics) GetApproximateCharWidth() int32 {
 	retC := C.pango_font_metrics_get_approximate_char_width((*C.PangoFontMetrics)(recv.native))
@@ -842,14 +818,6 @@ func (recv *GlyphVisAttr) Equals(other *GlyphVisAttr) bool {
 // Equals compares this Item with another Item, and returns true if they represent the same GObject.
 func (recv *Item) Equals(other *Item) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ItemNew is a wrapper around the C function pango_item_new.
-func ItemNew() *Item {
-	retC := C.pango_item_new()
-	retGo := ItemNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Copy is a wrapper around the C function pango_item_copy.
@@ -1047,21 +1015,6 @@ func (recv *ScriptIter) Equals(other *ScriptIter) bool {
 func (recv *TabArray) Equals(other *TabArray) bool {
 	return other.ToC() == recv.ToC()
 }
-
-// TabArrayNew is a wrapper around the C function pango_tab_array_new.
-func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
-	c_initial_size := (C.gint)(initialSize)
-
-	c_positions_in_pixels :=
-		boolToGboolean(positionsInPixels)
-
-	retC := C.pango_tab_array_new(c_initial_size, c_positions_in_pixels)
-	retGo := TabArrayNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs
 
 // Copy is a wrapper around the C function pango_tab_array_copy.
 func (recv *TabArray) Copy() *TabArray {

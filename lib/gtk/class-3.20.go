@@ -11,13 +11,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void nativedialog_responseHandler(GObject *, gint, gpointer);
@@ -127,34 +120,6 @@ func (recv *FileChooserNative) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserNative.
 func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
 	return FileChooserNativeNewFromC(object.ToC())
-}
-
-// FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
-func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
-
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	c_action := (C.GtkFileChooserAction)(action)
-
-	c_accept_label := C.CString(acceptLabel)
-	defer C.free(unsafe.Pointer(c_accept_label))
-
-	c_cancel_label := C.CString(cancelLabel)
-	defer C.free(unsafe.Pointer(c_cancel_label))
-
-	retC := C.gtk_file_chooser_native_new(c_title, c_parent, c_action, c_accept_label, c_cancel_label)
-	retGo := FileChooserNativeNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetAcceptLabel is a wrapper around the C function gtk_file_chooser_native_get_accept_label.

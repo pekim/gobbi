@@ -10,21 +10,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	void cancellable_cancelledHandler(GObject *, gpointer);
@@ -238,18 +223,6 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
-// AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
-func AppLaunchContextNew() *AppLaunchContext {
-	retC := C.g_app_launch_context_new()
-	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetDisplay is a wrapper around the C function g_app_launch_context_get_display.
 func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
@@ -332,42 +305,6 @@ func (recv *BufferedInputStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a BufferedInputStream.
 func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 	return BufferedInputStreamNewFromC(object.ToC())
-}
-
-// BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
-func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	retC := C.g_buffered_input_stream_new(c_base_stream)
-	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// BufferedInputStreamNewSized is a wrapper around the C function g_buffered_input_stream_new_sized.
-func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	c_size := (C.gsize)(size)
-
-	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
-	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Fill is a wrapper around the C function g_buffered_input_stream_fill.
@@ -519,42 +456,6 @@ func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 	return BufferedOutputStreamNewFromC(object.ToC())
 }
 
-// BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
-func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
-
-	retC := C.g_buffered_output_stream_new(c_base_stream)
-	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// BufferedOutputStreamNewSized is a wrapper around the C function g_buffered_output_stream_new_sized.
-func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
-
-	c_size := (C.gsize)(size)
-
-	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
-	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetAutoGrow is a wrapper around the C function g_buffered_output_stream_get_auto_grow.
 func (recv *BufferedOutputStream) GetAutoGrow() bool {
 	retC := C.g_buffered_output_stream_get_auto_grow((*C.GBufferedOutputStream)(recv.native))
@@ -697,18 +598,6 @@ func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CancellableNew is a wrapper around the C function g_cancellable_new.
-func CancellableNew() *Cancellable {
-	retC := C.g_cancellable_new()
-	retGo := CancellableNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // CancellableGetCurrent is a wrapper around the C function g_cancellable_get_current.
 func CancellableGetCurrent() *Cancellable {
 	retC := C.g_cancellable_get_current()
@@ -836,25 +725,6 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
 }
 
-// ConverterInputStreamNew is a wrapper around the C function g_converter_input_stream_new.
-func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	c_converter := (*C.GConverter)(converter.ToC())
-
-	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
-	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
@@ -884,25 +754,6 @@ func (recv *ConverterOutputStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ConverterOutputStream.
 func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream {
 	return ConverterOutputStreamNewFromC(object.ToC())
-}
-
-// ConverterOutputStreamNew is a wrapper around the C function g_converter_output_stream_new.
-func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
-
-	c_converter := (*C.GConverter)(converter.ToC())
-
-	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
-	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
@@ -986,23 +837,6 @@ func (recv *DataInputStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DataInputStream.
 func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 	return DataInputStreamNewFromC(object.ToC())
-}
-
-// DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
-func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	retC := C.g_data_input_stream_new(c_base_stream)
-	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetByteOrder is a wrapper around the C function g_data_input_stream_get_byte_order.
@@ -1264,23 +1098,6 @@ func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 	return DataOutputStreamNewFromC(object.ToC())
 }
 
-// DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
-func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
-
-	retC := C.g_data_output_stream_new(c_base_stream)
-	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetByteOrder is a wrapper around the C function g_data_output_stream_get_byte_order.
 func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 	retC := C.g_data_output_stream_get_byte_order((*C.GDataOutputStream)(recv.native))
@@ -1518,36 +1335,6 @@ func (recv *DesktopAppInfo) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DesktopAppInfo.
 func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
 	return DesktopAppInfoNewFromC(object.ToC())
-}
-
-// DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
-func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
-	c_desktop_id := C.CString(desktopId)
-	defer C.free(unsafe.Pointer(c_desktop_id))
-
-	retC := C.g_desktop_app_info_new(c_desktop_id)
-	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// DesktopAppInfoNewFromFilename is a wrapper around the C function g_desktop_app_info_new_from_filename.
-func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_desktop_app_info_new_from_filename(c_filename)
-	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // g_desktop_app_info_search : no type for array return
@@ -1813,20 +1600,6 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromC(object.ToC())
 }
 
-// FileIconNew is a wrapper around the C function g_file_icon_new.
-func FileIconNew(file *File) *FileIcon {
-	c_file := (*C.GFile)(file.ToC())
-
-	retC := C.g_file_icon_new(c_file)
-	retGo := FileIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetFile is a wrapper around the C function g_file_icon_get_file.
 func (recv *FileIcon) GetFile() *File {
 	retC := C.g_file_icon_get_file((*C.GFileIcon)(recv.native))
@@ -1859,18 +1632,6 @@ func (recv *FileInfo) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileInfo.
 func CastToFileInfo(object *gobject.Object) *FileInfo {
 	return FileInfoNewFromC(object.ToC())
-}
-
-// FileInfoNew is a wrapper around the C function g_file_info_new.
-func FileInfoNew() *FileInfo {
-	retC := C.g_file_info_new()
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // ClearStatus is a wrapper around the C function g_file_info_clear_status.
@@ -2790,18 +2551,6 @@ func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
-func FilenameCompleterNew() *FilenameCompleter {
-	retC := C.g_filename_completer_new()
-	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetCompletionSuffix is a wrapper around the C function g_filename_completer_get_completion_suffix.
 func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 	c_initial_text := C.CString(initialText)
@@ -2943,21 +2692,6 @@ func (recv *IOModule) Equals(other *IOModule) bool {
 // Exercise care, as this is a potentially dangerous function if the Object is not a IOModule.
 func CastToIOModule(object *gobject.Object) *IOModule {
 	return IOModuleNewFromC(object.ToC())
-}
-
-// IOModuleNew is a wrapper around the C function g_io_module_new.
-func IOModuleNew(filename string) *IOModule {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.g_io_module_new(c_filename)
-	retGo := IOModuleNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Blacklisted : g_io_module_load
@@ -3312,20 +3046,6 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 	return MemoryInputStreamNewFromC(object.ToC())
 }
 
-// MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
-func MemoryInputStreamNew() *MemoryInputStream {
-	retC := C.g_memory_input_stream_new()
-	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
 // Unsupported : g_memory_input_stream_add_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
@@ -3358,8 +3078,6 @@ func (recv *MemoryOutputStream) Object() *gobject.Object {
 func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 	return MemoryOutputStreamNewFromC(object.ToC())
 }
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_memory_output_stream_get_data : no return generator
 
@@ -3527,18 +3245,6 @@ func mountoperation_replyHandler(_ *C.GObject, c_result C.GMountOperationResult,
 	index := int(uintptr(data))
 	callback := signalMountOperationReplyMap[index].callback
 	callback(result)
-}
-
-// MountOperationNew is a wrapper around the C function g_mount_operation_new.
-func MountOperationNew() *MountOperation {
-	retC := C.g_mount_operation_new()
-	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetAnonymous is a wrapper around the C function g_mount_operation_get_anonymous.
@@ -4494,12 +4200,6 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 	return SimpleAsyncResultNewFromC(object.ToC())
 }
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
 // Complete is a wrapper around the C function g_simple_async_result_complete.
 func (recv *SimpleAsyncResult) Complete() {
 	C.g_simple_async_result_complete((*C.GSimpleAsyncResult)(recv.native))
@@ -4835,60 +4535,6 @@ func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
 	return ThemedIconNewFromC(object.ToC())
 }
 
-// ThemedIconNew is a wrapper around the C function g_themed_icon_new.
-func ThemedIconNew(iconname string) *ThemedIcon {
-	c_iconname := C.CString(iconname)
-	defer C.free(unsafe.Pointer(c_iconname))
-
-	retC := C.g_themed_icon_new(c_iconname)
-	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// ThemedIconNewFromNames is a wrapper around the C function g_themed_icon_new_from_names.
-func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
-	c_iconnames_array := make([]*C.char, len(iconnames)+1, len(iconnames)+1)
-	for i, item := range iconnames {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_iconnames_array[i] = c
-	}
-	c_iconnames_array[len(iconnames)] = nil
-	c_iconnames_arrayPtr := &c_iconnames_array[0]
-	c_iconnames := (**C.char)(unsafe.Pointer(c_iconnames_arrayPtr))
-
-	c_len := (C.int)(len(iconnames))
-
-	retC := C.g_themed_icon_new_from_names(c_iconnames, c_len)
-	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
-func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
-	c_iconname := C.CString(iconname)
-	defer C.free(unsafe.Pointer(c_iconname))
-
-	retC := C.g_themed_icon_new_with_default_fallbacks(c_iconname)
-	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // AppendName is a wrapper around the C function g_themed_icon_append_name.
 func (recv *ThemedIcon) AppendName(iconname string) {
 	c_iconname := C.CString(iconname)
@@ -4998,23 +4644,6 @@ func (recv *UnixInputStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixInputStream.
 func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
 	return UnixInputStreamNewFromC(object.ToC())
-}
-
-// UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
-func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
-	c_fd := (C.gint)(fd)
-
-	c_close_fd :=
-		boolToGboolean(closeFd)
-
-	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
-	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixInputStream
@@ -5163,18 +4792,6 @@ func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
-func UnixMountMonitorNew() *UnixMountMonitor {
-	retC := C.g_unix_mount_monitor_new()
-	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Equals compares this UnixOutputStream with another UnixOutputStream, and returns true if they represent the same GObject.
 func (recv *UnixOutputStream) Equals(other *UnixOutputStream) bool {
 	return other.ToC() == recv.ToC()
@@ -5194,23 +4811,6 @@ func (recv *UnixOutputStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixOutputStream.
 func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
 	return UnixOutputStreamNewFromC(object.ToC())
-}
-
-// UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
-func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
-	c_fd := (C.gint)(fd)
-
-	c_close_fd :=
-		boolToGboolean(closeFd)
-
-	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
-	retGo := UnixOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixOutputStream
@@ -5242,29 +4842,6 @@ func (recv *UnixSocketAddress) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixSocketAddress.
 func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromC(object.ToC())
-}
-
-// UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
-func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
-	c_path_array := make([]C.gchar, len(path)+1, len(path)+1)
-	for i, item := range path {
-		c := (C.gchar)(item)
-		c_path_array[i] = c
-	}
-	c_path_array[len(path)] = 0
-	c_path_arrayPtr := &c_path_array[0]
-	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
-
-	c_path_len := (C.gint)(len(path))
-
-	retC := C.g_unix_socket_address_new_abstract(c_path, c_path_len)
-	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress

@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -17,3 +19,13 @@ import "C"
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
 
 // Unsupported : g_strv_length : unsupported parameter str_array : in string with indirection level of 2
+
+// KeyFileNew is a wrapper around the C function g_key_file_new.
+func KeyFileNew() *KeyFile {
+	retC := C.g_key_file_new()
+	retGo := KeyFileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_option_group_new : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data

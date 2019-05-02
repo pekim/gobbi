@@ -4,30 +4,14 @@
 package gtk
 
 import (
+	"C"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
 // Unsupported : gtk_accel_label_get_accel : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
-
-// ActionBarNew is a wrapper around the C function gtk_action_bar_new.
-func ActionBarNew() *ActionBar {
-	retC := C.gtk_action_bar_new()
-	retGo := ActionBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // GetCenterWidget is a wrapper around the C function gtk_action_bar_get_center_widget.
 func (recv *ActionBar) GetCenterWidget() *Widget {
@@ -175,14 +159,6 @@ func (recv *Entry) SetMaxWidthChars(nChars int32) {
 	C.gtk_entry_set_max_width_chars((*C.GtkEntry)(recv.native), c_n_chars)
 
 	return
-}
-
-// FlowBoxNew is a wrapper around the C function gtk_flow_box_new.
-func FlowBoxNew() *FlowBox {
-	retC := C.gtk_flow_box_new()
-	retGo := FlowBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetActivateOnSingleClick is a wrapper around the C function gtk_flow_box_get_activate_on_single_click.
@@ -425,14 +401,6 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 	return
 }
 
-// FlowBoxChildNew is a wrapper around the C function gtk_flow_box_child_new.
-func FlowBoxChildNew() *FlowBoxChild {
-	retC := C.gtk_flow_box_child_new()
-	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Changed is a wrapper around the C function gtk_flow_box_child_changed.
 func (recv *FlowBoxChild) Changed() {
 	C.gtk_flow_box_child_changed((*C.GtkFlowBoxChild)(recv.native))
@@ -559,37 +527,6 @@ func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
 	C.gtk_places_sidebar_set_local_only((*C.GtkPlacesSidebar)(recv.native), c_local_only)
 
 	return
-}
-
-// PopoverNew is a wrapper around the C function gtk_popover_new.
-func PopoverNew(relativeTo *Widget) *Popover {
-	c_relative_to := (*C.GtkWidget)(C.NULL)
-	if relativeTo != nil {
-		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
-	}
-
-	retC := C.gtk_popover_new(c_relative_to)
-	retGo := PopoverNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PopoverNewFromModel is a wrapper around the C function gtk_popover_new_from_model.
-func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
-	c_relative_to := (*C.GtkWidget)(C.NULL)
-	if relativeTo != nil {
-		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
-	}
-
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	retC := C.gtk_popover_new_from_model(c_relative_to, c_model)
-	retGo := PopoverNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // BindModel is a wrapper around the C function gtk_popover_bind_model.

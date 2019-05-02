@@ -4,19 +4,11 @@
 package gtk
 
 import (
+	"C"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // ClipboardGetForDisplay is a wrapper around the C function gtk_clipboard_get_for_display.
 func ClipboardGetForDisplay(display *gdk.Display, selection *gdk.Atom) *Clipboard {
@@ -45,19 +37,6 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 }
 
 // gtk_color_selection_set_change_palette_with_screen_hook : unsupported parameter func : no type generator for ColorSelectionChangePaletteWithScreenFunc (GtkColorSelectionChangePaletteWithScreenFunc) for param func
-// InvisibleNewForScreen is a wrapper around the C function gtk_invisible_new_for_screen.
-func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
-	c_screen := (*C.GdkScreen)(C.NULL)
-	if screen != nil {
-		c_screen = (*C.GdkScreen)(screen.ToC())
-	}
-
-	retC := C.gtk_invisible_new_for_screen(c_screen)
-	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetScreen is a wrapper around the C function gtk_invisible_get_screen.
 func (recv *Invisible) GetScreen() *gdk.Screen {
 	retC := C.gtk_invisible_get_screen((*C.GtkInvisible)(recv.native))

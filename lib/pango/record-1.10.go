@@ -3,14 +3,10 @@
 
 package pango
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // Ref is a wrapper around the C function pango_attr_list_ref.
 func (recv *AttrList) Ref() *AttrList {

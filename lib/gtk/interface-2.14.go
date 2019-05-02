@@ -4,19 +4,11 @@
 package gtk
 
 import (
+	"C"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // GetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_get_current_folder_file.
 func (recv *FileChooser) GetCurrentFolderFile() *gio.File {

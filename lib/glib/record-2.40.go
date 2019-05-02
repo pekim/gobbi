@@ -8,13 +8,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
 /*
 
 	static void _g_variant_dict_insert(GVariantDict* dict, const gchar* key, const gchar* format_string) {
@@ -73,19 +66,6 @@ func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
 // Equals compares this VariantDict with another VariantDict, and returns true if they represent the same GObject.
 func (recv *VariantDict) Equals(other *VariantDict) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// VariantDictNew is a wrapper around the C function g_variant_dict_new.
-func VariantDictNew(fromAsv *Variant) *VariantDict {
-	c_from_asv := (*C.GVariant)(C.NULL)
-	if fromAsv != nil {
-		c_from_asv = (*C.GVariant)(fromAsv.ToC())
-	}
-
-	retC := C.g_variant_dict_new(c_from_asv)
-	retGo := VariantDictNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Clear is a wrapper around the C function g_variant_dict_clear.

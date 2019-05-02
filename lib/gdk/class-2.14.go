@@ -9,11 +9,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
 /*
 
 	void screen_monitorsChangedHandler(GObject *, gpointer);
@@ -24,18 +19,6 @@ import (
 
 */
 import "C"
-
-// AppLaunchContextNew is a wrapper around the C function gdk_app_launch_context_new.
-func AppLaunchContextNew() *AppLaunchContext {
-	retC := C.gdk_app_launch_context_new()
-	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // SetDesktop is a wrapper around the C function gdk_app_launch_context_set_desktop.
 func (recv *AppLaunchContext) SetDesktop(desktop int32) {

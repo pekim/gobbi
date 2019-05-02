@@ -7,11 +7,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
 /*
 
 	void object_notifyHandler(GObject *, GParamSpec *, gpointer);
@@ -111,12 +106,6 @@ func object_notifyHandler(_ *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) 
 	callback := signalObjectNotifyMap[index].callback
 	callback(pspec)
 }
-
-// Unsupported : g_object_new : unsupported parameter ... : varargs
-
-// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
-
-// Unsupported : g_object_newv : unsupported parameter parameters :
 
 // g_object_compat_control : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 // Unsupported : g_object_add_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer (gpointer*) for param weak_pointer_location

@@ -9,3 +9,5 @@ package gobject
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
+
+// Unsupported : g_object_new_with_properties : unsupported parameter values :

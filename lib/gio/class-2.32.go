@@ -11,21 +11,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	static void _g_menu_item_set_action_and_target(GMenuItem* menu_item, const gchar* action, const gchar* format_string) {
@@ -288,60 +273,6 @@ func CastToInetAddressMask(object *gobject.Object) *InetAddressMask {
 	return InetAddressMaskNewFromC(object.ToC())
 }
 
-// InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
-func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, error) {
-	c_addr := (*C.GInetAddress)(C.NULL)
-	if addr != nil {
-		c_addr = (*C.GInetAddress)(addr.ToC())
-	}
-
-	c_length := (C.guint)(length)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_inet_address_mask_new(c_addr, c_length, &cThrowableError)
-	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// InetAddressMaskNewFromString is a wrapper around the C function g_inet_address_mask_new_from_string.
-func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
-	c_mask_string := C.CString(maskString)
-	defer C.free(unsafe.Pointer(c_mask_string))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_inet_address_mask_new_from_string(c_mask_string, &cThrowableError)
-	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
 // Equal is a wrapper around the C function g_inet_address_mask_equal.
 func (recv *InetAddressMask) Equal(mask2 *InetAddressMask) bool {
 	c_mask2 := (*C.GInetAddressMask)(C.NULL)
@@ -436,18 +367,6 @@ func (recv *Menu) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Menu.
 func CastToMenu(object *gobject.Object) *Menu {
 	return MenuNewFromC(object.ToC())
-}
-
-// MenuNew is a wrapper around the C function g_menu_new.
-func MenuNew() *Menu {
-	retC := C.g_menu_new()
-	retGo := MenuNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Append is a wrapper around the C function g_menu_append.
@@ -709,64 +628,6 @@ func (recv *MenuItem) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuItem.
 func CastToMenuItem(object *gobject.Object) *MenuItem {
 	return MenuItemNewFromC(object.ToC())
-}
-
-// MenuItemNew is a wrapper around the C function g_menu_item_new.
-func MenuItemNew(label string, detailedAction string) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_detailed_action := C.CString(detailedAction)
-	defer C.free(unsafe.Pointer(c_detailed_action))
-
-	retC := C.g_menu_item_new(c_label, c_detailed_action)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// MenuItemNewSection is a wrapper around the C function g_menu_item_new_section.
-func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_section := (*C.GMenuModel)(C.NULL)
-	if section != nil {
-		c_section = (*C.GMenuModel)(section.ToC())
-	}
-
-	retC := C.g_menu_item_new_section(c_label, c_section)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// MenuItemNewSubmenu is a wrapper around the C function g_menu_item_new_submenu.
-func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_submenu := (*C.GMenuModel)(C.NULL)
-	if submenu != nil {
-		c_submenu = (*C.GMenuModel)(submenu.ToC())
-	}
-
-	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // SetActionAndTarget is a wrapper around the C function g_menu_item_set_action_and_target.
@@ -1117,31 +978,6 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 
 	retC := C.g_menu_model_iterate_item_links((*C.GMenuModel)(recv.native), c_item_index)
 	retGo := MenuLinkIterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SettingsNewFull is a wrapper around the C function g_settings_new_full.
-func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
-	c_schema := (*C.GSettingsSchema)(C.NULL)
-	if schema != nil {
-		c_schema = (*C.GSettingsSchema)(schema.ToC())
-	}
-
-	c_backend := (*C.GSettingsBackend)(C.NULL)
-	if backend != nil {
-		c_backend = (*C.GSettingsBackend)(backend.ToC())
-	}
-
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	retC := C.g_settings_new_full(c_schema, c_backend, c_path)
-	retGo := SettingsNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
 
 	return retGo
 }

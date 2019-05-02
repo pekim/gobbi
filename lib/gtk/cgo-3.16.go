@@ -49,6 +49,38 @@ func (recv *GLArea) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// GLAreaNew is a wrapper around the C function gtk_gl_area_new.
+func GLAreaNew() *GLArea {
+	retC := C.gtk_gl_area_new()
+	retGo := GLAreaNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ModelButtonNew is a wrapper around the C function gtk_model_button_new.
+func ModelButtonNew() *ModelButton {
+	retC := C.gtk_model_button_new()
+	retGo := ModelButtonNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// PopoverMenuNew is a wrapper around the C function gtk_popover_menu_new.
+func PopoverMenuNew() *PopoverMenu {
+	retC := C.gtk_popover_menu_new()
+	retGo := PopoverMenuNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// StackSidebarNew is a wrapper around the C function gtk_stack_sidebar_new.
+func StackSidebarNew() *StackSidebar {
+	retC := C.gtk_stack_sidebar_new()
+	retGo := StackSidebarNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GLAreaClass is a wrapper around the C record GtkGLAreaClass.
 type GLAreaClass struct {
 	native *C.GtkGLAreaClass
@@ -73,4 +105,19 @@ func GLAreaClassNewFromC(u unsafe.Pointer) *GLAreaClass {
 func (recv *GLAreaClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// PaperSizeNewFromIpp is a wrapper around the C function gtk_paper_size_new_from_ipp.
+func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSize {
+	c_ipp_name := C.CString(ippName)
+	defer C.free(unsafe.Pointer(c_ipp_name))
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	retC := C.gtk_paper_size_new_from_ipp(c_ipp_name, c_width, c_height)
+	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }

@@ -3,16 +3,10 @@
 
 package gtk
 
-import gdk "github.com/pekim/gobbi/lib/gdk"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	gdk "github.com/pekim/gobbi/lib/gdk"
+)
 
 // SelectionOwnerSetForDisplay is a wrapper around the C function gtk_selection_owner_set_for_display.
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection *gdk.Atom, time uint32) bool {

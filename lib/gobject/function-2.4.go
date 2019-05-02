@@ -3,14 +3,10 @@
 
 package gobject
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // ParamSpecOverride_ is a wrapper around the C function g_param_spec_override.
 func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {

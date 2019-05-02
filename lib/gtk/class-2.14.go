@@ -5,7 +5,6 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
-	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -13,13 +12,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void cellrenderercombo_changedHandler(GObject *, gchar*, GtkTreeIter *, gpointer);
@@ -525,14 +517,6 @@ func (recv *FontSelectionDialog) GetOkButton() *Widget {
 	return retGo
 }
 
-// HSVNew is a wrapper around the C function gtk_hsv_new.
-func HSVNew() *HSV {
-	retC := C.gtk_hsv_new()
-	retGo := HSVNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // HSVToRgb is a wrapper around the C function gtk_hsv_to_rgb.
 func HSVToRgb(h float64, s float64, v float64) (float64, float64, float64) {
 	c_h := (C.gdouble)(h)
@@ -632,28 +616,6 @@ func (recv *HandleBox) GetChildDetached() bool {
 	return retGo
 }
 
-// IconInfoNewForPixbuf is a wrapper around the C function gtk_icon_info_new_for_pixbuf.
-func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconInfo {
-	c_icon_theme := (*C.GtkIconTheme)(C.NULL)
-	if iconTheme != nil {
-		c_icon_theme = (*C.GtkIconTheme)(iconTheme.ToC())
-	}
-
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	retC := C.gtk_icon_info_new_for_pixbuf(c_icon_theme, c_pixbuf)
-	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // LookupByGicon is a wrapper around the C function gtk_icon_theme_lookup_by_gicon.
 func (recv *IconTheme) LookupByGicon(icon *gio.Icon, size int32, flags IconLookupFlags) *IconInfo {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -669,18 +631,6 @@ func (recv *IconTheme) LookupByGicon(icon *gio.Icon, size int32, flags IconLooku
 	} else {
 		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
 	}
-
-	return retGo
-}
-
-// ImageNewFromGicon is a wrapper around the C function gtk_image_new_from_gicon.
-func ImageNewFromGicon(icon *gio.Icon, size IconSize) *Image {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	c_size := (C.GtkIconSize)(size)
-
-	retC := C.gtk_image_new_from_gicon(c_icon, c_size)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -765,23 +715,6 @@ func (recv *MenuItem) GetAccelPath() string {
 func (recv *MessageDialog) GetImage() *Widget {
 	retC := C.gtk_message_dialog_get_image((*C.GtkMessageDialog)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// MountOperationNew is a wrapper around the C function gtk_mount_operation_new.
-func MountOperationNew(parent *Window) *MountOperation {
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	retC := C.gtk_mount_operation_new(c_parent)
-	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
 
 	return retGo
 }
@@ -1097,20 +1030,6 @@ func statusicon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButto
 	retC :=
 		boolToGboolean(retGo)
 	return retC
-}
-
-// StatusIconNewFromGicon is a wrapper around the C function gtk_status_icon_new_from_gicon.
-func StatusIconNewFromGicon(icon *gio.Icon) *StatusIcon {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	retC := C.gtk_status_icon_new_from_gicon(c_icon)
-	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetGicon is a wrapper around the C function gtk_status_icon_get_gicon.

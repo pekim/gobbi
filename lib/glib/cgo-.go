@@ -2,7 +2,10 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -11,6 +14,12 @@ import "unsafe"
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static GError* _g_error_new(GQuark domain, gint code, const gchar* format) {
+		return g_error_new(domain, code, format);
+    }
+*/
 import "C"
 
 // Unsupported : alias has no type generator for none, void
@@ -349,6 +358,38 @@ func (recv *Date) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// DateNew is a wrapper around the C function g_date_new.
+func DateNew() *Date {
+	retC := C.g_date_new()
+	retGo := DateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateNewDmy is a wrapper around the C function g_date_new_dmy.
+func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
+	c_day := (C.GDateDay)(day)
+
+	c_month := (C.GDateMonth)(month)
+
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_new_dmy(c_day, c_month, c_year)
+	retGo := DateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateNewJulian is a wrapper around the C function g_date_new_julian.
+func DateNewJulian(julianDay uint32) *Date {
+	c_julian_day := (C.guint32)(julianDay)
+
+	retC := C.g_date_new_julian(c_julian_day)
+	retGo := DateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // DebugKey is a wrapper around the C record GDebugKey.
 type DebugKey struct {
 	native *C.GDebugKey
@@ -434,6 +475,37 @@ func (recv *Error) ToC() unsafe.Pointer {
 		C.CString(recv.Message)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// ErrorNew is a wrapper around the C function g_error_new.
+func ErrorNew(domain Quark, code int32, format string, args ...interface{}) *Error {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_error_new(c_domain, c_code, c_format)
+	retGo := ErrorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ErrorNewLiteral is a wrapper around the C function g_error_new_literal.
+func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	c_message := C.CString(message)
+	defer C.free(unsafe.Pointer(c_message))
+
+	retC := C.g_error_new_literal(c_domain, c_code, c_message)
+	retGo := ErrorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // HashTable is a wrapper around the C record GHashTable.
@@ -600,6 +672,40 @@ func (recv *IOChannel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// IOChannelNewFile is a wrapper around the C function g_io_channel_new_file.
+func IOChannelNewFile(filename string, mode string) (*IOChannel, error) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_mode := C.CString(mode)
+	defer C.free(unsafe.Pointer(c_mode))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_new_file(c_filename, c_mode, &cThrowableError)
+	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// IOChannelUnixNew is a wrapper around the C function g_io_channel_unix_new.
+func IOChannelUnixNew(fd int32) *IOChannel {
+	c_fd := (C.int)(fd)
+
+	retC := C.g_io_channel_unix_new(c_fd)
+	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // IOFuncs is a wrapper around the C record GIOFuncs.
 type IOFuncs struct {
 	native *C.GIOFuncs
@@ -695,6 +801,14 @@ func (recv *MainContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// MainContextNew is a wrapper around the C function g_main_context_new.
+func MainContextNew() *MainContext {
+	retC := C.g_main_context_new()
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // MainLoop is a wrapper around the C record GMainLoop.
 type MainLoop struct {
 	native *C.GMainLoop
@@ -714,6 +828,22 @@ func MainLoopNewFromC(u unsafe.Pointer) *MainLoop {
 func (recv *MainLoop) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// MainLoopNew is a wrapper around the C function g_main_loop_new.
+func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
+	c_context := (*C.GMainContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GMainContext)(context.ToC())
+	}
+
+	c_is_running :=
+		boolToGboolean(isRunning)
+
+	retC := C.g_main_loop_new(c_context, c_is_running)
+	retGo := MainLoopNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // MappedFile is a wrapper around the C record GMappedFile.
@@ -757,6 +887,8 @@ func (recv *MarkupParseContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // MarkupParser is a wrapper around the C record GMarkupParser.
 type MarkupParser struct {
@@ -1312,6 +1444,21 @@ func (recv *Source) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// SourceNew is a wrapper around the C function g_source_new.
+func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
+	c_source_funcs := (*C.GSourceFuncs)(C.NULL)
+	if sourceFuncs != nil {
+		c_source_funcs = (*C.GSourceFuncs)(sourceFuncs.ToC())
+	}
+
+	c_struct_size := (C.guint)(structSize)
+
+	retC := C.g_source_new(c_source_funcs, c_struct_size)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // SourceCallbackFuncs is a wrapper around the C record GSourceCallbackFuncs.
 type SourceCallbackFuncs struct {
 	native *C.GSourceCallbackFuncs
@@ -1762,3 +1909,49 @@ func (recv *VariantType) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// VariantTypeNewArray is a wrapper around the C function g_variant_type_new_array.
+func VariantTypeNewArray(element *VariantType) *VariantType {
+	c_element := (*C.GVariantType)(C.NULL)
+	if element != nil {
+		c_element = (*C.GVariantType)(element.ToC())
+	}
+
+	retC := C.g_variant_type_new_array(c_element)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantTypeNewDictEntry is a wrapper around the C function g_variant_type_new_dict_entry.
+func VariantTypeNewDictEntry(key *VariantType, value *VariantType) *VariantType {
+	c_key := (*C.GVariantType)(C.NULL)
+	if key != nil {
+		c_key = (*C.GVariantType)(key.ToC())
+	}
+
+	c_value := (*C.GVariantType)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariantType)(value.ToC())
+	}
+
+	retC := C.g_variant_type_new_dict_entry(c_key, c_value)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantTypeNewMaybe is a wrapper around the C function g_variant_type_new_maybe.
+func VariantTypeNewMaybe(element *VariantType) *VariantType {
+	c_element := (*C.GVariantType)(C.NULL)
+	if element != nil {
+		c_element = (*C.GVariantType)(element.ToC())
+	}
+
+	retC := C.g_variant_type_new_maybe(c_element)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_variant_type_new_tuple : unsupported parameter items :

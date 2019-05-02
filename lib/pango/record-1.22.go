@@ -3,14 +3,10 @@
 
 package pango
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // Equals compares this GlyphItemIter with another GlyphItemIter, and returns true if they represent the same GObject.
 func (recv *GlyphItemIter) Equals(other *GlyphItemIter) bool {

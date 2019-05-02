@@ -3,13 +3,6 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
-
 // Unsupported : g_object_add_toggle_ref : unsupported parameter notify : no type generator for ToggleNotify (GToggleNotify) for param notify
 
 // Unsupported : g_object_remove_toggle_ref : unsupported parameter notify : no type generator for ToggleNotify (GToggleNotify) for param notify

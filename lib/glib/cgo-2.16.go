@@ -44,3 +44,13 @@ func (recv *Checksum) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// ChecksumNew is a wrapper around the C function g_checksum_new.
+func ChecksumNew(checksumType ChecksumType) *Checksum {
+	c_checksum_type := (C.GChecksumType)(checksumType)
+
+	retC := C.g_checksum_new(c_checksum_type)
+	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

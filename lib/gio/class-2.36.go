@@ -11,22 +11,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <gio/gnetworking.h>
-// #include <stdlib.h>
 /*
 
 	void applaunchcontext_launchFailedHandler(GObject *, gchar*, gpointer);
@@ -263,18 +247,6 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 	return retGo
 }
 
-// MemoryOutputStreamNewResizable is a wrapper around the C function g_memory_output_stream_new_resizable.
-func MemoryOutputStreamNewResizable() *MemoryOutputStream {
-	retC := C.g_memory_output_stream_new_resizable()
-	retGo := MemoryOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // g_simple_proxy_resolver_new : unsupported parameter ignore_hosts : in string with indirection level of 2
 // SetDefaultProxy is a wrapper around the C function g_simple_proxy_resolver_set_default_proxy.
 func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
@@ -367,8 +339,6 @@ func (recv *SocketClient) SetProxyResolver(proxyResolver *ProxyResolver) {
 
 	return
 }
-
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TaskIsValid is a wrapper around the C function g_task_is_valid.
 func TaskIsValid(result *AsyncResult, sourceObject *gobject.Object) bool {

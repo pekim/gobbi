@@ -10,11 +10,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
 /*
 
 	void display_closedHandler(GObject *, gboolean, gpointer);
@@ -52,25 +47,6 @@ import (
 
 */
 import "C"
-
-// CursorNewForDisplay is a wrapper around the C function gdk_cursor_new_for_display.
-func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
-	c_display := (*C.GdkDisplay)(C.NULL)
-	if display != nil {
-		c_display = (*C.GdkDisplay)(display.ToC())
-	}
-
-	c_cursor_type := (C.GdkCursorType)(cursorType)
-
-	retC := C.gdk_cursor_new_for_display(c_display, c_cursor_type)
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // GetDisplay is a wrapper around the C function gdk_cursor_get_display.
 func (recv *Cursor) GetDisplay() *Display {

@@ -3,6 +3,7 @@
 package atk
 
 import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"unsafe"
 )
@@ -142,6 +143,23 @@ func (recv *NoOpObject) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
+func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
+	c_obj := (*C.GObject)(C.NULL)
+	if obj != nil {
+		c_obj = (*C.GObject)(obj.ToC())
+	}
+
+	retC := C.atk_no_op_object_new(c_obj)
+	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
 type NoOpObjectFactory struct {
 	native *C.AtkNoOpObjectFactory
@@ -172,6 +190,18 @@ func NoOpObjectFactoryNewFromC(u unsafe.Pointer) *NoOpObjectFactory {
 func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
+func NoOpObjectFactoryNew() *NoOpObjectFactory {
+	retC := C.atk_no_op_object_factory_new()
+	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Object is a wrapper around the C record AtkObject.
@@ -280,6 +310,18 @@ func (recv *Plug) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// PlugNew is a wrapper around the C function atk_plug_new.
+func PlugNew() *Plug {
+	retC := C.atk_plug_new()
+	retGo := PlugNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // Registry is a wrapper around the C record AtkRegistry.
 type Registry struct {
 	native *C.AtkRegistry
@@ -353,6 +395,8 @@ func (recv *Relation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : atk_relation_new : unsupported parameter targets :
+
 // RelationSet is a wrapper around the C record AtkRelationSet.
 type RelationSet struct {
 	native *C.AtkRelationSet
@@ -384,6 +428,18 @@ func RelationSetNewFromC(u unsafe.Pointer) *RelationSet {
 func (recv *RelationSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// RelationSetNew is a wrapper around the C function atk_relation_set_new.
+func RelationSetNew() *RelationSet {
+	retC := C.atk_relation_set_new()
+	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Socket is a wrapper around the C record AtkSocket.
@@ -419,6 +475,18 @@ func (recv *Socket) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// SocketNew is a wrapper around the C function atk_socket_new.
+func SocketNew() *Socket {
+	retC := C.atk_socket_new()
+	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // StateSet is a wrapper around the C record AtkStateSet.
 type StateSet struct {
 	native *C.AtkStateSet
@@ -449,6 +517,18 @@ func StateSetNewFromC(u unsafe.Pointer) *StateSet {
 func (recv *StateSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// StateSetNew is a wrapper around the C function atk_state_set_new.
+func StateSetNew() *StateSet {
+	retC := C.atk_state_set_new()
+	retGo := StateSetNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Util is a wrapper around the C record AtkUtil.

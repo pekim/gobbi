@@ -4,20 +4,12 @@
 package gtk
 
 import (
+	"C"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // RgbToHsv is a wrapper around the C function gtk_rgb_to_hsv.
 func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {

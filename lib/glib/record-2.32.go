@@ -3,81 +3,16 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // g_array_set_clear_func : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // Equals compares this Bytes with another Bytes, and returns true if they represent the same GObject.
 func (recv *Bytes) Equals(other *Bytes) bool {
 	return other.ToC() == recv.ToC()
 }
-
-// BytesNew is a wrapper around the C function g_bytes_new.
-func BytesNew(data []uint8) *Bytes {
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (C.gconstpointer)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_size := (C.gsize)(len(data))
-
-	retC := C.g_bytes_new(c_data, c_size)
-	retGo := BytesNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// BytesNewStatic is a wrapper around the C function g_bytes_new_static.
-func BytesNewStatic(data []uint8) *Bytes {
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (C.gconstpointer)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_size := (C.gsize)(len(data))
-
-	retC := C.g_bytes_new_static(c_data, c_size)
-	retGo := BytesNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// BytesNewTake is a wrapper around the C function g_bytes_new_take.
-func BytesNewTake(data []uint8) *Bytes {
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (C.gpointer)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_size := (C.gsize)(len(data))
-
-	retC := C.g_bytes_new_take(c_data, c_size)
-	retGo := BytesNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
 // Compare is a wrapper around the C function g_bytes_compare.
 func (recv *Bytes) Compare(bytes2 *Bytes) int32 {
@@ -195,29 +130,6 @@ func MainContextRefThreadDefault() *MainContext {
 	return retGo
 }
 
-// MappedFileNewFromFd is a wrapper around the C function g_mapped_file_new_from_fd.
-func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
-	c_fd := (C.gint)(fd)
-
-	c_writable :=
-		boolToGboolean(writable)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_mapped_file_new_from_fd(c_fd, c_writable, &cThrowableError)
-	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
 // Unsupported : g_private_replace : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
 // Unsupported : g_queue_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
@@ -326,10 +238,6 @@ func (recv *RecMutex) Unlock() {
 	return
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
 // Ref is a wrapper around the C function g_thread_ref.
 func (recv *Thread) Ref() *Thread {
 	retC := C.g_thread_ref((*C.GThread)(recv.native))
@@ -344,5 +252,3 @@ func (recv *Thread) Unref() {
 
 	return
 }
-
-// Unsupported : g_variant_new_fixed_array : unsupported parameter elements : no type generator for gpointer (gconstpointer) for param elements

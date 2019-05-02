@@ -2,14 +2,10 @@
 
 package gdkpixbuf
 
-import glib "github.com/pekim/gobbi/lib/glib"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	glib "github.com/pekim/gobbi/lib/glib"
+)
 
 type Colorspace C.GdkColorspace
 

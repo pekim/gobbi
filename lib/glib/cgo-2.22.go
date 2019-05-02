@@ -21,3 +21,5 @@ import "C"
 // Unsupported : g_int64_hash : unsupported parameter v : no type generator for gpointer (gconstpointer) for param v
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc (GTestLogFatalFunc) for param log_func
+
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args

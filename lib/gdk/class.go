@@ -12,11 +12,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
 /*
 
 	void device_changedHandler(GObject *, gpointer);
@@ -162,20 +157,6 @@ func (recv *Cursor) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Cursor.
 func CastToCursor(object *gobject.Object) *Cursor {
 	return CursorNewFromC(object.ToC())
-}
-
-// CursorNew is a wrapper around the C function gdk_cursor_new.
-func CursorNew(cursorType CursorType) *Cursor {
-	c_cursor_type := (C.GdkCursorType)(cursorType)
-
-	retC := C.gdk_cursor_new(c_cursor_type)
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Ref is a wrapper around the C function gdk_cursor_ref.
@@ -1376,30 +1357,6 @@ func (recv *Window) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Window.
 func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
-}
-
-// WindowNew is a wrapper around the C function gdk_window_new.
-func WindowNew(parent *Window, attributes *WindowAttr, attributesMask WindowAttributesType) *Window {
-	c_parent := (*C.GdkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GdkWindow)(parent.ToC())
-	}
-
-	c_attributes := (*C.GdkWindowAttr)(C.NULL)
-	if attributes != nil {
-		c_attributes = (*C.GdkWindowAttr)(attributes.ToC())
-	}
-
-	c_attributes_mask := (C.gint)(attributesMask)
-
-	retC := C.gdk_window_new(c_parent, c_attributes, c_attributes_mask)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // WindowAtPointer is a wrapper around the C function gdk_window_at_pointer.

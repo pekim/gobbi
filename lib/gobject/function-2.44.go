@@ -3,11 +3,6 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
 import "C"
 
 // TypeGetInstanceCount is a wrapper around the C function g_type_get_instance_count.

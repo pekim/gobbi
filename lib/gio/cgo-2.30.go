@@ -4,6 +4,7 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"unsafe"
 )
@@ -91,6 +92,58 @@ func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// DBusObjectManagerClientNewFinish is a wrapper around the C function g_dbus_object_manager_client_new_finish.
+func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
+	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusObjectManagerClientNewForBusFinish is a wrapper around the C function g_dbus_object_manager_client_new_for_bus_finish.
+func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
+	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
+
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
+
 // DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
 type DBusObjectManagerServer struct {
 	native *C.GDBusObjectManagerServer
@@ -122,6 +175,21 @@ func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer 
 func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// DBusObjectManagerServerNew is a wrapper around the C function g_dbus_object_manager_server_new.
+func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_object_manager_server_new(c_object_path)
+	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
@@ -157,6 +225,26 @@ func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
+func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
+	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
 type DBusObjectSkeleton struct {
 	native *C.GDBusObjectSkeleton
@@ -188,6 +276,21 @@ func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
 func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
+func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_object_skeleton_new(c_object_path)
+	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
@@ -287,6 +390,23 @@ func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
 func (recv *TlsPassword) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// TlsPasswordNew is a wrapper around the C function g_tls_password_new.
+func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
+	c_flags := (C.GTlsPasswordFlags)(flags)
+
+	c_description := C.CString(description)
+	defer C.free(unsafe.Pointer(c_description))
+
+	retC := C.g_tls_password_new(c_flags, c_description)
+	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // DBusInterface is a wrapper around the C record GDBusInterface.

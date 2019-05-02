@@ -3,29 +3,15 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // GetIso8601WeekOfYear is a wrapper around the C function g_date_get_iso8601_week_of_year.
 func (recv *Date) GetIso8601WeekOfYear() uint32 {
 	retC := C.g_date_get_iso8601_week_of_year((*C.GDate)(recv.native))
 	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// KeyFileNew is a wrapper around the C function g_key_file_new.
-func KeyFileNew() *KeyFile {
-	retC := C.g_key_file_new()
-	retGo := KeyFileNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -813,8 +799,6 @@ func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 
 	return
 }
-
-// Unsupported : g_option_group_new : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // AddEntries is a wrapper around the C function g_option_group_add_entries.
 func (recv *OptionGroup) AddEntries(entries *OptionEntry) {

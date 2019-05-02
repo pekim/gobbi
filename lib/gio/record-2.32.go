@@ -4,26 +4,10 @@
 package gio
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this ActionMapInterface with another ActionMapInterface, and returns true if they represent the same GObject.
 func (recv *ActionMapInterface) Equals(other *ActionMapInterface) bool {
@@ -52,29 +36,6 @@ func (recv *RemoteActionGroupInterface) Equals(other *RemoteActionGroupInterface
 // Equals compares this Resource with another Resource, and returns true if they represent the same GObject.
 func (recv *Resource) Equals(other *Resource) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ResourceNewFromData is a wrapper around the C function g_resource_new_from_data.
-func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
-	c_data := (*C.GBytes)(C.NULL)
-	if data != nil {
-		c_data = (*C.GBytes)(data.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_resource_new_from_data(c_data, &cThrowableError)
-	retGo := ResourceNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
 }
 
 // ResourceLoad is a wrapper around the C function g_resource_load.
@@ -257,35 +218,6 @@ func (recv *SettingsSchema) Unref() {
 // Equals compares this SettingsSchemaSource with another SettingsSchemaSource, and returns true if they represent the same GObject.
 func (recv *SettingsSchemaSource) Equals(other *SettingsSchemaSource) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SettingsSchemaSourceNewFromDirectory is a wrapper around the C function g_settings_schema_source_new_from_directory.
-func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSchemaSource, trusted bool) (*SettingsSchemaSource, error) {
-	c_directory := C.CString(directory)
-	defer C.free(unsafe.Pointer(c_directory))
-
-	c_parent := (*C.GSettingsSchemaSource)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GSettingsSchemaSource)(parent.ToC())
-	}
-
-	c_trusted :=
-		boolToGboolean(trusted)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_settings_schema_source_new_from_directory(c_directory, c_parent, c_trusted, &cThrowableError)
-	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
 }
 
 // SettingsSchemaSourceGetDefault is a wrapper around the C function g_settings_schema_source_get_default.

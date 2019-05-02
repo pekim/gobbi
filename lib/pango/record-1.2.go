@@ -4,16 +4,10 @@
 package pango
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
 
 // GetAttrs is a wrapper around the C function pango_attr_iterator_get_attrs.
 func (recv *AttrIterator) GetAttrs() *glib.SList {

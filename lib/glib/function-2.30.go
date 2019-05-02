@@ -3,16 +3,10 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // AtomicIntAnd is a wrapper around the C function g_atomic_int_and.
 func AtomicIntAnd(atomic uint32, val uint32) uint32 {

@@ -48,6 +48,34 @@ func (recv *FileChooserNative) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
+func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_action := (C.GtkFileChooserAction)(action)
+
+	c_accept_label := C.CString(acceptLabel)
+	defer C.free(unsafe.Pointer(c_accept_label))
+
+	c_cancel_label := C.CString(cancelLabel)
+	defer C.free(unsafe.Pointer(c_cancel_label))
+
+	retC := C.gtk_file_chooser_native_new(c_title, c_parent, c_action, c_accept_label, c_cancel_label)
+	retGo := FileChooserNativeNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // NativeDialog is a wrapper around the C record GtkNativeDialog.
 type NativeDialog struct {
 	native *C.GtkNativeDialog

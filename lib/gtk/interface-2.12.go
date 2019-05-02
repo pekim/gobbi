@@ -4,19 +4,11 @@
 package gtk
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // AddChild is a wrapper around the C function gtk_buildable_add_child.
 func (recv *Buildable) AddChild(builder *Builder, child *gobject.Object, type_ string) {

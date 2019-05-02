@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
+	"unsafe"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,4 +17,19 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// InvisibleNewForScreen is a wrapper around the C function gtk_invisible_new_for_screen.
+func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	retC := C.gtk_invisible_new_for_screen(c_screen)
+	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Blacklisted : STOCK_COLOR_PICKER
+
+// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs

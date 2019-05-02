@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -20,3 +22,17 @@ package gio
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
+
+// MemoryOutputStreamNewResizable is a wrapper around the C function g_memory_output_stream_new_resizable.
+func MemoryOutputStreamNewResizable() *MemoryOutputStream {
+	retC := C.g_memory_output_stream_new_resizable()
+	retGo := MemoryOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback

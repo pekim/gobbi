@@ -73,6 +73,12 @@ func (recv *Object) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_object_new : unsupported parameter ... : varargs
+
+// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+
+// Unsupported : g_object_newv : unsupported parameter parameters :
+
 // ParamSpec is a wrapper around the C record GParamSpec.
 type ParamSpec struct {
 	native *C.GParamSpec
@@ -949,6 +955,23 @@ func (recv *Closure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ClosureNewObject is a wrapper around the C function g_closure_new_object.
+func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
+	c_sizeof_closure := (C.guint)(sizeofClosure)
+
+	c_object := (*C.GObject)(C.NULL)
+	if object != nil {
+		c_object = (*C.GObject)(object.ToC())
+	}
+
+	retC := C.g_closure_new_object(c_sizeof_closure, c_object)
+	retGo := ClosureNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_closure_new_simple : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+
 // ClosureNotifyData is a wrapper around the C record GClosureNotifyData.
 type ClosureNotifyData struct {
 	native *C.GClosureNotifyData
@@ -1746,6 +1769,16 @@ func (recv *ValueArray) ToC() unsafe.Pointer {
 		(C.guint)(recv.NValues)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// ValueArrayNew is a wrapper around the C function g_value_array_new.
+func ValueArrayNew(nPrealloced uint32) *ValueArray {
+	c_n_prealloced := (C.guint)(nPrealloced)
+
+	retC := C.g_value_array_new(c_n_prealloced)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // WeakRef is a wrapper around the C record GWeakRef.

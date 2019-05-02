@@ -3,6 +3,7 @@
 package gtk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -11,15 +12,6 @@ import (
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this AboutDialogClass with another AboutDialogClass, and returns true if they represent the same GObject.
 func (recv *AboutDialogClass) Equals(other *AboutDialogClass) bool {
@@ -1232,27 +1224,6 @@ func (recv *IconSet) Equals(other *IconSet) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// IconSetNew is a wrapper around the C function gtk_icon_set_new.
-func IconSetNew() *IconSet {
-	retC := C.gtk_icon_set_new()
-	retGo := IconSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IconSetNewFromPixbuf is a wrapper around the C function gtk_icon_set_new_from_pixbuf.
-func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	retC := C.gtk_icon_set_new_from_pixbuf(c_pixbuf)
-	retGo := IconSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AddSource is a wrapper around the C function gtk_icon_set_add_source.
 func (recv *IconSet) AddSource(source *IconSource) {
 	c_source := (*C.GtkIconSource)(C.NULL)
@@ -1320,14 +1291,6 @@ func (recv *IconSet) Unref() {
 // Equals compares this IconSource with another IconSource, and returns true if they represent the same GObject.
 func (recv *IconSource) Equals(other *IconSource) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// IconSourceNew is a wrapper around the C function gtk_icon_source_new.
-func IconSourceNew() *IconSource {
-	retC := C.gtk_icon_source_new()
-	retGo := IconSourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Copy is a wrapper around the C function gtk_icon_source_copy.
@@ -2753,21 +2716,6 @@ func (recv *TargetEntry) Equals(other *TargetEntry) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TargetEntryNew is a wrapper around the C function gtk_target_entry_new.
-func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
-	c_target := C.CString(target)
-	defer C.free(unsafe.Pointer(c_target))
-
-	c_flags := (C.guint)(flags)
-
-	c_info := (C.guint)(info)
-
-	retC := C.gtk_target_entry_new(c_target, c_flags, c_info)
-	retGo := TargetEntryNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Copy is a wrapper around the C function gtk_target_entry_copy.
 func (recv *TargetEntry) Copy() *TargetEntry {
 	retC := C.gtk_target_entry_copy((*C.GtkTargetEntry)(recv.native))
@@ -2787,8 +2735,6 @@ func (recv *TargetEntry) Free() {
 func (recv *TargetList) Equals(other *TargetList) bool {
 	return other.ToC() == recv.ToC()
 }
-
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
 
 // Add is a wrapper around the C function gtk_target_list_add.
 func (recv *TargetList) Add(target *gdk.Atom, flags uint32, info uint32) {
@@ -2875,14 +2821,6 @@ func (recv *TextAppearance) Equals(other *TextAppearance) bool {
 // Equals compares this TextAttributes with another TextAttributes, and returns true if they represent the same GObject.
 func (recv *TextAttributes) Equals(other *TextAttributes) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TextAttributesNew is a wrapper around the C function gtk_text_attributes_new.
-func TextAttributesNew() *TextAttributes {
-	retC := C.gtk_text_attributes_new()
-	retGo := TextAttributesNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Copy is a wrapper around the C function gtk_text_attributes_copy.
@@ -3948,33 +3886,6 @@ func (recv *TreePath) Equals(other *TreePath) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TreePathNew is a wrapper around the C function gtk_tree_path_new.
-func TreePathNew() *TreePath {
-	retC := C.gtk_tree_path_new()
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TreePathNewFirst is a wrapper around the C function gtk_tree_path_new_first.
-func TreePathNewFirst() *TreePath {
-	retC := C.gtk_tree_path_new_first()
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
-func TreePathNewFromString(path string) *TreePath {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	retC := C.gtk_tree_path_new_from_string(c_path)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AppendIndex is a wrapper around the C function gtk_tree_path_append_index.
 func (recv *TreePath) AppendIndex(index int32) {
 	c_index_ := (C.gint)(index)
@@ -4099,41 +4010,6 @@ func (recv *TreePath) Up() bool {
 // Equals compares this TreeRowReference with another TreeRowReference, and returns true if they represent the same GObject.
 func (recv *TreeRowReference) Equals(other *TreeRowReference) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TreeRowReferenceNew is a wrapper around the C function gtk_tree_row_reference_new.
-func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
-	c_model := (*C.GtkTreeModel)(model.ToC())
-
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	retC := C.gtk_tree_row_reference_new(c_model, c_path)
-	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TreeRowReferenceNewProxy is a wrapper around the C function gtk_tree_row_reference_new_proxy.
-func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *TreePath) *TreeRowReference {
-	c_proxy := (*C.GObject)(C.NULL)
-	if proxy != nil {
-		c_proxy = (*C.GObject)(proxy.ToC())
-	}
-
-	c_model := (*C.GtkTreeModel)(model.ToC())
-
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	retC := C.gtk_tree_row_reference_new_proxy(c_proxy, c_model, c_path)
-	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.

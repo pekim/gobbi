@@ -4,20 +4,12 @@
 package gtk
 
 import (
+	"C"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this CssSection with another CssSection, and returns true if they represent the same GObject.
 func (recv *CssSection) Equals(other *CssSection) bool {

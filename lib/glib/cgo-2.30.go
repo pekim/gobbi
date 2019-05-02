@@ -52,3 +52,23 @@ func (recv *Hmac) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// VariantNewObjv is a wrapper around the C function g_variant_new_objv.
+func VariantNewObjv(strv []string) *Variant {
+	c_strv_array := make([]*C.gchar, len(strv)+1, len(strv)+1)
+	for i, item := range strv {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_strv_array[i] = c
+	}
+	c_strv_array[len(strv)] = nil
+	c_strv_arrayPtr := &c_strv_array[0]
+	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
+
+	c_length := (C.gssize)(len(strv))
+
+	retC := C.g_variant_new_objv(c_strv, c_length)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

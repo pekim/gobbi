@@ -9,13 +9,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void entrybuffer_deletedTextHandler(GObject *, guint, guint, gpointer);
@@ -187,19 +180,6 @@ func (recv *CellRendererToggle) SetActivatable(setting bool) {
 	return
 }
 
-// EntryNewWithBuffer is a wrapper around the C function gtk_entry_new_with_buffer.
-func EntryNewWithBuffer(buffer *EntryBuffer) *Entry {
-	c_buffer := (*C.GtkEntryBuffer)(C.NULL)
-	if buffer != nil {
-		c_buffer = (*C.GtkEntryBuffer)(buffer.ToC())
-	}
-
-	retC := C.gtk_entry_new_with_buffer(c_buffer)
-	retGo := EntryNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetBuffer is a wrapper around the C function gtk_entry_get_buffer.
 func (recv *Entry) GetBuffer() *EntryBuffer {
 	retC := C.gtk_entry_get_buffer((*C.GtkEntry)(recv.native))
@@ -348,23 +328,6 @@ func entrybuffer_insertedTextHandler(_ *C.GObject, c_position C.guint, c_chars *
 	index := int(uintptr(data))
 	callback := signalEntryBufferInsertedTextMap[index].callback
 	callback(position, chars, nChars)
-}
-
-// EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
-func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
-	c_initial_chars := C.CString(initialChars)
-	defer C.free(unsafe.Pointer(c_initial_chars))
-
-	c_n_initial_chars := (C.gint)(nInitialChars)
-
-	retC := C.gtk_entry_buffer_new(c_initial_chars, c_n_initial_chars)
-	retGo := EntryBufferNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // DeleteText is a wrapper around the C function gtk_entry_buffer_delete_text.
@@ -609,14 +572,6 @@ func infobar_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer
 	index := int(uintptr(data))
 	callback := signalInfoBarResponseMap[index].callback
 	callback(responseId)
-}
-
-// InfoBarNew is a wrapper around the C function gtk_info_bar_new.
-func InfoBarNew() *InfoBar {
-	retC := C.gtk_info_bar_new()
-	retGo := InfoBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // AddActionWidget is a wrapper around the C function gtk_info_bar_add_action_widget.

@@ -4,16 +4,10 @@
 package pango
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
 
 // GetBaseGravity is a wrapper around the C function pango_context_get_base_gravity.
 func (recv *Context) GetBaseGravity() Gravity {

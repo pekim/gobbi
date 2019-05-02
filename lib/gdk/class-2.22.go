@@ -4,17 +4,11 @@
 package gdk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
 
 // GetCursorType is a wrapper around the C function gdk_cursor_get_cursor_type.
 func (recv *Cursor) GetCursorType() CursorType {

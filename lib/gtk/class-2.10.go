@@ -14,13 +14,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void assistant_applyHandler(GObject *, gpointer);
@@ -481,14 +474,6 @@ func assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer
 	callback(page)
 }
 
-// AssistantNew is a wrapper around the C function gtk_assistant_new.
-func AssistantNew() *Assistant {
-	retC := C.gtk_assistant_new()
-	retGo := AssistantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AddActionWidget is a wrapper around the C function gtk_assistant_add_action_widget.
 func (recv *Assistant) AddActionWidget(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -893,22 +878,6 @@ func cellrendereraccel_accelEditedHandler(_ *C.GObject, c_path_string *C.gchar, 
 	callback(pathString, accelKey, accelMods, hardwareKeycode)
 }
 
-// CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
-func CellRendererAccelNew() *CellRendererAccel {
-	retC := C.gtk_cell_renderer_accel_new()
-	retGo := CellRendererAccelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// CellRendererSpinNew is a wrapper around the C function gtk_cell_renderer_spin_new.
-func CellRendererSpinNew() *CellRendererSpin {
-	retC := C.gtk_cell_renderer_spin_new()
-	retGo := CellRendererSpinNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Unsupported : gtk_clipboard_request_rich_text : unsupported parameter callback : no type generator for ClipboardRichTextReceivedFunc (GtkClipboardRichTextReceivedFunc) for param callback
 
 // Unsupported : gtk_clipboard_wait_for_rich_text : array return type :
@@ -1002,31 +971,6 @@ func (recv *Label) SetLineWrapMode(wrapMode pango.WrapMode) {
 	C.gtk_label_set_line_wrap_mode((*C.GtkLabel)(recv.native), c_wrap_mode)
 
 	return
-}
-
-// LinkButtonNew is a wrapper around the C function gtk_link_button_new.
-func LinkButtonNew(uri string) *LinkButton {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	retC := C.gtk_link_button_new(c_uri)
-	retGo := LinkButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LinkButtonNewWithLabel is a wrapper around the C function gtk_link_button_new_with_label.
-func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_link_button_new_with_label(c_uri, c_label)
-	retGo := LinkButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetUri is a wrapper around the C function gtk_link_button_get_uri.
@@ -1305,18 +1249,6 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 	C.gtk_notebook_set_tab_reorderable((*C.GtkNotebook)(recv.native), c_child, c_reorderable)
 
 	return
-}
-
-// PageSetupNew is a wrapper around the C function gtk_page_setup_new.
-func PageSetupNew() *PageSetup {
-	retC := C.gtk_page_setup_new()
-	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Copy is a wrapper around the C function gtk_page_setup_copy.
@@ -2223,18 +2155,6 @@ func printoperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
-func PrintOperationNew() *PrintOperation {
-	retC := C.gtk_print_operation_new()
-	retGo := PrintOperationNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Cancel is a wrapper around the C function gtk_print_operation_cancel.
 func (recv *PrintOperation) Cancel() {
 	C.gtk_print_operation_cancel((*C.GtkPrintOperation)(recv.native))
@@ -2443,18 +2363,6 @@ func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 	C.gtk_print_operation_set_use_full_page((*C.GtkPrintOperation)(recv.native), c_full_page)
 
 	return
-}
-
-// PrintSettingsNew is a wrapper around the C function gtk_print_settings_new.
-func PrintSettingsNew() *PrintSettings {
-	retC := C.gtk_print_settings_new()
-	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Copy is a wrapper around the C function gtk_print_settings_copy.
@@ -3059,31 +2967,6 @@ func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 	return
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// RecentChooserMenuNew is a wrapper around the C function gtk_recent_chooser_menu_new.
-func RecentChooserMenuNew() *RecentChooserMenu {
-	retC := C.gtk_recent_chooser_menu_new()
-	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RecentChooserMenuNewForManager is a wrapper around the C function gtk_recent_chooser_menu_new_for_manager.
-func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
-	c_manager := (*C.GtkRecentManager)(C.NULL)
-	if manager != nil {
-		c_manager = (*C.GtkRecentManager)(manager.ToC())
-	}
-
-	retC := C.gtk_recent_chooser_menu_new_for_manager(c_manager)
-	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetShowNumbers is a wrapper around the C function gtk_recent_chooser_menu_get_show_numbers.
 func (recv *RecentChooserMenu) GetShowNumbers() bool {
 	retC := C.gtk_recent_chooser_menu_get_show_numbers((*C.GtkRecentChooserMenu)(recv.native))
@@ -3100,35 +2983,6 @@ func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 	C.gtk_recent_chooser_menu_set_show_numbers((*C.GtkRecentChooserMenu)(recv.native), c_show_numbers)
 
 	return
-}
-
-// RecentChooserWidgetNew is a wrapper around the C function gtk_recent_chooser_widget_new.
-func RecentChooserWidgetNew() *RecentChooserWidget {
-	retC := C.gtk_recent_chooser_widget_new()
-	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RecentChooserWidgetNewForManager is a wrapper around the C function gtk_recent_chooser_widget_new_for_manager.
-func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidget {
-	c_manager := (*C.GtkRecentManager)(C.NULL)
-	if manager != nil {
-		c_manager = (*C.GtkRecentManager)(manager.ToC())
-	}
-
-	retC := C.gtk_recent_chooser_widget_new_for_manager(c_manager)
-	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// RecentFilterNew is a wrapper around the C function gtk_recent_filter_new.
-func RecentFilterNew() *RecentFilter {
-	retC := C.gtk_recent_filter_new()
-	retGo := RecentFilterNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // AddAge is a wrapper around the C function gtk_recent_filter_add_age.
@@ -3302,18 +3156,6 @@ func recentmanager_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalRecentManagerChangedMap[index].callback
 	callback()
-}
-
-// RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.
-func RecentManagerNew() *RecentManager {
-	retC := C.gtk_recent_manager_new()
-	retGo := RecentManagerNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // RecentManagerGetDefault is a wrapper around the C function gtk_recent_manager_get_default.
@@ -3721,80 +3563,6 @@ func statusicon_sizeChangedHandler(_ *C.GObject, c_size C.gint, data C.gpointer)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
-}
-
-// StatusIconNew is a wrapper around the C function gtk_status_icon_new.
-func StatusIconNew() *StatusIcon {
-	retC := C.gtk_status_icon_new()
-	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// StatusIconNewFromFile is a wrapper around the C function gtk_status_icon_new_from_file.
-func StatusIconNewFromFile(filename string) *StatusIcon {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.gtk_status_icon_new_from_file(c_filename)
-	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// StatusIconNewFromIconName is a wrapper around the C function gtk_status_icon_new_from_icon_name.
-func StatusIconNewFromIconName(iconName string) *StatusIcon {
-	c_icon_name := C.CString(iconName)
-	defer C.free(unsafe.Pointer(c_icon_name))
-
-	retC := C.gtk_status_icon_new_from_icon_name(c_icon_name)
-	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// StatusIconNewFromPixbuf is a wrapper around the C function gtk_status_icon_new_from_pixbuf.
-func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
-	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
-	if pixbuf != nil {
-		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
-	}
-
-	retC := C.gtk_status_icon_new_from_pixbuf(c_pixbuf)
-	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// StatusIconNewFromStock is a wrapper around the C function gtk_status_icon_new_from_stock.
-func StatusIconNewFromStock(stockId string) *StatusIcon {
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	retC := C.gtk_status_icon_new_from_stock(c_stock_id)
-	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // StatusIconPositionMenu is a wrapper around the C function gtk_status_icon_position_menu.

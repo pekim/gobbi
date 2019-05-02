@@ -9,21 +9,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	void volumemonitor_driveEjectButtonHandler(GObject *, GDrive *, gpointer);
@@ -34,53 +19,6 @@ import (
 
 */
 import "C"
-
-// DesktopAppInfoNewFromKeyfile is a wrapper around the C function g_desktop_app_info_new_from_keyfile.
-func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
-	c_key_file := (*C.GKeyFile)(C.NULL)
-	if keyFile != nil {
-		c_key_file = (*C.GKeyFile)(keyFile.ToC())
-	}
-
-	retC := C.g_desktop_app_info_new_from_keyfile(c_key_file)
-	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// EmblemNew is a wrapper around the C function g_emblem_new.
-func EmblemNew(icon *Icon) *Emblem {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	retC := C.g_emblem_new(c_icon)
-	retGo := EmblemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// EmblemNewWithOrigin is a wrapper around the C function g_emblem_new_with_origin.
-func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	c_origin := (C.GEmblemOrigin)(origin)
-
-	retC := C.g_emblem_new_with_origin(c_icon, c_origin)
-	retGo := EmblemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // GetIcon is a wrapper around the C function g_emblem_get_icon.
 func (recv *Emblem) GetIcon() *Icon {
@@ -94,25 +32,6 @@ func (recv *Emblem) GetIcon() *Icon {
 func (recv *Emblem) GetOrigin() EmblemOrigin {
 	retC := C.g_emblem_get_origin((*C.GEmblem)(recv.native))
 	retGo := (EmblemOrigin)(retC)
-
-	return retGo
-}
-
-// EmblemedIconNew is a wrapper around the C function g_emblemed_icon_new.
-func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
-	c_icon := (*C.GIcon)(icon.ToC())
-
-	c_emblem := (*C.GEmblem)(C.NULL)
-	if emblem != nil {
-		c_emblem = (*C.GEmblem)(emblem.ToC())
-	}
-
-	retC := C.g_emblemed_icon_new(c_icon, c_emblem)
-	retGo := EmblemedIconNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
 
 	return retGo
 }

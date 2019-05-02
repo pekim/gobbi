@@ -4,6 +4,7 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"unsafe"
 )
@@ -56,6 +57,18 @@ func (recv *Credentials) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// CredentialsNew is a wrapper around the C function g_credentials_new.
+func CredentialsNew() *Credentials {
+	retC := C.g_credentials_new()
+	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // DBusAuthObserver is a wrapper around the C record GDBusAuthObserver.
 type DBusAuthObserver struct {
 	native *C.GDBusAuthObserver
@@ -85,6 +98,18 @@ func DBusAuthObserverNewFromC(u unsafe.Pointer) *DBusAuthObserver {
 func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
+func DBusAuthObserverNew() *DBusAuthObserver {
+	retC := C.g_dbus_auth_observer_new()
+	retGo := DBusAuthObserverNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // DBusConnection is a wrapper around the C record GDBusConnection.
@@ -118,6 +143,133 @@ func (recv *DBusConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// DBusConnectionNewFinish is a wrapper around the C function g_dbus_connection_new_finish.
+func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_finish(c_res, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusConnectionNewForAddressFinish is a wrapper around the C function g_dbus_connection_new_for_address_finish.
+func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_for_address_finish(c_res, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusConnectionNewForAddressSync is a wrapper around the C function g_dbus_connection_new_for_address_sync.
+func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
+	c_address := C.CString(address)
+	defer C.free(unsafe.Pointer(c_address))
+
+	c_flags := (C.GDBusConnectionFlags)(flags)
+
+	c_observer := (*C.GDBusAuthObserver)(C.NULL)
+	if observer != nil {
+		c_observer = (*C.GDBusAuthObserver)(observer.ToC())
+	}
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_for_address_sync(c_address, c_flags, c_observer, c_cancellable, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusConnectionNewSync is a wrapper around the C function g_dbus_connection_new_sync.
+func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
+	c_stream := (*C.GIOStream)(C.NULL)
+	if stream != nil {
+		c_stream = (*C.GIOStream)(stream.ToC())
+	}
+
+	c_guid := C.CString(guid)
+	defer C.free(unsafe.Pointer(c_guid))
+
+	c_flags := (C.GDBusConnectionFlags)(flags)
+
+	c_observer := (*C.GDBusAuthObserver)(C.NULL)
+	if observer != nil {
+		c_observer = (*C.GDBusAuthObserver)(observer.ToC())
+	}
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_sync(c_stream, c_guid, c_flags, c_observer, c_cancellable, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
 // DBusMessage is a wrapper around the C record GDBusMessage.
 type DBusMessage struct {
 	native *C.GDBusMessage
@@ -147,6 +299,98 @@ func DBusMessageNewFromC(u unsafe.Pointer) *DBusMessage {
 func (recv *DBusMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// DBusMessageNew is a wrapper around the C function g_dbus_message_new.
+func DBusMessageNew() *DBusMessage {
+	retC := C.g_dbus_message_new()
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// DBusMessageNewFromBlob is a wrapper around the C function g_dbus_message_new_from_blob.
+func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
+	c_blob_array := make([]C.guint8, len(blob)+1, len(blob)+1)
+	for i, item := range blob {
+		c := (C.guint8)(item)
+		c_blob_array[i] = c
+	}
+	c_blob_array[len(blob)] = 0
+	c_blob_arrayPtr := &c_blob_array[0]
+	c_blob := (*C.guchar)(unsafe.Pointer(c_blob_arrayPtr))
+
+	c_blob_len := (C.gsize)(len(blob))
+
+	c_capabilities := (C.GDBusCapabilityFlags)(capabilities)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_message_new_from_blob(c_blob, c_blob_len, c_capabilities, &cThrowableError)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusMessageNewMethodCall is a wrapper around the C function g_dbus_message_new_method_call.
+func DBusMessageNewMethodCall(name string, path string, interface_ string, method string) *DBusMessage {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_interface_ := C.CString(interface_)
+	defer C.free(unsafe.Pointer(c_interface_))
+
+	c_method := C.CString(method)
+	defer C.free(unsafe.Pointer(c_method))
+
+	retC := C.g_dbus_message_new_method_call(c_name, c_path, c_interface_, c_method)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// DBusMessageNewSignal is a wrapper around the C function g_dbus_message_new_signal.
+func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMessage {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_interface_ := C.CString(interface_)
+	defer C.free(unsafe.Pointer(c_interface_))
+
+	c_signal := C.CString(signal)
+	defer C.free(unsafe.Pointer(c_signal))
+
+	retC := C.g_dbus_message_new_signal(c_path, c_interface_, c_signal)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
@@ -213,6 +457,147 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// DBusProxyNewFinish is a wrapper around the C function g_dbus_proxy_new_finish.
+func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_finish(c_res, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusProxyNewForBusFinish is a wrapper around the C function g_dbus_proxy_new_for_bus_finish.
+func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_for_bus_finish(c_res, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusProxyNewForBusSync is a wrapper around the C function g_dbus_proxy_new_for_bus_sync.
+func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
+	c_bus_type := (C.GBusType)(busType)
+
+	c_flags := (C.GDBusProxyFlags)(flags)
+
+	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GDBusInterfaceInfo)(info.ToC())
+	}
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_for_bus_sync(c_bus_type, c_flags, c_info, c_name, c_object_path, c_interface_name, c_cancellable, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DBusProxyNewSync is a wrapper around the C function g_dbus_proxy_new_sync.
+func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
+
+	c_flags := (C.GDBusProxyFlags)(flags)
+
+	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GDBusInterfaceInfo)(info.ToC())
+	}
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_sync(c_connection, c_flags, c_info, c_name, c_object_path, c_interface_name, c_cancellable, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
 // DBusServer is a wrapper around the C record GDBusServer.
 type DBusServer struct {
 	native *C.GDBusServer
@@ -242,6 +627,46 @@ func DBusServerNewFromC(u unsafe.Pointer) *DBusServer {
 func (recv *DBusServer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
+func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {
+	c_address := C.CString(address)
+	defer C.free(unsafe.Pointer(c_address))
+
+	c_flags := (C.GDBusServerFlags)(flags)
+
+	c_guid := C.CString(guid)
+	defer C.free(unsafe.Pointer(c_guid))
+
+	c_observer := (*C.GDBusAuthObserver)(C.NULL)
+	if observer != nil {
+		c_observer = (*C.GDBusAuthObserver)(observer.ToC())
+	}
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_server_new_sync(c_address, c_flags, c_guid, c_observer, c_cancellable, &cThrowableError)
+	retGo := DBusServerNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
 }
 
 // ProxyAddress is a wrapper around the C record GProxyAddress.
@@ -277,6 +702,130 @@ func (recv *ProxyAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
+func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
+	c_inetaddr := (*C.GInetAddress)(C.NULL)
+	if inetaddr != nil {
+		c_inetaddr = (*C.GInetAddress)(inetaddr.ToC())
+	}
+
+	c_port := (C.guint16)(port)
+
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
+
+	c_dest_hostname := C.CString(destHostname)
+	defer C.free(unsafe.Pointer(c_dest_hostname))
+
+	c_dest_port := (C.guint16)(destPort)
+
+	c_username := C.CString(username)
+	defer C.free(unsafe.Pointer(c_username))
+
+	c_password := C.CString(password)
+	defer C.free(unsafe.Pointer(c_password))
+
+	retC := C.g_proxy_address_new(c_inetaddr, c_port, c_protocol, c_dest_hostname, c_dest_port, c_username, c_password)
+	retGo := ProxyAddressNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SettingsNew is a wrapper around the C function g_settings_new.
+func SettingsNew(schemaId string) *Settings {
+	c_schema_id := C.CString(schemaId)
+	defer C.free(unsafe.Pointer(c_schema_id))
+
+	retC := C.g_settings_new(c_schema_id)
+	retGo := SettingsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SettingsNewWithBackend is a wrapper around the C function g_settings_new_with_backend.
+func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings {
+	c_schema_id := C.CString(schemaId)
+	defer C.free(unsafe.Pointer(c_schema_id))
+
+	c_backend := (*C.GSettingsBackend)(C.NULL)
+	if backend != nil {
+		c_backend = (*C.GSettingsBackend)(backend.ToC())
+	}
+
+	retC := C.g_settings_new_with_backend(c_schema_id, c_backend)
+	retGo := SettingsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SettingsNewWithBackendAndPath is a wrapper around the C function g_settings_new_with_backend_and_path.
+func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, path string) *Settings {
+	c_schema_id := C.CString(schemaId)
+	defer C.free(unsafe.Pointer(c_schema_id))
+
+	c_backend := (*C.GSettingsBackend)(C.NULL)
+	if backend != nil {
+		c_backend = (*C.GSettingsBackend)(backend.ToC())
+	}
+
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_settings_new_with_backend_and_path(c_schema_id, c_backend, c_path)
+	retGo := SettingsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SettingsNewWithPath is a wrapper around the C function g_settings_new_with_path.
+func SettingsNewWithPath(schemaId string, path string) *Settings {
+	c_schema_id := C.CString(schemaId)
+	defer C.free(unsafe.Pointer(c_schema_id))
+
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_settings_new_with_path(c_schema_id, c_path)
+	retGo := SettingsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SimplePermissionNew is a wrapper around the C function g_simple_permission_new.
+func SimplePermissionNew(allowed bool) *SimplePermission {
+	c_allowed :=
+		boolToGboolean(allowed)
+
+	retC := C.g_simple_permission_new(c_allowed)
+	retGo := SimplePermissionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.
 type UnixCredentialsMessage struct {
 	native *C.GUnixCredentialsMessage
@@ -308,6 +857,60 @@ func UnixCredentialsMessageNewFromC(u unsafe.Pointer) *UnixCredentialsMessage {
 func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.
+func UnixCredentialsMessageNew() *UnixCredentialsMessage {
+	retC := C.g_unix_credentials_message_new()
+	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// UnixCredentialsMessageNewWithCredentials is a wrapper around the C function g_unix_credentials_message_new_with_credentials.
+func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCredentialsMessage {
+	c_credentials := (*C.GCredentials)(C.NULL)
+	if credentials != nil {
+		c_credentials = (*C.GCredentials)(credentials.ToC())
+	}
+
+	retC := C.g_unix_credentials_message_new_with_credentials(c_credentials)
+	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// UnixSocketAddressNewWithType is a wrapper around the C function g_unix_socket_address_new_with_type.
+func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
+	c_path_array := make([]C.gchar, len(path)+1, len(path)+1)
+	for i, item := range path {
+		c := (C.gchar)(item)
+		c_path_array[i] = c
+	}
+	c_path_array[len(path)] = 0
+	c_path_arrayPtr := &c_path_array[0]
+	c_path := (*C.gchar)(unsafe.Pointer(c_path_arrayPtr))
+
+	c_path_len := (C.gint)(len(path))
+
+	c_type := (C.GUnixSocketAddressType)(type_)
+
+	retC := C.g_unix_socket_address_new_with_type(c_path, c_path_len, c_type)
+	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -618,6 +1221,27 @@ func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 		C.CString(recv.Path)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// DBusNodeInfoNewForXml is a wrapper around the C function g_dbus_node_info_new_for_xml.
+func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
+	c_xml_data := C.CString(xmlData)
+	defer C.free(unsafe.Pointer(c_xml_data))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_node_info_new_for_xml(c_xml_data, &cThrowableError)
+	retGo := DBusNodeInfoNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
 }
 
 // DBusPropertyInfo is a wrapper around the C record GDBusPropertyInfo.

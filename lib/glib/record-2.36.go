@@ -3,16 +3,10 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // Ref is a wrapper around the C function g_markup_parse_context_ref.
 func (recv *MarkupParseContext) Ref() *MarkupParseContext {
@@ -44,27 +38,6 @@ func (recv *Source) SetReadyTime(readyTime int64) {
 	C.g_source_set_ready_time((*C.GSource)(recv.native), c_ready_time)
 
 	return
-}
-
-// VariantNewFromBytes is a wrapper around the C function g_variant_new_from_bytes.
-func VariantNewFromBytes(type_ *VariantType, bytes *Bytes, trusted bool) *Variant {
-	c_type := (*C.GVariantType)(C.NULL)
-	if type_ != nil {
-		c_type = (*C.GVariantType)(type_.ToC())
-	}
-
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
-
-	c_trusted :=
-		boolToGboolean(trusted)
-
-	retC := C.g_variant_new_from_bytes(c_type, c_bytes, c_trusted)
-	retGo := VariantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetDataAsBytes is a wrapper around the C function g_variant_get_data_as_bytes.

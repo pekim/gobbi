@@ -11,21 +11,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	gboolean dbusauthobserver_allowMechanismHandler(GObject *, gchar*, gpointer);
@@ -245,23 +230,6 @@ func (recv *InputStream) ReadBytesFinish(result *AsyncResult) (*glib.Bytes, erro
 	return retGo, goError
 }
 
-// MemoryInputStreamNewFromBytes is a wrapper around the C function g_memory_input_stream_new_from_bytes.
-func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
-
-	retC := C.g_memory_input_stream_new_from_bytes(c_bytes)
-	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // AddBytes is a wrapper around the C function g_memory_input_stream_add_bytes.
 func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 	c_bytes := (*C.GBytes)(C.NULL)
@@ -278,25 +246,6 @@ func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 func (recv *MemoryOutputStream) StealAsBytes() *glib.Bytes {
 	retC := C.g_memory_output_stream_steal_as_bytes((*C.GMemoryOutputStream)(recv.native))
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// MenuItemNewFromModel is a wrapper around the C function g_menu_item_new_from_model.
-func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	c_item_index := (C.gint)(itemIndex)
-
-	retC := C.g_menu_item_new_from_model(c_model, c_item_index)
-	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
 
 	return retGo
 }
@@ -489,20 +438,6 @@ func (recv *TestDBus) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a TestDBus.
 func CastToTestDBus(object *gobject.Object) *TestDBus {
 	return TestDBusNewFromC(object.ToC())
-}
-
-// TestDBusNew is a wrapper around the C function g_test_dbus_new.
-func TestDBusNew(flags TestDBusFlags) *TestDBus {
-	c_flags := (C.GTestDBusFlags)(flags)
-
-	retC := C.g_test_dbus_new(c_flags)
-	retGo := TestDBusNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddServiceDir is a wrapper around the C function g_test_dbus_add_service_dir.

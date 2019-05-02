@@ -4,6 +4,7 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"unsafe"
 )
@@ -57,6 +58,23 @@ func (recv *AppInfoMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// InetSocketAddressNewFromString is a wrapper around the C function g_inet_socket_address_new_from_string.
+func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
+	c_address := C.CString(address)
+	defer C.free(unsafe.Pointer(c_address))
+
+	c_port := (C.guint)(port)
+
+	retC := C.g_inet_socket_address_new_from_string(c_address, c_port)
+	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // Notification is a wrapper around the C record GNotification.
 type Notification struct {
 	native *C.GNotification
@@ -86,6 +104,21 @@ func NotificationNewFromC(u unsafe.Pointer) *Notification {
 func (recv *Notification) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// NotificationNew is a wrapper around the C function g_notification_new.
+func NotificationNew(title string) *Notification {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	retC := C.g_notification_new(c_title)
+	retGo := NotificationNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Subprocess is a wrapper around the C record GSubprocess.
@@ -119,6 +152,42 @@ func (recv *Subprocess) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_subprocess_new : unsupported parameter ... : varargs
+
+// SubprocessNewv is a wrapper around the C function g_subprocess_newv.
+func SubprocessNewv(argv []string, flags SubprocessFlags) (*Subprocess, error) {
+	c_argv_array := make([]*C.gchar, len(argv)+1, len(argv)+1)
+	for i, item := range argv {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_argv_array[i] = c
+	}
+	c_argv_array[len(argv)] = nil
+	c_argv_arrayPtr := &c_argv_array[0]
+	c_argv := (**C.gchar)(unsafe.Pointer(c_argv_arrayPtr))
+
+	c_flags := (C.GSubprocessFlags)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_newv(c_argv, c_flags, &cThrowableError)
+	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
 type SubprocessLauncher struct {
 	native *C.GSubprocessLauncher
@@ -148,4 +217,18 @@ func SubprocessLauncherNewFromC(u unsafe.Pointer) *SubprocessLauncher {
 func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// SubprocessLauncherNew is a wrapper around the C function g_subprocess_launcher_new.
+func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
+	c_flags := (C.GSubprocessFlags)(flags)
+
+	retC := C.g_subprocess_launcher_new(c_flags)
+	retGo := SubprocessLauncherNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }

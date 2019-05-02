@@ -11,13 +11,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void entrycompletion_noMatchesHandler(GObject *, gpointer);
@@ -1091,23 +1084,6 @@ func gesturedrag_dragUpdateHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_
 	callback(offsetX, offsetY)
 }
 
-// GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
-func GestureDragNew(widget *Widget) *GestureDrag {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_gesture_drag_new(c_widget)
-	retGo := GestureDragNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetOffset is a wrapper around the C function gtk_gesture_drag_get_offset.
 func (recv *GestureDrag) GetOffset() (bool, float64, float64) {
 	var c_x C.gdouble
@@ -1262,23 +1238,6 @@ func gesturelongpress_pressedHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble,
 	index := int(uintptr(data))
 	callback := signalGestureLongPressPressedMap[index].callback
 	callback(x, y)
-}
-
-// GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
-func GestureLongPressNew(widget *Widget) *GestureLongPress {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_gesture_long_press_new(c_widget)
-	retGo := GestureLongPressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 type signalGestureMultiPressPressedDetail struct {
@@ -1473,23 +1432,6 @@ func gesturemultipress_stoppedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
-func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_gesture_multi_press_new(c_widget)
-	retGo := GestureMultiPressNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetArea is a wrapper around the C function gtk_gesture_multi_press_get_area.
 func (recv *GestureMultiPress) GetArea() (bool, *gdk.Rectangle) {
 	var c_rect C.GdkRectangle
@@ -1578,25 +1520,6 @@ func gesturepan_panHandler(_ *C.GObject, c_direction C.GtkPanDirection, c_offset
 	callback(direction, offset)
 }
 
-// GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
-func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_orientation := (C.GtkOrientation)(orientation)
-
-	retC := C.gtk_gesture_pan_new(c_widget, c_orientation)
-	retGo := GesturePanNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetOrientation is a wrapper around the C function gtk_gesture_pan_get_orientation.
 func (recv *GesturePan) GetOrientation() Orientation {
 	retC := C.gtk_gesture_pan_get_orientation((*C.GtkGesturePan)(recv.native))
@@ -1676,23 +1599,6 @@ func gesturerotate_angleChangedHandler(_ *C.GObject, c_angle C.gdouble, c_angle_
 	index := int(uintptr(data))
 	callback := signalGestureRotateAngleChangedMap[index].callback
 	callback(angle, angleDelta)
-}
-
-// GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
-func GestureRotateNew(widget *Widget) *GestureRotate {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_gesture_rotate_new(c_widget)
-	retGo := GestureRotateNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetAngleDelta is a wrapper around the C function gtk_gesture_rotate_get_angle_delta.
@@ -1841,23 +1747,6 @@ func gestureswipe_swipeHandler(_ *C.GObject, c_velocity_x C.gdouble, c_velocity_
 	callback(velocityX, velocityY)
 }
 
-// GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
-func GestureSwipeNew(widget *Widget) *GestureSwipe {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_gesture_swipe_new(c_widget)
-	retGo := GestureSwipeNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // GetVelocity is a wrapper around the C function gtk_gesture_swipe_get_velocity.
 func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	var c_velocity_x C.gdouble
@@ -1934,23 +1823,6 @@ func gesturezoom_scaleChangedHandler(_ *C.GObject, c_scale C.gdouble, data C.gpo
 	index := int(uintptr(data))
 	callback := signalGestureZoomScaleChangedMap[index].callback
 	callback(scale)
-}
-
-// GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
-func GestureZoomNew(widget *Widget) *GestureZoom {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	retC := C.gtk_gesture_zoom_new(c_widget)
-	retGo := GestureZoomNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetScaleDelta is a wrapper around the C function gtk_gesture_zoom_get_scale_delta.

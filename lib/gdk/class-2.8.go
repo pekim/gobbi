@@ -4,42 +4,11 @@
 package gdk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
-// CursorNewFromName is a wrapper around the C function gdk_cursor_new_from_name.
-func CursorNewFromName(display *Display, name string) *Cursor {
-	c_display := (*C.GdkDisplay)(C.NULL)
-	if display != nil {
-		c_display = (*C.GdkDisplay)(display.ToC())
-	}
-
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gdk_cursor_new_from_name(c_display, c_name)
-	var retGo (*Cursor)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = CursorNewFromC(unsafe.Pointer(retC))
-	}
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
 
 // GetImage is a wrapper around the C function gdk_cursor_get_image.
 func (recv *Cursor) GetImage() *gdkpixbuf.Pixbuf {

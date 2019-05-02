@@ -3,6 +3,8 @@
 
 package gtk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,37 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
+
+// ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
+func ComboBoxNewWithEntry() *ComboBox {
+	retC := C.gtk_combo_box_new_with_entry()
+	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ComboBoxNewWithModelAndEntry is a wrapper around the C function gtk_combo_box_new_with_model_and_entry.
+func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	retC := C.gtk_combo_box_new_with_model_and_entry(c_model)
+	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ComboBoxTextNew is a wrapper around the C function gtk_combo_box_text_new.
+func ComboBoxTextNew() *ComboBoxText {
+	retC := C.gtk_combo_box_text_new()
+	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ComboBoxTextNewWithEntry is a wrapper around the C function gtk_combo_box_text_new_with_entry.
+func ComboBoxTextNewWithEntry() *ComboBoxText {
+	retC := C.gtk_combo_box_text_new_with_entry()
+	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

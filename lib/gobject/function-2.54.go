@@ -3,14 +3,10 @@
 
 package gobject
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // EnumToString is a wrapper around the C function g_enum_to_string.
 func EnumToString(gEnumType Type, value int32) string {

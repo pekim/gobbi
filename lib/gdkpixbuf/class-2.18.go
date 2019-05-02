@@ -3,11 +3,6 @@
 
 package gdkpixbuf
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
 import "C"
 
 // GetLoop is a wrapper around the C function gdk_pixbuf_simple_anim_get_loop.

@@ -3,17 +3,11 @@
 package pangoft2
 
 import (
+	"C"
 	freetype2 "github.com/pekim/gobbi/lib/freetype2"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pangoft2.h>
-// #include <stdlib.h>
-import "C"
 
 // FontGetCoverage is a wrapper around the C function pango_ft2_font_get_coverage.
 func FontGetCoverage(font *pango.Font, language *pango.Language) *pango.Coverage {

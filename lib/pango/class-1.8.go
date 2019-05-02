@@ -4,16 +4,10 @@
 package pango
 
 import (
+	"C"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
 
 // GetFontDescription is a wrapper around the C function pango_layout_get_font_description.
 func (recv *Layout) GetFontDescription() *FontDescription {

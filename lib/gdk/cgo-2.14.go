@@ -3,12 +3,26 @@
 
 package gdk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+// AppLaunchContextNew is a wrapper around the C function gdk_app_launch_context_new.
+func AppLaunchContextNew() *AppLaunchContext {
+	retC := C.gdk_app_launch_context_new()
+	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : gdk_threads_add_timeout_seconds : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 

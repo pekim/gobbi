@@ -14,13 +14,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void listbox_rowActivatedHandler(GObject *, GtkListBoxRow *, gpointer);
@@ -112,53 +105,6 @@ func (recv *Box) SetBaselinePosition(position BaselinePosition) {
 	return
 }
 
-// BuilderNewFromFile is a wrapper around the C function gtk_builder_new_from_file.
-func BuilderNewFromFile(filename string) *Builder {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	retC := C.gtk_builder_new_from_file(c_filename)
-	retGo := BuilderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// BuilderNewFromResource is a wrapper around the C function gtk_builder_new_from_resource.
-func BuilderNewFromResource(resourcePath string) *Builder {
-	c_resource_path := C.CString(resourcePath)
-	defer C.free(unsafe.Pointer(c_resource_path))
-
-	retC := C.gtk_builder_new_from_resource(c_resource_path)
-	retGo := BuilderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// BuilderNewFromString is a wrapper around the C function gtk_builder_new_from_string.
-func BuilderNewFromString(string_ string) *Builder {
-	c_string := C.CString(string_)
-	defer C.free(unsafe.Pointer(c_string))
-
-	c_length := (C.gssize)(len(string_))
-
-	retC := C.gtk_builder_new_from_string(c_string, c_length)
-	retGo := BuilderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Unsupported : gtk_builder_add_callback_symbol : unsupported parameter callback_symbol : no type generator for GObject.Callback (GCallback) for param callback_symbol
 
 // Unsupported : gtk_builder_add_callback_symbols : unsupported parameter first_callback_symbol : no type generator for GObject.Callback (GCallback) for param first_callback_symbol
@@ -188,19 +134,6 @@ func (recv *Builder) SetApplication(application *Application) {
 	C.gtk_builder_set_application((*C.GtkBuilder)(recv.native), c_application)
 
 	return
-}
-
-// ButtonNewFromIconName is a wrapper around the C function gtk_button_new_from_icon_name.
-func ButtonNewFromIconName(iconName string, size IconSize) *Button {
-	c_icon_name := C.CString(iconName)
-	defer C.free(unsafe.Pointer(c_icon_name))
-
-	c_size := (C.GtkIconSize)(size)
-
-	retC := C.gtk_button_new_from_icon_name(c_icon_name, c_size)
-	retGo := ButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetTabs is a wrapper around the C function gtk_entry_get_tabs.
@@ -282,14 +215,6 @@ func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 	C.gtk_grid_set_row_baseline_position((*C.GtkGrid)(recv.native), c_row, c_pos)
 
 	return
-}
-
-// HeaderBarNew is a wrapper around the C function gtk_header_bar_new.
-func HeaderBarNew() *HeaderBar {
-	retC := C.gtk_header_bar_new()
-	retGo := HeaderBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetCustomTitle is a wrapper around the C function gtk_header_bar_get_custom_title.
@@ -540,19 +465,6 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 	return retGo
 }
 
-// ImageNewFromSurface is a wrapper around the C function gtk_image_new_from_surface.
-func ImageNewFromSurface(surface *cairo.Surface) *Image {
-	c_surface := (*C.cairo_surface_t)(C.NULL)
-	if surface != nil {
-		c_surface = (*C.cairo_surface_t)(surface.ToC())
-	}
-
-	retC := C.gtk_image_new_from_surface(c_surface)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // SetFromSurface is a wrapper around the C function gtk_image_set_from_surface.
 func (recv *Image) SetFromSurface(surface *cairo.Surface) {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
@@ -722,14 +634,6 @@ func listbox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpo
 	index := int(uintptr(data))
 	callback := signalListBoxRowSelectedMap[index].callback
 	callback(row)
-}
-
-// ListBoxNew is a wrapper around the C function gtk_list_box_new.
-func ListBoxNew() *ListBox {
-	retC := C.gtk_list_box_new()
-	retGo := ListBoxNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // DragHighlightRow is a wrapper around the C function gtk_list_box_drag_highlight_row.
@@ -979,14 +883,6 @@ func listboxrow_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxRowActivateMap[index].callback
 	callback()
-}
-
-// ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
-func ListBoxRowNew() *ListBoxRow {
-	retC := C.gtk_list_box_row_new()
-	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Changed is a wrapper around the C function gtk_list_box_row_changed.
@@ -1292,14 +1188,6 @@ func placessidebar_showErrorMessageHandler(_ *C.GObject, c_primary *C.gchar, c_s
 	callback(primary, secondary)
 }
 
-// PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
-func PlacesSidebarNew() *PlacesSidebar {
-	retC := C.gtk_places_sidebar_new()
-	retGo := PlacesSidebarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AddShortcut is a wrapper around the C function gtk_places_sidebar_add_shortcut.
 func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
@@ -1408,14 +1296,6 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	return
 }
 
-// RevealerNew is a wrapper around the C function gtk_revealer_new.
-func RevealerNew() *Revealer {
-	retC := C.gtk_revealer_new()
-	retGo := RevealerNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetChildRevealed is a wrapper around the C function gtk_revealer_get_child_revealed.
 func (recv *Revealer) GetChildRevealed() bool {
 	retC := C.gtk_revealer_get_child_revealed((*C.GtkRevealer)(recv.native))
@@ -1474,14 +1354,6 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 	C.gtk_revealer_set_transition_type((*C.GtkRevealer)(recv.native), c_transition)
 
 	return
-}
-
-// SearchBarNew is a wrapper around the C function gtk_search_bar_new.
-func SearchBarNew() *SearchBar {
-	retC := C.gtk_search_bar_new()
-	retGo := SearchBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ConnectEntry is a wrapper around the C function gtk_search_bar_connect_entry.
@@ -1592,14 +1464,6 @@ func searchentry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSearchEntrySearchChangedMap[index].callback
 	callback()
-}
-
-// StackNew is a wrapper around the C function gtk_stack_new.
-func StackNew() *Stack {
-	retC := C.gtk_stack_new()
-	retGo := StackNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // AddNamed is a wrapper around the C function gtk_stack_add_named.
@@ -1740,14 +1604,6 @@ func (recv *Stack) SetVisibleChildName(name string) {
 	C.gtk_stack_set_visible_child_name((*C.GtkStack)(recv.native), c_name)
 
 	return
-}
-
-// StackSwitcherNew is a wrapper around the C function gtk_stack_switcher_new.
-func StackSwitcherNew() *StackSwitcher {
-	retC := C.gtk_stack_switcher_new()
-	retGo := StackSwitcherNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetStack is a wrapper around the C function gtk_stack_switcher_get_stack.

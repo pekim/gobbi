@@ -13,13 +13,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void entry_preeditChangedHandler(GObject *, gchar*, gpointer);
@@ -56,14 +49,6 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 	C.gtk_action_set_always_show_image((*C.GtkAction)(recv.native), c_always_show)
 
 	return
-}
-
-// CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
-func CellRendererSpinnerNew() *CellRendererSpinner {
-	retC := C.gtk_cell_renderer_spinner_new()
-	retGo := CellRendererSpinnerNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetWidgetForResponse is a wrapper around the C function gtk_dialog_get_widget_for_response.
@@ -170,14 +155,6 @@ func (recv *Notebook) SetActionWidget(widget *Widget, packType PackType) {
 	C.gtk_notebook_set_action_widget((*C.GtkNotebook)(recv.native), c_widget, c_pack_type)
 
 	return
-}
-
-// OffscreenWindowNew is a wrapper around the C function gtk_offscreen_window_new.
-func OffscreenWindowNew() *OffscreenWindow {
-	retC := C.gtk_offscreen_window_new()
-	retGo := OffscreenWindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetPixbuf is a wrapper around the C function gtk_offscreen_window_get_pixbuf.
@@ -297,14 +274,6 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 	C.gtk_range_set_slider_size_fixed((*C.GtkRange)(recv.native), c_size_fixed)
 
 	return
-}
-
-// SpinnerNew is a wrapper around the C function gtk_spinner_new.
-func SpinnerNew() *Spinner {
-	retC := C.gtk_spinner_new()
-	retGo := SpinnerNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Start is a wrapper around the C function gtk_spinner_start.
@@ -429,17 +398,6 @@ func (recv *ToolItem) GetTextOrientation() Orientation {
 func (recv *ToolItem) GetTextSizeGroup() *SizeGroup {
 	retC := C.gtk_tool_item_get_text_size_group((*C.GtkToolItem)(recv.native))
 	retGo := SizeGroupNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ToolItemGroupNew is a wrapper around the C function gtk_tool_item_group_new.
-func ToolItemGroupNew(label string) *ToolItemGroup {
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	retC := C.gtk_tool_item_group_new(c_label)
-	retGo := ToolItemGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -603,14 +561,6 @@ func (recv *ToolItemGroup) SetLabelWidget(labelWidget *Widget) {
 	C.gtk_tool_item_group_set_label_widget((*C.GtkToolItemGroup)(recv.native), c_label_widget)
 
 	return
-}
-
-// ToolPaletteNew is a wrapper around the C function gtk_tool_palette_new.
-func ToolPaletteNew() *ToolPalette {
-	retC := C.gtk_tool_palette_new()
-	retGo := ToolPaletteNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // ToolPaletteGetDragTargetGroup is a wrapper around the C function gtk_tool_palette_get_drag_target_group.

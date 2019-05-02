@@ -4,26 +4,10 @@
 package gtk
 
 import (
+	"C"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-// BorderNew is a wrapper around the C function gtk_border_new.
-func BorderNew() *Border {
-	retC := C.gtk_border_new()
-	retGo := BorderNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // Unsupported : gtk_selection_data_get_data : array return type :
 

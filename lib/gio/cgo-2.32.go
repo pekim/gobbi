@@ -4,6 +4,7 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"unsafe"
 )
@@ -58,6 +59,60 @@ func (recv *InetAddressMask) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
+func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, error) {
+	c_addr := (*C.GInetAddress)(C.NULL)
+	if addr != nil {
+		c_addr = (*C.GInetAddress)(addr.ToC())
+	}
+
+	c_length := (C.guint)(length)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_inet_address_mask_new(c_addr, c_length, &cThrowableError)
+	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// InetAddressMaskNewFromString is a wrapper around the C function g_inet_address_mask_new_from_string.
+func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
+	c_mask_string := C.CString(maskString)
+	defer C.free(unsafe.Pointer(c_mask_string))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_inet_address_mask_new_from_string(c_mask_string, &cThrowableError)
+	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
 // Menu is a wrapper around the C record GMenu.
 type Menu struct {
 	native *C.GMenu
@@ -87,6 +142,18 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 func (recv *Menu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// MenuNew is a wrapper around the C function g_menu_new.
+func MenuNew() *Menu {
+	retC := C.g_menu_new()
+	retGo := MenuNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
@@ -153,6 +220,64 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// MenuItemNew is a wrapper around the C function g_menu_item_new.
+func MenuItemNew(label string, detailedAction string) *MenuItem {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
+
+	retC := C.g_menu_item_new(c_label, c_detailed_action)
+	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// MenuItemNewSection is a wrapper around the C function g_menu_item_new_section.
+func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_section := (*C.GMenuModel)(C.NULL)
+	if section != nil {
+		c_section = (*C.GMenuModel)(section.ToC())
+	}
+
+	retC := C.g_menu_item_new_section(c_label, c_section)
+	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// MenuItemNewSubmenu is a wrapper around the C function g_menu_item_new_submenu.
+func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_submenu := (*C.GMenuModel)(C.NULL)
+	if submenu != nil {
+		c_submenu = (*C.GMenuModel)(submenu.ToC())
+	}
+
+	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
+	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
 type MenuLinkIter struct {
 	native *C.GMenuLinkIter
@@ -217,6 +342,31 @@ func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
 func (recv *MenuModel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// SettingsNewFull is a wrapper around the C function g_settings_new_full.
+func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
+	c_schema := (*C.GSettingsSchema)(C.NULL)
+	if schema != nil {
+		c_schema = (*C.GSettingsSchema)(schema.ToC())
+	}
+
+	c_backend := (*C.GSettingsBackend)(C.NULL)
+	if backend != nil {
+		c_backend = (*C.GSettingsBackend)(backend.ToC())
+	}
+
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_settings_new_full(c_schema, c_backend, c_path)
+	retGo := SettingsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // NetworkMonitor is a wrapper around the C record GNetworkMonitor.
@@ -336,6 +486,29 @@ func (recv *Resource) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ResourceNewFromData is a wrapper around the C function g_resource_new_from_data.
+func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
+	c_data := (*C.GBytes)(C.NULL)
+	if data != nil {
+		c_data = (*C.GBytes)(data.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resource_new_from_data(c_data, &cThrowableError)
+	retGo := ResourceNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
 // SettingsSchema is a wrapper around the C record GSettingsSchema.
 type SettingsSchema struct {
 	native *C.GSettingsSchema
@@ -376,4 +549,33 @@ func SettingsSchemaSourceNewFromC(u unsafe.Pointer) *SettingsSchemaSource {
 func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// SettingsSchemaSourceNewFromDirectory is a wrapper around the C function g_settings_schema_source_new_from_directory.
+func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSchemaSource, trusted bool) (*SettingsSchemaSource, error) {
+	c_directory := C.CString(directory)
+	defer C.free(unsafe.Pointer(c_directory))
+
+	c_parent := (*C.GSettingsSchemaSource)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GSettingsSchemaSource)(parent.ToC())
+	}
+
+	c_trusted :=
+		boolToGboolean(trusted)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_settings_schema_source_new_from_directory(c_directory, c_parent, c_trusted, &cThrowableError)
+	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
 }

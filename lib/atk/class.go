@@ -8,11 +8,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <atk/atk.h>
-// #include <stdlib.h>
 /*
 
 	void hyperlink_linkActivatedHandler(GObject *, gpointer);
@@ -262,23 +257,6 @@ func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 	return NoOpObjectNewFromC(object.ToC())
 }
 
-// NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
-func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
-	c_obj := (*C.GObject)(C.NULL)
-	if obj != nil {
-		c_obj = (*C.GObject)(obj.ToC())
-	}
-
-	retC := C.atk_no_op_object_new(c_obj)
-	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Action returns the Action interface implemented by NoOpObject
 func (recv *NoOpObject) Action() *Action {
 	return ActionNewFromC(recv.ToC())
@@ -358,18 +336,6 @@ func (recv *NoOpObjectFactory) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a NoOpObjectFactory.
 func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 	return NoOpObjectFactoryNewFromC(object.ToC())
-}
-
-// NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
-func NoOpObjectFactoryNew() *NoOpObjectFactory {
-	retC := C.atk_no_op_object_factory_new()
-	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Equals compares this Object with another Object, and returns true if they represent the same GObject.
@@ -834,18 +800,6 @@ func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromC(object.ToC())
 }
 
-// PlugNew is a wrapper around the C function atk_plug_new.
-func PlugNew() *Plug {
-	retC := C.atk_plug_new()
-	retGo := PlugNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Component returns the Component interface implemented by Plug
 func (recv *Plug) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
@@ -914,8 +868,6 @@ func CastToRelation(object *gobject.Object) *Relation {
 	return RelationNewFromC(object.ToC())
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets :
-
 // GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
 func (recv *Relation) GetRelationType() RelationType {
 	retC := C.atk_relation_get_relation_type((*C.AtkRelation)(recv.native))
@@ -953,18 +905,6 @@ func (recv *RelationSet) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RelationSet.
 func CastToRelationSet(object *gobject.Object) *RelationSet {
 	return RelationSetNewFromC(object.ToC())
-}
-
-// RelationSetNew is a wrapper around the C function atk_relation_set_new.
-func RelationSetNew() *RelationSet {
-	retC := C.atk_relation_set_new()
-	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Add is a wrapper around the C function atk_relation_set_add.
@@ -1060,18 +1000,6 @@ func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
 }
 
-// SocketNew is a wrapper around the C function atk_socket_new.
-func SocketNew() *Socket {
-	retC := C.atk_socket_new()
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // Component returns the Component interface implemented by Socket
 func (recv *Socket) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
@@ -1091,18 +1019,6 @@ func (recv *StateSet) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a StateSet.
 func CastToStateSet(object *gobject.Object) *StateSet {
 	return StateSetNewFromC(object.ToC())
-}
-
-// StateSetNew is a wrapper around the C function atk_state_set_new.
-func StateSetNew() *StateSet {
-	retC := C.atk_state_set_new()
-	retGo := StateSetNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddState is a wrapper around the C function atk_state_set_add_state.

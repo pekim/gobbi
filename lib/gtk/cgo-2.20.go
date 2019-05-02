@@ -3,6 +3,8 @@
 
 package gtk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,3 +13,46 @@ package gtk
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
+
+// CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
+func CellRendererSpinnerNew() *CellRendererSpinner {
+	retC := C.gtk_cell_renderer_spinner_new()
+	retGo := CellRendererSpinnerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// OffscreenWindowNew is a wrapper around the C function gtk_offscreen_window_new.
+func OffscreenWindowNew() *OffscreenWindow {
+	retC := C.gtk_offscreen_window_new()
+	retGo := OffscreenWindowNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SpinnerNew is a wrapper around the C function gtk_spinner_new.
+func SpinnerNew() *Spinner {
+	retC := C.gtk_spinner_new()
+	retGo := SpinnerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ToolItemGroupNew is a wrapper around the C function gtk_tool_item_group_new.
+func ToolItemGroupNew(label string) *ToolItemGroup {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	retC := C.gtk_tool_item_group_new(c_label)
+	retGo := ToolItemGroupNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ToolPaletteNew is a wrapper around the C function gtk_tool_palette_new.
+func ToolPaletteNew() *ToolPalette {
+	retC := C.gtk_tool_palette_new()
+	retGo := ToolPaletteNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

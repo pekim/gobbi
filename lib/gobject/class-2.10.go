@@ -3,14 +3,10 @@
 
 package gobject
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // ForceFloating is a wrapper around the C function g_object_force_floating.
 func (recv *Object) ForceFloating() {

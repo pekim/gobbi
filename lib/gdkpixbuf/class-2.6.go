@@ -4,48 +4,9 @@
 package gdkpixbuf
 
 import (
-	glib "github.com/pekim/gobbi/lib/glib"
+	"C"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
-import "C"
-
-// PixbufNewFromFileAtScale is a wrapper around the C function gdk_pixbuf_new_from_file_at_scale.
-func PixbufNewFromFileAtScale(filename string, width int32, height int32, preserveAspectRatio bool) (*Pixbuf, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	c_width := (C.int)(width)
-
-	c_height := (C.int)(height)
-
-	c_preserve_aspect_ratio :=
-		boolToGboolean(preserveAspectRatio)
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_new_from_file_at_scale(c_filename, c_width, c_height, c_preserve_aspect_ratio, &cThrowableError)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
 
 // Flip is a wrapper around the C function gdk_pixbuf_flip.
 func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {

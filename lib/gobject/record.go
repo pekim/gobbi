@@ -3,16 +3,10 @@
 package gobject
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this CClosure with another CClosure, and returns true if they represent the same GObject.
 func (recv *CClosure) Equals(other *CClosure) bool {
@@ -71,23 +65,6 @@ func (recv *CClosure) Equals(other *CClosure) bool {
 func (recv *Closure) Equals(other *Closure) bool {
 	return other.ToC() == recv.ToC()
 }
-
-// ClosureNewObject is a wrapper around the C function g_closure_new_object.
-func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
-	c_sizeof_closure := (C.guint)(sizeofClosure)
-
-	c_object := (*C.GObject)(C.NULL)
-	if object != nil {
-		c_object = (*C.GObject)(object.ToC())
-	}
-
-	retC := C.g_closure_new_object(c_sizeof_closure, c_object)
-	retGo := ClosureNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : g_closure_new_simple : unsupported parameter data : no type generator for gpointer (gpointer) for param data
 
 // Unsupported : g_closure_add_finalize_notifier : unsupported parameter notify_data : no type generator for gpointer (gpointer) for param notify_data
 
@@ -897,16 +874,6 @@ func (recv *Value) Unset() {
 // Equals compares this ValueArray with another ValueArray, and returns true if they represent the same GObject.
 func (recv *ValueArray) Equals(other *ValueArray) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ValueArrayNew is a wrapper around the C function g_value_array_new.
-func ValueArrayNew(nPrealloced uint32) *ValueArray {
-	c_n_prealloced := (C.guint)(nPrealloced)
-
-	retC := C.g_value_array_new(c_n_prealloced)
-	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Append is a wrapper around the C function g_value_array_append.

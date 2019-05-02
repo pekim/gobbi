@@ -3,14 +3,10 @@
 
 package gdk
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // GetLastEventWindow is a wrapper around the C function gdk_device_get_last_event_window.
 func (recv *Device) GetLastEventWindow() *Window {

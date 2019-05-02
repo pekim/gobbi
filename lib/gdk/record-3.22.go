@@ -3,13 +3,6 @@
 
 package gdk
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
-
 // Equals compares this DevicePadInterface with another DevicePadInterface, and returns true if they represent the same GObject.
 func (recv *DevicePadInterface) Equals(other *DevicePadInterface) bool {
 	return other.ToC() == recv.ToC()

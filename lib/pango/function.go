@@ -3,16 +3,10 @@
 package pango
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
 
 // AttrBackgroundNew is a wrapper around the C function pango_attr_background_new.
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {

@@ -3,14 +3,10 @@
 
 package pango
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // IncludesScript is a wrapper around the C function pango_language_includes_script.
 func (recv *Language) IncludesScript(script Script) bool {

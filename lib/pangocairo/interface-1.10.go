@@ -4,16 +4,10 @@
 package pangocairo
 
 import (
+	"C"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pangocairo.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
 func (recv *FontMap) Equals(other *FontMap) bool {

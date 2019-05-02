@@ -4,21 +4,13 @@
 package gtk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // CairoShouldDrawWindow is a wrapper around the C function gtk_cairo_should_draw_window.
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {

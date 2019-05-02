@@ -2,11 +2,6 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
 import "C"
 
 // Equals compares this TypePlugin with another TypePlugin, and returns true if they represent the same GObject.

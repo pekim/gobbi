@@ -9,13 +9,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void application_windowAddedHandler(GObject *, GtkWindow *, gpointer);
@@ -292,30 +285,6 @@ func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
 	return
 }
 
-// FontChooserDialogNew is a wrapper around the C function gtk_font_chooser_dialog_new.
-func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
-
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	retC := C.gtk_font_chooser_dialog_new(c_title, c_parent)
-	retGo := FontChooserDialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FontChooserWidgetNew is a wrapper around the C function gtk_font_chooser_widget_new.
-func FontChooserWidgetNew() *FontChooserWidget {
-	retC := C.gtk_font_chooser_widget_new()
-	retGo := FontChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetChildAt is a wrapper around the C function gtk_grid_get_child_at.
 func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
 	c_left := (C.gint)(left)
@@ -363,19 +332,6 @@ func (recv *Grid) InsertRow(position int32) {
 	C.gtk_grid_insert_row((*C.GtkGrid)(recv.native), c_position)
 
 	return
-}
-
-// LockButtonNew is a wrapper around the C function gtk_lock_button_new.
-func LockButtonNew(permission *gio.Permission) *LockButton {
-	c_permission := (*C.GPermission)(C.NULL)
-	if permission != nil {
-		c_permission = (*C.GPermission)(permission.ToC())
-	}
-
-	retC := C.gtk_lock_button_new(c_permission)
-	retGo := LockButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetPermission is a wrapper around the C function gtk_lock_button_get_permission.
@@ -460,14 +416,6 @@ func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gi
 	index := int(uintptr(data))
 	callback := signalMenuShellInsertMap[index].callback
 	callback(child, position)
-}
-
-// OverlayNew is a wrapper around the C function gtk_overlay_new.
-func OverlayNew() *Overlay {
-	retC := C.gtk_overlay_new()
-	retGo := OverlayNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // AddOverlay is a wrapper around the C function gtk_overlay_add_overlay.

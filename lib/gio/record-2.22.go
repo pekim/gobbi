@@ -4,26 +4,10 @@
 package gio
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this AsyncInitableIface with another AsyncInitableIface, and returns true if they represent the same GObject.
 func (recv *AsyncInitableIface) Equals(other *AsyncInitableIface) bool {
@@ -43,23 +27,6 @@ func (recv *InputVector) Equals(other *InputVector) bool {
 // Equals compares this OutputVector with another OutputVector, and returns true if they represent the same GObject.
 func (recv *OutputVector) Equals(other *OutputVector) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SrvTargetNew is a wrapper around the C function g_srv_target_new.
-func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	c_port := (C.guint16)(port)
-
-	c_priority := (C.guint16)(priority)
-
-	c_weight := (C.guint16)(weight)
-
-	retC := C.g_srv_target_new(c_hostname, c_port, c_priority, c_weight)
-	retGo := SrvTargetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // SrvTargetListSort is a wrapper around the C function g_srv_target_list_sort.

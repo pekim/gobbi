@@ -3,14 +3,10 @@
 
 package gdk
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // NotifyStartupCompleteWithId is a wrapper around the C function gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId(startupId string) {

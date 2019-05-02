@@ -12,13 +12,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void combobox_moveActiveHandler(GObject *, GtkScrollType, gpointer);
@@ -160,18 +153,6 @@ func (recv *AboutDialog) SetProgramName(name string) {
 func (recv *Action) CreateMenu() *Widget {
 	retC := C.gtk_action_create_menu((*C.GtkAction)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// BuilderNew is a wrapper around the C function gtk_builder_new.
-func BuilderNew() *Builder {
-	retC := C.gtk_builder_new()
-	retGo := BuilderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
 
 	return retGo
 }
@@ -965,61 +946,6 @@ func notebook_createWindowHandler(_ *C.GObject, c_page *C.GtkWidget, c_x C.gint,
 	return retC
 }
 
-// PageSetupNewFromFile is a wrapper around the C function gtk_page_setup_new_from_file.
-func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
-	c_file_name := C.CString(fileName)
-	defer C.free(unsafe.Pointer(c_file_name))
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_page_setup_new_from_file(c_file_name, &cThrowableError)
-	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PageSetupNewFromKeyFile is a wrapper around the C function gtk_page_setup_new_from_key_file.
-func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetup, error) {
-	c_key_file := (*C.GKeyFile)(C.NULL)
-	if keyFile != nil {
-		c_key_file = (*C.GKeyFile)(keyFile.ToC())
-	}
-
-	c_group_name := C.CString(groupName)
-	defer C.free(unsafe.Pointer(c_group_name))
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_page_setup_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
-	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
 // ToFile is a wrapper around the C function gtk_page_setup_to_file.
 func (recv *PageSetup) ToFile(fileName string) (bool, error) {
 	c_file_name := C.CString(fileName)
@@ -1054,61 +980,6 @@ func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 	C.gtk_page_setup_to_key_file((*C.GtkPageSetup)(recv.native), c_key_file, c_group_name)
 
 	return
-}
-
-// PrintSettingsNewFromFile is a wrapper around the C function gtk_print_settings_new_from_file.
-func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
-	c_file_name := C.CString(fileName)
-	defer C.free(unsafe.Pointer(c_file_name))
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_print_settings_new_from_file(c_file_name, &cThrowableError)
-	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PrintSettingsNewFromKeyFile is a wrapper around the C function gtk_print_settings_new_from_key_file.
-func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PrintSettings, error) {
-	c_key_file := (*C.GKeyFile)(C.NULL)
-	if keyFile != nil {
-		c_key_file = (*C.GKeyFile)(keyFile.ToC())
-	}
-
-	c_group_name := C.CString(groupName)
-	defer C.free(unsafe.Pointer(c_group_name))
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_print_settings_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
-	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
 }
 
 // ToFile is a wrapper around the C function gtk_print_settings_to_file.
@@ -1198,59 +1069,6 @@ func (recv *Range) SetShowFillLevel(showFillLevel bool) {
 	C.gtk_range_set_show_fill_level((*C.GtkRange)(recv.native), c_show_fill_level)
 
 	return
-}
-
-// RecentActionNew is a wrapper around the C function gtk_recent_action_new.
-func RecentActionNew(name string, label string, tooltip string, stockId string) *RecentAction {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_tooltip := C.CString(tooltip)
-	defer C.free(unsafe.Pointer(c_tooltip))
-
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	retC := C.gtk_recent_action_new(c_name, c_label, c_tooltip, c_stock_id)
-	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// RecentActionNewForManager is a wrapper around the C function gtk_recent_action_new_for_manager.
-func RecentActionNewForManager(name string, label string, tooltip string, stockId string, manager *RecentManager) *RecentAction {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_label := C.CString(label)
-	defer C.free(unsafe.Pointer(c_label))
-
-	c_tooltip := C.CString(tooltip)
-	defer C.free(unsafe.Pointer(c_tooltip))
-
-	c_stock_id := C.CString(stockId)
-	defer C.free(unsafe.Pointer(c_stock_id))
-
-	c_manager := (*C.GtkRecentManager)(C.NULL)
-	if manager != nil {
-		c_manager = (*C.GtkRecentManager)(manager.ToC())
-	}
-
-	retC := C.gtk_recent_action_new_for_manager(c_name, c_label, c_tooltip, c_stock_id, c_manager)
-	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetShowNumbers is a wrapper around the C function gtk_recent_action_get_show_numbers.
@@ -1453,32 +1271,6 @@ func scalebutton_valueChangedHandler(_ *C.GObject, c_value C.gdouble, data C.gpo
 	callback(value)
 }
 
-// ScaleButtonNew is a wrapper around the C function gtk_scale_button_new.
-func ScaleButtonNew(size IconSize, min float64, max float64, step float64, icons []string) *ScaleButton {
-	c_size := (C.GtkIconSize)(size)
-
-	c_min := (C.gdouble)(min)
-
-	c_max := (C.gdouble)(max)
-
-	c_step := (C.gdouble)(step)
-
-	c_icons_array := make([]*C.gchar, len(icons)+1, len(icons)+1)
-	for i, item := range icons {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_icons_array[i] = c
-	}
-	c_icons_array[len(icons)] = nil
-	c_icons_arrayPtr := &c_icons_array[0]
-	c_icons := (**C.gchar)(unsafe.Pointer(c_icons_arrayPtr))
-
-	retC := C.gtk_scale_button_new(c_size, c_min, c_max, c_step, c_icons)
-	retGo := ScaleButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetAdjustment is a wrapper around the C function gtk_scale_button_get_adjustment.
 func (recv *ScaleButton) GetAdjustment() *Adjustment {
 	retC := C.gtk_scale_button_get_adjustment((*C.GtkScaleButton)(recv.native))
@@ -1568,24 +1360,6 @@ func (recv *TextBuffer) AddMark(mark *TextMark, where *TextIter) {
 	C.gtk_text_buffer_add_mark((*C.GtkTextBuffer)(recv.native), c_mark, c_where)
 
 	return
-}
-
-// TextMarkNew is a wrapper around the C function gtk_text_mark_new.
-func TextMarkNew(name string, leftGravity bool) *TextMark {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_left_gravity :=
-		boolToGboolean(leftGravity)
-
-	retC := C.gtk_text_mark_new(c_name, c_left_gravity)
-	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // SetTooltipMarkup is a wrapper around the C function gtk_tool_item_set_tooltip_markup.
@@ -1944,14 +1718,6 @@ func (recv *TreeViewColumn) GetTreeView() *Widget {
 	} else {
 		retGo = WidgetNewFromC(unsafe.Pointer(retC))
 	}
-
-	return retGo
-}
-
-// VolumeButtonNew is a wrapper around the C function gtk_volume_button_new.
-func VolumeButtonNew() *VolumeButton {
-	retC := C.gtk_volume_button_new()
-	retGo := VolumeButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

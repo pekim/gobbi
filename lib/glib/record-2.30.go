@@ -3,16 +3,10 @@
 
 package glib
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // DirMakeTmp is a wrapper around the C function g_dir_make_tmp.
 func DirMakeTmp(tmpl string) (string, error) {
@@ -137,26 +131,6 @@ func (recv *MatchInfo) Unref() {
 	C.g_match_info_unref((*C.GMatchInfo)(recv.native))
 
 	return
-}
-
-// VariantNewObjv is a wrapper around the C function g_variant_new_objv.
-func VariantNewObjv(strv []string) *Variant {
-	c_strv_array := make([]*C.gchar, len(strv)+1, len(strv)+1)
-	for i, item := range strv {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_strv_array[i] = c
-	}
-	c_strv_array[len(strv)] = nil
-	c_strv_arrayPtr := &c_strv_array[0]
-	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
-
-	c_length := (C.gssize)(len(strv))
-
-	retC := C.g_variant_new_objv(c_strv, c_length)
-	retGo := VariantNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // DupObjv is a wrapper around the C function g_variant_dup_objv.

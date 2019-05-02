@@ -4,18 +4,10 @@
 package gtk
 
 import (
+	"C"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // GetEllipsizeMode is a wrapper around the C function gtk_tool_shell_get_ellipsize_mode.
 func (recv *ToolShell) GetEllipsizeMode() pango.EllipsizeMode {

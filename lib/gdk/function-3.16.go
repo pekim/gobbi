@@ -3,14 +3,10 @@
 
 package gdk
 
-import cairo "github.com/pekim/gobbi/lib/cairo"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	cairo "github.com/pekim/gobbi/lib/cairo"
+)
 
 // CairoDrawFromGl is a wrapper around the C function gdk_cairo_draw_from_gl.
 func CairoDrawFromGl(cr *cairo.Context, window *Window, source int32, sourceType int32, bufferScale int32, x int32, y int32, width int32, height int32) {

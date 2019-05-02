@@ -3,15 +3,6 @@
 
 package glib
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-import "C"
-
 // Unsupported : g_async_queue_push_front : unsupported parameter item : no type generator for gpointer (gpointer) for param item
 
 // Unsupported : g_async_queue_push_front_unlocked : unsupported parameter item : no type generator for gpointer (gpointer) for param item

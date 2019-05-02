@@ -7,19 +7,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib.h>
-// #include <glib/gstdio.h>
-// #include <glib-unix.h>
-// #include <stdlib.h>
-/*
-
-	static GError* _g_error_new(GQuark domain, gint code, const gchar* format) {
-		return g_error_new(domain, code, format);
-    }
-*/
 /*
 
 	static void _g_scanner_error(GScanner* scanner, const gchar* format) {
@@ -198,38 +185,6 @@ func (recv *Data) Equals(other *Data) bool {
 // Equals compares this Date with another Date, and returns true if they represent the same GObject.
 func (recv *Date) Equals(other *Date) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DateNew is a wrapper around the C function g_date_new.
-func DateNew() *Date {
-	retC := C.g_date_new()
-	retGo := DateNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DateNewDmy is a wrapper around the C function g_date_new_dmy.
-func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
-	c_day := (C.GDateDay)(day)
-
-	c_month := (C.GDateMonth)(month)
-
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_new_dmy(c_day, c_month, c_year)
-	retGo := DateNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DateNewJulian is a wrapper around the C function g_date_new_julian.
-func DateNewJulian(julianDay uint32) *Date {
-	c_julian_day := (C.guint32)(julianDay)
-
-	retC := C.g_date_new_julian(c_julian_day)
-	retGo := DateNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // DateGetDaysInMonth is a wrapper around the C function g_date_get_days_in_month.
@@ -702,37 +657,6 @@ func (recv *Error) Equals(other *Error) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ErrorNew is a wrapper around the C function g_error_new.
-func ErrorNew(domain Quark, code int32, format string, args ...interface{}) *Error {
-	c_domain := (C.GQuark)(domain)
-
-	c_code := (C.gint)(code)
-
-	goFormattedString := fmt.Sprintf(format, args...)
-	c_format := C.CString(goFormattedString)
-	defer C.free(unsafe.Pointer(c_format))
-
-	retC := C._g_error_new(c_domain, c_code, c_format)
-	retGo := ErrorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ErrorNewLiteral is a wrapper around the C function g_error_new_literal.
-func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
-	c_domain := (C.GQuark)(domain)
-
-	c_code := (C.gint)(code)
-
-	c_message := C.CString(message)
-	defer C.free(unsafe.Pointer(c_message))
-
-	retC := C.g_error_new_literal(c_domain, c_code, c_message)
-	retGo := ErrorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Copy is a wrapper around the C function g_error_copy.
 func (recv *Error) Copy() *Error {
 	retC := C.g_error_copy((*C.GError)(recv.native))
@@ -1067,40 +991,6 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 // Equals compares this IOChannel with another IOChannel, and returns true if they represent the same GObject.
 func (recv *IOChannel) Equals(other *IOChannel) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// IOChannelNewFile is a wrapper around the C function g_io_channel_new_file.
-func IOChannelNewFile(filename string, mode string) (*IOChannel, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	c_mode := C.CString(mode)
-	defer C.free(unsafe.Pointer(c_mode))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_io_channel_new_file(c_filename, c_mode, &cThrowableError)
-	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// IOChannelUnixNew is a wrapper around the C function g_io_channel_unix_new.
-func IOChannelUnixNew(fd int32) *IOChannel {
-	c_fd := (C.int)(fd)
-
-	retC := C.g_io_channel_unix_new(c_fd)
-	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // IOChannelErrorFromErrno is a wrapper around the C function g_io_channel_error_from_errno.
@@ -1777,14 +1667,6 @@ func (recv *MainContext) Equals(other *MainContext) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MainContextNew is a wrapper around the C function g_main_context_new.
-func MainContextNew() *MainContext {
-	retC := C.g_main_context_new()
-	retGo := MainContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // MainContextDefault is a wrapper around the C function g_main_context_default.
 func MainContextDefault() *MainContext {
 	retC := C.g_main_context_default()
@@ -1921,22 +1803,6 @@ func (recv *MainLoop) Equals(other *MainLoop) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MainLoopNew is a wrapper around the C function g_main_loop_new.
-func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
-	c_context := (*C.GMainContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GMainContext)(context.ToC())
-	}
-
-	c_is_running :=
-		boolToGboolean(isRunning)
-
-	retC := C.g_main_loop_new(c_context, c_is_running)
-	retGo := MainLoopNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetContext is a wrapper around the C function g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
 	retC := C.g_main_loop_get_context((*C.GMainLoop)(recv.native))
@@ -1998,8 +1864,6 @@ func (recv *MappedFile) Unref() {
 func (recv *MarkupParseContext) Equals(other *MarkupParseContext) bool {
 	return other.ToC() == recv.ToC()
 }
-
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
 
 // EndParse is a wrapper around the C function g_markup_parse_context_end_parse.
 func (recv *MarkupParseContext) EndParse() (bool, error) {
@@ -2900,21 +2764,6 @@ func (recv *Source) Equals(other *Source) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SourceNew is a wrapper around the C function g_source_new.
-func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
-	c_source_funcs := (*C.GSourceFuncs)(C.NULL)
-	if sourceFuncs != nil {
-		c_source_funcs = (*C.GSourceFuncs)(sourceFuncs.ToC())
-	}
-
-	c_struct_size := (C.guint)(structSize)
-
-	retC := C.g_source_new(c_source_funcs, c_struct_size)
-	retGo := SourceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // SourceRemove is a wrapper around the C function g_source_remove.
 func SourceRemove(tag uint32) bool {
 	c_tag := (C.guint)(tag)
@@ -3703,52 +3552,6 @@ func (recv *VariantIter) Equals(other *VariantIter) bool {
 func (recv *VariantType) Equals(other *VariantType) bool {
 	return other.ToC() == recv.ToC()
 }
-
-// VariantTypeNewArray is a wrapper around the C function g_variant_type_new_array.
-func VariantTypeNewArray(element *VariantType) *VariantType {
-	c_element := (*C.GVariantType)(C.NULL)
-	if element != nil {
-		c_element = (*C.GVariantType)(element.ToC())
-	}
-
-	retC := C.g_variant_type_new_array(c_element)
-	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// VariantTypeNewDictEntry is a wrapper around the C function g_variant_type_new_dict_entry.
-func VariantTypeNewDictEntry(key *VariantType, value *VariantType) *VariantType {
-	c_key := (*C.GVariantType)(C.NULL)
-	if key != nil {
-		c_key = (*C.GVariantType)(key.ToC())
-	}
-
-	c_value := (*C.GVariantType)(C.NULL)
-	if value != nil {
-		c_value = (*C.GVariantType)(value.ToC())
-	}
-
-	retC := C.g_variant_type_new_dict_entry(c_key, c_value)
-	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// VariantTypeNewMaybe is a wrapper around the C function g_variant_type_new_maybe.
-func VariantTypeNewMaybe(element *VariantType) *VariantType {
-	c_element := (*C.GVariantType)(C.NULL)
-	if element != nil {
-		c_element = (*C.GVariantType)(element.ToC())
-	}
-
-	retC := C.g_variant_type_new_maybe(c_element)
-	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : g_variant_type_new_tuple : unsupported parameter items :
 
 // VariantTypeChecked is a wrapper around the C function g_variant_type_checked_.
 func VariantTypeChecked(arg0 string) *VariantType {

@@ -4,20 +4,12 @@
 package gtk
 
 import (
+	"C"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // AddCreditSection is a wrapper around the C function gtk_about_dialog_add_credit_section.
 func (recv *AboutDialog) AddCreditSection(sectionName string, people []string) {
@@ -154,19 +146,6 @@ func (recv *Application) Uninhibit(cookie uint32) {
 	return
 }
 
-// ApplicationWindowNew is a wrapper around the C function gtk_application_window_new.
-func ApplicationWindowNew(application *Application) *ApplicationWindow {
-	c_application := (*C.GtkApplication)(C.NULL)
-	if application != nil {
-		c_application = (*C.GtkApplication)(application.ToC())
-	}
-
-	retC := C.gtk_application_window_new(c_application)
-	retGo := ApplicationWindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // GetShowMenubar is a wrapper around the C function gtk_application_window_get_show_menubar.
 func (recv *ApplicationWindow) GetShowMenubar() bool {
 	retC := C.gtk_application_window_get_show_menubar((*C.GtkApplicationWindow)(recv.native))
@@ -237,30 +216,6 @@ func (recv *Builder) AddObjectsFromResource(resourcePath string, objectIds []str
 	return retGo, goError
 }
 
-// ColorChooserDialogNew is a wrapper around the C function gtk_color_chooser_dialog_new.
-func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
-	c_title := C.CString(title)
-	defer C.free(unsafe.Pointer(c_title))
-
-	c_parent := (*C.GtkWindow)(C.NULL)
-	if parent != nil {
-		c_parent = (*C.GtkWindow)(parent.ToC())
-	}
-
-	retC := C.gtk_color_chooser_dialog_new(c_title, c_parent)
-	retGo := ColorChooserDialogNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ColorChooserWidgetNew is a wrapper around the C function gtk_color_chooser_widget_new.
-func ColorChooserWidgetNew() *ColorChooserWidget {
-	retC := C.gtk_color_chooser_widget_new()
-	retGo := ColorChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // ComputePrefix is a wrapper around the C function gtk_entry_completion_compute_prefix.
@@ -271,43 +226,6 @@ func (recv *EntryCompletion) ComputePrefix(key string) string {
 	retC := C.gtk_entry_completion_compute_prefix((*C.GtkEntryCompletion)(recv.native), c_key)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ImageNewFromResource is a wrapper around the C function gtk_image_new_from_resource.
-func ImageNewFromResource(resourcePath string) *Image {
-	c_resource_path := C.CString(resourcePath)
-	defer C.free(unsafe.Pointer(c_resource_path))
-
-	retC := C.gtk_image_new_from_resource(c_resource_path)
-	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// MenuNewFromModel is a wrapper around the C function gtk_menu_new_from_model.
-func MenuNewFromModel(model *gio.MenuModel) *Menu {
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	retC := C.gtk_menu_new_from_model(c_model)
-	retGo := MenuNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// MenuBarNewFromModel is a wrapper around the C function gtk_menu_bar_new_from_model.
-func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
-	c_model := (*C.GMenuModel)(C.NULL)
-	if model != nil {
-		c_model = (*C.GMenuModel)(model.ToC())
-	}
-
-	retC := C.gtk_menu_bar_new_from_model(c_model)
-	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

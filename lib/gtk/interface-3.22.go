@@ -3,16 +3,10 @@
 
 package gtk
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // AddChoice is a wrapper around the C function gtk_file_chooser_add_choice.
 func (recv *FileChooser) AddChoice(id string, label string, options []string, optionLabels []string) {

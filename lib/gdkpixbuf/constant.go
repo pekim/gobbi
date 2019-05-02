@@ -2,11 +2,6 @@
 
 package gdkpixbuf
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
 import "C"
 
 const PIXBUF_FEATURES_H int32 = C.GDK_PIXBUF_FEATURES_H

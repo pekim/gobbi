@@ -3,11 +3,6 @@
 
 package pango
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pango.h>
-// #include <stdlib.h>
 import "C"
 
 // QuantizeLineGeometry is a wrapper around the C function pango_quantize_line_geometry.

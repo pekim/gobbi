@@ -4,16 +4,10 @@
 package gdkpixbuf
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
-import "C"
 
 // WriteBytes is a wrapper around the C function gdk_pixbuf_loader_write_bytes.
 func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {

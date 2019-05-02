@@ -3,27 +3,11 @@
 package gio
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this ActionEntry with another ActionEntry, and returns true if they represent the same GObject.
 func (recv *ActionEntry) Equals(other *ActionEntry) bool {
@@ -205,14 +189,6 @@ func (recv *FileAttributeInfoList) Equals(other *FileAttributeInfoList) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileAttributeInfoListNew is a wrapper around the C function g_file_attribute_info_list_new.
-func FileAttributeInfoListNew() *FileAttributeInfoList {
-	retC := C.g_file_attribute_info_list_new()
-	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Add is a wrapper around the C function g_file_attribute_info_list_add.
 func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, flags FileAttributeInfoFlags) {
 	c_name := C.CString(name)
@@ -264,17 +240,6 @@ func (recv *FileAttributeInfoList) Unref() {
 // Equals compares this FileAttributeMatcher with another FileAttributeMatcher, and returns true if they represent the same GObject.
 func (recv *FileAttributeMatcher) Equals(other *FileAttributeMatcher) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileAttributeMatcherNew is a wrapper around the C function g_file_attribute_matcher_new.
-func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
-	c_attributes := C.CString(attributes)
-	defer C.free(unsafe.Pointer(c_attributes))
-
-	retC := C.g_file_attribute_matcher_new(c_attributes)
-	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // EnumerateNamespace is a wrapper around the C function g_file_attribute_matcher_enumerate_namespace.

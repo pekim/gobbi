@@ -10,21 +10,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gio/gdesktopappinfo.h>
-// #include <gio/gfiledescriptorbased.h>
-// #include <gio/gio.h>
-// #include <gio/gunixconnection.h>
-// #include <gio/gunixcredentialsmessage.h>
-// #include <gio/gunixfdlist.h>
-// #include <gio/gunixfdmessage.h>
-// #include <gio/gunixinputstream.h>
-// #include <gio/gunixmounts.h>
-// #include <gio/gunixoutputstream.h>
-// #include <gio/gunixsocketaddress.h>
-// #include <stdlib.h>
 /*
 
 	gboolean dbusinterfaceskeleton_gAuthorizeMethodHandler(GObject *, GDBusMethodInvocation *, gpointer);
@@ -442,58 +427,6 @@ func dbusobjectmanagerclient_interfaceProxySignalHandler(_ *C.GObject, c_object_
 	callback(objectProxy, interfaceProxy, senderName, signalName, parameters)
 }
 
-// DBusObjectManagerClientNewFinish is a wrapper around the C function g_dbus_object_manager_client_new_finish.
-func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
-	c_res := (*C.GAsyncResult)(res.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
-	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// DBusObjectManagerClientNewForBusFinish is a wrapper around the C function g_dbus_object_manager_client_new_for_bus_finish.
-func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
-	c_res := (*C.GAsyncResult)(res.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
-	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
 // g_dbus_object_manager_client_new : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 // g_dbus_object_manager_client_new_for_bus : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 // GetConnection is a wrapper around the C function g_dbus_object_manager_client_get_connection.
@@ -543,21 +476,6 @@ func (recv *DBusObjectManagerServer) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectManagerServer.
 func CastToDBusObjectManagerServer(object *gobject.Object) *DBusObjectManagerServer {
 	return DBusObjectManagerServerNewFromC(object.ToC())
-}
-
-// DBusObjectManagerServerNew is a wrapper around the C function g_dbus_object_manager_server_new.
-func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_object_manager_server_new(c_object_path)
-	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // Export is a wrapper around the C function g_dbus_object_manager_server_export.
@@ -629,26 +547,6 @@ func (recv *DBusObjectProxy) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectProxy.
 func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
 	return DBusObjectProxyNewFromC(object.ToC())
-}
-
-// DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
-func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
-	c_connection := (*C.GDBusConnection)(C.NULL)
-	if connection != nil {
-		c_connection = (*C.GDBusConnection)(connection.ToC())
-	}
-
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
-	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetConnection is a wrapper around the C function g_dbus_object_proxy_get_connection.
@@ -740,21 +638,6 @@ func dbusobjectskeleton_authorizeMethodHandler(_ *C.GObject, c_interface *C.GDBu
 	retC :=
 		boolToGboolean(retGo)
 	return retC
-}
-
-// DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
-func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
-	c_object_path := C.CString(objectPath)
-	defer C.free(unsafe.Pointer(c_object_path))
-
-	retC := C.g_dbus_object_skeleton_new(c_object_path)
-	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // AddInterface is a wrapper around the C function g_dbus_object_skeleton_add_interface.
@@ -1481,23 +1364,6 @@ func (recv *TlsPassword) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a TlsPassword.
 func CastToTlsPassword(object *gobject.Object) *TlsPassword {
 	return TlsPasswordNewFromC(object.ToC())
-}
-
-// TlsPasswordNew is a wrapper around the C function g_tls_password_new.
-func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
-	c_flags := (C.GTlsPasswordFlags)(flags)
-
-	c_description := C.CString(description)
-	defer C.free(unsafe.Pointer(c_description))
-
-	retC := C.g_tls_password_new(c_flags, c_description)
-	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // GetDescription is a wrapper around the C function g_tls_password_get_description.

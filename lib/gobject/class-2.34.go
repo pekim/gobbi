@@ -3,13 +3,6 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
-
 // Unsupported : g_object_dup_data : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc (GDuplicateFunc) for param dup_func
 
 // Unsupported : g_object_dup_qdata : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc (GDuplicateFunc) for param dup_func

@@ -12,13 +12,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	GdkGLContext * glarea_createContextHandler(GObject *, gpointer);
@@ -350,14 +343,6 @@ func glarea_resizeHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.
 	callback(width, height)
 }
 
-// GLAreaNew is a wrapper around the C function gtk_gl_area_new.
-func GLAreaNew() *GLArea {
-	retC := C.gtk_gl_area_new()
-	retGo := GLAreaNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AttachBuffers is a wrapper around the C function gtk_gl_area_attach_buffers.
 func (recv *GLArea) AttachBuffers() {
 	C.gtk_gl_area_attach_buffers((*C.GtkGLArea)(recv.native))
@@ -546,14 +531,6 @@ func (recv *Label) SetYalign(yalign float32) {
 
 // Unsupported : gtk_list_box_bind_model : unsupported parameter create_widget_func : no type generator for ListBoxCreateWidgetFunc (GtkListBoxCreateWidgetFunc) for param create_widget_func
 
-// ModelButtonNew is a wrapper around the C function gtk_model_button_new.
-func ModelButtonNew() *ModelButton {
-	retC := C.gtk_model_button_new()
-	retGo := ModelButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // DetachTab is a wrapper around the C function gtk_notebook_detach_tab.
 func (recv *Notebook) DetachTab(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -600,14 +577,6 @@ func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 	C.gtk_popover_set_transitions_enabled((*C.GtkPopover)(recv.native), c_transitions_enabled)
 
 	return
-}
-
-// PopoverMenuNew is a wrapper around the C function gtk_popover_menu_new.
-func PopoverMenuNew() *PopoverMenu {
-	retC := C.gtk_popover_menu_new()
-	retGo := PopoverMenuNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // OpenSubmenu is a wrapper around the C function gtk_popover_menu_open_submenu.
@@ -978,14 +947,6 @@ func (recv *Stack) SetVhomogeneous(vhomogeneous bool) {
 	C.gtk_stack_set_vhomogeneous((*C.GtkStack)(recv.native), c_vhomogeneous)
 
 	return
-}
-
-// StackSidebarNew is a wrapper around the C function gtk_stack_sidebar_new.
-func StackSidebarNew() *StackSidebar {
-	retC := C.gtk_stack_sidebar_new()
-	retGo := StackSidebarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetStack is a wrapper around the C function gtk_stack_sidebar_get_stack.

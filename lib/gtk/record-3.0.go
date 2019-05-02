@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -11,15 +12,6 @@ import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // BindingEntryAddSignalFromString is a wrapper around the C function gtk_binding_entry_add_signal_from_string.
 func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
@@ -63,42 +55,6 @@ func (recv *CellAreaClass) InstallCellProperty(propertyId uint32, pspec *gobject
 }
 
 // Unsupported : gtk_cell_area_class_list_cell_properties : array return type :
-
-// GradientNewLinear is a wrapper around the C function gtk_gradient_new_linear.
-func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Gradient {
-	c_x0 := (C.gdouble)(x0)
-
-	c_y0 := (C.gdouble)(y0)
-
-	c_x1 := (C.gdouble)(x1)
-
-	c_y1 := (C.gdouble)(y1)
-
-	retC := C.gtk_gradient_new_linear(c_x0, c_y0, c_x1, c_y1)
-	retGo := GradientNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GradientNewRadial is a wrapper around the C function gtk_gradient_new_radial.
-func GradientNewRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 float64, radius1 float64) *Gradient {
-	c_x0 := (C.gdouble)(x0)
-
-	c_y0 := (C.gdouble)(y0)
-
-	c_radius0 := (C.gdouble)(radius0)
-
-	c_x1 := (C.gdouble)(x1)
-
-	c_y1 := (C.gdouble)(y1)
-
-	c_radius1 := (C.gdouble)(radius1)
-
-	retC := C.gtk_gradient_new_radial(c_x0, c_y0, c_radius0, c_x1, c_y1, c_radius1)
-	retGo := GradientNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // AddColorStop is a wrapper around the C function gtk_gradient_add_color_stop.
 func (recv *Gradient) AddColorStop(offset float64, color *SymbolicColor) {
@@ -161,89 +117,7 @@ func (recv *IconSet) RenderIconPixbuf(context *StyleContext, size IconSize) *gdk
 	return retGo
 }
 
-// RequisitionNew is a wrapper around the C function gtk_requisition_new.
-func RequisitionNew() *Requisition {
-	retC := C.gtk_requisition_new()
-	retGo := RequisitionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Unsupported : gtk_selection_data_get_data_with_length : array return type :
-
-// SymbolicColorNewAlpha is a wrapper around the C function gtk_symbolic_color_new_alpha.
-func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
-	c_color := (*C.GtkSymbolicColor)(C.NULL)
-	if color != nil {
-		c_color = (*C.GtkSymbolicColor)(color.ToC())
-	}
-
-	c_factor := (C.gdouble)(factor)
-
-	retC := C.gtk_symbolic_color_new_alpha(c_color, c_factor)
-	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SymbolicColorNewLiteral is a wrapper around the C function gtk_symbolic_color_new_literal.
-func SymbolicColorNewLiteral(color *gdk.RGBA) *SymbolicColor {
-	c_color := (*C.GdkRGBA)(C.NULL)
-	if color != nil {
-		c_color = (*C.GdkRGBA)(color.ToC())
-	}
-
-	retC := C.gtk_symbolic_color_new_literal(c_color)
-	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SymbolicColorNewMix is a wrapper around the C function gtk_symbolic_color_new_mix.
-func SymbolicColorNewMix(color1 *SymbolicColor, color2 *SymbolicColor, factor float64) *SymbolicColor {
-	c_color1 := (*C.GtkSymbolicColor)(C.NULL)
-	if color1 != nil {
-		c_color1 = (*C.GtkSymbolicColor)(color1.ToC())
-	}
-
-	c_color2 := (*C.GtkSymbolicColor)(C.NULL)
-	if color2 != nil {
-		c_color2 = (*C.GtkSymbolicColor)(color2.ToC())
-	}
-
-	c_factor := (C.gdouble)(factor)
-
-	retC := C.gtk_symbolic_color_new_mix(c_color1, c_color2, c_factor)
-	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SymbolicColorNewName is a wrapper around the C function gtk_symbolic_color_new_name.
-func SymbolicColorNewName(name string) *SymbolicColor {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gtk_symbolic_color_new_name(c_name)
-	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SymbolicColorNewShade is a wrapper around the C function gtk_symbolic_color_new_shade.
-func SymbolicColorNewShade(color *SymbolicColor, factor float64) *SymbolicColor {
-	c_color := (*C.GtkSymbolicColor)(C.NULL)
-	if color != nil {
-		c_color = (*C.GtkSymbolicColor)(color.ToC())
-	}
-
-	c_factor := (C.gdouble)(factor)
-
-	retC := C.gtk_symbolic_color_new_shade(c_color, c_factor)
-	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // Ref is a wrapper around the C function gtk_symbolic_color_ref.
 func (recv *SymbolicColor) Ref() *SymbolicColor {
@@ -278,14 +152,6 @@ func (recv *SymbolicColor) Unref() {
 }
 
 // Unsupported : gtk_tree_path_get_indices_with_depth : array return type :
-
-// WidgetPathNew is a wrapper around the C function gtk_widget_path_new.
-func WidgetPathNew() *WidgetPath {
-	retC := C.gtk_widget_path_new()
-	retGo := WidgetPathNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // AppendType is a wrapper around the C function gtk_widget_path_append_type.
 func (recv *WidgetPath) AppendType(type_ gobject.Type) int32 {

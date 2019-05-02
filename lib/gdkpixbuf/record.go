@@ -2,13 +2,6 @@
 
 package gdkpixbuf
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
-import "C"
-
 // Equals compares this PixbufFormat with another PixbufFormat, and returns true if they represent the same GObject.
 func (recv *PixbufFormat) Equals(other *PixbufFormat) bool {
 	return other.ToC() == recv.ToC()

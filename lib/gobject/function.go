@@ -3,16 +3,10 @@
 package gobject
 
 import (
+	"C"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
 
 // Unsupported : g_boxed_copy : unsupported parameter src_boxed : no type generator for gpointer (gconstpointer) for param src_boxed
 

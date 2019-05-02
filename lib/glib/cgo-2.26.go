@@ -41,6 +41,146 @@ func (recv *DateTime) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// DateTimeNew is a wrapper around the C function g_date_time_new.
+func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
+	c_tz := (*C.GTimeZone)(C.NULL)
+	if tz != nil {
+		c_tz = (*C.GTimeZone)(tz.ToC())
+	}
+
+	c_year := (C.gint)(year)
+
+	c_month := (C.gint)(month)
+
+	c_day := (C.gint)(day)
+
+	c_hour := (C.gint)(hour)
+
+	c_minute := (C.gint)(minute)
+
+	c_seconds := (C.gdouble)(seconds)
+
+	retC := C.g_date_time_new(c_tz, c_year, c_month, c_day, c_hour, c_minute, c_seconds)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewFromTimevalLocal is a wrapper around the C function g_date_time_new_from_timeval_local.
+func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
+	c_tv := (*C.GTimeVal)(C.NULL)
+	if tv != nil {
+		c_tv = (*C.GTimeVal)(tv.ToC())
+	}
+
+	retC := C.g_date_time_new_from_timeval_local(c_tv)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewFromTimevalUtc is a wrapper around the C function g_date_time_new_from_timeval_utc.
+func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
+	c_tv := (*C.GTimeVal)(C.NULL)
+	if tv != nil {
+		c_tv = (*C.GTimeVal)(tv.ToC())
+	}
+
+	retC := C.g_date_time_new_from_timeval_utc(c_tv)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewFromUnixLocal is a wrapper around the C function g_date_time_new_from_unix_local.
+func DateTimeNewFromUnixLocal(t int64) *DateTime {
+	c_t := (C.gint64)(t)
+
+	retC := C.g_date_time_new_from_unix_local(c_t)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewFromUnixUtc is a wrapper around the C function g_date_time_new_from_unix_utc.
+func DateTimeNewFromUnixUtc(t int64) *DateTime {
+	c_t := (C.gint64)(t)
+
+	retC := C.g_date_time_new_from_unix_utc(c_t)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewLocal is a wrapper around the C function g_date_time_new_local.
+func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
+	c_year := (C.gint)(year)
+
+	c_month := (C.gint)(month)
+
+	c_day := (C.gint)(day)
+
+	c_hour := (C.gint)(hour)
+
+	c_minute := (C.gint)(minute)
+
+	c_seconds := (C.gdouble)(seconds)
+
+	retC := C.g_date_time_new_local(c_year, c_month, c_day, c_hour, c_minute, c_seconds)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewNow is a wrapper around the C function g_date_time_new_now.
+func DateTimeNewNow(tz *TimeZone) *DateTime {
+	c_tz := (*C.GTimeZone)(C.NULL)
+	if tz != nil {
+		c_tz = (*C.GTimeZone)(tz.ToC())
+	}
+
+	retC := C.g_date_time_new_now(c_tz)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewNowLocal is a wrapper around the C function g_date_time_new_now_local.
+func DateTimeNewNowLocal() *DateTime {
+	retC := C.g_date_time_new_now_local()
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewNowUtc is a wrapper around the C function g_date_time_new_now_utc.
+func DateTimeNewNowUtc() *DateTime {
+	retC := C.g_date_time_new_now_utc()
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateTimeNewUtc is a wrapper around the C function g_date_time_new_utc.
+func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
+	c_year := (C.gint)(year)
+
+	c_month := (C.gint)(month)
+
+	c_day := (C.gint)(day)
+
+	c_hour := (C.gint)(hour)
+
+	c_minute := (C.gint)(minute)
+
+	c_seconds := (C.gdouble)(seconds)
+
+	retC := C.g_date_time_new_utc(c_year, c_month, c_day, c_hour, c_minute, c_seconds)
+	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // TimeZone is a wrapper around the C record GTimeZone.
 type TimeZone struct {
 	native *C.GTimeZone
@@ -60,4 +200,68 @@ func TimeZoneNewFromC(u unsafe.Pointer) *TimeZone {
 func (recv *TimeZone) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// TimeZoneNew is a wrapper around the C function g_time_zone_new.
+func TimeZoneNew(identifier string) *TimeZone {
+	c_identifier := C.CString(identifier)
+	defer C.free(unsafe.Pointer(c_identifier))
+
+	retC := C.g_time_zone_new(c_identifier)
+	retGo := TimeZoneNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TimeZoneNewLocal is a wrapper around the C function g_time_zone_new_local.
+func TimeZoneNewLocal() *TimeZone {
+	retC := C.g_time_zone_new_local()
+	retGo := TimeZoneNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TimeZoneNewUtc is a wrapper around the C function g_time_zone_new_utc.
+func TimeZoneNewUtc() *TimeZone {
+	retC := C.g_time_zone_new_utc()
+	retGo := TimeZoneNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantNewBytestring is a wrapper around the C function g_variant_new_bytestring.
+func VariantNewBytestring(string_ []uint8) *Variant {
+	c_string_array := make([]C.guint8, len(string_)+1, len(string_)+1)
+	for i, item := range string_ {
+		c := (C.guint8)(item)
+		c_string_array[i] = c
+	}
+	c_string_array[len(string_)] = 0
+	c_string_arrayPtr := &c_string_array[0]
+	c_string := (*C.gchar)(unsafe.Pointer(c_string_arrayPtr))
+
+	retC := C.g_variant_new_bytestring(c_string)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantNewBytestringArray is a wrapper around the C function g_variant_new_bytestring_array.
+func VariantNewBytestringArray(strv []string) *Variant {
+	c_strv_array := make([]*C.gchar, len(strv)+1, len(strv)+1)
+	for i, item := range strv {
+		c := C.CString(item)
+		defer C.free(unsafe.Pointer(c))
+		c_strv_array[i] = c
+	}
+	c_strv_array[len(strv)] = nil
+	c_strv_arrayPtr := &c_strv_array[0]
+	c_strv := (**C.gchar)(unsafe.Pointer(c_strv_arrayPtr))
+
+	c_length := (C.gssize)(len(strv))
+
+	retC := C.g_variant_new_bytestring_array(c_strv, c_length)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }

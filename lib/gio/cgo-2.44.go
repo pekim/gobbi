@@ -4,6 +4,7 @@
 package gio
 
 import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"unsafe"
 )
@@ -25,6 +26,34 @@ import (
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
+
+// ListStoreNew is a wrapper around the C function g_list_store_new.
+func ListStoreNew(itemType gobject.Type) *ListStore {
+	c_item_type := (C.GType)(itemType)
+
+	retC := C.g_list_store_new(c_item_type)
+	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// NetworkAddressNewLoopback is a wrapper around the C function g_network_address_new_loopback.
+func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
+	c_port := (C.guint16)(port)
+
+	retC := C.g_network_address_new_loopback(c_port)
+	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // SimpleIOStream is a wrapper around the C record GSimpleIOStream.
 type SimpleIOStream struct {
@@ -55,6 +84,28 @@ func SimpleIOStreamNewFromC(u unsafe.Pointer) *SimpleIOStream {
 func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
+func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
+	c_input_stream := (*C.GInputStream)(C.NULL)
+	if inputStream != nil {
+		c_input_stream = (*C.GInputStream)(inputStream.ToC())
+	}
+
+	c_output_stream := (*C.GOutputStream)(C.NULL)
+	if outputStream != nil {
+		c_output_stream = (*C.GOutputStream)(outputStream.ToC())
+	}
+
+	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
+	retGo := SimpleIOStreamNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // ListModelInterface is a wrapper around the C record GListModelInterface.

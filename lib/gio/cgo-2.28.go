@@ -4,6 +4,7 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	"runtime"
 	"unsafe"
 )
@@ -58,6 +59,68 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ApplicationNew is a wrapper around the C function g_application_new.
+func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
+	c_application_id := C.CString(applicationId)
+	defer C.free(unsafe.Pointer(c_application_id))
+
+	c_flags := (C.GApplicationFlags)(flags)
+
+	retC := C.g_application_new(c_application_id, c_flags)
+	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SimpleActionNew is a wrapper around the C function g_simple_action_new.
+func SimpleActionNew(name string, parameterType *glib.VariantType) *SimpleAction {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_parameter_type := (*C.GVariantType)(C.NULL)
+	if parameterType != nil {
+		c_parameter_type = (*C.GVariantType)(parameterType.ToC())
+	}
+
+	retC := C.g_simple_action_new(c_name, c_parameter_type)
+	retGo := SimpleActionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SimpleActionNewStateful is a wrapper around the C function g_simple_action_new_stateful.
+func SimpleActionNewStateful(name string, parameterType *glib.VariantType, state *glib.Variant) *SimpleAction {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_parameter_type := (*C.GVariantType)(C.NULL)
+	if parameterType != nil {
+		c_parameter_type = (*C.GVariantType)(parameterType.ToC())
+	}
+
+	c_state := (*C.GVariant)(C.NULL)
+	if state != nil {
+		c_state = (*C.GVariant)(state.ToC())
+	}
+
+	retC := C.g_simple_action_new_stateful(c_name, c_parameter_type, c_state)
+	retGo := SimpleActionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // SimpleActionGroup is a wrapper around the C record GSimpleActionGroup.
 type SimpleActionGroup struct {
 	native *C.GSimpleActionGroup
@@ -91,6 +154,42 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
+func SimpleActionGroupNew() *SimpleActionGroup {
+	retC := C.g_simple_action_group_new()
+	retGo := SimpleActionGroupNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
+func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
+	c_base_io_stream := (*C.GIOStream)(C.NULL)
+	if baseIoStream != nil {
+		c_base_io_stream = (*C.GIOStream)(baseIoStream.ToC())
+	}
+
+	c_socket := (*C.GSocket)(C.NULL)
+	if socket != nil {
+		c_socket = (*C.GSocket)(socket.ToC())
+	}
+
+	retC := C.g_tcp_wrapper_connection_new(c_base_io_stream, c_socket)
+	retGo := TcpWrapperConnectionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
 	native *C.GTlsCertificate
@@ -122,6 +221,86 @@ func TlsCertificateNewFromC(u unsafe.Pointer) *TlsCertificate {
 func (recv *TlsCertificate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// TlsCertificateNewFromFile is a wrapper around the C function g_tls_certificate_new_from_file.
+func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_certificate_new_from_file(c_file, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// TlsCertificateNewFromFiles is a wrapper around the C function g_tls_certificate_new_from_files.
+func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificate, error) {
+	c_cert_file := C.CString(certFile)
+	defer C.free(unsafe.Pointer(c_cert_file))
+
+	c_key_file := C.CString(keyFile)
+	defer C.free(unsafe.Pointer(c_key_file))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_certificate_new_from_files(c_cert_file, c_key_file, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// TlsCertificateNewFromPem is a wrapper around the C function g_tls_certificate_new_from_pem.
+func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
+	c_data := C.CString(data)
+	defer C.free(unsafe.Pointer(c_data))
+
+	c_length := (C.gssize)(len(data))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_certificate_new_from_pem(c_data, c_length, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
 }
 
 // TlsConnection is a wrapper around the C record GTlsConnection.

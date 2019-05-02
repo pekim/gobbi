@@ -10,11 +10,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk-pixbuf/gdk-pixbuf.h>
-// #include <stdlib.h>
 /*
 
 	void pixbufloader_areaPreparedHandler(GObject *, gpointer);
@@ -67,114 +62,6 @@ func (recv *Pixbuf) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Pixbuf.
 func CastToPixbuf(object *gobject.Object) *Pixbuf {
 	return PixbufNewFromC(object.ToC())
-}
-
-// PixbufNew is a wrapper around the C function gdk_pixbuf_new.
-func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32) *Pixbuf {
-	c_colorspace := (C.GdkColorspace)(colorspace)
-
-	c_has_alpha :=
-		boolToGboolean(hasAlpha)
-
-	c_bits_per_sample := (C.int)(bitsPerSample)
-
-	c_width := (C.int)(width)
-
-	c_height := (C.int)(height)
-
-	retC := C.gdk_pixbuf_new(c_colorspace, c_has_alpha, c_bits_per_sample, c_width, c_height)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
-
-// PixbufNewFromFile is a wrapper around the C function gdk_pixbuf_new_from_file.
-func PixbufNewFromFile(filename string) (*Pixbuf, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_new_from_file(c_filename, &cThrowableError)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PixbufNewFromInline is a wrapper around the C function gdk_pixbuf_new_from_inline.
-func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
-	c_data_length := (C.gint)(len(data))
-
-	c_data_array := make([]C.guint8, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := (C.guint8)(item)
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = 0
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (*C.guint8)(unsafe.Pointer(c_data_arrayPtr))
-
-	c_copy_pixels :=
-		boolToGboolean(copyPixels)
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_new_from_inline(c_data_length, c_data, c_copy_pixels, &cThrowableError)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
-// PixbufNewFromXpmData is a wrapper around the C function gdk_pixbuf_new_from_xpm_data.
-func PixbufNewFromXpmData(data []string) *Pixbuf {
-	c_data_array := make([]*C.char, len(data)+1, len(data)+1)
-	for i, item := range data {
-		c := C.CString(item)
-		defer C.free(unsafe.Pointer(c))
-		c_data_array[i] = c
-	}
-	c_data_array[len(data)] = nil
-	c_data_arrayPtr := &c_data_array[0]
-	c_data := (**C.char)(unsafe.Pointer(c_data_arrayPtr))
-
-	retC := C.gdk_pixbuf_new_from_xpm_data(c_data)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // gdk_pixbuf_from_pixdata : unsupported parameter pixdata : Blacklisted record : GdkPixdata
@@ -565,31 +452,6 @@ func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
 	return PixbufAnimationNewFromC(object.ToC())
 }
 
-// PixbufAnimationNewFromFile is a wrapper around the C function gdk_pixbuf_animation_new_from_file.
-func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_animation_new_from_file(c_filename, &cThrowableError)
-	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
 // GetHeight is a wrapper around the C function gdk_pixbuf_animation_get_height.
 func (recv *PixbufAnimation) GetHeight() int32 {
 	retC := C.gdk_pixbuf_animation_get_height((*C.GdkPixbufAnimation)(recv.native))
@@ -969,43 +831,6 @@ func pixbufloader_sizePreparedHandler(_ *C.GObject, c_width C.gint, c_height C.g
 	index := int(uintptr(data))
 	callback := signalPixbufLoaderSizePreparedMap[index].callback
 	callback(width, height)
-}
-
-// PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
-func PixbufLoaderNew() *PixbufLoader {
-	retC := C.gdk_pixbuf_loader_new()
-	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
-// PixbufLoaderNewWithType is a wrapper around the C function gdk_pixbuf_loader_new_with_type.
-func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
-	c_image_type := C.CString(imageType)
-	defer C.free(unsafe.Pointer(c_image_type))
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_loader_new_with_type(c_image_type, &cThrowableError)
-	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
 }
 
 // Close is a wrapper around the C function gdk_pixbuf_loader_close.

@@ -11,13 +11,6 @@ import (
 	"unsafe"
 )
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
 /*
 
 	void levelbar_offsetChangedHandler(GObject *, gchar*, gpointer);
@@ -257,26 +250,6 @@ func levelbar_offsetChangedHandler(_ *C.GObject, c_name *C.gchar, data C.gpointe
 	callback(name)
 }
 
-// LevelBarNew is a wrapper around the C function gtk_level_bar_new.
-func LevelBarNew() *LevelBar {
-	retC := C.gtk_level_bar_new()
-	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LevelBarNewForInterval is a wrapper around the C function gtk_level_bar_new_for_interval.
-func LevelBarNewForInterval(minValue float64, maxValue float64) *LevelBar {
-	c_min_value := (C.gdouble)(minValue)
-
-	c_max_value := (C.gdouble)(maxValue)
-
-	retC := C.gtk_level_bar_new_for_interval(c_min_value, c_max_value)
-	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // AddOffsetValue is a wrapper around the C function gtk_level_bar_add_offset_value.
 func (recv *LevelBar) AddOffsetValue(name string, value float64) {
 	c_name := C.CString(name)
@@ -380,14 +353,6 @@ func (recv *LevelBar) SetValue(value float64) {
 	C.gtk_level_bar_set_value((*C.GtkLevelBar)(recv.native), c_value)
 
 	return
-}
-
-// MenuButtonNew is a wrapper around the C function gtk_menu_button_new.
-func MenuButtonNew() *MenuButton {
-	retC := C.gtk_menu_button_new()
-	retGo := MenuButtonNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetAlignWidget is a wrapper around the C function gtk_menu_button_get_align_widget.
@@ -498,14 +463,6 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 	C.gtk_menu_shell_bind_model((*C.GtkMenuShell)(recv.native), c_model, c_action_namespace, c_with_separators)
 
 	return
-}
-
-// SearchEntryNew is a wrapper around the C function gtk_search_entry_new.
-func SearchEntryNew() *SearchEntry {
-	retC := C.gtk_search_entry_new()
-	retGo := SearchEntryNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // GetInputHints is a wrapper around the C function gtk_text_view_get_input_hints.

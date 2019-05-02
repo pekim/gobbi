@@ -3,6 +3,7 @@
 package gdk
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -10,13 +11,6 @@ import (
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gdk/gdk.h>
-// #include <stdlib.h>
-import "C"
 
 // AddOptionEntriesLibgtkOnly is a wrapper around the C function gdk_add_option_entries_libgtk_only.
 func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {

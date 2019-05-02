@@ -36,3 +36,16 @@ func (recv *VariantDict) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// VariantDictNew is a wrapper around the C function g_variant_dict_new.
+func VariantDictNew(fromAsv *Variant) *VariantDict {
+	c_from_asv := (*C.GVariant)(C.NULL)
+	if fromAsv != nil {
+		c_from_asv = (*C.GVariant)(fromAsv.ToC())
+	}
+
+	retC := C.g_variant_dict_new(c_from_asv)
+	retGo := VariantDictNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

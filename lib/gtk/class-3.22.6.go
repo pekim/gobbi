@@ -3,16 +3,10 @@
 
 package gtk
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // GetChildAtPos is a wrapper around the C function gtk_flow_box_get_child_at_pos.
 func (recv *FlowBox) GetChildAtPos(x int32, y int32) *FlowBoxChild {

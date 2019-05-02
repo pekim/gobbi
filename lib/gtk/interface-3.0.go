@@ -4,19 +4,11 @@
 package gtk
 
 import (
+	"C"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
 
 // GetAppInfo is a wrapper around the C function gtk_app_chooser_get_app_info.
 func (recv *AppChooser) GetAppInfo() *gio.AppInfo {

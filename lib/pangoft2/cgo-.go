@@ -45,6 +45,18 @@ func (recv *FontMap) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// FontMapNew is a wrapper around the C function pango_ft2_font_map_new.
+func FontMapNew() *FontMap {
+	retC := C.pango_ft2_font_map_new()
+	retGo := FontMapNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // Unsupported : pango_ft2_render : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
 
 // Unsupported : pango_ft2_render_transformed : unsupported parameter glyphs : Blacklisted record : PangoGlyphString

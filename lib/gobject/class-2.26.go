@@ -3,14 +3,10 @@
 
 package gobject
 
-import "unsafe"
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
+import (
+	"C"
+	"unsafe"
+)
 
 // Equals compares this Binding with another Binding, and returns true if they represent the same GObject.
 func (recv *Binding) Equals(other *Binding) bool {

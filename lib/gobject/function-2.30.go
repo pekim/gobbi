@@ -3,11 +3,4 @@
 
 package gobject
 
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <glib-object.h>
-// #include <stdlib.h>
-import "C"
-
 // Unsupported : g_cclosure_marshal_generic : unsupported parameter invocation_hint : no type generator for gpointer (gpointer) for param invocation_hint

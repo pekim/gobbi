@@ -4,17 +4,11 @@
 package pangocairo
 
 import (
+	"C"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pangocairo.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this Font with another Font, and returns true if they represent the same GObject.
 func (recv *Font) Equals(other *Font) bool {

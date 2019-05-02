@@ -4,69 +4,12 @@
 package gtk
 
 import (
+	"C"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <gtk/gtk-a11y.h>
-// #include <gtk/gtk.h>
-// #include <gtk/gtkx.h>
-// #include <stdlib.h>
-import "C"
-
-// PaperSizeNew is a wrapper around the C function gtk_paper_size_new.
-func PaperSizeNew(name string) *PaperSize {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gtk_paper_size_new(c_name)
-	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PaperSizeNewCustom is a wrapper around the C function gtk_paper_size_new_custom.
-func PaperSizeNewCustom(name string, displayName string, width float64, height float64, unit Unit) *PaperSize {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_display_name := C.CString(displayName)
-	defer C.free(unsafe.Pointer(c_display_name))
-
-	c_width := (C.gdouble)(width)
-
-	c_height := (C.gdouble)(height)
-
-	c_unit := (C.GtkUnit)(unit)
-
-	retC := C.gtk_paper_size_new_custom(c_name, c_display_name, c_width, c_height, c_unit)
-	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// PaperSizeNewFromPpd is a wrapper around the C function gtk_paper_size_new_from_ppd.
-func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, height float64) *PaperSize {
-	c_ppd_name := C.CString(ppdName)
-	defer C.free(unsafe.Pointer(c_ppd_name))
-
-	c_ppd_display_name := C.CString(ppdDisplayName)
-	defer C.free(unsafe.Pointer(c_ppd_display_name))
-
-	c_width := (C.gdouble)(width)
-
-	c_height := (C.gdouble)(height)
-
-	retC := C.gtk_paper_size_new_from_ppd(c_ppd_name, c_ppd_display_name, c_width, c_height)
-	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // PaperSizeGetDefault is a wrapper around the C function gtk_paper_size_get_default.
 func PaperSizeGetDefault() string {

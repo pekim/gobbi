@@ -3,17 +3,11 @@
 package pangoft2
 
 import (
+	"C"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
-
-// #cgo CFLAGS: -Wno-deprecated-declarations
-// #cgo CFLAGS: -Wno-format-security
-// #cgo CFLAGS: -Wno-incompatible-pointer-types
-// #include <pango/pangoft2.h>
-// #include <stdlib.h>
-import "C"
 
 // Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
 func (recv *FontMap) Equals(other *FontMap) bool {
@@ -34,18 +28,6 @@ func (recv *FontMap) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontMap.
 func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromC(object.ToC())
-}
-
-// FontMapNew is a wrapper around the C function pango_ft2_font_map_new.
-func FontMapNew() *FontMap {
-	retC := C.pango_ft2_font_map_new()
-	retGo := FontMapNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // FontMapForDisplay is a wrapper around the C function pango_ft2_font_map_for_display.

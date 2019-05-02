@@ -45,6 +45,18 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ContextNew is a wrapper around the C function pango_context_new.
+func ContextNew() *Context {
+	retC := C.pango_context_new()
+	retGo := ContextNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // Blacklisted : PangoEngine
 
 // EngineLang is a wrapper around the C record PangoEngineLang.
@@ -302,6 +314,23 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 func (recv *Layout) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// LayoutNew is a wrapper around the C function pango_layout_new.
+func LayoutNew(context *Context) *Layout {
+	c_context := (*C.PangoContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.PangoContext)(context.ToC())
+	}
+
+	retC := C.pango_layout_new(c_context)
+	retGo := LayoutNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Blacklisted : ENGINE_TYPE_LANG
@@ -599,6 +628,14 @@ func (recv *AttrList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// AttrListNew is a wrapper around the C function pango_attr_list_new.
+func AttrListNew() *AttrList {
+	retC := C.pango_attr_list_new()
+	retGo := AttrListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AttrShape is a wrapper around the C record PangoAttrShape.
 type AttrShape struct {
 	native *C.PangoAttrShape
@@ -825,6 +862,14 @@ func (recv *FontDescription) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// FontDescriptionNew is a wrapper around the C function pango_font_description_new.
+func FontDescriptionNew() *FontDescription {
+	retC := C.pango_font_description_new()
+	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Blacklisted : PangoFontFaceClass
 
 // Blacklisted : PangoFontFamilyClass
@@ -860,6 +905,8 @@ func (recv *FontMetrics) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Blacklisted : pango_font_metrics_new
 
 // Blacklisted : PangoFontsetClass
 
@@ -1012,6 +1059,14 @@ func (recv *Item) ToC() unsafe.Pointer {
 		(C.gint)(recv.NumChars)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// ItemNew is a wrapper around the C function pango_item_new.
+func ItemNew() *Item {
+	retC := C.pango_item_new()
+	retGo := ItemNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Language is a wrapper around the C record PangoLanguage.
@@ -1234,3 +1289,18 @@ func (recv *TabArray) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// TabArrayNew is a wrapper around the C function pango_tab_array_new.
+func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
+	c_initial_size := (C.gint)(initialSize)
+
+	c_positions_in_pixels :=
+		boolToGboolean(positionsInPixels)
+
+	retC := C.pango_tab_array_new(c_initial_size, c_positions_in_pixels)
+	retGo := TabArrayNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

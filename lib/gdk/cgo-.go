@@ -78,6 +78,20 @@ func (recv *Cursor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// CursorNew is a wrapper around the C function gdk_cursor_new.
+func CursorNew(cursorType CursorType) *Cursor {
+	c_cursor_type := (C.GdkCursorType)(cursorType)
+
+	retC := C.gdk_cursor_new(c_cursor_type)
+	retGo := CursorNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
 // Device is a wrapper around the C record GdkDevice.
 type Device struct {
 	native *C.GdkDevice
@@ -417,6 +431,30 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// WindowNew is a wrapper around the C function gdk_window_new.
+func WindowNew(parent *Window, attributes *WindowAttr, attributesMask WindowAttributesType) *Window {
+	c_parent := (*C.GdkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GdkWindow)(parent.ToC())
+	}
+
+	c_attributes := (*C.GdkWindowAttr)(C.NULL)
+	if attributes != nil {
+		c_attributes = (*C.GdkWindowAttr)(attributes.ToC())
+	}
+
+	c_attributes_mask := (C.gint)(attributesMask)
+
+	retC := C.gdk_window_new(c_parent, c_attributes, c_attributes_mask)
+	retGo := WindowNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
 }
 
 // Blacklisted : gdk_atom_intern
