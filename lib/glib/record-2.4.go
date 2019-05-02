@@ -18,34 +18,6 @@ import "C"
 // g_hash_table_find : unsupported parameter predicate : no type generator for HRFunc (GHRFunc) for param predicate
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
-// Once is a wrapper around the C record GOnce.
-type Once struct {
-	native *C.GOnce
-	Status OnceStatus
-	// retval : no type generator for gpointer, volatile gpointer
-}
-
-func OnceNewFromC(u unsafe.Pointer) *Once {
-	c := (*C.GOnce)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Once{
-		Status: (OnceStatus)(c.status),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *Once) ToC() unsafe.Pointer {
-	recv.native.status =
-		(C.GOnceStatus)(recv.Status)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Once with another Once, and returns true if they represent the same GObject.
 func (recv *Once) Equals(other *Once) bool {
 	return other.ToC() == recv.ToC()

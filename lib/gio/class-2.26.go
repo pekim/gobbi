@@ -7,7 +7,6 @@ import (
 	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -88,37 +87,6 @@ import (
     }
 */
 import "C"
-
-// Credentials is a wrapper around the C record GCredentials.
-type Credentials struct {
-	native *C.GCredentials
-}
-
-func CredentialsNewFromC(u unsafe.Pointer) *Credentials {
-	c := (*C.GCredentials)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Credentials{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Credentials) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Credentials) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Credentials with another Credentials, and returns true if they represent the same GObject.
 func (recv *Credentials) Equals(other *Credentials) bool {
@@ -220,37 +188,6 @@ func (recv *Credentials) ToString() string {
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// DBusAuthObserver is a wrapper around the C record GDBusAuthObserver.
-type DBusAuthObserver struct {
-	native *C.GDBusAuthObserver
-}
-
-func DBusAuthObserverNewFromC(u unsafe.Pointer) *DBusAuthObserver {
-	c := (*C.GDBusAuthObserver)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusAuthObserver{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusAuthObserver) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusAuthObserver with another DBusAuthObserver, and returns true if they represent the same GObject.
@@ -364,37 +301,6 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// DBusConnection is a wrapper around the C record GDBusConnection.
-type DBusConnection struct {
-	native *C.GDBusConnection
-}
-
-func DBusConnectionNewFromC(u unsafe.Pointer) *DBusConnection {
-	c := (*C.GDBusConnection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusConnection{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusConnection) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusConnection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusConnection with another DBusConnection, and returns true if they represent the same GObject.
@@ -1013,37 +919,6 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	return retGo
 }
 
-// DBusMessage is a wrapper around the C record GDBusMessage.
-type DBusMessage struct {
-	native *C.GDBusMessage
-}
-
-func DBusMessageNewFromC(u unsafe.Pointer) *DBusMessage {
-	c := (*C.GDBusMessage)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusMessage{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusMessage) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusMessage) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusMessage with another DBusMessage, and returns true if they represent the same GObject.
 func (recv *DBusMessage) Equals(other *DBusMessage) bool {
 	return other.ToC() == recv.ToC()
@@ -1586,37 +1461,6 @@ func (recv *DBusMessage) ToGerror() (bool, error) {
 	return retGo, goError
 }
 
-// DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
-type DBusMethodInvocation struct {
-	native *C.GDBusMethodInvocation
-}
-
-func DBusMethodInvocationNewFromC(u unsafe.Pointer) *DBusMethodInvocation {
-	c := (*C.GDBusMethodInvocation)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusMethodInvocation{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusMethodInvocation) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusMethodInvocation with another DBusMethodInvocation, and returns true if they represent the same GObject.
 func (recv *DBusMethodInvocation) Equals(other *DBusMethodInvocation) bool {
 	return other.ToC() == recv.ToC()
@@ -1765,39 +1609,6 @@ func (recv *DBusMethodInvocation) ReturnValue(parameters *glib.Variant) {
 	C.g_dbus_method_invocation_return_value((*C.GDBusMethodInvocation)(recv.native), c_parameters)
 
 	return
-}
-
-// DBusProxy is a wrapper around the C record GDBusProxy.
-type DBusProxy struct {
-	native *C.GDBusProxy
-	// Private : parent_instance
-	// Private : priv
-}
-
-func DBusProxyNewFromC(u unsafe.Pointer) *DBusProxy {
-	c := (*C.GDBusProxy)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusProxy{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusProxy) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusProxy) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusProxy with another DBusProxy, and returns true if they represent the same GObject.
@@ -2219,37 +2030,6 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	return
 }
 
-// DBusServer is a wrapper around the C record GDBusServer.
-type DBusServer struct {
-	native *C.GDBusServer
-}
-
-func DBusServerNewFromC(u unsafe.Pointer) *DBusServer {
-	c := (*C.GDBusServer)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusServer{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusServer) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusServer) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusServer with another DBusServer, and returns true if they represent the same GObject.
 func (recv *DBusServer) Equals(other *DBusServer) bool {
 	return other.ToC() == recv.ToC()
@@ -2631,39 +2411,6 @@ func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 	}
 
 	return retGo, goError
-}
-
-// ProxyAddress is a wrapper around the C record GProxyAddress.
-type ProxyAddress struct {
-	native *C.GProxyAddress
-	// parent_instance : record
-	// Private : priv
-}
-
-func ProxyAddressNewFromC(u unsafe.Pointer) *ProxyAddress {
-	c := (*C.GProxyAddress)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ProxyAddress{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ProxyAddress) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ProxyAddress) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ProxyAddress with another ProxyAddress, and returns true if they represent the same GObject.
@@ -3428,39 +3175,6 @@ func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, err
 	}
 
 	return retGo, goError
-}
-
-// UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.
-type UnixCredentialsMessage struct {
-	native *C.GUnixCredentialsMessage
-	// parent_instance : record
-	// priv : record
-}
-
-func UnixCredentialsMessageNewFromC(u unsafe.Pointer) *UnixCredentialsMessage {
-	c := (*C.GUnixCredentialsMessage)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixCredentialsMessage{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *UnixCredentialsMessage) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixCredentialsMessage with another UnixCredentialsMessage, and returns true if they represent the same GObject.

@@ -33,27 +33,6 @@ func (recv *AppInfo) GetDisplayName() string {
 	return retGo
 }
 
-// Converter is a wrapper around the C record GConverter.
-type Converter struct {
-	native *C.GConverter
-}
-
-func ConverterNewFromC(u unsafe.Pointer) *Converter {
-	c := (*C.GConverter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Converter{native: c}
-
-	return g
-}
-
-func (recv *Converter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Converter with another Converter, and returns true if they represent the same GObject.
 func (recv *Converter) Equals(other *Converter) bool {
 	return other.ToC() == recv.ToC()

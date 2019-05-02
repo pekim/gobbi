@@ -6,7 +6,6 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -140,37 +139,6 @@ func (recv *Device) GetAxes() AxisFlags {
 	retGo := (AxisFlags)(retC)
 
 	return retGo
-}
-
-// DeviceTool is a wrapper around the C record GdkDeviceTool.
-type DeviceTool struct {
-	native *C.GdkDeviceTool
-}
-
-func DeviceToolNewFromC(u unsafe.Pointer) *DeviceTool {
-	c := (*C.GdkDeviceTool)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DeviceTool{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DeviceTool) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DeviceTool) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DeviceTool with another DeviceTool, and returns true if they represent the same GObject.
@@ -398,37 +366,6 @@ func (recv *Display) GetPrimaryMonitor() *Monitor {
 	return retGo
 }
 
-// DrawingContext is a wrapper around the C record GdkDrawingContext.
-type DrawingContext struct {
-	native *C.GdkDrawingContext
-}
-
-func DrawingContextNewFromC(u unsafe.Pointer) *DrawingContext {
-	c := (*C.GdkDrawingContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DrawingContext{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DrawingContext) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DrawingContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DrawingContext with another DrawingContext, and returns true if they represent the same GObject.
 func (recv *DrawingContext) Equals(other *DrawingContext) bool {
 	return other.ToC() == recv.ToC()
@@ -497,37 +434,6 @@ func (recv *GLContext) SetUseEs(useEs int32) {
 	C.gdk_gl_context_set_use_es((*C.GdkGLContext)(recv.native), c_use_es)
 
 	return
-}
-
-// Monitor is a wrapper around the C record GdkMonitor.
-type Monitor struct {
-	native *C.GdkMonitor
-}
-
-func MonitorNewFromC(u unsafe.Pointer) *Monitor {
-	c := (*C.GdkMonitor)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Monitor{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Monitor) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Monitor) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Monitor with another Monitor, and returns true if they represent the same GObject.
@@ -698,38 +604,6 @@ func (recv *Monitor) IsPrimary() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// Seat is a wrapper around the C record GdkSeat.
-type Seat struct {
-	native *C.GdkSeat
-	// parent_instance : record
-}
-
-func SeatNewFromC(u unsafe.Pointer) *Seat {
-	c := (*C.GdkSeat)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Seat{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Seat) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Seat) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Seat with another Seat, and returns true if they represent the same GObject.

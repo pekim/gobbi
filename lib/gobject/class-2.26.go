@@ -3,10 +3,7 @@
 
 package gobject
 
-import (
-	"runtime"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -14,37 +11,6 @@ import (
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-
-// Binding is a wrapper around the C record GBinding.
-type Binding struct {
-	native *C.GBinding
-}
-
-func BindingNewFromC(u unsafe.Pointer) *Binding {
-	c := (*C.GBinding)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Binding{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Binding) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Binding) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Binding with another Binding, and returns true if they represent the same GObject.
 func (recv *Binding) Equals(other *Binding) bool {
@@ -166,31 +132,6 @@ func (recv *Object) NotifyByPspec(pspec *ParamSpec) {
 	C.g_object_notify_by_pspec((*C.GObject)(recv.native), c_pspec)
 
 	return
-}
-
-// ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
-type ParamSpecVariant struct {
-	native *C.GParamSpecVariant
-	// parent_instance : record
-	// _type : record
-	// default_value : record
-	// Private : padding
-}
-
-func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
-	c := (*C.GParamSpecVariant)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ParamSpecVariant{native: c}
-
-	return g
-}
-
-func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ParamSpecVariant with another ParamSpecVariant, and returns true if they represent the same GObject.

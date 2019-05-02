@@ -187,27 +187,6 @@ import (
 */
 import "C"
 
-// Action is a wrapper around the C record AtkAction.
-type Action struct {
-	native *C.AtkAction
-}
-
-func ActionNewFromC(u unsafe.Pointer) *Action {
-	c := (*C.AtkAction)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Action{native: c}
-
-	return g
-}
-
-func (recv *Action) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Action with another Action, and returns true if they represent the same GObject.
 func (recv *Action) Equals(other *Action) bool {
 	return other.ToC() == recv.ToC()
@@ -282,27 +261,6 @@ func (recv *Action) SetDescription(i int32, desc string) bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// Component is a wrapper around the C record AtkComponent.
-type Component struct {
-	native *C.AtkComponent
-}
-
-func ComponentNewFromC(u unsafe.Pointer) *Component {
-	c := (*C.AtkComponent)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Component{native: c}
-
-	return g
-}
-
-func (recv *Component) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Component with another Component, and returns true if they represent the same GObject.
@@ -541,27 +499,6 @@ func (recv *Component) SetSize(width int32, height int32) bool {
 	return retGo
 }
 
-// Document is a wrapper around the C record AtkDocument.
-type Document struct {
-	native *C.AtkDocument
-}
-
-func DocumentNewFromC(u unsafe.Pointer) *Document {
-	c := (*C.AtkDocument)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Document{native: c}
-
-	return g
-}
-
-func (recv *Document) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Document with another Document, and returns true if they represent the same GObject.
 func (recv *Document) Equals(other *Document) bool {
 	return other.ToC() == recv.ToC()
@@ -765,27 +702,6 @@ func (recv *Document) GetLocale() string {
 	return retGo
 }
 
-// EditableText is a wrapper around the C record AtkEditableText.
-type EditableText struct {
-	native *C.AtkEditableText
-}
-
-func EditableTextNewFromC(u unsafe.Pointer) *EditableText {
-	c := (*C.AtkEditableText)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EditableText{native: c}
-
-	return g
-}
-
-func (recv *EditableText) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this EditableText with another EditableText, and returns true if they represent the same GObject.
 func (recv *EditableText) Equals(other *EditableText) bool {
 	return other.ToC() == recv.ToC()
@@ -859,51 +775,9 @@ func (recv *EditableText) SetTextContents(string_ string) {
 	return
 }
 
-// HyperlinkImpl is a wrapper around the C record AtkHyperlinkImpl.
-type HyperlinkImpl struct {
-	native *C.AtkHyperlinkImpl
-}
-
-func HyperlinkImplNewFromC(u unsafe.Pointer) *HyperlinkImpl {
-	c := (*C.AtkHyperlinkImpl)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &HyperlinkImpl{native: c}
-
-	return g
-}
-
-func (recv *HyperlinkImpl) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this HyperlinkImpl with another HyperlinkImpl, and returns true if they represent the same GObject.
 func (recv *HyperlinkImpl) Equals(other *HyperlinkImpl) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Hypertext is a wrapper around the C record AtkHypertext.
-type Hypertext struct {
-	native *C.AtkHypertext
-}
-
-func HypertextNewFromC(u unsafe.Pointer) *Hypertext {
-	c := (*C.AtkHypertext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Hypertext{native: c}
-
-	return g
-}
-
-func (recv *Hypertext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Hypertext with another Hypertext, and returns true if they represent the same GObject.
@@ -1001,27 +875,6 @@ func (recv *Hypertext) GetNLinks() int32 {
 	return retGo
 }
 
-// Image is a wrapper around the C record AtkImage.
-type Image struct {
-	native *C.AtkImage
-}
-
-func ImageNewFromC(u unsafe.Pointer) *Image {
-	c := (*C.AtkImage)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Image{native: c}
-
-	return g
-}
-
-func (recv *Image) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Image with another Image, and returns true if they represent the same GObject.
 func (recv *Image) Equals(other *Image) bool {
 	return other.ToC() == recv.ToC()
@@ -1078,51 +931,9 @@ func (recv *Image) SetImageDescription(description string) bool {
 	return retGo
 }
 
-// ImplementorIface is a wrapper around the C record AtkImplementorIface.
-type ImplementorIface struct {
-	native *C.AtkImplementorIface
-}
-
-func ImplementorIfaceNewFromC(u unsafe.Pointer) *ImplementorIface {
-	c := (*C.AtkImplementorIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ImplementorIface{native: c}
-
-	return g
-}
-
-func (recv *ImplementorIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ImplementorIface with another ImplementorIface, and returns true if they represent the same GObject.
 func (recv *ImplementorIface) Equals(other *ImplementorIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Selection is a wrapper around the C record AtkSelection.
-type Selection struct {
-	native *C.AtkSelection
-}
-
-func SelectionNewFromC(u unsafe.Pointer) *Selection {
-	c := (*C.AtkSelection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Selection{native: c}
-
-	return g
-}
-
-func (recv *Selection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Selection with another Selection, and returns true if they represent the same GObject.
@@ -1259,27 +1070,6 @@ func (recv *Selection) SelectAllSelection() bool {
 	return retGo
 }
 
-// StreamableContent is a wrapper around the C record AtkStreamableContent.
-type StreamableContent struct {
-	native *C.AtkStreamableContent
-}
-
-func StreamableContentNewFromC(u unsafe.Pointer) *StreamableContent {
-	c := (*C.AtkStreamableContent)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &StreamableContent{native: c}
-
-	return g
-}
-
-func (recv *StreamableContent) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this StreamableContent with another StreamableContent, and returns true if they represent the same GObject.
 func (recv *StreamableContent) Equals(other *StreamableContent) bool {
 	return other.ToC() == recv.ToC()
@@ -1312,27 +1102,6 @@ func (recv *StreamableContent) GetStream(mimeType string) *glib.IOChannel {
 	retGo := glib.IOChannelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// Table is a wrapper around the C record AtkTable.
-type Table struct {
-	native *C.AtkTable
-}
-
-func TableNewFromC(u unsafe.Pointer) *Table {
-	c := (*C.AtkTable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Table{native: c}
-
-	return g
-}
-
-func (recv *Table) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Table with another Table, and returns true if they represent the same GObject.
@@ -2083,51 +1852,9 @@ func (recv *Table) SetSummary(accessible *Object) {
 	return
 }
 
-// TableCell is a wrapper around the C record AtkTableCell.
-type TableCell struct {
-	native *C.AtkTableCell
-}
-
-func TableCellNewFromC(u unsafe.Pointer) *TableCell {
-	c := (*C.AtkTableCell)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TableCell{native: c}
-
-	return g
-}
-
-func (recv *TableCell) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TableCell with another TableCell, and returns true if they represent the same GObject.
 func (recv *TableCell) Equals(other *TableCell) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Text is a wrapper around the C record AtkText.
-type Text struct {
-	native *C.AtkText
-}
-
-func TextNewFromC(u unsafe.Pointer) *Text {
-	c := (*C.AtkText)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Text{native: c}
-
-	return g
-}
-
-func (recv *Text) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Text with another Text, and returns true if they represent the same GObject.
@@ -2733,27 +2460,6 @@ func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset 
 	return retGo
 }
 
-// Value is a wrapper around the C record AtkValue.
-type Value struct {
-	native *C.AtkValue
-}
-
-func ValueNewFromC(u unsafe.Pointer) *Value {
-	c := (*C.AtkValue)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Value{native: c}
-
-	return g
-}
-
-func (recv *Value) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Value with another Value, and returns true if they represent the same GObject.
 func (recv *Value) Equals(other *Value) bool {
 	return other.ToC() == recv.ToC()
@@ -2803,27 +2509,6 @@ func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// Window is a wrapper around the C record AtkWindow.
-type Window struct {
-	native *C.AtkWindow
-}
-
-func WindowNewFromC(u unsafe.Pointer) *Window {
-	c := (*C.AtkWindow)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Window{native: c}
-
-	return g
-}
-
-func (recv *Window) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Window with another Window, and returns true if they represent the same GObject.

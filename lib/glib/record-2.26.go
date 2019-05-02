@@ -23,27 +23,6 @@ import (
 */
 import "C"
 
-// DateTime is a wrapper around the C record GDateTime.
-type DateTime struct {
-	native *C.GDateTime
-}
-
-func DateTimeNewFromC(u unsafe.Pointer) *DateTime {
-	c := (*C.GDateTime)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DateTime{native: c}
-
-	return g
-}
-
-func (recv *DateTime) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DateTime with another DateTime, and returns true if they represent the same GObject.
 func (recv *DateTime) Equals(other *DateTime) bool {
 	return other.ToC() == recv.ToC()
@@ -627,27 +606,6 @@ func (recv *Source) SetName(name string) {
 	C.g_source_set_name((*C.GSource)(recv.native), c_name)
 
 	return
-}
-
-// TimeZone is a wrapper around the C record GTimeZone.
-type TimeZone struct {
-	native *C.GTimeZone
-}
-
-func TimeZoneNewFromC(u unsafe.Pointer) *TimeZone {
-	c := (*C.GTimeZone)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TimeZone{native: c}
-
-	return g
-}
-
-func (recv *TimeZone) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TimeZone with another TimeZone, and returns true if they represent the same GObject.

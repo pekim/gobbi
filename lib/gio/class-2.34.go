@@ -7,7 +7,6 @@ import (
 	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -474,37 +473,6 @@ func (recv *Resolver) LookupRecordsFinish(result *AsyncResult) (*glib.List, erro
 	}
 
 	return retGo, goError
-}
-
-// TestDBus is a wrapper around the C record GTestDBus.
-type TestDBus struct {
-	native *C.GTestDBus
-}
-
-func TestDBusNewFromC(u unsafe.Pointer) *TestDBus {
-	c := (*C.GTestDBus)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TestDBus{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TestDBus) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TestDBus) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TestDBus with another TestDBus, and returns true if they represent the same GObject.

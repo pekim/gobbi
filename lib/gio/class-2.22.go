@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -788,39 +787,6 @@ func (recv *Resolver) SetDefault() {
 	return
 }
 
-// Socket is a wrapper around the C record GSocket.
-type Socket struct {
-	native *C.GSocket
-	// parent_instance : record
-	// priv : record
-}
-
-func SocketNewFromC(u unsafe.Pointer) *Socket {
-	c := (*C.GSocket)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Socket{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Socket) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Socket) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
 func (recv *Socket) Equals(other *Socket) bool {
 	return other.ToC() == recv.ToC()
@@ -1400,39 +1366,6 @@ func (recv *SocketAddress) GetNativeSize() int64 {
 
 // Unsupported : g_socket_address_to_native : unsupported parameter dest : no type generator for gpointer (gpointer) for param dest
 
-// SocketClient is a wrapper around the C record GSocketClient.
-type SocketClient struct {
-	native *C.GSocketClient
-	// parent_instance : record
-	// priv : record
-}
-
-func SocketClientNewFromC(u unsafe.Pointer) *SocketClient {
-	c := (*C.GSocketClient)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketClient{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *SocketClient) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *SocketClient) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketClient with another SocketClient, and returns true if they represent the same GObject.
 func (recv *SocketClient) Equals(other *SocketClient) bool {
 	return other.ToC() == recv.ToC()
@@ -1690,39 +1623,6 @@ func (recv *SocketClient) SetSocketType(type_ SocketType) {
 	return
 }
 
-// SocketConnection is a wrapper around the C record GSocketConnection.
-type SocketConnection struct {
-	native *C.GSocketConnection
-	// parent_instance : record
-	// priv : record
-}
-
-func SocketConnectionNewFromC(u unsafe.Pointer) *SocketConnection {
-	c := (*C.GSocketConnection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketConnection{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *SocketConnection) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *SocketConnection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketConnection with another SocketConnection, and returns true if they represent the same GObject.
 func (recv *SocketConnection) Equals(other *SocketConnection) bool {
 	return other.ToC() == recv.ToC()
@@ -1865,39 +1765,6 @@ func (recv *SocketControlMessage) GetSize() uint64 {
 }
 
 // Unsupported : g_socket_control_message_serialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-
-// SocketListener is a wrapper around the C record GSocketListener.
-type SocketListener struct {
-	native *C.GSocketListener
-	// parent_instance : record
-	// priv : record
-}
-
-func SocketListenerNewFromC(u unsafe.Pointer) *SocketListener {
-	c := (*C.GSocketListener)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketListener{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *SocketListener) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *SocketListener) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this SocketListener with another SocketListener, and returns true if they represent the same GObject.
 func (recv *SocketListener) Equals(other *SocketListener) bool {
@@ -2138,39 +2005,6 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	return
 }
 
-// SocketService is a wrapper around the C record GSocketService.
-type SocketService struct {
-	native *C.GSocketService
-	// parent_instance : record
-	// priv : record
-}
-
-func SocketServiceNewFromC(u unsafe.Pointer) *SocketService {
-	c := (*C.GSocketService)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketService{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *SocketService) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *SocketService) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketService with another SocketService, and returns true if they represent the same GObject.
 func (recv *SocketService) Equals(other *SocketService) bool {
 	return other.ToC() == recv.ToC()
@@ -2293,39 +2127,6 @@ func (recv *SocketService) Stop() {
 	return
 }
 
-// TcpConnection is a wrapper around the C record GTcpConnection.
-type TcpConnection struct {
-	native *C.GTcpConnection
-	// parent_instance : record
-	// priv : record
-}
-
-func TcpConnectionNewFromC(u unsafe.Pointer) *TcpConnection {
-	c := (*C.GTcpConnection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TcpConnection{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TcpConnection) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TcpConnection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TcpConnection with another TcpConnection, and returns true if they represent the same GObject.
 func (recv *TcpConnection) Equals(other *TcpConnection) bool {
 	return other.ToC() == recv.ToC()
@@ -2368,39 +2169,6 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	C.g_tcp_connection_set_graceful_disconnect((*C.GTcpConnection)(recv.native), c_graceful_disconnect)
 
 	return
-}
-
-// ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
-type ThreadedSocketService struct {
-	native *C.GThreadedSocketService
-	// parent_instance : record
-	// priv : record
-}
-
-func ThreadedSocketServiceNewFromC(u unsafe.Pointer) *ThreadedSocketService {
-	c := (*C.GThreadedSocketService)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ThreadedSocketService{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ThreadedSocketService) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ThreadedSocketService with another ThreadedSocketService, and returns true if they represent the same GObject.

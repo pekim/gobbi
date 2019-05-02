@@ -201,27 +201,6 @@ func (recv *PaperSize) SetSize(width float64, height float64, unit Unit) {
 	return
 }
 
-// RecentInfo is a wrapper around the C record GtkRecentInfo.
-type RecentInfo struct {
-	native *C.GtkRecentInfo
-}
-
-func RecentInfoNewFromC(u unsafe.Pointer) *RecentInfo {
-	c := (*C.GtkRecentInfo)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RecentInfo{native: c}
-
-	return g
-}
-
-func (recv *RecentInfo) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this RecentInfo with another RecentInfo, and returns true if they represent the same GObject.
 func (recv *RecentInfo) Equals(other *RecentInfo) bool {
 	return other.ToC() == recv.ToC()
@@ -488,33 +467,6 @@ func (recv *RecentInfo) Unref() {
 	C.gtk_recent_info_unref((*C.GtkRecentInfo)(recv.native))
 
 	return
-}
-
-// RecentManagerClass is a wrapper around the C record GtkRecentManagerClass.
-type RecentManagerClass struct {
-	native *C.GtkRecentManagerClass
-	// Private : parent_class
-	// no type for changed
-	// no type for _gtk_recent1
-	// no type for _gtk_recent2
-	// no type for _gtk_recent3
-	// no type for _gtk_recent4
-}
-
-func RecentManagerClassNewFromC(u unsafe.Pointer) *RecentManagerClass {
-	c := (*C.GtkRecentManagerClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RecentManagerClass{native: c}
-
-	return g
-}
-
-func (recv *RecentManagerClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this RecentManagerClass with another RecentManagerClass, and returns true if they represent the same GObject.

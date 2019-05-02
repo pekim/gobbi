@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"unsafe"
 )
 
@@ -128,37 +127,6 @@ func (recv *MenuItem) SetIcon(icon *Icon) {
 	C.g_menu_item_set_icon((*C.GMenuItem)(recv.native), c_icon)
 
 	return
-}
-
-// PropertyAction is a wrapper around the C record GPropertyAction.
-type PropertyAction struct {
-	native *C.GPropertyAction
-}
-
-func PropertyActionNewFromC(u unsafe.Pointer) *PropertyAction {
-	c := (*C.GPropertyAction)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PropertyAction{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *PropertyAction) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *PropertyAction) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PropertyAction with another PropertyAction, and returns true if they represent the same GObject.

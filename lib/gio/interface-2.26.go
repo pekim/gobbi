@@ -25,27 +25,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Proxy is a wrapper around the C record GProxy.
-type Proxy struct {
-	native *C.GProxy
-}
-
-func ProxyNewFromC(u unsafe.Pointer) *Proxy {
-	c := (*C.GProxy)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Proxy{native: c}
-
-	return g
-}
-
-func (recv *Proxy) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Proxy with another Proxy, and returns true if they represent the same GObject.
 func (recv *Proxy) Equals(other *Proxy) bool {
 	return other.ToC() == recv.ToC()
@@ -123,27 +102,6 @@ func (recv *Proxy) SupportsHostname() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// ProxyResolver is a wrapper around the C record GProxyResolver.
-type ProxyResolver struct {
-	native *C.GProxyResolver
-}
-
-func ProxyResolverNewFromC(u unsafe.Pointer) *ProxyResolver {
-	c := (*C.GProxyResolver)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ProxyResolver{native: c}
-
-	return g
-}
-
-func (recv *ProxyResolver) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same GObject.

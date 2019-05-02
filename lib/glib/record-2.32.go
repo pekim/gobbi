@@ -15,27 +15,6 @@ import "unsafe"
 import "C"
 
 // g_array_set_clear_func : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
-// Bytes is a wrapper around the C record GBytes.
-type Bytes struct {
-	native *C.GBytes
-}
-
-func BytesNewFromC(u unsafe.Pointer) *Bytes {
-	c := (*C.GBytes)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Bytes{native: c}
-
-	return g
-}
-
-func (recv *Bytes) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Bytes with another Bytes, and returns true if they represent the same GObject.
 func (recv *Bytes) Equals(other *Bytes) bool {
 	return other.ToC() == recv.ToC()
@@ -243,29 +222,6 @@ func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 
 // Unsupported : g_queue_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
-// RWLock is a wrapper around the C record GRWLock.
-type RWLock struct {
-	native *C.GRWLock
-	// Private : p
-	// Private : i
-}
-
-func RWLockNewFromC(u unsafe.Pointer) *RWLock {
-	c := (*C.GRWLock)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RWLock{native: c}
-
-	return g
-}
-
-func (recv *RWLock) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this RWLock with another RWLock, and returns true if they represent the same GObject.
 func (recv *RWLock) Equals(other *RWLock) bool {
 	return other.ToC() == recv.ToC()
@@ -327,29 +283,6 @@ func (recv *RWLock) WriterUnlock() {
 	C.g_rw_lock_writer_unlock((*C.GRWLock)(recv.native))
 
 	return
-}
-
-// RecMutex is a wrapper around the C record GRecMutex.
-type RecMutex struct {
-	native *C.GRecMutex
-	// Private : p
-	// Private : i
-}
-
-func RecMutexNewFromC(u unsafe.Pointer) *RecMutex {
-	c := (*C.GRecMutex)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RecMutex{native: c}
-
-	return g
-}
-
-func (recv *RecMutex) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this RecMutex with another RecMutex, and returns true if they represent the same GObject.

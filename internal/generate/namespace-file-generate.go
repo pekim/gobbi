@@ -101,7 +101,8 @@ func (ns *Namespace) generateGeneratables(typeName string, generatables Generata
 }
 
 func (ns *Namespace) generateEntityVersionedFileC(filename string, version Version,
-	generatablesCollections []Generatables) {
+	generatablesCollections []Generatables,
+) {
 	ns.generateFile(filename, func(f *jen.File) {
 		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f, version)

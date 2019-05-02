@@ -25,92 +25,9 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ActionEntry is a wrapper around the C record GActionEntry.
-type ActionEntry struct {
-	native *C.GActionEntry
-	Name   string
-	// no type for activate
-	ParameterType string
-	State         string
-	// no type for change_state
-	// Private : padding
-}
-
-func ActionEntryNewFromC(u unsafe.Pointer) *ActionEntry {
-	c := (*C.GActionEntry)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ActionEntry{
-		Name:          C.GoString(c.name),
-		ParameterType: C.GoString(c.parameter_type),
-		State:         C.GoString(c.state),
-		native:        c,
-	}
-
-	return g
-}
-
-func (recv *ActionEntry) ToC() unsafe.Pointer {
-	recv.native.name =
-		C.CString(recv.Name)
-	recv.native.parameter_type =
-		C.CString(recv.ParameterType)
-	recv.native.state =
-		C.CString(recv.State)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ActionEntry with another ActionEntry, and returns true if they represent the same GObject.
 func (recv *ActionEntry) Equals(other *ActionEntry) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// AppInfoIface is a wrapper around the C record GAppInfoIface.
-type AppInfoIface struct {
-	native *C.GAppInfoIface
-	// g_iface : record
-	// no type for dup
-	// no type for equal
-	// no type for get_id
-	// no type for get_name
-	// no type for get_description
-	// no type for get_executable
-	// no type for get_icon
-	// no type for launch
-	// no type for supports_uris
-	// no type for supports_files
-	// no type for launch_uris
-	// no type for should_show
-	// no type for set_as_default_for_type
-	// no type for set_as_default_for_extension
-	// no type for add_supports_type
-	// no type for can_remove_supports_type
-	// no type for remove_supports_type
-	// no type for can_delete
-	// no type for do_delete
-	// no type for get_commandline
-	// no type for get_display_name
-	// no type for set_as_last_used_for_type
-	// no type for get_supported_types
-}
-
-func AppInfoIfaceNewFromC(u unsafe.Pointer) *AppInfoIface {
-	c := (*C.GAppInfoIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AppInfoIface{native: c}
-
-	return g
-}
-
-func (recv *AppInfoIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this AppInfoIface with another AppInfoIface, and returns true if they represent the same GObject.
@@ -118,60 +35,9 @@ func (recv *AppInfoIface) Equals(other *AppInfoIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// AppLaunchContextClass is a wrapper around the C record GAppLaunchContextClass.
-type AppLaunchContextClass struct {
-	native *C.GAppLaunchContextClass
-	// parent_class : record
-	// no type for get_display
-	// no type for get_startup_notify_id
-	// no type for launch_failed
-	// no type for launched
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-}
-
-func AppLaunchContextClassNewFromC(u unsafe.Pointer) *AppLaunchContextClass {
-	c := (*C.GAppLaunchContextClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AppLaunchContextClass{native: c}
-
-	return g
-}
-
-func (recv *AppLaunchContextClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AppLaunchContextClass with another AppLaunchContextClass, and returns true if they represent the same GObject.
 func (recv *AppLaunchContextClass) Equals(other *AppLaunchContextClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// AppLaunchContextPrivate is a wrapper around the C record GAppLaunchContextPrivate.
-type AppLaunchContextPrivate struct {
-	native *C.GAppLaunchContextPrivate
-}
-
-func AppLaunchContextPrivateNewFromC(u unsafe.Pointer) *AppLaunchContextPrivate {
-	c := (*C.GAppLaunchContextPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AppLaunchContextPrivate{native: c}
-
-	return g
-}
-
-func (recv *AppLaunchContextPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this AppLaunchContextPrivate with another AppLaunchContextPrivate, and returns true if they represent the same GObject.
@@ -179,51 +45,9 @@ func (recv *AppLaunchContextPrivate) Equals(other *AppLaunchContextPrivate) bool
 	return other.ToC() == recv.ToC()
 }
 
-// ApplicationCommandLinePrivate is a wrapper around the C record GApplicationCommandLinePrivate.
-type ApplicationCommandLinePrivate struct {
-	native *C.GApplicationCommandLinePrivate
-}
-
-func ApplicationCommandLinePrivateNewFromC(u unsafe.Pointer) *ApplicationCommandLinePrivate {
-	c := (*C.GApplicationCommandLinePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ApplicationCommandLinePrivate{native: c}
-
-	return g
-}
-
-func (recv *ApplicationCommandLinePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ApplicationCommandLinePrivate with another ApplicationCommandLinePrivate, and returns true if they represent the same GObject.
 func (recv *ApplicationCommandLinePrivate) Equals(other *ApplicationCommandLinePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ApplicationPrivate is a wrapper around the C record GApplicationPrivate.
-type ApplicationPrivate struct {
-	native *C.GApplicationPrivate
-}
-
-func ApplicationPrivateNewFromC(u unsafe.Pointer) *ApplicationPrivate {
-	c := (*C.GApplicationPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ApplicationPrivate{native: c}
-
-	return g
-}
-
-func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ApplicationPrivate with another ApplicationPrivate, and returns true if they represent the same GObject.
@@ -231,64 +55,9 @@ func (recv *ApplicationPrivate) Equals(other *ApplicationPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// AsyncResultIface is a wrapper around the C record GAsyncResultIface.
-type AsyncResultIface struct {
-	native *C.GAsyncResultIface
-	// g_iface : record
-	// no type for get_user_data
-	// no type for get_source_object
-	// no type for is_tagged
-}
-
-func AsyncResultIfaceNewFromC(u unsafe.Pointer) *AsyncResultIface {
-	c := (*C.GAsyncResultIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AsyncResultIface{native: c}
-
-	return g
-}
-
-func (recv *AsyncResultIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AsyncResultIface with another AsyncResultIface, and returns true if they represent the same GObject.
 func (recv *AsyncResultIface) Equals(other *AsyncResultIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// BufferedInputStreamClass is a wrapper around the C record GBufferedInputStreamClass.
-type BufferedInputStreamClass struct {
-	native *C.GBufferedInputStreamClass
-	// parent_class : record
-	// no type for fill
-	// no type for fill_async
-	// no type for fill_finish
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func BufferedInputStreamClassNewFromC(u unsafe.Pointer) *BufferedInputStreamClass {
-	c := (*C.GBufferedInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &BufferedInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *BufferedInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this BufferedInputStreamClass with another BufferedInputStreamClass, and returns true if they represent the same GObject.
@@ -296,54 +65,9 @@ func (recv *BufferedInputStreamClass) Equals(other *BufferedInputStreamClass) bo
 	return other.ToC() == recv.ToC()
 }
 
-// BufferedInputStreamPrivate is a wrapper around the C record GBufferedInputStreamPrivate.
-type BufferedInputStreamPrivate struct {
-	native *C.GBufferedInputStreamPrivate
-}
-
-func BufferedInputStreamPrivateNewFromC(u unsafe.Pointer) *BufferedInputStreamPrivate {
-	c := (*C.GBufferedInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &BufferedInputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *BufferedInputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this BufferedInputStreamPrivate with another BufferedInputStreamPrivate, and returns true if they represent the same GObject.
 func (recv *BufferedInputStreamPrivate) Equals(other *BufferedInputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// BufferedOutputStreamClass is a wrapper around the C record GBufferedOutputStreamClass.
-type BufferedOutputStreamClass struct {
-	native *C.GBufferedOutputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-}
-
-func BufferedOutputStreamClassNewFromC(u unsafe.Pointer) *BufferedOutputStreamClass {
-	c := (*C.GBufferedOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &BufferedOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *BufferedOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this BufferedOutputStreamClass with another BufferedOutputStreamClass, and returns true if they represent the same GObject.
@@ -351,58 +75,9 @@ func (recv *BufferedOutputStreamClass) Equals(other *BufferedOutputStreamClass) 
 	return other.ToC() == recv.ToC()
 }
 
-// BufferedOutputStreamPrivate is a wrapper around the C record GBufferedOutputStreamPrivate.
-type BufferedOutputStreamPrivate struct {
-	native *C.GBufferedOutputStreamPrivate
-}
-
-func BufferedOutputStreamPrivateNewFromC(u unsafe.Pointer) *BufferedOutputStreamPrivate {
-	c := (*C.GBufferedOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &BufferedOutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *BufferedOutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this BufferedOutputStreamPrivate with another BufferedOutputStreamPrivate, and returns true if they represent the same GObject.
 func (recv *BufferedOutputStreamPrivate) Equals(other *BufferedOutputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// CancellableClass is a wrapper around the C record GCancellableClass.
-type CancellableClass struct {
-	native *C.GCancellableClass
-	// parent_class : record
-	// no type for cancelled
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func CancellableClassNewFromC(u unsafe.Pointer) *CancellableClass {
-	c := (*C.GCancellableClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &CancellableClass{native: c}
-
-	return g
-}
-
-func (recv *CancellableClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this CancellableClass with another CancellableClass, and returns true if they represent the same GObject.
@@ -410,52 +85,9 @@ func (recv *CancellableClass) Equals(other *CancellableClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CancellablePrivate is a wrapper around the C record GCancellablePrivate.
-type CancellablePrivate struct {
-	native *C.GCancellablePrivate
-}
-
-func CancellablePrivateNewFromC(u unsafe.Pointer) *CancellablePrivate {
-	c := (*C.GCancellablePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &CancellablePrivate{native: c}
-
-	return g
-}
-
-func (recv *CancellablePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this CancellablePrivate with another CancellablePrivate, and returns true if they represent the same GObject.
 func (recv *CancellablePrivate) Equals(other *CancellablePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// CharsetConverterClass is a wrapper around the C record GCharsetConverterClass.
-type CharsetConverterClass struct {
-	native *C.GCharsetConverterClass
-	// parent_class : record
-}
-
-func CharsetConverterClassNewFromC(u unsafe.Pointer) *CharsetConverterClass {
-	c := (*C.GCharsetConverterClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &CharsetConverterClass{native: c}
-
-	return g
-}
-
-func (recv *CharsetConverterClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this CharsetConverterClass with another CharsetConverterClass, and returns true if they represent the same GObject.
@@ -463,57 +95,9 @@ func (recv *CharsetConverterClass) Equals(other *CharsetConverterClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ConverterInputStreamClass is a wrapper around the C record GConverterInputStreamClass.
-type ConverterInputStreamClass struct {
-	native *C.GConverterInputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func ConverterInputStreamClassNewFromC(u unsafe.Pointer) *ConverterInputStreamClass {
-	c := (*C.GConverterInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ConverterInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *ConverterInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ConverterInputStreamClass with another ConverterInputStreamClass, and returns true if they represent the same GObject.
 func (recv *ConverterInputStreamClass) Equals(other *ConverterInputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ConverterInputStreamPrivate is a wrapper around the C record GConverterInputStreamPrivate.
-type ConverterInputStreamPrivate struct {
-	native *C.GConverterInputStreamPrivate
-}
-
-func ConverterInputStreamPrivateNewFromC(u unsafe.Pointer) *ConverterInputStreamPrivate {
-	c := (*C.GConverterInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ConverterInputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *ConverterInputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ConverterInputStreamPrivate with another ConverterInputStreamPrivate, and returns true if they represent the same GObject.
@@ -521,57 +105,9 @@ func (recv *ConverterInputStreamPrivate) Equals(other *ConverterInputStreamPriva
 	return other.ToC() == recv.ToC()
 }
 
-// ConverterOutputStreamClass is a wrapper around the C record GConverterOutputStreamClass.
-type ConverterOutputStreamClass struct {
-	native *C.GConverterOutputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func ConverterOutputStreamClassNewFromC(u unsafe.Pointer) *ConverterOutputStreamClass {
-	c := (*C.GConverterOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ConverterOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *ConverterOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ConverterOutputStreamClass with another ConverterOutputStreamClass, and returns true if they represent the same GObject.
 func (recv *ConverterOutputStreamClass) Equals(other *ConverterOutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ConverterOutputStreamPrivate is a wrapper around the C record GConverterOutputStreamPrivate.
-type ConverterOutputStreamPrivate struct {
-	native *C.GConverterOutputStreamPrivate
-}
-
-func ConverterOutputStreamPrivateNewFromC(u unsafe.Pointer) *ConverterOutputStreamPrivate {
-	c := (*C.GConverterOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ConverterOutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *ConverterOutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ConverterOutputStreamPrivate with another ConverterOutputStreamPrivate, and returns true if they represent the same GObject.
@@ -579,51 +115,9 @@ func (recv *ConverterOutputStreamPrivate) Equals(other *ConverterOutputStreamPri
 	return other.ToC() == recv.ToC()
 }
 
-// DBusInterfaceSkeletonPrivate is a wrapper around the C record GDBusInterfaceSkeletonPrivate.
-type DBusInterfaceSkeletonPrivate struct {
-	native *C.GDBusInterfaceSkeletonPrivate
-}
-
-func DBusInterfaceSkeletonPrivateNewFromC(u unsafe.Pointer) *DBusInterfaceSkeletonPrivate {
-	c := (*C.GDBusInterfaceSkeletonPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusInterfaceSkeletonPrivate{native: c}
-
-	return g
-}
-
-func (recv *DBusInterfaceSkeletonPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusInterfaceSkeletonPrivate with another DBusInterfaceSkeletonPrivate, and returns true if they represent the same GObject.
 func (recv *DBusInterfaceSkeletonPrivate) Equals(other *DBusInterfaceSkeletonPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DBusObjectManagerClientPrivate is a wrapper around the C record GDBusObjectManagerClientPrivate.
-type DBusObjectManagerClientPrivate struct {
-	native *C.GDBusObjectManagerClientPrivate
-}
-
-func DBusObjectManagerClientPrivateNewFromC(u unsafe.Pointer) *DBusObjectManagerClientPrivate {
-	c := (*C.GDBusObjectManagerClientPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectManagerClientPrivate{native: c}
-
-	return g
-}
-
-func (recv *DBusObjectManagerClientPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusObjectManagerClientPrivate with another DBusObjectManagerClientPrivate, and returns true if they represent the same GObject.
@@ -631,51 +125,9 @@ func (recv *DBusObjectManagerClientPrivate) Equals(other *DBusObjectManagerClien
 	return other.ToC() == recv.ToC()
 }
 
-// DBusObjectManagerServerPrivate is a wrapper around the C record GDBusObjectManagerServerPrivate.
-type DBusObjectManagerServerPrivate struct {
-	native *C.GDBusObjectManagerServerPrivate
-}
-
-func DBusObjectManagerServerPrivateNewFromC(u unsafe.Pointer) *DBusObjectManagerServerPrivate {
-	c := (*C.GDBusObjectManagerServerPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectManagerServerPrivate{native: c}
-
-	return g
-}
-
-func (recv *DBusObjectManagerServerPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObjectManagerServerPrivate with another DBusObjectManagerServerPrivate, and returns true if they represent the same GObject.
 func (recv *DBusObjectManagerServerPrivate) Equals(other *DBusObjectManagerServerPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DBusObjectProxyPrivate is a wrapper around the C record GDBusObjectProxyPrivate.
-type DBusObjectProxyPrivate struct {
-	native *C.GDBusObjectProxyPrivate
-}
-
-func DBusObjectProxyPrivateNewFromC(u unsafe.Pointer) *DBusObjectProxyPrivate {
-	c := (*C.GDBusObjectProxyPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectProxyPrivate{native: c}
-
-	return g
-}
-
-func (recv *DBusObjectProxyPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusObjectProxyPrivate with another DBusObjectProxyPrivate, and returns true if they represent the same GObject.
@@ -683,51 +135,9 @@ func (recv *DBusObjectProxyPrivate) Equals(other *DBusObjectProxyPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DBusObjectSkeletonPrivate is a wrapper around the C record GDBusObjectSkeletonPrivate.
-type DBusObjectSkeletonPrivate struct {
-	native *C.GDBusObjectSkeletonPrivate
-}
-
-func DBusObjectSkeletonPrivateNewFromC(u unsafe.Pointer) *DBusObjectSkeletonPrivate {
-	c := (*C.GDBusObjectSkeletonPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectSkeletonPrivate{native: c}
-
-	return g
-}
-
-func (recv *DBusObjectSkeletonPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObjectSkeletonPrivate with another DBusObjectSkeletonPrivate, and returns true if they represent the same GObject.
 func (recv *DBusObjectSkeletonPrivate) Equals(other *DBusObjectSkeletonPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DBusProxyPrivate is a wrapper around the C record GDBusProxyPrivate.
-type DBusProxyPrivate struct {
-	native *C.GDBusProxyPrivate
-}
-
-func DBusProxyPrivateNewFromC(u unsafe.Pointer) *DBusProxyPrivate {
-	c := (*C.GDBusProxyPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusProxyPrivate{native: c}
-
-	return g
-}
-
-func (recv *DBusProxyPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusProxyPrivate with another DBusProxyPrivate, and returns true if they represent the same GObject.
@@ -735,57 +145,9 @@ func (recv *DBusProxyPrivate) Equals(other *DBusProxyPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DataInputStreamClass is a wrapper around the C record GDataInputStreamClass.
-type DataInputStreamClass struct {
-	native *C.GDataInputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func DataInputStreamClassNewFromC(u unsafe.Pointer) *DataInputStreamClass {
-	c := (*C.GDataInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DataInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *DataInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DataInputStreamClass with another DataInputStreamClass, and returns true if they represent the same GObject.
 func (recv *DataInputStreamClass) Equals(other *DataInputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DataInputStreamPrivate is a wrapper around the C record GDataInputStreamPrivate.
-type DataInputStreamPrivate struct {
-	native *C.GDataInputStreamPrivate
-}
-
-func DataInputStreamPrivateNewFromC(u unsafe.Pointer) *DataInputStreamPrivate {
-	c := (*C.GDataInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DataInputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *DataInputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DataInputStreamPrivate with another DataInputStreamPrivate, and returns true if they represent the same GObject.
@@ -793,57 +155,9 @@ func (recv *DataInputStreamPrivate) Equals(other *DataInputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DataOutputStreamClass is a wrapper around the C record GDataOutputStreamClass.
-type DataOutputStreamClass struct {
-	native *C.GDataOutputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func DataOutputStreamClassNewFromC(u unsafe.Pointer) *DataOutputStreamClass {
-	c := (*C.GDataOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DataOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *DataOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DataOutputStreamClass with another DataOutputStreamClass, and returns true if they represent the same GObject.
 func (recv *DataOutputStreamClass) Equals(other *DataOutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DataOutputStreamPrivate is a wrapper around the C record GDataOutputStreamPrivate.
-type DataOutputStreamPrivate struct {
-	native *C.GDataOutputStreamPrivate
-}
-
-func DataOutputStreamPrivateNewFromC(u unsafe.Pointer) *DataOutputStreamPrivate {
-	c := (*C.GDataOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DataOutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *DataOutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DataOutputStreamPrivate with another DataOutputStreamPrivate, and returns true if they represent the same GObject.
@@ -851,54 +165,9 @@ func (recv *DataOutputStreamPrivate) Equals(other *DataOutputStreamPrivate) bool
 	return other.ToC() == recv.ToC()
 }
 
-// DesktopAppInfoClass is a wrapper around the C record GDesktopAppInfoClass.
-type DesktopAppInfoClass struct {
-	native *C.GDesktopAppInfoClass
-	// parent_class : record
-}
-
-func DesktopAppInfoClassNewFromC(u unsafe.Pointer) *DesktopAppInfoClass {
-	c := (*C.GDesktopAppInfoClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DesktopAppInfoClass{native: c}
-
-	return g
-}
-
-func (recv *DesktopAppInfoClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DesktopAppInfoClass with another DesktopAppInfoClass, and returns true if they represent the same GObject.
 func (recv *DesktopAppInfoClass) Equals(other *DesktopAppInfoClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DesktopAppInfoLookupIface is a wrapper around the C record GDesktopAppInfoLookupIface.
-type DesktopAppInfoLookupIface struct {
-	native *C.GDesktopAppInfoLookupIface
-	// g_iface : record
-	// no type for get_default_for_uri_scheme
-}
-
-func DesktopAppInfoLookupIfaceNewFromC(u unsafe.Pointer) *DesktopAppInfoLookupIface {
-	c := (*C.GDesktopAppInfoLookupIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DesktopAppInfoLookupIface{native: c}
-
-	return g
-}
-
-func (recv *DesktopAppInfoLookupIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DesktopAppInfoLookupIface with another DesktopAppInfoLookupIface, and returns true if they represent the same GObject.
@@ -906,84 +175,9 @@ func (recv *DesktopAppInfoLookupIface) Equals(other *DesktopAppInfoLookupIface) 
 	return other.ToC() == recv.ToC()
 }
 
-// DriveIface is a wrapper around the C record GDriveIface.
-type DriveIface struct {
-	native *C.GDriveIface
-	// g_iface : record
-	// no type for changed
-	// no type for disconnected
-	// no type for eject_button
-	// no type for get_name
-	// no type for get_icon
-	// no type for has_volumes
-	// no type for get_volumes
-	// no type for is_media_removable
-	// no type for has_media
-	// no type for is_media_check_automatic
-	// no type for can_eject
-	// no type for can_poll_for_media
-	// no type for eject
-	// no type for eject_finish
-	// no type for poll_for_media
-	// no type for poll_for_media_finish
-	// no type for get_identifier
-	// no type for enumerate_identifiers
-	// no type for get_start_stop_type
-	// no type for can_start
-	// no type for can_start_degraded
-	// no type for start
-	// no type for start_finish
-	// no type for can_stop
-	// no type for stop
-	// no type for stop_finish
-	// no type for stop_button
-	// no type for eject_with_operation
-	// no type for eject_with_operation_finish
-	// no type for get_sort_key
-	// no type for get_symbolic_icon
-	// no type for is_removable
-}
-
-func DriveIfaceNewFromC(u unsafe.Pointer) *DriveIface {
-	c := (*C.GDriveIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DriveIface{native: c}
-
-	return g
-}
-
-func (recv *DriveIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DriveIface with another DriveIface, and returns true if they represent the same GObject.
 func (recv *DriveIface) Equals(other *DriveIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// EmblemClass is a wrapper around the C record GEmblemClass.
-type EmblemClass struct {
-	native *C.GEmblemClass
-}
-
-func EmblemClassNewFromC(u unsafe.Pointer) *EmblemClass {
-	c := (*C.GEmblemClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EmblemClass{native: c}
-
-	return g
-}
-
-func (recv *EmblemClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this EmblemClass with another EmblemClass, and returns true if they represent the same GObject.
@@ -991,52 +185,9 @@ func (recv *EmblemClass) Equals(other *EmblemClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// EmblemedIconClass is a wrapper around the C record GEmblemedIconClass.
-type EmblemedIconClass struct {
-	native *C.GEmblemedIconClass
-	// parent_class : record
-}
-
-func EmblemedIconClassNewFromC(u unsafe.Pointer) *EmblemedIconClass {
-	c := (*C.GEmblemedIconClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EmblemedIconClass{native: c}
-
-	return g
-}
-
-func (recv *EmblemedIconClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this EmblemedIconClass with another EmblemedIconClass, and returns true if they represent the same GObject.
 func (recv *EmblemedIconClass) Equals(other *EmblemedIconClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// EmblemedIconPrivate is a wrapper around the C record GEmblemedIconPrivate.
-type EmblemedIconPrivate struct {
-	native *C.GEmblemedIconPrivate
-}
-
-func EmblemedIconPrivateNewFromC(u unsafe.Pointer) *EmblemedIconPrivate {
-	c := (*C.GEmblemedIconPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EmblemedIconPrivate{native: c}
-
-	return g
-}
-
-func (recv *EmblemedIconPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this EmblemedIconPrivate with another EmblemedIconPrivate, and returns true if they represent the same GObject.
@@ -1044,72 +195,9 @@ func (recv *EmblemedIconPrivate) Equals(other *EmblemedIconPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileAttributeInfo is a wrapper around the C record GFileAttributeInfo.
-type FileAttributeInfo struct {
-	native *C.GFileAttributeInfo
-	Name   string
-	Type   FileAttributeType
-	Flags  FileAttributeInfoFlags
-}
-
-func FileAttributeInfoNewFromC(u unsafe.Pointer) *FileAttributeInfo {
-	c := (*C.GFileAttributeInfo)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileAttributeInfo{
-		Flags:  (FileAttributeInfoFlags)(c.flags),
-		Name:   C.GoString(c.name),
-		Type:   (FileAttributeType)(c._type),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *FileAttributeInfo) ToC() unsafe.Pointer {
-	recv.native.name =
-		C.CString(recv.Name)
-	recv.native._type =
-		(C.GFileAttributeType)(recv.Type)
-	recv.native.flags =
-		(C.GFileAttributeInfoFlags)(recv.Flags)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileAttributeInfo with another FileAttributeInfo, and returns true if they represent the same GObject.
 func (recv *FileAttributeInfo) Equals(other *FileAttributeInfo) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileAttributeInfoList is a wrapper around the C record GFileAttributeInfoList.
-type FileAttributeInfoList struct {
-	native *C.GFileAttributeInfoList
-	// infos : record
-	NInfos int32
-}
-
-func FileAttributeInfoListNewFromC(u unsafe.Pointer) *FileAttributeInfoList {
-	c := (*C.GFileAttributeInfoList)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileAttributeInfoList{
-		NInfos: (int32)(c.n_infos),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
-	recv.native.n_infos =
-		(C.int)(recv.NInfos)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileAttributeInfoList with another FileAttributeInfoList, and returns true if they represent the same GObject.
@@ -1171,27 +259,6 @@ func (recv *FileAttributeInfoList) Unref() {
 	C.g_file_attribute_info_list_unref((*C.GFileAttributeInfoList)(recv.native))
 
 	return
-}
-
-// FileAttributeMatcher is a wrapper around the C record GFileAttributeMatcher.
-type FileAttributeMatcher struct {
-	native *C.GFileAttributeMatcher
-}
-
-func FileAttributeMatcherNewFromC(u unsafe.Pointer) *FileAttributeMatcher {
-	c := (*C.GFileAttributeMatcher)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileAttributeMatcher{native: c}
-
-	return g
-}
-
-func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileAttributeMatcher with another FileAttributeMatcher, and returns true if they represent the same GObject.
@@ -1279,67 +346,9 @@ func (recv *FileAttributeMatcher) Unref() {
 	return
 }
 
-// FileDescriptorBasedIface is a wrapper around the C record GFileDescriptorBasedIface.
-type FileDescriptorBasedIface struct {
-	native *C.GFileDescriptorBasedIface
-	// g_iface : record
-	// no type for get_fd
-}
-
-func FileDescriptorBasedIfaceNewFromC(u unsafe.Pointer) *FileDescriptorBasedIface {
-	c := (*C.GFileDescriptorBasedIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileDescriptorBasedIface{native: c}
-
-	return g
-}
-
-func (recv *FileDescriptorBasedIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileDescriptorBasedIface with another FileDescriptorBasedIface, and returns true if they represent the same GObject.
 func (recv *FileDescriptorBasedIface) Equals(other *FileDescriptorBasedIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileEnumeratorClass is a wrapper around the C record GFileEnumeratorClass.
-type FileEnumeratorClass struct {
-	native *C.GFileEnumeratorClass
-	// parent_class : record
-	// no type for next_file
-	// no type for close_fn
-	// no type for next_files_async
-	// no type for next_files_finish
-	// no type for close_async
-	// no type for close_finish
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-	// no type for _g_reserved7
-}
-
-func FileEnumeratorClassNewFromC(u unsafe.Pointer) *FileEnumeratorClass {
-	c := (*C.GFileEnumeratorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileEnumeratorClass{native: c}
-
-	return g
-}
-
-func (recv *FileEnumeratorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileEnumeratorClass with another FileEnumeratorClass, and returns true if they represent the same GObject.
@@ -1347,66 +356,9 @@ func (recv *FileEnumeratorClass) Equals(other *FileEnumeratorClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileEnumeratorPrivate is a wrapper around the C record GFileEnumeratorPrivate.
-type FileEnumeratorPrivate struct {
-	native *C.GFileEnumeratorPrivate
-}
-
-func FileEnumeratorPrivateNewFromC(u unsafe.Pointer) *FileEnumeratorPrivate {
-	c := (*C.GFileEnumeratorPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileEnumeratorPrivate{native: c}
-
-	return g
-}
-
-func (recv *FileEnumeratorPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileEnumeratorPrivate with another FileEnumeratorPrivate, and returns true if they represent the same GObject.
 func (recv *FileEnumeratorPrivate) Equals(other *FileEnumeratorPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileIOStreamClass is a wrapper around the C record GFileIOStreamClass.
-type FileIOStreamClass struct {
-	native *C.GFileIOStreamClass
-	// parent_class : record
-	// no type for tell
-	// no type for can_seek
-	// no type for seek
-	// no type for can_truncate
-	// no type for truncate_fn
-	// no type for query_info
-	// no type for query_info_async
-	// no type for query_info_finish
-	// no type for get_etag
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func FileIOStreamClassNewFromC(u unsafe.Pointer) *FileIOStreamClass {
-	c := (*C.GFileIOStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileIOStreamClass{native: c}
-
-	return g
-}
-
-func (recv *FileIOStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileIOStreamClass with another FileIOStreamClass, and returns true if they represent the same GObject.
@@ -1414,51 +366,9 @@ func (recv *FileIOStreamClass) Equals(other *FileIOStreamClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileIOStreamPrivate is a wrapper around the C record GFileIOStreamPrivate.
-type FileIOStreamPrivate struct {
-	native *C.GFileIOStreamPrivate
-}
-
-func FileIOStreamPrivateNewFromC(u unsafe.Pointer) *FileIOStreamPrivate {
-	c := (*C.GFileIOStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileIOStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *FileIOStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileIOStreamPrivate with another FileIOStreamPrivate, and returns true if they represent the same GObject.
 func (recv *FileIOStreamPrivate) Equals(other *FileIOStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileIconClass is a wrapper around the C record GFileIconClass.
-type FileIconClass struct {
-	native *C.GFileIconClass
-}
-
-func FileIconClassNewFromC(u unsafe.Pointer) *FileIconClass {
-	c := (*C.GFileIconClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileIconClass{native: c}
-
-	return g
-}
-
-func (recv *FileIconClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileIconClass with another FileIconClass, and returns true if they represent the same GObject.
@@ -1466,160 +376,9 @@ func (recv *FileIconClass) Equals(other *FileIconClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileIface is a wrapper around the C record GFileIface.
-type FileIface struct {
-	native *C.GFileIface
-	// g_iface : record
-	// no type for dup
-	// no type for hash
-	// no type for equal
-	// no type for is_native
-	// no type for has_uri_scheme
-	// no type for get_uri_scheme
-	// no type for get_basename
-	// no type for get_path
-	// no type for get_uri
-	// no type for get_parse_name
-	// no type for get_parent
-	// no type for prefix_matches
-	// no type for get_relative_path
-	// no type for resolve_relative_path
-	// no type for get_child_for_display_name
-	// no type for enumerate_children
-	// no type for enumerate_children_async
-	// no type for enumerate_children_finish
-	// no type for query_info
-	// no type for query_info_async
-	// no type for query_info_finish
-	// no type for query_filesystem_info
-	// no type for query_filesystem_info_async
-	// no type for query_filesystem_info_finish
-	// no type for find_enclosing_mount
-	// no type for find_enclosing_mount_async
-	// no type for find_enclosing_mount_finish
-	// no type for set_display_name
-	// no type for set_display_name_async
-	// no type for set_display_name_finish
-	// no type for query_settable_attributes
-	// no type for _query_settable_attributes_async
-	// no type for _query_settable_attributes_finish
-	// no type for query_writable_namespaces
-	// no type for _query_writable_namespaces_async
-	// no type for _query_writable_namespaces_finish
-	// no type for set_attribute
-	// no type for set_attributes_from_info
-	// no type for set_attributes_async
-	// no type for set_attributes_finish
-	// no type for read_fn
-	// no type for read_async
-	// no type for read_finish
-	// no type for append_to
-	// no type for append_to_async
-	// no type for append_to_finish
-	// no type for create
-	// no type for create_async
-	// no type for create_finish
-	// no type for replace
-	// no type for replace_async
-	// no type for replace_finish
-	// no type for delete_file
-	// no type for delete_file_async
-	// no type for delete_file_finish
-	// no type for trash
-	// no type for trash_async
-	// no type for trash_finish
-	// no type for make_directory
-	// no type for make_directory_async
-	// no type for make_directory_finish
-	// no type for make_symbolic_link
-	// no type for _make_symbolic_link_async
-	// no type for _make_symbolic_link_finish
-	// no type for copy
-	// no type for copy_async
-	// no type for copy_finish
-	// no type for move
-	// no type for _move_async
-	// no type for _move_finish
-	// no type for mount_mountable
-	// no type for mount_mountable_finish
-	// no type for unmount_mountable
-	// no type for unmount_mountable_finish
-	// no type for eject_mountable
-	// no type for eject_mountable_finish
-	// no type for mount_enclosing_volume
-	// no type for mount_enclosing_volume_finish
-	// no type for monitor_dir
-	// no type for monitor_file
-	// no type for open_readwrite
-	// no type for open_readwrite_async
-	// no type for open_readwrite_finish
-	// no type for create_readwrite
-	// no type for create_readwrite_async
-	// no type for create_readwrite_finish
-	// no type for replace_readwrite
-	// no type for replace_readwrite_async
-	// no type for replace_readwrite_finish
-	// no type for start_mountable
-	// no type for start_mountable_finish
-	// no type for stop_mountable
-	// no type for stop_mountable_finish
-	SupportsThreadContexts bool
-	// no type for unmount_mountable_with_operation
-	// no type for unmount_mountable_with_operation_finish
-	// no type for eject_mountable_with_operation
-	// no type for eject_mountable_with_operation_finish
-	// no type for poll_mountable
-	// no type for poll_mountable_finish
-	// no type for measure_disk_usage
-	// no type for measure_disk_usage_async
-	// no type for measure_disk_usage_finish
-}
-
-func FileIfaceNewFromC(u unsafe.Pointer) *FileIface {
-	c := (*C.GFileIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileIface{
-		SupportsThreadContexts: c.supports_thread_contexts == C.TRUE,
-		native:                 c,
-	}
-
-	return g
-}
-
-func (recv *FileIface) ToC() unsafe.Pointer {
-	recv.native.supports_thread_contexts =
-		boolToGboolean(recv.SupportsThreadContexts)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileIface with another FileIface, and returns true if they represent the same GObject.
 func (recv *FileIface) Equals(other *FileIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileInfoClass is a wrapper around the C record GFileInfoClass.
-type FileInfoClass struct {
-	native *C.GFileInfoClass
-}
-
-func FileInfoClassNewFromC(u unsafe.Pointer) *FileInfoClass {
-	c := (*C.GFileInfoClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileInfoClass{native: c}
-
-	return g
-}
-
-func (recv *FileInfoClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileInfoClass with another FileInfoClass, and returns true if they represent the same GObject.
@@ -1627,63 +386,9 @@ func (recv *FileInfoClass) Equals(other *FileInfoClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileInputStreamClass is a wrapper around the C record GFileInputStreamClass.
-type FileInputStreamClass struct {
-	native *C.GFileInputStreamClass
-	// parent_class : record
-	// no type for tell
-	// no type for can_seek
-	// no type for seek
-	// no type for query_info
-	// no type for query_info_async
-	// no type for query_info_finish
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func FileInputStreamClassNewFromC(u unsafe.Pointer) *FileInputStreamClass {
-	c := (*C.GFileInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *FileInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileInputStreamClass with another FileInputStreamClass, and returns true if they represent the same GObject.
 func (recv *FileInputStreamClass) Equals(other *FileInputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileInputStreamPrivate is a wrapper around the C record GFileInputStreamPrivate.
-type FileInputStreamPrivate struct {
-	native *C.GFileInputStreamPrivate
-}
-
-func FileInputStreamPrivateNewFromC(u unsafe.Pointer) *FileInputStreamPrivate {
-	c := (*C.GFileInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileInputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *FileInputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileInputStreamPrivate with another FileInputStreamPrivate, and returns true if they represent the same GObject.
@@ -1691,59 +396,9 @@ func (recv *FileInputStreamPrivate) Equals(other *FileInputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileMonitorClass is a wrapper around the C record GFileMonitorClass.
-type FileMonitorClass struct {
-	native *C.GFileMonitorClass
-	// parent_class : record
-	// no type for changed
-	// no type for cancel
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func FileMonitorClassNewFromC(u unsafe.Pointer) *FileMonitorClass {
-	c := (*C.GFileMonitorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileMonitorClass{native: c}
-
-	return g
-}
-
-func (recv *FileMonitorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileMonitorClass with another FileMonitorClass, and returns true if they represent the same GObject.
 func (recv *FileMonitorClass) Equals(other *FileMonitorClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileMonitorPrivate is a wrapper around the C record GFileMonitorPrivate.
-type FileMonitorPrivate struct {
-	native *C.GFileMonitorPrivate
-}
-
-func FileMonitorPrivateNewFromC(u unsafe.Pointer) *FileMonitorPrivate {
-	c := (*C.GFileMonitorPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileMonitorPrivate{native: c}
-
-	return g
-}
-
-func (recv *FileMonitorPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileMonitorPrivate with another FileMonitorPrivate, and returns true if they represent the same GObject.
@@ -1751,66 +406,9 @@ func (recv *FileMonitorPrivate) Equals(other *FileMonitorPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileOutputStreamClass is a wrapper around the C record GFileOutputStreamClass.
-type FileOutputStreamClass struct {
-	native *C.GFileOutputStreamClass
-	// parent_class : record
-	// no type for tell
-	// no type for can_seek
-	// no type for seek
-	// no type for can_truncate
-	// no type for truncate_fn
-	// no type for query_info
-	// no type for query_info_async
-	// no type for query_info_finish
-	// no type for get_etag
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func FileOutputStreamClassNewFromC(u unsafe.Pointer) *FileOutputStreamClass {
-	c := (*C.GFileOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *FileOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileOutputStreamClass with another FileOutputStreamClass, and returns true if they represent the same GObject.
 func (recv *FileOutputStreamClass) Equals(other *FileOutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FileOutputStreamPrivate is a wrapper around the C record GFileOutputStreamPrivate.
-type FileOutputStreamPrivate struct {
-	native *C.GFileOutputStreamPrivate
-}
-
-func FileOutputStreamPrivateNewFromC(u unsafe.Pointer) *FileOutputStreamPrivate {
-	c := (*C.GFileOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileOutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *FileOutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FileOutputStreamPrivate with another FileOutputStreamPrivate, and returns true if they represent the same GObject.
@@ -1818,60 +416,9 @@ func (recv *FileOutputStreamPrivate) Equals(other *FileOutputStreamPrivate) bool
 	return other.ToC() == recv.ToC()
 }
 
-// FilenameCompleterClass is a wrapper around the C record GFilenameCompleterClass.
-type FilenameCompleterClass struct {
-	native *C.GFilenameCompleterClass
-	// parent_class : record
-	// no type for got_completion_data
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-}
-
-func FilenameCompleterClassNewFromC(u unsafe.Pointer) *FilenameCompleterClass {
-	c := (*C.GFilenameCompleterClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FilenameCompleterClass{native: c}
-
-	return g
-}
-
-func (recv *FilenameCompleterClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FilenameCompleterClass with another FilenameCompleterClass, and returns true if they represent the same GObject.
 func (recv *FilenameCompleterClass) Equals(other *FilenameCompleterClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// FilterInputStreamClass is a wrapper around the C record GFilterInputStreamClass.
-type FilterInputStreamClass struct {
-	native *C.GFilterInputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-}
-
-func FilterInputStreamClassNewFromC(u unsafe.Pointer) *FilterInputStreamClass {
-	c := (*C.GFilterInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FilterInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *FilterInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FilterInputStreamClass with another FilterInputStreamClass, and returns true if they represent the same GObject.
@@ -1879,55 +426,9 @@ func (recv *FilterInputStreamClass) Equals(other *FilterInputStreamClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FilterOutputStreamClass is a wrapper around the C record GFilterOutputStreamClass.
-type FilterOutputStreamClass struct {
-	native *C.GFilterOutputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-}
-
-func FilterOutputStreamClassNewFromC(u unsafe.Pointer) *FilterOutputStreamClass {
-	c := (*C.GFilterOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FilterOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *FilterOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FilterOutputStreamClass with another FilterOutputStreamClass, and returns true if they represent the same GObject.
 func (recv *FilterOutputStreamClass) Equals(other *FilterOutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// IOExtension is a wrapper around the C record GIOExtension.
-type IOExtension struct {
-	native *C.GIOExtension
-}
-
-func IOExtensionNewFromC(u unsafe.Pointer) *IOExtension {
-	c := (*C.GIOExtension)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOExtension{native: c}
-
-	return g
-}
-
-func (recv *IOExtension) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this IOExtension with another IOExtension, and returns true if they represent the same GObject.
@@ -1965,27 +466,6 @@ func (recv *IOExtension) RefClass() *gobject.TypeClass {
 	retGo := gobject.TypeClassNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// IOExtensionPoint is a wrapper around the C record GIOExtensionPoint.
-type IOExtensionPoint struct {
-	native *C.GIOExtensionPoint
-}
-
-func IOExtensionPointNewFromC(u unsafe.Pointer) *IOExtensionPoint {
-	c := (*C.GIOExtensionPoint)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOExtensionPoint{native: c}
-
-	return g
-}
-
-func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this IOExtensionPoint with another IOExtensionPoint, and returns true if they represent the same GObject.
@@ -2069,51 +549,9 @@ func (recv *IOExtensionPoint) SetRequiredType(type_ gobject.Type) {
 	return
 }
 
-// IOModuleClass is a wrapper around the C record GIOModuleClass.
-type IOModuleClass struct {
-	native *C.GIOModuleClass
-}
-
-func IOModuleClassNewFromC(u unsafe.Pointer) *IOModuleClass {
-	c := (*C.GIOModuleClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOModuleClass{native: c}
-
-	return g
-}
-
-func (recv *IOModuleClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this IOModuleClass with another IOModuleClass, and returns true if they represent the same GObject.
 func (recv *IOModuleClass) Equals(other *IOModuleClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// IOSchedulerJob is a wrapper around the C record GIOSchedulerJob.
-type IOSchedulerJob struct {
-	native *C.GIOSchedulerJob
-}
-
-func IOSchedulerJobNewFromC(u unsafe.Pointer) *IOSchedulerJob {
-	c := (*C.GIOSchedulerJob)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOSchedulerJob{native: c}
-
-	return g
-}
-
-func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this IOSchedulerJob with another IOSchedulerJob, and returns true if they represent the same GObject.
@@ -2125,67 +563,9 @@ func (recv *IOSchedulerJob) Equals(other *IOSchedulerJob) bool {
 
 // Unsupported : g_io_scheduler_job_send_to_mainloop_async : unsupported parameter func : no type generator for GLib.SourceFunc (GSourceFunc) for param func
 
-// IOStreamAdapter is a wrapper around the C record GIOStreamAdapter.
-type IOStreamAdapter struct {
-	native *C.GIOStreamAdapter
-}
-
-func IOStreamAdapterNewFromC(u unsafe.Pointer) *IOStreamAdapter {
-	c := (*C.GIOStreamAdapter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOStreamAdapter{native: c}
-
-	return g
-}
-
-func (recv *IOStreamAdapter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this IOStreamAdapter with another IOStreamAdapter, and returns true if they represent the same GObject.
 func (recv *IOStreamAdapter) Equals(other *IOStreamAdapter) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// IOStreamClass is a wrapper around the C record GIOStreamClass.
-type IOStreamClass struct {
-	native *C.GIOStreamClass
-	// parent_class : record
-	// no type for get_input_stream
-	// no type for get_output_stream
-	// no type for close_fn
-	// no type for close_async
-	// no type for close_finish
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-	// no type for _g_reserved7
-	// no type for _g_reserved8
-	// no type for _g_reserved9
-	// no type for _g_reserved10
-}
-
-func IOStreamClassNewFromC(u unsafe.Pointer) *IOStreamClass {
-	c := (*C.GIOStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOStreamClass{native: c}
-
-	return g
-}
-
-func (recv *IOStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this IOStreamClass with another IOStreamClass, and returns true if they represent the same GObject.
@@ -2193,57 +573,9 @@ func (recv *IOStreamClass) Equals(other *IOStreamClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// IOStreamPrivate is a wrapper around the C record GIOStreamPrivate.
-type IOStreamPrivate struct {
-	native *C.GIOStreamPrivate
-}
-
-func IOStreamPrivateNewFromC(u unsafe.Pointer) *IOStreamPrivate {
-	c := (*C.GIOStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *IOStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this IOStreamPrivate with another IOStreamPrivate, and returns true if they represent the same GObject.
 func (recv *IOStreamPrivate) Equals(other *IOStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// IconIface is a wrapper around the C record GIconIface.
-type IconIface struct {
-	native *C.GIconIface
-	// g_iface : record
-	// no type for hash
-	// no type for equal
-	// no type for to_tokens
-	// no type for from_tokens
-	// no type for serialize
-}
-
-func IconIfaceNewFromC(u unsafe.Pointer) *IconIface {
-	c := (*C.GIconIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IconIface{native: c}
-
-	return g
-}
-
-func (recv *IconIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this IconIface with another IconIface, and returns true if they represent the same GObject.
@@ -2251,55 +583,9 @@ func (recv *IconIface) Equals(other *IconIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// InetAddressClass is a wrapper around the C record GInetAddressClass.
-type InetAddressClass struct {
-	native *C.GInetAddressClass
-	// parent_class : record
-	// no type for to_string
-	// no type for to_bytes
-}
-
-func InetAddressClassNewFromC(u unsafe.Pointer) *InetAddressClass {
-	c := (*C.GInetAddressClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetAddressClass{native: c}
-
-	return g
-}
-
-func (recv *InetAddressClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this InetAddressClass with another InetAddressClass, and returns true if they represent the same GObject.
 func (recv *InetAddressClass) Equals(other *InetAddressClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// InetAddressMaskClass is a wrapper around the C record GInetAddressMaskClass.
-type InetAddressMaskClass struct {
-	native *C.GInetAddressMaskClass
-	// parent_class : record
-}
-
-func InetAddressMaskClassNewFromC(u unsafe.Pointer) *InetAddressMaskClass {
-	c := (*C.GInetAddressMaskClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetAddressMaskClass{native: c}
-
-	return g
-}
-
-func (recv *InetAddressMaskClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this InetAddressMaskClass with another InetAddressMaskClass, and returns true if they represent the same GObject.
@@ -2307,51 +593,9 @@ func (recv *InetAddressMaskClass) Equals(other *InetAddressMaskClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// InetAddressMaskPrivate is a wrapper around the C record GInetAddressMaskPrivate.
-type InetAddressMaskPrivate struct {
-	native *C.GInetAddressMaskPrivate
-}
-
-func InetAddressMaskPrivateNewFromC(u unsafe.Pointer) *InetAddressMaskPrivate {
-	c := (*C.GInetAddressMaskPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetAddressMaskPrivate{native: c}
-
-	return g
-}
-
-func (recv *InetAddressMaskPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this InetAddressMaskPrivate with another InetAddressMaskPrivate, and returns true if they represent the same GObject.
 func (recv *InetAddressMaskPrivate) Equals(other *InetAddressMaskPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// InetAddressPrivate is a wrapper around the C record GInetAddressPrivate.
-type InetAddressPrivate struct {
-	native *C.GInetAddressPrivate
-}
-
-func InetAddressPrivateNewFromC(u unsafe.Pointer) *InetAddressPrivate {
-	c := (*C.GInetAddressPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetAddressPrivate{native: c}
-
-	return g
-}
-
-func (recv *InetAddressPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this InetAddressPrivate with another InetAddressPrivate, and returns true if they represent the same GObject.
@@ -2359,52 +603,9 @@ func (recv *InetAddressPrivate) Equals(other *InetAddressPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// InetSocketAddressClass is a wrapper around the C record GInetSocketAddressClass.
-type InetSocketAddressClass struct {
-	native *C.GInetSocketAddressClass
-	// parent_class : record
-}
-
-func InetSocketAddressClassNewFromC(u unsafe.Pointer) *InetSocketAddressClass {
-	c := (*C.GInetSocketAddressClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetSocketAddressClass{native: c}
-
-	return g
-}
-
-func (recv *InetSocketAddressClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this InetSocketAddressClass with another InetSocketAddressClass, and returns true if they represent the same GObject.
 func (recv *InetSocketAddressClass) Equals(other *InetSocketAddressClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// InetSocketAddressPrivate is a wrapper around the C record GInetSocketAddressPrivate.
-type InetSocketAddressPrivate struct {
-	native *C.GInetSocketAddressPrivate
-}
-
-func InetSocketAddressPrivateNewFromC(u unsafe.Pointer) *InetSocketAddressPrivate {
-	c := (*C.GInetSocketAddressPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetSocketAddressPrivate{native: c}
-
-	return g
-}
-
-func (recv *InetSocketAddressPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this InetSocketAddressPrivate with another InetSocketAddressPrivate, and returns true if they represent the same GObject.
@@ -2412,66 +613,9 @@ func (recv *InetSocketAddressPrivate) Equals(other *InetSocketAddressPrivate) bo
 	return other.ToC() == recv.ToC()
 }
 
-// InputStreamClass is a wrapper around the C record GInputStreamClass.
-type InputStreamClass struct {
-	native *C.GInputStreamClass
-	// parent_class : record
-	// no type for read_fn
-	// no type for skip
-	// no type for close_fn
-	// no type for read_async
-	// no type for read_finish
-	// no type for skip_async
-	// no type for skip_finish
-	// no type for close_async
-	// no type for close_finish
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func InputStreamClassNewFromC(u unsafe.Pointer) *InputStreamClass {
-	c := (*C.GInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *InputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this InputStreamClass with another InputStreamClass, and returns true if they represent the same GObject.
 func (recv *InputStreamClass) Equals(other *InputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// InputStreamPrivate is a wrapper around the C record GInputStreamPrivate.
-type InputStreamPrivate struct {
-	native *C.GInputStreamPrivate
-}
-
-func InputStreamPrivateNewFromC(u unsafe.Pointer) *InputStreamPrivate {
-	c := (*C.GInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *InputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this InputStreamPrivate with another InputStreamPrivate, and returns true if they represent the same GObject.
@@ -2479,56 +623,9 @@ func (recv *InputStreamPrivate) Equals(other *InputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ListStoreClass is a wrapper around the C record GListStoreClass.
-type ListStoreClass struct {
-	native *C.GListStoreClass
-	// parent_class : record
-}
-
-func ListStoreClassNewFromC(u unsafe.Pointer) *ListStoreClass {
-	c := (*C.GListStoreClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ListStoreClass{native: c}
-
-	return g
-}
-
-func (recv *ListStoreClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ListStoreClass with another ListStoreClass, and returns true if they represent the same GObject.
 func (recv *ListStoreClass) Equals(other *ListStoreClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// LoadableIconIface is a wrapper around the C record GLoadableIconIface.
-type LoadableIconIface struct {
-	native *C.GLoadableIconIface
-	// g_iface : record
-	// no type for load
-	// no type for load_async
-	// no type for load_finish
-}
-
-func LoadableIconIfaceNewFromC(u unsafe.Pointer) *LoadableIconIface {
-	c := (*C.GLoadableIconIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &LoadableIconIface{native: c}
-
-	return g
-}
-
-func (recv *LoadableIconIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this LoadableIconIface with another LoadableIconIface, and returns true if they represent the same GObject.
@@ -2536,57 +633,9 @@ func (recv *LoadableIconIface) Equals(other *LoadableIconIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MemoryInputStreamClass is a wrapper around the C record GMemoryInputStreamClass.
-type MemoryInputStreamClass struct {
-	native *C.GMemoryInputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func MemoryInputStreamClassNewFromC(u unsafe.Pointer) *MemoryInputStreamClass {
-	c := (*C.GMemoryInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MemoryInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *MemoryInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MemoryInputStreamClass with another MemoryInputStreamClass, and returns true if they represent the same GObject.
 func (recv *MemoryInputStreamClass) Equals(other *MemoryInputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MemoryInputStreamPrivate is a wrapper around the C record GMemoryInputStreamPrivate.
-type MemoryInputStreamPrivate struct {
-	native *C.GMemoryInputStreamPrivate
-}
-
-func MemoryInputStreamPrivateNewFromC(u unsafe.Pointer) *MemoryInputStreamPrivate {
-	c := (*C.GMemoryInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MemoryInputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *MemoryInputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MemoryInputStreamPrivate with another MemoryInputStreamPrivate, and returns true if they represent the same GObject.
@@ -2594,57 +643,9 @@ func (recv *MemoryInputStreamPrivate) Equals(other *MemoryInputStreamPrivate) bo
 	return other.ToC() == recv.ToC()
 }
 
-// MemoryOutputStreamClass is a wrapper around the C record GMemoryOutputStreamClass.
-type MemoryOutputStreamClass struct {
-	native *C.GMemoryOutputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func MemoryOutputStreamClassNewFromC(u unsafe.Pointer) *MemoryOutputStreamClass {
-	c := (*C.GMemoryOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MemoryOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *MemoryOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MemoryOutputStreamClass with another MemoryOutputStreamClass, and returns true if they represent the same GObject.
 func (recv *MemoryOutputStreamClass) Equals(other *MemoryOutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MemoryOutputStreamPrivate is a wrapper around the C record GMemoryOutputStreamPrivate.
-type MemoryOutputStreamPrivate struct {
-	native *C.GMemoryOutputStreamPrivate
-}
-
-func MemoryOutputStreamPrivateNewFromC(u unsafe.Pointer) *MemoryOutputStreamPrivate {
-	c := (*C.GMemoryOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MemoryOutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *MemoryOutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MemoryOutputStreamPrivate with another MemoryOutputStreamPrivate, and returns true if they represent the same GObject.
@@ -2652,53 +653,9 @@ func (recv *MemoryOutputStreamPrivate) Equals(other *MemoryOutputStreamPrivate) 
 	return other.ToC() == recv.ToC()
 }
 
-// MenuAttributeIterClass is a wrapper around the C record GMenuAttributeIterClass.
-type MenuAttributeIterClass struct {
-	native *C.GMenuAttributeIterClass
-	// parent_class : record
-	// no type for get_next
-}
-
-func MenuAttributeIterClassNewFromC(u unsafe.Pointer) *MenuAttributeIterClass {
-	c := (*C.GMenuAttributeIterClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuAttributeIterClass{native: c}
-
-	return g
-}
-
-func (recv *MenuAttributeIterClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MenuAttributeIterClass with another MenuAttributeIterClass, and returns true if they represent the same GObject.
 func (recv *MenuAttributeIterClass) Equals(other *MenuAttributeIterClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MenuAttributeIterPrivate is a wrapper around the C record GMenuAttributeIterPrivate.
-type MenuAttributeIterPrivate struct {
-	native *C.GMenuAttributeIterPrivate
-}
-
-func MenuAttributeIterPrivateNewFromC(u unsafe.Pointer) *MenuAttributeIterPrivate {
-	c := (*C.GMenuAttributeIterPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuAttributeIterPrivate{native: c}
-
-	return g
-}
-
-func (recv *MenuAttributeIterPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MenuAttributeIterPrivate with another MenuAttributeIterPrivate, and returns true if they represent the same GObject.
@@ -2706,53 +663,9 @@ func (recv *MenuAttributeIterPrivate) Equals(other *MenuAttributeIterPrivate) bo
 	return other.ToC() == recv.ToC()
 }
 
-// MenuLinkIterClass is a wrapper around the C record GMenuLinkIterClass.
-type MenuLinkIterClass struct {
-	native *C.GMenuLinkIterClass
-	// parent_class : record
-	// no type for get_next
-}
-
-func MenuLinkIterClassNewFromC(u unsafe.Pointer) *MenuLinkIterClass {
-	c := (*C.GMenuLinkIterClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuLinkIterClass{native: c}
-
-	return g
-}
-
-func (recv *MenuLinkIterClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MenuLinkIterClass with another MenuLinkIterClass, and returns true if they represent the same GObject.
 func (recv *MenuLinkIterClass) Equals(other *MenuLinkIterClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MenuLinkIterPrivate is a wrapper around the C record GMenuLinkIterPrivate.
-type MenuLinkIterPrivate struct {
-	native *C.GMenuLinkIterPrivate
-}
-
-func MenuLinkIterPrivateNewFromC(u unsafe.Pointer) *MenuLinkIterPrivate {
-	c := (*C.GMenuLinkIterPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuLinkIterPrivate{native: c}
-
-	return g
-}
-
-func (recv *MenuLinkIterPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MenuLinkIterPrivate with another MenuLinkIterPrivate, and returns true if they represent the same GObject.
@@ -2760,60 +673,9 @@ func (recv *MenuLinkIterPrivate) Equals(other *MenuLinkIterPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MenuModelClass is a wrapper around the C record GMenuModelClass.
-type MenuModelClass struct {
-	native *C.GMenuModelClass
-	// parent_class : record
-	// no type for is_mutable
-	// no type for get_n_items
-	// no type for get_item_attributes
-	// no type for iterate_item_attributes
-	// no type for get_item_attribute_value
-	// no type for get_item_links
-	// no type for iterate_item_links
-	// no type for get_item_link
-}
-
-func MenuModelClassNewFromC(u unsafe.Pointer) *MenuModelClass {
-	c := (*C.GMenuModelClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuModelClass{native: c}
-
-	return g
-}
-
-func (recv *MenuModelClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MenuModelClass with another MenuModelClass, and returns true if they represent the same GObject.
 func (recv *MenuModelClass) Equals(other *MenuModelClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MenuModelPrivate is a wrapper around the C record GMenuModelPrivate.
-type MenuModelPrivate struct {
-	native *C.GMenuModelPrivate
-}
-
-func MenuModelPrivateNewFromC(u unsafe.Pointer) *MenuModelPrivate {
-	c := (*C.GMenuModelPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuModelPrivate{native: c}
-
-	return g
-}
-
-func (recv *MenuModelPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MenuModelPrivate with another MenuModelPrivate, and returns true if they represent the same GObject.
@@ -2821,95 +683,9 @@ func (recv *MenuModelPrivate) Equals(other *MenuModelPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MountIface is a wrapper around the C record GMountIface.
-type MountIface struct {
-	native *C.GMountIface
-	// g_iface : record
-	// no type for changed
-	// no type for unmounted
-	// no type for get_root
-	// no type for get_name
-	// no type for get_icon
-	// no type for get_uuid
-	// no type for get_volume
-	// no type for get_drive
-	// no type for can_unmount
-	// no type for can_eject
-	// no type for unmount
-	// no type for unmount_finish
-	// no type for eject
-	// no type for eject_finish
-	// no type for remount
-	// no type for remount_finish
-	// no type for guess_content_type
-	// no type for guess_content_type_finish
-	// no type for guess_content_type_sync
-	// no type for pre_unmount
-	// no type for unmount_with_operation
-	// no type for unmount_with_operation_finish
-	// no type for eject_with_operation
-	// no type for eject_with_operation_finish
-	// no type for get_default_location
-	// no type for get_sort_key
-	// no type for get_symbolic_icon
-}
-
-func MountIfaceNewFromC(u unsafe.Pointer) *MountIface {
-	c := (*C.GMountIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MountIface{native: c}
-
-	return g
-}
-
-func (recv *MountIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MountIface with another MountIface, and returns true if they represent the same GObject.
 func (recv *MountIface) Equals(other *MountIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MountOperationClass is a wrapper around the C record GMountOperationClass.
-type MountOperationClass struct {
-	native *C.GMountOperationClass
-	// parent_class : record
-	// no type for ask_password
-	// no type for ask_question
-	// no type for reply
-	// no type for aborted
-	// no type for show_processes
-	// no type for show_unmount_progress
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-	// no type for _g_reserved7
-	// no type for _g_reserved8
-	// no type for _g_reserved9
-}
-
-func MountOperationClassNewFromC(u unsafe.Pointer) *MountOperationClass {
-	c := (*C.GMountOperationClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MountOperationClass{native: c}
-
-	return g
-}
-
-func (recv *MountOperationClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MountOperationClass with another MountOperationClass, and returns true if they represent the same GObject.
@@ -2917,51 +693,9 @@ func (recv *MountOperationClass) Equals(other *MountOperationClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MountOperationPrivate is a wrapper around the C record GMountOperationPrivate.
-type MountOperationPrivate struct {
-	native *C.GMountOperationPrivate
-}
-
-func MountOperationPrivateNewFromC(u unsafe.Pointer) *MountOperationPrivate {
-	c := (*C.GMountOperationPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MountOperationPrivate{native: c}
-
-	return g
-}
-
-func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MountOperationPrivate with another MountOperationPrivate, and returns true if they represent the same GObject.
 func (recv *MountOperationPrivate) Equals(other *MountOperationPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// NativeSocketAddress is a wrapper around the C record GNativeSocketAddress.
-type NativeSocketAddress struct {
-	native *C.GNativeSocketAddress
-}
-
-func NativeSocketAddressNewFromC(u unsafe.Pointer) *NativeSocketAddress {
-	c := (*C.GNativeSocketAddress)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NativeSocketAddress{native: c}
-
-	return g
-}
-
-func (recv *NativeSocketAddress) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this NativeSocketAddress with another NativeSocketAddress, and returns true if they represent the same GObject.
@@ -2969,54 +703,9 @@ func (recv *NativeSocketAddress) Equals(other *NativeSocketAddress) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// NativeVolumeMonitorClass is a wrapper around the C record GNativeVolumeMonitorClass.
-type NativeVolumeMonitorClass struct {
-	native *C.GNativeVolumeMonitorClass
-	// parent_class : record
-	// no type for get_mount_for_mount_path
-}
-
-func NativeVolumeMonitorClassNewFromC(u unsafe.Pointer) *NativeVolumeMonitorClass {
-	c := (*C.GNativeVolumeMonitorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NativeVolumeMonitorClass{native: c}
-
-	return g
-}
-
-func (recv *NativeVolumeMonitorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this NativeVolumeMonitorClass with another NativeVolumeMonitorClass, and returns true if they represent the same GObject.
 func (recv *NativeVolumeMonitorClass) Equals(other *NativeVolumeMonitorClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// NetworkAddressClass is a wrapper around the C record GNetworkAddressClass.
-type NetworkAddressClass struct {
-	native *C.GNetworkAddressClass
-	// parent_class : record
-}
-
-func NetworkAddressClassNewFromC(u unsafe.Pointer) *NetworkAddressClass {
-	c := (*C.GNetworkAddressClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NetworkAddressClass{native: c}
-
-	return g
-}
-
-func (recv *NetworkAddressClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this NetworkAddressClass with another NetworkAddressClass, and returns true if they represent the same GObject.
@@ -3024,52 +713,9 @@ func (recv *NetworkAddressClass) Equals(other *NetworkAddressClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// NetworkAddressPrivate is a wrapper around the C record GNetworkAddressPrivate.
-type NetworkAddressPrivate struct {
-	native *C.GNetworkAddressPrivate
-}
-
-func NetworkAddressPrivateNewFromC(u unsafe.Pointer) *NetworkAddressPrivate {
-	c := (*C.GNetworkAddressPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NetworkAddressPrivate{native: c}
-
-	return g
-}
-
-func (recv *NetworkAddressPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this NetworkAddressPrivate with another NetworkAddressPrivate, and returns true if they represent the same GObject.
 func (recv *NetworkAddressPrivate) Equals(other *NetworkAddressPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// NetworkServiceClass is a wrapper around the C record GNetworkServiceClass.
-type NetworkServiceClass struct {
-	native *C.GNetworkServiceClass
-	// parent_class : record
-}
-
-func NetworkServiceClassNewFromC(u unsafe.Pointer) *NetworkServiceClass {
-	c := (*C.GNetworkServiceClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NetworkServiceClass{native: c}
-
-	return g
-}
-
-func (recv *NetworkServiceClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this NetworkServiceClass with another NetworkServiceClass, and returns true if they represent the same GObject.
@@ -3077,72 +723,9 @@ func (recv *NetworkServiceClass) Equals(other *NetworkServiceClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// NetworkServicePrivate is a wrapper around the C record GNetworkServicePrivate.
-type NetworkServicePrivate struct {
-	native *C.GNetworkServicePrivate
-}
-
-func NetworkServicePrivateNewFromC(u unsafe.Pointer) *NetworkServicePrivate {
-	c := (*C.GNetworkServicePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NetworkServicePrivate{native: c}
-
-	return g
-}
-
-func (recv *NetworkServicePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this NetworkServicePrivate with another NetworkServicePrivate, and returns true if they represent the same GObject.
 func (recv *NetworkServicePrivate) Equals(other *NetworkServicePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// OutputStreamClass is a wrapper around the C record GOutputStreamClass.
-type OutputStreamClass struct {
-	native *C.GOutputStreamClass
-	// parent_class : record
-	// no type for write_fn
-	// no type for splice
-	// no type for flush
-	// no type for close_fn
-	// no type for write_async
-	// no type for write_finish
-	// no type for splice_async
-	// no type for splice_finish
-	// no type for flush_async
-	// no type for flush_finish
-	// no type for close_async
-	// no type for close_finish
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-	// no type for _g_reserved7
-	// no type for _g_reserved8
-}
-
-func OutputStreamClassNewFromC(u unsafe.Pointer) *OutputStreamClass {
-	c := (*C.GOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &OutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *OutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this OutputStreamClass with another OutputStreamClass, and returns true if they represent the same GObject.
@@ -3150,59 +733,9 @@ func (recv *OutputStreamClass) Equals(other *OutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// OutputStreamPrivate is a wrapper around the C record GOutputStreamPrivate.
-type OutputStreamPrivate struct {
-	native *C.GOutputStreamPrivate
-}
-
-func OutputStreamPrivateNewFromC(u unsafe.Pointer) *OutputStreamPrivate {
-	c := (*C.GOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &OutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *OutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this OutputStreamPrivate with another OutputStreamPrivate, and returns true if they represent the same GObject.
 func (recv *OutputStreamPrivate) Equals(other *OutputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// PermissionClass is a wrapper around the C record GPermissionClass.
-type PermissionClass struct {
-	native *C.GPermissionClass
-	// parent_class : record
-	// no type for acquire
-	// no type for acquire_async
-	// no type for acquire_finish
-	// no type for release
-	// no type for release_async
-	// no type for release_finish
-	// no type for reserved
-}
-
-func PermissionClassNewFromC(u unsafe.Pointer) *PermissionClass {
-	c := (*C.GPermissionClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PermissionClass{native: c}
-
-	return g
-}
-
-func (recv *PermissionClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PermissionClass with another PermissionClass, and returns true if they represent the same GObject.
@@ -3210,59 +743,9 @@ func (recv *PermissionClass) Equals(other *PermissionClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// PermissionPrivate is a wrapper around the C record GPermissionPrivate.
-type PermissionPrivate struct {
-	native *C.GPermissionPrivate
-}
-
-func PermissionPrivateNewFromC(u unsafe.Pointer) *PermissionPrivate {
-	c := (*C.GPermissionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PermissionPrivate{native: c}
-
-	return g
-}
-
-func (recv *PermissionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this PermissionPrivate with another PermissionPrivate, and returns true if they represent the same GObject.
 func (recv *PermissionPrivate) Equals(other *PermissionPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ProxyAddressEnumeratorClass is a wrapper around the C record GProxyAddressEnumeratorClass.
-type ProxyAddressEnumeratorClass struct {
-	native *C.GProxyAddressEnumeratorClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-	// no type for _g_reserved7
-}
-
-func ProxyAddressEnumeratorClassNewFromC(u unsafe.Pointer) *ProxyAddressEnumeratorClass {
-	c := (*C.GProxyAddressEnumeratorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ProxyAddressEnumeratorClass{native: c}
-
-	return g
-}
-
-func (recv *ProxyAddressEnumeratorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ProxyAddressEnumeratorClass with another ProxyAddressEnumeratorClass, and returns true if they represent the same GObject.
@@ -3270,51 +753,9 @@ func (recv *ProxyAddressEnumeratorClass) Equals(other *ProxyAddressEnumeratorCla
 	return other.ToC() == recv.ToC()
 }
 
-// ProxyAddressEnumeratorPrivate is a wrapper around the C record GProxyAddressEnumeratorPrivate.
-type ProxyAddressEnumeratorPrivate struct {
-	native *C.GProxyAddressEnumeratorPrivate
-}
-
-func ProxyAddressEnumeratorPrivateNewFromC(u unsafe.Pointer) *ProxyAddressEnumeratorPrivate {
-	c := (*C.GProxyAddressEnumeratorPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ProxyAddressEnumeratorPrivate{native: c}
-
-	return g
-}
-
-func (recv *ProxyAddressEnumeratorPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ProxyAddressEnumeratorPrivate with another ProxyAddressEnumeratorPrivate, and returns true if they represent the same GObject.
 func (recv *ProxyAddressEnumeratorPrivate) Equals(other *ProxyAddressEnumeratorPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ProxyAddressPrivate is a wrapper around the C record GProxyAddressPrivate.
-type ProxyAddressPrivate struct {
-	native *C.GProxyAddressPrivate
-}
-
-func ProxyAddressPrivateNewFromC(u unsafe.Pointer) *ProxyAddressPrivate {
-	c := (*C.GProxyAddressPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ProxyAddressPrivate{native: c}
-
-	return g
-}
-
-func (recv *ProxyAddressPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ProxyAddressPrivate with another ProxyAddressPrivate, and returns true if they represent the same GObject.
@@ -3322,73 +763,9 @@ func (recv *ProxyAddressPrivate) Equals(other *ProxyAddressPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ProxyResolverInterface is a wrapper around the C record GProxyResolverInterface.
-type ProxyResolverInterface struct {
-	native *C.GProxyResolverInterface
-	// g_iface : record
-	// no type for is_supported
-	// no type for lookup
-	// no type for lookup_async
-	// no type for lookup_finish
-}
-
-func ProxyResolverInterfaceNewFromC(u unsafe.Pointer) *ProxyResolverInterface {
-	c := (*C.GProxyResolverInterface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ProxyResolverInterface{native: c}
-
-	return g
-}
-
-func (recv *ProxyResolverInterface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ProxyResolverInterface with another ProxyResolverInterface, and returns true if they represent the same GObject.
 func (recv *ProxyResolverInterface) Equals(other *ProxyResolverInterface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ResolverClass is a wrapper around the C record GResolverClass.
-type ResolverClass struct {
-	native *C.GResolverClass
-	// parent_class : record
-	// no type for reload
-	// no type for lookup_by_name
-	// no type for lookup_by_name_async
-	// no type for lookup_by_name_finish
-	// no type for lookup_by_address
-	// no type for lookup_by_address_async
-	// no type for lookup_by_address_finish
-	// no type for lookup_service
-	// no type for lookup_service_async
-	// no type for lookup_service_finish
-	// no type for lookup_records
-	// no type for lookup_records_async
-	// no type for lookup_records_finish
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-}
-
-func ResolverClassNewFromC(u unsafe.Pointer) *ResolverClass {
-	c := (*C.GResolverClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ResolverClass{native: c}
-
-	return g
-}
-
-func (recv *ResolverClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ResolverClass with another ResolverClass, and returns true if they represent the same GObject.
@@ -3396,57 +773,9 @@ func (recv *ResolverClass) Equals(other *ResolverClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ResolverPrivate is a wrapper around the C record GResolverPrivate.
-type ResolverPrivate struct {
-	native *C.GResolverPrivate
-}
-
-func ResolverPrivateNewFromC(u unsafe.Pointer) *ResolverPrivate {
-	c := (*C.GResolverPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ResolverPrivate{native: c}
-
-	return g
-}
-
-func (recv *ResolverPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ResolverPrivate with another ResolverPrivate, and returns true if they represent the same GObject.
 func (recv *ResolverPrivate) Equals(other *ResolverPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SeekableIface is a wrapper around the C record GSeekableIface.
-type SeekableIface struct {
-	native *C.GSeekableIface
-	// g_iface : record
-	// no type for tell
-	// no type for can_seek
-	// no type for seek
-	// no type for can_truncate
-	// no type for truncate_fn
-}
-
-func SeekableIfaceNewFromC(u unsafe.Pointer) *SeekableIface {
-	c := (*C.GSeekableIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SeekableIface{native: c}
-
-	return g
-}
-
-func (recv *SeekableIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SeekableIface with another SeekableIface, and returns true if they represent the same GObject.
@@ -3458,57 +787,9 @@ func (recv *SeekableIface) Equals(other *SeekableIface) bool {
 
 // Blacklisted : GSettingsBackendPrivate
 
-// SettingsClass is a wrapper around the C record GSettingsClass.
-type SettingsClass struct {
-	native *C.GSettingsClass
-	// parent_class : record
-	// no type for writable_changed
-	// no type for changed
-	// no type for writable_change_event
-	// no type for change_event
-	// no type for padding
-}
-
-func SettingsClassNewFromC(u unsafe.Pointer) *SettingsClass {
-	c := (*C.GSettingsClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SettingsClass{native: c}
-
-	return g
-}
-
-func (recv *SettingsClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SettingsClass with another SettingsClass, and returns true if they represent the same GObject.
 func (recv *SettingsClass) Equals(other *SettingsClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SettingsPrivate is a wrapper around the C record GSettingsPrivate.
-type SettingsPrivate struct {
-	native *C.GSettingsPrivate
-}
-
-func SettingsPrivateNewFromC(u unsafe.Pointer) *SettingsPrivate {
-	c := (*C.GSettingsPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SettingsPrivate{native: c}
-
-	return g
-}
-
-func (recv *SettingsPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SettingsPrivate with another SettingsPrivate, and returns true if they represent the same GObject.
@@ -3516,53 +797,9 @@ func (recv *SettingsPrivate) Equals(other *SettingsPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SettingsSchemaKey is a wrapper around the C record GSettingsSchemaKey.
-type SettingsSchemaKey struct {
-	native *C.GSettingsSchemaKey
-}
-
-func SettingsSchemaKeyNewFromC(u unsafe.Pointer) *SettingsSchemaKey {
-	c := (*C.GSettingsSchemaKey)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SettingsSchemaKey{native: c}
-
-	return g
-}
-
-func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SettingsSchemaKey with another SettingsSchemaKey, and returns true if they represent the same GObject.
 func (recv *SettingsSchemaKey) Equals(other *SettingsSchemaKey) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SimpleActionGroupClass is a wrapper around the C record GSimpleActionGroupClass.
-type SimpleActionGroupClass struct {
-	native *C.GSimpleActionGroupClass
-	// Private : parent_class
-	// Private : padding
-}
-
-func SimpleActionGroupClassNewFromC(u unsafe.Pointer) *SimpleActionGroupClass {
-	c := (*C.GSimpleActionGroupClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleActionGroupClass{native: c}
-
-	return g
-}
-
-func (recv *SimpleActionGroupClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SimpleActionGroupClass with another SimpleActionGroupClass, and returns true if they represent the same GObject.
@@ -3570,51 +807,9 @@ func (recv *SimpleActionGroupClass) Equals(other *SimpleActionGroupClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SimpleActionGroupPrivate is a wrapper around the C record GSimpleActionGroupPrivate.
-type SimpleActionGroupPrivate struct {
-	native *C.GSimpleActionGroupPrivate
-}
-
-func SimpleActionGroupPrivateNewFromC(u unsafe.Pointer) *SimpleActionGroupPrivate {
-	c := (*C.GSimpleActionGroupPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleActionGroupPrivate{native: c}
-
-	return g
-}
-
-func (recv *SimpleActionGroupPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SimpleActionGroupPrivate with another SimpleActionGroupPrivate, and returns true if they represent the same GObject.
 func (recv *SimpleActionGroupPrivate) Equals(other *SimpleActionGroupPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SimpleAsyncResultClass is a wrapper around the C record GSimpleAsyncResultClass.
-type SimpleAsyncResultClass struct {
-	native *C.GSimpleAsyncResultClass
-}
-
-func SimpleAsyncResultClassNewFromC(u unsafe.Pointer) *SimpleAsyncResultClass {
-	c := (*C.GSimpleAsyncResultClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleAsyncResultClass{native: c}
-
-	return g
-}
-
-func (recv *SimpleAsyncResultClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SimpleAsyncResultClass with another SimpleAsyncResultClass, and returns true if they represent the same GObject.
@@ -3622,57 +817,9 @@ func (recv *SimpleAsyncResultClass) Equals(other *SimpleAsyncResultClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SimpleProxyResolverClass is a wrapper around the C record GSimpleProxyResolverClass.
-type SimpleProxyResolverClass struct {
-	native *C.GSimpleProxyResolverClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func SimpleProxyResolverClassNewFromC(u unsafe.Pointer) *SimpleProxyResolverClass {
-	c := (*C.GSimpleProxyResolverClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleProxyResolverClass{native: c}
-
-	return g
-}
-
-func (recv *SimpleProxyResolverClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SimpleProxyResolverClass with another SimpleProxyResolverClass, and returns true if they represent the same GObject.
 func (recv *SimpleProxyResolverClass) Equals(other *SimpleProxyResolverClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SimpleProxyResolverPrivate is a wrapper around the C record GSimpleProxyResolverPrivate.
-type SimpleProxyResolverPrivate struct {
-	native *C.GSimpleProxyResolverPrivate
-}
-
-func SimpleProxyResolverPrivateNewFromC(u unsafe.Pointer) *SimpleProxyResolverPrivate {
-	c := (*C.GSimpleProxyResolverPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleProxyResolverPrivate{native: c}
-
-	return g
-}
-
-func (recv *SimpleProxyResolverPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SimpleProxyResolverPrivate with another SimpleProxyResolverPrivate, and returns true if they represent the same GObject.
@@ -3680,59 +827,9 @@ func (recv *SimpleProxyResolverPrivate) Equals(other *SimpleProxyResolverPrivate
 	return other.ToC() == recv.ToC()
 }
 
-// SocketAddressClass is a wrapper around the C record GSocketAddressClass.
-type SocketAddressClass struct {
-	native *C.GSocketAddressClass
-	// parent_class : record
-	// no type for get_family
-	// no type for get_native_size
-	// no type for to_native
-}
-
-func SocketAddressClassNewFromC(u unsafe.Pointer) *SocketAddressClass {
-	c := (*C.GSocketAddressClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketAddressClass{native: c}
-
-	return g
-}
-
-func (recv *SocketAddressClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketAddressClass with another SocketAddressClass, and returns true if they represent the same GObject.
 func (recv *SocketAddressClass) Equals(other *SocketAddressClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketAddressEnumeratorClass is a wrapper around the C record GSocketAddressEnumeratorClass.
-type SocketAddressEnumeratorClass struct {
-	native *C.GSocketAddressEnumeratorClass
-	// parent_class : record
-	// no type for next
-	// no type for next_async
-	// no type for next_finish
-}
-
-func SocketAddressEnumeratorClassNewFromC(u unsafe.Pointer) *SocketAddressEnumeratorClass {
-	c := (*C.GSocketAddressEnumeratorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketAddressEnumeratorClass{native: c}
-
-	return g
-}
-
-func (recv *SocketAddressEnumeratorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketAddressEnumeratorClass with another SocketAddressEnumeratorClass, and returns true if they represent the same GObject.
@@ -3740,68 +837,9 @@ func (recv *SocketAddressEnumeratorClass) Equals(other *SocketAddressEnumeratorC
 	return other.ToC() == recv.ToC()
 }
 
-// SocketClass is a wrapper around the C record GSocketClass.
-type SocketClass struct {
-	native *C.GSocketClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-	// no type for _g_reserved7
-	// no type for _g_reserved8
-	// no type for _g_reserved9
-	// no type for _g_reserved10
-}
-
-func SocketClassNewFromC(u unsafe.Pointer) *SocketClass {
-	c := (*C.GSocketClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketClass{native: c}
-
-	return g
-}
-
-func (recv *SocketClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketClass with another SocketClass, and returns true if they represent the same GObject.
 func (recv *SocketClass) Equals(other *SocketClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketClientClass is a wrapper around the C record GSocketClientClass.
-type SocketClientClass struct {
-	native *C.GSocketClientClass
-	// parent_class : record
-	// no type for event
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-}
-
-func SocketClientClassNewFromC(u unsafe.Pointer) *SocketClientClass {
-	c := (*C.GSocketClientClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketClientClass{native: c}
-
-	return g
-}
-
-func (recv *SocketClientClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketClientClass with another SocketClientClass, and returns true if they represent the same GObject.
@@ -3809,55 +847,9 @@ func (recv *SocketClientClass) Equals(other *SocketClientClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SocketClientPrivate is a wrapper around the C record GSocketClientPrivate.
-type SocketClientPrivate struct {
-	native *C.GSocketClientPrivate
-}
-
-func SocketClientPrivateNewFromC(u unsafe.Pointer) *SocketClientPrivate {
-	c := (*C.GSocketClientPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketClientPrivate{native: c}
-
-	return g
-}
-
-func (recv *SocketClientPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketClientPrivate with another SocketClientPrivate, and returns true if they represent the same GObject.
 func (recv *SocketClientPrivate) Equals(other *SocketClientPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketConnectableIface is a wrapper around the C record GSocketConnectableIface.
-type SocketConnectableIface struct {
-	native *C.GSocketConnectableIface
-	// g_iface : record
-	// no type for enumerate
-	// no type for proxy_enumerate
-	// no type for to_string
-}
-
-func SocketConnectableIfaceNewFromC(u unsafe.Pointer) *SocketConnectableIface {
-	c := (*C.GSocketConnectableIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketConnectableIface{native: c}
-
-	return g
-}
-
-func (recv *SocketConnectableIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketConnectableIface with another SocketConnectableIface, and returns true if they represent the same GObject.
@@ -3865,58 +857,9 @@ func (recv *SocketConnectableIface) Equals(other *SocketConnectableIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SocketConnectionClass is a wrapper around the C record GSocketConnectionClass.
-type SocketConnectionClass struct {
-	native *C.GSocketConnectionClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-}
-
-func SocketConnectionClassNewFromC(u unsafe.Pointer) *SocketConnectionClass {
-	c := (*C.GSocketConnectionClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketConnectionClass{native: c}
-
-	return g
-}
-
-func (recv *SocketConnectionClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketConnectionClass with another SocketConnectionClass, and returns true if they represent the same GObject.
 func (recv *SocketConnectionClass) Equals(other *SocketConnectionClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketConnectionPrivate is a wrapper around the C record GSocketConnectionPrivate.
-type SocketConnectionPrivate struct {
-	native *C.GSocketConnectionPrivate
-}
-
-func SocketConnectionPrivateNewFromC(u unsafe.Pointer) *SocketConnectionPrivate {
-	c := (*C.GSocketConnectionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketConnectionPrivate{native: c}
-
-	return g
-}
-
-func (recv *SocketConnectionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketConnectionPrivate with another SocketConnectionPrivate, and returns true if they represent the same GObject.
@@ -3924,62 +867,9 @@ func (recv *SocketConnectionPrivate) Equals(other *SocketConnectionPrivate) bool
 	return other.ToC() == recv.ToC()
 }
 
-// SocketControlMessageClass is a wrapper around the C record GSocketControlMessageClass.
-type SocketControlMessageClass struct {
-	native *C.GSocketControlMessageClass
-	// parent_class : record
-	// no type for get_size
-	// no type for get_level
-	// no type for get_type
-	// no type for serialize
-	// no type for deserialize
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func SocketControlMessageClassNewFromC(u unsafe.Pointer) *SocketControlMessageClass {
-	c := (*C.GSocketControlMessageClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketControlMessageClass{native: c}
-
-	return g
-}
-
-func (recv *SocketControlMessageClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketControlMessageClass with another SocketControlMessageClass, and returns true if they represent the same GObject.
 func (recv *SocketControlMessageClass) Equals(other *SocketControlMessageClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketControlMessagePrivate is a wrapper around the C record GSocketControlMessagePrivate.
-type SocketControlMessagePrivate struct {
-	native *C.GSocketControlMessagePrivate
-}
-
-func SocketControlMessagePrivateNewFromC(u unsafe.Pointer) *SocketControlMessagePrivate {
-	c := (*C.GSocketControlMessagePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketControlMessagePrivate{native: c}
-
-	return g
-}
-
-func (recv *SocketControlMessagePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketControlMessagePrivate with another SocketControlMessagePrivate, and returns true if they represent the same GObject.
@@ -3987,59 +877,9 @@ func (recv *SocketControlMessagePrivate) Equals(other *SocketControlMessagePriva
 	return other.ToC() == recv.ToC()
 }
 
-// SocketListenerClass is a wrapper around the C record GSocketListenerClass.
-type SocketListenerClass struct {
-	native *C.GSocketListenerClass
-	// parent_class : record
-	// no type for changed
-	// no type for event
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-}
-
-func SocketListenerClassNewFromC(u unsafe.Pointer) *SocketListenerClass {
-	c := (*C.GSocketListenerClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketListenerClass{native: c}
-
-	return g
-}
-
-func (recv *SocketListenerClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketListenerClass with another SocketListenerClass, and returns true if they represent the same GObject.
 func (recv *SocketListenerClass) Equals(other *SocketListenerClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketListenerPrivate is a wrapper around the C record GSocketListenerPrivate.
-type SocketListenerPrivate struct {
-	native *C.GSocketListenerPrivate
-}
-
-func SocketListenerPrivateNewFromC(u unsafe.Pointer) *SocketListenerPrivate {
-	c := (*C.GSocketListenerPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketListenerPrivate{native: c}
-
-	return g
-}
-
-func (recv *SocketListenerPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketListenerPrivate with another SocketListenerPrivate, and returns true if they represent the same GObject.
@@ -4047,59 +887,9 @@ func (recv *SocketListenerPrivate) Equals(other *SocketListenerPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SocketPrivate is a wrapper around the C record GSocketPrivate.
-type SocketPrivate struct {
-	native *C.GSocketPrivate
-}
-
-func SocketPrivateNewFromC(u unsafe.Pointer) *SocketPrivate {
-	c := (*C.GSocketPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketPrivate{native: c}
-
-	return g
-}
-
-func (recv *SocketPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketPrivate with another SocketPrivate, and returns true if they represent the same GObject.
 func (recv *SocketPrivate) Equals(other *SocketPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SocketServiceClass is a wrapper around the C record GSocketServiceClass.
-type SocketServiceClass struct {
-	native *C.GSocketServiceClass
-	// parent_class : record
-	// no type for incoming
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-}
-
-func SocketServiceClassNewFromC(u unsafe.Pointer) *SocketServiceClass {
-	c := (*C.GSocketServiceClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketServiceClass{native: c}
-
-	return g
-}
-
-func (recv *SocketServiceClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SocketServiceClass with another SocketServiceClass, and returns true if they represent the same GObject.
@@ -4107,51 +897,9 @@ func (recv *SocketServiceClass) Equals(other *SocketServiceClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SocketServicePrivate is a wrapper around the C record GSocketServicePrivate.
-type SocketServicePrivate struct {
-	native *C.GSocketServicePrivate
-}
-
-func SocketServicePrivateNewFromC(u unsafe.Pointer) *SocketServicePrivate {
-	c := (*C.GSocketServicePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketServicePrivate{native: c}
-
-	return g
-}
-
-func (recv *SocketServicePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketServicePrivate with another SocketServicePrivate, and returns true if they represent the same GObject.
 func (recv *SocketServicePrivate) Equals(other *SocketServicePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SrvTarget is a wrapper around the C record GSrvTarget.
-type SrvTarget struct {
-	native *C.GSrvTarget
-}
-
-func SrvTargetNewFromC(u unsafe.Pointer) *SrvTarget {
-	c := (*C.GSrvTarget)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SrvTarget{native: c}
-
-	return g
-}
-
-func (recv *SrvTarget) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SrvTarget with another SrvTarget, and returns true if they represent the same GObject.
@@ -4159,56 +907,9 @@ func (recv *SrvTarget) Equals(other *SrvTarget) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// StaticResource is a wrapper around the C record GStaticResource.
-type StaticResource struct {
-	native *C.GStaticResource
-	// Private : data
-	// Private : data_len
-	// Private : resource
-	// Private : next
-	// Private : padding
-}
-
-func StaticResourceNewFromC(u unsafe.Pointer) *StaticResource {
-	c := (*C.GStaticResource)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &StaticResource{native: c}
-
-	return g
-}
-
-func (recv *StaticResource) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this StaticResource with another StaticResource, and returns true if they represent the same GObject.
 func (recv *StaticResource) Equals(other *StaticResource) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TaskClass is a wrapper around the C record GTaskClass.
-type TaskClass struct {
-	native *C.GTaskClass
-}
-
-func TaskClassNewFromC(u unsafe.Pointer) *TaskClass {
-	c := (*C.GTaskClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TaskClass{native: c}
-
-	return g
-}
-
-func (recv *TaskClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TaskClass with another TaskClass, and returns true if they represent the same GObject.
@@ -4216,52 +917,9 @@ func (recv *TaskClass) Equals(other *TaskClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TcpConnectionClass is a wrapper around the C record GTcpConnectionClass.
-type TcpConnectionClass struct {
-	native *C.GTcpConnectionClass
-	// parent_class : record
-}
-
-func TcpConnectionClassNewFromC(u unsafe.Pointer) *TcpConnectionClass {
-	c := (*C.GTcpConnectionClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TcpConnectionClass{native: c}
-
-	return g
-}
-
-func (recv *TcpConnectionClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TcpConnectionClass with another TcpConnectionClass, and returns true if they represent the same GObject.
 func (recv *TcpConnectionClass) Equals(other *TcpConnectionClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TcpConnectionPrivate is a wrapper around the C record GTcpConnectionPrivate.
-type TcpConnectionPrivate struct {
-	native *C.GTcpConnectionPrivate
-}
-
-func TcpConnectionPrivateNewFromC(u unsafe.Pointer) *TcpConnectionPrivate {
-	c := (*C.GTcpConnectionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TcpConnectionPrivate{native: c}
-
-	return g
-}
-
-func (recv *TcpConnectionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TcpConnectionPrivate with another TcpConnectionPrivate, and returns true if they represent the same GObject.
@@ -4269,52 +927,9 @@ func (recv *TcpConnectionPrivate) Equals(other *TcpConnectionPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TcpWrapperConnectionClass is a wrapper around the C record GTcpWrapperConnectionClass.
-type TcpWrapperConnectionClass struct {
-	native *C.GTcpWrapperConnectionClass
-	// parent_class : record
-}
-
-func TcpWrapperConnectionClassNewFromC(u unsafe.Pointer) *TcpWrapperConnectionClass {
-	c := (*C.GTcpWrapperConnectionClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TcpWrapperConnectionClass{native: c}
-
-	return g
-}
-
-func (recv *TcpWrapperConnectionClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TcpWrapperConnectionClass with another TcpWrapperConnectionClass, and returns true if they represent the same GObject.
 func (recv *TcpWrapperConnectionClass) Equals(other *TcpWrapperConnectionClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TcpWrapperConnectionPrivate is a wrapper around the C record GTcpWrapperConnectionPrivate.
-type TcpWrapperConnectionPrivate struct {
-	native *C.GTcpWrapperConnectionPrivate
-}
-
-func TcpWrapperConnectionPrivateNewFromC(u unsafe.Pointer) *TcpWrapperConnectionPrivate {
-	c := (*C.GTcpWrapperConnectionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TcpWrapperConnectionPrivate{native: c}
-
-	return g
-}
-
-func (recv *TcpWrapperConnectionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TcpWrapperConnectionPrivate with another TcpWrapperConnectionPrivate, and returns true if they represent the same GObject.
@@ -4322,58 +937,9 @@ func (recv *TcpWrapperConnectionPrivate) Equals(other *TcpWrapperConnectionPriva
 	return other.ToC() == recv.ToC()
 }
 
-// ThemedIconClass is a wrapper around the C record GThemedIconClass.
-type ThemedIconClass struct {
-	native *C.GThemedIconClass
-}
-
-func ThemedIconClassNewFromC(u unsafe.Pointer) *ThemedIconClass {
-	c := (*C.GThemedIconClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ThemedIconClass{native: c}
-
-	return g
-}
-
-func (recv *ThemedIconClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ThemedIconClass with another ThemedIconClass, and returns true if they represent the same GObject.
 func (recv *ThemedIconClass) Equals(other *ThemedIconClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ThreadedSocketServiceClass is a wrapper around the C record GThreadedSocketServiceClass.
-type ThreadedSocketServiceClass struct {
-	native *C.GThreadedSocketServiceClass
-	// parent_class : record
-	// no type for run
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func ThreadedSocketServiceClassNewFromC(u unsafe.Pointer) *ThreadedSocketServiceClass {
-	c := (*C.GThreadedSocketServiceClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ThreadedSocketServiceClass{native: c}
-
-	return g
-}
-
-func (recv *ThreadedSocketServiceClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ThreadedSocketServiceClass with another ThreadedSocketServiceClass, and returns true if they represent the same GObject.
@@ -4381,54 +947,9 @@ func (recv *ThreadedSocketServiceClass) Equals(other *ThreadedSocketServiceClass
 	return other.ToC() == recv.ToC()
 }
 
-// ThreadedSocketServicePrivate is a wrapper around the C record GThreadedSocketServicePrivate.
-type ThreadedSocketServicePrivate struct {
-	native *C.GThreadedSocketServicePrivate
-}
-
-func ThreadedSocketServicePrivateNewFromC(u unsafe.Pointer) *ThreadedSocketServicePrivate {
-	c := (*C.GThreadedSocketServicePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ThreadedSocketServicePrivate{native: c}
-
-	return g
-}
-
-func (recv *ThreadedSocketServicePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ThreadedSocketServicePrivate with another ThreadedSocketServicePrivate, and returns true if they represent the same GObject.
 func (recv *ThreadedSocketServicePrivate) Equals(other *ThreadedSocketServicePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TlsCertificateClass is a wrapper around the C record GTlsCertificateClass.
-type TlsCertificateClass struct {
-	native *C.GTlsCertificateClass
-	// parent_class : record
-	// no type for verify
-	// Private : padding
-}
-
-func TlsCertificateClassNewFromC(u unsafe.Pointer) *TlsCertificateClass {
-	c := (*C.GTlsCertificateClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsCertificateClass{native: c}
-
-	return g
-}
-
-func (recv *TlsCertificateClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsCertificateClass with another TlsCertificateClass, and returns true if they represent the same GObject.
@@ -4436,57 +957,9 @@ func (recv *TlsCertificateClass) Equals(other *TlsCertificateClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsCertificatePrivate is a wrapper around the C record GTlsCertificatePrivate.
-type TlsCertificatePrivate struct {
-	native *C.GTlsCertificatePrivate
-}
-
-func TlsCertificatePrivateNewFromC(u unsafe.Pointer) *TlsCertificatePrivate {
-	c := (*C.GTlsCertificatePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsCertificatePrivate{native: c}
-
-	return g
-}
-
-func (recv *TlsCertificatePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsCertificatePrivate with another TlsCertificatePrivate, and returns true if they represent the same GObject.
 func (recv *TlsCertificatePrivate) Equals(other *TlsCertificatePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TlsConnectionClass is a wrapper around the C record GTlsConnectionClass.
-type TlsConnectionClass struct {
-	native *C.GTlsConnectionClass
-	// parent_class : record
-	// no type for accept_certificate
-	// no type for handshake
-	// no type for handshake_async
-	// no type for handshake_finish
-	// Private : padding
-}
-
-func TlsConnectionClassNewFromC(u unsafe.Pointer) *TlsConnectionClass {
-	c := (*C.GTlsConnectionClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsConnectionClass{native: c}
-
-	return g
-}
-
-func (recv *TlsConnectionClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsConnectionClass with another TlsConnectionClass, and returns true if they represent the same GObject.
@@ -4494,51 +967,9 @@ func (recv *TlsConnectionClass) Equals(other *TlsConnectionClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsConnectionPrivate is a wrapper around the C record GTlsConnectionPrivate.
-type TlsConnectionPrivate struct {
-	native *C.GTlsConnectionPrivate
-}
-
-func TlsConnectionPrivateNewFromC(u unsafe.Pointer) *TlsConnectionPrivate {
-	c := (*C.GTlsConnectionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsConnectionPrivate{native: c}
-
-	return g
-}
-
-func (recv *TlsConnectionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsConnectionPrivate with another TlsConnectionPrivate, and returns true if they represent the same GObject.
 func (recv *TlsConnectionPrivate) Equals(other *TlsConnectionPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TlsDatabasePrivate is a wrapper around the C record GTlsDatabasePrivate.
-type TlsDatabasePrivate struct {
-	native *C.GTlsDatabasePrivate
-}
-
-func TlsDatabasePrivateNewFromC(u unsafe.Pointer) *TlsDatabasePrivate {
-	c := (*C.GTlsDatabasePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsDatabasePrivate{native: c}
-
-	return g
-}
-
-func (recv *TlsDatabasePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsDatabasePrivate with another TlsDatabasePrivate, and returns true if they represent the same GObject.
@@ -4546,53 +977,9 @@ func (recv *TlsDatabasePrivate) Equals(other *TlsDatabasePrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsFileDatabaseInterface is a wrapper around the C record GTlsFileDatabaseInterface.
-type TlsFileDatabaseInterface struct {
-	native *C.GTlsFileDatabaseInterface
-	// g_iface : record
-	// Private : padding
-}
-
-func TlsFileDatabaseInterfaceNewFromC(u unsafe.Pointer) *TlsFileDatabaseInterface {
-	c := (*C.GTlsFileDatabaseInterface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsFileDatabaseInterface{native: c}
-
-	return g
-}
-
-func (recv *TlsFileDatabaseInterface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsFileDatabaseInterface with another TlsFileDatabaseInterface, and returns true if they represent the same GObject.
 func (recv *TlsFileDatabaseInterface) Equals(other *TlsFileDatabaseInterface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TlsInteractionPrivate is a wrapper around the C record GTlsInteractionPrivate.
-type TlsInteractionPrivate struct {
-	native *C.GTlsInteractionPrivate
-}
-
-func TlsInteractionPrivateNewFromC(u unsafe.Pointer) *TlsInteractionPrivate {
-	c := (*C.GTlsInteractionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsInteractionPrivate{native: c}
-
-	return g
-}
-
-func (recv *TlsInteractionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsInteractionPrivate with another TlsInteractionPrivate, and returns true if they represent the same GObject.
@@ -4600,56 +987,9 @@ func (recv *TlsInteractionPrivate) Equals(other *TlsInteractionPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// TlsPasswordClass is a wrapper around the C record GTlsPasswordClass.
-type TlsPasswordClass struct {
-	native *C.GTlsPasswordClass
-	// parent_class : record
-	// no type for get_value
-	// no type for set_value
-	// no type for get_default_warning
-	// Private : padding
-}
-
-func TlsPasswordClassNewFromC(u unsafe.Pointer) *TlsPasswordClass {
-	c := (*C.GTlsPasswordClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsPasswordClass{native: c}
-
-	return g
-}
-
-func (recv *TlsPasswordClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsPasswordClass with another TlsPasswordClass, and returns true if they represent the same GObject.
 func (recv *TlsPasswordClass) Equals(other *TlsPasswordClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TlsPasswordPrivate is a wrapper around the C record GTlsPasswordPrivate.
-type TlsPasswordPrivate struct {
-	native *C.GTlsPasswordPrivate
-}
-
-func TlsPasswordPrivateNewFromC(u unsafe.Pointer) *TlsPasswordPrivate {
-	c := (*C.GTlsPasswordPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsPasswordPrivate{native: c}
-
-	return g
-}
-
-func (recv *TlsPasswordPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsPasswordPrivate with another TlsPasswordPrivate, and returns true if they represent the same GObject.
@@ -4657,52 +997,9 @@ func (recv *TlsPasswordPrivate) Equals(other *TlsPasswordPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// UnixConnectionClass is a wrapper around the C record GUnixConnectionClass.
-type UnixConnectionClass struct {
-	native *C.GUnixConnectionClass
-	// parent_class : record
-}
-
-func UnixConnectionClassNewFromC(u unsafe.Pointer) *UnixConnectionClass {
-	c := (*C.GUnixConnectionClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixConnectionClass{native: c}
-
-	return g
-}
-
-func (recv *UnixConnectionClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixConnectionClass with another UnixConnectionClass, and returns true if they represent the same GObject.
 func (recv *UnixConnectionClass) Equals(other *UnixConnectionClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixConnectionPrivate is a wrapper around the C record GUnixConnectionPrivate.
-type UnixConnectionPrivate struct {
-	native *C.GUnixConnectionPrivate
-}
-
-func UnixConnectionPrivateNewFromC(u unsafe.Pointer) *UnixConnectionPrivate {
-	c := (*C.GUnixConnectionPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixConnectionPrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixConnectionPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixConnectionPrivate with another UnixConnectionPrivate, and returns true if they represent the same GObject.
@@ -4710,57 +1007,9 @@ func (recv *UnixConnectionPrivate) Equals(other *UnixConnectionPrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// UnixCredentialsMessagePrivate is a wrapper around the C record GUnixCredentialsMessagePrivate.
-type UnixCredentialsMessagePrivate struct {
-	native *C.GUnixCredentialsMessagePrivate
-}
-
-func UnixCredentialsMessagePrivateNewFromC(u unsafe.Pointer) *UnixCredentialsMessagePrivate {
-	c := (*C.GUnixCredentialsMessagePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixCredentialsMessagePrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixCredentialsMessagePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixCredentialsMessagePrivate with another UnixCredentialsMessagePrivate, and returns true if they represent the same GObject.
 func (recv *UnixCredentialsMessagePrivate) Equals(other *UnixCredentialsMessagePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixFDListClass is a wrapper around the C record GUnixFDListClass.
-type UnixFDListClass struct {
-	native *C.GUnixFDListClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func UnixFDListClassNewFromC(u unsafe.Pointer) *UnixFDListClass {
-	c := (*C.GUnixFDListClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixFDListClass{native: c}
-
-	return g
-}
-
-func (recv *UnixFDListClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixFDListClass with another UnixFDListClass, and returns true if they represent the same GObject.
@@ -4768,54 +1017,9 @@ func (recv *UnixFDListClass) Equals(other *UnixFDListClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// UnixFDListPrivate is a wrapper around the C record GUnixFDListPrivate.
-type UnixFDListPrivate struct {
-	native *C.GUnixFDListPrivate
-}
-
-func UnixFDListPrivateNewFromC(u unsafe.Pointer) *UnixFDListPrivate {
-	c := (*C.GUnixFDListPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixFDListPrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixFDListPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixFDListPrivate with another UnixFDListPrivate, and returns true if they represent the same GObject.
 func (recv *UnixFDListPrivate) Equals(other *UnixFDListPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixFDMessageClass is a wrapper around the C record GUnixFDMessageClass.
-type UnixFDMessageClass struct {
-	native *C.GUnixFDMessageClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-}
-
-func UnixFDMessageClassNewFromC(u unsafe.Pointer) *UnixFDMessageClass {
-	c := (*C.GUnixFDMessageClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixFDMessageClass{native: c}
-
-	return g
-}
-
-func (recv *UnixFDMessageClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixFDMessageClass with another UnixFDMessageClass, and returns true if they represent the same GObject.
@@ -4823,57 +1027,9 @@ func (recv *UnixFDMessageClass) Equals(other *UnixFDMessageClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// UnixFDMessagePrivate is a wrapper around the C record GUnixFDMessagePrivate.
-type UnixFDMessagePrivate struct {
-	native *C.GUnixFDMessagePrivate
-}
-
-func UnixFDMessagePrivateNewFromC(u unsafe.Pointer) *UnixFDMessagePrivate {
-	c := (*C.GUnixFDMessagePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixFDMessagePrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixFDMessagePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixFDMessagePrivate with another UnixFDMessagePrivate, and returns true if they represent the same GObject.
 func (recv *UnixFDMessagePrivate) Equals(other *UnixFDMessagePrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixInputStreamClass is a wrapper around the C record GUnixInputStreamClass.
-type UnixInputStreamClass struct {
-	native *C.GUnixInputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func UnixInputStreamClassNewFromC(u unsafe.Pointer) *UnixInputStreamClass {
-	c := (*C.GUnixInputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixInputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *UnixInputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixInputStreamClass with another UnixInputStreamClass, and returns true if they represent the same GObject.
@@ -4881,51 +1037,9 @@ func (recv *UnixInputStreamClass) Equals(other *UnixInputStreamClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// UnixInputStreamPrivate is a wrapper around the C record GUnixInputStreamPrivate.
-type UnixInputStreamPrivate struct {
-	native *C.GUnixInputStreamPrivate
-}
-
-func UnixInputStreamPrivateNewFromC(u unsafe.Pointer) *UnixInputStreamPrivate {
-	c := (*C.GUnixInputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixInputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixInputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixInputStreamPrivate with another UnixInputStreamPrivate, and returns true if they represent the same GObject.
 func (recv *UnixInputStreamPrivate) Equals(other *UnixInputStreamPrivate) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixMountEntry is a wrapper around the C record GUnixMountEntry.
-type UnixMountEntry struct {
-	native *C.GUnixMountEntry
-}
-
-func UnixMountEntryNewFromC(u unsafe.Pointer) *UnixMountEntry {
-	c := (*C.GUnixMountEntry)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixMountEntry{native: c}
-
-	return g
-}
-
-func (recv *UnixMountEntry) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixMountEntry with another UnixMountEntry, and returns true if they represent the same GObject.
@@ -4933,51 +1047,9 @@ func (recv *UnixMountEntry) Equals(other *UnixMountEntry) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// UnixMountMonitorClass is a wrapper around the C record GUnixMountMonitorClass.
-type UnixMountMonitorClass struct {
-	native *C.GUnixMountMonitorClass
-}
-
-func UnixMountMonitorClassNewFromC(u unsafe.Pointer) *UnixMountMonitorClass {
-	c := (*C.GUnixMountMonitorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixMountMonitorClass{native: c}
-
-	return g
-}
-
-func (recv *UnixMountMonitorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixMountMonitorClass with another UnixMountMonitorClass, and returns true if they represent the same GObject.
 func (recv *UnixMountMonitorClass) Equals(other *UnixMountMonitorClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixMountPoint is a wrapper around the C record GUnixMountPoint.
-type UnixMountPoint struct {
-	native *C.GUnixMountPoint
-}
-
-func UnixMountPointNewFromC(u unsafe.Pointer) *UnixMountPoint {
-	c := (*C.GUnixMountPoint)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixMountPoint{native: c}
-
-	return g
-}
-
-func (recv *UnixMountPoint) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixMountPoint with another UnixMountPoint, and returns true if they represent the same GObject.
@@ -5078,57 +1150,9 @@ func (recv *UnixMountPoint) IsUserMountable() bool {
 	return retGo
 }
 
-// UnixOutputStreamClass is a wrapper around the C record GUnixOutputStreamClass.
-type UnixOutputStreamClass struct {
-	native *C.GUnixOutputStreamClass
-	// parent_class : record
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-}
-
-func UnixOutputStreamClassNewFromC(u unsafe.Pointer) *UnixOutputStreamClass {
-	c := (*C.GUnixOutputStreamClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixOutputStreamClass{native: c}
-
-	return g
-}
-
-func (recv *UnixOutputStreamClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixOutputStreamClass with another UnixOutputStreamClass, and returns true if they represent the same GObject.
 func (recv *UnixOutputStreamClass) Equals(other *UnixOutputStreamClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixOutputStreamPrivate is a wrapper around the C record GUnixOutputStreamPrivate.
-type UnixOutputStreamPrivate struct {
-	native *C.GUnixOutputStreamPrivate
-}
-
-func UnixOutputStreamPrivateNewFromC(u unsafe.Pointer) *UnixOutputStreamPrivate {
-	c := (*C.GUnixOutputStreamPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixOutputStreamPrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixOutputStreamPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixOutputStreamPrivate with another UnixOutputStreamPrivate, and returns true if they represent the same GObject.
@@ -5136,52 +1160,9 @@ func (recv *UnixOutputStreamPrivate) Equals(other *UnixOutputStreamPrivate) bool
 	return other.ToC() == recv.ToC()
 }
 
-// UnixSocketAddressClass is a wrapper around the C record GUnixSocketAddressClass.
-type UnixSocketAddressClass struct {
-	native *C.GUnixSocketAddressClass
-	// parent_class : record
-}
-
-func UnixSocketAddressClassNewFromC(u unsafe.Pointer) *UnixSocketAddressClass {
-	c := (*C.GUnixSocketAddressClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixSocketAddressClass{native: c}
-
-	return g
-}
-
-func (recv *UnixSocketAddressClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this UnixSocketAddressClass with another UnixSocketAddressClass, and returns true if they represent the same GObject.
 func (recv *UnixSocketAddressClass) Equals(other *UnixSocketAddressClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// UnixSocketAddressPrivate is a wrapper around the C record GUnixSocketAddressPrivate.
-type UnixSocketAddressPrivate struct {
-	native *C.GUnixSocketAddressPrivate
-}
-
-func UnixSocketAddressPrivateNewFromC(u unsafe.Pointer) *UnixSocketAddressPrivate {
-	c := (*C.GUnixSocketAddressPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &UnixSocketAddressPrivate{native: c}
-
-	return g
-}
-
-func (recv *UnixSocketAddressPrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this UnixSocketAddressPrivate with another UnixSocketAddressPrivate, and returns true if they represent the same GObject.
@@ -5189,91 +1170,9 @@ func (recv *UnixSocketAddressPrivate) Equals(other *UnixSocketAddressPrivate) bo
 	return other.ToC() == recv.ToC()
 }
 
-// VfsClass is a wrapper around the C record GVfsClass.
-type VfsClass struct {
-	native *C.GVfsClass
-	// parent_class : record
-	// no type for is_active
-	// no type for get_file_for_path
-	// no type for get_file_for_uri
-	// no type for get_supported_uri_schemes
-	// no type for parse_name
-	// no type for local_file_add_info
-	// no type for add_writable_namespaces
-	// no type for local_file_set_attributes
-	// no type for local_file_removed
-	// no type for local_file_moved
-	// no type for deserialize_icon
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-}
-
-func VfsClassNewFromC(u unsafe.Pointer) *VfsClass {
-	c := (*C.GVfsClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VfsClass{native: c}
-
-	return g
-}
-
-func (recv *VfsClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this VfsClass with another VfsClass, and returns true if they represent the same GObject.
 func (recv *VfsClass) Equals(other *VfsClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// VolumeIface is a wrapper around the C record GVolumeIface.
-type VolumeIface struct {
-	native *C.GVolumeIface
-	// g_iface : record
-	// no type for changed
-	// no type for removed
-	// no type for get_name
-	// no type for get_icon
-	// no type for get_uuid
-	// no type for get_drive
-	// no type for get_mount
-	// no type for can_mount
-	// no type for can_eject
-	// no type for mount_fn
-	// no type for mount_finish
-	// no type for eject
-	// no type for eject_finish
-	// no type for get_identifier
-	// no type for enumerate_identifiers
-	// no type for should_automount
-	// no type for get_activation_root
-	// no type for eject_with_operation
-	// no type for eject_with_operation_finish
-	// no type for get_sort_key
-	// no type for get_symbolic_icon
-}
-
-func VolumeIfaceNewFromC(u unsafe.Pointer) *VolumeIface {
-	c := (*C.GVolumeIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VolumeIface{native: c}
-
-	return g
-}
-
-func (recv *VolumeIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this VolumeIface with another VolumeIface, and returns true if they represent the same GObject.
@@ -5281,105 +1180,14 @@ func (recv *VolumeIface) Equals(other *VolumeIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// VolumeMonitorClass is a wrapper around the C record GVolumeMonitorClass.
-type VolumeMonitorClass struct {
-	native *C.GVolumeMonitorClass
-	// parent_class : record
-	// no type for volume_added
-	// no type for volume_removed
-	// no type for volume_changed
-	// no type for mount_added
-	// no type for mount_removed
-	// no type for mount_pre_unmount
-	// no type for mount_changed
-	// no type for drive_connected
-	// no type for drive_disconnected
-	// no type for drive_changed
-	// no type for is_supported
-	// no type for get_connected_drives
-	// no type for get_volumes
-	// no type for get_mounts
-	// no type for get_volume_for_uuid
-	// no type for get_mount_for_uuid
-	// no type for adopt_orphan_mount
-	// no type for drive_eject_button
-	// no type for drive_stop_button
-	// no type for _g_reserved1
-	// no type for _g_reserved2
-	// no type for _g_reserved3
-	// no type for _g_reserved4
-	// no type for _g_reserved5
-	// no type for _g_reserved6
-}
-
-func VolumeMonitorClassNewFromC(u unsafe.Pointer) *VolumeMonitorClass {
-	c := (*C.GVolumeMonitorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VolumeMonitorClass{native: c}
-
-	return g
-}
-
-func (recv *VolumeMonitorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this VolumeMonitorClass with another VolumeMonitorClass, and returns true if they represent the same GObject.
 func (recv *VolumeMonitorClass) Equals(other *VolumeMonitorClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ZlibCompressorClass is a wrapper around the C record GZlibCompressorClass.
-type ZlibCompressorClass struct {
-	native *C.GZlibCompressorClass
-	// parent_class : record
-}
-
-func ZlibCompressorClassNewFromC(u unsafe.Pointer) *ZlibCompressorClass {
-	c := (*C.GZlibCompressorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ZlibCompressorClass{native: c}
-
-	return g
-}
-
-func (recv *ZlibCompressorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ZlibCompressorClass with another ZlibCompressorClass, and returns true if they represent the same GObject.
 func (recv *ZlibCompressorClass) Equals(other *ZlibCompressorClass) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ZlibDecompressorClass is a wrapper around the C record GZlibDecompressorClass.
-type ZlibDecompressorClass struct {
-	native *C.GZlibDecompressorClass
-	// parent_class : record
-}
-
-func ZlibDecompressorClassNewFromC(u unsafe.Pointer) *ZlibDecompressorClass {
-	c := (*C.GZlibDecompressorClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ZlibDecompressorClass{native: c}
-
-	return g
-}
-
-func (recv *ZlibDecompressorClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ZlibDecompressorClass with another ZlibDecompressorClass, and returns true if they represent the same GObject.

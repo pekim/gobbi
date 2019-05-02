@@ -8,7 +8,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -128,37 +127,6 @@ import (
 */
 import "C"
 
-// AppLaunchContext is a wrapper around the C record GdkAppLaunchContext.
-type AppLaunchContext struct {
-	native *C.GdkAppLaunchContext
-}
-
-func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
-	c := (*C.GdkAppLaunchContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AppLaunchContext{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *AppLaunchContext) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *AppLaunchContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AppLaunchContext with another AppLaunchContext, and returns true if they represent the same GObject.
 func (recv *AppLaunchContext) Equals(other *AppLaunchContext) bool {
 	return other.ToC() == recv.ToC()
@@ -178,37 +146,6 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppLaunchContext.
 func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
-}
-
-// Cursor is a wrapper around the C record GdkCursor.
-type Cursor struct {
-	native *C.GdkCursor
-}
-
-func CursorNewFromC(u unsafe.Pointer) *Cursor {
-	c := (*C.GdkCursor)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Cursor{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Cursor) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Cursor) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Cursor with another Cursor, and returns true if they represent the same GObject.
@@ -254,37 +191,6 @@ func (recv *Cursor) Unref() {
 	C.gdk_cursor_unref((*C.GdkCursor)(recv.native))
 
 	return
-}
-
-// Device is a wrapper around the C record GdkDevice.
-type Device struct {
-	native *C.GdkDevice
-}
-
-func DeviceNewFromC(u unsafe.Pointer) *Device {
-	c := (*C.GdkDevice)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Device{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Device) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Device) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Device with another Device, and returns true if they represent the same GObject.
@@ -462,37 +368,6 @@ func (recv *Device) SetMode(mode InputMode) bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// DeviceManager is a wrapper around the C record GdkDeviceManager.
-type DeviceManager struct {
-	native *C.GdkDeviceManager
-}
-
-func DeviceManagerNewFromC(u unsafe.Pointer) *DeviceManager {
-	c := (*C.GdkDeviceManager)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DeviceManager{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DeviceManager) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DeviceManager) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DeviceManager with another DeviceManager, and returns true if they represent the same GObject.
@@ -697,37 +572,6 @@ func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, dat
 	callback(device)
 }
 
-// Display is a wrapper around the C record GdkDisplay.
-type Display struct {
-	native *C.GdkDisplay
-}
-
-func DisplayNewFromC(u unsafe.Pointer) *Display {
-	c := (*C.GdkDisplay)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Display{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Display) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Display) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Display with another Display, and returns true if they represent the same GObject.
 func (recv *Display) Equals(other *Display) bool {
 	return other.ToC() == recv.ToC()
@@ -830,37 +674,6 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	return retGo
 }
 
-// DisplayManager is a wrapper around the C record GdkDisplayManager.
-type DisplayManager struct {
-	native *C.GdkDisplayManager
-}
-
-func DisplayManagerNewFromC(u unsafe.Pointer) *DisplayManager {
-	c := (*C.GdkDisplayManager)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DisplayManager{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DisplayManager) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DisplayManager) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DisplayManager with another DisplayManager, and returns true if they represent the same GObject.
 func (recv *DisplayManager) Equals(other *DisplayManager) bool {
 	return other.ToC() == recv.ToC()
@@ -875,37 +688,6 @@ func (recv *DisplayManager) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DisplayManager.
 func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromC(object.ToC())
-}
-
-// DragContext is a wrapper around the C record GdkDragContext.
-type DragContext struct {
-	native *C.GdkDragContext
-}
-
-func DragContextNewFromC(u unsafe.Pointer) *DragContext {
-	c := (*C.GdkDragContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DragContext{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DragContext) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DragContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DragContext with another DragContext, and returns true if they represent the same GObject.
@@ -942,37 +724,6 @@ func (recv *DragContext) SetDevice(device *Device) {
 	C.gdk_drag_context_set_device((*C.GdkDragContext)(recv.native), c_device)
 
 	return
-}
-
-// FrameClock is a wrapper around the C record GdkFrameClock.
-type FrameClock struct {
-	native *C.GdkFrameClock
-}
-
-func FrameClockNewFromC(u unsafe.Pointer) *FrameClock {
-	c := (*C.GdkFrameClock)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FrameClock{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *FrameClock) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *FrameClock) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this FrameClock with another FrameClock, and returns true if they represent the same GObject.
@@ -1411,37 +1162,6 @@ func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GLContext is a wrapper around the C record GdkGLContext.
-type GLContext struct {
-	native *C.GdkGLContext
-}
-
-func GLContextNewFromC(u unsafe.Pointer) *GLContext {
-	c := (*C.GdkGLContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &GLContext{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *GLContext) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *GLContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this GLContext with another GLContext, and returns true if they represent the same GObject.
 func (recv *GLContext) Equals(other *GLContext) bool {
 	return other.ToC() == recv.ToC()
@@ -1456,37 +1176,6 @@ func (recv *GLContext) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a GLContext.
 func CastToGLContext(object *gobject.Object) *GLContext {
 	return GLContextNewFromC(object.ToC())
-}
-
-// Keymap is a wrapper around the C record GdkKeymap.
-type Keymap struct {
-	native *C.GdkKeymap
-}
-
-func KeymapNewFromC(u unsafe.Pointer) *Keymap {
-	c := (*C.GdkKeymap)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Keymap{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Keymap) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Keymap) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Keymap with another Keymap, and returns true if they represent the same GObject.
@@ -1540,37 +1229,6 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
 
-// Screen is a wrapper around the C record GdkScreen.
-type Screen struct {
-	native *C.GdkScreen
-}
-
-func ScreenNewFromC(u unsafe.Pointer) *Screen {
-	c := (*C.GdkScreen)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Screen{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Screen) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Screen) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Screen with another Screen, and returns true if they represent the same GObject.
 func (recv *Screen) Equals(other *Screen) bool {
 	return other.ToC() == recv.ToC()
@@ -1617,37 +1275,6 @@ func ScreenWidthMm() int32 {
 	retGo := (int32)(retC)
 
 	return retGo
-}
-
-// Visual is a wrapper around the C record GdkVisual.
-type Visual struct {
-	native *C.GdkVisual
-}
-
-func VisualNewFromC(u unsafe.Pointer) *Visual {
-	c := (*C.GdkVisual)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Visual{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Visual) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Visual) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Visual with another Visual, and returns true if they represent the same GObject.
@@ -1733,37 +1360,6 @@ func VisualGetSystem() *Visual {
 	retGo := VisualNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// Window is a wrapper around the C record GdkWindow.
-type Window struct {
-	native *C.GdkWindow
-}
-
-func WindowNewFromC(u unsafe.Pointer) *Window {
-	c := (*C.GdkWindow)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Window{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Window) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Window) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Window with another Window, and returns true if they represent the same GObject.

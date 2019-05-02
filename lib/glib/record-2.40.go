@@ -70,27 +70,6 @@ func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
 	return retGo
 }
 
-// VariantDict is a wrapper around the C record GVariantDict.
-type VariantDict struct {
-	native *C.GVariantDict
-}
-
-func VariantDictNewFromC(u unsafe.Pointer) *VariantDict {
-	c := (*C.GVariantDict)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VariantDict{native: c}
-
-	return g
-}
-
-func (recv *VariantDict) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this VariantDict with another VariantDict, and returns true if they represent the same GObject.
 func (recv *VariantDict) Equals(other *VariantDict) bool {
 	return other.ToC() == recv.ToC()

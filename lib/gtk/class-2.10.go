@@ -10,7 +10,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -3227,39 +3226,6 @@ func (recv *RecentFilter) SetName(name string) {
 	C.gtk_recent_filter_set_name((*C.GtkRecentFilter)(recv.native), c_name)
 
 	return
-}
-
-// RecentManager is a wrapper around the C record GtkRecentManager.
-type RecentManager struct {
-	native *C.GtkRecentManager
-	// Private : parent_instance
-	// Private : priv
-}
-
-func RecentManagerNewFromC(u unsafe.Pointer) *RecentManager {
-	c := (*C.GtkRecentManager)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RecentManager{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *RecentManager) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *RecentManager) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this RecentManager with another RecentManager, and returns true if they represent the same GObject.

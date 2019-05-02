@@ -8,7 +8,6 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -131,38 +130,6 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 	C.gtk_entry_grab_focus_without_selecting((*C.GtkEntry)(recv.native))
 
 	return
-}
-
-// GLArea is a wrapper around the C record GtkGLArea.
-type GLArea struct {
-	native *C.GtkGLArea
-	// Private : parent_instance
-}
-
-func GLAreaNewFromC(u unsafe.Pointer) *GLArea {
-	c := (*C.GtkGLArea)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &GLArea{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *GLArea) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *GLArea) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this GLArea with another GLArea, and returns true if they represent the same GObject.

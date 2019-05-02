@@ -59,27 +59,6 @@ import (
 */
 import "C"
 
-// Variant is a wrapper around the C record GVariant.
-type Variant struct {
-	native *C.GVariant
-}
-
-func VariantNewFromC(u unsafe.Pointer) *Variant {
-	c := (*C.GVariant)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Variant{native: c}
-
-	return g
-}
-
-func (recv *Variant) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Variant with another Variant, and returns true if they represent the same GObject.
 func (recv *Variant) Equals(other *Variant) bool {
 	return other.ToC() == recv.ToC()

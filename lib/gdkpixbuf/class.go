@@ -6,7 +6,6 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -53,37 +52,6 @@ import (
 
 */
 import "C"
-
-// Pixbuf is a wrapper around the C record GdkPixbuf.
-type Pixbuf struct {
-	native *C.GdkPixbuf
-}
-
-func PixbufNewFromC(u unsafe.Pointer) *Pixbuf {
-	c := (*C.GdkPixbuf)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Pixbuf{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Pixbuf) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Pixbuf) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Pixbuf with another Pixbuf, and returns true if they represent the same GObject.
 func (recv *Pixbuf) Equals(other *Pixbuf) bool {
@@ -581,37 +549,6 @@ func (recv *Pixbuf) LoadableIcon() *gio.LoadableIcon {
 	return gio.LoadableIconNewFromC(recv.ToC())
 }
 
-// PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.
-type PixbufAnimation struct {
-	native *C.GdkPixbufAnimation
-}
-
-func PixbufAnimationNewFromC(u unsafe.Pointer) *PixbufAnimation {
-	c := (*C.GdkPixbufAnimation)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PixbufAnimation{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *PixbufAnimation) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *PixbufAnimation) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this PixbufAnimation with another PixbufAnimation, and returns true if they represent the same GObject.
 func (recv *PixbufAnimation) Equals(other *PixbufAnimation) bool {
 	return other.ToC() == recv.ToC()
@@ -713,37 +650,6 @@ func (recv *PixbufAnimation) Unref() {
 	return
 }
 
-// PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
-type PixbufAnimationIter struct {
-	native *C.GdkPixbufAnimationIter
-}
-
-func PixbufAnimationIterNewFromC(u unsafe.Pointer) *PixbufAnimationIter {
-	c := (*C.GdkPixbufAnimationIter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PixbufAnimationIter{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *PixbufAnimationIter) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this PixbufAnimationIter with another PixbufAnimationIter, and returns true if they represent the same GObject.
 func (recv *PixbufAnimationIter) Equals(other *PixbufAnimationIter) bool {
 	return other.ToC() == recv.ToC()
@@ -795,39 +701,6 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// PixbufLoader is a wrapper around the C record GdkPixbufLoader.
-type PixbufLoader struct {
-	native *C.GdkPixbufLoader
-	// parent_instance : record
-	// Private : priv
-}
-
-func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
-	c := (*C.GdkPixbufLoader)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PixbufLoader{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *PixbufLoader) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *PixbufLoader) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PixbufLoader with another PixbufLoader, and returns true if they represent the same GObject.
@@ -1196,37 +1069,6 @@ func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	}
 
 	return retGo, goError
-}
-
-// PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
-type PixbufSimpleAnim struct {
-	native *C.GdkPixbufSimpleAnim
-}
-
-func PixbufSimpleAnimNewFromC(u unsafe.Pointer) *PixbufSimpleAnim {
-	c := (*C.GdkPixbufSimpleAnim)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PixbufSimpleAnim{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *PixbufSimpleAnim) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PixbufSimpleAnim with another PixbufSimpleAnim, and returns true if they represent the same GObject.

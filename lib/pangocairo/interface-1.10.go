@@ -15,27 +15,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// FontMap is a wrapper around the C record PangoCairoFontMap.
-type FontMap struct {
-	native *C.PangoCairoFontMap
-}
-
-func FontMapNewFromC(u unsafe.Pointer) *FontMap {
-	c := (*C.PangoCairoFontMap)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FontMap{native: c}
-
-	return g
-}
-
-func (recv *FontMap) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
 func (recv *FontMap) Equals(other *FontMap) bool {
 	return other.ToC() == recv.ToC()

@@ -54,29 +54,6 @@ func (recv *ParamSpec) GetRedirectTarget() *ParamSpec {
 	return retGo
 }
 
-// ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
-type ParamSpecOverride struct {
-	native *C.GParamSpecOverride
-	// Private : parent_instance
-	// Private : overridden
-}
-
-func ParamSpecOverrideNewFromC(u unsafe.Pointer) *ParamSpecOverride {
-	c := (*C.GParamSpecOverride)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ParamSpecOverride{native: c}
-
-	return g
-}
-
-func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ParamSpecOverride with another ParamSpecOverride, and returns true if they represent the same GObject.
 func (recv *ParamSpecOverride) Equals(other *ParamSpecOverride) bool {
 	return other.ToC() == recv.ToC()

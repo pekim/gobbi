@@ -89,51 +89,9 @@ import (
 */
 import "C"
 
-// Action is a wrapper around the C record GAction.
-type Action struct {
-	native *C.GAction
-}
-
-func ActionNewFromC(u unsafe.Pointer) *Action {
-	c := (*C.GAction)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Action{native: c}
-
-	return g
-}
-
-func (recv *Action) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Action with another Action, and returns true if they represent the same GObject.
 func (recv *Action) Equals(other *Action) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// ActionGroup is a wrapper around the C record GActionGroup.
-type ActionGroup struct {
-	native *C.GActionGroup
-}
-
-func ActionGroupNewFromC(u unsafe.Pointer) *ActionGroup {
-	c := (*C.GActionGroup)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ActionGroup{native: c}
-
-	return g
-}
-
-func (recv *ActionGroup) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ActionGroup with another ActionGroup, and returns true if they represent the same GObject.
@@ -141,51 +99,9 @@ func (recv *ActionGroup) Equals(other *ActionGroup) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ActionMap is a wrapper around the C record GActionMap.
-type ActionMap struct {
-	native *C.GActionMap
-}
-
-func ActionMapNewFromC(u unsafe.Pointer) *ActionMap {
-	c := (*C.GActionMap)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ActionMap{native: c}
-
-	return g
-}
-
-func (recv *ActionMap) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ActionMap with another ActionMap, and returns true if they represent the same GObject.
 func (recv *ActionMap) Equals(other *ActionMap) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// AppInfo is a wrapper around the C record GAppInfo.
-type AppInfo struct {
-	native *C.GAppInfo
-}
-
-func AppInfoNewFromC(u unsafe.Pointer) *AppInfo {
-	c := (*C.GAppInfo)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AppInfo{native: c}
-
-	return g
-}
-
-func (recv *AppInfo) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this AppInfo with another AppInfo, and returns true if they represent the same GObject.
@@ -540,27 +456,6 @@ func (recv *AppInfo) SupportsUris() bool {
 	return retGo
 }
 
-// AsyncResult is a wrapper around the C record GAsyncResult.
-type AsyncResult struct {
-	native *C.GAsyncResult
-}
-
-func AsyncResultNewFromC(u unsafe.Pointer) *AsyncResult {
-	c := (*C.GAsyncResult)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AsyncResult{native: c}
-
-	return g
-}
-
-func (recv *AsyncResult) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AsyncResult with another AsyncResult, and returns true if they represent the same GObject.
 func (recv *AsyncResult) Equals(other *AsyncResult) bool {
 	return other.ToC() == recv.ToC()
@@ -581,77 +476,14 @@ func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 
 // Unsupported : g_async_result_get_user_data : no return generator
 
-// DBusObject is a wrapper around the C record GDBusObject.
-type DBusObject struct {
-	native *C.GDBusObject
-}
-
-func DBusObjectNewFromC(u unsafe.Pointer) *DBusObject {
-	c := (*C.GDBusObject)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObject{native: c}
-
-	return g
-}
-
-func (recv *DBusObject) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObject with another DBusObject, and returns true if they represent the same GObject.
 func (recv *DBusObject) Equals(other *DBusObject) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// DBusObjectManager is a wrapper around the C record GDBusObjectManager.
-type DBusObjectManager struct {
-	native *C.GDBusObjectManager
-}
-
-func DBusObjectManagerNewFromC(u unsafe.Pointer) *DBusObjectManager {
-	c := (*C.GDBusObjectManager)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectManager{native: c}
-
-	return g
-}
-
-func (recv *DBusObjectManager) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObjectManager with another DBusObjectManager, and returns true if they represent the same GObject.
 func (recv *DBusObjectManager) Equals(other *DBusObjectManager) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// DesktopAppInfoLookup is a wrapper around the C record GDesktopAppInfoLookup.
-type DesktopAppInfoLookup struct {
-	native *C.GDesktopAppInfoLookup
-}
-
-func DesktopAppInfoLookupNewFromC(u unsafe.Pointer) *DesktopAppInfoLookup {
-	c := (*C.GDesktopAppInfoLookup)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DesktopAppInfoLookup{native: c}
-
-	return g
-}
-
-func (recv *DesktopAppInfoLookup) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DesktopAppInfoLookup with another DesktopAppInfoLookup, and returns true if they represent the same GObject.
@@ -668,27 +500,6 @@ func (recv *DesktopAppInfoLookup) GetDefaultForUriScheme(uriScheme string) *AppI
 	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// Drive is a wrapper around the C record GDrive.
-type Drive struct {
-	native *C.GDrive
-}
-
-func DriveNewFromC(u unsafe.Pointer) *Drive {
-	c := (*C.GDrive)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Drive{native: c}
-
-	return g
-}
-
-func (recv *Drive) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Drive with another Drive, and returns true if they represent the same GObject.
@@ -1016,27 +827,6 @@ func (recv *Drive) PollForMediaFinish(result *AsyncResult) (bool, error) {
 	}
 
 	return retGo, goError
-}
-
-// File is a wrapper around the C record GFile.
-type File struct {
-	native *C.GFile
-}
-
-func FileNewFromC(u unsafe.Pointer) *File {
-	c := (*C.GFile)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &File{native: c}
-
-	return g
-}
-
-func (recv *File) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this File with another File, and returns true if they represent the same GObject.
@@ -2380,51 +2170,9 @@ func (recv *File) UnmountMountableFinish(result *AsyncResult) (bool, error) {
 	return retGo, goError
 }
 
-// FileDescriptorBased is a wrapper around the C record GFileDescriptorBased.
-type FileDescriptorBased struct {
-	native *C.GFileDescriptorBased
-}
-
-func FileDescriptorBasedNewFromC(u unsafe.Pointer) *FileDescriptorBased {
-	c := (*C.GFileDescriptorBased)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileDescriptorBased{native: c}
-
-	return g
-}
-
-func (recv *FileDescriptorBased) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileDescriptorBased with another FileDescriptorBased, and returns true if they represent the same GObject.
 func (recv *FileDescriptorBased) Equals(other *FileDescriptorBased) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Icon is a wrapper around the C record GIcon.
-type Icon struct {
-	native *C.GIcon
-}
-
-func IconNewFromC(u unsafe.Pointer) *Icon {
-	c := (*C.GIcon)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Icon{native: c}
-
-	return g
-}
-
-func (recv *Icon) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Icon with another Icon, and returns true if they represent the same GObject.
@@ -2443,51 +2191,9 @@ func (recv *Icon) Equal(icon2 *Icon) bool {
 	return retGo
 }
 
-// ListModel is a wrapper around the C record GListModel.
-type ListModel struct {
-	native *C.GListModel
-}
-
-func ListModelNewFromC(u unsafe.Pointer) *ListModel {
-	c := (*C.GListModel)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ListModel{native: c}
-
-	return g
-}
-
-func (recv *ListModel) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ListModel with another ListModel, and returns true if they represent the same GObject.
 func (recv *ListModel) Equals(other *ListModel) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// LoadableIcon is a wrapper around the C record GLoadableIcon.
-type LoadableIcon struct {
-	native *C.GLoadableIcon
-}
-
-func LoadableIconNewFromC(u unsafe.Pointer) *LoadableIcon {
-	c := (*C.GLoadableIcon)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &LoadableIcon{native: c}
-
-	return g
-}
-
-func (recv *LoadableIcon) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this LoadableIcon with another LoadableIcon, and returns true if they represent the same GObject.
@@ -2550,27 +2256,6 @@ func (recv *LoadableIcon) LoadFinish(res *AsyncResult) (*InputStream, string, er
 	defer C.free(unsafe.Pointer(c_type))
 
 	return retGo, type_, goError
-}
-
-// Mount is a wrapper around the C record GMount.
-type Mount struct {
-	native *C.GMount
-}
-
-func MountNewFromC(u unsafe.Pointer) *Mount {
-	c := (*C.GMount)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Mount{native: c}
-
-	return g
-}
-
-func (recv *Mount) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Mount with another Mount, and returns true if they represent the same GObject.
@@ -2838,51 +2523,9 @@ func (recv *Mount) UnmountFinish(result *AsyncResult) (bool, error) {
 	return retGo, goError
 }
 
-// RemoteActionGroup is a wrapper around the C record GRemoteActionGroup.
-type RemoteActionGroup struct {
-	native *C.GRemoteActionGroup
-}
-
-func RemoteActionGroupNewFromC(u unsafe.Pointer) *RemoteActionGroup {
-	c := (*C.GRemoteActionGroup)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RemoteActionGroup{native: c}
-
-	return g
-}
-
-func (recv *RemoteActionGroup) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this RemoteActionGroup with another RemoteActionGroup, and returns true if they represent the same GObject.
 func (recv *RemoteActionGroup) Equals(other *RemoteActionGroup) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Seekable is a wrapper around the C record GSeekable.
-type Seekable struct {
-	native *C.GSeekable
-}
-
-func SeekableNewFromC(u unsafe.Pointer) *Seekable {
-	c := (*C.GSeekable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Seekable{native: c}
-
-	return g
-}
-
-func (recv *Seekable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Seekable with another Seekable, and returns true if they represent the same GObject.
@@ -2966,51 +2609,9 @@ func (recv *Seekable) Truncate(offset int64, cancellable *Cancellable) (bool, er
 	return retGo, goError
 }
 
-// SocketConnectable is a wrapper around the C record GSocketConnectable.
-type SocketConnectable struct {
-	native *C.GSocketConnectable
-}
-
-func SocketConnectableNewFromC(u unsafe.Pointer) *SocketConnectable {
-	c := (*C.GSocketConnectable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SocketConnectable{native: c}
-
-	return g
-}
-
-func (recv *SocketConnectable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SocketConnectable with another SocketConnectable, and returns true if they represent the same GObject.
 func (recv *SocketConnectable) Equals(other *SocketConnectable) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Volume is a wrapper around the C record GVolume.
-type Volume struct {
-	native *C.GVolume
-}
-
-func VolumeNewFromC(u unsafe.Pointer) *Volume {
-	c := (*C.GVolume)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Volume{native: c}
-
-	return g
-}
-
-func (recv *Volume) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Volume with another Volume, and returns true if they represent the same GObject.

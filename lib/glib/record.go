@@ -46,37 +46,6 @@ import (
 */
 import "C"
 
-// Array is a wrapper around the C record GArray.
-type Array struct {
-	native *C.GArray
-	Data   string
-	Len    uint32
-}
-
-func ArrayNewFromC(u unsafe.Pointer) *Array {
-	c := (*C.GArray)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Array{
-		Data:   C.GoString(c.data),
-		Len:    (uint32)(c.len),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *Array) ToC() unsafe.Pointer {
-	recv.native.data =
-		C.CString(recv.Data)
-	recv.native.len =
-		(C.guint)(recv.Len)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Array with another Array, and returns true if they represent the same GObject.
 func (recv *Array) Equals(other *Array) bool {
 	return other.ToC() == recv.ToC()
@@ -93,27 +62,6 @@ func (recv *Array) Equals(other *Array) bool {
 // g_array_sized_new : no type generator for gpointer (gpointer) for array return
 // g_array_sort : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
 // g_array_sort_with_data : unsupported parameter array : no type generator for gpointer (gpointer) for array param array
-// AsyncQueue is a wrapper around the C record GAsyncQueue.
-type AsyncQueue struct {
-	native *C.GAsyncQueue
-}
-
-func AsyncQueueNewFromC(u unsafe.Pointer) *AsyncQueue {
-	c := (*C.GAsyncQueue)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AsyncQueue{native: c}
-
-	return g
-}
-
-func (recv *AsyncQueue) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AsyncQueue with another AsyncQueue, and returns true if they represent the same GObject.
 func (recv *AsyncQueue) Equals(other *AsyncQueue) bool {
 	return other.ToC() == recv.ToC()
@@ -206,27 +154,6 @@ func (recv *AsyncQueue) UnrefAndUnlock() {
 	return
 }
 
-// BookmarkFile is a wrapper around the C record GBookmarkFile.
-type BookmarkFile struct {
-	native *C.GBookmarkFile
-}
-
-func BookmarkFileNewFromC(u unsafe.Pointer) *BookmarkFile {
-	c := (*C.GBookmarkFile)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &BookmarkFile{native: c}
-
-	return g
-}
-
-func (recv *BookmarkFile) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this BookmarkFile with another BookmarkFile, and returns true if they represent the same GObject.
 func (recv *BookmarkFile) Equals(other *BookmarkFile) bool {
 	return other.ToC() == recv.ToC()
@@ -241,29 +168,6 @@ func BookmarkFileErrorQuark() Quark {
 }
 
 // Blacklisted : GByteArray
-
-// Cond is a wrapper around the C record GCond.
-type Cond struct {
-	native *C.GCond
-	// Private : p
-	// Private : i
-}
-
-func CondNewFromC(u unsafe.Pointer) *Cond {
-	c := (*C.GCond)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Cond{native: c}
-
-	return g
-}
-
-func (recv *Cond) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Cond with another Cond, and returns true if they represent the same GObject.
 func (recv *Cond) Equals(other *Cond) bool {
@@ -286,57 +190,9 @@ func (recv *Cond) Signal() {
 
 // Unsupported : g_cond_wait : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
-// Data is a wrapper around the C record GData.
-type Data struct {
-	native *C.GData
-}
-
-func DataNewFromC(u unsafe.Pointer) *Data {
-	c := (*C.GData)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Data{native: c}
-
-	return g
-}
-
-func (recv *Data) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Data with another Data, and returns true if they represent the same GObject.
 func (recv *Data) Equals(other *Data) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Date is a wrapper around the C record GDate.
-type Date struct {
-	native *C.GDate
-	// Bitfield not supported : 32 julian_days
-	// Bitfield not supported :  1 julian
-	// Bitfield not supported :  1 dmy
-	// Bitfield not supported :  6 day
-	// Bitfield not supported :  4 month
-	// Bitfield not supported : 16 year
-}
-
-func DateNewFromC(u unsafe.Pointer) *Date {
-	c := (*C.GDate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Date{native: c}
-
-	return g
-}
-
-func (recv *Date) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Date with another Date, and returns true if they represent the same GObject.
@@ -786,61 +642,9 @@ func (recv *Date) Valid() bool {
 	return retGo
 }
 
-// DebugKey is a wrapper around the C record GDebugKey.
-type DebugKey struct {
-	native *C.GDebugKey
-	Key    string
-	Value  uint32
-}
-
-func DebugKeyNewFromC(u unsafe.Pointer) *DebugKey {
-	c := (*C.GDebugKey)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DebugKey{
-		Key:    C.GoString(c.key),
-		Value:  (uint32)(c.value),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *DebugKey) ToC() unsafe.Pointer {
-	recv.native.key =
-		C.CString(recv.Key)
-	recv.native.value =
-		(C.guint)(recv.Value)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DebugKey with another DebugKey, and returns true if they represent the same GObject.
 func (recv *DebugKey) Equals(other *DebugKey) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Dir is a wrapper around the C record GDir.
-type Dir struct {
-	native *C.GDir
-}
-
-func DirNewFromC(u unsafe.Pointer) *Dir {
-	c := (*C.GDir)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Dir{native: c}
-
-	return g
-}
-
-func (recv *Dir) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Dir with another Dir, and returns true if they represent the same GObject.
@@ -891,41 +695,6 @@ func (recv *Dir) Rewind() {
 	C.g_dir_rewind((*C.GDir)(recv.native))
 
 	return
-}
-
-// Error is a wrapper around the C record GError.
-type Error struct {
-	native  *C.GError
-	Domain  Quark
-	Code    int32
-	Message string
-}
-
-func ErrorNewFromC(u unsafe.Pointer) *Error {
-	c := (*C.GError)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Error{
-		Code:    (int32)(c.code),
-		Domain:  (Quark)(c.domain),
-		Message: C.GoString(c.message),
-		native:  c,
-	}
-
-	return g
-}
-
-func (recv *Error) ToC() unsafe.Pointer {
-	recv.native.domain =
-		(C.GQuark)(recv.Domain)
-	recv.native.code =
-		(C.gint)(recv.Code)
-	recv.native.message =
-		C.CString(recv.Message)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Error with another Error, and returns true if they represent the same GObject.
@@ -991,27 +760,6 @@ func (recv *Error) Matches(domain Quark, code int32) bool {
 	return retGo
 }
 
-// HashTable is a wrapper around the C record GHashTable.
-type HashTable struct {
-	native *C.GHashTable
-}
-
-func HashTableNewFromC(u unsafe.Pointer) *HashTable {
-	c := (*C.GHashTable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &HashTable{native: c}
-
-	return g
-}
-
-func (recv *HashTable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this HashTable with another HashTable, and returns true if they represent the same GObject.
 func (recv *HashTable) Equals(other *HashTable) bool {
 	return other.ToC() == recv.ToC()
@@ -1053,76 +801,9 @@ func HashTableSize(hashTable *HashTable) uint32 {
 }
 
 // g_hash_table_steal : unsupported parameter key : no type generator for gpointer (gconstpointer) for param key
-// HashTableIter is a wrapper around the C record GHashTableIter.
-type HashTableIter struct {
-	native *C.GHashTableIter
-	// Private : dummy1
-	// Private : dummy2
-	// Private : dummy3
-	// Private : dummy4
-	// Private : dummy5
-	// Private : dummy6
-}
-
-func HashTableIterNewFromC(u unsafe.Pointer) *HashTableIter {
-	c := (*C.GHashTableIter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &HashTableIter{native: c}
-
-	return g
-}
-
-func (recv *HashTableIter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this HashTableIter with another HashTableIter, and returns true if they represent the same GObject.
 func (recv *HashTableIter) Equals(other *HashTableIter) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Hook is a wrapper around the C record GHook.
-type Hook struct {
-	native *C.GHook
-	// data : no type generator for gpointer, gpointer
-	// next : record
-	// prev : record
-	RefCount uint32
-	HookId   uint64
-	Flags    uint32
-	// _func : no type generator for gpointer, gpointer
-	// destroy : no type generator for DestroyNotify, GDestroyNotify
-}
-
-func HookNewFromC(u unsafe.Pointer) *Hook {
-	c := (*C.GHook)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Hook{
-		Flags:    (uint32)(c.flags),
-		HookId:   (uint64)(c.hook_id),
-		RefCount: (uint32)(c.ref_count),
-		native:   c,
-	}
-
-	return g
-}
-
-func (recv *Hook) ToC() unsafe.Pointer {
-	recv.native.ref_count =
-		(C.guint)(recv.RefCount)
-	recv.native.hook_id =
-		(C.gulong)(recv.HookId)
-	recv.native.flags =
-		(C.guint)(recv.Flags)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Hook with another Hook, and returns true if they represent the same GObject.
@@ -1336,39 +1017,6 @@ func (recv *Hook) CompareIds(sibling *Hook) int32 {
 	return retGo
 }
 
-// HookList is a wrapper around the C record GHookList.
-type HookList struct {
-	native *C.GHookList
-	SeqId  uint64
-	// Bitfield not supported : 16 hook_size
-	// Bitfield not supported :  1 is_setup
-	// hooks : record
-	// dummy3 : no type generator for gpointer, gpointer
-	// finalize_hook : no type generator for HookFinalizeFunc, GHookFinalizeFunc
-	// no type for dummy
-}
-
-func HookListNewFromC(u unsafe.Pointer) *HookList {
-	c := (*C.GHookList)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &HookList{
-		SeqId:  (uint64)(c.seq_id),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *HookList) ToC() unsafe.Pointer {
-	recv.native.seq_id =
-		(C.gulong)(recv.SeqId)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this HookList with another HookList, and returns true if they represent the same GObject.
 func (recv *HookList) Equals(other *HookList) bool {
 	return other.ToC() == recv.ToC()
@@ -1415,47 +1063,6 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 // Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller (GHookCheckMarshaller) for param marshaller
 
 // Blacklisted : GIConv
-
-// IOChannel is a wrapper around the C record GIOChannel.
-type IOChannel struct {
-	native *C.GIOChannel
-	// Private : ref_count
-	// Private : funcs
-	// Private : encoding
-	// Private : read_cd
-	// Private : write_cd
-	// Private : line_term
-	// Private : line_term_len
-	// Private : buf_size
-	// Private : read_buf
-	// Private : encoded_read_buf
-	// Private : write_buf
-	// Private : partial_write_buf
-	// Private : use_buffer
-	// Private : do_encode
-	// Private : close_on_unref
-	// Private : is_readable
-	// Private : is_writeable
-	// Private : is_seekable
-	// Private : reserved1
-	// Private : reserved2
-}
-
-func IOChannelNewFromC(u unsafe.Pointer) *IOChannel {
-	c := (*C.GIOChannel)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOChannel{native: c}
-
-	return g
-}
-
-func (recv *IOChannel) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this IOChannel with another IOChannel, and returns true if they represent the same GObject.
 func (recv *IOChannel) Equals(other *IOChannel) bool {
@@ -1929,59 +1536,9 @@ func (recv *IOChannel) WriteUnichar(thechar rune) (IOStatus, error) {
 	return retGo, goError
 }
 
-// IOFuncs is a wrapper around the C record GIOFuncs.
-type IOFuncs struct {
-	native *C.GIOFuncs
-	// no type for io_read
-	// no type for io_write
-	// no type for io_seek
-	// no type for io_close
-	// no type for io_create_watch
-	// no type for io_free
-	// no type for io_set_flags
-	// no type for io_get_flags
-}
-
-func IOFuncsNewFromC(u unsafe.Pointer) *IOFuncs {
-	c := (*C.GIOFuncs)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &IOFuncs{native: c}
-
-	return g
-}
-
-func (recv *IOFuncs) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this IOFuncs with another IOFuncs, and returns true if they represent the same GObject.
 func (recv *IOFuncs) Equals(other *IOFuncs) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// KeyFile is a wrapper around the C record GKeyFile.
-type KeyFile struct {
-	native *C.GKeyFile
-}
-
-func KeyFileNewFromC(u unsafe.Pointer) *KeyFile {
-	c := (*C.GKeyFile)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &KeyFile{native: c}
-
-	return g
-}
-
-func (recv *KeyFile) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this KeyFile with another KeyFile, and returns true if they represent the same GObject.
@@ -1995,30 +1552,6 @@ func KeyFileErrorQuark() Quark {
 	retGo := (Quark)(retC)
 
 	return retGo
-}
-
-// List is a wrapper around the C record GList.
-type List struct {
-	native *C.GList
-	// data : no type generator for gpointer, gpointer
-	// next : record
-	// prev : record
-}
-
-func ListNewFromC(u unsafe.Pointer) *List {
-	c := (*C.GList)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &List{native: c}
-
-	return g
-}
-
-func (recv *List) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this List with another List, and returns true if they represent the same GObject.
@@ -2239,27 +1772,6 @@ func ListReverse(list *List) *List {
 
 // g_list_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
 // g_list_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
-// MainContext is a wrapper around the C record GMainContext.
-type MainContext struct {
-	native *C.GMainContext
-}
-
-func MainContextNewFromC(u unsafe.Pointer) *MainContext {
-	c := (*C.GMainContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MainContext{native: c}
-
-	return g
-}
-
-func (recv *MainContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MainContext with another MainContext, and returns true if they represent the same GObject.
 func (recv *MainContext) Equals(other *MainContext) bool {
 	return other.ToC() == recv.ToC()
@@ -2404,27 +1916,6 @@ func (recv *MainContext) Wakeup() {
 	return
 }
 
-// MainLoop is a wrapper around the C record GMainLoop.
-type MainLoop struct {
-	native *C.GMainLoop
-}
-
-func MainLoopNewFromC(u unsafe.Pointer) *MainLoop {
-	c := (*C.GMainLoop)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MainLoop{native: c}
-
-	return g
-}
-
-func (recv *MainLoop) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MainLoop with another MainLoop, and returns true if they represent the same GObject.
 func (recv *MainLoop) Equals(other *MainLoop) bool {
 	return other.ToC() == recv.ToC()
@@ -2491,27 +1982,6 @@ func (recv *MainLoop) Unref() {
 	return
 }
 
-// MappedFile is a wrapper around the C record GMappedFile.
-type MappedFile struct {
-	native *C.GMappedFile
-}
-
-func MappedFileNewFromC(u unsafe.Pointer) *MappedFile {
-	c := (*C.GMappedFile)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MappedFile{native: c}
-
-	return g
-}
-
-func (recv *MappedFile) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MappedFile with another MappedFile, and returns true if they represent the same GObject.
 func (recv *MappedFile) Equals(other *MappedFile) bool {
 	return other.ToC() == recv.ToC()
@@ -2522,27 +1992,6 @@ func (recv *MappedFile) Unref() {
 	C.g_mapped_file_unref((*C.GMappedFile)(recv.native))
 
 	return
-}
-
-// MarkupParseContext is a wrapper around the C record GMarkupParseContext.
-type MarkupParseContext struct {
-	native *C.GMarkupParseContext
-}
-
-func MarkupParseContextNewFromC(u unsafe.Pointer) *MarkupParseContext {
-	c := (*C.GMarkupParseContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MarkupParseContext{native: c}
-
-	return g
-}
-
-func (recv *MarkupParseContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MarkupParseContext with another MarkupParseContext, and returns true if they represent the same GObject.
@@ -2611,56 +2060,9 @@ func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) 
 	return retGo, goError
 }
 
-// MarkupParser is a wrapper around the C record GMarkupParser.
-type MarkupParser struct {
-	native *C.GMarkupParser
-	// no type for start_element
-	// no type for end_element
-	// no type for text
-	// no type for passthrough
-	// no type for error
-}
-
-func MarkupParserNewFromC(u unsafe.Pointer) *MarkupParser {
-	c := (*C.GMarkupParser)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MarkupParser{native: c}
-
-	return g
-}
-
-func (recv *MarkupParser) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MarkupParser with another MarkupParser, and returns true if they represent the same GObject.
 func (recv *MarkupParser) Equals(other *MarkupParser) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// MatchInfo is a wrapper around the C record GMatchInfo.
-type MatchInfo struct {
-	native *C.GMatchInfo
-}
-
-func MatchInfoNewFromC(u unsafe.Pointer) *MatchInfo {
-	c := (*C.GMatchInfo)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MatchInfo{native: c}
-
-	return g
-}
-
-func (recv *MatchInfo) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MatchInfo with another MatchInfo, and returns true if they represent the same GObject.
@@ -2668,62 +2070,9 @@ func (recv *MatchInfo) Equals(other *MatchInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// MemVTable is a wrapper around the C record GMemVTable.
-type MemVTable struct {
-	native *C.GMemVTable
-	// no type for malloc
-	// no type for realloc
-	// no type for free
-	// no type for calloc
-	// no type for try_malloc
-	// no type for try_realloc
-}
-
-func MemVTableNewFromC(u unsafe.Pointer) *MemVTable {
-	c := (*C.GMemVTable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MemVTable{native: c}
-
-	return g
-}
-
-func (recv *MemVTable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MemVTable with another MemVTable, and returns true if they represent the same GObject.
 func (recv *MemVTable) Equals(other *MemVTable) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Node is a wrapper around the C record GNode.
-type Node struct {
-	native *C.GNode
-	// data : no type generator for gpointer, gpointer
-	// next : record
-	// prev : record
-	// parent : record
-	// children : record
-}
-
-func NodeNewFromC(u unsafe.Pointer) *Node {
-	c := (*C.GNode)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Node{native: c}
-
-	return g
-}
-
-func (recv *Node) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Node with another Node, and returns true if they represent the same GObject.
@@ -2937,78 +2286,9 @@ func (recv *Node) Unlink() {
 	return
 }
 
-// OptionContext is a wrapper around the C record GOptionContext.
-type OptionContext struct {
-	native *C.GOptionContext
-}
-
-func OptionContextNewFromC(u unsafe.Pointer) *OptionContext {
-	c := (*C.GOptionContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &OptionContext{native: c}
-
-	return g
-}
-
-func (recv *OptionContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this OptionContext with another OptionContext, and returns true if they represent the same GObject.
 func (recv *OptionContext) Equals(other *OptionContext) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// OptionEntry is a wrapper around the C record GOptionEntry.
-type OptionEntry struct {
-	native    *C.GOptionEntry
-	LongName  string
-	ShortName rune
-	Flags     int32
-	Arg       OptionArg
-	// arg_data : no type generator for gpointer, gpointer
-	Description    string
-	ArgDescription string
-}
-
-func OptionEntryNewFromC(u unsafe.Pointer) *OptionEntry {
-	c := (*C.GOptionEntry)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &OptionEntry{
-		Arg:            (OptionArg)(c.arg),
-		ArgDescription: C.GoString(c.arg_description),
-		Description:    C.GoString(c.description),
-		Flags:          (int32)(c.flags),
-		LongName:       C.GoString(c.long_name),
-		ShortName:      (rune)(c.short_name),
-		native:         c,
-	}
-
-	return g
-}
-
-func (recv *OptionEntry) ToC() unsafe.Pointer {
-	recv.native.long_name =
-		C.CString(recv.LongName)
-	recv.native.short_name =
-		(C.gchar)(recv.ShortName)
-	recv.native.flags =
-		(C.gint)(recv.Flags)
-	recv.native.arg =
-		(C.GOptionArg)(recv.Arg)
-	recv.native.description =
-		C.CString(recv.Description)
-	recv.native.arg_description =
-		C.CString(recv.ArgDescription)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this OptionEntry with another OptionEntry, and returns true if they represent the same GObject.
@@ -3016,51 +2296,9 @@ func (recv *OptionEntry) Equals(other *OptionEntry) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// OptionGroup is a wrapper around the C record GOptionGroup.
-type OptionGroup struct {
-	native *C.GOptionGroup
-}
-
-func OptionGroupNewFromC(u unsafe.Pointer) *OptionGroup {
-	c := (*C.GOptionGroup)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &OptionGroup{native: c}
-
-	return g
-}
-
-func (recv *OptionGroup) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this OptionGroup with another OptionGroup, and returns true if they represent the same GObject.
 func (recv *OptionGroup) Equals(other *OptionGroup) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// PatternSpec is a wrapper around the C record GPatternSpec.
-type PatternSpec struct {
-	native *C.GPatternSpec
-}
-
-func PatternSpecNewFromC(u unsafe.Pointer) *PatternSpec {
-	c := (*C.GPatternSpec)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PatternSpec{native: c}
-
-	return g
-}
-
-func (recv *PatternSpec) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PatternSpec with another PatternSpec, and returns true if they represent the same GObject.
@@ -3099,68 +2337,9 @@ func (recv *PatternSpec) Free() {
 	return
 }
 
-// PollFD is a wrapper around the C record GPollFD.
-type PollFD struct {
-	native  *C.GPollFD
-	Fd      int32
-	Events  uint32
-	Revents uint32
-}
-
-func PollFDNewFromC(u unsafe.Pointer) *PollFD {
-	c := (*C.GPollFD)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PollFD{
-		Events:  (uint32)(c.events),
-		Fd:      (int32)(c.fd),
-		Revents: (uint32)(c.revents),
-		native:  c,
-	}
-
-	return g
-}
-
-func (recv *PollFD) ToC() unsafe.Pointer {
-	recv.native.fd =
-		(C.gint)(recv.Fd)
-	recv.native.events =
-		(C.gushort)(recv.Events)
-	recv.native.revents =
-		(C.gushort)(recv.Revents)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this PollFD with another PollFD, and returns true if they represent the same GObject.
 func (recv *PollFD) Equals(other *PollFD) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Private is a wrapper around the C record GPrivate.
-type Private struct {
-	native *C.GPrivate
-	// Private : p
-	// Private : notify
-	// Private : future
-}
-
-func PrivateNewFromC(u unsafe.Pointer) *Private {
-	c := (*C.GPrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Private{native: c}
-
-	return g
-}
-
-func (recv *Private) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Private with another Private, and returns true if they represent the same GObject.
@@ -3173,35 +2352,6 @@ func (recv *Private) Equals(other *Private) bool {
 // Unsupported : g_private_set : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
 // Blacklisted : GPtrArray
-
-// Queue is a wrapper around the C record GQueue.
-type Queue struct {
-	native *C.GQueue
-	// head : record
-	// tail : record
-	Length uint32
-}
-
-func QueueNewFromC(u unsafe.Pointer) *Queue {
-	c := (*C.GQueue)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Queue{
-		Length: (uint32)(c.length),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *Queue) ToC() unsafe.Pointer {
-	recv.native.length =
-		(C.guint)(recv.Length)
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Queue with another Queue, and returns true if they represent the same GObject.
 func (recv *Queue) Equals(other *Queue) bool {
@@ -3283,27 +2433,6 @@ func (recv *Queue) PushTailLink(link *List) {
 	return
 }
 
-// Rand is a wrapper around the C record GRand.
-type Rand struct {
-	native *C.GRand
-}
-
-func RandNewFromC(u unsafe.Pointer) *Rand {
-	c := (*C.GRand)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Rand{native: c}
-
-	return g
-}
-
-func (recv *Rand) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Rand with another Rand, and returns true if they represent the same GObject.
 func (recv *Rand) Equals(other *Rand) bool {
 	return other.ToC() == recv.ToC()
@@ -3381,29 +2510,6 @@ func (recv *Rand) SetSeed(seed uint32) {
 	C.g_rand_set_seed((*C.GRand)(recv.native), c_seed)
 
 	return
-}
-
-// SList is a wrapper around the C record GSList.
-type SList struct {
-	native *C.GSList
-	// data : no type generator for gpointer, gpointer
-	// next : record
-}
-
-func SListNewFromC(u unsafe.Pointer) *SList {
-	c := (*C.GSList)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SList{native: c}
-
-	return g
-}
-
-func (recv *SList) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SList with another SList, and returns true if they represent the same GObject.
@@ -3596,77 +2702,6 @@ func SListReverse(list *SList) *SList {
 
 // g_slist_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
 // g_slist_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
-// Scanner is a wrapper around the C record GScanner.
-type Scanner struct {
-	native *C.GScanner
-	// user_data : no type generator for gpointer, gpointer
-	MaxParseErrors uint32
-	ParseErrors    uint32
-	InputName      string
-	// qdata : record
-	// config : record
-	Token TokenType
-	// value : no type generator for TokenValue, GTokenValue
-	Line      uint32
-	Position  uint32
-	NextToken TokenType
-	// next_value : no type generator for TokenValue, GTokenValue
-	NextLine     uint32
-	NextPosition uint32
-	// Private : symbol_table
-	// Private : input_fd
-	// Private : text
-	// Private : text_end
-	// Private : buffer
-	// Private : scope_id
-	// msg_handler : no type generator for ScannerMsgFunc, GScannerMsgFunc
-}
-
-func ScannerNewFromC(u unsafe.Pointer) *Scanner {
-	c := (*C.GScanner)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Scanner{
-		InputName:      C.GoString(c.input_name),
-		Line:           (uint32)(c.line),
-		MaxParseErrors: (uint32)(c.max_parse_errors),
-		NextLine:       (uint32)(c.next_line),
-		NextPosition:   (uint32)(c.next_position),
-		NextToken:      (TokenType)(c.next_token),
-		ParseErrors:    (uint32)(c.parse_errors),
-		Position:       (uint32)(c.position),
-		Token:          (TokenType)(c.token),
-		native:         c,
-	}
-
-	return g
-}
-
-func (recv *Scanner) ToC() unsafe.Pointer {
-	recv.native.max_parse_errors =
-		(C.guint)(recv.MaxParseErrors)
-	recv.native.parse_errors =
-		(C.guint)(recv.ParseErrors)
-	recv.native.input_name =
-		C.CString(recv.InputName)
-	recv.native.token =
-		(C.GTokenType)(recv.Token)
-	recv.native.line =
-		(C.guint)(recv.Line)
-	recv.native.position =
-		(C.guint)(recv.Position)
-	recv.native.next_token =
-		(C.GTokenType)(recv.NextToken)
-	recv.native.next_line =
-		(C.guint)(recv.NextLine)
-	recv.native.next_position =
-		(C.guint)(recv.NextPosition)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Scanner with another Scanner, and returns true if they represent the same GObject.
 func (recv *Scanner) Equals(other *Scanner) bool {
 	return other.ToC() == recv.ToC()
@@ -3845,92 +2880,9 @@ func (recv *Scanner) Warn(format string, args ...interface{}) {
 	return
 }
 
-// ScannerConfig is a wrapper around the C record GScannerConfig.
-type ScannerConfig struct {
-	native              *C.GScannerConfig
-	CsetSkipCharacters  string
-	CsetIdentifierFirst string
-	CsetIdentifierNth   string
-	CpairCommentSingle  string
-	// Bitfield not supported :  1 case_sensitive
-	// Bitfield not supported :  1 skip_comment_multi
-	// Bitfield not supported :  1 skip_comment_single
-	// Bitfield not supported :  1 scan_comment_multi
-	// Bitfield not supported :  1 scan_identifier
-	// Bitfield not supported :  1 scan_identifier_1char
-	// Bitfield not supported :  1 scan_identifier_NULL
-	// Bitfield not supported :  1 scan_symbols
-	// Bitfield not supported :  1 scan_binary
-	// Bitfield not supported :  1 scan_octal
-	// Bitfield not supported :  1 scan_float
-	// Bitfield not supported :  1 scan_hex
-	// Bitfield not supported :  1 scan_hex_dollar
-	// Bitfield not supported :  1 scan_string_sq
-	// Bitfield not supported :  1 scan_string_dq
-	// Bitfield not supported :  1 numbers_2_int
-	// Bitfield not supported :  1 int_2_float
-	// Bitfield not supported :  1 identifier_2_string
-	// Bitfield not supported :  1 char_2_token
-	// Bitfield not supported :  1 symbol_2_token
-	// Bitfield not supported :  1 scope_0_fallback
-	// Bitfield not supported :  1 store_int64
-	// Private : padding_dummy
-}
-
-func ScannerConfigNewFromC(u unsafe.Pointer) *ScannerConfig {
-	c := (*C.GScannerConfig)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ScannerConfig{
-		CpairCommentSingle:  C.GoString(c.cpair_comment_single),
-		CsetIdentifierFirst: C.GoString(c.cset_identifier_first),
-		CsetIdentifierNth:   C.GoString(c.cset_identifier_nth),
-		CsetSkipCharacters:  C.GoString(c.cset_skip_characters),
-		native:              c,
-	}
-
-	return g
-}
-
-func (recv *ScannerConfig) ToC() unsafe.Pointer {
-	recv.native.cset_skip_characters =
-		C.CString(recv.CsetSkipCharacters)
-	recv.native.cset_identifier_first =
-		C.CString(recv.CsetIdentifierFirst)
-	recv.native.cset_identifier_nth =
-		C.CString(recv.CsetIdentifierNth)
-	recv.native.cpair_comment_single =
-		C.CString(recv.CpairCommentSingle)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ScannerConfig with another ScannerConfig, and returns true if they represent the same GObject.
 func (recv *ScannerConfig) Equals(other *ScannerConfig) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Sequence is a wrapper around the C record GSequence.
-type Sequence struct {
-	native *C.GSequence
-}
-
-func SequenceNewFromC(u unsafe.Pointer) *Sequence {
-	c := (*C.GSequence)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Sequence{native: c}
-
-	return g
-}
-
-func (recv *Sequence) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Sequence with another Sequence, and returns true if they represent the same GObject.
@@ -3938,64 +2890,9 @@ func (recv *Sequence) Equals(other *Sequence) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SequenceIter is a wrapper around the C record GSequenceIter.
-type SequenceIter struct {
-	native *C.GSequenceIter
-}
-
-func SequenceIterNewFromC(u unsafe.Pointer) *SequenceIter {
-	c := (*C.GSequenceIter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SequenceIter{native: c}
-
-	return g
-}
-
-func (recv *SequenceIter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SequenceIter with another SequenceIter, and returns true if they represent the same GObject.
 func (recv *SequenceIter) Equals(other *SequenceIter) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Source is a wrapper around the C record GSource.
-type Source struct {
-	native *C.GSource
-	// Private : callback_data
-	// Private : callback_funcs
-	// Private : source_funcs
-	// Private : ref_count
-	// Private : context
-	// Private : priority
-	// Private : flags
-	// Private : source_id
-	// Private : poll_fds
-	// Private : prev
-	// Private : next
-	// Private : name
-	// Private : priv
-}
-
-func SourceNewFromC(u unsafe.Pointer) *Source {
-	c := (*C.GSource)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Source{native: c}
-
-	return g
-}
-
-func (recv *Source) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Source with another Source, and returns true if they represent the same GObject.
@@ -4169,60 +3066,9 @@ func (recv *Source) Unref() {
 	return
 }
 
-// SourceCallbackFuncs is a wrapper around the C record GSourceCallbackFuncs.
-type SourceCallbackFuncs struct {
-	native *C.GSourceCallbackFuncs
-	// no type for ref
-	// no type for unref
-	// no type for get
-}
-
-func SourceCallbackFuncsNewFromC(u unsafe.Pointer) *SourceCallbackFuncs {
-	c := (*C.GSourceCallbackFuncs)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SourceCallbackFuncs{native: c}
-
-	return g
-}
-
-func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SourceCallbackFuncs with another SourceCallbackFuncs, and returns true if they represent the same GObject.
 func (recv *SourceCallbackFuncs) Equals(other *SourceCallbackFuncs) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// SourceFuncs is a wrapper around the C record GSourceFuncs.
-type SourceFuncs struct {
-	native *C.GSourceFuncs
-	// no type for prepare
-	// no type for check
-	// no type for dispatch
-	// no type for finalize
-	// Private : closure_callback
-	// Private : closure_marshal
-}
-
-func SourceFuncsNewFromC(u unsafe.Pointer) *SourceFuncs {
-	c := (*C.GSourceFuncs)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SourceFuncs{native: c}
-
-	return g
-}
-
-func (recv *SourceFuncs) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SourceFuncs with another SourceFuncs, and returns true if they represent the same GObject.
@@ -4230,91 +3076,14 @@ func (recv *SourceFuncs) Equals(other *SourceFuncs) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// SourcePrivate is a wrapper around the C record GSourcePrivate.
-type SourcePrivate struct {
-	native *C.GSourcePrivate
-}
-
-func SourcePrivateNewFromC(u unsafe.Pointer) *SourcePrivate {
-	c := (*C.GSourcePrivate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SourcePrivate{native: c}
-
-	return g
-}
-
-func (recv *SourcePrivate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SourcePrivate with another SourcePrivate, and returns true if they represent the same GObject.
 func (recv *SourcePrivate) Equals(other *SourcePrivate) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// StatBuf is a wrapper around the C record GStatBuf.
-type StatBuf struct {
-	native *C.GStatBuf
-}
-
-func StatBufNewFromC(u unsafe.Pointer) *StatBuf {
-	c := (*C.GStatBuf)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &StatBuf{native: c}
-
-	return g
-}
-
-func (recv *StatBuf) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this StatBuf with another StatBuf, and returns true if they represent the same GObject.
 func (recv *StatBuf) Equals(other *StatBuf) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// String is a wrapper around the C record GString.
-type String struct {
-	native       *C.GString
-	Str          string
-	Len          uint64
-	AllocatedLen uint64
-}
-
-func StringNewFromC(u unsafe.Pointer) *String {
-	c := (*C.GString)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &String{
-		AllocatedLen: (uint64)(c.allocated_len),
-		Len:          (uint64)(c.len),
-		Str:          C.GoString(c.str),
-		native:       c,
-	}
-
-	return g
-}
-
-func (recv *String) ToC() unsafe.Pointer {
-	recv.native.str =
-		C.CString(recv.Str)
-	recv.native.len =
-		(C.gsize)(recv.Len)
-	recv.native.allocated_len =
-		(C.gsize)(recv.AllocatedLen)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this String with another String, and returns true if they represent the same GObject.
@@ -4592,27 +3361,6 @@ func (recv *String) Up() *String {
 	return retGo
 }
 
-// StringChunk is a wrapper around the C record GStringChunk.
-type StringChunk struct {
-	native *C.GStringChunk
-}
-
-func StringChunkNewFromC(u unsafe.Pointer) *StringChunk {
-	c := (*C.GStringChunk)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &StringChunk{native: c}
-
-	return g
-}
-
-func (recv *StringChunk) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this StringChunk with another StringChunk, and returns true if they represent the same GObject.
 func (recv *StringChunk) Equals(other *StringChunk) bool {
 	return other.ToC() == recv.ToC()
@@ -4659,77 +3407,9 @@ func (recv *StringChunk) InsertConst(string_ string) string {
 	return retGo
 }
 
-// TestCase is a wrapper around the C record GTestCase.
-type TestCase struct {
-	native *C.GTestCase
-}
-
-func TestCaseNewFromC(u unsafe.Pointer) *TestCase {
-	c := (*C.GTestCase)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TestCase{native: c}
-
-	return g
-}
-
-func (recv *TestCase) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TestCase with another TestCase, and returns true if they represent the same GObject.
 func (recv *TestCase) Equals(other *TestCase) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TestConfig is a wrapper around the C record GTestConfig.
-type TestConfig struct {
-	native          *C.GTestConfig
-	TestInitialized bool
-	TestQuick       bool
-	TestPerf        bool
-	TestVerbose     bool
-	TestQuiet       bool
-	TestUndefined   bool
-}
-
-func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
-	c := (*C.GTestConfig)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TestConfig{
-		TestInitialized: c.test_initialized == C.TRUE,
-		TestPerf:        c.test_perf == C.TRUE,
-		TestQuick:       c.test_quick == C.TRUE,
-		TestQuiet:       c.test_quiet == C.TRUE,
-		TestUndefined:   c.test_undefined == C.TRUE,
-		TestVerbose:     c.test_verbose == C.TRUE,
-		native:          c,
-	}
-
-	return g
-}
-
-func (recv *TestConfig) ToC() unsafe.Pointer {
-	recv.native.test_initialized =
-		boolToGboolean(recv.TestInitialized)
-	recv.native.test_quick =
-		boolToGboolean(recv.TestQuick)
-	recv.native.test_perf =
-		boolToGboolean(recv.TestPerf)
-	recv.native.test_verbose =
-		boolToGboolean(recv.TestVerbose)
-	recv.native.test_quiet =
-		boolToGboolean(recv.TestQuiet)
-	recv.native.test_undefined =
-		boolToGboolean(recv.TestUndefined)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TestConfig with another TestConfig, and returns true if they represent the same GObject.
@@ -4741,51 +3421,9 @@ func (recv *TestConfig) Equals(other *TestConfig) bool {
 
 // Blacklisted : GTestLogMsg
 
-// TestSuite is a wrapper around the C record GTestSuite.
-type TestSuite struct {
-	native *C.GTestSuite
-}
-
-func TestSuiteNewFromC(u unsafe.Pointer) *TestSuite {
-	c := (*C.GTestSuite)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TestSuite{native: c}
-
-	return g
-}
-
-func (recv *TestSuite) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TestSuite with another TestSuite, and returns true if they represent the same GObject.
 func (recv *TestSuite) Equals(other *TestSuite) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Thread is a wrapper around the C record GThread.
-type Thread struct {
-	native *C.GThread
-}
-
-func ThreadNewFromC(u unsafe.Pointer) *Thread {
-	c := (*C.GThread)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Thread{native: c}
-
-	return g
-}
-
-func (recv *Thread) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Thread with another Thread, and returns true if they represent the same GObject.
@@ -4818,35 +3456,6 @@ func ThreadYield() {
 }
 
 // Unsupported : g_thread_join : no return generator
-
-// ThreadPool is a wrapper around the C record GThreadPool.
-type ThreadPool struct {
-	native *C.GThreadPool
-	// _func : no type generator for Func, GFunc
-	// user_data : no type generator for gpointer, gpointer
-	Exclusive bool
-}
-
-func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
-	c := (*C.GThreadPool)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ThreadPool{
-		Exclusive: c.exclusive == C.TRUE,
-		native:    c,
-	}
-
-	return g
-}
-
-func (recv *ThreadPool) ToC() unsafe.Pointer {
-	recv.native.exclusive =
-		boolToGboolean(recv.Exclusive)
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this ThreadPool with another ThreadPool, and returns true if they represent the same GObject.
 func (recv *ThreadPool) Equals(other *ThreadPool) bool {
@@ -4945,37 +3554,6 @@ func (recv *ThreadPool) Unprocessed() uint32 {
 	return retGo
 }
 
-// TimeVal is a wrapper around the C record GTimeVal.
-type TimeVal struct {
-	native *C.GTimeVal
-	TvSec  int64
-	TvUsec int64
-}
-
-func TimeValNewFromC(u unsafe.Pointer) *TimeVal {
-	c := (*C.GTimeVal)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TimeVal{
-		TvSec:  (int64)(c.tv_sec),
-		TvUsec: (int64)(c.tv_usec),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *TimeVal) ToC() unsafe.Pointer {
-	recv.native.tv_sec =
-		(C.glong)(recv.TvSec)
-	recv.native.tv_usec =
-		(C.glong)(recv.TvUsec)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TimeVal with another TimeVal, and returns true if they represent the same GObject.
 func (recv *TimeVal) Equals(other *TimeVal) bool {
 	return other.ToC() == recv.ToC()
@@ -4988,27 +3566,6 @@ func (recv *TimeVal) Add(microseconds int64) {
 	C.g_time_val_add((*C.GTimeVal)(recv.native), c_microseconds)
 
 	return
-}
-
-// Timer is a wrapper around the C record GTimer.
-type Timer struct {
-	native *C.GTimer
-}
-
-func TimerNewFromC(u unsafe.Pointer) *Timer {
-	c := (*C.GTimer)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Timer{native: c}
-
-	return g
-}
-
-func (recv *Timer) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Timer with another Timer, and returns true if they represent the same GObject.
@@ -5062,28 +3619,6 @@ func (recv *Timer) Stop() {
 	return
 }
 
-// TrashStack is a wrapper around the C record GTrashStack.
-type TrashStack struct {
-	native *C.GTrashStack
-	// next : record
-}
-
-func TrashStackNewFromC(u unsafe.Pointer) *TrashStack {
-	c := (*C.GTrashStack)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TrashStack{native: c}
-
-	return g
-}
-
-func (recv *TrashStack) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TrashStack with another TrashStack, and returns true if they represent the same GObject.
 func (recv *TrashStack) Equals(other *TrashStack) bool {
 	return other.ToC() == recv.ToC()
@@ -5105,27 +3640,6 @@ func TrashStackHeight(stackP *TrashStack) uint32 {
 // g_trash_stack_peek : no return generator
 // g_trash_stack_pop : no return generator
 // g_trash_stack_push : unsupported parameter data_p : no type generator for gpointer (gpointer) for param data_p
-// Tree is a wrapper around the C record GTree.
-type Tree struct {
-	native *C.GTree
-}
-
-func TreeNewFromC(u unsafe.Pointer) *Tree {
-	c := (*C.GTree)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Tree{native: c}
-
-	return g
-}
-
-func (recv *Tree) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Tree with another Tree, and returns true if they represent the same GObject.
 func (recv *Tree) Equals(other *Tree) bool {
 	return other.ToC() == recv.ToC()
@@ -5175,78 +3689,14 @@ func (recv *Tree) Nnodes() int32 {
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc (GTraverseFunc) for param traverse_func
 
-// VariantBuilder is a wrapper around the C record GVariantBuilder.
-type VariantBuilder struct {
-	native *C.GVariantBuilder
-}
-
-func VariantBuilderNewFromC(u unsafe.Pointer) *VariantBuilder {
-	c := (*C.GVariantBuilder)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VariantBuilder{native: c}
-
-	return g
-}
-
-func (recv *VariantBuilder) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this VariantBuilder with another VariantBuilder, and returns true if they represent the same GObject.
 func (recv *VariantBuilder) Equals(other *VariantBuilder) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// VariantIter is a wrapper around the C record GVariantIter.
-type VariantIter struct {
-	native *C.GVariantIter
-	// Private : x
-}
-
-func VariantIterNewFromC(u unsafe.Pointer) *VariantIter {
-	c := (*C.GVariantIter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VariantIter{native: c}
-
-	return g
-}
-
-func (recv *VariantIter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this VariantIter with another VariantIter, and returns true if they represent the same GObject.
 func (recv *VariantIter) Equals(other *VariantIter) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// VariantType is a wrapper around the C record GVariantType.
-type VariantType struct {
-	native *C.GVariantType
-}
-
-func VariantTypeNewFromC(u unsafe.Pointer) *VariantType {
-	c := (*C.GVariantType)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &VariantType{native: c}
-
-	return g
-}
-
-func (recv *VariantType) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this VariantType with another VariantType, and returns true if they represent the same GObject.

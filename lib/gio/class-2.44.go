@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"unsafe"
 )
 
@@ -233,37 +232,6 @@ func (recv *SimpleAction) SetStateHint(stateHint *glib.Variant) {
 	C.g_simple_action_set_state_hint((*C.GSimpleAction)(recv.native), c_state_hint)
 
 	return
-}
-
-// SimpleIOStream is a wrapper around the C record GSimpleIOStream.
-type SimpleIOStream struct {
-	native *C.GSimpleIOStream
-}
-
-func SimpleIOStreamNewFromC(u unsafe.Pointer) *SimpleIOStream {
-	c := (*C.GSimpleIOStream)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleIOStream{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *SimpleIOStream) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *SimpleIOStream) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SimpleIOStream with another SimpleIOStream, and returns true if they represent the same GObject.

@@ -14,32 +14,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GLAreaClass is a wrapper around the C record GtkGLAreaClass.
-type GLAreaClass struct {
-	native *C.GtkGLAreaClass
-	// Private : parent_class
-	// no type for render
-	// no type for resize
-	// no type for create_context
-	// Private : _padding
-}
-
-func GLAreaClassNewFromC(u unsafe.Pointer) *GLAreaClass {
-	c := (*C.GtkGLAreaClass)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &GLAreaClass{native: c}
-
-	return g
-}
-
-func (recv *GLAreaClass) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this GLAreaClass with another GLAreaClass, and returns true if they represent the same GObject.
 func (recv *GLAreaClass) Equals(other *GLAreaClass) bool {
 	return other.ToC() == recv.ToC()

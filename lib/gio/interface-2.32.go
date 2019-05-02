@@ -147,27 +147,6 @@ func (recv *Mount) GetSortKey() string {
 	return retGo
 }
 
-// NetworkMonitor is a wrapper around the C record GNetworkMonitor.
-type NetworkMonitor struct {
-	native *C.GNetworkMonitor
-}
-
-func NetworkMonitorNewFromC(u unsafe.Pointer) *NetworkMonitor {
-	c := (*C.GNetworkMonitor)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NetworkMonitor{native: c}
-
-	return g
-}
-
-func (recv *NetworkMonitor) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this NetworkMonitor with another NetworkMonitor, and returns true if they represent the same GObject.
 func (recv *NetworkMonitor) Equals(other *NetworkMonitor) bool {
 	return other.ToC() == recv.ToC()

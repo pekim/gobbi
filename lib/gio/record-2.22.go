@@ -25,56 +25,9 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AsyncInitableIface is a wrapper around the C record GAsyncInitableIface.
-type AsyncInitableIface struct {
-	native *C.GAsyncInitableIface
-	// g_iface : record
-	// no type for init_async
-	// no type for init_finish
-}
-
-func AsyncInitableIfaceNewFromC(u unsafe.Pointer) *AsyncInitableIface {
-	c := (*C.GAsyncInitableIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AsyncInitableIface{native: c}
-
-	return g
-}
-
-func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AsyncInitableIface with another AsyncInitableIface, and returns true if they represent the same GObject.
 func (recv *AsyncInitableIface) Equals(other *AsyncInitableIface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// InitableIface is a wrapper around the C record GInitableIface.
-type InitableIface struct {
-	native *C.GInitableIface
-	// g_iface : record
-	// no type for init
-}
-
-func InitableIfaceNewFromC(u unsafe.Pointer) *InitableIface {
-	c := (*C.GInitableIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InitableIface{native: c}
-
-	return g
-}
-
-func (recv *InitableIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this InitableIface with another InitableIface, and returns true if they represent the same GObject.
@@ -82,65 +35,9 @@ func (recv *InitableIface) Equals(other *InitableIface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// InputVector is a wrapper around the C record GInputVector.
-type InputVector struct {
-	native *C.GInputVector
-	// buffer : no type generator for gpointer, gpointer
-	Size uint64
-}
-
-func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
-	c := (*C.GInputVector)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InputVector{
-		Size:   (uint64)(c.size),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *InputVector) ToC() unsafe.Pointer {
-	recv.native.size =
-		(C.gsize)(recv.Size)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this InputVector with another InputVector, and returns true if they represent the same GObject.
 func (recv *InputVector) Equals(other *InputVector) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// OutputVector is a wrapper around the C record GOutputVector.
-type OutputVector struct {
-	native *C.GOutputVector
-	// buffer : no type generator for gpointer, gconstpointer
-	Size uint64
-}
-
-func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
-	c := (*C.GOutputVector)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &OutputVector{
-		Size:   (uint64)(c.size),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *OutputVector) ToC() unsafe.Pointer {
-	recv.native.size =
-		(C.gsize)(recv.Size)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this OutputVector with another OutputVector, and returns true if they represent the same GObject.

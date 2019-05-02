@@ -16,27 +16,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Font is a wrapper around the C record PangoCairoFont.
-type Font struct {
-	native *C.PangoCairoFont
-}
-
-func FontNewFromC(u unsafe.Pointer) *Font {
-	c := (*C.PangoCairoFont)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Font{native: c}
-
-	return g
-}
-
-func (recv *Font) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Font with another Font, and returns true if they represent the same GObject.
 func (recv *Font) Equals(other *Font) bool {
 	return other.ToC() == recv.ToC()

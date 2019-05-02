@@ -17,30 +17,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ActivatableIface is a wrapper around the C record GtkActivatableIface.
-type ActivatableIface struct {
-	native *C.GtkActivatableIface
-	// Private : g_iface
-	// no type for update
-	// no type for sync_action_properties
-}
-
-func ActivatableIfaceNewFromC(u unsafe.Pointer) *ActivatableIface {
-	c := (*C.GtkActivatableIface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ActivatableIface{native: c}
-
-	return g
-}
-
-func (recv *ActivatableIface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ActivatableIface with another ActivatableIface, and returns true if they represent the same GObject.
 func (recv *ActivatableIface) Equals(other *ActivatableIface) bool {
 	return other.ToC() == recv.ToC()

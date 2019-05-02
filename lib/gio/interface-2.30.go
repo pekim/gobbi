@@ -93,27 +93,6 @@ func (recv *Action) ChangeState(value *glib.Variant) {
 	return
 }
 
-// DBusInterface is a wrapper around the C record GDBusInterface.
-type DBusInterface struct {
-	native *C.GDBusInterface
-}
-
-func DBusInterfaceNewFromC(u unsafe.Pointer) *DBusInterface {
-	c := (*C.GDBusInterface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusInterface{native: c}
-
-	return g
-}
-
-func (recv *DBusInterface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusInterface with another DBusInterface, and returns true if they represent the same GObject.
 func (recv *DBusInterface) Equals(other *DBusInterface) bool {
 	return other.ToC() == recv.ToC()
@@ -602,27 +581,6 @@ func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
 	retGo := (gobject.Type)(retC)
 
 	return retGo
-}
-
-// TlsFileDatabase is a wrapper around the C record GTlsFileDatabase.
-type TlsFileDatabase struct {
-	native *C.GTlsFileDatabase
-}
-
-func TlsFileDatabaseNewFromC(u unsafe.Pointer) *TlsFileDatabase {
-	c := (*C.GTlsFileDatabase)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsFileDatabase{native: c}
-
-	return g
-}
-
-func (recv *TlsFileDatabase) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsFileDatabase with another TlsFileDatabase, and returns true if they represent the same GObject.

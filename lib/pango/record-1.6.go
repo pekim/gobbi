@@ -53,53 +53,6 @@ func (recv *GlyphItem) Free() {
 
 // Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs :
 
-// Matrix is a wrapper around the C record PangoMatrix.
-type Matrix struct {
-	native *C.PangoMatrix
-	Xx     float64
-	Xy     float64
-	Yx     float64
-	Yy     float64
-	X0     float64
-	Y0     float64
-}
-
-func MatrixNewFromC(u unsafe.Pointer) *Matrix {
-	c := (*C.PangoMatrix)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Matrix{
-		X0:     (float64)(c.x0),
-		Xx:     (float64)(c.xx),
-		Xy:     (float64)(c.xy),
-		Y0:     (float64)(c.y0),
-		Yx:     (float64)(c.yx),
-		Yy:     (float64)(c.yy),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *Matrix) ToC() unsafe.Pointer {
-	recv.native.xx =
-		(C.double)(recv.Xx)
-	recv.native.xy =
-		(C.double)(recv.Xy)
-	recv.native.yx =
-		(C.double)(recv.Yx)
-	recv.native.yy =
-		(C.double)(recv.Yy)
-	recv.native.x0 =
-		(C.double)(recv.X0)
-	recv.native.y0 =
-		(C.double)(recv.Y0)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Matrix with another Matrix, and returns true if they represent the same GObject.
 func (recv *Matrix) Equals(other *Matrix) bool {
 	return other.ToC() == recv.ToC()

@@ -163,51 +163,9 @@ import (
 */
 import "C"
 
-// Actionable is a wrapper around the C record GtkActionable.
-type Actionable struct {
-	native *C.GtkActionable
-}
-
-func ActionableNewFromC(u unsafe.Pointer) *Actionable {
-	c := (*C.GtkActionable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Actionable{native: c}
-
-	return g
-}
-
-func (recv *Actionable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Actionable with another Actionable, and returns true if they represent the same GObject.
 func (recv *Actionable) Equals(other *Actionable) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Activatable is a wrapper around the C record GtkActivatable.
-type Activatable struct {
-	native *C.GtkActivatable
-}
-
-func ActivatableNewFromC(u unsafe.Pointer) *Activatable {
-	c := (*C.GtkActivatable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Activatable{native: c}
-
-	return g
-}
-
-func (recv *Activatable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Activatable with another Activatable, and returns true if they represent the same GObject.
@@ -215,77 +173,14 @@ func (recv *Activatable) Equals(other *Activatable) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// AppChooser is a wrapper around the C record GtkAppChooser.
-type AppChooser struct {
-	native *C.GtkAppChooser
-}
-
-func AppChooserNewFromC(u unsafe.Pointer) *AppChooser {
-	c := (*C.GtkAppChooser)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &AppChooser{native: c}
-
-	return g
-}
-
-func (recv *AppChooser) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this AppChooser with another AppChooser, and returns true if they represent the same GObject.
 func (recv *AppChooser) Equals(other *AppChooser) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Buildable is a wrapper around the C record GtkBuildable.
-type Buildable struct {
-	native *C.GtkBuildable
-}
-
-func BuildableNewFromC(u unsafe.Pointer) *Buildable {
-	c := (*C.GtkBuildable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Buildable{native: c}
-
-	return g
-}
-
-func (recv *Buildable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Buildable with another Buildable, and returns true if they represent the same GObject.
 func (recv *Buildable) Equals(other *Buildable) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// CellAccessibleParent is a wrapper around the C record GtkCellAccessibleParent.
-type CellAccessibleParent struct {
-	native *C.GtkCellAccessibleParent
-}
-
-func CellAccessibleParentNewFromC(u unsafe.Pointer) *CellAccessibleParent {
-	c := (*C.GtkCellAccessibleParent)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &CellAccessibleParent{native: c}
-
-	return g
-}
-
-func (recv *CellAccessibleParent) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this CellAccessibleParent with another CellAccessibleParent, and returns true if they represent the same GObject.
@@ -422,27 +317,6 @@ func (recv *CellAccessibleParent) UpdateRelationset(cell *CellAccessible, relati
 	C.gtk_cell_accessible_parent_update_relationset((*C.GtkCellAccessibleParent)(recv.native), c_cell, c_relationset)
 
 	return
-}
-
-// CellEditable is a wrapper around the C record GtkCellEditable.
-type CellEditable struct {
-	native *C.GtkCellEditable
-}
-
-func CellEditableNewFromC(u unsafe.Pointer) *CellEditable {
-	c := (*C.GtkCellEditable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &CellEditable{native: c}
-
-	return g
-}
-
-func (recv *CellEditable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this CellEditable with another CellEditable, and returns true if they represent the same GObject.
@@ -586,77 +460,14 @@ func (recv *CellEditable) RemoveWidget() {
 
 // Unsupported : gtk_cell_editable_start_editing : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// CellLayout is a wrapper around the C record GtkCellLayout.
-type CellLayout struct {
-	native *C.GtkCellLayout
-}
-
-func CellLayoutNewFromC(u unsafe.Pointer) *CellLayout {
-	c := (*C.GtkCellLayout)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &CellLayout{native: c}
-
-	return g
-}
-
-func (recv *CellLayout) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this CellLayout with another CellLayout, and returns true if they represent the same GObject.
 func (recv *CellLayout) Equals(other *CellLayout) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ColorChooser is a wrapper around the C record GtkColorChooser.
-type ColorChooser struct {
-	native *C.GtkColorChooser
-}
-
-func ColorChooserNewFromC(u unsafe.Pointer) *ColorChooser {
-	c := (*C.GtkColorChooser)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ColorChooser{native: c}
-
-	return g
-}
-
-func (recv *ColorChooser) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ColorChooser with another ColorChooser, and returns true if they represent the same GObject.
 func (recv *ColorChooser) Equals(other *ColorChooser) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Editable is a wrapper around the C record GtkEditable.
-type Editable struct {
-	native *C.GtkEditable
-}
-
-func EditableNewFromC(u unsafe.Pointer) *Editable {
-	c := (*C.GtkEditable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Editable{native: c}
-
-	return g
-}
-
-func (recv *Editable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Editable with another Editable, and returns true if they represent the same GObject.
@@ -918,27 +729,6 @@ func (recv *Editable) SetPosition(position int32) {
 	return
 }
 
-// FileChooser is a wrapper around the C record GtkFileChooser.
-type FileChooser struct {
-	native *C.GtkFileChooser
-}
-
-func FileChooserNewFromC(u unsafe.Pointer) *FileChooser {
-	c := (*C.GtkFileChooser)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileChooser{native: c}
-
-	return g
-}
-
-func (recv *FileChooser) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileChooser with another FileChooser, and returns true if they represent the same GObject.
 func (recv *FileChooser) Equals(other *FileChooser) bool {
 	return other.ToC() == recv.ToC()
@@ -1192,27 +982,6 @@ func (recv *FileChooser) GetUsePreviewLabel() bool {
 	return retGo
 }
 
-// FontChooser is a wrapper around the C record GtkFontChooser.
-type FontChooser struct {
-	native *C.GtkFontChooser
-}
-
-func FontChooserNewFromC(u unsafe.Pointer) *FontChooser {
-	c := (*C.GtkFontChooser)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FontChooser{native: c}
-
-	return g
-}
-
-func (recv *FontChooser) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FontChooser with another FontChooser, and returns true if they represent the same GObject.
 func (recv *FontChooser) Equals(other *FontChooser) bool {
 	return other.ToC() == recv.ToC()
@@ -1280,51 +1049,9 @@ func fontchooser_fontActivatedHandler(_ *C.GObject, c_fontname *C.gchar, data C.
 	callback(fontname)
 }
 
-// Orientable is a wrapper around the C record GtkOrientable.
-type Orientable struct {
-	native *C.GtkOrientable
-}
-
-func OrientableNewFromC(u unsafe.Pointer) *Orientable {
-	c := (*C.GtkOrientable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Orientable{native: c}
-
-	return g
-}
-
-func (recv *Orientable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Orientable with another Orientable, and returns true if they represent the same GObject.
 func (recv *Orientable) Equals(other *Orientable) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// PrintOperationPreview is a wrapper around the C record GtkPrintOperationPreview.
-type PrintOperationPreview struct {
-	native *C.GtkPrintOperationPreview
-}
-
-func PrintOperationPreviewNewFromC(u unsafe.Pointer) *PrintOperationPreview {
-	c := (*C.GtkPrintOperationPreview)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PrintOperationPreview{native: c}
-
-	return g
-}
-
-func (recv *PrintOperationPreview) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PrintOperationPreview with another PrintOperationPreview, and returns true if they represent the same GObject.
@@ -1458,51 +1185,9 @@ func printoperationpreview_readyHandler(_ *C.GObject, c_context *C.GtkPrintConte
 	callback(context)
 }
 
-// RecentChooser is a wrapper around the C record GtkRecentChooser.
-type RecentChooser struct {
-	native *C.GtkRecentChooser
-}
-
-func RecentChooserNewFromC(u unsafe.Pointer) *RecentChooser {
-	c := (*C.GtkRecentChooser)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RecentChooser{native: c}
-
-	return g
-}
-
-func (recv *RecentChooser) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this RecentChooser with another RecentChooser, and returns true if they represent the same GObject.
 func (recv *RecentChooser) Equals(other *RecentChooser) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Scrollable is a wrapper around the C record GtkScrollable.
-type Scrollable struct {
-	native *C.GtkScrollable
-}
-
-func ScrollableNewFromC(u unsafe.Pointer) *Scrollable {
-	c := (*C.GtkScrollable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Scrollable{native: c}
-
-	return g
-}
-
-func (recv *Scrollable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Scrollable with another Scrollable, and returns true if they represent the same GObject.
@@ -1510,77 +1195,14 @@ func (recv *Scrollable) Equals(other *Scrollable) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// StyleProvider is a wrapper around the C record GtkStyleProvider.
-type StyleProvider struct {
-	native *C.GtkStyleProvider
-}
-
-func StyleProviderNewFromC(u unsafe.Pointer) *StyleProvider {
-	c := (*C.GtkStyleProvider)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &StyleProvider{native: c}
-
-	return g
-}
-
-func (recv *StyleProvider) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this StyleProvider with another StyleProvider, and returns true if they represent the same GObject.
 func (recv *StyleProvider) Equals(other *StyleProvider) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// ToolShell is a wrapper around the C record GtkToolShell.
-type ToolShell struct {
-	native *C.GtkToolShell
-}
-
-func ToolShellNewFromC(u unsafe.Pointer) *ToolShell {
-	c := (*C.GtkToolShell)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ToolShell{native: c}
-
-	return g
-}
-
-func (recv *ToolShell) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ToolShell with another ToolShell, and returns true if they represent the same GObject.
 func (recv *ToolShell) Equals(other *ToolShell) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// TreeDragDest is a wrapper around the C record GtkTreeDragDest.
-type TreeDragDest struct {
-	native *C.GtkTreeDragDest
-}
-
-func TreeDragDestNewFromC(u unsafe.Pointer) *TreeDragDest {
-	c := (*C.GtkTreeDragDest)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TreeDragDest{native: c}
-
-	return g
-}
-
-func (recv *TreeDragDest) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TreeDragDest with another TreeDragDest, and returns true if they represent the same GObject.
@@ -1622,27 +1244,6 @@ func (recv *TreeDragDest) RowDropPossible(destPath *TreePath, selectionData *Sel
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// TreeDragSource is a wrapper around the C record GtkTreeDragSource.
-type TreeDragSource struct {
-	native *C.GtkTreeDragSource
-}
-
-func TreeDragSourceNewFromC(u unsafe.Pointer) *TreeDragSource {
-	c := (*C.GtkTreeDragSource)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TreeDragSource{native: c}
-
-	return g
-}
-
-func (recv *TreeDragSource) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TreeDragSource with another TreeDragSource, and returns true if they represent the same GObject.
@@ -1692,27 +1293,6 @@ func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// TreeModel is a wrapper around the C record GtkTreeModel.
-type TreeModel struct {
-	native *C.GtkTreeModel
-}
-
-func TreeModelNewFromC(u unsafe.Pointer) *TreeModel {
-	c := (*C.GtkTreeModel)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TreeModel{native: c}
-
-	return g
-}
-
-func (recv *TreeModel) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TreeModel with another TreeModel, and returns true if they represent the same GObject.
@@ -2287,27 +1867,6 @@ func (recv *TreeModel) UnrefNode(iter *TreeIter) {
 	C.gtk_tree_model_unref_node((*C.GtkTreeModel)(recv.native), c_iter)
 
 	return
-}
-
-// TreeSortable is a wrapper around the C record GtkTreeSortable.
-type TreeSortable struct {
-	native *C.GtkTreeSortable
-}
-
-func TreeSortableNewFromC(u unsafe.Pointer) *TreeSortable {
-	c := (*C.GtkTreeSortable)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TreeSortable{native: c}
-
-	return g
-}
-
-func (recv *TreeSortable) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TreeSortable with another TreeSortable, and returns true if they represent the same GObject.

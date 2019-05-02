@@ -7,7 +7,6 @@ import (
 	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -273,39 +272,6 @@ func (recv *DesktopAppInfo) GetKeywords() []string {
 	return retGo
 }
 
-// InetAddressMask is a wrapper around the C record GInetAddressMask.
-type InetAddressMask struct {
-	native *C.GInetAddressMask
-	// parent_instance : record
-	// Private : priv
-}
-
-func InetAddressMaskNewFromC(u unsafe.Pointer) *InetAddressMask {
-	c := (*C.GInetAddressMask)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &InetAddressMask{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *InetAddressMask) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *InetAddressMask) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this InetAddressMask with another InetAddressMask, and returns true if they represent the same GObject.
 func (recv *InetAddressMask) Equals(other *InetAddressMask) bool {
 	return other.ToC() == recv.ToC()
@@ -449,37 +415,6 @@ func (recv *InetSocketAddress) GetScopeId() uint32 {
 	retGo := (uint32)(retC)
 
 	return retGo
-}
-
-// Menu is a wrapper around the C record GMenu.
-type Menu struct {
-	native *C.GMenu
-}
-
-func MenuNewFromC(u unsafe.Pointer) *Menu {
-	c := (*C.GMenu)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Menu{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Menu) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Menu) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Menu with another Menu, and returns true if they represent the same GObject.
@@ -704,39 +639,6 @@ func (recv *Menu) Remove(position int32) {
 	return
 }
 
-// MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
-type MenuAttributeIter struct {
-	native *C.GMenuAttributeIter
-	// parent_instance : record
-	// priv : record
-}
-
-func MenuAttributeIterNewFromC(u unsafe.Pointer) *MenuAttributeIter {
-	c := (*C.GMenuAttributeIter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuAttributeIter{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *MenuAttributeIter) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MenuAttributeIter with another MenuAttributeIter, and returns true if they represent the same GObject.
 func (recv *MenuAttributeIter) Equals(other *MenuAttributeIter) bool {
 	return other.ToC() == recv.ToC()
@@ -791,37 +693,6 @@ func (recv *MenuAttributeIter) Next() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// MenuItem is a wrapper around the C record GMenuItem.
-type MenuItem struct {
-	native *C.GMenuItem
-}
-
-func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
-	c := (*C.GMenuItem)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuItem{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *MenuItem) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *MenuItem) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MenuItem with another MenuItem, and returns true if they represent the same GObject.
@@ -1015,39 +886,6 @@ func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 	return
 }
 
-// MenuLinkIter is a wrapper around the C record GMenuLinkIter.
-type MenuLinkIter struct {
-	native *C.GMenuLinkIter
-	// parent_instance : record
-	// priv : record
-}
-
-func MenuLinkIterNewFromC(u unsafe.Pointer) *MenuLinkIter {
-	c := (*C.GMenuLinkIter)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuLinkIter{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *MenuLinkIter) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *MenuLinkIter) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this MenuLinkIter with another MenuLinkIter, and returns true if they represent the same GObject.
 func (recv *MenuLinkIter) Equals(other *MenuLinkIter) bool {
 	return other.ToC() == recv.ToC()
@@ -1102,39 +940,6 @@ func (recv *MenuLinkIter) Next() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// MenuModel is a wrapper around the C record GMenuModel.
-type MenuModel struct {
-	native *C.GMenuModel
-	// parent_instance : record
-	// priv : record
-}
-
-func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
-	c := (*C.GMenuModel)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &MenuModel{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *MenuModel) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *MenuModel) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this MenuModel with another MenuModel, and returns true if they represent the same GObject.

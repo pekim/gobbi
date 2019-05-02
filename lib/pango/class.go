@@ -5,7 +5,6 @@ package pango
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"unsafe"
 )
 
@@ -15,37 +14,6 @@ import (
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Context is a wrapper around the C record PangoContext.
-type Context struct {
-	native *C.PangoContext
-}
-
-func ContextNewFromC(u unsafe.Pointer) *Context {
-	c := (*C.PangoContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Context{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Context) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Context) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Context with another Context, and returns true if they represent the same GObject.
 func (recv *Context) Equals(other *Context) bool {
@@ -207,38 +175,6 @@ func (recv *Context) SetLanguage(language *Language) {
 
 // Blacklisted : PangoEngine
 
-// EngineLang is a wrapper around the C record PangoEngineLang.
-type EngineLang struct {
-	native *C.PangoEngineLang
-	// Private : parent_instance
-}
-
-func EngineLangNewFromC(u unsafe.Pointer) *EngineLang {
-	c := (*C.PangoEngineLang)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EngineLang{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *EngineLang) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *EngineLang) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this EngineLang with another EngineLang, and returns true if they represent the same GObject.
 func (recv *EngineLang) Equals(other *EngineLang) bool {
 	return other.ToC() == recv.ToC()
@@ -250,38 +186,6 @@ func CastToEngineLang(object *gobject.Object) *EngineLang {
 	return EngineLangNewFromC(object.ToC())
 }
 
-// EngineShape is a wrapper around the C record PangoEngineShape.
-type EngineShape struct {
-	native *C.PangoEngineShape
-	// parent_instance : record
-}
-
-func EngineShapeNewFromC(u unsafe.Pointer) *EngineShape {
-	c := (*C.PangoEngineShape)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &EngineShape{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *EngineShape) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *EngineShape) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this EngineShape with another EngineShape, and returns true if they represent the same GObject.
 func (recv *EngineShape) Equals(other *EngineShape) bool {
 	return other.ToC() == recv.ToC()
@@ -291,38 +195,6 @@ func (recv *EngineShape) Equals(other *EngineShape) bool {
 // Exercise care, as this is a potentially dangerous function if the Object is not a EngineShape.
 func CastToEngineShape(object *gobject.Object) *EngineShape {
 	return EngineShapeNewFromC(object.ToC())
-}
-
-// Font is a wrapper around the C record PangoFont.
-type Font struct {
-	native *C.PangoFont
-	// parent_instance : record
-}
-
-func FontNewFromC(u unsafe.Pointer) *Font {
-	c := (*C.PangoFont)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Font{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Font) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Font) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Font with another Font, and returns true if they represent the same GObject.
@@ -408,38 +280,6 @@ func (recv *Font) GetMetrics(language *Language) *FontMetrics {
 	return retGo
 }
 
-// FontFace is a wrapper around the C record PangoFontFace.
-type FontFace struct {
-	native *C.PangoFontFace
-	// parent_instance : record
-}
-
-func FontFaceNewFromC(u unsafe.Pointer) *FontFace {
-	c := (*C.PangoFontFace)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FontFace{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *FontFace) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *FontFace) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FontFace with another FontFace, and returns true if they represent the same GObject.
 func (recv *FontFace) Equals(other *FontFace) bool {
 	return other.ToC() == recv.ToC()
@@ -472,38 +312,6 @@ func (recv *FontFace) GetFaceName() string {
 	return retGo
 }
 
-// FontFamily is a wrapper around the C record PangoFontFamily.
-type FontFamily struct {
-	native *C.PangoFontFamily
-	// parent_instance : record
-}
-
-func FontFamilyNewFromC(u unsafe.Pointer) *FontFamily {
-	c := (*C.PangoFontFamily)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FontFamily{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *FontFamily) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *FontFamily) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FontFamily with another FontFamily, and returns true if they represent the same GObject.
 func (recv *FontFamily) Equals(other *FontFamily) bool {
 	return other.ToC() == recv.ToC()
@@ -529,38 +337,6 @@ func (recv *FontFamily) GetName() string {
 }
 
 // Unsupported : pango_font_family_list_faces : unsupported parameter faces : output array param faces
-
-// FontMap is a wrapper around the C record PangoFontMap.
-type FontMap struct {
-	native *C.PangoFontMap
-	// parent_instance : record
-}
-
-func FontMapNewFromC(u unsafe.Pointer) *FontMap {
-	c := (*C.PangoFontMap)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FontMap{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *FontMap) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *FontMap) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
 func (recv *FontMap) Equals(other *FontMap) bool {
@@ -631,38 +407,6 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	return retGo
 }
 
-// Fontset is a wrapper around the C record PangoFontset.
-type Fontset struct {
-	native *C.PangoFontset
-	// parent_instance : record
-}
-
-func FontsetNewFromC(u unsafe.Pointer) *Fontset {
-	c := (*C.PangoFontset)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Fontset{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Fontset) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Fontset) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Fontset with another Fontset, and returns true if they represent the same GObject.
 func (recv *Fontset) Equals(other *Fontset) bool {
 	return other.ToC() == recv.ToC()
@@ -698,37 +442,6 @@ func (recv *Fontset) GetMetrics() *FontMetrics {
 }
 
 // Blacklisted : PangoFontsetSimple
-
-// Layout is a wrapper around the C record PangoLayout.
-type Layout struct {
-	native *C.PangoLayout
-}
-
-func LayoutNewFromC(u unsafe.Pointer) *Layout {
-	c := (*C.PangoLayout)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Layout{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Layout) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Layout) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Layout with another Layout, and returns true if they represent the same GObject.
 func (recv *Layout) Equals(other *Layout) bool {

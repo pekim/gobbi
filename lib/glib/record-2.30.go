@@ -38,27 +38,6 @@ func DirMakeTmp(tmpl string) (string, error) {
 
 // Unsupported : g_hash_table_iter_replace : unsupported parameter value : no type generator for gpointer (gpointer) for param value
 
-// Hmac is a wrapper around the C record GHmac.
-type Hmac struct {
-	native *C.GHmac
-}
-
-func HmacNewFromC(u unsafe.Pointer) *Hmac {
-	c := (*C.GHmac)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Hmac{native: c}
-
-	return g
-}
-
-func (recv *Hmac) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Hmac with another Hmac, and returns true if they represent the same GObject.
 func (recv *Hmac) Equals(other *Hmac) bool {
 	return other.ToC() == recv.ToC()

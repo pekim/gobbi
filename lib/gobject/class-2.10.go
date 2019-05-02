@@ -43,34 +43,6 @@ func (recv *ParamSpec) RefSink() *ParamSpec {
 	return retGo
 }
 
-// ParamSpecGType is a wrapper around the C record GParamSpecGType.
-type ParamSpecGType struct {
-	native *C.GParamSpecGType
-	// parent_instance : record
-	IsAType Type
-}
-
-func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
-	c := (*C.GParamSpecGType)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ParamSpecGType{
-		IsAType: (Type)(c.is_a_type),
-		native:  c,
-	}
-
-	return g
-}
-
-func (recv *ParamSpecGType) ToC() unsafe.Pointer {
-	recv.native.is_a_type =
-		(C.GType)(recv.IsAType)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ParamSpecGType with another ParamSpecGType, and returns true if they represent the same GObject.
 func (recv *ParamSpecGType) Equals(other *ParamSpecGType) bool {
 	return other.ToC() == recv.ToC()

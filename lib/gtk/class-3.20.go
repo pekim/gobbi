@@ -7,7 +7,6 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -109,37 +108,6 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 	return
 }
 
-// FileChooserNative is a wrapper around the C record GtkFileChooserNative.
-type FileChooserNative struct {
-	native *C.GtkFileChooserNative
-}
-
-func FileChooserNativeNewFromC(u unsafe.Pointer) *FileChooserNative {
-	c := (*C.GtkFileChooserNative)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FileChooserNative{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *FileChooserNative) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *FileChooserNative) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this FileChooserNative with another FileChooserNative, and returns true if they represent the same GObject.
 func (recv *FileChooserNative) Equals(other *FileChooserNative) bool {
 	return other.ToC() == recv.ToC()
@@ -223,38 +191,6 @@ func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 	C.gtk_file_chooser_native_set_cancel_label((*C.GtkFileChooserNative)(recv.native), c_cancel_label)
 
 	return
-}
-
-// NativeDialog is a wrapper around the C record GtkNativeDialog.
-type NativeDialog struct {
-	native *C.GtkNativeDialog
-	// parent_instance : record
-}
-
-func NativeDialogNewFromC(u unsafe.Pointer) *NativeDialog {
-	c := (*C.GtkNativeDialog)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NativeDialog{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *NativeDialog) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *NativeDialog) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this NativeDialog with another NativeDialog, and returns true if they represent the same GObject.
@@ -431,37 +367,6 @@ func (recv *NativeDialog) Show() {
 	C.gtk_native_dialog_show((*C.GtkNativeDialog)(recv.native))
 
 	return
-}
-
-// PadController is a wrapper around the C record GtkPadController.
-type PadController struct {
-	native *C.GtkPadController
-}
-
-func PadControllerNewFromC(u unsafe.Pointer) *PadController {
-	c := (*C.GtkPadController)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PadController{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *PadController) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *PadController) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PadController with another PadController, and returns true if they represent the same GObject.
@@ -698,37 +603,6 @@ func (recv *Settings) ResetProperty(name string) {
 	return
 }
 
-// ShortcutLabel is a wrapper around the C record GtkShortcutLabel.
-type ShortcutLabel struct {
-	native *C.GtkShortcutLabel
-}
-
-func ShortcutLabelNewFromC(u unsafe.Pointer) *ShortcutLabel {
-	c := (*C.GtkShortcutLabel)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ShortcutLabel{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ShortcutLabel) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ShortcutLabel) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ShortcutLabel with another ShortcutLabel, and returns true if they represent the same GObject.
 func (recv *ShortcutLabel) Equals(other *ShortcutLabel) bool {
 	return other.ToC() == recv.ToC()
@@ -765,37 +639,6 @@ func CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
 	return ShortcutLabelNewFromC(object.ToC())
 }
 
-// ShortcutsGroup is a wrapper around the C record GtkShortcutsGroup.
-type ShortcutsGroup struct {
-	native *C.GtkShortcutsGroup
-}
-
-func ShortcutsGroupNewFromC(u unsafe.Pointer) *ShortcutsGroup {
-	c := (*C.GtkShortcutsGroup)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ShortcutsGroup{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ShortcutsGroup) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ShortcutsGroup) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ShortcutsGroup with another ShortcutsGroup, and returns true if they represent the same GObject.
 func (recv *ShortcutsGroup) Equals(other *ShortcutsGroup) bool {
 	return other.ToC() == recv.ToC()
@@ -830,37 +673,6 @@ func (recv *ShortcutsGroup) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsGroup.
 func CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
 	return ShortcutsGroupNewFromC(object.ToC())
-}
-
-// ShortcutsSection is a wrapper around the C record GtkShortcutsSection.
-type ShortcutsSection struct {
-	native *C.GtkShortcutsSection
-}
-
-func ShortcutsSectionNewFromC(u unsafe.Pointer) *ShortcutsSection {
-	c := (*C.GtkShortcutsSection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ShortcutsSection{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ShortcutsSection) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ShortcutsSection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ShortcutsSection with another ShortcutsSection, and returns true if they represent the same GObject.
@@ -964,37 +776,6 @@ func shortcutssection_changeCurrentPageHandler(_ *C.GObject, c_object C.gint, da
 	return retC
 }
 
-// ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
-type ShortcutsShortcut struct {
-	native *C.GtkShortcutsShortcut
-}
-
-func ShortcutsShortcutNewFromC(u unsafe.Pointer) *ShortcutsShortcut {
-	c := (*C.GtkShortcutsShortcut)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ShortcutsShortcut{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ShortcutsShortcut) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ShortcutsShortcut) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ShortcutsShortcut with another ShortcutsShortcut, and returns true if they represent the same GObject.
 func (recv *ShortcutsShortcut) Equals(other *ShortcutsShortcut) bool {
 	return other.ToC() == recv.ToC()
@@ -1029,38 +810,6 @@ func (recv *ShortcutsShortcut) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsShortcut.
 func CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
 	return ShortcutsShortcutNewFromC(object.ToC())
-}
-
-// ShortcutsWindow is a wrapper around the C record GtkShortcutsWindow.
-type ShortcutsWindow struct {
-	native *C.GtkShortcutsWindow
-	// window : record
-}
-
-func ShortcutsWindowNewFromC(u unsafe.Pointer) *ShortcutsWindow {
-	c := (*C.GtkShortcutsWindow)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ShortcutsWindow{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ShortcutsWindow) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this ShortcutsWindow with another ShortcutsWindow, and returns true if they represent the same GObject.

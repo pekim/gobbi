@@ -589,27 +589,6 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 	return retGo
 }
 
-// PollableInputStream is a wrapper around the C record GPollableInputStream.
-type PollableInputStream struct {
-	native *C.GPollableInputStream
-}
-
-func PollableInputStreamNewFromC(u unsafe.Pointer) *PollableInputStream {
-	c := (*C.GPollableInputStream)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PollableInputStream{native: c}
-
-	return g
-}
-
-func (recv *PollableInputStream) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this PollableInputStream with another PollableInputStream, and returns true if they represent the same GObject.
 func (recv *PollableInputStream) Equals(other *PollableInputStream) bool {
 	return other.ToC() == recv.ToC()
@@ -676,27 +655,6 @@ func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Ca
 	}
 
 	return retGo, goError
-}
-
-// PollableOutputStream is a wrapper around the C record GPollableOutputStream.
-type PollableOutputStream struct {
-	native *C.GPollableOutputStream
-}
-
-func PollableOutputStreamNewFromC(u unsafe.Pointer) *PollableOutputStream {
-	c := (*C.GPollableOutputStream)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PollableOutputStream{native: c}
-
-	return g
-}
-
-func (recv *PollableOutputStream) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this PollableOutputStream with another PollableOutputStream, and returns true if they represent the same GObject.
@@ -767,27 +725,6 @@ func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *
 	return retGo, goError
 }
 
-// TlsBackend is a wrapper around the C record GTlsBackend.
-type TlsBackend struct {
-	native *C.GTlsBackend
-}
-
-func TlsBackendNewFromC(u unsafe.Pointer) *TlsBackend {
-	c := (*C.GTlsBackend)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsBackend{native: c}
-
-	return g
-}
-
-func (recv *TlsBackend) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsBackend with another TlsBackend, and returns true if they represent the same GObject.
 func (recv *TlsBackend) Equals(other *TlsBackend) bool {
 	return other.ToC() == recv.ToC()
@@ -831,27 +768,6 @@ func (recv *TlsBackend) SupportsTls() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// TlsClientConnection is a wrapper around the C record GTlsClientConnection.
-type TlsClientConnection struct {
-	native *C.GTlsClientConnection
-}
-
-func TlsClientConnectionNewFromC(u unsafe.Pointer) *TlsClientConnection {
-	c := (*C.GTlsClientConnection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsClientConnection{native: c}
-
-	return g
-}
-
-func (recv *TlsClientConnection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsClientConnection with another TlsClientConnection, and returns true if they represent the same GObject.
@@ -942,27 +858,6 @@ func (recv *TlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
 	C.g_tls_client_connection_set_validation_flags((*C.GTlsClientConnection)(recv.native), c_flags)
 
 	return
-}
-
-// TlsServerConnection is a wrapper around the C record GTlsServerConnection.
-type TlsServerConnection struct {
-	native *C.GTlsServerConnection
-}
-
-func TlsServerConnectionNewFromC(u unsafe.Pointer) *TlsServerConnection {
-	c := (*C.GTlsServerConnection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsServerConnection{native: c}
-
-	return g
-}
-
-func (recv *TlsServerConnection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsServerConnection with another TlsServerConnection, and returns true if they represent the same GObject.

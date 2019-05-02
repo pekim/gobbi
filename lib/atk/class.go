@@ -4,7 +4,6 @@ package atk
 
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -52,38 +51,6 @@ import (
 */
 import "C"
 
-// GObjectAccessible is a wrapper around the C record AtkGObjectAccessible.
-type GObjectAccessible struct {
-	native *C.AtkGObjectAccessible
-	// parent : record
-}
-
-func GObjectAccessibleNewFromC(u unsafe.Pointer) *GObjectAccessible {
-	c := (*C.AtkGObjectAccessible)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &GObjectAccessible{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *GObjectAccessible) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *GObjectAccessible) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this GObjectAccessible with another GObjectAccessible, and returns true if they represent the same GObject.
 func (recv *GObjectAccessible) Equals(other *GObjectAccessible) bool {
 	return other.ToC() == recv.ToC()
@@ -119,38 +86,6 @@ func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// Hyperlink is a wrapper around the C record AtkHyperlink.
-type Hyperlink struct {
-	native *C.AtkHyperlink
-	// parent : record
-}
-
-func HyperlinkNewFromC(u unsafe.Pointer) *Hyperlink {
-	c := (*C.AtkHyperlink)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Hyperlink{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Hyperlink) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Hyperlink) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Hyperlink with another Hyperlink, and returns true if they represent the same GObject.
@@ -295,38 +230,6 @@ func (recv *Hyperlink) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
 
-// Misc is a wrapper around the C record AtkMisc.
-type Misc struct {
-	native *C.AtkMisc
-	// parent : record
-}
-
-func MiscNewFromC(u unsafe.Pointer) *Misc {
-	c := (*C.AtkMisc)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Misc{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Misc) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Misc) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Misc with another Misc, and returns true if they represent the same GObject.
 func (recv *Misc) Equals(other *Misc) bool {
 	return other.ToC() == recv.ToC()
@@ -341,38 +244,6 @@ func (recv *Misc) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Misc.
 func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromC(object.ToC())
-}
-
-// NoOpObject is a wrapper around the C record AtkNoOpObject.
-type NoOpObject struct {
-	native *C.AtkNoOpObject
-	// parent : record
-}
-
-func NoOpObjectNewFromC(u unsafe.Pointer) *NoOpObject {
-	c := (*C.AtkNoOpObject)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NoOpObject{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *NoOpObject) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *NoOpObject) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this NoOpObject with another NoOpObject, and returns true if they represent the same GObject.
@@ -468,38 +339,6 @@ func (recv *NoOpObject) Window() *Window {
 	return WindowNewFromC(recv.ToC())
 }
 
-// NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
-type NoOpObjectFactory struct {
-	native *C.AtkNoOpObjectFactory
-	// parent : record
-}
-
-func NoOpObjectFactoryNewFromC(u unsafe.Pointer) *NoOpObjectFactory {
-	c := (*C.AtkNoOpObjectFactory)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NoOpObjectFactory{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *NoOpObjectFactory) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this NoOpObjectFactory with another NoOpObjectFactory, and returns true if they represent the same GObject.
 func (recv *NoOpObjectFactory) Equals(other *NoOpObjectFactory) bool {
 	return other.ToC() == recv.ToC()
@@ -531,48 +370,6 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	}
 
 	return retGo
-}
-
-// Object is a wrapper around the C record AtkObject.
-type Object struct {
-	native *C.AtkObject
-	// parent : record
-	Description string
-	Name        string
-	// accessible_parent : record
-	Role Role
-	// relation_set : record
-	Layer Layer
-}
-
-func ObjectNewFromC(u unsafe.Pointer) *Object {
-	c := (*C.AtkObject)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Object{
-		Description: C.GoString(c.description),
-		Layer:       (Layer)(c.layer),
-		Name:        C.GoString(c.name),
-		Role:        (Role)(c.role),
-		native:      c,
-	}
-
-	return g
-}
-
-func (recv *Object) ToC() unsafe.Pointer {
-	recv.native.description =
-		C.CString(recv.Description)
-	recv.native.name =
-		C.CString(recv.Name)
-	recv.native.role =
-		(C.AtkRole)(recv.Role)
-	recv.native.layer =
-		(C.AtkLayer)(recv.Layer)
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Object with another Object, and returns true if they represent the same GObject.
@@ -977,38 +774,6 @@ func (recv *Object) SetRole(role Role) {
 	return
 }
 
-// ObjectFactory is a wrapper around the C record AtkObjectFactory.
-type ObjectFactory struct {
-	native *C.AtkObjectFactory
-	// parent : record
-}
-
-func ObjectFactoryNewFromC(u unsafe.Pointer) *ObjectFactory {
-	c := (*C.AtkObjectFactory)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ObjectFactory{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *ObjectFactory) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *ObjectFactory) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ObjectFactory with another ObjectFactory, and returns true if they represent the same GObject.
 func (recv *ObjectFactory) Equals(other *ObjectFactory) bool {
 	return other.ToC() == recv.ToC()
@@ -1053,38 +818,6 @@ func (recv *ObjectFactory) Invalidate() {
 	return
 }
 
-// Plug is a wrapper around the C record AtkPlug.
-type Plug struct {
-	native *C.AtkPlug
-	// parent : record
-}
-
-func PlugNewFromC(u unsafe.Pointer) *Plug {
-	c := (*C.AtkPlug)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Plug{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Plug) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Plug) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Plug with another Plug, and returns true if they represent the same GObject.
 func (recv *Plug) Equals(other *Plug) bool {
 	return other.ToC() == recv.ToC()
@@ -1116,40 +849,6 @@ func PlugNew() *Plug {
 // Component returns the Component interface implemented by Plug
 func (recv *Plug) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
-}
-
-// Registry is a wrapper around the C record AtkRegistry.
-type Registry struct {
-	native *C.AtkRegistry
-	// parent : record
-	// factory_type_registry : record
-	// factory_singleton_cache : record
-}
-
-func RegistryNewFromC(u unsafe.Pointer) *Registry {
-	c := (*C.AtkRegistry)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Registry{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Registry) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Registry) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Registry with another Registry, and returns true if they represent the same GObject.
@@ -1199,45 +898,6 @@ func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Typ
 	return
 }
 
-// Relation is a wrapper around the C record AtkRelation.
-type Relation struct {
-	native *C.AtkRelation
-	// parent : record
-	// no type for target
-	Relationship RelationType
-}
-
-func RelationNewFromC(u unsafe.Pointer) *Relation {
-	c := (*C.AtkRelation)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Relation{
-		Relationship: (RelationType)(c.relationship),
-		native:       c,
-	}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Relation) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Relation) ToC() unsafe.Pointer {
-	recv.native.relationship =
-		(C.AtkRelationType)(recv.Relationship)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Relation with another Relation, and returns true if they represent the same GObject.
 func (recv *Relation) Equals(other *Relation) bool {
 	return other.ToC() == recv.ToC()
@@ -1277,39 +937,6 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-// RelationSet is a wrapper around the C record AtkRelationSet.
-type RelationSet struct {
-	native *C.AtkRelationSet
-	// parent : record
-	// no type for relations
-}
-
-func RelationSetNewFromC(u unsafe.Pointer) *RelationSet {
-	c := (*C.AtkRelationSet)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RelationSet{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *RelationSet) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *RelationSet) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this RelationSet with another RelationSet, and returns true if they represent the same GObject.
@@ -1417,39 +1044,6 @@ func (recv *RelationSet) Remove(relation *Relation) {
 	return
 }
 
-// Socket is a wrapper around the C record AtkSocket.
-type Socket struct {
-	native *C.AtkSocket
-	// parent : record
-	// Private : embedded_plug_id
-}
-
-func SocketNewFromC(u unsafe.Pointer) *Socket {
-	c := (*C.AtkSocket)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Socket{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Socket) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Socket) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
 func (recv *Socket) Equals(other *Socket) bool {
 	return other.ToC() == recv.ToC()
@@ -1481,38 +1075,6 @@ func SocketNew() *Socket {
 // Component returns the Component interface implemented by Socket
 func (recv *Socket) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
-}
-
-// StateSet is a wrapper around the C record AtkStateSet.
-type StateSet struct {
-	native *C.AtkStateSet
-	// parent : record
-}
-
-func StateSetNewFromC(u unsafe.Pointer) *StateSet {
-	c := (*C.AtkStateSet)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &StateSet{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *StateSet) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *StateSet) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this StateSet with another StateSet, and returns true if they represent the same GObject.
@@ -1667,38 +1229,6 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// Util is a wrapper around the C record AtkUtil.
-type Util struct {
-	native *C.AtkUtil
-	// parent : record
-}
-
-func UtilNewFromC(u unsafe.Pointer) *Util {
-	c := (*C.AtkUtil)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Util{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Util) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Util) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Util with another Util, and returns true if they represent the same GObject.

@@ -7,7 +7,6 @@ import (
 	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -103,39 +102,6 @@ import (
 
 */
 import "C"
-
-// Application is a wrapper around the C record GApplication.
-type Application struct {
-	native *C.GApplication
-	// Private : parent_instance
-	// Private : priv
-}
-
-func ApplicationNewFromC(u unsafe.Pointer) *Application {
-	c := (*C.GApplication)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Application{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Application) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Application) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this Application with another Application, and returns true if they represent the same GObject.
 func (recv *Application) Equals(other *Application) bool {
@@ -920,39 +886,6 @@ func (recv *SimpleAction) SetEnabled(enabled bool) {
 	return
 }
 
-// SimpleActionGroup is a wrapper around the C record GSimpleActionGroup.
-type SimpleActionGroup struct {
-	native *C.GSimpleActionGroup
-	// Private : parent_instance
-	// Private : priv
-}
-
-func SimpleActionGroupNewFromC(u unsafe.Pointer) *SimpleActionGroup {
-	c := (*C.GSimpleActionGroup)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SimpleActionGroup{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *SimpleActionGroup) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SimpleActionGroup with another SimpleActionGroup, and returns true if they represent the same GObject.
 func (recv *SimpleActionGroup) Equals(other *SimpleActionGroup) bool {
 	return other.ToC() == recv.ToC()
@@ -1080,39 +1013,6 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	}
 
 	return retGo
-}
-
-// TlsCertificate is a wrapper around the C record GTlsCertificate.
-type TlsCertificate struct {
-	native *C.GTlsCertificate
-	// parent_instance : record
-	// priv : record
-}
-
-func TlsCertificateNewFromC(u unsafe.Pointer) *TlsCertificate {
-	c := (*C.GTlsCertificate)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsCertificate{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TlsCertificate) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TlsCertificate) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsCertificate with another TlsCertificate, and returns true if they represent the same GObject.
@@ -1253,39 +1153,6 @@ func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCe
 	retGo := (TlsCertificateFlags)(retC)
 
 	return retGo
-}
-
-// TlsConnection is a wrapper around the C record GTlsConnection.
-type TlsConnection struct {
-	native *C.GTlsConnection
-	// parent_instance : record
-	// priv : record
-}
-
-func TlsConnectionNewFromC(u unsafe.Pointer) *TlsConnection {
-	c := (*C.GTlsConnection)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsConnection{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TlsConnection) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TlsConnection) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsConnection with another TlsConnection, and returns true if they represent the same GObject.

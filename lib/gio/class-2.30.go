@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -146,39 +145,6 @@ func (recv *DBusConnection) CallWithUnixFdListSync(busName string, objectPath st
 	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
 
 	return retGo, outFdList, goError
-}
-
-// DBusInterfaceSkeleton is a wrapper around the C record GDBusInterfaceSkeleton.
-type DBusInterfaceSkeleton struct {
-	native *C.GDBusInterfaceSkeleton
-	// Private : parent_instance
-	// Private : priv
-}
-
-func DBusInterfaceSkeletonNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton {
-	c := (*C.GDBusInterfaceSkeleton)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusInterfaceSkeleton{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusInterfaceSkeleton) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusInterfaceSkeleton with another DBusInterfaceSkeleton, and returns true if they represent the same GObject.
@@ -388,39 +354,6 @@ func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
 	return
 }
 
-// DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
-type DBusObjectManagerClient struct {
-	native *C.GDBusObjectManagerClient
-	// Private : parent_instance
-	// Private : priv
-}
-
-func DBusObjectManagerClientNewFromC(u unsafe.Pointer) *DBusObjectManagerClient {
-	c := (*C.GDBusObjectManagerClient)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectManagerClient{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusObjectManagerClient) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObjectManagerClient with another DBusObjectManagerClient, and returns true if they represent the same GObject.
 func (recv *DBusObjectManagerClient) Equals(other *DBusObjectManagerClient) bool {
 	return other.ToC() == recv.ToC()
@@ -596,39 +529,6 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	return retGo
 }
 
-// DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
-type DBusObjectManagerServer struct {
-	native *C.GDBusObjectManagerServer
-	// Private : parent_instance
-	// Private : priv
-}
-
-func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer {
-	c := (*C.GDBusObjectManagerServer)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectManagerServer{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusObjectManagerServer) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObjectManagerServer with another DBusObjectManagerServer, and returns true if they represent the same GObject.
 func (recv *DBusObjectManagerServer) Equals(other *DBusObjectManagerServer) bool {
 	return other.ToC() == recv.ToC()
@@ -715,39 +615,6 @@ func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	return retGo
 }
 
-// DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
-type DBusObjectProxy struct {
-	native *C.GDBusObjectProxy
-	// Private : parent_instance
-	// Private : priv
-}
-
-func DBusObjectProxyNewFromC(u unsafe.Pointer) *DBusObjectProxy {
-	c := (*C.GDBusObjectProxy)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectProxy{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusObjectProxy) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this DBusObjectProxy with another DBusObjectProxy, and returns true if they represent the same GObject.
 func (recv *DBusObjectProxy) Equals(other *DBusObjectProxy) bool {
 	return other.ToC() == recv.ToC()
@@ -790,39 +657,6 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
-type DBusObjectSkeleton struct {
-	native *C.GDBusObjectSkeleton
-	// Private : parent_instance
-	// Private : priv
-}
-
-func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
-	c := (*C.GDBusObjectSkeleton)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DBusObjectSkeleton{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *DBusObjectSkeleton) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this DBusObjectSkeleton with another DBusObjectSkeleton, and returns true if they represent the same GObject.
@@ -1269,39 +1103,6 @@ func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
 	return
 }
 
-// TlsDatabase is a wrapper around the C record GTlsDatabase.
-type TlsDatabase struct {
-	native *C.GTlsDatabase
-	// parent_instance : record
-	// priv : record
-}
-
-func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
-	c := (*C.GTlsDatabase)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsDatabase{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TlsDatabase) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TlsDatabase) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsDatabase with another TlsDatabase, and returns true if they represent the same GObject.
 func (recv *TlsDatabase) Equals(other *TlsDatabase) bool {
 	return other.ToC() == recv.ToC()
@@ -1572,39 +1373,6 @@ func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateF
 	return retGo, goError
 }
 
-// TlsInteraction is a wrapper around the C record GTlsInteraction.
-type TlsInteraction struct {
-	native *C.GTlsInteraction
-	// Private : parent_instance
-	// Private : priv
-}
-
-func TlsInteractionNewFromC(u unsafe.Pointer) *TlsInteraction {
-	c := (*C.GTlsInteraction)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsInteraction{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TlsInteraction) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TlsInteraction) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this TlsInteraction with another TlsInteraction, and returns true if they represent the same GObject.
 func (recv *TlsInteraction) Equals(other *TlsInteraction) bool {
 	return other.ToC() == recv.ToC()
@@ -1697,39 +1465,6 @@ func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable
 	}
 
 	return retGo, goError
-}
-
-// TlsPassword is a wrapper around the C record GTlsPassword.
-type TlsPassword struct {
-	native *C.GTlsPassword
-	// parent_instance : record
-	// priv : record
-}
-
-func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
-	c := (*C.GTlsPassword)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &TlsPassword{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *TlsPassword) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *TlsPassword) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this TlsPassword with another TlsPassword, and returns true if they represent the same GObject.

@@ -5,7 +5,6 @@ package pango
 
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"runtime"
 	"unsafe"
 )
 
@@ -27,43 +26,6 @@ func (recv *Layout) GetFontDescription() *FontDescription {
 	}
 
 	return retGo
-}
-
-// Renderer is a wrapper around the C record PangoRenderer.
-type Renderer struct {
-	native *C.PangoRenderer
-	// Private : parent_instance
-	// Private : underline
-	// Private : strikethrough
-	// Private : active_count
-	// matrix : record
-	// Private : priv
-}
-
-func RendererNewFromC(u unsafe.Pointer) *Renderer {
-	c := (*C.PangoRenderer)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Renderer{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *Renderer) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *Renderer) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Renderer with another Renderer, and returns true if they represent the same GObject.

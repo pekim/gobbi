@@ -15,27 +15,6 @@ import "unsafe"
 import "C"
 
 // g_async_queue_new_full : unsupported parameter item_free_func : no type generator for DestroyNotify (GDestroyNotify) for param item_free_func
-// Checksum is a wrapper around the C record GChecksum.
-type Checksum struct {
-	native *C.GChecksum
-}
-
-func ChecksumNewFromC(u unsafe.Pointer) *Checksum {
-	c := (*C.GChecksum)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Checksum{native: c}
-
-	return g
-}
-
-func (recv *Checksum) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this Checksum with another Checksum, and returns true if they represent the same GObject.
 func (recv *Checksum) Equals(other *Checksum) bool {
 	return other.ToC() == recv.ToC()

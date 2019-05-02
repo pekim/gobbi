@@ -25,31 +25,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ActionMapInterface is a wrapper around the C record GActionMapInterface.
-type ActionMapInterface struct {
-	native *C.GActionMapInterface
-	// g_iface : record
-	// no type for lookup_action
-	// no type for add_action
-	// no type for remove_action
-}
-
-func ActionMapInterfaceNewFromC(u unsafe.Pointer) *ActionMapInterface {
-	c := (*C.GActionMapInterface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ActionMapInterface{native: c}
-
-	return g
-}
-
-func (recv *ActionMapInterface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this ActionMapInterface with another ActionMapInterface, and returns true if they represent the same GObject.
 func (recv *ActionMapInterface) Equals(other *ActionMapInterface) bool {
 	return other.ToC() == recv.ToC()
@@ -64,85 +39,14 @@ func (recv *FileAttributeMatcher) ToString() string {
 	return retGo
 }
 
-// NetworkMonitorInterface is a wrapper around the C record GNetworkMonitorInterface.
-type NetworkMonitorInterface struct {
-	native *C.GNetworkMonitorInterface
-	// g_iface : record
-	// no type for network_changed
-	// no type for can_reach
-	// no type for can_reach_async
-	// no type for can_reach_finish
-}
-
-func NetworkMonitorInterfaceNewFromC(u unsafe.Pointer) *NetworkMonitorInterface {
-	c := (*C.GNetworkMonitorInterface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &NetworkMonitorInterface{native: c}
-
-	return g
-}
-
-func (recv *NetworkMonitorInterface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this NetworkMonitorInterface with another NetworkMonitorInterface, and returns true if they represent the same GObject.
 func (recv *NetworkMonitorInterface) Equals(other *NetworkMonitorInterface) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// RemoteActionGroupInterface is a wrapper around the C record GRemoteActionGroupInterface.
-type RemoteActionGroupInterface struct {
-	native *C.GRemoteActionGroupInterface
-	// g_iface : record
-	// no type for activate_action_full
-	// no type for change_action_state_full
-}
-
-func RemoteActionGroupInterfaceNewFromC(u unsafe.Pointer) *RemoteActionGroupInterface {
-	c := (*C.GRemoteActionGroupInterface)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &RemoteActionGroupInterface{native: c}
-
-	return g
-}
-
-func (recv *RemoteActionGroupInterface) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this RemoteActionGroupInterface with another RemoteActionGroupInterface, and returns true if they represent the same GObject.
 func (recv *RemoteActionGroupInterface) Equals(other *RemoteActionGroupInterface) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// Resource is a wrapper around the C record GResource.
-type Resource struct {
-	native *C.GResource
-}
-
-func ResourceNewFromC(u unsafe.Pointer) *Resource {
-	c := (*C.GResource)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Resource{native: c}
-
-	return g
-}
-
-func (recv *Resource) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this Resource with another Resource, and returns true if they represent the same GObject.
@@ -314,27 +218,6 @@ func (recv *Resource) Unref() {
 	return
 }
 
-// SettingsSchema is a wrapper around the C record GSettingsSchema.
-type SettingsSchema struct {
-	native *C.GSettingsSchema
-}
-
-func SettingsSchemaNewFromC(u unsafe.Pointer) *SettingsSchema {
-	c := (*C.GSettingsSchema)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SettingsSchema{native: c}
-
-	return g
-}
-
-func (recv *SettingsSchema) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Equals compares this SettingsSchema with another SettingsSchema, and returns true if they represent the same GObject.
 func (recv *SettingsSchema) Equals(other *SettingsSchema) bool {
 	return other.ToC() == recv.ToC()
@@ -369,27 +252,6 @@ func (recv *SettingsSchema) Unref() {
 	C.g_settings_schema_unref((*C.GSettingsSchema)(recv.native))
 
 	return
-}
-
-// SettingsSchemaSource is a wrapper around the C record GSettingsSchemaSource.
-type SettingsSchemaSource struct {
-	native *C.GSettingsSchemaSource
-}
-
-func SettingsSchemaSourceNewFromC(u unsafe.Pointer) *SettingsSchemaSource {
-	c := (*C.GSettingsSchemaSource)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &SettingsSchemaSource{native: c}
-
-	return g
-}
-
-func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
 }
 
 // Equals compares this SettingsSchemaSource with another SettingsSchemaSource, and returns true if they represent the same GObject.

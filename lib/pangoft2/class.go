@@ -5,7 +5,6 @@ package pangoft2
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"runtime"
 	"unsafe"
 )
 
@@ -15,37 +14,6 @@ import (
 // #include <pango/pangoft2.h>
 // #include <stdlib.h>
 import "C"
-
-// FontMap is a wrapper around the C record PangoFT2FontMap.
-type FontMap struct {
-	native *C.PangoFT2FontMap
-}
-
-func FontMapNewFromC(u unsafe.Pointer) *FontMap {
-	c := (*C.PangoFT2FontMap)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &FontMap{native: c}
-
-	ug := (C.gpointer)(u)
-	if C.g_object_is_floating(ug) == C.TRUE {
-		C.g_object_ref_sink(ug)
-	} else {
-		C.g_object_ref(ug)
-	}
-	runtime.SetFinalizer(g, func(o *FontMap) {
-		C.g_object_unref((C.gpointer)(o.native))
-	})
-
-	return g
-}
-
-func (recv *FontMap) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
 
 // Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
 func (recv *FontMap) Equals(other *FontMap) bool {
