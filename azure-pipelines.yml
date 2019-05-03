@@ -1,8 +1,3 @@
-# Go
-# Build your Go project.
-# Add steps that test, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/go
-
 trigger:
 - master
 
@@ -11,8 +6,9 @@ pool:
 
 variables:
   GOBIN:  '$(GOPATH)/bin' # Go binaries path
-  GOROOT: '/usr/local/go1.11' # Go installation path
+  GOROOT: '/usr/local/go1.12.1' # Go installation path
   GOPATH: '$(system.defaultWorkingDirectory)/gopath' # Go workspace path
+  GO111MODULE: 'on'
   modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
 
 steps:
@@ -30,10 +26,6 @@ steps:
 - script: |
     go version
     go get -v -t -d ./...
-    if [ -f Gopkg.toml ]; then
-        curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-        dep ensure
-    fi
-    go build -v .
+    ./gobbi build
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies, then build'
