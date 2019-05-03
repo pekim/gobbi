@@ -1,5 +1,5 @@
 trigger:
-- master
+  - master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -12,30 +12,30 @@ variables:
   modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
 
 steps:
-- script: |
-    sudo apt install -y \
-      libatk1.0-dev \
-      libcairo2-dev \
-      libglib2.0-dev \
-      libgtk-3-dev \
-      libpango1.0-dev \
-      xvfb
-  displayName: 'Install dependencies'
+  - script: |
+      sudo apt install -y \
+        libatk1.0-dev \
+        libcairo2-dev \
+        libglib2.0-dev \
+        libgtk-3-dev \
+        libpango1.0-dev \
+        xvfb
+    displayName: 'Install dependencies'
 
-- script: |
-    mkdir -p '$(GOBIN)'
-    mkdir -p '$(GOPATH)/pkg'
-    mkdir -p '$(modulePath)'
-    shopt -s extglob
-    shopt -s dotglob
-    mv !(gopath) '$(modulePath)'
-    echo '##vso[task.prependpath]$(GOBIN)'
-    echo '##vso[task.prependpath]$(GOROOT)/bin'
-  displayName: 'Set up the Go workspace'
+  - script: |
+      mkdir -p '$(GOBIN)'
+      mkdir -p '$(GOPATH)/pkg'
+      mkdir -p '$(modulePath)'
+      shopt -s extglob
+      shopt -s dotglob
+      mv !(gopath) '$(modulePath)'
+      echo '##vso[task.prependpath]$(GOBIN)'
+      echo '##vso[task.prependpath]$(GOROOT)/bin'
+    displayName: 'Set up Go workspace'
 
-- script: |
-    go version
-    go get -v -t -d ./...
-    xvfb-run ./gobbi build
-  workingDirectory: '$(modulePath)'
-  displayName: 'Get dependencies, then build'
+  - script: |
+      go version
+      go get -v -t -d ./...
+      xvfb-run ./gobbi build
+    workingDirectory: '$(modulePath)'
+    displayName: 'Generate and test'
