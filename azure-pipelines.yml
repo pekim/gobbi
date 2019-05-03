@@ -36,6 +36,6 @@ steps:
 - script: |
     go version
     go get -v -t -d ./...
-    ./gobbi build
+    xvfb-run ./gobbi build
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies, then build'
