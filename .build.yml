@@ -1,0 +1,20 @@
+image: ubuntu/lts
+packages:
+  - build-essential
+  - libatk1.0-dev
+  - libcairo2-dev
+  - libglib2.0-dev
+  - libgtk-3-dev
+  - libpango1.0-dev
+  - xvfb
+sources:
+  - https://github.com/pekim/gobbi/
+tasks:
+  - install-go: |
+      wget -nv https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz
+      sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz
+      sudo ln -s /usr/local/go/bin/go /usr/bin/go
+  - build-and-test: |
+      cd gobbi
+      go get
+      xvfb-run ./gobbi build
