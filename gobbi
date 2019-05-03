@@ -33,6 +33,7 @@ build () {
 }
 
 generate () {
+    grep -l -r "Code generated - DO NOT EDIT" lib/ | xargs rm -f && \
     go run internal/cmd/generate/*.go
 }
 
