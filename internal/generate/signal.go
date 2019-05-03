@@ -104,15 +104,13 @@ func (s *Signal) supported() (bool, string) {
 }
 
 func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) {
-	if !((parentVersion == "" && s.Version == version.value) ||
-		(parentVersion != "" && (s.Version == "" && parentVersion == version.value)) ||
-		(s.Version == version.value)) {
-		return
-	}
-
 	if supported, reason := s.supported(); !supported {
 		g.Commentf("Unsupported signal '%s' for %s : %s", s.Name, s.record.Name, reason)
 		g.Line()
+		return
+	}
+
+	if !supportedByVersion(s, version) {
 		return
 	}
 

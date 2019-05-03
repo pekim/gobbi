@@ -39,21 +39,20 @@ func (v Version) GTE(other Version) bool {
 	return v.version.GTE(other.version)
 }
 
+func (v Version) LTE(other Version) bool {
+	return v.version.LTE(other.version)
+}
+
 func supportedByVersion(versioned Versioned, targetVersion *Version) bool {
-	if targetVersion.value == versioned.version() {
-		//fmt.Println(targetVersion.value)
+	if versioned.version() == "" {
 		return true
 	}
 
-	if targetVersion == nil && versioned.version() != "" {
-		return false
+	if VersionNew(versioned.version()).LTE(*targetVersion) {
+		return true
 	}
 
-	if targetVersion != nil && versioned.version() != targetVersion.value {
-		return false
-	}
-
-	return true
+	return false
 }
 
 type Versions []Version

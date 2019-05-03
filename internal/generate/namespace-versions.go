@@ -34,39 +34,26 @@ func (ns *Namespace) generateVersionDebugFunction(file *jen.File, version string
 }
 
 func (ns *Namespace) buildConstraintsForVersion(file *jen.File, version Version) {
-	if version.value == "" {
+	if len(ns.allVersions) == 0 {
 		return
 	}
 
-	tags := ns.constraintsForVersion(version)
-
-	if tags != "" {
-		file.HeaderComment(fmt.Sprintf("+build %s", tags))
+	var tags string
+	if version.value != "" {
+		tags = ns.versionBuildTag(version)
+	} else {
+		allBuildTags := make([]string, len(ns.allVersions))
+		for i, version := range ns.allVersions {
+			allBuildTags[i] = "!" + ns.versionBuildTag(version)
+		}
+		tags = strings.Join(allBuildTags, ",")
 	}
+
+	file.HeaderComment(fmt.Sprintf("+build %s", tags))
 }
 
-// constraintsForVersion builds a build tag string such that the generated
-// file will be included when building for a specific library version
-// or a later version.
-//
-// An example.
-// If the target version is 4, then the file will NOT be included for
-// versions 1, 2, or 3, but will for versions 4, 5, or 6.
-//
-// The string is built in the form "+build 4 5 6", which is
-// interpreted as 4 OR 5 OR 6.
-func (ns *Namespace) constraintsForVersion(version Version) string {
-	eligibleVersions := ns.allVersions.versionStringsGreaterThanOrEqual(version)
-
-	for i, eligibleVersion := range eligibleVersions {
-		eligibleVersions[i] = fmt.Sprintf("%s_%s", ns.goPackageName, eligibleVersion)
-	}
-
-	if len(eligibleVersions) == 0 {
-		return ""
-	}
-
-	return strings.Join(eligibleVersions, " ")
+func (ns *Namespace) versionBuildTag(version Version) string {
+	return fmt.Sprintf("%s_%s", ns.goPackageName, version.value)
 }
 
 // allVersions gets the list of versions across all generatables.

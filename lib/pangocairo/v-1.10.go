@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build pangocairo_1.10 pangocairo_1.14 pangocairo_1.18 pangocairo_1.22
+// +build pangocairo_1.10
 
 package pangocairo
 
@@ -15,6 +15,8 @@ import (
 // #include <pango/pangocairo.h>
 // #include <stdlib.h>
 import "C"
+
+// Blacklisted : PangoCairoFcFontMap
 
 // ContextGetFontOptions is a wrapper around the C function pango_cairo_context_get_font_options.
 func ContextGetFontOptions(context *pango.Context) *cairo.FontOptions {

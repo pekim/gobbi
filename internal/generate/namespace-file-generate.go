@@ -69,7 +69,7 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File, version Version) {
 	 * Suppress C compiler warnings about deprecated functions.
 	 *
 	 * There are api functions that are deprecated from various
-	 * library versions. The compilers warnings are noisy as
+	 * library versions. The compiler warnings are noisy as
 	 * they will be emitted regardless of whether such functions
 	 * are used or not by an application.
 	 */
