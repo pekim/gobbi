@@ -16,5 +16,8 @@ tasks:
       sudo ln -s /usr/local/go/bin/go /usr/bin/go
   - build-and-test: |
       cd gobbi
-      go get
       xvfb-run ./gobbi build
+triggers:
+  - action: email
+    condition: always
+    to: Mike D Pilsbury <mike.pilsbury@gmail.com>
