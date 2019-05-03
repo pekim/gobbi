@@ -2,6 +2,8 @@
 
 **gob**ject **bi**ndings
 
+[![builds.sr.ht status](https://builds.sr.ht/~pekim.svg)](https://builds.sr.ht/~pekim?search=)
+
 gobbi is a set of generated Go bindings for gobject based libraries.
 There are bindings, with varying degrees of completeness,
 for gtk, gdk, gdkpixbuf, gio, gobject, and glib.
