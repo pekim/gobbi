@@ -2,6 +2,7 @@
 
 **gob**ject **bi**ndings
 
+[![Build Status](https://dev.azure.com/mikepilsbury/gobbi/_apis/build/status/pekim.gobbi?branchName=master)](https://dev.azure.com/mikepilsbury/gobbi/_build/latest?definitionId=1&branchName=master)
 [![builds.sr.ht status](https://builds.sr.ht/~pekim/gobbi.svg)](https://builds.sr.ht/~pekim/gobbi?)
 
 gobbi is a set of generated Go bindings for gobject based libraries.
