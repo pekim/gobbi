@@ -25,7 +25,7 @@ example () {
 }
 
 build () {
-    generate && \
+    generate $@ && \
     echo "" && \
     # docs && \
     # echo "" && \
@@ -34,7 +34,7 @@ build () {
 
 generate () {
     grep -l -r "Code generated - DO NOT EDIT" lib/ | xargs rm -f && \
-    go run internal/cmd/generate/*.go
+    go run internal/cmd/generate/*.go $@
 }
 
 docs () {
@@ -82,13 +82,13 @@ processSubcommand () {
 
   case "$subCommand" in
     build)
-      build
+      build $@
       ;;
     docs)
       docs
       ;;
     generate)
-      generate
+      generate $@
       ;;
     test)
       test $@

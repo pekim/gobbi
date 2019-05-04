@@ -32,6 +32,7 @@ type Namespace struct {
 	versionDebug      bool
 	libDir            string
 	namespaces        map[string]*Namespace
+	noFormat          bool
 }
 
 func (ns *Namespace) init(repo *Repository) {
