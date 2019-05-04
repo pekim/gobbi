@@ -13,10 +13,11 @@ type Gir struct {
 	addendaRepo *Repository
 }
 
-func FromRoot(name, version string) {
+func FromRoot(name, version string, noFormat bool) {
 	girs := girNewRoot(name, version)
 
 	for _, gir := range girs {
+		gir.repo.Namespace.noFormat = noFormat
 		gir.generate()
 	}
 }

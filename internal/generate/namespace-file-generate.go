@@ -18,6 +18,7 @@ func (ns *Namespace) generateLibDir() {
 
 func (ns *Namespace) generateFile(name string, generateContent func(f *jen.File)) {
 	file := jen.NewFile(ns.goPackageName)
+	file.NoFormat = ns.noFormat
 	ns.jenFile = file
 
 	// Use a standard generated file comment format.
