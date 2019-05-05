@@ -6,11 +6,11 @@
 
         <title>Build tags - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -18,7 +18,9 @@
     HEADER
 </div>
 
-        <nav>
+
+        <div class="body">
+            <nav>
     <ol>
             <li>
                 <a href="index.html">Introduction</a>
@@ -57,8 +59,9 @@
 </nav>
 
 
-        <h1>Build tags</h1>
-        <p>gobbi uses Go
+            <div class="content">
+                <h1>Build tags</h1>
+                <p>gobbi uses Go
 <a href="https://golang.org/pkg/go/build/#hdr-Build_Constraints">build tags</a>
 to allow targetting of specific library versions.
 This means that when using Go build tools
@@ -123,6 +126,8 @@ be found under
   - Vendoring &amp; Build Tags
     - Custom tags</p>
 
+            </div>
+        </div>
 
         <div>
     FOOTER

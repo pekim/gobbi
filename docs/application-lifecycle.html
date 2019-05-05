@@ -6,11 +6,11 @@
 
         <title>Application lifecycle - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -18,7 +18,9 @@
     HEADER
 </div>
 
-        <nav>
+
+        <div class="body">
+            <nav>
     <ol>
             <li>
                 <a href="index.html">Introduction</a>
@@ -57,8 +59,9 @@
 </nav>
 
 
-        <h1>Application lifecycle</h1>
-        <h2>main thread</h2>
+            <div class="content">
+                <h1>Application lifecycle</h1>
+                <h2>main thread</h2>
 
 <p>The main function, and therefore the main loop,
 should run on the main thread.</p>
@@ -148,6 +151,8 @@ management is to use <code>gtk.Application</code>.
 The <a href="https://github.com/pekim/gobbi/blob/master/example/gtk_application/main.go">gtk_application</a>
 example illustrates this.</p>
 
+            </div>
+        </div>
 
         <div>
     FOOTER

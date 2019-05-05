@@ -6,11 +6,11 @@
 
         <title>Reference counting - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -18,7 +18,9 @@
     HEADER
 </div>
 
-        <nav>
+
+        <div class="body">
+            <nav>
     <ol>
             <li>
                 <a href="index.html">Introduction</a>
@@ -57,8 +59,9 @@
 </nav>
 
 
-        <h1>Reference counting</h1>
-        <p>The gobject library implements
+            <div class="content">
+                <h1>Reference counting</h1>
+                <p>The gobject library implements
 <a href="https://developer.gnome.org/gobject/stable/gobject-memory.html">Object memory management</a>,
 including reference counting,
 for GObject derived classes.
@@ -94,6 +97,8 @@ counted correctly.</p>
 and passing around the pointer
 to the gobbi object will be sufficient for an application.</p>
 
+            </div>
+        </div>
 
         <div>
     FOOTER

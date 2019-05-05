@@ -6,11 +6,11 @@
 
         <title>Variadic functions - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -18,7 +18,9 @@
     HEADER
 </div>
 
-        <nav>
+
+        <div class="body">
+            <nav>
     <ol>
             <li>
                 <a href="index.html">Introduction</a>
@@ -57,8 +59,9 @@
 </nav>
 
 
-        <h1>Variadic functions</h1>
-        <p>Some C library functions are
+            <div class="content">
+                <h1>Variadic functions</h1>
+                <p>Some C library functions are
 <a href="https://en.wikipedia.org/wiki/Variadic_function#Example_in_C">variadic</a>.
 Unfortunately cgo does not support calling variadic C functions.</p>
 
@@ -134,6 +137,8 @@ A work around might be code like this.</p>
     tag.Object().SetProperty(&quot;indent&quot;, indent)
 </code></pre>
 
+            </div>
+        </div>
 
         <div>
     FOOTER

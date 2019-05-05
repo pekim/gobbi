@@ -6,11 +6,11 @@
 
         <title>Signal handling - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -18,7 +18,9 @@
     HEADER
 </div>
 
-        <nav>
+
+        <div class="body">
+            <nav>
     <ol>
             <li>
                 <a href="index.html">Introduction</a>
@@ -57,8 +59,9 @@
 </nav>
 
 
-        <h1>Signal handling</h1>
-        <h2>connecting</h2>
+            <div class="content">
+                <h1>Signal handling</h1>
+                <h2>connecting</h2>
 
 <p>To connect an object to a signal that it emits,
 call one of the object&rsquo;s <code>Connect...</code> methods.</p>
@@ -122,6 +125,8 @@ and may be passed to <code>DisconnectNotify</code> to remove it.</p>
 <p><code>ConnectNotifyProperty</code> is a special case,
 and has no direct equivalent in the GObject library.</p>
 
+            </div>
+        </div>
 
         <div>
     FOOTER

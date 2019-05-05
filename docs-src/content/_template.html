@@ -6,17 +6,24 @@
 
         <title>{{.Title}} - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
         {{ template "_header.html" . }}
-        {{ template "_navigation.html" . }}
 
-        <h1>{{.Title}}</h1>
-        {{.Content}}
+        <div class="body">
+            {{ template "_navigation.html" . }}
+
+            <div class="content">
+                <h1>{{.Title}}</h1>
+                {{.Content}}
+            </div>
+        </div>
 
         {{ template "_footer.html" . }}
     </body>

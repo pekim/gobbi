@@ -6,11 +6,11 @@
 
         <title>Casting - gobbi</title>
 
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
+
         <script src="highlight.pack.js"></script>
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -18,7 +18,9 @@
     HEADER
 </div>
 
-        <nav>
+
+        <div class="body">
+            <nav>
     <ol>
             <li>
                 <a href="index.html">Introduction</a>
@@ -57,8 +59,9 @@
 </nav>
 
 
-        <h1>Casting</h1>
-        <p>Gtk classes derive in a hierarchy from the GObject class.</p>
+            <div class="content">
+                <h1>Casting</h1>
+                <p>Gtk classes derive in a hierarchy from the GObject class.</p>
 
 <p>In gobbi&rsquo;s implementation of GOBject&rsquo;s classes,
 each class does not directly extend
@@ -133,6 +136,8 @@ button.ConnectClicked(...)
 <a href="https://github.com/pekim/gobbi/blob/master/example/builder/main.go">builder</a>
 example to see this in an application.</p>
 
+            </div>
+        </div>
 
         <div>
     FOOTER
