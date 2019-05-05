@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Casting - gobbi</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Introduction :: gobbi</title>
+
+        <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+        <h1>Casting</h1>
+
+        <p>Gtk classes derive in a hierarchy from the GObject class.</p>
+
+<p>In gobbi&rsquo;s implementation of GOBject&rsquo;s classes,
+each class does not directly extend
+(or embed in Go terms)
+its ancestor classes.
+Instead, for an class instance it is possible to get
+a reference to an ancestor or descendant class instance
+for the same gtk object.</p>
+
+<h1>upcasting</h1>
+
+<p>In a gtk application there will frequently be a need to
+access members of an object&rsquo;s ancestor class.</p>
+
+<p>For example when adding a Label to a Container,
+this will not work.</p>
+
+<pre><code class="language-go">window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+label := gtk.LabelNew(&quot;a label&quot;)
+window.Add(label)   // &lt;-- ERROR
+</code></pre>
+
+<p><code>gtk.Window</code> does not directly have a <code>Add</code> method.
+The <code>Add</code> method is a member of <code>gtk.Container</code>,
+which is an ancestor of <code>gtk.Window</code>.</p>
+
+<p>The <code>gtk.Window</code>&rsquo;s <code>Container</code> may be obtained by calling
+the <code>Container()</code> method.</p>
+
+<p>And as the <code>Add</code> method expects a <code>gtk.Widget</code>,
+the <code>gtk.Label</code>&rsquo;s <code>Widget</code> method is called
+to cast to a <code>gtk.Widget</code>.</p>
+
+<pre><code class="language-go">window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+label := gtk.LabelNew(&quot;a label&quot;)
+window.Container().Add(label.Widget())
+</code></pre>
+
+<p>All derived classes have receiver functions for directly
+casting to all ancestor types.</p>
+
+<pre><code class="language-go">// This will work, but is unnecessary.
+widget1 := gtk.WindowNew().Bin().Container().Widget()
+
+// This will achieve the same end result.
+widget2 := gtk.WindowNew().Widget()
+</code></pre>
+
+<h1>downcasting</h1>
+
+<p>Downcasting operates in the other direction,
+from a class to a derived class,</p>
+
+<p>Downcasting is less common that upcasting.
+It is potentially quite dangerous, in that it makes
+it very easy to assert that a widget is something
+that it is not.</p>
+
+<p>To downcast an instance,
+call one of the <code>CastTo...</code> methods.</p>
+
+<p>A typically use is when obtaining an object from a builder.</p>
+
+<pre><code class="language-go">builder := gtk.BuilderNewFromString(...)
+
+buttonObject := builder.GetObject(&quot;some-button&quot;)
+button := gtk.CastToButton(buttonObject)
+button.ConnectClicked(...)
+</code></pre>
+
+<p>See the
+<a href="https://github.com/pekim/gobbi/blob/master/example/builder/main.go">builder</a>
+example to see this in an application.</p>
+
+    </body>
+</html>

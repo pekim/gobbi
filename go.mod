@@ -7,6 +7,7 @@ require (
 	github.com/boyter/scc v1.11.0
 	github.com/dave/jennifer v1.3.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/gomarkdown/markdown v0.0.0-20190222000725-ee6a7931a1e4 // indirect
 	github.com/karrick/godirwalk v1.7.3 // indirect
 	github.com/monochromegane/go-gitignore v0.0.0-20160105113617-38717d0a108c // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect

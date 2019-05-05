@@ -1,9 +1,3 @@
-+++
-title="gobject.Value"
-menu="main"
-weight="7"
-+++
-
 The gobject library's `GValue` type is represented by
 `gobject.Value`.
 

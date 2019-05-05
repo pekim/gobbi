@@ -1,9 +1,3 @@
-+++
-title="Signal handling"
-menu="main"
-weight="9"
-+++
-
 ## connecting
 To connect an object to a signal that it emits,
 call one of the object's `Connect...` methods.

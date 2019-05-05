@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Variadic functions - gobbi</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Introduction :: gobbi</title>
+
+        <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+        <h1>Variadic functions</h1>
+
+        <p>Some C library functions are
+<a href="https://en.wikipedia.org/wiki/Variadic_function#Example_in_C">variadic</a>.
+Unfortunately cgo does not support calling variadic C functions.</p>
+
+<h2>format functions</h2>
+
+<p>Some C library variadic functions accept trailing arguments
+that include a printf style format string followed by
+arguments to insert in to the format string.
+<a href="https://developer.gnome.org/gtk3/stable/GtkMessageDialog.html#gtk-message-dialog-new">gtk_message_dialog_new</a>
+is an example of such a function.</p>
+
+<p>The equivalent functions in gobbi accept
+<a href="https://golang.org/pkg/fmt/">fmt</a> package compatible arguments.
+This is because <code>fmt.Sprint</code> is used to format a string
+before passing it as the last argument
+to the wrapped C function.</p>
+
+<p>A much simplified representation of such a function might
+help to make this clearer.</p>
+
+<pre><code class="language-go">func SomeRepresentativeFunction(
+	a string, b int,
+	format string, args ...interface{},
+) {
+	c_a := C.String(a)
+	c_b := C.int(b)
+
+	formattedString := fmt.Sprintf(format, args...)
+	c_formattedString := C.String(formattedString)
+
+	C.some_representative_function(c_a, c_b, c_formattedString)
+}
+</code></pre>
+
+<h2>unsupported variadic functions</h2>
+
+<p>Many variadic functions are not supported by gobbi
+because it would be impractical to automatically
+generate code that would support them.</p>
+
+<h3>array functions</h3>
+
+<p>In some cases there is another function that accepts an array
+as the final argument instead.
+For example
+<a href="https://developer.gnome.org/gtk3/stable/GtkListStore.html#gtk-list-store-new">gtk_list_store_new</a>
+is not supported, but
+<a href="https://developer.gnome.org/gtk3/stable/GtkListStore.html#gtk-list-store-newv">gtk_list_store_newv</a>
+is supported as <a href="https://godoc.org/github.com/pekim/gobbi/lib/gtk#ListStoreNewv">gtk.ListStoreNewv</a>.</p>
+
+<h3>multiple functions</h3>
+
+<p>There are other variadac functions that do not have an array
+equivalent version, but their functionality
+can be achieved through a combination of functions.</p>
+
+<p>An example of this is the unsupported
+<a href="https://developer.gnome.org/gtk3/stable/GtkTextBuffer.html#gtk-text-buffer-create-tag">gtk_text_buffer_create_tag</a>
+function.
+A work around might be code like this.</p>
+
+<pre><code class="language-go">    tag := gtk.TextTagNew(&quot;my_tag_name&quot;)
+    tagTable := gtk.TextTagTableNew()
+    tagTable.Add(tag)
+    buffer := gtk.TextBufferNew(tagTable)
+
+    editable := gobject.ValueNew(gobject.TYPE_BOOLEAN)
+    editable.SetBoolean(false)
+    tag.Object().SetProperty(&quot;property-name&quot;, editable)
+
+    indent := gobject.ValueNew(gobject.TYPE_INT)
+    indent.SetInt(4)
+    tag.Object().SetProperty(&quot;indent&quot;, indent)
+</code></pre>
+
+    </body>
+</html>

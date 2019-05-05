@@ -1,9 +1,3 @@
-+++
-title="Casting"
-menu="main"
-weight="8"
-+++
-
 Gtk classes derive in a hierarchy from the GObject class.
 
 In gobbi's implementation of GOBject's classes,

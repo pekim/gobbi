@@ -1,9 +1,3 @@
-+++
-title="Application lifecycle"
-menu="main"
-weight="3"
-+++
-
 ## main thread
 The main function, and therefore the main loop,
 should run on the main thread. 

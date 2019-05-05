@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Signal handling - gobbi</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Introduction :: gobbi</title>
+
+        <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+        <h1>Signal handling</h1>
+
+        <h2>connecting</h2>
+
+<p>To connect an object to a signal that it emits,
+call one of the object&rsquo;s <code>Connect...</code> methods.</p>
+
+<p>The connect methods all accept a handler argument
+that is a function with a specific signature.
+Some handlers have no parameters,
+others have one or more parameters that provide event-specific
+information.</p>
+
+<pre><code class="language-go">button := gtk.ButtonNewWithLabel(&quot;a button&quot;)
+button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK))
+button.Widget().ConnectMotionNotifyEvent(
+    func(event *gdk.EventMotion) bool {
+        fmt.Println(event.Y, event.Y)
+        return false
+    })
+</code></pre>
+
+<p>Remember that it may be necessary to upcast to access the
+desired connect method.</p>
+
+<h2>disconnecting</h2>
+
+<p>All of the <code>Connect...</code> methods return a handler id.
+The id may be used later to disconnect the handler.</p>
+
+<pre><code class="language-go">    connectId := button.ConnectClicked(func() {
+        ...
+    })
+    
+    ...
+    
+    button.DisconnectClicked(connectId)
+</code></pre>
+
+<h2>notify signal for a single property</h2>
+
+<p><code>ConnectNotifyProperty</code> connects the callback
+to the <code>notify</code> signal
+for a specific property of an Object.</p>
+
+<p>For example, to connect to the notify signal
+for the &ldquo;title&rdquo; property of a window.</p>
+
+<pre><code class="language-go">    window := gtk.WindowNew(...)
+
+    window.Object().ConnectNotifyProperty(
+        &quot;title&quot;, func(pspec *gobject.ParamSpec,
+    ) {
+        fmt.Println(&quot;title property changed&quot;)
+    })
+</code></pre>
+
+<p>In that example it is the <code>notify::title</code> signal
+that is being connected to.</p>
+
+<p>The returned value represents the connection,
+and may be passed to <code>DisconnectNotify</code> to remove it.</p>
+
+<p><code>ConnectNotifyProperty</code> is a special case,
+and has no direct equivalent in the GObject library.</p>
+
+    </body>
+</html>

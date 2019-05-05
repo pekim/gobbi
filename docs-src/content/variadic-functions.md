@@ -1,9 +1,3 @@
-+++
-title="Variadic functions"
-menu="main"
-weight="10"
-+++
-
 Some C library functions are 
 [variadic](https://en.wikipedia.org/wiki/Variadic_function#Example_in_C).
 Unfortunately cgo does not support calling variadic C functions. 

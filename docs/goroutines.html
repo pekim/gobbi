@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Goroutines - gobbi</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Introduction :: gobbi</title>
+
+        <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+        <h1>Goroutines</h1>
+
+        <p>All calls to gtk functions should be performed on
+the main thread.
+To perform such a call from a goroutine,
+use <code>glib.IdleAdd</code> to schedule invocation of a
+callback function on the main thread.</p>
+
+<h2><code>IdleAdd</code></h2>
+
+<pre><code class="language-go">glib.IdleAdd(func() bool {
+    someLabel.SetText(&quot;some text&quot;)
+    return glib.SOURCE_REMOVE
+})
+</code></pre>
+
+<p>Return <code>glib.SOURCE_REMOVE</code> to ensure the function is not
+called again next time the main loop is idle.
+Alternatively return <code>glib.SOURCE_CONTINUE</code> to have
+the function called again.</p>
+
+<h2><code>IdleAddOnce</code></h2>
+
+<p>Alternatively, <code>glib.IdleAddOnce</code>
+schedules a <em>single</em> invocation of a
+callback function on the main thread.
+Unlike <code>glib.IdleAdd</code> no value needs to be returned
+to avoid subsequent invocations of the callback.</p>
+
+<pre><code class="language-go">glib.IdleAddOnce(func() {
+    someLabel.SetText(&quot;some text&quot;)
+})
+</code></pre>
+
+<p><code>IdleAddOnce</code> is a convenience provided by gobbi.
+It has no direct equivalent in the glib C library.</p>
+
+    </body>
+</html>

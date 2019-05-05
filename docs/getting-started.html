@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Getting started - gobbi</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Introduction :: gobbi</title>
+
+        <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+        <h1>Getting started</h1>
+
+        <h2>pre-requisites</h2>
+
+<ul>
+<li>go 1.11 or later</li>
+<li>libraries
+
+<ul>
+<li>debian/ubuntu packages -
+<code>libatk1.0-dev libcairo2-dev libglib2.0-dev
+libgtk-3-dev libpango1.0-dev</code></li>
+<li>note that dev libraries are required because pkg-config
+and headers are necessary</li>
+</ul></li>
+<li>C compiler, and a linker
+
+<ul>
+<li>required because of the use of cgo</li>
+<li>for debian based distributions the <code>build-essential</code>
+package should suffice</li>
+</ul></li>
+</ul>
+
+<h2>running examples</h2>
+
+<ul>
+<li><code>git clone https://github.com/pekim/gobbi.git</code></li>
+<li><code>cd gobbi</code></li>
+<li><code>./gobbi example simple_window</code>
+
+<ul>
+<li>Be patient.
+The first <code>go build</code> or <code>go run</code> will take quite a while,
+perhaps a few minutes.
+Subsequent builds of applications will be a <em>lot</em> quicker
+as cached gobbi packages will be used by the Go commands.</li>
+</ul></li>
+</ul>
+
+<p>Run <code>./gobbi examples</code> for a list of the available examples.</p>
+
+<h2>use in an application</h2>
+
+<p>Using gobbi in an application in no different to using
+most other libraries.</p>
+
+<p>To add gobbi to a project that make use of go modules
+use <code>go get</code>.</p>
+
+<pre><code class="language-bash">go get github.com/pekim/gobbi
+</code></pre>
+
+<p>Then import a package such as gtk.</p>
+
+<pre><code class="language-go">import &quot;github.com/pekim/gobbi/lib/gtk&quot;
+</code></pre>
+
+<h2>build tags</h2>
+
+<p>It will often be necessary to build gobbi applications
+with <a href="../build-tags">build tags</a>.</p>
+
+    </body>
+</html>

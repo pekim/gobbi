@@ -1,9 +1,3 @@
-+++
-title="Reference counting"
-menu="main"
-weight="15"
-+++
-
 The gobject library implements
 [Object memory management](https://developer.gnome.org/gobject/stable/gobject-memory.html),
 including reference counting,

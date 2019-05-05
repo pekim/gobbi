@@ -1,9 +1,3 @@
-+++
-title="API Docs"
-menu="main"
-weight="20"
-+++
-
 Minimal API docs are generated,
 and are available at
 https://godoc.org/github.com/pekim/gobbi.

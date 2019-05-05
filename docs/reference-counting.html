@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reference counting - gobbi</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Introduction :: gobbi</title>
+
+        <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
+    </head>
+
+    <body>
+        <h1>Reference counting</h1>
+
+        <p>The gobject library implements
+<a href="https://developer.gnome.org/gobject/stable/gobject-memory.html">Object memory management</a>,
+including reference counting,
+for GObject derived classes.
+When gobbi creates such an object and a Go object referencing it,
+it will increment the reference count on the object.
+When the Go object is finalized, gobbi will
+decrement the GObject&rsquo;s reference count.</p>
+
+<p>The behaviour is slightly different between objects that are
+initially owned and those that are initially unowned.
+In both cases gobbi attempts to do the right thing
+with regard to reference counting.</p>
+
+<h2>Copying gobbi objects</h2>
+
+<p>Unless there is a compelling reason,
+gobbi created objects should not be copied
+or cloned directly by applications,
+as this would result in references to GObjects
+without the necessary reference count.</p>
+
+<p>If a copy of a gobbi Object derived class is required,
+it can be achieved as a side effect
+of a suitable cast like this.
+As the new object is gobbi managed is will be reference
+counted correctly.</p>
+
+<pre><code class="language-go">    label1 := gtk.LabelNew(&quot;some text&quot;)
+	label2 := gtk.CastToLabel(label1.Object())
+</code></pre>
+
+<p>However in most cases even that will not be required,
+and passing around the pointer
+to the gobbi object will be sufficient for an application.</p>
+
+    </body>
+</html>
