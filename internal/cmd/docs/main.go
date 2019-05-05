@@ -9,7 +9,7 @@ import (
 	"text/template"
 )
 
-const srcDir = "./docs-src/content"
+const srcDir = "./docs-src"
 const destDir = "./docs"
 
 type Page struct {

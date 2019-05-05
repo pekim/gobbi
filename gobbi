@@ -38,7 +38,7 @@ generate () {
 }
 
 docs () {
-    hugo -s docs-src/ -d ../docs
+    go run internal/cmd/docs/main.go
 }
 
 test () {
