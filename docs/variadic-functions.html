@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Variadic functions - gobbi</title>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <title>Introduction :: gobbi</title>
+        <title>Variadic functions - gobbi</title>
 
         <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
     </head>
 
     <body>
-        <h1>Variadic functions</h1>
+        <div>
+    HEADER
+</div>
 
+        <nav>
+    <ol>
+            <li>
+                <a href="index.html">Introduction</a>
+            </li>
+            <li>
+                <a href="getting-started.html">Getting started</a>
+            </li>
+            <li>
+                <a href="application-lifecycle.html">Application lifecycle</a>
+            </li>
+            <li>
+                <a href="build-tags.html">Build tags</a>
+            </li>
+            <li>
+                <a href="goroutines.html">Goroutines</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
+            </li>
+            <li>
+                <a href="casting.html">Casting</a>
+            </li>
+            <li>
+                <a href="signal-handling.html">Signal handling</a>
+            </li>
+            <li>
+                <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="reference-counting.html">Reference counting</a>
+            </li>
+            <li>
+                <a href="api.html">API docs</a>
+            </li>
+    </ol>
+</nav>
+
+
+        <h1>Variadic functions</h1>
         <p>Some C library functions are
 <a href="https://en.wikipedia.org/wiki/Variadic_function#Example_in_C">variadic</a>.
 Unfortunately cgo does not support calling variadic C functions.</p>
@@ -89,6 +129,11 @@ A work around might be code like this.</p>
     indent.SetInt(4)
     tag.Object().SetProperty(&quot;indent&quot;, indent)
 </code></pre>
+
+
+        <div>
+    FOOTER
+</div>
 
     </body>
 </html>

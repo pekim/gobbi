@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{title} - gobbi</title>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <title>Introduction :: gobbi</title>
+        <title>{{.Title}} - gobbi</title>
 
         <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
     </head>
 
     <body>
-        <nav>
-            {navigation}
-        </nav>
+        {{ template "_header.html" . }}
+        {{ template "_navigation.html" . }}
 
-        <h1>{title}</h1>
+        <h1>{{.Title}}</h1>
+        {{.Content}}
 
-        {content}
+        {{ template "_footer.html" . }}
     </body>
 </html>

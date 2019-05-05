@@ -4,52 +4,68 @@ import (
 	"github.com/gomarkdown/markdown"
 	"io/ioutil"
 	"log"
+	"os"
 	"path"
-	"strings"
+	"text/template"
 )
 
 const srcDir = "./docs-src/content"
 const destDir = "./docs"
 
-type page struct {
-	file  string
-	title string
+type Page struct {
+	File  string
+	Title string
+}
+
+var pages = []Page{
+	Page{File: "index", Title: "Introduction"},
+	Page{File: "getting-started", Title: "Getting started"},
+	Page{File: "application-lifecycle", Title: "Application lifecycle"},
+	Page{File: "build-tags", Title: "Build tags"},
+	Page{File: "goroutines", Title: "Goroutines"},
+	Page{File: "gvalue", Title: "gobject.Value"},
+	Page{File: "casting", Title: "Casting"},
+	Page{File: "signal-handling", Title: "Signal handling"},
+	Page{File: "variadic-functions", Title: "Variadic functions"},
+	Page{File: "reference-counting", Title: "Reference counting"},
+	Page{File: "api", Title: "API docs"},
 }
 
 func main() {
-	pages := []page{
-		page{file: "index", title: "Introduction"},
-		page{file: "getting-started", title: "Getting started"},
-		page{file: "application-lifecycle", title: "Application lifecycle"},
-		page{file: "build-tags", title: "Build tags"},
-		page{file: "goroutines", title: "Goroutines"},
-		page{file: "gvalue", title: "gobject.Value"},
-		page{file: "casting", title: "Casting"},
-		page{file: "signal-handling", title: "Signal handling"},
-		page{file: "variadic-functions", title: "Variadic functions"},
-		page{file: "reference-counting", title: "Reference counting"},
-		page{file: "api", title: "API docs"},
-	}
-
 	for _, page := range pages {
 		generateHtmlFile(page)
 	}
 }
 
-func generateHtmlFile(page page) {
-	template, err := ioutil.ReadFile(path.Join(srcDir, "template.html"))
+func generateHtmlFile(page Page) {
+	template, err := template.ParseFiles(
+		path.Join(srcDir, "_template.html"),
+		path.Join(srcDir, "_navigation.html"),
+		path.Join(srcDir, "_header.html"),
+		path.Join(srcDir, "_footer.html"),
+	)
 	errorIsFatal(err)
 
-	md, err := ioutil.ReadFile(path.Join(srcDir, page.file+".md"))
+	md, err := ioutil.ReadFile(path.Join(srcDir, page.File+".md"))
 	errorIsFatal(err)
 
 	content := string(markdown.ToHTML(md, nil, nil))
 
-	html := string(template)
-	html = strings.ReplaceAll(html, "{title}", page.title)
-	html = strings.Replace(html, "{content}", content, 1)
+	out, err := os.OpenFile(path.Join(destDir, page.File+".html"), os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0644)
+	errorIsFatal(err)
+	defer out.Close()
 
-	ioutil.WriteFile(path.Join(destDir, page.file+".html"), []byte(html), 0644)
+	type model struct {
+		Title   string
+		Pages   []Page
+		Content string
+	}
+	err = template.ExecuteTemplate(out, "_template.html", model{
+		Title:   page.Title,
+		Pages:   pages,
+		Content: content,
+	})
+	errorIsFatal(err)
 }
 
 func errorIsFatal(err error) {
