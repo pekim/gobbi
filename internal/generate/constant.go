@@ -28,7 +28,7 @@ func (c *Constant) init(ns *Namespace) {
 	case "utf8":
 		c.goTypeName = "string"
 	default:
-		if goTypeName, found := integerCTypeMap[c.Type.Name]; found {
+		if goTypeName, found := numberCTypeMap[c.Type.Name]; found {
 			c.goTypeName = goTypeName
 		}
 	}

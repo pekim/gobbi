@@ -1,6 +1,6 @@
 package generate
 
-var integerCTypeMap = map[string]string{
+var numberCTypeMap = map[string]string{
 	"gshort": "int16",
 	"gint":   "int32",
 	"int":    "int32",

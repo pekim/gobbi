@@ -25,7 +25,7 @@ func (a *Array) init(ns *Namespace) {
 	// Some array's Type has a Name but no CType.
 	// In all observed cases this is an integer type, usually 'guint8'.
 	// For these cases use the Type's Name as the CType.
-	_, isInteger := integerCTypeMap[a.Type.Name]
+	_, isInteger := numberCTypeMap[a.Type.Name]
 	if isInteger && a.Type.CType == "" {
 		a.Type.CType = a.Type.Name
 	}
