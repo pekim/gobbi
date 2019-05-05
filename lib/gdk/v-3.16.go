@@ -4309,7 +4309,7 @@ func window_createSurfaceHandler(_ *C.GObject, c_width C.gint, c_height C.gint, 
 
 // Unsupported signal 'from-embedder' for Window : unsupported parameter offscreen_x : direction is 'out'
 
-// Unsupported signal 'moved-to-rect' for Window : unsupported parameter flipped_rect : no type generator for gpointer, gpointer
+// Unsupported signal 'moved-to-rect' for Window : param flipped_rect : gpointer
 
 type signalWindowPickEmbeddedChildDetail struct {
 	callback  WindowSignalPickEmbeddedChildCallback
@@ -4783,7 +4783,15 @@ func (recv *Window) GetChildren() *glib.List {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_children_with_user_data : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// GetChildrenWithUserData is a wrapper around the C function gdk_window_get_children_with_user_data.
+func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
+	c_user_data := (C.gpointer)(userData)
+
+	retC := C.gdk_window_get_children_with_user_data((*C.GdkWindow)(recv.native), c_user_data)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetClipRegion is a wrapper around the C function gdk_window_get_clip_region.
 func (recv *Window) GetClipRegion() *cairo.Region {
@@ -5126,7 +5134,16 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_user_data : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
+// GetUserData is a wrapper around the C function gdk_window_get_user_data.
+func (recv *Window) GetUserData() uintptr {
+	var c_data C.gpointer
+
+	C.gdk_window_get_user_data((*C.GdkWindow)(recv.native), &c_data)
+
+	data := (uintptr)(unsafe.Pointer(&c_data))
+
+	return data
+}
 
 // GetVisibleRegion is a wrapper around the C function gdk_window_get_visible_region.
 func (recv *Window) GetVisibleRegion() *cairo.Region {

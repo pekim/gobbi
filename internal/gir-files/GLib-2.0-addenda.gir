@@ -74,6 +74,20 @@
     <function version="2.28" c:identifier="g_test_add_data_func"/>
     <function version="2.28" c:identifier="g_test_create_case"/>
 
+    <function blacklist="true" c:identifier="g_atomic_pointer_add"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_and"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_or"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_xor"/>
+
+    <function blacklist="true" c:identifier="g_once_init_enter"/>
+    <function blacklist="true" c:identifier="g_once_init_leave"/>
+
+    <function blacklist="true" c:identifier="g_pointer_bit_lock"/>
+    <function blacklist="true" c:identifier="g_pointer_bit_unlock"/>
+    <function blacklist="true" c:identifier="g_pointer_bit_trylock"/>
+
+    <function blacklist="true" c:identifier="g_fprintf"/>
+
     <function c:identifier="g_strreverse"><return-value transfer-ownership="none"/></function>
 
     <!-- no user_data parameter, so how to dispatch to correct Go function? -->
@@ -120,6 +134,9 @@
     <record blacklist="true" name="TestLogMsg"/>
     <record blacklist="true" name="TestLogBuffer"/>
 
+    <record blacklist="true" name="Array"/>
+    <record blacklist="true" name="Once"/>
+
     <record blacklist="true" name="ByteArray"/>
     <record blacklist="true" name="PtrArray"/>
 
@@ -127,6 +144,9 @@
     <record blacklist="true" name="IConv"/>
 
     <record blacklist="true" name="Regex"/>
+    <record name="Date">
+      <method blacklist="true" c:identifier="g_date_to_struct_tm"/>
+    </record>
     <record name="KeyFile">
       <method blacklist="true" c:identifier="g_key_file_set_locale_string_list"/>
       <method blacklist="true" c:identifier="g_key_file_set_string_list"/>

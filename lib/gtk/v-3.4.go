@@ -4627,8 +4627,8 @@ func AccelMapChangeEntry(accelPath string, accelKey uint32, accelMods gdk.Modifi
 	return retGo
 }
 
-// gtk_accel_map_foreach : unsupported parameter data : no type generator for gpointer (gpointer) for param data
-// gtk_accel_map_foreach_unfiltered : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// gtk_accel_map_foreach : unsupported parameter foreach_func : no type generator for AccelMapForeach (GtkAccelMapForeach) for param foreach_func
+// gtk_accel_map_foreach_unfiltered : unsupported parameter foreach_func : no type generator for AccelMapForeach (GtkAccelMapForeach) for param foreach_func
 // AccelMapGet is a wrapper around the C function gtk_accel_map_get.
 func AccelMapGet() *AccelMap {
 	retC := C.gtk_accel_map_get()
@@ -9166,7 +9166,14 @@ func (recv *Builder) AddObjectsFromString(buffer string, length uint64, objectId
 	return retGo, goError
 }
 
-// Unsupported : gtk_builder_connect_signals : unsupported parameter user_data : no type generator for gpointer (gpointer) for param user_data
+// ConnectSignals is a wrapper around the C function gtk_builder_connect_signals.
+func (recv *Builder) ConnectSignals(userData uintptr) {
+	c_user_data := (C.gpointer)(userData)
+
+	C.gtk_builder_connect_signals((*C.GtkBuilder)(recv.native), c_user_data)
+
+	return
+}
 
 // Unsupported : gtk_builder_connect_signals_full : unsupported parameter func : no type generator for BuilderConnectFunc (GtkBuilderConnectFunc) for param func
 
@@ -32931,7 +32938,7 @@ func menu_moveScrollHandler(_ *C.GObject, c_scroll_type C.GtkScrollType, data C.
 	callback(scrollType)
 }
 
-// Unsupported signal 'popped-up' for Menu : unsupported parameter flipped_rect : no type generator for gpointer, gpointer
+// Unsupported signal 'popped-up' for Menu : param flipped_rect : gpointer
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
 func MenuNew() *Menu {
@@ -33956,7 +33963,7 @@ func menuitem_toggleSizeAllocateHandler(_ *C.GObject, c_object C.gint, data C.gp
 	callback(object)
 }
 
-// Unsupported signal 'toggle-size-request' for MenuItem : unsupported parameter object : no type generator for gpointer, gpointer
+// Unsupported signal 'toggle-size-request' for MenuItem : param object : gpointer
 
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
 func MenuItemNew() *MenuItem {
@@ -49278,7 +49285,14 @@ func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
 	return
 }
 
-// Unsupported : gtk_style_context_cancel_animations : unsupported parameter region_id : no type generator for gpointer (gpointer) for param region_id
+// CancelAnimations is a wrapper around the C function gtk_style_context_cancel_animations.
+func (recv *StyleContext) CancelAnimations(regionId uintptr) {
+	c_region_id := (C.gpointer)(regionId)
+
+	C.gtk_style_context_cancel_animations((*C.GtkStyleContext)(recv.native), c_region_id)
+
+	return
+}
 
 // Unsupported : gtk_style_context_get : unsupported parameter ... : varargs
 
@@ -49543,7 +49557,24 @@ func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_style_context_notify_state_change : unsupported parameter region_id : no type generator for gpointer (gpointer) for param region_id
+// NotifyStateChange is a wrapper around the C function gtk_style_context_notify_state_change.
+func (recv *StyleContext) NotifyStateChange(window *gdk.Window, regionId uintptr, state StateType, stateValue bool) {
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
+
+	c_region_id := (C.gpointer)(regionId)
+
+	c_state := (C.GtkStateType)(state)
+
+	c_state_value :=
+		boolToGboolean(stateValue)
+
+	C.gtk_style_context_notify_state_change((*C.GtkStyleContext)(recv.native), c_window, c_region_id, c_state, c_state_value)
+
+	return
+}
 
 // PopAnimatableRegion is a wrapper around the C function gtk_style_context_pop_animatable_region.
 func (recv *StyleContext) PopAnimatableRegion() {
@@ -49552,7 +49583,14 @@ func (recv *StyleContext) PopAnimatableRegion() {
 	return
 }
 
-// Unsupported : gtk_style_context_push_animatable_region : unsupported parameter region_id : no type generator for gpointer (gpointer) for param region_id
+// PushAnimatableRegion is a wrapper around the C function gtk_style_context_push_animatable_region.
+func (recv *StyleContext) PushAnimatableRegion(regionId uintptr) {
+	c_region_id := (C.gpointer)(regionId)
+
+	C.gtk_style_context_push_animatable_region((*C.GtkStyleContext)(recv.native), c_region_id)
+
+	return
+}
 
 // RemoveClass is a wrapper around the C function gtk_style_context_remove_class.
 func (recv *StyleContext) RemoveClass(className string) {
@@ -58271,7 +58309,13 @@ func (recv *TreeSelection) GetTreeView() *TreeView {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_user_data : no return generator
+// GetUserData is a wrapper around the C function gtk_tree_selection_get_user_data.
+func (recv *TreeSelection) GetUserData() uintptr {
+	retC := C.gtk_tree_selection_get_user_data((*C.GtkTreeSelection)(recv.native))
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // IterIsSelected is a wrapper around the C function gtk_tree_selection_iter_is_selected.
 func (recv *TreeSelection) IterIsSelected(iter *TreeIter) bool {
@@ -72977,8 +73021,6 @@ func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	return retGo
 }
 
-// Unsupported : gtk_binding_set_by_class : unsupported parameter object_class : no type generator for gpointer (gpointer) for param object_class
-
 // BindingsActivate is a wrapper around the C function gtk_bindings_activate.
 func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.ModifierType) bool {
 	c_object := (*C.GObject)(C.NULL)
@@ -75768,11 +75810,78 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 	return retGo
 }
 
-// Unsupported : gtk_buildable_custom_finished : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// CustomFinished is a wrapper around the C function gtk_buildable_custom_finished.
+func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
-// Unsupported : gtk_buildable_custom_tag_end : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
 
-// Unsupported : gtk_buildable_custom_tag_start : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
+	c_tagname := C.CString(tagname)
+	defer C.free(unsafe.Pointer(c_tagname))
+
+	c_data := (C.gpointer)(data)
+
+	C.gtk_buildable_custom_finished((*C.GtkBuildable)(recv.native), c_builder, c_child, c_tagname, c_data)
+
+	return
+}
+
+// CustomTagEnd is a wrapper around the C function gtk_buildable_custom_tag_end.
+func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
+
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
+
+	c_tagname := C.CString(tagname)
+	defer C.free(unsafe.Pointer(c_tagname))
+
+	c_data := (C.gpointer)(data)
+
+	C.gtk_buildable_custom_tag_end((*C.GtkBuildable)(recv.native), c_builder, c_child, c_tagname, &c_data)
+
+	return
+}
+
+// CustomTagStart is a wrapper around the C function gtk_buildable_custom_tag_start.
+func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, tagname string) (bool, *glib.MarkupParser, uintptr) {
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
+
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
+
+	c_tagname := C.CString(tagname)
+	defer C.free(unsafe.Pointer(c_tagname))
+
+	var c_parser C.GMarkupParser
+
+	var c_data C.gpointer
+
+	retC := C.gtk_buildable_custom_tag_start((*C.GtkBuildable)(recv.native), c_builder, c_child, c_tagname, &c_parser, &c_data)
+	retGo := retC == C.TRUE
+
+	parser := glib.MarkupParserNewFromC(unsafe.Pointer(&c_parser))
+
+	data := (uintptr)(unsafe.Pointer(&c_data))
+
+	return retGo, parser, data
+}
 
 // GetInternalChild is a wrapper around the C function gtk_buildable_get_internal_child.
 func (recv *Buildable) GetInternalChild(builder *Builder, childname string) *gobject.Object {
@@ -79186,7 +79295,7 @@ func treemodel_rowInsertedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C
 	callback(path, iter)
 }
 
-// Unsupported signal 'rows-reordered' for TreeModel : unsupported parameter new_order : no type generator for gpointer, gpointer
+// Unsupported signal 'rows-reordered' for TreeModel : param new_order : gpointer
 
 // FilterNew is a wrapper around the C function gtk_tree_model_filter_new.
 func (recv *TreeModel) FilterNew(root *TreePath) *TreeModel {
@@ -81170,7 +81279,16 @@ func (recv *BindingSet) Equals(other *BindingSet) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// gtk_binding_set_by_class : unsupported parameter object_class : no type generator for gpointer (gpointer) for param object_class
+// BindingSetByClass is a wrapper around the C function gtk_binding_set_by_class.
+func BindingSetByClass(objectClass uintptr) *BindingSet {
+	c_object_class := (C.gpointer)(objectClass)
+
+	retC := C.gtk_binding_set_by_class(c_object_class)
+	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // BindingSetFind is a wrapper around the C function gtk_binding_set_find.
 func BindingSetFind(setName string) *BindingSet {
 	c_set_name := C.CString(setName)
@@ -91330,8 +91448,8 @@ func (recv *RendererCellAccessiblePrivate) Equals(other *RendererCellAccessibleP
 
 // RequestedSize is a wrapper around the C record GtkRequestedSize.
 type RequestedSize struct {
-	native *C.GtkRequestedSize
-	// data : no type generator for gpointer, gpointer
+	native      *C.GtkRequestedSize
+	Data        uintptr
 	MinimumSize int32
 	NaturalSize int32
 }
@@ -91343,6 +91461,7 @@ func RequestedSizeNewFromC(u unsafe.Pointer) *RequestedSize {
 	}
 
 	g := &RequestedSize{
+		Data:        (uintptr)(c.data),
 		MinimumSize: (int32)(c.minimum_size),
 		NaturalSize: (int32)(c.natural_size),
 		native:      c,
@@ -91352,6 +91471,8 @@ func RequestedSizeNewFromC(u unsafe.Pointer) *RequestedSize {
 }
 
 func (recv *RequestedSize) ToC() unsafe.Pointer {
+	recv.native.data =
+		(C.gpointer)(recv.Data)
 	recv.native.minimum_size =
 		(C.gint)(recv.MinimumSize)
 	recv.native.natural_size =
@@ -92850,10 +92971,10 @@ type StatusIconClass struct {
 	// no type for button_release_event
 	// no type for scroll_event
 	// no type for query_tooltip
-	// __gtk_reserved1 : no type generator for gpointer, void*
-	// __gtk_reserved2 : no type generator for gpointer, void*
-	// __gtk_reserved3 : no type generator for gpointer, void*
-	// __gtk_reserved4 : no type generator for gpointer, void*
+	// __gtk_reserved1 : void* with indirection level of 1
+	// __gtk_reserved2 : void* with indirection level of 1
+	// __gtk_reserved3 : void* with indirection level of 1
+	// __gtk_reserved4 : void* with indirection level of 1
 }
 
 func StatusIconClassNewFromC(u unsafe.Pointer) *StatusIconClass {
@@ -92960,7 +93081,7 @@ func (recv *StatusbarAccessiblePrivate) Equals(other *StatusbarAccessiblePrivate
 type StatusbarClass struct {
 	native *C.GtkStatusbarClass
 	// parent_class : record
-	// reserved : no type generator for gpointer, gpointer
+	Reserved uintptr
 	// no type for text_pushed
 	// no type for text_popped
 	// no type for _gtk_reserved1
@@ -92975,12 +93096,17 @@ func StatusbarClassNewFromC(u unsafe.Pointer) *StatusbarClass {
 		return nil
 	}
 
-	g := &StatusbarClass{native: c}
+	g := &StatusbarClass{
+		Reserved: (uintptr)(c.reserved),
+		native:   c,
+	}
 
 	return g
 }
 
 func (recv *StatusbarClass) ToC() unsafe.Pointer {
+	recv.native.reserved =
+		(C.gpointer)(recv.Reserved)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -96383,11 +96509,11 @@ func (recv *TreeDragSourceIface) Equals(other *TreeDragSourceIface) bool {
 
 // TreeIter is a wrapper around the C record GtkTreeIter.
 type TreeIter struct {
-	native *C.GtkTreeIter
-	Stamp  int32
-	// user_data : no type generator for gpointer, gpointer
-	// user_data2 : no type generator for gpointer, gpointer
-	// user_data3 : no type generator for gpointer, gpointer
+	native    *C.GtkTreeIter
+	Stamp     int32
+	UserData  uintptr
+	UserData2 uintptr
+	UserData3 uintptr
 }
 
 func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
@@ -96397,8 +96523,11 @@ func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
 	}
 
 	g := &TreeIter{
-		Stamp:  (int32)(c.stamp),
-		native: c,
+		Stamp:     (int32)(c.stamp),
+		UserData:  (uintptr)(c.user_data),
+		UserData2: (uintptr)(c.user_data2),
+		UserData3: (uintptr)(c.user_data3),
+		native:    c,
 	}
 
 	return g
@@ -96407,6 +96536,12 @@ func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
 func (recv *TreeIter) ToC() unsafe.Pointer {
 	recv.native.stamp =
 		(C.gint)(recv.Stamp)
+	recv.native.user_data =
+		(C.gpointer)(recv.UserData)
+	recv.native.user_data2 =
+		(C.gpointer)(recv.UserData2)
+	recv.native.user_data3 =
+		(C.gpointer)(recv.UserData3)
 
 	return (unsafe.Pointer)(recv.native)
 }

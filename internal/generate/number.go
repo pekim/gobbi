@@ -28,7 +28,7 @@ var numberCTypeMap = map[string]string{
 	"gchar":    "rune",
 	"gunichar": "rune",
 
-	//"gpointer":      "uintptr",
+	"gpointer": "uintptr",
 	//"gconstpointer": "uintptr",
 	"goffset": "uint64",
 	"gsize":   "uint64",

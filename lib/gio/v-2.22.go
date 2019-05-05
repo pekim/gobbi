@@ -3322,7 +3322,19 @@ func (recv *FileInfo) RemoveAttribute(attribute string) {
 	return
 }
 
-// Unsupported : g_file_info_set_attribute : unsupported parameter value_p : no type generator for gpointer (gpointer) for param value_p
+// SetAttribute is a wrapper around the C function g_file_info_set_attribute.
+func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_type := (C.GFileAttributeType)(type_)
+
+	c_value_p := (C.gpointer)(valueP)
+
+	C.g_file_info_set_attribute((*C.GFileInfo)(recv.native), c_attribute, c_type, c_value_p)
+
+	return
+}
 
 // SetAttributeBoolean is a wrapper around the C function g_file_info_set_attribute_boolean.
 func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
@@ -5284,9 +5296,15 @@ func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 	return MemoryOutputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_memory_output_stream_new : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
-// Unsupported : g_memory_output_stream_get_data : no return generator
+// GetData is a wrapper around the C function g_memory_output_stream_get_data.
+func (recv *MemoryOutputStream) GetData() uintptr {
+	retC := C.g_memory_output_stream_get_data((*C.GMemoryOutputStream)(recv.native))
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDataSize is a wrapper around the C function g_memory_output_stream_get_data_size.
 func (recv *MemoryOutputStream) GetDataSize() uint64 {
@@ -7180,7 +7198,23 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// g_simple_async_result_is_valid : unsupported parameter source_tag : no type generator for gpointer (gpointer) for param source_tag
+// SimpleAsyncResultIsValid is a wrapper around the C function g_simple_async_result_is_valid.
+func SimpleAsyncResultIsValid(result *AsyncResult, source *gobject.Object, sourceTag uintptr) bool {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	c_source := (*C.GObject)(C.NULL)
+	if source != nil {
+		c_source = (*C.GObject)(source.ToC())
+	}
+
+	c_source_tag := (C.gpointer)(sourceTag)
+
+	retC := C.g_simple_async_result_is_valid(c_result, c_source, c_source_tag)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
 // Complete is a wrapper around the C function g_simple_async_result_complete.
 func (recv *SimpleAsyncResult) Complete() {
 	C.g_simple_async_result_complete((*C.GSimpleAsyncResult)(recv.native))
@@ -7203,7 +7237,13 @@ func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	return retGo
 }
 
-// Unsupported : g_simple_async_result_get_op_res_gpointer : no return generator
+// GetOpResGpointer is a wrapper around the C function g_simple_async_result_get_op_res_gpointer.
+func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
+	retC := C.g_simple_async_result_get_op_res_gpointer((*C.GSimpleAsyncResult)(recv.native))
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetOpResGssize is a wrapper around the C function g_simple_async_result_get_op_res_gssize.
 func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
@@ -7213,7 +7253,13 @@ func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 	return retGo
 }
 
-// Unsupported : g_simple_async_result_get_source_tag : no return generator
+// GetSourceTag is a wrapper around the C function g_simple_async_result_get_source_tag.
+func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
+	retC := C.g_simple_async_result_get_source_tag((*C.GSimpleAsyncResult)(recv.native))
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // PropagateError is a wrapper around the C function g_simple_async_result_propagate_error.
 func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
@@ -7284,7 +7330,7 @@ func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	return
 }
 
-// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter op_res : no type generator for gpointer (gpointer) for param op_res
+// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy_op_res
 
 // SetOpResGssize is a wrapper around the C function g_simple_async_result_set_op_res_gssize.
 func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
@@ -8051,7 +8097,21 @@ func CastToSocketAddress(object *gobject.Object) *SocketAddress {
 	return SocketAddressNewFromC(object.ToC())
 }
 
-// Unsupported : g_socket_address_new_from_native : unsupported parameter native : no type generator for gpointer (gpointer) for param native
+// SocketAddressNewFromNative is a wrapper around the C function g_socket_address_new_from_native.
+func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
+	c_native := (C.gpointer)(native)
+
+	c_len := (C.gsize)(len)
+
+	retC := C.g_socket_address_new_from_native(c_native, c_len)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // GetFamily is a wrapper around the C function g_socket_address_get_family.
 func (recv *SocketAddress) GetFamily() SocketFamily {
@@ -8069,7 +8129,27 @@ func (recv *SocketAddress) GetNativeSize() int64 {
 	return retGo
 }
 
-// Unsupported : g_socket_address_to_native : unsupported parameter dest : no type generator for gpointer (gpointer) for param dest
+// ToNative is a wrapper around the C function g_socket_address_to_native.
+func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) {
+	c_dest := (C.gpointer)(dest)
+
+	c_destlen := (C.gsize)(destlen)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_address_to_native((*C.GSocketAddress)(recv.native), c_dest, c_destlen, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // SocketConnectable returns the SocketConnectable interface implemented by SocketAddress
 func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
@@ -8682,7 +8762,14 @@ func (recv *SocketControlMessage) GetSize() uint64 {
 	return retGo
 }
 
-// Unsupported : g_socket_control_message_serialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Serialize is a wrapper around the C function g_socket_control_message_serialize.
+func (recv *SocketControlMessage) Serialize(data uintptr) {
+	c_data := (C.gpointer)(data)
+
+	C.g_socket_control_message_serialize((*C.GSocketControlMessage)(recv.native), c_data)
+
+	return
+}
 
 // SocketListener is a wrapper around the C record GSocketListener.
 type SocketListener struct {
@@ -11894,8 +11981,6 @@ func ContentTypesGetRegistered() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_icon_hash : unsupported parameter icon : no type generator for gpointer (gconstpointer) for param icon
-
 // Unsupported : g_initable_newv : unsupported parameter parameters :
 
 // IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
@@ -12755,7 +12840,13 @@ func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 	return retGo
 }
 
-// Unsupported : g_async_result_get_user_data : no return generator
+// GetUserData is a wrapper around the C function g_async_result_get_user_data.
+func (recv *AsyncResult) GetUserData() uintptr {
+	retC := C.g_async_result_get_user_data((*C.GAsyncResult)(recv.native))
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DBusObject is a wrapper around the C record GDBusObject.
 type DBusObject struct {
@@ -14633,7 +14724,37 @@ func (recv *File) ResolveRelativePath(relativePath string) *File {
 	return retGo
 }
 
-// Unsupported : g_file_set_attribute : unsupported parameter value_p : no type generator for gpointer (gpointer) for param value_p
+// SetAttribute is a wrapper around the C function g_file_set_attribute.
+func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_type := (C.GFileAttributeType)(type_)
+
+	c_value_p := (C.gpointer)(valueP)
+
+	c_flags := (C.GFileQueryInfoFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_set_attribute((*C.GFile)(recv.native), c_attribute, c_type, c_value_p, c_flags, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // SetAttributeByteString is a wrapper around the C function g_file_set_attribute_byte_string.
 func (recv *File) SetAttributeByteString(attribute string, value string, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
@@ -15092,7 +15213,16 @@ func (recv *Icon) Equals(other *Icon) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// g_icon_hash : unsupported parameter icon : no type generator for gpointer (gconstpointer) for param icon
+// IconHash is a wrapper around the C function g_icon_hash.
+func IconHash(icon uintptr) uint32 {
+	c_icon := (C.gconstpointer)(icon)
+
+	retC := C.g_icon_hash(c_icon)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
 // IconNewForString is a wrapper around the C function g_icon_new_for_string.
 func IconNewForString(str string) (*Icon, error) {
 	c_str := C.CString(str)
@@ -18756,8 +18886,8 @@ func (recv *InputStreamPrivate) Equals(other *InputStreamPrivate) bool {
 // InputVector is a wrapper around the C record GInputVector.
 type InputVector struct {
 	native *C.GInputVector
-	// buffer : no type generator for gpointer, gpointer
-	Size uint64
+	Buffer uintptr
+	Size   uint64
 }
 
 func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
@@ -18767,6 +18897,7 @@ func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
 	}
 
 	g := &InputVector{
+		Buffer: (uintptr)(c.buffer),
 		Size:   (uint64)(c.size),
 		native: c,
 	}
@@ -18775,6 +18906,8 @@ func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
 }
 
 func (recv *InputVector) ToC() unsafe.Pointer {
+	recv.native.buffer =
+		(C.gpointer)(recv.Buffer)
 	recv.native.size =
 		(C.gsize)(recv.Size)
 
@@ -19486,8 +19619,8 @@ func (recv *OutputStreamPrivate) Equals(other *OutputStreamPrivate) bool {
 // OutputVector is a wrapper around the C record GOutputVector.
 type OutputVector struct {
 	native *C.GOutputVector
-	// buffer : no type generator for gpointer, gconstpointer
-	Size uint64
+	Buffer uintptr
+	Size   uint64
 }
 
 func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
@@ -19497,6 +19630,7 @@ func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
 	}
 
 	g := &OutputVector{
+		Buffer: (uintptr)(c.buffer),
 		Size:   (uint64)(c.size),
 		native: c,
 	}
@@ -19505,6 +19639,8 @@ func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
 }
 
 func (recv *OutputVector) ToC() unsafe.Pointer {
+	recv.native.buffer =
+		(C.gconstpointer)(recv.Buffer)
 	recv.native.size =
 		(C.gsize)(recv.Size)
 

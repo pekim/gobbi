@@ -806,9 +806,9 @@ func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
-// Unsupported signal 'active-descendant-changed' for Object : unsupported parameter arg1 : no type generator for gpointer, gpointer
+// Unsupported signal 'active-descendant-changed' for Object : param arg1 : gpointer
 
-// Unsupported signal 'children-changed' for Object : unsupported parameter arg2 : no type generator for gpointer, gpointer
+// Unsupported signal 'children-changed' for Object : param arg2 : gpointer
 
 type signalObjectFocusEventDetail struct {
 	callback  ObjectSignalFocusEventCallback
@@ -872,7 +872,7 @@ func object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) 
 	callback(arg1)
 }
 
-// Unsupported signal 'property-change' for Object : unsupported parameter arg1 : no type generator for gpointer, gpointer
+// Unsupported signal 'property-change' for Object : param arg1 : gpointer
 
 type signalObjectStateChangeDetail struct {
 	callback  ObjectSignalStateChangeCallback
@@ -1087,7 +1087,14 @@ func (recv *Object) GetRole() Role {
 	return retGo
 }
 
-// Unsupported : atk_object_initialize : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// Initialize is a wrapper around the C function atk_object_initialize.
+func (recv *Object) Initialize(data uintptr) {
+	c_data := (C.gpointer)(data)
+
+	C.atk_object_initialize((*C.AtkObject)(recv.native), c_data)
+
+	return
+}
 
 // NotifyStateChange is a wrapper around the C function atk_object_notify_state_change.
 func (recv *Object) NotifyStateChange(state State, value bool) {
@@ -3141,7 +3148,13 @@ func (recv *Document) GetAttributes() *AttributeSet {
 	return retGo
 }
 
-// Unsupported : atk_document_get_document : no return generator
+// GetDocument is a wrapper around the C function atk_document_get_document.
+func (recv *Document) GetDocument() uintptr {
+	retC := C.atk_document_get_document((*C.AtkDocument)(recv.native))
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDocumentType is a wrapper around the C function atk_document_get_document_type.
 func (recv *Document) GetDocumentType() string {

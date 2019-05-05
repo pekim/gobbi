@@ -49,7 +49,7 @@ func ContextGetResolution(context *pango.Context) float64 {
 	return retGo
 }
 
-// Unsupported : pango_cairo_context_get_shape_renderer : unsupported parameter data : no type generator for gpointer (gpointer*) for param data
+// Unsupported : pango_cairo_context_get_shape_renderer : no return generator
 
 // ContextSetFontOptions is a wrapper around the C function pango_cairo_context_set_font_options.
 func ContextSetFontOptions(context *pango.Context, options *cairo.FontOptions) {

@@ -2206,7 +2206,7 @@ func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *Attr
 
 // Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
 
-// Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer (FILE*) for param stream
+// Blacklisted : pango_read_line
 
 // ReorderItems is a wrapper around the C function pango_reorder_items.
 func ReorderItems(logicalItems *glib.List) *glib.List {
@@ -2760,7 +2760,7 @@ type AttrShape struct {
 	// attr : record
 	// ink_rect : record
 	// logical_rect : record
-	// data : no type generator for gpointer, gpointer
+	Data uintptr
 	// copy_func : no type generator for AttrDataCopyFunc, PangoAttrDataCopyFunc
 	// destroy_func : no type generator for GLib.DestroyNotify, GDestroyNotify
 }
@@ -2771,12 +2771,17 @@ func AttrShapeNewFromC(u unsafe.Pointer) *AttrShape {
 		return nil
 	}
 
-	g := &AttrShape{native: c}
+	g := &AttrShape{
+		Data:   (uintptr)(c.data),
+		native: c,
+	}
 
 	return g
 }
 
 func (recv *AttrShape) ToC() unsafe.Pointer {
+	recv.native.data =
+		(C.gpointer)(recv.Data)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -2804,7 +2809,7 @@ func AttrShapeNew(inkRect *Rectangle, logicalRect *Rectangle) *Attribute {
 	return retGo
 }
 
-// pango_attr_shape_new_with_data : unsupported parameter data : no type generator for gpointer (gpointer) for param data
+// pango_attr_shape_new_with_data : unsupported parameter copy_func : no type generator for AttrDataCopyFunc (PangoAttrDataCopyFunc) for param copy_func
 // AttrSize is a wrapper around the C record PangoAttrSize.
 type AttrSize struct {
 	native *C.PangoAttrSize

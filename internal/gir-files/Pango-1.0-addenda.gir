@@ -29,6 +29,7 @@
     <function blacklist="true" c:identifier="pango_default_break"/>
     <function blacklist="true" c:identifier="pango_get_lib_subdirectory"/>
     <function blacklist="true" c:identifier="pango_get_sysconf_subdirectory"/>
+    <function blacklist="true" c:identifier="pango_read_line"/>
 
     <record name="FontMetrics">
       <constructor blacklist="true" c:identifier="pango_font_metrics_new"/>

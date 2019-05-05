@@ -21,6 +21,7 @@
       <method blacklist="true" c:identifier="g_settings_backend_path_changed"/>
       <method blacklist="true" c:identifier="g_settings_backend_path_writable_changed"/>
       <method blacklist="true" c:identifier="g_settings_backend_writable_changed"/>
+      <method blacklist="true" c:identifier="g_settings_backend_keys_changed"/>
 
       <function blacklist="true" c:identifier="g_settings_backend_get_default"/>
     </class>
