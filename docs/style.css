@@ -1,9 +1,47 @@
+html,
 body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
     font-size: 18px;
+}
 
-    max-width: 55em;
-    margin: 0 auto;
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3em;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+
+    padding: 0 2em;
+    border-bottom: solid 0.3em hsl(0, 70%, 50%);
+}
+
+header a,
+header a:visited {
+    display: flex;
+    align-items: center;
+
+    color: white;
+    font-size: 1.3rem;
+}
+
+header a img {
+    width: 1.3em;
+    margin-right: 0.5em;
 }
 
 a,
@@ -23,13 +61,15 @@ a:focus {
 .body {
     display: flex;
     flex-direction: row;
+
+    margin-top: 4em;
 }
 
 nav {
     flex-shrink: 0;
-
-    margin-top: 2em;
-    margin-right: 4em;
+    position: fixed;
+    padding: 0 2em;
+    border-right : solid 1px hsl(0, 0%, 20%);
 }
 
 nav ol {
@@ -43,7 +83,10 @@ nav ol li {
 }
 
 .content {
+    max-width: 50em;
 
+    margin-left: 15em;
+    padding-left: 2em;
 }
 
 p code {

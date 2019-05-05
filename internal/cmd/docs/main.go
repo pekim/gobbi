@@ -42,7 +42,6 @@ func generateHtmlFile(page Page) {
 		path.Join(srcDir, "_template.html"),
 		path.Join(srcDir, "_navigation.html"),
 		path.Join(srcDir, "_header.html"),
-		path.Join(srcDir, "_footer.html"),
 	)
 	errorIsFatal(err)
 
