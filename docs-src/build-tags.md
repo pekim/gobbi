@@ -26,7 +26,7 @@ is only available from gtk 3.10 onwards.
 So to use it, a tag specifying 3.10 (or a later version)
 is required.
 
-```
+```bash
 go build -tags gtk_3.10 my_app.go
 ```
 
@@ -34,7 +34,7 @@ go build -tags gtk_3.10 my_app.go
 If targetting Ubuntu 16.04 (Xenial Xerus) or later,
 the following tags would be a good starting point. 
 
-```
+```bash
 go build -tags " \
     glib_2.48 \
     gdk_3.4 \
