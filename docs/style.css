@@ -1,6 +1,23 @@
 body {
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
     font-size: 18px;
+
+    max-width: 55em;
+    margin: 0 auto;
+}
+
+a,
+a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: none;
 }
 
 .body {
@@ -10,9 +27,32 @@ body {
 
 nav {
     flex-shrink: 0;
-    margin-right: 2em;
+
+    margin-top: 2em;
+    margin-right: 4em;
+}
+
+nav ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+nav ol li {
+    padding: 0.2em 0;
+    margin: 0.3em 0;
 }
 
 .content {
 
+}
+
+p code {
+    padding: 0.2em;
+    font-weight: bold;
+    color: hsl(0,0%,15%);
+}
+
+code.hljs {
+    background-color: hsl(0, 0%, 90%);
+    border: solid 1px hsl(0, 0%, 20%)
 }
