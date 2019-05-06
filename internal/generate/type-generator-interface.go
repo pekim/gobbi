@@ -7,6 +7,7 @@ import (
 )
 
 type TypeGeneratorInterface struct {
+	TypeGeneratorPanic
 	typ   *Type
 	iface *Interface
 }
@@ -228,11 +229,6 @@ func (t *TypeGeneratorInterface) generateReturnCToGo(g *jen.Group, isParam bool,
 				Qual("unsafe", "Pointer").
 				Call(cVarRef))
 	}
-}
-
-func (t *TypeGeneratorInterface) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorInterface) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

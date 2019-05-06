@@ -6,6 +6,7 @@ import (
 )
 
 type TypeGeneratorEnumeration struct {
+	TypeGeneratorPanic
 	typ  *Type
 	enum *Enumeration
 }
@@ -78,10 +79,6 @@ func (t *TypeGeneratorEnumeration) generateParamCallArgument(g *jen.Group, cVarN
 	g.Id(cVarName)
 }
 
-func (t *TypeGeneratorEnumeration) generateParamOutCallArgument(g *jen.Group, cVarName string) {
-	panic(fmt.Sprintf("call argument for an enum out param, not supported : %s", cVarName))
-}
-
 func (t *TypeGeneratorEnumeration) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
 		Id(cVarName).
@@ -119,11 +116,6 @@ func (t *TypeGeneratorEnumeration) generateReturnCToGo(g *jen.Group, isParam boo
 		Op(":=").
 		Parens(jen.Do(t.typ.qname.generate)).
 		Parens(jen.Id(cVarName))
-}
-
-func (t *TypeGeneratorEnumeration) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorEnumeration) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

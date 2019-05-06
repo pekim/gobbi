@@ -5,6 +5,7 @@ import (
 )
 
 type TypeGeneratorBoolean struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 
@@ -113,11 +114,6 @@ func (t *TypeGeneratorBoolean) generateReturnCToGo(g *jen.Group, isParam bool,
 		Id(cVarName).
 		Op("==").
 		Qual("C", "TRUE")
-}
-
-func (t *TypeGeneratorBoolean) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorBoolean) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

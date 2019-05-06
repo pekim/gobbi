@@ -5,6 +5,7 @@ import (
 )
 
 type TypeGeneratorIgnore struct {
+	TypeGeneratorPanic
 }
 
 func TypeGeneratorIgnoreNew(typ *Type) *TypeGeneratorIgnore {
@@ -78,11 +79,6 @@ func (t *TypeGeneratorIgnore) generateReturnFunctionDeclarationCtype(g *jen.Grou
 
 func (t *TypeGeneratorIgnore) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-}
-
-func (t *TypeGeneratorIgnore) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorIgnore) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

@@ -7,6 +7,7 @@ import (
 )
 
 type TypeGeneratorRecord struct {
+	TypeGeneratorPanic
 	typ    *Type
 	record *Record
 }
@@ -242,11 +243,6 @@ func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, isParam bool,
 				Qual("unsafe", "Pointer").
 				Call(cVarRef))
 	}
-}
-
-func (t *TypeGeneratorRecord) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

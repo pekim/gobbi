@@ -5,6 +5,7 @@ import (
 )
 
 type TypeGeneratorArgcArgv struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 
@@ -105,10 +106,6 @@ func (t *TypeGeneratorArgcArgv) generateReturnFunctionDeclaration(g *jen.Group) 
 	g.Op("[]").String()
 }
 
-func (t *TypeGeneratorArgcArgv) generateReturnFunctionDeclarationCtype(g *jen.Group) {
-	panic("unsupported")
-}
-
 func (t *TypeGeneratorArgcArgv) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
 
@@ -121,16 +118,6 @@ func (t *TypeGeneratorArgcArgv) generateReturnCToGo(g *jen.Group, isParam bool,
 			Op(",").
 			Id("cArgv"))
 }
-
-func (t *TypeGeneratorArgcArgv) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
-}
-
-func (t *TypeGeneratorArgcArgv) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
-	panic("unexpected")
-}
-
 func (t *TypeGeneratorArgcArgv) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
 	t.generateCallBoolToGboolean(g, goVarReference)
 }

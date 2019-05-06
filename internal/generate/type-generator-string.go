@@ -9,6 +9,7 @@ import (
 )
 
 type TypeGeneratorString struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 

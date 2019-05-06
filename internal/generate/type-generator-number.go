@@ -7,6 +7,7 @@ import (
 )
 
 type TypeGeneratorNumber struct {
+	TypeGeneratorPanic
 	typ *Type
 }
 
@@ -149,11 +150,6 @@ func (t *TypeGeneratorNumber) generateReturnCToGo(g *jen.Group, isParam bool,
 				s.Id(cVarName)
 			}
 		}))
-}
-
-func (t *TypeGeneratorNumber) generateArrayReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
-	panic("unsupported")
 }
 
 func (t *TypeGeneratorNumber) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
