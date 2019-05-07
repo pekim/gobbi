@@ -4,7 +4,7 @@
     * debian/ubuntu packages -
         `libatk1.0-dev libcairo2-dev libglib2.0-dev
         libgtk-3-dev libpango1.0-dev`
-    * note that dev libraries are required because pkg-config
+    * note that dev versions of the libraries are required because pkg-config
         and headers are necessary
 * C compiler, and a linker
     * required because of the use of cgo
@@ -17,11 +17,14 @@
 * `./gobbi example simple_window`
     * Be patient.
         The first `go build` or `go run` will take quite a while,
-        perhaps a few minutes.
-        Subsequent builds of applications will be a *lot* quicker
-        as cached gobbi packages will be used by the Go commands. 
+        perhaps a minute.
+        Subsequent builds of applications will be a lot quicker
+        as cached gobbi packages will be used by the Go tools. 
 
 Run `./gobbi examples` for a list of the available examples.
+
+(The gobbi script supports other commands,
+but they are only needed for development of gobbi itself.)
 
 ## use in an application
 Using gobbi in an application in no different to using
@@ -37,6 +40,11 @@ Then import a package such as gtk.
 ```go
 import "github.com/pekim/gobbi/lib/gtk"
 ```
+
+[Application lifecycle](application-lifecycle.html)
+describes the minimal apis needed to build
+an application that will create a window.
+
 
 ## build tags
 It will often be necessary to build gobbi applications

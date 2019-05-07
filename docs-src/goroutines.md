@@ -1,6 +1,6 @@
 All calls to gtk functions should be performed on
 the main thread.
-To perform such a call from a goroutine,
+To perform such calls from a goroutine,
 use `glib.IdleAdd` to schedule invocation of a
 callback function on the main thread. 
 

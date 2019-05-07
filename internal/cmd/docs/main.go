@@ -23,10 +23,10 @@ var pages = []Page{
 	Page{File: "application-lifecycle", Title: "Application lifecycle"},
 	Page{File: "build-tags", Title: "Build tags"},
 	Page{File: "goroutines", Title: "Goroutines"},
-	Page{File: "gvalue", Title: "gobject.Value"},
 	Page{File: "casting", Title: "Casting"},
 	Page{File: "signal-handling", Title: "Signal handling"},
 	Page{File: "variadic-functions", Title: "Variadic functions"},
+	Page{File: "gvalue", Title: "gobject.Value"},
 	Page{File: "reference-counting", Title: "Reference counting"},
 	Page{File: "api", Title: "API docs"},
 }

@@ -1,5 +1,5 @@
 ## main thread
-The main function, and therefore the main loop,
+The `main` function, and therefore the main loop,
 should run on the main thread. 
 
 ```go
@@ -11,7 +11,7 @@ func init() {
 ```
 
 ## initialisation
-Call `gtk.Init` (or `gtk.InitChack`) before calling
+Call `gtk.Init` (or `gtk.InitCheck`) before calling
 any other gtk functions.
 Typically the program's command-line arguments will
 be passed to `gtk.Init`.
@@ -32,12 +32,14 @@ If an application has only one window,
 then it might terminate when the window is closed.
 
 ```go
+// Connect to the window's "destroy" signal.
 window.Widget().ConnectDestroy(func() {
     gtk.MainQuit()
 })
 ``` 
 
-This may be written more succinctly, like this.
+As the callback's signature matches that of `gtk.MainQuit`,
+this may be written more succinctly like this.
 
 ```go
 window.Widget().ConnectDestroy(gtk.MainQuit)

@@ -1,7 +1,7 @@
 gobbi uses Go 
 [build tags](https://golang.org/pkg/go/build/#hdr-Build_Constraints)
 to allow targetting of specific library versions.
-This means that when using Go build tools
+This means that when using Go tools
 (such as `go build` and `go run`)
 to build a gobbi application,
 use of the `-tags` flag will usually be necessary.
@@ -25,6 +25,13 @@ For example
 is only available from gtk 3.10 onwards.
 So to use it, a tag specifying 3.10 (or a later version)
 is required.
+
+
+A tag such as `gtk_3.10` is formed of three parts.
+
+- the library name, `gtk`
+- an underscore, `_`
+- the minimum library version, `3.10`
 
 ```bash
 go build -tags gtk_3.10 my_app.go
@@ -55,6 +62,7 @@ The relevant setting is `Go: Build Tags`.
 ### goland
 In the `Settings...` dialog, the relevant setting can
 be found under
+
 - Go
-  - Vendoring & Build Tags
-    - Custom tags
+   - Vendoring & Build Tags
+      - Custom tags

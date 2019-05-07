@@ -43,9 +43,6 @@
                 <a href="goroutines.html">Goroutines</a>
             </li>
             <li>
-                <a href="gvalue.html">gobject.Value</a>
-            </li>
-            <li>
                 <a href="casting.html">Casting</a>
             </li>
             <li>
@@ -53,6 +50,9 @@
             </li>
             <li>
                 <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
             </li>
             <li>
                 <a href="reference-counting.html">Reference counting</a>
@@ -76,7 +76,7 @@
 <li>debian/ubuntu packages -
 <code>libatk1.0-dev libcairo2-dev libglib2.0-dev
 libgtk-3-dev libpango1.0-dev</code></li>
-<li>note that dev libraries are required because pkg-config
+<li>note that dev versions of the libraries are required because pkg-config
 and headers are necessary</li>
 </ul></li>
 <li>C compiler, and a linker
@@ -98,13 +98,16 @@ package should suffice</li>
 <ul>
 <li>Be patient.
 The first <code>go build</code> or <code>go run</code> will take quite a while,
-perhaps a few minutes.
-Subsequent builds of applications will be a <em>lot</em> quicker
-as cached gobbi packages will be used by the Go commands.</li>
+perhaps a minute.
+Subsequent builds of applications will be a lot quicker
+as cached gobbi packages will be used by the Go tools.</li>
 </ul></li>
 </ul>
 
 <p>Run <code>./gobbi examples</code> for a list of the available examples.</p>
+
+<p>(The gobbi script supports other commands,
+but they are only needed for development of gobbi itself.)</p>
 
 <h2>use in an application</h2>
 
@@ -121,6 +124,10 @@ use <code>go get</code>.</p>
 
 <pre><code class="language-go">import &quot;github.com/pekim/gobbi/lib/gtk&quot;
 </code></pre>
+
+<p><a href="application-lifecycle.html">Application lifecycle</a>
+describes the minimal apis needed to build
+an application that will create a window.</p>
 
 <h2>build tags</h2>
 

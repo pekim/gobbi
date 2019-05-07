@@ -15,10 +15,13 @@ This is because `fmt.Sprint` is used to format a string
 before passing it as the last argument
 to the wrapped C function.
 
-A much simplified representation of such a function might
-help to make this clearer.
+A much simplified representation of such a
+gobbi function might help to make this clearer.
 ```go
-func SomeRepresentativeFunction(
+package gtk
+
+// a gobbi function
+func SomeFormatFunction(
 	a string, b int,
 	format string, args ...interface{},
 ) {
@@ -28,7 +31,17 @@ func SomeRepresentativeFunction(
 	formattedString := fmt.Sprintf(format, args...)
 	c_formattedString := C.String(formattedString)
 
-	C.some_representative_function(c_a, c_b, c_formattedString)
+	C.some_format_function(c_a, c_b, c_formattedString)
+}
+
+// ----------------------------- //
+
+// some application code
+func aFunction () {
+    gtk.SomeFormatFunction(
+        "a string", 123,
+        "the %s is %d", "answer", 42,
+    )
 }
 ```
 
@@ -38,7 +51,7 @@ because it would be impractical to automatically
 generate code that would support them.
 
 ### array functions
-In some cases there is another function that accepts an array
+In some cases there is an alternative function that accepts an array
 as the final argument instead.
 For example
 [gtk_list_store_new](https://developer.gnome.org/gtk3/stable/GtkListStore.html#gtk-list-store-new)
@@ -47,7 +60,7 @@ is not supported, but
 is supported as [gtk.ListStoreNewv](https://godoc.org/github.com/pekim/gobbi/lib/gtk#ListStoreNewv).
 
 ### multiple functions 
-There are other variadac functions that do not have an array
+There are other variadac functions that may not have an array
 equivalent version, but their functionality
 can be achieved through a combination of functions.
 

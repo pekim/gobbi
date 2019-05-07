@@ -1,6 +1,6 @@
 Gtk classes derive in a hierarchy from the GObject class.
 
-In gobbi's implementation of GOBject's classes,
+In gobbi's implementation of GObject's classes,
 each class does not directly extend
 (or embed in Go terms)
 its ancestor classes.
@@ -21,7 +21,7 @@ label := gtk.LabelNew("a label")
 window.Add(label)   // <-- ERROR
 ``` 
 
-`gtk.Window` does not directly have a `Add` method.
+`gtk.Window` does not directly have an `Add` method.
 The `Add` method is a member of `gtk.Container`,
 which is an ancestor of `gtk.Window`.
 
@@ -50,7 +50,7 @@ widget2 := gtk.WindowNew().Widget()
 
 # downcasting
 Downcasting operates in the other direction,
-from a class to a derived class,
+from a class to a derived class.
 
 Downcasting is less common that upcasting.
 It is potentially quite dangerous, in that it makes

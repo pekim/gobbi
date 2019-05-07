@@ -43,9 +43,6 @@
                 <a href="goroutines.html">Goroutines</a>
             </li>
             <li>
-                <a href="gvalue.html">gobject.Value</a>
-            </li>
-            <li>
                 <a href="casting.html">Casting</a>
             </li>
             <li>
@@ -53,6 +50,9 @@
             </li>
             <li>
                 <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
             </li>
             <li>
                 <a href="reference-counting.html">Reference counting</a>
@@ -78,16 +78,21 @@ others have one or more parameters that provide event-specific
 information.</p>
 
 <pre><code class="language-go">button := gtk.ButtonNewWithLabel(&quot;a button&quot;)
+
+// enable emitting of motion events
 button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK))
+
 button.Widget().ConnectMotionNotifyEvent(
     func(event *gdk.EventMotion) bool {
         fmt.Println(event.Y, event.Y)
         return false
-    })
+    }
+)
 </code></pre>
 
-<p>Remember that it may be necessary to upcast to access the
-desired connect method.</p>
+<p>Remember that it may be necessary to
+<a href="casting.html">upcast</a>
+to access the desired connect method.</p>
 
 <h2>disconnecting</h2>
 
@@ -105,24 +110,23 @@ The id may be used later to disconnect the handler.</p>
 
 <h2>notify signal for a single property</h2>
 
-<p><code>ConnectNotifyProperty</code> connects the callback
+<p><code>ConnectNotifyProperty</code> connects a callback
 to the <code>notify</code> signal
 for a specific property of an Object.</p>
 
-<p>For example, to connect to the notify signal
-for the &ldquo;title&rdquo; property of a window.</p>
+<p>This is an example of connecting to the notify signal
+for a window&rsquo;s
+<a href="https://developer.gnome.org/gtk3/stable/GtkWindow.html#GtkWindow--title">title property</a>.</p>
 
 <pre><code class="language-go">    window := gtk.WindowNew(...)
 
+    // connect to the &quot;notify::title&quot; signal
     window.Object().ConnectNotifyProperty(
         &quot;title&quot;, func(pspec *gobject.ParamSpec,
     ) {
         fmt.Println(&quot;title property changed&quot;)
     })
 </code></pre>
-
-<p>In that example it is the <code>notify::title</code> signal
-that is being connected to.</p>
 
 <p>The returned value represents the connection,
 and may be passed to <code>DisconnectNotify</code> to remove it.</p>

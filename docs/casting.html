@@ -43,9 +43,6 @@
                 <a href="goroutines.html">Goroutines</a>
             </li>
             <li>
-                <a href="gvalue.html">gobject.Value</a>
-            </li>
-            <li>
                 <a href="casting.html">Casting</a>
             </li>
             <li>
@@ -53,6 +50,9 @@
             </li>
             <li>
                 <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
             </li>
             <li>
                 <a href="reference-counting.html">Reference counting</a>
@@ -68,7 +68,7 @@
                 <h1>Casting</h1>
                 <p>Gtk classes derive in a hierarchy from the GObject class.</p>
 
-<p>In gobbi&rsquo;s implementation of GOBject&rsquo;s classes,
+<p>In gobbi&rsquo;s implementation of GObject&rsquo;s classes,
 each class does not directly extend
 (or embed in Go terms)
 its ancestor classes.
@@ -89,7 +89,7 @@ label := gtk.LabelNew(&quot;a label&quot;)
 window.Add(label)   // &lt;-- ERROR
 </code></pre>
 
-<p><code>gtk.Window</code> does not directly have a <code>Add</code> method.
+<p><code>gtk.Window</code> does not directly have an <code>Add</code> method.
 The <code>Add</code> method is a member of <code>gtk.Container</code>,
 which is an ancestor of <code>gtk.Window</code>.</p>
 
@@ -118,7 +118,7 @@ widget2 := gtk.WindowNew().Widget()
 <h1>downcasting</h1>
 
 <p>Downcasting operates in the other direction,
-from a class to a derived class,</p>
+from a class to a derived class.</p>
 
 <p>Downcasting is less common that upcasting.
 It is potentially quite dangerous, in that it makes

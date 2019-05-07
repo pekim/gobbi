@@ -10,16 +10,21 @@ information.
 
 ```go
 button := gtk.ButtonNewWithLabel("a button")
+
+// enable emitting of motion events
 button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK))
+
 button.Widget().ConnectMotionNotifyEvent(
     func(event *gdk.EventMotion) bool {
         fmt.Println(event.Y, event.Y)
         return false
-    })
+    }
+)
 ```
 
-Remember that it may be necessary to upcast to access the
-desired connect method.
+Remember that it may be necessary to
+[upcast](casting.html)
+to access the desired connect method.
 
 ## disconnecting
 All of the `Connect...` methods return a handler id.
@@ -36,25 +41,24 @@ The id may be used later to disconnect the handler.
 ```
 
 ## notify signal for a single property
-`ConnectNotifyProperty` connects the callback
+`ConnectNotifyProperty` connects a callback
 to the `notify` signal
 for a specific property of an Object.
 
-For example, to connect to the notify signal
-for the "title" property of a window.
+This is an example of connecting to the notify signal
+for a window's
+[title property](https://developer.gnome.org/gtk3/stable/GtkWindow.html#GtkWindow--title).
 
 ```go
     window := gtk.WindowNew(...)
 
+    // connect to the "notify::title" signal
     window.Object().ConnectNotifyProperty(
         "title", func(pspec *gobject.ParamSpec,
     ) {
         fmt.Println("title property changed")
     })
 ```
-
-In that example it is the `notify::title` signal
-that is being connected to.
 
 The returned value represents the connection,
 and may be passed to `DisconnectNotify` to remove it.

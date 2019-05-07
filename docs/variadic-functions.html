@@ -43,9 +43,6 @@
                 <a href="goroutines.html">Goroutines</a>
             </li>
             <li>
-                <a href="gvalue.html">gobject.Value</a>
-            </li>
-            <li>
                 <a href="casting.html">Casting</a>
             </li>
             <li>
@@ -53,6 +50,9 @@
             </li>
             <li>
                 <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
             </li>
             <li>
                 <a href="reference-counting.html">Reference counting</a>
@@ -84,10 +84,13 @@ This is because <code>fmt.Sprint</code> is used to format a string
 before passing it as the last argument
 to the wrapped C function.</p>
 
-<p>A much simplified representation of such a function might
-help to make this clearer.</p>
+<p>A much simplified representation of such a
+gobbi function might help to make this clearer.</p>
 
-<pre><code class="language-go">func SomeRepresentativeFunction(
+<pre><code class="language-go">package gtk
+
+// a gobbi function
+func SomeFormatFunction(
 	a string, b int,
 	format string, args ...interface{},
 ) {
@@ -97,7 +100,17 @@ help to make this clearer.</p>
 	formattedString := fmt.Sprintf(format, args...)
 	c_formattedString := C.String(formattedString)
 
-	C.some_representative_function(c_a, c_b, c_formattedString)
+	C.some_format_function(c_a, c_b, c_formattedString)
+}
+
+// ----------------------------- //
+
+// some application code
+func aFunction () {
+    gtk.SomeFormatFunction(
+        &quot;a string&quot;, 123,
+        &quot;the %s is %d&quot;, &quot;answer&quot;, 42,
+    )
 }
 </code></pre>
 
@@ -109,7 +122,7 @@ generate code that would support them.</p>
 
 <h3>array functions</h3>
 
-<p>In some cases there is another function that accepts an array
+<p>In some cases there is an alternative function that accepts an array
 as the final argument instead.
 For example
 <a href="https://developer.gnome.org/gtk3/stable/GtkListStore.html#gtk-list-store-new">gtk_list_store_new</a>
@@ -119,7 +132,7 @@ is supported as <a href="https://godoc.org/github.com/pekim/gobbi/lib/gtk#ListSt
 
 <h3>multiple functions</h3>
 
-<p>There are other variadac functions that do not have an array
+<p>There are other variadac functions that may not have an array
 equivalent version, but their functionality
 can be achieved through a combination of functions.</p>
 

@@ -43,9 +43,6 @@
                 <a href="goroutines.html">Goroutines</a>
             </li>
             <li>
-                <a href="gvalue.html">gobject.Value</a>
-            </li>
-            <li>
                 <a href="casting.html">Casting</a>
             </li>
             <li>
@@ -53,6 +50,9 @@
             </li>
             <li>
                 <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
             </li>
             <li>
                 <a href="reference-counting.html">Reference counting</a>
@@ -68,7 +68,7 @@
                 <h1>Application lifecycle</h1>
                 <h2>main thread</h2>
 
-<p>The main function, and therefore the main loop,
+<p>The <code>main</code> function, and therefore the main loop,
 should run on the main thread.</p>
 
 <pre><code class="language-go">func init() {
@@ -80,7 +80,7 @@ should run on the main thread.</p>
 
 <h2>initialisation</h2>
 
-<p>Call <code>gtk.Init</code> (or <code>gtk.InitChack</code>) before calling
+<p>Call <code>gtk.Init</code> (or <code>gtk.InitCheck</code>) before calling
 any other gtk functions.
 Typically the program&rsquo;s command-line arguments will
 be passed to <code>gtk.Init</code>.</p>
@@ -100,12 +100,14 @@ be passed to <code>gtk.Init</code>.</p>
 <p>If an application has only one window,
 then it might terminate when the window is closed.</p>
 
-<pre><code class="language-go">window.Widget().ConnectDestroy(func() {
+<pre><code class="language-go">// Connect to the window's &quot;destroy&quot; signal.
+window.Widget().ConnectDestroy(func() {
     gtk.MainQuit()
 })
 </code></pre>
 
-<p>This may be written more succinctly, like this.</p>
+<p>As the callback&rsquo;s signature matches that of <code>gtk.MainQuit</code>,
+this may be written more succinctly like this.</p>
 
 <pre><code class="language-go">window.Widget().ConnectDestroy(gtk.MainQuit)
 </code></pre>

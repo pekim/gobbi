@@ -43,9 +43,6 @@
                 <a href="goroutines.html">Goroutines</a>
             </li>
             <li>
-                <a href="gvalue.html">gobject.Value</a>
-            </li>
-            <li>
                 <a href="casting.html">Casting</a>
             </li>
             <li>
@@ -53,6 +50,9 @@
             </li>
             <li>
                 <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
             </li>
             <li>
                 <a href="reference-counting.html">Reference counting</a>
@@ -69,7 +69,7 @@
                 <p>gobbi uses Go
 <a href="https://golang.org/pkg/go/build/#hdr-Build_Constraints">build tags</a>
 to allow targetting of specific library versions.
-This means that when using Go build tools
+This means that when using Go tools
 (such as <code>go build</code> and <code>go run</code>)
 to build a gobbi application,
 use of the <code>-tags</code> flag will usually be necessary.</p>
@@ -95,6 +95,14 @@ use a tag constructed from the library name and the version.</p>
 is only available from gtk 3.10 onwards.
 So to use it, a tag specifying 3.10 (or a later version)
 is required.</p>
+
+<p>A tag such as <code>gtk_3.10</code> is formed of three parts.</p>
+
+<ul>
+<li>the library name, <code>gtk</code></li>
+<li>an underscore, <code>_</code></li>
+<li>the minimum library version, <code>3.10</code></li>
+</ul>
 
 <pre><code class="language-bash">go build -tags gtk_3.10 my_app.go
 </code></pre>
@@ -126,10 +134,19 @@ tags that an application is to be built with.</p>
 <h3>goland</h3>
 
 <p>In the <code>Settings...</code> dialog, the relevant setting can
-be found under
-- Go
-  - Vendoring &amp; Build Tags
-    - Custom tags</p>
+be found under</p>
+
+<ul>
+<li>Go
+
+<ul>
+<li>Vendoring &amp; Build Tags
+
+<ul>
+<li>Custom tags</li>
+</ul></li>
+</ul></li>
+</ul>
 
             </div>
         </div>

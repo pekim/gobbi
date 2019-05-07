@@ -1,4 +1,5 @@
-The gobject library's `GValue` type is represented by
+The gobject library's `GValue` type is represented
+in gobbi by
 `gobject.Value`.
 
 See the [list](https://github.com/pekim/gobbi/blob/master/example/list/main.go)
