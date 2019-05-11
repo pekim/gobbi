@@ -19,7 +19,8 @@ func generateLibraries() {
 	}
 
 	start := time.Now()
-	generate.FromRoot("Gtk", "3.0", noFormat)
+	//generate.FromRoot("Gtk", "3.0", noFormat)
+	generate.FromRoot("GtkSource", "3.0", noFormat)
 	generate.FromRoot("PangoCairo", "1.0", noFormat)
 	end := time.Now()
 
