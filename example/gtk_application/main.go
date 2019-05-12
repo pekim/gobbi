@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/pekim/gobbi/lib/gio"
+	"github.com/pekim/gobbi/lib/glib"
 	"github.com/pekim/gobbi/lib/gtk"
 	"os"
 	"runtime"
@@ -52,7 +53,9 @@ func createWindow(app *gtk.Application, windowNumber int) {
 
 	button := gtk.ButtonNewWithLabel("click, to create new window")
 	button.ConnectClicked(func() {
-		createWindow(app, windowNumber+1)
+		glib.IdleAddOnce(func() {
+			createWindow(app, windowNumber+1)
+		})
 	})
 	window.Container().Add(button.Widget())
 
