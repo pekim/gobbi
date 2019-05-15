@@ -8910,7 +8910,28 @@ func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 	return retGo
 }
 
-// Unsupported : g_file_info_get_attribute_data : unsupported parameter type : GFileAttributeType* with indirection level of 1
+// GetAttributeData is a wrapper around the C function g_file_info_get_attribute_data.
+func (recv *FileInfo) GetAttributeData(attribute string) (bool, FileAttributeType, uintptr, FileAttributeStatus) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	var c_type C.GFileAttributeType
+
+	var c_value_pp C.gpointer
+
+	var c_status C.GFileAttributeStatus
+
+	retC := C.g_file_info_get_attribute_data((*C.GFileInfo)(recv.native), c_attribute, &c_type, &c_value_pp, &c_status)
+	retGo := retC == C.TRUE
+
+	type_ := (FileAttributeType)(c_type)
+
+	valuePp := (uintptr)(unsafe.Pointer(&c_value_pp))
+
+	status := (FileAttributeStatus)(c_status)
+
+	return retGo, type_, valuePp, status
+}
 
 // GetAttributeInt32 is a wrapper around the C function g_file_info_get_attribute_int32.
 func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {

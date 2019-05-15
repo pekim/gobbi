@@ -7915,7 +7915,33 @@ func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32
 	return
 }
 
-// Unsupported : gtk_box_query_child_packing : unsupported parameter pack_type : GtkPackType* with indirection level of 1
+// QueryChildPacking is a wrapper around the C function gtk_box_query_child_packing.
+func (recv *Box) QueryChildPacking(child *Widget) (bool, bool, uint32, PackType) {
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
+
+	var c_expand C.gboolean
+
+	var c_fill C.gboolean
+
+	var c_padding C.guint
+
+	var c_pack_type C.GtkPackType
+
+	C.gtk_box_query_child_packing((*C.GtkBox)(recv.native), c_child, &c_expand, &c_fill, &c_padding, &c_pack_type)
+
+	expand := c_expand == C.TRUE
+
+	fill := c_fill == C.TRUE
+
+	padding := (uint32)(c_padding)
+
+	packType := (PackType)(c_pack_type)
+
+	return expand, fill, padding, packType
+}
 
 // ReorderChild is a wrapper around the C function gtk_box_reorder_child.
 func (recv *Box) ReorderChild(child *Widget, position int32) {
@@ -24995,9 +25021,40 @@ func (recv *IconView) GetCursor() (bool, *TreePath, *CellRenderer) {
 	return retGo, path, cell
 }
 
-// Unsupported : gtk_icon_view_get_dest_item_at_pos : unsupported parameter pos : GtkIconViewDropPosition* with indirection level of 1
+// GetDestItemAtPos is a wrapper around the C function gtk_icon_view_get_dest_item_at_pos.
+func (recv *IconView) GetDestItemAtPos(dragX int32, dragY int32) (bool, *TreePath, IconViewDropPosition) {
+	c_drag_x := (C.gint)(dragX)
 
-// Unsupported : gtk_icon_view_get_drag_dest_item : unsupported parameter pos : GtkIconViewDropPosition* with indirection level of 1
+	c_drag_y := (C.gint)(dragY)
+
+	var c_path *C.GtkTreePath
+
+	var c_pos C.GtkIconViewDropPosition
+
+	retC := C.gtk_icon_view_get_dest_item_at_pos((*C.GtkIconView)(recv.native), c_drag_x, c_drag_y, &c_path, &c_pos)
+	retGo := retC == C.TRUE
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	pos := (IconViewDropPosition)(c_pos)
+
+	return retGo, path, pos
+}
+
+// GetDragDestItem is a wrapper around the C function gtk_icon_view_get_drag_dest_item.
+func (recv *IconView) GetDragDestItem() (*TreePath, IconViewDropPosition) {
+	var c_path *C.GtkTreePath
+
+	var c_pos C.GtkIconViewDropPosition
+
+	C.gtk_icon_view_get_drag_dest_item((*C.GtkIconView)(recv.native), &c_path, &c_pos)
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	pos := (IconViewDropPosition)(c_pos)
+
+	return path, pos
+}
 
 // GetItemAtPos is a wrapper around the C function gtk_icon_view_get_item_at_pos.
 func (recv *IconView) GetItemAtPos(x int32, y int32) (bool, *TreePath, *CellRenderer) {
@@ -40758,7 +40815,20 @@ func (recv *ScrolledWindow) GetPlacement() CornerType {
 	return retGo
 }
 
-// Unsupported : gtk_scrolled_window_get_policy : unsupported parameter hscrollbar_policy : GtkPolicyType* with indirection level of 1
+// GetPolicy is a wrapper around the C function gtk_scrolled_window_get_policy.
+func (recv *ScrolledWindow) GetPolicy() (PolicyType, PolicyType) {
+	var c_hscrollbar_policy C.GtkPolicyType
+
+	var c_vscrollbar_policy C.GtkPolicyType
+
+	C.gtk_scrolled_window_get_policy((*C.GtkScrolledWindow)(recv.native), &c_hscrollbar_policy, &c_vscrollbar_policy)
+
+	hscrollbarPolicy := (PolicyType)(c_hscrollbar_policy)
+
+	vscrollbarPolicy := (PolicyType)(c_vscrollbar_policy)
+
+	return hscrollbarPolicy, vscrollbarPolicy
+}
 
 // GetShadowType is a wrapper around the C function gtk_scrolled_window_get_shadow_type.
 func (recv *ScrolledWindow) GetShadowType() ShadowType {
@@ -43331,7 +43401,25 @@ func StatusIconPositionMenu(menu *Menu, x int32, y int32, userData *StatusIcon) 
 	return pushIn
 }
 
-// Unsupported : gtk_status_icon_get_geometry : unsupported parameter orientation : GtkOrientation* with indirection level of 1
+// GetGeometry is a wrapper around the C function gtk_status_icon_get_geometry.
+func (recv *StatusIcon) GetGeometry() (bool, *gdk.Screen, *gdk.Rectangle, Orientation) {
+	var c_screen *C.GdkScreen
+
+	var c_area C.GdkRectangle
+
+	var c_orientation C.GtkOrientation
+
+	retC := C.gtk_status_icon_get_geometry((*C.GtkStatusIcon)(recv.native), &c_screen, &c_area, &c_orientation)
+	retGo := retC == C.TRUE
+
+	screen := gdk.ScreenNewFromC(unsafe.Pointer(c_screen))
+
+	area := gdk.RectangleNewFromC(unsafe.Pointer(&c_area))
+
+	orientation := (Orientation)(c_orientation)
+
+	return retGo, screen, area, orientation
+}
 
 // GetGicon is a wrapper around the C function gtk_status_icon_get_gicon.
 func (recv *StatusIcon) GetGicon() *gio.Icon {
@@ -53879,9 +53967,40 @@ func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
 	return path, focusColumn
 }
 
-// Unsupported : gtk_tree_view_get_dest_row_at_pos : unsupported parameter pos : GtkTreeViewDropPosition* with indirection level of 1
+// GetDestRowAtPos is a wrapper around the C function gtk_tree_view_get_dest_row_at_pos.
+func (recv *TreeView) GetDestRowAtPos(dragX int32, dragY int32) (bool, *TreePath, TreeViewDropPosition) {
+	c_drag_x := (C.gint)(dragX)
 
-// Unsupported : gtk_tree_view_get_drag_dest_row : unsupported parameter pos : GtkTreeViewDropPosition* with indirection level of 1
+	c_drag_y := (C.gint)(dragY)
+
+	var c_path *C.GtkTreePath
+
+	var c_pos C.GtkTreeViewDropPosition
+
+	retC := C.gtk_tree_view_get_dest_row_at_pos((*C.GtkTreeView)(recv.native), c_drag_x, c_drag_y, &c_path, &c_pos)
+	retGo := retC == C.TRUE
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	pos := (TreeViewDropPosition)(c_pos)
+
+	return retGo, path, pos
+}
+
+// GetDragDestRow is a wrapper around the C function gtk_tree_view_get_drag_dest_row.
+func (recv *TreeView) GetDragDestRow() (*TreePath, TreeViewDropPosition) {
+	var c_path *C.GtkTreePath
+
+	var c_pos C.GtkTreeViewDropPosition
+
+	C.gtk_tree_view_get_drag_dest_row((*C.GtkTreeView)(recv.native), &c_path, &c_pos)
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	pos := (TreeViewDropPosition)(c_pos)
+
+	return path, pos
+}
 
 // GetEnableSearch is a wrapper around the C function gtk_tree_view_get_enable_search.
 func (recv *TreeView) GetEnableSearch() bool {
@@ -65405,7 +65524,23 @@ func AcceleratorName(acceleratorKey uint32, acceleratorMods gdk.ModifierType) st
 	return retGo
 }
 
-// Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
+// AcceleratorParse is a wrapper around the C function gtk_accelerator_parse.
+func AcceleratorParse(accelerator string) (uint32, gdk.ModifierType) {
+	c_accelerator := C.CString(accelerator)
+	defer C.free(unsafe.Pointer(c_accelerator))
+
+	var c_accelerator_key C.guint
+
+	var c_accelerator_mods C.GdkModifierType
+
+	C.gtk_accelerator_parse(c_accelerator, &c_accelerator_key, &c_accelerator_mods)
+
+	acceleratorKey := (uint32)(c_accelerator_key)
+
+	acceleratorMods := (gdk.ModifierType)(c_accelerator_mods)
+
+	return acceleratorKey, acceleratorMods
+}
 
 // AcceleratorSetDefaultModMask is a wrapper around the C function gtk_accelerator_set_default_mod_mask.
 func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
@@ -65692,7 +65827,17 @@ func GetCurrentEventDevice() *gdk.Device {
 	return retGo
 }
 
-// Unsupported : gtk_get_current_event_state : unsupported parameter state : GdkModifierType* with indirection level of 1
+// GetCurrentEventState is a wrapper around the C function gtk_get_current_event_state.
+func GetCurrentEventState() (bool, gdk.ModifierType) {
+	var c_state C.GdkModifierType
+
+	retC := C.gtk_get_current_event_state(&c_state)
+	retGo := retC == C.TRUE
+
+	state := (gdk.ModifierType)(c_state)
+
+	return retGo, state
+}
 
 // GetCurrentEventTime is a wrapper around the C function gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
@@ -66793,9 +66938,37 @@ func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color
 	return retGo, color
 }
 
-// Unsupported : gtk_rc_parse_priority : unsupported parameter priority : GtkPathPriorityType* with indirection level of 1
+// RcParsePriority is a wrapper around the C function gtk_rc_parse_priority.
+func RcParsePriority(scanner *glib.Scanner, priority PathPriorityType) uint32 {
+	c_scanner := (*C.GScanner)(C.NULL)
+	if scanner != nil {
+		c_scanner = (*C.GScanner)(scanner.ToC())
+	}
 
-// Unsupported : gtk_rc_parse_state : unsupported parameter state : GtkStateType* with indirection level of 1
+	c_priority := (C.GtkPathPriorityType)(priority)
+
+	retC := C.gtk_rc_parse_priority(c_scanner, &c_priority)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// RcParseState is a wrapper around the C function gtk_rc_parse_state.
+func RcParseState(scanner *glib.Scanner) (uint32, StateType) {
+	c_scanner := (*C.GScanner)(C.NULL)
+	if scanner != nil {
+		c_scanner = (*C.GScanner)(scanner.ToC())
+	}
+
+	var c_state C.GtkStateType
+
+	retC := C.gtk_rc_parse_state(c_scanner, &c_state)
+	retGo := (uint32)(retC)
+
+	state := (StateType)(c_state)
+
+	return retGo, state
+}
 
 // RcParseString is a wrapper around the C function gtk_rc_parse_string.
 func RcParseString(rcString string) {
@@ -71034,7 +71207,21 @@ func treesortable_sortColumnChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_tree_sortable_get_sort_column_id : unsupported parameter order : GtkSortType* with indirection level of 1
+// GetSortColumnId is a wrapper around the C function gtk_tree_sortable_get_sort_column_id.
+func (recv *TreeSortable) GetSortColumnId() (bool, int32, SortType) {
+	var c_sort_column_id C.gint
+
+	var c_order C.GtkSortType
+
+	retC := C.gtk_tree_sortable_get_sort_column_id((*C.GtkTreeSortable)(recv.native), &c_sort_column_id, &c_order)
+	retGo := retC == C.TRUE
+
+	sortColumnId := (int32)(c_sort_column_id)
+
+	order := (SortType)(c_order)
+
+	return retGo, sortColumnId, order
+}
 
 // HasDefaultSortFunc is a wrapper around the C function gtk_tree_sortable_has_default_sort_func.
 func (recv *TreeSortable) HasDefaultSortFunc() bool {

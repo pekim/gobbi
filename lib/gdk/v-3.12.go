@@ -965,7 +965,23 @@ func (recv *Device) GetHasCursor() bool {
 
 // Unsupported : gdk_device_get_history : unsupported parameter events : output array param events
 
-// Unsupported : gdk_device_get_key : unsupported parameter modifiers : GdkModifierType* with indirection level of 1
+// GetKey is a wrapper around the C function gdk_device_get_key.
+func (recv *Device) GetKey(index uint32) (bool, uint32, ModifierType) {
+	c_index_ := (C.guint)(index)
+
+	var c_keyval C.guint
+
+	var c_modifiers C.GdkModifierType
+
+	retC := C.gdk_device_get_key((*C.GdkDevice)(recv.native), c_index_, &c_keyval, &c_modifiers)
+	retGo := retC == C.TRUE
+
+	keyval := (uint32)(c_keyval)
+
+	modifiers := (ModifierType)(c_modifiers)
+
+	return retGo, keyval, modifiers
+}
 
 // GetLastEventWindow is a wrapper around the C function gdk_device_get_last_event_window.
 func (recv *Device) GetLastEventWindow() *Window {
@@ -1058,7 +1074,30 @@ func (recv *Device) GetSource() InputSource {
 	return retGo
 }
 
-// Unsupported : gdk_device_get_state : unsupported parameter mask : GdkModifierType* with indirection level of 1
+// GetState is a wrapper around the C function gdk_device_get_state.
+func (recv *Device) GetState(window *Window, axes []float64) ModifierType {
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
+
+	c_axes_array := make([]C.gdouble, len(axes)+1, len(axes)+1)
+	for i, item := range axes {
+		c := (C.gdouble)(item)
+		c_axes_array[i] = c
+	}
+	c_axes_array[len(axes)] = 0
+	c_axes_arrayPtr := &c_axes_array[0]
+	c_axes := (*C.gdouble)(unsafe.Pointer(c_axes_arrayPtr))
+
+	var c_mask C.GdkModifierType
+
+	C.gdk_device_get_state((*C.GdkDevice)(recv.native), c_window, c_axes, &c_mask)
+
+	mask := (ModifierType)(c_mask)
+
+	return mask
+}
 
 // GetWindowAtPosition is a wrapper around the C function gdk_device_get_window_at_position.
 func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
@@ -1796,7 +1835,28 @@ func (recv *Display) GetName() string {
 	return retGo
 }
 
-// Unsupported : gdk_display_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
+// GetPointer is a wrapper around the C function gdk_display_get_pointer.
+func (recv *Display) GetPointer() (*Screen, int32, int32, ModifierType) {
+	var c_screen *C.GdkScreen
+
+	var c_x C.gint
+
+	var c_y C.gint
+
+	var c_mask C.GdkModifierType
+
+	C.gdk_display_get_pointer((*C.GdkDisplay)(recv.native), &c_screen, &c_x, &c_y, &c_mask)
+
+	screen := ScreenNewFromC(unsafe.Pointer(c_screen))
+
+	x := (int32)(c_x)
+
+	y := (int32)(c_y)
+
+	mask := (ModifierType)(c_mask)
+
+	return screen, x, y, mask
+}
 
 // GetScreen is a wrapper around the C function gdk_display_get_screen.
 func (recv *Display) GetScreen(screenNum int32) *Screen {
@@ -3148,7 +3208,14 @@ func KeymapGetForDisplay(display *Display) *Keymap {
 	return retGo
 }
 
-// Unsupported : gdk_keymap_add_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
+// AddVirtualModifiers is a wrapper around the C function gdk_keymap_add_virtual_modifiers.
+func (recv *Keymap) AddVirtualModifiers(state ModifierType) {
+	c_state := (C.GdkModifierType)(state)
+
+	C.gdk_keymap_add_virtual_modifiers((*C.GdkKeymap)(recv.native), &c_state)
+
+	return
+}
 
 // GetCapsLockState is a wrapper around the C function gdk_keymap_get_caps_lock_state.
 func (recv *Keymap) GetCapsLockState() bool {
@@ -3217,9 +3284,45 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	return retGo
 }
 
-// Unsupported : gdk_keymap_map_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
+// MapVirtualModifiers is a wrapper around the C function gdk_keymap_map_virtual_modifiers.
+func (recv *Keymap) MapVirtualModifiers(state ModifierType) bool {
+	c_state := (C.GdkModifierType)(state)
 
-// Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
+	retC := C.gdk_keymap_map_virtual_modifiers((*C.GdkKeymap)(recv.native), &c_state)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// TranslateKeyboardState is a wrapper around the C function gdk_keymap_translate_keyboard_state.
+func (recv *Keymap) TranslateKeyboardState(hardwareKeycode uint32, state ModifierType, group int32) (bool, uint32, int32, int32, ModifierType) {
+	c_hardware_keycode := (C.guint)(hardwareKeycode)
+
+	c_state := (C.GdkModifierType)(state)
+
+	c_group := (C.gint)(group)
+
+	var c_keyval C.guint
+
+	var c_effective_group C.gint
+
+	var c_level C.gint
+
+	var c_consumed_modifiers C.GdkModifierType
+
+	retC := C.gdk_keymap_translate_keyboard_state((*C.GdkKeymap)(recv.native), c_hardware_keycode, c_state, c_group, &c_keyval, &c_effective_group, &c_level, &c_consumed_modifiers)
+	retGo := retC == C.TRUE
+
+	keyval := (uint32)(c_keyval)
+
+	effectiveGroup := (int32)(c_effective_group)
+
+	level := (int32)(c_level)
+
+	consumedModifiers := (ModifierType)(c_consumed_modifiers)
+
+	return retGo, keyval, effectiveGroup, level, consumedModifiers
+}
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
@@ -4627,7 +4730,17 @@ func (recv *Window) GetCursor() *Cursor {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_decorations : unsupported parameter decorations : GdkWMDecoration* with indirection level of 1
+// GetDecorations is a wrapper around the C function gdk_window_get_decorations.
+func (recv *Window) GetDecorations() (bool, WMDecoration) {
+	var c_decorations C.GdkWMDecoration
+
+	retC := C.gdk_window_get_decorations((*C.GdkWindow)(recv.native), &c_decorations)
+	retGo := retC == C.TRUE
+
+	decorations := (WMDecoration)(c_decorations)
+
+	return retGo, decorations
+}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
@@ -4660,9 +4773,65 @@ func (recv *Window) GetDeviceEvents(device *Device) EventMask {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_device_position : unsupported parameter mask : GdkModifierType* with indirection level of 1
+// GetDevicePosition is a wrapper around the C function gdk_window_get_device_position.
+func (recv *Window) GetDevicePosition(device *Device) (*Window, int32, int32, ModifierType) {
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
-// Unsupported : gdk_window_get_device_position_double : unsupported parameter mask : GdkModifierType* with indirection level of 1
+	var c_x C.gint
+
+	var c_y C.gint
+
+	var c_mask C.GdkModifierType
+
+	retC := C.gdk_window_get_device_position((*C.GdkWindow)(recv.native), c_device, &c_x, &c_y, &c_mask)
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
+
+	x := (int32)(c_x)
+
+	y := (int32)(c_y)
+
+	mask := (ModifierType)(c_mask)
+
+	return retGo, x, y, mask
+}
+
+// GetDevicePositionDouble is a wrapper around the C function gdk_window_get_device_position_double.
+func (recv *Window) GetDevicePositionDouble(device *Device) (*Window, float64, float64, ModifierType) {
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
+
+	var c_x C.gdouble
+
+	var c_y C.gdouble
+
+	var c_mask C.GdkModifierType
+
+	retC := C.gdk_window_get_device_position_double((*C.GdkWindow)(recv.native), c_device, &c_x, &c_y, &c_mask)
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
+
+	x := (float64)(c_x)
+
+	y := (float64)(c_y)
+
+	mask := (ModifierType)(c_mask)
+
+	return retGo, x, y, mask
+}
 
 // GetDisplay is a wrapper around the C function gdk_window_get_display.
 func (recv *Window) GetDisplay() *Display {
@@ -4822,7 +4991,30 @@ func (recv *Window) GetParent() *Window {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
+// GetPointer is a wrapper around the C function gdk_window_get_pointer.
+func (recv *Window) GetPointer() (*Window, int32, int32, ModifierType) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	var c_mask C.GdkModifierType
+
+	retC := C.gdk_window_get_pointer((*C.GdkWindow)(recv.native), &c_x, &c_y, &c_mask)
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
+
+	x := (int32)(c_x)
+
+	y := (int32)(c_y)
+
+	mask := (ModifierType)(c_mask)
+
+	return retGo, x, y, mask
+}
 
 // GetPosition is a wrapper around the C function gdk_window_get_position.
 func (recv *Window) GetPosition() (int32, int32) {
@@ -8721,7 +8913,39 @@ func DragDropSucceeded(context *DragContext) bool {
 	return retGo
 }
 
-// Unsupported : gdk_drag_find_window_for_screen : unsupported parameter protocol : GdkDragProtocol* with indirection level of 1
+// DragFindWindowForScreen is a wrapper around the C function gdk_drag_find_window_for_screen.
+func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int32, yRoot int32) (*Window, DragProtocol) {
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
+
+	c_drag_window := (*C.GdkWindow)(C.NULL)
+	if dragWindow != nil {
+		c_drag_window = (*C.GdkWindow)(dragWindow.ToC())
+	}
+
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	c_x_root := (C.gint)(xRoot)
+
+	c_y_root := (C.gint)(yRoot)
+
+	var c_dest_window *C.GdkWindow
+
+	var c_protocol C.GdkDragProtocol
+
+	C.gdk_drag_find_window_for_screen(c_context, c_drag_window, c_screen, c_x_root, c_y_root, &c_dest_window, &c_protocol)
+
+	destWindow := WindowNewFromC(unsafe.Pointer(c_dest_window))
+
+	protocol := (DragProtocol)(c_protocol)
+
+	return destWindow, protocol
+}
 
 // DragGetSelection is a wrapper around the C function gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) Atom {

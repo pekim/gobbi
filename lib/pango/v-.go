@@ -1738,13 +1738,77 @@ func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *Attr
 	return retGo, attrList, text, accelChar, goError
 }
 
-// Unsupported : pango_parse_stretch : unsupported parameter stretch : PangoStretch* with indirection level of 1
+// ParseStretch is a wrapper around the C function pango_parse_stretch.
+func ParseStretch(str string, warn bool) (bool, Stretch) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : pango_parse_style : unsupported parameter style : PangoStyle* with indirection level of 1
+	var c_stretch C.PangoStretch
 
-// Unsupported : pango_parse_variant : unsupported parameter variant : PangoVariant* with indirection level of 1
+	c_warn :=
+		boolToGboolean(warn)
 
-// Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
+	retC := C.pango_parse_stretch(c_str, &c_stretch, c_warn)
+	retGo := retC == C.TRUE
+
+	stretch := (Stretch)(c_stretch)
+
+	return retGo, stretch
+}
+
+// ParseStyle is a wrapper around the C function pango_parse_style.
+func ParseStyle(str string, warn bool) (bool, Style) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	var c_style C.PangoStyle
+
+	c_warn :=
+		boolToGboolean(warn)
+
+	retC := C.pango_parse_style(c_str, &c_style, c_warn)
+	retGo := retC == C.TRUE
+
+	style := (Style)(c_style)
+
+	return retGo, style
+}
+
+// ParseVariant is a wrapper around the C function pango_parse_variant.
+func ParseVariant(str string, warn bool) (bool, Variant) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	var c_variant C.PangoVariant
+
+	c_warn :=
+		boolToGboolean(warn)
+
+	retC := C.pango_parse_variant(c_str, &c_variant, c_warn)
+	retGo := retC == C.TRUE
+
+	variant := (Variant)(c_variant)
+
+	return retGo, variant
+}
+
+// ParseWeight is a wrapper around the C function pango_parse_weight.
+func ParseWeight(str string, warn bool) (bool, Weight) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	var c_weight C.PangoWeight
+
+	c_warn :=
+		boolToGboolean(warn)
+
+	retC := C.pango_parse_weight(c_str, &c_weight, c_warn)
+	retGo := retC == C.TRUE
+
+	weight := (Weight)(c_weight)
+
+	return retGo, weight
+}
 
 // Blacklisted : pango_read_line
 
@@ -3737,7 +3801,22 @@ func (recv *TabArray) GetSize() int32 {
 	return retGo
 }
 
-// Unsupported : pango_tab_array_get_tab : unsupported parameter alignment : PangoTabAlign* with indirection level of 1
+// GetTab is a wrapper around the C function pango_tab_array_get_tab.
+func (recv *TabArray) GetTab(tabIndex int32) (TabAlign, int32) {
+	c_tab_index := (C.gint)(tabIndex)
+
+	var c_alignment C.PangoTabAlign
+
+	var c_location C.gint
+
+	C.pango_tab_array_get_tab((*C.PangoTabArray)(recv.native), c_tab_index, &c_alignment, &c_location)
+
+	alignment := (TabAlign)(c_alignment)
+
+	location := (int32)(c_location)
+
+	return alignment, location
+}
 
 // Unsupported : pango_tab_array_get_tabs : unsupported parameter alignments : PangoTabAlign** with indirection level of 2
 

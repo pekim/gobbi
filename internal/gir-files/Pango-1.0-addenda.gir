@@ -30,6 +30,7 @@
     <function blacklist="true" c:identifier="pango_get_lib_subdirectory"/>
     <function blacklist="true" c:identifier="pango_get_sysconf_subdirectory"/>
     <function blacklist="true" c:identifier="pango_read_line"/>
+    <function blacklist="true" c:identifier="pango_log2vis_get_embedding_levels"/>
 
     <record name="FontMetrics">
       <constructor blacklist="true" c:identifier="pango_font_metrics_new"/>

@@ -19,7 +19,7 @@ func TypeGeneratorEnumerationNew(typ *Type, enum *Enumeration) *TypeGeneratorEnu
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsParam(direction string) (supported bool, reason string) {
-	if t.typ.indirectLevel > 0 {
+	if t.typ.indirectLevel > 1 {
 		return false, fmt.Sprintf("%s with indirection level of %d",
 			t.typ.CType, t.typ.indirectLevel)
 	}
@@ -76,14 +76,26 @@ func (t *TypeGeneratorEnumeration) generateDeclarationC(g *jen.Group, cVarName s
 }
 
 func (t *TypeGeneratorEnumeration) generateParamCallArgument(g *jen.Group, cVarName string) {
-	g.Id(cVarName)
+	g.
+		Do(func(s *jen.Statement) {
+			if t.typ.indirectLevel == 1 {
+				s.Op("&")
+			}
+		}).
+		Id(cVarName)
+}
+
+func (t *TypeGeneratorEnumeration) generateParamOutCallArgument(g *jen.Group, cVarName string) {
+	g.
+		Op("&").
+		Id(cVarName)
 }
 
 func (t *TypeGeneratorEnumeration) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
 		Id(cVarName).
 		Op(":=").
-		Parens(jen.Qual("C", t.typ.CType)).
+		Parens(jen.Qual("C", t.typ.cTypeName)).
 		Parens(jen.Id(goVarName))
 }
 
@@ -99,7 +111,7 @@ func (t *TypeGeneratorEnumeration) generateParamOutCVar(g *jen.Group, cVarName s
 	g.
 		Var().
 		Id(cVarName).
-		Qual("C", t.typ.CType)
+		Qual("C", t.typ.cTypeName)
 }
 
 func (t *TypeGeneratorEnumeration) generateReturnFunctionDeclaration(g *jen.Group) {
@@ -115,13 +127,39 @@ func (t *TypeGeneratorEnumeration) generateReturnCToGo(g *jen.Group, isParam boo
 		Id(goVarName).
 		Op(":=").
 		Parens(jen.Do(t.typ.qname.generate)).
-		Parens(jen.Id(cVarName))
+		Parens(jen.Do(func(s *jen.Statement) {
+			if t.typ.Name == "gpointer" {
+				s.
+					Qual("unsafe", "Pointer").
+					CallFunc(func(g *jen.Group) {
+						if t.typ.indirectLevel == 1 {
+							g.
+								Op("&").
+								Id(cVarName)
+						} else {
+							g.Id(cVarName)
+						}
+					})
+			} else {
+				s.Id(cVarName)
+			}
+		}))
 }
 
 func (t *TypeGeneratorEnumeration) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
 	return jen.
-		Parens(jen.Do(t.typ.qname.generate)).
-		Params(cVarReference)
+		Parens(jen.Do(func(s *jen.Statement) {
+			if t.typ.indirectLevel == 1 {
+				s.Op("*")
+			}
+			t.typ.qname.generate(s)
+		})).
+		Parens(jen.Do(func(s *jen.Statement) {
+			if t.typ.indirectLevel == 1 {
+				s.Op("&")
+			}
+			s.Add(cVarReference)
+		}))
 }
 
 func (t *TypeGeneratorEnumeration) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
