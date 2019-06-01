@@ -4,6 +4,8 @@
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
+  <include name="GObject" version="2.0"/>
+
   <!-- required header files -->
   <c:include name="glib/gstdio.h"/>
   <c:include name="glib-unix.h"/>
