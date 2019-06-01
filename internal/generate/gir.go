@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"sort"
 )
 
 type Gir struct {
@@ -14,17 +13,8 @@ type Gir struct {
 }
 
 func FromRoot(name, version string, noFormat bool) {
-	girs := girNewRoot(name, version)
-
-	for _, gir := range girs {
-		gir.repo.Namespace.noFormat = noFormat
-		gir.generate()
-	}
-}
-
-func girNewRoot(name string, version string) []*Gir {
 	girsMap := map[string]*Gir{}
-	girNew(name, version, girsMap)
+	gir := girNew(name, version, girsMap)
 
 	// create a map of namespaces
 	nn := make(map[string]*Namespace)
@@ -44,23 +34,42 @@ func girNewRoot(name string, version string) []*Gir {
 		ns.repo.Init()
 	}
 
-	girs := []*Gir{}
-	for _, gir := range girsMap {
-		girs = append(girs, gir)
+	gir.repo.Namespace.noFormat = noFormat
+	if gir.repo.Namespace.Name == name && gir.repo.Namespace.Version == version {
+		gir.generate()
 	}
-	sort.Slice(girs, func(i, j int) bool {
-		return girs[i].repo.Namespace.goPackageName <
-			girs[j].repo.Namespace.goPackageName
-	})
-
-	return girs
 }
 
-func girNew(name string, version string, girs map[string]*Gir) {
+func girNewRoot(name string, version string) *Gir {
+	girsMap := map[string]*Gir{}
+	gir := girNew(name, version, girsMap)
+
+	// create a map of namespaces
+	nn := make(map[string]*Namespace)
+	for _, g := range girsMap {
+		ns := g.repo.Namespace
+		ns.repo = g.repo
+		nn[ns.Name] = ns
+	}
+
+	// make all namespaces available all namespaces
+	for _, ns := range nn {
+		ns.namespaces = nn
+	}
+
+	// initialise each namespace
+	for _, ns := range nn {
+		ns.repo.Init()
+	}
+
+	return gir
+}
+
+func girNew(name string, version string, girs map[string]*Gir) *Gir {
 	fullname := name + "-" + version
 
-	if _, haveGir := girs[fullname]; haveGir {
-		return
+	if gir, haveGir := girs[fullname]; haveGir {
+		return gir
 	}
 
 	g := &Gir{}
@@ -74,7 +83,7 @@ func girNew(name string, version string, girs map[string]*Gir) {
 		girNew(i.Name, i.Version, girs)
 	}
 
-	return
+	return g
 }
 
 func (g *Gir) generate() {
