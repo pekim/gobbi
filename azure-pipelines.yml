@@ -21,7 +21,7 @@ steps:
         libgtksourceview-3.0-dev \
         libpango1.0-dev \
         xvfb
-    displayName: 'Install dependencies'
+    displayName: 'install dependencies'
 
   - script: |
       mkdir -p '$(GOBIN)'
@@ -32,11 +32,14 @@ steps:
       mv !(gopath) '$(modulePath)'
       echo '##vso[task.prependpath]$(GOBIN)'
       echo '##vso[task.prependpath]$(GOROOT)/bin'
-    displayName: 'Set up Go workspace'
+    displayName: 'set up Go workspace'
 
   - script: |
-      go version
-      go get -v -t -d ./...
-      xvfb-run ./gobbi build
+      ./gobbi generate
     workingDirectory: '$(modulePath)'
-    displayName: 'Generate and test'
+    displayName: 'generate'
+
+  - script: |
+      xvfb-run ./gobbi test
+    workingDirectory: '$(modulePath)'
+    displayName: 'test'
