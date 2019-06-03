@@ -28,6 +28,7 @@ var pages = []Page{
 	Page{File: "variadic-functions", Title: "Variadic functions"},
 	Page{File: "gvalue", Title: "gobject.Value"},
 	Page{File: "reference-counting", Title: "Reference counting"},
+	Page{File: "subclassing", Title: "Subclassing"},
 	Page{File: "api", Title: "API docs"},
 }
 

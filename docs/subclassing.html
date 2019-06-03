@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <title>gobject.Value - gobbi</title>
+        <title>Subclassing - gobbi</title>
 
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="idea.css">
@@ -68,13 +68,54 @@
 
 
             <div class="content">
-                <h1>gobject.Value</h1>
-                <p>The gobject library&rsquo;s <code>GValue</code> type is represented
-in gobbi by
-<code>gobject.Value</code>.</p>
+                <h1>Subclassing</h1>
+                <p>There is no direct support in gobbi for subclassing
+GObject derived classes
+or for implementing interfaces.
+Following exploration and the production of a
+proof of concept for class derivation,
+it became apparent that an awful lots of work
+would have to be put it for a fairly small reward.
+Lots more generation code would have to be written,
+and many tens of thousands of new lines of code
+would be generated.
+And even then there would likely be many
+cases not covered.</p>
 
-<p>See the <a href="https://github.com/pekim/gobbi/blob/master/example/list/main.go">list</a>
-example for an example of its use.</p>
+<p>Deriving classes, implementing interfaces,
+and implementing virtual functions are
+unlikely to be particularly common activities
+in gobbi based applications.
+So for now at least adding support to make this
+easy has been put to one side.</p>
+
+<h2>example</h2>
+
+<p>Instead of providing direct support in gobbi, a
+<a href="https://github.com/pekim/gobbi/blob/master/example/subclass-drawingarea">subclassing</a>
+example is provided.
+This illustrates how the DrawingAreas widget
+can be subclassed, some virtual functions implemented.</p>
+
+<h2>pre-requisites</h2>
+
+<p>For the most part using gobbi does not require
+a detailed knowledge C or gobject.
+With some familiarity with Go, Gtk and perhaps
+a passing knowledge of cgo,
+it should be possible to write an application
+with gobbi.</p>
+
+<p>However subclassing and the implementation of
+virtual functions will require a bit
+more knowledge.</p>
+
+<ul>
+<li>comfort with Go</li>
+<li>familiarity with C</li>
+<li>familiarity with cgo</li>
+<li>an understanding of the <a href="https://developer.gnome.org/gobject/stable/chapter-gobject.html">gobject base class</a></li>
+</ul>
 
             </div>
         </div>
