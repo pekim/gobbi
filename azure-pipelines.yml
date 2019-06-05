@@ -2,9 +2,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-#  GOBIN:  '$(GOPATH)/bin' # Go binaries path
-#  GOROOT: '/usr/local/go1.12.1' # Go installation path
-#  GOPATH: '$(system.defaultWorkingDirectory)/gopath' # Go workspace path
   GO111MODULE: 'on'
   modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
 
@@ -20,13 +17,9 @@ steps:
         xvfb
     displayName: 'install dependencies'
 
-  # Go Tool Installer
-  # Finds or downloads a specific version of Go in the tools cache and adds it to the PATH. Use this to set the version of Go used in subsequent tasks.
   - task: GoTool@0
     inputs:
       version: '1.12.5'
-      #goPath: # Optional
-      #goBin: # Optional
     displayName: 'install Go'
 
   - script: |
