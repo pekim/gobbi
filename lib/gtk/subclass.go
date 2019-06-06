@@ -18,21 +18,25 @@ import (
 	"unsafe"
 )
 
-type WidgetDrawFunc func(widget *Widget, cr *cairo.Context) bool
-
-type WidgetVirtualFunctions struct {
-	draw WidgetDrawFunc
+type WidgetVirtualDraw interface {
+	Draw(widget *Widget, cr *cairo.Context) bool
 }
 
-type WidgetDerived struct {
-	virtualFunctions WidgetVirtualFunctions
+//type WidgetVirtualFunctions struct {
+//	draw WidgetDrawFunc
+//}
+
+type WidgetDerivedClass struct {
+	name  string
+	gtype C.GType
+	new   func() WidgetDerivedInitializer
 }
 
-func WidgetDerive(name string, virtualFunctions WidgetVirtualFunctions) *WidgetDerived {
-	derived := &WidgetDerived{
-		virtualFunctions: virtualFunctions,
-	}
+type WidgetDerivedInitializer interface {
+	Init()
+}
 
+func WidgetDerive(name string, new func() WidgetDerivedInitializer) *WidgetDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkWidgetClass
 	typeInfo.instance_size = C.sizeof_GtkWidget
@@ -40,9 +44,25 @@ func WidgetDerive(name string, virtualFunctions WidgetVirtualFunctions) *WidgetD
 	cTypeName := C.CString(name)
 	defer C.free(unsafe.Pointer(cTypeName))
 
-	//fmt.Println(typeInfo)
 	gtype := C.g_type_register_static(C.GTK_TYPE_WIDGET, cTypeName, &typeInfo, 0)
-	fmt.Println(gtype)
 
-	return derived
+	class := &WidgetDerivedClass{
+		name:  name,
+		gtype: gtype,
+		new:   new,
+	}
+
+	return class
+}
+
+func (c *WidgetDerivedClass) New() interface{} {
+	instance := c.new()
+
+	fmt.Println(c.gtype)
+	object := C.g_object_newv(c.gtype, 0, nil)
+	fmt.Println(object)
+
+	instance.Init()
+
+	return instance
 }

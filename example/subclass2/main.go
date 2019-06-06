@@ -2,15 +2,25 @@ package main
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 )
 
+type MyWidget struct {
+}
+
+func (w *MyWidget) Init() {
+	fmt.Println("my widget init")
+}
+
 func main() {
 	//sc.SubclassCreate()
-	gobject.SubclassCreate()
-	gobject.FfiClosure()
+	//gobject.SubclassCreate()
+	//gobject.FfiClosure()
 
-	derived := gtk.WidgetDerive("test_widget", gtk.WidgetVirtualFunctions{})
-	fmt.Println(derived)
+	class := gtk.WidgetDerive("test_widget", func() gtk.WidgetDerivedInitializer {
+		return &MyWidget{}
+	})
+	fmt.Println(class)
+
+	class.New()
 }
