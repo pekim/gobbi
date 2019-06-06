@@ -10,7 +10,7 @@ type MyWidget struct {
 	instance *gtk.WidgetDerived
 }
 
-func (w *MyWidget) Draw(widget *gtk.Widget, cr *cairo.Context) bool {
+func (w *MyWidget) Draw(cr *cairo.Context) bool {
 	fmt.Println("draw!")
 	return true
 }

@@ -19,7 +19,7 @@ import (
 )
 
 type WidgetVirtualDraw interface {
-	Draw(widget *Widget, cr *cairo.Context) bool
+	Draw(cr *cairo.Context) bool
 }
 
 //type WidgetVirtualFunctions struct {
@@ -55,8 +55,9 @@ func WidgetDerive(name string) *WidgetDerivedClass {
 }
 
 func (c *WidgetDerivedClass) New(virtualFunctions interface{}) *WidgetDerived {
-	_, ok := virtualFunctions.(WidgetVirtualDraw)
+	f, ok := virtualFunctions.(WidgetVirtualDraw)
 	fmt.Println("draw func :", ok)
+	f.Draw(nil)
 
 	native := (*C.GtkWidget)(C.g_object_newv(c.gtype, 0, nil))
 
