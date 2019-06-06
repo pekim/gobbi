@@ -13,6 +13,8 @@ func (w *MyWidget) Init() {
 }
 
 func main() {
+	gtk.Init([]string{})
+
 	//sc.SubclassCreate()
 	//gobject.SubclassCreate()
 	//gobject.FfiClosure()

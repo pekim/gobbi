@@ -58,7 +58,6 @@ func WidgetDerive(name string, new func() WidgetDerivedInitializer) *WidgetDeriv
 func (c *WidgetDerivedClass) New() interface{} {
 	instance := c.new()
 
-	fmt.Println(c.gtype)
 	object := C.g_object_newv(c.gtype, 0, nil)
 	fmt.Println(object)
 
