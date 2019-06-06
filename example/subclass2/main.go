@@ -6,6 +6,7 @@ import (
 )
 
 type MyWidget struct {
+	instance *gtk.WidgetDerived
 }
 
 func (w *MyWidget) Init() {
@@ -19,10 +20,14 @@ func main() {
 	//gobject.SubclassCreate()
 	//gobject.FfiClosure()
 
-	class := gtk.WidgetDerive("test_widget", func() gtk.WidgetDerivedInitializer {
-		return &MyWidget{}
-	})
+	class := gtk.WidgetDerive("test_widget")
 	fmt.Println(class)
 
-	class.New()
+	myWidget := MyWidget{}
+	myWidget.instance = class.New(&myWidget)
+
+	fmt.Println(myWidget)
+	//fmt.Println(myw.Widget().IsVisible())
+	//myw.Widget().SetVisible(true)
+	//fmt.Println(myw.Widget().IsVisible())
 }

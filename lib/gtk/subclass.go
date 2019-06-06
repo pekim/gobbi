@@ -13,7 +13,6 @@ gboolean widget_vf_draw(GtkWidget *widget, cairo_t *cr) {
 import "C"
 
 import (
-	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
 	"unsafe"
 )
@@ -29,14 +28,14 @@ type WidgetVirtualDraw interface {
 type WidgetDerivedClass struct {
 	name  string
 	gtype C.GType
-	new   func() WidgetDerivedInitializer
 }
 
-type WidgetDerivedInitializer interface {
-	Init()
+type WidgetDerived struct {
+	class  *WidgetDerivedClass
+	native *C.GtkWidget
 }
 
-func WidgetDerive(name string, new func() WidgetDerivedInitializer) *WidgetDerivedClass {
+func WidgetDerive(name string) *WidgetDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkWidgetClass
 	typeInfo.instance_size = C.sizeof_GtkWidget
@@ -49,19 +48,24 @@ func WidgetDerive(name string, new func() WidgetDerivedInitializer) *WidgetDeriv
 	class := &WidgetDerivedClass{
 		name:  name,
 		gtype: gtype,
-		new:   new,
 	}
 
 	return class
 }
 
-func (c *WidgetDerivedClass) New() interface{} {
-	instance := c.new()
+func (c *WidgetDerivedClass) New(virtualFunctions interface{}) *WidgetDerived {
+	native := (*C.GtkWidget)(C.g_object_newv(c.gtype, 0, nil))
 
-	object := C.g_object_newv(c.gtype, 0, nil)
-	fmt.Println(object)
-
-	instance.Init()
+	instance := &WidgetDerived{
+		class:  c,
+		native: native,
+	}
 
 	return instance
+}
+
+// Widget upcasts to *Widget
+func (recv *WidgetDerived) Widget() *Widget {
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
+
 }
