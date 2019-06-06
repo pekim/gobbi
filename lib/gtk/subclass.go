@@ -6,7 +6,13 @@ package gtk
 #include <stdlib.h>
 
 gboolean widget_vf_draw(GtkWidget *widget, cairo_t *cr) {
+	printf("C draw\n");
 	return TRUE;
+}
+
+void widget_class_init(GtkWidgetClass g_class, gpointer class_data) {
+	g_class.draw = widget_vf_draw;
+	printf("class init\n");
 }
 
 */
@@ -40,6 +46,7 @@ func WidgetDerive(name string) *WidgetDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkWidgetClass
 	typeInfo.instance_size = C.sizeof_GtkWidget
+	typeInfo.class_init = C.GClassInitFunc(C.widget_class_init)
 
 	cTypeName := C.CString(name)
 	defer C.free(unsafe.Pointer(cTypeName))
