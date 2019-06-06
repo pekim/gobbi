@@ -13,6 +13,7 @@ gboolean widget_vf_draw(GtkWidget *widget, cairo_t *cr) {
 import "C"
 
 import (
+	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
 	"unsafe"
 )
@@ -54,6 +55,9 @@ func WidgetDerive(name string) *WidgetDerivedClass {
 }
 
 func (c *WidgetDerivedClass) New(virtualFunctions interface{}) *WidgetDerived {
+	_, ok := virtualFunctions.(WidgetVirtualDraw)
+	fmt.Println("draw func :", ok)
+
 	native := (*C.GtkWidget)(C.g_object_newv(c.gtype, 0, nil))
 
 	instance := &WidgetDerived{

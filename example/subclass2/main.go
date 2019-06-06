@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gtk"
 )
 
@@ -9,8 +10,9 @@ type MyWidget struct {
 	instance *gtk.WidgetDerived
 }
 
-func (w *MyWidget) Init() {
-	fmt.Println("my widget init")
+func (w *MyWidget) Draw(widget *gtk.Widget, cr *cairo.Context) bool {
+	fmt.Println("draw!")
+	return true
 }
 
 func main() {
