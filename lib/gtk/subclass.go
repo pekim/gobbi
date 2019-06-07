@@ -5,13 +5,34 @@ package gtk
 #include <gtk/gtkx.h>
 #include <stdlib.h>
 
-gboolean widget_vf_draw(GtkWidget *widget, cairo_t *cr) {
+gboolean widget_vf_draw(GtkEntry *widget, cairo_t *cr) {
 	printf("C draw\n");
 	return TRUE;
 }
 
-void widget_class_init(GtkWidgetClass g_class, gpointer class_data) {
-	g_class.draw = widget_vf_draw;
+void entry_vf_move_cursor(GtkEntry       *entry,
+			       GtkMovementStep       step,
+			       gint                  count,
+			       gboolean              extend_selection) {
+	printf("C move cursor\n");
+}
+
+void
+entry_vf_realize        (GtkEntry        *widget)
+{
+  //GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
+	gtk_widget_set_realized(widget, TRUE);
+}
+
+void widget_class_init(GtkEntryClass *g_class, gpointer class_data) {
+	//g_class.draw = widget_vf_draw;
+
+	GtkWidgetClass *widget_class;
+	widget_class = (GtkWidgetClass*) g_class;
+	widget_class->realize = entry_vf_realize;
+
+	g_class->move_cursor = entry_vf_move_cursor;
+
 	printf("class init\n");
 }
 
@@ -24,28 +45,28 @@ import (
 	"unsafe"
 )
 
-type WidgetVirtualDraw interface {
+type EntryVirtualDraw interface {
 	Draw(cr *cairo.Context) bool
 }
 
-//type WidgetVirtualFunctions struct {
-//	draw WidgetDrawFunc
+//type EntryVirtualFunctions struct {
+//	draw EntryDrawFunc
 //}
 
-type WidgetDerivedClass struct {
+type EntryDerivedClass struct {
 	name  string
 	gtype C.GType
 }
 
-type WidgetDerived struct {
-	class  *WidgetDerivedClass
-	native *C.GtkWidget
+type EntryDerived struct {
+	class  *EntryDerivedClass
+	native *C.GtkEntry
 }
 
-func WidgetDerive(name string) *WidgetDerivedClass {
+func EntryDerive(name string) *EntryDerivedClass {
 	var typeInfo C.GTypeInfo
-	typeInfo.class_size = C.sizeof_GtkWidgetClass
-	typeInfo.instance_size = C.sizeof_GtkWidget
+	typeInfo.class_size = C.sizeof_GtkEntryClass
+	typeInfo.instance_size = C.sizeof_GtkEntry
 	typeInfo.class_init = C.GClassInitFunc(C.widget_class_init)
 
 	cTypeName := C.CString(name)
@@ -53,7 +74,7 @@ func WidgetDerive(name string) *WidgetDerivedClass {
 
 	gtype := C.g_type_register_static(C.GTK_TYPE_WIDGET, cTypeName, &typeInfo, 0)
 
-	class := &WidgetDerivedClass{
+	class := &EntryDerivedClass{
 		name:  name,
 		gtype: gtype,
 	}
@@ -61,14 +82,14 @@ func WidgetDerive(name string) *WidgetDerivedClass {
 	return class
 }
 
-func (c *WidgetDerivedClass) New(virtualFunctions interface{}) *WidgetDerived {
-	f, ok := virtualFunctions.(WidgetVirtualDraw)
+func (c *EntryDerivedClass) New(virtualFunctions interface{}) *EntryDerived {
+	f, ok := virtualFunctions.(EntryVirtualDraw)
 	fmt.Println("draw func :", ok)
 	f.Draw(nil)
 
-	native := (*C.GtkWidget)(C.g_object_newv(c.gtype, 0, nil))
+	native := (*C.GtkEntry)(C.g_object_newv(c.gtype, 0, nil))
 
-	instance := &WidgetDerived{
+	instance := &EntryDerived{
 		class:  c,
 		native: native,
 	}
@@ -76,8 +97,8 @@ func (c *WidgetDerivedClass) New(virtualFunctions interface{}) *WidgetDerived {
 	return instance
 }
 
-// Widget upcasts to *Widget
-func (recv *WidgetDerived) Widget() *Widget {
-	return WidgetNewFromC(unsafe.Pointer(recv.native))
+// Entry upcasts to *Entry
+func (recv *EntryDerived) Entry() *Entry {
+	return EntryNewFromC(unsafe.Pointer(recv.native))
 
 }
