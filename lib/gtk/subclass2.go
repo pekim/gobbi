@@ -4,7 +4,6 @@ package gtk
 #include <gtk/gtk.h>
 #include <stdlib.h>
 
-void DrawingAreaDraw(GtkDrawingArea *widget, cairo_t *cr);
 void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
 */
 import "C"
@@ -76,9 +75,8 @@ func (recv *DrawingAreaDerived) DrawingArea() *DrawingArea {
 }
 
 //export DrawingAreaDraw
-func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) {
+func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
 	da := DrawingAreaNewFromC(unsafe.Pointer(daC))
-	fmt.Println(da)
 
 	widget := da.Widget()
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
@@ -104,4 +102,6 @@ func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) {
 
 	// fill the path (that describes a circle)
 	cr.Fill()
+
+	return C.FALSE
 }
