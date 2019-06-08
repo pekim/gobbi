@@ -8,7 +8,7 @@ import (
 )
 
 type MyWidget struct {
-	instance *gtk.EntryDerived
+	instance *gtk.DrawingAreaDerived
 }
 
 func (w *MyWidget) Draw(cr *cairo.Context) bool {
@@ -23,7 +23,7 @@ func main() {
 	//gobject.SubclassCreate()
 	//gobject.FfiClosure()
 
-	class := gtk.EntryDerive("test_widget")
+	class := gtk.DrawingAreaDerive("test_widget")
 	fmt.Println(class)
 
 	myWidget := MyWidget{}
@@ -33,7 +33,7 @@ func main() {
 	window.SetTitle("A window title")
 	window.SetDefaultSize(300, 300)
 
-	window.Container().Add(myWidget.instance.Entry().Widget())
+	window.Container().Add(myWidget.instance.DrawingArea().Widget())
 	window.Widget().ConnectDestroy(gtk.MainQuit)
 	window.Widget().ShowAll()
 
