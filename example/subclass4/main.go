@@ -2,24 +2,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi/lib/cairo"
+	"github.com/pekim/gobbi/example/subclass4/sc"
 	"github.com/pekim/gobbi/lib/gtk"
 	"os"
 )
 
 type MyWidget struct {
-	instance *gtk.DrawingAreaDerived
-}
-
-func (w *MyWidget) Draw(cr *cairo.Context) bool {
-	fmt.Println("draw!")
-	return true
+	instance *sc.DrawingAreaDerived
 }
 
 func main() {
 	gtk.Init(os.Args)
 
-	class := gtk.DrawingAreaDerive("test_widget")
+	class := sc.DrawingAreaDerive("test_widget")
 	fmt.Println(class)
 
 	myWidget := MyWidget{}

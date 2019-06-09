@@ -1,10 +1,11 @@
-package gtk
+package sc
 
 /*
+#cgo pkg-config: gtk+-3.0
+
 #include <gtk/gtk.h>
 #include <stdlib.h>
 
-gboolean drawing_area_vf_draw(GtkDrawingArea *widget, cairo_t *cr);
 void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
 */
 import "C"
@@ -13,6 +14,7 @@ import (
 	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gdk"
+	"github.com/pekim/gobbi/lib/gtk"
 	"math"
 	"unsafe"
 )
@@ -20,10 +22,6 @@ import (
 type DrawingAreaVirtualDraw interface {
 	Draw(cr *cairo.Context) bool
 }
-
-//type DrawingAreaVirtualFunctions struct {
-//	draw DrawingAreaDrawFunc
-//}
 
 type DrawingAreaDerivedClass struct {
 	name  string
@@ -70,20 +68,14 @@ func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingArea
 }
 
 // DrawingArea upcasts to *DrawingArea
-func (recv *DrawingAreaDerived) DrawingArea() *DrawingArea {
-	return DrawingAreaNewFromC(unsafe.Pointer(recv.native))
+func (recv *DrawingAreaDerived) DrawingArea() *gtk.DrawingArea {
+	return gtk.DrawingAreaNewFromC(unsafe.Pointer(recv.native))
 
-}
-
-//export DrawingAreaClassInit
-func DrawingAreaClassInit(class *C.GtkDrawingAreaClass, data unsafe.Pointer) {
-	widgetClass := (*C.GtkWidgetClass)(unsafe.Pointer(class))
-	widgetClass.draw = (*[0]byte)(C.drawing_area_vf_draw)
 }
 
 //export DrawingAreaDraw
 func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
-	da := DrawingAreaNewFromC(unsafe.Pointer(daC))
+	da := gtk.DrawingAreaNewFromC(unsafe.Pointer(daC))
 
 	widget := da.Widget()
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
@@ -95,7 +87,7 @@ func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
 	width := float64(alloc.Width)
 
 	// render background first
-	RenderBackground(widget.GetStyleContext(), cr,
+	gtk.RenderBackground(widget.GetStyleContext(), cr,
 		0, 0, width, height)
 
 	// an arc that describes a circle to the path
