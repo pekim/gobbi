@@ -10,24 +10,25 @@ void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
 import "C"
 
 import (
-	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gdk"
 	"math"
+	"sync"
 	"unsafe"
+)
+
+var (
+	virtualFunctionsInterfacesLock sync.Mutex
+	virtualFunctionsInterfacesId   = 0
+	virtualFunctionsInterfaces     = make(map[int]interface{})
 )
 
 type DrawingAreaVirtualDraw interface {
 	Draw(cr *cairo.Context) bool
 }
 
-//type DrawingAreaVirtualFunctions struct {
-//	draw DrawingAreaDrawFunc
-//}
-
 type DrawingAreaDerivedClass struct {
-	name string
-	//virtualFunctions interface{}
+	name  string
 	gtype C.GType
 }
 
@@ -37,16 +38,14 @@ type DrawingAreaDerived struct {
 }
 
 func DrawingAreaDerive(name string, virtualFunctions interface{}) *DrawingAreaDerivedClass {
-	var vf C.GtkDrawingAreaClass
-	vfWidget := (*C.GtkWidgetClass)(unsafe.Pointer(&vf))
-	if _, ok := virtualFunctions.(DrawingAreaVirtualDraw); ok {
-		vfWidget.draw = (*[0]byte)(C.drawing_area_vf_draw)
-	}
-	fmt.Println("vfw", vfWidget)
+	virtualFunctionsInterfacesLock.Lock()
+	defer virtualFunctionsInterfacesLock.Unlock()
+	virtualFunctionsInterfacesId++
+	virtualFunctionsInterfaces[virtualFunctionsInterfacesId] = virtualFunctions
 
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
-	//typeInfo.class_data = (C.gconstpointer)(&vf)
+	typeInfo.class_data = C.gconstpointer(uintptr(virtualFunctionsInterfacesId))
 	typeInfo.instance_size = C.sizeof_GtkDrawingArea
 	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
 
@@ -56,8 +55,7 @@ func DrawingAreaDerive(name string, virtualFunctions interface{}) *DrawingAreaDe
 	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
 
 	class := &DrawingAreaDerivedClass{
-		name: name,
-		//virtualFunctions: virtualFunctions,
+		name:  name,
 		gtype: gtype,
 	}
 
@@ -65,10 +63,6 @@ func DrawingAreaDerive(name string, virtualFunctions interface{}) *DrawingAreaDe
 }
 
 func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
-	//f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
-	//fmt.Println("draw func :", ok)
-	//f.Draw(nil)
-
 	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
 
 	instance := &DrawingAreaDerived{
@@ -89,17 +83,11 @@ func (recv *DrawingAreaDerived) DrawingArea() *DrawingArea {
 func DrawingAreaClassInit(class *C.GtkDrawingAreaClass, data unsafe.Pointer) {
 	widgetClass := (*C.GtkWidgetClass)(unsafe.Pointer(class))
 
-	vf := (*C.GtkDrawingAreaClass)(data)
-	vfWidget := (*C.GtkWidgetClass)(unsafe.Pointer(&vf))
-	fmt.Println("vfw", vfWidget)
+	virtualFunctions := virtualFunctionsInterfaces[int(uintptr(data))]
 
-	if vfWidget.draw != nil {
-		widgetClass.draw = vfWidget.draw
+	if _, ok := virtualFunctions.(DrawingAreaVirtualDraw); ok {
+		widgetClass.draw = (*[0]byte)(C.drawing_area_vf_draw)
 	}
-
-	//if _, ok := virtualFunctions.(DrawingAreaVirtualDraw); ok {
-	//widgetClass.draw = (*[0]byte)(C.drawing_area_vf_draw)
-	//}
 }
 
 //export DrawingAreaDraw
