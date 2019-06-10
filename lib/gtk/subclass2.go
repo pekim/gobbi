@@ -26,7 +26,8 @@ type DrawingAreaVirtualDraw interface {
 //}
 
 type DrawingAreaDerivedClass struct {
-	name  string
+	name string
+	//virtualFunctions interface{}
 	gtype C.GType
 }
 
@@ -35,9 +36,17 @@ type DrawingAreaDerived struct {
 	native *C.GtkDrawingArea
 }
 
-func DrawingAreaDerive(name string) *DrawingAreaDerivedClass {
+func DrawingAreaDerive(name string, virtualFunctions interface{}) *DrawingAreaDerivedClass {
+	var vf C.GtkDrawingAreaClass
+	vfWidget := (*C.GtkWidgetClass)(unsafe.Pointer(&vf))
+	if _, ok := virtualFunctions.(DrawingAreaVirtualDraw); ok {
+		vfWidget.draw = (*[0]byte)(C.drawing_area_vf_draw)
+	}
+	fmt.Println("vfw", vfWidget)
+
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
+	//typeInfo.class_data = (C.gconstpointer)(&vf)
 	typeInfo.instance_size = C.sizeof_GtkDrawingArea
 	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
 
@@ -47,17 +56,18 @@ func DrawingAreaDerive(name string) *DrawingAreaDerivedClass {
 	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
 
 	class := &DrawingAreaDerivedClass{
-		name:  name,
+		name: name,
+		//virtualFunctions: virtualFunctions,
 		gtype: gtype,
 	}
 
 	return class
 }
 
-func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingAreaDerived {
-	f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
-	fmt.Println("draw func :", ok)
-	f.Draw(nil)
+func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
+	//f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
+	//fmt.Println("draw func :", ok)
+	//f.Draw(nil)
 
 	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
 
@@ -78,7 +88,18 @@ func (recv *DrawingAreaDerived) DrawingArea() *DrawingArea {
 //export DrawingAreaClassInit
 func DrawingAreaClassInit(class *C.GtkDrawingAreaClass, data unsafe.Pointer) {
 	widgetClass := (*C.GtkWidgetClass)(unsafe.Pointer(class))
-	widgetClass.draw = (*[0]byte)(C.drawing_area_vf_draw)
+
+	vf := (*C.GtkDrawingAreaClass)(data)
+	vfWidget := (*C.GtkWidgetClass)(unsafe.Pointer(&vf))
+	fmt.Println("vfw", vfWidget)
+
+	if vfWidget.draw != nil {
+		widgetClass.draw = vfWidget.draw
+	}
+
+	//if _, ok := virtualFunctions.(DrawingAreaVirtualDraw); ok {
+	//widgetClass.draw = (*[0]byte)(C.drawing_area_vf_draw)
+	//}
 }
 
 //export DrawingAreaDraw

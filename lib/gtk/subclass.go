@@ -14,7 +14,7 @@ void entry_vf_move_cursor(GtkEntry       *entry,
 			       GtkMovementStep       step,
 			       gint                  count,
 			       gboolean              extend_selection) {
-	printf("C move cursor\n");
+	printf("C move cursor : %d %d\n", step, count);
 }
 
 void

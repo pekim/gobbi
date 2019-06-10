@@ -19,11 +19,11 @@ func (w *MyWidget) Draw(cr *cairo.Context) bool {
 func main() {
 	gtk.Init(os.Args)
 
-	class := gtk.DrawingAreaDerive("test_widget")
+	class := gtk.DrawingAreaDerive("test_widget", &MyWidget{})
 	fmt.Println(class)
 
 	myWidget := MyWidget{}
-	myWidget.instance = class.New(&myWidget)
+	myWidget.instance = class.New()
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 	window.SetTitle("A window title")
