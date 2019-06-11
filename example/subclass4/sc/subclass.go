@@ -5,8 +5,7 @@ package sc
 
 #include <gtk/gtk.h>
 #include <stdlib.h>
-
-void drawing_area_class_init2(GtkDrawingAreaClass *g_class, gpointer class_data);
+#include "subclass.h"
 */
 import "C"
 
