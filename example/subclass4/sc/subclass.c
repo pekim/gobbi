@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 #include "_cgo_export.h"
 
-gboolean drawing_area_vf_draw2(GtkDrawingArea *widget, cairo_t *cr) {
+gboolean drawing_area_vf_draw2(GtkWidget *widget, cairo_t *cr) {
 	return DrawingAreaDraw2(widget, cr);
 }
 

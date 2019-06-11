@@ -73,10 +73,8 @@ func (recv *DrawingAreaDerived2) DrawingArea() *gtk.DrawingArea {
 }
 
 //export DrawingAreaDraw2
-func DrawingAreaDraw2(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
-	da := gtk.DrawingAreaNewFromC(unsafe.Pointer(daC))
-
-	widget := da.Widget()
+func DrawingAreaDraw2(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
+	widget := gtk.WidgetNewFromC(unsafe.Pointer(widgetC))
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
 
 	// find the dimensions that the widget's  been allocated, and
