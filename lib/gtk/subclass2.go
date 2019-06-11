@@ -103,7 +103,6 @@ func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
 
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
 
-	virtualFunctions.(DrawingAreaVirtualDraw).Draw(cr)
-
-	return C.FALSE
+	retGo := virtualFunctions.(DrawingAreaVirtualDraw).Draw(cr)
+	return boolToGboolean(retGo)
 }
