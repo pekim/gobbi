@@ -6,7 +6,7 @@ package sc
 #include <gtk/gtk.h>
 #include <stdlib.h>
 
-void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
+void drawing_area_class_init2(GtkDrawingAreaClass *g_class, gpointer class_data);
 */
 import "C"
 
@@ -19,32 +19,32 @@ import (
 	"unsafe"
 )
 
-type DrawingAreaVirtualDraw interface {
+type DrawingAreaVirtualDraw2 interface {
 	Draw(cr *cairo.Context) bool
 }
 
-type DrawingAreaDerivedClass struct {
+type DrawingAreaDerivedClass2 struct {
 	name  string
 	gtype C.GType
 }
 
-type DrawingAreaDerived struct {
-	class  *DrawingAreaDerivedClass
+type DrawingAreaDerived2 struct {
+	class  *DrawingAreaDerivedClass2
 	native *C.GtkDrawingArea
 }
 
-func DrawingAreaDerive(name string) *DrawingAreaDerivedClass {
+func DrawingAreaDerive2(name string) *DrawingAreaDerivedClass2 {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
 	typeInfo.instance_size = C.sizeof_GtkDrawingArea
-	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
+	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init2)
 
 	cTypeName := C.CString(name)
 	defer C.free(unsafe.Pointer(cTypeName))
 
 	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
 
-	class := &DrawingAreaDerivedClass{
+	class := &DrawingAreaDerivedClass2{
 		name:  name,
 		gtype: gtype,
 	}
@@ -52,14 +52,14 @@ func DrawingAreaDerive(name string) *DrawingAreaDerivedClass {
 	return class
 }
 
-func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingAreaDerived {
-	f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
+func (c *DrawingAreaDerivedClass2) New(virtualFunctions interface{}) *DrawingAreaDerived2 {
+	f, ok := virtualFunctions.(DrawingAreaVirtualDraw2)
 	fmt.Println("draw func :", ok)
 	f.Draw(nil)
 
 	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
 
-	instance := &DrawingAreaDerived{
+	instance := &DrawingAreaDerived2{
 		class:  c,
 		native: native,
 	}
@@ -68,13 +68,13 @@ func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingArea
 }
 
 // DrawingArea upcasts to *DrawingArea
-func (recv *DrawingAreaDerived) DrawingArea() *gtk.DrawingArea {
+func (recv *DrawingAreaDerived2) DrawingArea() *gtk.DrawingArea {
 	return gtk.DrawingAreaNewFromC(unsafe.Pointer(recv.native))
 
 }
 
-//export DrawingAreaDraw
-func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
+//export DrawingAreaDraw2
+func DrawingAreaDraw2(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
 	da := gtk.DrawingAreaNewFromC(unsafe.Pointer(daC))
 
 	widget := da.Widget()
