@@ -10,7 +10,9 @@ void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
 import "C"
 
 import (
+	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -75,10 +77,15 @@ func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingArea
 		native: (*C.GtkDrawingArea)(object),
 	}
 
+	runtime.SetFinalizer(instance, func(o *DrawingAreaDerived) {
+		fmt.Println("dad finalizer")
+		C.g_object_unref((C.gpointer)(o.native))
+	})
+
 	return instance
 }
 
-// DrawingArea upcasts to *DrawingArea
+// DrawingArea upcasts to *DrawingArea.
 func (recv *DrawingAreaDerived) DrawingArea() *DrawingArea {
 	return DrawingAreaNewFromC(unsafe.Pointer(recv.native))
 
