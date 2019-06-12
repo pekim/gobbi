@@ -9,7 +9,7 @@ type Constructor struct {
 }
 
 func (c *Constructor) init(ns *Namespace, record *Record) {
-	// Some constructors defined in gir files reference a subclass
+	// Some constructors defined in gir files reference a subclass-drawingarea
 	// of their real type.
 	// Ensure that all constructors return a pointer to their
 	// record/class type.

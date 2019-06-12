@@ -18,32 +18,32 @@ import (
 	"unsafe"
 )
 
-type DrawingAreaVirtualDraw2 interface {
+type DrawingAreaVirtualDraw interface {
 	Draw(cr *cairo.Context) bool
 }
 
-type DrawingAreaDerivedClass2 struct {
+type DrawingAreaDerivedClass struct {
 	name  string
 	gtype C.GType
 }
 
-type DrawingAreaDerived2 struct {
-	class  *DrawingAreaDerivedClass2
+type DrawingAreaDerived struct {
+	class  *DrawingAreaDerivedClass
 	native *C.GtkDrawingArea
 }
 
-func DrawingAreaDerive2(name string) *DrawingAreaDerivedClass2 {
+func DrawingAreaDerive(name string) *DrawingAreaDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
 	typeInfo.instance_size = C.sizeof_GtkDrawingArea
-	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init2)
+	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
 
 	cTypeName := C.CString(name)
 	defer C.free(unsafe.Pointer(cTypeName))
 
 	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
 
-	class := &DrawingAreaDerivedClass2{
+	class := &DrawingAreaDerivedClass{
 		name:  name,
 		gtype: gtype,
 	}
@@ -51,14 +51,14 @@ func DrawingAreaDerive2(name string) *DrawingAreaDerivedClass2 {
 	return class
 }
 
-func (c *DrawingAreaDerivedClass2) New(virtualFunctions interface{}) *DrawingAreaDerived2 {
-	f, ok := virtualFunctions.(DrawingAreaVirtualDraw2)
+func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingAreaDerived {
+	f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
 	fmt.Println("draw func :", ok)
 	f.Draw(nil)
 
 	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
 
-	instance := &DrawingAreaDerived2{
+	instance := &DrawingAreaDerived{
 		class:  c,
 		native: native,
 	}
@@ -67,13 +67,13 @@ func (c *DrawingAreaDerivedClass2) New(virtualFunctions interface{}) *DrawingAre
 }
 
 // DrawingArea upcasts to *DrawingArea
-func (recv *DrawingAreaDerived2) DrawingArea() *gtk.DrawingArea {
+func (recv *DrawingAreaDerived) DrawingArea() *gtk.DrawingArea {
 	return gtk.DrawingAreaNewFromC(unsafe.Pointer(recv.native))
 
 }
 
-//export DrawingAreaDraw2
-func DrawingAreaDraw2(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
+//export DrawingAreaDraw
+func DrawingAreaDraw(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
 	widget := gtk.WidgetNewFromC(unsafe.Pointer(widgetC))
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
 

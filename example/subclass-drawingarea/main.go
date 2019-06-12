@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi/example/subclass/sc"
+	"github.com/pekim/gobbi/example/subclass-drawingarea/sc"
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gtk"
 	"os"
 )
 
 type MyWidget struct {
-	instance *sc.DrawingAreaDerived2
+	instance *sc.DrawingAreaDerived
 }
 
 func (w *MyWidget) Draw(cr *cairo.Context) bool {
@@ -19,7 +19,7 @@ func (w *MyWidget) Draw(cr *cairo.Context) bool {
 func main() {
 	gtk.Init(os.Args)
 
-	class := sc.DrawingAreaDerive2("test_widget")
+	class := sc.DrawingAreaDerive("test_widget")
 	fmt.Println(class)
 
 	myWidget := MyWidget{}
