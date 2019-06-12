@@ -1,20 +1,30 @@
-package gtk
-
-/*
-#include <gtk/gtk.h>
-#include <stdlib.h>
-
-gboolean drawing_area_vf_draw(GtkDrawingArea *widget, cairo_t *cr);
-void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
-*/
+package sc
 import "C"
-
 import (
 	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
 	"runtime"
 	"sync"
 	"unsafe"
+)
+
+package gtk
+
+/*
+   #include <gtk/gtk.h>
+   #include <stdlib.h>
+
+   gboolean drawing_area_vf_draw(GtkDrawingArea *widget, cairo_t *cr);
+   void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data);
+*/
+import "C"
+
+import (
+"fmt"
+"github.com/pekim/gobbi/lib/cairo"
+"runtime"
+"sync"
+"unsafe"
 )
 
 var (
@@ -113,3 +123,4 @@ func DrawingAreaDraw(daC *C.GtkDrawingArea, contextC *C.cairo_t) C.gboolean {
 	retGo := virtualFunctions.(DrawingAreaVirtualDraw).Draw(cr)
 	return boolToGboolean(retGo)
 }
+

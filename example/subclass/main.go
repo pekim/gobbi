@@ -1,18 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/pekim/gobbi/example/subclass/sc"
+	"github.com/pekim/gobbi/lib/cairo"
+	"github.com/pekim/gobbi/lib/gtk"
+	"os"
+)
 
-/*
-#cgo pkg-config: gobject-2.0
-//#include <glib-object.h>
-//
-#cgo pkg-config: gtk+-3.0
-//#include <gtk/gtk.h>
+type MyWidget struct {
+	instance *sc.DrawingAreaDerived2
+}
 
-#include "./obj-sc.h"
-*/
-import "C"
+func (w *MyWidget) Draw(cr *cairo.Context) bool {
+	return false
+}
 
 func main() {
-	fmt.Println("sc")
+	gtk.Init(os.Args)
+
+	class := sc.DrawingAreaDerive2("test_widget")
+	fmt.Println(class)
+
+	myWidget := MyWidget{}
+	myWidget.instance = class.New(&myWidget)
+
+	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+	window.SetTitle("A window title")
+	window.SetDefaultSize(300, 300)
+
+	window.Container().Add(myWidget.instance.DrawingArea().Widget())
+	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ShowAll()
+
+	gtk.Main()
 }
