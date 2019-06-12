@@ -10,7 +10,6 @@ package sc
 import "C"
 
 import (
-	"fmt"
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
@@ -23,7 +22,6 @@ type DrawingAreaVirtualDraw interface {
 }
 
 type DrawingAreaDerivedClass struct {
-	name  string
 	gtype C.GType
 }
 
@@ -32,29 +30,32 @@ type DrawingAreaDerived struct {
 	native *C.GtkDrawingArea
 }
 
-func DrawingAreaDerive(name string) *DrawingAreaDerivedClass {
+func (d *DrawingAreaDerived) Draw(cr *cairo.Context) bool {
+	return false
+}
+
+func DrawingAreaDerive() *DrawingAreaDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
 	typeInfo.instance_size = C.sizeof_GtkDrawingArea
 	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
 
-	cTypeName := C.CString(name)
+	cTypeName := C.CString("drawing_area_derived")
 	defer C.free(unsafe.Pointer(cTypeName))
 
 	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
 
 	class := &DrawingAreaDerivedClass{
-		name:  name,
 		gtype: gtype,
 	}
 
 	return class
 }
 
-func (c *DrawingAreaDerivedClass) New(virtualFunctions interface{}) *DrawingAreaDerived {
-	f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
-	fmt.Println("draw func :", ok)
-	f.Draw(nil)
+func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
+	//f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
+	//fmt.Println("draw func :", ok)
+	//f.Draw(nil)
 
 	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
 
