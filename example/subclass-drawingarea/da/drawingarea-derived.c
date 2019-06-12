@@ -14,10 +14,9 @@ void drawing_area_vf_adjust_size_request(
     gint            *minimum_size,
     gint            *natural_size)
 {
-    *minimum_size = 150;
-    *natural_size = 150;
+    *minimum_size = 100;
+    *natural_size = 100;
 }
-
 
 void drawing_area_class_init(GtkDrawingAreaClass *g_class, gpointer class_data) {
 	GtkWidgetClass *widget_class;
