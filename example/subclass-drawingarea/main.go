@@ -9,6 +9,7 @@ import (
 func main() {
 	gtk.Init(os.Args)
 
+	// register the subclass
 	daClass := da.DrawingAreaDerive()
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)

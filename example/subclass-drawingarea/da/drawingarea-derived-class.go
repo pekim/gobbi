@@ -17,6 +17,14 @@ import (
 
 type DrawingAreaDerivedNative *C.GtkDrawingArea
 
+/*
+	A map of ids to Go objects representing the derived widget instance.
+	The ids are allocated by incrementing an int for each new instance.
+
+	An id is stored in a C class instance struct when the instance is created.
+	It is later retrieved in the Go virtual function Draw, to lookup the
+	correspond Go object in the map.
+*/
 var (
 	daIntancesLock sync.Mutex
 	daInstanceId   = 0
@@ -27,6 +35,9 @@ type DrawingAreaDerivedClass struct {
 	gtype C.GType
 }
 
+/*
+	Register a new class derived from GtkDrawingArea.
+*/
 func DrawingAreaDerive() *DrawingAreaDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
@@ -45,35 +56,47 @@ func DrawingAreaDerive() *DrawingAreaDerivedClass {
 	return class
 }
 
+/*
+	Create a new instance of the derived class, and use a
+	Go object (DrawingAreadDerived) to represent it.
+*/
 func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
 	native := (DrawingAreaDerivedNative)(C.g_object_newv(c.gtype, 0, nil))
 
-	instance := &DrawingAreaDerived{
-		class:  c,
-		native: native,
-	}
+	instance := &DrawingAreaDerived{native: native}
 	instance.init()
 
 	daIntancesLock.Lock()
 	defer daIntancesLock.Unlock()
 	daInstanceId++
+	// map the id to the Go object
 	daInstances[daInstanceId] = instance
 
+	// note the id in the class's instance data struct
 	daC := (*C.da_d_instance)(unsafe.Pointer(native))
 	daC.instanceId = C.int(daInstanceId)
 
 	return instance
 }
 
+/*
+	drawingAreaDerivedFromCWidget uses the stored id to lookup a
+	DrawingAreaDerived.
+*/
+func drawingAreaDerivedFromCWidget(widgetC unsafe.Pointer) *DrawingAreaDerived {
+	daC := (*C.da_d_instance)(widgetC)
+	instanceId := int(daC.instanceId)
+	return daInstances[instanceId]
+}
+
+// DrawingAreaDraw is called from the C virtual function.
+//
 //export DrawingAreaDraw
 func DrawingAreaDraw(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
-	daC := (*C.da_d_instance)(unsafe.Pointer(widgetC))
-	instanceId := int(daC.instanceId)
-	instance := daInstances[instanceId]
-
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
 
-	instance.Draw(cr)
+	da := drawingAreaDerivedFromCWidget(unsafe.Pointer(widgetC))
+	da.Draw(cr)
 
 	return C.FALSE
 }
