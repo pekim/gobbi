@@ -1,11 +1,11 @@
-package sc
+package da
 
 /*
 #cgo pkg-config: gtk+-3.0
 
 #include <gtk/gtk.h>
 #include <stdlib.h>
-#include "subclass.h"
+#include "drawingarea-derived.h"
 */
 import "C"
 
