@@ -11,12 +11,11 @@ import "C"
 
 import (
 	"github.com/pekim/gobbi/lib/cairo"
-	"github.com/pekim/gobbi/lib/gdk"
-	"github.com/pekim/gobbi/lib/gtk"
-	"math"
 	"sync"
 	"unsafe"
 )
+
+type DrawingAreaDerivedNative *C.GtkDrawingArea
 
 var (
 	daIntancesLock sync.Mutex
@@ -26,37 +25,6 @@ var (
 
 type DrawingAreaDerivedClass struct {
 	gtype C.GType
-}
-
-type DrawingAreaDerived struct {
-	class  *DrawingAreaDerivedClass
-	native *C.GtkDrawingArea
-}
-
-func (d *DrawingAreaDerived) Draw(cr *cairo.Context) {
-	widget := d.DrawingArea().Widget()
-
-	// find the dimensions that the widget's  been allocated, and
-	// therefore the size of the area to draw in
-	alloc := widget.GetAllocation()
-	height := float64(alloc.Height)
-	width := float64(alloc.Width)
-
-	// render background first
-	gtk.RenderBackground(widget.GetStyleContext(), cr,
-		0, 0, width, height)
-
-	// an arc that describes a circle to the path
-	cr.Arc(width/2.0, height/2.0, math.Min(width, height)/2.0, 0, 2*math.Pi)
-
-	styleContext := widget.GetStyleContext()
-	colour := styleContext.GetColor(styleContext.GetState())
-
-	// use the widget's context's colour for the source pattern
-	gdk.CairoSetSourceRgba(cr, colour)
-
-	// fill the path (that describes a circle)
-	cr.Fill()
 }
 
 func DrawingAreaDerive() *DrawingAreaDerivedClass {
@@ -78,7 +46,7 @@ func DrawingAreaDerive() *DrawingAreaDerivedClass {
 }
 
 func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
-	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
+	native := (DrawingAreaDerivedNative)(C.g_object_newv(c.gtype, 0, nil))
 
 	instance := &DrawingAreaDerived{
 		class:  c,
@@ -94,12 +62,6 @@ func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
 	*((*int)(idPointer)) = daInstanceId
 
 	return instance
-}
-
-// DrawingArea upcasts to *DrawingArea
-func (recv *DrawingAreaDerived) DrawingArea() *gtk.DrawingArea {
-	return gtk.DrawingAreaNewFromC(unsafe.Pointer(recv.native))
-
 }
 
 //export DrawingAreaDraw
