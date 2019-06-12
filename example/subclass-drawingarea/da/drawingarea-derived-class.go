@@ -52,6 +52,7 @@ func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
 		class:  c,
 		native: native,
 	}
+	instance.init()
 
 	daIntancesLock.Lock()
 	defer daIntancesLock.Unlock()
