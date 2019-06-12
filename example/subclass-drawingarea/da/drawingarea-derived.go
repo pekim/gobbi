@@ -2,7 +2,6 @@ package da
 
 import (
 	"github.com/pekim/gobbi/lib/cairo"
-	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
 	"math"
 	"unsafe"
@@ -11,6 +10,21 @@ import (
 type DrawingAreaDerived struct {
 	class  *DrawingAreaDerivedClass
 	native DrawingAreaDerivedNative
+
+	red   float64
+	green float64
+	blue  float64
+}
+
+func (d *DrawingAreaDerived) init() {
+	// default to a mid grey
+	d.SetColour(0.5, 0.5, 0.5)
+}
+
+func (d *DrawingAreaDerived) SetColour(r, g, b float64) {
+	d.red = r
+	d.green = g
+	d.blue = b
 }
 
 func (d *DrawingAreaDerived) Draw(cr *cairo.Context) {
@@ -29,11 +43,7 @@ func (d *DrawingAreaDerived) Draw(cr *cairo.Context) {
 	// an arc that describes a circle to the path
 	cr.Arc(width/2.0, height/2.0, math.Min(width, height)/2.0, 0, 2*math.Pi)
 
-	styleContext := widget.GetStyleContext()
-	colour := styleContext.GetColor(styleContext.GetState())
-
-	// use the widget's context's colour for the source pattern
-	gdk.CairoSetSourceRgba(cr, colour)
+	cr.SetSourceRGB(d.red, d.green, d.blue)
 
 	// fill the path (that describes a circle)
 	cr.Fill()
