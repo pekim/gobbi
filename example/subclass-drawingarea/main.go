@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/pekim/gobbi/example/subclass-drawingarea/sc"
+	"github.com/pekim/gobbi/example/subclass-drawingarea/da"
 	"github.com/pekim/gobbi/lib/gtk"
 	"os"
 )
@@ -9,7 +9,7 @@ import (
 func main() {
 	gtk.Init(os.Args)
 
-	daClass := sc.DrawingAreaDerive()
+	daClass := da.DrawingAreaDerive()
 	da := daClass.New()
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
