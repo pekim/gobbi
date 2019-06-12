@@ -14,12 +14,15 @@ import (
 	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
 	"math"
+	"sync"
 	"unsafe"
 )
 
-type DrawingAreaVirtualDraw interface {
-	Draw(cr *cairo.Context) bool
-}
+var (
+	daIntancesLock sync.Mutex
+	daInstanceId   = 0
+	daInstances    = make(map[int]*DrawingAreaDerived)
+)
 
 type DrawingAreaDerivedClass struct {
 	gtype C.GType
@@ -30,53 +33,8 @@ type DrawingAreaDerived struct {
 	native *C.GtkDrawingArea
 }
 
-func (d *DrawingAreaDerived) Draw(cr *cairo.Context) bool {
-	return false
-}
-
-func DrawingAreaDerive() *DrawingAreaDerivedClass {
-	var typeInfo C.GTypeInfo
-	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
-	typeInfo.instance_size = C.sizeof_GtkDrawingArea
-	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
-
-	cTypeName := C.CString("drawing_area_derived")
-	defer C.free(unsafe.Pointer(cTypeName))
-
-	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
-
-	class := &DrawingAreaDerivedClass{
-		gtype: gtype,
-	}
-
-	return class
-}
-
-func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
-	//f, ok := virtualFunctions.(DrawingAreaVirtualDraw)
-	//fmt.Println("draw func :", ok)
-	//f.Draw(nil)
-
-	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
-
-	instance := &DrawingAreaDerived{
-		class:  c,
-		native: native,
-	}
-
-	return instance
-}
-
-// DrawingArea upcasts to *DrawingArea
-func (recv *DrawingAreaDerived) DrawingArea() *gtk.DrawingArea {
-	return gtk.DrawingAreaNewFromC(unsafe.Pointer(recv.native))
-
-}
-
-//export DrawingAreaDraw
-func DrawingAreaDraw(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
-	widget := gtk.WidgetNewFromC(unsafe.Pointer(widgetC))
-	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
+func (d *DrawingAreaDerived) Draw(cr *cairo.Context) {
+	widget := d.DrawingArea().Widget()
 
 	// find the dimensions that the widget's  been allocated, and
 	// therefore the size of the area to draw in
@@ -99,6 +57,60 @@ func DrawingAreaDraw(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
 
 	// fill the path (that describes a circle)
 	cr.Fill()
+}
+
+func DrawingAreaDerive() *DrawingAreaDerivedClass {
+	var typeInfo C.GTypeInfo
+	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
+	typeInfo.instance_size = C.sizeof_GtkDrawingArea + C.sizeof_gpointer
+	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
+
+	cTypeName := C.CString("drawing_area_derived")
+	defer C.free(unsafe.Pointer(cTypeName))
+
+	gtype := C.g_type_register_static(C.GTK_TYPE_DRAWING_AREA, cTypeName, &typeInfo, 0)
+
+	class := &DrawingAreaDerivedClass{
+		gtype: gtype,
+	}
+
+	return class
+}
+
+func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
+	native := (*C.GtkDrawingArea)(C.g_object_newv(c.gtype, 0, nil))
+
+	instance := &DrawingAreaDerived{
+		class:  c,
+		native: native,
+	}
+
+	daIntancesLock.Lock()
+	defer daIntancesLock.Unlock()
+	daInstanceId++
+	daInstances[daInstanceId] = instance
+
+	idPointer := C.gpointer(uintptr(unsafe.Pointer(native)) + uintptr(C.sizeof_GtkDrawingArea))
+	*((*int)(idPointer)) = daInstanceId
+
+	return instance
+}
+
+// DrawingArea upcasts to *DrawingArea
+func (recv *DrawingAreaDerived) DrawingArea() *gtk.DrawingArea {
+	return gtk.DrawingAreaNewFromC(unsafe.Pointer(recv.native))
+
+}
+
+//export DrawingAreaDraw
+func DrawingAreaDraw(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
+	idPointer := C.gpointer(uintptr(unsafe.Pointer(widgetC)) + uintptr(C.sizeof_GtkDrawingArea))
+	instanceId := *((*int)(idPointer))
+	instance := daInstances[instanceId]
+
+	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
+
+	instance.Draw(cr)
 
 	return C.FALSE
 }
