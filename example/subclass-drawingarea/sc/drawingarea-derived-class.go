@@ -30,7 +30,7 @@ type DrawingAreaDerivedClass struct {
 func DrawingAreaDerive() *DrawingAreaDerivedClass {
 	var typeInfo C.GTypeInfo
 	typeInfo.class_size = C.sizeof_GtkDrawingAreaClass
-	typeInfo.instance_size = C.sizeof_GtkDrawingArea + C.sizeof_gpointer
+	typeInfo.instance_size = C.sizeof_da_d_instance
 	typeInfo.class_init = C.GClassInitFunc(C.drawing_area_class_init)
 
 	cTypeName := C.CString("drawing_area_derived")
@@ -58,16 +58,16 @@ func (c *DrawingAreaDerivedClass) New() *DrawingAreaDerived {
 	daInstanceId++
 	daInstances[daInstanceId] = instance
 
-	idPointer := C.gpointer(uintptr(unsafe.Pointer(native)) + uintptr(C.sizeof_GtkDrawingArea))
-	*((*int)(idPointer)) = daInstanceId
+	daC := (*C.da_d_instance)(unsafe.Pointer(native))
+	daC.instanceId = C.int(daInstanceId)
 
 	return instance
 }
 
 //export DrawingAreaDraw
 func DrawingAreaDraw(widgetC *C.GtkWidget, contextC *C.cairo_t) C.gboolean {
-	idPointer := C.gpointer(uintptr(unsafe.Pointer(widgetC)) + uintptr(C.sizeof_GtkDrawingArea))
-	instanceId := *((*int)(idPointer))
+	daC := (*C.da_d_instance)(unsafe.Pointer(widgetC))
+	instanceId := int(daC.instanceId)
 	instance := daInstances[instanceId]
 
 	cr := cairo.ContextNewFromC(unsafe.Pointer(contextC))
