@@ -10,6 +10,8 @@ that marshals the arguments in to Go objects,
 and calls another function to draw in a cairo context.
 The same result could have been achieved by
 connecting to the `draw` signal instead,
+(The [custom-drawing](https://github.com/pekim/gobbi/blob/master/example/custom-drawing/main.go)
+example uses that approach.)
 however the point of this example is to
 illustrate class derivation and
 the overriding of virtual functions.
