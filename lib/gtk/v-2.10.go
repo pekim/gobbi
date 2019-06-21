@@ -16404,7 +16404,26 @@ func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 	return FileChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
+// FileChooserDialogNew is a wrapper around the C function gtk_file_chooser_dialog_new.
+func FileChooserDialogNew(title string, parent *Window, action FileChooserAction, firstButtonText string) *FileChooserDialog {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_action := (C.GtkFileChooserAction)(action)
+
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	retC := C.gtk_file_chooser_dialog_new(c_title, c_parent, c_action, c_first_button_text)
+	retGo := FileChooserDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ImplementorIface returns the ImplementorIface interface implemented by FileChooserDialog
 func (recv *FileChooserDialog) ImplementorIface() *atk.ImplementorIface {

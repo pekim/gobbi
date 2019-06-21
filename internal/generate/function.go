@@ -10,20 +10,21 @@ import (
 type Function struct {
 	Namespace *Namespace
 
-	Name              string       `xml:"name,attr"`
-	Blacklist         bool         `xml:"blacklist,attr"`
-	GoName            string       `xml:"goname,attr"`
-	Version           string       `xml:"version,attr"`
-	MovedTo           string       `xml:"moved-to,attr"`
-	CIdentifier       string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
-	Deprecated        int          `xml:"deprecated,attr"`
-	DeprecatedVersion string       `xml:"deprecated-version,attr"`
-	Doc               *Doc         `xml:"doc"`
-	InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
-	Parameters        Parameters   `xml:"parameters>parameter"`
-	ReturnValue       *ReturnValue `xml:"return-value"`
-	Throws            int          `xml:"throws,attr"`
-	Introspectable    string       `xml:"introspectable,attr"`
+	Name                   string       `xml:"name,attr"`
+	Blacklist              bool         `xml:"blacklist,attr"`
+	GoName                 string       `xml:"goname,attr"`
+	Version                string       `xml:"version,attr"`
+	MovedTo                string       `xml:"moved-to,attr"`
+	CIdentifier            string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
+	Deprecated             int          `xml:"deprecated,attr"`
+	DeprecatedVersion      string       `xml:"deprecated-version,attr"`
+	Doc                    *Doc         `xml:"doc"`
+	InstanceParameter      *Parameter   `xml:"parameters>instance-parameter"`
+	Parameters             Parameters   `xml:"parameters>parameter"`
+	ReturnValue            *ReturnValue `xml:"return-value"`
+	Throws                 int          `xml:"throws,attr"`
+	Introspectable         string       `xml:"introspectable,attr"`
+	IgnoreVarargsParameter bool         `xml:"ignoreVarargsParameter,attr"`
 
 	receiver   *Record
 	ctorRecord *Record
@@ -83,6 +84,10 @@ func (f *Function) mergeAddenda(addenda *Function) {
 	}
 	if addenda.Version != "" {
 		f.Version = addenda.Version
+	}
+
+	if addenda.IgnoreVarargsParameter {
+		f.Parameters.ignoreVarargs()
 	}
 }
 

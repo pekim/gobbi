@@ -149,6 +149,10 @@
       </method>
     </class>
 
+    <class name="FileChooserDialog">
+        <constructor c:identifier="gtk_file_chooser_dialog_new" ignoreVarargsParameter="true"/>
+    </class>
+
     <class version="3.20" name="FileChooserNative"/>
     <class version="3.20" name="NativeDialog"/>
     <class version="3.20" name="PadController"/>

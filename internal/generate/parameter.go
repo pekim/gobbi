@@ -23,6 +23,7 @@ type Parameter struct {
 	cVarName        string
 	arrayLengthFor  *Parameter
 	stringLengthFor *Parameter
+	ignore          bool
 
 	formatString bool
 	formatArgs   bool

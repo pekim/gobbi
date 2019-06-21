@@ -11,6 +11,7 @@ type Class struct {
 }
 
 func (c *Class) mergeAddenda(addenda *Class) {
+	c.Constructors.mergeAddenda(addenda.Constructors)
 	c.Record.mergeAddenda(addenda.Record)
 	c.Implements.mergeAddenda(addenda.Implements)
 }

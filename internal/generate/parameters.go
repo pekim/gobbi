@@ -125,54 +125,90 @@ func (pp Parameters) fixupFormatArgs() {
 
 func (pp Parameters) generateFunctionDeclaration(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateFunctionDeclaration(g)
 	}
 }
 
 func (pp Parameters) generateFunctionDeclarationCtypes(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateFunctionDeclarationCtype(g)
 	}
 }
 
 func (pp Parameters) generateCVars(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateCVar(g)
 	}
 }
 
 func (pp Parameters) generateGoVars(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateGoVar(g)
 	}
 }
 
 func (pp Parameters) generateOutputParamsReturnDeclaration(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateOutputParamReturnDeclaration(g)
 	}
 }
 
 func (pp Parameters) generateOutputParamsReturns(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateOutputParamReturn(g)
 	}
 }
 
 func (pp Parameters) generateOutputParamsGoVars(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateOutputParamGoVar(g)
 	}
 }
 
 func (pp Parameters) generateCallArguments(g *jen.Group) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		p.generateCallArgument(g)
 	}
 }
 
 func (pp Parameters) allSupported() (bool, string) {
 	for _, p := range pp {
+		if p.ignore {
+			continue
+		}
+
 		if supported, reason := p.isSupported(); !supported {
 			return supported, fmt.Sprintf("unsupported parameter %s : %s", p.Name, reason)
 		}
@@ -193,4 +229,12 @@ func (pp Parameters) allSupportedC() (bool, string) {
 	}
 
 	return true, ""
+}
+
+func (pp Parameters) ignoreVarargs() {
+	for _, p := range pp {
+		if p.Varargs != nil {
+			p.ignore = true
+		}
+	}
 }
