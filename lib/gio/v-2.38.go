@@ -657,8 +657,8 @@ import (
 */
 /*
 
-	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error, const gchar* first_property_name) {
-		return g_initable_new(object_type, cancellable, error, first_property_name, NULL);
+	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error) {
+		return g_initable_new(object_type, cancellable, error, NULL, NULL);
     }
 */
 /*
@@ -3540,7 +3540,7 @@ var signalDBusConnectionClosedMap = make(map[int]signalDBusConnectionClosedDetai
 var signalDBusConnectionClosedLock sync.RWMutex
 
 // DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
-type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
+type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error_ *glib.Error)
 
 /*
 ConnectClosed connects the callback to the 'closed' signal for the DBusConnection.
@@ -3587,11 +3587,11 @@ func dbusconnection_closedHandler(_ *C.GObject, c_remote_peer_vanished C.gboolea
 
 	remotePeerVanished := c_remote_peer_vanished == C.TRUE
 
-	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
+	error_ := glib.ErrorNewFromC(unsafe.Pointer(c_error))
 
 	index := int(uintptr(data))
 	callback := signalDBusConnectionClosedMap[index].callback
-	callback(remotePeerVanished, error)
+	callback(remotePeerVanished, error_)
 }
 
 // DBusConnectionNewFinish is a wrapper around the C function g_dbus_connection_new_finish.
@@ -5364,10 +5364,10 @@ func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int
 // Unsupported : g_dbus_method_invocation_return_error_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // ReturnGerror is a wrapper around the C function g_dbus_method_invocation_return_gerror.
-func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
+func (recv *DBusMethodInvocation) ReturnGerror(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_dbus_method_invocation_return_gerror((*C.GDBusMethodInvocation)(recv.native), c_error)
@@ -5405,10 +5405,10 @@ func (recv *DBusMethodInvocation) ReturnValueWithUnixFdList(parameters *glib.Var
 }
 
 // TakeError is a wrapper around the C function g_dbus_method_invocation_take_error.
-func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
+func (recv *DBusMethodInvocation) TakeError(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_dbus_method_invocation_take_error((*C.GDBusMethodInvocation)(recv.native), c_error)
@@ -15417,10 +15417,10 @@ func (recv *SimpleAsyncResult) SetError(domain glib.Quark, code int32, format st
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
-func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
+func (recv *SimpleAsyncResult) SetFromError(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_simple_async_result_set_from_error((*C.GSimpleAsyncResult)(recv.native), c_error)
@@ -15460,10 +15460,10 @@ func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
 }
 
 // TakeError is a wrapper around the C function g_simple_async_result_take_error.
-func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
+func (recv *SimpleAsyncResult) TakeError(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_simple_async_result_take_error((*C.GSimpleAsyncResult)(recv.native), c_error)
@@ -18180,10 +18180,10 @@ func (recv *Task) ReturnBoolean(result bool) {
 }
 
 // ReturnError is a wrapper around the C function g_task_return_error.
-func (recv *Task) ReturnError(error *glib.Error) {
+func (recv *Task) ReturnError(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_task_return_error((*C.GTask)(recv.native), c_error)
@@ -22338,10 +22338,10 @@ const (
 )
 
 // DBusErrorEncodeGerror is a wrapper around the C function g_dbus_error_encode_gerror.
-func DBusErrorEncodeGerror(error *glib.Error) string {
+func DBusErrorEncodeGerror(error_ *glib.Error) string {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	retC := C.g_dbus_error_encode_gerror(c_error)
@@ -22352,10 +22352,10 @@ func DBusErrorEncodeGerror(error *glib.Error) string {
 }
 
 // DBusErrorGetRemoteError is a wrapper around the C function g_dbus_error_get_remote_error.
-func DBusErrorGetRemoteError(error *glib.Error) string {
+func DBusErrorGetRemoteError(error_ *glib.Error) string {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	retC := C.g_dbus_error_get_remote_error(c_error)
@@ -22366,10 +22366,10 @@ func DBusErrorGetRemoteError(error *glib.Error) string {
 }
 
 // DBusErrorIsRemoteError is a wrapper around the C function g_dbus_error_is_remote_error.
-func DBusErrorIsRemoteError(error *glib.Error) bool {
+func DBusErrorIsRemoteError(error_ *glib.Error) bool {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	retC := C.g_dbus_error_is_remote_error(c_error)
@@ -22417,10 +22417,10 @@ func DBusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 
 // g_dbus_error_register_error_domain : unsupported parameter entries :
 // DBusErrorSetDbusError is a wrapper around the C function g_dbus_error_set_dbus_error.
-func DBusErrorSetDbusError(error *glib.Error, dbusErrorName string, dbusErrorMessage string, format string, args ...interface{}) {
+func DBusErrorSetDbusError(error_ *glib.Error, dbusErrorName string, dbusErrorMessage string, format string, args ...interface{}) {
 	c_error := (**C.GError)(C.NULL)
-	if error != nil {
-		c_error = (**C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (**C.GError)(error_.ToC())
 	}
 
 	c_dbus_error_name := C.CString(dbusErrorName)
@@ -22440,10 +22440,10 @@ func DBusErrorSetDbusError(error *glib.Error, dbusErrorName string, dbusErrorMes
 
 // g_dbus_error_set_dbus_error_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 // DBusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
-func DBusErrorStripRemoteError(error *glib.Error) bool {
+func DBusErrorStripRemoteError(error_ *glib.Error) bool {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	retC := C.g_dbus_error_strip_remote_error(c_error)
@@ -28568,7 +28568,7 @@ func (recv *Initable) Equals(other *Initable) bool {
 }
 
 // InitableNew is a wrapper around the C function g_initable_new.
-func InitableNew(objectType gobject.Type, cancellable *Cancellable, error *glib.Error, firstPropertyName string) gobject.Object {
+func InitableNew(objectType gobject.Type, cancellable *Cancellable, error_ *glib.Error, firstPropertyName string) gobject.Object {
 	c_object_type := (C.GType)(objectType)
 
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -28577,8 +28577,8 @@ func InitableNew(objectType gobject.Type, cancellable *Cancellable, error *glib.
 	}
 
 	c_error := (**C.GError)(C.NULL)
-	if error != nil {
-		c_error = (**C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (**C.GError)(error_.ToC())
 	}
 
 	c_first_property_name := C.CString(firstPropertyName)

@@ -14,8 +14,8 @@ func (pp Parameters) init(ns *Namespace) {
 	pp.fixupStringLengthParams()
 	pp.fixupFormatArgs()
 
-	for _, param := range pp {
-		param.init(ns)
+	for p, param := range pp {
+		param.init(pp, p, ns)
 
 		if param.Array != nil {
 			if param.Array.Type != nil {

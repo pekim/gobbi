@@ -14,6 +14,7 @@ var cNameReservedWords = map[string]bool{
 }
 
 var goNameReservedWords = map[string]bool{
+	"error":     true,
 	"func":      true,
 	"interface": true,
 	"select":    true,

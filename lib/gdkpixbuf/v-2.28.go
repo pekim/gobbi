@@ -19,14 +19,14 @@ import (
 // #include <stdlib.h>
 /*
 
-	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
-		return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
+	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type) {
+		return gdk_pixbuf_save(pixbuf, filename, type, NULL, NULL);
     }
 */
 /*
 
-	static gboolean _gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable, GError** error) {
-		return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, error, NULL);
+	static gboolean _gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable) {
+		return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, NULL, NULL);
     }
 */
 /*
@@ -808,7 +808,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 }
 
 // Save is a wrapper around the C function gdk_pixbuf_save.
-func (recv *Pixbuf) Save(filename string, type_ string, error *glib.Error) bool {
+func (recv *Pixbuf) Save(filename string, type_ string, error_ *glib.Error) bool {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
@@ -816,8 +816,8 @@ func (recv *Pixbuf) Save(filename string, type_ string, error *glib.Error) bool 
 	defer C.free(unsafe.Pointer(c_type))
 
 	c_error := (**C.GError)(C.NULL)
-	if error != nil {
-		c_error = (**C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (**C.GError)(error_.ToC())
 	}
 
 	retC := C._gdk_pixbuf_save((*C.GdkPixbuf)(recv.native), c_filename, c_type, c_error)
@@ -835,7 +835,7 @@ func (recv *Pixbuf) Save(filename string, type_ string, error *glib.Error) bool 
 // Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc (GdkPixbufSaveFunc) for param save_func
 
 // SaveToStream is a wrapper around the C function gdk_pixbuf_save_to_stream.
-func (recv *Pixbuf) SaveToStream(stream *gio.OutputStream, type_ string, cancellable *gio.Cancellable, error *glib.Error) bool {
+func (recv *Pixbuf) SaveToStream(stream *gio.OutputStream, type_ string, cancellable *gio.Cancellable, error_ *glib.Error) bool {
 	c_stream := (*C.GOutputStream)(C.NULL)
 	if stream != nil {
 		c_stream = (*C.GOutputStream)(stream.ToC())
@@ -850,8 +850,8 @@ func (recv *Pixbuf) SaveToStream(stream *gio.OutputStream, type_ string, cancell
 	}
 
 	c_error := (**C.GError)(C.NULL)
-	if error != nil {
-		c_error = (**C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (**C.GError)(error_.ToC())
 	}
 
 	retC := C._gdk_pixbuf_save_to_stream((*C.GdkPixbuf)(recv.native), c_stream, c_type, c_cancellable, c_error)

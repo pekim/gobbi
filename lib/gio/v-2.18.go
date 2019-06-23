@@ -6412,10 +6412,10 @@ func (recv *SimpleAsyncResult) SetError(domain glib.Quark, code int32, format st
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
-func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
+func (recv *SimpleAsyncResult) SetFromError(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_simple_async_result_set_from_error((*C.GSimpleAsyncResult)(recv.native), c_error)

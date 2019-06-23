@@ -1206,7 +1206,7 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func_ string
 }
 
 // AssertionMessageError is a wrapper around the C function g_assertion_message_error.
-func AssertionMessageError(domain string, file string, line int32, func_ string, expr string, error *Error, errorDomain Quark, errorCode int32) {
+func AssertionMessageError(domain string, file string, line int32, func_ string, expr string, error_ *Error, errorDomain Quark, errorCode int32) {
 	c_domain := C.CString(domain)
 	defer C.free(unsafe.Pointer(c_domain))
 
@@ -1222,8 +1222,8 @@ func AssertionMessageError(domain string, file string, line int32, func_ string,
 	defer C.free(unsafe.Pointer(c_expr))
 
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	c_error_domain := (C.GQuark)(errorDomain)

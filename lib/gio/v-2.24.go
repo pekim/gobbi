@@ -305,8 +305,8 @@ import (
 */
 /*
 
-	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error, const gchar* first_property_name) {
-		return g_initable_new(object_type, cancellable, error, first_property_name, NULL);
+	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error) {
+		return g_initable_new(object_type, cancellable, error, NULL, NULL);
     }
 */
 /*
@@ -7447,10 +7447,10 @@ func (recv *SimpleAsyncResult) SetError(domain glib.Quark, code int32, format st
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
-func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
+func (recv *SimpleAsyncResult) SetFromError(error_ *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (*C.GError)(error_.ToC())
 	}
 
 	C.g_simple_async_result_set_from_error((*C.GSimpleAsyncResult)(recv.native), c_error)
@@ -15741,7 +15741,7 @@ func (recv *Initable) Equals(other *Initable) bool {
 }
 
 // InitableNew is a wrapper around the C function g_initable_new.
-func InitableNew(objectType gobject.Type, cancellable *Cancellable, error *glib.Error, firstPropertyName string) gobject.Object {
+func InitableNew(objectType gobject.Type, cancellable *Cancellable, error_ *glib.Error, firstPropertyName string) gobject.Object {
 	c_object_type := (C.GType)(objectType)
 
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -15750,8 +15750,8 @@ func InitableNew(objectType gobject.Type, cancellable *Cancellable, error *glib.
 	}
 
 	c_error := (**C.GError)(C.NULL)
-	if error != nil {
-		c_error = (**C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (**C.GError)(error_.ToC())
 	}
 
 	c_first_property_name := C.CString(firstPropertyName)

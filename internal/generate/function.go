@@ -42,7 +42,7 @@ func (f *Function) init(ns *Namespace, receiver *Record, namePrefix string) {
 	f.GoName = namePrefix + f.GoName
 	f.Parameters.init(ns)
 	if f.InstanceParameter != nil {
-		f.InstanceParameter.init(ns)
+		f.InstanceParameter.init(f.Parameters, 0, ns)
 	}
 	f.initThrowableError()
 
@@ -192,14 +192,22 @@ func (f *Function) generateVarargsCWrapper() {
 	}
 
 	for _, param := range f.Parameters {
+		if params != "" {
+			params += ", "
+		}
+
+		if param.nullableBeforeVargargs() {
+			params += "NULL"
+			continue
+		}
+
 		if param.Varargs != nil {
-			params += ", NULL"
+			params += "NULL"
 			continue
 		}
 
 		if params != "" {
 			paramsDeclaration += ", "
-			params += ", "
 		}
 
 		paramsDeclaration += fmt.Sprintf("%s %s", param.Type.CType, param.Name)

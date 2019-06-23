@@ -70,8 +70,8 @@ import (
 */
 /*
 
-	static GtkTextTag* _gtk_source_buffer_create_source_tag(GtkSourceBuffer* buffer, const gchar* tag_name, const gchar* first_property_name) {
-		return gtk_source_buffer_create_source_tag(buffer, tag_name, first_property_name, NULL);
+	static GtkTextTag* _gtk_source_buffer_create_source_tag(GtkSourceBuffer* buffer, const gchar* tag_name) {
+		return gtk_source_buffer_create_source_tag(buffer, tag_name, NULL, NULL);
     }
 */
 /*

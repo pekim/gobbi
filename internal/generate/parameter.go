@@ -7,7 +7,9 @@ import (
 )
 
 type Parameter struct {
-	Namespace *Namespace
+	Namespace  *Namespace
+	parameters Parameters
+	index      int
 
 	Name              string    `xml:"name,attr"`
 	Direction         string    `xml:"direction,attr"`
@@ -28,8 +30,10 @@ type Parameter struct {
 	formatArgs   bool
 }
 
-func (p *Parameter) init(ns *Namespace) {
+func (p *Parameter) init(pp Parameters, index int, ns *Namespace) {
 	p.Namespace = ns
+	p.parameters = pp
+	p.index = index
 	p.goVarName = makeGoName(p.Name)
 	p.cVarName = "c_" + p.Name
 
@@ -141,6 +145,22 @@ func (p *Parameter) isSupportedC() (bool, string) {
 	}
 
 	return false, "no param type or array"
+}
+
+func (p *Parameter) nullableBeforeVargargs() bool {
+	if len(p.parameters) < 3 {
+		return false
+	}
+
+	if p.index != len(p.parameters)-2 {
+		return false
+	}
+
+	if p.parameters[p.index+1].Varargs == nil {
+		return false
+	}
+
+	return p.Nullable
 }
 
 func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {

@@ -522,8 +522,8 @@ import (
 */
 /*
 
-	static GtkDialog* _gtk_dialog_new_with_buttons(const gchar* title, GtkWindow* parent, GtkDialogFlags flags, const gchar* first_button_text) {
-		return gtk_dialog_new_with_buttons(title, parent, flags, first_button_text, NULL);
+	static GtkDialog* _gtk_dialog_new_with_buttons(const gchar* title, GtkWindow* parent, GtkDialogFlags flags) {
+		return gtk_dialog_new_with_buttons(title, parent, flags, NULL, NULL);
     }
 */
 /*
@@ -684,8 +684,8 @@ import (
 */
 /*
 
-	static GtkFileChooserDialog* _gtk_file_chooser_dialog_new(const gchar* title, GtkWindow* parent, GtkFileChooserAction action, const gchar* first_button_text) {
-		return gtk_file_chooser_dialog_new(title, parent, action, first_button_text, NULL);
+	static GtkFileChooserDialog* _gtk_file_chooser_dialog_new(const gchar* title, GtkWindow* parent, GtkFileChooserAction action) {
+		return gtk_file_chooser_dialog_new(title, parent, action, NULL, NULL);
     }
 */
 /*
@@ -1602,14 +1602,14 @@ import (
 */
 /*
 
-	static GtkRecentChooserDialog* _gtk_recent_chooser_dialog_new(const gchar* title, GtkWindow* parent, const gchar* first_button_text) {
-		return gtk_recent_chooser_dialog_new(title, parent, first_button_text, NULL);
+	static GtkRecentChooserDialog* _gtk_recent_chooser_dialog_new(const gchar* title, GtkWindow* parent) {
+		return gtk_recent_chooser_dialog_new(title, parent, NULL, NULL);
     }
 */
 /*
 
-	static GtkRecentChooserDialog* _gtk_recent_chooser_dialog_new_for_manager(const gchar* title, GtkWindow* parent, GtkRecentManager* manager, const gchar* first_button_text) {
-		return gtk_recent_chooser_dialog_new_for_manager(title, parent, manager, first_button_text, NULL);
+	static GtkRecentChooserDialog* _gtk_recent_chooser_dialog_new_for_manager(const gchar* title, GtkWindow* parent, GtkRecentManager* manager) {
+		return gtk_recent_chooser_dialog_new_for_manager(title, parent, manager, NULL, NULL);
     }
 */
 /*
@@ -1884,8 +1884,8 @@ import (
 */
 /*
 
-	static GtkTextTag* _gtk_text_buffer_create_tag(GtkTextBuffer* buffer, const gchar* tag_name, const gchar* first_property_name) {
-		return gtk_text_buffer_create_tag(buffer, tag_name, first_property_name, NULL);
+	static GtkTextTag* _gtk_text_buffer_create_tag(GtkTextBuffer* buffer, const gchar* tag_name) {
+		return gtk_text_buffer_create_tag(buffer, tag_name, NULL, NULL);
     }
 */
 /*
@@ -14291,7 +14291,7 @@ var signalCssProviderParsingErrorMap = make(map[int]signalCssProviderParsingErro
 var signalCssProviderParsingErrorLock sync.RWMutex
 
 // CssProviderSignalParsingErrorCallback is a callback function for a 'parsing-error' signal emitted from a CssProvider.
-type CssProviderSignalParsingErrorCallback func(section *CssSection, error *glib.Error)
+type CssProviderSignalParsingErrorCallback func(section *CssSection, error_ *glib.Error)
 
 /*
 ConnectParsingError connects the callback to the 'parsing-error' signal for the CssProvider.
@@ -14338,11 +14338,11 @@ func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c
 
 	section := CssSectionNewFromC(unsafe.Pointer(c_section))
 
-	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
+	error_ := glib.ErrorNewFromC(unsafe.Pointer(c_error))
 
 	index := int(uintptr(data))
 	callback := signalCssProviderParsingErrorMap[index].callback
-	callback(section, error)
+	callback(section, error_)
 }
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.

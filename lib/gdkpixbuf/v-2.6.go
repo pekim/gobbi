@@ -19,8 +19,8 @@ import (
 // #include <stdlib.h>
 /*
 
-	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
-		return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
+	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type) {
+		return gdk_pixbuf_save(pixbuf, filename, type, NULL, NULL);
     }
 */
 /*
@@ -610,7 +610,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 }
 
 // Save is a wrapper around the C function gdk_pixbuf_save.
-func (recv *Pixbuf) Save(filename string, type_ string, error *glib.Error) bool {
+func (recv *Pixbuf) Save(filename string, type_ string, error_ *glib.Error) bool {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
@@ -618,8 +618,8 @@ func (recv *Pixbuf) Save(filename string, type_ string, error *glib.Error) bool 
 	defer C.free(unsafe.Pointer(c_type))
 
 	c_error := (**C.GError)(C.NULL)
-	if error != nil {
-		c_error = (**C.GError)(error.ToC())
+	if error_ != nil {
+		c_error = (**C.GError)(error_.ToC())
 	}
 
 	retC := C._gdk_pixbuf_save((*C.GdkPixbuf)(recv.native), c_filename, c_type, c_error)
