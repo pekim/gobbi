@@ -19,6 +19,12 @@ import (
 // #include <stdlib.h>
 /*
 
+	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
+		return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
+    }
+*/
+/*
+
 	void pixbufloader_areaPreparedHandler(GObject *, gpointer);
 
 	static gulong PixbufLoader_signal_connect_area_prepared(gpointer instance, gpointer data) {
@@ -487,7 +493,24 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 	return
 }
 
-// Unsupported : gdk_pixbuf_save : unsupported parameter ... : varargs
+// Save is a wrapper around the C function gdk_pixbuf_save.
+func (recv *Pixbuf) Save(filename string, type_ string, error *glib.Error) bool {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
+
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	retC := C._gdk_pixbuf_save((*C.GdkPixbuf)(recv.native), c_filename, c_type, c_error)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Savev is a wrapper around the C function gdk_pixbuf_savev.
 func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, optionValues []string) (bool, error) {

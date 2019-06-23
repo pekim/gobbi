@@ -420,6 +420,18 @@ import (
 */
 /*
 
+	static GSubprocess* _g_subprocess_new(GSubprocessFlags flags, GError** error, const gchar* argv0) {
+		return g_subprocess_new(flags, error, argv0, NULL);
+    }
+*/
+/*
+
+	static GSubprocess* _g_subprocess_launcher_spawn(GSubprocessLauncher* self, GError** error, const gchar* argv0) {
+		return g_subprocess_launcher_spawn(self, error, argv0, NULL);
+    }
+*/
+/*
+
 	static void _g_task_return_new_error(GTask* task, GQuark domain, gint code, const char* format) {
 		return g_task_return_new_error(task, domain, code, format);
     }
@@ -708,6 +720,18 @@ import (
 		return g_signal_connect(instance, "accept-certificate", G_CALLBACK(dtlsconnection_acceptCertificateHandler), data);
 	}
 
+*/
+/*
+
+	static GFile* _g_file_new_build_filename(const gchar* first_element) {
+		return g_file_new_build_filename(first_element, NULL);
+    }
+*/
+/*
+
+	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error, const gchar* first_property_name) {
+		return g_initable_new(object_type, cancellable, error, first_property_name, NULL);
+    }
 */
 /*
 
@@ -19194,7 +19218,27 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 	return SubprocessNewFromC(object.ToC())
 }
 
-// Unsupported : g_subprocess_new : unsupported parameter ... : varargs
+// SubprocessNew is a wrapper around the C function g_subprocess_new.
+func SubprocessNew(flags SubprocessFlags, error *glib.Error, argv0 string) *Subprocess {
+	c_flags := (C.GSubprocessFlags)(flags)
+
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	c_argv0 := C.CString(argv0)
+	defer C.free(unsafe.Pointer(c_argv0))
+
+	retC := C._g_subprocess_new(c_flags, c_error, c_argv0)
+	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // SubprocessNewv is a wrapper around the C function g_subprocess_newv.
 func SubprocessNewv(argv []string, flags SubprocessFlags) (*Subprocess, error) {
@@ -19711,7 +19755,21 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 	return
 }
 
-// Unsupported : g_subprocess_launcher_spawn : unsupported parameter ... : varargs
+// Spawn is a wrapper around the C function g_subprocess_launcher_spawn.
+func (recv *SubprocessLauncher) Spawn(error *glib.Error, argv0 string) *Subprocess {
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	c_argv0 := C.CString(argv0)
+	defer C.free(unsafe.Pointer(c_argv0))
+
+	retC := C._g_subprocess_launcher_spawn((*C.GSubprocessLauncher)(recv.native), c_error, c_argv0)
+	retGo := SubprocessNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Spawnv is a wrapper around the C function g_subprocess_launcher_spawnv.
 func (recv *SubprocessLauncher) Spawnv(argv []string) (*Subprocess, error) {
@@ -29206,7 +29264,17 @@ func (recv *File) Equals(other *File) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// g_file_new_build_filename : unsupported parameter ... : varargs
+// FileNewBuildFilename is a wrapper around the C function g_file_new_build_filename.
+func FileNewBuildFilename(firstElement string) *File {
+	c_first_element := C.CString(firstElement)
+	defer C.free(unsafe.Pointer(c_first_element))
+
+	retC := C._g_file_new_build_filename(c_first_element)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // FileNewForCommandlineArg is a wrapper around the C function g_file_new_for_commandline_arg.
 func FileNewForCommandlineArg(arg string) *File {
 	c_arg := C.CString(arg)
@@ -31272,7 +31340,29 @@ func (recv *Initable) Equals(other *Initable) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// g_initable_new : unsupported parameter ... : varargs
+// InitableNew is a wrapper around the C function g_initable_new.
+func InitableNew(objectType gobject.Type, cancellable *Cancellable, error *glib.Error, firstPropertyName string) gobject.Object {
+	c_object_type := (C.GType)(objectType)
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._g_initable_new(c_object_type, c_cancellable, c_error, c_first_property_name)
+	retGo := *gobject.ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // g_initable_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 // g_initable_newv : unsupported parameter parameters :
 // Init is a wrapper around the C function g_initable_init.

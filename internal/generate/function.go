@@ -125,6 +125,8 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 
 	if f.Parameters.hasFormatArgs() {
 		f.generateFormatArgsCWrapper()
+	} else if f.Parameters.hasVarargs() {
+		f.generateVarargsCWrapper()
 	}
 
 	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
@@ -180,6 +182,43 @@ func (f *Function) generateFormatArgsCWrapper() {
 			params))
 }
 
+func (f *Function) generateVarargsCWrapper() {
+	paramsDeclaration := ""
+	params := ""
+
+	if f.InstanceParameter != nil {
+		paramsDeclaration += fmt.Sprintf("%s %s", f.InstanceParameter.Type.CType, f.InstanceParameter.Name)
+		params += f.InstanceParameter.Name
+	}
+
+	for _, param := range f.Parameters {
+		if param.Varargs != nil {
+			params += ", NULL"
+			continue
+		}
+
+		if params != "" {
+			paramsDeclaration += ", "
+			params += ", "
+		}
+
+		paramsDeclaration += fmt.Sprintf("%s %s", param.Type.CType, param.Name)
+		params += param.Name
+	}
+
+	f.Namespace.jenFile.CgoPreamble(
+		fmt.Sprintf(`
+	static %s _%s(%s) {
+		return %s(%s);
+    }
+`,
+			f.ReturnValue.Type.CType,
+			f.CIdentifier,
+			paramsDeclaration,
+			f.CIdentifier,
+			params))
+}
+
 func (f *Function) generateReceiverDeclaration(s *jen.Statement) {
 	if f.receiver == nil {
 		return
@@ -213,7 +252,7 @@ func (f *Function) generateCParameterVars(g *jen.Group) {
 
 func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 	cIdentifier := f.CIdentifier
-	if f.Parameters.hasFormatArgs() {
+	if f.Parameters.hasFormatArgs() || f.Parameters.hasVarargs() {
 		cIdentifier = "_" + f.CIdentifier
 	}
 

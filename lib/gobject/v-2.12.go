@@ -24,6 +24,48 @@ import (
 	}
 
 */
+/*
+
+	static GObject* _g_object_new(GType object_type, const gchar* first_property_name) {
+		return g_object_new(object_type, first_property_name, NULL);
+    }
+*/
+/*
+
+	static gpointer _g_object_connect(gpointer object, const gchar* signal_spec) {
+		return g_object_connect(object, signal_spec, NULL);
+    }
+*/
+/*
+
+	static void _g_object_disconnect(gpointer object, const gchar* signal_spec) {
+		return g_object_disconnect(object, signal_spec, NULL);
+    }
+*/
+/*
+
+	static void _g_object_get(gpointer object, const gchar* first_property_name) {
+		return g_object_get(object, first_property_name, NULL);
+    }
+*/
+/*
+
+	static void _g_object_set(gpointer object, const gchar* first_property_name) {
+		return g_object_set(object, first_property_name, NULL);
+    }
+*/
+/*
+
+	static void _g_signal_emit(gpointer instance, guint signal_id, GQuark detail) {
+		return g_signal_emit(instance, signal_id, detail, NULL);
+    }
+*/
+/*
+
+	static void _g_signal_emit_by_name(gpointer instance, const gchar* detailed_signal) {
+		return g_signal_emit_by_name(instance, detailed_signal, NULL);
+    }
+*/
 import "C"
 
 // Unsupported : alias has no type generator for ClosureMarshal, GClosureMarshal
@@ -252,7 +294,22 @@ func object_notifyHandler(_ *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) 
 	callback(pspec)
 }
 
-// Unsupported : g_object_new : unsupported parameter ... : varargs
+// ObjectNew is a wrapper around the C function g_object_new.
+func ObjectNew(objectType Type, firstPropertyName string) *Object {
+	c_object_type := (C.GType)(objectType)
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._g_object_new(c_object_type, c_first_property_name)
+	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
@@ -315,9 +372,26 @@ func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
 	return
 }
 
-// Unsupported : g_object_connect : unsupported parameter ... : varargs
+// Connect is a wrapper around the C function g_object_connect.
+func (recv *Object) Connect(signalSpec string) Object {
+	c_signal_spec := C.CString(signalSpec)
+	defer C.free(unsafe.Pointer(c_signal_spec))
 
-// Unsupported : g_object_disconnect : unsupported parameter ... : varargs
+	retC := C._g_object_connect((C.gpointer)(recv.native), c_signal_spec)
+	retGo := *ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Disconnect is a wrapper around the C function g_object_disconnect.
+func (recv *Object) Disconnect(signalSpec string) {
+	c_signal_spec := C.CString(signalSpec)
+	defer C.free(unsafe.Pointer(c_signal_spec))
+
+	C._g_object_disconnect((C.gpointer)(recv.native), c_signal_spec)
+
+	return
+}
 
 // ForceFloating is a wrapper around the C function g_object_force_floating.
 func (recv *Object) ForceFloating() {
@@ -333,7 +407,15 @@ func (recv *Object) FreezeNotify() {
 	return
 }
 
-// Unsupported : g_object_get : unsupported parameter ... : varargs
+// Get is a wrapper around the C function g_object_get.
+func (recv *Object) Get(firstPropertyName string) {
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	C._g_object_get((C.gpointer)(recv.native), c_first_property_name)
+
+	return
+}
 
 // GetData is a wrapper around the C function g_object_get_data.
 func (recv *Object) GetData(key string) uintptr {
@@ -425,7 +507,15 @@ func (recv *Object) RunDispose() {
 	return
 }
 
-// Unsupported : g_object_set : unsupported parameter ... : varargs
+// Set is a wrapper around the C function g_object_set.
+func (recv *Object) Set(firstPropertyName string) {
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	C._g_object_set((C.gpointer)(recv.native), c_first_property_name)
+
+	return
+}
 
 // SetData is a wrapper around the C function g_object_set_data.
 func (recv *Object) SetData(key string, data uintptr) {
@@ -2540,9 +2630,36 @@ func SignalConnectClosureById(instance *Object, signalId uint32, detail glib.Qua
 
 // Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
 
-// Unsupported : g_signal_emit : unsupported parameter ... : varargs
+// SignalEmit is a wrapper around the C function g_signal_emit.
+func SignalEmit(instance *Object, signalId uint32, detail glib.Quark) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
 
-// Unsupported : g_signal_emit_by_name : unsupported parameter ... : varargs
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	C._g_signal_emit(c_instance, c_signal_id, c_detail)
+
+	return
+}
+
+// SignalEmitByName is a wrapper around the C function g_signal_emit_by_name.
+func SignalEmitByName(instance *Object, detailedSignal string) {
+	c_instance := (C.gpointer)(C.NULL)
+	if instance != nil {
+		c_instance = (C.gpointer)(instance.ToC())
+	}
+
+	c_detailed_signal := C.CString(detailedSignal)
+	defer C.free(unsafe.Pointer(c_detailed_signal))
+
+	C._g_signal_emit_by_name(c_instance, c_detailed_signal)
+
+	return
+}
 
 // Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 

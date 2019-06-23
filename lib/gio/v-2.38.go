@@ -657,6 +657,12 @@ import (
 */
 /*
 
+	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error, const gchar* first_property_name) {
+		return g_initable_new(object_type, cancellable, error, first_property_name, NULL);
+    }
+*/
+/*
+
 	void mount_changedHandler(GObject *, gpointer);
 
 	static gulong Mount_signal_connect_changed(gpointer instance, gpointer data) {
@@ -28561,7 +28567,29 @@ func (recv *Initable) Equals(other *Initable) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// g_initable_new : unsupported parameter ... : varargs
+// InitableNew is a wrapper around the C function g_initable_new.
+func InitableNew(objectType gobject.Type, cancellable *Cancellable, error *glib.Error, firstPropertyName string) gobject.Object {
+	c_object_type := (C.GType)(objectType)
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._g_initable_new(c_object_type, c_cancellable, c_error, c_first_property_name)
+	retGo := *gobject.ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // g_initable_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 // g_initable_newv : unsupported parameter parameters :
 // Init is a wrapper around the C function g_initable_init.

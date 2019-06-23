@@ -70,6 +70,12 @@ import (
 */
 /*
 
+	static GtkTextTag* _gtk_source_buffer_create_source_tag(GtkSourceBuffer* buffer, const gchar* tag_name, const gchar* first_property_name) {
+		return gtk_source_buffer_create_source_tag(buffer, tag_name, first_property_name, NULL);
+    }
+*/
+/*
+
 	void completion_activateProposalHandler(GObject *, gpointer);
 
 	static gulong Completion_signal_connect_activate_proposal(gpointer instance, gpointer data) {
@@ -830,7 +836,19 @@ func (recv *Buffer) CreateSourceMark(name string, category string, where *gtk.Te
 	return retGo
 }
 
-// Unsupported : gtk_source_buffer_create_source_tag : unsupported parameter ... : varargs
+// CreateSourceTag is a wrapper around the C function gtk_source_buffer_create_source_tag.
+func (recv *Buffer) CreateSourceTag(tagName string, firstPropertyName string) *gtk.TextTag {
+	c_tag_name := C.CString(tagName)
+	defer C.free(unsafe.Pointer(c_tag_name))
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._gtk_source_buffer_create_source_tag((*C.GtkSourceBuffer)(recv.native), c_tag_name, c_first_property_name)
+	retGo := gtk.TextTagNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // EndNotUndoableAction is a wrapper around the C function gtk_source_buffer_end_not_undoable_action.
 func (recv *Buffer) EndNotUndoableAction() {

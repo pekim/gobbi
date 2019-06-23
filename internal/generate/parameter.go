@@ -73,7 +73,7 @@ func (p *Parameter) isSupported() (bool, string) {
 	}
 
 	if p.Varargs != nil {
-		return false, "varargs"
+		return true, ""
 	}
 
 	if p.Type != nil {
@@ -144,6 +144,10 @@ func (p *Parameter) isSupportedC() (bool, string) {
 }
 
 func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
+	if p.Varargs != nil && !p.formatArgs {
+		return
+	}
+
 	if p.Direction == "out" {
 		return
 	}
@@ -181,6 +185,10 @@ func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {
+	if p.Varargs != nil {
+		return
+	}
+
 	if p.Direction == "out" {
 		p.Type.generator.generateParamOutCVar(g, p.cVarName)
 	} else if p.Array != nil {
@@ -236,6 +244,10 @@ func (p *Parameter) generateGoVar(g *jen.Group) {
 }
 
 func (p *Parameter) generateCallArgument(g *jen.Group) {
+	if p.Varargs != nil {
+		return
+	}
+
 	if p.Direction == "out" {
 		p.Type.generator.generateParamOutCallArgument(g, p.cVarName)
 	} else {

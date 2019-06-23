@@ -15,6 +15,12 @@ import (
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <pango/pango.h>
 // #include <stdlib.h>
+/*
+
+	static PangoTabArray* _pango_tab_array_new_with_positions(gint size, gboolean positions_in_pixels, PangoTabAlign first_alignment, gint first_position) {
+		return pango_tab_array_new_with_positions(size, positions_in_pixels, first_alignment, first_position, NULL);
+    }
+*/
 import "C"
 
 // Glyph is a representation of the C alias PangoGlyph.
@@ -5033,7 +5039,22 @@ func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
 	return retGo
 }
 
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs
+// TabArrayNewWithPositions is a wrapper around the C function pango_tab_array_new_with_positions.
+func TabArrayNewWithPositions(size int32, positionsInPixels bool, firstAlignment TabAlign, firstPosition int32) *TabArray {
+	c_size := (C.gint)(size)
+
+	c_positions_in_pixels :=
+		boolToGboolean(positionsInPixels)
+
+	c_first_alignment := (C.PangoTabAlign)(firstAlignment)
+
+	c_first_position := (C.gint)(firstPosition)
+
+	retC := C._pango_tab_array_new_with_positions(c_size, c_positions_in_pixels, c_first_alignment, c_first_position)
+	retGo := TabArrayNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Copy is a wrapper around the C function pango_tab_array_copy.
 func (recv *TabArray) Copy() *TabArray {

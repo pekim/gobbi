@@ -17,6 +17,18 @@ import (
 // #include <stdlib.h>
 /*
 
+	static gchar* _g_build_filename(const gchar* first_element) {
+		return g_build_filename(first_element, NULL);
+    }
+*/
+/*
+
+	static gchar* _g_build_path(const gchar* separator, const gchar* first_element) {
+		return g_build_path(separator, first_element, NULL);
+    }
+*/
+/*
+
 	static void _g_log(const gchar* log_domain, GLogLevelFlags log_level, const gchar* format) {
 		return g_log(log_domain, log_level, format);
     }
@@ -59,8 +71,20 @@ import (
 */
 /*
 
+	static gchar* _g_strconcat(const gchar* string1) {
+		return g_strconcat(string1, NULL);
+    }
+*/
+/*
+
 	static gchar* _g_strdup_printf(const gchar* format) {
 		return g_strdup_printf(format);
+    }
+*/
+/*
+
+	static gchar* _g_strjoin(const gchar* separator) {
+		return g_strjoin(separator, NULL);
     }
 */
 /*
@@ -1279,9 +1303,32 @@ func BitStorage(number uint64) uint32 {
 	return retGo
 }
 
-// Unsupported : g_build_filename : unsupported parameter ... : varargs
+// BuildFilename is a wrapper around the C function g_build_filename.
+func BuildFilename(firstElement string) string {
+	c_first_element := C.CString(firstElement)
+	defer C.free(unsafe.Pointer(c_first_element))
 
-// Unsupported : g_build_path : unsupported parameter ... : varargs
+	retC := C._g_build_filename(c_first_element)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// BuildPath is a wrapper around the C function g_build_path.
+func BuildPath(separator string, firstElement string) string {
+	c_separator := C.CString(separator)
+	defer C.free(unsafe.Pointer(c_separator))
+
+	c_first_element := C.CString(firstElement)
+	defer C.free(unsafe.Pointer(c_first_element))
+
+	retC := C._g_build_path(c_separator, c_first_element)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Blacklisted : g_byte_array_free
 
@@ -2681,7 +2728,17 @@ func Strcompress(source string) string {
 	return retGo
 }
 
-// Unsupported : g_strconcat : unsupported parameter ... : varargs
+// Strconcat is a wrapper around the C function g_strconcat.
+func Strconcat(string1 string) string {
+	c_string1 := C.CString(string1)
+	defer C.free(unsafe.Pointer(c_string1))
+
+	retC := C._g_strconcat(c_string1)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Strdelimit is a wrapper around the C function g_strdelimit.
 func Strdelimit(string_ string, delimiters string, newDelimiter rune) string {
@@ -2802,7 +2859,17 @@ func StringSizedNew(dflSize uint64) *String {
 	return retGo
 }
 
-// Unsupported : g_strjoin : unsupported parameter ... : varargs
+// Strjoin is a wrapper around the C function g_strjoin.
+func Strjoin(separator string) string {
+	c_separator := C.CString(separator)
+	defer C.free(unsafe.Pointer(c_separator))
+
+	retC := C._g_strjoin(c_separator)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_strjoinv : unsupported parameter str_array : in string with indirection level of 2
 

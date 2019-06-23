@@ -111,6 +111,15 @@ func (pp Parameters) hasFormatArgs() bool {
 	return true
 }
 
+func (pp Parameters) hasVarargs() bool {
+	if len(pp) < 1 {
+		return false
+	}
+
+	lastParam := pp[len(pp)-1]
+	return lastParam.Varargs != nil
+}
+
 func (pp Parameters) fixupFormatArgs() {
 	if !pp.hasFormatArgs() {
 		return

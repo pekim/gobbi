@@ -486,6 +486,24 @@ import (
 */
 /*
 
+	static void _gtk_container_add_with_properties(GtkContainer* container, GtkWidget* widget, const gchar* first_prop_name) {
+		return gtk_container_add_with_properties(container, widget, first_prop_name, NULL);
+    }
+*/
+/*
+
+	static void _gtk_container_child_get(GtkContainer* container, GtkWidget* child, const gchar* first_prop_name) {
+		return gtk_container_child_get(container, child, first_prop_name, NULL);
+    }
+*/
+/*
+
+	static void _gtk_container_child_set(GtkContainer* container, GtkWidget* child, const gchar* first_prop_name) {
+		return gtk_container_child_set(container, child, first_prop_name, NULL);
+    }
+*/
+/*
+
 	void cssprovider_parsingErrorHandler(GObject *, GtkCssSection *, GError *, gpointer);
 
 	static gulong CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
@@ -510,6 +528,24 @@ import (
 		return g_signal_connect(instance, "response", G_CALLBACK(dialog_responseHandler), data);
 	}
 
+*/
+/*
+
+	static GtkDialog* _gtk_dialog_new_with_buttons(const gchar* title, GtkWindow* parent, GtkDialogFlags flags, const gchar* first_button_text) {
+		return gtk_dialog_new_with_buttons(title, parent, flags, first_button_text, NULL);
+    }
+*/
+/*
+
+	static void _gtk_dialog_add_buttons(GtkDialog* dialog, const gchar* first_button_text) {
+		return gtk_dialog_add_buttons(dialog, first_button_text, NULL);
+    }
+*/
+/*
+
+	static void _gtk_dialog_set_alternative_button_order(GtkDialog* dialog, gint first_response_id) {
+		return gtk_dialog_set_alternative_button_order(dialog, first_response_id, NULL);
+    }
 */
 /*
 
@@ -690,6 +726,12 @@ import (
 		return g_signal_connect(instance, "file-set", G_CALLBACK(filechooserbutton_fileSetHandler), data);
 	}
 
+*/
+/*
+
+	static GtkFileChooserDialog* _gtk_file_chooser_dialog_new(const gchar* title, GtkWindow* parent, GtkFileChooserAction action, const gchar* first_button_text) {
+		return gtk_file_chooser_dialog_new(title, parent, action, first_button_text, NULL);
+    }
 */
 /*
 
@@ -1071,6 +1113,18 @@ import (
 */
 /*
 
+	static GtkInfoBar* _gtk_info_bar_new_with_buttons(const gchar* first_button_text) {
+		return gtk_info_bar_new_with_buttons(first_button_text, NULL);
+    }
+*/
+/*
+
+	static void _gtk_info_bar_add_buttons(GtkInfoBar* info_bar, const gchar* first_button_text) {
+		return gtk_info_bar_add_buttons(info_bar, first_button_text, NULL);
+    }
+*/
+/*
+
 	void label_activateCurrentLinkHandler(GObject *, gpointer);
 
 	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
@@ -1149,6 +1203,24 @@ import (
 		return g_signal_connect(instance, "toggle-cursor-row", G_CALLBACK(listbox_toggleCursorRowHandler), data);
 	}
 
+*/
+/*
+
+	static GtkListStore* _gtk_list_store_new(gint n_columns) {
+		return gtk_list_store_new(n_columns, NULL);
+    }
+*/
+/*
+
+	static void _gtk_list_store_insert_with_values(GtkListStore* list_store, GtkTreeIter* iter, gint position) {
+		return gtk_list_store_insert_with_values(list_store, iter, position, NULL);
+    }
+*/
+/*
+
+	static void _gtk_list_store_set(GtkListStore* list_store, GtkTreeIter* iter) {
+		return gtk_list_store_set(list_store, iter, NULL);
+    }
 */
 /*
 
@@ -1626,6 +1698,18 @@ import (
 */
 /*
 
+	static GtkRecentChooserDialog* _gtk_recent_chooser_dialog_new(const gchar* title, GtkWindow* parent, const gchar* first_button_text) {
+		return gtk_recent_chooser_dialog_new(title, parent, first_button_text, NULL);
+    }
+*/
+/*
+
+	static GtkRecentChooserDialog* _gtk_recent_chooser_dialog_new_for_manager(const gchar* title, GtkWindow* parent, GtkRecentManager* manager, const gchar* first_button_text) {
+		return gtk_recent_chooser_dialog_new_for_manager(title, parent, manager, first_button_text, NULL);
+    }
+*/
+/*
+
 	void recentmanager_changedHandler(GObject *, gpointer);
 
 	static gulong RecentManager_signal_connect_changed(gpointer instance, gpointer data) {
@@ -1815,6 +1899,12 @@ import (
 */
 /*
 
+	static void _gtk_style_get(GtkStyle* style, GType widget_type, const gchar* first_property_name) {
+		return gtk_style_get(style, widget_type, first_property_name, NULL);
+    }
+*/
+/*
+
 	void switch_activateHandler(GObject *, gpointer);
 
 	static gulong Switch_signal_connect_activate(gpointer instance, gpointer data) {
@@ -1938,6 +2028,24 @@ import (
 		return g_signal_connect(instance, "remove-tag", G_CALLBACK(textbuffer_removeTagHandler), data);
 	}
 
+*/
+/*
+
+	static GtkTextTag* _gtk_text_buffer_create_tag(GtkTextBuffer* buffer, const gchar* tag_name, const gchar* first_property_name) {
+		return gtk_text_buffer_create_tag(buffer, tag_name, first_property_name, NULL);
+    }
+*/
+/*
+
+	static void _gtk_text_buffer_insert_with_tags(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, GtkTextTag* first_tag) {
+		return gtk_text_buffer_insert_with_tags(buffer, iter, text, len, first_tag, NULL);
+    }
+*/
+/*
+
+	static void _gtk_text_buffer_insert_with_tags_by_name(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, const gchar* first_tag_name) {
+		return gtk_text_buffer_insert_with_tags_by_name(buffer, iter, text, len, first_tag_name, NULL);
+    }
 */
 /*
 
@@ -2184,6 +2292,24 @@ import (
 */
 /*
 
+	static GtkTreeStore* _gtk_tree_store_new(gint n_columns) {
+		return gtk_tree_store_new(n_columns, NULL);
+    }
+*/
+/*
+
+	static void _gtk_tree_store_insert_with_values(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, gint position) {
+		return gtk_tree_store_insert_with_values(tree_store, iter, parent, position, NULL);
+    }
+*/
+/*
+
+	static void _gtk_tree_store_set(GtkTreeStore* tree_store, GtkTreeIter* iter) {
+		return gtk_tree_store_set(tree_store, iter, NULL);
+    }
+*/
+/*
+
 	void treeview_columnsChangedHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_columns_changed(gpointer instance, gpointer data) {
@@ -2319,12 +2445,30 @@ import (
 */
 /*
 
+	static gint _gtk_tree_view_insert_column_with_attributes(GtkTreeView* tree_view, gint position, const gchar* title, GtkCellRenderer* cell) {
+		return gtk_tree_view_insert_column_with_attributes(tree_view, position, title, cell, NULL);
+    }
+*/
+/*
+
 	void treeviewcolumn_clickedHandler(GObject *, gpointer);
 
 	static gulong TreeViewColumn_signal_connect_clicked(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "clicked", G_CALLBACK(treeviewcolumn_clickedHandler), data);
 	}
 
+*/
+/*
+
+	static GtkTreeViewColumn* _gtk_tree_view_column_new_with_attributes(const gchar* title, GtkCellRenderer* cell) {
+		return gtk_tree_view_column_new_with_attributes(title, cell, NULL);
+    }
+*/
+/*
+
+	static void _gtk_tree_view_column_set_attributes(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer) {
+		return gtk_tree_view_column_set_attributes(tree_column, cell_renderer, NULL);
+    }
 */
 /*
 
@@ -2931,6 +3075,18 @@ import (
 */
 /*
 
+	static GtkWidget* _gtk_widget_new(GType type, const gchar* first_property_name) {
+		return gtk_widget_new(type, first_property_name, NULL);
+    }
+*/
+/*
+
+	static void _gtk_widget_style_get(GtkWidget* widget, const gchar* first_property_name) {
+		return gtk_widget_style_get(widget, first_property_name, NULL);
+    }
+*/
+/*
+
 	void window_activateDefaultHandler(GObject *, gpointer);
 
 	static gulong Window_signal_connect_activate_default(gpointer instance, gpointer data) {
@@ -2976,6 +3132,24 @@ import (
 */
 /*
 
+	static void _gtk_show_about_dialog(GtkWindow* parent, const gchar* first_property_name) {
+		return gtk_show_about_dialog(parent, first_property_name, NULL);
+    }
+*/
+/*
+
+	static GtkWidget* _gtk_test_create_widget(GType widget_type, const gchar* first_property_name) {
+		return gtk_test_create_widget(widget_type, first_property_name, NULL);
+    }
+*/
+/*
+
+	static GtkWidget* _gtk_test_display_button_window(const gchar* window_title, const gchar* dialog_text) {
+		return gtk_test_display_button_window(window_title, dialog_text, NULL);
+    }
+*/
+/*
+
 	void celleditable_editingDoneHandler(GObject *, gpointer);
 
 	static gulong CellEditable_signal_connect_editing_done(gpointer instance, gpointer data) {
@@ -2991,6 +3165,12 @@ import (
 		return g_signal_connect(instance, "remove-widget", G_CALLBACK(celleditable_removeWidgetHandler), data);
 	}
 
+*/
+/*
+
+	static void _gtk_cell_layout_set_attributes(GtkCellLayout* cell_layout, GtkCellRenderer* cell) {
+		return gtk_cell_layout_set_attributes(cell_layout, cell, NULL);
+    }
 */
 /*
 
@@ -3129,12 +3309,30 @@ import (
 */
 /*
 
+	static void _gtk_tree_model_get(GtkTreeModel* tree_model, GtkTreeIter* iter) {
+		return gtk_tree_model_get(tree_model, iter, NULL);
+    }
+*/
+/*
+
 	void treesortable_sortColumnChangedHandler(GObject *, gpointer);
 
 	static gulong TreeSortable_signal_connect_sort_column_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "sort-column-changed", G_CALLBACK(treesortable_sortColumnChangedHandler), data);
 	}
 
+*/
+/*
+
+	static void _gtk_binding_entry_add_signal(GtkBindingSet* binding_set, guint keyval, GdkModifierType modifiers, const gchar* signal_name, guint n_args) {
+		return gtk_binding_entry_add_signal(binding_set, keyval, modifiers, signal_name, n_args, NULL);
+    }
+*/
+/*
+
+	static GtkTreePath* _gtk_tree_path_new_from_indices(gint first_index) {
+		return gtk_tree_path_new_from_indices(first_index, NULL);
+    }
 */
 import "C"
 
@@ -14339,7 +14537,20 @@ func (recv *Container) Add(widget *Widget) {
 	return
 }
 
-// Unsupported : gtk_container_add_with_properties : unsupported parameter ... : varargs
+// AddWithProperties is a wrapper around the C function gtk_container_add_with_properties.
+func (recv *Container) AddWithProperties(widget *Widget, firstPropName string) {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_first_prop_name := C.CString(firstPropName)
+	defer C.free(unsafe.Pointer(c_first_prop_name))
+
+	C._gtk_container_add_with_properties((*C.GtkContainer)(recv.native), c_widget, c_first_prop_name)
+
+	return
+}
 
 // CheckResize is a wrapper around the C function gtk_container_check_resize.
 func (recv *Container) CheckResize() {
@@ -14348,7 +14559,20 @@ func (recv *Container) CheckResize() {
 	return
 }
 
-// Unsupported : gtk_container_child_get : unsupported parameter ... : varargs
+// ChildGet is a wrapper around the C function gtk_container_child_get.
+func (recv *Container) ChildGet(child *Widget, firstPropName string) {
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
+
+	c_first_prop_name := C.CString(firstPropName)
+	defer C.free(unsafe.Pointer(c_first_prop_name))
+
+	C._gtk_container_child_get((*C.GtkContainer)(recv.native), c_child, c_first_prop_name)
+
+	return
+}
 
 // ChildGetProperty is a wrapper around the C function gtk_container_child_get_property.
 func (recv *Container) ChildGetProperty(child *Widget, propertyName string, value *gobject.Value) {
@@ -14372,7 +14596,20 @@ func (recv *Container) ChildGetProperty(child *Widget, propertyName string, valu
 
 // Unsupported : gtk_container_child_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : gtk_container_child_set : unsupported parameter ... : varargs
+// ChildSet is a wrapper around the C function gtk_container_child_set.
+func (recv *Container) ChildSet(child *Widget, firstPropName string) {
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
+
+	c_first_prop_name := C.CString(firstPropName)
+	defer C.free(unsafe.Pointer(c_first_prop_name))
+
+	C._gtk_container_child_set((*C.GtkContainer)(recv.native), c_child, c_first_prop_name)
+
+	return
+}
 
 // ChildSetProperty is a wrapper around the C function gtk_container_child_set_property.
 func (recv *Container) ChildSetProperty(child *Widget, propertyName string, value *gobject.Value) {
@@ -15228,7 +15465,26 @@ func DialogNew() *Dialog {
 	return retGo
 }
 
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
+// DialogNewWithButtons is a wrapper around the C function gtk_dialog_new_with_buttons.
+func DialogNewWithButtons(title string, parent *Window, flags DialogFlags, firstButtonText string) *Dialog {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_flags := (C.GtkDialogFlags)(flags)
+
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	retC := C._gtk_dialog_new_with_buttons(c_title, c_parent, c_flags, c_first_button_text)
+	retGo := DialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AddActionWidget is a wrapper around the C function gtk_dialog_add_action_widget.
 func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
@@ -15257,7 +15513,15 @@ func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_dialog_add_buttons : unsupported parameter ... : varargs
+// AddButtons is a wrapper around the C function gtk_dialog_add_buttons.
+func (recv *Dialog) AddButtons(firstButtonText string) {
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	C._gtk_dialog_add_buttons((*C.GtkDialog)(recv.native), c_first_button_text)
+
+	return
+}
 
 // GetActionArea is a wrapper around the C function gtk_dialog_get_action_area.
 func (recv *Dialog) GetActionArea() *Widget {
@@ -15305,7 +15569,14 @@ func (recv *Dialog) Run() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_dialog_set_alternative_button_order : unsupported parameter ... : varargs
+// SetAlternativeButtonOrder is a wrapper around the C function gtk_dialog_set_alternative_button_order.
+func (recv *Dialog) SetAlternativeButtonOrder(firstResponseId int32) {
+	c_first_response_id := (C.gint)(firstResponseId)
+
+	C._gtk_dialog_set_alternative_button_order((*C.GtkDialog)(recv.native), c_first_response_id)
+
+	return
+}
 
 // SetAlternativeButtonOrderFromArray is a wrapper around the C function gtk_dialog_set_alternative_button_order_from_array.
 func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
@@ -18608,7 +18879,26 @@ func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 	return FileChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
+// FileChooserDialogNew is a wrapper around the C function gtk_file_chooser_dialog_new.
+func FileChooserDialogNew(title string, parent *Window, action FileChooserAction, firstButtonText string) *FileChooserDialog {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_action := (C.GtkFileChooserAction)(action)
+
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	retC := C._gtk_file_chooser_dialog_new(c_title, c_parent, c_action, c_first_button_text)
+	retGo := FileChooserDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ImplementorIface returns the ImplementorIface interface implemented by FileChooserDialog
 func (recv *FileChooserDialog) ImplementorIface() *atk.ImplementorIface {
@@ -27046,7 +27336,16 @@ func InfoBarNew() *InfoBar {
 	return retGo
 }
 
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
+// InfoBarNewWithButtons is a wrapper around the C function gtk_info_bar_new_with_buttons.
+func InfoBarNewWithButtons(firstButtonText string) *InfoBar {
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	retC := C._gtk_info_bar_new_with_buttons(c_first_button_text)
+	retGo := InfoBarNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AddActionWidget is a wrapper around the C function gtk_info_bar_add_action_widget.
 func (recv *InfoBar) AddActionWidget(child *Widget, responseId int32) {
@@ -27075,7 +27374,15 @@ func (recv *InfoBar) AddButton(buttonText string, responseId int32) *Button {
 	return retGo
 }
 
-// Unsupported : gtk_info_bar_add_buttons : unsupported parameter ... : varargs
+// AddButtons is a wrapper around the C function gtk_info_bar_add_buttons.
+func (recv *InfoBar) AddButtons(firstButtonText string) {
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	C._gtk_info_bar_add_buttons((*C.GtkInfoBar)(recv.native), c_first_button_text)
+
+	return
+}
 
 // GetActionArea is a wrapper around the C function gtk_info_bar_get_action_area.
 func (recv *InfoBar) GetActionArea() *Widget {
@@ -29334,7 +29641,19 @@ func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
+// ListStoreNew is a wrapper around the C function gtk_list_store_new.
+func ListStoreNew(nColumns int32) *ListStore {
+	c_n_columns := (C.gint)(nColumns)
+
+	retC := C._gtk_list_store_new(c_n_columns)
+	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // ListStoreNewv is a wrapper around the C function gtk_list_store_newv.
 func ListStoreNewv(types []gobject.Type) *ListStore {
@@ -29422,7 +29741,18 @@ func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
 	return iter
 }
 
-// Unsupported : gtk_list_store_insert_with_values : unsupported parameter ... : varargs
+// InsertWithValues is a wrapper around the C function gtk_list_store_insert_with_values.
+func (recv *ListStore) InsertWithValues(position int32) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_position := (C.gint)(position)
+
+	C._gtk_list_store_insert_with_values((*C.GtkListStore)(recv.native), &c_iter, c_position)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter values :
 
@@ -29513,7 +29843,17 @@ func (recv *ListStore) Reorder(newOrder []int32) {
 	return
 }
 
-// Unsupported : gtk_list_store_set : unsupported parameter ... : varargs
+// Set is a wrapper around the C function gtk_list_store_set.
+func (recv *ListStore) Set(iter *TreeIter) {
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
+
+	C._gtk_list_store_set((*C.GtkListStore)(recv.native), c_iter)
+
+	return
+}
 
 // SetColumnTypes is a wrapper around the C function gtk_list_store_set_column_types.
 func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
@@ -39911,9 +40251,48 @@ func CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
 	return RecentChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
+// RecentChooserDialogNew is a wrapper around the C function gtk_recent_chooser_dialog_new.
+func RecentChooserDialogNew(title string, parent *Window, firstButtonText string) *RecentChooserDialog {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
 
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	retC := C._gtk_recent_chooser_dialog_new(c_title, c_parent, c_first_button_text)
+	retGo := RecentChooserDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// RecentChooserDialogNewForManager is a wrapper around the C function gtk_recent_chooser_dialog_new_for_manager.
+func RecentChooserDialogNewForManager(title string, parent *Window, manager *RecentManager, firstButtonText string) *RecentChooserDialog {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_manager := (*C.GtkRecentManager)(C.NULL)
+	if manager != nil {
+		c_manager = (*C.GtkRecentManager)(manager.ToC())
+	}
+
+	c_first_button_text := C.CString(firstButtonText)
+	defer C.free(unsafe.Pointer(c_first_button_text))
+
+	retC := C._gtk_recent_chooser_dialog_new_for_manager(c_title, c_parent, c_manager, c_first_button_text)
+	retGo := RecentChooserDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ImplementorIface returns the ImplementorIface interface implemented by RecentChooserDialog
 func (recv *RecentChooserDialog) ImplementorIface() *atk.ImplementorIface {
@@ -45263,7 +45642,17 @@ func (recv *Style) Detach() {
 	return
 }
 
-// Unsupported : gtk_style_get : unsupported parameter ... : varargs
+// Get is a wrapper around the C function gtk_style_get.
+func (recv *Style) Get(widgetType gobject.Type, firstPropertyName string) {
+	c_widget_type := (C.GType)(widgetType)
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	C._gtk_style_get((*C.GtkStyle)(recv.native), c_widget_type, c_first_property_name)
+
+	return
+}
 
 // GetStyleProperty is a wrapper around the C function gtk_style_get_style_property.
 func (recv *Style) GetStyleProperty(widgetType gobject.Type, propertyName string) *gobject.Value {
@@ -47131,7 +47520,19 @@ func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_create_tag : unsupported parameter ... : varargs
+// CreateTag is a wrapper around the C function gtk_text_buffer_create_tag.
+func (recv *TextBuffer) CreateTag(tagName string, firstPropertyName string) *TextTag {
+	c_tag_name := C.CString(tagName)
+	defer C.free(unsafe.Pointer(c_tag_name))
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._gtk_text_buffer_create_tag((*C.GtkTextBuffer)(recv.native), c_tag_name, c_first_property_name)
+	retGo := TextTagNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // CutClipboard is a wrapper around the C function gtk_text_buffer_cut_clipboard.
 func (recv *TextBuffer) CutClipboard(clipboard *Clipboard, defaultEditable bool) {
@@ -47726,9 +48127,47 @@ func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, 
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_insert_with_tags : unsupported parameter ... : varargs
+// InsertWithTags is a wrapper around the C function gtk_text_buffer_insert_with_tags.
+func (recv *TextBuffer) InsertWithTags(iter *TextIter, text string, len int32, firstTag *TextTag) {
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
 
-// Unsupported : gtk_text_buffer_insert_with_tags_by_name : unsupported parameter ... : varargs
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_len := (C.gint)(len)
+
+	c_first_tag := (*C.GtkTextTag)(C.NULL)
+	if firstTag != nil {
+		c_first_tag = (*C.GtkTextTag)(firstTag.ToC())
+	}
+
+	C._gtk_text_buffer_insert_with_tags((*C.GtkTextBuffer)(recv.native), c_iter, c_text, c_len, c_first_tag)
+
+	return
+}
+
+// InsertWithTagsByName is a wrapper around the C function gtk_text_buffer_insert_with_tags_by_name.
+func (recv *TextBuffer) InsertWithTagsByName(iter *TextIter, text string, len int32, firstTagName string) {
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_len := (C.gint)(len)
+
+	c_first_tag_name := C.CString(firstTagName)
+	defer C.free(unsafe.Pointer(c_first_tag_name))
+
+	C._gtk_text_buffer_insert_with_tags_by_name((*C.GtkTextBuffer)(recv.native), c_iter, c_text, c_len, c_first_tag_name)
+
+	return
+}
 
 // MoveMark is a wrapper around the C function gtk_text_buffer_move_mark.
 func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
@@ -53325,7 +53764,19 @@ func CastToTreeStore(object *gobject.Object) *TreeStore {
 	return TreeStoreNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
+// TreeStoreNew is a wrapper around the C function gtk_tree_store_new.
+func TreeStoreNew(nColumns int32) *TreeStore {
+	c_n_columns := (C.gint)(nColumns)
+
+	retC := C._gtk_tree_store_new(c_n_columns)
+	retGo := TreeStoreNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // TreeStoreNewv is a wrapper around the C function gtk_tree_store_newv.
 func TreeStoreNewv(types []gobject.Type) *TreeStore {
@@ -53433,7 +53884,23 @@ func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIt
 	return iter
 }
 
-// Unsupported : gtk_tree_store_insert_with_values : unsupported parameter ... : varargs
+// InsertWithValues is a wrapper around the C function gtk_tree_store_insert_with_values.
+func (recv *TreeStore) InsertWithValues(parent *TreeIter, position int32) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_parent := (*C.GtkTreeIter)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkTreeIter)(parent.ToC())
+	}
+
+	c_position := (C.gint)(position)
+
+	C._gtk_tree_store_insert_with_values((*C.GtkTreeStore)(recv.native), &c_iter, c_parent, c_position)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Unsupported : gtk_tree_store_insert_with_valuesv : unsupported parameter values :
 
@@ -53565,7 +54032,17 @@ func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
 	return
 }
 
-// Unsupported : gtk_tree_store_set : unsupported parameter ... : varargs
+// Set is a wrapper around the C function gtk_tree_store_set.
+func (recv *TreeStore) Set(iter *TreeIter) {
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
+
+	C._gtk_tree_store_set((*C.GtkTreeStore)(recv.native), c_iter)
+
+	return
+}
 
 // SetColumnTypes is a wrapper around the C function gtk_tree_store_set_column_types.
 func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
@@ -55304,7 +55781,23 @@ func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_insert_column_with_attributes : unsupported parameter ... : varargs
+// InsertColumnWithAttributes is a wrapper around the C function gtk_tree_view_insert_column_with_attributes.
+func (recv *TreeView) InsertColumnWithAttributes(position int32, title string, cell *CellRenderer) int32 {
+	c_position := (C.gint)(position)
+
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
+
+	retC := C._gtk_tree_view_insert_column_with_attributes((*C.GtkTreeView)(recv.native), c_position, c_title, c_cell)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : gtk_tree_view_insert_column_with_data_func : unsupported parameter func : no type generator for TreeCellDataFunc (GtkTreeCellDataFunc) for param func
 
@@ -55964,7 +56457,21 @@ func TreeViewColumnNew() *TreeViewColumn {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+// TreeViewColumnNewWithAttributes is a wrapper around the C function gtk_tree_view_column_new_with_attributes.
+func TreeViewColumnNewWithAttributes(title string, cell *CellRenderer) *TreeViewColumn {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
+
+	retC := C._gtk_tree_view_column_new_with_attributes(c_title, c_cell)
+	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AddAttribute is a wrapper around the C function gtk_tree_view_column_add_attribute.
 func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute string, column int32) {
@@ -56298,7 +56805,17 @@ func (recv *TreeViewColumn) SetAlignment(xalign float32) {
 	return
 }
 
-// Unsupported : gtk_tree_view_column_set_attributes : unsupported parameter ... : varargs
+// SetAttributes is a wrapper around the C function gtk_tree_view_column_set_attributes.
+func (recv *TreeViewColumn) SetAttributes(cellRenderer *CellRenderer) {
+	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if cellRenderer != nil {
+		c_cell_renderer = (*C.GtkCellRenderer)(cellRenderer.ToC())
+	}
+
+	C._gtk_tree_view_column_set_attributes((*C.GtkTreeViewColumn)(recv.native), c_cell_renderer)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_column_set_cell_data_func : unsupported parameter func : no type generator for TreeCellDataFunc (GtkTreeCellDataFunc) for param func
 
@@ -61901,7 +62418,18 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 	return retC
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
+// WidgetNew is a wrapper around the C function gtk_widget_new.
+func WidgetNew(type_ gobject.Type, firstPropertyName string) *Widget {
+	c_type := (C.GType)(type_)
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._gtk_widget_new(c_type, c_first_property_name)
+	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // WidgetGetDefaultDirection is a wrapper around the C function gtk_widget_get_default_direction.
 func WidgetGetDefaultDirection() TextDirection {
@@ -63663,7 +64191,15 @@ func (recv *Widget) SizeRequest() *Requisition {
 	return requisition
 }
 
-// Unsupported : gtk_widget_style_get : unsupported parameter ... : varargs
+// StyleGet is a wrapper around the C function gtk_widget_style_get.
+func (recv *Widget) StyleGet(firstPropertyName string) {
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	C._gtk_widget_style_get((*C.GtkWidget)(recv.native), c_first_property_name)
+
+	return
+}
 
 // StyleGetProperty is a wrapper around the C function gtk_widget_style_get_property.
 func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) {
@@ -68431,7 +68967,20 @@ func SetDebugFlags(flags uint32) {
 	return
 }
 
-// Unsupported : gtk_show_about_dialog : unsupported parameter ... : varargs
+// ShowAboutDialog is a wrapper around the C function gtk_show_about_dialog.
+func ShowAboutDialog(parent *Window, firstPropertyName string) {
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	C._gtk_show_about_dialog(c_parent, c_first_property_name)
+
+	return
+}
 
 // ShowUri is a wrapper around the C function gtk_show_uri.
 func ShowUri(screen *gdk.Screen, uri string, timestamp uint32) (bool, error) {
@@ -68516,9 +69065,32 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_test_create_widget : unsupported parameter ... : varargs
+// TestCreateWidget is a wrapper around the C function gtk_test_create_widget.
+func TestCreateWidget(widgetType gobject.Type, firstPropertyName string) *Widget {
+	c_widget_type := (C.GType)(widgetType)
 
-// Unsupported : gtk_test_display_button_window : unsupported parameter ... : varargs
+	c_first_property_name := C.CString(firstPropertyName)
+	defer C.free(unsafe.Pointer(c_first_property_name))
+
+	retC := C._gtk_test_create_widget(c_widget_type, c_first_property_name)
+	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TestDisplayButtonWindow is a wrapper around the C function gtk_test_display_button_window.
+func TestDisplayButtonWindow(windowTitle string, dialogText string) *Widget {
+	c_window_title := C.CString(windowTitle)
+	defer C.free(unsafe.Pointer(c_window_title))
+
+	c_dialog_text := C.CString(dialogText)
+	defer C.free(unsafe.Pointer(c_dialog_text))
+
+	retC := C._gtk_test_display_button_window(c_window_title, c_dialog_text)
+	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // TestFindLabel is a wrapper around the C function gtk_test_find_label.
 func TestFindLabel(widget *Widget, labelPattern string) *Widget {
@@ -69516,7 +70088,17 @@ func (recv *CellLayout) Reorder(cell *CellRenderer, position int32) {
 	return
 }
 
-// Unsupported : gtk_cell_layout_set_attributes : unsupported parameter ... : varargs
+// SetAttributes is a wrapper around the C function gtk_cell_layout_set_attributes.
+func (recv *CellLayout) SetAttributes(cell *CellRenderer) {
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
+
+	C._gtk_cell_layout_set_attributes((*C.GtkCellLayout)(recv.native), c_cell)
+
+	return
+}
 
 // Unsupported : gtk_cell_layout_set_cell_data_func : unsupported parameter func : no type generator for CellLayoutDataFunc (GtkCellLayoutDataFunc) for param func
 
@@ -72045,7 +72627,17 @@ func (recv *TreeModel) FilterNew(root *TreePath) *TreeModel {
 
 // Unsupported : gtk_tree_model_foreach : unsupported parameter func : no type generator for TreeModelForeachFunc (GtkTreeModelForeachFunc) for param func
 
-// Unsupported : gtk_tree_model_get : unsupported parameter ... : varargs
+// Get is a wrapper around the C function gtk_tree_model_get.
+func (recv *TreeModel) Get(iter *TreeIter) {
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
+
+	C._gtk_tree_model_get((*C.GtkTreeModel)(recv.native), c_iter)
+
+	return
+}
 
 // GetColumnType is a wrapper around the C function gtk_tree_model_get_column_type.
 func (recv *TreeModel) GetColumnType(index int32) gobject.Type {
@@ -73898,7 +74490,27 @@ func (recv *BindingEntry) Equals(other *BindingEntry) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// gtk_binding_entry_add_signal : unsupported parameter ... : varargs
+// BindingEntryAddSignal is a wrapper around the C function gtk_binding_entry_add_signal.
+func BindingEntryAddSignal(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType, signalName string, nArgs uint32) {
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	c_signal_name := C.CString(signalName)
+	defer C.free(unsafe.Pointer(c_signal_name))
+
+	c_n_args := (C.guint)(nArgs)
+
+	C._gtk_binding_entry_add_signal(c_binding_set, c_keyval, c_modifiers, c_signal_name, c_n_args)
+
+	return
+}
+
 // BindingEntryAddSignall is a wrapper around the C function gtk_binding_entry_add_signall.
 func BindingEntryAddSignall(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType, signalName string, bindingArgs *glib.SList) {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
@@ -89109,7 +89721,15 @@ func TreePathNewFirst() *TreePath {
 	return retGo
 }
 
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
+// TreePathNewFromIndices is a wrapper around the C function gtk_tree_path_new_from_indices.
+func TreePathNewFromIndices(firstIndex int32) *TreePath {
+	c_first_index := (C.gint)(firstIndex)
+
+	retC := C._gtk_tree_path_new_from_indices(c_first_index)
+	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
 func TreePathNewFromString(path string) *TreePath {
