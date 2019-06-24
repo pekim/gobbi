@@ -160,11 +160,12 @@ func (p *Parameter) nullableBeforeVargargs() bool {
 		return false
 	}
 
-	return p.Nullable
+	//return p.Nullable
+	return p.Nullable && strings.HasPrefix(p.Name, "first_")
 }
 
 func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
-	if p.Varargs != nil && !p.formatArgs {
+	if (p.Varargs != nil && !p.formatArgs) || p.nullableBeforeVargargs() {
 		return
 	}
 
@@ -205,7 +206,7 @@ func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {
-	if p.Varargs != nil {
+	if p.Varargs != nil || p.nullableBeforeVargargs() {
 		return
 	}
 
@@ -264,7 +265,7 @@ func (p *Parameter) generateGoVar(g *jen.Group) {
 }
 
 func (p *Parameter) generateCallArgument(g *jen.Group) {
-	if p.Varargs != nil {
+	if p.Varargs != nil || p.nullableBeforeVargargs() {
 		return
 	}
 

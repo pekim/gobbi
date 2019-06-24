@@ -837,14 +837,11 @@ func (recv *Buffer) CreateSourceMark(name string, category string, where *gtk.Te
 }
 
 // CreateSourceTag is a wrapper around the C function gtk_source_buffer_create_source_tag.
-func (recv *Buffer) CreateSourceTag(tagName string, firstPropertyName string) *gtk.TextTag {
+func (recv *Buffer) CreateSourceTag(tagName string) *gtk.TextTag {
 	c_tag_name := C.CString(tagName)
 	defer C.free(unsafe.Pointer(c_tag_name))
 
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	retC := C._gtk_source_buffer_create_source_tag((*C.GtkSourceBuffer)(recv.native), c_tag_name, c_first_property_name)
+	retC := C._gtk_source_buffer_create_source_tag((*C.GtkSourceBuffer)(recv.native), c_tag_name)
 	retGo := gtk.TextTagNewFromC(unsafe.Pointer(retC))
 
 	return retGo

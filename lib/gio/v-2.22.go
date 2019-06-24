@@ -15317,7 +15317,7 @@ func (recv *Initable) Equals(other *Initable) bool {
 }
 
 // InitableNew is a wrapper around the C function g_initable_new.
-func InitableNew(objectType gobject.Type, cancellable *Cancellable, error_ *glib.Error, firstPropertyName string) gobject.Object {
+func InitableNew(objectType gobject.Type, cancellable *Cancellable, error_ *glib.Error) gobject.Object {
 	c_object_type := (C.GType)(objectType)
 
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -15330,10 +15330,7 @@ func InitableNew(objectType gobject.Type, cancellable *Cancellable, error_ *glib
 		c_error = (**C.GError)(error_.ToC())
 	}
 
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	retC := C._g_initable_new(c_object_type, c_cancellable, c_error, c_first_property_name)
+	retC := C._g_initable_new(c_object_type, c_cancellable, c_error)
 	retGo := *gobject.ObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo

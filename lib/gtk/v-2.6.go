@@ -13162,7 +13162,7 @@ func DialogNew() *Dialog {
 }
 
 // DialogNewWithButtons is a wrapper around the C function gtk_dialog_new_with_buttons.
-func DialogNewWithButtons(title string, parent *Window, flags DialogFlags, firstButtonText string) *Dialog {
+func DialogNewWithButtons(title string, parent *Window, flags DialogFlags) *Dialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
@@ -13173,10 +13173,7 @@ func DialogNewWithButtons(title string, parent *Window, flags DialogFlags, first
 
 	c_flags := (C.GtkDialogFlags)(flags)
 
-	c_first_button_text := C.CString(firstButtonText)
-	defer C.free(unsafe.Pointer(c_first_button_text))
-
-	retC := C._gtk_dialog_new_with_buttons(c_title, c_parent, c_flags, c_first_button_text)
+	retC := C._gtk_dialog_new_with_buttons(c_title, c_parent, c_flags)
 	retGo := DialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -15568,7 +15565,7 @@ func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 }
 
 // FileChooserDialogNew is a wrapper around the C function gtk_file_chooser_dialog_new.
-func FileChooserDialogNew(title string, parent *Window, action FileChooserAction, firstButtonText string) *FileChooserDialog {
+func FileChooserDialogNew(title string, parent *Window, action FileChooserAction) *FileChooserDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
@@ -15579,10 +15576,7 @@ func FileChooserDialogNew(title string, parent *Window, action FileChooserAction
 
 	c_action := (C.GtkFileChooserAction)(action)
 
-	c_first_button_text := C.CString(firstButtonText)
-	defer C.free(unsafe.Pointer(c_first_button_text))
-
-	retC := C._gtk_file_chooser_dialog_new(c_title, c_parent, c_action, c_first_button_text)
+	retC := C._gtk_file_chooser_dialog_new(c_title, c_parent, c_action)
 	retGo := FileChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -38256,14 +38250,11 @@ func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity
 }
 
 // CreateTag is a wrapper around the C function gtk_text_buffer_create_tag.
-func (recv *TextBuffer) CreateTag(tagName string, firstPropertyName string) *TextTag {
+func (recv *TextBuffer) CreateTag(tagName string) *TextTag {
 	c_tag_name := C.CString(tagName)
 	defer C.free(unsafe.Pointer(c_tag_name))
 
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	retC := C._gtk_text_buffer_create_tag((*C.GtkTextBuffer)(recv.native), c_tag_name, c_first_property_name)
+	retC := C._gtk_text_buffer_create_tag((*C.GtkTextBuffer)(recv.native), c_tag_name)
 	retGo := TextTagNewFromC(unsafe.Pointer(retC))
 
 	return retGo

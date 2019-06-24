@@ -19,14 +19,14 @@ import (
 // #include <stdlib.h>
 /*
 
-	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type) {
-		return gdk_pixbuf_save(pixbuf, filename, type, NULL, NULL);
+	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
+		return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
     }
 */
 /*
 
-	static gboolean _gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable) {
-		return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, NULL, NULL);
+	static gboolean _gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable, GError** error) {
+		return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, error, NULL);
     }
 */
 /*

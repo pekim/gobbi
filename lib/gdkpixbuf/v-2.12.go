@@ -19,8 +19,8 @@ import (
 // #include <stdlib.h>
 /*
 
-	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type) {
-		return gdk_pixbuf_save(pixbuf, filename, type, NULL, NULL);
+	static gboolean _gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
+		return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
     }
 */
 /*
