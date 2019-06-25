@@ -17,18 +17,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	static gchar* _g_build_filename(const gchar* first_element) {
-		return g_build_filename(first_element, NULL);
-    }
-*/
-/*
-
-	static gchar* _g_build_path(const gchar* separator, const gchar* first_element) {
-		return g_build_path(separator, first_element, NULL);
-    }
-*/
-/*
-
 	static void _g_log(const gchar* log_domain, GLogLevelFlags log_level, const gchar* format) {
 		return g_log(log_domain, log_level, format);
     }
@@ -103,18 +91,6 @@ import (
 
 	static gchar* _g_strjoin(const gchar* separator) {
 		return g_strjoin(separator, NULL);
-    }
-*/
-/*
-
-	static gchar* _g_test_build_filename(GTestFileType file_type, const gchar* first_path) {
-		return g_test_build_filename(file_type, first_path, NULL);
-    }
-*/
-/*
-
-	static const gchar* _g_test_get_filename(GTestFileType file_type, const gchar* first_path) {
-		return g_test_get_filename(file_type, first_path, NULL);
     }
 */
 /*
@@ -1802,17 +1778,7 @@ func BitUnlock(address int32, lockBit int32) {
 	return
 }
 
-// BuildFilename is a wrapper around the C function g_build_filename.
-func BuildFilename(firstElement string) string {
-	c_first_element := C.CString(firstElement)
-	defer C.free(unsafe.Pointer(c_first_element))
-
-	retC := C._g_build_filename(c_first_element)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_build_filename : unsupported parameter first_element : non-nullable 'first_' param preceding varargs
 
 // BuildFilenamev is a wrapper around the C function g_build_filenamev.
 func BuildFilenamev(args []string) string {
@@ -1833,20 +1799,7 @@ func BuildFilenamev(args []string) string {
 	return retGo
 }
 
-// BuildPath is a wrapper around the C function g_build_path.
-func BuildPath(separator string, firstElement string) string {
-	c_separator := C.CString(separator)
-	defer C.free(unsafe.Pointer(c_separator))
-
-	c_first_element := C.CString(firstElement)
-	defer C.free(unsafe.Pointer(c_first_element))
-
-	retC := C._g_build_path(c_separator, c_first_element)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_build_path : unsupported parameter first_element : non-nullable 'first_' param preceding varargs
 
 // BuildPathv is a wrapper around the C function g_build_pathv.
 func BuildPathv(separator string, args []string) string {
@@ -4835,19 +4788,7 @@ func TestBugBase(uriPattern string) {
 	return
 }
 
-// TestBuildFilename is a wrapper around the C function g_test_build_filename.
-func TestBuildFilename(fileType TestFileType, firstPath string) string {
-	c_file_type := (C.GTestFileType)(fileType)
-
-	c_first_path := C.CString(firstPath)
-	defer C.free(unsafe.Pointer(c_first_path))
-
-	retC := C._g_test_build_filename(c_file_type, c_first_path)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_test_build_filename : unsupported parameter first_path : non-nullable 'first_' param preceding varargs
 
 // Unsupported : g_test_create_case : unsupported parameter data_setup : no type generator for TestFixtureFunc (GTestFixtureFunc) for param data_setup
 
@@ -4902,18 +4843,7 @@ func TestGetDir(fileType TestFileType) string {
 	return retGo
 }
 
-// TestGetFilename is a wrapper around the C function g_test_get_filename.
-func TestGetFilename(fileType TestFileType, firstPath string) string {
-	c_file_type := (C.GTestFileType)(fileType)
-
-	c_first_path := C.CString(firstPath)
-	defer C.free(unsafe.Pointer(c_first_path))
-
-	retC := C._g_test_get_filename(c_file_type, c_first_path)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
+// Unsupported : g_test_get_filename : unsupported parameter first_path : non-nullable 'first_' param preceding varargs
 
 // TestGetRoot is a wrapper around the C function g_test_get_root.
 func TestGetRoot() *TestSuite {

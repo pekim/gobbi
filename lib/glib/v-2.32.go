@@ -17,18 +17,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	static gchar* _g_build_filename(const gchar* first_element) {
-		return g_build_filename(first_element, NULL);
-    }
-*/
-/*
-
-	static gchar* _g_build_path(const gchar* separator, const gchar* first_element) {
-		return g_build_path(separator, first_element, NULL);
-    }
-*/
-/*
-
 	static void _g_log(const gchar* log_domain, GLogLevelFlags log_level, const gchar* format) {
 		return g_log(log_domain, log_level, format);
     }
@@ -1763,17 +1751,7 @@ func BitUnlock(address int32, lockBit int32) {
 	return
 }
 
-// BuildFilename is a wrapper around the C function g_build_filename.
-func BuildFilename(firstElement string) string {
-	c_first_element := C.CString(firstElement)
-	defer C.free(unsafe.Pointer(c_first_element))
-
-	retC := C._g_build_filename(c_first_element)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_build_filename : unsupported parameter first_element : non-nullable 'first_' param preceding varargs
 
 // BuildFilenamev is a wrapper around the C function g_build_filenamev.
 func BuildFilenamev(args []string) string {
@@ -1794,20 +1772,7 @@ func BuildFilenamev(args []string) string {
 	return retGo
 }
 
-// BuildPath is a wrapper around the C function g_build_path.
-func BuildPath(separator string, firstElement string) string {
-	c_separator := C.CString(separator)
-	defer C.free(unsafe.Pointer(c_separator))
-
-	c_first_element := C.CString(firstElement)
-	defer C.free(unsafe.Pointer(c_first_element))
-
-	retC := C._g_build_path(c_separator, c_first_element)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_build_path : unsupported parameter first_element : non-nullable 'first_' param preceding varargs
 
 // BuildPathv is a wrapper around the C function g_build_pathv.
 func BuildPathv(separator string, args []string) string {

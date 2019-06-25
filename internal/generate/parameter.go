@@ -80,6 +80,10 @@ func (p *Parameter) isSupported() (bool, string) {
 		return true, ""
 	}
 
+	if strings.HasPrefix(p.Name, "first_") && !p.Nullable && p.parameters[p.index+1].Varargs != nil {
+		return false, "non-nullable 'first_' param preceding varargs"
+	}
+
 	if p.Type != nil {
 		if p.Type.generator == nil {
 			return false, fmt.Sprintf("no type generator for %s (%s) for param %s",

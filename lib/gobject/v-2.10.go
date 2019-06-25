@@ -26,12 +26,6 @@ import (
 */
 /*
 
-	static GObject* _g_object_new(GType object_type, const gchar* first_property_name) {
-		return g_object_new(object_type, first_property_name, NULL);
-    }
-*/
-/*
-
 	static gpointer _g_object_connect(gpointer object, const gchar* signal_spec) {
 		return g_object_connect(object, signal_spec, NULL);
     }
@@ -40,18 +34,6 @@ import (
 
 	static void _g_object_disconnect(gpointer object, const gchar* signal_spec) {
 		return g_object_disconnect(object, signal_spec, NULL);
-    }
-*/
-/*
-
-	static void _g_object_get(gpointer object, const gchar* first_property_name) {
-		return g_object_get(object, first_property_name, NULL);
-    }
-*/
-/*
-
-	static void _g_object_set(gpointer object, const gchar* first_property_name) {
-		return g_object_set(object, first_property_name, NULL);
     }
 */
 /*
@@ -294,22 +276,7 @@ func object_notifyHandler(_ *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) 
 	callback(pspec)
 }
 
-// ObjectNew is a wrapper around the C function g_object_new.
-func ObjectNew(objectType Type, firstPropertyName string) *Object {
-	c_object_type := (C.GType)(objectType)
-
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	retC := C._g_object_new(c_object_type, c_first_property_name)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
+// Unsupported : g_object_new : unsupported parameter first_property_name : non-nullable 'first_' param preceding varargs
 
 // Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
@@ -407,15 +374,7 @@ func (recv *Object) FreezeNotify() {
 	return
 }
 
-// Get is a wrapper around the C function g_object_get.
-func (recv *Object) Get(firstPropertyName string) {
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	C._g_object_get((C.gpointer)(recv.native), c_first_property_name)
-
-	return
-}
+// Unsupported : g_object_get : unsupported parameter first_property_name : non-nullable 'first_' param preceding varargs
 
 // GetData is a wrapper around the C function g_object_get_data.
 func (recv *Object) GetData(key string) uintptr {
@@ -507,15 +466,7 @@ func (recv *Object) RunDispose() {
 	return
 }
 
-// Set is a wrapper around the C function g_object_set.
-func (recv *Object) Set(firstPropertyName string) {
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	C._g_object_set((C.gpointer)(recv.native), c_first_property_name)
-
-	return
-}
+// Unsupported : g_object_set : unsupported parameter first_property_name : non-nullable 'first_' param preceding varargs
 
 // SetData is a wrapper around the C function g_object_set_data.
 func (recv *Object) SetData(key string, data uintptr) {

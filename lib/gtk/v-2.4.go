@@ -378,24 +378,6 @@ import (
 */
 /*
 
-	static void _gtk_container_add_with_properties(GtkContainer* container, GtkWidget* widget, const gchar* first_prop_name) {
-		return gtk_container_add_with_properties(container, widget, first_prop_name, NULL);
-    }
-*/
-/*
-
-	static void _gtk_container_child_get(GtkContainer* container, GtkWidget* child, const gchar* first_prop_name) {
-		return gtk_container_child_get(container, child, first_prop_name, NULL);
-    }
-*/
-/*
-
-	static void _gtk_container_child_set(GtkContainer* container, GtkWidget* child, const gchar* first_prop_name) {
-		return gtk_container_child_set(container, child, first_prop_name, NULL);
-    }
-*/
-/*
-
 	void cssprovider_parsingErrorHandler(GObject *, GtkCssSection *, GError *, gpointer);
 
 	static gulong CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
@@ -425,12 +407,6 @@ import (
 
 	static GtkDialog* _gtk_dialog_new_with_buttons(const gchar* title, GtkWindow* parent, GtkDialogFlags flags) {
 		return gtk_dialog_new_with_buttons(title, parent, flags, NULL, NULL);
-    }
-*/
-/*
-
-	static void _gtk_dialog_add_buttons(GtkDialog* dialog, const gchar* first_button_text) {
-		return gtk_dialog_add_buttons(dialog, first_button_text, NULL);
     }
 */
 /*
@@ -1512,18 +1488,6 @@ import (
 */
 /*
 
-	static void _gtk_text_buffer_insert_with_tags(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, GtkTextTag* first_tag) {
-		return gtk_text_buffer_insert_with_tags(buffer, iter, text, len, first_tag, NULL);
-    }
-*/
-/*
-
-	static void _gtk_text_buffer_insert_with_tags_by_name(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, const gchar* first_tag_name) {
-		return gtk_text_buffer_insert_with_tags_by_name(buffer, iter, text, len, first_tag_name, NULL);
-    }
-*/
-/*
-
 	void texttagtable_tagAddedHandler(GObject *, GtkTextTag *, gpointer);
 
 	static gulong TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
@@ -2499,18 +2463,6 @@ import (
 */
 /*
 
-	static GtkWidget* _gtk_widget_new(GType type, const gchar* first_property_name) {
-		return gtk_widget_new(type, first_property_name, NULL);
-    }
-*/
-/*
-
-	static void _gtk_widget_style_get(GtkWidget* widget, const gchar* first_property_name) {
-		return gtk_widget_style_get(widget, first_property_name, NULL);
-    }
-*/
-/*
-
 	void window_activateDefaultHandler(GObject *, gpointer);
 
 	static gulong Window_signal_connect_activate_default(gpointer instance, gpointer data) {
@@ -2714,12 +2666,6 @@ import (
 
 	static void _gtk_binding_entry_add_signal(GtkBindingSet* binding_set, guint keyval, GdkModifierType modifiers, const gchar* signal_name, guint n_args) {
 		return gtk_binding_entry_add_signal(binding_set, keyval, modifiers, signal_name, n_args, NULL);
-    }
-*/
-/*
-
-	static GtkTreePath* _gtk_tree_path_new_from_indices(gint first_index) {
-		return gtk_tree_path_new_from_indices(first_index, NULL);
     }
 */
 import "C"
@@ -11460,20 +11406,7 @@ func (recv *Container) Add(widget *Widget) {
 	return
 }
 
-// AddWithProperties is a wrapper around the C function gtk_container_add_with_properties.
-func (recv *Container) AddWithProperties(widget *Widget, firstPropName string) {
-	c_widget := (*C.GtkWidget)(C.NULL)
-	if widget != nil {
-		c_widget = (*C.GtkWidget)(widget.ToC())
-	}
-
-	c_first_prop_name := C.CString(firstPropName)
-	defer C.free(unsafe.Pointer(c_first_prop_name))
-
-	C._gtk_container_add_with_properties((*C.GtkContainer)(recv.native), c_widget, c_first_prop_name)
-
-	return
-}
+// Unsupported : gtk_container_add_with_properties : unsupported parameter first_prop_name : non-nullable 'first_' param preceding varargs
 
 // CheckResize is a wrapper around the C function gtk_container_check_resize.
 func (recv *Container) CheckResize() {
@@ -11482,20 +11415,7 @@ func (recv *Container) CheckResize() {
 	return
 }
 
-// ChildGet is a wrapper around the C function gtk_container_child_get.
-func (recv *Container) ChildGet(child *Widget, firstPropName string) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
-
-	c_first_prop_name := C.CString(firstPropName)
-	defer C.free(unsafe.Pointer(c_first_prop_name))
-
-	C._gtk_container_child_get((*C.GtkContainer)(recv.native), c_child, c_first_prop_name)
-
-	return
-}
+// Unsupported : gtk_container_child_get : unsupported parameter first_prop_name : non-nullable 'first_' param preceding varargs
 
 // ChildGetProperty is a wrapper around the C function gtk_container_child_get_property.
 func (recv *Container) ChildGetProperty(child *Widget, propertyName string, value *gobject.Value) {
@@ -11519,20 +11439,7 @@ func (recv *Container) ChildGetProperty(child *Widget, propertyName string, valu
 
 // Unsupported : gtk_container_child_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// ChildSet is a wrapper around the C function gtk_container_child_set.
-func (recv *Container) ChildSet(child *Widget, firstPropName string) {
-	c_child := (*C.GtkWidget)(C.NULL)
-	if child != nil {
-		c_child = (*C.GtkWidget)(child.ToC())
-	}
-
-	c_first_prop_name := C.CString(firstPropName)
-	defer C.free(unsafe.Pointer(c_first_prop_name))
-
-	C._gtk_container_child_set((*C.GtkContainer)(recv.native), c_child, c_first_prop_name)
-
-	return
-}
+// Unsupported : gtk_container_child_set : unsupported parameter first_prop_name : non-nullable 'first_' param preceding varargs
 
 // ChildSetProperty is a wrapper around the C function gtk_container_child_set_property.
 func (recv *Container) ChildSetProperty(child *Widget, propertyName string, value *gobject.Value) {
@@ -12420,15 +12327,7 @@ func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 	return retGo
 }
 
-// AddButtons is a wrapper around the C function gtk_dialog_add_buttons.
-func (recv *Dialog) AddButtons(firstButtonText string) {
-	c_first_button_text := C.CString(firstButtonText)
-	defer C.free(unsafe.Pointer(c_first_button_text))
-
-	C._gtk_dialog_add_buttons((*C.GtkDialog)(recv.native), c_first_button_text)
-
-	return
-}
+// Unsupported : gtk_dialog_add_buttons : unsupported parameter first_button_text : non-nullable 'first_' param preceding varargs
 
 // Response is a wrapper around the C function gtk_dialog_response.
 func (recv *Dialog) Response(responseId int32) {
@@ -37094,47 +36993,9 @@ func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, 
 	return retGo
 }
 
-// InsertWithTags is a wrapper around the C function gtk_text_buffer_insert_with_tags.
-func (recv *TextBuffer) InsertWithTags(iter *TextIter, text string, len int32, firstTag *TextTag) {
-	c_iter := (*C.GtkTextIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GtkTextIter)(iter.ToC())
-	}
+// Unsupported : gtk_text_buffer_insert_with_tags : unsupported parameter first_tag : non-nullable 'first_' param preceding varargs
 
-	c_text := C.CString(text)
-	defer C.free(unsafe.Pointer(c_text))
-
-	c_len := (C.gint)(len)
-
-	c_first_tag := (*C.GtkTextTag)(C.NULL)
-	if firstTag != nil {
-		c_first_tag = (*C.GtkTextTag)(firstTag.ToC())
-	}
-
-	C._gtk_text_buffer_insert_with_tags((*C.GtkTextBuffer)(recv.native), c_iter, c_text, c_len, c_first_tag)
-
-	return
-}
-
-// InsertWithTagsByName is a wrapper around the C function gtk_text_buffer_insert_with_tags_by_name.
-func (recv *TextBuffer) InsertWithTagsByName(iter *TextIter, text string, len int32, firstTagName string) {
-	c_iter := (*C.GtkTextIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GtkTextIter)(iter.ToC())
-	}
-
-	c_text := C.CString(text)
-	defer C.free(unsafe.Pointer(c_text))
-
-	c_len := (C.gint)(len)
-
-	c_first_tag_name := C.CString(firstTagName)
-	defer C.free(unsafe.Pointer(c_first_tag_name))
-
-	C._gtk_text_buffer_insert_with_tags_by_name((*C.GtkTextBuffer)(recv.native), c_iter, c_text, c_len, c_first_tag_name)
-
-	return
-}
+// Unsupported : gtk_text_buffer_insert_with_tags_by_name : unsupported parameter first_tag_name : non-nullable 'first_' param preceding varargs
 
 // MoveMark is a wrapper around the C function gtk_text_buffer_move_mark.
 func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
@@ -50363,18 +50224,7 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 	return retC
 }
 
-// WidgetNew is a wrapper around the C function gtk_widget_new.
-func WidgetNew(type_ gobject.Type, firstPropertyName string) *Widget {
-	c_type := (C.GType)(type_)
-
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	retC := C._gtk_widget_new(c_type, c_first_property_name)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gtk_widget_new : unsupported parameter first_property_name : non-nullable 'first_' param preceding varargs
 
 // WidgetGetDefaultDirection is a wrapper around the C function gtk_widget_get_default_direction.
 func WidgetGetDefaultDirection() TextDirection {
@@ -51730,15 +51580,7 @@ func (recv *Widget) SizeRequest() *Requisition {
 	return requisition
 }
 
-// StyleGet is a wrapper around the C function gtk_widget_style_get.
-func (recv *Widget) StyleGet(firstPropertyName string) {
-	c_first_property_name := C.CString(firstPropertyName)
-	defer C.free(unsafe.Pointer(c_first_property_name))
-
-	C._gtk_widget_style_get((*C.GtkWidget)(recv.native), c_first_property_name)
-
-	return
-}
+// Unsupported : gtk_widget_style_get : unsupported parameter first_property_name : non-nullable 'first_' param preceding varargs
 
 // StyleGetProperty is a wrapper around the C function gtk_widget_style_get_property.
 func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) {
@@ -74831,15 +74673,7 @@ func TreePathNewFirst() *TreePath {
 	return retGo
 }
 
-// TreePathNewFromIndices is a wrapper around the C function gtk_tree_path_new_from_indices.
-func TreePathNewFromIndices(firstIndex int32) *TreePath {
-	c_first_index := (C.gint)(firstIndex)
-
-	retC := C._gtk_tree_path_new_from_indices(c_first_index)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter first_index : non-nullable 'first_' param preceding varargs
 
 // TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
 func TreePathNewFromString(path string) *TreePath {

@@ -723,12 +723,6 @@ import (
 */
 /*
 
-	static GFile* _g_file_new_build_filename(const gchar* first_element) {
-		return g_file_new_build_filename(first_element, NULL);
-    }
-*/
-/*
-
 	static gpointer _g_initable_new(GType object_type, GCancellable* cancellable, GError** error) {
 		return g_initable_new(object_type, cancellable, error, NULL, NULL);
     }
@@ -29264,17 +29258,7 @@ func (recv *File) Equals(other *File) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// FileNewBuildFilename is a wrapper around the C function g_file_new_build_filename.
-func FileNewBuildFilename(firstElement string) *File {
-	c_first_element := C.CString(firstElement)
-	defer C.free(unsafe.Pointer(c_first_element))
-
-	retC := C._g_file_new_build_filename(c_first_element)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
+// g_file_new_build_filename : unsupported parameter first_element : non-nullable 'first_' param preceding varargs
 // FileNewForCommandlineArg is a wrapper around the C function g_file_new_for_commandline_arg.
 func FileNewForCommandlineArg(arg string) *File {
 	c_arg := C.CString(arg)
