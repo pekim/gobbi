@@ -188,6 +188,14 @@
     <record name="TreePath">
       <method blacklist="true" c:identifier="gtk_tree_path_get_indices"/>
     </record>
+
+
+    <record name="TreeIter">
+        <field name="stamp" private="1"/>
+        <field name="user_data" private="1"/>
+        <field name="user_data2" private="1"/>
+        <field name="user_data3" private="1"/>
+    </record>
   </namespace>
 </repository>
 

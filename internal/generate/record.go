@@ -69,6 +69,7 @@ func (r *Record) mergeAddenda(addenda *Record) {
 	r.Constructors.mergeAddenda(addenda.Constructors)
 	r.Functions.mergeAddenda(addenda.Functions)
 	r.Methods.mergeAddenda(addenda.Methods)
+	r.Fields.mergeAddenda(addenda.Fields)
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {

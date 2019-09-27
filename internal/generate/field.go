@@ -61,3 +61,7 @@ func (f Field) generate(g *jen.Group) {
 
 	f.Type.generator.generateDeclaration(g, f.goVarName)
 }
+
+func (f *Field) mergeAddenda(addenda *Field) {
+	f.Private = addenda.Private
+}

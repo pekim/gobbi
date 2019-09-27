@@ -106444,11 +106444,11 @@ func (recv *TreeDragSourceIface) Equals(other *TreeDragSourceIface) bool {
 
 // TreeIter is a wrapper around the C record GtkTreeIter.
 type TreeIter struct {
-	native    *C.GtkTreeIter
-	Stamp     int32
-	UserData  uintptr
-	UserData2 uintptr
-	UserData3 uintptr
+	native *C.GtkTreeIter
+	// Private : stamp
+	// Private : user_data
+	// Private : user_data2
+	// Private : user_data3
 }
 
 func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
@@ -106457,26 +106457,12 @@ func TreeIterNewFromC(u unsafe.Pointer) *TreeIter {
 		return nil
 	}
 
-	g := &TreeIter{
-		Stamp:     (int32)(c.stamp),
-		UserData:  (uintptr)(c.user_data),
-		UserData2: (uintptr)(c.user_data2),
-		UserData3: (uintptr)(c.user_data3),
-		native:    c,
-	}
+	g := &TreeIter{native: c}
 
 	return g
 }
 
 func (recv *TreeIter) ToC() unsafe.Pointer {
-	recv.native.stamp =
-		(C.gint)(recv.Stamp)
-	recv.native.user_data =
-		(C.gpointer)(recv.UserData)
-	recv.native.user_data2 =
-		(C.gpointer)(recv.UserData2)
-	recv.native.user_data3 =
-		(C.gpointer)(recv.UserData3)
 
 	return (unsafe.Pointer)(recv.native)
 }
