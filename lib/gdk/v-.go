@@ -19,6 +19,7 @@ import (
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
+// #include <gdk_event.h>
 // #include <stdlib.h>
 /*
 
@@ -5761,11 +5762,7 @@ func ErrorTrapPush() {
 	return
 }
 
-// Unsupported : gdk_event_get : no return generator
-
 // Unsupported : gdk_event_handler_set : unsupported parameter func : no type generator for EventFunc (GdkEventFunc) for param func
-
-// Unsupported : gdk_event_peek : no return generator
 
 // EventsPending is a wrapper around the C function gdk_events_pending.
 func EventsPending() bool {
@@ -8146,5 +8143,37 @@ func (recv *WindowRedirect) ToC() unsafe.Pointer {
 
 // Equals compares this WindowRedirect with another WindowRedirect, and returns true if they represent the same GObject.
 func (recv *WindowRedirect) Equals(other *WindowRedirect) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Event is a wrapper around the C record GdkEvent_.
+type Event struct {
+	native *C.GdkEvent_
+	Type   EventType
+}
+
+func EventNewFromC(u unsafe.Pointer) *Event {
+	c := (*C.GdkEvent_)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Event{
+		Type:   (EventType)(c._type),
+		native: c,
+	}
+
+	return g
+}
+
+func (recv *Event) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Event with another Event, and returns true if they represent the same GObject.
+func (recv *Event) Equals(other *Event) bool {
 	return other.ToC() == recv.ToC()
 }

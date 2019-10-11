@@ -7,6 +7,7 @@ package gtksource
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gtksourceview/gtksource.h>
 // #include <gtksourceview/completion-providers/words/gtksourcecompletionwords.h>
+// #include <../gdk/gdk_event.h>
 // #include <stdlib.h>
 import "C"
 

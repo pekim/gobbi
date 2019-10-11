@@ -4,6 +4,8 @@
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
+  <c:include name="../gdk/gdk_event.h"/>
+
   <namespace>
     <bitfield name="StyleContextPrintFlags" version="3.20"/>
 

@@ -6,6 +6,7 @@ package gdk
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
+// #include <gdk_event.h>
 // #include <stdlib.h>
 import "C"
 

@@ -22,6 +22,7 @@ import (
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gtksourceview/gtksource.h>
 // #include <gtksourceview/completion-providers/words/gtksourcecompletionwords.h>
+// #include <../gdk/gdk_event.h>
 // #include <stdlib.h>
 /*
 
@@ -133,6 +134,24 @@ import (
 */
 /*
 
+	void gutterrenderer_activateHandler(GObject *, GtkTextIter *, GdkRectangle *, GdkEvent_ *, gpointer);
+
+	static gulong GutterRenderer_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", G_CALLBACK(gutterrenderer_activateHandler), data);
+	}
+
+*/
+/*
+
+	gboolean gutterrenderer_queryActivatableHandler(GObject *, GtkTextIter *, GdkRectangle *, GdkEvent_ *, gpointer);
+
+	static gulong GutterRenderer_signal_connect_query_activatable(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-activatable", G_CALLBACK(gutterrenderer_queryActivatableHandler), data);
+	}
+
+*/
+/*
+
 	void gutterrenderer_queryDataHandler(GObject *, GtkTextIter *, GtkTextIter *, GtkSourceGutterRendererState, gpointer);
 
 	static gulong GutterRenderer_signal_connect_query_data(gpointer instance, gpointer data) {
@@ -155,6 +174,15 @@ import (
 
 	static gulong GutterRenderer_signal_connect_queue_draw(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "queue-draw", G_CALLBACK(gutterrenderer_queueDrawHandler), data);
+	}
+
+*/
+/*
+
+	void view_lineMarkActivatedHandler(GObject *, GtkTextIter *, GdkEvent_ *, gpointer);
+
+	static gulong View_signal_connect_line_mark_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "line-mark-activated", G_CALLBACK(view_lineMarkActivatedHandler), data);
 	}
 
 */
@@ -2260,9 +2288,140 @@ func CastToGutterRenderer(object *gobject.Object) *GutterRenderer {
 	return GutterRendererNewFromC(object.ToC())
 }
 
-// Unsupported signal 'activate' for GutterRenderer : unsupported parameter event : no type generator for Gdk.Event,
+type signalGutterRendererActivateDetail struct {
+	callback  GutterRendererSignalActivateCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'query-activatable' for GutterRenderer : unsupported parameter event : no type generator for Gdk.Event,
+var signalGutterRendererActivateId int
+var signalGutterRendererActivateMap = make(map[int]signalGutterRendererActivateDetail)
+var signalGutterRendererActivateLock sync.RWMutex
+
+// GutterRendererSignalActivateCallback is a callback function for a 'activate' signal emitted from a GutterRenderer.
+type GutterRendererSignalActivateCallback func(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event)
+
+/*
+ConnectActivate connects the callback to the 'activate' signal for the GutterRenderer.
+
+The returned value represents the connection, and may be passed to DisconnectActivate to remove it.
+*/
+func (recv *GutterRenderer) ConnectActivate(callback GutterRendererSignalActivateCallback) int {
+	signalGutterRendererActivateLock.Lock()
+	defer signalGutterRendererActivateLock.Unlock()
+
+	signalGutterRendererActivateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GutterRenderer_signal_connect_activate(instance, C.gpointer(uintptr(signalGutterRendererActivateId)))
+
+	detail := signalGutterRendererActivateDetail{callback, handlerID}
+	signalGutterRendererActivateMap[signalGutterRendererActivateId] = detail
+
+	return signalGutterRendererActivateId
+}
+
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the GutterRenderer.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *GutterRenderer) DisconnectActivate(connectionID int) {
+	signalGutterRendererActivateLock.Lock()
+	defer signalGutterRendererActivateLock.Unlock()
+
+	detail, exists := signalGutterRendererActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGutterRendererActivateMap, connectionID)
+}
+
+//export gutterrenderer_activateHandler
+func gutterrenderer_activateHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_event *C.GdkEvent_, data C.gpointer) {
+	signalGutterRendererActivateLock.RLock()
+	defer signalGutterRendererActivateLock.RUnlock()
+
+	iter := gtk.TextIterNewFromC(unsafe.Pointer(c_iter))
+
+	area := gdk.RectangleNewFromC(unsafe.Pointer(c_area))
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalGutterRendererActivateMap[index].callback
+	callback(iter, area, event)
+}
+
+type signalGutterRendererQueryActivatableDetail struct {
+	callback  GutterRendererSignalQueryActivatableCallback
+	handlerID C.gulong
+}
+
+var signalGutterRendererQueryActivatableId int
+var signalGutterRendererQueryActivatableMap = make(map[int]signalGutterRendererQueryActivatableDetail)
+var signalGutterRendererQueryActivatableLock sync.RWMutex
+
+// GutterRendererSignalQueryActivatableCallback is a callback function for a 'query-activatable' signal emitted from a GutterRenderer.
+type GutterRendererSignalQueryActivatableCallback func(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool
+
+/*
+ConnectQueryActivatable connects the callback to the 'query-activatable' signal for the GutterRenderer.
+
+The returned value represents the connection, and may be passed to DisconnectQueryActivatable to remove it.
+*/
+func (recv *GutterRenderer) ConnectQueryActivatable(callback GutterRendererSignalQueryActivatableCallback) int {
+	signalGutterRendererQueryActivatableLock.Lock()
+	defer signalGutterRendererQueryActivatableLock.Unlock()
+
+	signalGutterRendererQueryActivatableId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GutterRenderer_signal_connect_query_activatable(instance, C.gpointer(uintptr(signalGutterRendererQueryActivatableId)))
+
+	detail := signalGutterRendererQueryActivatableDetail{callback, handlerID}
+	signalGutterRendererQueryActivatableMap[signalGutterRendererQueryActivatableId] = detail
+
+	return signalGutterRendererQueryActivatableId
+}
+
+/*
+DisconnectQueryActivatable disconnects a callback from the 'query-activatable' signal for the GutterRenderer.
+
+The connectionID should be a value returned from a call to ConnectQueryActivatable.
+*/
+func (recv *GutterRenderer) DisconnectQueryActivatable(connectionID int) {
+	signalGutterRendererQueryActivatableLock.Lock()
+	defer signalGutterRendererQueryActivatableLock.Unlock()
+
+	detail, exists := signalGutterRendererQueryActivatableMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGutterRendererQueryActivatableMap, connectionID)
+}
+
+//export gutterrenderer_queryActivatableHandler
+func gutterrenderer_queryActivatableHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_event *C.GdkEvent_, data C.gpointer) C.gboolean {
+	signalGutterRendererQueryActivatableLock.RLock()
+	defer signalGutterRendererQueryActivatableLock.RUnlock()
+
+	iter := gtk.TextIterNewFromC(unsafe.Pointer(c_iter))
+
+	area := gdk.RectangleNewFromC(unsafe.Pointer(c_area))
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalGutterRendererQueryActivatableMap[index].callback
+	retGo := callback(iter, area, event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 type signalGutterRendererQueryDataDetail struct {
 	callback  GutterRendererSignalQueryDataCallback
@@ -2463,7 +2622,27 @@ func gutterrenderer_queueDrawHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_source_gutter_renderer_activate : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// Activate is a wrapper around the C function gtk_source_gutter_renderer_activate.
+func (recv *GutterRenderer) Activate(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) {
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	c_area := (*C.GdkRectangle)(C.NULL)
+	if area != nil {
+		c_area = (*C.GdkRectangle)(area.ToC())
+	}
+
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	C.gtk_source_gutter_renderer_activate((*C.GtkSourceGutterRenderer)(recv.native), c_iter, c_area, c_event)
+
+	return
+}
 
 // Begin is a wrapper around the C function gtk_source_gutter_renderer_begin.
 func (recv *GutterRenderer) Begin(cr *cairo.Context, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, start *gtk.TextIter, end *gtk.TextIter) {
@@ -2620,7 +2799,28 @@ func (recv *GutterRenderer) GetWindowType() gtk.TextWindowType {
 	return retGo
 }
 
-// Unsupported : gtk_source_gutter_renderer_query_activatable : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// QueryActivatable is a wrapper around the C function gtk_source_gutter_renderer_query_activatable.
+func (recv *GutterRenderer) QueryActivatable(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool {
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	c_area := (*C.GdkRectangle)(C.NULL)
+	if area != nil {
+		c_area = (*C.GdkRectangle)(area.ToC())
+	}
+
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	retC := C.gtk_source_gutter_renderer_query_activatable((*C.GtkSourceGutterRenderer)(recv.native), c_iter, c_area, c_event)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // QueryData is a wrapper around the C function gtk_source_gutter_renderer_query_data.
 func (recv *GutterRenderer) QueryData(start *gtk.TextIter, end *gtk.TextIter, state GutterRendererState) {
@@ -4793,7 +4993,69 @@ func CastToView(object *gobject.Object) *View {
 	return ViewNewFromC(object.ToC())
 }
 
-// Unsupported signal 'line-mark-activated' for View : unsupported parameter event : no type generator for Gdk.Event,
+type signalViewLineMarkActivatedDetail struct {
+	callback  ViewSignalLineMarkActivatedCallback
+	handlerID C.gulong
+}
+
+var signalViewLineMarkActivatedId int
+var signalViewLineMarkActivatedMap = make(map[int]signalViewLineMarkActivatedDetail)
+var signalViewLineMarkActivatedLock sync.RWMutex
+
+// ViewSignalLineMarkActivatedCallback is a callback function for a 'line-mark-activated' signal emitted from a View.
+type ViewSignalLineMarkActivatedCallback func(iter *gtk.TextIter, event *gdk.Event)
+
+/*
+ConnectLineMarkActivated connects the callback to the 'line-mark-activated' signal for the View.
+
+The returned value represents the connection, and may be passed to DisconnectLineMarkActivated to remove it.
+*/
+func (recv *View) ConnectLineMarkActivated(callback ViewSignalLineMarkActivatedCallback) int {
+	signalViewLineMarkActivatedLock.Lock()
+	defer signalViewLineMarkActivatedLock.Unlock()
+
+	signalViewLineMarkActivatedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.View_signal_connect_line_mark_activated(instance, C.gpointer(uintptr(signalViewLineMarkActivatedId)))
+
+	detail := signalViewLineMarkActivatedDetail{callback, handlerID}
+	signalViewLineMarkActivatedMap[signalViewLineMarkActivatedId] = detail
+
+	return signalViewLineMarkActivatedId
+}
+
+/*
+DisconnectLineMarkActivated disconnects a callback from the 'line-mark-activated' signal for the View.
+
+The connectionID should be a value returned from a call to ConnectLineMarkActivated.
+*/
+func (recv *View) DisconnectLineMarkActivated(connectionID int) {
+	signalViewLineMarkActivatedLock.Lock()
+	defer signalViewLineMarkActivatedLock.Unlock()
+
+	detail, exists := signalViewLineMarkActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalViewLineMarkActivatedMap, connectionID)
+}
+
+//export view_lineMarkActivatedHandler
+func view_lineMarkActivatedHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_event *C.GdkEvent_, data C.gpointer) {
+	signalViewLineMarkActivatedLock.RLock()
+	defer signalViewLineMarkActivatedLock.RUnlock()
+
+	iter := gtk.TextIterNewFromC(unsafe.Pointer(c_iter))
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalViewLineMarkActivatedMap[index].callback
+	callback(iter, event)
+}
 
 type signalViewRedoDetail struct {
 	callback  ViewSignalRedoCallback

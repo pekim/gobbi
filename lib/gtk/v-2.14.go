@@ -24,6 +24,7 @@ import (
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
+// #include <../gdk/gdk_event.h>
 // #include <stdlib.h>
 /*
 
@@ -1833,6 +1834,15 @@ import (
 */
 /*
 
+	gboolean texttag_eventHandler(GObject *, GObject *, GdkEvent_ *, GtkTextIter *, gpointer);
+
+	static gulong TextTag_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", G_CALLBACK(texttag_eventHandler), data);
+	}
+
+*/
+/*
+
 	void texttagtable_tagAddedHandler(GObject *, GtkTextTag *, gpointer);
 
 	static gulong TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
@@ -2346,10 +2356,28 @@ import (
 */
 /*
 
+	gboolean widget_deleteEventHandler(GObject *, GdkEvent_ *, gpointer);
+
+	static gulong Widget_signal_connect_delete_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-event", G_CALLBACK(widget_deleteEventHandler), data);
+	}
+
+*/
+/*
+
 	void widget_destroyHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_destroy(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "destroy", G_CALLBACK(widget_destroyHandler), data);
+	}
+
+*/
+/*
+
+	gboolean widget_destroyEventHandler(GObject *, GdkEvent_ *, gpointer);
+
+	static gulong Widget_signal_connect_destroy_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "destroy-event", G_CALLBACK(widget_destroyEventHandler), data);
 	}
 
 */
@@ -2449,6 +2477,24 @@ import (
 
 	static gulong Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "enter-notify-event", G_CALLBACK(widget_enterNotifyEventHandler), data);
+	}
+
+*/
+/*
+
+	gboolean widget_eventHandler(GObject *, GdkEvent_ *, gpointer);
+
+	static gulong Widget_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", G_CALLBACK(widget_eventHandler), data);
+	}
+
+*/
+/*
+
+	void widget_eventAfterHandler(GObject *, GdkEvent_ *, gpointer);
+
+	static gulong Widget_signal_connect_event_after(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event-after", G_CALLBACK(widget_eventAfterHandler), data);
 	}
 
 */
@@ -2773,6 +2819,15 @@ import (
 
 	static gulong Widget_signal_connect_style_set(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "style-set", G_CALLBACK(widget_styleSetHandler), data);
+	}
+
+*/
+/*
+
+	gboolean widget_touchEventHandler(GObject *, GdkEvent_ *, gpointer);
+
+	static gulong Widget_signal_connect_touch_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "touch-event", G_CALLBACK(widget_touchEventHandler), data);
 	}
 
 */
@@ -10036,7 +10091,38 @@ func cellrenderer_editingStartedHandler(_ *C.GObject, c_editable *C.GtkCellEdita
 	callback(editable, path)
 }
 
-// Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// Activate is a wrapper around the C function gtk_cell_renderer_activate.
+func (recv *CellRenderer) Activate(event *gdk.Event, widget *Widget, path string, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, flags CellRendererState) bool {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_background_area := (*C.GdkRectangle)(C.NULL)
+	if backgroundArea != nil {
+		c_background_area = (*C.GdkRectangle)(backgroundArea.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	c_flags := (C.GtkCellRendererState)(flags)
+
+	retC := C.gtk_cell_renderer_activate((*C.GtkCellRenderer)(recv.native), c_event, c_widget, c_path, c_background_area, c_cell_area, c_flags)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // GetFixedSize is a wrapper around the C function gtk_cell_renderer_get_fixed_size.
 func (recv *CellRenderer) GetFixedSize() (int32, int32) {
@@ -10126,7 +10212,43 @@ func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
 	return
 }
 
-// Unsupported : gtk_cell_renderer_start_editing : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// StartEditing is a wrapper around the C function gtk_cell_renderer_start_editing.
+func (recv *CellRenderer) StartEditing(event *gdk.Event, widget *Widget, path string, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, flags CellRendererState) *CellEditable {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_background_area := (*C.GdkRectangle)(C.NULL)
+	if backgroundArea != nil {
+		c_background_area = (*C.GdkRectangle)(backgroundArea.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	c_flags := (C.GtkCellRendererState)(flags)
+
+	retC := C.gtk_cell_renderer_start_editing((*C.GtkCellRenderer)(recv.native), c_event, c_widget, c_path, c_background_area, c_cell_area, c_flags)
+	var retGo (*CellEditable)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CellEditableNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // StopEditing is a wrapper around the C function gtk_cell_renderer_stop_editing.
 func (recv *CellRenderer) StopEditing(canceled bool) {
@@ -20499,7 +20621,23 @@ func CastToGesture(object *gobject.Object) *Gesture {
 	return GestureNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_gesture_get_last_event : no return generator
+// GetLastEvent is a wrapper around the C function gtk_gesture_get_last_event.
+func (recv *Gesture) GetLastEvent(sequence *gdk.EventSequence) *gdk.Event {
+	c_sequence := (*C.GdkEventSequence)(C.NULL)
+	if sequence != nil {
+		c_sequence = (*C.GdkEventSequence)(sequence.ToC())
+	}
+
+	retC := C.gtk_gesture_get_last_event((*C.GtkGesture)(recv.native), c_sequence)
+	var retGo (*gdk.Event)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.EventNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GestureDrag is a wrapper around the C record GtkGestureDrag.
 type GestureDrag struct {
@@ -46153,7 +46291,74 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 	return TextTagNewFromC(object.ToC())
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
+type signalTextTagEventDetail struct {
+	callback  TextTagSignalEventCallback
+	handlerID C.gulong
+}
+
+var signalTextTagEventId int
+var signalTextTagEventMap = make(map[int]signalTextTagEventDetail)
+var signalTextTagEventLock sync.RWMutex
+
+// TextTagSignalEventCallback is a callback function for a 'event' signal emitted from a TextTag.
+type TextTagSignalEventCallback func(object *gobject.Object, event *gdk.Event, iter *TextIter) bool
+
+/*
+ConnectEvent connects the callback to the 'event' signal for the TextTag.
+
+The returned value represents the connection, and may be passed to DisconnectEvent to remove it.
+*/
+func (recv *TextTag) ConnectEvent(callback TextTagSignalEventCallback) int {
+	signalTextTagEventLock.Lock()
+	defer signalTextTagEventLock.Unlock()
+
+	signalTextTagEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.TextTag_signal_connect_event(instance, C.gpointer(uintptr(signalTextTagEventId)))
+
+	detail := signalTextTagEventDetail{callback, handlerID}
+	signalTextTagEventMap[signalTextTagEventId] = detail
+
+	return signalTextTagEventId
+}
+
+/*
+DisconnectEvent disconnects a callback from the 'event' signal for the TextTag.
+
+The connectionID should be a value returned from a call to ConnectEvent.
+*/
+func (recv *TextTag) DisconnectEvent(connectionID int) {
+	signalTextTagEventLock.Lock()
+	defer signalTextTagEventLock.Unlock()
+
+	detail, exists := signalTextTagEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextTagEventMap, connectionID)
+}
+
+//export texttag_eventHandler
+func texttag_eventHandler(_ *C.GObject, c_object *C.GObject, c_event *C.GdkEvent_, c_iter *C.GtkTextIter, data C.gpointer) C.gboolean {
+	signalTextTagEventLock.RLock()
+	defer signalTextTagEventLock.RUnlock()
+
+	object := gobject.ObjectNewFromC(unsafe.Pointer(c_object))
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	iter := TextIterNewFromC(unsafe.Pointer(c_iter))
+
+	index := int(uintptr(data))
+	callback := signalTextTagEventMap[index].callback
+	retGo := callback(object, event, iter)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // TextTagNew is a wrapper around the C function gtk_text_tag_new.
 func TextTagNew(name string) *TextTag {
@@ -46170,7 +46375,28 @@ func TextTagNew(name string) *TextTag {
 	return retGo
 }
 
-// Unsupported : gtk_text_tag_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// Event is a wrapper around the C function gtk_text_tag_event.
+func (recv *TextTag) Event(eventObject *gobject.Object, event *gdk.Event, iter *TextIter) bool {
+	c_event_object := (*C.GObject)(C.NULL)
+	if eventObject != nil {
+		c_event_object = (*C.GObject)(eventObject.ToC())
+	}
+
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	retC := C.gtk_text_tag_event((*C.GtkTextTag)(recv.native), c_event_object, c_event, c_iter)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // GetPriority is a wrapper around the C function gtk_text_tag_get_priority.
 func (recv *TextTag) GetPriority() int32 {
@@ -56370,7 +56596,70 @@ func widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.g
 	return retC
 }
 
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
+type signalWidgetDeleteEventDetail struct {
+	callback  WidgetSignalDeleteEventCallback
+	handlerID C.gulong
+}
+
+var signalWidgetDeleteEventId int
+var signalWidgetDeleteEventMap = make(map[int]signalWidgetDeleteEventDetail)
+var signalWidgetDeleteEventLock sync.RWMutex
+
+// WidgetSignalDeleteEventCallback is a callback function for a 'delete-event' signal emitted from a Widget.
+type WidgetSignalDeleteEventCallback func(event *gdk.Event) bool
+
+/*
+ConnectDeleteEvent connects the callback to the 'delete-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDeleteEvent to remove it.
+*/
+func (recv *Widget) ConnectDeleteEvent(callback WidgetSignalDeleteEventCallback) int {
+	signalWidgetDeleteEventLock.Lock()
+	defer signalWidgetDeleteEventLock.Unlock()
+
+	signalWidgetDeleteEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_delete_event(instance, C.gpointer(uintptr(signalWidgetDeleteEventId)))
+
+	detail := signalWidgetDeleteEventDetail{callback, handlerID}
+	signalWidgetDeleteEventMap[signalWidgetDeleteEventId] = detail
+
+	return signalWidgetDeleteEventId
+}
+
+/*
+DisconnectDeleteEvent disconnects a callback from the 'delete-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDeleteEvent.
+*/
+func (recv *Widget) DisconnectDeleteEvent(connectionID int) {
+	signalWidgetDeleteEventLock.Lock()
+	defer signalWidgetDeleteEventLock.Unlock()
+
+	detail, exists := signalWidgetDeleteEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetDeleteEventMap, connectionID)
+}
+
+//export widget_deleteEventHandler
+func widget_deleteEventHandler(_ *C.GObject, c_event *C.GdkEvent_, data C.gpointer) C.gboolean {
+	signalWidgetDeleteEventLock.RLock()
+	defer signalWidgetDeleteEventLock.RUnlock()
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalWidgetDeleteEventMap[index].callback
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 type signalWidgetDestroyDetail struct {
 	callback  WidgetSignalDestroyCallback
@@ -56432,7 +56721,70 @@ func widget_destroyHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
+type signalWidgetDestroyEventDetail struct {
+	callback  WidgetSignalDestroyEventCallback
+	handlerID C.gulong
+}
+
+var signalWidgetDestroyEventId int
+var signalWidgetDestroyEventMap = make(map[int]signalWidgetDestroyEventDetail)
+var signalWidgetDestroyEventLock sync.RWMutex
+
+// WidgetSignalDestroyEventCallback is a callback function for a 'destroy-event' signal emitted from a Widget.
+type WidgetSignalDestroyEventCallback func(event *gdk.Event) bool
+
+/*
+ConnectDestroyEvent connects the callback to the 'destroy-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDestroyEvent to remove it.
+*/
+func (recv *Widget) ConnectDestroyEvent(callback WidgetSignalDestroyEventCallback) int {
+	signalWidgetDestroyEventLock.Lock()
+	defer signalWidgetDestroyEventLock.Unlock()
+
+	signalWidgetDestroyEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_destroy_event(instance, C.gpointer(uintptr(signalWidgetDestroyEventId)))
+
+	detail := signalWidgetDestroyEventDetail{callback, handlerID}
+	signalWidgetDestroyEventMap[signalWidgetDestroyEventId] = detail
+
+	return signalWidgetDestroyEventId
+}
+
+/*
+DisconnectDestroyEvent disconnects a callback from the 'destroy-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDestroyEvent.
+*/
+func (recv *Widget) DisconnectDestroyEvent(connectionID int) {
+	signalWidgetDestroyEventLock.Lock()
+	defer signalWidgetDestroyEventLock.Unlock()
+
+	detail, exists := signalWidgetDestroyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetDestroyEventMap, connectionID)
+}
+
+//export widget_destroyEventHandler
+func widget_destroyEventHandler(_ *C.GObject, c_event *C.GdkEvent_, data C.gpointer) C.gboolean {
+	signalWidgetDestroyEventLock.RLock()
+	defer signalWidgetDestroyEventLock.RUnlock()
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalWidgetDestroyEventMap[index].callback
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 type signalWidgetDirectionChangedDetail struct {
 	callback  WidgetSignalDirectionChangedCallback
@@ -57160,9 +57512,132 @@ func widget_enterNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, d
 	return retC
 }
 
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
+type signalWidgetEventDetail struct {
+	callback  WidgetSignalEventCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
+var signalWidgetEventId int
+var signalWidgetEventMap = make(map[int]signalWidgetEventDetail)
+var signalWidgetEventLock sync.RWMutex
+
+// WidgetSignalEventCallback is a callback function for a 'event' signal emitted from a Widget.
+type WidgetSignalEventCallback func(event *gdk.Event) bool
+
+/*
+ConnectEvent connects the callback to the 'event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectEvent to remove it.
+*/
+func (recv *Widget) ConnectEvent(callback WidgetSignalEventCallback) int {
+	signalWidgetEventLock.Lock()
+	defer signalWidgetEventLock.Unlock()
+
+	signalWidgetEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_event(instance, C.gpointer(uintptr(signalWidgetEventId)))
+
+	detail := signalWidgetEventDetail{callback, handlerID}
+	signalWidgetEventMap[signalWidgetEventId] = detail
+
+	return signalWidgetEventId
+}
+
+/*
+DisconnectEvent disconnects a callback from the 'event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectEvent.
+*/
+func (recv *Widget) DisconnectEvent(connectionID int) {
+	signalWidgetEventLock.Lock()
+	defer signalWidgetEventLock.Unlock()
+
+	detail, exists := signalWidgetEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetEventMap, connectionID)
+}
+
+//export widget_eventHandler
+func widget_eventHandler(_ *C.GObject, c_event *C.GdkEvent_, data C.gpointer) C.gboolean {
+	signalWidgetEventLock.RLock()
+	defer signalWidgetEventLock.RUnlock()
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalWidgetEventMap[index].callback
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
+
+type signalWidgetEventAfterDetail struct {
+	callback  WidgetSignalEventAfterCallback
+	handlerID C.gulong
+}
+
+var signalWidgetEventAfterId int
+var signalWidgetEventAfterMap = make(map[int]signalWidgetEventAfterDetail)
+var signalWidgetEventAfterLock sync.RWMutex
+
+// WidgetSignalEventAfterCallback is a callback function for a 'event-after' signal emitted from a Widget.
+type WidgetSignalEventAfterCallback func(event *gdk.Event)
+
+/*
+ConnectEventAfter connects the callback to the 'event-after' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectEventAfter to remove it.
+*/
+func (recv *Widget) ConnectEventAfter(callback WidgetSignalEventAfterCallback) int {
+	signalWidgetEventAfterLock.Lock()
+	defer signalWidgetEventAfterLock.Unlock()
+
+	signalWidgetEventAfterId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_event_after(instance, C.gpointer(uintptr(signalWidgetEventAfterId)))
+
+	detail := signalWidgetEventAfterDetail{callback, handlerID}
+	signalWidgetEventAfterMap[signalWidgetEventAfterId] = detail
+
+	return signalWidgetEventAfterId
+}
+
+/*
+DisconnectEventAfter disconnects a callback from the 'event-after' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectEventAfter.
+*/
+func (recv *Widget) DisconnectEventAfter(connectionID int) {
+	signalWidgetEventAfterLock.Lock()
+	defer signalWidgetEventAfterLock.Unlock()
+
+	detail, exists := signalWidgetEventAfterMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetEventAfterMap, connectionID)
+}
+
+//export widget_eventAfterHandler
+func widget_eventAfterHandler(_ *C.GObject, c_event *C.GdkEvent_, data C.gpointer) {
+	signalWidgetEventAfterLock.RLock()
+	defer signalWidgetEventAfterLock.RUnlock()
+
+	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
+
+	index := int(uintptr(data))
+	callback := signalWidgetEventAfterMap[index].callback
+	callback(event)
+}
 
 type signalWidgetFocusDetail struct {
 	callback  WidgetSignalFocusCallback
@@ -59459,7 +59934,70 @@ func widget_styleSetHandler(_ *C.GObject, c_previous_style *C.GtkStyle, data C.g
 	callback(previousStyle)
 }
 
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
+type signalWidgetTouchEventDetail struct {
+	callback  WidgetSignalTouchEventCallback
+	handlerID C.gulong
+}
+
+var signalWidgetTouchEventId int
+var signalWidgetTouchEventMap = make(map[int]signalWidgetTouchEventDetail)
+var signalWidgetTouchEventLock sync.RWMutex
+
+// WidgetSignalTouchEventCallback is a callback function for a 'touch-event' signal emitted from a Widget.
+type WidgetSignalTouchEventCallback func(object *gdk.Event) bool
+
+/*
+ConnectTouchEvent connects the callback to the 'touch-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectTouchEvent to remove it.
+*/
+func (recv *Widget) ConnectTouchEvent(callback WidgetSignalTouchEventCallback) int {
+	signalWidgetTouchEventLock.Lock()
+	defer signalWidgetTouchEventLock.Unlock()
+
+	signalWidgetTouchEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_touch_event(instance, C.gpointer(uintptr(signalWidgetTouchEventId)))
+
+	detail := signalWidgetTouchEventDetail{callback, handlerID}
+	signalWidgetTouchEventMap[signalWidgetTouchEventId] = detail
+
+	return signalWidgetTouchEventId
+}
+
+/*
+DisconnectTouchEvent disconnects a callback from the 'touch-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectTouchEvent.
+*/
+func (recv *Widget) DisconnectTouchEvent(connectionID int) {
+	signalWidgetTouchEventLock.Lock()
+	defer signalWidgetTouchEventLock.Unlock()
+
+	detail, exists := signalWidgetTouchEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetTouchEventMap, connectionID)
+}
+
+//export widget_touchEventHandler
+func widget_touchEventHandler(_ *C.GObject, c_object *C.GdkEvent_, data C.gpointer) C.gboolean {
+	signalWidgetTouchEventLock.RLock()
+	defer signalWidgetTouchEventLock.RUnlock()
+
+	object := gdk.EventNewFromC(unsafe.Pointer(c_object))
+
+	index := int(uintptr(data))
+	callback := signalWidgetTouchEventMap[index].callback
+	retGo := callback(object)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 type signalWidgetUnmapDetail struct {
 	callback  WidgetSignalUnmapCallback
@@ -59966,7 +60504,27 @@ func (recv *Widget) Destroyed(widgetPointer *Widget) {
 	return
 }
 
-// Unsupported : gtk_drag_begin : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// DragBegin is a wrapper around the C function gtk_drag_begin.
+func (recv *Widget) DragBegin(targets *TargetList, actions gdk.DragAction, button int32, event *gdk.Event) *gdk.DragContext {
+	c_targets := (*C.GtkTargetList)(C.NULL)
+	if targets != nil {
+		c_targets = (*C.GtkTargetList)(targets.ToC())
+	}
+
+	c_actions := (C.GdkDragAction)(actions)
+
+	c_button := (C.gint)(button)
+
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	retC := C.gtk_drag_begin((*C.GtkWidget)(recv.native), c_targets, c_actions, c_button, c_event)
+	retGo := gdk.DragContextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DragCheckThreshold is a wrapper around the C function gtk_drag_check_threshold.
 func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int32, currentY int32) bool {
@@ -60226,7 +60784,18 @@ func (recv *Widget) ErrorBell() {
 	return
 }
 
-// Unsupported : gtk_widget_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// Event is a wrapper around the C function gtk_widget_event.
+func (recv *Widget) Event(event *gdk.Event) bool {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	retC := C.gtk_widget_event((*C.GtkWidget)(recv.native), c_event)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // FreezeChildNotify is a wrapper around the C function gtk_widget_freeze_child_notify.
 func (recv *Widget) FreezeChildNotify() {
@@ -61006,7 +61575,18 @@ func (recv *Widget) ResetRcStyles() {
 	return
 }
 
-// Unsupported : gtk_widget_send_expose : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// SendExpose is a wrapper around the C function gtk_widget_send_expose.
+func (recv *Widget) SendExpose(event *gdk.Event) int32 {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	retC := C.gtk_widget_send_expose((*C.GtkWidget)(recv.native), c_event)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // SetAccelPath is a wrapper around the C function gtk_widget_set_accel_path.
 func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
@@ -64696,7 +65276,18 @@ func False() bool {
 	return retGo
 }
 
-// Unsupported : gtk_get_current_event : no return generator
+// GetCurrentEvent is a wrapper around the C function gtk_get_current_event.
+func GetCurrentEvent() *gdk.Event {
+	retC := C.gtk_get_current_event()
+	var retGo (*gdk.Event)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.EventNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetCurrentEventDevice is a wrapper around the C function gtk_get_current_event_device.
 func GetCurrentEventDevice() *gdk.Device {
@@ -64747,7 +65338,23 @@ func GetDefaultLanguage() *pango.Language {
 	return retGo
 }
 
-// Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// GetEventWidget is a wrapper around the C function gtk_get_event_widget.
+func GetEventWidget(event *gdk.Event) *Widget {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	retC := C.gtk_get_event_widget(c_event)
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetOptionGroup is a wrapper around the C function gtk_get_option_group.
 func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
@@ -64816,7 +65423,17 @@ func Main() {
 	return
 }
 
-// Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// MainDoEvent is a wrapper around the C function gtk_main_do_event.
+func MainDoEvent(event *gdk.Event) {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	C.gtk_main_do_event(c_event)
+
+	return
+}
 
 // MainIteration is a wrapper around the C function gtk_main_iteration.
 func MainIteration() bool {
@@ -65640,7 +66257,22 @@ func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *Pri
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc (GtkPageSetupDoneFunc) for param done_cb
 
-// Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// PropagateEvent is a wrapper around the C function gtk_propagate_event.
+func PropagateEvent(widget *Widget, event *gdk.Event) {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	C.gtk_propagate_event(c_widget, c_event)
+
+	return
+}
 
 // RcAddDefaultFile is a wrapper around the C function gtk_rc_add_default_file.
 func RcAddDefaultFile(filename string) {
@@ -66991,7 +67623,17 @@ func (recv *CellEditable) RemoveWidget() {
 	return
 }
 
-// Unsupported : gtk_cell_editable_start_editing : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
+// StartEditing is a wrapper around the C function gtk_cell_editable_start_editing.
+func (recv *CellEditable) StartEditing(event *gdk.Event) {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	C.gtk_cell_editable_start_editing((*C.GtkCellEditable)(recv.native), c_event)
+
+	return
+}
 
 // CellLayout is a wrapper around the C record GtkCellLayout.
 type CellLayout struct {

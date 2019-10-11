@@ -8,6 +8,7 @@ package gtk
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
+// #include <../gdk/gdk_event.h>
 // #include <stdlib.h>
 import "C"
 

@@ -5,8 +5,9 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <c:include name="gtksourceview/completion-providers/words/gtksourcecompletionwords.h"/>
+  <c:include name="../gdk/gdk_event.h"/>
 
-  <namespace>
+    <namespace>
       <class name="Region" version="3.22"/>
       <class name="SpaceDrawer" version="3.24"/>
       <class name="Tag" version="3.20"/>

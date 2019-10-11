@@ -51,10 +51,12 @@ func (rr Records) forName(name string) *Record {
 	return nil
 }
 
-func (rr Records) mergeAddenda(addenda Records) {
+func (rr *Records) mergeAddenda(addenda Records) {
 	for _, addendaRecord := range addenda {
 		if record := rr.forName(addendaRecord.Name); record != nil {
 			record.mergeAddenda(addendaRecord)
+		} else {
+			*rr = append(*rr, addendaRecord)
 		}
 	}
 }

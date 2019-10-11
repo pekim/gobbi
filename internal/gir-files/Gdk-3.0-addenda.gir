@@ -4,6 +4,8 @@
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
+  <c:include name="gdk_event.h"/>
+
   <namespace>
       <bitfield name="ModifierType" c:type="guint"/>
 
@@ -28,6 +30,16 @@
       <record version="3.22" name="DevicePadInterface"/>
       <record version="3.22" name="DrawingContextClass"/>
       <record version="3.22" name="MonitorClass"/>
+
+      <!--
+        gobbi does not support generation for C union types.
+        To work around this, define GdkEvent as a record (struct).
+      -->
+      <record name="Event" c:type="GdkEvent_">
+          <field name="type" writable="1">
+              <type name="EventType" c:type="GdkEventType"/>
+          </field>
+      </record>
 
       <interface name="DevicePad" version="3.22"/>
   </namespace>

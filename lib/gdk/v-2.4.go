@@ -19,6 +19,7 @@ import (
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gdk/gdk.h>
+// #include <gdk_event.h>
 // #include <stdlib.h>
 /*
 
@@ -1242,7 +1243,18 @@ func (recv *Display) GetDefaultScreen() *Screen {
 	return retGo
 }
 
-// Unsupported : gdk_display_get_event : no return generator
+// GetEvent is a wrapper around the C function gdk_display_get_event.
+func (recv *Display) GetEvent() *Event {
+	retC := C.gdk_display_get_event((*C.GdkDisplay)(recv.native))
+	var retGo (*Event)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = EventNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetMaximalCursorSize is a wrapper around the C function gdk_display_get_maximal_cursor_size.
 func (recv *Display) GetMaximalCursorSize() (uint32, uint32) {
@@ -1346,7 +1358,18 @@ func (recv *Display) ListDevices() *glib.List {
 	return retGo
 }
 
-// Unsupported : gdk_display_peek_event : no return generator
+// PeekEvent is a wrapper around the C function gdk_display_peek_event.
+func (recv *Display) PeekEvent() *Event {
+	retC := C.gdk_display_peek_event((*C.GdkDisplay)(recv.native))
+	var retGo (*Event)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = EventNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // PointerIsGrabbed is a wrapper around the C function gdk_display_pointer_is_grabbed.
 func (recv *Display) PointerIsGrabbed() bool {
@@ -1365,7 +1388,17 @@ func (recv *Display) PointerUngrab(time uint32) {
 	return
 }
 
-// Unsupported : gdk_display_put_event : unsupported parameter event : no type generator for Event (const GdkEvent*) for param event
+// PutEvent is a wrapper around the C function gdk_display_put_event.
+func (recv *Display) PutEvent(event *Event) {
+	c_event := (*C.GdkEvent)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEvent)(event.ToC())
+	}
+
+	C.gdk_display_put_event((*C.GdkDisplay)(recv.native), c_event)
+
+	return
+}
 
 // SetDoubleClickDistance is a wrapper around the C function gdk_display_set_double_click_distance.
 func (recv *Display) SetDoubleClickDistance(distance uint32) {
@@ -6735,11 +6768,7 @@ func ErrorTrapPush() {
 	return
 }
 
-// Unsupported : gdk_event_get : no return generator
-
 // Unsupported : gdk_event_handler_set : unsupported parameter func : no type generator for EventFunc (GdkEventFunc) for param func
-
-// Unsupported : gdk_event_peek : no return generator
 
 // EventsPending is a wrapper around the C function gdk_events_pending.
 func EventsPending() bool {
@@ -9248,5 +9277,37 @@ func (recv *WindowRedirect) ToC() unsafe.Pointer {
 
 // Equals compares this WindowRedirect with another WindowRedirect, and returns true if they represent the same GObject.
 func (recv *WindowRedirect) Equals(other *WindowRedirect) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Event is a wrapper around the C record GdkEvent_.
+type Event struct {
+	native *C.GdkEvent_
+	Type   EventType
+}
+
+func EventNewFromC(u unsafe.Pointer) *Event {
+	c := (*C.GdkEvent_)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Event{
+		Type:   (EventType)(c._type),
+		native: c,
+	}
+
+	return g
+}
+
+func (recv *Event) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GdkEventType)(recv.Type)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Event with another Event, and returns true if they represent the same GObject.
+func (recv *Event) Equals(other *Event) bool {
 	return other.ToC() == recv.ToC()
 }
