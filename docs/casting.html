@@ -118,6 +118,14 @@ widget1 := gtk.WindowNew().Bin().Container().Widget()
 widget2 := gtk.WindowNew().Widget()
 </code></pre>
 
+<p>Classes also have receiver functions for casting to
+any interfaces that they implement.</p>
+
+<pre><code class="language-go">// gtk.Buildable is an interface implemented by all Widgets.
+widget := gtk.LabelNew(&quot;a label&quot;)
+buildable := widget.Buildable()
+</code></pre>
+
 <h1>downcasting</h1>
 
 <p>Downcasting operates in the other direction,
