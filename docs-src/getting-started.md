@@ -9,7 +9,7 @@
 * C compiler, and a linker
     * required because of the use of cgo
     * for debian based distributions the `build-essential`
-        package should suffice 
+        package should suffice
 
 ## running examples
 * `git clone https://github.com/pekim/gobbi.git`
@@ -19,7 +19,7 @@
         The first `go build` or `go run` will take quite a while,
         perhaps a minute.
         Subsequent builds of applications will be a lot quicker
-        as cached gobbi packages will be used by the Go tools. 
+        as cached gobbi packages will be used by the Go tools.
 
 Run `./gobbi examples` for a list of the available examples.
 
@@ -48,4 +48,4 @@ an application that will create a window.
 
 ## build tags
 It will often be necessary to build gobbi applications
-with [build tags](../build-tags).
+with [build tags](build-tags.html).
