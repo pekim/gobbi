@@ -37,7 +37,7 @@ func (f *Function) init(ns *Namespace, receiver *Record, namePrefix string) {
 	f.Namespace = ns
 	f.receiver = receiver
 	if f.GoName == "" {
-		f.GoName = makeExportedGoName(f.Name)
+		f.GoName = MakeExportedGoName(f.Name)
 	}
 	f.GoName = namePrefix + f.GoName
 	f.Parameters.init(ns)

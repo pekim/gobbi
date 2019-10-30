@@ -56,7 +56,7 @@ func (s *Signal) fixParameterNames() {
 }
 
 func (s *Signal) initNames() {
-	signalGoName := makeExportedGoName(s.Name)
+	signalGoName := MakeExportedGoName(s.Name)
 
 	s.typeStructName = fmt.Sprintf("signal%s%sDetail", s.record.Name, signalGoName)
 	s.varNameId = fmt.Sprintf("signal%s%sId", s.record.Name, signalGoName)

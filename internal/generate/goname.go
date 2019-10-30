@@ -39,7 +39,7 @@ func makeGoName(cName string) string {
 	return name
 }
 
-func makeExportedGoName(cName string) string {
+func MakeExportedGoName(cName string) string {
 	return makeGoNameInternal(cName, true)
 }
 

@@ -35,7 +35,7 @@ func (r *Record) generateUpcasts(g *jen.Group) {
 
 		if _, nameUsedPreviously := methodNames[qname.name]; nameUsedPreviously {
 			// A method for this ancestor would have the same name as an earlier one.
-			// So skip it, and all further ancestors.
+			// So skip it, and all further classAncestors.
 			// This will affect relatively few methods, notably those around Atk.Object.
 			return
 		}
