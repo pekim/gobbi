@@ -41,7 +41,7 @@ static void Gobbi_gtk_builder_connect_signals(GtkBuilder *builder) {
 */
 import "C"
 
-func BuilderConnectSignals(builder *gtk.Builder) {
+func BuilderConnectSignals(builder *gtk.Builder, handlers map[string]interface{}) {
 	C.Gobbi_gtk_builder_connect_signals(
 		(*C.GtkBuilder)(builder.ToC()),
 	)

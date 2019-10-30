@@ -34,5 +34,8 @@ func TestBuildConnectSignals(t *testing.T) {
 	gtk.Init(os.Args)
 	builder := gtk.BuilderNewFromString(ui)
 
-	gtkx.BuilderConnectSignals(builder)
+	gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+		"ok_button_clicked": func() {},
+		"bad_name":          func(i int) {},
+	})
 }
