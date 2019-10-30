@@ -14,10 +14,35 @@ static void Test_c(GObject *object) {
 	const gchar *class_name = G_OBJECT_CLASS_NAME(G_OBJECT_GET_CLASS(object));
 	printf("%s\n", class_name);
 }
+
+static void Gobbi_gtk_builder_connect(
+	GtkBuilder *builder,
+	GObject *object,
+	const gchar *signal_name,
+	const gchar *handler_name,
+	GObject *connect_object,
+	GConnectFlags flags,
+	gpointer user_data
+) {
+	const gchar *class_name = G_OBJECT_CLASS_NAME(G_OBJECT_GET_CLASS(object));
+	printf("%s - %s - %s\n", class_name, signal_name, handler_name);
+}
+
+static void Gobbi_gtk_builder_connect_signals(GtkBuilder *builder) {
+	gtk_builder_connect_signals_full(
+		builder,
+		Gobbi_gtk_builder_connect,
+		NULL
+	);
+}
 */
 import "C"
 
 func BuilderConnectSignals(builder *gtk.Builder) {
-	button := gtk.CastToButton(builder.GetObject("ok_button"))
-	C.Test_c((*C.GObject)(button.ToC()))
+	//button := gtk.CastToButton(builder.GetObject("ok_button"))
+	//C.Test_c((*C.GObject)(button.ToC()))
+
+	C.Gobbi_gtk_builder_connect_signals(
+		(*C.GtkBuilder)(builder.ToC()),
+	)
 }

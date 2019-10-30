@@ -19,6 +19,13 @@ const ui = `
 		<signal name="clicked" handler="ok_button_clicked"/>
 	  </object>
 	</child>
+	<child>
+	  <object class="GtkButton" id="cancel_button">
+		<property name="label">gtk-cancel</property>
+		<property name="use-stock">TRUE</property>
+		<signal name="clicked" handler="cancel_button_clicked"/>
+	  </object>
+	</child>
   </object>
 </interface>
 `
