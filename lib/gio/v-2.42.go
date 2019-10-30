@@ -1076,6 +1076,8 @@ const (
 	TLS_PASSWORD_FINAL_TRY  TlsPasswordFlags = 8
 )
 
+// AddToGobjectClassGoTypeMap : GAppInfoMonitor
+
 // AppInfoMonitor is a wrapper around the C record GAppInfoMonitor.
 type AppInfoMonitor struct {
 	native *C.GAppInfoMonitor
@@ -1190,6 +1192,8 @@ func AppInfoMonitorGet() *AppInfoMonitor {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GAppLaunchContext
 
 // AppLaunchContext is a wrapper around the C record GAppLaunchContext.
 type AppLaunchContext struct {
@@ -1455,6 +1459,8 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GApplication
 
 // Application is a wrapper around the C record GApplication.
 type Application struct {
@@ -2186,6 +2192,8 @@ func (recv *Application) ActionMap() *ActionMap {
 	return ActionMapNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GApplicationCommandLine
+
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
 	native *C.GApplicationCommandLine
@@ -2369,6 +2377,8 @@ func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GBufferedInputStream
 
 // BufferedInputStream is a wrapper around the C record GBufferedInputStream.
 type BufferedInputStream struct {
@@ -2588,6 +2598,8 @@ func (recv *BufferedInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GBufferedOutputStream
+
 // BufferedOutputStream is a wrapper around the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
 	native *C.GBufferedOutputStream
@@ -2723,6 +2735,8 @@ func (recv *BufferedOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GBytesIcon
+
 // BytesIcon is a wrapper around the C record GBytesIcon.
 type BytesIcon struct {
 	native *C.GBytesIcon
@@ -2804,6 +2818,8 @@ func (recv *BytesIcon) Icon() *Icon {
 func (recv *BytesIcon) LoadableIcon() *LoadableIcon {
 	return LoadableIconNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GCancellable
 
 // Cancellable is a wrapper around the C record GCancellable.
 type Cancellable struct {
@@ -3040,6 +3056,8 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 	return retGo
 }
 
+// AddToGobjectClassGoTypeMap : GCharsetConverter
+
 // CharsetConverter is a wrapper around the C record GCharsetConverter.
 type CharsetConverter struct {
 	native *C.GCharsetConverter
@@ -3151,6 +3169,8 @@ func (recv *CharsetConverter) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GConverterInputStream
+
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
 	native *C.GConverterInputStream
@@ -3242,6 +3262,8 @@ func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GConverterOutputStream
+
 // ConverterOutputStream is a wrapper around the C record GConverterOutputStream.
 type ConverterOutputStream struct {
 	native *C.GConverterOutputStream
@@ -3332,6 +3354,8 @@ func (recv *ConverterOutputStream) GetConverter() *Converter {
 func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
 	return PollableOutputStreamNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GCredentials
 
 // Credentials is a wrapper around the C record GCredentials.
 type Credentials struct {
@@ -3501,6 +3525,8 @@ func (recv *Credentials) ToString() string {
 	return retGo
 }
 
+// AddToGobjectClassGoTypeMap : GDBusActionGroup
+
 // DBusActionGroup is a wrapper around the C record GDBusActionGroup.
 type DBusActionGroup struct {
 	native *C.GDBusActionGroup
@@ -3576,6 +3602,8 @@ func (recv *DBusActionGroup) ActionGroup() *ActionGroup {
 func (recv *DBusActionGroup) RemoteActionGroup() *RemoteActionGroup {
 	return RemoteActionGroupNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GDBusAuthObserver
 
 // DBusAuthObserver is a wrapper around the C record GDBusAuthObserver.
 type DBusAuthObserver struct {
@@ -3796,6 +3824,8 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GDBusConnection
 
 // DBusConnection is a wrapper around the C record GDBusConnection.
 type DBusConnection struct {
@@ -4613,6 +4643,8 @@ func (recv *DBusConnection) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDBusInterfaceSkeleton
+
 // DBusInterfaceSkeleton is a wrapper around the C record GDBusInterfaceSkeleton.
 type DBusInterfaceSkeleton struct {
 	native *C.GDBusInterfaceSkeleton
@@ -4862,6 +4894,8 @@ func (recv *DBusInterfaceSkeleton) DBusInterface() *DBusInterface {
 	return DBusInterfaceNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDBusMenuModel
+
 // DBusMenuModel is a wrapper around the C record GDBusMenuModel.
 type DBusMenuModel struct {
 	native *C.GDBusMenuModel
@@ -4932,6 +4966,8 @@ func DBusMenuModelGet(connection *DBusConnection, busName string, objectPath str
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GDBusMessage
 
 // DBusMessage is a wrapper around the C record GDBusMessage.
 type DBusMessage struct {
@@ -5506,6 +5542,8 @@ func (recv *DBusMessage) ToGerror() (bool, error) {
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GDBusMethodInvocation
+
 // DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
 type DBusMethodInvocation struct {
 	native *C.GDBusMethodInvocation
@@ -5730,6 +5768,8 @@ func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GDBusObjectManagerClient
+
 // DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
 type DBusObjectManagerClient struct {
 	native *C.GDBusObjectManagerClient
@@ -5953,6 +5993,8 @@ func (recv *DBusObjectManagerClient) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDBusObjectManagerServer
+
 // DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
 type DBusObjectManagerServer struct {
 	native *C.GDBusObjectManagerServer
@@ -6090,6 +6132,8 @@ func (recv *DBusObjectManagerServer) DBusObjectManager() *DBusObjectManager {
 	return DBusObjectManagerNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDBusObjectProxy
+
 // DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
 type DBusObjectProxy struct {
 	native *C.GDBusObjectProxy
@@ -6171,6 +6215,8 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 func (recv *DBusObjectProxy) DBusObject() *DBusObject {
 	return DBusObjectNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GDBusObjectSkeleton
 
 // DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
 type DBusObjectSkeleton struct {
@@ -6358,6 +6404,8 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 func (recv *DBusObjectSkeleton) DBusObject() *DBusObject {
 	return DBusObjectNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GDBusProxy
 
 // DBusProxy is a wrapper around the C record GDBusProxy.
 type DBusProxy struct {
@@ -6896,6 +6944,8 @@ func (recv *DBusProxy) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDBusServer
+
 // DBusServer is a wrapper around the C record GDBusServer.
 type DBusServer struct {
 	native *C.GDBusServer
@@ -7098,6 +7148,8 @@ func (recv *DBusServer) Stop() {
 func (recv *DBusServer) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GDataInputStream
 
 // DataInputStream is a wrapper around the C record GDataInputStream.
 type DataInputStream struct {
@@ -7557,6 +7609,8 @@ func (recv *DataInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDataOutputStream
+
 // DataOutputStream is a wrapper around the C record GDataOutputStream.
 type DataOutputStream struct {
 	native *C.GDataOutputStream
@@ -7856,6 +7910,8 @@ func (recv *DataOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GDesktopAppInfo
+
 // DesktopAppInfo is a wrapper around the C record GDesktopAppInfo.
 type DesktopAppInfo struct {
 	native *C.GDesktopAppInfo
@@ -8123,6 +8179,8 @@ func (recv *DesktopAppInfo) AppInfo() *AppInfo {
 	return AppInfoNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GEmblem
+
 // Emblem is a wrapper around the C record GEmblem.
 type Emblem struct {
 	native *C.GEmblem
@@ -8220,6 +8278,8 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 func (recv *Emblem) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GEmblemedIcon
 
 // EmblemedIcon is a wrapper around the C record GEmblemedIcon.
 type EmblemedIcon struct {
@@ -8328,6 +8388,8 @@ func (recv *EmblemedIcon) GetIcon() *Icon {
 func (recv *EmblemedIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GFileEnumerator
 
 // FileEnumerator is a wrapper around the C record GFileEnumerator.
 type FileEnumerator struct {
@@ -8520,6 +8582,8 @@ func (recv *FileEnumerator) SetPending(pending bool) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GFileIOStream
+
 // FileIOStream is a wrapper around the C record GFileIOStream.
 type FileIOStream struct {
 	native *C.GFileIOStream
@@ -8636,6 +8700,8 @@ func (recv *FileIOStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GFileIcon
+
 // FileIcon is a wrapper around the C record GFileIcon.
 type FileIcon struct {
 	native *C.GFileIcon
@@ -8714,6 +8780,8 @@ func (recv *FileIcon) Icon() *Icon {
 func (recv *FileIcon) LoadableIcon() *LoadableIcon {
 	return LoadableIconNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GFileInfo
 
 // FileInfo is a wrapper around the C record GFileInfo.
 type FileInfo struct {
@@ -9435,6 +9503,8 @@ func (recv *FileInfo) UnsetAttributeMask() {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GFileInputStream
+
 // FileInputStream is a wrapper around the C record GFileInputStream.
 type FileInputStream struct {
 	native *C.GFileInputStream
@@ -9541,6 +9611,8 @@ func (recv *FileInputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, er
 func (recv *FileInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GFileMonitor
 
 // FileMonitor is a wrapper around the C record GFileMonitor.
 type FileMonitor struct {
@@ -9695,6 +9767,8 @@ func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GFileOutputStream
+
 // FileOutputStream is a wrapper around the C record GFileOutputStream.
 type FileOutputStream struct {
 	native *C.GFileOutputStream
@@ -9810,6 +9884,8 @@ func (recv *FileOutputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, e
 func (recv *FileOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GFilenameCompleter
 
 // FilenameCompleter is a wrapper around the C record GFilenameCompleter.
 type FilenameCompleter struct {
@@ -9968,6 +10044,8 @@ func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GFilterInputStream
+
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
 	native *C.GFilterInputStream
@@ -10047,6 +10125,8 @@ func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GFilterOutputStream
 
 // FilterOutputStream is a wrapper around the C record GFilterOutputStream.
 type FilterOutputStream struct {
@@ -10128,6 +10208,8 @@ func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GIOModule
+
 // IOModule is a wrapper around the C record GIOModule.
 type IOModule struct {
 	native *C.GIOModule
@@ -10195,6 +10277,8 @@ func IOModuleNew(filename string) *IOModule {
 func (recv *IOModule) TypePlugin() *gobject.TypePlugin {
 	return gobject.TypePluginNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GIOStream
 
 // IOStream is a wrapper around the C record GIOStream.
 type IOStream struct {
@@ -10368,6 +10452,8 @@ func (recv *IOStream) SetPending() (bool, error) {
 }
 
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// AddToGobjectClassGoTypeMap : GInetAddress
 
 // InetAddress is a wrapper around the C record GInetAddress.
 type InetAddress struct {
@@ -10604,6 +10690,8 @@ func (recv *InetAddress) ToString() string {
 	return retGo
 }
 
+// AddToGobjectClassGoTypeMap : GInetAddressMask
+
 // InetAddressMask is a wrapper around the C record GInetAddressMask.
 type InetAddressMask struct {
 	native *C.GInetAddressMask
@@ -10771,6 +10859,8 @@ func (recv *InetAddressMask) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GInetSocketAddress
+
 // InetSocketAddress is a wrapper around the C record GInetSocketAddress.
 type InetSocketAddress struct {
 	native *C.GInetSocketAddress
@@ -10897,6 +10987,8 @@ func (recv *InetSocketAddress) GetScopeId() uint32 {
 func (recv *InetSocketAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GInputStream
 
 // InputStream is a wrapper around the C record GInputStream.
 type InputStream struct {
@@ -11221,6 +11313,8 @@ func (recv *InputStream) SkipFinish(result *AsyncResult) (int64, error) {
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GListStore
+
 // ListStore is a wrapper around the C record GListStore.
 type ListStore struct {
 	native *C.GListStore
@@ -11272,6 +11366,8 @@ func CastToListStore(object *gobject.Object) *ListStore {
 func (recv *ListStore) ListModel() *ListModel {
 	return ListModelNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GMemoryInputStream
 
 // MemoryInputStream is a wrapper around the C record GMemoryInputStream.
 type MemoryInputStream struct {
@@ -11381,6 +11477,8 @@ func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
 func (recv *MemoryInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GMemoryOutputStream
 
 // MemoryOutputStream is a wrapper around the C record GMemoryOutputStream.
 type MemoryOutputStream struct {
@@ -11499,6 +11597,8 @@ func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
 func (recv *MemoryOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GMenu
 
 // Menu is a wrapper around the C record GMenu.
 type Menu struct {
@@ -11760,6 +11860,8 @@ func (recv *Menu) RemoveAll() {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GMenuAttributeIter
+
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
 type MenuAttributeIter struct {
 	native *C.GMenuAttributeIter
@@ -11848,6 +11950,8 @@ func (recv *MenuAttributeIter) Next() bool {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GMenuItem
 
 // MenuItem is a wrapper around the C record GMenuItem.
 type MenuItem struct {
@@ -12141,6 +12245,8 @@ func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GMenuLinkIter
+
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
 type MenuLinkIter struct {
 	native *C.GMenuLinkIter
@@ -12229,6 +12335,8 @@ func (recv *MenuLinkIter) Next() bool {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GMenuModel
 
 // MenuModel is a wrapper around the C record GMenuModel.
 type MenuModel struct {
@@ -12441,6 +12549,8 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GMountOperation
 
 // MountOperation is a wrapper around the C record GMountOperation.
 type MountOperation struct {
@@ -12878,6 +12988,8 @@ func (recv *MountOperation) SetUsername(username string) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GNativeVolumeMonitor
+
 // NativeVolumeMonitor is a wrapper around the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
 	native *C.GNativeVolumeMonitor
@@ -12930,6 +13042,8 @@ func (recv *NativeVolumeMonitor) Object() *gobject.Object {
 func CastToNativeVolumeMonitor(object *gobject.Object) *NativeVolumeMonitor {
 	return NativeVolumeMonitorNewFromC(object.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GNetworkAddress
 
 // NetworkAddress is a wrapper around the C record GNetworkAddress.
 type NetworkAddress struct {
@@ -13072,6 +13186,8 @@ func (recv *NetworkAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GNetworkService
+
 // NetworkService is a wrapper around the C record GNetworkService.
 type NetworkService struct {
 	native *C.GNetworkService
@@ -13188,6 +13304,8 @@ func (recv *NetworkService) SetScheme(scheme string) {
 func (recv *NetworkService) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GNotification
 
 // Notification is a wrapper around the C record GNotification.
 type Notification struct {
@@ -13385,6 +13503,8 @@ func (recv *Notification) SetUrgent(urgent bool) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GOutputStream
 
 // OutputStream is a wrapper around the C record GOutputStream.
 type OutputStream struct {
@@ -13772,6 +13892,8 @@ func (recv *OutputStream) WriteFinish(result *AsyncResult) (int64, error) {
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GPermission
+
 // Permission is a wrapper around the C record GPermission.
 type Permission struct {
 	native *C.GPermission
@@ -13951,6 +14073,8 @@ func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GPropertyAction
+
 // PropertyAction is a wrapper around the C record GPropertyAction.
 type PropertyAction struct {
 	native *C.GPropertyAction
@@ -14025,6 +14149,8 @@ func PropertyActionNew(name string, object *gobject.Object, propertyName string)
 func (recv *PropertyAction) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GProxyAddress
 
 // ProxyAddress is a wrapper around the C record GProxyAddress.
 type ProxyAddress struct {
@@ -14179,6 +14305,8 @@ func (recv *ProxyAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GProxyAddressEnumerator
+
 // ProxyAddressEnumerator is a wrapper around the C record GProxyAddressEnumerator.
 type ProxyAddressEnumerator struct {
 	native *C.GProxyAddressEnumerator
@@ -14232,6 +14360,8 @@ func (recv *ProxyAddressEnumerator) Object() *gobject.Object {
 func CastToProxyAddressEnumerator(object *gobject.Object) *ProxyAddressEnumerator {
 	return ProxyAddressEnumeratorNewFromC(object.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GResolver
 
 // Resolver is a wrapper around the C record GResolver.
 type Resolver struct {
@@ -14584,6 +14714,8 @@ func (recv *Resolver) SetDefault() {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GSettings
 
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
@@ -15438,6 +15570,8 @@ func (recv *Settings) SetValue(key string, value *glib.Variant) bool {
 	return retGo
 }
 
+// AddToGobjectClassGoTypeMap : GSettingsBackend
+
 // SettingsBackend is a wrapper around the C record GSettingsBackend.
 type SettingsBackend struct {
 	native *C.GSettingsBackend
@@ -15501,6 +15635,8 @@ func CastToSettingsBackend(object *gobject.Object) *SettingsBackend {
 // Blacklisted : g_settings_backend_path_writable_changed
 
 // Blacklisted : g_settings_backend_writable_changed
+
+// AddToGobjectClassGoTypeMap : GSimpleAction
 
 // SimpleAction is a wrapper around the C record GSimpleAction.
 type SimpleAction struct {
@@ -15745,6 +15881,8 @@ func (recv *SimpleAction) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GSimpleActionGroup
+
 // SimpleActionGroup is a wrapper around the C record GSimpleActionGroup.
 type SimpleActionGroup struct {
 	native *C.GSimpleActionGroup
@@ -15847,6 +15985,8 @@ func (recv *SimpleActionGroup) ActionGroup() *ActionGroup {
 func (recv *SimpleActionGroup) ActionMap() *ActionMap {
 	return ActionMapNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GSimpleAsyncResult
 
 // SimpleAsyncResult is a wrapper around the C record GSimpleAsyncResult.
 type SimpleAsyncResult struct {
@@ -16075,6 +16215,8 @@ func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
 	return AsyncResultNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GSimplePermission
+
 // SimplePermission is a wrapper around the C record GSimplePermission.
 type SimplePermission struct {
 	native *C.GSimplePermission
@@ -16141,6 +16283,8 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GSimpleProxyResolver
 
 // SimpleProxyResolver is a wrapper around the C record GSimpleProxyResolver.
 type SimpleProxyResolver struct {
@@ -16221,6 +16365,8 @@ func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 func (recv *SimpleProxyResolver) ProxyResolver() *ProxyResolver {
 	return ProxyResolverNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GSocket
 
 // Socket is a wrapper around the C record GSocket.
 type Socket struct {
@@ -17141,6 +17287,8 @@ func (recv *Socket) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GSocketAddress
+
 // SocketAddress is a wrapper around the C record GSocketAddress.
 type SocketAddress struct {
 	native *C.GSocketAddress
@@ -17248,6 +17396,8 @@ func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GSocketAddressEnumerator
+
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
 	native *C.GSocketAddressEnumerator
@@ -17340,6 +17490,8 @@ func (recv *SocketAddressEnumerator) NextFinish(result *AsyncResult) (*SocketAdd
 
 	return retGo, goError
 }
+
+// AddToGobjectClassGoTypeMap : GSocketClient
 
 // SocketClient is a wrapper around the C record GSocketClient.
 type SocketClient struct {
@@ -17834,6 +17986,8 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GSocketConnection
+
 // SocketConnection is a wrapper around the C record GSocketConnection.
 type SocketConnection struct {
 	native *C.GSocketConnection
@@ -18019,6 +18173,8 @@ func (recv *SocketConnection) IsConnected() bool {
 	return retGo
 }
 
+// AddToGobjectClassGoTypeMap : GSocketControlMessage
+
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
 	native *C.GSocketControlMessage
@@ -18123,6 +18279,8 @@ func (recv *SocketControlMessage) Serialize(data uintptr) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GSocketListener
 
 // SocketListener is a wrapper around the C record GSocketListener.
 type SocketListener struct {
@@ -18419,6 +18577,8 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GSocketService
+
 // SocketService is a wrapper around the C record GSocketService.
 type SocketService struct {
 	native *C.GSocketService
@@ -18573,6 +18733,8 @@ func (recv *SocketService) Stop() {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GSubprocess
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -18982,6 +19144,8 @@ func (recv *Subprocess) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GSubprocessLauncher
+
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
 type SubprocessLauncher struct {
 	native *C.GSubprocessLauncher
@@ -19215,6 +19379,8 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GTask
 
 // Task is a wrapper around the C record GTask.
 type Task struct {
@@ -19516,6 +19682,8 @@ func (recv *Task) AsyncResult() *AsyncResult {
 	return AsyncResultNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GTcpConnection
+
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
 	native *C.GTcpConnection
@@ -19592,6 +19760,8 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GTcpWrapperConnection
 
 // TcpWrapperConnection is a wrapper around the C record GTcpWrapperConnection.
 type TcpWrapperConnection struct {
@@ -19686,6 +19856,8 @@ func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GTestDBus
 
 // TestDBus is a wrapper around the C record GTestDBus.
 type TestDBus struct {
@@ -19801,6 +19973,8 @@ func (recv *TestDBus) Up() {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GThemedIcon
 
 // ThemedIcon is a wrapper around the C record GThemedIcon.
 type ThemedIcon struct {
@@ -19939,6 +20113,8 @@ func (recv *ThemedIcon) PrependName(iconname string) {
 func (recv *ThemedIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GThreadedSocketService
 
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {
@@ -20079,6 +20255,8 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GTlsCertificate
 
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
@@ -20265,6 +20443,8 @@ func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCe
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GTlsConnection
 
 // TlsConnection is a wrapper around the C record GTlsConnection.
 type TlsConnection struct {
@@ -20576,6 +20756,8 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GTlsDatabase
+
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
 type TlsDatabase struct {
 	native *C.GTlsDatabase
@@ -20879,6 +21061,8 @@ func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateF
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GTlsInteraction
+
 // TlsInteraction is a wrapper around the C record GTlsInteraction.
 type TlsInteraction struct {
 	native *C.GTlsInteraction
@@ -21088,6 +21272,8 @@ func (recv *TlsInteraction) RequestCertificateFinish(result *AsyncResult) (TlsIn
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GTlsPassword
+
 // TlsPassword is a wrapper around the C record GTlsPassword.
 type TlsPassword struct {
 	native *C.GTlsPassword
@@ -21228,6 +21414,8 @@ func (recv *TlsPassword) SetWarning(warning string) {
 
 	return
 }
+
+// AddToGobjectClassGoTypeMap : GUnixConnection
 
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {
@@ -21426,6 +21614,8 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 	return retGo, goError
 }
 
+// AddToGobjectClassGoTypeMap : GUnixCredentialsMessage
+
 // UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.
 type UnixCredentialsMessage struct {
 	native *C.GUnixCredentialsMessage
@@ -21524,6 +21714,8 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GUnixFDList
 
 // UnixFDList is a wrapper around the C record GUnixFDList.
 type UnixFDList struct {
@@ -21661,6 +21853,8 @@ func (recv *UnixFDList) GetLength() int32 {
 
 // Unsupported : g_unix_fd_list_steal_fds : array return type :
 
+// AddToGobjectClassGoTypeMap : GUnixFDMessage
+
 // UnixFDMessage is a wrapper around the C record GUnixFDMessage.
 type UnixFDMessage struct {
 	native *C.GUnixFDMessage
@@ -21774,6 +21968,8 @@ func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 
 // Unsupported : g_unix_fd_message_steal_fds : array return type :
 
+// AddToGobjectClassGoTypeMap : GUnixInputStream
+
 // UnixInputStream is a wrapper around the C record GUnixInputStream.
 type UnixInputStream struct {
 	native *C.GUnixInputStream
@@ -21880,6 +22076,8 @@ func (recv *UnixInputStream) FileDescriptorBased() *FileDescriptorBased {
 func (recv *UnixInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GUnixMountMonitor
 
 // UnixMountMonitor is a wrapper around the C record GUnixMountMonitor.
 type UnixMountMonitor struct {
@@ -22069,6 +22267,8 @@ func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GUnixOutputStream
+
 // UnixOutputStream is a wrapper around the C record GUnixOutputStream.
 type UnixOutputStream struct {
 	native *C.GUnixOutputStream
@@ -22175,6 +22375,8 @@ func (recv *UnixOutputStream) FileDescriptorBased() *FileDescriptorBased {
 func (recv *UnixOutputStream) PollableOutputStream() *PollableOutputStream {
 	return PollableOutputStreamNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GUnixSocketAddress
 
 // UnixSocketAddress is a wrapper around the C record GUnixSocketAddress.
 type UnixSocketAddress struct {
@@ -22338,6 +22540,8 @@ func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GVfs
+
 // Vfs is a wrapper around the C record GVfs.
 type Vfs struct {
 	native *C.GVfs
@@ -22454,6 +22658,8 @@ func (recv *Vfs) ParseName(parseName string) *File {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GVolumeMonitor
 
 // VolumeMonitor is a wrapper around the C record GVolumeMonitor.
 type VolumeMonitor struct {
@@ -23312,6 +23518,8 @@ func (recv *VolumeMonitor) GetVolumes() *glib.List {
 	return retGo
 }
 
+// AddToGobjectClassGoTypeMap : GZlibCompressor
+
 // ZlibCompressor is a wrapper around the C record GZlibCompressor.
 type ZlibCompressor struct {
 	native *C.GZlibCompressor
@@ -23399,6 +23607,8 @@ func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 func (recv *ZlibCompressor) Converter() *Converter {
 	return ConverterNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GZlibDecompressor
 
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
 type ZlibDecompressor struct {

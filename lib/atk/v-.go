@@ -240,6 +240,8 @@ const (
 	ATK_HYPERLINK_IS_INLINE HyperlinkStateFlags = 1
 )
 
+// AddToGobjectClassGoTypeMap : AtkGObjectAccessible
+
 // GObjectAccessible is a wrapper around the C record AtkGObjectAccessible.
 type GObjectAccessible struct {
 	native *C.AtkGObjectAccessible
@@ -308,6 +310,8 @@ func (recv *GObjectAccessible) GetObject() *gobject.Object {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : AtkHyperlink
 
 // Hyperlink is a wrapper around the C record AtkHyperlink.
 type Hyperlink struct {
@@ -483,6 +487,8 @@ func (recv *Hyperlink) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : AtkMisc
+
 // Misc is a wrapper around the C record AtkMisc.
 type Misc struct {
 	native *C.AtkMisc
@@ -530,6 +536,8 @@ func (recv *Misc) Object() *gobject.Object {
 func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromC(object.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : AtkNoOpObject
 
 // NoOpObject is a wrapper around the C record AtkNoOpObject.
 type NoOpObject struct {
@@ -656,6 +664,8 @@ func (recv *NoOpObject) Window() *Window {
 	return WindowNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : AtkNoOpObjectFactory
+
 // NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
 type NoOpObjectFactory struct {
 	native *C.AtkNoOpObjectFactory
@@ -720,6 +730,8 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : AtkObject
 
 // Object is a wrapper around the C record AtkObject.
 type Object struct {
@@ -1172,6 +1184,8 @@ func (recv *Object) SetRole(role Role) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : AtkObjectFactory
+
 // ObjectFactory is a wrapper around the C record AtkObjectFactory.
 type ObjectFactory struct {
 	native *C.AtkObjectFactory
@@ -1248,6 +1262,8 @@ func (recv *ObjectFactory) Invalidate() {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : AtkPlug
+
 // Plug is a wrapper around the C record AtkPlug.
 type Plug struct {
 	native *C.AtkPlug
@@ -1312,6 +1328,8 @@ func PlugNew() *Plug {
 func (recv *Plug) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : AtkRegistry
 
 // Registry is a wrapper around the C record AtkRegistry.
 type Registry struct {
@@ -1394,6 +1412,8 @@ func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Typ
 	return
 }
 
+// AddToGobjectClassGoTypeMap : AtkRelation
+
 // Relation is a wrapper around the C record AtkRelation.
 type Relation struct {
 	native *C.AtkRelation
@@ -1473,6 +1493,8 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : AtkRelationSet
 
 // RelationSet is a wrapper around the C record AtkRelationSet.
 type RelationSet struct {
@@ -1612,6 +1634,8 @@ func (recv *RelationSet) Remove(relation *Relation) {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : AtkSocket
+
 // Socket is a wrapper around the C record AtkSocket.
 type Socket struct {
 	native *C.AtkSocket
@@ -1677,6 +1701,8 @@ func SocketNew() *Socket {
 func (recv *Socket) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : AtkStateSet
 
 // StateSet is a wrapper around the C record AtkStateSet.
 type StateSet struct {
@@ -1863,6 +1889,8 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : AtkUtil
 
 // Util is a wrapper around the C record AtkUtil.
 type Util struct {

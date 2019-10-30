@@ -12,3 +12,13 @@ func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File) {
 
 	file.Line()
 }
+
+func (c *Class) generateAddToGobjectClassGoTypeMap(g *jen.Group, version *Version) {
+	if !supportedByVersion(c, version) {
+		return
+	}
+
+	g.Commentf("AddToGobjectClassGoTypeMap : %s", c.GlibTypeName)
+
+	g.Line()
+}

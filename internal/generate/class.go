@@ -16,6 +16,7 @@ func (c *Class) mergeAddenda(addenda *Class) {
 }
 
 func (c *Class) generate(g *jen.Group, version *Version) {
+	c.generateAddToGobjectClassGoTypeMap(g, version)
 	c.Record.generate(g, version)
 	c.generateImplementss(g, version)
 }

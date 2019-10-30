@@ -20,6 +20,8 @@ import "C"
 
 var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
+// AddToGobjectClassGoTypeMap : PangoFT2FontMap
+
 // FontMap is a wrapper around the C record PangoFT2FontMap.
 type FontMap struct {
 	native *C.PangoFT2FontMap

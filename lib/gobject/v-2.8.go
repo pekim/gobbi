@@ -112,6 +112,8 @@ const (
 	TYPE_FLAG_DEEP_DERIVABLE TypeFundamentalFlags = 8
 )
 
+// AddToGobjectClassGoTypeMap : GInitiallyUnowned
+
 // InitiallyUnowned is a wrapper around the C record GInitiallyUnowned.
 type InitiallyUnowned struct {
 	native *C.GInitiallyUnowned
@@ -159,6 +161,8 @@ func (recv *InitiallyUnowned) Object() *Object {
 func CastToInitiallyUnowned(object *Object) *InitiallyUnowned {
 	return InitiallyUnownedNewFromC(object.ToC())
 }
+
+// AddToGobjectClassGoTypeMap : GObject
 
 // Object is a wrapper around the C record GObject.
 type Object struct {
@@ -502,6 +506,8 @@ func (recv *Object) WatchClosure(closure *Closure) {
 
 // Unsupported : g_object_weak_unref : unsupported parameter notify : no type generator for WeakNotify (GWeakNotify) for param notify
 
+// AddToGobjectClassGoTypeMap : GParam
+
 // ParamSpec is a wrapper around the C record GParamSpec.
 type ParamSpec struct {
 	native *C.GParamSpec
@@ -660,6 +666,8 @@ func (recv *ParamSpec) Unref() {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GParamBoolean
+
 // ParamSpecBoolean is a wrapper around the C record GParamSpecBoolean.
 type ParamSpecBoolean struct {
 	native *C.GParamSpecBoolean
@@ -698,6 +706,8 @@ func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamBoxed
+
 // ParamSpecBoxed is a wrapper around the C record GParamSpecBoxed.
 type ParamSpecBoxed struct {
 	native *C.GParamSpecBoxed
@@ -729,6 +739,8 @@ func (recv *ParamSpecBoxed) Equals(other *ParamSpecBoxed) bool {
 func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamChar
 
 // ParamSpecChar is a wrapper around the C record GParamSpecChar.
 type ParamSpecChar struct {
@@ -775,6 +787,8 @@ func (recv *ParamSpecChar) Equals(other *ParamSpecChar) bool {
 func (recv *ParamSpecChar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamDouble
 
 // ParamSpecDouble is a wrapper around the C record GParamSpecDouble.
 type ParamSpecDouble struct {
@@ -826,6 +840,8 @@ func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamEnum
+
 // ParamSpecEnum is a wrapper around the C record GParamSpecEnum.
 type ParamSpecEnum struct {
 	native *C.GParamSpecEnum
@@ -865,6 +881,8 @@ func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamFlags
+
 // ParamSpecFlags is a wrapper around the C record GParamSpecFlags.
 type ParamSpecFlags struct {
 	native *C.GParamSpecFlags
@@ -903,6 +921,8 @@ func (recv *ParamSpecFlags) Equals(other *ParamSpecFlags) bool {
 func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamFloat
 
 // ParamSpecFloat is a wrapper around the C record GParamSpecFloat.
 type ParamSpecFloat struct {
@@ -954,6 +974,8 @@ func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamInt
+
 // ParamSpecInt is a wrapper around the C record GParamSpecInt.
 type ParamSpecInt struct {
 	native *C.GParamSpecInt
@@ -999,6 +1021,8 @@ func (recv *ParamSpecInt) Equals(other *ParamSpecInt) bool {
 func (recv *ParamSpecInt) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamInt64
 
 // ParamSpecInt64 is a wrapper around the C record GParamSpecInt64.
 type ParamSpecInt64 struct {
@@ -1046,6 +1070,8 @@ func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamLong
+
 // ParamSpecLong is a wrapper around the C record GParamSpecLong.
 type ParamSpecLong struct {
 	native *C.GParamSpecLong
@@ -1092,6 +1118,8 @@ func (recv *ParamSpecLong) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamObject
+
 // ParamSpecObject is a wrapper around the C record GParamSpecObject.
 type ParamSpecObject struct {
 	native *C.GParamSpecObject
@@ -1123,6 +1151,8 @@ func (recv *ParamSpecObject) Equals(other *ParamSpecObject) bool {
 func (recv *ParamSpecObject) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamOverride
 
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {
@@ -1157,6 +1187,8 @@ func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamParam
+
 // ParamSpecParam is a wrapper around the C record GParamSpecParam.
 type ParamSpecParam struct {
 	native *C.GParamSpecParam
@@ -1189,6 +1221,8 @@ func (recv *ParamSpecParam) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamPointer
+
 // ParamSpecPointer is a wrapper around the C record GParamSpecPointer.
 type ParamSpecPointer struct {
 	native *C.GParamSpecPointer
@@ -1220,6 +1254,8 @@ func (recv *ParamSpecPointer) Equals(other *ParamSpecPointer) bool {
 func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamString
 
 // ParamSpecString is a wrapper around the C record GParamSpecString.
 type ParamSpecString struct {
@@ -1273,6 +1309,8 @@ func (recv *ParamSpecString) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamUChar
+
 // ParamSpecUChar is a wrapper around the C record GParamSpecUChar.
 type ParamSpecUChar struct {
 	native *C.GParamSpecUChar
@@ -1318,6 +1356,8 @@ func (recv *ParamSpecUChar) Equals(other *ParamSpecUChar) bool {
 func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamUInt
 
 // ParamSpecUInt is a wrapper around the C record GParamSpecUInt.
 type ParamSpecUInt struct {
@@ -1365,6 +1405,8 @@ func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamUInt64
+
 // ParamSpecUInt64 is a wrapper around the C record GParamSpecUInt64.
 type ParamSpecUInt64 struct {
 	native *C.GParamSpecUInt64
@@ -1410,6 +1452,8 @@ func (recv *ParamSpecUInt64) Equals(other *ParamSpecUInt64) bool {
 func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamULong
 
 // ParamSpecULong is a wrapper around the C record GParamSpecULong.
 type ParamSpecULong struct {
@@ -1457,6 +1501,8 @@ func (recv *ParamSpecULong) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
 
+// AddToGobjectClassGoTypeMap : GParamUnichar
+
 // ParamSpecUnichar is a wrapper around the C record GParamSpecUnichar.
 type ParamSpecUnichar struct {
 	native *C.GParamSpecUnichar
@@ -1494,6 +1540,8 @@ func (recv *ParamSpecUnichar) Equals(other *ParamSpecUnichar) bool {
 func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromC(unsafe.Pointer(recv.native))
 }
+
+// AddToGobjectClassGoTypeMap : GParamValueArray
 
 // ParamSpecValueArray is a wrapper around the C record GParamSpecValueArray.
 type ParamSpecValueArray struct {

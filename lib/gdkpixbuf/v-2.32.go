@@ -62,6 +62,8 @@ var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // Blacklisted : GdkPixdataType
 
+// AddToGobjectClassGoTypeMap : GdkPixbuf
+
 // Pixbuf is a wrapper around the C record GdkPixbuf.
 type Pixbuf struct {
 	native *C.GdkPixbuf
@@ -996,6 +998,8 @@ func (recv *Pixbuf) LoadableIcon() *gio.LoadableIcon {
 	return gio.LoadableIconNewFromC(recv.ToC())
 }
 
+// AddToGobjectClassGoTypeMap : GdkPixbufAnimation
+
 // PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.
 type PixbufAnimation struct {
 	native *C.GdkPixbufAnimation
@@ -1210,6 +1214,8 @@ func (recv *PixbufAnimation) Unref() {
 	return
 }
 
+// AddToGobjectClassGoTypeMap : GdkPixbufAnimationIter
+
 // PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
 	native *C.GdkPixbufAnimationIter
@@ -1293,6 +1299,8 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 
 	return retGo
 }
+
+// AddToGobjectClassGoTypeMap : GdkPixbufLoader
 
 // PixbufLoader is a wrapper around the C record GdkPixbufLoader.
 type PixbufLoader struct {
@@ -1766,6 +1774,8 @@ func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {
 
 	return retGo, goError
 }
+
+// AddToGobjectClassGoTypeMap : GdkPixbufSimpleAnim
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
