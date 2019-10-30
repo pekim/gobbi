@@ -3,6 +3,7 @@
 package gtkx
 
 import (
+	"fmt"
 	"github.com/pekim/gobbi/lib/gtk"
 )
 
@@ -15,6 +16,8 @@ static void Test_c(GObject *object) {
 	printf("%s\n", class_name);
 }
 
+void GtkBuilderConnectSignal(GObject *object, gchar *class_name, gchar *signal_name, gchar *handler_name);
+
 static void Gobbi_gtk_builder_connect(
 	GtkBuilder *builder,
 	GObject *object,
@@ -25,7 +28,7 @@ static void Gobbi_gtk_builder_connect(
 	gpointer user_data
 ) {
 	const gchar *class_name = G_OBJECT_CLASS_NAME(G_OBJECT_GET_CLASS(object));
-	printf("%s - %s - %s\n", class_name, signal_name, handler_name);
+	GtkBuilderConnectSignal(object, (gchar *)(class_name), (gchar *)(signal_name), (gchar *)(handler_name));
 }
 
 static void Gobbi_gtk_builder_connect_signals(GtkBuilder *builder) {
@@ -39,10 +42,16 @@ static void Gobbi_gtk_builder_connect_signals(GtkBuilder *builder) {
 import "C"
 
 func BuilderConnectSignals(builder *gtk.Builder) {
-	//button := gtk.CastToButton(builder.GetObject("ok_button"))
-	//C.Test_c((*C.GObject)(button.ToC()))
-
 	C.Gobbi_gtk_builder_connect_signals(
 		(*C.GtkBuilder)(builder.ToC()),
 	)
+}
+
+//export GtkBuilderConnectSignal
+func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalName *C.gchar, cHandlerName *C.gchar) {
+	className := C.GoString(cClassName)
+	signalName := C.GoString(cSignalName)
+	handlerName := C.GoString(cHandlerName)
+
+	fmt.Println(cObject, className, signalName, handlerName)
 }
