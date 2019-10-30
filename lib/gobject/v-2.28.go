@@ -5,6 +5,7 @@ package gobject
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -25,6 +26,8 @@ import (
 
 */
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // Unsupported : alias has no type generator for ClosureMarshal, GClosureMarshal
 

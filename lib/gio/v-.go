@@ -7,6 +7,7 @@ import (
 	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -286,6 +287,8 @@ import (
 
 */
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 type AppInfoCreateFlags C.GAppInfoCreateFlags
 

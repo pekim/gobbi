@@ -2,7 +2,10 @@
 
 package cairo
 
-import "unsafe"
+import (
+	"reflect"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -11,6 +14,8 @@ import "unsafe"
 // #include <cairo/cairo.h>
 // #include <stdlib.h>
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 type Status C.cairo_status_t
 

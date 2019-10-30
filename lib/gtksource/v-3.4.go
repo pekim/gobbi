@@ -12,6 +12,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
+	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -277,6 +278,8 @@ import (
 
 */
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 type CompletionActivation C.GtkSourceCompletionActivation
 

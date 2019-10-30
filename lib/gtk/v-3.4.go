@@ -13,6 +13,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -3333,6 +3334,8 @@ import (
 
 */
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // Allocation is a representation of the C alias GtkAllocation.
 type Allocation *gdk.Rectangle

@@ -5,6 +5,7 @@ package glib
 
 import (
 	"fmt"
+	"reflect"
 	"unsafe"
 )
 
@@ -172,6 +173,8 @@ import (
     }
 */
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // DateDay is a representation of the C alias GDateDay.
 type DateDay uint8

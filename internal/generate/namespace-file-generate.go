@@ -93,6 +93,7 @@ func (ns *Namespace) generateVersionFiles(filename string, version Version,
 		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f, version)
 		ns.generateVersionDebugFunction(f, version.value)
+		ns.generateGobjectClassGoTypeMap(f)
 
 		for _, generatables := range generatablesCollections {
 			for _, entity := range generatables.entities() {

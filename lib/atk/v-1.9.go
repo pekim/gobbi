@@ -6,6 +6,7 @@ package atk
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -224,6 +225,8 @@ import (
 
 */
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // AttributeSet is a representation of the C alias AtkAttributeSet.
 type AttributeSet *glib.SList

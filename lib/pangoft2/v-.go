@@ -6,6 +6,7 @@ import (
 	freetype2 "github.com/pekim/gobbi/lib/freetype2"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"reflect"
 	"runtime"
 	"unsafe"
 )
@@ -16,6 +17,8 @@ import (
 // #include <pango/pangoft2.h>
 // #include <stdlib.h>
 import "C"
+
+var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // FontMap is a wrapper around the C record PangoFT2FontMap.
 type FontMap struct {
