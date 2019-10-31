@@ -17,8 +17,7 @@ func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File, version Versi
 		Op("=").
 		Map(
 			jen.String()).
-		Index().
-		Qual("reflect", "Type").
+		Qual("reflect", "Value").
 		Values(
 			jen.DictFunc(func(d jen.Dict) {
 				for _, class := range ns.Classes {
@@ -38,18 +37,7 @@ func (c *Class) generateAddToGobjectClassGoTypeMap(d jen.Dict, version Version) 
 		return
 	}
 
-	reflectType := jen.
-		Qual("reflect", "TypeOf").
-		Call(jen.
-			Parens(jen.
-				Op("*").
-				Id(c.GoName)).
-			//Id(c.GlibTypeName)).
-			Parens(jen.Nil()))
-
-	d[jen.Lit(c.GlibTypeName)] =
-		jen.
-			Index().
-			Qual("reflect", "Type").
-			Values(reflectType)
+	d[jen.Lit(c.GlibTypeName)] = jen.
+		Qual("reflect", "ValueOf").
+		Call(jen.Id(c.GoName + "NewFromC"))
 }

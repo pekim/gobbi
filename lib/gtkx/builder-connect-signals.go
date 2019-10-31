@@ -5,6 +5,8 @@ package gtkx
 import (
 	"fmt"
 	"github.com/pekim/gobbi/lib/gtk"
+	"reflect"
+	"unsafe"
 )
 
 /*
@@ -48,8 +50,22 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	signalName := C.GoString(cSignalName)
 	handlerName := C.GoString(cHandlerName)
 
-	classTypes := gtk.GobjectClassGoTypeMap[className]
+	ctorValue, found := gtk.GobjectClassGoTypeMap[className]
+	if !found {
+		fmt.Println("TODO: Not found class", className)
+		return
+	}
 
 	fmt.Println(cObject, className, signalName, handlerName)
-	fmt.Println("  ", classTypes[0])
+	fmt.Println("  ", ctorValue.Type().Kind())
+
+	ctorArgs := []reflect.Value{reflect.ValueOf(unsafe.Pointer(cObject))}
+	ctorReturnValues := ctorValue.Call(ctorArgs)
+	gtkInstance := ctorReturnValues[0]
+
+	fmt.Println(gtkInstance.Kind())
+	fmt.Println(gtkInstance.MethodByName("GetLabel"))
+	fmt.Println(gtkInstance.MethodByName("GetLabel").Call(nil))
+
+	//fmt.Println(gtk.ButtonNewWithLabel("qaz").GetLabel())
 }
