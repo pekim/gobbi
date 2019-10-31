@@ -94,6 +94,17 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 		return
 	}
 
+	param0Type := connectMethod.Type().In(0)
+	handlerType := reflect.TypeOf(handler)
+	if !handlerType.AssignableTo(param0Type) {
+		fmt.Println("TODO: handler of wrong type", connectMethodName)
+		return
+
+	}
+
 	connectArgs := []reflect.Value{reflect.ValueOf(handler)}
 	connectMethod.Call(connectArgs)
+	fmt.Println("called")
+
+	fmt.Println()
 }
