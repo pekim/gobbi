@@ -7,6 +7,7 @@ import (
 	"github.com/pekim/gobbi/internal/generate"
 	"github.com/pekim/gobbi/lib/gtk"
 	"reflect"
+	"sync"
 	"unsafe"
 )
 
@@ -14,7 +15,7 @@ import (
 #cgo pkg-config: gtk+-3.0
 #include <gtk/gtk.h>
 
-void GtkBuilderConnectSignal(GObject *object, gchar *class_name, gchar *signal_name, gchar *handler_name);
+void GtkBuilderConnectSignal(GObject *object, gchar *class_name, gchar *signal_name, gchar *handler_name, gpointer user_data);
 
 static void Gobbi_gtk_builder_connect(
 	GtkBuilder *builder,
@@ -26,30 +27,54 @@ static void Gobbi_gtk_builder_connect(
 	gpointer user_data
 ) {
 	const gchar *class_name = G_OBJECT_CLASS_NAME(G_OBJECT_GET_CLASS(object));
-	GtkBuilderConnectSignal(object, (gchar *)(class_name), (gchar *)(signal_name), (gchar *)(handler_name));
+	GtkBuilderConnectSignal(object, (gchar *)(class_name), (gchar *)(signal_name), (gchar *)(handler_name), user_data);
 }
 
 static void Gobbi_gtk_builder_connect_signals(GtkBuilder *builder) {
 	gtk_builder_connect_signals_full(
 		builder,
 		Gobbi_gtk_builder_connect,
-		NULL
+		builder
 	);
 }
 */
 import "C"
 
+var builderConnectSignalsHandlers = make(map[unsafe.Pointer]map[string]interface{})
+var builderConnectSignalsHandlersLock sync.Mutex
+
 func BuilderConnectSignals(builder *gtk.Builder, handlers map[string]interface{}) {
+	cBuilder := builder.ToC()
+
+	builderConnectSignalsHandlersLock.Lock()
+	builderConnectSignalsHandlers[cBuilder] = handlers
+	builderConnectSignalsHandlersLock.Unlock()
+
 	C.Gobbi_gtk_builder_connect_signals(
-		(*C.GtkBuilder)(builder.ToC()),
+		(*C.GtkBuilder)(cBuilder),
 	)
+
+	builderConnectSignalsHandlersLock.Lock()
+	delete(builderConnectSignalsHandlers, cBuilder)
+	builderConnectSignalsHandlersLock.Unlock()
 }
 
 //export GtkBuilderConnectSignal
-func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalName *C.gchar, cHandlerName *C.gchar) {
+func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalName *C.gchar, cHandlerName *C.gchar, cBuilder C.gpointer) {
 	className := C.GoString(cClassName)
 	signalName := C.GoString(cSignalName)
 	handlerName := C.GoString(cHandlerName)
+
+	handlers, found := builderConnectSignalsHandlers[unsafe.Pointer(cBuilder)]
+	if !found {
+		panic("builder not found in handlers map")
+	}
+
+	handler, found := handlers[handlerName]
+	if !found {
+		fmt.Println("TODO: Not found handler", handlerName)
+		return
+	}
 
 	ctorValue, found := gtk.GobjectClassGoTypeMap[className]
 	if !found {
@@ -57,13 +82,9 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 		return
 	}
 
-	fmt.Println(cObject, className, signalName, handlerName)
-
 	ctorArgs := []reflect.Value{reflect.ValueOf(unsafe.Pointer(cObject))}
 	ctorReturnValues := ctorValue.Call(ctorArgs)
 	gtkInstance := ctorReturnValues[0]
-
-	fmt.Println(gtkInstance.MethodByName("GetLabel").Call(nil))
 
 	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
 	fmt.Println(connectMethodName)
@@ -72,4 +93,7 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 		fmt.Println("TODO: Not found connect method", className, connectMethodName)
 		return
 	}
+
+	connectArgs := []reflect.Value{reflect.ValueOf(handler)}
+	connectMethod.Call(connectArgs)
 }
