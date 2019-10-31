@@ -11,6 +11,7 @@ usage () {
     echo "  gobbi build                    Generate libraries and docs, and run tests"
     echo "  gobbi docs                     Generate documentation"
     echo "  gobbi generate                 Generate libraries"
+    echo "  gobbi generate-clean           Generate libraries, first removing all generated files"
     echo "  gobbi test                     Run tests"
     echo "  gobbi examples                 List the available examples"
     echo "  gobbi example <example-name>   Run an example"
@@ -33,8 +34,12 @@ build () {
 }
 
 generate () {
-    grep -l -r "Code generated - DO NOT EDIT" lib/ | xargs rm -f && \
     go run internal/cmd/generate/*.go $@
+}
+
+generateClean () {
+    grep -l -r "Code generated - DO NOT EDIT" lib/ | xargs rm -f && \
+    generate $@
 }
 
 docs () {
@@ -89,6 +94,9 @@ processSubcommand () {
       ;;
     generate)
       generate $@
+      ;;
+    generate-clean)
+      generateClean $@
       ;;
     test)
       test $@
