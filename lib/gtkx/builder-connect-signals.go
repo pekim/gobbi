@@ -11,11 +11,6 @@ import (
 #cgo pkg-config: gtk+-3.0
 #include <gtk/gtk.h>
 
-static void Test_c(GObject *object) {
-	const gchar *class_name = G_OBJECT_CLASS_NAME(G_OBJECT_GET_CLASS(object));
-	printf("%s\n", class_name);
-}
-
 void GtkBuilderConnectSignal(GObject *object, gchar *class_name, gchar *signal_name, gchar *handler_name);
 
 static void Gobbi_gtk_builder_connect(
