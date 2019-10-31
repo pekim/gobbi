@@ -20,7 +20,7 @@ type Field struct {
 
 func (f *Field) init(ns *Namespace) {
 	f.Namespace = ns
-	f.goVarName = makeExportedGoName(f.Name)
+	f.goVarName = MakeExportedGoName(f.Name)
 	f.Name = makeSafeCName(f.Name)
 
 	if f.Type != nil {
