@@ -1,31 +1,55 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+)
 
-func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File) {
+const gobjectClassGoTypeMapVarName = "gobjectClassGoTypeMap"
+
+func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File, version Version) {
 	if !ns.GenerateGobjectclassGotypeMap {
 		return
 	}
 
 	file.
 		Var().
-		Id("gobjectClassGoTypeMap").
+		Id(gobjectClassGoTypeMapVarName).
 		Op("=").
-		Make(
-			jen.Map(jen.String()).Qual("reflect", "Type"))
+		Map(
+			jen.String()).
+		Index().
+		Qual("reflect", "Type").
+		Values(
+			jen.DictFunc(func(d jen.Dict) {
+				for _, class := range ns.Classes {
+					class.generateAddToGobjectClassGoTypeMap(d, version)
+				}
+			}))
 
 	file.Line()
 }
 
-func (c *Class) generateAddToGobjectClassGoTypeMap(g *jen.Group, version *Version) {
-	if !c.Record.Namespace.GenerateGobjectclassGotypeMap {
-		return
-	}
-	if !supportedByVersion(c, version) {
+func (c *Class) generateAddToGobjectClassGoTypeMap(d jen.Dict, version Version) {
+	//ns := c.Record.Namespace
+	blacklisted, _ := c.blacklisted()
+	supported, _ := c.supported()
+
+	if blacklisted || !supported || !supportedByVersion(c, &version) {
 		return
 	}
 
-	g.Commentf("AddToGobjectClassGoTypeMap : %s", c.GlibTypeName)
+	reflectType := jen.
+		Qual("reflect", "TypeOf").
+		Call(jen.
+			Parens(jen.
+				Op("*").
+				Id(c.GoName)).
+			//Id(c.GlibTypeName)).
+			Parens(jen.Nil()))
 
-	g.Line()
+	d[jen.Lit(c.GlibTypeName)] =
+		jen.
+			Index().
+			Qual("reflect", "Type").
+			Values(reflectType)
 }
