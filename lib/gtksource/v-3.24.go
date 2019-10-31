@@ -12,7 +12,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
-	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -315,8 +314,6 @@ import (
 */
 import "C"
 
-var gobjectClassGoTypeMap = make(map[string]reflect.Type)
-
 type CompletionActivation C.GtkSourceCompletionActivation
 
 const (
@@ -385,8 +382,6 @@ const (
 	GTK_SOURCE_SPACE_TYPE_NBSP    SpaceTypeFlags = 8
 	GTK_SOURCE_SPACE_TYPE_ALL     SpaceTypeFlags = 15
 )
-
-// AddToGobjectClassGoTypeMap : GtkSourceBuffer
 
 // Buffer is a wrapper around the C record GtkSourceBuffer.
 type Buffer struct {
@@ -1215,8 +1210,6 @@ func (recv *Buffer) Undo() {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceCompletion
-
 // Completion is a wrapper around the C record GtkSourceCompletion.
 type Completion struct {
 	native *C.GtkSourceCompletion
@@ -1774,8 +1767,6 @@ func (recv *Completion) Buildable() *gtk.Buildable {
 	return gtk.BuildableNewFromC(recv.ToC())
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceCompletionContext
-
 // CompletionContext is a wrapper around the C record GtkSourceCompletionContext.
 type CompletionContext struct {
 	native *C.GtkSourceCompletionContext
@@ -1926,8 +1917,6 @@ func (recv *CompletionContext) GetIter() (bool, *gtk.TextIter) {
 
 	return retGo, iter
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceCompletionInfo
 
 // CompletionInfo is a wrapper around the C record GtkSourceCompletionInfo.
 type CompletionInfo struct {
@@ -2117,8 +2106,6 @@ func (recv *CompletionInfo) ImplementorIface() *atk.ImplementorIface {
 func (recv *CompletionInfo) Buildable() *gtk.Buildable {
 	return gtk.BuildableNewFromC(recv.ToC())
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceCompletionItem
 
 // CompletionItem is a wrapper around the C record GtkSourceCompletionItem.
 type CompletionItem struct {
@@ -2329,8 +2316,6 @@ func (recv *CompletionItem) CompletionProposal() *CompletionProposal {
 	return CompletionProposalNewFromC(recv.ToC())
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceCompletionWords
-
 // CompletionWords is a wrapper around the C record GtkSourceCompletionWords.
 type CompletionWords struct {
 	native *C.GtkSourceCompletionWords
@@ -2428,8 +2413,6 @@ func (recv *CompletionWords) Unregister(buffer *gtk.TextBuffer) {
 func (recv *CompletionWords) CompletionProvider() *CompletionProvider {
 	return CompletionProviderNewFromC(recv.ToC())
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceFile
 
 // File is a wrapper around the C record GtkSourceFile.
 type File struct {
@@ -2573,8 +2556,6 @@ func (recv *File) SetLocation(location *gio.File) {
 }
 
 // Unsupported : gtk_source_file_set_mount_operation_factory : unsupported parameter callback : no type generator for MountOperationFactory (GtkSourceMountOperationFactory) for param callback
-
-// AddToGobjectClassGoTypeMap : GtkSourceFileLoader
 
 // FileLoader is a wrapper around the C record GtkSourceFileLoader.
 type FileLoader struct {
@@ -2773,8 +2754,6 @@ func (recv *FileLoader) SetCandidateEncodings(candidateEncodings *glib.SList) {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceFileSaver
 
 // FileSaver is a wrapper around the C record GtkSourceFileSaver.
 type FileSaver struct {
@@ -2988,8 +2967,6 @@ func (recv *FileSaver) SetNewlineType(newlineType NewlineType) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceGutter
-
 // Gutter is a wrapper around the C record GtkSourceGutter.
 type Gutter struct {
 	native *C.GtkSourceGutter
@@ -3149,8 +3126,6 @@ func (recv *Gutter) SetPadding(xpad int32, ypad int32) {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceGutterRenderer
 
 // GutterRenderer is a wrapper around the C record GtkSourceGutterRenderer.
 type GutterRenderer struct {
@@ -3855,8 +3830,6 @@ func (recv *GutterRenderer) SetVisible(visible bool) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceGutterRendererPixbuf
-
 // GutterRendererPixbuf is a wrapper around the C record GtkSourceGutterRendererPixbuf.
 type GutterRendererPixbuf struct {
 	native *C.GtkSourceGutterRendererPixbuf
@@ -3997,8 +3970,6 @@ func (recv *GutterRendererPixbuf) SetStockId(stockId string) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceGutterRendererText
-
 // GutterRendererText is a wrapper around the C record GtkSourceGutterRendererText.
 type GutterRendererText struct {
 	native *C.GtkSourceGutterRendererText
@@ -4125,8 +4096,6 @@ func (recv *GutterRendererText) SetText(text string, length int32) {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceLanguage
 
 // Language is a wrapper around the C record GtkSourceLanguage.
 type Language struct {
@@ -4281,8 +4250,6 @@ func (recv *Language) GetStyleName(styleId string) string {
 	return retGo
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceLanguageManager
-
 // LanguageManager is a wrapper around the C record GtkSourceLanguageManager.
 type LanguageManager struct {
 	native *C.GtkSourceLanguageManager
@@ -4428,8 +4395,6 @@ func (recv *LanguageManager) SetSearchPath(dirs []string) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceMap
-
 // Map is a wrapper around the C record GtkSourceMap.
 type Map struct {
 	native *C.GtkSourceMap
@@ -4551,8 +4516,6 @@ func (recv *Map) Scrollable() *gtk.Scrollable {
 	return gtk.ScrollableNewFromC(recv.ToC())
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceMark
-
 // Mark is a wrapper around the C record GtkSourceMark.
 type Mark struct {
 	native *C.GtkSourceMark
@@ -4664,8 +4627,6 @@ func (recv *Mark) Prev(category string) *Mark {
 
 	return retGo
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceMarkAttributes
 
 // MarkAttributes is a wrapper around the C record GtkSourceMarkAttributes.
 type MarkAttributes struct {
@@ -4871,8 +4832,6 @@ func (recv *MarkAttributes) SetStockId(stockId string) {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourcePrintCompositor
 
 // PrintCompositor is a wrapper around the C record GtkSourcePrintCompositor.
 type PrintCompositor struct {
@@ -5311,8 +5270,6 @@ func (recv *PrintCompositor) SetWrapMode(wrapMode gtk.WrapMode) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceRegion
-
 // Region is a wrapper around the C record GtkSourceRegion.
 type Region struct {
 	native *C.GtkSourceRegion
@@ -5533,8 +5490,6 @@ func (recv *Region) ToString() string {
 
 	return retGo
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceSearchContext
 
 // SearchContext is a wrapper around the C record GtkSourceSearchContext.
 type SearchContext struct {
@@ -6017,8 +5972,6 @@ func (recv *SearchContext) SetSettings(settings *SearchSettings) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceSearchSettings
-
 // SearchSettings is a wrapper around the C record GtkSourceSearchSettings.
 type SearchSettings struct {
 	native *C.GtkSourceSearchSettings
@@ -6170,8 +6123,6 @@ func (recv *SearchSettings) SetWrapAround(wrapAround bool) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceSpaceDrawer
-
 // SpaceDrawer is a wrapper around the C record GtkSourceSpaceDrawer.
 type SpaceDrawer struct {
 	native *C.GtkSourceSpaceDrawer
@@ -6309,8 +6260,6 @@ func (recv *SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, type
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceStyle
-
 // Style is a wrapper around the C record GtkSourceStyle.
 type Style struct {
 	native *C.GtkSourceStyle
@@ -6377,8 +6326,6 @@ func (recv *Style) Copy() *Style {
 
 	return retGo
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceStyleScheme
 
 // StyleScheme is a wrapper around the C record GtkSourceStyleScheme.
 type StyleScheme struct {
@@ -6489,8 +6436,6 @@ func (recv *StyleScheme) GetStyle(styleId string) *Style {
 	return retGo
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceStyleSchemeChooserButton
-
 // StyleSchemeChooserButton is a wrapper around the C record GtkSourceStyleSchemeChooserButton.
 type StyleSchemeChooserButton struct {
 	native *C.GtkSourceStyleSchemeChooserButton
@@ -6597,8 +6542,6 @@ func (recv *StyleSchemeChooserButton) StyleSchemeChooser() *StyleSchemeChooser {
 	return StyleSchemeChooserNewFromC(recv.ToC())
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceStyleSchemeChooserWidget
-
 // StyleSchemeChooserWidget is a wrapper around the C record GtkSourceStyleSchemeChooserWidget.
 type StyleSchemeChooserWidget struct {
 	native *C.GtkSourceStyleSchemeChooserWidget
@@ -6689,8 +6632,6 @@ func (recv *StyleSchemeChooserWidget) Buildable() *gtk.Buildable {
 func (recv *StyleSchemeChooserWidget) StyleSchemeChooser() *StyleSchemeChooser {
 	return StyleSchemeChooserNewFromC(recv.ToC())
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceStyleSchemeManager
 
 // StyleSchemeManager is a wrapper around the C record GtkSourceStyleSchemeManager.
 type StyleSchemeManager struct {
@@ -6840,8 +6781,6 @@ func (recv *StyleSchemeManager) SetSearchPath(path []string) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GtkSourceTag
-
 // Tag is a wrapper around the C record GtkSourceTag.
 type Tag struct {
 	native *C.GtkSourceTag
@@ -6909,8 +6848,6 @@ func TagNew(name string) *Tag {
 
 	return retGo
 }
-
-// AddToGobjectClassGoTypeMap : GtkSourceView
 
 // View is a wrapper around the C record GtkSourceView.
 type View struct {

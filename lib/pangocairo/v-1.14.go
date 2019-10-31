@@ -6,7 +6,6 @@ package pangocairo
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"reflect"
 	"unsafe"
 )
 
@@ -16,8 +15,6 @@ import (
 // #include <pango/pangocairo.h>
 // #include <stdlib.h>
 import "C"
-
-var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // Blacklisted : PangoCairoFcFontMap
 

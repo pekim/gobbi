@@ -6,7 +6,6 @@ package pango
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"reflect"
 	"runtime"
 	"unsafe"
 )
@@ -17,8 +16,6 @@ import (
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // Glyph is a representation of the C alias PangoGlyph.
 type Glyph uint32
@@ -40,8 +37,6 @@ const (
 	PANGO_FONT_MASK_SIZE    FontMask = 32
 	PANGO_FONT_MASK_GRAVITY FontMask = 64
 )
-
-// AddToGobjectClassGoTypeMap : PangoContext
 
 // Context is a wrapper around the C record PangoContext.
 type Context struct {
@@ -234,8 +229,6 @@ func (recv *Context) SetLanguage(language *Language) {
 
 // Blacklisted : PangoEngine
 
-// AddToGobjectClassGoTypeMap : PangoEngineLang
-
 // EngineLang is a wrapper around the C record PangoEngineLang.
 type EngineLang struct {
 	native *C.PangoEngineLang
@@ -279,8 +272,6 @@ func CastToEngineLang(object *gobject.Object) *EngineLang {
 	return EngineLangNewFromC(object.ToC())
 }
 
-// AddToGobjectClassGoTypeMap : PangoEngineShape
-
 // EngineShape is a wrapper around the C record PangoEngineShape.
 type EngineShape struct {
 	native *C.PangoEngineShape
@@ -323,8 +314,6 @@ func (recv *EngineShape) Equals(other *EngineShape) bool {
 func CastToEngineShape(object *gobject.Object) *EngineShape {
 	return EngineShapeNewFromC(object.ToC())
 }
-
-// AddToGobjectClassGoTypeMap : PangoFont
 
 // Font is a wrapper around the C record PangoFont.
 type Font struct {
@@ -441,8 +430,6 @@ func (recv *Font) GetMetrics(language *Language) *FontMetrics {
 	return retGo
 }
 
-// AddToGobjectClassGoTypeMap : PangoFontFace
-
 // FontFace is a wrapper around the C record PangoFontFace.
 type FontFace struct {
 	native *C.PangoFontFace
@@ -507,8 +494,6 @@ func (recv *FontFace) GetFaceName() string {
 	return retGo
 }
 
-// AddToGobjectClassGoTypeMap : PangoFontFamily
-
 // FontFamily is a wrapper around the C record PangoFontFamily.
 type FontFamily struct {
 	native *C.PangoFontFamily
@@ -566,8 +551,6 @@ func (recv *FontFamily) GetName() string {
 }
 
 // Unsupported : pango_font_family_list_faces : unsupported parameter faces : output array param faces
-
-// AddToGobjectClassGoTypeMap : PangoFontMap
 
 // FontMap is a wrapper around the C record PangoFontMap.
 type FontMap struct {
@@ -670,8 +653,6 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	return retGo
 }
 
-// AddToGobjectClassGoTypeMap : PangoFontset
-
 // Fontset is a wrapper around the C record PangoFontset.
 type Fontset struct {
 	native *C.PangoFontset
@@ -739,8 +720,6 @@ func (recv *Fontset) GetMetrics() *FontMetrics {
 }
 
 // Blacklisted : PangoFontsetSimple
-
-// AddToGobjectClassGoTypeMap : PangoLayout
 
 // Layout is a wrapper around the C record PangoLayout.
 type Layout struct {

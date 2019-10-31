@@ -10,7 +10,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -213,8 +212,6 @@ import (
 */
 import "C"
 
-var gobjectClassGoTypeMap = make(map[string]reflect.Type)
-
 // Unsupported : alias has no type generator for none, void
 
 type DragAction C.GdkDragAction
@@ -368,8 +365,6 @@ const (
 	GDK_WINDOW_STATE_LEFT_RESIZABLE   WindowState = 65536
 )
 
-// AddToGobjectClassGoTypeMap : GdkAppLaunchContext
-
 // AppLaunchContext is a wrapper around the C record GdkAppLaunchContext.
 type AppLaunchContext struct {
 	native *C.GdkAppLaunchContext
@@ -494,8 +489,6 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GdkCursor
 
 // Cursor is a wrapper around the C record GdkCursor.
 type Cursor struct {
@@ -671,8 +664,6 @@ func (recv *Cursor) Unref() {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GdkDevice
 
 // Device is a wrapper around the C record GdkDevice.
 type Device struct {
@@ -973,8 +964,6 @@ func (recv *Device) SetMode(mode InputMode) bool {
 	return retGo
 }
 
-// AddToGobjectClassGoTypeMap : GdkDeviceManager
-
 // DeviceManager is a wrapper around the C record GdkDeviceManager.
 type DeviceManager struct {
 	native *C.GdkDeviceManager
@@ -1207,8 +1196,6 @@ func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, dat
 	callback := signalDeviceManagerDeviceRemovedMap[index].callback
 	callback(device)
 }
-
-// AddToGobjectClassGoTypeMap : GdkDisplay
 
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
@@ -1756,8 +1743,6 @@ func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GdkDisplayManager
-
 // DisplayManager is a wrapper around the C record GdkDisplayManager.
 type DisplayManager struct {
 	native *C.GdkDisplayManager
@@ -1908,8 +1893,6 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GdkDragContext
-
 // DragContext is a wrapper around the C record GdkDragContext.
 type DragContext struct {
 	native *C.GdkDragContext
@@ -2016,8 +1999,6 @@ func (recv *DragContext) SetDevice(device *Device) {
 
 	return
 }
-
-// AddToGobjectClassGoTypeMap : GdkFrameClock
 
 // FrameClock is a wrapper around the C record GdkFrameClock.
 type FrameClock struct {
@@ -2486,8 +2467,6 @@ func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddToGobjectClassGoTypeMap : GdkGLContext
-
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {
 	native *C.GdkGLContext
@@ -2534,8 +2513,6 @@ func (recv *GLContext) Object() *gobject.Object {
 func CastToGLContext(object *gobject.Object) *GLContext {
 	return GLContextNewFromC(object.ToC())
 }
-
-// AddToGobjectClassGoTypeMap : GdkKeymap
 
 // Keymap is a wrapper around the C record GdkKeymap.
 type Keymap struct {
@@ -2874,8 +2851,6 @@ func (recv *Keymap) TranslateKeyboardState(hardwareKeycode uint32, state Modifie
 
 	return retGo, keyval, effectiveGroup, level, consumedModifiers
 }
-
-// AddToGobjectClassGoTypeMap : GdkScreen
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
@@ -3428,8 +3403,6 @@ func (recv *Screen) SetResolution(dpi float64) {
 	return
 }
 
-// AddToGobjectClassGoTypeMap : GdkVisual
-
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
 	native *C.GdkVisual
@@ -3650,8 +3623,6 @@ func (recv *Visual) GetVisualType() VisualType {
 
 	return retGo
 }
-
-// AddToGobjectClassGoTypeMap : GdkWindow
 
 // Window is a wrapper around the C record GdkWindow.
 type Window struct {

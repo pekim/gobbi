@@ -3,6 +3,10 @@ package generate
 import "github.com/dave/jennifer/jen"
 
 func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File) {
+	if !ns.GenerateGobjectclassToGotypeMap {
+		return
+	}
+
 	file.
 		Var().
 		Id("gobjectClassGoTypeMap").
@@ -14,6 +18,9 @@ func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File) {
 }
 
 func (c *Class) generateAddToGobjectClassGoTypeMap(g *jen.Group, version *Version) {
+	if !c.Record.Namespace.GenerateGobjectclassToGotypeMap {
+		return
+	}
 	if !supportedByVersion(c, version) {
 		return
 	}

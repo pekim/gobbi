@@ -3,15 +3,11 @@
 
 package pangocairo
 
-import "reflect"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <pango/pangocairo.h>
 // #include <stdlib.h>
 import "C"
-
-var gobjectClassGoTypeMap = make(map[string]reflect.Type)
 
 // Blacklisted : PangoCairoFcFontMap

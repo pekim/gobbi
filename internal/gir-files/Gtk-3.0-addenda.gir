@@ -6,7 +6,7 @@
 >
   <c:include name="../gdk/gdk_event.h"/>
 
-  <namespace>
+  <namespace generate-gobjectclass-to-gotype-map="true">
     <bitfield name="StyleContextPrintFlags" version="3.20"/>
 
     <constant blacklist="true" name="STOCK_ABOUT"/>
