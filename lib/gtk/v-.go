@@ -2384,7 +2384,7 @@ import (
 */
 import "C"
 
-var gobjectClassGoTypeMap = map[string][]reflect.Type{
+var GobjectClassGoTypeMap = map[string][]reflect.Type{
 	"GtkAboutDialog":              []reflect.Type{reflect.TypeOf((*AboutDialog)(nil))},
 	"GtkAccelGroup":               []reflect.Type{reflect.TypeOf((*AccelGroup)(nil))},
 	"GtkAccelLabel":               []reflect.Type{reflect.TypeOf((*AccelLabel)(nil))},

@@ -4,7 +4,7 @@ import (
 	"github.com/dave/jennifer/jen"
 )
 
-const gobjectClassGoTypeMapVarName = "gobjectClassGoTypeMap"
+const gobjectClassGoTypeMapVarName = "GobjectClassGoTypeMap"
 
 func (ns *Namespace) generateGobjectClassGoTypeMap(file *jen.File, version Version) {
 	if !ns.GenerateGobjectclassGotypeMap {

@@ -48,5 +48,8 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	signalName := C.GoString(cSignalName)
 	handlerName := C.GoString(cHandlerName)
 
+	classTypes := gtk.GobjectClassGoTypeMap[className]
+
 	fmt.Println(cObject, className, signalName, handlerName)
+	fmt.Println("  ", classTypes[0])
 }
