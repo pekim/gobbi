@@ -1,8 +1,10 @@
-package gtkx
+package gtk
 
 import (
+	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 	"github.com/pekim/gobbi/lib/gtkx"
+	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
 )
@@ -39,4 +41,32 @@ func TestBuildConnectSignals(t *testing.T) {
 		"cancel_button_clicked": func(s string) {},
 		"bad_name":              func() {},
 	})
+}
+
+func TestBuildConnectNotifySignal(t *testing.T) {
+	gtk.Init(os.Args)
+
+	const ui = `
+<interface>
+  <object class="GtkLabel" id="label">
+	<property name="label">one</property>
+	<signal name="notify::label" handler="label_changed"/>
+  </object>
+</interface>
+`
+	signalHandled := false
+
+	builder := gtk.BuilderNewFromString(ui)
+	label := gtk.CastToLabel(builder.GetObject("label"))
+
+	gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+		"label_changed": func(pspec *gobject.ParamSpec) {
+			signalHandled = true
+			assert.Equal(t, label.GetLabel(), "two")
+		},
+	})
+
+	label.SetText("two")
+
+	assert.True(t, signalHandled)
 }

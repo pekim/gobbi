@@ -5,8 +5,10 @@ package gtkx
 import (
 	"fmt"
 	"github.com/pekim/gobbi/internal/generate"
+	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 	"reflect"
+	"strings"
 	"sync"
 	"unsafe"
 )
@@ -86,6 +88,25 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	ctorReturnValues := ctorValue.Call(ctorArgs)
 	gtkInstance := ctorReturnValues[0]
 
+	if strings.HasPrefix(signalName, "notify::") {
+		expectedHandlerType := reflect.TypeOf(func(*gobject.ParamSpec) {})
+		handlerType := reflect.TypeOf(handler)
+		if !handlerType.AssignableTo(expectedHandlerType) {
+			fmt.Println("TODO: handler of wrong type", signalName)
+			return
+
+		}
+
+		notifySignal := strings.TrimPrefix(signalName, "notify::")
+
+		objectMethod := gtkInstance.MethodByName("Object")
+		objectValue := objectMethod.Call(nil)[0]
+		object := objectValue.Interface().(*gobject.Object)
+		object.ConnectNotifyProperty(notifySignal, handler.(func(*gobject.ParamSpec)))
+
+		return
+	}
+
 	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
 	fmt.Println(connectMethodName)
 	connectMethod := gtkInstance.MethodByName(connectMethodName)
@@ -99,7 +120,6 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	if !handlerType.AssignableTo(param0Type) {
 		fmt.Println("TODO: handler of wrong type", connectMethodName)
 		return
-
 	}
 
 	connectArgs := []reflect.Value{reflect.ValueOf(handler)}
