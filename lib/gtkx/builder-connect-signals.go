@@ -47,12 +47,18 @@ type builderConnectSignalsHandlersWrapper struct {
 	err      error
 }
 
-var builderConnectSignalsHandlers = make(map[unsafe.Pointer]builderConnectSignalsHandlersWrapper)
+func (w *builderConnectSignalsHandlersWrapper) setError(err error) {
+	if w.err == nil {
+		w.err = err
+	}
+}
+
+var builderConnectSignalsHandlers = make(map[unsafe.Pointer]*builderConnectSignalsHandlersWrapper)
 var builderConnectSignalsHandlersLock sync.Mutex
 
 func BuilderConnectSignals(builder *gtk.Builder, handlers map[string]interface{}) error {
 	cBuilder := builder.ToC()
-	handlersWrapper := builderConnectSignalsHandlersWrapper{
+	handlersWrapper := &builderConnectSignalsHandlersWrapper{
 		handlers: handlers,
 		err:      nil,
 	}
@@ -94,13 +100,13 @@ func GtkBuilderConnectSignal(
 
 	handler, found := handlersWrapper.handlers[handlerName]
 	if !found {
-		handlersWrapper.err = fmt.Errorf("Handler named '%s' not found", handlerName)
+		handlersWrapper.setError(fmt.Errorf("Handler named '%s' not found", handlerName))
 		return
 	}
 
 	goType, found := gtk.GobjectClassToGoTypeMetaMap[className]
 	if !found {
-		handlersWrapper.err = fmt.Errorf("Class with name '%s' not supported for Builder signal connecting", className)
+		handlersWrapper.setError(fmt.Errorf("Class with name '%s' not supported for Builder signal connecting", className))
 		return
 	}
 
@@ -111,7 +117,7 @@ func GtkBuilderConnectSignal(
 	// Connect notify signal.
 	if strings.HasPrefix(signalName, "notify::") {
 		propertyName := strings.TrimPrefix(signalName, "notify::")
-		handlersWrapper.err = GtkBuilderConnectNotifySignalSignal(gtkInstance, handler, handlerName, propertyName, className)
+		handlersWrapper.setError(gtkBuilderConnectNotifySignalSignal(gtkInstance, handler, handlerName, propertyName, className))
 		return
 	}
 
@@ -132,8 +138,8 @@ func GtkBuilderConnectSignal(
 		}
 
 		if !ok {
-			handlersWrapper.err = fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
-				signalName, className)
+			handlersWrapper.setError(fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
+				signalName, className))
 			return
 		}
 	}
@@ -141,8 +147,8 @@ func GtkBuilderConnectSignal(
 	param0Type := connectMethod.Type().In(0)
 	handlerType := reflect.TypeOf(handler)
 	if !handlerType.AssignableTo(param0Type) {
-		handlersWrapper.err = fmt.Errorf("Signature mistmatch for handler '%s' for signal '%s' of class '%s'",
-			handlerName, signalName, className)
+		handlersWrapper.setError(fmt.Errorf("Signature mistmatch for handler '%s' for signal '%s' of class '%s'",
+			handlerName, signalName, className))
 		return
 	}
 
@@ -160,7 +166,7 @@ func gtkBuilderGetMethod(signalName string, gtkInstance reflect.Value, className
 	return connectMethod, true
 }
 
-func GtkBuilderConnectNotifySignalSignal(
+func gtkBuilderConnectNotifySignalSignal(
 	gtkInstance reflect.Value,
 	handler interface{},
 	handlerName string,
@@ -170,7 +176,6 @@ func GtkBuilderConnectNotifySignalSignal(
 	expectedHandlerType := reflect.TypeOf(func(*gobject.ParamSpec) {})
 	handlerType := reflect.TypeOf(handler)
 	if !handlerType.AssignableTo(expectedHandlerType) {
-		fmt.Println("TODO: property signal handler of wrong type", propertyName)
 		return fmt.Errorf("Signature mistmatch for handler '%s' for property '%s' nofifier  of class '%s'",
 			handlerName, propertyName, className)
 	}
