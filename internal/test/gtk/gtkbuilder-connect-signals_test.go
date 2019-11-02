@@ -4,7 +4,6 @@ import (
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
-	"github.com/pekim/gobbi/lib/gtkx"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
@@ -21,7 +20,7 @@ func TestBuildConnectSignals_SignalsOfClass(t *testing.T) {
 		</interface>
 	`)
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"ok_button_clicked": func() {},
 		"ok_button_enter":   func() {},
 	})
@@ -39,7 +38,7 @@ func TestBuildConnectSignals_SignalOfAncestor(t *testing.T) {
 		</interface>
 	`)
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"draw": func(cr *cairo.Context) bool { return false },
 	})
 
@@ -56,7 +55,7 @@ func TestBuildConnectSignals_SignalOfAncestorInterface(t *testing.T) {
 		</interface>
 	`)
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"spinbutton_changed": func() {},
 	})
 
@@ -73,7 +72,7 @@ func TestBuildConnectSignals_BadHandlerName(t *testing.T) {
 		</interface>
 	`)
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"bad_handler_name": func() {},
 	})
 
@@ -90,7 +89,7 @@ func TestBuildConnectSignals_BadHandlerSignature(t *testing.T) {
 		</interface>
 	`)
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"ok_button_clicked": func(bad string) {},
 	})
 
@@ -111,7 +110,7 @@ func TestBuildConnectSignals_NotifyProperty(t *testing.T) {
 	`)
 	label := gtk.CastToLabel(builder.GetObject("label"))
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"label_changed": func(pspec *gobject.ParamSpec) {
 			signalHandled = true
 			assert.Equal(t, label.GetLabel(), "two")
@@ -134,7 +133,7 @@ func TestBuildConnectSignals_NotifyPropertyBadHandlerSignature(t *testing.T) {
 		</interface>
 	`)
 
-	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtk.BuilderConnectSignals(builder, map[string]interface{}{
 		"label_changed": func(bad string) {},
 	})
 	assert.NotNil(t, err)

@@ -1,12 +1,11 @@
 // +build gtk_2.12 gtk_2.14 gtk_2.16 gtk_2.18 gtk_2.20 gtk_2.22 gtk_2.24 gtk_3.10 gtk_3.12 gtk_3.14 gtk_3.16 gtk_3.18 gtk_3.20 gtk_3.22 gtk_3.22.6 gtk_3.22.26 gtk_3.22.29
 
-package gtkx
+package gtk
 
 import (
 	"fmt"
 	"github.com/pekim/gobbi/internal/generate"
 	"github.com/pekim/gobbi/lib/gobject"
-	"github.com/pekim/gobbi/lib/gtk"
 	"reflect"
 	"strings"
 	"sync"
@@ -56,7 +55,7 @@ func (w *builderConnectSignalsHandlersWrapper) setError(err error) {
 var builderConnectSignalsHandlers = make(map[unsafe.Pointer]*builderConnectSignalsHandlersWrapper)
 var builderConnectSignalsHandlersLock sync.Mutex
 
-func BuilderConnectSignals(builder *gtk.Builder, handlers map[string]interface{}) error {
+func BuilderConnectSignals(builder *Builder, handlers map[string]interface{}) error {
 	cBuilder := builder.ToC()
 	handlersWrapper := &builderConnectSignalsHandlersWrapper{
 		handlers: handlers,
@@ -104,14 +103,14 @@ func GtkBuilderConnectSignal(
 		return
 	}
 
-	goType, found := gtk.GobjectClassToGoTypeMetaMap[className]
+	goType, found := gobjectClassToGoTypeMetaMap[className]
 	if !found {
 		handlersWrapper.setError(fmt.Errorf("Class with name '%s' not supported for Builder signal connecting", className))
 		return
 	}
 
 	ctorArgs := []reflect.Value{reflect.ValueOf(unsafe.Pointer(cObject))}
-	ctorReturnValues := goType.Ctor.Call(ctorArgs)
+	ctorReturnValues := goType.ctor.Call(ctorArgs)
 	gtkInstance := ctorReturnValues[0]
 
 	// Connect notify signal.
@@ -123,8 +122,8 @@ func GtkBuilderConnectSignal(
 
 	connectMethod, err := gtkBuilderGetConnectMethodForGoType(
 		gtkInstance,
-		goType.Ancestors,
-		goType.InterfaceMethodNames,
+		goType.ancestors,
+		goType.interfaceMethodNames,
 		signalName,
 		className,
 	)
@@ -147,7 +146,7 @@ func GtkBuilderConnectSignal(
 
 func gtkBuilderGetConnectMethodForGoType(
 	gtkInstance reflect.Value,
-	ancestors gtk.ClassAncestors,
+	ancestors classAncestors,
 	InterfaceMethodNames []string,
 	signalName string,
 	className string,
@@ -158,7 +157,7 @@ func gtkBuilderGetConnectMethodForGoType(
 	}
 
 	for _, ancestor := range ancestors {
-		ancestorMethod := gtkInstance.MethodByName(ancestor.MethodName)
+		ancestorMethod := gtkInstance.MethodByName(ancestor.methodName)
 		if !ancestorMethod.IsValid() {
 			continue
 		}
@@ -170,13 +169,13 @@ func gtkBuilderGetConnectMethodForGoType(
 			return connectMethod, nil
 		}
 
-		ancestorClass, found := gtk.GobjectClassToGoTypeMetaMap[ancestor.ClassName]
+		ancestorClass, found := gobjectClassToGoTypeMetaMap[ancestor.className]
 		if !found {
 			return reflect.Value{}, fmt.Errorf("Did not find ancestor class %s for '%s'",
-				ancestor.ClassName, className)
+				ancestor.className, className)
 		}
 
-		connectMethod, ok = gtkBuilderGetConnectMethodForInterfaces(gtkInstance, ancestorClass.InterfaceMethodNames, signalName, className)
+		connectMethod, ok = gtkBuilderGetConnectMethodForInterfaces(gtkInstance, ancestorClass.interfaceMethodNames, signalName, className)
 		if ok {
 			return connectMethod, nil
 		}

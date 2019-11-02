@@ -14,7 +14,7 @@ type gobjectClassToGoTypeMetaMap struct {
 
 func (ns *Namespace) generateGobjectClassToGoTypeMetaMap(file *jen.File, version Version) {
 	gobjectClassToGoTypeMetaMap{
-		ancestorsTypeName: "ClassAncestors",
+		ancestorsTypeName: "classAncestors",
 		ns:                ns,
 		file:              file,
 		version:           &version,
@@ -37,22 +37,22 @@ func (m gobjectClassToGoTypeMetaMap) generateClassAncestorsType() {
 		Id(m.ancestorsTypeName).
 		Index().
 		Struct(
-			jen.Id("ClassName").String(),
-			jen.Id("MethodName").String(),
+			jen.Id("className").String(),
+			jen.Id("methodName").String(),
 		)
 }
 
 func (m gobjectClassToGoTypeMetaMap) generateMap() {
 	m.file.
 		Var().
-		Id("GobjectClassToGoTypeMetaMap").
+		Id("gobjectClassToGoTypeMetaMap").
 		Op("=").
 		Map(
 			jen.String()).
 		Struct(
-			jen.Id("Ctor").Qual("reflect", "Value"),
-			jen.Id("InterfaceMethodNames").Index().String(),
-			jen.Id("Ancestors").Id(m.ancestorsTypeName)).
+			jen.Id("ctor").Qual("reflect", "Value"),
+			jen.Id("interfaceMethodNames").Index().String(),
+			jen.Id("ancestors").Id(m.ancestorsTypeName)).
 		Values(
 			jen.DictFunc(func(d jen.Dict) {
 				for _, class := range m.ns.Classes {
@@ -70,17 +70,17 @@ func (m gobjectClassToGoTypeMetaMap) generateClass(class *Class, d jen.Dict) {
 	}
 
 	d[jen.Lit(class.GlibTypeName)] = jen.Values(jen.Dict{
-		jen.Id("Ctor"): jen.
+		jen.Id("ctor"): jen.
 			Qual("reflect", "ValueOf").
 			Call(jen.Id(class.GoName + "NewFromC")),
 
-		jen.Id("Ancestors"): jen.
+		jen.Id("ancestors"): jen.
 			Id(m.ancestorsTypeName).
 			ValuesFunc(func(g *jen.Group) {
 				m.generateClassAncestors(class, g)
 			}),
 
-		jen.Id("InterfaceMethodNames"): jen.
+		jen.Id("interfaceMethodNames"): jen.
 			Index().
 			String().
 			ValuesFunc(func(g *jen.Group) {
@@ -125,8 +125,8 @@ func (m gobjectClassToGoTypeMetaMap) generateClassAncestors(class *Class, g *jen
 		}
 
 		g.Values(jen.DictFunc(func(d jen.Dict) {
-			d[jen.Id("ClassName")] = jen.Lit(ancestor.CType)
-			d[jen.Id("MethodName")] = jen.Lit(qname.name)
+			d[jen.Id("className")] = jen.Lit(ancestor.CType)
+			d[jen.Id("methodName")] = jen.Lit(qname.name)
 		}))
 
 		previousAncestor := ancestor
