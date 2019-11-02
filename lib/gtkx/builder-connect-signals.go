@@ -121,7 +121,13 @@ func GtkBuilderConnectSignal(
 		return
 	}
 
-	connectMethod, err := gtkBuilderGetConnectMethodForGoType(gtkInstance, goType.Ancestors, signalName, className)
+	connectMethod, err := gtkBuilderGetConnectMethodForGoType(
+		gtkInstance,
+		goType.Ancestors,
+		goType.InterfaceMethodNames,
+		signalName,
+		className,
+	)
 	if err != nil {
 		handlersWrapper.setError(err)
 		return
@@ -139,8 +145,12 @@ func GtkBuilderConnectSignal(
 	connectMethod.Call(connectArgs)
 }
 
-func gtkBuilderGetConnectMethodForGoType(gtkInstance reflect.Value, ancestors gtk.ClassAncestors,
-	signalName string, className string) (reflect.Value, error) {
+func gtkBuilderGetConnectMethodForGoType(
+	gtkInstance reflect.Value,
+	ancestors gtk.ClassAncestors,
+	InterfaceMethodNames []string,
+	signalName string,
+	className string) (reflect.Value, error) {
 
 	connectMethod, ok := gtkBuilderGetConnectMethod(signalName, gtkInstance, className)
 	if !ok {
@@ -150,11 +160,50 @@ func gtkBuilderGetConnectMethodForGoType(gtkInstance reflect.Value, ancestors gt
 				continue
 			}
 
-			gtkInstance = ancestorMethod.Call(nil)[0]
+			ancestorInstance := ancestorMethod.Call(nil)[0]
 
-			connectMethod, ok = gtkBuilderGetConnectMethod(signalName, gtkInstance, className)
+			connectMethod, ok = gtkBuilderGetConnectMethod(signalName, ancestorInstance, className)
 			if ok {
 				break
+			}
+
+			ancestorClass, found := gtk.GobjectClassToGoTypeMetaMap[ancestor.ClassName]
+			if !found {
+				return reflect.Value{}, fmt.Errorf("Did not find ancestor class %s for '%s'",
+					ancestor.ClassName, className)
+			}
+			for _, methodName := range ancestorClass.InterfaceMethodNames {
+				method := gtkInstance.MethodByName(methodName)
+				if !method.IsValid() {
+					continue
+				}
+
+				interfaceInstance := method.Call(nil)[0]
+
+				connectMethod, ok = gtkBuilderGetConnectMethod(signalName, interfaceInstance, className)
+				if ok {
+					break
+				}
+			}
+
+			if ok {
+				break
+			}
+		}
+
+		if !ok {
+			for _, methodName := range InterfaceMethodNames {
+				method := gtkInstance.MethodByName(methodName)
+				if !method.IsValid() {
+					continue
+				}
+
+				interfaceInstance := method.Call(nil)[0]
+
+				connectMethod, ok = gtkBuilderGetConnectMethod(signalName, interfaceInstance, className)
+				if ok {
+					break
+				}
 			}
 		}
 
