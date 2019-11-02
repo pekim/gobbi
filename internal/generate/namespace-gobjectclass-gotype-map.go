@@ -79,6 +79,13 @@ func (m gobjectClassToGoTypeMetaMap) generateClass(class *Class, d jen.Dict) {
 			ValuesFunc(func(g *jen.Group) {
 				m.generateClassAncestors(class, g)
 			}),
+
+		jen.Id("InterfaceMethodNames"): jen.
+			Index().
+			String().
+			ValuesFunc(func(g *jen.Group) {
+				m.generateInterfaces(class, g)
+			}),
 	})
 }
 
@@ -119,9 +126,32 @@ func (m gobjectClassToGoTypeMetaMap) generateClassAncestors(class *Class, g *jen
 
 		g.Values(jen.DictFunc(func(d jen.Dict) {
 			d[jen.Id("MethodName")] = jen.Lit(qname.name)
+
+			//d[jen.Id("InterfaceMethodNames")]= jen.
+			//	Index().
+			//	String().
+			//	ValuesFunc(func(g *jen.Group) {
+			//		m.generateInterfaces(ancestor, g)
+			//	}),
+			//
 		}))
 
 		previousAncestor := ancestor
 		ancestorName = previousAncestor.ParentName
+	}
+}
+
+func (m gobjectClassToGoTypeMetaMap) generateInterfaces(class *Class, g *jen.Group) {
+	for _, iface := range class.Implements {
+		if !supportedByVersion(iface, m.version) {
+			return
+		}
+
+		qname := QNameNew(m.ns, iface.Name)
+		if qname.namespace.goPackageName != m.ns.goPackageName {
+			continue
+		}
+
+		g.Lit(qname.name)
 	}
 }

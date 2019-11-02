@@ -46,6 +46,23 @@ func TestBuildConnectSignals_SignalOfAncestor(t *testing.T) {
 	assert.Nil(t, err)
 }
 
+func TestBuildConnectSignals_SignalOfAncestorInterface(t *testing.T) {
+	gtk.Init(os.Args)
+	builder := gtk.BuilderNewFromString(`
+		<interface>
+		  <object class="GtkSpinButton" id="spin_button">
+			<signal name="changed" handler="spinbutton_changed"/>
+		  </object>
+		</interface>
+	`)
+
+	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+		"spinbutton_changed": func() {},
+	})
+
+	assert.Nil(t, err)
+}
+
 func TestBuildConnectSignals_BadHandlerName(t *testing.T) {
 	gtk.Init(os.Args)
 	builder := gtk.BuilderNewFromString(`
@@ -106,7 +123,7 @@ func TestBuildConnectSignals_NotifyProperty(t *testing.T) {
 	assert.True(t, signalHandled)
 }
 
-func TestBuildConnectSignals_NotofyPropertyBadHandlerSignature(t *testing.T) {
+func TestBuildConnectSignals_NotifyPropertyBadHandlerSignature(t *testing.T) {
 	gtk.Init(os.Args)
 	builder := gtk.BuilderNewFromString(`
 		<interface>
