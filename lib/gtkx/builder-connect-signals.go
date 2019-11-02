@@ -88,37 +88,38 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	ctorReturnValues := goType.Ctor.Call(ctorArgs)
 	gtkInstance := ctorReturnValues[0]
 
+	// Connect notify signal.
 	if strings.HasPrefix(signalName, "notify::") {
-		expectedHandlerType := reflect.TypeOf(func(*gobject.ParamSpec) {})
-		handlerType := reflect.TypeOf(handler)
-		if !handlerType.AssignableTo(expectedHandlerType) {
-			fmt.Println("TODO: handler of wrong type", signalName)
-			return
-
-		}
-
-		notifySignal := strings.TrimPrefix(signalName, "notify::")
-
-		objectMethod := gtkInstance.MethodByName("Object")
-		objectValue := objectMethod.Call(nil)[0]
-		object := objectValue.Interface().(*gobject.Object)
-		object.ConnectNotifyProperty(notifySignal, handler.(func(*gobject.ParamSpec)))
-
+		propertyName := strings.TrimPrefix(signalName, "notify::")
+		GtkBuilderConnectNotifySignalSignal(gtkInstance, handler, propertyName)
 		return
 	}
 
-	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
-	fmt.Println(connectMethodName)
-	connectMethod := gtkInstance.MethodByName(connectMethodName)
-	if !connectMethod.IsValid() {
-		fmt.Println("TODO: Not found connect method", className, connectMethodName)
-		return
+	connectMethod, ok := gtkBuilderGetMethod(signalName, gtkInstance, className)
+	if !ok {
+		for _, ancestor := range goType.Ancestors {
+			ancestorMethod := gtkInstance.MethodByName(ancestor.MethodName)
+			if !ancestorMethod.IsValid() {
+				continue
+			}
+
+			gtkInstance = ancestorMethod.Call(nil)[0]
+
+			connectMethod, ok = gtkBuilderGetMethod(signalName, gtkInstance, className)
+			if ok {
+				break
+			}
+		}
+
+		if !ok {
+			return
+		}
 	}
 
 	param0Type := connectMethod.Type().In(0)
 	handlerType := reflect.TypeOf(handler)
 	if !handlerType.AssignableTo(param0Type) {
-		fmt.Println("TODO: handler of wrong type", connectMethodName)
+		fmt.Println("TODO: handler of wrong type", signalName)
 		return
 	}
 
@@ -127,4 +128,31 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	fmt.Println("called")
 
 	fmt.Println()
+}
+
+func gtkBuilderGetMethod(signalName string, gtkInstance reflect.Value, className string) (reflect.Value, bool) {
+	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
+	fmt.Println(connectMethodName)
+	connectMethod := gtkInstance.MethodByName(connectMethodName)
+	if !connectMethod.IsValid() {
+		fmt.Println("TODO: Not found connect method", className, connectMethodName)
+		return reflect.Value{}, false
+	}
+
+	return connectMethod, true
+}
+
+func GtkBuilderConnectNotifySignalSignal(gtkInstance reflect.Value, handler interface{}, propertyName string) {
+	expectedHandlerType := reflect.TypeOf(func(*gobject.ParamSpec) {})
+	handlerType := reflect.TypeOf(handler)
+	if !handlerType.AssignableTo(expectedHandlerType) {
+		fmt.Println("TODO: property signal handler of wrong type", propertyName)
+		return
+
+	}
+
+	objectMethod := gtkInstance.MethodByName("Object")
+	objectValue := objectMethod.Call(nil)[0]
+	object := objectValue.Interface().(*gobject.Object)
+	object.ConnectNotifyProperty(propertyName, handler.(func(*gobject.ParamSpec)))
 }

@@ -1,6 +1,7 @@
 package gtk
 
 import (
+	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 	"github.com/pekim/gobbi/lib/gtkx"
@@ -19,6 +20,7 @@ const ui = `
 		<property name="label">gtk-ok</property>
 		<property name="use-stock">TRUE</property>
 		<signal name="clicked" handler="ok_button_clicked"/>
+		<signal name="draw" handler="draw"/>
 	  </object>
 	</child>
 	<child>
@@ -40,6 +42,7 @@ func TestBuildConnectSignals(t *testing.T) {
 		"ok_button_clicked":     func() {},
 		"cancel_button_clicked": func(s string) {},
 		"bad_name":              func() {},
+		"draw":                  func(cr *cairo.Context) bool { return false },
 	})
 }
 

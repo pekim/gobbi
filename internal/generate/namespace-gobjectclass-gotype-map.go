@@ -131,6 +131,10 @@ func (m gobjectClassToGoTypeMetaMap) generateClassAncestors(class *Class, g *jen
 			return
 		}
 
+		// Currently the map is only created for the gtk package.
+		// Once an ancestor from a different package is reached, stop.
+		// This is probably okay, as all widgets are descended from a
+		// gobject or atk class.
 		if qname.namespace.goPackageName != m.ns.goPackageName {
 			break
 		}
