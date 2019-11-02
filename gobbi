@@ -34,7 +34,7 @@ build () {
 }
 
 generate () {
-    go run internal/cmd/generate/*.go $@
+    go run internal/cmd/generate/*.go $@ 2>&1
 }
 
 generateClean () {
