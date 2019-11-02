@@ -150,71 +150,70 @@ func gtkBuilderGetConnectMethodForGoType(
 	ancestors gtk.ClassAncestors,
 	InterfaceMethodNames []string,
 	signalName string,
-	className string) (reflect.Value, error) {
-
+	className string,
+) (reflect.Value, error) {
 	connectMethod, ok := gtkBuilderGetConnectMethod(signalName, gtkInstance, className)
-	if !ok {
-		for _, ancestor := range ancestors {
-			ancestorMethod := gtkInstance.MethodByName(ancestor.MethodName)
-			if !ancestorMethod.IsValid() {
-				continue
-			}
+	if ok {
+		return connectMethod, nil
+	}
 
-			ancestorInstance := ancestorMethod.Call(nil)[0]
-
-			connectMethod, ok = gtkBuilderGetConnectMethod(signalName, ancestorInstance, className)
-			if ok {
-				break
-			}
-
-			ancestorClass, found := gtk.GobjectClassToGoTypeMetaMap[ancestor.ClassName]
-			if !found {
-				return reflect.Value{}, fmt.Errorf("Did not find ancestor class %s for '%s'",
-					ancestor.ClassName, className)
-			}
-			for _, methodName := range ancestorClass.InterfaceMethodNames {
-				method := gtkInstance.MethodByName(methodName)
-				if !method.IsValid() {
-					continue
-				}
-
-				interfaceInstance := method.Call(nil)[0]
-
-				connectMethod, ok = gtkBuilderGetConnectMethod(signalName, interfaceInstance, className)
-				if ok {
-					break
-				}
-			}
-
-			if ok {
-				break
-			}
+	for _, ancestor := range ancestors {
+		ancestorMethod := gtkInstance.MethodByName(ancestor.MethodName)
+		if !ancestorMethod.IsValid() {
+			continue
 		}
 
-		if !ok {
-			for _, methodName := range InterfaceMethodNames {
-				method := gtkInstance.MethodByName(methodName)
-				if !method.IsValid() {
-					continue
-				}
+		ancestorInstance := ancestorMethod.Call(nil)[0]
 
-				interfaceInstance := method.Call(nil)[0]
-
-				connectMethod, ok = gtkBuilderGetConnectMethod(signalName, interfaceInstance, className)
-				if ok {
-					break
-				}
-			}
+		connectMethod, ok = gtkBuilderGetConnectMethod(signalName, ancestorInstance, className)
+		if ok {
+			return connectMethod, nil
 		}
 
-		if !ok {
-			return reflect.Value{}, fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
-				signalName, className)
+		ancestorClass, found := gtk.GobjectClassToGoTypeMetaMap[ancestor.ClassName]
+		if !found {
+			return reflect.Value{}, fmt.Errorf("Did not find ancestor class %s for '%s'",
+				ancestor.ClassName, className)
+		}
+
+		connectMethod, ok = gtkBuilderGetConnectMethodForInterfaces(gtkInstance, ancestorClass.InterfaceMethodNames, signalName, className)
+		if ok {
+			return connectMethod, nil
 		}
 	}
 
-	return connectMethod, nil
+	connectMethod, ok = gtkBuilderGetConnectMethodForInterfaces(gtkInstance, InterfaceMethodNames, signalName, className)
+	if ok {
+		return connectMethod, nil
+	}
+
+	return reflect.Value{}, fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
+		signalName, className)
 }
+
+func gtkBuilderGetConnectMethodForInterfaces(
+	gtkInstance reflect.Value,
+	InterfaceMethodNames []string,
+	signalName string,
+	className string,
+) (reflect.Value, bool) {
+	for _, methodName := range InterfaceMethodNames {
+		method := gtkInstance.MethodByName(methodName)
+		if !method.IsValid() {
+			continue
+		}
+
+		interfaceInstance := method.Call(nil)[0]
+
+		connectMethod, ok := gtkBuilderGetConnectMethod(signalName, interfaceInstance, className)
+		if ok {
+			return connectMethod, true
+		}
+	}
+
+	return reflect.Value{}, false
+}
+
 func gtkBuilderGetConnectMethod(signalName string, gtkInstance reflect.Value, className string) (reflect.Value, bool) {
 	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
 	connectMethod := gtkInstance.MethodByName(connectMethodName)
