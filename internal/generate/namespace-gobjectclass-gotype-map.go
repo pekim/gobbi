@@ -5,28 +5,6 @@ import (
 	"github.com/dave/jennifer/jen"
 )
 
-//type classAncestors []struct {
-//	methodName           string
-//	interfaceMethodNames []string
-//}
-//
-//var GobjectClassGoTypeMap = map[string]struct {
-//	ctor                 reflect.Value
-//	interfaceMethodNames []string
-//	ancestors            classAncestors
-//}{
-//	"GtkAboutDialog": {
-//		ctor:                 reflect.ValueOf(gtk.AboutDialogNewFromC),
-//		interfaceMethodNames: []string{},
-//		ancestors: classAncestors{
-//			{
-//				methodName:           "Widget",
-//				interfaceMethodNames: []string{},
-//			},
-//		},
-//	},
-//}
-
 type gobjectClassToGoTypeMetaMap struct {
 	ancestorsTypeName string
 	ns                *Namespace
@@ -36,7 +14,7 @@ type gobjectClassToGoTypeMetaMap struct {
 
 func (ns *Namespace) generateGobjectClassToGoTypeMetaMap(file *jen.File, version Version) {
 	gobjectClassToGoTypeMetaMap{
-		ancestorsTypeName: "classAncestors",
+		ancestorsTypeName: "ClassAncestors",
 		ns:                ns,
 		file:              file,
 		version:           &version,
@@ -56,7 +34,7 @@ func (m gobjectClassToGoTypeMetaMap) generate() {
 func (m gobjectClassToGoTypeMetaMap) generateClassAncestorsType() {
 	m.file.
 		Type().
-		Id("classAncestors").
+		Id(m.ancestorsTypeName).
 		Index().
 		Struct(
 			jen.Id("MethodName").String(),
@@ -74,7 +52,7 @@ func (m gobjectClassToGoTypeMetaMap) generateMap() {
 		Struct(
 			jen.Id("Ctor").Qual("reflect", "Value"),
 			jen.Id("InterfaceMethodNames").Index().String(),
-			jen.Id("Ancestors").Id("classAncestors")).
+			jen.Id("Ancestors").Id(m.ancestorsTypeName)).
 		Values(
 			jen.DictFunc(func(d jen.Dict) {
 				for _, class := range m.ns.Classes {

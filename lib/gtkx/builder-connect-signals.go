@@ -121,27 +121,10 @@ func GtkBuilderConnectSignal(
 		return
 	}
 
-	connectMethod, ok := gtkBuilderGetMethod(signalName, gtkInstance, className)
-	if !ok {
-		for _, ancestor := range goType.Ancestors {
-			ancestorMethod := gtkInstance.MethodByName(ancestor.MethodName)
-			if !ancestorMethod.IsValid() {
-				continue
-			}
-
-			gtkInstance = ancestorMethod.Call(nil)[0]
-
-			connectMethod, ok = gtkBuilderGetMethod(signalName, gtkInstance, className)
-			if ok {
-				break
-			}
-		}
-
-		if !ok {
-			handlersWrapper.setError(fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
-				signalName, className))
-			return
-		}
+	connectMethod, err := gtkBuilderGetConnectMethodForGoType(gtkInstance, goType.Ancestors, signalName, className)
+	if err != nil {
+		handlersWrapper.setError(err)
+		return
 	}
 
 	param0Type := connectMethod.Type().In(0)
@@ -156,7 +139,34 @@ func GtkBuilderConnectSignal(
 	connectMethod.Call(connectArgs)
 }
 
-func gtkBuilderGetMethod(signalName string, gtkInstance reflect.Value, className string) (reflect.Value, bool) {
+func gtkBuilderGetConnectMethodForGoType(gtkInstance reflect.Value, ancestors gtk.ClassAncestors,
+	signalName string, className string) (reflect.Value, error) {
+
+	connectMethod, ok := gtkBuilderGetConnectMethod(signalName, gtkInstance, className)
+	if !ok {
+		for _, ancestor := range ancestors {
+			ancestorMethod := gtkInstance.MethodByName(ancestor.MethodName)
+			if !ancestorMethod.IsValid() {
+				continue
+			}
+
+			gtkInstance = ancestorMethod.Call(nil)[0]
+
+			connectMethod, ok = gtkBuilderGetConnectMethod(signalName, gtkInstance, className)
+			if ok {
+				break
+			}
+		}
+
+		if !ok {
+			return reflect.Value{}, fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
+				signalName, className)
+		}
+	}
+
+	return connectMethod, nil
+}
+func gtkBuilderGetConnectMethod(signalName string, gtkInstance reflect.Value, className string) (reflect.Value, bool) {
 	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
 	connectMethod := gtkInstance.MethodByName(connectMethodName)
 	if !connectMethod.IsValid() {
