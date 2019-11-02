@@ -3781,271 +3781,1051 @@ type classAncestors []struct {
 	InterfaceMethodNames []string
 }
 
-var GobjectClassGoTypeMap = map[string]struct {
+var GobjectClassToGoTypeMetaMap = map[string]struct {
 	Ctor                 reflect.Value
 	InterfaceMethodNames []string
 	Ancestors            classAncestors
 }{
-	"GtkAboutDialog":              {Ctor: reflect.ValueOf(AboutDialogNewFromC)},
-	"GtkAccelGroup":               {Ctor: reflect.ValueOf(AccelGroupNewFromC)},
-	"GtkAccelLabel":               {Ctor: reflect.ValueOf(AccelLabelNewFromC)},
-	"GtkAccelMap":                 {Ctor: reflect.ValueOf(AccelMapNewFromC)},
-	"GtkAccessible":               {Ctor: reflect.ValueOf(AccessibleNewFromC)},
-	"GtkAction":                   {Ctor: reflect.ValueOf(ActionNewFromC)},
-	"GtkActionBar":                {Ctor: reflect.ValueOf(ActionBarNewFromC)},
-	"GtkActionGroup":              {Ctor: reflect.ValueOf(ActionGroupNewFromC)},
-	"GtkAdjustment":               {Ctor: reflect.ValueOf(AdjustmentNewFromC)},
-	"GtkAlignment":                {Ctor: reflect.ValueOf(AlignmentNewFromC)},
-	"GtkAppChooserButton":         {Ctor: reflect.ValueOf(AppChooserButtonNewFromC)},
-	"GtkAppChooserDialog":         {Ctor: reflect.ValueOf(AppChooserDialogNewFromC)},
-	"GtkAppChooserWidget":         {Ctor: reflect.ValueOf(AppChooserWidgetNewFromC)},
-	"GtkApplication":              {Ctor: reflect.ValueOf(ApplicationNewFromC)},
-	"GtkApplicationWindow":        {Ctor: reflect.ValueOf(ApplicationWindowNewFromC)},
-	"GtkArrow":                    {Ctor: reflect.ValueOf(ArrowNewFromC)},
-	"GtkArrowAccessible":          {Ctor: reflect.ValueOf(ArrowAccessibleNewFromC)},
-	"GtkAspectFrame":              {Ctor: reflect.ValueOf(AspectFrameNewFromC)},
-	"GtkAssistant":                {Ctor: reflect.ValueOf(AssistantNewFromC)},
-	"GtkBin":                      {Ctor: reflect.ValueOf(BinNewFromC)},
-	"GtkBooleanCellAccessible":    {Ctor: reflect.ValueOf(BooleanCellAccessibleNewFromC)},
-	"GtkBox":                      {Ctor: reflect.ValueOf(BoxNewFromC)},
-	"GtkBuilder":                  {Ctor: reflect.ValueOf(BuilderNewFromC)},
-	"GtkButton":                   {Ctor: reflect.ValueOf(ButtonNewFromC)},
-	"GtkButtonAccessible":         {Ctor: reflect.ValueOf(ButtonAccessibleNewFromC)},
-	"GtkButtonBox":                {Ctor: reflect.ValueOf(ButtonBoxNewFromC)},
-	"GtkCalendar":                 {Ctor: reflect.ValueOf(CalendarNewFromC)},
-	"GtkCellAccessible":           {Ctor: reflect.ValueOf(CellAccessibleNewFromC)},
-	"GtkCellArea":                 {Ctor: reflect.ValueOf(CellAreaNewFromC)},
-	"GtkCellAreaBox":              {Ctor: reflect.ValueOf(CellAreaBoxNewFromC)},
-	"GtkCellAreaContext":          {Ctor: reflect.ValueOf(CellAreaContextNewFromC)},
-	"GtkCellRenderer":             {Ctor: reflect.ValueOf(CellRendererNewFromC)},
-	"GtkCellRendererAccel":        {Ctor: reflect.ValueOf(CellRendererAccelNewFromC)},
-	"GtkCellRendererCombo":        {Ctor: reflect.ValueOf(CellRendererComboNewFromC)},
-	"GtkCellRendererPixbuf":       {Ctor: reflect.ValueOf(CellRendererPixbufNewFromC)},
-	"GtkCellRendererProgress":     {Ctor: reflect.ValueOf(CellRendererProgressNewFromC)},
-	"GtkCellRendererSpin":         {Ctor: reflect.ValueOf(CellRendererSpinNewFromC)},
-	"GtkCellRendererSpinner":      {Ctor: reflect.ValueOf(CellRendererSpinnerNewFromC)},
-	"GtkCellRendererText":         {Ctor: reflect.ValueOf(CellRendererTextNewFromC)},
-	"GtkCellRendererToggle":       {Ctor: reflect.ValueOf(CellRendererToggleNewFromC)},
-	"GtkCellView":                 {Ctor: reflect.ValueOf(CellViewNewFromC)},
-	"GtkCheckButton":              {Ctor: reflect.ValueOf(CheckButtonNewFromC)},
-	"GtkCheckMenuItem":            {Ctor: reflect.ValueOf(CheckMenuItemNewFromC)},
-	"GtkCheckMenuItemAccessible":  {Ctor: reflect.ValueOf(CheckMenuItemAccessibleNewFromC)},
-	"GtkClipboard":                {Ctor: reflect.ValueOf(ClipboardNewFromC)},
-	"GtkColorButton":              {Ctor: reflect.ValueOf(ColorButtonNewFromC)},
-	"GtkColorChooserDialog":       {Ctor: reflect.ValueOf(ColorChooserDialogNewFromC)},
-	"GtkColorChooserWidget":       {Ctor: reflect.ValueOf(ColorChooserWidgetNewFromC)},
-	"GtkColorSelection":           {Ctor: reflect.ValueOf(ColorSelectionNewFromC)},
-	"GtkColorSelectionDialog":     {Ctor: reflect.ValueOf(ColorSelectionDialogNewFromC)},
-	"GtkComboBox":                 {Ctor: reflect.ValueOf(ComboBoxNewFromC)},
-	"GtkComboBoxAccessible":       {Ctor: reflect.ValueOf(ComboBoxAccessibleNewFromC)},
-	"GtkComboBoxText":             {Ctor: reflect.ValueOf(ComboBoxTextNewFromC)},
-	"GtkContainer":                {Ctor: reflect.ValueOf(ContainerNewFromC)},
-	"GtkContainerAccessible":      {Ctor: reflect.ValueOf(ContainerAccessibleNewFromC)},
-	"GtkContainerCellAccessible":  {Ctor: reflect.ValueOf(ContainerCellAccessibleNewFromC)},
-	"GtkCssProvider":              {Ctor: reflect.ValueOf(CssProviderNewFromC)},
-	"GtkDialog":                   {Ctor: reflect.ValueOf(DialogNewFromC)},
-	"GtkDrawingArea":              {Ctor: reflect.ValueOf(DrawingAreaNewFromC)},
-	"GtkEntry":                    {Ctor: reflect.ValueOf(EntryNewFromC)},
-	"GtkEntryAccessible":          {Ctor: reflect.ValueOf(EntryAccessibleNewFromC)},
-	"GtkEntryBuffer":              {Ctor: reflect.ValueOf(EntryBufferNewFromC)},
-	"GtkEntryCompletion":          {Ctor: reflect.ValueOf(EntryCompletionNewFromC)},
-	"GtkEventBox":                 {Ctor: reflect.ValueOf(EventBoxNewFromC)},
-	"GtkEventController":          {Ctor: reflect.ValueOf(EventControllerNewFromC)},
-	"GtkExpander":                 {Ctor: reflect.ValueOf(ExpanderNewFromC)},
-	"GtkExpanderAccessible":       {Ctor: reflect.ValueOf(ExpanderAccessibleNewFromC)},
-	"GtkFileChooserButton":        {Ctor: reflect.ValueOf(FileChooserButtonNewFromC)},
-	"GtkFileChooserDialog":        {Ctor: reflect.ValueOf(FileChooserDialogNewFromC)},
-	"GtkFileChooserNative":        {Ctor: reflect.ValueOf(FileChooserNativeNewFromC)},
-	"GtkFileChooserWidget":        {Ctor: reflect.ValueOf(FileChooserWidgetNewFromC)},
-	"GtkFileFilter":               {Ctor: reflect.ValueOf(FileFilterNewFromC)},
-	"GtkFixed":                    {Ctor: reflect.ValueOf(FixedNewFromC)},
-	"GtkFlowBox":                  {Ctor: reflect.ValueOf(FlowBoxNewFromC)},
-	"GtkFlowBoxAccessible":        {Ctor: reflect.ValueOf(FlowBoxAccessibleNewFromC)},
-	"GtkFlowBoxChild":             {Ctor: reflect.ValueOf(FlowBoxChildNewFromC)},
-	"GtkFlowBoxChildAccessible":   {Ctor: reflect.ValueOf(FlowBoxChildAccessibleNewFromC)},
-	"GtkFontButton":               {Ctor: reflect.ValueOf(FontButtonNewFromC)},
-	"GtkFontChooserDialog":        {Ctor: reflect.ValueOf(FontChooserDialogNewFromC)},
-	"GtkFontChooserWidget":        {Ctor: reflect.ValueOf(FontChooserWidgetNewFromC)},
-	"GtkFontSelection":            {Ctor: reflect.ValueOf(FontSelectionNewFromC)},
-	"GtkFontSelectionDialog":      {Ctor: reflect.ValueOf(FontSelectionDialogNewFromC)},
-	"GtkFrame":                    {Ctor: reflect.ValueOf(FrameNewFromC)},
-	"GtkFrameAccessible":          {Ctor: reflect.ValueOf(FrameAccessibleNewFromC)},
-	"GtkGLArea":                   {Ctor: reflect.ValueOf(GLAreaNewFromC)},
-	"GtkGesture":                  {Ctor: reflect.ValueOf(GestureNewFromC)},
-	"GtkGestureDrag":              {Ctor: reflect.ValueOf(GestureDragNewFromC)},
-	"GtkGestureLongPress":         {Ctor: reflect.ValueOf(GestureLongPressNewFromC)},
-	"GtkGestureMultiPress":        {Ctor: reflect.ValueOf(GestureMultiPressNewFromC)},
-	"GtkGesturePan":               {Ctor: reflect.ValueOf(GesturePanNewFromC)},
-	"GtkGestureRotate":            {Ctor: reflect.ValueOf(GestureRotateNewFromC)},
-	"GtkGestureSingle":            {Ctor: reflect.ValueOf(GestureSingleNewFromC)},
-	"GtkGestureSwipe":             {Ctor: reflect.ValueOf(GestureSwipeNewFromC)},
-	"GtkGestureZoom":              {Ctor: reflect.ValueOf(GestureZoomNewFromC)},
-	"GtkGrid":                     {Ctor: reflect.ValueOf(GridNewFromC)},
-	"GtkHBox":                     {Ctor: reflect.ValueOf(HBoxNewFromC)},
-	"GtkHButtonBox":               {Ctor: reflect.ValueOf(HButtonBoxNewFromC)},
-	"GtkHPaned":                   {Ctor: reflect.ValueOf(HPanedNewFromC)},
-	"GtkHSV":                      {Ctor: reflect.ValueOf(HSVNewFromC)},
-	"GtkHScale":                   {Ctor: reflect.ValueOf(HScaleNewFromC)},
-	"GtkHScrollbar":               {Ctor: reflect.ValueOf(HScrollbarNewFromC)},
-	"GtkHSeparator":               {Ctor: reflect.ValueOf(HSeparatorNewFromC)},
-	"GtkHandleBox":                {Ctor: reflect.ValueOf(HandleBoxNewFromC)},
-	"GtkHeaderBar":                {Ctor: reflect.ValueOf(HeaderBarNewFromC)},
-	"GtkIMContext":                {Ctor: reflect.ValueOf(IMContextNewFromC)},
-	"GtkIMContextSimple":          {Ctor: reflect.ValueOf(IMContextSimpleNewFromC)},
-	"GtkIMMulticontext":           {Ctor: reflect.ValueOf(IMMulticontextNewFromC)},
-	"GtkIconFactory":              {Ctor: reflect.ValueOf(IconFactoryNewFromC)},
-	"GtkIconInfo":                 {Ctor: reflect.ValueOf(IconInfoNewFromC)},
-	"GtkIconTheme":                {Ctor: reflect.ValueOf(IconThemeNewFromC)},
-	"GtkIconView":                 {Ctor: reflect.ValueOf(IconViewNewFromC)},
-	"GtkIconViewAccessible":       {Ctor: reflect.ValueOf(IconViewAccessibleNewFromC)},
-	"GtkImage":                    {Ctor: reflect.ValueOf(ImageNewFromC)},
-	"GtkImageAccessible":          {Ctor: reflect.ValueOf(ImageAccessibleNewFromC)},
-	"GtkImageCellAccessible":      {Ctor: reflect.ValueOf(ImageCellAccessibleNewFromC)},
-	"GtkImageMenuItem":            {Ctor: reflect.ValueOf(ImageMenuItemNewFromC)},
-	"GtkInfoBar":                  {Ctor: reflect.ValueOf(InfoBarNewFromC)},
-	"GtkInvisible":                {Ctor: reflect.ValueOf(InvisibleNewFromC)},
-	"GtkLabel":                    {Ctor: reflect.ValueOf(LabelNewFromC)},
-	"GtkLabelAccessible":          {Ctor: reflect.ValueOf(LabelAccessibleNewFromC)},
-	"GtkLayout":                   {Ctor: reflect.ValueOf(LayoutNewFromC)},
-	"GtkLevelBar":                 {Ctor: reflect.ValueOf(LevelBarNewFromC)},
-	"GtkLevelBarAccessible":       {Ctor: reflect.ValueOf(LevelBarAccessibleNewFromC)},
-	"GtkLinkButton":               {Ctor: reflect.ValueOf(LinkButtonNewFromC)},
-	"GtkLinkButtonAccessible":     {Ctor: reflect.ValueOf(LinkButtonAccessibleNewFromC)},
-	"GtkListBox":                  {Ctor: reflect.ValueOf(ListBoxNewFromC)},
-	"GtkListBoxAccessible":        {Ctor: reflect.ValueOf(ListBoxAccessibleNewFromC)},
-	"GtkListBoxRow":               {Ctor: reflect.ValueOf(ListBoxRowNewFromC)},
-	"GtkListBoxRowAccessible":     {Ctor: reflect.ValueOf(ListBoxRowAccessibleNewFromC)},
-	"GtkListStore":                {Ctor: reflect.ValueOf(ListStoreNewFromC)},
-	"GtkLockButton":               {Ctor: reflect.ValueOf(LockButtonNewFromC)},
-	"GtkLockButtonAccessible":     {Ctor: reflect.ValueOf(LockButtonAccessibleNewFromC)},
-	"GtkMenu":                     {Ctor: reflect.ValueOf(MenuNewFromC)},
-	"GtkMenuAccessible":           {Ctor: reflect.ValueOf(MenuAccessibleNewFromC)},
-	"GtkMenuBar":                  {Ctor: reflect.ValueOf(MenuBarNewFromC)},
-	"GtkMenuButton":               {Ctor: reflect.ValueOf(MenuButtonNewFromC)},
-	"GtkMenuButtonAccessible":     {Ctor: reflect.ValueOf(MenuButtonAccessibleNewFromC)},
-	"GtkMenuItem":                 {Ctor: reflect.ValueOf(MenuItemNewFromC)},
-	"GtkMenuItemAccessible":       {Ctor: reflect.ValueOf(MenuItemAccessibleNewFromC)},
-	"GtkMenuShell":                {Ctor: reflect.ValueOf(MenuShellNewFromC)},
-	"GtkMenuShellAccessible":      {Ctor: reflect.ValueOf(MenuShellAccessibleNewFromC)},
-	"GtkMenuToolButton":           {Ctor: reflect.ValueOf(MenuToolButtonNewFromC)},
-	"GtkMessageDialog":            {Ctor: reflect.ValueOf(MessageDialogNewFromC)},
-	"GtkMisc":                     {Ctor: reflect.ValueOf(MiscNewFromC)},
-	"GtkModelButton":              {Ctor: reflect.ValueOf(ModelButtonNewFromC)},
-	"GtkMountOperation":           {Ctor: reflect.ValueOf(MountOperationNewFromC)},
-	"GtkNativeDialog":             {Ctor: reflect.ValueOf(NativeDialogNewFromC)},
-	"GtkNotebook":                 {Ctor: reflect.ValueOf(NotebookNewFromC)},
-	"GtkNotebookAccessible":       {Ctor: reflect.ValueOf(NotebookAccessibleNewFromC)},
-	"GtkNotebookPageAccessible":   {Ctor: reflect.ValueOf(NotebookPageAccessibleNewFromC)},
-	"GtkNumerableIcon":            {Ctor: reflect.ValueOf(NumerableIconNewFromC)},
-	"GtkOffscreenWindow":          {Ctor: reflect.ValueOf(OffscreenWindowNewFromC)},
-	"GtkOverlay":                  {Ctor: reflect.ValueOf(OverlayNewFromC)},
-	"GtkPadController":            {Ctor: reflect.ValueOf(PadControllerNewFromC)},
-	"GtkPageSetup":                {Ctor: reflect.ValueOf(PageSetupNewFromC)},
-	"GtkPaned":                    {Ctor: reflect.ValueOf(PanedNewFromC)},
-	"GtkPanedAccessible":          {Ctor: reflect.ValueOf(PanedAccessibleNewFromC)},
-	"GtkPlacesSidebar":            {Ctor: reflect.ValueOf(PlacesSidebarNewFromC)},
-	"GtkPopover":                  {Ctor: reflect.ValueOf(PopoverNewFromC)},
-	"GtkPopoverAccessible":        {Ctor: reflect.ValueOf(PopoverAccessibleNewFromC)},
-	"GtkPopoverMenu":              {Ctor: reflect.ValueOf(PopoverMenuNewFromC)},
-	"GtkPrintContext":             {Ctor: reflect.ValueOf(PrintContextNewFromC)},
-	"GtkPrintOperation":           {Ctor: reflect.ValueOf(PrintOperationNewFromC)},
-	"GtkPrintSettings":            {Ctor: reflect.ValueOf(PrintSettingsNewFromC)},
-	"GtkProgressBar":              {Ctor: reflect.ValueOf(ProgressBarNewFromC)},
-	"GtkProgressBarAccessible":    {Ctor: reflect.ValueOf(ProgressBarAccessibleNewFromC)},
-	"GtkRadioAction":              {Ctor: reflect.ValueOf(RadioActionNewFromC)},
-	"GtkRadioButton":              {Ctor: reflect.ValueOf(RadioButtonNewFromC)},
-	"GtkRadioButtonAccessible":    {Ctor: reflect.ValueOf(RadioButtonAccessibleNewFromC)},
-	"GtkRadioMenuItem":            {Ctor: reflect.ValueOf(RadioMenuItemNewFromC)},
-	"GtkRadioMenuItemAccessible":  {Ctor: reflect.ValueOf(RadioMenuItemAccessibleNewFromC)},
-	"GtkRadioToolButton":          {Ctor: reflect.ValueOf(RadioToolButtonNewFromC)},
-	"GtkRange":                    {Ctor: reflect.ValueOf(RangeNewFromC)},
-	"GtkRangeAccessible":          {Ctor: reflect.ValueOf(RangeAccessibleNewFromC)},
-	"GtkRcStyle":                  {Ctor: reflect.ValueOf(RcStyleNewFromC)},
-	"GtkRecentAction":             {Ctor: reflect.ValueOf(RecentActionNewFromC)},
-	"GtkRecentChooserDialog":      {Ctor: reflect.ValueOf(RecentChooserDialogNewFromC)},
-	"GtkRecentChooserMenu":        {Ctor: reflect.ValueOf(RecentChooserMenuNewFromC)},
-	"GtkRecentChooserWidget":      {Ctor: reflect.ValueOf(RecentChooserWidgetNewFromC)},
-	"GtkRecentFilter":             {Ctor: reflect.ValueOf(RecentFilterNewFromC)},
-	"GtkRecentManager":            {Ctor: reflect.ValueOf(RecentManagerNewFromC)},
-	"GtkRendererCellAccessible":   {Ctor: reflect.ValueOf(RendererCellAccessibleNewFromC)},
-	"GtkRevealer":                 {Ctor: reflect.ValueOf(RevealerNewFromC)},
-	"GtkScale":                    {Ctor: reflect.ValueOf(ScaleNewFromC)},
-	"GtkScaleAccessible":          {Ctor: reflect.ValueOf(ScaleAccessibleNewFromC)},
-	"GtkScaleButton":              {Ctor: reflect.ValueOf(ScaleButtonNewFromC)},
-	"GtkScaleButtonAccessible":    {Ctor: reflect.ValueOf(ScaleButtonAccessibleNewFromC)},
-	"GtkScrollbar":                {Ctor: reflect.ValueOf(ScrollbarNewFromC)},
-	"GtkScrolledWindow":           {Ctor: reflect.ValueOf(ScrolledWindowNewFromC)},
-	"GtkScrolledWindowAccessible": {Ctor: reflect.ValueOf(ScrolledWindowAccessibleNewFromC)},
-	"GtkSearchBar":                {Ctor: reflect.ValueOf(SearchBarNewFromC)},
-	"GtkSearchEntry":              {Ctor: reflect.ValueOf(SearchEntryNewFromC)},
-	"GtkSeparator":                {Ctor: reflect.ValueOf(SeparatorNewFromC)},
-	"GtkSeparatorMenuItem":        {Ctor: reflect.ValueOf(SeparatorMenuItemNewFromC)},
-	"GtkSeparatorToolItem":        {Ctor: reflect.ValueOf(SeparatorToolItemNewFromC)},
-	"GtkSettings":                 {Ctor: reflect.ValueOf(SettingsNewFromC)},
-	"GtkShortcutLabel":            {Ctor: reflect.ValueOf(ShortcutLabelNewFromC)},
-	"GtkShortcutsGroup":           {Ctor: reflect.ValueOf(ShortcutsGroupNewFromC)},
-	"GtkShortcutsSection":         {Ctor: reflect.ValueOf(ShortcutsSectionNewFromC)},
-	"GtkShortcutsShortcut":        {Ctor: reflect.ValueOf(ShortcutsShortcutNewFromC)},
-	"GtkShortcutsWindow":          {Ctor: reflect.ValueOf(ShortcutsWindowNewFromC)},
-	"GtkSizeGroup":                {Ctor: reflect.ValueOf(SizeGroupNewFromC)},
-	"GtkSpinButton":               {Ctor: reflect.ValueOf(SpinButtonNewFromC)},
-	"GtkSpinButtonAccessible":     {Ctor: reflect.ValueOf(SpinButtonAccessibleNewFromC)},
-	"GtkSpinner":                  {Ctor: reflect.ValueOf(SpinnerNewFromC)},
-	"GtkSpinnerAccessible":        {Ctor: reflect.ValueOf(SpinnerAccessibleNewFromC)},
-	"GtkStack":                    {Ctor: reflect.ValueOf(StackNewFromC)},
-	"GtkStackSidebar":             {Ctor: reflect.ValueOf(StackSidebarNewFromC)},
-	"GtkStackSwitcher":            {Ctor: reflect.ValueOf(StackSwitcherNewFromC)},
-	"GtkStatusIcon":               {Ctor: reflect.ValueOf(StatusIconNewFromC)},
-	"GtkStatusbar":                {Ctor: reflect.ValueOf(StatusbarNewFromC)},
-	"GtkStatusbarAccessible":      {Ctor: reflect.ValueOf(StatusbarAccessibleNewFromC)},
-	"GtkStyle":                    {Ctor: reflect.ValueOf(StyleNewFromC)},
-	"GtkStyleContext":             {Ctor: reflect.ValueOf(StyleContextNewFromC)},
-	"GtkStyleProperties":          {Ctor: reflect.ValueOf(StylePropertiesNewFromC)},
-	"GtkSwitch":                   {Ctor: reflect.ValueOf(SwitchNewFromC)},
-	"GtkSwitchAccessible":         {Ctor: reflect.ValueOf(SwitchAccessibleNewFromC)},
-	"GtkTable":                    {Ctor: reflect.ValueOf(TableNewFromC)},
-	"GtkTearoffMenuItem":          {Ctor: reflect.ValueOf(TearoffMenuItemNewFromC)},
-	"GtkTextBuffer":               {Ctor: reflect.ValueOf(TextBufferNewFromC)},
-	"GtkTextCellAccessible":       {Ctor: reflect.ValueOf(TextCellAccessibleNewFromC)},
-	"GtkTextChildAnchor":          {Ctor: reflect.ValueOf(TextChildAnchorNewFromC)},
-	"GtkTextMark":                 {Ctor: reflect.ValueOf(TextMarkNewFromC)},
-	"GtkTextTag":                  {Ctor: reflect.ValueOf(TextTagNewFromC)},
-	"GtkTextTagTable":             {Ctor: reflect.ValueOf(TextTagTableNewFromC)},
-	"GtkTextView":                 {Ctor: reflect.ValueOf(TextViewNewFromC)},
-	"GtkTextViewAccessible":       {Ctor: reflect.ValueOf(TextViewAccessibleNewFromC)},
-	"GtkThemingEngine":            {Ctor: reflect.ValueOf(ThemingEngineNewFromC)},
-	"GtkToggleAction":             {Ctor: reflect.ValueOf(ToggleActionNewFromC)},
-	"GtkToggleButton":             {Ctor: reflect.ValueOf(ToggleButtonNewFromC)},
-	"GtkToggleButtonAccessible":   {Ctor: reflect.ValueOf(ToggleButtonAccessibleNewFromC)},
-	"GtkToggleToolButton":         {Ctor: reflect.ValueOf(ToggleToolButtonNewFromC)},
-	"GtkToolButton":               {Ctor: reflect.ValueOf(ToolButtonNewFromC)},
-	"GtkToolItem":                 {Ctor: reflect.ValueOf(ToolItemNewFromC)},
-	"GtkToolItemGroup":            {Ctor: reflect.ValueOf(ToolItemGroupNewFromC)},
-	"GtkToolPalette":              {Ctor: reflect.ValueOf(ToolPaletteNewFromC)},
-	"GtkToolbar":                  {Ctor: reflect.ValueOf(ToolbarNewFromC)},
-	"GtkTooltip":                  {Ctor: reflect.ValueOf(TooltipNewFromC)},
-	"GtkToplevelAccessible":       {Ctor: reflect.ValueOf(ToplevelAccessibleNewFromC)},
-	"GtkTreeModelFilter":          {Ctor: reflect.ValueOf(TreeModelFilterNewFromC)},
-	"GtkTreeModelSort":            {Ctor: reflect.ValueOf(TreeModelSortNewFromC)},
-	"GtkTreeSelection":            {Ctor: reflect.ValueOf(TreeSelectionNewFromC)},
-	"GtkTreeStore":                {Ctor: reflect.ValueOf(TreeStoreNewFromC)},
-	"GtkTreeView":                 {Ctor: reflect.ValueOf(TreeViewNewFromC)},
-	"GtkTreeViewAccessible":       {Ctor: reflect.ValueOf(TreeViewAccessibleNewFromC)},
-	"GtkTreeViewColumn":           {Ctor: reflect.ValueOf(TreeViewColumnNewFromC)},
-	"GtkUIManager":                {Ctor: reflect.ValueOf(UIManagerNewFromC)},
-	"GtkVBox":                     {Ctor: reflect.ValueOf(VBoxNewFromC)},
-	"GtkVButtonBox":               {Ctor: reflect.ValueOf(VButtonBoxNewFromC)},
-	"GtkVPaned":                   {Ctor: reflect.ValueOf(VPanedNewFromC)},
-	"GtkVScale":                   {Ctor: reflect.ValueOf(VScaleNewFromC)},
-	"GtkVScrollbar":               {Ctor: reflect.ValueOf(VScrollbarNewFromC)},
-	"GtkVSeparator":               {Ctor: reflect.ValueOf(VSeparatorNewFromC)},
-	"GtkViewport":                 {Ctor: reflect.ValueOf(ViewportNewFromC)},
-	"GtkVolumeButton":             {Ctor: reflect.ValueOf(VolumeButtonNewFromC)},
-	"GtkWidget":                   {Ctor: reflect.ValueOf(WidgetNewFromC)},
-	"GtkWidgetAccessible":         {Ctor: reflect.ValueOf(WidgetAccessibleNewFromC)},
-	"GtkWindow":                   {Ctor: reflect.ValueOf(WindowNewFromC)},
-	"GtkWindowAccessible":         {Ctor: reflect.ValueOf(WindowAccessibleNewFromC)},
-	"GtkWindowGroup":              {Ctor: reflect.ValueOf(WindowGroupNewFromC)},
+	"GtkAboutDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AboutDialogNewFromC),
+	},
+	"GtkAccelGroup": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(AccelGroupNewFromC),
+	},
+	"GtkAccelLabel": {
+		Ancestors: classAncestors{{MethodName: "Misc"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AccelLabelNewFromC),
+	},
+	"GtkAccelMap": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(AccelMapNewFromC),
+	},
+	"GtkAccessible": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(AccessibleNewFromC),
+	},
+	"GtkAction": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ActionNewFromC),
+	},
+	"GtkActionBar": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ActionBarNewFromC),
+	},
+	"GtkActionGroup": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ActionGroupNewFromC),
+	},
+	"GtkAdjustment": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(AdjustmentNewFromC),
+	},
+	"GtkAlignment": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AlignmentNewFromC),
+	},
+	"GtkAppChooserButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AppChooserButtonNewFromC),
+	},
+	"GtkAppChooserDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AppChooserDialogNewFromC),
+	},
+	"GtkAppChooserWidget": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AppChooserWidgetNewFromC),
+	},
+	"GtkApplication": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ApplicationNewFromC),
+	},
+	"GtkApplicationWindow": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ApplicationWindowNewFromC),
+	},
+	"GtkArrow": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ArrowNewFromC),
+	},
+	"GtkArrowAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ArrowAccessibleNewFromC),
+	},
+	"GtkAspectFrame": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AspectFrameNewFromC),
+	},
+	"GtkAssistant": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(AssistantNewFromC),
+	},
+	"GtkBin": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(BinNewFromC),
+	},
+	"GtkBooleanCellAccessible": {
+		Ancestors: classAncestors{{MethodName: "CellAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(BooleanCellAccessibleNewFromC),
+	},
+	"GtkBox": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(BoxNewFromC),
+	},
+	"GtkBuilder": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(BuilderNewFromC),
+	},
+	"GtkButton": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ButtonNewFromC),
+	},
+	"GtkButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ButtonAccessibleNewFromC),
+	},
+	"GtkButtonBox": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ButtonBoxNewFromC),
+	},
+	"GtkCalendar": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CalendarNewFromC),
+	},
+	"GtkCellAccessible": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellAccessibleNewFromC),
+	},
+	"GtkCellArea": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellAreaNewFromC),
+	},
+	"GtkCellAreaBox": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellAreaBoxNewFromC),
+	},
+	"GtkCellAreaContext": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellAreaContextNewFromC),
+	},
+	"GtkCellRenderer": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellRendererNewFromC),
+	},
+	"GtkCellRendererAccel": {
+		Ancestors: classAncestors{{MethodName: "CellRenderer"}},
+		Ctor:      reflect.ValueOf(CellRendererAccelNewFromC),
+	},
+	"GtkCellRendererCombo": {
+		Ancestors: classAncestors{{MethodName: "CellRenderer"}},
+		Ctor:      reflect.ValueOf(CellRendererComboNewFromC),
+	},
+	"GtkCellRendererPixbuf": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellRendererPixbufNewFromC),
+	},
+	"GtkCellRendererProgress": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellRendererProgressNewFromC),
+	},
+	"GtkCellRendererSpin": {
+		Ancestors: classAncestors{{MethodName: "CellRenderer"}},
+		Ctor:      reflect.ValueOf(CellRendererSpinNewFromC),
+	},
+	"GtkCellRendererSpinner": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellRendererSpinnerNewFromC),
+	},
+	"GtkCellRendererText": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellRendererTextNewFromC),
+	},
+	"GtkCellRendererToggle": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellRendererToggleNewFromC),
+	},
+	"GtkCellView": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CellViewNewFromC),
+	},
+	"GtkCheckButton": {
+		Ancestors: classAncestors{{MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(CheckButtonNewFromC),
+	},
+	"GtkCheckMenuItem": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(CheckMenuItemNewFromC),
+	},
+	"GtkCheckMenuItemAccessible": {
+		Ancestors: classAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(CheckMenuItemAccessibleNewFromC),
+	},
+	"GtkClipboard": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ClipboardNewFromC),
+	},
+	"GtkColorButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ColorButtonNewFromC),
+	},
+	"GtkColorChooserDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ColorChooserDialogNewFromC),
+	},
+	"GtkColorChooserWidget": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ColorChooserWidgetNewFromC),
+	},
+	"GtkColorSelection": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ColorSelectionNewFromC),
+	},
+	"GtkColorSelectionDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ColorSelectionDialogNewFromC),
+	},
+	"GtkComboBox": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ComboBoxNewFromC),
+	},
+	"GtkComboBoxAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ComboBoxAccessibleNewFromC),
+	},
+	"GtkComboBoxText": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ComboBoxTextNewFromC),
+	},
+	"GtkContainer": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ContainerNewFromC),
+	},
+	"GtkContainerAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ContainerAccessibleNewFromC),
+	},
+	"GtkContainerCellAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ContainerCellAccessibleNewFromC),
+	},
+	"GtkCssProvider": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(CssProviderNewFromC),
+	},
+	"GtkDialog": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(DialogNewFromC),
+	},
+	"GtkDrawingArea": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(DrawingAreaNewFromC),
+	},
+	"GtkEntry": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(EntryNewFromC),
+	},
+	"GtkEntryAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(EntryAccessibleNewFromC),
+	},
+	"GtkEntryBuffer": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(EntryBufferNewFromC),
+	},
+	"GtkEntryCompletion": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(EntryCompletionNewFromC),
+	},
+	"GtkEventBox": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(EventBoxNewFromC),
+	},
+	"GtkEventController": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(EventControllerNewFromC),
+	},
+	"GtkExpander": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ExpanderNewFromC),
+	},
+	"GtkExpanderAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ExpanderAccessibleNewFromC),
+	},
+	"GtkFileChooserButton": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FileChooserButtonNewFromC),
+	},
+	"GtkFileChooserDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FileChooserDialogNewFromC),
+	},
+	"GtkFileChooserNative": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(FileChooserNativeNewFromC),
+	},
+	"GtkFileChooserWidget": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FileChooserWidgetNewFromC),
+	},
+	"GtkFileFilter": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(FileFilterNewFromC),
+	},
+	"GtkFixed": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FixedNewFromC),
+	},
+	"GtkFlowBox": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FlowBoxNewFromC),
+	},
+	"GtkFlowBoxAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(FlowBoxAccessibleNewFromC),
+	},
+	"GtkFlowBoxChild": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FlowBoxChildNewFromC),
+	},
+	"GtkFlowBoxChildAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(FlowBoxChildAccessibleNewFromC),
+	},
+	"GtkFontButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FontButtonNewFromC),
+	},
+	"GtkFontChooserDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FontChooserDialogNewFromC),
+	},
+	"GtkFontChooserWidget": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FontChooserWidgetNewFromC),
+	},
+	"GtkFontSelection": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FontSelectionNewFromC),
+	},
+	"GtkFontSelectionDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FontSelectionDialogNewFromC),
+	},
+	"GtkFrame": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(FrameNewFromC),
+	},
+	"GtkFrameAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(FrameAccessibleNewFromC),
+	},
+	"GtkGLArea": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(GLAreaNewFromC),
+	},
+	"GtkGesture": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(GestureNewFromC),
+	},
+	"GtkGestureDrag": {
+		Ancestors: classAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureDragNewFromC),
+	},
+	"GtkGestureLongPress": {
+		Ancestors: classAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureLongPressNewFromC),
+	},
+	"GtkGestureMultiPress": {
+		Ancestors: classAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureMultiPressNewFromC),
+	},
+	"GtkGesturePan": {
+		Ancestors: classAncestors{{MethodName: "GestureSingle"}, {MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GesturePanNewFromC),
+	},
+	"GtkGestureRotate": {
+		Ancestors: classAncestors{{MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureRotateNewFromC),
+	},
+	"GtkGestureSingle": {
+		Ancestors: classAncestors{{MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureSingleNewFromC),
+	},
+	"GtkGestureSwipe": {
+		Ancestors: classAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureSwipeNewFromC),
+	},
+	"GtkGestureZoom": {
+		Ancestors: classAncestors{{MethodName: "EventController"}},
+		Ctor:      reflect.ValueOf(GestureZoomNewFromC),
+	},
+	"GtkGrid": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(GridNewFromC),
+	},
+	"GtkHBox": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HBoxNewFromC),
+	},
+	"GtkHButtonBox": {
+		Ancestors: classAncestors{{MethodName: "Box"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HButtonBoxNewFromC),
+	},
+	"GtkHPaned": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HPanedNewFromC),
+	},
+	"GtkHSV": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(HSVNewFromC),
+	},
+	"GtkHScale": {
+		Ancestors: classAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HScaleNewFromC),
+	},
+	"GtkHScrollbar": {
+		Ancestors: classAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HScrollbarNewFromC),
+	},
+	"GtkHSeparator": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HSeparatorNewFromC),
+	},
+	"GtkHandleBox": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HandleBoxNewFromC),
+	},
+	"GtkHeaderBar": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(HeaderBarNewFromC),
+	},
+	"GtkIMContext": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(IMContextNewFromC),
+	},
+	"GtkIMContextSimple": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(IMContextSimpleNewFromC),
+	},
+	"GtkIMMulticontext": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(IMMulticontextNewFromC),
+	},
+	"GtkIconFactory": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(IconFactoryNewFromC),
+	},
+	"GtkIconInfo": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(IconInfoNewFromC),
+	},
+	"GtkIconTheme": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(IconThemeNewFromC),
+	},
+	"GtkIconView": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(IconViewNewFromC),
+	},
+	"GtkIconViewAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(IconViewAccessibleNewFromC),
+	},
+	"GtkImage": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ImageNewFromC),
+	},
+	"GtkImageAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ImageAccessibleNewFromC),
+	},
+	"GtkImageCellAccessible": {
+		Ancestors: classAncestors{{MethodName: "CellAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ImageCellAccessibleNewFromC),
+	},
+	"GtkImageMenuItem": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ImageMenuItemNewFromC),
+	},
+	"GtkInfoBar": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(InfoBarNewFromC),
+	},
+	"GtkInvisible": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(InvisibleNewFromC),
+	},
+	"GtkLabel": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(LabelNewFromC),
+	},
+	"GtkLabelAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(LabelAccessibleNewFromC),
+	},
+	"GtkLayout": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(LayoutNewFromC),
+	},
+	"GtkLevelBar": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(LevelBarNewFromC),
+	},
+	"GtkLevelBarAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(LevelBarAccessibleNewFromC),
+	},
+	"GtkLinkButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(LinkButtonNewFromC),
+	},
+	"GtkLinkButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(LinkButtonAccessibleNewFromC),
+	},
+	"GtkListBox": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ListBoxNewFromC),
+	},
+	"GtkListBoxAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ListBoxAccessibleNewFromC),
+	},
+	"GtkListBoxRow": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ListBoxRowNewFromC),
+	},
+	"GtkListBoxRowAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ListBoxRowAccessibleNewFromC),
+	},
+	"GtkListStore": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ListStoreNewFromC),
+	},
+	"GtkLockButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(LockButtonNewFromC),
+	},
+	"GtkLockButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(LockButtonAccessibleNewFromC),
+	},
+	"GtkMenu": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MenuNewFromC),
+	},
+	"GtkMenuAccessible": {
+		Ancestors: classAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(MenuAccessibleNewFromC),
+	},
+	"GtkMenuBar": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MenuBarNewFromC),
+	},
+	"GtkMenuButton": {
+		Ancestors: classAncestors{{MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MenuButtonNewFromC),
+	},
+	"GtkMenuButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "ButtonAccessible"}, {MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(MenuButtonAccessibleNewFromC),
+	},
+	"GtkMenuItem": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MenuItemNewFromC),
+	},
+	"GtkMenuItemAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(MenuItemAccessibleNewFromC),
+	},
+	"GtkMenuShell": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MenuShellNewFromC),
+	},
+	"GtkMenuShellAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(MenuShellAccessibleNewFromC),
+	},
+	"GtkMenuToolButton": {
+		Ancestors: classAncestors{{MethodName: "ToolItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MenuToolButtonNewFromC),
+	},
+	"GtkMessageDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(MessageDialogNewFromC),
+	},
+	"GtkMisc": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(MiscNewFromC),
+	},
+	"GtkModelButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ModelButtonNewFromC),
+	},
+	"GtkMountOperation": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(MountOperationNewFromC),
+	},
+	"GtkNativeDialog": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(NativeDialogNewFromC),
+	},
+	"GtkNotebook": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(NotebookNewFromC),
+	},
+	"GtkNotebookAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(NotebookAccessibleNewFromC),
+	},
+	"GtkNotebookPageAccessible": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(NotebookPageAccessibleNewFromC),
+	},
+	"GtkNumerableIcon": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(NumerableIconNewFromC),
+	},
+	"GtkOffscreenWindow": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(OffscreenWindowNewFromC),
+	},
+	"GtkOverlay": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(OverlayNewFromC),
+	},
+	"GtkPadController": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(PadControllerNewFromC),
+	},
+	"GtkPageSetup": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(PageSetupNewFromC),
+	},
+	"GtkPaned": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(PanedNewFromC),
+	},
+	"GtkPanedAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(PanedAccessibleNewFromC),
+	},
+	"GtkPlacesSidebar": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(PlacesSidebarNewFromC),
+	},
+	"GtkPopover": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(PopoverNewFromC),
+	},
+	"GtkPopoverAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(PopoverAccessibleNewFromC),
+	},
+	"GtkPopoverMenu": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(PopoverMenuNewFromC),
+	},
+	"GtkPrintContext": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(PrintContextNewFromC),
+	},
+	"GtkPrintOperation": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(PrintOperationNewFromC),
+	},
+	"GtkPrintSettings": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(PrintSettingsNewFromC),
+	},
+	"GtkProgressBar": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ProgressBarNewFromC),
+	},
+	"GtkProgressBarAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ProgressBarAccessibleNewFromC),
+	},
+	"GtkRadioAction": {
+		Ancestors: classAncestors{{MethodName: "Action"}},
+		Ctor:      reflect.ValueOf(RadioActionNewFromC),
+	},
+	"GtkRadioButton": {
+		Ancestors: classAncestors{{MethodName: "ToggleButton"}, {MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RadioButtonNewFromC),
+	},
+	"GtkRadioButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "ButtonAccessible"}, {MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(RadioButtonAccessibleNewFromC),
+	},
+	"GtkRadioMenuItem": {
+		Ancestors: classAncestors{{MethodName: "MenuItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RadioMenuItemNewFromC),
+	},
+	"GtkRadioMenuItemAccessible": {
+		Ancestors: classAncestors{{MethodName: "MenuItemAccessible"}, {MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(RadioMenuItemAccessibleNewFromC),
+	},
+	"GtkRadioToolButton": {
+		Ancestors: classAncestors{{MethodName: "ToolButton"}, {MethodName: "ToolItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RadioToolButtonNewFromC),
+	},
+	"GtkRange": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(RangeNewFromC),
+	},
+	"GtkRangeAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(RangeAccessibleNewFromC),
+	},
+	"GtkRcStyle": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(RcStyleNewFromC),
+	},
+	"GtkRecentAction": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(RecentActionNewFromC),
+	},
+	"GtkRecentChooserDialog": {
+		Ancestors: classAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RecentChooserDialogNewFromC),
+	},
+	"GtkRecentChooserMenu": {
+		Ancestors: classAncestors{{MethodName: "MenuShell"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RecentChooserMenuNewFromC),
+	},
+	"GtkRecentChooserWidget": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RecentChooserWidgetNewFromC),
+	},
+	"GtkRecentFilter": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(RecentFilterNewFromC),
+	},
+	"GtkRecentManager": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(RecentManagerNewFromC),
+	},
+	"GtkRendererCellAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(RendererCellAccessibleNewFromC),
+	},
+	"GtkRevealer": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(RevealerNewFromC),
+	},
+	"GtkScale": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ScaleNewFromC),
+	},
+	"GtkScaleAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ScaleAccessibleNewFromC),
+	},
+	"GtkScaleButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ScaleButtonNewFromC),
+	},
+	"GtkScaleButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ScaleButtonAccessibleNewFromC),
+	},
+	"GtkScrollbar": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ScrollbarNewFromC),
+	},
+	"GtkScrolledWindow": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ScrolledWindowNewFromC),
+	},
+	"GtkScrolledWindowAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ScrolledWindowAccessibleNewFromC),
+	},
+	"GtkSearchBar": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(SearchBarNewFromC),
+	},
+	"GtkSearchEntry": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(SearchEntryNewFromC),
+	},
+	"GtkSeparator": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(SeparatorNewFromC),
+	},
+	"GtkSeparatorMenuItem": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(SeparatorMenuItemNewFromC),
+	},
+	"GtkSeparatorToolItem": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(SeparatorToolItemNewFromC),
+	},
+	"GtkSettings": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(SettingsNewFromC),
+	},
+	"GtkShortcutLabel": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ShortcutLabelNewFromC),
+	},
+	"GtkShortcutsGroup": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ShortcutsGroupNewFromC),
+	},
+	"GtkShortcutsSection": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ShortcutsSectionNewFromC),
+	},
+	"GtkShortcutsShortcut": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ShortcutsShortcutNewFromC),
+	},
+	"GtkShortcutsWindow": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ShortcutsWindowNewFromC),
+	},
+	"GtkSizeGroup": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(SizeGroupNewFromC),
+	},
+	"GtkSpinButton": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(SpinButtonNewFromC),
+	},
+	"GtkSpinButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(SpinButtonAccessibleNewFromC),
+	},
+	"GtkSpinner": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(SpinnerNewFromC),
+	},
+	"GtkSpinnerAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(SpinnerAccessibleNewFromC),
+	},
+	"GtkStack": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(StackNewFromC),
+	},
+	"GtkStackSidebar": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(StackSidebarNewFromC),
+	},
+	"GtkStackSwitcher": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(StackSwitcherNewFromC),
+	},
+	"GtkStatusIcon": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(StatusIconNewFromC),
+	},
+	"GtkStatusbar": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(StatusbarNewFromC),
+	},
+	"GtkStatusbarAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(StatusbarAccessibleNewFromC),
+	},
+	"GtkStyle": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(StyleNewFromC),
+	},
+	"GtkStyleContext": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(StyleContextNewFromC),
+	},
+	"GtkStyleProperties": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(StylePropertiesNewFromC),
+	},
+	"GtkSwitch": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(SwitchNewFromC),
+	},
+	"GtkSwitchAccessible": {
+		Ancestors: classAncestors{{MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(SwitchAccessibleNewFromC),
+	},
+	"GtkTable": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(TableNewFromC),
+	},
+	"GtkTearoffMenuItem": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(TearoffMenuItemNewFromC),
+	},
+	"GtkTextBuffer": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TextBufferNewFromC),
+	},
+	"GtkTextCellAccessible": {
+		Ancestors: classAncestors{{MethodName: "CellAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(TextCellAccessibleNewFromC),
+	},
+	"GtkTextChildAnchor": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TextChildAnchorNewFromC),
+	},
+	"GtkTextMark": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TextMarkNewFromC),
+	},
+	"GtkTextTag": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TextTagNewFromC),
+	},
+	"GtkTextTagTable": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TextTagTableNewFromC),
+	},
+	"GtkTextView": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(TextViewNewFromC),
+	},
+	"GtkTextViewAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(TextViewAccessibleNewFromC),
+	},
+	"GtkThemingEngine": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ThemingEngineNewFromC),
+	},
+	"GtkToggleAction": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ToggleActionNewFromC),
+	},
+	"GtkToggleButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToggleButtonNewFromC),
+	},
+	"GtkToggleButtonAccessible": {
+		Ancestors: classAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(ToggleButtonAccessibleNewFromC),
+	},
+	"GtkToggleToolButton": {
+		Ancestors: classAncestors{{MethodName: "ToolItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToggleToolButtonNewFromC),
+	},
+	"GtkToolButton": {
+		Ancestors: classAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToolButtonNewFromC),
+	},
+	"GtkToolItem": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToolItemNewFromC),
+	},
+	"GtkToolItemGroup": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToolItemGroupNewFromC),
+	},
+	"GtkToolPalette": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToolPaletteNewFromC),
+	},
+	"GtkToolbar": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ToolbarNewFromC),
+	},
+	"GtkTooltip": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TooltipNewFromC),
+	},
+	"GtkToplevelAccessible": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(ToplevelAccessibleNewFromC),
+	},
+	"GtkTreeModelFilter": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TreeModelFilterNewFromC),
+	},
+	"GtkTreeModelSort": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TreeModelSortNewFromC),
+	},
+	"GtkTreeSelection": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TreeSelectionNewFromC),
+	},
+	"GtkTreeStore": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TreeStoreNewFromC),
+	},
+	"GtkTreeView": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(TreeViewNewFromC),
+	},
+	"GtkTreeViewAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(TreeViewAccessibleNewFromC),
+	},
+	"GtkTreeViewColumn": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(TreeViewColumnNewFromC),
+	},
+	"GtkUIManager": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(UIManagerNewFromC),
+	},
+	"GtkVBox": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VBoxNewFromC),
+	},
+	"GtkVButtonBox": {
+		Ancestors: classAncestors{{MethodName: "Box"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VButtonBoxNewFromC),
+	},
+	"GtkVPaned": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VPanedNewFromC),
+	},
+	"GtkVScale": {
+		Ancestors: classAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VScaleNewFromC),
+	},
+	"GtkVScrollbar": {
+		Ancestors: classAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VScrollbarNewFromC),
+	},
+	"GtkVSeparator": {
+		Ancestors: classAncestors{{MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VSeparatorNewFromC),
+	},
+	"GtkViewport": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(ViewportNewFromC),
+	},
+	"GtkVolumeButton": {
+		Ancestors: classAncestors{{MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(VolumeButtonNewFromC),
+	},
+	"GtkWidget": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(WidgetNewFromC),
+	},
+	"GtkWidgetAccessible": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(WidgetAccessibleNewFromC),
+	},
+	"GtkWindow": {
+		Ancestors: classAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ctor:      reflect.ValueOf(WindowNewFromC),
+	},
+	"GtkWindowAccessible": {
+		Ancestors: classAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ctor:      reflect.ValueOf(WindowAccessibleNewFromC),
+	},
+	"GtkWindowGroup": {
+		Ancestors: classAncestors{},
+		Ctor:      reflect.ValueOf(WindowGroupNewFromC),
+	},
 }
 
 // Allocation is a representation of the C alias GtkAllocation.

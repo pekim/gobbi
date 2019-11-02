@@ -78,7 +78,7 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 		return
 	}
 
-	goType, found := gtk.GobjectClassGoTypeMap[className]
+	goType, found := gtk.GobjectClassToGoTypeMetaMap[className]
 	if !found {
 		fmt.Println("TODO: Not found class", className)
 		return
