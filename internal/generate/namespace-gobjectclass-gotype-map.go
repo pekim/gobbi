@@ -37,8 +37,8 @@ func (m gobjectClassToGoTypeMetaMap) generateClassAncestorsType() {
 		Id(m.ancestorsTypeName).
 		Index().
 		Struct(
+			jen.Id("ClassName").String(),
 			jen.Id("MethodName").String(),
-			jen.Id("InterfaceMethodNames").Index().String(),
 		)
 }
 
@@ -125,15 +125,8 @@ func (m gobjectClassToGoTypeMetaMap) generateClassAncestors(class *Class, g *jen
 		}
 
 		g.Values(jen.DictFunc(func(d jen.Dict) {
+			d[jen.Id("ClassName")] = jen.Lit(ancestor.CType)
 			d[jen.Id("MethodName")] = jen.Lit(qname.name)
-
-			//d[jen.Id("InterfaceMethodNames")]= jen.
-			//	Index().
-			//	String().
-			//	ValuesFunc(func(g *jen.Group) {
-			//		m.generateInterfaces(ancestor, g)
-			//	}),
-			//
 		}))
 
 		previousAncestor := ancestor

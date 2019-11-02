@@ -3336,8 +3336,8 @@ import (
 import "C"
 
 type ClassAncestors []struct {
-	MethodName           string
-	InterfaceMethodNames []string
+	ClassName  string
+	MethodName string
 }
 
 var GobjectClassToGoTypeMetaMap = map[string]struct {
@@ -3346,7 +3346,19 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 	Ancestors            ClassAncestors
 }{
 	"GtkAboutDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AboutDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -3356,7 +3368,13 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkAccelLabel": {
-		Ancestors:            ClassAncestors{{MethodName: "Misc"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkMisc",
+			MethodName: "Misc",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AccelLabelNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -3376,7 +3394,13 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkActionBar": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ActionBarNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -3391,22 +3415,55 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkAlignment": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AlignmentNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkAppChooserButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AppChooserButtonNewFromC),
 		InterfaceMethodNames: []string{"AppChooser", "Buildable", "CellEditable", "CellLayout"},
 	},
 	"GtkAppChooserDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AppChooserDialogNewFromC),
 		InterfaceMethodNames: []string{"AppChooser", "Buildable"},
 	},
 	"GtkAppChooserWidget": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AppChooserWidgetNewFromC),
 		InterfaceMethodNames: []string{"AppChooser", "Buildable", "Orientable"},
 	},
@@ -3416,42 +3473,87 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkApplicationWindow": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ApplicationWindowNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkArrow": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ArrowNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkArrowAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ArrowAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkAspectFrame": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AspectFrameNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkAssistant": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(AssistantNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkBin": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(BinNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkBooleanCellAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "CellAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkCellAccessible",
+			MethodName: "CellAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(BooleanCellAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(BoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
@@ -3461,17 +3563,35 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkButtonBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ButtonBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
@@ -3506,12 +3626,18 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkCellRendererAccel": {
-		Ancestors:            ClassAncestors{{MethodName: "CellRenderer"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkCellRenderer",
+			MethodName: "CellRenderer",
+		}},
 		Ctor:                 reflect.ValueOf(CellRendererAccelNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkCellRendererCombo": {
-		Ancestors:            ClassAncestors{{MethodName: "CellRenderer"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkCellRenderer",
+			MethodName: "CellRenderer",
+		}},
 		Ctor:                 reflect.ValueOf(CellRendererComboNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3526,7 +3652,10 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Orientable"},
 	},
 	"GtkCellRendererSpin": {
-		Ancestors:            ClassAncestors{{MethodName: "CellRenderer"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkCellRenderer",
+			MethodName: "CellRenderer",
+		}},
 		Ctor:                 reflect.ValueOf(CellRendererSpinNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3551,17 +3680,47 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "CellLayout", "Orientable"},
 	},
 	"GtkCheckButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkButton",
+			MethodName: "Button",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(CheckButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkCheckMenuItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(CheckMenuItemNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkCheckMenuItemAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(CheckMenuItemAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3571,42 +3730,108 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkColorButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ColorButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable", "ColorChooser"},
 	},
 	"GtkColorChooserDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ColorChooserDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "ColorChooser"},
 	},
 	"GtkColorChooserWidget": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ColorChooserWidgetNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "ColorChooser", "Orientable"},
 	},
 	"GtkColorSelection": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ColorSelectionNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkColorSelectionDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ColorSelectionDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkComboBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ComboBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "CellEditable", "CellLayout"},
 	},
 	"GtkComboBoxAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ComboBoxAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkComboBoxText": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ComboBoxTextNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "CellEditable", "CellLayout"},
 	},
@@ -3616,12 +3841,18 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkContainerAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ContainerAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkContainerCellAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ContainerCellAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3631,7 +3862,16 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"StyleProvider"},
 	},
 	"GtkDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(DialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -3646,7 +3886,10 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "CellEditable", "Editable"},
 	},
 	"GtkEntryAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(EntryAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3661,7 +3904,13 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "CellLayout"},
 	},
 	"GtkEventBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(EventBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -3671,27 +3920,63 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkExpander": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ExpanderNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkExpanderAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ExpanderAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkFileChooserButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FileChooserButtonNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "FileChooser", "Orientable"},
 	},
 	"GtkFileChooserDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FileChooserDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "FileChooser"},
 	},
 	"GtkFileChooserWidget": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FileChooserWidgetNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "FileChooser", "Orientable"},
 	},
@@ -3701,62 +3986,143 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkFixed": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FixedNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkFlowBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FlowBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkFlowBoxAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(FlowBoxAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkFlowBoxChild": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FlowBoxChildNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkFlowBoxChildAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(FlowBoxChildAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkFontButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FontButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable", "FontChooser"},
 	},
 	"GtkFontChooserDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FontChooserDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "FontChooser"},
 	},
 	"GtkFontChooserWidget": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FontChooserWidgetNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "FontChooser", "Orientable"},
 	},
 	"GtkFontSelection": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FontSelectionNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkFontSelectionDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FontSelectionDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkFrame": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(FrameNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkFrameAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(FrameAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3766,62 +4132,128 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureDrag": {
-		Ancestors:            ClassAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkGesture",
+			MethodName: "Gesture",
+		}, {
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureDragNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureLongPress": {
-		Ancestors:            ClassAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkGesture",
+			MethodName: "Gesture",
+		}, {
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureLongPressNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureMultiPress": {
-		Ancestors:            ClassAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkGesture",
+			MethodName: "Gesture",
+		}, {
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureMultiPressNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGesturePan": {
-		Ancestors:            ClassAncestors{{MethodName: "GestureSingle"}, {MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkGestureSingle",
+			MethodName: "GestureSingle",
+		}, {
+			ClassName:  "GtkGesture",
+			MethodName: "Gesture",
+		}, {
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GesturePanNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureRotate": {
-		Ancestors:            ClassAncestors{{MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureRotateNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureSingle": {
-		Ancestors:            ClassAncestors{{MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureSingleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureSwipe": {
-		Ancestors:            ClassAncestors{{MethodName: "Gesture"}, {MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkGesture",
+			MethodName: "Gesture",
+		}, {
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureSwipeNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGestureZoom": {
-		Ancestors:            ClassAncestors{{MethodName: "EventController"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkEventController",
+			MethodName: "EventController",
+		}},
 		Ctor:                 reflect.ValueOf(GestureZoomNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkGrid": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(GridNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkHBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkHButtonBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Box"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBox",
+			MethodName: "Box",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HButtonBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkHPaned": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HPanedNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
@@ -3831,27 +4263,51 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkHScale": {
-		Ancestors:            ClassAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkRange",
+			MethodName: "Range",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HScaleNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkHScrollbar": {
-		Ancestors:            ClassAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkRange",
+			MethodName: "Range",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HScrollbarNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkHSeparator": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HSeparatorNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkHandleBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HandleBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkHeaderBar": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(HeaderBarNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -3886,37 +4342,73 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkIconView": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(IconViewNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "CellLayout", "Scrollable"},
 	},
 	"GtkIconViewAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(IconViewAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkImage": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ImageNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkImageAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ImageAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkImageCellAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "CellAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkCellAccessible",
+			MethodName: "CellAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ImageCellAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkImageMenuItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ImageMenuItemNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkInfoBar": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(InfoBarNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
@@ -3926,17 +4418,26 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkLabel": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(LabelNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkLabelAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(LabelAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkLayout": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(LayoutNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Scrollable"},
 	},
@@ -3946,37 +4447,79 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkLevelBarAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(LevelBarAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkLinkButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(LinkButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkLinkButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(LinkButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkListBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ListBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkListBoxAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ListBoxAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkListBoxRow": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ListBoxRowNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Buildable"},
 	},
 	"GtkListBoxRowAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ListBoxRowAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -3986,67 +4529,175 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "TreeDragDest", "TreeDragSource", "TreeModel", "TreeSortable"},
 	},
 	"GtkLockButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(LockButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkLockButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(LockButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkMenu": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MenuNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkMenuAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(MenuAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkMenuBar": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MenuBarNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkMenuButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkButton",
+			MethodName: "Button",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MenuButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkMenuButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ButtonAccessible"}, {MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkButtonAccessible",
+			MethodName: "ButtonAccessible",
+		}, {
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(MenuButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkMenuItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MenuItemNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkMenuItemAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(MenuItemAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkMenuShell": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MenuShellNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkMenuShellAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(MenuShellAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkMenuToolButton": {
-		Ancestors:            ClassAncestors{{MethodName: "ToolItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkToolItem",
+			MethodName: "ToolItem",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MenuToolButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkMessageDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(MessageDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -4056,7 +4707,16 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkModelButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ModelButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
@@ -4066,12 +4726,21 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkNotebook": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(NotebookNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkNotebookAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(NotebookAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -4086,12 +4755,27 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkOffscreenWindow": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(OffscreenWindowNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkOverlay": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(OverlayNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -4101,32 +4785,71 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkPaned": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(PanedNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkPanedAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(PanedAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkPlacesSidebar": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(PlacesSidebarNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkPopover": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(PopoverNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkPopoverAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(PopoverAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkPopoverMenu": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(PopoverMenuNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
@@ -4151,37 +4874,109 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkProgressBarAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ProgressBarAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkRadioAction": {
-		Ancestors:            ClassAncestors{{MethodName: "Action"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAction",
+			MethodName: "Action",
+		}},
 		Ctor:                 reflect.ValueOf(RadioActionNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkRadioButton": {
-		Ancestors:            ClassAncestors{{MethodName: "ToggleButton"}, {MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkToggleButton",
+			MethodName: "ToggleButton",
+		}, {
+			ClassName:  "GtkButton",
+			MethodName: "Button",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RadioButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkRadioButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ButtonAccessible"}, {MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkButtonAccessible",
+			MethodName: "ButtonAccessible",
+		}, {
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(RadioButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkRadioMenuItem": {
-		Ancestors:            ClassAncestors{{MethodName: "MenuItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkMenuItem",
+			MethodName: "MenuItem",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RadioMenuItemNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkRadioMenuItemAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "MenuItemAccessible"}, {MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkMenuItemAccessible",
+			MethodName: "MenuItemAccessible",
+		}, {
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(RadioMenuItemAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkRadioToolButton": {
-		Ancestors:            ClassAncestors{{MethodName: "ToolButton"}, {MethodName: "ToolItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkToolButton",
+			MethodName: "ToolButton",
+		}, {
+			ClassName:  "GtkToolItem",
+			MethodName: "ToolItem",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RadioToolButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
@@ -4191,7 +4986,10 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkRangeAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(RangeAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -4206,17 +5004,44 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "RecentChooser"},
 	},
 	"GtkRecentChooserDialog": {
-		Ancestors:            ClassAncestors{{MethodName: "Window"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWindow",
+			MethodName: "Window",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RecentChooserDialogNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "RecentChooser"},
 	},
 	"GtkRecentChooserMenu": {
-		Ancestors:            ClassAncestors{{MethodName: "MenuShell"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkMenuShell",
+			MethodName: "MenuShell",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RecentChooserMenuNewFromC),
 		InterfaceMethodNames: []string{"Activatable", "Buildable", "RecentChooser"},
 	},
 	"GtkRecentChooserWidget": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RecentChooserWidgetNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable", "RecentChooser"},
 	},
@@ -4231,57 +5056,117 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkRendererCellAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(RendererCellAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkRevealer": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(RevealerNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkScale": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ScaleNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkScaleAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ScaleAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkScaleButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ScaleButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable", "Orientable"},
 	},
 	"GtkScaleButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ScaleButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkScrollbar": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ScrollbarNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkScrolledWindow": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ScrolledWindowNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkScrolledWindowAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ScrolledWindowAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkSearchBar": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(SearchBarNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkSearchEntry": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(SearchEntryNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "CellEditable", "Editable"},
 	},
@@ -4291,12 +5176,30 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkSeparatorMenuItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(SeparatorMenuItemNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkSeparatorToolItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(SeparatorToolItemNewFromC),
 		InterfaceMethodNames: []string{"Activatable", "Buildable"},
 	},
@@ -4311,12 +5214,21 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkSpinButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(SpinButtonNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "CellEditable", "Editable", "Orientable"},
 	},
 	"GtkSpinButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(SpinButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -4326,22 +5238,40 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkSpinnerAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(SpinnerAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkStack": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(StackNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkStackSidebar": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(StackSidebarNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkStackSwitcher": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(StackSwitcherNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
@@ -4351,12 +5281,24 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkStatusbar": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(StatusbarNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkStatusbarAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(StatusbarAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -4381,17 +5323,32 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkSwitchAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(SwitchAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkTable": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(TableNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkTearoffMenuItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(TearoffMenuItemNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
@@ -4401,7 +5358,13 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkTextCellAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "CellAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkCellAccessible",
+			MethodName: "CellAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(TextCellAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -4426,12 +5389,21 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkTextView": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(TextViewNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Scrollable"},
 	},
 	"GtkTextViewAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(TextViewAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
@@ -4446,42 +5418,96 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkToggleButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToggleButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkToggleButtonAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "ContainerAccessible"}, {MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainerAccessible",
+			MethodName: "ContainerAccessible",
+		}, {
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(ToggleButtonAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
 	"GtkToggleToolButton": {
-		Ancestors:            ClassAncestors{{MethodName: "ToolItem"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkToolItem",
+			MethodName: "ToolItem",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToggleToolButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkToolButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToolButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable"},
 	},
 	"GtkToolItem": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToolItemNewFromC),
 		InterfaceMethodNames: []string{"Activatable", "Buildable"},
 	},
 	"GtkToolItemGroup": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToolItemGroupNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "ToolShell"},
 	},
 	"GtkToolPalette": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToolPaletteNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable", "Scrollable"},
 	},
 	"GtkToolbar": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ToolbarNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable", "ToolShell"},
 	},
@@ -4516,12 +5542,21 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable", "TreeDragDest", "TreeDragSource", "TreeModel", "TreeSortable"},
 	},
 	"GtkTreeView": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(TreeViewNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Scrollable"},
 	},
 	"GtkTreeViewAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(TreeViewAccessibleNewFromC),
 		InterfaceMethodNames: []string{"CellAccessibleParent"},
 	},
@@ -4536,42 +5571,96 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkVBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkVButtonBox": {
-		Ancestors:            ClassAncestors{{MethodName: "Box"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkBox",
+			MethodName: "Box",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VButtonBoxNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkVPaned": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VPanedNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkVScale": {
-		Ancestors:            ClassAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkRange",
+			MethodName: "Range",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VScaleNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkVScrollbar": {
-		Ancestors:            ClassAncestors{{MethodName: "Range"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkRange",
+			MethodName: "Range",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VScrollbarNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkVSeparator": {
-		Ancestors:            ClassAncestors{{MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VSeparatorNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Orientable"},
 	},
 	"GtkViewport": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(ViewportNewFromC),
 		InterfaceMethodNames: []string{"Buildable", "Scrollable"},
 	},
 	"GtkVolumeButton": {
-		Ancestors:            ClassAncestors{{MethodName: "Button"}, {MethodName: "Bin"}, {MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkButton",
+			MethodName: "Button",
+		}, {
+			ClassName:  "GtkBin",
+			MethodName: "Bin",
+		}, {
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(VolumeButtonNewFromC),
 		InterfaceMethodNames: []string{"Actionable", "Activatable", "Buildable", "Orientable"},
 	},
@@ -4586,12 +5675,24 @@ var GobjectClassToGoTypeMetaMap = map[string]struct {
 		InterfaceMethodNames: []string{},
 	},
 	"GtkWindow": {
-		Ancestors:            ClassAncestors{{MethodName: "Container"}, {MethodName: "Widget"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkContainer",
+			MethodName: "Container",
+		}, {
+			ClassName:  "GtkWidget",
+			MethodName: "Widget",
+		}},
 		Ctor:                 reflect.ValueOf(WindowNewFromC),
 		InterfaceMethodNames: []string{"Buildable"},
 	},
 	"GtkWindowAccessible": {
-		Ancestors:            ClassAncestors{{MethodName: "WidgetAccessible"}, {MethodName: "Accessible"}},
+		Ancestors: ClassAncestors{{
+			ClassName:  "GtkWidgetAccessible",
+			MethodName: "WidgetAccessible",
+		}, {
+			ClassName:  "GtkAccessible",
+			MethodName: "Accessible",
+		}},
 		Ctor:                 reflect.ValueOf(WindowAccessibleNewFromC),
 		InterfaceMethodNames: []string{},
 	},
