@@ -78,14 +78,14 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 		return
 	}
 
-	ctorValue, found := gtk.GobjectClassGoTypeMap[className]
+	goType, found := gtk.GobjectClassGoTypeMap[className]
 	if !found {
 		fmt.Println("TODO: Not found class", className)
 		return
 	}
 
 	ctorArgs := []reflect.Value{reflect.ValueOf(unsafe.Pointer(cObject))}
-	ctorReturnValues := ctorValue.Call(ctorArgs)
+	ctorReturnValues := goType.Ctor.Call(ctorArgs)
 	gtkInstance := ctorReturnValues[0]
 
 	if strings.HasPrefix(signalName, "notify::") {
