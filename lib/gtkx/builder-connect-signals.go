@@ -42,45 +42,65 @@ static void Gobbi_gtk_builder_connect_signals(GtkBuilder *builder) {
 */
 import "C"
 
-var builderConnectSignalsHandlers = make(map[unsafe.Pointer]map[string]interface{})
+type builderConnectSignalsHandlersWrapper struct {
+	handlers map[string]interface{}
+	err      error
+}
+
+var builderConnectSignalsHandlers = make(map[unsafe.Pointer]builderConnectSignalsHandlersWrapper)
 var builderConnectSignalsHandlersLock sync.Mutex
 
-func BuilderConnectSignals(builder *gtk.Builder, handlers map[string]interface{}) {
+func BuilderConnectSignals(builder *gtk.Builder, handlers map[string]interface{}) error {
 	cBuilder := builder.ToC()
+	handlersWrapper := builderConnectSignalsHandlersWrapper{
+		handlers: handlers,
+		err:      nil,
+	}
 
+	// add to map
 	builderConnectSignalsHandlersLock.Lock()
-	builderConnectSignalsHandlers[cBuilder] = handlers
+	builderConnectSignalsHandlers[cBuilder] = handlersWrapper
 	builderConnectSignalsHandlersLock.Unlock()
 
+	// connect signals
 	C.Gobbi_gtk_builder_connect_signals(
 		(*C.GtkBuilder)(cBuilder),
 	)
 
+	// remove from map
 	builderConnectSignalsHandlersLock.Lock()
 	delete(builderConnectSignalsHandlers, cBuilder)
 	builderConnectSignalsHandlersLock.Unlock()
+
+	return handlersWrapper.err
 }
 
 //export GtkBuilderConnectSignal
-func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalName *C.gchar, cHandlerName *C.gchar, cBuilder C.gpointer) {
+func GtkBuilderConnectSignal(
+	cObject *C.GObject,
+	cClassName *C.gchar,
+	cSignalName *C.gchar,
+	cHandlerName *C.gchar,
+	cBuilder C.gpointer, //user data
+) {
 	className := C.GoString(cClassName)
 	signalName := C.GoString(cSignalName)
 	handlerName := C.GoString(cHandlerName)
 
-	handlers, found := builderConnectSignalsHandlers[unsafe.Pointer(cBuilder)]
+	handlersWrapper, found := builderConnectSignalsHandlers[unsafe.Pointer(cBuilder)]
 	if !found {
 		panic("builder not found in handlers map")
 	}
 
-	handler, found := handlers[handlerName]
+	handler, found := handlersWrapper.handlers[handlerName]
 	if !found {
-		fmt.Println("TODO: Not found handler", handlerName)
+		handlersWrapper.err = fmt.Errorf("Handler named '%s' not found", handlerName)
 		return
 	}
 
 	goType, found := gtk.GobjectClassToGoTypeMetaMap[className]
 	if !found {
-		fmt.Println("TODO: Not found class", className)
+		handlersWrapper.err = fmt.Errorf("Class with name '%s' not supported for Builder signal connecting", className)
 		return
 	}
 
@@ -91,7 +111,7 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	// Connect notify signal.
 	if strings.HasPrefix(signalName, "notify::") {
 		propertyName := strings.TrimPrefix(signalName, "notify::")
-		GtkBuilderConnectNotifySignalSignal(gtkInstance, handler, propertyName)
+		handlersWrapper.err = GtkBuilderConnectNotifySignalSignal(gtkInstance, handler, handlerName, propertyName, className)
 		return
 	}
 
@@ -112,6 +132,8 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 		}
 
 		if !ok {
+			handlersWrapper.err = fmt.Errorf("Signal '%s' not supported for class '%s' or any of its ancestor classes",
+				signalName, className)
 			return
 		}
 	}
@@ -119,40 +141,44 @@ func GtkBuilderConnectSignal(cObject *C.GObject, cClassName *C.gchar, cSignalNam
 	param0Type := connectMethod.Type().In(0)
 	handlerType := reflect.TypeOf(handler)
 	if !handlerType.AssignableTo(param0Type) {
-		fmt.Println("TODO: handler of wrong type", signalName)
+		handlersWrapper.err = fmt.Errorf("Signature mistmatch for handler '%s' for signal '%s' of class '%s'",
+			handlerName, signalName, className)
 		return
 	}
 
 	connectArgs := []reflect.Value{reflect.ValueOf(handler)}
 	connectMethod.Call(connectArgs)
-	fmt.Println("called")
-
-	fmt.Println()
 }
 
 func gtkBuilderGetMethod(signalName string, gtkInstance reflect.Value, className string) (reflect.Value, bool) {
 	connectMethodName := "Connect" + generate.MakeExportedGoName(signalName)
-	fmt.Println(connectMethodName)
 	connectMethod := gtkInstance.MethodByName(connectMethodName)
 	if !connectMethod.IsValid() {
-		fmt.Println("TODO: Not found connect method", className, connectMethodName)
 		return reflect.Value{}, false
 	}
 
 	return connectMethod, true
 }
 
-func GtkBuilderConnectNotifySignalSignal(gtkInstance reflect.Value, handler interface{}, propertyName string) {
+func GtkBuilderConnectNotifySignalSignal(
+	gtkInstance reflect.Value,
+	handler interface{},
+	handlerName string,
+	propertyName string,
+	className string,
+) error {
 	expectedHandlerType := reflect.TypeOf(func(*gobject.ParamSpec) {})
 	handlerType := reflect.TypeOf(handler)
 	if !handlerType.AssignableTo(expectedHandlerType) {
 		fmt.Println("TODO: property signal handler of wrong type", propertyName)
-		return
-
+		return fmt.Errorf("Signature mistmatch for handler '%s' for property '%s' nofifier  of class '%s'",
+			handlerName, propertyName, className)
 	}
 
 	objectMethod := gtkInstance.MethodByName("Object")
 	objectValue := objectMethod.Call(nil)[0]
 	object := objectValue.Interface().(*gobject.Object)
 	object.ConnectNotifyProperty(propertyName, handler.(func(*gobject.ParamSpec)))
+
+	return nil
 }

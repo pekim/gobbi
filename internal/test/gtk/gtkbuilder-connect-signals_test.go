@@ -38,12 +38,14 @@ func TestBuildConnectSignals(t *testing.T) {
 	gtk.Init(os.Args)
 	builder := gtk.BuilderNewFromString(ui)
 
-	gtkx.BuilderConnectSignals(builder, map[string]interface{}{
-		"ok_button_clicked":     func() {},
+	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+		"ok_button_clicked":     func(i int) {},
 		"cancel_button_clicked": func(s string) {},
 		"bad_name":              func() {},
 		"draw":                  func(cr *cairo.Context) bool { return false },
 	})
+
+	assert.NotNil(t, err)
 }
 
 func TestBuildConnectNotifySignal(t *testing.T) {
@@ -62,12 +64,13 @@ func TestBuildConnectNotifySignal(t *testing.T) {
 	builder := gtk.BuilderNewFromString(ui)
 	label := gtk.CastToLabel(builder.GetObject("label"))
 
-	gtkx.BuilderConnectSignals(builder, map[string]interface{}{
+	err := gtkx.BuilderConnectSignals(builder, map[string]interface{}{
 		"label_changed": func(pspec *gobject.ParamSpec) {
 			signalHandled = true
 			assert.Equal(t, label.GetLabel(), "two")
 		},
 	})
+	assert.Nil(t, err)
 
 	label.SetText("two")
 
