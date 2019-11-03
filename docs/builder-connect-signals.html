@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Connecting Builder signals - gobbi</title>
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="idea.css">
+
+        <script src="highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+
+    <body>
+        <header>
+    <a class="home" href="/gobbi/">gobbi</a>
+
+    <a href="https://github.com/pekim/gobbi" rel="noopener">
+        <img src="github.svg">
+        github repo
+    </a>
+</header>
+
+
+        <div class="body">
+            <nav>
+    <ol>
+            <li>
+                <a href="index.html">Introduction</a>
+            </li>
+            <li>
+                <a href="getting-started.html">Getting started</a>
+            </li>
+            <li>
+                <a href="application-lifecycle.html">Application lifecycle</a>
+            </li>
+            <li>
+                <a href="build-tags.html">Build tags</a>
+            </li>
+            <li>
+                <a href="goroutines.html">Goroutines</a>
+            </li>
+            <li>
+                <a href="casting.html">Casting</a>
+            </li>
+            <li>
+                <a href="signal-handling.html">Signal handling</a>
+            </li>
+            <li>
+                <a href="builder-connect-signals.html">Connecting Builder signals</a>
+            </li>
+            <li>
+                <a href="variadic-functions.html">Variadic functions</a>
+            </li>
+            <li>
+                <a href="gvalue.html">gobject.Value</a>
+            </li>
+            <li>
+                <a href="reference-counting.html">Reference counting</a>
+            </li>
+            <li>
+                <a href="subclassing.html">Subclassing</a>
+            </li>
+            <li>
+                <a href="api.html">API docs</a>
+            </li>
+    </ol>
+</nav>
+
+
+            <div class="content">
+                <h1>Connecting Builder signals</h1>
+                <h2>signals in UI definitions</h2>
+
+<p>User interfaces may be defined by in XML documents.
+Such documents are typically edited with Glade.</p>
+
+<p>Signals, along with a named handler, maybe appear in a definition.</p>
+
+<pre><code class="language-xml">&lt;interface&gt;
+  ...
+    &lt;object class=&quot;GtkButton&quot; id=&quot;ok_button&quot;&gt;
+      &lt;signal name=&quot;clicked&quot; handler=&quot;ok_button_clicked&quot;/&gt;
+    &lt;/object&gt;
+  ...
+&lt;/interface&gt;
+</code></pre>
+
+<p>The <code>handler</code> attribute value provides a name
+that can be used to associate the signal with a handler function.</p>
+
+<h2>connecting</h2>
+
+<p>To connect signals from a UI definition,
+call <code>Builder</code>&rsquo;s <code>ConnectSignals</code> method.
+The single argument is a map of handler names to handler functions</p>
+
+<p>The map keys should match <code>handler</code> attribute values in
+the UI definition.</p>
+
+<p>The handler function signatures must match the signal&rsquo;s
+equivalent <code>Connect...</code> function.</p>
+
+<h2>example</h2>
+
+<pre><code class="language-go">builder := gtk.BuilderNewFromString(`
+    &lt;interface&gt;
+      &lt;object class=&quot;GtkButton&quot; id=&quot;ok_button&quot;&gt;
+        &lt;signal name=&quot;clicked&quot; handler=&quot;ok_button_clicked&quot;/&gt;
+        &lt;signal name=&quot;draw&quot; handler=&quot;draw&quot;/&gt;
+      &lt;/object&gt;
+    &lt;/interface&gt;
+`)
+
+err := builder.ConnectSignals(map[string]interface{}{
+    &quot;ok_button_clicked&quot;: func(button *gtk.Button) {
+        // handle the click
+    },
+    &quot;draw&quot;: func(widget *gtk.Widget, cr *cairo.Context) bool {
+        // draw something in the context
+        return false
+    },
+})
+</code></pre>
+
+<p>See the tests in
+<a href="https://github.com/pekim/gobbi/blob/master/internal/test/gtk/gtkbuilder-connect-signals_test.go">gtkbuilder-connect-signals_test.go</a>
+for more examples
+including some error scenarios.</p>
+
+<h2>errors</h2>
+
+<p>There are a number of errors that may occur while connecting signals.
+* A key in the map passed to <code>ConnectSignals</code> may not match any
+<code>handler</code> attribute value in the UI definition.
+* A handler function&rsquo;s signature may be incorrect.
+* A signal name may be valid, but the signal may not be supported by gobbi.</p>
+
+<p>Any of these will result in an <code>error</code> being returned.</p>
+
+            </div>
+        </div>
+    </body>
+</html>

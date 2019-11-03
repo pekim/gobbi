@@ -55,6 +55,12 @@ func (w *builderConnectSignalsHandlersWrapper) setError(err error) {
 var builderConnectSignalsHandlers = make(map[unsafe.Pointer]*builderConnectSignalsHandlersWrapper)
 var builderConnectSignalsHandlersLock sync.Mutex
 
+// ConnectSignals uses gtk_builder_connect_signals_full to
+// connect signals referenced in a builder definition to signal
+// handler functions.
+//
+// See https://pekim.github.io/gobbi/builder-connect-signals.html
+// for more information.
 func (b *Builder) ConnectSignals(handlers map[string]interface{}) error {
 	cBuilder := b.ToC()
 	handlersWrapper := &builderConnectSignalsHandlersWrapper{

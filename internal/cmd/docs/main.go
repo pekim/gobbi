@@ -25,6 +25,7 @@ var pages = []Page{
 	Page{File: "goroutines", Title: "Goroutines"},
 	Page{File: "casting", Title: "Casting"},
 	Page{File: "signal-handling", Title: "Signal handling"},
+	Page{File: "builder-connect-signals", Title: "Connecting Builder signals"},
 	Page{File: "variadic-functions", Title: "Variadic functions"},
 	Page{File: "gvalue", Title: "gobject.Value"},
 	Page{File: "reference-counting", Title: "Reference counting"},
