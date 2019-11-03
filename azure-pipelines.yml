@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-18.04'
 
 variables:
   GO111MODULE: 'on'
@@ -7,6 +7,7 @@ variables:
 
 steps:
   - script: |
+      sudo apt update
       sudo apt install -y \
         libatk1.0-dev \
         libcairo2-dev \
