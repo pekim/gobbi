@@ -15,7 +15,7 @@ func outputScc() {
 	var fileCount int
 	var allFiles processor.FileJob
 
-	err := filepath.Walk("./lib", func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk("../lib", func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() && strings.HasSuffix(path, ".go") {
 			c(path, &allFiles)
 			fileCount++

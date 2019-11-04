@@ -40,7 +40,7 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
-	ns.libDir = projectFilepath("lib", ns.goPackageName)
+	ns.libDir = projectFilepath("..", "lib", ns.goPackageName)
 
 	if ns.CDocPath == "" {
 		ns.CDocPath = ns.goPackageName

@@ -35,6 +35,7 @@ steps:
     displayName: 'set up Go workspace'
 
   - script: |
+      cd internal
       ./gobbi generate
     workingDirectory: '$(modulePath)'
     displayName: 'generate'
