@@ -10,7 +10,7 @@ import (
 )
 
 const srcDir = "./docs-src"
-const destDir = "./docs"
+const destDir = "../docs"
 
 type Page struct {
 	File  string

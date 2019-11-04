@@ -35,7 +35,7 @@ generateClean () {
 }
 
 docs () {
-    go run internal/cmd/docs/main.go
+    go run cmd/docs/main.go
 }
 
 test () {
