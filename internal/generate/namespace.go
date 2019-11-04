@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	tm "github.com/buger/goterm"
 	"github.com/dave/jennifer/jen"
 	"strings"
 )
@@ -86,7 +87,7 @@ func (ns *Namespace) generate() {
 		return
 	}
 
-	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
+	fmt.Printf("%-10s %s  ", ns.Name, ns.Version)
 
 	ns.generateLibDir()
 
@@ -112,9 +113,15 @@ func (ns *Namespace) generate() {
 	allVersions = allVersions.dedupe()
 	allVersions.sort()
 
-	for _, version := range allVersions {
+	for n, version := range allVersions {
+		dx, _ := tm.Printf(" %d/%d", n+1, len(allVersions))
+		tm.MoveCursorBackward(dx)
+		tm.Flush()
+
 		ns.generateVersionFiles("v-"+version.value, version, allGeneratablesCollections)
 	}
+
+	fmt.Println("")
 }
 
 func (ns *Namespace) aliasForName(name string) (*Alias, bool) {
