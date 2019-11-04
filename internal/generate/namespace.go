@@ -113,9 +113,10 @@ func (ns *Namespace) generate() {
 	allVersions = allVersions.dedupe()
 	allVersions.sort()
 
+	previousNofNLength := 0
 	for n, version := range allVersions {
-		dx, _ := tm.Printf(" %d/%d", n+1, len(allVersions))
-		tm.MoveCursorBackward(dx)
+		tm.MoveCursorBackward(previousNofNLength)
+		previousNofNLength, _ = tm.Printf(" %d/%d", n+1, len(allVersions))
 		tm.Flush()
 
 		ns.generateVersionFiles("v-"+version.value, version, allGeneratablesCollections)
