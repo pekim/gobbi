@@ -14,17 +14,14 @@
 ## running examples
 * `git clone https://github.com/pekim/gobbi.git`
 * `cd gobbi`
-* `./gobbi example simple_window`
+* `./examples simple_window`
     * Be patient.
         The first `go build` or `go run` will take quite a while,
         perhaps a minute.
         Subsequent builds of applications will be a lot quicker
         as cached gobbi packages will be used by the Go tools.
 
-Run `./gobbi examples` for a list of the available examples.
-
-(The gobbi script supports other commands,
-but they are only needed for development of gobbi itself.)
+Run `./examples` for a list of the available examples.
 
 ## use in an application
 Using gobbi in an application in no different to using

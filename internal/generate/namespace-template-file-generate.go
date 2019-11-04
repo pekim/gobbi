@@ -8,7 +8,7 @@ import (
 )
 
 func (ns *Namespace) generateTemplatedFiles() {
-	templateDir := projectFilepath("internal", "template")
+	templateDir := projectFilepath("template")
 	fileInfos, err := ioutil.ReadDir(templateDir)
 
 	if err != nil {

@@ -13,16 +13,8 @@ usage () {
     echo "  gobbi generate                 Generate libraries"
     echo "  gobbi generate-clean           Generate libraries, first removing all generated files"
     echo "  gobbi test                     Run tests"
-    echo "  gobbi examples                 List the available examples"
-    echo "  gobbi example <example-name>   Run an example"
 
     exit
-}
-
-example () {
-    exampleName=$1
-    shift
-    go run -tags "$tags" $exampleDir/$exampleName/*.go $@
 }
 
 build () {
@@ -34,7 +26,7 @@ build () {
 }
 
 generate () {
-    go run internal/cmd/generate/*.go $@ 2>&1
+    go run cmd/generate/*.go $@ 2>&1
 }
 
 generateClean () {
@@ -43,7 +35,7 @@ generateClean () {
 }
 
 docs () {
-    go run internal/cmd/docs/main.go
+    go run cmd/docs/main.go
 }
 
 test () {
@@ -53,12 +45,6 @@ test () {
     fi
 
     go test -tags "$tags" $flags github.com/pekim/gobbi/internal/test/...
-}
-
-examples () {
-  for example in $(find $exampleDir -name main.go -printf '%h\n' | sort) ; do
-    basename $example
-  done
 }
 
 processOptions () {
@@ -100,12 +86,6 @@ processSubcommand () {
       ;;
     test)
       test $@
-      ;;
-    examples)
-      examples
-      ;;
-    example)
-      example $@
       ;;
     *)
       echo "Invalid subcommand: $subCommand" 1>&2

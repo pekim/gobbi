@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+set -u
+
+exampleDir=example
+tags="cairo_1.12 gobject_2.26 glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.36 gtk_3.18 pango_1.38 pangocairo_1.22 gtksource_3.18"
+
+if [ "$#" -lt 1 ]; then
+  echo "Usage:"
+  echo "  ./examples <example-name"
+  echo ""
+  echo "Available examples:"
+
+  for example in $(find $exampleDir -name main.go -printf '%h\n' | sort) ; do
+    echo "  $(basename $example)"
+  done
+else
+  exampleName=$1
+  go run -tags "$tags" $exampleDir/$exampleName/*.go
+fi

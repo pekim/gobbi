@@ -66,7 +66,7 @@ func (g *Gir) generate() {
 }
 
 func (g *Gir) LoadFile(filename string, required bool) *Repository {
-	filepath := projectFilepath("internal", "gir-files", filename)
+	filepath := projectFilepath("gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		if os.IsNotExist(err) && !required {
