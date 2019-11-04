@@ -41,6 +41,7 @@ steps:
     displayName: 'generate'
 
   - script: |
+      cd internal
       xvfb-run ./gobbi test
     workingDirectory: '$(modulePath)'
     displayName: 'test'
