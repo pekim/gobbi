@@ -20,7 +20,7 @@ steps:
 
   - task: GoTool@0
     inputs:
-      version: '1.12.5'
+      version: '1.13'
     displayName: 'install Go'
 
   - script: |
