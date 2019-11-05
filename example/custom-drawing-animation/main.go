@@ -44,8 +44,8 @@ func main() {
 
 	// draw widget when required
 	angle := 0.0
-	da.Widget().ConnectDraw(func(cr *cairo.Context) bool {
-		return draw(cr, da.Widget(), angle)
+	da.Widget().ConnectDraw(func(widget *gtk.Widget, cr *cairo.Context) bool {
+		return draw(cr, widget, angle)
 	})
 
 	// create window
@@ -56,7 +56,7 @@ func main() {
 	window.Container().Add(da.Widget())
 
 	// show the window until it's destroyed
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	go func() {

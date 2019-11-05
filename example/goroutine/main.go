@@ -25,7 +25,7 @@ func main() {
 	label := gtk.LabelNew("")
 	window.Container().Add(label.Widget())
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	ticker := time.NewTicker(200 * time.Millisecond)

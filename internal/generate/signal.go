@@ -208,10 +208,16 @@ func (s *Signal) generateCallbackType(g *jen.Group) {
 		Type().
 		Id(s.callbackTypeName).
 		Func().
-		ParamsFunc(s.Parameters.generateFunctionDeclaration).
+		ParamsFunc(s.generateCallbackFunctionParametersDeclaration).
 		ParamsFunc(s.generateCallbackReturnDeclaration)
 
 	g.Line()
+}
+
+func (s *Signal) generateCallbackFunctionParametersDeclaration(g *jen.Group) {
+	g.Id("targetObject").Op("*").Id(s.record.GoName)
+
+	s.Parameters.generateFunctionDeclaration(g)
 }
 
 func (s *Signal) generateCallbackReturnDeclaration(g *jen.Group) {
@@ -239,12 +245,23 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 }
 
 func (s *Signal) generateHandlerParameters(g *jen.Group) {
-	g.Id("_").Op("*").Qual("C", "GObject")
+	g.Id("c_targetObject").Op("*").Qual("C", "GObject")
 	s.Parameters.generateFunctionDeclarationCtypes(g)
 	g.Id("data").Qual("C", "gpointer")
 }
 
 func (s *Signal) generateHandlerCall(g *jen.Group) {
+	// object := XxxNewFromC(c_targetObject)
+	g.
+		Id("targetObject").
+		Op(":=").
+		Id(s.record.GoName + "NewFromC").
+		Call(jen.
+			Parens(jen.Qual("unsafe", "Pointer")).
+			Parens(
+				jen.Id("c_targetObject")))
+	g.Line()
+
 	// index := int(c_index)
 	g.Id("index").Op(":=").Int().Call(jen.Uintptr().Call(jen.Id("data")))
 
@@ -261,6 +278,8 @@ func (s *Signal) generateHandlerCall(g *jen.Group) {
 }
 
 func (s *Signal) generateHandleCallParams(g *jen.Group) {
+	g.Id("targetObject")
+
 	for _, p := range s.Parameters {
 		if p.arrayLengthFor != nil {
 			continue

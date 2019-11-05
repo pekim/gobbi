@@ -22,7 +22,7 @@ func main() {
 	container.Add(gtk.LabelNew("Label 2 ++").Widget())
 	window.Container().Add(container.Widget())
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()

@@ -75,6 +75,19 @@ func TestArrayParam(t *testing.T) {
 	assert.NotNil(t, store)
 }
 
+func TestSignalConnect(t *testing.T) {
+	callbackCalled := false
+
+	button := gtk.ButtonNew()
+	button.Widget().ConnectShow(func(widget *gtk.Widget) {
+		assert.True(t, widget.Object().Equals(button.Object()))
+		callbackCalled = true
+	})
+	button.Widget().Show()
+
+	assert.True(t, callbackCalled)
+}
+
 // The ConnectNotify & ConnectNotifyProperty functions are from the gobject package.
 // But there's no notify signal in that package that is suitable for this test.
 // So it's much easier to test it in this package.
@@ -82,15 +95,15 @@ func TestConnectNotify(t *testing.T) {
 	notifyCount := 0
 	label := gtk.LabelNew("a")
 
-	label.Object().ConnectNotify(func(pspec *gobject.ParamSpec) {
+	label.Object().ConnectNotify(func(_ *gobject.Object, pspec *gobject.ParamSpec) {
 		notifyCount++
 	})
 
-	label.Object().ConnectNotifyProperty("label", func(pspec *gobject.ParamSpec) {
+	label.Object().ConnectNotifyProperty("label", func(_ *gobject.Object, pspec *gobject.ParamSpec) {
 		notifyCount++
 	})
 
-	label.Object().ConnectNotifyProperty("non-such-property", func(pspec *gobject.ParamSpec) {
+	label.Object().ConnectNotifyProperty("non-such-property", func(_ *gobject.Object, pspec *gobject.ParamSpec) {
 		notifyCount++
 	})
 

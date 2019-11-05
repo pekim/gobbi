@@ -57,7 +57,7 @@ func main() {
 	gtkImg := gtk.ImageNewFromPixbuf(pixbuf)
 	window.Container().Add(gtkImg.Widget())
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()

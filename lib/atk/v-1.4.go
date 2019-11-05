@@ -364,7 +364,7 @@ var signalHyperlinkLinkActivatedMap = make(map[int]signalHyperlinkLinkActivatedD
 var signalHyperlinkLinkActivatedLock sync.RWMutex
 
 // HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
-type HyperlinkSignalLinkActivatedCallback func()
+type HyperlinkSignalLinkActivatedCallback func(targetObject *Hyperlink)
 
 /*
 ConnectLinkActivated connects the callback to the 'link-activated' signal for the Hyperlink.
@@ -405,13 +405,15 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 }
 
 //export hyperlink_linkActivatedHandler
-func hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
+func hyperlink_linkActivatedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalHyperlinkLinkActivatedLock.RLock()
 	defer signalHyperlinkLinkActivatedLock.RUnlock()
 
+	targetObject := HyperlinkNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalHyperlinkLinkActivatedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
@@ -798,7 +800,7 @@ var signalObjectFocusEventMap = make(map[int]signalObjectFocusEventDetail)
 var signalObjectFocusEventLock sync.RWMutex
 
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
-type ObjectSignalFocusEventCallback func(arg1 bool)
+type ObjectSignalFocusEventCallback func(targetObject *Object, arg1 bool)
 
 /*
 ConnectFocusEvent connects the callback to the 'focus-event' signal for the Object.
@@ -839,15 +841,17 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 }
 
 //export object_focusEventHandler
-func object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) {
+func object_focusEventHandler(c_targetObject *C.GObject, c_arg1 C.gboolean, data C.gpointer) {
 	signalObjectFocusEventLock.RLock()
 	defer signalObjectFocusEventLock.RUnlock()
 
 	arg1 := c_arg1 == C.TRUE
 
+	targetObject := ObjectNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalObjectFocusEventMap[index].callback
-	callback(arg1)
+	callback(targetObject, arg1)
 }
 
 // Unsupported signal 'property-change' for Object : param arg1 : gpointer
@@ -862,7 +866,7 @@ var signalObjectStateChangeMap = make(map[int]signalObjectStateChangeDetail)
 var signalObjectStateChangeLock sync.RWMutex
 
 // ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
-type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
+type ObjectSignalStateChangeCallback func(targetObject *Object, arg1 string, arg2 bool)
 
 /*
 ConnectStateChange connects the callback to the 'state-change' signal for the Object.
@@ -903,7 +907,7 @@ func (recv *Object) DisconnectStateChange(connectionID int) {
 }
 
 //export object_stateChangeHandler
-func object_stateChangeHandler(_ *C.GObject, c_arg1 *C.gchar, c_arg2 C.gboolean, data C.gpointer) {
+func object_stateChangeHandler(c_targetObject *C.GObject, c_arg1 *C.gchar, c_arg2 C.gboolean, data C.gpointer) {
 	signalObjectStateChangeLock.RLock()
 	defer signalObjectStateChangeLock.RUnlock()
 
@@ -911,9 +915,11 @@ func object_stateChangeHandler(_ *C.GObject, c_arg1 *C.gchar, c_arg2 C.gboolean,
 
 	arg2 := c_arg2 == C.TRUE
 
+	targetObject := ObjectNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalObjectStateChangeMap[index].callback
-	callback(arg1, arg2)
+	callback(targetObject, arg1, arg2)
 }
 
 type signalObjectVisibleDataChangedDetail struct {
@@ -926,7 +932,7 @@ var signalObjectVisibleDataChangedMap = make(map[int]signalObjectVisibleDataChan
 var signalObjectVisibleDataChangedLock sync.RWMutex
 
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
-type ObjectSignalVisibleDataChangedCallback func()
+type ObjectSignalVisibleDataChangedCallback func(targetObject *Object)
 
 /*
 ConnectVisibleDataChanged connects the callback to the 'visible-data-changed' signal for the Object.
@@ -967,13 +973,15 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 }
 
 //export object_visibleDataChangedHandler
-func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
+func object_visibleDataChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalObjectVisibleDataChangedLock.RLock()
 	defer signalObjectVisibleDataChangedLock.RUnlock()
 
+	targetObject := ObjectNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalObjectVisibleDataChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
@@ -2622,7 +2630,7 @@ var signalComponentBoundsChangedMap = make(map[int]signalComponentBoundsChangedD
 var signalComponentBoundsChangedLock sync.RWMutex
 
 // ComponentSignalBoundsChangedCallback is a callback function for a 'bounds-changed' signal emitted from a Component.
-type ComponentSignalBoundsChangedCallback func(arg1 *Rectangle)
+type ComponentSignalBoundsChangedCallback func(targetObject *Component, arg1 *Rectangle)
 
 /*
 ConnectBoundsChanged connects the callback to the 'bounds-changed' signal for the Component.
@@ -2663,15 +2671,17 @@ func (recv *Component) DisconnectBoundsChanged(connectionID int) {
 }
 
 //export component_boundsChangedHandler
-func component_boundsChangedHandler(_ *C.GObject, c_arg1 *C.AtkRectangle, data C.gpointer) {
+func component_boundsChangedHandler(c_targetObject *C.GObject, c_arg1 *C.AtkRectangle, data C.gpointer) {
 	signalComponentBoundsChangedLock.RLock()
 	defer signalComponentBoundsChangedLock.RUnlock()
 
 	arg1 := RectangleNewFromC(unsafe.Pointer(c_arg1))
 
+	targetObject := ComponentNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalComponentBoundsChangedMap[index].callback
-	callback(arg1)
+	callback(targetObject, arg1)
 }
 
 // Unsupported : atk_component_add_focus_handler : unsupported parameter handler : no type generator for FocusHandler (AtkFocusHandler) for param handler
@@ -2879,7 +2889,7 @@ var signalDocumentLoadCompleteMap = make(map[int]signalDocumentLoadCompleteDetai
 var signalDocumentLoadCompleteLock sync.RWMutex
 
 // DocumentSignalLoadCompleteCallback is a callback function for a 'load-complete' signal emitted from a Document.
-type DocumentSignalLoadCompleteCallback func()
+type DocumentSignalLoadCompleteCallback func(targetObject *Document)
 
 /*
 ConnectLoadComplete connects the callback to the 'load-complete' signal for the Document.
@@ -2920,13 +2930,15 @@ func (recv *Document) DisconnectLoadComplete(connectionID int) {
 }
 
 //export document_loadCompleteHandler
-func document_loadCompleteHandler(_ *C.GObject, data C.gpointer) {
+func document_loadCompleteHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDocumentLoadCompleteLock.RLock()
 	defer signalDocumentLoadCompleteLock.RUnlock()
 
+	targetObject := DocumentNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDocumentLoadCompleteMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalDocumentLoadStoppedDetail struct {
@@ -2939,7 +2951,7 @@ var signalDocumentLoadStoppedMap = make(map[int]signalDocumentLoadStoppedDetail)
 var signalDocumentLoadStoppedLock sync.RWMutex
 
 // DocumentSignalLoadStoppedCallback is a callback function for a 'load-stopped' signal emitted from a Document.
-type DocumentSignalLoadStoppedCallback func()
+type DocumentSignalLoadStoppedCallback func(targetObject *Document)
 
 /*
 ConnectLoadStopped connects the callback to the 'load-stopped' signal for the Document.
@@ -2980,13 +2992,15 @@ func (recv *Document) DisconnectLoadStopped(connectionID int) {
 }
 
 //export document_loadStoppedHandler
-func document_loadStoppedHandler(_ *C.GObject, data C.gpointer) {
+func document_loadStoppedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDocumentLoadStoppedLock.RLock()
 	defer signalDocumentLoadStoppedLock.RUnlock()
 
+	targetObject := DocumentNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDocumentLoadStoppedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalDocumentReloadDetail struct {
@@ -2999,7 +3013,7 @@ var signalDocumentReloadMap = make(map[int]signalDocumentReloadDetail)
 var signalDocumentReloadLock sync.RWMutex
 
 // DocumentSignalReloadCallback is a callback function for a 'reload' signal emitted from a Document.
-type DocumentSignalReloadCallback func()
+type DocumentSignalReloadCallback func(targetObject *Document)
 
 /*
 ConnectReload connects the callback to the 'reload' signal for the Document.
@@ -3040,13 +3054,15 @@ func (recv *Document) DisconnectReload(connectionID int) {
 }
 
 //export document_reloadHandler
-func document_reloadHandler(_ *C.GObject, data C.gpointer) {
+func document_reloadHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDocumentReloadLock.RLock()
 	defer signalDocumentReloadLock.RUnlock()
 
+	targetObject := DocumentNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDocumentReloadMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // GetDocument is a wrapper around the C function atk_document_get_document.
@@ -3229,7 +3245,7 @@ var signalHypertextLinkSelectedMap = make(map[int]signalHypertextLinkSelectedDet
 var signalHypertextLinkSelectedLock sync.RWMutex
 
 // HypertextSignalLinkSelectedCallback is a callback function for a 'link-selected' signal emitted from a Hypertext.
-type HypertextSignalLinkSelectedCallback func(arg1 int32)
+type HypertextSignalLinkSelectedCallback func(targetObject *Hypertext, arg1 int32)
 
 /*
 ConnectLinkSelected connects the callback to the 'link-selected' signal for the Hypertext.
@@ -3270,15 +3286,17 @@ func (recv *Hypertext) DisconnectLinkSelected(connectionID int) {
 }
 
 //export hypertext_linkSelectedHandler
-func hypertext_linkSelectedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer) {
+func hypertext_linkSelectedHandler(c_targetObject *C.GObject, c_arg1 C.gint, data C.gpointer) {
 	signalHypertextLinkSelectedLock.RLock()
 	defer signalHypertextLinkSelectedLock.RUnlock()
 
 	arg1 := int32(c_arg1)
 
+	targetObject := HypertextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalHypertextLinkSelectedMap[index].callback
-	callback(arg1)
+	callback(targetObject, arg1)
 }
 
 // GetLink is a wrapper around the C function atk_hypertext_get_link.
@@ -3448,7 +3466,7 @@ var signalSelectionSelectionChangedMap = make(map[int]signalSelectionSelectionCh
 var signalSelectionSelectionChangedLock sync.RWMutex
 
 // SelectionSignalSelectionChangedCallback is a callback function for a 'selection-changed' signal emitted from a Selection.
-type SelectionSignalSelectionChangedCallback func()
+type SelectionSignalSelectionChangedCallback func(targetObject *Selection)
 
 /*
 ConnectSelectionChanged connects the callback to the 'selection-changed' signal for the Selection.
@@ -3489,13 +3507,15 @@ func (recv *Selection) DisconnectSelectionChanged(connectionID int) {
 }
 
 //export selection_selectionChangedHandler
-func selection_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
+func selection_selectionChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalSelectionSelectionChangedLock.RLock()
 	defer signalSelectionSelectionChangedLock.RUnlock()
 
+	targetObject := SelectionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalSelectionSelectionChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // AddSelection is a wrapper around the C function atk_selection_add_selection.
@@ -3658,7 +3678,7 @@ var signalTableColumnDeletedMap = make(map[int]signalTableColumnDeletedDetail)
 var signalTableColumnDeletedLock sync.RWMutex
 
 // TableSignalColumnDeletedCallback is a callback function for a 'column-deleted' signal emitted from a Table.
-type TableSignalColumnDeletedCallback func(arg1 int32, arg2 int32)
+type TableSignalColumnDeletedCallback func(targetObject *Table, arg1 int32, arg2 int32)
 
 /*
 ConnectColumnDeleted connects the callback to the 'column-deleted' signal for the Table.
@@ -3699,7 +3719,7 @@ func (recv *Table) DisconnectColumnDeleted(connectionID int) {
 }
 
 //export table_columnDeletedHandler
-func table_columnDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+func table_columnDeletedHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
 	signalTableColumnDeletedLock.RLock()
 	defer signalTableColumnDeletedLock.RUnlock()
 
@@ -3707,9 +3727,11 @@ func table_columnDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data
 
 	arg2 := int32(c_arg2)
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableColumnDeletedMap[index].callback
-	callback(arg1, arg2)
+	callback(targetObject, arg1, arg2)
 }
 
 type signalTableColumnInsertedDetail struct {
@@ -3722,7 +3744,7 @@ var signalTableColumnInsertedMap = make(map[int]signalTableColumnInsertedDetail)
 var signalTableColumnInsertedLock sync.RWMutex
 
 // TableSignalColumnInsertedCallback is a callback function for a 'column-inserted' signal emitted from a Table.
-type TableSignalColumnInsertedCallback func(arg1 int32, arg2 int32)
+type TableSignalColumnInsertedCallback func(targetObject *Table, arg1 int32, arg2 int32)
 
 /*
 ConnectColumnInserted connects the callback to the 'column-inserted' signal for the Table.
@@ -3763,7 +3785,7 @@ func (recv *Table) DisconnectColumnInserted(connectionID int) {
 }
 
 //export table_columnInsertedHandler
-func table_columnInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+func table_columnInsertedHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
 	signalTableColumnInsertedLock.RLock()
 	defer signalTableColumnInsertedLock.RUnlock()
 
@@ -3771,9 +3793,11 @@ func table_columnInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, dat
 
 	arg2 := int32(c_arg2)
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableColumnInsertedMap[index].callback
-	callback(arg1, arg2)
+	callback(targetObject, arg1, arg2)
 }
 
 type signalTableColumnReorderedDetail struct {
@@ -3786,7 +3810,7 @@ var signalTableColumnReorderedMap = make(map[int]signalTableColumnReorderedDetai
 var signalTableColumnReorderedLock sync.RWMutex
 
 // TableSignalColumnReorderedCallback is a callback function for a 'column-reordered' signal emitted from a Table.
-type TableSignalColumnReorderedCallback func()
+type TableSignalColumnReorderedCallback func(targetObject *Table)
 
 /*
 ConnectColumnReordered connects the callback to the 'column-reordered' signal for the Table.
@@ -3827,13 +3851,15 @@ func (recv *Table) DisconnectColumnReordered(connectionID int) {
 }
 
 //export table_columnReorderedHandler
-func table_columnReorderedHandler(_ *C.GObject, data C.gpointer) {
+func table_columnReorderedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalTableColumnReorderedLock.RLock()
 	defer signalTableColumnReorderedLock.RUnlock()
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableColumnReorderedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalTableModelChangedDetail struct {
@@ -3846,7 +3872,7 @@ var signalTableModelChangedMap = make(map[int]signalTableModelChangedDetail)
 var signalTableModelChangedLock sync.RWMutex
 
 // TableSignalModelChangedCallback is a callback function for a 'model-changed' signal emitted from a Table.
-type TableSignalModelChangedCallback func()
+type TableSignalModelChangedCallback func(targetObject *Table)
 
 /*
 ConnectModelChanged connects the callback to the 'model-changed' signal for the Table.
@@ -3887,13 +3913,15 @@ func (recv *Table) DisconnectModelChanged(connectionID int) {
 }
 
 //export table_modelChangedHandler
-func table_modelChangedHandler(_ *C.GObject, data C.gpointer) {
+func table_modelChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalTableModelChangedLock.RLock()
 	defer signalTableModelChangedLock.RUnlock()
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableModelChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalTableRowDeletedDetail struct {
@@ -3906,7 +3934,7 @@ var signalTableRowDeletedMap = make(map[int]signalTableRowDeletedDetail)
 var signalTableRowDeletedLock sync.RWMutex
 
 // TableSignalRowDeletedCallback is a callback function for a 'row-deleted' signal emitted from a Table.
-type TableSignalRowDeletedCallback func(arg1 int32, arg2 int32)
+type TableSignalRowDeletedCallback func(targetObject *Table, arg1 int32, arg2 int32)
 
 /*
 ConnectRowDeleted connects the callback to the 'row-deleted' signal for the Table.
@@ -3947,7 +3975,7 @@ func (recv *Table) DisconnectRowDeleted(connectionID int) {
 }
 
 //export table_rowDeletedHandler
-func table_rowDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+func table_rowDeletedHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
 	signalTableRowDeletedLock.RLock()
 	defer signalTableRowDeletedLock.RUnlock()
 
@@ -3955,9 +3983,11 @@ func table_rowDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.
 
 	arg2 := int32(c_arg2)
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableRowDeletedMap[index].callback
-	callback(arg1, arg2)
+	callback(targetObject, arg1, arg2)
 }
 
 type signalTableRowInsertedDetail struct {
@@ -3970,7 +4000,7 @@ var signalTableRowInsertedMap = make(map[int]signalTableRowInsertedDetail)
 var signalTableRowInsertedLock sync.RWMutex
 
 // TableSignalRowInsertedCallback is a callback function for a 'row-inserted' signal emitted from a Table.
-type TableSignalRowInsertedCallback func(arg1 int32, arg2 int32)
+type TableSignalRowInsertedCallback func(targetObject *Table, arg1 int32, arg2 int32)
 
 /*
 ConnectRowInserted connects the callback to the 'row-inserted' signal for the Table.
@@ -4011,7 +4041,7 @@ func (recv *Table) DisconnectRowInserted(connectionID int) {
 }
 
 //export table_rowInsertedHandler
-func table_rowInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+func table_rowInsertedHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
 	signalTableRowInsertedLock.RLock()
 	defer signalTableRowInsertedLock.RUnlock()
 
@@ -4019,9 +4049,11 @@ func table_rowInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C
 
 	arg2 := int32(c_arg2)
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableRowInsertedMap[index].callback
-	callback(arg1, arg2)
+	callback(targetObject, arg1, arg2)
 }
 
 type signalTableRowReorderedDetail struct {
@@ -4034,7 +4066,7 @@ var signalTableRowReorderedMap = make(map[int]signalTableRowReorderedDetail)
 var signalTableRowReorderedLock sync.RWMutex
 
 // TableSignalRowReorderedCallback is a callback function for a 'row-reordered' signal emitted from a Table.
-type TableSignalRowReorderedCallback func()
+type TableSignalRowReorderedCallback func(targetObject *Table)
 
 /*
 ConnectRowReordered connects the callback to the 'row-reordered' signal for the Table.
@@ -4075,13 +4107,15 @@ func (recv *Table) DisconnectRowReordered(connectionID int) {
 }
 
 //export table_rowReorderedHandler
-func table_rowReorderedHandler(_ *C.GObject, data C.gpointer) {
+func table_rowReorderedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalTableRowReorderedLock.RLock()
 	defer signalTableRowReorderedLock.RUnlock()
 
+	targetObject := TableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTableRowReorderedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // AddColumnSelection is a wrapper around the C function atk_table_add_column_selection.
@@ -4453,7 +4487,7 @@ var signalTextTextAttributesChangedMap = make(map[int]signalTextTextAttributesCh
 var signalTextTextAttributesChangedLock sync.RWMutex
 
 // TextSignalTextAttributesChangedCallback is a callback function for a 'text-attributes-changed' signal emitted from a Text.
-type TextSignalTextAttributesChangedCallback func()
+type TextSignalTextAttributesChangedCallback func(targetObject *Text)
 
 /*
 ConnectTextAttributesChanged connects the callback to the 'text-attributes-changed' signal for the Text.
@@ -4494,13 +4528,15 @@ func (recv *Text) DisconnectTextAttributesChanged(connectionID int) {
 }
 
 //export text_textAttributesChangedHandler
-func text_textAttributesChangedHandler(_ *C.GObject, data C.gpointer) {
+func text_textAttributesChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalTextTextAttributesChangedLock.RLock()
 	defer signalTextTextAttributesChangedLock.RUnlock()
 
+	targetObject := TextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTextTextAttributesChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalTextTextCaretMovedDetail struct {
@@ -4513,7 +4549,7 @@ var signalTextTextCaretMovedMap = make(map[int]signalTextTextCaretMovedDetail)
 var signalTextTextCaretMovedLock sync.RWMutex
 
 // TextSignalTextCaretMovedCallback is a callback function for a 'text-caret-moved' signal emitted from a Text.
-type TextSignalTextCaretMovedCallback func(arg1 int32)
+type TextSignalTextCaretMovedCallback func(targetObject *Text, arg1 int32)
 
 /*
 ConnectTextCaretMoved connects the callback to the 'text-caret-moved' signal for the Text.
@@ -4554,15 +4590,17 @@ func (recv *Text) DisconnectTextCaretMoved(connectionID int) {
 }
 
 //export text_textCaretMovedHandler
-func text_textCaretMovedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer) {
+func text_textCaretMovedHandler(c_targetObject *C.GObject, c_arg1 C.gint, data C.gpointer) {
 	signalTextTextCaretMovedLock.RLock()
 	defer signalTextTextCaretMovedLock.RUnlock()
 
 	arg1 := int32(c_arg1)
 
+	targetObject := TextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTextTextCaretMovedMap[index].callback
-	callback(arg1)
+	callback(targetObject, arg1)
 }
 
 type signalTextTextChangedDetail struct {
@@ -4575,7 +4613,7 @@ var signalTextTextChangedMap = make(map[int]signalTextTextChangedDetail)
 var signalTextTextChangedLock sync.RWMutex
 
 // TextSignalTextChangedCallback is a callback function for a 'text-changed' signal emitted from a Text.
-type TextSignalTextChangedCallback func(arg1 int32, arg2 int32)
+type TextSignalTextChangedCallback func(targetObject *Text, arg1 int32, arg2 int32)
 
 /*
 ConnectTextChanged connects the callback to the 'text-changed' signal for the Text.
@@ -4616,7 +4654,7 @@ func (recv *Text) DisconnectTextChanged(connectionID int) {
 }
 
 //export text_textChangedHandler
-func text_textChangedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+func text_textChangedHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
 	signalTextTextChangedLock.RLock()
 	defer signalTextTextChangedLock.RUnlock()
 
@@ -4624,9 +4662,11 @@ func text_textChangedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.
 
 	arg2 := int32(c_arg2)
 
+	targetObject := TextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTextTextChangedMap[index].callback
-	callback(arg1, arg2)
+	callback(targetObject, arg1, arg2)
 }
 
 type signalTextTextInsertDetail struct {
@@ -4639,7 +4679,7 @@ var signalTextTextInsertMap = make(map[int]signalTextTextInsertDetail)
 var signalTextTextInsertLock sync.RWMutex
 
 // TextSignalTextInsertCallback is a callback function for a 'text-insert' signal emitted from a Text.
-type TextSignalTextInsertCallback func(arg1 int32, arg2 int32, arg3 string)
+type TextSignalTextInsertCallback func(targetObject *Text, arg1 int32, arg2 int32, arg3 string)
 
 /*
 ConnectTextInsert connects the callback to the 'text-insert' signal for the Text.
@@ -4680,7 +4720,7 @@ func (recv *Text) DisconnectTextInsert(connectionID int) {
 }
 
 //export text_textInsertHandler
-func text_textInsertHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
+func text_textInsertHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
 	signalTextTextInsertLock.RLock()
 	defer signalTextTextInsertLock.RUnlock()
 
@@ -4690,9 +4730,11 @@ func text_textInsertHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *
 
 	arg3 := C.GoString(c_arg3)
 
+	targetObject := TextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTextTextInsertMap[index].callback
-	callback(arg1, arg2, arg3)
+	callback(targetObject, arg1, arg2, arg3)
 }
 
 type signalTextTextRemoveDetail struct {
@@ -4705,7 +4747,7 @@ var signalTextTextRemoveMap = make(map[int]signalTextTextRemoveDetail)
 var signalTextTextRemoveLock sync.RWMutex
 
 // TextSignalTextRemoveCallback is a callback function for a 'text-remove' signal emitted from a Text.
-type TextSignalTextRemoveCallback func(arg1 int32, arg2 int32, arg3 string)
+type TextSignalTextRemoveCallback func(targetObject *Text, arg1 int32, arg2 int32, arg3 string)
 
 /*
 ConnectTextRemove connects the callback to the 'text-remove' signal for the Text.
@@ -4746,7 +4788,7 @@ func (recv *Text) DisconnectTextRemove(connectionID int) {
 }
 
 //export text_textRemoveHandler
-func text_textRemoveHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
+func text_textRemoveHandler(c_targetObject *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
 	signalTextTextRemoveLock.RLock()
 	defer signalTextTextRemoveLock.RUnlock()
 
@@ -4756,9 +4798,11 @@ func text_textRemoveHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *
 
 	arg3 := C.GoString(c_arg3)
 
+	targetObject := TextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTextTextRemoveMap[index].callback
-	callback(arg1, arg2, arg3)
+	callback(targetObject, arg1, arg2, arg3)
 }
 
 type signalTextTextSelectionChangedDetail struct {
@@ -4771,7 +4815,7 @@ var signalTextTextSelectionChangedMap = make(map[int]signalTextTextSelectionChan
 var signalTextTextSelectionChangedLock sync.RWMutex
 
 // TextSignalTextSelectionChangedCallback is a callback function for a 'text-selection-changed' signal emitted from a Text.
-type TextSignalTextSelectionChangedCallback func()
+type TextSignalTextSelectionChangedCallback func(targetObject *Text)
 
 /*
 ConnectTextSelectionChanged connects the callback to the 'text-selection-changed' signal for the Text.
@@ -4812,13 +4856,15 @@ func (recv *Text) DisconnectTextSelectionChanged(connectionID int) {
 }
 
 //export text_textSelectionChangedHandler
-func text_textSelectionChangedHandler(_ *C.GObject, data C.gpointer) {
+func text_textSelectionChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalTextTextSelectionChangedLock.RLock()
 	defer signalTextTextSelectionChangedLock.RUnlock()
 
+	targetObject := TextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalTextTextSelectionChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // atk_text_free_ranges : unsupported parameter ranges :

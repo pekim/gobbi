@@ -25,7 +25,7 @@ func main() {
 	clickCount := 0
 	button := gtk.ButtonNewWithLabel("Click me")
 	button.Widget().SetHalign(gtk.GTK_ALIGN_CENTER)
-	button.ConnectClicked(func() {
+	button.ConnectClicked(func(_ *gtk.Button) {
 		clickCount++
 		button.SetLabel(fmt.Sprintf("clicked %d times", clickCount))
 	})
@@ -34,7 +34,7 @@ func main() {
 	label := gtk.LabelNew("or press keys (and check stdout in terminal)")
 	container.Add(label.Widget())
 
-	window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
+	window.Widget().ConnectKeyPressEvent(func(_ *gtk.Widget, event *gdk.EventKey) bool {
 		message := fmt.Sprintf("key pressed : %s  %d  %d", event.String, event.Keyval, event.State)
 		label.SetText(message)
 		fmt.Println(message)
@@ -42,13 +42,13 @@ func main() {
 		return gdk.EVENT_PROPAGATE
 	})
 
-	connectId2 := window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
+	connectId2 := window.Widget().ConnectKeyPressEvent(func(_ *gtk.Widget, event *gdk.EventKey) bool {
 		fmt.Println("Should not see this message.")
 		return false
 	})
 	window.Widget().DisconnectKeyPressEvent(connectId2)
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()

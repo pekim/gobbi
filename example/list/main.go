@@ -45,7 +45,7 @@ func main() {
 
 	window.Container().Add(container.Widget())
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()
@@ -71,7 +71,7 @@ func createTree(selectionLabel *gtk.Label) *gtk.TreeView {
 
 	selection := tree.GetSelection()
 	selection.SetMode(gtk.GTK_SELECTION_SINGLE)
-	selection.ConnectChanged(selectionChange(selection, selectionLabel))
+	selection.ConnectChanged(selectionChange(selectionLabel))
 
 	return tree
 }
@@ -117,8 +117,8 @@ func addColumn(view *gtk.TreeView, title string, modelColumn int32, foregroundCo
 	view.AppendColumn(column)
 }
 
-func selectionChange(selection *gtk.TreeSelection, selectionLabel *gtk.Label) func() {
-	return func() {
+func selectionChange(selectionLabel *gtk.Label) func(_ *gtk.TreeSelection) {
+	return func(selection *gtk.TreeSelection) {
 		isSelected, model, iter := selection.GetSelected()
 
 		if isSelected {

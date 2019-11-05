@@ -1257,7 +1257,7 @@ var signalCancellableCancelledMap = make(map[int]signalCancellableCancelledDetai
 var signalCancellableCancelledLock sync.RWMutex
 
 // CancellableSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a Cancellable.
-type CancellableSignalCancelledCallback func()
+type CancellableSignalCancelledCallback func(targetObject *Cancellable)
 
 /*
 ConnectCancelled connects the callback to the 'cancelled' signal for the Cancellable.
@@ -1298,13 +1298,15 @@ func (recv *Cancellable) DisconnectCancelled(connectionID int) {
 }
 
 //export cancellable_cancelledHandler
-func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
+func cancellable_cancelledHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCancellableCancelledLock.RLock()
 	defer signalCancellableCancelledLock.RUnlock()
 
+	targetObject := CancellableNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCancellableCancelledMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
@@ -1982,7 +1984,7 @@ var signalDBusAuthObserverAuthorizeAuthenticatedPeerMap = make(map[int]signalDBu
 var signalDBusAuthObserverAuthorizeAuthenticatedPeerLock sync.RWMutex
 
 // DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
-type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
+type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(targetObject *DBusAuthObserver, stream *IOStream, credentials *Credentials) bool
 
 /*
 ConnectAuthorizeAuthenticatedPeer connects the callback to the 'authorize-authenticated-peer' signal for the DBusAuthObserver.
@@ -2023,7 +2025,7 @@ func (recv *DBusAuthObserver) DisconnectAuthorizeAuthenticatedPeer(connectionID 
 }
 
 //export dbusauthobserver_authorizeAuthenticatedPeerHandler
-func dbusauthobserver_authorizeAuthenticatedPeerHandler(_ *C.GObject, c_stream *C.GIOStream, c_credentials *C.GCredentials, data C.gpointer) C.gboolean {
+func dbusauthobserver_authorizeAuthenticatedPeerHandler(c_targetObject *C.GObject, c_stream *C.GIOStream, c_credentials *C.GCredentials, data C.gpointer) C.gboolean {
 	signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.RLock()
 	defer signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.RUnlock()
 
@@ -2031,9 +2033,11 @@ func dbusauthobserver_authorizeAuthenticatedPeerHandler(_ *C.GObject, c_stream *
 
 	credentials := CredentialsNewFromC(unsafe.Pointer(c_credentials))
 
+	targetObject := DBusAuthObserverNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDBusAuthObserverAuthorizeAuthenticatedPeerMap[index].callback
-	retGo := callback(stream, credentials)
+	retGo := callback(targetObject, stream, credentials)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -2126,7 +2130,7 @@ var signalDBusConnectionClosedMap = make(map[int]signalDBusConnectionClosedDetai
 var signalDBusConnectionClosedLock sync.RWMutex
 
 // DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
-type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
+type DBusConnectionSignalClosedCallback func(targetObject *DBusConnection, remotePeerVanished bool, error *glib.Error)
 
 /*
 ConnectClosed connects the callback to the 'closed' signal for the DBusConnection.
@@ -2167,7 +2171,7 @@ func (recv *DBusConnection) DisconnectClosed(connectionID int) {
 }
 
 //export dbusconnection_closedHandler
-func dbusconnection_closedHandler(_ *C.GObject, c_remote_peer_vanished C.gboolean, c_error *C.GError, data C.gpointer) {
+func dbusconnection_closedHandler(c_targetObject *C.GObject, c_remote_peer_vanished C.gboolean, c_error *C.GError, data C.gpointer) {
 	signalDBusConnectionClosedLock.RLock()
 	defer signalDBusConnectionClosedLock.RUnlock()
 
@@ -2175,9 +2179,11 @@ func dbusconnection_closedHandler(_ *C.GObject, c_remote_peer_vanished C.gboolea
 
 	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
 
+	targetObject := DBusConnectionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDBusConnectionClosedMap[index].callback
-	callback(remotePeerVanished, error)
+	callback(targetObject, remotePeerVanished, error)
 }
 
 // DBusConnectionNewFinish is a wrapper around the C function g_dbus_connection_new_finish.
@@ -3599,7 +3605,7 @@ var signalDBusProxyGSignalMap = make(map[int]signalDBusProxyGSignalDetail)
 var signalDBusProxyGSignalLock sync.RWMutex
 
 // DBusProxySignalGSignalCallback is a callback function for a 'g-signal' signal emitted from a DBusProxy.
-type DBusProxySignalGSignalCallback func(senderName string, signalName string, parameters *glib.Variant)
+type DBusProxySignalGSignalCallback func(targetObject *DBusProxy, senderName string, signalName string, parameters *glib.Variant)
 
 /*
 ConnectGSignal connects the callback to the 'g-signal' signal for the DBusProxy.
@@ -3640,7 +3646,7 @@ func (recv *DBusProxy) DisconnectGSignal(connectionID int) {
 }
 
 //export dbusproxy_gSignalHandler
-func dbusproxy_gSignalHandler(_ *C.GObject, c_sender_name *C.gchar, c_signal_name *C.gchar, c_parameters *C.GVariant, data C.gpointer) {
+func dbusproxy_gSignalHandler(c_targetObject *C.GObject, c_sender_name *C.gchar, c_signal_name *C.gchar, c_parameters *C.GVariant, data C.gpointer) {
 	signalDBusProxyGSignalLock.RLock()
 	defer signalDBusProxyGSignalLock.RUnlock()
 
@@ -3650,9 +3656,11 @@ func dbusproxy_gSignalHandler(_ *C.GObject, c_sender_name *C.gchar, c_signal_nam
 
 	parameters := glib.VariantNewFromC(unsafe.Pointer(c_parameters))
 
+	targetObject := DBusProxyNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDBusProxyGSignalMap[index].callback
-	callback(senderName, signalName, parameters)
+	callback(targetObject, senderName, signalName, parameters)
 }
 
 // DBusProxyNewFinish is a wrapper around the C function g_dbus_proxy_new_finish.
@@ -4062,7 +4070,7 @@ var signalDBusServerNewConnectionMap = make(map[int]signalDBusServerNewConnectio
 var signalDBusServerNewConnectionLock sync.RWMutex
 
 // DBusServerSignalNewConnectionCallback is a callback function for a 'new-connection' signal emitted from a DBusServer.
-type DBusServerSignalNewConnectionCallback func(connection *DBusConnection) bool
+type DBusServerSignalNewConnectionCallback func(targetObject *DBusServer, connection *DBusConnection) bool
 
 /*
 ConnectNewConnection connects the callback to the 'new-connection' signal for the DBusServer.
@@ -4103,15 +4111,17 @@ func (recv *DBusServer) DisconnectNewConnection(connectionID int) {
 }
 
 //export dbusserver_newConnectionHandler
-func dbusserver_newConnectionHandler(_ *C.GObject, c_connection *C.GDBusConnection, data C.gpointer) C.gboolean {
+func dbusserver_newConnectionHandler(c_targetObject *C.GObject, c_connection *C.GDBusConnection, data C.gpointer) C.gboolean {
 	signalDBusServerNewConnectionLock.RLock()
 	defer signalDBusServerNewConnectionLock.RUnlock()
 
 	connection := DBusConnectionNewFromC(unsafe.Pointer(c_connection))
 
+	targetObject := DBusServerNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDBusServerNewConnectionMap[index].callback
-	retGo := callback(connection)
+	retGo := callback(targetObject, connection)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -6489,7 +6499,7 @@ var signalFileMonitorChangedMap = make(map[int]signalFileMonitorChangedDetail)
 var signalFileMonitorChangedLock sync.RWMutex
 
 // FileMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a FileMonitor.
-type FileMonitorSignalChangedCallback func(file *File, otherFile *File, eventType FileMonitorEvent)
+type FileMonitorSignalChangedCallback func(targetObject *FileMonitor, file *File, otherFile *File, eventType FileMonitorEvent)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the FileMonitor.
@@ -6530,7 +6540,7 @@ func (recv *FileMonitor) DisconnectChanged(connectionID int) {
 }
 
 //export filemonitor_changedHandler
-func filemonitor_changedHandler(_ *C.GObject, c_file *C.GFile, c_other_file *C.GFile, c_event_type C.GFileMonitorEvent, data C.gpointer) {
+func filemonitor_changedHandler(c_targetObject *C.GObject, c_file *C.GFile, c_other_file *C.GFile, c_event_type C.GFileMonitorEvent, data C.gpointer) {
 	signalFileMonitorChangedLock.RLock()
 	defer signalFileMonitorChangedLock.RUnlock()
 
@@ -6540,9 +6550,11 @@ func filemonitor_changedHandler(_ *C.GObject, c_file *C.GFile, c_other_file *C.G
 
 	eventType := FileMonitorEvent(c_event_type)
 
+	targetObject := FileMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFileMonitorChangedMap[index].callback
-	callback(file, otherFile, eventType)
+	callback(targetObject, file, otherFile, eventType)
 }
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
@@ -6756,7 +6768,7 @@ var signalFilenameCompleterGotCompletionDataMap = make(map[int]signalFilenameCom
 var signalFilenameCompleterGotCompletionDataLock sync.RWMutex
 
 // FilenameCompleterSignalGotCompletionDataCallback is a callback function for a 'got-completion-data' signal emitted from a FilenameCompleter.
-type FilenameCompleterSignalGotCompletionDataCallback func()
+type FilenameCompleterSignalGotCompletionDataCallback func(targetObject *FilenameCompleter)
 
 /*
 ConnectGotCompletionData connects the callback to the 'got-completion-data' signal for the FilenameCompleter.
@@ -6797,13 +6809,15 @@ func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
 }
 
 //export filenamecompleter_gotCompletionDataHandler
-func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
+func filenamecompleter_gotCompletionDataHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFilenameCompleterGotCompletionDataLock.RLock()
 	defer signalFilenameCompleterGotCompletionDataLock.RUnlock()
 
+	targetObject := FilenameCompleterNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFilenameCompleterGotCompletionDataMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
@@ -8116,7 +8130,7 @@ var signalMountOperationAbortedMap = make(map[int]signalMountOperationAbortedDet
 var signalMountOperationAbortedLock sync.RWMutex
 
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
-type MountOperationSignalAbortedCallback func()
+type MountOperationSignalAbortedCallback func(targetObject *MountOperation)
 
 /*
 ConnectAborted connects the callback to the 'aborted' signal for the MountOperation.
@@ -8157,13 +8171,15 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 }
 
 //export mountoperation_abortedHandler
-func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
+func mountoperation_abortedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalMountOperationAbortedLock.RLock()
 	defer signalMountOperationAbortedLock.RUnlock()
 
+	targetObject := MountOperationNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalMountOperationAbortedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalMountOperationAskPasswordDetail struct {
@@ -8176,7 +8192,7 @@ var signalMountOperationAskPasswordMap = make(map[int]signalMountOperationAskPas
 var signalMountOperationAskPasswordLock sync.RWMutex
 
 // MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
-type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
+type MountOperationSignalAskPasswordCallback func(targetObject *MountOperation, message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
 
 /*
 ConnectAskPassword connects the callback to the 'ask-password' signal for the MountOperation.
@@ -8217,7 +8233,7 @@ func (recv *MountOperation) DisconnectAskPassword(connectionID int) {
 }
 
 //export mountoperation_askPasswordHandler
-func mountoperation_askPasswordHandler(_ *C.GObject, c_message *C.gchar, c_default_user *C.gchar, c_default_domain *C.gchar, c_flags C.GAskPasswordFlags, data C.gpointer) {
+func mountoperation_askPasswordHandler(c_targetObject *C.GObject, c_message *C.gchar, c_default_user *C.gchar, c_default_domain *C.gchar, c_flags C.GAskPasswordFlags, data C.gpointer) {
 	signalMountOperationAskPasswordLock.RLock()
 	defer signalMountOperationAskPasswordLock.RUnlock()
 
@@ -8229,9 +8245,11 @@ func mountoperation_askPasswordHandler(_ *C.GObject, c_message *C.gchar, c_defau
 
 	flags := AskPasswordFlags(c_flags)
 
+	targetObject := MountOperationNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalMountOperationAskPasswordMap[index].callback
-	callback(message, defaultUser, defaultDomain, flags)
+	callback(targetObject, message, defaultUser, defaultDomain, flags)
 }
 
 // Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices :
@@ -8246,7 +8264,7 @@ var signalMountOperationReplyMap = make(map[int]signalMountOperationReplyDetail)
 var signalMountOperationReplyLock sync.RWMutex
 
 // MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
-type MountOperationSignalReplyCallback func(result MountOperationResult)
+type MountOperationSignalReplyCallback func(targetObject *MountOperation, result MountOperationResult)
 
 /*
 ConnectReply connects the callback to the 'reply' signal for the MountOperation.
@@ -8287,15 +8305,17 @@ func (recv *MountOperation) DisconnectReply(connectionID int) {
 }
 
 //export mountoperation_replyHandler
-func mountoperation_replyHandler(_ *C.GObject, c_result C.GMountOperationResult, data C.gpointer) {
+func mountoperation_replyHandler(c_targetObject *C.GObject, c_result C.GMountOperationResult, data C.gpointer) {
 	signalMountOperationReplyLock.RLock()
 	defer signalMountOperationReplyLock.RUnlock()
 
 	result := MountOperationResult(c_result)
 
+	targetObject := MountOperationNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalMountOperationReplyMap[index].callback
-	callback(result)
+	callback(targetObject, result)
 }
 
 // Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes :
@@ -9525,7 +9545,7 @@ var signalResolverReloadMap = make(map[int]signalResolverReloadDetail)
 var signalResolverReloadLock sync.RWMutex
 
 // ResolverSignalReloadCallback is a callback function for a 'reload' signal emitted from a Resolver.
-type ResolverSignalReloadCallback func()
+type ResolverSignalReloadCallback func(targetObject *Resolver)
 
 /*
 ConnectReload connects the callback to the 'reload' signal for the Resolver.
@@ -9566,13 +9586,15 @@ func (recv *Resolver) DisconnectReload(connectionID int) {
 }
 
 //export resolver_reloadHandler
-func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
+func resolver_reloadHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalResolverReloadLock.RLock()
 	defer signalResolverReloadLock.RUnlock()
 
+	targetObject := ResolverNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalResolverReloadMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // ResolverFreeAddresses is a wrapper around the C function g_resolver_free_addresses.
@@ -9829,7 +9851,7 @@ var signalSettingsChangedMap = make(map[int]signalSettingsChangedDetail)
 var signalSettingsChangedLock sync.RWMutex
 
 // SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
-type SettingsSignalChangedCallback func(key string)
+type SettingsSignalChangedCallback func(targetObject *Settings, key string)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the Settings.
@@ -9870,15 +9892,17 @@ func (recv *Settings) DisconnectChanged(connectionID int) {
 }
 
 //export settings_changedHandler
-func settings_changedHandler(_ *C.GObject, c_key *C.gchar, data C.gpointer) {
+func settings_changedHandler(c_targetObject *C.GObject, c_key *C.gchar, data C.gpointer) {
 	signalSettingsChangedLock.RLock()
 	defer signalSettingsChangedLock.RUnlock()
 
 	key := C.GoString(c_key)
 
+	targetObject := SettingsNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalSettingsChangedMap[index].callback
-	callback(key)
+	callback(targetObject, key)
 }
 
 type signalSettingsWritableChangeEventDetail struct {
@@ -9891,7 +9915,7 @@ var signalSettingsWritableChangeEventMap = make(map[int]signalSettingsWritableCh
 var signalSettingsWritableChangeEventLock sync.RWMutex
 
 // SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
-type SettingsSignalWritableChangeEventCallback func(key uint32) bool
+type SettingsSignalWritableChangeEventCallback func(targetObject *Settings, key uint32) bool
 
 /*
 ConnectWritableChangeEvent connects the callback to the 'writable-change-event' signal for the Settings.
@@ -9932,15 +9956,17 @@ func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
 }
 
 //export settings_writableChangeEventHandler
-func settings_writableChangeEventHandler(_ *C.GObject, c_key C.guint, data C.gpointer) C.gboolean {
+func settings_writableChangeEventHandler(c_targetObject *C.GObject, c_key C.guint, data C.gpointer) C.gboolean {
 	signalSettingsWritableChangeEventLock.RLock()
 	defer signalSettingsWritableChangeEventLock.RUnlock()
 
 	key := uint32(c_key)
 
+	targetObject := SettingsNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalSettingsWritableChangeEventMap[index].callback
-	retGo := callback(key)
+	retGo := callback(targetObject, key)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -9956,7 +9982,7 @@ var signalSettingsWritableChangedMap = make(map[int]signalSettingsWritableChange
 var signalSettingsWritableChangedLock sync.RWMutex
 
 // SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
-type SettingsSignalWritableChangedCallback func(key string)
+type SettingsSignalWritableChangedCallback func(targetObject *Settings, key string)
 
 /*
 ConnectWritableChanged connects the callback to the 'writable-changed' signal for the Settings.
@@ -9997,15 +10023,17 @@ func (recv *Settings) DisconnectWritableChanged(connectionID int) {
 }
 
 //export settings_writableChangedHandler
-func settings_writableChangedHandler(_ *C.GObject, c_key *C.gchar, data C.gpointer) {
+func settings_writableChangedHandler(c_targetObject *C.GObject, c_key *C.gchar, data C.gpointer) {
 	signalSettingsWritableChangedLock.RLock()
 	defer signalSettingsWritableChangedLock.RUnlock()
 
 	key := C.GoString(c_key)
 
+	targetObject := SettingsNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalSettingsWritableChangedMap[index].callback
-	callback(key)
+	callback(targetObject, key)
 }
 
 // SettingsNew is a wrapper around the C function g_settings_new.
@@ -12798,7 +12826,7 @@ var signalSocketServiceIncomingMap = make(map[int]signalSocketServiceIncomingDet
 var signalSocketServiceIncomingLock sync.RWMutex
 
 // SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
-type SocketServiceSignalIncomingCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
+type SocketServiceSignalIncomingCallback func(targetObject *SocketService, connection *SocketConnection, sourceObject *gobject.Object) bool
 
 /*
 ConnectIncoming connects the callback to the 'incoming' signal for the SocketService.
@@ -12839,7 +12867,7 @@ func (recv *SocketService) DisconnectIncoming(connectionID int) {
 }
 
 //export socketservice_incomingHandler
-func socketservice_incomingHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
+func socketservice_incomingHandler(c_targetObject *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
 	signalSocketServiceIncomingLock.RLock()
 	defer signalSocketServiceIncomingLock.RUnlock()
 
@@ -12847,9 +12875,11 @@ func socketservice_incomingHandler(_ *C.GObject, c_connection *C.GSocketConnecti
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
+	targetObject := SocketServiceNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalSocketServiceIncomingMap[index].callback
-	retGo := callback(connection, sourceObject)
+	retGo := callback(targetObject, connection, sourceObject)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -13297,7 +13327,7 @@ var signalThreadedSocketServiceRunMap = make(map[int]signalThreadedSocketService
 var signalThreadedSocketServiceRunLock sync.RWMutex
 
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
-type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
+type ThreadedSocketServiceSignalRunCallback func(targetObject *ThreadedSocketService, connection *SocketConnection, sourceObject *gobject.Object) bool
 
 /*
 ConnectRun connects the callback to the 'run' signal for the ThreadedSocketService.
@@ -13338,7 +13368,7 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 }
 
 //export threadedsocketservice_runHandler
-func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
+func threadedsocketservice_runHandler(c_targetObject *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
 	signalThreadedSocketServiceRunLock.RLock()
 	defer signalThreadedSocketServiceRunLock.RUnlock()
 
@@ -13346,9 +13376,11 @@ func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConne
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
+	targetObject := ThreadedSocketServiceNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalThreadedSocketServiceRunMap[index].callback
-	retGo := callback(connection, sourceObject)
+	retGo := callback(targetObject, connection, sourceObject)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -14033,7 +14065,7 @@ var signalUnixMountMonitorMountpointsChangedMap = make(map[int]signalUnixMountMo
 var signalUnixMountMonitorMountpointsChangedLock sync.RWMutex
 
 // UnixMountMonitorSignalMountpointsChangedCallback is a callback function for a 'mountpoints-changed' signal emitted from a UnixMountMonitor.
-type UnixMountMonitorSignalMountpointsChangedCallback func()
+type UnixMountMonitorSignalMountpointsChangedCallback func(targetObject *UnixMountMonitor)
 
 /*
 ConnectMountpointsChanged connects the callback to the 'mountpoints-changed' signal for the UnixMountMonitor.
@@ -14074,13 +14106,15 @@ func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
 }
 
 //export unixmountmonitor_mountpointsChangedHandler
-func unixmountmonitor_mountpointsChangedHandler(_ *C.GObject, data C.gpointer) {
+func unixmountmonitor_mountpointsChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalUnixMountMonitorMountpointsChangedLock.RLock()
 	defer signalUnixMountMonitorMountpointsChangedLock.RUnlock()
 
+	targetObject := UnixMountMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalUnixMountMonitorMountpointsChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalUnixMountMonitorMountsChangedDetail struct {
@@ -14093,7 +14127,7 @@ var signalUnixMountMonitorMountsChangedMap = make(map[int]signalUnixMountMonitor
 var signalUnixMountMonitorMountsChangedLock sync.RWMutex
 
 // UnixMountMonitorSignalMountsChangedCallback is a callback function for a 'mounts-changed' signal emitted from a UnixMountMonitor.
-type UnixMountMonitorSignalMountsChangedCallback func()
+type UnixMountMonitorSignalMountsChangedCallback func(targetObject *UnixMountMonitor)
 
 /*
 ConnectMountsChanged connects the callback to the 'mounts-changed' signal for the UnixMountMonitor.
@@ -14134,13 +14168,15 @@ func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
 }
 
 //export unixmountmonitor_mountsChangedHandler
-func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
+func unixmountmonitor_mountsChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalUnixMountMonitorMountsChangedLock.RLock()
 	defer signalUnixMountMonitorMountsChangedLock.RUnlock()
 
+	targetObject := UnixMountMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalUnixMountMonitorMountsChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
@@ -14609,7 +14645,7 @@ var signalVolumeMonitorDriveChangedMap = make(map[int]signalVolumeMonitorDriveCh
 var signalVolumeMonitorDriveChangedLock sync.RWMutex
 
 // VolumeMonitorSignalDriveChangedCallback is a callback function for a 'drive-changed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveChangedCallback func(drive *Drive)
+type VolumeMonitorSignalDriveChangedCallback func(targetObject *VolumeMonitor, drive *Drive)
 
 /*
 ConnectDriveChanged connects the callback to the 'drive-changed' signal for the VolumeMonitor.
@@ -14650,15 +14686,17 @@ func (recv *VolumeMonitor) DisconnectDriveChanged(connectionID int) {
 }
 
 //export volumemonitor_driveChangedHandler
-func volumemonitor_driveChangedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+func volumemonitor_driveChangedHandler(c_targetObject *C.GObject, c_drive *C.GDrive, data C.gpointer) {
 	signalVolumeMonitorDriveChangedLock.RLock()
 	defer signalVolumeMonitorDriveChangedLock.RUnlock()
 
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorDriveChangedMap[index].callback
-	callback(drive)
+	callback(targetObject, drive)
 }
 
 type signalVolumeMonitorDriveConnectedDetail struct {
@@ -14671,7 +14709,7 @@ var signalVolumeMonitorDriveConnectedMap = make(map[int]signalVolumeMonitorDrive
 var signalVolumeMonitorDriveConnectedLock sync.RWMutex
 
 // VolumeMonitorSignalDriveConnectedCallback is a callback function for a 'drive-connected' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveConnectedCallback func(drive *Drive)
+type VolumeMonitorSignalDriveConnectedCallback func(targetObject *VolumeMonitor, drive *Drive)
 
 /*
 ConnectDriveConnected connects the callback to the 'drive-connected' signal for the VolumeMonitor.
@@ -14712,15 +14750,17 @@ func (recv *VolumeMonitor) DisconnectDriveConnected(connectionID int) {
 }
 
 //export volumemonitor_driveConnectedHandler
-func volumemonitor_driveConnectedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+func volumemonitor_driveConnectedHandler(c_targetObject *C.GObject, c_drive *C.GDrive, data C.gpointer) {
 	signalVolumeMonitorDriveConnectedLock.RLock()
 	defer signalVolumeMonitorDriveConnectedLock.RUnlock()
 
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorDriveConnectedMap[index].callback
-	callback(drive)
+	callback(targetObject, drive)
 }
 
 type signalVolumeMonitorDriveDisconnectedDetail struct {
@@ -14733,7 +14773,7 @@ var signalVolumeMonitorDriveDisconnectedMap = make(map[int]signalVolumeMonitorDr
 var signalVolumeMonitorDriveDisconnectedLock sync.RWMutex
 
 // VolumeMonitorSignalDriveDisconnectedCallback is a callback function for a 'drive-disconnected' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveDisconnectedCallback func(drive *Drive)
+type VolumeMonitorSignalDriveDisconnectedCallback func(targetObject *VolumeMonitor, drive *Drive)
 
 /*
 ConnectDriveDisconnected connects the callback to the 'drive-disconnected' signal for the VolumeMonitor.
@@ -14774,15 +14814,17 @@ func (recv *VolumeMonitor) DisconnectDriveDisconnected(connectionID int) {
 }
 
 //export volumemonitor_driveDisconnectedHandler
-func volumemonitor_driveDisconnectedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+func volumemonitor_driveDisconnectedHandler(c_targetObject *C.GObject, c_drive *C.GDrive, data C.gpointer) {
 	signalVolumeMonitorDriveDisconnectedLock.RLock()
 	defer signalVolumeMonitorDriveDisconnectedLock.RUnlock()
 
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorDriveDisconnectedMap[index].callback
-	callback(drive)
+	callback(targetObject, drive)
 }
 
 type signalVolumeMonitorDriveEjectButtonDetail struct {
@@ -14795,7 +14837,7 @@ var signalVolumeMonitorDriveEjectButtonMap = make(map[int]signalVolumeMonitorDri
 var signalVolumeMonitorDriveEjectButtonLock sync.RWMutex
 
 // VolumeMonitorSignalDriveEjectButtonCallback is a callback function for a 'drive-eject-button' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveEjectButtonCallback func(drive *Drive)
+type VolumeMonitorSignalDriveEjectButtonCallback func(targetObject *VolumeMonitor, drive *Drive)
 
 /*
 ConnectDriveEjectButton connects the callback to the 'drive-eject-button' signal for the VolumeMonitor.
@@ -14836,15 +14878,17 @@ func (recv *VolumeMonitor) DisconnectDriveEjectButton(connectionID int) {
 }
 
 //export volumemonitor_driveEjectButtonHandler
-func volumemonitor_driveEjectButtonHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+func volumemonitor_driveEjectButtonHandler(c_targetObject *C.GObject, c_drive *C.GDrive, data C.gpointer) {
 	signalVolumeMonitorDriveEjectButtonLock.RLock()
 	defer signalVolumeMonitorDriveEjectButtonLock.RUnlock()
 
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorDriveEjectButtonMap[index].callback
-	callback(drive)
+	callback(targetObject, drive)
 }
 
 type signalVolumeMonitorDriveStopButtonDetail struct {
@@ -14857,7 +14901,7 @@ var signalVolumeMonitorDriveStopButtonMap = make(map[int]signalVolumeMonitorDriv
 var signalVolumeMonitorDriveStopButtonLock sync.RWMutex
 
 // VolumeMonitorSignalDriveStopButtonCallback is a callback function for a 'drive-stop-button' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveStopButtonCallback func(drive *Drive)
+type VolumeMonitorSignalDriveStopButtonCallback func(targetObject *VolumeMonitor, drive *Drive)
 
 /*
 ConnectDriveStopButton connects the callback to the 'drive-stop-button' signal for the VolumeMonitor.
@@ -14898,15 +14942,17 @@ func (recv *VolumeMonitor) DisconnectDriveStopButton(connectionID int) {
 }
 
 //export volumemonitor_driveStopButtonHandler
-func volumemonitor_driveStopButtonHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+func volumemonitor_driveStopButtonHandler(c_targetObject *C.GObject, c_drive *C.GDrive, data C.gpointer) {
 	signalVolumeMonitorDriveStopButtonLock.RLock()
 	defer signalVolumeMonitorDriveStopButtonLock.RUnlock()
 
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorDriveStopButtonMap[index].callback
-	callback(drive)
+	callback(targetObject, drive)
 }
 
 type signalVolumeMonitorMountAddedDetail struct {
@@ -14919,7 +14965,7 @@ var signalVolumeMonitorMountAddedMap = make(map[int]signalVolumeMonitorMountAdde
 var signalVolumeMonitorMountAddedLock sync.RWMutex
 
 // VolumeMonitorSignalMountAddedCallback is a callback function for a 'mount-added' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountAddedCallback func(mount *Mount)
+type VolumeMonitorSignalMountAddedCallback func(targetObject *VolumeMonitor, mount *Mount)
 
 /*
 ConnectMountAdded connects the callback to the 'mount-added' signal for the VolumeMonitor.
@@ -14960,15 +15006,17 @@ func (recv *VolumeMonitor) DisconnectMountAdded(connectionID int) {
 }
 
 //export volumemonitor_mountAddedHandler
-func volumemonitor_mountAddedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+func volumemonitor_mountAddedHandler(c_targetObject *C.GObject, c_mount *C.GMount, data C.gpointer) {
 	signalVolumeMonitorMountAddedLock.RLock()
 	defer signalVolumeMonitorMountAddedLock.RUnlock()
 
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorMountAddedMap[index].callback
-	callback(mount)
+	callback(targetObject, mount)
 }
 
 type signalVolumeMonitorMountChangedDetail struct {
@@ -14981,7 +15029,7 @@ var signalVolumeMonitorMountChangedMap = make(map[int]signalVolumeMonitorMountCh
 var signalVolumeMonitorMountChangedLock sync.RWMutex
 
 // VolumeMonitorSignalMountChangedCallback is a callback function for a 'mount-changed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountChangedCallback func(mount *Mount)
+type VolumeMonitorSignalMountChangedCallback func(targetObject *VolumeMonitor, mount *Mount)
 
 /*
 ConnectMountChanged connects the callback to the 'mount-changed' signal for the VolumeMonitor.
@@ -15022,15 +15070,17 @@ func (recv *VolumeMonitor) DisconnectMountChanged(connectionID int) {
 }
 
 //export volumemonitor_mountChangedHandler
-func volumemonitor_mountChangedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+func volumemonitor_mountChangedHandler(c_targetObject *C.GObject, c_mount *C.GMount, data C.gpointer) {
 	signalVolumeMonitorMountChangedLock.RLock()
 	defer signalVolumeMonitorMountChangedLock.RUnlock()
 
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorMountChangedMap[index].callback
-	callback(mount)
+	callback(targetObject, mount)
 }
 
 type signalVolumeMonitorMountPreUnmountDetail struct {
@@ -15043,7 +15093,7 @@ var signalVolumeMonitorMountPreUnmountMap = make(map[int]signalVolumeMonitorMoun
 var signalVolumeMonitorMountPreUnmountLock sync.RWMutex
 
 // VolumeMonitorSignalMountPreUnmountCallback is a callback function for a 'mount-pre-unmount' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountPreUnmountCallback func(mount *Mount)
+type VolumeMonitorSignalMountPreUnmountCallback func(targetObject *VolumeMonitor, mount *Mount)
 
 /*
 ConnectMountPreUnmount connects the callback to the 'mount-pre-unmount' signal for the VolumeMonitor.
@@ -15084,15 +15134,17 @@ func (recv *VolumeMonitor) DisconnectMountPreUnmount(connectionID int) {
 }
 
 //export volumemonitor_mountPreUnmountHandler
-func volumemonitor_mountPreUnmountHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+func volumemonitor_mountPreUnmountHandler(c_targetObject *C.GObject, c_mount *C.GMount, data C.gpointer) {
 	signalVolumeMonitorMountPreUnmountLock.RLock()
 	defer signalVolumeMonitorMountPreUnmountLock.RUnlock()
 
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorMountPreUnmountMap[index].callback
-	callback(mount)
+	callback(targetObject, mount)
 }
 
 type signalVolumeMonitorMountRemovedDetail struct {
@@ -15105,7 +15157,7 @@ var signalVolumeMonitorMountRemovedMap = make(map[int]signalVolumeMonitorMountRe
 var signalVolumeMonitorMountRemovedLock sync.RWMutex
 
 // VolumeMonitorSignalMountRemovedCallback is a callback function for a 'mount-removed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountRemovedCallback func(mount *Mount)
+type VolumeMonitorSignalMountRemovedCallback func(targetObject *VolumeMonitor, mount *Mount)
 
 /*
 ConnectMountRemoved connects the callback to the 'mount-removed' signal for the VolumeMonitor.
@@ -15146,15 +15198,17 @@ func (recv *VolumeMonitor) DisconnectMountRemoved(connectionID int) {
 }
 
 //export volumemonitor_mountRemovedHandler
-func volumemonitor_mountRemovedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+func volumemonitor_mountRemovedHandler(c_targetObject *C.GObject, c_mount *C.GMount, data C.gpointer) {
 	signalVolumeMonitorMountRemovedLock.RLock()
 	defer signalVolumeMonitorMountRemovedLock.RUnlock()
 
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorMountRemovedMap[index].callback
-	callback(mount)
+	callback(targetObject, mount)
 }
 
 type signalVolumeMonitorVolumeAddedDetail struct {
@@ -15167,7 +15221,7 @@ var signalVolumeMonitorVolumeAddedMap = make(map[int]signalVolumeMonitorVolumeAd
 var signalVolumeMonitorVolumeAddedLock sync.RWMutex
 
 // VolumeMonitorSignalVolumeAddedCallback is a callback function for a 'volume-added' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalVolumeAddedCallback func(volume *Volume)
+type VolumeMonitorSignalVolumeAddedCallback func(targetObject *VolumeMonitor, volume *Volume)
 
 /*
 ConnectVolumeAdded connects the callback to the 'volume-added' signal for the VolumeMonitor.
@@ -15208,15 +15262,17 @@ func (recv *VolumeMonitor) DisconnectVolumeAdded(connectionID int) {
 }
 
 //export volumemonitor_volumeAddedHandler
-func volumemonitor_volumeAddedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+func volumemonitor_volumeAddedHandler(c_targetObject *C.GObject, c_volume *C.GVolume, data C.gpointer) {
 	signalVolumeMonitorVolumeAddedLock.RLock()
 	defer signalVolumeMonitorVolumeAddedLock.RUnlock()
 
 	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorVolumeAddedMap[index].callback
-	callback(volume)
+	callback(targetObject, volume)
 }
 
 type signalVolumeMonitorVolumeChangedDetail struct {
@@ -15229,7 +15285,7 @@ var signalVolumeMonitorVolumeChangedMap = make(map[int]signalVolumeMonitorVolume
 var signalVolumeMonitorVolumeChangedLock sync.RWMutex
 
 // VolumeMonitorSignalVolumeChangedCallback is a callback function for a 'volume-changed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalVolumeChangedCallback func(volume *Volume)
+type VolumeMonitorSignalVolumeChangedCallback func(targetObject *VolumeMonitor, volume *Volume)
 
 /*
 ConnectVolumeChanged connects the callback to the 'volume-changed' signal for the VolumeMonitor.
@@ -15270,15 +15326,17 @@ func (recv *VolumeMonitor) DisconnectVolumeChanged(connectionID int) {
 }
 
 //export volumemonitor_volumeChangedHandler
-func volumemonitor_volumeChangedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+func volumemonitor_volumeChangedHandler(c_targetObject *C.GObject, c_volume *C.GVolume, data C.gpointer) {
 	signalVolumeMonitorVolumeChangedLock.RLock()
 	defer signalVolumeMonitorVolumeChangedLock.RUnlock()
 
 	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorVolumeChangedMap[index].callback
-	callback(volume)
+	callback(targetObject, volume)
 }
 
 type signalVolumeMonitorVolumeRemovedDetail struct {
@@ -15291,7 +15349,7 @@ var signalVolumeMonitorVolumeRemovedMap = make(map[int]signalVolumeMonitorVolume
 var signalVolumeMonitorVolumeRemovedLock sync.RWMutex
 
 // VolumeMonitorSignalVolumeRemovedCallback is a callback function for a 'volume-removed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalVolumeRemovedCallback func(volume *Volume)
+type VolumeMonitorSignalVolumeRemovedCallback func(targetObject *VolumeMonitor, volume *Volume)
 
 /*
 ConnectVolumeRemoved connects the callback to the 'volume-removed' signal for the VolumeMonitor.
@@ -15332,15 +15390,17 @@ func (recv *VolumeMonitor) DisconnectVolumeRemoved(connectionID int) {
 }
 
 //export volumemonitor_volumeRemovedHandler
-func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+func volumemonitor_volumeRemovedHandler(c_targetObject *C.GObject, c_volume *C.GVolume, data C.gpointer) {
 	signalVolumeMonitorVolumeRemovedLock.RLock()
 	defer signalVolumeMonitorVolumeRemovedLock.RUnlock()
 
 	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
 
+	targetObject := VolumeMonitorNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorVolumeRemovedMap[index].callback
-	callback(volume)
+	callback(targetObject, volume)
 }
 
 // VolumeMonitorAdoptOrphanMount is a wrapper around the C function g_volume_monitor_adopt_orphan_mount.
@@ -17743,7 +17803,7 @@ var signalDriveChangedMap = make(map[int]signalDriveChangedDetail)
 var signalDriveChangedLock sync.RWMutex
 
 // DriveSignalChangedCallback is a callback function for a 'changed' signal emitted from a Drive.
-type DriveSignalChangedCallback func()
+type DriveSignalChangedCallback func(targetObject *Drive)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the Drive.
@@ -17784,13 +17844,15 @@ func (recv *Drive) DisconnectChanged(connectionID int) {
 }
 
 //export drive_changedHandler
-func drive_changedHandler(_ *C.GObject, data C.gpointer) {
+func drive_changedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDriveChangedLock.RLock()
 	defer signalDriveChangedLock.RUnlock()
 
+	targetObject := DriveNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDriveChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalDriveDisconnectedDetail struct {
@@ -17803,7 +17865,7 @@ var signalDriveDisconnectedMap = make(map[int]signalDriveDisconnectedDetail)
 var signalDriveDisconnectedLock sync.RWMutex
 
 // DriveSignalDisconnectedCallback is a callback function for a 'disconnected' signal emitted from a Drive.
-type DriveSignalDisconnectedCallback func()
+type DriveSignalDisconnectedCallback func(targetObject *Drive)
 
 /*
 ConnectDisconnected connects the callback to the 'disconnected' signal for the Drive.
@@ -17844,13 +17906,15 @@ func (recv *Drive) DisconnectDisconnected(connectionID int) {
 }
 
 //export drive_disconnectedHandler
-func drive_disconnectedHandler(_ *C.GObject, data C.gpointer) {
+func drive_disconnectedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDriveDisconnectedLock.RLock()
 	defer signalDriveDisconnectedLock.RUnlock()
 
+	targetObject := DriveNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDriveDisconnectedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalDriveEjectButtonDetail struct {
@@ -17863,7 +17927,7 @@ var signalDriveEjectButtonMap = make(map[int]signalDriveEjectButtonDetail)
 var signalDriveEjectButtonLock sync.RWMutex
 
 // DriveSignalEjectButtonCallback is a callback function for a 'eject-button' signal emitted from a Drive.
-type DriveSignalEjectButtonCallback func()
+type DriveSignalEjectButtonCallback func(targetObject *Drive)
 
 /*
 ConnectEjectButton connects the callback to the 'eject-button' signal for the Drive.
@@ -17904,13 +17968,15 @@ func (recv *Drive) DisconnectEjectButton(connectionID int) {
 }
 
 //export drive_ejectButtonHandler
-func drive_ejectButtonHandler(_ *C.GObject, data C.gpointer) {
+func drive_ejectButtonHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDriveEjectButtonLock.RLock()
 	defer signalDriveEjectButtonLock.RUnlock()
 
+	targetObject := DriveNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDriveEjectButtonMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalDriveStopButtonDetail struct {
@@ -17923,7 +17989,7 @@ var signalDriveStopButtonMap = make(map[int]signalDriveStopButtonDetail)
 var signalDriveStopButtonLock sync.RWMutex
 
 // DriveSignalStopButtonCallback is a callback function for a 'stop-button' signal emitted from a Drive.
-type DriveSignalStopButtonCallback func()
+type DriveSignalStopButtonCallback func(targetObject *Drive)
 
 /*
 ConnectStopButton connects the callback to the 'stop-button' signal for the Drive.
@@ -17964,13 +18030,15 @@ func (recv *Drive) DisconnectStopButton(connectionID int) {
 }
 
 //export drive_stopButtonHandler
-func drive_stopButtonHandler(_ *C.GObject, data C.gpointer) {
+func drive_stopButtonHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDriveStopButtonLock.RLock()
 	defer signalDriveStopButtonLock.RUnlock()
 
+	targetObject := DriveNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDriveStopButtonMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // CanEject is a wrapper around the C function g_drive_can_eject.
@@ -20248,7 +20316,7 @@ var signalMountChangedMap = make(map[int]signalMountChangedDetail)
 var signalMountChangedLock sync.RWMutex
 
 // MountSignalChangedCallback is a callback function for a 'changed' signal emitted from a Mount.
-type MountSignalChangedCallback func()
+type MountSignalChangedCallback func(targetObject *Mount)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the Mount.
@@ -20289,13 +20357,15 @@ func (recv *Mount) DisconnectChanged(connectionID int) {
 }
 
 //export mount_changedHandler
-func mount_changedHandler(_ *C.GObject, data C.gpointer) {
+func mount_changedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalMountChangedLock.RLock()
 	defer signalMountChangedLock.RUnlock()
 
+	targetObject := MountNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalMountChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalMountPreUnmountDetail struct {
@@ -20308,7 +20378,7 @@ var signalMountPreUnmountMap = make(map[int]signalMountPreUnmountDetail)
 var signalMountPreUnmountLock sync.RWMutex
 
 // MountSignalPreUnmountCallback is a callback function for a 'pre-unmount' signal emitted from a Mount.
-type MountSignalPreUnmountCallback func()
+type MountSignalPreUnmountCallback func(targetObject *Mount)
 
 /*
 ConnectPreUnmount connects the callback to the 'pre-unmount' signal for the Mount.
@@ -20349,13 +20419,15 @@ func (recv *Mount) DisconnectPreUnmount(connectionID int) {
 }
 
 //export mount_preUnmountHandler
-func mount_preUnmountHandler(_ *C.GObject, data C.gpointer) {
+func mount_preUnmountHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalMountPreUnmountLock.RLock()
 	defer signalMountPreUnmountLock.RUnlock()
 
+	targetObject := MountNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalMountPreUnmountMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalMountUnmountedDetail struct {
@@ -20368,7 +20440,7 @@ var signalMountUnmountedMap = make(map[int]signalMountUnmountedDetail)
 var signalMountUnmountedLock sync.RWMutex
 
 // MountSignalUnmountedCallback is a callback function for a 'unmounted' signal emitted from a Mount.
-type MountSignalUnmountedCallback func()
+type MountSignalUnmountedCallback func(targetObject *Mount)
 
 /*
 ConnectUnmounted connects the callback to the 'unmounted' signal for the Mount.
@@ -20409,13 +20481,15 @@ func (recv *Mount) DisconnectUnmounted(connectionID int) {
 }
 
 //export mount_unmountedHandler
-func mount_unmountedHandler(_ *C.GObject, data C.gpointer) {
+func mount_unmountedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalMountUnmountedLock.RLock()
 	defer signalMountUnmountedLock.RUnlock()
 
+	targetObject := MountNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalMountUnmountedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // CanEject is a wrapper around the C function g_mount_can_eject.
@@ -21088,7 +21162,7 @@ var signalVolumeChangedMap = make(map[int]signalVolumeChangedDetail)
 var signalVolumeChangedLock sync.RWMutex
 
 // VolumeSignalChangedCallback is a callback function for a 'changed' signal emitted from a Volume.
-type VolumeSignalChangedCallback func()
+type VolumeSignalChangedCallback func(targetObject *Volume)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the Volume.
@@ -21129,13 +21203,15 @@ func (recv *Volume) DisconnectChanged(connectionID int) {
 }
 
 //export volume_changedHandler
-func volume_changedHandler(_ *C.GObject, data C.gpointer) {
+func volume_changedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalVolumeChangedLock.RLock()
 	defer signalVolumeChangedLock.RUnlock()
 
+	targetObject := VolumeNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalVolumeRemovedDetail struct {
@@ -21148,7 +21224,7 @@ var signalVolumeRemovedMap = make(map[int]signalVolumeRemovedDetail)
 var signalVolumeRemovedLock sync.RWMutex
 
 // VolumeSignalRemovedCallback is a callback function for a 'removed' signal emitted from a Volume.
-type VolumeSignalRemovedCallback func()
+type VolumeSignalRemovedCallback func(targetObject *Volume)
 
 /*
 ConnectRemoved connects the callback to the 'removed' signal for the Volume.
@@ -21189,13 +21265,15 @@ func (recv *Volume) DisconnectRemoved(connectionID int) {
 }
 
 //export volume_removedHandler
-func volume_removedHandler(_ *C.GObject, data C.gpointer) {
+func volume_removedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalVolumeRemovedLock.RLock()
 	defer signalVolumeRemovedLock.RUnlock()
 
+	targetObject := VolumeNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalVolumeRemovedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // CanEject is a wrapper around the C function g_volume_can_eject.

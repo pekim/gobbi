@@ -318,7 +318,7 @@ var signalBufferHighlightUpdatedMap = make(map[int]signalBufferHighlightUpdatedD
 var signalBufferHighlightUpdatedLock sync.RWMutex
 
 // BufferSignalHighlightUpdatedCallback is a callback function for a 'highlight-updated' signal emitted from a Buffer.
-type BufferSignalHighlightUpdatedCallback func(start *gtk.TextIter, end *gtk.TextIter)
+type BufferSignalHighlightUpdatedCallback func(targetObject *Buffer, start *gtk.TextIter, end *gtk.TextIter)
 
 /*
 ConnectHighlightUpdated connects the callback to the 'highlight-updated' signal for the Buffer.
@@ -359,7 +359,7 @@ func (recv *Buffer) DisconnectHighlightUpdated(connectionID int) {
 }
 
 //export buffer_highlightUpdatedHandler
-func buffer_highlightUpdatedHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+func buffer_highlightUpdatedHandler(c_targetObject *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
 	signalBufferHighlightUpdatedLock.RLock()
 	defer signalBufferHighlightUpdatedLock.RUnlock()
 
@@ -367,9 +367,11 @@ func buffer_highlightUpdatedHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end 
 
 	end := gtk.TextIterNewFromC(unsafe.Pointer(c_end))
 
+	targetObject := BufferNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalBufferHighlightUpdatedMap[index].callback
-	callback(start, end)
+	callback(targetObject, start, end)
 }
 
 type signalBufferRedoDetail struct {
@@ -382,7 +384,7 @@ var signalBufferRedoMap = make(map[int]signalBufferRedoDetail)
 var signalBufferRedoLock sync.RWMutex
 
 // BufferSignalRedoCallback is a callback function for a 'redo' signal emitted from a Buffer.
-type BufferSignalRedoCallback func()
+type BufferSignalRedoCallback func(targetObject *Buffer)
 
 /*
 ConnectRedo connects the callback to the 'redo' signal for the Buffer.
@@ -423,13 +425,15 @@ func (recv *Buffer) DisconnectRedo(connectionID int) {
 }
 
 //export buffer_redoHandler
-func buffer_redoHandler(_ *C.GObject, data C.gpointer) {
+func buffer_redoHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalBufferRedoLock.RLock()
 	defer signalBufferRedoLock.RUnlock()
 
+	targetObject := BufferNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalBufferRedoMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalBufferSourceMarkUpdatedDetail struct {
@@ -442,7 +446,7 @@ var signalBufferSourceMarkUpdatedMap = make(map[int]signalBufferSourceMarkUpdate
 var signalBufferSourceMarkUpdatedLock sync.RWMutex
 
 // BufferSignalSourceMarkUpdatedCallback is a callback function for a 'source-mark-updated' signal emitted from a Buffer.
-type BufferSignalSourceMarkUpdatedCallback func(mark *gtk.TextMark)
+type BufferSignalSourceMarkUpdatedCallback func(targetObject *Buffer, mark *gtk.TextMark)
 
 /*
 ConnectSourceMarkUpdated connects the callback to the 'source-mark-updated' signal for the Buffer.
@@ -483,15 +487,17 @@ func (recv *Buffer) DisconnectSourceMarkUpdated(connectionID int) {
 }
 
 //export buffer_sourceMarkUpdatedHandler
-func buffer_sourceMarkUpdatedHandler(_ *C.GObject, c_mark *C.GtkTextMark, data C.gpointer) {
+func buffer_sourceMarkUpdatedHandler(c_targetObject *C.GObject, c_mark *C.GtkTextMark, data C.gpointer) {
 	signalBufferSourceMarkUpdatedLock.RLock()
 	defer signalBufferSourceMarkUpdatedLock.RUnlock()
 
 	mark := gtk.TextMarkNewFromC(unsafe.Pointer(c_mark))
 
+	targetObject := BufferNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalBufferSourceMarkUpdatedMap[index].callback
-	callback(mark)
+	callback(targetObject, mark)
 }
 
 type signalBufferUndoDetail struct {
@@ -504,7 +510,7 @@ var signalBufferUndoMap = make(map[int]signalBufferUndoDetail)
 var signalBufferUndoLock sync.RWMutex
 
 // BufferSignalUndoCallback is a callback function for a 'undo' signal emitted from a Buffer.
-type BufferSignalUndoCallback func()
+type BufferSignalUndoCallback func(targetObject *Buffer)
 
 /*
 ConnectUndo connects the callback to the 'undo' signal for the Buffer.
@@ -545,13 +551,15 @@ func (recv *Buffer) DisconnectUndo(connectionID int) {
 }
 
 //export buffer_undoHandler
-func buffer_undoHandler(_ *C.GObject, data C.gpointer) {
+func buffer_undoHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalBufferUndoLock.RLock()
 	defer signalBufferUndoLock.RUnlock()
 
+	targetObject := BufferNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalBufferUndoMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // BufferNew is a wrapper around the C function gtk_source_buffer_new.
@@ -833,7 +841,7 @@ var signalCompletionActivateProposalMap = make(map[int]signalCompletionActivateP
 var signalCompletionActivateProposalLock sync.RWMutex
 
 // CompletionSignalActivateProposalCallback is a callback function for a 'activate-proposal' signal emitted from a Completion.
-type CompletionSignalActivateProposalCallback func()
+type CompletionSignalActivateProposalCallback func(targetObject *Completion)
 
 /*
 ConnectActivateProposal connects the callback to the 'activate-proposal' signal for the Completion.
@@ -874,13 +882,15 @@ func (recv *Completion) DisconnectActivateProposal(connectionID int) {
 }
 
 //export completion_activateProposalHandler
-func completion_activateProposalHandler(_ *C.GObject, data C.gpointer) {
+func completion_activateProposalHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCompletionActivateProposalLock.RLock()
 	defer signalCompletionActivateProposalLock.RUnlock()
 
+	targetObject := CompletionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionActivateProposalMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalCompletionHideDetail struct {
@@ -893,7 +903,7 @@ var signalCompletionHideMap = make(map[int]signalCompletionHideDetail)
 var signalCompletionHideLock sync.RWMutex
 
 // CompletionSignalHideCallback is a callback function for a 'hide' signal emitted from a Completion.
-type CompletionSignalHideCallback func()
+type CompletionSignalHideCallback func(targetObject *Completion)
 
 /*
 ConnectHide connects the callback to the 'hide' signal for the Completion.
@@ -934,13 +944,15 @@ func (recv *Completion) DisconnectHide(connectionID int) {
 }
 
 //export completion_hideHandler
-func completion_hideHandler(_ *C.GObject, data C.gpointer) {
+func completion_hideHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCompletionHideLock.RLock()
 	defer signalCompletionHideLock.RUnlock()
 
+	targetObject := CompletionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionHideMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalCompletionMoveCursorDetail struct {
@@ -953,7 +965,7 @@ var signalCompletionMoveCursorMap = make(map[int]signalCompletionMoveCursorDetai
 var signalCompletionMoveCursorLock sync.RWMutex
 
 // CompletionSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Completion.
-type CompletionSignalMoveCursorCallback func(step gtk.ScrollStep, num int32)
+type CompletionSignalMoveCursorCallback func(targetObject *Completion, step gtk.ScrollStep, num int32)
 
 /*
 ConnectMoveCursor connects the callback to the 'move-cursor' signal for the Completion.
@@ -994,7 +1006,7 @@ func (recv *Completion) DisconnectMoveCursor(connectionID int) {
 }
 
 //export completion_moveCursorHandler
-func completion_moveCursorHandler(_ *C.GObject, c_step C.GtkScrollStep, c_num C.gint, data C.gpointer) {
+func completion_moveCursorHandler(c_targetObject *C.GObject, c_step C.GtkScrollStep, c_num C.gint, data C.gpointer) {
 	signalCompletionMoveCursorLock.RLock()
 	defer signalCompletionMoveCursorLock.RUnlock()
 
@@ -1002,9 +1014,11 @@ func completion_moveCursorHandler(_ *C.GObject, c_step C.GtkScrollStep, c_num C.
 
 	num := int32(c_num)
 
+	targetObject := CompletionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionMoveCursorMap[index].callback
-	callback(step, num)
+	callback(targetObject, step, num)
 }
 
 type signalCompletionMovePageDetail struct {
@@ -1017,7 +1031,7 @@ var signalCompletionMovePageMap = make(map[int]signalCompletionMovePageDetail)
 var signalCompletionMovePageLock sync.RWMutex
 
 // CompletionSignalMovePageCallback is a callback function for a 'move-page' signal emitted from a Completion.
-type CompletionSignalMovePageCallback func(step gtk.ScrollStep, num int32)
+type CompletionSignalMovePageCallback func(targetObject *Completion, step gtk.ScrollStep, num int32)
 
 /*
 ConnectMovePage connects the callback to the 'move-page' signal for the Completion.
@@ -1058,7 +1072,7 @@ func (recv *Completion) DisconnectMovePage(connectionID int) {
 }
 
 //export completion_movePageHandler
-func completion_movePageHandler(_ *C.GObject, c_step C.GtkScrollStep, c_num C.gint, data C.gpointer) {
+func completion_movePageHandler(c_targetObject *C.GObject, c_step C.GtkScrollStep, c_num C.gint, data C.gpointer) {
 	signalCompletionMovePageLock.RLock()
 	defer signalCompletionMovePageLock.RUnlock()
 
@@ -1066,9 +1080,11 @@ func completion_movePageHandler(_ *C.GObject, c_step C.GtkScrollStep, c_num C.gi
 
 	num := int32(c_num)
 
+	targetObject := CompletionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionMovePageMap[index].callback
-	callback(step, num)
+	callback(targetObject, step, num)
 }
 
 type signalCompletionPopulateContextDetail struct {
@@ -1081,7 +1097,7 @@ var signalCompletionPopulateContextMap = make(map[int]signalCompletionPopulateCo
 var signalCompletionPopulateContextLock sync.RWMutex
 
 // CompletionSignalPopulateContextCallback is a callback function for a 'populate-context' signal emitted from a Completion.
-type CompletionSignalPopulateContextCallback func(context *CompletionContext)
+type CompletionSignalPopulateContextCallback func(targetObject *Completion, context *CompletionContext)
 
 /*
 ConnectPopulateContext connects the callback to the 'populate-context' signal for the Completion.
@@ -1122,15 +1138,17 @@ func (recv *Completion) DisconnectPopulateContext(connectionID int) {
 }
 
 //export completion_populateContextHandler
-func completion_populateContextHandler(_ *C.GObject, c_context *C.GtkSourceCompletionContext, data C.gpointer) {
+func completion_populateContextHandler(c_targetObject *C.GObject, c_context *C.GtkSourceCompletionContext, data C.gpointer) {
 	signalCompletionPopulateContextLock.RLock()
 	defer signalCompletionPopulateContextLock.RUnlock()
 
 	context := CompletionContextNewFromC(unsafe.Pointer(c_context))
 
+	targetObject := CompletionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionPopulateContextMap[index].callback
-	callback(context)
+	callback(targetObject, context)
 }
 
 type signalCompletionShowDetail struct {
@@ -1143,7 +1161,7 @@ var signalCompletionShowMap = make(map[int]signalCompletionShowDetail)
 var signalCompletionShowLock sync.RWMutex
 
 // CompletionSignalShowCallback is a callback function for a 'show' signal emitted from a Completion.
-type CompletionSignalShowCallback func()
+type CompletionSignalShowCallback func(targetObject *Completion)
 
 /*
 ConnectShow connects the callback to the 'show' signal for the Completion.
@@ -1184,13 +1202,15 @@ func (recv *Completion) DisconnectShow(connectionID int) {
 }
 
 //export completion_showHandler
-func completion_showHandler(_ *C.GObject, data C.gpointer) {
+func completion_showHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCompletionShowLock.RLock()
 	defer signalCompletionShowLock.RUnlock()
 
+	targetObject := CompletionNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionShowMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // AddProvider is a wrapper around the C function gtk_source_completion_add_provider.
@@ -1395,7 +1415,7 @@ var signalCompletionContextCancelledMap = make(map[int]signalCompletionContextCa
 var signalCompletionContextCancelledLock sync.RWMutex
 
 // CompletionContextSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a CompletionContext.
-type CompletionContextSignalCancelledCallback func()
+type CompletionContextSignalCancelledCallback func(targetObject *CompletionContext)
 
 /*
 ConnectCancelled connects the callback to the 'cancelled' signal for the CompletionContext.
@@ -1436,13 +1456,15 @@ func (recv *CompletionContext) DisconnectCancelled(connectionID int) {
 }
 
 //export completioncontext_cancelledHandler
-func completioncontext_cancelledHandler(_ *C.GObject, data C.gpointer) {
+func completioncontext_cancelledHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCompletionContextCancelledLock.RLock()
 	defer signalCompletionContextCancelledLock.RUnlock()
 
+	targetObject := CompletionContextNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionContextCancelledMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // AddProposals is a wrapper around the C function gtk_source_completion_context_add_proposals.
@@ -1566,7 +1588,7 @@ var signalCompletionInfoBeforeShowMap = make(map[int]signalCompletionInfoBeforeS
 var signalCompletionInfoBeforeShowLock sync.RWMutex
 
 // CompletionInfoSignalBeforeShowCallback is a callback function for a 'before-show' signal emitted from a CompletionInfo.
-type CompletionInfoSignalBeforeShowCallback func()
+type CompletionInfoSignalBeforeShowCallback func(targetObject *CompletionInfo)
 
 /*
 ConnectBeforeShow connects the callback to the 'before-show' signal for the CompletionInfo.
@@ -1607,13 +1629,15 @@ func (recv *CompletionInfo) DisconnectBeforeShow(connectionID int) {
 }
 
 //export completioninfo_beforeShowHandler
-func completioninfo_beforeShowHandler(_ *C.GObject, data C.gpointer) {
+func completioninfo_beforeShowHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCompletionInfoBeforeShowLock.RLock()
 	defer signalCompletionInfoBeforeShowLock.RUnlock()
 
+	targetObject := CompletionInfoNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionInfoBeforeShowMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // CompletionInfoNew is a wrapper around the C function gtk_source_completion_info_new.
@@ -2198,7 +2222,7 @@ var signalGutterRendererActivateMap = make(map[int]signalGutterRendererActivateD
 var signalGutterRendererActivateLock sync.RWMutex
 
 // GutterRendererSignalActivateCallback is a callback function for a 'activate' signal emitted from a GutterRenderer.
-type GutterRendererSignalActivateCallback func(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event)
+type GutterRendererSignalActivateCallback func(targetObject *GutterRenderer, iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event)
 
 /*
 ConnectActivate connects the callback to the 'activate' signal for the GutterRenderer.
@@ -2239,7 +2263,7 @@ func (recv *GutterRenderer) DisconnectActivate(connectionID int) {
 }
 
 //export gutterrenderer_activateHandler
-func gutterrenderer_activateHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_event *C.GdkEvent_, data C.gpointer) {
+func gutterrenderer_activateHandler(c_targetObject *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_event *C.GdkEvent_, data C.gpointer) {
 	signalGutterRendererActivateLock.RLock()
 	defer signalGutterRendererActivateLock.RUnlock()
 
@@ -2249,9 +2273,11 @@ func gutterrenderer_activateHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_area 
 
 	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
 
+	targetObject := GutterRendererNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalGutterRendererActivateMap[index].callback
-	callback(iter, area, event)
+	callback(targetObject, iter, area, event)
 }
 
 type signalGutterRendererQueryActivatableDetail struct {
@@ -2264,7 +2290,7 @@ var signalGutterRendererQueryActivatableMap = make(map[int]signalGutterRendererQ
 var signalGutterRendererQueryActivatableLock sync.RWMutex
 
 // GutterRendererSignalQueryActivatableCallback is a callback function for a 'query-activatable' signal emitted from a GutterRenderer.
-type GutterRendererSignalQueryActivatableCallback func(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool
+type GutterRendererSignalQueryActivatableCallback func(targetObject *GutterRenderer, iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool
 
 /*
 ConnectQueryActivatable connects the callback to the 'query-activatable' signal for the GutterRenderer.
@@ -2305,7 +2331,7 @@ func (recv *GutterRenderer) DisconnectQueryActivatable(connectionID int) {
 }
 
 //export gutterrenderer_queryActivatableHandler
-func gutterrenderer_queryActivatableHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_event *C.GdkEvent_, data C.gpointer) C.gboolean {
+func gutterrenderer_queryActivatableHandler(c_targetObject *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_event *C.GdkEvent_, data C.gpointer) C.gboolean {
 	signalGutterRendererQueryActivatableLock.RLock()
 	defer signalGutterRendererQueryActivatableLock.RUnlock()
 
@@ -2315,9 +2341,11 @@ func gutterrenderer_queryActivatableHandler(_ *C.GObject, c_iter *C.GtkTextIter,
 
 	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
 
+	targetObject := GutterRendererNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalGutterRendererQueryActivatableMap[index].callback
-	retGo := callback(iter, area, event)
+	retGo := callback(targetObject, iter, area, event)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -2333,7 +2361,7 @@ var signalGutterRendererQueryDataMap = make(map[int]signalGutterRendererQueryDat
 var signalGutterRendererQueryDataLock sync.RWMutex
 
 // GutterRendererSignalQueryDataCallback is a callback function for a 'query-data' signal emitted from a GutterRenderer.
-type GutterRendererSignalQueryDataCallback func(start *gtk.TextIter, end *gtk.TextIter, state GutterRendererState)
+type GutterRendererSignalQueryDataCallback func(targetObject *GutterRenderer, start *gtk.TextIter, end *gtk.TextIter, state GutterRendererState)
 
 /*
 ConnectQueryData connects the callback to the 'query-data' signal for the GutterRenderer.
@@ -2374,7 +2402,7 @@ func (recv *GutterRenderer) DisconnectQueryData(connectionID int) {
 }
 
 //export gutterrenderer_queryDataHandler
-func gutterrenderer_queryDataHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, c_state C.GtkSourceGutterRendererState, data C.gpointer) {
+func gutterrenderer_queryDataHandler(c_targetObject *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, c_state C.GtkSourceGutterRendererState, data C.gpointer) {
 	signalGutterRendererQueryDataLock.RLock()
 	defer signalGutterRendererQueryDataLock.RUnlock()
 
@@ -2384,9 +2412,11 @@ func gutterrenderer_queryDataHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end
 
 	state := GutterRendererState(c_state)
 
+	targetObject := GutterRendererNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalGutterRendererQueryDataMap[index].callback
-	callback(start, end, state)
+	callback(targetObject, start, end, state)
 }
 
 type signalGutterRendererQueryTooltipDetail struct {
@@ -2399,7 +2429,7 @@ var signalGutterRendererQueryTooltipMap = make(map[int]signalGutterRendererQuery
 var signalGutterRendererQueryTooltipLock sync.RWMutex
 
 // GutterRendererSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a GutterRenderer.
-type GutterRendererSignalQueryTooltipCallback func(iter *gtk.TextIter, area *gdk.Rectangle, x int32, y int32, tooltip *gtk.Tooltip) bool
+type GutterRendererSignalQueryTooltipCallback func(targetObject *GutterRenderer, iter *gtk.TextIter, area *gdk.Rectangle, x int32, y int32, tooltip *gtk.Tooltip) bool
 
 /*
 ConnectQueryTooltip connects the callback to the 'query-tooltip' signal for the GutterRenderer.
@@ -2440,7 +2470,7 @@ func (recv *GutterRenderer) DisconnectQueryTooltip(connectionID int) {
 }
 
 //export gutterrenderer_queryTooltipHandler
-func gutterrenderer_queryTooltipHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_x C.gint, c_y C.gint, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+func gutterrenderer_queryTooltipHandler(c_targetObject *C.GObject, c_iter *C.GtkTextIter, c_area *C.GdkRectangle, c_x C.gint, c_y C.gint, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
 	signalGutterRendererQueryTooltipLock.RLock()
 	defer signalGutterRendererQueryTooltipLock.RUnlock()
 
@@ -2454,9 +2484,11 @@ func gutterrenderer_queryTooltipHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_a
 
 	tooltip := gtk.TooltipNewFromC(unsafe.Pointer(c_tooltip))
 
+	targetObject := GutterRendererNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalGutterRendererQueryTooltipMap[index].callback
-	retGo := callback(iter, area, x, y, tooltip)
+	retGo := callback(targetObject, iter, area, x, y, tooltip)
 	retC :=
 		boolToGboolean(retGo)
 	return retC
@@ -2472,7 +2504,7 @@ var signalGutterRendererQueueDrawMap = make(map[int]signalGutterRendererQueueDra
 var signalGutterRendererQueueDrawLock sync.RWMutex
 
 // GutterRendererSignalQueueDrawCallback is a callback function for a 'queue-draw' signal emitted from a GutterRenderer.
-type GutterRendererSignalQueueDrawCallback func()
+type GutterRendererSignalQueueDrawCallback func(targetObject *GutterRenderer)
 
 /*
 ConnectQueueDraw connects the callback to the 'queue-draw' signal for the GutterRenderer.
@@ -2513,13 +2545,15 @@ func (recv *GutterRenderer) DisconnectQueueDraw(connectionID int) {
 }
 
 //export gutterrenderer_queueDrawHandler
-func gutterrenderer_queueDrawHandler(_ *C.GObject, data C.gpointer) {
+func gutterrenderer_queueDrawHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalGutterRendererQueueDrawLock.RLock()
 	defer signalGutterRendererQueueDrawLock.RUnlock()
 
+	targetObject := GutterRendererNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalGutterRendererQueueDrawMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // Activate is a wrapper around the C function gtk_source_gutter_renderer_activate.
@@ -4452,7 +4486,7 @@ var signalViewLineMarkActivatedMap = make(map[int]signalViewLineMarkActivatedDet
 var signalViewLineMarkActivatedLock sync.RWMutex
 
 // ViewSignalLineMarkActivatedCallback is a callback function for a 'line-mark-activated' signal emitted from a View.
-type ViewSignalLineMarkActivatedCallback func(iter *gtk.TextIter, event *gdk.Event)
+type ViewSignalLineMarkActivatedCallback func(targetObject *View, iter *gtk.TextIter, event *gdk.Event)
 
 /*
 ConnectLineMarkActivated connects the callback to the 'line-mark-activated' signal for the View.
@@ -4493,7 +4527,7 @@ func (recv *View) DisconnectLineMarkActivated(connectionID int) {
 }
 
 //export view_lineMarkActivatedHandler
-func view_lineMarkActivatedHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_event *C.GdkEvent_, data C.gpointer) {
+func view_lineMarkActivatedHandler(c_targetObject *C.GObject, c_iter *C.GtkTextIter, c_event *C.GdkEvent_, data C.gpointer) {
 	signalViewLineMarkActivatedLock.RLock()
 	defer signalViewLineMarkActivatedLock.RUnlock()
 
@@ -4501,9 +4535,11 @@ func view_lineMarkActivatedHandler(_ *C.GObject, c_iter *C.GtkTextIter, c_event 
 
 	event := gdk.EventNewFromC(unsafe.Pointer(c_event))
 
+	targetObject := ViewNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalViewLineMarkActivatedMap[index].callback
-	callback(iter, event)
+	callback(targetObject, iter, event)
 }
 
 type signalViewRedoDetail struct {
@@ -4516,7 +4552,7 @@ var signalViewRedoMap = make(map[int]signalViewRedoDetail)
 var signalViewRedoLock sync.RWMutex
 
 // ViewSignalRedoCallback is a callback function for a 'redo' signal emitted from a View.
-type ViewSignalRedoCallback func()
+type ViewSignalRedoCallback func(targetObject *View)
 
 /*
 ConnectRedo connects the callback to the 'redo' signal for the View.
@@ -4557,13 +4593,15 @@ func (recv *View) DisconnectRedo(connectionID int) {
 }
 
 //export view_redoHandler
-func view_redoHandler(_ *C.GObject, data C.gpointer) {
+func view_redoHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalViewRedoLock.RLock()
 	defer signalViewRedoLock.RUnlock()
 
+	targetObject := ViewNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalViewRedoMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalViewShowCompletionDetail struct {
@@ -4576,7 +4614,7 @@ var signalViewShowCompletionMap = make(map[int]signalViewShowCompletionDetail)
 var signalViewShowCompletionLock sync.RWMutex
 
 // ViewSignalShowCompletionCallback is a callback function for a 'show-completion' signal emitted from a View.
-type ViewSignalShowCompletionCallback func()
+type ViewSignalShowCompletionCallback func(targetObject *View)
 
 /*
 ConnectShowCompletion connects the callback to the 'show-completion' signal for the View.
@@ -4617,13 +4655,15 @@ func (recv *View) DisconnectShowCompletion(connectionID int) {
 }
 
 //export view_showCompletionHandler
-func view_showCompletionHandler(_ *C.GObject, data C.gpointer) {
+func view_showCompletionHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalViewShowCompletionLock.RLock()
 	defer signalViewShowCompletionLock.RUnlock()
 
+	targetObject := ViewNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalViewShowCompletionMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalViewUndoDetail struct {
@@ -4636,7 +4676,7 @@ var signalViewUndoMap = make(map[int]signalViewUndoDetail)
 var signalViewUndoLock sync.RWMutex
 
 // ViewSignalUndoCallback is a callback function for a 'undo' signal emitted from a View.
-type ViewSignalUndoCallback func()
+type ViewSignalUndoCallback func(targetObject *View)
 
 /*
 ConnectUndo connects the callback to the 'undo' signal for the View.
@@ -4677,13 +4717,15 @@ func (recv *View) DisconnectUndo(connectionID int) {
 }
 
 //export view_undoHandler
-func view_undoHandler(_ *C.GObject, data C.gpointer) {
+func view_undoHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalViewUndoLock.RLock()
 	defer signalViewUndoLock.RUnlock()
 
+	targetObject := ViewNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalViewUndoMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // ViewNew is a wrapper around the C function gtk_source_view_new.
@@ -5066,7 +5108,7 @@ var signalCompletionProposalChangedMap = make(map[int]signalCompletionProposalCh
 var signalCompletionProposalChangedLock sync.RWMutex
 
 // CompletionProposalSignalChangedCallback is a callback function for a 'changed' signal emitted from a CompletionProposal.
-type CompletionProposalSignalChangedCallback func()
+type CompletionProposalSignalChangedCallback func(targetObject *CompletionProposal)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the CompletionProposal.
@@ -5107,13 +5149,15 @@ func (recv *CompletionProposal) DisconnectChanged(connectionID int) {
 }
 
 //export completionproposal_changedHandler
-func completionproposal_changedHandler(_ *C.GObject, data C.gpointer) {
+func completionproposal_changedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalCompletionProposalChangedLock.RLock()
 	defer signalCompletionProposalChangedLock.RUnlock()
 
+	targetObject := CompletionProposalNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalCompletionProposalChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // Changed is a wrapper around the C function gtk_source_completion_proposal_changed.

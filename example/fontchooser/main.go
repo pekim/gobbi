@@ -24,21 +24,21 @@ func main() {
 	// Use the FontChooser interface implemented by the button.
 	fontChooser := fontChooserButton.FontChooser()
 
-	printFont := func() {
+	printFont := func(_ *gtk.FontButton) {
 		fmt.Println(fontChooserButton.GetFontName())
 		fmt.Println("  ", fontChooser.GetFontDesc().GetFamily())
 
 		fontChooserButton.Widget().ModifyFont(fontChooser.GetFontDesc())
 	}
 
-	printFont()
+	printFont(nil)
 	fontChooserButton.ConnectFontSet(printFont)
 
 	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 10).Container()
 	container.Add(fontChooserButton.Widget())
 	window.Container().Add(container.Widget())
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()

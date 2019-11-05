@@ -50,18 +50,18 @@ func main() {
 	da.Widget().GetStyleContext().AddClass(class)
 
 	// draw widget when required
-	da.Widget().ConnectDraw(func(cr *cairo.Context) bool {
-		return draw(cr, da.Widget())
+	da.Widget().ConnectDraw(func(widget *gtk.Widget, cr *cairo.Context) bool {
+		return draw(cr, widget)
 	})
 
 	// add a class on mouse enter, and remove the class on mouse leave
 	da.Widget().AddEvents(int32(gdk.GDK_ENTER_NOTIFY_MASK | gdk.GDK_LEAVE_NOTIFY_MASK))
-	da.Widget().ConnectEnterNotifyEvent(func(event *gdk.EventCrossing) bool {
-		da.Widget().GetStyleContext().AddClass(hoverClass)
+	da.Widget().ConnectEnterNotifyEvent(func(widget *gtk.Widget, event *gdk.EventCrossing) bool {
+		widget.GetStyleContext().AddClass(hoverClass)
 		return false
 	})
-	da.Widget().ConnectLeaveNotifyEvent(func(event *gdk.EventCrossing) bool {
-		da.Widget().GetStyleContext().RemoveClass(hoverClass)
+	da.Widget().ConnectLeaveNotifyEvent(func(widget *gtk.Widget, event *gdk.EventCrossing) bool {
+		widget.GetStyleContext().RemoveClass(hoverClass)
 		return false
 	})
 
@@ -79,7 +79,7 @@ func main() {
 	window.Container().Add(container.Widget())
 
 	// show the window until it's destroyed
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 	gtk.Main()
 }

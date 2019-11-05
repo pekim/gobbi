@@ -33,16 +33,9 @@ then it might terminate when the window is closed.
 
 ```go
 // Connect to the window's "destroy" signal.
-window.Widget().ConnectDestroy(func() {
+window.Widget().ConnectDestroy(func(_ *gtk.Widget) {
     gtk.MainQuit()
 })
-``` 
-
-As the callback's signature matches that of `gtk.MainQuit`,
-this may be written more succinctly like this.
-
-```go
-window.Widget().ConnectDestroy(gtk.MainQuit)
 ``` 
 
 ## main loop

@@ -200,7 +200,7 @@ var signalObjectNotifyMap = make(map[int]signalObjectNotifyDetail)
 var signalObjectNotifyLock sync.RWMutex
 
 // ObjectSignalNotifyCallback is a callback function for a 'notify' signal emitted from a Object.
-type ObjectSignalNotifyCallback func(pspec *ParamSpec)
+type ObjectSignalNotifyCallback func(targetObject *Object, pspec *ParamSpec)
 
 /*
 ConnectNotify connects the callback to the 'notify' signal for the Object.
@@ -241,15 +241,17 @@ func (recv *Object) DisconnectNotify(connectionID int) {
 }
 
 //export object_notifyHandler
-func object_notifyHandler(_ *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) {
+func object_notifyHandler(c_targetObject *C.GObject, c_pspec *C.GParamSpec, data C.gpointer) {
 	signalObjectNotifyLock.RLock()
 	defer signalObjectNotifyLock.RUnlock()
 
 	pspec := ParamSpecNewFromC(unsafe.Pointer(c_pspec))
 
+	targetObject := ObjectNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalObjectNotifyMap[index].callback
-	callback(pspec)
+	callback(targetObject, pspec)
 }
 
 // Unsupported : g_object_new : unsupported parameter ... : varargs

@@ -38,7 +38,9 @@ func main() {
 	window.SetTitle("A window title")
 	window.SetDefaultSize(300, 300)
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) {
+		gtk.MainQuit()
+	})
 	window.Widget().ShowAll()
 
 	gtk.Main()

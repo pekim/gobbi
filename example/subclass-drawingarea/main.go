@@ -26,7 +26,7 @@ func main() {
 	hbox.PackStart(da2.DrawingArea().Widget(), true, true, 0)
 
 	window.Container().Add(hbox.Widget())
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()

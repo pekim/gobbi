@@ -104,15 +104,9 @@ be passed to <code>gtk.Init</code>.</p>
 then it might terminate when the window is closed.</p>
 
 <pre><code class="language-go">// Connect to the window's &quot;destroy&quot; signal.
-window.Widget().ConnectDestroy(func() {
+window.Widget().ConnectDestroy(func(_ *gtk.Widget) {
     gtk.MainQuit()
 })
-</code></pre>
-
-<p>As the callback&rsquo;s signature matches that of <code>gtk.MainQuit</code>,
-this may be written more succinctly like this.</p>
-
-<pre><code class="language-go">window.Widget().ConnectDestroy(gtk.MainQuit)
 </code></pre>
 
 <h2>main loop</h2>

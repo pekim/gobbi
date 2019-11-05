@@ -705,7 +705,7 @@ var signalDeviceChangedMap = make(map[int]signalDeviceChangedDetail)
 var signalDeviceChangedLock sync.RWMutex
 
 // DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
-type DeviceSignalChangedCallback func()
+type DeviceSignalChangedCallback func(targetObject *Device)
 
 /*
 ConnectChanged connects the callback to the 'changed' signal for the Device.
@@ -746,13 +746,15 @@ func (recv *Device) DisconnectChanged(connectionID int) {
 }
 
 //export device_changedHandler
-func device_changedHandler(_ *C.GObject, data C.gpointer) {
+func device_changedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDeviceChangedLock.RLock()
 	defer signalDeviceChangedLock.RUnlock()
 
+	targetObject := DeviceNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDeviceChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // gdk_device_free_history : unsupported parameter events :
@@ -936,7 +938,7 @@ var signalDeviceManagerDeviceAddedMap = make(map[int]signalDeviceManagerDeviceAd
 var signalDeviceManagerDeviceAddedLock sync.RWMutex
 
 // DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
-type DeviceManagerSignalDeviceAddedCallback func(device *Device)
+type DeviceManagerSignalDeviceAddedCallback func(targetObject *DeviceManager, device *Device)
 
 /*
 ConnectDeviceAdded connects the callback to the 'device-added' signal for the DeviceManager.
@@ -977,15 +979,17 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 }
 
 //export devicemanager_deviceAddedHandler
-func devicemanager_deviceAddedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+func devicemanager_deviceAddedHandler(c_targetObject *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	signalDeviceManagerDeviceAddedLock.RLock()
 	defer signalDeviceManagerDeviceAddedLock.RUnlock()
 
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
+	targetObject := DeviceManagerNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDeviceManagerDeviceAddedMap[index].callback
-	callback(device)
+	callback(targetObject, device)
 }
 
 type signalDeviceManagerDeviceChangedDetail struct {
@@ -998,7 +1002,7 @@ var signalDeviceManagerDeviceChangedMap = make(map[int]signalDeviceManagerDevice
 var signalDeviceManagerDeviceChangedLock sync.RWMutex
 
 // DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
-type DeviceManagerSignalDeviceChangedCallback func(device *Device)
+type DeviceManagerSignalDeviceChangedCallback func(targetObject *DeviceManager, device *Device)
 
 /*
 ConnectDeviceChanged connects the callback to the 'device-changed' signal for the DeviceManager.
@@ -1039,15 +1043,17 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 }
 
 //export devicemanager_deviceChangedHandler
-func devicemanager_deviceChangedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+func devicemanager_deviceChangedHandler(c_targetObject *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	signalDeviceManagerDeviceChangedLock.RLock()
 	defer signalDeviceManagerDeviceChangedLock.RUnlock()
 
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
+	targetObject := DeviceManagerNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDeviceManagerDeviceChangedMap[index].callback
-	callback(device)
+	callback(targetObject, device)
 }
 
 type signalDeviceManagerDeviceRemovedDetail struct {
@@ -1060,7 +1066,7 @@ var signalDeviceManagerDeviceRemovedMap = make(map[int]signalDeviceManagerDevice
 var signalDeviceManagerDeviceRemovedLock sync.RWMutex
 
 // DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
-type DeviceManagerSignalDeviceRemovedCallback func(device *Device)
+type DeviceManagerSignalDeviceRemovedCallback func(targetObject *DeviceManager, device *Device)
 
 /*
 ConnectDeviceRemoved connects the callback to the 'device-removed' signal for the DeviceManager.
@@ -1101,15 +1107,17 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 }
 
 //export devicemanager_deviceRemovedHandler
-func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+func devicemanager_deviceRemovedHandler(c_targetObject *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	signalDeviceManagerDeviceRemovedLock.RLock()
 	defer signalDeviceManagerDeviceRemovedLock.RUnlock()
 
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
+	targetObject := DeviceManagerNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDeviceManagerDeviceRemovedMap[index].callback
-	callback(device)
+	callback(targetObject, device)
 }
 
 // Display is a wrapper around the C record GdkDisplay.
@@ -1169,7 +1177,7 @@ var signalDisplayClosedMap = make(map[int]signalDisplayClosedDetail)
 var signalDisplayClosedLock sync.RWMutex
 
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
-type DisplaySignalClosedCallback func(isError bool)
+type DisplaySignalClosedCallback func(targetObject *Display, isError bool)
 
 /*
 ConnectClosed connects the callback to the 'closed' signal for the Display.
@@ -1210,15 +1218,17 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 }
 
 //export display_closedHandler
-func display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer) {
+func display_closedHandler(c_targetObject *C.GObject, c_is_error C.gboolean, data C.gpointer) {
 	signalDisplayClosedLock.RLock()
 	defer signalDisplayClosedLock.RUnlock()
 
 	isError := c_is_error == C.TRUE
 
+	targetObject := DisplayNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDisplayClosedMap[index].callback
-	callback(isError)
+	callback(targetObject, isError)
 }
 
 type signalDisplayOpenedDetail struct {
@@ -1231,7 +1241,7 @@ var signalDisplayOpenedMap = make(map[int]signalDisplayOpenedDetail)
 var signalDisplayOpenedLock sync.RWMutex
 
 // DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
-type DisplaySignalOpenedCallback func()
+type DisplaySignalOpenedCallback func(targetObject *Display)
 
 /*
 ConnectOpened connects the callback to the 'opened' signal for the Display.
@@ -1272,13 +1282,15 @@ func (recv *Display) DisconnectOpened(connectionID int) {
 }
 
 //export display_openedHandler
-func display_openedHandler(_ *C.GObject, data C.gpointer) {
+func display_openedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalDisplayOpenedLock.RLock()
 	defer signalDisplayOpenedLock.RUnlock()
 
+	targetObject := DisplayNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDisplayOpenedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // DisplayGetDefault is a wrapper around the C function gdk_display_get_default.
@@ -1707,7 +1719,7 @@ var signalDisplayManagerDisplayOpenedMap = make(map[int]signalDisplayManagerDisp
 var signalDisplayManagerDisplayOpenedLock sync.RWMutex
 
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
-type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
+type DisplayManagerSignalDisplayOpenedCallback func(targetObject *DisplayManager, display *Display)
 
 /*
 ConnectDisplayOpened connects the callback to the 'display-opened' signal for the DisplayManager.
@@ -1748,15 +1760,17 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 }
 
 //export displaymanager_displayOpenedHandler
-func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
+func displaymanager_displayOpenedHandler(c_targetObject *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
 	signalDisplayManagerDisplayOpenedLock.RLock()
 	defer signalDisplayManagerDisplayOpenedLock.RUnlock()
 
 	display := DisplayNewFromC(unsafe.Pointer(c_display))
 
+	targetObject := DisplayManagerNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalDisplayManagerDisplayOpenedMap[index].callback
-	callback(display)
+	callback(targetObject, display)
 }
 
 // DisplayManagerGet is a wrapper around the C function gdk_display_manager_get.
@@ -1924,7 +1938,7 @@ var signalFrameClockAfterPaintMap = make(map[int]signalFrameClockAfterPaintDetai
 var signalFrameClockAfterPaintLock sync.RWMutex
 
 // FrameClockSignalAfterPaintCallback is a callback function for a 'after-paint' signal emitted from a FrameClock.
-type FrameClockSignalAfterPaintCallback func()
+type FrameClockSignalAfterPaintCallback func(targetObject *FrameClock)
 
 /*
 ConnectAfterPaint connects the callback to the 'after-paint' signal for the FrameClock.
@@ -1965,13 +1979,15 @@ func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
 }
 
 //export frameclock_afterPaintHandler
-func frameclock_afterPaintHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_afterPaintHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockAfterPaintLock.RLock()
 	defer signalFrameClockAfterPaintLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockAfterPaintMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalFrameClockBeforePaintDetail struct {
@@ -1984,7 +2000,7 @@ var signalFrameClockBeforePaintMap = make(map[int]signalFrameClockBeforePaintDet
 var signalFrameClockBeforePaintLock sync.RWMutex
 
 // FrameClockSignalBeforePaintCallback is a callback function for a 'before-paint' signal emitted from a FrameClock.
-type FrameClockSignalBeforePaintCallback func()
+type FrameClockSignalBeforePaintCallback func(targetObject *FrameClock)
 
 /*
 ConnectBeforePaint connects the callback to the 'before-paint' signal for the FrameClock.
@@ -2025,13 +2041,15 @@ func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
 }
 
 //export frameclock_beforePaintHandler
-func frameclock_beforePaintHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_beforePaintHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockBeforePaintLock.RLock()
 	defer signalFrameClockBeforePaintLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockBeforePaintMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalFrameClockFlushEventsDetail struct {
@@ -2044,7 +2062,7 @@ var signalFrameClockFlushEventsMap = make(map[int]signalFrameClockFlushEventsDet
 var signalFrameClockFlushEventsLock sync.RWMutex
 
 // FrameClockSignalFlushEventsCallback is a callback function for a 'flush-events' signal emitted from a FrameClock.
-type FrameClockSignalFlushEventsCallback func()
+type FrameClockSignalFlushEventsCallback func(targetObject *FrameClock)
 
 /*
 ConnectFlushEvents connects the callback to the 'flush-events' signal for the FrameClock.
@@ -2085,13 +2103,15 @@ func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
 }
 
 //export frameclock_flushEventsHandler
-func frameclock_flushEventsHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_flushEventsHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockFlushEventsLock.RLock()
 	defer signalFrameClockFlushEventsLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockFlushEventsMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalFrameClockLayoutDetail struct {
@@ -2104,7 +2124,7 @@ var signalFrameClockLayoutMap = make(map[int]signalFrameClockLayoutDetail)
 var signalFrameClockLayoutLock sync.RWMutex
 
 // FrameClockSignalLayoutCallback is a callback function for a 'layout' signal emitted from a FrameClock.
-type FrameClockSignalLayoutCallback func()
+type FrameClockSignalLayoutCallback func(targetObject *FrameClock)
 
 /*
 ConnectLayout connects the callback to the 'layout' signal for the FrameClock.
@@ -2145,13 +2165,15 @@ func (recv *FrameClock) DisconnectLayout(connectionID int) {
 }
 
 //export frameclock_layoutHandler
-func frameclock_layoutHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_layoutHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockLayoutLock.RLock()
 	defer signalFrameClockLayoutLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockLayoutMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalFrameClockPaintDetail struct {
@@ -2164,7 +2186,7 @@ var signalFrameClockPaintMap = make(map[int]signalFrameClockPaintDetail)
 var signalFrameClockPaintLock sync.RWMutex
 
 // FrameClockSignalPaintCallback is a callback function for a 'paint' signal emitted from a FrameClock.
-type FrameClockSignalPaintCallback func()
+type FrameClockSignalPaintCallback func(targetObject *FrameClock)
 
 /*
 ConnectPaint connects the callback to the 'paint' signal for the FrameClock.
@@ -2205,13 +2227,15 @@ func (recv *FrameClock) DisconnectPaint(connectionID int) {
 }
 
 //export frameclock_paintHandler
-func frameclock_paintHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_paintHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockPaintLock.RLock()
 	defer signalFrameClockPaintLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockPaintMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalFrameClockResumeEventsDetail struct {
@@ -2224,7 +2248,7 @@ var signalFrameClockResumeEventsMap = make(map[int]signalFrameClockResumeEventsD
 var signalFrameClockResumeEventsLock sync.RWMutex
 
 // FrameClockSignalResumeEventsCallback is a callback function for a 'resume-events' signal emitted from a FrameClock.
-type FrameClockSignalResumeEventsCallback func()
+type FrameClockSignalResumeEventsCallback func(targetObject *FrameClock)
 
 /*
 ConnectResumeEvents connects the callback to the 'resume-events' signal for the FrameClock.
@@ -2265,13 +2289,15 @@ func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
 }
 
 //export frameclock_resumeEventsHandler
-func frameclock_resumeEventsHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_resumeEventsHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockResumeEventsLock.RLock()
 	defer signalFrameClockResumeEventsLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockResumeEventsMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalFrameClockUpdateDetail struct {
@@ -2284,7 +2310,7 @@ var signalFrameClockUpdateMap = make(map[int]signalFrameClockUpdateDetail)
 var signalFrameClockUpdateLock sync.RWMutex
 
 // FrameClockSignalUpdateCallback is a callback function for a 'update' signal emitted from a FrameClock.
-type FrameClockSignalUpdateCallback func()
+type FrameClockSignalUpdateCallback func(targetObject *FrameClock)
 
 /*
 ConnectUpdate connects the callback to the 'update' signal for the FrameClock.
@@ -2325,13 +2351,15 @@ func (recv *FrameClock) DisconnectUpdate(connectionID int) {
 }
 
 //export frameclock_updateHandler
-func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
+func frameclock_updateHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalFrameClockUpdateLock.RLock()
 	defer signalFrameClockUpdateLock.RUnlock()
 
+	targetObject := FrameClockNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalFrameClockUpdateMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // GLContext is a wrapper around the C record GdkGLContext.
@@ -2438,7 +2466,7 @@ var signalKeymapDirectionChangedMap = make(map[int]signalKeymapDirectionChangedD
 var signalKeymapDirectionChangedLock sync.RWMutex
 
 // KeymapSignalDirectionChangedCallback is a callback function for a 'direction-changed' signal emitted from a Keymap.
-type KeymapSignalDirectionChangedCallback func()
+type KeymapSignalDirectionChangedCallback func(targetObject *Keymap)
 
 /*
 ConnectDirectionChanged connects the callback to the 'direction-changed' signal for the Keymap.
@@ -2479,13 +2507,15 @@ func (recv *Keymap) DisconnectDirectionChanged(connectionID int) {
 }
 
 //export keymap_directionChangedHandler
-func keymap_directionChangedHandler(_ *C.GObject, data C.gpointer) {
+func keymap_directionChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalKeymapDirectionChangedLock.RLock()
 	defer signalKeymapDirectionChangedLock.RUnlock()
 
+	targetObject := KeymapNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalKeymapDirectionChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalKeymapKeysChangedDetail struct {
@@ -2498,7 +2528,7 @@ var signalKeymapKeysChangedMap = make(map[int]signalKeymapKeysChangedDetail)
 var signalKeymapKeysChangedLock sync.RWMutex
 
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
-type KeymapSignalKeysChangedCallback func()
+type KeymapSignalKeysChangedCallback func(targetObject *Keymap)
 
 /*
 ConnectKeysChanged connects the callback to the 'keys-changed' signal for the Keymap.
@@ -2539,13 +2569,15 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 }
 
 //export keymap_keysChangedHandler
-func keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
+func keymap_keysChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalKeymapKeysChangedLock.RLock()
 	defer signalKeymapKeysChangedLock.RUnlock()
 
+	targetObject := KeymapNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalKeymapKeysChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalKeymapStateChangedDetail struct {
@@ -2558,7 +2590,7 @@ var signalKeymapStateChangedMap = make(map[int]signalKeymapStateChangedDetail)
 var signalKeymapStateChangedLock sync.RWMutex
 
 // KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
-type KeymapSignalStateChangedCallback func()
+type KeymapSignalStateChangedCallback func(targetObject *Keymap)
 
 /*
 ConnectStateChanged connects the callback to the 'state-changed' signal for the Keymap.
@@ -2599,13 +2631,15 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 }
 
 //export keymap_stateChangedHandler
-func keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
+func keymap_stateChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalKeymapStateChangedLock.RLock()
 	defer signalKeymapStateChangedLock.RUnlock()
 
+	targetObject := KeymapNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalKeymapStateChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // KeymapGetDefault is a wrapper around the C function gdk_keymap_get_default.
@@ -2757,7 +2791,7 @@ var signalScreenCompositedChangedMap = make(map[int]signalScreenCompositedChange
 var signalScreenCompositedChangedLock sync.RWMutex
 
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
-type ScreenSignalCompositedChangedCallback func()
+type ScreenSignalCompositedChangedCallback func(targetObject *Screen)
 
 /*
 ConnectCompositedChanged connects the callback to the 'composited-changed' signal for the Screen.
@@ -2798,13 +2832,15 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 }
 
 //export screen_compositedChangedHandler
-func screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
+func screen_compositedChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalScreenCompositedChangedLock.RLock()
 	defer signalScreenCompositedChangedLock.RUnlock()
 
+	targetObject := ScreenNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalScreenCompositedChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalScreenMonitorsChangedDetail struct {
@@ -2817,7 +2853,7 @@ var signalScreenMonitorsChangedMap = make(map[int]signalScreenMonitorsChangedDet
 var signalScreenMonitorsChangedLock sync.RWMutex
 
 // ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
-type ScreenSignalMonitorsChangedCallback func()
+type ScreenSignalMonitorsChangedCallback func(targetObject *Screen)
 
 /*
 ConnectMonitorsChanged connects the callback to the 'monitors-changed' signal for the Screen.
@@ -2858,13 +2894,15 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 }
 
 //export screen_monitorsChangedHandler
-func screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
+func screen_monitorsChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalScreenMonitorsChangedLock.RLock()
 	defer signalScreenMonitorsChangedLock.RUnlock()
 
+	targetObject := ScreenNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalScreenMonitorsChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 type signalScreenSizeChangedDetail struct {
@@ -2877,7 +2915,7 @@ var signalScreenSizeChangedMap = make(map[int]signalScreenSizeChangedDetail)
 var signalScreenSizeChangedLock sync.RWMutex
 
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
-type ScreenSignalSizeChangedCallback func()
+type ScreenSignalSizeChangedCallback func(targetObject *Screen)
 
 /*
 ConnectSizeChanged connects the callback to the 'size-changed' signal for the Screen.
@@ -2918,13 +2956,15 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 }
 
 //export screen_sizeChangedHandler
-func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
+func screen_sizeChangedHandler(c_targetObject *C.GObject, data C.gpointer) {
 	signalScreenSizeChangedLock.RLock()
 	defer signalScreenSizeChangedLock.RUnlock()
 
+	targetObject := ScreenNewFromC((unsafe.Pointer)(c_targetObject))
+
 	index := int(uintptr(data))
 	callback := signalScreenSizeChangedMap[index].callback
-	callback()
+	callback(targetObject)
 }
 
 // ScreenGetDefault is a wrapper around the C function gdk_screen_get_default.

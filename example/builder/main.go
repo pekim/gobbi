@@ -49,7 +49,7 @@ func main() {
 	vbox := gtk.CastToVBox(builder.GetObject("box1"))
 	window.Container().Add(vbox.Widget())
 
-	window.Widget().ConnectDestroy(gtk.MainQuit)
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
 	window.Widget().ShowAll()
 
 	gtk.Main()
