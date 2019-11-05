@@ -21,6 +21,9 @@ tasks:
   - test: |
       cd gobbi/internal
       xvfb-run ./gobbi test
+  - build-examples: |
+      cd gobbi/internal
+      ./gobbi build-examples
 triggers:
   - action: email
     condition: always

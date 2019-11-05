@@ -9,6 +9,7 @@ usage () {
     echo "Usage:"
     echo "  gobbi -h                       Show this help"
     echo "  gobbi build                    Generate libraries and docs, and run tests"
+    echo "  gobbi build-examples           Build examples, to validate they're buildable"
     echo "  gobbi docs                     Generate documentation"
     echo "  gobbi generate                 Generate libraries"
     echo "  gobbi generate-clean           Generate libraries, first removing all generated files"
@@ -20,9 +21,24 @@ usage () {
 build () {
     generate $@ && \
     echo "" && \
-    # docs && \
-    # echo "" && \
-    test
+    test && \
+    echo "" && \
+    buildExamples && \
+    echo "" && \
+    docs && \
+    echo ""
+}
+
+buildExamples () {
+  srcDir="../example"
+  binDir="example-bin"
+
+  rm -fr $binDir
+  mkdir -p $binDir
+
+  for example in $(find $srcDir -name main.go -printf '%h\n' | sort) ; do
+    go build -o $binDir -tags "$tags"  $example
+  done
 }
 
 generate () {
@@ -74,6 +90,9 @@ processSubcommand () {
   case "$subCommand" in
     build)
       build $@
+      ;;
+    build-examples)
+      buildExamples
       ;;
     docs)
       docs
