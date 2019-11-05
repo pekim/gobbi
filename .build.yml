@@ -16,10 +16,10 @@ tasks:
       sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz
       sudo ln -s /usr/local/go/bin/go /usr/bin/go
   - generate: |
-      cd gobbi
+      cd gobbi/internal
       ./gobbi generate
   - test: |
-      cd gobbi
+      cd gobbi/internal
       xvfb-run ./gobbi test
 triggers:
   - action: email
