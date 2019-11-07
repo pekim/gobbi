@@ -12,7 +12,7 @@ type Gir struct {
 	addendaRepo *Repository
 }
 
-func FromRoot(name, version string, noFormat bool) {
+func FromRoot(name, version string, noFormat bool, addToTotal func(n int), oneDone func()) {
 	girsMap := map[string]*Gir{}
 	gir := girNew(name, version, girsMap)
 
@@ -36,7 +36,7 @@ func FromRoot(name, version string, noFormat bool) {
 
 	gir.repo.Namespace.noFormat = noFormat
 	if gir.repo.Namespace.Name == name && gir.repo.Namespace.Version == version {
-		gir.generate()
+		gir.repo.Generate(addToTotal, oneDone)
 	}
 }
 
@@ -59,10 +59,6 @@ func girNew(name string, version string, girs map[string]*Gir) *Gir {
 	}
 
 	return g
-}
-
-func (g *Gir) generate() {
-	g.repo.Generate()
 }
 
 func (g *Gir) LoadFile(filename string, required bool) *Repository {

@@ -2,7 +2,6 @@ package generate
 
 import (
 	"fmt"
-	tm "github.com/buger/goterm"
 	"github.com/dave/jennifer/jen"
 	"strings"
 )
@@ -84,12 +83,10 @@ func (ns *Namespace) blacklisted() bool {
 	return ns.Blacklist
 }
 
-func (ns *Namespace) generate() {
+func (ns *Namespace) generate(addToTotal func(n int), oneDone func()) {
 	if ns.Blacklist {
 		return
 	}
-
-	fmt.Printf("%-10s %s  ", ns.Name, ns.Version)
 
 	ns.generateLibDir()
 
@@ -115,16 +112,11 @@ func (ns *Namespace) generate() {
 	allVersions = allVersions.dedupe()
 	allVersions.sort()
 
-	previousNofNLength := 0
-	for n, version := range allVersions {
-		tm.MoveCursorBackward(previousNofNLength)
-		previousNofNLength, _ = tm.Printf(" %d/%d", n+1, len(allVersions))
-		tm.Flush()
-
+	addToTotal(len(allVersions))
+	for _, version := range allVersions {
 		ns.generateVersionFiles("v-"+version.value, version, allGeneratablesCollections)
+		oneDone()
 	}
-
-	fmt.Println("")
 }
 
 func (ns *Namespace) aliasForName(name string) (*Alias, bool) {

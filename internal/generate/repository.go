@@ -23,8 +23,8 @@ func (r *Repository) MergeAddenda(addenda *Repository) {
 	r.Namespace.mergeAddenda(addenda.Namespace)
 }
 
-func (r *Repository) Generate() {
-	r.Namespace.generate()
+func (r *Repository) Generate(addToTotal func(n int), oneDone func()) {
+	r.Namespace.generate(addToTotal, oneDone)
 }
 
 type Package struct {
