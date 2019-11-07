@@ -3,7 +3,7 @@ package generate
 import (
 	"fmt"
 
-	"github.com/dave/jennifer/jen"
+	"github.com/pekim/jennifer/jen"
 )
 
 type TypeGeneratorNumber struct {

@@ -1,7 +1,7 @@
 package generate
 
 import (
-	"github.com/dave/jennifer/jen"
+	"github.com/pekim/jennifer/jen"
 )
 
 type Enumeration struct {

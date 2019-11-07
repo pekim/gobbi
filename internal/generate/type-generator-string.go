@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/dave/jennifer/jen"
+	"github.com/pekim/jennifer/jen"
 )
 
 type TypeGeneratorString struct {

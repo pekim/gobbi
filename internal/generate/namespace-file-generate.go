@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/dave/jennifer/jen"
+	"github.com/pekim/jennifer/jen"
 )
 
 func (ns *Namespace) generateLibDir() {

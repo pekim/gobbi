@@ -2,7 +2,7 @@ package generate
 
 import "C"
 import (
-	"github.com/dave/jennifer/jen"
+	"github.com/pekim/jennifer/jen"
 )
 
 type RecordNewFromCFunc struct {

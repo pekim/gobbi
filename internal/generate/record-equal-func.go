@@ -1,6 +1,6 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import "github.com/pekim/jennifer/jen"
 
 type RecordEqualFunc struct {
 	*Record
