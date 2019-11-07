@@ -55,12 +55,18 @@ go run -tags "glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18" gobbi-simple.g
 ## documentation
 https://pekim.github.io/gobbi/
 
+At a minimum it's probably a good idea to read at least the
+[Getting started](https://pekim.github.io/gobbi/getting-started.html)
+and
+[Application lifecycle](https://pekim.github.io/gobbi/application-lifecycle.html)
+pages.
+
 ## code generation
 The code that implements most of the APIs is generated
 from the GObject Introspection (gir) XML files in the
 [internal/gir-files](internal/gir-files) directory.
 The generation code is in the
-[generate](internal/generate) package.
+[internal/generate](internal/generate) package.
 
 All of the generated API code,
 and a very small number of manually maintained files,
@@ -68,9 +74,8 @@ is in the subdirectories of the
 [lib](lib) directory.
  
 ## status
-This library is relatively immature,
-but should be perfectly servicable
-if the required APIs have been generated.
+The library should be perfectly servicable and complete enough
+to build most applications.
 
 Some simple example applications have been created,
 and may be found in the [example](./example) directory.
@@ -86,10 +91,10 @@ The generated code is simple, and fairly readable.
 
 ## gotk3
 [gotk3](https://github.com/gotk3/gotk3)
-is a much more mature library than gobbi.
+is a more mature library than gobbi.
 It might be a safer choice than gobbi for those who
 are cautious.
-For the more adventurous, gobbi should work just as
+However gobbi should work just as
 well in most cases.
 
 gobbi supports a larger number of apis than gotk3.
