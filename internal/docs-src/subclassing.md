@@ -3,7 +3,7 @@ GObject derived classes
 or for implementing interfaces.
 Following exploration and the production of a
 proof of concept for class derivation,
-it became apparent that an awful lots of work
+it became apparent that an awful lot of work
 would have to be put it for a fairly small reward.
 Lots more generation code would have to be written,
 and many tens of thousands of new lines of code
@@ -15,15 +15,15 @@ Deriving classes, implementing interfaces,
 and implementing virtual functions are
 unlikely to be particularly common activities
 in gobbi based applications.
-So for now at least adding support to make this
+So for now at least, adding support to make this
 easy has been put to one side.
 
 ## example
 Instead of providing direct support in gobbi, a
 [subclassing](https://github.com/pekim/gobbi/blob/master/example/subclass-drawingarea)
 example is provided.
-This illustrates how the DrawingAreas widget
-can be subclassed, some virtual functions implemented.
+This illustrates how the DrawingArea widget can be subclassed,
+and some virtual functions implemented.
 
 ## pre-requisites
 For the most part using gobbi does not require
