@@ -22,6 +22,7 @@ func generateLibraries() {
 
 	generate.FromRoot("Atk", "1.0", noFormat)
 	generate.FromRoot("cairo", "1.0", noFormat)
+	generate.FromRoot("freetype2", "2.0", noFormat)
 	generate.FromRoot("Gdk", "3.0", noFormat)
 	generate.FromRoot("GdkPixbuf", "2.0", noFormat)
 	generate.FromRoot("Gio", "2.0", noFormat)
