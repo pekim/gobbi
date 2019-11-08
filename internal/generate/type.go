@@ -38,6 +38,12 @@ func (t *Type) init(ns *Namespace) {
 	t.qname, t.generator = t.qnameAndGenerator(t)
 }
 
+func (t *Type) mergeAddenda(addenda *Type) {
+	if addenda.CType != "" {
+		t.CType = addenda.CType
+	}
+}
+
 // fullGoPackageName returns a package name if the type's qname is
 // for another package. Or empty string if in the same package as
 // the type.

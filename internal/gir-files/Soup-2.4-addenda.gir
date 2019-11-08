@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+    <c:include name="libsoup/soup-password-manager.h"/>
+
+    <namespace>
+        <constant blacklist="true" name="REQUESTER_H"/>
+        <constant blacklist="true" name="COOKIE_MAX_AGE_ONE_YEAR"/>
+
+        <class blacklist="true" name="Requester"/>
+        <class name="Socket">
+            <method blacklist="true"  c:identifier="soup_socket_read_until"/>
+        </class>
+        <class name="Address">
+            <constructor blacklist="true" c:identifier="soup_address_new_from_sockaddr"/>
+        </class>
+
+        <enumeration blacklist="true" name="RequesterError"/>
+
+        <record blacklist="true" name="RequestClass"/>
+        <record blacklist="true" name="RequesterClass"/>
+        <record blacklist="true" name="RequesterPrivate"/>
+
+        <record name="Buffer">
+            <field name="data">
+                <type name="gpointer" c:type="gchar*"/>
+            </field>
+        </record>
+    </namespace>
+</repository>
+
+
+

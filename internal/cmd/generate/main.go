@@ -25,9 +25,12 @@ var libraries = []library{
 	{version: "2.0", name: "GObject"},
 	{version: "3.0", name: "Gtk"},
 	{version: "3.0", name: "GtkSource"},
+	{version: "4.0", name: "JavaScriptCore"},
 	{version: "1.0", name: "Pango"},
 	{version: "1.0", name: "PangoCairo"},
 	{version: "1.0", name: "PangoFT2"},
+	{version: "2.4", name: "Soup"},
+	{version: "4.0", name: "WebKit2"},
 }
 
 func main() {
@@ -44,7 +47,7 @@ func generateLibraries() {
 	start := time.Now()
 
 	for _, lib := range libraries {
-		fmt.Printf("%-12s %s\n", lib.name, lib.version)
+		fmt.Printf("%-16s %s\n", lib.name, lib.version)
 	}
 	fmt.Println()
 

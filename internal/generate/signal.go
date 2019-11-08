@@ -10,7 +10,7 @@ import (
 type Signal struct {
 	Namespace *Namespace
 
-	//Blacklist     bool `xml:"blacklist,attr"`
+	Blacklist bool `xml:"blacklist,attr"`
 
 	Name        string       `xml:"name,attr"`
 	When        string       `xml:"when,attr"`
@@ -43,6 +43,10 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 	}
 
 	s.initNames()
+}
+
+func (s *Signal) mergeAddenda(addenda *Signal) {
+	s.Blacklist = addenda.Blacklist
 }
 
 // fixParameterNames adjusts some parameter names to avoid a conflict
@@ -106,6 +110,12 @@ func (s *Signal) supported() (bool, string) {
 func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) {
 	if supported, reason := s.supported(); !supported {
 		g.Commentf("Unsupported signal '%s' for %s : %s", s.Name, s.record.Name, reason)
+		g.Line()
+		return
+	}
+
+	if s.Blacklist {
+		g.Commentf("Blacklisted signal %s", s.Name)
 		g.Line()
 		return
 	}

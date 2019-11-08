@@ -70,6 +70,7 @@ func (r *Record) mergeAddenda(addenda *Record) {
 	r.Functions.mergeAddenda(addenda.Functions)
 	r.Methods.mergeAddenda(addenda.Methods)
 	r.Fields.mergeAddenda(addenda.Fields)
+	r.Signals.mergeAddenda(addenda.Signals)
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {

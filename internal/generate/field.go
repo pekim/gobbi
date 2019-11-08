@@ -64,4 +64,8 @@ func (f Field) generate(g *jen.Group) {
 
 func (f *Field) mergeAddenda(addenda *Field) {
 	f.Private = addenda.Private
+
+	if addenda.Type != nil {
+		f.Type.mergeAddenda(addenda.Type)
+	}
 }
