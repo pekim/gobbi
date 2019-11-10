@@ -625,6 +625,13 @@ const (
 	UnicodeScript_Nushu                 UnicodeScript = int64(139)
 	UnicodeScript_Soyombo               UnicodeScript = int64(140)
 	UnicodeScript_ZanabazarSquare       UnicodeScript = int64(141)
+	UnicodeScript_Dogra                 UnicodeScript = int64(142)
+	UnicodeScript_GunjalaGondi          UnicodeScript = int64(143)
+	UnicodeScript_HanifiRohingya        UnicodeScript = int64(144)
+	UnicodeScript_Makasar               UnicodeScript = int64(145)
+	UnicodeScript_Medefaidrin           UnicodeScript = int64(146)
+	UnicodeScript_OldSogdian            UnicodeScript = int64(147)
+	UnicodeScript_Sogdian               UnicodeScript = int64(148)
 )
 
 type UnicodeType uint32

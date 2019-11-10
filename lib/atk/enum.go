@@ -7,6 +7,7 @@ type CoordType uint32
 const (
 	CoordType_Screen CoordType = int64(0)
 	CoordType_Window CoordType = int64(1)
+	CoordType_Parent CoordType = int64(2)
 )
 
 type KeyEventType uint32
@@ -184,6 +185,18 @@ const (
 	Role_Superscript          Role = int64(121)
 	Role_Footnote             Role = int64(122)
 	Role_LastDefined          Role = int64(123)
+)
+
+type ScrollType uint32
+
+const (
+	ScrollType_TopLeft     ScrollType = int64(0)
+	ScrollType_BottomRight ScrollType = int64(1)
+	ScrollType_TopEdge     ScrollType = int64(2)
+	ScrollType_BottomEdge  ScrollType = int64(3)
+	ScrollType_LeftEdge    ScrollType = int64(4)
+	ScrollType_RightEdge   ScrollType = int64(5)
+	ScrollType_Anywhere    ScrollType = int64(6)
 )
 
 type StateType uint32

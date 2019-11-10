@@ -41,7 +41,12 @@ buildExamples () {
 }
 
 generate () {
-    go run cmd/generate/*.go $@ 2>&1
+#    go run cmd/generate/*.go $@ 2>&1
+  docker build -t gobbi . && \
+  docker run \
+    --mount 'type=bind,src=/home/mike/projects/go/gobbi-gi,dst=/gobbi' \
+    --mount 'type=bind,src=/home/mike/go,dst=/go' \
+    gobbi
 }
 
 generateClean () {

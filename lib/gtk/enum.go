@@ -116,9 +116,8 @@ const (
 type CellRendererAccelMode uint32
 
 const (
-	CellRendererAccelMode_Gtk         CellRendererAccelMode = int64(0)
-	CellRendererAccelMode_Other       CellRendererAccelMode = int64(1)
-	CellRendererAccelMode_ModifierTap CellRendererAccelMode = int64(2)
+	CellRendererAccelMode_Gtk   CellRendererAccelMode = int64(0)
+	CellRendererAccelMode_Other CellRendererAccelMode = int64(1)
 )
 
 type CellRendererMode uint32

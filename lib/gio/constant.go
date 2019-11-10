@@ -3,6 +3,7 @@
 package gio
 
 const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME = "gio-desktop-app-info-lookup"
+const DRIVE_IDENTIFIER_KIND_UNIX_DEVICE = "unix-device"
 const FILE_ATTRIBUTE_ACCESS_CAN_DELETE = "access::can-delete"
 const FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE = "access::can-execute"
 const FILE_ATTRIBUTE_ACCESS_CAN_READ = "access::can-read"

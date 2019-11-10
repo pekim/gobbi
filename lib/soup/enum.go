@@ -278,6 +278,7 @@ const (
 	TLDError_IsIpAddress      TLDError = int64(1)
 	TLDError_NotEnoughDomains TLDError = int64(2)
 	TLDError_NoBaseDomain     TLDError = int64(3)
+	TLDError_NoPslData        TLDError = int64(4)
 )
 
 type WebsocketCloseCode uint32

@@ -32,6 +32,7 @@ const (
 	AskPasswordFlags_NeedDomain         AskPasswordFlags = int64(4)
 	AskPasswordFlags_SavingSupported    AskPasswordFlags = int64(8)
 	AskPasswordFlags_AnonymousSupported AskPasswordFlags = int64(16)
+	AskPasswordFlags_Tcrypt             AskPasswordFlags = int64(32)
 )
 
 type BusNameOwnerFlags uint32

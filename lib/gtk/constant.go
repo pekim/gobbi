@@ -2,16 +2,16 @@
 
 package gtk
 
-const BINARY_AGE = int32(2230)
+const BINARY_AGE = int32(2405)
 const INPUT_ERROR = int32(-1)
-const INTERFACE_AGE = int32(30)
+const INTERFACE_AGE = int32(1)
 const LEVEL_BAR_OFFSET_FULL = "full"
 const LEVEL_BAR_OFFSET_HIGH = "high"
 const LEVEL_BAR_OFFSET_LOW = "low"
 const MAJOR_VERSION = int32(3)
 const MAX_COMPOSE_LEN = int32(7)
-const MICRO_VERSION = int32(30)
-const MINOR_VERSION = int32(22)
+const MICRO_VERSION = int32(5)
+const MINOR_VERSION = int32(24)
 const PAPER_NAME_A3 = "iso_a3"
 const PAPER_NAME_A4 = "iso_a4"
 const PAPER_NAME_A5 = "iso_a5"
@@ -52,7 +52,7 @@ const PRINT_SETTINGS_SCALE = "scale"
 const PRINT_SETTINGS_USE_COLOR = "use-color"
 const PRINT_SETTINGS_WIN32_DRIVER_EXTRA = "win32-driver-extra"
 const PRINT_SETTINGS_WIN32_DRIVER_VERSION = "win32-driver-version"
-const PRIORITY_RESIZE = int32(10)
+const PRIORITY_RESIZE = int32(110)
 const STOCK_ABOUT = "gtk-about"
 const STOCK_ADD = "gtk-add"
 const STOCK_APPLY = "gtk-apply"
@@ -261,6 +261,6 @@ const STYLE_REGION_COLUMN = "column"
 const STYLE_REGION_COLUMN_HEADER = "column-header"
 const STYLE_REGION_ROW = "row"
 const STYLE_REGION_TAB = "tab"
-const TEXT_VIEW_PRIORITY_VALIDATE = int32(5)
+const TEXT_VIEW_PRIORITY_VALIDATE = int32(125)
 const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = int32(-1)
 const TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID = int32(-2)

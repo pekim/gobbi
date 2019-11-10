@@ -93,6 +93,17 @@ const (
 	DialogFlags_UseHeaderBar      DialogFlags = int64(4)
 )
 
+type EventControllerScrollFlags uint32
+
+const (
+	EventControllerScrollFlags_None       EventControllerScrollFlags = int64(0)
+	EventControllerScrollFlags_Vertical   EventControllerScrollFlags = int64(1)
+	EventControllerScrollFlags_Horizontal EventControllerScrollFlags = int64(2)
+	EventControllerScrollFlags_Discrete   EventControllerScrollFlags = int64(4)
+	EventControllerScrollFlags_Kinetic    EventControllerScrollFlags = int64(8)
+	EventControllerScrollFlags_BothAxes   EventControllerScrollFlags = int64(3)
+)
+
 type FileFilterFlags uint32
 
 const (
@@ -100,6 +111,16 @@ const (
 	FileFilterFlags_Uri         FileFilterFlags = int64(2)
 	FileFilterFlags_DisplayName FileFilterFlags = int64(4)
 	FileFilterFlags_MimeType    FileFilterFlags = int64(8)
+)
+
+type FontChooserLevel uint32
+
+const (
+	FontChooserLevel_Family     FontChooserLevel = int64(0)
+	FontChooserLevel_Style      FontChooserLevel = int64(1)
+	FontChooserLevel_Size       FontChooserLevel = int64(2)
+	FontChooserLevel_Variations FontChooserLevel = int64(4)
+	FontChooserLevel_Features   FontChooserLevel = int64(8)
 )
 
 type IconLookupFlags uint32
