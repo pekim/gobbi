@@ -3,30 +3,37 @@ package generate
 /*
 	#cgo pkg-config: gobject-introspection-1.0
 	#include <gobject-introspection-1.0/girepository.h>
-	#include <stdlib.h>
 */
 import "C"
 
 import (
 	"fmt"
-	"os"
+	"github.com/dave/jennifer/jen"
+	"strings"
 )
 
 type repository struct {
-	name    string
-	version string
-	format  bool
+	name              string
+	version           string
+	goPackageName     string
+	fullGoPackageName string
+	libDir            string
+	file              *jen.File
 
 	cName      *C.char
 	cVersion   *C.char
 	repository *C.GIRepository
 }
 
-func ForRepository(name string, version string, format bool) {
+func ForRepository(name string, version string) {
+	goPackageName := strings.ToLower(name)
+
 	r := &repository{
-		name:    name,
-		version: version,
-		format:  format,
+		name:              name,
+		version:           version,
+		goPackageName:     goPackageName,
+		fullGoPackageName: fmt.Sprintf("github.com/pekim/gobbi/lib/%s", goPackageName),
+		libDir:            projectFilepath("..", "lib", goPackageName),
 
 		cName:      C.CString(name),
 		cVersion:   C.CString(version),
@@ -44,15 +51,24 @@ func (r *repository) require() {
 
 	if err != nil {
 		message := C.GoString(err.message)
-		fmt.Printf("\nFailed to require %s %s, %s\n", r.name, r.version, message)
-		os.Exit(1)
+		panic(message)
 	}
 }
 
 func (r *repository) generate() {
-	r.foreachInfo(C.GI_INFO_TYPE_CONSTANT, r.generateConstant)
+	r.generateLibDir()
+
+	r.generateInfoType(C.GI_INFO_TYPE_CONSTANT, "constant.go", r.generateConstant)
 }
 
+// generateInfoType generates a file for an info type.
+func (r *repository) generateInfoType(infoType C.GIInfoType, filename string, fn func(*C.GIBaseInfo)) {
+	r.generateFile(filename, func(f *jen.File) {
+		r.foreachInfo(infoType, fn)
+	})
+}
+
+// foreachInfo calls a function for each info type of a specific type.
 func (r *repository) foreachInfo(infoType C.GIInfoType, fn func(*C.GIBaseInfo)) {
 	n := C.g_irepository_get_n_infos(r.repository, r.cName)
 	for i := C.int(0); i < n; i++ {
@@ -62,15 +78,4 @@ func (r *repository) foreachInfo(infoType C.GIInfoType, fn func(*C.GIBaseInfo)) 
 			fn(info)
 		}
 	}
-}
-
-func (r *repository) generateConstant(info *C.GIBaseInfo) {
-	cName := C.g_base_info_get_name(info)
-	name := C.GoString(cName)
-
-	constant := (*C.GIConstantInfo)(info)
-	var value C.GIArgument
-	size := C.g_constant_info_get_value(constant, &value)
-
-	fmt.Println(name, size)
 }

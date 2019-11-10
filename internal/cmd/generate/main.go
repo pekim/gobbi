@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/pekim/gobbi/internal/generate"
-	"os"
 	"time"
 )
 
@@ -32,16 +31,11 @@ var libraries = []library{
 }
 
 func main() {
-	noFormat := false
-	if len(os.Args) >= 2 && os.Args[1] == "noformat" {
-		noFormat = true
-	}
-
 	start := time.Now()
 
 	for _, lib := range libraries {
 		fmt.Printf("%-16s %s\n", lib.name, lib.version)
-		generate.ForRepository(lib.name, lib.version, noFormat)
+		generate.ForRepository(lib.name, lib.version)
 	}
 
 	end := time.Now()
