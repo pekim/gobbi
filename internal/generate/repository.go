@@ -58,7 +58,7 @@ func (r *repository) require() {
 func (r *repository) generate() {
 	r.generateLibDir()
 
-	r.generateInfoType(C.GI_INFO_TYPE_CONSTANT, "constant.go", r.generateConstant)
+	r.generateInfoType(C.GI_INFO_TYPE_CONSTANT, "constant", r.generateConstant)
 }
 
 // generateInfoType generates a file for an info type.
