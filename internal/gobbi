@@ -1,0 +1,117 @@
+#!/bin/bash
+set -e
+set -u
+
+exampleDir=example
+
+usage () {
+    echo "Usage:"
+    echo "  gobbi -h                       Show this help"
+    echo "  gobbi build                    Generate libraries and docs, and run tests"
+    echo "  gobbi build-examples           Build examples, to validate they're buildable"
+    echo "  gobbi docs                     Generate documentation"
+    echo "  gobbi generate                 Generate libraries"
+    echo "  gobbi generate-clean           Generate libraries, first removing all generated files"
+    echo "  gobbi test                     Run tests"
+
+    exit
+}
+
+build () {
+    generate $@ && \
+    echo "" && \
+    test && \
+    echo "" && \
+    buildExamples && \
+    echo "" && \
+    docs && \
+    echo ""
+}
+
+buildExamples () {
+  srcDir="../example"
+  binDir="example-bin"
+
+  rm -fr $binDir
+  mkdir -p $binDir
+
+  for example in $(find $srcDir -name main.go -printf '%h\n' | sort) ; do
+    go build -o $binDir $example
+  done
+}
+
+generate () {
+    go run cmd/generate/*.go $@ 2>&1
+}
+
+generateClean () {
+    grep -l -r "Code generated - DO NOT EDIT" lib/ | xargs rm -f && \
+    generate $@
+}
+
+docs () {
+    go run cmd/docs/main.go
+}
+
+test () {
+    flags=""
+    if (( $# > 0 )); then
+        flags=$1
+    fi
+
+    go test flags github.com/pekim/gobbi/internal/test/...
+}
+
+processOptions () {
+  while getopts ":h" opt; do
+    case ${opt} in
+      h )
+        usage
+        ;;
+      \? )
+        echo "Invalid Option: -$OPTARG" 1>&2
+        echo ""
+        usage
+        ;;
+    esac
+  done
+  shift $((OPTIND -1))
+
+  if [ "$#" -lt 1 ]; then
+    usage
+  fi
+}
+
+processSubcommand () {
+  subCommand=$1
+  shift
+
+  case "$subCommand" in
+    build)
+      build $@
+      ;;
+    build-examples)
+      buildExamples
+      ;;
+    docs)
+      docs
+      ;;
+    generate)
+      generate $@
+      ;;
+    generate-clean)
+      generateClean $@
+      ;;
+    test)
+      test $@
+      ;;
+    *)
+      echo "Invalid subcommand: $subCommand" 1>&2
+      echo ""
+      usage
+      ;;
+  esac
+}
+
+processOptions "$@"
+processSubcommand "$@"
