@@ -12,10 +12,11 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 	cName := C.g_base_info_get_name(info)
 	name := C.GoString(cName)
 
-	typ := C.g_constant_info_get_type(info)
+	constant := (*C.GIConstantInfo)(info)
+
+	typ := C.g_constant_info_get_type(constant)
 	typeTag := C.g_type_info_get_tag(typ)
 
-	constant := (*C.GIConstantInfo)(info)
 	var value C.GIArgument
 	ptrValue := unsafe.Pointer(&value)
 	C.g_constant_info_get_value(constant, &value)
