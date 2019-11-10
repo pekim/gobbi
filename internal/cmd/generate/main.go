@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	tm "github.com/buger/goterm"
 	"github.com/pekim/gobbi/internal/generate"
 	"os"
-	"sync"
 	"time"
 )
 
@@ -33,10 +31,6 @@ var libraries = []library{
 	//{version: "4.0", name: "WebKit2"},
 }
 
-var lock sync.Mutex
-var total int
-var done int
-
 func main() {
 	noFormat := false
 	if len(os.Args) >= 2 && os.Args[1] == "noformat" {
@@ -47,33 +41,10 @@ func main() {
 
 	for _, lib := range libraries {
 		fmt.Printf("%-16s %s\n", lib.name, lib.version)
-		total++
+		generate.ForRepository(lib.name, lib.version, noFormat)
 	}
-	fmt.Println()
-
-	var wg sync.WaitGroup
-	for _, lib := range libraries {
-		wg.Add(1)
-
-		go func(l library) {
-			generate.ForRepository(l.name, l.version, noFormat)
-			libraryDone()
-			wg.Done()
-		}(lib)
-	}
-	wg.Wait()
 
 	end := time.Now()
+	fmt.Println()
 	fmt.Printf("\ngeneration %.0fms\n\n", end.Sub(start).Seconds()*1000)
-}
-
-var previousLength int
-func libraryDone() {
-	lock.Lock()
-	defer lock.Unlock()
-
-	done++
-	tm.MoveCursorBackward(previousLength)
-	previousLength, _ = tm.Printf("%d/%d", done, total)
-	tm.Flush()
 }
