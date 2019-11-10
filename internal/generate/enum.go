@@ -50,11 +50,9 @@ func (r *repository) generateEnum(info *C.GIBaseInfo) {
 			n := C.g_enum_info_get_n_values(enumInfo)
 			for i := C.int(0); i < n; i++ {
 				valueInfo := C.g_enum_info_get_value(enumInfo, i)
-
 				cName := C.g_base_info_get_name(valueInfo)
 				valueName := C.GoString(cName)
 				goValueName := typeName + "_" + makeExportedGoName(valueName)
-
 				value := C.g_value_info_get_value(valueInfo)
 
 				g.
