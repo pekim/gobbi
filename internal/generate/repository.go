@@ -60,6 +60,7 @@ func (r *repository) generate() {
 
 	r.generateInfoType(C.GI_INFO_TYPE_CONSTANT, "constant", r.generateConstant)
 	r.generateInfoType(C.GI_INFO_TYPE_ENUM, "enum", r.generateEnum)
+	r.generateInfoType(C.GI_INFO_TYPE_FLAGS, "flags", r.generateEnum)
 }
 
 // generateInfoType generates a file for an info type.
