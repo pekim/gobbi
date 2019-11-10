@@ -27,7 +27,7 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 	case C.GI_TYPE_TAG_VOID:
 		typeTagName = "void"
 	case C.GI_TYPE_TAG_BOOLEAN:
-		typeTagName = "boolean"
+		jenValue = jen.Lit(*((*C.gboolean)(ptrValue)) == C.TRUE)
 	case C.GI_TYPE_TAG_INT8:
 		jenValue = jen.Lit(int8(*((*C.gint8)(ptrValue))))
 	case C.GI_TYPE_TAG_UINT8:
@@ -45,13 +45,13 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 	case C.GI_TYPE_TAG_UINT64:
 		jenValue = jen.Lit(uint64(*((*C.guint64)(ptrValue))))
 	case C.GI_TYPE_TAG_FLOAT:
-		typeTagName = "float"
+		jenValue = jen.Lit(float32(*((*C.gfloat)(ptrValue))))
 	case C.GI_TYPE_TAG_DOUBLE:
-		typeTagName = "double floating point"
+		jenValue = jen.Lit(float64(*((*C.gdouble)(ptrValue))))
 	case C.GI_TYPE_TAG_GTYPE:
 		typeTagName = "a GType"
 	case C.GI_TYPE_TAG_UTF8:
-		typeTagName = "a UTF-8 encoded string"
+		jenValue = jen.Lit(C.GoString(*((**C.char)(ptrValue))))
 	case C.GI_TYPE_TAG_FILENAME:
 		typeTagName = "a filename, encoded in the same encoding as the native filesystem is using."
 	case C.GI_TYPE_TAG_ARRAY:
