@@ -4,17 +4,16 @@ package generate
 import "C"
 
 import (
-	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
 func (r *repository) generateEnum(info *C.GIBaseInfo) {
 	cName := C.g_base_info_get_name(info)
-	name := C.GoString(cName)
+	typeName := C.GoString(cName)
 
-	enum := (*C.GIConstantInfo)(info)
+	enumInfo := (*C.GIConstantInfo)(info)
 
-	typeTag := C.g_enum_info_get_storage_type(enum)
+	typeTag := C.g_enum_info_get_storage_type(enumInfo)
 
 	var jenType *jen.Statement
 	switch typeTag {
@@ -39,12 +38,39 @@ func (r *repository) generateEnum(info *C.GIBaseInfo) {
 	}
 
 	if jenType == nil {
-		r.file.Commentf("Unsupported enum type %d for %s", typeTag, name)
+		r.file.Commentf("Unsupported enum type %d for %s", typeTag, typeName)
 		return
 	}
 
+	// generate type definition
 	r.file.
 		Type().
-		Id(name).
+		Id(typeName).
 		Add(jenType)
+
+	// generate const values
+	r.file.
+		Const().
+		DefsFunc(func(g *jen.Group) {
+			n := C.g_enum_info_get_n_values(enumInfo)
+			for i := C.int(0); i < n; i++ {
+				valueInfo := C.g_enum_info_get_value(enumInfo, i)
+
+				cName := C.g_base_info_get_name(valueInfo)
+				valueName := C.GoString(cName)
+				goValueName := typeName + "_" + makeExportedGoName(valueName)
+
+				value := C.g_value_info_get_value(valueInfo)
+
+				g.
+					Id(goValueName).
+					Id(typeName).
+					Op("=").
+					Lit(int64(value))
+
+				C.g_base_info_unref(valueInfo)
+			}
+		})
+
+	r.file.Line()
 }

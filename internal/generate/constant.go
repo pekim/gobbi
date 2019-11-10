@@ -12,14 +12,14 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 	cName := C.g_base_info_get_name(info)
 	name := C.GoString(cName)
 
-	constant := (*C.GIConstantInfo)(info)
+	constantInfo := (*C.GIConstantInfo)(info)
 
-	typ := C.g_constant_info_get_type(constant)
+	typ := C.g_constant_info_get_type(constantInfo)
 	typeTag := C.g_type_info_get_tag(typ)
 
 	var value C.GIArgument
 	ptrValue := unsafe.Pointer(&value)
-	C.g_constant_info_get_value(constant, &value)
+	C.g_constant_info_get_value(constantInfo, &value)
 
 	var jenValue *jen.Statement
 	var typeTagName string
@@ -81,4 +81,7 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 		Id(name).
 		Op("=").
 		Add(jenValue)
+
+	C.g_base_info_unref(typ)
+	C.g_constant_info_free_value(constantInfo, &value)
 }
