@@ -22,11 +22,7 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 	C.g_constant_info_get_value(constantInfo, &value)
 
 	var jenValue *jen.Statement
-	var typeTagName string
-
 	switch typeTag {
-	case C.GI_TYPE_TAG_VOID:
-		typeTagName = "void"
 	case C.GI_TYPE_TAG_BOOLEAN:
 		jenValue = jen.Lit(*((*C.gboolean)(ptrValue)) == C.TRUE)
 	case C.GI_TYPE_TAG_INT8:
@@ -49,30 +45,10 @@ func (r *repository) generateConstant(info *C.GIBaseInfo) {
 		jenValue = jen.Lit(float32(*((*C.gfloat)(ptrValue))))
 	case C.GI_TYPE_TAG_DOUBLE:
 		jenValue = jen.Lit(float64(*((*C.gdouble)(ptrValue))))
-	case C.GI_TYPE_TAG_GTYPE:
-		typeTagName = "a GType"
 	case C.GI_TYPE_TAG_UTF8:
 		jenValue = jen.Lit(C.GoString(*((**C.char)(ptrValue))))
-	case C.GI_TYPE_TAG_FILENAME:
-		typeTagName = "a filename, encoded in the same encoding as the native filesystem is using."
-	case C.GI_TYPE_TAG_ARRAY:
-		typeTagName = "an array"
-	case C.GI_TYPE_TAG_INTERFACE:
-		typeTagName = "an extended interface object"
-	case C.GI_TYPE_TAG_GLIST:
-		typeTagName = " GList"
-	case C.GI_TYPE_TAG_GSLIST:
-		typeTagName = " GSList"
-	case C.GI_TYPE_TAG_GHASH:
-		typeTagName = " GHashTable"
-	case C.GI_TYPE_TAG_ERROR:
-		typeTagName = " GError"
-	case C.GI_TYPE_TAG_UNICHAR:
-		typeTagName = "Unicode character"
-	}
-
-	if jenValue == nil {
-		r.file.Commentf("Unsupported constant type '%s' (%d) for %s", typeTagName, typeTag, name)
+	default:
+		r.file.Commentf("Unsupported constant type %d for %s", typeTag, name)
 		return
 	}
 

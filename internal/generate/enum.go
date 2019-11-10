@@ -12,7 +12,6 @@ func (r *repository) generateEnum(info *C.GIBaseInfo) {
 	typeName := C.GoString(cName)
 
 	enumInfo := (*C.GIConstantInfo)(info)
-
 	typeTag := C.g_enum_info_get_storage_type(enumInfo)
 
 	var jenType *jen.Statement
@@ -34,10 +33,6 @@ func (r *repository) generateEnum(info *C.GIBaseInfo) {
 	case C.GI_TYPE_TAG_UINT64:
 		jenType = jen.Uint64()
 	default:
-		// unsupported
-	}
-
-	if jenType == nil {
 		r.file.Commentf("Unsupported enum type %d for %s", typeTag, typeName)
 		return
 	}
