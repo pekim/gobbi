@@ -46,8 +46,11 @@ func ForRepository(name string, version string) {
 
 // require loads the repo.
 func (r *repository) require() {
+	typelibDir := projectFilepath("typelib")
+	cTypelibDir := C.CString(typelibDir)
+
 	var err *C.GError
-	C.g_irepository_require(r.repository, r.cName, r.cVersion, 0, &err)
+	C.g_irepository_require_private(r.repository, cTypelibDir, r.cName, r.cVersion, 0, &err)
 
 	if err != nil {
 		message := C.GoString(err.message)
