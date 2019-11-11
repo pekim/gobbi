@@ -1,13 +1,18 @@
 package generate
 
+import (
+	"os"
+	"strings"
+)
+
 type Namespace struct {
-	Blacklist           bool   `xml:"blacklist,attr"`
-	Name                string `xml:"name,attr"`
-	Version             string `xml:"version,attr"`
-	SharedLibrary       string `xml:"shared-library,attr"`
-	CDocPath            string `xml:"c-doc-path,attr"`
-	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
-	CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
+	//Blacklist bool   `xml:"blacklist,attr"`
+	Name    string `xml:"name,attr"`
+	Version string `xml:"version,attr"`
+	//SharedLibrary       string `xml:"shared-library,attr"`
+	//CDocPath            string `xml:"c-doc-path,attr"`
+	//CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
+	//CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	//	Aliases                       Aliases      `xml:"alias"`
 	//	Bitfields                     Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
@@ -19,5 +24,22 @@ type Namespace struct {
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
 
-	namespaces namespaces
+	libDir        string
+	namespaces    namespaces
+	goPackageName string
+}
+
+func (n *Namespace) generate() {
+	n.goPackageName = strings.ToLower(n.Name)
+
+	n.libDir = projectFilepath("..", "lib", n.goPackageName)
+	n.generateLibDir()
+
+}
+
+func (n *Namespace) generateLibDir() {
+	err := os.MkdirAll(n.libDir, 0775)
+	if err != nil {
+		panic(err)
+	}
 }

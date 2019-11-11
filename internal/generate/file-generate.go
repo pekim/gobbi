@@ -1,16 +1,6 @@
 package generate
 
 import "C"
-import (
-	"os"
-)
-
-func (r *repository) generateLibDir() {
-	err := os.MkdirAll(r.libDir, 0775)
-	if err != nil {
-		panic(err)
-	}
-}
 
 //func (r *repository) generateFile(name string, generateContent func(f *jen.File)) {
 //	r.file = jen.NewFile(r.goPackageName)

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"strings"
 )
 
 type repository struct {
@@ -16,7 +15,6 @@ type repository struct {
 	Namespace *Namespace `xml:"namespace"`
 
 	addenda *repository
-	libDir  string
 }
 
 func (r *repository) loadFromFile(filename string, required bool) {
@@ -37,12 +35,10 @@ func (r *repository) loadFromFile(filename string, required bool) {
 }
 
 func repositoryFromFile(spec RepositorySpec) *repository {
-	goPackageName := strings.ToLower(spec.Name)
 	fullname := spec.Name + "-" + spec.Version
 
 	r := &repository{
 		addenda: &repository{},
-		libDir:  projectFilepath("..", "lib", goPackageName),
 	}
 	r.loadFromFile(fullname+".gir", true)
 	r.loadFromFile(fullname+"-addenda.gir", false)
