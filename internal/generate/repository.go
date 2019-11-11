@@ -9,6 +9,7 @@ import "C"
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"github.com/pekim/gobbi/internal/lib/gi"
 	"strings"
 )
 
@@ -23,6 +24,8 @@ type repository struct {
 	cName      *C.char
 	cVersion   *C.char
 	repository *C.GIRepository
+
+	repo *gi.Repository
 }
 
 func ForRepository(name string, version string) {
@@ -38,6 +41,8 @@ func ForRepository(name string, version string) {
 		cName:      C.CString(name),
 		cVersion:   C.CString(version),
 		repository: C.g_irepository_get_default(),
+
+		repo: gi.RepositoryGetDefault(),
 	}
 
 	r.require()
@@ -52,6 +57,11 @@ func (r *repository) require() {
 	if err != nil {
 		message := C.GoString(err.message)
 		panic(message)
+	}
+
+	_, errx := r.repo.Require(r.name, r.version, 0)
+	if errx != nil {
+		panic(errx)
 	}
 }
 

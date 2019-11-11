@@ -241,7 +241,7 @@ func (recv *Repository) FindByErrorDomain(domain glib.Quark) *EnumInfo {
 	retC := C.g_irepository_find_by_error_domain((*C.GIRepository)(recv.native), c_domain)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*EnumInfo)(unsafe.Pointer(retGo))
 }
 
 // FindByGtype is a wrapper around the C function g_irepository_find_by_gtype.
@@ -653,7 +653,7 @@ func ArgInfoGetType(info *BaseInfo) *TypeInfo {
 	retC := C.g_arg_info_get_type(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // ArgInfoIsCallerAllocates is a wrapper around the C function g_arg_info_is_caller_allocates.
@@ -762,7 +762,7 @@ func CallableInfoGetArg(info *BaseInfo, n int32) *ArgInfo {
 	retC := C.g_callable_info_get_arg(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*ArgInfo)(unsafe.Pointer(retGo))
 }
 
 // CallableInfoGetCallerOwns is a wrapper around the C function g_callable_info_get_caller_owns.
@@ -830,7 +830,7 @@ func CallableInfoGetReturnType(info *BaseInfo) *TypeInfo {
 	retC := C.g_callable_info_get_return_type(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // Unsupported : g_callable_info_invoke : unsupported parameter in_args : no type generator for Argument (GIArgument) for array param in_args
@@ -946,7 +946,7 @@ func ConstantInfoGetType(info *BaseInfo) *TypeInfo {
 	retC := C.g_constant_info_get_type(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // Unsupported : g_constant_info_get_value : unsupported parameter value : no type generator for Argument (GIArgument*) for param value
@@ -976,7 +976,7 @@ func EnumInfoGetMethod(info *BaseInfo, n int32) *FunctionInfo {
 	retC := C.g_enum_info_get_method(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // EnumInfoGetNMethods is a wrapper around the C function g_enum_info_get_n_methods.
@@ -1030,7 +1030,7 @@ func EnumInfoGetValue(info *BaseInfo, n int32) *ValueInfo {
 	retC := C.g_enum_info_get_value(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*ValueInfo)(unsafe.Pointer(retGo))
 }
 
 // Unsupported : g_field_info_get_field : unsupported parameter value : no type generator for Argument (GIArgument*) for param value
@@ -1084,7 +1084,7 @@ func FieldInfoGetType(info *BaseInfo) *TypeInfo {
 	retC := C.g_field_info_get_type(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // Unsupported : g_field_info_set_field : unsupported parameter value : no type generator for Argument (const GIArgument*) for param value
@@ -1112,7 +1112,7 @@ func FunctionInfoGetProperty(info *BaseInfo) *PropertyInfo {
 	retC := C.g_function_info_get_property(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*PropertyInfo)(unsafe.Pointer(retGo))
 }
 
 // FunctionInfoGetSymbol is a wrapper around the C function g_function_info_get_symbol.
@@ -1138,7 +1138,7 @@ func FunctionInfoGetVfunc(info *BaseInfo) *VFuncInfo {
 	retC := C.g_function_info_get_vfunc(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*VFuncInfo)(unsafe.Pointer(retGo))
 }
 
 // Unsupported : g_function_info_invoke : unsupported parameter in_args : no type generator for Argument (GIArgument) for array param in_args
@@ -1188,7 +1188,7 @@ func InterfaceInfoFindMethod(info *BaseInfo, name string) *FunctionInfo {
 	retC := C.g_interface_info_find_method(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoFindSignal is a wrapper around the C function g_interface_info_find_signal.
@@ -1204,7 +1204,7 @@ func InterfaceInfoFindSignal(info *BaseInfo, name string) *SignalInfo {
 	retC := C.g_interface_info_find_signal(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*SignalInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoFindVfunc is a wrapper around the C function g_interface_info_find_vfunc.
@@ -1220,7 +1220,7 @@ func InterfaceInfoFindVfunc(info *BaseInfo, name string) *VFuncInfo {
 	retC := C.g_interface_info_find_vfunc(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*VFuncInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoGetConstant is a wrapper around the C function g_interface_info_get_constant.
@@ -1235,7 +1235,7 @@ func InterfaceInfoGetConstant(info *BaseInfo, n int32) *ConstantInfo {
 	retC := C.g_interface_info_get_constant(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*ConstantInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoGetIfaceStruct is a wrapper around the C function g_interface_info_get_iface_struct.
@@ -1248,7 +1248,7 @@ func InterfaceInfoGetIfaceStruct(info *BaseInfo) *StructInfo {
 	retC := C.g_interface_info_get_iface_struct(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*StructInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoGetMethod is a wrapper around the C function g_interface_info_get_method.
@@ -1263,7 +1263,7 @@ func InterfaceInfoGetMethod(info *BaseInfo, n int32) *FunctionInfo {
 	retC := C.g_interface_info_get_method(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoGetNConstants is a wrapper around the C function g_interface_info_get_n_constants.
@@ -1371,7 +1371,7 @@ func InterfaceInfoGetProperty(info *BaseInfo, n int32) *PropertyInfo {
 	retC := C.g_interface_info_get_property(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*PropertyInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoGetSignal is a wrapper around the C function g_interface_info_get_signal.
@@ -1386,7 +1386,7 @@ func InterfaceInfoGetSignal(info *BaseInfo, n int32) *SignalInfo {
 	retC := C.g_interface_info_get_signal(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*SignalInfo)(unsafe.Pointer(retGo))
 }
 
 // InterfaceInfoGetVfunc is a wrapper around the C function g_interface_info_get_vfunc.
@@ -1401,7 +1401,7 @@ func InterfaceInfoGetVfunc(info *BaseInfo, n int32) *VFuncInfo {
 	retC := C.g_interface_info_get_vfunc(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*VFuncInfo)(unsafe.Pointer(retGo))
 }
 
 // InvokeErrorQuark is a wrapper around the C function g_invoke_error_quark.
@@ -1425,7 +1425,7 @@ func ObjectInfoFindMethod(info *BaseInfo, name string) *FunctionInfo {
 	retC := C.g_object_info_find_method(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoFindMethodUsingInterfaces is a wrapper around the C function g_object_info_find_method_using_interfaces.
@@ -1445,7 +1445,7 @@ func ObjectInfoFindMethodUsingInterfaces(info *BaseInfo, name string) (*Function
 
 	implementor := BaseInfoNewFromC(unsafe.Pointer(c_implementor))
 
-	return retGo, implementor
+	return (*FunctionInfo)(unsafe.Pointer(retGo)), implementor
 }
 
 // ObjectInfoFindSignal is a wrapper around the C function g_object_info_find_signal.
@@ -1461,7 +1461,7 @@ func ObjectInfoFindSignal(info *BaseInfo, name string) *SignalInfo {
 	retC := C.g_object_info_find_signal(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*SignalInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoFindVfunc is a wrapper around the C function g_object_info_find_vfunc.
@@ -1477,7 +1477,7 @@ func ObjectInfoFindVfunc(info *BaseInfo, name string) *VFuncInfo {
 	retC := C.g_object_info_find_vfunc(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*VFuncInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoFindVfuncUsingInterfaces is a wrapper around the C function g_object_info_find_vfunc_using_interfaces.
@@ -1497,7 +1497,7 @@ func ObjectInfoFindVfuncUsingInterfaces(info *BaseInfo, name string) (*VFuncInfo
 
 	implementor := BaseInfoNewFromC(unsafe.Pointer(c_implementor))
 
-	return retGo, implementor
+	return (*VFuncInfo)(unsafe.Pointer(retGo)), implementor
 }
 
 // ObjectInfoGetAbstract is a wrapper around the C function g_object_info_get_abstract.
@@ -1523,7 +1523,7 @@ func ObjectInfoGetClassStruct(info *BaseInfo) *StructInfo {
 	retC := C.g_object_info_get_class_struct(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*StructInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetConstant is a wrapper around the C function g_object_info_get_constant.
@@ -1538,7 +1538,7 @@ func ObjectInfoGetConstant(info *BaseInfo, n int32) *ConstantInfo {
 	retC := C.g_object_info_get_constant(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*ConstantInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetField is a wrapper around the C function g_object_info_get_field.
@@ -1553,7 +1553,7 @@ func ObjectInfoGetField(info *BaseInfo, n int32) *FieldInfo {
 	retC := C.g_object_info_get_field(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FieldInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetFundamental is a wrapper around the C function g_object_info_get_fundamental.
@@ -1596,7 +1596,7 @@ func ObjectInfoGetInterface(info *BaseInfo, n int32) *InterfaceInfo {
 	retC := C.g_object_info_get_interface(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*InterfaceInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetMethod is a wrapper around the C function g_object_info_get_method.
@@ -1611,7 +1611,7 @@ func ObjectInfoGetMethod(info *BaseInfo, n int32) *FunctionInfo {
 	retC := C.g_object_info_get_method(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetNConstants is a wrapper around the C function g_object_info_get_n_constants.
@@ -1715,7 +1715,7 @@ func ObjectInfoGetParent(info *BaseInfo) *ObjectInfo {
 	retC := C.g_object_info_get_parent(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*ObjectInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetProperty is a wrapper around the C function g_object_info_get_property.
@@ -1730,7 +1730,7 @@ func ObjectInfoGetProperty(info *BaseInfo, n int32) *PropertyInfo {
 	retC := C.g_object_info_get_property(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*PropertyInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetRefFunction is a wrapper around the C function g_object_info_get_ref_function.
@@ -1775,7 +1775,7 @@ func ObjectInfoGetSignal(info *BaseInfo, n int32) *SignalInfo {
 	retC := C.g_object_info_get_signal(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*SignalInfo)(unsafe.Pointer(retGo))
 }
 
 // ObjectInfoGetTypeInit is a wrapper around the C function g_object_info_get_type_init.
@@ -1831,7 +1831,7 @@ func ObjectInfoGetVfunc(info *BaseInfo, n int32) *VFuncInfo {
 	retC := C.g_object_info_get_vfunc(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*VFuncInfo)(unsafe.Pointer(retGo))
 }
 
 // PropertyInfoGetFlags is a wrapper around the C function g_property_info_get_flags.
@@ -1870,7 +1870,7 @@ func PropertyInfoGetType(info *BaseInfo) *TypeInfo {
 	retC := C.g_property_info_get_type(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // RegisteredTypeInfoGetGType is a wrapper around the C function g_registered_type_info_get_g_type.
@@ -1922,7 +1922,7 @@ func SignalInfoGetClassClosure(info *BaseInfo) *VFuncInfo {
 	retC := C.g_signal_info_get_class_closure(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*VFuncInfo)(unsafe.Pointer(retGo))
 }
 
 // SignalInfoGetFlags is a wrapper around the C function g_signal_info_get_flags.
@@ -1964,7 +1964,7 @@ func StructInfoFindField(info *BaseInfo, name string) *FieldInfo {
 	retC := C.g_struct_info_find_field(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FieldInfo)(unsafe.Pointer(retGo))
 }
 
 // StructInfoFindMethod is a wrapper around the C function g_struct_info_find_method.
@@ -1980,7 +1980,7 @@ func StructInfoFindMethod(info *BaseInfo, name string) *FunctionInfo {
 	retC := C.g_struct_info_find_method(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // StructInfoGetAlignment is a wrapper around the C function g_struct_info_get_alignment.
@@ -2008,7 +2008,7 @@ func StructInfoGetField(info *BaseInfo, n int32) *FieldInfo {
 	retC := C.g_struct_info_get_field(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FieldInfo)(unsafe.Pointer(retGo))
 }
 
 // StructInfoGetMethod is a wrapper around the C function g_struct_info_get_method.
@@ -2023,7 +2023,7 @@ func StructInfoGetMethod(info *BaseInfo, n int32) *FunctionInfo {
 	retC := C.g_struct_info_get_method(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // StructInfoGetNFields is a wrapper around the C function g_struct_info_get_n_fields.
@@ -2155,7 +2155,7 @@ func TypeInfoGetParamType(info *BaseInfo, n int32) *TypeInfo {
 	retC := C.g_type_info_get_param_type(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // TypeInfoGetTag is a wrapper around the C function g_type_info_get_tag.
@@ -2220,7 +2220,7 @@ func UnionInfoFindMethod(info *BaseInfo, name string) *FunctionInfo {
 	retC := C.g_union_info_find_method(c_info, c_name)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // UnionInfoGetAlignment is a wrapper around the C function g_union_info_get_alignment.
@@ -2248,7 +2248,7 @@ func UnionInfoGetDiscriminator(info *BaseInfo, n int32) *ConstantInfo {
 	retC := C.g_union_info_get_discriminator(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*ConstantInfo)(unsafe.Pointer(retGo))
 }
 
 // UnionInfoGetDiscriminatorOffset is a wrapper around the C function g_union_info_get_discriminator_offset.
@@ -2274,7 +2274,7 @@ func UnionInfoGetDiscriminatorType(info *BaseInfo) *TypeInfo {
 	retC := C.g_union_info_get_discriminator_type(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*TypeInfo)(unsafe.Pointer(retGo))
 }
 
 // UnionInfoGetField is a wrapper around the C function g_union_info_get_field.
@@ -2289,7 +2289,7 @@ func UnionInfoGetField(info *BaseInfo, n int32) *FieldInfo {
 	retC := C.g_union_info_get_field(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FieldInfo)(unsafe.Pointer(retGo))
 }
 
 // UnionInfoGetMethod is a wrapper around the C function g_union_info_get_method.
@@ -2304,7 +2304,7 @@ func UnionInfoGetMethod(info *BaseInfo, n int32) *FunctionInfo {
 	retC := C.g_union_info_get_method(c_info, c_n)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // UnionInfoGetNFields is a wrapper around the C function g_union_info_get_n_fields.
@@ -2420,7 +2420,7 @@ func VfuncInfoGetInvoker(info *BaseInfo) *FunctionInfo {
 	retC := C.g_vfunc_info_get_invoker(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*FunctionInfo)(unsafe.Pointer(retGo))
 }
 
 // VfuncInfoGetOffset is a wrapper around the C function g_vfunc_info_get_offset.
@@ -2446,7 +2446,7 @@ func VfuncInfoGetSignal(info *BaseInfo) *SignalInfo {
 	retC := C.g_vfunc_info_get_signal(c_info)
 	retGo := BaseInfoNewFromC(unsafe.Pointer(retC))
 
-	return retGo
+	return (*SignalInfo)(unsafe.Pointer(retGo))
 }
 
 // Unsupported : g_vfunc_info_invoke : unsupported parameter in_args : no type generator for Argument (GIArgument) for array param in_args
