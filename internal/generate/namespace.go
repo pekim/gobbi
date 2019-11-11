@@ -1,7 +1,10 @@
 package generate
 
 import (
+	"fmt"
+	"github.com/dave/jennifer/jen"
 	"os"
+	"path"
 	"strings"
 )
 
@@ -17,7 +20,7 @@ type Namespace struct {
 	//	Bitfields                     Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	//	Classes                       Classes      `xml:"class"`
-	//	Constants                     Constants    `xml:"constant"`
+	Constants Constants `xml:"constant"`
 	//	Enumerations                  Enumerations `xml:"enumeration"`
 	//	Functions                     Functions    `xml:"function"`
 	//	Records                       Records      `xml:"record"`
@@ -29,16 +32,38 @@ type Namespace struct {
 	goPackageName string
 }
 
+func (n *Namespace) init() {
+	n.Constants.init(n)
+}
+
 func (n *Namespace) generate() {
 	n.goPackageName = strings.ToLower(n.Name)
 
 	n.libDir = projectFilepath("..", "lib", n.goPackageName)
 	n.generateLibDir()
 
+	n.generateFile("constant", n.Constants.generate)
 }
 
 func (n *Namespace) generateLibDir() {
 	err := os.MkdirAll(n.libDir, 0775)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func (n *Namespace) generateFile(name string, generateContent func(f *jen.File)) {
+	file := jen.NewFile(n.goPackageName)
+
+	// Use a standard generated file comment format.
+	// https://github.com/golang/go/issues/13560#issuecomment-288457920
+	file.HeaderComment(("Code generated - DO NOT EDIT."))
+	file.Line()
+
+	generateContent(file)
+
+	filepath := path.Join(n.libDir, fmt.Sprintf("%s.go", name))
+	err := file.Save(filepath)
 	if err != nil {
 		panic(err)
 	}

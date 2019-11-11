@@ -20,6 +20,10 @@ func Generate(specs []RepositorySpec) {
 	}
 
 	for _, r := range rr {
+		r.Namespace.init()
+	}
+
+	for _, r := range rr {
 		r.Namespace.generate()
 	}
 }

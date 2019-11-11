@@ -1,5 +1,27 @@
 package generate
 
+import "github.com/dave/jennifer/jen"
+
+type Constant struct {
+	Name string `xml:"name,attr"`
+	//Blacklist bool   `xml:"blacklist,attr"`
+	Value   string `xml:"value,attr"`
+	Version string `xml:"version,attr"`
+	CType   string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
+	//Doc       *Doc   `xml:"doc"`
+	//Type      *Type  `xml:"type"`
+
+	Namespace *Namespace
+}
+
+func (c *Constant) init(ns *Namespace) {
+	c.Namespace = ns
+}
+
+func (c Constant) generate(f *jen.File) {
+	f.Commentf("%s", c.Name)
+}
+
 //// #include <gobject-introspection-1.0/girepository.h>
 //import "C"
 //
