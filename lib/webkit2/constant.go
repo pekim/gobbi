@@ -2,14 +2,14 @@
 
 package webkit2
 
-const EditingCommandCopy int = "Copy"
-const EditingCommandCreateLink int = "CreateLink"
-const EditingCommandCut int = "Cut"
-const EditingCommandInsertImage int = "InsertImage"
-const EditingCommandPaste int = "Paste"
-const EditingCommandRedo int = "Redo"
-const EditingCommandSelectAll int = "SelectAll"
-const EditingCommandUndo int = "Undo"
-const MajorVersion int32 = "2"
-const MicroVersion int32 = "1"
-const MinorVersion int32 = "26"
+// UNSUPPORTED : EDITING_COMMAND_COPY
+// UNSUPPORTED : EDITING_COMMAND_CREATE_LINK
+// UNSUPPORTED : EDITING_COMMAND_CUT
+// UNSUPPORTED : EDITING_COMMAND_INSERT_IMAGE
+// UNSUPPORTED : EDITING_COMMAND_PASTE
+// UNSUPPORTED : EDITING_COMMAND_REDO
+// UNSUPPORTED : EDITING_COMMAND_SELECT_ALL
+// UNSUPPORTED : EDITING_COMMAND_UNDO
+const MAJOR_VERSION int32 = "2"
+const MICRO_VERSION int32 = "1"
+const MINOR_VERSION int32 = "26"

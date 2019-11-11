@@ -2,156 +2,173 @@
 
 package soup
 
-const AddressAnyPort int32 = "0"
-const AddressFamily int = "family"
-const AddressName int = "name"
-const AddressPhysical int = "physical"
-const AddressPort int = "port"
-const AddressProtocol int = "protocol"
-const AddressSockaddr int = "sockaddr"
-const AuthDomainAddPath int = "add-path"
-const AuthDomainBasicAuthCallback int = "auth-callback"
-const AuthDomainBasicAuthData int = "auth-data"
-const AuthDomainBasicH int32 = "1"
-const AuthDomainDigestAuthCallback int = "auth-callback"
-const AuthDomainDigestAuthData int = "auth-data"
-const AuthDomainDigestH int32 = "1"
-const AuthDomainFilter int = "filter"
-const AuthDomainFilterData int = "filter-data"
-const AuthDomainGenericAuthCallback int = "generic-auth-callback"
-const AuthDomainGenericAuthData int = "generic-auth-data"
-const AuthDomainH int32 = "1"
-const AuthDomainProxy int = "proxy"
-const AuthDomainRealm int = "realm"
-const AuthDomainRemovePath int = "remove-path"
-const AuthH int32 = "1"
-const AuthHost int = "host"
-const AuthIsAuthenticated int = "is-authenticated"
-const AuthIsForProxy int = "is-for-proxy"
-const AuthManagerH int32 = "1"
-const AuthRealm int = "realm"
-const AuthSchemeName int = "scheme-name"
-const CacheH int32 = "1"
-const CharHttpCtl int32 = "16"
-const CharHttpSeparator int32 = "8"
-const CharUriGenDelims int32 = "2"
-const CharUriPercentEncoded int32 = "1"
-const CharUriSubDelims int32 = "4"
-const ContentDecoderH int32 = "1"
-const ContentSnifferH int32 = "1"
-const CookieH int32 = "1"
-const CookieJarAcceptPolicy int = "accept-policy"
-const CookieJarDbFilename int = "filename"
-const CookieJarDbH int32 = "1"
-const CookieJarH int32 = "1"
-const CookieJarReadOnly int = "read-only"
-const CookieJarTextFilename int = "filename"
-const CookieJarTextH int32 = "1"
-const CookieMaxAgeOneDay int32 = "0"
-const CookieMaxAgeOneHour int32 = "3600"
-const CookieMaxAgeOneWeek int32 = "0"
-const CookieMaxAgeOneYear int32 = "0"
-const DateH int32 = "1"
-const FormH int32 = "1"
-const FormMimeTypeMultipart int = "multipart/form-data"
-const FormMimeTypeUrlencoded int = "application/x-www-form-urlencoded"
-const HeadersH int32 = "1"
-const LoggerH int32 = "1"
-const LoggerLevel int = "level"
-const LoggerMaxBodySize int = "max-body-size"
-const MajorVersion int32 = "2"
-const MessageBodyH int32 = "1"
-const MessageFirstParty int = "first-party"
-const MessageFlags int = "flags"
-const MessageH int32 = "1"
-const MessageHeadersH int32 = "1"
-const MessageHttpVersion int = "http-version"
-const MessageMethod int = "method"
-const MessagePriority int = "priority"
-const MessageReasonPhrase int = "reason-phrase"
-const MessageRequestBody int = "request-body"
-const MessageRequestBodyData int = "request-body-data"
-const MessageRequestHeaders int = "request-headers"
-const MessageResponseBody int = "response-body"
-const MessageResponseBodyData int = "response-body-data"
-const MessageResponseHeaders int = "response-headers"
-const MessageServerSide int = "server-side"
-const MessageStatusCode int = "status-code"
-const MessageTlsCertificate int = "tls-certificate"
-const MessageTlsErrors int = "tls-errors"
-const MessageUri int = "uri"
-const MethodH int32 = "1"
-const MicroVersion int32 = "1"
-const MinorVersion int32 = "62"
-const MiscH int32 = "1"
-const MultipartH int32 = "1"
-const MultipartInputStreamH int32 = "1"
-const PasswordManagerH int32 = "1"
-const ProxyResolverDefaultH int32 = "1"
-const ProxyUriResolverH int32 = "1"
-const RequesterH int32 = "1"
-const RequestDataH int32 = "1"
-const RequestFileH int32 = "1"
-const RequestH int32 = "1"
-const RequestHttpH int32 = "1"
-const RequestSession int = "session"
-const RequestUri int = "uri"
-const ServerAsyncContext int = "async-context"
-const ServerH int32 = "1"
-const ServerHttpsAliases int = "https-aliases"
-const ServerHttpAliases int = "http-aliases"
-const ServerInterface int = "interface"
-const ServerPort int = "port"
-const ServerRawPaths int = "raw-paths"
-const ServerServerHeader int = "server-header"
-const ServerSslCertFile int = "ssl-cert-file"
-const ServerSslKeyFile int = "ssl-key-file"
-const ServerTlsCertificate int = "tls-certificate"
-const SessionAcceptLanguage int = "accept-language"
-const SessionAcceptLanguageAuto int = "accept-language-auto"
-const SessionAddFeature int = "add-feature"
-const SessionAddFeatureByType int = "add-feature-by-type"
-const SessionAsyncContext int = "async-context"
-const SessionAsyncH int32 = "1"
-const SessionFeatureH int32 = "1"
-const SessionH int32 = "1"
-const SessionHttpsAliases int = "https-aliases"
-const SessionHttpAliases int = "http-aliases"
-const SessionIdleTimeout int = "idle-timeout"
-const SessionLocalAddress int = "local-address"
-const SessionMaxConns int = "max-conns"
-const SessionMaxConnsPerHost int = "max-conns-per-host"
-const SessionProxyResolver int = "proxy-resolver"
-const SessionProxyUri int = "proxy-uri"
-const SessionRemoveFeatureByType int = "remove-feature-by-type"
-const SessionSslCaFile int = "ssl-ca-file"
-const SessionSslStrict int = "ssl-strict"
-const SessionSslUseSystemCaFile int = "ssl-use-system-ca-file"
-const SessionSyncH int32 = "1"
-const SessionTimeout int = "timeout"
-const SessionTlsDatabase int = "tls-database"
-const SessionTlsInteraction int = "tls-interaction"
-const SessionUserAgent int = "user-agent"
-const SessionUseNtlm int = "use-ntlm"
-const SessionUseThreadContext int = "use-thread-context"
-const SocketAsyncContext int = "async-context"
-const SocketFlagNonblocking int = "non-blocking"
-const SocketH int32 = "1"
-const SocketIsServer int = "is-server"
-const SocketLocalAddress int = "local-address"
-const SocketRemoteAddress int = "remote-address"
-const SocketSslCredentials int = "ssl-creds"
-const SocketSslFallback int = "ssl-fallback"
-const SocketSslStrict int = "ssl-strict"
-const SocketTimeout int = "timeout"
-const SocketTlsCertificate int = "tls-certificate"
-const SocketTlsErrors int = "tls-errors"
-const SocketTrustedCertificate int = "trusted-certificate"
-const SocketUseThreadContext int = "use-thread-context"
-const StatusH int32 = "1"
-const TypesH int32 = "1"
-const UriH int32 = "1"
-const ValueUtilsH int32 = "1"
-const VersionMinRequired int32 = "2"
-const XmlrpcH int32 = "1"
-const XmlrpcOldH int32 = "1"
+const ADDRESS_ANY_PORT int32 = "0"
+
+// UNSUPPORTED : ADDRESS_FAMILY
+// UNSUPPORTED : ADDRESS_NAME
+// UNSUPPORTED : ADDRESS_PHYSICAL
+// UNSUPPORTED : ADDRESS_PORT
+// UNSUPPORTED : ADDRESS_PROTOCOL
+// UNSUPPORTED : ADDRESS_SOCKADDR
+// UNSUPPORTED : AUTH_DOMAIN_ADD_PATH
+// UNSUPPORTED : AUTH_DOMAIN_BASIC_AUTH_CALLBACK
+// UNSUPPORTED : AUTH_DOMAIN_BASIC_AUTH_DATA
+const AUTH_DOMAIN_BASIC_H int32 = "1"
+
+// UNSUPPORTED : AUTH_DOMAIN_DIGEST_AUTH_CALLBACK
+// UNSUPPORTED : AUTH_DOMAIN_DIGEST_AUTH_DATA
+const AUTH_DOMAIN_DIGEST_H int32 = "1"
+
+// UNSUPPORTED : AUTH_DOMAIN_FILTER
+// UNSUPPORTED : AUTH_DOMAIN_FILTER_DATA
+// UNSUPPORTED : AUTH_DOMAIN_GENERIC_AUTH_CALLBACK
+// UNSUPPORTED : AUTH_DOMAIN_GENERIC_AUTH_DATA
+const AUTH_DOMAIN_H int32 = "1"
+
+// UNSUPPORTED : AUTH_DOMAIN_PROXY
+// UNSUPPORTED : AUTH_DOMAIN_REALM
+// UNSUPPORTED : AUTH_DOMAIN_REMOVE_PATH
+const AUTH_H int32 = "1"
+
+// UNSUPPORTED : AUTH_HOST
+// UNSUPPORTED : AUTH_IS_AUTHENTICATED
+// UNSUPPORTED : AUTH_IS_FOR_PROXY
+const AUTH_MANAGER_H int32 = "1"
+
+// UNSUPPORTED : AUTH_REALM
+// UNSUPPORTED : AUTH_SCHEME_NAME
+const CACHE_H int32 = "1"
+const CHAR_HTTP_CTL int32 = "16"
+const CHAR_HTTP_SEPARATOR int32 = "8"
+const CHAR_URI_GEN_DELIMS int32 = "2"
+const CHAR_URI_PERCENT_ENCODED int32 = "1"
+const CHAR_URI_SUB_DELIMS int32 = "4"
+const CONTENT_DECODER_H int32 = "1"
+const CONTENT_SNIFFER_H int32 = "1"
+const COOKIE_H int32 = "1"
+
+// UNSUPPORTED : COOKIE_JAR_ACCEPT_POLICY
+// UNSUPPORTED : COOKIE_JAR_DB_FILENAME
+const COOKIE_JAR_DB_H int32 = "1"
+const COOKIE_JAR_H int32 = "1"
+
+// UNSUPPORTED : COOKIE_JAR_READ_ONLY
+// UNSUPPORTED : COOKIE_JAR_TEXT_FILENAME
+const COOKIE_JAR_TEXT_H int32 = "1"
+const COOKIE_MAX_AGE_ONE_DAY int32 = "0"
+const COOKIE_MAX_AGE_ONE_HOUR int32 = "3600"
+const COOKIE_MAX_AGE_ONE_WEEK int32 = "0"
+const COOKIE_MAX_AGE_ONE_YEAR int32 = "0"
+const DATE_H int32 = "1"
+const FORM_H int32 = "1"
+
+// UNSUPPORTED : FORM_MIME_TYPE_MULTIPART
+// UNSUPPORTED : FORM_MIME_TYPE_URLENCODED
+const HEADERS_H int32 = "1"
+const LOGGER_H int32 = "1"
+
+// UNSUPPORTED : LOGGER_LEVEL
+// UNSUPPORTED : LOGGER_MAX_BODY_SIZE
+const MAJOR_VERSION int32 = "2"
+const MESSAGE_BODY_H int32 = "1"
+
+// UNSUPPORTED : MESSAGE_FIRST_PARTY
+// UNSUPPORTED : MESSAGE_FLAGS
+const MESSAGE_H int32 = "1"
+const MESSAGE_HEADERS_H int32 = "1"
+
+// UNSUPPORTED : MESSAGE_HTTP_VERSION
+// UNSUPPORTED : MESSAGE_METHOD
+// UNSUPPORTED : MESSAGE_PRIORITY
+// UNSUPPORTED : MESSAGE_REASON_PHRASE
+// UNSUPPORTED : MESSAGE_REQUEST_BODY
+// UNSUPPORTED : MESSAGE_REQUEST_BODY_DATA
+// UNSUPPORTED : MESSAGE_REQUEST_HEADERS
+// UNSUPPORTED : MESSAGE_RESPONSE_BODY
+// UNSUPPORTED : MESSAGE_RESPONSE_BODY_DATA
+// UNSUPPORTED : MESSAGE_RESPONSE_HEADERS
+// UNSUPPORTED : MESSAGE_SERVER_SIDE
+// UNSUPPORTED : MESSAGE_STATUS_CODE
+// UNSUPPORTED : MESSAGE_TLS_CERTIFICATE
+// UNSUPPORTED : MESSAGE_TLS_ERRORS
+// UNSUPPORTED : MESSAGE_URI
+const METHOD_H int32 = "1"
+const MICRO_VERSION int32 = "1"
+const MINOR_VERSION int32 = "62"
+const MISC_H int32 = "1"
+const MULTIPART_H int32 = "1"
+const MULTIPART_INPUT_STREAM_H int32 = "1"
+const PASSWORD_MANAGER_H int32 = "1"
+const PROXY_RESOLVER_DEFAULT_H int32 = "1"
+const PROXY_URI_RESOLVER_H int32 = "1"
+const REQUESTER_H int32 = "1"
+const REQUEST_DATA_H int32 = "1"
+const REQUEST_FILE_H int32 = "1"
+const REQUEST_H int32 = "1"
+const REQUEST_HTTP_H int32 = "1"
+
+// UNSUPPORTED : REQUEST_SESSION
+// UNSUPPORTED : REQUEST_URI
+// UNSUPPORTED : SERVER_ASYNC_CONTEXT
+const SERVER_H int32 = "1"
+
+// UNSUPPORTED : SERVER_HTTPS_ALIASES
+// UNSUPPORTED : SERVER_HTTP_ALIASES
+// UNSUPPORTED : SERVER_INTERFACE
+// UNSUPPORTED : SERVER_PORT
+// UNSUPPORTED : SERVER_RAW_PATHS
+// UNSUPPORTED : SERVER_SERVER_HEADER
+// UNSUPPORTED : SERVER_SSL_CERT_FILE
+// UNSUPPORTED : SERVER_SSL_KEY_FILE
+// UNSUPPORTED : SERVER_TLS_CERTIFICATE
+// UNSUPPORTED : SESSION_ACCEPT_LANGUAGE
+// UNSUPPORTED : SESSION_ACCEPT_LANGUAGE_AUTO
+// UNSUPPORTED : SESSION_ADD_FEATURE
+// UNSUPPORTED : SESSION_ADD_FEATURE_BY_TYPE
+// UNSUPPORTED : SESSION_ASYNC_CONTEXT
+const SESSION_ASYNC_H int32 = "1"
+const SESSION_FEATURE_H int32 = "1"
+const SESSION_H int32 = "1"
+
+// UNSUPPORTED : SESSION_HTTPS_ALIASES
+// UNSUPPORTED : SESSION_HTTP_ALIASES
+// UNSUPPORTED : SESSION_IDLE_TIMEOUT
+// UNSUPPORTED : SESSION_LOCAL_ADDRESS
+// UNSUPPORTED : SESSION_MAX_CONNS
+// UNSUPPORTED : SESSION_MAX_CONNS_PER_HOST
+// UNSUPPORTED : SESSION_PROXY_RESOLVER
+// UNSUPPORTED : SESSION_PROXY_URI
+// UNSUPPORTED : SESSION_REMOVE_FEATURE_BY_TYPE
+// UNSUPPORTED : SESSION_SSL_CA_FILE
+// UNSUPPORTED : SESSION_SSL_STRICT
+// UNSUPPORTED : SESSION_SSL_USE_SYSTEM_CA_FILE
+const SESSION_SYNC_H int32 = "1"
+
+// UNSUPPORTED : SESSION_TIMEOUT
+// UNSUPPORTED : SESSION_TLS_DATABASE
+// UNSUPPORTED : SESSION_TLS_INTERACTION
+// UNSUPPORTED : SESSION_USER_AGENT
+// UNSUPPORTED : SESSION_USE_NTLM
+// UNSUPPORTED : SESSION_USE_THREAD_CONTEXT
+// UNSUPPORTED : SOCKET_ASYNC_CONTEXT
+// UNSUPPORTED : SOCKET_FLAG_NONBLOCKING
+const SOCKET_H int32 = "1"
+
+// UNSUPPORTED : SOCKET_IS_SERVER
+// UNSUPPORTED : SOCKET_LOCAL_ADDRESS
+// UNSUPPORTED : SOCKET_REMOTE_ADDRESS
+// UNSUPPORTED : SOCKET_SSL_CREDENTIALS
+// UNSUPPORTED : SOCKET_SSL_FALLBACK
+// UNSUPPORTED : SOCKET_SSL_STRICT
+// UNSUPPORTED : SOCKET_TIMEOUT
+// UNSUPPORTED : SOCKET_TLS_CERTIFICATE
+// UNSUPPORTED : SOCKET_TLS_ERRORS
+// UNSUPPORTED : SOCKET_TRUSTED_CERTIFICATE
+// UNSUPPORTED : SOCKET_USE_THREAD_CONTEXT
+const STATUS_H int32 = "1"
+const TYPES_H int32 = "1"
+const URI_H int32 = "1"
+const VALUE_UTILS_H int32 = "1"
+const VERSION_MIN_REQUIRED int32 = "2"
+const XMLRPC_H int32 = "1"
+const XMLRPC_OLD_H int32 = "1"

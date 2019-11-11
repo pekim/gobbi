@@ -1,7 +1,5 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
-
 type Constants []*Constant
 
 func (cc Constants) init(ns *Namespace) {
@@ -10,7 +8,7 @@ func (cc Constants) init(ns *Namespace) {
 	}
 }
 
-func (cc Constants) generate(f *jen.File) {
+func (cc Constants) generate(f *file) {
 	for _, constant := range cc {
 		constant.generate(f)
 	}

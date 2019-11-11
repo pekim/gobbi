@@ -2,108 +2,108 @@
 
 package gio
 
-const DesktopAppInfoLookupExtensionPointName int = "gio-desktop-app-info-lookup"
-const FileAttributeAccessCanDelete int = "access::can-delete"
-const FileAttributeAccessCanExecute int = "access::can-execute"
-const FileAttributeAccessCanRead int = "access::can-read"
-const FileAttributeAccessCanRename int = "access::can-rename"
-const FileAttributeAccessCanTrash int = "access::can-trash"
-const FileAttributeAccessCanWrite int = "access::can-write"
-const FileAttributeDosIsArchive int = "dos::is-archive"
-const FileAttributeDosIsSystem int = "dos::is-system"
-const FileAttributeEtagValue int = "etag::value"
-const FileAttributeFilesystemFree int = "filesystem::free"
-const FileAttributeFilesystemReadonly int = "filesystem::readonly"
-const FileAttributeFilesystemRemote int = "filesystem::remote"
-const FileAttributeFilesystemSize int = "filesystem::size"
-const FileAttributeFilesystemType int = "filesystem::type"
-const FileAttributeFilesystemUsed int = "filesystem::used"
-const FileAttributeFilesystemUsePreview int = "filesystem::use-preview"
-const FileAttributeGvfsBackend int = "gvfs::backend"
-const FileAttributeIdFile int = "id::file"
-const FileAttributeIdFilesystem int = "id::filesystem"
-const FileAttributeMountableCanEject int = "mountable::can-eject"
-const FileAttributeMountableCanMount int = "mountable::can-mount"
-const FileAttributeMountableCanPoll int = "mountable::can-poll"
-const FileAttributeMountableCanStart int = "mountable::can-start"
-const FileAttributeMountableCanStartDegraded int = "mountable::can-start-degraded"
-const FileAttributeMountableCanStop int = "mountable::can-stop"
-const FileAttributeMountableCanUnmount int = "mountable::can-unmount"
-const FileAttributeMountableHalUdi int = "mountable::hal-udi"
-const FileAttributeMountableIsMediaCheckAutomatic int = "mountable::is-media-check-automatic"
-const FileAttributeMountableStartStopType int = "mountable::start-stop-type"
-const FileAttributeMountableUnixDevice int = "mountable::unix-device"
-const FileAttributeMountableUnixDeviceFile int = "mountable::unix-device-file"
-const FileAttributeOwnerGroup int = "owner::group"
-const FileAttributeOwnerUser int = "owner::user"
-const FileAttributeOwnerUserReal int = "owner::user-real"
-const FileAttributePreviewIcon int = "preview::icon"
-const FileAttributeRecentModified int = "recent::modified"
-const FileAttributeSelinuxContext int = "selinux::context"
-const FileAttributeStandardAllocatedSize int = "standard::allocated-size"
-const FileAttributeStandardContentType int = "standard::content-type"
-const FileAttributeStandardCopyName int = "standard::copy-name"
-const FileAttributeStandardDescription int = "standard::description"
-const FileAttributeStandardDisplayName int = "standard::display-name"
-const FileAttributeStandardEditName int = "standard::edit-name"
-const FileAttributeStandardFastContentType int = "standard::fast-content-type"
-const FileAttributeStandardIcon int = "standard::icon"
-const FileAttributeStandardIsBackup int = "standard::is-backup"
-const FileAttributeStandardIsHidden int = "standard::is-hidden"
-const FileAttributeStandardIsSymlink int = "standard::is-symlink"
-const FileAttributeStandardIsVirtual int = "standard::is-virtual"
-const FileAttributeStandardIsVolatile int = "standard::is-volatile"
-const FileAttributeStandardName int = "standard::name"
-const FileAttributeStandardSize int = "standard::size"
-const FileAttributeStandardSortOrder int = "standard::sort-order"
-const FileAttributeStandardSymbolicIcon int = "standard::symbolic-icon"
-const FileAttributeStandardSymlinkTarget int = "standard::symlink-target"
-const FileAttributeStandardTargetUri int = "standard::target-uri"
-const FileAttributeStandardType int = "standard::type"
-const FileAttributeThumbnailingFailed int = "thumbnail::failed"
-const FileAttributeThumbnailIsValid int = "thumbnail::is-valid"
-const FileAttributeThumbnailPath int = "thumbnail::path"
-const FileAttributeTimeAccess int = "time::access"
-const FileAttributeTimeAccessUsec int = "time::access-usec"
-const FileAttributeTimeChanged int = "time::changed"
-const FileAttributeTimeChangedUsec int = "time::changed-usec"
-const FileAttributeTimeCreated int = "time::created"
-const FileAttributeTimeCreatedUsec int = "time::created-usec"
-const FileAttributeTimeModified int = "time::modified"
-const FileAttributeTimeModifiedUsec int = "time::modified-usec"
-const FileAttributeTrashDeletionDate int = "trash::deletion-date"
-const FileAttributeTrashItemCount int = "trash::item-count"
-const FileAttributeTrashOrigPath int = "trash::orig-path"
-const FileAttributeUnixBlocks int = "unix::blocks"
-const FileAttributeUnixBlockSize int = "unix::block-size"
-const FileAttributeUnixDevice int = "unix::device"
-const FileAttributeUnixGid int = "unix::gid"
-const FileAttributeUnixInode int = "unix::inode"
-const FileAttributeUnixIsMountpoint int = "unix::is-mountpoint"
-const FileAttributeUnixMode int = "unix::mode"
-const FileAttributeUnixNlink int = "unix::nlink"
-const FileAttributeUnixRdev int = "unix::rdev"
-const FileAttributeUnixUid int = "unix::uid"
-const MenuAttributeAction int = "action"
-const MenuAttributeActionNamespace int = "action-namespace"
-const MenuAttributeIcon int = "icon"
-const MenuAttributeLabel int = "label"
-const MenuAttributeTarget int = "target"
-const MenuLinkSection int = "section"
-const MenuLinkSubmenu int = "submenu"
-const NativeVolumeMonitorExtensionPointName int = "gio-native-volume-monitor"
-const NetworkMonitorExtensionPointName int = "gio-network-monitor"
-const ProxyExtensionPointName int = "gio-proxy"
-const ProxyResolverExtensionPointName int = "gio-proxy-resolver"
-const SettingsBackendExtensionPointName int = "gsettings-backend"
-const TlsBackendExtensionPointName int = "gio-tls-backend"
-const TlsDatabasePurposeAuthenticateClient int = "1.3.6.1.5.5.7.3.2"
-const TlsDatabasePurposeAuthenticateServer int = "1.3.6.1.5.5.7.3.1"
-const VfsExtensionPointName int = "gio-vfs"
-const VolumeIdentifierKindClass int = "class"
-const VolumeIdentifierKindHalUdi int = "hal-udi"
-const VolumeIdentifierKindLabel int = "label"
-const VolumeIdentifierKindNfsMount int = "nfs-mount"
-const VolumeIdentifierKindUnixDevice int = "unix-device"
-const VolumeIdentifierKindUuid int = "uuid"
-const VolumeMonitorExtensionPointName int = "gio-volume-monitor"
+// UNSUPPORTED : DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME
+// UNSUPPORTED : FILE_ATTRIBUTE_ACCESS_CAN_DELETE
+// UNSUPPORTED : FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE
+// UNSUPPORTED : FILE_ATTRIBUTE_ACCESS_CAN_READ
+// UNSUPPORTED : FILE_ATTRIBUTE_ACCESS_CAN_RENAME
+// UNSUPPORTED : FILE_ATTRIBUTE_ACCESS_CAN_TRASH
+// UNSUPPORTED : FILE_ATTRIBUTE_ACCESS_CAN_WRITE
+// UNSUPPORTED : FILE_ATTRIBUTE_DOS_IS_ARCHIVE
+// UNSUPPORTED : FILE_ATTRIBUTE_DOS_IS_SYSTEM
+// UNSUPPORTED : FILE_ATTRIBUTE_ETAG_VALUE
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_FREE
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_READONLY
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_REMOTE
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_SIZE
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_TYPE
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_USED
+// UNSUPPORTED : FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW
+// UNSUPPORTED : FILE_ATTRIBUTE_GVFS_BACKEND
+// UNSUPPORTED : FILE_ATTRIBUTE_ID_FILE
+// UNSUPPORTED : FILE_ATTRIBUTE_ID_FILESYSTEM
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_START
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_HAL_UDI
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE
+// UNSUPPORTED : FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE
+// UNSUPPORTED : FILE_ATTRIBUTE_OWNER_GROUP
+// UNSUPPORTED : FILE_ATTRIBUTE_OWNER_USER
+// UNSUPPORTED : FILE_ATTRIBUTE_OWNER_USER_REAL
+// UNSUPPORTED : FILE_ATTRIBUTE_PREVIEW_ICON
+// UNSUPPORTED : FILE_ATTRIBUTE_RECENT_MODIFIED
+// UNSUPPORTED : FILE_ATTRIBUTE_SELINUX_CONTEXT
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_COPY_NAME
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_DESCRIPTION
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_EDIT_NAME
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_ICON
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_IS_BACKUP
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_IS_HIDDEN
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_IS_SYMLINK
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_IS_VOLATILE
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_NAME
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_SIZE
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_SORT_ORDER
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_TARGET_URI
+// UNSUPPORTED : FILE_ATTRIBUTE_STANDARD_TYPE
+// UNSUPPORTED : FILE_ATTRIBUTE_THUMBNAILING_FAILED
+// UNSUPPORTED : FILE_ATTRIBUTE_THUMBNAIL_IS_VALID
+// UNSUPPORTED : FILE_ATTRIBUTE_THUMBNAIL_PATH
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_ACCESS
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_ACCESS_USEC
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_CHANGED
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_CHANGED_USEC
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_CREATED
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_CREATED_USEC
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_MODIFIED
+// UNSUPPORTED : FILE_ATTRIBUTE_TIME_MODIFIED_USEC
+// UNSUPPORTED : FILE_ATTRIBUTE_TRASH_DELETION_DATE
+// UNSUPPORTED : FILE_ATTRIBUTE_TRASH_ITEM_COUNT
+// UNSUPPORTED : FILE_ATTRIBUTE_TRASH_ORIG_PATH
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_BLOCKS
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_BLOCK_SIZE
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_DEVICE
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_GID
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_INODE
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_MODE
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_NLINK
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_RDEV
+// UNSUPPORTED : FILE_ATTRIBUTE_UNIX_UID
+// UNSUPPORTED : MENU_ATTRIBUTE_ACTION
+// UNSUPPORTED : MENU_ATTRIBUTE_ACTION_NAMESPACE
+// UNSUPPORTED : MENU_ATTRIBUTE_ICON
+// UNSUPPORTED : MENU_ATTRIBUTE_LABEL
+// UNSUPPORTED : MENU_ATTRIBUTE_TARGET
+// UNSUPPORTED : MENU_LINK_SECTION
+// UNSUPPORTED : MENU_LINK_SUBMENU
+// UNSUPPORTED : NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME
+// UNSUPPORTED : NETWORK_MONITOR_EXTENSION_POINT_NAME
+// UNSUPPORTED : PROXY_EXTENSION_POINT_NAME
+// UNSUPPORTED : PROXY_RESOLVER_EXTENSION_POINT_NAME
+// UNSUPPORTED : SETTINGS_BACKEND_EXTENSION_POINT_NAME
+// UNSUPPORTED : TLS_BACKEND_EXTENSION_POINT_NAME
+// UNSUPPORTED : TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT
+// UNSUPPORTED : TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER
+// UNSUPPORTED : VFS_EXTENSION_POINT_NAME
+// UNSUPPORTED : VOLUME_IDENTIFIER_KIND_CLASS
+// UNSUPPORTED : VOLUME_IDENTIFIER_KIND_HAL_UDI
+// UNSUPPORTED : VOLUME_IDENTIFIER_KIND_LABEL
+// UNSUPPORTED : VOLUME_IDENTIFIER_KIND_NFS_MOUNT
+// UNSUPPORTED : VOLUME_IDENTIFIER_KIND_UNIX_DEVICE
+// UNSUPPORTED : VOLUME_IDENTIFIER_KIND_UUID
+// UNSUPPORTED : VOLUME_MONITOR_EXTENSION_POINT_NAME

@@ -2,16 +2,17 @@
 
 package pango
 
-const AnalysisFlagCenteredBaseline int32 = "1"
-const AnalysisFlagIsEllipsis int32 = "2"
-const AttrIndexFromTextBeginning int32 = "0"
-const EngineTypeLang int = "PangoEngineLang"
-const EngineTypeShape int = "PangoEngineShape"
-const GlyphEmpty int = "268435455"
-const GlyphInvalidInput int = "4294967295"
-const GlyphUnknownFlag int = "268435456"
-const RenderTypeNone int = "PangoRenderNone"
-const Scale int32 = "1024"
-const UnknownGlyphHeight int32 = "14"
-const UnknownGlyphWidth int32 = "10"
-const VersionMinRequired int32 = "2"
+const ANALYSIS_FLAG_CENTERED_BASELINE int32 = "1"
+const ANALYSIS_FLAG_IS_ELLIPSIS int32 = "2"
+const ATTR_INDEX_FROM_TEXT_BEGINNING int32 = "0"
+
+// UNSUPPORTED : ENGINE_TYPE_LANG
+// UNSUPPORTED : ENGINE_TYPE_SHAPE
+// UNSUPPORTED : GLYPH_EMPTY
+// UNSUPPORTED : GLYPH_INVALID_INPUT
+// UNSUPPORTED : GLYPH_UNKNOWN_FLAG
+// UNSUPPORTED : RENDER_TYPE_NONE
+const SCALE int32 = "1024"
+const UNKNOWN_GLYPH_HEIGHT int32 = "14"
+const UNKNOWN_GLYPH_WIDTH int32 = "10"
+const VERSION_MIN_REQUIRED int32 = "2"

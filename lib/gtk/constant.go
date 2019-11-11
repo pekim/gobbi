@@ -2,265 +2,270 @@
 
 package gtk
 
-const BinaryAge int32 = "2230"
-const InputError int32 = "-1"
-const InterfaceAge int32 = "30"
-const LevelBarOffsetFull int = "full"
-const LevelBarOffsetHigh int = "high"
-const LevelBarOffsetLow int = "low"
-const MajorVersion int32 = "3"
-const MaxComposeLen int32 = "7"
-const MicroVersion int32 = "30"
-const MinorVersion int32 = "22"
-const PaperNameA3 int = "iso_a3"
-const PaperNameA4 int = "iso_a4"
-const PaperNameA5 int = "iso_a5"
-const PaperNameB5 int = "iso_b5"
-const PaperNameExecutive int = "na_executive"
-const PaperNameLegal int = "na_legal"
-const PaperNameLetter int = "na_letter"
-const PathPrioMask int32 = "15"
-const PrintSettingsCollate int = "collate"
-const PrintSettingsDefaultSource int = "default-source"
-const PrintSettingsDither int = "dither"
-const PrintSettingsDuplex int = "duplex"
-const PrintSettingsFinishings int = "finishings"
-const PrintSettingsMediaType int = "media-type"
-const PrintSettingsNumberUp int = "number-up"
-const PrintSettingsNumberUpLayout int = "number-up-layout"
-const PrintSettingsNCopies int = "n-copies"
-const PrintSettingsOrientation int = "orientation"
-const PrintSettingsOutputBasename int = "output-basename"
-const PrintSettingsOutputBin int = "output-bin"
-const PrintSettingsOutputDir int = "output-dir"
-const PrintSettingsOutputFileFormat int = "output-file-format"
-const PrintSettingsOutputUri int = "output-uri"
-const PrintSettingsPageRanges int = "page-ranges"
-const PrintSettingsPageSet int = "page-set"
-const PrintSettingsPaperFormat int = "paper-format"
-const PrintSettingsPaperHeight int = "paper-height"
-const PrintSettingsPaperWidth int = "paper-width"
-const PrintSettingsPrinter int = "printer"
-const PrintSettingsPrinterLpi int = "printer-lpi"
-const PrintSettingsPrintPages int = "print-pages"
-const PrintSettingsQuality int = "quality"
-const PrintSettingsResolution int = "resolution"
-const PrintSettingsResolutionX int = "resolution-x"
-const PrintSettingsResolutionY int = "resolution-y"
-const PrintSettingsReverse int = "reverse"
-const PrintSettingsScale int = "scale"
-const PrintSettingsUseColor int = "use-color"
-const PrintSettingsWin32DriverExtra int = "win32-driver-extra"
-const PrintSettingsWin32DriverVersion int = "win32-driver-version"
-const PriorityResize int32 = "10"
-const StockAbout int = "gtk-about"
-const StockAdd int = "gtk-add"
-const StockApply int = "gtk-apply"
-const StockBold int = "gtk-bold"
-const StockCancel int = "gtk-cancel"
-const StockCapsLockWarning int = "gtk-caps-lock-warning"
-const StockCdrom int = "gtk-cdrom"
-const StockClear int = "gtk-clear"
-const StockClose int = "gtk-close"
-const StockColorPicker int = "gtk-color-picker"
-const StockConnect int = "gtk-connect"
-const StockConvert int = "gtk-convert"
-const StockCopy int = "gtk-copy"
-const StockCut int = "gtk-cut"
-const StockDelete int = "gtk-delete"
-const StockDialogAuthentication int = "gtk-dialog-authentication"
-const StockDialogError int = "gtk-dialog-error"
-const StockDialogInfo int = "gtk-dialog-info"
-const StockDialogQuestion int = "gtk-dialog-question"
-const StockDialogWarning int = "gtk-dialog-warning"
-const StockDirectory int = "gtk-directory"
-const StockDiscard int = "gtk-discard"
-const StockDisconnect int = "gtk-disconnect"
-const StockDnd int = "gtk-dnd"
-const StockDndMultiple int = "gtk-dnd-multiple"
-const StockEdit int = "gtk-edit"
-const StockExecute int = "gtk-execute"
-const StockFile int = "gtk-file"
-const StockFind int = "gtk-find"
-const StockFindAndReplace int = "gtk-find-and-replace"
-const StockFloppy int = "gtk-floppy"
-const StockFullscreen int = "gtk-fullscreen"
-const StockGotoBottom int = "gtk-goto-bottom"
-const StockGotoFirst int = "gtk-goto-first"
-const StockGotoLast int = "gtk-goto-last"
-const StockGotoTop int = "gtk-goto-top"
-const StockGoBack int = "gtk-go-back"
-const StockGoDown int = "gtk-go-down"
-const StockGoForward int = "gtk-go-forward"
-const StockGoUp int = "gtk-go-up"
-const StockHarddisk int = "gtk-harddisk"
-const StockHelp int = "gtk-help"
-const StockHome int = "gtk-home"
-const StockIndent int = "gtk-indent"
-const StockIndex int = "gtk-index"
-const StockInfo int = "gtk-info"
-const StockItalic int = "gtk-italic"
-const StockJumpTo int = "gtk-jump-to"
-const StockJustifyCenter int = "gtk-justify-center"
-const StockJustifyFill int = "gtk-justify-fill"
-const StockJustifyLeft int = "gtk-justify-left"
-const StockJustifyRight int = "gtk-justify-right"
-const StockLeaveFullscreen int = "gtk-leave-fullscreen"
-const StockMediaForward int = "gtk-media-forward"
-const StockMediaNext int = "gtk-media-next"
-const StockMediaPause int = "gtk-media-pause"
-const StockMediaPlay int = "gtk-media-play"
-const StockMediaPrevious int = "gtk-media-previous"
-const StockMediaRecord int = "gtk-media-record"
-const StockMediaRewind int = "gtk-media-rewind"
-const StockMediaStop int = "gtk-media-stop"
-const StockMissingImage int = "gtk-missing-image"
-const StockNetwork int = "gtk-network"
-const StockNew int = "gtk-new"
-const StockNo int = "gtk-no"
-const StockOk int = "gtk-ok"
-const StockOpen int = "gtk-open"
-const StockOrientationLandscape int = "gtk-orientation-landscape"
-const StockOrientationPortrait int = "gtk-orientation-portrait"
-const StockOrientationReverseLandscape int = "gtk-orientation-reverse-landscape"
-const StockOrientationReversePortrait int = "gtk-orientation-reverse-portrait"
-const StockPageSetup int = "gtk-page-setup"
-const StockPaste int = "gtk-paste"
-const StockPreferences int = "gtk-preferences"
-const StockPrint int = "gtk-print"
-const StockPrintError int = "gtk-print-error"
-const StockPrintPaused int = "gtk-print-paused"
-const StockPrintPreview int = "gtk-print-preview"
-const StockPrintReport int = "gtk-print-report"
-const StockPrintWarning int = "gtk-print-warning"
-const StockProperties int = "gtk-properties"
-const StockQuit int = "gtk-quit"
-const StockRedo int = "gtk-redo"
-const StockRefresh int = "gtk-refresh"
-const StockRemove int = "gtk-remove"
-const StockRevertToSaved int = "gtk-revert-to-saved"
-const StockSave int = "gtk-save"
-const StockSaveAs int = "gtk-save-as"
-const StockSelectAll int = "gtk-select-all"
-const StockSelectColor int = "gtk-select-color"
-const StockSelectFont int = "gtk-select-font"
-const StockSortAscending int = "gtk-sort-ascending"
-const StockSortDescending int = "gtk-sort-descending"
-const StockSpellCheck int = "gtk-spell-check"
-const StockStop int = "gtk-stop"
-const StockStrikethrough int = "gtk-strikethrough"
-const StockUndelete int = "gtk-undelete"
-const StockUnderline int = "gtk-underline"
-const StockUndo int = "gtk-undo"
-const StockUnindent int = "gtk-unindent"
-const StockYes int = "gtk-yes"
-const StockZoom100 int = "gtk-zoom-100"
-const StockZoomFit int = "gtk-zoom-fit"
-const StockZoomIn int = "gtk-zoom-in"
-const StockZoomOut int = "gtk-zoom-out"
-const StyleClassAccelerator int = "accelerator"
-const StyleClassArrow int = "arrow"
-const StyleClassBackground int = "background"
-const StyleClassBottom int = "bottom"
-const StyleClassButton int = "button"
-const StyleClassCalendar int = "calendar"
-const StyleClassCell int = "cell"
-const StyleClassCheck int = "check"
-const StyleClassComboboxEntry int = "combobox-entry"
-const StyleClassContextMenu int = "context-menu"
-const StyleClassCsd int = "csd"
-const StyleClassCursorHandle int = "cursor-handle"
-const StyleClassDefault int = "default"
-const StyleClassDestructiveAction int = "destructive-action"
-const StyleClassDimLabel int = "dim-label"
-const StyleClassDnd int = "dnd"
-const StyleClassDock int = "dock"
-const StyleClassEntry int = "entry"
-const StyleClassError int = "error"
-const StyleClassExpander int = "expander"
-const StyleClassFlat int = "flat"
-const StyleClassFrame int = "frame"
-const StyleClassGrip int = "grip"
-const StyleClassHeader int = "header"
-const StyleClassHighlight int = "highlight"
-const StyleClassHorizontal int = "horizontal"
-const StyleClassImage int = "image"
-const StyleClassInfo int = "info"
-const StyleClassInlineToolbar int = "inline-toolbar"
-const StyleClassInsertionCursor int = "insertion-cursor"
-const StyleClassLabel int = "label"
-const StyleClassLeft int = "left"
-const StyleClassLevelBar int = "level-bar"
-const StyleClassLinked int = "linked"
-const StyleClassList int = "list"
-const StyleClassListRow int = "list-row"
-const StyleClassMark int = "mark"
-const StyleClassMenu int = "menu"
-const StyleClassMenubar int = "menubar"
-const StyleClassMenuitem int = "menuitem"
-const StyleClassMessageDialog int = "message-dialog"
-const StyleClassMonospace int = "monospace"
-const StyleClassNeedsAttention int = "needs-attention"
-const StyleClassNotebook int = "notebook"
-const StyleClassOsd int = "osd"
-const StyleClassOvershoot int = "overshoot"
-const StyleClassPaneSeparator int = "pane-separator"
-const StyleClassPaper int = "paper"
-const StyleClassPopover int = "popover"
-const StyleClassPopup int = "popup"
-const StyleClassPrimaryToolbar int = "primary-toolbar"
-const StyleClassProgressbar int = "progressbar"
-const StyleClassPulse int = "pulse"
-const StyleClassQuestion int = "question"
-const StyleClassRadio int = "radio"
-const StyleClassRaised int = "raised"
-const StyleClassReadOnly int = "read-only"
-const StyleClassRight int = "right"
-const StyleClassRubberband int = "rubberband"
-const StyleClassScale int = "scale"
-const StyleClassScaleHasMarksAbove int = "scale-has-marks-above"
-const StyleClassScaleHasMarksBelow int = "scale-has-marks-below"
-const StyleClassScrollbar int = "scrollbar"
-const StyleClassScrollbarsJunction int = "scrollbars-junction"
-const StyleClassSeparator int = "separator"
-const StyleClassSidebar int = "sidebar"
-const StyleClassSlider int = "slider"
-const StyleClassSpinbutton int = "spinbutton"
-const StyleClassSpinner int = "spinner"
-const StyleClassStatusbar int = "statusbar"
-const StyleClassSubtitle int = "subtitle"
-const StyleClassSuggestedAction int = "suggested-action"
-const StyleClassTitle int = "title"
-const StyleClassTitlebar int = "titlebar"
-const StyleClassToolbar int = "toolbar"
-const StyleClassTooltip int = "tooltip"
-const StyleClassTop int = "top"
-const StyleClassTouchSelection int = "touch-selection"
-const StyleClassTrough int = "trough"
-const StyleClassUndershoot int = "undershoot"
-const StyleClassVertical int = "vertical"
-const StyleClassView int = "view"
-const StyleClassWarning int = "warning"
-const StyleClassWide int = "wide"
-const StylePropertyBackgroundColor int = "background-color"
-const StylePropertyBackgroundImage int = "background-image"
-const StylePropertyBorderColor int = "border-color"
-const StylePropertyBorderRadius int = "border-radius"
-const StylePropertyBorderStyle int = "border-style"
-const StylePropertyBorderWidth int = "border-width"
-const StylePropertyColor int = "color"
-const StylePropertyFont int = "font"
-const StylePropertyMargin int = "margin"
-const StylePropertyPadding int = "padding"
-const StyleProviderPriorityApplication int32 = "600"
-const StyleProviderPriorityFallback int32 = "1"
-const StyleProviderPrioritySettings int32 = "400"
-const StyleProviderPriorityTheme int32 = "200"
-const StyleProviderPriorityUser int32 = "800"
-const StyleRegionColumn int = "column"
-const StyleRegionColumnHeader int = "column-header"
-const StyleRegionRow int = "row"
-const StyleRegionTab int = "tab"
-const TextViewPriorityValidate int32 = "5"
-const TreeSortableDefaultSortColumnId int32 = "-1"
-const TreeSortableUnsortedSortColumnId int32 = "-2"
+const BINARY_AGE int32 = "2230"
+const INPUT_ERROR int32 = "-1"
+const INTERFACE_AGE int32 = "30"
+
+// UNSUPPORTED : LEVEL_BAR_OFFSET_FULL
+// UNSUPPORTED : LEVEL_BAR_OFFSET_HIGH
+// UNSUPPORTED : LEVEL_BAR_OFFSET_LOW
+const MAJOR_VERSION int32 = "3"
+const MAX_COMPOSE_LEN int32 = "7"
+const MICRO_VERSION int32 = "30"
+const MINOR_VERSION int32 = "22"
+
+// UNSUPPORTED : PAPER_NAME_A3
+// UNSUPPORTED : PAPER_NAME_A4
+// UNSUPPORTED : PAPER_NAME_A5
+// UNSUPPORTED : PAPER_NAME_B5
+// UNSUPPORTED : PAPER_NAME_EXECUTIVE
+// UNSUPPORTED : PAPER_NAME_LEGAL
+// UNSUPPORTED : PAPER_NAME_LETTER
+const PATH_PRIO_MASK int32 = "15"
+
+// UNSUPPORTED : PRINT_SETTINGS_COLLATE
+// UNSUPPORTED : PRINT_SETTINGS_DEFAULT_SOURCE
+// UNSUPPORTED : PRINT_SETTINGS_DITHER
+// UNSUPPORTED : PRINT_SETTINGS_DUPLEX
+// UNSUPPORTED : PRINT_SETTINGS_FINISHINGS
+// UNSUPPORTED : PRINT_SETTINGS_MEDIA_TYPE
+// UNSUPPORTED : PRINT_SETTINGS_NUMBER_UP
+// UNSUPPORTED : PRINT_SETTINGS_NUMBER_UP_LAYOUT
+// UNSUPPORTED : PRINT_SETTINGS_N_COPIES
+// UNSUPPORTED : PRINT_SETTINGS_ORIENTATION
+// UNSUPPORTED : PRINT_SETTINGS_OUTPUT_BASENAME
+// UNSUPPORTED : PRINT_SETTINGS_OUTPUT_BIN
+// UNSUPPORTED : PRINT_SETTINGS_OUTPUT_DIR
+// UNSUPPORTED : PRINT_SETTINGS_OUTPUT_FILE_FORMAT
+// UNSUPPORTED : PRINT_SETTINGS_OUTPUT_URI
+// UNSUPPORTED : PRINT_SETTINGS_PAGE_RANGES
+// UNSUPPORTED : PRINT_SETTINGS_PAGE_SET
+// UNSUPPORTED : PRINT_SETTINGS_PAPER_FORMAT
+// UNSUPPORTED : PRINT_SETTINGS_PAPER_HEIGHT
+// UNSUPPORTED : PRINT_SETTINGS_PAPER_WIDTH
+// UNSUPPORTED : PRINT_SETTINGS_PRINTER
+// UNSUPPORTED : PRINT_SETTINGS_PRINTER_LPI
+// UNSUPPORTED : PRINT_SETTINGS_PRINT_PAGES
+// UNSUPPORTED : PRINT_SETTINGS_QUALITY
+// UNSUPPORTED : PRINT_SETTINGS_RESOLUTION
+// UNSUPPORTED : PRINT_SETTINGS_RESOLUTION_X
+// UNSUPPORTED : PRINT_SETTINGS_RESOLUTION_Y
+// UNSUPPORTED : PRINT_SETTINGS_REVERSE
+// UNSUPPORTED : PRINT_SETTINGS_SCALE
+// UNSUPPORTED : PRINT_SETTINGS_USE_COLOR
+// UNSUPPORTED : PRINT_SETTINGS_WIN32_DRIVER_EXTRA
+// UNSUPPORTED : PRINT_SETTINGS_WIN32_DRIVER_VERSION
+const PRIORITY_RESIZE int32 = "10"
+
+// UNSUPPORTED : STOCK_ABOUT
+// UNSUPPORTED : STOCK_ADD
+// UNSUPPORTED : STOCK_APPLY
+// UNSUPPORTED : STOCK_BOLD
+// UNSUPPORTED : STOCK_CANCEL
+// UNSUPPORTED : STOCK_CAPS_LOCK_WARNING
+// UNSUPPORTED : STOCK_CDROM
+// UNSUPPORTED : STOCK_CLEAR
+// UNSUPPORTED : STOCK_CLOSE
+// UNSUPPORTED : STOCK_COLOR_PICKER
+// UNSUPPORTED : STOCK_CONNECT
+// UNSUPPORTED : STOCK_CONVERT
+// UNSUPPORTED : STOCK_COPY
+// UNSUPPORTED : STOCK_CUT
+// UNSUPPORTED : STOCK_DELETE
+// UNSUPPORTED : STOCK_DIALOG_AUTHENTICATION
+// UNSUPPORTED : STOCK_DIALOG_ERROR
+// UNSUPPORTED : STOCK_DIALOG_INFO
+// UNSUPPORTED : STOCK_DIALOG_QUESTION
+// UNSUPPORTED : STOCK_DIALOG_WARNING
+// UNSUPPORTED : STOCK_DIRECTORY
+// UNSUPPORTED : STOCK_DISCARD
+// UNSUPPORTED : STOCK_DISCONNECT
+// UNSUPPORTED : STOCK_DND
+// UNSUPPORTED : STOCK_DND_MULTIPLE
+// UNSUPPORTED : STOCK_EDIT
+// UNSUPPORTED : STOCK_EXECUTE
+// UNSUPPORTED : STOCK_FILE
+// UNSUPPORTED : STOCK_FIND
+// UNSUPPORTED : STOCK_FIND_AND_REPLACE
+// UNSUPPORTED : STOCK_FLOPPY
+// UNSUPPORTED : STOCK_FULLSCREEN
+// UNSUPPORTED : STOCK_GOTO_BOTTOM
+// UNSUPPORTED : STOCK_GOTO_FIRST
+// UNSUPPORTED : STOCK_GOTO_LAST
+// UNSUPPORTED : STOCK_GOTO_TOP
+// UNSUPPORTED : STOCK_GO_BACK
+// UNSUPPORTED : STOCK_GO_DOWN
+// UNSUPPORTED : STOCK_GO_FORWARD
+// UNSUPPORTED : STOCK_GO_UP
+// UNSUPPORTED : STOCK_HARDDISK
+// UNSUPPORTED : STOCK_HELP
+// UNSUPPORTED : STOCK_HOME
+// UNSUPPORTED : STOCK_INDENT
+// UNSUPPORTED : STOCK_INDEX
+// UNSUPPORTED : STOCK_INFO
+// UNSUPPORTED : STOCK_ITALIC
+// UNSUPPORTED : STOCK_JUMP_TO
+// UNSUPPORTED : STOCK_JUSTIFY_CENTER
+// UNSUPPORTED : STOCK_JUSTIFY_FILL
+// UNSUPPORTED : STOCK_JUSTIFY_LEFT
+// UNSUPPORTED : STOCK_JUSTIFY_RIGHT
+// UNSUPPORTED : STOCK_LEAVE_FULLSCREEN
+// UNSUPPORTED : STOCK_MEDIA_FORWARD
+// UNSUPPORTED : STOCK_MEDIA_NEXT
+// UNSUPPORTED : STOCK_MEDIA_PAUSE
+// UNSUPPORTED : STOCK_MEDIA_PLAY
+// UNSUPPORTED : STOCK_MEDIA_PREVIOUS
+// UNSUPPORTED : STOCK_MEDIA_RECORD
+// UNSUPPORTED : STOCK_MEDIA_REWIND
+// UNSUPPORTED : STOCK_MEDIA_STOP
+// UNSUPPORTED : STOCK_MISSING_IMAGE
+// UNSUPPORTED : STOCK_NETWORK
+// UNSUPPORTED : STOCK_NEW
+// UNSUPPORTED : STOCK_NO
+// UNSUPPORTED : STOCK_OK
+// UNSUPPORTED : STOCK_OPEN
+// UNSUPPORTED : STOCK_ORIENTATION_LANDSCAPE
+// UNSUPPORTED : STOCK_ORIENTATION_PORTRAIT
+// UNSUPPORTED : STOCK_ORIENTATION_REVERSE_LANDSCAPE
+// UNSUPPORTED : STOCK_ORIENTATION_REVERSE_PORTRAIT
+// UNSUPPORTED : STOCK_PAGE_SETUP
+// UNSUPPORTED : STOCK_PASTE
+// UNSUPPORTED : STOCK_PREFERENCES
+// UNSUPPORTED : STOCK_PRINT
+// UNSUPPORTED : STOCK_PRINT_ERROR
+// UNSUPPORTED : STOCK_PRINT_PAUSED
+// UNSUPPORTED : STOCK_PRINT_PREVIEW
+// UNSUPPORTED : STOCK_PRINT_REPORT
+// UNSUPPORTED : STOCK_PRINT_WARNING
+// UNSUPPORTED : STOCK_PROPERTIES
+// UNSUPPORTED : STOCK_QUIT
+// UNSUPPORTED : STOCK_REDO
+// UNSUPPORTED : STOCK_REFRESH
+// UNSUPPORTED : STOCK_REMOVE
+// UNSUPPORTED : STOCK_REVERT_TO_SAVED
+// UNSUPPORTED : STOCK_SAVE
+// UNSUPPORTED : STOCK_SAVE_AS
+// UNSUPPORTED : STOCK_SELECT_ALL
+// UNSUPPORTED : STOCK_SELECT_COLOR
+// UNSUPPORTED : STOCK_SELECT_FONT
+// UNSUPPORTED : STOCK_SORT_ASCENDING
+// UNSUPPORTED : STOCK_SORT_DESCENDING
+// UNSUPPORTED : STOCK_SPELL_CHECK
+// UNSUPPORTED : STOCK_STOP
+// UNSUPPORTED : STOCK_STRIKETHROUGH
+// UNSUPPORTED : STOCK_UNDELETE
+// UNSUPPORTED : STOCK_UNDERLINE
+// UNSUPPORTED : STOCK_UNDO
+// UNSUPPORTED : STOCK_UNINDENT
+// UNSUPPORTED : STOCK_YES
+// UNSUPPORTED : STOCK_ZOOM_100
+// UNSUPPORTED : STOCK_ZOOM_FIT
+// UNSUPPORTED : STOCK_ZOOM_IN
+// UNSUPPORTED : STOCK_ZOOM_OUT
+// UNSUPPORTED : STYLE_CLASS_ACCELERATOR
+// UNSUPPORTED : STYLE_CLASS_ARROW
+// UNSUPPORTED : STYLE_CLASS_BACKGROUND
+// UNSUPPORTED : STYLE_CLASS_BOTTOM
+// UNSUPPORTED : STYLE_CLASS_BUTTON
+// UNSUPPORTED : STYLE_CLASS_CALENDAR
+// UNSUPPORTED : STYLE_CLASS_CELL
+// UNSUPPORTED : STYLE_CLASS_CHECK
+// UNSUPPORTED : STYLE_CLASS_COMBOBOX_ENTRY
+// UNSUPPORTED : STYLE_CLASS_CONTEXT_MENU
+// UNSUPPORTED : STYLE_CLASS_CSD
+// UNSUPPORTED : STYLE_CLASS_CURSOR_HANDLE
+// UNSUPPORTED : STYLE_CLASS_DEFAULT
+// UNSUPPORTED : STYLE_CLASS_DESTRUCTIVE_ACTION
+// UNSUPPORTED : STYLE_CLASS_DIM_LABEL
+// UNSUPPORTED : STYLE_CLASS_DND
+// UNSUPPORTED : STYLE_CLASS_DOCK
+// UNSUPPORTED : STYLE_CLASS_ENTRY
+// UNSUPPORTED : STYLE_CLASS_ERROR
+// UNSUPPORTED : STYLE_CLASS_EXPANDER
+// UNSUPPORTED : STYLE_CLASS_FLAT
+// UNSUPPORTED : STYLE_CLASS_FRAME
+// UNSUPPORTED : STYLE_CLASS_GRIP
+// UNSUPPORTED : STYLE_CLASS_HEADER
+// UNSUPPORTED : STYLE_CLASS_HIGHLIGHT
+// UNSUPPORTED : STYLE_CLASS_HORIZONTAL
+// UNSUPPORTED : STYLE_CLASS_IMAGE
+// UNSUPPORTED : STYLE_CLASS_INFO
+// UNSUPPORTED : STYLE_CLASS_INLINE_TOOLBAR
+// UNSUPPORTED : STYLE_CLASS_INSERTION_CURSOR
+// UNSUPPORTED : STYLE_CLASS_LABEL
+// UNSUPPORTED : STYLE_CLASS_LEFT
+// UNSUPPORTED : STYLE_CLASS_LEVEL_BAR
+// UNSUPPORTED : STYLE_CLASS_LINKED
+// UNSUPPORTED : STYLE_CLASS_LIST
+// UNSUPPORTED : STYLE_CLASS_LIST_ROW
+// UNSUPPORTED : STYLE_CLASS_MARK
+// UNSUPPORTED : STYLE_CLASS_MENU
+// UNSUPPORTED : STYLE_CLASS_MENUBAR
+// UNSUPPORTED : STYLE_CLASS_MENUITEM
+// UNSUPPORTED : STYLE_CLASS_MESSAGE_DIALOG
+// UNSUPPORTED : STYLE_CLASS_MONOSPACE
+// UNSUPPORTED : STYLE_CLASS_NEEDS_ATTENTION
+// UNSUPPORTED : STYLE_CLASS_NOTEBOOK
+// UNSUPPORTED : STYLE_CLASS_OSD
+// UNSUPPORTED : STYLE_CLASS_OVERSHOOT
+// UNSUPPORTED : STYLE_CLASS_PANE_SEPARATOR
+// UNSUPPORTED : STYLE_CLASS_PAPER
+// UNSUPPORTED : STYLE_CLASS_POPOVER
+// UNSUPPORTED : STYLE_CLASS_POPUP
+// UNSUPPORTED : STYLE_CLASS_PRIMARY_TOOLBAR
+// UNSUPPORTED : STYLE_CLASS_PROGRESSBAR
+// UNSUPPORTED : STYLE_CLASS_PULSE
+// UNSUPPORTED : STYLE_CLASS_QUESTION
+// UNSUPPORTED : STYLE_CLASS_RADIO
+// UNSUPPORTED : STYLE_CLASS_RAISED
+// UNSUPPORTED : STYLE_CLASS_READ_ONLY
+// UNSUPPORTED : STYLE_CLASS_RIGHT
+// UNSUPPORTED : STYLE_CLASS_RUBBERBAND
+// UNSUPPORTED : STYLE_CLASS_SCALE
+// UNSUPPORTED : STYLE_CLASS_SCALE_HAS_MARKS_ABOVE
+// UNSUPPORTED : STYLE_CLASS_SCALE_HAS_MARKS_BELOW
+// UNSUPPORTED : STYLE_CLASS_SCROLLBAR
+// UNSUPPORTED : STYLE_CLASS_SCROLLBARS_JUNCTION
+// UNSUPPORTED : STYLE_CLASS_SEPARATOR
+// UNSUPPORTED : STYLE_CLASS_SIDEBAR
+// UNSUPPORTED : STYLE_CLASS_SLIDER
+// UNSUPPORTED : STYLE_CLASS_SPINBUTTON
+// UNSUPPORTED : STYLE_CLASS_SPINNER
+// UNSUPPORTED : STYLE_CLASS_STATUSBAR
+// UNSUPPORTED : STYLE_CLASS_SUBTITLE
+// UNSUPPORTED : STYLE_CLASS_SUGGESTED_ACTION
+// UNSUPPORTED : STYLE_CLASS_TITLE
+// UNSUPPORTED : STYLE_CLASS_TITLEBAR
+// UNSUPPORTED : STYLE_CLASS_TOOLBAR
+// UNSUPPORTED : STYLE_CLASS_TOOLTIP
+// UNSUPPORTED : STYLE_CLASS_TOP
+// UNSUPPORTED : STYLE_CLASS_TOUCH_SELECTION
+// UNSUPPORTED : STYLE_CLASS_TROUGH
+// UNSUPPORTED : STYLE_CLASS_UNDERSHOOT
+// UNSUPPORTED : STYLE_CLASS_VERTICAL
+// UNSUPPORTED : STYLE_CLASS_VIEW
+// UNSUPPORTED : STYLE_CLASS_WARNING
+// UNSUPPORTED : STYLE_CLASS_WIDE
+// UNSUPPORTED : STYLE_PROPERTY_BACKGROUND_COLOR
+// UNSUPPORTED : STYLE_PROPERTY_BACKGROUND_IMAGE
+// UNSUPPORTED : STYLE_PROPERTY_BORDER_COLOR
+// UNSUPPORTED : STYLE_PROPERTY_BORDER_RADIUS
+// UNSUPPORTED : STYLE_PROPERTY_BORDER_STYLE
+// UNSUPPORTED : STYLE_PROPERTY_BORDER_WIDTH
+// UNSUPPORTED : STYLE_PROPERTY_COLOR
+// UNSUPPORTED : STYLE_PROPERTY_FONT
+// UNSUPPORTED : STYLE_PROPERTY_MARGIN
+// UNSUPPORTED : STYLE_PROPERTY_PADDING
+const STYLE_PROVIDER_PRIORITY_APPLICATION int32 = "600"
+const STYLE_PROVIDER_PRIORITY_FALLBACK int32 = "1"
+const STYLE_PROVIDER_PRIORITY_SETTINGS int32 = "400"
+const STYLE_PROVIDER_PRIORITY_THEME int32 = "200"
+const STYLE_PROVIDER_PRIORITY_USER int32 = "800"
+
+// UNSUPPORTED : STYLE_REGION_COLUMN
+// UNSUPPORTED : STYLE_REGION_COLUMN_HEADER
+// UNSUPPORTED : STYLE_REGION_ROW
+// UNSUPPORTED : STYLE_REGION_TAB
+const TEXT_VIEW_PRIORITY_VALIDATE int32 = "5"
+const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID int32 = "-1"
+const TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID int32 = "-2"

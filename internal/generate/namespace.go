@@ -52,18 +52,20 @@ func (n *Namespace) generateLibDir() {
 	}
 }
 
-func (n *Namespace) generateFile(name string, generateContent func(f *jen.File)) {
-	file := jen.NewFile(n.goPackageName)
+func (n *Namespace) generateFile(name string, generateContent func(f *file)) {
+	f := &file{
+		jen.NewFile(n.goPackageName),
+	}
 
 	// Use a standard generated file comment format.
 	// https://github.com/golang/go/issues/13560#issuecomment-288457920
-	file.HeaderComment(("Code generated - DO NOT EDIT."))
-	file.Line()
+	f.HeaderComment(("Code generated - DO NOT EDIT."))
+	f.Line()
 
-	generateContent(file)
+	generateContent(f)
 
 	filepath := path.Join(n.libDir, fmt.Sprintf("%s.go", name))
-	err := file.Save(filepath)
+	err := f.Save(filepath)
 	if err != nil {
 		panic(err)
 	}

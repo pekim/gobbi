@@ -15,14 +15,14 @@ type Type struct {
 func (t *Type) jenGoType() *jen.Statement {
 	if t == nil || t.CType == "" {
 		fmt.Println("No Ctype for", t)
-		return jen.Id("int")
+		return nil
 	}
 
 	goType, ok := numberCTypeMap[t.CType]
 	if !ok {
 		//panic(fmt.Sprintf("No Go type for %s", t.CType))
 		fmt.Printf("No Go type for %s\n", t.CType)
-		return jen.Id("int")
+		return nil
 	}
 
 	return jen.Id(goType)

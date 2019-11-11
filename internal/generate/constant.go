@@ -2,7 +2,6 @@ package generate
 
 import (
 	"fmt"
-	"github.com/dave/jennifer/jen"
 )
 
 type Constant struct {
@@ -21,7 +20,7 @@ func (c *Constant) init(ns *Namespace) {
 	c.Namespace = ns
 }
 
-func (c Constant) generate(f *jen.File) {
+func (c Constant) generate(f *file) {
 	if c.Type == nil {
 		fmt.Println(c)
 		fmt.Println("  ", c.CType)
@@ -29,10 +28,21 @@ func (c Constant) generate(f *jen.File) {
 		return
 	}
 
+	//if makeExportedGoName(c.Name) != c.Name {
+	//	fmt.Println(makeExportedGoName(c.Name), c.Name)
+	//	panic(c.Name)
+	//}
+
+	goType := c.Type.jenGoType()
+	if goType == nil {
+		f.unsupported(c.Name)
+		return
+	}
+
 	f.
 		Const().
-		Id(makeExportedGoName(c.Name)).
-		Add(c.Type.jenGoType()).
+		Id(c.Name).
+		Add(goType).
 		Op("=").
 		Lit(c.Value)
 }

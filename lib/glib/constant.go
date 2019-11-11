@@ -2,134 +2,144 @@
 
 package glib
 
-const AnalyzerAnalyzing int32 = "1"
-const AsciiDtostrBufSize int32 = "39"
-const BigEndian int32 = "4321"
-const CsetA2Z int = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-const CsetDigits int = "0123456789"
-const CsetA2Z int = "abcdefghijklmnopqrstuvwxyz"
-const DatalistFlagsMask int32 = "3"
-const DateBadDay int32 = "0"
-const DateBadJulian int32 = "0"
-const DateBadYear int32 = "0"
-const DirSeparator int32 = "47"
-const DirSeparatorS int = "/"
+const ANALYZER_ANALYZING int32 = "1"
+const ASCII_DTOSTR_BUF_SIZE int32 = "39"
+const BIG_ENDIAN int32 = "4321"
+
+// UNSUPPORTED : CSET_A_2_Z
+// UNSUPPORTED : CSET_DIGITS
+// UNSUPPORTED : CSET_a_2_z
+const DATALIST_FLAGS_MASK int32 = "3"
+const DATE_BAD_DAY int32 = "0"
+const DATE_BAD_JULIAN int32 = "0"
+const DATE_BAD_YEAR int32 = "0"
+const DIR_SEPARATOR int32 = "47"
+
+// UNSUPPORTED : DIR_SEPARATOR_S
 const E float64 = "2.718282"
-const Gint16Format int = "hi"
-const Gint16Modifier int = "h"
-const Gint32Format int = "i"
-const Gint32Modifier int = ""
-const Gint64Format int = "li"
-const Gint64Modifier int = "l"
-const GintptrFormat int = "li"
-const GintptrModifier int = "l"
-const GnucFunction int = ""
-const GnucPrettyFunction int = ""
-const GsizeFormat int = "lu"
-const GsizeModifier int = "l"
-const GssizeFormat int = "li"
-const GssizeModifier int = "l"
-const Guint16Format int = "hu"
-const Guint32Format int = "u"
-const Guint64Format int = "lu"
-const GuintptrFormat int = "lu"
-const HaveGint64 int32 = "1"
-const HaveGnucVarargs int32 = "1"
-const HaveGnucVisibility int32 = "1"
-const HaveGrowingStack int32 = "0"
-const HaveIsoVarargs int32 = "1"
-const HookFlagUserShift int32 = "4"
-const Ieee754DoubleBias int32 = "1023"
-const Ieee754FloatBias int32 = "127"
-const KeyFileDesktopActionGroupPrefix int = "Desktop Action"
-const KeyFileDesktopGroup int = "Desktop Entry"
-const KeyFileDesktopKeyActions int = "Actions"
-const KeyFileDesktopKeyCategories int = "Categories"
-const KeyFileDesktopKeyComment int = "Comment"
-const KeyFileDesktopKeyDbusActivatable int = "DBusActivatable"
-const KeyFileDesktopKeyExec int = "Exec"
-const KeyFileDesktopKeyFullname int = "X-GNOME-FullName"
-const KeyFileDesktopKeyGenericName int = "GenericName"
-const KeyFileDesktopKeyGettextDomain int = "X-GNOME-Gettext-Domain"
-const KeyFileDesktopKeyHidden int = "Hidden"
-const KeyFileDesktopKeyIcon int = "Icon"
-const KeyFileDesktopKeyKeywords int = "Keywords"
-const KeyFileDesktopKeyMimeType int = "MimeType"
-const KeyFileDesktopKeyName int = "Name"
-const KeyFileDesktopKeyNotShowIn int = "NotShowIn"
-const KeyFileDesktopKeyNoDisplay int = "NoDisplay"
-const KeyFileDesktopKeyOnlyShowIn int = "OnlyShowIn"
-const KeyFileDesktopKeyPath int = "Path"
-const KeyFileDesktopKeyStartupNotify int = "StartupNotify"
-const KeyFileDesktopKeyStartupWmClass int = "StartupWMClass"
-const KeyFileDesktopKeyTerminal int = "Terminal"
-const KeyFileDesktopKeyTryExec int = "TryExec"
-const KeyFileDesktopKeyType int = "Type"
-const KeyFileDesktopKeyUrl int = "URL"
-const KeyFileDesktopKeyVersion int = "Version"
-const KeyFileDesktopTypeApplication int = "Application"
-const KeyFileDesktopTypeDirectory int = "Directory"
-const KeyFileDesktopTypeLink int = "Link"
-const LittleEndian int32 = "1234"
-const Ln10 float64 = "2.302585"
-const Ln2 float64 = "0.693147"
-const Log2Base10 float64 = "0.301030"
-const LogDomain rune = "0"
-const LogFatalMask int32 = "5"
-const LogLevelUserShift int32 = "8"
-const MajorVersion int32 = "2"
-const Maxint16 int16 = "32767"
-const Maxint32 int32 = "2147483647"
-const Maxint64 int64 = "9223372036854775807"
-const Maxint8 int8 = "127"
-const Maxuint16 uint16 = "65535"
-const Maxuint32 uint32 = "4294967295"
-const Maxuint64 uint64 = "18446744073709551615"
-const Maxuint8 uint8 = "255"
-const MicroVersion int32 = "1"
-const Minint16 int16 = "-32768"
-const Minint32 int32 = "-2147483648"
-const Minint64 int64 = "-9223372036854775808"
-const Minint8 int8 = "-128"
-const MinorVersion int32 = "56"
-const ModuleSuffix int = "so"
-const OptionRemaining int = ""
-const PdpEndian int32 = "3412"
-const Pi float64 = "3.141593"
-const PidFormat int = "i"
-const Pi2 float64 = "1.570796"
-const Pi4 float64 = "0.785398"
-const PollfdFormat int = "%d"
-const PriorityDefault int32 = "0"
-const PriorityDefaultIdle int32 = "200"
-const PriorityHigh int32 = "-100"
-const PriorityHighIdle int32 = "100"
-const PriorityLow int32 = "300"
-const SearchpathSeparator int32 = "58"
-const SearchpathSeparatorS int = ":"
-const SizeofLong int32 = "8"
-const SizeofSizeT int32 = "8"
-const SizeofSsizeT int32 = "8"
-const SizeofVoidP int32 = "8"
-const SourceContinue bool = "true"
-const SourceRemove bool = "false"
-const Sqrt2 float64 = "1.414214"
-const StrDelimiters int = "_-|> <."
-const SysdefAfInet int32 = "2"
-const SysdefAfInet6 int32 = "10"
-const SysdefAfUnix int32 = "1"
-const SysdefMsgDontroute int32 = "4"
-const SysdefMsgOob int32 = "1"
-const SysdefMsgPeek int32 = "2"
-const TimeSpanDay int64 = "86400000000"
-const TimeSpanHour int64 = "3600000000"
-const TimeSpanMillisecond int64 = "1000"
-const TimeSpanMinute int64 = "60000000"
-const TimeSpanSecond int64 = "1000000"
-const UnicharMaxDecompositionLength int32 = "18"
-const UriReservedCharsGenericDelimiters int = ":/?#[]@"
-const UriReservedCharsSubcomponentDelimiters int = "!$&'()*+,;="
-const UsecPerSec int32 = "1000000"
-const VaCopyAsArray int32 = "1"
-const VersionMinRequired int32 = "2"
-const Win32MsgHandle int32 = "19981206"
+
+// UNSUPPORTED : GINT16_FORMAT
+// UNSUPPORTED : GINT16_MODIFIER
+// UNSUPPORTED : GINT32_FORMAT
+// UNSUPPORTED : GINT32_MODIFIER
+// UNSUPPORTED : GINT64_FORMAT
+// UNSUPPORTED : GINT64_MODIFIER
+// UNSUPPORTED : GINTPTR_FORMAT
+// UNSUPPORTED : GINTPTR_MODIFIER
+// UNSUPPORTED : GNUC_FUNCTION
+// UNSUPPORTED : GNUC_PRETTY_FUNCTION
+// UNSUPPORTED : GSIZE_FORMAT
+// UNSUPPORTED : GSIZE_MODIFIER
+// UNSUPPORTED : GSSIZE_FORMAT
+// UNSUPPORTED : GSSIZE_MODIFIER
+// UNSUPPORTED : GUINT16_FORMAT
+// UNSUPPORTED : GUINT32_FORMAT
+// UNSUPPORTED : GUINT64_FORMAT
+// UNSUPPORTED : GUINTPTR_FORMAT
+const HAVE_GINT64 int32 = "1"
+const HAVE_GNUC_VARARGS int32 = "1"
+const HAVE_GNUC_VISIBILITY int32 = "1"
+const HAVE_GROWING_STACK int32 = "0"
+const HAVE_ISO_VARARGS int32 = "1"
+const HOOK_FLAG_USER_SHIFT int32 = "4"
+const IEEE754_DOUBLE_BIAS int32 = "1023"
+const IEEE754_FLOAT_BIAS int32 = "127"
+
+// UNSUPPORTED : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
+// UNSUPPORTED : KEY_FILE_DESKTOP_GROUP
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_ACTIONS
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_CATEGORIES
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_COMMENT
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_EXEC
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_FULLNAME
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_GENERIC_NAME
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_HIDDEN
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_ICON
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_KEYWORDS
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_MIME_TYPE
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_NAME
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_NO_DISPLAY
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_PATH
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_TERMINAL
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_TRY_EXEC
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_TYPE
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_URL
+// UNSUPPORTED : KEY_FILE_DESKTOP_KEY_VERSION
+// UNSUPPORTED : KEY_FILE_DESKTOP_TYPE_APPLICATION
+// UNSUPPORTED : KEY_FILE_DESKTOP_TYPE_DIRECTORY
+// UNSUPPORTED : KEY_FILE_DESKTOP_TYPE_LINK
+const LITTLE_ENDIAN int32 = "1234"
+const LN10 float64 = "2.302585"
+const LN2 float64 = "0.693147"
+const LOG_2_BASE_10 float64 = "0.301030"
+const LOG_DOMAIN rune = "0"
+const LOG_FATAL_MASK int32 = "5"
+const LOG_LEVEL_USER_SHIFT int32 = "8"
+const MAJOR_VERSION int32 = "2"
+const MAXINT16 int16 = "32767"
+const MAXINT32 int32 = "2147483647"
+const MAXINT64 int64 = "9223372036854775807"
+const MAXINT8 int8 = "127"
+const MAXUINT16 uint16 = "65535"
+const MAXUINT32 uint32 = "4294967295"
+const MAXUINT64 uint64 = "18446744073709551615"
+const MAXUINT8 uint8 = "255"
+const MICRO_VERSION int32 = "1"
+const MININT16 int16 = "-32768"
+const MININT32 int32 = "-2147483648"
+const MININT64 int64 = "-9223372036854775808"
+const MININT8 int8 = "-128"
+const MINOR_VERSION int32 = "56"
+
+// UNSUPPORTED : MODULE_SUFFIX
+// UNSUPPORTED : OPTION_REMAINING
+const PDP_ENDIAN int32 = "3412"
+const PI float64 = "3.141593"
+
+// UNSUPPORTED : PID_FORMAT
+const PI_2 float64 = "1.570796"
+const PI_4 float64 = "0.785398"
+
+// UNSUPPORTED : POLLFD_FORMAT
+const PRIORITY_DEFAULT int32 = "0"
+const PRIORITY_DEFAULT_IDLE int32 = "200"
+const PRIORITY_HIGH int32 = "-100"
+const PRIORITY_HIGH_IDLE int32 = "100"
+const PRIORITY_LOW int32 = "300"
+const SEARCHPATH_SEPARATOR int32 = "58"
+
+// UNSUPPORTED : SEARCHPATH_SEPARATOR_S
+const SIZEOF_LONG int32 = "8"
+const SIZEOF_SIZE_T int32 = "8"
+const SIZEOF_SSIZE_T int32 = "8"
+const SIZEOF_VOID_P int32 = "8"
+const SOURCE_CONTINUE bool = "true"
+const SOURCE_REMOVE bool = "false"
+const SQRT2 float64 = "1.414214"
+
+// UNSUPPORTED : STR_DELIMITERS
+const SYSDEF_AF_INET int32 = "2"
+const SYSDEF_AF_INET6 int32 = "10"
+const SYSDEF_AF_UNIX int32 = "1"
+const SYSDEF_MSG_DONTROUTE int32 = "4"
+const SYSDEF_MSG_OOB int32 = "1"
+const SYSDEF_MSG_PEEK int32 = "2"
+const TIME_SPAN_DAY int64 = "86400000000"
+const TIME_SPAN_HOUR int64 = "3600000000"
+const TIME_SPAN_MILLISECOND int64 = "1000"
+const TIME_SPAN_MINUTE int64 = "60000000"
+const TIME_SPAN_SECOND int64 = "1000000"
+const UNICHAR_MAX_DECOMPOSITION_LENGTH int32 = "18"
+
+// UNSUPPORTED : URI_RESERVED_CHARS_GENERIC_DELIMITERS
+// UNSUPPORTED : URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS
+const USEC_PER_SEC int32 = "1000000"
+const VA_COPY_AS_ARRAY int32 = "1"
+const VERSION_MIN_REQUIRED int32 = "2"
+const WIN32_MSG_HANDLE int32 = "19981206"
