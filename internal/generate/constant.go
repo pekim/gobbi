@@ -28,11 +28,6 @@ func (c Constant) generate(f *file) {
 		return
 	}
 
-	//if makeExportedGoName(c.Name) != c.Name {
-	//	fmt.Println(makeExportedGoName(c.Name), c.Name)
-	//	panic(c.Name)
-	//}
-
 	goType := c.Type.jenGoType()
 	if goType == nil {
 		f.unsupported(c.Name)
