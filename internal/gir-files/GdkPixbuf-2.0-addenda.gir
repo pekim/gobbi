@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+  <namespace c-doc-path="gdk-pixbuf">
+    <bitfield blacklist="true" name="PixdataDumpType"/>
+    <bitfield blacklist="true" name="PixdataType"/>
+
+    <constant blacklist="true" name="PIXBUF_MAGIC_NUMBER"/>
+    <constant blacklist="true" name="PIXDATA_HEADER_LENGTH"/>
+
+    <class name="Pixbuf">
+      <method blacklist="true" c:identifier="gdk_pixbuf_read_pixels"/>
+      <method blacklist="true" c:identifier="gdk_pixbuf_set_option"/>
+    </class>
+
+    <record blacklist="true" name="Pixdata"/>
+  </namespace>
+</repository>

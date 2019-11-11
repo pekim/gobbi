@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+  <namespace>
+    <class name="Object">
+      <method blacklist="true" c:identifier="atk_object_connect_property_change_handler"/>
+    </class>
+
+    <interface name="EditableText">
+      <method blacklist="true" c:identifier="atk_editable_text_set_run_attributes"/>
+    </interface>
+
+    <interface name="Text">
+      <method blacklist="true" c:identifier="atk_text_get_default_attributes"/>
+      <method blacklist="true" c:identifier="atk_text_get_run_attributes"/>
+    </interface>
+
+    <function blacklist="true" c:identifier="atk_add_focus_tracker" />
+    <function blacklist="true" c:identifier="atk_focus_tracker_init" />
+
+    <!-- depends on an alias (AttributeSet) to *glib.SList; not supported yet -->
+    <function blacklist="true" c:identifier="atk_attribute_set_free" />
+    <record name="Attribute">
+      <function blacklist="true" c:identifier="atk_attribute_set_free" />
+    </record>
+  </namespace>
+</repository>

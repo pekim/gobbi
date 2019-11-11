@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+  <namespace>
+    <bitfield name="ParamFlags">
+      <member blacklist="true" name="deprecated"/>
+    </bitfield>
+
+    <constant blacklist="true" name="VALUE_COLLECT_FORMAT_MAX_LENGTH"/>
+
+    <!--
+      Function where either doesn't make sense to call from Go,
+	    or is too difficult to do (at least for now).
+    -->
+    <function blacklist="true" c:identifier="g_cclosure_new"/>
+    <function blacklist="true" c:identifier="g_cclosure_new_swap"/>
+    <function blacklist="true" c:identifier="g_type_add_class_cache_func"/>
+    <function blacklist="true" c:identifier="g_type_remove_class_cache_func"/>
+
+    <function c:identifier="g_signal_query" goname="SignalQuery_"/>
+
+    <!--avoid clash with classes of the same name -->
+    <function c:identifier="g_param_spec_boolean" goname="ParamSpecBoolean_"/>
+    <function c:identifier="g_param_spec_char" goname="ParamSpecChar_"/>
+    <function c:identifier="g_param_spec_double" goname="ParamSpecDouble_"/>
+    <function c:identifier="g_param_spec_float" goname="ParamSpecFloat_"/>
+    <function c:identifier="g_param_spec_int" goname="ParamSpecInt_"/>
+    <function c:identifier="g_param_spec_int64" goname="ParamSpecInt64_"/>
+    <function c:identifier="g_param_spec_long" goname="ParamLong_"/>
+
+    <function c:identifier="g_param_spec_boxed" goname="ParamSpecBoxed_"/>
+    <function c:identifier="g_param_spec_enum" goname="ParamSpecEnum_"/>
+    <function c:identifier="g_param_spec_flags" goname="ParamSpecFlags_"/>
+    <function c:identifier="g_param_spec_object" goname="ParamSpecObject_"/>
+    <function c:identifier="g_param_spec_param" goname="ParamSpecParam_"/>
+    <function c:identifier="g_param_spec_pointer" goname="ParamSpecPointer_"/>
+    <function c:identifier="g_param_spec_override" goname="ParamSpecOverride_"/>
+    <function c:identifier="g_param_spec_string" goname="ParamSpecString_"/>
+    <function c:identifier="g_param_spec_unichar" goname="ParamSpecUnichar_"/>
+    <function c:identifier="g_param_spec_value_array" goname="ParamSpecValueArray_"/>
+    <function c:identifier="g_param_spec_variant" goname="ParamSpecVariant_"/>
+
+    <function c:identifier="g_type_query" goname="TypeQuery_"/>
+
+    <class name="Object">
+      <method blacklist="true" c:identifier="g_object_weak_ref"/>
+      <method blacklist="true" c:identifier="g_object_weak_unref"/>
+    </class>
+
+    <class name="InitiallyUnowned" fieldsPrivate="true"/>
+    <class name="Object" fieldsPrivate="true"/>
+
+    <class blacklist="true" name="TypeModule"/>
+  </namespace>
+</repository>
