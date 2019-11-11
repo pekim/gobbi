@@ -11,7 +11,7 @@ import (
 type repository struct {
 	// xml mappings
 	XMLName xml.Name `xml:"repository"`
-	Version string   `xml:"version,attr"`
+	Version string   `xml:"Version,attr"`
 	//Includes  []Include  `xml:"http://www.gtk.org/introspection/core/1.0 include"`
 	Namespace *Namespace `xml:"namespace"`
 
@@ -36,9 +36,9 @@ func (r *repository) loadFromFile(filename string, required bool) {
 	}
 }
 
-func ForRepository(name string, version string) {
-	goPackageName := strings.ToLower(name)
-	fullname := name + "-" + version
+func repositoryFromFile(spec RepositorySpec) *repository {
+	goPackageName := strings.ToLower(spec.Name)
+	fullname := spec.Name + "-" + spec.Version
 
 	r := &repository{
 		addenda: &repository{},
@@ -48,6 +48,7 @@ func ForRepository(name string, version string) {
 	r.loadFromFile(fullname+"-addenda.gir", false)
 
 	//fmt.Println(r.Namespace.Name, r.Namespace.Version)
+	return r
 }
 
 ///*
@@ -64,7 +65,7 @@ func ForRepository(name string, version string) {
 //
 //type repository struct {
 //	name              string
-//	version           string
+//	Version           string
 //	goPackageName     string
 //	fullGoPackageName string
 //	libDir            string
@@ -75,18 +76,18 @@ func ForRepository(name string, version string) {
 //	repository *C.GIRepository
 //}
 //
-//func ForRepository(name string, version string) {
+//func ForRepository(name string, Version string) {
 //	goPackageName := strings.ToLower(name)
 //
 //	r := &repository{
 //		name:              name,
-//		version:           version,
+//		Version:           Version,
 //		goPackageName:     goPackageName,
 //		fullGoPackageName: fmt.Sprintf("github.com/pekim/gobbi/lib/%s", goPackageName),
 //		libDir:            projectFilepath("..", "lib", goPackageName),
 //
 //		cName:      C.CString(name),
-//		cVersion:   C.CString(version),
+//		cVersion:   C.CString(Version),
 //		repository: C.g_irepository_get_default(),
 //	}
 //

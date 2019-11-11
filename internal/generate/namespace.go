@@ -18,4 +18,6 @@ type Namespace struct {
 	//	Records                       Records      `xml:"record"`
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
+
+	namespaces namespaces
 }
