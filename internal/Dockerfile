@@ -11,4 +11,4 @@ RUN apt-get update && \
         libpango1.0-dev \
         libwebkit2gtk-4.0-dev
 
-CMD cd /gobbi/internal && go run cmd/generate/*.go
+CMD cd /gobbi/internal && go run -tags "gobject_2.26 glib_2.48 girepository_1.44" cmd/generate/*.go
