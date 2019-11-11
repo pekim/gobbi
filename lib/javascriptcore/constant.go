@@ -2,10 +2,10 @@
 
 package javascriptcore
 
-const MAJOR_VERSION = int32(2)
-const MICRO_VERSION = int32(1)
-const MINOR_VERSION = int32(26)
-const OPTIONS_USE_DFG = "useDFGJIT"
-const OPTIONS_USE_FTL = "useFTLJIT"
-const OPTIONS_USE_JIT = "useJIT"
-const OPTIONS_USE_LLINT = "useLLInt"
+const MajorVersion int32 = "2"
+const MicroVersion int32 = "1"
+const MinorVersion int32 = "26"
+const OptionsUseDfg int = "useDFGJIT"
+const OptionsUseFtl int = "useFTLJIT"
+const OptionsUseJit int = "useJIT"
+const OptionsUseLlint int = "useLLInt"

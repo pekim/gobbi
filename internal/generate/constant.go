@@ -1,6 +1,9 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"fmt"
+	"github.com/dave/jennifer/jen"
+)
 
 type Constant struct {
 	Name string `xml:"name,attr"`
@@ -9,7 +12,7 @@ type Constant struct {
 	Version string `xml:"version,attr"`
 	CType   string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
 	//Doc       *Doc   `xml:"doc"`
-	//Type      *Type  `xml:"type"`
+	Type *Type `xml:"type"`
 
 	Namespace *Namespace
 }
@@ -19,7 +22,19 @@ func (c *Constant) init(ns *Namespace) {
 }
 
 func (c Constant) generate(f *jen.File) {
-	f.Commentf("%s", c.Name)
+	if c.Type == nil {
+		fmt.Println(c)
+		fmt.Println("  ", c.CType)
+		fmt.Println("  ", c.Type)
+		return
+	}
+
+	f.
+		Const().
+		Id(makeExportedGoName(c.Name)).
+		Add(c.Type.jenGoType()).
+		Op("=").
+		Lit(c.Value)
 }
 
 //// #include <gobject-introspection-1.0/girepository.h>
