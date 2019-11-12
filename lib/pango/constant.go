@@ -11,29 +11,17 @@ const AnalysisFlagIsEllipsis = int32(2)
 // AttrIndexFromTextBeginning is a representation of the C type ATTR_INDEX_FROM_TEXT_BEGINNING.
 const AttrIndexFromTextBeginning = int32(0)
 
-/*
-UNSUPPORTED : C value 'ENGINE_TYPE_LANG' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'ENGINE_TYPE_LANG' : Cannot generate literal value for 'gchar*'
 
-/*
-UNSUPPORTED : C value 'ENGINE_TYPE_SHAPE' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'ENGINE_TYPE_SHAPE' : Cannot generate literal value for 'gchar*'
 
-/*
-UNSUPPORTED : C value 'GLYPH_EMPTY' : Cannot generate literal value for 'PangoGlyph'
-*/
+// UNSUPPORTED : C value 'GLYPH_EMPTY' : Cannot generate literal value for 'PangoGlyph'
 
-/*
-UNSUPPORTED : C value 'GLYPH_INVALID_INPUT' : Cannot generate literal value for 'PangoGlyph'
-*/
+// UNSUPPORTED : C value 'GLYPH_INVALID_INPUT' : Cannot generate literal value for 'PangoGlyph'
 
-/*
-UNSUPPORTED : C value 'GLYPH_UNKNOWN_FLAG' : Cannot generate literal value for 'PangoGlyph'
-*/
+// UNSUPPORTED : C value 'GLYPH_UNKNOWN_FLAG' : Cannot generate literal value for 'PangoGlyph'
 
-/*
-UNSUPPORTED : C value 'RENDER_TYPE_NONE' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'RENDER_TYPE_NONE' : Cannot generate literal value for 'gchar*'
 
 // Scale is a representation of the C type SCALE.
 const Scale = int32(1024)

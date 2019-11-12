@@ -17,9 +17,7 @@ const SignalFlagsMask = int32(511)
 // SignalMatchMask is a representation of the C type SIGNAL_MATCH_MASK.
 const SignalMatchMask = int32(63)
 
-/*
-UNSUPPORTED : C value 'TYPE_FLAG_RESERVED_ID_BIT' : Cannot generate literal value for 'GType'
-*/
+// UNSUPPORTED : C value 'TYPE_FLAG_RESERVED_ID_BIT' : Cannot generate literal value for 'GType'
 
 // TypeFundamentalMax is a representation of the C type TYPE_FUNDAMENTAL_MAX.
 const TypeFundamentalMax = int32(255)

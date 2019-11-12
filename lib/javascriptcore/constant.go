@@ -11,18 +11,10 @@ const MicroVersion = int32(1)
 // MinorVersion is a representation of the C type MINOR_VERSION.
 const MinorVersion = int32(26)
 
-/*
-UNSUPPORTED : C value 'OPTIONS_USE_DFG' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'OPTIONS_USE_DFG' : Cannot generate literal value for 'gchar*'
 
-/*
-UNSUPPORTED : C value 'OPTIONS_USE_FTL' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'OPTIONS_USE_FTL' : Cannot generate literal value for 'gchar*'
 
-/*
-UNSUPPORTED : C value 'OPTIONS_USE_JIT' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'OPTIONS_USE_JIT' : Cannot generate literal value for 'gchar*'
 
-/*
-UNSUPPORTED : C value 'OPTIONS_USE_LLINT' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'OPTIONS_USE_LLINT' : Cannot generate literal value for 'gchar*'

@@ -12,9 +12,9 @@ type file struct {
 func (f *file) unsupported(cName string, format string, args ...interface{}) {
 	if format != "" {
 		text := fmt.Sprintf(format, args...)
-		f.Commentf("UNSUPPORTED : C value '%s' : %s", cName, text)
+		f.Commentf("// UNSUPPORTED : C value '%s' : %s", cName, text)
 	} else {
-		f.Commentf("UNSUPPORTED : C value '%s'", cName)
+		f.Commentf("// UNSUPPORTED : C value '%s'", cName)
 	}
 
 	f.Line()

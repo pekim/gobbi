@@ -17,9 +17,7 @@ const PixbufMicro = int32(11)
 // PixbufMinor is a representation of the C type PIXBUF_MINOR.
 const PixbufMinor = int32(36)
 
-/*
-UNSUPPORTED : C value 'PIXBUF_VERSION' : Cannot generate literal value for 'gchar*'
-*/
+// UNSUPPORTED : C value 'PIXBUF_VERSION' : Cannot generate literal value for 'gchar*'
 
 // PixdataHeaderLength is a representation of the C type PIXDATA_HEADER_LENGTH.
 const PixdataHeaderLength = int32(24)

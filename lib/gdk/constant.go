@@ -14,13 +14,9 @@ const ButtonSecondary = int32(3)
 // CurrentTime is a representation of the C type CURRENT_TIME.
 const CurrentTime = int32(0)
 
-/*
-UNSUPPORTED : C value 'EVENT_PROPAGATE' : Cannot generate literal value for 'gboolean'
-*/
+// UNSUPPORTED : C value 'EVENT_PROPAGATE' : Cannot generate literal value for 'gboolean'
 
-/*
-UNSUPPORTED : C value 'EVENT_STOP' : Cannot generate literal value for 'gboolean'
-*/
+// UNSUPPORTED : C value 'EVENT_STOP' : Cannot generate literal value for 'gboolean'
 
 // Key0 is a representation of the C type KEY_0.
 const Key0 = int32(48)
