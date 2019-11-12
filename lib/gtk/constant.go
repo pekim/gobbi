@@ -3,1035 +3,1035 @@
 package gtk
 
 // BinaryAge is a representation of the C type BINARY_AGE.
-const BinaryAge int32 = "2230"
+const BinaryAge = int32(2230)
 
 // InputError is a representation of the C type INPUT_ERROR.
-const InputError int32 = "-1"
+const InputError = int32(-1)
 
 // InterfaceAge is a representation of the C type INTERFACE_AGE.
-const InterfaceAge int32 = "30"
+const InterfaceAge = int32(30)
 
 /*
-UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_FULL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_FULL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_HIGH' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_HIGH' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_LOW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_LOW' : Cannot generate literal value for 'gchar*'
 */
 
 // MajorVersion is a representation of the C type MAJOR_VERSION.
-const MajorVersion int32 = "3"
+const MajorVersion = int32(3)
 
 // MaxComposeLen is a representation of the C type MAX_COMPOSE_LEN.
-const MaxComposeLen int32 = "7"
+const MaxComposeLen = int32(7)
 
 // MicroVersion is a representation of the C type MICRO_VERSION.
-const MicroVersion int32 = "30"
+const MicroVersion = int32(30)
 
 // MinorVersion is a representation of the C type MINOR_VERSION.
-const MinorVersion int32 = "22"
+const MinorVersion = int32(22)
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_A3' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_A3' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_A4' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_A4' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_A5' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_A5' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_B5' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_B5' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_EXECUTIVE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_EXECUTIVE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_LEGAL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_LEGAL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PAPER_NAME_LETTER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PAPER_NAME_LETTER' : Cannot generate literal value for 'gchar*'
 */
 
 // PathPrioMask is a representation of the C type PATH_PRIO_MASK.
-const PathPrioMask int32 = "15"
+const PathPrioMask = int32(15)
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_COLLATE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_COLLATE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_DEFAULT_SOURCE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_DEFAULT_SOURCE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_DITHER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_DITHER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_DUPLEX' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_DUPLEX' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_FINISHINGS' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_FINISHINGS' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_MEDIA_TYPE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_MEDIA_TYPE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_NUMBER_UP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_NUMBER_UP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_NUMBER_UP_LAYOUT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_NUMBER_UP_LAYOUT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_N_COPIES' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_N_COPIES' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_ORIENTATION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_ORIENTATION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_BASENAME' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_BASENAME' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_BIN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_BIN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_DIR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_DIR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_FILE_FORMAT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_FILE_FORMAT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_URI' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_URI' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PAGE_RANGES' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PAGE_RANGES' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PAGE_SET' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PAGE_SET' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_FORMAT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_FORMAT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_HEIGHT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_HEIGHT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_WIDTH' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_WIDTH' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PRINTER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PRINTER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PRINTER_LPI' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PRINTER_LPI' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_PRINT_PAGES' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_PRINT_PAGES' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_QUALITY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_QUALITY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION_X' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION_X' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION_Y' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION_Y' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_REVERSE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_REVERSE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_SCALE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_SCALE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_USE_COLOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_USE_COLOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_WIN32_DRIVER_EXTRA' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_WIN32_DRIVER_EXTRA' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'PRINT_SETTINGS_WIN32_DRIVER_VERSION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'PRINT_SETTINGS_WIN32_DRIVER_VERSION' : Cannot generate literal value for 'gchar*'
 */
 
 // PriorityResize is a representation of the C type PRIORITY_RESIZE.
-const PriorityResize int32 = "10"
+const PriorityResize = int32(10)
 
 /*
-UNSUPPORTED : C value 'STOCK_ABOUT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ABOUT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ADD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ADD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_APPLY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_APPLY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_BOLD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_BOLD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CANCEL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CANCEL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CAPS_LOCK_WARNING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CAPS_LOCK_WARNING' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CDROM' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CDROM' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CLEAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CLEAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CLOSE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CLOSE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_COLOR_PICKER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_COLOR_PICKER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CONNECT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CONNECT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CONVERT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CONVERT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_COPY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_COPY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_CUT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_CUT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DELETE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DELETE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DIALOG_AUTHENTICATION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DIALOG_AUTHENTICATION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DIALOG_ERROR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DIALOG_ERROR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DIALOG_INFO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DIALOG_INFO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DIALOG_QUESTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DIALOG_QUESTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DIALOG_WARNING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DIALOG_WARNING' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DIRECTORY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DIRECTORY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DISCARD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DISCARD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DISCONNECT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DISCONNECT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DND' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DND' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_DND_MULTIPLE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_DND_MULTIPLE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_EDIT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_EDIT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_EXECUTE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_EXECUTE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_FILE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_FILE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_FIND' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_FIND' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_FIND_AND_REPLACE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_FIND_AND_REPLACE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_FLOPPY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_FLOPPY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_FULLSCREEN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_FULLSCREEN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GOTO_BOTTOM' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GOTO_BOTTOM' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GOTO_FIRST' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GOTO_FIRST' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GOTO_LAST' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GOTO_LAST' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GOTO_TOP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GOTO_TOP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GO_BACK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GO_BACK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GO_DOWN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GO_DOWN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GO_FORWARD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GO_FORWARD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_GO_UP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_GO_UP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_HARDDISK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_HARDDISK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_HELP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_HELP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_HOME' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_HOME' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_INDENT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_INDENT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_INDEX' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_INDEX' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_INFO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_INFO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ITALIC' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ITALIC' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_JUMP_TO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_JUMP_TO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_JUSTIFY_CENTER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_JUSTIFY_CENTER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_JUSTIFY_FILL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_JUSTIFY_FILL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_JUSTIFY_LEFT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_JUSTIFY_LEFT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_JUSTIFY_RIGHT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_JUSTIFY_RIGHT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_LEAVE_FULLSCREEN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_LEAVE_FULLSCREEN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_FORWARD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_FORWARD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_NEXT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_NEXT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_PAUSE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_PAUSE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_PLAY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_PLAY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_PREVIOUS' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_PREVIOUS' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_RECORD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_RECORD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_REWIND' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_REWIND' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MEDIA_STOP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MEDIA_STOP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_MISSING_IMAGE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_MISSING_IMAGE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_NETWORK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_NETWORK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_NEW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_NEW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_NO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_NO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_OK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_OK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_OPEN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_OPEN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ORIENTATION_LANDSCAPE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ORIENTATION_LANDSCAPE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ORIENTATION_PORTRAIT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ORIENTATION_PORTRAIT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ORIENTATION_REVERSE_LANDSCAPE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ORIENTATION_REVERSE_LANDSCAPE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ORIENTATION_REVERSE_PORTRAIT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ORIENTATION_REVERSE_PORTRAIT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PAGE_SETUP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PAGE_SETUP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PASTE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PASTE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PREFERENCES' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PREFERENCES' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PRINT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PRINT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PRINT_ERROR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PRINT_ERROR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PRINT_PAUSED' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PRINT_PAUSED' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PRINT_PREVIEW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PRINT_PREVIEW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PRINT_REPORT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PRINT_REPORT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PRINT_WARNING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PRINT_WARNING' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_PROPERTIES' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_PROPERTIES' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_QUIT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_QUIT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_REDO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_REDO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_REFRESH' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_REFRESH' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_REMOVE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_REMOVE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_REVERT_TO_SAVED' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_REVERT_TO_SAVED' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SAVE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SAVE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SAVE_AS' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SAVE_AS' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SELECT_ALL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SELECT_ALL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SELECT_COLOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SELECT_COLOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SELECT_FONT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SELECT_FONT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SORT_ASCENDING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SORT_ASCENDING' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SORT_DESCENDING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SORT_DESCENDING' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_SPELL_CHECK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_SPELL_CHECK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_STOP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_STOP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_STRIKETHROUGH' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_STRIKETHROUGH' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_UNDELETE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_UNDELETE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_UNDERLINE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_UNDERLINE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_UNDO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_UNDO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_UNINDENT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_UNINDENT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_YES' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_YES' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ZOOM_100' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ZOOM_100' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ZOOM_FIT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ZOOM_FIT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ZOOM_IN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ZOOM_IN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STOCK_ZOOM_OUT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STOCK_ZOOM_OUT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_ACCELERATOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_ACCELERATOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_ARROW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_ARROW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_BACKGROUND' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_BACKGROUND' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_BOTTOM' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_BOTTOM' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_BUTTON' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_BUTTON' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_CALENDAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_CALENDAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_CELL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_CELL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_CHECK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_CHECK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_COMBOBOX_ENTRY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_COMBOBOX_ENTRY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_CONTEXT_MENU' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_CONTEXT_MENU' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_CSD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_CSD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_CURSOR_HANDLE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_CURSOR_HANDLE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_DEFAULT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_DEFAULT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_DESTRUCTIVE_ACTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_DESTRUCTIVE_ACTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_DIM_LABEL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_DIM_LABEL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_DND' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_DND' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_DOCK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_DOCK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_ENTRY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_ENTRY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_ERROR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_ERROR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_EXPANDER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_EXPANDER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_FLAT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_FLAT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_FRAME' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_FRAME' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_GRIP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_GRIP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_HEADER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_HEADER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_HIGHLIGHT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_HIGHLIGHT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_HORIZONTAL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_HORIZONTAL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_IMAGE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_IMAGE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_INFO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_INFO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_INLINE_TOOLBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_INLINE_TOOLBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_INSERTION_CURSOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_INSERTION_CURSOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_LABEL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_LABEL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_LEFT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_LEFT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_LEVEL_BAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_LEVEL_BAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_LINKED' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_LINKED' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_LIST' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_LIST' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_LIST_ROW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_LIST_ROW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_MARK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_MARK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_MENU' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_MENU' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_MENUBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_MENUBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_MENUITEM' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_MENUITEM' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_MESSAGE_DIALOG' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_MESSAGE_DIALOG' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_MONOSPACE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_MONOSPACE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_NEEDS_ATTENTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_NEEDS_ATTENTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_NOTEBOOK' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_NOTEBOOK' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_OSD' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_OSD' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_OVERSHOOT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_OVERSHOOT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_PANE_SEPARATOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_PANE_SEPARATOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_PAPER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_PAPER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_POPOVER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_POPOVER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_POPUP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_POPUP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_PRIMARY_TOOLBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_PRIMARY_TOOLBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_PROGRESSBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_PROGRESSBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_PULSE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_PULSE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_QUESTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_QUESTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_RADIO' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_RADIO' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_RAISED' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_RAISED' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_READ_ONLY' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_READ_ONLY' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_RIGHT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_RIGHT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_RUBBERBAND' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_RUBBERBAND' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SCALE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SCALE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SCALE_HAS_MARKS_ABOVE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SCALE_HAS_MARKS_ABOVE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SCALE_HAS_MARKS_BELOW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SCALE_HAS_MARKS_BELOW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SCROLLBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SCROLLBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SCROLLBARS_JUNCTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SCROLLBARS_JUNCTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SEPARATOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SEPARATOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SIDEBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SIDEBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SLIDER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SLIDER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SPINBUTTON' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SPINBUTTON' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SPINNER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SPINNER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_STATUSBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_STATUSBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SUBTITLE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SUBTITLE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_SUGGESTED_ACTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_SUGGESTED_ACTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TITLE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TITLE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TITLEBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TITLEBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TOOLBAR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TOOLBAR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TOOLTIP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TOOLTIP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TOP' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TOP' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TOUCH_SELECTION' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TOUCH_SELECTION' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_TROUGH' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_TROUGH' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_UNDERSHOOT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_UNDERSHOOT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_VERTICAL' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_VERTICAL' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_VIEW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_VIEW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_WARNING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_WARNING' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_CLASS_WIDE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_CLASS_WIDE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_BACKGROUND_COLOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_BACKGROUND_COLOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_BACKGROUND_IMAGE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_BACKGROUND_IMAGE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_COLOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_COLOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_RADIUS' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_RADIUS' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_STYLE' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_STYLE' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_WIDTH' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_WIDTH' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_COLOR' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_COLOR' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_FONT' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_FONT' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_MARGIN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_MARGIN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_PROPERTY_PADDING' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_PROPERTY_PADDING' : Cannot generate literal value for 'gchar*'
 */
 
 // StyleProviderPriorityApplication is a representation of the C type STYLE_PROVIDER_PRIORITY_APPLICATION.
-const StyleProviderPriorityApplication int32 = "600"
+const StyleProviderPriorityApplication = int32(600)
 
 // StyleProviderPriorityFallback is a representation of the C type STYLE_PROVIDER_PRIORITY_FALLBACK.
-const StyleProviderPriorityFallback int32 = "1"
+const StyleProviderPriorityFallback = int32(1)
 
 // StyleProviderPrioritySettings is a representation of the C type STYLE_PROVIDER_PRIORITY_SETTINGS.
-const StyleProviderPrioritySettings int32 = "400"
+const StyleProviderPrioritySettings = int32(400)
 
 // StyleProviderPriorityTheme is a representation of the C type STYLE_PROVIDER_PRIORITY_THEME.
-const StyleProviderPriorityTheme int32 = "200"
+const StyleProviderPriorityTheme = int32(200)
 
 // StyleProviderPriorityUser is a representation of the C type STYLE_PROVIDER_PRIORITY_USER.
-const StyleProviderPriorityUser int32 = "800"
+const StyleProviderPriorityUser = int32(800)
 
 /*
-UNSUPPORTED : C value 'STYLE_REGION_COLUMN' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_REGION_COLUMN' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_REGION_COLUMN_HEADER' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_REGION_COLUMN_HEADER' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_REGION_ROW' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_REGION_ROW' : Cannot generate literal value for 'gchar*'
 */
 
 /*
-UNSUPPORTED : C value 'STYLE_REGION_TAB' : No Go type for 'gchar*'
+UNSUPPORTED : C value 'STYLE_REGION_TAB' : Cannot generate literal value for 'gchar*'
 */
 
 // TextViewPriorityValidate is a representation of the C type TEXT_VIEW_PRIORITY_VALIDATE.
-const TextViewPriorityValidate int32 = "5"
+const TextViewPriorityValidate = int32(5)
 
 // TreeSortableDefaultSortColumnId is a representation of the C type TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID.
-const TreeSortableDefaultSortColumnId int32 = "-1"
+const TreeSortableDefaultSortColumnId = int32(-1)
 
 // TreeSortableUnsortedSortColumnId is a representation of the C type TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
-const TreeSortableUnsortedSortColumnId int32 = "-2"
+const TreeSortableUnsortedSortColumnId = int32(-2)
 
 // UNSUPPORTED : C value 'STOCK_ABOUT' : missing Type
 

@@ -19,8 +19,8 @@ func (c *Constant) init(ns *Namespace) {
 func (c Constant) generate(f *file) {
 	goName := makeExportedGoName(c.Name)
 
-	goType, reason := c.Type.jenGoType()
-	if goType == nil {
+	value, reason := c.Type.jenValue(c.Value)
+	if reason != "" {
 		f.unsupported(c.Name, reason)
 		return
 	}
@@ -29,9 +29,8 @@ func (c Constant) generate(f *file) {
 	f.
 		Const().
 		Id(goName).
-		Add(goType).
 		Op("=").
-		Lit(c.Value)
+		Add(value)
 	f.Line()
 }
 

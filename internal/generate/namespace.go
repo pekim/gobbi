@@ -32,7 +32,8 @@ type Namespace struct {
 	goPackageName string
 }
 
-func (n *Namespace) init() {
+func (n *Namespace) init(namespaces namespaces) {
+	n.namespaces = namespaces
 	n.Constants.init(n)
 }
 

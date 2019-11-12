@@ -15,14 +15,13 @@ func Generate(specs []RepositorySpec) {
 		rr = append(rr, r)
 	}
 
+	// Deep initialise all namespaces.
+	// In particular provide descendants with their namespace.
 	for _, r := range rr {
-		r.Namespace.namespaces = namespaces
+		r.Namespace.init(namespaces)
 	}
 
-	for _, r := range rr {
-		r.Namespace.init()
-	}
-
+	// Generate files for all namespaces
 	for _, r := range rr {
 		r.Namespace.generate()
 	}
