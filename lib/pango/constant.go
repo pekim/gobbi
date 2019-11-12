@@ -11,9 +11,11 @@ const AnalysisFlagIsEllipsis = int32(2)
 // AttrIndexFromTextBeginning is a representation of the C type ATTR_INDEX_FROM_TEXT_BEGINNING.
 const AttrIndexFromTextBeginning = int32(0)
 
-// UNSUPPORTED : C value 'ENGINE_TYPE_LANG' : Cannot generate literal value for 'gchar*'
+// EngineTypeLang is a representation of the C type ENGINE_TYPE_LANG.
+const EngineTypeLang = "PangoEngineLang"
 
-// UNSUPPORTED : C value 'ENGINE_TYPE_SHAPE' : Cannot generate literal value for 'gchar*'
+// EngineTypeShape is a representation of the C type ENGINE_TYPE_SHAPE.
+const EngineTypeShape = "PangoEngineShape"
 
 // UNSUPPORTED : C value 'GLYPH_EMPTY' : Cannot generate literal value for 'PangoGlyph'
 
@@ -21,7 +23,8 @@ const AttrIndexFromTextBeginning = int32(0)
 
 // UNSUPPORTED : C value 'GLYPH_UNKNOWN_FLAG' : Cannot generate literal value for 'PangoGlyph'
 
-// UNSUPPORTED : C value 'RENDER_TYPE_NONE' : Cannot generate literal value for 'gchar*'
+// RenderTypeNone is a representation of the C type RENDER_TYPE_NONE.
+const RenderTypeNone = "PangoRenderNone"
 
 // Scale is a representation of the C type SCALE.
 const Scale = int32(1024)

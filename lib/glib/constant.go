@@ -11,11 +11,14 @@ const AsciiDtostrBufSize = int32(39)
 // BigEndian is a representation of the C type BIG_ENDIAN.
 const BigEndian = int32(4321)
 
-// UNSUPPORTED : C value 'CSET_A_2_Z' : Cannot generate literal value for 'gchar*'
+// CsetA2Z is a representation of the C type CSET_A_2_Z.
+const CsetA2Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-// UNSUPPORTED : C value 'CSET_DIGITS' : Cannot generate literal value for 'gchar*'
+// CsetDigits is a representation of the C type CSET_DIGITS.
+const CsetDigits = "0123456789"
 
-// UNSUPPORTED : C value 'CSET_a_2_z' : Cannot generate literal value for 'gchar*'
+// CsetA2Z is a representation of the C type CSET_a_2_z.
+const CsetA2Z = "abcdefghijklmnopqrstuvwxyz"
 
 // DatalistFlagsMask is a representation of the C type DATALIST_FLAGS_MASK.
 const DatalistFlagsMask = int32(3)
@@ -32,45 +35,64 @@ const DateBadYear = int32(0)
 // DirSeparator is a representation of the C type DIR_SEPARATOR.
 const DirSeparator = int32(47)
 
-// UNSUPPORTED : C value 'DIR_SEPARATOR_S' : Cannot generate literal value for 'gchar*'
+// DirSeparatorS is a representation of the C type DIR_SEPARATOR_S.
+const DirSeparatorS = "/"
 
 // UNSUPPORTED : C value 'E' : Cannot generate literal value for 'gdouble'
 
-// UNSUPPORTED : C value 'GINT16_FORMAT' : Cannot generate literal value for 'gchar*'
+// Gint16Format is a representation of the C type GINT16_FORMAT.
+const Gint16Format = "hi"
 
-// UNSUPPORTED : C value 'GINT16_MODIFIER' : Cannot generate literal value for 'gchar*'
+// Gint16Modifier is a representation of the C type GINT16_MODIFIER.
+const Gint16Modifier = "h"
 
-// UNSUPPORTED : C value 'GINT32_FORMAT' : Cannot generate literal value for 'gchar*'
+// Gint32Format is a representation of the C type GINT32_FORMAT.
+const Gint32Format = "i"
 
-// UNSUPPORTED : C value 'GINT32_MODIFIER' : Cannot generate literal value for 'gchar*'
+// Gint32Modifier is a representation of the C type GINT32_MODIFIER.
+const Gint32Modifier = ""
 
-// UNSUPPORTED : C value 'GINT64_FORMAT' : Cannot generate literal value for 'gchar*'
+// Gint64Format is a representation of the C type GINT64_FORMAT.
+const Gint64Format = "li"
 
-// UNSUPPORTED : C value 'GINT64_MODIFIER' : Cannot generate literal value for 'gchar*'
+// Gint64Modifier is a representation of the C type GINT64_MODIFIER.
+const Gint64Modifier = "l"
 
-// UNSUPPORTED : C value 'GINTPTR_FORMAT' : Cannot generate literal value for 'gchar*'
+// GintptrFormat is a representation of the C type GINTPTR_FORMAT.
+const GintptrFormat = "li"
 
-// UNSUPPORTED : C value 'GINTPTR_MODIFIER' : Cannot generate literal value for 'gchar*'
+// GintptrModifier is a representation of the C type GINTPTR_MODIFIER.
+const GintptrModifier = "l"
 
-// UNSUPPORTED : C value 'GNUC_FUNCTION' : Cannot generate literal value for 'gchar*'
+// GnucFunction is a representation of the C type GNUC_FUNCTION.
+const GnucFunction = ""
 
-// UNSUPPORTED : C value 'GNUC_PRETTY_FUNCTION' : Cannot generate literal value for 'gchar*'
+// GnucPrettyFunction is a representation of the C type GNUC_PRETTY_FUNCTION.
+const GnucPrettyFunction = ""
 
-// UNSUPPORTED : C value 'GSIZE_FORMAT' : Cannot generate literal value for 'gchar*'
+// GsizeFormat is a representation of the C type GSIZE_FORMAT.
+const GsizeFormat = "lu"
 
-// UNSUPPORTED : C value 'GSIZE_MODIFIER' : Cannot generate literal value for 'gchar*'
+// GsizeModifier is a representation of the C type GSIZE_MODIFIER.
+const GsizeModifier = "l"
 
-// UNSUPPORTED : C value 'GSSIZE_FORMAT' : Cannot generate literal value for 'gchar*'
+// GssizeFormat is a representation of the C type GSSIZE_FORMAT.
+const GssizeFormat = "li"
 
-// UNSUPPORTED : C value 'GSSIZE_MODIFIER' : Cannot generate literal value for 'gchar*'
+// GssizeModifier is a representation of the C type GSSIZE_MODIFIER.
+const GssizeModifier = "l"
 
-// UNSUPPORTED : C value 'GUINT16_FORMAT' : Cannot generate literal value for 'gchar*'
+// Guint16Format is a representation of the C type GUINT16_FORMAT.
+const Guint16Format = "hu"
 
-// UNSUPPORTED : C value 'GUINT32_FORMAT' : Cannot generate literal value for 'gchar*'
+// Guint32Format is a representation of the C type GUINT32_FORMAT.
+const Guint32Format = "u"
 
-// UNSUPPORTED : C value 'GUINT64_FORMAT' : Cannot generate literal value for 'gchar*'
+// Guint64Format is a representation of the C type GUINT64_FORMAT.
+const Guint64Format = "lu"
 
-// UNSUPPORTED : C value 'GUINTPTR_FORMAT' : Cannot generate literal value for 'gchar*'
+// GuintptrFormat is a representation of the C type GUINTPTR_FORMAT.
+const GuintptrFormat = "lu"
 
 // HaveGint64 is a representation of the C type HAVE_GINT64.
 const HaveGint64 = int32(1)
@@ -96,63 +118,92 @@ const Ieee754DoubleBias = int32(1023)
 // Ieee754FloatBias is a representation of the C type IEEE754_FLOAT_BIAS.
 const Ieee754FloatBias = int32(127)
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopActionGroupPrefix is a representation of the C type KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX.
+const KeyFileDesktopActionGroupPrefix = "Desktop Action"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_GROUP' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopGroup is a representation of the C type KEY_FILE_DESKTOP_GROUP.
+const KeyFileDesktopGroup = "Desktop Entry"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_ACTIONS' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyActions is a representation of the C type KEY_FILE_DESKTOP_KEY_ACTIONS.
+const KeyFileDesktopKeyActions = "Actions"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_CATEGORIES' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyCategories is a representation of the C type KEY_FILE_DESKTOP_KEY_CATEGORIES.
+const KeyFileDesktopKeyCategories = "Categories"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_COMMENT' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyComment is a representation of the C type KEY_FILE_DESKTOP_KEY_COMMENT.
+const KeyFileDesktopKeyComment = "Comment"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyDbusActivatable is a representation of the C type KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE.
+const KeyFileDesktopKeyDbusActivatable = "DBusActivatable"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_EXEC' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyExec is a representation of the C type KEY_FILE_DESKTOP_KEY_EXEC.
+const KeyFileDesktopKeyExec = "Exec"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_FULLNAME' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyFullname is a representation of the C type KEY_FILE_DESKTOP_KEY_FULLNAME.
+const KeyFileDesktopKeyFullname = "X-GNOME-FullName"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_GENERIC_NAME' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyGenericName is a representation of the C type KEY_FILE_DESKTOP_KEY_GENERIC_NAME.
+const KeyFileDesktopKeyGenericName = "GenericName"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyGettextDomain is a representation of the C type KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN.
+const KeyFileDesktopKeyGettextDomain = "X-GNOME-Gettext-Domain"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_HIDDEN' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyHidden is a representation of the C type KEY_FILE_DESKTOP_KEY_HIDDEN.
+const KeyFileDesktopKeyHidden = "Hidden"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_ICON' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyIcon is a representation of the C type KEY_FILE_DESKTOP_KEY_ICON.
+const KeyFileDesktopKeyIcon = "Icon"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_KEYWORDS' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyKeywords is a representation of the C type KEY_FILE_DESKTOP_KEY_KEYWORDS.
+const KeyFileDesktopKeyKeywords = "Keywords"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_MIME_TYPE' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyMimeType is a representation of the C type KEY_FILE_DESKTOP_KEY_MIME_TYPE.
+const KeyFileDesktopKeyMimeType = "MimeType"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_NAME' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyName is a representation of the C type KEY_FILE_DESKTOP_KEY_NAME.
+const KeyFileDesktopKeyName = "Name"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyNotShowIn is a representation of the C type KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN.
+const KeyFileDesktopKeyNotShowIn = "NotShowIn"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_NO_DISPLAY' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyNoDisplay is a representation of the C type KEY_FILE_DESKTOP_KEY_NO_DISPLAY.
+const KeyFileDesktopKeyNoDisplay = "NoDisplay"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyOnlyShowIn is a representation of the C type KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN.
+const KeyFileDesktopKeyOnlyShowIn = "OnlyShowIn"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_PATH' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyPath is a representation of the C type KEY_FILE_DESKTOP_KEY_PATH.
+const KeyFileDesktopKeyPath = "Path"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyStartupNotify is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY.
+const KeyFileDesktopKeyStartupNotify = "StartupNotify"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyStartupWmClass is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS.
+const KeyFileDesktopKeyStartupWmClass = "StartupWMClass"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_TERMINAL' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyTerminal is a representation of the C type KEY_FILE_DESKTOP_KEY_TERMINAL.
+const KeyFileDesktopKeyTerminal = "Terminal"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_TRY_EXEC' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyTryExec is a representation of the C type KEY_FILE_DESKTOP_KEY_TRY_EXEC.
+const KeyFileDesktopKeyTryExec = "TryExec"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_TYPE' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyType is a representation of the C type KEY_FILE_DESKTOP_KEY_TYPE.
+const KeyFileDesktopKeyType = "Type"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_URL' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyUrl is a representation of the C type KEY_FILE_DESKTOP_KEY_URL.
+const KeyFileDesktopKeyUrl = "URL"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_KEY_VERSION' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopKeyVersion is a representation of the C type KEY_FILE_DESKTOP_KEY_VERSION.
+const KeyFileDesktopKeyVersion = "Version"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_TYPE_APPLICATION' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopTypeApplication is a representation of the C type KEY_FILE_DESKTOP_TYPE_APPLICATION.
+const KeyFileDesktopTypeApplication = "Application"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_TYPE_DIRECTORY' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopTypeDirectory is a representation of the C type KEY_FILE_DESKTOP_TYPE_DIRECTORY.
+const KeyFileDesktopTypeDirectory = "Directory"
 
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_TYPE_LINK' : Cannot generate literal value for 'gchar*'
+// KeyFileDesktopTypeLink is a representation of the C type KEY_FILE_DESKTOP_TYPE_LINK.
+const KeyFileDesktopTypeLink = "Link"
 
 // LittleEndian is a representation of the C type LITTLE_ENDIAN.
 const LittleEndian = int32(1234)
@@ -215,22 +266,26 @@ const Minint8 = int8(-128)
 // MinorVersion is a representation of the C type MINOR_VERSION.
 const MinorVersion = int32(56)
 
-// UNSUPPORTED : C value 'MODULE_SUFFIX' : Cannot generate literal value for 'gchar*'
+// ModuleSuffix is a representation of the C type MODULE_SUFFIX.
+const ModuleSuffix = "so"
 
-// UNSUPPORTED : C value 'OPTION_REMAINING' : Cannot generate literal value for 'gchar*'
+// OptionRemaining is a representation of the C type OPTION_REMAINING.
+const OptionRemaining = ""
 
 // PdpEndian is a representation of the C type PDP_ENDIAN.
 const PdpEndian = int32(3412)
 
 // UNSUPPORTED : C value 'PI' : Cannot generate literal value for 'gdouble'
 
-// UNSUPPORTED : C value 'PID_FORMAT' : Cannot generate literal value for 'gchar*'
+// PidFormat is a representation of the C type PID_FORMAT.
+const PidFormat = "i"
 
 // UNSUPPORTED : C value 'PI_2' : Cannot generate literal value for 'gdouble'
 
 // UNSUPPORTED : C value 'PI_4' : Cannot generate literal value for 'gdouble'
 
-// UNSUPPORTED : C value 'POLLFD_FORMAT' : Cannot generate literal value for 'gchar*'
+// PollfdFormat is a representation of the C type POLLFD_FORMAT.
+const PollfdFormat = "%d"
 
 // PriorityDefault is a representation of the C type PRIORITY_DEFAULT.
 const PriorityDefault = int32(0)
@@ -250,7 +305,8 @@ const PriorityLow = int32(300)
 // SearchpathSeparator is a representation of the C type SEARCHPATH_SEPARATOR.
 const SearchpathSeparator = int32(58)
 
-// UNSUPPORTED : C value 'SEARCHPATH_SEPARATOR_S' : Cannot generate literal value for 'gchar*'
+// SearchpathSeparatorS is a representation of the C type SEARCHPATH_SEPARATOR_S.
+const SearchpathSeparatorS = ":"
 
 // SizeofLong is a representation of the C type SIZEOF_LONG.
 const SizeofLong = int32(8)
@@ -270,7 +326,8 @@ const SizeofVoidP = int32(8)
 
 // UNSUPPORTED : C value 'SQRT2' : Cannot generate literal value for 'gdouble'
 
-// UNSUPPORTED : C value 'STR_DELIMITERS' : Cannot generate literal value for 'gchar*'
+// StrDelimiters is a representation of the C type STR_DELIMITERS.
+const StrDelimiters = "_-|> <."
 
 // SysdefAfInet is a representation of the C type SYSDEF_AF_INET.
 const SysdefAfInet = int32(2)
@@ -308,9 +365,11 @@ const TimeSpanSecond = int64(1000000)
 // UnicharMaxDecompositionLength is a representation of the C type UNICHAR_MAX_DECOMPOSITION_LENGTH.
 const UnicharMaxDecompositionLength = int32(18)
 
-// UNSUPPORTED : C value 'URI_RESERVED_CHARS_GENERIC_DELIMITERS' : Cannot generate literal value for 'gchar*'
+// UriReservedCharsGenericDelimiters is a representation of the C type URI_RESERVED_CHARS_GENERIC_DELIMITERS.
+const UriReservedCharsGenericDelimiters = ":/?#[]@"
 
-// UNSUPPORTED : C value 'URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS' : Cannot generate literal value for 'gchar*'
+// UriReservedCharsSubcomponentDelimiters is a representation of the C type URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS.
+const UriReservedCharsSubcomponentDelimiters = "!$&'()*+,;="
 
 // UsecPerSec is a representation of the C type USEC_PER_SEC.
 const UsecPerSec = int32(1000000)

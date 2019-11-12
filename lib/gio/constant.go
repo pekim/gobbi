@@ -2,215 +2,320 @@
 
 package gio
 
-// UNSUPPORTED : C value 'DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// DesktopAppInfoLookupExtensionPointName is a representation of the C type DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME.
+const DesktopAppInfoLookupExtensionPointName = "gio-desktop-app-info-lookup"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ACCESS_CAN_DELETE' : Cannot generate literal value for 'gchar*'
+// FileAttributeAccessCanDelete is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_DELETE.
+const FileAttributeAccessCanDelete = "access::can-delete"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE' : Cannot generate literal value for 'gchar*'
+// FileAttributeAccessCanExecute is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE.
+const FileAttributeAccessCanExecute = "access::can-execute"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ACCESS_CAN_READ' : Cannot generate literal value for 'gchar*'
+// FileAttributeAccessCanRead is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_READ.
+const FileAttributeAccessCanRead = "access::can-read"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ACCESS_CAN_RENAME' : Cannot generate literal value for 'gchar*'
+// FileAttributeAccessCanRename is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_RENAME.
+const FileAttributeAccessCanRename = "access::can-rename"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ACCESS_CAN_TRASH' : Cannot generate literal value for 'gchar*'
+// FileAttributeAccessCanTrash is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_TRASH.
+const FileAttributeAccessCanTrash = "access::can-trash"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ACCESS_CAN_WRITE' : Cannot generate literal value for 'gchar*'
+// FileAttributeAccessCanWrite is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_WRITE.
+const FileAttributeAccessCanWrite = "access::can-write"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_DOS_IS_ARCHIVE' : Cannot generate literal value for 'gchar*'
+// FileAttributeDosIsArchive is a representation of the C type FILE_ATTRIBUTE_DOS_IS_ARCHIVE.
+const FileAttributeDosIsArchive = "dos::is-archive"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_DOS_IS_SYSTEM' : Cannot generate literal value for 'gchar*'
+// FileAttributeDosIsSystem is a representation of the C type FILE_ATTRIBUTE_DOS_IS_SYSTEM.
+const FileAttributeDosIsSystem = "dos::is-system"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ETAG_VALUE' : Cannot generate literal value for 'gchar*'
+// FileAttributeEtagValue is a representation of the C type FILE_ATTRIBUTE_ETAG_VALUE.
+const FileAttributeEtagValue = "etag::value"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_FREE' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemFree is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_FREE.
+const FileAttributeFilesystemFree = "filesystem::free"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_READONLY' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemReadonly is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_READONLY.
+const FileAttributeFilesystemReadonly = "filesystem::readonly"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_REMOTE' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemRemote is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_REMOTE.
+const FileAttributeFilesystemRemote = "filesystem::remote"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_SIZE' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemSize is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_SIZE.
+const FileAttributeFilesystemSize = "filesystem::size"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_TYPE' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemType is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_TYPE.
+const FileAttributeFilesystemType = "filesystem::type"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_USED' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemUsed is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_USED.
+const FileAttributeFilesystemUsed = "filesystem::used"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW' : Cannot generate literal value for 'gchar*'
+// FileAttributeFilesystemUsePreview is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
+const FileAttributeFilesystemUsePreview = "filesystem::use-preview"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_GVFS_BACKEND' : Cannot generate literal value for 'gchar*'
+// FileAttributeGvfsBackend is a representation of the C type FILE_ATTRIBUTE_GVFS_BACKEND.
+const FileAttributeGvfsBackend = "gvfs::backend"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ID_FILE' : Cannot generate literal value for 'gchar*'
+// FileAttributeIdFile is a representation of the C type FILE_ATTRIBUTE_ID_FILE.
+const FileAttributeIdFile = "id::file"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_ID_FILESYSTEM' : Cannot generate literal value for 'gchar*'
+// FileAttributeIdFilesystem is a representation of the C type FILE_ATTRIBUTE_ID_FILESYSTEM.
+const FileAttributeIdFilesystem = "id::filesystem"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanEject is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT.
+const FileAttributeMountableCanEject = "mountable::can-eject"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanMount is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT.
+const FileAttributeMountableCanMount = "mountable::can-mount"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanPoll is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL.
+const FileAttributeMountableCanPoll = "mountable::can-poll"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_START' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanStart is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_START.
+const FileAttributeMountableCanStart = "mountable::can-start"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanStartDegraded is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED.
+const FileAttributeMountableCanStartDegraded = "mountable::can-start-degraded"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanStop is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP.
+const FileAttributeMountableCanStop = "mountable::can-stop"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableCanUnmount is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT.
+const FileAttributeMountableCanUnmount = "mountable::can-unmount"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_HAL_UDI' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableHalUdi is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_HAL_UDI.
+const FileAttributeMountableHalUdi = "mountable::hal-udi"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableIsMediaCheckAutomatic is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC.
+const FileAttributeMountableIsMediaCheckAutomatic = "mountable::is-media-check-automatic"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableStartStopType is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE.
+const FileAttributeMountableStartStopType = "mountable::start-stop-type"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableUnixDevice is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE.
+const FileAttributeMountableUnixDevice = "mountable::unix-device"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE' : Cannot generate literal value for 'gchar*'
+// FileAttributeMountableUnixDeviceFile is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE.
+const FileAttributeMountableUnixDeviceFile = "mountable::unix-device-file"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_OWNER_GROUP' : Cannot generate literal value for 'gchar*'
+// FileAttributeOwnerGroup is a representation of the C type FILE_ATTRIBUTE_OWNER_GROUP.
+const FileAttributeOwnerGroup = "owner::group"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_OWNER_USER' : Cannot generate literal value for 'gchar*'
+// FileAttributeOwnerUser is a representation of the C type FILE_ATTRIBUTE_OWNER_USER.
+const FileAttributeOwnerUser = "owner::user"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_OWNER_USER_REAL' : Cannot generate literal value for 'gchar*'
+// FileAttributeOwnerUserReal is a representation of the C type FILE_ATTRIBUTE_OWNER_USER_REAL.
+const FileAttributeOwnerUserReal = "owner::user-real"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_PREVIEW_ICON' : Cannot generate literal value for 'gchar*'
+// FileAttributePreviewIcon is a representation of the C type FILE_ATTRIBUTE_PREVIEW_ICON.
+const FileAttributePreviewIcon = "preview::icon"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_RECENT_MODIFIED' : Cannot generate literal value for 'gchar*'
+// FileAttributeRecentModified is a representation of the C type FILE_ATTRIBUTE_RECENT_MODIFIED.
+const FileAttributeRecentModified = "recent::modified"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_SELINUX_CONTEXT' : Cannot generate literal value for 'gchar*'
+// FileAttributeSelinuxContext is a representation of the C type FILE_ATTRIBUTE_SELINUX_CONTEXT.
+const FileAttributeSelinuxContext = "selinux::context"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardAllocatedSize is a representation of the C type FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE.
+const FileAttributeStandardAllocatedSize = "standard::allocated-size"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardContentType is a representation of the C type FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
+const FileAttributeStandardContentType = "standard::content-type"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_COPY_NAME' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardCopyName is a representation of the C type FILE_ATTRIBUTE_STANDARD_COPY_NAME.
+const FileAttributeStandardCopyName = "standard::copy-name"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_DESCRIPTION' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardDescription is a representation of the C type FILE_ATTRIBUTE_STANDARD_DESCRIPTION.
+const FileAttributeStandardDescription = "standard::description"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardDisplayName is a representation of the C type FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
+const FileAttributeStandardDisplayName = "standard::display-name"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_EDIT_NAME' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardEditName is a representation of the C type FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
+const FileAttributeStandardEditName = "standard::edit-name"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardFastContentType is a representation of the C type FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE.
+const FileAttributeStandardFastContentType = "standard::fast-content-type"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_ICON' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardIcon is a representation of the C type FILE_ATTRIBUTE_STANDARD_ICON.
+const FileAttributeStandardIcon = "standard::icon"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_IS_BACKUP' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardIsBackup is a representation of the C type FILE_ATTRIBUTE_STANDARD_IS_BACKUP.
+const FileAttributeStandardIsBackup = "standard::is-backup"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_IS_HIDDEN' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardIsHidden is a representation of the C type FILE_ATTRIBUTE_STANDARD_IS_HIDDEN.
+const FileAttributeStandardIsHidden = "standard::is-hidden"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_IS_SYMLINK' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardIsSymlink is a representation of the C type FILE_ATTRIBUTE_STANDARD_IS_SYMLINK.
+const FileAttributeStandardIsSymlink = "standard::is-symlink"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardIsVirtual is a representation of the C type FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL.
+const FileAttributeStandardIsVirtual = "standard::is-virtual"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_IS_VOLATILE' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardIsVolatile is a representation of the C type FILE_ATTRIBUTE_STANDARD_IS_VOLATILE.
+const FileAttributeStandardIsVolatile = "standard::is-volatile"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_NAME' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardName is a representation of the C type FILE_ATTRIBUTE_STANDARD_NAME.
+const FileAttributeStandardName = "standard::name"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_SIZE' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardSize is a representation of the C type FILE_ATTRIBUTE_STANDARD_SIZE.
+const FileAttributeStandardSize = "standard::size"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_SORT_ORDER' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardSortOrder is a representation of the C type FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
+const FileAttributeStandardSortOrder = "standard::sort-order"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardSymbolicIcon is a representation of the C type FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON.
+const FileAttributeStandardSymbolicIcon = "standard::symbolic-icon"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardSymlinkTarget is a representation of the C type FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET.
+const FileAttributeStandardSymlinkTarget = "standard::symlink-target"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_TARGET_URI' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardTargetUri is a representation of the C type FILE_ATTRIBUTE_STANDARD_TARGET_URI.
+const FileAttributeStandardTargetUri = "standard::target-uri"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_STANDARD_TYPE' : Cannot generate literal value for 'gchar*'
+// FileAttributeStandardType is a representation of the C type FILE_ATTRIBUTE_STANDARD_TYPE.
+const FileAttributeStandardType = "standard::type"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_THUMBNAILING_FAILED' : Cannot generate literal value for 'gchar*'
+// FileAttributeThumbnailingFailed is a representation of the C type FILE_ATTRIBUTE_THUMBNAILING_FAILED.
+const FileAttributeThumbnailingFailed = "thumbnail::failed"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_THUMBNAIL_IS_VALID' : Cannot generate literal value for 'gchar*'
+// FileAttributeThumbnailIsValid is a representation of the C type FILE_ATTRIBUTE_THUMBNAIL_IS_VALID.
+const FileAttributeThumbnailIsValid = "thumbnail::is-valid"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_THUMBNAIL_PATH' : Cannot generate literal value for 'gchar*'
+// FileAttributeThumbnailPath is a representation of the C type FILE_ATTRIBUTE_THUMBNAIL_PATH.
+const FileAttributeThumbnailPath = "thumbnail::path"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_ACCESS' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeAccess is a representation of the C type FILE_ATTRIBUTE_TIME_ACCESS.
+const FileAttributeTimeAccess = "time::access"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_ACCESS_USEC' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeAccessUsec is a representation of the C type FILE_ATTRIBUTE_TIME_ACCESS_USEC.
+const FileAttributeTimeAccessUsec = "time::access-usec"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_CHANGED' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeChanged is a representation of the C type FILE_ATTRIBUTE_TIME_CHANGED.
+const FileAttributeTimeChanged = "time::changed"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_CHANGED_USEC' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeChangedUsec is a representation of the C type FILE_ATTRIBUTE_TIME_CHANGED_USEC.
+const FileAttributeTimeChangedUsec = "time::changed-usec"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_CREATED' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeCreated is a representation of the C type FILE_ATTRIBUTE_TIME_CREATED.
+const FileAttributeTimeCreated = "time::created"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_CREATED_USEC' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeCreatedUsec is a representation of the C type FILE_ATTRIBUTE_TIME_CREATED_USEC.
+const FileAttributeTimeCreatedUsec = "time::created-usec"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_MODIFIED' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeModified is a representation of the C type FILE_ATTRIBUTE_TIME_MODIFIED.
+const FileAttributeTimeModified = "time::modified"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TIME_MODIFIED_USEC' : Cannot generate literal value for 'gchar*'
+// FileAttributeTimeModifiedUsec is a representation of the C type FILE_ATTRIBUTE_TIME_MODIFIED_USEC.
+const FileAttributeTimeModifiedUsec = "time::modified-usec"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TRASH_DELETION_DATE' : Cannot generate literal value for 'gchar*'
+// FileAttributeTrashDeletionDate is a representation of the C type FILE_ATTRIBUTE_TRASH_DELETION_DATE.
+const FileAttributeTrashDeletionDate = "trash::deletion-date"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TRASH_ITEM_COUNT' : Cannot generate literal value for 'gchar*'
+// FileAttributeTrashItemCount is a representation of the C type FILE_ATTRIBUTE_TRASH_ITEM_COUNT.
+const FileAttributeTrashItemCount = "trash::item-count"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_TRASH_ORIG_PATH' : Cannot generate literal value for 'gchar*'
+// FileAttributeTrashOrigPath is a representation of the C type FILE_ATTRIBUTE_TRASH_ORIG_PATH.
+const FileAttributeTrashOrigPath = "trash::orig-path"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_BLOCKS' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixBlocks is a representation of the C type FILE_ATTRIBUTE_UNIX_BLOCKS.
+const FileAttributeUnixBlocks = "unix::blocks"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_BLOCK_SIZE' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixBlockSize is a representation of the C type FILE_ATTRIBUTE_UNIX_BLOCK_SIZE.
+const FileAttributeUnixBlockSize = "unix::block-size"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_DEVICE' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixDevice is a representation of the C type FILE_ATTRIBUTE_UNIX_DEVICE.
+const FileAttributeUnixDevice = "unix::device"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_GID' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixGid is a representation of the C type FILE_ATTRIBUTE_UNIX_GID.
+const FileAttributeUnixGid = "unix::gid"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_INODE' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixInode is a representation of the C type FILE_ATTRIBUTE_UNIX_INODE.
+const FileAttributeUnixInode = "unix::inode"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixIsMountpoint is a representation of the C type FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT.
+const FileAttributeUnixIsMountpoint = "unix::is-mountpoint"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_MODE' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixMode is a representation of the C type FILE_ATTRIBUTE_UNIX_MODE.
+const FileAttributeUnixMode = "unix::mode"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_NLINK' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixNlink is a representation of the C type FILE_ATTRIBUTE_UNIX_NLINK.
+const FileAttributeUnixNlink = "unix::nlink"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_RDEV' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixRdev is a representation of the C type FILE_ATTRIBUTE_UNIX_RDEV.
+const FileAttributeUnixRdev = "unix::rdev"
 
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_UNIX_UID' : Cannot generate literal value for 'gchar*'
+// FileAttributeUnixUid is a representation of the C type FILE_ATTRIBUTE_UNIX_UID.
+const FileAttributeUnixUid = "unix::uid"
 
-// UNSUPPORTED : C value 'MENU_ATTRIBUTE_ACTION' : Cannot generate literal value for 'gchar*'
+// MenuAttributeAction is a representation of the C type MENU_ATTRIBUTE_ACTION.
+const MenuAttributeAction = "action"
 
-// UNSUPPORTED : C value 'MENU_ATTRIBUTE_ACTION_NAMESPACE' : Cannot generate literal value for 'gchar*'
+// MenuAttributeActionNamespace is a representation of the C type MENU_ATTRIBUTE_ACTION_NAMESPACE.
+const MenuAttributeActionNamespace = "action-namespace"
 
-// UNSUPPORTED : C value 'MENU_ATTRIBUTE_ICON' : Cannot generate literal value for 'gchar*'
+// MenuAttributeIcon is a representation of the C type MENU_ATTRIBUTE_ICON.
+const MenuAttributeIcon = "icon"
 
-// UNSUPPORTED : C value 'MENU_ATTRIBUTE_LABEL' : Cannot generate literal value for 'gchar*'
+// MenuAttributeLabel is a representation of the C type MENU_ATTRIBUTE_LABEL.
+const MenuAttributeLabel = "label"
 
-// UNSUPPORTED : C value 'MENU_ATTRIBUTE_TARGET' : Cannot generate literal value for 'gchar*'
+// MenuAttributeTarget is a representation of the C type MENU_ATTRIBUTE_TARGET.
+const MenuAttributeTarget = "target"
 
-// UNSUPPORTED : C value 'MENU_LINK_SECTION' : Cannot generate literal value for 'gchar*'
+// MenuLinkSection is a representation of the C type MENU_LINK_SECTION.
+const MenuLinkSection = "section"
 
-// UNSUPPORTED : C value 'MENU_LINK_SUBMENU' : Cannot generate literal value for 'gchar*'
+// MenuLinkSubmenu is a representation of the C type MENU_LINK_SUBMENU.
+const MenuLinkSubmenu = "submenu"
 
-// UNSUPPORTED : C value 'NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// NativeVolumeMonitorExtensionPointName is a representation of the C type NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME.
+const NativeVolumeMonitorExtensionPointName = "gio-native-volume-monitor"
 
-// UNSUPPORTED : C value 'NETWORK_MONITOR_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// NetworkMonitorExtensionPointName is a representation of the C type NETWORK_MONITOR_EXTENSION_POINT_NAME.
+const NetworkMonitorExtensionPointName = "gio-network-monitor"
 
-// UNSUPPORTED : C value 'PROXY_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// ProxyExtensionPointName is a representation of the C type PROXY_EXTENSION_POINT_NAME.
+const ProxyExtensionPointName = "gio-proxy"
 
-// UNSUPPORTED : C value 'PROXY_RESOLVER_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// ProxyResolverExtensionPointName is a representation of the C type PROXY_RESOLVER_EXTENSION_POINT_NAME.
+const ProxyResolverExtensionPointName = "gio-proxy-resolver"
 
-// UNSUPPORTED : C value 'SETTINGS_BACKEND_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// SettingsBackendExtensionPointName is a representation of the C type SETTINGS_BACKEND_EXTENSION_POINT_NAME.
+const SettingsBackendExtensionPointName = "gsettings-backend"
 
-// UNSUPPORTED : C value 'TLS_BACKEND_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// TlsBackendExtensionPointName is a representation of the C type TLS_BACKEND_EXTENSION_POINT_NAME.
+const TlsBackendExtensionPointName = "gio-tls-backend"
 
-// UNSUPPORTED : C value 'TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT' : Cannot generate literal value for 'gchar*'
+// TlsDatabasePurposeAuthenticateClient is a representation of the C type TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT.
+const TlsDatabasePurposeAuthenticateClient = "1.3.6.1.5.5.7.3.2"
 
-// UNSUPPORTED : C value 'TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER' : Cannot generate literal value for 'gchar*'
+// TlsDatabasePurposeAuthenticateServer is a representation of the C type TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER.
+const TlsDatabasePurposeAuthenticateServer = "1.3.6.1.5.5.7.3.1"
 
-// UNSUPPORTED : C value 'VFS_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// VfsExtensionPointName is a representation of the C type VFS_EXTENSION_POINT_NAME.
+const VfsExtensionPointName = "gio-vfs"
 
-// UNSUPPORTED : C value 'VOLUME_IDENTIFIER_KIND_CLASS' : Cannot generate literal value for 'gchar*'
+// VolumeIdentifierKindClass is a representation of the C type VOLUME_IDENTIFIER_KIND_CLASS.
+const VolumeIdentifierKindClass = "class"
 
-// UNSUPPORTED : C value 'VOLUME_IDENTIFIER_KIND_HAL_UDI' : Cannot generate literal value for 'gchar*'
+// VolumeIdentifierKindHalUdi is a representation of the C type VOLUME_IDENTIFIER_KIND_HAL_UDI.
+const VolumeIdentifierKindHalUdi = "hal-udi"
 
-// UNSUPPORTED : C value 'VOLUME_IDENTIFIER_KIND_LABEL' : Cannot generate literal value for 'gchar*'
+// VolumeIdentifierKindLabel is a representation of the C type VOLUME_IDENTIFIER_KIND_LABEL.
+const VolumeIdentifierKindLabel = "label"
 
-// UNSUPPORTED : C value 'VOLUME_IDENTIFIER_KIND_NFS_MOUNT' : Cannot generate literal value for 'gchar*'
+// VolumeIdentifierKindNfsMount is a representation of the C type VOLUME_IDENTIFIER_KIND_NFS_MOUNT.
+const VolumeIdentifierKindNfsMount = "nfs-mount"
 
-// UNSUPPORTED : C value 'VOLUME_IDENTIFIER_KIND_UNIX_DEVICE' : Cannot generate literal value for 'gchar*'
+// VolumeIdentifierKindUnixDevice is a representation of the C type VOLUME_IDENTIFIER_KIND_UNIX_DEVICE.
+const VolumeIdentifierKindUnixDevice = "unix-device"
 
-// UNSUPPORTED : C value 'VOLUME_IDENTIFIER_KIND_UUID' : Cannot generate literal value for 'gchar*'
+// VolumeIdentifierKindUuid is a representation of the C type VOLUME_IDENTIFIER_KIND_UUID.
+const VolumeIdentifierKindUuid = "uuid"
 
-// UNSUPPORTED : C value 'VOLUME_MONITOR_EXTENSION_POINT_NAME' : Cannot generate literal value for 'gchar*'
+// VolumeMonitorExtensionPointName is a representation of the C type VOLUME_MONITOR_EXTENSION_POINT_NAME.
+const VolumeMonitorExtensionPointName = "gio-volume-monitor"
 
 // UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_REMOTE' : missing Type
 

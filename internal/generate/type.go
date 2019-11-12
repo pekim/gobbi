@@ -71,6 +71,9 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		lit = jen.Lit(uint8(intValue))
 	case "gulong", "guint64":
 		lit = jen.Lit(uint8(intValue))
+	case "gchar*":
+		lit = jen.Lit(stringValue)
+		err = nil
 	default:
 		return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.CType)
 	}

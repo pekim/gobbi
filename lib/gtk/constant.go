@@ -11,11 +11,14 @@ const InputError = int32(-1)
 // InterfaceAge is a representation of the C type INTERFACE_AGE.
 const InterfaceAge = int32(30)
 
-// UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_FULL' : Cannot generate literal value for 'gchar*'
+// LevelBarOffsetFull is a representation of the C type LEVEL_BAR_OFFSET_FULL.
+const LevelBarOffsetFull = "full"
 
-// UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_HIGH' : Cannot generate literal value for 'gchar*'
+// LevelBarOffsetHigh is a representation of the C type LEVEL_BAR_OFFSET_HIGH.
+const LevelBarOffsetHigh = "high"
 
-// UNSUPPORTED : C value 'LEVEL_BAR_OFFSET_LOW' : Cannot generate literal value for 'gchar*'
+// LevelBarOffsetLow is a representation of the C type LEVEL_BAR_OFFSET_LOW.
+const LevelBarOffsetLow = "low"
 
 // MajorVersion is a representation of the C type MAJOR_VERSION.
 const MajorVersion = int32(3)
@@ -29,487 +32,725 @@ const MicroVersion = int32(30)
 // MinorVersion is a representation of the C type MINOR_VERSION.
 const MinorVersion = int32(22)
 
-// UNSUPPORTED : C value 'PAPER_NAME_A3' : Cannot generate literal value for 'gchar*'
+// PaperNameA3 is a representation of the C type PAPER_NAME_A3.
+const PaperNameA3 = "iso_a3"
 
-// UNSUPPORTED : C value 'PAPER_NAME_A4' : Cannot generate literal value for 'gchar*'
+// PaperNameA4 is a representation of the C type PAPER_NAME_A4.
+const PaperNameA4 = "iso_a4"
 
-// UNSUPPORTED : C value 'PAPER_NAME_A5' : Cannot generate literal value for 'gchar*'
+// PaperNameA5 is a representation of the C type PAPER_NAME_A5.
+const PaperNameA5 = "iso_a5"
 
-// UNSUPPORTED : C value 'PAPER_NAME_B5' : Cannot generate literal value for 'gchar*'
+// PaperNameB5 is a representation of the C type PAPER_NAME_B5.
+const PaperNameB5 = "iso_b5"
 
-// UNSUPPORTED : C value 'PAPER_NAME_EXECUTIVE' : Cannot generate literal value for 'gchar*'
+// PaperNameExecutive is a representation of the C type PAPER_NAME_EXECUTIVE.
+const PaperNameExecutive = "na_executive"
 
-// UNSUPPORTED : C value 'PAPER_NAME_LEGAL' : Cannot generate literal value for 'gchar*'
+// PaperNameLegal is a representation of the C type PAPER_NAME_LEGAL.
+const PaperNameLegal = "na_legal"
 
-// UNSUPPORTED : C value 'PAPER_NAME_LETTER' : Cannot generate literal value for 'gchar*'
+// PaperNameLetter is a representation of the C type PAPER_NAME_LETTER.
+const PaperNameLetter = "na_letter"
 
 // PathPrioMask is a representation of the C type PATH_PRIO_MASK.
 const PathPrioMask = int32(15)
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_COLLATE' : Cannot generate literal value for 'gchar*'
+// PrintSettingsCollate is a representation of the C type PRINT_SETTINGS_COLLATE.
+const PrintSettingsCollate = "collate"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_DEFAULT_SOURCE' : Cannot generate literal value for 'gchar*'
+// PrintSettingsDefaultSource is a representation of the C type PRINT_SETTINGS_DEFAULT_SOURCE.
+const PrintSettingsDefaultSource = "default-source"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_DITHER' : Cannot generate literal value for 'gchar*'
+// PrintSettingsDither is a representation of the C type PRINT_SETTINGS_DITHER.
+const PrintSettingsDither = "dither"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_DUPLEX' : Cannot generate literal value for 'gchar*'
+// PrintSettingsDuplex is a representation of the C type PRINT_SETTINGS_DUPLEX.
+const PrintSettingsDuplex = "duplex"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_FINISHINGS' : Cannot generate literal value for 'gchar*'
+// PrintSettingsFinishings is a representation of the C type PRINT_SETTINGS_FINISHINGS.
+const PrintSettingsFinishings = "finishings"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_MEDIA_TYPE' : Cannot generate literal value for 'gchar*'
+// PrintSettingsMediaType is a representation of the C type PRINT_SETTINGS_MEDIA_TYPE.
+const PrintSettingsMediaType = "media-type"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_NUMBER_UP' : Cannot generate literal value for 'gchar*'
+// PrintSettingsNumberUp is a representation of the C type PRINT_SETTINGS_NUMBER_UP.
+const PrintSettingsNumberUp = "number-up"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_NUMBER_UP_LAYOUT' : Cannot generate literal value for 'gchar*'
+// PrintSettingsNumberUpLayout is a representation of the C type PRINT_SETTINGS_NUMBER_UP_LAYOUT.
+const PrintSettingsNumberUpLayout = "number-up-layout"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_N_COPIES' : Cannot generate literal value for 'gchar*'
+// PrintSettingsNCopies is a representation of the C type PRINT_SETTINGS_N_COPIES.
+const PrintSettingsNCopies = "n-copies"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_ORIENTATION' : Cannot generate literal value for 'gchar*'
+// PrintSettingsOrientation is a representation of the C type PRINT_SETTINGS_ORIENTATION.
+const PrintSettingsOrientation = "orientation"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_BASENAME' : Cannot generate literal value for 'gchar*'
+// PrintSettingsOutputBasename is a representation of the C type PRINT_SETTINGS_OUTPUT_BASENAME.
+const PrintSettingsOutputBasename = "output-basename"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_BIN' : Cannot generate literal value for 'gchar*'
+// PrintSettingsOutputBin is a representation of the C type PRINT_SETTINGS_OUTPUT_BIN.
+const PrintSettingsOutputBin = "output-bin"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_DIR' : Cannot generate literal value for 'gchar*'
+// PrintSettingsOutputDir is a representation of the C type PRINT_SETTINGS_OUTPUT_DIR.
+const PrintSettingsOutputDir = "output-dir"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_FILE_FORMAT' : Cannot generate literal value for 'gchar*'
+// PrintSettingsOutputFileFormat is a representation of the C type PRINT_SETTINGS_OUTPUT_FILE_FORMAT.
+const PrintSettingsOutputFileFormat = "output-file-format"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_OUTPUT_URI' : Cannot generate literal value for 'gchar*'
+// PrintSettingsOutputUri is a representation of the C type PRINT_SETTINGS_OUTPUT_URI.
+const PrintSettingsOutputUri = "output-uri"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PAGE_RANGES' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPageRanges is a representation of the C type PRINT_SETTINGS_PAGE_RANGES.
+const PrintSettingsPageRanges = "page-ranges"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PAGE_SET' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPageSet is a representation of the C type PRINT_SETTINGS_PAGE_SET.
+const PrintSettingsPageSet = "page-set"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_FORMAT' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPaperFormat is a representation of the C type PRINT_SETTINGS_PAPER_FORMAT.
+const PrintSettingsPaperFormat = "paper-format"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_HEIGHT' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPaperHeight is a representation of the C type PRINT_SETTINGS_PAPER_HEIGHT.
+const PrintSettingsPaperHeight = "paper-height"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PAPER_WIDTH' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPaperWidth is a representation of the C type PRINT_SETTINGS_PAPER_WIDTH.
+const PrintSettingsPaperWidth = "paper-width"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PRINTER' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPrinter is a representation of the C type PRINT_SETTINGS_PRINTER.
+const PrintSettingsPrinter = "printer"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PRINTER_LPI' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPrinterLpi is a representation of the C type PRINT_SETTINGS_PRINTER_LPI.
+const PrintSettingsPrinterLpi = "printer-lpi"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_PRINT_PAGES' : Cannot generate literal value for 'gchar*'
+// PrintSettingsPrintPages is a representation of the C type PRINT_SETTINGS_PRINT_PAGES.
+const PrintSettingsPrintPages = "print-pages"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_QUALITY' : Cannot generate literal value for 'gchar*'
+// PrintSettingsQuality is a representation of the C type PRINT_SETTINGS_QUALITY.
+const PrintSettingsQuality = "quality"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION' : Cannot generate literal value for 'gchar*'
+// PrintSettingsResolution is a representation of the C type PRINT_SETTINGS_RESOLUTION.
+const PrintSettingsResolution = "resolution"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION_X' : Cannot generate literal value for 'gchar*'
+// PrintSettingsResolutionX is a representation of the C type PRINT_SETTINGS_RESOLUTION_X.
+const PrintSettingsResolutionX = "resolution-x"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_RESOLUTION_Y' : Cannot generate literal value for 'gchar*'
+// PrintSettingsResolutionY is a representation of the C type PRINT_SETTINGS_RESOLUTION_Y.
+const PrintSettingsResolutionY = "resolution-y"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_REVERSE' : Cannot generate literal value for 'gchar*'
+// PrintSettingsReverse is a representation of the C type PRINT_SETTINGS_REVERSE.
+const PrintSettingsReverse = "reverse"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_SCALE' : Cannot generate literal value for 'gchar*'
+// PrintSettingsScale is a representation of the C type PRINT_SETTINGS_SCALE.
+const PrintSettingsScale = "scale"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_USE_COLOR' : Cannot generate literal value for 'gchar*'
+// PrintSettingsUseColor is a representation of the C type PRINT_SETTINGS_USE_COLOR.
+const PrintSettingsUseColor = "use-color"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_WIN32_DRIVER_EXTRA' : Cannot generate literal value for 'gchar*'
+// PrintSettingsWin32DriverExtra is a representation of the C type PRINT_SETTINGS_WIN32_DRIVER_EXTRA.
+const PrintSettingsWin32DriverExtra = "win32-driver-extra"
 
-// UNSUPPORTED : C value 'PRINT_SETTINGS_WIN32_DRIVER_VERSION' : Cannot generate literal value for 'gchar*'
+// PrintSettingsWin32DriverVersion is a representation of the C type PRINT_SETTINGS_WIN32_DRIVER_VERSION.
+const PrintSettingsWin32DriverVersion = "win32-driver-version"
 
 // PriorityResize is a representation of the C type PRIORITY_RESIZE.
 const PriorityResize = int32(10)
 
-// UNSUPPORTED : C value 'STOCK_ABOUT' : Cannot generate literal value for 'gchar*'
+// StockAbout is a representation of the C type STOCK_ABOUT.
+const StockAbout = "gtk-about"
 
-// UNSUPPORTED : C value 'STOCK_ADD' : Cannot generate literal value for 'gchar*'
+// StockAdd is a representation of the C type STOCK_ADD.
+const StockAdd = "gtk-add"
 
-// UNSUPPORTED : C value 'STOCK_APPLY' : Cannot generate literal value for 'gchar*'
+// StockApply is a representation of the C type STOCK_APPLY.
+const StockApply = "gtk-apply"
 
-// UNSUPPORTED : C value 'STOCK_BOLD' : Cannot generate literal value for 'gchar*'
+// StockBold is a representation of the C type STOCK_BOLD.
+const StockBold = "gtk-bold"
 
-// UNSUPPORTED : C value 'STOCK_CANCEL' : Cannot generate literal value for 'gchar*'
+// StockCancel is a representation of the C type STOCK_CANCEL.
+const StockCancel = "gtk-cancel"
 
-// UNSUPPORTED : C value 'STOCK_CAPS_LOCK_WARNING' : Cannot generate literal value for 'gchar*'
+// StockCapsLockWarning is a representation of the C type STOCK_CAPS_LOCK_WARNING.
+const StockCapsLockWarning = "gtk-caps-lock-warning"
 
-// UNSUPPORTED : C value 'STOCK_CDROM' : Cannot generate literal value for 'gchar*'
+// StockCdrom is a representation of the C type STOCK_CDROM.
+const StockCdrom = "gtk-cdrom"
 
-// UNSUPPORTED : C value 'STOCK_CLEAR' : Cannot generate literal value for 'gchar*'
+// StockClear is a representation of the C type STOCK_CLEAR.
+const StockClear = "gtk-clear"
 
-// UNSUPPORTED : C value 'STOCK_CLOSE' : Cannot generate literal value for 'gchar*'
+// StockClose is a representation of the C type STOCK_CLOSE.
+const StockClose = "gtk-close"
 
-// UNSUPPORTED : C value 'STOCK_COLOR_PICKER' : Cannot generate literal value for 'gchar*'
+// StockColorPicker is a representation of the C type STOCK_COLOR_PICKER.
+const StockColorPicker = "gtk-color-picker"
 
-// UNSUPPORTED : C value 'STOCK_CONNECT' : Cannot generate literal value for 'gchar*'
+// StockConnect is a representation of the C type STOCK_CONNECT.
+const StockConnect = "gtk-connect"
 
-// UNSUPPORTED : C value 'STOCK_CONVERT' : Cannot generate literal value for 'gchar*'
+// StockConvert is a representation of the C type STOCK_CONVERT.
+const StockConvert = "gtk-convert"
 
-// UNSUPPORTED : C value 'STOCK_COPY' : Cannot generate literal value for 'gchar*'
+// StockCopy is a representation of the C type STOCK_COPY.
+const StockCopy = "gtk-copy"
 
-// UNSUPPORTED : C value 'STOCK_CUT' : Cannot generate literal value for 'gchar*'
+// StockCut is a representation of the C type STOCK_CUT.
+const StockCut = "gtk-cut"
 
-// UNSUPPORTED : C value 'STOCK_DELETE' : Cannot generate literal value for 'gchar*'
+// StockDelete is a representation of the C type STOCK_DELETE.
+const StockDelete = "gtk-delete"
 
-// UNSUPPORTED : C value 'STOCK_DIALOG_AUTHENTICATION' : Cannot generate literal value for 'gchar*'
+// StockDialogAuthentication is a representation of the C type STOCK_DIALOG_AUTHENTICATION.
+const StockDialogAuthentication = "gtk-dialog-authentication"
 
-// UNSUPPORTED : C value 'STOCK_DIALOG_ERROR' : Cannot generate literal value for 'gchar*'
+// StockDialogError is a representation of the C type STOCK_DIALOG_ERROR.
+const StockDialogError = "gtk-dialog-error"
 
-// UNSUPPORTED : C value 'STOCK_DIALOG_INFO' : Cannot generate literal value for 'gchar*'
+// StockDialogInfo is a representation of the C type STOCK_DIALOG_INFO.
+const StockDialogInfo = "gtk-dialog-info"
 
-// UNSUPPORTED : C value 'STOCK_DIALOG_QUESTION' : Cannot generate literal value for 'gchar*'
+// StockDialogQuestion is a representation of the C type STOCK_DIALOG_QUESTION.
+const StockDialogQuestion = "gtk-dialog-question"
 
-// UNSUPPORTED : C value 'STOCK_DIALOG_WARNING' : Cannot generate literal value for 'gchar*'
+// StockDialogWarning is a representation of the C type STOCK_DIALOG_WARNING.
+const StockDialogWarning = "gtk-dialog-warning"
 
-// UNSUPPORTED : C value 'STOCK_DIRECTORY' : Cannot generate literal value for 'gchar*'
+// StockDirectory is a representation of the C type STOCK_DIRECTORY.
+const StockDirectory = "gtk-directory"
 
-// UNSUPPORTED : C value 'STOCK_DISCARD' : Cannot generate literal value for 'gchar*'
+// StockDiscard is a representation of the C type STOCK_DISCARD.
+const StockDiscard = "gtk-discard"
 
-// UNSUPPORTED : C value 'STOCK_DISCONNECT' : Cannot generate literal value for 'gchar*'
+// StockDisconnect is a representation of the C type STOCK_DISCONNECT.
+const StockDisconnect = "gtk-disconnect"
 
-// UNSUPPORTED : C value 'STOCK_DND' : Cannot generate literal value for 'gchar*'
+// StockDnd is a representation of the C type STOCK_DND.
+const StockDnd = "gtk-dnd"
 
-// UNSUPPORTED : C value 'STOCK_DND_MULTIPLE' : Cannot generate literal value for 'gchar*'
+// StockDndMultiple is a representation of the C type STOCK_DND_MULTIPLE.
+const StockDndMultiple = "gtk-dnd-multiple"
 
-// UNSUPPORTED : C value 'STOCK_EDIT' : Cannot generate literal value for 'gchar*'
+// StockEdit is a representation of the C type STOCK_EDIT.
+const StockEdit = "gtk-edit"
 
-// UNSUPPORTED : C value 'STOCK_EXECUTE' : Cannot generate literal value for 'gchar*'
+// StockExecute is a representation of the C type STOCK_EXECUTE.
+const StockExecute = "gtk-execute"
 
-// UNSUPPORTED : C value 'STOCK_FILE' : Cannot generate literal value for 'gchar*'
+// StockFile is a representation of the C type STOCK_FILE.
+const StockFile = "gtk-file"
 
-// UNSUPPORTED : C value 'STOCK_FIND' : Cannot generate literal value for 'gchar*'
+// StockFind is a representation of the C type STOCK_FIND.
+const StockFind = "gtk-find"
 
-// UNSUPPORTED : C value 'STOCK_FIND_AND_REPLACE' : Cannot generate literal value for 'gchar*'
+// StockFindAndReplace is a representation of the C type STOCK_FIND_AND_REPLACE.
+const StockFindAndReplace = "gtk-find-and-replace"
 
-// UNSUPPORTED : C value 'STOCK_FLOPPY' : Cannot generate literal value for 'gchar*'
+// StockFloppy is a representation of the C type STOCK_FLOPPY.
+const StockFloppy = "gtk-floppy"
 
-// UNSUPPORTED : C value 'STOCK_FULLSCREEN' : Cannot generate literal value for 'gchar*'
+// StockFullscreen is a representation of the C type STOCK_FULLSCREEN.
+const StockFullscreen = "gtk-fullscreen"
 
-// UNSUPPORTED : C value 'STOCK_GOTO_BOTTOM' : Cannot generate literal value for 'gchar*'
+// StockGotoBottom is a representation of the C type STOCK_GOTO_BOTTOM.
+const StockGotoBottom = "gtk-goto-bottom"
 
-// UNSUPPORTED : C value 'STOCK_GOTO_FIRST' : Cannot generate literal value for 'gchar*'
+// StockGotoFirst is a representation of the C type STOCK_GOTO_FIRST.
+const StockGotoFirst = "gtk-goto-first"
 
-// UNSUPPORTED : C value 'STOCK_GOTO_LAST' : Cannot generate literal value for 'gchar*'
+// StockGotoLast is a representation of the C type STOCK_GOTO_LAST.
+const StockGotoLast = "gtk-goto-last"
 
-// UNSUPPORTED : C value 'STOCK_GOTO_TOP' : Cannot generate literal value for 'gchar*'
+// StockGotoTop is a representation of the C type STOCK_GOTO_TOP.
+const StockGotoTop = "gtk-goto-top"
 
-// UNSUPPORTED : C value 'STOCK_GO_BACK' : Cannot generate literal value for 'gchar*'
+// StockGoBack is a representation of the C type STOCK_GO_BACK.
+const StockGoBack = "gtk-go-back"
 
-// UNSUPPORTED : C value 'STOCK_GO_DOWN' : Cannot generate literal value for 'gchar*'
+// StockGoDown is a representation of the C type STOCK_GO_DOWN.
+const StockGoDown = "gtk-go-down"
 
-// UNSUPPORTED : C value 'STOCK_GO_FORWARD' : Cannot generate literal value for 'gchar*'
+// StockGoForward is a representation of the C type STOCK_GO_FORWARD.
+const StockGoForward = "gtk-go-forward"
 
-// UNSUPPORTED : C value 'STOCK_GO_UP' : Cannot generate literal value for 'gchar*'
+// StockGoUp is a representation of the C type STOCK_GO_UP.
+const StockGoUp = "gtk-go-up"
 
-// UNSUPPORTED : C value 'STOCK_HARDDISK' : Cannot generate literal value for 'gchar*'
+// StockHarddisk is a representation of the C type STOCK_HARDDISK.
+const StockHarddisk = "gtk-harddisk"
 
-// UNSUPPORTED : C value 'STOCK_HELP' : Cannot generate literal value for 'gchar*'
+// StockHelp is a representation of the C type STOCK_HELP.
+const StockHelp = "gtk-help"
 
-// UNSUPPORTED : C value 'STOCK_HOME' : Cannot generate literal value for 'gchar*'
+// StockHome is a representation of the C type STOCK_HOME.
+const StockHome = "gtk-home"
 
-// UNSUPPORTED : C value 'STOCK_INDENT' : Cannot generate literal value for 'gchar*'
+// StockIndent is a representation of the C type STOCK_INDENT.
+const StockIndent = "gtk-indent"
 
-// UNSUPPORTED : C value 'STOCK_INDEX' : Cannot generate literal value for 'gchar*'
+// StockIndex is a representation of the C type STOCK_INDEX.
+const StockIndex = "gtk-index"
 
-// UNSUPPORTED : C value 'STOCK_INFO' : Cannot generate literal value for 'gchar*'
+// StockInfo is a representation of the C type STOCK_INFO.
+const StockInfo = "gtk-info"
 
-// UNSUPPORTED : C value 'STOCK_ITALIC' : Cannot generate literal value for 'gchar*'
+// StockItalic is a representation of the C type STOCK_ITALIC.
+const StockItalic = "gtk-italic"
 
-// UNSUPPORTED : C value 'STOCK_JUMP_TO' : Cannot generate literal value for 'gchar*'
+// StockJumpTo is a representation of the C type STOCK_JUMP_TO.
+const StockJumpTo = "gtk-jump-to"
 
-// UNSUPPORTED : C value 'STOCK_JUSTIFY_CENTER' : Cannot generate literal value for 'gchar*'
+// StockJustifyCenter is a representation of the C type STOCK_JUSTIFY_CENTER.
+const StockJustifyCenter = "gtk-justify-center"
 
-// UNSUPPORTED : C value 'STOCK_JUSTIFY_FILL' : Cannot generate literal value for 'gchar*'
+// StockJustifyFill is a representation of the C type STOCK_JUSTIFY_FILL.
+const StockJustifyFill = "gtk-justify-fill"
 
-// UNSUPPORTED : C value 'STOCK_JUSTIFY_LEFT' : Cannot generate literal value for 'gchar*'
+// StockJustifyLeft is a representation of the C type STOCK_JUSTIFY_LEFT.
+const StockJustifyLeft = "gtk-justify-left"
 
-// UNSUPPORTED : C value 'STOCK_JUSTIFY_RIGHT' : Cannot generate literal value for 'gchar*'
+// StockJustifyRight is a representation of the C type STOCK_JUSTIFY_RIGHT.
+const StockJustifyRight = "gtk-justify-right"
 
-// UNSUPPORTED : C value 'STOCK_LEAVE_FULLSCREEN' : Cannot generate literal value for 'gchar*'
+// StockLeaveFullscreen is a representation of the C type STOCK_LEAVE_FULLSCREEN.
+const StockLeaveFullscreen = "gtk-leave-fullscreen"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_FORWARD' : Cannot generate literal value for 'gchar*'
+// StockMediaForward is a representation of the C type STOCK_MEDIA_FORWARD.
+const StockMediaForward = "gtk-media-forward"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_NEXT' : Cannot generate literal value for 'gchar*'
+// StockMediaNext is a representation of the C type STOCK_MEDIA_NEXT.
+const StockMediaNext = "gtk-media-next"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_PAUSE' : Cannot generate literal value for 'gchar*'
+// StockMediaPause is a representation of the C type STOCK_MEDIA_PAUSE.
+const StockMediaPause = "gtk-media-pause"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_PLAY' : Cannot generate literal value for 'gchar*'
+// StockMediaPlay is a representation of the C type STOCK_MEDIA_PLAY.
+const StockMediaPlay = "gtk-media-play"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_PREVIOUS' : Cannot generate literal value for 'gchar*'
+// StockMediaPrevious is a representation of the C type STOCK_MEDIA_PREVIOUS.
+const StockMediaPrevious = "gtk-media-previous"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_RECORD' : Cannot generate literal value for 'gchar*'
+// StockMediaRecord is a representation of the C type STOCK_MEDIA_RECORD.
+const StockMediaRecord = "gtk-media-record"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_REWIND' : Cannot generate literal value for 'gchar*'
+// StockMediaRewind is a representation of the C type STOCK_MEDIA_REWIND.
+const StockMediaRewind = "gtk-media-rewind"
 
-// UNSUPPORTED : C value 'STOCK_MEDIA_STOP' : Cannot generate literal value for 'gchar*'
+// StockMediaStop is a representation of the C type STOCK_MEDIA_STOP.
+const StockMediaStop = "gtk-media-stop"
 
-// UNSUPPORTED : C value 'STOCK_MISSING_IMAGE' : Cannot generate literal value for 'gchar*'
+// StockMissingImage is a representation of the C type STOCK_MISSING_IMAGE.
+const StockMissingImage = "gtk-missing-image"
 
-// UNSUPPORTED : C value 'STOCK_NETWORK' : Cannot generate literal value for 'gchar*'
+// StockNetwork is a representation of the C type STOCK_NETWORK.
+const StockNetwork = "gtk-network"
 
-// UNSUPPORTED : C value 'STOCK_NEW' : Cannot generate literal value for 'gchar*'
+// StockNew is a representation of the C type STOCK_NEW.
+const StockNew = "gtk-new"
 
-// UNSUPPORTED : C value 'STOCK_NO' : Cannot generate literal value for 'gchar*'
+// StockNo is a representation of the C type STOCK_NO.
+const StockNo = "gtk-no"
 
-// UNSUPPORTED : C value 'STOCK_OK' : Cannot generate literal value for 'gchar*'
+// StockOk is a representation of the C type STOCK_OK.
+const StockOk = "gtk-ok"
 
-// UNSUPPORTED : C value 'STOCK_OPEN' : Cannot generate literal value for 'gchar*'
+// StockOpen is a representation of the C type STOCK_OPEN.
+const StockOpen = "gtk-open"
 
-// UNSUPPORTED : C value 'STOCK_ORIENTATION_LANDSCAPE' : Cannot generate literal value for 'gchar*'
+// StockOrientationLandscape is a representation of the C type STOCK_ORIENTATION_LANDSCAPE.
+const StockOrientationLandscape = "gtk-orientation-landscape"
 
-// UNSUPPORTED : C value 'STOCK_ORIENTATION_PORTRAIT' : Cannot generate literal value for 'gchar*'
+// StockOrientationPortrait is a representation of the C type STOCK_ORIENTATION_PORTRAIT.
+const StockOrientationPortrait = "gtk-orientation-portrait"
 
-// UNSUPPORTED : C value 'STOCK_ORIENTATION_REVERSE_LANDSCAPE' : Cannot generate literal value for 'gchar*'
+// StockOrientationReverseLandscape is a representation of the C type STOCK_ORIENTATION_REVERSE_LANDSCAPE.
+const StockOrientationReverseLandscape = "gtk-orientation-reverse-landscape"
 
-// UNSUPPORTED : C value 'STOCK_ORIENTATION_REVERSE_PORTRAIT' : Cannot generate literal value for 'gchar*'
+// StockOrientationReversePortrait is a representation of the C type STOCK_ORIENTATION_REVERSE_PORTRAIT.
+const StockOrientationReversePortrait = "gtk-orientation-reverse-portrait"
 
-// UNSUPPORTED : C value 'STOCK_PAGE_SETUP' : Cannot generate literal value for 'gchar*'
+// StockPageSetup is a representation of the C type STOCK_PAGE_SETUP.
+const StockPageSetup = "gtk-page-setup"
 
-// UNSUPPORTED : C value 'STOCK_PASTE' : Cannot generate literal value for 'gchar*'
+// StockPaste is a representation of the C type STOCK_PASTE.
+const StockPaste = "gtk-paste"
 
-// UNSUPPORTED : C value 'STOCK_PREFERENCES' : Cannot generate literal value for 'gchar*'
+// StockPreferences is a representation of the C type STOCK_PREFERENCES.
+const StockPreferences = "gtk-preferences"
 
-// UNSUPPORTED : C value 'STOCK_PRINT' : Cannot generate literal value for 'gchar*'
+// StockPrint is a representation of the C type STOCK_PRINT.
+const StockPrint = "gtk-print"
 
-// UNSUPPORTED : C value 'STOCK_PRINT_ERROR' : Cannot generate literal value for 'gchar*'
+// StockPrintError is a representation of the C type STOCK_PRINT_ERROR.
+const StockPrintError = "gtk-print-error"
 
-// UNSUPPORTED : C value 'STOCK_PRINT_PAUSED' : Cannot generate literal value for 'gchar*'
+// StockPrintPaused is a representation of the C type STOCK_PRINT_PAUSED.
+const StockPrintPaused = "gtk-print-paused"
 
-// UNSUPPORTED : C value 'STOCK_PRINT_PREVIEW' : Cannot generate literal value for 'gchar*'
+// StockPrintPreview is a representation of the C type STOCK_PRINT_PREVIEW.
+const StockPrintPreview = "gtk-print-preview"
 
-// UNSUPPORTED : C value 'STOCK_PRINT_REPORT' : Cannot generate literal value for 'gchar*'
+// StockPrintReport is a representation of the C type STOCK_PRINT_REPORT.
+const StockPrintReport = "gtk-print-report"
 
-// UNSUPPORTED : C value 'STOCK_PRINT_WARNING' : Cannot generate literal value for 'gchar*'
+// StockPrintWarning is a representation of the C type STOCK_PRINT_WARNING.
+const StockPrintWarning = "gtk-print-warning"
 
-// UNSUPPORTED : C value 'STOCK_PROPERTIES' : Cannot generate literal value for 'gchar*'
+// StockProperties is a representation of the C type STOCK_PROPERTIES.
+const StockProperties = "gtk-properties"
 
-// UNSUPPORTED : C value 'STOCK_QUIT' : Cannot generate literal value for 'gchar*'
+// StockQuit is a representation of the C type STOCK_QUIT.
+const StockQuit = "gtk-quit"
 
-// UNSUPPORTED : C value 'STOCK_REDO' : Cannot generate literal value for 'gchar*'
+// StockRedo is a representation of the C type STOCK_REDO.
+const StockRedo = "gtk-redo"
 
-// UNSUPPORTED : C value 'STOCK_REFRESH' : Cannot generate literal value for 'gchar*'
+// StockRefresh is a representation of the C type STOCK_REFRESH.
+const StockRefresh = "gtk-refresh"
 
-// UNSUPPORTED : C value 'STOCK_REMOVE' : Cannot generate literal value for 'gchar*'
+// StockRemove is a representation of the C type STOCK_REMOVE.
+const StockRemove = "gtk-remove"
 
-// UNSUPPORTED : C value 'STOCK_REVERT_TO_SAVED' : Cannot generate literal value for 'gchar*'
+// StockRevertToSaved is a representation of the C type STOCK_REVERT_TO_SAVED.
+const StockRevertToSaved = "gtk-revert-to-saved"
 
-// UNSUPPORTED : C value 'STOCK_SAVE' : Cannot generate literal value for 'gchar*'
+// StockSave is a representation of the C type STOCK_SAVE.
+const StockSave = "gtk-save"
 
-// UNSUPPORTED : C value 'STOCK_SAVE_AS' : Cannot generate literal value for 'gchar*'
+// StockSaveAs is a representation of the C type STOCK_SAVE_AS.
+const StockSaveAs = "gtk-save-as"
 
-// UNSUPPORTED : C value 'STOCK_SELECT_ALL' : Cannot generate literal value for 'gchar*'
+// StockSelectAll is a representation of the C type STOCK_SELECT_ALL.
+const StockSelectAll = "gtk-select-all"
 
-// UNSUPPORTED : C value 'STOCK_SELECT_COLOR' : Cannot generate literal value for 'gchar*'
+// StockSelectColor is a representation of the C type STOCK_SELECT_COLOR.
+const StockSelectColor = "gtk-select-color"
 
-// UNSUPPORTED : C value 'STOCK_SELECT_FONT' : Cannot generate literal value for 'gchar*'
+// StockSelectFont is a representation of the C type STOCK_SELECT_FONT.
+const StockSelectFont = "gtk-select-font"
 
-// UNSUPPORTED : C value 'STOCK_SORT_ASCENDING' : Cannot generate literal value for 'gchar*'
+// StockSortAscending is a representation of the C type STOCK_SORT_ASCENDING.
+const StockSortAscending = "gtk-sort-ascending"
 
-// UNSUPPORTED : C value 'STOCK_SORT_DESCENDING' : Cannot generate literal value for 'gchar*'
+// StockSortDescending is a representation of the C type STOCK_SORT_DESCENDING.
+const StockSortDescending = "gtk-sort-descending"
 
-// UNSUPPORTED : C value 'STOCK_SPELL_CHECK' : Cannot generate literal value for 'gchar*'
+// StockSpellCheck is a representation of the C type STOCK_SPELL_CHECK.
+const StockSpellCheck = "gtk-spell-check"
 
-// UNSUPPORTED : C value 'STOCK_STOP' : Cannot generate literal value for 'gchar*'
+// StockStop is a representation of the C type STOCK_STOP.
+const StockStop = "gtk-stop"
 
-// UNSUPPORTED : C value 'STOCK_STRIKETHROUGH' : Cannot generate literal value for 'gchar*'
+// StockStrikethrough is a representation of the C type STOCK_STRIKETHROUGH.
+const StockStrikethrough = "gtk-strikethrough"
 
-// UNSUPPORTED : C value 'STOCK_UNDELETE' : Cannot generate literal value for 'gchar*'
+// StockUndelete is a representation of the C type STOCK_UNDELETE.
+const StockUndelete = "gtk-undelete"
 
-// UNSUPPORTED : C value 'STOCK_UNDERLINE' : Cannot generate literal value for 'gchar*'
+// StockUnderline is a representation of the C type STOCK_UNDERLINE.
+const StockUnderline = "gtk-underline"
 
-// UNSUPPORTED : C value 'STOCK_UNDO' : Cannot generate literal value for 'gchar*'
+// StockUndo is a representation of the C type STOCK_UNDO.
+const StockUndo = "gtk-undo"
 
-// UNSUPPORTED : C value 'STOCK_UNINDENT' : Cannot generate literal value for 'gchar*'
+// StockUnindent is a representation of the C type STOCK_UNINDENT.
+const StockUnindent = "gtk-unindent"
 
-// UNSUPPORTED : C value 'STOCK_YES' : Cannot generate literal value for 'gchar*'
+// StockYes is a representation of the C type STOCK_YES.
+const StockYes = "gtk-yes"
 
-// UNSUPPORTED : C value 'STOCK_ZOOM_100' : Cannot generate literal value for 'gchar*'
+// StockZoom100 is a representation of the C type STOCK_ZOOM_100.
+const StockZoom100 = "gtk-zoom-100"
 
-// UNSUPPORTED : C value 'STOCK_ZOOM_FIT' : Cannot generate literal value for 'gchar*'
+// StockZoomFit is a representation of the C type STOCK_ZOOM_FIT.
+const StockZoomFit = "gtk-zoom-fit"
 
-// UNSUPPORTED : C value 'STOCK_ZOOM_IN' : Cannot generate literal value for 'gchar*'
+// StockZoomIn is a representation of the C type STOCK_ZOOM_IN.
+const StockZoomIn = "gtk-zoom-in"
 
-// UNSUPPORTED : C value 'STOCK_ZOOM_OUT' : Cannot generate literal value for 'gchar*'
+// StockZoomOut is a representation of the C type STOCK_ZOOM_OUT.
+const StockZoomOut = "gtk-zoom-out"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_ACCELERATOR' : Cannot generate literal value for 'gchar*'
+// StyleClassAccelerator is a representation of the C type STYLE_CLASS_ACCELERATOR.
+const StyleClassAccelerator = "accelerator"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_ARROW' : Cannot generate literal value for 'gchar*'
+// StyleClassArrow is a representation of the C type STYLE_CLASS_ARROW.
+const StyleClassArrow = "arrow"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_BACKGROUND' : Cannot generate literal value for 'gchar*'
+// StyleClassBackground is a representation of the C type STYLE_CLASS_BACKGROUND.
+const StyleClassBackground = "background"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_BOTTOM' : Cannot generate literal value for 'gchar*'
+// StyleClassBottom is a representation of the C type STYLE_CLASS_BOTTOM.
+const StyleClassBottom = "bottom"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_BUTTON' : Cannot generate literal value for 'gchar*'
+// StyleClassButton is a representation of the C type STYLE_CLASS_BUTTON.
+const StyleClassButton = "button"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_CALENDAR' : Cannot generate literal value for 'gchar*'
+// StyleClassCalendar is a representation of the C type STYLE_CLASS_CALENDAR.
+const StyleClassCalendar = "calendar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_CELL' : Cannot generate literal value for 'gchar*'
+// StyleClassCell is a representation of the C type STYLE_CLASS_CELL.
+const StyleClassCell = "cell"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_CHECK' : Cannot generate literal value for 'gchar*'
+// StyleClassCheck is a representation of the C type STYLE_CLASS_CHECK.
+const StyleClassCheck = "check"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_COMBOBOX_ENTRY' : Cannot generate literal value for 'gchar*'
+// StyleClassComboboxEntry is a representation of the C type STYLE_CLASS_COMBOBOX_ENTRY.
+const StyleClassComboboxEntry = "combobox-entry"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_CONTEXT_MENU' : Cannot generate literal value for 'gchar*'
+// StyleClassContextMenu is a representation of the C type STYLE_CLASS_CONTEXT_MENU.
+const StyleClassContextMenu = "context-menu"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_CSD' : Cannot generate literal value for 'gchar*'
+// StyleClassCsd is a representation of the C type STYLE_CLASS_CSD.
+const StyleClassCsd = "csd"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_CURSOR_HANDLE' : Cannot generate literal value for 'gchar*'
+// StyleClassCursorHandle is a representation of the C type STYLE_CLASS_CURSOR_HANDLE.
+const StyleClassCursorHandle = "cursor-handle"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_DEFAULT' : Cannot generate literal value for 'gchar*'
+// StyleClassDefault is a representation of the C type STYLE_CLASS_DEFAULT.
+const StyleClassDefault = "default"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_DESTRUCTIVE_ACTION' : Cannot generate literal value for 'gchar*'
+// StyleClassDestructiveAction is a representation of the C type STYLE_CLASS_DESTRUCTIVE_ACTION.
+const StyleClassDestructiveAction = "destructive-action"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_DIM_LABEL' : Cannot generate literal value for 'gchar*'
+// StyleClassDimLabel is a representation of the C type STYLE_CLASS_DIM_LABEL.
+const StyleClassDimLabel = "dim-label"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_DND' : Cannot generate literal value for 'gchar*'
+// StyleClassDnd is a representation of the C type STYLE_CLASS_DND.
+const StyleClassDnd = "dnd"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_DOCK' : Cannot generate literal value for 'gchar*'
+// StyleClassDock is a representation of the C type STYLE_CLASS_DOCK.
+const StyleClassDock = "dock"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_ENTRY' : Cannot generate literal value for 'gchar*'
+// StyleClassEntry is a representation of the C type STYLE_CLASS_ENTRY.
+const StyleClassEntry = "entry"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_ERROR' : Cannot generate literal value for 'gchar*'
+// StyleClassError is a representation of the C type STYLE_CLASS_ERROR.
+const StyleClassError = "error"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_EXPANDER' : Cannot generate literal value for 'gchar*'
+// StyleClassExpander is a representation of the C type STYLE_CLASS_EXPANDER.
+const StyleClassExpander = "expander"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_FLAT' : Cannot generate literal value for 'gchar*'
+// StyleClassFlat is a representation of the C type STYLE_CLASS_FLAT.
+const StyleClassFlat = "flat"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_FRAME' : Cannot generate literal value for 'gchar*'
+// StyleClassFrame is a representation of the C type STYLE_CLASS_FRAME.
+const StyleClassFrame = "frame"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_GRIP' : Cannot generate literal value for 'gchar*'
+// StyleClassGrip is a representation of the C type STYLE_CLASS_GRIP.
+const StyleClassGrip = "grip"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_HEADER' : Cannot generate literal value for 'gchar*'
+// StyleClassHeader is a representation of the C type STYLE_CLASS_HEADER.
+const StyleClassHeader = "header"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_HIGHLIGHT' : Cannot generate literal value for 'gchar*'
+// StyleClassHighlight is a representation of the C type STYLE_CLASS_HIGHLIGHT.
+const StyleClassHighlight = "highlight"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_HORIZONTAL' : Cannot generate literal value for 'gchar*'
+// StyleClassHorizontal is a representation of the C type STYLE_CLASS_HORIZONTAL.
+const StyleClassHorizontal = "horizontal"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_IMAGE' : Cannot generate literal value for 'gchar*'
+// StyleClassImage is a representation of the C type STYLE_CLASS_IMAGE.
+const StyleClassImage = "image"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_INFO' : Cannot generate literal value for 'gchar*'
+// StyleClassInfo is a representation of the C type STYLE_CLASS_INFO.
+const StyleClassInfo = "info"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_INLINE_TOOLBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassInlineToolbar is a representation of the C type STYLE_CLASS_INLINE_TOOLBAR.
+const StyleClassInlineToolbar = "inline-toolbar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_INSERTION_CURSOR' : Cannot generate literal value for 'gchar*'
+// StyleClassInsertionCursor is a representation of the C type STYLE_CLASS_INSERTION_CURSOR.
+const StyleClassInsertionCursor = "insertion-cursor"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_LABEL' : Cannot generate literal value for 'gchar*'
+// StyleClassLabel is a representation of the C type STYLE_CLASS_LABEL.
+const StyleClassLabel = "label"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_LEFT' : Cannot generate literal value for 'gchar*'
+// StyleClassLeft is a representation of the C type STYLE_CLASS_LEFT.
+const StyleClassLeft = "left"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_LEVEL_BAR' : Cannot generate literal value for 'gchar*'
+// StyleClassLevelBar is a representation of the C type STYLE_CLASS_LEVEL_BAR.
+const StyleClassLevelBar = "level-bar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_LINKED' : Cannot generate literal value for 'gchar*'
+// StyleClassLinked is a representation of the C type STYLE_CLASS_LINKED.
+const StyleClassLinked = "linked"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_LIST' : Cannot generate literal value for 'gchar*'
+// StyleClassList is a representation of the C type STYLE_CLASS_LIST.
+const StyleClassList = "list"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_LIST_ROW' : Cannot generate literal value for 'gchar*'
+// StyleClassListRow is a representation of the C type STYLE_CLASS_LIST_ROW.
+const StyleClassListRow = "list-row"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_MARK' : Cannot generate literal value for 'gchar*'
+// StyleClassMark is a representation of the C type STYLE_CLASS_MARK.
+const StyleClassMark = "mark"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_MENU' : Cannot generate literal value for 'gchar*'
+// StyleClassMenu is a representation of the C type STYLE_CLASS_MENU.
+const StyleClassMenu = "menu"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_MENUBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassMenubar is a representation of the C type STYLE_CLASS_MENUBAR.
+const StyleClassMenubar = "menubar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_MENUITEM' : Cannot generate literal value for 'gchar*'
+// StyleClassMenuitem is a representation of the C type STYLE_CLASS_MENUITEM.
+const StyleClassMenuitem = "menuitem"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_MESSAGE_DIALOG' : Cannot generate literal value for 'gchar*'
+// StyleClassMessageDialog is a representation of the C type STYLE_CLASS_MESSAGE_DIALOG.
+const StyleClassMessageDialog = "message-dialog"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_MONOSPACE' : Cannot generate literal value for 'gchar*'
+// StyleClassMonospace is a representation of the C type STYLE_CLASS_MONOSPACE.
+const StyleClassMonospace = "monospace"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_NEEDS_ATTENTION' : Cannot generate literal value for 'gchar*'
+// StyleClassNeedsAttention is a representation of the C type STYLE_CLASS_NEEDS_ATTENTION.
+const StyleClassNeedsAttention = "needs-attention"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_NOTEBOOK' : Cannot generate literal value for 'gchar*'
+// StyleClassNotebook is a representation of the C type STYLE_CLASS_NOTEBOOK.
+const StyleClassNotebook = "notebook"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_OSD' : Cannot generate literal value for 'gchar*'
+// StyleClassOsd is a representation of the C type STYLE_CLASS_OSD.
+const StyleClassOsd = "osd"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_OVERSHOOT' : Cannot generate literal value for 'gchar*'
+// StyleClassOvershoot is a representation of the C type STYLE_CLASS_OVERSHOOT.
+const StyleClassOvershoot = "overshoot"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_PANE_SEPARATOR' : Cannot generate literal value for 'gchar*'
+// StyleClassPaneSeparator is a representation of the C type STYLE_CLASS_PANE_SEPARATOR.
+const StyleClassPaneSeparator = "pane-separator"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_PAPER' : Cannot generate literal value for 'gchar*'
+// StyleClassPaper is a representation of the C type STYLE_CLASS_PAPER.
+const StyleClassPaper = "paper"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_POPOVER' : Cannot generate literal value for 'gchar*'
+// StyleClassPopover is a representation of the C type STYLE_CLASS_POPOVER.
+const StyleClassPopover = "popover"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_POPUP' : Cannot generate literal value for 'gchar*'
+// StyleClassPopup is a representation of the C type STYLE_CLASS_POPUP.
+const StyleClassPopup = "popup"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_PRIMARY_TOOLBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassPrimaryToolbar is a representation of the C type STYLE_CLASS_PRIMARY_TOOLBAR.
+const StyleClassPrimaryToolbar = "primary-toolbar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_PROGRESSBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassProgressbar is a representation of the C type STYLE_CLASS_PROGRESSBAR.
+const StyleClassProgressbar = "progressbar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_PULSE' : Cannot generate literal value for 'gchar*'
+// StyleClassPulse is a representation of the C type STYLE_CLASS_PULSE.
+const StyleClassPulse = "pulse"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_QUESTION' : Cannot generate literal value for 'gchar*'
+// StyleClassQuestion is a representation of the C type STYLE_CLASS_QUESTION.
+const StyleClassQuestion = "question"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_RADIO' : Cannot generate literal value for 'gchar*'
+// StyleClassRadio is a representation of the C type STYLE_CLASS_RADIO.
+const StyleClassRadio = "radio"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_RAISED' : Cannot generate literal value for 'gchar*'
+// StyleClassRaised is a representation of the C type STYLE_CLASS_RAISED.
+const StyleClassRaised = "raised"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_READ_ONLY' : Cannot generate literal value for 'gchar*'
+// StyleClassReadOnly is a representation of the C type STYLE_CLASS_READ_ONLY.
+const StyleClassReadOnly = "read-only"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_RIGHT' : Cannot generate literal value for 'gchar*'
+// StyleClassRight is a representation of the C type STYLE_CLASS_RIGHT.
+const StyleClassRight = "right"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_RUBBERBAND' : Cannot generate literal value for 'gchar*'
+// StyleClassRubberband is a representation of the C type STYLE_CLASS_RUBBERBAND.
+const StyleClassRubberband = "rubberband"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SCALE' : Cannot generate literal value for 'gchar*'
+// StyleClassScale is a representation of the C type STYLE_CLASS_SCALE.
+const StyleClassScale = "scale"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SCALE_HAS_MARKS_ABOVE' : Cannot generate literal value for 'gchar*'
+// StyleClassScaleHasMarksAbove is a representation of the C type STYLE_CLASS_SCALE_HAS_MARKS_ABOVE.
+const StyleClassScaleHasMarksAbove = "scale-has-marks-above"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SCALE_HAS_MARKS_BELOW' : Cannot generate literal value for 'gchar*'
+// StyleClassScaleHasMarksBelow is a representation of the C type STYLE_CLASS_SCALE_HAS_MARKS_BELOW.
+const StyleClassScaleHasMarksBelow = "scale-has-marks-below"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SCROLLBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassScrollbar is a representation of the C type STYLE_CLASS_SCROLLBAR.
+const StyleClassScrollbar = "scrollbar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SCROLLBARS_JUNCTION' : Cannot generate literal value for 'gchar*'
+// StyleClassScrollbarsJunction is a representation of the C type STYLE_CLASS_SCROLLBARS_JUNCTION.
+const StyleClassScrollbarsJunction = "scrollbars-junction"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SEPARATOR' : Cannot generate literal value for 'gchar*'
+// StyleClassSeparator is a representation of the C type STYLE_CLASS_SEPARATOR.
+const StyleClassSeparator = "separator"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SIDEBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassSidebar is a representation of the C type STYLE_CLASS_SIDEBAR.
+const StyleClassSidebar = "sidebar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SLIDER' : Cannot generate literal value for 'gchar*'
+// StyleClassSlider is a representation of the C type STYLE_CLASS_SLIDER.
+const StyleClassSlider = "slider"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SPINBUTTON' : Cannot generate literal value for 'gchar*'
+// StyleClassSpinbutton is a representation of the C type STYLE_CLASS_SPINBUTTON.
+const StyleClassSpinbutton = "spinbutton"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SPINNER' : Cannot generate literal value for 'gchar*'
+// StyleClassSpinner is a representation of the C type STYLE_CLASS_SPINNER.
+const StyleClassSpinner = "spinner"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_STATUSBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassStatusbar is a representation of the C type STYLE_CLASS_STATUSBAR.
+const StyleClassStatusbar = "statusbar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SUBTITLE' : Cannot generate literal value for 'gchar*'
+// StyleClassSubtitle is a representation of the C type STYLE_CLASS_SUBTITLE.
+const StyleClassSubtitle = "subtitle"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_SUGGESTED_ACTION' : Cannot generate literal value for 'gchar*'
+// StyleClassSuggestedAction is a representation of the C type STYLE_CLASS_SUGGESTED_ACTION.
+const StyleClassSuggestedAction = "suggested-action"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TITLE' : Cannot generate literal value for 'gchar*'
+// StyleClassTitle is a representation of the C type STYLE_CLASS_TITLE.
+const StyleClassTitle = "title"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TITLEBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassTitlebar is a representation of the C type STYLE_CLASS_TITLEBAR.
+const StyleClassTitlebar = "titlebar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TOOLBAR' : Cannot generate literal value for 'gchar*'
+// StyleClassToolbar is a representation of the C type STYLE_CLASS_TOOLBAR.
+const StyleClassToolbar = "toolbar"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TOOLTIP' : Cannot generate literal value for 'gchar*'
+// StyleClassTooltip is a representation of the C type STYLE_CLASS_TOOLTIP.
+const StyleClassTooltip = "tooltip"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TOP' : Cannot generate literal value for 'gchar*'
+// StyleClassTop is a representation of the C type STYLE_CLASS_TOP.
+const StyleClassTop = "top"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TOUCH_SELECTION' : Cannot generate literal value for 'gchar*'
+// StyleClassTouchSelection is a representation of the C type STYLE_CLASS_TOUCH_SELECTION.
+const StyleClassTouchSelection = "touch-selection"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_TROUGH' : Cannot generate literal value for 'gchar*'
+// StyleClassTrough is a representation of the C type STYLE_CLASS_TROUGH.
+const StyleClassTrough = "trough"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_UNDERSHOOT' : Cannot generate literal value for 'gchar*'
+// StyleClassUndershoot is a representation of the C type STYLE_CLASS_UNDERSHOOT.
+const StyleClassUndershoot = "undershoot"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_VERTICAL' : Cannot generate literal value for 'gchar*'
+// StyleClassVertical is a representation of the C type STYLE_CLASS_VERTICAL.
+const StyleClassVertical = "vertical"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_VIEW' : Cannot generate literal value for 'gchar*'
+// StyleClassView is a representation of the C type STYLE_CLASS_VIEW.
+const StyleClassView = "view"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_WARNING' : Cannot generate literal value for 'gchar*'
+// StyleClassWarning is a representation of the C type STYLE_CLASS_WARNING.
+const StyleClassWarning = "warning"
 
-// UNSUPPORTED : C value 'STYLE_CLASS_WIDE' : Cannot generate literal value for 'gchar*'
+// StyleClassWide is a representation of the C type STYLE_CLASS_WIDE.
+const StyleClassWide = "wide"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_BACKGROUND_COLOR' : Cannot generate literal value for 'gchar*'
+// StylePropertyBackgroundColor is a representation of the C type STYLE_PROPERTY_BACKGROUND_COLOR.
+const StylePropertyBackgroundColor = "background-color"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_BACKGROUND_IMAGE' : Cannot generate literal value for 'gchar*'
+// StylePropertyBackgroundImage is a representation of the C type STYLE_PROPERTY_BACKGROUND_IMAGE.
+const StylePropertyBackgroundImage = "background-image"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_COLOR' : Cannot generate literal value for 'gchar*'
+// StylePropertyBorderColor is a representation of the C type STYLE_PROPERTY_BORDER_COLOR.
+const StylePropertyBorderColor = "border-color"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_RADIUS' : Cannot generate literal value for 'gchar*'
+// StylePropertyBorderRadius is a representation of the C type STYLE_PROPERTY_BORDER_RADIUS.
+const StylePropertyBorderRadius = "border-radius"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_STYLE' : Cannot generate literal value for 'gchar*'
+// StylePropertyBorderStyle is a representation of the C type STYLE_PROPERTY_BORDER_STYLE.
+const StylePropertyBorderStyle = "border-style"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_BORDER_WIDTH' : Cannot generate literal value for 'gchar*'
+// StylePropertyBorderWidth is a representation of the C type STYLE_PROPERTY_BORDER_WIDTH.
+const StylePropertyBorderWidth = "border-width"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_COLOR' : Cannot generate literal value for 'gchar*'
+// StylePropertyColor is a representation of the C type STYLE_PROPERTY_COLOR.
+const StylePropertyColor = "color"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_FONT' : Cannot generate literal value for 'gchar*'
+// StylePropertyFont is a representation of the C type STYLE_PROPERTY_FONT.
+const StylePropertyFont = "font"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_MARGIN' : Cannot generate literal value for 'gchar*'
+// StylePropertyMargin is a representation of the C type STYLE_PROPERTY_MARGIN.
+const StylePropertyMargin = "margin"
 
-// UNSUPPORTED : C value 'STYLE_PROPERTY_PADDING' : Cannot generate literal value for 'gchar*'
+// StylePropertyPadding is a representation of the C type STYLE_PROPERTY_PADDING.
+const StylePropertyPadding = "padding"
 
 // StyleProviderPriorityApplication is a representation of the C type STYLE_PROVIDER_PRIORITY_APPLICATION.
 const StyleProviderPriorityApplication = int32(600)
@@ -526,13 +767,17 @@ const StyleProviderPriorityTheme = int32(200)
 // StyleProviderPriorityUser is a representation of the C type STYLE_PROVIDER_PRIORITY_USER.
 const StyleProviderPriorityUser = int32(800)
 
-// UNSUPPORTED : C value 'STYLE_REGION_COLUMN' : Cannot generate literal value for 'gchar*'
+// StyleRegionColumn is a representation of the C type STYLE_REGION_COLUMN.
+const StyleRegionColumn = "column"
 
-// UNSUPPORTED : C value 'STYLE_REGION_COLUMN_HEADER' : Cannot generate literal value for 'gchar*'
+// StyleRegionColumnHeader is a representation of the C type STYLE_REGION_COLUMN_HEADER.
+const StyleRegionColumnHeader = "column-header"
 
-// UNSUPPORTED : C value 'STYLE_REGION_ROW' : Cannot generate literal value for 'gchar*'
+// StyleRegionRow is a representation of the C type STYLE_REGION_ROW.
+const StyleRegionRow = "row"
 
-// UNSUPPORTED : C value 'STYLE_REGION_TAB' : Cannot generate literal value for 'gchar*'
+// StyleRegionTab is a representation of the C type STYLE_REGION_TAB.
+const StyleRegionTab = "tab"
 
 // TextViewPriorityValidate is a representation of the C type TEXT_VIEW_PRIORITY_VALIDATE.
 const TextViewPriorityValidate = int32(5)

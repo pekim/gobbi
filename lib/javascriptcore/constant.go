@@ -11,10 +11,14 @@ const MicroVersion = int32(1)
 // MinorVersion is a representation of the C type MINOR_VERSION.
 const MinorVersion = int32(26)
 
-// UNSUPPORTED : C value 'OPTIONS_USE_DFG' : Cannot generate literal value for 'gchar*'
+// OptionsUseDfg is a representation of the C type OPTIONS_USE_DFG.
+const OptionsUseDfg = "useDFGJIT"
 
-// UNSUPPORTED : C value 'OPTIONS_USE_FTL' : Cannot generate literal value for 'gchar*'
+// OptionsUseFtl is a representation of the C type OPTIONS_USE_FTL.
+const OptionsUseFtl = "useFTLJIT"
 
-// UNSUPPORTED : C value 'OPTIONS_USE_JIT' : Cannot generate literal value for 'gchar*'
+// OptionsUseJit is a representation of the C type OPTIONS_USE_JIT.
+const OptionsUseJit = "useJIT"
 
-// UNSUPPORTED : C value 'OPTIONS_USE_LLINT' : Cannot generate literal value for 'gchar*'
+// OptionsUseLlint is a representation of the C type OPTIONS_USE_LLINT.
+const OptionsUseLlint = "useLLInt"

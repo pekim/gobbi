@@ -5,66 +5,89 @@ package soup
 // AddressAnyPort is a representation of the C type ADDRESS_ANY_PORT.
 const AddressAnyPort = int32(0)
 
-// UNSUPPORTED : C value 'ADDRESS_FAMILY' : Cannot generate literal value for 'gchar*'
+// AddressFamily is a representation of the C type ADDRESS_FAMILY.
+const AddressFamily = "family"
 
-// UNSUPPORTED : C value 'ADDRESS_NAME' : Cannot generate literal value for 'gchar*'
+// AddressName is a representation of the C type ADDRESS_NAME.
+const AddressName = "name"
 
-// UNSUPPORTED : C value 'ADDRESS_PHYSICAL' : Cannot generate literal value for 'gchar*'
+// AddressPhysical is a representation of the C type ADDRESS_PHYSICAL.
+const AddressPhysical = "physical"
 
-// UNSUPPORTED : C value 'ADDRESS_PORT' : Cannot generate literal value for 'gchar*'
+// AddressPort is a representation of the C type ADDRESS_PORT.
+const AddressPort = "port"
 
-// UNSUPPORTED : C value 'ADDRESS_PROTOCOL' : Cannot generate literal value for 'gchar*'
+// AddressProtocol is a representation of the C type ADDRESS_PROTOCOL.
+const AddressProtocol = "protocol"
 
-// UNSUPPORTED : C value 'ADDRESS_SOCKADDR' : Cannot generate literal value for 'gchar*'
+// AddressSockaddr is a representation of the C type ADDRESS_SOCKADDR.
+const AddressSockaddr = "sockaddr"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_ADD_PATH' : Cannot generate literal value for 'gchar*'
+// AuthDomainAddPath is a representation of the C type AUTH_DOMAIN_ADD_PATH.
+const AuthDomainAddPath = "add-path"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_BASIC_AUTH_CALLBACK' : Cannot generate literal value for 'gchar*'
+// AuthDomainBasicAuthCallback is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_CALLBACK.
+const AuthDomainBasicAuthCallback = "auth-callback"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_BASIC_AUTH_DATA' : Cannot generate literal value for 'gchar*'
+// AuthDomainBasicAuthData is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_DATA.
+const AuthDomainBasicAuthData = "auth-data"
 
 // AuthDomainBasicH is a representation of the C type AUTH_DOMAIN_BASIC_H.
 const AuthDomainBasicH = int32(1)
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_DIGEST_AUTH_CALLBACK' : Cannot generate literal value for 'gchar*'
+// AuthDomainDigestAuthCallback is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_CALLBACK.
+const AuthDomainDigestAuthCallback = "auth-callback"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_DIGEST_AUTH_DATA' : Cannot generate literal value for 'gchar*'
+// AuthDomainDigestAuthData is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_DATA.
+const AuthDomainDigestAuthData = "auth-data"
 
 // AuthDomainDigestH is a representation of the C type AUTH_DOMAIN_DIGEST_H.
 const AuthDomainDigestH = int32(1)
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_FILTER' : Cannot generate literal value for 'gchar*'
+// AuthDomainFilter is a representation of the C type AUTH_DOMAIN_FILTER.
+const AuthDomainFilter = "filter"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_FILTER_DATA' : Cannot generate literal value for 'gchar*'
+// AuthDomainFilterData is a representation of the C type AUTH_DOMAIN_FILTER_DATA.
+const AuthDomainFilterData = "filter-data"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_GENERIC_AUTH_CALLBACK' : Cannot generate literal value for 'gchar*'
+// AuthDomainGenericAuthCallback is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_CALLBACK.
+const AuthDomainGenericAuthCallback = "generic-auth-callback"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_GENERIC_AUTH_DATA' : Cannot generate literal value for 'gchar*'
+// AuthDomainGenericAuthData is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_DATA.
+const AuthDomainGenericAuthData = "generic-auth-data"
 
 // AuthDomainH is a representation of the C type AUTH_DOMAIN_H.
 const AuthDomainH = int32(1)
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_PROXY' : Cannot generate literal value for 'gchar*'
+// AuthDomainProxy is a representation of the C type AUTH_DOMAIN_PROXY.
+const AuthDomainProxy = "proxy"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_REALM' : Cannot generate literal value for 'gchar*'
+// AuthDomainRealm is a representation of the C type AUTH_DOMAIN_REALM.
+const AuthDomainRealm = "realm"
 
-// UNSUPPORTED : C value 'AUTH_DOMAIN_REMOVE_PATH' : Cannot generate literal value for 'gchar*'
+// AuthDomainRemovePath is a representation of the C type AUTH_DOMAIN_REMOVE_PATH.
+const AuthDomainRemovePath = "remove-path"
 
 // AuthH is a representation of the C type AUTH_H.
 const AuthH = int32(1)
 
-// UNSUPPORTED : C value 'AUTH_HOST' : Cannot generate literal value for 'gchar*'
+// AuthHost is a representation of the C type AUTH_HOST.
+const AuthHost = "host"
 
-// UNSUPPORTED : C value 'AUTH_IS_AUTHENTICATED' : Cannot generate literal value for 'gchar*'
+// AuthIsAuthenticated is a representation of the C type AUTH_IS_AUTHENTICATED.
+const AuthIsAuthenticated = "is-authenticated"
 
-// UNSUPPORTED : C value 'AUTH_IS_FOR_PROXY' : Cannot generate literal value for 'gchar*'
+// AuthIsForProxy is a representation of the C type AUTH_IS_FOR_PROXY.
+const AuthIsForProxy = "is-for-proxy"
 
 // AuthManagerH is a representation of the C type AUTH_MANAGER_H.
 const AuthManagerH = int32(1)
 
-// UNSUPPORTED : C value 'AUTH_REALM' : Cannot generate literal value for 'gchar*'
+// AuthRealm is a representation of the C type AUTH_REALM.
+const AuthRealm = "realm"
 
-// UNSUPPORTED : C value 'AUTH_SCHEME_NAME' : Cannot generate literal value for 'gchar*'
+// AuthSchemeName is a representation of the C type AUTH_SCHEME_NAME.
+const AuthSchemeName = "scheme-name"
 
 // CacheH is a representation of the C type CACHE_H.
 const CacheH = int32(1)
@@ -93,9 +116,11 @@ const ContentSnifferH = int32(1)
 // CookieH is a representation of the C type COOKIE_H.
 const CookieH = int32(1)
 
-// UNSUPPORTED : C value 'COOKIE_JAR_ACCEPT_POLICY' : Cannot generate literal value for 'gchar*'
+// CookieJarAcceptPolicy is a representation of the C type COOKIE_JAR_ACCEPT_POLICY.
+const CookieJarAcceptPolicy = "accept-policy"
 
-// UNSUPPORTED : C value 'COOKIE_JAR_DB_FILENAME' : Cannot generate literal value for 'gchar*'
+// CookieJarDbFilename is a representation of the C type COOKIE_JAR_DB_FILENAME.
+const CookieJarDbFilename = "filename"
 
 // CookieJarDbH is a representation of the C type COOKIE_JAR_DB_H.
 const CookieJarDbH = int32(1)
@@ -103,9 +128,11 @@ const CookieJarDbH = int32(1)
 // CookieJarH is a representation of the C type COOKIE_JAR_H.
 const CookieJarH = int32(1)
 
-// UNSUPPORTED : C value 'COOKIE_JAR_READ_ONLY' : Cannot generate literal value for 'gchar*'
+// CookieJarReadOnly is a representation of the C type COOKIE_JAR_READ_ONLY.
+const CookieJarReadOnly = "read-only"
 
-// UNSUPPORTED : C value 'COOKIE_JAR_TEXT_FILENAME' : Cannot generate literal value for 'gchar*'
+// CookieJarTextFilename is a representation of the C type COOKIE_JAR_TEXT_FILENAME.
+const CookieJarTextFilename = "filename"
 
 // CookieJarTextH is a representation of the C type COOKIE_JAR_TEXT_H.
 const CookieJarTextH = int32(1)
@@ -128,9 +155,11 @@ const DateH = int32(1)
 // FormH is a representation of the C type FORM_H.
 const FormH = int32(1)
 
-// UNSUPPORTED : C value 'FORM_MIME_TYPE_MULTIPART' : Cannot generate literal value for 'gchar*'
+// FormMimeTypeMultipart is a representation of the C type FORM_MIME_TYPE_MULTIPART.
+const FormMimeTypeMultipart = "multipart/form-data"
 
-// UNSUPPORTED : C value 'FORM_MIME_TYPE_URLENCODED' : Cannot generate literal value for 'gchar*'
+// FormMimeTypeUrlencoded is a representation of the C type FORM_MIME_TYPE_URLENCODED.
+const FormMimeTypeUrlencoded = "application/x-www-form-urlencoded"
 
 // HeadersH is a representation of the C type HEADERS_H.
 const HeadersH = int32(1)
@@ -138,9 +167,11 @@ const HeadersH = int32(1)
 // LoggerH is a representation of the C type LOGGER_H.
 const LoggerH = int32(1)
 
-// UNSUPPORTED : C value 'LOGGER_LEVEL' : Cannot generate literal value for 'gchar*'
+// LoggerLevel is a representation of the C type LOGGER_LEVEL.
+const LoggerLevel = "level"
 
-// UNSUPPORTED : C value 'LOGGER_MAX_BODY_SIZE' : Cannot generate literal value for 'gchar*'
+// LoggerMaxBodySize is a representation of the C type LOGGER_MAX_BODY_SIZE.
+const LoggerMaxBodySize = "max-body-size"
 
 // MajorVersion is a representation of the C type MAJOR_VERSION.
 const MajorVersion = int32(2)
@@ -148,9 +179,11 @@ const MajorVersion = int32(2)
 // MessageBodyH is a representation of the C type MESSAGE_BODY_H.
 const MessageBodyH = int32(1)
 
-// UNSUPPORTED : C value 'MESSAGE_FIRST_PARTY' : Cannot generate literal value for 'gchar*'
+// MessageFirstParty is a representation of the C type MESSAGE_FIRST_PARTY.
+const MessageFirstParty = "first-party"
 
-// UNSUPPORTED : C value 'MESSAGE_FLAGS' : Cannot generate literal value for 'gchar*'
+// MessageFlags is a representation of the C type MESSAGE_FLAGS.
+const MessageFlags = "flags"
 
 // MessageH is a representation of the C type MESSAGE_H.
 const MessageH = int32(1)
@@ -158,35 +191,50 @@ const MessageH = int32(1)
 // MessageHeadersH is a representation of the C type MESSAGE_HEADERS_H.
 const MessageHeadersH = int32(1)
 
-// UNSUPPORTED : C value 'MESSAGE_HTTP_VERSION' : Cannot generate literal value for 'gchar*'
+// MessageHttpVersion is a representation of the C type MESSAGE_HTTP_VERSION.
+const MessageHttpVersion = "http-version"
 
-// UNSUPPORTED : C value 'MESSAGE_METHOD' : Cannot generate literal value for 'gchar*'
+// MessageMethod is a representation of the C type MESSAGE_METHOD.
+const MessageMethod = "method"
 
-// UNSUPPORTED : C value 'MESSAGE_PRIORITY' : Cannot generate literal value for 'gchar*'
+// MessagePriority is a representation of the C type MESSAGE_PRIORITY.
+const MessagePriority = "priority"
 
-// UNSUPPORTED : C value 'MESSAGE_REASON_PHRASE' : Cannot generate literal value for 'gchar*'
+// MessageReasonPhrase is a representation of the C type MESSAGE_REASON_PHRASE.
+const MessageReasonPhrase = "reason-phrase"
 
-// UNSUPPORTED : C value 'MESSAGE_REQUEST_BODY' : Cannot generate literal value for 'gchar*'
+// MessageRequestBody is a representation of the C type MESSAGE_REQUEST_BODY.
+const MessageRequestBody = "request-body"
 
-// UNSUPPORTED : C value 'MESSAGE_REQUEST_BODY_DATA' : Cannot generate literal value for 'gchar*'
+// MessageRequestBodyData is a representation of the C type MESSAGE_REQUEST_BODY_DATA.
+const MessageRequestBodyData = "request-body-data"
 
-// UNSUPPORTED : C value 'MESSAGE_REQUEST_HEADERS' : Cannot generate literal value for 'gchar*'
+// MessageRequestHeaders is a representation of the C type MESSAGE_REQUEST_HEADERS.
+const MessageRequestHeaders = "request-headers"
 
-// UNSUPPORTED : C value 'MESSAGE_RESPONSE_BODY' : Cannot generate literal value for 'gchar*'
+// MessageResponseBody is a representation of the C type MESSAGE_RESPONSE_BODY.
+const MessageResponseBody = "response-body"
 
-// UNSUPPORTED : C value 'MESSAGE_RESPONSE_BODY_DATA' : Cannot generate literal value for 'gchar*'
+// MessageResponseBodyData is a representation of the C type MESSAGE_RESPONSE_BODY_DATA.
+const MessageResponseBodyData = "response-body-data"
 
-// UNSUPPORTED : C value 'MESSAGE_RESPONSE_HEADERS' : Cannot generate literal value for 'gchar*'
+// MessageResponseHeaders is a representation of the C type MESSAGE_RESPONSE_HEADERS.
+const MessageResponseHeaders = "response-headers"
 
-// UNSUPPORTED : C value 'MESSAGE_SERVER_SIDE' : Cannot generate literal value for 'gchar*'
+// MessageServerSide is a representation of the C type MESSAGE_SERVER_SIDE.
+const MessageServerSide = "server-side"
 
-// UNSUPPORTED : C value 'MESSAGE_STATUS_CODE' : Cannot generate literal value for 'gchar*'
+// MessageStatusCode is a representation of the C type MESSAGE_STATUS_CODE.
+const MessageStatusCode = "status-code"
 
-// UNSUPPORTED : C value 'MESSAGE_TLS_CERTIFICATE' : Cannot generate literal value for 'gchar*'
+// MessageTlsCertificate is a representation of the C type MESSAGE_TLS_CERTIFICATE.
+const MessageTlsCertificate = "tls-certificate"
 
-// UNSUPPORTED : C value 'MESSAGE_TLS_ERRORS' : Cannot generate literal value for 'gchar*'
+// MessageTlsErrors is a representation of the C type MESSAGE_TLS_ERRORS.
+const MessageTlsErrors = "tls-errors"
 
-// UNSUPPORTED : C value 'MESSAGE_URI' : Cannot generate literal value for 'gchar*'
+// MessageUri is a representation of the C type MESSAGE_URI.
+const MessageUri = "uri"
 
 // MethodH is a representation of the C type METHOD_H.
 const MethodH = int32(1)
@@ -230,42 +278,59 @@ const RequestH = int32(1)
 // RequestHttpH is a representation of the C type REQUEST_HTTP_H.
 const RequestHttpH = int32(1)
 
-// UNSUPPORTED : C value 'REQUEST_SESSION' : Cannot generate literal value for 'gchar*'
+// RequestSession is a representation of the C type REQUEST_SESSION.
+const RequestSession = "session"
 
-// UNSUPPORTED : C value 'REQUEST_URI' : Cannot generate literal value for 'gchar*'
+// RequestUri is a representation of the C type REQUEST_URI.
+const RequestUri = "uri"
 
-// UNSUPPORTED : C value 'SERVER_ASYNC_CONTEXT' : Cannot generate literal value for 'gchar*'
+// ServerAsyncContext is a representation of the C type SERVER_ASYNC_CONTEXT.
+const ServerAsyncContext = "async-context"
 
 // ServerH is a representation of the C type SERVER_H.
 const ServerH = int32(1)
 
-// UNSUPPORTED : C value 'SERVER_HTTPS_ALIASES' : Cannot generate literal value for 'gchar*'
+// ServerHttpsAliases is a representation of the C type SERVER_HTTPS_ALIASES.
+const ServerHttpsAliases = "https-aliases"
 
-// UNSUPPORTED : C value 'SERVER_HTTP_ALIASES' : Cannot generate literal value for 'gchar*'
+// ServerHttpAliases is a representation of the C type SERVER_HTTP_ALIASES.
+const ServerHttpAliases = "http-aliases"
 
-// UNSUPPORTED : C value 'SERVER_INTERFACE' : Cannot generate literal value for 'gchar*'
+// ServerInterface is a representation of the C type SERVER_INTERFACE.
+const ServerInterface = "interface"
 
-// UNSUPPORTED : C value 'SERVER_PORT' : Cannot generate literal value for 'gchar*'
+// ServerPort is a representation of the C type SERVER_PORT.
+const ServerPort = "port"
 
-// UNSUPPORTED : C value 'SERVER_RAW_PATHS' : Cannot generate literal value for 'gchar*'
+// ServerRawPaths is a representation of the C type SERVER_RAW_PATHS.
+const ServerRawPaths = "raw-paths"
 
-// UNSUPPORTED : C value 'SERVER_SERVER_HEADER' : Cannot generate literal value for 'gchar*'
+// ServerServerHeader is a representation of the C type SERVER_SERVER_HEADER.
+const ServerServerHeader = "server-header"
 
-// UNSUPPORTED : C value 'SERVER_SSL_CERT_FILE' : Cannot generate literal value for 'gchar*'
+// ServerSslCertFile is a representation of the C type SERVER_SSL_CERT_FILE.
+const ServerSslCertFile = "ssl-cert-file"
 
-// UNSUPPORTED : C value 'SERVER_SSL_KEY_FILE' : Cannot generate literal value for 'gchar*'
+// ServerSslKeyFile is a representation of the C type SERVER_SSL_KEY_FILE.
+const ServerSslKeyFile = "ssl-key-file"
 
-// UNSUPPORTED : C value 'SERVER_TLS_CERTIFICATE' : Cannot generate literal value for 'gchar*'
+// ServerTlsCertificate is a representation of the C type SERVER_TLS_CERTIFICATE.
+const ServerTlsCertificate = "tls-certificate"
 
-// UNSUPPORTED : C value 'SESSION_ACCEPT_LANGUAGE' : Cannot generate literal value for 'gchar*'
+// SessionAcceptLanguage is a representation of the C type SESSION_ACCEPT_LANGUAGE.
+const SessionAcceptLanguage = "accept-language"
 
-// UNSUPPORTED : C value 'SESSION_ACCEPT_LANGUAGE_AUTO' : Cannot generate literal value for 'gchar*'
+// SessionAcceptLanguageAuto is a representation of the C type SESSION_ACCEPT_LANGUAGE_AUTO.
+const SessionAcceptLanguageAuto = "accept-language-auto"
 
-// UNSUPPORTED : C value 'SESSION_ADD_FEATURE' : Cannot generate literal value for 'gchar*'
+// SessionAddFeature is a representation of the C type SESSION_ADD_FEATURE.
+const SessionAddFeature = "add-feature"
 
-// UNSUPPORTED : C value 'SESSION_ADD_FEATURE_BY_TYPE' : Cannot generate literal value for 'gchar*'
+// SessionAddFeatureByType is a representation of the C type SESSION_ADD_FEATURE_BY_TYPE.
+const SessionAddFeatureByType = "add-feature-by-type"
 
-// UNSUPPORTED : C value 'SESSION_ASYNC_CONTEXT' : Cannot generate literal value for 'gchar*'
+// SessionAsyncContext is a representation of the C type SESSION_ASYNC_CONTEXT.
+const SessionAsyncContext = "async-context"
 
 // SessionAsyncH is a representation of the C type SESSION_ASYNC_H.
 const SessionAsyncH = int32(1)
@@ -276,73 +341,104 @@ const SessionFeatureH = int32(1)
 // SessionH is a representation of the C type SESSION_H.
 const SessionH = int32(1)
 
-// UNSUPPORTED : C value 'SESSION_HTTPS_ALIASES' : Cannot generate literal value for 'gchar*'
+// SessionHttpsAliases is a representation of the C type SESSION_HTTPS_ALIASES.
+const SessionHttpsAliases = "https-aliases"
 
-// UNSUPPORTED : C value 'SESSION_HTTP_ALIASES' : Cannot generate literal value for 'gchar*'
+// SessionHttpAliases is a representation of the C type SESSION_HTTP_ALIASES.
+const SessionHttpAliases = "http-aliases"
 
-// UNSUPPORTED : C value 'SESSION_IDLE_TIMEOUT' : Cannot generate literal value for 'gchar*'
+// SessionIdleTimeout is a representation of the C type SESSION_IDLE_TIMEOUT.
+const SessionIdleTimeout = "idle-timeout"
 
-// UNSUPPORTED : C value 'SESSION_LOCAL_ADDRESS' : Cannot generate literal value for 'gchar*'
+// SessionLocalAddress is a representation of the C type SESSION_LOCAL_ADDRESS.
+const SessionLocalAddress = "local-address"
 
-// UNSUPPORTED : C value 'SESSION_MAX_CONNS' : Cannot generate literal value for 'gchar*'
+// SessionMaxConns is a representation of the C type SESSION_MAX_CONNS.
+const SessionMaxConns = "max-conns"
 
-// UNSUPPORTED : C value 'SESSION_MAX_CONNS_PER_HOST' : Cannot generate literal value for 'gchar*'
+// SessionMaxConnsPerHost is a representation of the C type SESSION_MAX_CONNS_PER_HOST.
+const SessionMaxConnsPerHost = "max-conns-per-host"
 
-// UNSUPPORTED : C value 'SESSION_PROXY_RESOLVER' : Cannot generate literal value for 'gchar*'
+// SessionProxyResolver is a representation of the C type SESSION_PROXY_RESOLVER.
+const SessionProxyResolver = "proxy-resolver"
 
-// UNSUPPORTED : C value 'SESSION_PROXY_URI' : Cannot generate literal value for 'gchar*'
+// SessionProxyUri is a representation of the C type SESSION_PROXY_URI.
+const SessionProxyUri = "proxy-uri"
 
-// UNSUPPORTED : C value 'SESSION_REMOVE_FEATURE_BY_TYPE' : Cannot generate literal value for 'gchar*'
+// SessionRemoveFeatureByType is a representation of the C type SESSION_REMOVE_FEATURE_BY_TYPE.
+const SessionRemoveFeatureByType = "remove-feature-by-type"
 
-// UNSUPPORTED : C value 'SESSION_SSL_CA_FILE' : Cannot generate literal value for 'gchar*'
+// SessionSslCaFile is a representation of the C type SESSION_SSL_CA_FILE.
+const SessionSslCaFile = "ssl-ca-file"
 
-// UNSUPPORTED : C value 'SESSION_SSL_STRICT' : Cannot generate literal value for 'gchar*'
+// SessionSslStrict is a representation of the C type SESSION_SSL_STRICT.
+const SessionSslStrict = "ssl-strict"
 
-// UNSUPPORTED : C value 'SESSION_SSL_USE_SYSTEM_CA_FILE' : Cannot generate literal value for 'gchar*'
+// SessionSslUseSystemCaFile is a representation of the C type SESSION_SSL_USE_SYSTEM_CA_FILE.
+const SessionSslUseSystemCaFile = "ssl-use-system-ca-file"
 
 // SessionSyncH is a representation of the C type SESSION_SYNC_H.
 const SessionSyncH = int32(1)
 
-// UNSUPPORTED : C value 'SESSION_TIMEOUT' : Cannot generate literal value for 'gchar*'
+// SessionTimeout is a representation of the C type SESSION_TIMEOUT.
+const SessionTimeout = "timeout"
 
-// UNSUPPORTED : C value 'SESSION_TLS_DATABASE' : Cannot generate literal value for 'gchar*'
+// SessionTlsDatabase is a representation of the C type SESSION_TLS_DATABASE.
+const SessionTlsDatabase = "tls-database"
 
-// UNSUPPORTED : C value 'SESSION_TLS_INTERACTION' : Cannot generate literal value for 'gchar*'
+// SessionTlsInteraction is a representation of the C type SESSION_TLS_INTERACTION.
+const SessionTlsInteraction = "tls-interaction"
 
-// UNSUPPORTED : C value 'SESSION_USER_AGENT' : Cannot generate literal value for 'gchar*'
+// SessionUserAgent is a representation of the C type SESSION_USER_AGENT.
+const SessionUserAgent = "user-agent"
 
-// UNSUPPORTED : C value 'SESSION_USE_NTLM' : Cannot generate literal value for 'gchar*'
+// SessionUseNtlm is a representation of the C type SESSION_USE_NTLM.
+const SessionUseNtlm = "use-ntlm"
 
-// UNSUPPORTED : C value 'SESSION_USE_THREAD_CONTEXT' : Cannot generate literal value for 'gchar*'
+// SessionUseThreadContext is a representation of the C type SESSION_USE_THREAD_CONTEXT.
+const SessionUseThreadContext = "use-thread-context"
 
-// UNSUPPORTED : C value 'SOCKET_ASYNC_CONTEXT' : Cannot generate literal value for 'gchar*'
+// SocketAsyncContext is a representation of the C type SOCKET_ASYNC_CONTEXT.
+const SocketAsyncContext = "async-context"
 
-// UNSUPPORTED : C value 'SOCKET_FLAG_NONBLOCKING' : Cannot generate literal value for 'gchar*'
+// SocketFlagNonblocking is a representation of the C type SOCKET_FLAG_NONBLOCKING.
+const SocketFlagNonblocking = "non-blocking"
 
 // SocketH is a representation of the C type SOCKET_H.
 const SocketH = int32(1)
 
-// UNSUPPORTED : C value 'SOCKET_IS_SERVER' : Cannot generate literal value for 'gchar*'
+// SocketIsServer is a representation of the C type SOCKET_IS_SERVER.
+const SocketIsServer = "is-server"
 
-// UNSUPPORTED : C value 'SOCKET_LOCAL_ADDRESS' : Cannot generate literal value for 'gchar*'
+// SocketLocalAddress is a representation of the C type SOCKET_LOCAL_ADDRESS.
+const SocketLocalAddress = "local-address"
 
-// UNSUPPORTED : C value 'SOCKET_REMOTE_ADDRESS' : Cannot generate literal value for 'gchar*'
+// SocketRemoteAddress is a representation of the C type SOCKET_REMOTE_ADDRESS.
+const SocketRemoteAddress = "remote-address"
 
-// UNSUPPORTED : C value 'SOCKET_SSL_CREDENTIALS' : Cannot generate literal value for 'gchar*'
+// SocketSslCredentials is a representation of the C type SOCKET_SSL_CREDENTIALS.
+const SocketSslCredentials = "ssl-creds"
 
-// UNSUPPORTED : C value 'SOCKET_SSL_FALLBACK' : Cannot generate literal value for 'gchar*'
+// SocketSslFallback is a representation of the C type SOCKET_SSL_FALLBACK.
+const SocketSslFallback = "ssl-fallback"
 
-// UNSUPPORTED : C value 'SOCKET_SSL_STRICT' : Cannot generate literal value for 'gchar*'
+// SocketSslStrict is a representation of the C type SOCKET_SSL_STRICT.
+const SocketSslStrict = "ssl-strict"
 
-// UNSUPPORTED : C value 'SOCKET_TIMEOUT' : Cannot generate literal value for 'gchar*'
+// SocketTimeout is a representation of the C type SOCKET_TIMEOUT.
+const SocketTimeout = "timeout"
 
-// UNSUPPORTED : C value 'SOCKET_TLS_CERTIFICATE' : Cannot generate literal value for 'gchar*'
+// SocketTlsCertificate is a representation of the C type SOCKET_TLS_CERTIFICATE.
+const SocketTlsCertificate = "tls-certificate"
 
-// UNSUPPORTED : C value 'SOCKET_TLS_ERRORS' : Cannot generate literal value for 'gchar*'
+// SocketTlsErrors is a representation of the C type SOCKET_TLS_ERRORS.
+const SocketTlsErrors = "tls-errors"
 
-// UNSUPPORTED : C value 'SOCKET_TRUSTED_CERTIFICATE' : Cannot generate literal value for 'gchar*'
+// SocketTrustedCertificate is a representation of the C type SOCKET_TRUSTED_CERTIFICATE.
+const SocketTrustedCertificate = "trusted-certificate"
 
-// UNSUPPORTED : C value 'SOCKET_USE_THREAD_CONTEXT' : Cannot generate literal value for 'gchar*'
+// SocketUseThreadContext is a representation of the C type SOCKET_USE_THREAD_CONTEXT.
+const SocketUseThreadContext = "use-thread-context"
 
 // StatusH is a representation of the C type STATUS_H.
 const StatusH = int32(1)

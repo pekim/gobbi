@@ -2,21 +2,29 @@
 
 package webkit2
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_COPY' : Cannot generate literal value for 'gchar*'
+// EditingCommandCopy is a representation of the C type EDITING_COMMAND_COPY.
+const EditingCommandCopy = "Copy"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_CREATE_LINK' : Cannot generate literal value for 'gchar*'
+// EditingCommandCreateLink is a representation of the C type EDITING_COMMAND_CREATE_LINK.
+const EditingCommandCreateLink = "CreateLink"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_CUT' : Cannot generate literal value for 'gchar*'
+// EditingCommandCut is a representation of the C type EDITING_COMMAND_CUT.
+const EditingCommandCut = "Cut"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_INSERT_IMAGE' : Cannot generate literal value for 'gchar*'
+// EditingCommandInsertImage is a representation of the C type EDITING_COMMAND_INSERT_IMAGE.
+const EditingCommandInsertImage = "InsertImage"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_PASTE' : Cannot generate literal value for 'gchar*'
+// EditingCommandPaste is a representation of the C type EDITING_COMMAND_PASTE.
+const EditingCommandPaste = "Paste"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_REDO' : Cannot generate literal value for 'gchar*'
+// EditingCommandRedo is a representation of the C type EDITING_COMMAND_REDO.
+const EditingCommandRedo = "Redo"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_SELECT_ALL' : Cannot generate literal value for 'gchar*'
+// EditingCommandSelectAll is a representation of the C type EDITING_COMMAND_SELECT_ALL.
+const EditingCommandSelectAll = "SelectAll"
 
-// UNSUPPORTED : C value 'EDITING_COMMAND_UNDO' : Cannot generate literal value for 'gchar*'
+// EditingCommandUndo is a representation of the C type EDITING_COMMAND_UNDO.
+const EditingCommandUndo = "Undo"
 
 // MajorVersion is a representation of the C type MAJOR_VERSION.
 const MajorVersion = int32(2)
