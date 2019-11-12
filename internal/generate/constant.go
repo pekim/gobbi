@@ -28,15 +28,17 @@ func (c Constant) generate(f *file) {
 		return
 	}
 
+	goName := makeExportedGoName(c.Name)
+
 	goType := c.Type.jenGoType()
 	if goType == nil {
-		f.unsupported(c.Name)
+		f.unsupported(c.Name, "")
 		return
 	}
 
 	f.
 		Const().
-		Id(c.Name).
+		Id(goName).
 		Add(goType).
 		Op("=").
 		Lit(c.Value)

@@ -9,7 +9,11 @@ type file struct {
 	*jen.File
 }
 
-func (f *file) unsupported(format string, args ...interface{}) {
-	text := fmt.Sprintf(format, args...)
-	f.Commentf("UNSUPPORTED : %s", text)
+func (f *file) unsupported(cname string, format string, args ...interface{}) {
+	if format != "" {
+		text := fmt.Sprintf(format, args...)
+		f.Commentf("UNSUPPORTED : C value '%s' : %s", cname, text)
+	} else {
+		f.Commentf("UNSUPPORTED : C value '%s'", cname)
+	}
 }
