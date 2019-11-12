@@ -16,7 +16,7 @@ type Namespace struct {
 	//CDocPath            string `xml:"c-doc-path,attr"`
 	//CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	//CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
-	//	Aliases                       Aliases      `xml:"alias"`
+	Aliases Aliases `xml:"alias"`
 	//	Bitfields                     Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	//	Classes                       Classes      `xml:"class"`
@@ -34,6 +34,8 @@ type Namespace struct {
 
 func (n *Namespace) init(namespaces namespaces) {
 	n.namespaces = namespaces
+
+	n.Aliases.init(n)
 	n.Constants.init(n)
 }
 
@@ -43,6 +45,7 @@ func (n *Namespace) generate() {
 	n.libDir = projectFilepath("..", "lib", n.goPackageName)
 	n.generateLibDir()
 
+	n.generateFile("alias", n.Aliases.generate)
 	n.generateFile("constant", n.Constants.generate)
 }
 

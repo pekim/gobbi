@@ -9,15 +9,16 @@ type Constant struct {
 	//Doc       *Doc   `xml:"doc"`
 	Type *Type `xml:"type"`
 
-	Namespace *Namespace
+	namespace *Namespace
+	goName    string
 }
 
 func (c *Constant) init(ns *Namespace) {
-	c.Namespace = ns
+	c.namespace = ns
+	c.goName = makeExportedGoName(c.Name)
 }
 
-func (c Constant) generate(f *file) {
-	goName := makeExportedGoName(c.Name)
+func (c *Constant) generate(f *file) {
 
 	value, err := c.Type.jenValue(c.Value)
 	if err != nil {
@@ -25,10 +26,10 @@ func (c Constant) generate(f *file) {
 		return
 	}
 
-	f.docForC(goName, c.Name)
+	f.docForC(c.goName, c.Name)
 	f.
 		Const().
-		Id(goName).
+		Id(c.goName).
 		Op("=").
 		Add(value)
 	f.Line()
