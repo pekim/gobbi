@@ -29,6 +29,7 @@ func outputFileStats() {
 
 	fmt.Printf("%9s %9s %9s %9s %9s\n", "files", "lines", "code", "comment", "blank")
 	fmt.Printf("%9d %9d %9d %9d %9d\n", fileCount, allFiles.Lines, allFiles.Code, allFiles.Comment, allFiles.Blank)
+	fmt.Println()
 }
 
 func c(path string, allFiles *processor.FileJob) {
