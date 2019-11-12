@@ -1,5 +1,7 @@
 package generate
 
+import "strings"
+
 type Constant struct {
 	Name string `xml:"name,attr"`
 	//Blacklist bool   `xml:"blacklist,attr"`
@@ -15,7 +17,18 @@ type Constant struct {
 
 func (c *Constant) init(ns *Namespace) {
 	c.namespace = ns
-	c.goName = makeExportedGoName(c.Name)
+
+	if c.namespace.Name == "Gdk" && strings.HasPrefix(c.Name, "KEY_") {
+		// Special case, to avoid duplicate names.
+		// Do not transform.
+		c.goName = c.Name
+	} else if c.namespace.Name == "GLib" && strings.HasPrefix(c.Name, "CSET_") {
+		// Special case, to avoid duplicate names.
+		// Do not transform.
+		c.goName = c.Name
+	} else {
+		c.goName = makeExportedGoName(c.Name)
+	}
 }
 
 func (c *Constant) generate(f *file) {

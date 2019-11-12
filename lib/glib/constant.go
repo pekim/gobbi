@@ -11,14 +11,14 @@ const AsciiDtostrBufSize = int32(39)
 // BigEndian is a representation of the C type BIG_ENDIAN.
 const BigEndian = int32(4321)
 
-// CsetA2Z is a representation of the C type CSET_A_2_Z.
-const CsetA2Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+// CSET_A_2_Z is a representation of the C type CSET_A_2_Z.
+const CSET_A_2_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-// CsetDigits is a representation of the C type CSET_DIGITS.
-const CsetDigits = "0123456789"
+// CSET_DIGITS is a representation of the C type CSET_DIGITS.
+const CSET_DIGITS = "0123456789"
 
-// CsetA2Z is a representation of the C type CSET_a_2_z.
-const CsetA2Z = "abcdefghijklmnopqrstuvwxyz"
+// CSET_a_2_z is a representation of the C type CSET_a_2_z.
+const CSET_a_2_z = "abcdefghijklmnopqrstuvwxyz"
 
 // DatalistFlagsMask is a representation of the C type DATALIST_FLAGS_MASK.
 const DatalistFlagsMask = int32(3)
