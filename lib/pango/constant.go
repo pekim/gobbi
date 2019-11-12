@@ -37,15 +37,3 @@ const UnknownGlyphWidth = int32(10)
 
 // VersionMinRequired is a representation of the C type VERSION_MIN_REQUIRED.
 const VersionMinRequired = int32(2)
-
-// UNSUPPORTED : C value 'VERSION_MIN_REQUIRED' : missing Type
-
-// UNSUPPORTED : C value 'ENGINE_TYPE_LANG' : missing Type
-
-// UNSUPPORTED : C value 'ENGINE_TYPE_SHAPE' : missing Type
-
-// UNSUPPORTED : C value 'RENDER_TYPE_NONE' : missing Type
-
-// UNSUPPORTED : C value 'UNKNOWN_GLYPH_HEIGHT' : missing Type
-
-// UNSUPPORTED : C value 'UNKNOWN_GLYPH_WIDTH' : missing Type

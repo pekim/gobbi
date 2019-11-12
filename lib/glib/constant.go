@@ -393,9 +393,3 @@ const VersionMinRequired = int32(2)
 
 // Win32MsgHandle is a representation of the C type WIN32_MSG_HANDLE.
 const Win32MsgHandle = int32(19981206)
-
-// UNSUPPORTED : C value 'KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX' : missing Type
-
-// UNSUPPORTED : C value 'WIN32_MSG_HANDLE' : missing Type
-
-// UNSUPPORTED : C value 'LOG_DOMAIN' : missing Type

@@ -316,7 +316,3 @@ const VolumeIdentifierKindUuid = "uuid"
 
 // VolumeMonitorExtensionPointName is a representation of the C type VOLUME_MONITOR_EXTENSION_POINT_NAME.
 const VolumeMonitorExtensionPointName = "gio-volume-monitor"
-
-// UNSUPPORTED : C value 'FILE_ATTRIBUTE_FILESYSTEM_REMOTE' : missing Type
-
-// UNSUPPORTED : C value 'SETTINGS_BACKEND_EXTENSION_POINT_NAME' : missing Type

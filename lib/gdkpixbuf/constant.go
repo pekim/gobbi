@@ -22,7 +22,3 @@ const PixbufVersion = "2.36.11"
 
 // PixdataHeaderLength is a representation of the C type PIXDATA_HEADER_LENGTH.
 const PixdataHeaderLength = int32(24)
-
-// UNSUPPORTED : C value 'PIXBUF_MAGIC_NUMBER' : missing Type
-
-// UNSUPPORTED : C value 'PIXDATA_HEADER_LENGTH' : missing Type

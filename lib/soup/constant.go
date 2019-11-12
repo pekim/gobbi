@@ -460,7 +460,3 @@ const XmlrpcH = int32(1)
 
 // XmlrpcOldH is a representation of the C type XMLRPC_OLD_H.
 const XmlrpcOldH = int32(1)
-
-// UNSUPPORTED : C value 'REQUESTER_H' : missing Type
-
-// UNSUPPORTED : C value 'COOKIE_MAX_AGE_ONE_YEAR' : missing Type

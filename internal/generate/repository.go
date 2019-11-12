@@ -41,7 +41,7 @@ func repositoryFromFile(spec RepositorySpec) *repository {
 		addenda: &repository{},
 	}
 	r.loadFromFile(fullname+".gir", true)
-	r.loadFromFile(fullname+"-addenda.gir", false)
+	r.addenda.loadFromFile(fullname+"-addenda.gir", false)
 
 	//fmt.Println(r.Namespace.Name, r.Namespace.Version)
 	return r

@@ -45,5 +45,3 @@ const ValueCollectFormatMaxLength = int32(8)
 
 // ValueNocopyContents is a representation of the C type VALUE_NOCOPY_CONTENTS.
 const ValueNocopyContents = int32(134217728)
-
-// UNSUPPORTED : C value 'VALUE_COLLECT_FORMAT_MAX_LENGTH' : missing Type
