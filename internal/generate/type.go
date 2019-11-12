@@ -51,14 +51,14 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 	}
 
 	switch t.CType {
-	case "gint8", "gshort", "gint16", "int", "gint", "gint32", "glong", "gint64":
+	case "gchar", "gint8", "gshort", "gint16", "int", "gint", "gint32", "glong", "gint64":
 		intValue, err := strconv.ParseInt(stringValue, 10, 64)
 		if err != nil {
 			return nil, err
 		}
 
 		switch t.CType {
-		case "gint8":
+		case "gchar", "gint8":
 			return jen.Lit(int8(intValue)), nil
 		case "gshort", "gint16":
 			return jen.Lit(int16(intValue)), nil

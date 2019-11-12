@@ -218,7 +218,8 @@ const Ln2 = 0.693147
 // Log2Base10 is a representation of the C type LOG_2_BASE_10.
 const Log2Base10 = 0.30103
 
-// UNSUPPORTED : C value 'LOG_DOMAIN' : Cannot generate literal value for 'gchar'
+// LogDomain is a representation of the C type LOG_DOMAIN.
+const LogDomain = int8(0)
 
 // LogFatalMask is a representation of the C type LOG_FATAL_MASK.
 const LogFatalMask = int32(5)
