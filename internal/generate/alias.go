@@ -1,5 +1,7 @@
 package generate
 
+import "fmt"
+
 type Alias struct {
 	Name string `xml:"name,attr"`
 	//Blacklist bool   `xml:"blacklist,attr"`
@@ -17,4 +19,19 @@ func (a *Alias) init(ns *Namespace) {
 }
 
 func (a *Alias) generate(f *file) {
+	fmt.Println(a.Name, a.Type.Name, a.Type.CType, a.CType)
+
+	goType, err := a.Type.jenGoType()
+	if err != nil {
+		f.unsupported(a.Name, err.Error())
+		return
+	}
+
+	f.docForC(a.goName, a.Name)
+	f.
+		Type().
+		Id(a.goName).
+		Add(goType)
+	f.Line()
+
 }

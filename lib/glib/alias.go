@@ -1,3 +1,27 @@
 // Code generated - DO NOT EDIT.
 
 package glib
+
+// Dateday is a representation of the C type DateDay.
+type Dateday uint8
+
+// Dateyear is a representation of the C type DateYear.
+type Dateyear uint16
+
+// UNSUPPORTED : C value 'MutexLocker' : No Go type for 'none'
+
+// Pid is a representation of the C type Pid.
+type Pid int32
+
+// Quark is a representation of the C type Quark.
+type Quark uint32
+
+// UNSUPPORTED : C value 'Strv' : No Go type for 'utf8'
+
+// Time is a representation of the C type Time.
+type Time int32
+
+// Timespan is a representation of the C type TimeSpan.
+type Timespan int64
+
+// UNSUPPORTED : C value 'Type' : No Go type for 'gsize'

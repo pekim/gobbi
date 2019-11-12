@@ -17,11 +17,11 @@ const EngineTypeLang = "PangoEngineLang"
 // EngineTypeShape is a representation of the C type ENGINE_TYPE_SHAPE.
 const EngineTypeShape = "PangoEngineShape"
 
-// UNSUPPORTED : C value 'GLYPH_EMPTY' : Cannot generate literal value for 'PangoGlyph'
+// UNSUPPORTED : C value 'GLYPH_EMPTY' : Cannot generate literal value for 'Glyph'
 
-// UNSUPPORTED : C value 'GLYPH_INVALID_INPUT' : Cannot generate literal value for 'PangoGlyph'
+// UNSUPPORTED : C value 'GLYPH_INVALID_INPUT' : Cannot generate literal value for 'Glyph'
 
-// UNSUPPORTED : C value 'GLYPH_UNKNOWN_FLAG' : Cannot generate literal value for 'PangoGlyph'
+// UNSUPPORTED : C value 'GLYPH_UNKNOWN_FLAG' : Cannot generate literal value for 'Glyph'
 
 // RenderTypeNone is a representation of the C type RENDER_TYPE_NONE.
 const RenderTypeNone = "PangoRenderNone"

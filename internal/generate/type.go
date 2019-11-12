@@ -14,35 +14,35 @@ type Type struct {
 	Namespace *Namespace
 }
 
-func (t *Type) jenGoType() (*jen.Statement, string) {
+func (t *Type) jenGoType() (*jen.Statement, error) {
 	if t == nil {
-		return nil, "missing Type"
+		return nil, errors.New("missing Type")
 	}
 	if t.CType == "" {
-		return nil, "missing Type.CType"
+		return nil, errors.New("missing Type.Name")
 	}
 
-	switch t.CType {
+	switch t.Name {
 	case "gint8":
-		return jen.Int8(), ""
+		return jen.Int8(), nil
 	case "gshort", "gint16":
-		return jen.Int16(), ""
+		return jen.Int16(), nil
 	case "int", "gint", "gint32":
-		return jen.Int32(), ""
+		return jen.Int32(), nil
 	case "glong", "gint64":
-		return jen.Int64(), ""
+		return jen.Int64(), nil
 
 	case "guchar", "guint8":
-		return jen.Uint8(), ""
+		return jen.Uint8(), nil
 	case "gushort", "guint16":
-		return jen.Uint16(), ""
+		return jen.Uint16(), nil
 	case "guint", "guint32":
-		return jen.Uint32(), ""
+		return jen.Uint32(), nil
 	case "gulong", "guint64":
-		return jen.Uint64(), ""
+		return jen.Uint64(), nil
 	}
 
-	return nil, fmt.Sprintf("No Go type for '%s'\n", t.CType)
+	return nil, fmt.Errorf("No Go type for '%s'\n", t.Name)
 }
 
 func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
@@ -50,7 +50,7 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		return nil, errors.New("missing Type")
 	}
 
-	switch t.CType {
+	switch t.Name {
 	case "gchar", "gint8", "gshort", "gint16", "int", "gint", "gint32", "glong", "gint64":
 		return t.jenValueInt(stringValue)
 	case "guchar", "guint8", "gushort", "guint16", "guint", "guint32", "gulong", "guint64":
@@ -60,11 +60,11 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		return jen.Lit(value), err
 	case "gboolean":
 		return jen.Lit(stringValue == "true"), nil
-	case "gchar*":
+	case "utf8":
 		return jen.Lit(stringValue), nil
 	}
 
-	return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.CType)
+	return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.Name)
 }
 
 func (t *Type) jenValueInt(stringValue string) (*jen.Statement, error) {
@@ -73,7 +73,7 @@ func (t *Type) jenValueInt(stringValue string) (*jen.Statement, error) {
 		return nil, err
 	}
 
-	switch t.CType {
+	switch t.Name {
 	case "gchar", "gint8":
 		return jen.Lit(int8(value)), nil
 	case "gshort", "gint16":
@@ -84,7 +84,7 @@ func (t *Type) jenValueInt(stringValue string) (*jen.Statement, error) {
 		return jen.Lit(int64(value)), nil
 	}
 
-	return nil, fmt.Errorf("Unknown type'%s'\n", t.CType)
+	return nil, fmt.Errorf("Unknown type'%s'\n", t.Name)
 }
 
 func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
@@ -93,7 +93,7 @@ func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
 		return nil, err
 	}
 
-	switch t.CType {
+	switch t.Name {
 	case "guchar", "guint8":
 		return jen.Lit(uint8(value)), nil
 	case "gushort", "guint16":
@@ -104,5 +104,5 @@ func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
 		return jen.Lit(uint64(value)), nil
 	}
 
-	return nil, fmt.Errorf("Unknown type'%s'\n", t.CType)
+	return nil, fmt.Errorf("Unknown type'%s'\n", t.Name)
 }
