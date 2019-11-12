@@ -71,6 +71,10 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		lit = jen.Lit(uint8(intValue))
 	case "gulong", "guint64":
 		lit = jen.Lit(uint8(intValue))
+	case "gdouble":
+		value, e := strconv.ParseFloat(stringValue, 64)
+		lit = jen.Lit(value)
+		err = e
 	case "gchar*":
 		lit = jen.Lit(stringValue)
 		err = nil

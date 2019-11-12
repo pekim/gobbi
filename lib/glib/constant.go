@@ -38,7 +38,8 @@ const DirSeparator = int32(47)
 // DirSeparatorS is a representation of the C type DIR_SEPARATOR_S.
 const DirSeparatorS = "/"
 
-// UNSUPPORTED : C value 'E' : Cannot generate literal value for 'gdouble'
+// E is a representation of the C type E.
+const E = 2.718282
 
 // Gint16Format is a representation of the C type GINT16_FORMAT.
 const Gint16Format = "hi"
@@ -208,11 +209,14 @@ const KeyFileDesktopTypeLink = "Link"
 // LittleEndian is a representation of the C type LITTLE_ENDIAN.
 const LittleEndian = int32(1234)
 
-// UNSUPPORTED : C value 'LN10' : Cannot generate literal value for 'gdouble'
+// Ln10 is a representation of the C type LN10.
+const Ln10 = 2.302585
 
-// UNSUPPORTED : C value 'LN2' : Cannot generate literal value for 'gdouble'
+// Ln2 is a representation of the C type LN2.
+const Ln2 = 0.693147
 
-// UNSUPPORTED : C value 'LOG_2_BASE_10' : Cannot generate literal value for 'gdouble'
+// Log2Base10 is a representation of the C type LOG_2_BASE_10.
+const Log2Base10 = 0.30103
 
 // UNSUPPORTED : C value 'LOG_DOMAIN' : Cannot generate literal value for 'gchar'
 
@@ -275,14 +279,17 @@ const OptionRemaining = ""
 // PdpEndian is a representation of the C type PDP_ENDIAN.
 const PdpEndian = int32(3412)
 
-// UNSUPPORTED : C value 'PI' : Cannot generate literal value for 'gdouble'
+// Pi is a representation of the C type PI.
+const Pi = 3.141593
 
 // PidFormat is a representation of the C type PID_FORMAT.
 const PidFormat = "i"
 
-// UNSUPPORTED : C value 'PI_2' : Cannot generate literal value for 'gdouble'
+// Pi2 is a representation of the C type PI_2.
+const Pi2 = 1.570796
 
-// UNSUPPORTED : C value 'PI_4' : Cannot generate literal value for 'gdouble'
+// Pi4 is a representation of the C type PI_4.
+const Pi4 = 0.785398
 
 // PollfdFormat is a representation of the C type POLLFD_FORMAT.
 const PollfdFormat = "%d"
@@ -324,7 +331,8 @@ const SizeofVoidP = int32(8)
 
 // UNSUPPORTED : C value 'SOURCE_REMOVE' : Cannot generate literal value for 'gboolean'
 
-// UNSUPPORTED : C value 'SQRT2' : Cannot generate literal value for 'gdouble'
+// Sqrt2 is a representation of the C type SQRT2.
+const Sqrt2 = 1.414214
 
 // StrDelimiters is a representation of the C type STR_DELIMITERS.
 const StrDelimiters = "_-|> <."
