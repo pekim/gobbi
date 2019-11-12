@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"errors"
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strconv"
@@ -44,9 +45,9 @@ func (t *Type) jenGoType() (*jen.Statement, string) {
 	return nil, fmt.Sprintf("No Go type for '%s'\n", t.CType)
 }
 
-func (t *Type) jenValue(stringValue string) (*jen.Statement, string) {
+func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 	if t == nil {
-		return nil, "missing Type"
+		return nil, errors.New("missing Type")
 	}
 
 	var lit *jen.Statement
@@ -71,11 +72,11 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, string) {
 	case "gulong", "guint64":
 		lit = jen.Lit(uint8(intValue))
 	default:
-		return nil, fmt.Sprintf("Cannot generate literal value for '%s'\n", t.CType)
+		return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.CType)
 	}
 
 	if err != nil {
-		return nil, err.Error()
+		return nil, err
 	}
-	return lit, ""
+	return lit, nil
 }

@@ -19,9 +19,9 @@ func (c *Constant) init(ns *Namespace) {
 func (c Constant) generate(f *file) {
 	goName := makeExportedGoName(c.Name)
 
-	value, reason := c.Type.jenValue(c.Value)
-	if reason != "" {
-		f.unsupported(c.Name, reason)
+	value, err := c.Type.jenValue(c.Value)
+	if err != nil {
+		f.unsupported(c.Name, err.Error())
 		return
 	}
 
