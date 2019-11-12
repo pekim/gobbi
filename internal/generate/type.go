@@ -52,37 +52,9 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 
 	switch t.CType {
 	case "gchar", "gint8", "gshort", "gint16", "int", "gint", "gint32", "glong", "gint64":
-		intValue, err := strconv.ParseInt(stringValue, 10, 64)
-		if err != nil {
-			return nil, err
-		}
-
-		switch t.CType {
-		case "gchar", "gint8":
-			return jen.Lit(int8(intValue)), nil
-		case "gshort", "gint16":
-			return jen.Lit(int16(intValue)), nil
-		case "int", "gint", "gint32":
-			return jen.Lit(int32(intValue)), nil
-		case "glong", "gint64":
-			return jen.Lit(int64(intValue)), nil
-		}
+		return t.jenValueInt(stringValue)
 	case "guchar", "guint8", "gushort", "guint16", "guint", "guint32", "gulong", "guint64":
-		uintValue, err := strconv.ParseUint(stringValue, 10, 64)
-		if err != nil {
-			return nil, err
-		}
-
-		switch t.CType {
-		case "guchar", "guint8":
-			return jen.Lit(uint8(uintValue)), nil
-		case "gushort", "guint16":
-			return jen.Lit(uint16(uintValue)), nil
-		case "guint", "guint32":
-			return jen.Lit(uint32(uintValue)), nil
-		case "gulong", "guint64":
-			return jen.Lit(uint64(uintValue)), nil
-		}
+		return t.jenValueUint(stringValue)
 	case "gdouble":
 		value, err := strconv.ParseFloat(stringValue, 64)
 		return jen.Lit(value), err
@@ -93,4 +65,44 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 	}
 
 	return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.CType)
+}
+
+func (t *Type) jenValueInt(stringValue string) (*jen.Statement, error) {
+	value, err := strconv.ParseInt(stringValue, 10, 64)
+	if err != nil {
+		return nil, err
+	}
+
+	switch t.CType {
+	case "gchar", "gint8":
+		return jen.Lit(int8(value)), nil
+	case "gshort", "gint16":
+		return jen.Lit(int16(value)), nil
+	case "int", "gint", "gint32":
+		return jen.Lit(int32(value)), nil
+	case "glong", "gint64":
+		return jen.Lit(int64(value)), nil
+	}
+
+	return nil, fmt.Errorf("Unknown type'%s'\n", t.CType)
+}
+
+func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
+	value, err := strconv.ParseUint(stringValue, 10, 64)
+	if err != nil {
+		return nil, err
+	}
+
+	switch t.CType {
+	case "guchar", "guint8":
+		return jen.Lit(uint8(value)), nil
+	case "gushort", "guint16":
+		return jen.Lit(uint16(value)), nil
+	case "guint", "guint32":
+		return jen.Lit(uint32(value)), nil
+	case "gulong", "guint64":
+		return jen.Lit(uint64(value)), nil
+	}
+
+	return nil, fmt.Errorf("Unknown type'%s'\n", t.CType)
 }
