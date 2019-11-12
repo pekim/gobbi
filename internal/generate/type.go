@@ -44,41 +44,32 @@ func (t *Type) jenGoType() (*jen.Statement, string) {
 	return nil, fmt.Sprintf("No Go type for '%s'\n", t.CType)
 }
 
-func (t *Type) jenValue(valueText string) (*jen.Statement, string) {
+func (t *Type) jenValue(stringValue string) (*jen.Statement, string) {
 	if t == nil {
 		return nil, "missing Type"
 	}
 
 	var lit *jen.Statement
-	var value int
-	var err error
+	intValue, err := strconv.Atoi(stringValue)
 
 	switch t.CType {
 	case "gint8":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(int8(value))
+		lit = jen.Lit(int8(intValue))
 	case "gshort", "gint16":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(int16(value))
+		lit = jen.Lit(int16(intValue))
 	case "int", "gint", "gint32":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(int32(value))
+		lit = jen.Lit(int32(intValue))
 	case "glong", "gint64":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(int64(value))
+		lit = jen.Lit(int64(intValue))
 
 	case "guchar", "guint8":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(uint8(value))
+		lit = jen.Lit(uint8(intValue))
 	case "gushort", "guint16":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(uint8(value))
+		lit = jen.Lit(uint8(intValue))
 	case "guint", "guint32":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(uint8(value))
+		lit = jen.Lit(uint8(intValue))
 	case "gulong", "guint64":
-		value, err = strconv.Atoi(valueText)
-		lit = jen.Lit(uint8(value))
+		lit = jen.Lit(uint8(intValue))
 	default:
 		return nil, fmt.Sprintf("Cannot generate literal value for '%s'\n", t.CType)
 	}
