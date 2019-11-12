@@ -25,4 +25,5 @@ type Time int32
 // Timespan is a representation of the C type TimeSpan.
 type Timespan int64
 
-// UNSUPPORTED : C value 'Type' : No Go type for 'gsize'
+// Type is a representation of the C type Type.
+type Type uintptr
