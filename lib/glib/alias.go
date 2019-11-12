@@ -16,7 +16,8 @@ type Pid int32
 // Quark is a representation of the C type Quark.
 type Quark uint32
 
-// UNSUPPORTED : C value 'Strv' : No Go type for 'utf8'
+// Strv is a representation of the C type Strv.
+type Strv string
 
 // Time is a representation of the C type Time.
 type Time int32

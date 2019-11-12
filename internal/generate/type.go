@@ -40,6 +40,9 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return jen.Uint32(), nil
 	case "gulong", "guint64":
 		return jen.Uint64(), nil
+
+	case "utf8":
+		return jen.String(), nil
 	}
 
 	return nil, fmt.Errorf("No Go type for '%s'\n", t.Name)
