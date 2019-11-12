@@ -328,9 +328,11 @@ const SizeofSsizeT = int32(8)
 // SizeofVoidP is a representation of the C type SIZEOF_VOID_P.
 const SizeofVoidP = int32(8)
 
-// UNSUPPORTED : C value 'SOURCE_CONTINUE' : Cannot generate literal value for 'gboolean'
+// SourceContinue is a representation of the C type SOURCE_CONTINUE.
+const SourceContinue = true
 
-// UNSUPPORTED : C value 'SOURCE_REMOVE' : Cannot generate literal value for 'gboolean'
+// SourceRemove is a representation of the C type SOURCE_REMOVE.
+const SourceRemove = false
 
 // Sqrt2 is a representation of the C type SQRT2.
 const Sqrt2 = 1.414214

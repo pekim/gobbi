@@ -86,6 +86,8 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 	case "gdouble":
 		value, err := strconv.ParseFloat(stringValue, 64)
 		return jen.Lit(value), err
+	case "gboolean":
+		return jen.Lit(stringValue == "true"), nil
 	case "gchar*":
 		return jen.Lit(stringValue), nil
 	}
