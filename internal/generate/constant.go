@@ -1,9 +1,5 @@
 package generate
 
-import (
-	"fmt"
-)
-
 type Constant struct {
 	Name string `xml:"name,attr"`
 	//Blacklist bool   `xml:"blacklist,attr"`
@@ -21,27 +17,22 @@ func (c *Constant) init(ns *Namespace) {
 }
 
 func (c Constant) generate(f *file) {
-	if c.Type == nil {
-		fmt.Println(c)
-		fmt.Println("  ", c.CType)
-		fmt.Println("  ", c.Type)
-		return
-	}
-
 	goName := makeExportedGoName(c.Name)
 
-	goType := c.Type.jenGoType()
+	goType, reason := c.Type.jenGoType()
 	if goType == nil {
-		f.unsupported(c.Name, "")
+		f.unsupported(c.Name, reason)
 		return
 	}
 
+	f.docForC(goName, c.Name)
 	f.
 		Const().
 		Id(goName).
 		Add(goType).
 		Op("=").
 		Lit(c.Value)
+	f.Line()
 }
 
 //// #include <gobject-introspection-1.0/girepository.h>

@@ -12,18 +12,19 @@ type Type struct {
 	Namespace *Namespace
 }
 
-func (t *Type) jenGoType() *jen.Statement {
-	if t == nil || t.CType == "" {
-		fmt.Println("No Ctype for", t)
-		return nil
+func (t *Type) jenGoType() (*jen.Statement, string) {
+	if t == nil {
+		return nil, "missing Type"
+	}
+	if t.CType == "" {
+		return nil, "missing Type.CType"
 	}
 
 	goType, ok := numberCTypeMap[t.CType]
 	if !ok {
 		//panic(fmt.Sprintf("No Go type for %s", t.CType))
-		fmt.Printf("No Go type for %s\n", t.CType)
-		return nil
+		return nil, fmt.Sprintf("No Go type for '%s'\n", t.CType)
 	}
 
-	return jen.Id(goType)
+	return jen.Id(goType), ""
 }
