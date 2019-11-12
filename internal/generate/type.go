@@ -50,40 +50,45 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		return nil, errors.New("missing Type")
 	}
 
-	var lit *jen.Statement
-	intValue, err := strconv.Atoi(stringValue)
-
 	switch t.CType {
-	case "gint8":
-		lit = jen.Lit(int8(intValue))
-	case "gshort", "gint16":
-		lit = jen.Lit(int16(intValue))
-	case "int", "gint", "gint32":
-		lit = jen.Lit(int32(intValue))
-	case "glong", "gint64":
-		lit = jen.Lit(int64(intValue))
+	case "gint8", "gshort", "gint16", "int", "gint", "gint32", "glong", "gint64":
+		intValue, err := strconv.ParseInt(stringValue, 10, 64)
+		if err != nil {
+			return nil, err
+		}
 
-	case "guchar", "guint8":
-		lit = jen.Lit(uint8(intValue))
-	case "gushort", "guint16":
-		lit = jen.Lit(uint8(intValue))
-	case "guint", "guint32":
-		lit = jen.Lit(uint8(intValue))
-	case "gulong", "guint64":
-		lit = jen.Lit(uint8(intValue))
+		switch t.CType {
+		case "gint8":
+			return jen.Lit(int8(intValue)), nil
+		case "gshort", "gint16":
+			return jen.Lit(int16(intValue)), nil
+		case "int", "gint", "gint32":
+			return jen.Lit(int32(intValue)), nil
+		case "glong", "gint64":
+			return jen.Lit(int64(intValue)), nil
+		}
+	case "guchar", "guint8", "gushort", "guint16", "guint", "guint32", "gulong", "guint64":
+		uintValue, err := strconv.ParseUint(stringValue, 10, 64)
+		if err != nil {
+			return nil, err
+		}
+
+		switch t.CType {
+		case "guchar", "guint8":
+			return jen.Lit(uint8(uintValue)), nil
+		case "gushort", "guint16":
+			return jen.Lit(uint16(uintValue)), nil
+		case "guint", "guint32":
+			return jen.Lit(uint32(uintValue)), nil
+		case "gulong", "guint64":
+			return jen.Lit(uint64(uintValue)), nil
+		}
 	case "gdouble":
-		value, e := strconv.ParseFloat(stringValue, 64)
-		lit = jen.Lit(value)
-		err = e
+		value, err := strconv.ParseFloat(stringValue, 64)
+		return jen.Lit(value), err
 	case "gchar*":
-		lit = jen.Lit(stringValue)
-		err = nil
-	default:
-		return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.CType)
+		return jen.Lit(stringValue), nil
 	}
 
-	if err != nil {
-		return nil, err
-	}
-	return lit, nil
+	return nil, fmt.Errorf("Cannot generate literal value for '%s'\n", t.CType)
 }

@@ -242,12 +242,13 @@ const Maxint64 = int64(9223372036854775807)
 const Maxint8 = int8(127)
 
 // Maxuint16 is a representation of the C type MAXUINT16.
-const Maxuint16 = uint8(0xff)
+const Maxuint16 = uint16(0xffff)
 
 // Maxuint32 is a representation of the C type MAXUINT32.
-const Maxuint32 = uint8(0xff)
+const Maxuint32 = uint32(0xffffffff)
 
-// UNSUPPORTED : C value 'MAXUINT64' : strconv.Atoi: parsing "18446744073709551615": value out of range
+// Maxuint64 is a representation of the C type MAXUINT64.
+const Maxuint64 = uint64(0xffffffffffffffff)
 
 // Maxuint8 is a representation of the C type MAXUINT8.
 const Maxuint8 = uint8(0xff)
