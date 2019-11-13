@@ -23,7 +23,7 @@ type Namespace struct {
 	//	Classes                       Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
 	Enumerations Enumerations `xml:"enumeration"`
-	//	Functions                     Functions    `xml:"function"`
+	Functions    Functions    `xml:"function"`
 	//	Records                       Records      `xml:"record"`
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
@@ -40,6 +40,7 @@ func (n *Namespace) init(namespaces namespaces) {
 	n.Bitfields.init(n)
 	n.Constants.init(n)
 	n.Enumerations.init(n)
+	n.Functions.init(n)
 }
 
 func (n *Namespace) generate() {
@@ -52,6 +53,7 @@ func (n *Namespace) generate() {
 	n.generateFile("bitfield", n.Bitfields.generate)
 	n.generateFile("constant", n.Constants.generate)
 	n.generateFile("enumeration", n.Enumerations.generate)
+	n.generateFile("function", n.Functions.generate)
 }
 
 func (n *Namespace) generateLibDir() {
