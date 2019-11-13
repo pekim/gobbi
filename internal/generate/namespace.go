@@ -15,7 +15,7 @@ type Namespace struct {
 	Version string `xml:"version,attr"`
 	//SharedLibrary       string `xml:"shared-library,attr"`
 	//CDocPath            string `xml:"c-doc-path,attr"`
-	//CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
+	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	//CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	Aliases Aliases `xml:"alias"`
 	//	Bitfields                     Enumerations `xml:"bitfield"`

@@ -42,6 +42,7 @@ func (c *Constant) generate(f *file) {
 
 	f.docForC(c.goName, c.Name)
 	f.docVersion(c.Version)
+
 	f.
 		Const().
 		Id(c.goName).
