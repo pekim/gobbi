@@ -8,14 +8,10 @@ package gio
 type Bustype int
 
 const (
-	// starter
-	GBusTypeStarter Bustype = -1
-	// none
-	GBusTypeNone Bustype = 0
-	// system
-	GBusTypeSystem Bustype = 1
-	// session
-	GBusTypeSession Bustype = 2
+	Bustype_Starter Bustype = -1
+	Bustype_None    Bustype = 0
+	Bustype_System  Bustype = 1
+	Bustype_Session Bustype = 2
 )
 
 // Converterresult is a representation of the C type ConverterResult.
@@ -24,14 +20,10 @@ const (
 type Converterresult int
 
 const (
-	// error
-	GConverterError Converterresult = 0
-	// converted
-	GConverterConverted Converterresult = 1
-	// finished
-	GConverterFinished Converterresult = 2
-	// flushed
-	GConverterFlushed Converterresult = 3
+	Converterresult_Error     Converterresult = 0
+	Converterresult_Converted Converterresult = 1
+	Converterresult_Finished  Converterresult = 2
+	Converterresult_Flushed   Converterresult = 3
 )
 
 // Credentialstype is a representation of the C type CredentialsType.
@@ -40,18 +32,12 @@ const (
 type Credentialstype int
 
 const (
-	// invalid
-	GCredentialsTypeInvalid Credentialstype = 0
-	// linux_ucred
-	GCredentialsTypeLinuxUcred Credentialstype = 1
-	// freebsd_cmsgcred
-	GCredentialsTypeFreebsdCmsgcred Credentialstype = 2
-	// openbsd_sockpeercred
-	GCredentialsTypeOpenbsdSockpeercred Credentialstype = 3
-	// solaris_ucred
-	GCredentialsTypeSolarisUcred Credentialstype = 4
-	// netbsd_unpcbid
-	GCredentialsTypeNetbsdUnpcbid Credentialstype = 5
+	Credentialstype_Invalid             Credentialstype = 0
+	Credentialstype_LinuxUcred          Credentialstype = 1
+	Credentialstype_FreebsdCmsgcred     Credentialstype = 2
+	Credentialstype_OpenbsdSockpeercred Credentialstype = 3
+	Credentialstype_SolarisUcred        Credentialstype = 4
+	Credentialstype_NetbsdUnpcbid       Credentialstype = 5
 )
 
 // Dbuserror is a representation of the C type DBusError.
@@ -60,96 +46,51 @@ const (
 type Dbuserror int
 
 const (
-	// failed
-	GDbusErrorFailed Dbuserror = 0
-	// no_memory
-	GDbusErrorNoMemory Dbuserror = 1
-	// service_unknown
-	GDbusErrorServiceUnknown Dbuserror = 2
-	// name_has_no_owner
-	GDbusErrorNameHasNoOwner Dbuserror = 3
-	// no_reply
-	GDbusErrorNoReply Dbuserror = 4
-	// io_error
-	GDbusErrorIoError Dbuserror = 5
-	// bad_address
-	GDbusErrorBadAddress Dbuserror = 6
-	// not_supported
-	GDbusErrorNotSupported Dbuserror = 7
-	// limits_exceeded
-	GDbusErrorLimitsExceeded Dbuserror = 8
-	// access_denied
-	GDbusErrorAccessDenied Dbuserror = 9
-	// auth_failed
-	GDbusErrorAuthFailed Dbuserror = 10
-	// no_server
-	GDbusErrorNoServer Dbuserror = 11
-	// timeout
-	GDbusErrorTimeout Dbuserror = 12
-	// no_network
-	GDbusErrorNoNetwork Dbuserror = 13
-	// address_in_use
-	GDbusErrorAddressInUse Dbuserror = 14
-	// disconnected
-	GDbusErrorDisconnected Dbuserror = 15
-	// invalid_args
-	GDbusErrorInvalidArgs Dbuserror = 16
-	// file_not_found
-	GDbusErrorFileNotFound Dbuserror = 17
-	// file_exists
-	GDbusErrorFileExists Dbuserror = 18
-	// unknown_method
-	GDbusErrorUnknownMethod Dbuserror = 19
-	// timed_out
-	GDbusErrorTimedOut Dbuserror = 20
-	// match_rule_not_found
-	GDbusErrorMatchRuleNotFound Dbuserror = 21
-	// match_rule_invalid
-	GDbusErrorMatchRuleInvalid Dbuserror = 22
-	// spawn_exec_failed
-	GDbusErrorSpawnExecFailed Dbuserror = 23
-	// spawn_fork_failed
-	GDbusErrorSpawnForkFailed Dbuserror = 24
-	// spawn_child_exited
-	GDbusErrorSpawnChildExited Dbuserror = 25
-	// spawn_child_signaled
-	GDbusErrorSpawnChildSignaled Dbuserror = 26
-	// spawn_failed
-	GDbusErrorSpawnFailed Dbuserror = 27
-	// spawn_setup_failed
-	GDbusErrorSpawnSetupFailed Dbuserror = 28
-	// spawn_config_invalid
-	GDbusErrorSpawnConfigInvalid Dbuserror = 29
-	// spawn_service_invalid
-	GDbusErrorSpawnServiceInvalid Dbuserror = 30
-	// spawn_service_not_found
-	GDbusErrorSpawnServiceNotFound Dbuserror = 31
-	// spawn_permissions_invalid
-	GDbusErrorSpawnPermissionsInvalid Dbuserror = 32
-	// spawn_file_invalid
-	GDbusErrorSpawnFileInvalid Dbuserror = 33
-	// spawn_no_memory
-	GDbusErrorSpawnNoMemory Dbuserror = 34
-	// unix_process_id_unknown
-	GDbusErrorUnixProcessIdUnknown Dbuserror = 35
-	// invalid_signature
-	GDbusErrorInvalidSignature Dbuserror = 36
-	// invalid_file_content
-	GDbusErrorInvalidFileContent Dbuserror = 37
-	// selinux_security_context_unknown
-	GDbusErrorSelinuxSecurityContextUnknown Dbuserror = 38
-	// adt_audit_data_unknown
-	GDbusErrorAdtAuditDataUnknown Dbuserror = 39
-	// object_path_in_use
-	GDbusErrorObjectPathInUse Dbuserror = 40
-	// unknown_object
-	GDbusErrorUnknownObject Dbuserror = 41
-	// unknown_interface
-	GDbusErrorUnknownInterface Dbuserror = 42
-	// unknown_property
-	GDbusErrorUnknownProperty Dbuserror = 43
-	// property_read_only
-	GDbusErrorPropertyReadOnly Dbuserror = 44
+	Dbuserror_Failed                        Dbuserror = 0
+	Dbuserror_NoMemory                      Dbuserror = 1
+	Dbuserror_ServiceUnknown                Dbuserror = 2
+	Dbuserror_NameHasNoOwner                Dbuserror = 3
+	Dbuserror_NoReply                       Dbuserror = 4
+	Dbuserror_IoError                       Dbuserror = 5
+	Dbuserror_BadAddress                    Dbuserror = 6
+	Dbuserror_NotSupported                  Dbuserror = 7
+	Dbuserror_LimitsExceeded                Dbuserror = 8
+	Dbuserror_AccessDenied                  Dbuserror = 9
+	Dbuserror_AuthFailed                    Dbuserror = 10
+	Dbuserror_NoServer                      Dbuserror = 11
+	Dbuserror_Timeout                       Dbuserror = 12
+	Dbuserror_NoNetwork                     Dbuserror = 13
+	Dbuserror_AddressInUse                  Dbuserror = 14
+	Dbuserror_Disconnected                  Dbuserror = 15
+	Dbuserror_InvalidArgs                   Dbuserror = 16
+	Dbuserror_FileNotFound                  Dbuserror = 17
+	Dbuserror_FileExists                    Dbuserror = 18
+	Dbuserror_UnknownMethod                 Dbuserror = 19
+	Dbuserror_TimedOut                      Dbuserror = 20
+	Dbuserror_MatchRuleNotFound             Dbuserror = 21
+	Dbuserror_MatchRuleInvalid              Dbuserror = 22
+	Dbuserror_SpawnExecFailed               Dbuserror = 23
+	Dbuserror_SpawnForkFailed               Dbuserror = 24
+	Dbuserror_SpawnChildExited              Dbuserror = 25
+	Dbuserror_SpawnChildSignaled            Dbuserror = 26
+	Dbuserror_SpawnFailed                   Dbuserror = 27
+	Dbuserror_SpawnSetupFailed              Dbuserror = 28
+	Dbuserror_SpawnConfigInvalid            Dbuserror = 29
+	Dbuserror_SpawnServiceInvalid           Dbuserror = 30
+	Dbuserror_SpawnServiceNotFound          Dbuserror = 31
+	Dbuserror_SpawnPermissionsInvalid       Dbuserror = 32
+	Dbuserror_SpawnFileInvalid              Dbuserror = 33
+	Dbuserror_SpawnNoMemory                 Dbuserror = 34
+	Dbuserror_UnixProcessIdUnknown          Dbuserror = 35
+	Dbuserror_InvalidSignature              Dbuserror = 36
+	Dbuserror_InvalidFileContent            Dbuserror = 37
+	Dbuserror_SelinuxSecurityContextUnknown Dbuserror = 38
+	Dbuserror_AdtAuditDataUnknown           Dbuserror = 39
+	Dbuserror_ObjectPathInUse               Dbuserror = 40
+	Dbuserror_UnknownObject                 Dbuserror = 41
+	Dbuserror_UnknownInterface              Dbuserror = 42
+	Dbuserror_UnknownProperty               Dbuserror = 43
+	Dbuserror_PropertyReadOnly              Dbuserror = 44
 )
 
 // Dbusmessagebyteorder is a representation of the C type DBusMessageByteOrder.
@@ -158,10 +99,8 @@ const (
 type Dbusmessagebyteorder int
 
 const (
-	// big_endian
-	GDbusMessageByteOrderBigEndian Dbusmessagebyteorder = 66
-	// little_endian
-	GDbusMessageByteOrderLittleEndian Dbusmessagebyteorder = 108
+	Dbusmessagebyteorder_BigEndian    Dbusmessagebyteorder = 66
+	Dbusmessagebyteorder_LittleEndian Dbusmessagebyteorder = 108
 )
 
 // Dbusmessageheaderfield is a representation of the C type DBusMessageHeaderField.
@@ -170,26 +109,16 @@ const (
 type Dbusmessageheaderfield int
 
 const (
-	// invalid
-	GDbusMessageHeaderFieldInvalid Dbusmessageheaderfield = 0
-	// path
-	GDbusMessageHeaderFieldPath Dbusmessageheaderfield = 1
-	// interface
-	GDbusMessageHeaderFieldInterface Dbusmessageheaderfield = 2
-	// member
-	GDbusMessageHeaderFieldMember Dbusmessageheaderfield = 3
-	// error_name
-	GDbusMessageHeaderFieldErrorName Dbusmessageheaderfield = 4
-	// reply_serial
-	GDbusMessageHeaderFieldReplySerial Dbusmessageheaderfield = 5
-	// destination
-	GDbusMessageHeaderFieldDestination Dbusmessageheaderfield = 6
-	// sender
-	GDbusMessageHeaderFieldSender Dbusmessageheaderfield = 7
-	// signature
-	GDbusMessageHeaderFieldSignature Dbusmessageheaderfield = 8
-	// num_unix_fds
-	GDbusMessageHeaderFieldNumUnixFds Dbusmessageheaderfield = 9
+	Dbusmessageheaderfield_Invalid     Dbusmessageheaderfield = 0
+	Dbusmessageheaderfield_Path        Dbusmessageheaderfield = 1
+	Dbusmessageheaderfield_Interface   Dbusmessageheaderfield = 2
+	Dbusmessageheaderfield_Member      Dbusmessageheaderfield = 3
+	Dbusmessageheaderfield_ErrorName   Dbusmessageheaderfield = 4
+	Dbusmessageheaderfield_ReplySerial Dbusmessageheaderfield = 5
+	Dbusmessageheaderfield_Destination Dbusmessageheaderfield = 6
+	Dbusmessageheaderfield_Sender      Dbusmessageheaderfield = 7
+	Dbusmessageheaderfield_Signature   Dbusmessageheaderfield = 8
+	Dbusmessageheaderfield_NumUnixFds  Dbusmessageheaderfield = 9
 )
 
 // Dbusmessagetype is a representation of the C type DBusMessageType.
@@ -198,42 +127,30 @@ const (
 type Dbusmessagetype int
 
 const (
-	// invalid
-	GDbusMessageTypeInvalid Dbusmessagetype = 0
-	// method_call
-	GDbusMessageTypeMethodCall Dbusmessagetype = 1
-	// method_return
-	GDbusMessageTypeMethodReturn Dbusmessagetype = 2
-	// error
-	GDbusMessageTypeError Dbusmessagetype = 3
-	// signal
-	GDbusMessageTypeSignal Dbusmessagetype = 4
+	Dbusmessagetype_Invalid      Dbusmessagetype = 0
+	Dbusmessagetype_MethodCall   Dbusmessagetype = 1
+	Dbusmessagetype_MethodReturn Dbusmessagetype = 2
+	Dbusmessagetype_Error        Dbusmessagetype = 3
+	Dbusmessagetype_Signal       Dbusmessagetype = 4
 )
 
 // Datastreambyteorder is a representation of the C type DataStreamByteOrder.
 type Datastreambyteorder int
 
 const (
-	// big_endian
-	GDataStreamByteOrderBigEndian Datastreambyteorder = 0
-	// little_endian
-	GDataStreamByteOrderLittleEndian Datastreambyteorder = 1
-	// host_endian
-	GDataStreamByteOrderHostEndian Datastreambyteorder = 2
+	Datastreambyteorder_BigEndian    Datastreambyteorder = 0
+	Datastreambyteorder_LittleEndian Datastreambyteorder = 1
+	Datastreambyteorder_HostEndian   Datastreambyteorder = 2
 )
 
 // Datastreamnewlinetype is a representation of the C type DataStreamNewlineType.
 type Datastreamnewlinetype int
 
 const (
-	// lf
-	GDataStreamNewlineTypeLf Datastreamnewlinetype = 0
-	// cr
-	GDataStreamNewlineTypeCr Datastreamnewlinetype = 1
-	// cr_lf
-	GDataStreamNewlineTypeCrLf Datastreamnewlinetype = 2
-	// any
-	GDataStreamNewlineTypeAny Datastreamnewlinetype = 3
+	Datastreamnewlinetype_Lf   Datastreamnewlinetype = 0
+	Datastreamnewlinetype_Cr   Datastreamnewlinetype = 1
+	Datastreamnewlinetype_CrLf Datastreamnewlinetype = 2
+	Datastreamnewlinetype_Any  Datastreamnewlinetype = 3
 )
 
 // Drivestartstoptype is a representation of the C type DriveStartStopType.
@@ -242,16 +159,11 @@ const (
 type Drivestartstoptype int
 
 const (
-	// unknown
-	GDriveStartStopTypeUnknown Drivestartstoptype = 0
-	// shutdown
-	GDriveStartStopTypeShutdown Drivestartstoptype = 1
-	// network
-	GDriveStartStopTypeNetwork Drivestartstoptype = 2
-	// multidisk
-	GDriveStartStopTypeMultidisk Drivestartstoptype = 3
-	// password
-	GDriveStartStopTypePassword Drivestartstoptype = 4
+	Drivestartstoptype_Unknown   Drivestartstoptype = 0
+	Drivestartstoptype_Shutdown  Drivestartstoptype = 1
+	Drivestartstoptype_Network   Drivestartstoptype = 2
+	Drivestartstoptype_Multidisk Drivestartstoptype = 3
+	Drivestartstoptype_Password  Drivestartstoptype = 4
 )
 
 // Emblemorigin is a representation of the C type EmblemOrigin.
@@ -260,214 +172,128 @@ const (
 type Emblemorigin int
 
 const (
-	// unknown
-	GEmblemOriginUnknown Emblemorigin = 0
-	// device
-	GEmblemOriginDevice Emblemorigin = 1
-	// livemetadata
-	GEmblemOriginLivemetadata Emblemorigin = 2
-	// tag
-	GEmblemOriginTag Emblemorigin = 3
+	Emblemorigin_Unknown      Emblemorigin = 0
+	Emblemorigin_Device       Emblemorigin = 1
+	Emblemorigin_Livemetadata Emblemorigin = 2
+	Emblemorigin_Tag          Emblemorigin = 3
 )
 
 // Fileattributestatus is a representation of the C type FileAttributeStatus.
 type Fileattributestatus int
 
 const (
-	// unset
-	GFileAttributeStatusUnset Fileattributestatus = 0
-	// set
-	GFileAttributeStatusSet Fileattributestatus = 1
-	// error_setting
-	GFileAttributeStatusErrorSetting Fileattributestatus = 2
+	Fileattributestatus_Unset        Fileattributestatus = 0
+	Fileattributestatus_Set          Fileattributestatus = 1
+	Fileattributestatus_ErrorSetting Fileattributestatus = 2
 )
 
 // Fileattributetype is a representation of the C type FileAttributeType.
 type Fileattributetype int
 
 const (
-	// invalid
-	GFileAttributeTypeInvalid Fileattributetype = 0
-	// string
-	GFileAttributeTypeString Fileattributetype = 1
-	// byte_string
-	GFileAttributeTypeByteString Fileattributetype = 2
-	// boolean
-	GFileAttributeTypeBoolean Fileattributetype = 3
-	// uint32
-	GFileAttributeTypeUint32 Fileattributetype = 4
-	// int32
-	GFileAttributeTypeInt32 Fileattributetype = 5
-	// uint64
-	GFileAttributeTypeUint64 Fileattributetype = 6
-	// int64
-	GFileAttributeTypeInt64 Fileattributetype = 7
-	// object
-	GFileAttributeTypeObject Fileattributetype = 8
-	// stringv
-	GFileAttributeTypeStringv Fileattributetype = 9
+	Fileattributetype_Invalid    Fileattributetype = 0
+	Fileattributetype_String     Fileattributetype = 1
+	Fileattributetype_ByteString Fileattributetype = 2
+	Fileattributetype_Boolean    Fileattributetype = 3
+	Fileattributetype_Uint32     Fileattributetype = 4
+	Fileattributetype_Int32      Fileattributetype = 5
+	Fileattributetype_Uint64     Fileattributetype = 6
+	Fileattributetype_Int64      Fileattributetype = 7
+	Fileattributetype_Object     Fileattributetype = 8
+	Fileattributetype_Stringv    Fileattributetype = 9
 )
 
 // Filemonitorevent is a representation of the C type FileMonitorEvent.
 type Filemonitorevent int
 
 const (
-	// changed
-	GFileMonitorEventChanged Filemonitorevent = 0
-	// changes_done_hint
-	GFileMonitorEventChangesDoneHint Filemonitorevent = 1
-	// deleted
-	GFileMonitorEventDeleted Filemonitorevent = 2
-	// created
-	GFileMonitorEventCreated Filemonitorevent = 3
-	// attribute_changed
-	GFileMonitorEventAttributeChanged Filemonitorevent = 4
-	// pre_unmount
-	GFileMonitorEventPreUnmount Filemonitorevent = 5
-	// unmounted
-	GFileMonitorEventUnmounted Filemonitorevent = 6
-	// moved
-	GFileMonitorEventMoved Filemonitorevent = 7
-	// renamed
-	GFileMonitorEventRenamed Filemonitorevent = 8
-	// moved_in
-	GFileMonitorEventMovedIn Filemonitorevent = 9
-	// moved_out
-	GFileMonitorEventMovedOut Filemonitorevent = 10
+	Filemonitorevent_Changed          Filemonitorevent = 0
+	Filemonitorevent_ChangesDoneHint  Filemonitorevent = 1
+	Filemonitorevent_Deleted          Filemonitorevent = 2
+	Filemonitorevent_Created          Filemonitorevent = 3
+	Filemonitorevent_AttributeChanged Filemonitorevent = 4
+	Filemonitorevent_PreUnmount       Filemonitorevent = 5
+	Filemonitorevent_Unmounted        Filemonitorevent = 6
+	Filemonitorevent_Moved            Filemonitorevent = 7
+	Filemonitorevent_Renamed          Filemonitorevent = 8
+	Filemonitorevent_MovedIn          Filemonitorevent = 9
+	Filemonitorevent_MovedOut         Filemonitorevent = 10
 )
 
 // Filetype is a representation of the C type FileType.
 type Filetype int
 
 const (
-	// unknown
-	GFileTypeUnknown Filetype = 0
-	// regular
-	GFileTypeRegular Filetype = 1
-	// directory
-	GFileTypeDirectory Filetype = 2
-	// symbolic_link
-	GFileTypeSymbolicLink Filetype = 3
-	// special
-	GFileTypeSpecial Filetype = 4
-	// shortcut
-	GFileTypeShortcut Filetype = 5
-	// mountable
-	GFileTypeMountable Filetype = 6
+	Filetype_Unknown      Filetype = 0
+	Filetype_Regular      Filetype = 1
+	Filetype_Directory    Filetype = 2
+	Filetype_SymbolicLink Filetype = 3
+	Filetype_Special      Filetype = 4
+	Filetype_Shortcut     Filetype = 5
+	Filetype_Mountable    Filetype = 6
 )
 
 // Filesystempreviewtype is a representation of the C type FilesystemPreviewType.
 type Filesystempreviewtype int
 
 const (
-	// if_always
-	GFilesystemPreviewTypeIfAlways Filesystempreviewtype = 0
-	// if_local
-	GFilesystemPreviewTypeIfLocal Filesystempreviewtype = 1
-	// never
-	GFilesystemPreviewTypeNever Filesystempreviewtype = 2
+	Filesystempreviewtype_IfAlways Filesystempreviewtype = 0
+	Filesystempreviewtype_IfLocal  Filesystempreviewtype = 1
+	Filesystempreviewtype_Never    Filesystempreviewtype = 2
 )
 
 // Ioerrorenum is a representation of the C type IOErrorEnum.
 type Ioerrorenum int
 
 const (
-	// failed
-	GIoErrorFailed Ioerrorenum = 0
-	// not_found
-	GIoErrorNotFound Ioerrorenum = 1
-	// exists
-	GIoErrorExists Ioerrorenum = 2
-	// is_directory
-	GIoErrorIsDirectory Ioerrorenum = 3
-	// not_directory
-	GIoErrorNotDirectory Ioerrorenum = 4
-	// not_empty
-	GIoErrorNotEmpty Ioerrorenum = 5
-	// not_regular_file
-	GIoErrorNotRegularFile Ioerrorenum = 6
-	// not_symbolic_link
-	GIoErrorNotSymbolicLink Ioerrorenum = 7
-	// not_mountable_file
-	GIoErrorNotMountableFile Ioerrorenum = 8
-	// filename_too_long
-	GIoErrorFilenameTooLong Ioerrorenum = 9
-	// invalid_filename
-	GIoErrorInvalidFilename Ioerrorenum = 10
-	// too_many_links
-	GIoErrorTooManyLinks Ioerrorenum = 11
-	// no_space
-	GIoErrorNoSpace Ioerrorenum = 12
-	// invalid_argument
-	GIoErrorInvalidArgument Ioerrorenum = 13
-	// permission_denied
-	GIoErrorPermissionDenied Ioerrorenum = 14
-	// not_supported
-	GIoErrorNotSupported Ioerrorenum = 15
-	// not_mounted
-	GIoErrorNotMounted Ioerrorenum = 16
-	// already_mounted
-	GIoErrorAlreadyMounted Ioerrorenum = 17
-	// closed
-	GIoErrorClosed Ioerrorenum = 18
-	// cancelled
-	GIoErrorCancelled Ioerrorenum = 19
-	// pending
-	GIoErrorPending Ioerrorenum = 20
-	// read_only
-	GIoErrorReadOnly Ioerrorenum = 21
-	// cant_create_backup
-	GIoErrorCantCreateBackup Ioerrorenum = 22
-	// wrong_etag
-	GIoErrorWrongEtag Ioerrorenum = 23
-	// timed_out
-	GIoErrorTimedOut Ioerrorenum = 24
-	// would_recurse
-	GIoErrorWouldRecurse Ioerrorenum = 25
-	// busy
-	GIoErrorBusy Ioerrorenum = 26
-	// would_block
-	GIoErrorWouldBlock Ioerrorenum = 27
-	// host_not_found
-	GIoErrorHostNotFound Ioerrorenum = 28
-	// would_merge
-	GIoErrorWouldMerge Ioerrorenum = 29
-	// failed_handled
-	GIoErrorFailedHandled Ioerrorenum = 30
-	// too_many_open_files
-	GIoErrorTooManyOpenFiles Ioerrorenum = 31
-	// not_initialized
-	GIoErrorNotInitialized Ioerrorenum = 32
-	// address_in_use
-	GIoErrorAddressInUse Ioerrorenum = 33
-	// partial_input
-	GIoErrorPartialInput Ioerrorenum = 34
-	// invalid_data
-	GIoErrorInvalidData Ioerrorenum = 35
-	// dbus_error
-	GIoErrorDbusError Ioerrorenum = 36
-	// host_unreachable
-	GIoErrorHostUnreachable Ioerrorenum = 37
-	// network_unreachable
-	GIoErrorNetworkUnreachable Ioerrorenum = 38
-	// connection_refused
-	GIoErrorConnectionRefused Ioerrorenum = 39
-	// proxy_failed
-	GIoErrorProxyFailed Ioerrorenum = 40
-	// proxy_auth_failed
-	GIoErrorProxyAuthFailed Ioerrorenum = 41
-	// proxy_need_auth
-	GIoErrorProxyNeedAuth Ioerrorenum = 42
-	// proxy_not_allowed
-	GIoErrorProxyNotAllowed Ioerrorenum = 43
-	// broken_pipe
-	GIoErrorBrokenPipe Ioerrorenum = 44
-	// connection_closed
-	GIoErrorConnectionClosed Ioerrorenum = 44
-	// not_connected
-	GIoErrorNotConnected Ioerrorenum = 45
-	// message_too_large
-	GIoErrorMessageTooLarge Ioerrorenum = 46
+	Ioerrorenum_Failed             Ioerrorenum = 0
+	Ioerrorenum_NotFound           Ioerrorenum = 1
+	Ioerrorenum_Exists             Ioerrorenum = 2
+	Ioerrorenum_IsDirectory        Ioerrorenum = 3
+	Ioerrorenum_NotDirectory       Ioerrorenum = 4
+	Ioerrorenum_NotEmpty           Ioerrorenum = 5
+	Ioerrorenum_NotRegularFile     Ioerrorenum = 6
+	Ioerrorenum_NotSymbolicLink    Ioerrorenum = 7
+	Ioerrorenum_NotMountableFile   Ioerrorenum = 8
+	Ioerrorenum_FilenameTooLong    Ioerrorenum = 9
+	Ioerrorenum_InvalidFilename    Ioerrorenum = 10
+	Ioerrorenum_TooManyLinks       Ioerrorenum = 11
+	Ioerrorenum_NoSpace            Ioerrorenum = 12
+	Ioerrorenum_InvalidArgument    Ioerrorenum = 13
+	Ioerrorenum_PermissionDenied   Ioerrorenum = 14
+	Ioerrorenum_NotSupported       Ioerrorenum = 15
+	Ioerrorenum_NotMounted         Ioerrorenum = 16
+	Ioerrorenum_AlreadyMounted     Ioerrorenum = 17
+	Ioerrorenum_Closed             Ioerrorenum = 18
+	Ioerrorenum_Cancelled          Ioerrorenum = 19
+	Ioerrorenum_Pending            Ioerrorenum = 20
+	Ioerrorenum_ReadOnly           Ioerrorenum = 21
+	Ioerrorenum_CantCreateBackup   Ioerrorenum = 22
+	Ioerrorenum_WrongEtag          Ioerrorenum = 23
+	Ioerrorenum_TimedOut           Ioerrorenum = 24
+	Ioerrorenum_WouldRecurse       Ioerrorenum = 25
+	Ioerrorenum_Busy               Ioerrorenum = 26
+	Ioerrorenum_WouldBlock         Ioerrorenum = 27
+	Ioerrorenum_HostNotFound       Ioerrorenum = 28
+	Ioerrorenum_WouldMerge         Ioerrorenum = 29
+	Ioerrorenum_FailedHandled      Ioerrorenum = 30
+	Ioerrorenum_TooManyOpenFiles   Ioerrorenum = 31
+	Ioerrorenum_NotInitialized     Ioerrorenum = 32
+	Ioerrorenum_AddressInUse       Ioerrorenum = 33
+	Ioerrorenum_PartialInput       Ioerrorenum = 34
+	Ioerrorenum_InvalidData        Ioerrorenum = 35
+	Ioerrorenum_DbusError          Ioerrorenum = 36
+	Ioerrorenum_HostUnreachable    Ioerrorenum = 37
+	Ioerrorenum_NetworkUnreachable Ioerrorenum = 38
+	Ioerrorenum_ConnectionRefused  Ioerrorenum = 39
+	Ioerrorenum_ProxyFailed        Ioerrorenum = 40
+	Ioerrorenum_ProxyAuthFailed    Ioerrorenum = 41
+	Ioerrorenum_ProxyNeedAuth      Ioerrorenum = 42
+	Ioerrorenum_ProxyNotAllowed    Ioerrorenum = 43
+	Ioerrorenum_BrokenPipe         Ioerrorenum = 44
+	Ioerrorenum_ConnectionClosed   Ioerrorenum = 44
+	Ioerrorenum_NotConnected       Ioerrorenum = 45
+	Ioerrorenum_MessageTooLarge    Ioerrorenum = 46
 )
 
 // Iomodulescopeflags is a representation of the C type IOModuleScopeFlags.
@@ -476,22 +302,17 @@ const (
 type Iomodulescopeflags int
 
 const (
-	// none
-	GIoModuleScopeNone Iomodulescopeflags = 0
-	// block_duplicates
-	GIoModuleScopeBlockDuplicates Iomodulescopeflags = 1
+	Iomodulescopeflags_None            Iomodulescopeflags = 0
+	Iomodulescopeflags_BlockDuplicates Iomodulescopeflags = 1
 )
 
 // Mountoperationresult is a representation of the C type MountOperationResult.
 type Mountoperationresult int
 
 const (
-	// handled
-	GMountOperationHandled Mountoperationresult = 0
-	// aborted
-	GMountOperationAborted Mountoperationresult = 1
-	// unhandled
-	GMountOperationUnhandled Mountoperationresult = 2
+	Mountoperationresult_Handled   Mountoperationresult = 0
+	Mountoperationresult_Aborted   Mountoperationresult = 1
+	Mountoperationresult_Unhandled Mountoperationresult = 2
 )
 
 // Networkconnectivity is a representation of the C type NetworkConnectivity.
@@ -500,14 +321,10 @@ const (
 type Networkconnectivity int
 
 const (
-	// local
-	GNetworkConnectivityLocal Networkconnectivity = 1
-	// limited
-	GNetworkConnectivityLimited Networkconnectivity = 2
-	// portal
-	GNetworkConnectivityPortal Networkconnectivity = 3
-	// full
-	GNetworkConnectivityFull Networkconnectivity = 4
+	Networkconnectivity_Local   Networkconnectivity = 1
+	Networkconnectivity_Limited Networkconnectivity = 2
+	Networkconnectivity_Portal  Networkconnectivity = 3
+	Networkconnectivity_Full    Networkconnectivity = 4
 )
 
 // Notificationpriority is a representation of the C type NotificationPriority.
@@ -516,26 +333,19 @@ const (
 type Notificationpriority int
 
 const (
-	// normal
-	GNotificationPriorityNormal Notificationpriority = 0
-	// low
-	GNotificationPriorityLow Notificationpriority = 1
-	// high
-	GNotificationPriorityHigh Notificationpriority = 2
-	// urgent
-	GNotificationPriorityUrgent Notificationpriority = 3
+	Notificationpriority_Normal Notificationpriority = 0
+	Notificationpriority_Low    Notificationpriority = 1
+	Notificationpriority_High   Notificationpriority = 2
+	Notificationpriority_Urgent Notificationpriority = 3
 )
 
 // Passwordsave is a representation of the C type PasswordSave.
 type Passwordsave int
 
 const (
-	// never
-	GPasswordSaveNever Passwordsave = 0
-	// for_session
-	GPasswordSaveForSession Passwordsave = 1
-	// permanently
-	GPasswordSavePermanently Passwordsave = 2
+	Passwordsave_Never       Passwordsave = 0
+	Passwordsave_ForSession  Passwordsave = 1
+	Passwordsave_Permanently Passwordsave = 2
 )
 
 // Resolvererror is a representation of the C type ResolverError.
@@ -544,12 +354,9 @@ const (
 type Resolvererror int
 
 const (
-	// not_found
-	GResolverErrorNotFound Resolvererror = 0
-	// temporary_failure
-	GResolverErrorTemporaryFailure Resolvererror = 1
-	// internal
-	GResolverErrorInternal Resolvererror = 2
+	Resolvererror_NotFound         Resolvererror = 0
+	Resolvererror_TemporaryFailure Resolvererror = 1
+	Resolvererror_Internal         Resolvererror = 2
 )
 
 // Resolverrecordtype is a representation of the C type ResolverRecordType.
@@ -558,16 +365,11 @@ const (
 type Resolverrecordtype int
 
 const (
-	// srv
-	GResolverRecordSrv Resolverrecordtype = 1
-	// mx
-	GResolverRecordMx Resolverrecordtype = 2
-	// txt
-	GResolverRecordTxt Resolverrecordtype = 3
-	// soa
-	GResolverRecordSoa Resolverrecordtype = 4
-	// ns
-	GResolverRecordNs Resolverrecordtype = 5
+	Resolverrecordtype_Srv Resolverrecordtype = 1
+	Resolverrecordtype_Mx  Resolverrecordtype = 2
+	Resolverrecordtype_Txt Resolverrecordtype = 3
+	Resolverrecordtype_Soa Resolverrecordtype = 4
+	Resolverrecordtype_Ns  Resolverrecordtype = 5
 )
 
 // Resourceerror is a representation of the C type ResourceError.
@@ -576,10 +378,8 @@ const (
 type Resourceerror int
 
 const (
-	// not_found
-	GResourceErrorNotFound Resourceerror = 0
-	// internal
-	GResourceErrorInternal Resourceerror = 1
+	Resourceerror_NotFound Resourceerror = 0
+	Resourceerror_Internal Resourceerror = 1
 )
 
 // Socketclientevent is a representation of the C type SocketClientEvent.
@@ -588,24 +388,15 @@ const (
 type Socketclientevent int
 
 const (
-	// resolving
-	GSocketClientResolving Socketclientevent = 0
-	// resolved
-	GSocketClientResolved Socketclientevent = 1
-	// connecting
-	GSocketClientConnecting Socketclientevent = 2
-	// connected
-	GSocketClientConnected Socketclientevent = 3
-	// proxy_negotiating
-	GSocketClientProxyNegotiating Socketclientevent = 4
-	// proxy_negotiated
-	GSocketClientProxyNegotiated Socketclientevent = 5
-	// tls_handshaking
-	GSocketClientTlsHandshaking Socketclientevent = 6
-	// tls_handshaked
-	GSocketClientTlsHandshaked Socketclientevent = 7
-	// complete
-	GSocketClientComplete Socketclientevent = 8
+	Socketclientevent_Resolving        Socketclientevent = 0
+	Socketclientevent_Resolved         Socketclientevent = 1
+	Socketclientevent_Connecting       Socketclientevent = 2
+	Socketclientevent_Connected        Socketclientevent = 3
+	Socketclientevent_ProxyNegotiating Socketclientevent = 4
+	Socketclientevent_ProxyNegotiated  Socketclientevent = 5
+	Socketclientevent_TlsHandshaking   Socketclientevent = 6
+	Socketclientevent_TlsHandshaked    Socketclientevent = 7
+	Socketclientevent_Complete         Socketclientevent = 8
 )
 
 // Socketfamily is a representation of the C type SocketFamily.
@@ -614,14 +405,10 @@ const (
 type Socketfamily int
 
 const (
-	// invalid
-	GSocketFamilyInvalid Socketfamily = 0
-	// unix
-	GSocketFamilyUnix Socketfamily = 1
-	// ipv4
-	GSocketFamilyIpv4 Socketfamily = 2
-	// ipv6
-	GSocketFamilyIpv6 Socketfamily = 10
+	Socketfamily_Invalid Socketfamily = 0
+	Socketfamily_Unix    Socketfamily = 1
+	Socketfamily_Ipv4    Socketfamily = 2
+	Socketfamily_Ipv6    Socketfamily = 10
 )
 
 // Socketlistenerevent is a representation of the C type SocketListenerEvent.
@@ -630,14 +417,10 @@ const (
 type Socketlistenerevent int
 
 const (
-	// binding
-	GSocketListenerBinding Socketlistenerevent = 0
-	// bound
-	GSocketListenerBound Socketlistenerevent = 1
-	// listening
-	GSocketListenerListening Socketlistenerevent = 2
-	// listened
-	GSocketListenerListened Socketlistenerevent = 3
+	Socketlistenerevent_Binding   Socketlistenerevent = 0
+	Socketlistenerevent_Bound     Socketlistenerevent = 1
+	Socketlistenerevent_Listening Socketlistenerevent = 2
+	Socketlistenerevent_Listened  Socketlistenerevent = 3
 )
 
 // Socketprotocol is a representation of the C type SocketProtocol.
@@ -646,16 +429,11 @@ const (
 type Socketprotocol int
 
 const (
-	// unknown
-	GSocketProtocolUnknown Socketprotocol = -1
-	// default
-	GSocketProtocolDefault Socketprotocol = 0
-	// tcp
-	GSocketProtocolTcp Socketprotocol = 6
-	// udp
-	GSocketProtocolUdp Socketprotocol = 17
-	// sctp
-	GSocketProtocolSctp Socketprotocol = 132
+	Socketprotocol_Unknown Socketprotocol = -1
+	Socketprotocol_Default Socketprotocol = 0
+	Socketprotocol_Tcp     Socketprotocol = 6
+	Socketprotocol_Udp     Socketprotocol = 17
+	Socketprotocol_Sctp    Socketprotocol = 132
 )
 
 // Sockettype is a representation of the C type SocketType.
@@ -664,14 +442,10 @@ const (
 type Sockettype int
 
 const (
-	// invalid
-	GSocketTypeInvalid Sockettype = 0
-	// stream
-	GSocketTypeStream Sockettype = 1
-	// datagram
-	GSocketTypeDatagram Sockettype = 2
-	// seqpacket
-	GSocketTypeSeqpacket Sockettype = 3
+	Sockettype_Invalid   Sockettype = 0
+	Sockettype_Stream    Sockettype = 1
+	Sockettype_Datagram  Sockettype = 2
+	Sockettype_Seqpacket Sockettype = 3
 )
 
 // Tlsauthenticationmode is a representation of the C type TlsAuthenticationMode.
@@ -680,12 +454,9 @@ const (
 type Tlsauthenticationmode int
 
 const (
-	// none
-	GTlsAuthenticationNone Tlsauthenticationmode = 0
-	// requested
-	GTlsAuthenticationRequested Tlsauthenticationmode = 1
-	// required
-	GTlsAuthenticationRequired Tlsauthenticationmode = 2
+	Tlsauthenticationmode_None      Tlsauthenticationmode = 0
+	Tlsauthenticationmode_Requested Tlsauthenticationmode = 1
+	Tlsauthenticationmode_Required  Tlsauthenticationmode = 2
 )
 
 // Tlscertificaterequestflags is a representation of the C type TlsCertificateRequestFlags.
@@ -694,8 +465,7 @@ const (
 type Tlscertificaterequestflags int
 
 const (
-	// none
-	GTlsCertificateRequestNone Tlscertificaterequestflags = 0
+	Tlscertificaterequestflags_None Tlscertificaterequestflags = 0
 )
 
 // Tlsdatabaselookupflags is a representation of the C type TlsDatabaseLookupFlags.
@@ -704,10 +474,8 @@ const (
 type Tlsdatabaselookupflags int
 
 const (
-	// none
-	GTlsDatabaseLookupNone Tlsdatabaselookupflags = 0
-	// keypair
-	GTlsDatabaseLookupKeypair Tlsdatabaselookupflags = 1
+	Tlsdatabaselookupflags_None    Tlsdatabaselookupflags = 0
+	Tlsdatabaselookupflags_Keypair Tlsdatabaselookupflags = 1
 )
 
 // Tlserror is a representation of the C type TlsError.
@@ -716,20 +484,13 @@ const (
 type Tlserror int
 
 const (
-	// unavailable
-	GTlsErrorUnavailable Tlserror = 0
-	// misc
-	GTlsErrorMisc Tlserror = 1
-	// bad_certificate
-	GTlsErrorBadCertificate Tlserror = 2
-	// not_tls
-	GTlsErrorNotTls Tlserror = 3
-	// handshake
-	GTlsErrorHandshake Tlserror = 4
-	// certificate_required
-	GTlsErrorCertificateRequired Tlserror = 5
-	// eof
-	GTlsErrorEof Tlserror = 6
+	Tlserror_Unavailable         Tlserror = 0
+	Tlserror_Misc                Tlserror = 1
+	Tlserror_BadCertificate      Tlserror = 2
+	Tlserror_NotTls              Tlserror = 3
+	Tlserror_Handshake           Tlserror = 4
+	Tlserror_CertificateRequired Tlserror = 5
+	Tlserror_Eof                 Tlserror = 6
 )
 
 // Tlsinteractionresult is a representation of the C type TlsInteractionResult.
@@ -738,12 +499,9 @@ const (
 type Tlsinteractionresult int
 
 const (
-	// unhandled
-	GTlsInteractionUnhandled Tlsinteractionresult = 0
-	// handled
-	GTlsInteractionHandled Tlsinteractionresult = 1
-	// failed
-	GTlsInteractionFailed Tlsinteractionresult = 2
+	Tlsinteractionresult_Unhandled Tlsinteractionresult = 0
+	Tlsinteractionresult_Handled   Tlsinteractionresult = 1
+	Tlsinteractionresult_Failed    Tlsinteractionresult = 2
 )
 
 // Tlsrehandshakemode is a representation of the C type TlsRehandshakeMode.
@@ -752,12 +510,9 @@ const (
 type Tlsrehandshakemode int
 
 const (
-	// never
-	GTlsRehandshakeNever Tlsrehandshakemode = 0
-	// safely
-	GTlsRehandshakeSafely Tlsrehandshakemode = 1
-	// unsafely
-	GTlsRehandshakeUnsafely Tlsrehandshakemode = 2
+	Tlsrehandshakemode_Never    Tlsrehandshakemode = 0
+	Tlsrehandshakemode_Safely   Tlsrehandshakemode = 1
+	Tlsrehandshakemode_Unsafely Tlsrehandshakemode = 2
 )
 
 // Unixsocketaddresstype is a representation of the C type UnixSocketAddressType.
@@ -766,16 +521,11 @@ const (
 type Unixsocketaddresstype int
 
 const (
-	// invalid
-	GUnixSocketAddressInvalid Unixsocketaddresstype = 0
-	// anonymous
-	GUnixSocketAddressAnonymous Unixsocketaddresstype = 1
-	// path
-	GUnixSocketAddressPath Unixsocketaddresstype = 2
-	// abstract
-	GUnixSocketAddressAbstract Unixsocketaddresstype = 3
-	// abstract_padded
-	GUnixSocketAddressAbstractPadded Unixsocketaddresstype = 4
+	Unixsocketaddresstype_Invalid        Unixsocketaddresstype = 0
+	Unixsocketaddresstype_Anonymous      Unixsocketaddresstype = 1
+	Unixsocketaddresstype_Path           Unixsocketaddresstype = 2
+	Unixsocketaddresstype_Abstract       Unixsocketaddresstype = 3
+	Unixsocketaddresstype_AbstractPadded Unixsocketaddresstype = 4
 )
 
 // Zlibcompressorformat is a representation of the C type ZlibCompressorFormat.
@@ -784,10 +534,7 @@ const (
 type Zlibcompressorformat int
 
 const (
-	// zlib
-	GZlibCompressorFormatZlib Zlibcompressorformat = 0
-	// gzip
-	GZlibCompressorFormatGzip Zlibcompressorformat = 1
-	// raw
-	GZlibCompressorFormatRaw Zlibcompressorformat = 2
+	Zlibcompressorformat_Zlib Zlibcompressorformat = 0
+	Zlibcompressorformat_Gzip Zlibcompressorformat = 1
+	Zlibcompressorformat_Raw  Zlibcompressorformat = 2
 )

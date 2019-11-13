@@ -14,13 +14,15 @@ type Enumeration struct {
 	//Doc          *Doc      `xml:"doc"`
 	//Functions Functions `xml:"function"`
 
-	namespace  *Namespace
-	goTypeName string
+	namespace      *Namespace
+	goTypeName     string
+	goMemberPrefix string
 }
 
 func (e *Enumeration) init(ns *Namespace) {
 	e.namespace = ns
 	e.goTypeName = makeExportedGoName(e.Name)
+	e.goMemberPrefix = e.goTypeName
 
 	for _, member := range e.Members {
 		member.init(ns)
@@ -42,8 +44,7 @@ func (e *Enumeration) generate(f *file) {
 		Const().
 		DefsFunc(func(g *jen.Group) {
 			for _, member := range e.Members {
-				g.Commentf("// %s", member.Name)
-				member.generate(g, e.goTypeName)
+				member.generate(g, e.goTypeName, e.goMemberPrefix)
 			}
 		})
 }

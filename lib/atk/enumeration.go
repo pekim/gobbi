@@ -6,592 +6,328 @@ package atk
 type Coordtype int
 
 const (
-	// screen
-	AtkXyScreen Coordtype = 0
-	// window
-	AtkXyWindow Coordtype = 1
+	Coordtype_Screen Coordtype = 0
+	Coordtype_Window Coordtype = 1
 )
 
 // Keyeventtype is a representation of the C type KeyEventType.
 type Keyeventtype int
 
 const (
-	// press
-	AtkKeyEventPress Keyeventtype = 0
-	// release
-	AtkKeyEventRelease Keyeventtype = 1
-	// last_defined
-	AtkKeyEventLastDefined Keyeventtype = 2
+	Keyeventtype_Press       Keyeventtype = 0
+	Keyeventtype_Release     Keyeventtype = 1
+	Keyeventtype_LastDefined Keyeventtype = 2
 )
 
 // Layer is a representation of the C type Layer.
 type Layer int
 
 const (
-	// invalid
-	AtkLayerInvalid Layer = 0
-	// background
-	AtkLayerBackground Layer = 1
-	// canvas
-	AtkLayerCanvas Layer = 2
-	// widget
-	AtkLayerWidget Layer = 3
-	// mdi
-	AtkLayerMdi Layer = 4
-	// popup
-	AtkLayerPopup Layer = 5
-	// overlay
-	AtkLayerOverlay Layer = 6
-	// window
-	AtkLayerWindow Layer = 7
+	Layer_Invalid    Layer = 0
+	Layer_Background Layer = 1
+	Layer_Canvas     Layer = 2
+	Layer_Widget     Layer = 3
+	Layer_Mdi        Layer = 4
+	Layer_Popup      Layer = 5
+	Layer_Overlay    Layer = 6
+	Layer_Window     Layer = 7
 )
 
 // Relationtype is a representation of the C type RelationType.
 type Relationtype int
 
 const (
-	// null
-	AtkRelationNull Relationtype = 0
-	// controlled_by
-	AtkRelationControlledBy Relationtype = 1
-	// controller_for
-	AtkRelationControllerFor Relationtype = 2
-	// label_for
-	AtkRelationLabelFor Relationtype = 3
-	// labelled_by
-	AtkRelationLabelledBy Relationtype = 4
-	// member_of
-	AtkRelationMemberOf Relationtype = 5
-	// node_child_of
-	AtkRelationNodeChildOf Relationtype = 6
-	// flows_to
-	AtkRelationFlowsTo Relationtype = 7
-	// flows_from
-	AtkRelationFlowsFrom Relationtype = 8
-	// subwindow_of
-	AtkRelationSubwindowOf Relationtype = 9
-	// embeds
-	AtkRelationEmbeds Relationtype = 10
-	// embedded_by
-	AtkRelationEmbeddedBy Relationtype = 11
-	// popup_for
-	AtkRelationPopupFor Relationtype = 12
-	// parent_window_of
-	AtkRelationParentWindowOf Relationtype = 13
-	// described_by
-	AtkRelationDescribedBy Relationtype = 14
-	// description_for
-	AtkRelationDescriptionFor Relationtype = 15
-	// node_parent_of
-	AtkRelationNodeParentOf Relationtype = 16
-	// details
-	AtkRelationDetails Relationtype = 17
-	// details_for
-	AtkRelationDetailsFor Relationtype = 18
-	// error_message
-	AtkRelationErrorMessage Relationtype = 19
-	// error_for
-	AtkRelationErrorFor Relationtype = 20
-	// last_defined
-	AtkRelationLastDefined Relationtype = 21
+	Relationtype_Null           Relationtype = 0
+	Relationtype_ControlledBy   Relationtype = 1
+	Relationtype_ControllerFor  Relationtype = 2
+	Relationtype_LabelFor       Relationtype = 3
+	Relationtype_LabelledBy     Relationtype = 4
+	Relationtype_MemberOf       Relationtype = 5
+	Relationtype_NodeChildOf    Relationtype = 6
+	Relationtype_FlowsTo        Relationtype = 7
+	Relationtype_FlowsFrom      Relationtype = 8
+	Relationtype_SubwindowOf    Relationtype = 9
+	Relationtype_Embeds         Relationtype = 10
+	Relationtype_EmbeddedBy     Relationtype = 11
+	Relationtype_PopupFor       Relationtype = 12
+	Relationtype_ParentWindowOf Relationtype = 13
+	Relationtype_DescribedBy    Relationtype = 14
+	Relationtype_DescriptionFor Relationtype = 15
+	Relationtype_NodeParentOf   Relationtype = 16
+	Relationtype_Details        Relationtype = 17
+	Relationtype_DetailsFor     Relationtype = 18
+	Relationtype_ErrorMessage   Relationtype = 19
+	Relationtype_ErrorFor       Relationtype = 20
+	Relationtype_LastDefined    Relationtype = 21
 )
 
 // Role is a representation of the C type Role.
 type Role int
 
 const (
-	// invalid
-	AtkRoleInvalid Role = 0
-	// accelerator_label
-	AtkRoleAccelLabel Role = 1
-	// alert
-	AtkRoleAlert Role = 2
-	// animation
-	AtkRoleAnimation Role = 3
-	// arrow
-	AtkRoleArrow Role = 4
-	// calendar
-	AtkRoleCalendar Role = 5
-	// canvas
-	AtkRoleCanvas Role = 6
-	// check_box
-	AtkRoleCheckBox Role = 7
-	// check_menu_item
-	AtkRoleCheckMenuItem Role = 8
-	// color_chooser
-	AtkRoleColorChooser Role = 9
-	// column_header
-	AtkRoleColumnHeader Role = 10
-	// combo_box
-	AtkRoleComboBox Role = 11
-	// date_editor
-	AtkRoleDateEditor Role = 12
-	// desktop_icon
-	AtkRoleDesktopIcon Role = 13
-	// desktop_frame
-	AtkRoleDesktopFrame Role = 14
-	// dial
-	AtkRoleDial Role = 15
-	// dialog
-	AtkRoleDialog Role = 16
-	// directory_pane
-	AtkRoleDirectoryPane Role = 17
-	// drawing_area
-	AtkRoleDrawingArea Role = 18
-	// file_chooser
-	AtkRoleFileChooser Role = 19
-	// filler
-	AtkRoleFiller Role = 20
-	// font_chooser
-	AtkRoleFontChooser Role = 21
-	// frame
-	AtkRoleFrame Role = 22
-	// glass_pane
-	AtkRoleGlassPane Role = 23
-	// html_container
-	AtkRoleHtmlContainer Role = 24
-	// icon
-	AtkRoleIcon Role = 25
-	// image
-	AtkRoleImage Role = 26
-	// internal_frame
-	AtkRoleInternalFrame Role = 27
-	// label
-	AtkRoleLabel Role = 28
-	// layered_pane
-	AtkRoleLayeredPane Role = 29
-	// list
-	AtkRoleList Role = 30
-	// list_item
-	AtkRoleListItem Role = 31
-	// menu
-	AtkRoleMenu Role = 32
-	// menu_bar
-	AtkRoleMenuBar Role = 33
-	// menu_item
-	AtkRoleMenuItem Role = 34
-	// option_pane
-	AtkRoleOptionPane Role = 35
-	// page_tab
-	AtkRolePageTab Role = 36
-	// page_tab_list
-	AtkRolePageTabList Role = 37
-	// panel
-	AtkRolePanel Role = 38
-	// password_text
-	AtkRolePasswordText Role = 39
-	// popup_menu
-	AtkRolePopupMenu Role = 40
-	// progress_bar
-	AtkRoleProgressBar Role = 41
-	// push_button
-	AtkRolePushButton Role = 42
-	// radio_button
-	AtkRoleRadioButton Role = 43
-	// radio_menu_item
-	AtkRoleRadioMenuItem Role = 44
-	// root_pane
-	AtkRoleRootPane Role = 45
-	// row_header
-	AtkRoleRowHeader Role = 46
-	// scroll_bar
-	AtkRoleScrollBar Role = 47
-	// scroll_pane
-	AtkRoleScrollPane Role = 48
-	// separator
-	AtkRoleSeparator Role = 49
-	// slider
-	AtkRoleSlider Role = 50
-	// split_pane
-	AtkRoleSplitPane Role = 51
-	// spin_button
-	AtkRoleSpinButton Role = 52
-	// statusbar
-	AtkRoleStatusbar Role = 53
-	// table
-	AtkRoleTable Role = 54
-	// table_cell
-	AtkRoleTableCell Role = 55
-	// table_column_header
-	AtkRoleTableColumnHeader Role = 56
-	// table_row_header
-	AtkRoleTableRowHeader Role = 57
-	// tear_off_menu_item
-	AtkRoleTearOffMenuItem Role = 58
-	// terminal
-	AtkRoleTerminal Role = 59
-	// text
-	AtkRoleText Role = 60
-	// toggle_button
-	AtkRoleToggleButton Role = 61
-	// tool_bar
-	AtkRoleToolBar Role = 62
-	// tool_tip
-	AtkRoleToolTip Role = 63
-	// tree
-	AtkRoleTree Role = 64
-	// tree_table
-	AtkRoleTreeTable Role = 65
-	// unknown
-	AtkRoleUnknown Role = 66
-	// viewport
-	AtkRoleViewport Role = 67
-	// window
-	AtkRoleWindow Role = 68
-	// header
-	AtkRoleHeader Role = 69
-	// footer
-	AtkRoleFooter Role = 70
-	// paragraph
-	AtkRoleParagraph Role = 71
-	// ruler
-	AtkRoleRuler Role = 72
-	// application
-	AtkRoleApplication Role = 73
-	// autocomplete
-	AtkRoleAutocomplete Role = 74
-	// edit_bar
-	AtkRoleEditbar Role = 75
-	// embedded
-	AtkRoleEmbedded Role = 76
-	// entry
-	AtkRoleEntry Role = 77
-	// chart
-	AtkRoleChart Role = 78
-	// caption
-	AtkRoleCaption Role = 79
-	// document_frame
-	AtkRoleDocumentFrame Role = 80
-	// heading
-	AtkRoleHeading Role = 81
-	// page
-	AtkRolePage Role = 82
-	// section
-	AtkRoleSection Role = 83
-	// redundant_object
-	AtkRoleRedundantObject Role = 84
-	// form
-	AtkRoleForm Role = 85
-	// link
-	AtkRoleLink Role = 86
-	// input_method_window
-	AtkRoleInputMethodWindow Role = 87
-	// table_row
-	AtkRoleTableRow Role = 88
-	// tree_item
-	AtkRoleTreeItem Role = 89
-	// document_spreadsheet
-	AtkRoleDocumentSpreadsheet Role = 90
-	// document_presentation
-	AtkRoleDocumentPresentation Role = 91
-	// document_text
-	AtkRoleDocumentText Role = 92
-	// document_web
-	AtkRoleDocumentWeb Role = 93
-	// document_email
-	AtkRoleDocumentEmail Role = 94
-	// comment
-	AtkRoleComment Role = 95
-	// list_box
-	AtkRoleListBox Role = 96
-	// grouping
-	AtkRoleGrouping Role = 97
-	// image_map
-	AtkRoleImageMap Role = 98
-	// notification
-	AtkRoleNotification Role = 99
-	// info_bar
-	AtkRoleInfoBar Role = 100
-	// level_bar
-	AtkRoleLevelBar Role = 101
-	// title_bar
-	AtkRoleTitleBar Role = 102
-	// block_quote
-	AtkRoleBlockQuote Role = 103
-	// audio
-	AtkRoleAudio Role = 104
-	// video
-	AtkRoleVideo Role = 105
-	// definition
-	AtkRoleDefinition Role = 106
-	// article
-	AtkRoleArticle Role = 107
-	// landmark
-	AtkRoleLandmark Role = 108
-	// log
-	AtkRoleLog Role = 109
-	// marquee
-	AtkRoleMarquee Role = 110
-	// math
-	AtkRoleMath Role = 111
-	// rating
-	AtkRoleRating Role = 112
-	// timer
-	AtkRoleTimer Role = 113
-	// description_list
-	AtkRoleDescriptionList Role = 114
-	// description_term
-	AtkRoleDescriptionTerm Role = 115
-	// description_value
-	AtkRoleDescriptionValue Role = 116
-	// static
-	AtkRoleStatic Role = 117
-	// math_fraction
-	AtkRoleMathFraction Role = 118
-	// math_root
-	AtkRoleMathRoot Role = 119
-	// subscript
-	AtkRoleSubscript Role = 120
-	// superscript
-	AtkRoleSuperscript Role = 121
-	// footnote
-	AtkRoleFootnote Role = 122
-	// last_defined
-	AtkRoleLastDefined Role = 123
+	Role_Invalid              Role = 0
+	Role_AcceleratorLabel     Role = 1
+	Role_Alert                Role = 2
+	Role_Animation            Role = 3
+	Role_Arrow                Role = 4
+	Role_Calendar             Role = 5
+	Role_Canvas               Role = 6
+	Role_CheckBox             Role = 7
+	Role_CheckMenuItem        Role = 8
+	Role_ColorChooser         Role = 9
+	Role_ColumnHeader         Role = 10
+	Role_ComboBox             Role = 11
+	Role_DateEditor           Role = 12
+	Role_DesktopIcon          Role = 13
+	Role_DesktopFrame         Role = 14
+	Role_Dial                 Role = 15
+	Role_Dialog               Role = 16
+	Role_DirectoryPane        Role = 17
+	Role_DrawingArea          Role = 18
+	Role_FileChooser          Role = 19
+	Role_Filler               Role = 20
+	Role_FontChooser          Role = 21
+	Role_Frame                Role = 22
+	Role_GlassPane            Role = 23
+	Role_HtmlContainer        Role = 24
+	Role_Icon                 Role = 25
+	Role_Image                Role = 26
+	Role_InternalFrame        Role = 27
+	Role_Label                Role = 28
+	Role_LayeredPane          Role = 29
+	Role_List                 Role = 30
+	Role_ListItem             Role = 31
+	Role_Menu                 Role = 32
+	Role_MenuBar              Role = 33
+	Role_MenuItem             Role = 34
+	Role_OptionPane           Role = 35
+	Role_PageTab              Role = 36
+	Role_PageTabList          Role = 37
+	Role_Panel                Role = 38
+	Role_PasswordText         Role = 39
+	Role_PopupMenu            Role = 40
+	Role_ProgressBar          Role = 41
+	Role_PushButton           Role = 42
+	Role_RadioButton          Role = 43
+	Role_RadioMenuItem        Role = 44
+	Role_RootPane             Role = 45
+	Role_RowHeader            Role = 46
+	Role_ScrollBar            Role = 47
+	Role_ScrollPane           Role = 48
+	Role_Separator            Role = 49
+	Role_Slider               Role = 50
+	Role_SplitPane            Role = 51
+	Role_SpinButton           Role = 52
+	Role_Statusbar            Role = 53
+	Role_Table                Role = 54
+	Role_TableCell            Role = 55
+	Role_TableColumnHeader    Role = 56
+	Role_TableRowHeader       Role = 57
+	Role_TearOffMenuItem      Role = 58
+	Role_Terminal             Role = 59
+	Role_Text                 Role = 60
+	Role_ToggleButton         Role = 61
+	Role_ToolBar              Role = 62
+	Role_ToolTip              Role = 63
+	Role_Tree                 Role = 64
+	Role_TreeTable            Role = 65
+	Role_Unknown              Role = 66
+	Role_Viewport             Role = 67
+	Role_Window               Role = 68
+	Role_Header               Role = 69
+	Role_Footer               Role = 70
+	Role_Paragraph            Role = 71
+	Role_Ruler                Role = 72
+	Role_Application          Role = 73
+	Role_Autocomplete         Role = 74
+	Role_EditBar              Role = 75
+	Role_Embedded             Role = 76
+	Role_Entry                Role = 77
+	Role_Chart                Role = 78
+	Role_Caption              Role = 79
+	Role_DocumentFrame        Role = 80
+	Role_Heading              Role = 81
+	Role_Page                 Role = 82
+	Role_Section              Role = 83
+	Role_RedundantObject      Role = 84
+	Role_Form                 Role = 85
+	Role_Link                 Role = 86
+	Role_InputMethodWindow    Role = 87
+	Role_TableRow             Role = 88
+	Role_TreeItem             Role = 89
+	Role_DocumentSpreadsheet  Role = 90
+	Role_DocumentPresentation Role = 91
+	Role_DocumentText         Role = 92
+	Role_DocumentWeb          Role = 93
+	Role_DocumentEmail        Role = 94
+	Role_Comment              Role = 95
+	Role_ListBox              Role = 96
+	Role_Grouping             Role = 97
+	Role_ImageMap             Role = 98
+	Role_Notification         Role = 99
+	Role_InfoBar              Role = 100
+	Role_LevelBar             Role = 101
+	Role_TitleBar             Role = 102
+	Role_BlockQuote           Role = 103
+	Role_Audio                Role = 104
+	Role_Video                Role = 105
+	Role_Definition           Role = 106
+	Role_Article              Role = 107
+	Role_Landmark             Role = 108
+	Role_Log                  Role = 109
+	Role_Marquee              Role = 110
+	Role_Math                 Role = 111
+	Role_Rating               Role = 112
+	Role_Timer                Role = 113
+	Role_DescriptionList      Role = 114
+	Role_DescriptionTerm      Role = 115
+	Role_DescriptionValue     Role = 116
+	Role_Static               Role = 117
+	Role_MathFraction         Role = 118
+	Role_MathRoot             Role = 119
+	Role_Subscript            Role = 120
+	Role_Superscript          Role = 121
+	Role_Footnote             Role = 122
+	Role_LastDefined          Role = 123
 )
 
 // Statetype is a representation of the C type StateType.
 type Statetype int
 
 const (
-	// invalid
-	AtkStateInvalid Statetype = 0
-	// active
-	AtkStateActive Statetype = 1
-	// armed
-	AtkStateArmed Statetype = 2
-	// busy
-	AtkStateBusy Statetype = 3
-	// checked
-	AtkStateChecked Statetype = 4
-	// defunct
-	AtkStateDefunct Statetype = 5
-	// editable
-	AtkStateEditable Statetype = 6
-	// enabled
-	AtkStateEnabled Statetype = 7
-	// expandable
-	AtkStateExpandable Statetype = 8
-	// expanded
-	AtkStateExpanded Statetype = 9
-	// focusable
-	AtkStateFocusable Statetype = 10
-	// focused
-	AtkStateFocused Statetype = 11
-	// horizontal
-	AtkStateHorizontal Statetype = 12
-	// iconified
-	AtkStateIconified Statetype = 13
-	// modal
-	AtkStateModal Statetype = 14
-	// multi_line
-	AtkStateMultiLine Statetype = 15
-	// multiselectable
-	AtkStateMultiselectable Statetype = 16
-	// opaque
-	AtkStateOpaque Statetype = 17
-	// pressed
-	AtkStatePressed Statetype = 18
-	// resizable
-	AtkStateResizable Statetype = 19
-	// selectable
-	AtkStateSelectable Statetype = 20
-	// selected
-	AtkStateSelected Statetype = 21
-	// sensitive
-	AtkStateSensitive Statetype = 22
-	// showing
-	AtkStateShowing Statetype = 23
-	// single_line
-	AtkStateSingleLine Statetype = 24
-	// stale
-	AtkStateStale Statetype = 25
-	// transient
-	AtkStateTransient Statetype = 26
-	// vertical
-	AtkStateVertical Statetype = 27
-	// visible
-	AtkStateVisible Statetype = 28
-	// manages_descendants
-	AtkStateManagesDescendants Statetype = 29
-	// indeterminate
-	AtkStateIndeterminate Statetype = 30
-	// truncated
-	AtkStateTruncated Statetype = 31
-	// required
-	AtkStateRequired Statetype = 32
-	// invalid_entry
-	AtkStateInvalidEntry Statetype = 33
-	// supports_autocompletion
-	AtkStateSupportsAutocompletion Statetype = 34
-	// selectable_text
-	AtkStateSelectableText Statetype = 35
-	// default
-	AtkStateDefault Statetype = 36
-	// animated
-	AtkStateAnimated Statetype = 37
-	// visited
-	AtkStateVisited Statetype = 38
-	// checkable
-	AtkStateCheckable Statetype = 39
-	// has_popup
-	AtkStateHasPopup Statetype = 40
-	// has_tooltip
-	AtkStateHasTooltip Statetype = 41
-	// read_only
-	AtkStateReadOnly Statetype = 42
-	// last_defined
-	AtkStateLastDefined Statetype = 43
+	Statetype_Invalid                Statetype = 0
+	Statetype_Active                 Statetype = 1
+	Statetype_Armed                  Statetype = 2
+	Statetype_Busy                   Statetype = 3
+	Statetype_Checked                Statetype = 4
+	Statetype_Defunct                Statetype = 5
+	Statetype_Editable               Statetype = 6
+	Statetype_Enabled                Statetype = 7
+	Statetype_Expandable             Statetype = 8
+	Statetype_Expanded               Statetype = 9
+	Statetype_Focusable              Statetype = 10
+	Statetype_Focused                Statetype = 11
+	Statetype_Horizontal             Statetype = 12
+	Statetype_Iconified              Statetype = 13
+	Statetype_Modal                  Statetype = 14
+	Statetype_MultiLine              Statetype = 15
+	Statetype_Multiselectable        Statetype = 16
+	Statetype_Opaque                 Statetype = 17
+	Statetype_Pressed                Statetype = 18
+	Statetype_Resizable              Statetype = 19
+	Statetype_Selectable             Statetype = 20
+	Statetype_Selected               Statetype = 21
+	Statetype_Sensitive              Statetype = 22
+	Statetype_Showing                Statetype = 23
+	Statetype_SingleLine             Statetype = 24
+	Statetype_Stale                  Statetype = 25
+	Statetype_Transient              Statetype = 26
+	Statetype_Vertical               Statetype = 27
+	Statetype_Visible                Statetype = 28
+	Statetype_ManagesDescendants     Statetype = 29
+	Statetype_Indeterminate          Statetype = 30
+	Statetype_Truncated              Statetype = 31
+	Statetype_Required               Statetype = 32
+	Statetype_InvalidEntry           Statetype = 33
+	Statetype_SupportsAutocompletion Statetype = 34
+	Statetype_SelectableText         Statetype = 35
+	Statetype_Default                Statetype = 36
+	Statetype_Animated               Statetype = 37
+	Statetype_Visited                Statetype = 38
+	Statetype_Checkable              Statetype = 39
+	Statetype_HasPopup               Statetype = 40
+	Statetype_HasTooltip             Statetype = 41
+	Statetype_ReadOnly               Statetype = 42
+	Statetype_LastDefined            Statetype = 43
 )
 
 // Textattribute is a representation of the C type TextAttribute.
 type Textattribute int
 
 const (
-	// invalid
-	AtkTextAttrInvalid Textattribute = 0
-	// left_margin
-	AtkTextAttrLeftMargin Textattribute = 1
-	// right_margin
-	AtkTextAttrRightMargin Textattribute = 2
-	// indent
-	AtkTextAttrIndent Textattribute = 3
-	// invisible
-	AtkTextAttrInvisible Textattribute = 4
-	// editable
-	AtkTextAttrEditable Textattribute = 5
-	// pixels_above_lines
-	AtkTextAttrPixelsAboveLines Textattribute = 6
-	// pixels_below_lines
-	AtkTextAttrPixelsBelowLines Textattribute = 7
-	// pixels_inside_wrap
-	AtkTextAttrPixelsInsideWrap Textattribute = 8
-	// bg_full_height
-	AtkTextAttrBgFullHeight Textattribute = 9
-	// rise
-	AtkTextAttrRise Textattribute = 10
-	// underline
-	AtkTextAttrUnderline Textattribute = 11
-	// strikethrough
-	AtkTextAttrStrikethrough Textattribute = 12
-	// size
-	AtkTextAttrSize Textattribute = 13
-	// scale
-	AtkTextAttrScale Textattribute = 14
-	// weight
-	AtkTextAttrWeight Textattribute = 15
-	// language
-	AtkTextAttrLanguage Textattribute = 16
-	// family_name
-	AtkTextAttrFamilyName Textattribute = 17
-	// bg_color
-	AtkTextAttrBgColor Textattribute = 18
-	// fg_color
-	AtkTextAttrFgColor Textattribute = 19
-	// bg_stipple
-	AtkTextAttrBgStipple Textattribute = 20
-	// fg_stipple
-	AtkTextAttrFgStipple Textattribute = 21
-	// wrap_mode
-	AtkTextAttrWrapMode Textattribute = 22
-	// direction
-	AtkTextAttrDirection Textattribute = 23
-	// justification
-	AtkTextAttrJustification Textattribute = 24
-	// stretch
-	AtkTextAttrStretch Textattribute = 25
-	// variant
-	AtkTextAttrVariant Textattribute = 26
-	// style
-	AtkTextAttrStyle Textattribute = 27
-	// last_defined
-	AtkTextAttrLastDefined Textattribute = 28
+	Textattribute_Invalid          Textattribute = 0
+	Textattribute_LeftMargin       Textattribute = 1
+	Textattribute_RightMargin      Textattribute = 2
+	Textattribute_Indent           Textattribute = 3
+	Textattribute_Invisible        Textattribute = 4
+	Textattribute_Editable         Textattribute = 5
+	Textattribute_PixelsAboveLines Textattribute = 6
+	Textattribute_PixelsBelowLines Textattribute = 7
+	Textattribute_PixelsInsideWrap Textattribute = 8
+	Textattribute_BgFullHeight     Textattribute = 9
+	Textattribute_Rise             Textattribute = 10
+	Textattribute_Underline        Textattribute = 11
+	Textattribute_Strikethrough    Textattribute = 12
+	Textattribute_Size             Textattribute = 13
+	Textattribute_Scale            Textattribute = 14
+	Textattribute_Weight           Textattribute = 15
+	Textattribute_Language         Textattribute = 16
+	Textattribute_FamilyName       Textattribute = 17
+	Textattribute_BgColor          Textattribute = 18
+	Textattribute_FgColor          Textattribute = 19
+	Textattribute_BgStipple        Textattribute = 20
+	Textattribute_FgStipple        Textattribute = 21
+	Textattribute_WrapMode         Textattribute = 22
+	Textattribute_Direction        Textattribute = 23
+	Textattribute_Justification    Textattribute = 24
+	Textattribute_Stretch          Textattribute = 25
+	Textattribute_Variant          Textattribute = 26
+	Textattribute_Style            Textattribute = 27
+	Textattribute_LastDefined      Textattribute = 28
 )
 
 // Textboundary is a representation of the C type TextBoundary.
 type Textboundary int
 
 const (
-	// char
-	AtkTextBoundaryChar Textboundary = 0
-	// word_start
-	AtkTextBoundaryWordStart Textboundary = 1
-	// word_end
-	AtkTextBoundaryWordEnd Textboundary = 2
-	// sentence_start
-	AtkTextBoundarySentenceStart Textboundary = 3
-	// sentence_end
-	AtkTextBoundarySentenceEnd Textboundary = 4
-	// line_start
-	AtkTextBoundaryLineStart Textboundary = 5
-	// line_end
-	AtkTextBoundaryLineEnd Textboundary = 6
+	Textboundary_Char          Textboundary = 0
+	Textboundary_WordStart     Textboundary = 1
+	Textboundary_WordEnd       Textboundary = 2
+	Textboundary_SentenceStart Textboundary = 3
+	Textboundary_SentenceEnd   Textboundary = 4
+	Textboundary_LineStart     Textboundary = 5
+	Textboundary_LineEnd       Textboundary = 6
 )
 
 // Textcliptype is a representation of the C type TextClipType.
 type Textcliptype int
 
 const (
-	// none
-	AtkTextClipNone Textcliptype = 0
-	// min
-	AtkTextClipMin Textcliptype = 1
-	// max
-	AtkTextClipMax Textcliptype = 2
-	// both
-	AtkTextClipBoth Textcliptype = 3
+	Textcliptype_None Textcliptype = 0
+	Textcliptype_Min  Textcliptype = 1
+	Textcliptype_Max  Textcliptype = 2
+	Textcliptype_Both Textcliptype = 3
 )
 
 // Textgranularity is a representation of the C type TextGranularity.
 type Textgranularity int
 
 const (
-	// char
-	AtkTextGranularityChar Textgranularity = 0
-	// word
-	AtkTextGranularityWord Textgranularity = 1
-	// sentence
-	AtkTextGranularitySentence Textgranularity = 2
-	// line
-	AtkTextGranularityLine Textgranularity = 3
-	// paragraph
-	AtkTextGranularityParagraph Textgranularity = 4
+	Textgranularity_Char      Textgranularity = 0
+	Textgranularity_Word      Textgranularity = 1
+	Textgranularity_Sentence  Textgranularity = 2
+	Textgranularity_Line      Textgranularity = 3
+	Textgranularity_Paragraph Textgranularity = 4
 )
 
 // Valuetype is a representation of the C type ValueType.
 type Valuetype int
 
 const (
-	// very_weak
-	AtkValueVeryWeak Valuetype = 0
-	// weak
-	AtkValueWeak Valuetype = 1
-	// acceptable
-	AtkValueAcceptable Valuetype = 2
-	// strong
-	AtkValueStrong Valuetype = 3
-	// very_strong
-	AtkValueVeryStrong Valuetype = 4
-	// very_low
-	AtkValueVeryLow Valuetype = 5
-	// low
-	AtkValueLow Valuetype = 6
-	// medium
-	AtkValueMedium Valuetype = 7
-	// high
-	AtkValueHigh Valuetype = 8
-	// very_high
-	AtkValueVeryHigh Valuetype = 9
-	// very_bad
-	AtkValueVeryBad Valuetype = 10
-	// bad
-	AtkValueBad Valuetype = 11
-	// good
-	AtkValueGood Valuetype = 12
-	// very_good
-	AtkValueVeryGood Valuetype = 13
-	// best
-	AtkValueBest Valuetype = 14
-	// last_defined
-	AtkValueLastDefined Valuetype = 15
+	Valuetype_VeryWeak    Valuetype = 0
+	Valuetype_Weak        Valuetype = 1
+	Valuetype_Acceptable  Valuetype = 2
+	Valuetype_Strong      Valuetype = 3
+	Valuetype_VeryStrong  Valuetype = 4
+	Valuetype_VeryLow     Valuetype = 5
+	Valuetype_Low         Valuetype = 6
+	Valuetype_Medium      Valuetype = 7
+	Valuetype_High        Valuetype = 8
+	Valuetype_VeryHigh    Valuetype = 9
+	Valuetype_VeryBad     Valuetype = 10
+	Valuetype_Bad         Valuetype = 11
+	Valuetype_Good        Valuetype = 12
+	Valuetype_VeryGood    Valuetype = 13
+	Valuetype_Best        Valuetype = 14
+	Valuetype_LastDefined Valuetype = 15
 )

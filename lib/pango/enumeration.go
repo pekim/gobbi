@@ -6,70 +6,41 @@ package pango
 type Alignment int
 
 const (
-	// left
-	PangoAlignLeft Alignment = 0
-	// center
-	PangoAlignCenter Alignment = 1
-	// right
-	PangoAlignRight Alignment = 2
+	Alignment_Left   Alignment = 0
+	Alignment_Center Alignment = 1
+	Alignment_Right  Alignment = 2
 )
 
 // Attrtype is a representation of the C type AttrType.
 type Attrtype int
 
 const (
-	// invalid
-	PangoAttrInvalid Attrtype = 0
-	// language
-	PangoAttrLanguage Attrtype = 1
-	// family
-	PangoAttrFamily Attrtype = 2
-	// style
-	PangoAttrStyle Attrtype = 3
-	// weight
-	PangoAttrWeight Attrtype = 4
-	// variant
-	PangoAttrVariant Attrtype = 5
-	// stretch
-	PangoAttrStretch Attrtype = 6
-	// size
-	PangoAttrSize Attrtype = 7
-	// font_desc
-	PangoAttrFontDesc Attrtype = 8
-	// foreground
-	PangoAttrForeground Attrtype = 9
-	// background
-	PangoAttrBackground Attrtype = 10
-	// underline
-	PangoAttrUnderline Attrtype = 11
-	// strikethrough
-	PangoAttrStrikethrough Attrtype = 12
-	// rise
-	PangoAttrRise Attrtype = 13
-	// shape
-	PangoAttrShape Attrtype = 14
-	// scale
-	PangoAttrScale Attrtype = 15
-	// fallback
-	PangoAttrFallback Attrtype = 16
-	// letter_spacing
-	PangoAttrLetterSpacing Attrtype = 17
-	// underline_color
-	PangoAttrUnderlineColor Attrtype = 18
-	// strikethrough_color
-	PangoAttrStrikethroughColor Attrtype = 19
-	// absolute_size
-	PangoAttrAbsoluteSize Attrtype = 20
-	// gravity
-	PangoAttrGravity Attrtype = 21
-	// gravity_hint
-	PangoAttrGravityHint Attrtype = 22
-	// font_features
-	PangoAttrFontFeatures Attrtype = 23
-	// foreground_alpha
-	PangoAttrForegroundAlpha Attrtype = 24
-	// background_alpha
-	PangoAttrBackgroundAlpha Attrtype = 25
+	Attrtype_Invalid            Attrtype = 0
+	Attrtype_Language           Attrtype = 1
+	Attrtype_Family             Attrtype = 2
+	Attrtype_Style              Attrtype = 3
+	Attrtype_Weight             Attrtype = 4
+	Attrtype_Variant            Attrtype = 5
+	Attrtype_Stretch            Attrtype = 6
+	Attrtype_Size               Attrtype = 7
+	Attrtype_FontDesc           Attrtype = 8
+	Attrtype_Foreground         Attrtype = 9
+	Attrtype_Background         Attrtype = 10
+	Attrtype_Underline          Attrtype = 11
+	Attrtype_Strikethrough      Attrtype = 12
+	Attrtype_Rise               Attrtype = 13
+	Attrtype_Shape              Attrtype = 14
+	Attrtype_Scale              Attrtype = 15
+	Attrtype_Fallback           Attrtype = 16
+	Attrtype_LetterSpacing      Attrtype = 17
+	Attrtype_UnderlineColor     Attrtype = 18
+	Attrtype_StrikethroughColor Attrtype = 19
+	Attrtype_AbsoluteSize       Attrtype = 20
+	Attrtype_Gravity            Attrtype = 21
+	Attrtype_GravityHint        Attrtype = 22
+	Attrtype_FontFeatures       Attrtype = 23
+	Attrtype_ForegroundAlpha    Attrtype = 24
+	Attrtype_BackgroundAlpha    Attrtype = 25
 )
 
 // Biditype is a representation of the C type BidiType.
@@ -78,92 +49,58 @@ const (
 type Biditype int
 
 const (
-	// l
-	PangoBidiTypeL Biditype = 0
-	// lre
-	PangoBidiTypeLre Biditype = 1
-	// lro
-	PangoBidiTypeLro Biditype = 2
-	// r
-	PangoBidiTypeR Biditype = 3
-	// al
-	PangoBidiTypeAl Biditype = 4
-	// rle
-	PangoBidiTypeRle Biditype = 5
-	// rlo
-	PangoBidiTypeRlo Biditype = 6
-	// pdf
-	PangoBidiTypePdf Biditype = 7
-	// en
-	PangoBidiTypeEn Biditype = 8
-	// es
-	PangoBidiTypeEs Biditype = 9
-	// et
-	PangoBidiTypeEt Biditype = 10
-	// an
-	PangoBidiTypeAn Biditype = 11
-	// cs
-	PangoBidiTypeCs Biditype = 12
-	// nsm
-	PangoBidiTypeNsm Biditype = 13
-	// bn
-	PangoBidiTypeBn Biditype = 14
-	// b
-	PangoBidiTypeB Biditype = 15
-	// s
-	PangoBidiTypeS Biditype = 16
-	// ws
-	PangoBidiTypeWs Biditype = 17
-	// on
-	PangoBidiTypeOn Biditype = 18
+	Biditype_L   Biditype = 0
+	Biditype_Lre Biditype = 1
+	Biditype_Lro Biditype = 2
+	Biditype_R   Biditype = 3
+	Biditype_Al  Biditype = 4
+	Biditype_Rle Biditype = 5
+	Biditype_Rlo Biditype = 6
+	Biditype_Pdf Biditype = 7
+	Biditype_En  Biditype = 8
+	Biditype_Es  Biditype = 9
+	Biditype_Et  Biditype = 10
+	Biditype_An  Biditype = 11
+	Biditype_Cs  Biditype = 12
+	Biditype_Nsm Biditype = 13
+	Biditype_Bn  Biditype = 14
+	Biditype_B   Biditype = 15
+	Biditype_S   Biditype = 16
+	Biditype_Ws  Biditype = 17
+	Biditype_On  Biditype = 18
 )
 
 // Coveragelevel is a representation of the C type CoverageLevel.
 type Coveragelevel int
 
 const (
-	// none
-	PangoCoverageNone Coveragelevel = 0
-	// fallback
-	PangoCoverageFallback Coveragelevel = 1
-	// approximate
-	PangoCoverageApproximate Coveragelevel = 2
-	// exact
-	PangoCoverageExact Coveragelevel = 3
+	Coveragelevel_None        Coveragelevel = 0
+	Coveragelevel_Fallback    Coveragelevel = 1
+	Coveragelevel_Approximate Coveragelevel = 2
+	Coveragelevel_Exact       Coveragelevel = 3
 )
 
 // Direction is a representation of the C type Direction.
 type Direction int
 
 const (
-	// ltr
-	PangoDirectionLtr Direction = 0
-	// rtl
-	PangoDirectionRtl Direction = 1
-	// ttb_ltr
-	PangoDirectionTtbLtr Direction = 2
-	// ttb_rtl
-	PangoDirectionTtbRtl Direction = 3
-	// weak_ltr
-	PangoDirectionWeakLtr Direction = 4
-	// weak_rtl
-	PangoDirectionWeakRtl Direction = 5
-	// neutral
-	PangoDirectionNeutral Direction = 6
+	Direction_Ltr     Direction = 0
+	Direction_Rtl     Direction = 1
+	Direction_TtbLtr  Direction = 2
+	Direction_TtbRtl  Direction = 3
+	Direction_WeakLtr Direction = 4
+	Direction_WeakRtl Direction = 5
+	Direction_Neutral Direction = 6
 )
 
 // Ellipsizemode is a representation of the C type EllipsizeMode.
 type Ellipsizemode int
 
 const (
-	// none
-	PangoEllipsizeNone Ellipsizemode = 0
-	// start
-	PangoEllipsizeStart Ellipsizemode = 1
-	// middle
-	PangoEllipsizeMiddle Ellipsizemode = 2
-	// end
-	PangoEllipsizeEnd Ellipsizemode = 3
+	Ellipsizemode_None   Ellipsizemode = 0
+	Ellipsizemode_Start  Ellipsizemode = 1
+	Ellipsizemode_Middle Ellipsizemode = 2
+	Ellipsizemode_End    Ellipsizemode = 3
 )
 
 // Gravity is a representation of the C type Gravity.
@@ -172,16 +109,11 @@ const (
 type Gravity int
 
 const (
-	// south
-	PangoGravitySouth Gravity = 0
-	// east
-	PangoGravityEast Gravity = 1
-	// north
-	PangoGravityNorth Gravity = 2
-	// west
-	PangoGravityWest Gravity = 3
-	// auto
-	PangoGravityAuto Gravity = 4
+	Gravity_South Gravity = 0
+	Gravity_East  Gravity = 1
+	Gravity_North Gravity = 2
+	Gravity_West  Gravity = 3
+	Gravity_Auto  Gravity = 4
 )
 
 // Gravityhint is a representation of the C type GravityHint.
@@ -190,12 +122,9 @@ const (
 type Gravityhint int
 
 const (
-	// natural
-	PangoGravityHintNatural Gravityhint = 0
-	// strong
-	PangoGravityHintStrong Gravityhint = 1
-	// line
-	PangoGravityHintLine Gravityhint = 2
+	Gravityhint_Natural Gravityhint = 0
+	Gravityhint_Strong  Gravityhint = 1
+	Gravityhint_Line    Gravityhint = 2
 )
 
 // Renderpart is a representation of the C type RenderPart.
@@ -204,366 +133,209 @@ const (
 type Renderpart int
 
 const (
-	// foreground
-	PangoRenderPartForeground Renderpart = 0
-	// background
-	PangoRenderPartBackground Renderpart = 1
-	// underline
-	PangoRenderPartUnderline Renderpart = 2
-	// strikethrough
-	PangoRenderPartStrikethrough Renderpart = 3
+	Renderpart_Foreground    Renderpart = 0
+	Renderpart_Background    Renderpart = 1
+	Renderpart_Underline     Renderpart = 2
+	Renderpart_Strikethrough Renderpart = 3
 )
 
 // Script is a representation of the C type Script.
 type Script int
 
 const (
-	// invalid_code
-	PangoScriptInvalidCode Script = -1
-	// common
-	PangoScriptCommon Script = 0
-	// inherited
-	PangoScriptInherited Script = 1
-	// arabic
-	PangoScriptArabic Script = 2
-	// armenian
-	PangoScriptArmenian Script = 3
-	// bengali
-	PangoScriptBengali Script = 4
-	// bopomofo
-	PangoScriptBopomofo Script = 5
-	// cherokee
-	PangoScriptCherokee Script = 6
-	// coptic
-	PangoScriptCoptic Script = 7
-	// cyrillic
-	PangoScriptCyrillic Script = 8
-	// deseret
-	PangoScriptDeseret Script = 9
-	// devanagari
-	PangoScriptDevanagari Script = 10
-	// ethiopic
-	PangoScriptEthiopic Script = 11
-	// georgian
-	PangoScriptGeorgian Script = 12
-	// gothic
-	PangoScriptGothic Script = 13
-	// greek
-	PangoScriptGreek Script = 14
-	// gujarati
-	PangoScriptGujarati Script = 15
-	// gurmukhi
-	PangoScriptGurmukhi Script = 16
-	// han
-	PangoScriptHan Script = 17
-	// hangul
-	PangoScriptHangul Script = 18
-	// hebrew
-	PangoScriptHebrew Script = 19
-	// hiragana
-	PangoScriptHiragana Script = 20
-	// kannada
-	PangoScriptKannada Script = 21
-	// katakana
-	PangoScriptKatakana Script = 22
-	// khmer
-	PangoScriptKhmer Script = 23
-	// lao
-	PangoScriptLao Script = 24
-	// latin
-	PangoScriptLatin Script = 25
-	// malayalam
-	PangoScriptMalayalam Script = 26
-	// mongolian
-	PangoScriptMongolian Script = 27
-	// myanmar
-	PangoScriptMyanmar Script = 28
-	// ogham
-	PangoScriptOgham Script = 29
-	// old_italic
-	PangoScriptOldItalic Script = 30
-	// oriya
-	PangoScriptOriya Script = 31
-	// runic
-	PangoScriptRunic Script = 32
-	// sinhala
-	PangoScriptSinhala Script = 33
-	// syriac
-	PangoScriptSyriac Script = 34
-	// tamil
-	PangoScriptTamil Script = 35
-	// telugu
-	PangoScriptTelugu Script = 36
-	// thaana
-	PangoScriptThaana Script = 37
-	// thai
-	PangoScriptThai Script = 38
-	// tibetan
-	PangoScriptTibetan Script = 39
-	// canadian_aboriginal
-	PangoScriptCanadianAboriginal Script = 40
-	// yi
-	PangoScriptYi Script = 41
-	// tagalog
-	PangoScriptTagalog Script = 42
-	// hanunoo
-	PangoScriptHanunoo Script = 43
-	// buhid
-	PangoScriptBuhid Script = 44
-	// tagbanwa
-	PangoScriptTagbanwa Script = 45
-	// braille
-	PangoScriptBraille Script = 46
-	// cypriot
-	PangoScriptCypriot Script = 47
-	// limbu
-	PangoScriptLimbu Script = 48
-	// osmanya
-	PangoScriptOsmanya Script = 49
-	// shavian
-	PangoScriptShavian Script = 50
-	// linear_b
-	PangoScriptLinearB Script = 51
-	// tai_le
-	PangoScriptTaiLe Script = 52
-	// ugaritic
-	PangoScriptUgaritic Script = 53
-	// new_tai_lue
-	PangoScriptNewTaiLue Script = 54
-	// buginese
-	PangoScriptBuginese Script = 55
-	// glagolitic
-	PangoScriptGlagolitic Script = 56
-	// tifinagh
-	PangoScriptTifinagh Script = 57
-	// syloti_nagri
-	PangoScriptSylotiNagri Script = 58
-	// old_persian
-	PangoScriptOldPersian Script = 59
-	// kharoshthi
-	PangoScriptKharoshthi Script = 60
-	// unknown
-	PangoScriptUnknown Script = 61
-	// balinese
-	PangoScriptBalinese Script = 62
-	// cuneiform
-	PangoScriptCuneiform Script = 63
-	// phoenician
-	PangoScriptPhoenician Script = 64
-	// phags_pa
-	PangoScriptPhagsPa Script = 65
-	// nko
-	PangoScriptNko Script = 66
-	// kayah_li
-	PangoScriptKayahLi Script = 67
-	// lepcha
-	PangoScriptLepcha Script = 68
-	// rejang
-	PangoScriptRejang Script = 69
-	// sundanese
-	PangoScriptSundanese Script = 70
-	// saurashtra
-	PangoScriptSaurashtra Script = 71
-	// cham
-	PangoScriptCham Script = 72
-	// ol_chiki
-	PangoScriptOlChiki Script = 73
-	// vai
-	PangoScriptVai Script = 74
-	// carian
-	PangoScriptCarian Script = 75
-	// lycian
-	PangoScriptLycian Script = 76
-	// lydian
-	PangoScriptLydian Script = 77
-	// batak
-	PangoScriptBatak Script = 78
-	// brahmi
-	PangoScriptBrahmi Script = 79
-	// mandaic
-	PangoScriptMandaic Script = 80
-	// chakma
-	PangoScriptChakma Script = 81
-	// meroitic_cursive
-	PangoScriptMeroiticCursive Script = 82
-	// meroitic_hieroglyphs
-	PangoScriptMeroiticHieroglyphs Script = 83
-	// miao
-	PangoScriptMiao Script = 84
-	// sharada
-	PangoScriptSharada Script = 85
-	// sora_sompeng
-	PangoScriptSoraSompeng Script = 86
-	// takri
-	PangoScriptTakri Script = 87
-	// bassa_vah
-	PangoScriptBassaVah Script = 88
-	// caucasian_albanian
-	PangoScriptCaucasianAlbanian Script = 89
-	// duployan
-	PangoScriptDuployan Script = 90
-	// elbasan
-	PangoScriptElbasan Script = 91
-	// grantha
-	PangoScriptGrantha Script = 92
-	// khojki
-	PangoScriptKhojki Script = 93
-	// khudawadi
-	PangoScriptKhudawadi Script = 94
-	// linear_a
-	PangoScriptLinearA Script = 95
-	// mahajani
-	PangoScriptMahajani Script = 96
-	// manichaean
-	PangoScriptManichaean Script = 97
-	// mende_kikakui
-	PangoScriptMendeKikakui Script = 98
-	// modi
-	PangoScriptModi Script = 99
-	// mro
-	PangoScriptMro Script = 100
-	// nabataean
-	PangoScriptNabataean Script = 101
-	// old_north_arabian
-	PangoScriptOldNorthArabian Script = 102
-	// old_permic
-	PangoScriptOldPermic Script = 103
-	// pahawh_hmong
-	PangoScriptPahawhHmong Script = 104
-	// palmyrene
-	PangoScriptPalmyrene Script = 105
-	// pau_cin_hau
-	PangoScriptPauCinHau Script = 106
-	// psalter_pahlavi
-	PangoScriptPsalterPahlavi Script = 107
-	// siddham
-	PangoScriptSiddham Script = 108
-	// tirhuta
-	PangoScriptTirhuta Script = 109
-	// warang_citi
-	PangoScriptWarangCiti Script = 110
-	// ahom
-	PangoScriptAhom Script = 111
-	// anatolian_hieroglyphs
-	PangoScriptAnatolianHieroglyphs Script = 112
-	// hatran
-	PangoScriptHatran Script = 113
-	// multani
-	PangoScriptMultani Script = 114
-	// old_hungarian
-	PangoScriptOldHungarian Script = 115
-	// signwriting
-	PangoScriptSignwriting Script = 116
+	Script_InvalidCode          Script = -1
+	Script_Common               Script = 0
+	Script_Inherited            Script = 1
+	Script_Arabic               Script = 2
+	Script_Armenian             Script = 3
+	Script_Bengali              Script = 4
+	Script_Bopomofo             Script = 5
+	Script_Cherokee             Script = 6
+	Script_Coptic               Script = 7
+	Script_Cyrillic             Script = 8
+	Script_Deseret              Script = 9
+	Script_Devanagari           Script = 10
+	Script_Ethiopic             Script = 11
+	Script_Georgian             Script = 12
+	Script_Gothic               Script = 13
+	Script_Greek                Script = 14
+	Script_Gujarati             Script = 15
+	Script_Gurmukhi             Script = 16
+	Script_Han                  Script = 17
+	Script_Hangul               Script = 18
+	Script_Hebrew               Script = 19
+	Script_Hiragana             Script = 20
+	Script_Kannada              Script = 21
+	Script_Katakana             Script = 22
+	Script_Khmer                Script = 23
+	Script_Lao                  Script = 24
+	Script_Latin                Script = 25
+	Script_Malayalam            Script = 26
+	Script_Mongolian            Script = 27
+	Script_Myanmar              Script = 28
+	Script_Ogham                Script = 29
+	Script_OldItalic            Script = 30
+	Script_Oriya                Script = 31
+	Script_Runic                Script = 32
+	Script_Sinhala              Script = 33
+	Script_Syriac               Script = 34
+	Script_Tamil                Script = 35
+	Script_Telugu               Script = 36
+	Script_Thaana               Script = 37
+	Script_Thai                 Script = 38
+	Script_Tibetan              Script = 39
+	Script_CanadianAboriginal   Script = 40
+	Script_Yi                   Script = 41
+	Script_Tagalog              Script = 42
+	Script_Hanunoo              Script = 43
+	Script_Buhid                Script = 44
+	Script_Tagbanwa             Script = 45
+	Script_Braille              Script = 46
+	Script_Cypriot              Script = 47
+	Script_Limbu                Script = 48
+	Script_Osmanya              Script = 49
+	Script_Shavian              Script = 50
+	Script_LinearB              Script = 51
+	Script_TaiLe                Script = 52
+	Script_Ugaritic             Script = 53
+	Script_NewTaiLue            Script = 54
+	Script_Buginese             Script = 55
+	Script_Glagolitic           Script = 56
+	Script_Tifinagh             Script = 57
+	Script_SylotiNagri          Script = 58
+	Script_OldPersian           Script = 59
+	Script_Kharoshthi           Script = 60
+	Script_Unknown              Script = 61
+	Script_Balinese             Script = 62
+	Script_Cuneiform            Script = 63
+	Script_Phoenician           Script = 64
+	Script_PhagsPa              Script = 65
+	Script_Nko                  Script = 66
+	Script_KayahLi              Script = 67
+	Script_Lepcha               Script = 68
+	Script_Rejang               Script = 69
+	Script_Sundanese            Script = 70
+	Script_Saurashtra           Script = 71
+	Script_Cham                 Script = 72
+	Script_OlChiki              Script = 73
+	Script_Vai                  Script = 74
+	Script_Carian               Script = 75
+	Script_Lycian               Script = 76
+	Script_Lydian               Script = 77
+	Script_Batak                Script = 78
+	Script_Brahmi               Script = 79
+	Script_Mandaic              Script = 80
+	Script_Chakma               Script = 81
+	Script_MeroiticCursive      Script = 82
+	Script_MeroiticHieroglyphs  Script = 83
+	Script_Miao                 Script = 84
+	Script_Sharada              Script = 85
+	Script_SoraSompeng          Script = 86
+	Script_Takri                Script = 87
+	Script_BassaVah             Script = 88
+	Script_CaucasianAlbanian    Script = 89
+	Script_Duployan             Script = 90
+	Script_Elbasan              Script = 91
+	Script_Grantha              Script = 92
+	Script_Khojki               Script = 93
+	Script_Khudawadi            Script = 94
+	Script_LinearA              Script = 95
+	Script_Mahajani             Script = 96
+	Script_Manichaean           Script = 97
+	Script_MendeKikakui         Script = 98
+	Script_Modi                 Script = 99
+	Script_Mro                  Script = 100
+	Script_Nabataean            Script = 101
+	Script_OldNorthArabian      Script = 102
+	Script_OldPermic            Script = 103
+	Script_PahawhHmong          Script = 104
+	Script_Palmyrene            Script = 105
+	Script_PauCinHau            Script = 106
+	Script_PsalterPahlavi       Script = 107
+	Script_Siddham              Script = 108
+	Script_Tirhuta              Script = 109
+	Script_WarangCiti           Script = 110
+	Script_Ahom                 Script = 111
+	Script_AnatolianHieroglyphs Script = 112
+	Script_Hatran               Script = 113
+	Script_Multani              Script = 114
+	Script_OldHungarian         Script = 115
+	Script_Signwriting          Script = 116
 )
 
 // Stretch is a representation of the C type Stretch.
 type Stretch int
 
 const (
-	// ultra_condensed
-	PangoStretchUltraCondensed Stretch = 0
-	// extra_condensed
-	PangoStretchExtraCondensed Stretch = 1
-	// condensed
-	PangoStretchCondensed Stretch = 2
-	// semi_condensed
-	PangoStretchSemiCondensed Stretch = 3
-	// normal
-	PangoStretchNormal Stretch = 4
-	// semi_expanded
-	PangoStretchSemiExpanded Stretch = 5
-	// expanded
-	PangoStretchExpanded Stretch = 6
-	// extra_expanded
-	PangoStretchExtraExpanded Stretch = 7
-	// ultra_expanded
-	PangoStretchUltraExpanded Stretch = 8
+	Stretch_UltraCondensed Stretch = 0
+	Stretch_ExtraCondensed Stretch = 1
+	Stretch_Condensed      Stretch = 2
+	Stretch_SemiCondensed  Stretch = 3
+	Stretch_Normal         Stretch = 4
+	Stretch_SemiExpanded   Stretch = 5
+	Stretch_Expanded       Stretch = 6
+	Stretch_ExtraExpanded  Stretch = 7
+	Stretch_UltraExpanded  Stretch = 8
 )
 
 // Style is a representation of the C type Style.
 type Style int
 
 const (
-	// normal
-	PangoStyleNormal Style = 0
-	// oblique
-	PangoStyleOblique Style = 1
-	// italic
-	PangoStyleItalic Style = 2
+	Style_Normal  Style = 0
+	Style_Oblique Style = 1
+	Style_Italic  Style = 2
 )
 
 // Tabalign is a representation of the C type TabAlign.
 type Tabalign int
 
 const (
-	// left
-	PangoTabLeft Tabalign = 0
+	Tabalign_Left Tabalign = 0
 )
 
 // Underline is a representation of the C type Underline.
 type Underline int
 
 const (
-	// none
-	PangoUnderlineNone Underline = 0
-	// single
-	PangoUnderlineSingle Underline = 1
-	// double
-	PangoUnderlineDouble Underline = 2
-	// low
-	PangoUnderlineLow Underline = 3
-	// error
-	PangoUnderlineError Underline = 4
+	Underline_None   Underline = 0
+	Underline_Single Underline = 1
+	Underline_Double Underline = 2
+	Underline_Low    Underline = 3
+	Underline_Error  Underline = 4
 )
 
 // Variant is a representation of the C type Variant.
 type Variant int
 
 const (
-	// normal
-	PangoVariantNormal Variant = 0
-	// small_caps
-	PangoVariantSmallCaps Variant = 1
+	Variant_Normal    Variant = 0
+	Variant_SmallCaps Variant = 1
 )
 
 // Weight is a representation of the C type Weight.
 type Weight int
 
 const (
-	// thin
-	PangoWeightThin Weight = 100
-	// ultralight
-	PangoWeightUltralight Weight = 200
-	// light
-	PangoWeightLight Weight = 300
-	// semilight
-	PangoWeightSemilight Weight = 350
-	// book
-	PangoWeightBook Weight = 380
-	// normal
-	PangoWeightNormal Weight = 400
-	// medium
-	PangoWeightMedium Weight = 500
-	// semibold
-	PangoWeightSemibold Weight = 600
-	// bold
-	PangoWeightBold Weight = 700
-	// ultrabold
-	PangoWeightUltrabold Weight = 800
-	// heavy
-	PangoWeightHeavy Weight = 900
-	// ultraheavy
-	PangoWeightUltraheavy Weight = 1000
+	Weight_Thin       Weight = 100
+	Weight_Ultralight Weight = 200
+	Weight_Light      Weight = 300
+	Weight_Semilight  Weight = 350
+	Weight_Book       Weight = 380
+	Weight_Normal     Weight = 400
+	Weight_Medium     Weight = 500
+	Weight_Semibold   Weight = 600
+	Weight_Bold       Weight = 700
+	Weight_Ultrabold  Weight = 800
+	Weight_Heavy      Weight = 900
+	Weight_Ultraheavy Weight = 1000
 )
 
 // Wrapmode is a representation of the C type WrapMode.
 type Wrapmode int
 
 const (
-	// word
-	PangoWrapWord Wrapmode = 0
-	// char
-	PangoWrapChar Wrapmode = 1
-	// word_char
-	PangoWrapWordChar Wrapmode = 2
+	Wrapmode_Word     Wrapmode = 0
+	Wrapmode_Char     Wrapmode = 1
+	Wrapmode_WordChar Wrapmode = 2
 )

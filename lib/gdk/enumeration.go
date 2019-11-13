@@ -6,240 +6,135 @@ package gdk
 type Axisuse int
 
 const (
-	// ignore
-	GdkAxisIgnore Axisuse = 0
-	// x
-	GdkAxisX Axisuse = 1
-	// y
-	GdkAxisY Axisuse = 2
-	// pressure
-	GdkAxisPressure Axisuse = 3
-	// xtilt
-	GdkAxisXtilt Axisuse = 4
-	// ytilt
-	GdkAxisYtilt Axisuse = 5
-	// wheel
-	GdkAxisWheel Axisuse = 6
-	// distance
-	GdkAxisDistance Axisuse = 7
-	// rotation
-	GdkAxisRotation Axisuse = 8
-	// slider
-	GdkAxisSlider Axisuse = 9
-	// last
-	GdkAxisLast Axisuse = 10
+	Axisuse_Ignore   Axisuse = 0
+	Axisuse_X        Axisuse = 1
+	Axisuse_Y        Axisuse = 2
+	Axisuse_Pressure Axisuse = 3
+	Axisuse_Xtilt    Axisuse = 4
+	Axisuse_Ytilt    Axisuse = 5
+	Axisuse_Wheel    Axisuse = 6
+	Axisuse_Distance Axisuse = 7
+	Axisuse_Rotation Axisuse = 8
+	Axisuse_Slider   Axisuse = 9
+	Axisuse_Last     Axisuse = 10
 )
 
 // Byteorder is a representation of the C type ByteOrder.
 type Byteorder int
 
 const (
-	// lsb_first
-	GdkLsbFirst Byteorder = 0
-	// msb_first
-	GdkMsbFirst Byteorder = 1
+	Byteorder_LsbFirst Byteorder = 0
+	Byteorder_MsbFirst Byteorder = 1
 )
 
 // Crossingmode is a representation of the C type CrossingMode.
 type Crossingmode int
 
 const (
-	// normal
-	GdkCrossingNormal Crossingmode = 0
-	// grab
-	GdkCrossingGrab Crossingmode = 1
-	// ungrab
-	GdkCrossingUngrab Crossingmode = 2
-	// gtk_grab
-	GdkCrossingGtkGrab Crossingmode = 3
-	// gtk_ungrab
-	GdkCrossingGtkUngrab Crossingmode = 4
-	// state_changed
-	GdkCrossingStateChanged Crossingmode = 5
-	// touch_begin
-	GdkCrossingTouchBegin Crossingmode = 6
-	// touch_end
-	GdkCrossingTouchEnd Crossingmode = 7
-	// device_switch
-	GdkCrossingDeviceSwitch Crossingmode = 8
+	Crossingmode_Normal       Crossingmode = 0
+	Crossingmode_Grab         Crossingmode = 1
+	Crossingmode_Ungrab       Crossingmode = 2
+	Crossingmode_GtkGrab      Crossingmode = 3
+	Crossingmode_GtkUngrab    Crossingmode = 4
+	Crossingmode_StateChanged Crossingmode = 5
+	Crossingmode_TouchBegin   Crossingmode = 6
+	Crossingmode_TouchEnd     Crossingmode = 7
+	Crossingmode_DeviceSwitch Crossingmode = 8
 )
 
 // Cursortype is a representation of the C type CursorType.
 type Cursortype int
 
 const (
-	// x_cursor
-	GdkXCursor Cursortype = 0
-	// arrow
-	GdkArrow Cursortype = 2
-	// based_arrow_down
-	GdkBasedArrowDown Cursortype = 4
-	// based_arrow_up
-	GdkBasedArrowUp Cursortype = 6
-	// boat
-	GdkBoat Cursortype = 8
-	// bogosity
-	GdkBogosity Cursortype = 10
-	// bottom_left_corner
-	GdkBottomLeftCorner Cursortype = 12
-	// bottom_right_corner
-	GdkBottomRightCorner Cursortype = 14
-	// bottom_side
-	GdkBottomSide Cursortype = 16
-	// bottom_tee
-	GdkBottomTee Cursortype = 18
-	// box_spiral
-	GdkBoxSpiral Cursortype = 20
-	// center_ptr
-	GdkCenterPtr Cursortype = 22
-	// circle
-	GdkCircle Cursortype = 24
-	// clock
-	GdkClock Cursortype = 26
-	// coffee_mug
-	GdkCoffeeMug Cursortype = 28
-	// cross
-	GdkCross Cursortype = 30
-	// cross_reverse
-	GdkCrossReverse Cursortype = 32
-	// crosshair
-	GdkCrosshair Cursortype = 34
-	// diamond_cross
-	GdkDiamondCross Cursortype = 36
-	// dot
-	GdkDot Cursortype = 38
-	// dotbox
-	GdkDotbox Cursortype = 40
-	// double_arrow
-	GdkDoubleArrow Cursortype = 42
-	// draft_large
-	GdkDraftLarge Cursortype = 44
-	// draft_small
-	GdkDraftSmall Cursortype = 46
-	// draped_box
-	GdkDrapedBox Cursortype = 48
-	// exchange
-	GdkExchange Cursortype = 50
-	// fleur
-	GdkFleur Cursortype = 52
-	// gobbler
-	GdkGobbler Cursortype = 54
-	// gumby
-	GdkGumby Cursortype = 56
-	// hand1
-	GdkHand1 Cursortype = 58
-	// hand2
-	GdkHand2 Cursortype = 60
-	// heart
-	GdkHeart Cursortype = 62
-	// icon
-	GdkIcon Cursortype = 64
-	// iron_cross
-	GdkIronCross Cursortype = 66
-	// left_ptr
-	GdkLeftPtr Cursortype = 68
-	// left_side
-	GdkLeftSide Cursortype = 70
-	// left_tee
-	GdkLeftTee Cursortype = 72
-	// leftbutton
-	GdkLeftbutton Cursortype = 74
-	// ll_angle
-	GdkLlAngle Cursortype = 76
-	// lr_angle
-	GdkLrAngle Cursortype = 78
-	// man
-	GdkMan Cursortype = 80
-	// middlebutton
-	GdkMiddlebutton Cursortype = 82
-	// mouse
-	GdkMouse Cursortype = 84
-	// pencil
-	GdkPencil Cursortype = 86
-	// pirate
-	GdkPirate Cursortype = 88
-	// plus
-	GdkPlus Cursortype = 90
-	// question_arrow
-	GdkQuestionArrow Cursortype = 92
-	// right_ptr
-	GdkRightPtr Cursortype = 94
-	// right_side
-	GdkRightSide Cursortype = 96
-	// right_tee
-	GdkRightTee Cursortype = 98
-	// rightbutton
-	GdkRightbutton Cursortype = 100
-	// rtl_logo
-	GdkRtlLogo Cursortype = 102
-	// sailboat
-	GdkSailboat Cursortype = 104
-	// sb_down_arrow
-	GdkSbDownArrow Cursortype = 106
-	// sb_h_double_arrow
-	GdkSbHDoubleArrow Cursortype = 108
-	// sb_left_arrow
-	GdkSbLeftArrow Cursortype = 110
-	// sb_right_arrow
-	GdkSbRightArrow Cursortype = 112
-	// sb_up_arrow
-	GdkSbUpArrow Cursortype = 114
-	// sb_v_double_arrow
-	GdkSbVDoubleArrow Cursortype = 116
-	// shuttle
-	GdkShuttle Cursortype = 118
-	// sizing
-	GdkSizing Cursortype = 120
-	// spider
-	GdkSpider Cursortype = 122
-	// spraycan
-	GdkSpraycan Cursortype = 124
-	// star
-	GdkStar Cursortype = 126
-	// target
-	GdkTarget Cursortype = 128
-	// tcross
-	GdkTcross Cursortype = 130
-	// top_left_arrow
-	GdkTopLeftArrow Cursortype = 132
-	// top_left_corner
-	GdkTopLeftCorner Cursortype = 134
-	// top_right_corner
-	GdkTopRightCorner Cursortype = 136
-	// top_side
-	GdkTopSide Cursortype = 138
-	// top_tee
-	GdkTopTee Cursortype = 140
-	// trek
-	GdkTrek Cursortype = 142
-	// ul_angle
-	GdkUlAngle Cursortype = 144
-	// umbrella
-	GdkUmbrella Cursortype = 146
-	// ur_angle
-	GdkUrAngle Cursortype = 148
-	// watch
-	GdkWatch Cursortype = 150
-	// xterm
-	GdkXterm Cursortype = 152
-	// last_cursor
-	GdkLastCursor Cursortype = 153
-	// blank_cursor
-	GdkBlankCursor Cursortype = -2
-	// cursor_is_pixmap
-	GdkCursorIsPixmap Cursortype = -1
+	Cursortype_XCursor           Cursortype = 0
+	Cursortype_Arrow             Cursortype = 2
+	Cursortype_BasedArrowDown    Cursortype = 4
+	Cursortype_BasedArrowUp      Cursortype = 6
+	Cursortype_Boat              Cursortype = 8
+	Cursortype_Bogosity          Cursortype = 10
+	Cursortype_BottomLeftCorner  Cursortype = 12
+	Cursortype_BottomRightCorner Cursortype = 14
+	Cursortype_BottomSide        Cursortype = 16
+	Cursortype_BottomTee         Cursortype = 18
+	Cursortype_BoxSpiral         Cursortype = 20
+	Cursortype_CenterPtr         Cursortype = 22
+	Cursortype_Circle            Cursortype = 24
+	Cursortype_Clock             Cursortype = 26
+	Cursortype_CoffeeMug         Cursortype = 28
+	Cursortype_Cross             Cursortype = 30
+	Cursortype_CrossReverse      Cursortype = 32
+	Cursortype_Crosshair         Cursortype = 34
+	Cursortype_DiamondCross      Cursortype = 36
+	Cursortype_Dot               Cursortype = 38
+	Cursortype_Dotbox            Cursortype = 40
+	Cursortype_DoubleArrow       Cursortype = 42
+	Cursortype_DraftLarge        Cursortype = 44
+	Cursortype_DraftSmall        Cursortype = 46
+	Cursortype_DrapedBox         Cursortype = 48
+	Cursortype_Exchange          Cursortype = 50
+	Cursortype_Fleur             Cursortype = 52
+	Cursortype_Gobbler           Cursortype = 54
+	Cursortype_Gumby             Cursortype = 56
+	Cursortype_Hand1             Cursortype = 58
+	Cursortype_Hand2             Cursortype = 60
+	Cursortype_Heart             Cursortype = 62
+	Cursortype_Icon              Cursortype = 64
+	Cursortype_IronCross         Cursortype = 66
+	Cursortype_LeftPtr           Cursortype = 68
+	Cursortype_LeftSide          Cursortype = 70
+	Cursortype_LeftTee           Cursortype = 72
+	Cursortype_Leftbutton        Cursortype = 74
+	Cursortype_LlAngle           Cursortype = 76
+	Cursortype_LrAngle           Cursortype = 78
+	Cursortype_Man               Cursortype = 80
+	Cursortype_Middlebutton      Cursortype = 82
+	Cursortype_Mouse             Cursortype = 84
+	Cursortype_Pencil            Cursortype = 86
+	Cursortype_Pirate            Cursortype = 88
+	Cursortype_Plus              Cursortype = 90
+	Cursortype_QuestionArrow     Cursortype = 92
+	Cursortype_RightPtr          Cursortype = 94
+	Cursortype_RightSide         Cursortype = 96
+	Cursortype_RightTee          Cursortype = 98
+	Cursortype_Rightbutton       Cursortype = 100
+	Cursortype_RtlLogo           Cursortype = 102
+	Cursortype_Sailboat          Cursortype = 104
+	Cursortype_SbDownArrow       Cursortype = 106
+	Cursortype_SbHDoubleArrow    Cursortype = 108
+	Cursortype_SbLeftArrow       Cursortype = 110
+	Cursortype_SbRightArrow      Cursortype = 112
+	Cursortype_SbUpArrow         Cursortype = 114
+	Cursortype_SbVDoubleArrow    Cursortype = 116
+	Cursortype_Shuttle           Cursortype = 118
+	Cursortype_Sizing            Cursortype = 120
+	Cursortype_Spider            Cursortype = 122
+	Cursortype_Spraycan          Cursortype = 124
+	Cursortype_Star              Cursortype = 126
+	Cursortype_Target            Cursortype = 128
+	Cursortype_Tcross            Cursortype = 130
+	Cursortype_TopLeftArrow      Cursortype = 132
+	Cursortype_TopLeftCorner     Cursortype = 134
+	Cursortype_TopRightCorner    Cursortype = 136
+	Cursortype_TopSide           Cursortype = 138
+	Cursortype_TopTee            Cursortype = 140
+	Cursortype_Trek              Cursortype = 142
+	Cursortype_UlAngle           Cursortype = 144
+	Cursortype_Umbrella          Cursortype = 146
+	Cursortype_UrAngle           Cursortype = 148
+	Cursortype_Watch             Cursortype = 150
+	Cursortype_Xterm             Cursortype = 152
+	Cursortype_LastCursor        Cursortype = 153
+	Cursortype_BlankCursor       Cursortype = -2
+	Cursortype_CursorIsPixmap    Cursortype = -1
 )
 
 // Devicepadfeature is a representation of the C type DevicePadFeature.
 type Devicepadfeature int
 
 const (
-	// button
-	GdkDevicePadFeatureButton Devicepadfeature = 0
-	// ring
-	GdkDevicePadFeatureRing Devicepadfeature = 1
-	// strip
-	GdkDevicePadFeatureStrip Devicepadfeature = 2
+	Devicepadfeature_Button Devicepadfeature = 0
+	Devicepadfeature_Ring   Devicepadfeature = 1
+	Devicepadfeature_Strip  Devicepadfeature = 2
 )
 
 // Devicetooltype is a representation of the C type DeviceToolType.
@@ -248,34 +143,23 @@ const (
 type Devicetooltype int
 
 const (
-	// unknown
-	GdkDeviceToolTypeUnknown Devicetooltype = 0
-	// pen
-	GdkDeviceToolTypePen Devicetooltype = 1
-	// eraser
-	GdkDeviceToolTypeEraser Devicetooltype = 2
-	// brush
-	GdkDeviceToolTypeBrush Devicetooltype = 3
-	// pencil
-	GdkDeviceToolTypePencil Devicetooltype = 4
-	// airbrush
-	GdkDeviceToolTypeAirbrush Devicetooltype = 5
-	// mouse
-	GdkDeviceToolTypeMouse Devicetooltype = 6
-	// lens
-	GdkDeviceToolTypeLens Devicetooltype = 7
+	Devicetooltype_Unknown  Devicetooltype = 0
+	Devicetooltype_Pen      Devicetooltype = 1
+	Devicetooltype_Eraser   Devicetooltype = 2
+	Devicetooltype_Brush    Devicetooltype = 3
+	Devicetooltype_Pencil   Devicetooltype = 4
+	Devicetooltype_Airbrush Devicetooltype = 5
+	Devicetooltype_Mouse    Devicetooltype = 6
+	Devicetooltype_Lens     Devicetooltype = 7
 )
 
 // Devicetype is a representation of the C type DeviceType.
 type Devicetype int
 
 const (
-	// master
-	GdkDeviceTypeMaster Devicetype = 0
-	// slave
-	GdkDeviceTypeSlave Devicetype = 1
-	// floating
-	GdkDeviceTypeFloating Devicetype = 2
+	Devicetype_Master   Devicetype = 0
+	Devicetype_Slave    Devicetype = 1
+	Devicetype_Floating Devicetype = 2
 )
 
 // Dragcancelreason is a representation of the C type DragCancelReason.
@@ -284,154 +168,89 @@ const (
 type Dragcancelreason int
 
 const (
-	// no_target
-	GdkDragCancelNoTarget Dragcancelreason = 0
-	// user_cancelled
-	GdkDragCancelUserCancelled Dragcancelreason = 1
-	// error
-	GdkDragCancelError Dragcancelreason = 2
+	Dragcancelreason_NoTarget      Dragcancelreason = 0
+	Dragcancelreason_UserCancelled Dragcancelreason = 1
+	Dragcancelreason_Error         Dragcancelreason = 2
 )
 
 // Dragprotocol is a representation of the C type DragProtocol.
 type Dragprotocol int
 
 const (
-	// none
-	GdkDragProtoNone Dragprotocol = 0
-	// motif
-	GdkDragProtoMotif Dragprotocol = 1
-	// xdnd
-	GdkDragProtoXdnd Dragprotocol = 2
-	// rootwin
-	GdkDragProtoRootwin Dragprotocol = 3
-	// win32_dropfiles
-	GdkDragProtoWin32Dropfiles Dragprotocol = 4
-	// ole2
-	GdkDragProtoOle2 Dragprotocol = 5
-	// local
-	GdkDragProtoLocal Dragprotocol = 6
-	// wayland
-	GdkDragProtoWayland Dragprotocol = 7
+	Dragprotocol_None           Dragprotocol = 0
+	Dragprotocol_Motif          Dragprotocol = 1
+	Dragprotocol_Xdnd           Dragprotocol = 2
+	Dragprotocol_Rootwin        Dragprotocol = 3
+	Dragprotocol_Win32Dropfiles Dragprotocol = 4
+	Dragprotocol_Ole2           Dragprotocol = 5
+	Dragprotocol_Local          Dragprotocol = 6
+	Dragprotocol_Wayland        Dragprotocol = 7
 )
 
 // Eventtype is a representation of the C type EventType.
 type Eventtype int
 
 const (
-	// nothing
-	GdkNothing Eventtype = -1
-	// delete
-	GdkDelete Eventtype = 0
-	// destroy
-	GdkDestroy Eventtype = 1
-	// expose
-	GdkExpose Eventtype = 2
-	// motion_notify
-	GdkMotionNotify Eventtype = 3
-	// button_press
-	GdkButtonPress Eventtype = 4
-	// 2button_press
-	Gdk2buttonPress Eventtype = 5
-	// double_button_press
-	GdkDoubleButtonPress Eventtype = 5
-	// 3button_press
-	Gdk3buttonPress Eventtype = 6
-	// triple_button_press
-	GdkTripleButtonPress Eventtype = 6
-	// button_release
-	GdkButtonRelease Eventtype = 7
-	// key_press
-	GdkKeyPress Eventtype = 8
-	// key_release
-	GdkKeyRelease Eventtype = 9
-	// enter_notify
-	GdkEnterNotify Eventtype = 10
-	// leave_notify
-	GdkLeaveNotify Eventtype = 11
-	// focus_change
-	GdkFocusChange Eventtype = 12
-	// configure
-	GdkConfigure Eventtype = 13
-	// map
-	GdkMap Eventtype = 14
-	// unmap
-	GdkUnmap Eventtype = 15
-	// property_notify
-	GdkPropertyNotify Eventtype = 16
-	// selection_clear
-	GdkSelectionClear Eventtype = 17
-	// selection_request
-	GdkSelectionRequest Eventtype = 18
-	// selection_notify
-	GdkSelectionNotify Eventtype = 19
-	// proximity_in
-	GdkProximityIn Eventtype = 20
-	// proximity_out
-	GdkProximityOut Eventtype = 21
-	// drag_enter
-	GdkDragEnter Eventtype = 22
-	// drag_leave
-	GdkDragLeave Eventtype = 23
-	// drag_motion
-	GdkDragMotion Eventtype = 24
-	// drag_status
-	GdkDragStatus Eventtype = 25
-	// drop_start
-	GdkDropStart Eventtype = 26
-	// drop_finished
-	GdkDropFinished Eventtype = 27
-	// client_event
-	GdkClientEvent Eventtype = 28
-	// visibility_notify
-	GdkVisibilityNotify Eventtype = 29
-	// scroll
-	GdkScroll Eventtype = 31
-	// window_state
-	GdkWindowState Eventtype = 32
-	// setting
-	GdkSetting Eventtype = 33
-	// owner_change
-	GdkOwnerChange Eventtype = 34
-	// grab_broken
-	GdkGrabBroken Eventtype = 35
-	// damage
-	GdkDamage Eventtype = 36
-	// touch_begin
-	GdkTouchBegin Eventtype = 37
-	// touch_update
-	GdkTouchUpdate Eventtype = 38
-	// touch_end
-	GdkTouchEnd Eventtype = 39
-	// touch_cancel
-	GdkTouchCancel Eventtype = 40
-	// touchpad_swipe
-	GdkTouchpadSwipe Eventtype = 41
-	// touchpad_pinch
-	GdkTouchpadPinch Eventtype = 42
-	// pad_button_press
-	GdkPadButtonPress Eventtype = 43
-	// pad_button_release
-	GdkPadButtonRelease Eventtype = 44
-	// pad_ring
-	GdkPadRing Eventtype = 45
-	// pad_strip
-	GdkPadStrip Eventtype = 46
-	// pad_group_mode
-	GdkPadGroupMode Eventtype = 47
-	// event_last
-	GdkEventLast Eventtype = 48
+	Eventtype_Nothing           Eventtype = -1
+	Eventtype_Delete            Eventtype = 0
+	Eventtype_Destroy           Eventtype = 1
+	Eventtype_Expose            Eventtype = 2
+	Eventtype_MotionNotify      Eventtype = 3
+	Eventtype_ButtonPress       Eventtype = 4
+	Eventtype_2buttonPress      Eventtype = 5
+	Eventtype_DoubleButtonPress Eventtype = 5
+	Eventtype_3buttonPress      Eventtype = 6
+	Eventtype_TripleButtonPress Eventtype = 6
+	Eventtype_ButtonRelease     Eventtype = 7
+	Eventtype_KeyPress          Eventtype = 8
+	Eventtype_KeyRelease        Eventtype = 9
+	Eventtype_EnterNotify       Eventtype = 10
+	Eventtype_LeaveNotify       Eventtype = 11
+	Eventtype_FocusChange       Eventtype = 12
+	Eventtype_Configure         Eventtype = 13
+	Eventtype_Map               Eventtype = 14
+	Eventtype_Unmap             Eventtype = 15
+	Eventtype_PropertyNotify    Eventtype = 16
+	Eventtype_SelectionClear    Eventtype = 17
+	Eventtype_SelectionRequest  Eventtype = 18
+	Eventtype_SelectionNotify   Eventtype = 19
+	Eventtype_ProximityIn       Eventtype = 20
+	Eventtype_ProximityOut      Eventtype = 21
+	Eventtype_DragEnter         Eventtype = 22
+	Eventtype_DragLeave         Eventtype = 23
+	Eventtype_DragMotion        Eventtype = 24
+	Eventtype_DragStatus        Eventtype = 25
+	Eventtype_DropStart         Eventtype = 26
+	Eventtype_DropFinished      Eventtype = 27
+	Eventtype_ClientEvent       Eventtype = 28
+	Eventtype_VisibilityNotify  Eventtype = 29
+	Eventtype_Scroll            Eventtype = 31
+	Eventtype_WindowState       Eventtype = 32
+	Eventtype_Setting           Eventtype = 33
+	Eventtype_OwnerChange       Eventtype = 34
+	Eventtype_GrabBroken        Eventtype = 35
+	Eventtype_Damage            Eventtype = 36
+	Eventtype_TouchBegin        Eventtype = 37
+	Eventtype_TouchUpdate       Eventtype = 38
+	Eventtype_TouchEnd          Eventtype = 39
+	Eventtype_TouchCancel       Eventtype = 40
+	Eventtype_TouchpadSwipe     Eventtype = 41
+	Eventtype_TouchpadPinch     Eventtype = 42
+	Eventtype_PadButtonPress    Eventtype = 43
+	Eventtype_PadButtonRelease  Eventtype = 44
+	Eventtype_PadRing           Eventtype = 45
+	Eventtype_PadStrip          Eventtype = 46
+	Eventtype_PadGroupMode      Eventtype = 47
+	Eventtype_EventLast         Eventtype = 48
 )
 
 // Filterreturn is a representation of the C type FilterReturn.
 type Filterreturn int
 
 const (
-	// continue
-	GdkFilterContinue Filterreturn = 0
-	// translate
-	GdkFilterTranslate Filterreturn = 1
-	// remove
-	GdkFilterRemove Filterreturn = 2
+	Filterreturn_Continue  Filterreturn = 0
+	Filterreturn_Translate Filterreturn = 1
+	Filterreturn_Remove    Filterreturn = 2
 )
 
 // Fullscreenmode is a representation of the C type FullscreenMode.
@@ -440,10 +259,8 @@ const (
 type Fullscreenmode int
 
 const (
-	// current_monitor
-	GdkFullscreenOnCurrentMonitor Fullscreenmode = 0
-	// all_monitors
-	GdkFullscreenOnAllMonitors Fullscreenmode = 1
+	Fullscreenmode_CurrentMonitor Fullscreenmode = 0
+	Fullscreenmode_AllMonitors    Fullscreenmode = 1
 )
 
 // Glerror is a representation of the C type GLError.
@@ -452,104 +269,70 @@ const (
 type Glerror int
 
 const (
-	// not_available
-	GdkGlErrorNotAvailable Glerror = 0
-	// unsupported_format
-	GdkGlErrorUnsupportedFormat Glerror = 1
-	// unsupported_profile
-	GdkGlErrorUnsupportedProfile Glerror = 2
+	Glerror_NotAvailable       Glerror = 0
+	Glerror_UnsupportedFormat  Glerror = 1
+	Glerror_UnsupportedProfile Glerror = 2
 )
 
 // Grabownership is a representation of the C type GrabOwnership.
 type Grabownership int
 
 const (
-	// none
-	GdkOwnershipNone Grabownership = 0
-	// window
-	GdkOwnershipWindow Grabownership = 1
-	// application
-	GdkOwnershipApplication Grabownership = 2
+	Grabownership_None        Grabownership = 0
+	Grabownership_Window      Grabownership = 1
+	Grabownership_Application Grabownership = 2
 )
 
 // Grabstatus is a representation of the C type GrabStatus.
 type Grabstatus int
 
 const (
-	// success
-	GdkGrabSuccess Grabstatus = 0
-	// already_grabbed
-	GdkGrabAlreadyGrabbed Grabstatus = 1
-	// invalid_time
-	GdkGrabInvalidTime Grabstatus = 2
-	// not_viewable
-	GdkGrabNotViewable Grabstatus = 3
-	// frozen
-	GdkGrabFrozen Grabstatus = 4
-	// failed
-	GdkGrabFailed Grabstatus = 5
+	Grabstatus_Success        Grabstatus = 0
+	Grabstatus_AlreadyGrabbed Grabstatus = 1
+	Grabstatus_InvalidTime    Grabstatus = 2
+	Grabstatus_NotViewable    Grabstatus = 3
+	Grabstatus_Frozen         Grabstatus = 4
+	Grabstatus_Failed         Grabstatus = 5
 )
 
 // Gravity is a representation of the C type Gravity.
 type Gravity int
 
 const (
-	// north_west
-	GdkGravityNorthWest Gravity = 1
-	// north
-	GdkGravityNorth Gravity = 2
-	// north_east
-	GdkGravityNorthEast Gravity = 3
-	// west
-	GdkGravityWest Gravity = 4
-	// center
-	GdkGravityCenter Gravity = 5
-	// east
-	GdkGravityEast Gravity = 6
-	// south_west
-	GdkGravitySouthWest Gravity = 7
-	// south
-	GdkGravitySouth Gravity = 8
-	// south_east
-	GdkGravitySouthEast Gravity = 9
-	// static
-	GdkGravityStatic Gravity = 10
+	Gravity_NorthWest Gravity = 1
+	Gravity_North     Gravity = 2
+	Gravity_NorthEast Gravity = 3
+	Gravity_West      Gravity = 4
+	Gravity_Center    Gravity = 5
+	Gravity_East      Gravity = 6
+	Gravity_SouthWest Gravity = 7
+	Gravity_South     Gravity = 8
+	Gravity_SouthEast Gravity = 9
+	Gravity_Static    Gravity = 10
 )
 
 // Inputmode is a representation of the C type InputMode.
 type Inputmode int
 
 const (
-	// disabled
-	GdkModeDisabled Inputmode = 0
-	// screen
-	GdkModeScreen Inputmode = 1
-	// window
-	GdkModeWindow Inputmode = 2
+	Inputmode_Disabled Inputmode = 0
+	Inputmode_Screen   Inputmode = 1
+	Inputmode_Window   Inputmode = 2
 )
 
 // Inputsource is a representation of the C type InputSource.
 type Inputsource int
 
 const (
-	// mouse
-	GdkSourceMouse Inputsource = 0
-	// pen
-	GdkSourcePen Inputsource = 1
-	// eraser
-	GdkSourceEraser Inputsource = 2
-	// cursor
-	GdkSourceCursor Inputsource = 3
-	// keyboard
-	GdkSourceKeyboard Inputsource = 4
-	// touchscreen
-	GdkSourceTouchscreen Inputsource = 5
-	// touchpad
-	GdkSourceTouchpad Inputsource = 6
-	// trackpoint
-	GdkSourceTrackpoint Inputsource = 7
-	// tablet_pad
-	GdkSourceTabletPad Inputsource = 8
+	Inputsource_Mouse       Inputsource = 0
+	Inputsource_Pen         Inputsource = 1
+	Inputsource_Eraser      Inputsource = 2
+	Inputsource_Cursor      Inputsource = 3
+	Inputsource_Keyboard    Inputsource = 4
+	Inputsource_Touchscreen Inputsource = 5
+	Inputsource_Touchpad    Inputsource = 6
+	Inputsource_Trackpoint  Inputsource = 7
+	Inputsource_TabletPad   Inputsource = 8
 )
 
 // Modifierintent is a representation of the C type ModifierIntent.
@@ -558,116 +341,82 @@ const (
 type Modifierintent int
 
 const (
-	// primary_accelerator
-	GdkModifierIntentPrimaryAccelerator Modifierintent = 0
-	// context_menu
-	GdkModifierIntentContextMenu Modifierintent = 1
-	// extend_selection
-	GdkModifierIntentExtendSelection Modifierintent = 2
-	// modify_selection
-	GdkModifierIntentModifySelection Modifierintent = 3
-	// no_text_input
-	GdkModifierIntentNoTextInput Modifierintent = 4
-	// shift_group
-	GdkModifierIntentShiftGroup Modifierintent = 5
-	// default_mod_mask
-	GdkModifierIntentDefaultModMask Modifierintent = 6
+	Modifierintent_PrimaryAccelerator Modifierintent = 0
+	Modifierintent_ContextMenu        Modifierintent = 1
+	Modifierintent_ExtendSelection    Modifierintent = 2
+	Modifierintent_ModifySelection    Modifierintent = 3
+	Modifierintent_NoTextInput        Modifierintent = 4
+	Modifierintent_ShiftGroup         Modifierintent = 5
+	Modifierintent_DefaultModMask     Modifierintent = 6
 )
 
 // Notifytype is a representation of the C type NotifyType.
 type Notifytype int
 
 const (
-	// ancestor
-	GdkNotifyAncestor Notifytype = 0
-	// virtual
-	GdkNotifyVirtual Notifytype = 1
-	// inferior
-	GdkNotifyInferior Notifytype = 2
-	// nonlinear
-	GdkNotifyNonlinear Notifytype = 3
-	// nonlinear_virtual
-	GdkNotifyNonlinearVirtual Notifytype = 4
-	// unknown
-	GdkNotifyUnknown Notifytype = 5
+	Notifytype_Ancestor         Notifytype = 0
+	Notifytype_Virtual          Notifytype = 1
+	Notifytype_Inferior         Notifytype = 2
+	Notifytype_Nonlinear        Notifytype = 3
+	Notifytype_NonlinearVirtual Notifytype = 4
+	Notifytype_Unknown          Notifytype = 5
 )
 
 // Ownerchange is a representation of the C type OwnerChange.
 type Ownerchange int
 
 const (
-	// new_owner
-	GdkOwnerChangeNewOwner Ownerchange = 0
-	// destroy
-	GdkOwnerChangeDestroy Ownerchange = 1
-	// close
-	GdkOwnerChangeClose Ownerchange = 2
+	Ownerchange_NewOwner Ownerchange = 0
+	Ownerchange_Destroy  Ownerchange = 1
+	Ownerchange_Close    Ownerchange = 2
 )
 
 // Propmode is a representation of the C type PropMode.
 type Propmode int
 
 const (
-	// replace
-	GdkPropModeReplace Propmode = 0
-	// prepend
-	GdkPropModePrepend Propmode = 1
-	// append
-	GdkPropModeAppend Propmode = 2
+	Propmode_Replace Propmode = 0
+	Propmode_Prepend Propmode = 1
+	Propmode_Append  Propmode = 2
 )
 
 // Propertystate is a representation of the C type PropertyState.
 type Propertystate int
 
 const (
-	// new_value
-	GdkPropertyNewValue Propertystate = 0
-	// delete
-	GdkPropertyDelete Propertystate = 1
+	Propertystate_NewValue Propertystate = 0
+	Propertystate_Delete   Propertystate = 1
 )
 
 // Scrolldirection is a representation of the C type ScrollDirection.
 type Scrolldirection int
 
 const (
-	// up
-	GdkScrollUp Scrolldirection = 0
-	// down
-	GdkScrollDown Scrolldirection = 1
-	// left
-	GdkScrollLeft Scrolldirection = 2
-	// right
-	GdkScrollRight Scrolldirection = 3
-	// smooth
-	GdkScrollSmooth Scrolldirection = 4
+	Scrolldirection_Up     Scrolldirection = 0
+	Scrolldirection_Down   Scrolldirection = 1
+	Scrolldirection_Left   Scrolldirection = 2
+	Scrolldirection_Right  Scrolldirection = 3
+	Scrolldirection_Smooth Scrolldirection = 4
 )
 
 // Settingaction is a representation of the C type SettingAction.
 type Settingaction int
 
 const (
-	// new
-	GdkSettingActionNew Settingaction = 0
-	// changed
-	GdkSettingActionChanged Settingaction = 1
-	// deleted
-	GdkSettingActionDeleted Settingaction = 2
+	Settingaction_New     Settingaction = 0
+	Settingaction_Changed Settingaction = 1
+	Settingaction_Deleted Settingaction = 2
 )
 
 // Status is a representation of the C type Status.
 type Status int
 
 const (
-	// ok
-	GdkOk Status = 0
-	// error
-	GdkError Status = -1
-	// error_param
-	GdkErrorParam Status = -2
-	// error_file
-	GdkErrorFile Status = -3
-	// error_mem
-	GdkErrorMem Status = -4
+	Status_Ok         Status = 0
+	Status_Error      Status = -1
+	Status_ErrorParam Status = -2
+	Status_ErrorFile  Status = -3
+	Status_ErrorMem   Status = -4
 )
 
 // Subpixellayout is a representation of the C type SubpixelLayout.
@@ -676,146 +425,96 @@ const (
 type Subpixellayout int
 
 const (
-	// unknown
-	GdkSubpixelLayoutUnknown Subpixellayout = 0
-	// none
-	GdkSubpixelLayoutNone Subpixellayout = 1
-	// horizontal_rgb
-	GdkSubpixelLayoutHorizontalRgb Subpixellayout = 2
-	// horizontal_bgr
-	GdkSubpixelLayoutHorizontalBgr Subpixellayout = 3
-	// vertical_rgb
-	GdkSubpixelLayoutVerticalRgb Subpixellayout = 4
-	// vertical_bgr
-	GdkSubpixelLayoutVerticalBgr Subpixellayout = 5
+	Subpixellayout_Unknown       Subpixellayout = 0
+	Subpixellayout_None          Subpixellayout = 1
+	Subpixellayout_HorizontalRgb Subpixellayout = 2
+	Subpixellayout_HorizontalBgr Subpixellayout = 3
+	Subpixellayout_VerticalRgb   Subpixellayout = 4
+	Subpixellayout_VerticalBgr   Subpixellayout = 5
 )
 
 // Touchpadgesturephase is a representation of the C type TouchpadGesturePhase.
 type Touchpadgesturephase int
 
 const (
-	// begin
-	GdkTouchpadGesturePhaseBegin Touchpadgesturephase = 0
-	// update
-	GdkTouchpadGesturePhaseUpdate Touchpadgesturephase = 1
-	// end
-	GdkTouchpadGesturePhaseEnd Touchpadgesturephase = 2
-	// cancel
-	GdkTouchpadGesturePhaseCancel Touchpadgesturephase = 3
+	Touchpadgesturephase_Begin  Touchpadgesturephase = 0
+	Touchpadgesturephase_Update Touchpadgesturephase = 1
+	Touchpadgesturephase_End    Touchpadgesturephase = 2
+	Touchpadgesturephase_Cancel Touchpadgesturephase = 3
 )
 
 // Visibilitystate is a representation of the C type VisibilityState.
 type Visibilitystate int
 
 const (
-	// unobscured
-	GdkVisibilityUnobscured Visibilitystate = 0
-	// partial
-	GdkVisibilityPartial Visibilitystate = 1
-	// fully_obscured
-	GdkVisibilityFullyObscured Visibilitystate = 2
+	Visibilitystate_Unobscured    Visibilitystate = 0
+	Visibilitystate_Partial       Visibilitystate = 1
+	Visibilitystate_FullyObscured Visibilitystate = 2
 )
 
 // Visualtype is a representation of the C type VisualType.
 type Visualtype int
 
 const (
-	// static_gray
-	GdkVisualStaticGray Visualtype = 0
-	// grayscale
-	GdkVisualGrayscale Visualtype = 1
-	// static_color
-	GdkVisualStaticColor Visualtype = 2
-	// pseudo_color
-	GdkVisualPseudoColor Visualtype = 3
-	// true_color
-	GdkVisualTrueColor Visualtype = 4
-	// direct_color
-	GdkVisualDirectColor Visualtype = 5
+	Visualtype_StaticGray  Visualtype = 0
+	Visualtype_Grayscale   Visualtype = 1
+	Visualtype_StaticColor Visualtype = 2
+	Visualtype_PseudoColor Visualtype = 3
+	Visualtype_TrueColor   Visualtype = 4
+	Visualtype_DirectColor Visualtype = 5
 )
 
 // Windowedge is a representation of the C type WindowEdge.
 type Windowedge int
 
 const (
-	// north_west
-	GdkWindowEdgeNorthWest Windowedge = 0
-	// north
-	GdkWindowEdgeNorth Windowedge = 1
-	// north_east
-	GdkWindowEdgeNorthEast Windowedge = 2
-	// west
-	GdkWindowEdgeWest Windowedge = 3
-	// east
-	GdkWindowEdgeEast Windowedge = 4
-	// south_west
-	GdkWindowEdgeSouthWest Windowedge = 5
-	// south
-	GdkWindowEdgeSouth Windowedge = 6
-	// south_east
-	GdkWindowEdgeSouthEast Windowedge = 7
+	Windowedge_NorthWest Windowedge = 0
+	Windowedge_North     Windowedge = 1
+	Windowedge_NorthEast Windowedge = 2
+	Windowedge_West      Windowedge = 3
+	Windowedge_East      Windowedge = 4
+	Windowedge_SouthWest Windowedge = 5
+	Windowedge_South     Windowedge = 6
+	Windowedge_SouthEast Windowedge = 7
 )
 
 // Windowtype is a representation of the C type WindowType.
 type Windowtype int
 
 const (
-	// root
-	GdkWindowRoot Windowtype = 0
-	// toplevel
-	GdkWindowToplevel Windowtype = 1
-	// child
-	GdkWindowChild Windowtype = 2
-	// temp
-	GdkWindowTemp Windowtype = 3
-	// foreign
-	GdkWindowForeign Windowtype = 4
-	// offscreen
-	GdkWindowOffscreen Windowtype = 5
-	// subsurface
-	GdkWindowSubsurface Windowtype = 6
+	Windowtype_Root       Windowtype = 0
+	Windowtype_Toplevel   Windowtype = 1
+	Windowtype_Child      Windowtype = 2
+	Windowtype_Temp       Windowtype = 3
+	Windowtype_Foreign    Windowtype = 4
+	Windowtype_Offscreen  Windowtype = 5
+	Windowtype_Subsurface Windowtype = 6
 )
 
 // Windowtypehint is a representation of the C type WindowTypeHint.
 type Windowtypehint int
 
 const (
-	// normal
-	GdkWindowTypeHintNormal Windowtypehint = 0
-	// dialog
-	GdkWindowTypeHintDialog Windowtypehint = 1
-	// menu
-	GdkWindowTypeHintMenu Windowtypehint = 2
-	// toolbar
-	GdkWindowTypeHintToolbar Windowtypehint = 3
-	// splashscreen
-	GdkWindowTypeHintSplashscreen Windowtypehint = 4
-	// utility
-	GdkWindowTypeHintUtility Windowtypehint = 5
-	// dock
-	GdkWindowTypeHintDock Windowtypehint = 6
-	// desktop
-	GdkWindowTypeHintDesktop Windowtypehint = 7
-	// dropdown_menu
-	GdkWindowTypeHintDropdownMenu Windowtypehint = 8
-	// popup_menu
-	GdkWindowTypeHintPopupMenu Windowtypehint = 9
-	// tooltip
-	GdkWindowTypeHintTooltip Windowtypehint = 10
-	// notification
-	GdkWindowTypeHintNotification Windowtypehint = 11
-	// combo
-	GdkWindowTypeHintCombo Windowtypehint = 12
-	// dnd
-	GdkWindowTypeHintDnd Windowtypehint = 13
+	Windowtypehint_Normal       Windowtypehint = 0
+	Windowtypehint_Dialog       Windowtypehint = 1
+	Windowtypehint_Menu         Windowtypehint = 2
+	Windowtypehint_Toolbar      Windowtypehint = 3
+	Windowtypehint_Splashscreen Windowtypehint = 4
+	Windowtypehint_Utility      Windowtypehint = 5
+	Windowtypehint_Dock         Windowtypehint = 6
+	Windowtypehint_Desktop      Windowtypehint = 7
+	Windowtypehint_DropdownMenu Windowtypehint = 8
+	Windowtypehint_PopupMenu    Windowtypehint = 9
+	Windowtypehint_Tooltip      Windowtypehint = 10
+	Windowtypehint_Notification Windowtypehint = 11
+	Windowtypehint_Combo        Windowtypehint = 12
+	Windowtypehint_Dnd          Windowtypehint = 13
 )
 
 // Windowwindowclass is a representation of the C type WindowWindowClass.
 type Windowwindowclass int
 
 const (
-	// input_output
-	GdkInputOutput Windowwindowclass = 0
-	// input_only
-	GdkInputOnly Windowwindowclass = 1
+	Windowwindowclass_InputOutput Windowwindowclass = 0
+	Windowwindowclass_InputOnly   Windowwindowclass = 1
 )

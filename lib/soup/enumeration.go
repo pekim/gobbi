@@ -6,24 +6,18 @@ package soup
 type Addressfamily int
 
 const (
-	// invalid
-	SoupAddressFamilyInvalid Addressfamily = -1
-	// ipv4
-	SoupAddressFamilyIpv4 Addressfamily = 2
-	// ipv6
-	SoupAddressFamilyIpv6 Addressfamily = 10
+	Addressfamily_Invalid Addressfamily = -1
+	Addressfamily_Ipv4    Addressfamily = 2
+	Addressfamily_Ipv6    Addressfamily = 10
 )
 
 // Cacheresponse is a representation of the C type CacheResponse.
 type Cacheresponse int
 
 const (
-	// fresh
-	SoupCacheResponseFresh Cacheresponse = 0
-	// needs_validation
-	SoupCacheResponseNeedsValidation Cacheresponse = 1
-	// stale
-	SoupCacheResponseStale Cacheresponse = 2
+	Cacheresponse_Fresh           Cacheresponse = 0
+	Cacheresponse_NeedsValidation Cacheresponse = 1
+	Cacheresponse_Stale           Cacheresponse = 2
 )
 
 // Cachetype is a representation of the C type CacheType.
@@ -32,28 +26,20 @@ const (
 type Cachetype int
 
 const (
-	// single_user
-	SoupCacheSingleUser Cachetype = 0
-	// shared
-	SoupCacheShared Cachetype = 1
+	Cachetype_SingleUser Cachetype = 0
+	Cachetype_Shared     Cachetype = 1
 )
 
 // Connectionstate is a representation of the C type ConnectionState.
 type Connectionstate int
 
 const (
-	// new
-	SoupConnectionNew Connectionstate = 0
-	// connecting
-	SoupConnectionConnecting Connectionstate = 1
-	// idle
-	SoupConnectionIdle Connectionstate = 2
-	// in_use
-	SoupConnectionInUse Connectionstate = 3
-	// remote_disconnected
-	SoupConnectionRemoteDisconnected Connectionstate = 4
-	// disconnected
-	SoupConnectionDisconnected Connectionstate = 5
+	Connectionstate_New                Connectionstate = 0
+	Connectionstate_Connecting         Connectionstate = 1
+	Connectionstate_Idle               Connectionstate = 2
+	Connectionstate_InUse              Connectionstate = 3
+	Connectionstate_RemoteDisconnected Connectionstate = 4
+	Connectionstate_Disconnected       Connectionstate = 5
 )
 
 // Cookiejaracceptpolicy is a representation of the C type CookieJarAcceptPolicy.
@@ -62,248 +48,151 @@ const (
 type Cookiejaracceptpolicy int
 
 const (
-	// always
-	SoupCookieJarAcceptAlways Cookiejaracceptpolicy = 0
-	// never
-	SoupCookieJarAcceptNever Cookiejaracceptpolicy = 1
-	// no_third_party
-	SoupCookieJarAcceptNoThirdParty Cookiejaracceptpolicy = 2
+	Cookiejaracceptpolicy_Always       Cookiejaracceptpolicy = 0
+	Cookiejaracceptpolicy_Never        Cookiejaracceptpolicy = 1
+	Cookiejaracceptpolicy_NoThirdParty Cookiejaracceptpolicy = 2
 )
 
 // Dateformat is a representation of the C type DateFormat.
 type Dateformat int
 
 const (
-	// http
-	SoupDateHttp Dateformat = 1
-	// cookie
-	SoupDateCookie Dateformat = 2
-	// rfc2822
-	SoupDateRfc2822 Dateformat = 3
-	// iso8601_compact
-	SoupDateIso8601Compact Dateformat = 4
-	// iso8601_full
-	SoupDateIso8601Full Dateformat = 5
-	// iso8601
-	SoupDateIso8601 Dateformat = 5
-	// iso8601_xmlrpc
-	SoupDateIso8601Xmlrpc Dateformat = 6
+	Dateformat_Http           Dateformat = 1
+	Dateformat_Cookie         Dateformat = 2
+	Dateformat_Rfc2822        Dateformat = 3
+	Dateformat_Iso8601Compact Dateformat = 4
+	Dateformat_Iso8601Full    Dateformat = 5
+	Dateformat_Iso8601        Dateformat = 5
+	Dateformat_Iso8601Xmlrpc  Dateformat = 6
 )
 
 // Encoding is a representation of the C type Encoding.
 type Encoding int
 
 const (
-	// unrecognized
-	SoupEncodingUnrecognized Encoding = 0
-	// none
-	SoupEncodingNone Encoding = 1
-	// content_length
-	SoupEncodingContentLength Encoding = 2
-	// eof
-	SoupEncodingEof Encoding = 3
-	// chunked
-	SoupEncodingChunked Encoding = 4
-	// byteranges
-	SoupEncodingByteranges Encoding = 5
+	Encoding_Unrecognized  Encoding = 0
+	Encoding_None          Encoding = 1
+	Encoding_ContentLength Encoding = 2
+	Encoding_Eof           Encoding = 3
+	Encoding_Chunked       Encoding = 4
+	Encoding_Byteranges    Encoding = 5
 )
 
 // Httpversion is a representation of the C type HTTPVersion.
 type Httpversion int
 
 const (
-	// http_1_0
-	SoupHttp10 Httpversion = 0
-	// http_1_1
-	SoupHttp11 Httpversion = 1
+	Httpversion_Http10 Httpversion = 0
+	Httpversion_Http11 Httpversion = 1
 )
 
 // Knownstatuscode is a representation of the C type KnownStatusCode.
 type Knownstatuscode int
 
 const (
-	// none
-	SoupKnownStatusCodeNone Knownstatuscode = 0
-	// cancelled
-	SoupKnownStatusCodeCancelled Knownstatuscode = 1
-	// cant_resolve
-	SoupKnownStatusCodeCantResolve Knownstatuscode = 2
-	// cant_resolve_proxy
-	SoupKnownStatusCodeCantResolveProxy Knownstatuscode = 3
-	// cant_connect
-	SoupKnownStatusCodeCantConnect Knownstatuscode = 4
-	// cant_connect_proxy
-	SoupKnownStatusCodeCantConnectProxy Knownstatuscode = 5
-	// ssl_failed
-	SoupKnownStatusCodeSslFailed Knownstatuscode = 6
-	// io_error
-	SoupKnownStatusCodeIoError Knownstatuscode = 7
-	// malformed
-	SoupKnownStatusCodeMalformed Knownstatuscode = 8
-	// try_again
-	SoupKnownStatusCodeTryAgain Knownstatuscode = 9
-	// too_many_redirects
-	SoupKnownStatusCodeTooManyRedirects Knownstatuscode = 10
-	// tls_failed
-	SoupKnownStatusCodeTlsFailed Knownstatuscode = 11
-	// continue
-	SoupKnownStatusCodeContinue Knownstatuscode = 100
-	// switching_protocols
-	SoupKnownStatusCodeSwitchingProtocols Knownstatuscode = 101
-	// processing
-	SoupKnownStatusCodeProcessing Knownstatuscode = 102
-	// ok
-	SoupKnownStatusCodeOk Knownstatuscode = 200
-	// created
-	SoupKnownStatusCodeCreated Knownstatuscode = 201
-	// accepted
-	SoupKnownStatusCodeAccepted Knownstatuscode = 202
-	// non_authoritative
-	SoupKnownStatusCodeNonAuthoritative Knownstatuscode = 203
-	// no_content
-	SoupKnownStatusCodeNoContent Knownstatuscode = 204
-	// reset_content
-	SoupKnownStatusCodeResetContent Knownstatuscode = 205
-	// partial_content
-	SoupKnownStatusCodePartialContent Knownstatuscode = 206
-	// multi_status
-	SoupKnownStatusCodeMultiStatus Knownstatuscode = 207
-	// multiple_choices
-	SoupKnownStatusCodeMultipleChoices Knownstatuscode = 300
-	// moved_permanently
-	SoupKnownStatusCodeMovedPermanently Knownstatuscode = 301
-	// found
-	SoupKnownStatusCodeFound Knownstatuscode = 302
-	// moved_temporarily
-	SoupKnownStatusCodeMovedTemporarily Knownstatuscode = 302
-	// see_other
-	SoupKnownStatusCodeSeeOther Knownstatuscode = 303
-	// not_modified
-	SoupKnownStatusCodeNotModified Knownstatuscode = 304
-	// use_proxy
-	SoupKnownStatusCodeUseProxy Knownstatuscode = 305
-	// not_appearing_in_this_protocol
-	SoupKnownStatusCodeNotAppearingInThisProtocol Knownstatuscode = 306
-	// temporary_redirect
-	SoupKnownStatusCodeTemporaryRedirect Knownstatuscode = 307
-	// bad_request
-	SoupKnownStatusCodeBadRequest Knownstatuscode = 400
-	// unauthorized
-	SoupKnownStatusCodeUnauthorized Knownstatuscode = 401
-	// payment_required
-	SoupKnownStatusCodePaymentRequired Knownstatuscode = 402
-	// forbidden
-	SoupKnownStatusCodeForbidden Knownstatuscode = 403
-	// not_found
-	SoupKnownStatusCodeNotFound Knownstatuscode = 404
-	// method_not_allowed
-	SoupKnownStatusCodeMethodNotAllowed Knownstatuscode = 405
-	// not_acceptable
-	SoupKnownStatusCodeNotAcceptable Knownstatuscode = 406
-	// proxy_authentication_required
-	SoupKnownStatusCodeProxyAuthenticationRequired Knownstatuscode = 407
-	// proxy_unauthorized
-	SoupKnownStatusCodeProxyUnauthorized Knownstatuscode = 407
-	// request_timeout
-	SoupKnownStatusCodeRequestTimeout Knownstatuscode = 408
-	// conflict
-	SoupKnownStatusCodeConflict Knownstatuscode = 409
-	// gone
-	SoupKnownStatusCodeGone Knownstatuscode = 410
-	// length_required
-	SoupKnownStatusCodeLengthRequired Knownstatuscode = 411
-	// precondition_failed
-	SoupKnownStatusCodePreconditionFailed Knownstatuscode = 412
-	// request_entity_too_large
-	SoupKnownStatusCodeRequestEntityTooLarge Knownstatuscode = 413
-	// request_uri_too_long
-	SoupKnownStatusCodeRequestUriTooLong Knownstatuscode = 414
-	// unsupported_media_type
-	SoupKnownStatusCodeUnsupportedMediaType Knownstatuscode = 415
-	// requested_range_not_satisfiable
-	SoupKnownStatusCodeRequestedRangeNotSatisfiable Knownstatuscode = 416
-	// invalid_range
-	SoupKnownStatusCodeInvalidRange Knownstatuscode = 416
-	// expectation_failed
-	SoupKnownStatusCodeExpectationFailed Knownstatuscode = 417
-	// unprocessable_entity
-	SoupKnownStatusCodeUnprocessableEntity Knownstatuscode = 422
-	// locked
-	SoupKnownStatusCodeLocked Knownstatuscode = 423
-	// failed_dependency
-	SoupKnownStatusCodeFailedDependency Knownstatuscode = 424
-	// internal_server_error
-	SoupKnownStatusCodeInternalServerError Knownstatuscode = 500
-	// not_implemented
-	SoupKnownStatusCodeNotImplemented Knownstatuscode = 501
-	// bad_gateway
-	SoupKnownStatusCodeBadGateway Knownstatuscode = 502
-	// service_unavailable
-	SoupKnownStatusCodeServiceUnavailable Knownstatuscode = 503
-	// gateway_timeout
-	SoupKnownStatusCodeGatewayTimeout Knownstatuscode = 504
-	// http_version_not_supported
-	SoupKnownStatusCodeHttpVersionNotSupported Knownstatuscode = 505
-	// insufficient_storage
-	SoupKnownStatusCodeInsufficientStorage Knownstatuscode = 507
-	// not_extended
-	SoupKnownStatusCodeNotExtended Knownstatuscode = 510
+	Knownstatuscode_None                         Knownstatuscode = 0
+	Knownstatuscode_Cancelled                    Knownstatuscode = 1
+	Knownstatuscode_CantResolve                  Knownstatuscode = 2
+	Knownstatuscode_CantResolveProxy             Knownstatuscode = 3
+	Knownstatuscode_CantConnect                  Knownstatuscode = 4
+	Knownstatuscode_CantConnectProxy             Knownstatuscode = 5
+	Knownstatuscode_SslFailed                    Knownstatuscode = 6
+	Knownstatuscode_IoError                      Knownstatuscode = 7
+	Knownstatuscode_Malformed                    Knownstatuscode = 8
+	Knownstatuscode_TryAgain                     Knownstatuscode = 9
+	Knownstatuscode_TooManyRedirects             Knownstatuscode = 10
+	Knownstatuscode_TlsFailed                    Knownstatuscode = 11
+	Knownstatuscode_Continue                     Knownstatuscode = 100
+	Knownstatuscode_SwitchingProtocols           Knownstatuscode = 101
+	Knownstatuscode_Processing                   Knownstatuscode = 102
+	Knownstatuscode_Ok                           Knownstatuscode = 200
+	Knownstatuscode_Created                      Knownstatuscode = 201
+	Knownstatuscode_Accepted                     Knownstatuscode = 202
+	Knownstatuscode_NonAuthoritative             Knownstatuscode = 203
+	Knownstatuscode_NoContent                    Knownstatuscode = 204
+	Knownstatuscode_ResetContent                 Knownstatuscode = 205
+	Knownstatuscode_PartialContent               Knownstatuscode = 206
+	Knownstatuscode_MultiStatus                  Knownstatuscode = 207
+	Knownstatuscode_MultipleChoices              Knownstatuscode = 300
+	Knownstatuscode_MovedPermanently             Knownstatuscode = 301
+	Knownstatuscode_Found                        Knownstatuscode = 302
+	Knownstatuscode_MovedTemporarily             Knownstatuscode = 302
+	Knownstatuscode_SeeOther                     Knownstatuscode = 303
+	Knownstatuscode_NotModified                  Knownstatuscode = 304
+	Knownstatuscode_UseProxy                     Knownstatuscode = 305
+	Knownstatuscode_NotAppearingInThisProtocol   Knownstatuscode = 306
+	Knownstatuscode_TemporaryRedirect            Knownstatuscode = 307
+	Knownstatuscode_BadRequest                   Knownstatuscode = 400
+	Knownstatuscode_Unauthorized                 Knownstatuscode = 401
+	Knownstatuscode_PaymentRequired              Knownstatuscode = 402
+	Knownstatuscode_Forbidden                    Knownstatuscode = 403
+	Knownstatuscode_NotFound                     Knownstatuscode = 404
+	Knownstatuscode_MethodNotAllowed             Knownstatuscode = 405
+	Knownstatuscode_NotAcceptable                Knownstatuscode = 406
+	Knownstatuscode_ProxyAuthenticationRequired  Knownstatuscode = 407
+	Knownstatuscode_ProxyUnauthorized            Knownstatuscode = 407
+	Knownstatuscode_RequestTimeout               Knownstatuscode = 408
+	Knownstatuscode_Conflict                     Knownstatuscode = 409
+	Knownstatuscode_Gone                         Knownstatuscode = 410
+	Knownstatuscode_LengthRequired               Knownstatuscode = 411
+	Knownstatuscode_PreconditionFailed           Knownstatuscode = 412
+	Knownstatuscode_RequestEntityTooLarge        Knownstatuscode = 413
+	Knownstatuscode_RequestUriTooLong            Knownstatuscode = 414
+	Knownstatuscode_UnsupportedMediaType         Knownstatuscode = 415
+	Knownstatuscode_RequestedRangeNotSatisfiable Knownstatuscode = 416
+	Knownstatuscode_InvalidRange                 Knownstatuscode = 416
+	Knownstatuscode_ExpectationFailed            Knownstatuscode = 417
+	Knownstatuscode_UnprocessableEntity          Knownstatuscode = 422
+	Knownstatuscode_Locked                       Knownstatuscode = 423
+	Knownstatuscode_FailedDependency             Knownstatuscode = 424
+	Knownstatuscode_InternalServerError          Knownstatuscode = 500
+	Knownstatuscode_NotImplemented               Knownstatuscode = 501
+	Knownstatuscode_BadGateway                   Knownstatuscode = 502
+	Knownstatuscode_ServiceUnavailable           Knownstatuscode = 503
+	Knownstatuscode_GatewayTimeout               Knownstatuscode = 504
+	Knownstatuscode_HttpVersionNotSupported      Knownstatuscode = 505
+	Knownstatuscode_InsufficientStorage          Knownstatuscode = 507
+	Knownstatuscode_NotExtended                  Knownstatuscode = 510
 )
 
 // Loggerloglevel is a representation of the C type LoggerLogLevel.
 type Loggerloglevel int
 
 const (
-	// none
-	SoupLoggerLogNone Loggerloglevel = 0
-	// minimal
-	SoupLoggerLogMinimal Loggerloglevel = 1
-	// headers
-	SoupLoggerLogHeaders Loggerloglevel = 2
-	// body
-	SoupLoggerLogBody Loggerloglevel = 3
+	Loggerloglevel_None    Loggerloglevel = 0
+	Loggerloglevel_Minimal Loggerloglevel = 1
+	Loggerloglevel_Headers Loggerloglevel = 2
+	Loggerloglevel_Body    Loggerloglevel = 3
 )
 
 // Memoryuse is a representation of the C type MemoryUse.
 type Memoryuse int
 
 const (
-	// static
-	SoupMemoryStatic Memoryuse = 0
-	// take
-	SoupMemoryTake Memoryuse = 1
-	// copy
-	SoupMemoryCopy Memoryuse = 2
-	// temporary
-	SoupMemoryTemporary Memoryuse = 3
+	Memoryuse_Static    Memoryuse = 0
+	Memoryuse_Take      Memoryuse = 1
+	Memoryuse_Copy      Memoryuse = 2
+	Memoryuse_Temporary Memoryuse = 3
 )
 
 // Messageheaderstype is a representation of the C type MessageHeadersType.
 type Messageheaderstype int
 
 const (
-	// request
-	SoupMessageHeadersRequest Messageheaderstype = 0
-	// response
-	SoupMessageHeadersResponse Messageheaderstype = 1
-	// multipart
-	SoupMessageHeadersMultipart Messageheaderstype = 2
+	Messageheaderstype_Request   Messageheaderstype = 0
+	Messageheaderstype_Response  Messageheaderstype = 1
+	Messageheaderstype_Multipart Messageheaderstype = 2
 )
 
 // Messagepriority is a representation of the C type MessagePriority.
 type Messagepriority int
 
 const (
-	// very_low
-	SoupMessagePriorityVeryLow Messagepriority = 0
-	// low
-	SoupMessagePriorityLow Messagepriority = 1
-	// normal
-	SoupMessagePriorityNormal Messagepriority = 2
-	// high
-	SoupMessagePriorityHigh Messagepriority = 3
-	// very_high
-	SoupMessagePriorityVeryHigh Messagepriority = 4
+	Messagepriority_VeryLow  Messagepriority = 0
+	Messagepriority_Low      Messagepriority = 1
+	Messagepriority_Normal   Messagepriority = 2
+	Messagepriority_High     Messagepriority = 3
+	Messagepriority_VeryHigh Messagepriority = 4
 )
 
 // Requesterror is a representation of the C type RequestError.
@@ -312,170 +201,97 @@ const (
 type Requesterror int
 
 const (
-	// bad_uri
-	SoupRequestErrorBadUri Requesterror = 0
-	// unsupported_uri_scheme
-	SoupRequestErrorUnsupportedUriScheme Requesterror = 1
-	// parsing
-	SoupRequestErrorParsing Requesterror = 2
-	// encoding
-	SoupRequestErrorEncoding Requesterror = 3
+	Requesterror_BadUri               Requesterror = 0
+	Requesterror_UnsupportedUriScheme Requesterror = 1
+	Requesterror_Parsing              Requesterror = 2
+	Requesterror_Encoding             Requesterror = 3
 )
 
 // Requestererror is a representation of the C type RequesterError.
 type Requestererror int
 
 const (
-	// bad_uri
-	SoupRequesterErrorBadUri Requestererror = 0
-	// unsupported_uri_scheme
-	SoupRequesterErrorUnsupportedUriScheme Requestererror = 1
+	Requestererror_BadUri               Requestererror = 0
+	Requestererror_UnsupportedUriScheme Requestererror = 1
 )
 
 // Socketiostatus is a representation of the C type SocketIOStatus.
 type Socketiostatus int
 
 const (
-	// ok
-	SoupSocketOk Socketiostatus = 0
-	// would_block
-	SoupSocketWouldBlock Socketiostatus = 1
-	// eof
-	SoupSocketEof Socketiostatus = 2
-	// error
-	SoupSocketError Socketiostatus = 3
+	Socketiostatus_Ok         Socketiostatus = 0
+	Socketiostatus_WouldBlock Socketiostatus = 1
+	Socketiostatus_Eof        Socketiostatus = 2
+	Socketiostatus_Error      Socketiostatus = 3
 )
 
 // Status is a representation of the C type Status.
 type Status int
 
 const (
-	// none
-	SoupStatusNone Status = 0
-	// cancelled
-	SoupStatusCancelled Status = 1
-	// cant_resolve
-	SoupStatusCantResolve Status = 2
-	// cant_resolve_proxy
-	SoupStatusCantResolveProxy Status = 3
-	// cant_connect
-	SoupStatusCantConnect Status = 4
-	// cant_connect_proxy
-	SoupStatusCantConnectProxy Status = 5
-	// ssl_failed
-	SoupStatusSslFailed Status = 6
-	// io_error
-	SoupStatusIoError Status = 7
-	// malformed
-	SoupStatusMalformed Status = 8
-	// try_again
-	SoupStatusTryAgain Status = 9
-	// too_many_redirects
-	SoupStatusTooManyRedirects Status = 10
-	// tls_failed
-	SoupStatusTlsFailed Status = 11
-	// continue
-	SoupStatusContinue Status = 100
-	// switching_protocols
-	SoupStatusSwitchingProtocols Status = 101
-	// processing
-	SoupStatusProcessing Status = 102
-	// ok
-	SoupStatusOk Status = 200
-	// created
-	SoupStatusCreated Status = 201
-	// accepted
-	SoupStatusAccepted Status = 202
-	// non_authoritative
-	SoupStatusNonAuthoritative Status = 203
-	// no_content
-	SoupStatusNoContent Status = 204
-	// reset_content
-	SoupStatusResetContent Status = 205
-	// partial_content
-	SoupStatusPartialContent Status = 206
-	// multi_status
-	SoupStatusMultiStatus Status = 207
-	// multiple_choices
-	SoupStatusMultipleChoices Status = 300
-	// moved_permanently
-	SoupStatusMovedPermanently Status = 301
-	// found
-	SoupStatusFound Status = 302
-	// moved_temporarily
-	SoupStatusMovedTemporarily Status = 302
-	// see_other
-	SoupStatusSeeOther Status = 303
-	// not_modified
-	SoupStatusNotModified Status = 304
-	// use_proxy
-	SoupStatusUseProxy Status = 305
-	// not_appearing_in_this_protocol
-	SoupStatusNotAppearingInThisProtocol Status = 306
-	// temporary_redirect
-	SoupStatusTemporaryRedirect Status = 307
-	// bad_request
-	SoupStatusBadRequest Status = 400
-	// unauthorized
-	SoupStatusUnauthorized Status = 401
-	// payment_required
-	SoupStatusPaymentRequired Status = 402
-	// forbidden
-	SoupStatusForbidden Status = 403
-	// not_found
-	SoupStatusNotFound Status = 404
-	// method_not_allowed
-	SoupStatusMethodNotAllowed Status = 405
-	// not_acceptable
-	SoupStatusNotAcceptable Status = 406
-	// proxy_authentication_required
-	SoupStatusProxyAuthenticationRequired Status = 407
-	// proxy_unauthorized
-	SoupStatusProxyUnauthorized Status = 407
-	// request_timeout
-	SoupStatusRequestTimeout Status = 408
-	// conflict
-	SoupStatusConflict Status = 409
-	// gone
-	SoupStatusGone Status = 410
-	// length_required
-	SoupStatusLengthRequired Status = 411
-	// precondition_failed
-	SoupStatusPreconditionFailed Status = 412
-	// request_entity_too_large
-	SoupStatusRequestEntityTooLarge Status = 413
-	// request_uri_too_long
-	SoupStatusRequestUriTooLong Status = 414
-	// unsupported_media_type
-	SoupStatusUnsupportedMediaType Status = 415
-	// requested_range_not_satisfiable
-	SoupStatusRequestedRangeNotSatisfiable Status = 416
-	// invalid_range
-	SoupStatusInvalidRange Status = 416
-	// expectation_failed
-	SoupStatusExpectationFailed Status = 417
-	// unprocessable_entity
-	SoupStatusUnprocessableEntity Status = 422
-	// locked
-	SoupStatusLocked Status = 423
-	// failed_dependency
-	SoupStatusFailedDependency Status = 424
-	// internal_server_error
-	SoupStatusInternalServerError Status = 500
-	// not_implemented
-	SoupStatusNotImplemented Status = 501
-	// bad_gateway
-	SoupStatusBadGateway Status = 502
-	// service_unavailable
-	SoupStatusServiceUnavailable Status = 503
-	// gateway_timeout
-	SoupStatusGatewayTimeout Status = 504
-	// http_version_not_supported
-	SoupStatusHttpVersionNotSupported Status = 505
-	// insufficient_storage
-	SoupStatusInsufficientStorage Status = 507
-	// not_extended
-	SoupStatusNotExtended Status = 510
+	Status_None                         Status = 0
+	Status_Cancelled                    Status = 1
+	Status_CantResolve                  Status = 2
+	Status_CantResolveProxy             Status = 3
+	Status_CantConnect                  Status = 4
+	Status_CantConnectProxy             Status = 5
+	Status_SslFailed                    Status = 6
+	Status_IoError                      Status = 7
+	Status_Malformed                    Status = 8
+	Status_TryAgain                     Status = 9
+	Status_TooManyRedirects             Status = 10
+	Status_TlsFailed                    Status = 11
+	Status_Continue                     Status = 100
+	Status_SwitchingProtocols           Status = 101
+	Status_Processing                   Status = 102
+	Status_Ok                           Status = 200
+	Status_Created                      Status = 201
+	Status_Accepted                     Status = 202
+	Status_NonAuthoritative             Status = 203
+	Status_NoContent                    Status = 204
+	Status_ResetContent                 Status = 205
+	Status_PartialContent               Status = 206
+	Status_MultiStatus                  Status = 207
+	Status_MultipleChoices              Status = 300
+	Status_MovedPermanently             Status = 301
+	Status_Found                        Status = 302
+	Status_MovedTemporarily             Status = 302
+	Status_SeeOther                     Status = 303
+	Status_NotModified                  Status = 304
+	Status_UseProxy                     Status = 305
+	Status_NotAppearingInThisProtocol   Status = 306
+	Status_TemporaryRedirect            Status = 307
+	Status_BadRequest                   Status = 400
+	Status_Unauthorized                 Status = 401
+	Status_PaymentRequired              Status = 402
+	Status_Forbidden                    Status = 403
+	Status_NotFound                     Status = 404
+	Status_MethodNotAllowed             Status = 405
+	Status_NotAcceptable                Status = 406
+	Status_ProxyAuthenticationRequired  Status = 407
+	Status_ProxyUnauthorized            Status = 407
+	Status_RequestTimeout               Status = 408
+	Status_Conflict                     Status = 409
+	Status_Gone                         Status = 410
+	Status_LengthRequired               Status = 411
+	Status_PreconditionFailed           Status = 412
+	Status_RequestEntityTooLarge        Status = 413
+	Status_RequestUriTooLong            Status = 414
+	Status_UnsupportedMediaType         Status = 415
+	Status_RequestedRangeNotSatisfiable Status = 416
+	Status_InvalidRange                 Status = 416
+	Status_ExpectationFailed            Status = 417
+	Status_UnprocessableEntity          Status = 422
+	Status_Locked                       Status = 423
+	Status_FailedDependency             Status = 424
+	Status_InternalServerError          Status = 500
+	Status_NotImplemented               Status = 501
+	Status_BadGateway                   Status = 502
+	Status_ServiceUnavailable           Status = 503
+	Status_GatewayTimeout               Status = 504
+	Status_HttpVersionNotSupported      Status = 505
+	Status_InsufficientStorage          Status = 507
+	Status_NotExtended                  Status = 510
 )
 
 // Tlderror is a representation of the C type TLDError.
@@ -484,14 +300,10 @@ const (
 type Tlderror int
 
 const (
-	// invalid_hostname
-	SoupTldErrorInvalidHostname Tlderror = 0
-	// is_ip_address
-	SoupTldErrorIsIpAddress Tlderror = 1
-	// not_enough_domains
-	SoupTldErrorNotEnoughDomains Tlderror = 2
-	// no_base_domain
-	SoupTldErrorNoBaseDomain Tlderror = 3
+	Tlderror_InvalidHostname  Tlderror = 0
+	Tlderror_IsIpAddress      Tlderror = 1
+	Tlderror_NotEnoughDomains Tlderror = 2
+	Tlderror_NoBaseDomain     Tlderror = 3
 )
 
 // Websocketclosecode is a representation of the C type WebsocketCloseCode.
@@ -500,30 +312,18 @@ const (
 type Websocketclosecode int
 
 const (
-	// normal
-	SoupWebsocketCloseNormal Websocketclosecode = 1000
-	// going_away
-	SoupWebsocketCloseGoingAway Websocketclosecode = 1001
-	// protocol_error
-	SoupWebsocketCloseProtocolError Websocketclosecode = 1002
-	// unsupported_data
-	SoupWebsocketCloseUnsupportedData Websocketclosecode = 1003
-	// no_status
-	SoupWebsocketCloseNoStatus Websocketclosecode = 1005
-	// abnormal
-	SoupWebsocketCloseAbnormal Websocketclosecode = 1006
-	// bad_data
-	SoupWebsocketCloseBadData Websocketclosecode = 1007
-	// policy_violation
-	SoupWebsocketClosePolicyViolation Websocketclosecode = 1008
-	// too_big
-	SoupWebsocketCloseTooBig Websocketclosecode = 1009
-	// no_extension
-	SoupWebsocketCloseNoExtension Websocketclosecode = 1010
-	// server_error
-	SoupWebsocketCloseServerError Websocketclosecode = 1011
-	// tls_handshake
-	SoupWebsocketCloseTlsHandshake Websocketclosecode = 1015
+	Websocketclosecode_Normal          Websocketclosecode = 1000
+	Websocketclosecode_GoingAway       Websocketclosecode = 1001
+	Websocketclosecode_ProtocolError   Websocketclosecode = 1002
+	Websocketclosecode_UnsupportedData Websocketclosecode = 1003
+	Websocketclosecode_NoStatus        Websocketclosecode = 1005
+	Websocketclosecode_Abnormal        Websocketclosecode = 1006
+	Websocketclosecode_BadData         Websocketclosecode = 1007
+	Websocketclosecode_PolicyViolation Websocketclosecode = 1008
+	Websocketclosecode_TooBig          Websocketclosecode = 1009
+	Websocketclosecode_NoExtension     Websocketclosecode = 1010
+	Websocketclosecode_ServerError     Websocketclosecode = 1011
+	Websocketclosecode_TlsHandshake    Websocketclosecode = 1015
 )
 
 // Websocketconnectiontype is a representation of the C type WebsocketConnectionType.
@@ -532,12 +332,9 @@ const (
 type Websocketconnectiontype int
 
 const (
-	// unknown
-	SoupWebsocketConnectionUnknown Websocketconnectiontype = 0
-	// client
-	SoupWebsocketConnectionClient Websocketconnectiontype = 1
-	// server
-	SoupWebsocketConnectionServer Websocketconnectiontype = 2
+	Websocketconnectiontype_Unknown Websocketconnectiontype = 0
+	Websocketconnectiontype_Client  Websocketconnectiontype = 1
+	Websocketconnectiontype_Server  Websocketconnectiontype = 2
 )
 
 // Websocketdatatype is a representation of the C type WebsocketDataType.
@@ -546,10 +343,8 @@ const (
 type Websocketdatatype int
 
 const (
-	// text
-	SoupWebsocketDataText Websocketdatatype = 1
-	// binary
-	SoupWebsocketDataBinary Websocketdatatype = 2
+	Websocketdatatype_Text   Websocketdatatype = 1
+	Websocketdatatype_Binary Websocketdatatype = 2
 )
 
 // Websocketerror is a representation of the C type WebsocketError.
@@ -558,14 +353,10 @@ const (
 type Websocketerror int
 
 const (
-	// failed
-	SoupWebsocketErrorFailed Websocketerror = 0
-	// not_websocket
-	SoupWebsocketErrorNotWebsocket Websocketerror = 1
-	// bad_handshake
-	SoupWebsocketErrorBadHandshake Websocketerror = 2
-	// bad_origin
-	SoupWebsocketErrorBadOrigin Websocketerror = 3
+	Websocketerror_Failed       Websocketerror = 0
+	Websocketerror_NotWebsocket Websocketerror = 1
+	Websocketerror_BadHandshake Websocketerror = 2
+	Websocketerror_BadOrigin    Websocketerror = 3
 )
 
 // Websocketstate is a representation of the C type WebsocketState.
@@ -574,46 +365,31 @@ const (
 type Websocketstate int
 
 const (
-	// open
-	SoupWebsocketStateOpen Websocketstate = 1
-	// closing
-	SoupWebsocketStateClosing Websocketstate = 2
-	// closed
-	SoupWebsocketStateClosed Websocketstate = 3
+	Websocketstate_Open    Websocketstate = 1
+	Websocketstate_Closing Websocketstate = 2
+	Websocketstate_Closed  Websocketstate = 3
 )
 
 // Xmlrpcerror is a representation of the C type XMLRPCError.
 type Xmlrpcerror int
 
 const (
-	// arguments
-	SoupXmlrpcErrorArguments Xmlrpcerror = 0
-	// retval
-	SoupXmlrpcErrorRetval Xmlrpcerror = 1
+	Xmlrpcerror_Arguments Xmlrpcerror = 0
+	Xmlrpcerror_Retval    Xmlrpcerror = 1
 )
 
 // Xmlrpcfault is a representation of the C type XMLRPCFault.
 type Xmlrpcfault int
 
 const (
-	// parse_error_not_well_formed
-	SoupXmlrpcFaultParseErrorNotWellFormed Xmlrpcfault = -32700
-	// parse_error_unsupported_encoding
-	SoupXmlrpcFaultParseErrorUnsupportedEncoding Xmlrpcfault = -32701
-	// parse_error_invalid_character_for_encoding
-	SoupXmlrpcFaultParseErrorInvalidCharacterForEncoding Xmlrpcfault = -32702
-	// server_error_invalid_xml_rpc
-	SoupXmlrpcFaultServerErrorInvalidXmlRpc Xmlrpcfault = -32600
-	// server_error_requested_method_not_found
-	SoupXmlrpcFaultServerErrorRequestedMethodNotFound Xmlrpcfault = -32601
-	// server_error_invalid_method_parameters
-	SoupXmlrpcFaultServerErrorInvalidMethodParameters Xmlrpcfault = -32602
-	// server_error_internal_xml_rpc_error
-	SoupXmlrpcFaultServerErrorInternalXmlRpcError Xmlrpcfault = -32603
-	// application_error
-	SoupXmlrpcFaultApplicationError Xmlrpcfault = -32500
-	// system_error
-	SoupXmlrpcFaultSystemError Xmlrpcfault = -32400
-	// transport_error
-	SoupXmlrpcFaultTransportError Xmlrpcfault = -32300
+	Xmlrpcfault_ParseErrorNotWellFormed               Xmlrpcfault = -32700
+	Xmlrpcfault_ParseErrorUnsupportedEncoding         Xmlrpcfault = -32701
+	Xmlrpcfault_ParseErrorInvalidCharacterForEncoding Xmlrpcfault = -32702
+	Xmlrpcfault_ServerErrorInvalidXmlRpc              Xmlrpcfault = -32600
+	Xmlrpcfault_ServerErrorRequestedMethodNotFound    Xmlrpcfault = -32601
+	Xmlrpcfault_ServerErrorInvalidMethodParameters    Xmlrpcfault = -32602
+	Xmlrpcfault_ServerErrorInternalXmlRpcError        Xmlrpcfault = -32603
+	Xmlrpcfault_ApplicationError                      Xmlrpcfault = -32500
+	Xmlrpcfault_SystemError                           Xmlrpcfault = -32400
+	Xmlrpcfault_TransportError                        Xmlrpcfault = -32300
 )

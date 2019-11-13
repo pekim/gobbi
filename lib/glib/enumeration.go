@@ -6,22 +6,14 @@ package glib
 type Bookmarkfileerror int
 
 const (
-	// invalid_uri
-	GBookmarkFileErrorInvalidUri Bookmarkfileerror = 0
-	// invalid_value
-	GBookmarkFileErrorInvalidValue Bookmarkfileerror = 1
-	// app_not_registered
-	GBookmarkFileErrorAppNotRegistered Bookmarkfileerror = 2
-	// uri_not_found
-	GBookmarkFileErrorUriNotFound Bookmarkfileerror = 3
-	// read
-	GBookmarkFileErrorRead Bookmarkfileerror = 4
-	// unknown_encoding
-	GBookmarkFileErrorUnknownEncoding Bookmarkfileerror = 5
-	// write
-	GBookmarkFileErrorWrite Bookmarkfileerror = 6
-	// file_not_found
-	GBookmarkFileErrorFileNotFound Bookmarkfileerror = 7
+	Bookmarkfileerror_InvalidUri       Bookmarkfileerror = 0
+	Bookmarkfileerror_InvalidValue     Bookmarkfileerror = 1
+	Bookmarkfileerror_AppNotRegistered Bookmarkfileerror = 2
+	Bookmarkfileerror_UriNotFound      Bookmarkfileerror = 3
+	Bookmarkfileerror_Read             Bookmarkfileerror = 4
+	Bookmarkfileerror_UnknownEncoding  Bookmarkfileerror = 5
+	Bookmarkfileerror_Write            Bookmarkfileerror = 6
+	Bookmarkfileerror_FileNotFound     Bookmarkfileerror = 7
 )
 
 // Checksumtype is a representation of the C type ChecksumType.
@@ -30,252 +22,159 @@ const (
 type Checksumtype int
 
 const (
-	// md5
-	GChecksumMd5 Checksumtype = 0
-	// sha1
-	GChecksumSha1 Checksumtype = 1
-	// sha256
-	GChecksumSha256 Checksumtype = 2
-	// sha512
-	GChecksumSha512 Checksumtype = 3
-	// sha384
-	GChecksumSha384 Checksumtype = 4
+	Checksumtype_Md5    Checksumtype = 0
+	Checksumtype_Sha1   Checksumtype = 1
+	Checksumtype_Sha256 Checksumtype = 2
+	Checksumtype_Sha512 Checksumtype = 3
+	Checksumtype_Sha384 Checksumtype = 4
 )
 
 // Converterror is a representation of the C type ConvertError.
 type Converterror int
 
 const (
-	// no_conversion
-	GConvertErrorNoConversion Converterror = 0
-	// illegal_sequence
-	GConvertErrorIllegalSequence Converterror = 1
-	// failed
-	GConvertErrorFailed Converterror = 2
-	// partial_input
-	GConvertErrorPartialInput Converterror = 3
-	// bad_uri
-	GConvertErrorBadUri Converterror = 4
-	// not_absolute_path
-	GConvertErrorNotAbsolutePath Converterror = 5
-	// no_memory
-	GConvertErrorNoMemory Converterror = 6
-	// embedded_nul
-	GConvertErrorEmbeddedNul Converterror = 7
+	Converterror_NoConversion    Converterror = 0
+	Converterror_IllegalSequence Converterror = 1
+	Converterror_Failed          Converterror = 2
+	Converterror_PartialInput    Converterror = 3
+	Converterror_BadUri          Converterror = 4
+	Converterror_NotAbsolutePath Converterror = 5
+	Converterror_NoMemory        Converterror = 6
+	Converterror_EmbeddedNul     Converterror = 7
 )
 
 // Datedmy is a representation of the C type DateDMY.
 type Datedmy int
 
 const (
-	// day
-	GDateDay Datedmy = 0
-	// month
-	GDateMonth Datedmy = 1
-	// year
-	GDateYear Datedmy = 2
+	Datedmy_Day   Datedmy = 0
+	Datedmy_Month Datedmy = 1
+	Datedmy_Year  Datedmy = 2
 )
 
 // Datemonth is a representation of the C type DateMonth.
 type Datemonth int
 
 const (
-	// bad_month
-	GDateBadMonth Datemonth = 0
-	// january
-	GDateJanuary Datemonth = 1
-	// february
-	GDateFebruary Datemonth = 2
-	// march
-	GDateMarch Datemonth = 3
-	// april
-	GDateApril Datemonth = 4
-	// may
-	GDateMay Datemonth = 5
-	// june
-	GDateJune Datemonth = 6
-	// july
-	GDateJuly Datemonth = 7
-	// august
-	GDateAugust Datemonth = 8
-	// september
-	GDateSeptember Datemonth = 9
-	// october
-	GDateOctober Datemonth = 10
-	// november
-	GDateNovember Datemonth = 11
-	// december
-	GDateDecember Datemonth = 12
+	Datemonth_BadMonth  Datemonth = 0
+	Datemonth_January   Datemonth = 1
+	Datemonth_February  Datemonth = 2
+	Datemonth_March     Datemonth = 3
+	Datemonth_April     Datemonth = 4
+	Datemonth_May       Datemonth = 5
+	Datemonth_June      Datemonth = 6
+	Datemonth_July      Datemonth = 7
+	Datemonth_August    Datemonth = 8
+	Datemonth_September Datemonth = 9
+	Datemonth_October   Datemonth = 10
+	Datemonth_November  Datemonth = 11
+	Datemonth_December  Datemonth = 12
 )
 
 // Dateweekday is a representation of the C type DateWeekday.
 type Dateweekday int
 
 const (
-	// bad_weekday
-	GDateBadWeekday Dateweekday = 0
-	// monday
-	GDateMonday Dateweekday = 1
-	// tuesday
-	GDateTuesday Dateweekday = 2
-	// wednesday
-	GDateWednesday Dateweekday = 3
-	// thursday
-	GDateThursday Dateweekday = 4
-	// friday
-	GDateFriday Dateweekday = 5
-	// saturday
-	GDateSaturday Dateweekday = 6
-	// sunday
-	GDateSunday Dateweekday = 7
+	Dateweekday_BadWeekday Dateweekday = 0
+	Dateweekday_Monday     Dateweekday = 1
+	Dateweekday_Tuesday    Dateweekday = 2
+	Dateweekday_Wednesday  Dateweekday = 3
+	Dateweekday_Thursday   Dateweekday = 4
+	Dateweekday_Friday     Dateweekday = 5
+	Dateweekday_Saturday   Dateweekday = 6
+	Dateweekday_Sunday     Dateweekday = 7
 )
 
 // Errortype is a representation of the C type ErrorType.
 type Errortype int
 
 const (
-	// unknown
-	GErrUnknown Errortype = 0
-	// unexp_eof
-	GErrUnexpEof Errortype = 1
-	// unexp_eof_in_string
-	GErrUnexpEofInString Errortype = 2
-	// unexp_eof_in_comment
-	GErrUnexpEofInComment Errortype = 3
-	// non_digit_in_const
-	GErrNonDigitInConst Errortype = 4
-	// digit_radix
-	GErrDigitRadix Errortype = 5
-	// float_radix
-	GErrFloatRadix Errortype = 6
-	// float_malformed
-	GErrFloatMalformed Errortype = 7
+	Errortype_Unknown           Errortype = 0
+	Errortype_UnexpEof          Errortype = 1
+	Errortype_UnexpEofInString  Errortype = 2
+	Errortype_UnexpEofInComment Errortype = 3
+	Errortype_NonDigitInConst   Errortype = 4
+	Errortype_DigitRadix        Errortype = 5
+	Errortype_FloatRadix        Errortype = 6
+	Errortype_FloatMalformed    Errortype = 7
 )
 
 // Fileerror is a representation of the C type FileError.
 type Fileerror int
 
 const (
-	// exist
-	GFileErrorExist Fileerror = 0
-	// isdir
-	GFileErrorIsdir Fileerror = 1
-	// acces
-	GFileErrorAcces Fileerror = 2
-	// nametoolong
-	GFileErrorNametoolong Fileerror = 3
-	// noent
-	GFileErrorNoent Fileerror = 4
-	// notdir
-	GFileErrorNotdir Fileerror = 5
-	// nxio
-	GFileErrorNxio Fileerror = 6
-	// nodev
-	GFileErrorNodev Fileerror = 7
-	// rofs
-	GFileErrorRofs Fileerror = 8
-	// txtbsy
-	GFileErrorTxtbsy Fileerror = 9
-	// fault
-	GFileErrorFault Fileerror = 10
-	// loop
-	GFileErrorLoop Fileerror = 11
-	// nospc
-	GFileErrorNospc Fileerror = 12
-	// nomem
-	GFileErrorNomem Fileerror = 13
-	// mfile
-	GFileErrorMfile Fileerror = 14
-	// nfile
-	GFileErrorNfile Fileerror = 15
-	// badf
-	GFileErrorBadf Fileerror = 16
-	// inval
-	GFileErrorInval Fileerror = 17
-	// pipe
-	GFileErrorPipe Fileerror = 18
-	// again
-	GFileErrorAgain Fileerror = 19
-	// intr
-	GFileErrorIntr Fileerror = 20
-	// io
-	GFileErrorIo Fileerror = 21
-	// perm
-	GFileErrorPerm Fileerror = 22
-	// nosys
-	GFileErrorNosys Fileerror = 23
-	// failed
-	GFileErrorFailed Fileerror = 24
+	Fileerror_Exist       Fileerror = 0
+	Fileerror_Isdir       Fileerror = 1
+	Fileerror_Acces       Fileerror = 2
+	Fileerror_Nametoolong Fileerror = 3
+	Fileerror_Noent       Fileerror = 4
+	Fileerror_Notdir      Fileerror = 5
+	Fileerror_Nxio        Fileerror = 6
+	Fileerror_Nodev       Fileerror = 7
+	Fileerror_Rofs        Fileerror = 8
+	Fileerror_Txtbsy      Fileerror = 9
+	Fileerror_Fault       Fileerror = 10
+	Fileerror_Loop        Fileerror = 11
+	Fileerror_Nospc       Fileerror = 12
+	Fileerror_Nomem       Fileerror = 13
+	Fileerror_Mfile       Fileerror = 14
+	Fileerror_Nfile       Fileerror = 15
+	Fileerror_Badf        Fileerror = 16
+	Fileerror_Inval       Fileerror = 17
+	Fileerror_Pipe        Fileerror = 18
+	Fileerror_Again       Fileerror = 19
+	Fileerror_Intr        Fileerror = 20
+	Fileerror_Io          Fileerror = 21
+	Fileerror_Perm        Fileerror = 22
+	Fileerror_Nosys       Fileerror = 23
+	Fileerror_Failed      Fileerror = 24
 )
 
 // Iochannelerror is a representation of the C type IOChannelError.
 type Iochannelerror int
 
 const (
-	// fbig
-	GIoChannelErrorFbig Iochannelerror = 0
-	// inval
-	GIoChannelErrorInval Iochannelerror = 1
-	// io
-	GIoChannelErrorIo Iochannelerror = 2
-	// isdir
-	GIoChannelErrorIsdir Iochannelerror = 3
-	// nospc
-	GIoChannelErrorNospc Iochannelerror = 4
-	// nxio
-	GIoChannelErrorNxio Iochannelerror = 5
-	// overflow
-	GIoChannelErrorOverflow Iochannelerror = 6
-	// pipe
-	GIoChannelErrorPipe Iochannelerror = 7
-	// failed
-	GIoChannelErrorFailed Iochannelerror = 8
+	Iochannelerror_Fbig     Iochannelerror = 0
+	Iochannelerror_Inval    Iochannelerror = 1
+	Iochannelerror_Io       Iochannelerror = 2
+	Iochannelerror_Isdir    Iochannelerror = 3
+	Iochannelerror_Nospc    Iochannelerror = 4
+	Iochannelerror_Nxio     Iochannelerror = 5
+	Iochannelerror_Overflow Iochannelerror = 6
+	Iochannelerror_Pipe     Iochannelerror = 7
+	Iochannelerror_Failed   Iochannelerror = 8
 )
 
 // Ioerror is a representation of the C type IOError.
 type Ioerror int
 
 const (
-	// none
-	GIoErrorNone Ioerror = 0
-	// again
-	GIoErrorAgain Ioerror = 1
-	// inval
-	GIoErrorInval Ioerror = 2
-	// unknown
-	GIoErrorUnknown Ioerror = 3
+	Ioerror_None    Ioerror = 0
+	Ioerror_Again   Ioerror = 1
+	Ioerror_Inval   Ioerror = 2
+	Ioerror_Unknown Ioerror = 3
 )
 
 // Iostatus is a representation of the C type IOStatus.
 type Iostatus int
 
 const (
-	// error
-	GIoStatusError Iostatus = 0
-	// normal
-	GIoStatusNormal Iostatus = 1
-	// eof
-	GIoStatusEof Iostatus = 2
-	// again
-	GIoStatusAgain Iostatus = 3
+	Iostatus_Error  Iostatus = 0
+	Iostatus_Normal Iostatus = 1
+	Iostatus_Eof    Iostatus = 2
+	Iostatus_Again  Iostatus = 3
 )
 
 // Keyfileerror is a representation of the C type KeyFileError.
 type Keyfileerror int
 
 const (
-	// unknown_encoding
-	GKeyFileErrorUnknownEncoding Keyfileerror = 0
-	// parse
-	GKeyFileErrorParse Keyfileerror = 1
-	// not_found
-	GKeyFileErrorNotFound Keyfileerror = 2
-	// key_not_found
-	GKeyFileErrorKeyNotFound Keyfileerror = 3
-	// group_not_found
-	GKeyFileErrorGroupNotFound Keyfileerror = 4
-	// invalid_value
-	GKeyFileErrorInvalidValue Keyfileerror = 5
+	Keyfileerror_UnknownEncoding Keyfileerror = 0
+	Keyfileerror_Parse           Keyfileerror = 1
+	Keyfileerror_NotFound        Keyfileerror = 2
+	Keyfileerror_KeyNotFound     Keyfileerror = 3
+	Keyfileerror_GroupNotFound   Keyfileerror = 4
+	Keyfileerror_InvalidValue    Keyfileerror = 5
 )
 
 // Logwriteroutput is a representation of the C type LogWriterOutput.
@@ -284,52 +183,35 @@ const (
 type Logwriteroutput int
 
 const (
-	// handled
-	GLogWriterHandled Logwriteroutput = 1
-	// unhandled
-	GLogWriterUnhandled Logwriteroutput = 0
+	Logwriteroutput_Handled   Logwriteroutput = 1
+	Logwriteroutput_Unhandled Logwriteroutput = 0
 )
 
 // Markuperror is a representation of the C type MarkupError.
 type Markuperror int
 
 const (
-	// bad_utf8
-	GMarkupErrorBadUtf8 Markuperror = 0
-	// empty
-	GMarkupErrorEmpty Markuperror = 1
-	// parse
-	GMarkupErrorParse Markuperror = 2
-	// unknown_element
-	GMarkupErrorUnknownElement Markuperror = 3
-	// unknown_attribute
-	GMarkupErrorUnknownAttribute Markuperror = 4
-	// invalid_content
-	GMarkupErrorInvalidContent Markuperror = 5
-	// missing_attribute
-	GMarkupErrorMissingAttribute Markuperror = 6
+	Markuperror_BadUtf8          Markuperror = 0
+	Markuperror_Empty            Markuperror = 1
+	Markuperror_Parse            Markuperror = 2
+	Markuperror_UnknownElement   Markuperror = 3
+	Markuperror_UnknownAttribute Markuperror = 4
+	Markuperror_InvalidContent   Markuperror = 5
+	Markuperror_MissingAttribute Markuperror = 6
 )
 
 // Normalizemode is a representation of the C type NormalizeMode.
 type Normalizemode int
 
 const (
-	// default
-	GNormalizeDefault Normalizemode = 0
-	// nfd
-	GNormalizeNfd Normalizemode = 0
-	// default_compose
-	GNormalizeDefaultCompose Normalizemode = 1
-	// nfc
-	GNormalizeNfc Normalizemode = 1
-	// all
-	GNormalizeAll Normalizemode = 2
-	// nfkd
-	GNormalizeNfkd Normalizemode = 2
-	// all_compose
-	GNormalizeAllCompose Normalizemode = 3
-	// nfkc
-	GNormalizeNfkc Normalizemode = 3
+	Normalizemode_Default        Normalizemode = 0
+	Normalizemode_Nfd            Normalizemode = 0
+	Normalizemode_DefaultCompose Normalizemode = 1
+	Normalizemode_Nfc            Normalizemode = 1
+	Normalizemode_All            Normalizemode = 2
+	Normalizemode_Nfkd           Normalizemode = 2
+	Normalizemode_AllCompose     Normalizemode = 3
+	Normalizemode_Nfkc           Normalizemode = 3
 )
 
 // Numberparsererror is a representation of the C type NumberParserError.
@@ -338,10 +220,8 @@ const (
 type Numberparsererror int
 
 const (
-	// invalid
-	GNumberParserErrorInvalid Numberparsererror = 0
-	// out_of_bounds
-	GNumberParserErrorOutOfBounds Numberparsererror = 1
+	Numberparsererror_Invalid     Numberparsererror = 0
+	Numberparsererror_OutOfBounds Numberparsererror = 1
 )
 
 // Oncestatus is a representation of the C type OnceStatus.
@@ -350,48 +230,33 @@ const (
 type Oncestatus int
 
 const (
-	// notcalled
-	GOnceStatusNotcalled Oncestatus = 0
-	// progress
-	GOnceStatusProgress Oncestatus = 1
-	// ready
-	GOnceStatusReady Oncestatus = 2
+	Oncestatus_Notcalled Oncestatus = 0
+	Oncestatus_Progress  Oncestatus = 1
+	Oncestatus_Ready     Oncestatus = 2
 )
 
 // Optionarg is a representation of the C type OptionArg.
 type Optionarg int
 
 const (
-	// none
-	GOptionArgNone Optionarg = 0
-	// string
-	GOptionArgString Optionarg = 1
-	// int
-	GOptionArgInt Optionarg = 2
-	// callback
-	GOptionArgCallback Optionarg = 3
-	// filename
-	GOptionArgFilename Optionarg = 4
-	// string_array
-	GOptionArgStringArray Optionarg = 5
-	// filename_array
-	GOptionArgFilenameArray Optionarg = 6
-	// double
-	GOptionArgDouble Optionarg = 7
-	// int64
-	GOptionArgInt64 Optionarg = 8
+	Optionarg_None          Optionarg = 0
+	Optionarg_String        Optionarg = 1
+	Optionarg_Int           Optionarg = 2
+	Optionarg_Callback      Optionarg = 3
+	Optionarg_Filename      Optionarg = 4
+	Optionarg_StringArray   Optionarg = 5
+	Optionarg_FilenameArray Optionarg = 6
+	Optionarg_Double        Optionarg = 7
+	Optionarg_Int64         Optionarg = 8
 )
 
 // Optionerror is a representation of the C type OptionError.
 type Optionerror int
 
 const (
-	// unknown_option
-	GOptionErrorUnknownOption Optionerror = 0
-	// bad_value
-	GOptionErrorBadValue Optionerror = 1
-	// failed
-	GOptionErrorFailed Optionerror = 2
+	Optionerror_UnknownOption Optionerror = 0
+	Optionerror_BadValue      Optionerror = 1
+	Optionerror_Failed        Optionerror = 2
 )
 
 // Regexerror is a representation of the C type RegexError.
@@ -400,210 +265,120 @@ const (
 type Regexerror int
 
 const (
-	// compile
-	GRegexErrorCompile Regexerror = 0
-	// optimize
-	GRegexErrorOptimize Regexerror = 1
-	// replace
-	GRegexErrorReplace Regexerror = 2
-	// match
-	GRegexErrorMatch Regexerror = 3
-	// internal
-	GRegexErrorInternal Regexerror = 4
-	// stray_backslash
-	GRegexErrorStrayBackslash Regexerror = 101
-	// missing_control_char
-	GRegexErrorMissingControlChar Regexerror = 102
-	// unrecognized_escape
-	GRegexErrorUnrecognizedEscape Regexerror = 103
-	// quantifiers_out_of_order
-	GRegexErrorQuantifiersOutOfOrder Regexerror = 104
-	// quantifier_too_big
-	GRegexErrorQuantifierTooBig Regexerror = 105
-	// unterminated_character_class
-	GRegexErrorUnterminatedCharacterClass Regexerror = 106
-	// invalid_escape_in_character_class
-	GRegexErrorInvalidEscapeInCharacterClass Regexerror = 107
-	// range_out_of_order
-	GRegexErrorRangeOutOfOrder Regexerror = 108
-	// nothing_to_repeat
-	GRegexErrorNothingToRepeat Regexerror = 109
-	// unrecognized_character
-	GRegexErrorUnrecognizedCharacter Regexerror = 112
-	// posix_named_class_outside_class
-	GRegexErrorPosixNamedClassOutsideClass Regexerror = 113
-	// unmatched_parenthesis
-	GRegexErrorUnmatchedParenthesis Regexerror = 114
-	// inexistent_subpattern_reference
-	GRegexErrorInexistentSubpatternReference Regexerror = 115
-	// unterminated_comment
-	GRegexErrorUnterminatedComment Regexerror = 118
-	// expression_too_large
-	GRegexErrorExpressionTooLarge Regexerror = 120
-	// memory_error
-	GRegexErrorMemoryError Regexerror = 121
-	// variable_length_lookbehind
-	GRegexErrorVariableLengthLookbehind Regexerror = 125
-	// malformed_condition
-	GRegexErrorMalformedCondition Regexerror = 126
-	// too_many_conditional_branches
-	GRegexErrorTooManyConditionalBranches Regexerror = 127
-	// assertion_expected
-	GRegexErrorAssertionExpected Regexerror = 128
-	// unknown_posix_class_name
-	GRegexErrorUnknownPosixClassName Regexerror = 130
-	// posix_collating_elements_not_supported
-	GRegexErrorPosixCollatingElementsNotSupported Regexerror = 131
-	// hex_code_too_large
-	GRegexErrorHexCodeTooLarge Regexerror = 134
-	// invalid_condition
-	GRegexErrorInvalidCondition Regexerror = 135
-	// single_byte_match_in_lookbehind
-	GRegexErrorSingleByteMatchInLookbehind Regexerror = 136
-	// infinite_loop
-	GRegexErrorInfiniteLoop Regexerror = 140
-	// missing_subpattern_name_terminator
-	GRegexErrorMissingSubpatternNameTerminator Regexerror = 142
-	// duplicate_subpattern_name
-	GRegexErrorDuplicateSubpatternName Regexerror = 143
-	// malformed_property
-	GRegexErrorMalformedProperty Regexerror = 146
-	// unknown_property
-	GRegexErrorUnknownProperty Regexerror = 147
-	// subpattern_name_too_long
-	GRegexErrorSubpatternNameTooLong Regexerror = 148
-	// too_many_subpatterns
-	GRegexErrorTooManySubpatterns Regexerror = 149
-	// invalid_octal_value
-	GRegexErrorInvalidOctalValue Regexerror = 151
-	// too_many_branches_in_define
-	GRegexErrorTooManyBranchesInDefine Regexerror = 154
-	// define_repetion
-	GRegexErrorDefineRepetion Regexerror = 155
-	// inconsistent_newline_options
-	GRegexErrorInconsistentNewlineOptions Regexerror = 156
-	// missing_back_reference
-	GRegexErrorMissingBackReference Regexerror = 157
-	// invalid_relative_reference
-	GRegexErrorInvalidRelativeReference Regexerror = 158
-	// backtracking_control_verb_argument_forbidden
-	GRegexErrorBacktrackingControlVerbArgumentForbidden Regexerror = 159
-	// unknown_backtracking_control_verb
-	GRegexErrorUnknownBacktrackingControlVerb Regexerror = 160
-	// number_too_big
-	GRegexErrorNumberTooBig Regexerror = 161
-	// missing_subpattern_name
-	GRegexErrorMissingSubpatternName Regexerror = 162
-	// missing_digit
-	GRegexErrorMissingDigit Regexerror = 163
-	// invalid_data_character
-	GRegexErrorInvalidDataCharacter Regexerror = 164
-	// extra_subpattern_name
-	GRegexErrorExtraSubpatternName Regexerror = 165
-	// backtracking_control_verb_argument_required
-	GRegexErrorBacktrackingControlVerbArgumentRequired Regexerror = 166
-	// invalid_control_char
-	GRegexErrorInvalidControlChar Regexerror = 168
-	// missing_name
-	GRegexErrorMissingName Regexerror = 169
-	// not_supported_in_class
-	GRegexErrorNotSupportedInClass Regexerror = 171
-	// too_many_forward_references
-	GRegexErrorTooManyForwardReferences Regexerror = 172
-	// name_too_long
-	GRegexErrorNameTooLong Regexerror = 175
-	// character_value_too_large
-	GRegexErrorCharacterValueTooLarge Regexerror = 176
+	Regexerror_Compile                                  Regexerror = 0
+	Regexerror_Optimize                                 Regexerror = 1
+	Regexerror_Replace                                  Regexerror = 2
+	Regexerror_Match                                    Regexerror = 3
+	Regexerror_Internal                                 Regexerror = 4
+	Regexerror_StrayBackslash                           Regexerror = 101
+	Regexerror_MissingControlChar                       Regexerror = 102
+	Regexerror_UnrecognizedEscape                       Regexerror = 103
+	Regexerror_QuantifiersOutOfOrder                    Regexerror = 104
+	Regexerror_QuantifierTooBig                         Regexerror = 105
+	Regexerror_UnterminatedCharacterClass               Regexerror = 106
+	Regexerror_InvalidEscapeInCharacterClass            Regexerror = 107
+	Regexerror_RangeOutOfOrder                          Regexerror = 108
+	Regexerror_NothingToRepeat                          Regexerror = 109
+	Regexerror_UnrecognizedCharacter                    Regexerror = 112
+	Regexerror_PosixNamedClassOutsideClass              Regexerror = 113
+	Regexerror_UnmatchedParenthesis                     Regexerror = 114
+	Regexerror_InexistentSubpatternReference            Regexerror = 115
+	Regexerror_UnterminatedComment                      Regexerror = 118
+	Regexerror_ExpressionTooLarge                       Regexerror = 120
+	Regexerror_MemoryError                              Regexerror = 121
+	Regexerror_VariableLengthLookbehind                 Regexerror = 125
+	Regexerror_MalformedCondition                       Regexerror = 126
+	Regexerror_TooManyConditionalBranches               Regexerror = 127
+	Regexerror_AssertionExpected                        Regexerror = 128
+	Regexerror_UnknownPosixClassName                    Regexerror = 130
+	Regexerror_PosixCollatingElementsNotSupported       Regexerror = 131
+	Regexerror_HexCodeTooLarge                          Regexerror = 134
+	Regexerror_InvalidCondition                         Regexerror = 135
+	Regexerror_SingleByteMatchInLookbehind              Regexerror = 136
+	Regexerror_InfiniteLoop                             Regexerror = 140
+	Regexerror_MissingSubpatternNameTerminator          Regexerror = 142
+	Regexerror_DuplicateSubpatternName                  Regexerror = 143
+	Regexerror_MalformedProperty                        Regexerror = 146
+	Regexerror_UnknownProperty                          Regexerror = 147
+	Regexerror_SubpatternNameTooLong                    Regexerror = 148
+	Regexerror_TooManySubpatterns                       Regexerror = 149
+	Regexerror_InvalidOctalValue                        Regexerror = 151
+	Regexerror_TooManyBranchesInDefine                  Regexerror = 154
+	Regexerror_DefineRepetion                           Regexerror = 155
+	Regexerror_InconsistentNewlineOptions               Regexerror = 156
+	Regexerror_MissingBackReference                     Regexerror = 157
+	Regexerror_InvalidRelativeReference                 Regexerror = 158
+	Regexerror_BacktrackingControlVerbArgumentForbidden Regexerror = 159
+	Regexerror_UnknownBacktrackingControlVerb           Regexerror = 160
+	Regexerror_NumberTooBig                             Regexerror = 161
+	Regexerror_MissingSubpatternName                    Regexerror = 162
+	Regexerror_MissingDigit                             Regexerror = 163
+	Regexerror_InvalidDataCharacter                     Regexerror = 164
+	Regexerror_ExtraSubpatternName                      Regexerror = 165
+	Regexerror_BacktrackingControlVerbArgumentRequired  Regexerror = 166
+	Regexerror_InvalidControlChar                       Regexerror = 168
+	Regexerror_MissingName                              Regexerror = 169
+	Regexerror_NotSupportedInClass                      Regexerror = 171
+	Regexerror_TooManyForwardReferences                 Regexerror = 172
+	Regexerror_NameTooLong                              Regexerror = 175
+	Regexerror_CharacterValueTooLarge                   Regexerror = 176
 )
 
 // Seektype is a representation of the C type SeekType.
 type Seektype int
 
 const (
-	// cur
-	GSeekCur Seektype = 0
-	// set
-	GSeekSet Seektype = 1
-	// end
-	GSeekEnd Seektype = 2
+	Seektype_Cur Seektype = 0
+	Seektype_Set Seektype = 1
+	Seektype_End Seektype = 2
 )
 
 // Shellerror is a representation of the C type ShellError.
 type Shellerror int
 
 const (
-	// bad_quoting
-	GShellErrorBadQuoting Shellerror = 0
-	// empty_string
-	GShellErrorEmptyString Shellerror = 1
-	// failed
-	GShellErrorFailed Shellerror = 2
+	Shellerror_BadQuoting  Shellerror = 0
+	Shellerror_EmptyString Shellerror = 1
+	Shellerror_Failed      Shellerror = 2
 )
 
 // Sliceconfig is a representation of the C type SliceConfig.
 type Sliceconfig int
 
 const (
-	// always_malloc
-	GSliceConfigAlwaysMalloc Sliceconfig = 1
-	// bypass_magazines
-	GSliceConfigBypassMagazines Sliceconfig = 2
-	// working_set_msecs
-	GSliceConfigWorkingSetMsecs Sliceconfig = 3
-	// color_increment
-	GSliceConfigColorIncrement Sliceconfig = 4
-	// chunk_sizes
-	GSliceConfigChunkSizes Sliceconfig = 5
-	// contention_counter
-	GSliceConfigContentionCounter Sliceconfig = 6
+	Sliceconfig_AlwaysMalloc      Sliceconfig = 1
+	Sliceconfig_BypassMagazines   Sliceconfig = 2
+	Sliceconfig_WorkingSetMsecs   Sliceconfig = 3
+	Sliceconfig_ColorIncrement    Sliceconfig = 4
+	Sliceconfig_ChunkSizes        Sliceconfig = 5
+	Sliceconfig_ContentionCounter Sliceconfig = 6
 )
 
 // Spawnerror is a representation of the C type SpawnError.
 type Spawnerror int
 
 const (
-	// fork
-	GSpawnErrorFork Spawnerror = 0
-	// read
-	GSpawnErrorRead Spawnerror = 1
-	// chdir
-	GSpawnErrorChdir Spawnerror = 2
-	// acces
-	GSpawnErrorAcces Spawnerror = 3
-	// perm
-	GSpawnErrorPerm Spawnerror = 4
-	// too_big
-	GSpawnErrorTooBig Spawnerror = 5
-	// 2big
-	GSpawnError2big Spawnerror = 5
-	// noexec
-	GSpawnErrorNoexec Spawnerror = 6
-	// nametoolong
-	GSpawnErrorNametoolong Spawnerror = 7
-	// noent
-	GSpawnErrorNoent Spawnerror = 8
-	// nomem
-	GSpawnErrorNomem Spawnerror = 9
-	// notdir
-	GSpawnErrorNotdir Spawnerror = 10
-	// loop
-	GSpawnErrorLoop Spawnerror = 11
-	// txtbusy
-	GSpawnErrorTxtbusy Spawnerror = 12
-	// io
-	GSpawnErrorIo Spawnerror = 13
-	// nfile
-	GSpawnErrorNfile Spawnerror = 14
-	// mfile
-	GSpawnErrorMfile Spawnerror = 15
-	// inval
-	GSpawnErrorInval Spawnerror = 16
-	// isdir
-	GSpawnErrorIsdir Spawnerror = 17
-	// libbad
-	GSpawnErrorLibbad Spawnerror = 18
-	// failed
-	GSpawnErrorFailed Spawnerror = 19
+	Spawnerror_Fork        Spawnerror = 0
+	Spawnerror_Read        Spawnerror = 1
+	Spawnerror_Chdir       Spawnerror = 2
+	Spawnerror_Acces       Spawnerror = 3
+	Spawnerror_Perm        Spawnerror = 4
+	Spawnerror_TooBig      Spawnerror = 5
+	Spawnerror_2big        Spawnerror = 5
+	Spawnerror_Noexec      Spawnerror = 6
+	Spawnerror_Nametoolong Spawnerror = 7
+	Spawnerror_Noent       Spawnerror = 8
+	Spawnerror_Nomem       Spawnerror = 9
+	Spawnerror_Notdir      Spawnerror = 10
+	Spawnerror_Loop        Spawnerror = 11
+	Spawnerror_Txtbusy     Spawnerror = 12
+	Spawnerror_Io          Spawnerror = 13
+	Spawnerror_Nfile       Spawnerror = 14
+	Spawnerror_Mfile       Spawnerror = 15
+	Spawnerror_Inval       Spawnerror = 16
+	Spawnerror_Isdir       Spawnerror = 17
+	Spawnerror_Libbad      Spawnerror = 18
+	Spawnerror_Failed      Spawnerror = 19
 )
 
 // Testfiletype is a representation of the C type TestFileType.
@@ -612,590 +387,325 @@ const (
 type Testfiletype int
 
 const (
-	// dist
-	GTestDist Testfiletype = 0
-	// built
-	GTestBuilt Testfiletype = 1
+	Testfiletype_Dist  Testfiletype = 0
+	Testfiletype_Built Testfiletype = 1
 )
 
 // Testlogtype is a representation of the C type TestLogType.
 type Testlogtype int
 
 const (
-	// none
-	GTestLogNone Testlogtype = 0
-	// error
-	GTestLogError Testlogtype = 1
-	// start_binary
-	GTestLogStartBinary Testlogtype = 2
-	// list_case
-	GTestLogListCase Testlogtype = 3
-	// skip_case
-	GTestLogSkipCase Testlogtype = 4
-	// start_case
-	GTestLogStartCase Testlogtype = 5
-	// stop_case
-	GTestLogStopCase Testlogtype = 6
-	// min_result
-	GTestLogMinResult Testlogtype = 7
-	// max_result
-	GTestLogMaxResult Testlogtype = 8
-	// message
-	GTestLogMessage Testlogtype = 9
-	// start_suite
-	GTestLogStartSuite Testlogtype = 10
-	// stop_suite
-	GTestLogStopSuite Testlogtype = 11
+	Testlogtype_None        Testlogtype = 0
+	Testlogtype_Error       Testlogtype = 1
+	Testlogtype_StartBinary Testlogtype = 2
+	Testlogtype_ListCase    Testlogtype = 3
+	Testlogtype_SkipCase    Testlogtype = 4
+	Testlogtype_StartCase   Testlogtype = 5
+	Testlogtype_StopCase    Testlogtype = 6
+	Testlogtype_MinResult   Testlogtype = 7
+	Testlogtype_MaxResult   Testlogtype = 8
+	Testlogtype_Message     Testlogtype = 9
+	Testlogtype_StartSuite  Testlogtype = 10
+	Testlogtype_StopSuite   Testlogtype = 11
 )
 
 // Testresult is a representation of the C type TestResult.
 type Testresult int
 
 const (
-	// success
-	GTestRunSuccess Testresult = 0
-	// skipped
-	GTestRunSkipped Testresult = 1
-	// failure
-	GTestRunFailure Testresult = 2
-	// incomplete
-	GTestRunIncomplete Testresult = 3
+	Testresult_Success    Testresult = 0
+	Testresult_Skipped    Testresult = 1
+	Testresult_Failure    Testresult = 2
+	Testresult_Incomplete Testresult = 3
 )
 
 // Threaderror is a representation of the C type ThreadError.
 type Threaderror int
 
 const (
-	// thread_error_again
-	GThreadErrorAgain Threaderror = 0
+	Threaderror_ThreadErrorAgain Threaderror = 0
 )
 
 // Timetype is a representation of the C type TimeType.
 type Timetype int
 
 const (
-	// standard
-	GTimeTypeStandard Timetype = 0
-	// daylight
-	GTimeTypeDaylight Timetype = 1
-	// universal
-	GTimeTypeUniversal Timetype = 2
+	Timetype_Standard  Timetype = 0
+	Timetype_Daylight  Timetype = 1
+	Timetype_Universal Timetype = 2
 )
 
 // Tokentype is a representation of the C type TokenType.
 type Tokentype int
 
 const (
-	// eof
-	GTokenEof Tokentype = 0
-	// left_paren
-	GTokenLeftParen Tokentype = 40
-	// right_paren
-	GTokenRightParen Tokentype = 41
-	// left_curly
-	GTokenLeftCurly Tokentype = 123
-	// right_curly
-	GTokenRightCurly Tokentype = 125
-	// left_brace
-	GTokenLeftBrace Tokentype = 91
-	// right_brace
-	GTokenRightBrace Tokentype = 93
-	// equal_sign
-	GTokenEqualSign Tokentype = 61
-	// comma
-	GTokenComma Tokentype = 44
-	// none
-	GTokenNone Tokentype = 256
-	// error
-	GTokenError Tokentype = 257
-	// char
-	GTokenChar Tokentype = 258
-	// binary
-	GTokenBinary Tokentype = 259
-	// octal
-	GTokenOctal Tokentype = 260
-	// int
-	GTokenInt Tokentype = 261
-	// hex
-	GTokenHex Tokentype = 262
-	// float
-	GTokenFloat Tokentype = 263
-	// string
-	GTokenString Tokentype = 264
-	// symbol
-	GTokenSymbol Tokentype = 265
-	// identifier
-	GTokenIdentifier Tokentype = 266
-	// identifier_null
-	GTokenIdentifierNull Tokentype = 267
-	// comment_single
-	GTokenCommentSingle Tokentype = 268
-	// comment_multi
-	GTokenCommentMulti Tokentype = 269
+	Tokentype_Eof            Tokentype = 0
+	Tokentype_LeftParen      Tokentype = 40
+	Tokentype_RightParen     Tokentype = 41
+	Tokentype_LeftCurly      Tokentype = 123
+	Tokentype_RightCurly     Tokentype = 125
+	Tokentype_LeftBrace      Tokentype = 91
+	Tokentype_RightBrace     Tokentype = 93
+	Tokentype_EqualSign      Tokentype = 61
+	Tokentype_Comma          Tokentype = 44
+	Tokentype_None           Tokentype = 256
+	Tokentype_Error          Tokentype = 257
+	Tokentype_Char           Tokentype = 258
+	Tokentype_Binary         Tokentype = 259
+	Tokentype_Octal          Tokentype = 260
+	Tokentype_Int            Tokentype = 261
+	Tokentype_Hex            Tokentype = 262
+	Tokentype_Float          Tokentype = 263
+	Tokentype_String         Tokentype = 264
+	Tokentype_Symbol         Tokentype = 265
+	Tokentype_Identifier     Tokentype = 266
+	Tokentype_IdentifierNull Tokentype = 267
+	Tokentype_CommentSingle  Tokentype = 268
+	Tokentype_CommentMulti   Tokentype = 269
 )
 
 // Traversetype is a representation of the C type TraverseType.
 type Traversetype int
 
 const (
-	// in_order
-	GInOrder Traversetype = 0
-	// pre_order
-	GPreOrder Traversetype = 1
-	// post_order
-	GPostOrder Traversetype = 2
-	// level_order
-	GLevelOrder Traversetype = 3
+	Traversetype_InOrder    Traversetype = 0
+	Traversetype_PreOrder   Traversetype = 1
+	Traversetype_PostOrder  Traversetype = 2
+	Traversetype_LevelOrder Traversetype = 3
 )
 
 // Unicodebreaktype is a representation of the C type UnicodeBreakType.
 type Unicodebreaktype int
 
 const (
-	// mandatory
-	GUnicodeBreakMandatory Unicodebreaktype = 0
-	// carriage_return
-	GUnicodeBreakCarriageReturn Unicodebreaktype = 1
-	// line_feed
-	GUnicodeBreakLineFeed Unicodebreaktype = 2
-	// combining_mark
-	GUnicodeBreakCombiningMark Unicodebreaktype = 3
-	// surrogate
-	GUnicodeBreakSurrogate Unicodebreaktype = 4
-	// zero_width_space
-	GUnicodeBreakZeroWidthSpace Unicodebreaktype = 5
-	// inseparable
-	GUnicodeBreakInseparable Unicodebreaktype = 6
-	// non_breaking_glue
-	GUnicodeBreakNonBreakingGlue Unicodebreaktype = 7
-	// contingent
-	GUnicodeBreakContingent Unicodebreaktype = 8
-	// space
-	GUnicodeBreakSpace Unicodebreaktype = 9
-	// after
-	GUnicodeBreakAfter Unicodebreaktype = 10
-	// before
-	GUnicodeBreakBefore Unicodebreaktype = 11
-	// before_and_after
-	GUnicodeBreakBeforeAndAfter Unicodebreaktype = 12
-	// hyphen
-	GUnicodeBreakHyphen Unicodebreaktype = 13
-	// non_starter
-	GUnicodeBreakNonStarter Unicodebreaktype = 14
-	// open_punctuation
-	GUnicodeBreakOpenPunctuation Unicodebreaktype = 15
-	// close_punctuation
-	GUnicodeBreakClosePunctuation Unicodebreaktype = 16
-	// quotation
-	GUnicodeBreakQuotation Unicodebreaktype = 17
-	// exclamation
-	GUnicodeBreakExclamation Unicodebreaktype = 18
-	// ideographic
-	GUnicodeBreakIdeographic Unicodebreaktype = 19
-	// numeric
-	GUnicodeBreakNumeric Unicodebreaktype = 20
-	// infix_separator
-	GUnicodeBreakInfixSeparator Unicodebreaktype = 21
-	// symbol
-	GUnicodeBreakSymbol Unicodebreaktype = 22
-	// alphabetic
-	GUnicodeBreakAlphabetic Unicodebreaktype = 23
-	// prefix
-	GUnicodeBreakPrefix Unicodebreaktype = 24
-	// postfix
-	GUnicodeBreakPostfix Unicodebreaktype = 25
-	// complex_context
-	GUnicodeBreakComplexContext Unicodebreaktype = 26
-	// ambiguous
-	GUnicodeBreakAmbiguous Unicodebreaktype = 27
-	// unknown
-	GUnicodeBreakUnknown Unicodebreaktype = 28
-	// next_line
-	GUnicodeBreakNextLine Unicodebreaktype = 29
-	// word_joiner
-	GUnicodeBreakWordJoiner Unicodebreaktype = 30
-	// hangul_l_jamo
-	GUnicodeBreakHangulLJamo Unicodebreaktype = 31
-	// hangul_v_jamo
-	GUnicodeBreakHangulVJamo Unicodebreaktype = 32
-	// hangul_t_jamo
-	GUnicodeBreakHangulTJamo Unicodebreaktype = 33
-	// hangul_lv_syllable
-	GUnicodeBreakHangulLvSyllable Unicodebreaktype = 34
-	// hangul_lvt_syllable
-	GUnicodeBreakHangulLvtSyllable Unicodebreaktype = 35
-	// close_paranthesis
-	GUnicodeBreakCloseParanthesis Unicodebreaktype = 36
-	// conditional_japanese_starter
-	GUnicodeBreakConditionalJapaneseStarter Unicodebreaktype = 37
-	// hebrew_letter
-	GUnicodeBreakHebrewLetter Unicodebreaktype = 38
-	// regional_indicator
-	GUnicodeBreakRegionalIndicator Unicodebreaktype = 39
-	// emoji_base
-	GUnicodeBreakEmojiBase Unicodebreaktype = 40
-	// emoji_modifier
-	GUnicodeBreakEmojiModifier Unicodebreaktype = 41
-	// zero_width_joiner
-	GUnicodeBreakZeroWidthJoiner Unicodebreaktype = 42
+	Unicodebreaktype_Mandatory                  Unicodebreaktype = 0
+	Unicodebreaktype_CarriageReturn             Unicodebreaktype = 1
+	Unicodebreaktype_LineFeed                   Unicodebreaktype = 2
+	Unicodebreaktype_CombiningMark              Unicodebreaktype = 3
+	Unicodebreaktype_Surrogate                  Unicodebreaktype = 4
+	Unicodebreaktype_ZeroWidthSpace             Unicodebreaktype = 5
+	Unicodebreaktype_Inseparable                Unicodebreaktype = 6
+	Unicodebreaktype_NonBreakingGlue            Unicodebreaktype = 7
+	Unicodebreaktype_Contingent                 Unicodebreaktype = 8
+	Unicodebreaktype_Space                      Unicodebreaktype = 9
+	Unicodebreaktype_After                      Unicodebreaktype = 10
+	Unicodebreaktype_Before                     Unicodebreaktype = 11
+	Unicodebreaktype_BeforeAndAfter             Unicodebreaktype = 12
+	Unicodebreaktype_Hyphen                     Unicodebreaktype = 13
+	Unicodebreaktype_NonStarter                 Unicodebreaktype = 14
+	Unicodebreaktype_OpenPunctuation            Unicodebreaktype = 15
+	Unicodebreaktype_ClosePunctuation           Unicodebreaktype = 16
+	Unicodebreaktype_Quotation                  Unicodebreaktype = 17
+	Unicodebreaktype_Exclamation                Unicodebreaktype = 18
+	Unicodebreaktype_Ideographic                Unicodebreaktype = 19
+	Unicodebreaktype_Numeric                    Unicodebreaktype = 20
+	Unicodebreaktype_InfixSeparator             Unicodebreaktype = 21
+	Unicodebreaktype_Symbol                     Unicodebreaktype = 22
+	Unicodebreaktype_Alphabetic                 Unicodebreaktype = 23
+	Unicodebreaktype_Prefix                     Unicodebreaktype = 24
+	Unicodebreaktype_Postfix                    Unicodebreaktype = 25
+	Unicodebreaktype_ComplexContext             Unicodebreaktype = 26
+	Unicodebreaktype_Ambiguous                  Unicodebreaktype = 27
+	Unicodebreaktype_Unknown                    Unicodebreaktype = 28
+	Unicodebreaktype_NextLine                   Unicodebreaktype = 29
+	Unicodebreaktype_WordJoiner                 Unicodebreaktype = 30
+	Unicodebreaktype_HangulLJamo                Unicodebreaktype = 31
+	Unicodebreaktype_HangulVJamo                Unicodebreaktype = 32
+	Unicodebreaktype_HangulTJamo                Unicodebreaktype = 33
+	Unicodebreaktype_HangulLvSyllable           Unicodebreaktype = 34
+	Unicodebreaktype_HangulLvtSyllable          Unicodebreaktype = 35
+	Unicodebreaktype_CloseParanthesis           Unicodebreaktype = 36
+	Unicodebreaktype_ConditionalJapaneseStarter Unicodebreaktype = 37
+	Unicodebreaktype_HebrewLetter               Unicodebreaktype = 38
+	Unicodebreaktype_RegionalIndicator          Unicodebreaktype = 39
+	Unicodebreaktype_EmojiBase                  Unicodebreaktype = 40
+	Unicodebreaktype_EmojiModifier              Unicodebreaktype = 41
+	Unicodebreaktype_ZeroWidthJoiner            Unicodebreaktype = 42
 )
 
 // Unicodescript is a representation of the C type UnicodeScript.
 type Unicodescript int
 
 const (
-	// invalid_code
-	GUnicodeScriptInvalidCode Unicodescript = -1
-	// common
-	GUnicodeScriptCommon Unicodescript = 0
-	// inherited
-	GUnicodeScriptInherited Unicodescript = 1
-	// arabic
-	GUnicodeScriptArabic Unicodescript = 2
-	// armenian
-	GUnicodeScriptArmenian Unicodescript = 3
-	// bengali
-	GUnicodeScriptBengali Unicodescript = 4
-	// bopomofo
-	GUnicodeScriptBopomofo Unicodescript = 5
-	// cherokee
-	GUnicodeScriptCherokee Unicodescript = 6
-	// coptic
-	GUnicodeScriptCoptic Unicodescript = 7
-	// cyrillic
-	GUnicodeScriptCyrillic Unicodescript = 8
-	// deseret
-	GUnicodeScriptDeseret Unicodescript = 9
-	// devanagari
-	GUnicodeScriptDevanagari Unicodescript = 10
-	// ethiopic
-	GUnicodeScriptEthiopic Unicodescript = 11
-	// georgian
-	GUnicodeScriptGeorgian Unicodescript = 12
-	// gothic
-	GUnicodeScriptGothic Unicodescript = 13
-	// greek
-	GUnicodeScriptGreek Unicodescript = 14
-	// gujarati
-	GUnicodeScriptGujarati Unicodescript = 15
-	// gurmukhi
-	GUnicodeScriptGurmukhi Unicodescript = 16
-	// han
-	GUnicodeScriptHan Unicodescript = 17
-	// hangul
-	GUnicodeScriptHangul Unicodescript = 18
-	// hebrew
-	GUnicodeScriptHebrew Unicodescript = 19
-	// hiragana
-	GUnicodeScriptHiragana Unicodescript = 20
-	// kannada
-	GUnicodeScriptKannada Unicodescript = 21
-	// katakana
-	GUnicodeScriptKatakana Unicodescript = 22
-	// khmer
-	GUnicodeScriptKhmer Unicodescript = 23
-	// lao
-	GUnicodeScriptLao Unicodescript = 24
-	// latin
-	GUnicodeScriptLatin Unicodescript = 25
-	// malayalam
-	GUnicodeScriptMalayalam Unicodescript = 26
-	// mongolian
-	GUnicodeScriptMongolian Unicodescript = 27
-	// myanmar
-	GUnicodeScriptMyanmar Unicodescript = 28
-	// ogham
-	GUnicodeScriptOgham Unicodescript = 29
-	// old_italic
-	GUnicodeScriptOldItalic Unicodescript = 30
-	// oriya
-	GUnicodeScriptOriya Unicodescript = 31
-	// runic
-	GUnicodeScriptRunic Unicodescript = 32
-	// sinhala
-	GUnicodeScriptSinhala Unicodescript = 33
-	// syriac
-	GUnicodeScriptSyriac Unicodescript = 34
-	// tamil
-	GUnicodeScriptTamil Unicodescript = 35
-	// telugu
-	GUnicodeScriptTelugu Unicodescript = 36
-	// thaana
-	GUnicodeScriptThaana Unicodescript = 37
-	// thai
-	GUnicodeScriptThai Unicodescript = 38
-	// tibetan
-	GUnicodeScriptTibetan Unicodescript = 39
-	// canadian_aboriginal
-	GUnicodeScriptCanadianAboriginal Unicodescript = 40
-	// yi
-	GUnicodeScriptYi Unicodescript = 41
-	// tagalog
-	GUnicodeScriptTagalog Unicodescript = 42
-	// hanunoo
-	GUnicodeScriptHanunoo Unicodescript = 43
-	// buhid
-	GUnicodeScriptBuhid Unicodescript = 44
-	// tagbanwa
-	GUnicodeScriptTagbanwa Unicodescript = 45
-	// braille
-	GUnicodeScriptBraille Unicodescript = 46
-	// cypriot
-	GUnicodeScriptCypriot Unicodescript = 47
-	// limbu
-	GUnicodeScriptLimbu Unicodescript = 48
-	// osmanya
-	GUnicodeScriptOsmanya Unicodescript = 49
-	// shavian
-	GUnicodeScriptShavian Unicodescript = 50
-	// linear_b
-	GUnicodeScriptLinearB Unicodescript = 51
-	// tai_le
-	GUnicodeScriptTaiLe Unicodescript = 52
-	// ugaritic
-	GUnicodeScriptUgaritic Unicodescript = 53
-	// new_tai_lue
-	GUnicodeScriptNewTaiLue Unicodescript = 54
-	// buginese
-	GUnicodeScriptBuginese Unicodescript = 55
-	// glagolitic
-	GUnicodeScriptGlagolitic Unicodescript = 56
-	// tifinagh
-	GUnicodeScriptTifinagh Unicodescript = 57
-	// syloti_nagri
-	GUnicodeScriptSylotiNagri Unicodescript = 58
-	// old_persian
-	GUnicodeScriptOldPersian Unicodescript = 59
-	// kharoshthi
-	GUnicodeScriptKharoshthi Unicodescript = 60
-	// unknown
-	GUnicodeScriptUnknown Unicodescript = 61
-	// balinese
-	GUnicodeScriptBalinese Unicodescript = 62
-	// cuneiform
-	GUnicodeScriptCuneiform Unicodescript = 63
-	// phoenician
-	GUnicodeScriptPhoenician Unicodescript = 64
-	// phags_pa
-	GUnicodeScriptPhagsPa Unicodescript = 65
-	// nko
-	GUnicodeScriptNko Unicodescript = 66
-	// kayah_li
-	GUnicodeScriptKayahLi Unicodescript = 67
-	// lepcha
-	GUnicodeScriptLepcha Unicodescript = 68
-	// rejang
-	GUnicodeScriptRejang Unicodescript = 69
-	// sundanese
-	GUnicodeScriptSundanese Unicodescript = 70
-	// saurashtra
-	GUnicodeScriptSaurashtra Unicodescript = 71
-	// cham
-	GUnicodeScriptCham Unicodescript = 72
-	// ol_chiki
-	GUnicodeScriptOlChiki Unicodescript = 73
-	// vai
-	GUnicodeScriptVai Unicodescript = 74
-	// carian
-	GUnicodeScriptCarian Unicodescript = 75
-	// lycian
-	GUnicodeScriptLycian Unicodescript = 76
-	// lydian
-	GUnicodeScriptLydian Unicodescript = 77
-	// avestan
-	GUnicodeScriptAvestan Unicodescript = 78
-	// bamum
-	GUnicodeScriptBamum Unicodescript = 79
-	// egyptian_hieroglyphs
-	GUnicodeScriptEgyptianHieroglyphs Unicodescript = 80
-	// imperial_aramaic
-	GUnicodeScriptImperialAramaic Unicodescript = 81
-	// inscriptional_pahlavi
-	GUnicodeScriptInscriptionalPahlavi Unicodescript = 82
-	// inscriptional_parthian
-	GUnicodeScriptInscriptionalParthian Unicodescript = 83
-	// javanese
-	GUnicodeScriptJavanese Unicodescript = 84
-	// kaithi
-	GUnicodeScriptKaithi Unicodescript = 85
-	// lisu
-	GUnicodeScriptLisu Unicodescript = 86
-	// meetei_mayek
-	GUnicodeScriptMeeteiMayek Unicodescript = 87
-	// old_south_arabian
-	GUnicodeScriptOldSouthArabian Unicodescript = 88
-	// old_turkic
-	GUnicodeScriptOldTurkic Unicodescript = 89
-	// samaritan
-	GUnicodeScriptSamaritan Unicodescript = 90
-	// tai_tham
-	GUnicodeScriptTaiTham Unicodescript = 91
-	// tai_viet
-	GUnicodeScriptTaiViet Unicodescript = 92
-	// batak
-	GUnicodeScriptBatak Unicodescript = 93
-	// brahmi
-	GUnicodeScriptBrahmi Unicodescript = 94
-	// mandaic
-	GUnicodeScriptMandaic Unicodescript = 95
-	// chakma
-	GUnicodeScriptChakma Unicodescript = 96
-	// meroitic_cursive
-	GUnicodeScriptMeroiticCursive Unicodescript = 97
-	// meroitic_hieroglyphs
-	GUnicodeScriptMeroiticHieroglyphs Unicodescript = 98
-	// miao
-	GUnicodeScriptMiao Unicodescript = 99
-	// sharada
-	GUnicodeScriptSharada Unicodescript = 100
-	// sora_sompeng
-	GUnicodeScriptSoraSompeng Unicodescript = 101
-	// takri
-	GUnicodeScriptTakri Unicodescript = 102
-	// bassa_vah
-	GUnicodeScriptBassaVah Unicodescript = 103
-	// caucasian_albanian
-	GUnicodeScriptCaucasianAlbanian Unicodescript = 104
-	// duployan
-	GUnicodeScriptDuployan Unicodescript = 105
-	// elbasan
-	GUnicodeScriptElbasan Unicodescript = 106
-	// grantha
-	GUnicodeScriptGrantha Unicodescript = 107
-	// khojki
-	GUnicodeScriptKhojki Unicodescript = 108
-	// khudawadi
-	GUnicodeScriptKhudawadi Unicodescript = 109
-	// linear_a
-	GUnicodeScriptLinearA Unicodescript = 110
-	// mahajani
-	GUnicodeScriptMahajani Unicodescript = 111
-	// manichaean
-	GUnicodeScriptManichaean Unicodescript = 112
-	// mende_kikakui
-	GUnicodeScriptMendeKikakui Unicodescript = 113
-	// modi
-	GUnicodeScriptModi Unicodescript = 114
-	// mro
-	GUnicodeScriptMro Unicodescript = 115
-	// nabataean
-	GUnicodeScriptNabataean Unicodescript = 116
-	// old_north_arabian
-	GUnicodeScriptOldNorthArabian Unicodescript = 117
-	// old_permic
-	GUnicodeScriptOldPermic Unicodescript = 118
-	// pahawh_hmong
-	GUnicodeScriptPahawhHmong Unicodescript = 119
-	// palmyrene
-	GUnicodeScriptPalmyrene Unicodescript = 120
-	// pau_cin_hau
-	GUnicodeScriptPauCinHau Unicodescript = 121
-	// psalter_pahlavi
-	GUnicodeScriptPsalterPahlavi Unicodescript = 122
-	// siddham
-	GUnicodeScriptSiddham Unicodescript = 123
-	// tirhuta
-	GUnicodeScriptTirhuta Unicodescript = 124
-	// warang_citi
-	GUnicodeScriptWarangCiti Unicodescript = 125
-	// ahom
-	GUnicodeScriptAhom Unicodescript = 126
-	// anatolian_hieroglyphs
-	GUnicodeScriptAnatolianHieroglyphs Unicodescript = 127
-	// hatran
-	GUnicodeScriptHatran Unicodescript = 128
-	// multani
-	GUnicodeScriptMultani Unicodescript = 129
-	// old_hungarian
-	GUnicodeScriptOldHungarian Unicodescript = 130
-	// signwriting
-	GUnicodeScriptSignwriting Unicodescript = 131
-	// adlam
-	GUnicodeScriptAdlam Unicodescript = 132
-	// bhaiksuki
-	GUnicodeScriptBhaiksuki Unicodescript = 133
-	// marchen
-	GUnicodeScriptMarchen Unicodescript = 134
-	// newa
-	GUnicodeScriptNewa Unicodescript = 135
-	// osage
-	GUnicodeScriptOsage Unicodescript = 136
-	// tangut
-	GUnicodeScriptTangut Unicodescript = 137
-	// masaram_gondi
-	GUnicodeScriptMasaramGondi Unicodescript = 138
-	// nushu
-	GUnicodeScriptNushu Unicodescript = 139
-	// soyombo
-	GUnicodeScriptSoyombo Unicodescript = 140
-	// zanabazar_square
-	GUnicodeScriptZanabazarSquare Unicodescript = 141
+	Unicodescript_InvalidCode           Unicodescript = -1
+	Unicodescript_Common                Unicodescript = 0
+	Unicodescript_Inherited             Unicodescript = 1
+	Unicodescript_Arabic                Unicodescript = 2
+	Unicodescript_Armenian              Unicodescript = 3
+	Unicodescript_Bengali               Unicodescript = 4
+	Unicodescript_Bopomofo              Unicodescript = 5
+	Unicodescript_Cherokee              Unicodescript = 6
+	Unicodescript_Coptic                Unicodescript = 7
+	Unicodescript_Cyrillic              Unicodescript = 8
+	Unicodescript_Deseret               Unicodescript = 9
+	Unicodescript_Devanagari            Unicodescript = 10
+	Unicodescript_Ethiopic              Unicodescript = 11
+	Unicodescript_Georgian              Unicodescript = 12
+	Unicodescript_Gothic                Unicodescript = 13
+	Unicodescript_Greek                 Unicodescript = 14
+	Unicodescript_Gujarati              Unicodescript = 15
+	Unicodescript_Gurmukhi              Unicodescript = 16
+	Unicodescript_Han                   Unicodescript = 17
+	Unicodescript_Hangul                Unicodescript = 18
+	Unicodescript_Hebrew                Unicodescript = 19
+	Unicodescript_Hiragana              Unicodescript = 20
+	Unicodescript_Kannada               Unicodescript = 21
+	Unicodescript_Katakana              Unicodescript = 22
+	Unicodescript_Khmer                 Unicodescript = 23
+	Unicodescript_Lao                   Unicodescript = 24
+	Unicodescript_Latin                 Unicodescript = 25
+	Unicodescript_Malayalam             Unicodescript = 26
+	Unicodescript_Mongolian             Unicodescript = 27
+	Unicodescript_Myanmar               Unicodescript = 28
+	Unicodescript_Ogham                 Unicodescript = 29
+	Unicodescript_OldItalic             Unicodescript = 30
+	Unicodescript_Oriya                 Unicodescript = 31
+	Unicodescript_Runic                 Unicodescript = 32
+	Unicodescript_Sinhala               Unicodescript = 33
+	Unicodescript_Syriac                Unicodescript = 34
+	Unicodescript_Tamil                 Unicodescript = 35
+	Unicodescript_Telugu                Unicodescript = 36
+	Unicodescript_Thaana                Unicodescript = 37
+	Unicodescript_Thai                  Unicodescript = 38
+	Unicodescript_Tibetan               Unicodescript = 39
+	Unicodescript_CanadianAboriginal    Unicodescript = 40
+	Unicodescript_Yi                    Unicodescript = 41
+	Unicodescript_Tagalog               Unicodescript = 42
+	Unicodescript_Hanunoo               Unicodescript = 43
+	Unicodescript_Buhid                 Unicodescript = 44
+	Unicodescript_Tagbanwa              Unicodescript = 45
+	Unicodescript_Braille               Unicodescript = 46
+	Unicodescript_Cypriot               Unicodescript = 47
+	Unicodescript_Limbu                 Unicodescript = 48
+	Unicodescript_Osmanya               Unicodescript = 49
+	Unicodescript_Shavian               Unicodescript = 50
+	Unicodescript_LinearB               Unicodescript = 51
+	Unicodescript_TaiLe                 Unicodescript = 52
+	Unicodescript_Ugaritic              Unicodescript = 53
+	Unicodescript_NewTaiLue             Unicodescript = 54
+	Unicodescript_Buginese              Unicodescript = 55
+	Unicodescript_Glagolitic            Unicodescript = 56
+	Unicodescript_Tifinagh              Unicodescript = 57
+	Unicodescript_SylotiNagri           Unicodescript = 58
+	Unicodescript_OldPersian            Unicodescript = 59
+	Unicodescript_Kharoshthi            Unicodescript = 60
+	Unicodescript_Unknown               Unicodescript = 61
+	Unicodescript_Balinese              Unicodescript = 62
+	Unicodescript_Cuneiform             Unicodescript = 63
+	Unicodescript_Phoenician            Unicodescript = 64
+	Unicodescript_PhagsPa               Unicodescript = 65
+	Unicodescript_Nko                   Unicodescript = 66
+	Unicodescript_KayahLi               Unicodescript = 67
+	Unicodescript_Lepcha                Unicodescript = 68
+	Unicodescript_Rejang                Unicodescript = 69
+	Unicodescript_Sundanese             Unicodescript = 70
+	Unicodescript_Saurashtra            Unicodescript = 71
+	Unicodescript_Cham                  Unicodescript = 72
+	Unicodescript_OlChiki               Unicodescript = 73
+	Unicodescript_Vai                   Unicodescript = 74
+	Unicodescript_Carian                Unicodescript = 75
+	Unicodescript_Lycian                Unicodescript = 76
+	Unicodescript_Lydian                Unicodescript = 77
+	Unicodescript_Avestan               Unicodescript = 78
+	Unicodescript_Bamum                 Unicodescript = 79
+	Unicodescript_EgyptianHieroglyphs   Unicodescript = 80
+	Unicodescript_ImperialAramaic       Unicodescript = 81
+	Unicodescript_InscriptionalPahlavi  Unicodescript = 82
+	Unicodescript_InscriptionalParthian Unicodescript = 83
+	Unicodescript_Javanese              Unicodescript = 84
+	Unicodescript_Kaithi                Unicodescript = 85
+	Unicodescript_Lisu                  Unicodescript = 86
+	Unicodescript_MeeteiMayek           Unicodescript = 87
+	Unicodescript_OldSouthArabian       Unicodescript = 88
+	Unicodescript_OldTurkic             Unicodescript = 89
+	Unicodescript_Samaritan             Unicodescript = 90
+	Unicodescript_TaiTham               Unicodescript = 91
+	Unicodescript_TaiViet               Unicodescript = 92
+	Unicodescript_Batak                 Unicodescript = 93
+	Unicodescript_Brahmi                Unicodescript = 94
+	Unicodescript_Mandaic               Unicodescript = 95
+	Unicodescript_Chakma                Unicodescript = 96
+	Unicodescript_MeroiticCursive       Unicodescript = 97
+	Unicodescript_MeroiticHieroglyphs   Unicodescript = 98
+	Unicodescript_Miao                  Unicodescript = 99
+	Unicodescript_Sharada               Unicodescript = 100
+	Unicodescript_SoraSompeng           Unicodescript = 101
+	Unicodescript_Takri                 Unicodescript = 102
+	Unicodescript_BassaVah              Unicodescript = 103
+	Unicodescript_CaucasianAlbanian     Unicodescript = 104
+	Unicodescript_Duployan              Unicodescript = 105
+	Unicodescript_Elbasan               Unicodescript = 106
+	Unicodescript_Grantha               Unicodescript = 107
+	Unicodescript_Khojki                Unicodescript = 108
+	Unicodescript_Khudawadi             Unicodescript = 109
+	Unicodescript_LinearA               Unicodescript = 110
+	Unicodescript_Mahajani              Unicodescript = 111
+	Unicodescript_Manichaean            Unicodescript = 112
+	Unicodescript_MendeKikakui          Unicodescript = 113
+	Unicodescript_Modi                  Unicodescript = 114
+	Unicodescript_Mro                   Unicodescript = 115
+	Unicodescript_Nabataean             Unicodescript = 116
+	Unicodescript_OldNorthArabian       Unicodescript = 117
+	Unicodescript_OldPermic             Unicodescript = 118
+	Unicodescript_PahawhHmong           Unicodescript = 119
+	Unicodescript_Palmyrene             Unicodescript = 120
+	Unicodescript_PauCinHau             Unicodescript = 121
+	Unicodescript_PsalterPahlavi        Unicodescript = 122
+	Unicodescript_Siddham               Unicodescript = 123
+	Unicodescript_Tirhuta               Unicodescript = 124
+	Unicodescript_WarangCiti            Unicodescript = 125
+	Unicodescript_Ahom                  Unicodescript = 126
+	Unicodescript_AnatolianHieroglyphs  Unicodescript = 127
+	Unicodescript_Hatran                Unicodescript = 128
+	Unicodescript_Multani               Unicodescript = 129
+	Unicodescript_OldHungarian          Unicodescript = 130
+	Unicodescript_Signwriting           Unicodescript = 131
+	Unicodescript_Adlam                 Unicodescript = 132
+	Unicodescript_Bhaiksuki             Unicodescript = 133
+	Unicodescript_Marchen               Unicodescript = 134
+	Unicodescript_Newa                  Unicodescript = 135
+	Unicodescript_Osage                 Unicodescript = 136
+	Unicodescript_Tangut                Unicodescript = 137
+	Unicodescript_MasaramGondi          Unicodescript = 138
+	Unicodescript_Nushu                 Unicodescript = 139
+	Unicodescript_Soyombo               Unicodescript = 140
+	Unicodescript_ZanabazarSquare       Unicodescript = 141
 )
 
 // Unicodetype is a representation of the C type UnicodeType.
 type Unicodetype int
 
 const (
-	// control
-	GUnicodeControl Unicodetype = 0
-	// format
-	GUnicodeFormat Unicodetype = 1
-	// unassigned
-	GUnicodeUnassigned Unicodetype = 2
-	// private_use
-	GUnicodePrivateUse Unicodetype = 3
-	// surrogate
-	GUnicodeSurrogate Unicodetype = 4
-	// lowercase_letter
-	GUnicodeLowercaseLetter Unicodetype = 5
-	// modifier_letter
-	GUnicodeModifierLetter Unicodetype = 6
-	// other_letter
-	GUnicodeOtherLetter Unicodetype = 7
-	// titlecase_letter
-	GUnicodeTitlecaseLetter Unicodetype = 8
-	// uppercase_letter
-	GUnicodeUppercaseLetter Unicodetype = 9
-	// spacing_mark
-	GUnicodeSpacingMark Unicodetype = 10
-	// enclosing_mark
-	GUnicodeEnclosingMark Unicodetype = 11
-	// non_spacing_mark
-	GUnicodeNonSpacingMark Unicodetype = 12
-	// decimal_number
-	GUnicodeDecimalNumber Unicodetype = 13
-	// letter_number
-	GUnicodeLetterNumber Unicodetype = 14
-	// other_number
-	GUnicodeOtherNumber Unicodetype = 15
-	// connect_punctuation
-	GUnicodeConnectPunctuation Unicodetype = 16
-	// dash_punctuation
-	GUnicodeDashPunctuation Unicodetype = 17
-	// close_punctuation
-	GUnicodeClosePunctuation Unicodetype = 18
-	// final_punctuation
-	GUnicodeFinalPunctuation Unicodetype = 19
-	// initial_punctuation
-	GUnicodeInitialPunctuation Unicodetype = 20
-	// other_punctuation
-	GUnicodeOtherPunctuation Unicodetype = 21
-	// open_punctuation
-	GUnicodeOpenPunctuation Unicodetype = 22
-	// currency_symbol
-	GUnicodeCurrencySymbol Unicodetype = 23
-	// modifier_symbol
-	GUnicodeModifierSymbol Unicodetype = 24
-	// math_symbol
-	GUnicodeMathSymbol Unicodetype = 25
-	// other_symbol
-	GUnicodeOtherSymbol Unicodetype = 26
-	// line_separator
-	GUnicodeLineSeparator Unicodetype = 27
-	// paragraph_separator
-	GUnicodeParagraphSeparator Unicodetype = 28
-	// space_separator
-	GUnicodeSpaceSeparator Unicodetype = 29
+	Unicodetype_Control            Unicodetype = 0
+	Unicodetype_Format             Unicodetype = 1
+	Unicodetype_Unassigned         Unicodetype = 2
+	Unicodetype_PrivateUse         Unicodetype = 3
+	Unicodetype_Surrogate          Unicodetype = 4
+	Unicodetype_LowercaseLetter    Unicodetype = 5
+	Unicodetype_ModifierLetter     Unicodetype = 6
+	Unicodetype_OtherLetter        Unicodetype = 7
+	Unicodetype_TitlecaseLetter    Unicodetype = 8
+	Unicodetype_UppercaseLetter    Unicodetype = 9
+	Unicodetype_SpacingMark        Unicodetype = 10
+	Unicodetype_EnclosingMark      Unicodetype = 11
+	Unicodetype_NonSpacingMark     Unicodetype = 12
+	Unicodetype_DecimalNumber      Unicodetype = 13
+	Unicodetype_LetterNumber       Unicodetype = 14
+	Unicodetype_OtherNumber        Unicodetype = 15
+	Unicodetype_ConnectPunctuation Unicodetype = 16
+	Unicodetype_DashPunctuation    Unicodetype = 17
+	Unicodetype_ClosePunctuation   Unicodetype = 18
+	Unicodetype_FinalPunctuation   Unicodetype = 19
+	Unicodetype_InitialPunctuation Unicodetype = 20
+	Unicodetype_OtherPunctuation   Unicodetype = 21
+	Unicodetype_OpenPunctuation    Unicodetype = 22
+	Unicodetype_CurrencySymbol     Unicodetype = 23
+	Unicodetype_ModifierSymbol     Unicodetype = 24
+	Unicodetype_MathSymbol         Unicodetype = 25
+	Unicodetype_OtherSymbol        Unicodetype = 26
+	Unicodetype_LineSeparator      Unicodetype = 27
+	Unicodetype_ParagraphSeparator Unicodetype = 28
+	Unicodetype_SpaceSeparator     Unicodetype = 29
 )
 
 // Userdirectory is a representation of the C type UserDirectory.
@@ -1204,24 +714,15 @@ const (
 type Userdirectory int
 
 const (
-	// directory_desktop
-	GUserDirectoryDesktop Userdirectory = 0
-	// directory_documents
-	GUserDirectoryDocuments Userdirectory = 1
-	// directory_download
-	GUserDirectoryDownload Userdirectory = 2
-	// directory_music
-	GUserDirectoryMusic Userdirectory = 3
-	// directory_pictures
-	GUserDirectoryPictures Userdirectory = 4
-	// directory_public_share
-	GUserDirectoryPublicShare Userdirectory = 5
-	// directory_templates
-	GUserDirectoryTemplates Userdirectory = 6
-	// directory_videos
-	GUserDirectoryVideos Userdirectory = 7
-	// n_directories
-	GUserNDirectories Userdirectory = 8
+	Userdirectory_DirectoryDesktop     Userdirectory = 0
+	Userdirectory_DirectoryDocuments   Userdirectory = 1
+	Userdirectory_DirectoryDownload    Userdirectory = 2
+	Userdirectory_DirectoryMusic       Userdirectory = 3
+	Userdirectory_DirectoryPictures    Userdirectory = 4
+	Userdirectory_DirectoryPublicShare Userdirectory = 5
+	Userdirectory_DirectoryTemplates   Userdirectory = 6
+	Userdirectory_DirectoryVideos      Userdirectory = 7
+	Userdirectory_NDirectories         Userdirectory = 8
 )
 
 // Variantclass is a representation of the C type VariantClass.
@@ -1230,82 +731,46 @@ const (
 type Variantclass int
 
 const (
-	// boolean
-	GVariantClassBoolean Variantclass = 98
-	// byte
-	GVariantClassByte Variantclass = 121
-	// int16
-	GVariantClassInt16 Variantclass = 110
-	// uint16
-	GVariantClassUint16 Variantclass = 113
-	// int32
-	GVariantClassInt32 Variantclass = 105
-	// uint32
-	GVariantClassUint32 Variantclass = 117
-	// int64
-	GVariantClassInt64 Variantclass = 120
-	// uint64
-	GVariantClassUint64 Variantclass = 116
-	// handle
-	GVariantClassHandle Variantclass = 104
-	// double
-	GVariantClassDouble Variantclass = 100
-	// string
-	GVariantClassString Variantclass = 115
-	// object_path
-	GVariantClassObjectPath Variantclass = 111
-	// signature
-	GVariantClassSignature Variantclass = 103
-	// variant
-	GVariantClassVariant Variantclass = 118
-	// maybe
-	GVariantClassMaybe Variantclass = 109
-	// array
-	GVariantClassArray Variantclass = 97
-	// tuple
-	GVariantClassTuple Variantclass = 40
-	// dict_entry
-	GVariantClassDictEntry Variantclass = 123
+	Variantclass_Boolean    Variantclass = 98
+	Variantclass_Byte       Variantclass = 121
+	Variantclass_Int16      Variantclass = 110
+	Variantclass_Uint16     Variantclass = 113
+	Variantclass_Int32      Variantclass = 105
+	Variantclass_Uint32     Variantclass = 117
+	Variantclass_Int64      Variantclass = 120
+	Variantclass_Uint64     Variantclass = 116
+	Variantclass_Handle     Variantclass = 104
+	Variantclass_Double     Variantclass = 100
+	Variantclass_String     Variantclass = 115
+	Variantclass_ObjectPath Variantclass = 111
+	Variantclass_Signature  Variantclass = 103
+	Variantclass_Variant    Variantclass = 118
+	Variantclass_Maybe      Variantclass = 109
+	Variantclass_Array      Variantclass = 97
+	Variantclass_Tuple      Variantclass = 40
+	Variantclass_DictEntry  Variantclass = 123
 )
 
 // Variantparseerror is a representation of the C type VariantParseError.
 type Variantparseerror int
 
 const (
-	// failed
-	GVariantParseErrorFailed Variantparseerror = 0
-	// basic_type_expected
-	GVariantParseErrorBasicTypeExpected Variantparseerror = 1
-	// cannot_infer_type
-	GVariantParseErrorCannotInferType Variantparseerror = 2
-	// definite_type_expected
-	GVariantParseErrorDefiniteTypeExpected Variantparseerror = 3
-	// input_not_at_end
-	GVariantParseErrorInputNotAtEnd Variantparseerror = 4
-	// invalid_character
-	GVariantParseErrorInvalidCharacter Variantparseerror = 5
-	// invalid_format_string
-	GVariantParseErrorInvalidFormatString Variantparseerror = 6
-	// invalid_object_path
-	GVariantParseErrorInvalidObjectPath Variantparseerror = 7
-	// invalid_signature
-	GVariantParseErrorInvalidSignature Variantparseerror = 8
-	// invalid_type_string
-	GVariantParseErrorInvalidTypeString Variantparseerror = 9
-	// no_common_type
-	GVariantParseErrorNoCommonType Variantparseerror = 10
-	// number_out_of_range
-	GVariantParseErrorNumberOutOfRange Variantparseerror = 11
-	// number_too_big
-	GVariantParseErrorNumberTooBig Variantparseerror = 12
-	// type_error
-	GVariantParseErrorTypeError Variantparseerror = 13
-	// unexpected_token
-	GVariantParseErrorUnexpectedToken Variantparseerror = 14
-	// unknown_keyword
-	GVariantParseErrorUnknownKeyword Variantparseerror = 15
-	// unterminated_string_constant
-	GVariantParseErrorUnterminatedStringConstant Variantparseerror = 16
-	// value_expected
-	GVariantParseErrorValueExpected Variantparseerror = 17
+	Variantparseerror_Failed                     Variantparseerror = 0
+	Variantparseerror_BasicTypeExpected          Variantparseerror = 1
+	Variantparseerror_CannotInferType            Variantparseerror = 2
+	Variantparseerror_DefiniteTypeExpected       Variantparseerror = 3
+	Variantparseerror_InputNotAtEnd              Variantparseerror = 4
+	Variantparseerror_InvalidCharacter           Variantparseerror = 5
+	Variantparseerror_InvalidFormatString        Variantparseerror = 6
+	Variantparseerror_InvalidObjectPath          Variantparseerror = 7
+	Variantparseerror_InvalidSignature           Variantparseerror = 8
+	Variantparseerror_InvalidTypeString          Variantparseerror = 9
+	Variantparseerror_NoCommonType               Variantparseerror = 10
+	Variantparseerror_NumberOutOfRange           Variantparseerror = 11
+	Variantparseerror_NumberTooBig               Variantparseerror = 12
+	Variantparseerror_TypeError                  Variantparseerror = 13
+	Variantparseerror_UnexpectedToken            Variantparseerror = 14
+	Variantparseerror_UnknownKeyword             Variantparseerror = 15
+	Variantparseerror_UnterminatedStringConstant Variantparseerror = 16
+	Variantparseerror_ValueExpected              Variantparseerror = 17
 )

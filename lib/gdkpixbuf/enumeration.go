@@ -6,64 +6,46 @@ package gdkpixbuf
 type Colorspace int
 
 const (
-	// rgb
-	GdkColorspaceRgb Colorspace = 0
+	Colorspace_Rgb Colorspace = 0
 )
 
 // Interptype is a representation of the C type InterpType.
 type Interptype int
 
 const (
-	// nearest
-	GdkInterpNearest Interptype = 0
-	// tiles
-	GdkInterpTiles Interptype = 1
-	// bilinear
-	GdkInterpBilinear Interptype = 2
-	// hyper
-	GdkInterpHyper Interptype = 3
+	Interptype_Nearest  Interptype = 0
+	Interptype_Tiles    Interptype = 1
+	Interptype_Bilinear Interptype = 2
+	Interptype_Hyper    Interptype = 3
 )
 
 // Pixbufalphamode is a representation of the C type PixbufAlphaMode.
 type Pixbufalphamode int
 
 const (
-	// bilevel
-	GdkPixbufAlphaBilevel Pixbufalphamode = 0
-	// full
-	GdkPixbufAlphaFull Pixbufalphamode = 1
+	Pixbufalphamode_Bilevel Pixbufalphamode = 0
+	Pixbufalphamode_Full    Pixbufalphamode = 1
 )
 
 // Pixbuferror is a representation of the C type PixbufError.
 type Pixbuferror int
 
 const (
-	// corrupt_image
-	GdkPixbufErrorCorruptImage Pixbuferror = 0
-	// insufficient_memory
-	GdkPixbufErrorInsufficientMemory Pixbuferror = 1
-	// bad_option
-	GdkPixbufErrorBadOption Pixbuferror = 2
-	// unknown_type
-	GdkPixbufErrorUnknownType Pixbuferror = 3
-	// unsupported_operation
-	GdkPixbufErrorUnsupportedOperation Pixbuferror = 4
-	// failed
-	GdkPixbufErrorFailed Pixbuferror = 5
-	// incomplete_animation
-	GdkPixbufErrorIncompleteAnimation Pixbuferror = 6
+	Pixbuferror_CorruptImage         Pixbuferror = 0
+	Pixbuferror_InsufficientMemory   Pixbuferror = 1
+	Pixbuferror_BadOption            Pixbuferror = 2
+	Pixbuferror_UnknownType          Pixbuferror = 3
+	Pixbuferror_UnsupportedOperation Pixbuferror = 4
+	Pixbuferror_Failed               Pixbuferror = 5
+	Pixbuferror_IncompleteAnimation  Pixbuferror = 6
 )
 
 // Pixbufrotation is a representation of the C type PixbufRotation.
 type Pixbufrotation int
 
 const (
-	// none
-	GdkPixbufRotateNone Pixbufrotation = 0
-	// counterclockwise
-	GdkPixbufRotateCounterclockwise Pixbufrotation = 90
-	// upsidedown
-	GdkPixbufRotateUpsidedown Pixbufrotation = 180
-	// clockwise
-	GdkPixbufRotateClockwise Pixbufrotation = 270
+	Pixbufrotation_None             Pixbufrotation = 0
+	Pixbufrotation_Counterclockwise Pixbufrotation = 90
+	Pixbufrotation_Upsidedown       Pixbufrotation = 180
+	Pixbufrotation_Clockwise        Pixbufrotation = 270
 )

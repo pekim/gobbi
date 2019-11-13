@@ -8,156 +8,93 @@ package webkit2
 type Authenticationscheme int
 
 const (
-	// default
-	WebkitAuthenticationSchemeDefault Authenticationscheme = 1
-	// http_basic
-	WebkitAuthenticationSchemeHttpBasic Authenticationscheme = 2
-	// http_digest
-	WebkitAuthenticationSchemeHttpDigest Authenticationscheme = 3
-	// html_form
-	WebkitAuthenticationSchemeHtmlForm Authenticationscheme = 4
-	// ntlm
-	WebkitAuthenticationSchemeNtlm Authenticationscheme = 5
-	// negotiate
-	WebkitAuthenticationSchemeNegotiate Authenticationscheme = 6
-	// client_certificate_requested
-	WebkitAuthenticationSchemeClientCertificateRequested Authenticationscheme = 7
-	// server_trust_evaluation_requested
-	WebkitAuthenticationSchemeServerTrustEvaluationRequested Authenticationscheme = 8
-	// unknown
-	WebkitAuthenticationSchemeUnknown Authenticationscheme = 100
+	Authenticationscheme_Default                        Authenticationscheme = 1
+	Authenticationscheme_HttpBasic                      Authenticationscheme = 2
+	Authenticationscheme_HttpDigest                     Authenticationscheme = 3
+	Authenticationscheme_HtmlForm                       Authenticationscheme = 4
+	Authenticationscheme_Ntlm                           Authenticationscheme = 5
+	Authenticationscheme_Negotiate                      Authenticationscheme = 6
+	Authenticationscheme_ClientCertificateRequested     Authenticationscheme = 7
+	Authenticationscheme_ServerTrustEvaluationRequested Authenticationscheme = 8
+	Authenticationscheme_Unknown                        Authenticationscheme = 100
 )
 
 // Cachemodel is a representation of the C type CacheModel.
 type Cachemodel int
 
 const (
-	// document_viewer
-	WebkitCacheModelDocumentViewer Cachemodel = 0
-	// web_browser
-	WebkitCacheModelWebBrowser Cachemodel = 1
-	// document_browser
-	WebkitCacheModelDocumentBrowser Cachemodel = 2
+	Cachemodel_DocumentViewer  Cachemodel = 0
+	Cachemodel_WebBrowser      Cachemodel = 1
+	Cachemodel_DocumentBrowser Cachemodel = 2
 )
 
 // Contextmenuaction is a representation of the C type ContextMenuAction.
 type Contextmenuaction int
 
 const (
-	// no_action
-	WebkitContextMenuActionNoAction Contextmenuaction = 0
-	// open_link
-	WebkitContextMenuActionOpenLink Contextmenuaction = 1
-	// open_link_in_new_window
-	WebkitContextMenuActionOpenLinkInNewWindow Contextmenuaction = 2
-	// download_link_to_disk
-	WebkitContextMenuActionDownloadLinkToDisk Contextmenuaction = 3
-	// copy_link_to_clipboard
-	WebkitContextMenuActionCopyLinkToClipboard Contextmenuaction = 4
-	// open_image_in_new_window
-	WebkitContextMenuActionOpenImageInNewWindow Contextmenuaction = 5
-	// download_image_to_disk
-	WebkitContextMenuActionDownloadImageToDisk Contextmenuaction = 6
-	// copy_image_to_clipboard
-	WebkitContextMenuActionCopyImageToClipboard Contextmenuaction = 7
-	// copy_image_url_to_clipboard
-	WebkitContextMenuActionCopyImageUrlToClipboard Contextmenuaction = 8
-	// open_frame_in_new_window
-	WebkitContextMenuActionOpenFrameInNewWindow Contextmenuaction = 9
-	// go_back
-	WebkitContextMenuActionGoBack Contextmenuaction = 10
-	// go_forward
-	WebkitContextMenuActionGoForward Contextmenuaction = 11
-	// stop
-	WebkitContextMenuActionStop Contextmenuaction = 12
-	// reload
-	WebkitContextMenuActionReload Contextmenuaction = 13
-	// copy
-	WebkitContextMenuActionCopy Contextmenuaction = 14
-	// cut
-	WebkitContextMenuActionCut Contextmenuaction = 15
-	// paste
-	WebkitContextMenuActionPaste Contextmenuaction = 16
-	// delete
-	WebkitContextMenuActionDelete Contextmenuaction = 17
-	// select_all
-	WebkitContextMenuActionSelectAll Contextmenuaction = 18
-	// input_methods
-	WebkitContextMenuActionInputMethods Contextmenuaction = 19
-	// unicode
-	WebkitContextMenuActionUnicode Contextmenuaction = 20
-	// spelling_guess
-	WebkitContextMenuActionSpellingGuess Contextmenuaction = 21
-	// no_guesses_found
-	WebkitContextMenuActionNoGuessesFound Contextmenuaction = 22
-	// ignore_spelling
-	WebkitContextMenuActionIgnoreSpelling Contextmenuaction = 23
-	// learn_spelling
-	WebkitContextMenuActionLearnSpelling Contextmenuaction = 24
-	// ignore_grammar
-	WebkitContextMenuActionIgnoreGrammar Contextmenuaction = 25
-	// font_menu
-	WebkitContextMenuActionFontMenu Contextmenuaction = 26
-	// bold
-	WebkitContextMenuActionBold Contextmenuaction = 27
-	// italic
-	WebkitContextMenuActionItalic Contextmenuaction = 28
-	// underline
-	WebkitContextMenuActionUnderline Contextmenuaction = 29
-	// outline
-	WebkitContextMenuActionOutline Contextmenuaction = 30
-	// inspect_element
-	WebkitContextMenuActionInspectElement Contextmenuaction = 31
-	// open_video_in_new_window
-	WebkitContextMenuActionOpenVideoInNewWindow Contextmenuaction = 32
-	// open_audio_in_new_window
-	WebkitContextMenuActionOpenAudioInNewWindow Contextmenuaction = 33
-	// copy_video_link_to_clipboard
-	WebkitContextMenuActionCopyVideoLinkToClipboard Contextmenuaction = 34
-	// copy_audio_link_to_clipboard
-	WebkitContextMenuActionCopyAudioLinkToClipboard Contextmenuaction = 35
-	// toggle_media_controls
-	WebkitContextMenuActionToggleMediaControls Contextmenuaction = 36
-	// toggle_media_loop
-	WebkitContextMenuActionToggleMediaLoop Contextmenuaction = 37
-	// enter_video_fullscreen
-	WebkitContextMenuActionEnterVideoFullscreen Contextmenuaction = 38
-	// media_play
-	WebkitContextMenuActionMediaPlay Contextmenuaction = 39
-	// media_pause
-	WebkitContextMenuActionMediaPause Contextmenuaction = 40
-	// media_mute
-	WebkitContextMenuActionMediaMute Contextmenuaction = 41
-	// download_video_to_disk
-	WebkitContextMenuActionDownloadVideoToDisk Contextmenuaction = 42
-	// download_audio_to_disk
-	WebkitContextMenuActionDownloadAudioToDisk Contextmenuaction = 43
-	// insert_emoji
-	WebkitContextMenuActionInsertEmoji Contextmenuaction = 44
-	// custom
-	WebkitContextMenuActionCustom Contextmenuaction = 10000
+	Contextmenuaction_NoAction                 Contextmenuaction = 0
+	Contextmenuaction_OpenLink                 Contextmenuaction = 1
+	Contextmenuaction_OpenLinkInNewWindow      Contextmenuaction = 2
+	Contextmenuaction_DownloadLinkToDisk       Contextmenuaction = 3
+	Contextmenuaction_CopyLinkToClipboard      Contextmenuaction = 4
+	Contextmenuaction_OpenImageInNewWindow     Contextmenuaction = 5
+	Contextmenuaction_DownloadImageToDisk      Contextmenuaction = 6
+	Contextmenuaction_CopyImageToClipboard     Contextmenuaction = 7
+	Contextmenuaction_CopyImageUrlToClipboard  Contextmenuaction = 8
+	Contextmenuaction_OpenFrameInNewWindow     Contextmenuaction = 9
+	Contextmenuaction_GoBack                   Contextmenuaction = 10
+	Contextmenuaction_GoForward                Contextmenuaction = 11
+	Contextmenuaction_Stop                     Contextmenuaction = 12
+	Contextmenuaction_Reload                   Contextmenuaction = 13
+	Contextmenuaction_Copy                     Contextmenuaction = 14
+	Contextmenuaction_Cut                      Contextmenuaction = 15
+	Contextmenuaction_Paste                    Contextmenuaction = 16
+	Contextmenuaction_Delete                   Contextmenuaction = 17
+	Contextmenuaction_SelectAll                Contextmenuaction = 18
+	Contextmenuaction_InputMethods             Contextmenuaction = 19
+	Contextmenuaction_Unicode                  Contextmenuaction = 20
+	Contextmenuaction_SpellingGuess            Contextmenuaction = 21
+	Contextmenuaction_NoGuessesFound           Contextmenuaction = 22
+	Contextmenuaction_IgnoreSpelling           Contextmenuaction = 23
+	Contextmenuaction_LearnSpelling            Contextmenuaction = 24
+	Contextmenuaction_IgnoreGrammar            Contextmenuaction = 25
+	Contextmenuaction_FontMenu                 Contextmenuaction = 26
+	Contextmenuaction_Bold                     Contextmenuaction = 27
+	Contextmenuaction_Italic                   Contextmenuaction = 28
+	Contextmenuaction_Underline                Contextmenuaction = 29
+	Contextmenuaction_Outline                  Contextmenuaction = 30
+	Contextmenuaction_InspectElement           Contextmenuaction = 31
+	Contextmenuaction_OpenVideoInNewWindow     Contextmenuaction = 32
+	Contextmenuaction_OpenAudioInNewWindow     Contextmenuaction = 33
+	Contextmenuaction_CopyVideoLinkToClipboard Contextmenuaction = 34
+	Contextmenuaction_CopyAudioLinkToClipboard Contextmenuaction = 35
+	Contextmenuaction_ToggleMediaControls      Contextmenuaction = 36
+	Contextmenuaction_ToggleMediaLoop          Contextmenuaction = 37
+	Contextmenuaction_EnterVideoFullscreen     Contextmenuaction = 38
+	Contextmenuaction_MediaPlay                Contextmenuaction = 39
+	Contextmenuaction_MediaPause               Contextmenuaction = 40
+	Contextmenuaction_MediaMute                Contextmenuaction = 41
+	Contextmenuaction_DownloadVideoToDisk      Contextmenuaction = 42
+	Contextmenuaction_DownloadAudioToDisk      Contextmenuaction = 43
+	Contextmenuaction_InsertEmoji              Contextmenuaction = 44
+	Contextmenuaction_Custom                   Contextmenuaction = 10000
 )
 
 // Cookieacceptpolicy is a representation of the C type CookieAcceptPolicy.
 type Cookieacceptpolicy int
 
 const (
-	// always
-	WebkitCookiePolicyAcceptAlways Cookieacceptpolicy = 0
-	// never
-	WebkitCookiePolicyAcceptNever Cookieacceptpolicy = 1
-	// no_third_party
-	WebkitCookiePolicyAcceptNoThirdParty Cookieacceptpolicy = 2
+	Cookieacceptpolicy_Always       Cookieacceptpolicy = 0
+	Cookieacceptpolicy_Never        Cookieacceptpolicy = 1
+	Cookieacceptpolicy_NoThirdParty Cookieacceptpolicy = 2
 )
 
 // Cookiepersistentstorage is a representation of the C type CookiePersistentStorage.
 type Cookiepersistentstorage int
 
 const (
-	// text
-	WebkitCookiePersistentStorageText Cookiepersistentstorage = 0
-	// sqlite
-	WebkitCookiePersistentStorageSqlite Cookiepersistentstorage = 1
+	Cookiepersistentstorage_Text   Cookiepersistentstorage = 0
+	Cookiepersistentstorage_Sqlite Cookiepersistentstorage = 1
 )
 
 // Credentialpersistence is a representation of the C type CredentialPersistence.
@@ -166,36 +103,27 @@ const (
 type Credentialpersistence int
 
 const (
-	// none
-	WebkitCredentialPersistenceNone Credentialpersistence = 0
-	// for_session
-	WebkitCredentialPersistenceForSession Credentialpersistence = 1
-	// permanent
-	WebkitCredentialPersistencePermanent Credentialpersistence = 2
+	Credentialpersistence_None       Credentialpersistence = 0
+	Credentialpersistence_ForSession Credentialpersistence = 1
+	Credentialpersistence_Permanent  Credentialpersistence = 2
 )
 
 // Downloaderror is a representation of the C type DownloadError.
 type Downloaderror int
 
 const (
-	// network
-	WebkitDownloadErrorNetwork Downloaderror = 499
-	// cancelled_by_user
-	WebkitDownloadErrorCancelledByUser Downloaderror = 400
-	// destination
-	WebkitDownloadErrorDestination Downloaderror = 401
+	Downloaderror_Network         Downloaderror = 499
+	Downloaderror_CancelledByUser Downloaderror = 400
+	Downloaderror_Destination     Downloaderror = 401
 )
 
 // Favicondatabaseerror is a representation of the C type FaviconDatabaseError.
 type Favicondatabaseerror int
 
 const (
-	// not_initialized
-	WebkitFaviconDatabaseErrorNotInitialized Favicondatabaseerror = 0
-	// favicon_not_found
-	WebkitFaviconDatabaseErrorFaviconNotFound Favicondatabaseerror = 1
-	// favicon_unknown
-	WebkitFaviconDatabaseErrorFaviconUnknown Favicondatabaseerror = 2
+	Favicondatabaseerror_NotInitialized  Favicondatabaseerror = 0
+	Favicondatabaseerror_FaviconNotFound Favicondatabaseerror = 1
+	Favicondatabaseerror_FaviconUnknown  Favicondatabaseerror = 2
 )
 
 // Hardwareaccelerationpolicy is a representation of the C type HardwareAccelerationPolicy.
@@ -204,78 +132,57 @@ const (
 type Hardwareaccelerationpolicy int
 
 const (
-	// on_demand
-	WebkitHardwareAccelerationPolicyOnDemand Hardwareaccelerationpolicy = 0
-	// always
-	WebkitHardwareAccelerationPolicyAlways Hardwareaccelerationpolicy = 1
-	// never
-	WebkitHardwareAccelerationPolicyNever Hardwareaccelerationpolicy = 2
+	Hardwareaccelerationpolicy_OnDemand Hardwareaccelerationpolicy = 0
+	Hardwareaccelerationpolicy_Always   Hardwareaccelerationpolicy = 1
+	Hardwareaccelerationpolicy_Never    Hardwareaccelerationpolicy = 2
 )
 
 // Insecurecontentevent is a representation of the C type InsecureContentEvent.
 type Insecurecontentevent int
 
 const (
-	// run
-	WebkitInsecureContentRun Insecurecontentevent = 0
-	// displayed
-	WebkitInsecureContentDisplayed Insecurecontentevent = 1
+	Insecurecontentevent_Run       Insecurecontentevent = 0
+	Insecurecontentevent_Displayed Insecurecontentevent = 1
 )
 
 // Javascripterror is a representation of the C type JavascriptError.
 type Javascripterror int
 
 const (
-	// failed
-	WebkitJavascriptErrorScriptFailed Javascripterror = 699
+	Javascripterror_Failed Javascripterror = 699
 )
 
 // Loadevent is a representation of the C type LoadEvent.
 type Loadevent int
 
 const (
-	// started
-	WebkitLoadStarted Loadevent = 0
-	// redirected
-	WebkitLoadRedirected Loadevent = 1
-	// committed
-	WebkitLoadCommitted Loadevent = 2
-	// finished
-	WebkitLoadFinished Loadevent = 3
+	Loadevent_Started    Loadevent = 0
+	Loadevent_Redirected Loadevent = 1
+	Loadevent_Committed  Loadevent = 2
+	Loadevent_Finished   Loadevent = 3
 )
 
 // Navigationtype is a representation of the C type NavigationType.
 type Navigationtype int
 
 const (
-	// link_clicked
-	WebkitNavigationTypeLinkClicked Navigationtype = 0
-	// form_submitted
-	WebkitNavigationTypeFormSubmitted Navigationtype = 1
-	// back_forward
-	WebkitNavigationTypeBackForward Navigationtype = 2
-	// reload
-	WebkitNavigationTypeReload Navigationtype = 3
-	// form_resubmitted
-	WebkitNavigationTypeFormResubmitted Navigationtype = 4
-	// other
-	WebkitNavigationTypeOther Navigationtype = 5
+	Navigationtype_LinkClicked     Navigationtype = 0
+	Navigationtype_FormSubmitted   Navigationtype = 1
+	Navigationtype_BackForward     Navigationtype = 2
+	Navigationtype_Reload          Navigationtype = 3
+	Navigationtype_FormResubmitted Navigationtype = 4
+	Navigationtype_Other           Navigationtype = 5
 )
 
 // Networkerror is a representation of the C type NetworkError.
 type Networkerror int
 
 const (
-	// failed
-	WebkitNetworkErrorFailed Networkerror = 399
-	// transport
-	WebkitNetworkErrorTransport Networkerror = 300
-	// unknown_protocol
-	WebkitNetworkErrorUnknownProtocol Networkerror = 301
-	// cancelled
-	WebkitNetworkErrorCancelled Networkerror = 302
-	// file_does_not_exist
-	WebkitNetworkErrorFileDoesNotExist Networkerror = 303
+	Networkerror_Failed           Networkerror = 399
+	Networkerror_Transport        Networkerror = 300
+	Networkerror_UnknownProtocol  Networkerror = 301
+	Networkerror_Cancelled        Networkerror = 302
+	Networkerror_FileDoesNotExist Networkerror = 303
 )
 
 // Networkproxymode is a representation of the C type NetworkProxyMode.
@@ -284,80 +191,58 @@ const (
 type Networkproxymode int
 
 const (
-	// default
-	WebkitNetworkProxyModeDefault Networkproxymode = 0
-	// no_proxy
-	WebkitNetworkProxyModeNoProxy Networkproxymode = 1
-	// custom
-	WebkitNetworkProxyModeCustom Networkproxymode = 2
+	Networkproxymode_Default Networkproxymode = 0
+	Networkproxymode_NoProxy Networkproxymode = 1
+	Networkproxymode_Custom  Networkproxymode = 2
 )
 
 // Pluginerror is a representation of the C type PluginError.
 type Pluginerror int
 
 const (
-	// failed
-	WebkitPluginErrorFailed Pluginerror = 299
-	// cannot_find_plugin
-	WebkitPluginErrorCannotFindPlugin Pluginerror = 200
-	// cannot_load_plugin
-	WebkitPluginErrorCannotLoadPlugin Pluginerror = 201
-	// java_unavailable
-	WebkitPluginErrorJavaUnavailable Pluginerror = 202
-	// connection_cancelled
-	WebkitPluginErrorConnectionCancelled Pluginerror = 203
-	// will_handle_load
-	WebkitPluginErrorWillHandleLoad Pluginerror = 204
+	Pluginerror_Failed              Pluginerror = 299
+	Pluginerror_CannotFindPlugin    Pluginerror = 200
+	Pluginerror_CannotLoadPlugin    Pluginerror = 201
+	Pluginerror_JavaUnavailable     Pluginerror = 202
+	Pluginerror_ConnectionCancelled Pluginerror = 203
+	Pluginerror_WillHandleLoad      Pluginerror = 204
 )
 
 // Policydecisiontype is a representation of the C type PolicyDecisionType.
 type Policydecisiontype int
 
 const (
-	// navigation_action
-	WebkitPolicyDecisionTypeNavigationAction Policydecisiontype = 0
-	// new_window_action
-	WebkitPolicyDecisionTypeNewWindowAction Policydecisiontype = 1
-	// response
-	WebkitPolicyDecisionTypeResponse Policydecisiontype = 2
+	Policydecisiontype_NavigationAction Policydecisiontype = 0
+	Policydecisiontype_NewWindowAction  Policydecisiontype = 1
+	Policydecisiontype_Response         Policydecisiontype = 2
 )
 
 // Policyerror is a representation of the C type PolicyError.
 type Policyerror int
 
 const (
-	// failed
-	WebkitPolicyErrorFailed Policyerror = 199
-	// cannot_show_mime_type
-	WebkitPolicyErrorCannotShowMimeType Policyerror = 100
-	// cannot_show_uri
-	WebkitPolicyErrorCannotShowUri Policyerror = 101
-	// frame_load_interrupted_by_policy_change
-	WebkitPolicyErrorFrameLoadInterruptedByPolicyChange Policyerror = 102
-	// cannot_use_restricted_port
-	WebkitPolicyErrorCannotUseRestrictedPort Policyerror = 103
+	Policyerror_Failed                             Policyerror = 199
+	Policyerror_CannotShowMimeType                 Policyerror = 100
+	Policyerror_CannotShowUri                      Policyerror = 101
+	Policyerror_FrameLoadInterruptedByPolicyChange Policyerror = 102
+	Policyerror_CannotUseRestrictedPort            Policyerror = 103
 )
 
 // Printerror is a representation of the C type PrintError.
 type Printerror int
 
 const (
-	// general
-	WebkitPrintErrorGeneral Printerror = 599
-	// printer_not_found
-	WebkitPrintErrorPrinterNotFound Printerror = 500
-	// invalid_page_range
-	WebkitPrintErrorInvalidPageRange Printerror = 501
+	Printerror_General          Printerror = 599
+	Printerror_PrinterNotFound  Printerror = 500
+	Printerror_InvalidPageRange Printerror = 501
 )
 
 // Printoperationresponse is a representation of the C type PrintOperationResponse.
 type Printoperationresponse int
 
 const (
-	// print
-	WebkitPrintOperationResponsePrint Printoperationresponse = 0
-	// cancel
-	WebkitPrintOperationResponseCancel Printoperationresponse = 1
+	Printoperationresponse_Print  Printoperationresponse = 0
+	Printoperationresponse_Cancel Printoperationresponse = 1
 )
 
 // Processmodel is a representation of the C type ProcessModel.
@@ -366,60 +251,48 @@ const (
 type Processmodel int
 
 const (
-	// shared_secondary_process
-	WebkitProcessModelSharedSecondaryProcess Processmodel = 0
-	// multiple_secondary_processes
-	WebkitProcessModelMultipleSecondaryProcesses Processmodel = 1
+	Processmodel_SharedSecondaryProcess     Processmodel = 0
+	Processmodel_MultipleSecondaryProcesses Processmodel = 1
 )
 
 // Savemode is a representation of the C type SaveMode.
 type Savemode int
 
 const (
-	// mhtml
-	WebkitSaveModeMhtml Savemode = 0
+	Savemode_Mhtml Savemode = 0
 )
 
 // Scriptdialogtype is a representation of the C type ScriptDialogType.
 type Scriptdialogtype int
 
 const (
-	// alert
-	WebkitScriptDialogAlert Scriptdialogtype = 0
-	// confirm
-	WebkitScriptDialogConfirm Scriptdialogtype = 1
-	// prompt
-	WebkitScriptDialogPrompt Scriptdialogtype = 2
-	// before_unload_confirm
-	WebkitScriptDialogBeforeUnloadConfirm Scriptdialogtype = 3
+	Scriptdialogtype_Alert               Scriptdialogtype = 0
+	Scriptdialogtype_Confirm             Scriptdialogtype = 1
+	Scriptdialogtype_Prompt              Scriptdialogtype = 2
+	Scriptdialogtype_BeforeUnloadConfirm Scriptdialogtype = 3
 )
 
 // Snapshoterror is a representation of the C type SnapshotError.
 type Snapshoterror int
 
 const (
-	// create
-	WebkitSnapshotErrorFailedToCreate Snapshoterror = 799
+	Snapshoterror_Create Snapshoterror = 799
 )
 
 // Snapshotregion is a representation of the C type SnapshotRegion.
 type Snapshotregion int
 
 const (
-	// visible
-	WebkitSnapshotRegionVisible Snapshotregion = 0
-	// full_document
-	WebkitSnapshotRegionFullDocument Snapshotregion = 1
+	Snapshotregion_Visible      Snapshotregion = 0
+	Snapshotregion_FullDocument Snapshotregion = 1
 )
 
 // Tlserrorspolicy is a representation of the C type TLSErrorsPolicy.
 type Tlserrorspolicy int
 
 const (
-	// ignore
-	WebkitTlsErrorsPolicyIgnore Tlserrorspolicy = 0
-	// fail
-	WebkitTlsErrorsPolicyFail Tlserrorspolicy = 1
+	Tlserrorspolicy_Ignore Tlserrorspolicy = 0
+	Tlserrorspolicy_Fail   Tlserrorspolicy = 1
 )
 
 // Usercontentfiltererror is a representation of the C type UserContentFilterError.
@@ -428,10 +301,8 @@ const (
 type Usercontentfiltererror int
 
 const (
-	// invalid_source
-	WebkitUserContentFilterErrorInvalidSource Usercontentfiltererror = 0
-	// not_found
-	WebkitUserContentFilterErrorNotFound Usercontentfiltererror = 1
+	Usercontentfiltererror_InvalidSource Usercontentfiltererror = 0
+	Usercontentfiltererror_NotFound      Usercontentfiltererror = 1
 )
 
 // Usercontentinjectedframes is a representation of the C type UserContentInjectedFrames.
@@ -440,10 +311,8 @@ const (
 type Usercontentinjectedframes int
 
 const (
-	// all_frames
-	WebkitUserContentInjectAllFrames Usercontentinjectedframes = 0
-	// top_frame
-	WebkitUserContentInjectTopFrame Usercontentinjectedframes = 1
+	Usercontentinjectedframes_AllFrames Usercontentinjectedframes = 0
+	Usercontentinjectedframes_TopFrame  Usercontentinjectedframes = 1
 )
 
 // Userscriptinjectiontime is a representation of the C type UserScriptInjectionTime.
@@ -452,10 +321,8 @@ const (
 type Userscriptinjectiontime int
 
 const (
-	// start
-	WebkitUserScriptInjectAtDocumentStart Userscriptinjectiontime = 0
-	// end
-	WebkitUserScriptInjectAtDocumentEnd Userscriptinjectiontime = 1
+	Userscriptinjectiontime_Start Userscriptinjectiontime = 0
+	Userscriptinjectiontime_End   Userscriptinjectiontime = 1
 )
 
 // Userstylelevel is a representation of the C type UserStyleLevel.
@@ -464,10 +331,8 @@ const (
 type Userstylelevel int
 
 const (
-	// user
-	WebkitUserStyleLevelUser Userstylelevel = 0
-	// author
-	WebkitUserStyleLevelAuthor Userstylelevel = 1
+	Userstylelevel_User   Userstylelevel = 0
+	Userstylelevel_Author Userstylelevel = 1
 )
 
 // Webprocessterminationreason is a representation of the C type WebProcessTerminationReason.
@@ -476,8 +341,6 @@ const (
 type Webprocessterminationreason int
 
 const (
-	// crashed
-	WebkitWebProcessCrashed Webprocessterminationreason = 0
-	// exceeded_memory_limit
-	WebkitWebProcessExceededMemoryLimit Webprocessterminationreason = 1
+	Webprocessterminationreason_Crashed             Webprocessterminationreason = 0
+	Webprocessterminationreason_ExceededMemoryLimit Webprocessterminationreason = 1
 )

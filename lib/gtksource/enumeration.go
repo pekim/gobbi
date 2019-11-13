@@ -8,24 +8,18 @@ package gtksource
 type Backgroundpatterntype int
 
 const (
-	// none
-	GtkSourceBackgroundPatternTypeNone Backgroundpatterntype = 0
-	// grid
-	GtkSourceBackgroundPatternTypeGrid Backgroundpatterntype = 1
+	Backgroundpatterntype_None Backgroundpatterntype = 0
+	Backgroundpatterntype_Grid Backgroundpatterntype = 1
 )
 
 // Bracketmatchtype is a representation of the C type BracketMatchType.
 type Bracketmatchtype int
 
 const (
-	// none
-	GtkSourceBracketMatchNone Bracketmatchtype = 0
-	// out_of_range
-	GtkSourceBracketMatchOutOfRange Bracketmatchtype = 1
-	// not_found
-	GtkSourceBracketMatchNotFound Bracketmatchtype = 2
-	// found
-	GtkSourceBracketMatchFound Bracketmatchtype = 3
+	Bracketmatchtype_None       Bracketmatchtype = 0
+	Bracketmatchtype_OutOfRange Bracketmatchtype = 1
+	Bracketmatchtype_NotFound   Bracketmatchtype = 2
+	Bracketmatchtype_Found      Bracketmatchtype = 3
 )
 
 // Changecasetype is a representation of the C type ChangeCaseType.
@@ -34,24 +28,18 @@ const (
 type Changecasetype int
 
 const (
-	// lower
-	GtkSourceChangeCaseLower Changecasetype = 0
-	// upper
-	GtkSourceChangeCaseUpper Changecasetype = 1
-	// toggle
-	GtkSourceChangeCaseToggle Changecasetype = 2
-	// title
-	GtkSourceChangeCaseTitle Changecasetype = 3
+	Changecasetype_Lower  Changecasetype = 0
+	Changecasetype_Upper  Changecasetype = 1
+	Changecasetype_Toggle Changecasetype = 2
+	Changecasetype_Title  Changecasetype = 3
 )
 
 // Completionerror is a representation of the C type CompletionError.
 type Completionerror int
 
 const (
-	// already_bound
-	GtkSourceCompletionErrorAlreadyBound Completionerror = 0
-	// not_bound
-	GtkSourceCompletionErrorNotBound Completionerror = 1
+	Completionerror_AlreadyBound Completionerror = 0
+	Completionerror_NotBound     Completionerror = 1
 )
 
 // Compressiontype is a representation of the C type CompressionType.
@@ -60,22 +48,17 @@ const (
 type Compressiontype int
 
 const (
-	// none
-	GtkSourceCompressionTypeNone Compressiontype = 0
-	// gzip
-	GtkSourceCompressionTypeGzip Compressiontype = 1
+	Compressiontype_None Compressiontype = 0
+	Compressiontype_Gzip Compressiontype = 1
 )
 
 // Fileloadererror is a representation of the C type FileLoaderError.
 type Fileloadererror int
 
 const (
-	// too_big
-	GtkSourceFileLoaderErrorTooBig Fileloadererror = 0
-	// encoding_auto_detection_failed
-	GtkSourceFileLoaderErrorEncodingAutoDetectionFailed Fileloadererror = 1
-	// conversion_fallback
-	GtkSourceFileLoaderErrorConversionFallback Fileloadererror = 2
+	Fileloadererror_TooBig                      Fileloadererror = 0
+	Fileloadererror_EncodingAutoDetectionFailed Fileloadererror = 1
+	Fileloadererror_ConversionFallback          Fileloadererror = 2
 )
 
 // Filesavererror is a representation of the C type FileSaverError.
@@ -84,22 +67,17 @@ const (
 type Filesavererror int
 
 const (
-	// invalid_chars
-	GtkSourceFileSaverErrorInvalidChars Filesavererror = 0
-	// externally_modified
-	GtkSourceFileSaverErrorExternallyModified Filesavererror = 1
+	Filesavererror_InvalidChars       Filesavererror = 0
+	Filesavererror_ExternallyModified Filesavererror = 1
 )
 
 // Gutterrendereralignmentmode is a representation of the C type GutterRendererAlignmentMode.
 type Gutterrendereralignmentmode int
 
 const (
-	// cell
-	GtkSourceGutterRendererAlignmentModeCell Gutterrendereralignmentmode = 0
-	// first
-	GtkSourceGutterRendererAlignmentModeFirst Gutterrendereralignmentmode = 1
-	// last
-	GtkSourceGutterRendererAlignmentModeLast Gutterrendereralignmentmode = 2
+	Gutterrendereralignmentmode_Cell  Gutterrendereralignmentmode = 0
+	Gutterrendereralignmentmode_First Gutterrendereralignmentmode = 1
+	Gutterrendereralignmentmode_Last  Gutterrendereralignmentmode = 2
 )
 
 // Newlinetype is a representation of the C type NewlineType.
@@ -108,34 +86,25 @@ const (
 type Newlinetype int
 
 const (
-	// lf
-	GtkSourceNewlineTypeLf Newlinetype = 0
-	// cr
-	GtkSourceNewlineTypeCr Newlinetype = 1
-	// cr_lf
-	GtkSourceNewlineTypeCrLf Newlinetype = 2
+	Newlinetype_Lf   Newlinetype = 0
+	Newlinetype_Cr   Newlinetype = 1
+	Newlinetype_CrLf Newlinetype = 2
 )
 
 // Smarthomeendtype is a representation of the C type SmartHomeEndType.
 type Smarthomeendtype int
 
 const (
-	// disabled
-	GtkSourceSmartHomeEndDisabled Smarthomeendtype = 0
-	// before
-	GtkSourceSmartHomeEndBefore Smarthomeendtype = 1
-	// after
-	GtkSourceSmartHomeEndAfter Smarthomeendtype = 2
-	// always
-	GtkSourceSmartHomeEndAlways Smarthomeendtype = 3
+	Smarthomeendtype_Disabled Smarthomeendtype = 0
+	Smarthomeendtype_Before   Smarthomeendtype = 1
+	Smarthomeendtype_After    Smarthomeendtype = 2
+	Smarthomeendtype_Always   Smarthomeendtype = 3
 )
 
 // Viewgutterposition is a representation of the C type ViewGutterPosition.
 type Viewgutterposition int
 
 const (
-	// lines
-	GtkSourceViewGutterPositionLines Viewgutterposition = -30
-	// marks
-	GtkSourceViewGutterPositionMarks Viewgutterposition = -20
+	Viewgutterposition_Lines Viewgutterposition = -30
+	Viewgutterposition_Marks Viewgutterposition = -20
 )

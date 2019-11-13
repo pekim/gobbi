@@ -17,8 +17,8 @@ func (m *Member) init(ns *Namespace) {
 	m.namespace = ns
 }
 
-func (m *Member) generate(g *jen.Group, goTypeName string) {
-	goName := makeExportedGoName(m.CIdentifier)
+func (m *Member) generate(g *jen.Group, goTypeName string, namePrefix string) {
+	goName := namePrefix + "_" + makeExportedGoName(m.Name)
 
 	g.
 		Id(goName).
