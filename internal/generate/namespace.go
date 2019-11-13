@@ -62,8 +62,10 @@ func (n *Namespace) generateLibDir() {
 }
 
 func (n *Namespace) generateFile(name string, generateContent func(f *file)) {
+	jenFile := jen.NewFile(n.goPackageName)
 	f := &file{
-		jen.NewFile(n.goPackageName),
+		File:  jenFile,
+		group: &group{jenFile.Group},
 	}
 
 	// Use a standard generated file comment format.
