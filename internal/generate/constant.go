@@ -34,7 +34,6 @@ func (c *Constant) init(ns *Namespace) {
 }
 
 func (c *Constant) generate(f *file) {
-
 	value, err := c.Type.jenValue(c.Value)
 	if err != nil {
 		f.unsupported(c.Name, err.Error())
