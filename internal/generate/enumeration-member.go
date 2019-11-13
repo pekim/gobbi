@@ -1,9 +1,5 @@
 package generate
 
-import (
-	"github.com/dave/jennifer/jen"
-)
-
 type Member struct {
 	Name        string `xml:"name,attr"`
 	Value       int    `xml:"value,attr"`
@@ -17,9 +13,10 @@ func (m *Member) init(ns *Namespace) {
 	m.namespace = ns
 }
 
-func (m *Member) generate(g *jen.Group, goTypeName string, namePrefix string) {
+func (m *Member) generate(g *group, goTypeName string, namePrefix string) {
 	goName := namePrefix + "_" + makeExportedGoName(m.Name)
 
+	g.docForC(goName, m.CIdentifier)
 	g.
 		Id(goName).
 		Id(goTypeName).

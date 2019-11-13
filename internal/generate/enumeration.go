@@ -30,7 +30,7 @@ func (e *Enumeration) init(ns *Namespace) {
 }
 
 func (e *Enumeration) generate(f *file) {
-	f.docForC(e.goTypeName, e.Name)
+	f.docForC(e.goTypeName, e.CType)
 	f.docVersion(e.Version)
 
 	// define the type
@@ -42,7 +42,9 @@ func (e *Enumeration) generate(f *file) {
 	// generate the member consts
 	f.
 		Const().
-		DefsFunc(func(g *jen.Group) {
+		DefsFunc(func(jg *jen.Group) {
+			g := &group{jg}
+
 			for _, member := range e.Members {
 				member.generate(g, e.goTypeName, e.goMemberPrefix)
 			}
