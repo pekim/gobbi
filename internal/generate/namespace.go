@@ -17,8 +17,8 @@ type Namespace struct {
 	//CDocPath            string `xml:"c-doc-path,attr"`
 	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	//CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
-	Aliases Aliases `xml:"alias"`
-	//	Bitfields                     Enumerations `xml:"bitfield"`
+	Aliases   Aliases      `xml:"alias"`
+	Bitfields Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	//	Classes                       Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
@@ -37,6 +37,7 @@ func (n *Namespace) init(namespaces namespaces) {
 	n.namespaces = namespaces
 
 	n.Aliases.init(n)
+	n.Bitfields.init(n)
 	n.Constants.init(n)
 	n.Enumerations.init(n)
 }
@@ -48,6 +49,7 @@ func (n *Namespace) generate() {
 	n.generateLibDir()
 
 	n.generateFile("alias", n.Aliases.generate)
+	n.generateFile("bitfield", n.Bitfields.generate)
 	n.generateFile("constant", n.Constants.generate)
 	n.generateFile("enumeration", n.Enumerations.generate)
 }
