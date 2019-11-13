@@ -29,6 +29,8 @@ func (c *Constant) init(ns *Namespace) {
 	} else {
 		c.goName = makeExportedGoName(c.Name)
 	}
+
+	c.Type.init(ns)
 }
 
 func (c *Constant) generate(f *file) {

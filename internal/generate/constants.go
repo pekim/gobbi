@@ -13,3 +13,13 @@ func (cc Constants) generate(f *file) {
 		constant.generate(f)
 	}
 }
+
+func (cc Constants) findByName(name string) (*Constant, bool) {
+	for _, constant := range cc {
+		if constant.Name == name {
+			return constant, true
+		}
+	}
+
+	return nil, false
+}

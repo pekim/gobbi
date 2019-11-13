@@ -6,6 +6,7 @@ import (
 	"os"
 	"path"
 	"strings"
+	"unicode"
 )
 
 type Namespace struct {
@@ -73,4 +74,36 @@ func (n *Namespace) generateFile(name string, generateContent func(f *file)) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func (n *Namespace) haveType(typeName string) bool {
+	if _, found := n.Aliases.findByName(typeName); found {
+		return true
+	}
+	if _, found := n.Constants.findByName(typeName); found {
+		return true
+	}
+	return false
+}
+
+func (n *Namespace) jenGoTypeForTypeName(typeName string) (*jen.Statement, bool) {
+	// If not starts with upper case then not a reference to a type.
+	// (Referenceing first byte as a rune should be fine for type names.)
+	if !unicode.IsUpper(rune(typeName[0])) {
+		return nil, false
+	}
+
+	parts := strings.Split(typeName, ".")
+
+	if len(parts) == 1 {
+		if n.haveType(parts[0]) {
+			return jen.Id(parts[0]), true
+		}
+	}
+
+	if len(parts) == 2 {
+		// TODO qualified reference; find in namespaces
+	}
+
+	return nil, false
 }

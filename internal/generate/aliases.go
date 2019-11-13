@@ -13,3 +13,13 @@ func (aa Aliases) generate(f *file) {
 		alias.generate(f)
 	}
 }
+
+func (aa Aliases) findByName(name string) (*Alias, bool) {
+	for _, alias := range aa {
+		if alias.Name == name {
+			return alias, true
+		}
+	}
+
+	return nil, false
+}

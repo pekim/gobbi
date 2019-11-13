@@ -14,6 +14,7 @@ type Alias struct {
 func (a *Alias) init(ns *Namespace) {
 	a.namespace = ns
 	a.goName = makeExportedGoName(a.Name)
+	a.Type.init(ns)
 }
 
 func (a *Alias) generate(f *file) {

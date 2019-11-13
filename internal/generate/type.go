@@ -10,6 +10,12 @@ import (
 type Type struct {
 	Name  string `xml:"name,attr"`
 	CType string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
+
+	namespace *Namespace
+}
+
+func (t *Type) init(ns *Namespace) {
+	t.namespace = ns
 }
 
 func (t *Type) jenGoType() (*jen.Statement, error) {
@@ -43,6 +49,11 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return jen.Uintptr(), nil
 	case "utf8":
 		return jen.String(), nil
+	}
+
+	goType, ok := t.namespace.jenGoTypeForTypeName(t.Name)
+	if ok {
+		return goType, nil
 	}
 
 	return nil, fmt.Errorf("No Go type for '%s'\n", t.Name)
