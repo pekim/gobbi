@@ -18,12 +18,16 @@ type Cursortype int
 type Devicepadfeature int
 
 // Devicetooltype is a representation of the C type DeviceToolType.
+//
+// since 3.22
 type Devicetooltype int
 
 // Devicetype is a representation of the C type DeviceType.
 type Devicetype int
 
 // Dragcancelreason is a representation of the C type DragCancelReason.
+//
+// since 3.20
 type Dragcancelreason int
 
 // Dragprotocol is a representation of the C type DragProtocol.
@@ -36,9 +40,13 @@ type Eventtype int
 type Filterreturn int
 
 // Fullscreenmode is a representation of the C type FullscreenMode.
+//
+// since 3.8
 type Fullscreenmode int
 
 // Glerror is a representation of the C type GLError.
+//
+// since 3.16
 type Glerror int
 
 // Grabownership is a representation of the C type GrabOwnership.
@@ -57,6 +65,8 @@ type Inputmode int
 type Inputsource int
 
 // Modifierintent is a representation of the C type ModifierIntent.
+//
+// since 3.4
 type Modifierintent int
 
 // Notifytype is a representation of the C type NotifyType.
@@ -81,6 +91,8 @@ type Settingaction int
 type Status int
 
 // Subpixellayout is a representation of the C type SubpixelLayout.
+//
+// since 3.22
 type Subpixellayout int
 
 // Touchpadgesturephase is a representation of the C type TouchpadGesturePhase.

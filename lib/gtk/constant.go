@@ -12,12 +12,18 @@ const InputError = int32(-1)
 const InterfaceAge = int32(30)
 
 // LevelBarOffsetFull is a representation of the C type LEVEL_BAR_OFFSET_FULL.
+//
+// since 3.20
 const LevelBarOffsetFull = "full"
 
 // LevelBarOffsetHigh is a representation of the C type LEVEL_BAR_OFFSET_HIGH.
+//
+// since 3.6
 const LevelBarOffsetHigh = "high"
 
 // LevelBarOffsetLow is a representation of the C type LEVEL_BAR_OFFSET_LOW.
+//
+// since 3.6
 const LevelBarOffsetLow = "low"
 
 // MajorVersion is a representation of the C type MAJOR_VERSION.
@@ -87,12 +93,16 @@ const PrintSettingsNCopies = "n-copies"
 const PrintSettingsOrientation = "orientation"
 
 // PrintSettingsOutputBasename is a representation of the C type PRINT_SETTINGS_OUTPUT_BASENAME.
+//
+// since 3.6
 const PrintSettingsOutputBasename = "output-basename"
 
 // PrintSettingsOutputBin is a representation of the C type PRINT_SETTINGS_OUTPUT_BIN.
 const PrintSettingsOutputBin = "output-bin"
 
 // PrintSettingsOutputDir is a representation of the C type PRINT_SETTINGS_OUTPUT_DIR.
+//
+// since 3.6
 const PrintSettingsOutputDir = "output-dir"
 
 // PrintSettingsOutputFileFormat is a representation of the C type PRINT_SETTINGS_OUTPUT_FILE_FORMAT.
@@ -156,6 +166,8 @@ const PrintSettingsWin32DriverVersion = "win32-driver-version"
 const PriorityResize = int32(10)
 
 // StockAbout is a representation of the C type STOCK_ABOUT.
+//
+// since 2.6
 const StockAbout = "gtk-about"
 
 // StockAdd is a representation of the C type STOCK_ADD.
@@ -171,6 +183,8 @@ const StockBold = "gtk-bold"
 const StockCancel = "gtk-cancel"
 
 // StockCapsLockWarning is a representation of the C type STOCK_CAPS_LOCK_WARNING.
+//
+// since 2.16
 const StockCapsLockWarning = "gtk-caps-lock-warning"
 
 // StockCdrom is a representation of the C type STOCK_CDROM.
@@ -183,9 +197,13 @@ const StockClear = "gtk-clear"
 const StockClose = "gtk-close"
 
 // StockColorPicker is a representation of the C type STOCK_COLOR_PICKER.
+//
+// since 2.2
 const StockColorPicker = "gtk-color-picker"
 
 // StockConnect is a representation of the C type STOCK_CONNECT.
+//
+// since 2.6
 const StockConnect = "gtk-connect"
 
 // StockConvert is a representation of the C type STOCK_CONVERT.
@@ -201,6 +219,8 @@ const StockCut = "gtk-cut"
 const StockDelete = "gtk-delete"
 
 // StockDialogAuthentication is a representation of the C type STOCK_DIALOG_AUTHENTICATION.
+//
+// since 2.4
 const StockDialogAuthentication = "gtk-dialog-authentication"
 
 // StockDialogError is a representation of the C type STOCK_DIALOG_ERROR.
@@ -216,12 +236,18 @@ const StockDialogQuestion = "gtk-dialog-question"
 const StockDialogWarning = "gtk-dialog-warning"
 
 // StockDirectory is a representation of the C type STOCK_DIRECTORY.
+//
+// since 2.6
 const StockDirectory = "gtk-directory"
 
 // StockDiscard is a representation of the C type STOCK_DISCARD.
+//
+// since 2.12
 const StockDiscard = "gtk-discard"
 
 // StockDisconnect is a representation of the C type STOCK_DISCONNECT.
+//
+// since 2.6
 const StockDisconnect = "gtk-disconnect"
 
 // StockDnd is a representation of the C type STOCK_DND.
@@ -231,12 +257,16 @@ const StockDnd = "gtk-dnd"
 const StockDndMultiple = "gtk-dnd-multiple"
 
 // StockEdit is a representation of the C type STOCK_EDIT.
+//
+// since 2.6
 const StockEdit = "gtk-edit"
 
 // StockExecute is a representation of the C type STOCK_EXECUTE.
 const StockExecute = "gtk-execute"
 
 // StockFile is a representation of the C type STOCK_FILE.
+//
+// since 2.6
 const StockFile = "gtk-file"
 
 // StockFind is a representation of the C type STOCK_FIND.
@@ -249,6 +279,8 @@ const StockFindAndReplace = "gtk-find-and-replace"
 const StockFloppy = "gtk-floppy"
 
 // StockFullscreen is a representation of the C type STOCK_FULLSCREEN.
+//
+// since 2.8
 const StockFullscreen = "gtk-fullscreen"
 
 // StockGotoBottom is a representation of the C type STOCK_GOTO_BOTTOM.
@@ -276,6 +308,8 @@ const StockGoForward = "gtk-go-forward"
 const StockGoUp = "gtk-go-up"
 
 // StockHarddisk is a representation of the C type STOCK_HARDDISK.
+//
+// since 2.4
 const StockHarddisk = "gtk-harddisk"
 
 // StockHelp is a representation of the C type STOCK_HELP.
@@ -285,12 +319,16 @@ const StockHelp = "gtk-help"
 const StockHome = "gtk-home"
 
 // StockIndent is a representation of the C type STOCK_INDENT.
+//
+// since 2.4
 const StockIndent = "gtk-indent"
 
 // StockIndex is a representation of the C type STOCK_INDEX.
 const StockIndex = "gtk-index"
 
 // StockInfo is a representation of the C type STOCK_INFO.
+//
+// since 2.8
 const StockInfo = "gtk-info"
 
 // StockItalic is a representation of the C type STOCK_ITALIC.
@@ -312,36 +350,56 @@ const StockJustifyLeft = "gtk-justify-left"
 const StockJustifyRight = "gtk-justify-right"
 
 // StockLeaveFullscreen is a representation of the C type STOCK_LEAVE_FULLSCREEN.
+//
+// since 2.8
 const StockLeaveFullscreen = "gtk-leave-fullscreen"
 
 // StockMediaForward is a representation of the C type STOCK_MEDIA_FORWARD.
+//
+// since 2.6
 const StockMediaForward = "gtk-media-forward"
 
 // StockMediaNext is a representation of the C type STOCK_MEDIA_NEXT.
+//
+// since 2.6
 const StockMediaNext = "gtk-media-next"
 
 // StockMediaPause is a representation of the C type STOCK_MEDIA_PAUSE.
+//
+// since 2.6
 const StockMediaPause = "gtk-media-pause"
 
 // StockMediaPlay is a representation of the C type STOCK_MEDIA_PLAY.
+//
+// since 2.6
 const StockMediaPlay = "gtk-media-play"
 
 // StockMediaPrevious is a representation of the C type STOCK_MEDIA_PREVIOUS.
+//
+// since 2.6
 const StockMediaPrevious = "gtk-media-previous"
 
 // StockMediaRecord is a representation of the C type STOCK_MEDIA_RECORD.
+//
+// since 2.6
 const StockMediaRecord = "gtk-media-record"
 
 // StockMediaRewind is a representation of the C type STOCK_MEDIA_REWIND.
+//
+// since 2.6
 const StockMediaRewind = "gtk-media-rewind"
 
 // StockMediaStop is a representation of the C type STOCK_MEDIA_STOP.
+//
+// since 2.6
 const StockMediaStop = "gtk-media-stop"
 
 // StockMissingImage is a representation of the C type STOCK_MISSING_IMAGE.
 const StockMissingImage = "gtk-missing-image"
 
 // StockNetwork is a representation of the C type STOCK_NETWORK.
+//
+// since 2.4
 const StockNetwork = "gtk-network"
 
 // StockNew is a representation of the C type STOCK_NEW.
@@ -357,18 +415,28 @@ const StockOk = "gtk-ok"
 const StockOpen = "gtk-open"
 
 // StockOrientationLandscape is a representation of the C type STOCK_ORIENTATION_LANDSCAPE.
+//
+// since 2.10
 const StockOrientationLandscape = "gtk-orientation-landscape"
 
 // StockOrientationPortrait is a representation of the C type STOCK_ORIENTATION_PORTRAIT.
+//
+// since 2.10
 const StockOrientationPortrait = "gtk-orientation-portrait"
 
 // StockOrientationReverseLandscape is a representation of the C type STOCK_ORIENTATION_REVERSE_LANDSCAPE.
+//
+// since 2.10
 const StockOrientationReverseLandscape = "gtk-orientation-reverse-landscape"
 
 // StockOrientationReversePortrait is a representation of the C type STOCK_ORIENTATION_REVERSE_PORTRAIT.
+//
+// since 2.10
 const StockOrientationReversePortrait = "gtk-orientation-reverse-portrait"
 
 // StockPageSetup is a representation of the C type STOCK_PAGE_SETUP.
+//
+// since 2.14
 const StockPageSetup = "gtk-page-setup"
 
 // StockPaste is a representation of the C type STOCK_PASTE.
@@ -381,18 +449,26 @@ const StockPreferences = "gtk-preferences"
 const StockPrint = "gtk-print"
 
 // StockPrintError is a representation of the C type STOCK_PRINT_ERROR.
+//
+// since 2.14
 const StockPrintError = "gtk-print-error"
 
 // StockPrintPaused is a representation of the C type STOCK_PRINT_PAUSED.
+//
+// since 2.14
 const StockPrintPaused = "gtk-print-paused"
 
 // StockPrintPreview is a representation of the C type STOCK_PRINT_PREVIEW.
 const StockPrintPreview = "gtk-print-preview"
 
 // StockPrintReport is a representation of the C type STOCK_PRINT_REPORT.
+//
+// since 2.14
 const StockPrintReport = "gtk-print-report"
 
 // StockPrintWarning is a representation of the C type STOCK_PRINT_WARNING.
+//
+// since 2.14
 const StockPrintWarning = "gtk-print-warning"
 
 // StockProperties is a representation of the C type STOCK_PROPERTIES.
@@ -420,6 +496,8 @@ const StockSave = "gtk-save"
 const StockSaveAs = "gtk-save-as"
 
 // StockSelectAll is a representation of the C type STOCK_SELECT_ALL.
+//
+// since 2.10
 const StockSelectAll = "gtk-select-all"
 
 // StockSelectColor is a representation of the C type STOCK_SELECT_COLOR.
@@ -453,6 +531,8 @@ const StockUnderline = "gtk-underline"
 const StockUndo = "gtk-undo"
 
 // StockUnindent is a representation of the C type STOCK_UNINDENT.
+//
+// since 2.4
 const StockUnindent = "gtk-unindent"
 
 // StockYes is a representation of the C type STOCK_YES.
@@ -501,6 +581,8 @@ const StyleClassComboboxEntry = "combobox-entry"
 const StyleClassContextMenu = "context-menu"
 
 // StyleClassCsd is a representation of the C type STYLE_CLASS_CSD.
+//
+// since 3.14
 const StyleClassCsd = "csd"
 
 // StyleClassCursorHandle is a representation of the C type STYLE_CLASS_CURSOR_HANDLE.
@@ -510,6 +592,8 @@ const StyleClassCursorHandle = "cursor-handle"
 const StyleClassDefault = "default"
 
 // StyleClassDestructiveAction is a representation of the C type STYLE_CLASS_DESTRUCTIVE_ACTION.
+//
+// since 3.12
 const StyleClassDestructiveAction = "destructive-action"
 
 // StyleClassDimLabel is a representation of the C type STYLE_CLASS_DIM_LABEL.
@@ -531,6 +615,8 @@ const StyleClassError = "error"
 const StyleClassExpander = "expander"
 
 // StyleClassFlat is a representation of the C type STYLE_CLASS_FLAT.
+//
+// since 3.14
 const StyleClassFlat = "flat"
 
 // StyleClassFrame is a representation of the C type STYLE_CLASS_FRAME.
@@ -561,6 +647,8 @@ const StyleClassInlineToolbar = "inline-toolbar"
 const StyleClassInsertionCursor = "insertion-cursor"
 
 // StyleClassLabel is a representation of the C type STYLE_CLASS_LABEL.
+//
+// since 3.16
 const StyleClassLabel = "label"
 
 // StyleClassLeft is a representation of the C type STYLE_CLASS_LEFT.
@@ -591,12 +679,18 @@ const StyleClassMenubar = "menubar"
 const StyleClassMenuitem = "menuitem"
 
 // StyleClassMessageDialog is a representation of the C type STYLE_CLASS_MESSAGE_DIALOG.
+//
+// since 3.14
 const StyleClassMessageDialog = "message-dialog"
 
 // StyleClassMonospace is a representation of the C type STYLE_CLASS_MONOSPACE.
+//
+// since 3.16
 const StyleClassMonospace = "monospace"
 
 // StyleClassNeedsAttention is a representation of the C type STYLE_CLASS_NEEDS_ATTENTION.
+//
+// since 3.12
 const StyleClassNeedsAttention = "needs-attention"
 
 // StyleClassNotebook is a representation of the C type STYLE_CLASS_NOTEBOOK.
@@ -606,18 +700,26 @@ const StyleClassNotebook = "notebook"
 const StyleClassOsd = "osd"
 
 // StyleClassOvershoot is a representation of the C type STYLE_CLASS_OVERSHOOT.
+//
+// since 3.14
 const StyleClassOvershoot = "overshoot"
 
 // StyleClassPaneSeparator is a representation of the C type STYLE_CLASS_PANE_SEPARATOR.
 const StyleClassPaneSeparator = "pane-separator"
 
 // StyleClassPaper is a representation of the C type STYLE_CLASS_PAPER.
+//
+// since 3.16
 const StyleClassPaper = "paper"
 
 // StyleClassPopover is a representation of the C type STYLE_CLASS_POPOVER.
+//
+// since 3.14
 const StyleClassPopover = "popover"
 
 // StyleClassPopup is a representation of the C type STYLE_CLASS_POPUP.
+//
+// since 3.14
 const StyleClassPopup = "popup"
 
 // StyleClassPrimaryToolbar is a representation of the C type STYLE_CLASS_PRIMARY_TOOLBAR.
@@ -678,15 +780,23 @@ const StyleClassSpinbutton = "spinbutton"
 const StyleClassSpinner = "spinner"
 
 // StyleClassStatusbar is a representation of the C type STYLE_CLASS_STATUSBAR.
+//
+// since 3.16
 const StyleClassStatusbar = "statusbar"
 
 // StyleClassSubtitle is a representation of the C type STYLE_CLASS_SUBTITLE.
+//
+// since 3.14
 const StyleClassSubtitle = "subtitle"
 
 // StyleClassSuggestedAction is a representation of the C type STYLE_CLASS_SUGGESTED_ACTION.
+//
+// since 3.12
 const StyleClassSuggestedAction = "suggested-action"
 
 // StyleClassTitle is a representation of the C type STYLE_CLASS_TITLE.
+//
+// since 3.14
 const StyleClassTitle = "title"
 
 // StyleClassTitlebar is a representation of the C type STYLE_CLASS_TITLEBAR.
@@ -702,12 +812,16 @@ const StyleClassTooltip = "tooltip"
 const StyleClassTop = "top"
 
 // StyleClassTouchSelection is a representation of the C type STYLE_CLASS_TOUCH_SELECTION.
+//
+// since 3.16
 const StyleClassTouchSelection = "touch-selection"
 
 // StyleClassTrough is a representation of the C type STYLE_CLASS_TROUGH.
 const StyleClassTrough = "trough"
 
 // StyleClassUndershoot is a representation of the C type STYLE_CLASS_UNDERSHOOT.
+//
+// since 3.16
 const StyleClassUndershoot = "undershoot"
 
 // StyleClassVertical is a representation of the C type STYLE_CLASS_VERTICAL.
@@ -720,6 +834,8 @@ const StyleClassView = "view"
 const StyleClassWarning = "warning"
 
 // StyleClassWide is a representation of the C type STYLE_CLASS_WIDE.
+//
+// since 3.16
 const StyleClassWide = "wide"
 
 // StylePropertyBackgroundColor is a representation of the C type STYLE_PROPERTY_BACKGROUND_COLOR.

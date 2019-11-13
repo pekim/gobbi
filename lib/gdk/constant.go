@@ -3,21 +3,31 @@
 package gdk
 
 // ButtonMiddle is a representation of the C type BUTTON_MIDDLE.
+//
+// since 3.4
 const ButtonMiddle = int32(2)
 
 // ButtonPrimary is a representation of the C type BUTTON_PRIMARY.
+//
+// since 3.4
 const ButtonPrimary = int32(1)
 
 // ButtonSecondary is a representation of the C type BUTTON_SECONDARY.
+//
+// since 3.4
 const ButtonSecondary = int32(3)
 
 // CurrentTime is a representation of the C type CURRENT_TIME.
 const CurrentTime = int32(0)
 
 // EventPropagate is a representation of the C type EVENT_PROPAGATE.
+//
+// since 3.4
 const EventPropagate = false
 
 // EventStop is a representation of the C type EVENT_STOP.
+//
+// since 3.4
 const EventStop = true
 
 // KEY_0 is a representation of the C type KEY_0.

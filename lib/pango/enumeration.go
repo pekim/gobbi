@@ -9,6 +9,8 @@ type Alignment int
 type Attrtype int
 
 // Biditype is a representation of the C type BidiType.
+//
+// since 1.22
 type Biditype int
 
 // Coveragelevel is a representation of the C type CoverageLevel.
@@ -21,12 +23,18 @@ type Direction int
 type Ellipsizemode int
 
 // Gravity is a representation of the C type Gravity.
+//
+// since 1.16
 type Gravity int
 
 // Gravityhint is a representation of the C type GravityHint.
+//
+// since 1.16
 type Gravityhint int
 
 // Renderpart is a representation of the C type RenderPart.
+//
+// since 1.8
 type Renderpart int
 
 // Script is a representation of the C type Script.

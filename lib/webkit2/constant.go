@@ -6,12 +6,16 @@ package webkit2
 const EditingCommandCopy = "Copy"
 
 // EditingCommandCreateLink is a representation of the C type EDITING_COMMAND_CREATE_LINK.
+//
+// since 2.10
 const EditingCommandCreateLink = "CreateLink"
 
 // EditingCommandCut is a representation of the C type EDITING_COMMAND_CUT.
 const EditingCommandCut = "Cut"
 
 // EditingCommandInsertImage is a representation of the C type EDITING_COMMAND_INSERT_IMAGE.
+//
+// since 2.10
 const EditingCommandInsertImage = "InsertImage"
 
 // EditingCommandPaste is a representation of the C type EDITING_COMMAND_PASTE.

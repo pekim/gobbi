@@ -9,4 +9,6 @@ type Checksyntaxmode int
 type Checksyntaxresult int
 
 // Optiontype is a representation of the C type OptionType.
+//
+// since 2.24
 type Optiontype int

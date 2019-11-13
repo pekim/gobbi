@@ -3,6 +3,8 @@
 package webkit2
 
 // Authenticationscheme is a representation of the C type AuthenticationScheme.
+//
+// since 2.2
 type Authenticationscheme int
 
 // Cachemodel is a representation of the C type CacheModel.
@@ -18,6 +20,8 @@ type Cookieacceptpolicy int
 type Cookiepersistentstorage int
 
 // Credentialpersistence is a representation of the C type CredentialPersistence.
+//
+// since 2.2
 type Credentialpersistence int
 
 // Downloaderror is a representation of the C type DownloadError.
@@ -27,6 +31,8 @@ type Downloaderror int
 type Favicondatabaseerror int
 
 // Hardwareaccelerationpolicy is a representation of the C type HardwareAccelerationPolicy.
+//
+// since 2.16
 type Hardwareaccelerationpolicy int
 
 // Insecurecontentevent is a representation of the C type InsecureContentEvent.
@@ -45,6 +51,8 @@ type Navigationtype int
 type Networkerror int
 
 // Networkproxymode is a representation of the C type NetworkProxyMode.
+//
+// since 2.16
 type Networkproxymode int
 
 // Pluginerror is a representation of the C type PluginError.
@@ -63,6 +71,8 @@ type Printerror int
 type Printoperationresponse int
 
 // Processmodel is a representation of the C type ProcessModel.
+//
+// since 2.4
 type Processmodel int
 
 // Savemode is a representation of the C type SaveMode.
@@ -81,16 +91,26 @@ type Snapshotregion int
 type Tlserrorspolicy int
 
 // Usercontentfiltererror is a representation of the C type UserContentFilterError.
+//
+// since 2.24
 type Usercontentfiltererror int
 
 // Usercontentinjectedframes is a representation of the C type UserContentInjectedFrames.
+//
+// since 2.6
 type Usercontentinjectedframes int
 
 // Userscriptinjectiontime is a representation of the C type UserScriptInjectionTime.
+//
+// since 2.6
 type Userscriptinjectiontime int
 
 // Userstylelevel is a representation of the C type UserStyleLevel.
+//
+// since 2.6
 type Userstylelevel int
 
 // Webprocessterminationreason is a representation of the C type WebProcessTerminationReason.
+//
+// since 2.20
 type Webprocessterminationreason int

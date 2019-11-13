@@ -45,24 +45,34 @@ const E = 2.718282
 const Gint16Format = "hi"
 
 // Gint16Modifier is a representation of the C type GINT16_MODIFIER.
+//
+// since 2.4
 const Gint16Modifier = "h"
 
 // Gint32Format is a representation of the C type GINT32_FORMAT.
 const Gint32Format = "i"
 
 // Gint32Modifier is a representation of the C type GINT32_MODIFIER.
+//
+// since 2.4
 const Gint32Modifier = ""
 
 // Gint64Format is a representation of the C type GINT64_FORMAT.
 const Gint64Format = "li"
 
 // Gint64Modifier is a representation of the C type GINT64_MODIFIER.
+//
+// since 2.4
 const Gint64Modifier = "l"
 
 // GintptrFormat is a representation of the C type GINTPTR_FORMAT.
+//
+// since 2.22
 const GintptrFormat = "li"
 
 // GintptrModifier is a representation of the C type GINTPTR_MODIFIER.
+//
+// since 2.22
 const GintptrModifier = "l"
 
 // GnucFunction is a representation of the C type GNUC_FUNCTION.
@@ -72,15 +82,23 @@ const GnucFunction = ""
 const GnucPrettyFunction = ""
 
 // GsizeFormat is a representation of the C type GSIZE_FORMAT.
+//
+// since 2.6
 const GsizeFormat = "lu"
 
 // GsizeModifier is a representation of the C type GSIZE_MODIFIER.
+//
+// since 2.6
 const GsizeModifier = "l"
 
 // GssizeFormat is a representation of the C type GSSIZE_FORMAT.
+//
+// since 2.6
 const GssizeFormat = "li"
 
 // GssizeModifier is a representation of the C type GSSIZE_MODIFIER.
+//
+// since 2.6
 const GssizeModifier = "l"
 
 // Guint16Format is a representation of the C type GUINT16_FORMAT.
@@ -93,6 +111,8 @@ const Guint32Format = "u"
 const Guint64Format = "lu"
 
 // GuintptrFormat is a representation of the C type GUINTPTR_FORMAT.
+//
+// since 2.22
 const GuintptrFormat = "lu"
 
 // HaveGint64 is a representation of the C type HAVE_GINT64.
@@ -123,87 +143,137 @@ const Ieee754FloatBias = int32(127)
 const KeyFileDesktopActionGroupPrefix = "Desktop Action"
 
 // KeyFileDesktopGroup is a representation of the C type KEY_FILE_DESKTOP_GROUP.
+//
+// since 2.14
 const KeyFileDesktopGroup = "Desktop Entry"
 
 // KeyFileDesktopKeyActions is a representation of the C type KEY_FILE_DESKTOP_KEY_ACTIONS.
+//
+// since 2.38
 const KeyFileDesktopKeyActions = "Actions"
 
 // KeyFileDesktopKeyCategories is a representation of the C type KEY_FILE_DESKTOP_KEY_CATEGORIES.
+//
+// since 2.14
 const KeyFileDesktopKeyCategories = "Categories"
 
 // KeyFileDesktopKeyComment is a representation of the C type KEY_FILE_DESKTOP_KEY_COMMENT.
+//
+// since 2.14
 const KeyFileDesktopKeyComment = "Comment"
 
 // KeyFileDesktopKeyDbusActivatable is a representation of the C type KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE.
+//
+// since 2.38
 const KeyFileDesktopKeyDbusActivatable = "DBusActivatable"
 
 // KeyFileDesktopKeyExec is a representation of the C type KEY_FILE_DESKTOP_KEY_EXEC.
+//
+// since 2.14
 const KeyFileDesktopKeyExec = "Exec"
 
 // KeyFileDesktopKeyFullname is a representation of the C type KEY_FILE_DESKTOP_KEY_FULLNAME.
 const KeyFileDesktopKeyFullname = "X-GNOME-FullName"
 
 // KeyFileDesktopKeyGenericName is a representation of the C type KEY_FILE_DESKTOP_KEY_GENERIC_NAME.
+//
+// since 2.14
 const KeyFileDesktopKeyGenericName = "GenericName"
 
 // KeyFileDesktopKeyGettextDomain is a representation of the C type KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN.
 const KeyFileDesktopKeyGettextDomain = "X-GNOME-Gettext-Domain"
 
 // KeyFileDesktopKeyHidden is a representation of the C type KEY_FILE_DESKTOP_KEY_HIDDEN.
+//
+// since 2.14
 const KeyFileDesktopKeyHidden = "Hidden"
 
 // KeyFileDesktopKeyIcon is a representation of the C type KEY_FILE_DESKTOP_KEY_ICON.
+//
+// since 2.14
 const KeyFileDesktopKeyIcon = "Icon"
 
 // KeyFileDesktopKeyKeywords is a representation of the C type KEY_FILE_DESKTOP_KEY_KEYWORDS.
 const KeyFileDesktopKeyKeywords = "Keywords"
 
 // KeyFileDesktopKeyMimeType is a representation of the C type KEY_FILE_DESKTOP_KEY_MIME_TYPE.
+//
+// since 2.14
 const KeyFileDesktopKeyMimeType = "MimeType"
 
 // KeyFileDesktopKeyName is a representation of the C type KEY_FILE_DESKTOP_KEY_NAME.
+//
+// since 2.14
 const KeyFileDesktopKeyName = "Name"
 
 // KeyFileDesktopKeyNotShowIn is a representation of the C type KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN.
+//
+// since 2.14
 const KeyFileDesktopKeyNotShowIn = "NotShowIn"
 
 // KeyFileDesktopKeyNoDisplay is a representation of the C type KEY_FILE_DESKTOP_KEY_NO_DISPLAY.
+//
+// since 2.14
 const KeyFileDesktopKeyNoDisplay = "NoDisplay"
 
 // KeyFileDesktopKeyOnlyShowIn is a representation of the C type KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN.
+//
+// since 2.14
 const KeyFileDesktopKeyOnlyShowIn = "OnlyShowIn"
 
 // KeyFileDesktopKeyPath is a representation of the C type KEY_FILE_DESKTOP_KEY_PATH.
+//
+// since 2.14
 const KeyFileDesktopKeyPath = "Path"
 
 // KeyFileDesktopKeyStartupNotify is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY.
+//
+// since 2.14
 const KeyFileDesktopKeyStartupNotify = "StartupNotify"
 
 // KeyFileDesktopKeyStartupWmClass is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS.
+//
+// since 2.14
 const KeyFileDesktopKeyStartupWmClass = "StartupWMClass"
 
 // KeyFileDesktopKeyTerminal is a representation of the C type KEY_FILE_DESKTOP_KEY_TERMINAL.
+//
+// since 2.14
 const KeyFileDesktopKeyTerminal = "Terminal"
 
 // KeyFileDesktopKeyTryExec is a representation of the C type KEY_FILE_DESKTOP_KEY_TRY_EXEC.
+//
+// since 2.14
 const KeyFileDesktopKeyTryExec = "TryExec"
 
 // KeyFileDesktopKeyType is a representation of the C type KEY_FILE_DESKTOP_KEY_TYPE.
+//
+// since 2.14
 const KeyFileDesktopKeyType = "Type"
 
 // KeyFileDesktopKeyUrl is a representation of the C type KEY_FILE_DESKTOP_KEY_URL.
+//
+// since 2.14
 const KeyFileDesktopKeyUrl = "URL"
 
 // KeyFileDesktopKeyVersion is a representation of the C type KEY_FILE_DESKTOP_KEY_VERSION.
+//
+// since 2.14
 const KeyFileDesktopKeyVersion = "Version"
 
 // KeyFileDesktopTypeApplication is a representation of the C type KEY_FILE_DESKTOP_TYPE_APPLICATION.
+//
+// since 2.14
 const KeyFileDesktopTypeApplication = "Application"
 
 // KeyFileDesktopTypeDirectory is a representation of the C type KEY_FILE_DESKTOP_TYPE_DIRECTORY.
+//
+// since 2.14
 const KeyFileDesktopTypeDirectory = "Directory"
 
 // KeyFileDesktopTypeLink is a representation of the C type KEY_FILE_DESKTOP_TYPE_LINK.
+//
+// since 2.14
 const KeyFileDesktopTypeLink = "Link"
 
 // LittleEndian is a representation of the C type LITTLE_ENDIAN.
@@ -231,42 +301,60 @@ const LogLevelUserShift = int32(8)
 const MajorVersion = int32(2)
 
 // Maxint16 is a representation of the C type MAXINT16.
+//
+// since 2.4
 const Maxint16 = int16(32767)
 
 // Maxint32 is a representation of the C type MAXINT32.
+//
+// since 2.4
 const Maxint32 = int32(2147483647)
 
 // Maxint64 is a representation of the C type MAXINT64.
 const Maxint64 = int64(9223372036854775807)
 
 // Maxint8 is a representation of the C type MAXINT8.
+//
+// since 2.4
 const Maxint8 = int8(127)
 
 // Maxuint16 is a representation of the C type MAXUINT16.
+//
+// since 2.4
 const Maxuint16 = uint16(0xffff)
 
 // Maxuint32 is a representation of the C type MAXUINT32.
+//
+// since 2.4
 const Maxuint32 = uint32(0xffffffff)
 
 // Maxuint64 is a representation of the C type MAXUINT64.
 const Maxuint64 = uint64(0xffffffffffffffff)
 
 // Maxuint8 is a representation of the C type MAXUINT8.
+//
+// since 2.4
 const Maxuint8 = uint8(0xff)
 
 // MicroVersion is a representation of the C type MICRO_VERSION.
 const MicroVersion = int32(1)
 
 // Minint16 is a representation of the C type MININT16.
+//
+// since 2.4
 const Minint16 = int16(-32768)
 
 // Minint32 is a representation of the C type MININT32.
+//
+// since 2.4
 const Minint32 = int32(-2147483648)
 
 // Minint64 is a representation of the C type MININT64.
 const Minint64 = int64(-9223372036854775808)
 
 // Minint8 is a representation of the C type MININT8.
+//
+// since 2.4
 const Minint8 = int8(-128)
 
 // MinorVersion is a representation of the C type MINOR_VERSION.
@@ -276,6 +364,8 @@ const MinorVersion = int32(56)
 const ModuleSuffix = "so"
 
 // OptionRemaining is a representation of the C type OPTION_REMAINING.
+//
+// since 2.6
 const OptionRemaining = ""
 
 // PdpEndian is a representation of the C type PDP_ENDIAN.
@@ -285,6 +375,8 @@ const PdpEndian = int32(3412)
 const Pi = 3.141593
 
 // PidFormat is a representation of the C type PID_FORMAT.
+//
+// since 2.50
 const PidFormat = "i"
 
 // Pi2 is a representation of the C type PI_2.
@@ -330,9 +422,13 @@ const SizeofSsizeT = int32(8)
 const SizeofVoidP = int32(8)
 
 // SourceContinue is a representation of the C type SOURCE_CONTINUE.
+//
+// since 2.32
 const SourceContinue = true
 
 // SourceRemove is a representation of the C type SOURCE_REMOVE.
+//
+// since 2.32
 const SourceRemove = false
 
 // Sqrt2 is a representation of the C type SQRT2.
@@ -360,21 +456,33 @@ const SysdefMsgOob = int32(1)
 const SysdefMsgPeek = int32(2)
 
 // TimeSpanDay is a representation of the C type TIME_SPAN_DAY.
+//
+// since 2.26
 const TimeSpanDay = int64(86400000000)
 
 // TimeSpanHour is a representation of the C type TIME_SPAN_HOUR.
+//
+// since 2.26
 const TimeSpanHour = int64(3600000000)
 
 // TimeSpanMillisecond is a representation of the C type TIME_SPAN_MILLISECOND.
+//
+// since 2.26
 const TimeSpanMillisecond = int64(1000)
 
 // TimeSpanMinute is a representation of the C type TIME_SPAN_MINUTE.
+//
+// since 2.26
 const TimeSpanMinute = int64(60000000)
 
 // TimeSpanSecond is a representation of the C type TIME_SPAN_SECOND.
+//
+// since 2.26
 const TimeSpanSecond = int64(1000000)
 
 // UnicharMaxDecompositionLength is a representation of the C type UNICHAR_MAX_DECOMPOSITION_LENGTH.
+//
+// since 2.32
 const UnicharMaxDecompositionLength = int32(18)
 
 // UriReservedCharsGenericDelimiters is a representation of the C type URI_RESERVED_CHARS_GENERIC_DELIMITERS.
@@ -390,6 +498,8 @@ const UsecPerSec = int32(1000000)
 const VaCopyAsArray = int32(1)
 
 // VersionMinRequired is a representation of the C type VERSION_MIN_REQUIRED.
+//
+// since 2.32
 const VersionMinRequired = int32(2)
 
 // Win32MsgHandle is a representation of the C type WIN32_MSG_HANDLE.

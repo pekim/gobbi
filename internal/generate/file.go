@@ -23,3 +23,12 @@ func (f *file) unsupported(cName string, format string, args ...interface{}) {
 func (f *file) docForC(goName, cName string) {
 	f.Commentf("// %s is a representation of the C type %s.", goName, cName)
 }
+
+func (f *file) docVersion(version string) {
+	if version == "" {
+		return
+	}
+
+	f.Comment("//")
+	f.Commentf("// since %s", version)
+}

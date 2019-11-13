@@ -6,6 +6,8 @@ package glib
 type Bookmarkfileerror int
 
 // Checksumtype is a representation of the C type ChecksumType.
+//
+// since 2.16
 type Checksumtype int
 
 // Converterror is a representation of the C type ConvertError.
@@ -39,6 +41,8 @@ type Iostatus int
 type Keyfileerror int
 
 // Logwriteroutput is a representation of the C type LogWriterOutput.
+//
+// since 2.50
 type Logwriteroutput int
 
 // Markuperror is a representation of the C type MarkupError.
@@ -48,9 +52,13 @@ type Markuperror int
 type Normalizemode int
 
 // Numberparsererror is a representation of the C type NumberParserError.
+//
+// since 2.54
 type Numberparsererror int
 
 // Oncestatus is a representation of the C type OnceStatus.
+//
+// since 2.4
 type Oncestatus int
 
 // Optionarg is a representation of the C type OptionArg.
@@ -60,6 +68,8 @@ type Optionarg int
 type Optionerror int
 
 // Regexerror is a representation of the C type RegexError.
+//
+// since 2.14
 type Regexerror int
 
 // Seektype is a representation of the C type SeekType.
@@ -75,6 +85,8 @@ type Sliceconfig int
 type Spawnerror int
 
 // Testfiletype is a representation of the C type TestFileType.
+//
+// since 2.38
 type Testfiletype int
 
 // Testlogtype is a representation of the C type TestLogType.
@@ -105,9 +117,13 @@ type Unicodescript int
 type Unicodetype int
 
 // Userdirectory is a representation of the C type UserDirectory.
+//
+// since 2.14
 type Userdirectory int
 
 // Variantclass is a representation of the C type VariantClass.
+//
+// since 2.24
 type Variantclass int
 
 // Variantparseerror is a representation of the C type VariantParseError.

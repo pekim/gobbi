@@ -33,6 +33,7 @@ func (e *Enumeration) init(ns *Namespace) {
 
 func (e *Enumeration) generate(f *file) {
 	f.docForC(e.goTypeName, e.Name)
+	f.docVersion(e.Version)
 	f.
 		Type().
 		Id(e.goTypeName).

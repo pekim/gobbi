@@ -15,6 +15,8 @@ type Arrowtype int
 type Assistantpagetype int
 
 // Baselineposition is a representation of the C type BaselinePosition.
+//
+// since 3.10
 type Baselineposition int
 
 // Borderstyle is a representation of the C type BorderStyle.
@@ -45,6 +47,8 @@ type Cornertype int
 type Cssprovidererror int
 
 // Csssectiontype is a representation of the C type CssSectionType.
+//
+// since 3.2
 type Csssectiontype int
 
 // Deletetype is a representation of the C type DeleteType.
@@ -57,9 +61,13 @@ type Directiontype int
 type Dragresult int
 
 // Entryiconposition is a representation of the C type EntryIconPosition.
+//
+// since 2.16
 type Entryiconposition int
 
 // Eventsequencestate is a representation of the C type EventSequenceState.
+//
+// since 3.14
 type Eventsequencestate int
 
 // Expanderstyle is a representation of the C type ExpanderStyle.
@@ -69,6 +77,8 @@ type Expanderstyle int
 type Filechooseraction int
 
 // Filechooserconfirmation is a representation of the C type FileChooserConfirmation.
+//
+// since 2.8
 type Filechooserconfirmation int
 
 // Filechoosererror is a representation of the C type FileChooserError.
@@ -93,15 +103,21 @@ type Iconviewdropposition int
 type Imagetype int
 
 // Inputpurpose is a representation of the C type InputPurpose.
+//
+// since 3.6
 type Inputpurpose int
 
 // Justification is a representation of the C type Justification.
 type Justification int
 
 // Levelbarmode is a representation of the C type LevelBarMode.
+//
+// since 3.6
 type Levelbarmode int
 
 // License is a representation of the C type License.
+//
+// since 3.0
 type License int
 
 // Menudirectiontype is a representation of the C type MenuDirectionType.
@@ -138,6 +154,8 @@ type Pageorientation int
 type Pageset int
 
 // Pandirection is a representation of the C type PanDirection.
+//
+// since 3.14
 type Pandirection int
 
 // Pathprioritytype is a representation of the C type PathPriorityType.
@@ -150,6 +168,8 @@ type Pathtype int
 type Policytype int
 
 // Popoverconstraint is a representation of the C type PopoverConstraint.
+//
+// since 3.20
 type Popoverconstraint int
 
 // Positiontype is a representation of the C type PositionType.
@@ -177,18 +197,26 @@ type Printquality int
 type Printstatus int
 
 // Propagationphase is a representation of the C type PropagationPhase.
+//
+// since 3.14
 type Propagationphase int
 
 // Rctokentype is a representation of the C type RcTokenType.
 type Rctokentype int
 
 // Recentchoosererror is a representation of the C type RecentChooserError.
+//
+// since 2.10
 type Recentchoosererror int
 
 // Recentmanagererror is a representation of the C type RecentManagerError.
+//
+// since 2.10
 type Recentmanagererror int
 
 // Recentsorttype is a representation of the C type RecentSortType.
+//
+// since 2.10
 type Recentsorttype int
 
 // Reliefstyle is a representation of the C type ReliefStyle.
@@ -222,6 +250,8 @@ type Sensitivitytype int
 type Shadowtype int
 
 // Shortcuttype is a representation of the C type ShortcutType.
+//
+// since 3.20
 type Shortcuttype int
 
 // Sizegroupmode is a representation of the C type SizeGroupMode.
@@ -252,6 +282,8 @@ type Textbuffertargetinfo int
 type Textdirection int
 
 // Textextendselection is a representation of the C type TextExtendSelection.
+//
+// since 3.16
 type Textextendselection int
 
 // Textviewlayer is a representation of the C type TextViewLayer.

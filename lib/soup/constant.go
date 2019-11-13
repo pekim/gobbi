@@ -117,6 +117,8 @@ const ContentSnifferH = int32(1)
 const CookieH = int32(1)
 
 // CookieJarAcceptPolicy is a representation of the C type COOKIE_JAR_ACCEPT_POLICY.
+//
+// since 2.30
 const CookieJarAcceptPolicy = "accept-policy"
 
 // CookieJarDbFilename is a representation of the C type COOKIE_JAR_DB_FILENAME.
@@ -138,15 +140,23 @@ const CookieJarTextFilename = "filename"
 const CookieJarTextH = int32(1)
 
 // CookieMaxAgeOneDay is a representation of the C type COOKIE_MAX_AGE_ONE_DAY.
+//
+// since 2.24
 const CookieMaxAgeOneDay = int32(0)
 
 // CookieMaxAgeOneHour is a representation of the C type COOKIE_MAX_AGE_ONE_HOUR.
+//
+// since 2.24
 const CookieMaxAgeOneHour = int32(3600)
 
 // CookieMaxAgeOneWeek is a representation of the C type COOKIE_MAX_AGE_ONE_WEEK.
+//
+// since 2.24
 const CookieMaxAgeOneWeek = int32(0)
 
 // CookieMaxAgeOneYear is a representation of the C type COOKIE_MAX_AGE_ONE_YEAR.
+//
+// since 2.24
 const CookieMaxAgeOneYear = int32(0)
 
 // DateH is a representation of the C type DATE_H.
@@ -156,9 +166,13 @@ const DateH = int32(1)
 const FormH = int32(1)
 
 // FormMimeTypeMultipart is a representation of the C type FORM_MIME_TYPE_MULTIPART.
+//
+// since 2.26
 const FormMimeTypeMultipart = "multipart/form-data"
 
 // FormMimeTypeUrlencoded is a representation of the C type FORM_MIME_TYPE_URLENCODED.
+//
+// since 2.26
 const FormMimeTypeUrlencoded = "application/x-www-form-urlencoded"
 
 // HeadersH is a representation of the C type HEADERS_H.
@@ -168,18 +182,26 @@ const HeadersH = int32(1)
 const LoggerH = int32(1)
 
 // LoggerLevel is a representation of the C type LOGGER_LEVEL.
+//
+// since 2.56
 const LoggerLevel = "level"
 
 // LoggerMaxBodySize is a representation of the C type LOGGER_MAX_BODY_SIZE.
+//
+// since 2.56
 const LoggerMaxBodySize = "max-body-size"
 
 // MajorVersion is a representation of the C type MAJOR_VERSION.
+//
+// since 2.42
 const MajorVersion = int32(2)
 
 // MessageBodyH is a representation of the C type MESSAGE_BODY_H.
 const MessageBodyH = int32(1)
 
 // MessageFirstParty is a representation of the C type MESSAGE_FIRST_PARTY.
+//
+// since 2.30
 const MessageFirstParty = "first-party"
 
 // MessageFlags is a representation of the C type MESSAGE_FLAGS.
@@ -198,6 +220,8 @@ const MessageHttpVersion = "http-version"
 const MessageMethod = "method"
 
 // MessagePriority is a representation of the C type MESSAGE_PRIORITY.
+//
+// since 2.44
 const MessagePriority = "priority"
 
 // MessageReasonPhrase is a representation of the C type MESSAGE_REASON_PHRASE.
@@ -207,6 +231,8 @@ const MessageReasonPhrase = "reason-phrase"
 const MessageRequestBody = "request-body"
 
 // MessageRequestBodyData is a representation of the C type MESSAGE_REQUEST_BODY_DATA.
+//
+// since 2.46
 const MessageRequestBodyData = "request-body-data"
 
 // MessageRequestHeaders is a representation of the C type MESSAGE_REQUEST_HEADERS.
@@ -216,6 +242,8 @@ const MessageRequestHeaders = "request-headers"
 const MessageResponseBody = "response-body"
 
 // MessageResponseBodyData is a representation of the C type MESSAGE_RESPONSE_BODY_DATA.
+//
+// since 2.46
 const MessageResponseBodyData = "response-body-data"
 
 // MessageResponseHeaders is a representation of the C type MESSAGE_RESPONSE_HEADERS.
@@ -228,9 +256,13 @@ const MessageServerSide = "server-side"
 const MessageStatusCode = "status-code"
 
 // MessageTlsCertificate is a representation of the C type MESSAGE_TLS_CERTIFICATE.
+//
+// since 2.34
 const MessageTlsCertificate = "tls-certificate"
 
 // MessageTlsErrors is a representation of the C type MESSAGE_TLS_ERRORS.
+//
+// since 2.34
 const MessageTlsErrors = "tls-errors"
 
 // MessageUri is a representation of the C type MESSAGE_URI.
@@ -240,9 +272,13 @@ const MessageUri = "uri"
 const MethodH = int32(1)
 
 // MicroVersion is a representation of the C type MICRO_VERSION.
+//
+// since 2.42
 const MicroVersion = int32(1)
 
 // MinorVersion is a representation of the C type MINOR_VERSION.
+//
+// since 2.42
 const MinorVersion = int32(62)
 
 // MiscH is a representation of the C type MISC_H.
@@ -279,9 +315,13 @@ const RequestH = int32(1)
 const RequestHttpH = int32(1)
 
 // RequestSession is a representation of the C type REQUEST_SESSION.
+//
+// since 2.42
 const RequestSession = "session"
 
 // RequestUri is a representation of the C type REQUEST_URI.
+//
+// since 2.42
 const RequestUri = "uri"
 
 // ServerAsyncContext is a representation of the C type SERVER_ASYNC_CONTEXT.
@@ -291,9 +331,13 @@ const ServerAsyncContext = "async-context"
 const ServerH = int32(1)
 
 // ServerHttpsAliases is a representation of the C type SERVER_HTTPS_ALIASES.
+//
+// since 2.44
 const ServerHttpsAliases = "https-aliases"
 
 // ServerHttpAliases is a representation of the C type SERVER_HTTP_ALIASES.
+//
+// since 2.44
 const ServerHttpAliases = "http-aliases"
 
 // ServerInterface is a representation of the C type SERVER_INTERFACE.
@@ -315,18 +359,28 @@ const ServerSslCertFile = "ssl-cert-file"
 const ServerSslKeyFile = "ssl-key-file"
 
 // ServerTlsCertificate is a representation of the C type SERVER_TLS_CERTIFICATE.
+//
+// since 2.38
 const ServerTlsCertificate = "tls-certificate"
 
 // SessionAcceptLanguage is a representation of the C type SESSION_ACCEPT_LANGUAGE.
+//
+// since 2.30
 const SessionAcceptLanguage = "accept-language"
 
 // SessionAcceptLanguageAuto is a representation of the C type SESSION_ACCEPT_LANGUAGE_AUTO.
+//
+// since 2.30
 const SessionAcceptLanguageAuto = "accept-language-auto"
 
 // SessionAddFeature is a representation of the C type SESSION_ADD_FEATURE.
+//
+// since 2.24
 const SessionAddFeature = "add-feature"
 
 // SessionAddFeatureByType is a representation of the C type SESSION_ADD_FEATURE_BY_TYPE.
+//
+// since 2.24
 const SessionAddFeatureByType = "add-feature-by-type"
 
 // SessionAsyncContext is a representation of the C type SESSION_ASYNC_CONTEXT.
@@ -342,15 +396,23 @@ const SessionFeatureH = int32(1)
 const SessionH = int32(1)
 
 // SessionHttpsAliases is a representation of the C type SESSION_HTTPS_ALIASES.
+//
+// since 2.38
 const SessionHttpsAliases = "https-aliases"
 
 // SessionHttpAliases is a representation of the C type SESSION_HTTP_ALIASES.
+//
+// since 2.38
 const SessionHttpAliases = "http-aliases"
 
 // SessionIdleTimeout is a representation of the C type SESSION_IDLE_TIMEOUT.
+//
+// since 2.24
 const SessionIdleTimeout = "idle-timeout"
 
 // SessionLocalAddress is a representation of the C type SESSION_LOCAL_ADDRESS.
+//
+// since 2.42
 const SessionLocalAddress = "local-address"
 
 // SessionMaxConns is a representation of the C type SESSION_MAX_CONNS.
@@ -366,15 +428,21 @@ const SessionProxyResolver = "proxy-resolver"
 const SessionProxyUri = "proxy-uri"
 
 // SessionRemoveFeatureByType is a representation of the C type SESSION_REMOVE_FEATURE_BY_TYPE.
+//
+// since 2.24
 const SessionRemoveFeatureByType = "remove-feature-by-type"
 
 // SessionSslCaFile is a representation of the C type SESSION_SSL_CA_FILE.
 const SessionSslCaFile = "ssl-ca-file"
 
 // SessionSslStrict is a representation of the C type SESSION_SSL_STRICT.
+//
+// since 2.30
 const SessionSslStrict = "ssl-strict"
 
 // SessionSslUseSystemCaFile is a representation of the C type SESSION_SSL_USE_SYSTEM_CA_FILE.
+//
+// since 2.38
 const SessionSslUseSystemCaFile = "ssl-use-system-ca-file"
 
 // SessionSyncH is a representation of the C type SESSION_SYNC_H.
@@ -384,9 +452,13 @@ const SessionSyncH = int32(1)
 const SessionTimeout = "timeout"
 
 // SessionTlsDatabase is a representation of the C type SESSION_TLS_DATABASE.
+//
+// since 2.38
 const SessionTlsDatabase = "tls-database"
 
 // SessionTlsInteraction is a representation of the C type SESSION_TLS_INTERACTION.
+//
+// since 2.48
 const SessionTlsInteraction = "tls-interaction"
 
 // SessionUserAgent is a representation of the C type SESSION_USER_AGENT.
@@ -396,6 +468,8 @@ const SessionUserAgent = "user-agent"
 const SessionUseNtlm = "use-ntlm"
 
 // SessionUseThreadContext is a representation of the C type SESSION_USE_THREAD_CONTEXT.
+//
+// since 2.38
 const SessionUseThreadContext = "use-thread-context"
 
 // SocketAsyncContext is a representation of the C type SOCKET_ASYNC_CONTEXT.
@@ -429,15 +503,21 @@ const SocketSslStrict = "ssl-strict"
 const SocketTimeout = "timeout"
 
 // SocketTlsCertificate is a representation of the C type SOCKET_TLS_CERTIFICATE.
+//
+// since 2.34
 const SocketTlsCertificate = "tls-certificate"
 
 // SocketTlsErrors is a representation of the C type SOCKET_TLS_ERRORS.
+//
+// since 2.34
 const SocketTlsErrors = "tls-errors"
 
 // SocketTrustedCertificate is a representation of the C type SOCKET_TRUSTED_CERTIFICATE.
 const SocketTrustedCertificate = "trusted-certificate"
 
 // SocketUseThreadContext is a representation of the C type SOCKET_USE_THREAD_CONTEXT.
+//
+// since 2.38
 const SocketUseThreadContext = "use-thread-context"
 
 // StatusH is a representation of the C type STATUS_H.
@@ -453,6 +533,8 @@ const UriH = int32(1)
 const ValueUtilsH = int32(1)
 
 // VersionMinRequired is a representation of the C type VERSION_MIN_REQUIRED.
+//
+// since 2.42
 const VersionMinRequired = int32(2)
 
 // XmlrpcH is a representation of the C type XMLRPC_H.

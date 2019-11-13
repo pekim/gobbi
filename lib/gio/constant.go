@@ -48,6 +48,8 @@ const FileAttributeFilesystemSize = "filesystem::size"
 const FileAttributeFilesystemType = "filesystem::type"
 
 // FileAttributeFilesystemUsed is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_USED.
+//
+// since 2.32
 const FileAttributeFilesystemUsed = "filesystem::used"
 
 // FileAttributeFilesystemUsePreview is a representation of the C type FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
@@ -69,15 +71,23 @@ const FileAttributeMountableCanEject = "mountable::can-eject"
 const FileAttributeMountableCanMount = "mountable::can-mount"
 
 // FileAttributeMountableCanPoll is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL.
+//
+// since 2.22
 const FileAttributeMountableCanPoll = "mountable::can-poll"
 
 // FileAttributeMountableCanStart is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_START.
+//
+// since 2.22
 const FileAttributeMountableCanStart = "mountable::can-start"
 
 // FileAttributeMountableCanStartDegraded is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED.
+//
+// since 2.22
 const FileAttributeMountableCanStartDegraded = "mountable::can-start-degraded"
 
 // FileAttributeMountableCanStop is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP.
+//
+// since 2.22
 const FileAttributeMountableCanStop = "mountable::can-stop"
 
 // FileAttributeMountableCanUnmount is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT.
@@ -87,15 +97,21 @@ const FileAttributeMountableCanUnmount = "mountable::can-unmount"
 const FileAttributeMountableHalUdi = "mountable::hal-udi"
 
 // FileAttributeMountableIsMediaCheckAutomatic is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC.
+//
+// since 2.22
 const FileAttributeMountableIsMediaCheckAutomatic = "mountable::is-media-check-automatic"
 
 // FileAttributeMountableStartStopType is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE.
+//
+// since 2.22
 const FileAttributeMountableStartStopType = "mountable::start-stop-type"
 
 // FileAttributeMountableUnixDevice is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE.
 const FileAttributeMountableUnixDevice = "mountable::unix-device"
 
 // FileAttributeMountableUnixDeviceFile is a representation of the C type FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE.
+//
+// since 2.22
 const FileAttributeMountableUnixDeviceFile = "mountable::unix-device-file"
 
 // FileAttributeOwnerGroup is a representation of the C type FILE_ATTRIBUTE_OWNER_GROUP.
@@ -108,15 +124,21 @@ const FileAttributeOwnerUser = "owner::user"
 const FileAttributeOwnerUserReal = "owner::user-real"
 
 // FileAttributePreviewIcon is a representation of the C type FILE_ATTRIBUTE_PREVIEW_ICON.
+//
+// since 2.20
 const FileAttributePreviewIcon = "preview::icon"
 
 // FileAttributeRecentModified is a representation of the C type FILE_ATTRIBUTE_RECENT_MODIFIED.
+//
+// since 2.52
 const FileAttributeRecentModified = "recent::modified"
 
 // FileAttributeSelinuxContext is a representation of the C type FILE_ATTRIBUTE_SELINUX_CONTEXT.
 const FileAttributeSelinuxContext = "selinux::context"
 
 // FileAttributeStandardAllocatedSize is a representation of the C type FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE.
+//
+// since 2.20
 const FileAttributeStandardAllocatedSize = "standard::allocated-size"
 
 // FileAttributeStandardContentType is a representation of the C type FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
@@ -153,6 +175,8 @@ const FileAttributeStandardIsSymlink = "standard::is-symlink"
 const FileAttributeStandardIsVirtual = "standard::is-virtual"
 
 // FileAttributeStandardIsVolatile is a representation of the C type FILE_ATTRIBUTE_STANDARD_IS_VOLATILE.
+//
+// since 2.46
 const FileAttributeStandardIsVolatile = "standard::is-volatile"
 
 // FileAttributeStandardName is a representation of the C type FILE_ATTRIBUTE_STANDARD_NAME.
@@ -165,6 +189,8 @@ const FileAttributeStandardSize = "standard::size"
 const FileAttributeStandardSortOrder = "standard::sort-order"
 
 // FileAttributeStandardSymbolicIcon is a representation of the C type FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON.
+//
+// since 2.34
 const FileAttributeStandardSymbolicIcon = "standard::symbolic-icon"
 
 // FileAttributeStandardSymlinkTarget is a representation of the C type FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET.
@@ -180,6 +206,8 @@ const FileAttributeStandardType = "standard::type"
 const FileAttributeThumbnailingFailed = "thumbnail::failed"
 
 // FileAttributeThumbnailIsValid is a representation of the C type FILE_ATTRIBUTE_THUMBNAIL_IS_VALID.
+//
+// since 2.40
 const FileAttributeThumbnailIsValid = "thumbnail::is-valid"
 
 // FileAttributeThumbnailPath is a representation of the C type FILE_ATTRIBUTE_THUMBNAIL_PATH.
@@ -210,12 +238,16 @@ const FileAttributeTimeModified = "time::modified"
 const FileAttributeTimeModifiedUsec = "time::modified-usec"
 
 // FileAttributeTrashDeletionDate is a representation of the C type FILE_ATTRIBUTE_TRASH_DELETION_DATE.
+//
+// since 2.24
 const FileAttributeTrashDeletionDate = "trash::deletion-date"
 
 // FileAttributeTrashItemCount is a representation of the C type FILE_ATTRIBUTE_TRASH_ITEM_COUNT.
 const FileAttributeTrashItemCount = "trash::item-count"
 
 // FileAttributeTrashOrigPath is a representation of the C type FILE_ATTRIBUTE_TRASH_ORIG_PATH.
+//
+// since 2.24
 const FileAttributeTrashOrigPath = "trash::orig-path"
 
 // FileAttributeUnixBlocks is a representation of the C type FILE_ATTRIBUTE_UNIX_BLOCKS.
@@ -249,33 +281,51 @@ const FileAttributeUnixRdev = "unix::rdev"
 const FileAttributeUnixUid = "unix::uid"
 
 // MenuAttributeAction is a representation of the C type MENU_ATTRIBUTE_ACTION.
+//
+// since 2.32
 const MenuAttributeAction = "action"
 
 // MenuAttributeActionNamespace is a representation of the C type MENU_ATTRIBUTE_ACTION_NAMESPACE.
+//
+// since 2.36
 const MenuAttributeActionNamespace = "action-namespace"
 
 // MenuAttributeIcon is a representation of the C type MENU_ATTRIBUTE_ICON.
+//
+// since 2.38
 const MenuAttributeIcon = "icon"
 
 // MenuAttributeLabel is a representation of the C type MENU_ATTRIBUTE_LABEL.
+//
+// since 2.32
 const MenuAttributeLabel = "label"
 
 // MenuAttributeTarget is a representation of the C type MENU_ATTRIBUTE_TARGET.
+//
+// since 2.32
 const MenuAttributeTarget = "target"
 
 // MenuLinkSection is a representation of the C type MENU_LINK_SECTION.
+//
+// since 2.32
 const MenuLinkSection = "section"
 
 // MenuLinkSubmenu is a representation of the C type MENU_LINK_SUBMENU.
+//
+// since 2.32
 const MenuLinkSubmenu = "submenu"
 
 // NativeVolumeMonitorExtensionPointName is a representation of the C type NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME.
 const NativeVolumeMonitorExtensionPointName = "gio-native-volume-monitor"
 
 // NetworkMonitorExtensionPointName is a representation of the C type NETWORK_MONITOR_EXTENSION_POINT_NAME.
+//
+// since 2.30
 const NetworkMonitorExtensionPointName = "gio-network-monitor"
 
 // ProxyExtensionPointName is a representation of the C type PROXY_EXTENSION_POINT_NAME.
+//
+// since 2.26
 const ProxyExtensionPointName = "gio-proxy"
 
 // ProxyResolverExtensionPointName is a representation of the C type PROXY_RESOLVER_EXTENSION_POINT_NAME.
