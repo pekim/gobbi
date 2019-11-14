@@ -1,4 +1,4 @@
-package atk
+package gtk
 
 import (
 	"github.com/pekim/gobbi/lib/gtk"

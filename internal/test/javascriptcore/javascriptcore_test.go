@@ -1,4 +1,4 @@
-package atk
+package javascriptcore
 
 import (
 	"github.com/pekim/gobbi/lib/javascriptcore"

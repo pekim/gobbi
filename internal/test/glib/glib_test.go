@@ -1,4 +1,4 @@
-package atk
+package glib
 
 import (
 	"github.com/pekim/gobbi/lib/glib"

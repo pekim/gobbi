@@ -1,4 +1,4 @@
-package atk
+package webkit2
 
 import (
 	"github.com/pekim/gobbi/lib/webkit2"

@@ -1,4 +1,4 @@
-package atk
+package pangocairo
 
 import (
 	"testing"

@@ -1,4 +1,4 @@
-package atk
+package gio
 
 import (
 	"github.com/pekim/gobbi/lib/gio"

@@ -1,4 +1,4 @@
-package atk
+package pango
 
 import (
 	"github.com/pekim/gobbi/lib/pango"

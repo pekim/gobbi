@@ -1,4 +1,4 @@
-package atk
+package soup
 
 import (
 	"github.com/pekim/gobbi/lib/soup"

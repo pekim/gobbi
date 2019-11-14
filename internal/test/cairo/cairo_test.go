@@ -1,4 +1,4 @@
-package atk
+package cairo
 
 import (
 	"testing"

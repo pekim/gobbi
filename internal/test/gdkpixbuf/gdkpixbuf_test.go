@@ -1,4 +1,4 @@
-package atk
+package gdkpixbuf
 
 import (
 	"github.com/pekim/gobbi/lib/gdkpixbuf"

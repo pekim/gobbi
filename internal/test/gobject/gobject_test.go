@@ -1,4 +1,4 @@
-package atk
+package gobject
 
 import (
 	"github.com/pekim/gobbi/lib/gobject"

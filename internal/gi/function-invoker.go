@@ -56,5 +56,5 @@ func (fi *FunctionInvoker) Call() {
 		panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
 	}
 
-	fmt.Println("called!!!!!!!!!!!", invoked)
+	fmt.Println("called!!!!!!!!!!!")
 }
