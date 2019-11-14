@@ -49,6 +49,7 @@ func (n *Namespace) generate() {
 	n.libDir = projectFilepath("..", "lib", n.goPackageName)
 	n.generateLibDir()
 
+	n.generateFile("gi", n.giFile)
 	n.generateFile("alias", n.Aliases.generate)
 	n.generateFile("bitfield", n.Bitfields.generate)
 	n.generateFile("constant", n.Constants.generate)
@@ -114,4 +115,15 @@ func (n *Namespace) jenGoTypeForTypeName(typeName string) (*jen.Statement, bool)
 	}
 
 	return nil, false
+}
+
+func (n *Namespace) giFile(f *file) {
+	f.
+		Func().
+		Id("init").
+		Params().
+		Block(
+			jen.
+				Qual("github.com/pekim/gobbi/internal/gi", "Require").
+				Call(jen.Lit(n.Name), jen.Lit(n.Version)))
 }
