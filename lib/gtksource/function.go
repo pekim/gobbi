@@ -4,8 +4,6 @@ package gtksource
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'gtk_source_completion_error_quark' : non trivial function
-
 var completionErrorQuarkInvoker *gi.FunctionInvoker
 
 // CompletionErrorQuark is a representation of the C type gtk_source_completion_error_quark.
@@ -16,8 +14,6 @@ func CompletionErrorQuark() {
 
 	completionErrorQuarkInvoker.Call()
 }
-
-// UNSUPPORTED : C value 'gtk_source_encoding_get_all' : non trivial function
 
 var encodingGetAllInvoker *gi.FunctionInvoker
 
@@ -30,8 +26,6 @@ func EncodingGetAll() {
 	encodingGetAllInvoker.Call()
 }
 
-// UNSUPPORTED : C value 'gtk_source_encoding_get_current' : non trivial function
-
 var encodingGetCurrentInvoker *gi.FunctionInvoker
 
 // EncodingGetCurrent is a representation of the C type gtk_source_encoding_get_current.
@@ -42,8 +36,6 @@ func EncodingGetCurrent() {
 
 	encodingGetCurrentInvoker.Call()
 }
-
-// UNSUPPORTED : C value 'gtk_source_encoding_get_default_candidates' : non trivial function
 
 var encodingGetDefaultCandidatesInvoker *gi.FunctionInvoker
 
@@ -58,19 +50,6 @@ func EncodingGetDefaultCandidates() {
 
 // UNSUPPORTED : C value 'gtk_source_encoding_get_from_charset' : non trivial function
 
-var encodingGetFromCharsetInvoker *gi.FunctionInvoker
-
-// EncodingGetFromCharset is a representation of the C type gtk_source_encoding_get_from_charset.
-func EncodingGetFromCharset() {
-	if encodingGetFromCharsetInvoker == nil {
-		encodingGetFromCharsetInvoker = gi.FunctionInvokerNew("GtkSource", "encoding_get_from_charset")
-	}
-
-	encodingGetFromCharsetInvoker.Call()
-}
-
-// UNSUPPORTED : C value 'gtk_source_encoding_get_utf8' : non trivial function
-
 var encodingGetUtf8Invoker *gi.FunctionInvoker
 
 // EncodingGetUtf8 is a representation of the C type gtk_source_encoding_get_utf8.
@@ -82,8 +61,6 @@ func EncodingGetUtf8() {
 	encodingGetUtf8Invoker.Call()
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_error_quark' : non trivial function
-
 var fileLoaderErrorQuarkInvoker *gi.FunctionInvoker
 
 // FileLoaderErrorQuark is a representation of the C type gtk_source_file_loader_error_quark.
@@ -94,8 +71,6 @@ func FileLoaderErrorQuark() {
 
 	fileLoaderErrorQuarkInvoker.Call()
 }
-
-// UNSUPPORTED : C value 'gtk_source_file_saver_error_quark' : non trivial function
 
 var fileSaverErrorQuarkInvoker *gi.FunctionInvoker
 
@@ -110,26 +85,4 @@ func FileSaverErrorQuark() {
 
 // UNSUPPORTED : C value 'gtk_source_utils_escape_search_text' : non trivial function
 
-var utilsEscapeSearchTextInvoker *gi.FunctionInvoker
-
-// UtilsEscapeSearchText is a representation of the C type gtk_source_utils_escape_search_text.
-func UtilsEscapeSearchText() {
-	if utilsEscapeSearchTextInvoker == nil {
-		utilsEscapeSearchTextInvoker = gi.FunctionInvokerNew("GtkSource", "utils_escape_search_text")
-	}
-
-	utilsEscapeSearchTextInvoker.Call()
-}
-
 // UNSUPPORTED : C value 'gtk_source_utils_unescape_search_text' : non trivial function
-
-var utilsUnescapeSearchTextInvoker *gi.FunctionInvoker
-
-// UtilsUnescapeSearchText is a representation of the C type gtk_source_utils_unescape_search_text.
-func UtilsUnescapeSearchText() {
-	if utilsUnescapeSearchTextInvoker == nil {
-		utilsUnescapeSearchTextInvoker = gi.FunctionInvokerNew("GtkSource", "utils_unescape_search_text")
-	}
-
-	utilsUnescapeSearchTextInvoker.Call()
-}

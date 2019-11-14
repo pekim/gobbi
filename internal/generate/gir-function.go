@@ -32,8 +32,9 @@ func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 }
 
 func (f *Function) generate(fi *file) {
-	if len(f.Parameters) > 0 || f.ReturnValue != nil {
+	if len(f.Parameters) > 0 {
 		fi.unsupported(f.CIdentifier, "non trivial function")
+		return
 	}
 
 	f.generateInvokerVar(fi)

@@ -4,8 +4,6 @@ package freetype2
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'FT_Library_Version' : non trivial function
-
 var libraryVersionInvoker *gi.FunctionInvoker
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
