@@ -59,12 +59,24 @@ func (f *Function) generate(fi *file) {
 		Func().
 		Id(f.goName).
 		Add(f.generateParams()).
-		Block()
+		Add(f.generateBody())
 }
 
 func (f *Function) generateParams() *jen.Statement {
 	return jen.
 		ParamsFunc(func(jg *jen.Group) {
 			//g := &group{jg}
+		})
+}
+
+func (f *Function) generateBody() *jen.Statement {
+	return jen.
+		BlockFunc(func(jg *jen.Group) {
+			g := &group{jg}
+
+			g.
+				Qual("fmt", "Println").
+				Call(jen.
+					Qual("github.com/pekim/gobbi/internal/gi", "Qaz"))
 		})
 }

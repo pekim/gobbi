@@ -2,717 +2,1008 @@
 
 package gio
 
+import (
+	"fmt"
+	gi "github.com/pekim/gobbi/internal/gi"
+)
+
 // UNSUPPORTED : C value 'g_action_name_is_valid' : non trivial function
 
 // ActionNameIsValid is a representation of the C type g_action_name_is_valid.
-func ActionNameIsValid() {}
+func ActionNameIsValid() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_action_parse_detailed_name' : non trivial function
 
 // ActionParseDetailedName is a representation of the C type g_action_parse_detailed_name.
-func ActionParseDetailedName() {}
+func ActionParseDetailedName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_action_print_detailed_name' : non trivial function
 
 // ActionPrintDetailedName is a representation of the C type g_action_print_detailed_name.
-func ActionPrintDetailedName() {}
+func ActionPrintDetailedName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_create_from_commandline' : non trivial function
 
 // AppInfoCreateFromCommandline is a representation of the C type g_app_info_create_from_commandline.
-func AppInfoCreateFromCommandline() {}
+func AppInfoCreateFromCommandline() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_all' : non trivial function
 
 // AppInfoGetAll is a representation of the C type g_app_info_get_all.
-func AppInfoGetAll() {}
+func AppInfoGetAll() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_all_for_type' : non trivial function
 
 // AppInfoGetAllForType is a representation of the C type g_app_info_get_all_for_type.
-func AppInfoGetAllForType() {}
+func AppInfoGetAllForType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_default_for_type' : non trivial function
 
 // AppInfoGetDefaultForType is a representation of the C type g_app_info_get_default_for_type.
-func AppInfoGetDefaultForType() {}
+func AppInfoGetDefaultForType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : non trivial function
 
 // AppInfoGetDefaultForUriScheme is a representation of the C type g_app_info_get_default_for_uri_scheme.
-func AppInfoGetDefaultForUriScheme() {}
+func AppInfoGetDefaultForUriScheme() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_fallback_for_type' : non trivial function
 
 // AppInfoGetFallbackForType is a representation of the C type g_app_info_get_fallback_for_type.
-func AppInfoGetFallbackForType() {}
+func AppInfoGetFallbackForType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : non trivial function
 
 // AppInfoGetRecommendedForType is a representation of the C type g_app_info_get_recommended_for_type.
-func AppInfoGetRecommendedForType() {}
+func AppInfoGetRecommendedForType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri' : non trivial function
 
 // AppInfoLaunchDefaultForUri is a representation of the C type g_app_info_launch_default_for_uri.
-func AppInfoLaunchDefaultForUri() {}
+func AppInfoLaunchDefaultForUri() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : non trivial function
 
 // AppInfoLaunchDefaultForUriAsync is a representation of the C type g_app_info_launch_default_for_uri_async.
-func AppInfoLaunchDefaultForUriAsync() {}
+func AppInfoLaunchDefaultForUriAsync() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : non trivial function
 
 // AppInfoLaunchDefaultForUriFinish is a representation of the C type g_app_info_launch_default_for_uri_finish.
-func AppInfoLaunchDefaultForUriFinish() {}
+func AppInfoLaunchDefaultForUriFinish() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_app_info_reset_type_associations' : non trivial function
 
 // AppInfoResetTypeAssociations is a representation of the C type g_app_info_reset_type_associations.
-func AppInfoResetTypeAssociations() {}
+func AppInfoResetTypeAssociations() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_async_initable_newv_async' : non trivial function
 
 // AsyncInitableNewvAsync is a representation of the C type g_async_initable_newv_async.
-func AsyncInitableNewvAsync() {}
+func AsyncInitableNewvAsync() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_get' : non trivial function
 
 // BusGet is a representation of the C type g_bus_get.
-func BusGet() {}
+func BusGet() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_get_finish' : non trivial function
 
 // BusGetFinish is a representation of the C type g_bus_get_finish.
-func BusGetFinish() {}
+func BusGetFinish() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_get_sync' : non trivial function
 
 // BusGetSync is a representation of the C type g_bus_get_sync.
-func BusGetSync() {}
+func BusGetSync() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_own_name' : non trivial function
 
 // BusOwnName is a representation of the C type g_bus_own_name.
-func BusOwnName() {}
+func BusOwnName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_own_name_on_connection' : non trivial function
 
 // BusOwnNameOnConnection is a representation of the C type g_bus_own_name_on_connection.
-func BusOwnNameOnConnection() {}
+func BusOwnNameOnConnection() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : non trivial function
 
 // BusOwnNameOnConnectionWithClosures is a representation of the C type g_bus_own_name_on_connection_with_closures.
-func BusOwnNameOnConnectionWithClosures() {}
+func BusOwnNameOnConnectionWithClosures() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_own_name_with_closures' : non trivial function
 
 // BusOwnNameWithClosures is a representation of the C type g_bus_own_name_with_closures.
-func BusOwnNameWithClosures() {}
+func BusOwnNameWithClosures() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_unown_name' : non trivial function
 
 // BusUnownName is a representation of the C type g_bus_unown_name.
-func BusUnownName() {}
+func BusUnownName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_unwatch_name' : non trivial function
 
 // BusUnwatchName is a representation of the C type g_bus_unwatch_name.
-func BusUnwatchName() {}
+func BusUnwatchName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : non trivial function
 
 // BusWatchName is a representation of the C type g_bus_watch_name.
-func BusWatchName() {}
+func BusWatchName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : non trivial function
 
 // BusWatchNameOnConnection is a representation of the C type g_bus_watch_name_on_connection.
-func BusWatchNameOnConnection() {}
+func BusWatchNameOnConnection() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : non trivial function
 
 // BusWatchNameOnConnectionWithClosures is a representation of the C type g_bus_watch_name_on_connection_with_closures.
-func BusWatchNameOnConnectionWithClosures() {}
+func BusWatchNameOnConnectionWithClosures() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : non trivial function
 
 // BusWatchNameWithClosures is a representation of the C type g_bus_watch_name_with_closures.
-func BusWatchNameWithClosures() {}
+func BusWatchNameWithClosures() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_can_be_executable' : non trivial function
 
 // ContentTypeCanBeExecutable is a representation of the C type g_content_type_can_be_executable.
-func ContentTypeCanBeExecutable() {}
+func ContentTypeCanBeExecutable() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_equals' : non trivial function
 
 // ContentTypeEquals is a representation of the C type g_content_type_equals.
-func ContentTypeEquals() {}
+func ContentTypeEquals() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_from_mime_type' : non trivial function
 
 // ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
-func ContentTypeFromMimeType() {}
+func ContentTypeFromMimeType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_get_description' : non trivial function
 
 // ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
-func ContentTypeGetDescription() {}
+func ContentTypeGetDescription() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_get_generic_icon_name' : non trivial function
 
 // ContentTypeGetGenericIconName is a representation of the C type g_content_type_get_generic_icon_name.
-func ContentTypeGetGenericIconName() {}
+func ContentTypeGetGenericIconName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_get_icon' : non trivial function
 
 // ContentTypeGetIcon is a representation of the C type g_content_type_get_icon.
-func ContentTypeGetIcon() {}
+func ContentTypeGetIcon() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_get_mime_type' : non trivial function
 
 // ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
-func ContentTypeGetMimeType() {}
+func ContentTypeGetMimeType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : non trivial function
 
 // ContentTypeGetSymbolicIcon is a representation of the C type g_content_type_get_symbolic_icon.
-func ContentTypeGetSymbolicIcon() {}
+func ContentTypeGetSymbolicIcon() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_guess' : non trivial function
 
 // ContentTypeGuess is a representation of the C type g_content_type_guess.
-func ContentTypeGuess() {}
+func ContentTypeGuess() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_guess_for_tree' : non trivial function
 
 // ContentTypeGuessForTree is a representation of the C type g_content_type_guess_for_tree.
-func ContentTypeGuessForTree() {}
+func ContentTypeGuessForTree() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_is_a' : non trivial function
 
 // ContentTypeIsA is a representation of the C type g_content_type_is_a.
-func ContentTypeIsA() {}
+func ContentTypeIsA() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_is_mime_type' : non trivial function
 
 // ContentTypeIsMimeType is a representation of the C type g_content_type_is_mime_type.
-func ContentTypeIsMimeType() {}
+func ContentTypeIsMimeType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_type_is_unknown' : non trivial function
 
 // ContentTypeIsUnknown is a representation of the C type g_content_type_is_unknown.
-func ContentTypeIsUnknown() {}
+func ContentTypeIsUnknown() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_content_types_get_registered' : non trivial function
 
 // ContentTypesGetRegistered is a representation of the C type g_content_types_get_registered.
-func ContentTypesGetRegistered() {}
+func ContentTypesGetRegistered() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_escape_value' : non trivial function
 
 // DbusAddressEscapeValue is a representation of the C type g_dbus_address_escape_value.
-func DbusAddressEscapeValue() {}
+func DbusAddressEscapeValue() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : non trivial function
 
 // DbusAddressGetForBusSync is a representation of the C type g_dbus_address_get_for_bus_sync.
-func DbusAddressGetForBusSync() {}
+func DbusAddressGetForBusSync() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream' : non trivial function
 
 // DbusAddressGetStream is a representation of the C type g_dbus_address_get_stream.
-func DbusAddressGetStream() {}
+func DbusAddressGetStream() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : non trivial function
 
 // DbusAddressGetStreamFinish is a representation of the C type g_dbus_address_get_stream_finish.
-func DbusAddressGetStreamFinish() {}
+func DbusAddressGetStreamFinish() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : non trivial function
 
 // DbusAddressGetStreamSync is a representation of the C type g_dbus_address_get_stream_sync.
-func DbusAddressGetStreamSync() {}
+func DbusAddressGetStreamSync() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : non trivial function
 
 // DbusAnnotationInfoLookup is a representation of the C type g_dbus_annotation_info_lookup.
-func DbusAnnotationInfoLookup() {}
+func DbusAnnotationInfoLookup() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_encode_gerror' : non trivial function
 
 // DbusErrorEncodeGerror is a representation of the C type g_dbus_error_encode_gerror.
-func DbusErrorEncodeGerror() {}
+func DbusErrorEncodeGerror() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_get_remote_error' : non trivial function
 
 // DbusErrorGetRemoteError is a representation of the C type g_dbus_error_get_remote_error.
-func DbusErrorGetRemoteError() {}
+func DbusErrorGetRemoteError() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_is_remote_error' : non trivial function
 
 // DbusErrorIsRemoteError is a representation of the C type g_dbus_error_is_remote_error.
-func DbusErrorIsRemoteError() {}
+func DbusErrorIsRemoteError() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : non trivial function
 
 // DbusErrorNewForDbusError is a representation of the C type g_dbus_error_new_for_dbus_error.
-func DbusErrorNewForDbusError() {}
+func DbusErrorNewForDbusError() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_quark' : non trivial function
 
 // DbusErrorQuark is a representation of the C type g_dbus_error_quark.
-func DbusErrorQuark() {}
+func DbusErrorQuark() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error' : non trivial function
 
 // DbusErrorRegisterError is a representation of the C type g_dbus_error_register_error.
-func DbusErrorRegisterError() {}
+func DbusErrorRegisterError() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : non trivial function
 
 // DbusErrorRegisterErrorDomain is a representation of the C type g_dbus_error_register_error_domain.
-func DbusErrorRegisterErrorDomain() {}
+func DbusErrorRegisterErrorDomain() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : non trivial function
 
 // DbusErrorStripRemoteError is a representation of the C type g_dbus_error_strip_remote_error.
-func DbusErrorStripRemoteError() {}
+func DbusErrorStripRemoteError() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_error_unregister_error' : non trivial function
 
 // DbusErrorUnregisterError is a representation of the C type g_dbus_error_unregister_error.
-func DbusErrorUnregisterError() {}
+func DbusErrorUnregisterError() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_generate_guid' : non trivial function
 
 // DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
-func DbusGenerateGuid() {}
+func DbusGenerateGuid() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : non trivial function
 
 // DbusGvalueToGvariant is a representation of the C type g_dbus_gvalue_to_gvariant.
-func DbusGvalueToGvariant() {}
+func DbusGvalueToGvariant() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_gvariant_to_gvalue' : non trivial function
 
 // DbusGvariantToGvalue is a representation of the C type g_dbus_gvariant_to_gvalue.
-func DbusGvariantToGvalue() {}
+func DbusGvariantToGvalue() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_address' : non trivial function
 
 // DbusIsAddress is a representation of the C type g_dbus_is_address.
-func DbusIsAddress() {}
+func DbusIsAddress() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_guid' : non trivial function
 
 // DbusIsGuid is a representation of the C type g_dbus_is_guid.
-func DbusIsGuid() {}
+func DbusIsGuid() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_interface_name' : non trivial function
 
 // DbusIsInterfaceName is a representation of the C type g_dbus_is_interface_name.
-func DbusIsInterfaceName() {}
+func DbusIsInterfaceName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_member_name' : non trivial function
 
 // DbusIsMemberName is a representation of the C type g_dbus_is_member_name.
-func DbusIsMemberName() {}
+func DbusIsMemberName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_name' : non trivial function
 
 // DbusIsName is a representation of the C type g_dbus_is_name.
-func DbusIsName() {}
+func DbusIsName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_supported_address' : non trivial function
 
 // DbusIsSupportedAddress is a representation of the C type g_dbus_is_supported_address.
-func DbusIsSupportedAddress() {}
+func DbusIsSupportedAddress() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dbus_is_unique_name' : non trivial function
 
 // DbusIsUniqueName is a representation of the C type g_dbus_is_unique_name.
-func DbusIsUniqueName() {}
+func DbusIsUniqueName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_new' : non trivial function
 
 // DtlsClientConnectionNew is a representation of the C type g_dtls_client_connection_new.
-func DtlsClientConnectionNew() {}
+func DtlsClientConnectionNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_dtls_server_connection_new' : non trivial function
 
 // DtlsServerConnectionNew is a representation of the C type g_dtls_server_connection_new.
-func DtlsServerConnectionNew() {}
+func DtlsServerConnectionNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_file_new_for_commandline_arg' : non trivial function
 
 // FileNewForCommandlineArg is a representation of the C type g_file_new_for_commandline_arg.
-func FileNewForCommandlineArg() {}
+func FileNewForCommandlineArg() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_file_new_for_commandline_arg_and_cwd' : non trivial function
 
 // FileNewForCommandlineArgAndCwd is a representation of the C type g_file_new_for_commandline_arg_and_cwd.
-func FileNewForCommandlineArgAndCwd() {}
+func FileNewForCommandlineArgAndCwd() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_file_new_for_path' : non trivial function
 
 // FileNewForPath is a representation of the C type g_file_new_for_path.
-func FileNewForPath() {}
+func FileNewForPath() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_file_new_for_uri' : non trivial function
 
 // FileNewForUri is a representation of the C type g_file_new_for_uri.
-func FileNewForUri() {}
+func FileNewForUri() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_file_new_tmp' : non trivial function
 
 // FileNewTmp is a representation of the C type g_file_new_tmp.
-func FileNewTmp() {}
+func FileNewTmp() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_file_parse_name' : non trivial function
 
 // FileParseName is a representation of the C type g_file_parse_name.
-func FileParseName() {}
+func FileParseName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_icon_deserialize' : non trivial function
 
 // IconDeserialize is a representation of the C type g_icon_deserialize.
-func IconDeserialize() {}
+func IconDeserialize() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_icon_hash' : non trivial function
 
 // IconHash is a representation of the C type g_icon_hash.
-func IconHash() {}
+func IconHash() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_icon_new_for_string' : non trivial function
 
 // IconNewForString is a representation of the C type g_icon_new_for_string.
-func IconNewForString() {}
+func IconNewForString() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_initable_newv' : non trivial function
 
 // InitableNewv is a representation of the C type g_initable_newv.
-func InitableNewv() {}
+func InitableNewv() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_error_from_errno' : non trivial function
 
 // IoErrorFromErrno is a representation of the C type g_io_error_from_errno.
-func IoErrorFromErrno() {}
+func IoErrorFromErrno() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_error_quark' : non trivial function
 
 // IoErrorQuark is a representation of the C type g_io_error_quark.
-func IoErrorQuark() {}
+func IoErrorQuark() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_extension_point_implement' : non trivial function
 
 // IoExtensionPointImplement is a representation of the C type g_io_extension_point_implement.
-func IoExtensionPointImplement() {}
+func IoExtensionPointImplement() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_extension_point_lookup' : non trivial function
 
 // IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
-func IoExtensionPointLookup() {}
+func IoExtensionPointLookup() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_extension_point_register' : non trivial function
 
 // IoExtensionPointRegister is a representation of the C type g_io_extension_point_register.
-func IoExtensionPointRegister() {}
+func IoExtensionPointRegister() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : non trivial function
 
 // IoModulesLoadAllInDirectory is a representation of the C type g_io_modules_load_all_in_directory.
-func IoModulesLoadAllInDirectory() {}
+func IoModulesLoadAllInDirectory() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory_with_scope' : non trivial function
 
 // IoModulesLoadAllInDirectoryWithScope is a representation of the C type g_io_modules_load_all_in_directory_with_scope.
-func IoModulesLoadAllInDirectoryWithScope() {}
+func IoModulesLoadAllInDirectoryWithScope() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory' : non trivial function
 
 // IoModulesScanAllInDirectory is a representation of the C type g_io_modules_scan_all_in_directory.
-func IoModulesScanAllInDirectory() {}
+func IoModulesScanAllInDirectory() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : non trivial function
 
 // IoModulesScanAllInDirectoryWithScope is a representation of the C type g_io_modules_scan_all_in_directory_with_scope.
-func IoModulesScanAllInDirectoryWithScope() {}
+func IoModulesScanAllInDirectoryWithScope() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_scheduler_cancel_all_jobs' : non trivial function
 
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
-func IoSchedulerCancelAllJobs() {}
+func IoSchedulerCancelAllJobs() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : non trivial function
 
 // IoSchedulerPushJob is a representation of the C type g_io_scheduler_push_job.
-func IoSchedulerPushJob() {}
+func IoSchedulerPushJob() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : non trivial function
 
 // KeyfileSettingsBackendNew is a representation of the C type g_keyfile_settings_backend_new.
-func KeyfileSettingsBackendNew() {}
+func KeyfileSettingsBackendNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_memory_settings_backend_new' : non trivial function
 
 // MemorySettingsBackendNew is a representation of the C type g_memory_settings_backend_new.
-func MemorySettingsBackendNew() {}
+func MemorySettingsBackendNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_network_monitor_get_default' : non trivial function
 
 // NetworkMonitorGetDefault is a representation of the C type g_network_monitor_get_default.
-func NetworkMonitorGetDefault() {}
+func NetworkMonitorGetDefault() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_networking_init' : non trivial function
 
 // NetworkingInit is a representation of the C type g_networking_init.
-func NetworkingInit() {}
+func NetworkingInit() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_null_settings_backend_new' : non trivial function
 
 // NullSettingsBackendNew is a representation of the C type g_null_settings_backend_new.
-func NullSettingsBackendNew() {}
+func NullSettingsBackendNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_pollable_source_new' : non trivial function
 
 // PollableSourceNew is a representation of the C type g_pollable_source_new.
-func PollableSourceNew() {}
+func PollableSourceNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_pollable_source_new_full' : non trivial function
 
 // PollableSourceNewFull is a representation of the C type g_pollable_source_new_full.
-func PollableSourceNewFull() {}
+func PollableSourceNewFull() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_pollable_stream_read' : non trivial function
 
 // PollableStreamRead is a representation of the C type g_pollable_stream_read.
-func PollableStreamRead() {}
+func PollableStreamRead() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_pollable_stream_write' : non trivial function
 
 // PollableStreamWrite is a representation of the C type g_pollable_stream_write.
-func PollableStreamWrite() {}
+func PollableStreamWrite() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_pollable_stream_write_all' : non trivial function
 
 // PollableStreamWriteAll is a representation of the C type g_pollable_stream_write_all.
-func PollableStreamWriteAll() {}
+func PollableStreamWriteAll() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : non trivial function
 
 // ProxyGetDefaultForProtocol is a representation of the C type g_proxy_get_default_for_protocol.
-func ProxyGetDefaultForProtocol() {}
+func ProxyGetDefaultForProtocol() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_proxy_resolver_get_default' : non trivial function
 
 // ProxyResolverGetDefault is a representation of the C type g_proxy_resolver_get_default.
-func ProxyResolverGetDefault() {}
+func ProxyResolverGetDefault() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resolver_error_quark' : non trivial function
 
 // ResolverErrorQuark is a representation of the C type g_resolver_error_quark.
-func ResolverErrorQuark() {}
+func ResolverErrorQuark() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resource_error_quark' : non trivial function
 
 // ResourceErrorQuark is a representation of the C type g_resource_error_quark.
-func ResourceErrorQuark() {}
+func ResourceErrorQuark() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resource_load' : non trivial function
 
 // ResourceLoad is a representation of the C type g_resource_load.
-func ResourceLoad() {}
+func ResourceLoad() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resources_enumerate_children' : non trivial function
 
 // ResourcesEnumerateChildren is a representation of the C type g_resources_enumerate_children.
-func ResourcesEnumerateChildren() {}
+func ResourcesEnumerateChildren() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resources_get_info' : non trivial function
 
 // ResourcesGetInfo is a representation of the C type g_resources_get_info.
-func ResourcesGetInfo() {}
+func ResourcesGetInfo() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resources_lookup_data' : non trivial function
 
 // ResourcesLookupData is a representation of the C type g_resources_lookup_data.
-func ResourcesLookupData() {}
+func ResourcesLookupData() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resources_open_stream' : non trivial function
 
 // ResourcesOpenStream is a representation of the C type g_resources_open_stream.
-func ResourcesOpenStream() {}
+func ResourcesOpenStream() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resources_register' : non trivial function
 
 // ResourcesRegister is a representation of the C type g_resources_register.
-func ResourcesRegister() {}
+func ResourcesRegister() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_resources_unregister' : non trivial function
 
 // ResourcesUnregister is a representation of the C type g_resources_unregister.
-func ResourcesUnregister() {}
+func ResourcesUnregister() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_settings_schema_source_get_default' : non trivial function
 
 // SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
-func SettingsSchemaSourceGetDefault() {}
+func SettingsSchemaSourceGetDefault() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : non trivial function
 
 // SimpleAsyncReportErrorInIdle is a representation of the C type g_simple_async_report_error_in_idle.
-func SimpleAsyncReportErrorInIdle() {}
+func SimpleAsyncReportErrorInIdle() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_simple_async_report_gerror_in_idle' : non trivial function
 
 // SimpleAsyncReportGerrorInIdle is a representation of the C type g_simple_async_report_gerror_in_idle.
-func SimpleAsyncReportGerrorInIdle() {}
+func SimpleAsyncReportGerrorInIdle() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_simple_async_report_take_gerror_in_idle' : non trivial function
 
 // SimpleAsyncReportTakeGerrorInIdle is a representation of the C type g_simple_async_report_take_gerror_in_idle.
-func SimpleAsyncReportTakeGerrorInIdle() {}
+func SimpleAsyncReportTakeGerrorInIdle() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_srv_target_list_sort' : non trivial function
 
 // SrvTargetListSort is a representation of the C type g_srv_target_list_sort.
-func SrvTargetListSort() {}
+func SrvTargetListSort() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_tls_backend_get_default' : non trivial function
 
 // TlsBackendGetDefault is a representation of the C type g_tls_backend_get_default.
-func TlsBackendGetDefault() {}
+func TlsBackendGetDefault() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_tls_client_connection_new' : non trivial function
 
 // TlsClientConnectionNew is a representation of the C type g_tls_client_connection_new.
-func TlsClientConnectionNew() {}
+func TlsClientConnectionNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_tls_error_quark' : non trivial function
 
 // TlsErrorQuark is a representation of the C type g_tls_error_quark.
-func TlsErrorQuark() {}
+func TlsErrorQuark() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_tls_file_database_new' : non trivial function
 
 // TlsFileDatabaseNew is a representation of the C type g_tls_file_database_new.
-func TlsFileDatabaseNew() {}
+func TlsFileDatabaseNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_tls_server_connection_new' : non trivial function
 
 // TlsServerConnectionNew is a representation of the C type g_tls_server_connection_new.
-func TlsServerConnectionNew() {}
+func TlsServerConnectionNew() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_is_mount_path_system_internal' : non trivial function
 
 // UnixIsMountPathSystemInternal is a representation of the C type g_unix_is_mount_path_system_internal.
-func UnixIsMountPathSystemInternal() {}
+func UnixIsMountPathSystemInternal() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_is_system_device_path' : non trivial function
 
 // UnixIsSystemDevicePath is a representation of the C type g_unix_is_system_device_path.
-func UnixIsSystemDevicePath() {}
+func UnixIsSystemDevicePath() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_is_system_fs_type' : non trivial function
 
 // UnixIsSystemFsType is a representation of the C type g_unix_is_system_fs_type.
-func UnixIsSystemFsType() {}
+func UnixIsSystemFsType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_at' : non trivial function
 
 // UnixMountAt is a representation of the C type g_unix_mount_at.
-func UnixMountAt() {}
+func UnixMountAt() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_compare' : non trivial function
 
 // UnixMountCompare is a representation of the C type g_unix_mount_compare.
-func UnixMountCompare() {}
+func UnixMountCompare() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_copy' : non trivial function
 
 // UnixMountCopy is a representation of the C type g_unix_mount_copy.
-func UnixMountCopy() {}
+func UnixMountCopy() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_for' : non trivial function
 
 // UnixMountFor is a representation of the C type g_unix_mount_for.
-func UnixMountFor() {}
+func UnixMountFor() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_free' : non trivial function
 
 // UnixMountFree is a representation of the C type g_unix_mount_free.
-func UnixMountFree() {}
+func UnixMountFree() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_get_device_path' : non trivial function
 
 // UnixMountGetDevicePath is a representation of the C type g_unix_mount_get_device_path.
-func UnixMountGetDevicePath() {}
+func UnixMountGetDevicePath() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_get_fs_type' : non trivial function
 
 // UnixMountGetFsType is a representation of the C type g_unix_mount_get_fs_type.
-func UnixMountGetFsType() {}
+func UnixMountGetFsType() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : non trivial function
 
 // UnixMountGetMountPath is a representation of the C type g_unix_mount_get_mount_path.
-func UnixMountGetMountPath() {}
+func UnixMountGetMountPath() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_can_eject' : non trivial function
 
 // UnixMountGuessCanEject is a representation of the C type g_unix_mount_guess_can_eject.
-func UnixMountGuessCanEject() {}
+func UnixMountGuessCanEject() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_icon' : non trivial function
 
 // UnixMountGuessIcon is a representation of the C type g_unix_mount_guess_icon.
-func UnixMountGuessIcon() {}
+func UnixMountGuessIcon() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_name' : non trivial function
 
 // UnixMountGuessName is a representation of the C type g_unix_mount_guess_name.
-func UnixMountGuessName() {}
+func UnixMountGuessName() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_should_display' : non trivial function
 
 // UnixMountGuessShouldDisplay is a representation of the C type g_unix_mount_guess_should_display.
-func UnixMountGuessShouldDisplay() {}
+func UnixMountGuessShouldDisplay() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : non trivial function
 
 // UnixMountGuessSymbolicIcon is a representation of the C type g_unix_mount_guess_symbolic_icon.
-func UnixMountGuessSymbolicIcon() {}
+func UnixMountGuessSymbolicIcon() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_is_readonly' : non trivial function
 
 // UnixMountIsReadonly is a representation of the C type g_unix_mount_is_readonly.
-func UnixMountIsReadonly() {}
+func UnixMountIsReadonly() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_is_system_internal' : non trivial function
 
 // UnixMountIsSystemInternal is a representation of the C type g_unix_mount_is_system_internal.
-func UnixMountIsSystemInternal() {}
+func UnixMountIsSystemInternal() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : non trivial function
 
 // UnixMountPointsChangedSince is a representation of the C type g_unix_mount_points_changed_since.
-func UnixMountPointsChangedSince() {}
+func UnixMountPointsChangedSince() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_points_get' : non trivial function
 
 // UnixMountPointsGet is a representation of the C type g_unix_mount_points_get.
-func UnixMountPointsGet() {}
+func UnixMountPointsGet() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mounts_changed_since' : non trivial function
 
 // UnixMountsChangedSince is a representation of the C type g_unix_mounts_changed_since.
-func UnixMountsChangedSince() {}
+func UnixMountsChangedSince() {
+	fmt.Println(gi.Qaz)
+}
 
 // UNSUPPORTED : C value 'g_unix_mounts_get' : non trivial function
 
 // UnixMountsGet is a representation of the C type g_unix_mounts_get.
-func UnixMountsGet() {}
+func UnixMountsGet() {
+	fmt.Println(gi.Qaz)
+}
