@@ -3,3 +3,4 @@
 package freetype2
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
+func LibraryVersion() {}

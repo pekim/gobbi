@@ -1,5 +1,7 @@
 package generate
 
+import "github.com/dave/jennifer/jen"
+
 type Function struct {
 	Name              string `xml:"name,attr"`
 	Blacklist         bool   `xml:"blacklist,attr"`
@@ -48,4 +50,17 @@ func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 
 func (f *Function) generate(fi *file) {
 	fi.docForC(f.goName, f.CIdentifier)
+
+	fi.
+		Func().
+		Id(f.goName).
+		Add(f.generateParams()).
+		Block()
+}
+
+func (f *Function) generateParams() *jen.Statement {
+	return jen.
+		ParamsFunc(func(jg *jen.Group) {
+			//g := &group{jg}
+		})
 }
