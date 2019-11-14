@@ -1,9 +1,5 @@
 package generate
 
-import (
-	"github.com/dave/jennifer/jen"
-)
-
 type Enumeration struct {
 	Name         string  `xml:"name,attr"`
 	Version      string  `xml:"version,attr"`
@@ -42,11 +38,9 @@ func (e *Enumeration) generate(f *file) {
 	// generate the member consts
 	f.
 		Const().
-		DefsFunc(func(jg *jen.Group) {
-			g := &group{jg}
-
+		Add(defsFunc(func(g *group) {
 			for _, member := range e.Members {
 				member.generate(g, e.goTypeName, e.goMemberPrefix)
 			}
-		})
+		}))
 }

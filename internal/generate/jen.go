@@ -49,3 +49,21 @@ func (g *group) docVersion(version string) {
 	g.Comment("//")
 	g.Commentf("// since %s", version)
 }
+
+func blockFunc(fn func(g *group)) *jen.Statement {
+	return jen.BlockFunc(func(jg *jen.Group) {
+		fn(&group{jg})
+	})
+}
+
+func defsFunc(fn func(g *group)) *jen.Statement {
+	return jen.DefsFunc(func(jg *jen.Group) {
+		fn(&group{jg})
+	})
+}
+
+func paramsFunc(fn func(g *group)) *jen.Statement {
+	return jen.ParamsFunc(func(jg *jen.Group) {
+		fn(&group{jg})
+	})
+}
