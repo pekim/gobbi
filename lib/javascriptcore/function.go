@@ -11,131 +11,150 @@ import (
 
 // GetMajorVersion is a representation of the C type jsc_get_major_version.
 func GetMajorVersion() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_get_micro_version' : non trivial function
 
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
 func GetMicroVersion() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_get_minor_version' : non trivial function
 
 // GetMinorVersion is a representation of the C type jsc_get_minor_version.
 func GetMinorVersion() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : non trivial function
 
 // OptionsForeach is a representation of the C type jsc_options_foreach.
 func OptionsForeach() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_foreach")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_boolean' : non trivial function
 
 // OptionsGetBoolean is a representation of the C type jsc_options_get_boolean.
 func OptionsGetBoolean() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_boolean")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_double' : non trivial function
 
 // OptionsGetDouble is a representation of the C type jsc_options_get_double.
 func OptionsGetDouble() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_double")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_int' : non trivial function
 
 // OptionsGetInt is a representation of the C type jsc_options_get_int.
 func OptionsGetInt() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_int")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_option_group' : non trivial function
 
 // OptionsGetOptionGroup is a representation of the C type jsc_options_get_option_group.
 func OptionsGetOptionGroup() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_option_group")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_range_string' : non trivial function
 
 // OptionsGetRangeString is a representation of the C type jsc_options_get_range_string.
 func OptionsGetRangeString() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_range_string")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_size' : non trivial function
 
 // OptionsGetSize is a representation of the C type jsc_options_get_size.
 func OptionsGetSize() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_size")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_string' : non trivial function
 
 // OptionsGetString is a representation of the C type jsc_options_get_string.
 func OptionsGetString() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_string")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_uint' : non trivial function
 
 // OptionsGetUint is a representation of the C type jsc_options_get_uint.
 func OptionsGetUint() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_get_uint")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_boolean' : non trivial function
 
 // OptionsSetBoolean is a representation of the C type jsc_options_set_boolean.
 func OptionsSetBoolean() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_boolean")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_double' : non trivial function
 
 // OptionsSetDouble is a representation of the C type jsc_options_set_double.
 func OptionsSetDouble() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_double")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_int' : non trivial function
 
 // OptionsSetInt is a representation of the C type jsc_options_set_int.
 func OptionsSetInt() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_int")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_range_string' : non trivial function
 
 // OptionsSetRangeString is a representation of the C type jsc_options_set_range_string.
 func OptionsSetRangeString() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_range_string")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_size' : non trivial function
 
 // OptionsSetSize is a representation of the C type jsc_options_set_size.
 func OptionsSetSize() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_size")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_string' : non trivial function
 
 // OptionsSetString is a representation of the C type jsc_options_set_string.
 func OptionsSetString() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_string")
+	fmt.Println(invoker)
 }
 
 // UNSUPPORTED : C value 'jsc_options_set_uint' : non trivial function
 
 // OptionsSetUint is a representation of the C type jsc_options_set_uint.
 func OptionsSetUint() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("JavaScriptCore", "options_set_uint")
+	fmt.Println(invoker)
 }

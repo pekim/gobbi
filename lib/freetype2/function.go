@@ -11,5 +11,6 @@ import (
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
 func LibraryVersion() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("freetype2", "library_version")
+	fmt.Println(invoker)
 }

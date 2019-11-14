@@ -11,5 +11,6 @@ import (
 
 // ImageSurfaceCreate is a representation of the C type cairo_image_surface_create.
 func ImageSurfaceCreate() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("cairo", "image_surface_create")
+	fmt.Println(invoker)
 }

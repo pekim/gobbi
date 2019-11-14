@@ -22,33 +22,11 @@ type Function struct {
 
 	namespace *Namespace
 	goName    string
-
-	//receiver   *Record
-	//ctorRecord *Record
-	//
-	//throwableErrorType      *Type
-	//throwableErrorCVarName  string
-	//throwableErrorGoVarName string
 }
 
 func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 	f.namespace = ns
 	f.goName = makeExportedGoName(f.Name)
-
-	//f.receiver = receiver
-	//if f.GoName == "" {
-	//	f.GoName = MakeExportedGoName(f.Name)
-	//}
-	//f.GoName = namePrefix + f.GoName
-	//f.Parameters.init(ns)
-	//if f.InstanceParameter != nil {
-	//	f.InstanceParameter.init(ns)
-	//}
-	//f.initThrowableError()
-	//
-	//if f.ReturnValue != nil {
-	//	f.ReturnValue.init(ns)
-	//}
 }
 
 func (f *Function) generate(fi *file) {
@@ -70,7 +48,15 @@ func (f *Function) generateParams(g *group) {
 
 func (f *Function) generateBody(g *group) {
 	g.
+		Id("invoker").
+		Op(":=").
+		Qual(gi.PackageName, "FunctionInvokerNew").
+		Call(
+			jen.Lit(f.namespace.Name),
+			jen.Lit(f.Name),
+		)
+
+	g.
 		Qual("fmt", "Println").
-		Call(jen.
-			Qual(gi.PackageName, "Qaz"))
+		Call(jen.Id("invoker"))
 }

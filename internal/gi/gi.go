@@ -10,13 +10,6 @@ import (
 import "C"
 
 const PackageName = "github.com/pekim/gobbi/internal/gi"
-const Qaz = 42
-
-var defaultRepo *C.GIRepository
-
-func init() {
-	defaultRepo = C.g_irepository_get_default()
-}
 
 func Require(name string, version string) {
 	cName := C.CString(name)
@@ -28,7 +21,7 @@ func Require(name string, version string) {
 	var err *C.GError
 
 	C.g_irepository_require(
-		defaultRepo,
+		nil,
 		cName,
 		cVersion,
 		0,

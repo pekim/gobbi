@@ -11,5 +11,6 @@ import (
 
 // PixbufErrorQuark is a representation of the C type gdk_pixbuf_error_quark.
 func PixbufErrorQuark() {
-	fmt.Println(gi.Qaz)
+	invoker := gi.FunctionInvokerNew("GdkPixbuf", "pixbuf_error_quark")
+	fmt.Println(invoker)
 }
