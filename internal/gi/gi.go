@@ -9,6 +9,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
+const PackageName = "github.com/pekim/gobbi/internal/gi"
 const Qaz = 42
 
 var defaultRepo *C.GIRepository

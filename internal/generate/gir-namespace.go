@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"github.com/pekim/gobbi/internal/gi"
 	"os"
 	"path"
 	"strings"
@@ -124,6 +125,6 @@ func (n *Namespace) giFile(f *file) {
 		Params().
 		Block(
 			jen.
-				Qual("github.com/pekim/gobbi/internal/gi", "Require").
+				Qual(gi.PackageName, "Require").
 				Call(jen.Lit(n.Name), jen.Lit(n.Version)))
 }

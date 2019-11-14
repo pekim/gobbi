@@ -1,6 +1,9 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+	"github.com/pekim/gobbi/internal/gi"
+)
 
 type Function struct {
 	Name              string `xml:"name,attr"`
@@ -69,5 +72,5 @@ func (f *Function) generateBody(g *group) {
 	g.
 		Qual("fmt", "Println").
 		Call(jen.
-			Qual("github.com/pekim/gobbi/internal/gi", "Qaz"))
+			Qual(gi.PackageName, "Qaz"))
 }
