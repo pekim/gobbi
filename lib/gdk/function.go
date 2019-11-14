@@ -2,919 +2,1486 @@
 
 package gdk
 
-import (
-	"fmt"
-	gi "github.com/pekim/gobbi/internal/gi"
-)
+import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : non trivial function
 
+var addOptionEntriesLibgtkOnlyInvoker *gi.FunctionInvoker
+
 // AddOptionEntriesLibgtkOnly is a representation of the C type gdk_add_option_entries_libgtk_only.
 func AddOptionEntriesLibgtkOnly() {
-	invoker := gi.FunctionInvokerNew("Gdk", "add_option_entries_libgtk_only")
-	fmt.Println(invoker)
+	if addOptionEntriesLibgtkOnlyInvoker == nil {
+		addOptionEntriesLibgtkOnlyInvoker = gi.FunctionInvokerNew("Gdk", "add_option_entries_libgtk_only")
+	}
+
+	addOptionEntriesLibgtkOnlyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_atom_intern' : non trivial function
 
+var atomInternInvoker *gi.FunctionInvoker
+
 // AtomIntern is a representation of the C type gdk_atom_intern.
 func AtomIntern() {
-	invoker := gi.FunctionInvokerNew("Gdk", "atom_intern")
-	fmt.Println(invoker)
+	if atomInternInvoker == nil {
+		atomInternInvoker = gi.FunctionInvokerNew("Gdk", "atom_intern")
+	}
+
+	atomInternInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_atom_intern_static_string' : non trivial function
 
+var atomInternStaticStringInvoker *gi.FunctionInvoker
+
 // AtomInternStaticString is a representation of the C type gdk_atom_intern_static_string.
 func AtomInternStaticString() {
-	invoker := gi.FunctionInvokerNew("Gdk", "atom_intern_static_string")
-	fmt.Println(invoker)
+	if atomInternStaticStringInvoker == nil {
+		atomInternStaticStringInvoker = gi.FunctionInvokerNew("Gdk", "atom_intern_static_string")
+	}
+
+	atomInternStaticStringInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_beep' : non trivial function
 
+var beepInvoker *gi.FunctionInvoker
+
 // Beep is a representation of the C type gdk_beep.
 func Beep() {
-	invoker := gi.FunctionInvokerNew("Gdk", "beep")
-	fmt.Println(invoker)
+	if beepInvoker == nil {
+		beepInvoker = gi.FunctionInvokerNew("Gdk", "beep")
+	}
+
+	beepInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_create' : non trivial function
 
+var cairoCreateInvoker *gi.FunctionInvoker
+
 // CairoCreate is a representation of the C type gdk_cairo_create.
 func CairoCreate() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_create")
-	fmt.Println(invoker)
+	if cairoCreateInvoker == nil {
+		cairoCreateInvoker = gi.FunctionInvokerNew("Gdk", "cairo_create")
+	}
+
+	cairoCreateInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_draw_from_gl' : non trivial function
 
+var cairoDrawFromGlInvoker *gi.FunctionInvoker
+
 // CairoDrawFromGl is a representation of the C type gdk_cairo_draw_from_gl.
 func CairoDrawFromGl() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_draw_from_gl")
-	fmt.Println(invoker)
+	if cairoDrawFromGlInvoker == nil {
+		cairoDrawFromGlInvoker = gi.FunctionInvokerNew("Gdk", "cairo_draw_from_gl")
+	}
+
+	cairoDrawFromGlInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_get_clip_rectangle' : non trivial function
 
+var cairoGetClipRectangleInvoker *gi.FunctionInvoker
+
 // CairoGetClipRectangle is a representation of the C type gdk_cairo_get_clip_rectangle.
 func CairoGetClipRectangle() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_get_clip_rectangle")
-	fmt.Println(invoker)
+	if cairoGetClipRectangleInvoker == nil {
+		cairoGetClipRectangleInvoker = gi.FunctionInvokerNew("Gdk", "cairo_get_clip_rectangle")
+	}
+
+	cairoGetClipRectangleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_get_drawing_context' : non trivial function
 
+var cairoGetDrawingContextInvoker *gi.FunctionInvoker
+
 // CairoGetDrawingContext is a representation of the C type gdk_cairo_get_drawing_context.
 func CairoGetDrawingContext() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_get_drawing_context")
-	fmt.Println(invoker)
+	if cairoGetDrawingContextInvoker == nil {
+		cairoGetDrawingContextInvoker = gi.FunctionInvokerNew("Gdk", "cairo_get_drawing_context")
+	}
+
+	cairoGetDrawingContextInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_rectangle' : non trivial function
 
+var cairoRectangleInvoker *gi.FunctionInvoker
+
 // CairoRectangle is a representation of the C type gdk_cairo_rectangle.
 func CairoRectangle() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_rectangle")
-	fmt.Println(invoker)
+	if cairoRectangleInvoker == nil {
+		cairoRectangleInvoker = gi.FunctionInvokerNew("Gdk", "cairo_rectangle")
+	}
+
+	cairoRectangleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_region' : non trivial function
 
+var cairoRegionInvoker *gi.FunctionInvoker
+
 // CairoRegion is a representation of the C type gdk_cairo_region.
 func CairoRegion() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_region")
-	fmt.Println(invoker)
+	if cairoRegionInvoker == nil {
+		cairoRegionInvoker = gi.FunctionInvokerNew("Gdk", "cairo_region")
+	}
+
+	cairoRegionInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_region_create_from_surface' : non trivial function
 
+var cairoRegionCreateFromSurfaceInvoker *gi.FunctionInvoker
+
 // CairoRegionCreateFromSurface is a representation of the C type gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_region_create_from_surface")
-	fmt.Println(invoker)
+	if cairoRegionCreateFromSurfaceInvoker == nil {
+		cairoRegionCreateFromSurfaceInvoker = gi.FunctionInvokerNew("Gdk", "cairo_region_create_from_surface")
+	}
+
+	cairoRegionCreateFromSurfaceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_set_source_color' : non trivial function
 
+var cairoSetSourceColorInvoker *gi.FunctionInvoker
+
 // CairoSetSourceColor is a representation of the C type gdk_cairo_set_source_color.
 func CairoSetSourceColor() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_set_source_color")
-	fmt.Println(invoker)
+	if cairoSetSourceColorInvoker == nil {
+		cairoSetSourceColorInvoker = gi.FunctionInvokerNew("Gdk", "cairo_set_source_color")
+	}
+
+	cairoSetSourceColorInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_set_source_pixbuf' : non trivial function
 
+var cairoSetSourcePixbufInvoker *gi.FunctionInvoker
+
 // CairoSetSourcePixbuf is a representation of the C type gdk_cairo_set_source_pixbuf.
 func CairoSetSourcePixbuf() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_set_source_pixbuf")
-	fmt.Println(invoker)
+	if cairoSetSourcePixbufInvoker == nil {
+		cairoSetSourcePixbufInvoker = gi.FunctionInvokerNew("Gdk", "cairo_set_source_pixbuf")
+	}
+
+	cairoSetSourcePixbufInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_set_source_rgba' : non trivial function
 
+var cairoSetSourceRgbaInvoker *gi.FunctionInvoker
+
 // CairoSetSourceRgba is a representation of the C type gdk_cairo_set_source_rgba.
 func CairoSetSourceRgba() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_set_source_rgba")
-	fmt.Println(invoker)
+	if cairoSetSourceRgbaInvoker == nil {
+		cairoSetSourceRgbaInvoker = gi.FunctionInvokerNew("Gdk", "cairo_set_source_rgba")
+	}
+
+	cairoSetSourceRgbaInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_set_source_window' : non trivial function
 
+var cairoSetSourceWindowInvoker *gi.FunctionInvoker
+
 // CairoSetSourceWindow is a representation of the C type gdk_cairo_set_source_window.
 func CairoSetSourceWindow() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_set_source_window")
-	fmt.Println(invoker)
+	if cairoSetSourceWindowInvoker == nil {
+		cairoSetSourceWindowInvoker = gi.FunctionInvokerNew("Gdk", "cairo_set_source_window")
+	}
+
+	cairoSetSourceWindowInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : non trivial function
 
+var cairoSurfaceCreateFromPixbufInvoker *gi.FunctionInvoker
+
 // CairoSurfaceCreateFromPixbuf is a representation of the C type gdk_cairo_surface_create_from_pixbuf.
 func CairoSurfaceCreateFromPixbuf() {
-	invoker := gi.FunctionInvokerNew("Gdk", "cairo_surface_create_from_pixbuf")
-	fmt.Println(invoker)
+	if cairoSurfaceCreateFromPixbufInvoker == nil {
+		cairoSurfaceCreateFromPixbufInvoker = gi.FunctionInvokerNew("Gdk", "cairo_surface_create_from_pixbuf")
+	}
+
+	cairoSurfaceCreateFromPixbufInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_color_parse' : non trivial function
 
+var colorParseInvoker *gi.FunctionInvoker
+
 // ColorParse is a representation of the C type gdk_color_parse.
 func ColorParse() {
-	invoker := gi.FunctionInvokerNew("Gdk", "color_parse")
-	fmt.Println(invoker)
+	if colorParseInvoker == nil {
+		colorParseInvoker = gi.FunctionInvokerNew("Gdk", "color_parse")
+	}
+
+	colorParseInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_disable_multidevice' : non trivial function
 
+var disableMultideviceInvoker *gi.FunctionInvoker
+
 // DisableMultidevice is a representation of the C type gdk_disable_multidevice.
 func DisableMultidevice() {
-	invoker := gi.FunctionInvokerNew("Gdk", "disable_multidevice")
-	fmt.Println(invoker)
+	if disableMultideviceInvoker == nil {
+		disableMultideviceInvoker = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
+	}
+
+	disableMultideviceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_abort' : non trivial function
 
+var dragAbortInvoker *gi.FunctionInvoker
+
 // DragAbort is a representation of the C type gdk_drag_abort.
 func DragAbort() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_abort")
-	fmt.Println(invoker)
+	if dragAbortInvoker == nil {
+		dragAbortInvoker = gi.FunctionInvokerNew("Gdk", "drag_abort")
+	}
+
+	dragAbortInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_begin' : non trivial function
 
+var dragBeginInvoker *gi.FunctionInvoker
+
 // DragBegin is a representation of the C type gdk_drag_begin.
 func DragBegin() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_begin")
-	fmt.Println(invoker)
+	if dragBeginInvoker == nil {
+		dragBeginInvoker = gi.FunctionInvokerNew("Gdk", "drag_begin")
+	}
+
+	dragBeginInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_begin_for_device' : non trivial function
 
+var dragBeginForDeviceInvoker *gi.FunctionInvoker
+
 // DragBeginForDevice is a representation of the C type gdk_drag_begin_for_device.
 func DragBeginForDevice() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_begin_for_device")
-	fmt.Println(invoker)
+	if dragBeginForDeviceInvoker == nil {
+		dragBeginForDeviceInvoker = gi.FunctionInvokerNew("Gdk", "drag_begin_for_device")
+	}
+
+	dragBeginForDeviceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_begin_from_point' : non trivial function
 
+var dragBeginFromPointInvoker *gi.FunctionInvoker
+
 // DragBeginFromPoint is a representation of the C type gdk_drag_begin_from_point.
 func DragBeginFromPoint() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_begin_from_point")
-	fmt.Println(invoker)
+	if dragBeginFromPointInvoker == nil {
+		dragBeginFromPointInvoker = gi.FunctionInvokerNew("Gdk", "drag_begin_from_point")
+	}
+
+	dragBeginFromPointInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_drop' : non trivial function
 
+var dragDropInvoker *gi.FunctionInvoker
+
 // DragDrop is a representation of the C type gdk_drag_drop.
 func DragDrop() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_drop")
-	fmt.Println(invoker)
+	if dragDropInvoker == nil {
+		dragDropInvoker = gi.FunctionInvokerNew("Gdk", "drag_drop")
+	}
+
+	dragDropInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_drop_done' : non trivial function
 
+var dragDropDoneInvoker *gi.FunctionInvoker
+
 // DragDropDone is a representation of the C type gdk_drag_drop_done.
 func DragDropDone() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_drop_done")
-	fmt.Println(invoker)
+	if dragDropDoneInvoker == nil {
+		dragDropDoneInvoker = gi.FunctionInvokerNew("Gdk", "drag_drop_done")
+	}
+
+	dragDropDoneInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_drop_succeeded' : non trivial function
 
+var dragDropSucceededInvoker *gi.FunctionInvoker
+
 // DragDropSucceeded is a representation of the C type gdk_drag_drop_succeeded.
 func DragDropSucceeded() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_drop_succeeded")
-	fmt.Println(invoker)
+	if dragDropSucceededInvoker == nil {
+		dragDropSucceededInvoker = gi.FunctionInvokerNew("Gdk", "drag_drop_succeeded")
+	}
+
+	dragDropSucceededInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_find_window_for_screen' : non trivial function
 
+var dragFindWindowForScreenInvoker *gi.FunctionInvoker
+
 // DragFindWindowForScreen is a representation of the C type gdk_drag_find_window_for_screen.
 func DragFindWindowForScreen() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_find_window_for_screen")
-	fmt.Println(invoker)
+	if dragFindWindowForScreenInvoker == nil {
+		dragFindWindowForScreenInvoker = gi.FunctionInvokerNew("Gdk", "drag_find_window_for_screen")
+	}
+
+	dragFindWindowForScreenInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_get_selection' : non trivial function
 
+var dragGetSelectionInvoker *gi.FunctionInvoker
+
 // DragGetSelection is a representation of the C type gdk_drag_get_selection.
 func DragGetSelection() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_get_selection")
-	fmt.Println(invoker)
+	if dragGetSelectionInvoker == nil {
+		dragGetSelectionInvoker = gi.FunctionInvokerNew("Gdk", "drag_get_selection")
+	}
+
+	dragGetSelectionInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_motion' : non trivial function
 
+var dragMotionInvoker *gi.FunctionInvoker
+
 // DragMotion is a representation of the C type gdk_drag_motion.
 func DragMotion() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_motion")
-	fmt.Println(invoker)
+	if dragMotionInvoker == nil {
+		dragMotionInvoker = gi.FunctionInvokerNew("Gdk", "drag_motion")
+	}
+
+	dragMotionInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_status' : non trivial function
 
+var dragStatusInvoker *gi.FunctionInvoker
+
 // DragStatus is a representation of the C type gdk_drag_status.
 func DragStatus() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drag_status")
-	fmt.Println(invoker)
+	if dragStatusInvoker == nil {
+		dragStatusInvoker = gi.FunctionInvokerNew("Gdk", "drag_status")
+	}
+
+	dragStatusInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drop_finish' : non trivial function
 
+var dropFinishInvoker *gi.FunctionInvoker
+
 // DropFinish is a representation of the C type gdk_drop_finish.
 func DropFinish() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drop_finish")
-	fmt.Println(invoker)
+	if dropFinishInvoker == nil {
+		dropFinishInvoker = gi.FunctionInvokerNew("Gdk", "drop_finish")
+	}
+
+	dropFinishInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_drop_reply' : non trivial function
 
+var dropReplyInvoker *gi.FunctionInvoker
+
 // DropReply is a representation of the C type gdk_drop_reply.
 func DropReply() {
-	invoker := gi.FunctionInvokerNew("Gdk", "drop_reply")
-	fmt.Println(invoker)
+	if dropReplyInvoker == nil {
+		dropReplyInvoker = gi.FunctionInvokerNew("Gdk", "drop_reply")
+	}
+
+	dropReplyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_error_trap_pop' : non trivial function
 
+var errorTrapPopInvoker *gi.FunctionInvoker
+
 // ErrorTrapPop is a representation of the C type gdk_error_trap_pop.
 func ErrorTrapPop() {
-	invoker := gi.FunctionInvokerNew("Gdk", "error_trap_pop")
-	fmt.Println(invoker)
+	if errorTrapPopInvoker == nil {
+		errorTrapPopInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
+	}
+
+	errorTrapPopInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_error_trap_pop_ignored' : non trivial function
 
+var errorTrapPopIgnoredInvoker *gi.FunctionInvoker
+
 // ErrorTrapPopIgnored is a representation of the C type gdk_error_trap_pop_ignored.
 func ErrorTrapPopIgnored() {
-	invoker := gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
-	fmt.Println(invoker)
+	if errorTrapPopIgnoredInvoker == nil {
+		errorTrapPopIgnoredInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
+	}
+
+	errorTrapPopIgnoredInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_error_trap_push' : non trivial function
 
+var errorTrapPushInvoker *gi.FunctionInvoker
+
 // ErrorTrapPush is a representation of the C type gdk_error_trap_push.
 func ErrorTrapPush() {
-	invoker := gi.FunctionInvokerNew("Gdk", "error_trap_push")
-	fmt.Println(invoker)
+	if errorTrapPushInvoker == nil {
+		errorTrapPushInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_push")
+	}
+
+	errorTrapPushInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_event_get' : non trivial function
 
+var eventGetInvoker *gi.FunctionInvoker
+
 // EventGet is a representation of the C type gdk_event_get.
 func EventGet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "event_get")
-	fmt.Println(invoker)
+	if eventGetInvoker == nil {
+		eventGetInvoker = gi.FunctionInvokerNew("Gdk", "event_get")
+	}
+
+	eventGetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_event_handler_set' : non trivial function
 
+var eventHandlerSetInvoker *gi.FunctionInvoker
+
 // EventHandlerSet is a representation of the C type gdk_event_handler_set.
 func EventHandlerSet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "event_handler_set")
-	fmt.Println(invoker)
+	if eventHandlerSetInvoker == nil {
+		eventHandlerSetInvoker = gi.FunctionInvokerNew("Gdk", "event_handler_set")
+	}
+
+	eventHandlerSetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_event_peek' : non trivial function
 
+var eventPeekInvoker *gi.FunctionInvoker
+
 // EventPeek is a representation of the C type gdk_event_peek.
 func EventPeek() {
-	invoker := gi.FunctionInvokerNew("Gdk", "event_peek")
-	fmt.Println(invoker)
+	if eventPeekInvoker == nil {
+		eventPeekInvoker = gi.FunctionInvokerNew("Gdk", "event_peek")
+	}
+
+	eventPeekInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_event_request_motions' : non trivial function
 
+var eventRequestMotionsInvoker *gi.FunctionInvoker
+
 // EventRequestMotions is a representation of the C type gdk_event_request_motions.
 func EventRequestMotions() {
-	invoker := gi.FunctionInvokerNew("Gdk", "event_request_motions")
-	fmt.Println(invoker)
+	if eventRequestMotionsInvoker == nil {
+		eventRequestMotionsInvoker = gi.FunctionInvokerNew("Gdk", "event_request_motions")
+	}
+
+	eventRequestMotionsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_events_get_angle' : non trivial function
 
+var eventsGetAngleInvoker *gi.FunctionInvoker
+
 // EventsGetAngle is a representation of the C type gdk_events_get_angle.
 func EventsGetAngle() {
-	invoker := gi.FunctionInvokerNew("Gdk", "events_get_angle")
-	fmt.Println(invoker)
+	if eventsGetAngleInvoker == nil {
+		eventsGetAngleInvoker = gi.FunctionInvokerNew("Gdk", "events_get_angle")
+	}
+
+	eventsGetAngleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_events_get_center' : non trivial function
 
+var eventsGetCenterInvoker *gi.FunctionInvoker
+
 // EventsGetCenter is a representation of the C type gdk_events_get_center.
 func EventsGetCenter() {
-	invoker := gi.FunctionInvokerNew("Gdk", "events_get_center")
-	fmt.Println(invoker)
+	if eventsGetCenterInvoker == nil {
+		eventsGetCenterInvoker = gi.FunctionInvokerNew("Gdk", "events_get_center")
+	}
+
+	eventsGetCenterInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_events_get_distance' : non trivial function
 
+var eventsGetDistanceInvoker *gi.FunctionInvoker
+
 // EventsGetDistance is a representation of the C type gdk_events_get_distance.
 func EventsGetDistance() {
-	invoker := gi.FunctionInvokerNew("Gdk", "events_get_distance")
-	fmt.Println(invoker)
+	if eventsGetDistanceInvoker == nil {
+		eventsGetDistanceInvoker = gi.FunctionInvokerNew("Gdk", "events_get_distance")
+	}
+
+	eventsGetDistanceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_events_pending' : non trivial function
 
+var eventsPendingInvoker *gi.FunctionInvoker
+
 // EventsPending is a representation of the C type gdk_events_pending.
 func EventsPending() {
-	invoker := gi.FunctionInvokerNew("Gdk", "events_pending")
-	fmt.Println(invoker)
+	if eventsPendingInvoker == nil {
+		eventsPendingInvoker = gi.FunctionInvokerNew("Gdk", "events_pending")
+	}
+
+	eventsPendingInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_flush' : non trivial function
 
+var flushInvoker *gi.FunctionInvoker
+
 // Flush is a representation of the C type gdk_flush.
 func Flush() {
-	invoker := gi.FunctionInvokerNew("Gdk", "flush")
-	fmt.Println(invoker)
+	if flushInvoker == nil {
+		flushInvoker = gi.FunctionInvokerNew("Gdk", "flush")
+	}
+
+	flushInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_get_default_root_window' : non trivial function
 
+var getDefaultRootWindowInvoker *gi.FunctionInvoker
+
 // GetDefaultRootWindow is a representation of the C type gdk_get_default_root_window.
 func GetDefaultRootWindow() {
-	invoker := gi.FunctionInvokerNew("Gdk", "get_default_root_window")
-	fmt.Println(invoker)
+	if getDefaultRootWindowInvoker == nil {
+		getDefaultRootWindowInvoker = gi.FunctionInvokerNew("Gdk", "get_default_root_window")
+	}
+
+	getDefaultRootWindowInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_get_display' : non trivial function
 
+var getDisplayInvoker *gi.FunctionInvoker
+
 // GetDisplay is a representation of the C type gdk_get_display.
 func GetDisplay() {
-	invoker := gi.FunctionInvokerNew("Gdk", "get_display")
-	fmt.Println(invoker)
+	if getDisplayInvoker == nil {
+		getDisplayInvoker = gi.FunctionInvokerNew("Gdk", "get_display")
+	}
+
+	getDisplayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_get_display_arg_name' : non trivial function
 
+var getDisplayArgNameInvoker *gi.FunctionInvoker
+
 // GetDisplayArgName is a representation of the C type gdk_get_display_arg_name.
 func GetDisplayArgName() {
-	invoker := gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
-	fmt.Println(invoker)
+	if getDisplayArgNameInvoker == nil {
+		getDisplayArgNameInvoker = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
+	}
+
+	getDisplayArgNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_get_program_class' : non trivial function
 
+var getProgramClassInvoker *gi.FunctionInvoker
+
 // GetProgramClass is a representation of the C type gdk_get_program_class.
 func GetProgramClass() {
-	invoker := gi.FunctionInvokerNew("Gdk", "get_program_class")
-	fmt.Println(invoker)
+	if getProgramClassInvoker == nil {
+		getProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "get_program_class")
+	}
+
+	getProgramClassInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_get_show_events' : non trivial function
 
+var getShowEventsInvoker *gi.FunctionInvoker
+
 // GetShowEvents is a representation of the C type gdk_get_show_events.
 func GetShowEvents() {
-	invoker := gi.FunctionInvokerNew("Gdk", "get_show_events")
-	fmt.Println(invoker)
+	if getShowEventsInvoker == nil {
+		getShowEventsInvoker = gi.FunctionInvokerNew("Gdk", "get_show_events")
+	}
+
+	getShowEventsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_gl_error_quark' : non trivial function
 
+var glErrorQuarkInvoker *gi.FunctionInvoker
+
 // GlErrorQuark is a representation of the C type gdk_gl_error_quark.
 func GlErrorQuark() {
-	invoker := gi.FunctionInvokerNew("Gdk", "gl_error_quark")
-	fmt.Println(invoker)
+	if glErrorQuarkInvoker == nil {
+		glErrorQuarkInvoker = gi.FunctionInvokerNew("Gdk", "gl_error_quark")
+	}
+
+	glErrorQuarkInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_init' : non trivial function
 
+var initInvoker *gi.FunctionInvoker
+
 // Init is a representation of the C type gdk_init.
 func Init() {
-	invoker := gi.FunctionInvokerNew("Gdk", "init")
-	fmt.Println(invoker)
+	if initInvoker == nil {
+		initInvoker = gi.FunctionInvokerNew("Gdk", "init")
+	}
+
+	initInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_init_check' : non trivial function
 
+var initCheckInvoker *gi.FunctionInvoker
+
 // InitCheck is a representation of the C type gdk_init_check.
 func InitCheck() {
-	invoker := gi.FunctionInvokerNew("Gdk", "init_check")
-	fmt.Println(invoker)
+	if initCheckInvoker == nil {
+		initCheckInvoker = gi.FunctionInvokerNew("Gdk", "init_check")
+	}
+
+	initCheckInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyboard_grab' : non trivial function
 
+var keyboardGrabInvoker *gi.FunctionInvoker
+
 // KeyboardGrab is a representation of the C type gdk_keyboard_grab.
 func KeyboardGrab() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyboard_grab")
-	fmt.Println(invoker)
+	if keyboardGrabInvoker == nil {
+		keyboardGrabInvoker = gi.FunctionInvokerNew("Gdk", "keyboard_grab")
+	}
+
+	keyboardGrabInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyboard_ungrab' : non trivial function
 
+var keyboardUngrabInvoker *gi.FunctionInvoker
+
 // KeyboardUngrab is a representation of the C type gdk_keyboard_ungrab.
 func KeyboardUngrab() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
-	fmt.Println(invoker)
+	if keyboardUngrabInvoker == nil {
+		keyboardUngrabInvoker = gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
+	}
+
+	keyboardUngrabInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_convert_case' : non trivial function
 
+var keyvalConvertCaseInvoker *gi.FunctionInvoker
+
 // KeyvalConvertCase is a representation of the C type gdk_keyval_convert_case.
 func KeyvalConvertCase() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
-	fmt.Println(invoker)
+	if keyvalConvertCaseInvoker == nil {
+		keyvalConvertCaseInvoker = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
+	}
+
+	keyvalConvertCaseInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_from_name' : non trivial function
 
+var keyvalFromNameInvoker *gi.FunctionInvoker
+
 // KeyvalFromName is a representation of the C type gdk_keyval_from_name.
 func KeyvalFromName() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_from_name")
-	fmt.Println(invoker)
+	if keyvalFromNameInvoker == nil {
+		keyvalFromNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_from_name")
+	}
+
+	keyvalFromNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_is_lower' : non trivial function
 
+var keyvalIsLowerInvoker *gi.FunctionInvoker
+
 // KeyvalIsLower is a representation of the C type gdk_keyval_is_lower.
 func KeyvalIsLower() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_is_lower")
-	fmt.Println(invoker)
+	if keyvalIsLowerInvoker == nil {
+		keyvalIsLowerInvoker = gi.FunctionInvokerNew("Gdk", "keyval_is_lower")
+	}
+
+	keyvalIsLowerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_is_upper' : non trivial function
 
+var keyvalIsUpperInvoker *gi.FunctionInvoker
+
 // KeyvalIsUpper is a representation of the C type gdk_keyval_is_upper.
 func KeyvalIsUpper() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_is_upper")
-	fmt.Println(invoker)
+	if keyvalIsUpperInvoker == nil {
+		keyvalIsUpperInvoker = gi.FunctionInvokerNew("Gdk", "keyval_is_upper")
+	}
+
+	keyvalIsUpperInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_name' : non trivial function
 
+var keyvalNameInvoker *gi.FunctionInvoker
+
 // KeyvalName is a representation of the C type gdk_keyval_name.
 func KeyvalName() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_name")
-	fmt.Println(invoker)
+	if keyvalNameInvoker == nil {
+		keyvalNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_name")
+	}
+
+	keyvalNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_to_lower' : non trivial function
 
+var keyvalToLowerInvoker *gi.FunctionInvoker
+
 // KeyvalToLower is a representation of the C type gdk_keyval_to_lower.
 func KeyvalToLower() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
-	fmt.Println(invoker)
+	if keyvalToLowerInvoker == nil {
+		keyvalToLowerInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
+	}
+
+	keyvalToLowerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_to_unicode' : non trivial function
 
+var keyvalToUnicodeInvoker *gi.FunctionInvoker
+
 // KeyvalToUnicode is a representation of the C type gdk_keyval_to_unicode.
 func KeyvalToUnicode() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
-	fmt.Println(invoker)
+	if keyvalToUnicodeInvoker == nil {
+		keyvalToUnicodeInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
+	}
+
+	keyvalToUnicodeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_to_upper' : non trivial function
 
+var keyvalToUpperInvoker *gi.FunctionInvoker
+
 // KeyvalToUpper is a representation of the C type gdk_keyval_to_upper.
 func KeyvalToUpper() {
-	invoker := gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
-	fmt.Println(invoker)
+	if keyvalToUpperInvoker == nil {
+		keyvalToUpperInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
+	}
+
+	keyvalToUpperInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : non trivial function
 
+var listVisualsInvoker *gi.FunctionInvoker
+
 // ListVisuals is a representation of the C type gdk_list_visuals.
 func ListVisuals() {
-	invoker := gi.FunctionInvokerNew("Gdk", "list_visuals")
-	fmt.Println(invoker)
+	if listVisualsInvoker == nil {
+		listVisualsInvoker = gi.FunctionInvokerNew("Gdk", "list_visuals")
+	}
+
+	listVisualsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_notify_startup_complete' : non trivial function
 
+var notifyStartupCompleteInvoker *gi.FunctionInvoker
+
 // NotifyStartupComplete is a representation of the C type gdk_notify_startup_complete.
 func NotifyStartupComplete() {
-	invoker := gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
-	fmt.Println(invoker)
+	if notifyStartupCompleteInvoker == nil {
+		notifyStartupCompleteInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
+	}
+
+	notifyStartupCompleteInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : non trivial function
 
+var notifyStartupCompleteWithIdInvoker *gi.FunctionInvoker
+
 // NotifyStartupCompleteWithId is a representation of the C type gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId() {
-	invoker := gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
-	fmt.Println(invoker)
+	if notifyStartupCompleteWithIdInvoker == nil {
+		notifyStartupCompleteWithIdInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
+	}
+
+	notifyStartupCompleteWithIdInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_get_embedder' : non trivial function
 
+var offscreenWindowGetEmbedderInvoker *gi.FunctionInvoker
+
 // OffscreenWindowGetEmbedder is a representation of the C type gdk_offscreen_window_get_embedder.
 func OffscreenWindowGetEmbedder() {
-	invoker := gi.FunctionInvokerNew("Gdk", "offscreen_window_get_embedder")
-	fmt.Println(invoker)
+	if offscreenWindowGetEmbedderInvoker == nil {
+		offscreenWindowGetEmbedderInvoker = gi.FunctionInvokerNew("Gdk", "offscreen_window_get_embedder")
+	}
+
+	offscreenWindowGetEmbedderInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_get_surface' : non trivial function
 
+var offscreenWindowGetSurfaceInvoker *gi.FunctionInvoker
+
 // OffscreenWindowGetSurface is a representation of the C type gdk_offscreen_window_get_surface.
 func OffscreenWindowGetSurface() {
-	invoker := gi.FunctionInvokerNew("Gdk", "offscreen_window_get_surface")
-	fmt.Println(invoker)
+	if offscreenWindowGetSurfaceInvoker == nil {
+		offscreenWindowGetSurfaceInvoker = gi.FunctionInvokerNew("Gdk", "offscreen_window_get_surface")
+	}
+
+	offscreenWindowGetSurfaceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_set_embedder' : non trivial function
 
+var offscreenWindowSetEmbedderInvoker *gi.FunctionInvoker
+
 // OffscreenWindowSetEmbedder is a representation of the C type gdk_offscreen_window_set_embedder.
 func OffscreenWindowSetEmbedder() {
-	invoker := gi.FunctionInvokerNew("Gdk", "offscreen_window_set_embedder")
-	fmt.Println(invoker)
+	if offscreenWindowSetEmbedderInvoker == nil {
+		offscreenWindowSetEmbedderInvoker = gi.FunctionInvokerNew("Gdk", "offscreen_window_set_embedder")
+	}
+
+	offscreenWindowSetEmbedderInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pango_context_get' : non trivial function
 
+var pangoContextGetInvoker *gi.FunctionInvoker
+
 // PangoContextGet is a representation of the C type gdk_pango_context_get.
 func PangoContextGet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pango_context_get")
-	fmt.Println(invoker)
+	if pangoContextGetInvoker == nil {
+		pangoContextGetInvoker = gi.FunctionInvokerNew("Gdk", "pango_context_get")
+	}
+
+	pangoContextGetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : non trivial function
 
+var pangoContextGetForDisplayInvoker *gi.FunctionInvoker
+
 // PangoContextGetForDisplay is a representation of the C type gdk_pango_context_get_for_display.
 func PangoContextGetForDisplay() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pango_context_get_for_display")
-	fmt.Println(invoker)
+	if pangoContextGetForDisplayInvoker == nil {
+		pangoContextGetForDisplayInvoker = gi.FunctionInvokerNew("Gdk", "pango_context_get_for_display")
+	}
+
+	pangoContextGetForDisplayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pango_context_get_for_screen' : non trivial function
 
+var pangoContextGetForScreenInvoker *gi.FunctionInvoker
+
 // PangoContextGetForScreen is a representation of the C type gdk_pango_context_get_for_screen.
 func PangoContextGetForScreen() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pango_context_get_for_screen")
-	fmt.Println(invoker)
+	if pangoContextGetForScreenInvoker == nil {
+		pangoContextGetForScreenInvoker = gi.FunctionInvokerNew("Gdk", "pango_context_get_for_screen")
+	}
+
+	pangoContextGetForScreenInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : non trivial function
 
+var pangoLayoutGetClipRegionInvoker *gi.FunctionInvoker
+
 // PangoLayoutGetClipRegion is a representation of the C type gdk_pango_layout_get_clip_region.
 func PangoLayoutGetClipRegion() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pango_layout_get_clip_region")
-	fmt.Println(invoker)
+	if pangoLayoutGetClipRegionInvoker == nil {
+		pangoLayoutGetClipRegionInvoker = gi.FunctionInvokerNew("Gdk", "pango_layout_get_clip_region")
+	}
+
+	pangoLayoutGetClipRegionInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : non trivial function
 
+var pangoLayoutLineGetClipRegionInvoker *gi.FunctionInvoker
+
 // PangoLayoutLineGetClipRegion is a representation of the C type gdk_pango_layout_line_get_clip_region.
 func PangoLayoutLineGetClipRegion() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pango_layout_line_get_clip_region")
-	fmt.Println(invoker)
+	if pangoLayoutLineGetClipRegionInvoker == nil {
+		pangoLayoutLineGetClipRegionInvoker = gi.FunctionInvokerNew("Gdk", "pango_layout_line_get_clip_region")
+	}
+
+	pangoLayoutLineGetClipRegionInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_parse_args' : non trivial function
 
+var parseArgsInvoker *gi.FunctionInvoker
+
 // ParseArgs is a representation of the C type gdk_parse_args.
 func ParseArgs() {
-	invoker := gi.FunctionInvokerNew("Gdk", "parse_args")
-	fmt.Println(invoker)
+	if parseArgsInvoker == nil {
+		parseArgsInvoker = gi.FunctionInvokerNew("Gdk", "parse_args")
+	}
+
+	parseArgsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : non trivial function
 
+var pixbufGetFromSurfaceInvoker *gi.FunctionInvoker
+
 // PixbufGetFromSurface is a representation of the C type gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pixbuf_get_from_surface")
-	fmt.Println(invoker)
+	if pixbufGetFromSurfaceInvoker == nil {
+		pixbufGetFromSurfaceInvoker = gi.FunctionInvokerNew("Gdk", "pixbuf_get_from_surface")
+	}
+
+	pixbufGetFromSurfaceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_window' : non trivial function
 
+var pixbufGetFromWindowInvoker *gi.FunctionInvoker
+
 // PixbufGetFromWindow is a representation of the C type gdk_pixbuf_get_from_window.
 func PixbufGetFromWindow() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pixbuf_get_from_window")
-	fmt.Println(invoker)
+	if pixbufGetFromWindowInvoker == nil {
+		pixbufGetFromWindowInvoker = gi.FunctionInvokerNew("Gdk", "pixbuf_get_from_window")
+	}
+
+	pixbufGetFromWindowInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pointer_grab' : non trivial function
 
+var pointerGrabInvoker *gi.FunctionInvoker
+
 // PointerGrab is a representation of the C type gdk_pointer_grab.
 func PointerGrab() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pointer_grab")
-	fmt.Println(invoker)
+	if pointerGrabInvoker == nil {
+		pointerGrabInvoker = gi.FunctionInvokerNew("Gdk", "pointer_grab")
+	}
+
+	pointerGrabInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : non trivial function
 
+var pointerIsGrabbedInvoker *gi.FunctionInvoker
+
 // PointerIsGrabbed is a representation of the C type gdk_pointer_is_grabbed.
 func PointerIsGrabbed() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pointer_is_grabbed")
-	fmt.Println(invoker)
+	if pointerIsGrabbedInvoker == nil {
+		pointerIsGrabbedInvoker = gi.FunctionInvokerNew("Gdk", "pointer_is_grabbed")
+	}
+
+	pointerIsGrabbedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pointer_ungrab' : non trivial function
 
+var pointerUngrabInvoker *gi.FunctionInvoker
+
 // PointerUngrab is a representation of the C type gdk_pointer_ungrab.
 func PointerUngrab() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
-	fmt.Println(invoker)
+	if pointerUngrabInvoker == nil {
+		pointerUngrabInvoker = gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
+	}
+
+	pointerUngrabInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_pre_parse_libgtk_only' : non trivial function
 
+var preParseLibgtkOnlyInvoker *gi.FunctionInvoker
+
 // PreParseLibgtkOnly is a representation of the C type gdk_pre_parse_libgtk_only.
 func PreParseLibgtkOnly() {
-	invoker := gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
-	fmt.Println(invoker)
+	if preParseLibgtkOnlyInvoker == nil {
+		preParseLibgtkOnlyInvoker = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
+	}
+
+	preParseLibgtkOnlyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_property_change' : non trivial function
 
+var propertyChangeInvoker *gi.FunctionInvoker
+
 // PropertyChange is a representation of the C type gdk_property_change.
 func PropertyChange() {
-	invoker := gi.FunctionInvokerNew("Gdk", "property_change")
-	fmt.Println(invoker)
+	if propertyChangeInvoker == nil {
+		propertyChangeInvoker = gi.FunctionInvokerNew("Gdk", "property_change")
+	}
+
+	propertyChangeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_property_delete' : non trivial function
 
+var propertyDeleteInvoker *gi.FunctionInvoker
+
 // PropertyDelete is a representation of the C type gdk_property_delete.
 func PropertyDelete() {
-	invoker := gi.FunctionInvokerNew("Gdk", "property_delete")
-	fmt.Println(invoker)
+	if propertyDeleteInvoker == nil {
+		propertyDeleteInvoker = gi.FunctionInvokerNew("Gdk", "property_delete")
+	}
+
+	propertyDeleteInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_property_get' : non trivial function
 
+var propertyGetInvoker *gi.FunctionInvoker
+
 // PropertyGet is a representation of the C type gdk_property_get.
 func PropertyGet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "property_get")
-	fmt.Println(invoker)
+	if propertyGetInvoker == nil {
+		propertyGetInvoker = gi.FunctionInvokerNew("Gdk", "property_get")
+	}
+
+	propertyGetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_query_depths' : non trivial function
 
+var queryDepthsInvoker *gi.FunctionInvoker
+
 // QueryDepths is a representation of the C type gdk_query_depths.
 func QueryDepths() {
-	invoker := gi.FunctionInvokerNew("Gdk", "query_depths")
-	fmt.Println(invoker)
+	if queryDepthsInvoker == nil {
+		queryDepthsInvoker = gi.FunctionInvokerNew("Gdk", "query_depths")
+	}
+
+	queryDepthsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_query_visual_types' : non trivial function
 
+var queryVisualTypesInvoker *gi.FunctionInvoker
+
 // QueryVisualTypes is a representation of the C type gdk_query_visual_types.
 func QueryVisualTypes() {
-	invoker := gi.FunctionInvokerNew("Gdk", "query_visual_types")
-	fmt.Println(invoker)
+	if queryVisualTypesInvoker == nil {
+		queryVisualTypesInvoker = gi.FunctionInvokerNew("Gdk", "query_visual_types")
+	}
+
+	queryVisualTypesInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_convert' : non trivial function
 
+var selectionConvertInvoker *gi.FunctionInvoker
+
 // SelectionConvert is a representation of the C type gdk_selection_convert.
 func SelectionConvert() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_convert")
-	fmt.Println(invoker)
+	if selectionConvertInvoker == nil {
+		selectionConvertInvoker = gi.FunctionInvokerNew("Gdk", "selection_convert")
+	}
+
+	selectionConvertInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_owner_get' : non trivial function
 
+var selectionOwnerGetInvoker *gi.FunctionInvoker
+
 // SelectionOwnerGet is a representation of the C type gdk_selection_owner_get.
 func SelectionOwnerGet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_owner_get")
-	fmt.Println(invoker)
+	if selectionOwnerGetInvoker == nil {
+		selectionOwnerGetInvoker = gi.FunctionInvokerNew("Gdk", "selection_owner_get")
+	}
+
+	selectionOwnerGetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_owner_get_for_display' : non trivial function
 
+var selectionOwnerGetForDisplayInvoker *gi.FunctionInvoker
+
 // SelectionOwnerGetForDisplay is a representation of the C type gdk_selection_owner_get_for_display.
 func SelectionOwnerGetForDisplay() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_owner_get_for_display")
-	fmt.Println(invoker)
+	if selectionOwnerGetForDisplayInvoker == nil {
+		selectionOwnerGetForDisplayInvoker = gi.FunctionInvokerNew("Gdk", "selection_owner_get_for_display")
+	}
+
+	selectionOwnerGetForDisplayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_owner_set' : non trivial function
 
+var selectionOwnerSetInvoker *gi.FunctionInvoker
+
 // SelectionOwnerSet is a representation of the C type gdk_selection_owner_set.
 func SelectionOwnerSet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_owner_set")
-	fmt.Println(invoker)
+	if selectionOwnerSetInvoker == nil {
+		selectionOwnerSetInvoker = gi.FunctionInvokerNew("Gdk", "selection_owner_set")
+	}
+
+	selectionOwnerSetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_owner_set_for_display' : non trivial function
 
+var selectionOwnerSetForDisplayInvoker *gi.FunctionInvoker
+
 // SelectionOwnerSetForDisplay is a representation of the C type gdk_selection_owner_set_for_display.
 func SelectionOwnerSetForDisplay() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_owner_set_for_display")
-	fmt.Println(invoker)
+	if selectionOwnerSetForDisplayInvoker == nil {
+		selectionOwnerSetForDisplayInvoker = gi.FunctionInvokerNew("Gdk", "selection_owner_set_for_display")
+	}
+
+	selectionOwnerSetForDisplayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_property_get' : non trivial function
 
+var selectionPropertyGetInvoker *gi.FunctionInvoker
+
 // SelectionPropertyGet is a representation of the C type gdk_selection_property_get.
 func SelectionPropertyGet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_property_get")
-	fmt.Println(invoker)
+	if selectionPropertyGetInvoker == nil {
+		selectionPropertyGetInvoker = gi.FunctionInvokerNew("Gdk", "selection_property_get")
+	}
+
+	selectionPropertyGetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_send_notify' : non trivial function
 
+var selectionSendNotifyInvoker *gi.FunctionInvoker
+
 // SelectionSendNotify is a representation of the C type gdk_selection_send_notify.
 func SelectionSendNotify() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_send_notify")
-	fmt.Println(invoker)
+	if selectionSendNotifyInvoker == nil {
+		selectionSendNotifyInvoker = gi.FunctionInvokerNew("Gdk", "selection_send_notify")
+	}
+
+	selectionSendNotifyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_selection_send_notify_for_display' : non trivial function
 
+var selectionSendNotifyForDisplayInvoker *gi.FunctionInvoker
+
 // SelectionSendNotifyForDisplay is a representation of the C type gdk_selection_send_notify_for_display.
 func SelectionSendNotifyForDisplay() {
-	invoker := gi.FunctionInvokerNew("Gdk", "selection_send_notify_for_display")
-	fmt.Println(invoker)
+	if selectionSendNotifyForDisplayInvoker == nil {
+		selectionSendNotifyForDisplayInvoker = gi.FunctionInvokerNew("Gdk", "selection_send_notify_for_display")
+	}
+
+	selectionSendNotifyForDisplayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_set_allowed_backends' : non trivial function
 
+var setAllowedBackendsInvoker *gi.FunctionInvoker
+
 // SetAllowedBackends is a representation of the C type gdk_set_allowed_backends.
 func SetAllowedBackends() {
-	invoker := gi.FunctionInvokerNew("Gdk", "set_allowed_backends")
-	fmt.Println(invoker)
+	if setAllowedBackendsInvoker == nil {
+		setAllowedBackendsInvoker = gi.FunctionInvokerNew("Gdk", "set_allowed_backends")
+	}
+
+	setAllowedBackendsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_set_double_click_time' : non trivial function
 
+var setDoubleClickTimeInvoker *gi.FunctionInvoker
+
 // SetDoubleClickTime is a representation of the C type gdk_set_double_click_time.
 func SetDoubleClickTime() {
-	invoker := gi.FunctionInvokerNew("Gdk", "set_double_click_time")
-	fmt.Println(invoker)
+	if setDoubleClickTimeInvoker == nil {
+		setDoubleClickTimeInvoker = gi.FunctionInvokerNew("Gdk", "set_double_click_time")
+	}
+
+	setDoubleClickTimeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_set_program_class' : non trivial function
 
+var setProgramClassInvoker *gi.FunctionInvoker
+
 // SetProgramClass is a representation of the C type gdk_set_program_class.
 func SetProgramClass() {
-	invoker := gi.FunctionInvokerNew("Gdk", "set_program_class")
-	fmt.Println(invoker)
+	if setProgramClassInvoker == nil {
+		setProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "set_program_class")
+	}
+
+	setProgramClassInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_set_show_events' : non trivial function
 
+var setShowEventsInvoker *gi.FunctionInvoker
+
 // SetShowEvents is a representation of the C type gdk_set_show_events.
 func SetShowEvents() {
-	invoker := gi.FunctionInvokerNew("Gdk", "set_show_events")
-	fmt.Println(invoker)
+	if setShowEventsInvoker == nil {
+		setShowEventsInvoker = gi.FunctionInvokerNew("Gdk", "set_show_events")
+	}
+
+	setShowEventsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_setting_get' : non trivial function
 
+var settingGetInvoker *gi.FunctionInvoker
+
 // SettingGet is a representation of the C type gdk_setting_get.
 func SettingGet() {
-	invoker := gi.FunctionInvokerNew("Gdk", "setting_get")
-	fmt.Println(invoker)
+	if settingGetInvoker == nil {
+		settingGetInvoker = gi.FunctionInvokerNew("Gdk", "setting_get")
+	}
+
+	settingGetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_synthesize_window_state' : non trivial function
 
+var synthesizeWindowStateInvoker *gi.FunctionInvoker
+
 // SynthesizeWindowState is a representation of the C type gdk_synthesize_window_state.
 func SynthesizeWindowState() {
-	invoker := gi.FunctionInvokerNew("Gdk", "synthesize_window_state")
-	fmt.Println(invoker)
+	if synthesizeWindowStateInvoker == nil {
+		synthesizeWindowStateInvoker = gi.FunctionInvokerNew("Gdk", "synthesize_window_state")
+	}
+
+	synthesizeWindowStateInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_test_render_sync' : non trivial function
 
+var testRenderSyncInvoker *gi.FunctionInvoker
+
 // TestRenderSync is a representation of the C type gdk_test_render_sync.
 func TestRenderSync() {
-	invoker := gi.FunctionInvokerNew("Gdk", "test_render_sync")
-	fmt.Println(invoker)
+	if testRenderSyncInvoker == nil {
+		testRenderSyncInvoker = gi.FunctionInvokerNew("Gdk", "test_render_sync")
+	}
+
+	testRenderSyncInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_test_simulate_button' : non trivial function
 
+var testSimulateButtonInvoker *gi.FunctionInvoker
+
 // TestSimulateButton is a representation of the C type gdk_test_simulate_button.
 func TestSimulateButton() {
-	invoker := gi.FunctionInvokerNew("Gdk", "test_simulate_button")
-	fmt.Println(invoker)
+	if testSimulateButtonInvoker == nil {
+		testSimulateButtonInvoker = gi.FunctionInvokerNew("Gdk", "test_simulate_button")
+	}
+
+	testSimulateButtonInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_test_simulate_key' : non trivial function
 
+var testSimulateKeyInvoker *gi.FunctionInvoker
+
 // TestSimulateKey is a representation of the C type gdk_test_simulate_key.
 func TestSimulateKey() {
-	invoker := gi.FunctionInvokerNew("Gdk", "test_simulate_key")
-	fmt.Println(invoker)
+	if testSimulateKeyInvoker == nil {
+		testSimulateKeyInvoker = gi.FunctionInvokerNew("Gdk", "test_simulate_key")
+	}
+
+	testSimulateKeyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : non trivial function
 
+var textPropertyToUtf8ListForDisplayInvoker *gi.FunctionInvoker
+
 // TextPropertyToUtf8ListForDisplay is a representation of the C type gdk_text_property_to_utf8_list_for_display.
 func TextPropertyToUtf8ListForDisplay() {
-	invoker := gi.FunctionInvokerNew("Gdk", "text_property_to_utf8_list_for_display")
-	fmt.Println(invoker)
+	if textPropertyToUtf8ListForDisplayInvoker == nil {
+		textPropertyToUtf8ListForDisplayInvoker = gi.FunctionInvokerNew("Gdk", "text_property_to_utf8_list_for_display")
+	}
+
+	textPropertyToUtf8ListForDisplayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_add_idle' : non trivial function
 
+var threadsAddIdleInvoker *gi.FunctionInvoker
+
 // ThreadsAddIdle is a representation of the C type gdk_threads_add_idle.
 func ThreadsAddIdle() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_add_idle")
-	fmt.Println(invoker)
+	if threadsAddIdleInvoker == nil {
+		threadsAddIdleInvoker = gi.FunctionInvokerNew("Gdk", "threads_add_idle")
+	}
+
+	threadsAddIdleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_add_idle_full' : non trivial function
 
+var threadsAddIdleFullInvoker *gi.FunctionInvoker
+
 // ThreadsAddIdleFull is a representation of the C type gdk_threads_add_idle_full.
 func ThreadsAddIdleFull() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_add_idle_full")
-	fmt.Println(invoker)
+	if threadsAddIdleFullInvoker == nil {
+		threadsAddIdleFullInvoker = gi.FunctionInvokerNew("Gdk", "threads_add_idle_full")
+	}
+
+	threadsAddIdleFullInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout' : non trivial function
 
+var threadsAddTimeoutInvoker *gi.FunctionInvoker
+
 // ThreadsAddTimeout is a representation of the C type gdk_threads_add_timeout.
 func ThreadsAddTimeout() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_add_timeout")
-	fmt.Println(invoker)
+	if threadsAddTimeoutInvoker == nil {
+		threadsAddTimeoutInvoker = gi.FunctionInvokerNew("Gdk", "threads_add_timeout")
+	}
+
+	threadsAddTimeoutInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_full' : non trivial function
 
+var threadsAddTimeoutFullInvoker *gi.FunctionInvoker
+
 // ThreadsAddTimeoutFull is a representation of the C type gdk_threads_add_timeout_full.
 func ThreadsAddTimeoutFull() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_add_timeout_full")
-	fmt.Println(invoker)
+	if threadsAddTimeoutFullInvoker == nil {
+		threadsAddTimeoutFullInvoker = gi.FunctionInvokerNew("Gdk", "threads_add_timeout_full")
+	}
+
+	threadsAddTimeoutFullInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds' : non trivial function
 
+var threadsAddTimeoutSecondsInvoker *gi.FunctionInvoker
+
 // ThreadsAddTimeoutSeconds is a representation of the C type gdk_threads_add_timeout_seconds.
 func ThreadsAddTimeoutSeconds() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_add_timeout_seconds")
-	fmt.Println(invoker)
+	if threadsAddTimeoutSecondsInvoker == nil {
+		threadsAddTimeoutSecondsInvoker = gi.FunctionInvokerNew("Gdk", "threads_add_timeout_seconds")
+	}
+
+	threadsAddTimeoutSecondsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : non trivial function
 
+var threadsAddTimeoutSecondsFullInvoker *gi.FunctionInvoker
+
 // ThreadsAddTimeoutSecondsFull is a representation of the C type gdk_threads_add_timeout_seconds_full.
 func ThreadsAddTimeoutSecondsFull() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_add_timeout_seconds_full")
-	fmt.Println(invoker)
+	if threadsAddTimeoutSecondsFullInvoker == nil {
+		threadsAddTimeoutSecondsFullInvoker = gi.FunctionInvokerNew("Gdk", "threads_add_timeout_seconds_full")
+	}
+
+	threadsAddTimeoutSecondsFullInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_enter' : non trivial function
 
+var threadsEnterInvoker *gi.FunctionInvoker
+
 // ThreadsEnter is a representation of the C type gdk_threads_enter.
 func ThreadsEnter() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_enter")
-	fmt.Println(invoker)
+	if threadsEnterInvoker == nil {
+		threadsEnterInvoker = gi.FunctionInvokerNew("Gdk", "threads_enter")
+	}
+
+	threadsEnterInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_init' : non trivial function
 
+var threadsInitInvoker *gi.FunctionInvoker
+
 // ThreadsInit is a representation of the C type gdk_threads_init.
 func ThreadsInit() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_init")
-	fmt.Println(invoker)
+	if threadsInitInvoker == nil {
+		threadsInitInvoker = gi.FunctionInvokerNew("Gdk", "threads_init")
+	}
+
+	threadsInitInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_leave' : non trivial function
 
+var threadsLeaveInvoker *gi.FunctionInvoker
+
 // ThreadsLeave is a representation of the C type gdk_threads_leave.
 func ThreadsLeave() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_leave")
-	fmt.Println(invoker)
+	if threadsLeaveInvoker == nil {
+		threadsLeaveInvoker = gi.FunctionInvokerNew("Gdk", "threads_leave")
+	}
+
+	threadsLeaveInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : non trivial function
 
+var threadsSetLockFunctionsInvoker *gi.FunctionInvoker
+
 // ThreadsSetLockFunctions is a representation of the C type gdk_threads_set_lock_functions.
 func ThreadsSetLockFunctions() {
-	invoker := gi.FunctionInvokerNew("Gdk", "threads_set_lock_functions")
-	fmt.Println(invoker)
+	if threadsSetLockFunctionsInvoker == nil {
+		threadsSetLockFunctionsInvoker = gi.FunctionInvokerNew("Gdk", "threads_set_lock_functions")
+	}
+
+	threadsSetLockFunctionsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_unicode_to_keyval' : non trivial function
 
+var unicodeToKeyvalInvoker *gi.FunctionInvoker
+
 // UnicodeToKeyval is a representation of the C type gdk_unicode_to_keyval.
 func UnicodeToKeyval() {
-	invoker := gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
-	fmt.Println(invoker)
+	if unicodeToKeyvalInvoker == nil {
+		unicodeToKeyvalInvoker = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
+	}
+
+	unicodeToKeyvalInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'gdk_utf8_to_string_target' : non trivial function
 
+var utf8ToStringTargetInvoker *gi.FunctionInvoker
+
 // Utf8ToStringTarget is a representation of the C type gdk_utf8_to_string_target.
 func Utf8ToStringTarget() {
-	invoker := gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
-	fmt.Println(invoker)
+	if utf8ToStringTargetInvoker == nil {
+		utf8ToStringTargetInvoker = gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
+	}
+
+	utf8ToStringTargetInvoker.Call()
 }

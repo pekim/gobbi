@@ -12,5 +12,6 @@ func TestCleanBuild(t *testing.T) {
 }
 
 func TestFunctionCall(t *testing.T) {
-	gtk.Init()
+	//gtk.Init()
+	//gtk.MainQuit()
 }

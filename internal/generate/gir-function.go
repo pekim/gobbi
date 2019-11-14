@@ -20,13 +20,15 @@ type Function struct {
 	Throws         int          `xml:"throws,attr"`
 	Introspectable string       `xml:"introspectable,attr"`
 
-	namespace *Namespace
-	goName    string
+	namespace      *Namespace
+	goName         string
+	invokerVarName string
 }
 
 func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 	f.namespace = ns
 	f.goName = makeExportedGoName(f.Name)
+	f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
 }
 
 func (f *Function) generate(fi *file) {
@@ -34,8 +36,9 @@ func (f *Function) generate(fi *file) {
 		fi.unsupported(f.CIdentifier, "non trivial function")
 	}
 
-	fi.docForC(f.goName, f.CIdentifier)
+	f.generateInvokerVar(fi)
 
+	fi.docForC(f.goName, f.CIdentifier)
 	fi.
 		Func().
 		Id(f.goName).
@@ -43,20 +46,34 @@ func (f *Function) generate(fi *file) {
 		Add(blockFunc(f.generateBody))
 }
 
+func (f *Function) generateInvokerVar(fi *file) {
+	fi.
+		Var().
+		Id(f.invokerVarName).
+		Op("*").
+		Qual(gi.PackageName, "FunctionInvoker")
+}
+
 func (f *Function) generateParams(g *group) {
 }
 
 func (f *Function) generateBody(g *group) {
+	// initialise invoker
 	g.
-		Id("invoker").
-		Op(":=").
-		Qual(gi.PackageName, "FunctionInvokerNew").
-		Call(
-			jen.Lit(f.namespace.Name),
-			jen.Lit(f.Name),
-		)
+		If(jen.Id(f.invokerVarName).Op("==").Nil()).
+		Block(jen.
+			Id(f.invokerVarName).
+			Op("=").
+			Qual(gi.PackageName, "FunctionInvokerNew").
+			Call(
+				jen.Lit(f.namespace.Name),
+				jen.Lit(f.Name),
+			))
+	g.Line()
 
+	// call the function
 	g.
-		Qual("fmt", "Println").
-		Call(jen.Id("invoker"))
+		Id(f.invokerVarName).
+		Dot("Call").
+		Call()
 }

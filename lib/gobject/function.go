@@ -2,1439 +2,2331 @@
 
 package gobject
 
-import (
-	"fmt"
-	gi "github.com/pekim/gobbi/internal/gi"
-)
+import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_boxed_copy' : non trivial function
 
+var boxedCopyInvoker *gi.FunctionInvoker
+
 // BoxedCopy is a representation of the C type g_boxed_copy.
 func BoxedCopy() {
-	invoker := gi.FunctionInvokerNew("GObject", "boxed_copy")
-	fmt.Println(invoker)
+	if boxedCopyInvoker == nil {
+		boxedCopyInvoker = gi.FunctionInvokerNew("GObject", "boxed_copy")
+	}
+
+	boxedCopyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_boxed_free' : non trivial function
 
+var boxedFreeInvoker *gi.FunctionInvoker
+
 // BoxedFree is a representation of the C type g_boxed_free.
 func BoxedFree() {
-	invoker := gi.FunctionInvokerNew("GObject", "boxed_free")
-	fmt.Println(invoker)
+	if boxedFreeInvoker == nil {
+		boxedFreeInvoker = gi.FunctionInvokerNew("GObject", "boxed_free")
+	}
+
+	boxedFreeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_boxed_type_register_static' : non trivial function
 
+var boxedTypeRegisterStaticInvoker *gi.FunctionInvoker
+
 // BoxedTypeRegisterStatic is a representation of the C type g_boxed_type_register_static.
 func BoxedTypeRegisterStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "boxed_type_register_static")
-	fmt.Println(invoker)
+	if boxedTypeRegisterStaticInvoker == nil {
+		boxedTypeRegisterStaticInvoker = gi.FunctionInvokerNew("GObject", "boxed_type_register_static")
+	}
+
+	boxedTypeRegisterStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_BOOLEAN__BOXED_BOXED' : non trivial function
 
+var cclosureMarshalBooleanBoxedBoxedInvoker *gi.FunctionInvoker
+
 // CclosureMarshalBooleanBoxedBoxed is a representation of the C type g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
 func CclosureMarshalBooleanBoxedBoxed() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_BOOLEAN__BOXED_BOXED")
-	fmt.Println(invoker)
+	if cclosureMarshalBooleanBoxedBoxedInvoker == nil {
+		cclosureMarshalBooleanBoxedBoxedInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_BOOLEAN__BOXED_BOXED")
+	}
+
+	cclosureMarshalBooleanBoxedBoxedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_BOOLEAN__FLAGS' : non trivial function
 
+var cclosureMarshalBooleanFlagsInvoker *gi.FunctionInvoker
+
 // CclosureMarshalBooleanFlags is a representation of the C type g_cclosure_marshal_BOOLEAN__FLAGS.
 func CclosureMarshalBooleanFlags() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_BOOLEAN__FLAGS")
-	fmt.Println(invoker)
+	if cclosureMarshalBooleanFlagsInvoker == nil {
+		cclosureMarshalBooleanFlagsInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_BOOLEAN__FLAGS")
+	}
+
+	cclosureMarshalBooleanFlagsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_STRING__OBJECT_POINTER' : non trivial function
 
+var cclosureMarshalStringObjectPointerInvoker *gi.FunctionInvoker
+
 // CclosureMarshalStringObjectPointer is a representation of the C type g_cclosure_marshal_STRING__OBJECT_POINTER.
 func CclosureMarshalStringObjectPointer() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_STRING__OBJECT_POINTER")
-	fmt.Println(invoker)
+	if cclosureMarshalStringObjectPointerInvoker == nil {
+		cclosureMarshalStringObjectPointerInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_STRING__OBJECT_POINTER")
+	}
+
+	cclosureMarshalStringObjectPointerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__BOOLEAN' : non trivial function
 
+var cclosureMarshalVoidBooleanInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidBoolean is a representation of the C type g_cclosure_marshal_VOID__BOOLEAN.
 func CclosureMarshalVoidBoolean() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__BOOLEAN")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidBooleanInvoker == nil {
+		cclosureMarshalVoidBooleanInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__BOOLEAN")
+	}
+
+	cclosureMarshalVoidBooleanInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__BOXED' : non trivial function
 
+var cclosureMarshalVoidBoxedInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidBoxed is a representation of the C type g_cclosure_marshal_VOID__BOXED.
 func CclosureMarshalVoidBoxed() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__BOXED")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidBoxedInvoker == nil {
+		cclosureMarshalVoidBoxedInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__BOXED")
+	}
+
+	cclosureMarshalVoidBoxedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__CHAR' : non trivial function
 
+var cclosureMarshalVoidCharInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidChar is a representation of the C type g_cclosure_marshal_VOID__CHAR.
 func CclosureMarshalVoidChar() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__CHAR")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidCharInvoker == nil {
+		cclosureMarshalVoidCharInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__CHAR")
+	}
+
+	cclosureMarshalVoidCharInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__DOUBLE' : non trivial function
 
+var cclosureMarshalVoidDoubleInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidDouble is a representation of the C type g_cclosure_marshal_VOID__DOUBLE.
 func CclosureMarshalVoidDouble() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__DOUBLE")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidDoubleInvoker == nil {
+		cclosureMarshalVoidDoubleInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__DOUBLE")
+	}
+
+	cclosureMarshalVoidDoubleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__ENUM' : non trivial function
 
+var cclosureMarshalVoidEnumInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidEnum is a representation of the C type g_cclosure_marshal_VOID__ENUM.
 func CclosureMarshalVoidEnum() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__ENUM")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidEnumInvoker == nil {
+		cclosureMarshalVoidEnumInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__ENUM")
+	}
+
+	cclosureMarshalVoidEnumInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__FLAGS' : non trivial function
 
+var cclosureMarshalVoidFlagsInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidFlags is a representation of the C type g_cclosure_marshal_VOID__FLAGS.
 func CclosureMarshalVoidFlags() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__FLAGS")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidFlagsInvoker == nil {
+		cclosureMarshalVoidFlagsInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__FLAGS")
+	}
+
+	cclosureMarshalVoidFlagsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__FLOAT' : non trivial function
 
+var cclosureMarshalVoidFloatInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidFloat is a representation of the C type g_cclosure_marshal_VOID__FLOAT.
 func CclosureMarshalVoidFloat() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__FLOAT")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidFloatInvoker == nil {
+		cclosureMarshalVoidFloatInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__FLOAT")
+	}
+
+	cclosureMarshalVoidFloatInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__INT' : non trivial function
 
+var cclosureMarshalVoidIntInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidInt is a representation of the C type g_cclosure_marshal_VOID__INT.
 func CclosureMarshalVoidInt() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__INT")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidIntInvoker == nil {
+		cclosureMarshalVoidIntInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__INT")
+	}
+
+	cclosureMarshalVoidIntInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__LONG' : non trivial function
 
+var cclosureMarshalVoidLongInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidLong is a representation of the C type g_cclosure_marshal_VOID__LONG.
 func CclosureMarshalVoidLong() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__LONG")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidLongInvoker == nil {
+		cclosureMarshalVoidLongInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__LONG")
+	}
+
+	cclosureMarshalVoidLongInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__OBJECT' : non trivial function
 
+var cclosureMarshalVoidObjectInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidObject is a representation of the C type g_cclosure_marshal_VOID__OBJECT.
 func CclosureMarshalVoidObject() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__OBJECT")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidObjectInvoker == nil {
+		cclosureMarshalVoidObjectInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__OBJECT")
+	}
+
+	cclosureMarshalVoidObjectInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__PARAM' : non trivial function
 
+var cclosureMarshalVoidParamInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidParam is a representation of the C type g_cclosure_marshal_VOID__PARAM.
 func CclosureMarshalVoidParam() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__PARAM")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidParamInvoker == nil {
+		cclosureMarshalVoidParamInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__PARAM")
+	}
+
+	cclosureMarshalVoidParamInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__POINTER' : non trivial function
 
+var cclosureMarshalVoidPointerInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidPointer is a representation of the C type g_cclosure_marshal_VOID__POINTER.
 func CclosureMarshalVoidPointer() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__POINTER")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidPointerInvoker == nil {
+		cclosureMarshalVoidPointerInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__POINTER")
+	}
+
+	cclosureMarshalVoidPointerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__STRING' : non trivial function
 
+var cclosureMarshalVoidStringInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidString is a representation of the C type g_cclosure_marshal_VOID__STRING.
 func CclosureMarshalVoidString() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__STRING")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidStringInvoker == nil {
+		cclosureMarshalVoidStringInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__STRING")
+	}
+
+	cclosureMarshalVoidStringInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__UCHAR' : non trivial function
 
+var cclosureMarshalVoidUcharInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidUchar is a representation of the C type g_cclosure_marshal_VOID__UCHAR.
 func CclosureMarshalVoidUchar() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UCHAR")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidUcharInvoker == nil {
+		cclosureMarshalVoidUcharInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UCHAR")
+	}
+
+	cclosureMarshalVoidUcharInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__UINT' : non trivial function
 
+var cclosureMarshalVoidUintInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidUint is a representation of the C type g_cclosure_marshal_VOID__UINT.
 func CclosureMarshalVoidUint() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UINT")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidUintInvoker == nil {
+		cclosureMarshalVoidUintInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UINT")
+	}
+
+	cclosureMarshalVoidUintInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__UINT_POINTER' : non trivial function
 
+var cclosureMarshalVoidUintPointerInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidUintPointer is a representation of the C type g_cclosure_marshal_VOID__UINT_POINTER.
 func CclosureMarshalVoidUintPointer() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UINT_POINTER")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidUintPointerInvoker == nil {
+		cclosureMarshalVoidUintPointerInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UINT_POINTER")
+	}
+
+	cclosureMarshalVoidUintPointerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__ULONG' : non trivial function
 
+var cclosureMarshalVoidUlongInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidUlong is a representation of the C type g_cclosure_marshal_VOID__ULONG.
 func CclosureMarshalVoidUlong() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__ULONG")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidUlongInvoker == nil {
+		cclosureMarshalVoidUlongInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__ULONG")
+	}
+
+	cclosureMarshalVoidUlongInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__VARIANT' : non trivial function
 
+var cclosureMarshalVoidVariantInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidVariant is a representation of the C type g_cclosure_marshal_VOID__VARIANT.
 func CclosureMarshalVoidVariant() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__VARIANT")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidVariantInvoker == nil {
+		cclosureMarshalVoidVariantInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__VARIANT")
+	}
+
+	cclosureMarshalVoidVariantInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_VOID__VOID' : non trivial function
 
+var cclosureMarshalVoidVoidInvoker *gi.FunctionInvoker
+
 // CclosureMarshalVoidVoid is a representation of the C type g_cclosure_marshal_VOID__VOID.
 func CclosureMarshalVoidVoid() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__VOID")
-	fmt.Println(invoker)
+	if cclosureMarshalVoidVoidInvoker == nil {
+		cclosureMarshalVoidVoidInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__VOID")
+	}
+
+	cclosureMarshalVoidVoidInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_generic' : non trivial function
 
+var cclosureMarshalGenericInvoker *gi.FunctionInvoker
+
 // CclosureMarshalGeneric is a representation of the C type g_cclosure_marshal_generic.
 func CclosureMarshalGeneric() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_marshal_generic")
-	fmt.Println(invoker)
+	if cclosureMarshalGenericInvoker == nil {
+		cclosureMarshalGenericInvoker = gi.FunctionInvokerNew("GObject", "cclosure_marshal_generic")
+	}
+
+	cclosureMarshalGenericInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_new' : non trivial function
 
+var cclosureNewInvoker *gi.FunctionInvoker
+
 // CclosureNew is a representation of the C type g_cclosure_new.
 func CclosureNew() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_new")
-	fmt.Println(invoker)
+	if cclosureNewInvoker == nil {
+		cclosureNewInvoker = gi.FunctionInvokerNew("GObject", "cclosure_new")
+	}
+
+	cclosureNewInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_new_object' : non trivial function
 
+var cclosureNewObjectInvoker *gi.FunctionInvoker
+
 // CclosureNewObject is a representation of the C type g_cclosure_new_object.
 func CclosureNewObject() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_new_object")
-	fmt.Println(invoker)
+	if cclosureNewObjectInvoker == nil {
+		cclosureNewObjectInvoker = gi.FunctionInvokerNew("GObject", "cclosure_new_object")
+	}
+
+	cclosureNewObjectInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_new_object_swap' : non trivial function
 
+var cclosureNewObjectSwapInvoker *gi.FunctionInvoker
+
 // CclosureNewObjectSwap is a representation of the C type g_cclosure_new_object_swap.
 func CclosureNewObjectSwap() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_new_object_swap")
-	fmt.Println(invoker)
+	if cclosureNewObjectSwapInvoker == nil {
+		cclosureNewObjectSwapInvoker = gi.FunctionInvokerNew("GObject", "cclosure_new_object_swap")
+	}
+
+	cclosureNewObjectSwapInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_cclosure_new_swap' : non trivial function
 
+var cclosureNewSwapInvoker *gi.FunctionInvoker
+
 // CclosureNewSwap is a representation of the C type g_cclosure_new_swap.
 func CclosureNewSwap() {
-	invoker := gi.FunctionInvokerNew("GObject", "cclosure_new_swap")
-	fmt.Println(invoker)
+	if cclosureNewSwapInvoker == nil {
+		cclosureNewSwapInvoker = gi.FunctionInvokerNew("GObject", "cclosure_new_swap")
+	}
+
+	cclosureNewSwapInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_clear_object' : non trivial function
 
+var clearObjectInvoker *gi.FunctionInvoker
+
 // ClearObject is a representation of the C type g_clear_object.
 func ClearObject() {
-	invoker := gi.FunctionInvokerNew("GObject", "clear_object")
-	fmt.Println(invoker)
+	if clearObjectInvoker == nil {
+		clearObjectInvoker = gi.FunctionInvokerNew("GObject", "clear_object")
+	}
+
+	clearObjectInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_enum_complete_type_info' : non trivial function
 
+var enumCompleteTypeInfoInvoker *gi.FunctionInvoker
+
 // EnumCompleteTypeInfo is a representation of the C type g_enum_complete_type_info.
 func EnumCompleteTypeInfo() {
-	invoker := gi.FunctionInvokerNew("GObject", "enum_complete_type_info")
-	fmt.Println(invoker)
+	if enumCompleteTypeInfoInvoker == nil {
+		enumCompleteTypeInfoInvoker = gi.FunctionInvokerNew("GObject", "enum_complete_type_info")
+	}
+
+	enumCompleteTypeInfoInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_enum_get_value' : non trivial function
 
+var enumGetValueInvoker *gi.FunctionInvoker
+
 // EnumGetValue is a representation of the C type g_enum_get_value.
 func EnumGetValue() {
-	invoker := gi.FunctionInvokerNew("GObject", "enum_get_value")
-	fmt.Println(invoker)
+	if enumGetValueInvoker == nil {
+		enumGetValueInvoker = gi.FunctionInvokerNew("GObject", "enum_get_value")
+	}
+
+	enumGetValueInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_enum_get_value_by_name' : non trivial function
 
+var enumGetValueByNameInvoker *gi.FunctionInvoker
+
 // EnumGetValueByName is a representation of the C type g_enum_get_value_by_name.
 func EnumGetValueByName() {
-	invoker := gi.FunctionInvokerNew("GObject", "enum_get_value_by_name")
-	fmt.Println(invoker)
+	if enumGetValueByNameInvoker == nil {
+		enumGetValueByNameInvoker = gi.FunctionInvokerNew("GObject", "enum_get_value_by_name")
+	}
+
+	enumGetValueByNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_enum_get_value_by_nick' : non trivial function
 
+var enumGetValueByNickInvoker *gi.FunctionInvoker
+
 // EnumGetValueByNick is a representation of the C type g_enum_get_value_by_nick.
 func EnumGetValueByNick() {
-	invoker := gi.FunctionInvokerNew("GObject", "enum_get_value_by_nick")
-	fmt.Println(invoker)
+	if enumGetValueByNickInvoker == nil {
+		enumGetValueByNickInvoker = gi.FunctionInvokerNew("GObject", "enum_get_value_by_nick")
+	}
+
+	enumGetValueByNickInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_enum_register_static' : non trivial function
 
+var enumRegisterStaticInvoker *gi.FunctionInvoker
+
 // EnumRegisterStatic is a representation of the C type g_enum_register_static.
 func EnumRegisterStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "enum_register_static")
-	fmt.Println(invoker)
+	if enumRegisterStaticInvoker == nil {
+		enumRegisterStaticInvoker = gi.FunctionInvokerNew("GObject", "enum_register_static")
+	}
+
+	enumRegisterStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_enum_to_string' : non trivial function
 
+var enumToStringInvoker *gi.FunctionInvoker
+
 // EnumToString is a representation of the C type g_enum_to_string.
 func EnumToString() {
-	invoker := gi.FunctionInvokerNew("GObject", "enum_to_string")
-	fmt.Println(invoker)
+	if enumToStringInvoker == nil {
+		enumToStringInvoker = gi.FunctionInvokerNew("GObject", "enum_to_string")
+	}
+
+	enumToStringInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_flags_complete_type_info' : non trivial function
 
+var flagsCompleteTypeInfoInvoker *gi.FunctionInvoker
+
 // FlagsCompleteTypeInfo is a representation of the C type g_flags_complete_type_info.
 func FlagsCompleteTypeInfo() {
-	invoker := gi.FunctionInvokerNew("GObject", "flags_complete_type_info")
-	fmt.Println(invoker)
+	if flagsCompleteTypeInfoInvoker == nil {
+		flagsCompleteTypeInfoInvoker = gi.FunctionInvokerNew("GObject", "flags_complete_type_info")
+	}
+
+	flagsCompleteTypeInfoInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_flags_get_first_value' : non trivial function
 
+var flagsGetFirstValueInvoker *gi.FunctionInvoker
+
 // FlagsGetFirstValue is a representation of the C type g_flags_get_first_value.
 func FlagsGetFirstValue() {
-	invoker := gi.FunctionInvokerNew("GObject", "flags_get_first_value")
-	fmt.Println(invoker)
+	if flagsGetFirstValueInvoker == nil {
+		flagsGetFirstValueInvoker = gi.FunctionInvokerNew("GObject", "flags_get_first_value")
+	}
+
+	flagsGetFirstValueInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_flags_get_value_by_name' : non trivial function
 
+var flagsGetValueByNameInvoker *gi.FunctionInvoker
+
 // FlagsGetValueByName is a representation of the C type g_flags_get_value_by_name.
 func FlagsGetValueByName() {
-	invoker := gi.FunctionInvokerNew("GObject", "flags_get_value_by_name")
-	fmt.Println(invoker)
+	if flagsGetValueByNameInvoker == nil {
+		flagsGetValueByNameInvoker = gi.FunctionInvokerNew("GObject", "flags_get_value_by_name")
+	}
+
+	flagsGetValueByNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_flags_get_value_by_nick' : non trivial function
 
+var flagsGetValueByNickInvoker *gi.FunctionInvoker
+
 // FlagsGetValueByNick is a representation of the C type g_flags_get_value_by_nick.
 func FlagsGetValueByNick() {
-	invoker := gi.FunctionInvokerNew("GObject", "flags_get_value_by_nick")
-	fmt.Println(invoker)
+	if flagsGetValueByNickInvoker == nil {
+		flagsGetValueByNickInvoker = gi.FunctionInvokerNew("GObject", "flags_get_value_by_nick")
+	}
+
+	flagsGetValueByNickInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_flags_register_static' : non trivial function
 
+var flagsRegisterStaticInvoker *gi.FunctionInvoker
+
 // FlagsRegisterStatic is a representation of the C type g_flags_register_static.
 func FlagsRegisterStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "flags_register_static")
-	fmt.Println(invoker)
+	if flagsRegisterStaticInvoker == nil {
+		flagsRegisterStaticInvoker = gi.FunctionInvokerNew("GObject", "flags_register_static")
+	}
+
+	flagsRegisterStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_flags_to_string' : non trivial function
 
+var flagsToStringInvoker *gi.FunctionInvoker
+
 // FlagsToString is a representation of the C type g_flags_to_string.
 func FlagsToString() {
-	invoker := gi.FunctionInvokerNew("GObject", "flags_to_string")
-	fmt.Println(invoker)
+	if flagsToStringInvoker == nil {
+		flagsToStringInvoker = gi.FunctionInvokerNew("GObject", "flags_to_string")
+	}
+
+	flagsToStringInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_gtype_get_type' : non trivial function
 
+var gtypeGetTypeInvoker *gi.FunctionInvoker
+
 // GtypeGetType is a representation of the C type g_gtype_get_type.
 func GtypeGetType() {
-	invoker := gi.FunctionInvokerNew("GObject", "gtype_get_type")
-	fmt.Println(invoker)
+	if gtypeGetTypeInvoker == nil {
+		gtypeGetTypeInvoker = gi.FunctionInvokerNew("GObject", "gtype_get_type")
+	}
+
+	gtypeGetTypeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_boolean' : non trivial function
 
+var paramSpecBooleanInvoker *gi.FunctionInvoker
+
 // ParamSpecBoolean is a representation of the C type g_param_spec_boolean.
 func ParamSpecBoolean() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_boolean")
-	fmt.Println(invoker)
+	if paramSpecBooleanInvoker == nil {
+		paramSpecBooleanInvoker = gi.FunctionInvokerNew("GObject", "param_spec_boolean")
+	}
+
+	paramSpecBooleanInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_boxed' : non trivial function
 
+var paramSpecBoxedInvoker *gi.FunctionInvoker
+
 // ParamSpecBoxed is a representation of the C type g_param_spec_boxed.
 func ParamSpecBoxed() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_boxed")
-	fmt.Println(invoker)
+	if paramSpecBoxedInvoker == nil {
+		paramSpecBoxedInvoker = gi.FunctionInvokerNew("GObject", "param_spec_boxed")
+	}
+
+	paramSpecBoxedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_char' : non trivial function
 
+var paramSpecCharInvoker *gi.FunctionInvoker
+
 // ParamSpecChar is a representation of the C type g_param_spec_char.
 func ParamSpecChar() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_char")
-	fmt.Println(invoker)
+	if paramSpecCharInvoker == nil {
+		paramSpecCharInvoker = gi.FunctionInvokerNew("GObject", "param_spec_char")
+	}
+
+	paramSpecCharInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_double' : non trivial function
 
+var paramSpecDoubleInvoker *gi.FunctionInvoker
+
 // ParamSpecDouble is a representation of the C type g_param_spec_double.
 func ParamSpecDouble() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_double")
-	fmt.Println(invoker)
+	if paramSpecDoubleInvoker == nil {
+		paramSpecDoubleInvoker = gi.FunctionInvokerNew("GObject", "param_spec_double")
+	}
+
+	paramSpecDoubleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_enum' : non trivial function
 
+var paramSpecEnumInvoker *gi.FunctionInvoker
+
 // ParamSpecEnum is a representation of the C type g_param_spec_enum.
 func ParamSpecEnum() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_enum")
-	fmt.Println(invoker)
+	if paramSpecEnumInvoker == nil {
+		paramSpecEnumInvoker = gi.FunctionInvokerNew("GObject", "param_spec_enum")
+	}
+
+	paramSpecEnumInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_flags' : non trivial function
 
+var paramSpecFlagsInvoker *gi.FunctionInvoker
+
 // ParamSpecFlags is a representation of the C type g_param_spec_flags.
 func ParamSpecFlags() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_flags")
-	fmt.Println(invoker)
+	if paramSpecFlagsInvoker == nil {
+		paramSpecFlagsInvoker = gi.FunctionInvokerNew("GObject", "param_spec_flags")
+	}
+
+	paramSpecFlagsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_float' : non trivial function
 
+var paramSpecFloatInvoker *gi.FunctionInvoker
+
 // ParamSpecFloat is a representation of the C type g_param_spec_float.
 func ParamSpecFloat() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_float")
-	fmt.Println(invoker)
+	if paramSpecFloatInvoker == nil {
+		paramSpecFloatInvoker = gi.FunctionInvokerNew("GObject", "param_spec_float")
+	}
+
+	paramSpecFloatInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_gtype' : non trivial function
 
+var paramSpecGtypeInvoker *gi.FunctionInvoker
+
 // ParamSpecGtype is a representation of the C type g_param_spec_gtype.
 func ParamSpecGtype() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_gtype")
-	fmt.Println(invoker)
+	if paramSpecGtypeInvoker == nil {
+		paramSpecGtypeInvoker = gi.FunctionInvokerNew("GObject", "param_spec_gtype")
+	}
+
+	paramSpecGtypeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_int' : non trivial function
 
+var paramSpecIntInvoker *gi.FunctionInvoker
+
 // ParamSpecInt is a representation of the C type g_param_spec_int.
 func ParamSpecInt() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_int")
-	fmt.Println(invoker)
+	if paramSpecIntInvoker == nil {
+		paramSpecIntInvoker = gi.FunctionInvokerNew("GObject", "param_spec_int")
+	}
+
+	paramSpecIntInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_int64' : non trivial function
 
+var paramSpecInt64Invoker *gi.FunctionInvoker
+
 // ParamSpecInt64 is a representation of the C type g_param_spec_int64.
 func ParamSpecInt64() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_int64")
-	fmt.Println(invoker)
+	if paramSpecInt64Invoker == nil {
+		paramSpecInt64Invoker = gi.FunctionInvokerNew("GObject", "param_spec_int64")
+	}
+
+	paramSpecInt64Invoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_long' : non trivial function
 
+var paramSpecLongInvoker *gi.FunctionInvoker
+
 // ParamSpecLong is a representation of the C type g_param_spec_long.
 func ParamSpecLong() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_long")
-	fmt.Println(invoker)
+	if paramSpecLongInvoker == nil {
+		paramSpecLongInvoker = gi.FunctionInvokerNew("GObject", "param_spec_long")
+	}
+
+	paramSpecLongInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_object' : non trivial function
 
+var paramSpecObjectInvoker *gi.FunctionInvoker
+
 // ParamSpecObject is a representation of the C type g_param_spec_object.
 func ParamSpecObject() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_object")
-	fmt.Println(invoker)
+	if paramSpecObjectInvoker == nil {
+		paramSpecObjectInvoker = gi.FunctionInvokerNew("GObject", "param_spec_object")
+	}
+
+	paramSpecObjectInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_override' : non trivial function
 
+var paramSpecOverrideInvoker *gi.FunctionInvoker
+
 // ParamSpecOverride is a representation of the C type g_param_spec_override.
 func ParamSpecOverride() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_override")
-	fmt.Println(invoker)
+	if paramSpecOverrideInvoker == nil {
+		paramSpecOverrideInvoker = gi.FunctionInvokerNew("GObject", "param_spec_override")
+	}
+
+	paramSpecOverrideInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_param' : non trivial function
 
+var paramSpecParamInvoker *gi.FunctionInvoker
+
 // ParamSpecParam is a representation of the C type g_param_spec_param.
 func ParamSpecParam() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_param")
-	fmt.Println(invoker)
+	if paramSpecParamInvoker == nil {
+		paramSpecParamInvoker = gi.FunctionInvokerNew("GObject", "param_spec_param")
+	}
+
+	paramSpecParamInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_pointer' : non trivial function
 
+var paramSpecPointerInvoker *gi.FunctionInvoker
+
 // ParamSpecPointer is a representation of the C type g_param_spec_pointer.
 func ParamSpecPointer() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_pointer")
-	fmt.Println(invoker)
+	if paramSpecPointerInvoker == nil {
+		paramSpecPointerInvoker = gi.FunctionInvokerNew("GObject", "param_spec_pointer")
+	}
+
+	paramSpecPointerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_pool_new' : non trivial function
 
+var paramSpecPoolNewInvoker *gi.FunctionInvoker
+
 // ParamSpecPoolNew is a representation of the C type g_param_spec_pool_new.
 func ParamSpecPoolNew() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_pool_new")
-	fmt.Println(invoker)
+	if paramSpecPoolNewInvoker == nil {
+		paramSpecPoolNewInvoker = gi.FunctionInvokerNew("GObject", "param_spec_pool_new")
+	}
+
+	paramSpecPoolNewInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_string' : non trivial function
 
+var paramSpecStringInvoker *gi.FunctionInvoker
+
 // ParamSpecString is a representation of the C type g_param_spec_string.
 func ParamSpecString() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_string")
-	fmt.Println(invoker)
+	if paramSpecStringInvoker == nil {
+		paramSpecStringInvoker = gi.FunctionInvokerNew("GObject", "param_spec_string")
+	}
+
+	paramSpecStringInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_uchar' : non trivial function
 
+var paramSpecUcharInvoker *gi.FunctionInvoker
+
 // ParamSpecUchar is a representation of the C type g_param_spec_uchar.
 func ParamSpecUchar() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_uchar")
-	fmt.Println(invoker)
+	if paramSpecUcharInvoker == nil {
+		paramSpecUcharInvoker = gi.FunctionInvokerNew("GObject", "param_spec_uchar")
+	}
+
+	paramSpecUcharInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_uint' : non trivial function
 
+var paramSpecUintInvoker *gi.FunctionInvoker
+
 // ParamSpecUint is a representation of the C type g_param_spec_uint.
 func ParamSpecUint() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_uint")
-	fmt.Println(invoker)
+	if paramSpecUintInvoker == nil {
+		paramSpecUintInvoker = gi.FunctionInvokerNew("GObject", "param_spec_uint")
+	}
+
+	paramSpecUintInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_uint64' : non trivial function
 
+var paramSpecUint64Invoker *gi.FunctionInvoker
+
 // ParamSpecUint64 is a representation of the C type g_param_spec_uint64.
 func ParamSpecUint64() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_uint64")
-	fmt.Println(invoker)
+	if paramSpecUint64Invoker == nil {
+		paramSpecUint64Invoker = gi.FunctionInvokerNew("GObject", "param_spec_uint64")
+	}
+
+	paramSpecUint64Invoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_ulong' : non trivial function
 
+var paramSpecUlongInvoker *gi.FunctionInvoker
+
 // ParamSpecUlong is a representation of the C type g_param_spec_ulong.
 func ParamSpecUlong() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_ulong")
-	fmt.Println(invoker)
+	if paramSpecUlongInvoker == nil {
+		paramSpecUlongInvoker = gi.FunctionInvokerNew("GObject", "param_spec_ulong")
+	}
+
+	paramSpecUlongInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_unichar' : non trivial function
 
+var paramSpecUnicharInvoker *gi.FunctionInvoker
+
 // ParamSpecUnichar is a representation of the C type g_param_spec_unichar.
 func ParamSpecUnichar() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_unichar")
-	fmt.Println(invoker)
+	if paramSpecUnicharInvoker == nil {
+		paramSpecUnicharInvoker = gi.FunctionInvokerNew("GObject", "param_spec_unichar")
+	}
+
+	paramSpecUnicharInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_value_array' : non trivial function
 
+var paramSpecValueArrayInvoker *gi.FunctionInvoker
+
 // ParamSpecValueArray is a representation of the C type g_param_spec_value_array.
 func ParamSpecValueArray() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_value_array")
-	fmt.Println(invoker)
+	if paramSpecValueArrayInvoker == nil {
+		paramSpecValueArrayInvoker = gi.FunctionInvokerNew("GObject", "param_spec_value_array")
+	}
+
+	paramSpecValueArrayInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_variant' : non trivial function
 
+var paramSpecVariantInvoker *gi.FunctionInvoker
+
 // ParamSpecVariant is a representation of the C type g_param_spec_variant.
 func ParamSpecVariant() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_spec_variant")
-	fmt.Println(invoker)
+	if paramSpecVariantInvoker == nil {
+		paramSpecVariantInvoker = gi.FunctionInvokerNew("GObject", "param_spec_variant")
+	}
+
+	paramSpecVariantInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_type_register_static' : non trivial function
 
+var paramTypeRegisterStaticInvoker *gi.FunctionInvoker
+
 // ParamTypeRegisterStatic is a representation of the C type g_param_type_register_static.
 func ParamTypeRegisterStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_type_register_static")
-	fmt.Println(invoker)
+	if paramTypeRegisterStaticInvoker == nil {
+		paramTypeRegisterStaticInvoker = gi.FunctionInvokerNew("GObject", "param_type_register_static")
+	}
+
+	paramTypeRegisterStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_value_convert' : non trivial function
 
+var paramValueConvertInvoker *gi.FunctionInvoker
+
 // ParamValueConvert is a representation of the C type g_param_value_convert.
 func ParamValueConvert() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_value_convert")
-	fmt.Println(invoker)
+	if paramValueConvertInvoker == nil {
+		paramValueConvertInvoker = gi.FunctionInvokerNew("GObject", "param_value_convert")
+	}
+
+	paramValueConvertInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_value_defaults' : non trivial function
 
+var paramValueDefaultsInvoker *gi.FunctionInvoker
+
 // ParamValueDefaults is a representation of the C type g_param_value_defaults.
 func ParamValueDefaults() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_value_defaults")
-	fmt.Println(invoker)
+	if paramValueDefaultsInvoker == nil {
+		paramValueDefaultsInvoker = gi.FunctionInvokerNew("GObject", "param_value_defaults")
+	}
+
+	paramValueDefaultsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_value_set_default' : non trivial function
 
+var paramValueSetDefaultInvoker *gi.FunctionInvoker
+
 // ParamValueSetDefault is a representation of the C type g_param_value_set_default.
 func ParamValueSetDefault() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_value_set_default")
-	fmt.Println(invoker)
+	if paramValueSetDefaultInvoker == nil {
+		paramValueSetDefaultInvoker = gi.FunctionInvokerNew("GObject", "param_value_set_default")
+	}
+
+	paramValueSetDefaultInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_value_validate' : non trivial function
 
+var paramValueValidateInvoker *gi.FunctionInvoker
+
 // ParamValueValidate is a representation of the C type g_param_value_validate.
 func ParamValueValidate() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_value_validate")
-	fmt.Println(invoker)
+	if paramValueValidateInvoker == nil {
+		paramValueValidateInvoker = gi.FunctionInvokerNew("GObject", "param_value_validate")
+	}
+
+	paramValueValidateInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_param_values_cmp' : non trivial function
 
+var paramValuesCmpInvoker *gi.FunctionInvoker
+
 // ParamValuesCmp is a representation of the C type g_param_values_cmp.
 func ParamValuesCmp() {
-	invoker := gi.FunctionInvokerNew("GObject", "param_values_cmp")
-	fmt.Println(invoker)
+	if paramValuesCmpInvoker == nil {
+		paramValuesCmpInvoker = gi.FunctionInvokerNew("GObject", "param_values_cmp")
+	}
+
+	paramValuesCmpInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_pointer_type_register_static' : non trivial function
 
+var pointerTypeRegisterStaticInvoker *gi.FunctionInvoker
+
 // PointerTypeRegisterStatic is a representation of the C type g_pointer_type_register_static.
 func PointerTypeRegisterStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "pointer_type_register_static")
-	fmt.Println(invoker)
+	if pointerTypeRegisterStaticInvoker == nil {
+		pointerTypeRegisterStaticInvoker = gi.FunctionInvokerNew("GObject", "pointer_type_register_static")
+	}
+
+	pointerTypeRegisterStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_accumulator_first_wins' : non trivial function
 
+var signalAccumulatorFirstWinsInvoker *gi.FunctionInvoker
+
 // SignalAccumulatorFirstWins is a representation of the C type g_signal_accumulator_first_wins.
 func SignalAccumulatorFirstWins() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_accumulator_first_wins")
-	fmt.Println(invoker)
+	if signalAccumulatorFirstWinsInvoker == nil {
+		signalAccumulatorFirstWinsInvoker = gi.FunctionInvokerNew("GObject", "signal_accumulator_first_wins")
+	}
+
+	signalAccumulatorFirstWinsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_accumulator_true_handled' : non trivial function
 
+var signalAccumulatorTrueHandledInvoker *gi.FunctionInvoker
+
 // SignalAccumulatorTrueHandled is a representation of the C type g_signal_accumulator_true_handled.
 func SignalAccumulatorTrueHandled() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_accumulator_true_handled")
-	fmt.Println(invoker)
+	if signalAccumulatorTrueHandledInvoker == nil {
+		signalAccumulatorTrueHandledInvoker = gi.FunctionInvokerNew("GObject", "signal_accumulator_true_handled")
+	}
+
+	signalAccumulatorTrueHandledInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_add_emission_hook' : non trivial function
 
+var signalAddEmissionHookInvoker *gi.FunctionInvoker
+
 // SignalAddEmissionHook is a representation of the C type g_signal_add_emission_hook.
 func SignalAddEmissionHook() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_add_emission_hook")
-	fmt.Println(invoker)
+	if signalAddEmissionHookInvoker == nil {
+		signalAddEmissionHookInvoker = gi.FunctionInvokerNew("GObject", "signal_add_emission_hook")
+	}
+
+	signalAddEmissionHookInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden' : non trivial function
 
+var signalChainFromOverriddenInvoker *gi.FunctionInvoker
+
 // SignalChainFromOverridden is a representation of the C type g_signal_chain_from_overridden.
 func SignalChainFromOverridden() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_chain_from_overridden")
-	fmt.Println(invoker)
+	if signalChainFromOverriddenInvoker == nil {
+		signalChainFromOverriddenInvoker = gi.FunctionInvokerNew("GObject", "signal_chain_from_overridden")
+	}
+
+	signalChainFromOverriddenInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden_handler' : non trivial function
 
+var signalChainFromOverriddenHandlerInvoker *gi.FunctionInvoker
+
 // SignalChainFromOverriddenHandler is a representation of the C type g_signal_chain_from_overridden_handler.
 func SignalChainFromOverriddenHandler() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_chain_from_overridden_handler")
-	fmt.Println(invoker)
+	if signalChainFromOverriddenHandlerInvoker == nil {
+		signalChainFromOverriddenHandlerInvoker = gi.FunctionInvokerNew("GObject", "signal_chain_from_overridden_handler")
+	}
+
+	signalChainFromOverriddenHandlerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_connect_closure' : non trivial function
 
+var signalConnectClosureInvoker *gi.FunctionInvoker
+
 // SignalConnectClosure is a representation of the C type g_signal_connect_closure.
 func SignalConnectClosure() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_connect_closure")
-	fmt.Println(invoker)
+	if signalConnectClosureInvoker == nil {
+		signalConnectClosureInvoker = gi.FunctionInvokerNew("GObject", "signal_connect_closure")
+	}
+
+	signalConnectClosureInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_connect_closure_by_id' : non trivial function
 
+var signalConnectClosureByIdInvoker *gi.FunctionInvoker
+
 // SignalConnectClosureById is a representation of the C type g_signal_connect_closure_by_id.
 func SignalConnectClosureById() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_connect_closure_by_id")
-	fmt.Println(invoker)
+	if signalConnectClosureByIdInvoker == nil {
+		signalConnectClosureByIdInvoker = gi.FunctionInvokerNew("GObject", "signal_connect_closure_by_id")
+	}
+
+	signalConnectClosureByIdInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_connect_data' : non trivial function
 
+var signalConnectDataInvoker *gi.FunctionInvoker
+
 // SignalConnectData is a representation of the C type g_signal_connect_data.
 func SignalConnectData() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_connect_data")
-	fmt.Println(invoker)
+	if signalConnectDataInvoker == nil {
+		signalConnectDataInvoker = gi.FunctionInvokerNew("GObject", "signal_connect_data")
+	}
+
+	signalConnectDataInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_connect_object' : non trivial function
 
+var signalConnectObjectInvoker *gi.FunctionInvoker
+
 // SignalConnectObject is a representation of the C type g_signal_connect_object.
 func SignalConnectObject() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_connect_object")
-	fmt.Println(invoker)
+	if signalConnectObjectInvoker == nil {
+		signalConnectObjectInvoker = gi.FunctionInvokerNew("GObject", "signal_connect_object")
+	}
+
+	signalConnectObjectInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_emit' : non trivial function
 
+var signalEmitInvoker *gi.FunctionInvoker
+
 // SignalEmit is a representation of the C type g_signal_emit.
 func SignalEmit() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_emit")
-	fmt.Println(invoker)
+	if signalEmitInvoker == nil {
+		signalEmitInvoker = gi.FunctionInvokerNew("GObject", "signal_emit")
+	}
+
+	signalEmitInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_emit_by_name' : non trivial function
 
+var signalEmitByNameInvoker *gi.FunctionInvoker
+
 // SignalEmitByName is a representation of the C type g_signal_emit_by_name.
 func SignalEmitByName() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_emit_by_name")
-	fmt.Println(invoker)
+	if signalEmitByNameInvoker == nil {
+		signalEmitByNameInvoker = gi.FunctionInvokerNew("GObject", "signal_emit_by_name")
+	}
+
+	signalEmitByNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_emit_valist' : non trivial function
 
+var signalEmitValistInvoker *gi.FunctionInvoker
+
 // SignalEmitValist is a representation of the C type g_signal_emit_valist.
 func SignalEmitValist() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_emit_valist")
-	fmt.Println(invoker)
+	if signalEmitValistInvoker == nil {
+		signalEmitValistInvoker = gi.FunctionInvokerNew("GObject", "signal_emit_valist")
+	}
+
+	signalEmitValistInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_emitv' : non trivial function
 
+var signalEmitvInvoker *gi.FunctionInvoker
+
 // SignalEmitv is a representation of the C type g_signal_emitv.
 func SignalEmitv() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_emitv")
-	fmt.Println(invoker)
+	if signalEmitvInvoker == nil {
+		signalEmitvInvoker = gi.FunctionInvokerNew("GObject", "signal_emitv")
+	}
+
+	signalEmitvInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_get_invocation_hint' : non trivial function
 
+var signalGetInvocationHintInvoker *gi.FunctionInvoker
+
 // SignalGetInvocationHint is a representation of the C type g_signal_get_invocation_hint.
 func SignalGetInvocationHint() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_get_invocation_hint")
-	fmt.Println(invoker)
+	if signalGetInvocationHintInvoker == nil {
+		signalGetInvocationHintInvoker = gi.FunctionInvokerNew("GObject", "signal_get_invocation_hint")
+	}
+
+	signalGetInvocationHintInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handler_block' : non trivial function
 
+var signalHandlerBlockInvoker *gi.FunctionInvoker
+
 // SignalHandlerBlock is a representation of the C type g_signal_handler_block.
 func SignalHandlerBlock() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handler_block")
-	fmt.Println(invoker)
+	if signalHandlerBlockInvoker == nil {
+		signalHandlerBlockInvoker = gi.FunctionInvokerNew("GObject", "signal_handler_block")
+	}
+
+	signalHandlerBlockInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handler_disconnect' : non trivial function
 
+var signalHandlerDisconnectInvoker *gi.FunctionInvoker
+
 // SignalHandlerDisconnect is a representation of the C type g_signal_handler_disconnect.
 func SignalHandlerDisconnect() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handler_disconnect")
-	fmt.Println(invoker)
+	if signalHandlerDisconnectInvoker == nil {
+		signalHandlerDisconnectInvoker = gi.FunctionInvokerNew("GObject", "signal_handler_disconnect")
+	}
+
+	signalHandlerDisconnectInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handler_find' : non trivial function
 
+var signalHandlerFindInvoker *gi.FunctionInvoker
+
 // SignalHandlerFind is a representation of the C type g_signal_handler_find.
 func SignalHandlerFind() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handler_find")
-	fmt.Println(invoker)
+	if signalHandlerFindInvoker == nil {
+		signalHandlerFindInvoker = gi.FunctionInvokerNew("GObject", "signal_handler_find")
+	}
+
+	signalHandlerFindInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handler_is_connected' : non trivial function
 
+var signalHandlerIsConnectedInvoker *gi.FunctionInvoker
+
 // SignalHandlerIsConnected is a representation of the C type g_signal_handler_is_connected.
 func SignalHandlerIsConnected() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handler_is_connected")
-	fmt.Println(invoker)
+	if signalHandlerIsConnectedInvoker == nil {
+		signalHandlerIsConnectedInvoker = gi.FunctionInvokerNew("GObject", "signal_handler_is_connected")
+	}
+
+	signalHandlerIsConnectedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handler_unblock' : non trivial function
 
+var signalHandlerUnblockInvoker *gi.FunctionInvoker
+
 // SignalHandlerUnblock is a representation of the C type g_signal_handler_unblock.
 func SignalHandlerUnblock() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handler_unblock")
-	fmt.Println(invoker)
+	if signalHandlerUnblockInvoker == nil {
+		signalHandlerUnblockInvoker = gi.FunctionInvokerNew("GObject", "signal_handler_unblock")
+	}
+
+	signalHandlerUnblockInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handlers_block_matched' : non trivial function
 
+var signalHandlersBlockMatchedInvoker *gi.FunctionInvoker
+
 // SignalHandlersBlockMatched is a representation of the C type g_signal_handlers_block_matched.
 func SignalHandlersBlockMatched() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handlers_block_matched")
-	fmt.Println(invoker)
+	if signalHandlersBlockMatchedInvoker == nil {
+		signalHandlersBlockMatchedInvoker = gi.FunctionInvokerNew("GObject", "signal_handlers_block_matched")
+	}
+
+	signalHandlersBlockMatchedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handlers_destroy' : non trivial function
 
+var signalHandlersDestroyInvoker *gi.FunctionInvoker
+
 // SignalHandlersDestroy is a representation of the C type g_signal_handlers_destroy.
 func SignalHandlersDestroy() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handlers_destroy")
-	fmt.Println(invoker)
+	if signalHandlersDestroyInvoker == nil {
+		signalHandlersDestroyInvoker = gi.FunctionInvokerNew("GObject", "signal_handlers_destroy")
+	}
+
+	signalHandlersDestroyInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : non trivial function
 
+var signalHandlersDisconnectMatchedInvoker *gi.FunctionInvoker
+
 // SignalHandlersDisconnectMatched is a representation of the C type g_signal_handlers_disconnect_matched.
 func SignalHandlersDisconnectMatched() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handlers_disconnect_matched")
-	fmt.Println(invoker)
+	if signalHandlersDisconnectMatchedInvoker == nil {
+		signalHandlersDisconnectMatchedInvoker = gi.FunctionInvokerNew("GObject", "signal_handlers_disconnect_matched")
+	}
+
+	signalHandlersDisconnectMatchedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : non trivial function
 
+var signalHandlersUnblockMatchedInvoker *gi.FunctionInvoker
+
 // SignalHandlersUnblockMatched is a representation of the C type g_signal_handlers_unblock_matched.
 func SignalHandlersUnblockMatched() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_handlers_unblock_matched")
-	fmt.Println(invoker)
+	if signalHandlersUnblockMatchedInvoker == nil {
+		signalHandlersUnblockMatchedInvoker = gi.FunctionInvokerNew("GObject", "signal_handlers_unblock_matched")
+	}
+
+	signalHandlersUnblockMatchedInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_has_handler_pending' : non trivial function
 
+var signalHasHandlerPendingInvoker *gi.FunctionInvoker
+
 // SignalHasHandlerPending is a representation of the C type g_signal_has_handler_pending.
 func SignalHasHandlerPending() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_has_handler_pending")
-	fmt.Println(invoker)
+	if signalHasHandlerPendingInvoker == nil {
+		signalHasHandlerPendingInvoker = gi.FunctionInvokerNew("GObject", "signal_has_handler_pending")
+	}
+
+	signalHasHandlerPendingInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_list_ids' : non trivial function
 
+var signalListIdsInvoker *gi.FunctionInvoker
+
 // SignalListIds is a representation of the C type g_signal_list_ids.
 func SignalListIds() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_list_ids")
-	fmt.Println(invoker)
+	if signalListIdsInvoker == nil {
+		signalListIdsInvoker = gi.FunctionInvokerNew("GObject", "signal_list_ids")
+	}
+
+	signalListIdsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_lookup' : non trivial function
 
+var signalLookupInvoker *gi.FunctionInvoker
+
 // SignalLookup is a representation of the C type g_signal_lookup.
 func SignalLookup() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_lookup")
-	fmt.Println(invoker)
+	if signalLookupInvoker == nil {
+		signalLookupInvoker = gi.FunctionInvokerNew("GObject", "signal_lookup")
+	}
+
+	signalLookupInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_name' : non trivial function
 
+var signalNameInvoker *gi.FunctionInvoker
+
 // SignalName is a representation of the C type g_signal_name.
 func SignalName() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_name")
-	fmt.Println(invoker)
+	if signalNameInvoker == nil {
+		signalNameInvoker = gi.FunctionInvokerNew("GObject", "signal_name")
+	}
+
+	signalNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_new' : non trivial function
 
+var signalNewInvoker *gi.FunctionInvoker
+
 // SignalNew is a representation of the C type g_signal_new.
 func SignalNew() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_new")
-	fmt.Println(invoker)
+	if signalNewInvoker == nil {
+		signalNewInvoker = gi.FunctionInvokerNew("GObject", "signal_new")
+	}
+
+	signalNewInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_new_class_handler' : non trivial function
 
+var signalNewClassHandlerInvoker *gi.FunctionInvoker
+
 // SignalNewClassHandler is a representation of the C type g_signal_new_class_handler.
 func SignalNewClassHandler() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_new_class_handler")
-	fmt.Println(invoker)
+	if signalNewClassHandlerInvoker == nil {
+		signalNewClassHandlerInvoker = gi.FunctionInvokerNew("GObject", "signal_new_class_handler")
+	}
+
+	signalNewClassHandlerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_new_valist' : non trivial function
 
+var signalNewValistInvoker *gi.FunctionInvoker
+
 // SignalNewValist is a representation of the C type g_signal_new_valist.
 func SignalNewValist() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_new_valist")
-	fmt.Println(invoker)
+	if signalNewValistInvoker == nil {
+		signalNewValistInvoker = gi.FunctionInvokerNew("GObject", "signal_new_valist")
+	}
+
+	signalNewValistInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_newv' : non trivial function
 
+var signalNewvInvoker *gi.FunctionInvoker
+
 // SignalNewv is a representation of the C type g_signal_newv.
 func SignalNewv() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_newv")
-	fmt.Println(invoker)
+	if signalNewvInvoker == nil {
+		signalNewvInvoker = gi.FunctionInvokerNew("GObject", "signal_newv")
+	}
+
+	signalNewvInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_override_class_closure' : non trivial function
 
+var signalOverrideClassClosureInvoker *gi.FunctionInvoker
+
 // SignalOverrideClassClosure is a representation of the C type g_signal_override_class_closure.
 func SignalOverrideClassClosure() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_override_class_closure")
-	fmt.Println(invoker)
+	if signalOverrideClassClosureInvoker == nil {
+		signalOverrideClassClosureInvoker = gi.FunctionInvokerNew("GObject", "signal_override_class_closure")
+	}
+
+	signalOverrideClassClosureInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_override_class_handler' : non trivial function
 
+var signalOverrideClassHandlerInvoker *gi.FunctionInvoker
+
 // SignalOverrideClassHandler is a representation of the C type g_signal_override_class_handler.
 func SignalOverrideClassHandler() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_override_class_handler")
-	fmt.Println(invoker)
+	if signalOverrideClassHandlerInvoker == nil {
+		signalOverrideClassHandlerInvoker = gi.FunctionInvokerNew("GObject", "signal_override_class_handler")
+	}
+
+	signalOverrideClassHandlerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_parse_name' : non trivial function
 
+var signalParseNameInvoker *gi.FunctionInvoker
+
 // SignalParseName is a representation of the C type g_signal_parse_name.
 func SignalParseName() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_parse_name")
-	fmt.Println(invoker)
+	if signalParseNameInvoker == nil {
+		signalParseNameInvoker = gi.FunctionInvokerNew("GObject", "signal_parse_name")
+	}
+
+	signalParseNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_query' : non trivial function
 
+var signalQueryInvoker *gi.FunctionInvoker
+
 // SignalQuery is a representation of the C type g_signal_query.
 func SignalQuery() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_query")
-	fmt.Println(invoker)
+	if signalQueryInvoker == nil {
+		signalQueryInvoker = gi.FunctionInvokerNew("GObject", "signal_query")
+	}
+
+	signalQueryInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_remove_emission_hook' : non trivial function
 
+var signalRemoveEmissionHookInvoker *gi.FunctionInvoker
+
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
-	fmt.Println(invoker)
+	if signalRemoveEmissionHookInvoker == nil {
+		signalRemoveEmissionHookInvoker = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
+	}
+
+	signalRemoveEmissionHookInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : non trivial function
 
+var signalSetVaMarshallerInvoker *gi.FunctionInvoker
+
 // SignalSetVaMarshaller is a representation of the C type g_signal_set_va_marshaller.
 func SignalSetVaMarshaller() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_set_va_marshaller")
-	fmt.Println(invoker)
+	if signalSetVaMarshallerInvoker == nil {
+		signalSetVaMarshallerInvoker = gi.FunctionInvokerNew("GObject", "signal_set_va_marshaller")
+	}
+
+	signalSetVaMarshallerInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_stop_emission' : non trivial function
 
+var signalStopEmissionInvoker *gi.FunctionInvoker
+
 // SignalStopEmission is a representation of the C type g_signal_stop_emission.
 func SignalStopEmission() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_stop_emission")
-	fmt.Println(invoker)
+	if signalStopEmissionInvoker == nil {
+		signalStopEmissionInvoker = gi.FunctionInvokerNew("GObject", "signal_stop_emission")
+	}
+
+	signalStopEmissionInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_stop_emission_by_name' : non trivial function
 
+var signalStopEmissionByNameInvoker *gi.FunctionInvoker
+
 // SignalStopEmissionByName is a representation of the C type g_signal_stop_emission_by_name.
 func SignalStopEmissionByName() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_stop_emission_by_name")
-	fmt.Println(invoker)
+	if signalStopEmissionByNameInvoker == nil {
+		signalStopEmissionByNameInvoker = gi.FunctionInvokerNew("GObject", "signal_stop_emission_by_name")
+	}
+
+	signalStopEmissionByNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_signal_type_cclosure_new' : non trivial function
 
+var signalTypeCclosureNewInvoker *gi.FunctionInvoker
+
 // SignalTypeCclosureNew is a representation of the C type g_signal_type_cclosure_new.
 func SignalTypeCclosureNew() {
-	invoker := gi.FunctionInvokerNew("GObject", "signal_type_cclosure_new")
-	fmt.Println(invoker)
+	if signalTypeCclosureNewInvoker == nil {
+		signalTypeCclosureNewInvoker = gi.FunctionInvokerNew("GObject", "signal_type_cclosure_new")
+	}
+
+	signalTypeCclosureNewInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_source_set_closure' : non trivial function
 
+var sourceSetClosureInvoker *gi.FunctionInvoker
+
 // SourceSetClosure is a representation of the C type g_source_set_closure.
 func SourceSetClosure() {
-	invoker := gi.FunctionInvokerNew("GObject", "source_set_closure")
-	fmt.Println(invoker)
+	if sourceSetClosureInvoker == nil {
+		sourceSetClosureInvoker = gi.FunctionInvokerNew("GObject", "source_set_closure")
+	}
+
+	sourceSetClosureInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_source_set_dummy_callback' : non trivial function
 
+var sourceSetDummyCallbackInvoker *gi.FunctionInvoker
+
 // SourceSetDummyCallback is a representation of the C type g_source_set_dummy_callback.
 func SourceSetDummyCallback() {
-	invoker := gi.FunctionInvokerNew("GObject", "source_set_dummy_callback")
-	fmt.Println(invoker)
+	if sourceSetDummyCallbackInvoker == nil {
+		sourceSetDummyCallbackInvoker = gi.FunctionInvokerNew("GObject", "source_set_dummy_callback")
+	}
+
+	sourceSetDummyCallbackInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_strdup_value_contents' : non trivial function
 
+var strdupValueContentsInvoker *gi.FunctionInvoker
+
 // StrdupValueContents is a representation of the C type g_strdup_value_contents.
 func StrdupValueContents() {
-	invoker := gi.FunctionInvokerNew("GObject", "strdup_value_contents")
-	fmt.Println(invoker)
+	if strdupValueContentsInvoker == nil {
+		strdupValueContentsInvoker = gi.FunctionInvokerNew("GObject", "strdup_value_contents")
+	}
+
+	strdupValueContentsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_add_class_cache_func' : non trivial function
 
+var typeAddClassCacheFuncInvoker *gi.FunctionInvoker
+
 // TypeAddClassCacheFunc is a representation of the C type g_type_add_class_cache_func.
 func TypeAddClassCacheFunc() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_add_class_cache_func")
-	fmt.Println(invoker)
+	if typeAddClassCacheFuncInvoker == nil {
+		typeAddClassCacheFuncInvoker = gi.FunctionInvokerNew("GObject", "type_add_class_cache_func")
+	}
+
+	typeAddClassCacheFuncInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_add_class_private' : non trivial function
 
+var typeAddClassPrivateInvoker *gi.FunctionInvoker
+
 // TypeAddClassPrivate is a representation of the C type g_type_add_class_private.
 func TypeAddClassPrivate() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_add_class_private")
-	fmt.Println(invoker)
+	if typeAddClassPrivateInvoker == nil {
+		typeAddClassPrivateInvoker = gi.FunctionInvokerNew("GObject", "type_add_class_private")
+	}
+
+	typeAddClassPrivateInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_add_instance_private' : non trivial function
 
+var typeAddInstancePrivateInvoker *gi.FunctionInvoker
+
 // TypeAddInstancePrivate is a representation of the C type g_type_add_instance_private.
 func TypeAddInstancePrivate() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_add_instance_private")
-	fmt.Println(invoker)
+	if typeAddInstancePrivateInvoker == nil {
+		typeAddInstancePrivateInvoker = gi.FunctionInvokerNew("GObject", "type_add_instance_private")
+	}
+
+	typeAddInstancePrivateInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_add_interface_check' : non trivial function
 
+var typeAddInterfaceCheckInvoker *gi.FunctionInvoker
+
 // TypeAddInterfaceCheck is a representation of the C type g_type_add_interface_check.
 func TypeAddInterfaceCheck() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_add_interface_check")
-	fmt.Println(invoker)
+	if typeAddInterfaceCheckInvoker == nil {
+		typeAddInterfaceCheckInvoker = gi.FunctionInvokerNew("GObject", "type_add_interface_check")
+	}
+
+	typeAddInterfaceCheckInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_add_interface_dynamic' : non trivial function
 
+var typeAddInterfaceDynamicInvoker *gi.FunctionInvoker
+
 // TypeAddInterfaceDynamic is a representation of the C type g_type_add_interface_dynamic.
 func TypeAddInterfaceDynamic() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_add_interface_dynamic")
-	fmt.Println(invoker)
+	if typeAddInterfaceDynamicInvoker == nil {
+		typeAddInterfaceDynamicInvoker = gi.FunctionInvokerNew("GObject", "type_add_interface_dynamic")
+	}
+
+	typeAddInterfaceDynamicInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_add_interface_static' : non trivial function
 
+var typeAddInterfaceStaticInvoker *gi.FunctionInvoker
+
 // TypeAddInterfaceStatic is a representation of the C type g_type_add_interface_static.
 func TypeAddInterfaceStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_add_interface_static")
-	fmt.Println(invoker)
+	if typeAddInterfaceStaticInvoker == nil {
+		typeAddInterfaceStaticInvoker = gi.FunctionInvokerNew("GObject", "type_add_interface_static")
+	}
+
+	typeAddInterfaceStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_class_cast' : non trivial function
 
+var typeCheckClassCastInvoker *gi.FunctionInvoker
+
 // TypeCheckClassCast is a representation of the C type g_type_check_class_cast.
 func TypeCheckClassCast() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_class_cast")
-	fmt.Println(invoker)
+	if typeCheckClassCastInvoker == nil {
+		typeCheckClassCastInvoker = gi.FunctionInvokerNew("GObject", "type_check_class_cast")
+	}
+
+	typeCheckClassCastInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_class_is_a' : non trivial function
 
+var typeCheckClassIsAInvoker *gi.FunctionInvoker
+
 // TypeCheckClassIsA is a representation of the C type g_type_check_class_is_a.
 func TypeCheckClassIsA() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_class_is_a")
-	fmt.Println(invoker)
+	if typeCheckClassIsAInvoker == nil {
+		typeCheckClassIsAInvoker = gi.FunctionInvokerNew("GObject", "type_check_class_is_a")
+	}
+
+	typeCheckClassIsAInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_instance' : non trivial function
 
+var typeCheckInstanceInvoker *gi.FunctionInvoker
+
 // TypeCheckInstance is a representation of the C type g_type_check_instance.
 func TypeCheckInstance() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_instance")
-	fmt.Println(invoker)
+	if typeCheckInstanceInvoker == nil {
+		typeCheckInstanceInvoker = gi.FunctionInvokerNew("GObject", "type_check_instance")
+	}
+
+	typeCheckInstanceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_instance_cast' : non trivial function
 
+var typeCheckInstanceCastInvoker *gi.FunctionInvoker
+
 // TypeCheckInstanceCast is a representation of the C type g_type_check_instance_cast.
 func TypeCheckInstanceCast() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_instance_cast")
-	fmt.Println(invoker)
+	if typeCheckInstanceCastInvoker == nil {
+		typeCheckInstanceCastInvoker = gi.FunctionInvokerNew("GObject", "type_check_instance_cast")
+	}
+
+	typeCheckInstanceCastInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_instance_is_a' : non trivial function
 
+var typeCheckInstanceIsAInvoker *gi.FunctionInvoker
+
 // TypeCheckInstanceIsA is a representation of the C type g_type_check_instance_is_a.
 func TypeCheckInstanceIsA() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_instance_is_a")
-	fmt.Println(invoker)
+	if typeCheckInstanceIsAInvoker == nil {
+		typeCheckInstanceIsAInvoker = gi.FunctionInvokerNew("GObject", "type_check_instance_is_a")
+	}
+
+	typeCheckInstanceIsAInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_instance_is_fundamentally_a' : non trivial function
 
+var typeCheckInstanceIsFundamentallyAInvoker *gi.FunctionInvoker
+
 // TypeCheckInstanceIsFundamentallyA is a representation of the C type g_type_check_instance_is_fundamentally_a.
 func TypeCheckInstanceIsFundamentallyA() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_instance_is_fundamentally_a")
-	fmt.Println(invoker)
+	if typeCheckInstanceIsFundamentallyAInvoker == nil {
+		typeCheckInstanceIsFundamentallyAInvoker = gi.FunctionInvokerNew("GObject", "type_check_instance_is_fundamentally_a")
+	}
+
+	typeCheckInstanceIsFundamentallyAInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_is_value_type' : non trivial function
 
+var typeCheckIsValueTypeInvoker *gi.FunctionInvoker
+
 // TypeCheckIsValueType is a representation of the C type g_type_check_is_value_type.
 func TypeCheckIsValueType() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_is_value_type")
-	fmt.Println(invoker)
+	if typeCheckIsValueTypeInvoker == nil {
+		typeCheckIsValueTypeInvoker = gi.FunctionInvokerNew("GObject", "type_check_is_value_type")
+	}
+
+	typeCheckIsValueTypeInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_value' : non trivial function
 
+var typeCheckValueInvoker *gi.FunctionInvoker
+
 // TypeCheckValue is a representation of the C type g_type_check_value.
 func TypeCheckValue() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_value")
-	fmt.Println(invoker)
+	if typeCheckValueInvoker == nil {
+		typeCheckValueInvoker = gi.FunctionInvokerNew("GObject", "type_check_value")
+	}
+
+	typeCheckValueInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_check_value_holds' : non trivial function
 
+var typeCheckValueHoldsInvoker *gi.FunctionInvoker
+
 // TypeCheckValueHolds is a representation of the C type g_type_check_value_holds.
 func TypeCheckValueHolds() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_check_value_holds")
-	fmt.Println(invoker)
+	if typeCheckValueHoldsInvoker == nil {
+		typeCheckValueHoldsInvoker = gi.FunctionInvokerNew("GObject", "type_check_value_holds")
+	}
+
+	typeCheckValueHoldsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_children' : non trivial function
 
+var typeChildrenInvoker *gi.FunctionInvoker
+
 // TypeChildren is a representation of the C type g_type_children.
 func TypeChildren() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_children")
-	fmt.Println(invoker)
+	if typeChildrenInvoker == nil {
+		typeChildrenInvoker = gi.FunctionInvokerNew("GObject", "type_children")
+	}
+
+	typeChildrenInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_class_adjust_private_offset' : non trivial function
 
+var typeClassAdjustPrivateOffsetInvoker *gi.FunctionInvoker
+
 // TypeClassAdjustPrivateOffset is a representation of the C type g_type_class_adjust_private_offset.
 func TypeClassAdjustPrivateOffset() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_class_adjust_private_offset")
-	fmt.Println(invoker)
+	if typeClassAdjustPrivateOffsetInvoker == nil {
+		typeClassAdjustPrivateOffsetInvoker = gi.FunctionInvokerNew("GObject", "type_class_adjust_private_offset")
+	}
+
+	typeClassAdjustPrivateOffsetInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_class_peek' : non trivial function
 
+var typeClassPeekInvoker *gi.FunctionInvoker
+
 // TypeClassPeek is a representation of the C type g_type_class_peek.
 func TypeClassPeek() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_class_peek")
-	fmt.Println(invoker)
+	if typeClassPeekInvoker == nil {
+		typeClassPeekInvoker = gi.FunctionInvokerNew("GObject", "type_class_peek")
+	}
+
+	typeClassPeekInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_class_peek_static' : non trivial function
 
+var typeClassPeekStaticInvoker *gi.FunctionInvoker
+
 // TypeClassPeekStatic is a representation of the C type g_type_class_peek_static.
 func TypeClassPeekStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_class_peek_static")
-	fmt.Println(invoker)
+	if typeClassPeekStaticInvoker == nil {
+		typeClassPeekStaticInvoker = gi.FunctionInvokerNew("GObject", "type_class_peek_static")
+	}
+
+	typeClassPeekStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_class_ref' : non trivial function
 
+var typeClassRefInvoker *gi.FunctionInvoker
+
 // TypeClassRef is a representation of the C type g_type_class_ref.
 func TypeClassRef() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_class_ref")
-	fmt.Println(invoker)
+	if typeClassRefInvoker == nil {
+		typeClassRefInvoker = gi.FunctionInvokerNew("GObject", "type_class_ref")
+	}
+
+	typeClassRefInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_create_instance' : non trivial function
 
+var typeCreateInstanceInvoker *gi.FunctionInvoker
+
 // TypeCreateInstance is a representation of the C type g_type_create_instance.
 func TypeCreateInstance() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_create_instance")
-	fmt.Println(invoker)
+	if typeCreateInstanceInvoker == nil {
+		typeCreateInstanceInvoker = gi.FunctionInvokerNew("GObject", "type_create_instance")
+	}
+
+	typeCreateInstanceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_default_interface_peek' : non trivial function
 
+var typeDefaultInterfacePeekInvoker *gi.FunctionInvoker
+
 // TypeDefaultInterfacePeek is a representation of the C type g_type_default_interface_peek.
 func TypeDefaultInterfacePeek() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_default_interface_peek")
-	fmt.Println(invoker)
+	if typeDefaultInterfacePeekInvoker == nil {
+		typeDefaultInterfacePeekInvoker = gi.FunctionInvokerNew("GObject", "type_default_interface_peek")
+	}
+
+	typeDefaultInterfacePeekInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_default_interface_ref' : non trivial function
 
+var typeDefaultInterfaceRefInvoker *gi.FunctionInvoker
+
 // TypeDefaultInterfaceRef is a representation of the C type g_type_default_interface_ref.
 func TypeDefaultInterfaceRef() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_default_interface_ref")
-	fmt.Println(invoker)
+	if typeDefaultInterfaceRefInvoker == nil {
+		typeDefaultInterfaceRefInvoker = gi.FunctionInvokerNew("GObject", "type_default_interface_ref")
+	}
+
+	typeDefaultInterfaceRefInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_default_interface_unref' : non trivial function
 
+var typeDefaultInterfaceUnrefInvoker *gi.FunctionInvoker
+
 // TypeDefaultInterfaceUnref is a representation of the C type g_type_default_interface_unref.
 func TypeDefaultInterfaceUnref() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_default_interface_unref")
-	fmt.Println(invoker)
+	if typeDefaultInterfaceUnrefInvoker == nil {
+		typeDefaultInterfaceUnrefInvoker = gi.FunctionInvokerNew("GObject", "type_default_interface_unref")
+	}
+
+	typeDefaultInterfaceUnrefInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_depth' : non trivial function
 
+var typeDepthInvoker *gi.FunctionInvoker
+
 // TypeDepth is a representation of the C type g_type_depth.
 func TypeDepth() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_depth")
-	fmt.Println(invoker)
+	if typeDepthInvoker == nil {
+		typeDepthInvoker = gi.FunctionInvokerNew("GObject", "type_depth")
+	}
+
+	typeDepthInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_ensure' : non trivial function
 
+var typeEnsureInvoker *gi.FunctionInvoker
+
 // TypeEnsure is a representation of the C type g_type_ensure.
 func TypeEnsure() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_ensure")
-	fmt.Println(invoker)
+	if typeEnsureInvoker == nil {
+		typeEnsureInvoker = gi.FunctionInvokerNew("GObject", "type_ensure")
+	}
+
+	typeEnsureInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_free_instance' : non trivial function
 
+var typeFreeInstanceInvoker *gi.FunctionInvoker
+
 // TypeFreeInstance is a representation of the C type g_type_free_instance.
 func TypeFreeInstance() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_free_instance")
-	fmt.Println(invoker)
+	if typeFreeInstanceInvoker == nil {
+		typeFreeInstanceInvoker = gi.FunctionInvokerNew("GObject", "type_free_instance")
+	}
+
+	typeFreeInstanceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_from_name' : non trivial function
 
+var typeFromNameInvoker *gi.FunctionInvoker
+
 // TypeFromName is a representation of the C type g_type_from_name.
 func TypeFromName() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_from_name")
-	fmt.Println(invoker)
+	if typeFromNameInvoker == nil {
+		typeFromNameInvoker = gi.FunctionInvokerNew("GObject", "type_from_name")
+	}
+
+	typeFromNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_fundamental' : non trivial function
 
+var typeFundamentalInvoker *gi.FunctionInvoker
+
 // TypeFundamental is a representation of the C type g_type_fundamental.
 func TypeFundamental() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_fundamental")
-	fmt.Println(invoker)
+	if typeFundamentalInvoker == nil {
+		typeFundamentalInvoker = gi.FunctionInvokerNew("GObject", "type_fundamental")
+	}
+
+	typeFundamentalInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_fundamental_next' : non trivial function
 
+var typeFundamentalNextInvoker *gi.FunctionInvoker
+
 // TypeFundamentalNext is a representation of the C type g_type_fundamental_next.
 func TypeFundamentalNext() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_fundamental_next")
-	fmt.Println(invoker)
+	if typeFundamentalNextInvoker == nil {
+		typeFundamentalNextInvoker = gi.FunctionInvokerNew("GObject", "type_fundamental_next")
+	}
+
+	typeFundamentalNextInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_get_instance_count' : non trivial function
 
+var typeGetInstanceCountInvoker *gi.FunctionInvoker
+
 // TypeGetInstanceCount is a representation of the C type g_type_get_instance_count.
 func TypeGetInstanceCount() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_get_instance_count")
-	fmt.Println(invoker)
+	if typeGetInstanceCountInvoker == nil {
+		typeGetInstanceCountInvoker = gi.FunctionInvokerNew("GObject", "type_get_instance_count")
+	}
+
+	typeGetInstanceCountInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_get_plugin' : non trivial function
 
+var typeGetPluginInvoker *gi.FunctionInvoker
+
 // TypeGetPlugin is a representation of the C type g_type_get_plugin.
 func TypeGetPlugin() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_get_plugin")
-	fmt.Println(invoker)
+	if typeGetPluginInvoker == nil {
+		typeGetPluginInvoker = gi.FunctionInvokerNew("GObject", "type_get_plugin")
+	}
+
+	typeGetPluginInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_get_qdata' : non trivial function
 
+var typeGetQdataInvoker *gi.FunctionInvoker
+
 // TypeGetQdata is a representation of the C type g_type_get_qdata.
 func TypeGetQdata() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_get_qdata")
-	fmt.Println(invoker)
+	if typeGetQdataInvoker == nil {
+		typeGetQdataInvoker = gi.FunctionInvokerNew("GObject", "type_get_qdata")
+	}
+
+	typeGetQdataInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_get_type_registration_serial' : non trivial function
 
+var typeGetTypeRegistrationSerialInvoker *gi.FunctionInvoker
+
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
 func TypeGetTypeRegistrationSerial() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
-	fmt.Println(invoker)
+	if typeGetTypeRegistrationSerialInvoker == nil {
+		typeGetTypeRegistrationSerialInvoker = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
+	}
+
+	typeGetTypeRegistrationSerialInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_init' : non trivial function
 
+var typeInitInvoker *gi.FunctionInvoker
+
 // TypeInit is a representation of the C type g_type_init.
 func TypeInit() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_init")
-	fmt.Println(invoker)
+	if typeInitInvoker == nil {
+		typeInitInvoker = gi.FunctionInvokerNew("GObject", "type_init")
+	}
+
+	typeInitInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : non trivial function
 
+var typeInitWithDebugFlagsInvoker *gi.FunctionInvoker
+
 // TypeInitWithDebugFlags is a representation of the C type g_type_init_with_debug_flags.
 func TypeInitWithDebugFlags() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_init_with_debug_flags")
-	fmt.Println(invoker)
+	if typeInitWithDebugFlagsInvoker == nil {
+		typeInitWithDebugFlagsInvoker = gi.FunctionInvokerNew("GObject", "type_init_with_debug_flags")
+	}
+
+	typeInitWithDebugFlagsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_interface_add_prerequisite' : non trivial function
 
+var typeInterfaceAddPrerequisiteInvoker *gi.FunctionInvoker
+
 // TypeInterfaceAddPrerequisite is a representation of the C type g_type_interface_add_prerequisite.
 func TypeInterfaceAddPrerequisite() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_interface_add_prerequisite")
-	fmt.Println(invoker)
+	if typeInterfaceAddPrerequisiteInvoker == nil {
+		typeInterfaceAddPrerequisiteInvoker = gi.FunctionInvokerNew("GObject", "type_interface_add_prerequisite")
+	}
+
+	typeInterfaceAddPrerequisiteInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_interface_get_plugin' : non trivial function
 
+var typeInterfaceGetPluginInvoker *gi.FunctionInvoker
+
 // TypeInterfaceGetPlugin is a representation of the C type g_type_interface_get_plugin.
 func TypeInterfaceGetPlugin() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_interface_get_plugin")
-	fmt.Println(invoker)
+	if typeInterfaceGetPluginInvoker == nil {
+		typeInterfaceGetPluginInvoker = gi.FunctionInvokerNew("GObject", "type_interface_get_plugin")
+	}
+
+	typeInterfaceGetPluginInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_interface_peek' : non trivial function
 
+var typeInterfacePeekInvoker *gi.FunctionInvoker
+
 // TypeInterfacePeek is a representation of the C type g_type_interface_peek.
 func TypeInterfacePeek() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_interface_peek")
-	fmt.Println(invoker)
+	if typeInterfacePeekInvoker == nil {
+		typeInterfacePeekInvoker = gi.FunctionInvokerNew("GObject", "type_interface_peek")
+	}
+
+	typeInterfacePeekInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_interface_prerequisites' : non trivial function
 
+var typeInterfacePrerequisitesInvoker *gi.FunctionInvoker
+
 // TypeInterfacePrerequisites is a representation of the C type g_type_interface_prerequisites.
 func TypeInterfacePrerequisites() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_interface_prerequisites")
-	fmt.Println(invoker)
+	if typeInterfacePrerequisitesInvoker == nil {
+		typeInterfacePrerequisitesInvoker = gi.FunctionInvokerNew("GObject", "type_interface_prerequisites")
+	}
+
+	typeInterfacePrerequisitesInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_interfaces' : non trivial function
 
+var typeInterfacesInvoker *gi.FunctionInvoker
+
 // TypeInterfaces is a representation of the C type g_type_interfaces.
 func TypeInterfaces() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_interfaces")
-	fmt.Println(invoker)
+	if typeInterfacesInvoker == nil {
+		typeInterfacesInvoker = gi.FunctionInvokerNew("GObject", "type_interfaces")
+	}
+
+	typeInterfacesInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_is_a' : non trivial function
 
+var typeIsAInvoker *gi.FunctionInvoker
+
 // TypeIsA is a representation of the C type g_type_is_a.
 func TypeIsA() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_is_a")
-	fmt.Println(invoker)
+	if typeIsAInvoker == nil {
+		typeIsAInvoker = gi.FunctionInvokerNew("GObject", "type_is_a")
+	}
+
+	typeIsAInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_name' : non trivial function
 
+var typeNameInvoker *gi.FunctionInvoker
+
 // TypeName is a representation of the C type g_type_name.
 func TypeName() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_name")
-	fmt.Println(invoker)
+	if typeNameInvoker == nil {
+		typeNameInvoker = gi.FunctionInvokerNew("GObject", "type_name")
+	}
+
+	typeNameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_name_from_class' : non trivial function
 
+var typeNameFromClassInvoker *gi.FunctionInvoker
+
 // TypeNameFromClass is a representation of the C type g_type_name_from_class.
 func TypeNameFromClass() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_name_from_class")
-	fmt.Println(invoker)
+	if typeNameFromClassInvoker == nil {
+		typeNameFromClassInvoker = gi.FunctionInvokerNew("GObject", "type_name_from_class")
+	}
+
+	typeNameFromClassInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_name_from_instance' : non trivial function
 
+var typeNameFromInstanceInvoker *gi.FunctionInvoker
+
 // TypeNameFromInstance is a representation of the C type g_type_name_from_instance.
 func TypeNameFromInstance() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_name_from_instance")
-	fmt.Println(invoker)
+	if typeNameFromInstanceInvoker == nil {
+		typeNameFromInstanceInvoker = gi.FunctionInvokerNew("GObject", "type_name_from_instance")
+	}
+
+	typeNameFromInstanceInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_next_base' : non trivial function
 
+var typeNextBaseInvoker *gi.FunctionInvoker
+
 // TypeNextBase is a representation of the C type g_type_next_base.
 func TypeNextBase() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_next_base")
-	fmt.Println(invoker)
+	if typeNextBaseInvoker == nil {
+		typeNextBaseInvoker = gi.FunctionInvokerNew("GObject", "type_next_base")
+	}
+
+	typeNextBaseInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_parent' : non trivial function
 
+var typeParentInvoker *gi.FunctionInvoker
+
 // TypeParent is a representation of the C type g_type_parent.
 func TypeParent() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_parent")
-	fmt.Println(invoker)
+	if typeParentInvoker == nil {
+		typeParentInvoker = gi.FunctionInvokerNew("GObject", "type_parent")
+	}
+
+	typeParentInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_qname' : non trivial function
 
+var typeQnameInvoker *gi.FunctionInvoker
+
 // TypeQname is a representation of the C type g_type_qname.
 func TypeQname() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_qname")
-	fmt.Println(invoker)
+	if typeQnameInvoker == nil {
+		typeQnameInvoker = gi.FunctionInvokerNew("GObject", "type_qname")
+	}
+
+	typeQnameInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_query' : non trivial function
 
+var typeQueryInvoker *gi.FunctionInvoker
+
 // TypeQuery is a representation of the C type g_type_query.
 func TypeQuery() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_query")
-	fmt.Println(invoker)
+	if typeQueryInvoker == nil {
+		typeQueryInvoker = gi.FunctionInvokerNew("GObject", "type_query")
+	}
+
+	typeQueryInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_register_dynamic' : non trivial function
 
+var typeRegisterDynamicInvoker *gi.FunctionInvoker
+
 // TypeRegisterDynamic is a representation of the C type g_type_register_dynamic.
 func TypeRegisterDynamic() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_register_dynamic")
-	fmt.Println(invoker)
+	if typeRegisterDynamicInvoker == nil {
+		typeRegisterDynamicInvoker = gi.FunctionInvokerNew("GObject", "type_register_dynamic")
+	}
+
+	typeRegisterDynamicInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_register_fundamental' : non trivial function
 
+var typeRegisterFundamentalInvoker *gi.FunctionInvoker
+
 // TypeRegisterFundamental is a representation of the C type g_type_register_fundamental.
 func TypeRegisterFundamental() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_register_fundamental")
-	fmt.Println(invoker)
+	if typeRegisterFundamentalInvoker == nil {
+		typeRegisterFundamentalInvoker = gi.FunctionInvokerNew("GObject", "type_register_fundamental")
+	}
+
+	typeRegisterFundamentalInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_register_static' : non trivial function
 
+var typeRegisterStaticInvoker *gi.FunctionInvoker
+
 // TypeRegisterStatic is a representation of the C type g_type_register_static.
 func TypeRegisterStatic() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_register_static")
-	fmt.Println(invoker)
+	if typeRegisterStaticInvoker == nil {
+		typeRegisterStaticInvoker = gi.FunctionInvokerNew("GObject", "type_register_static")
+	}
+
+	typeRegisterStaticInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_register_static_simple' : non trivial function
 
+var typeRegisterStaticSimpleInvoker *gi.FunctionInvoker
+
 // TypeRegisterStaticSimple is a representation of the C type g_type_register_static_simple.
 func TypeRegisterStaticSimple() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_register_static_simple")
-	fmt.Println(invoker)
+	if typeRegisterStaticSimpleInvoker == nil {
+		typeRegisterStaticSimpleInvoker = gi.FunctionInvokerNew("GObject", "type_register_static_simple")
+	}
+
+	typeRegisterStaticSimpleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_remove_class_cache_func' : non trivial function
 
+var typeRemoveClassCacheFuncInvoker *gi.FunctionInvoker
+
 // TypeRemoveClassCacheFunc is a representation of the C type g_type_remove_class_cache_func.
 func TypeRemoveClassCacheFunc() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_remove_class_cache_func")
-	fmt.Println(invoker)
+	if typeRemoveClassCacheFuncInvoker == nil {
+		typeRemoveClassCacheFuncInvoker = gi.FunctionInvokerNew("GObject", "type_remove_class_cache_func")
+	}
+
+	typeRemoveClassCacheFuncInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_remove_interface_check' : non trivial function
 
+var typeRemoveInterfaceCheckInvoker *gi.FunctionInvoker
+
 // TypeRemoveInterfaceCheck is a representation of the C type g_type_remove_interface_check.
 func TypeRemoveInterfaceCheck() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_remove_interface_check")
-	fmt.Println(invoker)
+	if typeRemoveInterfaceCheckInvoker == nil {
+		typeRemoveInterfaceCheckInvoker = gi.FunctionInvokerNew("GObject", "type_remove_interface_check")
+	}
+
+	typeRemoveInterfaceCheckInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_set_qdata' : non trivial function
 
+var typeSetQdataInvoker *gi.FunctionInvoker
+
 // TypeSetQdata is a representation of the C type g_type_set_qdata.
 func TypeSetQdata() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_set_qdata")
-	fmt.Println(invoker)
+	if typeSetQdataInvoker == nil {
+		typeSetQdataInvoker = gi.FunctionInvokerNew("GObject", "type_set_qdata")
+	}
+
+	typeSetQdataInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_test_flags' : non trivial function
 
+var typeTestFlagsInvoker *gi.FunctionInvoker
+
 // TypeTestFlags is a representation of the C type g_type_test_flags.
 func TypeTestFlags() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_test_flags")
-	fmt.Println(invoker)
+	if typeTestFlagsInvoker == nil {
+		typeTestFlagsInvoker = gi.FunctionInvokerNew("GObject", "type_test_flags")
+	}
+
+	typeTestFlagsInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_type_value_table_peek' : non trivial function
 
+var typeValueTablePeekInvoker *gi.FunctionInvoker
+
 // TypeValueTablePeek is a representation of the C type g_type_value_table_peek.
 func TypeValueTablePeek() {
-	invoker := gi.FunctionInvokerNew("GObject", "type_value_table_peek")
-	fmt.Println(invoker)
+	if typeValueTablePeekInvoker == nil {
+		typeValueTablePeekInvoker = gi.FunctionInvokerNew("GObject", "type_value_table_peek")
+	}
+
+	typeValueTablePeekInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_value_register_transform_func' : non trivial function
 
+var valueRegisterTransformFuncInvoker *gi.FunctionInvoker
+
 // ValueRegisterTransformFunc is a representation of the C type g_value_register_transform_func.
 func ValueRegisterTransformFunc() {
-	invoker := gi.FunctionInvokerNew("GObject", "value_register_transform_func")
-	fmt.Println(invoker)
+	if valueRegisterTransformFuncInvoker == nil {
+		valueRegisterTransformFuncInvoker = gi.FunctionInvokerNew("GObject", "value_register_transform_func")
+	}
+
+	valueRegisterTransformFuncInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_value_type_compatible' : non trivial function
 
+var valueTypeCompatibleInvoker *gi.FunctionInvoker
+
 // ValueTypeCompatible is a representation of the C type g_value_type_compatible.
 func ValueTypeCompatible() {
-	invoker := gi.FunctionInvokerNew("GObject", "value_type_compatible")
-	fmt.Println(invoker)
+	if valueTypeCompatibleInvoker == nil {
+		valueTypeCompatibleInvoker = gi.FunctionInvokerNew("GObject", "value_type_compatible")
+	}
+
+	valueTypeCompatibleInvoker.Call()
 }
 
 // UNSUPPORTED : C value 'g_value_type_transformable' : non trivial function
 
+var valueTypeTransformableInvoker *gi.FunctionInvoker
+
 // ValueTypeTransformable is a representation of the C type g_value_type_transformable.
 func ValueTypeTransformable() {
-	invoker := gi.FunctionInvokerNew("GObject", "value_type_transformable")
-	fmt.Println(invoker)
+	if valueTypeTransformableInvoker == nil {
+		valueTypeTransformableInvoker = gi.FunctionInvokerNew("GObject", "value_type_transformable")
+	}
+
+	valueTypeTransformableInvoker.Call()
 }

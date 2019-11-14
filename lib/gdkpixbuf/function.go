@@ -2,15 +2,17 @@
 
 package gdkpixbuf
 
-import (
-	"fmt"
-	gi "github.com/pekim/gobbi/internal/gi"
-)
+import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_pixbuf_error_quark' : non trivial function
 
+var pixbufErrorQuarkInvoker *gi.FunctionInvoker
+
 // PixbufErrorQuark is a representation of the C type gdk_pixbuf_error_quark.
 func PixbufErrorQuark() {
-	invoker := gi.FunctionInvokerNew("GdkPixbuf", "pixbuf_error_quark")
-	fmt.Println(invoker)
+	if pixbufErrorQuarkInvoker == nil {
+		pixbufErrorQuarkInvoker = gi.FunctionInvokerNew("GdkPixbuf", "pixbuf_error_quark")
+	}
+
+	pixbufErrorQuarkInvoker.Call()
 }
