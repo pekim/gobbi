@@ -59,7 +59,7 @@ test () {
         flags=$1
     fi
 
-    go test $flags github.com/pekim/gobbi/internal/test/...
+    go test $flags github.com/pekim/gobbi/lib/...
 }
 
 processOptions () {

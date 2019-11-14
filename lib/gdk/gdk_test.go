@@ -1,11 +1,10 @@
-package soup
+package gdk
 
 import (
-	"github.com/pekim/gobbi/lib/soup"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, "host", soup.AUTH_HOST)
+	assert.Equal(t, int32(2), BUTTON_MIDDLE)
 }
