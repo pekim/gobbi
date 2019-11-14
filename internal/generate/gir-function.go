@@ -12,10 +12,10 @@ type Function struct {
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
 	//Doc               *Doc         `xml:"doc"`
 	//InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
-	//Parameters        Parameters   `xml:"parameters>parameter"`
-	//ReturnValue       *ReturnValue `xml:"return-value"`
-	Throws         int    `xml:"throws,attr"`
-	Introspectable string `xml:"introspectable,attr"`
+	Parameters     Parameters   `xml:"parameters>parameter"`
+	ReturnValue    *ReturnValue `xml:"return-value"`
+	Throws         int          `xml:"throws,attr"`
+	Introspectable string       `xml:"introspectable,attr"`
 
 	namespace *Namespace
 	goName    string
@@ -49,6 +49,10 @@ func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 }
 
 func (f *Function) generate(fi *file) {
+	if len(f.Parameters) > 0 || f.ReturnValue != nil {
+		fi.unsupported(f.CIdentifier, "non trivial function")
+	}
+
 	fi.docForC(f.goName, f.CIdentifier)
 
 	fi.
