@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, int32(2), javascriptcore.MajorVersion)
+	assert.Equal(t, int32(2), javascriptcore.MAJOR_VERSION)
 }

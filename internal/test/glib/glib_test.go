@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, int32(4321), glib.BigEndian)
+	assert.Equal(t, int32(4321), glib.BIG_ENDIAN)
 }

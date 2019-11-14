@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, "gio-desktop-app-info-lookup", gio.DesktopAppInfoLookupExtensionPointName)
+	assert.Equal(t, "gio-desktop-app-info-lookup", gio.DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME)
 }

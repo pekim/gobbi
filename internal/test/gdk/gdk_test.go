@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, int32(2), gdk.ButtonMiddle)
+	assert.Equal(t, int32(2), gdk.BUTTON_MIDDLE)
 }

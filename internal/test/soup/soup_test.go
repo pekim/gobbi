@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, "host", soup.AuthHost)
+	assert.Equal(t, "host", soup.AUTH_HOST)
 }

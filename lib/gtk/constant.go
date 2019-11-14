@@ -2,904 +2,904 @@
 
 package gtk
 
-// BinaryAge is a representation of the C type BINARY_AGE.
-const BinaryAge = int32(2230)
+// BINARY_AGE is a representation of the C type BINARY_AGE.
+const BINARY_AGE = int32(2230)
 
-// InputError is a representation of the C type INPUT_ERROR.
-const InputError = int32(-1)
+// INPUT_ERROR is a representation of the C type INPUT_ERROR.
+const INPUT_ERROR = int32(-1)
 
-// InterfaceAge is a representation of the C type INTERFACE_AGE.
-const InterfaceAge = int32(30)
+// INTERFACE_AGE is a representation of the C type INTERFACE_AGE.
+const INTERFACE_AGE = int32(30)
 
-// LevelBarOffsetFull is a representation of the C type LEVEL_BAR_OFFSET_FULL.
+// LEVEL_BAR_OFFSET_FULL is a representation of the C type LEVEL_BAR_OFFSET_FULL.
 //
 // since 3.20
-const LevelBarOffsetFull = "full"
+const LEVEL_BAR_OFFSET_FULL = "full"
 
-// LevelBarOffsetHigh is a representation of the C type LEVEL_BAR_OFFSET_HIGH.
+// LEVEL_BAR_OFFSET_HIGH is a representation of the C type LEVEL_BAR_OFFSET_HIGH.
 //
 // since 3.6
-const LevelBarOffsetHigh = "high"
+const LEVEL_BAR_OFFSET_HIGH = "high"
 
-// LevelBarOffsetLow is a representation of the C type LEVEL_BAR_OFFSET_LOW.
+// LEVEL_BAR_OFFSET_LOW is a representation of the C type LEVEL_BAR_OFFSET_LOW.
 //
 // since 3.6
-const LevelBarOffsetLow = "low"
+const LEVEL_BAR_OFFSET_LOW = "low"
 
-// MajorVersion is a representation of the C type MAJOR_VERSION.
-const MajorVersion = int32(3)
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+const MAJOR_VERSION = int32(3)
 
-// MaxComposeLen is a representation of the C type MAX_COMPOSE_LEN.
-const MaxComposeLen = int32(7)
+// MAX_COMPOSE_LEN is a representation of the C type MAX_COMPOSE_LEN.
+const MAX_COMPOSE_LEN = int32(7)
 
-// MicroVersion is a representation of the C type MICRO_VERSION.
-const MicroVersion = int32(30)
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
+const MICRO_VERSION = int32(30)
 
-// MinorVersion is a representation of the C type MINOR_VERSION.
-const MinorVersion = int32(22)
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
+const MINOR_VERSION = int32(22)
 
-// PaperNameA3 is a representation of the C type PAPER_NAME_A3.
-const PaperNameA3 = "iso_a3"
+// PAPER_NAME_A3 is a representation of the C type PAPER_NAME_A3.
+const PAPER_NAME_A3 = "iso_a3"
 
-// PaperNameA4 is a representation of the C type PAPER_NAME_A4.
-const PaperNameA4 = "iso_a4"
+// PAPER_NAME_A4 is a representation of the C type PAPER_NAME_A4.
+const PAPER_NAME_A4 = "iso_a4"
 
-// PaperNameA5 is a representation of the C type PAPER_NAME_A5.
-const PaperNameA5 = "iso_a5"
+// PAPER_NAME_A5 is a representation of the C type PAPER_NAME_A5.
+const PAPER_NAME_A5 = "iso_a5"
 
-// PaperNameB5 is a representation of the C type PAPER_NAME_B5.
-const PaperNameB5 = "iso_b5"
+// PAPER_NAME_B5 is a representation of the C type PAPER_NAME_B5.
+const PAPER_NAME_B5 = "iso_b5"
 
-// PaperNameExecutive is a representation of the C type PAPER_NAME_EXECUTIVE.
-const PaperNameExecutive = "na_executive"
+// PAPER_NAME_EXECUTIVE is a representation of the C type PAPER_NAME_EXECUTIVE.
+const PAPER_NAME_EXECUTIVE = "na_executive"
 
-// PaperNameLegal is a representation of the C type PAPER_NAME_LEGAL.
-const PaperNameLegal = "na_legal"
+// PAPER_NAME_LEGAL is a representation of the C type PAPER_NAME_LEGAL.
+const PAPER_NAME_LEGAL = "na_legal"
 
-// PaperNameLetter is a representation of the C type PAPER_NAME_LETTER.
-const PaperNameLetter = "na_letter"
+// PAPER_NAME_LETTER is a representation of the C type PAPER_NAME_LETTER.
+const PAPER_NAME_LETTER = "na_letter"
 
-// PathPrioMask is a representation of the C type PATH_PRIO_MASK.
-const PathPrioMask = int32(15)
+// PATH_PRIO_MASK is a representation of the C type PATH_PRIO_MASK.
+const PATH_PRIO_MASK = int32(15)
 
-// PrintSettingsCollate is a representation of the C type PRINT_SETTINGS_COLLATE.
-const PrintSettingsCollate = "collate"
+// PRINT_SETTINGS_COLLATE is a representation of the C type PRINT_SETTINGS_COLLATE.
+const PRINT_SETTINGS_COLLATE = "collate"
 
-// PrintSettingsDefaultSource is a representation of the C type PRINT_SETTINGS_DEFAULT_SOURCE.
-const PrintSettingsDefaultSource = "default-source"
+// PRINT_SETTINGS_DEFAULT_SOURCE is a representation of the C type PRINT_SETTINGS_DEFAULT_SOURCE.
+const PRINT_SETTINGS_DEFAULT_SOURCE = "default-source"
 
-// PrintSettingsDither is a representation of the C type PRINT_SETTINGS_DITHER.
-const PrintSettingsDither = "dither"
+// PRINT_SETTINGS_DITHER is a representation of the C type PRINT_SETTINGS_DITHER.
+const PRINT_SETTINGS_DITHER = "dither"
 
-// PrintSettingsDuplex is a representation of the C type PRINT_SETTINGS_DUPLEX.
-const PrintSettingsDuplex = "duplex"
+// PRINT_SETTINGS_DUPLEX is a representation of the C type PRINT_SETTINGS_DUPLEX.
+const PRINT_SETTINGS_DUPLEX = "duplex"
 
-// PrintSettingsFinishings is a representation of the C type PRINT_SETTINGS_FINISHINGS.
-const PrintSettingsFinishings = "finishings"
+// PRINT_SETTINGS_FINISHINGS is a representation of the C type PRINT_SETTINGS_FINISHINGS.
+const PRINT_SETTINGS_FINISHINGS = "finishings"
 
-// PrintSettingsMediaType is a representation of the C type PRINT_SETTINGS_MEDIA_TYPE.
-const PrintSettingsMediaType = "media-type"
+// PRINT_SETTINGS_MEDIA_TYPE is a representation of the C type PRINT_SETTINGS_MEDIA_TYPE.
+const PRINT_SETTINGS_MEDIA_TYPE = "media-type"
 
-// PrintSettingsNumberUp is a representation of the C type PRINT_SETTINGS_NUMBER_UP.
-const PrintSettingsNumberUp = "number-up"
+// PRINT_SETTINGS_NUMBER_UP is a representation of the C type PRINT_SETTINGS_NUMBER_UP.
+const PRINT_SETTINGS_NUMBER_UP = "number-up"
 
-// PrintSettingsNumberUpLayout is a representation of the C type PRINT_SETTINGS_NUMBER_UP_LAYOUT.
-const PrintSettingsNumberUpLayout = "number-up-layout"
+// PRINT_SETTINGS_NUMBER_UP_LAYOUT is a representation of the C type PRINT_SETTINGS_NUMBER_UP_LAYOUT.
+const PRINT_SETTINGS_NUMBER_UP_LAYOUT = "number-up-layout"
 
-// PrintSettingsNCopies is a representation of the C type PRINT_SETTINGS_N_COPIES.
-const PrintSettingsNCopies = "n-copies"
+// PRINT_SETTINGS_N_COPIES is a representation of the C type PRINT_SETTINGS_N_COPIES.
+const PRINT_SETTINGS_N_COPIES = "n-copies"
 
-// PrintSettingsOrientation is a representation of the C type PRINT_SETTINGS_ORIENTATION.
-const PrintSettingsOrientation = "orientation"
+// PRINT_SETTINGS_ORIENTATION is a representation of the C type PRINT_SETTINGS_ORIENTATION.
+const PRINT_SETTINGS_ORIENTATION = "orientation"
 
-// PrintSettingsOutputBasename is a representation of the C type PRINT_SETTINGS_OUTPUT_BASENAME.
+// PRINT_SETTINGS_OUTPUT_BASENAME is a representation of the C type PRINT_SETTINGS_OUTPUT_BASENAME.
 //
 // since 3.6
-const PrintSettingsOutputBasename = "output-basename"
+const PRINT_SETTINGS_OUTPUT_BASENAME = "output-basename"
 
-// PrintSettingsOutputBin is a representation of the C type PRINT_SETTINGS_OUTPUT_BIN.
-const PrintSettingsOutputBin = "output-bin"
+// PRINT_SETTINGS_OUTPUT_BIN is a representation of the C type PRINT_SETTINGS_OUTPUT_BIN.
+const PRINT_SETTINGS_OUTPUT_BIN = "output-bin"
 
-// PrintSettingsOutputDir is a representation of the C type PRINT_SETTINGS_OUTPUT_DIR.
+// PRINT_SETTINGS_OUTPUT_DIR is a representation of the C type PRINT_SETTINGS_OUTPUT_DIR.
 //
 // since 3.6
-const PrintSettingsOutputDir = "output-dir"
+const PRINT_SETTINGS_OUTPUT_DIR = "output-dir"
 
-// PrintSettingsOutputFileFormat is a representation of the C type PRINT_SETTINGS_OUTPUT_FILE_FORMAT.
-const PrintSettingsOutputFileFormat = "output-file-format"
+// PRINT_SETTINGS_OUTPUT_FILE_FORMAT is a representation of the C type PRINT_SETTINGS_OUTPUT_FILE_FORMAT.
+const PRINT_SETTINGS_OUTPUT_FILE_FORMAT = "output-file-format"
 
-// PrintSettingsOutputUri is a representation of the C type PRINT_SETTINGS_OUTPUT_URI.
-const PrintSettingsOutputUri = "output-uri"
+// PRINT_SETTINGS_OUTPUT_URI is a representation of the C type PRINT_SETTINGS_OUTPUT_URI.
+const PRINT_SETTINGS_OUTPUT_URI = "output-uri"
 
-// PrintSettingsPageRanges is a representation of the C type PRINT_SETTINGS_PAGE_RANGES.
-const PrintSettingsPageRanges = "page-ranges"
+// PRINT_SETTINGS_PAGE_RANGES is a representation of the C type PRINT_SETTINGS_PAGE_RANGES.
+const PRINT_SETTINGS_PAGE_RANGES = "page-ranges"
 
-// PrintSettingsPageSet is a representation of the C type PRINT_SETTINGS_PAGE_SET.
-const PrintSettingsPageSet = "page-set"
+// PRINT_SETTINGS_PAGE_SET is a representation of the C type PRINT_SETTINGS_PAGE_SET.
+const PRINT_SETTINGS_PAGE_SET = "page-set"
 
-// PrintSettingsPaperFormat is a representation of the C type PRINT_SETTINGS_PAPER_FORMAT.
-const PrintSettingsPaperFormat = "paper-format"
+// PRINT_SETTINGS_PAPER_FORMAT is a representation of the C type PRINT_SETTINGS_PAPER_FORMAT.
+const PRINT_SETTINGS_PAPER_FORMAT = "paper-format"
 
-// PrintSettingsPaperHeight is a representation of the C type PRINT_SETTINGS_PAPER_HEIGHT.
-const PrintSettingsPaperHeight = "paper-height"
+// PRINT_SETTINGS_PAPER_HEIGHT is a representation of the C type PRINT_SETTINGS_PAPER_HEIGHT.
+const PRINT_SETTINGS_PAPER_HEIGHT = "paper-height"
 
-// PrintSettingsPaperWidth is a representation of the C type PRINT_SETTINGS_PAPER_WIDTH.
-const PrintSettingsPaperWidth = "paper-width"
+// PRINT_SETTINGS_PAPER_WIDTH is a representation of the C type PRINT_SETTINGS_PAPER_WIDTH.
+const PRINT_SETTINGS_PAPER_WIDTH = "paper-width"
 
-// PrintSettingsPrinter is a representation of the C type PRINT_SETTINGS_PRINTER.
-const PrintSettingsPrinter = "printer"
+// PRINT_SETTINGS_PRINTER is a representation of the C type PRINT_SETTINGS_PRINTER.
+const PRINT_SETTINGS_PRINTER = "printer"
 
-// PrintSettingsPrinterLpi is a representation of the C type PRINT_SETTINGS_PRINTER_LPI.
-const PrintSettingsPrinterLpi = "printer-lpi"
+// PRINT_SETTINGS_PRINTER_LPI is a representation of the C type PRINT_SETTINGS_PRINTER_LPI.
+const PRINT_SETTINGS_PRINTER_LPI = "printer-lpi"
 
-// PrintSettingsPrintPages is a representation of the C type PRINT_SETTINGS_PRINT_PAGES.
-const PrintSettingsPrintPages = "print-pages"
+// PRINT_SETTINGS_PRINT_PAGES is a representation of the C type PRINT_SETTINGS_PRINT_PAGES.
+const PRINT_SETTINGS_PRINT_PAGES = "print-pages"
 
-// PrintSettingsQuality is a representation of the C type PRINT_SETTINGS_QUALITY.
-const PrintSettingsQuality = "quality"
+// PRINT_SETTINGS_QUALITY is a representation of the C type PRINT_SETTINGS_QUALITY.
+const PRINT_SETTINGS_QUALITY = "quality"
 
-// PrintSettingsResolution is a representation of the C type PRINT_SETTINGS_RESOLUTION.
-const PrintSettingsResolution = "resolution"
+// PRINT_SETTINGS_RESOLUTION is a representation of the C type PRINT_SETTINGS_RESOLUTION.
+const PRINT_SETTINGS_RESOLUTION = "resolution"
 
-// PrintSettingsResolutionX is a representation of the C type PRINT_SETTINGS_RESOLUTION_X.
-const PrintSettingsResolutionX = "resolution-x"
+// PRINT_SETTINGS_RESOLUTION_X is a representation of the C type PRINT_SETTINGS_RESOLUTION_X.
+const PRINT_SETTINGS_RESOLUTION_X = "resolution-x"
 
-// PrintSettingsResolutionY is a representation of the C type PRINT_SETTINGS_RESOLUTION_Y.
-const PrintSettingsResolutionY = "resolution-y"
+// PRINT_SETTINGS_RESOLUTION_Y is a representation of the C type PRINT_SETTINGS_RESOLUTION_Y.
+const PRINT_SETTINGS_RESOLUTION_Y = "resolution-y"
 
-// PrintSettingsReverse is a representation of the C type PRINT_SETTINGS_REVERSE.
-const PrintSettingsReverse = "reverse"
+// PRINT_SETTINGS_REVERSE is a representation of the C type PRINT_SETTINGS_REVERSE.
+const PRINT_SETTINGS_REVERSE = "reverse"
 
-// PrintSettingsScale is a representation of the C type PRINT_SETTINGS_SCALE.
-const PrintSettingsScale = "scale"
+// PRINT_SETTINGS_SCALE is a representation of the C type PRINT_SETTINGS_SCALE.
+const PRINT_SETTINGS_SCALE = "scale"
 
-// PrintSettingsUseColor is a representation of the C type PRINT_SETTINGS_USE_COLOR.
-const PrintSettingsUseColor = "use-color"
+// PRINT_SETTINGS_USE_COLOR is a representation of the C type PRINT_SETTINGS_USE_COLOR.
+const PRINT_SETTINGS_USE_COLOR = "use-color"
 
-// PrintSettingsWin32DriverExtra is a representation of the C type PRINT_SETTINGS_WIN32_DRIVER_EXTRA.
-const PrintSettingsWin32DriverExtra = "win32-driver-extra"
+// PRINT_SETTINGS_WIN32_DRIVER_EXTRA is a representation of the C type PRINT_SETTINGS_WIN32_DRIVER_EXTRA.
+const PRINT_SETTINGS_WIN32_DRIVER_EXTRA = "win32-driver-extra"
 
-// PrintSettingsWin32DriverVersion is a representation of the C type PRINT_SETTINGS_WIN32_DRIVER_VERSION.
-const PrintSettingsWin32DriverVersion = "win32-driver-version"
+// PRINT_SETTINGS_WIN32_DRIVER_VERSION is a representation of the C type PRINT_SETTINGS_WIN32_DRIVER_VERSION.
+const PRINT_SETTINGS_WIN32_DRIVER_VERSION = "win32-driver-version"
 
-// PriorityResize is a representation of the C type PRIORITY_RESIZE.
-const PriorityResize = int32(10)
+// PRIORITY_RESIZE is a representation of the C type PRIORITY_RESIZE.
+const PRIORITY_RESIZE = int32(10)
 
-// StockAbout is a representation of the C type STOCK_ABOUT.
+// STOCK_ABOUT is a representation of the C type STOCK_ABOUT.
 //
 // since 2.6
-const StockAbout = "gtk-about"
+const STOCK_ABOUT = "gtk-about"
 
-// StockAdd is a representation of the C type STOCK_ADD.
-const StockAdd = "gtk-add"
+// STOCK_ADD is a representation of the C type STOCK_ADD.
+const STOCK_ADD = "gtk-add"
 
-// StockApply is a representation of the C type STOCK_APPLY.
-const StockApply = "gtk-apply"
+// STOCK_APPLY is a representation of the C type STOCK_APPLY.
+const STOCK_APPLY = "gtk-apply"
 
-// StockBold is a representation of the C type STOCK_BOLD.
-const StockBold = "gtk-bold"
+// STOCK_BOLD is a representation of the C type STOCK_BOLD.
+const STOCK_BOLD = "gtk-bold"
 
-// StockCancel is a representation of the C type STOCK_CANCEL.
-const StockCancel = "gtk-cancel"
+// STOCK_CANCEL is a representation of the C type STOCK_CANCEL.
+const STOCK_CANCEL = "gtk-cancel"
 
-// StockCapsLockWarning is a representation of the C type STOCK_CAPS_LOCK_WARNING.
+// STOCK_CAPS_LOCK_WARNING is a representation of the C type STOCK_CAPS_LOCK_WARNING.
 //
 // since 2.16
-const StockCapsLockWarning = "gtk-caps-lock-warning"
+const STOCK_CAPS_LOCK_WARNING = "gtk-caps-lock-warning"
 
-// StockCdrom is a representation of the C type STOCK_CDROM.
-const StockCdrom = "gtk-cdrom"
+// STOCK_CDROM is a representation of the C type STOCK_CDROM.
+const STOCK_CDROM = "gtk-cdrom"
 
-// StockClear is a representation of the C type STOCK_CLEAR.
-const StockClear = "gtk-clear"
+// STOCK_CLEAR is a representation of the C type STOCK_CLEAR.
+const STOCK_CLEAR = "gtk-clear"
 
-// StockClose is a representation of the C type STOCK_CLOSE.
-const StockClose = "gtk-close"
+// STOCK_CLOSE is a representation of the C type STOCK_CLOSE.
+const STOCK_CLOSE = "gtk-close"
 
-// StockColorPicker is a representation of the C type STOCK_COLOR_PICKER.
+// STOCK_COLOR_PICKER is a representation of the C type STOCK_COLOR_PICKER.
 //
 // since 2.2
-const StockColorPicker = "gtk-color-picker"
+const STOCK_COLOR_PICKER = "gtk-color-picker"
 
-// StockConnect is a representation of the C type STOCK_CONNECT.
+// STOCK_CONNECT is a representation of the C type STOCK_CONNECT.
 //
 // since 2.6
-const StockConnect = "gtk-connect"
+const STOCK_CONNECT = "gtk-connect"
 
-// StockConvert is a representation of the C type STOCK_CONVERT.
-const StockConvert = "gtk-convert"
+// STOCK_CONVERT is a representation of the C type STOCK_CONVERT.
+const STOCK_CONVERT = "gtk-convert"
 
-// StockCopy is a representation of the C type STOCK_COPY.
-const StockCopy = "gtk-copy"
+// STOCK_COPY is a representation of the C type STOCK_COPY.
+const STOCK_COPY = "gtk-copy"
 
-// StockCut is a representation of the C type STOCK_CUT.
-const StockCut = "gtk-cut"
+// STOCK_CUT is a representation of the C type STOCK_CUT.
+const STOCK_CUT = "gtk-cut"
 
-// StockDelete is a representation of the C type STOCK_DELETE.
-const StockDelete = "gtk-delete"
+// STOCK_DELETE is a representation of the C type STOCK_DELETE.
+const STOCK_DELETE = "gtk-delete"
 
-// StockDialogAuthentication is a representation of the C type STOCK_DIALOG_AUTHENTICATION.
+// STOCK_DIALOG_AUTHENTICATION is a representation of the C type STOCK_DIALOG_AUTHENTICATION.
 //
 // since 2.4
-const StockDialogAuthentication = "gtk-dialog-authentication"
+const STOCK_DIALOG_AUTHENTICATION = "gtk-dialog-authentication"
 
-// StockDialogError is a representation of the C type STOCK_DIALOG_ERROR.
-const StockDialogError = "gtk-dialog-error"
+// STOCK_DIALOG_ERROR is a representation of the C type STOCK_DIALOG_ERROR.
+const STOCK_DIALOG_ERROR = "gtk-dialog-error"
 
-// StockDialogInfo is a representation of the C type STOCK_DIALOG_INFO.
-const StockDialogInfo = "gtk-dialog-info"
+// STOCK_DIALOG_INFO is a representation of the C type STOCK_DIALOG_INFO.
+const STOCK_DIALOG_INFO = "gtk-dialog-info"
 
-// StockDialogQuestion is a representation of the C type STOCK_DIALOG_QUESTION.
-const StockDialogQuestion = "gtk-dialog-question"
+// STOCK_DIALOG_QUESTION is a representation of the C type STOCK_DIALOG_QUESTION.
+const STOCK_DIALOG_QUESTION = "gtk-dialog-question"
 
-// StockDialogWarning is a representation of the C type STOCK_DIALOG_WARNING.
-const StockDialogWarning = "gtk-dialog-warning"
+// STOCK_DIALOG_WARNING is a representation of the C type STOCK_DIALOG_WARNING.
+const STOCK_DIALOG_WARNING = "gtk-dialog-warning"
 
-// StockDirectory is a representation of the C type STOCK_DIRECTORY.
+// STOCK_DIRECTORY is a representation of the C type STOCK_DIRECTORY.
 //
 // since 2.6
-const StockDirectory = "gtk-directory"
+const STOCK_DIRECTORY = "gtk-directory"
 
-// StockDiscard is a representation of the C type STOCK_DISCARD.
+// STOCK_DISCARD is a representation of the C type STOCK_DISCARD.
 //
 // since 2.12
-const StockDiscard = "gtk-discard"
+const STOCK_DISCARD = "gtk-discard"
 
-// StockDisconnect is a representation of the C type STOCK_DISCONNECT.
+// STOCK_DISCONNECT is a representation of the C type STOCK_DISCONNECT.
 //
 // since 2.6
-const StockDisconnect = "gtk-disconnect"
+const STOCK_DISCONNECT = "gtk-disconnect"
 
-// StockDnd is a representation of the C type STOCK_DND.
-const StockDnd = "gtk-dnd"
+// STOCK_DND is a representation of the C type STOCK_DND.
+const STOCK_DND = "gtk-dnd"
 
-// StockDndMultiple is a representation of the C type STOCK_DND_MULTIPLE.
-const StockDndMultiple = "gtk-dnd-multiple"
+// STOCK_DND_MULTIPLE is a representation of the C type STOCK_DND_MULTIPLE.
+const STOCK_DND_MULTIPLE = "gtk-dnd-multiple"
 
-// StockEdit is a representation of the C type STOCK_EDIT.
+// STOCK_EDIT is a representation of the C type STOCK_EDIT.
 //
 // since 2.6
-const StockEdit = "gtk-edit"
+const STOCK_EDIT = "gtk-edit"
 
-// StockExecute is a representation of the C type STOCK_EXECUTE.
-const StockExecute = "gtk-execute"
+// STOCK_EXECUTE is a representation of the C type STOCK_EXECUTE.
+const STOCK_EXECUTE = "gtk-execute"
 
-// StockFile is a representation of the C type STOCK_FILE.
+// STOCK_FILE is a representation of the C type STOCK_FILE.
 //
 // since 2.6
-const StockFile = "gtk-file"
+const STOCK_FILE = "gtk-file"
 
-// StockFind is a representation of the C type STOCK_FIND.
-const StockFind = "gtk-find"
+// STOCK_FIND is a representation of the C type STOCK_FIND.
+const STOCK_FIND = "gtk-find"
 
-// StockFindAndReplace is a representation of the C type STOCK_FIND_AND_REPLACE.
-const StockFindAndReplace = "gtk-find-and-replace"
+// STOCK_FIND_AND_REPLACE is a representation of the C type STOCK_FIND_AND_REPLACE.
+const STOCK_FIND_AND_REPLACE = "gtk-find-and-replace"
 
-// StockFloppy is a representation of the C type STOCK_FLOPPY.
-const StockFloppy = "gtk-floppy"
+// STOCK_FLOPPY is a representation of the C type STOCK_FLOPPY.
+const STOCK_FLOPPY = "gtk-floppy"
 
-// StockFullscreen is a representation of the C type STOCK_FULLSCREEN.
+// STOCK_FULLSCREEN is a representation of the C type STOCK_FULLSCREEN.
 //
 // since 2.8
-const StockFullscreen = "gtk-fullscreen"
+const STOCK_FULLSCREEN = "gtk-fullscreen"
 
-// StockGotoBottom is a representation of the C type STOCK_GOTO_BOTTOM.
-const StockGotoBottom = "gtk-goto-bottom"
+// STOCK_GOTO_BOTTOM is a representation of the C type STOCK_GOTO_BOTTOM.
+const STOCK_GOTO_BOTTOM = "gtk-goto-bottom"
 
-// StockGotoFirst is a representation of the C type STOCK_GOTO_FIRST.
-const StockGotoFirst = "gtk-goto-first"
+// STOCK_GOTO_FIRST is a representation of the C type STOCK_GOTO_FIRST.
+const STOCK_GOTO_FIRST = "gtk-goto-first"
 
-// StockGotoLast is a representation of the C type STOCK_GOTO_LAST.
-const StockGotoLast = "gtk-goto-last"
+// STOCK_GOTO_LAST is a representation of the C type STOCK_GOTO_LAST.
+const STOCK_GOTO_LAST = "gtk-goto-last"
 
-// StockGotoTop is a representation of the C type STOCK_GOTO_TOP.
-const StockGotoTop = "gtk-goto-top"
+// STOCK_GOTO_TOP is a representation of the C type STOCK_GOTO_TOP.
+const STOCK_GOTO_TOP = "gtk-goto-top"
 
-// StockGoBack is a representation of the C type STOCK_GO_BACK.
-const StockGoBack = "gtk-go-back"
+// STOCK_GO_BACK is a representation of the C type STOCK_GO_BACK.
+const STOCK_GO_BACK = "gtk-go-back"
 
-// StockGoDown is a representation of the C type STOCK_GO_DOWN.
-const StockGoDown = "gtk-go-down"
+// STOCK_GO_DOWN is a representation of the C type STOCK_GO_DOWN.
+const STOCK_GO_DOWN = "gtk-go-down"
 
-// StockGoForward is a representation of the C type STOCK_GO_FORWARD.
-const StockGoForward = "gtk-go-forward"
+// STOCK_GO_FORWARD is a representation of the C type STOCK_GO_FORWARD.
+const STOCK_GO_FORWARD = "gtk-go-forward"
 
-// StockGoUp is a representation of the C type STOCK_GO_UP.
-const StockGoUp = "gtk-go-up"
+// STOCK_GO_UP is a representation of the C type STOCK_GO_UP.
+const STOCK_GO_UP = "gtk-go-up"
 
-// StockHarddisk is a representation of the C type STOCK_HARDDISK.
+// STOCK_HARDDISK is a representation of the C type STOCK_HARDDISK.
 //
 // since 2.4
-const StockHarddisk = "gtk-harddisk"
+const STOCK_HARDDISK = "gtk-harddisk"
 
-// StockHelp is a representation of the C type STOCK_HELP.
-const StockHelp = "gtk-help"
+// STOCK_HELP is a representation of the C type STOCK_HELP.
+const STOCK_HELP = "gtk-help"
 
-// StockHome is a representation of the C type STOCK_HOME.
-const StockHome = "gtk-home"
+// STOCK_HOME is a representation of the C type STOCK_HOME.
+const STOCK_HOME = "gtk-home"
 
-// StockIndent is a representation of the C type STOCK_INDENT.
+// STOCK_INDENT is a representation of the C type STOCK_INDENT.
 //
 // since 2.4
-const StockIndent = "gtk-indent"
+const STOCK_INDENT = "gtk-indent"
 
-// StockIndex is a representation of the C type STOCK_INDEX.
-const StockIndex = "gtk-index"
+// STOCK_INDEX is a representation of the C type STOCK_INDEX.
+const STOCK_INDEX = "gtk-index"
 
-// StockInfo is a representation of the C type STOCK_INFO.
+// STOCK_INFO is a representation of the C type STOCK_INFO.
 //
 // since 2.8
-const StockInfo = "gtk-info"
+const STOCK_INFO = "gtk-info"
 
-// StockItalic is a representation of the C type STOCK_ITALIC.
-const StockItalic = "gtk-italic"
+// STOCK_ITALIC is a representation of the C type STOCK_ITALIC.
+const STOCK_ITALIC = "gtk-italic"
 
-// StockJumpTo is a representation of the C type STOCK_JUMP_TO.
-const StockJumpTo = "gtk-jump-to"
+// STOCK_JUMP_TO is a representation of the C type STOCK_JUMP_TO.
+const STOCK_JUMP_TO = "gtk-jump-to"
 
-// StockJustifyCenter is a representation of the C type STOCK_JUSTIFY_CENTER.
-const StockJustifyCenter = "gtk-justify-center"
+// STOCK_JUSTIFY_CENTER is a representation of the C type STOCK_JUSTIFY_CENTER.
+const STOCK_JUSTIFY_CENTER = "gtk-justify-center"
 
-// StockJustifyFill is a representation of the C type STOCK_JUSTIFY_FILL.
-const StockJustifyFill = "gtk-justify-fill"
+// STOCK_JUSTIFY_FILL is a representation of the C type STOCK_JUSTIFY_FILL.
+const STOCK_JUSTIFY_FILL = "gtk-justify-fill"
 
-// StockJustifyLeft is a representation of the C type STOCK_JUSTIFY_LEFT.
-const StockJustifyLeft = "gtk-justify-left"
+// STOCK_JUSTIFY_LEFT is a representation of the C type STOCK_JUSTIFY_LEFT.
+const STOCK_JUSTIFY_LEFT = "gtk-justify-left"
 
-// StockJustifyRight is a representation of the C type STOCK_JUSTIFY_RIGHT.
-const StockJustifyRight = "gtk-justify-right"
+// STOCK_JUSTIFY_RIGHT is a representation of the C type STOCK_JUSTIFY_RIGHT.
+const STOCK_JUSTIFY_RIGHT = "gtk-justify-right"
 
-// StockLeaveFullscreen is a representation of the C type STOCK_LEAVE_FULLSCREEN.
+// STOCK_LEAVE_FULLSCREEN is a representation of the C type STOCK_LEAVE_FULLSCREEN.
 //
 // since 2.8
-const StockLeaveFullscreen = "gtk-leave-fullscreen"
+const STOCK_LEAVE_FULLSCREEN = "gtk-leave-fullscreen"
 
-// StockMediaForward is a representation of the C type STOCK_MEDIA_FORWARD.
+// STOCK_MEDIA_FORWARD is a representation of the C type STOCK_MEDIA_FORWARD.
 //
 // since 2.6
-const StockMediaForward = "gtk-media-forward"
+const STOCK_MEDIA_FORWARD = "gtk-media-forward"
 
-// StockMediaNext is a representation of the C type STOCK_MEDIA_NEXT.
+// STOCK_MEDIA_NEXT is a representation of the C type STOCK_MEDIA_NEXT.
 //
 // since 2.6
-const StockMediaNext = "gtk-media-next"
+const STOCK_MEDIA_NEXT = "gtk-media-next"
 
-// StockMediaPause is a representation of the C type STOCK_MEDIA_PAUSE.
+// STOCK_MEDIA_PAUSE is a representation of the C type STOCK_MEDIA_PAUSE.
 //
 // since 2.6
-const StockMediaPause = "gtk-media-pause"
+const STOCK_MEDIA_PAUSE = "gtk-media-pause"
 
-// StockMediaPlay is a representation of the C type STOCK_MEDIA_PLAY.
+// STOCK_MEDIA_PLAY is a representation of the C type STOCK_MEDIA_PLAY.
 //
 // since 2.6
-const StockMediaPlay = "gtk-media-play"
+const STOCK_MEDIA_PLAY = "gtk-media-play"
 
-// StockMediaPrevious is a representation of the C type STOCK_MEDIA_PREVIOUS.
+// STOCK_MEDIA_PREVIOUS is a representation of the C type STOCK_MEDIA_PREVIOUS.
 //
 // since 2.6
-const StockMediaPrevious = "gtk-media-previous"
+const STOCK_MEDIA_PREVIOUS = "gtk-media-previous"
 
-// StockMediaRecord is a representation of the C type STOCK_MEDIA_RECORD.
+// STOCK_MEDIA_RECORD is a representation of the C type STOCK_MEDIA_RECORD.
 //
 // since 2.6
-const StockMediaRecord = "gtk-media-record"
+const STOCK_MEDIA_RECORD = "gtk-media-record"
 
-// StockMediaRewind is a representation of the C type STOCK_MEDIA_REWIND.
+// STOCK_MEDIA_REWIND is a representation of the C type STOCK_MEDIA_REWIND.
 //
 // since 2.6
-const StockMediaRewind = "gtk-media-rewind"
+const STOCK_MEDIA_REWIND = "gtk-media-rewind"
 
-// StockMediaStop is a representation of the C type STOCK_MEDIA_STOP.
+// STOCK_MEDIA_STOP is a representation of the C type STOCK_MEDIA_STOP.
 //
 // since 2.6
-const StockMediaStop = "gtk-media-stop"
+const STOCK_MEDIA_STOP = "gtk-media-stop"
 
-// StockMissingImage is a representation of the C type STOCK_MISSING_IMAGE.
-const StockMissingImage = "gtk-missing-image"
+// STOCK_MISSING_IMAGE is a representation of the C type STOCK_MISSING_IMAGE.
+const STOCK_MISSING_IMAGE = "gtk-missing-image"
 
-// StockNetwork is a representation of the C type STOCK_NETWORK.
+// STOCK_NETWORK is a representation of the C type STOCK_NETWORK.
 //
 // since 2.4
-const StockNetwork = "gtk-network"
+const STOCK_NETWORK = "gtk-network"
 
-// StockNew is a representation of the C type STOCK_NEW.
-const StockNew = "gtk-new"
+// STOCK_NEW is a representation of the C type STOCK_NEW.
+const STOCK_NEW = "gtk-new"
 
-// StockNo is a representation of the C type STOCK_NO.
-const StockNo = "gtk-no"
+// STOCK_NO is a representation of the C type STOCK_NO.
+const STOCK_NO = "gtk-no"
 
-// StockOk is a representation of the C type STOCK_OK.
-const StockOk = "gtk-ok"
+// STOCK_OK is a representation of the C type STOCK_OK.
+const STOCK_OK = "gtk-ok"
 
-// StockOpen is a representation of the C type STOCK_OPEN.
-const StockOpen = "gtk-open"
+// STOCK_OPEN is a representation of the C type STOCK_OPEN.
+const STOCK_OPEN = "gtk-open"
 
-// StockOrientationLandscape is a representation of the C type STOCK_ORIENTATION_LANDSCAPE.
+// STOCK_ORIENTATION_LANDSCAPE is a representation of the C type STOCK_ORIENTATION_LANDSCAPE.
 //
 // since 2.10
-const StockOrientationLandscape = "gtk-orientation-landscape"
+const STOCK_ORIENTATION_LANDSCAPE = "gtk-orientation-landscape"
 
-// StockOrientationPortrait is a representation of the C type STOCK_ORIENTATION_PORTRAIT.
+// STOCK_ORIENTATION_PORTRAIT is a representation of the C type STOCK_ORIENTATION_PORTRAIT.
 //
 // since 2.10
-const StockOrientationPortrait = "gtk-orientation-portrait"
+const STOCK_ORIENTATION_PORTRAIT = "gtk-orientation-portrait"
 
-// StockOrientationReverseLandscape is a representation of the C type STOCK_ORIENTATION_REVERSE_LANDSCAPE.
+// STOCK_ORIENTATION_REVERSE_LANDSCAPE is a representation of the C type STOCK_ORIENTATION_REVERSE_LANDSCAPE.
 //
 // since 2.10
-const StockOrientationReverseLandscape = "gtk-orientation-reverse-landscape"
+const STOCK_ORIENTATION_REVERSE_LANDSCAPE = "gtk-orientation-reverse-landscape"
 
-// StockOrientationReversePortrait is a representation of the C type STOCK_ORIENTATION_REVERSE_PORTRAIT.
+// STOCK_ORIENTATION_REVERSE_PORTRAIT is a representation of the C type STOCK_ORIENTATION_REVERSE_PORTRAIT.
 //
 // since 2.10
-const StockOrientationReversePortrait = "gtk-orientation-reverse-portrait"
+const STOCK_ORIENTATION_REVERSE_PORTRAIT = "gtk-orientation-reverse-portrait"
 
-// StockPageSetup is a representation of the C type STOCK_PAGE_SETUP.
+// STOCK_PAGE_SETUP is a representation of the C type STOCK_PAGE_SETUP.
 //
 // since 2.14
-const StockPageSetup = "gtk-page-setup"
+const STOCK_PAGE_SETUP = "gtk-page-setup"
 
-// StockPaste is a representation of the C type STOCK_PASTE.
-const StockPaste = "gtk-paste"
+// STOCK_PASTE is a representation of the C type STOCK_PASTE.
+const STOCK_PASTE = "gtk-paste"
 
-// StockPreferences is a representation of the C type STOCK_PREFERENCES.
-const StockPreferences = "gtk-preferences"
+// STOCK_PREFERENCES is a representation of the C type STOCK_PREFERENCES.
+const STOCK_PREFERENCES = "gtk-preferences"
 
-// StockPrint is a representation of the C type STOCK_PRINT.
-const StockPrint = "gtk-print"
+// STOCK_PRINT is a representation of the C type STOCK_PRINT.
+const STOCK_PRINT = "gtk-print"
 
-// StockPrintError is a representation of the C type STOCK_PRINT_ERROR.
+// STOCK_PRINT_ERROR is a representation of the C type STOCK_PRINT_ERROR.
 //
 // since 2.14
-const StockPrintError = "gtk-print-error"
+const STOCK_PRINT_ERROR = "gtk-print-error"
 
-// StockPrintPaused is a representation of the C type STOCK_PRINT_PAUSED.
+// STOCK_PRINT_PAUSED is a representation of the C type STOCK_PRINT_PAUSED.
 //
 // since 2.14
-const StockPrintPaused = "gtk-print-paused"
+const STOCK_PRINT_PAUSED = "gtk-print-paused"
 
-// StockPrintPreview is a representation of the C type STOCK_PRINT_PREVIEW.
-const StockPrintPreview = "gtk-print-preview"
+// STOCK_PRINT_PREVIEW is a representation of the C type STOCK_PRINT_PREVIEW.
+const STOCK_PRINT_PREVIEW = "gtk-print-preview"
 
-// StockPrintReport is a representation of the C type STOCK_PRINT_REPORT.
+// STOCK_PRINT_REPORT is a representation of the C type STOCK_PRINT_REPORT.
 //
 // since 2.14
-const StockPrintReport = "gtk-print-report"
+const STOCK_PRINT_REPORT = "gtk-print-report"
 
-// StockPrintWarning is a representation of the C type STOCK_PRINT_WARNING.
+// STOCK_PRINT_WARNING is a representation of the C type STOCK_PRINT_WARNING.
 //
 // since 2.14
-const StockPrintWarning = "gtk-print-warning"
+const STOCK_PRINT_WARNING = "gtk-print-warning"
 
-// StockProperties is a representation of the C type STOCK_PROPERTIES.
-const StockProperties = "gtk-properties"
+// STOCK_PROPERTIES is a representation of the C type STOCK_PROPERTIES.
+const STOCK_PROPERTIES = "gtk-properties"
 
-// StockQuit is a representation of the C type STOCK_QUIT.
-const StockQuit = "gtk-quit"
+// STOCK_QUIT is a representation of the C type STOCK_QUIT.
+const STOCK_QUIT = "gtk-quit"
 
-// StockRedo is a representation of the C type STOCK_REDO.
-const StockRedo = "gtk-redo"
+// STOCK_REDO is a representation of the C type STOCK_REDO.
+const STOCK_REDO = "gtk-redo"
 
-// StockRefresh is a representation of the C type STOCK_REFRESH.
-const StockRefresh = "gtk-refresh"
+// STOCK_REFRESH is a representation of the C type STOCK_REFRESH.
+const STOCK_REFRESH = "gtk-refresh"
 
-// StockRemove is a representation of the C type STOCK_REMOVE.
-const StockRemove = "gtk-remove"
+// STOCK_REMOVE is a representation of the C type STOCK_REMOVE.
+const STOCK_REMOVE = "gtk-remove"
 
-// StockRevertToSaved is a representation of the C type STOCK_REVERT_TO_SAVED.
-const StockRevertToSaved = "gtk-revert-to-saved"
+// STOCK_REVERT_TO_SAVED is a representation of the C type STOCK_REVERT_TO_SAVED.
+const STOCK_REVERT_TO_SAVED = "gtk-revert-to-saved"
 
-// StockSave is a representation of the C type STOCK_SAVE.
-const StockSave = "gtk-save"
+// STOCK_SAVE is a representation of the C type STOCK_SAVE.
+const STOCK_SAVE = "gtk-save"
 
-// StockSaveAs is a representation of the C type STOCK_SAVE_AS.
-const StockSaveAs = "gtk-save-as"
+// STOCK_SAVE_AS is a representation of the C type STOCK_SAVE_AS.
+const STOCK_SAVE_AS = "gtk-save-as"
 
-// StockSelectAll is a representation of the C type STOCK_SELECT_ALL.
+// STOCK_SELECT_ALL is a representation of the C type STOCK_SELECT_ALL.
 //
 // since 2.10
-const StockSelectAll = "gtk-select-all"
+const STOCK_SELECT_ALL = "gtk-select-all"
 
-// StockSelectColor is a representation of the C type STOCK_SELECT_COLOR.
-const StockSelectColor = "gtk-select-color"
+// STOCK_SELECT_COLOR is a representation of the C type STOCK_SELECT_COLOR.
+const STOCK_SELECT_COLOR = "gtk-select-color"
 
-// StockSelectFont is a representation of the C type STOCK_SELECT_FONT.
-const StockSelectFont = "gtk-select-font"
+// STOCK_SELECT_FONT is a representation of the C type STOCK_SELECT_FONT.
+const STOCK_SELECT_FONT = "gtk-select-font"
 
-// StockSortAscending is a representation of the C type STOCK_SORT_ASCENDING.
-const StockSortAscending = "gtk-sort-ascending"
+// STOCK_SORT_ASCENDING is a representation of the C type STOCK_SORT_ASCENDING.
+const STOCK_SORT_ASCENDING = "gtk-sort-ascending"
 
-// StockSortDescending is a representation of the C type STOCK_SORT_DESCENDING.
-const StockSortDescending = "gtk-sort-descending"
+// STOCK_SORT_DESCENDING is a representation of the C type STOCK_SORT_DESCENDING.
+const STOCK_SORT_DESCENDING = "gtk-sort-descending"
 
-// StockSpellCheck is a representation of the C type STOCK_SPELL_CHECK.
-const StockSpellCheck = "gtk-spell-check"
+// STOCK_SPELL_CHECK is a representation of the C type STOCK_SPELL_CHECK.
+const STOCK_SPELL_CHECK = "gtk-spell-check"
 
-// StockStop is a representation of the C type STOCK_STOP.
-const StockStop = "gtk-stop"
+// STOCK_STOP is a representation of the C type STOCK_STOP.
+const STOCK_STOP = "gtk-stop"
 
-// StockStrikethrough is a representation of the C type STOCK_STRIKETHROUGH.
-const StockStrikethrough = "gtk-strikethrough"
+// STOCK_STRIKETHROUGH is a representation of the C type STOCK_STRIKETHROUGH.
+const STOCK_STRIKETHROUGH = "gtk-strikethrough"
 
-// StockUndelete is a representation of the C type STOCK_UNDELETE.
-const StockUndelete = "gtk-undelete"
+// STOCK_UNDELETE is a representation of the C type STOCK_UNDELETE.
+const STOCK_UNDELETE = "gtk-undelete"
 
-// StockUnderline is a representation of the C type STOCK_UNDERLINE.
-const StockUnderline = "gtk-underline"
+// STOCK_UNDERLINE is a representation of the C type STOCK_UNDERLINE.
+const STOCK_UNDERLINE = "gtk-underline"
 
-// StockUndo is a representation of the C type STOCK_UNDO.
-const StockUndo = "gtk-undo"
+// STOCK_UNDO is a representation of the C type STOCK_UNDO.
+const STOCK_UNDO = "gtk-undo"
 
-// StockUnindent is a representation of the C type STOCK_UNINDENT.
+// STOCK_UNINDENT is a representation of the C type STOCK_UNINDENT.
 //
 // since 2.4
-const StockUnindent = "gtk-unindent"
+const STOCK_UNINDENT = "gtk-unindent"
 
-// StockYes is a representation of the C type STOCK_YES.
-const StockYes = "gtk-yes"
+// STOCK_YES is a representation of the C type STOCK_YES.
+const STOCK_YES = "gtk-yes"
 
-// StockZoom100 is a representation of the C type STOCK_ZOOM_100.
-const StockZoom100 = "gtk-zoom-100"
+// STOCK_ZOOM_100 is a representation of the C type STOCK_ZOOM_100.
+const STOCK_ZOOM_100 = "gtk-zoom-100"
 
-// StockZoomFit is a representation of the C type STOCK_ZOOM_FIT.
-const StockZoomFit = "gtk-zoom-fit"
+// STOCK_ZOOM_FIT is a representation of the C type STOCK_ZOOM_FIT.
+const STOCK_ZOOM_FIT = "gtk-zoom-fit"
 
-// StockZoomIn is a representation of the C type STOCK_ZOOM_IN.
-const StockZoomIn = "gtk-zoom-in"
+// STOCK_ZOOM_IN is a representation of the C type STOCK_ZOOM_IN.
+const STOCK_ZOOM_IN = "gtk-zoom-in"
 
-// StockZoomOut is a representation of the C type STOCK_ZOOM_OUT.
-const StockZoomOut = "gtk-zoom-out"
+// STOCK_ZOOM_OUT is a representation of the C type STOCK_ZOOM_OUT.
+const STOCK_ZOOM_OUT = "gtk-zoom-out"
 
-// StyleClassAccelerator is a representation of the C type STYLE_CLASS_ACCELERATOR.
-const StyleClassAccelerator = "accelerator"
+// STYLE_CLASS_ACCELERATOR is a representation of the C type STYLE_CLASS_ACCELERATOR.
+const STYLE_CLASS_ACCELERATOR = "accelerator"
 
-// StyleClassArrow is a representation of the C type STYLE_CLASS_ARROW.
-const StyleClassArrow = "arrow"
+// STYLE_CLASS_ARROW is a representation of the C type STYLE_CLASS_ARROW.
+const STYLE_CLASS_ARROW = "arrow"
 
-// StyleClassBackground is a representation of the C type STYLE_CLASS_BACKGROUND.
-const StyleClassBackground = "background"
+// STYLE_CLASS_BACKGROUND is a representation of the C type STYLE_CLASS_BACKGROUND.
+const STYLE_CLASS_BACKGROUND = "background"
 
-// StyleClassBottom is a representation of the C type STYLE_CLASS_BOTTOM.
-const StyleClassBottom = "bottom"
+// STYLE_CLASS_BOTTOM is a representation of the C type STYLE_CLASS_BOTTOM.
+const STYLE_CLASS_BOTTOM = "bottom"
 
-// StyleClassButton is a representation of the C type STYLE_CLASS_BUTTON.
-const StyleClassButton = "button"
+// STYLE_CLASS_BUTTON is a representation of the C type STYLE_CLASS_BUTTON.
+const STYLE_CLASS_BUTTON = "button"
 
-// StyleClassCalendar is a representation of the C type STYLE_CLASS_CALENDAR.
-const StyleClassCalendar = "calendar"
+// STYLE_CLASS_CALENDAR is a representation of the C type STYLE_CLASS_CALENDAR.
+const STYLE_CLASS_CALENDAR = "calendar"
 
-// StyleClassCell is a representation of the C type STYLE_CLASS_CELL.
-const StyleClassCell = "cell"
+// STYLE_CLASS_CELL is a representation of the C type STYLE_CLASS_CELL.
+const STYLE_CLASS_CELL = "cell"
 
-// StyleClassCheck is a representation of the C type STYLE_CLASS_CHECK.
-const StyleClassCheck = "check"
+// STYLE_CLASS_CHECK is a representation of the C type STYLE_CLASS_CHECK.
+const STYLE_CLASS_CHECK = "check"
 
-// StyleClassComboboxEntry is a representation of the C type STYLE_CLASS_COMBOBOX_ENTRY.
-const StyleClassComboboxEntry = "combobox-entry"
+// STYLE_CLASS_COMBOBOX_ENTRY is a representation of the C type STYLE_CLASS_COMBOBOX_ENTRY.
+const STYLE_CLASS_COMBOBOX_ENTRY = "combobox-entry"
 
-// StyleClassContextMenu is a representation of the C type STYLE_CLASS_CONTEXT_MENU.
-const StyleClassContextMenu = "context-menu"
+// STYLE_CLASS_CONTEXT_MENU is a representation of the C type STYLE_CLASS_CONTEXT_MENU.
+const STYLE_CLASS_CONTEXT_MENU = "context-menu"
 
-// StyleClassCsd is a representation of the C type STYLE_CLASS_CSD.
+// STYLE_CLASS_CSD is a representation of the C type STYLE_CLASS_CSD.
 //
 // since 3.14
-const StyleClassCsd = "csd"
+const STYLE_CLASS_CSD = "csd"
 
-// StyleClassCursorHandle is a representation of the C type STYLE_CLASS_CURSOR_HANDLE.
-const StyleClassCursorHandle = "cursor-handle"
+// STYLE_CLASS_CURSOR_HANDLE is a representation of the C type STYLE_CLASS_CURSOR_HANDLE.
+const STYLE_CLASS_CURSOR_HANDLE = "cursor-handle"
 
-// StyleClassDefault is a representation of the C type STYLE_CLASS_DEFAULT.
-const StyleClassDefault = "default"
+// STYLE_CLASS_DEFAULT is a representation of the C type STYLE_CLASS_DEFAULT.
+const STYLE_CLASS_DEFAULT = "default"
 
-// StyleClassDestructiveAction is a representation of the C type STYLE_CLASS_DESTRUCTIVE_ACTION.
+// STYLE_CLASS_DESTRUCTIVE_ACTION is a representation of the C type STYLE_CLASS_DESTRUCTIVE_ACTION.
 //
 // since 3.12
-const StyleClassDestructiveAction = "destructive-action"
+const STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action"
 
-// StyleClassDimLabel is a representation of the C type STYLE_CLASS_DIM_LABEL.
-const StyleClassDimLabel = "dim-label"
+// STYLE_CLASS_DIM_LABEL is a representation of the C type STYLE_CLASS_DIM_LABEL.
+const STYLE_CLASS_DIM_LABEL = "dim-label"
 
-// StyleClassDnd is a representation of the C type STYLE_CLASS_DND.
-const StyleClassDnd = "dnd"
+// STYLE_CLASS_DND is a representation of the C type STYLE_CLASS_DND.
+const STYLE_CLASS_DND = "dnd"
 
-// StyleClassDock is a representation of the C type STYLE_CLASS_DOCK.
-const StyleClassDock = "dock"
+// STYLE_CLASS_DOCK is a representation of the C type STYLE_CLASS_DOCK.
+const STYLE_CLASS_DOCK = "dock"
 
-// StyleClassEntry is a representation of the C type STYLE_CLASS_ENTRY.
-const StyleClassEntry = "entry"
+// STYLE_CLASS_ENTRY is a representation of the C type STYLE_CLASS_ENTRY.
+const STYLE_CLASS_ENTRY = "entry"
 
-// StyleClassError is a representation of the C type STYLE_CLASS_ERROR.
-const StyleClassError = "error"
+// STYLE_CLASS_ERROR is a representation of the C type STYLE_CLASS_ERROR.
+const STYLE_CLASS_ERROR = "error"
 
-// StyleClassExpander is a representation of the C type STYLE_CLASS_EXPANDER.
-const StyleClassExpander = "expander"
+// STYLE_CLASS_EXPANDER is a representation of the C type STYLE_CLASS_EXPANDER.
+const STYLE_CLASS_EXPANDER = "expander"
 
-// StyleClassFlat is a representation of the C type STYLE_CLASS_FLAT.
+// STYLE_CLASS_FLAT is a representation of the C type STYLE_CLASS_FLAT.
 //
 // since 3.14
-const StyleClassFlat = "flat"
+const STYLE_CLASS_FLAT = "flat"
 
-// StyleClassFrame is a representation of the C type STYLE_CLASS_FRAME.
-const StyleClassFrame = "frame"
+// STYLE_CLASS_FRAME is a representation of the C type STYLE_CLASS_FRAME.
+const STYLE_CLASS_FRAME = "frame"
 
-// StyleClassGrip is a representation of the C type STYLE_CLASS_GRIP.
-const StyleClassGrip = "grip"
+// STYLE_CLASS_GRIP is a representation of the C type STYLE_CLASS_GRIP.
+const STYLE_CLASS_GRIP = "grip"
 
-// StyleClassHeader is a representation of the C type STYLE_CLASS_HEADER.
-const StyleClassHeader = "header"
+// STYLE_CLASS_HEADER is a representation of the C type STYLE_CLASS_HEADER.
+const STYLE_CLASS_HEADER = "header"
 
-// StyleClassHighlight is a representation of the C type STYLE_CLASS_HIGHLIGHT.
-const StyleClassHighlight = "highlight"
+// STYLE_CLASS_HIGHLIGHT is a representation of the C type STYLE_CLASS_HIGHLIGHT.
+const STYLE_CLASS_HIGHLIGHT = "highlight"
 
-// StyleClassHorizontal is a representation of the C type STYLE_CLASS_HORIZONTAL.
-const StyleClassHorizontal = "horizontal"
+// STYLE_CLASS_HORIZONTAL is a representation of the C type STYLE_CLASS_HORIZONTAL.
+const STYLE_CLASS_HORIZONTAL = "horizontal"
 
-// StyleClassImage is a representation of the C type STYLE_CLASS_IMAGE.
-const StyleClassImage = "image"
+// STYLE_CLASS_IMAGE is a representation of the C type STYLE_CLASS_IMAGE.
+const STYLE_CLASS_IMAGE = "image"
 
-// StyleClassInfo is a representation of the C type STYLE_CLASS_INFO.
-const StyleClassInfo = "info"
+// STYLE_CLASS_INFO is a representation of the C type STYLE_CLASS_INFO.
+const STYLE_CLASS_INFO = "info"
 
-// StyleClassInlineToolbar is a representation of the C type STYLE_CLASS_INLINE_TOOLBAR.
-const StyleClassInlineToolbar = "inline-toolbar"
+// STYLE_CLASS_INLINE_TOOLBAR is a representation of the C type STYLE_CLASS_INLINE_TOOLBAR.
+const STYLE_CLASS_INLINE_TOOLBAR = "inline-toolbar"
 
-// StyleClassInsertionCursor is a representation of the C type STYLE_CLASS_INSERTION_CURSOR.
-const StyleClassInsertionCursor = "insertion-cursor"
+// STYLE_CLASS_INSERTION_CURSOR is a representation of the C type STYLE_CLASS_INSERTION_CURSOR.
+const STYLE_CLASS_INSERTION_CURSOR = "insertion-cursor"
 
-// StyleClassLabel is a representation of the C type STYLE_CLASS_LABEL.
+// STYLE_CLASS_LABEL is a representation of the C type STYLE_CLASS_LABEL.
 //
 // since 3.16
-const StyleClassLabel = "label"
+const STYLE_CLASS_LABEL = "label"
 
-// StyleClassLeft is a representation of the C type STYLE_CLASS_LEFT.
-const StyleClassLeft = "left"
+// STYLE_CLASS_LEFT is a representation of the C type STYLE_CLASS_LEFT.
+const STYLE_CLASS_LEFT = "left"
 
-// StyleClassLevelBar is a representation of the C type STYLE_CLASS_LEVEL_BAR.
-const StyleClassLevelBar = "level-bar"
+// STYLE_CLASS_LEVEL_BAR is a representation of the C type STYLE_CLASS_LEVEL_BAR.
+const STYLE_CLASS_LEVEL_BAR = "level-bar"
 
-// StyleClassLinked is a representation of the C type STYLE_CLASS_LINKED.
-const StyleClassLinked = "linked"
+// STYLE_CLASS_LINKED is a representation of the C type STYLE_CLASS_LINKED.
+const STYLE_CLASS_LINKED = "linked"
 
-// StyleClassList is a representation of the C type STYLE_CLASS_LIST.
-const StyleClassList = "list"
+// STYLE_CLASS_LIST is a representation of the C type STYLE_CLASS_LIST.
+const STYLE_CLASS_LIST = "list"
 
-// StyleClassListRow is a representation of the C type STYLE_CLASS_LIST_ROW.
-const StyleClassListRow = "list-row"
+// STYLE_CLASS_LIST_ROW is a representation of the C type STYLE_CLASS_LIST_ROW.
+const STYLE_CLASS_LIST_ROW = "list-row"
 
-// StyleClassMark is a representation of the C type STYLE_CLASS_MARK.
-const StyleClassMark = "mark"
+// STYLE_CLASS_MARK is a representation of the C type STYLE_CLASS_MARK.
+const STYLE_CLASS_MARK = "mark"
 
-// StyleClassMenu is a representation of the C type STYLE_CLASS_MENU.
-const StyleClassMenu = "menu"
+// STYLE_CLASS_MENU is a representation of the C type STYLE_CLASS_MENU.
+const STYLE_CLASS_MENU = "menu"
 
-// StyleClassMenubar is a representation of the C type STYLE_CLASS_MENUBAR.
-const StyleClassMenubar = "menubar"
+// STYLE_CLASS_MENUBAR is a representation of the C type STYLE_CLASS_MENUBAR.
+const STYLE_CLASS_MENUBAR = "menubar"
 
-// StyleClassMenuitem is a representation of the C type STYLE_CLASS_MENUITEM.
-const StyleClassMenuitem = "menuitem"
+// STYLE_CLASS_MENUITEM is a representation of the C type STYLE_CLASS_MENUITEM.
+const STYLE_CLASS_MENUITEM = "menuitem"
 
-// StyleClassMessageDialog is a representation of the C type STYLE_CLASS_MESSAGE_DIALOG.
+// STYLE_CLASS_MESSAGE_DIALOG is a representation of the C type STYLE_CLASS_MESSAGE_DIALOG.
 //
 // since 3.14
-const StyleClassMessageDialog = "message-dialog"
+const STYLE_CLASS_MESSAGE_DIALOG = "message-dialog"
 
-// StyleClassMonospace is a representation of the C type STYLE_CLASS_MONOSPACE.
+// STYLE_CLASS_MONOSPACE is a representation of the C type STYLE_CLASS_MONOSPACE.
 //
 // since 3.16
-const StyleClassMonospace = "monospace"
+const STYLE_CLASS_MONOSPACE = "monospace"
 
-// StyleClassNeedsAttention is a representation of the C type STYLE_CLASS_NEEDS_ATTENTION.
+// STYLE_CLASS_NEEDS_ATTENTION is a representation of the C type STYLE_CLASS_NEEDS_ATTENTION.
 //
 // since 3.12
-const StyleClassNeedsAttention = "needs-attention"
+const STYLE_CLASS_NEEDS_ATTENTION = "needs-attention"
 
-// StyleClassNotebook is a representation of the C type STYLE_CLASS_NOTEBOOK.
-const StyleClassNotebook = "notebook"
+// STYLE_CLASS_NOTEBOOK is a representation of the C type STYLE_CLASS_NOTEBOOK.
+const STYLE_CLASS_NOTEBOOK = "notebook"
 
-// StyleClassOsd is a representation of the C type STYLE_CLASS_OSD.
-const StyleClassOsd = "osd"
+// STYLE_CLASS_OSD is a representation of the C type STYLE_CLASS_OSD.
+const STYLE_CLASS_OSD = "osd"
 
-// StyleClassOvershoot is a representation of the C type STYLE_CLASS_OVERSHOOT.
+// STYLE_CLASS_OVERSHOOT is a representation of the C type STYLE_CLASS_OVERSHOOT.
 //
 // since 3.14
-const StyleClassOvershoot = "overshoot"
+const STYLE_CLASS_OVERSHOOT = "overshoot"
 
-// StyleClassPaneSeparator is a representation of the C type STYLE_CLASS_PANE_SEPARATOR.
-const StyleClassPaneSeparator = "pane-separator"
+// STYLE_CLASS_PANE_SEPARATOR is a representation of the C type STYLE_CLASS_PANE_SEPARATOR.
+const STYLE_CLASS_PANE_SEPARATOR = "pane-separator"
 
-// StyleClassPaper is a representation of the C type STYLE_CLASS_PAPER.
+// STYLE_CLASS_PAPER is a representation of the C type STYLE_CLASS_PAPER.
 //
 // since 3.16
-const StyleClassPaper = "paper"
+const STYLE_CLASS_PAPER = "paper"
 
-// StyleClassPopover is a representation of the C type STYLE_CLASS_POPOVER.
+// STYLE_CLASS_POPOVER is a representation of the C type STYLE_CLASS_POPOVER.
 //
 // since 3.14
-const StyleClassPopover = "popover"
+const STYLE_CLASS_POPOVER = "popover"
 
-// StyleClassPopup is a representation of the C type STYLE_CLASS_POPUP.
+// STYLE_CLASS_POPUP is a representation of the C type STYLE_CLASS_POPUP.
 //
 // since 3.14
-const StyleClassPopup = "popup"
+const STYLE_CLASS_POPUP = "popup"
 
-// StyleClassPrimaryToolbar is a representation of the C type STYLE_CLASS_PRIMARY_TOOLBAR.
-const StyleClassPrimaryToolbar = "primary-toolbar"
+// STYLE_CLASS_PRIMARY_TOOLBAR is a representation of the C type STYLE_CLASS_PRIMARY_TOOLBAR.
+const STYLE_CLASS_PRIMARY_TOOLBAR = "primary-toolbar"
 
-// StyleClassProgressbar is a representation of the C type STYLE_CLASS_PROGRESSBAR.
-const StyleClassProgressbar = "progressbar"
+// STYLE_CLASS_PROGRESSBAR is a representation of the C type STYLE_CLASS_PROGRESSBAR.
+const STYLE_CLASS_PROGRESSBAR = "progressbar"
 
-// StyleClassPulse is a representation of the C type STYLE_CLASS_PULSE.
-const StyleClassPulse = "pulse"
+// STYLE_CLASS_PULSE is a representation of the C type STYLE_CLASS_PULSE.
+const STYLE_CLASS_PULSE = "pulse"
 
-// StyleClassQuestion is a representation of the C type STYLE_CLASS_QUESTION.
-const StyleClassQuestion = "question"
+// STYLE_CLASS_QUESTION is a representation of the C type STYLE_CLASS_QUESTION.
+const STYLE_CLASS_QUESTION = "question"
 
-// StyleClassRadio is a representation of the C type STYLE_CLASS_RADIO.
-const StyleClassRadio = "radio"
+// STYLE_CLASS_RADIO is a representation of the C type STYLE_CLASS_RADIO.
+const STYLE_CLASS_RADIO = "radio"
 
-// StyleClassRaised is a representation of the C type STYLE_CLASS_RAISED.
-const StyleClassRaised = "raised"
+// STYLE_CLASS_RAISED is a representation of the C type STYLE_CLASS_RAISED.
+const STYLE_CLASS_RAISED = "raised"
 
-// StyleClassReadOnly is a representation of the C type STYLE_CLASS_READ_ONLY.
-const StyleClassReadOnly = "read-only"
+// STYLE_CLASS_READ_ONLY is a representation of the C type STYLE_CLASS_READ_ONLY.
+const STYLE_CLASS_READ_ONLY = "read-only"
 
-// StyleClassRight is a representation of the C type STYLE_CLASS_RIGHT.
-const StyleClassRight = "right"
+// STYLE_CLASS_RIGHT is a representation of the C type STYLE_CLASS_RIGHT.
+const STYLE_CLASS_RIGHT = "right"
 
-// StyleClassRubberband is a representation of the C type STYLE_CLASS_RUBBERBAND.
-const StyleClassRubberband = "rubberband"
+// STYLE_CLASS_RUBBERBAND is a representation of the C type STYLE_CLASS_RUBBERBAND.
+const STYLE_CLASS_RUBBERBAND = "rubberband"
 
-// StyleClassScale is a representation of the C type STYLE_CLASS_SCALE.
-const StyleClassScale = "scale"
+// STYLE_CLASS_SCALE is a representation of the C type STYLE_CLASS_SCALE.
+const STYLE_CLASS_SCALE = "scale"
 
-// StyleClassScaleHasMarksAbove is a representation of the C type STYLE_CLASS_SCALE_HAS_MARKS_ABOVE.
-const StyleClassScaleHasMarksAbove = "scale-has-marks-above"
+// STYLE_CLASS_SCALE_HAS_MARKS_ABOVE is a representation of the C type STYLE_CLASS_SCALE_HAS_MARKS_ABOVE.
+const STYLE_CLASS_SCALE_HAS_MARKS_ABOVE = "scale-has-marks-above"
 
-// StyleClassScaleHasMarksBelow is a representation of the C type STYLE_CLASS_SCALE_HAS_MARKS_BELOW.
-const StyleClassScaleHasMarksBelow = "scale-has-marks-below"
+// STYLE_CLASS_SCALE_HAS_MARKS_BELOW is a representation of the C type STYLE_CLASS_SCALE_HAS_MARKS_BELOW.
+const STYLE_CLASS_SCALE_HAS_MARKS_BELOW = "scale-has-marks-below"
 
-// StyleClassScrollbar is a representation of the C type STYLE_CLASS_SCROLLBAR.
-const StyleClassScrollbar = "scrollbar"
+// STYLE_CLASS_SCROLLBAR is a representation of the C type STYLE_CLASS_SCROLLBAR.
+const STYLE_CLASS_SCROLLBAR = "scrollbar"
 
-// StyleClassScrollbarsJunction is a representation of the C type STYLE_CLASS_SCROLLBARS_JUNCTION.
-const StyleClassScrollbarsJunction = "scrollbars-junction"
+// STYLE_CLASS_SCROLLBARS_JUNCTION is a representation of the C type STYLE_CLASS_SCROLLBARS_JUNCTION.
+const STYLE_CLASS_SCROLLBARS_JUNCTION = "scrollbars-junction"
 
-// StyleClassSeparator is a representation of the C type STYLE_CLASS_SEPARATOR.
-const StyleClassSeparator = "separator"
+// STYLE_CLASS_SEPARATOR is a representation of the C type STYLE_CLASS_SEPARATOR.
+const STYLE_CLASS_SEPARATOR = "separator"
 
-// StyleClassSidebar is a representation of the C type STYLE_CLASS_SIDEBAR.
-const StyleClassSidebar = "sidebar"
+// STYLE_CLASS_SIDEBAR is a representation of the C type STYLE_CLASS_SIDEBAR.
+const STYLE_CLASS_SIDEBAR = "sidebar"
 
-// StyleClassSlider is a representation of the C type STYLE_CLASS_SLIDER.
-const StyleClassSlider = "slider"
+// STYLE_CLASS_SLIDER is a representation of the C type STYLE_CLASS_SLIDER.
+const STYLE_CLASS_SLIDER = "slider"
 
-// StyleClassSpinbutton is a representation of the C type STYLE_CLASS_SPINBUTTON.
-const StyleClassSpinbutton = "spinbutton"
+// STYLE_CLASS_SPINBUTTON is a representation of the C type STYLE_CLASS_SPINBUTTON.
+const STYLE_CLASS_SPINBUTTON = "spinbutton"
 
-// StyleClassSpinner is a representation of the C type STYLE_CLASS_SPINNER.
-const StyleClassSpinner = "spinner"
+// STYLE_CLASS_SPINNER is a representation of the C type STYLE_CLASS_SPINNER.
+const STYLE_CLASS_SPINNER = "spinner"
 
-// StyleClassStatusbar is a representation of the C type STYLE_CLASS_STATUSBAR.
+// STYLE_CLASS_STATUSBAR is a representation of the C type STYLE_CLASS_STATUSBAR.
 //
 // since 3.16
-const StyleClassStatusbar = "statusbar"
+const STYLE_CLASS_STATUSBAR = "statusbar"
 
-// StyleClassSubtitle is a representation of the C type STYLE_CLASS_SUBTITLE.
+// STYLE_CLASS_SUBTITLE is a representation of the C type STYLE_CLASS_SUBTITLE.
 //
 // since 3.14
-const StyleClassSubtitle = "subtitle"
+const STYLE_CLASS_SUBTITLE = "subtitle"
 
-// StyleClassSuggestedAction is a representation of the C type STYLE_CLASS_SUGGESTED_ACTION.
+// STYLE_CLASS_SUGGESTED_ACTION is a representation of the C type STYLE_CLASS_SUGGESTED_ACTION.
 //
 // since 3.12
-const StyleClassSuggestedAction = "suggested-action"
+const STYLE_CLASS_SUGGESTED_ACTION = "suggested-action"
 
-// StyleClassTitle is a representation of the C type STYLE_CLASS_TITLE.
+// STYLE_CLASS_TITLE is a representation of the C type STYLE_CLASS_TITLE.
 //
 // since 3.14
-const StyleClassTitle = "title"
+const STYLE_CLASS_TITLE = "title"
 
-// StyleClassTitlebar is a representation of the C type STYLE_CLASS_TITLEBAR.
-const StyleClassTitlebar = "titlebar"
+// STYLE_CLASS_TITLEBAR is a representation of the C type STYLE_CLASS_TITLEBAR.
+const STYLE_CLASS_TITLEBAR = "titlebar"
 
-// StyleClassToolbar is a representation of the C type STYLE_CLASS_TOOLBAR.
-const StyleClassToolbar = "toolbar"
+// STYLE_CLASS_TOOLBAR is a representation of the C type STYLE_CLASS_TOOLBAR.
+const STYLE_CLASS_TOOLBAR = "toolbar"
 
-// StyleClassTooltip is a representation of the C type STYLE_CLASS_TOOLTIP.
-const StyleClassTooltip = "tooltip"
+// STYLE_CLASS_TOOLTIP is a representation of the C type STYLE_CLASS_TOOLTIP.
+const STYLE_CLASS_TOOLTIP = "tooltip"
 
-// StyleClassTop is a representation of the C type STYLE_CLASS_TOP.
-const StyleClassTop = "top"
+// STYLE_CLASS_TOP is a representation of the C type STYLE_CLASS_TOP.
+const STYLE_CLASS_TOP = "top"
 
-// StyleClassTouchSelection is a representation of the C type STYLE_CLASS_TOUCH_SELECTION.
+// STYLE_CLASS_TOUCH_SELECTION is a representation of the C type STYLE_CLASS_TOUCH_SELECTION.
 //
 // since 3.16
-const StyleClassTouchSelection = "touch-selection"
+const STYLE_CLASS_TOUCH_SELECTION = "touch-selection"
 
-// StyleClassTrough is a representation of the C type STYLE_CLASS_TROUGH.
-const StyleClassTrough = "trough"
+// STYLE_CLASS_TROUGH is a representation of the C type STYLE_CLASS_TROUGH.
+const STYLE_CLASS_TROUGH = "trough"
 
-// StyleClassUndershoot is a representation of the C type STYLE_CLASS_UNDERSHOOT.
+// STYLE_CLASS_UNDERSHOOT is a representation of the C type STYLE_CLASS_UNDERSHOOT.
 //
 // since 3.16
-const StyleClassUndershoot = "undershoot"
+const STYLE_CLASS_UNDERSHOOT = "undershoot"
 
-// StyleClassVertical is a representation of the C type STYLE_CLASS_VERTICAL.
-const StyleClassVertical = "vertical"
+// STYLE_CLASS_VERTICAL is a representation of the C type STYLE_CLASS_VERTICAL.
+const STYLE_CLASS_VERTICAL = "vertical"
 
-// StyleClassView is a representation of the C type STYLE_CLASS_VIEW.
-const StyleClassView = "view"
+// STYLE_CLASS_VIEW is a representation of the C type STYLE_CLASS_VIEW.
+const STYLE_CLASS_VIEW = "view"
 
-// StyleClassWarning is a representation of the C type STYLE_CLASS_WARNING.
-const StyleClassWarning = "warning"
+// STYLE_CLASS_WARNING is a representation of the C type STYLE_CLASS_WARNING.
+const STYLE_CLASS_WARNING = "warning"
 
-// StyleClassWide is a representation of the C type STYLE_CLASS_WIDE.
+// STYLE_CLASS_WIDE is a representation of the C type STYLE_CLASS_WIDE.
 //
 // since 3.16
-const StyleClassWide = "wide"
+const STYLE_CLASS_WIDE = "wide"
 
-// StylePropertyBackgroundColor is a representation of the C type STYLE_PROPERTY_BACKGROUND_COLOR.
-const StylePropertyBackgroundColor = "background-color"
+// STYLE_PROPERTY_BACKGROUND_COLOR is a representation of the C type STYLE_PROPERTY_BACKGROUND_COLOR.
+const STYLE_PROPERTY_BACKGROUND_COLOR = "background-color"
 
-// StylePropertyBackgroundImage is a representation of the C type STYLE_PROPERTY_BACKGROUND_IMAGE.
-const StylePropertyBackgroundImage = "background-image"
+// STYLE_PROPERTY_BACKGROUND_IMAGE is a representation of the C type STYLE_PROPERTY_BACKGROUND_IMAGE.
+const STYLE_PROPERTY_BACKGROUND_IMAGE = "background-image"
 
-// StylePropertyBorderColor is a representation of the C type STYLE_PROPERTY_BORDER_COLOR.
-const StylePropertyBorderColor = "border-color"
+// STYLE_PROPERTY_BORDER_COLOR is a representation of the C type STYLE_PROPERTY_BORDER_COLOR.
+const STYLE_PROPERTY_BORDER_COLOR = "border-color"
 
-// StylePropertyBorderRadius is a representation of the C type STYLE_PROPERTY_BORDER_RADIUS.
-const StylePropertyBorderRadius = "border-radius"
+// STYLE_PROPERTY_BORDER_RADIUS is a representation of the C type STYLE_PROPERTY_BORDER_RADIUS.
+const STYLE_PROPERTY_BORDER_RADIUS = "border-radius"
 
-// StylePropertyBorderStyle is a representation of the C type STYLE_PROPERTY_BORDER_STYLE.
-const StylePropertyBorderStyle = "border-style"
+// STYLE_PROPERTY_BORDER_STYLE is a representation of the C type STYLE_PROPERTY_BORDER_STYLE.
+const STYLE_PROPERTY_BORDER_STYLE = "border-style"
 
-// StylePropertyBorderWidth is a representation of the C type STYLE_PROPERTY_BORDER_WIDTH.
-const StylePropertyBorderWidth = "border-width"
+// STYLE_PROPERTY_BORDER_WIDTH is a representation of the C type STYLE_PROPERTY_BORDER_WIDTH.
+const STYLE_PROPERTY_BORDER_WIDTH = "border-width"
 
-// StylePropertyColor is a representation of the C type STYLE_PROPERTY_COLOR.
-const StylePropertyColor = "color"
+// STYLE_PROPERTY_COLOR is a representation of the C type STYLE_PROPERTY_COLOR.
+const STYLE_PROPERTY_COLOR = "color"
 
-// StylePropertyFont is a representation of the C type STYLE_PROPERTY_FONT.
-const StylePropertyFont = "font"
+// STYLE_PROPERTY_FONT is a representation of the C type STYLE_PROPERTY_FONT.
+const STYLE_PROPERTY_FONT = "font"
 
-// StylePropertyMargin is a representation of the C type STYLE_PROPERTY_MARGIN.
-const StylePropertyMargin = "margin"
+// STYLE_PROPERTY_MARGIN is a representation of the C type STYLE_PROPERTY_MARGIN.
+const STYLE_PROPERTY_MARGIN = "margin"
 
-// StylePropertyPadding is a representation of the C type STYLE_PROPERTY_PADDING.
-const StylePropertyPadding = "padding"
+// STYLE_PROPERTY_PADDING is a representation of the C type STYLE_PROPERTY_PADDING.
+const STYLE_PROPERTY_PADDING = "padding"
 
-// StyleProviderPriorityApplication is a representation of the C type STYLE_PROVIDER_PRIORITY_APPLICATION.
-const StyleProviderPriorityApplication = int32(600)
+// STYLE_PROVIDER_PRIORITY_APPLICATION is a representation of the C type STYLE_PROVIDER_PRIORITY_APPLICATION.
+const STYLE_PROVIDER_PRIORITY_APPLICATION = int32(600)
 
-// StyleProviderPriorityFallback is a representation of the C type STYLE_PROVIDER_PRIORITY_FALLBACK.
-const StyleProviderPriorityFallback = int32(1)
+// STYLE_PROVIDER_PRIORITY_FALLBACK is a representation of the C type STYLE_PROVIDER_PRIORITY_FALLBACK.
+const STYLE_PROVIDER_PRIORITY_FALLBACK = int32(1)
 
-// StyleProviderPrioritySettings is a representation of the C type STYLE_PROVIDER_PRIORITY_SETTINGS.
-const StyleProviderPrioritySettings = int32(400)
+// STYLE_PROVIDER_PRIORITY_SETTINGS is a representation of the C type STYLE_PROVIDER_PRIORITY_SETTINGS.
+const STYLE_PROVIDER_PRIORITY_SETTINGS = int32(400)
 
-// StyleProviderPriorityTheme is a representation of the C type STYLE_PROVIDER_PRIORITY_THEME.
-const StyleProviderPriorityTheme = int32(200)
+// STYLE_PROVIDER_PRIORITY_THEME is a representation of the C type STYLE_PROVIDER_PRIORITY_THEME.
+const STYLE_PROVIDER_PRIORITY_THEME = int32(200)
 
-// StyleProviderPriorityUser is a representation of the C type STYLE_PROVIDER_PRIORITY_USER.
-const StyleProviderPriorityUser = int32(800)
+// STYLE_PROVIDER_PRIORITY_USER is a representation of the C type STYLE_PROVIDER_PRIORITY_USER.
+const STYLE_PROVIDER_PRIORITY_USER = int32(800)
 
-// StyleRegionColumn is a representation of the C type STYLE_REGION_COLUMN.
-const StyleRegionColumn = "column"
+// STYLE_REGION_COLUMN is a representation of the C type STYLE_REGION_COLUMN.
+const STYLE_REGION_COLUMN = "column"
 
-// StyleRegionColumnHeader is a representation of the C type STYLE_REGION_COLUMN_HEADER.
-const StyleRegionColumnHeader = "column-header"
+// STYLE_REGION_COLUMN_HEADER is a representation of the C type STYLE_REGION_COLUMN_HEADER.
+const STYLE_REGION_COLUMN_HEADER = "column-header"
 
-// StyleRegionRow is a representation of the C type STYLE_REGION_ROW.
-const StyleRegionRow = "row"
+// STYLE_REGION_ROW is a representation of the C type STYLE_REGION_ROW.
+const STYLE_REGION_ROW = "row"
 
-// StyleRegionTab is a representation of the C type STYLE_REGION_TAB.
-const StyleRegionTab = "tab"
+// STYLE_REGION_TAB is a representation of the C type STYLE_REGION_TAB.
+const STYLE_REGION_TAB = "tab"
 
-// TextViewPriorityValidate is a representation of the C type TEXT_VIEW_PRIORITY_VALIDATE.
-const TextViewPriorityValidate = int32(5)
+// TEXT_VIEW_PRIORITY_VALIDATE is a representation of the C type TEXT_VIEW_PRIORITY_VALIDATE.
+const TEXT_VIEW_PRIORITY_VALIDATE = int32(5)
 
-// TreeSortableDefaultSortColumnId is a representation of the C type TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID.
-const TreeSortableDefaultSortColumnId = int32(-1)
+// TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID is a representation of the C type TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID.
+const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = int32(-1)
 
-// TreeSortableUnsortedSortColumnId is a representation of the C type TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
-const TreeSortableUnsortedSortColumnId = int32(-2)
+// TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID is a representation of the C type TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
+const TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID = int32(-2)

@@ -2,32 +2,32 @@
 
 package atk
 
-// BinaryAge is a representation of the C type BINARY_AGE.
+// BINARY_AGE is a representation of the C type BINARY_AGE.
 //
 // since 2.7.4
-const BinaryAge = int32(22811)
+const BINARY_AGE = int32(22811)
 
-// InterfaceAge is a representation of the C type INTERFACE_AGE.
+// INTERFACE_AGE is a representation of the C type INTERFACE_AGE.
 //
 // since 2.7.4
-const InterfaceAge = int32(1)
+const INTERFACE_AGE = int32(1)
 
-// MajorVersion is a representation of the C type MAJOR_VERSION.
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
 //
 // since 2.7.4
-const MajorVersion = int32(2)
+const MAJOR_VERSION = int32(2)
 
-// MicroVersion is a representation of the C type MICRO_VERSION.
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
 //
 // since 2.7.4
-const MicroVersion = int32(1)
+const MICRO_VERSION = int32(1)
 
-// MinorVersion is a representation of the C type MINOR_VERSION.
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
 //
 // since 2.7.4
-const MinorVersion = int32(28)
+const MINOR_VERSION = int32(28)
 
-// VersionMinRequired is a representation of the C type VERSION_MIN_REQUIRED.
+// VERSION_MIN_REQUIRED is a representation of the C type VERSION_MIN_REQUIRED.
 //
 // since 2.14
-const VersionMinRequired = int32(2)
+const VERSION_MIN_REQUIRED = int32(2)

@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, int32(255), gobject.ParamMask)
+	assert.Equal(t, int32(255), gobject.PARAM_MASK)
 }

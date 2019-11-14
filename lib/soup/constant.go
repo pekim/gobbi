@@ -2,543 +2,543 @@
 
 package soup
 
-// AddressAnyPort is a representation of the C type ADDRESS_ANY_PORT.
-const AddressAnyPort = int32(0)
+// ADDRESS_ANY_PORT is a representation of the C type ADDRESS_ANY_PORT.
+const ADDRESS_ANY_PORT = int32(0)
 
-// AddressFamily is a representation of the C type ADDRESS_FAMILY.
-const AddressFamily = "family"
+// ADDRESS_FAMILY is a representation of the C type ADDRESS_FAMILY.
+const ADDRESS_FAMILY = "family"
 
-// AddressName is a representation of the C type ADDRESS_NAME.
-const AddressName = "name"
+// ADDRESS_NAME is a representation of the C type ADDRESS_NAME.
+const ADDRESS_NAME = "name"
 
-// AddressPhysical is a representation of the C type ADDRESS_PHYSICAL.
-const AddressPhysical = "physical"
+// ADDRESS_PHYSICAL is a representation of the C type ADDRESS_PHYSICAL.
+const ADDRESS_PHYSICAL = "physical"
 
-// AddressPort is a representation of the C type ADDRESS_PORT.
-const AddressPort = "port"
+// ADDRESS_PORT is a representation of the C type ADDRESS_PORT.
+const ADDRESS_PORT = "port"
 
-// AddressProtocol is a representation of the C type ADDRESS_PROTOCOL.
-const AddressProtocol = "protocol"
+// ADDRESS_PROTOCOL is a representation of the C type ADDRESS_PROTOCOL.
+const ADDRESS_PROTOCOL = "protocol"
 
-// AddressSockaddr is a representation of the C type ADDRESS_SOCKADDR.
-const AddressSockaddr = "sockaddr"
+// ADDRESS_SOCKADDR is a representation of the C type ADDRESS_SOCKADDR.
+const ADDRESS_SOCKADDR = "sockaddr"
 
-// AuthDomainAddPath is a representation of the C type AUTH_DOMAIN_ADD_PATH.
-const AuthDomainAddPath = "add-path"
+// AUTH_DOMAIN_ADD_PATH is a representation of the C type AUTH_DOMAIN_ADD_PATH.
+const AUTH_DOMAIN_ADD_PATH = "add-path"
 
-// AuthDomainBasicAuthCallback is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_CALLBACK.
-const AuthDomainBasicAuthCallback = "auth-callback"
+// AUTH_DOMAIN_BASIC_AUTH_CALLBACK is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_CALLBACK.
+const AUTH_DOMAIN_BASIC_AUTH_CALLBACK = "auth-callback"
 
-// AuthDomainBasicAuthData is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_DATA.
-const AuthDomainBasicAuthData = "auth-data"
+// AUTH_DOMAIN_BASIC_AUTH_DATA is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_DATA.
+const AUTH_DOMAIN_BASIC_AUTH_DATA = "auth-data"
 
-// AuthDomainBasicH is a representation of the C type AUTH_DOMAIN_BASIC_H.
-const AuthDomainBasicH = int32(1)
+// AUTH_DOMAIN_BASIC_H is a representation of the C type AUTH_DOMAIN_BASIC_H.
+const AUTH_DOMAIN_BASIC_H = int32(1)
 
-// AuthDomainDigestAuthCallback is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_CALLBACK.
-const AuthDomainDigestAuthCallback = "auth-callback"
+// AUTH_DOMAIN_DIGEST_AUTH_CALLBACK is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_CALLBACK.
+const AUTH_DOMAIN_DIGEST_AUTH_CALLBACK = "auth-callback"
 
-// AuthDomainDigestAuthData is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_DATA.
-const AuthDomainDigestAuthData = "auth-data"
+// AUTH_DOMAIN_DIGEST_AUTH_DATA is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_DATA.
+const AUTH_DOMAIN_DIGEST_AUTH_DATA = "auth-data"
 
-// AuthDomainDigestH is a representation of the C type AUTH_DOMAIN_DIGEST_H.
-const AuthDomainDigestH = int32(1)
+// AUTH_DOMAIN_DIGEST_H is a representation of the C type AUTH_DOMAIN_DIGEST_H.
+const AUTH_DOMAIN_DIGEST_H = int32(1)
 
-// AuthDomainFilter is a representation of the C type AUTH_DOMAIN_FILTER.
-const AuthDomainFilter = "filter"
+// AUTH_DOMAIN_FILTER is a representation of the C type AUTH_DOMAIN_FILTER.
+const AUTH_DOMAIN_FILTER = "filter"
 
-// AuthDomainFilterData is a representation of the C type AUTH_DOMAIN_FILTER_DATA.
-const AuthDomainFilterData = "filter-data"
+// AUTH_DOMAIN_FILTER_DATA is a representation of the C type AUTH_DOMAIN_FILTER_DATA.
+const AUTH_DOMAIN_FILTER_DATA = "filter-data"
 
-// AuthDomainGenericAuthCallback is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_CALLBACK.
-const AuthDomainGenericAuthCallback = "generic-auth-callback"
+// AUTH_DOMAIN_GENERIC_AUTH_CALLBACK is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_CALLBACK.
+const AUTH_DOMAIN_GENERIC_AUTH_CALLBACK = "generic-auth-callback"
 
-// AuthDomainGenericAuthData is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_DATA.
-const AuthDomainGenericAuthData = "generic-auth-data"
+// AUTH_DOMAIN_GENERIC_AUTH_DATA is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_DATA.
+const AUTH_DOMAIN_GENERIC_AUTH_DATA = "generic-auth-data"
 
-// AuthDomainH is a representation of the C type AUTH_DOMAIN_H.
-const AuthDomainH = int32(1)
+// AUTH_DOMAIN_H is a representation of the C type AUTH_DOMAIN_H.
+const AUTH_DOMAIN_H = int32(1)
 
-// AuthDomainProxy is a representation of the C type AUTH_DOMAIN_PROXY.
-const AuthDomainProxy = "proxy"
+// AUTH_DOMAIN_PROXY is a representation of the C type AUTH_DOMAIN_PROXY.
+const AUTH_DOMAIN_PROXY = "proxy"
 
-// AuthDomainRealm is a representation of the C type AUTH_DOMAIN_REALM.
-const AuthDomainRealm = "realm"
+// AUTH_DOMAIN_REALM is a representation of the C type AUTH_DOMAIN_REALM.
+const AUTH_DOMAIN_REALM = "realm"
 
-// AuthDomainRemovePath is a representation of the C type AUTH_DOMAIN_REMOVE_PATH.
-const AuthDomainRemovePath = "remove-path"
+// AUTH_DOMAIN_REMOVE_PATH is a representation of the C type AUTH_DOMAIN_REMOVE_PATH.
+const AUTH_DOMAIN_REMOVE_PATH = "remove-path"
 
-// AuthH is a representation of the C type AUTH_H.
-const AuthH = int32(1)
+// AUTH_H is a representation of the C type AUTH_H.
+const AUTH_H = int32(1)
 
-// AuthHost is a representation of the C type AUTH_HOST.
-const AuthHost = "host"
+// AUTH_HOST is a representation of the C type AUTH_HOST.
+const AUTH_HOST = "host"
 
-// AuthIsAuthenticated is a representation of the C type AUTH_IS_AUTHENTICATED.
-const AuthIsAuthenticated = "is-authenticated"
+// AUTH_IS_AUTHENTICATED is a representation of the C type AUTH_IS_AUTHENTICATED.
+const AUTH_IS_AUTHENTICATED = "is-authenticated"
 
-// AuthIsForProxy is a representation of the C type AUTH_IS_FOR_PROXY.
-const AuthIsForProxy = "is-for-proxy"
+// AUTH_IS_FOR_PROXY is a representation of the C type AUTH_IS_FOR_PROXY.
+const AUTH_IS_FOR_PROXY = "is-for-proxy"
 
-// AuthManagerH is a representation of the C type AUTH_MANAGER_H.
-const AuthManagerH = int32(1)
+// AUTH_MANAGER_H is a representation of the C type AUTH_MANAGER_H.
+const AUTH_MANAGER_H = int32(1)
 
-// AuthRealm is a representation of the C type AUTH_REALM.
-const AuthRealm = "realm"
+// AUTH_REALM is a representation of the C type AUTH_REALM.
+const AUTH_REALM = "realm"
 
-// AuthSchemeName is a representation of the C type AUTH_SCHEME_NAME.
-const AuthSchemeName = "scheme-name"
+// AUTH_SCHEME_NAME is a representation of the C type AUTH_SCHEME_NAME.
+const AUTH_SCHEME_NAME = "scheme-name"
 
-// CacheH is a representation of the C type CACHE_H.
-const CacheH = int32(1)
+// CACHE_H is a representation of the C type CACHE_H.
+const CACHE_H = int32(1)
 
-// CharHttpCtl is a representation of the C type CHAR_HTTP_CTL.
-const CharHttpCtl = int32(16)
+// CHAR_HTTP_CTL is a representation of the C type CHAR_HTTP_CTL.
+const CHAR_HTTP_CTL = int32(16)
 
-// CharHttpSeparator is a representation of the C type CHAR_HTTP_SEPARATOR.
-const CharHttpSeparator = int32(8)
+// CHAR_HTTP_SEPARATOR is a representation of the C type CHAR_HTTP_SEPARATOR.
+const CHAR_HTTP_SEPARATOR = int32(8)
 
-// CharUriGenDelims is a representation of the C type CHAR_URI_GEN_DELIMS.
-const CharUriGenDelims = int32(2)
+// CHAR_URI_GEN_DELIMS is a representation of the C type CHAR_URI_GEN_DELIMS.
+const CHAR_URI_GEN_DELIMS = int32(2)
 
-// CharUriPercentEncoded is a representation of the C type CHAR_URI_PERCENT_ENCODED.
-const CharUriPercentEncoded = int32(1)
+// CHAR_URI_PERCENT_ENCODED is a representation of the C type CHAR_URI_PERCENT_ENCODED.
+const CHAR_URI_PERCENT_ENCODED = int32(1)
 
-// CharUriSubDelims is a representation of the C type CHAR_URI_SUB_DELIMS.
-const CharUriSubDelims = int32(4)
+// CHAR_URI_SUB_DELIMS is a representation of the C type CHAR_URI_SUB_DELIMS.
+const CHAR_URI_SUB_DELIMS = int32(4)
 
-// ContentDecoderH is a representation of the C type CONTENT_DECODER_H.
-const ContentDecoderH = int32(1)
+// CONTENT_DECODER_H is a representation of the C type CONTENT_DECODER_H.
+const CONTENT_DECODER_H = int32(1)
 
-// ContentSnifferH is a representation of the C type CONTENT_SNIFFER_H.
-const ContentSnifferH = int32(1)
+// CONTENT_SNIFFER_H is a representation of the C type CONTENT_SNIFFER_H.
+const CONTENT_SNIFFER_H = int32(1)
 
-// CookieH is a representation of the C type COOKIE_H.
-const CookieH = int32(1)
+// COOKIE_H is a representation of the C type COOKIE_H.
+const COOKIE_H = int32(1)
 
-// CookieJarAcceptPolicy is a representation of the C type COOKIE_JAR_ACCEPT_POLICY.
+// COOKIE_JAR_ACCEPT_POLICY is a representation of the C type COOKIE_JAR_ACCEPT_POLICY.
 //
 // since 2.30
-const CookieJarAcceptPolicy = "accept-policy"
+const COOKIE_JAR_ACCEPT_POLICY = "accept-policy"
 
-// CookieJarDbFilename is a representation of the C type COOKIE_JAR_DB_FILENAME.
-const CookieJarDbFilename = "filename"
+// COOKIE_JAR_DB_FILENAME is a representation of the C type COOKIE_JAR_DB_FILENAME.
+const COOKIE_JAR_DB_FILENAME = "filename"
 
-// CookieJarDbH is a representation of the C type COOKIE_JAR_DB_H.
-const CookieJarDbH = int32(1)
+// COOKIE_JAR_DB_H is a representation of the C type COOKIE_JAR_DB_H.
+const COOKIE_JAR_DB_H = int32(1)
 
-// CookieJarH is a representation of the C type COOKIE_JAR_H.
-const CookieJarH = int32(1)
+// COOKIE_JAR_H is a representation of the C type COOKIE_JAR_H.
+const COOKIE_JAR_H = int32(1)
 
-// CookieJarReadOnly is a representation of the C type COOKIE_JAR_READ_ONLY.
-const CookieJarReadOnly = "read-only"
+// COOKIE_JAR_READ_ONLY is a representation of the C type COOKIE_JAR_READ_ONLY.
+const COOKIE_JAR_READ_ONLY = "read-only"
 
-// CookieJarTextFilename is a representation of the C type COOKIE_JAR_TEXT_FILENAME.
-const CookieJarTextFilename = "filename"
+// COOKIE_JAR_TEXT_FILENAME is a representation of the C type COOKIE_JAR_TEXT_FILENAME.
+const COOKIE_JAR_TEXT_FILENAME = "filename"
 
-// CookieJarTextH is a representation of the C type COOKIE_JAR_TEXT_H.
-const CookieJarTextH = int32(1)
+// COOKIE_JAR_TEXT_H is a representation of the C type COOKIE_JAR_TEXT_H.
+const COOKIE_JAR_TEXT_H = int32(1)
 
-// CookieMaxAgeOneDay is a representation of the C type COOKIE_MAX_AGE_ONE_DAY.
+// COOKIE_MAX_AGE_ONE_DAY is a representation of the C type COOKIE_MAX_AGE_ONE_DAY.
 //
 // since 2.24
-const CookieMaxAgeOneDay = int32(0)
+const COOKIE_MAX_AGE_ONE_DAY = int32(0)
 
-// CookieMaxAgeOneHour is a representation of the C type COOKIE_MAX_AGE_ONE_HOUR.
+// COOKIE_MAX_AGE_ONE_HOUR is a representation of the C type COOKIE_MAX_AGE_ONE_HOUR.
 //
 // since 2.24
-const CookieMaxAgeOneHour = int32(3600)
+const COOKIE_MAX_AGE_ONE_HOUR = int32(3600)
 
-// CookieMaxAgeOneWeek is a representation of the C type COOKIE_MAX_AGE_ONE_WEEK.
+// COOKIE_MAX_AGE_ONE_WEEK is a representation of the C type COOKIE_MAX_AGE_ONE_WEEK.
 //
 // since 2.24
-const CookieMaxAgeOneWeek = int32(0)
+const COOKIE_MAX_AGE_ONE_WEEK = int32(0)
 
-// CookieMaxAgeOneYear is a representation of the C type COOKIE_MAX_AGE_ONE_YEAR.
+// COOKIE_MAX_AGE_ONE_YEAR is a representation of the C type COOKIE_MAX_AGE_ONE_YEAR.
 //
 // since 2.24
-const CookieMaxAgeOneYear = int32(0)
+const COOKIE_MAX_AGE_ONE_YEAR = int32(0)
 
-// DateH is a representation of the C type DATE_H.
-const DateH = int32(1)
+// DATE_H is a representation of the C type DATE_H.
+const DATE_H = int32(1)
 
-// FormH is a representation of the C type FORM_H.
-const FormH = int32(1)
+// FORM_H is a representation of the C type FORM_H.
+const FORM_H = int32(1)
 
-// FormMimeTypeMultipart is a representation of the C type FORM_MIME_TYPE_MULTIPART.
+// FORM_MIME_TYPE_MULTIPART is a representation of the C type FORM_MIME_TYPE_MULTIPART.
 //
 // since 2.26
-const FormMimeTypeMultipart = "multipart/form-data"
+const FORM_MIME_TYPE_MULTIPART = "multipart/form-data"
 
-// FormMimeTypeUrlencoded is a representation of the C type FORM_MIME_TYPE_URLENCODED.
+// FORM_MIME_TYPE_URLENCODED is a representation of the C type FORM_MIME_TYPE_URLENCODED.
 //
 // since 2.26
-const FormMimeTypeUrlencoded = "application/x-www-form-urlencoded"
+const FORM_MIME_TYPE_URLENCODED = "application/x-www-form-urlencoded"
 
-// HeadersH is a representation of the C type HEADERS_H.
-const HeadersH = int32(1)
+// HEADERS_H is a representation of the C type HEADERS_H.
+const HEADERS_H = int32(1)
 
-// LoggerH is a representation of the C type LOGGER_H.
-const LoggerH = int32(1)
+// LOGGER_H is a representation of the C type LOGGER_H.
+const LOGGER_H = int32(1)
 
-// LoggerLevel is a representation of the C type LOGGER_LEVEL.
+// LOGGER_LEVEL is a representation of the C type LOGGER_LEVEL.
 //
 // since 2.56
-const LoggerLevel = "level"
+const LOGGER_LEVEL = "level"
 
-// LoggerMaxBodySize is a representation of the C type LOGGER_MAX_BODY_SIZE.
+// LOGGER_MAX_BODY_SIZE is a representation of the C type LOGGER_MAX_BODY_SIZE.
 //
 // since 2.56
-const LoggerMaxBodySize = "max-body-size"
+const LOGGER_MAX_BODY_SIZE = "max-body-size"
 
-// MajorVersion is a representation of the C type MAJOR_VERSION.
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
 //
 // since 2.42
-const MajorVersion = int32(2)
+const MAJOR_VERSION = int32(2)
 
-// MessageBodyH is a representation of the C type MESSAGE_BODY_H.
-const MessageBodyH = int32(1)
+// MESSAGE_BODY_H is a representation of the C type MESSAGE_BODY_H.
+const MESSAGE_BODY_H = int32(1)
 
-// MessageFirstParty is a representation of the C type MESSAGE_FIRST_PARTY.
+// MESSAGE_FIRST_PARTY is a representation of the C type MESSAGE_FIRST_PARTY.
 //
 // since 2.30
-const MessageFirstParty = "first-party"
+const MESSAGE_FIRST_PARTY = "first-party"
 
-// MessageFlags is a representation of the C type MESSAGE_FLAGS.
-const MessageFlags = "flags"
+// MESSAGE_FLAGS is a representation of the C type MESSAGE_FLAGS.
+const MESSAGE_FLAGS = "flags"
 
-// MessageH is a representation of the C type MESSAGE_H.
-const MessageH = int32(1)
+// MESSAGE_H is a representation of the C type MESSAGE_H.
+const MESSAGE_H = int32(1)
 
-// MessageHeadersH is a representation of the C type MESSAGE_HEADERS_H.
-const MessageHeadersH = int32(1)
+// MESSAGE_HEADERS_H is a representation of the C type MESSAGE_HEADERS_H.
+const MESSAGE_HEADERS_H = int32(1)
 
-// MessageHttpVersion is a representation of the C type MESSAGE_HTTP_VERSION.
-const MessageHttpVersion = "http-version"
+// MESSAGE_HTTP_VERSION is a representation of the C type MESSAGE_HTTP_VERSION.
+const MESSAGE_HTTP_VERSION = "http-version"
 
-// MessageMethod is a representation of the C type MESSAGE_METHOD.
-const MessageMethod = "method"
+// MESSAGE_METHOD is a representation of the C type MESSAGE_METHOD.
+const MESSAGE_METHOD = "method"
 
-// MessagePriority is a representation of the C type MESSAGE_PRIORITY.
+// MESSAGE_PRIORITY is a representation of the C type MESSAGE_PRIORITY.
 //
 // since 2.44
-const MessagePriority = "priority"
+const MESSAGE_PRIORITY = "priority"
 
-// MessageReasonPhrase is a representation of the C type MESSAGE_REASON_PHRASE.
-const MessageReasonPhrase = "reason-phrase"
+// MESSAGE_REASON_PHRASE is a representation of the C type MESSAGE_REASON_PHRASE.
+const MESSAGE_REASON_PHRASE = "reason-phrase"
 
-// MessageRequestBody is a representation of the C type MESSAGE_REQUEST_BODY.
-const MessageRequestBody = "request-body"
+// MESSAGE_REQUEST_BODY is a representation of the C type MESSAGE_REQUEST_BODY.
+const MESSAGE_REQUEST_BODY = "request-body"
 
-// MessageRequestBodyData is a representation of the C type MESSAGE_REQUEST_BODY_DATA.
+// MESSAGE_REQUEST_BODY_DATA is a representation of the C type MESSAGE_REQUEST_BODY_DATA.
 //
 // since 2.46
-const MessageRequestBodyData = "request-body-data"
+const MESSAGE_REQUEST_BODY_DATA = "request-body-data"
 
-// MessageRequestHeaders is a representation of the C type MESSAGE_REQUEST_HEADERS.
-const MessageRequestHeaders = "request-headers"
+// MESSAGE_REQUEST_HEADERS is a representation of the C type MESSAGE_REQUEST_HEADERS.
+const MESSAGE_REQUEST_HEADERS = "request-headers"
 
-// MessageResponseBody is a representation of the C type MESSAGE_RESPONSE_BODY.
-const MessageResponseBody = "response-body"
+// MESSAGE_RESPONSE_BODY is a representation of the C type MESSAGE_RESPONSE_BODY.
+const MESSAGE_RESPONSE_BODY = "response-body"
 
-// MessageResponseBodyData is a representation of the C type MESSAGE_RESPONSE_BODY_DATA.
+// MESSAGE_RESPONSE_BODY_DATA is a representation of the C type MESSAGE_RESPONSE_BODY_DATA.
 //
 // since 2.46
-const MessageResponseBodyData = "response-body-data"
+const MESSAGE_RESPONSE_BODY_DATA = "response-body-data"
 
-// MessageResponseHeaders is a representation of the C type MESSAGE_RESPONSE_HEADERS.
-const MessageResponseHeaders = "response-headers"
+// MESSAGE_RESPONSE_HEADERS is a representation of the C type MESSAGE_RESPONSE_HEADERS.
+const MESSAGE_RESPONSE_HEADERS = "response-headers"
 
-// MessageServerSide is a representation of the C type MESSAGE_SERVER_SIDE.
-const MessageServerSide = "server-side"
+// MESSAGE_SERVER_SIDE is a representation of the C type MESSAGE_SERVER_SIDE.
+const MESSAGE_SERVER_SIDE = "server-side"
 
-// MessageStatusCode is a representation of the C type MESSAGE_STATUS_CODE.
-const MessageStatusCode = "status-code"
+// MESSAGE_STATUS_CODE is a representation of the C type MESSAGE_STATUS_CODE.
+const MESSAGE_STATUS_CODE = "status-code"
 
-// MessageTlsCertificate is a representation of the C type MESSAGE_TLS_CERTIFICATE.
+// MESSAGE_TLS_CERTIFICATE is a representation of the C type MESSAGE_TLS_CERTIFICATE.
 //
 // since 2.34
-const MessageTlsCertificate = "tls-certificate"
+const MESSAGE_TLS_CERTIFICATE = "tls-certificate"
 
-// MessageTlsErrors is a representation of the C type MESSAGE_TLS_ERRORS.
+// MESSAGE_TLS_ERRORS is a representation of the C type MESSAGE_TLS_ERRORS.
 //
 // since 2.34
-const MessageTlsErrors = "tls-errors"
+const MESSAGE_TLS_ERRORS = "tls-errors"
 
-// MessageUri is a representation of the C type MESSAGE_URI.
-const MessageUri = "uri"
+// MESSAGE_URI is a representation of the C type MESSAGE_URI.
+const MESSAGE_URI = "uri"
 
-// MethodH is a representation of the C type METHOD_H.
-const MethodH = int32(1)
+// METHOD_H is a representation of the C type METHOD_H.
+const METHOD_H = int32(1)
 
-// MicroVersion is a representation of the C type MICRO_VERSION.
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
 //
 // since 2.42
-const MicroVersion = int32(1)
+const MICRO_VERSION = int32(1)
 
-// MinorVersion is a representation of the C type MINOR_VERSION.
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
 //
 // since 2.42
-const MinorVersion = int32(62)
+const MINOR_VERSION = int32(62)
 
-// MiscH is a representation of the C type MISC_H.
-const MiscH = int32(1)
+// MISC_H is a representation of the C type MISC_H.
+const MISC_H = int32(1)
 
-// MultipartH is a representation of the C type MULTIPART_H.
-const MultipartH = int32(1)
+// MULTIPART_H is a representation of the C type MULTIPART_H.
+const MULTIPART_H = int32(1)
 
-// MultipartInputStreamH is a representation of the C type MULTIPART_INPUT_STREAM_H.
-const MultipartInputStreamH = int32(1)
+// MULTIPART_INPUT_STREAM_H is a representation of the C type MULTIPART_INPUT_STREAM_H.
+const MULTIPART_INPUT_STREAM_H = int32(1)
 
-// PasswordManagerH is a representation of the C type PASSWORD_MANAGER_H.
-const PasswordManagerH = int32(1)
+// PASSWORD_MANAGER_H is a representation of the C type PASSWORD_MANAGER_H.
+const PASSWORD_MANAGER_H = int32(1)
 
-// ProxyResolverDefaultH is a representation of the C type PROXY_RESOLVER_DEFAULT_H.
-const ProxyResolverDefaultH = int32(1)
+// PROXY_RESOLVER_DEFAULT_H is a representation of the C type PROXY_RESOLVER_DEFAULT_H.
+const PROXY_RESOLVER_DEFAULT_H = int32(1)
 
-// ProxyUriResolverH is a representation of the C type PROXY_URI_RESOLVER_H.
-const ProxyUriResolverH = int32(1)
+// PROXY_URI_RESOLVER_H is a representation of the C type PROXY_URI_RESOLVER_H.
+const PROXY_URI_RESOLVER_H = int32(1)
 
-// RequesterH is a representation of the C type REQUESTER_H.
-const RequesterH = int32(1)
+// REQUESTER_H is a representation of the C type REQUESTER_H.
+const REQUESTER_H = int32(1)
 
-// RequestDataH is a representation of the C type REQUEST_DATA_H.
-const RequestDataH = int32(1)
+// REQUEST_DATA_H is a representation of the C type REQUEST_DATA_H.
+const REQUEST_DATA_H = int32(1)
 
-// RequestFileH is a representation of the C type REQUEST_FILE_H.
-const RequestFileH = int32(1)
+// REQUEST_FILE_H is a representation of the C type REQUEST_FILE_H.
+const REQUEST_FILE_H = int32(1)
 
-// RequestH is a representation of the C type REQUEST_H.
-const RequestH = int32(1)
+// REQUEST_H is a representation of the C type REQUEST_H.
+const REQUEST_H = int32(1)
 
-// RequestHttpH is a representation of the C type REQUEST_HTTP_H.
-const RequestHttpH = int32(1)
+// REQUEST_HTTP_H is a representation of the C type REQUEST_HTTP_H.
+const REQUEST_HTTP_H = int32(1)
 
-// RequestSession is a representation of the C type REQUEST_SESSION.
+// REQUEST_SESSION is a representation of the C type REQUEST_SESSION.
 //
 // since 2.42
-const RequestSession = "session"
+const REQUEST_SESSION = "session"
 
-// RequestUri is a representation of the C type REQUEST_URI.
+// REQUEST_URI is a representation of the C type REQUEST_URI.
 //
 // since 2.42
-const RequestUri = "uri"
+const REQUEST_URI = "uri"
 
-// ServerAsyncContext is a representation of the C type SERVER_ASYNC_CONTEXT.
-const ServerAsyncContext = "async-context"
+// SERVER_ASYNC_CONTEXT is a representation of the C type SERVER_ASYNC_CONTEXT.
+const SERVER_ASYNC_CONTEXT = "async-context"
 
-// ServerH is a representation of the C type SERVER_H.
-const ServerH = int32(1)
+// SERVER_H is a representation of the C type SERVER_H.
+const SERVER_H = int32(1)
 
-// ServerHttpsAliases is a representation of the C type SERVER_HTTPS_ALIASES.
+// SERVER_HTTPS_ALIASES is a representation of the C type SERVER_HTTPS_ALIASES.
 //
 // since 2.44
-const ServerHttpsAliases = "https-aliases"
+const SERVER_HTTPS_ALIASES = "https-aliases"
 
-// ServerHttpAliases is a representation of the C type SERVER_HTTP_ALIASES.
+// SERVER_HTTP_ALIASES is a representation of the C type SERVER_HTTP_ALIASES.
 //
 // since 2.44
-const ServerHttpAliases = "http-aliases"
+const SERVER_HTTP_ALIASES = "http-aliases"
 
-// ServerInterface is a representation of the C type SERVER_INTERFACE.
-const ServerInterface = "interface"
+// SERVER_INTERFACE is a representation of the C type SERVER_INTERFACE.
+const SERVER_INTERFACE = "interface"
 
-// ServerPort is a representation of the C type SERVER_PORT.
-const ServerPort = "port"
+// SERVER_PORT is a representation of the C type SERVER_PORT.
+const SERVER_PORT = "port"
 
-// ServerRawPaths is a representation of the C type SERVER_RAW_PATHS.
-const ServerRawPaths = "raw-paths"
+// SERVER_RAW_PATHS is a representation of the C type SERVER_RAW_PATHS.
+const SERVER_RAW_PATHS = "raw-paths"
 
-// ServerServerHeader is a representation of the C type SERVER_SERVER_HEADER.
-const ServerServerHeader = "server-header"
+// SERVER_SERVER_HEADER is a representation of the C type SERVER_SERVER_HEADER.
+const SERVER_SERVER_HEADER = "server-header"
 
-// ServerSslCertFile is a representation of the C type SERVER_SSL_CERT_FILE.
-const ServerSslCertFile = "ssl-cert-file"
+// SERVER_SSL_CERT_FILE is a representation of the C type SERVER_SSL_CERT_FILE.
+const SERVER_SSL_CERT_FILE = "ssl-cert-file"
 
-// ServerSslKeyFile is a representation of the C type SERVER_SSL_KEY_FILE.
-const ServerSslKeyFile = "ssl-key-file"
+// SERVER_SSL_KEY_FILE is a representation of the C type SERVER_SSL_KEY_FILE.
+const SERVER_SSL_KEY_FILE = "ssl-key-file"
 
-// ServerTlsCertificate is a representation of the C type SERVER_TLS_CERTIFICATE.
+// SERVER_TLS_CERTIFICATE is a representation of the C type SERVER_TLS_CERTIFICATE.
 //
 // since 2.38
-const ServerTlsCertificate = "tls-certificate"
+const SERVER_TLS_CERTIFICATE = "tls-certificate"
 
-// SessionAcceptLanguage is a representation of the C type SESSION_ACCEPT_LANGUAGE.
+// SESSION_ACCEPT_LANGUAGE is a representation of the C type SESSION_ACCEPT_LANGUAGE.
 //
 // since 2.30
-const SessionAcceptLanguage = "accept-language"
+const SESSION_ACCEPT_LANGUAGE = "accept-language"
 
-// SessionAcceptLanguageAuto is a representation of the C type SESSION_ACCEPT_LANGUAGE_AUTO.
+// SESSION_ACCEPT_LANGUAGE_AUTO is a representation of the C type SESSION_ACCEPT_LANGUAGE_AUTO.
 //
 // since 2.30
-const SessionAcceptLanguageAuto = "accept-language-auto"
+const SESSION_ACCEPT_LANGUAGE_AUTO = "accept-language-auto"
 
-// SessionAddFeature is a representation of the C type SESSION_ADD_FEATURE.
+// SESSION_ADD_FEATURE is a representation of the C type SESSION_ADD_FEATURE.
 //
 // since 2.24
-const SessionAddFeature = "add-feature"
+const SESSION_ADD_FEATURE = "add-feature"
 
-// SessionAddFeatureByType is a representation of the C type SESSION_ADD_FEATURE_BY_TYPE.
+// SESSION_ADD_FEATURE_BY_TYPE is a representation of the C type SESSION_ADD_FEATURE_BY_TYPE.
 //
 // since 2.24
-const SessionAddFeatureByType = "add-feature-by-type"
+const SESSION_ADD_FEATURE_BY_TYPE = "add-feature-by-type"
 
-// SessionAsyncContext is a representation of the C type SESSION_ASYNC_CONTEXT.
-const SessionAsyncContext = "async-context"
+// SESSION_ASYNC_CONTEXT is a representation of the C type SESSION_ASYNC_CONTEXT.
+const SESSION_ASYNC_CONTEXT = "async-context"
 
-// SessionAsyncH is a representation of the C type SESSION_ASYNC_H.
-const SessionAsyncH = int32(1)
+// SESSION_ASYNC_H is a representation of the C type SESSION_ASYNC_H.
+const SESSION_ASYNC_H = int32(1)
 
-// SessionFeatureH is a representation of the C type SESSION_FEATURE_H.
-const SessionFeatureH = int32(1)
+// SESSION_FEATURE_H is a representation of the C type SESSION_FEATURE_H.
+const SESSION_FEATURE_H = int32(1)
 
-// SessionH is a representation of the C type SESSION_H.
-const SessionH = int32(1)
+// SESSION_H is a representation of the C type SESSION_H.
+const SESSION_H = int32(1)
 
-// SessionHttpsAliases is a representation of the C type SESSION_HTTPS_ALIASES.
+// SESSION_HTTPS_ALIASES is a representation of the C type SESSION_HTTPS_ALIASES.
 //
 // since 2.38
-const SessionHttpsAliases = "https-aliases"
+const SESSION_HTTPS_ALIASES = "https-aliases"
 
-// SessionHttpAliases is a representation of the C type SESSION_HTTP_ALIASES.
+// SESSION_HTTP_ALIASES is a representation of the C type SESSION_HTTP_ALIASES.
 //
 // since 2.38
-const SessionHttpAliases = "http-aliases"
+const SESSION_HTTP_ALIASES = "http-aliases"
 
-// SessionIdleTimeout is a representation of the C type SESSION_IDLE_TIMEOUT.
+// SESSION_IDLE_TIMEOUT is a representation of the C type SESSION_IDLE_TIMEOUT.
 //
 // since 2.24
-const SessionIdleTimeout = "idle-timeout"
+const SESSION_IDLE_TIMEOUT = "idle-timeout"
 
-// SessionLocalAddress is a representation of the C type SESSION_LOCAL_ADDRESS.
+// SESSION_LOCAL_ADDRESS is a representation of the C type SESSION_LOCAL_ADDRESS.
 //
 // since 2.42
-const SessionLocalAddress = "local-address"
+const SESSION_LOCAL_ADDRESS = "local-address"
 
-// SessionMaxConns is a representation of the C type SESSION_MAX_CONNS.
-const SessionMaxConns = "max-conns"
+// SESSION_MAX_CONNS is a representation of the C type SESSION_MAX_CONNS.
+const SESSION_MAX_CONNS = "max-conns"
 
-// SessionMaxConnsPerHost is a representation of the C type SESSION_MAX_CONNS_PER_HOST.
-const SessionMaxConnsPerHost = "max-conns-per-host"
+// SESSION_MAX_CONNS_PER_HOST is a representation of the C type SESSION_MAX_CONNS_PER_HOST.
+const SESSION_MAX_CONNS_PER_HOST = "max-conns-per-host"
 
-// SessionProxyResolver is a representation of the C type SESSION_PROXY_RESOLVER.
-const SessionProxyResolver = "proxy-resolver"
+// SESSION_PROXY_RESOLVER is a representation of the C type SESSION_PROXY_RESOLVER.
+const SESSION_PROXY_RESOLVER = "proxy-resolver"
 
-// SessionProxyUri is a representation of the C type SESSION_PROXY_URI.
-const SessionProxyUri = "proxy-uri"
+// SESSION_PROXY_URI is a representation of the C type SESSION_PROXY_URI.
+const SESSION_PROXY_URI = "proxy-uri"
 
-// SessionRemoveFeatureByType is a representation of the C type SESSION_REMOVE_FEATURE_BY_TYPE.
+// SESSION_REMOVE_FEATURE_BY_TYPE is a representation of the C type SESSION_REMOVE_FEATURE_BY_TYPE.
 //
 // since 2.24
-const SessionRemoveFeatureByType = "remove-feature-by-type"
+const SESSION_REMOVE_FEATURE_BY_TYPE = "remove-feature-by-type"
 
-// SessionSslCaFile is a representation of the C type SESSION_SSL_CA_FILE.
-const SessionSslCaFile = "ssl-ca-file"
+// SESSION_SSL_CA_FILE is a representation of the C type SESSION_SSL_CA_FILE.
+const SESSION_SSL_CA_FILE = "ssl-ca-file"
 
-// SessionSslStrict is a representation of the C type SESSION_SSL_STRICT.
+// SESSION_SSL_STRICT is a representation of the C type SESSION_SSL_STRICT.
 //
 // since 2.30
-const SessionSslStrict = "ssl-strict"
+const SESSION_SSL_STRICT = "ssl-strict"
 
-// SessionSslUseSystemCaFile is a representation of the C type SESSION_SSL_USE_SYSTEM_CA_FILE.
+// SESSION_SSL_USE_SYSTEM_CA_FILE is a representation of the C type SESSION_SSL_USE_SYSTEM_CA_FILE.
 //
 // since 2.38
-const SessionSslUseSystemCaFile = "ssl-use-system-ca-file"
+const SESSION_SSL_USE_SYSTEM_CA_FILE = "ssl-use-system-ca-file"
 
-// SessionSyncH is a representation of the C type SESSION_SYNC_H.
-const SessionSyncH = int32(1)
+// SESSION_SYNC_H is a representation of the C type SESSION_SYNC_H.
+const SESSION_SYNC_H = int32(1)
 
-// SessionTimeout is a representation of the C type SESSION_TIMEOUT.
-const SessionTimeout = "timeout"
+// SESSION_TIMEOUT is a representation of the C type SESSION_TIMEOUT.
+const SESSION_TIMEOUT = "timeout"
 
-// SessionTlsDatabase is a representation of the C type SESSION_TLS_DATABASE.
+// SESSION_TLS_DATABASE is a representation of the C type SESSION_TLS_DATABASE.
 //
 // since 2.38
-const SessionTlsDatabase = "tls-database"
+const SESSION_TLS_DATABASE = "tls-database"
 
-// SessionTlsInteraction is a representation of the C type SESSION_TLS_INTERACTION.
+// SESSION_TLS_INTERACTION is a representation of the C type SESSION_TLS_INTERACTION.
 //
 // since 2.48
-const SessionTlsInteraction = "tls-interaction"
+const SESSION_TLS_INTERACTION = "tls-interaction"
 
-// SessionUserAgent is a representation of the C type SESSION_USER_AGENT.
-const SessionUserAgent = "user-agent"
+// SESSION_USER_AGENT is a representation of the C type SESSION_USER_AGENT.
+const SESSION_USER_AGENT = "user-agent"
 
-// SessionUseNtlm is a representation of the C type SESSION_USE_NTLM.
-const SessionUseNtlm = "use-ntlm"
+// SESSION_USE_NTLM is a representation of the C type SESSION_USE_NTLM.
+const SESSION_USE_NTLM = "use-ntlm"
 
-// SessionUseThreadContext is a representation of the C type SESSION_USE_THREAD_CONTEXT.
+// SESSION_USE_THREAD_CONTEXT is a representation of the C type SESSION_USE_THREAD_CONTEXT.
 //
 // since 2.38
-const SessionUseThreadContext = "use-thread-context"
+const SESSION_USE_THREAD_CONTEXT = "use-thread-context"
 
-// SocketAsyncContext is a representation of the C type SOCKET_ASYNC_CONTEXT.
-const SocketAsyncContext = "async-context"
+// SOCKET_ASYNC_CONTEXT is a representation of the C type SOCKET_ASYNC_CONTEXT.
+const SOCKET_ASYNC_CONTEXT = "async-context"
 
-// SocketFlagNonblocking is a representation of the C type SOCKET_FLAG_NONBLOCKING.
-const SocketFlagNonblocking = "non-blocking"
+// SOCKET_FLAG_NONBLOCKING is a representation of the C type SOCKET_FLAG_NONBLOCKING.
+const SOCKET_FLAG_NONBLOCKING = "non-blocking"
 
-// SocketH is a representation of the C type SOCKET_H.
-const SocketH = int32(1)
+// SOCKET_H is a representation of the C type SOCKET_H.
+const SOCKET_H = int32(1)
 
-// SocketIsServer is a representation of the C type SOCKET_IS_SERVER.
-const SocketIsServer = "is-server"
+// SOCKET_IS_SERVER is a representation of the C type SOCKET_IS_SERVER.
+const SOCKET_IS_SERVER = "is-server"
 
-// SocketLocalAddress is a representation of the C type SOCKET_LOCAL_ADDRESS.
-const SocketLocalAddress = "local-address"
+// SOCKET_LOCAL_ADDRESS is a representation of the C type SOCKET_LOCAL_ADDRESS.
+const SOCKET_LOCAL_ADDRESS = "local-address"
 
-// SocketRemoteAddress is a representation of the C type SOCKET_REMOTE_ADDRESS.
-const SocketRemoteAddress = "remote-address"
+// SOCKET_REMOTE_ADDRESS is a representation of the C type SOCKET_REMOTE_ADDRESS.
+const SOCKET_REMOTE_ADDRESS = "remote-address"
 
-// SocketSslCredentials is a representation of the C type SOCKET_SSL_CREDENTIALS.
-const SocketSslCredentials = "ssl-creds"
+// SOCKET_SSL_CREDENTIALS is a representation of the C type SOCKET_SSL_CREDENTIALS.
+const SOCKET_SSL_CREDENTIALS = "ssl-creds"
 
-// SocketSslFallback is a representation of the C type SOCKET_SSL_FALLBACK.
-const SocketSslFallback = "ssl-fallback"
+// SOCKET_SSL_FALLBACK is a representation of the C type SOCKET_SSL_FALLBACK.
+const SOCKET_SSL_FALLBACK = "ssl-fallback"
 
-// SocketSslStrict is a representation of the C type SOCKET_SSL_STRICT.
-const SocketSslStrict = "ssl-strict"
+// SOCKET_SSL_STRICT is a representation of the C type SOCKET_SSL_STRICT.
+const SOCKET_SSL_STRICT = "ssl-strict"
 
-// SocketTimeout is a representation of the C type SOCKET_TIMEOUT.
-const SocketTimeout = "timeout"
+// SOCKET_TIMEOUT is a representation of the C type SOCKET_TIMEOUT.
+const SOCKET_TIMEOUT = "timeout"
 
-// SocketTlsCertificate is a representation of the C type SOCKET_TLS_CERTIFICATE.
+// SOCKET_TLS_CERTIFICATE is a representation of the C type SOCKET_TLS_CERTIFICATE.
 //
 // since 2.34
-const SocketTlsCertificate = "tls-certificate"
+const SOCKET_TLS_CERTIFICATE = "tls-certificate"
 
-// SocketTlsErrors is a representation of the C type SOCKET_TLS_ERRORS.
+// SOCKET_TLS_ERRORS is a representation of the C type SOCKET_TLS_ERRORS.
 //
 // since 2.34
-const SocketTlsErrors = "tls-errors"
+const SOCKET_TLS_ERRORS = "tls-errors"
 
-// SocketTrustedCertificate is a representation of the C type SOCKET_TRUSTED_CERTIFICATE.
-const SocketTrustedCertificate = "trusted-certificate"
+// SOCKET_TRUSTED_CERTIFICATE is a representation of the C type SOCKET_TRUSTED_CERTIFICATE.
+const SOCKET_TRUSTED_CERTIFICATE = "trusted-certificate"
 
-// SocketUseThreadContext is a representation of the C type SOCKET_USE_THREAD_CONTEXT.
+// SOCKET_USE_THREAD_CONTEXT is a representation of the C type SOCKET_USE_THREAD_CONTEXT.
 //
 // since 2.38
-const SocketUseThreadContext = "use-thread-context"
+const SOCKET_USE_THREAD_CONTEXT = "use-thread-context"
 
-// StatusH is a representation of the C type STATUS_H.
-const StatusH = int32(1)
+// STATUS_H is a representation of the C type STATUS_H.
+const STATUS_H = int32(1)
 
-// TypesH is a representation of the C type TYPES_H.
-const TypesH = int32(1)
+// TYPES_H is a representation of the C type TYPES_H.
+const TYPES_H = int32(1)
 
-// UriH is a representation of the C type URI_H.
-const UriH = int32(1)
+// URI_H is a representation of the C type URI_H.
+const URI_H = int32(1)
 
-// ValueUtilsH is a representation of the C type VALUE_UTILS_H.
-const ValueUtilsH = int32(1)
+// VALUE_UTILS_H is a representation of the C type VALUE_UTILS_H.
+const VALUE_UTILS_H = int32(1)
 
-// VersionMinRequired is a representation of the C type VERSION_MIN_REQUIRED.
+// VERSION_MIN_REQUIRED is a representation of the C type VERSION_MIN_REQUIRED.
 //
 // since 2.42
-const VersionMinRequired = int32(2)
+const VERSION_MIN_REQUIRED = int32(2)
 
-// XmlrpcH is a representation of the C type XMLRPC_H.
-const XmlrpcH = int32(1)
+// XMLRPC_H is a representation of the C type XMLRPC_H.
+const XMLRPC_H = int32(1)
 
-// XmlrpcOldH is a representation of the C type XMLRPC_OLD_H.
-const XmlrpcOldH = int32(1)
+// XMLRPC_OLD_H is a representation of the C type XMLRPC_OLD_H.
+const XMLRPC_OLD_H = int32(1)

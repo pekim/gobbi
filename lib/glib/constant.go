@@ -2,14 +2,14 @@
 
 package glib
 
-// AnalyzerAnalyzing is a representation of the C type ANALYZER_ANALYZING.
-const AnalyzerAnalyzing = int32(1)
+// ANALYZER_ANALYZING is a representation of the C type ANALYZER_ANALYZING.
+const ANALYZER_ANALYZING = int32(1)
 
-// AsciiDtostrBufSize is a representation of the C type ASCII_DTOSTR_BUF_SIZE.
-const AsciiDtostrBufSize = int32(39)
+// ASCII_DTOSTR_BUF_SIZE is a representation of the C type ASCII_DTOSTR_BUF_SIZE.
+const ASCII_DTOSTR_BUF_SIZE = int32(39)
 
-// BigEndian is a representation of the C type BIG_ENDIAN.
-const BigEndian = int32(4321)
+// BIG_ENDIAN is a representation of the C type BIG_ENDIAN.
+const BIG_ENDIAN = int32(4321)
 
 // CSET_A_2_Z is a representation of the C type CSET_A_2_Z.
 const CSET_A_2_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -20,487 +20,487 @@ const CSET_DIGITS = "0123456789"
 // CSET_a_2_z is a representation of the C type CSET_a_2_z.
 const CSET_a_2_z = "abcdefghijklmnopqrstuvwxyz"
 
-// DatalistFlagsMask is a representation of the C type DATALIST_FLAGS_MASK.
-const DatalistFlagsMask = int32(3)
+// DATALIST_FLAGS_MASK is a representation of the C type DATALIST_FLAGS_MASK.
+const DATALIST_FLAGS_MASK = int32(3)
 
-// DateBadDay is a representation of the C type DATE_BAD_DAY.
-const DateBadDay = int32(0)
+// DATE_BAD_DAY is a representation of the C type DATE_BAD_DAY.
+const DATE_BAD_DAY = int32(0)
 
-// DateBadJulian is a representation of the C type DATE_BAD_JULIAN.
-const DateBadJulian = int32(0)
+// DATE_BAD_JULIAN is a representation of the C type DATE_BAD_JULIAN.
+const DATE_BAD_JULIAN = int32(0)
 
-// DateBadYear is a representation of the C type DATE_BAD_YEAR.
-const DateBadYear = int32(0)
+// DATE_BAD_YEAR is a representation of the C type DATE_BAD_YEAR.
+const DATE_BAD_YEAR = int32(0)
 
-// DirSeparator is a representation of the C type DIR_SEPARATOR.
-const DirSeparator = int32(47)
+// DIR_SEPARATOR is a representation of the C type DIR_SEPARATOR.
+const DIR_SEPARATOR = int32(47)
 
-// DirSeparatorS is a representation of the C type DIR_SEPARATOR_S.
-const DirSeparatorS = "/"
+// DIR_SEPARATOR_S is a representation of the C type DIR_SEPARATOR_S.
+const DIR_SEPARATOR_S = "/"
 
 // E is a representation of the C type E.
 const E = 2.718282
 
-// Gint16Format is a representation of the C type GINT16_FORMAT.
-const Gint16Format = "hi"
+// GINT16_FORMAT is a representation of the C type GINT16_FORMAT.
+const GINT16_FORMAT = "hi"
 
-// Gint16Modifier is a representation of the C type GINT16_MODIFIER.
+// GINT16_MODIFIER is a representation of the C type GINT16_MODIFIER.
 //
 // since 2.4
-const Gint16Modifier = "h"
+const GINT16_MODIFIER = "h"
 
-// Gint32Format is a representation of the C type GINT32_FORMAT.
-const Gint32Format = "i"
+// GINT32_FORMAT is a representation of the C type GINT32_FORMAT.
+const GINT32_FORMAT = "i"
 
-// Gint32Modifier is a representation of the C type GINT32_MODIFIER.
+// GINT32_MODIFIER is a representation of the C type GINT32_MODIFIER.
 //
 // since 2.4
-const Gint32Modifier = ""
+const GINT32_MODIFIER = ""
 
-// Gint64Format is a representation of the C type GINT64_FORMAT.
-const Gint64Format = "li"
+// GINT64_FORMAT is a representation of the C type GINT64_FORMAT.
+const GINT64_FORMAT = "li"
 
-// Gint64Modifier is a representation of the C type GINT64_MODIFIER.
+// GINT64_MODIFIER is a representation of the C type GINT64_MODIFIER.
 //
 // since 2.4
-const Gint64Modifier = "l"
+const GINT64_MODIFIER = "l"
 
-// GintptrFormat is a representation of the C type GINTPTR_FORMAT.
+// GINTPTR_FORMAT is a representation of the C type GINTPTR_FORMAT.
 //
 // since 2.22
-const GintptrFormat = "li"
+const GINTPTR_FORMAT = "li"
 
-// GintptrModifier is a representation of the C type GINTPTR_MODIFIER.
+// GINTPTR_MODIFIER is a representation of the C type GINTPTR_MODIFIER.
 //
 // since 2.22
-const GintptrModifier = "l"
+const GINTPTR_MODIFIER = "l"
 
-// GnucFunction is a representation of the C type GNUC_FUNCTION.
-const GnucFunction = ""
+// GNUC_FUNCTION is a representation of the C type GNUC_FUNCTION.
+const GNUC_FUNCTION = ""
 
-// GnucPrettyFunction is a representation of the C type GNUC_PRETTY_FUNCTION.
-const GnucPrettyFunction = ""
+// GNUC_PRETTY_FUNCTION is a representation of the C type GNUC_PRETTY_FUNCTION.
+const GNUC_PRETTY_FUNCTION = ""
 
-// GsizeFormat is a representation of the C type GSIZE_FORMAT.
+// GSIZE_FORMAT is a representation of the C type GSIZE_FORMAT.
 //
 // since 2.6
-const GsizeFormat = "lu"
+const GSIZE_FORMAT = "lu"
 
-// GsizeModifier is a representation of the C type GSIZE_MODIFIER.
+// GSIZE_MODIFIER is a representation of the C type GSIZE_MODIFIER.
 //
 // since 2.6
-const GsizeModifier = "l"
+const GSIZE_MODIFIER = "l"
 
-// GssizeFormat is a representation of the C type GSSIZE_FORMAT.
+// GSSIZE_FORMAT is a representation of the C type GSSIZE_FORMAT.
 //
 // since 2.6
-const GssizeFormat = "li"
+const GSSIZE_FORMAT = "li"
 
-// GssizeModifier is a representation of the C type GSSIZE_MODIFIER.
+// GSSIZE_MODIFIER is a representation of the C type GSSIZE_MODIFIER.
 //
 // since 2.6
-const GssizeModifier = "l"
+const GSSIZE_MODIFIER = "l"
 
-// Guint16Format is a representation of the C type GUINT16_FORMAT.
-const Guint16Format = "hu"
+// GUINT16_FORMAT is a representation of the C type GUINT16_FORMAT.
+const GUINT16_FORMAT = "hu"
 
-// Guint32Format is a representation of the C type GUINT32_FORMAT.
-const Guint32Format = "u"
+// GUINT32_FORMAT is a representation of the C type GUINT32_FORMAT.
+const GUINT32_FORMAT = "u"
 
-// Guint64Format is a representation of the C type GUINT64_FORMAT.
-const Guint64Format = "lu"
+// GUINT64_FORMAT is a representation of the C type GUINT64_FORMAT.
+const GUINT64_FORMAT = "lu"
 
-// GuintptrFormat is a representation of the C type GUINTPTR_FORMAT.
+// GUINTPTR_FORMAT is a representation of the C type GUINTPTR_FORMAT.
 //
 // since 2.22
-const GuintptrFormat = "lu"
+const GUINTPTR_FORMAT = "lu"
 
-// HaveGint64 is a representation of the C type HAVE_GINT64.
-const HaveGint64 = int32(1)
+// HAVE_GINT64 is a representation of the C type HAVE_GINT64.
+const HAVE_GINT64 = int32(1)
 
-// HaveGnucVarargs is a representation of the C type HAVE_GNUC_VARARGS.
-const HaveGnucVarargs = int32(1)
+// HAVE_GNUC_VARARGS is a representation of the C type HAVE_GNUC_VARARGS.
+const HAVE_GNUC_VARARGS = int32(1)
 
-// HaveGnucVisibility is a representation of the C type HAVE_GNUC_VISIBILITY.
-const HaveGnucVisibility = int32(1)
+// HAVE_GNUC_VISIBILITY is a representation of the C type HAVE_GNUC_VISIBILITY.
+const HAVE_GNUC_VISIBILITY = int32(1)
 
-// HaveGrowingStack is a representation of the C type HAVE_GROWING_STACK.
-const HaveGrowingStack = int32(0)
+// HAVE_GROWING_STACK is a representation of the C type HAVE_GROWING_STACK.
+const HAVE_GROWING_STACK = int32(0)
 
-// HaveIsoVarargs is a representation of the C type HAVE_ISO_VARARGS.
-const HaveIsoVarargs = int32(1)
+// HAVE_ISO_VARARGS is a representation of the C type HAVE_ISO_VARARGS.
+const HAVE_ISO_VARARGS = int32(1)
 
-// HookFlagUserShift is a representation of the C type HOOK_FLAG_USER_SHIFT.
-const HookFlagUserShift = int32(4)
+// HOOK_FLAG_USER_SHIFT is a representation of the C type HOOK_FLAG_USER_SHIFT.
+const HOOK_FLAG_USER_SHIFT = int32(4)
 
-// Ieee754DoubleBias is a representation of the C type IEEE754_DOUBLE_BIAS.
-const Ieee754DoubleBias = int32(1023)
+// IEEE754_DOUBLE_BIAS is a representation of the C type IEEE754_DOUBLE_BIAS.
+const IEEE754_DOUBLE_BIAS = int32(1023)
 
-// Ieee754FloatBias is a representation of the C type IEEE754_FLOAT_BIAS.
-const Ieee754FloatBias = int32(127)
+// IEEE754_FLOAT_BIAS is a representation of the C type IEEE754_FLOAT_BIAS.
+const IEEE754_FLOAT_BIAS = int32(127)
 
-// KeyFileDesktopActionGroupPrefix is a representation of the C type KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX.
-const KeyFileDesktopActionGroupPrefix = "Desktop Action"
+// KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX is a representation of the C type KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX.
+const KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX = "Desktop Action"
 
-// KeyFileDesktopGroup is a representation of the C type KEY_FILE_DESKTOP_GROUP.
+// KEY_FILE_DESKTOP_GROUP is a representation of the C type KEY_FILE_DESKTOP_GROUP.
 //
 // since 2.14
-const KeyFileDesktopGroup = "Desktop Entry"
+const KEY_FILE_DESKTOP_GROUP = "Desktop Entry"
 
-// KeyFileDesktopKeyActions is a representation of the C type KEY_FILE_DESKTOP_KEY_ACTIONS.
+// KEY_FILE_DESKTOP_KEY_ACTIONS is a representation of the C type KEY_FILE_DESKTOP_KEY_ACTIONS.
 //
 // since 2.38
-const KeyFileDesktopKeyActions = "Actions"
+const KEY_FILE_DESKTOP_KEY_ACTIONS = "Actions"
 
-// KeyFileDesktopKeyCategories is a representation of the C type KEY_FILE_DESKTOP_KEY_CATEGORIES.
+// KEY_FILE_DESKTOP_KEY_CATEGORIES is a representation of the C type KEY_FILE_DESKTOP_KEY_CATEGORIES.
 //
 // since 2.14
-const KeyFileDesktopKeyCategories = "Categories"
+const KEY_FILE_DESKTOP_KEY_CATEGORIES = "Categories"
 
-// KeyFileDesktopKeyComment is a representation of the C type KEY_FILE_DESKTOP_KEY_COMMENT.
+// KEY_FILE_DESKTOP_KEY_COMMENT is a representation of the C type KEY_FILE_DESKTOP_KEY_COMMENT.
 //
 // since 2.14
-const KeyFileDesktopKeyComment = "Comment"
+const KEY_FILE_DESKTOP_KEY_COMMENT = "Comment"
 
-// KeyFileDesktopKeyDbusActivatable is a representation of the C type KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE.
+// KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE is a representation of the C type KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE.
 //
 // since 2.38
-const KeyFileDesktopKeyDbusActivatable = "DBusActivatable"
+const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE = "DBusActivatable"
 
-// KeyFileDesktopKeyExec is a representation of the C type KEY_FILE_DESKTOP_KEY_EXEC.
+// KEY_FILE_DESKTOP_KEY_EXEC is a representation of the C type KEY_FILE_DESKTOP_KEY_EXEC.
 //
 // since 2.14
-const KeyFileDesktopKeyExec = "Exec"
+const KEY_FILE_DESKTOP_KEY_EXEC = "Exec"
 
-// KeyFileDesktopKeyFullname is a representation of the C type KEY_FILE_DESKTOP_KEY_FULLNAME.
-const KeyFileDesktopKeyFullname = "X-GNOME-FullName"
+// KEY_FILE_DESKTOP_KEY_FULLNAME is a representation of the C type KEY_FILE_DESKTOP_KEY_FULLNAME.
+const KEY_FILE_DESKTOP_KEY_FULLNAME = "X-GNOME-FullName"
 
-// KeyFileDesktopKeyGenericName is a representation of the C type KEY_FILE_DESKTOP_KEY_GENERIC_NAME.
+// KEY_FILE_DESKTOP_KEY_GENERIC_NAME is a representation of the C type KEY_FILE_DESKTOP_KEY_GENERIC_NAME.
 //
 // since 2.14
-const KeyFileDesktopKeyGenericName = "GenericName"
+const KEY_FILE_DESKTOP_KEY_GENERIC_NAME = "GenericName"
 
-// KeyFileDesktopKeyGettextDomain is a representation of the C type KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN.
-const KeyFileDesktopKeyGettextDomain = "X-GNOME-Gettext-Domain"
+// KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN is a representation of the C type KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN.
+const KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN = "X-GNOME-Gettext-Domain"
 
-// KeyFileDesktopKeyHidden is a representation of the C type KEY_FILE_DESKTOP_KEY_HIDDEN.
+// KEY_FILE_DESKTOP_KEY_HIDDEN is a representation of the C type KEY_FILE_DESKTOP_KEY_HIDDEN.
 //
 // since 2.14
-const KeyFileDesktopKeyHidden = "Hidden"
+const KEY_FILE_DESKTOP_KEY_HIDDEN = "Hidden"
 
-// KeyFileDesktopKeyIcon is a representation of the C type KEY_FILE_DESKTOP_KEY_ICON.
+// KEY_FILE_DESKTOP_KEY_ICON is a representation of the C type KEY_FILE_DESKTOP_KEY_ICON.
 //
 // since 2.14
-const KeyFileDesktopKeyIcon = "Icon"
+const KEY_FILE_DESKTOP_KEY_ICON = "Icon"
 
-// KeyFileDesktopKeyKeywords is a representation of the C type KEY_FILE_DESKTOP_KEY_KEYWORDS.
-const KeyFileDesktopKeyKeywords = "Keywords"
+// KEY_FILE_DESKTOP_KEY_KEYWORDS is a representation of the C type KEY_FILE_DESKTOP_KEY_KEYWORDS.
+const KEY_FILE_DESKTOP_KEY_KEYWORDS = "Keywords"
 
-// KeyFileDesktopKeyMimeType is a representation of the C type KEY_FILE_DESKTOP_KEY_MIME_TYPE.
+// KEY_FILE_DESKTOP_KEY_MIME_TYPE is a representation of the C type KEY_FILE_DESKTOP_KEY_MIME_TYPE.
 //
 // since 2.14
-const KeyFileDesktopKeyMimeType = "MimeType"
+const KEY_FILE_DESKTOP_KEY_MIME_TYPE = "MimeType"
 
-// KeyFileDesktopKeyName is a representation of the C type KEY_FILE_DESKTOP_KEY_NAME.
+// KEY_FILE_DESKTOP_KEY_NAME is a representation of the C type KEY_FILE_DESKTOP_KEY_NAME.
 //
 // since 2.14
-const KeyFileDesktopKeyName = "Name"
+const KEY_FILE_DESKTOP_KEY_NAME = "Name"
 
-// KeyFileDesktopKeyNotShowIn is a representation of the C type KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN.
+// KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN is a representation of the C type KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN.
 //
 // since 2.14
-const KeyFileDesktopKeyNotShowIn = "NotShowIn"
+const KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN = "NotShowIn"
 
-// KeyFileDesktopKeyNoDisplay is a representation of the C type KEY_FILE_DESKTOP_KEY_NO_DISPLAY.
+// KEY_FILE_DESKTOP_KEY_NO_DISPLAY is a representation of the C type KEY_FILE_DESKTOP_KEY_NO_DISPLAY.
 //
 // since 2.14
-const KeyFileDesktopKeyNoDisplay = "NoDisplay"
+const KEY_FILE_DESKTOP_KEY_NO_DISPLAY = "NoDisplay"
 
-// KeyFileDesktopKeyOnlyShowIn is a representation of the C type KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN.
+// KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN is a representation of the C type KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN.
 //
 // since 2.14
-const KeyFileDesktopKeyOnlyShowIn = "OnlyShowIn"
+const KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN = "OnlyShowIn"
 
-// KeyFileDesktopKeyPath is a representation of the C type KEY_FILE_DESKTOP_KEY_PATH.
+// KEY_FILE_DESKTOP_KEY_PATH is a representation of the C type KEY_FILE_DESKTOP_KEY_PATH.
 //
 // since 2.14
-const KeyFileDesktopKeyPath = "Path"
+const KEY_FILE_DESKTOP_KEY_PATH = "Path"
 
-// KeyFileDesktopKeyStartupNotify is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY.
+// KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY.
 //
 // since 2.14
-const KeyFileDesktopKeyStartupNotify = "StartupNotify"
+const KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY = "StartupNotify"
 
-// KeyFileDesktopKeyStartupWmClass is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS.
+// KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS is a representation of the C type KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS.
 //
 // since 2.14
-const KeyFileDesktopKeyStartupWmClass = "StartupWMClass"
+const KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS = "StartupWMClass"
 
-// KeyFileDesktopKeyTerminal is a representation of the C type KEY_FILE_DESKTOP_KEY_TERMINAL.
+// KEY_FILE_DESKTOP_KEY_TERMINAL is a representation of the C type KEY_FILE_DESKTOP_KEY_TERMINAL.
 //
 // since 2.14
-const KeyFileDesktopKeyTerminal = "Terminal"
+const KEY_FILE_DESKTOP_KEY_TERMINAL = "Terminal"
 
-// KeyFileDesktopKeyTryExec is a representation of the C type KEY_FILE_DESKTOP_KEY_TRY_EXEC.
+// KEY_FILE_DESKTOP_KEY_TRY_EXEC is a representation of the C type KEY_FILE_DESKTOP_KEY_TRY_EXEC.
 //
 // since 2.14
-const KeyFileDesktopKeyTryExec = "TryExec"
+const KEY_FILE_DESKTOP_KEY_TRY_EXEC = "TryExec"
 
-// KeyFileDesktopKeyType is a representation of the C type KEY_FILE_DESKTOP_KEY_TYPE.
+// KEY_FILE_DESKTOP_KEY_TYPE is a representation of the C type KEY_FILE_DESKTOP_KEY_TYPE.
 //
 // since 2.14
-const KeyFileDesktopKeyType = "Type"
+const KEY_FILE_DESKTOP_KEY_TYPE = "Type"
 
-// KeyFileDesktopKeyUrl is a representation of the C type KEY_FILE_DESKTOP_KEY_URL.
+// KEY_FILE_DESKTOP_KEY_URL is a representation of the C type KEY_FILE_DESKTOP_KEY_URL.
 //
 // since 2.14
-const KeyFileDesktopKeyUrl = "URL"
+const KEY_FILE_DESKTOP_KEY_URL = "URL"
 
-// KeyFileDesktopKeyVersion is a representation of the C type KEY_FILE_DESKTOP_KEY_VERSION.
+// KEY_FILE_DESKTOP_KEY_VERSION is a representation of the C type KEY_FILE_DESKTOP_KEY_VERSION.
 //
 // since 2.14
-const KeyFileDesktopKeyVersion = "Version"
+const KEY_FILE_DESKTOP_KEY_VERSION = "Version"
 
-// KeyFileDesktopTypeApplication is a representation of the C type KEY_FILE_DESKTOP_TYPE_APPLICATION.
+// KEY_FILE_DESKTOP_TYPE_APPLICATION is a representation of the C type KEY_FILE_DESKTOP_TYPE_APPLICATION.
 //
 // since 2.14
-const KeyFileDesktopTypeApplication = "Application"
+const KEY_FILE_DESKTOP_TYPE_APPLICATION = "Application"
 
-// KeyFileDesktopTypeDirectory is a representation of the C type KEY_FILE_DESKTOP_TYPE_DIRECTORY.
+// KEY_FILE_DESKTOP_TYPE_DIRECTORY is a representation of the C type KEY_FILE_DESKTOP_TYPE_DIRECTORY.
 //
 // since 2.14
-const KeyFileDesktopTypeDirectory = "Directory"
+const KEY_FILE_DESKTOP_TYPE_DIRECTORY = "Directory"
 
-// KeyFileDesktopTypeLink is a representation of the C type KEY_FILE_DESKTOP_TYPE_LINK.
+// KEY_FILE_DESKTOP_TYPE_LINK is a representation of the C type KEY_FILE_DESKTOP_TYPE_LINK.
 //
 // since 2.14
-const KeyFileDesktopTypeLink = "Link"
+const KEY_FILE_DESKTOP_TYPE_LINK = "Link"
 
-// LittleEndian is a representation of the C type LITTLE_ENDIAN.
-const LittleEndian = int32(1234)
+// LITTLE_ENDIAN is a representation of the C type LITTLE_ENDIAN.
+const LITTLE_ENDIAN = int32(1234)
 
-// Ln10 is a representation of the C type LN10.
-const Ln10 = 2.302585
+// LN10 is a representation of the C type LN10.
+const LN10 = 2.302585
 
-// Ln2 is a representation of the C type LN2.
-const Ln2 = 0.693147
+// LN2 is a representation of the C type LN2.
+const LN2 = 0.693147
 
-// Log2Base10 is a representation of the C type LOG_2_BASE_10.
-const Log2Base10 = 0.30103
+// LOG_2_BASE_10 is a representation of the C type LOG_2_BASE_10.
+const LOG_2_BASE_10 = 0.30103
 
-// LogDomain is a representation of the C type LOG_DOMAIN.
-const LogDomain = int8(0)
+// LOG_DOMAIN is a representation of the C type LOG_DOMAIN.
+const LOG_DOMAIN = int8(0)
 
-// LogFatalMask is a representation of the C type LOG_FATAL_MASK.
-const LogFatalMask = int32(5)
+// LOG_FATAL_MASK is a representation of the C type LOG_FATAL_MASK.
+const LOG_FATAL_MASK = int32(5)
 
-// LogLevelUserShift is a representation of the C type LOG_LEVEL_USER_SHIFT.
-const LogLevelUserShift = int32(8)
+// LOG_LEVEL_USER_SHIFT is a representation of the C type LOG_LEVEL_USER_SHIFT.
+const LOG_LEVEL_USER_SHIFT = int32(8)
 
-// MajorVersion is a representation of the C type MAJOR_VERSION.
-const MajorVersion = int32(2)
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+const MAJOR_VERSION = int32(2)
 
-// Maxint16 is a representation of the C type MAXINT16.
+// MAXINT16 is a representation of the C type MAXINT16.
 //
 // since 2.4
-const Maxint16 = int16(32767)
+const MAXINT16 = int16(32767)
 
-// Maxint32 is a representation of the C type MAXINT32.
+// MAXINT32 is a representation of the C type MAXINT32.
 //
 // since 2.4
-const Maxint32 = int32(2147483647)
+const MAXINT32 = int32(2147483647)
 
-// Maxint64 is a representation of the C type MAXINT64.
-const Maxint64 = int64(9223372036854775807)
+// MAXINT64 is a representation of the C type MAXINT64.
+const MAXINT64 = int64(9223372036854775807)
 
-// Maxint8 is a representation of the C type MAXINT8.
+// MAXINT8 is a representation of the C type MAXINT8.
 //
 // since 2.4
-const Maxint8 = int8(127)
+const MAXINT8 = int8(127)
 
-// Maxuint16 is a representation of the C type MAXUINT16.
+// MAXUINT16 is a representation of the C type MAXUINT16.
 //
 // since 2.4
-const Maxuint16 = uint16(0xffff)
+const MAXUINT16 = uint16(0xffff)
 
-// Maxuint32 is a representation of the C type MAXUINT32.
+// MAXUINT32 is a representation of the C type MAXUINT32.
 //
 // since 2.4
-const Maxuint32 = uint32(0xffffffff)
+const MAXUINT32 = uint32(0xffffffff)
 
-// Maxuint64 is a representation of the C type MAXUINT64.
-const Maxuint64 = uint64(0xffffffffffffffff)
+// MAXUINT64 is a representation of the C type MAXUINT64.
+const MAXUINT64 = uint64(0xffffffffffffffff)
 
-// Maxuint8 is a representation of the C type MAXUINT8.
+// MAXUINT8 is a representation of the C type MAXUINT8.
 //
 // since 2.4
-const Maxuint8 = uint8(0xff)
+const MAXUINT8 = uint8(0xff)
 
-// MicroVersion is a representation of the C type MICRO_VERSION.
-const MicroVersion = int32(1)
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
+const MICRO_VERSION = int32(1)
 
-// Minint16 is a representation of the C type MININT16.
+// MININT16 is a representation of the C type MININT16.
 //
 // since 2.4
-const Minint16 = int16(-32768)
+const MININT16 = int16(-32768)
 
-// Minint32 is a representation of the C type MININT32.
+// MININT32 is a representation of the C type MININT32.
 //
 // since 2.4
-const Minint32 = int32(-2147483648)
+const MININT32 = int32(-2147483648)
 
-// Minint64 is a representation of the C type MININT64.
-const Minint64 = int64(-9223372036854775808)
+// MININT64 is a representation of the C type MININT64.
+const MININT64 = int64(-9223372036854775808)
 
-// Minint8 is a representation of the C type MININT8.
+// MININT8 is a representation of the C type MININT8.
 //
 // since 2.4
-const Minint8 = int8(-128)
+const MININT8 = int8(-128)
 
-// MinorVersion is a representation of the C type MINOR_VERSION.
-const MinorVersion = int32(56)
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
+const MINOR_VERSION = int32(56)
 
-// ModuleSuffix is a representation of the C type MODULE_SUFFIX.
-const ModuleSuffix = "so"
+// MODULE_SUFFIX is a representation of the C type MODULE_SUFFIX.
+const MODULE_SUFFIX = "so"
 
-// OptionRemaining is a representation of the C type OPTION_REMAINING.
+// OPTION_REMAINING is a representation of the C type OPTION_REMAINING.
 //
 // since 2.6
-const OptionRemaining = ""
+const OPTION_REMAINING = ""
 
-// PdpEndian is a representation of the C type PDP_ENDIAN.
-const PdpEndian = int32(3412)
+// PDP_ENDIAN is a representation of the C type PDP_ENDIAN.
+const PDP_ENDIAN = int32(3412)
 
-// Pi is a representation of the C type PI.
-const Pi = 3.141593
+// PI is a representation of the C type PI.
+const PI = 3.141593
 
-// PidFormat is a representation of the C type PID_FORMAT.
+// PID_FORMAT is a representation of the C type PID_FORMAT.
 //
 // since 2.50
-const PidFormat = "i"
+const PID_FORMAT = "i"
 
-// Pi2 is a representation of the C type PI_2.
-const Pi2 = 1.570796
+// PI_2 is a representation of the C type PI_2.
+const PI_2 = 1.570796
 
-// Pi4 is a representation of the C type PI_4.
-const Pi4 = 0.785398
+// PI_4 is a representation of the C type PI_4.
+const PI_4 = 0.785398
 
-// PollfdFormat is a representation of the C type POLLFD_FORMAT.
-const PollfdFormat = "%d"
+// POLLFD_FORMAT is a representation of the C type POLLFD_FORMAT.
+const POLLFD_FORMAT = "%d"
 
-// PriorityDefault is a representation of the C type PRIORITY_DEFAULT.
-const PriorityDefault = int32(0)
+// PRIORITY_DEFAULT is a representation of the C type PRIORITY_DEFAULT.
+const PRIORITY_DEFAULT = int32(0)
 
-// PriorityDefaultIdle is a representation of the C type PRIORITY_DEFAULT_IDLE.
-const PriorityDefaultIdle = int32(200)
+// PRIORITY_DEFAULT_IDLE is a representation of the C type PRIORITY_DEFAULT_IDLE.
+const PRIORITY_DEFAULT_IDLE = int32(200)
 
-// PriorityHigh is a representation of the C type PRIORITY_HIGH.
-const PriorityHigh = int32(-100)
+// PRIORITY_HIGH is a representation of the C type PRIORITY_HIGH.
+const PRIORITY_HIGH = int32(-100)
 
-// PriorityHighIdle is a representation of the C type PRIORITY_HIGH_IDLE.
-const PriorityHighIdle = int32(100)
+// PRIORITY_HIGH_IDLE is a representation of the C type PRIORITY_HIGH_IDLE.
+const PRIORITY_HIGH_IDLE = int32(100)
 
-// PriorityLow is a representation of the C type PRIORITY_LOW.
-const PriorityLow = int32(300)
+// PRIORITY_LOW is a representation of the C type PRIORITY_LOW.
+const PRIORITY_LOW = int32(300)
 
-// SearchpathSeparator is a representation of the C type SEARCHPATH_SEPARATOR.
-const SearchpathSeparator = int32(58)
+// SEARCHPATH_SEPARATOR is a representation of the C type SEARCHPATH_SEPARATOR.
+const SEARCHPATH_SEPARATOR = int32(58)
 
-// SearchpathSeparatorS is a representation of the C type SEARCHPATH_SEPARATOR_S.
-const SearchpathSeparatorS = ":"
+// SEARCHPATH_SEPARATOR_S is a representation of the C type SEARCHPATH_SEPARATOR_S.
+const SEARCHPATH_SEPARATOR_S = ":"
 
-// SizeofLong is a representation of the C type SIZEOF_LONG.
-const SizeofLong = int32(8)
+// SIZEOF_LONG is a representation of the C type SIZEOF_LONG.
+const SIZEOF_LONG = int32(8)
 
-// SizeofSizeT is a representation of the C type SIZEOF_SIZE_T.
-const SizeofSizeT = int32(8)
+// SIZEOF_SIZE_T is a representation of the C type SIZEOF_SIZE_T.
+const SIZEOF_SIZE_T = int32(8)
 
-// SizeofSsizeT is a representation of the C type SIZEOF_SSIZE_T.
-const SizeofSsizeT = int32(8)
+// SIZEOF_SSIZE_T is a representation of the C type SIZEOF_SSIZE_T.
+const SIZEOF_SSIZE_T = int32(8)
 
-// SizeofVoidP is a representation of the C type SIZEOF_VOID_P.
-const SizeofVoidP = int32(8)
+// SIZEOF_VOID_P is a representation of the C type SIZEOF_VOID_P.
+const SIZEOF_VOID_P = int32(8)
 
-// SourceContinue is a representation of the C type SOURCE_CONTINUE.
+// SOURCE_CONTINUE is a representation of the C type SOURCE_CONTINUE.
 //
 // since 2.32
-const SourceContinue = true
+const SOURCE_CONTINUE = true
 
-// SourceRemove is a representation of the C type SOURCE_REMOVE.
+// SOURCE_REMOVE is a representation of the C type SOURCE_REMOVE.
 //
 // since 2.32
-const SourceRemove = false
+const SOURCE_REMOVE = false
 
-// Sqrt2 is a representation of the C type SQRT2.
-const Sqrt2 = 1.414214
+// SQRT2 is a representation of the C type SQRT2.
+const SQRT2 = 1.414214
 
-// StrDelimiters is a representation of the C type STR_DELIMITERS.
-const StrDelimiters = "_-|> <."
+// STR_DELIMITERS is a representation of the C type STR_DELIMITERS.
+const STR_DELIMITERS = "_-|> <."
 
-// SysdefAfInet is a representation of the C type SYSDEF_AF_INET.
-const SysdefAfInet = int32(2)
+// SYSDEF_AF_INET is a representation of the C type SYSDEF_AF_INET.
+const SYSDEF_AF_INET = int32(2)
 
-// SysdefAfInet6 is a representation of the C type SYSDEF_AF_INET6.
-const SysdefAfInet6 = int32(10)
+// SYSDEF_AF_INET6 is a representation of the C type SYSDEF_AF_INET6.
+const SYSDEF_AF_INET6 = int32(10)
 
-// SysdefAfUnix is a representation of the C type SYSDEF_AF_UNIX.
-const SysdefAfUnix = int32(1)
+// SYSDEF_AF_UNIX is a representation of the C type SYSDEF_AF_UNIX.
+const SYSDEF_AF_UNIX = int32(1)
 
-// SysdefMsgDontroute is a representation of the C type SYSDEF_MSG_DONTROUTE.
-const SysdefMsgDontroute = int32(4)
+// SYSDEF_MSG_DONTROUTE is a representation of the C type SYSDEF_MSG_DONTROUTE.
+const SYSDEF_MSG_DONTROUTE = int32(4)
 
-// SysdefMsgOob is a representation of the C type SYSDEF_MSG_OOB.
-const SysdefMsgOob = int32(1)
+// SYSDEF_MSG_OOB is a representation of the C type SYSDEF_MSG_OOB.
+const SYSDEF_MSG_OOB = int32(1)
 
-// SysdefMsgPeek is a representation of the C type SYSDEF_MSG_PEEK.
-const SysdefMsgPeek = int32(2)
+// SYSDEF_MSG_PEEK is a representation of the C type SYSDEF_MSG_PEEK.
+const SYSDEF_MSG_PEEK = int32(2)
 
-// TimeSpanDay is a representation of the C type TIME_SPAN_DAY.
+// TIME_SPAN_DAY is a representation of the C type TIME_SPAN_DAY.
 //
 // since 2.26
-const TimeSpanDay = int64(86400000000)
+const TIME_SPAN_DAY = int64(86400000000)
 
-// TimeSpanHour is a representation of the C type TIME_SPAN_HOUR.
+// TIME_SPAN_HOUR is a representation of the C type TIME_SPAN_HOUR.
 //
 // since 2.26
-const TimeSpanHour = int64(3600000000)
+const TIME_SPAN_HOUR = int64(3600000000)
 
-// TimeSpanMillisecond is a representation of the C type TIME_SPAN_MILLISECOND.
+// TIME_SPAN_MILLISECOND is a representation of the C type TIME_SPAN_MILLISECOND.
 //
 // since 2.26
-const TimeSpanMillisecond = int64(1000)
+const TIME_SPAN_MILLISECOND = int64(1000)
 
-// TimeSpanMinute is a representation of the C type TIME_SPAN_MINUTE.
+// TIME_SPAN_MINUTE is a representation of the C type TIME_SPAN_MINUTE.
 //
 // since 2.26
-const TimeSpanMinute = int64(60000000)
+const TIME_SPAN_MINUTE = int64(60000000)
 
-// TimeSpanSecond is a representation of the C type TIME_SPAN_SECOND.
+// TIME_SPAN_SECOND is a representation of the C type TIME_SPAN_SECOND.
 //
 // since 2.26
-const TimeSpanSecond = int64(1000000)
+const TIME_SPAN_SECOND = int64(1000000)
 
-// UnicharMaxDecompositionLength is a representation of the C type UNICHAR_MAX_DECOMPOSITION_LENGTH.
+// UNICHAR_MAX_DECOMPOSITION_LENGTH is a representation of the C type UNICHAR_MAX_DECOMPOSITION_LENGTH.
 //
 // since 2.32
-const UnicharMaxDecompositionLength = int32(18)
+const UNICHAR_MAX_DECOMPOSITION_LENGTH = int32(18)
 
-// UriReservedCharsGenericDelimiters is a representation of the C type URI_RESERVED_CHARS_GENERIC_DELIMITERS.
-const UriReservedCharsGenericDelimiters = ":/?#[]@"
+// URI_RESERVED_CHARS_GENERIC_DELIMITERS is a representation of the C type URI_RESERVED_CHARS_GENERIC_DELIMITERS.
+const URI_RESERVED_CHARS_GENERIC_DELIMITERS = ":/?#[]@"
 
-// UriReservedCharsSubcomponentDelimiters is a representation of the C type URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS.
-const UriReservedCharsSubcomponentDelimiters = "!$&'()*+,;="
+// URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS is a representation of the C type URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS.
+const URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS = "!$&'()*+,;="
 
-// UsecPerSec is a representation of the C type USEC_PER_SEC.
-const UsecPerSec = int32(1000000)
+// USEC_PER_SEC is a representation of the C type USEC_PER_SEC.
+const USEC_PER_SEC = int32(1000000)
 
-// VaCopyAsArray is a representation of the C type VA_COPY_AS_ARRAY.
-const VaCopyAsArray = int32(1)
+// VA_COPY_AS_ARRAY is a representation of the C type VA_COPY_AS_ARRAY.
+const VA_COPY_AS_ARRAY = int32(1)
 
-// VersionMinRequired is a representation of the C type VERSION_MIN_REQUIRED.
+// VERSION_MIN_REQUIRED is a representation of the C type VERSION_MIN_REQUIRED.
 //
 // since 2.32
-const VersionMinRequired = int32(2)
+const VERSION_MIN_REQUIRED = int32(2)
 
-// Win32MsgHandle is a representation of the C type WIN32_MSG_HANDLE.
-const Win32MsgHandle = int32(19981206)
+// WIN32_MSG_HANDLE is a representation of the C type WIN32_MSG_HANDLE.
+const WIN32_MSG_HANDLE = int32(19981206)

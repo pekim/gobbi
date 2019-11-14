@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, int32(2), gdkpixbuf.PixbufMajor)
+	assert.Equal(t, int32(2), gdkpixbuf.PIXBUF_MAJOR)
 }

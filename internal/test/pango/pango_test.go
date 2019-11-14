@@ -7,5 +7,5 @@ import (
 )
 
 func TestCleanBuild(t *testing.T) {
-	assert.Equal(t, int32(2), pango.VersionMinRequired)
+	assert.Equal(t, int32(2), pango.VERSION_MIN_REQUIRED)
 }

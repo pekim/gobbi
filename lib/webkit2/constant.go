@@ -2,39 +2,39 @@
 
 package webkit2
 
-// EditingCommandCopy is a representation of the C type EDITING_COMMAND_COPY.
-const EditingCommandCopy = "Copy"
+// EDITING_COMMAND_COPY is a representation of the C type EDITING_COMMAND_COPY.
+const EDITING_COMMAND_COPY = "Copy"
 
-// EditingCommandCreateLink is a representation of the C type EDITING_COMMAND_CREATE_LINK.
+// EDITING_COMMAND_CREATE_LINK is a representation of the C type EDITING_COMMAND_CREATE_LINK.
 //
 // since 2.10
-const EditingCommandCreateLink = "CreateLink"
+const EDITING_COMMAND_CREATE_LINK = "CreateLink"
 
-// EditingCommandCut is a representation of the C type EDITING_COMMAND_CUT.
-const EditingCommandCut = "Cut"
+// EDITING_COMMAND_CUT is a representation of the C type EDITING_COMMAND_CUT.
+const EDITING_COMMAND_CUT = "Cut"
 
-// EditingCommandInsertImage is a representation of the C type EDITING_COMMAND_INSERT_IMAGE.
+// EDITING_COMMAND_INSERT_IMAGE is a representation of the C type EDITING_COMMAND_INSERT_IMAGE.
 //
 // since 2.10
-const EditingCommandInsertImage = "InsertImage"
+const EDITING_COMMAND_INSERT_IMAGE = "InsertImage"
 
-// EditingCommandPaste is a representation of the C type EDITING_COMMAND_PASTE.
-const EditingCommandPaste = "Paste"
+// EDITING_COMMAND_PASTE is a representation of the C type EDITING_COMMAND_PASTE.
+const EDITING_COMMAND_PASTE = "Paste"
 
-// EditingCommandRedo is a representation of the C type EDITING_COMMAND_REDO.
-const EditingCommandRedo = "Redo"
+// EDITING_COMMAND_REDO is a representation of the C type EDITING_COMMAND_REDO.
+const EDITING_COMMAND_REDO = "Redo"
 
-// EditingCommandSelectAll is a representation of the C type EDITING_COMMAND_SELECT_ALL.
-const EditingCommandSelectAll = "SelectAll"
+// EDITING_COMMAND_SELECT_ALL is a representation of the C type EDITING_COMMAND_SELECT_ALL.
+const EDITING_COMMAND_SELECT_ALL = "SelectAll"
 
-// EditingCommandUndo is a representation of the C type EDITING_COMMAND_UNDO.
-const EditingCommandUndo = "Undo"
+// EDITING_COMMAND_UNDO is a representation of the C type EDITING_COMMAND_UNDO.
+const EDITING_COMMAND_UNDO = "Undo"
 
-// MajorVersion is a representation of the C type MAJOR_VERSION.
-const MajorVersion = int32(2)
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+const MAJOR_VERSION = int32(2)
 
-// MicroVersion is a representation of the C type MICRO_VERSION.
-const MicroVersion = int32(1)
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
+const MICRO_VERSION = int32(1)
 
-// MinorVersion is a representation of the C type MINOR_VERSION.
-const MinorVersion = int32(26)
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
+const MINOR_VERSION = int32(26)

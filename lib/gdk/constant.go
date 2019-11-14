@@ -2,33 +2,33 @@
 
 package gdk
 
-// ButtonMiddle is a representation of the C type BUTTON_MIDDLE.
+// BUTTON_MIDDLE is a representation of the C type BUTTON_MIDDLE.
 //
 // since 3.4
-const ButtonMiddle = int32(2)
+const BUTTON_MIDDLE = int32(2)
 
-// ButtonPrimary is a representation of the C type BUTTON_PRIMARY.
+// BUTTON_PRIMARY is a representation of the C type BUTTON_PRIMARY.
 //
 // since 3.4
-const ButtonPrimary = int32(1)
+const BUTTON_PRIMARY = int32(1)
 
-// ButtonSecondary is a representation of the C type BUTTON_SECONDARY.
+// BUTTON_SECONDARY is a representation of the C type BUTTON_SECONDARY.
 //
 // since 3.4
-const ButtonSecondary = int32(3)
+const BUTTON_SECONDARY = int32(3)
 
-// CurrentTime is a representation of the C type CURRENT_TIME.
-const CurrentTime = int32(0)
+// CURRENT_TIME is a representation of the C type CURRENT_TIME.
+const CURRENT_TIME = int32(0)
 
-// EventPropagate is a representation of the C type EVENT_PROPAGATE.
+// EVENT_PROPAGATE is a representation of the C type EVENT_PROPAGATE.
 //
 // since 3.4
-const EventPropagate = false
+const EVENT_PROPAGATE = false
 
-// EventStop is a representation of the C type EVENT_STOP.
+// EVENT_STOP is a representation of the C type EVENT_STOP.
 //
 // since 3.4
-const EventStop = true
+const EVENT_STOP = true
 
 // KEY_0 is a representation of the C type KEY_0.
 const KEY_0 = int32(48)
@@ -6840,11 +6840,11 @@ const KEY_zerosuperior = int32(16785520)
 // KEY_zstroke is a representation of the C type KEY_zstroke.
 const KEY_zstroke = int32(16777654)
 
-// MaxTimecoordAxes is a representation of the C type MAX_TIMECOORD_AXES.
-const MaxTimecoordAxes = int32(128)
+// MAX_TIMECOORD_AXES is a representation of the C type MAX_TIMECOORD_AXES.
+const MAX_TIMECOORD_AXES = int32(128)
 
-// ParentRelative is a representation of the C type PARENT_RELATIVE.
-const ParentRelative = int32(1)
+// PARENT_RELATIVE is a representation of the C type PARENT_RELATIVE.
+const PARENT_RELATIVE = int32(1)
 
-// PriorityRedraw is a representation of the C type PRIORITY_REDRAW.
-const PriorityRedraw = int32(20)
+// PRIORITY_REDRAW is a representation of the C type PRIORITY_REDRAW.
+const PRIORITY_REDRAW = int32(20)

@@ -2,31 +2,31 @@
 
 package javascriptcore
 
-// MajorVersion is a representation of the C type MAJOR_VERSION.
-const MajorVersion = int32(2)
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+const MAJOR_VERSION = int32(2)
 
-// MicroVersion is a representation of the C type MICRO_VERSION.
-const MicroVersion = int32(1)
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
+const MICRO_VERSION = int32(1)
 
-// MinorVersion is a representation of the C type MINOR_VERSION.
-const MinorVersion = int32(26)
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
+const MINOR_VERSION = int32(26)
 
-// OptionsUseDfg is a representation of the C type OPTIONS_USE_DFG.
+// OPTIONS_USE_DFG is a representation of the C type OPTIONS_USE_DFG.
 //
 // since 2.24
-const OptionsUseDfg = "useDFGJIT"
+const OPTIONS_USE_DFG = "useDFGJIT"
 
-// OptionsUseFtl is a representation of the C type OPTIONS_USE_FTL.
+// OPTIONS_USE_FTL is a representation of the C type OPTIONS_USE_FTL.
 //
 // since 2.24
-const OptionsUseFtl = "useFTLJIT"
+const OPTIONS_USE_FTL = "useFTLJIT"
 
-// OptionsUseJit is a representation of the C type OPTIONS_USE_JIT.
+// OPTIONS_USE_JIT is a representation of the C type OPTIONS_USE_JIT.
 //
 // since 2.24
-const OptionsUseJit = "useJIT"
+const OPTIONS_USE_JIT = "useJIT"
 
-// OptionsUseLlint is a representation of the C type OPTIONS_USE_LLINT.
+// OPTIONS_USE_LLINT is a representation of the C type OPTIONS_USE_LLINT.
 //
 // since 2.24
-const OptionsUseLlint = "useLLInt"
+const OPTIONS_USE_LLINT = "useLLInt"
