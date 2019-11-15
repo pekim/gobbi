@@ -35,8 +35,7 @@ func GetMajorVersion() uint32 {
 	}
 
 	ret := getMajorVersionInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -48,8 +47,7 @@ func GetMicroVersion() uint32 {
 	}
 
 	ret := getMicroVersionInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -61,8 +59,7 @@ func GetMinorVersion() uint32 {
 	}
 
 	ret := getMinorVersionInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var javascriptErrorQuarkInvoker *gi.Function

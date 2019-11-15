@@ -102,14 +102,10 @@ func (f *Function) generateBody(g *group) {
 		Call()
 
 	if f.ReturnValue.Type != nil && f.ReturnValue.Type.CType == "guint" {
-		g.
-			Id("retValue").
-			Op(":=").
-			Id("ret").
-			Dot("Uint32").
-			Call()
-
-		g.Return(jen.Id("retValue"))
+		g.Return(
+			jen.
+				Id("ret").
+				Dot("Uint32").
+				Call())
 	}
-
 }

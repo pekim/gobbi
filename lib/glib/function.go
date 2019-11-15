@@ -448,8 +448,7 @@ func GetNumProcessors() uint32 {
 	}
 
 	ret := getNumProcessorsInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getPrgnameInvoker *gi.Function
@@ -1456,8 +1455,7 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 	}
 
 	ret := threadPoolGetMaxIdleTimeInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var threadPoolGetMaxUnusedThreadsInvoker *gi.Function
@@ -1480,8 +1478,7 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 	}
 
 	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 // UNSUPPORTED : C value 'g_thread_pool_set_max_idle_time' : non trivial function

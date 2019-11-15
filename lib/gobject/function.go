@@ -333,8 +333,7 @@ func TypeGetTypeRegistrationSerial() uint32 {
 	}
 
 	ret := typeGetTypeRegistrationSerialInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var typeInitInvoker *gi.Function

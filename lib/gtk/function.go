@@ -164,8 +164,7 @@ func GetBinaryAge() uint32 {
 	}
 
 	ret := getBinaryAgeInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getCurrentEventInvoker *gi.Function
@@ -212,8 +211,7 @@ func GetDebugFlags() uint32 {
 	}
 
 	ret := getDebugFlagsInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getDefaultLanguageInvoker *gi.Function
@@ -238,8 +236,7 @@ func GetInterfaceAge() uint32 {
 	}
 
 	ret := getInterfaceAgeInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getLocaleDirectionInvoker *gi.Function
@@ -262,8 +259,7 @@ func GetMajorVersion() uint32 {
 	}
 
 	ret := getMajorVersionInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -275,8 +271,7 @@ func GetMicroVersion() uint32 {
 	}
 
 	ret := getMicroVersionInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -288,8 +283,7 @@ func GetMinorVersion() uint32 {
 	}
 
 	ret := getMinorVersionInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 // UNSUPPORTED : C value 'gtk_get_option_group' : non trivial function
@@ -373,8 +367,7 @@ func MainLevel() uint32 {
 	}
 
 	ret := mainLevelInvoker.Invoke()
-	retValue := ret.Uint32()
-	return retValue
+	return ret.Uint32()
 }
 
 var mainQuitInvoker *gi.Function
