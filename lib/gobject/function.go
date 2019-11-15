@@ -90,7 +90,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_flags_to_string' : has parameters
 
-// UNSUPPORTED : C value 'g_gtype_get_type' : return type not supported
+// UNSUPPORTED : C value 'g_gtype_get_type' : return type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_boolean' : has parameters
 
@@ -298,7 +298,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_type_fundamental' : has parameters
 
-// UNSUPPORTED : C value 'g_type_fundamental_next' : return type not supported
+// UNSUPPORTED : C value 'g_type_fundamental_next' : return type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_type_get_instance_count' : has parameters
 
@@ -318,7 +318,7 @@ func TypeGetTypeRegistrationSerial() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_type_init' : return type not supported
+// UNSUPPORTED : C value 'g_type_init' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : has parameters
 

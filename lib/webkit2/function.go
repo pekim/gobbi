@@ -4,9 +4,9 @@ package webkit2
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'webkit_download_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_download_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_favicon_database_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_favicon_database_error_quark' : return type 'GLib.Quark' not supported
 
 var getMajorVersionInvoker *gi.Function
 
@@ -44,21 +44,21 @@ func GetMinorVersion() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'webkit_javascript_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_javascript_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_network_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_network_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_plugin_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_plugin_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_policy_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_policy_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_print_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_print_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_snapshot_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_snapshot_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'webkit_uri_for_display' : has parameters
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_error_quark' : return type not supported
+// UNSUPPORTED : C value 'webkit_user_content_filter_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : has parameters
 

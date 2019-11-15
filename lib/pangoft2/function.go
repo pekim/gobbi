@@ -24,4 +24,4 @@ package pangoft2
 
 // UNSUPPORTED : C value 'pango_ft2_render_transformed' : has parameters
 
-// UNSUPPORTED : C value 'pango_ft2_shutdown_display' : return type not supported
+// UNSUPPORTED : C value 'pango_ft2_shutdown_display' : return type 'none' not supported

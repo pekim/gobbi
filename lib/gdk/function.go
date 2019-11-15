@@ -10,7 +10,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_atom_intern_static_string' : has parameters
 
-// UNSUPPORTED : C value 'gdk_beep' : return type not supported
+// UNSUPPORTED : C value 'gdk_beep' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gdk_cairo_create' : has parameters
 
@@ -38,7 +38,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_color_parse' : has parameters
 
-// UNSUPPORTED : C value 'gdk_disable_multidevice' : return type not supported
+// UNSUPPORTED : C value 'gdk_disable_multidevice' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gdk_drag_abort' : has parameters
 
@@ -78,15 +78,15 @@ func ErrorTrapPop() int32 {
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'gdk_error_trap_pop_ignored' : return type not supported
+// UNSUPPORTED : C value 'gdk_error_trap_pop_ignored' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'gdk_error_trap_push' : return type not supported
+// UNSUPPORTED : C value 'gdk_error_trap_push' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'gdk_event_get' : return type not supported
+// UNSUPPORTED : C value 'gdk_event_get' : return type 'Event' not supported
 
 // UNSUPPORTED : C value 'gdk_event_handler_set' : has parameters
 
-// UNSUPPORTED : C value 'gdk_event_peek' : return type not supported
+// UNSUPPORTED : C value 'gdk_event_peek' : return type 'Event' not supported
 
 // UNSUPPORTED : C value 'gdk_event_request_motions' : has parameters
 
@@ -96,21 +96,21 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_events_get_distance' : has parameters
 
-// UNSUPPORTED : C value 'gdk_events_pending' : return type not supported
+// UNSUPPORTED : C value 'gdk_events_pending' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_flush' : return type not supported
+// UNSUPPORTED : C value 'gdk_flush' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'gdk_get_default_root_window' : return type not supported
+// UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_get_display' : return type not supported
+// UNSUPPORTED : C value 'gdk_get_display' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_get_display_arg_name' : return type not supported
+// UNSUPPORTED : C value 'gdk_get_display_arg_name' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_get_program_class' : return type not supported
+// UNSUPPORTED : C value 'gdk_get_program_class' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_get_show_events' : return type not supported
+// UNSUPPORTED : C value 'gdk_get_show_events' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_gl_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gdk_gl_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gdk_init' : has parameters
 
@@ -136,9 +136,9 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_keyval_to_upper' : has parameters
 
-// UNSUPPORTED : C value 'gdk_list_visuals' : return type not supported
+// UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gdk_notify_startup_complete' : return type not supported
+// UNSUPPORTED : C value 'gdk_notify_startup_complete' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : has parameters
 
@@ -148,7 +148,7 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_set_embedder' : has parameters
 
-// UNSUPPORTED : C value 'gdk_pango_context_get' : return type not supported
+// UNSUPPORTED : C value 'gdk_pango_context_get' : return type 'Pango.Context' not supported
 
 // UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : has parameters
 
@@ -166,11 +166,11 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_pointer_grab' : has parameters
 
-// UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : return type not supported
+// UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'gdk_pointer_ungrab' : has parameters
 
-// UNSUPPORTED : C value 'gdk_pre_parse_libgtk_only' : return type not supported
+// UNSUPPORTED : C value 'gdk_pre_parse_libgtk_only' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gdk_property_change' : has parameters
 
@@ -230,11 +230,11 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : has parameters
 
-// UNSUPPORTED : C value 'gdk_threads_enter' : return type not supported
+// UNSUPPORTED : C value 'gdk_threads_enter' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_init' : return type not supported
+// UNSUPPORTED : C value 'gdk_threads_init' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_leave' : return type not supported
+// UNSUPPORTED : C value 'gdk_threads_leave' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : has parameters
 

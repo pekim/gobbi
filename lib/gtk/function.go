@@ -8,7 +8,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_accel_groups_from_object' : has parameters
 
-// UNSUPPORTED : C value 'gtk_accelerator_get_default_mod_mask' : return type not supported
+// UNSUPPORTED : C value 'gtk_accelerator_get_default_mod_mask' : return type 'Gdk.ModifierType' not supported
 
 // UNSUPPORTED : C value 'gtk_accelerator_get_label' : has parameters
 
@@ -46,7 +46,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_bindings_activate_event' : has parameters
 
-// UNSUPPORTED : C value 'gtk_builder_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_builder_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_cairo_should_draw_window' : has parameters
 
@@ -54,13 +54,13 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_check_version' : has parameters
 
-// UNSUPPORTED : C value 'gtk_css_provider_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_css_provider_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_device_grab_add' : has parameters
 
 // UNSUPPORTED : C value 'gtk_device_grab_remove' : has parameters
 
-// UNSUPPORTED : C value 'gtk_disable_setlocale' : return type not supported
+// UNSUPPORTED : C value 'gtk_disable_setlocale' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : has parameters
 
@@ -86,11 +86,11 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : has parameters
 
-// UNSUPPORTED : C value 'gtk_events_pending' : return type not supported
+// UNSUPPORTED : C value 'gtk_events_pending' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_false' : return type not supported
+// UNSUPPORTED : C value 'gtk_false' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_file_chooser_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_file_chooser_error_quark' : return type 'GLib.Quark' not supported
 
 var getBinaryAgeInvoker *gi.Function
 
@@ -104,9 +104,9 @@ func GetBinaryAge() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gtk_get_current_event' : return type not supported
+// UNSUPPORTED : C value 'gtk_get_current_event' : return type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_get_current_event_device' : return type not supported
+// UNSUPPORTED : C value 'gtk_get_current_event_device' : return type 'Gdk.Device' not supported
 
 // UNSUPPORTED : C value 'gtk_get_current_event_state' : has parameters
 
@@ -134,7 +134,7 @@ func GetDebugFlags() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gtk_get_default_language' : return type not supported
+// UNSUPPORTED : C value 'gtk_get_default_language' : return type 'Pango.Language' not supported
 
 // UNSUPPORTED : C value 'gtk_get_event_widget' : has parameters
 
@@ -150,7 +150,7 @@ func GetInterfaceAge() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gtk_get_locale_direction' : return type not supported
+// UNSUPPORTED : C value 'gtk_get_locale_direction' : return type 'TextDirection' not supported
 
 var getMajorVersionInvoker *gi.Function
 
@@ -190,7 +190,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_option_group' : has parameters
 
-// UNSUPPORTED : C value 'gtk_grab_get_current' : return type not supported
+// UNSUPPORTED : C value 'gtk_grab_get_current' : return type 'Widget' not supported
 
 // UNSUPPORTED : C value 'gtk_icon_size_from_name' : has parameters
 
@@ -204,7 +204,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_icon_size_register_alias' : has parameters
 
-// UNSUPPORTED : C value 'gtk_icon_theme_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_icon_theme_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_init' : has parameters
 
@@ -216,11 +216,11 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_key_snooper_remove' : has parameters
 
-// UNSUPPORTED : C value 'gtk_main' : return type not supported
+// UNSUPPORTED : C value 'gtk_main' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gtk_main_do_event' : has parameters
 
-// UNSUPPORTED : C value 'gtk_main_iteration' : return type not supported
+// UNSUPPORTED : C value 'gtk_main_iteration' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'gtk_main_iteration_do' : has parameters
 
@@ -236,7 +236,7 @@ func MainLevel() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gtk_main_quit' : return type not supported
+// UNSUPPORTED : C value 'gtk_main_quit' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gtk_paint_arrow' : has parameters
 
@@ -278,13 +278,13 @@ func MainLevel() uint32 {
 
 // UNSUPPORTED : C value 'gtk_paint_vline' : has parameters
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_default' : return type not supported
+// UNSUPPORTED : C value 'gtk_paper_size_get_default' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : has parameters
 
 // UNSUPPORTED : C value 'gtk_parse_args' : has parameters
 
-// UNSUPPORTED : C value 'gtk_print_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_print_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog' : has parameters
 
@@ -309,17 +309,17 @@ func RcGetDefaultFiles() {
 	rcGetDefaultFilesInvoker.Invoke()
 }
 
-// UNSUPPORTED : C value 'gtk_rc_get_im_module_file' : return type not supported
+// UNSUPPORTED : C value 'gtk_rc_get_im_module_file' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_get_im_module_path' : return type not supported
+// UNSUPPORTED : C value 'gtk_rc_get_im_module_path' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_get_module_dir' : return type not supported
+// UNSUPPORTED : C value 'gtk_rc_get_module_dir' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_get_style' : has parameters
 
 // UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : has parameters
 
-// UNSUPPORTED : C value 'gtk_rc_get_theme_dir' : return type not supported
+// UNSUPPORTED : C value 'gtk_rc_get_theme_dir' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_parse' : has parameters
 
@@ -343,19 +343,19 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_rc_property_parse_requisition' : has parameters
 
-// UNSUPPORTED : C value 'gtk_rc_reparse_all' : return type not supported
+// UNSUPPORTED : C value 'gtk_rc_reparse_all' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : has parameters
 
 // UNSUPPORTED : C value 'gtk_rc_reset_styles' : has parameters
 
-// UNSUPPORTED : C value 'gtk_rc_scanner_new' : return type not supported
+// UNSUPPORTED : C value 'gtk_rc_scanner_new' : return type 'GLib.Scanner' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_set_default_files' : has parameters
 
-// UNSUPPORTED : C value 'gtk_recent_chooser_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_recent_chooser_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_recent_manager_error_quark' : return type not supported
+// UNSUPPORTED : C value 'gtk_recent_manager_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_render_activity' : has parameters
 
@@ -423,7 +423,7 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_stock_add_static' : has parameters
 
-// UNSUPPORTED : C value 'gtk_stock_list_ids' : return type not supported
+// UNSUPPORTED : C value 'gtk_stock_list_ids' : return type 'GLib.SList' not supported
 
 // UNSUPPORTED : C value 'gtk_stock_lookup' : has parameters
 
@@ -457,7 +457,7 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_test_list_all_types' : has parameters
 
-// UNSUPPORTED : C value 'gtk_test_register_all_types' : return type not supported
+// UNSUPPORTED : C value 'gtk_test_register_all_types' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'gtk_test_slider_get_value' : has parameters
 
@@ -485,4 +485,4 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : has parameters
 
-// UNSUPPORTED : C value 'gtk_true' : return type not supported
+// UNSUPPORTED : C value 'gtk_true' : return type 'gboolean' not supported

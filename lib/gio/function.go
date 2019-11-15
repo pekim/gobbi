@@ -10,7 +10,7 @@ package gio
 
 // UNSUPPORTED : C value 'g_app_info_create_from_commandline' : has parameters
 
-// UNSUPPORTED : C value 'g_app_info_get_all' : return type not supported
+// UNSUPPORTED : C value 'g_app_info_get_all' : return type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'g_app_info_get_all_for_type' : has parameters
 
@@ -84,7 +84,7 @@ package gio
 
 // UNSUPPORTED : C value 'g_content_type_is_unknown' : has parameters
 
-// UNSUPPORTED : C value 'g_content_types_get_registered' : return type not supported
+// UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'g_dbus_address_escape_value' : has parameters
 
@@ -106,7 +106,7 @@ package gio
 
 // UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : has parameters
 
-// UNSUPPORTED : C value 'g_dbus_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_dbus_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error' : has parameters
 
@@ -116,7 +116,7 @@ package gio
 
 // UNSUPPORTED : C value 'g_dbus_error_unregister_error' : has parameters
 
-// UNSUPPORTED : C value 'g_dbus_generate_guid' : return type not supported
+// UNSUPPORTED : C value 'g_dbus_generate_guid' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : has parameters
 
@@ -162,7 +162,7 @@ package gio
 
 // UNSUPPORTED : C value 'g_io_error_from_errno' : has parameters
 
-// UNSUPPORTED : C value 'g_io_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_io_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_io_extension_point_implement' : has parameters
 
@@ -178,19 +178,19 @@ package gio
 
 // UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : has parameters
 
-// UNSUPPORTED : C value 'g_io_scheduler_cancel_all_jobs' : return type not supported
+// UNSUPPORTED : C value 'g_io_scheduler_cancel_all_jobs' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : has parameters
 
 // UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : has parameters
 
-// UNSUPPORTED : C value 'g_memory_settings_backend_new' : return type not supported
+// UNSUPPORTED : C value 'g_memory_settings_backend_new' : return type 'SettingsBackend' not supported
 
-// UNSUPPORTED : C value 'g_network_monitor_get_default' : return type not supported
+// UNSUPPORTED : C value 'g_network_monitor_get_default' : return type 'NetworkMonitor' not supported
 
-// UNSUPPORTED : C value 'g_networking_init' : return type not supported
+// UNSUPPORTED : C value 'g_networking_init' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'g_null_settings_backend_new' : return type not supported
+// UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
 
 // UNSUPPORTED : C value 'g_pollable_source_new' : has parameters
 
@@ -204,11 +204,11 @@ package gio
 
 // UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : has parameters
 
-// UNSUPPORTED : C value 'g_proxy_resolver_get_default' : return type not supported
+// UNSUPPORTED : C value 'g_proxy_resolver_get_default' : return type 'ProxyResolver' not supported
 
-// UNSUPPORTED : C value 'g_resolver_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_resolver_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_resource_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_resource_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_resource_load' : has parameters
 
@@ -224,7 +224,7 @@ package gio
 
 // UNSUPPORTED : C value 'g_resources_unregister' : has parameters
 
-// UNSUPPORTED : C value 'g_settings_schema_source_get_default' : return type not supported
+// UNSUPPORTED : C value 'g_settings_schema_source_get_default' : return type 'SettingsSchemaSource' not supported
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : has parameters
 
@@ -234,11 +234,11 @@ package gio
 
 // UNSUPPORTED : C value 'g_srv_target_list_sort' : has parameters
 
-// UNSUPPORTED : C value 'g_tls_backend_get_default' : return type not supported
+// UNSUPPORTED : C value 'g_tls_backend_get_default' : return type 'TlsBackend' not supported
 
 // UNSUPPORTED : C value 'g_tls_client_connection_new' : has parameters
 
-// UNSUPPORTED : C value 'g_tls_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_tls_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_tls_file_database_new' : has parameters
 

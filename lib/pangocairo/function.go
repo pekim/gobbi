@@ -20,9 +20,9 @@ package pangocairo
 
 // UNSUPPORTED : C value 'pango_cairo_error_underline_path' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_font_map_get_default' : return type not supported
+// UNSUPPORTED : C value 'pango_cairo_font_map_get_default' : return type 'Pango.FontMap' not supported
 
-// UNSUPPORTED : C value 'pango_cairo_font_map_new' : return type not supported
+// UNSUPPORTED : C value 'pango_cairo_font_map_new' : return type 'Pango.FontMap' not supported
 
 // UNSUPPORTED : C value 'pango_cairo_font_map_new_for_font_type' : has parameters
 

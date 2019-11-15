@@ -28,9 +28,9 @@ func GetBinaryAge() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'atk_get_default_registry' : return type not supported
+// UNSUPPORTED : C value 'atk_get_default_registry' : return type 'Registry' not supported
 
-// UNSUPPORTED : C value 'atk_get_focus_object' : return type not supported
+// UNSUPPORTED : C value 'atk_get_focus_object' : return type 'Object' not supported
 
 var getInterfaceAgeInvoker *gi.Function
 
@@ -80,13 +80,13 @@ func GetMinorVersion() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'atk_get_root' : return type not supported
+// UNSUPPORTED : C value 'atk_get_root' : return type 'Object' not supported
 
-// UNSUPPORTED : C value 'atk_get_toolkit_name' : return type not supported
+// UNSUPPORTED : C value 'atk_get_toolkit_name' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_get_toolkit_version' : return type not supported
+// UNSUPPORTED : C value 'atk_get_toolkit_version' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_get_version' : return type not supported
+// UNSUPPORTED : C value 'atk_get_version' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'atk_relation_type_for_name' : has parameters
 

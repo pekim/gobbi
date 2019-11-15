@@ -110,13 +110,13 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_headers_parse_status_line' : has parameters
 
-// UNSUPPORTED : C value 'soup_http_error_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_http_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_message_headers_iter_init' : has parameters
 
-// UNSUPPORTED : C value 'soup_request_error_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_request_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_requester_error_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_requester_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_status_get_phrase' : has parameters
 
@@ -128,7 +128,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_tld_domain_is_public_suffix' : has parameters
 
-// UNSUPPORTED : C value 'soup_tld_error_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_tld_get_base_domain' : has parameters
 
@@ -148,7 +148,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_value_array_insert' : has parameters
 
-// UNSUPPORTED : C value 'soup_value_array_new' : return type not supported
+// UNSUPPORTED : C value 'soup_value_array_new' : return type 'GObject.ValueArray' not supported
 
 // UNSUPPORTED : C value 'soup_value_array_new_with_vals' : has parameters
 
@@ -164,7 +164,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_value_hash_lookup_vals' : has parameters
 
-// UNSUPPORTED : C value 'soup_value_hash_new' : return type not supported
+// UNSUPPORTED : C value 'soup_value_hash_new' : return type 'GLib.HashTable' not supported
 
 // UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : has parameters
 
@@ -172,7 +172,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_websocket_client_verify_handshake' : has parameters
 
-// UNSUPPORTED : C value 'soup_websocket_error_get_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_websocket_error_get_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : has parameters
 
@@ -188,13 +188,13 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_response' : has parameters
 
-// UNSUPPORTED : C value 'soup_xmlrpc_error_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : has parameters
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : has parameters
 
-// UNSUPPORTED : C value 'soup_xmlrpc_fault_quark' : return type not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_fault_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_new' : has parameters
 

@@ -40,7 +40,7 @@ func (f *Function) generate(fi *file) {
 	}
 
 	if !f.ReturnValue.Type.supportedAsReturnValue() {
-		fi.unsupported(f.CIdentifier, "return type not supported")
+		fi.unsupported(f.CIdentifier, "return type '%s' not supported", f.ReturnValue.Type.Name)
 		return
 	}
 

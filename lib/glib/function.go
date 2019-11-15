@@ -110,7 +110,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_bit_unlock' : has parameters
 
-// UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_build_filename' : has parameters
 
@@ -153,7 +153,7 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_child_watch_source_new' : has parameters
 
-// UNSUPPORTED : C value 'g_clear_error' : return type not supported
+// UNSUPPORTED : C value 'g_clear_error' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_clear_handle_id' : has parameters
 
@@ -175,7 +175,7 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_convert' : has parameters
 
-// UNSUPPORTED : C value 'g_convert_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_convert_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_convert_with_fallback' : has parameters
 
@@ -271,7 +271,7 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_file_error_from_errno' : has parameters
 
-// UNSUPPORTED : C value 'g_file_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_file_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_file_get_contents' : has parameters
 
@@ -307,13 +307,13 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_free' : has parameters
 
-// UNSUPPORTED : C value 'g_get_application_name' : return type not supported
+// UNSUPPORTED : C value 'g_get_application_name' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_get_charset' : has parameters
 
-// UNSUPPORTED : C value 'g_get_codeset' : return type not supported
+// UNSUPPORTED : C value 'g_get_codeset' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_get_current_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_get_current_time' : has parameters
 
@@ -330,9 +330,9 @@ func GetEnviron() {
 
 // UNSUPPORTED : C value 'g_get_filename_charsets' : has parameters
 
-// UNSUPPORTED : C value 'g_get_home_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_host_name' : return type not supported
+// UNSUPPORTED : C value 'g_get_host_name' : return type 'utf8' not supported
 
 var getLanguageNamesInvoker *gi.Function
 
@@ -371,9 +371,9 @@ func GetNumProcessors() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_get_prgname' : return type not supported
+// UNSUPPORTED : C value 'g_get_prgname' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_get_real_name' : return type not supported
+// UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
 
 var getRealTimeInvoker *gi.Function
 
@@ -409,17 +409,17 @@ func GetSystemDataDirs() {
 	getSystemDataDirsInvoker.Invoke()
 }
 
-// UNSUPPORTED : C value 'g_get_tmp_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_tmp_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_user_cache_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_user_cache_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_user_config_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_user_config_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_user_data_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_user_data_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_user_name' : return type not supported
+// UNSUPPORTED : C value 'g_get_user_name' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_user_runtime_dir' : return type not supported
+// UNSUPPORTED : C value 'g_get_user_runtime_dir' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_get_user_special_dir' : has parameters
 
@@ -483,7 +483,7 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_idle_remove_by_data' : has parameters
 
-// UNSUPPORTED : C value 'g_idle_source_new' : return type not supported
+// UNSUPPORTED : C value 'g_idle_source_new' : return type 'Source' not supported
 
 // UNSUPPORTED : C value 'g_int64_equal' : has parameters
 
@@ -503,11 +503,11 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_io_channel_error_from_errno' : has parameters
 
-// UNSUPPORTED : C value 'g_io_channel_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_io_channel_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_io_create_watch' : has parameters
 
-// UNSUPPORTED : C value 'g_key_file_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_key_file_error_quark' : return type 'Quark' not supported
 
 var listenvInvoker *gi.Function
 
@@ -564,13 +564,13 @@ func Listenv() {
 
 // UNSUPPORTED : C value 'g_logv' : has parameters
 
-// UNSUPPORTED : C value 'g_main_context_default' : return type not supported
+// UNSUPPORTED : C value 'g_main_context_default' : return type 'MainContext' not supported
 
-// UNSUPPORTED : C value 'g_main_context_get_thread_default' : return type not supported
+// UNSUPPORTED : C value 'g_main_context_get_thread_default' : return type 'MainContext' not supported
 
-// UNSUPPORTED : C value 'g_main_context_ref_thread_default' : return type not supported
+// UNSUPPORTED : C value 'g_main_context_ref_thread_default' : return type 'MainContext' not supported
 
-// UNSUPPORTED : C value 'g_main_current_source' : return type not supported
+// UNSUPPORTED : C value 'g_main_current_source' : return type 'Source' not supported
 
 var mainDepthInvoker *gi.Function
 
@@ -594,7 +594,7 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_markup_collect_attributes' : has parameters
 
-// UNSUPPORTED : C value 'g_markup_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_markup_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_markup_escape_text' : has parameters
 
@@ -602,9 +602,9 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_markup_vprintf_escaped' : has parameters
 
-// UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type not supported
+// UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_mem_profile' : return type not supported
+// UNSUPPORTED : C value 'g_mem_profile' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_mem_set_vtable' : has parameters
 
@@ -622,7 +622,7 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_nullify_pointer' : has parameters
 
-// UNSUPPORTED : C value 'g_number_parser_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_number_parser_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_on_error_query' : has parameters
 
@@ -632,7 +632,7 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_once_init_leave' : has parameters
 
-// UNSUPPORTED : C value 'g_option_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_option_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_parse_debug_string' : has parameters
 
@@ -686,7 +686,7 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_quark_try_string' : has parameters
 
-// UNSUPPORTED : C value 'g_random_double' : return type not supported
+// UNSUPPORTED : C value 'g_random_double' : return type 'gdouble' not supported
 
 // UNSUPPORTED : C value 'g_random_double_range' : has parameters
 
@@ -712,7 +712,7 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_regex_check_replacement' : has parameters
 
-// UNSUPPORTED : C value 'g_regex_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_regex_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_regex_escape_nul' : has parameters
 
@@ -722,7 +722,7 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_regex_split_simple' : has parameters
 
-// UNSUPPORTED : C value 'g_reload_user_special_dirs_cache' : return type not supported
+// UNSUPPORTED : C value 'g_reload_user_special_dirs_cache' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_return_if_fail_warning' : has parameters
 
@@ -760,7 +760,7 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_setenv' : has parameters
 
-// UNSUPPORTED : C value 'g_shell_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_shell_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_shell_parse_argv' : has parameters
 
@@ -808,9 +808,9 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_spawn_command_line_sync' : has parameters
 
-// UNSUPPORTED : C value 'g_spawn_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_spawn_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_spawn_exit_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_spawn_exit_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_spawn_sync' : has parameters
 
@@ -908,7 +908,7 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_strv_contains' : has parameters
 
-// UNSUPPORTED : C value 'g_strv_get_type' : return type not supported
+// UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_strv_length' : has parameters
 
@@ -934,15 +934,15 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_test_expect_message' : has parameters
 
-// UNSUPPORTED : C value 'g_test_fail' : return type not supported
+// UNSUPPORTED : C value 'g_test_fail' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'g_test_failed' : return type not supported
+// UNSUPPORTED : C value 'g_test_failed' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_test_get_dir' : has parameters
 
 // UNSUPPORTED : C value 'g_test_get_filename' : has parameters
 
-// UNSUPPORTED : C value 'g_test_get_root' : return type not supported
+// UNSUPPORTED : C value 'g_test_get_root' : return type 'TestSuite' not supported
 
 // UNSUPPORTED : C value 'g_test_incomplete' : has parameters
 
@@ -962,7 +962,7 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_test_queue_free' : has parameters
 
-// UNSUPPORTED : C value 'g_test_rand_double' : return type not supported
+// UNSUPPORTED : C value 'g_test_rand_double' : return type 'gdouble' not supported
 
 // UNSUPPORTED : C value 'g_test_rand_double_range' : has parameters
 
@@ -994,29 +994,29 @@ func TestRun() int32 {
 
 // UNSUPPORTED : C value 'g_test_run_suite' : has parameters
 
-// UNSUPPORTED : C value 'g_test_set_nonfatal_assertions' : return type not supported
+// UNSUPPORTED : C value 'g_test_set_nonfatal_assertions' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_test_skip' : has parameters
 
-// UNSUPPORTED : C value 'g_test_subprocess' : return type not supported
+// UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_test_timer_elapsed' : return type not supported
+// UNSUPPORTED : C value 'g_test_timer_elapsed' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_timer_last' : return type not supported
+// UNSUPPORTED : C value 'g_test_timer_last' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_timer_start' : return type not supported
+// UNSUPPORTED : C value 'g_test_timer_start' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_test_trap_assertions' : has parameters
 
 // UNSUPPORTED : C value 'g_test_trap_fork' : has parameters
 
-// UNSUPPORTED : C value 'g_test_trap_has_passed' : return type not supported
+// UNSUPPORTED : C value 'g_test_trap_has_passed' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_test_trap_reached_timeout' : return type not supported
+// UNSUPPORTED : C value 'g_test_trap_reached_timeout' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_test_trap_subprocess' : has parameters
 
-// UNSUPPORTED : C value 'g_thread_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_thread_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_thread_exit' : has parameters
 
@@ -1060,11 +1060,11 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // UNSUPPORTED : C value 'g_thread_pool_set_max_unused_threads' : has parameters
 
-// UNSUPPORTED : C value 'g_thread_pool_stop_unused_threads' : return type not supported
+// UNSUPPORTED : C value 'g_thread_pool_stop_unused_threads' : return type 'none' not supported
 
-// UNSUPPORTED : C value 'g_thread_self' : return type not supported
+// UNSUPPORTED : C value 'g_thread_self' : return type 'Thread' not supported
 
-// UNSUPPORTED : C value 'g_thread_yield' : return type not supported
+// UNSUPPORTED : C value 'g_thread_yield' : return type 'none' not supported
 
 // UNSUPPORTED : C value 'g_time_val_from_iso8601' : has parameters
 
@@ -1176,7 +1176,7 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : has parameters
 
-// UNSUPPORTED : C value 'g_unix_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_unix_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_unix_fd_add' : has parameters
 
@@ -1266,9 +1266,9 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // UNSUPPORTED : C value 'g_uuid_string_is_valid' : has parameters
 
-// UNSUPPORTED : C value 'g_uuid_string_random' : return type not supported
+// UNSUPPORTED : C value 'g_uuid_string_random' : return type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_variant_get_gtype' : return type not supported
+// UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_variant_is_object_path' : has parameters
 
@@ -1278,9 +1278,9 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // UNSUPPORTED : C value 'g_variant_parse_error_print_context' : has parameters
 
-// UNSUPPORTED : C value 'g_variant_parse_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_variant_parse_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type not supported
+// UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_variant_type_checked_' : has parameters
 

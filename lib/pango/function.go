@@ -66,13 +66,13 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_font_description_from_string' : has parameters
 
-// UNSUPPORTED : C value 'pango_get_lib_subdirectory' : return type not supported
+// UNSUPPORTED : C value 'pango_get_lib_subdirectory' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'pango_get_log_attrs' : has parameters
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : has parameters
 
-// UNSUPPORTED : C value 'pango_get_sysconf_subdirectory' : return type not supported
+// UNSUPPORTED : C value 'pango_get_sysconf_subdirectory' : return type 'utf8' not supported
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : has parameters
 
@@ -90,7 +90,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_language_from_string' : has parameters
 
-// UNSUPPORTED : C value 'pango_language_get_default' : return type not supported
+// UNSUPPORTED : C value 'pango_language_get_default' : return type 'Language' not supported
 
 // UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : has parameters
 
@@ -160,4 +160,4 @@ func Version() int32 {
 
 // UNSUPPORTED : C value 'pango_version_check' : has parameters
 
-// UNSUPPORTED : C value 'pango_version_string' : return type not supported
+// UNSUPPORTED : C value 'pango_version_string' : return type 'utf8' not supported

@@ -48,7 +48,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'jsc_options_get_int' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_option_group' : return type not supported
+// UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
 
 // UNSUPPORTED : C value 'jsc_options_get_range_string' : has parameters
 
