@@ -2,66 +2,46 @@
 
 package pangocairo
 
-import gi "github.com/pekim/gobbi/internal/gi"
+// UNSUPPORTED : C value 'pango_cairo_context_get_font_options' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_context_get_font_options' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_context_get_resolution' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_context_get_resolution' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_context_get_shape_renderer' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_context_get_shape_renderer' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_context_set_font_options' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_context_set_font_options' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_context_set_resolution' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_context_set_resolution' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_context_set_shape_renderer' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_context_set_shape_renderer' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_create_context' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_create_context' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_create_layout' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_create_layout' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_error_underline_path' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_error_underline_path' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_font_map_get_default' : return type not supported
 
-var fontMapGetDefaultInvoker *gi.Function
+// UNSUPPORTED : C value 'pango_cairo_font_map_new' : return type not supported
 
-// FontMapGetDefault is a representation of the C type pango_cairo_font_map_get_default.
-func FontMapGetDefault() {
-	if fontMapGetDefaultInvoker == nil {
-		fontMapGetDefaultInvoker = gi.FunctionInvokerNew("PangoCairo", "font_map_get_default")
-	}
+// UNSUPPORTED : C value 'pango_cairo_font_map_new_for_font_type' : has parameters
 
-	fontMapGetDefaultInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'pango_cairo_glyph_string_path' : has parameters
 
-var fontMapNewInvoker *gi.Function
+// UNSUPPORTED : C value 'pango_cairo_layout_line_path' : has parameters
 
-// FontMapNew is a representation of the C type pango_cairo_font_map_new.
-func FontMapNew() {
-	if fontMapNewInvoker == nil {
-		fontMapNewInvoker = gi.FunctionInvokerNew("PangoCairo", "font_map_new")
-	}
+// UNSUPPORTED : C value 'pango_cairo_layout_path' : has parameters
 
-	fontMapNewInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'pango_cairo_show_error_underline' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_font_map_new_for_font_type' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_show_glyph_item' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_glyph_string_path' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_show_glyph_string' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_layout_line_path' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_show_layout' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_layout_path' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_show_layout_line' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_show_error_underline' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_update_context' : has parameters
 
-// UNSUPPORTED : C value 'pango_cairo_show_glyph_item' : non trivial function
-
-// UNSUPPORTED : C value 'pango_cairo_show_glyph_string' : non trivial function
-
-// UNSUPPORTED : C value 'pango_cairo_show_layout' : non trivial function
-
-// UNSUPPORTED : C value 'pango_cairo_show_layout_line' : non trivial function
-
-// UNSUPPORTED : C value 'pango_cairo_update_context' : non trivial function
-
-// UNSUPPORTED : C value 'pango_cairo_update_layout' : non trivial function
+// UNSUPPORTED : C value 'pango_cairo_update_layout' : has parameters

@@ -4,27 +4,9 @@ package webkit2
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-var downloadErrorQuarkInvoker *gi.Function
+// UNSUPPORTED : C value 'webkit_download_error_quark' : return type not supported
 
-// DownloadErrorQuark is a representation of the C type webkit_download_error_quark.
-func DownloadErrorQuark() {
-	if downloadErrorQuarkInvoker == nil {
-		downloadErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "download_error_quark")
-	}
-
-	downloadErrorQuarkInvoker.Invoke()
-}
-
-var faviconDatabaseErrorQuarkInvoker *gi.Function
-
-// FaviconDatabaseErrorQuark is a representation of the C type webkit_favicon_database_error_quark.
-func FaviconDatabaseErrorQuark() {
-	if faviconDatabaseErrorQuarkInvoker == nil {
-		faviconDatabaseErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "favicon_database_error_quark")
-	}
-
-	faviconDatabaseErrorQuarkInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'webkit_favicon_database_error_quark' : return type not supported
 
 var getMajorVersionInvoker *gi.Function
 
@@ -62,85 +44,22 @@ func GetMinorVersion() uint32 {
 	return ret.Uint32()
 }
 
-var javascriptErrorQuarkInvoker *gi.Function
+// UNSUPPORTED : C value 'webkit_javascript_error_quark' : return type not supported
 
-// JavascriptErrorQuark is a representation of the C type webkit_javascript_error_quark.
-func JavascriptErrorQuark() {
-	if javascriptErrorQuarkInvoker == nil {
-		javascriptErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "javascript_error_quark")
-	}
+// UNSUPPORTED : C value 'webkit_network_error_quark' : return type not supported
 
-	javascriptErrorQuarkInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'webkit_plugin_error_quark' : return type not supported
 
-var networkErrorQuarkInvoker *gi.Function
+// UNSUPPORTED : C value 'webkit_policy_error_quark' : return type not supported
 
-// NetworkErrorQuark is a representation of the C type webkit_network_error_quark.
-func NetworkErrorQuark() {
-	if networkErrorQuarkInvoker == nil {
-		networkErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "network_error_quark")
-	}
+// UNSUPPORTED : C value 'webkit_print_error_quark' : return type not supported
 
-	networkErrorQuarkInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'webkit_snapshot_error_quark' : return type not supported
 
-var pluginErrorQuarkInvoker *gi.Function
+// UNSUPPORTED : C value 'webkit_uri_for_display' : has parameters
 
-// PluginErrorQuark is a representation of the C type webkit_plugin_error_quark.
-func PluginErrorQuark() {
-	if pluginErrorQuarkInvoker == nil {
-		pluginErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "plugin_error_quark")
-	}
+// UNSUPPORTED : C value 'webkit_user_content_filter_error_quark' : return type not supported
 
-	pluginErrorQuarkInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : has parameters
 
-var policyErrorQuarkInvoker *gi.Function
-
-// PolicyErrorQuark is a representation of the C type webkit_policy_error_quark.
-func PolicyErrorQuark() {
-	if policyErrorQuarkInvoker == nil {
-		policyErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "policy_error_quark")
-	}
-
-	policyErrorQuarkInvoker.Invoke()
-}
-
-var printErrorQuarkInvoker *gi.Function
-
-// PrintErrorQuark is a representation of the C type webkit_print_error_quark.
-func PrintErrorQuark() {
-	if printErrorQuarkInvoker == nil {
-		printErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "print_error_quark")
-	}
-
-	printErrorQuarkInvoker.Invoke()
-}
-
-var snapshotErrorQuarkInvoker *gi.Function
-
-// SnapshotErrorQuark is a representation of the C type webkit_snapshot_error_quark.
-func SnapshotErrorQuark() {
-	if snapshotErrorQuarkInvoker == nil {
-		snapshotErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "snapshot_error_quark")
-	}
-
-	snapshotErrorQuarkInvoker.Invoke()
-}
-
-// UNSUPPORTED : C value 'webkit_uri_for_display' : non trivial function
-
-var userContentFilterErrorQuarkInvoker *gi.Function
-
-// UserContentFilterErrorQuark is a representation of the C type webkit_user_content_filter_error_quark.
-func UserContentFilterErrorQuark() {
-	if userContentFilterErrorQuarkInvoker == nil {
-		userContentFilterErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "user_content_filter_error_quark")
-	}
-
-	userContentFilterErrorQuarkInvoker.Invoke()
-}
-
-// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : non trivial function
-
-// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_video_device' : non trivial function
+// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_video_device' : has parameters

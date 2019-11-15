@@ -40,43 +40,34 @@ func GetMinorVersion() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'jsc_options_foreach' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_foreach' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_boolean' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_get_boolean' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_double' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_get_double' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_int' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_get_int' : has parameters
 
-var optionsGetOptionGroupInvoker *gi.Function
+// UNSUPPORTED : C value 'jsc_options_get_option_group' : return type not supported
 
-// OptionsGetOptionGroup is a representation of the C type jsc_options_get_option_group.
-func OptionsGetOptionGroup() {
-	if optionsGetOptionGroupInvoker == nil {
-		optionsGetOptionGroupInvoker = gi.FunctionInvokerNew("JavaScriptCore", "options_get_option_group")
-	}
+// UNSUPPORTED : C value 'jsc_options_get_range_string' : has parameters
 
-	optionsGetOptionGroupInvoker.Invoke()
-}
+// UNSUPPORTED : C value 'jsc_options_get_size' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_range_string' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_get_string' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_size' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_get_uint' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_string' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_boolean' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_get_uint' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_double' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_set_boolean' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_int' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_set_double' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_range_string' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_set_int' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_size' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_set_range_string' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_string' : has parameters
 
-// UNSUPPORTED : C value 'jsc_options_set_size' : non trivial function
-
-// UNSUPPORTED : C value 'jsc_options_set_string' : non trivial function
-
-// UNSUPPORTED : C value 'jsc_options_set_uint' : non trivial function
+// UNSUPPORTED : C value 'jsc_options_set_uint' : has parameters

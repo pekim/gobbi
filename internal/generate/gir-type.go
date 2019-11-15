@@ -120,3 +120,16 @@ func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
 
 	return nil, fmt.Errorf("Unknown type'%s'\n", t.Name)
 }
+
+func (t *Type) supportedAsReturnValue() bool {
+	if t == nil {
+		// return type is void
+		return true
+	}
+
+	if t.CType == "guint" {
+		return true
+	}
+
+	return false
+}
