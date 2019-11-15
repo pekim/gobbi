@@ -1,8 +1,12 @@
 package gi
 
 // #include <girepository.h>
+// #include <stdlib.h>
 import "C"
-import "unsafe"
+
+import (
+	"unsafe"
+)
 
 type Argument C.GIArgument
 
@@ -38,6 +42,12 @@ func (a Argument) Uint64() uint64 {
 	return (uint64)(*(*C.guint)(unsafe.Pointer(&a)))
 }
 
-func (a Argument) String() string {
-	return (C.GoString)(*(**C.gchar)(unsafe.Pointer(&a)))
+func (a Argument) String(transferOwnership bool) string {
+	cString := *(**C.gchar)(unsafe.Pointer(&a))
+	if transferOwnership {
+		defer C.free(unsafe.Pointer(cString))
+	}
+
+	goString := C.GoString(cString)
+	return goString
 }

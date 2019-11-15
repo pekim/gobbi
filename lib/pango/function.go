@@ -75,7 +75,7 @@ func GetLibSubdirectory() string {
 	}
 
 	ret := getLibSubdirectoryInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'pango_get_log_attrs' : has parameters
@@ -91,7 +91,7 @@ func GetSysconfSubdirectory() string {
 	}
 
 	ret := getSysconfSubdirectoryInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : has parameters
@@ -189,5 +189,5 @@ func VersionString() string {
 	}
 
 	ret := versionStringInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }

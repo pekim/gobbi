@@ -325,7 +325,7 @@ func GetApplicationName() string {
 	}
 
 	ret := getApplicationNameInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'g_get_charset' : has parameters
@@ -339,7 +339,7 @@ func GetCodeset() string {
 	}
 
 	ret := getCodesetInvoker.Invoke()
-	return ret.String()
+	return ret.String(true)
 }
 
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
@@ -370,7 +370,7 @@ func GetHostName() string {
 	}
 
 	ret := getHostNameInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 var getLanguageNamesInvoker *gi.Function
@@ -419,7 +419,7 @@ func GetPrgname() string {
 	}
 
 	ret := getPrgnameInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
@@ -1387,7 +1387,7 @@ func UuidStringRandom() string {
 	}
 
 	ret := uuidStringRandomInvoker.Invoke()
-	return ret.String()
+	return ret.String(true)
 }
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported

@@ -1,5 +1,9 @@
 package generate
 
+import (
+	"github.com/dave/jennifer/jen"
+)
+
 type ReturnValue struct {
 	Namespace *Namespace
 
@@ -24,4 +28,12 @@ func (r *ReturnValue) init(ns *Namespace) {
 
 func (r *ReturnValue) isVoid() bool {
 	return r.Type == nil || r.Type.Name == "none"
+}
+
+func (r *ReturnValue) transferOwnershipJen(g *jen.Group) {
+	if r.Type.Name != "utf8" {
+		return
+	}
+
+	g.Lit(r.TransferOwnership == "full")
 }

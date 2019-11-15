@@ -127,7 +127,7 @@ func DbusGenerateGuid() string {
 	}
 
 	ret := dbusGenerateGuidInvoker.Invoke()
-	return ret.String()
+	return ret.String(true)
 }
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : has parameters

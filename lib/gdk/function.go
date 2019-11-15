@@ -156,7 +156,7 @@ func GetDisplay() string {
 	}
 
 	ret := getDisplayInvoker.Invoke()
-	return ret.String()
+	return ret.String(true)
 }
 
 var getDisplayArgNameInvoker *gi.Function
@@ -168,7 +168,7 @@ func GetDisplayArgName() string {
 	}
 
 	ret := getDisplayArgNameInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 var getProgramClassInvoker *gi.Function
@@ -180,7 +180,7 @@ func GetProgramClass() string {
 	}
 
 	ret := getProgramClassInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'gdk_get_show_events' : return type 'gboolean' not supported

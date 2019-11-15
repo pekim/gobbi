@@ -2,6 +2,7 @@ package glib
 
 import (
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
 
@@ -11,4 +12,8 @@ func TestCleanBuild(t *testing.T) {
 
 func TestFunctionCall(t *testing.T) {
 	assert.True(t, GetNumProcessors() > 0)
+}
+
+func TestReturnedTransferOwnershipSring(t *testing.T) {
+	assert.True(t, strings.HasPrefix(GetCodeset(), "ANSI_"))
 }

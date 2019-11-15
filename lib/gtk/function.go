@@ -314,7 +314,7 @@ func PaperSizeGetDefault() string {
 	}
 
 	ret := paperSizeGetDefaultInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : has parameters
@@ -365,7 +365,7 @@ func RcGetThemeDir() string {
 	}
 
 	ret := rcGetThemeDirInvoker.Invoke()
-	return ret.String()
+	return ret.String(true)
 }
 
 // UNSUPPORTED : C value 'gtk_rc_parse' : has parameters

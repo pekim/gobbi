@@ -91,7 +91,7 @@ func GetToolkitName() string {
 	}
 
 	ret := getToolkitNameInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 var getToolkitVersionInvoker *gi.Function
@@ -103,7 +103,7 @@ func GetToolkitVersion() string {
 	}
 
 	ret := getToolkitVersionInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 var getVersionInvoker *gi.Function
@@ -115,7 +115,7 @@ func GetVersion() string {
 	}
 
 	ret := getVersionInvoker.Invoke()
-	return ret.String()
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'atk_relation_type_for_name' : has parameters

@@ -108,10 +108,9 @@ func (f *Function) generateBody(g *group) {
 
 	// marshall and return any return value
 	if !f.ReturnValue.isVoid() {
-		g.Return(
-			jen.
-				Id("ret").
-				Dot(f.ReturnValue.Type.returnValueExtractFunctionName()).
-				Call())
+		g.Return(jen.
+			Id("ret").
+			Dot(f.ReturnValue.Type.returnValueExtractFunctionName()).
+			CallFunc(f.ReturnValue.transferOwnershipJen))
 	}
 }
