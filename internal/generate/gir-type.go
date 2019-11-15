@@ -127,9 +127,17 @@ func (t *Type) supportedAsReturnValue() bool {
 		return true
 	}
 
-	if t.CType == "guint" {
+	if _, ok := returnValueExtractFunctionNames[t.Name]; ok {
 		return true
 	}
 
 	return false
+}
+
+var returnValueExtractFunctionNames = map[string]string{
+	"guint": "Uint32",
+}
+
+func (t *Type) returnValueExtractFunctionName() string {
+	return returnValueExtractFunctionNames[t.Name]
 }

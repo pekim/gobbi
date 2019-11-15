@@ -106,11 +106,12 @@ func (f *Function) generateBody(g *group) {
 		Dot("Invoke").
 		Call()
 
+	// marshall and return any return value
 	if f.ReturnValue.Type != nil && f.ReturnValue.Type.CType == "guint" {
 		g.Return(
 			jen.
 				Id("ret").
-				Dot("Uint32").
+				Dot(f.ReturnValue.Type.returnValueExtractFunctionName()).
 				Call())
 	}
 }
