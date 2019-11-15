@@ -4,7 +4,7 @@ package cairo
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-var imageSurfaceCreateInvoker *gi.FunctionInvoker
+var imageSurfaceCreateInvoker *gi.Function
 
 // ImageSurfaceCreate is a representation of the C type cairo_image_surface_create.
 func ImageSurfaceCreate() {
@@ -12,5 +12,5 @@ func ImageSurfaceCreate() {
 		imageSurfaceCreateInvoker = gi.FunctionInvokerNew("cairo", "image_surface_create")
 	}
 
-	imageSurfaceCreateInvoker.Call()
+	imageSurfaceCreateInvoker.Invoke()
 }

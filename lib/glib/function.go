@@ -110,7 +110,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_bit_unlock' : non trivial function
 
-var bookmarkFileErrorQuarkInvoker *gi.FunctionInvoker
+var bookmarkFileErrorQuarkInvoker *gi.Function
 
 // BookmarkFileErrorQuark is a representation of the C type g_bookmark_file_error_quark.
 func BookmarkFileErrorQuark() {
@@ -118,7 +118,7 @@ func BookmarkFileErrorQuark() {
 		bookmarkFileErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "bookmark_file_error_quark")
 	}
 
-	bookmarkFileErrorQuarkInvoker.Call()
+	bookmarkFileErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_build_filename' : non trivial function
@@ -135,7 +135,7 @@ func BookmarkFileErrorQuark() {
 
 // UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : non trivial function
 
-var byteArrayNewInvoker *gi.FunctionInvoker
+var byteArrayNewInvoker *gi.Function
 
 // ByteArrayNew is a representation of the C type g_byte_array_new.
 func ByteArrayNew() {
@@ -143,7 +143,7 @@ func ByteArrayNew() {
 		byteArrayNewInvoker = gi.FunctionInvokerNew("GLib", "byte_array_new")
 	}
 
-	byteArrayNewInvoker.Call()
+	byteArrayNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_byte_array_new_take' : non trivial function
@@ -162,7 +162,7 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_child_watch_source_new' : non trivial function
 
-var clearErrorInvoker *gi.FunctionInvoker
+var clearErrorInvoker *gi.Function
 
 // ClearError is a representation of the C type g_clear_error.
 func ClearError() {
@@ -170,7 +170,7 @@ func ClearError() {
 		clearErrorInvoker = gi.FunctionInvokerNew("GLib", "clear_error")
 	}
 
-	clearErrorInvoker.Call()
+	clearErrorInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_clear_handle_id' : non trivial function
@@ -193,7 +193,7 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_convert' : non trivial function
 
-var convertErrorQuarkInvoker *gi.FunctionInvoker
+var convertErrorQuarkInvoker *gi.Function
 
 // ConvertErrorQuark is a representation of the C type g_convert_error_quark.
 func ConvertErrorQuark() {
@@ -201,7 +201,7 @@ func ConvertErrorQuark() {
 		convertErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "convert_error_quark")
 	}
 
-	convertErrorQuarkInvoker.Call()
+	convertErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_convert_with_fallback' : non trivial function
@@ -298,7 +298,7 @@ func ConvertErrorQuark() {
 
 // UNSUPPORTED : C value 'g_file_error_from_errno' : non trivial function
 
-var fileErrorQuarkInvoker *gi.FunctionInvoker
+var fileErrorQuarkInvoker *gi.Function
 
 // FileErrorQuark is a representation of the C type g_file_error_quark.
 func FileErrorQuark() {
@@ -306,7 +306,7 @@ func FileErrorQuark() {
 		fileErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "file_error_quark")
 	}
 
-	fileErrorQuarkInvoker.Call()
+	fileErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_file_get_contents' : non trivial function
@@ -343,7 +343,7 @@ func FileErrorQuark() {
 
 // UNSUPPORTED : C value 'g_free' : non trivial function
 
-var getApplicationNameInvoker *gi.FunctionInvoker
+var getApplicationNameInvoker *gi.Function
 
 // GetApplicationName is a representation of the C type g_get_application_name.
 func GetApplicationName() {
@@ -351,12 +351,12 @@ func GetApplicationName() {
 		getApplicationNameInvoker = gi.FunctionInvokerNew("GLib", "get_application_name")
 	}
 
-	getApplicationNameInvoker.Call()
+	getApplicationNameInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_get_charset' : non trivial function
 
-var getCodesetInvoker *gi.FunctionInvoker
+var getCodesetInvoker *gi.Function
 
 // GetCodeset is a representation of the C type g_get_codeset.
 func GetCodeset() {
@@ -364,10 +364,10 @@ func GetCodeset() {
 		getCodesetInvoker = gi.FunctionInvokerNew("GLib", "get_codeset")
 	}
 
-	getCodesetInvoker.Call()
+	getCodesetInvoker.Invoke()
 }
 
-var getCurrentDirInvoker *gi.FunctionInvoker
+var getCurrentDirInvoker *gi.Function
 
 // GetCurrentDir is a representation of the C type g_get_current_dir.
 func GetCurrentDir() {
@@ -375,12 +375,12 @@ func GetCurrentDir() {
 		getCurrentDirInvoker = gi.FunctionInvokerNew("GLib", "get_current_dir")
 	}
 
-	getCurrentDirInvoker.Call()
+	getCurrentDirInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_get_current_time' : non trivial function
 
-var getEnvironInvoker *gi.FunctionInvoker
+var getEnvironInvoker *gi.Function
 
 // GetEnviron is a representation of the C type g_get_environ.
 func GetEnviron() {
@@ -388,12 +388,12 @@ func GetEnviron() {
 		getEnvironInvoker = gi.FunctionInvokerNew("GLib", "get_environ")
 	}
 
-	getEnvironInvoker.Call()
+	getEnvironInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_get_filename_charsets' : non trivial function
 
-var getHomeDirInvoker *gi.FunctionInvoker
+var getHomeDirInvoker *gi.Function
 
 // GetHomeDir is a representation of the C type g_get_home_dir.
 func GetHomeDir() {
@@ -401,10 +401,10 @@ func GetHomeDir() {
 		getHomeDirInvoker = gi.FunctionInvokerNew("GLib", "get_home_dir")
 	}
 
-	getHomeDirInvoker.Call()
+	getHomeDirInvoker.Invoke()
 }
 
-var getHostNameInvoker *gi.FunctionInvoker
+var getHostNameInvoker *gi.Function
 
 // GetHostName is a representation of the C type g_get_host_name.
 func GetHostName() {
@@ -412,10 +412,10 @@ func GetHostName() {
 		getHostNameInvoker = gi.FunctionInvokerNew("GLib", "get_host_name")
 	}
 
-	getHostNameInvoker.Call()
+	getHostNameInvoker.Invoke()
 }
 
-var getLanguageNamesInvoker *gi.FunctionInvoker
+var getLanguageNamesInvoker *gi.Function
 
 // GetLanguageNames is a representation of the C type g_get_language_names.
 func GetLanguageNames() {
@@ -423,12 +423,12 @@ func GetLanguageNames() {
 		getLanguageNamesInvoker = gi.FunctionInvokerNew("GLib", "get_language_names")
 	}
 
-	getLanguageNamesInvoker.Call()
+	getLanguageNamesInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_get_locale_variants' : non trivial function
 
-var getMonotonicTimeInvoker *gi.FunctionInvoker
+var getMonotonicTimeInvoker *gi.Function
 
 // GetMonotonicTime is a representation of the C type g_get_monotonic_time.
 func GetMonotonicTime() {
@@ -436,21 +436,23 @@ func GetMonotonicTime() {
 		getMonotonicTimeInvoker = gi.FunctionInvokerNew("GLib", "get_monotonic_time")
 	}
 
-	getMonotonicTimeInvoker.Call()
+	getMonotonicTimeInvoker.Invoke()
 }
 
-var getNumProcessorsInvoker *gi.FunctionInvoker
+var getNumProcessorsInvoker *gi.Function
 
 // GetNumProcessors is a representation of the C type g_get_num_processors.
-func GetNumProcessors() {
+func GetNumProcessors() uint32 {
 	if getNumProcessorsInvoker == nil {
 		getNumProcessorsInvoker = gi.FunctionInvokerNew("GLib", "get_num_processors")
 	}
 
-	getNumProcessorsInvoker.Call()
+	ret := getNumProcessorsInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getPrgnameInvoker *gi.FunctionInvoker
+var getPrgnameInvoker *gi.Function
 
 // GetPrgname is a representation of the C type g_get_prgname.
 func GetPrgname() {
@@ -458,10 +460,10 @@ func GetPrgname() {
 		getPrgnameInvoker = gi.FunctionInvokerNew("GLib", "get_prgname")
 	}
 
-	getPrgnameInvoker.Call()
+	getPrgnameInvoker.Invoke()
 }
 
-var getRealNameInvoker *gi.FunctionInvoker
+var getRealNameInvoker *gi.Function
 
 // GetRealName is a representation of the C type g_get_real_name.
 func GetRealName() {
@@ -469,10 +471,10 @@ func GetRealName() {
 		getRealNameInvoker = gi.FunctionInvokerNew("GLib", "get_real_name")
 	}
 
-	getRealNameInvoker.Call()
+	getRealNameInvoker.Invoke()
 }
 
-var getRealTimeInvoker *gi.FunctionInvoker
+var getRealTimeInvoker *gi.Function
 
 // GetRealTime is a representation of the C type g_get_real_time.
 func GetRealTime() {
@@ -480,10 +482,10 @@ func GetRealTime() {
 		getRealTimeInvoker = gi.FunctionInvokerNew("GLib", "get_real_time")
 	}
 
-	getRealTimeInvoker.Call()
+	getRealTimeInvoker.Invoke()
 }
 
-var getSystemConfigDirsInvoker *gi.FunctionInvoker
+var getSystemConfigDirsInvoker *gi.Function
 
 // GetSystemConfigDirs is a representation of the C type g_get_system_config_dirs.
 func GetSystemConfigDirs() {
@@ -491,10 +493,10 @@ func GetSystemConfigDirs() {
 		getSystemConfigDirsInvoker = gi.FunctionInvokerNew("GLib", "get_system_config_dirs")
 	}
 
-	getSystemConfigDirsInvoker.Call()
+	getSystemConfigDirsInvoker.Invoke()
 }
 
-var getSystemDataDirsInvoker *gi.FunctionInvoker
+var getSystemDataDirsInvoker *gi.Function
 
 // GetSystemDataDirs is a representation of the C type g_get_system_data_dirs.
 func GetSystemDataDirs() {
@@ -502,10 +504,10 @@ func GetSystemDataDirs() {
 		getSystemDataDirsInvoker = gi.FunctionInvokerNew("GLib", "get_system_data_dirs")
 	}
 
-	getSystemDataDirsInvoker.Call()
+	getSystemDataDirsInvoker.Invoke()
 }
 
-var getTmpDirInvoker *gi.FunctionInvoker
+var getTmpDirInvoker *gi.Function
 
 // GetTmpDir is a representation of the C type g_get_tmp_dir.
 func GetTmpDir() {
@@ -513,10 +515,10 @@ func GetTmpDir() {
 		getTmpDirInvoker = gi.FunctionInvokerNew("GLib", "get_tmp_dir")
 	}
 
-	getTmpDirInvoker.Call()
+	getTmpDirInvoker.Invoke()
 }
 
-var getUserCacheDirInvoker *gi.FunctionInvoker
+var getUserCacheDirInvoker *gi.Function
 
 // GetUserCacheDir is a representation of the C type g_get_user_cache_dir.
 func GetUserCacheDir() {
@@ -524,10 +526,10 @@ func GetUserCacheDir() {
 		getUserCacheDirInvoker = gi.FunctionInvokerNew("GLib", "get_user_cache_dir")
 	}
 
-	getUserCacheDirInvoker.Call()
+	getUserCacheDirInvoker.Invoke()
 }
 
-var getUserConfigDirInvoker *gi.FunctionInvoker
+var getUserConfigDirInvoker *gi.Function
 
 // GetUserConfigDir is a representation of the C type g_get_user_config_dir.
 func GetUserConfigDir() {
@@ -535,10 +537,10 @@ func GetUserConfigDir() {
 		getUserConfigDirInvoker = gi.FunctionInvokerNew("GLib", "get_user_config_dir")
 	}
 
-	getUserConfigDirInvoker.Call()
+	getUserConfigDirInvoker.Invoke()
 }
 
-var getUserDataDirInvoker *gi.FunctionInvoker
+var getUserDataDirInvoker *gi.Function
 
 // GetUserDataDir is a representation of the C type g_get_user_data_dir.
 func GetUserDataDir() {
@@ -546,10 +548,10 @@ func GetUserDataDir() {
 		getUserDataDirInvoker = gi.FunctionInvokerNew("GLib", "get_user_data_dir")
 	}
 
-	getUserDataDirInvoker.Call()
+	getUserDataDirInvoker.Invoke()
 }
 
-var getUserNameInvoker *gi.FunctionInvoker
+var getUserNameInvoker *gi.Function
 
 // GetUserName is a representation of the C type g_get_user_name.
 func GetUserName() {
@@ -557,10 +559,10 @@ func GetUserName() {
 		getUserNameInvoker = gi.FunctionInvokerNew("GLib", "get_user_name")
 	}
 
-	getUserNameInvoker.Call()
+	getUserNameInvoker.Invoke()
 }
 
-var getUserRuntimeDirInvoker *gi.FunctionInvoker
+var getUserRuntimeDirInvoker *gi.Function
 
 // GetUserRuntimeDir is a representation of the C type g_get_user_runtime_dir.
 func GetUserRuntimeDir() {
@@ -568,7 +570,7 @@ func GetUserRuntimeDir() {
 		getUserRuntimeDirInvoker = gi.FunctionInvokerNew("GLib", "get_user_runtime_dir")
 	}
 
-	getUserRuntimeDirInvoker.Call()
+	getUserRuntimeDirInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_get_user_special_dir' : non trivial function
@@ -633,7 +635,7 @@ func GetUserRuntimeDir() {
 
 // UNSUPPORTED : C value 'g_idle_remove_by_data' : non trivial function
 
-var idleSourceNewInvoker *gi.FunctionInvoker
+var idleSourceNewInvoker *gi.Function
 
 // IdleSourceNew is a representation of the C type g_idle_source_new.
 func IdleSourceNew() {
@@ -641,7 +643,7 @@ func IdleSourceNew() {
 		idleSourceNewInvoker = gi.FunctionInvokerNew("GLib", "idle_source_new")
 	}
 
-	idleSourceNewInvoker.Call()
+	idleSourceNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_int64_equal' : non trivial function
@@ -662,7 +664,7 @@ func IdleSourceNew() {
 
 // UNSUPPORTED : C value 'g_io_channel_error_from_errno' : non trivial function
 
-var ioChannelErrorQuarkInvoker *gi.FunctionInvoker
+var ioChannelErrorQuarkInvoker *gi.Function
 
 // IoChannelErrorQuark is a representation of the C type g_io_channel_error_quark.
 func IoChannelErrorQuark() {
@@ -670,12 +672,12 @@ func IoChannelErrorQuark() {
 		ioChannelErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "io_channel_error_quark")
 	}
 
-	ioChannelErrorQuarkInvoker.Call()
+	ioChannelErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_io_create_watch' : non trivial function
 
-var keyFileErrorQuarkInvoker *gi.FunctionInvoker
+var keyFileErrorQuarkInvoker *gi.Function
 
 // KeyFileErrorQuark is a representation of the C type g_key_file_error_quark.
 func KeyFileErrorQuark() {
@@ -683,10 +685,10 @@ func KeyFileErrorQuark() {
 		keyFileErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "key_file_error_quark")
 	}
 
-	keyFileErrorQuarkInvoker.Call()
+	keyFileErrorQuarkInvoker.Invoke()
 }
 
-var listenvInvoker *gi.FunctionInvoker
+var listenvInvoker *gi.Function
 
 // Listenv is a representation of the C type g_listenv.
 func Listenv() {
@@ -694,7 +696,7 @@ func Listenv() {
 		listenvInvoker = gi.FunctionInvokerNew("GLib", "listenv")
 	}
 
-	listenvInvoker.Call()
+	listenvInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_locale_from_utf8' : non trivial function
@@ -741,7 +743,7 @@ func Listenv() {
 
 // UNSUPPORTED : C value 'g_logv' : non trivial function
 
-var mainContextDefaultInvoker *gi.FunctionInvoker
+var mainContextDefaultInvoker *gi.Function
 
 // MainContextDefault is a representation of the C type g_main_context_default.
 func MainContextDefault() {
@@ -749,10 +751,10 @@ func MainContextDefault() {
 		mainContextDefaultInvoker = gi.FunctionInvokerNew("GLib", "main_context_default")
 	}
 
-	mainContextDefaultInvoker.Call()
+	mainContextDefaultInvoker.Invoke()
 }
 
-var mainContextGetThreadDefaultInvoker *gi.FunctionInvoker
+var mainContextGetThreadDefaultInvoker *gi.Function
 
 // MainContextGetThreadDefault is a representation of the C type g_main_context_get_thread_default.
 func MainContextGetThreadDefault() {
@@ -760,10 +762,10 @@ func MainContextGetThreadDefault() {
 		mainContextGetThreadDefaultInvoker = gi.FunctionInvokerNew("GLib", "main_context_get_thread_default")
 	}
 
-	mainContextGetThreadDefaultInvoker.Call()
+	mainContextGetThreadDefaultInvoker.Invoke()
 }
 
-var mainContextRefThreadDefaultInvoker *gi.FunctionInvoker
+var mainContextRefThreadDefaultInvoker *gi.Function
 
 // MainContextRefThreadDefault is a representation of the C type g_main_context_ref_thread_default.
 func MainContextRefThreadDefault() {
@@ -771,10 +773,10 @@ func MainContextRefThreadDefault() {
 		mainContextRefThreadDefaultInvoker = gi.FunctionInvokerNew("GLib", "main_context_ref_thread_default")
 	}
 
-	mainContextRefThreadDefaultInvoker.Call()
+	mainContextRefThreadDefaultInvoker.Invoke()
 }
 
-var mainCurrentSourceInvoker *gi.FunctionInvoker
+var mainCurrentSourceInvoker *gi.Function
 
 // MainCurrentSource is a representation of the C type g_main_current_source.
 func MainCurrentSource() {
@@ -782,10 +784,10 @@ func MainCurrentSource() {
 		mainCurrentSourceInvoker = gi.FunctionInvokerNew("GLib", "main_current_source")
 	}
 
-	mainCurrentSourceInvoker.Call()
+	mainCurrentSourceInvoker.Invoke()
 }
 
-var mainDepthInvoker *gi.FunctionInvoker
+var mainDepthInvoker *gi.Function
 
 // MainDepth is a representation of the C type g_main_depth.
 func MainDepth() {
@@ -793,7 +795,7 @@ func MainDepth() {
 		mainDepthInvoker = gi.FunctionInvokerNew("GLib", "main_depth")
 	}
 
-	mainDepthInvoker.Call()
+	mainDepthInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_malloc' : non trivial function
@@ -806,7 +808,7 @@ func MainDepth() {
 
 // UNSUPPORTED : C value 'g_markup_collect_attributes' : non trivial function
 
-var markupErrorQuarkInvoker *gi.FunctionInvoker
+var markupErrorQuarkInvoker *gi.Function
 
 // MarkupErrorQuark is a representation of the C type g_markup_error_quark.
 func MarkupErrorQuark() {
@@ -814,7 +816,7 @@ func MarkupErrorQuark() {
 		markupErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "markup_error_quark")
 	}
 
-	markupErrorQuarkInvoker.Call()
+	markupErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_markup_escape_text' : non trivial function
@@ -823,7 +825,7 @@ func MarkupErrorQuark() {
 
 // UNSUPPORTED : C value 'g_markup_vprintf_escaped' : non trivial function
 
-var memIsSystemMallocInvoker *gi.FunctionInvoker
+var memIsSystemMallocInvoker *gi.Function
 
 // MemIsSystemMalloc is a representation of the C type g_mem_is_system_malloc.
 func MemIsSystemMalloc() {
@@ -831,10 +833,10 @@ func MemIsSystemMalloc() {
 		memIsSystemMallocInvoker = gi.FunctionInvokerNew("GLib", "mem_is_system_malloc")
 	}
 
-	memIsSystemMallocInvoker.Call()
+	memIsSystemMallocInvoker.Invoke()
 }
 
-var memProfileInvoker *gi.FunctionInvoker
+var memProfileInvoker *gi.Function
 
 // MemProfile is a representation of the C type g_mem_profile.
 func MemProfile() {
@@ -842,7 +844,7 @@ func MemProfile() {
 		memProfileInvoker = gi.FunctionInvokerNew("GLib", "mem_profile")
 	}
 
-	memProfileInvoker.Call()
+	memProfileInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_mem_set_vtable' : non trivial function
@@ -861,7 +863,7 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_nullify_pointer' : non trivial function
 
-var numberParserErrorQuarkInvoker *gi.FunctionInvoker
+var numberParserErrorQuarkInvoker *gi.Function
 
 // NumberParserErrorQuark is a representation of the C type g_number_parser_error_quark.
 func NumberParserErrorQuark() {
@@ -869,7 +871,7 @@ func NumberParserErrorQuark() {
 		numberParserErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "number_parser_error_quark")
 	}
 
-	numberParserErrorQuarkInvoker.Call()
+	numberParserErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_on_error_query' : non trivial function
@@ -880,7 +882,7 @@ func NumberParserErrorQuark() {
 
 // UNSUPPORTED : C value 'g_once_init_leave' : non trivial function
 
-var optionErrorQuarkInvoker *gi.FunctionInvoker
+var optionErrorQuarkInvoker *gi.Function
 
 // OptionErrorQuark is a representation of the C type g_option_error_quark.
 func OptionErrorQuark() {
@@ -888,7 +890,7 @@ func OptionErrorQuark() {
 		optionErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "option_error_quark")
 	}
 
-	optionErrorQuarkInvoker.Call()
+	optionErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_parse_debug_string' : non trivial function
@@ -943,7 +945,7 @@ func OptionErrorQuark() {
 
 // UNSUPPORTED : C value 'g_quark_try_string' : non trivial function
 
-var randomDoubleInvoker *gi.FunctionInvoker
+var randomDoubleInvoker *gi.Function
 
 // RandomDouble is a representation of the C type g_random_double.
 func RandomDouble() {
@@ -951,12 +953,12 @@ func RandomDouble() {
 		randomDoubleInvoker = gi.FunctionInvokerNew("GLib", "random_double")
 	}
 
-	randomDoubleInvoker.Call()
+	randomDoubleInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_random_double_range' : non trivial function
 
-var randomIntInvoker *gi.FunctionInvoker
+var randomIntInvoker *gi.Function
 
 // RandomInt is a representation of the C type g_random_int.
 func RandomInt() {
@@ -964,7 +966,7 @@ func RandomInt() {
 		randomIntInvoker = gi.FunctionInvokerNew("GLib", "random_int")
 	}
 
-	randomIntInvoker.Call()
+	randomIntInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_random_int_range' : non trivial function
@@ -977,7 +979,7 @@ func RandomInt() {
 
 // UNSUPPORTED : C value 'g_regex_check_replacement' : non trivial function
 
-var regexErrorQuarkInvoker *gi.FunctionInvoker
+var regexErrorQuarkInvoker *gi.Function
 
 // RegexErrorQuark is a representation of the C type g_regex_error_quark.
 func RegexErrorQuark() {
@@ -985,7 +987,7 @@ func RegexErrorQuark() {
 		regexErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "regex_error_quark")
 	}
 
-	regexErrorQuarkInvoker.Call()
+	regexErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_regex_escape_nul' : non trivial function
@@ -996,7 +998,7 @@ func RegexErrorQuark() {
 
 // UNSUPPORTED : C value 'g_regex_split_simple' : non trivial function
 
-var reloadUserSpecialDirsCacheInvoker *gi.FunctionInvoker
+var reloadUserSpecialDirsCacheInvoker *gi.Function
 
 // ReloadUserSpecialDirsCache is a representation of the C type g_reload_user_special_dirs_cache.
 func ReloadUserSpecialDirsCache() {
@@ -1004,7 +1006,7 @@ func ReloadUserSpecialDirsCache() {
 		reloadUserSpecialDirsCacheInvoker = gi.FunctionInvokerNew("GLib", "reload_user_special_dirs_cache")
 	}
 
-	reloadUserSpecialDirsCacheInvoker.Call()
+	reloadUserSpecialDirsCacheInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_return_if_fail_warning' : non trivial function
@@ -1043,7 +1045,7 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_setenv' : non trivial function
 
-var shellErrorQuarkInvoker *gi.FunctionInvoker
+var shellErrorQuarkInvoker *gi.Function
 
 // ShellErrorQuark is a representation of the C type g_shell_error_quark.
 func ShellErrorQuark() {
@@ -1051,7 +1053,7 @@ func ShellErrorQuark() {
 		shellErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "shell_error_quark")
 	}
 
-	shellErrorQuarkInvoker.Call()
+	shellErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_shell_parse_argv' : non trivial function
@@ -1100,7 +1102,7 @@ func ShellErrorQuark() {
 
 // UNSUPPORTED : C value 'g_spawn_command_line_sync' : non trivial function
 
-var spawnErrorQuarkInvoker *gi.FunctionInvoker
+var spawnErrorQuarkInvoker *gi.Function
 
 // SpawnErrorQuark is a representation of the C type g_spawn_error_quark.
 func SpawnErrorQuark() {
@@ -1108,10 +1110,10 @@ func SpawnErrorQuark() {
 		spawnErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "spawn_error_quark")
 	}
 
-	spawnErrorQuarkInvoker.Call()
+	spawnErrorQuarkInvoker.Invoke()
 }
 
-var spawnExitErrorQuarkInvoker *gi.FunctionInvoker
+var spawnExitErrorQuarkInvoker *gi.Function
 
 // SpawnExitErrorQuark is a representation of the C type g_spawn_exit_error_quark.
 func SpawnExitErrorQuark() {
@@ -1119,7 +1121,7 @@ func SpawnExitErrorQuark() {
 		spawnExitErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "spawn_exit_error_quark")
 	}
 
-	spawnExitErrorQuarkInvoker.Call()
+	spawnExitErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_spawn_sync' : non trivial function
@@ -1218,7 +1220,7 @@ func SpawnExitErrorQuark() {
 
 // UNSUPPORTED : C value 'g_strv_contains' : non trivial function
 
-var strvGetTypeInvoker *gi.FunctionInvoker
+var strvGetTypeInvoker *gi.Function
 
 // StrvGetType is a representation of the C type g_strv_get_type.
 func StrvGetType() {
@@ -1226,7 +1228,7 @@ func StrvGetType() {
 		strvGetTypeInvoker = gi.FunctionInvokerNew("GLib", "strv_get_type")
 	}
 
-	strvGetTypeInvoker.Call()
+	strvGetTypeInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_strv_length' : non trivial function
@@ -1253,7 +1255,7 @@ func StrvGetType() {
 
 // UNSUPPORTED : C value 'g_test_expect_message' : non trivial function
 
-var testFailInvoker *gi.FunctionInvoker
+var testFailInvoker *gi.Function
 
 // TestFail is a representation of the C type g_test_fail.
 func TestFail() {
@@ -1261,10 +1263,10 @@ func TestFail() {
 		testFailInvoker = gi.FunctionInvokerNew("GLib", "test_fail")
 	}
 
-	testFailInvoker.Call()
+	testFailInvoker.Invoke()
 }
 
-var testFailedInvoker *gi.FunctionInvoker
+var testFailedInvoker *gi.Function
 
 // TestFailed is a representation of the C type g_test_failed.
 func TestFailed() {
@@ -1272,14 +1274,14 @@ func TestFailed() {
 		testFailedInvoker = gi.FunctionInvokerNew("GLib", "test_failed")
 	}
 
-	testFailedInvoker.Call()
+	testFailedInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_get_dir' : non trivial function
 
 // UNSUPPORTED : C value 'g_test_get_filename' : non trivial function
 
-var testGetRootInvoker *gi.FunctionInvoker
+var testGetRootInvoker *gi.Function
 
 // TestGetRoot is a representation of the C type g_test_get_root.
 func TestGetRoot() {
@@ -1287,7 +1289,7 @@ func TestGetRoot() {
 		testGetRootInvoker = gi.FunctionInvokerNew("GLib", "test_get_root")
 	}
 
-	testGetRootInvoker.Call()
+	testGetRootInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_incomplete' : non trivial function
@@ -1308,7 +1310,7 @@ func TestGetRoot() {
 
 // UNSUPPORTED : C value 'g_test_queue_free' : non trivial function
 
-var testRandDoubleInvoker *gi.FunctionInvoker
+var testRandDoubleInvoker *gi.Function
 
 // TestRandDouble is a representation of the C type g_test_rand_double.
 func TestRandDouble() {
@@ -1316,12 +1318,12 @@ func TestRandDouble() {
 		testRandDoubleInvoker = gi.FunctionInvokerNew("GLib", "test_rand_double")
 	}
 
-	testRandDoubleInvoker.Call()
+	testRandDoubleInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_rand_double_range' : non trivial function
 
-var testRandIntInvoker *gi.FunctionInvoker
+var testRandIntInvoker *gi.Function
 
 // TestRandInt is a representation of the C type g_test_rand_int.
 func TestRandInt() {
@@ -1329,12 +1331,12 @@ func TestRandInt() {
 		testRandIntInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int")
 	}
 
-	testRandIntInvoker.Call()
+	testRandIntInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_rand_int_range' : non trivial function
 
-var testRunInvoker *gi.FunctionInvoker
+var testRunInvoker *gi.Function
 
 // TestRun is a representation of the C type g_test_run.
 func TestRun() {
@@ -1342,12 +1344,12 @@ func TestRun() {
 		testRunInvoker = gi.FunctionInvokerNew("GLib", "test_run")
 	}
 
-	testRunInvoker.Call()
+	testRunInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_run_suite' : non trivial function
 
-var testSetNonfatalAssertionsInvoker *gi.FunctionInvoker
+var testSetNonfatalAssertionsInvoker *gi.Function
 
 // TestSetNonfatalAssertions is a representation of the C type g_test_set_nonfatal_assertions.
 func TestSetNonfatalAssertions() {
@@ -1355,12 +1357,12 @@ func TestSetNonfatalAssertions() {
 		testSetNonfatalAssertionsInvoker = gi.FunctionInvokerNew("GLib", "test_set_nonfatal_assertions")
 	}
 
-	testSetNonfatalAssertionsInvoker.Call()
+	testSetNonfatalAssertionsInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_skip' : non trivial function
 
-var testSubprocessInvoker *gi.FunctionInvoker
+var testSubprocessInvoker *gi.Function
 
 // TestSubprocess is a representation of the C type g_test_subprocess.
 func TestSubprocess() {
@@ -1368,10 +1370,10 @@ func TestSubprocess() {
 		testSubprocessInvoker = gi.FunctionInvokerNew("GLib", "test_subprocess")
 	}
 
-	testSubprocessInvoker.Call()
+	testSubprocessInvoker.Invoke()
 }
 
-var testTimerElapsedInvoker *gi.FunctionInvoker
+var testTimerElapsedInvoker *gi.Function
 
 // TestTimerElapsed is a representation of the C type g_test_timer_elapsed.
 func TestTimerElapsed() {
@@ -1379,10 +1381,10 @@ func TestTimerElapsed() {
 		testTimerElapsedInvoker = gi.FunctionInvokerNew("GLib", "test_timer_elapsed")
 	}
 
-	testTimerElapsedInvoker.Call()
+	testTimerElapsedInvoker.Invoke()
 }
 
-var testTimerLastInvoker *gi.FunctionInvoker
+var testTimerLastInvoker *gi.Function
 
 // TestTimerLast is a representation of the C type g_test_timer_last.
 func TestTimerLast() {
@@ -1390,10 +1392,10 @@ func TestTimerLast() {
 		testTimerLastInvoker = gi.FunctionInvokerNew("GLib", "test_timer_last")
 	}
 
-	testTimerLastInvoker.Call()
+	testTimerLastInvoker.Invoke()
 }
 
-var testTimerStartInvoker *gi.FunctionInvoker
+var testTimerStartInvoker *gi.Function
 
 // TestTimerStart is a representation of the C type g_test_timer_start.
 func TestTimerStart() {
@@ -1401,14 +1403,14 @@ func TestTimerStart() {
 		testTimerStartInvoker = gi.FunctionInvokerNew("GLib", "test_timer_start")
 	}
 
-	testTimerStartInvoker.Call()
+	testTimerStartInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_trap_assertions' : non trivial function
 
 // UNSUPPORTED : C value 'g_test_trap_fork' : non trivial function
 
-var testTrapHasPassedInvoker *gi.FunctionInvoker
+var testTrapHasPassedInvoker *gi.Function
 
 // TestTrapHasPassed is a representation of the C type g_test_trap_has_passed.
 func TestTrapHasPassed() {
@@ -1416,10 +1418,10 @@ func TestTrapHasPassed() {
 		testTrapHasPassedInvoker = gi.FunctionInvokerNew("GLib", "test_trap_has_passed")
 	}
 
-	testTrapHasPassedInvoker.Call()
+	testTrapHasPassedInvoker.Invoke()
 }
 
-var testTrapReachedTimeoutInvoker *gi.FunctionInvoker
+var testTrapReachedTimeoutInvoker *gi.Function
 
 // TestTrapReachedTimeout is a representation of the C type g_test_trap_reached_timeout.
 func TestTrapReachedTimeout() {
@@ -1427,12 +1429,12 @@ func TestTrapReachedTimeout() {
 		testTrapReachedTimeoutInvoker = gi.FunctionInvokerNew("GLib", "test_trap_reached_timeout")
 	}
 
-	testTrapReachedTimeoutInvoker.Call()
+	testTrapReachedTimeoutInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_test_trap_subprocess' : non trivial function
 
-var threadErrorQuarkInvoker *gi.FunctionInvoker
+var threadErrorQuarkInvoker *gi.Function
 
 // ThreadErrorQuark is a representation of the C type g_thread_error_quark.
 func ThreadErrorQuark() {
@@ -1440,23 +1442,25 @@ func ThreadErrorQuark() {
 		threadErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "thread_error_quark")
 	}
 
-	threadErrorQuarkInvoker.Call()
+	threadErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_thread_exit' : non trivial function
 
-var threadPoolGetMaxIdleTimeInvoker *gi.FunctionInvoker
+var threadPoolGetMaxIdleTimeInvoker *gi.Function
 
 // ThreadPoolGetMaxIdleTime is a representation of the C type g_thread_pool_get_max_idle_time.
-func ThreadPoolGetMaxIdleTime() {
+func ThreadPoolGetMaxIdleTime() uint32 {
 	if threadPoolGetMaxIdleTimeInvoker == nil {
 		threadPoolGetMaxIdleTimeInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_idle_time")
 	}
 
-	threadPoolGetMaxIdleTimeInvoker.Call()
+	ret := threadPoolGetMaxIdleTimeInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var threadPoolGetMaxUnusedThreadsInvoker *gi.FunctionInvoker
+var threadPoolGetMaxUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolGetMaxUnusedThreads is a representation of the C type g_thread_pool_get_max_unused_threads.
 func ThreadPoolGetMaxUnusedThreads() {
@@ -1464,25 +1468,27 @@ func ThreadPoolGetMaxUnusedThreads() {
 		threadPoolGetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
 	}
 
-	threadPoolGetMaxUnusedThreadsInvoker.Call()
+	threadPoolGetMaxUnusedThreadsInvoker.Invoke()
 }
 
-var threadPoolGetNumUnusedThreadsInvoker *gi.FunctionInvoker
+var threadPoolGetNumUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolGetNumUnusedThreads is a representation of the C type g_thread_pool_get_num_unused_threads.
-func ThreadPoolGetNumUnusedThreads() {
+func ThreadPoolGetNumUnusedThreads() uint32 {
 	if threadPoolGetNumUnusedThreadsInvoker == nil {
 		threadPoolGetNumUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_num_unused_threads")
 	}
 
-	threadPoolGetNumUnusedThreadsInvoker.Call()
+	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
 // UNSUPPORTED : C value 'g_thread_pool_set_max_idle_time' : non trivial function
 
 // UNSUPPORTED : C value 'g_thread_pool_set_max_unused_threads' : non trivial function
 
-var threadPoolStopUnusedThreadsInvoker *gi.FunctionInvoker
+var threadPoolStopUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolStopUnusedThreads is a representation of the C type g_thread_pool_stop_unused_threads.
 func ThreadPoolStopUnusedThreads() {
@@ -1490,10 +1496,10 @@ func ThreadPoolStopUnusedThreads() {
 		threadPoolStopUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_stop_unused_threads")
 	}
 
-	threadPoolStopUnusedThreadsInvoker.Call()
+	threadPoolStopUnusedThreadsInvoker.Invoke()
 }
 
-var threadSelfInvoker *gi.FunctionInvoker
+var threadSelfInvoker *gi.Function
 
 // ThreadSelf is a representation of the C type g_thread_self.
 func ThreadSelf() {
@@ -1501,10 +1507,10 @@ func ThreadSelf() {
 		threadSelfInvoker = gi.FunctionInvokerNew("GLib", "thread_self")
 	}
 
-	threadSelfInvoker.Call()
+	threadSelfInvoker.Invoke()
 }
 
-var threadYieldInvoker *gi.FunctionInvoker
+var threadYieldInvoker *gi.Function
 
 // ThreadYield is a representation of the C type g_thread_yield.
 func ThreadYield() {
@@ -1512,7 +1518,7 @@ func ThreadYield() {
 		threadYieldInvoker = gi.FunctionInvokerNew("GLib", "thread_yield")
 	}
 
-	threadYieldInvoker.Call()
+	threadYieldInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_time_val_from_iso8601' : non trivial function
@@ -1625,7 +1631,7 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : non trivial function
 
-var unixErrorQuarkInvoker *gi.FunctionInvoker
+var unixErrorQuarkInvoker *gi.Function
 
 // UnixErrorQuark is a representation of the C type g_unix_error_quark.
 func UnixErrorQuark() {
@@ -1633,7 +1639,7 @@ func UnixErrorQuark() {
 		unixErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "unix_error_quark")
 	}
 
-	unixErrorQuarkInvoker.Call()
+	unixErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_unix_fd_add' : non trivial function
@@ -1724,7 +1730,7 @@ func UnixErrorQuark() {
 
 // UNSUPPORTED : C value 'g_uuid_string_is_valid' : non trivial function
 
-var uuidStringRandomInvoker *gi.FunctionInvoker
+var uuidStringRandomInvoker *gi.Function
 
 // UuidStringRandom is a representation of the C type g_uuid_string_random.
 func UuidStringRandom() {
@@ -1732,10 +1738,10 @@ func UuidStringRandom() {
 		uuidStringRandomInvoker = gi.FunctionInvokerNew("GLib", "uuid_string_random")
 	}
 
-	uuidStringRandomInvoker.Call()
+	uuidStringRandomInvoker.Invoke()
 }
 
-var variantGetGtypeInvoker *gi.FunctionInvoker
+var variantGetGtypeInvoker *gi.Function
 
 // VariantGetGtype is a representation of the C type g_variant_get_gtype.
 func VariantGetGtype() {
@@ -1743,7 +1749,7 @@ func VariantGetGtype() {
 		variantGetGtypeInvoker = gi.FunctionInvokerNew("GLib", "variant_get_gtype")
 	}
 
-	variantGetGtypeInvoker.Call()
+	variantGetGtypeInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_variant_is_object_path' : non trivial function
@@ -1754,7 +1760,7 @@ func VariantGetGtype() {
 
 // UNSUPPORTED : C value 'g_variant_parse_error_print_context' : non trivial function
 
-var variantParseErrorQuarkInvoker *gi.FunctionInvoker
+var variantParseErrorQuarkInvoker *gi.Function
 
 // VariantParseErrorQuark is a representation of the C type g_variant_parse_error_quark.
 func VariantParseErrorQuark() {
@@ -1762,10 +1768,10 @@ func VariantParseErrorQuark() {
 		variantParseErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "variant_parse_error_quark")
 	}
 
-	variantParseErrorQuarkInvoker.Call()
+	variantParseErrorQuarkInvoker.Invoke()
 }
 
-var variantParserGetErrorQuarkInvoker *gi.FunctionInvoker
+var variantParserGetErrorQuarkInvoker *gi.Function
 
 // VariantParserGetErrorQuark is a representation of the C type g_variant_parser_get_error_quark.
 func VariantParserGetErrorQuark() {
@@ -1773,7 +1779,7 @@ func VariantParserGetErrorQuark() {
 		variantParserGetErrorQuarkInvoker = gi.FunctionInvokerNew("GLib", "variant_parser_get_error_quark")
 	}
 
-	variantParserGetErrorQuarkInvoker.Call()
+	variantParserGetErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_variant_type_checked_' : non trivial function

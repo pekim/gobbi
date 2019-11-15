@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 	"github.com/pekim/gobbi/internal/gi"
 )
@@ -27,6 +28,7 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 	f.namespace = ns
+	f.ReturnValue.init(ns)
 	f.goName = makeExportedGoName(f.Name)
 	f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
 }
@@ -43,7 +45,8 @@ func (f *Function) generate(fi *file) {
 	fi.
 		Func().
 		Id(f.goName).
-		Add(paramsFunc(f.generateParams)).
+		Add(paramsFunc(f.generateParamsDeclaration)).
+		Add(paramsFunc(f.generateReturnDeclaration)).
 		Add(blockFunc(f.generateBody))
 }
 
@@ -52,10 +55,23 @@ func (f *Function) generateInvokerVar(fi *file) {
 		Var().
 		Id(f.invokerVarName).
 		Op("*").
-		Qual(gi.PackageName, "FunctionInvoker")
+		Qual(gi.PackageName, "Function")
 }
 
-func (f *Function) generateParams(g *group) {
+func (f *Function) generateParamsDeclaration(g *group) {
+}
+
+func (f *Function) generateReturnDeclaration(g *group) {
+	if f.ReturnValue.Type == nil || f.ReturnValue.Type.CType != "guint" {
+		return
+	}
+
+	goType, err := f.ReturnValue.Type.jenGoType()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	g.Add(goType)
 }
 
 func (f *Function) generateBody(g *group) {
@@ -74,7 +90,26 @@ func (f *Function) generateBody(g *group) {
 
 	// call the function
 	g.
+		Do(func(s *jen.Statement) {
+			if f.ReturnValue.Type != nil && f.ReturnValue.Type.CType == "guint" {
+				s.
+					Id("ret").
+					Op(":=")
+			}
+		}).
 		Id(f.invokerVarName).
-		Dot("Call").
+		Dot("Invoke").
 		Call()
+
+	if f.ReturnValue.Type != nil && f.ReturnValue.Type.CType == "guint" {
+		g.
+			Id("retValue").
+			Op(":=").
+			Id("ret").
+			Dot("Uint32").
+			Call()
+
+		g.Return(jen.Id("retValue"))
+	}
+
 }

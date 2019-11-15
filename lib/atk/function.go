@@ -16,18 +16,20 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'atk_focus_tracker_notify' : non trivial function
 
-var getBinaryAgeInvoker *gi.FunctionInvoker
+var getBinaryAgeInvoker *gi.Function
 
 // GetBinaryAge is a representation of the C type atk_get_binary_age.
-func GetBinaryAge() {
+func GetBinaryAge() uint32 {
 	if getBinaryAgeInvoker == nil {
 		getBinaryAgeInvoker = gi.FunctionInvokerNew("Atk", "get_binary_age")
 	}
 
-	getBinaryAgeInvoker.Call()
+	ret := getBinaryAgeInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getDefaultRegistryInvoker *gi.FunctionInvoker
+var getDefaultRegistryInvoker *gi.Function
 
 // GetDefaultRegistry is a representation of the C type atk_get_default_registry.
 func GetDefaultRegistry() {
@@ -35,10 +37,10 @@ func GetDefaultRegistry() {
 		getDefaultRegistryInvoker = gi.FunctionInvokerNew("Atk", "get_default_registry")
 	}
 
-	getDefaultRegistryInvoker.Call()
+	getDefaultRegistryInvoker.Invoke()
 }
 
-var getFocusObjectInvoker *gi.FunctionInvoker
+var getFocusObjectInvoker *gi.Function
 
 // GetFocusObject is a representation of the C type atk_get_focus_object.
 func GetFocusObject() {
@@ -46,54 +48,62 @@ func GetFocusObject() {
 		getFocusObjectInvoker = gi.FunctionInvokerNew("Atk", "get_focus_object")
 	}
 
-	getFocusObjectInvoker.Call()
+	getFocusObjectInvoker.Invoke()
 }
 
-var getInterfaceAgeInvoker *gi.FunctionInvoker
+var getInterfaceAgeInvoker *gi.Function
 
 // GetInterfaceAge is a representation of the C type atk_get_interface_age.
-func GetInterfaceAge() {
+func GetInterfaceAge() uint32 {
 	if getInterfaceAgeInvoker == nil {
 		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Atk", "get_interface_age")
 	}
 
-	getInterfaceAgeInvoker.Call()
+	ret := getInterfaceAgeInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMajorVersionInvoker *gi.FunctionInvoker
+var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type atk_get_major_version.
-func GetMajorVersion() {
+func GetMajorVersion() uint32 {
 	if getMajorVersionInvoker == nil {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Atk", "get_major_version")
 	}
 
-	getMajorVersionInvoker.Call()
+	ret := getMajorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMicroVersionInvoker *gi.FunctionInvoker
+var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type atk_get_micro_version.
-func GetMicroVersion() {
+func GetMicroVersion() uint32 {
 	if getMicroVersionInvoker == nil {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Atk", "get_micro_version")
 	}
 
-	getMicroVersionInvoker.Call()
+	ret := getMicroVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMinorVersionInvoker *gi.FunctionInvoker
+var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type atk_get_minor_version.
-func GetMinorVersion() {
+func GetMinorVersion() uint32 {
 	if getMinorVersionInvoker == nil {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Atk", "get_minor_version")
 	}
 
-	getMinorVersionInvoker.Call()
+	ret := getMinorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getRootInvoker *gi.FunctionInvoker
+var getRootInvoker *gi.Function
 
 // GetRoot is a representation of the C type atk_get_root.
 func GetRoot() {
@@ -101,10 +111,10 @@ func GetRoot() {
 		getRootInvoker = gi.FunctionInvokerNew("Atk", "get_root")
 	}
 
-	getRootInvoker.Call()
+	getRootInvoker.Invoke()
 }
 
-var getToolkitNameInvoker *gi.FunctionInvoker
+var getToolkitNameInvoker *gi.Function
 
 // GetToolkitName is a representation of the C type atk_get_toolkit_name.
 func GetToolkitName() {
@@ -112,10 +122,10 @@ func GetToolkitName() {
 		getToolkitNameInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_name")
 	}
 
-	getToolkitNameInvoker.Call()
+	getToolkitNameInvoker.Invoke()
 }
 
-var getToolkitVersionInvoker *gi.FunctionInvoker
+var getToolkitVersionInvoker *gi.Function
 
 // GetToolkitVersion is a representation of the C type atk_get_toolkit_version.
 func GetToolkitVersion() {
@@ -123,10 +133,10 @@ func GetToolkitVersion() {
 		getToolkitVersionInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_version")
 	}
 
-	getToolkitVersionInvoker.Call()
+	getToolkitVersionInvoker.Invoke()
 }
 
-var getVersionInvoker *gi.FunctionInvoker
+var getVersionInvoker *gi.Function
 
 // GetVersion is a representation of the C type atk_get_version.
 func GetVersion() {
@@ -134,7 +144,7 @@ func GetVersion() {
 		getVersionInvoker = gi.FunctionInvokerNew("Atk", "get_version")
 	}
 
-	getVersionInvoker.Call()
+	getVersionInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'atk_relation_type_for_name' : non trivial function

@@ -4,7 +4,7 @@ package webkit2
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-var downloadErrorQuarkInvoker *gi.FunctionInvoker
+var downloadErrorQuarkInvoker *gi.Function
 
 // DownloadErrorQuark is a representation of the C type webkit_download_error_quark.
 func DownloadErrorQuark() {
@@ -12,10 +12,10 @@ func DownloadErrorQuark() {
 		downloadErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "download_error_quark")
 	}
 
-	downloadErrorQuarkInvoker.Call()
+	downloadErrorQuarkInvoker.Invoke()
 }
 
-var faviconDatabaseErrorQuarkInvoker *gi.FunctionInvoker
+var faviconDatabaseErrorQuarkInvoker *gi.Function
 
 // FaviconDatabaseErrorQuark is a representation of the C type webkit_favicon_database_error_quark.
 func FaviconDatabaseErrorQuark() {
@@ -23,43 +23,49 @@ func FaviconDatabaseErrorQuark() {
 		faviconDatabaseErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "favicon_database_error_quark")
 	}
 
-	faviconDatabaseErrorQuarkInvoker.Call()
+	faviconDatabaseErrorQuarkInvoker.Invoke()
 }
 
-var getMajorVersionInvoker *gi.FunctionInvoker
+var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type webkit_get_major_version.
-func GetMajorVersion() {
+func GetMajorVersion() uint32 {
 	if getMajorVersionInvoker == nil {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_major_version")
 	}
 
-	getMajorVersionInvoker.Call()
+	ret := getMajorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMicroVersionInvoker *gi.FunctionInvoker
+var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type webkit_get_micro_version.
-func GetMicroVersion() {
+func GetMicroVersion() uint32 {
 	if getMicroVersionInvoker == nil {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_micro_version")
 	}
 
-	getMicroVersionInvoker.Call()
+	ret := getMicroVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMinorVersionInvoker *gi.FunctionInvoker
+var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type webkit_get_minor_version.
-func GetMinorVersion() {
+func GetMinorVersion() uint32 {
 	if getMinorVersionInvoker == nil {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
 	}
 
-	getMinorVersionInvoker.Call()
+	ret := getMinorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var javascriptErrorQuarkInvoker *gi.FunctionInvoker
+var javascriptErrorQuarkInvoker *gi.Function
 
 // JavascriptErrorQuark is a representation of the C type webkit_javascript_error_quark.
 func JavascriptErrorQuark() {
@@ -67,10 +73,10 @@ func JavascriptErrorQuark() {
 		javascriptErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "javascript_error_quark")
 	}
 
-	javascriptErrorQuarkInvoker.Call()
+	javascriptErrorQuarkInvoker.Invoke()
 }
 
-var networkErrorQuarkInvoker *gi.FunctionInvoker
+var networkErrorQuarkInvoker *gi.Function
 
 // NetworkErrorQuark is a representation of the C type webkit_network_error_quark.
 func NetworkErrorQuark() {
@@ -78,10 +84,10 @@ func NetworkErrorQuark() {
 		networkErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "network_error_quark")
 	}
 
-	networkErrorQuarkInvoker.Call()
+	networkErrorQuarkInvoker.Invoke()
 }
 
-var pluginErrorQuarkInvoker *gi.FunctionInvoker
+var pluginErrorQuarkInvoker *gi.Function
 
 // PluginErrorQuark is a representation of the C type webkit_plugin_error_quark.
 func PluginErrorQuark() {
@@ -89,10 +95,10 @@ func PluginErrorQuark() {
 		pluginErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "plugin_error_quark")
 	}
 
-	pluginErrorQuarkInvoker.Call()
+	pluginErrorQuarkInvoker.Invoke()
 }
 
-var policyErrorQuarkInvoker *gi.FunctionInvoker
+var policyErrorQuarkInvoker *gi.Function
 
 // PolicyErrorQuark is a representation of the C type webkit_policy_error_quark.
 func PolicyErrorQuark() {
@@ -100,10 +106,10 @@ func PolicyErrorQuark() {
 		policyErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "policy_error_quark")
 	}
 
-	policyErrorQuarkInvoker.Call()
+	policyErrorQuarkInvoker.Invoke()
 }
 
-var printErrorQuarkInvoker *gi.FunctionInvoker
+var printErrorQuarkInvoker *gi.Function
 
 // PrintErrorQuark is a representation of the C type webkit_print_error_quark.
 func PrintErrorQuark() {
@@ -111,10 +117,10 @@ func PrintErrorQuark() {
 		printErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "print_error_quark")
 	}
 
-	printErrorQuarkInvoker.Call()
+	printErrorQuarkInvoker.Invoke()
 }
 
-var snapshotErrorQuarkInvoker *gi.FunctionInvoker
+var snapshotErrorQuarkInvoker *gi.Function
 
 // SnapshotErrorQuark is a representation of the C type webkit_snapshot_error_quark.
 func SnapshotErrorQuark() {
@@ -122,12 +128,12 @@ func SnapshotErrorQuark() {
 		snapshotErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "snapshot_error_quark")
 	}
 
-	snapshotErrorQuarkInvoker.Call()
+	snapshotErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'webkit_uri_for_display' : non trivial function
 
-var userContentFilterErrorQuarkInvoker *gi.FunctionInvoker
+var userContentFilterErrorQuarkInvoker *gi.Function
 
 // UserContentFilterErrorQuark is a representation of the C type webkit_user_content_filter_error_quark.
 func UserContentFilterErrorQuark() {
@@ -135,7 +141,7 @@ func UserContentFilterErrorQuark() {
 		userContentFilterErrorQuarkInvoker = gi.FunctionInvokerNew("WebKit2", "user_content_filter_error_quark")
 	}
 
-	userContentFilterErrorQuarkInvoker.Call()
+	userContentFilterErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : non trivial function

@@ -66,7 +66,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_font_description_from_string' : non trivial function
 
-var getLibSubdirectoryInvoker *gi.FunctionInvoker
+var getLibSubdirectoryInvoker *gi.Function
 
 // GetLibSubdirectory is a representation of the C type pango_get_lib_subdirectory.
 func GetLibSubdirectory() {
@@ -74,14 +74,14 @@ func GetLibSubdirectory() {
 		getLibSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
 	}
 
-	getLibSubdirectoryInvoker.Call()
+	getLibSubdirectoryInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'pango_get_log_attrs' : non trivial function
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : non trivial function
 
-var getSysconfSubdirectoryInvoker *gi.FunctionInvoker
+var getSysconfSubdirectoryInvoker *gi.Function
 
 // GetSysconfSubdirectory is a representation of the C type pango_get_sysconf_subdirectory.
 func GetSysconfSubdirectory() {
@@ -89,7 +89,7 @@ func GetSysconfSubdirectory() {
 		getSysconfSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
 	}
 
-	getSysconfSubdirectoryInvoker.Call()
+	getSysconfSubdirectoryInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : non trivial function
@@ -108,7 +108,7 @@ func GetSysconfSubdirectory() {
 
 // UNSUPPORTED : C value 'pango_language_from_string' : non trivial function
 
-var languageGetDefaultInvoker *gi.FunctionInvoker
+var languageGetDefaultInvoker *gi.Function
 
 // LanguageGetDefault is a representation of the C type pango_language_get_default.
 func LanguageGetDefault() {
@@ -116,7 +116,7 @@ func LanguageGetDefault() {
 		languageGetDefaultInvoker = gi.FunctionInvokerNew("Pango", "language_get_default")
 	}
 
-	languageGetDefaultInvoker.Call()
+	languageGetDefaultInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : non trivial function
@@ -173,7 +173,7 @@ func LanguageGetDefault() {
 
 // UNSUPPORTED : C value 'pango_units_to_double' : non trivial function
 
-var versionInvoker *gi.FunctionInvoker
+var versionInvoker *gi.Function
 
 // Version is a representation of the C type pango_version.
 func Version() {
@@ -181,12 +181,12 @@ func Version() {
 		versionInvoker = gi.FunctionInvokerNew("Pango", "version")
 	}
 
-	versionInvoker.Call()
+	versionInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'pango_version_check' : non trivial function
 
-var versionStringInvoker *gi.FunctionInvoker
+var versionStringInvoker *gi.Function
 
 // VersionString is a representation of the C type pango_version_string.
 func VersionString() {
@@ -194,5 +194,5 @@ func VersionString() {
 		versionStringInvoker = gi.FunctionInvokerNew("Pango", "version_string")
 	}
 
-	versionStringInvoker.Call()
+	versionStringInvoker.Invoke()
 }

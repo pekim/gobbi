@@ -90,7 +90,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_flags_to_string' : non trivial function
 
-var gtypeGetTypeInvoker *gi.FunctionInvoker
+var gtypeGetTypeInvoker *gi.Function
 
 // GtypeGetType is a representation of the C type g_gtype_get_type.
 func GtypeGetType() {
@@ -98,7 +98,7 @@ func GtypeGetType() {
 		gtypeGetTypeInvoker = gi.FunctionInvokerNew("GObject", "gtype_get_type")
 	}
 
-	gtypeGetTypeInvoker.Call()
+	gtypeGetTypeInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_param_spec_boolean' : non trivial function
@@ -307,7 +307,7 @@ func GtypeGetType() {
 
 // UNSUPPORTED : C value 'g_type_fundamental' : non trivial function
 
-var typeFundamentalNextInvoker *gi.FunctionInvoker
+var typeFundamentalNextInvoker *gi.Function
 
 // TypeFundamentalNext is a representation of the C type g_type_fundamental_next.
 func TypeFundamentalNext() {
@@ -315,7 +315,7 @@ func TypeFundamentalNext() {
 		typeFundamentalNextInvoker = gi.FunctionInvokerNew("GObject", "type_fundamental_next")
 	}
 
-	typeFundamentalNextInvoker.Call()
+	typeFundamentalNextInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_type_get_instance_count' : non trivial function
@@ -324,18 +324,20 @@ func TypeFundamentalNext() {
 
 // UNSUPPORTED : C value 'g_type_get_qdata' : non trivial function
 
-var typeGetTypeRegistrationSerialInvoker *gi.FunctionInvoker
+var typeGetTypeRegistrationSerialInvoker *gi.Function
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
-func TypeGetTypeRegistrationSerial() {
+func TypeGetTypeRegistrationSerial() uint32 {
 	if typeGetTypeRegistrationSerialInvoker == nil {
 		typeGetTypeRegistrationSerialInvoker = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
 	}
 
-	typeGetTypeRegistrationSerialInvoker.Call()
+	ret := typeGetTypeRegistrationSerialInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var typeInitInvoker *gi.FunctionInvoker
+var typeInitInvoker *gi.Function
 
 // TypeInit is a representation of the C type g_type_init.
 func TypeInit() {
@@ -343,7 +345,7 @@ func TypeInit() {
 		typeInitInvoker = gi.FunctionInvokerNew("GObject", "type_init")
 	}
 
-	typeInitInvoker.Call()
+	typeInitInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : non trivial function

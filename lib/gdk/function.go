@@ -10,7 +10,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_atom_intern_static_string' : non trivial function
 
-var beepInvoker *gi.FunctionInvoker
+var beepInvoker *gi.Function
 
 // Beep is a representation of the C type gdk_beep.
 func Beep() {
@@ -18,7 +18,7 @@ func Beep() {
 		beepInvoker = gi.FunctionInvokerNew("Gdk", "beep")
 	}
 
-	beepInvoker.Call()
+	beepInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_create' : non trivial function
@@ -47,7 +47,7 @@ func Beep() {
 
 // UNSUPPORTED : C value 'gdk_color_parse' : non trivial function
 
-var disableMultideviceInvoker *gi.FunctionInvoker
+var disableMultideviceInvoker *gi.Function
 
 // DisableMultidevice is a representation of the C type gdk_disable_multidevice.
 func DisableMultidevice() {
@@ -55,7 +55,7 @@ func DisableMultidevice() {
 		disableMultideviceInvoker = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
 	}
 
-	disableMultideviceInvoker.Call()
+	disableMultideviceInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_drag_abort' : non trivial function
@@ -84,7 +84,7 @@ func DisableMultidevice() {
 
 // UNSUPPORTED : C value 'gdk_drop_reply' : non trivial function
 
-var errorTrapPopInvoker *gi.FunctionInvoker
+var errorTrapPopInvoker *gi.Function
 
 // ErrorTrapPop is a representation of the C type gdk_error_trap_pop.
 func ErrorTrapPop() {
@@ -92,10 +92,10 @@ func ErrorTrapPop() {
 		errorTrapPopInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
 	}
 
-	errorTrapPopInvoker.Call()
+	errorTrapPopInvoker.Invoke()
 }
 
-var errorTrapPopIgnoredInvoker *gi.FunctionInvoker
+var errorTrapPopIgnoredInvoker *gi.Function
 
 // ErrorTrapPopIgnored is a representation of the C type gdk_error_trap_pop_ignored.
 func ErrorTrapPopIgnored() {
@@ -103,10 +103,10 @@ func ErrorTrapPopIgnored() {
 		errorTrapPopIgnoredInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
 	}
 
-	errorTrapPopIgnoredInvoker.Call()
+	errorTrapPopIgnoredInvoker.Invoke()
 }
 
-var errorTrapPushInvoker *gi.FunctionInvoker
+var errorTrapPushInvoker *gi.Function
 
 // ErrorTrapPush is a representation of the C type gdk_error_trap_push.
 func ErrorTrapPush() {
@@ -114,10 +114,10 @@ func ErrorTrapPush() {
 		errorTrapPushInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_push")
 	}
 
-	errorTrapPushInvoker.Call()
+	errorTrapPushInvoker.Invoke()
 }
 
-var eventGetInvoker *gi.FunctionInvoker
+var eventGetInvoker *gi.Function
 
 // EventGet is a representation of the C type gdk_event_get.
 func EventGet() {
@@ -125,12 +125,12 @@ func EventGet() {
 		eventGetInvoker = gi.FunctionInvokerNew("Gdk", "event_get")
 	}
 
-	eventGetInvoker.Call()
+	eventGetInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_event_handler_set' : non trivial function
 
-var eventPeekInvoker *gi.FunctionInvoker
+var eventPeekInvoker *gi.Function
 
 // EventPeek is a representation of the C type gdk_event_peek.
 func EventPeek() {
@@ -138,7 +138,7 @@ func EventPeek() {
 		eventPeekInvoker = gi.FunctionInvokerNew("Gdk", "event_peek")
 	}
 
-	eventPeekInvoker.Call()
+	eventPeekInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_event_request_motions' : non trivial function
@@ -149,7 +149,7 @@ func EventPeek() {
 
 // UNSUPPORTED : C value 'gdk_events_get_distance' : non trivial function
 
-var eventsPendingInvoker *gi.FunctionInvoker
+var eventsPendingInvoker *gi.Function
 
 // EventsPending is a representation of the C type gdk_events_pending.
 func EventsPending() {
@@ -157,10 +157,10 @@ func EventsPending() {
 		eventsPendingInvoker = gi.FunctionInvokerNew("Gdk", "events_pending")
 	}
 
-	eventsPendingInvoker.Call()
+	eventsPendingInvoker.Invoke()
 }
 
-var flushInvoker *gi.FunctionInvoker
+var flushInvoker *gi.Function
 
 // Flush is a representation of the C type gdk_flush.
 func Flush() {
@@ -168,10 +168,10 @@ func Flush() {
 		flushInvoker = gi.FunctionInvokerNew("Gdk", "flush")
 	}
 
-	flushInvoker.Call()
+	flushInvoker.Invoke()
 }
 
-var getDefaultRootWindowInvoker *gi.FunctionInvoker
+var getDefaultRootWindowInvoker *gi.Function
 
 // GetDefaultRootWindow is a representation of the C type gdk_get_default_root_window.
 func GetDefaultRootWindow() {
@@ -179,10 +179,10 @@ func GetDefaultRootWindow() {
 		getDefaultRootWindowInvoker = gi.FunctionInvokerNew("Gdk", "get_default_root_window")
 	}
 
-	getDefaultRootWindowInvoker.Call()
+	getDefaultRootWindowInvoker.Invoke()
 }
 
-var getDisplayInvoker *gi.FunctionInvoker
+var getDisplayInvoker *gi.Function
 
 // GetDisplay is a representation of the C type gdk_get_display.
 func GetDisplay() {
@@ -190,10 +190,10 @@ func GetDisplay() {
 		getDisplayInvoker = gi.FunctionInvokerNew("Gdk", "get_display")
 	}
 
-	getDisplayInvoker.Call()
+	getDisplayInvoker.Invoke()
 }
 
-var getDisplayArgNameInvoker *gi.FunctionInvoker
+var getDisplayArgNameInvoker *gi.Function
 
 // GetDisplayArgName is a representation of the C type gdk_get_display_arg_name.
 func GetDisplayArgName() {
@@ -201,10 +201,10 @@ func GetDisplayArgName() {
 		getDisplayArgNameInvoker = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
 	}
 
-	getDisplayArgNameInvoker.Call()
+	getDisplayArgNameInvoker.Invoke()
 }
 
-var getProgramClassInvoker *gi.FunctionInvoker
+var getProgramClassInvoker *gi.Function
 
 // GetProgramClass is a representation of the C type gdk_get_program_class.
 func GetProgramClass() {
@@ -212,10 +212,10 @@ func GetProgramClass() {
 		getProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "get_program_class")
 	}
 
-	getProgramClassInvoker.Call()
+	getProgramClassInvoker.Invoke()
 }
 
-var getShowEventsInvoker *gi.FunctionInvoker
+var getShowEventsInvoker *gi.Function
 
 // GetShowEvents is a representation of the C type gdk_get_show_events.
 func GetShowEvents() {
@@ -223,10 +223,10 @@ func GetShowEvents() {
 		getShowEventsInvoker = gi.FunctionInvokerNew("Gdk", "get_show_events")
 	}
 
-	getShowEventsInvoker.Call()
+	getShowEventsInvoker.Invoke()
 }
 
-var glErrorQuarkInvoker *gi.FunctionInvoker
+var glErrorQuarkInvoker *gi.Function
 
 // GlErrorQuark is a representation of the C type gdk_gl_error_quark.
 func GlErrorQuark() {
@@ -234,7 +234,7 @@ func GlErrorQuark() {
 		glErrorQuarkInvoker = gi.FunctionInvokerNew("Gdk", "gl_error_quark")
 	}
 
-	glErrorQuarkInvoker.Call()
+	glErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_init' : non trivial function
@@ -261,7 +261,7 @@ func GlErrorQuark() {
 
 // UNSUPPORTED : C value 'gdk_keyval_to_upper' : non trivial function
 
-var listVisualsInvoker *gi.FunctionInvoker
+var listVisualsInvoker *gi.Function
 
 // ListVisuals is a representation of the C type gdk_list_visuals.
 func ListVisuals() {
@@ -269,10 +269,10 @@ func ListVisuals() {
 		listVisualsInvoker = gi.FunctionInvokerNew("Gdk", "list_visuals")
 	}
 
-	listVisualsInvoker.Call()
+	listVisualsInvoker.Invoke()
 }
 
-var notifyStartupCompleteInvoker *gi.FunctionInvoker
+var notifyStartupCompleteInvoker *gi.Function
 
 // NotifyStartupComplete is a representation of the C type gdk_notify_startup_complete.
 func NotifyStartupComplete() {
@@ -280,7 +280,7 @@ func NotifyStartupComplete() {
 		notifyStartupCompleteInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
 	}
 
-	notifyStartupCompleteInvoker.Call()
+	notifyStartupCompleteInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : non trivial function
@@ -291,7 +291,7 @@ func NotifyStartupComplete() {
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_set_embedder' : non trivial function
 
-var pangoContextGetInvoker *gi.FunctionInvoker
+var pangoContextGetInvoker *gi.Function
 
 // PangoContextGet is a representation of the C type gdk_pango_context_get.
 func PangoContextGet() {
@@ -299,7 +299,7 @@ func PangoContextGet() {
 		pangoContextGetInvoker = gi.FunctionInvokerNew("Gdk", "pango_context_get")
 	}
 
-	pangoContextGetInvoker.Call()
+	pangoContextGetInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : non trivial function
@@ -318,7 +318,7 @@ func PangoContextGet() {
 
 // UNSUPPORTED : C value 'gdk_pointer_grab' : non trivial function
 
-var pointerIsGrabbedInvoker *gi.FunctionInvoker
+var pointerIsGrabbedInvoker *gi.Function
 
 // PointerIsGrabbed is a representation of the C type gdk_pointer_is_grabbed.
 func PointerIsGrabbed() {
@@ -326,12 +326,12 @@ func PointerIsGrabbed() {
 		pointerIsGrabbedInvoker = gi.FunctionInvokerNew("Gdk", "pointer_is_grabbed")
 	}
 
-	pointerIsGrabbedInvoker.Call()
+	pointerIsGrabbedInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_pointer_ungrab' : non trivial function
 
-var preParseLibgtkOnlyInvoker *gi.FunctionInvoker
+var preParseLibgtkOnlyInvoker *gi.Function
 
 // PreParseLibgtkOnly is a representation of the C type gdk_pre_parse_libgtk_only.
 func PreParseLibgtkOnly() {
@@ -339,7 +339,7 @@ func PreParseLibgtkOnly() {
 		preParseLibgtkOnlyInvoker = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
 	}
 
-	preParseLibgtkOnlyInvoker.Call()
+	preParseLibgtkOnlyInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_property_change' : non trivial function
@@ -400,7 +400,7 @@ func PreParseLibgtkOnly() {
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : non trivial function
 
-var threadsEnterInvoker *gi.FunctionInvoker
+var threadsEnterInvoker *gi.Function
 
 // ThreadsEnter is a representation of the C type gdk_threads_enter.
 func ThreadsEnter() {
@@ -408,10 +408,10 @@ func ThreadsEnter() {
 		threadsEnterInvoker = gi.FunctionInvokerNew("Gdk", "threads_enter")
 	}
 
-	threadsEnterInvoker.Call()
+	threadsEnterInvoker.Invoke()
 }
 
-var threadsInitInvoker *gi.FunctionInvoker
+var threadsInitInvoker *gi.Function
 
 // ThreadsInit is a representation of the C type gdk_threads_init.
 func ThreadsInit() {
@@ -419,10 +419,10 @@ func ThreadsInit() {
 		threadsInitInvoker = gi.FunctionInvokerNew("Gdk", "threads_init")
 	}
 
-	threadsInitInvoker.Call()
+	threadsInitInvoker.Invoke()
 }
 
-var threadsLeaveInvoker *gi.FunctionInvoker
+var threadsLeaveInvoker *gi.Function
 
 // ThreadsLeave is a representation of the C type gdk_threads_leave.
 func ThreadsLeave() {
@@ -430,7 +430,7 @@ func ThreadsLeave() {
 		threadsLeaveInvoker = gi.FunctionInvokerNew("Gdk", "threads_leave")
 	}
 
-	threadsLeaveInvoker.Call()
+	threadsLeaveInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : non trivial function

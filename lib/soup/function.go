@@ -48,37 +48,43 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : non trivial function
 
-var getMajorVersionInvoker *gi.FunctionInvoker
+var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
-func GetMajorVersion() {
+func GetMajorVersion() uint32 {
 	if getMajorVersionInvoker == nil {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Soup", "get_major_version")
 	}
 
-	getMajorVersionInvoker.Call()
+	ret := getMajorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMicroVersionInvoker *gi.FunctionInvoker
+var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
-func GetMicroVersion() {
+func GetMicroVersion() uint32 {
 	if getMicroVersionInvoker == nil {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Soup", "get_micro_version")
 	}
 
-	getMicroVersionInvoker.Call()
+	ret := getMicroVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMinorVersionInvoker *gi.FunctionInvoker
+var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
-func GetMinorVersion() {
+func GetMinorVersion() uint32 {
 	if getMinorVersionInvoker == nil {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Soup", "get_minor_version")
 	}
 
-	getMinorVersionInvoker.Call()
+	ret := getMinorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
 // UNSUPPORTED : C value 'soup_header_contains' : non trivial function
@@ -107,7 +113,7 @@ func GetMinorVersion() {
 
 // UNSUPPORTED : C value 'soup_headers_parse_status_line' : non trivial function
 
-var httpErrorQuarkInvoker *gi.FunctionInvoker
+var httpErrorQuarkInvoker *gi.Function
 
 // HttpErrorQuark is a representation of the C type soup_http_error_quark.
 func HttpErrorQuark() {
@@ -115,12 +121,12 @@ func HttpErrorQuark() {
 		httpErrorQuarkInvoker = gi.FunctionInvokerNew("Soup", "http_error_quark")
 	}
 
-	httpErrorQuarkInvoker.Call()
+	httpErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_iter_init' : non trivial function
 
-var requestErrorQuarkInvoker *gi.FunctionInvoker
+var requestErrorQuarkInvoker *gi.Function
 
 // RequestErrorQuark is a representation of the C type soup_request_error_quark.
 func RequestErrorQuark() {
@@ -128,10 +134,10 @@ func RequestErrorQuark() {
 		requestErrorQuarkInvoker = gi.FunctionInvokerNew("Soup", "request_error_quark")
 	}
 
-	requestErrorQuarkInvoker.Call()
+	requestErrorQuarkInvoker.Invoke()
 }
 
-var requesterErrorQuarkInvoker *gi.FunctionInvoker
+var requesterErrorQuarkInvoker *gi.Function
 
 // RequesterErrorQuark is a representation of the C type soup_requester_error_quark.
 func RequesterErrorQuark() {
@@ -139,7 +145,7 @@ func RequesterErrorQuark() {
 		requesterErrorQuarkInvoker = gi.FunctionInvokerNew("Soup", "requester_error_quark")
 	}
 
-	requesterErrorQuarkInvoker.Call()
+	requesterErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_status_get_phrase' : non trivial function
@@ -152,7 +158,7 @@ func RequesterErrorQuark() {
 
 // UNSUPPORTED : C value 'soup_tld_domain_is_public_suffix' : non trivial function
 
-var tldErrorQuarkInvoker *gi.FunctionInvoker
+var tldErrorQuarkInvoker *gi.Function
 
 // TldErrorQuark is a representation of the C type soup_tld_error_quark.
 func TldErrorQuark() {
@@ -160,7 +166,7 @@ func TldErrorQuark() {
 		tldErrorQuarkInvoker = gi.FunctionInvokerNew("Soup", "tld_error_quark")
 	}
 
-	tldErrorQuarkInvoker.Call()
+	tldErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_tld_get_base_domain' : non trivial function
@@ -181,7 +187,7 @@ func TldErrorQuark() {
 
 // UNSUPPORTED : C value 'soup_value_array_insert' : non trivial function
 
-var valueArrayNewInvoker *gi.FunctionInvoker
+var valueArrayNewInvoker *gi.Function
 
 // ValueArrayNew is a representation of the C type soup_value_array_new.
 func ValueArrayNew() {
@@ -189,7 +195,7 @@ func ValueArrayNew() {
 		valueArrayNewInvoker = gi.FunctionInvokerNew("Soup", "value_array_new")
 	}
 
-	valueArrayNewInvoker.Call()
+	valueArrayNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_value_array_new_with_vals' : non trivial function
@@ -206,7 +212,7 @@ func ValueArrayNew() {
 
 // UNSUPPORTED : C value 'soup_value_hash_lookup_vals' : non trivial function
 
-var valueHashNewInvoker *gi.FunctionInvoker
+var valueHashNewInvoker *gi.Function
 
 // ValueHashNew is a representation of the C type soup_value_hash_new.
 func ValueHashNew() {
@@ -214,7 +220,7 @@ func ValueHashNew() {
 		valueHashNewInvoker = gi.FunctionInvokerNew("Soup", "value_hash_new")
 	}
 
-	valueHashNewInvoker.Call()
+	valueHashNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : non trivial function
@@ -223,7 +229,7 @@ func ValueHashNew() {
 
 // UNSUPPORTED : C value 'soup_websocket_client_verify_handshake' : non trivial function
 
-var websocketErrorGetQuarkInvoker *gi.FunctionInvoker
+var websocketErrorGetQuarkInvoker *gi.Function
 
 // WebsocketErrorGetQuark is a representation of the C type soup_websocket_error_get_quark.
 func WebsocketErrorGetQuark() {
@@ -231,7 +237,7 @@ func WebsocketErrorGetQuark() {
 		websocketErrorGetQuarkInvoker = gi.FunctionInvokerNew("Soup", "websocket_error_get_quark")
 	}
 
-	websocketErrorGetQuarkInvoker.Call()
+	websocketErrorGetQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : non trivial function
@@ -248,7 +254,7 @@ func WebsocketErrorGetQuark() {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_response' : non trivial function
 
-var xmlrpcErrorQuarkInvoker *gi.FunctionInvoker
+var xmlrpcErrorQuarkInvoker *gi.Function
 
 // XmlrpcErrorQuark is a representation of the C type soup_xmlrpc_error_quark.
 func XmlrpcErrorQuark() {
@@ -256,14 +262,14 @@ func XmlrpcErrorQuark() {
 		xmlrpcErrorQuarkInvoker = gi.FunctionInvokerNew("Soup", "xmlrpc_error_quark")
 	}
 
-	xmlrpcErrorQuarkInvoker.Call()
+	xmlrpcErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : non trivial function
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : non trivial function
 
-var xmlrpcFaultQuarkInvoker *gi.FunctionInvoker
+var xmlrpcFaultQuarkInvoker *gi.Function
 
 // XmlrpcFaultQuark is a representation of the C type soup_xmlrpc_fault_quark.
 func XmlrpcFaultQuark() {
@@ -271,7 +277,7 @@ func XmlrpcFaultQuark() {
 		xmlrpcFaultQuarkInvoker = gi.FunctionInvokerNew("Soup", "xmlrpc_fault_quark")
 	}
 
-	xmlrpcFaultQuarkInvoker.Call()
+	xmlrpcFaultQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_new' : non trivial function

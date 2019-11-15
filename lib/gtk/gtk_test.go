@@ -13,4 +13,7 @@ func TestCleanBuild(t *testing.T) {
 func TestFunctionCall(t *testing.T) {
 	//gtk.Init()
 	//gtk.MainQuit()
+
+	v := GetMajorVersion()
+	assert.Equal(t, uint32(3), v)
 }

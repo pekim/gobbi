@@ -8,7 +8,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_accel_groups_from_object' : non trivial function
 
-var acceleratorGetDefaultModMaskInvoker *gi.FunctionInvoker
+var acceleratorGetDefaultModMaskInvoker *gi.Function
 
 // AcceleratorGetDefaultModMask is a representation of the C type gtk_accelerator_get_default_mod_mask.
 func AcceleratorGetDefaultModMask() {
@@ -16,7 +16,7 @@ func AcceleratorGetDefaultModMask() {
 		acceleratorGetDefaultModMaskInvoker = gi.FunctionInvokerNew("Gtk", "accelerator_get_default_mod_mask")
 	}
 
-	acceleratorGetDefaultModMaskInvoker.Call()
+	acceleratorGetDefaultModMaskInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_accelerator_get_label' : non trivial function
@@ -55,7 +55,7 @@ func AcceleratorGetDefaultModMask() {
 
 // UNSUPPORTED : C value 'gtk_bindings_activate_event' : non trivial function
 
-var builderErrorQuarkInvoker *gi.FunctionInvoker
+var builderErrorQuarkInvoker *gi.Function
 
 // BuilderErrorQuark is a representation of the C type gtk_builder_error_quark.
 func BuilderErrorQuark() {
@@ -63,7 +63,7 @@ func BuilderErrorQuark() {
 		builderErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "builder_error_quark")
 	}
 
-	builderErrorQuarkInvoker.Call()
+	builderErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_cairo_should_draw_window' : non trivial function
@@ -72,7 +72,7 @@ func BuilderErrorQuark() {
 
 // UNSUPPORTED : C value 'gtk_check_version' : non trivial function
 
-var cssProviderErrorQuarkInvoker *gi.FunctionInvoker
+var cssProviderErrorQuarkInvoker *gi.Function
 
 // CssProviderErrorQuark is a representation of the C type gtk_css_provider_error_quark.
 func CssProviderErrorQuark() {
@@ -80,14 +80,14 @@ func CssProviderErrorQuark() {
 		cssProviderErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "css_provider_error_quark")
 	}
 
-	cssProviderErrorQuarkInvoker.Call()
+	cssProviderErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_device_grab_add' : non trivial function
 
 // UNSUPPORTED : C value 'gtk_device_grab_remove' : non trivial function
 
-var disableSetlocaleInvoker *gi.FunctionInvoker
+var disableSetlocaleInvoker *gi.Function
 
 // DisableSetlocale is a representation of the C type gtk_disable_setlocale.
 func DisableSetlocale() {
@@ -95,7 +95,7 @@ func DisableSetlocale() {
 		disableSetlocaleInvoker = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
 	}
 
-	disableSetlocaleInvoker.Call()
+	disableSetlocaleInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : non trivial function
@@ -122,7 +122,7 @@ func DisableSetlocale() {
 
 // UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : non trivial function
 
-var eventsPendingInvoker *gi.FunctionInvoker
+var eventsPendingInvoker *gi.Function
 
 // EventsPending is a representation of the C type gtk_events_pending.
 func EventsPending() {
@@ -130,10 +130,10 @@ func EventsPending() {
 		eventsPendingInvoker = gi.FunctionInvokerNew("Gtk", "events_pending")
 	}
 
-	eventsPendingInvoker.Call()
+	eventsPendingInvoker.Invoke()
 }
 
-var falseInvoker *gi.FunctionInvoker
+var falseInvoker *gi.Function
 
 // False is a representation of the C type gtk_false.
 func False() {
@@ -141,10 +141,10 @@ func False() {
 		falseInvoker = gi.FunctionInvokerNew("Gtk", "false")
 	}
 
-	falseInvoker.Call()
+	falseInvoker.Invoke()
 }
 
-var fileChooserErrorQuarkInvoker *gi.FunctionInvoker
+var fileChooserErrorQuarkInvoker *gi.Function
 
 // FileChooserErrorQuark is a representation of the C type gtk_file_chooser_error_quark.
 func FileChooserErrorQuark() {
@@ -152,21 +152,23 @@ func FileChooserErrorQuark() {
 		fileChooserErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "file_chooser_error_quark")
 	}
 
-	fileChooserErrorQuarkInvoker.Call()
+	fileChooserErrorQuarkInvoker.Invoke()
 }
 
-var getBinaryAgeInvoker *gi.FunctionInvoker
+var getBinaryAgeInvoker *gi.Function
 
 // GetBinaryAge is a representation of the C type gtk_get_binary_age.
-func GetBinaryAge() {
+func GetBinaryAge() uint32 {
 	if getBinaryAgeInvoker == nil {
 		getBinaryAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_binary_age")
 	}
 
-	getBinaryAgeInvoker.Call()
+	ret := getBinaryAgeInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getCurrentEventInvoker *gi.FunctionInvoker
+var getCurrentEventInvoker *gi.Function
 
 // GetCurrentEvent is a representation of the C type gtk_get_current_event.
 func GetCurrentEvent() {
@@ -174,10 +176,10 @@ func GetCurrentEvent() {
 		getCurrentEventInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event")
 	}
 
-	getCurrentEventInvoker.Call()
+	getCurrentEventInvoker.Invoke()
 }
 
-var getCurrentEventDeviceInvoker *gi.FunctionInvoker
+var getCurrentEventDeviceInvoker *gi.Function
 
 // GetCurrentEventDevice is a representation of the C type gtk_get_current_event_device.
 func GetCurrentEventDevice() {
@@ -185,12 +187,12 @@ func GetCurrentEventDevice() {
 		getCurrentEventDeviceInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event_device")
 	}
 
-	getCurrentEventDeviceInvoker.Call()
+	getCurrentEventDeviceInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_get_current_event_state' : non trivial function
 
-var getCurrentEventTimeInvoker *gi.FunctionInvoker
+var getCurrentEventTimeInvoker *gi.Function
 
 // GetCurrentEventTime is a representation of the C type gtk_get_current_event_time.
 func GetCurrentEventTime() {
@@ -198,21 +200,23 @@ func GetCurrentEventTime() {
 		getCurrentEventTimeInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
 	}
 
-	getCurrentEventTimeInvoker.Call()
+	getCurrentEventTimeInvoker.Invoke()
 }
 
-var getDebugFlagsInvoker *gi.FunctionInvoker
+var getDebugFlagsInvoker *gi.Function
 
 // GetDebugFlags is a representation of the C type gtk_get_debug_flags.
-func GetDebugFlags() {
+func GetDebugFlags() uint32 {
 	if getDebugFlagsInvoker == nil {
 		getDebugFlagsInvoker = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
 	}
 
-	getDebugFlagsInvoker.Call()
+	ret := getDebugFlagsInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getDefaultLanguageInvoker *gi.FunctionInvoker
+var getDefaultLanguageInvoker *gi.Function
 
 // GetDefaultLanguage is a representation of the C type gtk_get_default_language.
 func GetDefaultLanguage() {
@@ -220,23 +224,25 @@ func GetDefaultLanguage() {
 		getDefaultLanguageInvoker = gi.FunctionInvokerNew("Gtk", "get_default_language")
 	}
 
-	getDefaultLanguageInvoker.Call()
+	getDefaultLanguageInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_get_event_widget' : non trivial function
 
-var getInterfaceAgeInvoker *gi.FunctionInvoker
+var getInterfaceAgeInvoker *gi.Function
 
 // GetInterfaceAge is a representation of the C type gtk_get_interface_age.
-func GetInterfaceAge() {
+func GetInterfaceAge() uint32 {
 	if getInterfaceAgeInvoker == nil {
 		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_interface_age")
 	}
 
-	getInterfaceAgeInvoker.Call()
+	ret := getInterfaceAgeInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getLocaleDirectionInvoker *gi.FunctionInvoker
+var getLocaleDirectionInvoker *gi.Function
 
 // GetLocaleDirection is a representation of the C type gtk_get_locale_direction.
 func GetLocaleDirection() {
@@ -244,45 +250,51 @@ func GetLocaleDirection() {
 		getLocaleDirectionInvoker = gi.FunctionInvokerNew("Gtk", "get_locale_direction")
 	}
 
-	getLocaleDirectionInvoker.Call()
+	getLocaleDirectionInvoker.Invoke()
 }
 
-var getMajorVersionInvoker *gi.FunctionInvoker
+var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type gtk_get_major_version.
-func GetMajorVersion() {
+func GetMajorVersion() uint32 {
 	if getMajorVersionInvoker == nil {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_major_version")
 	}
 
-	getMajorVersionInvoker.Call()
+	ret := getMajorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMicroVersionInvoker *gi.FunctionInvoker
+var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type gtk_get_micro_version.
-func GetMicroVersion() {
+func GetMicroVersion() uint32 {
 	if getMicroVersionInvoker == nil {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_micro_version")
 	}
 
-	getMicroVersionInvoker.Call()
+	ret := getMicroVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMinorVersionInvoker *gi.FunctionInvoker
+var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type gtk_get_minor_version.
-func GetMinorVersion() {
+func GetMinorVersion() uint32 {
 	if getMinorVersionInvoker == nil {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_minor_version")
 	}
 
-	getMinorVersionInvoker.Call()
+	ret := getMinorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
 // UNSUPPORTED : C value 'gtk_get_option_group' : non trivial function
 
-var grabGetCurrentInvoker *gi.FunctionInvoker
+var grabGetCurrentInvoker *gi.Function
 
 // GrabGetCurrent is a representation of the C type gtk_grab_get_current.
 func GrabGetCurrent() {
@@ -290,7 +302,7 @@ func GrabGetCurrent() {
 		grabGetCurrentInvoker = gi.FunctionInvokerNew("Gtk", "grab_get_current")
 	}
 
-	grabGetCurrentInvoker.Call()
+	grabGetCurrentInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_icon_size_from_name' : non trivial function
@@ -305,7 +317,7 @@ func GrabGetCurrent() {
 
 // UNSUPPORTED : C value 'gtk_icon_size_register_alias' : non trivial function
 
-var iconThemeErrorQuarkInvoker *gi.FunctionInvoker
+var iconThemeErrorQuarkInvoker *gi.Function
 
 // IconThemeErrorQuark is a representation of the C type gtk_icon_theme_error_quark.
 func IconThemeErrorQuark() {
@@ -313,7 +325,7 @@ func IconThemeErrorQuark() {
 		iconThemeErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "icon_theme_error_quark")
 	}
 
-	iconThemeErrorQuarkInvoker.Call()
+	iconThemeErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_init' : non trivial function
@@ -326,7 +338,7 @@ func IconThemeErrorQuark() {
 
 // UNSUPPORTED : C value 'gtk_key_snooper_remove' : non trivial function
 
-var mainInvoker *gi.FunctionInvoker
+var mainInvoker *gi.Function
 
 // Main is a representation of the C type gtk_main.
 func Main() {
@@ -334,12 +346,12 @@ func Main() {
 		mainInvoker = gi.FunctionInvokerNew("Gtk", "main")
 	}
 
-	mainInvoker.Call()
+	mainInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_main_do_event' : non trivial function
 
-var mainIterationInvoker *gi.FunctionInvoker
+var mainIterationInvoker *gi.Function
 
 // MainIteration is a representation of the C type gtk_main_iteration.
 func MainIteration() {
@@ -347,23 +359,25 @@ func MainIteration() {
 		mainIterationInvoker = gi.FunctionInvokerNew("Gtk", "main_iteration")
 	}
 
-	mainIterationInvoker.Call()
+	mainIterationInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_main_iteration_do' : non trivial function
 
-var mainLevelInvoker *gi.FunctionInvoker
+var mainLevelInvoker *gi.Function
 
 // MainLevel is a representation of the C type gtk_main_level.
-func MainLevel() {
+func MainLevel() uint32 {
 	if mainLevelInvoker == nil {
 		mainLevelInvoker = gi.FunctionInvokerNew("Gtk", "main_level")
 	}
 
-	mainLevelInvoker.Call()
+	ret := mainLevelInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var mainQuitInvoker *gi.FunctionInvoker
+var mainQuitInvoker *gi.Function
 
 // MainQuit is a representation of the C type gtk_main_quit.
 func MainQuit() {
@@ -371,7 +385,7 @@ func MainQuit() {
 		mainQuitInvoker = gi.FunctionInvokerNew("Gtk", "main_quit")
 	}
 
-	mainQuitInvoker.Call()
+	mainQuitInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_paint_arrow' : non trivial function
@@ -414,7 +428,7 @@ func MainQuit() {
 
 // UNSUPPORTED : C value 'gtk_paint_vline' : non trivial function
 
-var paperSizeGetDefaultInvoker *gi.FunctionInvoker
+var paperSizeGetDefaultInvoker *gi.Function
 
 // PaperSizeGetDefault is a representation of the C type gtk_paper_size_get_default.
 func PaperSizeGetDefault() {
@@ -422,14 +436,14 @@ func PaperSizeGetDefault() {
 		paperSizeGetDefaultInvoker = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
 	}
 
-	paperSizeGetDefaultInvoker.Call()
+	paperSizeGetDefaultInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : non trivial function
 
 // UNSUPPORTED : C value 'gtk_parse_args' : non trivial function
 
-var printErrorQuarkInvoker *gi.FunctionInvoker
+var printErrorQuarkInvoker *gi.Function
 
 // PrintErrorQuark is a representation of the C type gtk_print_error_quark.
 func PrintErrorQuark() {
@@ -437,7 +451,7 @@ func PrintErrorQuark() {
 		printErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "print_error_quark")
 	}
 
-	printErrorQuarkInvoker.Call()
+	printErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog' : non trivial function
@@ -452,7 +466,7 @@ func PrintErrorQuark() {
 
 // UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : non trivial function
 
-var rcGetDefaultFilesInvoker *gi.FunctionInvoker
+var rcGetDefaultFilesInvoker *gi.Function
 
 // RcGetDefaultFiles is a representation of the C type gtk_rc_get_default_files.
 func RcGetDefaultFiles() {
@@ -460,10 +474,10 @@ func RcGetDefaultFiles() {
 		rcGetDefaultFilesInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_default_files")
 	}
 
-	rcGetDefaultFilesInvoker.Call()
+	rcGetDefaultFilesInvoker.Invoke()
 }
 
-var rcGetImModuleFileInvoker *gi.FunctionInvoker
+var rcGetImModuleFileInvoker *gi.Function
 
 // RcGetImModuleFile is a representation of the C type gtk_rc_get_im_module_file.
 func RcGetImModuleFile() {
@@ -471,10 +485,10 @@ func RcGetImModuleFile() {
 		rcGetImModuleFileInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_im_module_file")
 	}
 
-	rcGetImModuleFileInvoker.Call()
+	rcGetImModuleFileInvoker.Invoke()
 }
 
-var rcGetImModulePathInvoker *gi.FunctionInvoker
+var rcGetImModulePathInvoker *gi.Function
 
 // RcGetImModulePath is a representation of the C type gtk_rc_get_im_module_path.
 func RcGetImModulePath() {
@@ -482,10 +496,10 @@ func RcGetImModulePath() {
 		rcGetImModulePathInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_im_module_path")
 	}
 
-	rcGetImModulePathInvoker.Call()
+	rcGetImModulePathInvoker.Invoke()
 }
 
-var rcGetModuleDirInvoker *gi.FunctionInvoker
+var rcGetModuleDirInvoker *gi.Function
 
 // RcGetModuleDir is a representation of the C type gtk_rc_get_module_dir.
 func RcGetModuleDir() {
@@ -493,14 +507,14 @@ func RcGetModuleDir() {
 		rcGetModuleDirInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_module_dir")
 	}
 
-	rcGetModuleDirInvoker.Call()
+	rcGetModuleDirInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_rc_get_style' : non trivial function
 
 // UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : non trivial function
 
-var rcGetThemeDirInvoker *gi.FunctionInvoker
+var rcGetThemeDirInvoker *gi.Function
 
 // RcGetThemeDir is a representation of the C type gtk_rc_get_theme_dir.
 func RcGetThemeDir() {
@@ -508,7 +522,7 @@ func RcGetThemeDir() {
 		rcGetThemeDirInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
 	}
 
-	rcGetThemeDirInvoker.Call()
+	rcGetThemeDirInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_rc_parse' : non trivial function
@@ -533,7 +547,7 @@ func RcGetThemeDir() {
 
 // UNSUPPORTED : C value 'gtk_rc_property_parse_requisition' : non trivial function
 
-var rcReparseAllInvoker *gi.FunctionInvoker
+var rcReparseAllInvoker *gi.Function
 
 // RcReparseAll is a representation of the C type gtk_rc_reparse_all.
 func RcReparseAll() {
@@ -541,14 +555,14 @@ func RcReparseAll() {
 		rcReparseAllInvoker = gi.FunctionInvokerNew("Gtk", "rc_reparse_all")
 	}
 
-	rcReparseAllInvoker.Call()
+	rcReparseAllInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : non trivial function
 
 // UNSUPPORTED : C value 'gtk_rc_reset_styles' : non trivial function
 
-var rcScannerNewInvoker *gi.FunctionInvoker
+var rcScannerNewInvoker *gi.Function
 
 // RcScannerNew is a representation of the C type gtk_rc_scanner_new.
 func RcScannerNew() {
@@ -556,12 +570,12 @@ func RcScannerNew() {
 		rcScannerNewInvoker = gi.FunctionInvokerNew("Gtk", "rc_scanner_new")
 	}
 
-	rcScannerNewInvoker.Call()
+	rcScannerNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_rc_set_default_files' : non trivial function
 
-var recentChooserErrorQuarkInvoker *gi.FunctionInvoker
+var recentChooserErrorQuarkInvoker *gi.Function
 
 // RecentChooserErrorQuark is a representation of the C type gtk_recent_chooser_error_quark.
 func RecentChooserErrorQuark() {
@@ -569,10 +583,10 @@ func RecentChooserErrorQuark() {
 		recentChooserErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "recent_chooser_error_quark")
 	}
 
-	recentChooserErrorQuarkInvoker.Call()
+	recentChooserErrorQuarkInvoker.Invoke()
 }
 
-var recentManagerErrorQuarkInvoker *gi.FunctionInvoker
+var recentManagerErrorQuarkInvoker *gi.Function
 
 // RecentManagerErrorQuark is a representation of the C type gtk_recent_manager_error_quark.
 func RecentManagerErrorQuark() {
@@ -580,7 +594,7 @@ func RecentManagerErrorQuark() {
 		recentManagerErrorQuarkInvoker = gi.FunctionInvokerNew("Gtk", "recent_manager_error_quark")
 	}
 
-	recentManagerErrorQuarkInvoker.Call()
+	recentManagerErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_render_activity' : non trivial function
@@ -649,7 +663,7 @@ func RecentManagerErrorQuark() {
 
 // UNSUPPORTED : C value 'gtk_stock_add_static' : non trivial function
 
-var stockListIdsInvoker *gi.FunctionInvoker
+var stockListIdsInvoker *gi.Function
 
 // StockListIds is a representation of the C type gtk_stock_list_ids.
 func StockListIds() {
@@ -657,7 +671,7 @@ func StockListIds() {
 		stockListIdsInvoker = gi.FunctionInvokerNew("Gtk", "stock_list_ids")
 	}
 
-	stockListIdsInvoker.Call()
+	stockListIdsInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_stock_lookup' : non trivial function
@@ -692,7 +706,7 @@ func StockListIds() {
 
 // UNSUPPORTED : C value 'gtk_test_list_all_types' : non trivial function
 
-var testRegisterAllTypesInvoker *gi.FunctionInvoker
+var testRegisterAllTypesInvoker *gi.Function
 
 // TestRegisterAllTypes is a representation of the C type gtk_test_register_all_types.
 func TestRegisterAllTypes() {
@@ -700,7 +714,7 @@ func TestRegisterAllTypes() {
 		testRegisterAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
 	}
 
-	testRegisterAllTypesInvoker.Call()
+	testRegisterAllTypesInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'gtk_test_slider_get_value' : non trivial function
@@ -729,7 +743,7 @@ func TestRegisterAllTypes() {
 
 // UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : non trivial function
 
-var trueInvoker *gi.FunctionInvoker
+var trueInvoker *gi.Function
 
 // True is a representation of the C type gtk_true.
 func True() {
@@ -737,5 +751,5 @@ func True() {
 		trueInvoker = gi.FunctionInvokerNew("Gtk", "true")
 	}
 
-	trueInvoker.Call()
+	trueInvoker.Invoke()
 }

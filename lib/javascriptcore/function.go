@@ -4,37 +4,43 @@ package javascriptcore
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-var getMajorVersionInvoker *gi.FunctionInvoker
+var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type jsc_get_major_version.
-func GetMajorVersion() {
+func GetMajorVersion() uint32 {
 	if getMajorVersionInvoker == nil {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
 	}
 
-	getMajorVersionInvoker.Call()
+	ret := getMajorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMicroVersionInvoker *gi.FunctionInvoker
+var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
-func GetMicroVersion() {
+func GetMicroVersion() uint32 {
 	if getMicroVersionInvoker == nil {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
 	}
 
-	getMicroVersionInvoker.Call()
+	ret := getMicroVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
-var getMinorVersionInvoker *gi.FunctionInvoker
+var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type jsc_get_minor_version.
-func GetMinorVersion() {
+func GetMinorVersion() uint32 {
 	if getMinorVersionInvoker == nil {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
 	}
 
-	getMinorVersionInvoker.Call()
+	ret := getMinorVersionInvoker.Invoke()
+	retValue := ret.Uint32()
+	return retValue
 }
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : non trivial function
@@ -45,7 +51,7 @@ func GetMinorVersion() {
 
 // UNSUPPORTED : C value 'jsc_options_get_int' : non trivial function
 
-var optionsGetOptionGroupInvoker *gi.FunctionInvoker
+var optionsGetOptionGroupInvoker *gi.Function
 
 // OptionsGetOptionGroup is a representation of the C type jsc_options_get_option_group.
 func OptionsGetOptionGroup() {
@@ -53,7 +59,7 @@ func OptionsGetOptionGroup() {
 		optionsGetOptionGroupInvoker = gi.FunctionInvokerNew("JavaScriptCore", "options_get_option_group")
 	}
 
-	optionsGetOptionGroupInvoker.Call()
+	optionsGetOptionGroupInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'jsc_options_get_range_string' : non trivial function

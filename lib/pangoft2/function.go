@@ -26,7 +26,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_ft2_render_transformed' : non trivial function
 
-var shutdownDisplayInvoker *gi.FunctionInvoker
+var shutdownDisplayInvoker *gi.Function
 
 // ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
 func ShutdownDisplay() {
@@ -34,5 +34,5 @@ func ShutdownDisplay() {
 		shutdownDisplayInvoker = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
 	}
 
-	shutdownDisplayInvoker.Call()
+	shutdownDisplayInvoker.Invoke()
 }

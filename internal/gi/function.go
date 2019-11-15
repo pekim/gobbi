@@ -9,13 +9,13 @@ import (
 	"unsafe"
 )
 
-type FunctionInvoker struct {
+type Function struct {
 	namespace string
 	funcName  string
 	info      *C.GIFunctionInfo
 }
 
-func FunctionInvokerNew(namespace string, funcName string) *FunctionInvoker {
+func FunctionInvokerNew(namespace string, funcName string) *Function {
 	cNamespace := C.CString(namespace)
 	defer C.free(unsafe.Pointer(cNamespace))
 
@@ -28,22 +28,22 @@ func FunctionInvokerNew(namespace string, funcName string) *FunctionInvoker {
 		cFuncName,
 	)
 
-	return &FunctionInvoker{
+	return &Function{
 		namespace: namespace,
 		funcName:  funcName,
 		info:      invoker,
 	}
 }
 
-func (fi *FunctionInvoker) Call() {
-	var returnValue C.GIArgument
+func (fi *Function) Invoke() Argument {
+	var returnValue Argument
 	var err *C.GError
 
 	invoked := C.g_function_info_invoke(
 		fi.info,
 		nil, 0,
 		nil, 0,
-		&returnValue,
+		(*C.GIArgument)(&returnValue),
 		&err,
 	) == C.TRUE
 
@@ -56,5 +56,5 @@ func (fi *FunctionInvoker) Call() {
 		panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
 	}
 
-	fmt.Println("called!!!!!!!!!!!")
+	return returnValue
 }

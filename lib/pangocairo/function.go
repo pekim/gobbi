@@ -22,7 +22,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_cairo_error_underline_path' : non trivial function
 
-var fontMapGetDefaultInvoker *gi.FunctionInvoker
+var fontMapGetDefaultInvoker *gi.Function
 
 // FontMapGetDefault is a representation of the C type pango_cairo_font_map_get_default.
 func FontMapGetDefault() {
@@ -30,10 +30,10 @@ func FontMapGetDefault() {
 		fontMapGetDefaultInvoker = gi.FunctionInvokerNew("PangoCairo", "font_map_get_default")
 	}
 
-	fontMapGetDefaultInvoker.Call()
+	fontMapGetDefaultInvoker.Invoke()
 }
 
-var fontMapNewInvoker *gi.FunctionInvoker
+var fontMapNewInvoker *gi.Function
 
 // FontMapNew is a representation of the C type pango_cairo_font_map_new.
 func FontMapNew() {
@@ -41,7 +41,7 @@ func FontMapNew() {
 		fontMapNewInvoker = gi.FunctionInvokerNew("PangoCairo", "font_map_new")
 	}
 
-	fontMapNewInvoker.Call()
+	fontMapNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'pango_cairo_font_map_new_for_font_type' : non trivial function

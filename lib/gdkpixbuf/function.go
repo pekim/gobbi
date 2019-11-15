@@ -4,7 +4,7 @@ package gdkpixbuf
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-var pixbufErrorQuarkInvoker *gi.FunctionInvoker
+var pixbufErrorQuarkInvoker *gi.Function
 
 // PixbufErrorQuark is a representation of the C type gdk_pixbuf_error_quark.
 func PixbufErrorQuark() {
@@ -12,5 +12,5 @@ func PixbufErrorQuark() {
 		pixbufErrorQuarkInvoker = gi.FunctionInvokerNew("GdkPixbuf", "pixbuf_error_quark")
 	}
 
-	pixbufErrorQuarkInvoker.Call()
+	pixbufErrorQuarkInvoker.Invoke()
 }

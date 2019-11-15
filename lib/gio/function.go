@@ -12,7 +12,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_app_info_create_from_commandline' : non trivial function
 
-var appInfoGetAllInvoker *gi.FunctionInvoker
+var appInfoGetAllInvoker *gi.Function
 
 // AppInfoGetAll is a representation of the C type g_app_info_get_all.
 func AppInfoGetAll() {
@@ -20,7 +20,7 @@ func AppInfoGetAll() {
 		appInfoGetAllInvoker = gi.FunctionInvokerNew("Gio", "app_info_get_all")
 	}
 
-	appInfoGetAllInvoker.Call()
+	appInfoGetAllInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_app_info_get_all_for_type' : non trivial function
@@ -95,7 +95,7 @@ func AppInfoGetAll() {
 
 // UNSUPPORTED : C value 'g_content_type_is_unknown' : non trivial function
 
-var contentTypesGetRegisteredInvoker *gi.FunctionInvoker
+var contentTypesGetRegisteredInvoker *gi.Function
 
 // ContentTypesGetRegistered is a representation of the C type g_content_types_get_registered.
 func ContentTypesGetRegistered() {
@@ -103,7 +103,7 @@ func ContentTypesGetRegistered() {
 		contentTypesGetRegisteredInvoker = gi.FunctionInvokerNew("Gio", "content_types_get_registered")
 	}
 
-	contentTypesGetRegisteredInvoker.Call()
+	contentTypesGetRegisteredInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_dbus_address_escape_value' : non trivial function
@@ -126,7 +126,7 @@ func ContentTypesGetRegistered() {
 
 // UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : non trivial function
 
-var dbusErrorQuarkInvoker *gi.FunctionInvoker
+var dbusErrorQuarkInvoker *gi.Function
 
 // DbusErrorQuark is a representation of the C type g_dbus_error_quark.
 func DbusErrorQuark() {
@@ -134,7 +134,7 @@ func DbusErrorQuark() {
 		dbusErrorQuarkInvoker = gi.FunctionInvokerNew("Gio", "dbus_error_quark")
 	}
 
-	dbusErrorQuarkInvoker.Call()
+	dbusErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error' : non trivial function
@@ -145,7 +145,7 @@ func DbusErrorQuark() {
 
 // UNSUPPORTED : C value 'g_dbus_error_unregister_error' : non trivial function
 
-var dbusGenerateGuidInvoker *gi.FunctionInvoker
+var dbusGenerateGuidInvoker *gi.Function
 
 // DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
 func DbusGenerateGuid() {
@@ -153,7 +153,7 @@ func DbusGenerateGuid() {
 		dbusGenerateGuidInvoker = gi.FunctionInvokerNew("Gio", "dbus_generate_guid")
 	}
 
-	dbusGenerateGuidInvoker.Call()
+	dbusGenerateGuidInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : non trivial function
@@ -200,7 +200,7 @@ func DbusGenerateGuid() {
 
 // UNSUPPORTED : C value 'g_io_error_from_errno' : non trivial function
 
-var ioErrorQuarkInvoker *gi.FunctionInvoker
+var ioErrorQuarkInvoker *gi.Function
 
 // IoErrorQuark is a representation of the C type g_io_error_quark.
 func IoErrorQuark() {
@@ -208,7 +208,7 @@ func IoErrorQuark() {
 		ioErrorQuarkInvoker = gi.FunctionInvokerNew("Gio", "io_error_quark")
 	}
 
-	ioErrorQuarkInvoker.Call()
+	ioErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_io_extension_point_implement' : non trivial function
@@ -225,7 +225,7 @@ func IoErrorQuark() {
 
 // UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : non trivial function
 
-var ioSchedulerCancelAllJobsInvoker *gi.FunctionInvoker
+var ioSchedulerCancelAllJobsInvoker *gi.Function
 
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
 func IoSchedulerCancelAllJobs() {
@@ -233,14 +233,14 @@ func IoSchedulerCancelAllJobs() {
 		ioSchedulerCancelAllJobsInvoker = gi.FunctionInvokerNew("Gio", "io_scheduler_cancel_all_jobs")
 	}
 
-	ioSchedulerCancelAllJobsInvoker.Call()
+	ioSchedulerCancelAllJobsInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : non trivial function
 
 // UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : non trivial function
 
-var memorySettingsBackendNewInvoker *gi.FunctionInvoker
+var memorySettingsBackendNewInvoker *gi.Function
 
 // MemorySettingsBackendNew is a representation of the C type g_memory_settings_backend_new.
 func MemorySettingsBackendNew() {
@@ -248,10 +248,10 @@ func MemorySettingsBackendNew() {
 		memorySettingsBackendNewInvoker = gi.FunctionInvokerNew("Gio", "memory_settings_backend_new")
 	}
 
-	memorySettingsBackendNewInvoker.Call()
+	memorySettingsBackendNewInvoker.Invoke()
 }
 
-var networkMonitorGetDefaultInvoker *gi.FunctionInvoker
+var networkMonitorGetDefaultInvoker *gi.Function
 
 // NetworkMonitorGetDefault is a representation of the C type g_network_monitor_get_default.
 func NetworkMonitorGetDefault() {
@@ -259,10 +259,10 @@ func NetworkMonitorGetDefault() {
 		networkMonitorGetDefaultInvoker = gi.FunctionInvokerNew("Gio", "network_monitor_get_default")
 	}
 
-	networkMonitorGetDefaultInvoker.Call()
+	networkMonitorGetDefaultInvoker.Invoke()
 }
 
-var networkingInitInvoker *gi.FunctionInvoker
+var networkingInitInvoker *gi.Function
 
 // NetworkingInit is a representation of the C type g_networking_init.
 func NetworkingInit() {
@@ -270,10 +270,10 @@ func NetworkingInit() {
 		networkingInitInvoker = gi.FunctionInvokerNew("Gio", "networking_init")
 	}
 
-	networkingInitInvoker.Call()
+	networkingInitInvoker.Invoke()
 }
 
-var nullSettingsBackendNewInvoker *gi.FunctionInvoker
+var nullSettingsBackendNewInvoker *gi.Function
 
 // NullSettingsBackendNew is a representation of the C type g_null_settings_backend_new.
 func NullSettingsBackendNew() {
@@ -281,7 +281,7 @@ func NullSettingsBackendNew() {
 		nullSettingsBackendNewInvoker = gi.FunctionInvokerNew("Gio", "null_settings_backend_new")
 	}
 
-	nullSettingsBackendNewInvoker.Call()
+	nullSettingsBackendNewInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_pollable_source_new' : non trivial function
@@ -296,7 +296,7 @@ func NullSettingsBackendNew() {
 
 // UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : non trivial function
 
-var proxyResolverGetDefaultInvoker *gi.FunctionInvoker
+var proxyResolverGetDefaultInvoker *gi.Function
 
 // ProxyResolverGetDefault is a representation of the C type g_proxy_resolver_get_default.
 func ProxyResolverGetDefault() {
@@ -304,10 +304,10 @@ func ProxyResolverGetDefault() {
 		proxyResolverGetDefaultInvoker = gi.FunctionInvokerNew("Gio", "proxy_resolver_get_default")
 	}
 
-	proxyResolverGetDefaultInvoker.Call()
+	proxyResolverGetDefaultInvoker.Invoke()
 }
 
-var resolverErrorQuarkInvoker *gi.FunctionInvoker
+var resolverErrorQuarkInvoker *gi.Function
 
 // ResolverErrorQuark is a representation of the C type g_resolver_error_quark.
 func ResolverErrorQuark() {
@@ -315,10 +315,10 @@ func ResolverErrorQuark() {
 		resolverErrorQuarkInvoker = gi.FunctionInvokerNew("Gio", "resolver_error_quark")
 	}
 
-	resolverErrorQuarkInvoker.Call()
+	resolverErrorQuarkInvoker.Invoke()
 }
 
-var resourceErrorQuarkInvoker *gi.FunctionInvoker
+var resourceErrorQuarkInvoker *gi.Function
 
 // ResourceErrorQuark is a representation of the C type g_resource_error_quark.
 func ResourceErrorQuark() {
@@ -326,7 +326,7 @@ func ResourceErrorQuark() {
 		resourceErrorQuarkInvoker = gi.FunctionInvokerNew("Gio", "resource_error_quark")
 	}
 
-	resourceErrorQuarkInvoker.Call()
+	resourceErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_resource_load' : non trivial function
@@ -343,7 +343,7 @@ func ResourceErrorQuark() {
 
 // UNSUPPORTED : C value 'g_resources_unregister' : non trivial function
 
-var settingsSchemaSourceGetDefaultInvoker *gi.FunctionInvoker
+var settingsSchemaSourceGetDefaultInvoker *gi.Function
 
 // SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
 func SettingsSchemaSourceGetDefault() {
@@ -351,7 +351,7 @@ func SettingsSchemaSourceGetDefault() {
 		settingsSchemaSourceGetDefaultInvoker = gi.FunctionInvokerNew("Gio", "settings_schema_source_get_default")
 	}
 
-	settingsSchemaSourceGetDefaultInvoker.Call()
+	settingsSchemaSourceGetDefaultInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : non trivial function
@@ -362,7 +362,7 @@ func SettingsSchemaSourceGetDefault() {
 
 // UNSUPPORTED : C value 'g_srv_target_list_sort' : non trivial function
 
-var tlsBackendGetDefaultInvoker *gi.FunctionInvoker
+var tlsBackendGetDefaultInvoker *gi.Function
 
 // TlsBackendGetDefault is a representation of the C type g_tls_backend_get_default.
 func TlsBackendGetDefault() {
@@ -370,12 +370,12 @@ func TlsBackendGetDefault() {
 		tlsBackendGetDefaultInvoker = gi.FunctionInvokerNew("Gio", "tls_backend_get_default")
 	}
 
-	tlsBackendGetDefaultInvoker.Call()
+	tlsBackendGetDefaultInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_tls_client_connection_new' : non trivial function
 
-var tlsErrorQuarkInvoker *gi.FunctionInvoker
+var tlsErrorQuarkInvoker *gi.Function
 
 // TlsErrorQuark is a representation of the C type g_tls_error_quark.
 func TlsErrorQuark() {
@@ -383,7 +383,7 @@ func TlsErrorQuark() {
 		tlsErrorQuarkInvoker = gi.FunctionInvokerNew("Gio", "tls_error_quark")
 	}
 
-	tlsErrorQuarkInvoker.Call()
+	tlsErrorQuarkInvoker.Invoke()
 }
 
 // UNSUPPORTED : C value 'g_tls_file_database_new' : non trivial function
