@@ -122,7 +122,7 @@ func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
 }
 
 func (t *Type) supportedAsReturnValue() bool {
-	if t == nil {
+	if t == nil || t.Name == "none" {
 		// return type is void
 		return true
 	}

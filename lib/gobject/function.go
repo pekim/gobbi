@@ -318,7 +318,16 @@ func TypeGetTypeRegistrationSerial() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_type_init' : return type 'none' not supported
+var typeInitInvoker *gi.Function
+
+// TypeInit is a representation of the C type g_type_init.
+func TypeInit() {
+	if typeInitInvoker == nil {
+		typeInitInvoker = gi.FunctionInvokerNew("GObject", "type_init")
+	}
+
+	typeInitInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : has parameters
 

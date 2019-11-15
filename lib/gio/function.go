@@ -190,7 +190,16 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : has parameters
 
-// UNSUPPORTED : C value 'g_io_scheduler_cancel_all_jobs' : return type 'none' not supported
+var ioSchedulerCancelAllJobsInvoker *gi.Function
+
+// IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
+func IoSchedulerCancelAllJobs() {
+	if ioSchedulerCancelAllJobsInvoker == nil {
+		ioSchedulerCancelAllJobsInvoker = gi.FunctionInvokerNew("Gio", "io_scheduler_cancel_all_jobs")
+	}
+
+	ioSchedulerCancelAllJobsInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : has parameters
 
@@ -200,7 +209,16 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_network_monitor_get_default' : return type 'NetworkMonitor' not supported
 
-// UNSUPPORTED : C value 'g_networking_init' : return type 'none' not supported
+var networkingInitInvoker *gi.Function
+
+// NetworkingInit is a representation of the C type g_networking_init.
+func NetworkingInit() {
+	if networkingInitInvoker == nil {
+		networkingInitInvoker = gi.FunctionInvokerNew("Gio", "networking_init")
+	}
+
+	networkingInitInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
 

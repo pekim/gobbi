@@ -60,7 +60,16 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_device_grab_remove' : has parameters
 
-// UNSUPPORTED : C value 'gtk_disable_setlocale' : return type 'none' not supported
+var disableSetlocaleInvoker *gi.Function
+
+// DisableSetlocale is a representation of the C type gtk_disable_setlocale.
+func DisableSetlocale() {
+	if disableSetlocaleInvoker == nil {
+		disableSetlocaleInvoker = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
+	}
+
+	disableSetlocaleInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : has parameters
 
@@ -216,7 +225,16 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_key_snooper_remove' : has parameters
 
-// UNSUPPORTED : C value 'gtk_main' : return type 'none' not supported
+var mainInvoker *gi.Function
+
+// Main is a representation of the C type gtk_main.
+func Main() {
+	if mainInvoker == nil {
+		mainInvoker = gi.FunctionInvokerNew("Gtk", "main")
+	}
+
+	mainInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gtk_main_do_event' : has parameters
 
@@ -236,7 +254,16 @@ func MainLevel() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gtk_main_quit' : return type 'none' not supported
+var mainQuitInvoker *gi.Function
+
+// MainQuit is a representation of the C type gtk_main_quit.
+func MainQuit() {
+	if mainQuitInvoker == nil {
+		mainQuitInvoker = gi.FunctionInvokerNew("Gtk", "main_quit")
+	}
+
+	mainQuitInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gtk_paint_arrow' : has parameters
 
@@ -477,7 +504,16 @@ func RcGetThemeDir() string {
 
 // UNSUPPORTED : C value 'gtk_test_list_all_types' : has parameters
 
-// UNSUPPORTED : C value 'gtk_test_register_all_types' : return type 'none' not supported
+var testRegisterAllTypesInvoker *gi.Function
+
+// TestRegisterAllTypes is a representation of the C type gtk_test_register_all_types.
+func TestRegisterAllTypes() {
+	if testRegisterAllTypesInvoker == nil {
+		testRegisterAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
+	}
+
+	testRegisterAllTypesInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gtk_test_slider_get_value' : has parameters
 

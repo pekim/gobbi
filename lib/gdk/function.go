@@ -10,7 +10,16 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_atom_intern_static_string' : has parameters
 
-// UNSUPPORTED : C value 'gdk_beep' : return type 'none' not supported
+var beepInvoker *gi.Function
+
+// Beep is a representation of the C type gdk_beep.
+func Beep() {
+	if beepInvoker == nil {
+		beepInvoker = gi.FunctionInvokerNew("Gdk", "beep")
+	}
+
+	beepInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_cairo_create' : has parameters
 
@@ -38,7 +47,16 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_color_parse' : has parameters
 
-// UNSUPPORTED : C value 'gdk_disable_multidevice' : return type 'none' not supported
+var disableMultideviceInvoker *gi.Function
+
+// DisableMultidevice is a representation of the C type gdk_disable_multidevice.
+func DisableMultidevice() {
+	if disableMultideviceInvoker == nil {
+		disableMultideviceInvoker = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
+	}
+
+	disableMultideviceInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_drag_abort' : has parameters
 
@@ -78,9 +96,27 @@ func ErrorTrapPop() int32 {
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'gdk_error_trap_pop_ignored' : return type 'none' not supported
+var errorTrapPopIgnoredInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gdk_error_trap_push' : return type 'none' not supported
+// ErrorTrapPopIgnored is a representation of the C type gdk_error_trap_pop_ignored.
+func ErrorTrapPopIgnored() {
+	if errorTrapPopIgnoredInvoker == nil {
+		errorTrapPopIgnoredInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
+	}
+
+	errorTrapPopIgnoredInvoker.Invoke()
+}
+
+var errorTrapPushInvoker *gi.Function
+
+// ErrorTrapPush is a representation of the C type gdk_error_trap_push.
+func ErrorTrapPush() {
+	if errorTrapPushInvoker == nil {
+		errorTrapPushInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_push")
+	}
+
+	errorTrapPushInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_event_get' : return type 'Event' not supported
 
@@ -98,7 +134,16 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_events_pending' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_flush' : return type 'none' not supported
+var flushInvoker *gi.Function
+
+// Flush is a representation of the C type gdk_flush.
+func Flush() {
+	if flushInvoker == nil {
+		flushInvoker = gi.FunctionInvokerNew("Gdk", "flush")
+	}
+
+	flushInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
 
@@ -168,7 +213,16 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'gdk_notify_startup_complete' : return type 'none' not supported
+var notifyStartupCompleteInvoker *gi.Function
+
+// NotifyStartupComplete is a representation of the C type gdk_notify_startup_complete.
+func NotifyStartupComplete() {
+	if notifyStartupCompleteInvoker == nil {
+		notifyStartupCompleteInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
+	}
+
+	notifyStartupCompleteInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : has parameters
 
@@ -200,7 +254,16 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_pointer_ungrab' : has parameters
 
-// UNSUPPORTED : C value 'gdk_pre_parse_libgtk_only' : return type 'none' not supported
+var preParseLibgtkOnlyInvoker *gi.Function
+
+// PreParseLibgtkOnly is a representation of the C type gdk_pre_parse_libgtk_only.
+func PreParseLibgtkOnly() {
+	if preParseLibgtkOnlyInvoker == nil {
+		preParseLibgtkOnlyInvoker = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
+	}
+
+	preParseLibgtkOnlyInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_property_change' : has parameters
 
@@ -260,11 +323,38 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : has parameters
 
-// UNSUPPORTED : C value 'gdk_threads_enter' : return type 'none' not supported
+var threadsEnterInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gdk_threads_init' : return type 'none' not supported
+// ThreadsEnter is a representation of the C type gdk_threads_enter.
+func ThreadsEnter() {
+	if threadsEnterInvoker == nil {
+		threadsEnterInvoker = gi.FunctionInvokerNew("Gdk", "threads_enter")
+	}
 
-// UNSUPPORTED : C value 'gdk_threads_leave' : return type 'none' not supported
+	threadsEnterInvoker.Invoke()
+}
+
+var threadsInitInvoker *gi.Function
+
+// ThreadsInit is a representation of the C type gdk_threads_init.
+func ThreadsInit() {
+	if threadsInitInvoker == nil {
+		threadsInitInvoker = gi.FunctionInvokerNew("Gdk", "threads_init")
+	}
+
+	threadsInitInvoker.Invoke()
+}
+
+var threadsLeaveInvoker *gi.Function
+
+// ThreadsLeave is a representation of the C type gdk_threads_leave.
+func ThreadsLeave() {
+	if threadsLeaveInvoker == nil {
+		threadsLeaveInvoker = gi.FunctionInvokerNew("Gdk", "threads_leave")
+	}
+
+	threadsLeaveInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : has parameters
 

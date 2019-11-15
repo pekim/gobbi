@@ -2,6 +2,8 @@
 
 package pangoft2
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 // UNSUPPORTED : C value 'pango_ft2_font_get_coverage' : has parameters
 
 // UNSUPPORTED : C value 'pango_ft2_font_get_face' : has parameters
@@ -24,4 +26,13 @@ package pangoft2
 
 // UNSUPPORTED : C value 'pango_ft2_render_transformed' : has parameters
 
-// UNSUPPORTED : C value 'pango_ft2_shutdown_display' : return type 'none' not supported
+var shutdownDisplayInvoker *gi.Function
+
+// ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
+func ShutdownDisplay() {
+	if shutdownDisplayInvoker == nil {
+		shutdownDisplayInvoker = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
+	}
+
+	shutdownDisplayInvoker.Invoke()
+}

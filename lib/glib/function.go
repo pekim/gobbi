@@ -153,7 +153,16 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_child_watch_source_new' : has parameters
 
-// UNSUPPORTED : C value 'g_clear_error' : return type 'none' not supported
+var clearErrorInvoker *gi.Function
+
+// ClearError is a representation of the C type g_clear_error.
+func ClearError() {
+	if clearErrorInvoker == nil {
+		clearErrorInvoker = gi.FunctionInvokerNew("GLib", "clear_error")
+	}
+
+	clearErrorInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_clear_handle_id' : has parameters
 
@@ -644,7 +653,16 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_mem_profile' : return type 'none' not supported
+var memProfileInvoker *gi.Function
+
+// MemProfile is a representation of the C type g_mem_profile.
+func MemProfile() {
+	if memProfileInvoker == nil {
+		memProfileInvoker = gi.FunctionInvokerNew("GLib", "mem_profile")
+	}
+
+	memProfileInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_mem_set_vtable' : has parameters
 
@@ -762,7 +780,16 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_regex_split_simple' : has parameters
 
-// UNSUPPORTED : C value 'g_reload_user_special_dirs_cache' : return type 'none' not supported
+var reloadUserSpecialDirsCacheInvoker *gi.Function
+
+// ReloadUserSpecialDirsCache is a representation of the C type g_reload_user_special_dirs_cache.
+func ReloadUserSpecialDirsCache() {
+	if reloadUserSpecialDirsCacheInvoker == nil {
+		reloadUserSpecialDirsCacheInvoker = gi.FunctionInvokerNew("GLib", "reload_user_special_dirs_cache")
+	}
+
+	reloadUserSpecialDirsCacheInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_return_if_fail_warning' : has parameters
 
@@ -974,7 +1001,16 @@ func RandomInt() uint32 {
 
 // UNSUPPORTED : C value 'g_test_expect_message' : has parameters
 
-// UNSUPPORTED : C value 'g_test_fail' : return type 'none' not supported
+var testFailInvoker *gi.Function
+
+// TestFail is a representation of the C type g_test_fail.
+func TestFail() {
+	if testFailInvoker == nil {
+		testFailInvoker = gi.FunctionInvokerNew("GLib", "test_fail")
+	}
+
+	testFailInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_test_failed' : return type 'gboolean' not supported
 
@@ -1034,7 +1070,16 @@ func TestRun() int32 {
 
 // UNSUPPORTED : C value 'g_test_run_suite' : has parameters
 
-// UNSUPPORTED : C value 'g_test_set_nonfatal_assertions' : return type 'none' not supported
+var testSetNonfatalAssertionsInvoker *gi.Function
+
+// TestSetNonfatalAssertions is a representation of the C type g_test_set_nonfatal_assertions.
+func TestSetNonfatalAssertions() {
+	if testSetNonfatalAssertionsInvoker == nil {
+		testSetNonfatalAssertionsInvoker = gi.FunctionInvokerNew("GLib", "test_set_nonfatal_assertions")
+	}
+
+	testSetNonfatalAssertionsInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_test_skip' : has parameters
 
@@ -1044,7 +1089,16 @@ func TestRun() int32 {
 
 // UNSUPPORTED : C value 'g_test_timer_last' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_timer_start' : return type 'none' not supported
+var testTimerStartInvoker *gi.Function
+
+// TestTimerStart is a representation of the C type g_test_timer_start.
+func TestTimerStart() {
+	if testTimerStartInvoker == nil {
+		testTimerStartInvoker = gi.FunctionInvokerNew("GLib", "test_timer_start")
+	}
+
+	testTimerStartInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_test_trap_assertions' : has parameters
 
@@ -1100,11 +1154,29 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // UNSUPPORTED : C value 'g_thread_pool_set_max_unused_threads' : has parameters
 
-// UNSUPPORTED : C value 'g_thread_pool_stop_unused_threads' : return type 'none' not supported
+var threadPoolStopUnusedThreadsInvoker *gi.Function
+
+// ThreadPoolStopUnusedThreads is a representation of the C type g_thread_pool_stop_unused_threads.
+func ThreadPoolStopUnusedThreads() {
+	if threadPoolStopUnusedThreadsInvoker == nil {
+		threadPoolStopUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_stop_unused_threads")
+	}
+
+	threadPoolStopUnusedThreadsInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_thread_self' : return type 'Thread' not supported
 
-// UNSUPPORTED : C value 'g_thread_yield' : return type 'none' not supported
+var threadYieldInvoker *gi.Function
+
+// ThreadYield is a representation of the C type g_thread_yield.
+func ThreadYield() {
+	if threadYieldInvoker == nil {
+		threadYieldInvoker = gi.FunctionInvokerNew("GLib", "thread_yield")
+	}
+
+	threadYieldInvoker.Invoke()
+}
 
 // UNSUPPORTED : C value 'g_time_val_from_iso8601' : has parameters
 

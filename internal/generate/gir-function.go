@@ -67,7 +67,7 @@ func (f *Function) generateParamsDeclaration(g *group) {
 }
 
 func (f *Function) generateReturnDeclaration(g *group) {
-	if f.ReturnValue.Type == nil {
+	if f.ReturnValue.isVoid() {
 		return
 	}
 
@@ -96,7 +96,7 @@ func (f *Function) generateBody(g *group) {
 	// call the function
 	g.
 		Do(func(s *jen.Statement) {
-			if f.ReturnValue.Type != nil {
+			if !f.ReturnValue.isVoid() {
 				s.
 					Id("ret").
 					Op(":=")
@@ -107,7 +107,7 @@ func (f *Function) generateBody(g *group) {
 		Call()
 
 	// marshall and return any return value
-	if f.ReturnValue.Type != nil {
+	if !f.ReturnValue.isVoid() {
 		g.Return(
 			jen.
 				Id("ret").

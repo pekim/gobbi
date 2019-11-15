@@ -21,3 +21,7 @@ func (r *ReturnValue) init(ns *Namespace) {
 	//	r.Array.init(ns)
 	//}
 }
+
+func (r *ReturnValue) isVoid() bool {
+	return r.Type == nil || r.Type.Name == "none"
+}
