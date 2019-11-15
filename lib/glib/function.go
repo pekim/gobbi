@@ -936,7 +936,17 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_test_rand_double_range' : has parameters
 
-// UNSUPPORTED : C value 'g_test_rand_int' : return type not supported
+var testRandIntInvoker *gi.Function
+
+// TestRandInt is a representation of the C type g_test_rand_int.
+func TestRandInt() int32 {
+	if testRandIntInvoker == nil {
+		testRandIntInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int")
+	}
+
+	testRandIntInvoker.Invoke()
+	return ret.Int32()
+}
 
 // UNSUPPORTED : C value 'g_test_rand_int_range' : has parameters
 

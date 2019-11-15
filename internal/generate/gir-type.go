@@ -136,8 +136,14 @@ func (t *Type) supportedAsReturnValue() bool {
 }
 
 var returnValueExtractFunctionNames = map[string]string{
-	"gint":  "Int32",
-	"guint": "Uint32",
+	"gchar":  "Int8",
+	"gint8":  "Int8",
+	"gshort": "Int16",
+	"gint16": "Int16",
+	"int":    "Int32",
+	"gint":   "Int32",
+	"gint32": "Int32",
+	"guint":  "Uint32",
 }
 
 func (t *Type) returnValueExtractFunctionName() string {
