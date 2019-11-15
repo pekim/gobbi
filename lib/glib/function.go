@@ -307,11 +307,31 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_free' : has parameters
 
-// UNSUPPORTED : C value 'g_get_application_name' : return type 'utf8' not supported
+var getApplicationNameInvoker *gi.Function
+
+// GetApplicationName is a representation of the C type g_get_application_name.
+func GetApplicationName() string {
+	if getApplicationNameInvoker == nil {
+		getApplicationNameInvoker = gi.FunctionInvokerNew("GLib", "get_application_name")
+	}
+
+	ret := getApplicationNameInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'g_get_charset' : has parameters
 
-// UNSUPPORTED : C value 'g_get_codeset' : return type 'utf8' not supported
+var getCodesetInvoker *gi.Function
+
+// GetCodeset is a representation of the C type g_get_codeset.
+func GetCodeset() string {
+	if getCodesetInvoker == nil {
+		getCodesetInvoker = gi.FunctionInvokerNew("GLib", "get_codeset")
+	}
+
+	ret := getCodesetInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
@@ -332,7 +352,17 @@ func GetEnviron() {
 
 // UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_host_name' : return type 'utf8' not supported
+var getHostNameInvoker *gi.Function
+
+// GetHostName is a representation of the C type g_get_host_name.
+func GetHostName() string {
+	if getHostNameInvoker == nil {
+		getHostNameInvoker = gi.FunctionInvokerNew("GLib", "get_host_name")
+	}
+
+	ret := getHostNameInvoker.Invoke()
+	return ret.String()
+}
 
 var getLanguageNamesInvoker *gi.Function
 
@@ -371,7 +401,17 @@ func GetNumProcessors() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_get_prgname' : return type 'utf8' not supported
+var getPrgnameInvoker *gi.Function
+
+// GetPrgname is a representation of the C type g_get_prgname.
+func GetPrgname() string {
+	if getPrgnameInvoker == nil {
+		getPrgnameInvoker = gi.FunctionInvokerNew("GLib", "get_prgname")
+	}
+
+	ret := getPrgnameInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
 
@@ -1266,7 +1306,17 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // UNSUPPORTED : C value 'g_uuid_string_is_valid' : has parameters
 
-// UNSUPPORTED : C value 'g_uuid_string_random' : return type 'utf8' not supported
+var uuidStringRandomInvoker *gi.Function
+
+// UuidStringRandom is a representation of the C type g_uuid_string_random.
+func UuidStringRandom() string {
+	if uuidStringRandomInvoker == nil {
+		uuidStringRandomInvoker = gi.FunctionInvokerNew("GLib", "uuid_string_random")
+	}
+
+	ret := uuidStringRandomInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
 

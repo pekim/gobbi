@@ -82,11 +82,41 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'atk_get_root' : return type 'Object' not supported
 
-// UNSUPPORTED : C value 'atk_get_toolkit_name' : return type 'utf8' not supported
+var getToolkitNameInvoker *gi.Function
 
-// UNSUPPORTED : C value 'atk_get_toolkit_version' : return type 'utf8' not supported
+// GetToolkitName is a representation of the C type atk_get_toolkit_name.
+func GetToolkitName() string {
+	if getToolkitNameInvoker == nil {
+		getToolkitNameInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_name")
+	}
 
-// UNSUPPORTED : C value 'atk_get_version' : return type 'utf8' not supported
+	ret := getToolkitNameInvoker.Invoke()
+	return ret.String()
+}
+
+var getToolkitVersionInvoker *gi.Function
+
+// GetToolkitVersion is a representation of the C type atk_get_toolkit_version.
+func GetToolkitVersion() string {
+	if getToolkitVersionInvoker == nil {
+		getToolkitVersionInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_version")
+	}
+
+	ret := getToolkitVersionInvoker.Invoke()
+	return ret.String()
+}
+
+var getVersionInvoker *gi.Function
+
+// GetVersion is a representation of the C type atk_get_version.
+func GetVersion() string {
+	if getVersionInvoker == nil {
+		getVersionInvoker = gi.FunctionInvokerNew("Atk", "get_version")
+	}
+
+	ret := getVersionInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'atk_relation_type_for_name' : has parameters
 

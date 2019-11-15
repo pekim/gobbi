@@ -66,13 +66,33 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_font_description_from_string' : has parameters
 
-// UNSUPPORTED : C value 'pango_get_lib_subdirectory' : return type 'utf8' not supported
+var getLibSubdirectoryInvoker *gi.Function
+
+// GetLibSubdirectory is a representation of the C type pango_get_lib_subdirectory.
+func GetLibSubdirectory() string {
+	if getLibSubdirectoryInvoker == nil {
+		getLibSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
+	}
+
+	ret := getLibSubdirectoryInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'pango_get_log_attrs' : has parameters
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : has parameters
 
-// UNSUPPORTED : C value 'pango_get_sysconf_subdirectory' : return type 'utf8' not supported
+var getSysconfSubdirectoryInvoker *gi.Function
+
+// GetSysconfSubdirectory is a representation of the C type pango_get_sysconf_subdirectory.
+func GetSysconfSubdirectory() string {
+	if getSysconfSubdirectoryInvoker == nil {
+		getSysconfSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
+	}
+
+	ret := getSysconfSubdirectoryInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : has parameters
 
@@ -160,4 +180,14 @@ func Version() int32 {
 
 // UNSUPPORTED : C value 'pango_version_check' : has parameters
 
-// UNSUPPORTED : C value 'pango_version_string' : return type 'utf8' not supported
+var versionStringInvoker *gi.Function
+
+// VersionString is a representation of the C type pango_version_string.
+func VersionString() string {
+	if versionStringInvoker == nil {
+		versionStringInvoker = gi.FunctionInvokerNew("Pango", "version_string")
+	}
+
+	ret := versionStringInvoker.Invoke()
+	return ret.String()
+}

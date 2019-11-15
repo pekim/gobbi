@@ -2,6 +2,8 @@
 
 package gio
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 // UNSUPPORTED : C value 'g_action_name_is_valid' : has parameters
 
 // UNSUPPORTED : C value 'g_action_parse_detailed_name' : has parameters
@@ -116,7 +118,17 @@ package gio
 
 // UNSUPPORTED : C value 'g_dbus_error_unregister_error' : has parameters
 
-// UNSUPPORTED : C value 'g_dbus_generate_guid' : return type 'utf8' not supported
+var dbusGenerateGuidInvoker *gi.Function
+
+// DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
+func DbusGenerateGuid() string {
+	if dbusGenerateGuidInvoker == nil {
+		dbusGenerateGuidInvoker = gi.FunctionInvokerNew("Gio", "dbus_generate_guid")
+	}
+
+	ret := dbusGenerateGuidInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : has parameters
 

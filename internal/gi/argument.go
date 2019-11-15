@@ -37,3 +37,7 @@ func (a Argument) Uint32() uint32 {
 func (a Argument) Uint64() uint64 {
 	return (uint64)(*(*C.guint)(unsafe.Pointer(&a)))
 }
+
+func (a Argument) String() string {
+	return (C.GoString)(*(**C.gchar)(unsafe.Pointer(&a)))
+}

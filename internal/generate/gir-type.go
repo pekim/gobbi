@@ -131,7 +131,10 @@ func (t *Type) supportedAsReturnValue() bool {
 		return true
 	}
 
-	//fmt.Println(t.Name)
+	if t.Name == "utf8" {
+		return true
+	}
+
 	return false
 }
 
@@ -154,6 +157,8 @@ var returnValueExtractFunctionNames = map[string]string{
 	"guint32": "Uint32",
 	"gulong":  "Uint64",
 	"guint64": "Uint64",
+
+	"utf8": "String",
 }
 
 func (t *Type) returnValueExtractFunctionName() string {

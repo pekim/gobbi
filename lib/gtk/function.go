@@ -278,7 +278,17 @@ func MainLevel() uint32 {
 
 // UNSUPPORTED : C value 'gtk_paint_vline' : has parameters
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_default' : return type 'utf8' not supported
+var paperSizeGetDefaultInvoker *gi.Function
+
+// PaperSizeGetDefault is a representation of the C type gtk_paper_size_get_default.
+func PaperSizeGetDefault() string {
+	if paperSizeGetDefaultInvoker == nil {
+		paperSizeGetDefaultInvoker = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
+	}
+
+	ret := paperSizeGetDefaultInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : has parameters
 
@@ -319,7 +329,17 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : has parameters
 
-// UNSUPPORTED : C value 'gtk_rc_get_theme_dir' : return type 'utf8' not supported
+var rcGetThemeDirInvoker *gi.Function
+
+// RcGetThemeDir is a representation of the C type gtk_rc_get_theme_dir.
+func RcGetThemeDir() string {
+	if rcGetThemeDirInvoker == nil {
+		rcGetThemeDirInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
+	}
+
+	ret := rcGetThemeDirInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'gtk_rc_parse' : has parameters
 

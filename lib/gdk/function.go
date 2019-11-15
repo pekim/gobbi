@@ -102,11 +102,41 @@ func ErrorTrapPop() int32 {
 
 // UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_get_display' : return type 'utf8' not supported
+var getDisplayInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gdk_get_display_arg_name' : return type 'utf8' not supported
+// GetDisplay is a representation of the C type gdk_get_display.
+func GetDisplay() string {
+	if getDisplayInvoker == nil {
+		getDisplayInvoker = gi.FunctionInvokerNew("Gdk", "get_display")
+	}
 
-// UNSUPPORTED : C value 'gdk_get_program_class' : return type 'utf8' not supported
+	ret := getDisplayInvoker.Invoke()
+	return ret.String()
+}
+
+var getDisplayArgNameInvoker *gi.Function
+
+// GetDisplayArgName is a representation of the C type gdk_get_display_arg_name.
+func GetDisplayArgName() string {
+	if getDisplayArgNameInvoker == nil {
+		getDisplayArgNameInvoker = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
+	}
+
+	ret := getDisplayArgNameInvoker.Invoke()
+	return ret.String()
+}
+
+var getProgramClassInvoker *gi.Function
+
+// GetProgramClass is a representation of the C type gdk_get_program_class.
+func GetProgramClass() string {
+	if getProgramClassInvoker == nil {
+		getProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "get_program_class")
+	}
+
+	ret := getProgramClassInvoker.Invoke()
+	return ret.String()
+}
 
 // UNSUPPORTED : C value 'gdk_get_show_events' : return type 'gboolean' not supported
 
