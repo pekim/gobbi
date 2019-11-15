@@ -74,7 +74,7 @@ func ErrorTrapPop() int32 {
 		errorTrapPopInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
 	}
 
-	errorTrapPopInvoker.Invoke()
+	ret := errorTrapPopInvoker.Invoke()
 	return ret.Int32()
 }
 

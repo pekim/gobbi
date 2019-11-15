@@ -143,7 +143,17 @@ var returnValueExtractFunctionNames = map[string]string{
 	"int":    "Int32",
 	"gint":   "Int32",
 	"gint32": "Int32",
-	"guint":  "Uint32",
+	"glong":  "Int64",
+	"gint64": "Int64",
+
+	"guchar":  "Uint8",
+	"guint8":  "Uint8",
+	"gushort": "Uint16",
+	"guint16": "Uint16",
+	"guint":   "Uint32",
+	"guint32": "Uint32",
+	"gulong":  "Uint64",
+	"guint64": "Uint64",
 }
 
 func (t *Type) returnValueExtractFunctionName() string {

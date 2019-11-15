@@ -154,7 +154,7 @@ func Version() int32 {
 		versionInvoker = gi.FunctionInvokerNew("Pango", "version")
 	}
 
-	versionInvoker.Invoke()
+	ret := versionInvoker.Invoke()
 	return ret.Int32()
 }
 

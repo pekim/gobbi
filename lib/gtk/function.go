@@ -110,7 +110,17 @@ func GetBinaryAge() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_current_event_state' : has parameters
 
-// UNSUPPORTED : C value 'gtk_get_current_event_time' : return type not supported
+var getCurrentEventTimeInvoker *gi.Function
+
+// GetCurrentEventTime is a representation of the C type gtk_get_current_event_time.
+func GetCurrentEventTime() uint32 {
+	if getCurrentEventTimeInvoker == nil {
+		getCurrentEventTimeInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
+	}
+
+	ret := getCurrentEventTimeInvoker.Invoke()
+	return ret.Uint32()
+}
 
 var getDebugFlagsInvoker *gi.Function
 

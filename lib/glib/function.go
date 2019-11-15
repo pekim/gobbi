@@ -347,7 +347,17 @@ func GetLanguageNames() {
 
 // UNSUPPORTED : C value 'g_get_locale_variants' : has parameters
 
-// UNSUPPORTED : C value 'g_get_monotonic_time' : return type not supported
+var getMonotonicTimeInvoker *gi.Function
+
+// GetMonotonicTime is a representation of the C type g_get_monotonic_time.
+func GetMonotonicTime() int64 {
+	if getMonotonicTimeInvoker == nil {
+		getMonotonicTimeInvoker = gi.FunctionInvokerNew("GLib", "get_monotonic_time")
+	}
+
+	ret := getMonotonicTimeInvoker.Invoke()
+	return ret.Int64()
+}
 
 var getNumProcessorsInvoker *gi.Function
 
@@ -365,7 +375,17 @@ func GetNumProcessors() uint32 {
 
 // UNSUPPORTED : C value 'g_get_real_name' : return type not supported
 
-// UNSUPPORTED : C value 'g_get_real_time' : return type not supported
+var getRealTimeInvoker *gi.Function
+
+// GetRealTime is a representation of the C type g_get_real_time.
+func GetRealTime() int64 {
+	if getRealTimeInvoker == nil {
+		getRealTimeInvoker = gi.FunctionInvokerNew("GLib", "get_real_time")
+	}
+
+	ret := getRealTimeInvoker.Invoke()
+	return ret.Int64()
+}
 
 var getSystemConfigDirsInvoker *gi.Function
 
@@ -560,7 +580,7 @@ func MainDepth() int32 {
 		mainDepthInvoker = gi.FunctionInvokerNew("GLib", "main_depth")
 	}
 
-	mainDepthInvoker.Invoke()
+	ret := mainDepthInvoker.Invoke()
 	return ret.Int32()
 }
 
@@ -670,7 +690,17 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_random_double_range' : has parameters
 
-// UNSUPPORTED : C value 'g_random_int' : return type not supported
+var randomIntInvoker *gi.Function
+
+// RandomInt is a representation of the C type g_random_int.
+func RandomInt() uint32 {
+	if randomIntInvoker == nil {
+		randomIntInvoker = gi.FunctionInvokerNew("GLib", "random_int")
+	}
+
+	ret := randomIntInvoker.Invoke()
+	return ret.Uint32()
+}
 
 // UNSUPPORTED : C value 'g_random_int_range' : has parameters
 
@@ -944,7 +974,7 @@ func TestRandInt() int32 {
 		testRandIntInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int")
 	}
 
-	testRandIntInvoker.Invoke()
+	ret := testRandIntInvoker.Invoke()
 	return ret.Int32()
 }
 
@@ -958,7 +988,7 @@ func TestRun() int32 {
 		testRunInvoker = gi.FunctionInvokerNew("GLib", "test_run")
 	}
 
-	testRunInvoker.Invoke()
+	ret := testRunInvoker.Invoke()
 	return ret.Int32()
 }
 
@@ -1010,7 +1040,7 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 		threadPoolGetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
 	}
 
-	threadPoolGetMaxUnusedThreadsInvoker.Invoke()
+	ret := threadPoolGetMaxUnusedThreadsInvoker.Invoke()
 	return ret.Int32()
 }
 

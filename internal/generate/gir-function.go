@@ -96,7 +96,7 @@ func (f *Function) generateBody(g *group) {
 	// call the function
 	g.
 		Do(func(s *jen.Statement) {
-			if f.ReturnValue.Type != nil && f.ReturnValue.Type.CType == "guint" {
+			if f.ReturnValue.Type != nil {
 				s.
 					Id("ret").
 					Op(":=")
