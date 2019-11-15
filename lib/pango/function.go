@@ -2,6 +2,8 @@
 
 package pango
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 // UNSUPPORTED : C value 'pango_attr_background_alpha_new' : has parameters
 
 // UNSUPPORTED : C value 'pango_attr_background_new' : has parameters
@@ -144,7 +146,17 @@ package pango
 
 // UNSUPPORTED : C value 'pango_units_to_double' : has parameters
 
-// UNSUPPORTED : C value 'pango_version' : return type not supported
+var versionInvoker *gi.Function
+
+// Version is a representation of the C type pango_version.
+func Version() int32 {
+	if versionInvoker == nil {
+		versionInvoker = gi.FunctionInvokerNew("Pango", "version")
+	}
+
+	versionInvoker.Invoke()
+	return ret.Int32()
+}
 
 // UNSUPPORTED : C value 'pango_version_check' : has parameters
 

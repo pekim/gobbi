@@ -131,10 +131,12 @@ func (t *Type) supportedAsReturnValue() bool {
 		return true
 	}
 
+	//fmt.Println(t.Name)
 	return false
 }
 
 var returnValueExtractFunctionNames = map[string]string{
+	"gint":  "Int32",
 	"guint": "Uint32",
 }
 

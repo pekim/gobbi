@@ -67,7 +67,7 @@ func (f *Function) generateParamsDeclaration(g *group) {
 }
 
 func (f *Function) generateReturnDeclaration(g *group) {
-	if f.ReturnValue.Type == nil || f.ReturnValue.Type.CType != "guint" {
+	if f.ReturnValue.Type == nil {
 		return
 	}
 
@@ -107,7 +107,7 @@ func (f *Function) generateBody(g *group) {
 		Call()
 
 	// marshall and return any return value
-	if f.ReturnValue.Type != nil && f.ReturnValue.Type.CType == "guint" {
+	if f.ReturnValue.Type != nil {
 		g.Return(
 			jen.
 				Id("ret").

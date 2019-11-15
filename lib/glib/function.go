@@ -552,7 +552,17 @@ func Listenv() {
 
 // UNSUPPORTED : C value 'g_main_current_source' : return type not supported
 
-// UNSUPPORTED : C value 'g_main_depth' : return type not supported
+var mainDepthInvoker *gi.Function
+
+// MainDepth is a representation of the C type g_main_depth.
+func MainDepth() int32 {
+	if mainDepthInvoker == nil {
+		mainDepthInvoker = gi.FunctionInvokerNew("GLib", "main_depth")
+	}
+
+	mainDepthInvoker.Invoke()
+	return ret.Int32()
+}
 
 // UNSUPPORTED : C value 'g_malloc' : has parameters
 
@@ -930,7 +940,17 @@ func Listenv() {
 
 // UNSUPPORTED : C value 'g_test_rand_int_range' : has parameters
 
-// UNSUPPORTED : C value 'g_test_run' : return type not supported
+var testRunInvoker *gi.Function
+
+// TestRun is a representation of the C type g_test_run.
+func TestRun() int32 {
+	if testRunInvoker == nil {
+		testRunInvoker = gi.FunctionInvokerNew("GLib", "test_run")
+	}
+
+	testRunInvoker.Invoke()
+	return ret.Int32()
+}
 
 // UNSUPPORTED : C value 'g_test_run_suite' : has parameters
 
@@ -972,7 +992,17 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_thread_pool_get_max_unused_threads' : return type not supported
+var threadPoolGetMaxUnusedThreadsInvoker *gi.Function
+
+// ThreadPoolGetMaxUnusedThreads is a representation of the C type g_thread_pool_get_max_unused_threads.
+func ThreadPoolGetMaxUnusedThreads() int32 {
+	if threadPoolGetMaxUnusedThreadsInvoker == nil {
+		threadPoolGetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
+	}
+
+	threadPoolGetMaxUnusedThreadsInvoker.Invoke()
+	return ret.Int32()
+}
 
 var threadPoolGetNumUnusedThreadsInvoker *gi.Function
 

@@ -2,6 +2,8 @@
 
 package gdk
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 // UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : has parameters
 
 // UNSUPPORTED : C value 'gdk_atom_intern' : has parameters
@@ -64,7 +66,17 @@ package gdk
 
 // UNSUPPORTED : C value 'gdk_drop_reply' : has parameters
 
-// UNSUPPORTED : C value 'gdk_error_trap_pop' : return type not supported
+var errorTrapPopInvoker *gi.Function
+
+// ErrorTrapPop is a representation of the C type gdk_error_trap_pop.
+func ErrorTrapPop() int32 {
+	if errorTrapPopInvoker == nil {
+		errorTrapPopInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
+	}
+
+	errorTrapPopInvoker.Invoke()
+	return ret.Int32()
+}
 
 // UNSUPPORTED : C value 'gdk_error_trap_pop_ignored' : return type not supported
 
