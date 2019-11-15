@@ -10,5 +10,5 @@ func TestCleanBuild(t *testing.T) {
 }
 
 func TestFunctionCall(t *testing.T) {
-	ClearError()
+	assert.True(t, GetNumProcessors() > 0)
 }
