@@ -31,18 +31,5 @@ func generateLibraries() {
 	generate.Generate(libraries)
 
 	end := time.Now()
-	fmt.Println()
 	fmt.Printf("\ngeneration %.0fms\n\n", end.Sub(start).Seconds()*1000)
 }
-
-//func libraryNameVersionFormat() string {
-//	maxNameLen := 0
-//	for _, lib := range libraries {
-//		nameLen := len(lib.Name)
-//		if nameLen > maxNameLen {
-//			maxNameLen = nameLen
-//		}
-//	}
-//
-//	return fmt.Sprintf("%%-%ds  %%s\n", maxNameLen)
-//}
