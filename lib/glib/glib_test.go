@@ -17,3 +17,9 @@ func TestFunctionCall(t *testing.T) {
 func TestReturnedTransferOwnershipSring(t *testing.T) {
 	assert.True(t, strings.HasPrefix(GetCodeset(), "ANSI_"))
 }
+
+func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		GetCodeset()
+	}
+}
