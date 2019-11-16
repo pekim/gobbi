@@ -102,25 +102,133 @@ func AsciiXdigitValue(c int8) int32 {
 
 // UNSUPPORTED : C value 'g_atexit' : parameter 'func' of type 'VoidFunc' not supported
 
-// UNSUPPORTED : C value 'g_atomic_int_add' : parameter 'atomic' of type 'gint' not supported
+var atomicIntAddInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_atomic_int_and' : parameter 'atomic' of type 'guint' not supported
+// AtomicIntAdd is a representation of the C type g_atomic_int_add.
+func AtomicIntAdd(atomic int32, val int32) int32 {
+	if atomicIntAddInvoker == nil {
+		atomicIntAddInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_add")
+	}
 
-// UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : parameter 'atomic' of type 'gint' not supported
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(atomic)
+	inArgs[1].SetInt32(val)
 
-// UNSUPPORTED : C value 'g_atomic_int_dec_and_test' : parameter 'atomic' of type 'gint' not supported
+	ret := atomicIntAddInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
 
-// UNSUPPORTED : C value 'g_atomic_int_exchange_and_add' : parameter 'atomic' of type 'gint' not supported
+var atomicIntAndInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_atomic_int_get' : parameter 'atomic' of type 'gint' not supported
+// AtomicIntAnd is a representation of the C type g_atomic_int_and.
+func AtomicIntAnd(atomic uint32, val uint32) uint32 {
+	if atomicIntAndInvoker == nil {
+		atomicIntAndInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_and")
+	}
 
-// UNSUPPORTED : C value 'g_atomic_int_inc' : parameter 'atomic' of type 'gint' not supported
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint32(atomic)
+	inArgs[1].SetUint32(val)
 
-// UNSUPPORTED : C value 'g_atomic_int_or' : parameter 'atomic' of type 'guint' not supported
+	ret := atomicIntAndInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
 
-// UNSUPPORTED : C value 'g_atomic_int_set' : parameter 'atomic' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_atomic_int_xor' : parameter 'atomic' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_atomic_int_dec_and_test' : return type 'gboolean' not supported
+
+var atomicIntExchangeAndAddInvoker *gi.Function
+
+// AtomicIntExchangeAndAdd is a representation of the C type g_atomic_int_exchange_and_add.
+func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
+	if atomicIntExchangeAndAddInvoker == nil {
+		atomicIntExchangeAndAddInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_exchange_and_add")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(atomic)
+	inArgs[1].SetInt32(val)
+
+	ret := atomicIntExchangeAndAddInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
+
+var atomicIntGetInvoker *gi.Function
+
+// AtomicIntGet is a representation of the C type g_atomic_int_get.
+func AtomicIntGet(atomic int32) int32 {
+	if atomicIntGetInvoker == nil {
+		atomicIntGetInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_get")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt32(atomic)
+
+	ret := atomicIntGetInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
+
+var atomicIntIncInvoker *gi.Function
+
+// AtomicIntInc is a representation of the C type g_atomic_int_inc.
+func AtomicIntInc(atomic int32) {
+	if atomicIntIncInvoker == nil {
+		atomicIntIncInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_inc")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt32(atomic)
+
+	atomicIntIncInvoker.Invoke(inArgs)
+}
+
+var atomicIntOrInvoker *gi.Function
+
+// AtomicIntOr is a representation of the C type g_atomic_int_or.
+func AtomicIntOr(atomic uint32, val uint32) uint32 {
+	if atomicIntOrInvoker == nil {
+		atomicIntOrInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_or")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint32(atomic)
+	inArgs[1].SetUint32(val)
+
+	ret := atomicIntOrInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
+
+var atomicIntSetInvoker *gi.Function
+
+// AtomicIntSet is a representation of the C type g_atomic_int_set.
+func AtomicIntSet(atomic int32, newval int32) {
+	if atomicIntSetInvoker == nil {
+		atomicIntSetInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_set")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(atomic)
+	inArgs[1].SetInt32(newval)
+
+	atomicIntSetInvoker.Invoke(inArgs)
+}
+
+var atomicIntXorInvoker *gi.Function
+
+// AtomicIntXor is a representation of the C type g_atomic_int_xor.
+func AtomicIntXor(atomic uint32, val uint32) uint32 {
+	if atomicIntXorInvoker == nil {
+		atomicIntXorInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_xor")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint32(atomic)
+	inArgs[1].SetUint32(val)
+
+	ret := atomicIntXorInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
 
 // UNSUPPORTED : C value 'g_atomic_pointer_add' : parameter 'atomic' of type 'gpointer' not supported
 
@@ -150,17 +258,84 @@ func AsciiXdigitValue(c int8) int32 {
 
 // UNSUPPORTED : C value 'g_basename' : parameter 'file_name' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_bit_lock' : parameter 'address' of type 'gint' not supported
+var bitLockInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_bit_nth_lsf' : parameter 'mask' of type 'gulong' not supported
+// BitLock is a representation of the C type g_bit_lock.
+func BitLock(address int32, lockBit int32) {
+	if bitLockInvoker == nil {
+		bitLockInvoker = gi.FunctionInvokerNew("GLib", "bit_lock")
+	}
 
-// UNSUPPORTED : C value 'g_bit_nth_msf' : parameter 'mask' of type 'gulong' not supported
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(address)
+	inArgs[1].SetInt32(lockBit)
 
-// UNSUPPORTED : C value 'g_bit_storage' : parameter 'number' of type 'gulong' not supported
+	bitLockInvoker.Invoke(inArgs)
+}
 
-// UNSUPPORTED : C value 'g_bit_trylock' : parameter 'address' of type 'gint' not supported
+var bitNthLsfInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_bit_unlock' : parameter 'address' of type 'gint' not supported
+// BitNthLsf is a representation of the C type g_bit_nth_lsf.
+func BitNthLsf(mask uint64, nthBit int32) int32 {
+	if bitNthLsfInvoker == nil {
+		bitNthLsfInvoker = gi.FunctionInvokerNew("GLib", "bit_nth_lsf")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint64(mask)
+	inArgs[1].SetInt32(nthBit)
+
+	ret := bitNthLsfInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
+
+var bitNthMsfInvoker *gi.Function
+
+// BitNthMsf is a representation of the C type g_bit_nth_msf.
+func BitNthMsf(mask uint64, nthBit int32) int32 {
+	if bitNthMsfInvoker == nil {
+		bitNthMsfInvoker = gi.FunctionInvokerNew("GLib", "bit_nth_msf")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint64(mask)
+	inArgs[1].SetInt32(nthBit)
+
+	ret := bitNthMsfInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
+
+var bitStorageInvoker *gi.Function
+
+// BitStorage is a representation of the C type g_bit_storage.
+func BitStorage(number uint64) uint32 {
+	if bitStorageInvoker == nil {
+		bitStorageInvoker = gi.FunctionInvokerNew("GLib", "bit_storage")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint64(number)
+
+	ret := bitStorageInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
+
+// UNSUPPORTED : C value 'g_bit_trylock' : return type 'gboolean' not supported
+
+var bitUnlockInvoker *gi.Function
+
+// BitUnlock is a representation of the C type g_bit_unlock.
+func BitUnlock(address int32, lockBit int32) {
+	if bitUnlockInvoker == nil {
+		bitUnlockInvoker = gi.FunctionInvokerNew("GLib", "bit_unlock")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(address)
+	inArgs[1].SetInt32(lockBit)
+
+	bitUnlockInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
 
@@ -195,13 +370,28 @@ func ByteArrayNew() {
 
 // UNSUPPORTED : C value 'g_chdir' : parameter 'path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'glib_check_version' : parameter 'required_major' of type 'guint' not supported
+var checkVersionInvoker *gi.Function
+
+// CheckVersion is a representation of the C type glib_check_version.
+func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
+	if checkVersionInvoker == nil {
+		checkVersionInvoker = gi.FunctionInvokerNew("GLib", "check_version")
+	}
+
+	inArgs := make([]gi.Argument, 3)
+	inArgs[0].SetUint32(requiredMajor)
+	inArgs[1].SetUint32(requiredMinor)
+	inArgs[2].SetUint32(requiredMicro)
+
+	ret := checkVersionInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_checksum_type_get_length' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
 // UNSUPPORTED : C value 'g_child_watch_add' : parameter 'pid' of type 'Pid' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_add_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_child_watch_add_full' : parameter 'pid' of type 'Pid' not supported
 
 // UNSUPPORTED : C value 'g_child_watch_source_new' : parameter 'pid' of type 'Pid' not supported
 
@@ -216,11 +406,11 @@ func ClearError() {
 	clearErrorInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_clear_handle_id' : parameter 'tag_ptr' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_clear_handle_id' : parameter 'clear_func' of type 'ClearHandleFunc' not supported
 
 // UNSUPPORTED : C value 'g_clear_pointer' : parameter 'pp' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_close' : parameter 'fd' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_close' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_compute_checksum_for_bytes' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
@@ -296,7 +486,7 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_date_valid_dmy' : parameter 'day' of type 'DateDay' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_julian' : parameter 'julian_date' of type 'guint32' not supported
+// UNSUPPORTED : C value 'g_date_valid_julian' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_date_valid_month' : parameter 'month' of type 'DateMonth' not supported
 
@@ -330,7 +520,7 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' has no type
 
-// UNSUPPORTED : C value 'g_file_error_from_errno' : parameter 'err_no' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_file_error_from_errno' : return type 'FileError' not supported
 
 // UNSUPPORTED : C value 'g_file_error_quark' : return type 'Quark' not supported
 
@@ -358,11 +548,37 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_find_program_in_path' : parameter 'program' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_format_size' : parameter 'size' of type 'guint64' not supported
+var formatSizeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_format_size_for_display' : parameter 'size' of type 'gint64' not supported
+// FormatSize is a representation of the C type g_format_size.
+func FormatSize(size uint64) string {
+	if formatSizeInvoker == nil {
+		formatSizeInvoker = gi.FunctionInvokerNew("GLib", "format_size")
+	}
 
-// UNSUPPORTED : C value 'g_format_size_full' : parameter 'size' of type 'guint64' not supported
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint64(size)
+
+	ret := formatSizeInvoker.Invoke(inArgs)
+	return ret.String(true)
+}
+
+var formatSizeForDisplayInvoker *gi.Function
+
+// FormatSizeForDisplay is a representation of the C type g_format_size_for_display.
+func FormatSizeForDisplay(size int64) string {
+	if formatSizeForDisplayInvoker == nil {
+		formatSizeForDisplayInvoker = gi.FunctionInvokerNew("GLib", "format_size_for_display")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt64(size)
+
+	ret := formatSizeForDisplayInvoker.Invoke(inArgs)
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_format_size_full' : parameter 'flags' of type 'FormatSizeFlags' not supported
 
 // UNSUPPORTED : C value 'g_fprintf' : parameter 'file' of type 'gpointer' not supported
 
@@ -580,7 +796,7 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_idle_add' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_idle_add_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_idle_add_full' : parameter 'function' of type 'SourceFunc' not supported
 
 // UNSUPPORTED : C value 'g_idle_remove_by_data' : parameter 'data' of type 'gpointer' not supported
 
@@ -602,7 +818,7 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'channel' of type 'IOChannel' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_error_from_errno' : parameter 'en' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_io_channel_error_from_errno' : return type 'IOChannelError' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_error_quark' : return type 'Quark' not supported
 
@@ -655,13 +871,13 @@ func Listenv() {
 
 // UNSUPPORTED : C value 'g_log_writer_format_fields' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_is_journald' : parameter 'output_fd' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_log_writer_is_journald' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_log_writer_journald' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_writer_standard_streams' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_supports_color' : parameter 'output_fd' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_log_writer_supports_color' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_logv' : parameter 'log_domain' of type 'utf8' not supported
 
@@ -812,9 +1028,35 @@ func RandomInt() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_random_int_range' : parameter 'begin' of type 'gint32' not supported
+var randomIntRangeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_random_set_seed' : parameter 'seed' of type 'guint32' not supported
+// RandomIntRange is a representation of the C type g_random_int_range.
+func RandomIntRange(begin int32, end int32) int32 {
+	if randomIntRangeInvoker == nil {
+		randomIntRangeInvoker = gi.FunctionInvokerNew("GLib", "random_int_range")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(begin)
+	inArgs[1].SetInt32(end)
+
+	ret := randomIntRangeInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
+
+var randomSetSeedInvoker *gi.Function
+
+// RandomSetSeed is a representation of the C type g_random_set_seed.
+func RandomSetSeed(seed uint32) {
+	if randomSetSeedInvoker == nil {
+		randomSetSeedInvoker = gi.FunctionInvokerNew("GLib", "random_set_seed")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(seed)
+
+	randomSetSeedInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'g_realloc' : parameter 'mem' of type 'gpointer' not supported
 
@@ -905,21 +1147,34 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_snprintf' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_source_remove' : parameter 'tag' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_source_remove' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : parameter 'funcs' of type 'SourceFuncs' not supported
 
 // UNSUPPORTED : C value 'g_source_remove_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_source_set_name_by_id' : parameter 'tag' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_source_set_name_by_id' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_spaced_primes_closest' : parameter 'num' of type 'guint' not supported
+var spacedPrimesClosestInvoker *gi.Function
+
+// SpacedPrimesClosest is a representation of the C type g_spaced_primes_closest.
+func SpacedPrimesClosest(num uint32) uint32 {
+	if spacedPrimesClosestInvoker == nil {
+		spacedPrimesClosestInvoker = gi.FunctionInvokerNew("GLib", "spaced_primes_closest")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(num)
+
+	ret := spacedPrimesClosestInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
 
 // UNSUPPORTED : C value 'g_spawn_async' : parameter 'working_directory' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'working_directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_spawn_check_exit_status' : parameter 'exit_status' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_spawn_check_exit_status' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_spawn_close_pid' : parameter 'pid' of type 'Pid' not supported
 
@@ -979,7 +1234,20 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_strdupv' : parameter 'str_array' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strerror' : parameter 'errnum' of type 'gint' not supported
+var strerrorInvoker *gi.Function
+
+// Strerror is a representation of the C type g_strerror.
+func Strerror(errnum int32) string {
+	if strerrorInvoker == nil {
+		strerrorInvoker = gi.FunctionInvokerNew("GLib", "strerror")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt32(errnum)
+
+	ret := strerrorInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_strescape' : parameter 'source' of type 'utf8' not supported
 
@@ -1013,7 +1281,20 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_strrstr_len' : parameter 'haystack' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strsignal' : parameter 'signum' of type 'gint' not supported
+var strsignalInvoker *gi.Function
+
+// Strsignal is a representation of the C type g_strsignal.
+func Strsignal(signum int32) string {
+	if strsignalInvoker == nil {
+		strsignalInvoker = gi.FunctionInvokerNew("GLib", "strsignal")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt32(signum)
+
+	ret := strsignalInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_strsplit' : parameter 'string' of type 'utf8' not supported
 
@@ -1074,7 +1355,7 @@ func TestFail() {
 
 // UNSUPPORTED : C value 'g_test_incomplete' : parameter 'msg' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_init' : parameter 'argc' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_test_init' : parameter 'argv' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_test_log_set_fatal_handler' : parameter 'log_func' of type 'TestLogFatalFunc' not supported
 
@@ -1106,7 +1387,21 @@ func TestRandInt() int32 {
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'g_test_rand_int_range' : parameter 'begin' of type 'gint32' not supported
+var testRandIntRangeInvoker *gi.Function
+
+// TestRandIntRange is a representation of the C type g_test_rand_int_range.
+func TestRandIntRange(begin int32, end int32) int32 {
+	if testRandIntRangeInvoker == nil {
+		testRandIntRangeInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int_range")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(begin)
+	inArgs[1].SetInt32(end)
+
+	ret := testRandIntRangeInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
 
 var testRunInvoker *gi.Function
 
@@ -1154,7 +1449,7 @@ func TestTimerStart() {
 
 // UNSUPPORTED : C value 'g_test_trap_assertions' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'usec_timeout' of type 'guint64' not supported
+// UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'test_trap_flags' of type 'TestTrapFlags' not supported
 
 // UNSUPPORTED : C value 'g_test_trap_has_passed' : return type 'gboolean' not supported
 
@@ -1202,9 +1497,33 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_thread_pool_set_max_idle_time' : parameter 'interval' of type 'guint' not supported
+var threadPoolSetMaxIdleTimeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_thread_pool_set_max_unused_threads' : parameter 'max_threads' of type 'gint' not supported
+// ThreadPoolSetMaxIdleTime is a representation of the C type g_thread_pool_set_max_idle_time.
+func ThreadPoolSetMaxIdleTime(interval uint32) {
+	if threadPoolSetMaxIdleTimeInvoker == nil {
+		threadPoolSetMaxIdleTimeInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_idle_time")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(interval)
+
+	threadPoolSetMaxIdleTimeInvoker.Invoke(inArgs)
+}
+
+var threadPoolSetMaxUnusedThreadsInvoker *gi.Function
+
+// ThreadPoolSetMaxUnusedThreads is a representation of the C type g_thread_pool_set_max_unused_threads.
+func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
+	if threadPoolSetMaxUnusedThreadsInvoker == nil {
+		threadPoolSetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_unused_threads")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt32(maxThreads)
+
+	threadPoolSetMaxUnusedThreadsInvoker.Invoke(inArgs)
+}
 
 var threadPoolStopUnusedThreadsInvoker *gi.Function
 
@@ -1232,17 +1551,17 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'iso_date' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add' : parameter 'interval' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_timeout_add' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_timeout_add_full' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add_seconds' : parameter 'interval' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_timeout_add_seconds' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add_seconds_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_timeout_add_seconds_full' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_timeout_source_new' : parameter 'interval' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_timeout_source_new' : return type 'Source' not supported
 
-// UNSUPPORTED : C value 'g_timeout_source_new_seconds' : parameter 'interval' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_timeout_source_new_seconds' : return type 'Source' not supported
 
 // UNSUPPORTED : C value 'g_trash_stack_height' : parameter 'stack_p' of type 'TrashStack' not supported
 
@@ -1336,27 +1655,27 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_unicode_canonical_ordering' : parameter 'string' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unicode_script_from_iso15924' : parameter 'iso15924' of type 'guint32' not supported
+// UNSUPPORTED : C value 'g_unicode_script_from_iso15924' : return type 'UnicodeScript' not supported
 
 // UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : parameter 'script' of type 'UnicodeScript' not supported
 
 // UNSUPPORTED : C value 'g_unix_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_add' : parameter 'fd' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_fd_add' : parameter 'condition' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_add_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_fd_add_full' : parameter 'condition' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_source_new' : parameter 'fd' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_fd_source_new' : parameter 'condition' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_unix_open_pipe' : parameter 'fds' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_open_pipe' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_set_fd_nonblocking' : parameter 'fd' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_set_fd_nonblocking' : parameter 'nonblock' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_add' : parameter 'signum' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_signal_add' : parameter 'handler' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_add_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_signal_add_full' : parameter 'handler' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_source_new' : parameter 'signum' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_unix_signal_source_new' : return type 'Source' not supported
 
 // UNSUPPORTED : C value 'g_unlink' : parameter 'filename' of type 'filename' not supported
 
@@ -1372,11 +1691,37 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_uri_unescape_string' : parameter 'escaped_string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_usleep' : parameter 'microseconds' of type 'gulong' not supported
+var usleepInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf16_to_ucs4' : parameter 'str' of type 'guint16' not supported
+// Usleep is a representation of the C type g_usleep.
+func Usleep(microseconds uint64) {
+	if usleepInvoker == nil {
+		usleepInvoker = gi.FunctionInvokerNew("GLib", "usleep")
+	}
 
-// UNSUPPORTED : C value 'g_utf16_to_utf8' : parameter 'str' of type 'guint16' not supported
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint64(microseconds)
+
+	usleepInvoker.Invoke(inArgs)
+}
+
+// UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
+
+var utf16ToUtf8Invoker *gi.Function
+
+// Utf16ToUtf8 is a representation of the C type g_utf16_to_utf8.
+func Utf16ToUtf8(str uint16, len int64, itemsRead int64, itemsWritten int64) string {
+	if utf16ToUtf8Invoker == nil {
+		utf16ToUtf8Invoker = gi.FunctionInvokerNew("GLib", "utf16_to_utf8")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint16(str)
+	inArgs[1].SetInt64(len)
+
+	ret := utf16ToUtf8Invoker.Invoke(inArgs)
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'g_utf8_casefold' : parameter 'str' of type 'utf8' not supported
 

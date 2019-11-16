@@ -158,7 +158,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_signal_accumulator_true_handled' : parameter 'ihint' of type 'SignalInvocationHint' not supported
 
-// UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'signal_id' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'detail' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden' : parameter 'instance_and_params' has no type
 
@@ -206,7 +206,20 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_signal_lookup' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_signal_name' : parameter 'signal_id' of type 'guint' not supported
+var signalNameInvoker *gi.Function
+
+// SignalName is a representation of the C type g_signal_name.
+func SignalName(signalId uint32) string {
+	if signalNameInvoker == nil {
+		signalNameInvoker = gi.FunctionInvokerNew("GObject", "signal_name")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(signalId)
+
+	ret := signalNameInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_signal_new' : parameter 'signal_name' of type 'utf8' not supported
 
@@ -216,17 +229,30 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_signal_newv' : parameter 'signal_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_signal_override_class_closure' : parameter 'signal_id' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_signal_override_class_closure' : parameter 'instance_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_signal_override_class_handler' : parameter 'signal_name' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_signal_parse_name' : parameter 'detailed_signal' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_signal_query' : parameter 'signal_id' of type 'guint' not supported
+// UNSUPPORTED : C value 'g_signal_query' : parameter 'query' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_signal_remove_emission_hook' : parameter 'signal_id' of type 'guint' not supported
+var signalRemoveEmissionHookInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'signal_id' of type 'guint' not supported
+// SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
+func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
+	if signalRemoveEmissionHookInvoker == nil {
+		signalRemoveEmissionHookInvoker = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetUint32(signalId)
+	inArgs[1].SetUint64(hookId)
+
+	signalRemoveEmissionHookInvoker.Invoke(inArgs)
+}
+
+// UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_signal_stop_emission' : parameter 'instance' of type 'Object' not supported
 

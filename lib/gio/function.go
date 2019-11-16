@@ -48,9 +48,33 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_unown_name' : parameter 'owner_id' of type 'guint' not supported
+var busUnownNameInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_bus_unwatch_name' : parameter 'watcher_id' of type 'guint' not supported
+// BusUnownName is a representation of the C type g_bus_unown_name.
+func BusUnownName(ownerId uint32) {
+	if busUnownNameInvoker == nil {
+		busUnownNameInvoker = gi.FunctionInvokerNew("Gio", "bus_unown_name")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(ownerId)
+
+	busUnownNameInvoker.Invoke(inArgs)
+}
+
+var busUnwatchNameInvoker *gi.Function
+
+// BusUnwatchName is a representation of the C type g_bus_unwatch_name.
+func BusUnwatchName(watcherId uint32) {
+	if busUnwatchNameInvoker == nil {
+		busUnwatchNameInvoker = gi.FunctionInvokerNew("Gio", "bus_unwatch_name")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(watcherId)
+
+	busUnwatchNameInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
 
@@ -172,7 +196,7 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_initable_newv' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_io_error_from_errno' : parameter 'err_no' of type 'gint' not supported
+// UNSUPPORTED : C value 'g_io_error_from_errno' : return type 'IOErrorEnum' not supported
 
 // UNSUPPORTED : C value 'g_io_error_quark' : return type 'GLib.Quark' not supported
 
@@ -310,10 +334,10 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_unix_mount_is_system_internal' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : parameter 'time' of type 'guint64' not supported
+// UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_get' : parameter 'time_read' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_unix_mount_points_get' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_changed_since' : parameter 'time' of type 'guint64' not supported
+// UNSUPPORTED : C value 'g_unix_mounts_changed_since' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_get' : parameter 'time_read' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_unix_mounts_get' : return type 'GLib.List' not supported

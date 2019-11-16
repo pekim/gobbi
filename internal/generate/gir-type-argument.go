@@ -24,24 +24,24 @@ var argumentGetFunctionNames = map[string]string{
 }
 
 var argumentSetFunctionNames = map[string]string{
-	"gchar": "SetInt8",
-	"gint8": "SetInt8",
-	//"gshort": "SetInt16",
-	//"gint16": "SetInt16",
-	//"int":    "SetInt32",
-	//"gint":   "SetInt32",
-	//"gint32": "SetInt32",
-	//"glong":  "SetInt64",
-	//"gint64": "SetInt64",
-	//
-	//"guchar":  "SetUint8",
-	//"guint8":  "SetUint8",
-	//"gushort": "SetUint16",
-	//"guint16": "SetUint16",
-	//"guint":   "SetUint32",
-	//"guint32": "SetUint32",
-	//"gulong":  "SetUint64",
-	//"guint64": "SetUint64",
+	"gchar":  "SetInt8",
+	"gint8":  "SetInt8",
+	"gshort": "SetInt16",
+	"gint16": "SetInt16",
+	"int":    "SetInt32",
+	"gint":   "SetInt32",
+	"gint32": "SetInt32",
+	"glong":  "SetInt64",
+	"gint64": "SetInt64",
+
+	"guchar":  "SetUint8",
+	"guint8":  "SetUint8",
+	"gushort": "SetUint16",
+	"guint16": "SetUint16",
+	"guint":   "SetUint32",
+	"guint32": "SetUint32",
+	"gulong":  "SetUint64",
+	"guint64": "SetUint64",
 	//
 	//"utf8": "SetString",
 }

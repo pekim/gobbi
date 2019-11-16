@@ -187,29 +187,105 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_gl_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gdk_init' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gdk_init' : parameter 'argv' has no type
 
-// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' has no type
 
 // UNSUPPORTED : C value 'gdk_keyboard_grab' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_keyboard_ungrab' : parameter 'time_' of type 'guint32' not supported
+var keyboardUngrabInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gdk_keyval_convert_case' : parameter 'symbol' of type 'guint' not supported
+// KeyboardUngrab is a representation of the C type gdk_keyboard_ungrab.
+func KeyboardUngrab(time uint32) {
+	if keyboardUngrabInvoker == nil {
+		keyboardUngrabInvoker = gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(time)
+
+	keyboardUngrabInvoker.Invoke(inArgs)
+}
+
+var keyvalConvertCaseInvoker *gi.Function
+
+// KeyvalConvertCase is a representation of the C type gdk_keyval_convert_case.
+func KeyvalConvertCase(symbol uint32, lower uint32, upper uint32) {
+	if keyvalConvertCaseInvoker == nil {
+		keyvalConvertCaseInvoker = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(symbol)
+
+	keyvalConvertCaseInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'gdk_keyval_from_name' : parameter 'keyval_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_is_lower' : parameter 'keyval' of type 'guint' not supported
+// UNSUPPORTED : C value 'gdk_keyval_is_lower' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_is_upper' : parameter 'keyval' of type 'guint' not supported
+// UNSUPPORTED : C value 'gdk_keyval_is_upper' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_name' : parameter 'keyval' of type 'guint' not supported
+var keyvalNameInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gdk_keyval_to_lower' : parameter 'keyval' of type 'guint' not supported
+// KeyvalName is a representation of the C type gdk_keyval_name.
+func KeyvalName(keyval uint32) string {
+	if keyvalNameInvoker == nil {
+		keyvalNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_name")
+	}
 
-// UNSUPPORTED : C value 'gdk_keyval_to_unicode' : parameter 'keyval' of type 'guint' not supported
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(keyval)
 
-// UNSUPPORTED : C value 'gdk_keyval_to_upper' : parameter 'keyval' of type 'guint' not supported
+	ret := keyvalNameInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
+
+var keyvalToLowerInvoker *gi.Function
+
+// KeyvalToLower is a representation of the C type gdk_keyval_to_lower.
+func KeyvalToLower(keyval uint32) uint32 {
+	if keyvalToLowerInvoker == nil {
+		keyvalToLowerInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(keyval)
+
+	ret := keyvalToLowerInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
+
+var keyvalToUnicodeInvoker *gi.Function
+
+// KeyvalToUnicode is a representation of the C type gdk_keyval_to_unicode.
+func KeyvalToUnicode(keyval uint32) uint32 {
+	if keyvalToUnicodeInvoker == nil {
+		keyvalToUnicodeInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(keyval)
+
+	ret := keyvalToUnicodeInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
+
+var keyvalToUpperInvoker *gi.Function
+
+// KeyvalToUpper is a representation of the C type gdk_keyval_to_upper.
+func KeyvalToUpper(keyval uint32) uint32 {
+	if keyvalToUpperInvoker == nil {
+		keyvalToUpperInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(keyval)
+
+	ret := keyvalToUpperInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
 
@@ -242,7 +318,7 @@ func NotifyStartupComplete() {
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'line' of type 'Pango.LayoutLine' not supported
 
-// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argv' has no type
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
@@ -252,7 +328,19 @@ func NotifyStartupComplete() {
 
 // UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_pointer_ungrab' : parameter 'time_' of type 'guint32' not supported
+var pointerUngrabInvoker *gi.Function
+
+// PointerUngrab is a representation of the C type gdk_pointer_ungrab.
+func PointerUngrab(time uint32) {
+	if pointerUngrabInvoker == nil {
+		pointerUngrabInvoker = gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(time)
+
+	pointerUngrabInvoker.Invoke(inArgs)
+}
 
 var preParseLibgtkOnlyInvoker *gi.Function
 
@@ -293,7 +381,19 @@ func PreParseLibgtkOnly() {
 
 // UNSUPPORTED : C value 'gdk_set_allowed_backends' : parameter 'backends' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_set_double_click_time' : parameter 'msec' of type 'guint' not supported
+var setDoubleClickTimeInvoker *gi.Function
+
+// SetDoubleClickTime is a representation of the C type gdk_set_double_click_time.
+func SetDoubleClickTime(msec uint32) {
+	if setDoubleClickTimeInvoker == nil {
+		setDoubleClickTimeInvoker = gi.FunctionInvokerNew("Gdk", "set_double_click_time")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(msec)
+
+	setDoubleClickTimeInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'gdk_set_program_class' : parameter 'program_class' of type 'utf8' not supported
 
@@ -313,15 +413,15 @@ func PreParseLibgtkOnly() {
 
 // UNSUPPORTED : C value 'gdk_threads_add_idle' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_idle_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'gdk_threads_add_idle_full' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout' : parameter 'interval' of type 'guint' not supported
+// UNSUPPORTED : C value 'gdk_threads_add_timeout' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'gdk_threads_add_timeout_full' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds' : parameter 'interval' of type 'guint' not supported
+// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : parameter 'priority' of type 'gint' not supported
+// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
 var threadsEnterInvoker *gi.Function
 
@@ -358,6 +458,19 @@ func ThreadsLeave() {
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : parameter 'enter_fn' of type 'GObject.Callback' not supported
 
-// UNSUPPORTED : C value 'gdk_unicode_to_keyval' : parameter 'wc' of type 'guint32' not supported
+var unicodeToKeyvalInvoker *gi.Function
+
+// UnicodeToKeyval is a representation of the C type gdk_unicode_to_keyval.
+func UnicodeToKeyval(wc uint32) uint32 {
+	if unicodeToKeyvalInvoker == nil {
+		unicodeToKeyvalInvoker = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(wc)
+
+	ret := unicodeToKeyvalInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
 
 // UNSUPPORTED : C value 'gdk_utf8_to_string_target' : parameter 'str' of type 'utf8' not supported

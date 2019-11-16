@@ -4,31 +4,31 @@ package pango
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'pango_attr_background_alpha_new' : parameter 'alpha' of type 'guint16' not supported
+// UNSUPPORTED : C value 'pango_attr_background_alpha_new' : return type 'Attribute' not supported
 
-// UNSUPPORTED : C value 'pango_attr_background_new' : parameter 'red' of type 'guint16' not supported
+// UNSUPPORTED : C value 'pango_attr_background_new' : return type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'pango_attr_family_new' : parameter 'family' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'pango_attr_foreground_alpha_new' : parameter 'alpha' of type 'guint16' not supported
+// UNSUPPORTED : C value 'pango_attr_foreground_alpha_new' : return type 'Attribute' not supported
 
-// UNSUPPORTED : C value 'pango_attr_foreground_new' : parameter 'red' of type 'guint16' not supported
+// UNSUPPORTED : C value 'pango_attr_foreground_new' : return type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attr_gravity_hint_new' : parameter 'hint' of type 'GravityHint' not supported
 
 // UNSUPPORTED : C value 'pango_attr_gravity_new' : parameter 'gravity' of type 'Gravity' not supported
 
-// UNSUPPORTED : C value 'pango_attr_letter_spacing_new' : parameter 'letter_spacing' of type 'gint' not supported
+// UNSUPPORTED : C value 'pango_attr_letter_spacing_new' : return type 'Attribute' not supported
 
-// UNSUPPORTED : C value 'pango_attr_rise_new' : parameter 'rise' of type 'gint' not supported
+// UNSUPPORTED : C value 'pango_attr_rise_new' : return type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attr_scale_new' : parameter 'scale_factor' of type 'gdouble' not supported
 
 // UNSUPPORTED : C value 'pango_attr_stretch_new' : parameter 'stretch' of type 'Stretch' not supported
 
-// UNSUPPORTED : C value 'pango_attr_strikethrough_color_new' : parameter 'red' of type 'guint16' not supported
+// UNSUPPORTED : C value 'pango_attr_strikethrough_color_new' : return type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attr_strikethrough_new' : parameter 'strikethrough' of type 'gboolean' not supported
 
@@ -38,7 +38,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_attr_type_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'pango_attr_underline_color_new' : parameter 'red' of type 'guint16' not supported
+// UNSUPPORTED : C value 'pango_attr_underline_color_new' : return type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attr_underline_new' : parameter 'underline' of type 'Underline' not supported
 
@@ -134,7 +134,20 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_parse_weight' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'pango_quantize_line_geometry' : parameter 'thickness' with direction 'inout' not supported
+var quantizeLineGeometryInvoker *gi.Function
+
+// QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
+func QuantizeLineGeometry(thickness int32, position int32) {
+	if quantizeLineGeometryInvoker == nil {
+		quantizeLineGeometryInvoker = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
+	}
+
+	inArgs := make([]gi.Argument, 2)
+	inArgs[0].SetInt32(thickness)
+	inArgs[1].SetInt32(position)
+
+	quantizeLineGeometryInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
 
@@ -164,7 +177,7 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_units_from_double' : parameter 'd' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'pango_units_to_double' : parameter 'i' of type 'gint' not supported
+// UNSUPPORTED : C value 'pango_units_to_double' : return type 'gdouble' not supported
 
 var versionInvoker *gi.Function
 
@@ -178,7 +191,22 @@ func Version() int32 {
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'pango_version_check' : parameter 'required_major' of type 'gint' not supported
+var versionCheckInvoker *gi.Function
+
+// VersionCheck is a representation of the C type pango_version_check.
+func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) string {
+	if versionCheckInvoker == nil {
+		versionCheckInvoker = gi.FunctionInvokerNew("Pango", "version_check")
+	}
+
+	inArgs := make([]gi.Argument, 3)
+	inArgs[0].SetInt32(requiredMajor)
+	inArgs[1].SetInt32(requiredMinor)
+	inArgs[2].SetInt32(requiredMicro)
+
+	ret := versionCheckInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
 
 var versionStringInvoker *gi.Function
 

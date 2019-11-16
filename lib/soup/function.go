@@ -12,7 +12,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'soup_add_timeout' : parameter 'async_context' of type 'GLib.MainContext' not supported
 
-// UNSUPPORTED : C value 'soup_check_version' : parameter 'major' of type 'guint' not supported
+// UNSUPPORTED : C value 'soup_check_version' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'soup_cookie_parse' : parameter 'header' of type 'utf8' not supported
 
@@ -118,9 +118,35 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_requester_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_status_get_phrase' : parameter 'status_code' of type 'guint' not supported
+var statusGetPhraseInvoker *gi.Function
 
-// UNSUPPORTED : C value 'soup_status_proxify' : parameter 'status_code' of type 'guint' not supported
+// StatusGetPhrase is a representation of the C type soup_status_get_phrase.
+func StatusGetPhrase(statusCode uint32) string {
+	if statusGetPhraseInvoker == nil {
+		statusGetPhraseInvoker = gi.FunctionInvokerNew("Soup", "status_get_phrase")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(statusCode)
+
+	ret := statusGetPhraseInvoker.Invoke(inArgs)
+	return ret.String(false)
+}
+
+var statusProxifyInvoker *gi.Function
+
+// StatusProxify is a representation of the C type soup_status_proxify.
+func StatusProxify(statusCode uint32) uint32 {
+	if statusProxifyInvoker == nil {
+		statusProxifyInvoker = gi.FunctionInvokerNew("Soup", "status_proxify")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(statusCode)
+
+	ret := statusProxifyInvoker.Invoke(inArgs)
+	return ret.Uint32()
+}
 
 // UNSUPPORTED : C value 'soup_str_case_equal' : parameter 'v1' of type 'gpointer' not supported
 
@@ -178,7 +204,7 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter 'fault_code' of type 'gint' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter 'fault_format' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'method_name' of type 'utf8' not supported
 

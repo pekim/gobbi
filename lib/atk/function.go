@@ -124,11 +124,47 @@ func GetVersion() string {
 
 // UNSUPPORTED : C value 'atk_relation_type_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_remove_focus_tracker' : parameter 'tracker_id' of type 'guint' not supported
+var removeFocusTrackerInvoker *gi.Function
 
-// UNSUPPORTED : C value 'atk_remove_global_event_listener' : parameter 'listener_id' of type 'guint' not supported
+// RemoveFocusTracker is a representation of the C type atk_remove_focus_tracker.
+func RemoveFocusTracker(trackerId uint32) {
+	if removeFocusTrackerInvoker == nil {
+		removeFocusTrackerInvoker = gi.FunctionInvokerNew("Atk", "remove_focus_tracker")
+	}
 
-// UNSUPPORTED : C value 'atk_remove_key_event_listener' : parameter 'listener_id' of type 'guint' not supported
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(trackerId)
+
+	removeFocusTrackerInvoker.Invoke(inArgs)
+}
+
+var removeGlobalEventListenerInvoker *gi.Function
+
+// RemoveGlobalEventListener is a representation of the C type atk_remove_global_event_listener.
+func RemoveGlobalEventListener(listenerId uint32) {
+	if removeGlobalEventListenerInvoker == nil {
+		removeGlobalEventListenerInvoker = gi.FunctionInvokerNew("Atk", "remove_global_event_listener")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(listenerId)
+
+	removeGlobalEventListenerInvoker.Invoke(inArgs)
+}
+
+var removeKeyEventListenerInvoker *gi.Function
+
+// RemoveKeyEventListener is a representation of the C type atk_remove_key_event_listener.
+func RemoveKeyEventListener(listenerId uint32) {
+	if removeKeyEventListenerInvoker == nil {
+		removeKeyEventListenerInvoker = gi.FunctionInvokerNew("Atk", "remove_key_event_listener")
+	}
+
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetUint32(listenerId)
+
+	removeKeyEventListenerInvoker.Invoke(inArgs)
+}
 
 // UNSUPPORTED : C value 'atk_role_for_name' : parameter 'name' of type 'utf8' not supported
 
