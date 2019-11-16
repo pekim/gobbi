@@ -14,10 +14,10 @@ func AsciiDigitValue(c int8) int32 {
 		asciiDigitValueInvoker = gi.FunctionInvokerNew("GLib", "ascii_digit_value")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiDigitValueInvoker.Invoke(inArgs)
+	ret := asciiDigitValueInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -51,10 +51,10 @@ func AsciiTolower(c int8) int8 {
 		asciiTolowerInvoker = gi.FunctionInvokerNew("GLib", "ascii_tolower")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiTolowerInvoker.Invoke(inArgs)
+	ret := asciiTolowerInvoker.Invoke(inArgs[:])
 	return ret.Int8()
 }
 
@@ -66,10 +66,10 @@ func AsciiToupper(c int8) int8 {
 		asciiToupperInvoker = gi.FunctionInvokerNew("GLib", "ascii_toupper")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiToupperInvoker.Invoke(inArgs)
+	ret := asciiToupperInvoker.Invoke(inArgs[:])
 	return ret.Int8()
 }
 
@@ -81,10 +81,10 @@ func AsciiXdigitValue(c int8) int32 {
 		asciiXdigitValueInvoker = gi.FunctionInvokerNew("GLib", "ascii_xdigit_value")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiXdigitValueInvoker.Invoke(inArgs)
+	ret := asciiXdigitValueInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -110,11 +110,11 @@ func AtomicIntAdd(atomic int32, val int32) int32 {
 		atomicIntAddInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_add")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(val)
 
-	ret := atomicIntAddInvoker.Invoke(inArgs)
+	ret := atomicIntAddInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -126,11 +126,11 @@ func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 		atomicIntAndInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_and")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
 
-	ret := atomicIntAndInvoker.Invoke(inArgs)
+	ret := atomicIntAndInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -146,11 +146,11 @@ func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
 		atomicIntExchangeAndAddInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_exchange_and_add")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(val)
 
-	ret := atomicIntExchangeAndAddInvoker.Invoke(inArgs)
+	ret := atomicIntExchangeAndAddInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -162,10 +162,10 @@ func AtomicIntGet(atomic int32) int32 {
 		atomicIntGetInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_get")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(atomic)
 
-	ret := atomicIntGetInvoker.Invoke(inArgs)
+	ret := atomicIntGetInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -177,10 +177,10 @@ func AtomicIntInc(atomic int32) {
 		atomicIntIncInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_inc")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(atomic)
 
-	atomicIntIncInvoker.Invoke(inArgs)
+	atomicIntIncInvoker.Invoke(inArgs[:])
 }
 
 var atomicIntOrInvoker *gi.Function
@@ -191,11 +191,11 @@ func AtomicIntOr(atomic uint32, val uint32) uint32 {
 		atomicIntOrInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_or")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
 
-	ret := atomicIntOrInvoker.Invoke(inArgs)
+	ret := atomicIntOrInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -207,11 +207,11 @@ func AtomicIntSet(atomic int32, newval int32) {
 		atomicIntSetInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_set")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(newval)
 
-	atomicIntSetInvoker.Invoke(inArgs)
+	atomicIntSetInvoker.Invoke(inArgs[:])
 }
 
 var atomicIntXorInvoker *gi.Function
@@ -222,11 +222,11 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 		atomicIntXorInvoker = gi.FunctionInvokerNew("GLib", "atomic_int_xor")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
 
-	ret := atomicIntXorInvoker.Invoke(inArgs)
+	ret := atomicIntXorInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -266,11 +266,11 @@ func BitLock(address int32, lockBit int32) {
 		bitLockInvoker = gi.FunctionInvokerNew("GLib", "bit_lock")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(address)
 	inArgs[1].SetInt32(lockBit)
 
-	bitLockInvoker.Invoke(inArgs)
+	bitLockInvoker.Invoke(inArgs[:])
 }
 
 var bitNthLsfInvoker *gi.Function
@@ -281,11 +281,11 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 		bitNthLsfInvoker = gi.FunctionInvokerNew("GLib", "bit_nth_lsf")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint64(mask)
 	inArgs[1].SetInt32(nthBit)
 
-	ret := bitNthLsfInvoker.Invoke(inArgs)
+	ret := bitNthLsfInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -297,11 +297,11 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 		bitNthMsfInvoker = gi.FunctionInvokerNew("GLib", "bit_nth_msf")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint64(mask)
 	inArgs[1].SetInt32(nthBit)
 
-	ret := bitNthMsfInvoker.Invoke(inArgs)
+	ret := bitNthMsfInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -313,10 +313,10 @@ func BitStorage(number uint64) uint32 {
 		bitStorageInvoker = gi.FunctionInvokerNew("GLib", "bit_storage")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(number)
 
-	ret := bitStorageInvoker.Invoke(inArgs)
+	ret := bitStorageInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -330,11 +330,11 @@ func BitUnlock(address int32, lockBit int32) {
 		bitUnlockInvoker = gi.FunctionInvokerNew("GLib", "bit_unlock")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(address)
 	inArgs[1].SetInt32(lockBit)
 
-	bitUnlockInvoker.Invoke(inArgs)
+	bitUnlockInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
@@ -378,12 +378,12 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 		checkVersionInvoker = gi.FunctionInvokerNew("GLib", "check_version")
 	}
 
-	inArgs := make([]gi.Argument, 3)
+	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(requiredMajor)
 	inArgs[1].SetUint32(requiredMinor)
 	inArgs[2].SetUint32(requiredMicro)
 
-	ret := checkVersionInvoker.Invoke(inArgs)
+	ret := checkVersionInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -556,10 +556,10 @@ func FormatSize(size uint64) string {
 		formatSizeInvoker = gi.FunctionInvokerNew("GLib", "format_size")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(size)
 
-	ret := formatSizeInvoker.Invoke(inArgs)
+	ret := formatSizeInvoker.Invoke(inArgs[:])
 	return ret.String(true)
 }
 
@@ -571,10 +571,10 @@ func FormatSizeForDisplay(size int64) string {
 		formatSizeForDisplayInvoker = gi.FunctionInvokerNew("GLib", "format_size_for_display")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(size)
 
-	ret := formatSizeForDisplayInvoker.Invoke(inArgs)
+	ret := formatSizeForDisplayInvoker.Invoke(inArgs[:])
 	return ret.String(true)
 }
 
@@ -1036,11 +1036,11 @@ func RandomIntRange(begin int32, end int32) int32 {
 		randomIntRangeInvoker = gi.FunctionInvokerNew("GLib", "random_int_range")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(begin)
 	inArgs[1].SetInt32(end)
 
-	ret := randomIntRangeInvoker.Invoke(inArgs)
+	ret := randomIntRangeInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -1052,10 +1052,10 @@ func RandomSetSeed(seed uint32) {
 		randomSetSeedInvoker = gi.FunctionInvokerNew("GLib", "random_set_seed")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(seed)
 
-	randomSetSeedInvoker.Invoke(inArgs)
+	randomSetSeedInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'g_realloc' : parameter 'mem' of type 'gpointer' not supported
@@ -1163,10 +1163,10 @@ func SpacedPrimesClosest(num uint32) uint32 {
 		spacedPrimesClosestInvoker = gi.FunctionInvokerNew("GLib", "spaced_primes_closest")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(num)
 
-	ret := spacedPrimesClosestInvoker.Invoke(inArgs)
+	ret := spacedPrimesClosestInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -1242,10 +1242,10 @@ func Strerror(errnum int32) string {
 		strerrorInvoker = gi.FunctionInvokerNew("GLib", "strerror")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(errnum)
 
-	ret := strerrorInvoker.Invoke(inArgs)
+	ret := strerrorInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -1289,10 +1289,10 @@ func Strsignal(signum int32) string {
 		strsignalInvoker = gi.FunctionInvokerNew("GLib", "strsignal")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(signum)
 
-	ret := strsignalInvoker.Invoke(inArgs)
+	ret := strsignalInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -1395,11 +1395,11 @@ func TestRandIntRange(begin int32, end int32) int32 {
 		testRandIntRangeInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int_range")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(begin)
 	inArgs[1].SetInt32(end)
 
-	ret := testRandIntRangeInvoker.Invoke(inArgs)
+	ret := testRandIntRangeInvoker.Invoke(inArgs[:])
 	return ret.Int32()
 }
 
@@ -1505,10 +1505,10 @@ func ThreadPoolSetMaxIdleTime(interval uint32) {
 		threadPoolSetMaxIdleTimeInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_idle_time")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(interval)
 
-	threadPoolSetMaxIdleTimeInvoker.Invoke(inArgs)
+	threadPoolSetMaxIdleTimeInvoker.Invoke(inArgs[:])
 }
 
 var threadPoolSetMaxUnusedThreadsInvoker *gi.Function
@@ -1519,10 +1519,10 @@ func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 		threadPoolSetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_unused_threads")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(maxThreads)
 
-	threadPoolSetMaxUnusedThreadsInvoker.Invoke(inArgs)
+	threadPoolSetMaxUnusedThreadsInvoker.Invoke(inArgs[:])
 }
 
 var threadPoolStopUnusedThreadsInvoker *gi.Function
@@ -1699,10 +1699,10 @@ func Usleep(microseconds uint64) {
 		usleepInvoker = gi.FunctionInvokerNew("GLib", "usleep")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(microseconds)
 
-	usleepInvoker.Invoke(inArgs)
+	usleepInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
@@ -1715,11 +1715,11 @@ func Utf16ToUtf8(str uint16, len int64, itemsRead int64, itemsWritten int64) str
 		utf16ToUtf8Invoker = gi.FunctionInvokerNew("GLib", "utf16_to_utf8")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint16(str)
 	inArgs[1].SetInt64(len)
 
-	ret := utf16ToUtf8Invoker.Invoke(inArgs)
+	ret := utf16ToUtf8Invoker.Invoke(inArgs[:])
 	return ret.String(true)
 }
 

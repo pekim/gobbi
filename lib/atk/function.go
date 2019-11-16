@@ -132,10 +132,10 @@ func RemoveFocusTracker(trackerId uint32) {
 		removeFocusTrackerInvoker = gi.FunctionInvokerNew("Atk", "remove_focus_tracker")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(trackerId)
 
-	removeFocusTrackerInvoker.Invoke(inArgs)
+	removeFocusTrackerInvoker.Invoke(inArgs[:])
 }
 
 var removeGlobalEventListenerInvoker *gi.Function
@@ -146,10 +146,10 @@ func RemoveGlobalEventListener(listenerId uint32) {
 		removeGlobalEventListenerInvoker = gi.FunctionInvokerNew("Atk", "remove_global_event_listener")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
-	removeGlobalEventListenerInvoker.Invoke(inArgs)
+	removeGlobalEventListenerInvoker.Invoke(inArgs[:])
 }
 
 var removeKeyEventListenerInvoker *gi.Function
@@ -160,10 +160,10 @@ func RemoveKeyEventListener(listenerId uint32) {
 		removeKeyEventListenerInvoker = gi.FunctionInvokerNew("Atk", "remove_key_event_listener")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
-	removeKeyEventListenerInvoker.Invoke(inArgs)
+	removeKeyEventListenerInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'atk_role_for_name' : parameter 'name' of type 'utf8' not supported

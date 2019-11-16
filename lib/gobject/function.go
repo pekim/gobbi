@@ -214,10 +214,10 @@ func SignalName(signalId uint32) string {
 		signalNameInvoker = gi.FunctionInvokerNew("GObject", "signal_name")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
-	ret := signalNameInvoker.Invoke(inArgs)
+	ret := signalNameInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -245,11 +245,11 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 		signalRemoveEmissionHookInvoker = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
 
-	signalRemoveEmissionHookInvoker.Invoke(inArgs)
+	signalRemoveEmissionHookInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported

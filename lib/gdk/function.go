@@ -201,10 +201,10 @@ func KeyboardUngrab(time uint32) {
 		keyboardUngrabInvoker = gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(time)
 
-	keyboardUngrabInvoker.Invoke(inArgs)
+	keyboardUngrabInvoker.Invoke(inArgs[:])
 }
 
 var keyvalConvertCaseInvoker *gi.Function
@@ -215,10 +215,10 @@ func KeyvalConvertCase(symbol uint32, lower uint32, upper uint32) {
 		keyvalConvertCaseInvoker = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(symbol)
 
-	keyvalConvertCaseInvoker.Invoke(inArgs)
+	keyvalConvertCaseInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_from_name' : parameter 'keyval_name' of type 'utf8' not supported
@@ -235,10 +235,10 @@ func KeyvalName(keyval uint32) string {
 		keyvalNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_name")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalNameInvoker.Invoke(inArgs)
+	ret := keyvalNameInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -250,10 +250,10 @@ func KeyvalToLower(keyval uint32) uint32 {
 		keyvalToLowerInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalToLowerInvoker.Invoke(inArgs)
+	ret := keyvalToLowerInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -265,10 +265,10 @@ func KeyvalToUnicode(keyval uint32) uint32 {
 		keyvalToUnicodeInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalToUnicodeInvoker.Invoke(inArgs)
+	ret := keyvalToUnicodeInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -280,10 +280,10 @@ func KeyvalToUpper(keyval uint32) uint32 {
 		keyvalToUpperInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalToUpperInvoker.Invoke(inArgs)
+	ret := keyvalToUpperInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 
@@ -336,10 +336,10 @@ func PointerUngrab(time uint32) {
 		pointerUngrabInvoker = gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(time)
 
-	pointerUngrabInvoker.Invoke(inArgs)
+	pointerUngrabInvoker.Invoke(inArgs[:])
 }
 
 var preParseLibgtkOnlyInvoker *gi.Function
@@ -389,10 +389,10 @@ func SetDoubleClickTime(msec uint32) {
 		setDoubleClickTimeInvoker = gi.FunctionInvokerNew("Gdk", "set_double_click_time")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(msec)
 
-	setDoubleClickTimeInvoker.Invoke(inArgs)
+	setDoubleClickTimeInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'gdk_set_program_class' : parameter 'program_class' of type 'utf8' not supported
@@ -466,10 +466,10 @@ func UnicodeToKeyval(wc uint32) uint32 {
 		unicodeToKeyvalInvoker = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(wc)
 
-	ret := unicodeToKeyvalInvoker.Invoke(inArgs)
+	ret := unicodeToKeyvalInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 

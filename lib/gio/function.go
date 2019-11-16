@@ -56,10 +56,10 @@ func BusUnownName(ownerId uint32) {
 		busUnownNameInvoker = gi.FunctionInvokerNew("Gio", "bus_unown_name")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(ownerId)
 
-	busUnownNameInvoker.Invoke(inArgs)
+	busUnownNameInvoker.Invoke(inArgs[:])
 }
 
 var busUnwatchNameInvoker *gi.Function
@@ -70,10 +70,10 @@ func BusUnwatchName(watcherId uint32) {
 		busUnwatchNameInvoker = gi.FunctionInvokerNew("Gio", "bus_unwatch_name")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(watcherId)
 
-	busUnwatchNameInvoker.Invoke(inArgs)
+	busUnwatchNameInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported

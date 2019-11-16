@@ -60,12 +60,12 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 		checkVersionInvoker = gi.FunctionInvokerNew("Gtk", "check_version")
 	}
 
-	inArgs := make([]gi.Argument, 3)
+	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(requiredMajor)
 	inArgs[1].SetUint32(requiredMinor)
 	inArgs[2].SetUint32(requiredMicro)
 
-	ret := checkVersionInvoker.Invoke(inArgs)
+	ret := checkVersionInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -226,10 +226,10 @@ func IconSizeGetName(size int32) string {
 		iconSizeGetNameInvoker = gi.FunctionInvokerNew("Gtk", "icon_size_get_name")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(size)
 
-	ret := iconSizeGetNameInvoker.Invoke(inArgs)
+	ret := iconSizeGetNameInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -259,10 +259,10 @@ func KeySnooperRemove(snooperHandlerId uint32) {
 		keySnooperRemoveInvoker = gi.FunctionInvokerNew("Gtk", "key_snooper_remove")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(snooperHandlerId)
 
-	keySnooperRemoveInvoker.Invoke(inArgs)
+	keySnooperRemoveInvoker.Invoke(inArgs[:])
 }
 
 var mainInvoker *gi.Function
@@ -506,10 +506,10 @@ func SetDebugFlags(flags uint32) {
 		setDebugFlagsInvoker = gi.FunctionInvokerNew("Gtk", "set_debug_flags")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(flags)
 
-	setDebugFlagsInvoker.Invoke(inArgs)
+	setDebugFlagsInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'gtk_show_about_dialog' : parameter 'parent' of type 'Window' not supported

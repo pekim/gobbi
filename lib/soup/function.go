@@ -126,10 +126,10 @@ func StatusGetPhrase(statusCode uint32) string {
 		statusGetPhraseInvoker = gi.FunctionInvokerNew("Soup", "status_get_phrase")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusGetPhraseInvoker.Invoke(inArgs)
+	ret := statusGetPhraseInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
@@ -141,10 +141,10 @@ func StatusProxify(statusCode uint32) uint32 {
 		statusProxifyInvoker = gi.FunctionInvokerNew("Soup", "status_proxify")
 	}
 
-	inArgs := make([]gi.Argument, 1)
+	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusProxifyInvoker.Invoke(inArgs)
+	ret := statusProxifyInvoker.Invoke(inArgs[:])
 	return ret.Uint32()
 }
 

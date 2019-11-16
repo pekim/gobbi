@@ -70,12 +70,10 @@ func (pp Parameters) generateInArgs(g *group) {
 	}
 
 	g.
+		Var().
 		Id("inArgs").
-		Op(":=").
-		Make(
-			jen.Index().Qual(gi.PackageName, "Argument"),
-			jen.Lit(count),
-		)
+		Index(jen.Lit(count)).
+		Qual(gi.PackageName, "Argument")
 
 	for n, param := range pp {
 		if param.isIn() {
@@ -88,7 +86,9 @@ func (pp Parameters) generateInArgs(g *group) {
 
 func (pp Parameters) generateCallParams(g *jen.Group) {
 	if pp.inCount() > 0 {
-		g.Id("inArgs")
+		g.
+			Id("inArgs").
+			Index(jen.Op(":"))
 	} else {
 		g.Nil()
 	}

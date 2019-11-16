@@ -142,11 +142,11 @@ func QuantizeLineGeometry(thickness int32, position int32) {
 		quantizeLineGeometryInvoker = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
 	}
 
-	inArgs := make([]gi.Argument, 2)
+	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(thickness)
 	inArgs[1].SetInt32(position)
 
-	quantizeLineGeometryInvoker.Invoke(inArgs)
+	quantizeLineGeometryInvoker.Invoke(inArgs[:])
 }
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
@@ -199,12 +199,12 @@ func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32)
 		versionCheckInvoker = gi.FunctionInvokerNew("Pango", "version_check")
 	}
 
-	inArgs := make([]gi.Argument, 3)
+	var inArgs [3]gi.Argument
 	inArgs[0].SetInt32(requiredMajor)
 	inArgs[1].SetInt32(requiredMinor)
 	inArgs[2].SetInt32(requiredMicro)
 
-	ret := versionCheckInvoker.Invoke(inArgs)
+	ret := versionCheckInvoker.Invoke(inArgs[:])
 	return ret.String(false)
 }
 
