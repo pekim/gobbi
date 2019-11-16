@@ -4,33 +4,45 @@ package gio
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'g_action_name_is_valid' : parameter 'action_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_action_name_is_valid' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'detailed_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'action_name' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_action_print_detailed_name' : parameter 'action_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_action_print_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'g_app_info_create_from_commandline' : parameter 'commandline' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_app_info_get_all' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_all_for_type' : parameter 'content_type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_get_all_for_type' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : parameter 'content_type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : parameter 'must_support_uris' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : parameter 'uri_scheme' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : return type 'AppInfo' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_fallback_for_type' : parameter 'content_type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_get_fallback_for_type' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : parameter 'content_type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri' : parameter 'context' of type 'AppLaunchContext' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'context' of type 'AppLaunchContext' not supported
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_app_info_reset_type_associations' : parameter 'content_type' of type 'utf8' not supported
+var appInfoResetTypeAssociationsInvoker *gi.Function
+
+// AppInfoResetTypeAssociations is a representation of the C type g_app_info_reset_type_associations.
+func AppInfoResetTypeAssociations(contentType string) {
+	if appInfoResetTypeAssociationsInvoker == nil {
+		appInfoResetTypeAssociationsInvoker = gi.FunctionInvokerNew("Gio", "app_info_reset_type_associations")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(contentType)
+
+	appInfoResetTypeAssociationsInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
 
@@ -84,43 +96,108 @@ func BusUnwatchName(watcherId uint32) {
 
 // UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_content_type_can_be_executable' : parameter 'type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_content_type_can_be_executable' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_content_type_equals' : parameter 'type1' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_content_type_equals' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_content_type_from_mime_type' : parameter 'mime_type' of type 'utf8' not supported
+var contentTypeFromMimeTypeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_content_type_get_description' : parameter 'type' of type 'utf8' not supported
+// ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
+func ContentTypeFromMimeType(mimeType string) string {
+	if contentTypeFromMimeTypeInvoker == nil {
+		contentTypeFromMimeTypeInvoker = gi.FunctionInvokerNew("Gio", "content_type_from_mime_type")
+	}
 
-// UNSUPPORTED : C value 'g_content_type_get_generic_icon_name' : parameter 'type' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(mimeType)
 
-// UNSUPPORTED : C value 'g_content_type_get_icon' : parameter 'type' of type 'utf8' not supported
+	ret := contentTypeFromMimeTypeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_content_type_get_mime_type' : parameter 'type' of type 'utf8' not supported
+var contentTypeGetDescriptionInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : parameter 'type' of type 'utf8' not supported
+// ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
+func ContentTypeGetDescription(type_ string) string {
+	if contentTypeGetDescriptionInvoker == nil {
+		contentTypeGetDescriptionInvoker = gi.FunctionInvokerNew("Gio", "content_type_get_description")
+	}
 
-// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'filename' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	ret := contentTypeGetDescriptionInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var contentTypeGetGenericIconNameInvoker *gi.Function
+
+// ContentTypeGetGenericIconName is a representation of the C type g_content_type_get_generic_icon_name.
+func ContentTypeGetGenericIconName(type_ string) string {
+	if contentTypeGetGenericIconNameInvoker == nil {
+		contentTypeGetGenericIconNameInvoker = gi.FunctionInvokerNew("Gio", "content_type_get_generic_icon_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	ret := contentTypeGetGenericIconNameInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
+
+var contentTypeGetMimeTypeInvoker *gi.Function
+
+// ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
+func ContentTypeGetMimeType(type_ string) string {
+	if contentTypeGetMimeTypeInvoker == nil {
+		contentTypeGetMimeTypeInvoker = gi.FunctionInvokerNew("Gio", "content_type_get_mime_type")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	ret := contentTypeGetMimeTypeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : return type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'data' has no type
 
 // UNSUPPORTED : C value 'g_content_type_guess_for_tree' : parameter 'root' of type 'File' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_a' : parameter 'type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_content_type_is_a' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_mime_type' : parameter 'type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_content_type_is_mime_type' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_unknown' : parameter 'type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_content_type_is_unknown' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_escape_value' : parameter 'string' of type 'utf8' not supported
+var dbusAddressEscapeValueInvoker *gi.Function
+
+// DbusAddressEscapeValue is a representation of the C type g_dbus_address_escape_value.
+func DbusAddressEscapeValue(string_ string) string {
+	if dbusAddressEscapeValueInvoker == nil {
+		dbusAddressEscapeValueInvoker = gi.FunctionInvokerNew("Gio", "dbus_address_escape_value")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := dbusAddressEscapeValueInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'address' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'cancellable' of type 'Cancellable' not supported
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'address' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'out_guid' with direction 'out' not supported
 
 // UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' has no type
 
@@ -130,13 +207,13 @@ func BusUnwatchName(watcherId uint32) {
 
 // UNSUPPORTED : C value 'g_dbus_error_is_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : parameter 'dbus_error_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : return type 'GLib.Error' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'error_domain_quark_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'quark_volatile' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 
@@ -158,19 +235,19 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_dbus_gvariant_to_gvalue' : parameter 'value' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_address' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_address' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_guid' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_guid' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_interface_name' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_interface_name' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_member_name' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_member_name' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_name' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_name' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_supported_address' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_supported_address' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_unique_name' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dbus_is_unique_name' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
 
@@ -182,17 +259,17 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_file_new_for_path' : parameter 'path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_uri' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_file_new_for_uri' : return type 'File' not supported
 
 // UNSUPPORTED : C value 'g_file_new_tmp' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_parse_name' : parameter 'parse_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_file_parse_name' : return type 'File' not supported
 
 // UNSUPPORTED : C value 'g_icon_deserialize' : parameter 'value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'g_icon_hash' : parameter 'icon' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_icon_new_for_string' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_icon_new_for_string' : return type 'Icon' not supported
 
 // UNSUPPORTED : C value 'g_initable_newv' : parameter 'object_type' of type 'GType' not supported
 
@@ -200,11 +277,11 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_io_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_implement' : parameter 'extension_point_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_io_extension_point_implement' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_lookup' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_io_extension_point_lookup' : return type 'IOExtensionPoint' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_register' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_io_extension_point_register' : return type 'IOExtensionPoint' not supported
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : parameter 'dirname' of type 'filename' not supported
 
@@ -227,7 +304,7 @@ func IoSchedulerCancelAllJobs() {
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : parameter 'job_func' of type 'IOSchedulerJobFunc' not supported
 
-// UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : parameter 'filename' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : return type 'SettingsBackend' not supported
 
 // UNSUPPORTED : C value 'g_memory_settings_backend_new' : return type 'SettingsBackend' not supported
 
@@ -256,7 +333,7 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_pollable_stream_write_all' : parameter 'stream' of type 'OutputStream' not supported
 
-// UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : parameter 'protocol' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : return type 'Proxy' not supported
 
 // UNSUPPORTED : C value 'g_proxy_resolver_get_default' : return type 'ProxyResolver' not supported
 
@@ -266,13 +343,13 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_resource_load' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_resources_enumerate_children' : parameter 'path' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_resources_enumerate_children' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
 
-// UNSUPPORTED : C value 'g_resources_get_info' : parameter 'path' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_resources_get_info' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
 
-// UNSUPPORTED : C value 'g_resources_lookup_data' : parameter 'path' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_resources_lookup_data' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
 
-// UNSUPPORTED : C value 'g_resources_open_stream' : parameter 'path' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_resources_open_stream' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
 
 // UNSUPPORTED : C value 'g_resources_register' : parameter 'resource' of type 'Resource' not supported
 
@@ -300,9 +377,9 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_unix_is_mount_path_system_internal' : parameter 'mount_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_system_device_path' : parameter 'device_path' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_unix_is_system_device_path' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_system_fs_type' : parameter 'fs_type' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_unix_is_system_fs_type' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_unix_mount_at' : parameter 'mount_path' of type 'filename' not supported
 
@@ -336,8 +413,8 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_get' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_unix_mount_points_get' : parameter 'time_read' with direction 'out' not supported
 
 // UNSUPPORTED : C value 'g_unix_mounts_changed_since' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_get' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_unix_mounts_get' : parameter 'time_read' with direction 'out' not supported

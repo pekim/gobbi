@@ -40,12 +40,7 @@ func (a *Argument) SetUint64(value uint64) {
 	(*(*uint64)(unsafe.Pointer(a))) = value
 }
 
-//func (a *Argument) String(transferOwnership bool) string {
-//	cString := *(**C.gchar)(unsafe.Pointer(&a))
-//	if transferOwnership {
-//		defer C.free(unsafe.Pointer(cString))
-//	}
-//
-//	goString := C.GoString(cString)
-//	return goString
-//}
+func (a *Argument) SetString(value string) {
+	cString := C.CString(value)
+	*(**C.gchar)(unsafe.Pointer(a)) = cString
+}

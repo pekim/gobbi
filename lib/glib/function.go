@@ -21,38 +21,80 @@ func AsciiDigitValue(c int8) int32 {
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'g_ascii_dtostr' : parameter 'buffer' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_ascii_dtostr' : parameter 'd' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_ascii_formatd' : parameter 'buffer' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_ascii_formatd' : parameter 'd' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strcasecmp' : parameter 's1' of type 'utf8' not supported
+var asciiStrcasecmpInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_ascii_strdown' : parameter 'str' of type 'utf8' not supported
+// AsciiStrcasecmp is a representation of the C type g_ascii_strcasecmp.
+func AsciiStrcasecmp(s1 string, s2 string) int32 {
+	if asciiStrcasecmpInvoker == nil {
+		asciiStrcasecmpInvoker = gi.FunctionInvokerNew("GLib", "ascii_strcasecmp")
+	}
 
-// UNSUPPORTED : C value 'g_ascii_string_to_signed' : parameter 'str' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(s1)
+	inArgs[1].SetString(s2)
 
-// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : parameter 'str' of type 'utf8' not supported
+	ret := asciiStrcasecmpInvoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
 
-// UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 's1' of type 'utf8' not supported
+var asciiStrdownInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_ascii_strtod' : parameter 'nptr' of type 'utf8' not supported
+// AsciiStrdown is a representation of the C type g_ascii_strdown.
+func AsciiStrdown(str string, len int32) string {
+	if asciiStrdownInvoker == nil {
+		asciiStrdownInvoker = gi.FunctionInvokerNew("GLib", "ascii_strdown")
+	}
 
-// UNSUPPORTED : C value 'g_ascii_strtoll' : parameter 'nptr' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
 
-// UNSUPPORTED : C value 'g_ascii_strtoull' : parameter 'nptr' of type 'utf8' not supported
+	ret := asciiStrdownInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_ascii_strup' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_ascii_string_to_signed' : parameter 'out_num' with direction 'out' not supported
+
+// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : parameter 'out_num' with direction 'out' not supported
+
+// UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 'n' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_ascii_strtod' : parameter 'endptr' with direction 'out' not supported
+
+// UNSUPPORTED : C value 'g_ascii_strtoll' : parameter 'endptr' with direction 'out' not supported
+
+// UNSUPPORTED : C value 'g_ascii_strtoull' : parameter 'endptr' with direction 'out' not supported
+
+var asciiStrupInvoker *gi.Function
+
+// AsciiStrup is a representation of the C type g_ascii_strup.
+func AsciiStrup(str string, len int32) string {
+	if asciiStrupInvoker == nil {
+		asciiStrupInvoker = gi.FunctionInvokerNew("GLib", "ascii_strup")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+
+	ret := asciiStrupInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 var asciiTolowerInvoker *gi.Function
 
 // AsciiTolower is a representation of the C type g_ascii_tolower.
-func AsciiTolower(c int8) int8 {
+func AsciiTolower(asciiStrtollc int8) int8 {
 	if asciiTolowerInvoker == nil {
 		asciiTolowerInvoker = gi.FunctionInvokerNew("GLib", "ascii_tolower")
 	}
 
 	var inArgs [1]gi.Argument
-	inArgs[0].SetInt8(c)
+	inArgs[0].SetInt8(asciiStrtollc)
 
 	ret := asciiTolowerInvoker.Invoke(inArgs[:])
 	return ret.Int8()
@@ -88,17 +130,84 @@ func AsciiXdigitValue(c int8) int32 {
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'g_assert_warning' : parameter 'log_domain' of type 'utf8' not supported
+var assertWarningInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_assertion_message' : parameter 'domain' of type 'utf8' not supported
+// AssertWarning is a representation of the C type g_assert_warning.
+func AssertWarning(logDomain string, file string, line int32, prettyFunction string, expression string) {
+	if assertWarningInvoker == nil {
+		assertWarningInvoker = gi.FunctionInvokerNew("GLib", "assert_warning")
+	}
 
-// UNSUPPORTED : C value 'g_assertion_message_cmpnum' : parameter 'domain' of type 'utf8' not supported
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(prettyFunction)
+	inArgs[4].SetString(expression)
 
-// UNSUPPORTED : C value 'g_assertion_message_cmpstr' : parameter 'domain' of type 'utf8' not supported
+	assertWarningInvoker.Invoke(inArgs[:])
+}
 
-// UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'domain' of type 'utf8' not supported
+var assertionMessageInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_assertion_message_expr' : parameter 'domain' of type 'utf8' not supported
+// AssertionMessage is a representation of the C type g_assertion_message.
+func AssertionMessage(domain string, file string, line int32, func_ string, message string) {
+	if assertionMessageInvoker == nil {
+		assertionMessageInvoker = gi.FunctionInvokerNew("GLib", "assertion_message")
+	}
+
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+	inArgs[4].SetString(message)
+
+	assertionMessageInvoker.Invoke(inArgs[:])
+}
+
+// UNSUPPORTED : C value 'g_assertion_message_cmpnum' : parameter 'arg1' of type 'long double' not supported
+
+var assertionMessageCmpstrInvoker *gi.Function
+
+// AssertionMessageCmpstr is a representation of the C type g_assertion_message_cmpstr.
+func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
+	if assertionMessageCmpstrInvoker == nil {
+		assertionMessageCmpstrInvoker = gi.FunctionInvokerNew("GLib", "assertion_message_cmpstr")
+	}
+
+	var inArgs [8]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+	inArgs[4].SetString(expr)
+	inArgs[5].SetString(arg1)
+	inArgs[6].SetString(cmp)
+	inArgs[7].SetString(arg2)
+
+	assertionMessageCmpstrInvoker.Invoke(inArgs[:])
+}
+
+// UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'error' of type 'Error' not supported
+
+var assertionMessageExprInvoker *gi.Function
+
+// AssertionMessageExpr is a representation of the C type g_assertion_message_expr.
+func AssertionMessageExpr(domain string, file string, line int32, func_ string, expr string) {
+	if assertionMessageExprInvoker == nil {
+		assertionMessageExprInvoker = gi.FunctionInvokerNew("GLib", "assertion_message_expr")
+	}
+
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+	inArgs[4].SetString(expr)
+
+	assertionMessageExprInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_atexit' : parameter 'func' of type 'VoidFunc' not supported
 
@@ -244,7 +353,7 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 // UNSUPPORTED : C value 'g_atomic_pointer_xor' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_base64_decode' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_base64_decode' : parameter 'out_len' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' has no type
 
@@ -347,7 +456,7 @@ func BitUnlock(address int32, lockBit int32) {
 
 // UNSUPPORTED : C value 'g_build_path' : parameter 'separator' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_build_pathv' : parameter 'separator' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_build_pathv' : parameter 'args' has no type
 
 // UNSUPPORTED : C value 'g_byte_array_free' : parameter 'array' has no type
 
@@ -474,7 +583,7 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_date_is_leap_year' : parameter 'year' of type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_date_strftime' : parameter 's' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_date_strftime' : parameter 'slen' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_date_time_compare' : parameter 'dt1' of type 'gpointer' not supported
 
@@ -494,9 +603,38 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_date_valid_year' : parameter 'year' of type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_dcgettext' : parameter 'domain' of type 'utf8' not supported
+var dcgettextInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_dgettext' : parameter 'domain' of type 'utf8' not supported
+// Dcgettext is a representation of the C type g_dcgettext.
+func Dcgettext(domain string, msgid string, category int32) string {
+	if dcgettextInvoker == nil {
+		dcgettextInvoker = gi.FunctionInvokerNew("GLib", "dcgettext")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(msgid)
+	inArgs[2].SetInt32(category)
+
+	ret := dcgettextInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
+
+var dgettextInvoker *gi.Function
+
+// Dgettext is a representation of the C type g_dgettext.
+func Dgettext(domain string, msgid string) string {
+	if dgettextInvoker == nil {
+		dgettextInvoker = gi.FunctionInvokerNew("GLib", "dgettext")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(msgid)
+
+	ret := dgettextInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_dir_make_tmp' : parameter 'tmpl' of type 'filename' not supported
 
@@ -504,15 +642,46 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_direct_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dngettext' : parameter 'domain' of type 'utf8' not supported
+var dngettextInvoker *gi.Function
+
+// Dngettext is a representation of the C type g_dngettext.
+func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string {
+	if dngettextInvoker == nil {
+		dngettextInvoker = gi.FunctionInvokerNew("GLib", "dngettext")
+	}
+
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(msgid)
+	inArgs[2].SetString(msgidPlural)
+	inArgs[3].SetUint64(n)
+
+	ret := dngettextInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_double_equal' : parameter 'v1' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_double_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dpgettext' : parameter 'domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_dpgettext' : parameter 'msgidoffset' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_dpgettext2' : parameter 'domain' of type 'utf8' not supported
+var dpgettext2Invoker *gi.Function
+
+// Dpgettext2 is a representation of the C type g_dpgettext2.
+func Dpgettext2(domain string, context string, msgid string) string {
+	if dpgettext2Invoker == nil {
+		dpgettext2Invoker = gi.FunctionInvokerNew("GLib", "dpgettext2")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(context)
+	inArgs[2].SetString(msgid)
+
+	ret := dpgettext2Invoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' has no type
 
@@ -538,9 +707,9 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_filename_display_name' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_from_uri' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_filename_from_uri' : parameter 'hostname' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_filename_from_utf8' : parameter 'utf8string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_filename_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_filename_to_uri' : parameter 'filename' of type 'filename' not supported
 
@@ -625,7 +794,7 @@ func GetEnviron() {
 	getEnvironInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'charsets' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_get_filename_charsets' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
 
@@ -652,7 +821,19 @@ func GetLanguageNames() {
 	getLanguageNamesInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_get_locale_variants' : parameter 'locale' of type 'utf8' not supported
+var getLocaleVariantsInvoker *gi.Function
+
+// GetLocaleVariants is a representation of the C type g_get_locale_variants.
+func GetLocaleVariants(locale string) {
+	if getLocaleVariantsInvoker == nil {
+		getLocaleVariantsInvoker = gi.FunctionInvokerNew("GLib", "get_locale_variants")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(locale)
+
+	getLocaleVariantsInvoker.Invoke(inArgs[:])
+}
 
 var getMonotonicTimeInvoker *gi.Function
 
@@ -780,19 +961,45 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_hook_unref' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_ascii_encoded' : parameter 'hostname' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_hostname_is_ascii_encoded' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_ip_address' : parameter 'hostname' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_hostname_is_ip_address' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_non_ascii' : parameter 'hostname' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_hostname_is_non_ascii' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_hostname_to_ascii' : parameter 'hostname' of type 'utf8' not supported
+var hostnameToAsciiInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_hostname_to_unicode' : parameter 'hostname' of type 'utf8' not supported
+// HostnameToAscii is a representation of the C type g_hostname_to_ascii.
+func HostnameToAscii(hostname string) string {
+	if hostnameToAsciiInvoker == nil {
+		hostnameToAsciiInvoker = gi.FunctionInvokerNew("GLib", "hostname_to_ascii")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(hostname)
+
+	ret := hostnameToAsciiInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var hostnameToUnicodeInvoker *gi.Function
+
+// HostnameToUnicode is a representation of the C type g_hostname_to_unicode.
+func HostnameToUnicode(hostname string) string {
+	if hostnameToUnicodeInvoker == nil {
+		hostnameToUnicodeInvoker = gi.FunctionInvokerNew("GLib", "hostname_to_unicode")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(hostname)
+
+	ret := hostnameToUnicodeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
 
-// UNSUPPORTED : C value 'g_iconv_open' : parameter 'to_codeset' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_iconv_open' : return type 'IConv' not supported
 
 // UNSUPPORTED : C value 'g_idle_add' : parameter 'function' of type 'SourceFunc' not supported
 
@@ -810,9 +1017,35 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_int_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_intern_static_string' : parameter 'string' of type 'utf8' not supported
+var internStaticStringInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_intern_string' : parameter 'string' of type 'utf8' not supported
+// InternStaticString is a representation of the C type g_intern_static_string.
+func InternStaticString(string_ string) string {
+	if internStaticStringInvoker == nil {
+		internStaticStringInvoker = gi.FunctionInvokerNew("GLib", "intern_static_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := internStaticStringInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
+
+var internStringInvoker *gi.Function
+
+// InternString is a representation of the C type g_intern_string.
+func InternString(string_ string) string {
+	if internStringInvoker == nil {
+		internStringInvoker = gi.FunctionInvokerNew("GLib", "intern_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := internStringInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
 
 // UNSUPPORTED : C value 'g_io_add_watch' : parameter 'channel' of type 'IOChannel' not supported
 
@@ -837,35 +1070,48 @@ func Listenv() {
 	listenvInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_locale_from_utf8' : parameter 'utf8string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_locale_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' has no type
 
-// UNSUPPORTED : C value 'g_log' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_default_handler' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_default_handler' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_remove_handler' : parameter 'log_domain' of type 'utf8' not supported
+var logRemoveHandlerInvoker *gi.Function
+
+// LogRemoveHandler is a representation of the C type g_log_remove_handler.
+func LogRemoveHandler(logDomain string, handlerId uint32) {
+	if logRemoveHandlerInvoker == nil {
+		logRemoveHandlerInvoker = gi.FunctionInvokerNew("GLib", "log_remove_handler")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetUint32(handlerId)
+
+	logRemoveHandlerInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_log_set_always_fatal' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_set_default_handler' : parameter 'log_func' of type 'LogFunc' not supported
 
-// UNSUPPORTED : C value 'g_log_set_fatal_mask' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_set_fatal_mask' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_set_handler' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_set_handler' : parameter 'log_levels' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_set_handler_full' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_set_handler_full' : parameter 'log_levels' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_set_writer_func' : parameter 'func' of type 'LogWriterFunc' not supported
 
-// UNSUPPORTED : C value 'g_log_structured' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_structured' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_structured_array' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_structured_standard' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_structured_standard' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_variant' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_log_variant' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_writer_default' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
@@ -879,7 +1125,7 @@ func Listenv() {
 
 // UNSUPPORTED : C value 'g_log_writer_supports_color' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_logv' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_logv' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_main_context_default' : return type 'MainContext' not supported
 
@@ -909,15 +1155,29 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_malloc_n' : parameter 'n_blocks' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'element_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'error' of type 'Error' not supported
 
 // UNSUPPORTED : C value 'g_markup_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_markup_escape_text' : parameter 'text' of type 'utf8' not supported
+var markupEscapeTextInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter 'format' of type 'utf8' not supported
+// MarkupEscapeText is a representation of the C type g_markup_escape_text.
+func MarkupEscapeText(text string, length int32) string {
+	if markupEscapeTextInvoker == nil {
+		markupEscapeTextInvoker = gi.FunctionInvokerNew("GLib", "markup_escape_text")
+	}
 
-// UNSUPPORTED : C value 'g_markup_vprintf_escaped' : parameter 'format' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetInt32(length)
+
+	ret := markupEscapeTextInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter '...' has no type
+
+// UNSUPPORTED : C value 'g_markup_vprintf_escaped' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type 'gboolean' not supported
 
@@ -950,9 +1210,33 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_number_parser_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_on_error_query' : parameter 'prg_name' of type 'utf8' not supported
+var onErrorQueryInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_on_error_stack_trace' : parameter 'prg_name' of type 'utf8' not supported
+// OnErrorQuery is a representation of the C type g_on_error_query.
+func OnErrorQuery(prgName string) {
+	if onErrorQueryInvoker == nil {
+		onErrorQueryInvoker = gi.FunctionInvokerNew("GLib", "on_error_query")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(prgName)
+
+	onErrorQueryInvoker.Invoke(inArgs[:])
+}
+
+var onErrorStackTraceInvoker *gi.Function
+
+// OnErrorStackTrace is a representation of the C type g_on_error_stack_trace.
+func OnErrorStackTrace(prgName string) {
+	if onErrorStackTraceInvoker == nil {
+		onErrorStackTraceInvoker = gi.FunctionInvokerNew("GLib", "on_error_stack_trace")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(prgName)
+
+	onErrorStackTraceInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_once_init_enter' : parameter 'location' of type 'gpointer' not supported
 
@@ -960,7 +1244,7 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_option_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'keys' has no type
 
 // UNSUPPORTED : C value 'g_path_get_basename' : parameter 'file_name' of type 'filename' not supported
 
@@ -972,7 +1256,7 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_pattern_match' : parameter 'pspec' of type 'PatternSpec' not supported
 
-// UNSUPPORTED : C value 'g_pattern_match_simple' : parameter 'pattern' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_pattern_match_simple' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_pattern_match_string' : parameter 'pspec' of type 'PatternSpec' not supported
 
@@ -984,17 +1268,17 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_poll' : parameter 'fds' of type 'PollFD' not supported
 
-// UNSUPPORTED : C value 'g_prefix_error' : parameter 'err' with direction 'inout' not supported
+// UNSUPPORTED : C value 'g_prefix_error' : parameter 'err' of type 'Error' not supported
 
-// UNSUPPORTED : C value 'g_print' : parameter 'format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_print' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_printerr' : parameter 'format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_printerr' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_printf' : parameter 'format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_printf' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_printf_string_upper_bound' : parameter 'format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_printf_string_upper_bound' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_propagate_error' : parameter 'dest' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_propagate_error' : parameter 'dest' of type 'Error' not supported
 
 // UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter 'dest' of type 'Error' not supported
 
@@ -1004,13 +1288,13 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'pbase' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_quark_from_static_string' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_quark_from_static_string' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_quark_from_string' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_quark_from_string' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_quark_to_string' : parameter 'quark' of type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_quark_try_string' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_quark_try_string' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_random_double' : return type 'gdouble' not supported
 
@@ -1062,17 +1346,31 @@ func RandomSetSeed(seed uint32) {
 
 // UNSUPPORTED : C value 'g_realloc_n' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'replacement' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'has_references' of type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_regex_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_regex_escape_nul' : parameter 'string' of type 'utf8' not supported
+var regexEscapeNulInvoker *gi.Function
+
+// RegexEscapeNul is a representation of the C type g_regex_escape_nul.
+func RegexEscapeNul(string_ string, length int32) string {
+	if regexEscapeNulInvoker == nil {
+		regexEscapeNulInvoker = gi.FunctionInvokerNew("GLib", "regex_escape_nul")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetInt32(length)
+
+	ret := regexEscapeNulInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' has no type
 
-// UNSUPPORTED : C value 'g_regex_match_simple' : parameter 'pattern' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_regex_match_simple' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
 
-// UNSUPPORTED : C value 'g_regex_split_simple' : parameter 'pattern' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_regex_split_simple' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
 
 var reloadUserSpecialDirsCacheInvoker *gi.Function
 
@@ -1085,7 +1383,21 @@ func ReloadUserSpecialDirsCache() {
 	reloadUserSpecialDirsCacheInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_return_if_fail_warning' : parameter 'log_domain' of type 'utf8' not supported
+var returnIfFailWarningInvoker *gi.Function
+
+// ReturnIfFailWarning is a representation of the C type g_return_if_fail_warning.
+func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
+	if returnIfFailWarningInvoker == nil {
+		returnIfFailWarningInvoker = gi.FunctionInvokerNew("GLib", "return_if_fail_warning")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetString(prettyFunction)
+	inArgs[2].SetString(expression)
+
+	returnIfFailWarningInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_rmdir' : parameter 'filename' of type 'filename' not supported
 
@@ -1107,13 +1419,37 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_sequence_swap' : parameter 'a' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_set_application_name' : parameter 'application_name' of type 'utf8' not supported
+var setApplicationNameInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_set_error' : parameter 'err' with direction 'out' not supported
+// SetApplicationName is a representation of the C type g_set_application_name.
+func SetApplicationName(applicationName string) {
+	if setApplicationNameInvoker == nil {
+		setApplicationNameInvoker = gi.FunctionInvokerNew("GLib", "set_application_name")
+	}
 
-// UNSUPPORTED : C value 'g_set_error_literal' : parameter 'err' with direction 'out' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(applicationName)
 
-// UNSUPPORTED : C value 'g_set_prgname' : parameter 'prgname' of type 'utf8' not supported
+	setApplicationNameInvoker.Invoke(inArgs[:])
+}
+
+// UNSUPPORTED : C value 'g_set_error' : parameter 'err' of type 'Error' not supported
+
+// UNSUPPORTED : C value 'g_set_error_literal' : parameter 'err' of type 'Error' not supported
+
+var setPrgnameInvoker *gi.Function
+
+// SetPrgname is a representation of the C type g_set_prgname.
+func SetPrgname(prgname string) {
+	if setPrgnameInvoker == nil {
+		setPrgnameInvoker = gi.FunctionInvokerNew("GLib", "set_prgname")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(prgname)
+
+	setPrgnameInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_set_print_handler' : parameter 'func' of type 'PrintFunc' not supported
 
@@ -1145,7 +1481,7 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_slice_set_config' : parameter 'ckey' of type 'SliceConfig' not supported
 
-// UNSUPPORTED : C value 'g_snprintf' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_snprintf' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_source_remove' : return type 'gboolean' not supported
 
@@ -1153,7 +1489,20 @@ func ReloadUserSpecialDirsCache() {
 
 // UNSUPPORTED : C value 'g_source_remove_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_source_set_name_by_id' : parameter 'name' of type 'utf8' not supported
+var sourceSetNameByIdInvoker *gi.Function
+
+// SourceSetNameById is a representation of the C type g_source_set_name_by_id.
+func SourceSetNameById(tag uint32, name string) {
+	if sourceSetNameByIdInvoker == nil {
+		sourceSetNameByIdInvoker = gi.FunctionInvokerNew("GLib", "source_set_name_by_id")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint32(tag)
+	inArgs[1].SetString(name)
+
+	sourceSetNameByIdInvoker.Invoke(inArgs[:])
+}
 
 var spacedPrimesClosestInvoker *gi.Function
 
@@ -1188,51 +1537,214 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // UNSUPPORTED : C value 'g_spawn_sync' : parameter 'working_directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_sprintf' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_sprintf' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_stpcpy' : parameter 'dest' of type 'utf8' not supported
+var stpcpyInvoker *gi.Function
+
+// Stpcpy is a representation of the C type g_stpcpy.
+func Stpcpy(dest string, src string) string {
+	if stpcpyInvoker == nil {
+		stpcpyInvoker = gi.FunctionInvokerNew("GLib", "stpcpy")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(dest)
+	inArgs[1].SetString(src)
+
+	ret := stpcpyInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'g_str_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_str_has_prefix' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_str_has_prefix' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_str_has_suffix' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_str_has_suffix' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_str_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_str_is_ascii' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_str_is_ascii' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_str_match_string' : parameter 'search_term' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_str_match_string' : parameter 'accept_alternates' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_str_to_ascii' : parameter 'str' of type 'utf8' not supported
+var strToAsciiInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'string' of type 'utf8' not supported
+// StrToAscii is a representation of the C type g_str_to_ascii.
+func StrToAscii(str string, fromLocale string) string {
+	if strToAsciiInvoker == nil {
+		strToAsciiInvoker = gi.FunctionInvokerNew("GLib", "str_to_ascii")
+	}
 
-// UNSUPPORTED : C value 'g_strcanon' : parameter 'string' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetString(fromLocale)
 
-// UNSUPPORTED : C value 'g_strcasecmp' : parameter 's1' of type 'utf8' not supported
+	ret := strToAsciiInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_strchomp' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' has no type
 
-// UNSUPPORTED : C value 'g_strchug' : parameter 'string' of type 'utf8' not supported
+var strcanonInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strcmp0' : parameter 'str1' of type 'utf8' not supported
+// Strcanon is a representation of the C type g_strcanon.
+func Strcanon(string_ string, validChars string, substitutor int8) string {
+	if strcanonInvoker == nil {
+		strcanonInvoker = gi.FunctionInvokerNew("GLib", "strcanon")
+	}
 
-// UNSUPPORTED : C value 'g_strcompress' : parameter 'source' of type 'utf8' not supported
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetString(validChars)
+	inArgs[2].SetInt8(substitutor)
 
-// UNSUPPORTED : C value 'g_strconcat' : parameter 'string1' of type 'utf8' not supported
+	ret := strcanonInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_strdelimit' : parameter 'string' of type 'utf8' not supported
+var strcasecmpInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strdown' : parameter 'string' of type 'utf8' not supported
+// Strcasecmp is a representation of the C type g_strcasecmp.
+func Strcasecmp(s1 string, s2 string) int32 {
+	if strcasecmpInvoker == nil {
+		strcasecmpInvoker = gi.FunctionInvokerNew("GLib", "strcasecmp")
+	}
 
-// UNSUPPORTED : C value 'g_strdup' : parameter 'str' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(s1)
+	inArgs[1].SetString(s2)
 
-// UNSUPPORTED : C value 'g_strdup_printf' : parameter 'format' of type 'utf8' not supported
+	ret := strcasecmpInvoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
 
-// UNSUPPORTED : C value 'g_strdup_vprintf' : parameter 'format' of type 'utf8' not supported
+var strchompInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strdupv' : parameter 'str_array' of type 'utf8' not supported
+// Strchomp is a representation of the C type g_strchomp.
+func Strchomp(string_ string) string {
+	if strchompInvoker == nil {
+		strchompInvoker = gi.FunctionInvokerNew("GLib", "strchomp")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := strchompInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strchugInvoker *gi.Function
+
+// Strchug is a representation of the C type g_strchug.
+func Strchug(string_ string) string {
+	if strchugInvoker == nil {
+		strchugInvoker = gi.FunctionInvokerNew("GLib", "strchug")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := strchugInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strcmp0Invoker *gi.Function
+
+// Strcmp0 is a representation of the C type g_strcmp0.
+func Strcmp0(str1 string, str2 string) int32 {
+	if strcmp0Invoker == nil {
+		strcmp0Invoker = gi.FunctionInvokerNew("GLib", "strcmp0")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str1)
+	inArgs[1].SetString(str2)
+
+	ret := strcmp0Invoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
+
+var strcompressInvoker *gi.Function
+
+// Strcompress is a representation of the C type g_strcompress.
+func Strcompress(source string) string {
+	if strcompressInvoker == nil {
+		strcompressInvoker = gi.FunctionInvokerNew("GLib", "strcompress")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(source)
+
+	ret := strcompressInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_strconcat' : parameter '...' has no type
+
+var strdelimitInvoker *gi.Function
+
+// Strdelimit is a representation of the C type g_strdelimit.
+func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
+	if strdelimitInvoker == nil {
+		strdelimitInvoker = gi.FunctionInvokerNew("GLib", "strdelimit")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetString(delimiters)
+	inArgs[2].SetInt8(newDelimiter)
+
+	ret := strdelimitInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strdownInvoker *gi.Function
+
+// Strdown is a representation of the C type g_strdown.
+func Strdown(string_ string) string {
+	if strdownInvoker == nil {
+		strdownInvoker = gi.FunctionInvokerNew("GLib", "strdown")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := strdownInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strdupInvoker *gi.Function
+
+// Strdup is a representation of the C type g_strdup.
+func Strdup(str string) string {
+	if strdupInvoker == nil {
+		strdupInvoker = gi.FunctionInvokerNew("GLib", "strdup")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := strdupInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_strdup_printf' : parameter '...' has no type
+
+// UNSUPPORTED : C value 'g_strdup_vprintf' : parameter 'args' of type 'va_list' not supported
+
+var strdupvInvoker *gi.Function
+
+// Strdupv is a representation of the C type g_strdupv.
+func Strdupv(strArray string) {
+	if strdupvInvoker == nil {
+		strdupvInvoker = gi.FunctionInvokerNew("GLib", "strdupv")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(strArray)
+
+	strdupvInvoker.Invoke(inArgs[:])
+}
 
 var strerrorInvoker *gi.Function
 
@@ -1249,37 +1761,148 @@ func Strerror(errnum int32) string {
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'g_strescape' : parameter 'source' of type 'utf8' not supported
+var strescapeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strfreev' : parameter 'str_array' of type 'utf8' not supported
+// Strescape is a representation of the C type g_strescape.
+func Strescape(source string, exceptions string) string {
+	if strescapeInvoker == nil {
+		strescapeInvoker = gi.FunctionInvokerNew("GLib", "strescape")
+	}
 
-// UNSUPPORTED : C value 'g_string_new' : parameter 'init' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(source)
+	inArgs[1].SetString(exceptions)
 
-// UNSUPPORTED : C value 'g_string_new_len' : parameter 'init' of type 'utf8' not supported
+	ret := strescapeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strfreevInvoker *gi.Function
+
+// Strfreev is a representation of the C type g_strfreev.
+func Strfreev(strArray string) {
+	if strfreevInvoker == nil {
+		strfreevInvoker = gi.FunctionInvokerNew("GLib", "strfreev")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(strArray)
+
+	strfreevInvoker.Invoke(inArgs[:])
+}
+
+// UNSUPPORTED : C value 'g_string_new' : return type 'String' not supported
+
+// UNSUPPORTED : C value 'g_string_new_len' : return type 'String' not supported
 
 // UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_strip_context' : parameter 'msgid' of type 'utf8' not supported
+var stripContextInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strjoin' : parameter 'separator' of type 'utf8' not supported
+// StripContext is a representation of the C type g_strip_context.
+func StripContext(msgid string, msgval string) string {
+	if stripContextInvoker == nil {
+		stripContextInvoker = gi.FunctionInvokerNew("GLib", "strip_context")
+	}
 
-// UNSUPPORTED : C value 'g_strjoinv' : parameter 'separator' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(msgid)
+	inArgs[1].SetString(msgval)
 
-// UNSUPPORTED : C value 'g_strlcat' : parameter 'dest' of type 'utf8' not supported
+	ret := stripContextInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
 
-// UNSUPPORTED : C value 'g_strlcpy' : parameter 'dest' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_strjoin' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_strncasecmp' : parameter 's1' of type 'utf8' not supported
+var strjoinvInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strndup' : parameter 'str' of type 'utf8' not supported
+// Strjoinv is a representation of the C type g_strjoinv.
+func Strjoinv(separator string, strArray string) string {
+	if strjoinvInvoker == nil {
+		strjoinvInvoker = gi.FunctionInvokerNew("GLib", "strjoinv")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(separator)
+	inArgs[1].SetString(strArray)
+
+	ret := strjoinvInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_strlcat' : parameter 'dest_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_strlcpy' : parameter 'dest_size' of type 'gsize' not supported
+
+var strncasecmpInvoker *gi.Function
+
+// Strncasecmp is a representation of the C type g_strncasecmp.
+func Strncasecmp(s1 string, s2 string, n uint32) int32 {
+	if strncasecmpInvoker == nil {
+		strncasecmpInvoker = gi.FunctionInvokerNew("GLib", "strncasecmp")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(s1)
+	inArgs[1].SetString(s2)
+	inArgs[2].SetUint32(n)
+
+	ret := strncasecmpInvoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
+
+// UNSUPPORTED : C value 'g_strndup' : parameter 'n' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_strnfill' : parameter 'length' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_strreverse' : parameter 'string' of type 'utf8' not supported
+var strreverseInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strrstr' : parameter 'haystack' of type 'utf8' not supported
+// Strreverse is a representation of the C type g_strreverse.
+func Strreverse(string_ string) string {
+	if strreverseInvoker == nil {
+		strreverseInvoker = gi.FunctionInvokerNew("GLib", "strreverse")
+	}
 
-// UNSUPPORTED : C value 'g_strrstr_len' : parameter 'haystack' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := strreverseInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strrstrInvoker *gi.Function
+
+// Strrstr is a representation of the C type g_strrstr.
+func Strrstr(haystack string, needle string) string {
+	if strrstrInvoker == nil {
+		strrstrInvoker = gi.FunctionInvokerNew("GLib", "strrstr")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(haystack)
+	inArgs[1].SetString(needle)
+
+	ret := strrstrInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var strrstrLenInvoker *gi.Function
+
+// StrrstrLen is a representation of the C type g_strrstr_len.
+func StrrstrLen(haystack string, haystackLen int32, needle string) string {
+	if strrstrLenInvoker == nil {
+		strrstrLenInvoker = gi.FunctionInvokerNew("GLib", "strrstr_len")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(haystack)
+	inArgs[1].SetInt32(haystackLen)
+	inArgs[2].SetString(needle)
+
+	ret := strrstrLenInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 var strsignalInvoker *gi.Function
 
@@ -1296,43 +1919,151 @@ func Strsignal(signum int32) string {
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'g_strsplit' : parameter 'string' of type 'utf8' not supported
+var strsplitInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strsplit_set' : parameter 'string' of type 'utf8' not supported
+// Strsplit is a representation of the C type g_strsplit.
+func Strsplit(string_ string, delimiter string, maxTokens int32) {
+	if strsplitInvoker == nil {
+		strsplitInvoker = gi.FunctionInvokerNew("GLib", "strsplit")
+	}
 
-// UNSUPPORTED : C value 'g_strstr_len' : parameter 'haystack' of type 'utf8' not supported
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetString(delimiter)
+	inArgs[2].SetInt32(maxTokens)
 
-// UNSUPPORTED : C value 'g_strtod' : parameter 'nptr' of type 'utf8' not supported
+	strsplitInvoker.Invoke(inArgs[:])
+}
 
-// UNSUPPORTED : C value 'g_strup' : parameter 'string' of type 'utf8' not supported
+var strsplitSetInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_strv_contains' : parameter 'strv' of type 'utf8' not supported
+// StrsplitSet is a representation of the C type g_strsplit_set.
+func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
+	if strsplitSetInvoker == nil {
+		strsplitSetInvoker = gi.FunctionInvokerNew("GLib", "strsplit_set")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetString(delimiters)
+	inArgs[2].SetInt32(maxTokens)
+
+	strsplitSetInvoker.Invoke(inArgs[:])
+}
+
+var strstrLenInvoker *gi.Function
+
+// StrstrLen is a representation of the C type g_strstr_len.
+func StrstrLen(haystack string, haystackLen int32, needle string) string {
+	if strstrLenInvoker == nil {
+		strstrLenInvoker = gi.FunctionInvokerNew("GLib", "strstr_len")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(haystack)
+	inArgs[1].SetInt32(haystackLen)
+	inArgs[2].SetString(needle)
+
+	ret := strstrLenInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_strtod' : parameter 'endptr' with direction 'out' not supported
+
+var strupInvoker *gi.Function
+
+// Strup is a representation of the C type g_strup.
+func Strup(string_ string) string {
+	if strupInvoker == nil {
+		strupInvoker = gi.FunctionInvokerNew("GLib", "strup")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := strupInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_strv_contains' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_strv_length' : parameter 'str_array' of type 'utf8' not supported
+var strvLengthInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'testpath' of type 'utf8' not supported
+// StrvLength is a representation of the C type g_strv_length.
+func StrvLength(strArray string) uint32 {
+	if strvLengthInvoker == nil {
+		strvLengthInvoker = gi.FunctionInvokerNew("GLib", "strv_length")
+	}
 
-// UNSUPPORTED : C value 'g_test_add_data_func_full' : parameter 'testpath' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(strArray)
 
-// UNSUPPORTED : C value 'g_test_add_func' : parameter 'testpath' of type 'utf8' not supported
+	ret := strvLengthInvoker.Invoke(inArgs[:])
+	return ret.Uint32()
+}
 
-// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'testpath' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'test_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_test_assert_expected_messages_internal' : parameter 'domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_add_data_func_full' : parameter 'test_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_test_bug' : parameter 'bug_uri_snippet' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_add_func' : parameter 'test_func' of type 'TestFunc' not supported
 
-// UNSUPPORTED : C value 'g_test_bug_base' : parameter 'uri_pattern' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'data_size' of type 'gsize' not supported
+
+var testAssertExpectedMessagesInternalInvoker *gi.Function
+
+// TestAssertExpectedMessagesInternal is a representation of the C type g_test_assert_expected_messages_internal.
+func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
+	if testAssertExpectedMessagesInternalInvoker == nil {
+		testAssertExpectedMessagesInternalInvoker = gi.FunctionInvokerNew("GLib", "test_assert_expected_messages_internal")
+	}
+
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+
+	testAssertExpectedMessagesInternalInvoker.Invoke(inArgs[:])
+}
+
+var testBugInvoker *gi.Function
+
+// TestBug is a representation of the C type g_test_bug.
+func TestBug(bugUriSnippet string) {
+	if testBugInvoker == nil {
+		testBugInvoker = gi.FunctionInvokerNew("GLib", "test_bug")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(bugUriSnippet)
+
+	testBugInvoker.Invoke(inArgs[:])
+}
+
+var testBugBaseInvoker *gi.Function
+
+// TestBugBase is a representation of the C type g_test_bug_base.
+func TestBugBase(uriPattern string) {
+	if testBugBaseInvoker == nil {
+		testBugBaseInvoker = gi.FunctionInvokerNew("GLib", "test_bug_base")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uriPattern)
+
+	testBugBaseInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_test_build_filename' : parameter 'file_type' of type 'TestFileType' not supported
 
-// UNSUPPORTED : C value 'g_test_create_case' : parameter 'test_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_create_case' : parameter 'data_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_test_create_suite' : parameter 'suite_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_create_suite' : return type 'TestSuite' not supported
 
-// UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 var testFailInvoker *gi.Function
 
@@ -1353,9 +2084,21 @@ func TestFail() {
 
 // UNSUPPORTED : C value 'g_test_get_root' : return type 'TestSuite' not supported
 
-// UNSUPPORTED : C value 'g_test_incomplete' : parameter 'msg' of type 'utf8' not supported
+var testIncompleteInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_test_init' : parameter 'argv' of type 'utf8' not supported
+// TestIncomplete is a representation of the C type g_test_incomplete.
+func TestIncomplete(msg string) {
+	if testIncompleteInvoker == nil {
+		testIncompleteInvoker = gi.FunctionInvokerNew("GLib", "test_incomplete")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(msg)
+
+	testIncompleteInvoker.Invoke(inArgs[:])
+}
+
+// UNSUPPORTED : C value 'g_test_init' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_test_log_set_fatal_handler' : parameter 'log_func' of type 'TestLogFatalFunc' not supported
 
@@ -1363,7 +2106,7 @@ func TestFail() {
 
 // UNSUPPORTED : C value 'g_test_maximized_result' : parameter 'maximized_quantity' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_message' : parameter 'format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_message' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_test_minimized_result' : parameter 'minimized_quantity' of type 'gdouble' not supported
 
@@ -1428,7 +2171,19 @@ func TestSetNonfatalAssertions() {
 	testSetNonfatalAssertionsInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_test_skip' : parameter 'msg' of type 'utf8' not supported
+var testSkipInvoker *gi.Function
+
+// TestSkip is a representation of the C type g_test_skip.
+func TestSkip(msg string) {
+	if testSkipInvoker == nil {
+		testSkipInvoker = gi.FunctionInvokerNew("GLib", "test_skip")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(msg)
+
+	testSkipInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
 
@@ -1447,7 +2202,24 @@ func TestTimerStart() {
 	testTimerStartInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_test_trap_assertions' : parameter 'domain' of type 'utf8' not supported
+var testTrapAssertionsInvoker *gi.Function
+
+// TestTrapAssertions is a representation of the C type g_test_trap_assertions.
+func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) {
+	if testTrapAssertionsInvoker == nil {
+		testTrapAssertionsInvoker = gi.FunctionInvokerNew("GLib", "test_trap_assertions")
+	}
+
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+	inArgs[4].SetUint64(assertionFlags)
+	inArgs[5].SetString(pattern)
+
+	testTrapAssertionsInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'test_trap_flags' of type 'TestTrapFlags' not supported
 
@@ -1455,7 +2227,7 @@ func TestTimerStart() {
 
 // UNSUPPORTED : C value 'g_test_trap_reached_timeout' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_test_trap_subprocess' : parameter 'test_path' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_test_trap_subprocess' : parameter 'test_flags' of type 'TestSubprocessFlags' not supported
 
 // UNSUPPORTED : C value 'g_thread_error_quark' : return type 'Quark' not supported
 
@@ -1549,7 +2321,7 @@ func ThreadYield() {
 	threadYieldInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'iso_date' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'time_' of type 'TimeVal' not supported
 
 // UNSUPPORTED : C value 'g_timeout_add' : parameter 'function' of type 'SourceFunc' not supported
 
@@ -1681,15 +2453,69 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_unsetenv' : parameter 'variable' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_uri_escape_string' : parameter 'unescaped' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_uri_escape_string' : parameter 'allow_utf8' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_uri_list_extract_uris' : parameter 'uri_list' of type 'utf8' not supported
+var uriListExtractUrisInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_uri_parse_scheme' : parameter 'uri' of type 'utf8' not supported
+// UriListExtractUris is a representation of the C type g_uri_list_extract_uris.
+func UriListExtractUris(uriList string) {
+	if uriListExtractUrisInvoker == nil {
+		uriListExtractUrisInvoker = gi.FunctionInvokerNew("GLib", "uri_list_extract_uris")
+	}
 
-// UNSUPPORTED : C value 'g_uri_unescape_segment' : parameter 'escaped_string' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uriList)
 
-// UNSUPPORTED : C value 'g_uri_unescape_string' : parameter 'escaped_string' of type 'utf8' not supported
+	uriListExtractUrisInvoker.Invoke(inArgs[:])
+}
+
+var uriParseSchemeInvoker *gi.Function
+
+// UriParseScheme is a representation of the C type g_uri_parse_scheme.
+func UriParseScheme(uri string) string {
+	if uriParseSchemeInvoker == nil {
+		uriParseSchemeInvoker = gi.FunctionInvokerNew("GLib", "uri_parse_scheme")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uri)
+
+	ret := uriParseSchemeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var uriUnescapeSegmentInvoker *gi.Function
+
+// UriUnescapeSegment is a representation of the C type g_uri_unescape_segment.
+func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCharacters string) string {
+	if uriUnescapeSegmentInvoker == nil {
+		uriUnescapeSegmentInvoker = gi.FunctionInvokerNew("GLib", "uri_unescape_segment")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(escapedString)
+	inArgs[1].SetString(escapedStringEnd)
+	inArgs[2].SetString(illegalCharacters)
+
+	ret := uriUnescapeSegmentInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var uriUnescapeStringInvoker *gi.Function
+
+// UriUnescapeString is a representation of the C type g_uri_unescape_string.
+func UriUnescapeString(escapedString string, illegalCharacters string) string {
+	if uriUnescapeStringInvoker == nil {
+		uriUnescapeStringInvoker = gi.FunctionInvokerNew("GLib", "uri_unescape_string")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(escapedString)
+	inArgs[1].SetString(illegalCharacters)
+
+	ret := uriUnescapeStringInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 var usleepInvoker *gi.Function
 
@@ -1705,75 +2531,271 @@ func Usleep(microseconds uint64) {
 	usleepInvoker.Invoke(inArgs[:])
 }
 
-// UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'g_utf16_to_ucs4' : parameter 'items_read' with direction 'out' not supported
 
-var utf16ToUtf8Invoker *gi.Function
+// UNSUPPORTED : C value 'g_utf16_to_utf8' : parameter 'items_read' with direction 'out' not supported
 
-// Utf16ToUtf8 is a representation of the C type g_utf16_to_utf8.
-func Utf16ToUtf8(str uint16, len int64, itemsRead int64, itemsWritten int64) string {
-	if utf16ToUtf8Invoker == nil {
-		utf16ToUtf8Invoker = gi.FunctionInvokerNew("GLib", "utf16_to_utf8")
+var utf8CasefoldInvoker *gi.Function
+
+// Utf8Casefold is a representation of the C type g_utf8_casefold.
+func Utf8Casefold(str string, len int32) string {
+	if utf8CasefoldInvoker == nil {
+		utf8CasefoldInvoker = gi.FunctionInvokerNew("GLib", "utf8_casefold")
 	}
 
 	var inArgs [2]gi.Argument
-	inArgs[0].SetUint16(str)
-	inArgs[1].SetInt64(len)
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
 
-	ret := utf16ToUtf8Invoker.Invoke(inArgs[:])
+	ret := utf8CasefoldInvoker.Invoke(inArgs[:])
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'g_utf8_casefold' : parameter 'str' of type 'utf8' not supported
+var utf8CollateInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf8_collate' : parameter 'str1' of type 'utf8' not supported
+// Utf8Collate is a representation of the C type g_utf8_collate.
+func Utf8Collate(str1 string, str2 string) int32 {
+	if utf8CollateInvoker == nil {
+		utf8CollateInvoker = gi.FunctionInvokerNew("GLib", "utf8_collate")
+	}
 
-// UNSUPPORTED : C value 'g_utf8_collate_key' : parameter 'str' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str1)
+	inArgs[1].SetString(str2)
 
-// UNSUPPORTED : C value 'g_utf8_collate_key_for_filename' : parameter 'str' of type 'utf8' not supported
+	ret := utf8CollateInvoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
 
-// UNSUPPORTED : C value 'g_utf8_find_next_char' : parameter 'p' of type 'utf8' not supported
+var utf8CollateKeyInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf8_find_prev_char' : parameter 'str' of type 'utf8' not supported
+// Utf8CollateKey is a representation of the C type g_utf8_collate_key.
+func Utf8CollateKey(str string, len int32) string {
+	if utf8CollateKeyInvoker == nil {
+		utf8CollateKeyInvoker = gi.FunctionInvokerNew("GLib", "utf8_collate_key")
+	}
 
-// UNSUPPORTED : C value 'g_utf8_get_char' : parameter 'p' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
 
-// UNSUPPORTED : C value 'g_utf8_get_char_validated' : parameter 'p' of type 'utf8' not supported
+	ret := utf8CollateKeyInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_utf8_make_valid' : parameter 'str' of type 'utf8' not supported
+var utf8CollateKeyForFilenameInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'str' of type 'utf8' not supported
+// Utf8CollateKeyForFilename is a representation of the C type g_utf8_collate_key_for_filename.
+func Utf8CollateKeyForFilename(str string, len int32) string {
+	if utf8CollateKeyForFilenameInvoker == nil {
+		utf8CollateKeyForFilenameInvoker = gi.FunctionInvokerNew("GLib", "utf8_collate_key_for_filename")
+	}
 
-// UNSUPPORTED : C value 'g_utf8_offset_to_pointer' : parameter 'str' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
 
-// UNSUPPORTED : C value 'g_utf8_pointer_to_offset' : parameter 'str' of type 'utf8' not supported
+	ret := utf8CollateKeyForFilenameInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_utf8_prev_char' : parameter 'p' of type 'utf8' not supported
+var utf8FindNextCharInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'p' of type 'utf8' not supported
+// Utf8FindNextChar is a representation of the C type g_utf8_find_next_char.
+func Utf8FindNextChar(p string, end string) string {
+	if utf8FindNextCharInvoker == nil {
+		utf8FindNextCharInvoker = gi.FunctionInvokerNew("GLib", "utf8_find_next_char")
+	}
 
-// UNSUPPORTED : C value 'g_utf8_strdown' : parameter 'str' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(p)
+	inArgs[1].SetString(end)
 
-// UNSUPPORTED : C value 'g_utf8_strlen' : parameter 'p' of type 'utf8' not supported
+	ret := utf8FindNextCharInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_utf8_strncpy' : parameter 'dest' of type 'utf8' not supported
+var utf8FindPrevCharInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf8_strrchr' : parameter 'p' of type 'utf8' not supported
+// Utf8FindPrevChar is a representation of the C type g_utf8_find_prev_char.
+func Utf8FindPrevChar(str string, p string) string {
+	if utf8FindPrevCharInvoker == nil {
+		utf8FindPrevCharInvoker = gi.FunctionInvokerNew("GLib", "utf8_find_prev_char")
+	}
 
-// UNSUPPORTED : C value 'g_utf8_strreverse' : parameter 'str' of type 'utf8' not supported
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetString(p)
 
-// UNSUPPORTED : C value 'g_utf8_strup' : parameter 'str' of type 'utf8' not supported
+	ret := utf8FindPrevCharInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
-// UNSUPPORTED : C value 'g_utf8_substring' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_utf8_get_char' : return type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_utf8_get_char_validated' : return type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : parameter 'str' of type 'utf8' not supported
+var utf8MakeValidInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_utf8_to_utf16' : parameter 'str' of type 'utf8' not supported
+// Utf8MakeValid is a representation of the C type g_utf8_make_valid.
+func Utf8MakeValid(str string, len int32) string {
+	if utf8MakeValidInvoker == nil {
+		utf8MakeValidInvoker = gi.FunctionInvokerNew("GLib", "utf8_make_valid")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+
+	ret := utf8MakeValidInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'mode' of type 'NormalizeMode' not supported
+
+var utf8OffsetToPointerInvoker *gi.Function
+
+// Utf8OffsetToPointer is a representation of the C type g_utf8_offset_to_pointer.
+func Utf8OffsetToPointer(str string, offset int64) string {
+	if utf8OffsetToPointerInvoker == nil {
+		utf8OffsetToPointerInvoker = gi.FunctionInvokerNew("GLib", "utf8_offset_to_pointer")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt64(offset)
+
+	ret := utf8OffsetToPointerInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var utf8PointerToOffsetInvoker *gi.Function
+
+// Utf8PointerToOffset is a representation of the C type g_utf8_pointer_to_offset.
+func Utf8PointerToOffset(str string, pos string) int64 {
+	if utf8PointerToOffsetInvoker == nil {
+		utf8PointerToOffsetInvoker = gi.FunctionInvokerNew("GLib", "utf8_pointer_to_offset")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetString(pos)
+
+	ret := utf8PointerToOffsetInvoker.Invoke(inArgs[:])
+	return ret.Int64()
+}
+
+var utf8PrevCharInvoker *gi.Function
+
+// Utf8PrevChar is a representation of the C type g_utf8_prev_char.
+func Utf8PrevChar(p string) string {
+	if utf8PrevCharInvoker == nil {
+		utf8PrevCharInvoker = gi.FunctionInvokerNew("GLib", "utf8_prev_char")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(p)
+
+	ret := utf8PrevCharInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'c' of type 'gunichar' not supported
+
+var utf8StrdownInvoker *gi.Function
+
+// Utf8Strdown is a representation of the C type g_utf8_strdown.
+func Utf8Strdown(str string, len int32) string {
+	if utf8StrdownInvoker == nil {
+		utf8StrdownInvoker = gi.FunctionInvokerNew("GLib", "utf8_strdown")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+
+	ret := utf8StrdownInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var utf8StrlenInvoker *gi.Function
+
+// Utf8Strlen is a representation of the C type g_utf8_strlen.
+func Utf8Strlen(p string, max int32) int64 {
+	if utf8StrlenInvoker == nil {
+		utf8StrlenInvoker = gi.FunctionInvokerNew("GLib", "utf8_strlen")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(p)
+	inArgs[1].SetInt32(max)
+
+	ret := utf8StrlenInvoker.Invoke(inArgs[:])
+	return ret.Int64()
+}
+
+// UNSUPPORTED : C value 'g_utf8_strncpy' : parameter 'n' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_utf8_strrchr' : parameter 'c' of type 'gunichar' not supported
+
+var utf8StrreverseInvoker *gi.Function
+
+// Utf8Strreverse is a representation of the C type g_utf8_strreverse.
+func Utf8Strreverse(str string, len int32) string {
+	if utf8StrreverseInvoker == nil {
+		utf8StrreverseInvoker = gi.FunctionInvokerNew("GLib", "utf8_strreverse")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+
+	ret := utf8StrreverseInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var utf8StrupInvoker *gi.Function
+
+// Utf8Strup is a representation of the C type g_utf8_strup.
+func Utf8Strup(str string, len int32) string {
+	if utf8StrupInvoker == nil {
+		utf8StrupInvoker = gi.FunctionInvokerNew("GLib", "utf8_strup")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+
+	ret := utf8StrupInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var utf8SubstringInvoker *gi.Function
+
+// Utf8Substring is a representation of the C type g_utf8_substring.
+func Utf8Substring(str string, startPos int64, endPos int64) string {
+	if utf8SubstringInvoker == nil {
+		utf8SubstringInvoker = gi.FunctionInvokerNew("GLib", "utf8_substring")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt64(startPos)
+	inArgs[2].SetInt64(endPos)
+
+	ret := utf8SubstringInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_utf8_to_ucs4' : parameter 'items_read' with direction 'out' not supported
+
+// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : parameter 'items_written' with direction 'out' not supported
+
+// UNSUPPORTED : C value 'g_utf8_to_utf16' : parameter 'items_read' with direction 'out' not supported
 
 // UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_uuid_string_is_valid' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_uuid_string_is_valid' : return type 'gboolean' not supported
 
 var uuidStringRandomInvoker *gi.Function
 
@@ -1789,9 +2811,9 @@ func UuidStringRandom() string {
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_variant_is_object_path' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_variant_is_object_path' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_variant_is_signature' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_variant_is_signature' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_variant_parse' : parameter 'type' of type 'VariantType' not supported
 
@@ -1801,20 +2823,36 @@ func UuidStringRandom() string {
 
 // UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_checked_' : parameter 'arg0' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_variant_type_checked_' : return type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_string_is_valid' : parameter 'type_string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_variant_type_string_is_valid' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_string_scan' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_variant_type_string_scan' : parameter 'endptr' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_vasprintf' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_vasprintf' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_vfprintf' : parameter 'file' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_vprintf' : parameter 'format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_vprintf' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_vsnprintf' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_vsnprintf' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_vsprintf' : parameter 'string' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_vsprintf' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_warn_message' : parameter 'domain' of type 'utf8' not supported
+var warnMessageInvoker *gi.Function
+
+// WarnMessage is a representation of the C type g_warn_message.
+func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) {
+	if warnMessageInvoker == nil {
+		warnMessageInvoker = gi.FunctionInvokerNew("GLib", "warn_message")
+	}
+
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+	inArgs[4].SetString(warnexpr)
+
+	warnMessageInvoker.Invoke(inArgs[:])
+}

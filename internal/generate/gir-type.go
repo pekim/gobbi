@@ -27,6 +27,7 @@ var jenGoTypes = map[string]*jen.Statement{
 	"int":    jen.Int32(),
 	"gint":   jen.Int32(),
 	"gint32": jen.Int32(),
+	"gssize": jen.Int32(),
 	"glong":  jen.Int64(),
 	"gint64": jen.Int64(),
 
@@ -70,7 +71,7 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 	}
 
 	switch t.Name {
-	case "gchar", "gint8", "gshort", "gint16", "int", "gint", "gint32", "glong", "gint64":
+	case "gchar", "gint8", "gshort", "gint16", "int", "gint", "gint32", "gssize", "glong", "gint64":
 		return t.jenValueInt(stringValue)
 	case "guchar", "guint8", "gushort", "guint16", "guint", "guint32", "gulong", "guint64":
 		return t.jenValueUint(stringValue)
@@ -97,7 +98,7 @@ func (t *Type) jenValueInt(stringValue string) (*jen.Statement, error) {
 		return jen.Lit(int8(value)), nil
 	case "gshort", "gint16":
 		return jen.Lit(int16(value)), nil
-	case "int", "gint", "gint32":
+	case "int", "gint", "gint32", "gssize":
 		return jen.Lit(int32(value)), nil
 	case "glong", "gint64":
 		return jen.Lit(int64(value)), nil

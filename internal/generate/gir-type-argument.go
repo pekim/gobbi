@@ -8,6 +8,7 @@ var argumentGetFunctionNames = map[string]string{
 	"int":    "Int32",
 	"gint":   "Int32",
 	"gint32": "Int32",
+	"gssize": "Int32",
 	"glong":  "Int64",
 	"gint64": "Int64",
 
@@ -31,6 +32,7 @@ var argumentSetFunctionNames = map[string]string{
 	"int":    "SetInt32",
 	"gint":   "SetInt32",
 	"gint32": "SetInt32",
+	"gssize": "SetInt32",
 	"glong":  "SetInt64",
 	"gint64": "SetInt64",
 
@@ -42,8 +44,8 @@ var argumentSetFunctionNames = map[string]string{
 	"guint32": "SetUint32",
 	"gulong":  "SetUint64",
 	"guint64": "SetUint64",
-	//
-	//"utf8": "SetString",
+
+	"utf8": "SetString",
 }
 
 func (t *Type) supportedAsReturnValue() bool {

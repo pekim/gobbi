@@ -118,11 +118,11 @@ func GetVersion() string {
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'atk_relation_type_for_name' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_relation_type_for_name' : return type 'RelationType' not supported
 
 // UNSUPPORTED : C value 'atk_relation_type_get_name' : parameter 'type' of type 'RelationType' not supported
 
-// UNSUPPORTED : C value 'atk_relation_type_register' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_relation_type_register' : return type 'RelationType' not supported
 
 var removeFocusTrackerInvoker *gi.Function
 
@@ -166,27 +166,27 @@ func RemoveKeyEventListener(listenerId uint32) {
 	removeKeyEventListenerInvoker.Invoke(inArgs[:])
 }
 
-// UNSUPPORTED : C value 'atk_role_for_name' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_role_for_name' : return type 'Role' not supported
 
 // UNSUPPORTED : C value 'atk_role_get_localized_name' : parameter 'role' of type 'Role' not supported
 
 // UNSUPPORTED : C value 'atk_role_get_name' : parameter 'role' of type 'Role' not supported
 
-// UNSUPPORTED : C value 'atk_role_register' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_role_register' : return type 'Role' not supported
 
-// UNSUPPORTED : C value 'atk_state_type_for_name' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_state_type_for_name' : return type 'StateType' not supported
 
 // UNSUPPORTED : C value 'atk_state_type_get_name' : parameter 'type' of type 'StateType' not supported
 
-// UNSUPPORTED : C value 'atk_state_type_register' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_state_type_register' : return type 'StateType' not supported
 
-// UNSUPPORTED : C value 'atk_text_attribute_for_name' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_text_attribute_for_name' : return type 'TextAttribute' not supported
 
 // UNSUPPORTED : C value 'atk_text_attribute_get_name' : parameter 'attr' of type 'TextAttribute' not supported
 
 // UNSUPPORTED : C value 'atk_text_attribute_get_value' : parameter 'attr' of type 'TextAttribute' not supported
 
-// UNSUPPORTED : C value 'atk_text_attribute_register' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'atk_text_attribute_register' : return type 'TextAttribute' not supported
 
 // UNSUPPORTED : C value 'atk_text_free_ranges' : parameter 'ranges' has no type
 

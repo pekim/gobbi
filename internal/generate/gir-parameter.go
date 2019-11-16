@@ -46,15 +46,15 @@ func (p Parameter) supported() (bool, string) {
 		return false, fmt.Sprintf("parameter '%s' has no type", p.Name)
 	}
 
-	if p.Type.supportedAsParameter() {
-		return true, ""
+	if !p.Type.supportedAsParameter() {
+		return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type.Name)
 	}
 
 	if p.Direction != "in" {
 		return false, fmt.Sprintf("parameter '%s' with direction '%s' not supported", p.Name, p.Direction)
 	}
 
-	return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type.Name)
+	return true, ""
 }
 
 func (p *Parameter) isIn() bool {

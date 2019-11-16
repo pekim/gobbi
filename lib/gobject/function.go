@@ -8,7 +8,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_boxed_free' : parameter 'boxed_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_boxed_type_register_static' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_boxed_type_register_static' : parameter 'boxed_copy' of type 'BoxedCopyFunc' not supported
 
 // UNSUPPORTED : C value 'g_cclosure_marshal_BOOLEAN__BOXED_BOXED' : parameter 'closure' of type 'Closure' not supported
 
@@ -74,7 +74,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_enum_get_value_by_nick' : parameter 'enum_class' of type 'EnumClass' not supported
 
-// UNSUPPORTED : C value 'g_enum_register_static' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_enum_register_static' : parameter 'const_static_values' of type 'EnumValue' not supported
 
 // UNSUPPORTED : C value 'g_enum_to_string' : parameter 'g_enum_type' of type 'GType' not supported
 
@@ -86,61 +86,61 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_flags_get_value_by_nick' : parameter 'flags_class' of type 'FlagsClass' not supported
 
-// UNSUPPORTED : C value 'g_flags_register_static' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_flags_register_static' : parameter 'const_static_values' of type 'FlagsValue' not supported
 
 // UNSUPPORTED : C value 'g_flags_to_string' : parameter 'flags_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_gtype_get_type' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_boolean' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_boolean' : parameter 'default_value' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_boxed' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_boxed' : parameter 'boxed_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_char' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_char' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_double' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_double' : parameter 'minimum' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_enum' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_enum' : parameter 'enum_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_flags' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_flags' : parameter 'flags_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_float' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_float' : parameter 'minimum' of type 'gfloat' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_gtype' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_gtype' : parameter 'is_a_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_int' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_int' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_int64' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_int64' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_long' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_long' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_object' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_object' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_override' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_override' : parameter 'overridden' of type 'ParamSpec' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_param' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_param' : parameter 'param_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_pointer' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_pointer' : parameter 'flags' of type 'ParamFlags' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_pool_new' : parameter 'type_prefixing' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_string' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_string' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_uchar' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_uchar' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_uint' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_uint' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_uint64' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_uint64' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_ulong' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_ulong' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_unichar' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_unichar' : parameter 'default_value' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_value_array' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_value_array' : parameter 'element_spec' of type 'ParamSpec' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_variant' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_spec_variant' : parameter 'type' of type 'GLib.VariantType' not supported
 
-// UNSUPPORTED : C value 'g_param_type_register_static' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_param_type_register_static' : parameter 'pspec_info' of type 'ParamSpecTypeInfo' not supported
 
 // UNSUPPORTED : C value 'g_param_value_convert' : parameter 'pspec' of type 'ParamSpec' not supported
 
@@ -152,7 +152,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_param_values_cmp' : parameter 'pspec' of type 'ParamSpec' not supported
 
-// UNSUPPORTED : C value 'g_pointer_type_register_static' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_pointer_type_register_static' : return type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_signal_accumulator_first_wins' : parameter 'ihint' of type 'SignalInvocationHint' not supported
 
@@ -204,7 +204,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_signal_list_ids' : parameter 'itype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_lookup' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_lookup' : parameter 'itype' of type 'GType' not supported
 
 var signalNameInvoker *gi.Function
 
@@ -221,21 +221,21 @@ func SignalName(signalId uint32) string {
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'g_signal_new' : parameter 'signal_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_new' : parameter 'itype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_new_class_handler' : parameter 'signal_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_new_class_handler' : parameter 'itype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_new_valist' : parameter 'signal_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_new_valist' : parameter 'itype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_newv' : parameter 'signal_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_newv' : parameter 'itype' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_signal_override_class_closure' : parameter 'instance_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_override_class_handler' : parameter 'signal_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_override_class_handler' : parameter 'instance_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_parse_name' : parameter 'detailed_signal' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_signal_parse_name' : parameter 'itype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_query' : parameter 'query' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_signal_query' : parameter 'query' of type 'SignalQuery' not supported
 
 var signalRemoveEmissionHookInvoker *gi.Function
 
@@ -320,7 +320,7 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 // UNSUPPORTED : C value 'g_type_free_instance' : parameter 'instance' of type 'TypeInstance' not supported
 
-// UNSUPPORTED : C value 'g_type_from_name' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'g_type_from_name' : return type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_type_fundamental' : parameter 'type_id' of type 'GType' not supported
 

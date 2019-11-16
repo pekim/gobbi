@@ -22,6 +22,10 @@ func TestFunctionCallWithIntegers(t *testing.T) {
 	assert.Equal(t, int32(4), AsciiDigitValue('4'))
 }
 
+func TestFunctionCallArgStringReturnString(t *testing.T) {
+	assert.Equal(t, "aabbcc-zz", Utf8Strdown("AaBbCc-Zz", -1))
+}
+
 func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		GetCodeset()

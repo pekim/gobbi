@@ -56,7 +56,20 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'webkit_snapshot_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_uri_for_display' : parameter 'uri' of type 'utf8' not supported
+var uriForDisplayInvoker *gi.Function
+
+// UriForDisplay is a representation of the C type webkit_uri_for_display.
+func UriForDisplay(uri string) string {
+	if uriForDisplayInvoker == nil {
+		uriForDisplayInvoker = gi.FunctionInvokerNew("WebKit2", "uri_for_display")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uri)
+
+	ret := uriForDisplayInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_error_quark' : return type 'GLib.Quark' not supported
 

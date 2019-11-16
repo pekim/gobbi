@@ -6,9 +6,9 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : parameter 'group' of type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'gdk_atom_intern' : parameter 'atom_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gdk_atom_intern' : parameter 'only_if_exists' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_atom_intern_static_string' : parameter 'atom_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gdk_atom_intern_static_string' : return type 'Atom' not supported
 
 var beepInvoker *gi.Function
 
@@ -45,7 +45,7 @@ func Beep() {
 
 // UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gdk_color_parse' : parameter 'spec' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gdk_color_parse' : parameter 'color' of type 'Color' not supported
 
 var disableMultideviceInvoker *gi.Function
 
@@ -187,9 +187,9 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_gl_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gdk_init' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gdk_init' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argc' with direction 'inout' not supported
 
 // UNSUPPORTED : C value 'gdk_keyboard_grab' : parameter 'window' of type 'Window' not supported
 
@@ -207,21 +207,22 @@ func KeyboardUngrab(time uint32) {
 	keyboardUngrabInvoker.Invoke(inArgs[:])
 }
 
-var keyvalConvertCaseInvoker *gi.Function
+// UNSUPPORTED : C value 'gdk_keyval_convert_case' : parameter 'lower' with direction 'out' not supported
 
-// KeyvalConvertCase is a representation of the C type gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint32, lower uint32, upper uint32) {
-	if keyvalConvertCaseInvoker == nil {
-		keyvalConvertCaseInvoker = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
+var keyvalFromNameInvoker *gi.Function
+
+// KeyvalFromName is a representation of the C type gdk_keyval_from_name.
+func KeyvalFromName(keyvalName string) uint32 {
+	if keyvalFromNameInvoker == nil {
+		keyvalFromNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_from_name")
 	}
 
 	var inArgs [1]gi.Argument
-	inArgs[0].SetUint32(symbol)
+	inArgs[0].SetString(keyvalName)
 
-	keyvalConvertCaseInvoker.Invoke(inArgs[:])
+	ret := keyvalFromNameInvoker.Invoke(inArgs[:])
+	return ret.Uint32()
 }
-
-// UNSUPPORTED : C value 'gdk_keyval_from_name' : parameter 'keyval_name' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'gdk_keyval_is_lower' : return type 'gboolean' not supported
 
@@ -300,7 +301,19 @@ func NotifyStartupComplete() {
 	notifyStartupCompleteInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : parameter 'startup_id' of type 'utf8' not supported
+var notifyStartupCompleteWithIdInvoker *gi.Function
+
+// NotifyStartupCompleteWithId is a representation of the C type gdk_notify_startup_complete_with_id.
+func NotifyStartupCompleteWithId(startupId string) {
+	if notifyStartupCompleteWithIdInvoker == nil {
+		notifyStartupCompleteWithIdInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(startupId)
+
+	notifyStartupCompleteWithIdInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_get_embedder' : parameter 'window' of type 'Window' not supported
 
@@ -318,7 +331,7 @@ func NotifyStartupComplete() {
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'line' of type 'Pango.LayoutLine' not supported
 
-// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argc' with direction 'inout' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
@@ -379,7 +392,19 @@ func PreParseLibgtkOnly() {
 
 // UNSUPPORTED : C value 'gdk_selection_send_notify_for_display' : parameter 'display' of type 'Display' not supported
 
-// UNSUPPORTED : C value 'gdk_set_allowed_backends' : parameter 'backends' of type 'utf8' not supported
+var setAllowedBackendsInvoker *gi.Function
+
+// SetAllowedBackends is a representation of the C type gdk_set_allowed_backends.
+func SetAllowedBackends(backends string) {
+	if setAllowedBackendsInvoker == nil {
+		setAllowedBackendsInvoker = gi.FunctionInvokerNew("Gdk", "set_allowed_backends")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(backends)
+
+	setAllowedBackendsInvoker.Invoke(inArgs[:])
+}
 
 var setDoubleClickTimeInvoker *gi.Function
 
@@ -395,11 +420,23 @@ func SetDoubleClickTime(msec uint32) {
 	setDoubleClickTimeInvoker.Invoke(inArgs[:])
 }
 
-// UNSUPPORTED : C value 'gdk_set_program_class' : parameter 'program_class' of type 'utf8' not supported
+var setProgramClassInvoker *gi.Function
+
+// SetProgramClass is a representation of the C type gdk_set_program_class.
+func SetProgramClass(programClass string) {
+	if setProgramClassInvoker == nil {
+		setProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "set_program_class")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(programClass)
+
+	setProgramClassInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'gdk_set_show_events' : parameter 'show_events' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_setting_get' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gdk_setting_get' : parameter 'value' of type 'GObject.Value' not supported
 
 // UNSUPPORTED : C value 'gdk_synthesize_window_state' : parameter 'window' of type 'Window' not supported
 
@@ -473,4 +510,17 @@ func UnicodeToKeyval(wc uint32) uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gdk_utf8_to_string_target' : parameter 'str' of type 'utf8' not supported
+var utf8ToStringTargetInvoker *gi.Function
+
+// Utf8ToStringTarget is a representation of the C type gdk_utf8_to_string_target.
+func Utf8ToStringTarget(str string) string {
+	if utf8ToStringTargetInvoker == nil {
+		utf8ToStringTargetInvoker = gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := utf8ToStringTargetInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}

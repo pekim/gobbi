@@ -18,9 +18,9 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_accelerator_name_with_keycode' : parameter 'display' of type 'Gdk.Display' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator_key' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator_key' with direction 'out' not supported
 
 // UNSUPPORTED : C value 'gtk_accelerator_set_default_mod_mask' : parameter 'default_mod_mask' of type 'Gdk.ModifierType' not supported
 
@@ -38,9 +38,9 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_binding_set_by_class' : parameter 'object_class' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_find' : parameter 'set_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_binding_set_find' : return type 'BindingSet' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_new' : parameter 'set_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_binding_set_new' : return type 'BindingSet' not supported
 
 // UNSUPPORTED : C value 'gtk_bindings_activate' : parameter 'object' of type 'GObject.Object' not supported
 
@@ -132,7 +132,7 @@ func GetBinaryAge() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_current_event_device' : return type 'Gdk.Device' not supported
 
-// UNSUPPORTED : C value 'gtk_get_current_event_state' : parameter 'state' with direction 'out' not supported
+// UNSUPPORTED : C value 'gtk_get_current_event_state' : parameter 'state' of type 'Gdk.ModifierType' not supported
 
 var getCurrentEventTimeInvoker *gi.Function
 
@@ -216,7 +216,20 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_grab_get_current' : return type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_from_name' : parameter 'name' of type 'utf8' not supported
+var iconSizeFromNameInvoker *gi.Function
+
+// IconSizeFromName is a representation of the C type gtk_icon_size_from_name.
+func IconSizeFromName(name string) int32 {
+	if iconSizeFromNameInvoker == nil {
+		iconSizeFromNameInvoker = gi.FunctionInvokerNew("Gtk", "icon_size_from_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	ret := iconSizeFromNameInvoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
 
 var iconSizeGetNameInvoker *gi.Function
 
@@ -233,21 +246,49 @@ func IconSizeGetName(size int32) string {
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'gtk_icon_size_lookup' : return type 'gboolean' not supported
+// UNSUPPORTED : C value 'gtk_icon_size_lookup' : parameter 'width' with direction 'out' not supported
 
 // UNSUPPORTED : C value 'gtk_icon_size_lookup_for_settings' : parameter 'settings' of type 'Settings' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_register' : parameter 'name' of type 'utf8' not supported
+var iconSizeRegisterInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gtk_icon_size_register_alias' : parameter 'alias' of type 'utf8' not supported
+// IconSizeRegister is a representation of the C type gtk_icon_size_register.
+func IconSizeRegister(name string, width int32, height int32) int32 {
+	if iconSizeRegisterInvoker == nil {
+		iconSizeRegisterInvoker = gi.FunctionInvokerNew("Gtk", "icon_size_register")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetInt32(width)
+	inArgs[2].SetInt32(height)
+
+	ret := iconSizeRegisterInvoker.Invoke(inArgs[:])
+	return ret.Int32()
+}
+
+var iconSizeRegisterAliasInvoker *gi.Function
+
+// IconSizeRegisterAlias is a representation of the C type gtk_icon_size_register_alias.
+func IconSizeRegisterAlias(alias string, target int32) {
+	if iconSizeRegisterAliasInvoker == nil {
+		iconSizeRegisterAliasInvoker = gi.FunctionInvokerNew("Gtk", "icon_size_register_alias")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(alias)
+	inArgs[1].SetInt32(target)
+
+	iconSizeRegisterAliasInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'gtk_icon_theme_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_init' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_init' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argc' with direction 'inout' not supported
 
 // UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
@@ -359,7 +400,7 @@ func PaperSizeGetDefault() string {
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : parameter 'include_custom' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' has no type
+// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argc' with direction 'inout' not supported
 
 // UNSUPPORTED : C value 'gtk_print_error_quark' : return type 'GLib.Quark' not supported
 
@@ -371,7 +412,7 @@ func PaperSizeGetDefault() string {
 
 // UNSUPPORTED : C value 'gtk_rc_add_default_file' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_find_module_in_path' : parameter 'module_file' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_rc_find_module_in_path' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'settings' of type 'Settings' not supported
 
@@ -408,7 +449,19 @@ func RcGetThemeDir() string {
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'gtk_rc_parse' : parameter 'filename' of type 'utf8' not supported
+var rcParseInvoker *gi.Function
+
+// RcParse is a representation of the C type gtk_rc_parse.
+func RcParse(filename string) {
+	if rcParseInvoker == nil {
+		rcParseInvoker = gi.FunctionInvokerNew("Gtk", "rc_parse")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(filename)
+
+	rcParseInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'gtk_rc_parse_color' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
@@ -418,7 +471,19 @@ func RcGetThemeDir() string {
 
 // UNSUPPORTED : C value 'gtk_rc_parse_state' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_parse_string' : parameter 'rc_string' of type 'utf8' not supported
+var rcParseStringInvoker *gi.Function
+
+// RcParseString is a representation of the C type gtk_rc_parse_string.
+func RcParseString(rcString string) {
+	if rcParseStringInvoker == nil {
+		rcParseStringInvoker = gi.FunctionInvokerNew("Gtk", "rc_parse_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(rcString)
+
+	rcParseStringInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'gtk_rc_property_parse_border' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
@@ -524,9 +589,9 @@ func SetDebugFlags(flags uint32) {
 
 // UNSUPPORTED : C value 'gtk_stock_list_ids' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_lookup' : parameter 'stock_id' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_stock_lookup' : parameter 'item' of type 'StockItem' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'func' of type 'TranslateFunc' not supported
 
 // UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' has no type
 
@@ -540,11 +605,11 @@ func SetDebugFlags(flags uint32) {
 
 // UNSUPPORTED : C value 'gtk_targets_include_uri' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_test_create_simple_window' : parameter 'window_title' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_test_create_simple_window' : return type 'Widget' not supported
 
 // UNSUPPORTED : C value 'gtk_test_create_widget' : parameter 'widget_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter 'window_title' of type 'utf8' not supported
+// UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'gtk_test_find_label' : parameter 'widget' of type 'Widget' not supported
 
@@ -552,18 +617,9 @@ func SetDebugFlags(flags uint32) {
 
 // UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' has no type
+// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argcp' with direction 'inout' not supported
 
-var testListAllTypesInvoker *gi.Function
-
-// TestListAllTypes is a representation of the C type gtk_test_list_all_types.
-func TestListAllTypes(nTypes uint32) {
-	if testListAllTypesInvoker == nil {
-		testListAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_list_all_types")
-	}
-
-	testListAllTypesInvoker.Invoke(nil)
-}
+// UNSUPPORTED : C value 'gtk_test_list_all_types' : parameter 'n_types' with direction 'out' not supported
 
 var testRegisterAllTypesInvoker *gi.Function
 

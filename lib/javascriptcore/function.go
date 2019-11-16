@@ -42,32 +42,32 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : parameter 'function' of type 'OptionsFunc' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_boolean' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_boolean' : parameter 'value' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_double' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_double' : parameter 'value' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_int' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_int' : parameter 'value' with direction 'out' not supported
 
 // UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_range_string' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_range_string' : parameter 'value' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_size' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_size' : parameter 'value' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_string' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_string' : parameter 'value' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_uint' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_get_uint' : parameter 'value' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_boolean' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_boolean' : parameter 'value' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_double' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_double' : parameter 'value' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_int' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_int' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_range_string' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_range_string' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_size' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_size' : parameter 'value' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_string' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_string' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_uint' : parameter 'option' of type 'utf8' not supported
+// UNSUPPORTED : C value 'jsc_options_set_uint' : return type 'gboolean' not supported

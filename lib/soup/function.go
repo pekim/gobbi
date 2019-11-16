@@ -14,7 +14,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'soup_check_version' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'soup_cookie_parse' : parameter 'header' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_cookie_parse' : parameter 'origin' of type 'URI' not supported
 
 // UNSUPPORTED : C value 'soup_cookies_free' : parameter 'cookies' of type 'GLib.SList' not supported
 
@@ -28,25 +28,25 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'soup_cookies_to_response' : parameter 'cookies' of type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'soup_form_decode' : parameter 'encoded_form' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_decode' : return type 'GLib.HashTable' not supported
 
 // UNSUPPORTED : C value 'soup_form_decode_multipart' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_form_encode' : parameter 'first_field' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_encode' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'soup_form_encode_datalist' : parameter 'form_data_set' of type 'GLib.Data' not supported
 
 // UNSUPPORTED : C value 'soup_form_encode_hash' : parameter 'form_data_set' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_form_encode_valist' : parameter 'first_field' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_encode_valist' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new' : parameter 'method' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_request_new' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_datalist' : parameter 'method' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_request_new_from_datalist' : parameter 'form_data_set' of type 'GLib.Data' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_hash' : parameter 'method' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_request_new_from_hash' : parameter 'form_data_set' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : parameter 'multipart' of type 'Multipart' not supported
 
 var getMajorVersionInvoker *gi.Function
 
@@ -84,7 +84,7 @@ func GetMinorVersion() uint32 {
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'soup_header_contains' : parameter 'header' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_header_contains' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'soup_header_free_list' : parameter 'list' of type 'GLib.SList' not supported
 
@@ -94,25 +94,25 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_header_g_string_append_param_quoted' : parameter 'string' of type 'GLib.String' not supported
 
-// UNSUPPORTED : C value 'soup_header_parse_list' : parameter 'header' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_header_parse_list' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'soup_header_parse_param_list' : parameter 'header' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_header_parse_param_list' : return type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_header_parse_quality_list' : parameter 'header' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_header_parse_quality_list' : parameter 'unacceptable' of type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'soup_header_parse_semi_param_list' : parameter 'header' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_header_parse_semi_param_list' : return type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_headers_parse' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_headers_parse' : parameter 'dest' of type 'MessageHeaders' not supported
 
-// UNSUPPORTED : C value 'soup_headers_parse_request' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_headers_parse_request' : parameter 'req_headers' of type 'MessageHeaders' not supported
 
-// UNSUPPORTED : C value 'soup_headers_parse_response' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_headers_parse_response' : parameter 'headers' of type 'MessageHeaders' not supported
 
-// UNSUPPORTED : C value 'soup_headers_parse_status_line' : parameter 'status_line' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_headers_parse_status_line' : parameter 'ver' of type 'HTTPVersion' not supported
 
 // UNSUPPORTED : C value 'soup_http_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_message_headers_iter_init' : parameter 'iter' with direction 'out' not supported
+// UNSUPPORTED : C value 'soup_message_headers_iter_init' : parameter 'iter' of type 'MessageHeadersIter' not supported
 
 // UNSUPPORTED : C value 'soup_request_error_quark' : return type 'GLib.Quark' not supported
 
@@ -152,17 +152,71 @@ func StatusProxify(statusCode uint32) uint32 {
 
 // UNSUPPORTED : C value 'soup_str_case_hash' : parameter 'key' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'soup_tld_domain_is_public_suffix' : parameter 'domain' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_tld_domain_is_public_suffix' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_tld_get_base_domain' : parameter 'hostname' of type 'utf8' not supported
+var tldGetBaseDomainInvoker *gi.Function
 
-// UNSUPPORTED : C value 'soup_uri_decode' : parameter 'part' of type 'utf8' not supported
+// TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
+func TldGetBaseDomain(hostname string) string {
+	if tldGetBaseDomainInvoker == nil {
+		tldGetBaseDomainInvoker = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
+	}
 
-// UNSUPPORTED : C value 'soup_uri_encode' : parameter 'part' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(hostname)
 
-// UNSUPPORTED : C value 'soup_uri_normalize' : parameter 'part' of type 'utf8' not supported
+	ret := tldGetBaseDomainInvoker.Invoke(inArgs[:])
+	return ret.String(false)
+}
+
+var uriDecodeInvoker *gi.Function
+
+// UriDecode is a representation of the C type soup_uri_decode.
+func UriDecode(part string) string {
+	if uriDecodeInvoker == nil {
+		uriDecodeInvoker = gi.FunctionInvokerNew("Soup", "uri_decode")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(part)
+
+	ret := uriDecodeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var uriEncodeInvoker *gi.Function
+
+// UriEncode is a representation of the C type soup_uri_encode.
+func UriEncode(part string, escapeExtra string) string {
+	if uriEncodeInvoker == nil {
+		uriEncodeInvoker = gi.FunctionInvokerNew("Soup", "uri_encode")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(part)
+	inArgs[1].SetString(escapeExtra)
+
+	ret := uriEncodeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var uriNormalizeInvoker *gi.Function
+
+// UriNormalize is a representation of the C type soup_uri_normalize.
+func UriNormalize(part string, unescapeExtra string) string {
+	if uriNormalizeInvoker == nil {
+		uriNormalizeInvoker = gi.FunctionInvokerNew("Soup", "uri_normalize")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(part)
+	inArgs[1].SetString(unescapeExtra)
+
+	ret := uriNormalizeInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'soup_value_array_append' : parameter 'array' of type 'GObject.ValueArray' not supported
 
@@ -192,7 +246,7 @@ func StatusProxify(statusCode uint32) uint32 {
 
 // UNSUPPORTED : C value 'soup_value_hash_new' : return type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter 'first_key' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'msg' of type 'Message' not supported
 
@@ -204,39 +258,39 @@ func StatusProxify(statusCode uint32) uint32 {
 
 // UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter 'fault_format' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'method_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'params' has no type
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_method_response' : parameter 'value' of type 'GObject.Value' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_request' : parameter 'method_name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_build_request' : parameter 'params' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_response' : parameter 'value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter 'method_call' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter 'method_name' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'method_response' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'error' of type 'GLib.Error' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_fault_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_message_new' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_message_new' : parameter 'params' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_set_fault' : parameter 'msg' of type 'Message' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_set_response' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_call' : parameter 'method_call' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_call' : parameter 'method_name' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_response' : parameter 'method_response' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_response' : parameter 'value' of type 'GObject.Value' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_request' : parameter 'method_call' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_parse_request' : parameter 'params' of type 'XMLRPCParams' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_response' : parameter 'method_response' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_parse_response' : return type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_request_new' : parameter 'uri' of type 'utf8' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_request_new' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'soup_xmlrpc_set_fault' : parameter 'msg' of type 'Message' not supported
 

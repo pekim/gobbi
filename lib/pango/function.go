@@ -10,7 +10,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'pango_attr_family_new' : parameter 'family' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_attr_family_new' : return type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attr_foreground_alpha_new' : return type 'Attribute' not supported
 
@@ -36,7 +36,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_attr_type_get_name' : parameter 'type' of type 'AttrType' not supported
 
-// UNSUPPORTED : C value 'pango_attr_type_register' : parameter 'name' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_attr_type_register' : return type 'AttrType' not supported
 
 // UNSUPPORTED : C value 'pango_attr_underline_color_new' : return type 'Attribute' not supported
 
@@ -48,23 +48,49 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_bidi_type_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_break' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_break' : parameter 'analysis' of type 'Analysis' not supported
 
-// UNSUPPORTED : C value 'pango_config_key_get' : parameter 'key' of type 'utf8' not supported
+var configKeyGetInvoker *gi.Function
 
-// UNSUPPORTED : C value 'pango_config_key_get_system' : parameter 'key' of type 'utf8' not supported
+// ConfigKeyGet is a representation of the C type pango_config_key_get.
+func ConfigKeyGet(key string) string {
+	if configKeyGetInvoker == nil {
+		configKeyGetInvoker = gi.FunctionInvokerNew("Pango", "config_key_get")
+	}
 
-// UNSUPPORTED : C value 'pango_default_break' : parameter 'text' of type 'utf8' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(key)
+
+	ret := configKeyGetInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var configKeyGetSystemInvoker *gi.Function
+
+// ConfigKeyGetSystem is a representation of the C type pango_config_key_get_system.
+func ConfigKeyGetSystem(key string) string {
+	if configKeyGetSystemInvoker == nil {
+		configKeyGetSystemInvoker = gi.FunctionInvokerNew("Pango", "config_key_get_system")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(key)
+
+	ret := configKeyGetSystemInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'pango_default_break' : parameter 'analysis' of type 'Analysis' not supported
 
 // UNSUPPORTED : C value 'pango_extents_to_pixels' : parameter 'inclusive' of type 'Rectangle' not supported
 
-// UNSUPPORTED : C value 'pango_find_base_dir' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_find_base_dir' : return type 'Direction' not supported
 
 // UNSUPPORTED : C value 'pango_find_map' : parameter 'language' of type 'Language' not supported
 
-// UNSUPPORTED : C value 'pango_find_paragraph_boundary' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_find_paragraph_boundary' : parameter 'paragraph_delimiter_index' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'pango_font_description_from_string' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_font_description_from_string' : return type 'FontDescription' not supported
 
 var getLibSubdirectoryInvoker *gi.Function
 
@@ -78,7 +104,7 @@ func GetLibSubdirectory() string {
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'language' of type 'Language' not supported
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : parameter 'ch' of type 'gunichar' not supported
 
@@ -108,13 +134,13 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_itemize_with_base_dir' : parameter 'context' of type 'Context' not supported
 
-// UNSUPPORTED : C value 'pango_language_from_string' : parameter 'language' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_language_from_string' : return type 'Language' not supported
 
 // UNSUPPORTED : C value 'pango_language_get_default' : return type 'Language' not supported
 
-// UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'pbase_dir' of type 'Direction' not supported
 
-// UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'fontname' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' has no type
 
 // UNSUPPORTED : C value 'pango_markup_parser_finish' : parameter 'context' of type 'GLib.MarkupParseContext' not supported
 
@@ -124,30 +150,17 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_parse_enum' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'pango_parse_markup' : parameter 'markup_text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_parse_markup' : parameter 'accel_marker' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_parse_stretch' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_parse_stretch' : parameter 'stretch' of type 'Stretch' not supported
 
-// UNSUPPORTED : C value 'pango_parse_style' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_parse_style' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'pango_parse_variant' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_parse_variant' : parameter 'variant' of type 'Variant' not supported
 
-// UNSUPPORTED : C value 'pango_parse_weight' : parameter 'str' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_parse_weight' : parameter 'weight' of type 'Weight' not supported
 
-var quantizeLineGeometryInvoker *gi.Function
-
-// QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
-func QuantizeLineGeometry(thickness int32, position int32) {
-	if quantizeLineGeometryInvoker == nil {
-		quantizeLineGeometryInvoker = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
-	}
-
-	var inArgs [2]gi.Argument
-	inArgs[0].SetInt32(thickness)
-	inArgs[1].SetInt32(position)
-
-	quantizeLineGeometryInvoker.Invoke(inArgs[:])
-}
+// UNSUPPORTED : C value 'pango_quantize_line_geometry' : parameter 'thickness' with direction 'inout' not supported
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
 
@@ -163,15 +176,40 @@ func QuantizeLineGeometry(thickness int32, position int32) {
 
 // UNSUPPORTED : C value 'pango_script_get_sample_language' : parameter 'script' of type 'Script' not supported
 
-// UNSUPPORTED : C value 'pango_shape' : parameter 'text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_shape' : parameter 'analysis' of type 'Analysis' not supported
 
-// UNSUPPORTED : C value 'pango_shape_full' : parameter 'item_text' of type 'utf8' not supported
+// UNSUPPORTED : C value 'pango_shape_full' : parameter 'analysis' of type 'Analysis' not supported
 
 // UNSUPPORTED : C value 'pango_skip_space' : parameter 'pos' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'pango_split_file_list' : parameter 'str' of type 'utf8' not supported
+var splitFileListInvoker *gi.Function
 
-// UNSUPPORTED : C value 'pango_trim_string' : parameter 'str' of type 'utf8' not supported
+// SplitFileList is a representation of the C type pango_split_file_list.
+func SplitFileList(str string) {
+	if splitFileListInvoker == nil {
+		splitFileListInvoker = gi.FunctionInvokerNew("Pango", "split_file_list")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	splitFileListInvoker.Invoke(inArgs[:])
+}
+
+var trimStringInvoker *gi.Function
+
+// TrimString is a representation of the C type pango_trim_string.
+func TrimString(str string) string {
+	if trimStringInvoker == nil {
+		trimStringInvoker = gi.FunctionInvokerNew("Pango", "trim_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := trimStringInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
 
 // UNSUPPORTED : C value 'pango_unichar_direction' : parameter 'ch' of type 'gunichar' not supported
 
