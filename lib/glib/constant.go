@@ -337,7 +337,7 @@ const MAXUINT64 = uint64(0xffffffffffffffff)
 const MAXUINT8 = uint8(0xff)
 
 // MICRO_VERSION is a representation of the C type MICRO_VERSION.
-const MICRO_VERSION = int32(1)
+const MICRO_VERSION = int32(0)
 
 // MININT16 is a representation of the C type MININT16.
 //
@@ -358,7 +358,7 @@ const MININT64 = int64(-9223372036854775808)
 const MININT8 = int8(-128)
 
 // MINOR_VERSION is a representation of the C type MINOR_VERSION.
-const MINOR_VERSION = int32(56)
+const MINOR_VERSION = int32(62)
 
 // MODULE_SUFFIX is a representation of the C type MODULE_SUFFIX.
 const MODULE_SUFFIX = "so"
@@ -454,6 +454,11 @@ const SYSDEF_MSG_OOB = int32(1)
 
 // SYSDEF_MSG_PEEK is a representation of the C type SYSDEF_MSG_PEEK.
 const SYSDEF_MSG_PEEK = int32(2)
+
+// TEST_OPTION_ISOLATE_DIRS is a representation of the C type TEST_OPTION_ISOLATE_DIRS.
+//
+// since 2.60
+const TEST_OPTION_ISOLATE_DIRS = "isolate_dirs"
 
 // TIME_SPAN_DAY is a representation of the C type TIME_SPAN_DAY.
 //

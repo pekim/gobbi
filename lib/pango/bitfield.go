@@ -20,4 +20,6 @@ const (
 	Fontmask_Size Fontmask = 32
 	// Fontmask_Gravity is a representation of the C type PANGO_FONT_MASK_GRAVITY.
 	Fontmask_Gravity Fontmask = 64
+	// Fontmask_Variations is a representation of the C type PANGO_FONT_MASK_VARIATIONS.
+	Fontmask_Variations Fontmask = 128
 )

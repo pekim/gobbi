@@ -492,6 +492,8 @@ const (
 	Tlderror_NotEnoughDomains Tlderror = 2
 	// Tlderror_NoBaseDomain is a representation of the C type SOUP_TLD_ERROR_NO_BASE_DOMAIN.
 	Tlderror_NoBaseDomain Tlderror = 3
+	// Tlderror_NoPslData is a representation of the C type SOUP_TLD_ERROR_NO_PSL_DATA.
+	Tlderror_NoPslData Tlderror = 4
 )
 
 // Websocketclosecode is a representation of the C type SoupWebsocketCloseCode.

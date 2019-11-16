@@ -10,6 +10,8 @@ const (
 	Coordtype_Screen Coordtype = 0
 	// Coordtype_Window is a representation of the C type ATK_XY_WINDOW.
 	Coordtype_Window Coordtype = 1
+	// Coordtype_Parent is a representation of the C type ATK_XY_PARENT.
+	Coordtype_Parent Coordtype = 2
 )
 
 // Keyeventtype is a representation of the C type AtkKeyEventType.
@@ -346,8 +348,34 @@ const (
 	Role_Superscript Role = 121
 	// Role_Footnote is a representation of the C type ATK_ROLE_FOOTNOTE.
 	Role_Footnote Role = 122
+	// Role_ContentDeletion is a representation of the C type ATK_ROLE_CONTENT_DELETION.
+	Role_ContentDeletion Role = 123
+	// Role_ContentInsertion is a representation of the C type ATK_ROLE_CONTENT_INSERTION.
+	Role_ContentInsertion Role = 124
 	// Role_LastDefined is a representation of the C type ATK_ROLE_LAST_DEFINED.
-	Role_LastDefined Role = 123
+	Role_LastDefined Role = 125
+)
+
+// Scrolltype is a representation of the C type AtkScrollType.
+//
+// since 2.30
+type Scrolltype int
+
+const (
+	// Scrolltype_TopLeft is a representation of the C type ATK_SCROLL_TOP_LEFT.
+	Scrolltype_TopLeft Scrolltype = 0
+	// Scrolltype_BottomRight is a representation of the C type ATK_SCROLL_BOTTOM_RIGHT.
+	Scrolltype_BottomRight Scrolltype = 1
+	// Scrolltype_TopEdge is a representation of the C type ATK_SCROLL_TOP_EDGE.
+	Scrolltype_TopEdge Scrolltype = 2
+	// Scrolltype_BottomEdge is a representation of the C type ATK_SCROLL_BOTTOM_EDGE.
+	Scrolltype_BottomEdge Scrolltype = 3
+	// Scrolltype_LeftEdge is a representation of the C type ATK_SCROLL_LEFT_EDGE.
+	Scrolltype_LeftEdge Scrolltype = 4
+	// Scrolltype_RightEdge is a representation of the C type ATK_SCROLL_RIGHT_EDGE.
+	Scrolltype_RightEdge Scrolltype = 5
+	// Scrolltype_Anywhere is a representation of the C type ATK_SCROLL_ANYWHERE.
+	Scrolltype_Anywhere Scrolltype = 6
 )
 
 // Statetype is a representation of the C type AtkStateType.

@@ -32,17 +32,11 @@ const AUTH_DOMAIN_BASIC_AUTH_CALLBACK = "auth-callback"
 // AUTH_DOMAIN_BASIC_AUTH_DATA is a representation of the C type AUTH_DOMAIN_BASIC_AUTH_DATA.
 const AUTH_DOMAIN_BASIC_AUTH_DATA = "auth-data"
 
-// AUTH_DOMAIN_BASIC_H is a representation of the C type AUTH_DOMAIN_BASIC_H.
-const AUTH_DOMAIN_BASIC_H = int32(1)
-
 // AUTH_DOMAIN_DIGEST_AUTH_CALLBACK is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_CALLBACK.
 const AUTH_DOMAIN_DIGEST_AUTH_CALLBACK = "auth-callback"
 
 // AUTH_DOMAIN_DIGEST_AUTH_DATA is a representation of the C type AUTH_DOMAIN_DIGEST_AUTH_DATA.
 const AUTH_DOMAIN_DIGEST_AUTH_DATA = "auth-data"
-
-// AUTH_DOMAIN_DIGEST_H is a representation of the C type AUTH_DOMAIN_DIGEST_H.
-const AUTH_DOMAIN_DIGEST_H = int32(1)
 
 // AUTH_DOMAIN_FILTER is a representation of the C type AUTH_DOMAIN_FILTER.
 const AUTH_DOMAIN_FILTER = "filter"
@@ -56,9 +50,6 @@ const AUTH_DOMAIN_GENERIC_AUTH_CALLBACK = "generic-auth-callback"
 // AUTH_DOMAIN_GENERIC_AUTH_DATA is a representation of the C type AUTH_DOMAIN_GENERIC_AUTH_DATA.
 const AUTH_DOMAIN_GENERIC_AUTH_DATA = "generic-auth-data"
 
-// AUTH_DOMAIN_H is a representation of the C type AUTH_DOMAIN_H.
-const AUTH_DOMAIN_H = int32(1)
-
 // AUTH_DOMAIN_PROXY is a representation of the C type AUTH_DOMAIN_PROXY.
 const AUTH_DOMAIN_PROXY = "proxy"
 
@@ -67,9 +58,6 @@ const AUTH_DOMAIN_REALM = "realm"
 
 // AUTH_DOMAIN_REMOVE_PATH is a representation of the C type AUTH_DOMAIN_REMOVE_PATH.
 const AUTH_DOMAIN_REMOVE_PATH = "remove-path"
-
-// AUTH_H is a representation of the C type AUTH_H.
-const AUTH_H = int32(1)
 
 // AUTH_HOST is a representation of the C type AUTH_HOST.
 const AUTH_HOST = "host"
@@ -80,17 +68,11 @@ const AUTH_IS_AUTHENTICATED = "is-authenticated"
 // AUTH_IS_FOR_PROXY is a representation of the C type AUTH_IS_FOR_PROXY.
 const AUTH_IS_FOR_PROXY = "is-for-proxy"
 
-// AUTH_MANAGER_H is a representation of the C type AUTH_MANAGER_H.
-const AUTH_MANAGER_H = int32(1)
-
 // AUTH_REALM is a representation of the C type AUTH_REALM.
 const AUTH_REALM = "realm"
 
 // AUTH_SCHEME_NAME is a representation of the C type AUTH_SCHEME_NAME.
 const AUTH_SCHEME_NAME = "scheme-name"
-
-// CACHE_H is a representation of the C type CACHE_H.
-const CACHE_H = int32(1)
 
 // CHAR_HTTP_CTL is a representation of the C type CHAR_HTTP_CTL.
 const CHAR_HTTP_CTL = int32(16)
@@ -107,15 +89,6 @@ const CHAR_URI_PERCENT_ENCODED = int32(1)
 // CHAR_URI_SUB_DELIMS is a representation of the C type CHAR_URI_SUB_DELIMS.
 const CHAR_URI_SUB_DELIMS = int32(4)
 
-// CONTENT_DECODER_H is a representation of the C type CONTENT_DECODER_H.
-const CONTENT_DECODER_H = int32(1)
-
-// CONTENT_SNIFFER_H is a representation of the C type CONTENT_SNIFFER_H.
-const CONTENT_SNIFFER_H = int32(1)
-
-// COOKIE_H is a representation of the C type COOKIE_H.
-const COOKIE_H = int32(1)
-
 // COOKIE_JAR_ACCEPT_POLICY is a representation of the C type COOKIE_JAR_ACCEPT_POLICY.
 //
 // since 2.30
@@ -124,20 +97,11 @@ const COOKIE_JAR_ACCEPT_POLICY = "accept-policy"
 // COOKIE_JAR_DB_FILENAME is a representation of the C type COOKIE_JAR_DB_FILENAME.
 const COOKIE_JAR_DB_FILENAME = "filename"
 
-// COOKIE_JAR_DB_H is a representation of the C type COOKIE_JAR_DB_H.
-const COOKIE_JAR_DB_H = int32(1)
-
-// COOKIE_JAR_H is a representation of the C type COOKIE_JAR_H.
-const COOKIE_JAR_H = int32(1)
-
 // COOKIE_JAR_READ_ONLY is a representation of the C type COOKIE_JAR_READ_ONLY.
 const COOKIE_JAR_READ_ONLY = "read-only"
 
 // COOKIE_JAR_TEXT_FILENAME is a representation of the C type COOKIE_JAR_TEXT_FILENAME.
 const COOKIE_JAR_TEXT_FILENAME = "filename"
-
-// COOKIE_JAR_TEXT_H is a representation of the C type COOKIE_JAR_TEXT_H.
-const COOKIE_JAR_TEXT_H = int32(1)
 
 // COOKIE_MAX_AGE_ONE_DAY is a representation of the C type COOKIE_MAX_AGE_ONE_DAY.
 //
@@ -159,12 +123,6 @@ const COOKIE_MAX_AGE_ONE_WEEK = int32(0)
 // since 2.24
 const COOKIE_MAX_AGE_ONE_YEAR = int32(0)
 
-// DATE_H is a representation of the C type DATE_H.
-const DATE_H = int32(1)
-
-// FORM_H is a representation of the C type FORM_H.
-const FORM_H = int32(1)
-
 // FORM_MIME_TYPE_MULTIPART is a representation of the C type FORM_MIME_TYPE_MULTIPART.
 //
 // since 2.26
@@ -175,11 +133,11 @@ const FORM_MIME_TYPE_MULTIPART = "multipart/form-data"
 // since 2.26
 const FORM_MIME_TYPE_URLENCODED = "application/x-www-form-urlencoded"
 
-// HEADERS_H is a representation of the C type HEADERS_H.
-const HEADERS_H = int32(1)
+// HSTS_ENFORCER_DB_FILENAME is a representation of the C type HSTS_ENFORCER_DB_FILENAME.
+const HSTS_ENFORCER_DB_FILENAME = "filename"
 
-// LOGGER_H is a representation of the C type LOGGER_H.
-const LOGGER_H = int32(1)
+// HSTS_POLICY_MAX_AGE_PAST is a representation of the C type HSTS_POLICY_MAX_AGE_PAST.
+const HSTS_POLICY_MAX_AGE_PAST = int32(0)
 
 // LOGGER_LEVEL is a representation of the C type LOGGER_LEVEL.
 //
@@ -196,9 +154,6 @@ const LOGGER_MAX_BODY_SIZE = "max-body-size"
 // since 2.42
 const MAJOR_VERSION = int32(2)
 
-// MESSAGE_BODY_H is a representation of the C type MESSAGE_BODY_H.
-const MESSAGE_BODY_H = int32(1)
-
 // MESSAGE_FIRST_PARTY is a representation of the C type MESSAGE_FIRST_PARTY.
 //
 // since 2.30
@@ -206,12 +161,6 @@ const MESSAGE_FIRST_PARTY = "first-party"
 
 // MESSAGE_FLAGS is a representation of the C type MESSAGE_FLAGS.
 const MESSAGE_FLAGS = "flags"
-
-// MESSAGE_H is a representation of the C type MESSAGE_H.
-const MESSAGE_H = int32(1)
-
-// MESSAGE_HEADERS_H is a representation of the C type MESSAGE_HEADERS_H.
-const MESSAGE_HEADERS_H = int32(1)
 
 // MESSAGE_HTTP_VERSION is a representation of the C type MESSAGE_HTTP_VERSION.
 const MESSAGE_HTTP_VERSION = "http-version"
@@ -268,51 +217,15 @@ const MESSAGE_TLS_ERRORS = "tls-errors"
 // MESSAGE_URI is a representation of the C type MESSAGE_URI.
 const MESSAGE_URI = "uri"
 
-// METHOD_H is a representation of the C type METHOD_H.
-const METHOD_H = int32(1)
-
 // MICRO_VERSION is a representation of the C type MICRO_VERSION.
 //
 // since 2.42
-const MICRO_VERSION = int32(1)
+const MICRO_VERSION = int32(2)
 
 // MINOR_VERSION is a representation of the C type MINOR_VERSION.
 //
 // since 2.42
-const MINOR_VERSION = int32(62)
-
-// MISC_H is a representation of the C type MISC_H.
-const MISC_H = int32(1)
-
-// MULTIPART_H is a representation of the C type MULTIPART_H.
-const MULTIPART_H = int32(1)
-
-// MULTIPART_INPUT_STREAM_H is a representation of the C type MULTIPART_INPUT_STREAM_H.
-const MULTIPART_INPUT_STREAM_H = int32(1)
-
-// PASSWORD_MANAGER_H is a representation of the C type PASSWORD_MANAGER_H.
-const PASSWORD_MANAGER_H = int32(1)
-
-// PROXY_RESOLVER_DEFAULT_H is a representation of the C type PROXY_RESOLVER_DEFAULT_H.
-const PROXY_RESOLVER_DEFAULT_H = int32(1)
-
-// PROXY_URI_RESOLVER_H is a representation of the C type PROXY_URI_RESOLVER_H.
-const PROXY_URI_RESOLVER_H = int32(1)
-
-// REQUESTER_H is a representation of the C type REQUESTER_H.
-const REQUESTER_H = int32(1)
-
-// REQUEST_DATA_H is a representation of the C type REQUEST_DATA_H.
-const REQUEST_DATA_H = int32(1)
-
-// REQUEST_FILE_H is a representation of the C type REQUEST_FILE_H.
-const REQUEST_FILE_H = int32(1)
-
-// REQUEST_H is a representation of the C type REQUEST_H.
-const REQUEST_H = int32(1)
-
-// REQUEST_HTTP_H is a representation of the C type REQUEST_HTTP_H.
-const REQUEST_HTTP_H = int32(1)
+const MINOR_VERSION = int32(68)
 
 // REQUEST_SESSION is a representation of the C type REQUEST_SESSION.
 //
@@ -324,11 +237,13 @@ const REQUEST_SESSION = "session"
 // since 2.42
 const REQUEST_URI = "uri"
 
+// SERVER_ADD_WEBSOCKET_EXTENSION is a representation of the C type SERVER_ADD_WEBSOCKET_EXTENSION.
+//
+// since 2.68
+const SERVER_ADD_WEBSOCKET_EXTENSION = "add-websocket-extension"
+
 // SERVER_ASYNC_CONTEXT is a representation of the C type SERVER_ASYNC_CONTEXT.
 const SERVER_ASYNC_CONTEXT = "async-context"
-
-// SERVER_H is a representation of the C type SERVER_H.
-const SERVER_H = int32(1)
 
 // SERVER_HTTPS_ALIASES is a representation of the C type SERVER_HTTPS_ALIASES.
 //
@@ -348,6 +263,11 @@ const SERVER_PORT = "port"
 
 // SERVER_RAW_PATHS is a representation of the C type SERVER_RAW_PATHS.
 const SERVER_RAW_PATHS = "raw-paths"
+
+// SERVER_REMOVE_WEBSOCKET_EXTENSION is a representation of the C type SERVER_REMOVE_WEBSOCKET_EXTENSION.
+//
+// since 2.68
+const SERVER_REMOVE_WEBSOCKET_EXTENSION = "remove-websocket-extension"
 
 // SERVER_SERVER_HEADER is a representation of the C type SERVER_SERVER_HEADER.
 const SERVER_SERVER_HEADER = "server-header"
@@ -385,15 +305,6 @@ const SESSION_ADD_FEATURE_BY_TYPE = "add-feature-by-type"
 
 // SESSION_ASYNC_CONTEXT is a representation of the C type SESSION_ASYNC_CONTEXT.
 const SESSION_ASYNC_CONTEXT = "async-context"
-
-// SESSION_ASYNC_H is a representation of the C type SESSION_ASYNC_H.
-const SESSION_ASYNC_H = int32(1)
-
-// SESSION_FEATURE_H is a representation of the C type SESSION_FEATURE_H.
-const SESSION_FEATURE_H = int32(1)
-
-// SESSION_H is a representation of the C type SESSION_H.
-const SESSION_H = int32(1)
 
 // SESSION_HTTPS_ALIASES is a representation of the C type SESSION_HTTPS_ALIASES.
 //
@@ -445,9 +356,6 @@ const SESSION_SSL_STRICT = "ssl-strict"
 // since 2.38
 const SESSION_SSL_USE_SYSTEM_CA_FILE = "ssl-use-system-ca-file"
 
-// SESSION_SYNC_H is a representation of the C type SESSION_SYNC_H.
-const SESSION_SYNC_H = int32(1)
-
 // SESSION_TIMEOUT is a representation of the C type SESSION_TIMEOUT.
 const SESSION_TIMEOUT = "timeout"
 
@@ -477,9 +385,6 @@ const SOCKET_ASYNC_CONTEXT = "async-context"
 
 // SOCKET_FLAG_NONBLOCKING is a representation of the C type SOCKET_FLAG_NONBLOCKING.
 const SOCKET_FLAG_NONBLOCKING = "non-blocking"
-
-// SOCKET_H is a representation of the C type SOCKET_H.
-const SOCKET_H = int32(1)
 
 // SOCKET_IS_SERVER is a representation of the C type SOCKET_IS_SERVER.
 const SOCKET_IS_SERVER = "is-server"
@@ -520,25 +425,7 @@ const SOCKET_TRUSTED_CERTIFICATE = "trusted-certificate"
 // since 2.38
 const SOCKET_USE_THREAD_CONTEXT = "use-thread-context"
 
-// STATUS_H is a representation of the C type STATUS_H.
-const STATUS_H = int32(1)
-
-// TYPES_H is a representation of the C type TYPES_H.
-const TYPES_H = int32(1)
-
-// URI_H is a representation of the C type URI_H.
-const URI_H = int32(1)
-
-// VALUE_UTILS_H is a representation of the C type VALUE_UTILS_H.
-const VALUE_UTILS_H = int32(1)
-
 // VERSION_MIN_REQUIRED is a representation of the C type VERSION_MIN_REQUIRED.
 //
 // since 2.42
 const VERSION_MIN_REQUIRED = int32(2)
-
-// XMLRPC_H is a representation of the C type XMLRPC_H.
-const XMLRPC_H = int32(1)
-
-// XMLRPC_OLD_H is a representation of the C type XMLRPC_OLD_H.
-const XMLRPC_OLD_H = int32(1)

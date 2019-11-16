@@ -16,6 +16,15 @@ type Pid int32
 // Quark is a representation of the C type Quark.
 type Quark uint32
 
+// UNSUPPORTED : C value 'RWLockReaderLocker' : No Go type for 'none'
+
+// UNSUPPORTED : C value 'RWLockWriterLocker' : No Go type for 'none'
+
+// UNSUPPORTED : C value 'RecMutexLocker' : No Go type for 'none'
+
+// Refstring is a representation of the C type RefString.
+type Refstring int8
+
 // Strv is a representation of the C type Strv.
 type Strv string
 

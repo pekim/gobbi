@@ -38,6 +38,10 @@ const (
 	Applicationflags_NonUnique Applicationflags = 32
 	// Applicationflags_CanOverrideAppId is a representation of the C type G_APPLICATION_CAN_OVERRIDE_APP_ID.
 	Applicationflags_CanOverrideAppId Applicationflags = 64
+	// Applicationflags_AllowReplacement is a representation of the C type G_APPLICATION_ALLOW_REPLACEMENT.
+	Applicationflags_AllowReplacement Applicationflags = 128
+	// Applicationflags_Replace is a representation of the C type G_APPLICATION_REPLACE.
+	Applicationflags_Replace Applicationflags = 256
 )
 
 // Askpasswordflags is a representation of the C type GAskPasswordFlags.
@@ -54,6 +58,8 @@ const (
 	Askpasswordflags_SavingSupported Askpasswordflags = 8
 	// Askpasswordflags_AnonymousSupported is a representation of the C type G_ASK_PASSWORD_ANONYMOUS_SUPPORTED.
 	Askpasswordflags_AnonymousSupported Askpasswordflags = 16
+	// Askpasswordflags_Tcrypt is a representation of the C type G_ASK_PASSWORD_TCRYPT.
+	Askpasswordflags_Tcrypt Askpasswordflags = 32
 )
 
 // Busnameownerflags is a representation of the C type GBusNameOwnerFlags.
@@ -412,6 +418,20 @@ const (
 	Outputstreamspliceflags_CloseSource Outputstreamspliceflags = 1
 	// Outputstreamspliceflags_CloseTarget is a representation of the C type G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET.
 	Outputstreamspliceflags_CloseTarget Outputstreamspliceflags = 2
+)
+
+// Resolvernamelookupflags is a representation of the C type GResolverNameLookupFlags.
+//
+// since 2.60
+type Resolvernamelookupflags int
+
+const (
+	// Resolvernamelookupflags_Default is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_DEFAULT.
+	Resolvernamelookupflags_Default Resolvernamelookupflags = 0
+	// Resolvernamelookupflags_Ipv4Only is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_IPV4_ONLY.
+	Resolvernamelookupflags_Ipv4Only Resolvernamelookupflags = 1
+	// Resolvernamelookupflags_Ipv6Only is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_IPV6_ONLY.
+	Resolvernamelookupflags_Ipv6Only Resolvernamelookupflags = 2
 )
 
 // Resourceflags is a representation of the C type GResourceFlags.

@@ -5,6 +5,11 @@ package gio
 // DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME is a representation of the C type DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME.
 const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME = "gio-desktop-app-info-lookup"
 
+// DRIVE_IDENTIFIER_KIND_UNIX_DEVICE is a representation of the C type DRIVE_IDENTIFIER_KIND_UNIX_DEVICE.
+//
+// since 2.58
+const DRIVE_IDENTIFIER_KIND_UNIX_DEVICE = "unix-device"
+
 // FILE_ATTRIBUTE_ACCESS_CAN_DELETE is a representation of the C type FILE_ATTRIBUTE_ACCESS_CAN_DELETE.
 const FILE_ATTRIBUTE_ACCESS_CAN_DELETE = "access::can-delete"
 
@@ -26,8 +31,18 @@ const FILE_ATTRIBUTE_ACCESS_CAN_WRITE = "access::can-write"
 // FILE_ATTRIBUTE_DOS_IS_ARCHIVE is a representation of the C type FILE_ATTRIBUTE_DOS_IS_ARCHIVE.
 const FILE_ATTRIBUTE_DOS_IS_ARCHIVE = "dos::is-archive"
 
+// FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT is a representation of the C type FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT.
+//
+// since 2.60
+const FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT = "dos::is-mountpoint"
+
 // FILE_ATTRIBUTE_DOS_IS_SYSTEM is a representation of the C type FILE_ATTRIBUTE_DOS_IS_SYSTEM.
 const FILE_ATTRIBUTE_DOS_IS_SYSTEM = "dos::is-system"
+
+// FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG is a representation of the C type FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG.
+//
+// since 2.60
+const FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG = "dos::reparse-point-tag"
 
 // FILE_ATTRIBUTE_ETAG_VALUE is a representation of the C type FILE_ATTRIBUTE_ETAG_VALUE.
 const FILE_ATTRIBUTE_ETAG_VALUE = "etag::value"

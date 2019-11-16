@@ -6840,11 +6840,20 @@ const KEY_zerosuperior = int32(16785520)
 // KEY_zstroke is a representation of the C type KEY_zstroke.
 const KEY_zstroke = int32(16777654)
 
+// MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+const MAJOR_VERSION = int32(3)
+
 // MAX_TIMECOORD_AXES is a representation of the C type MAX_TIMECOORD_AXES.
 const MAX_TIMECOORD_AXES = int32(128)
+
+// MICRO_VERSION is a representation of the C type MICRO_VERSION.
+const MICRO_VERSION = int32(12)
+
+// MINOR_VERSION is a representation of the C type MINOR_VERSION.
+const MINOR_VERSION = int32(24)
 
 // PARENT_RELATIVE is a representation of the C type PARENT_RELATIVE.
 const PARENT_RELATIVE = int32(1)
 
 // PRIORITY_REDRAW is a representation of the C type PRIORITY_REDRAW.
-const PRIORITY_REDRAW = int32(20)
+const PRIORITY_REDRAW = int32(120)

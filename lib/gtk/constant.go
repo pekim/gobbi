@@ -3,13 +3,13 @@
 package gtk
 
 // BINARY_AGE is a representation of the C type BINARY_AGE.
-const BINARY_AGE = int32(2230)
+const BINARY_AGE = int32(2412)
 
 // INPUT_ERROR is a representation of the C type INPUT_ERROR.
 const INPUT_ERROR = int32(-1)
 
 // INTERFACE_AGE is a representation of the C type INTERFACE_AGE.
-const INTERFACE_AGE = int32(30)
+const INTERFACE_AGE = int32(8)
 
 // LEVEL_BAR_OFFSET_FULL is a representation of the C type LEVEL_BAR_OFFSET_FULL.
 //
@@ -33,10 +33,10 @@ const MAJOR_VERSION = int32(3)
 const MAX_COMPOSE_LEN = int32(7)
 
 // MICRO_VERSION is a representation of the C type MICRO_VERSION.
-const MICRO_VERSION = int32(30)
+const MICRO_VERSION = int32(12)
 
 // MINOR_VERSION is a representation of the C type MINOR_VERSION.
-const MINOR_VERSION = int32(22)
+const MINOR_VERSION = int32(24)
 
 // PAPER_NAME_A3 is a representation of the C type PAPER_NAME_A3.
 const PAPER_NAME_A3 = "iso_a3"
@@ -163,7 +163,7 @@ const PRINT_SETTINGS_WIN32_DRIVER_EXTRA = "win32-driver-extra"
 const PRINT_SETTINGS_WIN32_DRIVER_VERSION = "win32-driver-version"
 
 // PRIORITY_RESIZE is a representation of the C type PRIORITY_RESIZE.
-const PRIORITY_RESIZE = int32(10)
+const PRIORITY_RESIZE = int32(110)
 
 // STOCK_ABOUT is a representation of the C type STOCK_ABOUT.
 //
@@ -896,7 +896,7 @@ const STYLE_REGION_ROW = "row"
 const STYLE_REGION_TAB = "tab"
 
 // TEXT_VIEW_PRIORITY_VALIDATE is a representation of the C type TEXT_VIEW_PRIORITY_VALIDATE.
-const TEXT_VIEW_PRIORITY_VALIDATE = int32(5)
+const TEXT_VIEW_PRIORITY_VALIDATE = int32(125)
 
 // TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID is a representation of the C type TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID.
 const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = int32(-1)

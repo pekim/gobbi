@@ -5,7 +5,7 @@ package atk
 // BINARY_AGE is a representation of the C type BINARY_AGE.
 //
 // since 2.7.4
-const BINARY_AGE = int32(22811)
+const BINARY_AGE = int32(23313)
 
 // INTERFACE_AGE is a representation of the C type INTERFACE_AGE.
 //
@@ -20,12 +20,12 @@ const MAJOR_VERSION = int32(2)
 // MICRO_VERSION is a representation of the C type MICRO_VERSION.
 //
 // since 2.7.4
-const MICRO_VERSION = int32(1)
+const MICRO_VERSION = int32(3)
 
 // MINOR_VERSION is a representation of the C type MINOR_VERSION.
 //
 // since 2.7.4
-const MINOR_VERSION = int32(28)
+const MINOR_VERSION = int32(33)
 
 // VERSION_MIN_REQUIRED is a representation of the C type VERSION_MIN_REQUIRED.
 //

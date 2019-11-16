@@ -154,6 +154,26 @@ const (
 	Dialogflags_UseHeaderBar Dialogflags = 4
 )
 
+// Eventcontrollerscrollflags is a representation of the C type GtkEventControllerScrollFlags.
+//
+// since 3.24
+type Eventcontrollerscrollflags int
+
+const (
+	// Eventcontrollerscrollflags_None is a representation of the C type GTK_EVENT_CONTROLLER_SCROLL_NONE.
+	Eventcontrollerscrollflags_None Eventcontrollerscrollflags = 0
+	// Eventcontrollerscrollflags_Vertical is a representation of the C type GTK_EVENT_CONTROLLER_SCROLL_VERTICAL.
+	Eventcontrollerscrollflags_Vertical Eventcontrollerscrollflags = 1
+	// Eventcontrollerscrollflags_Horizontal is a representation of the C type GTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL.
+	Eventcontrollerscrollflags_Horizontal Eventcontrollerscrollflags = 2
+	// Eventcontrollerscrollflags_Discrete is a representation of the C type GTK_EVENT_CONTROLLER_SCROLL_DISCRETE.
+	Eventcontrollerscrollflags_Discrete Eventcontrollerscrollflags = 4
+	// Eventcontrollerscrollflags_Kinetic is a representation of the C type GTK_EVENT_CONTROLLER_SCROLL_KINETIC.
+	Eventcontrollerscrollflags_Kinetic Eventcontrollerscrollflags = 8
+	// Eventcontrollerscrollflags_BothAxes is a representation of the C type GTK_EVENT_CONTROLLER_SCROLL_BOTH_AXES.
+	Eventcontrollerscrollflags_BothAxes Eventcontrollerscrollflags = 3
+)
+
 // Filefilterflags is a representation of the C type GtkFileFilterFlags.
 type Filefilterflags int
 
@@ -166,6 +186,22 @@ const (
 	Filefilterflags_DisplayName Filefilterflags = 4
 	// Filefilterflags_MimeType is a representation of the C type GTK_FILE_FILTER_MIME_TYPE.
 	Filefilterflags_MimeType Filefilterflags = 8
+)
+
+// Fontchooserlevel is a representation of the C type GtkFontChooserLevel.
+type Fontchooserlevel int
+
+const (
+	// Fontchooserlevel_Family is a representation of the C type GTK_FONT_CHOOSER_LEVEL_FAMILY.
+	Fontchooserlevel_Family Fontchooserlevel = 0
+	// Fontchooserlevel_Style is a representation of the C type GTK_FONT_CHOOSER_LEVEL_STYLE.
+	Fontchooserlevel_Style Fontchooserlevel = 1
+	// Fontchooserlevel_Size is a representation of the C type GTK_FONT_CHOOSER_LEVEL_SIZE.
+	Fontchooserlevel_Size Fontchooserlevel = 2
+	// Fontchooserlevel_Variations is a representation of the C type GTK_FONT_CHOOSER_LEVEL_VARIATIONS.
+	Fontchooserlevel_Variations Fontchooserlevel = 4
+	// Fontchooserlevel_Features is a representation of the C type GTK_FONT_CHOOSER_LEVEL_FEATURES.
+	Fontchooserlevel_Features Fontchooserlevel = 8
 )
 
 // Iconlookupflags is a representation of the C type GtkIconLookupFlags.

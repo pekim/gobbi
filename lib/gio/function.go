@@ -147,6 +147,17 @@ func ContentTypeGetGenericIconName(type_ string) string {
 
 // UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
 
+var contentTypeGetMimeDirsInvoker *gi.Function
+
+// ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
+func ContentTypeGetMimeDirs() {
+	if contentTypeGetMimeDirsInvoker == nil {
+		contentTypeGetMimeDirsInvoker = gi.FunctionInvokerNew("Gio", "content_type_get_mime_dirs")
+	}
+
+	contentTypeGetMimeDirsInvoker.Invoke(nil)
+}
+
 var contentTypeGetMimeTypeInvoker *gi.Function
 
 // ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
@@ -173,6 +184,8 @@ func ContentTypeGetMimeType(type_ string) string {
 // UNSUPPORTED : C value 'g_content_type_is_mime_type' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_content_type_is_unknown' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' has no type
 
 // UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
 
@@ -396,6 +409,10 @@ func NetworkingInit() {
 // UNSUPPORTED : C value 'g_unix_mount_get_fs_type' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
 // UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+
+// UNSUPPORTED : C value 'g_unix_mount_get_options' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+
+// UNSUPPORTED : C value 'g_unix_mount_get_root_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
 // UNSUPPORTED : C value 'g_unix_mount_guess_can_eject' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 

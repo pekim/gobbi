@@ -98,9 +98,13 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_header_parse_param_list' : return type 'GLib.HashTable' not supported
 
+// UNSUPPORTED : C value 'soup_header_parse_param_list_strict' : return type 'GLib.HashTable' not supported
+
 // UNSUPPORTED : C value 'soup_header_parse_quality_list' : parameter 'unacceptable' of type 'GLib.SList' not supported
 
 // UNSUPPORTED : C value 'soup_header_parse_semi_param_list' : return type 'GLib.HashTable' not supported
+
+// UNSUPPORTED : C value 'soup_header_parse_semi_param_list_strict' : return type 'GLib.HashTable' not supported
 
 // UNSUPPORTED : C value 'soup_headers_parse' : parameter 'dest' of type 'MessageHeaders' not supported
 
@@ -250,13 +254,21 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 // UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'msg' of type 'Message' not supported
 
+// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
+
 // UNSUPPORTED : C value 'soup_websocket_client_verify_handshake' : parameter 'msg' of type 'Message' not supported
+
+// UNSUPPORTED : C value 'soup_websocket_client_verify_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
 
 // UNSUPPORTED : C value 'soup_websocket_error_get_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : parameter 'msg' of type 'Message' not supported
 
+// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
+
 // UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'msg' of type 'Message' not supported
+
+// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'msg' of type 'Message' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' has no type
 

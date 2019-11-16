@@ -88,13 +88,13 @@ func AsciiStrup(str string, len int32) string {
 var asciiTolowerInvoker *gi.Function
 
 // AsciiTolower is a representation of the C type g_ascii_tolower.
-func AsciiTolower(asciiStrtollc int8) int8 {
+func AsciiTolower(c int8) int8 {
 	if asciiTolowerInvoker == nil {
 		asciiTolowerInvoker = gi.FunctionInvokerNew("GLib", "ascii_tolower")
 	}
 
 	var inArgs [1]gi.Argument
-	inArgs[0].SetInt8(asciiStrtollc)
+	inArgs[0].SetInt8(c)
 
 	ret := asciiTolowerInvoker.Invoke(inArgs[:])
 	return ret.Int8()
@@ -353,6 +353,52 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 // UNSUPPORTED : C value 'g_atomic_pointer_xor' : parameter 'atomic' of type 'gpointer' not supported
 
+// UNSUPPORTED : C value 'g_atomic_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_alloc' : parameter 'block_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_alloc0' : parameter 'block_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_dup' : parameter 'block_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_get_size' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_release' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_release_full' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_atomic_ref_count_compare' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_atomic_ref_count_dec' : return type 'gboolean' not supported
+
+var atomicRefCountIncInvoker *gi.Function
+
+// AtomicRefCountInc is a representation of the C type g_atomic_ref_count_inc.
+func AtomicRefCountInc(arc int32) {
+	if atomicRefCountIncInvoker == nil {
+		atomicRefCountIncInvoker = gi.FunctionInvokerNew("GLib", "atomic_ref_count_inc")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(arc)
+
+	atomicRefCountIncInvoker.Invoke(inArgs[:])
+}
+
+var atomicRefCountInitInvoker *gi.Function
+
+// AtomicRefCountInit is a representation of the C type g_atomic_ref_count_init.
+func AtomicRefCountInit(arc int32) {
+	if atomicRefCountInitInvoker == nil {
+		atomicRefCountInitInvoker = gi.FunctionInvokerNew("GLib", "atomic_ref_count_init")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(arc)
+
+	atomicRefCountInitInvoker.Invoke(inArgs[:])
+}
+
 // UNSUPPORTED : C value 'g_base64_decode' : parameter 'out_len' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' has no type
@@ -476,6 +522,8 @@ func ByteArrayNew() {
 // UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' has no type
 
 // UNSUPPORTED : C value 'g_byte_array_unref' : parameter 'array' has no type
+
+// UNSUPPORTED : C value 'g_canonicalize_filename' : parameter 'filename' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_chdir' : parameter 'path' of type 'filename' not supported
 
@@ -779,6 +827,8 @@ func GetCodeset() string {
 	return ret.String(true)
 }
 
+// UNSUPPORTED : C value 'g_get_console_charset' : parameter 'charset' with direction 'out' not supported
+
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_get_current_time' : parameter 'result' of type 'TimeVal' not supported
@@ -794,7 +844,7 @@ func GetEnviron() {
 	getEnvironInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_get_filename_charsets' : return type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' has no type
 
 // UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
 
@@ -819,6 +869,20 @@ func GetLanguageNames() {
 	}
 
 	getLanguageNamesInvoker.Invoke(nil)
+}
+
+var getLanguageNamesWithCategoryInvoker *gi.Function
+
+// GetLanguageNamesWithCategory is a representation of the C type g_get_language_names_with_category.
+func GetLanguageNamesWithCategory(categoryName string) {
+	if getLanguageNamesWithCategoryInvoker == nil {
+		getLanguageNamesWithCategoryInvoker = gi.FunctionInvokerNew("GLib", "get_language_names_with_category")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(categoryName)
+
+	getLanguageNamesWithCategoryInvoker.Invoke(inArgs[:])
 }
 
 var getLocaleVariantsInvoker *gi.Function
@@ -946,6 +1010,8 @@ func GetSystemDataDirs() {
 // UNSUPPORTED : C value 'g_hash_table_steal' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
 // UNSUPPORTED : C value 'g_hash_table_steal_all' : parameter 'hash_table' of type 'GLib.HashTable' not supported
+
+// UNSUPPORTED : C value 'g_hash_table_steal_extended' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
 // UNSUPPORTED : C value 'g_hash_table_unref' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
@@ -1342,9 +1408,132 @@ func RandomSetSeed(seed uint32) {
 	randomSetSeedInvoker.Invoke(inArgs[:])
 }
 
+// UNSUPPORTED : C value 'g_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_rc_box_alloc' : parameter 'block_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_rc_box_alloc0' : parameter 'block_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_rc_box_dup' : parameter 'block_size' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'g_rc_box_get_size' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_rc_box_release' : parameter 'mem_block' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_rc_box_release_full' : parameter 'mem_block' of type 'gpointer' not supported
+
 // UNSUPPORTED : C value 'g_realloc' : parameter 'mem' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_realloc_n' : parameter 'mem' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_ref_count_compare' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_ref_count_dec' : return type 'gboolean' not supported
+
+var refCountIncInvoker *gi.Function
+
+// RefCountInc is a representation of the C type g_ref_count_inc.
+func RefCountInc(rc int32) {
+	if refCountIncInvoker == nil {
+		refCountIncInvoker = gi.FunctionInvokerNew("GLib", "ref_count_inc")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(rc)
+
+	refCountIncInvoker.Invoke(inArgs[:])
+}
+
+var refCountInitInvoker *gi.Function
+
+// RefCountInit is a representation of the C type g_ref_count_init.
+func RefCountInit(rc int32) {
+	if refCountInitInvoker == nil {
+		refCountInitInvoker = gi.FunctionInvokerNew("GLib", "ref_count_init")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(rc)
+
+	refCountInitInvoker.Invoke(inArgs[:])
+}
+
+var refStringAcquireInvoker *gi.Function
+
+// RefStringAcquire is a representation of the C type g_ref_string_acquire.
+func RefStringAcquire(str string) string {
+	if refStringAcquireInvoker == nil {
+		refStringAcquireInvoker = gi.FunctionInvokerNew("GLib", "ref_string_acquire")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := refStringAcquireInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+// UNSUPPORTED : C value 'g_ref_string_length' : return type 'gsize' not supported
+
+var refStringNewInvoker *gi.Function
+
+// RefStringNew is a representation of the C type g_ref_string_new.
+func RefStringNew(str string) string {
+	if refStringNewInvoker == nil {
+		refStringNewInvoker = gi.FunctionInvokerNew("GLib", "ref_string_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := refStringNewInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var refStringNewInternInvoker *gi.Function
+
+// RefStringNewIntern is a representation of the C type g_ref_string_new_intern.
+func RefStringNewIntern(str string) string {
+	if refStringNewInternInvoker == nil {
+		refStringNewInternInvoker = gi.FunctionInvokerNew("GLib", "ref_string_new_intern")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := refStringNewInternInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var refStringNewLenInvoker *gi.Function
+
+// RefStringNewLen is a representation of the C type g_ref_string_new_len.
+func RefStringNewLen(str string, len int32) string {
+	if refStringNewLenInvoker == nil {
+		refStringNewLenInvoker = gi.FunctionInvokerNew("GLib", "ref_string_new_len")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+
+	ret := refStringNewLenInvoker.Invoke(inArgs[:])
+	return ret.String(true)
+}
+
+var refStringReleaseInvoker *gi.Function
+
+// RefStringRelease is a representation of the C type g_ref_string_release.
+func RefStringRelease(str string) {
+	if refStringReleaseInvoker == nil {
+		refStringReleaseInvoker = gi.FunctionInvokerNew("GLib", "ref_string_release")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	refStringReleaseInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'has_references' of type 'gboolean' not supported
 
@@ -1520,6 +1709,8 @@ func SpacedPrimesClosest(num uint32) uint32 {
 }
 
 // UNSUPPORTED : C value 'g_spawn_async' : parameter 'working_directory' of type 'filename' not supported
+
+// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'working_directory' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'working_directory' of type 'filename' not supported
 
@@ -1987,6 +2178,8 @@ func Strup(string_ string) string {
 
 // UNSUPPORTED : C value 'g_strv_contains' : return type 'gboolean' not supported
 
+// UNSUPPORTED : C value 'g_strv_equal' : return type 'gboolean' not supported
+
 // UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
 
 var strvLengthInvoker *gi.Function
@@ -2186,6 +2379,20 @@ func TestSkip(msg string) {
 }
 
 // UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
+
+var testSummaryInvoker *gi.Function
+
+// TestSummary is a representation of the C type g_test_summary.
+func TestSummary(summary string) {
+	if testSummaryInvoker == nil {
+		testSummaryInvoker = gi.FunctionInvokerNew("GLib", "test_summary")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(summary)
+
+	testSummaryInvoker.Invoke(inArgs[:])
+}
 
 // UNSUPPORTED : C value 'g_test_timer_elapsed' : return type 'gdouble' not supported
 
@@ -2612,7 +2819,7 @@ func Utf8FindNextChar(p string, end string) string {
 	inArgs[1].SetString(end)
 
 	ret := utf8FindNextCharInvoker.Invoke(inArgs[:])
-	return ret.String(true)
+	return ret.String(false)
 }
 
 var utf8FindPrevCharInvoker *gi.Function
@@ -2628,7 +2835,7 @@ func Utf8FindPrevChar(str string, p string) string {
 	inArgs[1].SetString(p)
 
 	ret := utf8FindPrevCharInvoker.Invoke(inArgs[:])
-	return ret.String(true)
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'g_utf8_get_char' : return type 'gunichar' not supported
@@ -2666,7 +2873,7 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 	inArgs[1].SetInt64(offset)
 
 	ret := utf8OffsetToPointerInvoker.Invoke(inArgs[:])
-	return ret.String(true)
+	return ret.String(false)
 }
 
 var utf8PointerToOffsetInvoker *gi.Function
@@ -2697,7 +2904,7 @@ func Utf8PrevChar(p string) string {
 	inArgs[0].SetString(p)
 
 	ret := utf8PrevCharInvoker.Invoke(inArgs[:])
-	return ret.String(true)
+	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'c' of type 'gunichar' not supported
@@ -2795,6 +3002,8 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 
 // UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
 
+// UNSUPPORTED : C value 'g_utf8_validate_len' : parameter 'str' has no type
+
 // UNSUPPORTED : C value 'g_uuid_string_is_valid' : return type 'gboolean' not supported
 
 var uuidStringRandomInvoker *gi.Function
@@ -2824,6 +3033,8 @@ func UuidStringRandom() string {
 // UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_variant_type_checked_' : return type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_type_string_get_depth_' : return type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_variant_type_string_is_valid' : return type 'gboolean' not supported
 

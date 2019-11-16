@@ -538,6 +538,20 @@ const (
 	Passwordsave_Permanently Passwordsave = 2
 )
 
+// Pollablereturn is a representation of the C type GPollableReturn.
+//
+// since 2.60
+type Pollablereturn int
+
+const (
+	// Pollablereturn_Failed is a representation of the C type G_POLLABLE_RETURN_FAILED.
+	Pollablereturn_Failed Pollablereturn = 0
+	// Pollablereturn_Ok is a representation of the C type G_POLLABLE_RETURN_OK.
+	Pollablereturn_Ok Pollablereturn = 1
+	// Pollablereturn_WouldBlock is a representation of the C type G_POLLABLE_RETURN_WOULD_BLOCK.
+	Pollablereturn_WouldBlock Pollablereturn = -27
+)
+
 // Resolvererror is a representation of the C type GResolverError.
 //
 // since 2.22
@@ -730,6 +744,8 @@ const (
 	Tlserror_CertificateRequired Tlserror = 5
 	// Tlserror_Eof is a representation of the C type G_TLS_ERROR_EOF.
 	Tlserror_Eof Tlserror = 6
+	// Tlserror_InappropriateFallback is a representation of the C type G_TLS_ERROR_INAPPROPRIATE_FALLBACK.
+	Tlserror_InappropriateFallback Tlserror = 7
 )
 
 // Tlsinteractionresult is a representation of the C type GTlsInteractionResult.

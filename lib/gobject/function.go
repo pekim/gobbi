@@ -66,6 +66,8 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_clear_object' : parameter 'object_ptr' of type 'Object' not supported
 
+// UNSUPPORTED : C value 'g_clear_signal_handler' : parameter 'instance' of type 'Object' not supported
+
 // UNSUPPORTED : C value 'g_enum_complete_type_info' : parameter 'g_enum_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_enum_get_value' : parameter 'enum_class' of type 'EnumClass' not supported

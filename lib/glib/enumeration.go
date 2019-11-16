@@ -1130,6 +1130,28 @@ const (
 	Unicodescript_Soyombo Unicodescript = 140
 	// Unicodescript_ZanabazarSquare is a representation of the C type G_UNICODE_SCRIPT_ZANABAZAR_SQUARE.
 	Unicodescript_ZanabazarSquare Unicodescript = 141
+	// Unicodescript_Dogra is a representation of the C type G_UNICODE_SCRIPT_DOGRA.
+	Unicodescript_Dogra Unicodescript = 142
+	// Unicodescript_GunjalaGondi is a representation of the C type G_UNICODE_SCRIPT_GUNJALA_GONDI.
+	Unicodescript_GunjalaGondi Unicodescript = 143
+	// Unicodescript_HanifiRohingya is a representation of the C type G_UNICODE_SCRIPT_HANIFI_ROHINGYA.
+	Unicodescript_HanifiRohingya Unicodescript = 144
+	// Unicodescript_Makasar is a representation of the C type G_UNICODE_SCRIPT_MAKASAR.
+	Unicodescript_Makasar Unicodescript = 145
+	// Unicodescript_Medefaidrin is a representation of the C type G_UNICODE_SCRIPT_MEDEFAIDRIN.
+	Unicodescript_Medefaidrin Unicodescript = 146
+	// Unicodescript_OldSogdian is a representation of the C type G_UNICODE_SCRIPT_OLD_SOGDIAN.
+	Unicodescript_OldSogdian Unicodescript = 147
+	// Unicodescript_Sogdian is a representation of the C type G_UNICODE_SCRIPT_SOGDIAN.
+	Unicodescript_Sogdian Unicodescript = 148
+	// Unicodescript_Elymaic is a representation of the C type G_UNICODE_SCRIPT_ELYMAIC.
+	Unicodescript_Elymaic Unicodescript = 149
+	// Unicodescript_Nandinagari is a representation of the C type G_UNICODE_SCRIPT_NANDINAGARI.
+	Unicodescript_Nandinagari Unicodescript = 150
+	// Unicodescript_NyiakengPuachueHmong is a representation of the C type G_UNICODE_SCRIPT_NYIAKENG_PUACHUE_HMONG.
+	Unicodescript_NyiakengPuachueHmong Unicodescript = 151
+	// Unicodescript_Wancho is a representation of the C type G_UNICODE_SCRIPT_WANCHO.
+	Unicodescript_Wancho Unicodescript = 152
 )
 
 // Unicodetype is a representation of the C type GUnicodeType.
