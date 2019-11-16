@@ -18,6 +18,31 @@ func (t *Type) init(ns *Namespace) {
 	t.namespace = ns
 }
 
+var jenGoTypes = map[string]*jen.Statement{
+	// signed
+	"gint8":  jen.Int8(),
+	"gshort": jen.Int16(),
+	"gint16": jen.Int16(),
+	"int":    jen.Int32(),
+	"gint":   jen.Int32(),
+	"gint32": jen.Int32(),
+	"glong":  jen.Int64(),
+	"gint64": jen.Int64(),
+
+	// unsigned
+	"guchar":  jen.Uint8(),
+	"guint8":  jen.Uint8(),
+	"gushort": jen.Uint16(),
+	"guint16": jen.Uint16(),
+	"guint":   jen.Uint32(),
+	"guint32": jen.Uint32(),
+	"gulong":  jen.Uint64(),
+	"guint64": jen.Uint64(),
+
+	"gsize": jen.Uintptr(),
+	"utf8":  jen.String(),
+}
+
 func (t *Type) jenGoType() (*jen.Statement, error) {
 	if t == nil {
 		return nil, errors.New("missing Type")
@@ -26,29 +51,8 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return nil, errors.New("missing Type.Name")
 	}
 
-	switch t.Name {
-	case "gint8":
-		return jen.Int8(), nil
-	case "gshort", "gint16":
-		return jen.Int16(), nil
-	case "int", "gint", "gint32":
-		return jen.Int32(), nil
-	case "glong", "gint64":
-		return jen.Int64(), nil
-
-	case "guchar", "guint8":
-		return jen.Uint8(), nil
-	case "gushort", "guint16":
-		return jen.Uint16(), nil
-	case "guint", "guint32":
-		return jen.Uint32(), nil
-	case "gulong", "guint64":
-		return jen.Uint64(), nil
-
-	case "gsize":
-		return jen.Uintptr(), nil
-	case "utf8":
-		return jen.String(), nil
+	if jenType, found := jenGoTypes[t.Name]; found {
+		return jenType, nil
 	}
 
 	goType, ok := t.namespace.jenGoTypeForTypeName(t.Name)
