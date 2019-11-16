@@ -1,5 +1,10 @@
 package generate
 
+import (
+	"github.com/dave/jennifer/jen"
+	"github.com/pekim/gobbi/internal/gi"
+)
+
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
@@ -32,9 +37,59 @@ func (pp Parameters) init(ns *Namespace) {
 }
 
 func (pp Parameters) supported() (bool, string) {
-	if len(pp) > 0 {
-		return false, "has parameters"
+	for _, param := range pp {
+		if supported, reason := param.supported(); !supported {
+			return supported, reason
+		}
 	}
 
 	return true, ""
+}
+
+func (pp Parameters) generateDeclarations(g *group) {
+	for _, param := range pp {
+		param.generateDeclaration(g)
+	}
+}
+
+func (pp Parameters) inCount() int {
+	count := 0
+	for _, param := range pp {
+		if param.isIn() {
+			count++
+		}
+	}
+
+	return count
+}
+
+func (pp Parameters) generateInArgs(g *group) {
+	count := pp.inCount()
+	if count == 0 {
+		return
+	}
+
+	g.
+		Id("inArgs").
+		Op(":=").
+		Make(
+			jen.Index().Qual(gi.PackageName, "Argument"),
+			jen.Lit(count),
+		)
+
+	for n, param := range pp {
+		if param.isIn() {
+			param.generateInArg(g, n)
+		}
+	}
+
+	g.Line()
+}
+
+func (pp Parameters) generateCallParams(g *jen.Group) {
+	if pp.inCount() > 0 {
+		g.Id("inArgs")
+	} else {
+		g.Nil()
+	}
 }

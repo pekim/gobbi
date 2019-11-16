@@ -43,5 +43,18 @@ func (r *ReturnValue) supported() (bool, string) {
 	if r.Type.supportedAsReturnValue() {
 		return true, ""
 	}
+
 	return false, fmt.Sprintf("return type '%s' not supported", r.Type.Name)
+}
+
+func (r *ReturnValue) generateDeclaration(g *group) {
+	if r.isVoid() {
+		return
+	}
+
+	goType, err := r.Type.jenGoType()
+	if err != nil {
+		panic(err)
+	}
+	g.Add(goType)
 }

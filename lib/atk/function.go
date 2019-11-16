@@ -4,17 +4,17 @@ package atk
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'atk_add_focus_tracker' : has parameters
+// UNSUPPORTED : C value 'atk_add_focus_tracker' : parameter 'focus_tracker' of type 'EventListener' not supported
 
-// UNSUPPORTED : C value 'atk_add_global_event_listener' : has parameters
+// UNSUPPORTED : C value 'atk_add_global_event_listener' : parameter 'listener' of type 'GObject.SignalEmissionHook' not supported
 
-// UNSUPPORTED : C value 'atk_add_key_event_listener' : has parameters
+// UNSUPPORTED : C value 'atk_add_key_event_listener' : parameter 'listener' of type 'KeySnoopFunc' not supported
 
-// UNSUPPORTED : C value 'atk_attribute_set_free' : has parameters
+// UNSUPPORTED : C value 'atk_attribute_set_free' : parameter 'attrib_set' of type 'AttributeSet' not supported
 
-// UNSUPPORTED : C value 'atk_focus_tracker_init' : has parameters
+// UNSUPPORTED : C value 'atk_focus_tracker_init' : parameter 'init' of type 'EventListenerInit' not supported
 
-// UNSUPPORTED : C value 'atk_focus_tracker_notify' : has parameters
+// UNSUPPORTED : C value 'atk_focus_tracker_notify' : parameter 'object' of type 'Object' not supported
 
 var getBinaryAgeInvoker *gi.Function
 
@@ -24,7 +24,7 @@ func GetBinaryAge() uint32 {
 		getBinaryAgeInvoker = gi.FunctionInvokerNew("Atk", "get_binary_age")
 	}
 
-	ret := getBinaryAgeInvoker.Invoke()
+	ret := getBinaryAgeInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -40,7 +40,7 @@ func GetInterfaceAge() uint32 {
 		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Atk", "get_interface_age")
 	}
 
-	ret := getInterfaceAgeInvoker.Invoke()
+	ret := getInterfaceAgeInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -52,7 +52,7 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Atk", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke()
+	ret := getMajorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -64,7 +64,7 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Atk", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke()
+	ret := getMicroVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -76,7 +76,7 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Atk", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke()
+	ret := getMinorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -90,7 +90,7 @@ func GetToolkitName() string {
 		getToolkitNameInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_name")
 	}
 
-	ret := getToolkitNameInvoker.Invoke()
+	ret := getToolkitNameInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
@@ -102,7 +102,7 @@ func GetToolkitVersion() string {
 		getToolkitVersionInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_version")
 	}
 
-	ret := getToolkitVersionInvoker.Invoke()
+	ret := getToolkitVersionInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
@@ -114,46 +114,46 @@ func GetVersion() string {
 		getVersionInvoker = gi.FunctionInvokerNew("Atk", "get_version")
 	}
 
-	ret := getVersionInvoker.Invoke()
+	ret := getVersionInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'atk_relation_type_for_name' : has parameters
+// UNSUPPORTED : C value 'atk_relation_type_for_name' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_relation_type_get_name' : has parameters
+// UNSUPPORTED : C value 'atk_relation_type_get_name' : parameter 'type' of type 'RelationType' not supported
 
-// UNSUPPORTED : C value 'atk_relation_type_register' : has parameters
+// UNSUPPORTED : C value 'atk_relation_type_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_remove_focus_tracker' : has parameters
+// UNSUPPORTED : C value 'atk_remove_focus_tracker' : parameter 'tracker_id' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'atk_remove_global_event_listener' : has parameters
+// UNSUPPORTED : C value 'atk_remove_global_event_listener' : parameter 'listener_id' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'atk_remove_key_event_listener' : has parameters
+// UNSUPPORTED : C value 'atk_remove_key_event_listener' : parameter 'listener_id' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'atk_role_for_name' : has parameters
+// UNSUPPORTED : C value 'atk_role_for_name' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_role_get_localized_name' : has parameters
+// UNSUPPORTED : C value 'atk_role_get_localized_name' : parameter 'role' of type 'Role' not supported
 
-// UNSUPPORTED : C value 'atk_role_get_name' : has parameters
+// UNSUPPORTED : C value 'atk_role_get_name' : parameter 'role' of type 'Role' not supported
 
-// UNSUPPORTED : C value 'atk_role_register' : has parameters
+// UNSUPPORTED : C value 'atk_role_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_state_type_for_name' : has parameters
+// UNSUPPORTED : C value 'atk_state_type_for_name' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_state_type_get_name' : has parameters
+// UNSUPPORTED : C value 'atk_state_type_get_name' : parameter 'type' of type 'StateType' not supported
 
-// UNSUPPORTED : C value 'atk_state_type_register' : has parameters
+// UNSUPPORTED : C value 'atk_state_type_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_text_attribute_for_name' : has parameters
+// UNSUPPORTED : C value 'atk_text_attribute_for_name' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_text_attribute_get_name' : has parameters
+// UNSUPPORTED : C value 'atk_text_attribute_get_name' : parameter 'attr' of type 'TextAttribute' not supported
 
-// UNSUPPORTED : C value 'atk_text_attribute_get_value' : has parameters
+// UNSUPPORTED : C value 'atk_text_attribute_get_value' : parameter 'attr' of type 'TextAttribute' not supported
 
-// UNSUPPORTED : C value 'atk_text_attribute_register' : has parameters
+// UNSUPPORTED : C value 'atk_text_attribute_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'atk_text_free_ranges' : has parameters
+// UNSUPPORTED : C value 'atk_text_free_ranges' : parameter 'ranges' has no type
 
-// UNSUPPORTED : C value 'atk_value_type_get_localized_name' : has parameters
+// UNSUPPORTED : C value 'atk_value_type_get_localized_name' : parameter 'value_type' of type 'ValueType' not supported
 
-// UNSUPPORTED : C value 'atk_value_type_get_name' : has parameters
+// UNSUPPORTED : C value 'atk_value_type_get_name' : parameter 'value_type' of type 'ValueType' not supported

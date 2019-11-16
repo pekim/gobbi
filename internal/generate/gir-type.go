@@ -20,6 +20,7 @@ func (t *Type) init(ns *Namespace) {
 
 var jenGoTypes = map[string]*jen.Statement{
 	// signed
+	"gchar":  jen.Int8(),
 	"gint8":  jen.Int8(),
 	"gshort": jen.Int16(),
 	"gint16": jen.Int16(),
@@ -125,46 +126,10 @@ func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
 	return nil, fmt.Errorf("Unknown type'%s'\n", t.Name)
 }
 
-func (t *Type) supportedAsReturnValue() bool {
-	if t == nil || t.Name == "none" {
-		// return type is void
-		return true
-	}
-
-	if _, ok := returnValueExtractFunctionNames[t.Name]; ok {
-		return true
-	}
-
-	if t.Name == "utf8" {
-		return true
-	}
-
-	return false
+func (t *Type) argumentValueGetFunctionName() string {
+	return argumentGetFunctionNames[t.Name]
 }
 
-var returnValueExtractFunctionNames = map[string]string{
-	"gchar":  "Int8",
-	"gint8":  "Int8",
-	"gshort": "Int16",
-	"gint16": "Int16",
-	"int":    "Int32",
-	"gint":   "Int32",
-	"gint32": "Int32",
-	"glong":  "Int64",
-	"gint64": "Int64",
-
-	"guchar":  "Uint8",
-	"guint8":  "Uint8",
-	"gushort": "Uint16",
-	"guint16": "Uint16",
-	"guint":   "Uint32",
-	"guint32": "Uint32",
-	"gulong":  "Uint64",
-	"guint64": "Uint64",
-
-	"utf8": "String",
-}
-
-func (t *Type) returnValueExtractFunctionName() string {
-	return returnValueExtractFunctionNames[t.Name]
+func (t *Type) argumentSetFunctionName() string {
+	return argumentSetFunctionNames[t.Name]
 }

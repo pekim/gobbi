@@ -4,11 +4,11 @@ package gdk
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : has parameters
+// UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : parameter 'group' of type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'gdk_atom_intern' : has parameters
+// UNSUPPORTED : C value 'gdk_atom_intern' : parameter 'atom_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_atom_intern_static_string' : has parameters
+// UNSUPPORTED : C value 'gdk_atom_intern_static_string' : parameter 'atom_name' of type 'utf8' not supported
 
 var beepInvoker *gi.Function
 
@@ -18,34 +18,34 @@ func Beep() {
 		beepInvoker = gi.FunctionInvokerNew("Gdk", "beep")
 	}
 
-	beepInvoker.Invoke()
+	beepInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gdk_cairo_create' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_create' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_draw_from_gl' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_draw_from_gl' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_get_clip_rectangle' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_get_clip_rectangle' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_get_drawing_context' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_get_drawing_context' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_rectangle' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_rectangle' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_region' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_region' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_region_create_from_surface' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_region_create_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_color' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_set_source_color' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_pixbuf' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_set_source_pixbuf' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_rgba' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_set_source_rgba' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_window' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_set_source_window' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : has parameters
+// UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gdk_color_parse' : has parameters
+// UNSUPPORTED : C value 'gdk_color_parse' : parameter 'spec' of type 'utf8' not supported
 
 var disableMultideviceInvoker *gi.Function
 
@@ -55,34 +55,34 @@ func DisableMultidevice() {
 		disableMultideviceInvoker = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
 	}
 
-	disableMultideviceInvoker.Invoke()
+	disableMultideviceInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gdk_drag_abort' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_abort' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_begin' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_begin' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_begin_for_device' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_begin_for_device' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_begin_from_point' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_begin_from_point' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_drop' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_drop' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_drop_done' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_drop_done' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_drop_succeeded' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_drop_succeeded' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_find_window_for_screen' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_find_window_for_screen' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_get_selection' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_get_selection' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_motion' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_motion' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drag_status' : has parameters
+// UNSUPPORTED : C value 'gdk_drag_status' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drop_finish' : has parameters
+// UNSUPPORTED : C value 'gdk_drop_finish' : parameter 'context' of type 'DragContext' not supported
 
-// UNSUPPORTED : C value 'gdk_drop_reply' : has parameters
+// UNSUPPORTED : C value 'gdk_drop_reply' : parameter 'context' of type 'DragContext' not supported
 
 var errorTrapPopInvoker *gi.Function
 
@@ -92,7 +92,7 @@ func ErrorTrapPop() int32 {
 		errorTrapPopInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
 	}
 
-	ret := errorTrapPopInvoker.Invoke()
+	ret := errorTrapPopInvoker.Invoke(nil)
 	return ret.Int32()
 }
 
@@ -104,7 +104,7 @@ func ErrorTrapPopIgnored() {
 		errorTrapPopIgnoredInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
 	}
 
-	errorTrapPopIgnoredInvoker.Invoke()
+	errorTrapPopIgnoredInvoker.Invoke(nil)
 }
 
 var errorTrapPushInvoker *gi.Function
@@ -115,22 +115,22 @@ func ErrorTrapPush() {
 		errorTrapPushInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_push")
 	}
 
-	errorTrapPushInvoker.Invoke()
+	errorTrapPushInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'gdk_event_get' : return type 'Event' not supported
 
-// UNSUPPORTED : C value 'gdk_event_handler_set' : has parameters
+// UNSUPPORTED : C value 'gdk_event_handler_set' : parameter 'func' of type 'EventFunc' not supported
 
 // UNSUPPORTED : C value 'gdk_event_peek' : return type 'Event' not supported
 
-// UNSUPPORTED : C value 'gdk_event_request_motions' : has parameters
+// UNSUPPORTED : C value 'gdk_event_request_motions' : parameter 'event' of type 'EventMotion' not supported
 
-// UNSUPPORTED : C value 'gdk_events_get_angle' : has parameters
+// UNSUPPORTED : C value 'gdk_events_get_angle' : parameter 'event1' of type 'Event' not supported
 
-// UNSUPPORTED : C value 'gdk_events_get_center' : has parameters
+// UNSUPPORTED : C value 'gdk_events_get_center' : parameter 'event1' of type 'Event' not supported
 
-// UNSUPPORTED : C value 'gdk_events_get_distance' : has parameters
+// UNSUPPORTED : C value 'gdk_events_get_distance' : parameter 'event1' of type 'Event' not supported
 
 // UNSUPPORTED : C value 'gdk_events_pending' : return type 'gboolean' not supported
 
@@ -142,7 +142,7 @@ func Flush() {
 		flushInvoker = gi.FunctionInvokerNew("Gdk", "flush")
 	}
 
-	flushInvoker.Invoke()
+	flushInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
@@ -155,7 +155,7 @@ func GetDisplay() string {
 		getDisplayInvoker = gi.FunctionInvokerNew("Gdk", "get_display")
 	}
 
-	ret := getDisplayInvoker.Invoke()
+	ret := getDisplayInvoker.Invoke(nil)
 	return ret.String(true)
 }
 
@@ -167,7 +167,7 @@ func GetDisplayArgName() string {
 		getDisplayArgNameInvoker = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
 	}
 
-	ret := getDisplayArgNameInvoker.Invoke()
+	ret := getDisplayArgNameInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
@@ -179,7 +179,7 @@ func GetProgramClass() string {
 		getProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "get_program_class")
 	}
 
-	ret := getProgramClassInvoker.Invoke()
+	ret := getProgramClassInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
@@ -187,29 +187,29 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_gl_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gdk_init' : has parameters
+// UNSUPPORTED : C value 'gdk_init' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gdk_init_check' : has parameters
+// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gdk_keyboard_grab' : has parameters
+// UNSUPPORTED : C value 'gdk_keyboard_grab' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_keyboard_ungrab' : has parameters
+// UNSUPPORTED : C value 'gdk_keyboard_ungrab' : parameter 'time_' of type 'guint32' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_convert_case' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_convert_case' : parameter 'symbol' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_from_name' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_from_name' : parameter 'keyval_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_is_lower' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_is_lower' : parameter 'keyval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_is_upper' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_is_upper' : parameter 'keyval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_name' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_name' : parameter 'keyval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_to_lower' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_to_lower' : parameter 'keyval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_to_unicode' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_to_unicode' : parameter 'keyval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_keyval_to_upper' : has parameters
+// UNSUPPORTED : C value 'gdk_keyval_to_upper' : parameter 'keyval' of type 'guint' not supported
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
 
@@ -221,38 +221,38 @@ func NotifyStartupComplete() {
 		notifyStartupCompleteInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
 	}
 
-	notifyStartupCompleteInvoker.Invoke()
+	notifyStartupCompleteInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : has parameters
+// UNSUPPORTED : C value 'gdk_notify_startup_complete_with_id' : parameter 'startup_id' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_get_embedder' : has parameters
+// UNSUPPORTED : C value 'gdk_offscreen_window_get_embedder' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_get_surface' : has parameters
+// UNSUPPORTED : C value 'gdk_offscreen_window_get_surface' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_set_embedder' : has parameters
+// UNSUPPORTED : C value 'gdk_offscreen_window_set_embedder' : parameter 'window' of type 'Window' not supported
 
 // UNSUPPORTED : C value 'gdk_pango_context_get' : return type 'Pango.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : has parameters
+// UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : parameter 'display' of type 'Display' not supported
 
-// UNSUPPORTED : C value 'gdk_pango_context_get_for_screen' : has parameters
+// UNSUPPORTED : C value 'gdk_pango_context_get_for_screen' : parameter 'screen' of type 'Screen' not supported
 
-// UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : has parameters
+// UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : parameter 'layout' of type 'Pango.Layout' not supported
 
-// UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : has parameters
+// UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'line' of type 'Pango.LayoutLine' not supported
 
-// UNSUPPORTED : C value 'gdk_parse_args' : has parameters
+// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : has parameters
+// UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_from_window' : has parameters
+// UNSUPPORTED : C value 'gdk_pixbuf_get_from_window' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_pointer_grab' : has parameters
+// UNSUPPORTED : C value 'gdk_pointer_grab' : parameter 'window' of type 'Window' not supported
 
 // UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_pointer_ungrab' : has parameters
+// UNSUPPORTED : C value 'gdk_pointer_ungrab' : parameter 'time_' of type 'guint32' not supported
 
 var preParseLibgtkOnlyInvoker *gi.Function
 
@@ -262,66 +262,66 @@ func PreParseLibgtkOnly() {
 		preParseLibgtkOnlyInvoker = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
 	}
 
-	preParseLibgtkOnlyInvoker.Invoke()
+	preParseLibgtkOnlyInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gdk_property_change' : has parameters
+// UNSUPPORTED : C value 'gdk_property_change' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_property_delete' : has parameters
+// UNSUPPORTED : C value 'gdk_property_delete' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_property_get' : has parameters
+// UNSUPPORTED : C value 'gdk_property_get' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_query_depths' : has parameters
+// UNSUPPORTED : C value 'gdk_query_depths' : parameter 'depths' has no type
 
-// UNSUPPORTED : C value 'gdk_query_visual_types' : has parameters
+// UNSUPPORTED : C value 'gdk_query_visual_types' : parameter 'visual_types' has no type
 
-// UNSUPPORTED : C value 'gdk_selection_convert' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_convert' : parameter 'requestor' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_owner_get' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_owner_get' : parameter 'selection' of type 'Atom' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_owner_get_for_display' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_owner_get_for_display' : parameter 'display' of type 'Display' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_owner_set' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_owner_set' : parameter 'owner' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_owner_set_for_display' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_owner_set_for_display' : parameter 'display' of type 'Display' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_property_get' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_property_get' : parameter 'requestor' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_send_notify' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_send_notify' : parameter 'requestor' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_send_notify_for_display' : has parameters
+// UNSUPPORTED : C value 'gdk_selection_send_notify_for_display' : parameter 'display' of type 'Display' not supported
 
-// UNSUPPORTED : C value 'gdk_set_allowed_backends' : has parameters
+// UNSUPPORTED : C value 'gdk_set_allowed_backends' : parameter 'backends' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_set_double_click_time' : has parameters
+// UNSUPPORTED : C value 'gdk_set_double_click_time' : parameter 'msec' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_set_program_class' : has parameters
+// UNSUPPORTED : C value 'gdk_set_program_class' : parameter 'program_class' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_set_show_events' : has parameters
+// UNSUPPORTED : C value 'gdk_set_show_events' : parameter 'show_events' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_setting_get' : has parameters
+// UNSUPPORTED : C value 'gdk_setting_get' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gdk_synthesize_window_state' : has parameters
+// UNSUPPORTED : C value 'gdk_synthesize_window_state' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_test_render_sync' : has parameters
+// UNSUPPORTED : C value 'gdk_test_render_sync' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_test_simulate_button' : has parameters
+// UNSUPPORTED : C value 'gdk_test_simulate_button' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_test_simulate_key' : has parameters
+// UNSUPPORTED : C value 'gdk_test_simulate_key' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : has parameters
+// UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : parameter 'display' of type 'Display' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_idle' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_add_idle' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_idle_full' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_add_idle_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_add_timeout' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout_full' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_add_timeout_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : parameter 'priority' of type 'gint' not supported
 
 var threadsEnterInvoker *gi.Function
 
@@ -331,7 +331,7 @@ func ThreadsEnter() {
 		threadsEnterInvoker = gi.FunctionInvokerNew("Gdk", "threads_enter")
 	}
 
-	threadsEnterInvoker.Invoke()
+	threadsEnterInvoker.Invoke(nil)
 }
 
 var threadsInitInvoker *gi.Function
@@ -342,7 +342,7 @@ func ThreadsInit() {
 		threadsInitInvoker = gi.FunctionInvokerNew("Gdk", "threads_init")
 	}
 
-	threadsInitInvoker.Invoke()
+	threadsInitInvoker.Invoke(nil)
 }
 
 var threadsLeaveInvoker *gi.Function
@@ -353,11 +353,11 @@ func ThreadsLeave() {
 		threadsLeaveInvoker = gi.FunctionInvokerNew("Gdk", "threads_leave")
 	}
 
-	threadsLeaveInvoker.Invoke()
+	threadsLeaveInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : has parameters
+// UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : parameter 'enter_fn' of type 'GObject.Callback' not supported
 
-// UNSUPPORTED : C value 'gdk_unicode_to_keyval' : has parameters
+// UNSUPPORTED : C value 'gdk_unicode_to_keyval' : parameter 'wc' of type 'guint32' not supported
 
-// UNSUPPORTED : C value 'gdk_utf8_to_string_target' : has parameters
+// UNSUPPORTED : C value 'gdk_utf8_to_string_target' : parameter 'str' of type 'utf8' not supported

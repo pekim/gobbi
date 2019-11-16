@@ -35,23 +35,33 @@ func FunctionInvokerNew(namespace string, funcName string) *Function {
 	}
 }
 
-func (fi *Function) Invoke() Argument {
+func (fi *Function) Invoke(in []Argument) Argument {
 	var returnValue Argument
 	var err *C.GError
 
+	var cIn *C.GIArgument
+	var cInLen C.int
+	if in != nil {
+		cIn = (*C.GIArgument)(&in[0])
+		cInLen = C.int(len(in))
+	}
+
+	// invoke
 	invoked := C.g_function_info_invoke(
 		fi.info,
-		nil, 0,
+		cIn, cInLen,
 		nil, 0,
 		(*C.GIArgument)(&returnValue),
 		&err,
 	) == C.TRUE
 
+	// check error
 	if err != nil {
 		message := C.GoString(err.message)
 		panic(message)
 	}
 
+	// verify invoke happened
 	if !invoked {
 		panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
 	}

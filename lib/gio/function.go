@@ -4,119 +4,119 @@ package gio
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'g_action_name_is_valid' : has parameters
+// UNSUPPORTED : C value 'g_action_name_is_valid' : parameter 'action_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_action_parse_detailed_name' : has parameters
+// UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'detailed_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_action_print_detailed_name' : has parameters
+// UNSUPPORTED : C value 'g_action_print_detailed_name' : parameter 'action_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : has parameters
+// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : parameter 'commandline' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_app_info_get_all' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_all_for_type' : has parameters
+// UNSUPPORTED : C value 'g_app_info_get_all_for_type' : parameter 'content_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : has parameters
+// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : parameter 'content_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : has parameters
+// UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : parameter 'uri_scheme' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_fallback_for_type' : has parameters
+// UNSUPPORTED : C value 'g_app_info_get_fallback_for_type' : parameter 'content_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : has parameters
+// UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : parameter 'content_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri' : has parameters
+// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri' : parameter 'uri' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : has parameters
+// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'uri' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : has parameters
+// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_app_info_reset_type_associations' : has parameters
+// UNSUPPORTED : C value 'g_app_info_reset_type_associations' : parameter 'content_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_async_initable_newv_async' : has parameters
+// UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_bus_get' : has parameters
+// UNSUPPORTED : C value 'g_bus_get' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_get_finish' : has parameters
+// UNSUPPORTED : C value 'g_bus_get_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_bus_get_sync' : has parameters
+// UNSUPPORTED : C value 'g_bus_get_sync' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name' : has parameters
+// UNSUPPORTED : C value 'g_bus_own_name' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_on_connection' : has parameters
+// UNSUPPORTED : C value 'g_bus_own_name_on_connection' : parameter 'connection' of type 'DBusConnection' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : has parameters
+// UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : parameter 'connection' of type 'DBusConnection' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_with_closures' : has parameters
+// UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_unown_name' : has parameters
+// UNSUPPORTED : C value 'g_bus_unown_name' : parameter 'owner_id' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_bus_unwatch_name' : has parameters
+// UNSUPPORTED : C value 'g_bus_unwatch_name' : parameter 'watcher_id' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name' : has parameters
+// UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : has parameters
+// UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : parameter 'connection' of type 'DBusConnection' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : has parameters
+// UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : parameter 'connection' of type 'DBusConnection' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : has parameters
+// UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_content_type_can_be_executable' : has parameters
+// UNSUPPORTED : C value 'g_content_type_can_be_executable' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_equals' : has parameters
+// UNSUPPORTED : C value 'g_content_type_equals' : parameter 'type1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_from_mime_type' : has parameters
+// UNSUPPORTED : C value 'g_content_type_from_mime_type' : parameter 'mime_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_get_description' : has parameters
+// UNSUPPORTED : C value 'g_content_type_get_description' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_get_generic_icon_name' : has parameters
+// UNSUPPORTED : C value 'g_content_type_get_generic_icon_name' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_get_icon' : has parameters
+// UNSUPPORTED : C value 'g_content_type_get_icon' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_get_mime_type' : has parameters
+// UNSUPPORTED : C value 'g_content_type_get_mime_type' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : has parameters
+// UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_guess' : has parameters
+// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'filename' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_guess_for_tree' : has parameters
+// UNSUPPORTED : C value 'g_content_type_guess_for_tree' : parameter 'root' of type 'File' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_a' : has parameters
+// UNSUPPORTED : C value 'g_content_type_is_a' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_mime_type' : has parameters
+// UNSUPPORTED : C value 'g_content_type_is_mime_type' : parameter 'type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_unknown' : has parameters
+// UNSUPPORTED : C value 'g_content_type_is_unknown' : parameter 'type' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_escape_value' : has parameters
+// UNSUPPORTED : C value 'g_dbus_address_escape_value' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : has parameters
+// UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream' : has parameters
+// UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'address' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : has parameters
+// UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : has parameters
+// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'address' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : has parameters
+// UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' has no type
 
-// UNSUPPORTED : C value 'g_dbus_error_encode_gerror' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_encode_gerror' : parameter 'error' of type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_get_remote_error' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_get_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_is_remote_error' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_is_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : parameter 'dbus_error_name' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_register_error' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_register_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'error_domain_quark_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_unregister_error' : has parameters
+// UNSUPPORTED : C value 'g_dbus_error_unregister_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
 
 var dbusGenerateGuidInvoker *gi.Function
 
@@ -126,69 +126,69 @@ func DbusGenerateGuid() string {
 		dbusGenerateGuidInvoker = gi.FunctionInvokerNew("Gio", "dbus_generate_guid")
 	}
 
-	ret := dbusGenerateGuidInvoker.Invoke()
+	ret := dbusGenerateGuidInvoker.Invoke(nil)
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : has parameters
+// UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : parameter 'gvalue' of type 'GObject.Value' not supported
 
-// UNSUPPORTED : C value 'g_dbus_gvariant_to_gvalue' : has parameters
+// UNSUPPORTED : C value 'g_dbus_gvariant_to_gvalue' : parameter 'value' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_address' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_address' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_guid' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_guid' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_interface_name' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_interface_name' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_member_name' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_member_name' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_name' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_name' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_supported_address' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_supported_address' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_unique_name' : has parameters
+// UNSUPPORTED : C value 'g_dbus_is_unique_name' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_new' : has parameters
+// UNSUPPORTED : C value 'g_dtls_client_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
 
-// UNSUPPORTED : C value 'g_dtls_server_connection_new' : has parameters
+// UNSUPPORTED : C value 'g_dtls_server_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_commandline_arg' : has parameters
+// UNSUPPORTED : C value 'g_file_new_for_commandline_arg' : parameter 'arg' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_commandline_arg_and_cwd' : has parameters
+// UNSUPPORTED : C value 'g_file_new_for_commandline_arg_and_cwd' : parameter 'arg' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_path' : has parameters
+// UNSUPPORTED : C value 'g_file_new_for_path' : parameter 'path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_new_for_uri' : has parameters
+// UNSUPPORTED : C value 'g_file_new_for_uri' : parameter 'uri' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_file_new_tmp' : has parameters
+// UNSUPPORTED : C value 'g_file_new_tmp' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_parse_name' : has parameters
+// UNSUPPORTED : C value 'g_file_parse_name' : parameter 'parse_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_icon_deserialize' : has parameters
+// UNSUPPORTED : C value 'g_icon_deserialize' : parameter 'value' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_icon_hash' : has parameters
+// UNSUPPORTED : C value 'g_icon_hash' : parameter 'icon' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_icon_new_for_string' : has parameters
+// UNSUPPORTED : C value 'g_icon_new_for_string' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_initable_newv' : has parameters
+// UNSUPPORTED : C value 'g_initable_newv' : parameter 'object_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_io_error_from_errno' : has parameters
+// UNSUPPORTED : C value 'g_io_error_from_errno' : parameter 'err_no' of type 'gint' not supported
 
 // UNSUPPORTED : C value 'g_io_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_implement' : has parameters
+// UNSUPPORTED : C value 'g_io_extension_point_implement' : parameter 'extension_point_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_lookup' : has parameters
+// UNSUPPORTED : C value 'g_io_extension_point_lookup' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_register' : has parameters
+// UNSUPPORTED : C value 'g_io_extension_point_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : has parameters
+// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : parameter 'dirname' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory_with_scope' : has parameters
+// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory_with_scope' : parameter 'dirname' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory' : has parameters
+// UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory' : parameter 'dirname' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : has parameters
+// UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : parameter 'dirname' of type 'filename' not supported
 
 var ioSchedulerCancelAllJobsInvoker *gi.Function
 
@@ -198,12 +198,12 @@ func IoSchedulerCancelAllJobs() {
 		ioSchedulerCancelAllJobsInvoker = gi.FunctionInvokerNew("Gio", "io_scheduler_cancel_all_jobs")
 	}
 
-	ioSchedulerCancelAllJobsInvoker.Invoke()
+	ioSchedulerCancelAllJobsInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_io_scheduler_push_job' : has parameters
+// UNSUPPORTED : C value 'g_io_scheduler_push_job' : parameter 'job_func' of type 'IOSchedulerJobFunc' not supported
 
-// UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : has parameters
+// UNSUPPORTED : C value 'g_keyfile_settings_backend_new' : parameter 'filename' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_memory_settings_backend_new' : return type 'SettingsBackend' not supported
 
@@ -217,22 +217,22 @@ func NetworkingInit() {
 		networkingInitInvoker = gi.FunctionInvokerNew("Gio", "networking_init")
 	}
 
-	networkingInitInvoker.Invoke()
+	networkingInitInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
 
-// UNSUPPORTED : C value 'g_pollable_source_new' : has parameters
+// UNSUPPORTED : C value 'g_pollable_source_new' : parameter 'pollable_stream' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_pollable_source_new_full' : has parameters
+// UNSUPPORTED : C value 'g_pollable_source_new_full' : parameter 'pollable_stream' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_pollable_stream_read' : has parameters
+// UNSUPPORTED : C value 'g_pollable_stream_read' : parameter 'stream' of type 'InputStream' not supported
 
-// UNSUPPORTED : C value 'g_pollable_stream_write' : has parameters
+// UNSUPPORTED : C value 'g_pollable_stream_write' : parameter 'stream' of type 'OutputStream' not supported
 
-// UNSUPPORTED : C value 'g_pollable_stream_write_all' : has parameters
+// UNSUPPORTED : C value 'g_pollable_stream_write_all' : parameter 'stream' of type 'OutputStream' not supported
 
-// UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : has parameters
+// UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : parameter 'protocol' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_proxy_resolver_get_default' : return type 'ProxyResolver' not supported
 
@@ -240,80 +240,80 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_resource_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_resource_load' : has parameters
+// UNSUPPORTED : C value 'g_resource_load' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_resources_enumerate_children' : has parameters
+// UNSUPPORTED : C value 'g_resources_enumerate_children' : parameter 'path' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_resources_get_info' : has parameters
+// UNSUPPORTED : C value 'g_resources_get_info' : parameter 'path' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_resources_lookup_data' : has parameters
+// UNSUPPORTED : C value 'g_resources_lookup_data' : parameter 'path' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_resources_open_stream' : has parameters
+// UNSUPPORTED : C value 'g_resources_open_stream' : parameter 'path' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_resources_register' : has parameters
+// UNSUPPORTED : C value 'g_resources_register' : parameter 'resource' of type 'Resource' not supported
 
-// UNSUPPORTED : C value 'g_resources_unregister' : has parameters
+// UNSUPPORTED : C value 'g_resources_unregister' : parameter 'resource' of type 'Resource' not supported
 
 // UNSUPPORTED : C value 'g_settings_schema_source_get_default' : return type 'SettingsSchemaSource' not supported
 
-// UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : has parameters
+// UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : parameter 'object' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_simple_async_report_gerror_in_idle' : has parameters
+// UNSUPPORTED : C value 'g_simple_async_report_gerror_in_idle' : parameter 'object' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_simple_async_report_take_gerror_in_idle' : has parameters
+// UNSUPPORTED : C value 'g_simple_async_report_take_gerror_in_idle' : parameter 'object' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'g_srv_target_list_sort' : has parameters
+// UNSUPPORTED : C value 'g_srv_target_list_sort' : parameter 'targets' of type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'g_tls_backend_get_default' : return type 'TlsBackend' not supported
 
-// UNSUPPORTED : C value 'g_tls_client_connection_new' : has parameters
+// UNSUPPORTED : C value 'g_tls_client_connection_new' : parameter 'base_io_stream' of type 'IOStream' not supported
 
 // UNSUPPORTED : C value 'g_tls_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_tls_file_database_new' : has parameters
+// UNSUPPORTED : C value 'g_tls_file_database_new' : parameter 'anchors' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_tls_server_connection_new' : has parameters
+// UNSUPPORTED : C value 'g_tls_server_connection_new' : parameter 'base_io_stream' of type 'IOStream' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_mount_path_system_internal' : has parameters
+// UNSUPPORTED : C value 'g_unix_is_mount_path_system_internal' : parameter 'mount_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_system_device_path' : has parameters
+// UNSUPPORTED : C value 'g_unix_is_system_device_path' : parameter 'device_path' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_system_fs_type' : has parameters
+// UNSUPPORTED : C value 'g_unix_is_system_fs_type' : parameter 'fs_type' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_at' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_at' : parameter 'mount_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_compare' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_compare' : parameter 'mount1' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_copy' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_copy' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_for' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_for' : parameter 'file_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_free' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_free' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_get_device_path' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_get_device_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_get_fs_type' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_get_fs_type' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_can_eject' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_guess_can_eject' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_icon' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_guess_icon' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_name' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_guess_name' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_should_display' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_guess_should_display' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_is_readonly' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_is_readonly' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_is_system_internal' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_is_system_internal' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : parameter 'time' of type 'guint64' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_get' : has parameters
+// UNSUPPORTED : C value 'g_unix_mount_points_get' : parameter 'time_read' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_changed_since' : has parameters
+// UNSUPPORTED : C value 'g_unix_mounts_changed_since' : parameter 'time' of type 'guint64' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_get' : has parameters
+// UNSUPPORTED : C value 'g_unix_mounts_get' : parameter 'time_read' with direction 'out' not supported

@@ -12,7 +12,7 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke()
+	ret := getMajorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -24,7 +24,7 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke()
+	ret := getMicroVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -36,38 +36,38 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke()
+	ret := getMinorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'jsc_options_foreach' : has parameters
+// UNSUPPORTED : C value 'jsc_options_foreach' : parameter 'function' of type 'OptionsFunc' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_boolean' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_boolean' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_double' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_double' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_int' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_int' : parameter 'option' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_range_string' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_range_string' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_size' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_size' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_string' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_string' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_uint' : has parameters
+// UNSUPPORTED : C value 'jsc_options_get_uint' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_boolean' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_boolean' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_double' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_double' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_int' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_int' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_range_string' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_range_string' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_size' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_size' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_string' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_string' : parameter 'option' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_uint' : has parameters
+// UNSUPPORTED : C value 'jsc_options_set_uint' : parameter 'option' of type 'utf8' not supported

@@ -4,127 +4,179 @@ package glib
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'g_access' : has parameters
+// UNSUPPORTED : C value 'g_access' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_ascii_digit_value' : has parameters
+var asciiDigitValueInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_ascii_dtostr' : has parameters
+// AsciiDigitValue is a representation of the C type g_ascii_digit_value.
+func AsciiDigitValue(c int8) int32 {
+	if asciiDigitValueInvoker == nil {
+		asciiDigitValueInvoker = gi.FunctionInvokerNew("GLib", "ascii_digit_value")
+	}
 
-// UNSUPPORTED : C value 'g_ascii_formatd' : has parameters
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt8(c)
 
-// UNSUPPORTED : C value 'g_ascii_strcasecmp' : has parameters
+	ret := asciiDigitValueInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
 
-// UNSUPPORTED : C value 'g_ascii_strdown' : has parameters
+// UNSUPPORTED : C value 'g_ascii_dtostr' : parameter 'buffer' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_string_to_signed' : has parameters
+// UNSUPPORTED : C value 'g_ascii_formatd' : parameter 'buffer' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strcasecmp' : parameter 's1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strncasecmp' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strdown' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strtod' : has parameters
+// UNSUPPORTED : C value 'g_ascii_string_to_signed' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strtoll' : has parameters
+// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strtoull' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 's1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strup' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strtod' : parameter 'nptr' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_tolower' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strtoll' : parameter 'nptr' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_toupper' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strtoull' : parameter 'nptr' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_ascii_xdigit_value' : has parameters
+// UNSUPPORTED : C value 'g_ascii_strup' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_assert_warning' : has parameters
+var asciiTolowerInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_assertion_message' : has parameters
+// AsciiTolower is a representation of the C type g_ascii_tolower.
+func AsciiTolower(c int8) int8 {
+	if asciiTolowerInvoker == nil {
+		asciiTolowerInvoker = gi.FunctionInvokerNew("GLib", "ascii_tolower")
+	}
 
-// UNSUPPORTED : C value 'g_assertion_message_cmpnum' : has parameters
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt8(c)
 
-// UNSUPPORTED : C value 'g_assertion_message_cmpstr' : has parameters
+	ret := asciiTolowerInvoker.Invoke(inArgs)
+	return ret.Int8()
+}
 
-// UNSUPPORTED : C value 'g_assertion_message_error' : has parameters
+var asciiToupperInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_assertion_message_expr' : has parameters
+// AsciiToupper is a representation of the C type g_ascii_toupper.
+func AsciiToupper(c int8) int8 {
+	if asciiToupperInvoker == nil {
+		asciiToupperInvoker = gi.FunctionInvokerNew("GLib", "ascii_toupper")
+	}
 
-// UNSUPPORTED : C value 'g_atexit' : has parameters
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt8(c)
 
-// UNSUPPORTED : C value 'g_atomic_int_add' : has parameters
+	ret := asciiToupperInvoker.Invoke(inArgs)
+	return ret.Int8()
+}
 
-// UNSUPPORTED : C value 'g_atomic_int_and' : has parameters
+var asciiXdigitValueInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : has parameters
+// AsciiXdigitValue is a representation of the C type g_ascii_xdigit_value.
+func AsciiXdigitValue(c int8) int32 {
+	if asciiXdigitValueInvoker == nil {
+		asciiXdigitValueInvoker = gi.FunctionInvokerNew("GLib", "ascii_xdigit_value")
+	}
 
-// UNSUPPORTED : C value 'g_atomic_int_dec_and_test' : has parameters
+	inArgs := make([]gi.Argument, 1)
+	inArgs[0].SetInt8(c)
 
-// UNSUPPORTED : C value 'g_atomic_int_exchange_and_add' : has parameters
+	ret := asciiXdigitValueInvoker.Invoke(inArgs)
+	return ret.Int32()
+}
 
-// UNSUPPORTED : C value 'g_atomic_int_get' : has parameters
+// UNSUPPORTED : C value 'g_assert_warning' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_atomic_int_inc' : has parameters
+// UNSUPPORTED : C value 'g_assertion_message' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_atomic_int_or' : has parameters
+// UNSUPPORTED : C value 'g_assertion_message_cmpnum' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_atomic_int_set' : has parameters
+// UNSUPPORTED : C value 'g_assertion_message_cmpstr' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_atomic_int_xor' : has parameters
+// UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_add' : has parameters
+// UNSUPPORTED : C value 'g_assertion_message_expr' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_and' : has parameters
+// UNSUPPORTED : C value 'g_atexit' : parameter 'func' of type 'VoidFunc' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_compare_and_exchange' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_add' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_get' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_and' : parameter 'atomic' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_or' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_set' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_dec_and_test' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_atomic_pointer_xor' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_exchange_and_add' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_base64_decode' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_get' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_base64_decode_inplace' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_inc' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_base64_decode_step' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_or' : parameter 'atomic' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_set' : parameter 'atomic' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode_close' : has parameters
+// UNSUPPORTED : C value 'g_atomic_int_xor' : parameter 'atomic' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode_step' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_add' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_basename' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_and' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_bit_lock' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_compare_and_exchange' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_bit_nth_lsf' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_get' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_bit_nth_msf' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_or' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_bit_storage' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_set' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_bit_trylock' : has parameters
+// UNSUPPORTED : C value 'g_atomic_pointer_xor' : parameter 'atomic' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_bit_unlock' : has parameters
+// UNSUPPORTED : C value 'g_base64_decode' : parameter 'text' of type 'utf8' not supported
+
+// UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' has no type
+
+// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'in' has no type
+
+// UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' has no type
+
+// UNSUPPORTED : C value 'g_base64_encode_close' : parameter 'break_lines' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' has no type
+
+// UNSUPPORTED : C value 'g_basename' : parameter 'file_name' of type 'filename' not supported
+
+// UNSUPPORTED : C value 'g_bit_lock' : parameter 'address' of type 'gint' not supported
+
+// UNSUPPORTED : C value 'g_bit_nth_lsf' : parameter 'mask' of type 'gulong' not supported
+
+// UNSUPPORTED : C value 'g_bit_nth_msf' : parameter 'mask' of type 'gulong' not supported
+
+// UNSUPPORTED : C value 'g_bit_storage' : parameter 'number' of type 'gulong' not supported
+
+// UNSUPPORTED : C value 'g_bit_trylock' : parameter 'address' of type 'gint' not supported
+
+// UNSUPPORTED : C value 'g_bit_unlock' : parameter 'address' of type 'gint' not supported
 
 // UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_build_filename' : has parameters
+// UNSUPPORTED : C value 'g_build_filename' : parameter 'first_element' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_build_filename_valist' : has parameters
+// UNSUPPORTED : C value 'g_build_filename_valist' : parameter 'first_element' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_build_filenamev' : has parameters
+// UNSUPPORTED : C value 'g_build_filenamev' : parameter 'args' has no type
 
-// UNSUPPORTED : C value 'g_build_path' : has parameters
+// UNSUPPORTED : C value 'g_build_path' : parameter 'separator' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_build_pathv' : has parameters
+// UNSUPPORTED : C value 'g_build_pathv' : parameter 'separator' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_byte_array_free' : has parameters
+// UNSUPPORTED : C value 'g_byte_array_free' : parameter 'array' has no type
 
-// UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : has parameters
+// UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : parameter 'array' has no type
 
 var byteArrayNewInvoker *gi.Function
 
@@ -134,24 +186,24 @@ func ByteArrayNew() {
 		byteArrayNewInvoker = gi.FunctionInvokerNew("GLib", "byte_array_new")
 	}
 
-	byteArrayNewInvoker.Invoke()
+	byteArrayNewInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_byte_array_new_take' : has parameters
+// UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' has no type
 
-// UNSUPPORTED : C value 'g_byte_array_unref' : has parameters
+// UNSUPPORTED : C value 'g_byte_array_unref' : parameter 'array' has no type
 
-// UNSUPPORTED : C value 'g_chdir' : has parameters
+// UNSUPPORTED : C value 'g_chdir' : parameter 'path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'glib_check_version' : has parameters
+// UNSUPPORTED : C value 'glib_check_version' : parameter 'required_major' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_checksum_type_get_length' : has parameters
+// UNSUPPORTED : C value 'g_checksum_type_get_length' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_add' : has parameters
+// UNSUPPORTED : C value 'g_child_watch_add' : parameter 'pid' of type 'Pid' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_add_full' : has parameters
+// UNSUPPORTED : C value 'g_child_watch_add_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_source_new' : has parameters
+// UNSUPPORTED : C value 'g_child_watch_source_new' : parameter 'pid' of type 'Pid' not supported
 
 var clearErrorInvoker *gi.Function
 
@@ -161,160 +213,160 @@ func ClearError() {
 		clearErrorInvoker = gi.FunctionInvokerNew("GLib", "clear_error")
 	}
 
-	clearErrorInvoker.Invoke()
+	clearErrorInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_clear_handle_id' : has parameters
+// UNSUPPORTED : C value 'g_clear_handle_id' : parameter 'tag_ptr' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_clear_pointer' : has parameters
+// UNSUPPORTED : C value 'g_clear_pointer' : parameter 'pp' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_close' : has parameters
+// UNSUPPORTED : C value 'g_close' : parameter 'fd' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_bytes' : has parameters
+// UNSUPPORTED : C value 'g_compute_checksum_for_bytes' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_data' : has parameters
+// UNSUPPORTED : C value 'g_compute_checksum_for_data' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_string' : has parameters
+// UNSUPPORTED : C value 'g_compute_checksum_for_string' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_bytes' : has parameters
+// UNSUPPORTED : C value 'g_compute_hmac_for_bytes' : parameter 'digest_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_data' : has parameters
+// UNSUPPORTED : C value 'g_compute_hmac_for_data' : parameter 'digest_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_string' : has parameters
+// UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'digest_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_convert' : has parameters
+// UNSUPPORTED : C value 'g_convert' : parameter 'str' has no type
 
 // UNSUPPORTED : C value 'g_convert_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_convert_with_fallback' : has parameters
+// UNSUPPORTED : C value 'g_convert_with_fallback' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_convert_with_iconv' : has parameters
+// UNSUPPORTED : C value 'g_convert_with_iconv' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_datalist_clear' : has parameters
+// UNSUPPORTED : C value 'g_datalist_clear' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_foreach' : has parameters
+// UNSUPPORTED : C value 'g_datalist_foreach' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_get_data' : has parameters
+// UNSUPPORTED : C value 'g_datalist_get_data' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_get_flags' : has parameters
+// UNSUPPORTED : C value 'g_datalist_get_flags' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_dup_data' : has parameters
+// UNSUPPORTED : C value 'g_datalist_id_dup_data' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_get_data' : has parameters
+// UNSUPPORTED : C value 'g_datalist_id_get_data' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_remove_no_notify' : has parameters
+// UNSUPPORTED : C value 'g_datalist_id_remove_no_notify' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_replace_data' : has parameters
+// UNSUPPORTED : C value 'g_datalist_id_replace_data' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_set_data_full' : has parameters
+// UNSUPPORTED : C value 'g_datalist_id_set_data_full' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_init' : has parameters
+// UNSUPPORTED : C value 'g_datalist_init' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_set_flags' : has parameters
+// UNSUPPORTED : C value 'g_datalist_set_flags' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_datalist_unset_flags' : has parameters
+// UNSUPPORTED : C value 'g_datalist_unset_flags' : parameter 'datalist' of type 'Data' not supported
 
-// UNSUPPORTED : C value 'g_dataset_destroy' : has parameters
+// UNSUPPORTED : C value 'g_dataset_destroy' : parameter 'dataset_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dataset_foreach' : has parameters
+// UNSUPPORTED : C value 'g_dataset_foreach' : parameter 'dataset_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dataset_id_get_data' : has parameters
+// UNSUPPORTED : C value 'g_dataset_id_get_data' : parameter 'dataset_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dataset_id_remove_no_notify' : has parameters
+// UNSUPPORTED : C value 'g_dataset_id_remove_no_notify' : parameter 'dataset_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dataset_id_set_data_full' : has parameters
+// UNSUPPORTED : C value 'g_dataset_id_set_data_full' : parameter 'dataset_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_get_days_in_month' : has parameters
+// UNSUPPORTED : C value 'g_date_get_days_in_month' : parameter 'month' of type 'DateMonth' not supported
 
-// UNSUPPORTED : C value 'g_date_get_monday_weeks_in_year' : has parameters
+// UNSUPPORTED : C value 'g_date_get_monday_weeks_in_year' : parameter 'year' of type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_date_get_sunday_weeks_in_year' : has parameters
+// UNSUPPORTED : C value 'g_date_get_sunday_weeks_in_year' : parameter 'year' of type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_date_is_leap_year' : has parameters
+// UNSUPPORTED : C value 'g_date_is_leap_year' : parameter 'year' of type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_date_strftime' : has parameters
+// UNSUPPORTED : C value 'g_date_strftime' : parameter 's' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_date_time_compare' : has parameters
+// UNSUPPORTED : C value 'g_date_time_compare' : parameter 'dt1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_time_equal' : has parameters
+// UNSUPPORTED : C value 'g_date_time_equal' : parameter 'dt1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_time_hash' : has parameters
+// UNSUPPORTED : C value 'g_date_time_hash' : parameter 'datetime' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_day' : has parameters
+// UNSUPPORTED : C value 'g_date_valid_day' : parameter 'day' of type 'DateDay' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_dmy' : has parameters
+// UNSUPPORTED : C value 'g_date_valid_dmy' : parameter 'day' of type 'DateDay' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_julian' : has parameters
+// UNSUPPORTED : C value 'g_date_valid_julian' : parameter 'julian_date' of type 'guint32' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_month' : has parameters
+// UNSUPPORTED : C value 'g_date_valid_month' : parameter 'month' of type 'DateMonth' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_weekday' : has parameters
+// UNSUPPORTED : C value 'g_date_valid_weekday' : parameter 'weekday' of type 'DateWeekday' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_year' : has parameters
+// UNSUPPORTED : C value 'g_date_valid_year' : parameter 'year' of type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_dcgettext' : has parameters
+// UNSUPPORTED : C value 'g_dcgettext' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dgettext' : has parameters
+// UNSUPPORTED : C value 'g_dgettext' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dir_make_tmp' : has parameters
+// UNSUPPORTED : C value 'g_dir_make_tmp' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_direct_equal' : has parameters
+// UNSUPPORTED : C value 'g_direct_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_direct_hash' : has parameters
+// UNSUPPORTED : C value 'g_direct_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dngettext' : has parameters
+// UNSUPPORTED : C value 'g_dngettext' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_double_equal' : has parameters
+// UNSUPPORTED : C value 'g_double_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_double_hash' : has parameters
+// UNSUPPORTED : C value 'g_double_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dpgettext' : has parameters
+// UNSUPPORTED : C value 'g_dpgettext' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_dpgettext2' : has parameters
+// UNSUPPORTED : C value 'g_dpgettext2' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_environ_getenv' : has parameters
+// UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' has no type
 
-// UNSUPPORTED : C value 'g_environ_setenv' : has parameters
+// UNSUPPORTED : C value 'g_environ_setenv' : parameter 'envp' has no type
 
-// UNSUPPORTED : C value 'g_environ_unsetenv' : has parameters
+// UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' has no type
 
-// UNSUPPORTED : C value 'g_file_error_from_errno' : has parameters
+// UNSUPPORTED : C value 'g_file_error_from_errno' : parameter 'err_no' of type 'gint' not supported
 
 // UNSUPPORTED : C value 'g_file_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_file_get_contents' : has parameters
+// UNSUPPORTED : C value 'g_file_get_contents' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_open_tmp' : has parameters
+// UNSUPPORTED : C value 'g_file_open_tmp' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_read_link' : has parameters
+// UNSUPPORTED : C value 'g_file_read_link' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_set_contents' : has parameters
+// UNSUPPORTED : C value 'g_file_set_contents' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_file_test' : has parameters
+// UNSUPPORTED : C value 'g_file_test' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_display_basename' : has parameters
+// UNSUPPORTED : C value 'g_filename_display_basename' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_display_name' : has parameters
+// UNSUPPORTED : C value 'g_filename_display_name' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_from_uri' : has parameters
+// UNSUPPORTED : C value 'g_filename_from_uri' : parameter 'uri' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_filename_from_utf8' : has parameters
+// UNSUPPORTED : C value 'g_filename_from_utf8' : parameter 'utf8string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_filename_to_uri' : has parameters
+// UNSUPPORTED : C value 'g_filename_to_uri' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_to_utf8' : has parameters
+// UNSUPPORTED : C value 'g_filename_to_utf8' : parameter 'opsysstring' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_find_program_in_path' : has parameters
+// UNSUPPORTED : C value 'g_find_program_in_path' : parameter 'program' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_format_size' : has parameters
+// UNSUPPORTED : C value 'g_format_size' : parameter 'size' of type 'guint64' not supported
 
-// UNSUPPORTED : C value 'g_format_size_for_display' : has parameters
+// UNSUPPORTED : C value 'g_format_size_for_display' : parameter 'size' of type 'gint64' not supported
 
-// UNSUPPORTED : C value 'g_format_size_full' : has parameters
+// UNSUPPORTED : C value 'g_format_size_full' : parameter 'size' of type 'guint64' not supported
 
-// UNSUPPORTED : C value 'g_fprintf' : has parameters
+// UNSUPPORTED : C value 'g_fprintf' : parameter 'file' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_free' : has parameters
+// UNSUPPORTED : C value 'g_free' : parameter 'mem' of type 'gpointer' not supported
 
 var getApplicationNameInvoker *gi.Function
 
@@ -324,11 +376,11 @@ func GetApplicationName() string {
 		getApplicationNameInvoker = gi.FunctionInvokerNew("GLib", "get_application_name")
 	}
 
-	ret := getApplicationNameInvoker.Invoke()
+	ret := getApplicationNameInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'g_get_charset' : has parameters
+// UNSUPPORTED : C value 'g_get_charset' : parameter 'charset' with direction 'out' not supported
 
 var getCodesetInvoker *gi.Function
 
@@ -338,13 +390,13 @@ func GetCodeset() string {
 		getCodesetInvoker = gi.FunctionInvokerNew("GLib", "get_codeset")
 	}
 
-	ret := getCodesetInvoker.Invoke()
+	ret := getCodesetInvoker.Invoke(nil)
 	return ret.String(true)
 }
 
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_current_time' : has parameters
+// UNSUPPORTED : C value 'g_get_current_time' : parameter 'result' of type 'TimeVal' not supported
 
 var getEnvironInvoker *gi.Function
 
@@ -354,10 +406,10 @@ func GetEnviron() {
 		getEnvironInvoker = gi.FunctionInvokerNew("GLib", "get_environ")
 	}
 
-	getEnvironInvoker.Invoke()
+	getEnvironInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_get_filename_charsets' : has parameters
+// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'charsets' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
 
@@ -369,7 +421,7 @@ func GetHostName() string {
 		getHostNameInvoker = gi.FunctionInvokerNew("GLib", "get_host_name")
 	}
 
-	ret := getHostNameInvoker.Invoke()
+	ret := getHostNameInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
@@ -381,10 +433,10 @@ func GetLanguageNames() {
 		getLanguageNamesInvoker = gi.FunctionInvokerNew("GLib", "get_language_names")
 	}
 
-	getLanguageNamesInvoker.Invoke()
+	getLanguageNamesInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_get_locale_variants' : has parameters
+// UNSUPPORTED : C value 'g_get_locale_variants' : parameter 'locale' of type 'utf8' not supported
 
 var getMonotonicTimeInvoker *gi.Function
 
@@ -394,7 +446,7 @@ func GetMonotonicTime() int64 {
 		getMonotonicTimeInvoker = gi.FunctionInvokerNew("GLib", "get_monotonic_time")
 	}
 
-	ret := getMonotonicTimeInvoker.Invoke()
+	ret := getMonotonicTimeInvoker.Invoke(nil)
 	return ret.Int64()
 }
 
@@ -406,7 +458,7 @@ func GetNumProcessors() uint32 {
 		getNumProcessorsInvoker = gi.FunctionInvokerNew("GLib", "get_num_processors")
 	}
 
-	ret := getNumProcessorsInvoker.Invoke()
+	ret := getNumProcessorsInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -418,7 +470,7 @@ func GetPrgname() string {
 		getPrgnameInvoker = gi.FunctionInvokerNew("GLib", "get_prgname")
 	}
 
-	ret := getPrgnameInvoker.Invoke()
+	ret := getPrgnameInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
@@ -432,7 +484,7 @@ func GetRealTime() int64 {
 		getRealTimeInvoker = gi.FunctionInvokerNew("GLib", "get_real_time")
 	}
 
-	ret := getRealTimeInvoker.Invoke()
+	ret := getRealTimeInvoker.Invoke(nil)
 	return ret.Int64()
 }
 
@@ -444,7 +496,7 @@ func GetSystemConfigDirs() {
 		getSystemConfigDirsInvoker = gi.FunctionInvokerNew("GLib", "get_system_config_dirs")
 	}
 
-	getSystemConfigDirsInvoker.Invoke()
+	getSystemConfigDirsInvoker.Invoke(nil)
 }
 
 var getSystemDataDirsInvoker *gi.Function
@@ -455,7 +507,7 @@ func GetSystemDataDirs() {
 		getSystemDataDirsInvoker = gi.FunctionInvokerNew("GLib", "get_system_data_dirs")
 	}
 
-	getSystemDataDirsInvoker.Invoke()
+	getSystemDataDirsInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'g_get_tmp_dir' : return type 'filename' not supported
@@ -470,91 +522,91 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_get_user_runtime_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_user_special_dir' : has parameters
+// UNSUPPORTED : C value 'g_get_user_special_dir' : parameter 'directory' of type 'UserDirectory' not supported
 
-// UNSUPPORTED : C value 'g_getenv' : has parameters
+// UNSUPPORTED : C value 'g_getenv' : parameter 'variable' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_add' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_add' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_contains' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_contains' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_destroy' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_destroy' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_insert' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_insert' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_lookup' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_lookup' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_lookup_extended' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_lookup_extended' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_remove' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_remove' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_remove_all' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_remove_all' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_replace' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_replace' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_size' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_size' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_steal' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_steal' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_steal_all' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_steal_all' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_unref' : has parameters
+// UNSUPPORTED : C value 'g_hash_table_unref' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hook_destroy' : has parameters
+// UNSUPPORTED : C value 'g_hook_destroy' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hook_destroy_link' : has parameters
+// UNSUPPORTED : C value 'g_hook_destroy_link' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hook_free' : has parameters
+// UNSUPPORTED : C value 'g_hook_free' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hook_insert_before' : has parameters
+// UNSUPPORTED : C value 'g_hook_insert_before' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hook_prepend' : has parameters
+// UNSUPPORTED : C value 'g_hook_prepend' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hook_unref' : has parameters
+// UNSUPPORTED : C value 'g_hook_unref' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_ascii_encoded' : has parameters
+// UNSUPPORTED : C value 'g_hostname_is_ascii_encoded' : parameter 'hostname' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_ip_address' : has parameters
+// UNSUPPORTED : C value 'g_hostname_is_ip_address' : parameter 'hostname' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_non_ascii' : has parameters
+// UNSUPPORTED : C value 'g_hostname_is_non_ascii' : parameter 'hostname' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_hostname_to_ascii' : has parameters
+// UNSUPPORTED : C value 'g_hostname_to_ascii' : parameter 'hostname' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_hostname_to_unicode' : has parameters
+// UNSUPPORTED : C value 'g_hostname_to_unicode' : parameter 'hostname' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_iconv' : has parameters
+// UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
 
-// UNSUPPORTED : C value 'g_iconv_open' : has parameters
+// UNSUPPORTED : C value 'g_iconv_open' : parameter 'to_codeset' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_idle_add' : has parameters
+// UNSUPPORTED : C value 'g_idle_add' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_idle_add_full' : has parameters
+// UNSUPPORTED : C value 'g_idle_add_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_idle_remove_by_data' : has parameters
+// UNSUPPORTED : C value 'g_idle_remove_by_data' : parameter 'data' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_idle_source_new' : return type 'Source' not supported
 
-// UNSUPPORTED : C value 'g_int64_equal' : has parameters
+// UNSUPPORTED : C value 'g_int64_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_int64_hash' : has parameters
+// UNSUPPORTED : C value 'g_int64_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_int_equal' : has parameters
+// UNSUPPORTED : C value 'g_int_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_int_hash' : has parameters
+// UNSUPPORTED : C value 'g_int_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_intern_static_string' : has parameters
+// UNSUPPORTED : C value 'g_intern_static_string' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_intern_string' : has parameters
+// UNSUPPORTED : C value 'g_intern_string' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_io_add_watch' : has parameters
+// UNSUPPORTED : C value 'g_io_add_watch' : parameter 'channel' of type 'IOChannel' not supported
 
-// UNSUPPORTED : C value 'g_io_add_watch_full' : has parameters
+// UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'channel' of type 'IOChannel' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_error_from_errno' : has parameters
+// UNSUPPORTED : C value 'g_io_channel_error_from_errno' : parameter 'en' of type 'gint' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_io_create_watch' : has parameters
+// UNSUPPORTED : C value 'g_io_create_watch' : parameter 'channel' of type 'IOChannel' not supported
 
 // UNSUPPORTED : C value 'g_key_file_error_quark' : return type 'Quark' not supported
 
@@ -566,52 +618,52 @@ func Listenv() {
 		listenvInvoker = gi.FunctionInvokerNew("GLib", "listenv")
 	}
 
-	listenvInvoker.Invoke()
+	listenvInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_locale_from_utf8' : has parameters
+// UNSUPPORTED : C value 'g_locale_from_utf8' : parameter 'utf8string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_locale_to_utf8' : has parameters
+// UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' has no type
 
-// UNSUPPORTED : C value 'g_log' : has parameters
+// UNSUPPORTED : C value 'g_log' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_default_handler' : has parameters
+// UNSUPPORTED : C value 'g_log_default_handler' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_remove_handler' : has parameters
+// UNSUPPORTED : C value 'g_log_remove_handler' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_set_always_fatal' : has parameters
+// UNSUPPORTED : C value 'g_log_set_always_fatal' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_set_default_handler' : has parameters
+// UNSUPPORTED : C value 'g_log_set_default_handler' : parameter 'log_func' of type 'LogFunc' not supported
 
-// UNSUPPORTED : C value 'g_log_set_fatal_mask' : has parameters
+// UNSUPPORTED : C value 'g_log_set_fatal_mask' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_set_handler' : has parameters
+// UNSUPPORTED : C value 'g_log_set_handler' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_set_handler_full' : has parameters
+// UNSUPPORTED : C value 'g_log_set_handler_full' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_set_writer_func' : has parameters
+// UNSUPPORTED : C value 'g_log_set_writer_func' : parameter 'func' of type 'LogWriterFunc' not supported
 
-// UNSUPPORTED : C value 'g_log_structured' : has parameters
+// UNSUPPORTED : C value 'g_log_structured' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_structured_array' : has parameters
+// UNSUPPORTED : C value 'g_log_structured_array' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_structured_standard' : has parameters
+// UNSUPPORTED : C value 'g_log_structured_standard' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_variant' : has parameters
+// UNSUPPORTED : C value 'g_log_variant' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_default' : has parameters
+// UNSUPPORTED : C value 'g_log_writer_default' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_format_fields' : has parameters
+// UNSUPPORTED : C value 'g_log_writer_format_fields' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_is_journald' : has parameters
+// UNSUPPORTED : C value 'g_log_writer_is_journald' : parameter 'output_fd' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_journald' : has parameters
+// UNSUPPORTED : C value 'g_log_writer_journald' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_standard_streams' : has parameters
+// UNSUPPORTED : C value 'g_log_writer_standard_streams' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_supports_color' : has parameters
+// UNSUPPORTED : C value 'g_log_writer_supports_color' : parameter 'output_fd' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_logv' : has parameters
+// UNSUPPORTED : C value 'g_logv' : parameter 'log_domain' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_main_context_default' : return type 'MainContext' not supported
 
@@ -629,27 +681,27 @@ func MainDepth() int32 {
 		mainDepthInvoker = gi.FunctionInvokerNew("GLib", "main_depth")
 	}
 
-	ret := mainDepthInvoker.Invoke()
+	ret := mainDepthInvoker.Invoke(nil)
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'g_malloc' : has parameters
+// UNSUPPORTED : C value 'g_malloc' : parameter 'n_bytes' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_malloc0' : has parameters
+// UNSUPPORTED : C value 'g_malloc0' : parameter 'n_bytes' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_malloc0_n' : has parameters
+// UNSUPPORTED : C value 'g_malloc0_n' : parameter 'n_blocks' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_malloc_n' : has parameters
+// UNSUPPORTED : C value 'g_malloc_n' : parameter 'n_blocks' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_markup_collect_attributes' : has parameters
+// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'element_name' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_markup_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_markup_escape_text' : has parameters
+// UNSUPPORTED : C value 'g_markup_escape_text' : parameter 'text' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_markup_printf_escaped' : has parameters
+// UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_markup_vprintf_escaped' : has parameters
+// UNSUPPORTED : C value 'g_markup_vprintf_escaped' : parameter 'format' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type 'gboolean' not supported
 
@@ -661,92 +713,92 @@ func MemProfile() {
 		memProfileInvoker = gi.FunctionInvokerNew("GLib", "mem_profile")
 	}
 
-	memProfileInvoker.Invoke()
+	memProfileInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_mem_set_vtable' : has parameters
+// UNSUPPORTED : C value 'g_mem_set_vtable' : parameter 'vtable' of type 'MemVTable' not supported
 
-// UNSUPPORTED : C value 'g_memdup' : has parameters
+// UNSUPPORTED : C value 'g_memdup' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_mkdir_with_parents' : has parameters
+// UNSUPPORTED : C value 'g_mkdir_with_parents' : parameter 'pathname' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_mkdtemp' : has parameters
+// UNSUPPORTED : C value 'g_mkdtemp' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_mkdtemp_full' : has parameters
+// UNSUPPORTED : C value 'g_mkdtemp_full' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_mkstemp' : has parameters
+// UNSUPPORTED : C value 'g_mkstemp' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_mkstemp_full' : has parameters
+// UNSUPPORTED : C value 'g_mkstemp_full' : parameter 'tmpl' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_nullify_pointer' : has parameters
+// UNSUPPORTED : C value 'g_nullify_pointer' : parameter 'nullify_location' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_number_parser_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_on_error_query' : has parameters
+// UNSUPPORTED : C value 'g_on_error_query' : parameter 'prg_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_on_error_stack_trace' : has parameters
+// UNSUPPORTED : C value 'g_on_error_stack_trace' : parameter 'prg_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_once_init_enter' : has parameters
+// UNSUPPORTED : C value 'g_once_init_enter' : parameter 'location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_once_init_leave' : has parameters
+// UNSUPPORTED : C value 'g_once_init_leave' : parameter 'location' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_option_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_parse_debug_string' : has parameters
+// UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_path_get_basename' : has parameters
+// UNSUPPORTED : C value 'g_path_get_basename' : parameter 'file_name' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_path_get_dirname' : has parameters
+// UNSUPPORTED : C value 'g_path_get_dirname' : parameter 'file_name' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_path_is_absolute' : has parameters
+// UNSUPPORTED : C value 'g_path_is_absolute' : parameter 'file_name' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_path_skip_root' : has parameters
+// UNSUPPORTED : C value 'g_path_skip_root' : parameter 'file_name' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_pattern_match' : has parameters
+// UNSUPPORTED : C value 'g_pattern_match' : parameter 'pspec' of type 'PatternSpec' not supported
 
-// UNSUPPORTED : C value 'g_pattern_match_simple' : has parameters
+// UNSUPPORTED : C value 'g_pattern_match_simple' : parameter 'pattern' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_pattern_match_string' : has parameters
+// UNSUPPORTED : C value 'g_pattern_match_string' : parameter 'pspec' of type 'PatternSpec' not supported
 
-// UNSUPPORTED : C value 'g_pointer_bit_lock' : has parameters
+// UNSUPPORTED : C value 'g_pointer_bit_lock' : parameter 'address' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_pointer_bit_trylock' : has parameters
+// UNSUPPORTED : C value 'g_pointer_bit_trylock' : parameter 'address' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_pointer_bit_unlock' : has parameters
+// UNSUPPORTED : C value 'g_pointer_bit_unlock' : parameter 'address' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_poll' : has parameters
+// UNSUPPORTED : C value 'g_poll' : parameter 'fds' of type 'PollFD' not supported
 
-// UNSUPPORTED : C value 'g_prefix_error' : has parameters
+// UNSUPPORTED : C value 'g_prefix_error' : parameter 'err' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'g_print' : has parameters
+// UNSUPPORTED : C value 'g_print' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_printerr' : has parameters
+// UNSUPPORTED : C value 'g_printerr' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_printf' : has parameters
+// UNSUPPORTED : C value 'g_printf' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_printf_string_upper_bound' : has parameters
+// UNSUPPORTED : C value 'g_printf_string_upper_bound' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_propagate_error' : has parameters
+// UNSUPPORTED : C value 'g_propagate_error' : parameter 'dest' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_propagate_prefixed_error' : has parameters
+// UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter 'dest' of type 'Error' not supported
 
-// UNSUPPORTED : C value 'g_ptr_array_find' : has parameters
+// UNSUPPORTED : C value 'g_ptr_array_find' : parameter 'haystack' has no type
 
-// UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : has parameters
+// UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : parameter 'haystack' has no type
 
-// UNSUPPORTED : C value 'g_qsort_with_data' : has parameters
+// UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'pbase' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_quark_from_static_string' : has parameters
+// UNSUPPORTED : C value 'g_quark_from_static_string' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_quark_from_string' : has parameters
+// UNSUPPORTED : C value 'g_quark_from_string' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_quark_to_string' : has parameters
+// UNSUPPORTED : C value 'g_quark_to_string' : parameter 'quark' of type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_quark_try_string' : has parameters
+// UNSUPPORTED : C value 'g_quark_try_string' : parameter 'string' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_random_double' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_random_double_range' : has parameters
+// UNSUPPORTED : C value 'g_random_double_range' : parameter 'begin' of type 'gdouble' not supported
 
 var randomIntInvoker *gi.Function
 
@@ -756,29 +808,29 @@ func RandomInt() uint32 {
 		randomIntInvoker = gi.FunctionInvokerNew("GLib", "random_int")
 	}
 
-	ret := randomIntInvoker.Invoke()
+	ret := randomIntInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_random_int_range' : has parameters
+// UNSUPPORTED : C value 'g_random_int_range' : parameter 'begin' of type 'gint32' not supported
 
-// UNSUPPORTED : C value 'g_random_set_seed' : has parameters
+// UNSUPPORTED : C value 'g_random_set_seed' : parameter 'seed' of type 'guint32' not supported
 
-// UNSUPPORTED : C value 'g_realloc' : has parameters
+// UNSUPPORTED : C value 'g_realloc' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_realloc_n' : has parameters
+// UNSUPPORTED : C value 'g_realloc_n' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_regex_check_replacement' : has parameters
+// UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'replacement' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_regex_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_regex_escape_nul' : has parameters
+// UNSUPPORTED : C value 'g_regex_escape_nul' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_regex_escape_string' : has parameters
+// UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' has no type
 
-// UNSUPPORTED : C value 'g_regex_match_simple' : has parameters
+// UNSUPPORTED : C value 'g_regex_match_simple' : parameter 'pattern' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_regex_split_simple' : has parameters
+// UNSUPPORTED : C value 'g_regex_split_simple' : parameter 'pattern' of type 'utf8' not supported
 
 var reloadUserSpecialDirsCacheInvoker *gi.Function
 
@@ -788,218 +840,218 @@ func ReloadUserSpecialDirsCache() {
 		reloadUserSpecialDirsCacheInvoker = gi.FunctionInvokerNew("GLib", "reload_user_special_dirs_cache")
 	}
 
-	reloadUserSpecialDirsCacheInvoker.Invoke()
+	reloadUserSpecialDirsCacheInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_return_if_fail_warning' : has parameters
+// UNSUPPORTED : C value 'g_return_if_fail_warning' : parameter 'log_domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_rmdir' : has parameters
+// UNSUPPORTED : C value 'g_rmdir' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_sequence_get' : has parameters
+// UNSUPPORTED : C value 'g_sequence_get' : parameter 'iter' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_insert_before' : has parameters
+// UNSUPPORTED : C value 'g_sequence_insert_before' : parameter 'iter' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_move' : has parameters
+// UNSUPPORTED : C value 'g_sequence_move' : parameter 'src' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_move_range' : has parameters
+// UNSUPPORTED : C value 'g_sequence_move_range' : parameter 'dest' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_range_get_midpoint' : has parameters
+// UNSUPPORTED : C value 'g_sequence_range_get_midpoint' : parameter 'begin' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_remove' : has parameters
+// UNSUPPORTED : C value 'g_sequence_remove' : parameter 'iter' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_remove_range' : has parameters
+// UNSUPPORTED : C value 'g_sequence_remove_range' : parameter 'begin' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_set' : has parameters
+// UNSUPPORTED : C value 'g_sequence_set' : parameter 'iter' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_sequence_swap' : has parameters
+// UNSUPPORTED : C value 'g_sequence_swap' : parameter 'a' of type 'SequenceIter' not supported
 
-// UNSUPPORTED : C value 'g_set_application_name' : has parameters
+// UNSUPPORTED : C value 'g_set_application_name' : parameter 'application_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_set_error' : has parameters
+// UNSUPPORTED : C value 'g_set_error' : parameter 'err' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_set_error_literal' : has parameters
+// UNSUPPORTED : C value 'g_set_error_literal' : parameter 'err' with direction 'out' not supported
 
-// UNSUPPORTED : C value 'g_set_prgname' : has parameters
+// UNSUPPORTED : C value 'g_set_prgname' : parameter 'prgname' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_set_print_handler' : has parameters
+// UNSUPPORTED : C value 'g_set_print_handler' : parameter 'func' of type 'PrintFunc' not supported
 
-// UNSUPPORTED : C value 'g_set_printerr_handler' : has parameters
+// UNSUPPORTED : C value 'g_set_printerr_handler' : parameter 'func' of type 'PrintFunc' not supported
 
-// UNSUPPORTED : C value 'g_setenv' : has parameters
+// UNSUPPORTED : C value 'g_setenv' : parameter 'variable' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_shell_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_shell_parse_argv' : has parameters
+// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'command_line' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_shell_quote' : has parameters
+// UNSUPPORTED : C value 'g_shell_quote' : parameter 'unquoted_string' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_shell_unquote' : has parameters
+// UNSUPPORTED : C value 'g_shell_unquote' : parameter 'quoted_string' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_slice_alloc' : has parameters
+// UNSUPPORTED : C value 'g_slice_alloc' : parameter 'block_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_slice_alloc0' : has parameters
+// UNSUPPORTED : C value 'g_slice_alloc0' : parameter 'block_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_slice_copy' : has parameters
+// UNSUPPORTED : C value 'g_slice_copy' : parameter 'block_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_slice_free1' : has parameters
+// UNSUPPORTED : C value 'g_slice_free1' : parameter 'block_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_slice_free_chain_with_offset' : has parameters
+// UNSUPPORTED : C value 'g_slice_free_chain_with_offset' : parameter 'block_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_slice_get_config' : has parameters
+// UNSUPPORTED : C value 'g_slice_get_config' : parameter 'ckey' of type 'SliceConfig' not supported
 
-// UNSUPPORTED : C value 'g_slice_get_config_state' : has parameters
+// UNSUPPORTED : C value 'g_slice_get_config_state' : parameter 'ckey' of type 'SliceConfig' not supported
 
-// UNSUPPORTED : C value 'g_slice_set_config' : has parameters
+// UNSUPPORTED : C value 'g_slice_set_config' : parameter 'ckey' of type 'SliceConfig' not supported
 
-// UNSUPPORTED : C value 'g_snprintf' : has parameters
+// UNSUPPORTED : C value 'g_snprintf' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_source_remove' : has parameters
+// UNSUPPORTED : C value 'g_source_remove' : parameter 'tag' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : has parameters
+// UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : parameter 'funcs' of type 'SourceFuncs' not supported
 
-// UNSUPPORTED : C value 'g_source_remove_by_user_data' : has parameters
+// UNSUPPORTED : C value 'g_source_remove_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_source_set_name_by_id' : has parameters
+// UNSUPPORTED : C value 'g_source_set_name_by_id' : parameter 'tag' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_spaced_primes_closest' : has parameters
+// UNSUPPORTED : C value 'g_spaced_primes_closest' : parameter 'num' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_spawn_async' : has parameters
+// UNSUPPORTED : C value 'g_spawn_async' : parameter 'working_directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : has parameters
+// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'working_directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_spawn_check_exit_status' : has parameters
+// UNSUPPORTED : C value 'g_spawn_check_exit_status' : parameter 'exit_status' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_spawn_close_pid' : has parameters
+// UNSUPPORTED : C value 'g_spawn_close_pid' : parameter 'pid' of type 'Pid' not supported
 
-// UNSUPPORTED : C value 'g_spawn_command_line_async' : has parameters
+// UNSUPPORTED : C value 'g_spawn_command_line_async' : parameter 'command_line' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_spawn_command_line_sync' : has parameters
+// UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'command_line' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_spawn_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_spawn_exit_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_spawn_sync' : has parameters
+// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'working_directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_sprintf' : has parameters
+// UNSUPPORTED : C value 'g_sprintf' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_stpcpy' : has parameters
+// UNSUPPORTED : C value 'g_stpcpy' : parameter 'dest' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_str_equal' : has parameters
+// UNSUPPORTED : C value 'g_str_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_str_has_prefix' : has parameters
+// UNSUPPORTED : C value 'g_str_has_prefix' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_str_has_suffix' : has parameters
+// UNSUPPORTED : C value 'g_str_has_suffix' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_str_hash' : has parameters
+// UNSUPPORTED : C value 'g_str_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_str_is_ascii' : has parameters
+// UNSUPPORTED : C value 'g_str_is_ascii' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_str_match_string' : has parameters
+// UNSUPPORTED : C value 'g_str_match_string' : parameter 'search_term' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_str_to_ascii' : has parameters
+// UNSUPPORTED : C value 'g_str_to_ascii' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : has parameters
+// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strcanon' : has parameters
+// UNSUPPORTED : C value 'g_strcanon' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strcasecmp' : has parameters
+// UNSUPPORTED : C value 'g_strcasecmp' : parameter 's1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strchomp' : has parameters
+// UNSUPPORTED : C value 'g_strchomp' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strchug' : has parameters
+// UNSUPPORTED : C value 'g_strchug' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strcmp0' : has parameters
+// UNSUPPORTED : C value 'g_strcmp0' : parameter 'str1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strcompress' : has parameters
+// UNSUPPORTED : C value 'g_strcompress' : parameter 'source' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strconcat' : has parameters
+// UNSUPPORTED : C value 'g_strconcat' : parameter 'string1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strdelimit' : has parameters
+// UNSUPPORTED : C value 'g_strdelimit' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strdown' : has parameters
+// UNSUPPORTED : C value 'g_strdown' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strdup' : has parameters
+// UNSUPPORTED : C value 'g_strdup' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strdup_printf' : has parameters
+// UNSUPPORTED : C value 'g_strdup_printf' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strdup_vprintf' : has parameters
+// UNSUPPORTED : C value 'g_strdup_vprintf' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strdupv' : has parameters
+// UNSUPPORTED : C value 'g_strdupv' : parameter 'str_array' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strerror' : has parameters
+// UNSUPPORTED : C value 'g_strerror' : parameter 'errnum' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_strescape' : has parameters
+// UNSUPPORTED : C value 'g_strescape' : parameter 'source' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strfreev' : has parameters
+// UNSUPPORTED : C value 'g_strfreev' : parameter 'str_array' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_string_new' : has parameters
+// UNSUPPORTED : C value 'g_string_new' : parameter 'init' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_string_new_len' : has parameters
+// UNSUPPORTED : C value 'g_string_new_len' : parameter 'init' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_string_sized_new' : has parameters
+// UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_strip_context' : has parameters
+// UNSUPPORTED : C value 'g_strip_context' : parameter 'msgid' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strjoin' : has parameters
+// UNSUPPORTED : C value 'g_strjoin' : parameter 'separator' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strjoinv' : has parameters
+// UNSUPPORTED : C value 'g_strjoinv' : parameter 'separator' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strlcat' : has parameters
+// UNSUPPORTED : C value 'g_strlcat' : parameter 'dest' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strlcpy' : has parameters
+// UNSUPPORTED : C value 'g_strlcpy' : parameter 'dest' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strncasecmp' : has parameters
+// UNSUPPORTED : C value 'g_strncasecmp' : parameter 's1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strndup' : has parameters
+// UNSUPPORTED : C value 'g_strndup' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strnfill' : has parameters
+// UNSUPPORTED : C value 'g_strnfill' : parameter 'length' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_strreverse' : has parameters
+// UNSUPPORTED : C value 'g_strreverse' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strrstr' : has parameters
+// UNSUPPORTED : C value 'g_strrstr' : parameter 'haystack' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strrstr_len' : has parameters
+// UNSUPPORTED : C value 'g_strrstr_len' : parameter 'haystack' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strsignal' : has parameters
+// UNSUPPORTED : C value 'g_strsignal' : parameter 'signum' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_strsplit' : has parameters
+// UNSUPPORTED : C value 'g_strsplit' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strsplit_set' : has parameters
+// UNSUPPORTED : C value 'g_strsplit_set' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strstr_len' : has parameters
+// UNSUPPORTED : C value 'g_strstr_len' : parameter 'haystack' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strtod' : has parameters
+// UNSUPPORTED : C value 'g_strtod' : parameter 'nptr' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strup' : has parameters
+// UNSUPPORTED : C value 'g_strup' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_strv_contains' : has parameters
+// UNSUPPORTED : C value 'g_strv_contains' : parameter 'strv' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_strv_length' : has parameters
+// UNSUPPORTED : C value 'g_strv_length' : parameter 'str_array' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_add_data_func' : has parameters
+// UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'testpath' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_add_data_func_full' : has parameters
+// UNSUPPORTED : C value 'g_test_add_data_func_full' : parameter 'testpath' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_add_func' : has parameters
+// UNSUPPORTED : C value 'g_test_add_func' : parameter 'testpath' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_add_vtable' : has parameters
+// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'testpath' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_assert_expected_messages_internal' : has parameters
+// UNSUPPORTED : C value 'g_test_assert_expected_messages_internal' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_bug' : has parameters
+// UNSUPPORTED : C value 'g_test_bug' : parameter 'bug_uri_snippet' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_bug_base' : has parameters
+// UNSUPPORTED : C value 'g_test_bug_base' : parameter 'uri_pattern' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_build_filename' : has parameters
+// UNSUPPORTED : C value 'g_test_build_filename' : parameter 'file_type' of type 'TestFileType' not supported
 
-// UNSUPPORTED : C value 'g_test_create_case' : has parameters
+// UNSUPPORTED : C value 'g_test_create_case' : parameter 'test_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_create_suite' : has parameters
+// UNSUPPORTED : C value 'g_test_create_suite' : parameter 'suite_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_expect_message' : has parameters
+// UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_domain' of type 'utf8' not supported
 
 var testFailInvoker *gi.Function
 
@@ -1009,38 +1061,38 @@ func TestFail() {
 		testFailInvoker = gi.FunctionInvokerNew("GLib", "test_fail")
 	}
 
-	testFailInvoker.Invoke()
+	testFailInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'g_test_failed' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_test_get_dir' : has parameters
+// UNSUPPORTED : C value 'g_test_get_dir' : parameter 'file_type' of type 'TestFileType' not supported
 
-// UNSUPPORTED : C value 'g_test_get_filename' : has parameters
+// UNSUPPORTED : C value 'g_test_get_filename' : parameter 'file_type' of type 'TestFileType' not supported
 
 // UNSUPPORTED : C value 'g_test_get_root' : return type 'TestSuite' not supported
 
-// UNSUPPORTED : C value 'g_test_incomplete' : has parameters
+// UNSUPPORTED : C value 'g_test_incomplete' : parameter 'msg' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_init' : has parameters
+// UNSUPPORTED : C value 'g_test_init' : parameter 'argc' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_test_log_set_fatal_handler' : has parameters
+// UNSUPPORTED : C value 'g_test_log_set_fatal_handler' : parameter 'log_func' of type 'TestLogFatalFunc' not supported
 
-// UNSUPPORTED : C value 'g_test_log_type_name' : has parameters
+// UNSUPPORTED : C value 'g_test_log_type_name' : parameter 'log_type' of type 'TestLogType' not supported
 
-// UNSUPPORTED : C value 'g_test_maximized_result' : has parameters
+// UNSUPPORTED : C value 'g_test_maximized_result' : parameter 'maximized_quantity' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_message' : has parameters
+// UNSUPPORTED : C value 'g_test_message' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_minimized_result' : has parameters
+// UNSUPPORTED : C value 'g_test_minimized_result' : parameter 'minimized_quantity' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_queue_destroy' : has parameters
+// UNSUPPORTED : C value 'g_test_queue_destroy' : parameter 'destroy_func' of type 'DestroyNotify' not supported
 
-// UNSUPPORTED : C value 'g_test_queue_free' : has parameters
+// UNSUPPORTED : C value 'g_test_queue_free' : parameter 'gfree_pointer' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_test_rand_double' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_test_rand_double_range' : has parameters
+// UNSUPPORTED : C value 'g_test_rand_double_range' : parameter 'range_start' of type 'gdouble' not supported
 
 var testRandIntInvoker *gi.Function
 
@@ -1050,11 +1102,11 @@ func TestRandInt() int32 {
 		testRandIntInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int")
 	}
 
-	ret := testRandIntInvoker.Invoke()
+	ret := testRandIntInvoker.Invoke(nil)
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'g_test_rand_int_range' : has parameters
+// UNSUPPORTED : C value 'g_test_rand_int_range' : parameter 'begin' of type 'gint32' not supported
 
 var testRunInvoker *gi.Function
 
@@ -1064,11 +1116,11 @@ func TestRun() int32 {
 		testRunInvoker = gi.FunctionInvokerNew("GLib", "test_run")
 	}
 
-	ret := testRunInvoker.Invoke()
+	ret := testRunInvoker.Invoke(nil)
 	return ret.Int32()
 }
 
-// UNSUPPORTED : C value 'g_test_run_suite' : has parameters
+// UNSUPPORTED : C value 'g_test_run_suite' : parameter 'suite' of type 'TestSuite' not supported
 
 var testSetNonfatalAssertionsInvoker *gi.Function
 
@@ -1078,10 +1130,10 @@ func TestSetNonfatalAssertions() {
 		testSetNonfatalAssertionsInvoker = gi.FunctionInvokerNew("GLib", "test_set_nonfatal_assertions")
 	}
 
-	testSetNonfatalAssertionsInvoker.Invoke()
+	testSetNonfatalAssertionsInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_test_skip' : has parameters
+// UNSUPPORTED : C value 'g_test_skip' : parameter 'msg' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
 
@@ -1097,22 +1149,22 @@ func TestTimerStart() {
 		testTimerStartInvoker = gi.FunctionInvokerNew("GLib", "test_timer_start")
 	}
 
-	testTimerStartInvoker.Invoke()
+	testTimerStartInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_test_trap_assertions' : has parameters
+// UNSUPPORTED : C value 'g_test_trap_assertions' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_test_trap_fork' : has parameters
+// UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'usec_timeout' of type 'guint64' not supported
 
 // UNSUPPORTED : C value 'g_test_trap_has_passed' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_test_trap_reached_timeout' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_test_trap_subprocess' : has parameters
+// UNSUPPORTED : C value 'g_test_trap_subprocess' : parameter 'test_path' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'g_thread_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_thread_exit' : has parameters
+// UNSUPPORTED : C value 'g_thread_exit' : parameter 'retval' of type 'gpointer' not supported
 
 var threadPoolGetMaxIdleTimeInvoker *gi.Function
 
@@ -1122,7 +1174,7 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 		threadPoolGetMaxIdleTimeInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_idle_time")
 	}
 
-	ret := threadPoolGetMaxIdleTimeInvoker.Invoke()
+	ret := threadPoolGetMaxIdleTimeInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -1134,7 +1186,7 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 		threadPoolGetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
 	}
 
-	ret := threadPoolGetMaxUnusedThreadsInvoker.Invoke()
+	ret := threadPoolGetMaxUnusedThreadsInvoker.Invoke(nil)
 	return ret.Int32()
 }
 
@@ -1146,13 +1198,13 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 		threadPoolGetNumUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_num_unused_threads")
 	}
 
-	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke()
+	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'g_thread_pool_set_max_idle_time' : has parameters
+// UNSUPPORTED : C value 'g_thread_pool_set_max_idle_time' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_thread_pool_set_max_unused_threads' : has parameters
+// UNSUPPORTED : C value 'g_thread_pool_set_max_unused_threads' : parameter 'max_threads' of type 'gint' not supported
 
 var threadPoolStopUnusedThreadsInvoker *gi.Function
 
@@ -1162,7 +1214,7 @@ func ThreadPoolStopUnusedThreads() {
 		threadPoolStopUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_stop_unused_threads")
 	}
 
-	threadPoolStopUnusedThreadsInvoker.Invoke()
+	threadPoolStopUnusedThreadsInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'g_thread_self' : return type 'Thread' not supported
@@ -1175,208 +1227,208 @@ func ThreadYield() {
 		threadYieldInvoker = gi.FunctionInvokerNew("GLib", "thread_yield")
 	}
 
-	threadYieldInvoker.Invoke()
+	threadYieldInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'g_time_val_from_iso8601' : has parameters
+// UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'iso_date' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add' : has parameters
+// UNSUPPORTED : C value 'g_timeout_add' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add_full' : has parameters
+// UNSUPPORTED : C value 'g_timeout_add_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add_seconds' : has parameters
+// UNSUPPORTED : C value 'g_timeout_add_seconds' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_timeout_add_seconds_full' : has parameters
+// UNSUPPORTED : C value 'g_timeout_add_seconds_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_timeout_source_new' : has parameters
+// UNSUPPORTED : C value 'g_timeout_source_new' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_timeout_source_new_seconds' : has parameters
+// UNSUPPORTED : C value 'g_timeout_source_new_seconds' : parameter 'interval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'g_trash_stack_height' : has parameters
+// UNSUPPORTED : C value 'g_trash_stack_height' : parameter 'stack_p' of type 'TrashStack' not supported
 
-// UNSUPPORTED : C value 'g_trash_stack_peek' : has parameters
+// UNSUPPORTED : C value 'g_trash_stack_peek' : parameter 'stack_p' of type 'TrashStack' not supported
 
-// UNSUPPORTED : C value 'g_trash_stack_pop' : has parameters
+// UNSUPPORTED : C value 'g_trash_stack_pop' : parameter 'stack_p' of type 'TrashStack' not supported
 
-// UNSUPPORTED : C value 'g_trash_stack_push' : has parameters
+// UNSUPPORTED : C value 'g_trash_stack_push' : parameter 'stack_p' of type 'TrashStack' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc' : has parameters
+// UNSUPPORTED : C value 'g_try_malloc' : parameter 'n_bytes' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc0' : has parameters
+// UNSUPPORTED : C value 'g_try_malloc0' : parameter 'n_bytes' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc0_n' : has parameters
+// UNSUPPORTED : C value 'g_try_malloc0_n' : parameter 'n_blocks' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc_n' : has parameters
+// UNSUPPORTED : C value 'g_try_malloc_n' : parameter 'n_blocks' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_try_realloc' : has parameters
+// UNSUPPORTED : C value 'g_try_realloc' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_try_realloc_n' : has parameters
+// UNSUPPORTED : C value 'g_try_realloc_n' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_ucs4_to_utf16' : has parameters
+// UNSUPPORTED : C value 'g_ucs4_to_utf16' : parameter 'str' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_ucs4_to_utf8' : has parameters
+// UNSUPPORTED : C value 'g_ucs4_to_utf8' : parameter 'str' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_break_type' : has parameters
+// UNSUPPORTED : C value 'g_unichar_break_type' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_combining_class' : has parameters
+// UNSUPPORTED : C value 'g_unichar_combining_class' : parameter 'uc' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_compose' : has parameters
+// UNSUPPORTED : C value 'g_unichar_compose' : parameter 'a' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_decompose' : has parameters
+// UNSUPPORTED : C value 'g_unichar_decompose' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_digit_value' : has parameters
+// UNSUPPORTED : C value 'g_unichar_digit_value' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_fully_decompose' : has parameters
+// UNSUPPORTED : C value 'g_unichar_fully_decompose' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_get_mirror_char' : has parameters
+// UNSUPPORTED : C value 'g_unichar_get_mirror_char' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_get_script' : has parameters
+// UNSUPPORTED : C value 'g_unichar_get_script' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isalnum' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isalnum' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isalpha' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isalpha' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_iscntrl' : has parameters
+// UNSUPPORTED : C value 'g_unichar_iscntrl' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isdefined' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isdefined' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isdigit' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isdigit' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isgraph' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isgraph' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_islower' : has parameters
+// UNSUPPORTED : C value 'g_unichar_islower' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_ismark' : has parameters
+// UNSUPPORTED : C value 'g_unichar_ismark' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isprint' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isprint' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_ispunct' : has parameters
+// UNSUPPORTED : C value 'g_unichar_ispunct' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isspace' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isspace' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_istitle' : has parameters
+// UNSUPPORTED : C value 'g_unichar_istitle' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isupper' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isupper' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_iswide' : has parameters
+// UNSUPPORTED : C value 'g_unichar_iswide' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_iswide_cjk' : has parameters
+// UNSUPPORTED : C value 'g_unichar_iswide_cjk' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_isxdigit' : has parameters
+// UNSUPPORTED : C value 'g_unichar_isxdigit' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_iszerowidth' : has parameters
+// UNSUPPORTED : C value 'g_unichar_iszerowidth' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_to_utf8' : has parameters
+// UNSUPPORTED : C value 'g_unichar_to_utf8' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_tolower' : has parameters
+// UNSUPPORTED : C value 'g_unichar_tolower' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_totitle' : has parameters
+// UNSUPPORTED : C value 'g_unichar_totitle' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_toupper' : has parameters
+// UNSUPPORTED : C value 'g_unichar_toupper' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_type' : has parameters
+// UNSUPPORTED : C value 'g_unichar_type' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_validate' : has parameters
+// UNSUPPORTED : C value 'g_unichar_validate' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unichar_xdigit_value' : has parameters
+// UNSUPPORTED : C value 'g_unichar_xdigit_value' : parameter 'c' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unicode_canonical_decomposition' : has parameters
+// UNSUPPORTED : C value 'g_unicode_canonical_decomposition' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unicode_canonical_ordering' : has parameters
+// UNSUPPORTED : C value 'g_unicode_canonical_ordering' : parameter 'string' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_unicode_script_from_iso15924' : has parameters
+// UNSUPPORTED : C value 'g_unicode_script_from_iso15924' : parameter 'iso15924' of type 'guint32' not supported
 
-// UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : has parameters
+// UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : parameter 'script' of type 'UnicodeScript' not supported
 
 // UNSUPPORTED : C value 'g_unix_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_add' : has parameters
+// UNSUPPORTED : C value 'g_unix_fd_add' : parameter 'fd' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_add_full' : has parameters
+// UNSUPPORTED : C value 'g_unix_fd_add_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_source_new' : has parameters
+// UNSUPPORTED : C value 'g_unix_fd_source_new' : parameter 'fd' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_open_pipe' : has parameters
+// UNSUPPORTED : C value 'g_unix_open_pipe' : parameter 'fds' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_set_fd_nonblocking' : has parameters
+// UNSUPPORTED : C value 'g_unix_set_fd_nonblocking' : parameter 'fd' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_add' : has parameters
+// UNSUPPORTED : C value 'g_unix_signal_add' : parameter 'signum' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_add_full' : has parameters
+// UNSUPPORTED : C value 'g_unix_signal_add_full' : parameter 'priority' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_source_new' : has parameters
+// UNSUPPORTED : C value 'g_unix_signal_source_new' : parameter 'signum' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'g_unlink' : has parameters
+// UNSUPPORTED : C value 'g_unlink' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unsetenv' : has parameters
+// UNSUPPORTED : C value 'g_unsetenv' : parameter 'variable' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_uri_escape_string' : has parameters
+// UNSUPPORTED : C value 'g_uri_escape_string' : parameter 'unescaped' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_uri_list_extract_uris' : has parameters
+// UNSUPPORTED : C value 'g_uri_list_extract_uris' : parameter 'uri_list' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_uri_parse_scheme' : has parameters
+// UNSUPPORTED : C value 'g_uri_parse_scheme' : parameter 'uri' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_uri_unescape_segment' : has parameters
+// UNSUPPORTED : C value 'g_uri_unescape_segment' : parameter 'escaped_string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_uri_unescape_string' : has parameters
+// UNSUPPORTED : C value 'g_uri_unescape_string' : parameter 'escaped_string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_usleep' : has parameters
+// UNSUPPORTED : C value 'g_usleep' : parameter 'microseconds' of type 'gulong' not supported
 
-// UNSUPPORTED : C value 'g_utf16_to_ucs4' : has parameters
+// UNSUPPORTED : C value 'g_utf16_to_ucs4' : parameter 'str' of type 'guint16' not supported
 
-// UNSUPPORTED : C value 'g_utf16_to_utf8' : has parameters
+// UNSUPPORTED : C value 'g_utf16_to_utf8' : parameter 'str' of type 'guint16' not supported
 
-// UNSUPPORTED : C value 'g_utf8_casefold' : has parameters
+// UNSUPPORTED : C value 'g_utf8_casefold' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_collate' : has parameters
+// UNSUPPORTED : C value 'g_utf8_collate' : parameter 'str1' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_collate_key' : has parameters
+// UNSUPPORTED : C value 'g_utf8_collate_key' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_collate_key_for_filename' : has parameters
+// UNSUPPORTED : C value 'g_utf8_collate_key_for_filename' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_find_next_char' : has parameters
+// UNSUPPORTED : C value 'g_utf8_find_next_char' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_find_prev_char' : has parameters
+// UNSUPPORTED : C value 'g_utf8_find_prev_char' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_get_char' : has parameters
+// UNSUPPORTED : C value 'g_utf8_get_char' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_get_char_validated' : has parameters
+// UNSUPPORTED : C value 'g_utf8_get_char_validated' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_make_valid' : has parameters
+// UNSUPPORTED : C value 'g_utf8_make_valid' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_normalize' : has parameters
+// UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_offset_to_pointer' : has parameters
+// UNSUPPORTED : C value 'g_utf8_offset_to_pointer' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_pointer_to_offset' : has parameters
+// UNSUPPORTED : C value 'g_utf8_pointer_to_offset' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_prev_char' : has parameters
+// UNSUPPORTED : C value 'g_utf8_prev_char' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strchr' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strdown' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strdown' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strlen' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strlen' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strncpy' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strncpy' : parameter 'dest' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strrchr' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strrchr' : parameter 'p' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strreverse' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strreverse' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_strup' : has parameters
+// UNSUPPORTED : C value 'g_utf8_strup' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_substring' : has parameters
+// UNSUPPORTED : C value 'g_utf8_substring' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4' : has parameters
+// UNSUPPORTED : C value 'g_utf8_to_ucs4' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : has parameters
+// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_utf16' : has parameters
+// UNSUPPORTED : C value 'g_utf8_to_utf16' : parameter 'str' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_utf8_validate' : has parameters
+// UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_uuid_string_is_valid' : has parameters
+// UNSUPPORTED : C value 'g_uuid_string_is_valid' : parameter 'str' of type 'utf8' not supported
 
 var uuidStringRandomInvoker *gi.Function
 
@@ -1386,38 +1438,38 @@ func UuidStringRandom() string {
 		uuidStringRandomInvoker = gi.FunctionInvokerNew("GLib", "uuid_string_random")
 	}
 
-	ret := uuidStringRandomInvoker.Invoke()
+	ret := uuidStringRandomInvoker.Invoke(nil)
 	return ret.String(true)
 }
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_variant_is_object_path' : has parameters
+// UNSUPPORTED : C value 'g_variant_is_object_path' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_variant_is_signature' : has parameters
+// UNSUPPORTED : C value 'g_variant_is_signature' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_variant_parse' : has parameters
+// UNSUPPORTED : C value 'g_variant_parse' : parameter 'type' of type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_parse_error_print_context' : has parameters
+// UNSUPPORTED : C value 'g_variant_parse_error_print_context' : parameter 'error' of type 'Error' not supported
 
 // UNSUPPORTED : C value 'g_variant_parse_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_checked_' : has parameters
+// UNSUPPORTED : C value 'g_variant_type_checked_' : parameter 'arg0' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_string_is_valid' : has parameters
+// UNSUPPORTED : C value 'g_variant_type_string_is_valid' : parameter 'type_string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_string_scan' : has parameters
+// UNSUPPORTED : C value 'g_variant_type_string_scan' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_vasprintf' : has parameters
+// UNSUPPORTED : C value 'g_vasprintf' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_vfprintf' : has parameters
+// UNSUPPORTED : C value 'g_vfprintf' : parameter 'file' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_vprintf' : has parameters
+// UNSUPPORTED : C value 'g_vprintf' : parameter 'format' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_vsnprintf' : has parameters
+// UNSUPPORTED : C value 'g_vsnprintf' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_vsprintf' : has parameters
+// UNSUPPORTED : C value 'g_vsprintf' : parameter 'string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'g_warn_message' : has parameters
+// UNSUPPORTED : C value 'g_warn_message' : parameter 'domain' of type 'utf8' not supported

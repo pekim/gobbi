@@ -12,5 +12,5 @@ func ImageSurfaceCreate() {
 		imageSurfaceCreateInvoker = gi.FunctionInvokerNew("cairo", "image_surface_create")
 	}
 
-	imageSurfaceCreateInvoker.Invoke()
+	imageSurfaceCreateInvoker.Invoke(nil)
 }

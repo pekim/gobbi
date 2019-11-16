@@ -1,7 +1,6 @@
 package generate
 
 import (
-	"fmt"
 	"github.com/dave/jennifer/jen"
 	"github.com/pekim/gobbi/internal/gi"
 )
@@ -28,6 +27,7 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 	f.namespace = ns
+	f.Parameters.init(ns)
 	f.ReturnValue.init(ns)
 	f.goName = makeExportedGoName(f.Name)
 	f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
@@ -52,14 +52,7 @@ func (f *Function) generate(fi *file) {
 	}
 
 	f.generateInvokerVar(fi)
-
-	fi.docForC(f.goName, f.CIdentifier)
-	fi.
-		Func().
-		Id(f.goName).
-		Add(paramsFunc(f.generateParamsDeclaration)).
-		Add(paramsFunc(f.generateReturnDeclaration)).
-		Add(blockFunc(f.generateBody))
+	f.generateFunction(fi)
 }
 
 func (f *Function) generateInvokerVar(fi *file) {
@@ -68,22 +61,18 @@ func (f *Function) generateInvokerVar(fi *file) {
 		Id(f.invokerVarName).
 		Op("*").
 		Qual(gi.PackageName, "Function")
+	fi.Line()
 }
 
-func (f *Function) generateParamsDeclaration(g *group) {
-}
-
-func (f *Function) generateReturnDeclaration(g *group) {
-	if f.ReturnValue.isVoid() {
-		return
-	}
-
-	goType, err := f.ReturnValue.Type.jenGoType()
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	g.Add(goType)
+func (f *Function) generateFunction(fi *file) {
+	fi.docForC(f.goName, f.CIdentifier)
+	fi.
+		Func().                                             // func
+		Id(f.goName).                                       // <name>
+		Add(paramsFunc(f.Parameters.generateDeclarations)). // (params)
+		Add(paramsFunc(f.ReturnValue.generateDeclaration)). // return value
+		Add(blockFunc(f.generateBody))                      // { body }
+	fi.Line()
 }
 
 func (f *Function) generateBody(g *group) {
@@ -100,6 +89,8 @@ func (f *Function) generateBody(g *group) {
 			))
 	g.Line()
 
+	f.Parameters.generateInArgs(g)
+
 	// call the function
 	g.
 		Do(func(s *jen.Statement) {
@@ -111,13 +102,13 @@ func (f *Function) generateBody(g *group) {
 		}).
 		Id(f.invokerVarName).
 		Dot("Invoke").
-		Call()
+		CallFunc(f.Parameters.generateCallParams)
 
 	// marshall and return any return value
 	if !f.ReturnValue.isVoid() {
 		g.Return(jen.
 			Id("ret").
-			Dot(f.ReturnValue.Type.returnValueExtractFunctionName()).
+			Dot(f.ReturnValue.Type.argumentValueGetFunctionName()).
 			CallFunc(f.ReturnValue.transferOwnershipJen))
 	}
 }

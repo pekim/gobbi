@@ -16,7 +16,7 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke()
+	ret := getMajorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -28,7 +28,7 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke()
+	ret := getMicroVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -40,7 +40,7 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke()
+	ret := getMinorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -56,10 +56,10 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'webkit_snapshot_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_uri_for_display' : has parameters
+// UNSUPPORTED : C value 'webkit_uri_for_display' : parameter 'uri' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : has parameters
+// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_audio_device' : parameter 'request' of type 'UserMediaPermissionRequest' not supported
 
-// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_video_device' : has parameters
+// UNSUPPORTED : C value 'webkit_user_media_permission_is_for_video_device' : parameter 'request' of type 'UserMediaPermissionRequest' not supported

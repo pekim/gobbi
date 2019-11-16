@@ -4,61 +4,61 @@ package gtk
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'gtk_accel_groups_activate' : has parameters
+// UNSUPPORTED : C value 'gtk_accel_groups_activate' : parameter 'object' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_accel_groups_from_object' : has parameters
+// UNSUPPORTED : C value 'gtk_accel_groups_from_object' : parameter 'object' of type 'GObject.Object' not supported
 
 // UNSUPPORTED : C value 'gtk_accelerator_get_default_mod_mask' : return type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_get_label' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_get_label' : parameter 'accelerator_key' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_get_label_with_keycode' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_get_label_with_keycode' : parameter 'display' of type 'Gdk.Display' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_name' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_name' : parameter 'accelerator_key' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_name_with_keycode' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_name_with_keycode' : parameter 'display' of type 'Gdk.Display' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_set_default_mod_mask' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_set_default_mod_mask' : parameter 'default_mod_mask' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_valid' : has parameters
+// UNSUPPORTED : C value 'gtk_accelerator_valid' : parameter 'keyval' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gtk_alternative_dialog_button_order' : has parameters
+// UNSUPPORTED : C value 'gtk_alternative_dialog_button_order' : parameter 'screen' of type 'Gdk.Screen' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_add_signal_from_string' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_entry_add_signal_from_string' : parameter 'binding_set' of type 'BindingSet' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_add_signall' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_entry_add_signall' : parameter 'binding_set' of type 'BindingSet' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_remove' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_entry_remove' : parameter 'binding_set' of type 'BindingSet' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_skip' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_entry_skip' : parameter 'binding_set' of type 'BindingSet' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_by_class' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_set_by_class' : parameter 'object_class' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_find' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_set_find' : parameter 'set_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_new' : has parameters
+// UNSUPPORTED : C value 'gtk_binding_set_new' : parameter 'set_name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_bindings_activate' : has parameters
+// UNSUPPORTED : C value 'gtk_bindings_activate' : parameter 'object' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_bindings_activate_event' : has parameters
+// UNSUPPORTED : C value 'gtk_bindings_activate_event' : parameter 'object' of type 'GObject.Object' not supported
 
 // UNSUPPORTED : C value 'gtk_builder_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_cairo_should_draw_window' : has parameters
+// UNSUPPORTED : C value 'gtk_cairo_should_draw_window' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_cairo_transform_to_window' : has parameters
+// UNSUPPORTED : C value 'gtk_cairo_transform_to_window' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gtk_check_version' : has parameters
+// UNSUPPORTED : C value 'gtk_check_version' : parameter 'required_major' of type 'guint' not supported
 
 // UNSUPPORTED : C value 'gtk_css_provider_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_device_grab_add' : has parameters
+// UNSUPPORTED : C value 'gtk_device_grab_add' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_device_grab_remove' : has parameters
+// UNSUPPORTED : C value 'gtk_device_grab_remove' : parameter 'widget' of type 'Widget' not supported
 
 var disableSetlocaleInvoker *gi.Function
 
@@ -68,32 +68,32 @@ func DisableSetlocale() {
 		disableSetlocaleInvoker = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
 	}
 
-	disableSetlocaleInvoker.Invoke()
+	disableSetlocaleInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : has parameters
+// UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : parameter 'extra_space' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_cancel' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_cancel' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_finish' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_finish' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_get_source_widget' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_get_source_widget' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_default' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_default' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_gicon' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_gicon' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_name' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_name' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_pixbuf' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_pixbuf' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_stock' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_stock' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_surface' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_surface' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_widget' : has parameters
+// UNSUPPORTED : C value 'gtk_drag_set_icon_widget' : parameter 'context' of type 'Gdk.DragContext' not supported
 
-// UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : has parameters
+// UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : parameter 'widget' of type 'Widget' not supported
 
 // UNSUPPORTED : C value 'gtk_events_pending' : return type 'gboolean' not supported
 
@@ -109,7 +109,7 @@ func GetBinaryAge() uint32 {
 		getBinaryAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_binary_age")
 	}
 
-	ret := getBinaryAgeInvoker.Invoke()
+	ret := getBinaryAgeInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -117,7 +117,7 @@ func GetBinaryAge() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_current_event_device' : return type 'Gdk.Device' not supported
 
-// UNSUPPORTED : C value 'gtk_get_current_event_state' : has parameters
+// UNSUPPORTED : C value 'gtk_get_current_event_state' : parameter 'state' with direction 'out' not supported
 
 var getCurrentEventTimeInvoker *gi.Function
 
@@ -127,7 +127,7 @@ func GetCurrentEventTime() uint32 {
 		getCurrentEventTimeInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
 	}
 
-	ret := getCurrentEventTimeInvoker.Invoke()
+	ret := getCurrentEventTimeInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -139,13 +139,13 @@ func GetDebugFlags() uint32 {
 		getDebugFlagsInvoker = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
 	}
 
-	ret := getDebugFlagsInvoker.Invoke()
+	ret := getDebugFlagsInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
 // UNSUPPORTED : C value 'gtk_get_default_language' : return type 'Pango.Language' not supported
 
-// UNSUPPORTED : C value 'gtk_get_event_widget' : has parameters
+// UNSUPPORTED : C value 'gtk_get_event_widget' : parameter 'event' of type 'Gdk.Event' not supported
 
 var getInterfaceAgeInvoker *gi.Function
 
@@ -155,7 +155,7 @@ func GetInterfaceAge() uint32 {
 		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_interface_age")
 	}
 
-	ret := getInterfaceAgeInvoker.Invoke()
+	ret := getInterfaceAgeInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -169,7 +169,7 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke()
+	ret := getMajorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -181,7 +181,7 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke()
+	ret := getMicroVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -193,37 +193,37 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke()
+	ret := getMinorVersionInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
-// UNSUPPORTED : C value 'gtk_get_option_group' : has parameters
+// UNSUPPORTED : C value 'gtk_get_option_group' : parameter 'open_default_display' of type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'gtk_grab_get_current' : return type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_from_name' : has parameters
+// UNSUPPORTED : C value 'gtk_icon_size_from_name' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_get_name' : has parameters
+// UNSUPPORTED : C value 'gtk_icon_size_get_name' : parameter 'size' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_lookup' : has parameters
+// UNSUPPORTED : C value 'gtk_icon_size_lookup' : parameter 'size' of type 'gint' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_lookup_for_settings' : has parameters
+// UNSUPPORTED : C value 'gtk_icon_size_lookup_for_settings' : parameter 'settings' of type 'Settings' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_register' : has parameters
+// UNSUPPORTED : C value 'gtk_icon_size_register' : parameter 'name' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_size_register_alias' : has parameters
+// UNSUPPORTED : C value 'gtk_icon_size_register_alias' : parameter 'alias' of type 'utf8' not supported
 
 // UNSUPPORTED : C value 'gtk_icon_theme_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_init' : has parameters
+// UNSUPPORTED : C value 'gtk_init' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gtk_init_check' : has parameters
+// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gtk_init_with_args' : has parameters
+// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argc' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gtk_key_snooper_install' : has parameters
+// UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_key_snooper_remove' : has parameters
+// UNSUPPORTED : C value 'gtk_key_snooper_remove' : parameter 'snooper_handler_id' of type 'guint' not supported
 
 var mainInvoker *gi.Function
 
@@ -233,14 +233,14 @@ func Main() {
 		mainInvoker = gi.FunctionInvokerNew("Gtk", "main")
 	}
 
-	mainInvoker.Invoke()
+	mainInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gtk_main_do_event' : has parameters
+// UNSUPPORTED : C value 'gtk_main_do_event' : parameter 'event' of type 'Gdk.Event' not supported
 
 // UNSUPPORTED : C value 'gtk_main_iteration' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_main_iteration_do' : has parameters
+// UNSUPPORTED : C value 'gtk_main_iteration_do' : parameter 'blocking' of type 'gboolean' not supported
 
 var mainLevelInvoker *gi.Function
 
@@ -250,7 +250,7 @@ func MainLevel() uint32 {
 		mainLevelInvoker = gi.FunctionInvokerNew("Gtk", "main_level")
 	}
 
-	ret := mainLevelInvoker.Invoke()
+	ret := mainLevelInvoker.Invoke(nil)
 	return ret.Uint32()
 }
 
@@ -262,48 +262,48 @@ func MainQuit() {
 		mainQuitInvoker = gi.FunctionInvokerNew("Gtk", "main_quit")
 	}
 
-	mainQuitInvoker.Invoke()
+	mainQuitInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gtk_paint_arrow' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_arrow' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_box' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_box' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_box_gap' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_box_gap' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_check' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_check' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_diamond' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_diamond' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_expander' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_expander' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_extension' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_extension' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_flat_box' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_flat_box' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_focus' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_focus' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_handle' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_handle' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_hline' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_hline' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_layout' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_layout' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_option' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_option' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_resize_grip' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_resize_grip' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_shadow' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_shadow' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_shadow_gap' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_shadow_gap' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_slider' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_slider' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_spinner' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_spinner' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_tab' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_tab' : parameter 'style' of type 'Style' not supported
 
-// UNSUPPORTED : C value 'gtk_paint_vline' : has parameters
+// UNSUPPORTED : C value 'gtk_paint_vline' : parameter 'style' of type 'Style' not supported
 
 var paperSizeGetDefaultInvoker *gi.Function
 
@@ -313,27 +313,27 @@ func PaperSizeGetDefault() string {
 		paperSizeGetDefaultInvoker = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
 	}
 
-	ret := paperSizeGetDefaultInvoker.Invoke()
+	ret := paperSizeGetDefaultInvoker.Invoke(nil)
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : has parameters
+// UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : parameter 'include_custom' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_parse_args' : has parameters
+// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argc' with direction 'inout' not supported
 
 // UNSUPPORTED : C value 'gtk_print_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog' : has parameters
+// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog' : parameter 'parent' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog_async' : has parameters
+// UNSUPPORTED : C value 'gtk_print_run_page_setup_dialog_async' : parameter 'parent' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gtk_propagate_event' : has parameters
+// UNSUPPORTED : C value 'gtk_propagate_event' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_add_default_file' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_add_default_file' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_find_module_in_path' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_find_module_in_path' : parameter 'module_file' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'settings' of type 'Settings' not supported
 
 var rcGetDefaultFilesInvoker *gi.Function
 
@@ -343,7 +343,7 @@ func RcGetDefaultFiles() {
 		rcGetDefaultFilesInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_default_files")
 	}
 
-	rcGetDefaultFilesInvoker.Invoke()
+	rcGetDefaultFilesInvoker.Invoke(nil)
 }
 
 // UNSUPPORTED : C value 'gtk_rc_get_im_module_file' : return type 'filename' not supported
@@ -352,9 +352,9 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_rc_get_module_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_get_style' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_get_style' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : parameter 'settings' of type 'Settings' not supported
 
 var rcGetThemeDirInvoker *gi.Function
 
@@ -364,145 +364,145 @@ func RcGetThemeDir() string {
 		rcGetThemeDirInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
 	}
 
-	ret := rcGetThemeDirInvoker.Invoke()
+	ret := rcGetThemeDirInvoker.Invoke(nil)
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'gtk_rc_parse' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_parse' : parameter 'filename' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_parse_color' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_parse_color' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_parse_color_full' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_parse_color_full' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_parse_priority' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_parse_priority' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_parse_state' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_parse_state' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_parse_string' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_parse_string' : parameter 'rc_string' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_border' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_property_parse_border' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_color' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_property_parse_color' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_enum' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_property_parse_enum' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_flags' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_property_parse_flags' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_requisition' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_property_parse_requisition' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_reparse_all' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : parameter 'settings' of type 'Settings' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_reset_styles' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_reset_styles' : parameter 'settings' of type 'Settings' not supported
 
 // UNSUPPORTED : C value 'gtk_rc_scanner_new' : return type 'GLib.Scanner' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_set_default_files' : has parameters
+// UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' has no type
 
 // UNSUPPORTED : C value 'gtk_recent_chooser_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_recent_manager_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_render_activity' : has parameters
+// UNSUPPORTED : C value 'gtk_render_activity' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_arrow' : has parameters
+// UNSUPPORTED : C value 'gtk_render_arrow' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_background' : has parameters
+// UNSUPPORTED : C value 'gtk_render_background' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_background_get_clip' : has parameters
+// UNSUPPORTED : C value 'gtk_render_background_get_clip' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_check' : has parameters
+// UNSUPPORTED : C value 'gtk_render_check' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_expander' : has parameters
+// UNSUPPORTED : C value 'gtk_render_expander' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_extension' : has parameters
+// UNSUPPORTED : C value 'gtk_render_extension' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_focus' : has parameters
+// UNSUPPORTED : C value 'gtk_render_focus' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_frame' : has parameters
+// UNSUPPORTED : C value 'gtk_render_frame' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_frame_gap' : has parameters
+// UNSUPPORTED : C value 'gtk_render_frame_gap' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_handle' : has parameters
+// UNSUPPORTED : C value 'gtk_render_handle' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon' : has parameters
+// UNSUPPORTED : C value 'gtk_render_icon' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon_pixbuf' : has parameters
+// UNSUPPORTED : C value 'gtk_render_icon_pixbuf' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_icon_surface' : has parameters
+// UNSUPPORTED : C value 'gtk_render_icon_surface' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_insertion_cursor' : has parameters
+// UNSUPPORTED : C value 'gtk_render_insertion_cursor' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_layout' : has parameters
+// UNSUPPORTED : C value 'gtk_render_layout' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_line' : has parameters
+// UNSUPPORTED : C value 'gtk_render_line' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_option' : has parameters
+// UNSUPPORTED : C value 'gtk_render_option' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_render_slider' : has parameters
+// UNSUPPORTED : C value 'gtk_render_slider' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_rgb_to_hsv' : has parameters
+// UNSUPPORTED : C value 'gtk_rgb_to_hsv' : parameter 'r' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_add_target' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_add_target' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_add_targets' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_add_targets' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_clear_targets' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_clear_targets' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_convert' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_convert' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_owner_set' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_owner_set' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_owner_set_for_display' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_owner_set_for_display' : parameter 'display' of type 'Gdk.Display' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_remove_all' : has parameters
+// UNSUPPORTED : C value 'gtk_selection_remove_all' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_set_debug_flags' : has parameters
+// UNSUPPORTED : C value 'gtk_set_debug_flags' : parameter 'flags' of type 'guint' not supported
 
-// UNSUPPORTED : C value 'gtk_show_about_dialog' : has parameters
+// UNSUPPORTED : C value 'gtk_show_about_dialog' : parameter 'parent' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gtk_show_uri' : has parameters
+// UNSUPPORTED : C value 'gtk_show_uri' : parameter 'screen' of type 'Gdk.Screen' not supported
 
-// UNSUPPORTED : C value 'gtk_show_uri_on_window' : has parameters
+// UNSUPPORTED : C value 'gtk_show_uri_on_window' : parameter 'parent' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_add' : has parameters
+// UNSUPPORTED : C value 'gtk_stock_add' : parameter 'items' has no type
 
-// UNSUPPORTED : C value 'gtk_stock_add_static' : has parameters
+// UNSUPPORTED : C value 'gtk_stock_add_static' : parameter 'items' has no type
 
 // UNSUPPORTED : C value 'gtk_stock_list_ids' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_lookup' : has parameters
+// UNSUPPORTED : C value 'gtk_stock_lookup' : parameter 'stock_id' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_set_translate_func' : has parameters
+// UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'domain' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_target_table_free' : has parameters
+// UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_target_table_new_from_list' : has parameters
+// UNSUPPORTED : C value 'gtk_target_table_new_from_list' : parameter 'list' of type 'TargetList' not supported
 
-// UNSUPPORTED : C value 'gtk_targets_include_image' : has parameters
+// UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_targets_include_rich_text' : has parameters
+// UNSUPPORTED : C value 'gtk_targets_include_rich_text' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_targets_include_text' : has parameters
+// UNSUPPORTED : C value 'gtk_targets_include_text' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_targets_include_uri' : has parameters
+// UNSUPPORTED : C value 'gtk_targets_include_uri' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_test_create_simple_window' : has parameters
+// UNSUPPORTED : C value 'gtk_test_create_simple_window' : parameter 'window_title' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_test_create_widget' : has parameters
+// UNSUPPORTED : C value 'gtk_test_create_widget' : parameter 'widget_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'gtk_test_display_button_window' : has parameters
+// UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter 'window_title' of type 'utf8' not supported
 
-// UNSUPPORTED : C value 'gtk_test_find_label' : has parameters
+// UNSUPPORTED : C value 'gtk_test_find_label' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_find_sibling' : has parameters
+// UNSUPPORTED : C value 'gtk_test_find_sibling' : parameter 'base_widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_find_widget' : has parameters
+// UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_init' : has parameters
+// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argcp' with direction 'inout' not supported
 
-// UNSUPPORTED : C value 'gtk_test_list_all_types' : has parameters
+// UNSUPPORTED : C value 'gtk_test_list_all_types' : parameter 'n_types' with direction 'out' not supported
 
 var testRegisterAllTypesInvoker *gi.Function
 
@@ -512,33 +512,33 @@ func TestRegisterAllTypes() {
 		testRegisterAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
 	}
 
-	testRegisterAllTypesInvoker.Invoke()
+	testRegisterAllTypesInvoker.Invoke(nil)
 }
 
-// UNSUPPORTED : C value 'gtk_test_slider_get_value' : has parameters
+// UNSUPPORTED : C value 'gtk_test_slider_get_value' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_slider_set_perc' : has parameters
+// UNSUPPORTED : C value 'gtk_test_slider_set_perc' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_spin_button_click' : has parameters
+// UNSUPPORTED : C value 'gtk_test_spin_button_click' : parameter 'spinner' of type 'SpinButton' not supported
 
-// UNSUPPORTED : C value 'gtk_test_text_get' : has parameters
+// UNSUPPORTED : C value 'gtk_test_text_get' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_text_set' : has parameters
+// UNSUPPORTED : C value 'gtk_test_text_set' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_widget_click' : has parameters
+// UNSUPPORTED : C value 'gtk_test_widget_click' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_widget_send_key' : has parameters
+// UNSUPPORTED : C value 'gtk_test_widget_send_key' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_widget_wait_for_draw' : has parameters
+// UNSUPPORTED : C value 'gtk_test_widget_wait_for_draw' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_get_row_drag_data' : has parameters
+// UNSUPPORTED : C value 'gtk_tree_get_row_drag_data' : parameter 'selection_data' of type 'SelectionData' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_deleted' : has parameters
+// UNSUPPORTED : C value 'gtk_tree_row_reference_deleted' : parameter 'proxy' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_inserted' : has parameters
+// UNSUPPORTED : C value 'gtk_tree_row_reference_inserted' : parameter 'proxy' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_reordered' : has parameters
+// UNSUPPORTED : C value 'gtk_tree_row_reference_reordered' : parameter 'proxy' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : has parameters
+// UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : parameter 'selection_data' of type 'SelectionData' not supported
 
 // UNSUPPORTED : C value 'gtk_true' : return type 'gboolean' not supported
