@@ -33,14 +33,21 @@ func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
 	f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
 }
 
-func (f *Function) generate(fi *file) {
-	if len(f.Parameters) > 0 {
-		fi.unsupported(f.CIdentifier, "has parameters")
-		return
+func (f *Function) supported() (bool, string) {
+	if supported, reason := f.Parameters.supported(); !supported {
+		return false, reason
 	}
 
-	if !f.ReturnValue.Type.supportedAsReturnValue() {
-		fi.unsupported(f.CIdentifier, "return type '%s' not supported", f.ReturnValue.Type.Name)
+	if supported, reason := f.ReturnValue.supported(); !supported {
+		return false, reason
+	}
+
+	return true, ""
+}
+
+func (f *Function) generate(fi *file) {
+	if supported, reason := f.supported(); !supported {
+		fi.unsupported(f.CIdentifier, reason)
 		return
 	}
 

@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -36,4 +37,11 @@ func (r *ReturnValue) transferOwnershipJen(g *jen.Group) {
 	}
 
 	g.Lit(r.TransferOwnership == "full")
+}
+
+func (r *ReturnValue) supported() (bool, string) {
+	if r.Type.supportedAsReturnValue() {
+		return true, ""
+	}
+	return false, fmt.Sprintf("return type '%s' not supported", r.Type.Name)
 }

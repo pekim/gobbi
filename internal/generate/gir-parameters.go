@@ -30,3 +30,11 @@ func (pp Parameters) init(ns *Namespace) {
 		//}
 	}
 }
+
+func (pp Parameters) supported() (bool, string) {
+	if len(pp) > 0 {
+		return false, "has parameters"
+	}
+
+	return true, ""
+}
