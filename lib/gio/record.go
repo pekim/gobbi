@@ -465,6 +465,8 @@ type DBusNodeInfo struct {
 
 }
 
+// UNSUPPORTED : C value 'g_dbus_node_info_new_for_xml' : return type 'DBusNodeInfo' not supported
+
 type DBusObjectIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_iface' : no Go type for 'GObject.TypeInterface'
@@ -798,9 +800,13 @@ type FileAttributeInfoList struct {
 	NInfos int32
 }
 
+// UNSUPPORTED : C value 'g_file_attribute_info_list_new' : return type 'FileAttributeInfoList' not supported
+
 type FileAttributeMatcher struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_file_attribute_matcher_new' : return type 'FileAttributeMatcher' not supported
 
 type FileDescriptorBasedIface struct {
 	native uintptr
@@ -1929,6 +1935,8 @@ type Resource struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_resource_new_from_data' : parameter 'data' of type 'GLib.Bytes' not supported
+
 type SeekableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
@@ -2006,6 +2014,8 @@ type SettingsSchemaKey struct {
 type SettingsSchemaSource struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_settings_schema_source_new_from_directory' : parameter 'directory' of type 'filename' not supported
 
 type SimpleActionGroupClass struct {
 	native uintptr
@@ -2226,6 +2236,8 @@ type SocketServicePrivate struct {
 type SrvTarget struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_srv_target_new' : return type 'SrvTarget' not supported
 
 type StaticResource struct {
 	native uintptr

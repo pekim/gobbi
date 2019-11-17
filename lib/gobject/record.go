@@ -18,6 +18,10 @@ type Closure struct {
 
 }
 
+// UNSUPPORTED : C value 'g_closure_new_object' : parameter 'object' of type 'Object' not supported
+
+// UNSUPPORTED : C value 'g_closure_new_simple' : parameter 'data' of type 'gpointer' not supported
+
 type ClosureNotifyData struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
@@ -300,6 +304,8 @@ type ValueArray struct {
 	// UNSUPPORTED : C value 'values' : no Go type for 'Value'
 
 }
+
+// UNSUPPORTED : C value 'g_value_array_new' : return type 'ValueArray' not supported
 
 type WeakRef struct {
 	native uintptr

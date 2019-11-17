@@ -6,6 +6,8 @@ type ApplicationInfo struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'webkit_application_info_new' : return type 'ApplicationInfo' not supported
+
 type AuthenticationRequestClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -145,6 +147,8 @@ type CookieManagerPrivate struct {
 type Credential struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'webkit_credential_new' : parameter 'persistence' of type 'CredentialPersistence' not supported
 
 type DeviceInfoPermissionRequestClass struct {
 	native uintptr
@@ -314,6 +318,8 @@ type GeolocationPosition struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'webkit_geolocation_position_new' : parameter 'latitude' of type 'gdouble' not supported
+
 type HitTestResultClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -383,6 +389,8 @@ type NavigationPolicyDecisionPrivate struct {
 type NetworkProxySettings struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : parameter 'ignore_hosts' has no type
 
 type NotificationClass struct {
 	native uintptr
@@ -568,6 +576,10 @@ type SecurityOrigin struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'webkit_security_origin_new' : return type 'SecurityOrigin' not supported
+
+// UNSUPPORTED : C value 'webkit_security_origin_new_for_uri' : return type 'SecurityOrigin' not supported
+
 type SettingsClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -702,9 +714,17 @@ type UserScript struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'webkit_user_script_new' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+
+// UNSUPPORTED : C value 'webkit_user_script_new_for_world' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+
 type UserStyleSheet struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'webkit_user_style_sheet_new' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
+
+// UNSUPPORTED : C value 'webkit_user_style_sheet_new_for_world' : parameter 'injected_frames' of type 'UserContentInjectedFrames' not supported
 
 type WebContextClass struct {
 	native uintptr
@@ -855,6 +875,8 @@ type WebViewPrivate struct {
 type WebViewSessionState struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'webkit_web_view_session_state_new' : parameter 'data' of type 'GLib.Bytes' not supported
 
 type WebsiteData struct {
 	native uintptr

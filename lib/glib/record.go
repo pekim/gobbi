@@ -26,9 +26,19 @@ type Bytes struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_bytes_new' : parameter 'data' has no type
+
+// UNSUPPORTED : C value 'g_bytes_new_static' : parameter 'data' has no type
+
+// UNSUPPORTED : C value 'g_bytes_new_take' : parameter 'data' has no type
+
+// UNSUPPORTED : C value 'g_bytes_new_with_free_func' : parameter 'data' has no type
+
 type Checksum struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_checksum_new' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
 type Cond struct {
 	native uintptr
@@ -48,9 +58,37 @@ type Date struct {
 	Year       uint32
 }
 
+// UNSUPPORTED : C value 'g_date_new' : return type 'Date' not supported
+
+// UNSUPPORTED : C value 'g_date_new_dmy' : parameter 'day' of type 'DateDay' not supported
+
+// UNSUPPORTED : C value 'g_date_new_julian' : return type 'Date' not supported
+
 type DateTime struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_date_time_new' : parameter 'tz' of type 'TimeZone' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_from_iso8601' : parameter 'default_tz' of type 'TimeZone' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_from_timeval_local' : parameter 'tv' of type 'TimeVal' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_from_timeval_utc' : parameter 'tv' of type 'TimeVal' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_from_unix_local' : return type 'DateTime' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_from_unix_utc' : return type 'DateTime' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_local' : parameter 'seconds' of type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_now' : parameter 'tz' of type 'TimeZone' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_now_local' : return type 'DateTime' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_now_utc' : return type 'DateTime' not supported
+
+// UNSUPPORTED : C value 'g_date_time_new_utc' : parameter 'seconds' of type 'gdouble' not supported
 
 type DebugKey struct {
 	native uintptr
@@ -68,6 +106,12 @@ type Error struct {
 	Code    int32
 	Message string
 }
+
+// UNSUPPORTED : C value 'g_error_new' : parameter 'domain' of type 'Quark' not supported
+
+// UNSUPPORTED : C value 'g_error_new_literal' : parameter 'domain' of type 'Quark' not supported
+
+// UNSUPPORTED : C value 'g_error_new_valist' : parameter 'domain' of type 'Quark' not supported
 
 type HashTable struct {
 	native uintptr
@@ -121,6 +165,10 @@ type IOChannel struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_io_channel_new_file' : parameter 'filename' of type 'filename' not supported
+
+// UNSUPPORTED : C value 'g_io_channel_unix_new' : return type 'IOChannel' not supported
+
 type IOFuncs struct {
 	native uintptr
 	// UNSUPPORTED : C value 'io_read' : missing Type
@@ -145,6 +193,8 @@ type KeyFile struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_key_file_new' : return type 'KeyFile' not supported
+
 type List struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
@@ -167,17 +217,27 @@ type MainContext struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_main_context_new' : return type 'MainContext' not supported
+
 type MainLoop struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_main_loop_new' : parameter 'context' of type 'MainContext' not supported
 
 type MappedFile struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_mapped_file_new' : parameter 'filename' of type 'filename' not supported
+
+// UNSUPPORTED : C value 'g_mapped_file_new_from_fd' : parameter 'writable' of type 'gboolean' not supported
+
 type MarkupParseContext struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'parser' of type 'MarkupParser' not supported
 
 type MarkupParser struct {
 	native uintptr
@@ -256,6 +316,8 @@ type OptionGroup struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_option_group_new' : parameter 'user_data' of type 'gpointer' not supported
+
 type PatternSpec struct {
 	native uintptr
 }
@@ -302,6 +364,8 @@ type RecMutex struct {
 type Regex struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_regex_new' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
 
 type SList struct {
 	native uintptr
@@ -379,6 +443,8 @@ type SequenceIter struct {
 type Source struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_source_new' : parameter 'source_funcs' of type 'SourceFuncs' not supported
 
 type SourceCallbackFuncs struct {
 	native uintptr
@@ -464,6 +530,10 @@ type Thread struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_thread_new' : parameter 'func' of type 'ThreadFunc' not supported
+
+// UNSUPPORTED : C value 'g_thread_try_new' : parameter 'func' of type 'ThreadFunc' not supported
+
 type ThreadPool struct {
 	native uintptr
 	// UNSUPPORTED : C value 'func' : no Go type for 'Func'
@@ -484,6 +554,14 @@ type TimeZone struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_time_zone_new' : return type 'TimeZone' not supported
+
+// UNSUPPORTED : C value 'g_time_zone_new_local' : return type 'TimeZone' not supported
+
+// UNSUPPORTED : C value 'g_time_zone_new_offset' : return type 'TimeZone' not supported
+
+// UNSUPPORTED : C value 'g_time_zone_new_utc' : return type 'TimeZone' not supported
+
 type Timer struct {
 	native uintptr
 }
@@ -502,13 +580,79 @@ type Variant struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_variant_new' : parameter '...' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_array' : parameter 'child_type' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_boolean' : parameter 'value' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_byte' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_bytestring' : parameter 'string' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_bytestring_array' : parameter 'strv' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_dict_entry' : parameter 'key' of type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_double' : parameter 'value' of type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_fixed_array' : parameter 'element_type' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_from_bytes' : parameter 'type' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_from_data' : parameter 'type' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_handle' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_int16' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_int32' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_int64' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_maybe' : parameter 'child_type' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_object_path' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_objv' : parameter 'strv' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_parsed' : parameter '...' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_parsed_va' : parameter 'app' of type 'va_list' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_printf' : parameter '...' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_signature' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_string' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_strv' : parameter 'strv' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_take_string' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_tuple' : parameter 'children' has no type
+
+// UNSUPPORTED : C value 'g_variant_new_uint16' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_uint32' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_uint64' : return type 'Variant' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_va' : parameter 'app' of type 'va_list' not supported
+
+// UNSUPPORTED : C value 'g_variant_new_variant' : parameter 'value' of type 'Variant' not supported
+
 type VariantBuilder struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'g_variant_builder_new' : parameter 'type' of type 'VariantType' not supported
+
 type VariantDict struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_variant_dict_new' : parameter 'from_asv' of type 'Variant' not supported
 
 type VariantIter struct {
 	native uintptr
@@ -517,3 +661,13 @@ type VariantIter struct {
 type VariantType struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_variant_type_new' : return type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_type_new_array' : parameter 'element' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_type_new_dict_entry' : parameter 'key' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_type_new_maybe' : parameter 'element' of type 'VariantType' not supported
+
+// UNSUPPORTED : C value 'g_variant_type_new_tuple' : parameter 'items' has no type

@@ -316,6 +316,8 @@ type Range struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'atk_range_new' : parameter 'lower_limit' of type 'gdouble' not supported
+
 type Rectangle struct {
 	native uintptr
 	X      int32

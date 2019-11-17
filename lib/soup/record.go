@@ -107,6 +107,12 @@ type Buffer struct {
 	Length uintptr
 }
 
+// UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
+
+// UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' has no type
+
+// UNSUPPORTED : C value 'soup_buffer_new_with_owner' : parameter 'data' has no type
+
 type CacheClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -191,6 +197,8 @@ type Cookie struct {
 
 }
 
+// UNSUPPORTED : C value 'soup_cookie_new' : return type 'Cookie' not supported
+
 type CookieJarClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -248,6 +256,14 @@ type Date struct {
 	Offset int32
 }
 
+// UNSUPPORTED : C value 'soup_date_new' : return type 'Date' not supported
+
+// UNSUPPORTED : C value 'soup_date_new_from_now' : return type 'Date' not supported
+
+// UNSUPPORTED : C value 'soup_date_new_from_string' : return type 'Date' not supported
+
+// UNSUPPORTED : C value 'soup_date_new_from_time_t' : return type 'Date' not supported
+
 type HSTSEnforcerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -302,6 +318,14 @@ type HSTSPolicy struct {
 
 }
 
+// UNSUPPORTED : C value 'soup_hsts_policy_new' : parameter 'include_subdomains' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'soup_hsts_policy_new_from_response' : parameter 'msg' of type 'Message' not supported
+
+// UNSUPPORTED : C value 'soup_hsts_policy_new_full' : parameter 'expires' of type 'Date' not supported
+
+// UNSUPPORTED : C value 'soup_hsts_policy_new_session_policy' : parameter 'include_subdomains' of type 'gboolean' not supported
+
 type LoggerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -321,6 +345,8 @@ type MessageBody struct {
 	Data   string
 	Length int64
 }
+
+// UNSUPPORTED : C value 'soup_message_body_new' : return type 'MessageBody' not supported
 
 type MessageClass struct {
 	native uintptr
@@ -360,6 +386,8 @@ type MessageHeaders struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'soup_message_headers_new' : parameter 'type' of type 'MessageHeadersType' not supported
+
 type MessageHeadersIter struct {
 	native uintptr
 }
@@ -375,6 +403,10 @@ type MessageQueueItem struct {
 type Multipart struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'soup_multipart_new' : return type 'Multipart' not supported
+
+// UNSUPPORTED : C value 'soup_multipart_new_from_message' : parameter 'headers' of type 'MessageHeaders' not supported
 
 type MultipartInputStreamClass struct {
 	native uintptr
@@ -630,6 +662,10 @@ type URI struct {
 	Query    string
 	Fragment string
 }
+
+// UNSUPPORTED : C value 'soup_uri_new' : return type 'URI' not supported
+
+// UNSUPPORTED : C value 'soup_uri_new_with_base' : parameter 'base' of type 'URI' not supported
 
 type WebsocketConnectionClass struct {
 	native uintptr

@@ -468,6 +468,8 @@ type Border struct {
 	Bottom int16
 }
 
+// UNSUPPORTED : C value 'gtk_border_new' : return type 'Border' not supported
+
 type BoxClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ContainerClass'
@@ -1942,6 +1944,10 @@ type Gradient struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gtk_gradient_new_linear' : parameter 'x0' of type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'gtk_gradient_new_radial' : parameter 'x0' of type 'gdouble' not supported
+
 type GridClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ContainerClass'
@@ -2187,9 +2193,15 @@ type IconSet struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gtk_icon_set_new' : return type 'IconSet' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_set_new_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+
 type IconSource struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'gtk_icon_source_new' : return type 'IconSource' not supported
 
 type IconThemeClass struct {
 	native uintptr
@@ -3027,6 +3039,18 @@ type PaperSize struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gtk_paper_size_new' : return type 'PaperSize' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_new_custom' : parameter 'width' of type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_new_from_gvariant' : parameter 'variant' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_new_from_ipp' : parameter 'width' of type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_new_from_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_new_from_ppd' : parameter 'width' of type 'gdouble' not supported
+
 type PlacesSidebarClass struct {
 	native uintptr
 }
@@ -3540,6 +3564,8 @@ type Requisition struct {
 	Width  int32
 	Height int32
 }
+
+// UNSUPPORTED : C value 'gtk_requisition_new' : return type 'Requisition' not supported
 
 type RevealerClass struct {
 	native uintptr
@@ -4191,6 +4217,18 @@ type SymbolicColor struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gtk_symbolic_color_new_alpha' : parameter 'color' of type 'SymbolicColor' not supported
+
+// UNSUPPORTED : C value 'gtk_symbolic_color_new_literal' : parameter 'color' of type 'Gdk.RGBA' not supported
+
+// UNSUPPORTED : C value 'gtk_symbolic_color_new_mix' : parameter 'color1' of type 'SymbolicColor' not supported
+
+// UNSUPPORTED : C value 'gtk_symbolic_color_new_name' : return type 'SymbolicColor' not supported
+
+// UNSUPPORTED : C value 'gtk_symbolic_color_new_shade' : parameter 'color' of type 'SymbolicColor' not supported
+
+// UNSUPPORTED : C value 'gtk_symbolic_color_new_win32' : return type 'SymbolicColor' not supported
+
 type TableChild struct {
 	native uintptr
 	// UNSUPPORTED : C value 'widget' : no Go type for 'Widget'
@@ -4246,9 +4284,13 @@ type TargetEntry struct {
 	Info   uint32
 }
 
+// UNSUPPORTED : C value 'gtk_target_entry_new' : return type 'TargetEntry' not supported
+
 type TargetList struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'gtk_target_list_new' : parameter 'targets' has no type
 
 type TargetPair struct {
 	native uintptr
@@ -4320,6 +4362,8 @@ type TextAttributes struct {
 	NoFallback    uint32
 	LetterSpacing int32
 }
+
+// UNSUPPORTED : C value 'gtk_text_attributes_new' : return type 'TextAttributes' not supported
 
 type TextBTree struct {
 	native uintptr
@@ -4895,9 +4939,23 @@ type TreePath struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gtk_tree_path_new' : return type 'TreePath' not supported
+
+// UNSUPPORTED : C value 'gtk_tree_path_new_first' : return type 'TreePath' not supported
+
+// UNSUPPORTED : C value 'gtk_tree_path_new_from_indices' : parameter '...' has no type
+
+// UNSUPPORTED : C value 'gtk_tree_path_new_from_indicesv' : parameter 'indices' has no type
+
+// UNSUPPORTED : C value 'gtk_tree_path_new_from_string' : return type 'TreePath' not supported
+
 type TreeRowReference struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'gtk_tree_row_reference_new' : parameter 'model' of type 'TreeModel' not supported
+
+// UNSUPPORTED : C value 'gtk_tree_row_reference_new_proxy' : parameter 'proxy' of type 'GObject.Object' not supported
 
 type TreeSelectionClass struct {
 	native uintptr
@@ -5335,6 +5393,8 @@ type WidgetClassPrivate struct {
 type WidgetPath struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'gtk_widget_path_new' : return type 'WidgetPath' not supported
 
 type WidgetPrivate struct {
 	native uintptr

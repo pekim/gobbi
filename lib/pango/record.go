@@ -86,6 +86,8 @@ type AttrList struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'pango_attr_list_new' : return type 'AttrList' not supported
+
 type AttrShape struct {
 	native uintptr
 	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
@@ -203,6 +205,8 @@ type FontDescription struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'pango_font_description_new' : return type 'FontDescription' not supported
+
 type FontFaceClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -263,6 +267,8 @@ type FontMapClass struct {
 type FontMetrics struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'pango_font_metrics_new' : return type 'FontMetrics' not supported
 
 type FontsetClass struct {
 	native uintptr
@@ -335,6 +341,8 @@ type GlyphString struct {
 	LogClusters int32
 }
 
+// UNSUPPORTED : C value 'pango_glyph_string_new' : return type 'GlyphString' not supported
+
 type GlyphVisAttr struct {
 	native         uintptr
 	IsClusterStart uint32
@@ -360,6 +368,8 @@ type Item struct {
 	// UNSUPPORTED : C value 'analysis' : no Go type for 'Analysis'
 
 }
+
+// UNSUPPORTED : C value 'pango_item_new' : return type 'Item' not supported
 
 type Language struct {
 	native uintptr
@@ -477,3 +487,7 @@ type ScriptIter struct {
 type TabArray struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'pango_tab_array_new' : parameter 'positions_in_pixels' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'pango_tab_array_new_with_positions' : parameter 'positions_in_pixels' of type 'gboolean' not supported
