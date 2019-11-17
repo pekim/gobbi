@@ -5,7 +5,7 @@ type Alias struct {
 	//Blacklist bool   `xml:"blacklist,attr"`
 	CType string `xml:"type,attr"`
 	Type  *Type  `xml:"type"`
-	//Doc       *Doc   `xml:"doc"`
+	Doc   *Doc   `xml:"doc"`
 
 	namespace *Namespace
 	goName    string

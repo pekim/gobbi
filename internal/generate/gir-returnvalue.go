@@ -10,8 +10,8 @@ type ReturnValue struct {
 
 	TransferOwnership string `xml:"transfer-ownership,attr"`
 	Nullable          bool   `xml:"nullable,attr"`
-	//Doc               *Doc   `xml:"doc"`
-	Type *Type `xml:"type"`
+	Doc               *Doc   `xml:"doc"`
+	Type              *Type  `xml:"type"`
 	//Array             *Array `xml:"array"`
 }
 

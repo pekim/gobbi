@@ -4,7 +4,7 @@ type Member struct {
 	Name        string `xml:"name,attr"`
 	Value       int    `xml:"value,attr"`
 	CIdentifier string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
-	//Doc         *Doc   `xml:"doc"`
+	Doc         *Doc   `xml:"doc"`
 
 	namespace *Namespace
 }

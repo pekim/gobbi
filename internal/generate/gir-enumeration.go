@@ -7,7 +7,7 @@ type Enumeration struct {
 	GlibTypeName string  `xml:"http://www.gtk.org/introspection/glib/1.0 type-name,attr"`
 	GlibGetType  string  `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
 	Members      Members `xml:"member"`
-	//Doc          *Doc      `xml:"doc"`
+	Doc          *Doc    `xml:"doc"`
 	//Functions Functions `xml:"function"`
 
 	namespace      *Namespace

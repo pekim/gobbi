@@ -6,8 +6,8 @@ type Constant struct {
 	Value   string `xml:"value,attr"`
 	Version string `xml:"version,attr"`
 	CType   string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
-	//Doc       *Doc   `xml:"doc"`
-	Type *Type `xml:"type"`
+	Doc     *Doc   `xml:"doc"`
+	Type    *Type  `xml:"type"`
 
 	namespace *Namespace
 	goName    string

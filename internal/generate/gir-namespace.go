@@ -25,7 +25,7 @@ type Namespace struct {
 	Constants    Constants    `xml:"constant"`
 	Enumerations Enumerations `xml:"enumeration"`
 	Functions    Functions    `xml:"function"`
-	//	Records                       Records      `xml:"record"`
+	Records      Records      `xml:"record"`
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
 
@@ -42,6 +42,7 @@ func (n *Namespace) init(namespaces namespaces) {
 	n.Constants.init(n)
 	n.Enumerations.init(n)
 	n.Functions.init(n)
+	n.Records.init(n)
 }
 
 func (n *Namespace) generate() {
@@ -56,6 +57,7 @@ func (n *Namespace) generate() {
 	n.generateFile("constant", n.Constants.generate)
 	n.generateFile("enumeration", n.Enumerations.generate)
 	n.generateFile("function", n.Functions.generate)
+	n.generateFile("record", n.Records.generate)
 }
 
 func (n *Namespace) generateLibDir() {

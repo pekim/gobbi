@@ -6,23 +6,22 @@ import (
 )
 
 type Parameter struct {
-	Namespace *Namespace
-
 	Name              string `xml:"name,attr"`
 	Direction         string `xml:"direction,attr"`
 	TransferOwnership string `xml:"transfer-ownership,attr"`
 	Nullable          bool   `xml:"nullable,attr"`
 	AllowNone         bool   `xml:"allow-none,attr"`
-	//Doc               *Doc      `xml:"doc"`
-	Type *Type `xml:"type"`
+	Doc               *Doc   `xml:"doc"`
+	Type              *Type  `xml:"type"`
 	//Array             *Array    `xml:"array"`
 	Varargs *struct{} `xml:"varargs"`
 
 	goVarName string
+	namespace *Namespace
 }
 
 func (p *Parameter) init(ns *Namespace) {
-	p.Namespace = ns
+	p.namespace = ns
 	p.goVarName = makeUnexportedGoName(p.Name, false)
 
 	if p.Direction == "" {

@@ -13,7 +13,7 @@ type Function struct {
 	CIdentifier       string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	Deprecated        int    `xml:"deprecated,attr"`
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
-	//Doc               *Doc         `xml:"doc"`
+	Doc               *Doc   `xml:"doc"`
 	//InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
 	Parameters     Parameters   `xml:"parameters>parameter"`
 	ReturnValue    *ReturnValue `xml:"return-value"`
