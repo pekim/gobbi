@@ -9,8 +9,8 @@ type Argument struct {
 	//Array             *Array `xml:"array"`
 }
 
-func (a *Argument) generateValue() *jen.Statement {
-	return jen.
+func (a *Argument) generateValue(arg *jen.Statement) {
+	arg.
 		Dot(a.Type.argumentValueGetFunctionName()).
 		CallFunc(a.transferOwnershipJen)
 }

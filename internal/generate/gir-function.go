@@ -117,9 +117,8 @@ func (f *Function) generateBody(g *group) {
 
 func (f *Function) generateReturnValues(g *jen.Group) {
 	if !f.ReturnValue.isVoid() {
-		g.
-			Id("ret").
-			Add(f.ReturnValue.generateValue())
+		arg := g.Id("ret")
+		f.ReturnValue.generateValue(arg)
 	}
 
 	f.Parameters.generateOutValues(g)
