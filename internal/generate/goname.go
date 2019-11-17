@@ -1,6 +1,8 @@
 package generate
 
-import "strings"
+import (
+	"strings"
+)
 
 var goNameReservedWords = map[string]bool{
 	"func":      true,
@@ -33,7 +35,7 @@ func makeGoName(cName string, uppercaseFirstChar bool) string {
 	goParts := []string{}
 
 	for i, cPart := range cParts {
-		goPart := strings.ToLower(cPart)
+		goPart := cPart
 		if uppercaseFirstChar || i > 0 {
 			goPart = strings.Title(goPart)
 		}

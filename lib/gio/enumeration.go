@@ -2,808 +2,808 @@
 
 package gio
 
-// Bustype is a representation of the C type GBusType.
+// BusType is a representation of the C type GBusType.
 //
 // since 2.26
-type Bustype int
+type BusType int
 
 const (
-	// Bustype_Starter is a representation of the C type G_BUS_TYPE_STARTER.
-	Bustype_Starter Bustype = -1
-	// Bustype_None is a representation of the C type G_BUS_TYPE_NONE.
-	Bustype_None Bustype = 0
-	// Bustype_System is a representation of the C type G_BUS_TYPE_SYSTEM.
-	Bustype_System Bustype = 1
-	// Bustype_Session is a representation of the C type G_BUS_TYPE_SESSION.
-	Bustype_Session Bustype = 2
+	// BusType_Starter is a representation of the C type G_BUS_TYPE_STARTER.
+	BusType_Starter BusType = -1
+	// BusType_None is a representation of the C type G_BUS_TYPE_NONE.
+	BusType_None BusType = 0
+	// BusType_System is a representation of the C type G_BUS_TYPE_SYSTEM.
+	BusType_System BusType = 1
+	// BusType_Session is a representation of the C type G_BUS_TYPE_SESSION.
+	BusType_Session BusType = 2
 )
 
-// Converterresult is a representation of the C type GConverterResult.
+// ConverterResult is a representation of the C type GConverterResult.
 //
 // since 2.24
-type Converterresult int
+type ConverterResult int
 
 const (
-	// Converterresult_Error is a representation of the C type G_CONVERTER_ERROR.
-	Converterresult_Error Converterresult = 0
-	// Converterresult_Converted is a representation of the C type G_CONVERTER_CONVERTED.
-	Converterresult_Converted Converterresult = 1
-	// Converterresult_Finished is a representation of the C type G_CONVERTER_FINISHED.
-	Converterresult_Finished Converterresult = 2
-	// Converterresult_Flushed is a representation of the C type G_CONVERTER_FLUSHED.
-	Converterresult_Flushed Converterresult = 3
+	// ConverterResult_Error is a representation of the C type G_CONVERTER_ERROR.
+	ConverterResult_Error ConverterResult = 0
+	// ConverterResult_Converted is a representation of the C type G_CONVERTER_CONVERTED.
+	ConverterResult_Converted ConverterResult = 1
+	// ConverterResult_Finished is a representation of the C type G_CONVERTER_FINISHED.
+	ConverterResult_Finished ConverterResult = 2
+	// ConverterResult_Flushed is a representation of the C type G_CONVERTER_FLUSHED.
+	ConverterResult_Flushed ConverterResult = 3
 )
 
-// Credentialstype is a representation of the C type GCredentialsType.
+// CredentialsType is a representation of the C type GCredentialsType.
 //
 // since 2.26
-type Credentialstype int
+type CredentialsType int
 
 const (
-	// Credentialstype_Invalid is a representation of the C type G_CREDENTIALS_TYPE_INVALID.
-	Credentialstype_Invalid Credentialstype = 0
-	// Credentialstype_LinuxUcred is a representation of the C type G_CREDENTIALS_TYPE_LINUX_UCRED.
-	Credentialstype_LinuxUcred Credentialstype = 1
-	// Credentialstype_FreebsdCmsgcred is a representation of the C type G_CREDENTIALS_TYPE_FREEBSD_CMSGCRED.
-	Credentialstype_FreebsdCmsgcred Credentialstype = 2
-	// Credentialstype_OpenbsdSockpeercred is a representation of the C type G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED.
-	Credentialstype_OpenbsdSockpeercred Credentialstype = 3
-	// Credentialstype_SolarisUcred is a representation of the C type G_CREDENTIALS_TYPE_SOLARIS_UCRED.
-	Credentialstype_SolarisUcred Credentialstype = 4
-	// Credentialstype_NetbsdUnpcbid is a representation of the C type G_CREDENTIALS_TYPE_NETBSD_UNPCBID.
-	Credentialstype_NetbsdUnpcbid Credentialstype = 5
+	// CredentialsType_Invalid is a representation of the C type G_CREDENTIALS_TYPE_INVALID.
+	CredentialsType_Invalid CredentialsType = 0
+	// CredentialsType_LinuxUcred is a representation of the C type G_CREDENTIALS_TYPE_LINUX_UCRED.
+	CredentialsType_LinuxUcred CredentialsType = 1
+	// CredentialsType_FreebsdCmsgcred is a representation of the C type G_CREDENTIALS_TYPE_FREEBSD_CMSGCRED.
+	CredentialsType_FreebsdCmsgcred CredentialsType = 2
+	// CredentialsType_OpenbsdSockpeercred is a representation of the C type G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED.
+	CredentialsType_OpenbsdSockpeercred CredentialsType = 3
+	// CredentialsType_SolarisUcred is a representation of the C type G_CREDENTIALS_TYPE_SOLARIS_UCRED.
+	CredentialsType_SolarisUcred CredentialsType = 4
+	// CredentialsType_NetbsdUnpcbid is a representation of the C type G_CREDENTIALS_TYPE_NETBSD_UNPCBID.
+	CredentialsType_NetbsdUnpcbid CredentialsType = 5
 )
 
-// Dbuserror is a representation of the C type GDBusError.
+// DBusError is a representation of the C type GDBusError.
 //
 // since 2.26
-type Dbuserror int
+type DBusError int
 
 const (
-	// Dbuserror_Failed is a representation of the C type G_DBUS_ERROR_FAILED.
-	Dbuserror_Failed Dbuserror = 0
-	// Dbuserror_NoMemory is a representation of the C type G_DBUS_ERROR_NO_MEMORY.
-	Dbuserror_NoMemory Dbuserror = 1
-	// Dbuserror_ServiceUnknown is a representation of the C type G_DBUS_ERROR_SERVICE_UNKNOWN.
-	Dbuserror_ServiceUnknown Dbuserror = 2
-	// Dbuserror_NameHasNoOwner is a representation of the C type G_DBUS_ERROR_NAME_HAS_NO_OWNER.
-	Dbuserror_NameHasNoOwner Dbuserror = 3
-	// Dbuserror_NoReply is a representation of the C type G_DBUS_ERROR_NO_REPLY.
-	Dbuserror_NoReply Dbuserror = 4
-	// Dbuserror_IoError is a representation of the C type G_DBUS_ERROR_IO_ERROR.
-	Dbuserror_IoError Dbuserror = 5
-	// Dbuserror_BadAddress is a representation of the C type G_DBUS_ERROR_BAD_ADDRESS.
-	Dbuserror_BadAddress Dbuserror = 6
-	// Dbuserror_NotSupported is a representation of the C type G_DBUS_ERROR_NOT_SUPPORTED.
-	Dbuserror_NotSupported Dbuserror = 7
-	// Dbuserror_LimitsExceeded is a representation of the C type G_DBUS_ERROR_LIMITS_EXCEEDED.
-	Dbuserror_LimitsExceeded Dbuserror = 8
-	// Dbuserror_AccessDenied is a representation of the C type G_DBUS_ERROR_ACCESS_DENIED.
-	Dbuserror_AccessDenied Dbuserror = 9
-	// Dbuserror_AuthFailed is a representation of the C type G_DBUS_ERROR_AUTH_FAILED.
-	Dbuserror_AuthFailed Dbuserror = 10
-	// Dbuserror_NoServer is a representation of the C type G_DBUS_ERROR_NO_SERVER.
-	Dbuserror_NoServer Dbuserror = 11
-	// Dbuserror_Timeout is a representation of the C type G_DBUS_ERROR_TIMEOUT.
-	Dbuserror_Timeout Dbuserror = 12
-	// Dbuserror_NoNetwork is a representation of the C type G_DBUS_ERROR_NO_NETWORK.
-	Dbuserror_NoNetwork Dbuserror = 13
-	// Dbuserror_AddressInUse is a representation of the C type G_DBUS_ERROR_ADDRESS_IN_USE.
-	Dbuserror_AddressInUse Dbuserror = 14
-	// Dbuserror_Disconnected is a representation of the C type G_DBUS_ERROR_DISCONNECTED.
-	Dbuserror_Disconnected Dbuserror = 15
-	// Dbuserror_InvalidArgs is a representation of the C type G_DBUS_ERROR_INVALID_ARGS.
-	Dbuserror_InvalidArgs Dbuserror = 16
-	// Dbuserror_FileNotFound is a representation of the C type G_DBUS_ERROR_FILE_NOT_FOUND.
-	Dbuserror_FileNotFound Dbuserror = 17
-	// Dbuserror_FileExists is a representation of the C type G_DBUS_ERROR_FILE_EXISTS.
-	Dbuserror_FileExists Dbuserror = 18
-	// Dbuserror_UnknownMethod is a representation of the C type G_DBUS_ERROR_UNKNOWN_METHOD.
-	Dbuserror_UnknownMethod Dbuserror = 19
-	// Dbuserror_TimedOut is a representation of the C type G_DBUS_ERROR_TIMED_OUT.
-	Dbuserror_TimedOut Dbuserror = 20
-	// Dbuserror_MatchRuleNotFound is a representation of the C type G_DBUS_ERROR_MATCH_RULE_NOT_FOUND.
-	Dbuserror_MatchRuleNotFound Dbuserror = 21
-	// Dbuserror_MatchRuleInvalid is a representation of the C type G_DBUS_ERROR_MATCH_RULE_INVALID.
-	Dbuserror_MatchRuleInvalid Dbuserror = 22
-	// Dbuserror_SpawnExecFailed is a representation of the C type G_DBUS_ERROR_SPAWN_EXEC_FAILED.
-	Dbuserror_SpawnExecFailed Dbuserror = 23
-	// Dbuserror_SpawnForkFailed is a representation of the C type G_DBUS_ERROR_SPAWN_FORK_FAILED.
-	Dbuserror_SpawnForkFailed Dbuserror = 24
-	// Dbuserror_SpawnChildExited is a representation of the C type G_DBUS_ERROR_SPAWN_CHILD_EXITED.
-	Dbuserror_SpawnChildExited Dbuserror = 25
-	// Dbuserror_SpawnChildSignaled is a representation of the C type G_DBUS_ERROR_SPAWN_CHILD_SIGNALED.
-	Dbuserror_SpawnChildSignaled Dbuserror = 26
-	// Dbuserror_SpawnFailed is a representation of the C type G_DBUS_ERROR_SPAWN_FAILED.
-	Dbuserror_SpawnFailed Dbuserror = 27
-	// Dbuserror_SpawnSetupFailed is a representation of the C type G_DBUS_ERROR_SPAWN_SETUP_FAILED.
-	Dbuserror_SpawnSetupFailed Dbuserror = 28
-	// Dbuserror_SpawnConfigInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_CONFIG_INVALID.
-	Dbuserror_SpawnConfigInvalid Dbuserror = 29
-	// Dbuserror_SpawnServiceInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_SERVICE_INVALID.
-	Dbuserror_SpawnServiceInvalid Dbuserror = 30
-	// Dbuserror_SpawnServiceNotFound is a representation of the C type G_DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND.
-	Dbuserror_SpawnServiceNotFound Dbuserror = 31
-	// Dbuserror_SpawnPermissionsInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_PERMISSIONS_INVALID.
-	Dbuserror_SpawnPermissionsInvalid Dbuserror = 32
-	// Dbuserror_SpawnFileInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_FILE_INVALID.
-	Dbuserror_SpawnFileInvalid Dbuserror = 33
-	// Dbuserror_SpawnNoMemory is a representation of the C type G_DBUS_ERROR_SPAWN_NO_MEMORY.
-	Dbuserror_SpawnNoMemory Dbuserror = 34
-	// Dbuserror_UnixProcessIdUnknown is a representation of the C type G_DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN.
-	Dbuserror_UnixProcessIdUnknown Dbuserror = 35
-	// Dbuserror_InvalidSignature is a representation of the C type G_DBUS_ERROR_INVALID_SIGNATURE.
-	Dbuserror_InvalidSignature Dbuserror = 36
-	// Dbuserror_InvalidFileContent is a representation of the C type G_DBUS_ERROR_INVALID_FILE_CONTENT.
-	Dbuserror_InvalidFileContent Dbuserror = 37
-	// Dbuserror_SelinuxSecurityContextUnknown is a representation of the C type G_DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN.
-	Dbuserror_SelinuxSecurityContextUnknown Dbuserror = 38
-	// Dbuserror_AdtAuditDataUnknown is a representation of the C type G_DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN.
-	Dbuserror_AdtAuditDataUnknown Dbuserror = 39
-	// Dbuserror_ObjectPathInUse is a representation of the C type G_DBUS_ERROR_OBJECT_PATH_IN_USE.
-	Dbuserror_ObjectPathInUse Dbuserror = 40
-	// Dbuserror_UnknownObject is a representation of the C type G_DBUS_ERROR_UNKNOWN_OBJECT.
-	Dbuserror_UnknownObject Dbuserror = 41
-	// Dbuserror_UnknownInterface is a representation of the C type G_DBUS_ERROR_UNKNOWN_INTERFACE.
-	Dbuserror_UnknownInterface Dbuserror = 42
-	// Dbuserror_UnknownProperty is a representation of the C type G_DBUS_ERROR_UNKNOWN_PROPERTY.
-	Dbuserror_UnknownProperty Dbuserror = 43
-	// Dbuserror_PropertyReadOnly is a representation of the C type G_DBUS_ERROR_PROPERTY_READ_ONLY.
-	Dbuserror_PropertyReadOnly Dbuserror = 44
+	// DBusError_Failed is a representation of the C type G_DBUS_ERROR_FAILED.
+	DBusError_Failed DBusError = 0
+	// DBusError_NoMemory is a representation of the C type G_DBUS_ERROR_NO_MEMORY.
+	DBusError_NoMemory DBusError = 1
+	// DBusError_ServiceUnknown is a representation of the C type G_DBUS_ERROR_SERVICE_UNKNOWN.
+	DBusError_ServiceUnknown DBusError = 2
+	// DBusError_NameHasNoOwner is a representation of the C type G_DBUS_ERROR_NAME_HAS_NO_OWNER.
+	DBusError_NameHasNoOwner DBusError = 3
+	// DBusError_NoReply is a representation of the C type G_DBUS_ERROR_NO_REPLY.
+	DBusError_NoReply DBusError = 4
+	// DBusError_IoError is a representation of the C type G_DBUS_ERROR_IO_ERROR.
+	DBusError_IoError DBusError = 5
+	// DBusError_BadAddress is a representation of the C type G_DBUS_ERROR_BAD_ADDRESS.
+	DBusError_BadAddress DBusError = 6
+	// DBusError_NotSupported is a representation of the C type G_DBUS_ERROR_NOT_SUPPORTED.
+	DBusError_NotSupported DBusError = 7
+	// DBusError_LimitsExceeded is a representation of the C type G_DBUS_ERROR_LIMITS_EXCEEDED.
+	DBusError_LimitsExceeded DBusError = 8
+	// DBusError_AccessDenied is a representation of the C type G_DBUS_ERROR_ACCESS_DENIED.
+	DBusError_AccessDenied DBusError = 9
+	// DBusError_AuthFailed is a representation of the C type G_DBUS_ERROR_AUTH_FAILED.
+	DBusError_AuthFailed DBusError = 10
+	// DBusError_NoServer is a representation of the C type G_DBUS_ERROR_NO_SERVER.
+	DBusError_NoServer DBusError = 11
+	// DBusError_Timeout is a representation of the C type G_DBUS_ERROR_TIMEOUT.
+	DBusError_Timeout DBusError = 12
+	// DBusError_NoNetwork is a representation of the C type G_DBUS_ERROR_NO_NETWORK.
+	DBusError_NoNetwork DBusError = 13
+	// DBusError_AddressInUse is a representation of the C type G_DBUS_ERROR_ADDRESS_IN_USE.
+	DBusError_AddressInUse DBusError = 14
+	// DBusError_Disconnected is a representation of the C type G_DBUS_ERROR_DISCONNECTED.
+	DBusError_Disconnected DBusError = 15
+	// DBusError_InvalidArgs is a representation of the C type G_DBUS_ERROR_INVALID_ARGS.
+	DBusError_InvalidArgs DBusError = 16
+	// DBusError_FileNotFound is a representation of the C type G_DBUS_ERROR_FILE_NOT_FOUND.
+	DBusError_FileNotFound DBusError = 17
+	// DBusError_FileExists is a representation of the C type G_DBUS_ERROR_FILE_EXISTS.
+	DBusError_FileExists DBusError = 18
+	// DBusError_UnknownMethod is a representation of the C type G_DBUS_ERROR_UNKNOWN_METHOD.
+	DBusError_UnknownMethod DBusError = 19
+	// DBusError_TimedOut is a representation of the C type G_DBUS_ERROR_TIMED_OUT.
+	DBusError_TimedOut DBusError = 20
+	// DBusError_MatchRuleNotFound is a representation of the C type G_DBUS_ERROR_MATCH_RULE_NOT_FOUND.
+	DBusError_MatchRuleNotFound DBusError = 21
+	// DBusError_MatchRuleInvalid is a representation of the C type G_DBUS_ERROR_MATCH_RULE_INVALID.
+	DBusError_MatchRuleInvalid DBusError = 22
+	// DBusError_SpawnExecFailed is a representation of the C type G_DBUS_ERROR_SPAWN_EXEC_FAILED.
+	DBusError_SpawnExecFailed DBusError = 23
+	// DBusError_SpawnForkFailed is a representation of the C type G_DBUS_ERROR_SPAWN_FORK_FAILED.
+	DBusError_SpawnForkFailed DBusError = 24
+	// DBusError_SpawnChildExited is a representation of the C type G_DBUS_ERROR_SPAWN_CHILD_EXITED.
+	DBusError_SpawnChildExited DBusError = 25
+	// DBusError_SpawnChildSignaled is a representation of the C type G_DBUS_ERROR_SPAWN_CHILD_SIGNALED.
+	DBusError_SpawnChildSignaled DBusError = 26
+	// DBusError_SpawnFailed is a representation of the C type G_DBUS_ERROR_SPAWN_FAILED.
+	DBusError_SpawnFailed DBusError = 27
+	// DBusError_SpawnSetupFailed is a representation of the C type G_DBUS_ERROR_SPAWN_SETUP_FAILED.
+	DBusError_SpawnSetupFailed DBusError = 28
+	// DBusError_SpawnConfigInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_CONFIG_INVALID.
+	DBusError_SpawnConfigInvalid DBusError = 29
+	// DBusError_SpawnServiceInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_SERVICE_INVALID.
+	DBusError_SpawnServiceInvalid DBusError = 30
+	// DBusError_SpawnServiceNotFound is a representation of the C type G_DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND.
+	DBusError_SpawnServiceNotFound DBusError = 31
+	// DBusError_SpawnPermissionsInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_PERMISSIONS_INVALID.
+	DBusError_SpawnPermissionsInvalid DBusError = 32
+	// DBusError_SpawnFileInvalid is a representation of the C type G_DBUS_ERROR_SPAWN_FILE_INVALID.
+	DBusError_SpawnFileInvalid DBusError = 33
+	// DBusError_SpawnNoMemory is a representation of the C type G_DBUS_ERROR_SPAWN_NO_MEMORY.
+	DBusError_SpawnNoMemory DBusError = 34
+	// DBusError_UnixProcessIdUnknown is a representation of the C type G_DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN.
+	DBusError_UnixProcessIdUnknown DBusError = 35
+	// DBusError_InvalidSignature is a representation of the C type G_DBUS_ERROR_INVALID_SIGNATURE.
+	DBusError_InvalidSignature DBusError = 36
+	// DBusError_InvalidFileContent is a representation of the C type G_DBUS_ERROR_INVALID_FILE_CONTENT.
+	DBusError_InvalidFileContent DBusError = 37
+	// DBusError_SelinuxSecurityContextUnknown is a representation of the C type G_DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN.
+	DBusError_SelinuxSecurityContextUnknown DBusError = 38
+	// DBusError_AdtAuditDataUnknown is a representation of the C type G_DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN.
+	DBusError_AdtAuditDataUnknown DBusError = 39
+	// DBusError_ObjectPathInUse is a representation of the C type G_DBUS_ERROR_OBJECT_PATH_IN_USE.
+	DBusError_ObjectPathInUse DBusError = 40
+	// DBusError_UnknownObject is a representation of the C type G_DBUS_ERROR_UNKNOWN_OBJECT.
+	DBusError_UnknownObject DBusError = 41
+	// DBusError_UnknownInterface is a representation of the C type G_DBUS_ERROR_UNKNOWN_INTERFACE.
+	DBusError_UnknownInterface DBusError = 42
+	// DBusError_UnknownProperty is a representation of the C type G_DBUS_ERROR_UNKNOWN_PROPERTY.
+	DBusError_UnknownProperty DBusError = 43
+	// DBusError_PropertyReadOnly is a representation of the C type G_DBUS_ERROR_PROPERTY_READ_ONLY.
+	DBusError_PropertyReadOnly DBusError = 44
 )
 
-// Dbusmessagebyteorder is a representation of the C type GDBusMessageByteOrder.
+// DBusMessageByteOrder is a representation of the C type GDBusMessageByteOrder.
 //
 // since 2.26
-type Dbusmessagebyteorder int
+type DBusMessageByteOrder int
 
 const (
-	// Dbusmessagebyteorder_BigEndian is a representation of the C type G_DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN.
-	Dbusmessagebyteorder_BigEndian Dbusmessagebyteorder = 66
-	// Dbusmessagebyteorder_LittleEndian is a representation of the C type G_DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN.
-	Dbusmessagebyteorder_LittleEndian Dbusmessagebyteorder = 108
+	// DBusMessageByteOrder_BigEndian is a representation of the C type G_DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN.
+	DBusMessageByteOrder_BigEndian DBusMessageByteOrder = 66
+	// DBusMessageByteOrder_LittleEndian is a representation of the C type G_DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN.
+	DBusMessageByteOrder_LittleEndian DBusMessageByteOrder = 108
 )
 
-// Dbusmessageheaderfield is a representation of the C type GDBusMessageHeaderField.
+// DBusMessageHeaderField is a representation of the C type GDBusMessageHeaderField.
 //
 // since 2.26
-type Dbusmessageheaderfield int
+type DBusMessageHeaderField int
 
 const (
-	// Dbusmessageheaderfield_Invalid is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_INVALID.
-	Dbusmessageheaderfield_Invalid Dbusmessageheaderfield = 0
-	// Dbusmessageheaderfield_Path is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_PATH.
-	Dbusmessageheaderfield_Path Dbusmessageheaderfield = 1
-	// Dbusmessageheaderfield_Interface is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE.
-	Dbusmessageheaderfield_Interface Dbusmessageheaderfield = 2
-	// Dbusmessageheaderfield_Member is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_MEMBER.
-	Dbusmessageheaderfield_Member Dbusmessageheaderfield = 3
-	// Dbusmessageheaderfield_ErrorName is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME.
-	Dbusmessageheaderfield_ErrorName Dbusmessageheaderfield = 4
-	// Dbusmessageheaderfield_ReplySerial is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL.
-	Dbusmessageheaderfield_ReplySerial Dbusmessageheaderfield = 5
-	// Dbusmessageheaderfield_Destination is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION.
-	Dbusmessageheaderfield_Destination Dbusmessageheaderfield = 6
-	// Dbusmessageheaderfield_Sender is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_SENDER.
-	Dbusmessageheaderfield_Sender Dbusmessageheaderfield = 7
-	// Dbusmessageheaderfield_Signature is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE.
-	Dbusmessageheaderfield_Signature Dbusmessageheaderfield = 8
-	// Dbusmessageheaderfield_NumUnixFds is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS.
-	Dbusmessageheaderfield_NumUnixFds Dbusmessageheaderfield = 9
+	// DBusMessageHeaderField_Invalid is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_INVALID.
+	DBusMessageHeaderField_Invalid DBusMessageHeaderField = 0
+	// DBusMessageHeaderField_Path is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_PATH.
+	DBusMessageHeaderField_Path DBusMessageHeaderField = 1
+	// DBusMessageHeaderField_Interface is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE.
+	DBusMessageHeaderField_Interface DBusMessageHeaderField = 2
+	// DBusMessageHeaderField_Member is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_MEMBER.
+	DBusMessageHeaderField_Member DBusMessageHeaderField = 3
+	// DBusMessageHeaderField_ErrorName is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME.
+	DBusMessageHeaderField_ErrorName DBusMessageHeaderField = 4
+	// DBusMessageHeaderField_ReplySerial is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL.
+	DBusMessageHeaderField_ReplySerial DBusMessageHeaderField = 5
+	// DBusMessageHeaderField_Destination is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION.
+	DBusMessageHeaderField_Destination DBusMessageHeaderField = 6
+	// DBusMessageHeaderField_Sender is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_SENDER.
+	DBusMessageHeaderField_Sender DBusMessageHeaderField = 7
+	// DBusMessageHeaderField_Signature is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE.
+	DBusMessageHeaderField_Signature DBusMessageHeaderField = 8
+	// DBusMessageHeaderField_NumUnixFds is a representation of the C type G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS.
+	DBusMessageHeaderField_NumUnixFds DBusMessageHeaderField = 9
 )
 
-// Dbusmessagetype is a representation of the C type GDBusMessageType.
+// DBusMessageType is a representation of the C type GDBusMessageType.
 //
 // since 2.26
-type Dbusmessagetype int
+type DBusMessageType int
 
 const (
-	// Dbusmessagetype_Invalid is a representation of the C type G_DBUS_MESSAGE_TYPE_INVALID.
-	Dbusmessagetype_Invalid Dbusmessagetype = 0
-	// Dbusmessagetype_MethodCall is a representation of the C type G_DBUS_MESSAGE_TYPE_METHOD_CALL.
-	Dbusmessagetype_MethodCall Dbusmessagetype = 1
-	// Dbusmessagetype_MethodReturn is a representation of the C type G_DBUS_MESSAGE_TYPE_METHOD_RETURN.
-	Dbusmessagetype_MethodReturn Dbusmessagetype = 2
-	// Dbusmessagetype_Error is a representation of the C type G_DBUS_MESSAGE_TYPE_ERROR.
-	Dbusmessagetype_Error Dbusmessagetype = 3
-	// Dbusmessagetype_Signal is a representation of the C type G_DBUS_MESSAGE_TYPE_SIGNAL.
-	Dbusmessagetype_Signal Dbusmessagetype = 4
+	// DBusMessageType_Invalid is a representation of the C type G_DBUS_MESSAGE_TYPE_INVALID.
+	DBusMessageType_Invalid DBusMessageType = 0
+	// DBusMessageType_MethodCall is a representation of the C type G_DBUS_MESSAGE_TYPE_METHOD_CALL.
+	DBusMessageType_MethodCall DBusMessageType = 1
+	// DBusMessageType_MethodReturn is a representation of the C type G_DBUS_MESSAGE_TYPE_METHOD_RETURN.
+	DBusMessageType_MethodReturn DBusMessageType = 2
+	// DBusMessageType_Error is a representation of the C type G_DBUS_MESSAGE_TYPE_ERROR.
+	DBusMessageType_Error DBusMessageType = 3
+	// DBusMessageType_Signal is a representation of the C type G_DBUS_MESSAGE_TYPE_SIGNAL.
+	DBusMessageType_Signal DBusMessageType = 4
 )
 
-// Datastreambyteorder is a representation of the C type GDataStreamByteOrder.
-type Datastreambyteorder int
+// DataStreamByteOrder is a representation of the C type GDataStreamByteOrder.
+type DataStreamByteOrder int
 
 const (
-	// Datastreambyteorder_BigEndian is a representation of the C type G_DATA_STREAM_BYTE_ORDER_BIG_ENDIAN.
-	Datastreambyteorder_BigEndian Datastreambyteorder = 0
-	// Datastreambyteorder_LittleEndian is a representation of the C type G_DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN.
-	Datastreambyteorder_LittleEndian Datastreambyteorder = 1
-	// Datastreambyteorder_HostEndian is a representation of the C type G_DATA_STREAM_BYTE_ORDER_HOST_ENDIAN.
-	Datastreambyteorder_HostEndian Datastreambyteorder = 2
+	// DataStreamByteOrder_BigEndian is a representation of the C type G_DATA_STREAM_BYTE_ORDER_BIG_ENDIAN.
+	DataStreamByteOrder_BigEndian DataStreamByteOrder = 0
+	// DataStreamByteOrder_LittleEndian is a representation of the C type G_DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN.
+	DataStreamByteOrder_LittleEndian DataStreamByteOrder = 1
+	// DataStreamByteOrder_HostEndian is a representation of the C type G_DATA_STREAM_BYTE_ORDER_HOST_ENDIAN.
+	DataStreamByteOrder_HostEndian DataStreamByteOrder = 2
 )
 
-// Datastreamnewlinetype is a representation of the C type GDataStreamNewlineType.
-type Datastreamnewlinetype int
+// DataStreamNewlineType is a representation of the C type GDataStreamNewlineType.
+type DataStreamNewlineType int
 
 const (
-	// Datastreamnewlinetype_Lf is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_LF.
-	Datastreamnewlinetype_Lf Datastreamnewlinetype = 0
-	// Datastreamnewlinetype_Cr is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_CR.
-	Datastreamnewlinetype_Cr Datastreamnewlinetype = 1
-	// Datastreamnewlinetype_CrLf is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_CR_LF.
-	Datastreamnewlinetype_CrLf Datastreamnewlinetype = 2
-	// Datastreamnewlinetype_Any is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_ANY.
-	Datastreamnewlinetype_Any Datastreamnewlinetype = 3
+	// DataStreamNewlineType_Lf is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_LF.
+	DataStreamNewlineType_Lf DataStreamNewlineType = 0
+	// DataStreamNewlineType_Cr is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_CR.
+	DataStreamNewlineType_Cr DataStreamNewlineType = 1
+	// DataStreamNewlineType_CrLf is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_CR_LF.
+	DataStreamNewlineType_CrLf DataStreamNewlineType = 2
+	// DataStreamNewlineType_Any is a representation of the C type G_DATA_STREAM_NEWLINE_TYPE_ANY.
+	DataStreamNewlineType_Any DataStreamNewlineType = 3
 )
 
-// Drivestartstoptype is a representation of the C type GDriveStartStopType.
+// DriveStartStopType is a representation of the C type GDriveStartStopType.
 //
 // since 2.22
-type Drivestartstoptype int
+type DriveStartStopType int
 
 const (
-	// Drivestartstoptype_Unknown is a representation of the C type G_DRIVE_START_STOP_TYPE_UNKNOWN.
-	Drivestartstoptype_Unknown Drivestartstoptype = 0
-	// Drivestartstoptype_Shutdown is a representation of the C type G_DRIVE_START_STOP_TYPE_SHUTDOWN.
-	Drivestartstoptype_Shutdown Drivestartstoptype = 1
-	// Drivestartstoptype_Network is a representation of the C type G_DRIVE_START_STOP_TYPE_NETWORK.
-	Drivestartstoptype_Network Drivestartstoptype = 2
-	// Drivestartstoptype_Multidisk is a representation of the C type G_DRIVE_START_STOP_TYPE_MULTIDISK.
-	Drivestartstoptype_Multidisk Drivestartstoptype = 3
-	// Drivestartstoptype_Password is a representation of the C type G_DRIVE_START_STOP_TYPE_PASSWORD.
-	Drivestartstoptype_Password Drivestartstoptype = 4
+	// DriveStartStopType_Unknown is a representation of the C type G_DRIVE_START_STOP_TYPE_UNKNOWN.
+	DriveStartStopType_Unknown DriveStartStopType = 0
+	// DriveStartStopType_Shutdown is a representation of the C type G_DRIVE_START_STOP_TYPE_SHUTDOWN.
+	DriveStartStopType_Shutdown DriveStartStopType = 1
+	// DriveStartStopType_Network is a representation of the C type G_DRIVE_START_STOP_TYPE_NETWORK.
+	DriveStartStopType_Network DriveStartStopType = 2
+	// DriveStartStopType_Multidisk is a representation of the C type G_DRIVE_START_STOP_TYPE_MULTIDISK.
+	DriveStartStopType_Multidisk DriveStartStopType = 3
+	// DriveStartStopType_Password is a representation of the C type G_DRIVE_START_STOP_TYPE_PASSWORD.
+	DriveStartStopType_Password DriveStartStopType = 4
 )
 
-// Emblemorigin is a representation of the C type GEmblemOrigin.
+// EmblemOrigin is a representation of the C type GEmblemOrigin.
 //
 // since 2.18
-type Emblemorigin int
+type EmblemOrigin int
 
 const (
-	// Emblemorigin_Unknown is a representation of the C type G_EMBLEM_ORIGIN_UNKNOWN.
-	Emblemorigin_Unknown Emblemorigin = 0
-	// Emblemorigin_Device is a representation of the C type G_EMBLEM_ORIGIN_DEVICE.
-	Emblemorigin_Device Emblemorigin = 1
-	// Emblemorigin_Livemetadata is a representation of the C type G_EMBLEM_ORIGIN_LIVEMETADATA.
-	Emblemorigin_Livemetadata Emblemorigin = 2
-	// Emblemorigin_Tag is a representation of the C type G_EMBLEM_ORIGIN_TAG.
-	Emblemorigin_Tag Emblemorigin = 3
+	// EmblemOrigin_Unknown is a representation of the C type G_EMBLEM_ORIGIN_UNKNOWN.
+	EmblemOrigin_Unknown EmblemOrigin = 0
+	// EmblemOrigin_Device is a representation of the C type G_EMBLEM_ORIGIN_DEVICE.
+	EmblemOrigin_Device EmblemOrigin = 1
+	// EmblemOrigin_Livemetadata is a representation of the C type G_EMBLEM_ORIGIN_LIVEMETADATA.
+	EmblemOrigin_Livemetadata EmblemOrigin = 2
+	// EmblemOrigin_Tag is a representation of the C type G_EMBLEM_ORIGIN_TAG.
+	EmblemOrigin_Tag EmblemOrigin = 3
 )
 
-// Fileattributestatus is a representation of the C type GFileAttributeStatus.
-type Fileattributestatus int
+// FileAttributeStatus is a representation of the C type GFileAttributeStatus.
+type FileAttributeStatus int
 
 const (
-	// Fileattributestatus_Unset is a representation of the C type G_FILE_ATTRIBUTE_STATUS_UNSET.
-	Fileattributestatus_Unset Fileattributestatus = 0
-	// Fileattributestatus_Set is a representation of the C type G_FILE_ATTRIBUTE_STATUS_SET.
-	Fileattributestatus_Set Fileattributestatus = 1
-	// Fileattributestatus_ErrorSetting is a representation of the C type G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING.
-	Fileattributestatus_ErrorSetting Fileattributestatus = 2
+	// FileAttributeStatus_Unset is a representation of the C type G_FILE_ATTRIBUTE_STATUS_UNSET.
+	FileAttributeStatus_Unset FileAttributeStatus = 0
+	// FileAttributeStatus_Set is a representation of the C type G_FILE_ATTRIBUTE_STATUS_SET.
+	FileAttributeStatus_Set FileAttributeStatus = 1
+	// FileAttributeStatus_ErrorSetting is a representation of the C type G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING.
+	FileAttributeStatus_ErrorSetting FileAttributeStatus = 2
 )
 
-// Fileattributetype is a representation of the C type GFileAttributeType.
-type Fileattributetype int
+// FileAttributeType is a representation of the C type GFileAttributeType.
+type FileAttributeType int
 
 const (
-	// Fileattributetype_Invalid is a representation of the C type G_FILE_ATTRIBUTE_TYPE_INVALID.
-	Fileattributetype_Invalid Fileattributetype = 0
-	// Fileattributetype_String is a representation of the C type G_FILE_ATTRIBUTE_TYPE_STRING.
-	Fileattributetype_String Fileattributetype = 1
-	// Fileattributetype_ByteString is a representation of the C type G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
-	Fileattributetype_ByteString Fileattributetype = 2
-	// Fileattributetype_Boolean is a representation of the C type G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
-	Fileattributetype_Boolean Fileattributetype = 3
-	// Fileattributetype_Uint32 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_UINT32.
-	Fileattributetype_Uint32 Fileattributetype = 4
-	// Fileattributetype_Int32 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_INT32.
-	Fileattributetype_Int32 Fileattributetype = 5
-	// Fileattributetype_Uint64 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_UINT64.
-	Fileattributetype_Uint64 Fileattributetype = 6
-	// Fileattributetype_Int64 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_INT64.
-	Fileattributetype_Int64 Fileattributetype = 7
-	// Fileattributetype_Object is a representation of the C type G_FILE_ATTRIBUTE_TYPE_OBJECT.
-	Fileattributetype_Object Fileattributetype = 8
-	// Fileattributetype_Stringv is a representation of the C type G_FILE_ATTRIBUTE_TYPE_STRINGV.
-	Fileattributetype_Stringv Fileattributetype = 9
+	// FileAttributeType_Invalid is a representation of the C type G_FILE_ATTRIBUTE_TYPE_INVALID.
+	FileAttributeType_Invalid FileAttributeType = 0
+	// FileAttributeType_String is a representation of the C type G_FILE_ATTRIBUTE_TYPE_STRING.
+	FileAttributeType_String FileAttributeType = 1
+	// FileAttributeType_ByteString is a representation of the C type G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+	FileAttributeType_ByteString FileAttributeType = 2
+	// FileAttributeType_Boolean is a representation of the C type G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+	FileAttributeType_Boolean FileAttributeType = 3
+	// FileAttributeType_Uint32 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_UINT32.
+	FileAttributeType_Uint32 FileAttributeType = 4
+	// FileAttributeType_Int32 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_INT32.
+	FileAttributeType_Int32 FileAttributeType = 5
+	// FileAttributeType_Uint64 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_UINT64.
+	FileAttributeType_Uint64 FileAttributeType = 6
+	// FileAttributeType_Int64 is a representation of the C type G_FILE_ATTRIBUTE_TYPE_INT64.
+	FileAttributeType_Int64 FileAttributeType = 7
+	// FileAttributeType_Object is a representation of the C type G_FILE_ATTRIBUTE_TYPE_OBJECT.
+	FileAttributeType_Object FileAttributeType = 8
+	// FileAttributeType_Stringv is a representation of the C type G_FILE_ATTRIBUTE_TYPE_STRINGV.
+	FileAttributeType_Stringv FileAttributeType = 9
 )
 
-// Filemonitorevent is a representation of the C type GFileMonitorEvent.
-type Filemonitorevent int
+// FileMonitorEvent is a representation of the C type GFileMonitorEvent.
+type FileMonitorEvent int
 
 const (
-	// Filemonitorevent_Changed is a representation of the C type G_FILE_MONITOR_EVENT_CHANGED.
-	Filemonitorevent_Changed Filemonitorevent = 0
-	// Filemonitorevent_ChangesDoneHint is a representation of the C type G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT.
-	Filemonitorevent_ChangesDoneHint Filemonitorevent = 1
-	// Filemonitorevent_Deleted is a representation of the C type G_FILE_MONITOR_EVENT_DELETED.
-	Filemonitorevent_Deleted Filemonitorevent = 2
-	// Filemonitorevent_Created is a representation of the C type G_FILE_MONITOR_EVENT_CREATED.
-	Filemonitorevent_Created Filemonitorevent = 3
-	// Filemonitorevent_AttributeChanged is a representation of the C type G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED.
-	Filemonitorevent_AttributeChanged Filemonitorevent = 4
-	// Filemonitorevent_PreUnmount is a representation of the C type G_FILE_MONITOR_EVENT_PRE_UNMOUNT.
-	Filemonitorevent_PreUnmount Filemonitorevent = 5
-	// Filemonitorevent_Unmounted is a representation of the C type G_FILE_MONITOR_EVENT_UNMOUNTED.
-	Filemonitorevent_Unmounted Filemonitorevent = 6
-	// Filemonitorevent_Moved is a representation of the C type G_FILE_MONITOR_EVENT_MOVED.
-	Filemonitorevent_Moved Filemonitorevent = 7
-	// Filemonitorevent_Renamed is a representation of the C type G_FILE_MONITOR_EVENT_RENAMED.
-	Filemonitorevent_Renamed Filemonitorevent = 8
-	// Filemonitorevent_MovedIn is a representation of the C type G_FILE_MONITOR_EVENT_MOVED_IN.
-	Filemonitorevent_MovedIn Filemonitorevent = 9
-	// Filemonitorevent_MovedOut is a representation of the C type G_FILE_MONITOR_EVENT_MOVED_OUT.
-	Filemonitorevent_MovedOut Filemonitorevent = 10
+	// FileMonitorEvent_Changed is a representation of the C type G_FILE_MONITOR_EVENT_CHANGED.
+	FileMonitorEvent_Changed FileMonitorEvent = 0
+	// FileMonitorEvent_ChangesDoneHint is a representation of the C type G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT.
+	FileMonitorEvent_ChangesDoneHint FileMonitorEvent = 1
+	// FileMonitorEvent_Deleted is a representation of the C type G_FILE_MONITOR_EVENT_DELETED.
+	FileMonitorEvent_Deleted FileMonitorEvent = 2
+	// FileMonitorEvent_Created is a representation of the C type G_FILE_MONITOR_EVENT_CREATED.
+	FileMonitorEvent_Created FileMonitorEvent = 3
+	// FileMonitorEvent_AttributeChanged is a representation of the C type G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED.
+	FileMonitorEvent_AttributeChanged FileMonitorEvent = 4
+	// FileMonitorEvent_PreUnmount is a representation of the C type G_FILE_MONITOR_EVENT_PRE_UNMOUNT.
+	FileMonitorEvent_PreUnmount FileMonitorEvent = 5
+	// FileMonitorEvent_Unmounted is a representation of the C type G_FILE_MONITOR_EVENT_UNMOUNTED.
+	FileMonitorEvent_Unmounted FileMonitorEvent = 6
+	// FileMonitorEvent_Moved is a representation of the C type G_FILE_MONITOR_EVENT_MOVED.
+	FileMonitorEvent_Moved FileMonitorEvent = 7
+	// FileMonitorEvent_Renamed is a representation of the C type G_FILE_MONITOR_EVENT_RENAMED.
+	FileMonitorEvent_Renamed FileMonitorEvent = 8
+	// FileMonitorEvent_MovedIn is a representation of the C type G_FILE_MONITOR_EVENT_MOVED_IN.
+	FileMonitorEvent_MovedIn FileMonitorEvent = 9
+	// FileMonitorEvent_MovedOut is a representation of the C type G_FILE_MONITOR_EVENT_MOVED_OUT.
+	FileMonitorEvent_MovedOut FileMonitorEvent = 10
 )
 
-// Filetype is a representation of the C type GFileType.
-type Filetype int
+// FileType is a representation of the C type GFileType.
+type FileType int
 
 const (
-	// Filetype_Unknown is a representation of the C type G_FILE_TYPE_UNKNOWN.
-	Filetype_Unknown Filetype = 0
-	// Filetype_Regular is a representation of the C type G_FILE_TYPE_REGULAR.
-	Filetype_Regular Filetype = 1
-	// Filetype_Directory is a representation of the C type G_FILE_TYPE_DIRECTORY.
-	Filetype_Directory Filetype = 2
-	// Filetype_SymbolicLink is a representation of the C type G_FILE_TYPE_SYMBOLIC_LINK.
-	Filetype_SymbolicLink Filetype = 3
-	// Filetype_Special is a representation of the C type G_FILE_TYPE_SPECIAL.
-	Filetype_Special Filetype = 4
-	// Filetype_Shortcut is a representation of the C type G_FILE_TYPE_SHORTCUT.
-	Filetype_Shortcut Filetype = 5
-	// Filetype_Mountable is a representation of the C type G_FILE_TYPE_MOUNTABLE.
-	Filetype_Mountable Filetype = 6
+	// FileType_Unknown is a representation of the C type G_FILE_TYPE_UNKNOWN.
+	FileType_Unknown FileType = 0
+	// FileType_Regular is a representation of the C type G_FILE_TYPE_REGULAR.
+	FileType_Regular FileType = 1
+	// FileType_Directory is a representation of the C type G_FILE_TYPE_DIRECTORY.
+	FileType_Directory FileType = 2
+	// FileType_SymbolicLink is a representation of the C type G_FILE_TYPE_SYMBOLIC_LINK.
+	FileType_SymbolicLink FileType = 3
+	// FileType_Special is a representation of the C type G_FILE_TYPE_SPECIAL.
+	FileType_Special FileType = 4
+	// FileType_Shortcut is a representation of the C type G_FILE_TYPE_SHORTCUT.
+	FileType_Shortcut FileType = 5
+	// FileType_Mountable is a representation of the C type G_FILE_TYPE_MOUNTABLE.
+	FileType_Mountable FileType = 6
 )
 
-// Filesystempreviewtype is a representation of the C type GFilesystemPreviewType.
-type Filesystempreviewtype int
+// FilesystemPreviewType is a representation of the C type GFilesystemPreviewType.
+type FilesystemPreviewType int
 
 const (
-	// Filesystempreviewtype_IfAlways is a representation of the C type G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS.
-	Filesystempreviewtype_IfAlways Filesystempreviewtype = 0
-	// Filesystempreviewtype_IfLocal is a representation of the C type G_FILESYSTEM_PREVIEW_TYPE_IF_LOCAL.
-	Filesystempreviewtype_IfLocal Filesystempreviewtype = 1
-	// Filesystempreviewtype_Never is a representation of the C type G_FILESYSTEM_PREVIEW_TYPE_NEVER.
-	Filesystempreviewtype_Never Filesystempreviewtype = 2
+	// FilesystemPreviewType_IfAlways is a representation of the C type G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS.
+	FilesystemPreviewType_IfAlways FilesystemPreviewType = 0
+	// FilesystemPreviewType_IfLocal is a representation of the C type G_FILESYSTEM_PREVIEW_TYPE_IF_LOCAL.
+	FilesystemPreviewType_IfLocal FilesystemPreviewType = 1
+	// FilesystemPreviewType_Never is a representation of the C type G_FILESYSTEM_PREVIEW_TYPE_NEVER.
+	FilesystemPreviewType_Never FilesystemPreviewType = 2
 )
 
-// Ioerrorenum is a representation of the C type GIOErrorEnum.
-type Ioerrorenum int
+// IOErrorEnum is a representation of the C type GIOErrorEnum.
+type IOErrorEnum int
 
 const (
-	// Ioerrorenum_Failed is a representation of the C type G_IO_ERROR_FAILED.
-	Ioerrorenum_Failed Ioerrorenum = 0
-	// Ioerrorenum_NotFound is a representation of the C type G_IO_ERROR_NOT_FOUND.
-	Ioerrorenum_NotFound Ioerrorenum = 1
-	// Ioerrorenum_Exists is a representation of the C type G_IO_ERROR_EXISTS.
-	Ioerrorenum_Exists Ioerrorenum = 2
-	// Ioerrorenum_IsDirectory is a representation of the C type G_IO_ERROR_IS_DIRECTORY.
-	Ioerrorenum_IsDirectory Ioerrorenum = 3
-	// Ioerrorenum_NotDirectory is a representation of the C type G_IO_ERROR_NOT_DIRECTORY.
-	Ioerrorenum_NotDirectory Ioerrorenum = 4
-	// Ioerrorenum_NotEmpty is a representation of the C type G_IO_ERROR_NOT_EMPTY.
-	Ioerrorenum_NotEmpty Ioerrorenum = 5
-	// Ioerrorenum_NotRegularFile is a representation of the C type G_IO_ERROR_NOT_REGULAR_FILE.
-	Ioerrorenum_NotRegularFile Ioerrorenum = 6
-	// Ioerrorenum_NotSymbolicLink is a representation of the C type G_IO_ERROR_NOT_SYMBOLIC_LINK.
-	Ioerrorenum_NotSymbolicLink Ioerrorenum = 7
-	// Ioerrorenum_NotMountableFile is a representation of the C type G_IO_ERROR_NOT_MOUNTABLE_FILE.
-	Ioerrorenum_NotMountableFile Ioerrorenum = 8
-	// Ioerrorenum_FilenameTooLong is a representation of the C type G_IO_ERROR_FILENAME_TOO_LONG.
-	Ioerrorenum_FilenameTooLong Ioerrorenum = 9
-	// Ioerrorenum_InvalidFilename is a representation of the C type G_IO_ERROR_INVALID_FILENAME.
-	Ioerrorenum_InvalidFilename Ioerrorenum = 10
-	// Ioerrorenum_TooManyLinks is a representation of the C type G_IO_ERROR_TOO_MANY_LINKS.
-	Ioerrorenum_TooManyLinks Ioerrorenum = 11
-	// Ioerrorenum_NoSpace is a representation of the C type G_IO_ERROR_NO_SPACE.
-	Ioerrorenum_NoSpace Ioerrorenum = 12
-	// Ioerrorenum_InvalidArgument is a representation of the C type G_IO_ERROR_INVALID_ARGUMENT.
-	Ioerrorenum_InvalidArgument Ioerrorenum = 13
-	// Ioerrorenum_PermissionDenied is a representation of the C type G_IO_ERROR_PERMISSION_DENIED.
-	Ioerrorenum_PermissionDenied Ioerrorenum = 14
-	// Ioerrorenum_NotSupported is a representation of the C type G_IO_ERROR_NOT_SUPPORTED.
-	Ioerrorenum_NotSupported Ioerrorenum = 15
-	// Ioerrorenum_NotMounted is a representation of the C type G_IO_ERROR_NOT_MOUNTED.
-	Ioerrorenum_NotMounted Ioerrorenum = 16
-	// Ioerrorenum_AlreadyMounted is a representation of the C type G_IO_ERROR_ALREADY_MOUNTED.
-	Ioerrorenum_AlreadyMounted Ioerrorenum = 17
-	// Ioerrorenum_Closed is a representation of the C type G_IO_ERROR_CLOSED.
-	Ioerrorenum_Closed Ioerrorenum = 18
-	// Ioerrorenum_Cancelled is a representation of the C type G_IO_ERROR_CANCELLED.
-	Ioerrorenum_Cancelled Ioerrorenum = 19
-	// Ioerrorenum_Pending is a representation of the C type G_IO_ERROR_PENDING.
-	Ioerrorenum_Pending Ioerrorenum = 20
-	// Ioerrorenum_ReadOnly is a representation of the C type G_IO_ERROR_READ_ONLY.
-	Ioerrorenum_ReadOnly Ioerrorenum = 21
-	// Ioerrorenum_CantCreateBackup is a representation of the C type G_IO_ERROR_CANT_CREATE_BACKUP.
-	Ioerrorenum_CantCreateBackup Ioerrorenum = 22
-	// Ioerrorenum_WrongEtag is a representation of the C type G_IO_ERROR_WRONG_ETAG.
-	Ioerrorenum_WrongEtag Ioerrorenum = 23
-	// Ioerrorenum_TimedOut is a representation of the C type G_IO_ERROR_TIMED_OUT.
-	Ioerrorenum_TimedOut Ioerrorenum = 24
-	// Ioerrorenum_WouldRecurse is a representation of the C type G_IO_ERROR_WOULD_RECURSE.
-	Ioerrorenum_WouldRecurse Ioerrorenum = 25
-	// Ioerrorenum_Busy is a representation of the C type G_IO_ERROR_BUSY.
-	Ioerrorenum_Busy Ioerrorenum = 26
-	// Ioerrorenum_WouldBlock is a representation of the C type G_IO_ERROR_WOULD_BLOCK.
-	Ioerrorenum_WouldBlock Ioerrorenum = 27
-	// Ioerrorenum_HostNotFound is a representation of the C type G_IO_ERROR_HOST_NOT_FOUND.
-	Ioerrorenum_HostNotFound Ioerrorenum = 28
-	// Ioerrorenum_WouldMerge is a representation of the C type G_IO_ERROR_WOULD_MERGE.
-	Ioerrorenum_WouldMerge Ioerrorenum = 29
-	// Ioerrorenum_FailedHandled is a representation of the C type G_IO_ERROR_FAILED_HANDLED.
-	Ioerrorenum_FailedHandled Ioerrorenum = 30
-	// Ioerrorenum_TooManyOpenFiles is a representation of the C type G_IO_ERROR_TOO_MANY_OPEN_FILES.
-	Ioerrorenum_TooManyOpenFiles Ioerrorenum = 31
-	// Ioerrorenum_NotInitialized is a representation of the C type G_IO_ERROR_NOT_INITIALIZED.
-	Ioerrorenum_NotInitialized Ioerrorenum = 32
-	// Ioerrorenum_AddressInUse is a representation of the C type G_IO_ERROR_ADDRESS_IN_USE.
-	Ioerrorenum_AddressInUse Ioerrorenum = 33
-	// Ioerrorenum_PartialInput is a representation of the C type G_IO_ERROR_PARTIAL_INPUT.
-	Ioerrorenum_PartialInput Ioerrorenum = 34
-	// Ioerrorenum_InvalidData is a representation of the C type G_IO_ERROR_INVALID_DATA.
-	Ioerrorenum_InvalidData Ioerrorenum = 35
-	// Ioerrorenum_DbusError is a representation of the C type G_IO_ERROR_DBUS_ERROR.
-	Ioerrorenum_DbusError Ioerrorenum = 36
-	// Ioerrorenum_HostUnreachable is a representation of the C type G_IO_ERROR_HOST_UNREACHABLE.
-	Ioerrorenum_HostUnreachable Ioerrorenum = 37
-	// Ioerrorenum_NetworkUnreachable is a representation of the C type G_IO_ERROR_NETWORK_UNREACHABLE.
-	Ioerrorenum_NetworkUnreachable Ioerrorenum = 38
-	// Ioerrorenum_ConnectionRefused is a representation of the C type G_IO_ERROR_CONNECTION_REFUSED.
-	Ioerrorenum_ConnectionRefused Ioerrorenum = 39
-	// Ioerrorenum_ProxyFailed is a representation of the C type G_IO_ERROR_PROXY_FAILED.
-	Ioerrorenum_ProxyFailed Ioerrorenum = 40
-	// Ioerrorenum_ProxyAuthFailed is a representation of the C type G_IO_ERROR_PROXY_AUTH_FAILED.
-	Ioerrorenum_ProxyAuthFailed Ioerrorenum = 41
-	// Ioerrorenum_ProxyNeedAuth is a representation of the C type G_IO_ERROR_PROXY_NEED_AUTH.
-	Ioerrorenum_ProxyNeedAuth Ioerrorenum = 42
-	// Ioerrorenum_ProxyNotAllowed is a representation of the C type G_IO_ERROR_PROXY_NOT_ALLOWED.
-	Ioerrorenum_ProxyNotAllowed Ioerrorenum = 43
-	// Ioerrorenum_BrokenPipe is a representation of the C type G_IO_ERROR_BROKEN_PIPE.
-	Ioerrorenum_BrokenPipe Ioerrorenum = 44
-	// Ioerrorenum_ConnectionClosed is a representation of the C type G_IO_ERROR_CONNECTION_CLOSED.
-	Ioerrorenum_ConnectionClosed Ioerrorenum = 44
-	// Ioerrorenum_NotConnected is a representation of the C type G_IO_ERROR_NOT_CONNECTED.
-	Ioerrorenum_NotConnected Ioerrorenum = 45
-	// Ioerrorenum_MessageTooLarge is a representation of the C type G_IO_ERROR_MESSAGE_TOO_LARGE.
-	Ioerrorenum_MessageTooLarge Ioerrorenum = 46
+	// IOErrorEnum_Failed is a representation of the C type G_IO_ERROR_FAILED.
+	IOErrorEnum_Failed IOErrorEnum = 0
+	// IOErrorEnum_NotFound is a representation of the C type G_IO_ERROR_NOT_FOUND.
+	IOErrorEnum_NotFound IOErrorEnum = 1
+	// IOErrorEnum_Exists is a representation of the C type G_IO_ERROR_EXISTS.
+	IOErrorEnum_Exists IOErrorEnum = 2
+	// IOErrorEnum_IsDirectory is a representation of the C type G_IO_ERROR_IS_DIRECTORY.
+	IOErrorEnum_IsDirectory IOErrorEnum = 3
+	// IOErrorEnum_NotDirectory is a representation of the C type G_IO_ERROR_NOT_DIRECTORY.
+	IOErrorEnum_NotDirectory IOErrorEnum = 4
+	// IOErrorEnum_NotEmpty is a representation of the C type G_IO_ERROR_NOT_EMPTY.
+	IOErrorEnum_NotEmpty IOErrorEnum = 5
+	// IOErrorEnum_NotRegularFile is a representation of the C type G_IO_ERROR_NOT_REGULAR_FILE.
+	IOErrorEnum_NotRegularFile IOErrorEnum = 6
+	// IOErrorEnum_NotSymbolicLink is a representation of the C type G_IO_ERROR_NOT_SYMBOLIC_LINK.
+	IOErrorEnum_NotSymbolicLink IOErrorEnum = 7
+	// IOErrorEnum_NotMountableFile is a representation of the C type G_IO_ERROR_NOT_MOUNTABLE_FILE.
+	IOErrorEnum_NotMountableFile IOErrorEnum = 8
+	// IOErrorEnum_FilenameTooLong is a representation of the C type G_IO_ERROR_FILENAME_TOO_LONG.
+	IOErrorEnum_FilenameTooLong IOErrorEnum = 9
+	// IOErrorEnum_InvalidFilename is a representation of the C type G_IO_ERROR_INVALID_FILENAME.
+	IOErrorEnum_InvalidFilename IOErrorEnum = 10
+	// IOErrorEnum_TooManyLinks is a representation of the C type G_IO_ERROR_TOO_MANY_LINKS.
+	IOErrorEnum_TooManyLinks IOErrorEnum = 11
+	// IOErrorEnum_NoSpace is a representation of the C type G_IO_ERROR_NO_SPACE.
+	IOErrorEnum_NoSpace IOErrorEnum = 12
+	// IOErrorEnum_InvalidArgument is a representation of the C type G_IO_ERROR_INVALID_ARGUMENT.
+	IOErrorEnum_InvalidArgument IOErrorEnum = 13
+	// IOErrorEnum_PermissionDenied is a representation of the C type G_IO_ERROR_PERMISSION_DENIED.
+	IOErrorEnum_PermissionDenied IOErrorEnum = 14
+	// IOErrorEnum_NotSupported is a representation of the C type G_IO_ERROR_NOT_SUPPORTED.
+	IOErrorEnum_NotSupported IOErrorEnum = 15
+	// IOErrorEnum_NotMounted is a representation of the C type G_IO_ERROR_NOT_MOUNTED.
+	IOErrorEnum_NotMounted IOErrorEnum = 16
+	// IOErrorEnum_AlreadyMounted is a representation of the C type G_IO_ERROR_ALREADY_MOUNTED.
+	IOErrorEnum_AlreadyMounted IOErrorEnum = 17
+	// IOErrorEnum_Closed is a representation of the C type G_IO_ERROR_CLOSED.
+	IOErrorEnum_Closed IOErrorEnum = 18
+	// IOErrorEnum_Cancelled is a representation of the C type G_IO_ERROR_CANCELLED.
+	IOErrorEnum_Cancelled IOErrorEnum = 19
+	// IOErrorEnum_Pending is a representation of the C type G_IO_ERROR_PENDING.
+	IOErrorEnum_Pending IOErrorEnum = 20
+	// IOErrorEnum_ReadOnly is a representation of the C type G_IO_ERROR_READ_ONLY.
+	IOErrorEnum_ReadOnly IOErrorEnum = 21
+	// IOErrorEnum_CantCreateBackup is a representation of the C type G_IO_ERROR_CANT_CREATE_BACKUP.
+	IOErrorEnum_CantCreateBackup IOErrorEnum = 22
+	// IOErrorEnum_WrongEtag is a representation of the C type G_IO_ERROR_WRONG_ETAG.
+	IOErrorEnum_WrongEtag IOErrorEnum = 23
+	// IOErrorEnum_TimedOut is a representation of the C type G_IO_ERROR_TIMED_OUT.
+	IOErrorEnum_TimedOut IOErrorEnum = 24
+	// IOErrorEnum_WouldRecurse is a representation of the C type G_IO_ERROR_WOULD_RECURSE.
+	IOErrorEnum_WouldRecurse IOErrorEnum = 25
+	// IOErrorEnum_Busy is a representation of the C type G_IO_ERROR_BUSY.
+	IOErrorEnum_Busy IOErrorEnum = 26
+	// IOErrorEnum_WouldBlock is a representation of the C type G_IO_ERROR_WOULD_BLOCK.
+	IOErrorEnum_WouldBlock IOErrorEnum = 27
+	// IOErrorEnum_HostNotFound is a representation of the C type G_IO_ERROR_HOST_NOT_FOUND.
+	IOErrorEnum_HostNotFound IOErrorEnum = 28
+	// IOErrorEnum_WouldMerge is a representation of the C type G_IO_ERROR_WOULD_MERGE.
+	IOErrorEnum_WouldMerge IOErrorEnum = 29
+	// IOErrorEnum_FailedHandled is a representation of the C type G_IO_ERROR_FAILED_HANDLED.
+	IOErrorEnum_FailedHandled IOErrorEnum = 30
+	// IOErrorEnum_TooManyOpenFiles is a representation of the C type G_IO_ERROR_TOO_MANY_OPEN_FILES.
+	IOErrorEnum_TooManyOpenFiles IOErrorEnum = 31
+	// IOErrorEnum_NotInitialized is a representation of the C type G_IO_ERROR_NOT_INITIALIZED.
+	IOErrorEnum_NotInitialized IOErrorEnum = 32
+	// IOErrorEnum_AddressInUse is a representation of the C type G_IO_ERROR_ADDRESS_IN_USE.
+	IOErrorEnum_AddressInUse IOErrorEnum = 33
+	// IOErrorEnum_PartialInput is a representation of the C type G_IO_ERROR_PARTIAL_INPUT.
+	IOErrorEnum_PartialInput IOErrorEnum = 34
+	// IOErrorEnum_InvalidData is a representation of the C type G_IO_ERROR_INVALID_DATA.
+	IOErrorEnum_InvalidData IOErrorEnum = 35
+	// IOErrorEnum_DbusError is a representation of the C type G_IO_ERROR_DBUS_ERROR.
+	IOErrorEnum_DbusError IOErrorEnum = 36
+	// IOErrorEnum_HostUnreachable is a representation of the C type G_IO_ERROR_HOST_UNREACHABLE.
+	IOErrorEnum_HostUnreachable IOErrorEnum = 37
+	// IOErrorEnum_NetworkUnreachable is a representation of the C type G_IO_ERROR_NETWORK_UNREACHABLE.
+	IOErrorEnum_NetworkUnreachable IOErrorEnum = 38
+	// IOErrorEnum_ConnectionRefused is a representation of the C type G_IO_ERROR_CONNECTION_REFUSED.
+	IOErrorEnum_ConnectionRefused IOErrorEnum = 39
+	// IOErrorEnum_ProxyFailed is a representation of the C type G_IO_ERROR_PROXY_FAILED.
+	IOErrorEnum_ProxyFailed IOErrorEnum = 40
+	// IOErrorEnum_ProxyAuthFailed is a representation of the C type G_IO_ERROR_PROXY_AUTH_FAILED.
+	IOErrorEnum_ProxyAuthFailed IOErrorEnum = 41
+	// IOErrorEnum_ProxyNeedAuth is a representation of the C type G_IO_ERROR_PROXY_NEED_AUTH.
+	IOErrorEnum_ProxyNeedAuth IOErrorEnum = 42
+	// IOErrorEnum_ProxyNotAllowed is a representation of the C type G_IO_ERROR_PROXY_NOT_ALLOWED.
+	IOErrorEnum_ProxyNotAllowed IOErrorEnum = 43
+	// IOErrorEnum_BrokenPipe is a representation of the C type G_IO_ERROR_BROKEN_PIPE.
+	IOErrorEnum_BrokenPipe IOErrorEnum = 44
+	// IOErrorEnum_ConnectionClosed is a representation of the C type G_IO_ERROR_CONNECTION_CLOSED.
+	IOErrorEnum_ConnectionClosed IOErrorEnum = 44
+	// IOErrorEnum_NotConnected is a representation of the C type G_IO_ERROR_NOT_CONNECTED.
+	IOErrorEnum_NotConnected IOErrorEnum = 45
+	// IOErrorEnum_MessageTooLarge is a representation of the C type G_IO_ERROR_MESSAGE_TOO_LARGE.
+	IOErrorEnum_MessageTooLarge IOErrorEnum = 46
 )
 
-// Iomodulescopeflags is a representation of the C type GIOModuleScopeFlags.
+// IOModuleScopeFlags is a representation of the C type GIOModuleScopeFlags.
 //
 // since 2.30
-type Iomodulescopeflags int
+type IOModuleScopeFlags int
 
 const (
-	// Iomodulescopeflags_None is a representation of the C type G_IO_MODULE_SCOPE_NONE.
-	Iomodulescopeflags_None Iomodulescopeflags = 0
-	// Iomodulescopeflags_BlockDuplicates is a representation of the C type G_IO_MODULE_SCOPE_BLOCK_DUPLICATES.
-	Iomodulescopeflags_BlockDuplicates Iomodulescopeflags = 1
+	// IOModuleScopeFlags_None is a representation of the C type G_IO_MODULE_SCOPE_NONE.
+	IOModuleScopeFlags_None IOModuleScopeFlags = 0
+	// IOModuleScopeFlags_BlockDuplicates is a representation of the C type G_IO_MODULE_SCOPE_BLOCK_DUPLICATES.
+	IOModuleScopeFlags_BlockDuplicates IOModuleScopeFlags = 1
 )
 
-// Mountoperationresult is a representation of the C type GMountOperationResult.
-type Mountoperationresult int
+// MountOperationResult is a representation of the C type GMountOperationResult.
+type MountOperationResult int
 
 const (
-	// Mountoperationresult_Handled is a representation of the C type G_MOUNT_OPERATION_HANDLED.
-	Mountoperationresult_Handled Mountoperationresult = 0
-	// Mountoperationresult_Aborted is a representation of the C type G_MOUNT_OPERATION_ABORTED.
-	Mountoperationresult_Aborted Mountoperationresult = 1
-	// Mountoperationresult_Unhandled is a representation of the C type G_MOUNT_OPERATION_UNHANDLED.
-	Mountoperationresult_Unhandled Mountoperationresult = 2
+	// MountOperationResult_Handled is a representation of the C type G_MOUNT_OPERATION_HANDLED.
+	MountOperationResult_Handled MountOperationResult = 0
+	// MountOperationResult_Aborted is a representation of the C type G_MOUNT_OPERATION_ABORTED.
+	MountOperationResult_Aborted MountOperationResult = 1
+	// MountOperationResult_Unhandled is a representation of the C type G_MOUNT_OPERATION_UNHANDLED.
+	MountOperationResult_Unhandled MountOperationResult = 2
 )
 
-// Networkconnectivity is a representation of the C type GNetworkConnectivity.
+// NetworkConnectivity is a representation of the C type GNetworkConnectivity.
 //
 // since 2.44
-type Networkconnectivity int
+type NetworkConnectivity int
 
 const (
-	// Networkconnectivity_Local is a representation of the C type G_NETWORK_CONNECTIVITY_LOCAL.
-	Networkconnectivity_Local Networkconnectivity = 1
-	// Networkconnectivity_Limited is a representation of the C type G_NETWORK_CONNECTIVITY_LIMITED.
-	Networkconnectivity_Limited Networkconnectivity = 2
-	// Networkconnectivity_Portal is a representation of the C type G_NETWORK_CONNECTIVITY_PORTAL.
-	Networkconnectivity_Portal Networkconnectivity = 3
-	// Networkconnectivity_Full is a representation of the C type G_NETWORK_CONNECTIVITY_FULL.
-	Networkconnectivity_Full Networkconnectivity = 4
+	// NetworkConnectivity_Local is a representation of the C type G_NETWORK_CONNECTIVITY_LOCAL.
+	NetworkConnectivity_Local NetworkConnectivity = 1
+	// NetworkConnectivity_Limited is a representation of the C type G_NETWORK_CONNECTIVITY_LIMITED.
+	NetworkConnectivity_Limited NetworkConnectivity = 2
+	// NetworkConnectivity_Portal is a representation of the C type G_NETWORK_CONNECTIVITY_PORTAL.
+	NetworkConnectivity_Portal NetworkConnectivity = 3
+	// NetworkConnectivity_Full is a representation of the C type G_NETWORK_CONNECTIVITY_FULL.
+	NetworkConnectivity_Full NetworkConnectivity = 4
 )
 
-// Notificationpriority is a representation of the C type GNotificationPriority.
+// NotificationPriority is a representation of the C type GNotificationPriority.
 //
 // since 2.42
-type Notificationpriority int
+type NotificationPriority int
 
 const (
-	// Notificationpriority_Normal is a representation of the C type G_NOTIFICATION_PRIORITY_NORMAL.
-	Notificationpriority_Normal Notificationpriority = 0
-	// Notificationpriority_Low is a representation of the C type G_NOTIFICATION_PRIORITY_LOW.
-	Notificationpriority_Low Notificationpriority = 1
-	// Notificationpriority_High is a representation of the C type G_NOTIFICATION_PRIORITY_HIGH.
-	Notificationpriority_High Notificationpriority = 2
-	// Notificationpriority_Urgent is a representation of the C type G_NOTIFICATION_PRIORITY_URGENT.
-	Notificationpriority_Urgent Notificationpriority = 3
+	// NotificationPriority_Normal is a representation of the C type G_NOTIFICATION_PRIORITY_NORMAL.
+	NotificationPriority_Normal NotificationPriority = 0
+	// NotificationPriority_Low is a representation of the C type G_NOTIFICATION_PRIORITY_LOW.
+	NotificationPriority_Low NotificationPriority = 1
+	// NotificationPriority_High is a representation of the C type G_NOTIFICATION_PRIORITY_HIGH.
+	NotificationPriority_High NotificationPriority = 2
+	// NotificationPriority_Urgent is a representation of the C type G_NOTIFICATION_PRIORITY_URGENT.
+	NotificationPriority_Urgent NotificationPriority = 3
 )
 
-// Passwordsave is a representation of the C type GPasswordSave.
-type Passwordsave int
+// PasswordSave is a representation of the C type GPasswordSave.
+type PasswordSave int
 
 const (
-	// Passwordsave_Never is a representation of the C type G_PASSWORD_SAVE_NEVER.
-	Passwordsave_Never Passwordsave = 0
-	// Passwordsave_ForSession is a representation of the C type G_PASSWORD_SAVE_FOR_SESSION.
-	Passwordsave_ForSession Passwordsave = 1
-	// Passwordsave_Permanently is a representation of the C type G_PASSWORD_SAVE_PERMANENTLY.
-	Passwordsave_Permanently Passwordsave = 2
+	// PasswordSave_Never is a representation of the C type G_PASSWORD_SAVE_NEVER.
+	PasswordSave_Never PasswordSave = 0
+	// PasswordSave_ForSession is a representation of the C type G_PASSWORD_SAVE_FOR_SESSION.
+	PasswordSave_ForSession PasswordSave = 1
+	// PasswordSave_Permanently is a representation of the C type G_PASSWORD_SAVE_PERMANENTLY.
+	PasswordSave_Permanently PasswordSave = 2
 )
 
-// Pollablereturn is a representation of the C type GPollableReturn.
+// PollableReturn is a representation of the C type GPollableReturn.
 //
 // since 2.60
-type Pollablereturn int
+type PollableReturn int
 
 const (
-	// Pollablereturn_Failed is a representation of the C type G_POLLABLE_RETURN_FAILED.
-	Pollablereturn_Failed Pollablereturn = 0
-	// Pollablereturn_Ok is a representation of the C type G_POLLABLE_RETURN_OK.
-	Pollablereturn_Ok Pollablereturn = 1
-	// Pollablereturn_WouldBlock is a representation of the C type G_POLLABLE_RETURN_WOULD_BLOCK.
-	Pollablereturn_WouldBlock Pollablereturn = -27
+	// PollableReturn_Failed is a representation of the C type G_POLLABLE_RETURN_FAILED.
+	PollableReturn_Failed PollableReturn = 0
+	// PollableReturn_Ok is a representation of the C type G_POLLABLE_RETURN_OK.
+	PollableReturn_Ok PollableReturn = 1
+	// PollableReturn_WouldBlock is a representation of the C type G_POLLABLE_RETURN_WOULD_BLOCK.
+	PollableReturn_WouldBlock PollableReturn = -27
 )
 
-// Resolvererror is a representation of the C type GResolverError.
+// ResolverError is a representation of the C type GResolverError.
 //
 // since 2.22
-type Resolvererror int
+type ResolverError int
 
 const (
-	// Resolvererror_NotFound is a representation of the C type G_RESOLVER_ERROR_NOT_FOUND.
-	Resolvererror_NotFound Resolvererror = 0
-	// Resolvererror_TemporaryFailure is a representation of the C type G_RESOLVER_ERROR_TEMPORARY_FAILURE.
-	Resolvererror_TemporaryFailure Resolvererror = 1
-	// Resolvererror_Internal is a representation of the C type G_RESOLVER_ERROR_INTERNAL.
-	Resolvererror_Internal Resolvererror = 2
+	// ResolverError_NotFound is a representation of the C type G_RESOLVER_ERROR_NOT_FOUND.
+	ResolverError_NotFound ResolverError = 0
+	// ResolverError_TemporaryFailure is a representation of the C type G_RESOLVER_ERROR_TEMPORARY_FAILURE.
+	ResolverError_TemporaryFailure ResolverError = 1
+	// ResolverError_Internal is a representation of the C type G_RESOLVER_ERROR_INTERNAL.
+	ResolverError_Internal ResolverError = 2
 )
 
-// Resolverrecordtype is a representation of the C type GResolverRecordType.
+// ResolverRecordType is a representation of the C type GResolverRecordType.
 //
 // since 2.34
-type Resolverrecordtype int
+type ResolverRecordType int
 
 const (
-	// Resolverrecordtype_Srv is a representation of the C type G_RESOLVER_RECORD_SRV.
-	Resolverrecordtype_Srv Resolverrecordtype = 1
-	// Resolverrecordtype_Mx is a representation of the C type G_RESOLVER_RECORD_MX.
-	Resolverrecordtype_Mx Resolverrecordtype = 2
-	// Resolverrecordtype_Txt is a representation of the C type G_RESOLVER_RECORD_TXT.
-	Resolverrecordtype_Txt Resolverrecordtype = 3
-	// Resolverrecordtype_Soa is a representation of the C type G_RESOLVER_RECORD_SOA.
-	Resolverrecordtype_Soa Resolverrecordtype = 4
-	// Resolverrecordtype_Ns is a representation of the C type G_RESOLVER_RECORD_NS.
-	Resolverrecordtype_Ns Resolverrecordtype = 5
+	// ResolverRecordType_Srv is a representation of the C type G_RESOLVER_RECORD_SRV.
+	ResolverRecordType_Srv ResolverRecordType = 1
+	// ResolverRecordType_Mx is a representation of the C type G_RESOLVER_RECORD_MX.
+	ResolverRecordType_Mx ResolverRecordType = 2
+	// ResolverRecordType_Txt is a representation of the C type G_RESOLVER_RECORD_TXT.
+	ResolverRecordType_Txt ResolverRecordType = 3
+	// ResolverRecordType_Soa is a representation of the C type G_RESOLVER_RECORD_SOA.
+	ResolverRecordType_Soa ResolverRecordType = 4
+	// ResolverRecordType_Ns is a representation of the C type G_RESOLVER_RECORD_NS.
+	ResolverRecordType_Ns ResolverRecordType = 5
 )
 
-// Resourceerror is a representation of the C type GResourceError.
+// ResourceError is a representation of the C type GResourceError.
 //
 // since 2.32
-type Resourceerror int
+type ResourceError int
 
 const (
-	// Resourceerror_NotFound is a representation of the C type G_RESOURCE_ERROR_NOT_FOUND.
-	Resourceerror_NotFound Resourceerror = 0
-	// Resourceerror_Internal is a representation of the C type G_RESOURCE_ERROR_INTERNAL.
-	Resourceerror_Internal Resourceerror = 1
+	// ResourceError_NotFound is a representation of the C type G_RESOURCE_ERROR_NOT_FOUND.
+	ResourceError_NotFound ResourceError = 0
+	// ResourceError_Internal is a representation of the C type G_RESOURCE_ERROR_INTERNAL.
+	ResourceError_Internal ResourceError = 1
 )
 
-// Socketclientevent is a representation of the C type GSocketClientEvent.
+// SocketClientEvent is a representation of the C type GSocketClientEvent.
 //
 // since 2.32
-type Socketclientevent int
+type SocketClientEvent int
 
 const (
-	// Socketclientevent_Resolving is a representation of the C type G_SOCKET_CLIENT_RESOLVING.
-	Socketclientevent_Resolving Socketclientevent = 0
-	// Socketclientevent_Resolved is a representation of the C type G_SOCKET_CLIENT_RESOLVED.
-	Socketclientevent_Resolved Socketclientevent = 1
-	// Socketclientevent_Connecting is a representation of the C type G_SOCKET_CLIENT_CONNECTING.
-	Socketclientevent_Connecting Socketclientevent = 2
-	// Socketclientevent_Connected is a representation of the C type G_SOCKET_CLIENT_CONNECTED.
-	Socketclientevent_Connected Socketclientevent = 3
-	// Socketclientevent_ProxyNegotiating is a representation of the C type G_SOCKET_CLIENT_PROXY_NEGOTIATING.
-	Socketclientevent_ProxyNegotiating Socketclientevent = 4
-	// Socketclientevent_ProxyNegotiated is a representation of the C type G_SOCKET_CLIENT_PROXY_NEGOTIATED.
-	Socketclientevent_ProxyNegotiated Socketclientevent = 5
-	// Socketclientevent_TlsHandshaking is a representation of the C type G_SOCKET_CLIENT_TLS_HANDSHAKING.
-	Socketclientevent_TlsHandshaking Socketclientevent = 6
-	// Socketclientevent_TlsHandshaked is a representation of the C type G_SOCKET_CLIENT_TLS_HANDSHAKED.
-	Socketclientevent_TlsHandshaked Socketclientevent = 7
-	// Socketclientevent_Complete is a representation of the C type G_SOCKET_CLIENT_COMPLETE.
-	Socketclientevent_Complete Socketclientevent = 8
+	// SocketClientEvent_Resolving is a representation of the C type G_SOCKET_CLIENT_RESOLVING.
+	SocketClientEvent_Resolving SocketClientEvent = 0
+	// SocketClientEvent_Resolved is a representation of the C type G_SOCKET_CLIENT_RESOLVED.
+	SocketClientEvent_Resolved SocketClientEvent = 1
+	// SocketClientEvent_Connecting is a representation of the C type G_SOCKET_CLIENT_CONNECTING.
+	SocketClientEvent_Connecting SocketClientEvent = 2
+	// SocketClientEvent_Connected is a representation of the C type G_SOCKET_CLIENT_CONNECTED.
+	SocketClientEvent_Connected SocketClientEvent = 3
+	// SocketClientEvent_ProxyNegotiating is a representation of the C type G_SOCKET_CLIENT_PROXY_NEGOTIATING.
+	SocketClientEvent_ProxyNegotiating SocketClientEvent = 4
+	// SocketClientEvent_ProxyNegotiated is a representation of the C type G_SOCKET_CLIENT_PROXY_NEGOTIATED.
+	SocketClientEvent_ProxyNegotiated SocketClientEvent = 5
+	// SocketClientEvent_TlsHandshaking is a representation of the C type G_SOCKET_CLIENT_TLS_HANDSHAKING.
+	SocketClientEvent_TlsHandshaking SocketClientEvent = 6
+	// SocketClientEvent_TlsHandshaked is a representation of the C type G_SOCKET_CLIENT_TLS_HANDSHAKED.
+	SocketClientEvent_TlsHandshaked SocketClientEvent = 7
+	// SocketClientEvent_Complete is a representation of the C type G_SOCKET_CLIENT_COMPLETE.
+	SocketClientEvent_Complete SocketClientEvent = 8
 )
 
-// Socketfamily is a representation of the C type GSocketFamily.
+// SocketFamily is a representation of the C type GSocketFamily.
 //
 // since 2.22
-type Socketfamily int
+type SocketFamily int
 
 const (
-	// Socketfamily_Invalid is a representation of the C type G_SOCKET_FAMILY_INVALID.
-	Socketfamily_Invalid Socketfamily = 0
-	// Socketfamily_Unix is a representation of the C type G_SOCKET_FAMILY_UNIX.
-	Socketfamily_Unix Socketfamily = 1
-	// Socketfamily_Ipv4 is a representation of the C type G_SOCKET_FAMILY_IPV4.
-	Socketfamily_Ipv4 Socketfamily = 2
-	// Socketfamily_Ipv6 is a representation of the C type G_SOCKET_FAMILY_IPV6.
-	Socketfamily_Ipv6 Socketfamily = 10
+	// SocketFamily_Invalid is a representation of the C type G_SOCKET_FAMILY_INVALID.
+	SocketFamily_Invalid SocketFamily = 0
+	// SocketFamily_Unix is a representation of the C type G_SOCKET_FAMILY_UNIX.
+	SocketFamily_Unix SocketFamily = 1
+	// SocketFamily_Ipv4 is a representation of the C type G_SOCKET_FAMILY_IPV4.
+	SocketFamily_Ipv4 SocketFamily = 2
+	// SocketFamily_Ipv6 is a representation of the C type G_SOCKET_FAMILY_IPV6.
+	SocketFamily_Ipv6 SocketFamily = 10
 )
 
-// Socketlistenerevent is a representation of the C type GSocketListenerEvent.
+// SocketListenerEvent is a representation of the C type GSocketListenerEvent.
 //
 // since 2.46
-type Socketlistenerevent int
+type SocketListenerEvent int
 
 const (
-	// Socketlistenerevent_Binding is a representation of the C type G_SOCKET_LISTENER_BINDING.
-	Socketlistenerevent_Binding Socketlistenerevent = 0
-	// Socketlistenerevent_Bound is a representation of the C type G_SOCKET_LISTENER_BOUND.
-	Socketlistenerevent_Bound Socketlistenerevent = 1
-	// Socketlistenerevent_Listening is a representation of the C type G_SOCKET_LISTENER_LISTENING.
-	Socketlistenerevent_Listening Socketlistenerevent = 2
-	// Socketlistenerevent_Listened is a representation of the C type G_SOCKET_LISTENER_LISTENED.
-	Socketlistenerevent_Listened Socketlistenerevent = 3
+	// SocketListenerEvent_Binding is a representation of the C type G_SOCKET_LISTENER_BINDING.
+	SocketListenerEvent_Binding SocketListenerEvent = 0
+	// SocketListenerEvent_Bound is a representation of the C type G_SOCKET_LISTENER_BOUND.
+	SocketListenerEvent_Bound SocketListenerEvent = 1
+	// SocketListenerEvent_Listening is a representation of the C type G_SOCKET_LISTENER_LISTENING.
+	SocketListenerEvent_Listening SocketListenerEvent = 2
+	// SocketListenerEvent_Listened is a representation of the C type G_SOCKET_LISTENER_LISTENED.
+	SocketListenerEvent_Listened SocketListenerEvent = 3
 )
 
-// Socketprotocol is a representation of the C type GSocketProtocol.
+// SocketProtocol is a representation of the C type GSocketProtocol.
 //
 // since 2.22
-type Socketprotocol int
+type SocketProtocol int
 
 const (
-	// Socketprotocol_Unknown is a representation of the C type G_SOCKET_PROTOCOL_UNKNOWN.
-	Socketprotocol_Unknown Socketprotocol = -1
-	// Socketprotocol_Default is a representation of the C type G_SOCKET_PROTOCOL_DEFAULT.
-	Socketprotocol_Default Socketprotocol = 0
-	// Socketprotocol_Tcp is a representation of the C type G_SOCKET_PROTOCOL_TCP.
-	Socketprotocol_Tcp Socketprotocol = 6
-	// Socketprotocol_Udp is a representation of the C type G_SOCKET_PROTOCOL_UDP.
-	Socketprotocol_Udp Socketprotocol = 17
-	// Socketprotocol_Sctp is a representation of the C type G_SOCKET_PROTOCOL_SCTP.
-	Socketprotocol_Sctp Socketprotocol = 132
+	// SocketProtocol_Unknown is a representation of the C type G_SOCKET_PROTOCOL_UNKNOWN.
+	SocketProtocol_Unknown SocketProtocol = -1
+	// SocketProtocol_Default is a representation of the C type G_SOCKET_PROTOCOL_DEFAULT.
+	SocketProtocol_Default SocketProtocol = 0
+	// SocketProtocol_Tcp is a representation of the C type G_SOCKET_PROTOCOL_TCP.
+	SocketProtocol_Tcp SocketProtocol = 6
+	// SocketProtocol_Udp is a representation of the C type G_SOCKET_PROTOCOL_UDP.
+	SocketProtocol_Udp SocketProtocol = 17
+	// SocketProtocol_Sctp is a representation of the C type G_SOCKET_PROTOCOL_SCTP.
+	SocketProtocol_Sctp SocketProtocol = 132
 )
 
-// Sockettype is a representation of the C type GSocketType.
+// SocketType is a representation of the C type GSocketType.
 //
 // since 2.22
-type Sockettype int
+type SocketType int
 
 const (
-	// Sockettype_Invalid is a representation of the C type G_SOCKET_TYPE_INVALID.
-	Sockettype_Invalid Sockettype = 0
-	// Sockettype_Stream is a representation of the C type G_SOCKET_TYPE_STREAM.
-	Sockettype_Stream Sockettype = 1
-	// Sockettype_Datagram is a representation of the C type G_SOCKET_TYPE_DATAGRAM.
-	Sockettype_Datagram Sockettype = 2
-	// Sockettype_Seqpacket is a representation of the C type G_SOCKET_TYPE_SEQPACKET.
-	Sockettype_Seqpacket Sockettype = 3
+	// SocketType_Invalid is a representation of the C type G_SOCKET_TYPE_INVALID.
+	SocketType_Invalid SocketType = 0
+	// SocketType_Stream is a representation of the C type G_SOCKET_TYPE_STREAM.
+	SocketType_Stream SocketType = 1
+	// SocketType_Datagram is a representation of the C type G_SOCKET_TYPE_DATAGRAM.
+	SocketType_Datagram SocketType = 2
+	// SocketType_Seqpacket is a representation of the C type G_SOCKET_TYPE_SEQPACKET.
+	SocketType_Seqpacket SocketType = 3
 )
 
-// Tlsauthenticationmode is a representation of the C type GTlsAuthenticationMode.
+// TlsAuthenticationMode is a representation of the C type GTlsAuthenticationMode.
 //
 // since 2.28
-type Tlsauthenticationmode int
+type TlsAuthenticationMode int
 
 const (
-	// Tlsauthenticationmode_None is a representation of the C type G_TLS_AUTHENTICATION_NONE.
-	Tlsauthenticationmode_None Tlsauthenticationmode = 0
-	// Tlsauthenticationmode_Requested is a representation of the C type G_TLS_AUTHENTICATION_REQUESTED.
-	Tlsauthenticationmode_Requested Tlsauthenticationmode = 1
-	// Tlsauthenticationmode_Required is a representation of the C type G_TLS_AUTHENTICATION_REQUIRED.
-	Tlsauthenticationmode_Required Tlsauthenticationmode = 2
+	// TlsAuthenticationMode_None is a representation of the C type G_TLS_AUTHENTICATION_NONE.
+	TlsAuthenticationMode_None TlsAuthenticationMode = 0
+	// TlsAuthenticationMode_Requested is a representation of the C type G_TLS_AUTHENTICATION_REQUESTED.
+	TlsAuthenticationMode_Requested TlsAuthenticationMode = 1
+	// TlsAuthenticationMode_Required is a representation of the C type G_TLS_AUTHENTICATION_REQUIRED.
+	TlsAuthenticationMode_Required TlsAuthenticationMode = 2
 )
 
-// Tlscertificaterequestflags is a representation of the C type GTlsCertificateRequestFlags.
+// TlsCertificateRequestFlags is a representation of the C type GTlsCertificateRequestFlags.
 //
 // since 2.40
-type Tlscertificaterequestflags int
+type TlsCertificateRequestFlags int
 
 const (
-	// Tlscertificaterequestflags_None is a representation of the C type G_TLS_CERTIFICATE_REQUEST_NONE.
-	Tlscertificaterequestflags_None Tlscertificaterequestflags = 0
+	// TlsCertificateRequestFlags_None is a representation of the C type G_TLS_CERTIFICATE_REQUEST_NONE.
+	TlsCertificateRequestFlags_None TlsCertificateRequestFlags = 0
 )
 
-// Tlsdatabaselookupflags is a representation of the C type GTlsDatabaseLookupFlags.
+// TlsDatabaseLookupFlags is a representation of the C type GTlsDatabaseLookupFlags.
 //
 // since 2.30
-type Tlsdatabaselookupflags int
+type TlsDatabaseLookupFlags int
 
 const (
-	// Tlsdatabaselookupflags_None is a representation of the C type G_TLS_DATABASE_LOOKUP_NONE.
-	Tlsdatabaselookupflags_None Tlsdatabaselookupflags = 0
-	// Tlsdatabaselookupflags_Keypair is a representation of the C type G_TLS_DATABASE_LOOKUP_KEYPAIR.
-	Tlsdatabaselookupflags_Keypair Tlsdatabaselookupflags = 1
+	// TlsDatabaseLookupFlags_None is a representation of the C type G_TLS_DATABASE_LOOKUP_NONE.
+	TlsDatabaseLookupFlags_None TlsDatabaseLookupFlags = 0
+	// TlsDatabaseLookupFlags_Keypair is a representation of the C type G_TLS_DATABASE_LOOKUP_KEYPAIR.
+	TlsDatabaseLookupFlags_Keypair TlsDatabaseLookupFlags = 1
 )
 
-// Tlserror is a representation of the C type GTlsError.
+// TlsError is a representation of the C type GTlsError.
 //
 // since 2.28
-type Tlserror int
+type TlsError int
 
 const (
-	// Tlserror_Unavailable is a representation of the C type G_TLS_ERROR_UNAVAILABLE.
-	Tlserror_Unavailable Tlserror = 0
-	// Tlserror_Misc is a representation of the C type G_TLS_ERROR_MISC.
-	Tlserror_Misc Tlserror = 1
-	// Tlserror_BadCertificate is a representation of the C type G_TLS_ERROR_BAD_CERTIFICATE.
-	Tlserror_BadCertificate Tlserror = 2
-	// Tlserror_NotTls is a representation of the C type G_TLS_ERROR_NOT_TLS.
-	Tlserror_NotTls Tlserror = 3
-	// Tlserror_Handshake is a representation of the C type G_TLS_ERROR_HANDSHAKE.
-	Tlserror_Handshake Tlserror = 4
-	// Tlserror_CertificateRequired is a representation of the C type G_TLS_ERROR_CERTIFICATE_REQUIRED.
-	Tlserror_CertificateRequired Tlserror = 5
-	// Tlserror_Eof is a representation of the C type G_TLS_ERROR_EOF.
-	Tlserror_Eof Tlserror = 6
-	// Tlserror_InappropriateFallback is a representation of the C type G_TLS_ERROR_INAPPROPRIATE_FALLBACK.
-	Tlserror_InappropriateFallback Tlserror = 7
+	// TlsError_Unavailable is a representation of the C type G_TLS_ERROR_UNAVAILABLE.
+	TlsError_Unavailable TlsError = 0
+	// TlsError_Misc is a representation of the C type G_TLS_ERROR_MISC.
+	TlsError_Misc TlsError = 1
+	// TlsError_BadCertificate is a representation of the C type G_TLS_ERROR_BAD_CERTIFICATE.
+	TlsError_BadCertificate TlsError = 2
+	// TlsError_NotTls is a representation of the C type G_TLS_ERROR_NOT_TLS.
+	TlsError_NotTls TlsError = 3
+	// TlsError_Handshake is a representation of the C type G_TLS_ERROR_HANDSHAKE.
+	TlsError_Handshake TlsError = 4
+	// TlsError_CertificateRequired is a representation of the C type G_TLS_ERROR_CERTIFICATE_REQUIRED.
+	TlsError_CertificateRequired TlsError = 5
+	// TlsError_Eof is a representation of the C type G_TLS_ERROR_EOF.
+	TlsError_Eof TlsError = 6
+	// TlsError_InappropriateFallback is a representation of the C type G_TLS_ERROR_INAPPROPRIATE_FALLBACK.
+	TlsError_InappropriateFallback TlsError = 7
 )
 
-// Tlsinteractionresult is a representation of the C type GTlsInteractionResult.
+// TlsInteractionResult is a representation of the C type GTlsInteractionResult.
 //
 // since 2.30
-type Tlsinteractionresult int
+type TlsInteractionResult int
 
 const (
-	// Tlsinteractionresult_Unhandled is a representation of the C type G_TLS_INTERACTION_UNHANDLED.
-	Tlsinteractionresult_Unhandled Tlsinteractionresult = 0
-	// Tlsinteractionresult_Handled is a representation of the C type G_TLS_INTERACTION_HANDLED.
-	Tlsinteractionresult_Handled Tlsinteractionresult = 1
-	// Tlsinteractionresult_Failed is a representation of the C type G_TLS_INTERACTION_FAILED.
-	Tlsinteractionresult_Failed Tlsinteractionresult = 2
+	// TlsInteractionResult_Unhandled is a representation of the C type G_TLS_INTERACTION_UNHANDLED.
+	TlsInteractionResult_Unhandled TlsInteractionResult = 0
+	// TlsInteractionResult_Handled is a representation of the C type G_TLS_INTERACTION_HANDLED.
+	TlsInteractionResult_Handled TlsInteractionResult = 1
+	// TlsInteractionResult_Failed is a representation of the C type G_TLS_INTERACTION_FAILED.
+	TlsInteractionResult_Failed TlsInteractionResult = 2
 )
 
-// Tlsrehandshakemode is a representation of the C type GTlsRehandshakeMode.
+// TlsRehandshakeMode is a representation of the C type GTlsRehandshakeMode.
 //
 // since 2.28
-type Tlsrehandshakemode int
+type TlsRehandshakeMode int
 
 const (
-	// Tlsrehandshakemode_Never is a representation of the C type G_TLS_REHANDSHAKE_NEVER.
-	Tlsrehandshakemode_Never Tlsrehandshakemode = 0
-	// Tlsrehandshakemode_Safely is a representation of the C type G_TLS_REHANDSHAKE_SAFELY.
-	Tlsrehandshakemode_Safely Tlsrehandshakemode = 1
-	// Tlsrehandshakemode_Unsafely is a representation of the C type G_TLS_REHANDSHAKE_UNSAFELY.
-	Tlsrehandshakemode_Unsafely Tlsrehandshakemode = 2
+	// TlsRehandshakeMode_Never is a representation of the C type G_TLS_REHANDSHAKE_NEVER.
+	TlsRehandshakeMode_Never TlsRehandshakeMode = 0
+	// TlsRehandshakeMode_Safely is a representation of the C type G_TLS_REHANDSHAKE_SAFELY.
+	TlsRehandshakeMode_Safely TlsRehandshakeMode = 1
+	// TlsRehandshakeMode_Unsafely is a representation of the C type G_TLS_REHANDSHAKE_UNSAFELY.
+	TlsRehandshakeMode_Unsafely TlsRehandshakeMode = 2
 )
 
-// Unixsocketaddresstype is a representation of the C type GUnixSocketAddressType.
+// UnixSocketAddressType is a representation of the C type GUnixSocketAddressType.
 //
 // since 2.26
-type Unixsocketaddresstype int
+type UnixSocketAddressType int
 
 const (
-	// Unixsocketaddresstype_Invalid is a representation of the C type G_UNIX_SOCKET_ADDRESS_INVALID.
-	Unixsocketaddresstype_Invalid Unixsocketaddresstype = 0
-	// Unixsocketaddresstype_Anonymous is a representation of the C type G_UNIX_SOCKET_ADDRESS_ANONYMOUS.
-	Unixsocketaddresstype_Anonymous Unixsocketaddresstype = 1
-	// Unixsocketaddresstype_Path is a representation of the C type G_UNIX_SOCKET_ADDRESS_PATH.
-	Unixsocketaddresstype_Path Unixsocketaddresstype = 2
-	// Unixsocketaddresstype_Abstract is a representation of the C type G_UNIX_SOCKET_ADDRESS_ABSTRACT.
-	Unixsocketaddresstype_Abstract Unixsocketaddresstype = 3
-	// Unixsocketaddresstype_AbstractPadded is a representation of the C type G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
-	Unixsocketaddresstype_AbstractPadded Unixsocketaddresstype = 4
+	// UnixSocketAddressType_Invalid is a representation of the C type G_UNIX_SOCKET_ADDRESS_INVALID.
+	UnixSocketAddressType_Invalid UnixSocketAddressType = 0
+	// UnixSocketAddressType_Anonymous is a representation of the C type G_UNIX_SOCKET_ADDRESS_ANONYMOUS.
+	UnixSocketAddressType_Anonymous UnixSocketAddressType = 1
+	// UnixSocketAddressType_Path is a representation of the C type G_UNIX_SOCKET_ADDRESS_PATH.
+	UnixSocketAddressType_Path UnixSocketAddressType = 2
+	// UnixSocketAddressType_Abstract is a representation of the C type G_UNIX_SOCKET_ADDRESS_ABSTRACT.
+	UnixSocketAddressType_Abstract UnixSocketAddressType = 3
+	// UnixSocketAddressType_AbstractPadded is a representation of the C type G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+	UnixSocketAddressType_AbstractPadded UnixSocketAddressType = 4
 )
 
-// Zlibcompressorformat is a representation of the C type GZlibCompressorFormat.
+// ZlibCompressorFormat is a representation of the C type GZlibCompressorFormat.
 //
 // since 2.24
-type Zlibcompressorformat int
+type ZlibCompressorFormat int
 
 const (
-	// Zlibcompressorformat_Zlib is a representation of the C type G_ZLIB_COMPRESSOR_FORMAT_ZLIB.
-	Zlibcompressorformat_Zlib Zlibcompressorformat = 0
-	// Zlibcompressorformat_Gzip is a representation of the C type G_ZLIB_COMPRESSOR_FORMAT_GZIP.
-	Zlibcompressorformat_Gzip Zlibcompressorformat = 1
-	// Zlibcompressorformat_Raw is a representation of the C type G_ZLIB_COMPRESSOR_FORMAT_RAW.
-	Zlibcompressorformat_Raw Zlibcompressorformat = 2
+	// ZlibCompressorFormat_Zlib is a representation of the C type G_ZLIB_COMPRESSOR_FORMAT_ZLIB.
+	ZlibCompressorFormat_Zlib ZlibCompressorFormat = 0
+	// ZlibCompressorFormat_Gzip is a representation of the C type G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+	ZlibCompressorFormat_Gzip ZlibCompressorFormat = 1
+	// ZlibCompressorFormat_Raw is a representation of the C type G_ZLIB_COMPRESSOR_FORMAT_RAW.
+	ZlibCompressorFormat_Raw ZlibCompressorFormat = 2
 )

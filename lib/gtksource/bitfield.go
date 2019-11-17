@@ -2,120 +2,120 @@
 
 package gtksource
 
-// Completionactivation is a representation of the C type GtkSourceCompletionActivation.
-type Completionactivation int
+// CompletionActivation is a representation of the C type GtkSourceCompletionActivation.
+type CompletionActivation int
 
 const (
-	// Completionactivation_None is a representation of the C type GTK_SOURCE_COMPLETION_ACTIVATION_NONE.
-	Completionactivation_None Completionactivation = 0
-	// Completionactivation_Interactive is a representation of the C type GTK_SOURCE_COMPLETION_ACTIVATION_INTERACTIVE.
-	Completionactivation_Interactive Completionactivation = 1
-	// Completionactivation_UserRequested is a representation of the C type GTK_SOURCE_COMPLETION_ACTIVATION_USER_REQUESTED.
-	Completionactivation_UserRequested Completionactivation = 2
+	// CompletionActivation_None is a representation of the C type GTK_SOURCE_COMPLETION_ACTIVATION_NONE.
+	CompletionActivation_None CompletionActivation = 0
+	// CompletionActivation_Interactive is a representation of the C type GTK_SOURCE_COMPLETION_ACTIVATION_INTERACTIVE.
+	CompletionActivation_Interactive CompletionActivation = 1
+	// CompletionActivation_UserRequested is a representation of the C type GTK_SOURCE_COMPLETION_ACTIVATION_USER_REQUESTED.
+	CompletionActivation_UserRequested CompletionActivation = 2
 )
 
-// Drawspacesflags is a representation of the C type GtkSourceDrawSpacesFlags.
-type Drawspacesflags int
+// DrawSpacesFlags is a representation of the C type GtkSourceDrawSpacesFlags.
+type DrawSpacesFlags int
 
 const (
-	// Drawspacesflags_Space is a representation of the C type GTK_SOURCE_DRAW_SPACES_SPACE.
-	Drawspacesflags_Space Drawspacesflags = 1
-	// Drawspacesflags_Tab is a representation of the C type GTK_SOURCE_DRAW_SPACES_TAB.
-	Drawspacesflags_Tab Drawspacesflags = 2
-	// Drawspacesflags_Newline is a representation of the C type GTK_SOURCE_DRAW_SPACES_NEWLINE.
-	Drawspacesflags_Newline Drawspacesflags = 4
-	// Drawspacesflags_Nbsp is a representation of the C type GTK_SOURCE_DRAW_SPACES_NBSP.
-	Drawspacesflags_Nbsp Drawspacesflags = 8
-	// Drawspacesflags_Leading is a representation of the C type GTK_SOURCE_DRAW_SPACES_LEADING.
-	Drawspacesflags_Leading Drawspacesflags = 16
-	// Drawspacesflags_Text is a representation of the C type GTK_SOURCE_DRAW_SPACES_TEXT.
-	Drawspacesflags_Text Drawspacesflags = 32
-	// Drawspacesflags_Trailing is a representation of the C type GTK_SOURCE_DRAW_SPACES_TRAILING.
-	Drawspacesflags_Trailing Drawspacesflags = 64
-	// Drawspacesflags_All is a representation of the C type GTK_SOURCE_DRAW_SPACES_ALL.
-	Drawspacesflags_All Drawspacesflags = 127
+	// DrawSpacesFlags_Space is a representation of the C type GTK_SOURCE_DRAW_SPACES_SPACE.
+	DrawSpacesFlags_Space DrawSpacesFlags = 1
+	// DrawSpacesFlags_Tab is a representation of the C type GTK_SOURCE_DRAW_SPACES_TAB.
+	DrawSpacesFlags_Tab DrawSpacesFlags = 2
+	// DrawSpacesFlags_Newline is a representation of the C type GTK_SOURCE_DRAW_SPACES_NEWLINE.
+	DrawSpacesFlags_Newline DrawSpacesFlags = 4
+	// DrawSpacesFlags_Nbsp is a representation of the C type GTK_SOURCE_DRAW_SPACES_NBSP.
+	DrawSpacesFlags_Nbsp DrawSpacesFlags = 8
+	// DrawSpacesFlags_Leading is a representation of the C type GTK_SOURCE_DRAW_SPACES_LEADING.
+	DrawSpacesFlags_Leading DrawSpacesFlags = 16
+	// DrawSpacesFlags_Text is a representation of the C type GTK_SOURCE_DRAW_SPACES_TEXT.
+	DrawSpacesFlags_Text DrawSpacesFlags = 32
+	// DrawSpacesFlags_Trailing is a representation of the C type GTK_SOURCE_DRAW_SPACES_TRAILING.
+	DrawSpacesFlags_Trailing DrawSpacesFlags = 64
+	// DrawSpacesFlags_All is a representation of the C type GTK_SOURCE_DRAW_SPACES_ALL.
+	DrawSpacesFlags_All DrawSpacesFlags = 127
 )
 
-// Filesaverflags is a representation of the C type GtkSourceFileSaverFlags.
+// FileSaverFlags is a representation of the C type GtkSourceFileSaverFlags.
 //
 // since 3.14
-type Filesaverflags int
+type FileSaverFlags int
 
 const (
-	// Filesaverflags_None is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_NONE.
-	Filesaverflags_None Filesaverflags = 0
-	// Filesaverflags_IgnoreInvalidChars is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_INVALID_CHARS.
-	Filesaverflags_IgnoreInvalidChars Filesaverflags = 1
-	// Filesaverflags_IgnoreModificationTime is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME.
-	Filesaverflags_IgnoreModificationTime Filesaverflags = 2
-	// Filesaverflags_CreateBackup is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP.
-	Filesaverflags_CreateBackup Filesaverflags = 4
+	// FileSaverFlags_None is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_NONE.
+	FileSaverFlags_None FileSaverFlags = 0
+	// FileSaverFlags_IgnoreInvalidChars is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_INVALID_CHARS.
+	FileSaverFlags_IgnoreInvalidChars FileSaverFlags = 1
+	// FileSaverFlags_IgnoreModificationTime is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME.
+	FileSaverFlags_IgnoreModificationTime FileSaverFlags = 2
+	// FileSaverFlags_CreateBackup is a representation of the C type GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP.
+	FileSaverFlags_CreateBackup FileSaverFlags = 4
 )
 
-// Gutterrendererstate is a representation of the C type GtkSourceGutterRendererState.
-type Gutterrendererstate int
+// GutterRendererState is a representation of the C type GtkSourceGutterRendererState.
+type GutterRendererState int
 
 const (
-	// Gutterrendererstate_Normal is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_NORMAL.
-	Gutterrendererstate_Normal Gutterrendererstate = 0
-	// Gutterrendererstate_Cursor is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_CURSOR.
-	Gutterrendererstate_Cursor Gutterrendererstate = 1
-	// Gutterrendererstate_Prelit is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_PRELIT.
-	Gutterrendererstate_Prelit Gutterrendererstate = 2
-	// Gutterrendererstate_Selected is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_SELECTED.
-	Gutterrendererstate_Selected Gutterrendererstate = 4
+	// GutterRendererState_Normal is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_NORMAL.
+	GutterRendererState_Normal GutterRendererState = 0
+	// GutterRendererState_Cursor is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_CURSOR.
+	GutterRendererState_Cursor GutterRendererState = 1
+	// GutterRendererState_Prelit is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_PRELIT.
+	GutterRendererState_Prelit GutterRendererState = 2
+	// GutterRendererState_Selected is a representation of the C type GTK_SOURCE_GUTTER_RENDERER_STATE_SELECTED.
+	GutterRendererState_Selected GutterRendererState = 4
 )
 
-// Sortflags is a representation of the C type GtkSourceSortFlags.
+// SortFlags is a representation of the C type GtkSourceSortFlags.
 //
 // since 3.18
-type Sortflags int
+type SortFlags int
 
 const (
-	// Sortflags_None is a representation of the C type GTK_SOURCE_SORT_FLAGS_NONE.
-	Sortflags_None Sortflags = 0
-	// Sortflags_CaseSensitive is a representation of the C type GTK_SOURCE_SORT_FLAGS_CASE_SENSITIVE.
-	Sortflags_CaseSensitive Sortflags = 1
-	// Sortflags_ReverseOrder is a representation of the C type GTK_SOURCE_SORT_FLAGS_REVERSE_ORDER.
-	Sortflags_ReverseOrder Sortflags = 2
-	// Sortflags_RemoveDuplicates is a representation of the C type GTK_SOURCE_SORT_FLAGS_REMOVE_DUPLICATES.
-	Sortflags_RemoveDuplicates Sortflags = 4
+	// SortFlags_None is a representation of the C type GTK_SOURCE_SORT_FLAGS_NONE.
+	SortFlags_None SortFlags = 0
+	// SortFlags_CaseSensitive is a representation of the C type GTK_SOURCE_SORT_FLAGS_CASE_SENSITIVE.
+	SortFlags_CaseSensitive SortFlags = 1
+	// SortFlags_ReverseOrder is a representation of the C type GTK_SOURCE_SORT_FLAGS_REVERSE_ORDER.
+	SortFlags_ReverseOrder SortFlags = 2
+	// SortFlags_RemoveDuplicates is a representation of the C type GTK_SOURCE_SORT_FLAGS_REMOVE_DUPLICATES.
+	SortFlags_RemoveDuplicates SortFlags = 4
 )
 
-// Spacelocationflags is a representation of the C type GtkSourceSpaceLocationFlags.
+// SpaceLocationFlags is a representation of the C type GtkSourceSpaceLocationFlags.
 //
 // since 3.24
-type Spacelocationflags int
+type SpaceLocationFlags int
 
 const (
-	// Spacelocationflags_None is a representation of the C type GTK_SOURCE_SPACE_LOCATION_NONE.
-	Spacelocationflags_None Spacelocationflags = 0
-	// Spacelocationflags_Leading is a representation of the C type GTK_SOURCE_SPACE_LOCATION_LEADING.
-	Spacelocationflags_Leading Spacelocationflags = 1
-	// Spacelocationflags_InsideText is a representation of the C type GTK_SOURCE_SPACE_LOCATION_INSIDE_TEXT.
-	Spacelocationflags_InsideText Spacelocationflags = 2
-	// Spacelocationflags_Trailing is a representation of the C type GTK_SOURCE_SPACE_LOCATION_TRAILING.
-	Spacelocationflags_Trailing Spacelocationflags = 4
-	// Spacelocationflags_All is a representation of the C type GTK_SOURCE_SPACE_LOCATION_ALL.
-	Spacelocationflags_All Spacelocationflags = 7
+	// SpaceLocationFlags_None is a representation of the C type GTK_SOURCE_SPACE_LOCATION_NONE.
+	SpaceLocationFlags_None SpaceLocationFlags = 0
+	// SpaceLocationFlags_Leading is a representation of the C type GTK_SOURCE_SPACE_LOCATION_LEADING.
+	SpaceLocationFlags_Leading SpaceLocationFlags = 1
+	// SpaceLocationFlags_InsideText is a representation of the C type GTK_SOURCE_SPACE_LOCATION_INSIDE_TEXT.
+	SpaceLocationFlags_InsideText SpaceLocationFlags = 2
+	// SpaceLocationFlags_Trailing is a representation of the C type GTK_SOURCE_SPACE_LOCATION_TRAILING.
+	SpaceLocationFlags_Trailing SpaceLocationFlags = 4
+	// SpaceLocationFlags_All is a representation of the C type GTK_SOURCE_SPACE_LOCATION_ALL.
+	SpaceLocationFlags_All SpaceLocationFlags = 7
 )
 
-// Spacetypeflags is a representation of the C type GtkSourceSpaceTypeFlags.
+// SpaceTypeFlags is a representation of the C type GtkSourceSpaceTypeFlags.
 //
 // since 3.24
-type Spacetypeflags int
+type SpaceTypeFlags int
 
 const (
-	// Spacetypeflags_None is a representation of the C type GTK_SOURCE_SPACE_TYPE_NONE.
-	Spacetypeflags_None Spacetypeflags = 0
-	// Spacetypeflags_Space is a representation of the C type GTK_SOURCE_SPACE_TYPE_SPACE.
-	Spacetypeflags_Space Spacetypeflags = 1
-	// Spacetypeflags_Tab is a representation of the C type GTK_SOURCE_SPACE_TYPE_TAB.
-	Spacetypeflags_Tab Spacetypeflags = 2
-	// Spacetypeflags_Newline is a representation of the C type GTK_SOURCE_SPACE_TYPE_NEWLINE.
-	Spacetypeflags_Newline Spacetypeflags = 4
-	// Spacetypeflags_Nbsp is a representation of the C type GTK_SOURCE_SPACE_TYPE_NBSP.
-	Spacetypeflags_Nbsp Spacetypeflags = 8
-	// Spacetypeflags_All is a representation of the C type GTK_SOURCE_SPACE_TYPE_ALL.
-	Spacetypeflags_All Spacetypeflags = 15
+	// SpaceTypeFlags_None is a representation of the C type GTK_SOURCE_SPACE_TYPE_NONE.
+	SpaceTypeFlags_None SpaceTypeFlags = 0
+	// SpaceTypeFlags_Space is a representation of the C type GTK_SOURCE_SPACE_TYPE_SPACE.
+	SpaceTypeFlags_Space SpaceTypeFlags = 1
+	// SpaceTypeFlags_Tab is a representation of the C type GTK_SOURCE_SPACE_TYPE_TAB.
+	SpaceTypeFlags_Tab SpaceTypeFlags = 2
+	// SpaceTypeFlags_Newline is a representation of the C type GTK_SOURCE_SPACE_TYPE_NEWLINE.
+	SpaceTypeFlags_Newline SpaceTypeFlags = 4
+	// SpaceTypeFlags_Nbsp is a representation of the C type GTK_SOURCE_SPACE_TYPE_NBSP.
+	SpaceTypeFlags_Nbsp SpaceTypeFlags = 8
+	// SpaceTypeFlags_All is a representation of the C type GTK_SOURCE_SPACE_TYPE_ALL.
+	SpaceTypeFlags_All SpaceTypeFlags = 15
 )

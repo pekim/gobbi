@@ -2,24 +2,24 @@
 
 package pango
 
-// Fontmask is a representation of the C type PangoFontMask.
-type Fontmask int
+// FontMask is a representation of the C type PangoFontMask.
+type FontMask int
 
 const (
-	// Fontmask_Family is a representation of the C type PANGO_FONT_MASK_FAMILY.
-	Fontmask_Family Fontmask = 1
-	// Fontmask_Style is a representation of the C type PANGO_FONT_MASK_STYLE.
-	Fontmask_Style Fontmask = 2
-	// Fontmask_Variant is a representation of the C type PANGO_FONT_MASK_VARIANT.
-	Fontmask_Variant Fontmask = 4
-	// Fontmask_Weight is a representation of the C type PANGO_FONT_MASK_WEIGHT.
-	Fontmask_Weight Fontmask = 8
-	// Fontmask_Stretch is a representation of the C type PANGO_FONT_MASK_STRETCH.
-	Fontmask_Stretch Fontmask = 16
-	// Fontmask_Size is a representation of the C type PANGO_FONT_MASK_SIZE.
-	Fontmask_Size Fontmask = 32
-	// Fontmask_Gravity is a representation of the C type PANGO_FONT_MASK_GRAVITY.
-	Fontmask_Gravity Fontmask = 64
-	// Fontmask_Variations is a representation of the C type PANGO_FONT_MASK_VARIATIONS.
-	Fontmask_Variations Fontmask = 128
+	// FontMask_Family is a representation of the C type PANGO_FONT_MASK_FAMILY.
+	FontMask_Family FontMask = 1
+	// FontMask_Style is a representation of the C type PANGO_FONT_MASK_STYLE.
+	FontMask_Style FontMask = 2
+	// FontMask_Variant is a representation of the C type PANGO_FONT_MASK_VARIANT.
+	FontMask_Variant FontMask = 4
+	// FontMask_Weight is a representation of the C type PANGO_FONT_MASK_WEIGHT.
+	FontMask_Weight FontMask = 8
+	// FontMask_Stretch is a representation of the C type PANGO_FONT_MASK_STRETCH.
+	FontMask_Stretch FontMask = 16
+	// FontMask_Size is a representation of the C type PANGO_FONT_MASK_SIZE.
+	FontMask_Size FontMask = 32
+	// FontMask_Gravity is a representation of the C type PANGO_FONT_MASK_GRAVITY.
+	FontMask_Gravity FontMask = 64
+	// FontMask_Variations is a representation of the C type PANGO_FONT_MASK_VARIATIONS.
+	FontMask_Variations FontMask = 128
 )

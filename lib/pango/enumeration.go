@@ -14,122 +14,122 @@ const (
 	Alignment_Right Alignment = 2
 )
 
-// Attrtype is a representation of the C type PangoAttrType.
-type Attrtype int
+// AttrType is a representation of the C type PangoAttrType.
+type AttrType int
 
 const (
-	// Attrtype_Invalid is a representation of the C type PANGO_ATTR_INVALID.
-	Attrtype_Invalid Attrtype = 0
-	// Attrtype_Language is a representation of the C type PANGO_ATTR_LANGUAGE.
-	Attrtype_Language Attrtype = 1
-	// Attrtype_Family is a representation of the C type PANGO_ATTR_FAMILY.
-	Attrtype_Family Attrtype = 2
-	// Attrtype_Style is a representation of the C type PANGO_ATTR_STYLE.
-	Attrtype_Style Attrtype = 3
-	// Attrtype_Weight is a representation of the C type PANGO_ATTR_WEIGHT.
-	Attrtype_Weight Attrtype = 4
-	// Attrtype_Variant is a representation of the C type PANGO_ATTR_VARIANT.
-	Attrtype_Variant Attrtype = 5
-	// Attrtype_Stretch is a representation of the C type PANGO_ATTR_STRETCH.
-	Attrtype_Stretch Attrtype = 6
-	// Attrtype_Size is a representation of the C type PANGO_ATTR_SIZE.
-	Attrtype_Size Attrtype = 7
-	// Attrtype_FontDesc is a representation of the C type PANGO_ATTR_FONT_DESC.
-	Attrtype_FontDesc Attrtype = 8
-	// Attrtype_Foreground is a representation of the C type PANGO_ATTR_FOREGROUND.
-	Attrtype_Foreground Attrtype = 9
-	// Attrtype_Background is a representation of the C type PANGO_ATTR_BACKGROUND.
-	Attrtype_Background Attrtype = 10
-	// Attrtype_Underline is a representation of the C type PANGO_ATTR_UNDERLINE.
-	Attrtype_Underline Attrtype = 11
-	// Attrtype_Strikethrough is a representation of the C type PANGO_ATTR_STRIKETHROUGH.
-	Attrtype_Strikethrough Attrtype = 12
-	// Attrtype_Rise is a representation of the C type PANGO_ATTR_RISE.
-	Attrtype_Rise Attrtype = 13
-	// Attrtype_Shape is a representation of the C type PANGO_ATTR_SHAPE.
-	Attrtype_Shape Attrtype = 14
-	// Attrtype_Scale is a representation of the C type PANGO_ATTR_SCALE.
-	Attrtype_Scale Attrtype = 15
-	// Attrtype_Fallback is a representation of the C type PANGO_ATTR_FALLBACK.
-	Attrtype_Fallback Attrtype = 16
-	// Attrtype_LetterSpacing is a representation of the C type PANGO_ATTR_LETTER_SPACING.
-	Attrtype_LetterSpacing Attrtype = 17
-	// Attrtype_UnderlineColor is a representation of the C type PANGO_ATTR_UNDERLINE_COLOR.
-	Attrtype_UnderlineColor Attrtype = 18
-	// Attrtype_StrikethroughColor is a representation of the C type PANGO_ATTR_STRIKETHROUGH_COLOR.
-	Attrtype_StrikethroughColor Attrtype = 19
-	// Attrtype_AbsoluteSize is a representation of the C type PANGO_ATTR_ABSOLUTE_SIZE.
-	Attrtype_AbsoluteSize Attrtype = 20
-	// Attrtype_Gravity is a representation of the C type PANGO_ATTR_GRAVITY.
-	Attrtype_Gravity Attrtype = 21
-	// Attrtype_GravityHint is a representation of the C type PANGO_ATTR_GRAVITY_HINT.
-	Attrtype_GravityHint Attrtype = 22
-	// Attrtype_FontFeatures is a representation of the C type PANGO_ATTR_FONT_FEATURES.
-	Attrtype_FontFeatures Attrtype = 23
-	// Attrtype_ForegroundAlpha is a representation of the C type PANGO_ATTR_FOREGROUND_ALPHA.
-	Attrtype_ForegroundAlpha Attrtype = 24
-	// Attrtype_BackgroundAlpha is a representation of the C type PANGO_ATTR_BACKGROUND_ALPHA.
-	Attrtype_BackgroundAlpha Attrtype = 25
+	// AttrType_Invalid is a representation of the C type PANGO_ATTR_INVALID.
+	AttrType_Invalid AttrType = 0
+	// AttrType_Language is a representation of the C type PANGO_ATTR_LANGUAGE.
+	AttrType_Language AttrType = 1
+	// AttrType_Family is a representation of the C type PANGO_ATTR_FAMILY.
+	AttrType_Family AttrType = 2
+	// AttrType_Style is a representation of the C type PANGO_ATTR_STYLE.
+	AttrType_Style AttrType = 3
+	// AttrType_Weight is a representation of the C type PANGO_ATTR_WEIGHT.
+	AttrType_Weight AttrType = 4
+	// AttrType_Variant is a representation of the C type PANGO_ATTR_VARIANT.
+	AttrType_Variant AttrType = 5
+	// AttrType_Stretch is a representation of the C type PANGO_ATTR_STRETCH.
+	AttrType_Stretch AttrType = 6
+	// AttrType_Size is a representation of the C type PANGO_ATTR_SIZE.
+	AttrType_Size AttrType = 7
+	// AttrType_FontDesc is a representation of the C type PANGO_ATTR_FONT_DESC.
+	AttrType_FontDesc AttrType = 8
+	// AttrType_Foreground is a representation of the C type PANGO_ATTR_FOREGROUND.
+	AttrType_Foreground AttrType = 9
+	// AttrType_Background is a representation of the C type PANGO_ATTR_BACKGROUND.
+	AttrType_Background AttrType = 10
+	// AttrType_Underline is a representation of the C type PANGO_ATTR_UNDERLINE.
+	AttrType_Underline AttrType = 11
+	// AttrType_Strikethrough is a representation of the C type PANGO_ATTR_STRIKETHROUGH.
+	AttrType_Strikethrough AttrType = 12
+	// AttrType_Rise is a representation of the C type PANGO_ATTR_RISE.
+	AttrType_Rise AttrType = 13
+	// AttrType_Shape is a representation of the C type PANGO_ATTR_SHAPE.
+	AttrType_Shape AttrType = 14
+	// AttrType_Scale is a representation of the C type PANGO_ATTR_SCALE.
+	AttrType_Scale AttrType = 15
+	// AttrType_Fallback is a representation of the C type PANGO_ATTR_FALLBACK.
+	AttrType_Fallback AttrType = 16
+	// AttrType_LetterSpacing is a representation of the C type PANGO_ATTR_LETTER_SPACING.
+	AttrType_LetterSpacing AttrType = 17
+	// AttrType_UnderlineColor is a representation of the C type PANGO_ATTR_UNDERLINE_COLOR.
+	AttrType_UnderlineColor AttrType = 18
+	// AttrType_StrikethroughColor is a representation of the C type PANGO_ATTR_STRIKETHROUGH_COLOR.
+	AttrType_StrikethroughColor AttrType = 19
+	// AttrType_AbsoluteSize is a representation of the C type PANGO_ATTR_ABSOLUTE_SIZE.
+	AttrType_AbsoluteSize AttrType = 20
+	// AttrType_Gravity is a representation of the C type PANGO_ATTR_GRAVITY.
+	AttrType_Gravity AttrType = 21
+	// AttrType_GravityHint is a representation of the C type PANGO_ATTR_GRAVITY_HINT.
+	AttrType_GravityHint AttrType = 22
+	// AttrType_FontFeatures is a representation of the C type PANGO_ATTR_FONT_FEATURES.
+	AttrType_FontFeatures AttrType = 23
+	// AttrType_ForegroundAlpha is a representation of the C type PANGO_ATTR_FOREGROUND_ALPHA.
+	AttrType_ForegroundAlpha AttrType = 24
+	// AttrType_BackgroundAlpha is a representation of the C type PANGO_ATTR_BACKGROUND_ALPHA.
+	AttrType_BackgroundAlpha AttrType = 25
 )
 
-// Biditype is a representation of the C type PangoBidiType.
+// BidiType is a representation of the C type PangoBidiType.
 //
 // since 1.22
-type Biditype int
+type BidiType int
 
 const (
-	// Biditype_L is a representation of the C type PANGO_BIDI_TYPE_L.
-	Biditype_L Biditype = 0
-	// Biditype_Lre is a representation of the C type PANGO_BIDI_TYPE_LRE.
-	Biditype_Lre Biditype = 1
-	// Biditype_Lro is a representation of the C type PANGO_BIDI_TYPE_LRO.
-	Biditype_Lro Biditype = 2
-	// Biditype_R is a representation of the C type PANGO_BIDI_TYPE_R.
-	Biditype_R Biditype = 3
-	// Biditype_Al is a representation of the C type PANGO_BIDI_TYPE_AL.
-	Biditype_Al Biditype = 4
-	// Biditype_Rle is a representation of the C type PANGO_BIDI_TYPE_RLE.
-	Biditype_Rle Biditype = 5
-	// Biditype_Rlo is a representation of the C type PANGO_BIDI_TYPE_RLO.
-	Biditype_Rlo Biditype = 6
-	// Biditype_Pdf is a representation of the C type PANGO_BIDI_TYPE_PDF.
-	Biditype_Pdf Biditype = 7
-	// Biditype_En is a representation of the C type PANGO_BIDI_TYPE_EN.
-	Biditype_En Biditype = 8
-	// Biditype_Es is a representation of the C type PANGO_BIDI_TYPE_ES.
-	Biditype_Es Biditype = 9
-	// Biditype_Et is a representation of the C type PANGO_BIDI_TYPE_ET.
-	Biditype_Et Biditype = 10
-	// Biditype_An is a representation of the C type PANGO_BIDI_TYPE_AN.
-	Biditype_An Biditype = 11
-	// Biditype_Cs is a representation of the C type PANGO_BIDI_TYPE_CS.
-	Biditype_Cs Biditype = 12
-	// Biditype_Nsm is a representation of the C type PANGO_BIDI_TYPE_NSM.
-	Biditype_Nsm Biditype = 13
-	// Biditype_Bn is a representation of the C type PANGO_BIDI_TYPE_BN.
-	Biditype_Bn Biditype = 14
-	// Biditype_B is a representation of the C type PANGO_BIDI_TYPE_B.
-	Biditype_B Biditype = 15
-	// Biditype_S is a representation of the C type PANGO_BIDI_TYPE_S.
-	Biditype_S Biditype = 16
-	// Biditype_Ws is a representation of the C type PANGO_BIDI_TYPE_WS.
-	Biditype_Ws Biditype = 17
-	// Biditype_On is a representation of the C type PANGO_BIDI_TYPE_ON.
-	Biditype_On Biditype = 18
+	// BidiType_L is a representation of the C type PANGO_BIDI_TYPE_L.
+	BidiType_L BidiType = 0
+	// BidiType_Lre is a representation of the C type PANGO_BIDI_TYPE_LRE.
+	BidiType_Lre BidiType = 1
+	// BidiType_Lro is a representation of the C type PANGO_BIDI_TYPE_LRO.
+	BidiType_Lro BidiType = 2
+	// BidiType_R is a representation of the C type PANGO_BIDI_TYPE_R.
+	BidiType_R BidiType = 3
+	// BidiType_Al is a representation of the C type PANGO_BIDI_TYPE_AL.
+	BidiType_Al BidiType = 4
+	// BidiType_Rle is a representation of the C type PANGO_BIDI_TYPE_RLE.
+	BidiType_Rle BidiType = 5
+	// BidiType_Rlo is a representation of the C type PANGO_BIDI_TYPE_RLO.
+	BidiType_Rlo BidiType = 6
+	// BidiType_Pdf is a representation of the C type PANGO_BIDI_TYPE_PDF.
+	BidiType_Pdf BidiType = 7
+	// BidiType_En is a representation of the C type PANGO_BIDI_TYPE_EN.
+	BidiType_En BidiType = 8
+	// BidiType_Es is a representation of the C type PANGO_BIDI_TYPE_ES.
+	BidiType_Es BidiType = 9
+	// BidiType_Et is a representation of the C type PANGO_BIDI_TYPE_ET.
+	BidiType_Et BidiType = 10
+	// BidiType_An is a representation of the C type PANGO_BIDI_TYPE_AN.
+	BidiType_An BidiType = 11
+	// BidiType_Cs is a representation of the C type PANGO_BIDI_TYPE_CS.
+	BidiType_Cs BidiType = 12
+	// BidiType_Nsm is a representation of the C type PANGO_BIDI_TYPE_NSM.
+	BidiType_Nsm BidiType = 13
+	// BidiType_Bn is a representation of the C type PANGO_BIDI_TYPE_BN.
+	BidiType_Bn BidiType = 14
+	// BidiType_B is a representation of the C type PANGO_BIDI_TYPE_B.
+	BidiType_B BidiType = 15
+	// BidiType_S is a representation of the C type PANGO_BIDI_TYPE_S.
+	BidiType_S BidiType = 16
+	// BidiType_Ws is a representation of the C type PANGO_BIDI_TYPE_WS.
+	BidiType_Ws BidiType = 17
+	// BidiType_On is a representation of the C type PANGO_BIDI_TYPE_ON.
+	BidiType_On BidiType = 18
 )
 
-// Coveragelevel is a representation of the C type PangoCoverageLevel.
-type Coveragelevel int
+// CoverageLevel is a representation of the C type PangoCoverageLevel.
+type CoverageLevel int
 
 const (
-	// Coveragelevel_None is a representation of the C type PANGO_COVERAGE_NONE.
-	Coveragelevel_None Coveragelevel = 0
-	// Coveragelevel_Fallback is a representation of the C type PANGO_COVERAGE_FALLBACK.
-	Coveragelevel_Fallback Coveragelevel = 1
-	// Coveragelevel_Approximate is a representation of the C type PANGO_COVERAGE_APPROXIMATE.
-	Coveragelevel_Approximate Coveragelevel = 2
-	// Coveragelevel_Exact is a representation of the C type PANGO_COVERAGE_EXACT.
-	Coveragelevel_Exact Coveragelevel = 3
+	// CoverageLevel_None is a representation of the C type PANGO_COVERAGE_NONE.
+	CoverageLevel_None CoverageLevel = 0
+	// CoverageLevel_Fallback is a representation of the C type PANGO_COVERAGE_FALLBACK.
+	CoverageLevel_Fallback CoverageLevel = 1
+	// CoverageLevel_Approximate is a representation of the C type PANGO_COVERAGE_APPROXIMATE.
+	CoverageLevel_Approximate CoverageLevel = 2
+	// CoverageLevel_Exact is a representation of the C type PANGO_COVERAGE_EXACT.
+	CoverageLevel_Exact CoverageLevel = 3
 )
 
 // Direction is a representation of the C type PangoDirection.
@@ -152,18 +152,18 @@ const (
 	Direction_Neutral Direction = 6
 )
 
-// Ellipsizemode is a representation of the C type PangoEllipsizeMode.
-type Ellipsizemode int
+// EllipsizeMode is a representation of the C type PangoEllipsizeMode.
+type EllipsizeMode int
 
 const (
-	// Ellipsizemode_None is a representation of the C type PANGO_ELLIPSIZE_NONE.
-	Ellipsizemode_None Ellipsizemode = 0
-	// Ellipsizemode_Start is a representation of the C type PANGO_ELLIPSIZE_START.
-	Ellipsizemode_Start Ellipsizemode = 1
-	// Ellipsizemode_Middle is a representation of the C type PANGO_ELLIPSIZE_MIDDLE.
-	Ellipsizemode_Middle Ellipsizemode = 2
-	// Ellipsizemode_End is a representation of the C type PANGO_ELLIPSIZE_END.
-	Ellipsizemode_End Ellipsizemode = 3
+	// EllipsizeMode_None is a representation of the C type PANGO_ELLIPSIZE_NONE.
+	EllipsizeMode_None EllipsizeMode = 0
+	// EllipsizeMode_Start is a representation of the C type PANGO_ELLIPSIZE_START.
+	EllipsizeMode_Start EllipsizeMode = 1
+	// EllipsizeMode_Middle is a representation of the C type PANGO_ELLIPSIZE_MIDDLE.
+	EllipsizeMode_Middle EllipsizeMode = 2
+	// EllipsizeMode_End is a representation of the C type PANGO_ELLIPSIZE_END.
+	EllipsizeMode_End EllipsizeMode = 3
 )
 
 // Gravity is a representation of the C type PangoGravity.
@@ -184,34 +184,34 @@ const (
 	Gravity_Auto Gravity = 4
 )
 
-// Gravityhint is a representation of the C type PangoGravityHint.
+// GravityHint is a representation of the C type PangoGravityHint.
 //
 // since 1.16
-type Gravityhint int
+type GravityHint int
 
 const (
-	// Gravityhint_Natural is a representation of the C type PANGO_GRAVITY_HINT_NATURAL.
-	Gravityhint_Natural Gravityhint = 0
-	// Gravityhint_Strong is a representation of the C type PANGO_GRAVITY_HINT_STRONG.
-	Gravityhint_Strong Gravityhint = 1
-	// Gravityhint_Line is a representation of the C type PANGO_GRAVITY_HINT_LINE.
-	Gravityhint_Line Gravityhint = 2
+	// GravityHint_Natural is a representation of the C type PANGO_GRAVITY_HINT_NATURAL.
+	GravityHint_Natural GravityHint = 0
+	// GravityHint_Strong is a representation of the C type PANGO_GRAVITY_HINT_STRONG.
+	GravityHint_Strong GravityHint = 1
+	// GravityHint_Line is a representation of the C type PANGO_GRAVITY_HINT_LINE.
+	GravityHint_Line GravityHint = 2
 )
 
-// Renderpart is a representation of the C type PangoRenderPart.
+// RenderPart is a representation of the C type PangoRenderPart.
 //
 // since 1.8
-type Renderpart int
+type RenderPart int
 
 const (
-	// Renderpart_Foreground is a representation of the C type PANGO_RENDER_PART_FOREGROUND.
-	Renderpart_Foreground Renderpart = 0
-	// Renderpart_Background is a representation of the C type PANGO_RENDER_PART_BACKGROUND.
-	Renderpart_Background Renderpart = 1
-	// Renderpart_Underline is a representation of the C type PANGO_RENDER_PART_UNDERLINE.
-	Renderpart_Underline Renderpart = 2
-	// Renderpart_Strikethrough is a representation of the C type PANGO_RENDER_PART_STRIKETHROUGH.
-	Renderpart_Strikethrough Renderpart = 3
+	// RenderPart_Foreground is a representation of the C type PANGO_RENDER_PART_FOREGROUND.
+	RenderPart_Foreground RenderPart = 0
+	// RenderPart_Background is a representation of the C type PANGO_RENDER_PART_BACKGROUND.
+	RenderPart_Background RenderPart = 1
+	// RenderPart_Underline is a representation of the C type PANGO_RENDER_PART_UNDERLINE.
+	RenderPart_Underline RenderPart = 2
+	// RenderPart_Strikethrough is a representation of the C type PANGO_RENDER_PART_STRIKETHROUGH.
+	RenderPart_Strikethrough RenderPart = 3
 )
 
 // Script is a representation of the C type PangoScript.
@@ -492,12 +492,12 @@ const (
 	Style_Italic Style = 2
 )
 
-// Tabalign is a representation of the C type PangoTabAlign.
-type Tabalign int
+// TabAlign is a representation of the C type PangoTabAlign.
+type TabAlign int
 
 const (
-	// Tabalign_Left is a representation of the C type PANGO_TAB_LEFT.
-	Tabalign_Left Tabalign = 0
+	// TabAlign_Left is a representation of the C type PANGO_TAB_LEFT.
+	TabAlign_Left TabAlign = 0
 )
 
 // Underline is a representation of the C type PangoUnderline.
@@ -556,14 +556,14 @@ const (
 	Weight_Ultraheavy Weight = 1000
 )
 
-// Wrapmode is a representation of the C type PangoWrapMode.
-type Wrapmode int
+// WrapMode is a representation of the C type PangoWrapMode.
+type WrapMode int
 
 const (
-	// Wrapmode_Word is a representation of the C type PANGO_WRAP_WORD.
-	Wrapmode_Word Wrapmode = 0
-	// Wrapmode_Char is a representation of the C type PANGO_WRAP_CHAR.
-	Wrapmode_Char Wrapmode = 1
-	// Wrapmode_WordChar is a representation of the C type PANGO_WRAP_WORD_CHAR.
-	Wrapmode_WordChar Wrapmode = 2
+	// WrapMode_Word is a representation of the C type PANGO_WRAP_WORD.
+	WrapMode_Word WrapMode = 0
+	// WrapMode_Char is a representation of the C type PANGO_WRAP_CHAR.
+	WrapMode_Char WrapMode = 1
+	// WrapMode_WordChar is a representation of the C type PANGO_WRAP_WORD_CHAR.
+	WrapMode_WordChar WrapMode = 2
 )

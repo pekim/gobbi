@@ -2,576 +2,576 @@
 
 package gio
 
-// Appinfocreateflags is a representation of the C type GAppInfoCreateFlags.
-type Appinfocreateflags int
+// AppInfoCreateFlags is a representation of the C type GAppInfoCreateFlags.
+type AppInfoCreateFlags int
 
 const (
-	// Appinfocreateflags_None is a representation of the C type G_APP_INFO_CREATE_NONE.
-	Appinfocreateflags_None Appinfocreateflags = 0
-	// Appinfocreateflags_NeedsTerminal is a representation of the C type G_APP_INFO_CREATE_NEEDS_TERMINAL.
-	Appinfocreateflags_NeedsTerminal Appinfocreateflags = 1
-	// Appinfocreateflags_SupportsUris is a representation of the C type G_APP_INFO_CREATE_SUPPORTS_URIS.
-	Appinfocreateflags_SupportsUris Appinfocreateflags = 2
-	// Appinfocreateflags_SupportsStartupNotification is a representation of the C type G_APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION.
-	Appinfocreateflags_SupportsStartupNotification Appinfocreateflags = 4
+	// AppInfoCreateFlags_None is a representation of the C type G_APP_INFO_CREATE_NONE.
+	AppInfoCreateFlags_None AppInfoCreateFlags = 0
+	// AppInfoCreateFlags_NeedsTerminal is a representation of the C type G_APP_INFO_CREATE_NEEDS_TERMINAL.
+	AppInfoCreateFlags_NeedsTerminal AppInfoCreateFlags = 1
+	// AppInfoCreateFlags_SupportsUris is a representation of the C type G_APP_INFO_CREATE_SUPPORTS_URIS.
+	AppInfoCreateFlags_SupportsUris AppInfoCreateFlags = 2
+	// AppInfoCreateFlags_SupportsStartupNotification is a representation of the C type G_APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION.
+	AppInfoCreateFlags_SupportsStartupNotification AppInfoCreateFlags = 4
 )
 
-// Applicationflags is a representation of the C type GApplicationFlags.
+// ApplicationFlags is a representation of the C type GApplicationFlags.
 //
 // since 2.28
-type Applicationflags int
+type ApplicationFlags int
 
 const (
-	// Applicationflags_FlagsNone is a representation of the C type G_APPLICATION_FLAGS_NONE.
-	Applicationflags_FlagsNone Applicationflags = 0
-	// Applicationflags_IsService is a representation of the C type G_APPLICATION_IS_SERVICE.
-	Applicationflags_IsService Applicationflags = 1
-	// Applicationflags_IsLauncher is a representation of the C type G_APPLICATION_IS_LAUNCHER.
-	Applicationflags_IsLauncher Applicationflags = 2
-	// Applicationflags_HandlesOpen is a representation of the C type G_APPLICATION_HANDLES_OPEN.
-	Applicationflags_HandlesOpen Applicationflags = 4
-	// Applicationflags_HandlesCommandLine is a representation of the C type G_APPLICATION_HANDLES_COMMAND_LINE.
-	Applicationflags_HandlesCommandLine Applicationflags = 8
-	// Applicationflags_SendEnvironment is a representation of the C type G_APPLICATION_SEND_ENVIRONMENT.
-	Applicationflags_SendEnvironment Applicationflags = 16
-	// Applicationflags_NonUnique is a representation of the C type G_APPLICATION_NON_UNIQUE.
-	Applicationflags_NonUnique Applicationflags = 32
-	// Applicationflags_CanOverrideAppId is a representation of the C type G_APPLICATION_CAN_OVERRIDE_APP_ID.
-	Applicationflags_CanOverrideAppId Applicationflags = 64
-	// Applicationflags_AllowReplacement is a representation of the C type G_APPLICATION_ALLOW_REPLACEMENT.
-	Applicationflags_AllowReplacement Applicationflags = 128
-	// Applicationflags_Replace is a representation of the C type G_APPLICATION_REPLACE.
-	Applicationflags_Replace Applicationflags = 256
+	// ApplicationFlags_FlagsNone is a representation of the C type G_APPLICATION_FLAGS_NONE.
+	ApplicationFlags_FlagsNone ApplicationFlags = 0
+	// ApplicationFlags_IsService is a representation of the C type G_APPLICATION_IS_SERVICE.
+	ApplicationFlags_IsService ApplicationFlags = 1
+	// ApplicationFlags_IsLauncher is a representation of the C type G_APPLICATION_IS_LAUNCHER.
+	ApplicationFlags_IsLauncher ApplicationFlags = 2
+	// ApplicationFlags_HandlesOpen is a representation of the C type G_APPLICATION_HANDLES_OPEN.
+	ApplicationFlags_HandlesOpen ApplicationFlags = 4
+	// ApplicationFlags_HandlesCommandLine is a representation of the C type G_APPLICATION_HANDLES_COMMAND_LINE.
+	ApplicationFlags_HandlesCommandLine ApplicationFlags = 8
+	// ApplicationFlags_SendEnvironment is a representation of the C type G_APPLICATION_SEND_ENVIRONMENT.
+	ApplicationFlags_SendEnvironment ApplicationFlags = 16
+	// ApplicationFlags_NonUnique is a representation of the C type G_APPLICATION_NON_UNIQUE.
+	ApplicationFlags_NonUnique ApplicationFlags = 32
+	// ApplicationFlags_CanOverrideAppId is a representation of the C type G_APPLICATION_CAN_OVERRIDE_APP_ID.
+	ApplicationFlags_CanOverrideAppId ApplicationFlags = 64
+	// ApplicationFlags_AllowReplacement is a representation of the C type G_APPLICATION_ALLOW_REPLACEMENT.
+	ApplicationFlags_AllowReplacement ApplicationFlags = 128
+	// ApplicationFlags_Replace is a representation of the C type G_APPLICATION_REPLACE.
+	ApplicationFlags_Replace ApplicationFlags = 256
 )
 
-// Askpasswordflags is a representation of the C type GAskPasswordFlags.
-type Askpasswordflags int
+// AskPasswordFlags is a representation of the C type GAskPasswordFlags.
+type AskPasswordFlags int
 
 const (
-	// Askpasswordflags_NeedPassword is a representation of the C type G_ASK_PASSWORD_NEED_PASSWORD.
-	Askpasswordflags_NeedPassword Askpasswordflags = 1
-	// Askpasswordflags_NeedUsername is a representation of the C type G_ASK_PASSWORD_NEED_USERNAME.
-	Askpasswordflags_NeedUsername Askpasswordflags = 2
-	// Askpasswordflags_NeedDomain is a representation of the C type G_ASK_PASSWORD_NEED_DOMAIN.
-	Askpasswordflags_NeedDomain Askpasswordflags = 4
-	// Askpasswordflags_SavingSupported is a representation of the C type G_ASK_PASSWORD_SAVING_SUPPORTED.
-	Askpasswordflags_SavingSupported Askpasswordflags = 8
-	// Askpasswordflags_AnonymousSupported is a representation of the C type G_ASK_PASSWORD_ANONYMOUS_SUPPORTED.
-	Askpasswordflags_AnonymousSupported Askpasswordflags = 16
-	// Askpasswordflags_Tcrypt is a representation of the C type G_ASK_PASSWORD_TCRYPT.
-	Askpasswordflags_Tcrypt Askpasswordflags = 32
+	// AskPasswordFlags_NeedPassword is a representation of the C type G_ASK_PASSWORD_NEED_PASSWORD.
+	AskPasswordFlags_NeedPassword AskPasswordFlags = 1
+	// AskPasswordFlags_NeedUsername is a representation of the C type G_ASK_PASSWORD_NEED_USERNAME.
+	AskPasswordFlags_NeedUsername AskPasswordFlags = 2
+	// AskPasswordFlags_NeedDomain is a representation of the C type G_ASK_PASSWORD_NEED_DOMAIN.
+	AskPasswordFlags_NeedDomain AskPasswordFlags = 4
+	// AskPasswordFlags_SavingSupported is a representation of the C type G_ASK_PASSWORD_SAVING_SUPPORTED.
+	AskPasswordFlags_SavingSupported AskPasswordFlags = 8
+	// AskPasswordFlags_AnonymousSupported is a representation of the C type G_ASK_PASSWORD_ANONYMOUS_SUPPORTED.
+	AskPasswordFlags_AnonymousSupported AskPasswordFlags = 16
+	// AskPasswordFlags_Tcrypt is a representation of the C type G_ASK_PASSWORD_TCRYPT.
+	AskPasswordFlags_Tcrypt AskPasswordFlags = 32
 )
 
-// Busnameownerflags is a representation of the C type GBusNameOwnerFlags.
+// BusNameOwnerFlags is a representation of the C type GBusNameOwnerFlags.
 //
 // since 2.26
-type Busnameownerflags int
+type BusNameOwnerFlags int
 
 const (
-	// Busnameownerflags_None is a representation of the C type G_BUS_NAME_OWNER_FLAGS_NONE.
-	Busnameownerflags_None Busnameownerflags = 0
-	// Busnameownerflags_AllowReplacement is a representation of the C type G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT.
-	Busnameownerflags_AllowReplacement Busnameownerflags = 1
-	// Busnameownerflags_Replace is a representation of the C type G_BUS_NAME_OWNER_FLAGS_REPLACE.
-	Busnameownerflags_Replace Busnameownerflags = 2
-	// Busnameownerflags_DoNotQueue is a representation of the C type G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE.
-	Busnameownerflags_DoNotQueue Busnameownerflags = 4
+	// BusNameOwnerFlags_None is a representation of the C type G_BUS_NAME_OWNER_FLAGS_NONE.
+	BusNameOwnerFlags_None BusNameOwnerFlags = 0
+	// BusNameOwnerFlags_AllowReplacement is a representation of the C type G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT.
+	BusNameOwnerFlags_AllowReplacement BusNameOwnerFlags = 1
+	// BusNameOwnerFlags_Replace is a representation of the C type G_BUS_NAME_OWNER_FLAGS_REPLACE.
+	BusNameOwnerFlags_Replace BusNameOwnerFlags = 2
+	// BusNameOwnerFlags_DoNotQueue is a representation of the C type G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE.
+	BusNameOwnerFlags_DoNotQueue BusNameOwnerFlags = 4
 )
 
-// Busnamewatcherflags is a representation of the C type GBusNameWatcherFlags.
+// BusNameWatcherFlags is a representation of the C type GBusNameWatcherFlags.
 //
 // since 2.26
-type Busnamewatcherflags int
+type BusNameWatcherFlags int
 
 const (
-	// Busnamewatcherflags_None is a representation of the C type G_BUS_NAME_WATCHER_FLAGS_NONE.
-	Busnamewatcherflags_None Busnamewatcherflags = 0
-	// Busnamewatcherflags_AutoStart is a representation of the C type G_BUS_NAME_WATCHER_FLAGS_AUTO_START.
-	Busnamewatcherflags_AutoStart Busnamewatcherflags = 1
+	// BusNameWatcherFlags_None is a representation of the C type G_BUS_NAME_WATCHER_FLAGS_NONE.
+	BusNameWatcherFlags_None BusNameWatcherFlags = 0
+	// BusNameWatcherFlags_AutoStart is a representation of the C type G_BUS_NAME_WATCHER_FLAGS_AUTO_START.
+	BusNameWatcherFlags_AutoStart BusNameWatcherFlags = 1
 )
 
-// Converterflags is a representation of the C type GConverterFlags.
+// ConverterFlags is a representation of the C type GConverterFlags.
 //
 // since 2.24
-type Converterflags int
+type ConverterFlags int
 
 const (
-	// Converterflags_None is a representation of the C type G_CONVERTER_NO_FLAGS.
-	Converterflags_None Converterflags = 0
-	// Converterflags_InputAtEnd is a representation of the C type G_CONVERTER_INPUT_AT_END.
-	Converterflags_InputAtEnd Converterflags = 1
-	// Converterflags_Flush is a representation of the C type G_CONVERTER_FLUSH.
-	Converterflags_Flush Converterflags = 2
+	// ConverterFlags_None is a representation of the C type G_CONVERTER_NO_FLAGS.
+	ConverterFlags_None ConverterFlags = 0
+	// ConverterFlags_InputAtEnd is a representation of the C type G_CONVERTER_INPUT_AT_END.
+	ConverterFlags_InputAtEnd ConverterFlags = 1
+	// ConverterFlags_Flush is a representation of the C type G_CONVERTER_FLUSH.
+	ConverterFlags_Flush ConverterFlags = 2
 )
 
-// Dbuscallflags is a representation of the C type GDBusCallFlags.
+// DBusCallFlags is a representation of the C type GDBusCallFlags.
 //
 // since 2.26
-type Dbuscallflags int
+type DBusCallFlags int
 
 const (
-	// Dbuscallflags_None is a representation of the C type G_DBUS_CALL_FLAGS_NONE.
-	Dbuscallflags_None Dbuscallflags = 0
-	// Dbuscallflags_NoAutoStart is a representation of the C type G_DBUS_CALL_FLAGS_NO_AUTO_START.
-	Dbuscallflags_NoAutoStart Dbuscallflags = 1
-	// Dbuscallflags_AllowInteractiveAuthorization is a representation of the C type G_DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION.
-	Dbuscallflags_AllowInteractiveAuthorization Dbuscallflags = 2
+	// DBusCallFlags_None is a representation of the C type G_DBUS_CALL_FLAGS_NONE.
+	DBusCallFlags_None DBusCallFlags = 0
+	// DBusCallFlags_NoAutoStart is a representation of the C type G_DBUS_CALL_FLAGS_NO_AUTO_START.
+	DBusCallFlags_NoAutoStart DBusCallFlags = 1
+	// DBusCallFlags_AllowInteractiveAuthorization is a representation of the C type G_DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION.
+	DBusCallFlags_AllowInteractiveAuthorization DBusCallFlags = 2
 )
 
-// Dbuscapabilityflags is a representation of the C type GDBusCapabilityFlags.
+// DBusCapabilityFlags is a representation of the C type GDBusCapabilityFlags.
 //
 // since 2.26
-type Dbuscapabilityflags int
+type DBusCapabilityFlags int
 
 const (
-	// Dbuscapabilityflags_None is a representation of the C type G_DBUS_CAPABILITY_FLAGS_NONE.
-	Dbuscapabilityflags_None Dbuscapabilityflags = 0
-	// Dbuscapabilityflags_UnixFdPassing is a representation of the C type G_DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING.
-	Dbuscapabilityflags_UnixFdPassing Dbuscapabilityflags = 1
+	// DBusCapabilityFlags_None is a representation of the C type G_DBUS_CAPABILITY_FLAGS_NONE.
+	DBusCapabilityFlags_None DBusCapabilityFlags = 0
+	// DBusCapabilityFlags_UnixFdPassing is a representation of the C type G_DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING.
+	DBusCapabilityFlags_UnixFdPassing DBusCapabilityFlags = 1
 )
 
-// Dbusconnectionflags is a representation of the C type GDBusConnectionFlags.
+// DBusConnectionFlags is a representation of the C type GDBusConnectionFlags.
 //
 // since 2.26
-type Dbusconnectionflags int
+type DBusConnectionFlags int
 
 const (
-	// Dbusconnectionflags_None is a representation of the C type G_DBUS_CONNECTION_FLAGS_NONE.
-	Dbusconnectionflags_None Dbusconnectionflags = 0
-	// Dbusconnectionflags_AuthenticationClient is a representation of the C type G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT.
-	Dbusconnectionflags_AuthenticationClient Dbusconnectionflags = 1
-	// Dbusconnectionflags_AuthenticationServer is a representation of the C type G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER.
-	Dbusconnectionflags_AuthenticationServer Dbusconnectionflags = 2
-	// Dbusconnectionflags_AuthenticationAllowAnonymous is a representation of the C type G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS.
-	Dbusconnectionflags_AuthenticationAllowAnonymous Dbusconnectionflags = 4
-	// Dbusconnectionflags_MessageBusConnection is a representation of the C type G_DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION.
-	Dbusconnectionflags_MessageBusConnection Dbusconnectionflags = 8
-	// Dbusconnectionflags_DelayMessageProcessing is a representation of the C type G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING.
-	Dbusconnectionflags_DelayMessageProcessing Dbusconnectionflags = 16
+	// DBusConnectionFlags_None is a representation of the C type G_DBUS_CONNECTION_FLAGS_NONE.
+	DBusConnectionFlags_None DBusConnectionFlags = 0
+	// DBusConnectionFlags_AuthenticationClient is a representation of the C type G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT.
+	DBusConnectionFlags_AuthenticationClient DBusConnectionFlags = 1
+	// DBusConnectionFlags_AuthenticationServer is a representation of the C type G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER.
+	DBusConnectionFlags_AuthenticationServer DBusConnectionFlags = 2
+	// DBusConnectionFlags_AuthenticationAllowAnonymous is a representation of the C type G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS.
+	DBusConnectionFlags_AuthenticationAllowAnonymous DBusConnectionFlags = 4
+	// DBusConnectionFlags_MessageBusConnection is a representation of the C type G_DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION.
+	DBusConnectionFlags_MessageBusConnection DBusConnectionFlags = 8
+	// DBusConnectionFlags_DelayMessageProcessing is a representation of the C type G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING.
+	DBusConnectionFlags_DelayMessageProcessing DBusConnectionFlags = 16
 )
 
-// Dbusinterfaceskeletonflags is a representation of the C type GDBusInterfaceSkeletonFlags.
+// DBusInterfaceSkeletonFlags is a representation of the C type GDBusInterfaceSkeletonFlags.
 //
 // since 2.30
-type Dbusinterfaceskeletonflags int
+type DBusInterfaceSkeletonFlags int
 
 const (
-	// Dbusinterfaceskeletonflags_None is a representation of the C type G_DBUS_INTERFACE_SKELETON_FLAGS_NONE.
-	Dbusinterfaceskeletonflags_None Dbusinterfaceskeletonflags = 0
-	// Dbusinterfaceskeletonflags_HandleMethodInvocationsInThread is a representation of the C type G_DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD.
-	Dbusinterfaceskeletonflags_HandleMethodInvocationsInThread Dbusinterfaceskeletonflags = 1
+	// DBusInterfaceSkeletonFlags_None is a representation of the C type G_DBUS_INTERFACE_SKELETON_FLAGS_NONE.
+	DBusInterfaceSkeletonFlags_None DBusInterfaceSkeletonFlags = 0
+	// DBusInterfaceSkeletonFlags_HandleMethodInvocationsInThread is a representation of the C type G_DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD.
+	DBusInterfaceSkeletonFlags_HandleMethodInvocationsInThread DBusInterfaceSkeletonFlags = 1
 )
 
-// Dbusmessageflags is a representation of the C type GDBusMessageFlags.
+// DBusMessageFlags is a representation of the C type GDBusMessageFlags.
 //
 // since 2.26
-type Dbusmessageflags int
+type DBusMessageFlags int
 
 const (
-	// Dbusmessageflags_None is a representation of the C type G_DBUS_MESSAGE_FLAGS_NONE.
-	Dbusmessageflags_None Dbusmessageflags = 0
-	// Dbusmessageflags_NoReplyExpected is a representation of the C type G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED.
-	Dbusmessageflags_NoReplyExpected Dbusmessageflags = 1
-	// Dbusmessageflags_NoAutoStart is a representation of the C type G_DBUS_MESSAGE_FLAGS_NO_AUTO_START.
-	Dbusmessageflags_NoAutoStart Dbusmessageflags = 2
-	// Dbusmessageflags_AllowInteractiveAuthorization is a representation of the C type G_DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION.
-	Dbusmessageflags_AllowInteractiveAuthorization Dbusmessageflags = 4
+	// DBusMessageFlags_None is a representation of the C type G_DBUS_MESSAGE_FLAGS_NONE.
+	DBusMessageFlags_None DBusMessageFlags = 0
+	// DBusMessageFlags_NoReplyExpected is a representation of the C type G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED.
+	DBusMessageFlags_NoReplyExpected DBusMessageFlags = 1
+	// DBusMessageFlags_NoAutoStart is a representation of the C type G_DBUS_MESSAGE_FLAGS_NO_AUTO_START.
+	DBusMessageFlags_NoAutoStart DBusMessageFlags = 2
+	// DBusMessageFlags_AllowInteractiveAuthorization is a representation of the C type G_DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION.
+	DBusMessageFlags_AllowInteractiveAuthorization DBusMessageFlags = 4
 )
 
-// Dbusobjectmanagerclientflags is a representation of the C type GDBusObjectManagerClientFlags.
+// DBusObjectManagerClientFlags is a representation of the C type GDBusObjectManagerClientFlags.
 //
 // since 2.30
-type Dbusobjectmanagerclientflags int
+type DBusObjectManagerClientFlags int
 
 const (
-	// Dbusobjectmanagerclientflags_None is a representation of the C type G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE.
-	Dbusobjectmanagerclientflags_None Dbusobjectmanagerclientflags = 0
-	// Dbusobjectmanagerclientflags_DoNotAutoStart is a representation of the C type G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START.
-	Dbusobjectmanagerclientflags_DoNotAutoStart Dbusobjectmanagerclientflags = 1
+	// DBusObjectManagerClientFlags_None is a representation of the C type G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE.
+	DBusObjectManagerClientFlags_None DBusObjectManagerClientFlags = 0
+	// DBusObjectManagerClientFlags_DoNotAutoStart is a representation of the C type G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START.
+	DBusObjectManagerClientFlags_DoNotAutoStart DBusObjectManagerClientFlags = 1
 )
 
-// Dbuspropertyinfoflags is a representation of the C type GDBusPropertyInfoFlags.
+// DBusPropertyInfoFlags is a representation of the C type GDBusPropertyInfoFlags.
 //
 // since 2.26
-type Dbuspropertyinfoflags int
+type DBusPropertyInfoFlags int
 
 const (
-	// Dbuspropertyinfoflags_None is a representation of the C type G_DBUS_PROPERTY_INFO_FLAGS_NONE.
-	Dbuspropertyinfoflags_None Dbuspropertyinfoflags = 0
-	// Dbuspropertyinfoflags_Readable is a representation of the C type G_DBUS_PROPERTY_INFO_FLAGS_READABLE.
-	Dbuspropertyinfoflags_Readable Dbuspropertyinfoflags = 1
-	// Dbuspropertyinfoflags_Writable is a representation of the C type G_DBUS_PROPERTY_INFO_FLAGS_WRITABLE.
-	Dbuspropertyinfoflags_Writable Dbuspropertyinfoflags = 2
+	// DBusPropertyInfoFlags_None is a representation of the C type G_DBUS_PROPERTY_INFO_FLAGS_NONE.
+	DBusPropertyInfoFlags_None DBusPropertyInfoFlags = 0
+	// DBusPropertyInfoFlags_Readable is a representation of the C type G_DBUS_PROPERTY_INFO_FLAGS_READABLE.
+	DBusPropertyInfoFlags_Readable DBusPropertyInfoFlags = 1
+	// DBusPropertyInfoFlags_Writable is a representation of the C type G_DBUS_PROPERTY_INFO_FLAGS_WRITABLE.
+	DBusPropertyInfoFlags_Writable DBusPropertyInfoFlags = 2
 )
 
-// Dbusproxyflags is a representation of the C type GDBusProxyFlags.
+// DBusProxyFlags is a representation of the C type GDBusProxyFlags.
 //
 // since 2.26
-type Dbusproxyflags int
+type DBusProxyFlags int
 
 const (
-	// Dbusproxyflags_None is a representation of the C type G_DBUS_PROXY_FLAGS_NONE.
-	Dbusproxyflags_None Dbusproxyflags = 0
-	// Dbusproxyflags_DoNotLoadProperties is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES.
-	Dbusproxyflags_DoNotLoadProperties Dbusproxyflags = 1
-	// Dbusproxyflags_DoNotConnectSignals is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS.
-	Dbusproxyflags_DoNotConnectSignals Dbusproxyflags = 2
-	// Dbusproxyflags_DoNotAutoStart is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START.
-	Dbusproxyflags_DoNotAutoStart Dbusproxyflags = 4
-	// Dbusproxyflags_GetInvalidatedProperties is a representation of the C type G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES.
-	Dbusproxyflags_GetInvalidatedProperties Dbusproxyflags = 8
-	// Dbusproxyflags_DoNotAutoStartAtConstruction is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION.
-	Dbusproxyflags_DoNotAutoStartAtConstruction Dbusproxyflags = 16
+	// DBusProxyFlags_None is a representation of the C type G_DBUS_PROXY_FLAGS_NONE.
+	DBusProxyFlags_None DBusProxyFlags = 0
+	// DBusProxyFlags_DoNotLoadProperties is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES.
+	DBusProxyFlags_DoNotLoadProperties DBusProxyFlags = 1
+	// DBusProxyFlags_DoNotConnectSignals is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS.
+	DBusProxyFlags_DoNotConnectSignals DBusProxyFlags = 2
+	// DBusProxyFlags_DoNotAutoStart is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START.
+	DBusProxyFlags_DoNotAutoStart DBusProxyFlags = 4
+	// DBusProxyFlags_GetInvalidatedProperties is a representation of the C type G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES.
+	DBusProxyFlags_GetInvalidatedProperties DBusProxyFlags = 8
+	// DBusProxyFlags_DoNotAutoStartAtConstruction is a representation of the C type G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION.
+	DBusProxyFlags_DoNotAutoStartAtConstruction DBusProxyFlags = 16
 )
 
-// Dbussendmessageflags is a representation of the C type GDBusSendMessageFlags.
+// DBusSendMessageFlags is a representation of the C type GDBusSendMessageFlags.
 //
 // since 2.26
-type Dbussendmessageflags int
+type DBusSendMessageFlags int
 
 const (
-	// Dbussendmessageflags_None is a representation of the C type G_DBUS_SEND_MESSAGE_FLAGS_NONE.
-	Dbussendmessageflags_None Dbussendmessageflags = 0
-	// Dbussendmessageflags_PreserveSerial is a representation of the C type G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL.
-	Dbussendmessageflags_PreserveSerial Dbussendmessageflags = 1
+	// DBusSendMessageFlags_None is a representation of the C type G_DBUS_SEND_MESSAGE_FLAGS_NONE.
+	DBusSendMessageFlags_None DBusSendMessageFlags = 0
+	// DBusSendMessageFlags_PreserveSerial is a representation of the C type G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL.
+	DBusSendMessageFlags_PreserveSerial DBusSendMessageFlags = 1
 )
 
-// Dbusserverflags is a representation of the C type GDBusServerFlags.
+// DBusServerFlags is a representation of the C type GDBusServerFlags.
 //
 // since 2.26
-type Dbusserverflags int
+type DBusServerFlags int
 
 const (
-	// Dbusserverflags_None is a representation of the C type G_DBUS_SERVER_FLAGS_NONE.
-	Dbusserverflags_None Dbusserverflags = 0
-	// Dbusserverflags_RunInThread is a representation of the C type G_DBUS_SERVER_FLAGS_RUN_IN_THREAD.
-	Dbusserverflags_RunInThread Dbusserverflags = 1
-	// Dbusserverflags_AuthenticationAllowAnonymous is a representation of the C type G_DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS.
-	Dbusserverflags_AuthenticationAllowAnonymous Dbusserverflags = 2
+	// DBusServerFlags_None is a representation of the C type G_DBUS_SERVER_FLAGS_NONE.
+	DBusServerFlags_None DBusServerFlags = 0
+	// DBusServerFlags_RunInThread is a representation of the C type G_DBUS_SERVER_FLAGS_RUN_IN_THREAD.
+	DBusServerFlags_RunInThread DBusServerFlags = 1
+	// DBusServerFlags_AuthenticationAllowAnonymous is a representation of the C type G_DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS.
+	DBusServerFlags_AuthenticationAllowAnonymous DBusServerFlags = 2
 )
 
-// Dbussignalflags is a representation of the C type GDBusSignalFlags.
+// DBusSignalFlags is a representation of the C type GDBusSignalFlags.
 //
 // since 2.26
-type Dbussignalflags int
+type DBusSignalFlags int
 
 const (
-	// Dbussignalflags_None is a representation of the C type G_DBUS_SIGNAL_FLAGS_NONE.
-	Dbussignalflags_None Dbussignalflags = 0
-	// Dbussignalflags_NoMatchRule is a representation of the C type G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE.
-	Dbussignalflags_NoMatchRule Dbussignalflags = 1
-	// Dbussignalflags_MatchArg0Namespace is a representation of the C type G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE.
-	Dbussignalflags_MatchArg0Namespace Dbussignalflags = 2
-	// Dbussignalflags_MatchArg0Path is a representation of the C type G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH.
-	Dbussignalflags_MatchArg0Path Dbussignalflags = 4
+	// DBusSignalFlags_None is a representation of the C type G_DBUS_SIGNAL_FLAGS_NONE.
+	DBusSignalFlags_None DBusSignalFlags = 0
+	// DBusSignalFlags_NoMatchRule is a representation of the C type G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE.
+	DBusSignalFlags_NoMatchRule DBusSignalFlags = 1
+	// DBusSignalFlags_MatchArg0Namespace is a representation of the C type G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE.
+	DBusSignalFlags_MatchArg0Namespace DBusSignalFlags = 2
+	// DBusSignalFlags_MatchArg0Path is a representation of the C type G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH.
+	DBusSignalFlags_MatchArg0Path DBusSignalFlags = 4
 )
 
-// Dbussubtreeflags is a representation of the C type GDBusSubtreeFlags.
+// DBusSubtreeFlags is a representation of the C type GDBusSubtreeFlags.
 //
 // since 2.26
-type Dbussubtreeflags int
+type DBusSubtreeFlags int
 
 const (
-	// Dbussubtreeflags_None is a representation of the C type G_DBUS_SUBTREE_FLAGS_NONE.
-	Dbussubtreeflags_None Dbussubtreeflags = 0
-	// Dbussubtreeflags_DispatchToUnenumeratedNodes is a representation of the C type G_DBUS_SUBTREE_FLAGS_DISPATCH_TO_UNENUMERATED_NODES.
-	Dbussubtreeflags_DispatchToUnenumeratedNodes Dbussubtreeflags = 1
+	// DBusSubtreeFlags_None is a representation of the C type G_DBUS_SUBTREE_FLAGS_NONE.
+	DBusSubtreeFlags_None DBusSubtreeFlags = 0
+	// DBusSubtreeFlags_DispatchToUnenumeratedNodes is a representation of the C type G_DBUS_SUBTREE_FLAGS_DISPATCH_TO_UNENUMERATED_NODES.
+	DBusSubtreeFlags_DispatchToUnenumeratedNodes DBusSubtreeFlags = 1
 )
 
-// Drivestartflags is a representation of the C type GDriveStartFlags.
+// DriveStartFlags is a representation of the C type GDriveStartFlags.
 //
 // since 2.22
-type Drivestartflags int
+type DriveStartFlags int
 
 const (
-	// Drivestartflags_None is a representation of the C type G_DRIVE_START_NONE.
-	Drivestartflags_None Drivestartflags = 0
+	// DriveStartFlags_None is a representation of the C type G_DRIVE_START_NONE.
+	DriveStartFlags_None DriveStartFlags = 0
 )
 
-// Fileattributeinfoflags is a representation of the C type GFileAttributeInfoFlags.
-type Fileattributeinfoflags int
+// FileAttributeInfoFlags is a representation of the C type GFileAttributeInfoFlags.
+type FileAttributeInfoFlags int
 
 const (
-	// Fileattributeinfoflags_None is a representation of the C type G_FILE_ATTRIBUTE_INFO_NONE.
-	Fileattributeinfoflags_None Fileattributeinfoflags = 0
-	// Fileattributeinfoflags_CopyWithFile is a representation of the C type G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE.
-	Fileattributeinfoflags_CopyWithFile Fileattributeinfoflags = 1
-	// Fileattributeinfoflags_CopyWhenMoved is a representation of the C type G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED.
-	Fileattributeinfoflags_CopyWhenMoved Fileattributeinfoflags = 2
+	// FileAttributeInfoFlags_None is a representation of the C type G_FILE_ATTRIBUTE_INFO_NONE.
+	FileAttributeInfoFlags_None FileAttributeInfoFlags = 0
+	// FileAttributeInfoFlags_CopyWithFile is a representation of the C type G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE.
+	FileAttributeInfoFlags_CopyWithFile FileAttributeInfoFlags = 1
+	// FileAttributeInfoFlags_CopyWhenMoved is a representation of the C type G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED.
+	FileAttributeInfoFlags_CopyWhenMoved FileAttributeInfoFlags = 2
 )
 
-// Filecopyflags is a representation of the C type GFileCopyFlags.
-type Filecopyflags int
+// FileCopyFlags is a representation of the C type GFileCopyFlags.
+type FileCopyFlags int
 
 const (
-	// Filecopyflags_None is a representation of the C type G_FILE_COPY_NONE.
-	Filecopyflags_None Filecopyflags = 0
-	// Filecopyflags_Overwrite is a representation of the C type G_FILE_COPY_OVERWRITE.
-	Filecopyflags_Overwrite Filecopyflags = 1
-	// Filecopyflags_Backup is a representation of the C type G_FILE_COPY_BACKUP.
-	Filecopyflags_Backup Filecopyflags = 2
-	// Filecopyflags_NofollowSymlinks is a representation of the C type G_FILE_COPY_NOFOLLOW_SYMLINKS.
-	Filecopyflags_NofollowSymlinks Filecopyflags = 4
-	// Filecopyflags_AllMetadata is a representation of the C type G_FILE_COPY_ALL_METADATA.
-	Filecopyflags_AllMetadata Filecopyflags = 8
-	// Filecopyflags_NoFallbackForMove is a representation of the C type G_FILE_COPY_NO_FALLBACK_FOR_MOVE.
-	Filecopyflags_NoFallbackForMove Filecopyflags = 16
-	// Filecopyflags_TargetDefaultPerms is a representation of the C type G_FILE_COPY_TARGET_DEFAULT_PERMS.
-	Filecopyflags_TargetDefaultPerms Filecopyflags = 32
+	// FileCopyFlags_None is a representation of the C type G_FILE_COPY_NONE.
+	FileCopyFlags_None FileCopyFlags = 0
+	// FileCopyFlags_Overwrite is a representation of the C type G_FILE_COPY_OVERWRITE.
+	FileCopyFlags_Overwrite FileCopyFlags = 1
+	// FileCopyFlags_Backup is a representation of the C type G_FILE_COPY_BACKUP.
+	FileCopyFlags_Backup FileCopyFlags = 2
+	// FileCopyFlags_NofollowSymlinks is a representation of the C type G_FILE_COPY_NOFOLLOW_SYMLINKS.
+	FileCopyFlags_NofollowSymlinks FileCopyFlags = 4
+	// FileCopyFlags_AllMetadata is a representation of the C type G_FILE_COPY_ALL_METADATA.
+	FileCopyFlags_AllMetadata FileCopyFlags = 8
+	// FileCopyFlags_NoFallbackForMove is a representation of the C type G_FILE_COPY_NO_FALLBACK_FOR_MOVE.
+	FileCopyFlags_NoFallbackForMove FileCopyFlags = 16
+	// FileCopyFlags_TargetDefaultPerms is a representation of the C type G_FILE_COPY_TARGET_DEFAULT_PERMS.
+	FileCopyFlags_TargetDefaultPerms FileCopyFlags = 32
 )
 
-// Filecreateflags is a representation of the C type GFileCreateFlags.
-type Filecreateflags int
+// FileCreateFlags is a representation of the C type GFileCreateFlags.
+type FileCreateFlags int
 
 const (
-	// Filecreateflags_None is a representation of the C type G_FILE_CREATE_NONE.
-	Filecreateflags_None Filecreateflags = 0
-	// Filecreateflags_Private is a representation of the C type G_FILE_CREATE_PRIVATE.
-	Filecreateflags_Private Filecreateflags = 1
-	// Filecreateflags_ReplaceDestination is a representation of the C type G_FILE_CREATE_REPLACE_DESTINATION.
-	Filecreateflags_ReplaceDestination Filecreateflags = 2
+	// FileCreateFlags_None is a representation of the C type G_FILE_CREATE_NONE.
+	FileCreateFlags_None FileCreateFlags = 0
+	// FileCreateFlags_Private is a representation of the C type G_FILE_CREATE_PRIVATE.
+	FileCreateFlags_Private FileCreateFlags = 1
+	// FileCreateFlags_ReplaceDestination is a representation of the C type G_FILE_CREATE_REPLACE_DESTINATION.
+	FileCreateFlags_ReplaceDestination FileCreateFlags = 2
 )
 
-// Filemeasureflags is a representation of the C type GFileMeasureFlags.
+// FileMeasureFlags is a representation of the C type GFileMeasureFlags.
 //
 // since 2.38
-type Filemeasureflags int
+type FileMeasureFlags int
 
 const (
-	// Filemeasureflags_None is a representation of the C type G_FILE_MEASURE_NONE.
-	Filemeasureflags_None Filemeasureflags = 0
-	// Filemeasureflags_ReportAnyError is a representation of the C type G_FILE_MEASURE_REPORT_ANY_ERROR.
-	Filemeasureflags_ReportAnyError Filemeasureflags = 2
-	// Filemeasureflags_ApparentSize is a representation of the C type G_FILE_MEASURE_APPARENT_SIZE.
-	Filemeasureflags_ApparentSize Filemeasureflags = 4
-	// Filemeasureflags_NoXdev is a representation of the C type G_FILE_MEASURE_NO_XDEV.
-	Filemeasureflags_NoXdev Filemeasureflags = 8
+	// FileMeasureFlags_None is a representation of the C type G_FILE_MEASURE_NONE.
+	FileMeasureFlags_None FileMeasureFlags = 0
+	// FileMeasureFlags_ReportAnyError is a representation of the C type G_FILE_MEASURE_REPORT_ANY_ERROR.
+	FileMeasureFlags_ReportAnyError FileMeasureFlags = 2
+	// FileMeasureFlags_ApparentSize is a representation of the C type G_FILE_MEASURE_APPARENT_SIZE.
+	FileMeasureFlags_ApparentSize FileMeasureFlags = 4
+	// FileMeasureFlags_NoXdev is a representation of the C type G_FILE_MEASURE_NO_XDEV.
+	FileMeasureFlags_NoXdev FileMeasureFlags = 8
 )
 
-// Filemonitorflags is a representation of the C type GFileMonitorFlags.
-type Filemonitorflags int
+// FileMonitorFlags is a representation of the C type GFileMonitorFlags.
+type FileMonitorFlags int
 
 const (
-	// Filemonitorflags_None is a representation of the C type G_FILE_MONITOR_NONE.
-	Filemonitorflags_None Filemonitorflags = 0
-	// Filemonitorflags_WatchMounts is a representation of the C type G_FILE_MONITOR_WATCH_MOUNTS.
-	Filemonitorflags_WatchMounts Filemonitorflags = 1
-	// Filemonitorflags_SendMoved is a representation of the C type G_FILE_MONITOR_SEND_MOVED.
-	Filemonitorflags_SendMoved Filemonitorflags = 2
-	// Filemonitorflags_WatchHardLinks is a representation of the C type G_FILE_MONITOR_WATCH_HARD_LINKS.
-	Filemonitorflags_WatchHardLinks Filemonitorflags = 4
-	// Filemonitorflags_WatchMoves is a representation of the C type G_FILE_MONITOR_WATCH_MOVES.
-	Filemonitorflags_WatchMoves Filemonitorflags = 8
+	// FileMonitorFlags_None is a representation of the C type G_FILE_MONITOR_NONE.
+	FileMonitorFlags_None FileMonitorFlags = 0
+	// FileMonitorFlags_WatchMounts is a representation of the C type G_FILE_MONITOR_WATCH_MOUNTS.
+	FileMonitorFlags_WatchMounts FileMonitorFlags = 1
+	// FileMonitorFlags_SendMoved is a representation of the C type G_FILE_MONITOR_SEND_MOVED.
+	FileMonitorFlags_SendMoved FileMonitorFlags = 2
+	// FileMonitorFlags_WatchHardLinks is a representation of the C type G_FILE_MONITOR_WATCH_HARD_LINKS.
+	FileMonitorFlags_WatchHardLinks FileMonitorFlags = 4
+	// FileMonitorFlags_WatchMoves is a representation of the C type G_FILE_MONITOR_WATCH_MOVES.
+	FileMonitorFlags_WatchMoves FileMonitorFlags = 8
 )
 
-// Filequeryinfoflags is a representation of the C type GFileQueryInfoFlags.
-type Filequeryinfoflags int
+// FileQueryInfoFlags is a representation of the C type GFileQueryInfoFlags.
+type FileQueryInfoFlags int
 
 const (
-	// Filequeryinfoflags_None is a representation of the C type G_FILE_QUERY_INFO_NONE.
-	Filequeryinfoflags_None Filequeryinfoflags = 0
-	// Filequeryinfoflags_NofollowSymlinks is a representation of the C type G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS.
-	Filequeryinfoflags_NofollowSymlinks Filequeryinfoflags = 1
+	// FileQueryInfoFlags_None is a representation of the C type G_FILE_QUERY_INFO_NONE.
+	FileQueryInfoFlags_None FileQueryInfoFlags = 0
+	// FileQueryInfoFlags_NofollowSymlinks is a representation of the C type G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS.
+	FileQueryInfoFlags_NofollowSymlinks FileQueryInfoFlags = 1
 )
 
-// Iostreamspliceflags is a representation of the C type GIOStreamSpliceFlags.
+// IOStreamSpliceFlags is a representation of the C type GIOStreamSpliceFlags.
 //
 // since 2.28
-type Iostreamspliceflags int
+type IOStreamSpliceFlags int
 
 const (
-	// Iostreamspliceflags_None is a representation of the C type G_IO_STREAM_SPLICE_NONE.
-	Iostreamspliceflags_None Iostreamspliceflags = 0
-	// Iostreamspliceflags_CloseStream1 is a representation of the C type G_IO_STREAM_SPLICE_CLOSE_STREAM1.
-	Iostreamspliceflags_CloseStream1 Iostreamspliceflags = 1
-	// Iostreamspliceflags_CloseStream2 is a representation of the C type G_IO_STREAM_SPLICE_CLOSE_STREAM2.
-	Iostreamspliceflags_CloseStream2 Iostreamspliceflags = 2
-	// Iostreamspliceflags_WaitForBoth is a representation of the C type G_IO_STREAM_SPLICE_WAIT_FOR_BOTH.
-	Iostreamspliceflags_WaitForBoth Iostreamspliceflags = 4
+	// IOStreamSpliceFlags_None is a representation of the C type G_IO_STREAM_SPLICE_NONE.
+	IOStreamSpliceFlags_None IOStreamSpliceFlags = 0
+	// IOStreamSpliceFlags_CloseStream1 is a representation of the C type G_IO_STREAM_SPLICE_CLOSE_STREAM1.
+	IOStreamSpliceFlags_CloseStream1 IOStreamSpliceFlags = 1
+	// IOStreamSpliceFlags_CloseStream2 is a representation of the C type G_IO_STREAM_SPLICE_CLOSE_STREAM2.
+	IOStreamSpliceFlags_CloseStream2 IOStreamSpliceFlags = 2
+	// IOStreamSpliceFlags_WaitForBoth is a representation of the C type G_IO_STREAM_SPLICE_WAIT_FOR_BOTH.
+	IOStreamSpliceFlags_WaitForBoth IOStreamSpliceFlags = 4
 )
 
-// Mountmountflags is a representation of the C type GMountMountFlags.
-type Mountmountflags int
+// MountMountFlags is a representation of the C type GMountMountFlags.
+type MountMountFlags int
 
 const (
-	// Mountmountflags_None is a representation of the C type G_MOUNT_MOUNT_NONE.
-	Mountmountflags_None Mountmountflags = 0
+	// MountMountFlags_None is a representation of the C type G_MOUNT_MOUNT_NONE.
+	MountMountFlags_None MountMountFlags = 0
 )
 
-// Mountunmountflags is a representation of the C type GMountUnmountFlags.
-type Mountunmountflags int
+// MountUnmountFlags is a representation of the C type GMountUnmountFlags.
+type MountUnmountFlags int
 
 const (
-	// Mountunmountflags_None is a representation of the C type G_MOUNT_UNMOUNT_NONE.
-	Mountunmountflags_None Mountunmountflags = 0
-	// Mountunmountflags_Force is a representation of the C type G_MOUNT_UNMOUNT_FORCE.
-	Mountunmountflags_Force Mountunmountflags = 1
+	// MountUnmountFlags_None is a representation of the C type G_MOUNT_UNMOUNT_NONE.
+	MountUnmountFlags_None MountUnmountFlags = 0
+	// MountUnmountFlags_Force is a representation of the C type G_MOUNT_UNMOUNT_FORCE.
+	MountUnmountFlags_Force MountUnmountFlags = 1
 )
 
-// Outputstreamspliceflags is a representation of the C type GOutputStreamSpliceFlags.
-type Outputstreamspliceflags int
+// OutputStreamSpliceFlags is a representation of the C type GOutputStreamSpliceFlags.
+type OutputStreamSpliceFlags int
 
 const (
-	// Outputstreamspliceflags_None is a representation of the C type G_OUTPUT_STREAM_SPLICE_NONE.
-	Outputstreamspliceflags_None Outputstreamspliceflags = 0
-	// Outputstreamspliceflags_CloseSource is a representation of the C type G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE.
-	Outputstreamspliceflags_CloseSource Outputstreamspliceflags = 1
-	// Outputstreamspliceflags_CloseTarget is a representation of the C type G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET.
-	Outputstreamspliceflags_CloseTarget Outputstreamspliceflags = 2
+	// OutputStreamSpliceFlags_None is a representation of the C type G_OUTPUT_STREAM_SPLICE_NONE.
+	OutputStreamSpliceFlags_None OutputStreamSpliceFlags = 0
+	// OutputStreamSpliceFlags_CloseSource is a representation of the C type G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE.
+	OutputStreamSpliceFlags_CloseSource OutputStreamSpliceFlags = 1
+	// OutputStreamSpliceFlags_CloseTarget is a representation of the C type G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET.
+	OutputStreamSpliceFlags_CloseTarget OutputStreamSpliceFlags = 2
 )
 
-// Resolvernamelookupflags is a representation of the C type GResolverNameLookupFlags.
+// ResolverNameLookupFlags is a representation of the C type GResolverNameLookupFlags.
 //
 // since 2.60
-type Resolvernamelookupflags int
+type ResolverNameLookupFlags int
 
 const (
-	// Resolvernamelookupflags_Default is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_DEFAULT.
-	Resolvernamelookupflags_Default Resolvernamelookupflags = 0
-	// Resolvernamelookupflags_Ipv4Only is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_IPV4_ONLY.
-	Resolvernamelookupflags_Ipv4Only Resolvernamelookupflags = 1
-	// Resolvernamelookupflags_Ipv6Only is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_IPV6_ONLY.
-	Resolvernamelookupflags_Ipv6Only Resolvernamelookupflags = 2
+	// ResolverNameLookupFlags_Default is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_DEFAULT.
+	ResolverNameLookupFlags_Default ResolverNameLookupFlags = 0
+	// ResolverNameLookupFlags_Ipv4Only is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_IPV4_ONLY.
+	ResolverNameLookupFlags_Ipv4Only ResolverNameLookupFlags = 1
+	// ResolverNameLookupFlags_Ipv6Only is a representation of the C type G_RESOLVER_NAME_LOOKUP_FLAGS_IPV6_ONLY.
+	ResolverNameLookupFlags_Ipv6Only ResolverNameLookupFlags = 2
 )
 
-// Resourceflags is a representation of the C type GResourceFlags.
+// ResourceFlags is a representation of the C type GResourceFlags.
 //
 // since 2.32
-type Resourceflags int
+type ResourceFlags int
 
 const (
-	// Resourceflags_None is a representation of the C type G_RESOURCE_FLAGS_NONE.
-	Resourceflags_None Resourceflags = 0
-	// Resourceflags_Compressed is a representation of the C type G_RESOURCE_FLAGS_COMPRESSED.
-	Resourceflags_Compressed Resourceflags = 1
+	// ResourceFlags_None is a representation of the C type G_RESOURCE_FLAGS_NONE.
+	ResourceFlags_None ResourceFlags = 0
+	// ResourceFlags_Compressed is a representation of the C type G_RESOURCE_FLAGS_COMPRESSED.
+	ResourceFlags_Compressed ResourceFlags = 1
 )
 
-// Resourcelookupflags is a representation of the C type GResourceLookupFlags.
+// ResourceLookupFlags is a representation of the C type GResourceLookupFlags.
 //
 // since 2.32
-type Resourcelookupflags int
+type ResourceLookupFlags int
 
 const (
-	// Resourcelookupflags_None is a representation of the C type G_RESOURCE_LOOKUP_FLAGS_NONE.
-	Resourcelookupflags_None Resourcelookupflags = 0
+	// ResourceLookupFlags_None is a representation of the C type G_RESOURCE_LOOKUP_FLAGS_NONE.
+	ResourceLookupFlags_None ResourceLookupFlags = 0
 )
 
-// Settingsbindflags is a representation of the C type GSettingsBindFlags.
-type Settingsbindflags int
+// SettingsBindFlags is a representation of the C type GSettingsBindFlags.
+type SettingsBindFlags int
 
 const (
-	// Settingsbindflags_Default is a representation of the C type G_SETTINGS_BIND_DEFAULT.
-	Settingsbindflags_Default Settingsbindflags = 0
-	// Settingsbindflags_Get is a representation of the C type G_SETTINGS_BIND_GET.
-	Settingsbindflags_Get Settingsbindflags = 1
-	// Settingsbindflags_Set is a representation of the C type G_SETTINGS_BIND_SET.
-	Settingsbindflags_Set Settingsbindflags = 2
-	// Settingsbindflags_NoSensitivity is a representation of the C type G_SETTINGS_BIND_NO_SENSITIVITY.
-	Settingsbindflags_NoSensitivity Settingsbindflags = 4
-	// Settingsbindflags_GetNoChanges is a representation of the C type G_SETTINGS_BIND_GET_NO_CHANGES.
-	Settingsbindflags_GetNoChanges Settingsbindflags = 8
-	// Settingsbindflags_InvertBoolean is a representation of the C type G_SETTINGS_BIND_INVERT_BOOLEAN.
-	Settingsbindflags_InvertBoolean Settingsbindflags = 16
+	// SettingsBindFlags_Default is a representation of the C type G_SETTINGS_BIND_DEFAULT.
+	SettingsBindFlags_Default SettingsBindFlags = 0
+	// SettingsBindFlags_Get is a representation of the C type G_SETTINGS_BIND_GET.
+	SettingsBindFlags_Get SettingsBindFlags = 1
+	// SettingsBindFlags_Set is a representation of the C type G_SETTINGS_BIND_SET.
+	SettingsBindFlags_Set SettingsBindFlags = 2
+	// SettingsBindFlags_NoSensitivity is a representation of the C type G_SETTINGS_BIND_NO_SENSITIVITY.
+	SettingsBindFlags_NoSensitivity SettingsBindFlags = 4
+	// SettingsBindFlags_GetNoChanges is a representation of the C type G_SETTINGS_BIND_GET_NO_CHANGES.
+	SettingsBindFlags_GetNoChanges SettingsBindFlags = 8
+	// SettingsBindFlags_InvertBoolean is a representation of the C type G_SETTINGS_BIND_INVERT_BOOLEAN.
+	SettingsBindFlags_InvertBoolean SettingsBindFlags = 16
 )
 
-// Socketmsgflags is a representation of the C type GSocketMsgFlags.
+// SocketMsgFlags is a representation of the C type GSocketMsgFlags.
 //
 // since 2.22
-type Socketmsgflags int
+type SocketMsgFlags int
 
 const (
-	// Socketmsgflags_None is a representation of the C type G_SOCKET_MSG_NONE.
-	Socketmsgflags_None Socketmsgflags = 0
-	// Socketmsgflags_Oob is a representation of the C type G_SOCKET_MSG_OOB.
-	Socketmsgflags_Oob Socketmsgflags = 1
-	// Socketmsgflags_Peek is a representation of the C type G_SOCKET_MSG_PEEK.
-	Socketmsgflags_Peek Socketmsgflags = 2
-	// Socketmsgflags_Dontroute is a representation of the C type G_SOCKET_MSG_DONTROUTE.
-	Socketmsgflags_Dontroute Socketmsgflags = 4
+	// SocketMsgFlags_None is a representation of the C type G_SOCKET_MSG_NONE.
+	SocketMsgFlags_None SocketMsgFlags = 0
+	// SocketMsgFlags_Oob is a representation of the C type G_SOCKET_MSG_OOB.
+	SocketMsgFlags_Oob SocketMsgFlags = 1
+	// SocketMsgFlags_Peek is a representation of the C type G_SOCKET_MSG_PEEK.
+	SocketMsgFlags_Peek SocketMsgFlags = 2
+	// SocketMsgFlags_Dontroute is a representation of the C type G_SOCKET_MSG_DONTROUTE.
+	SocketMsgFlags_Dontroute SocketMsgFlags = 4
 )
 
-// Subprocessflags is a representation of the C type GSubprocessFlags.
+// SubprocessFlags is a representation of the C type GSubprocessFlags.
 //
 // since 2.40
-type Subprocessflags int
+type SubprocessFlags int
 
 const (
-	// Subprocessflags_None is a representation of the C type G_SUBPROCESS_FLAGS_NONE.
-	Subprocessflags_None Subprocessflags = 0
-	// Subprocessflags_StdinPipe is a representation of the C type G_SUBPROCESS_FLAGS_STDIN_PIPE.
-	Subprocessflags_StdinPipe Subprocessflags = 1
-	// Subprocessflags_StdinInherit is a representation of the C type G_SUBPROCESS_FLAGS_STDIN_INHERIT.
-	Subprocessflags_StdinInherit Subprocessflags = 2
-	// Subprocessflags_StdoutPipe is a representation of the C type G_SUBPROCESS_FLAGS_STDOUT_PIPE.
-	Subprocessflags_StdoutPipe Subprocessflags = 4
-	// Subprocessflags_StdoutSilence is a representation of the C type G_SUBPROCESS_FLAGS_STDOUT_SILENCE.
-	Subprocessflags_StdoutSilence Subprocessflags = 8
-	// Subprocessflags_StderrPipe is a representation of the C type G_SUBPROCESS_FLAGS_STDERR_PIPE.
-	Subprocessflags_StderrPipe Subprocessflags = 16
-	// Subprocessflags_StderrSilence is a representation of the C type G_SUBPROCESS_FLAGS_STDERR_SILENCE.
-	Subprocessflags_StderrSilence Subprocessflags = 32
-	// Subprocessflags_StderrMerge is a representation of the C type G_SUBPROCESS_FLAGS_STDERR_MERGE.
-	Subprocessflags_StderrMerge Subprocessflags = 64
-	// Subprocessflags_InheritFds is a representation of the C type G_SUBPROCESS_FLAGS_INHERIT_FDS.
-	Subprocessflags_InheritFds Subprocessflags = 128
+	// SubprocessFlags_None is a representation of the C type G_SUBPROCESS_FLAGS_NONE.
+	SubprocessFlags_None SubprocessFlags = 0
+	// SubprocessFlags_StdinPipe is a representation of the C type G_SUBPROCESS_FLAGS_STDIN_PIPE.
+	SubprocessFlags_StdinPipe SubprocessFlags = 1
+	// SubprocessFlags_StdinInherit is a representation of the C type G_SUBPROCESS_FLAGS_STDIN_INHERIT.
+	SubprocessFlags_StdinInherit SubprocessFlags = 2
+	// SubprocessFlags_StdoutPipe is a representation of the C type G_SUBPROCESS_FLAGS_STDOUT_PIPE.
+	SubprocessFlags_StdoutPipe SubprocessFlags = 4
+	// SubprocessFlags_StdoutSilence is a representation of the C type G_SUBPROCESS_FLAGS_STDOUT_SILENCE.
+	SubprocessFlags_StdoutSilence SubprocessFlags = 8
+	// SubprocessFlags_StderrPipe is a representation of the C type G_SUBPROCESS_FLAGS_STDERR_PIPE.
+	SubprocessFlags_StderrPipe SubprocessFlags = 16
+	// SubprocessFlags_StderrSilence is a representation of the C type G_SUBPROCESS_FLAGS_STDERR_SILENCE.
+	SubprocessFlags_StderrSilence SubprocessFlags = 32
+	// SubprocessFlags_StderrMerge is a representation of the C type G_SUBPROCESS_FLAGS_STDERR_MERGE.
+	SubprocessFlags_StderrMerge SubprocessFlags = 64
+	// SubprocessFlags_InheritFds is a representation of the C type G_SUBPROCESS_FLAGS_INHERIT_FDS.
+	SubprocessFlags_InheritFds SubprocessFlags = 128
 )
 
-// Testdbusflags is a representation of the C type GTestDBusFlags.
+// TestDBusFlags is a representation of the C type GTestDBusFlags.
 //
 // since 2.34
-type Testdbusflags int
+type TestDBusFlags int
 
 const (
-	// Testdbusflags_None is a representation of the C type G_TEST_DBUS_NONE.
-	Testdbusflags_None Testdbusflags = 0
+	// TestDBusFlags_None is a representation of the C type G_TEST_DBUS_NONE.
+	TestDBusFlags_None TestDBusFlags = 0
 )
 
-// Tlscertificateflags is a representation of the C type GTlsCertificateFlags.
+// TlsCertificateFlags is a representation of the C type GTlsCertificateFlags.
 //
 // since 2.28
-type Tlscertificateflags int
+type TlsCertificateFlags int
 
 const (
-	// Tlscertificateflags_UnknownCa is a representation of the C type G_TLS_CERTIFICATE_UNKNOWN_CA.
-	Tlscertificateflags_UnknownCa Tlscertificateflags = 1
-	// Tlscertificateflags_BadIdentity is a representation of the C type G_TLS_CERTIFICATE_BAD_IDENTITY.
-	Tlscertificateflags_BadIdentity Tlscertificateflags = 2
-	// Tlscertificateflags_NotActivated is a representation of the C type G_TLS_CERTIFICATE_NOT_ACTIVATED.
-	Tlscertificateflags_NotActivated Tlscertificateflags = 4
-	// Tlscertificateflags_Expired is a representation of the C type G_TLS_CERTIFICATE_EXPIRED.
-	Tlscertificateflags_Expired Tlscertificateflags = 8
-	// Tlscertificateflags_Revoked is a representation of the C type G_TLS_CERTIFICATE_REVOKED.
-	Tlscertificateflags_Revoked Tlscertificateflags = 16
-	// Tlscertificateflags_Insecure is a representation of the C type G_TLS_CERTIFICATE_INSECURE.
-	Tlscertificateflags_Insecure Tlscertificateflags = 32
-	// Tlscertificateflags_GenericError is a representation of the C type G_TLS_CERTIFICATE_GENERIC_ERROR.
-	Tlscertificateflags_GenericError Tlscertificateflags = 64
-	// Tlscertificateflags_ValidateAll is a representation of the C type G_TLS_CERTIFICATE_VALIDATE_ALL.
-	Tlscertificateflags_ValidateAll Tlscertificateflags = 127
+	// TlsCertificateFlags_UnknownCa is a representation of the C type G_TLS_CERTIFICATE_UNKNOWN_CA.
+	TlsCertificateFlags_UnknownCa TlsCertificateFlags = 1
+	// TlsCertificateFlags_BadIdentity is a representation of the C type G_TLS_CERTIFICATE_BAD_IDENTITY.
+	TlsCertificateFlags_BadIdentity TlsCertificateFlags = 2
+	// TlsCertificateFlags_NotActivated is a representation of the C type G_TLS_CERTIFICATE_NOT_ACTIVATED.
+	TlsCertificateFlags_NotActivated TlsCertificateFlags = 4
+	// TlsCertificateFlags_Expired is a representation of the C type G_TLS_CERTIFICATE_EXPIRED.
+	TlsCertificateFlags_Expired TlsCertificateFlags = 8
+	// TlsCertificateFlags_Revoked is a representation of the C type G_TLS_CERTIFICATE_REVOKED.
+	TlsCertificateFlags_Revoked TlsCertificateFlags = 16
+	// TlsCertificateFlags_Insecure is a representation of the C type G_TLS_CERTIFICATE_INSECURE.
+	TlsCertificateFlags_Insecure TlsCertificateFlags = 32
+	// TlsCertificateFlags_GenericError is a representation of the C type G_TLS_CERTIFICATE_GENERIC_ERROR.
+	TlsCertificateFlags_GenericError TlsCertificateFlags = 64
+	// TlsCertificateFlags_ValidateAll is a representation of the C type G_TLS_CERTIFICATE_VALIDATE_ALL.
+	TlsCertificateFlags_ValidateAll TlsCertificateFlags = 127
 )
 
-// Tlsdatabaseverifyflags is a representation of the C type GTlsDatabaseVerifyFlags.
+// TlsDatabaseVerifyFlags is a representation of the C type GTlsDatabaseVerifyFlags.
 //
 // since 2.30
-type Tlsdatabaseverifyflags int
+type TlsDatabaseVerifyFlags int
 
 const (
-	// Tlsdatabaseverifyflags_None is a representation of the C type G_TLS_DATABASE_VERIFY_NONE.
-	Tlsdatabaseverifyflags_None Tlsdatabaseverifyflags = 0
+	// TlsDatabaseVerifyFlags_None is a representation of the C type G_TLS_DATABASE_VERIFY_NONE.
+	TlsDatabaseVerifyFlags_None TlsDatabaseVerifyFlags = 0
 )
 
-// Tlspasswordflags is a representation of the C type GTlsPasswordFlags.
+// TlsPasswordFlags is a representation of the C type GTlsPasswordFlags.
 //
 // since 2.30
-type Tlspasswordflags int
+type TlsPasswordFlags int
 
 const (
-	// Tlspasswordflags_None is a representation of the C type G_TLS_PASSWORD_NONE.
-	Tlspasswordflags_None Tlspasswordflags = 0
-	// Tlspasswordflags_Retry is a representation of the C type G_TLS_PASSWORD_RETRY.
-	Tlspasswordflags_Retry Tlspasswordflags = 2
-	// Tlspasswordflags_ManyTries is a representation of the C type G_TLS_PASSWORD_MANY_TRIES.
-	Tlspasswordflags_ManyTries Tlspasswordflags = 4
-	// Tlspasswordflags_FinalTry is a representation of the C type G_TLS_PASSWORD_FINAL_TRY.
-	Tlspasswordflags_FinalTry Tlspasswordflags = 8
+	// TlsPasswordFlags_None is a representation of the C type G_TLS_PASSWORD_NONE.
+	TlsPasswordFlags_None TlsPasswordFlags = 0
+	// TlsPasswordFlags_Retry is a representation of the C type G_TLS_PASSWORD_RETRY.
+	TlsPasswordFlags_Retry TlsPasswordFlags = 2
+	// TlsPasswordFlags_ManyTries is a representation of the C type G_TLS_PASSWORD_MANY_TRIES.
+	TlsPasswordFlags_ManyTries TlsPasswordFlags = 4
+	// TlsPasswordFlags_FinalTry is a representation of the C type G_TLS_PASSWORD_FINAL_TRY.
+	TlsPasswordFlags_FinalTry TlsPasswordFlags = 8
 )

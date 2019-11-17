@@ -2,11 +2,11 @@
 
 package glib
 
-// Dateday is a representation of the C type DateDay.
-type Dateday uint8
+// DateDay is a representation of the C type DateDay.
+type DateDay uint8
 
-// Dateyear is a representation of the C type DateYear.
-type Dateyear uint16
+// DateYear is a representation of the C type DateYear.
+type DateYear uint16
 
 // UNSUPPORTED : C value 'MutexLocker' : no Go type for 'none'
 
@@ -22,8 +22,8 @@ type Quark uint32
 
 // UNSUPPORTED : C value 'RecMutexLocker' : no Go type for 'none'
 
-// Refstring is a representation of the C type RefString.
-type Refstring int8
+// RefString is a representation of the C type RefString.
+type RefString int8
 
 // Strv is a representation of the C type Strv.
 type Strv string
@@ -31,8 +31,8 @@ type Strv string
 // Time is a representation of the C type Time.
 type Time int32
 
-// Timespan is a representation of the C type TimeSpan.
-type Timespan int64
+// TimeSpan is a representation of the C type TimeSpan.
+type TimeSpan int64
 
 // Type is a representation of the C type Type.
 type Type uintptr

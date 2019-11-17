@@ -26,40 +26,40 @@ const (
 	Expectation_Continue Expectation = 2
 )
 
-// Messageflags is a representation of the C type SoupMessageFlags.
-type Messageflags int
+// MessageFlags is a representation of the C type SoupMessageFlags.
+type MessageFlags int
 
 const (
-	// Messageflags_NoRedirect is a representation of the C type SOUP_MESSAGE_NO_REDIRECT.
-	Messageflags_NoRedirect Messageflags = 2
-	// Messageflags_CanRebuild is a representation of the C type SOUP_MESSAGE_CAN_REBUILD.
-	Messageflags_CanRebuild Messageflags = 4
-	// Messageflags_OverwriteChunks is a representation of the C type SOUP_MESSAGE_OVERWRITE_CHUNKS.
-	Messageflags_OverwriteChunks Messageflags = 8
-	// Messageflags_ContentDecoded is a representation of the C type SOUP_MESSAGE_CONTENT_DECODED.
-	Messageflags_ContentDecoded Messageflags = 16
-	// Messageflags_CertificateTrusted is a representation of the C type SOUP_MESSAGE_CERTIFICATE_TRUSTED.
-	Messageflags_CertificateTrusted Messageflags = 32
-	// Messageflags_NewConnection is a representation of the C type SOUP_MESSAGE_NEW_CONNECTION.
-	Messageflags_NewConnection Messageflags = 64
-	// Messageflags_Idempotent is a representation of the C type SOUP_MESSAGE_IDEMPOTENT.
-	Messageflags_Idempotent Messageflags = 128
-	// Messageflags_IgnoreConnectionLimits is a representation of the C type SOUP_MESSAGE_IGNORE_CONNECTION_LIMITS.
-	Messageflags_IgnoreConnectionLimits Messageflags = 256
-	// Messageflags_DoNotUseAuthCache is a representation of the C type SOUP_MESSAGE_DO_NOT_USE_AUTH_CACHE.
-	Messageflags_DoNotUseAuthCache Messageflags = 512
+	// MessageFlags_NoRedirect is a representation of the C type SOUP_MESSAGE_NO_REDIRECT.
+	MessageFlags_NoRedirect MessageFlags = 2
+	// MessageFlags_CanRebuild is a representation of the C type SOUP_MESSAGE_CAN_REBUILD.
+	MessageFlags_CanRebuild MessageFlags = 4
+	// MessageFlags_OverwriteChunks is a representation of the C type SOUP_MESSAGE_OVERWRITE_CHUNKS.
+	MessageFlags_OverwriteChunks MessageFlags = 8
+	// MessageFlags_ContentDecoded is a representation of the C type SOUP_MESSAGE_CONTENT_DECODED.
+	MessageFlags_ContentDecoded MessageFlags = 16
+	// MessageFlags_CertificateTrusted is a representation of the C type SOUP_MESSAGE_CERTIFICATE_TRUSTED.
+	MessageFlags_CertificateTrusted MessageFlags = 32
+	// MessageFlags_NewConnection is a representation of the C type SOUP_MESSAGE_NEW_CONNECTION.
+	MessageFlags_NewConnection MessageFlags = 64
+	// MessageFlags_Idempotent is a representation of the C type SOUP_MESSAGE_IDEMPOTENT.
+	MessageFlags_Idempotent MessageFlags = 128
+	// MessageFlags_IgnoreConnectionLimits is a representation of the C type SOUP_MESSAGE_IGNORE_CONNECTION_LIMITS.
+	MessageFlags_IgnoreConnectionLimits MessageFlags = 256
+	// MessageFlags_DoNotUseAuthCache is a representation of the C type SOUP_MESSAGE_DO_NOT_USE_AUTH_CACHE.
+	MessageFlags_DoNotUseAuthCache MessageFlags = 512
 )
 
-// Serverlistenoptions is a representation of the C type SoupServerListenOptions.
+// ServerListenOptions is a representation of the C type SoupServerListenOptions.
 //
 // since 2.48
-type Serverlistenoptions int
+type ServerListenOptions int
 
 const (
-	// Serverlistenoptions_Https is a representation of the C type SOUP_SERVER_LISTEN_HTTPS.
-	Serverlistenoptions_Https Serverlistenoptions = 1
-	// Serverlistenoptions_Ipv4Only is a representation of the C type SOUP_SERVER_LISTEN_IPV4_ONLY.
-	Serverlistenoptions_Ipv4Only Serverlistenoptions = 2
-	// Serverlistenoptions_Ipv6Only is a representation of the C type SOUP_SERVER_LISTEN_IPV6_ONLY.
-	Serverlistenoptions_Ipv6Only Serverlistenoptions = 4
+	// ServerListenOptions_Https is a representation of the C type SOUP_SERVER_LISTEN_HTTPS.
+	ServerListenOptions_Https ServerListenOptions = 1
+	// ServerListenOptions_Ipv4Only is a representation of the C type SOUP_SERVER_LISTEN_IPV4_ONLY.
+	ServerListenOptions_Ipv4Only ServerListenOptions = 2
+	// ServerListenOptions_Ipv6Only is a representation of the C type SOUP_SERVER_LISTEN_IPV6_ONLY.
+	ServerListenOptions_Ipv6Only ServerListenOptions = 4
 )

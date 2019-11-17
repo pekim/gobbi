@@ -10,60 +10,60 @@ const (
 	Colorspace_Rgb Colorspace = 0
 )
 
-// Interptype is a representation of the C type GdkInterpType.
-type Interptype int
+// InterpType is a representation of the C type GdkInterpType.
+type InterpType int
 
 const (
-	// Interptype_Nearest is a representation of the C type GDK_INTERP_NEAREST.
-	Interptype_Nearest Interptype = 0
-	// Interptype_Tiles is a representation of the C type GDK_INTERP_TILES.
-	Interptype_Tiles Interptype = 1
-	// Interptype_Bilinear is a representation of the C type GDK_INTERP_BILINEAR.
-	Interptype_Bilinear Interptype = 2
-	// Interptype_Hyper is a representation of the C type GDK_INTERP_HYPER.
-	Interptype_Hyper Interptype = 3
+	// InterpType_Nearest is a representation of the C type GDK_INTERP_NEAREST.
+	InterpType_Nearest InterpType = 0
+	// InterpType_Tiles is a representation of the C type GDK_INTERP_TILES.
+	InterpType_Tiles InterpType = 1
+	// InterpType_Bilinear is a representation of the C type GDK_INTERP_BILINEAR.
+	InterpType_Bilinear InterpType = 2
+	// InterpType_Hyper is a representation of the C type GDK_INTERP_HYPER.
+	InterpType_Hyper InterpType = 3
 )
 
-// Pixbufalphamode is a representation of the C type GdkPixbufAlphaMode.
-type Pixbufalphamode int
+// PixbufAlphaMode is a representation of the C type GdkPixbufAlphaMode.
+type PixbufAlphaMode int
 
 const (
-	// Pixbufalphamode_Bilevel is a representation of the C type GDK_PIXBUF_ALPHA_BILEVEL.
-	Pixbufalphamode_Bilevel Pixbufalphamode = 0
-	// Pixbufalphamode_Full is a representation of the C type GDK_PIXBUF_ALPHA_FULL.
-	Pixbufalphamode_Full Pixbufalphamode = 1
+	// PixbufAlphaMode_Bilevel is a representation of the C type GDK_PIXBUF_ALPHA_BILEVEL.
+	PixbufAlphaMode_Bilevel PixbufAlphaMode = 0
+	// PixbufAlphaMode_Full is a representation of the C type GDK_PIXBUF_ALPHA_FULL.
+	PixbufAlphaMode_Full PixbufAlphaMode = 1
 )
 
-// Pixbuferror is a representation of the C type GdkPixbufError.
-type Pixbuferror int
+// PixbufError is a representation of the C type GdkPixbufError.
+type PixbufError int
 
 const (
-	// Pixbuferror_CorruptImage is a representation of the C type GDK_PIXBUF_ERROR_CORRUPT_IMAGE.
-	Pixbuferror_CorruptImage Pixbuferror = 0
-	// Pixbuferror_InsufficientMemory is a representation of the C type GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY.
-	Pixbuferror_InsufficientMemory Pixbuferror = 1
-	// Pixbuferror_BadOption is a representation of the C type GDK_PIXBUF_ERROR_BAD_OPTION.
-	Pixbuferror_BadOption Pixbuferror = 2
-	// Pixbuferror_UnknownType is a representation of the C type GDK_PIXBUF_ERROR_UNKNOWN_TYPE.
-	Pixbuferror_UnknownType Pixbuferror = 3
-	// Pixbuferror_UnsupportedOperation is a representation of the C type GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION.
-	Pixbuferror_UnsupportedOperation Pixbuferror = 4
-	// Pixbuferror_Failed is a representation of the C type GDK_PIXBUF_ERROR_FAILED.
-	Pixbuferror_Failed Pixbuferror = 5
-	// Pixbuferror_IncompleteAnimation is a representation of the C type GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION.
-	Pixbuferror_IncompleteAnimation Pixbuferror = 6
+	// PixbufError_CorruptImage is a representation of the C type GDK_PIXBUF_ERROR_CORRUPT_IMAGE.
+	PixbufError_CorruptImage PixbufError = 0
+	// PixbufError_InsufficientMemory is a representation of the C type GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY.
+	PixbufError_InsufficientMemory PixbufError = 1
+	// PixbufError_BadOption is a representation of the C type GDK_PIXBUF_ERROR_BAD_OPTION.
+	PixbufError_BadOption PixbufError = 2
+	// PixbufError_UnknownType is a representation of the C type GDK_PIXBUF_ERROR_UNKNOWN_TYPE.
+	PixbufError_UnknownType PixbufError = 3
+	// PixbufError_UnsupportedOperation is a representation of the C type GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION.
+	PixbufError_UnsupportedOperation PixbufError = 4
+	// PixbufError_Failed is a representation of the C type GDK_PIXBUF_ERROR_FAILED.
+	PixbufError_Failed PixbufError = 5
+	// PixbufError_IncompleteAnimation is a representation of the C type GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION.
+	PixbufError_IncompleteAnimation PixbufError = 6
 )
 
-// Pixbufrotation is a representation of the C type GdkPixbufRotation.
-type Pixbufrotation int
+// PixbufRotation is a representation of the C type GdkPixbufRotation.
+type PixbufRotation int
 
 const (
-	// Pixbufrotation_None is a representation of the C type GDK_PIXBUF_ROTATE_NONE.
-	Pixbufrotation_None Pixbufrotation = 0
-	// Pixbufrotation_Counterclockwise is a representation of the C type GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE.
-	Pixbufrotation_Counterclockwise Pixbufrotation = 90
-	// Pixbufrotation_Upsidedown is a representation of the C type GDK_PIXBUF_ROTATE_UPSIDEDOWN.
-	Pixbufrotation_Upsidedown Pixbufrotation = 180
-	// Pixbufrotation_Clockwise is a representation of the C type GDK_PIXBUF_ROTATE_CLOCKWISE.
-	Pixbufrotation_Clockwise Pixbufrotation = 270
+	// PixbufRotation_None is a representation of the C type GDK_PIXBUF_ROTATE_NONE.
+	PixbufRotation_None PixbufRotation = 0
+	// PixbufRotation_Counterclockwise is a representation of the C type GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE.
+	PixbufRotation_Counterclockwise PixbufRotation = 90
+	// PixbufRotation_Upsidedown is a representation of the C type GDK_PIXBUF_ROTATE_UPSIDEDOWN.
+	PixbufRotation_Upsidedown PixbufRotation = 180
+	// PixbufRotation_Clockwise is a representation of the C type GDK_PIXBUF_ROTATE_CLOCKWISE.
+	PixbufRotation_Clockwise PixbufRotation = 270
 )

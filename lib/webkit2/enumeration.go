@@ -2,482 +2,482 @@
 
 package webkit2
 
-// Authenticationscheme is a representation of the C type WebKitAuthenticationScheme.
+// AuthenticationScheme is a representation of the C type WebKitAuthenticationScheme.
 //
 // since 2.2
-type Authenticationscheme int
+type AuthenticationScheme int
 
 const (
-	// Authenticationscheme_Default is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_DEFAULT.
-	Authenticationscheme_Default Authenticationscheme = 1
-	// Authenticationscheme_HttpBasic is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_HTTP_BASIC.
-	Authenticationscheme_HttpBasic Authenticationscheme = 2
-	// Authenticationscheme_HttpDigest is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_HTTP_DIGEST.
-	Authenticationscheme_HttpDigest Authenticationscheme = 3
-	// Authenticationscheme_HtmlForm is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_HTML_FORM.
-	Authenticationscheme_HtmlForm Authenticationscheme = 4
-	// Authenticationscheme_Ntlm is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_NTLM.
-	Authenticationscheme_Ntlm Authenticationscheme = 5
-	// Authenticationscheme_Negotiate is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_NEGOTIATE.
-	Authenticationscheme_Negotiate Authenticationscheme = 6
-	// Authenticationscheme_ClientCertificateRequested is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED.
-	Authenticationscheme_ClientCertificateRequested Authenticationscheme = 7
-	// Authenticationscheme_ServerTrustEvaluationRequested is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED.
-	Authenticationscheme_ServerTrustEvaluationRequested Authenticationscheme = 8
-	// Authenticationscheme_Unknown is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN.
-	Authenticationscheme_Unknown Authenticationscheme = 100
+	// AuthenticationScheme_Default is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_DEFAULT.
+	AuthenticationScheme_Default AuthenticationScheme = 1
+	// AuthenticationScheme_HttpBasic is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_HTTP_BASIC.
+	AuthenticationScheme_HttpBasic AuthenticationScheme = 2
+	// AuthenticationScheme_HttpDigest is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_HTTP_DIGEST.
+	AuthenticationScheme_HttpDigest AuthenticationScheme = 3
+	// AuthenticationScheme_HtmlForm is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_HTML_FORM.
+	AuthenticationScheme_HtmlForm AuthenticationScheme = 4
+	// AuthenticationScheme_Ntlm is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_NTLM.
+	AuthenticationScheme_Ntlm AuthenticationScheme = 5
+	// AuthenticationScheme_Negotiate is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_NEGOTIATE.
+	AuthenticationScheme_Negotiate AuthenticationScheme = 6
+	// AuthenticationScheme_ClientCertificateRequested is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED.
+	AuthenticationScheme_ClientCertificateRequested AuthenticationScheme = 7
+	// AuthenticationScheme_ServerTrustEvaluationRequested is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED.
+	AuthenticationScheme_ServerTrustEvaluationRequested AuthenticationScheme = 8
+	// AuthenticationScheme_Unknown is a representation of the C type WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN.
+	AuthenticationScheme_Unknown AuthenticationScheme = 100
 )
 
-// Cachemodel is a representation of the C type WebKitCacheModel.
-type Cachemodel int
+// CacheModel is a representation of the C type WebKitCacheModel.
+type CacheModel int
 
 const (
-	// Cachemodel_DocumentViewer is a representation of the C type WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER.
-	Cachemodel_DocumentViewer Cachemodel = 0
-	// Cachemodel_WebBrowser is a representation of the C type WEBKIT_CACHE_MODEL_WEB_BROWSER.
-	Cachemodel_WebBrowser Cachemodel = 1
-	// Cachemodel_DocumentBrowser is a representation of the C type WEBKIT_CACHE_MODEL_DOCUMENT_BROWSER.
-	Cachemodel_DocumentBrowser Cachemodel = 2
+	// CacheModel_DocumentViewer is a representation of the C type WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER.
+	CacheModel_DocumentViewer CacheModel = 0
+	// CacheModel_WebBrowser is a representation of the C type WEBKIT_CACHE_MODEL_WEB_BROWSER.
+	CacheModel_WebBrowser CacheModel = 1
+	// CacheModel_DocumentBrowser is a representation of the C type WEBKIT_CACHE_MODEL_DOCUMENT_BROWSER.
+	CacheModel_DocumentBrowser CacheModel = 2
 )
 
-// Contextmenuaction is a representation of the C type WebKitContextMenuAction.
-type Contextmenuaction int
+// ContextMenuAction is a representation of the C type WebKitContextMenuAction.
+type ContextMenuAction int
 
 const (
-	// Contextmenuaction_NoAction is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION.
-	Contextmenuaction_NoAction Contextmenuaction = 0
-	// Contextmenuaction_OpenLink is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK.
-	Contextmenuaction_OpenLink Contextmenuaction = 1
-	// Contextmenuaction_OpenLinkInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW.
-	Contextmenuaction_OpenLinkInNewWindow Contextmenuaction = 2
-	// Contextmenuaction_DownloadLinkToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_LINK_TO_DISK.
-	Contextmenuaction_DownloadLinkToDisk Contextmenuaction = 3
-	// Contextmenuaction_CopyLinkToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_LINK_TO_CLIPBOARD.
-	Contextmenuaction_CopyLinkToClipboard Contextmenuaction = 4
-	// Contextmenuaction_OpenImageInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_IMAGE_IN_NEW_WINDOW.
-	Contextmenuaction_OpenImageInNewWindow Contextmenuaction = 5
-	// Contextmenuaction_DownloadImageToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_IMAGE_TO_DISK.
-	Contextmenuaction_DownloadImageToDisk Contextmenuaction = 6
-	// Contextmenuaction_CopyImageToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_TO_CLIPBOARD.
-	Contextmenuaction_CopyImageToClipboard Contextmenuaction = 7
-	// Contextmenuaction_CopyImageUrlToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_URL_TO_CLIPBOARD.
-	Contextmenuaction_CopyImageUrlToClipboard Contextmenuaction = 8
-	// Contextmenuaction_OpenFrameInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_FRAME_IN_NEW_WINDOW.
-	Contextmenuaction_OpenFrameInNewWindow Contextmenuaction = 9
-	// Contextmenuaction_GoBack is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_GO_BACK.
-	Contextmenuaction_GoBack Contextmenuaction = 10
-	// Contextmenuaction_GoForward is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_GO_FORWARD.
-	Contextmenuaction_GoForward Contextmenuaction = 11
-	// Contextmenuaction_Stop is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_STOP.
-	Contextmenuaction_Stop Contextmenuaction = 12
-	// Contextmenuaction_Reload is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_RELOAD.
-	Contextmenuaction_Reload Contextmenuaction = 13
-	// Contextmenuaction_Copy is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY.
-	Contextmenuaction_Copy Contextmenuaction = 14
-	// Contextmenuaction_Cut is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_CUT.
-	Contextmenuaction_Cut Contextmenuaction = 15
-	// Contextmenuaction_Paste is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_PASTE.
-	Contextmenuaction_Paste Contextmenuaction = 16
-	// Contextmenuaction_Delete is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DELETE.
-	Contextmenuaction_Delete Contextmenuaction = 17
-	// Contextmenuaction_SelectAll is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_SELECT_ALL.
-	Contextmenuaction_SelectAll Contextmenuaction = 18
-	// Contextmenuaction_InputMethods is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_INPUT_METHODS.
-	Contextmenuaction_InputMethods Contextmenuaction = 19
-	// Contextmenuaction_Unicode is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_UNICODE.
-	Contextmenuaction_Unicode Contextmenuaction = 20
-	// Contextmenuaction_SpellingGuess is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_SPELLING_GUESS.
-	Contextmenuaction_SpellingGuess Contextmenuaction = 21
-	// Contextmenuaction_NoGuessesFound is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_NO_GUESSES_FOUND.
-	Contextmenuaction_NoGuessesFound Contextmenuaction = 22
-	// Contextmenuaction_IgnoreSpelling is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_IGNORE_SPELLING.
-	Contextmenuaction_IgnoreSpelling Contextmenuaction = 23
-	// Contextmenuaction_LearnSpelling is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_LEARN_SPELLING.
-	Contextmenuaction_LearnSpelling Contextmenuaction = 24
-	// Contextmenuaction_IgnoreGrammar is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_IGNORE_GRAMMAR.
-	Contextmenuaction_IgnoreGrammar Contextmenuaction = 25
-	// Contextmenuaction_FontMenu is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_FONT_MENU.
-	Contextmenuaction_FontMenu Contextmenuaction = 26
-	// Contextmenuaction_Bold is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_BOLD.
-	Contextmenuaction_Bold Contextmenuaction = 27
-	// Contextmenuaction_Italic is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_ITALIC.
-	Contextmenuaction_Italic Contextmenuaction = 28
-	// Contextmenuaction_Underline is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_UNDERLINE.
-	Contextmenuaction_Underline Contextmenuaction = 29
-	// Contextmenuaction_Outline is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OUTLINE.
-	Contextmenuaction_Outline Contextmenuaction = 30
-	// Contextmenuaction_InspectElement is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_INSPECT_ELEMENT.
-	Contextmenuaction_InspectElement Contextmenuaction = 31
-	// Contextmenuaction_OpenVideoInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_VIDEO_IN_NEW_WINDOW.
-	Contextmenuaction_OpenVideoInNewWindow Contextmenuaction = 32
-	// Contextmenuaction_OpenAudioInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_AUDIO_IN_NEW_WINDOW.
-	Contextmenuaction_OpenAudioInNewWindow Contextmenuaction = 33
-	// Contextmenuaction_CopyVideoLinkToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_VIDEO_LINK_TO_CLIPBOARD.
-	Contextmenuaction_CopyVideoLinkToClipboard Contextmenuaction = 34
-	// Contextmenuaction_CopyAudioLinkToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_AUDIO_LINK_TO_CLIPBOARD.
-	Contextmenuaction_CopyAudioLinkToClipboard Contextmenuaction = 35
-	// Contextmenuaction_ToggleMediaControls is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_CONTROLS.
-	Contextmenuaction_ToggleMediaControls Contextmenuaction = 36
-	// Contextmenuaction_ToggleMediaLoop is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_LOOP.
-	Contextmenuaction_ToggleMediaLoop Contextmenuaction = 37
-	// Contextmenuaction_EnterVideoFullscreen is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_ENTER_VIDEO_FULLSCREEN.
-	Contextmenuaction_EnterVideoFullscreen Contextmenuaction = 38
-	// Contextmenuaction_MediaPlay is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PLAY.
-	Contextmenuaction_MediaPlay Contextmenuaction = 39
-	// Contextmenuaction_MediaPause is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PAUSE.
-	Contextmenuaction_MediaPause Contextmenuaction = 40
-	// Contextmenuaction_MediaMute is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_MEDIA_MUTE.
-	Contextmenuaction_MediaMute Contextmenuaction = 41
-	// Contextmenuaction_DownloadVideoToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_VIDEO_TO_DISK.
-	Contextmenuaction_DownloadVideoToDisk Contextmenuaction = 42
-	// Contextmenuaction_DownloadAudioToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_AUDIO_TO_DISK.
-	Contextmenuaction_DownloadAudioToDisk Contextmenuaction = 43
-	// Contextmenuaction_InsertEmoji is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_INSERT_EMOJI.
-	Contextmenuaction_InsertEmoji Contextmenuaction = 44
-	// Contextmenuaction_Custom is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_CUSTOM.
-	Contextmenuaction_Custom Contextmenuaction = 10000
+	// ContextMenuAction_NoAction is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION.
+	ContextMenuAction_NoAction ContextMenuAction = 0
+	// ContextMenuAction_OpenLink is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK.
+	ContextMenuAction_OpenLink ContextMenuAction = 1
+	// ContextMenuAction_OpenLinkInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW.
+	ContextMenuAction_OpenLinkInNewWindow ContextMenuAction = 2
+	// ContextMenuAction_DownloadLinkToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_LINK_TO_DISK.
+	ContextMenuAction_DownloadLinkToDisk ContextMenuAction = 3
+	// ContextMenuAction_CopyLinkToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_LINK_TO_CLIPBOARD.
+	ContextMenuAction_CopyLinkToClipboard ContextMenuAction = 4
+	// ContextMenuAction_OpenImageInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_IMAGE_IN_NEW_WINDOW.
+	ContextMenuAction_OpenImageInNewWindow ContextMenuAction = 5
+	// ContextMenuAction_DownloadImageToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_IMAGE_TO_DISK.
+	ContextMenuAction_DownloadImageToDisk ContextMenuAction = 6
+	// ContextMenuAction_CopyImageToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_TO_CLIPBOARD.
+	ContextMenuAction_CopyImageToClipboard ContextMenuAction = 7
+	// ContextMenuAction_CopyImageUrlToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_URL_TO_CLIPBOARD.
+	ContextMenuAction_CopyImageUrlToClipboard ContextMenuAction = 8
+	// ContextMenuAction_OpenFrameInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_FRAME_IN_NEW_WINDOW.
+	ContextMenuAction_OpenFrameInNewWindow ContextMenuAction = 9
+	// ContextMenuAction_GoBack is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_GO_BACK.
+	ContextMenuAction_GoBack ContextMenuAction = 10
+	// ContextMenuAction_GoForward is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_GO_FORWARD.
+	ContextMenuAction_GoForward ContextMenuAction = 11
+	// ContextMenuAction_Stop is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_STOP.
+	ContextMenuAction_Stop ContextMenuAction = 12
+	// ContextMenuAction_Reload is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_RELOAD.
+	ContextMenuAction_Reload ContextMenuAction = 13
+	// ContextMenuAction_Copy is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY.
+	ContextMenuAction_Copy ContextMenuAction = 14
+	// ContextMenuAction_Cut is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_CUT.
+	ContextMenuAction_Cut ContextMenuAction = 15
+	// ContextMenuAction_Paste is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_PASTE.
+	ContextMenuAction_Paste ContextMenuAction = 16
+	// ContextMenuAction_Delete is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DELETE.
+	ContextMenuAction_Delete ContextMenuAction = 17
+	// ContextMenuAction_SelectAll is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_SELECT_ALL.
+	ContextMenuAction_SelectAll ContextMenuAction = 18
+	// ContextMenuAction_InputMethods is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_INPUT_METHODS.
+	ContextMenuAction_InputMethods ContextMenuAction = 19
+	// ContextMenuAction_Unicode is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_UNICODE.
+	ContextMenuAction_Unicode ContextMenuAction = 20
+	// ContextMenuAction_SpellingGuess is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_SPELLING_GUESS.
+	ContextMenuAction_SpellingGuess ContextMenuAction = 21
+	// ContextMenuAction_NoGuessesFound is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_NO_GUESSES_FOUND.
+	ContextMenuAction_NoGuessesFound ContextMenuAction = 22
+	// ContextMenuAction_IgnoreSpelling is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_IGNORE_SPELLING.
+	ContextMenuAction_IgnoreSpelling ContextMenuAction = 23
+	// ContextMenuAction_LearnSpelling is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_LEARN_SPELLING.
+	ContextMenuAction_LearnSpelling ContextMenuAction = 24
+	// ContextMenuAction_IgnoreGrammar is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_IGNORE_GRAMMAR.
+	ContextMenuAction_IgnoreGrammar ContextMenuAction = 25
+	// ContextMenuAction_FontMenu is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_FONT_MENU.
+	ContextMenuAction_FontMenu ContextMenuAction = 26
+	// ContextMenuAction_Bold is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_BOLD.
+	ContextMenuAction_Bold ContextMenuAction = 27
+	// ContextMenuAction_Italic is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_ITALIC.
+	ContextMenuAction_Italic ContextMenuAction = 28
+	// ContextMenuAction_Underline is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_UNDERLINE.
+	ContextMenuAction_Underline ContextMenuAction = 29
+	// ContextMenuAction_Outline is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OUTLINE.
+	ContextMenuAction_Outline ContextMenuAction = 30
+	// ContextMenuAction_InspectElement is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_INSPECT_ELEMENT.
+	ContextMenuAction_InspectElement ContextMenuAction = 31
+	// ContextMenuAction_OpenVideoInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_VIDEO_IN_NEW_WINDOW.
+	ContextMenuAction_OpenVideoInNewWindow ContextMenuAction = 32
+	// ContextMenuAction_OpenAudioInNewWindow is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_OPEN_AUDIO_IN_NEW_WINDOW.
+	ContextMenuAction_OpenAudioInNewWindow ContextMenuAction = 33
+	// ContextMenuAction_CopyVideoLinkToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_VIDEO_LINK_TO_CLIPBOARD.
+	ContextMenuAction_CopyVideoLinkToClipboard ContextMenuAction = 34
+	// ContextMenuAction_CopyAudioLinkToClipboard is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_COPY_AUDIO_LINK_TO_CLIPBOARD.
+	ContextMenuAction_CopyAudioLinkToClipboard ContextMenuAction = 35
+	// ContextMenuAction_ToggleMediaControls is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_CONTROLS.
+	ContextMenuAction_ToggleMediaControls ContextMenuAction = 36
+	// ContextMenuAction_ToggleMediaLoop is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_LOOP.
+	ContextMenuAction_ToggleMediaLoop ContextMenuAction = 37
+	// ContextMenuAction_EnterVideoFullscreen is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_ENTER_VIDEO_FULLSCREEN.
+	ContextMenuAction_EnterVideoFullscreen ContextMenuAction = 38
+	// ContextMenuAction_MediaPlay is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PLAY.
+	ContextMenuAction_MediaPlay ContextMenuAction = 39
+	// ContextMenuAction_MediaPause is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PAUSE.
+	ContextMenuAction_MediaPause ContextMenuAction = 40
+	// ContextMenuAction_MediaMute is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_MEDIA_MUTE.
+	ContextMenuAction_MediaMute ContextMenuAction = 41
+	// ContextMenuAction_DownloadVideoToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_VIDEO_TO_DISK.
+	ContextMenuAction_DownloadVideoToDisk ContextMenuAction = 42
+	// ContextMenuAction_DownloadAudioToDisk is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_AUDIO_TO_DISK.
+	ContextMenuAction_DownloadAudioToDisk ContextMenuAction = 43
+	// ContextMenuAction_InsertEmoji is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_INSERT_EMOJI.
+	ContextMenuAction_InsertEmoji ContextMenuAction = 44
+	// ContextMenuAction_Custom is a representation of the C type WEBKIT_CONTEXT_MENU_ACTION_CUSTOM.
+	ContextMenuAction_Custom ContextMenuAction = 10000
 )
 
-// Cookieacceptpolicy is a representation of the C type WebKitCookieAcceptPolicy.
-type Cookieacceptpolicy int
+// CookieAcceptPolicy is a representation of the C type WebKitCookieAcceptPolicy.
+type CookieAcceptPolicy int
 
 const (
-	// Cookieacceptpolicy_Always is a representation of the C type WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS.
-	Cookieacceptpolicy_Always Cookieacceptpolicy = 0
-	// Cookieacceptpolicy_Never is a representation of the C type WEBKIT_COOKIE_POLICY_ACCEPT_NEVER.
-	Cookieacceptpolicy_Never Cookieacceptpolicy = 1
-	// Cookieacceptpolicy_NoThirdParty is a representation of the C type WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY.
-	Cookieacceptpolicy_NoThirdParty Cookieacceptpolicy = 2
+	// CookieAcceptPolicy_Always is a representation of the C type WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS.
+	CookieAcceptPolicy_Always CookieAcceptPolicy = 0
+	// CookieAcceptPolicy_Never is a representation of the C type WEBKIT_COOKIE_POLICY_ACCEPT_NEVER.
+	CookieAcceptPolicy_Never CookieAcceptPolicy = 1
+	// CookieAcceptPolicy_NoThirdParty is a representation of the C type WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY.
+	CookieAcceptPolicy_NoThirdParty CookieAcceptPolicy = 2
 )
 
-// Cookiepersistentstorage is a representation of the C type WebKitCookiePersistentStorage.
-type Cookiepersistentstorage int
+// CookiePersistentStorage is a representation of the C type WebKitCookiePersistentStorage.
+type CookiePersistentStorage int
 
 const (
-	// Cookiepersistentstorage_Text is a representation of the C type WEBKIT_COOKIE_PERSISTENT_STORAGE_TEXT.
-	Cookiepersistentstorage_Text Cookiepersistentstorage = 0
-	// Cookiepersistentstorage_Sqlite is a representation of the C type WEBKIT_COOKIE_PERSISTENT_STORAGE_SQLITE.
-	Cookiepersistentstorage_Sqlite Cookiepersistentstorage = 1
+	// CookiePersistentStorage_Text is a representation of the C type WEBKIT_COOKIE_PERSISTENT_STORAGE_TEXT.
+	CookiePersistentStorage_Text CookiePersistentStorage = 0
+	// CookiePersistentStorage_Sqlite is a representation of the C type WEBKIT_COOKIE_PERSISTENT_STORAGE_SQLITE.
+	CookiePersistentStorage_Sqlite CookiePersistentStorage = 1
 )
 
-// Credentialpersistence is a representation of the C type WebKitCredentialPersistence.
+// CredentialPersistence is a representation of the C type WebKitCredentialPersistence.
 //
 // since 2.2
-type Credentialpersistence int
+type CredentialPersistence int
 
 const (
-	// Credentialpersistence_None is a representation of the C type WEBKIT_CREDENTIAL_PERSISTENCE_NONE.
-	Credentialpersistence_None Credentialpersistence = 0
-	// Credentialpersistence_ForSession is a representation of the C type WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION.
-	Credentialpersistence_ForSession Credentialpersistence = 1
-	// Credentialpersistence_Permanent is a representation of the C type WEBKIT_CREDENTIAL_PERSISTENCE_PERMANENT.
-	Credentialpersistence_Permanent Credentialpersistence = 2
+	// CredentialPersistence_None is a representation of the C type WEBKIT_CREDENTIAL_PERSISTENCE_NONE.
+	CredentialPersistence_None CredentialPersistence = 0
+	// CredentialPersistence_ForSession is a representation of the C type WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION.
+	CredentialPersistence_ForSession CredentialPersistence = 1
+	// CredentialPersistence_Permanent is a representation of the C type WEBKIT_CREDENTIAL_PERSISTENCE_PERMANENT.
+	CredentialPersistence_Permanent CredentialPersistence = 2
 )
 
-// Downloaderror is a representation of the C type WebKitDownloadError.
-type Downloaderror int
+// DownloadError is a representation of the C type WebKitDownloadError.
+type DownloadError int
 
 const (
-	// Downloaderror_Network is a representation of the C type WEBKIT_DOWNLOAD_ERROR_NETWORK.
-	Downloaderror_Network Downloaderror = 499
-	// Downloaderror_CancelledByUser is a representation of the C type WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER.
-	Downloaderror_CancelledByUser Downloaderror = 400
-	// Downloaderror_Destination is a representation of the C type WEBKIT_DOWNLOAD_ERROR_DESTINATION.
-	Downloaderror_Destination Downloaderror = 401
+	// DownloadError_Network is a representation of the C type WEBKIT_DOWNLOAD_ERROR_NETWORK.
+	DownloadError_Network DownloadError = 499
+	// DownloadError_CancelledByUser is a representation of the C type WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER.
+	DownloadError_CancelledByUser DownloadError = 400
+	// DownloadError_Destination is a representation of the C type WEBKIT_DOWNLOAD_ERROR_DESTINATION.
+	DownloadError_Destination DownloadError = 401
 )
 
-// Favicondatabaseerror is a representation of the C type WebKitFaviconDatabaseError.
-type Favicondatabaseerror int
+// FaviconDatabaseError is a representation of the C type WebKitFaviconDatabaseError.
+type FaviconDatabaseError int
 
 const (
-	// Favicondatabaseerror_NotInitialized is a representation of the C type WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
-	Favicondatabaseerror_NotInitialized Favicondatabaseerror = 0
-	// Favicondatabaseerror_FaviconNotFound is a representation of the C type WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND.
-	Favicondatabaseerror_FaviconNotFound Favicondatabaseerror = 1
-	// Favicondatabaseerror_FaviconUnknown is a representation of the C type WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN.
-	Favicondatabaseerror_FaviconUnknown Favicondatabaseerror = 2
+	// FaviconDatabaseError_NotInitialized is a representation of the C type WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
+	FaviconDatabaseError_NotInitialized FaviconDatabaseError = 0
+	// FaviconDatabaseError_FaviconNotFound is a representation of the C type WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND.
+	FaviconDatabaseError_FaviconNotFound FaviconDatabaseError = 1
+	// FaviconDatabaseError_FaviconUnknown is a representation of the C type WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN.
+	FaviconDatabaseError_FaviconUnknown FaviconDatabaseError = 2
 )
 
-// Hardwareaccelerationpolicy is a representation of the C type WebKitHardwareAccelerationPolicy.
+// HardwareAccelerationPolicy is a representation of the C type WebKitHardwareAccelerationPolicy.
 //
 // since 2.16
-type Hardwareaccelerationpolicy int
+type HardwareAccelerationPolicy int
 
 const (
-	// Hardwareaccelerationpolicy_OnDemand is a representation of the C type WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND.
-	Hardwareaccelerationpolicy_OnDemand Hardwareaccelerationpolicy = 0
-	// Hardwareaccelerationpolicy_Always is a representation of the C type WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS.
-	Hardwareaccelerationpolicy_Always Hardwareaccelerationpolicy = 1
-	// Hardwareaccelerationpolicy_Never is a representation of the C type WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER.
-	Hardwareaccelerationpolicy_Never Hardwareaccelerationpolicy = 2
+	// HardwareAccelerationPolicy_OnDemand is a representation of the C type WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND.
+	HardwareAccelerationPolicy_OnDemand HardwareAccelerationPolicy = 0
+	// HardwareAccelerationPolicy_Always is a representation of the C type WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS.
+	HardwareAccelerationPolicy_Always HardwareAccelerationPolicy = 1
+	// HardwareAccelerationPolicy_Never is a representation of the C type WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER.
+	HardwareAccelerationPolicy_Never HardwareAccelerationPolicy = 2
 )
 
-// Insecurecontentevent is a representation of the C type WebKitInsecureContentEvent.
-type Insecurecontentevent int
+// InsecureContentEvent is a representation of the C type WebKitInsecureContentEvent.
+type InsecureContentEvent int
 
 const (
-	// Insecurecontentevent_Run is a representation of the C type WEBKIT_INSECURE_CONTENT_RUN.
-	Insecurecontentevent_Run Insecurecontentevent = 0
-	// Insecurecontentevent_Displayed is a representation of the C type WEBKIT_INSECURE_CONTENT_DISPLAYED.
-	Insecurecontentevent_Displayed Insecurecontentevent = 1
+	// InsecureContentEvent_Run is a representation of the C type WEBKIT_INSECURE_CONTENT_RUN.
+	InsecureContentEvent_Run InsecureContentEvent = 0
+	// InsecureContentEvent_Displayed is a representation of the C type WEBKIT_INSECURE_CONTENT_DISPLAYED.
+	InsecureContentEvent_Displayed InsecureContentEvent = 1
 )
 
-// Javascripterror is a representation of the C type WebKitJavascriptError.
-type Javascripterror int
+// JavascriptError is a representation of the C type WebKitJavascriptError.
+type JavascriptError int
 
 const (
-	// Javascripterror_Failed is a representation of the C type WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED.
-	Javascripterror_Failed Javascripterror = 699
+	// JavascriptError_Failed is a representation of the C type WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED.
+	JavascriptError_Failed JavascriptError = 699
 )
 
-// Loadevent is a representation of the C type WebKitLoadEvent.
-type Loadevent int
+// LoadEvent is a representation of the C type WebKitLoadEvent.
+type LoadEvent int
 
 const (
-	// Loadevent_Started is a representation of the C type WEBKIT_LOAD_STARTED.
-	Loadevent_Started Loadevent = 0
-	// Loadevent_Redirected is a representation of the C type WEBKIT_LOAD_REDIRECTED.
-	Loadevent_Redirected Loadevent = 1
-	// Loadevent_Committed is a representation of the C type WEBKIT_LOAD_COMMITTED.
-	Loadevent_Committed Loadevent = 2
-	// Loadevent_Finished is a representation of the C type WEBKIT_LOAD_FINISHED.
-	Loadevent_Finished Loadevent = 3
+	// LoadEvent_Started is a representation of the C type WEBKIT_LOAD_STARTED.
+	LoadEvent_Started LoadEvent = 0
+	// LoadEvent_Redirected is a representation of the C type WEBKIT_LOAD_REDIRECTED.
+	LoadEvent_Redirected LoadEvent = 1
+	// LoadEvent_Committed is a representation of the C type WEBKIT_LOAD_COMMITTED.
+	LoadEvent_Committed LoadEvent = 2
+	// LoadEvent_Finished is a representation of the C type WEBKIT_LOAD_FINISHED.
+	LoadEvent_Finished LoadEvent = 3
 )
 
-// Navigationtype is a representation of the C type WebKitNavigationType.
-type Navigationtype int
+// NavigationType is a representation of the C type WebKitNavigationType.
+type NavigationType int
 
 const (
-	// Navigationtype_LinkClicked is a representation of the C type WEBKIT_NAVIGATION_TYPE_LINK_CLICKED.
-	Navigationtype_LinkClicked Navigationtype = 0
-	// Navigationtype_FormSubmitted is a representation of the C type WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED.
-	Navigationtype_FormSubmitted Navigationtype = 1
-	// Navigationtype_BackForward is a representation of the C type WEBKIT_NAVIGATION_TYPE_BACK_FORWARD.
-	Navigationtype_BackForward Navigationtype = 2
-	// Navigationtype_Reload is a representation of the C type WEBKIT_NAVIGATION_TYPE_RELOAD.
-	Navigationtype_Reload Navigationtype = 3
-	// Navigationtype_FormResubmitted is a representation of the C type WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED.
-	Navigationtype_FormResubmitted Navigationtype = 4
-	// Navigationtype_Other is a representation of the C type WEBKIT_NAVIGATION_TYPE_OTHER.
-	Navigationtype_Other Navigationtype = 5
+	// NavigationType_LinkClicked is a representation of the C type WEBKIT_NAVIGATION_TYPE_LINK_CLICKED.
+	NavigationType_LinkClicked NavigationType = 0
+	// NavigationType_FormSubmitted is a representation of the C type WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED.
+	NavigationType_FormSubmitted NavigationType = 1
+	// NavigationType_BackForward is a representation of the C type WEBKIT_NAVIGATION_TYPE_BACK_FORWARD.
+	NavigationType_BackForward NavigationType = 2
+	// NavigationType_Reload is a representation of the C type WEBKIT_NAVIGATION_TYPE_RELOAD.
+	NavigationType_Reload NavigationType = 3
+	// NavigationType_FormResubmitted is a representation of the C type WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED.
+	NavigationType_FormResubmitted NavigationType = 4
+	// NavigationType_Other is a representation of the C type WEBKIT_NAVIGATION_TYPE_OTHER.
+	NavigationType_Other NavigationType = 5
 )
 
-// Networkerror is a representation of the C type WebKitNetworkError.
-type Networkerror int
+// NetworkError is a representation of the C type WebKitNetworkError.
+type NetworkError int
 
 const (
-	// Networkerror_Failed is a representation of the C type WEBKIT_NETWORK_ERROR_FAILED.
-	Networkerror_Failed Networkerror = 399
-	// Networkerror_Transport is a representation of the C type WEBKIT_NETWORK_ERROR_TRANSPORT.
-	Networkerror_Transport Networkerror = 300
-	// Networkerror_UnknownProtocol is a representation of the C type WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL.
-	Networkerror_UnknownProtocol Networkerror = 301
-	// Networkerror_Cancelled is a representation of the C type WEBKIT_NETWORK_ERROR_CANCELLED.
-	Networkerror_Cancelled Networkerror = 302
-	// Networkerror_FileDoesNotExist is a representation of the C type WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST.
-	Networkerror_FileDoesNotExist Networkerror = 303
+	// NetworkError_Failed is a representation of the C type WEBKIT_NETWORK_ERROR_FAILED.
+	NetworkError_Failed NetworkError = 399
+	// NetworkError_Transport is a representation of the C type WEBKIT_NETWORK_ERROR_TRANSPORT.
+	NetworkError_Transport NetworkError = 300
+	// NetworkError_UnknownProtocol is a representation of the C type WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL.
+	NetworkError_UnknownProtocol NetworkError = 301
+	// NetworkError_Cancelled is a representation of the C type WEBKIT_NETWORK_ERROR_CANCELLED.
+	NetworkError_Cancelled NetworkError = 302
+	// NetworkError_FileDoesNotExist is a representation of the C type WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST.
+	NetworkError_FileDoesNotExist NetworkError = 303
 )
 
-// Networkproxymode is a representation of the C type WebKitNetworkProxyMode.
+// NetworkProxyMode is a representation of the C type WebKitNetworkProxyMode.
 //
 // since 2.16
-type Networkproxymode int
+type NetworkProxyMode int
 
 const (
-	// Networkproxymode_Default is a representation of the C type WEBKIT_NETWORK_PROXY_MODE_DEFAULT.
-	Networkproxymode_Default Networkproxymode = 0
-	// Networkproxymode_NoProxy is a representation of the C type WEBKIT_NETWORK_PROXY_MODE_NO_PROXY.
-	Networkproxymode_NoProxy Networkproxymode = 1
-	// Networkproxymode_Custom is a representation of the C type WEBKIT_NETWORK_PROXY_MODE_CUSTOM.
-	Networkproxymode_Custom Networkproxymode = 2
+	// NetworkProxyMode_Default is a representation of the C type WEBKIT_NETWORK_PROXY_MODE_DEFAULT.
+	NetworkProxyMode_Default NetworkProxyMode = 0
+	// NetworkProxyMode_NoProxy is a representation of the C type WEBKIT_NETWORK_PROXY_MODE_NO_PROXY.
+	NetworkProxyMode_NoProxy NetworkProxyMode = 1
+	// NetworkProxyMode_Custom is a representation of the C type WEBKIT_NETWORK_PROXY_MODE_CUSTOM.
+	NetworkProxyMode_Custom NetworkProxyMode = 2
 )
 
-// Pluginerror is a representation of the C type WebKitPluginError.
-type Pluginerror int
+// PluginError is a representation of the C type WebKitPluginError.
+type PluginError int
 
 const (
-	// Pluginerror_Failed is a representation of the C type WEBKIT_PLUGIN_ERROR_FAILED.
-	Pluginerror_Failed Pluginerror = 299
-	// Pluginerror_CannotFindPlugin is a representation of the C type WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN.
-	Pluginerror_CannotFindPlugin Pluginerror = 200
-	// Pluginerror_CannotLoadPlugin is a representation of the C type WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN.
-	Pluginerror_CannotLoadPlugin Pluginerror = 201
-	// Pluginerror_JavaUnavailable is a representation of the C type WEBKIT_PLUGIN_ERROR_JAVA_UNAVAILABLE.
-	Pluginerror_JavaUnavailable Pluginerror = 202
-	// Pluginerror_ConnectionCancelled is a representation of the C type WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED.
-	Pluginerror_ConnectionCancelled Pluginerror = 203
-	// Pluginerror_WillHandleLoad is a representation of the C type WEBKIT_PLUGIN_ERROR_WILL_HANDLE_LOAD.
-	Pluginerror_WillHandleLoad Pluginerror = 204
+	// PluginError_Failed is a representation of the C type WEBKIT_PLUGIN_ERROR_FAILED.
+	PluginError_Failed PluginError = 299
+	// PluginError_CannotFindPlugin is a representation of the C type WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN.
+	PluginError_CannotFindPlugin PluginError = 200
+	// PluginError_CannotLoadPlugin is a representation of the C type WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN.
+	PluginError_CannotLoadPlugin PluginError = 201
+	// PluginError_JavaUnavailable is a representation of the C type WEBKIT_PLUGIN_ERROR_JAVA_UNAVAILABLE.
+	PluginError_JavaUnavailable PluginError = 202
+	// PluginError_ConnectionCancelled is a representation of the C type WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED.
+	PluginError_ConnectionCancelled PluginError = 203
+	// PluginError_WillHandleLoad is a representation of the C type WEBKIT_PLUGIN_ERROR_WILL_HANDLE_LOAD.
+	PluginError_WillHandleLoad PluginError = 204
 )
 
-// Policydecisiontype is a representation of the C type WebKitPolicyDecisionType.
-type Policydecisiontype int
+// PolicyDecisionType is a representation of the C type WebKitPolicyDecisionType.
+type PolicyDecisionType int
 
 const (
-	// Policydecisiontype_NavigationAction is a representation of the C type WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION.
-	Policydecisiontype_NavigationAction Policydecisiontype = 0
-	// Policydecisiontype_NewWindowAction is a representation of the C type WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION.
-	Policydecisiontype_NewWindowAction Policydecisiontype = 1
-	// Policydecisiontype_Response is a representation of the C type WEBKIT_POLICY_DECISION_TYPE_RESPONSE.
-	Policydecisiontype_Response Policydecisiontype = 2
+	// PolicyDecisionType_NavigationAction is a representation of the C type WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION.
+	PolicyDecisionType_NavigationAction PolicyDecisionType = 0
+	// PolicyDecisionType_NewWindowAction is a representation of the C type WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION.
+	PolicyDecisionType_NewWindowAction PolicyDecisionType = 1
+	// PolicyDecisionType_Response is a representation of the C type WEBKIT_POLICY_DECISION_TYPE_RESPONSE.
+	PolicyDecisionType_Response PolicyDecisionType = 2
 )
 
-// Policyerror is a representation of the C type WebKitPolicyError.
-type Policyerror int
+// PolicyError is a representation of the C type WebKitPolicyError.
+type PolicyError int
 
 const (
-	// Policyerror_Failed is a representation of the C type WEBKIT_POLICY_ERROR_FAILED.
-	Policyerror_Failed Policyerror = 199
-	// Policyerror_CannotShowMimeType is a representation of the C type WEBKIT_POLICY_ERROR_CANNOT_SHOW_MIME_TYPE.
-	Policyerror_CannotShowMimeType Policyerror = 100
-	// Policyerror_CannotShowUri is a representation of the C type WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI.
-	Policyerror_CannotShowUri Policyerror = 101
-	// Policyerror_FrameLoadInterruptedByPolicyChange is a representation of the C type WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE.
-	Policyerror_FrameLoadInterruptedByPolicyChange Policyerror = 102
-	// Policyerror_CannotUseRestrictedPort is a representation of the C type WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT.
-	Policyerror_CannotUseRestrictedPort Policyerror = 103
+	// PolicyError_Failed is a representation of the C type WEBKIT_POLICY_ERROR_FAILED.
+	PolicyError_Failed PolicyError = 199
+	// PolicyError_CannotShowMimeType is a representation of the C type WEBKIT_POLICY_ERROR_CANNOT_SHOW_MIME_TYPE.
+	PolicyError_CannotShowMimeType PolicyError = 100
+	// PolicyError_CannotShowUri is a representation of the C type WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI.
+	PolicyError_CannotShowUri PolicyError = 101
+	// PolicyError_FrameLoadInterruptedByPolicyChange is a representation of the C type WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE.
+	PolicyError_FrameLoadInterruptedByPolicyChange PolicyError = 102
+	// PolicyError_CannotUseRestrictedPort is a representation of the C type WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT.
+	PolicyError_CannotUseRestrictedPort PolicyError = 103
 )
 
-// Printerror is a representation of the C type WebKitPrintError.
-type Printerror int
+// PrintError is a representation of the C type WebKitPrintError.
+type PrintError int
 
 const (
-	// Printerror_General is a representation of the C type WEBKIT_PRINT_ERROR_GENERAL.
-	Printerror_General Printerror = 599
-	// Printerror_PrinterNotFound is a representation of the C type WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND.
-	Printerror_PrinterNotFound Printerror = 500
-	// Printerror_InvalidPageRange is a representation of the C type WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE.
-	Printerror_InvalidPageRange Printerror = 501
+	// PrintError_General is a representation of the C type WEBKIT_PRINT_ERROR_GENERAL.
+	PrintError_General PrintError = 599
+	// PrintError_PrinterNotFound is a representation of the C type WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND.
+	PrintError_PrinterNotFound PrintError = 500
+	// PrintError_InvalidPageRange is a representation of the C type WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE.
+	PrintError_InvalidPageRange PrintError = 501
 )
 
-// Printoperationresponse is a representation of the C type WebKitPrintOperationResponse.
-type Printoperationresponse int
+// PrintOperationResponse is a representation of the C type WebKitPrintOperationResponse.
+type PrintOperationResponse int
 
 const (
-	// Printoperationresponse_Print is a representation of the C type WEBKIT_PRINT_OPERATION_RESPONSE_PRINT.
-	Printoperationresponse_Print Printoperationresponse = 0
-	// Printoperationresponse_Cancel is a representation of the C type WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL.
-	Printoperationresponse_Cancel Printoperationresponse = 1
+	// PrintOperationResponse_Print is a representation of the C type WEBKIT_PRINT_OPERATION_RESPONSE_PRINT.
+	PrintOperationResponse_Print PrintOperationResponse = 0
+	// PrintOperationResponse_Cancel is a representation of the C type WEBKIT_PRINT_OPERATION_RESPONSE_CANCEL.
+	PrintOperationResponse_Cancel PrintOperationResponse = 1
 )
 
-// Processmodel is a representation of the C type WebKitProcessModel.
+// ProcessModel is a representation of the C type WebKitProcessModel.
 //
 // since 2.4
-type Processmodel int
+type ProcessModel int
 
 const (
-	// Processmodel_SharedSecondaryProcess is a representation of the C type WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS.
-	Processmodel_SharedSecondaryProcess Processmodel = 0
-	// Processmodel_MultipleSecondaryProcesses is a representation of the C type WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES.
-	Processmodel_MultipleSecondaryProcesses Processmodel = 1
+	// ProcessModel_SharedSecondaryProcess is a representation of the C type WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS.
+	ProcessModel_SharedSecondaryProcess ProcessModel = 0
+	// ProcessModel_MultipleSecondaryProcesses is a representation of the C type WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES.
+	ProcessModel_MultipleSecondaryProcesses ProcessModel = 1
 )
 
-// Savemode is a representation of the C type WebKitSaveMode.
-type Savemode int
+// SaveMode is a representation of the C type WebKitSaveMode.
+type SaveMode int
 
 const (
-	// Savemode_Mhtml is a representation of the C type WEBKIT_SAVE_MODE_MHTML.
-	Savemode_Mhtml Savemode = 0
+	// SaveMode_Mhtml is a representation of the C type WEBKIT_SAVE_MODE_MHTML.
+	SaveMode_Mhtml SaveMode = 0
 )
 
-// Scriptdialogtype is a representation of the C type WebKitScriptDialogType.
-type Scriptdialogtype int
+// ScriptDialogType is a representation of the C type WebKitScriptDialogType.
+type ScriptDialogType int
 
 const (
-	// Scriptdialogtype_Alert is a representation of the C type WEBKIT_SCRIPT_DIALOG_ALERT.
-	Scriptdialogtype_Alert Scriptdialogtype = 0
-	// Scriptdialogtype_Confirm is a representation of the C type WEBKIT_SCRIPT_DIALOG_CONFIRM.
-	Scriptdialogtype_Confirm Scriptdialogtype = 1
-	// Scriptdialogtype_Prompt is a representation of the C type WEBKIT_SCRIPT_DIALOG_PROMPT.
-	Scriptdialogtype_Prompt Scriptdialogtype = 2
-	// Scriptdialogtype_BeforeUnloadConfirm is a representation of the C type WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM.
-	Scriptdialogtype_BeforeUnloadConfirm Scriptdialogtype = 3
+	// ScriptDialogType_Alert is a representation of the C type WEBKIT_SCRIPT_DIALOG_ALERT.
+	ScriptDialogType_Alert ScriptDialogType = 0
+	// ScriptDialogType_Confirm is a representation of the C type WEBKIT_SCRIPT_DIALOG_CONFIRM.
+	ScriptDialogType_Confirm ScriptDialogType = 1
+	// ScriptDialogType_Prompt is a representation of the C type WEBKIT_SCRIPT_DIALOG_PROMPT.
+	ScriptDialogType_Prompt ScriptDialogType = 2
+	// ScriptDialogType_BeforeUnloadConfirm is a representation of the C type WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM.
+	ScriptDialogType_BeforeUnloadConfirm ScriptDialogType = 3
 )
 
-// Snapshoterror is a representation of the C type WebKitSnapshotError.
-type Snapshoterror int
+// SnapshotError is a representation of the C type WebKitSnapshotError.
+type SnapshotError int
 
 const (
-	// Snapshoterror_Create is a representation of the C type WEBKIT_SNAPSHOT_ERROR_FAILED_TO_CREATE.
-	Snapshoterror_Create Snapshoterror = 799
+	// SnapshotError_Create is a representation of the C type WEBKIT_SNAPSHOT_ERROR_FAILED_TO_CREATE.
+	SnapshotError_Create SnapshotError = 799
 )
 
-// Snapshotregion is a representation of the C type WebKitSnapshotRegion.
-type Snapshotregion int
+// SnapshotRegion is a representation of the C type WebKitSnapshotRegion.
+type SnapshotRegion int
 
 const (
-	// Snapshotregion_Visible is a representation of the C type WEBKIT_SNAPSHOT_REGION_VISIBLE.
-	Snapshotregion_Visible Snapshotregion = 0
-	// Snapshotregion_FullDocument is a representation of the C type WEBKIT_SNAPSHOT_REGION_FULL_DOCUMENT.
-	Snapshotregion_FullDocument Snapshotregion = 1
+	// SnapshotRegion_Visible is a representation of the C type WEBKIT_SNAPSHOT_REGION_VISIBLE.
+	SnapshotRegion_Visible SnapshotRegion = 0
+	// SnapshotRegion_FullDocument is a representation of the C type WEBKIT_SNAPSHOT_REGION_FULL_DOCUMENT.
+	SnapshotRegion_FullDocument SnapshotRegion = 1
 )
 
-// Tlserrorspolicy is a representation of the C type WebKitTLSErrorsPolicy.
-type Tlserrorspolicy int
+// TLSErrorsPolicy is a representation of the C type WebKitTLSErrorsPolicy.
+type TLSErrorsPolicy int
 
 const (
-	// Tlserrorspolicy_Ignore is a representation of the C type WEBKIT_TLS_ERRORS_POLICY_IGNORE.
-	Tlserrorspolicy_Ignore Tlserrorspolicy = 0
-	// Tlserrorspolicy_Fail is a representation of the C type WEBKIT_TLS_ERRORS_POLICY_FAIL.
-	Tlserrorspolicy_Fail Tlserrorspolicy = 1
+	// TLSErrorsPolicy_Ignore is a representation of the C type WEBKIT_TLS_ERRORS_POLICY_IGNORE.
+	TLSErrorsPolicy_Ignore TLSErrorsPolicy = 0
+	// TLSErrorsPolicy_Fail is a representation of the C type WEBKIT_TLS_ERRORS_POLICY_FAIL.
+	TLSErrorsPolicy_Fail TLSErrorsPolicy = 1
 )
 
-// Usercontentfiltererror is a representation of the C type WebKitUserContentFilterError.
+// UserContentFilterError is a representation of the C type WebKitUserContentFilterError.
 //
 // since 2.24
-type Usercontentfiltererror int
+type UserContentFilterError int
 
 const (
-	// Usercontentfiltererror_InvalidSource is a representation of the C type WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE.
-	Usercontentfiltererror_InvalidSource Usercontentfiltererror = 0
-	// Usercontentfiltererror_NotFound is a representation of the C type WEBKIT_USER_CONTENT_FILTER_ERROR_NOT_FOUND.
-	Usercontentfiltererror_NotFound Usercontentfiltererror = 1
+	// UserContentFilterError_InvalidSource is a representation of the C type WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE.
+	UserContentFilterError_InvalidSource UserContentFilterError = 0
+	// UserContentFilterError_NotFound is a representation of the C type WEBKIT_USER_CONTENT_FILTER_ERROR_NOT_FOUND.
+	UserContentFilterError_NotFound UserContentFilterError = 1
 )
 
-// Usercontentinjectedframes is a representation of the C type WebKitUserContentInjectedFrames.
+// UserContentInjectedFrames is a representation of the C type WebKitUserContentInjectedFrames.
 //
 // since 2.6
-type Usercontentinjectedframes int
+type UserContentInjectedFrames int
 
 const (
-	// Usercontentinjectedframes_AllFrames is a representation of the C type WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES.
-	Usercontentinjectedframes_AllFrames Usercontentinjectedframes = 0
-	// Usercontentinjectedframes_TopFrame is a representation of the C type WEBKIT_USER_CONTENT_INJECT_TOP_FRAME.
-	Usercontentinjectedframes_TopFrame Usercontentinjectedframes = 1
+	// UserContentInjectedFrames_AllFrames is a representation of the C type WEBKIT_USER_CONTENT_INJECT_ALL_FRAMES.
+	UserContentInjectedFrames_AllFrames UserContentInjectedFrames = 0
+	// UserContentInjectedFrames_TopFrame is a representation of the C type WEBKIT_USER_CONTENT_INJECT_TOP_FRAME.
+	UserContentInjectedFrames_TopFrame UserContentInjectedFrames = 1
 )
 
-// Userscriptinjectiontime is a representation of the C type WebKitUserScriptInjectionTime.
+// UserScriptInjectionTime is a representation of the C type WebKitUserScriptInjectionTime.
 //
 // since 2.6
-type Userscriptinjectiontime int
+type UserScriptInjectionTime int
 
 const (
-	// Userscriptinjectiontime_Start is a representation of the C type WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_START.
-	Userscriptinjectiontime_Start Userscriptinjectiontime = 0
-	// Userscriptinjectiontime_End is a representation of the C type WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_END.
-	Userscriptinjectiontime_End Userscriptinjectiontime = 1
+	// UserScriptInjectionTime_Start is a representation of the C type WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_START.
+	UserScriptInjectionTime_Start UserScriptInjectionTime = 0
+	// UserScriptInjectionTime_End is a representation of the C type WEBKIT_USER_SCRIPT_INJECT_AT_DOCUMENT_END.
+	UserScriptInjectionTime_End UserScriptInjectionTime = 1
 )
 
-// Userstylelevel is a representation of the C type WebKitUserStyleLevel.
+// UserStyleLevel is a representation of the C type WebKitUserStyleLevel.
 //
 // since 2.6
-type Userstylelevel int
+type UserStyleLevel int
 
 const (
-	// Userstylelevel_User is a representation of the C type WEBKIT_USER_STYLE_LEVEL_USER.
-	Userstylelevel_User Userstylelevel = 0
-	// Userstylelevel_Author is a representation of the C type WEBKIT_USER_STYLE_LEVEL_AUTHOR.
-	Userstylelevel_Author Userstylelevel = 1
+	// UserStyleLevel_User is a representation of the C type WEBKIT_USER_STYLE_LEVEL_USER.
+	UserStyleLevel_User UserStyleLevel = 0
+	// UserStyleLevel_Author is a representation of the C type WEBKIT_USER_STYLE_LEVEL_AUTHOR.
+	UserStyleLevel_Author UserStyleLevel = 1
 )
 
-// Webprocessterminationreason is a representation of the C type WebKitWebProcessTerminationReason.
+// WebProcessTerminationReason is a representation of the C type WebKitWebProcessTerminationReason.
 //
 // since 2.20
-type Webprocessterminationreason int
+type WebProcessTerminationReason int
 
 const (
-	// Webprocessterminationreason_Crashed is a representation of the C type WEBKIT_WEB_PROCESS_CRASHED.
-	Webprocessterminationreason_Crashed Webprocessterminationreason = 0
-	// Webprocessterminationreason_ExceededMemoryLimit is a representation of the C type WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT.
-	Webprocessterminationreason_ExceededMemoryLimit Webprocessterminationreason = 1
+	// WebProcessTerminationReason_Crashed is a representation of the C type WEBKIT_WEB_PROCESS_CRASHED.
+	WebProcessTerminationReason_Crashed WebProcessTerminationReason = 0
+	// WebProcessTerminationReason_ExceededMemoryLimit is a representation of the C type WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT.
+	WebProcessTerminationReason_ExceededMemoryLimit WebProcessTerminationReason = 1
 )

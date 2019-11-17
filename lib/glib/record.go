@@ -350,7 +350,7 @@ type ScannerConfig struct {
 	ScanCommentMulti    uint32
 	ScanIdentifier      uint32
 	ScanIdentifier1char uint32
-	ScanIdentifierNull  uint32
+	ScanIdentifierNULL  uint32
 	ScanSymbols         uint32
 	ScanBinary          uint32
 	ScanOctal           uint32

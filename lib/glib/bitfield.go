@@ -2,354 +2,354 @@
 
 package glib
 
-// Asciitype is a representation of the C type GAsciiType.
-type Asciitype int
+// AsciiType is a representation of the C type GAsciiType.
+type AsciiType int
 
 const (
-	// Asciitype_Alnum is a representation of the C type G_ASCII_ALNUM.
-	Asciitype_Alnum Asciitype = 1
-	// Asciitype_Alpha is a representation of the C type G_ASCII_ALPHA.
-	Asciitype_Alpha Asciitype = 2
-	// Asciitype_Cntrl is a representation of the C type G_ASCII_CNTRL.
-	Asciitype_Cntrl Asciitype = 4
-	// Asciitype_Digit is a representation of the C type G_ASCII_DIGIT.
-	Asciitype_Digit Asciitype = 8
-	// Asciitype_Graph is a representation of the C type G_ASCII_GRAPH.
-	Asciitype_Graph Asciitype = 16
-	// Asciitype_Lower is a representation of the C type G_ASCII_LOWER.
-	Asciitype_Lower Asciitype = 32
-	// Asciitype_Print is a representation of the C type G_ASCII_PRINT.
-	Asciitype_Print Asciitype = 64
-	// Asciitype_Punct is a representation of the C type G_ASCII_PUNCT.
-	Asciitype_Punct Asciitype = 128
-	// Asciitype_Space is a representation of the C type G_ASCII_SPACE.
-	Asciitype_Space Asciitype = 256
-	// Asciitype_Upper is a representation of the C type G_ASCII_UPPER.
-	Asciitype_Upper Asciitype = 512
-	// Asciitype_Xdigit is a representation of the C type G_ASCII_XDIGIT.
-	Asciitype_Xdigit Asciitype = 1024
+	// AsciiType_Alnum is a representation of the C type G_ASCII_ALNUM.
+	AsciiType_Alnum AsciiType = 1
+	// AsciiType_Alpha is a representation of the C type G_ASCII_ALPHA.
+	AsciiType_Alpha AsciiType = 2
+	// AsciiType_Cntrl is a representation of the C type G_ASCII_CNTRL.
+	AsciiType_Cntrl AsciiType = 4
+	// AsciiType_Digit is a representation of the C type G_ASCII_DIGIT.
+	AsciiType_Digit AsciiType = 8
+	// AsciiType_Graph is a representation of the C type G_ASCII_GRAPH.
+	AsciiType_Graph AsciiType = 16
+	// AsciiType_Lower is a representation of the C type G_ASCII_LOWER.
+	AsciiType_Lower AsciiType = 32
+	// AsciiType_Print is a representation of the C type G_ASCII_PRINT.
+	AsciiType_Print AsciiType = 64
+	// AsciiType_Punct is a representation of the C type G_ASCII_PUNCT.
+	AsciiType_Punct AsciiType = 128
+	// AsciiType_Space is a representation of the C type G_ASCII_SPACE.
+	AsciiType_Space AsciiType = 256
+	// AsciiType_Upper is a representation of the C type G_ASCII_UPPER.
+	AsciiType_Upper AsciiType = 512
+	// AsciiType_Xdigit is a representation of the C type G_ASCII_XDIGIT.
+	AsciiType_Xdigit AsciiType = 1024
 )
 
-// Filetest is a representation of the C type GFileTest.
-type Filetest int
+// FileTest is a representation of the C type GFileTest.
+type FileTest int
 
 const (
-	// Filetest_IsRegular is a representation of the C type G_FILE_TEST_IS_REGULAR.
-	Filetest_IsRegular Filetest = 1
-	// Filetest_IsSymlink is a representation of the C type G_FILE_TEST_IS_SYMLINK.
-	Filetest_IsSymlink Filetest = 2
-	// Filetest_IsDir is a representation of the C type G_FILE_TEST_IS_DIR.
-	Filetest_IsDir Filetest = 4
-	// Filetest_IsExecutable is a representation of the C type G_FILE_TEST_IS_EXECUTABLE.
-	Filetest_IsExecutable Filetest = 8
-	// Filetest_Exists is a representation of the C type G_FILE_TEST_EXISTS.
-	Filetest_Exists Filetest = 16
+	// FileTest_IsRegular is a representation of the C type G_FILE_TEST_IS_REGULAR.
+	FileTest_IsRegular FileTest = 1
+	// FileTest_IsSymlink is a representation of the C type G_FILE_TEST_IS_SYMLINK.
+	FileTest_IsSymlink FileTest = 2
+	// FileTest_IsDir is a representation of the C type G_FILE_TEST_IS_DIR.
+	FileTest_IsDir FileTest = 4
+	// FileTest_IsExecutable is a representation of the C type G_FILE_TEST_IS_EXECUTABLE.
+	FileTest_IsExecutable FileTest = 8
+	// FileTest_Exists is a representation of the C type G_FILE_TEST_EXISTS.
+	FileTest_Exists FileTest = 16
 )
 
-// Formatsizeflags is a representation of the C type GFormatSizeFlags.
-type Formatsizeflags int
+// FormatSizeFlags is a representation of the C type GFormatSizeFlags.
+type FormatSizeFlags int
 
 const (
-	// Formatsizeflags_Default is a representation of the C type G_FORMAT_SIZE_DEFAULT.
-	Formatsizeflags_Default Formatsizeflags = 0
-	// Formatsizeflags_LongFormat is a representation of the C type G_FORMAT_SIZE_LONG_FORMAT.
-	Formatsizeflags_LongFormat Formatsizeflags = 1
-	// Formatsizeflags_IecUnits is a representation of the C type G_FORMAT_SIZE_IEC_UNITS.
-	Formatsizeflags_IecUnits Formatsizeflags = 2
-	// Formatsizeflags_Bits is a representation of the C type G_FORMAT_SIZE_BITS.
-	Formatsizeflags_Bits Formatsizeflags = 4
+	// FormatSizeFlags_Default is a representation of the C type G_FORMAT_SIZE_DEFAULT.
+	FormatSizeFlags_Default FormatSizeFlags = 0
+	// FormatSizeFlags_LongFormat is a representation of the C type G_FORMAT_SIZE_LONG_FORMAT.
+	FormatSizeFlags_LongFormat FormatSizeFlags = 1
+	// FormatSizeFlags_IecUnits is a representation of the C type G_FORMAT_SIZE_IEC_UNITS.
+	FormatSizeFlags_IecUnits FormatSizeFlags = 2
+	// FormatSizeFlags_Bits is a representation of the C type G_FORMAT_SIZE_BITS.
+	FormatSizeFlags_Bits FormatSizeFlags = 4
 )
 
-// Hookflagmask is a representation of the C type GHookFlagMask.
-type Hookflagmask int
+// HookFlagMask is a representation of the C type GHookFlagMask.
+type HookFlagMask int
 
 const (
-	// Hookflagmask_Active is a representation of the C type G_HOOK_FLAG_ACTIVE.
-	Hookflagmask_Active Hookflagmask = 1
-	// Hookflagmask_InCall is a representation of the C type G_HOOK_FLAG_IN_CALL.
-	Hookflagmask_InCall Hookflagmask = 2
-	// Hookflagmask_Mask is a representation of the C type G_HOOK_FLAG_MASK.
-	Hookflagmask_Mask Hookflagmask = 15
+	// HookFlagMask_Active is a representation of the C type G_HOOK_FLAG_ACTIVE.
+	HookFlagMask_Active HookFlagMask = 1
+	// HookFlagMask_InCall is a representation of the C type G_HOOK_FLAG_IN_CALL.
+	HookFlagMask_InCall HookFlagMask = 2
+	// HookFlagMask_Mask is a representation of the C type G_HOOK_FLAG_MASK.
+	HookFlagMask_Mask HookFlagMask = 15
 )
 
-// Iocondition is a representation of the C type GIOCondition.
-type Iocondition int
+// IOCondition is a representation of the C type GIOCondition.
+type IOCondition int
 
 const (
-	// Iocondition_In is a representation of the C type G_IO_IN.
-	Iocondition_In Iocondition = 1
-	// Iocondition_Out is a representation of the C type G_IO_OUT.
-	Iocondition_Out Iocondition = 4
-	// Iocondition_Pri is a representation of the C type G_IO_PRI.
-	Iocondition_Pri Iocondition = 2
-	// Iocondition_Err is a representation of the C type G_IO_ERR.
-	Iocondition_Err Iocondition = 8
-	// Iocondition_Hup is a representation of the C type G_IO_HUP.
-	Iocondition_Hup Iocondition = 16
-	// Iocondition_Nval is a representation of the C type G_IO_NVAL.
-	Iocondition_Nval Iocondition = 32
+	// IOCondition_In is a representation of the C type G_IO_IN.
+	IOCondition_In IOCondition = 1
+	// IOCondition_Out is a representation of the C type G_IO_OUT.
+	IOCondition_Out IOCondition = 4
+	// IOCondition_Pri is a representation of the C type G_IO_PRI.
+	IOCondition_Pri IOCondition = 2
+	// IOCondition_Err is a representation of the C type G_IO_ERR.
+	IOCondition_Err IOCondition = 8
+	// IOCondition_Hup is a representation of the C type G_IO_HUP.
+	IOCondition_Hup IOCondition = 16
+	// IOCondition_Nval is a representation of the C type G_IO_NVAL.
+	IOCondition_Nval IOCondition = 32
 )
 
-// Ioflags is a representation of the C type GIOFlags.
-type Ioflags int
+// IOFlags is a representation of the C type GIOFlags.
+type IOFlags int
 
 const (
-	// Ioflags_Append is a representation of the C type G_IO_FLAG_APPEND.
-	Ioflags_Append Ioflags = 1
-	// Ioflags_Nonblock is a representation of the C type G_IO_FLAG_NONBLOCK.
-	Ioflags_Nonblock Ioflags = 2
-	// Ioflags_IsReadable is a representation of the C type G_IO_FLAG_IS_READABLE.
-	Ioflags_IsReadable Ioflags = 4
-	// Ioflags_IsWritable is a representation of the C type G_IO_FLAG_IS_WRITABLE.
-	Ioflags_IsWritable Ioflags = 8
-	// Ioflags_IsWriteable is a representation of the C type G_IO_FLAG_IS_WRITEABLE.
-	Ioflags_IsWriteable Ioflags = 8
-	// Ioflags_IsSeekable is a representation of the C type G_IO_FLAG_IS_SEEKABLE.
-	Ioflags_IsSeekable Ioflags = 16
-	// Ioflags_Mask is a representation of the C type G_IO_FLAG_MASK.
-	Ioflags_Mask Ioflags = 31
-	// Ioflags_GetMask is a representation of the C type G_IO_FLAG_GET_MASK.
-	Ioflags_GetMask Ioflags = 31
-	// Ioflags_SetMask is a representation of the C type G_IO_FLAG_SET_MASK.
-	Ioflags_SetMask Ioflags = 3
+	// IOFlags_Append is a representation of the C type G_IO_FLAG_APPEND.
+	IOFlags_Append IOFlags = 1
+	// IOFlags_Nonblock is a representation of the C type G_IO_FLAG_NONBLOCK.
+	IOFlags_Nonblock IOFlags = 2
+	// IOFlags_IsReadable is a representation of the C type G_IO_FLAG_IS_READABLE.
+	IOFlags_IsReadable IOFlags = 4
+	// IOFlags_IsWritable is a representation of the C type G_IO_FLAG_IS_WRITABLE.
+	IOFlags_IsWritable IOFlags = 8
+	// IOFlags_IsWriteable is a representation of the C type G_IO_FLAG_IS_WRITEABLE.
+	IOFlags_IsWriteable IOFlags = 8
+	// IOFlags_IsSeekable is a representation of the C type G_IO_FLAG_IS_SEEKABLE.
+	IOFlags_IsSeekable IOFlags = 16
+	// IOFlags_Mask is a representation of the C type G_IO_FLAG_MASK.
+	IOFlags_Mask IOFlags = 31
+	// IOFlags_GetMask is a representation of the C type G_IO_FLAG_GET_MASK.
+	IOFlags_GetMask IOFlags = 31
+	// IOFlags_SetMask is a representation of the C type G_IO_FLAG_SET_MASK.
+	IOFlags_SetMask IOFlags = 3
 )
 
-// Keyfileflags is a representation of the C type GKeyFileFlags.
-type Keyfileflags int
+// KeyFileFlags is a representation of the C type GKeyFileFlags.
+type KeyFileFlags int
 
 const (
-	// Keyfileflags_None is a representation of the C type G_KEY_FILE_NONE.
-	Keyfileflags_None Keyfileflags = 0
-	// Keyfileflags_KeepComments is a representation of the C type G_KEY_FILE_KEEP_COMMENTS.
-	Keyfileflags_KeepComments Keyfileflags = 1
-	// Keyfileflags_KeepTranslations is a representation of the C type G_KEY_FILE_KEEP_TRANSLATIONS.
-	Keyfileflags_KeepTranslations Keyfileflags = 2
+	// KeyFileFlags_None is a representation of the C type G_KEY_FILE_NONE.
+	KeyFileFlags_None KeyFileFlags = 0
+	// KeyFileFlags_KeepComments is a representation of the C type G_KEY_FILE_KEEP_COMMENTS.
+	KeyFileFlags_KeepComments KeyFileFlags = 1
+	// KeyFileFlags_KeepTranslations is a representation of the C type G_KEY_FILE_KEEP_TRANSLATIONS.
+	KeyFileFlags_KeepTranslations KeyFileFlags = 2
 )
 
-// Loglevelflags is a representation of the C type GLogLevelFlags.
-type Loglevelflags int
+// LogLevelFlags is a representation of the C type GLogLevelFlags.
+type LogLevelFlags int
 
 const (
-	// Loglevelflags_FlagRecursion is a representation of the C type G_LOG_FLAG_RECURSION.
-	Loglevelflags_FlagRecursion Loglevelflags = 1
-	// Loglevelflags_FlagFatal is a representation of the C type G_LOG_FLAG_FATAL.
-	Loglevelflags_FlagFatal Loglevelflags = 2
-	// Loglevelflags_LevelError is a representation of the C type G_LOG_LEVEL_ERROR.
-	Loglevelflags_LevelError Loglevelflags = 4
-	// Loglevelflags_LevelCritical is a representation of the C type G_LOG_LEVEL_CRITICAL.
-	Loglevelflags_LevelCritical Loglevelflags = 8
-	// Loglevelflags_LevelWarning is a representation of the C type G_LOG_LEVEL_WARNING.
-	Loglevelflags_LevelWarning Loglevelflags = 16
-	// Loglevelflags_LevelMessage is a representation of the C type G_LOG_LEVEL_MESSAGE.
-	Loglevelflags_LevelMessage Loglevelflags = 32
-	// Loglevelflags_LevelInfo is a representation of the C type G_LOG_LEVEL_INFO.
-	Loglevelflags_LevelInfo Loglevelflags = 64
-	// Loglevelflags_LevelDebug is a representation of the C type G_LOG_LEVEL_DEBUG.
-	Loglevelflags_LevelDebug Loglevelflags = 128
-	// Loglevelflags_LevelMask is a representation of the C type G_LOG_LEVEL_MASK.
-	Loglevelflags_LevelMask Loglevelflags = -4
+	// LogLevelFlags_FlagRecursion is a representation of the C type G_LOG_FLAG_RECURSION.
+	LogLevelFlags_FlagRecursion LogLevelFlags = 1
+	// LogLevelFlags_FlagFatal is a representation of the C type G_LOG_FLAG_FATAL.
+	LogLevelFlags_FlagFatal LogLevelFlags = 2
+	// LogLevelFlags_LevelError is a representation of the C type G_LOG_LEVEL_ERROR.
+	LogLevelFlags_LevelError LogLevelFlags = 4
+	// LogLevelFlags_LevelCritical is a representation of the C type G_LOG_LEVEL_CRITICAL.
+	LogLevelFlags_LevelCritical LogLevelFlags = 8
+	// LogLevelFlags_LevelWarning is a representation of the C type G_LOG_LEVEL_WARNING.
+	LogLevelFlags_LevelWarning LogLevelFlags = 16
+	// LogLevelFlags_LevelMessage is a representation of the C type G_LOG_LEVEL_MESSAGE.
+	LogLevelFlags_LevelMessage LogLevelFlags = 32
+	// LogLevelFlags_LevelInfo is a representation of the C type G_LOG_LEVEL_INFO.
+	LogLevelFlags_LevelInfo LogLevelFlags = 64
+	// LogLevelFlags_LevelDebug is a representation of the C type G_LOG_LEVEL_DEBUG.
+	LogLevelFlags_LevelDebug LogLevelFlags = 128
+	// LogLevelFlags_LevelMask is a representation of the C type G_LOG_LEVEL_MASK.
+	LogLevelFlags_LevelMask LogLevelFlags = -4
 )
 
-// Markupcollecttype is a representation of the C type GMarkupCollectType.
-type Markupcollecttype int
+// MarkupCollectType is a representation of the C type GMarkupCollectType.
+type MarkupCollectType int
 
 const (
-	// Markupcollecttype_Invalid is a representation of the C type G_MARKUP_COLLECT_INVALID.
-	Markupcollecttype_Invalid Markupcollecttype = 0
-	// Markupcollecttype_String is a representation of the C type G_MARKUP_COLLECT_STRING.
-	Markupcollecttype_String Markupcollecttype = 1
-	// Markupcollecttype_Strdup is a representation of the C type G_MARKUP_COLLECT_STRDUP.
-	Markupcollecttype_Strdup Markupcollecttype = 2
-	// Markupcollecttype_Boolean is a representation of the C type G_MARKUP_COLLECT_BOOLEAN.
-	Markupcollecttype_Boolean Markupcollecttype = 3
-	// Markupcollecttype_Tristate is a representation of the C type G_MARKUP_COLLECT_TRISTATE.
-	Markupcollecttype_Tristate Markupcollecttype = 4
-	// Markupcollecttype_Optional is a representation of the C type G_MARKUP_COLLECT_OPTIONAL.
-	Markupcollecttype_Optional Markupcollecttype = 65536
+	// MarkupCollectType_Invalid is a representation of the C type G_MARKUP_COLLECT_INVALID.
+	MarkupCollectType_Invalid MarkupCollectType = 0
+	// MarkupCollectType_String is a representation of the C type G_MARKUP_COLLECT_STRING.
+	MarkupCollectType_String MarkupCollectType = 1
+	// MarkupCollectType_Strdup is a representation of the C type G_MARKUP_COLLECT_STRDUP.
+	MarkupCollectType_Strdup MarkupCollectType = 2
+	// MarkupCollectType_Boolean is a representation of the C type G_MARKUP_COLLECT_BOOLEAN.
+	MarkupCollectType_Boolean MarkupCollectType = 3
+	// MarkupCollectType_Tristate is a representation of the C type G_MARKUP_COLLECT_TRISTATE.
+	MarkupCollectType_Tristate MarkupCollectType = 4
+	// MarkupCollectType_Optional is a representation of the C type G_MARKUP_COLLECT_OPTIONAL.
+	MarkupCollectType_Optional MarkupCollectType = 65536
 )
 
-// Markupparseflags is a representation of the C type GMarkupParseFlags.
-type Markupparseflags int
+// MarkupParseFlags is a representation of the C type GMarkupParseFlags.
+type MarkupParseFlags int
 
 const (
-	// Markupparseflags_DoNotUseThisUnsupportedFlag is a representation of the C type G_MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG.
-	Markupparseflags_DoNotUseThisUnsupportedFlag Markupparseflags = 1
-	// Markupparseflags_TreatCdataAsText is a representation of the C type G_MARKUP_TREAT_CDATA_AS_TEXT.
-	Markupparseflags_TreatCdataAsText Markupparseflags = 2
-	// Markupparseflags_PrefixErrorPosition is a representation of the C type G_MARKUP_PREFIX_ERROR_POSITION.
-	Markupparseflags_PrefixErrorPosition Markupparseflags = 4
-	// Markupparseflags_IgnoreQualified is a representation of the C type G_MARKUP_IGNORE_QUALIFIED.
-	Markupparseflags_IgnoreQualified Markupparseflags = 8
+	// MarkupParseFlags_DoNotUseThisUnsupportedFlag is a representation of the C type G_MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG.
+	MarkupParseFlags_DoNotUseThisUnsupportedFlag MarkupParseFlags = 1
+	// MarkupParseFlags_TreatCdataAsText is a representation of the C type G_MARKUP_TREAT_CDATA_AS_TEXT.
+	MarkupParseFlags_TreatCdataAsText MarkupParseFlags = 2
+	// MarkupParseFlags_PrefixErrorPosition is a representation of the C type G_MARKUP_PREFIX_ERROR_POSITION.
+	MarkupParseFlags_PrefixErrorPosition MarkupParseFlags = 4
+	// MarkupParseFlags_IgnoreQualified is a representation of the C type G_MARKUP_IGNORE_QUALIFIED.
+	MarkupParseFlags_IgnoreQualified MarkupParseFlags = 8
 )
 
-// Optionflags is a representation of the C type GOptionFlags.
-type Optionflags int
+// OptionFlags is a representation of the C type GOptionFlags.
+type OptionFlags int
 
 const (
-	// Optionflags_None is a representation of the C type G_OPTION_FLAG_NONE.
-	Optionflags_None Optionflags = 0
-	// Optionflags_Hidden is a representation of the C type G_OPTION_FLAG_HIDDEN.
-	Optionflags_Hidden Optionflags = 1
-	// Optionflags_InMain is a representation of the C type G_OPTION_FLAG_IN_MAIN.
-	Optionflags_InMain Optionflags = 2
-	// Optionflags_Reverse is a representation of the C type G_OPTION_FLAG_REVERSE.
-	Optionflags_Reverse Optionflags = 4
-	// Optionflags_NoArg is a representation of the C type G_OPTION_FLAG_NO_ARG.
-	Optionflags_NoArg Optionflags = 8
-	// Optionflags_Filename is a representation of the C type G_OPTION_FLAG_FILENAME.
-	Optionflags_Filename Optionflags = 16
-	// Optionflags_OptionalArg is a representation of the C type G_OPTION_FLAG_OPTIONAL_ARG.
-	Optionflags_OptionalArg Optionflags = 32
-	// Optionflags_Noalias is a representation of the C type G_OPTION_FLAG_NOALIAS.
-	Optionflags_Noalias Optionflags = 64
+	// OptionFlags_None is a representation of the C type G_OPTION_FLAG_NONE.
+	OptionFlags_None OptionFlags = 0
+	// OptionFlags_Hidden is a representation of the C type G_OPTION_FLAG_HIDDEN.
+	OptionFlags_Hidden OptionFlags = 1
+	// OptionFlags_InMain is a representation of the C type G_OPTION_FLAG_IN_MAIN.
+	OptionFlags_InMain OptionFlags = 2
+	// OptionFlags_Reverse is a representation of the C type G_OPTION_FLAG_REVERSE.
+	OptionFlags_Reverse OptionFlags = 4
+	// OptionFlags_NoArg is a representation of the C type G_OPTION_FLAG_NO_ARG.
+	OptionFlags_NoArg OptionFlags = 8
+	// OptionFlags_Filename is a representation of the C type G_OPTION_FLAG_FILENAME.
+	OptionFlags_Filename OptionFlags = 16
+	// OptionFlags_OptionalArg is a representation of the C type G_OPTION_FLAG_OPTIONAL_ARG.
+	OptionFlags_OptionalArg OptionFlags = 32
+	// OptionFlags_Noalias is a representation of the C type G_OPTION_FLAG_NOALIAS.
+	OptionFlags_Noalias OptionFlags = 64
 )
 
-// Regexcompileflags is a representation of the C type GRegexCompileFlags.
+// RegexCompileFlags is a representation of the C type GRegexCompileFlags.
 //
 // since 2.14
-type Regexcompileflags int
+type RegexCompileFlags int
 
 const (
-	// Regexcompileflags_Caseless is a representation of the C type G_REGEX_CASELESS.
-	Regexcompileflags_Caseless Regexcompileflags = 1
-	// Regexcompileflags_Multiline is a representation of the C type G_REGEX_MULTILINE.
-	Regexcompileflags_Multiline Regexcompileflags = 2
-	// Regexcompileflags_Dotall is a representation of the C type G_REGEX_DOTALL.
-	Regexcompileflags_Dotall Regexcompileflags = 4
-	// Regexcompileflags_Extended is a representation of the C type G_REGEX_EXTENDED.
-	Regexcompileflags_Extended Regexcompileflags = 8
-	// Regexcompileflags_Anchored is a representation of the C type G_REGEX_ANCHORED.
-	Regexcompileflags_Anchored Regexcompileflags = 16
-	// Regexcompileflags_DollarEndonly is a representation of the C type G_REGEX_DOLLAR_ENDONLY.
-	Regexcompileflags_DollarEndonly Regexcompileflags = 32
-	// Regexcompileflags_Ungreedy is a representation of the C type G_REGEX_UNGREEDY.
-	Regexcompileflags_Ungreedy Regexcompileflags = 512
-	// Regexcompileflags_Raw is a representation of the C type G_REGEX_RAW.
-	Regexcompileflags_Raw Regexcompileflags = 2048
-	// Regexcompileflags_NoAutoCapture is a representation of the C type G_REGEX_NO_AUTO_CAPTURE.
-	Regexcompileflags_NoAutoCapture Regexcompileflags = 4096
-	// Regexcompileflags_Optimize is a representation of the C type G_REGEX_OPTIMIZE.
-	Regexcompileflags_Optimize Regexcompileflags = 8192
-	// Regexcompileflags_Firstline is a representation of the C type G_REGEX_FIRSTLINE.
-	Regexcompileflags_Firstline Regexcompileflags = 262144
-	// Regexcompileflags_Dupnames is a representation of the C type G_REGEX_DUPNAMES.
-	Regexcompileflags_Dupnames Regexcompileflags = 524288
-	// Regexcompileflags_NewlineCr is a representation of the C type G_REGEX_NEWLINE_CR.
-	Regexcompileflags_NewlineCr Regexcompileflags = 1048576
-	// Regexcompileflags_NewlineLf is a representation of the C type G_REGEX_NEWLINE_LF.
-	Regexcompileflags_NewlineLf Regexcompileflags = 2097152
-	// Regexcompileflags_NewlineCrlf is a representation of the C type G_REGEX_NEWLINE_CRLF.
-	Regexcompileflags_NewlineCrlf Regexcompileflags = 3145728
-	// Regexcompileflags_NewlineAnycrlf is a representation of the C type G_REGEX_NEWLINE_ANYCRLF.
-	Regexcompileflags_NewlineAnycrlf Regexcompileflags = 5242880
-	// Regexcompileflags_BsrAnycrlf is a representation of the C type G_REGEX_BSR_ANYCRLF.
-	Regexcompileflags_BsrAnycrlf Regexcompileflags = 8388608
-	// Regexcompileflags_JavascriptCompat is a representation of the C type G_REGEX_JAVASCRIPT_COMPAT.
-	Regexcompileflags_JavascriptCompat Regexcompileflags = 33554432
+	// RegexCompileFlags_Caseless is a representation of the C type G_REGEX_CASELESS.
+	RegexCompileFlags_Caseless RegexCompileFlags = 1
+	// RegexCompileFlags_Multiline is a representation of the C type G_REGEX_MULTILINE.
+	RegexCompileFlags_Multiline RegexCompileFlags = 2
+	// RegexCompileFlags_Dotall is a representation of the C type G_REGEX_DOTALL.
+	RegexCompileFlags_Dotall RegexCompileFlags = 4
+	// RegexCompileFlags_Extended is a representation of the C type G_REGEX_EXTENDED.
+	RegexCompileFlags_Extended RegexCompileFlags = 8
+	// RegexCompileFlags_Anchored is a representation of the C type G_REGEX_ANCHORED.
+	RegexCompileFlags_Anchored RegexCompileFlags = 16
+	// RegexCompileFlags_DollarEndonly is a representation of the C type G_REGEX_DOLLAR_ENDONLY.
+	RegexCompileFlags_DollarEndonly RegexCompileFlags = 32
+	// RegexCompileFlags_Ungreedy is a representation of the C type G_REGEX_UNGREEDY.
+	RegexCompileFlags_Ungreedy RegexCompileFlags = 512
+	// RegexCompileFlags_Raw is a representation of the C type G_REGEX_RAW.
+	RegexCompileFlags_Raw RegexCompileFlags = 2048
+	// RegexCompileFlags_NoAutoCapture is a representation of the C type G_REGEX_NO_AUTO_CAPTURE.
+	RegexCompileFlags_NoAutoCapture RegexCompileFlags = 4096
+	// RegexCompileFlags_Optimize is a representation of the C type G_REGEX_OPTIMIZE.
+	RegexCompileFlags_Optimize RegexCompileFlags = 8192
+	// RegexCompileFlags_Firstline is a representation of the C type G_REGEX_FIRSTLINE.
+	RegexCompileFlags_Firstline RegexCompileFlags = 262144
+	// RegexCompileFlags_Dupnames is a representation of the C type G_REGEX_DUPNAMES.
+	RegexCompileFlags_Dupnames RegexCompileFlags = 524288
+	// RegexCompileFlags_NewlineCr is a representation of the C type G_REGEX_NEWLINE_CR.
+	RegexCompileFlags_NewlineCr RegexCompileFlags = 1048576
+	// RegexCompileFlags_NewlineLf is a representation of the C type G_REGEX_NEWLINE_LF.
+	RegexCompileFlags_NewlineLf RegexCompileFlags = 2097152
+	// RegexCompileFlags_NewlineCrlf is a representation of the C type G_REGEX_NEWLINE_CRLF.
+	RegexCompileFlags_NewlineCrlf RegexCompileFlags = 3145728
+	// RegexCompileFlags_NewlineAnycrlf is a representation of the C type G_REGEX_NEWLINE_ANYCRLF.
+	RegexCompileFlags_NewlineAnycrlf RegexCompileFlags = 5242880
+	// RegexCompileFlags_BsrAnycrlf is a representation of the C type G_REGEX_BSR_ANYCRLF.
+	RegexCompileFlags_BsrAnycrlf RegexCompileFlags = 8388608
+	// RegexCompileFlags_JavascriptCompat is a representation of the C type G_REGEX_JAVASCRIPT_COMPAT.
+	RegexCompileFlags_JavascriptCompat RegexCompileFlags = 33554432
 )
 
-// Regexmatchflags is a representation of the C type GRegexMatchFlags.
+// RegexMatchFlags is a representation of the C type GRegexMatchFlags.
 //
 // since 2.14
-type Regexmatchflags int
+type RegexMatchFlags int
 
 const (
-	// Regexmatchflags_Anchored is a representation of the C type G_REGEX_MATCH_ANCHORED.
-	Regexmatchflags_Anchored Regexmatchflags = 16
-	// Regexmatchflags_Notbol is a representation of the C type G_REGEX_MATCH_NOTBOL.
-	Regexmatchflags_Notbol Regexmatchflags = 128
-	// Regexmatchflags_Noteol is a representation of the C type G_REGEX_MATCH_NOTEOL.
-	Regexmatchflags_Noteol Regexmatchflags = 256
-	// Regexmatchflags_Notempty is a representation of the C type G_REGEX_MATCH_NOTEMPTY.
-	Regexmatchflags_Notempty Regexmatchflags = 1024
-	// Regexmatchflags_Partial is a representation of the C type G_REGEX_MATCH_PARTIAL.
-	Regexmatchflags_Partial Regexmatchflags = 32768
-	// Regexmatchflags_NewlineCr is a representation of the C type G_REGEX_MATCH_NEWLINE_CR.
-	Regexmatchflags_NewlineCr Regexmatchflags = 1048576
-	// Regexmatchflags_NewlineLf is a representation of the C type G_REGEX_MATCH_NEWLINE_LF.
-	Regexmatchflags_NewlineLf Regexmatchflags = 2097152
-	// Regexmatchflags_NewlineCrlf is a representation of the C type G_REGEX_MATCH_NEWLINE_CRLF.
-	Regexmatchflags_NewlineCrlf Regexmatchflags = 3145728
-	// Regexmatchflags_NewlineAny is a representation of the C type G_REGEX_MATCH_NEWLINE_ANY.
-	Regexmatchflags_NewlineAny Regexmatchflags = 4194304
-	// Regexmatchflags_NewlineAnycrlf is a representation of the C type G_REGEX_MATCH_NEWLINE_ANYCRLF.
-	Regexmatchflags_NewlineAnycrlf Regexmatchflags = 5242880
-	// Regexmatchflags_BsrAnycrlf is a representation of the C type G_REGEX_MATCH_BSR_ANYCRLF.
-	Regexmatchflags_BsrAnycrlf Regexmatchflags = 8388608
-	// Regexmatchflags_BsrAny is a representation of the C type G_REGEX_MATCH_BSR_ANY.
-	Regexmatchflags_BsrAny Regexmatchflags = 16777216
-	// Regexmatchflags_PartialSoft is a representation of the C type G_REGEX_MATCH_PARTIAL_SOFT.
-	Regexmatchflags_PartialSoft Regexmatchflags = 32768
-	// Regexmatchflags_PartialHard is a representation of the C type G_REGEX_MATCH_PARTIAL_HARD.
-	Regexmatchflags_PartialHard Regexmatchflags = 134217728
-	// Regexmatchflags_NotemptyAtstart is a representation of the C type G_REGEX_MATCH_NOTEMPTY_ATSTART.
-	Regexmatchflags_NotemptyAtstart Regexmatchflags = 268435456
+	// RegexMatchFlags_Anchored is a representation of the C type G_REGEX_MATCH_ANCHORED.
+	RegexMatchFlags_Anchored RegexMatchFlags = 16
+	// RegexMatchFlags_Notbol is a representation of the C type G_REGEX_MATCH_NOTBOL.
+	RegexMatchFlags_Notbol RegexMatchFlags = 128
+	// RegexMatchFlags_Noteol is a representation of the C type G_REGEX_MATCH_NOTEOL.
+	RegexMatchFlags_Noteol RegexMatchFlags = 256
+	// RegexMatchFlags_Notempty is a representation of the C type G_REGEX_MATCH_NOTEMPTY.
+	RegexMatchFlags_Notempty RegexMatchFlags = 1024
+	// RegexMatchFlags_Partial is a representation of the C type G_REGEX_MATCH_PARTIAL.
+	RegexMatchFlags_Partial RegexMatchFlags = 32768
+	// RegexMatchFlags_NewlineCr is a representation of the C type G_REGEX_MATCH_NEWLINE_CR.
+	RegexMatchFlags_NewlineCr RegexMatchFlags = 1048576
+	// RegexMatchFlags_NewlineLf is a representation of the C type G_REGEX_MATCH_NEWLINE_LF.
+	RegexMatchFlags_NewlineLf RegexMatchFlags = 2097152
+	// RegexMatchFlags_NewlineCrlf is a representation of the C type G_REGEX_MATCH_NEWLINE_CRLF.
+	RegexMatchFlags_NewlineCrlf RegexMatchFlags = 3145728
+	// RegexMatchFlags_NewlineAny is a representation of the C type G_REGEX_MATCH_NEWLINE_ANY.
+	RegexMatchFlags_NewlineAny RegexMatchFlags = 4194304
+	// RegexMatchFlags_NewlineAnycrlf is a representation of the C type G_REGEX_MATCH_NEWLINE_ANYCRLF.
+	RegexMatchFlags_NewlineAnycrlf RegexMatchFlags = 5242880
+	// RegexMatchFlags_BsrAnycrlf is a representation of the C type G_REGEX_MATCH_BSR_ANYCRLF.
+	RegexMatchFlags_BsrAnycrlf RegexMatchFlags = 8388608
+	// RegexMatchFlags_BsrAny is a representation of the C type G_REGEX_MATCH_BSR_ANY.
+	RegexMatchFlags_BsrAny RegexMatchFlags = 16777216
+	// RegexMatchFlags_PartialSoft is a representation of the C type G_REGEX_MATCH_PARTIAL_SOFT.
+	RegexMatchFlags_PartialSoft RegexMatchFlags = 32768
+	// RegexMatchFlags_PartialHard is a representation of the C type G_REGEX_MATCH_PARTIAL_HARD.
+	RegexMatchFlags_PartialHard RegexMatchFlags = 134217728
+	// RegexMatchFlags_NotemptyAtstart is a representation of the C type G_REGEX_MATCH_NOTEMPTY_ATSTART.
+	RegexMatchFlags_NotemptyAtstart RegexMatchFlags = 268435456
 )
 
-// Spawnflags is a representation of the C type GSpawnFlags.
-type Spawnflags int
+// SpawnFlags is a representation of the C type GSpawnFlags.
+type SpawnFlags int
 
 const (
-	// Spawnflags_Default is a representation of the C type G_SPAWN_DEFAULT.
-	Spawnflags_Default Spawnflags = 0
-	// Spawnflags_LeaveDescriptorsOpen is a representation of the C type G_SPAWN_LEAVE_DESCRIPTORS_OPEN.
-	Spawnflags_LeaveDescriptorsOpen Spawnflags = 1
-	// Spawnflags_DoNotReapChild is a representation of the C type G_SPAWN_DO_NOT_REAP_CHILD.
-	Spawnflags_DoNotReapChild Spawnflags = 2
-	// Spawnflags_SearchPath is a representation of the C type G_SPAWN_SEARCH_PATH.
-	Spawnflags_SearchPath Spawnflags = 4
-	// Spawnflags_StdoutToDevNull is a representation of the C type G_SPAWN_STDOUT_TO_DEV_NULL.
-	Spawnflags_StdoutToDevNull Spawnflags = 8
-	// Spawnflags_StderrToDevNull is a representation of the C type G_SPAWN_STDERR_TO_DEV_NULL.
-	Spawnflags_StderrToDevNull Spawnflags = 16
-	// Spawnflags_ChildInheritsStdin is a representation of the C type G_SPAWN_CHILD_INHERITS_STDIN.
-	Spawnflags_ChildInheritsStdin Spawnflags = 32
-	// Spawnflags_FileAndArgvZero is a representation of the C type G_SPAWN_FILE_AND_ARGV_ZERO.
-	Spawnflags_FileAndArgvZero Spawnflags = 64
-	// Spawnflags_SearchPathFromEnvp is a representation of the C type G_SPAWN_SEARCH_PATH_FROM_ENVP.
-	Spawnflags_SearchPathFromEnvp Spawnflags = 128
-	// Spawnflags_CloexecPipes is a representation of the C type G_SPAWN_CLOEXEC_PIPES.
-	Spawnflags_CloexecPipes Spawnflags = 256
+	// SpawnFlags_Default is a representation of the C type G_SPAWN_DEFAULT.
+	SpawnFlags_Default SpawnFlags = 0
+	// SpawnFlags_LeaveDescriptorsOpen is a representation of the C type G_SPAWN_LEAVE_DESCRIPTORS_OPEN.
+	SpawnFlags_LeaveDescriptorsOpen SpawnFlags = 1
+	// SpawnFlags_DoNotReapChild is a representation of the C type G_SPAWN_DO_NOT_REAP_CHILD.
+	SpawnFlags_DoNotReapChild SpawnFlags = 2
+	// SpawnFlags_SearchPath is a representation of the C type G_SPAWN_SEARCH_PATH.
+	SpawnFlags_SearchPath SpawnFlags = 4
+	// SpawnFlags_StdoutToDevNull is a representation of the C type G_SPAWN_STDOUT_TO_DEV_NULL.
+	SpawnFlags_StdoutToDevNull SpawnFlags = 8
+	// SpawnFlags_StderrToDevNull is a representation of the C type G_SPAWN_STDERR_TO_DEV_NULL.
+	SpawnFlags_StderrToDevNull SpawnFlags = 16
+	// SpawnFlags_ChildInheritsStdin is a representation of the C type G_SPAWN_CHILD_INHERITS_STDIN.
+	SpawnFlags_ChildInheritsStdin SpawnFlags = 32
+	// SpawnFlags_FileAndArgvZero is a representation of the C type G_SPAWN_FILE_AND_ARGV_ZERO.
+	SpawnFlags_FileAndArgvZero SpawnFlags = 64
+	// SpawnFlags_SearchPathFromEnvp is a representation of the C type G_SPAWN_SEARCH_PATH_FROM_ENVP.
+	SpawnFlags_SearchPathFromEnvp SpawnFlags = 128
+	// SpawnFlags_CloexecPipes is a representation of the C type G_SPAWN_CLOEXEC_PIPES.
+	SpawnFlags_CloexecPipes SpawnFlags = 256
 )
 
-// Testsubprocessflags is a representation of the C type GTestSubprocessFlags.
-type Testsubprocessflags int
+// TestSubprocessFlags is a representation of the C type GTestSubprocessFlags.
+type TestSubprocessFlags int
 
 const (
-	// Testsubprocessflags_Stdin is a representation of the C type G_TEST_SUBPROCESS_INHERIT_STDIN.
-	Testsubprocessflags_Stdin Testsubprocessflags = 1
-	// Testsubprocessflags_Stdout is a representation of the C type G_TEST_SUBPROCESS_INHERIT_STDOUT.
-	Testsubprocessflags_Stdout Testsubprocessflags = 2
-	// Testsubprocessflags_Stderr is a representation of the C type G_TEST_SUBPROCESS_INHERIT_STDERR.
-	Testsubprocessflags_Stderr Testsubprocessflags = 4
+	// TestSubprocessFlags_Stdin is a representation of the C type G_TEST_SUBPROCESS_INHERIT_STDIN.
+	TestSubprocessFlags_Stdin TestSubprocessFlags = 1
+	// TestSubprocessFlags_Stdout is a representation of the C type G_TEST_SUBPROCESS_INHERIT_STDOUT.
+	TestSubprocessFlags_Stdout TestSubprocessFlags = 2
+	// TestSubprocessFlags_Stderr is a representation of the C type G_TEST_SUBPROCESS_INHERIT_STDERR.
+	TestSubprocessFlags_Stderr TestSubprocessFlags = 4
 )
 
-// Testtrapflags is a representation of the C type GTestTrapFlags.
-type Testtrapflags int
+// TestTrapFlags is a representation of the C type GTestTrapFlags.
+type TestTrapFlags int
 
 const (
-	// Testtrapflags_SilenceStdout is a representation of the C type G_TEST_TRAP_SILENCE_STDOUT.
-	Testtrapflags_SilenceStdout Testtrapflags = 128
-	// Testtrapflags_SilenceStderr is a representation of the C type G_TEST_TRAP_SILENCE_STDERR.
-	Testtrapflags_SilenceStderr Testtrapflags = 256
-	// Testtrapflags_InheritStdin is a representation of the C type G_TEST_TRAP_INHERIT_STDIN.
-	Testtrapflags_InheritStdin Testtrapflags = 512
+	// TestTrapFlags_SilenceStdout is a representation of the C type G_TEST_TRAP_SILENCE_STDOUT.
+	TestTrapFlags_SilenceStdout TestTrapFlags = 128
+	// TestTrapFlags_SilenceStderr is a representation of the C type G_TEST_TRAP_SILENCE_STDERR.
+	TestTrapFlags_SilenceStderr TestTrapFlags = 256
+	// TestTrapFlags_InheritStdin is a representation of the C type G_TEST_TRAP_INHERIT_STDIN.
+	TestTrapFlags_InheritStdin TestTrapFlags = 512
 )
 
-// Traverseflags is a representation of the C type GTraverseFlags.
-type Traverseflags int
+// TraverseFlags is a representation of the C type GTraverseFlags.
+type TraverseFlags int
 
 const (
-	// Traverseflags_Leaves is a representation of the C type G_TRAVERSE_LEAVES.
-	Traverseflags_Leaves Traverseflags = 1
-	// Traverseflags_NonLeaves is a representation of the C type G_TRAVERSE_NON_LEAVES.
-	Traverseflags_NonLeaves Traverseflags = 2
-	// Traverseflags_All is a representation of the C type G_TRAVERSE_ALL.
-	Traverseflags_All Traverseflags = 3
-	// Traverseflags_Mask is a representation of the C type G_TRAVERSE_MASK.
-	Traverseflags_Mask Traverseflags = 3
-	// Traverseflags_Leafs is a representation of the C type G_TRAVERSE_LEAFS.
-	Traverseflags_Leafs Traverseflags = 1
-	// Traverseflags_NonLeafs is a representation of the C type G_TRAVERSE_NON_LEAFS.
-	Traverseflags_NonLeafs Traverseflags = 2
+	// TraverseFlags_Leaves is a representation of the C type G_TRAVERSE_LEAVES.
+	TraverseFlags_Leaves TraverseFlags = 1
+	// TraverseFlags_NonLeaves is a representation of the C type G_TRAVERSE_NON_LEAVES.
+	TraverseFlags_NonLeaves TraverseFlags = 2
+	// TraverseFlags_All is a representation of the C type G_TRAVERSE_ALL.
+	TraverseFlags_All TraverseFlags = 3
+	// TraverseFlags_Mask is a representation of the C type G_TRAVERSE_MASK.
+	TraverseFlags_Mask TraverseFlags = 3
+	// TraverseFlags_Leafs is a representation of the C type G_TRAVERSE_LEAFS.
+	TraverseFlags_Leafs TraverseFlags = 1
+	// TraverseFlags_NonLeafs is a representation of the C type G_TRAVERSE_NON_LEAFS.
+	TraverseFlags_NonLeafs TraverseFlags = 2
 )

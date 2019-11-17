@@ -2,28 +2,28 @@
 
 package atk
 
-// Coordtype is a representation of the C type AtkCoordType.
-type Coordtype int
+// CoordType is a representation of the C type AtkCoordType.
+type CoordType int
 
 const (
-	// Coordtype_Screen is a representation of the C type ATK_XY_SCREEN.
-	Coordtype_Screen Coordtype = 0
-	// Coordtype_Window is a representation of the C type ATK_XY_WINDOW.
-	Coordtype_Window Coordtype = 1
-	// Coordtype_Parent is a representation of the C type ATK_XY_PARENT.
-	Coordtype_Parent Coordtype = 2
+	// CoordType_Screen is a representation of the C type ATK_XY_SCREEN.
+	CoordType_Screen CoordType = 0
+	// CoordType_Window is a representation of the C type ATK_XY_WINDOW.
+	CoordType_Window CoordType = 1
+	// CoordType_Parent is a representation of the C type ATK_XY_PARENT.
+	CoordType_Parent CoordType = 2
 )
 
-// Keyeventtype is a representation of the C type AtkKeyEventType.
-type Keyeventtype int
+// KeyEventType is a representation of the C type AtkKeyEventType.
+type KeyEventType int
 
 const (
-	// Keyeventtype_Press is a representation of the C type ATK_KEY_EVENT_PRESS.
-	Keyeventtype_Press Keyeventtype = 0
-	// Keyeventtype_Release is a representation of the C type ATK_KEY_EVENT_RELEASE.
-	Keyeventtype_Release Keyeventtype = 1
-	// Keyeventtype_LastDefined is a representation of the C type ATK_KEY_EVENT_LAST_DEFINED.
-	Keyeventtype_LastDefined Keyeventtype = 2
+	// KeyEventType_Press is a representation of the C type ATK_KEY_EVENT_PRESS.
+	KeyEventType_Press KeyEventType = 0
+	// KeyEventType_Release is a representation of the C type ATK_KEY_EVENT_RELEASE.
+	KeyEventType_Release KeyEventType = 1
+	// KeyEventType_LastDefined is a representation of the C type ATK_KEY_EVENT_LAST_DEFINED.
+	KeyEventType_LastDefined KeyEventType = 2
 )
 
 // Layer is a representation of the C type AtkLayer.
@@ -48,54 +48,54 @@ const (
 	Layer_Window Layer = 7
 )
 
-// Relationtype is a representation of the C type AtkRelationType.
-type Relationtype int
+// RelationType is a representation of the C type AtkRelationType.
+type RelationType int
 
 const (
-	// Relationtype_Null is a representation of the C type ATK_RELATION_NULL.
-	Relationtype_Null Relationtype = 0
-	// Relationtype_ControlledBy is a representation of the C type ATK_RELATION_CONTROLLED_BY.
-	Relationtype_ControlledBy Relationtype = 1
-	// Relationtype_ControllerFor is a representation of the C type ATK_RELATION_CONTROLLER_FOR.
-	Relationtype_ControllerFor Relationtype = 2
-	// Relationtype_LabelFor is a representation of the C type ATK_RELATION_LABEL_FOR.
-	Relationtype_LabelFor Relationtype = 3
-	// Relationtype_LabelledBy is a representation of the C type ATK_RELATION_LABELLED_BY.
-	Relationtype_LabelledBy Relationtype = 4
-	// Relationtype_MemberOf is a representation of the C type ATK_RELATION_MEMBER_OF.
-	Relationtype_MemberOf Relationtype = 5
-	// Relationtype_NodeChildOf is a representation of the C type ATK_RELATION_NODE_CHILD_OF.
-	Relationtype_NodeChildOf Relationtype = 6
-	// Relationtype_FlowsTo is a representation of the C type ATK_RELATION_FLOWS_TO.
-	Relationtype_FlowsTo Relationtype = 7
-	// Relationtype_FlowsFrom is a representation of the C type ATK_RELATION_FLOWS_FROM.
-	Relationtype_FlowsFrom Relationtype = 8
-	// Relationtype_SubwindowOf is a representation of the C type ATK_RELATION_SUBWINDOW_OF.
-	Relationtype_SubwindowOf Relationtype = 9
-	// Relationtype_Embeds is a representation of the C type ATK_RELATION_EMBEDS.
-	Relationtype_Embeds Relationtype = 10
-	// Relationtype_EmbeddedBy is a representation of the C type ATK_RELATION_EMBEDDED_BY.
-	Relationtype_EmbeddedBy Relationtype = 11
-	// Relationtype_PopupFor is a representation of the C type ATK_RELATION_POPUP_FOR.
-	Relationtype_PopupFor Relationtype = 12
-	// Relationtype_ParentWindowOf is a representation of the C type ATK_RELATION_PARENT_WINDOW_OF.
-	Relationtype_ParentWindowOf Relationtype = 13
-	// Relationtype_DescribedBy is a representation of the C type ATK_RELATION_DESCRIBED_BY.
-	Relationtype_DescribedBy Relationtype = 14
-	// Relationtype_DescriptionFor is a representation of the C type ATK_RELATION_DESCRIPTION_FOR.
-	Relationtype_DescriptionFor Relationtype = 15
-	// Relationtype_NodeParentOf is a representation of the C type ATK_RELATION_NODE_PARENT_OF.
-	Relationtype_NodeParentOf Relationtype = 16
-	// Relationtype_Details is a representation of the C type ATK_RELATION_DETAILS.
-	Relationtype_Details Relationtype = 17
-	// Relationtype_DetailsFor is a representation of the C type ATK_RELATION_DETAILS_FOR.
-	Relationtype_DetailsFor Relationtype = 18
-	// Relationtype_ErrorMessage is a representation of the C type ATK_RELATION_ERROR_MESSAGE.
-	Relationtype_ErrorMessage Relationtype = 19
-	// Relationtype_ErrorFor is a representation of the C type ATK_RELATION_ERROR_FOR.
-	Relationtype_ErrorFor Relationtype = 20
-	// Relationtype_LastDefined is a representation of the C type ATK_RELATION_LAST_DEFINED.
-	Relationtype_LastDefined Relationtype = 21
+	// RelationType_Null is a representation of the C type ATK_RELATION_NULL.
+	RelationType_Null RelationType = 0
+	// RelationType_ControlledBy is a representation of the C type ATK_RELATION_CONTROLLED_BY.
+	RelationType_ControlledBy RelationType = 1
+	// RelationType_ControllerFor is a representation of the C type ATK_RELATION_CONTROLLER_FOR.
+	RelationType_ControllerFor RelationType = 2
+	// RelationType_LabelFor is a representation of the C type ATK_RELATION_LABEL_FOR.
+	RelationType_LabelFor RelationType = 3
+	// RelationType_LabelledBy is a representation of the C type ATK_RELATION_LABELLED_BY.
+	RelationType_LabelledBy RelationType = 4
+	// RelationType_MemberOf is a representation of the C type ATK_RELATION_MEMBER_OF.
+	RelationType_MemberOf RelationType = 5
+	// RelationType_NodeChildOf is a representation of the C type ATK_RELATION_NODE_CHILD_OF.
+	RelationType_NodeChildOf RelationType = 6
+	// RelationType_FlowsTo is a representation of the C type ATK_RELATION_FLOWS_TO.
+	RelationType_FlowsTo RelationType = 7
+	// RelationType_FlowsFrom is a representation of the C type ATK_RELATION_FLOWS_FROM.
+	RelationType_FlowsFrom RelationType = 8
+	// RelationType_SubwindowOf is a representation of the C type ATK_RELATION_SUBWINDOW_OF.
+	RelationType_SubwindowOf RelationType = 9
+	// RelationType_Embeds is a representation of the C type ATK_RELATION_EMBEDS.
+	RelationType_Embeds RelationType = 10
+	// RelationType_EmbeddedBy is a representation of the C type ATK_RELATION_EMBEDDED_BY.
+	RelationType_EmbeddedBy RelationType = 11
+	// RelationType_PopupFor is a representation of the C type ATK_RELATION_POPUP_FOR.
+	RelationType_PopupFor RelationType = 12
+	// RelationType_ParentWindowOf is a representation of the C type ATK_RELATION_PARENT_WINDOW_OF.
+	RelationType_ParentWindowOf RelationType = 13
+	// RelationType_DescribedBy is a representation of the C type ATK_RELATION_DESCRIBED_BY.
+	RelationType_DescribedBy RelationType = 14
+	// RelationType_DescriptionFor is a representation of the C type ATK_RELATION_DESCRIPTION_FOR.
+	RelationType_DescriptionFor RelationType = 15
+	// RelationType_NodeParentOf is a representation of the C type ATK_RELATION_NODE_PARENT_OF.
+	RelationType_NodeParentOf RelationType = 16
+	// RelationType_Details is a representation of the C type ATK_RELATION_DETAILS.
+	RelationType_Details RelationType = 17
+	// RelationType_DetailsFor is a representation of the C type ATK_RELATION_DETAILS_FOR.
+	RelationType_DetailsFor RelationType = 18
+	// RelationType_ErrorMessage is a representation of the C type ATK_RELATION_ERROR_MESSAGE.
+	RelationType_ErrorMessage RelationType = 19
+	// RelationType_ErrorFor is a representation of the C type ATK_RELATION_ERROR_FOR.
+	RelationType_ErrorFor RelationType = 20
+	// RelationType_LastDefined is a representation of the C type ATK_RELATION_LAST_DEFINED.
+	RelationType_LastDefined RelationType = 21
 )
 
 // Role is a representation of the C type AtkRole.
@@ -356,270 +356,270 @@ const (
 	Role_LastDefined Role = 125
 )
 
-// Scrolltype is a representation of the C type AtkScrollType.
+// ScrollType is a representation of the C type AtkScrollType.
 //
 // since 2.30
-type Scrolltype int
+type ScrollType int
 
 const (
-	// Scrolltype_TopLeft is a representation of the C type ATK_SCROLL_TOP_LEFT.
-	Scrolltype_TopLeft Scrolltype = 0
-	// Scrolltype_BottomRight is a representation of the C type ATK_SCROLL_BOTTOM_RIGHT.
-	Scrolltype_BottomRight Scrolltype = 1
-	// Scrolltype_TopEdge is a representation of the C type ATK_SCROLL_TOP_EDGE.
-	Scrolltype_TopEdge Scrolltype = 2
-	// Scrolltype_BottomEdge is a representation of the C type ATK_SCROLL_BOTTOM_EDGE.
-	Scrolltype_BottomEdge Scrolltype = 3
-	// Scrolltype_LeftEdge is a representation of the C type ATK_SCROLL_LEFT_EDGE.
-	Scrolltype_LeftEdge Scrolltype = 4
-	// Scrolltype_RightEdge is a representation of the C type ATK_SCROLL_RIGHT_EDGE.
-	Scrolltype_RightEdge Scrolltype = 5
-	// Scrolltype_Anywhere is a representation of the C type ATK_SCROLL_ANYWHERE.
-	Scrolltype_Anywhere Scrolltype = 6
+	// ScrollType_TopLeft is a representation of the C type ATK_SCROLL_TOP_LEFT.
+	ScrollType_TopLeft ScrollType = 0
+	// ScrollType_BottomRight is a representation of the C type ATK_SCROLL_BOTTOM_RIGHT.
+	ScrollType_BottomRight ScrollType = 1
+	// ScrollType_TopEdge is a representation of the C type ATK_SCROLL_TOP_EDGE.
+	ScrollType_TopEdge ScrollType = 2
+	// ScrollType_BottomEdge is a representation of the C type ATK_SCROLL_BOTTOM_EDGE.
+	ScrollType_BottomEdge ScrollType = 3
+	// ScrollType_LeftEdge is a representation of the C type ATK_SCROLL_LEFT_EDGE.
+	ScrollType_LeftEdge ScrollType = 4
+	// ScrollType_RightEdge is a representation of the C type ATK_SCROLL_RIGHT_EDGE.
+	ScrollType_RightEdge ScrollType = 5
+	// ScrollType_Anywhere is a representation of the C type ATK_SCROLL_ANYWHERE.
+	ScrollType_Anywhere ScrollType = 6
 )
 
-// Statetype is a representation of the C type AtkStateType.
-type Statetype int
+// StateType is a representation of the C type AtkStateType.
+type StateType int
 
 const (
-	// Statetype_Invalid is a representation of the C type ATK_STATE_INVALID.
-	Statetype_Invalid Statetype = 0
-	// Statetype_Active is a representation of the C type ATK_STATE_ACTIVE.
-	Statetype_Active Statetype = 1
-	// Statetype_Armed is a representation of the C type ATK_STATE_ARMED.
-	Statetype_Armed Statetype = 2
-	// Statetype_Busy is a representation of the C type ATK_STATE_BUSY.
-	Statetype_Busy Statetype = 3
-	// Statetype_Checked is a representation of the C type ATK_STATE_CHECKED.
-	Statetype_Checked Statetype = 4
-	// Statetype_Defunct is a representation of the C type ATK_STATE_DEFUNCT.
-	Statetype_Defunct Statetype = 5
-	// Statetype_Editable is a representation of the C type ATK_STATE_EDITABLE.
-	Statetype_Editable Statetype = 6
-	// Statetype_Enabled is a representation of the C type ATK_STATE_ENABLED.
-	Statetype_Enabled Statetype = 7
-	// Statetype_Expandable is a representation of the C type ATK_STATE_EXPANDABLE.
-	Statetype_Expandable Statetype = 8
-	// Statetype_Expanded is a representation of the C type ATK_STATE_EXPANDED.
-	Statetype_Expanded Statetype = 9
-	// Statetype_Focusable is a representation of the C type ATK_STATE_FOCUSABLE.
-	Statetype_Focusable Statetype = 10
-	// Statetype_Focused is a representation of the C type ATK_STATE_FOCUSED.
-	Statetype_Focused Statetype = 11
-	// Statetype_Horizontal is a representation of the C type ATK_STATE_HORIZONTAL.
-	Statetype_Horizontal Statetype = 12
-	// Statetype_Iconified is a representation of the C type ATK_STATE_ICONIFIED.
-	Statetype_Iconified Statetype = 13
-	// Statetype_Modal is a representation of the C type ATK_STATE_MODAL.
-	Statetype_Modal Statetype = 14
-	// Statetype_MultiLine is a representation of the C type ATK_STATE_MULTI_LINE.
-	Statetype_MultiLine Statetype = 15
-	// Statetype_Multiselectable is a representation of the C type ATK_STATE_MULTISELECTABLE.
-	Statetype_Multiselectable Statetype = 16
-	// Statetype_Opaque is a representation of the C type ATK_STATE_OPAQUE.
-	Statetype_Opaque Statetype = 17
-	// Statetype_Pressed is a representation of the C type ATK_STATE_PRESSED.
-	Statetype_Pressed Statetype = 18
-	// Statetype_Resizable is a representation of the C type ATK_STATE_RESIZABLE.
-	Statetype_Resizable Statetype = 19
-	// Statetype_Selectable is a representation of the C type ATK_STATE_SELECTABLE.
-	Statetype_Selectable Statetype = 20
-	// Statetype_Selected is a representation of the C type ATK_STATE_SELECTED.
-	Statetype_Selected Statetype = 21
-	// Statetype_Sensitive is a representation of the C type ATK_STATE_SENSITIVE.
-	Statetype_Sensitive Statetype = 22
-	// Statetype_Showing is a representation of the C type ATK_STATE_SHOWING.
-	Statetype_Showing Statetype = 23
-	// Statetype_SingleLine is a representation of the C type ATK_STATE_SINGLE_LINE.
-	Statetype_SingleLine Statetype = 24
-	// Statetype_Stale is a representation of the C type ATK_STATE_STALE.
-	Statetype_Stale Statetype = 25
-	// Statetype_Transient is a representation of the C type ATK_STATE_TRANSIENT.
-	Statetype_Transient Statetype = 26
-	// Statetype_Vertical is a representation of the C type ATK_STATE_VERTICAL.
-	Statetype_Vertical Statetype = 27
-	// Statetype_Visible is a representation of the C type ATK_STATE_VISIBLE.
-	Statetype_Visible Statetype = 28
-	// Statetype_ManagesDescendants is a representation of the C type ATK_STATE_MANAGES_DESCENDANTS.
-	Statetype_ManagesDescendants Statetype = 29
-	// Statetype_Indeterminate is a representation of the C type ATK_STATE_INDETERMINATE.
-	Statetype_Indeterminate Statetype = 30
-	// Statetype_Truncated is a representation of the C type ATK_STATE_TRUNCATED.
-	Statetype_Truncated Statetype = 31
-	// Statetype_Required is a representation of the C type ATK_STATE_REQUIRED.
-	Statetype_Required Statetype = 32
-	// Statetype_InvalidEntry is a representation of the C type ATK_STATE_INVALID_ENTRY.
-	Statetype_InvalidEntry Statetype = 33
-	// Statetype_SupportsAutocompletion is a representation of the C type ATK_STATE_SUPPORTS_AUTOCOMPLETION.
-	Statetype_SupportsAutocompletion Statetype = 34
-	// Statetype_SelectableText is a representation of the C type ATK_STATE_SELECTABLE_TEXT.
-	Statetype_SelectableText Statetype = 35
-	// Statetype_Default is a representation of the C type ATK_STATE_DEFAULT.
-	Statetype_Default Statetype = 36
-	// Statetype_Animated is a representation of the C type ATK_STATE_ANIMATED.
-	Statetype_Animated Statetype = 37
-	// Statetype_Visited is a representation of the C type ATK_STATE_VISITED.
-	Statetype_Visited Statetype = 38
-	// Statetype_Checkable is a representation of the C type ATK_STATE_CHECKABLE.
-	Statetype_Checkable Statetype = 39
-	// Statetype_HasPopup is a representation of the C type ATK_STATE_HAS_POPUP.
-	Statetype_HasPopup Statetype = 40
-	// Statetype_HasTooltip is a representation of the C type ATK_STATE_HAS_TOOLTIP.
-	Statetype_HasTooltip Statetype = 41
-	// Statetype_ReadOnly is a representation of the C type ATK_STATE_READ_ONLY.
-	Statetype_ReadOnly Statetype = 42
-	// Statetype_LastDefined is a representation of the C type ATK_STATE_LAST_DEFINED.
-	Statetype_LastDefined Statetype = 43
+	// StateType_Invalid is a representation of the C type ATK_STATE_INVALID.
+	StateType_Invalid StateType = 0
+	// StateType_Active is a representation of the C type ATK_STATE_ACTIVE.
+	StateType_Active StateType = 1
+	// StateType_Armed is a representation of the C type ATK_STATE_ARMED.
+	StateType_Armed StateType = 2
+	// StateType_Busy is a representation of the C type ATK_STATE_BUSY.
+	StateType_Busy StateType = 3
+	// StateType_Checked is a representation of the C type ATK_STATE_CHECKED.
+	StateType_Checked StateType = 4
+	// StateType_Defunct is a representation of the C type ATK_STATE_DEFUNCT.
+	StateType_Defunct StateType = 5
+	// StateType_Editable is a representation of the C type ATK_STATE_EDITABLE.
+	StateType_Editable StateType = 6
+	// StateType_Enabled is a representation of the C type ATK_STATE_ENABLED.
+	StateType_Enabled StateType = 7
+	// StateType_Expandable is a representation of the C type ATK_STATE_EXPANDABLE.
+	StateType_Expandable StateType = 8
+	// StateType_Expanded is a representation of the C type ATK_STATE_EXPANDED.
+	StateType_Expanded StateType = 9
+	// StateType_Focusable is a representation of the C type ATK_STATE_FOCUSABLE.
+	StateType_Focusable StateType = 10
+	// StateType_Focused is a representation of the C type ATK_STATE_FOCUSED.
+	StateType_Focused StateType = 11
+	// StateType_Horizontal is a representation of the C type ATK_STATE_HORIZONTAL.
+	StateType_Horizontal StateType = 12
+	// StateType_Iconified is a representation of the C type ATK_STATE_ICONIFIED.
+	StateType_Iconified StateType = 13
+	// StateType_Modal is a representation of the C type ATK_STATE_MODAL.
+	StateType_Modal StateType = 14
+	// StateType_MultiLine is a representation of the C type ATK_STATE_MULTI_LINE.
+	StateType_MultiLine StateType = 15
+	// StateType_Multiselectable is a representation of the C type ATK_STATE_MULTISELECTABLE.
+	StateType_Multiselectable StateType = 16
+	// StateType_Opaque is a representation of the C type ATK_STATE_OPAQUE.
+	StateType_Opaque StateType = 17
+	// StateType_Pressed is a representation of the C type ATK_STATE_PRESSED.
+	StateType_Pressed StateType = 18
+	// StateType_Resizable is a representation of the C type ATK_STATE_RESIZABLE.
+	StateType_Resizable StateType = 19
+	// StateType_Selectable is a representation of the C type ATK_STATE_SELECTABLE.
+	StateType_Selectable StateType = 20
+	// StateType_Selected is a representation of the C type ATK_STATE_SELECTED.
+	StateType_Selected StateType = 21
+	// StateType_Sensitive is a representation of the C type ATK_STATE_SENSITIVE.
+	StateType_Sensitive StateType = 22
+	// StateType_Showing is a representation of the C type ATK_STATE_SHOWING.
+	StateType_Showing StateType = 23
+	// StateType_SingleLine is a representation of the C type ATK_STATE_SINGLE_LINE.
+	StateType_SingleLine StateType = 24
+	// StateType_Stale is a representation of the C type ATK_STATE_STALE.
+	StateType_Stale StateType = 25
+	// StateType_Transient is a representation of the C type ATK_STATE_TRANSIENT.
+	StateType_Transient StateType = 26
+	// StateType_Vertical is a representation of the C type ATK_STATE_VERTICAL.
+	StateType_Vertical StateType = 27
+	// StateType_Visible is a representation of the C type ATK_STATE_VISIBLE.
+	StateType_Visible StateType = 28
+	// StateType_ManagesDescendants is a representation of the C type ATK_STATE_MANAGES_DESCENDANTS.
+	StateType_ManagesDescendants StateType = 29
+	// StateType_Indeterminate is a representation of the C type ATK_STATE_INDETERMINATE.
+	StateType_Indeterminate StateType = 30
+	// StateType_Truncated is a representation of the C type ATK_STATE_TRUNCATED.
+	StateType_Truncated StateType = 31
+	// StateType_Required is a representation of the C type ATK_STATE_REQUIRED.
+	StateType_Required StateType = 32
+	// StateType_InvalidEntry is a representation of the C type ATK_STATE_INVALID_ENTRY.
+	StateType_InvalidEntry StateType = 33
+	// StateType_SupportsAutocompletion is a representation of the C type ATK_STATE_SUPPORTS_AUTOCOMPLETION.
+	StateType_SupportsAutocompletion StateType = 34
+	// StateType_SelectableText is a representation of the C type ATK_STATE_SELECTABLE_TEXT.
+	StateType_SelectableText StateType = 35
+	// StateType_Default is a representation of the C type ATK_STATE_DEFAULT.
+	StateType_Default StateType = 36
+	// StateType_Animated is a representation of the C type ATK_STATE_ANIMATED.
+	StateType_Animated StateType = 37
+	// StateType_Visited is a representation of the C type ATK_STATE_VISITED.
+	StateType_Visited StateType = 38
+	// StateType_Checkable is a representation of the C type ATK_STATE_CHECKABLE.
+	StateType_Checkable StateType = 39
+	// StateType_HasPopup is a representation of the C type ATK_STATE_HAS_POPUP.
+	StateType_HasPopup StateType = 40
+	// StateType_HasTooltip is a representation of the C type ATK_STATE_HAS_TOOLTIP.
+	StateType_HasTooltip StateType = 41
+	// StateType_ReadOnly is a representation of the C type ATK_STATE_READ_ONLY.
+	StateType_ReadOnly StateType = 42
+	// StateType_LastDefined is a representation of the C type ATK_STATE_LAST_DEFINED.
+	StateType_LastDefined StateType = 43
 )
 
-// Textattribute is a representation of the C type AtkTextAttribute.
-type Textattribute int
+// TextAttribute is a representation of the C type AtkTextAttribute.
+type TextAttribute int
 
 const (
-	// Textattribute_Invalid is a representation of the C type ATK_TEXT_ATTR_INVALID.
-	Textattribute_Invalid Textattribute = 0
-	// Textattribute_LeftMargin is a representation of the C type ATK_TEXT_ATTR_LEFT_MARGIN.
-	Textattribute_LeftMargin Textattribute = 1
-	// Textattribute_RightMargin is a representation of the C type ATK_TEXT_ATTR_RIGHT_MARGIN.
-	Textattribute_RightMargin Textattribute = 2
-	// Textattribute_Indent is a representation of the C type ATK_TEXT_ATTR_INDENT.
-	Textattribute_Indent Textattribute = 3
-	// Textattribute_Invisible is a representation of the C type ATK_TEXT_ATTR_INVISIBLE.
-	Textattribute_Invisible Textattribute = 4
-	// Textattribute_Editable is a representation of the C type ATK_TEXT_ATTR_EDITABLE.
-	Textattribute_Editable Textattribute = 5
-	// Textattribute_PixelsAboveLines is a representation of the C type ATK_TEXT_ATTR_PIXELS_ABOVE_LINES.
-	Textattribute_PixelsAboveLines Textattribute = 6
-	// Textattribute_PixelsBelowLines is a representation of the C type ATK_TEXT_ATTR_PIXELS_BELOW_LINES.
-	Textattribute_PixelsBelowLines Textattribute = 7
-	// Textattribute_PixelsInsideWrap is a representation of the C type ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP.
-	Textattribute_PixelsInsideWrap Textattribute = 8
-	// Textattribute_BgFullHeight is a representation of the C type ATK_TEXT_ATTR_BG_FULL_HEIGHT.
-	Textattribute_BgFullHeight Textattribute = 9
-	// Textattribute_Rise is a representation of the C type ATK_TEXT_ATTR_RISE.
-	Textattribute_Rise Textattribute = 10
-	// Textattribute_Underline is a representation of the C type ATK_TEXT_ATTR_UNDERLINE.
-	Textattribute_Underline Textattribute = 11
-	// Textattribute_Strikethrough is a representation of the C type ATK_TEXT_ATTR_STRIKETHROUGH.
-	Textattribute_Strikethrough Textattribute = 12
-	// Textattribute_Size is a representation of the C type ATK_TEXT_ATTR_SIZE.
-	Textattribute_Size Textattribute = 13
-	// Textattribute_Scale is a representation of the C type ATK_TEXT_ATTR_SCALE.
-	Textattribute_Scale Textattribute = 14
-	// Textattribute_Weight is a representation of the C type ATK_TEXT_ATTR_WEIGHT.
-	Textattribute_Weight Textattribute = 15
-	// Textattribute_Language is a representation of the C type ATK_TEXT_ATTR_LANGUAGE.
-	Textattribute_Language Textattribute = 16
-	// Textattribute_FamilyName is a representation of the C type ATK_TEXT_ATTR_FAMILY_NAME.
-	Textattribute_FamilyName Textattribute = 17
-	// Textattribute_BgColor is a representation of the C type ATK_TEXT_ATTR_BG_COLOR.
-	Textattribute_BgColor Textattribute = 18
-	// Textattribute_FgColor is a representation of the C type ATK_TEXT_ATTR_FG_COLOR.
-	Textattribute_FgColor Textattribute = 19
-	// Textattribute_BgStipple is a representation of the C type ATK_TEXT_ATTR_BG_STIPPLE.
-	Textattribute_BgStipple Textattribute = 20
-	// Textattribute_FgStipple is a representation of the C type ATK_TEXT_ATTR_FG_STIPPLE.
-	Textattribute_FgStipple Textattribute = 21
-	// Textattribute_WrapMode is a representation of the C type ATK_TEXT_ATTR_WRAP_MODE.
-	Textattribute_WrapMode Textattribute = 22
-	// Textattribute_Direction is a representation of the C type ATK_TEXT_ATTR_DIRECTION.
-	Textattribute_Direction Textattribute = 23
-	// Textattribute_Justification is a representation of the C type ATK_TEXT_ATTR_JUSTIFICATION.
-	Textattribute_Justification Textattribute = 24
-	// Textattribute_Stretch is a representation of the C type ATK_TEXT_ATTR_STRETCH.
-	Textattribute_Stretch Textattribute = 25
-	// Textattribute_Variant is a representation of the C type ATK_TEXT_ATTR_VARIANT.
-	Textattribute_Variant Textattribute = 26
-	// Textattribute_Style is a representation of the C type ATK_TEXT_ATTR_STYLE.
-	Textattribute_Style Textattribute = 27
-	// Textattribute_LastDefined is a representation of the C type ATK_TEXT_ATTR_LAST_DEFINED.
-	Textattribute_LastDefined Textattribute = 28
+	// TextAttribute_Invalid is a representation of the C type ATK_TEXT_ATTR_INVALID.
+	TextAttribute_Invalid TextAttribute = 0
+	// TextAttribute_LeftMargin is a representation of the C type ATK_TEXT_ATTR_LEFT_MARGIN.
+	TextAttribute_LeftMargin TextAttribute = 1
+	// TextAttribute_RightMargin is a representation of the C type ATK_TEXT_ATTR_RIGHT_MARGIN.
+	TextAttribute_RightMargin TextAttribute = 2
+	// TextAttribute_Indent is a representation of the C type ATK_TEXT_ATTR_INDENT.
+	TextAttribute_Indent TextAttribute = 3
+	// TextAttribute_Invisible is a representation of the C type ATK_TEXT_ATTR_INVISIBLE.
+	TextAttribute_Invisible TextAttribute = 4
+	// TextAttribute_Editable is a representation of the C type ATK_TEXT_ATTR_EDITABLE.
+	TextAttribute_Editable TextAttribute = 5
+	// TextAttribute_PixelsAboveLines is a representation of the C type ATK_TEXT_ATTR_PIXELS_ABOVE_LINES.
+	TextAttribute_PixelsAboveLines TextAttribute = 6
+	// TextAttribute_PixelsBelowLines is a representation of the C type ATK_TEXT_ATTR_PIXELS_BELOW_LINES.
+	TextAttribute_PixelsBelowLines TextAttribute = 7
+	// TextAttribute_PixelsInsideWrap is a representation of the C type ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP.
+	TextAttribute_PixelsInsideWrap TextAttribute = 8
+	// TextAttribute_BgFullHeight is a representation of the C type ATK_TEXT_ATTR_BG_FULL_HEIGHT.
+	TextAttribute_BgFullHeight TextAttribute = 9
+	// TextAttribute_Rise is a representation of the C type ATK_TEXT_ATTR_RISE.
+	TextAttribute_Rise TextAttribute = 10
+	// TextAttribute_Underline is a representation of the C type ATK_TEXT_ATTR_UNDERLINE.
+	TextAttribute_Underline TextAttribute = 11
+	// TextAttribute_Strikethrough is a representation of the C type ATK_TEXT_ATTR_STRIKETHROUGH.
+	TextAttribute_Strikethrough TextAttribute = 12
+	// TextAttribute_Size is a representation of the C type ATK_TEXT_ATTR_SIZE.
+	TextAttribute_Size TextAttribute = 13
+	// TextAttribute_Scale is a representation of the C type ATK_TEXT_ATTR_SCALE.
+	TextAttribute_Scale TextAttribute = 14
+	// TextAttribute_Weight is a representation of the C type ATK_TEXT_ATTR_WEIGHT.
+	TextAttribute_Weight TextAttribute = 15
+	// TextAttribute_Language is a representation of the C type ATK_TEXT_ATTR_LANGUAGE.
+	TextAttribute_Language TextAttribute = 16
+	// TextAttribute_FamilyName is a representation of the C type ATK_TEXT_ATTR_FAMILY_NAME.
+	TextAttribute_FamilyName TextAttribute = 17
+	// TextAttribute_BgColor is a representation of the C type ATK_TEXT_ATTR_BG_COLOR.
+	TextAttribute_BgColor TextAttribute = 18
+	// TextAttribute_FgColor is a representation of the C type ATK_TEXT_ATTR_FG_COLOR.
+	TextAttribute_FgColor TextAttribute = 19
+	// TextAttribute_BgStipple is a representation of the C type ATK_TEXT_ATTR_BG_STIPPLE.
+	TextAttribute_BgStipple TextAttribute = 20
+	// TextAttribute_FgStipple is a representation of the C type ATK_TEXT_ATTR_FG_STIPPLE.
+	TextAttribute_FgStipple TextAttribute = 21
+	// TextAttribute_WrapMode is a representation of the C type ATK_TEXT_ATTR_WRAP_MODE.
+	TextAttribute_WrapMode TextAttribute = 22
+	// TextAttribute_Direction is a representation of the C type ATK_TEXT_ATTR_DIRECTION.
+	TextAttribute_Direction TextAttribute = 23
+	// TextAttribute_Justification is a representation of the C type ATK_TEXT_ATTR_JUSTIFICATION.
+	TextAttribute_Justification TextAttribute = 24
+	// TextAttribute_Stretch is a representation of the C type ATK_TEXT_ATTR_STRETCH.
+	TextAttribute_Stretch TextAttribute = 25
+	// TextAttribute_Variant is a representation of the C type ATK_TEXT_ATTR_VARIANT.
+	TextAttribute_Variant TextAttribute = 26
+	// TextAttribute_Style is a representation of the C type ATK_TEXT_ATTR_STYLE.
+	TextAttribute_Style TextAttribute = 27
+	// TextAttribute_LastDefined is a representation of the C type ATK_TEXT_ATTR_LAST_DEFINED.
+	TextAttribute_LastDefined TextAttribute = 28
 )
 
-// Textboundary is a representation of the C type AtkTextBoundary.
-type Textboundary int
+// TextBoundary is a representation of the C type AtkTextBoundary.
+type TextBoundary int
 
 const (
-	// Textboundary_Char is a representation of the C type ATK_TEXT_BOUNDARY_CHAR.
-	Textboundary_Char Textboundary = 0
-	// Textboundary_WordStart is a representation of the C type ATK_TEXT_BOUNDARY_WORD_START.
-	Textboundary_WordStart Textboundary = 1
-	// Textboundary_WordEnd is a representation of the C type ATK_TEXT_BOUNDARY_WORD_END.
-	Textboundary_WordEnd Textboundary = 2
-	// Textboundary_SentenceStart is a representation of the C type ATK_TEXT_BOUNDARY_SENTENCE_START.
-	Textboundary_SentenceStart Textboundary = 3
-	// Textboundary_SentenceEnd is a representation of the C type ATK_TEXT_BOUNDARY_SENTENCE_END.
-	Textboundary_SentenceEnd Textboundary = 4
-	// Textboundary_LineStart is a representation of the C type ATK_TEXT_BOUNDARY_LINE_START.
-	Textboundary_LineStart Textboundary = 5
-	// Textboundary_LineEnd is a representation of the C type ATK_TEXT_BOUNDARY_LINE_END.
-	Textboundary_LineEnd Textboundary = 6
+	// TextBoundary_Char is a representation of the C type ATK_TEXT_BOUNDARY_CHAR.
+	TextBoundary_Char TextBoundary = 0
+	// TextBoundary_WordStart is a representation of the C type ATK_TEXT_BOUNDARY_WORD_START.
+	TextBoundary_WordStart TextBoundary = 1
+	// TextBoundary_WordEnd is a representation of the C type ATK_TEXT_BOUNDARY_WORD_END.
+	TextBoundary_WordEnd TextBoundary = 2
+	// TextBoundary_SentenceStart is a representation of the C type ATK_TEXT_BOUNDARY_SENTENCE_START.
+	TextBoundary_SentenceStart TextBoundary = 3
+	// TextBoundary_SentenceEnd is a representation of the C type ATK_TEXT_BOUNDARY_SENTENCE_END.
+	TextBoundary_SentenceEnd TextBoundary = 4
+	// TextBoundary_LineStart is a representation of the C type ATK_TEXT_BOUNDARY_LINE_START.
+	TextBoundary_LineStart TextBoundary = 5
+	// TextBoundary_LineEnd is a representation of the C type ATK_TEXT_BOUNDARY_LINE_END.
+	TextBoundary_LineEnd TextBoundary = 6
 )
 
-// Textcliptype is a representation of the C type AtkTextClipType.
-type Textcliptype int
+// TextClipType is a representation of the C type AtkTextClipType.
+type TextClipType int
 
 const (
-	// Textcliptype_None is a representation of the C type ATK_TEXT_CLIP_NONE.
-	Textcliptype_None Textcliptype = 0
-	// Textcliptype_Min is a representation of the C type ATK_TEXT_CLIP_MIN.
-	Textcliptype_Min Textcliptype = 1
-	// Textcliptype_Max is a representation of the C type ATK_TEXT_CLIP_MAX.
-	Textcliptype_Max Textcliptype = 2
-	// Textcliptype_Both is a representation of the C type ATK_TEXT_CLIP_BOTH.
-	Textcliptype_Both Textcliptype = 3
+	// TextClipType_None is a representation of the C type ATK_TEXT_CLIP_NONE.
+	TextClipType_None TextClipType = 0
+	// TextClipType_Min is a representation of the C type ATK_TEXT_CLIP_MIN.
+	TextClipType_Min TextClipType = 1
+	// TextClipType_Max is a representation of the C type ATK_TEXT_CLIP_MAX.
+	TextClipType_Max TextClipType = 2
+	// TextClipType_Both is a representation of the C type ATK_TEXT_CLIP_BOTH.
+	TextClipType_Both TextClipType = 3
 )
 
-// Textgranularity is a representation of the C type AtkTextGranularity.
-type Textgranularity int
+// TextGranularity is a representation of the C type AtkTextGranularity.
+type TextGranularity int
 
 const (
-	// Textgranularity_Char is a representation of the C type ATK_TEXT_GRANULARITY_CHAR.
-	Textgranularity_Char Textgranularity = 0
-	// Textgranularity_Word is a representation of the C type ATK_TEXT_GRANULARITY_WORD.
-	Textgranularity_Word Textgranularity = 1
-	// Textgranularity_Sentence is a representation of the C type ATK_TEXT_GRANULARITY_SENTENCE.
-	Textgranularity_Sentence Textgranularity = 2
-	// Textgranularity_Line is a representation of the C type ATK_TEXT_GRANULARITY_LINE.
-	Textgranularity_Line Textgranularity = 3
-	// Textgranularity_Paragraph is a representation of the C type ATK_TEXT_GRANULARITY_PARAGRAPH.
-	Textgranularity_Paragraph Textgranularity = 4
+	// TextGranularity_Char is a representation of the C type ATK_TEXT_GRANULARITY_CHAR.
+	TextGranularity_Char TextGranularity = 0
+	// TextGranularity_Word is a representation of the C type ATK_TEXT_GRANULARITY_WORD.
+	TextGranularity_Word TextGranularity = 1
+	// TextGranularity_Sentence is a representation of the C type ATK_TEXT_GRANULARITY_SENTENCE.
+	TextGranularity_Sentence TextGranularity = 2
+	// TextGranularity_Line is a representation of the C type ATK_TEXT_GRANULARITY_LINE.
+	TextGranularity_Line TextGranularity = 3
+	// TextGranularity_Paragraph is a representation of the C type ATK_TEXT_GRANULARITY_PARAGRAPH.
+	TextGranularity_Paragraph TextGranularity = 4
 )
 
-// Valuetype is a representation of the C type AtkValueType.
-type Valuetype int
+// ValueType is a representation of the C type AtkValueType.
+type ValueType int
 
 const (
-	// Valuetype_VeryWeak is a representation of the C type ATK_VALUE_VERY_WEAK.
-	Valuetype_VeryWeak Valuetype = 0
-	// Valuetype_Weak is a representation of the C type ATK_VALUE_WEAK.
-	Valuetype_Weak Valuetype = 1
-	// Valuetype_Acceptable is a representation of the C type ATK_VALUE_ACCEPTABLE.
-	Valuetype_Acceptable Valuetype = 2
-	// Valuetype_Strong is a representation of the C type ATK_VALUE_STRONG.
-	Valuetype_Strong Valuetype = 3
-	// Valuetype_VeryStrong is a representation of the C type ATK_VALUE_VERY_STRONG.
-	Valuetype_VeryStrong Valuetype = 4
-	// Valuetype_VeryLow is a representation of the C type ATK_VALUE_VERY_LOW.
-	Valuetype_VeryLow Valuetype = 5
-	// Valuetype_Low is a representation of the C type ATK_VALUE_LOW.
-	Valuetype_Low Valuetype = 6
-	// Valuetype_Medium is a representation of the C type ATK_VALUE_MEDIUM.
-	Valuetype_Medium Valuetype = 7
-	// Valuetype_High is a representation of the C type ATK_VALUE_HIGH.
-	Valuetype_High Valuetype = 8
-	// Valuetype_VeryHigh is a representation of the C type ATK_VALUE_VERY_HIGH.
-	Valuetype_VeryHigh Valuetype = 9
-	// Valuetype_VeryBad is a representation of the C type ATK_VALUE_VERY_BAD.
-	Valuetype_VeryBad Valuetype = 10
-	// Valuetype_Bad is a representation of the C type ATK_VALUE_BAD.
-	Valuetype_Bad Valuetype = 11
-	// Valuetype_Good is a representation of the C type ATK_VALUE_GOOD.
-	Valuetype_Good Valuetype = 12
-	// Valuetype_VeryGood is a representation of the C type ATK_VALUE_VERY_GOOD.
-	Valuetype_VeryGood Valuetype = 13
-	// Valuetype_Best is a representation of the C type ATK_VALUE_BEST.
-	Valuetype_Best Valuetype = 14
-	// Valuetype_LastDefined is a representation of the C type ATK_VALUE_LAST_DEFINED.
-	Valuetype_LastDefined Valuetype = 15
+	// ValueType_VeryWeak is a representation of the C type ATK_VALUE_VERY_WEAK.
+	ValueType_VeryWeak ValueType = 0
+	// ValueType_Weak is a representation of the C type ATK_VALUE_WEAK.
+	ValueType_Weak ValueType = 1
+	// ValueType_Acceptable is a representation of the C type ATK_VALUE_ACCEPTABLE.
+	ValueType_Acceptable ValueType = 2
+	// ValueType_Strong is a representation of the C type ATK_VALUE_STRONG.
+	ValueType_Strong ValueType = 3
+	// ValueType_VeryStrong is a representation of the C type ATK_VALUE_VERY_STRONG.
+	ValueType_VeryStrong ValueType = 4
+	// ValueType_VeryLow is a representation of the C type ATK_VALUE_VERY_LOW.
+	ValueType_VeryLow ValueType = 5
+	// ValueType_Low is a representation of the C type ATK_VALUE_LOW.
+	ValueType_Low ValueType = 6
+	// ValueType_Medium is a representation of the C type ATK_VALUE_MEDIUM.
+	ValueType_Medium ValueType = 7
+	// ValueType_High is a representation of the C type ATK_VALUE_HIGH.
+	ValueType_High ValueType = 8
+	// ValueType_VeryHigh is a representation of the C type ATK_VALUE_VERY_HIGH.
+	ValueType_VeryHigh ValueType = 9
+	// ValueType_VeryBad is a representation of the C type ATK_VALUE_VERY_BAD.
+	ValueType_VeryBad ValueType = 10
+	// ValueType_Bad is a representation of the C type ATK_VALUE_BAD.
+	ValueType_Bad ValueType = 11
+	// ValueType_Good is a representation of the C type ATK_VALUE_GOOD.
+	ValueType_Good ValueType = 12
+	// ValueType_VeryGood is a representation of the C type ATK_VALUE_VERY_GOOD.
+	ValueType_VeryGood ValueType = 13
+	// ValueType_Best is a representation of the C type ATK_VALUE_BEST.
+	ValueType_Best ValueType = 14
+	// ValueType_LastDefined is a representation of the C type ATK_VALUE_LAST_DEFINED.
+	ValueType_LastDefined ValueType = 15
 )

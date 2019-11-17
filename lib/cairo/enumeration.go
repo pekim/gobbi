@@ -182,222 +182,222 @@ const (
 	Antialias_Best Antialias = 6
 )
 
-// Fillrule is a representation of the C type cairo_fill_rule_t.
-type Fillrule int
+// FillRule is a representation of the C type cairo_fill_rule_t.
+type FillRule int
 
 const (
-	// Fillrule_Winding is a representation of the C type CAIRO_FILL_RULE_WINDING.
-	Fillrule_Winding Fillrule = 0
-	// Fillrule_EvenOdd is a representation of the C type CAIRO_FILL_RULE_EVEN_ODD.
-	Fillrule_EvenOdd Fillrule = 1
+	// FillRule_Winding is a representation of the C type CAIRO_FILL_RULE_WINDING.
+	FillRule_Winding FillRule = 0
+	// FillRule_EvenOdd is a representation of the C type CAIRO_FILL_RULE_EVEN_ODD.
+	FillRule_EvenOdd FillRule = 1
 )
 
-// Linecap is a representation of the C type cairo_line_cap_t.
-type Linecap int
+// LineCap is a representation of the C type cairo_line_cap_t.
+type LineCap int
 
 const (
-	// Linecap_Butt is a representation of the C type CAIRO_LINE_CAP_BUTT.
-	Linecap_Butt Linecap = 0
-	// Linecap_Round is a representation of the C type CAIRO_LINE_CAP_ROUND.
-	Linecap_Round Linecap = 1
-	// Linecap_Square is a representation of the C type CAIRO_LINE_CAP_SQUARE.
-	Linecap_Square Linecap = 2
+	// LineCap_Butt is a representation of the C type CAIRO_LINE_CAP_BUTT.
+	LineCap_Butt LineCap = 0
+	// LineCap_Round is a representation of the C type CAIRO_LINE_CAP_ROUND.
+	LineCap_Round LineCap = 1
+	// LineCap_Square is a representation of the C type CAIRO_LINE_CAP_SQUARE.
+	LineCap_Square LineCap = 2
 )
 
-// Linejoin is a representation of the C type cairo_line_join_t.
-type Linejoin int
+// LineJoin is a representation of the C type cairo_line_join_t.
+type LineJoin int
 
 const (
-	// Linejoin_Miter is a representation of the C type CAIRO_LINE_JOIN_MITER.
-	Linejoin_Miter Linejoin = 0
-	// Linejoin_Round is a representation of the C type CAIRO_LINE_JOIN_ROUND.
-	Linejoin_Round Linejoin = 1
-	// Linejoin_Bevel is a representation of the C type CAIRO_LINE_JOIN_BEVEL.
-	Linejoin_Bevel Linejoin = 2
+	// LineJoin_Miter is a representation of the C type CAIRO_LINE_JOIN_MITER.
+	LineJoin_Miter LineJoin = 0
+	// LineJoin_Round is a representation of the C type CAIRO_LINE_JOIN_ROUND.
+	LineJoin_Round LineJoin = 1
+	// LineJoin_Bevel is a representation of the C type CAIRO_LINE_JOIN_BEVEL.
+	LineJoin_Bevel LineJoin = 2
 )
 
-// Textclusterflags is a representation of the C type cairo_text_cluster_flags_t.
-type Textclusterflags int
+// TextClusterFlags is a representation of the C type cairo_text_cluster_flags_t.
+type TextClusterFlags int
 
 const (
-	// Textclusterflags_Backward is a representation of the C type CAIRO_TEXT_CLUSTER_FLAG_BACKWARD.
-	Textclusterflags_Backward Textclusterflags = 1
+	// TextClusterFlags_Backward is a representation of the C type CAIRO_TEXT_CLUSTER_FLAG_BACKWARD.
+	TextClusterFlags_Backward TextClusterFlags = 1
 )
 
-// Fontslant is a representation of the C type cairo_font_slant_t.
-type Fontslant int
+// FontSlant is a representation of the C type cairo_font_slant_t.
+type FontSlant int
 
 const (
-	// Fontslant_Normal is a representation of the C type CAIRO_FONT_SLANT_NORMAL.
-	Fontslant_Normal Fontslant = 0
-	// Fontslant_Italic is a representation of the C type CAIRO_FONT_SLANT_ITALIC.
-	Fontslant_Italic Fontslant = 1
-	// Fontslant_Oblique is a representation of the C type CAIRO_FONT_SLANT_OBLIQUE.
-	Fontslant_Oblique Fontslant = 2
+	// FontSlant_Normal is a representation of the C type CAIRO_FONT_SLANT_NORMAL.
+	FontSlant_Normal FontSlant = 0
+	// FontSlant_Italic is a representation of the C type CAIRO_FONT_SLANT_ITALIC.
+	FontSlant_Italic FontSlant = 1
+	// FontSlant_Oblique is a representation of the C type CAIRO_FONT_SLANT_OBLIQUE.
+	FontSlant_Oblique FontSlant = 2
 )
 
-// Fontweight is a representation of the C type cairo_font_weight_t.
-type Fontweight int
+// FontWeight is a representation of the C type cairo_font_weight_t.
+type FontWeight int
 
 const (
-	// Fontweight_Normal is a representation of the C type CAIRO_FONT_WEIGHT_NORMAL.
-	Fontweight_Normal Fontweight = 0
-	// Fontweight_Bold is a representation of the C type CAIRO_FONT_WEIGHT_BOLD.
-	Fontweight_Bold Fontweight = 1
+	// FontWeight_Normal is a representation of the C type CAIRO_FONT_WEIGHT_NORMAL.
+	FontWeight_Normal FontWeight = 0
+	// FontWeight_Bold is a representation of the C type CAIRO_FONT_WEIGHT_BOLD.
+	FontWeight_Bold FontWeight = 1
 )
 
-// Subpixelorder is a representation of the C type cairo_subpixel_order_t.
-type Subpixelorder int
+// SubpixelOrder is a representation of the C type cairo_subpixel_order_t.
+type SubpixelOrder int
 
 const (
-	// Subpixelorder_Default is a representation of the C type CAIRO_SUBPIXEL_ORDER_DEFAULT.
-	Subpixelorder_Default Subpixelorder = 0
-	// Subpixelorder_Rgb is a representation of the C type CAIRO_SUBPIXEL_ORDER_RGB.
-	Subpixelorder_Rgb Subpixelorder = 1
-	// Subpixelorder_Bgr is a representation of the C type CAIRO_SUBPIXEL_ORDER_BGR.
-	Subpixelorder_Bgr Subpixelorder = 2
-	// Subpixelorder_Vrgb is a representation of the C type CAIRO_SUBPIXEL_ORDER_VRGB.
-	Subpixelorder_Vrgb Subpixelorder = 3
-	// Subpixelorder_Vbgr is a representation of the C type CAIRO_SUBPIXEL_ORDER_VBGR.
-	Subpixelorder_Vbgr Subpixelorder = 4
+	// SubpixelOrder_Default is a representation of the C type CAIRO_SUBPIXEL_ORDER_DEFAULT.
+	SubpixelOrder_Default SubpixelOrder = 0
+	// SubpixelOrder_Rgb is a representation of the C type CAIRO_SUBPIXEL_ORDER_RGB.
+	SubpixelOrder_Rgb SubpixelOrder = 1
+	// SubpixelOrder_Bgr is a representation of the C type CAIRO_SUBPIXEL_ORDER_BGR.
+	SubpixelOrder_Bgr SubpixelOrder = 2
+	// SubpixelOrder_Vrgb is a representation of the C type CAIRO_SUBPIXEL_ORDER_VRGB.
+	SubpixelOrder_Vrgb SubpixelOrder = 3
+	// SubpixelOrder_Vbgr is a representation of the C type CAIRO_SUBPIXEL_ORDER_VBGR.
+	SubpixelOrder_Vbgr SubpixelOrder = 4
 )
 
-// Hintstyle is a representation of the C type cairo_hint_style_t.
-type Hintstyle int
+// HintStyle is a representation of the C type cairo_hint_style_t.
+type HintStyle int
 
 const (
-	// Hintstyle_Default is a representation of the C type CAIRO_HINT_STYLE_DEFAULT.
-	Hintstyle_Default Hintstyle = 0
-	// Hintstyle_None is a representation of the C type CAIRO_HINT_STYLE_NONE.
-	Hintstyle_None Hintstyle = 1
-	// Hintstyle_Slight is a representation of the C type CAIRO_HINT_STYLE_SLIGHT.
-	Hintstyle_Slight Hintstyle = 2
-	// Hintstyle_Medium is a representation of the C type CAIRO_HINT_STYLE_MEDIUM.
-	Hintstyle_Medium Hintstyle = 3
-	// Hintstyle_Full is a representation of the C type CAIRO_HINT_STYLE_FULL.
-	Hintstyle_Full Hintstyle = 4
+	// HintStyle_Default is a representation of the C type CAIRO_HINT_STYLE_DEFAULT.
+	HintStyle_Default HintStyle = 0
+	// HintStyle_None is a representation of the C type CAIRO_HINT_STYLE_NONE.
+	HintStyle_None HintStyle = 1
+	// HintStyle_Slight is a representation of the C type CAIRO_HINT_STYLE_SLIGHT.
+	HintStyle_Slight HintStyle = 2
+	// HintStyle_Medium is a representation of the C type CAIRO_HINT_STYLE_MEDIUM.
+	HintStyle_Medium HintStyle = 3
+	// HintStyle_Full is a representation of the C type CAIRO_HINT_STYLE_FULL.
+	HintStyle_Full HintStyle = 4
 )
 
-// Hintmetrics is a representation of the C type cairo_hint_metrics_t.
-type Hintmetrics int
+// HintMetrics is a representation of the C type cairo_hint_metrics_t.
+type HintMetrics int
 
 const (
-	// Hintmetrics_Default is a representation of the C type CAIRO_HINT_METRICS_DEFAULT.
-	Hintmetrics_Default Hintmetrics = 0
-	// Hintmetrics_Off is a representation of the C type CAIRO_HINT_METRICS_OFF.
-	Hintmetrics_Off Hintmetrics = 1
-	// Hintmetrics_On is a representation of the C type CAIRO_HINT_METRICS_ON.
-	Hintmetrics_On Hintmetrics = 2
+	// HintMetrics_Default is a representation of the C type CAIRO_HINT_METRICS_DEFAULT.
+	HintMetrics_Default HintMetrics = 0
+	// HintMetrics_Off is a representation of the C type CAIRO_HINT_METRICS_OFF.
+	HintMetrics_Off HintMetrics = 1
+	// HintMetrics_On is a representation of the C type CAIRO_HINT_METRICS_ON.
+	HintMetrics_On HintMetrics = 2
 )
 
-// Fonttype is a representation of the C type cairo_font_type_t.
-type Fonttype int
+// FontType is a representation of the C type cairo_font_type_t.
+type FontType int
 
 const (
-	// Fonttype_Toy is a representation of the C type CAIRO_FONT_TYPE_TOY.
-	Fonttype_Toy Fonttype = 0
-	// Fonttype_Ft is a representation of the C type CAIRO_FONT_TYPE_FT.
-	Fonttype_Ft Fonttype = 1
-	// Fonttype_Win32 is a representation of the C type CAIRO_FONT_TYPE_WIN32.
-	Fonttype_Win32 Fonttype = 2
-	// Fonttype_Quartz is a representation of the C type CAIRO_FONT_TYPE_QUARTZ.
-	Fonttype_Quartz Fonttype = 3
-	// Fonttype_User is a representation of the C type CAIRO_FONT_TYPE_USER.
-	Fonttype_User Fonttype = 4
+	// FontType_Toy is a representation of the C type CAIRO_FONT_TYPE_TOY.
+	FontType_Toy FontType = 0
+	// FontType_Ft is a representation of the C type CAIRO_FONT_TYPE_FT.
+	FontType_Ft FontType = 1
+	// FontType_Win32 is a representation of the C type CAIRO_FONT_TYPE_WIN32.
+	FontType_Win32 FontType = 2
+	// FontType_Quartz is a representation of the C type CAIRO_FONT_TYPE_QUARTZ.
+	FontType_Quartz FontType = 3
+	// FontType_User is a representation of the C type CAIRO_FONT_TYPE_USER.
+	FontType_User FontType = 4
 )
 
-// Pathdatatype is a representation of the C type cairo_path_data_type_t.
-type Pathdatatype int
+// PathDataType is a representation of the C type cairo_path_data_type_t.
+type PathDataType int
 
 const (
-	// Pathdatatype_MoveTo is a representation of the C type CAIRO_PATH_MOVE_TO.
-	Pathdatatype_MoveTo Pathdatatype = 0
-	// Pathdatatype_LineTo is a representation of the C type CAIRO_PATH_LINE_TO.
-	Pathdatatype_LineTo Pathdatatype = 1
-	// Pathdatatype_CurveTo is a representation of the C type CAIRO_PATH_CURVE_TO.
-	Pathdatatype_CurveTo Pathdatatype = 2
-	// Pathdatatype_ClosePath is a representation of the C type CAIRO_PATH_CLOSE_PATH.
-	Pathdatatype_ClosePath Pathdatatype = 3
+	// PathDataType_MoveTo is a representation of the C type CAIRO_PATH_MOVE_TO.
+	PathDataType_MoveTo PathDataType = 0
+	// PathDataType_LineTo is a representation of the C type CAIRO_PATH_LINE_TO.
+	PathDataType_LineTo PathDataType = 1
+	// PathDataType_CurveTo is a representation of the C type CAIRO_PATH_CURVE_TO.
+	PathDataType_CurveTo PathDataType = 2
+	// PathDataType_ClosePath is a representation of the C type CAIRO_PATH_CLOSE_PATH.
+	PathDataType_ClosePath PathDataType = 3
 )
 
-// Devicetype is a representation of the C type cairo_device_type_t.
-type Devicetype int
+// DeviceType is a representation of the C type cairo_device_type_t.
+type DeviceType int
 
 const (
-	// Devicetype_Drm is a representation of the C type CAIRO_DEVICE_TYPE_DRM.
-	Devicetype_Drm Devicetype = 0
-	// Devicetype_Gl is a representation of the C type CAIRO_DEVICE_TYPE_GL.
-	Devicetype_Gl Devicetype = 1
-	// Devicetype_Script is a representation of the C type CAIRO_DEVICE_TYPE_SCRIPT.
-	Devicetype_Script Devicetype = 2
-	// Devicetype_Xcb is a representation of the C type CAIRO_DEVICE_TYPE_XCB.
-	Devicetype_Xcb Devicetype = 3
-	// Devicetype_Xlib is a representation of the C type CAIRO_DEVICE_TYPE_XLIB.
-	Devicetype_Xlib Devicetype = 4
-	// Devicetype_Xml is a representation of the C type CAIRO_DEVICE_TYPE_XML.
-	Devicetype_Xml Devicetype = 5
-	// Devicetype_Cogl is a representation of the C type CAIRO_DEVICE_TYPE_COGL.
-	Devicetype_Cogl Devicetype = 6
-	// Devicetype_Win32 is a representation of the C type CAIRO_DEVICE_TYPE_WIN32.
-	Devicetype_Win32 Devicetype = 7
-	// Devicetype_Invalid is a representation of the C type CAIRO_DEVICE_TYPE_INVALID.
-	Devicetype_Invalid Devicetype = -1
+	// DeviceType_Drm is a representation of the C type CAIRO_DEVICE_TYPE_DRM.
+	DeviceType_Drm DeviceType = 0
+	// DeviceType_Gl is a representation of the C type CAIRO_DEVICE_TYPE_GL.
+	DeviceType_Gl DeviceType = 1
+	// DeviceType_Script is a representation of the C type CAIRO_DEVICE_TYPE_SCRIPT.
+	DeviceType_Script DeviceType = 2
+	// DeviceType_Xcb is a representation of the C type CAIRO_DEVICE_TYPE_XCB.
+	DeviceType_Xcb DeviceType = 3
+	// DeviceType_Xlib is a representation of the C type CAIRO_DEVICE_TYPE_XLIB.
+	DeviceType_Xlib DeviceType = 4
+	// DeviceType_Xml is a representation of the C type CAIRO_DEVICE_TYPE_XML.
+	DeviceType_Xml DeviceType = 5
+	// DeviceType_Cogl is a representation of the C type CAIRO_DEVICE_TYPE_COGL.
+	DeviceType_Cogl DeviceType = 6
+	// DeviceType_Win32 is a representation of the C type CAIRO_DEVICE_TYPE_WIN32.
+	DeviceType_Win32 DeviceType = 7
+	// DeviceType_Invalid is a representation of the C type CAIRO_DEVICE_TYPE_INVALID.
+	DeviceType_Invalid DeviceType = -1
 )
 
-// Surfacetype is a representation of the C type cairo_surface_type_t.
-type Surfacetype int
+// SurfaceType is a representation of the C type cairo_surface_type_t.
+type SurfaceType int
 
 const (
-	// Surfacetype_Image is a representation of the C type CAIRO_SURFACE_TYPE_IMAGE.
-	Surfacetype_Image Surfacetype = 0
-	// Surfacetype_Pdf is a representation of the C type CAIRO_SURFACE_TYPE_PDF.
-	Surfacetype_Pdf Surfacetype = 1
-	// Surfacetype_Ps is a representation of the C type CAIRO_SURFACE_TYPE_PS.
-	Surfacetype_Ps Surfacetype = 2
-	// Surfacetype_Xlib is a representation of the C type CAIRO_SURFACE_TYPE_XLIB.
-	Surfacetype_Xlib Surfacetype = 3
-	// Surfacetype_Xcb is a representation of the C type CAIRO_SURFACE_TYPE_XCB.
-	Surfacetype_Xcb Surfacetype = 4
-	// Surfacetype_Glitz is a representation of the C type CAIRO_SURFACE_TYPE_GLITZ.
-	Surfacetype_Glitz Surfacetype = 5
-	// Surfacetype_Quartz is a representation of the C type CAIRO_SURFACE_TYPE_QUARTZ.
-	Surfacetype_Quartz Surfacetype = 6
-	// Surfacetype_Win32 is a representation of the C type CAIRO_SURFACE_TYPE_WIN32.
-	Surfacetype_Win32 Surfacetype = 7
-	// Surfacetype_Beos is a representation of the C type CAIRO_SURFACE_TYPE_BEOS.
-	Surfacetype_Beos Surfacetype = 8
-	// Surfacetype_Directfb is a representation of the C type CAIRO_SURFACE_TYPE_DIRECTFB.
-	Surfacetype_Directfb Surfacetype = 9
-	// Surfacetype_Svg is a representation of the C type CAIRO_SURFACE_TYPE_SVG.
-	Surfacetype_Svg Surfacetype = 10
-	// Surfacetype_Os2 is a representation of the C type CAIRO_SURFACE_TYPE_OS2.
-	Surfacetype_Os2 Surfacetype = 11
-	// Surfacetype_Win32Printing is a representation of the C type CAIRO_SURFACE_TYPE_WIN32_PRINTING.
-	Surfacetype_Win32Printing Surfacetype = 12
-	// Surfacetype_QuartzImage is a representation of the C type CAIRO_SURFACE_TYPE_QUARTZ_IMAGE.
-	Surfacetype_QuartzImage Surfacetype = 13
-	// Surfacetype_Script is a representation of the C type CAIRO_SURFACE_TYPE_SCRIPT.
-	Surfacetype_Script Surfacetype = 14
-	// Surfacetype_Qt is a representation of the C type CAIRO_SURFACE_TYPE_QT.
-	Surfacetype_Qt Surfacetype = 15
-	// Surfacetype_Recording is a representation of the C type CAIRO_SURFACE_TYPE_RECORDING.
-	Surfacetype_Recording Surfacetype = 16
-	// Surfacetype_Vg is a representation of the C type CAIRO_SURFACE_TYPE_VG.
-	Surfacetype_Vg Surfacetype = 17
-	// Surfacetype_Gl is a representation of the C type CAIRO_SURFACE_TYPE_GL.
-	Surfacetype_Gl Surfacetype = 18
-	// Surfacetype_Drm is a representation of the C type CAIRO_SURFACE_TYPE_DRM.
-	Surfacetype_Drm Surfacetype = 19
-	// Surfacetype_Tee is a representation of the C type CAIRO_SURFACE_TYPE_TEE.
-	Surfacetype_Tee Surfacetype = 20
-	// Surfacetype_Xml is a representation of the C type CAIRO_SURFACE_TYPE_XML.
-	Surfacetype_Xml Surfacetype = 21
-	// Surfacetype_Skia is a representation of the C type CAIRO_SURFACE_TYPE_SKIA.
-	Surfacetype_Skia Surfacetype = 22
-	// Surfacetype_Subsurface is a representation of the C type CAIRO_SURFACE_TYPE_SUBSURFACE.
-	Surfacetype_Subsurface Surfacetype = 23
-	// Surfacetype_Cogl is a representation of the C type CAIRO_SURFACE_TYPE_COGL.
-	Surfacetype_Cogl Surfacetype = 24
+	// SurfaceType_Image is a representation of the C type CAIRO_SURFACE_TYPE_IMAGE.
+	SurfaceType_Image SurfaceType = 0
+	// SurfaceType_Pdf is a representation of the C type CAIRO_SURFACE_TYPE_PDF.
+	SurfaceType_Pdf SurfaceType = 1
+	// SurfaceType_Ps is a representation of the C type CAIRO_SURFACE_TYPE_PS.
+	SurfaceType_Ps SurfaceType = 2
+	// SurfaceType_Xlib is a representation of the C type CAIRO_SURFACE_TYPE_XLIB.
+	SurfaceType_Xlib SurfaceType = 3
+	// SurfaceType_Xcb is a representation of the C type CAIRO_SURFACE_TYPE_XCB.
+	SurfaceType_Xcb SurfaceType = 4
+	// SurfaceType_Glitz is a representation of the C type CAIRO_SURFACE_TYPE_GLITZ.
+	SurfaceType_Glitz SurfaceType = 5
+	// SurfaceType_Quartz is a representation of the C type CAIRO_SURFACE_TYPE_QUARTZ.
+	SurfaceType_Quartz SurfaceType = 6
+	// SurfaceType_Win32 is a representation of the C type CAIRO_SURFACE_TYPE_WIN32.
+	SurfaceType_Win32 SurfaceType = 7
+	// SurfaceType_Beos is a representation of the C type CAIRO_SURFACE_TYPE_BEOS.
+	SurfaceType_Beos SurfaceType = 8
+	// SurfaceType_Directfb is a representation of the C type CAIRO_SURFACE_TYPE_DIRECTFB.
+	SurfaceType_Directfb SurfaceType = 9
+	// SurfaceType_Svg is a representation of the C type CAIRO_SURFACE_TYPE_SVG.
+	SurfaceType_Svg SurfaceType = 10
+	// SurfaceType_Os2 is a representation of the C type CAIRO_SURFACE_TYPE_OS2.
+	SurfaceType_Os2 SurfaceType = 11
+	// SurfaceType_Win32Printing is a representation of the C type CAIRO_SURFACE_TYPE_WIN32_PRINTING.
+	SurfaceType_Win32Printing SurfaceType = 12
+	// SurfaceType_QuartzImage is a representation of the C type CAIRO_SURFACE_TYPE_QUARTZ_IMAGE.
+	SurfaceType_QuartzImage SurfaceType = 13
+	// SurfaceType_Script is a representation of the C type CAIRO_SURFACE_TYPE_SCRIPT.
+	SurfaceType_Script SurfaceType = 14
+	// SurfaceType_Qt is a representation of the C type CAIRO_SURFACE_TYPE_QT.
+	SurfaceType_Qt SurfaceType = 15
+	// SurfaceType_Recording is a representation of the C type CAIRO_SURFACE_TYPE_RECORDING.
+	SurfaceType_Recording SurfaceType = 16
+	// SurfaceType_Vg is a representation of the C type CAIRO_SURFACE_TYPE_VG.
+	SurfaceType_Vg SurfaceType = 17
+	// SurfaceType_Gl is a representation of the C type CAIRO_SURFACE_TYPE_GL.
+	SurfaceType_Gl SurfaceType = 18
+	// SurfaceType_Drm is a representation of the C type CAIRO_SURFACE_TYPE_DRM.
+	SurfaceType_Drm SurfaceType = 19
+	// SurfaceType_Tee is a representation of the C type CAIRO_SURFACE_TYPE_TEE.
+	SurfaceType_Tee SurfaceType = 20
+	// SurfaceType_Xml is a representation of the C type CAIRO_SURFACE_TYPE_XML.
+	SurfaceType_Xml SurfaceType = 21
+	// SurfaceType_Skia is a representation of the C type CAIRO_SURFACE_TYPE_SKIA.
+	SurfaceType_Skia SurfaceType = 22
+	// SurfaceType_Subsurface is a representation of the C type CAIRO_SURFACE_TYPE_SUBSURFACE.
+	SurfaceType_Subsurface SurfaceType = 23
+	// SurfaceType_Cogl is a representation of the C type CAIRO_SURFACE_TYPE_COGL.
+	SurfaceType_Cogl SurfaceType = 24
 )
 
 // Format is a representation of the C type cairo_format_t.
@@ -420,22 +420,22 @@ const (
 	Format_Rgb30 Format = 5
 )
 
-// Patterntype is a representation of the C type cairo_pattern_type_t.
-type Patterntype int
+// PatternType is a representation of the C type cairo_pattern_type_t.
+type PatternType int
 
 const (
-	// Patterntype_Solid is a representation of the C type CAIRO_PATTERN_TYPE_SOLID.
-	Patterntype_Solid Patterntype = 0
-	// Patterntype_Surface is a representation of the C type CAIRO_PATTERN_TYPE_SURFACE.
-	Patterntype_Surface Patterntype = 1
-	// Patterntype_Linear is a representation of the C type CAIRO_PATTERN_TYPE_LINEAR.
-	Patterntype_Linear Patterntype = 2
-	// Patterntype_Radial is a representation of the C type CAIRO_PATTERN_TYPE_RADIAL.
-	Patterntype_Radial Patterntype = 3
-	// Patterntype_Mesh is a representation of the C type CAIRO_PATTERN_TYPE_MESH.
-	Patterntype_Mesh Patterntype = 4
-	// Patterntype_RasterSource is a representation of the C type CAIRO_PATTERN_TYPE_RASTER_SOURCE.
-	Patterntype_RasterSource Patterntype = 5
+	// PatternType_Solid is a representation of the C type CAIRO_PATTERN_TYPE_SOLID.
+	PatternType_Solid PatternType = 0
+	// PatternType_Surface is a representation of the C type CAIRO_PATTERN_TYPE_SURFACE.
+	PatternType_Surface PatternType = 1
+	// PatternType_Linear is a representation of the C type CAIRO_PATTERN_TYPE_LINEAR.
+	PatternType_Linear PatternType = 2
+	// PatternType_Radial is a representation of the C type CAIRO_PATTERN_TYPE_RADIAL.
+	PatternType_Radial PatternType = 3
+	// PatternType_Mesh is a representation of the C type CAIRO_PATTERN_TYPE_MESH.
+	PatternType_Mesh PatternType = 4
+	// PatternType_RasterSource is a representation of the C type CAIRO_PATTERN_TYPE_RASTER_SOURCE.
+	PatternType_RasterSource PatternType = 5
 )
 
 // Extend is a representation of the C type cairo_extend_t.
@@ -470,14 +470,14 @@ const (
 	Filter_Gaussian Filter = 5
 )
 
-// Regionoverlap is a representation of the C type cairo_region_overlap_t.
-type Regionoverlap int
+// RegionOverlap is a representation of the C type cairo_region_overlap_t.
+type RegionOverlap int
 
 const (
-	// Regionoverlap_In is a representation of the C type CAIRO_REGION_OVERLAP_IN.
-	Regionoverlap_In Regionoverlap = 0
-	// Regionoverlap_Out is a representation of the C type CAIRO_REGION_OVERLAP_OUT.
-	Regionoverlap_Out Regionoverlap = 1
-	// Regionoverlap_Part is a representation of the C type CAIRO_REGION_OVERLAP_PART.
-	Regionoverlap_Part Regionoverlap = 2
+	// RegionOverlap_In is a representation of the C type CAIRO_REGION_OVERLAP_IN.
+	RegionOverlap_In RegionOverlap = 0
+	// RegionOverlap_Out is a representation of the C type CAIRO_REGION_OVERLAP_OUT.
+	RegionOverlap_Out RegionOverlap = 1
+	// RegionOverlap_Part is a representation of the C type CAIRO_REGION_OVERLAP_PART.
+	RegionOverlap_Part RegionOverlap = 2
 )
