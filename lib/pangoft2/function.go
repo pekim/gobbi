@@ -34,5 +34,6 @@ func ShutdownDisplay() {
 		shutdownDisplayInvoker = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
 	}
 
-	shutdownDisplayInvoker.Invoke(nil)
+	shutdownDisplayInvoker.Invoke(nil, nil)
+
 }

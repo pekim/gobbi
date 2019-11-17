@@ -67,11 +67,14 @@ func (f *Function) generateInvokerVar(fi *file) {
 func (f *Function) generateFunction(fi *file) {
 	fi.docForC(f.goName, f.CIdentifier)
 	fi.
-		Func().                                             // func
-		Id(f.goName).                                       // <name>
-		Add(paramsFunc(f.Parameters.generateDeclarations)). // (params)
-		Add(paramsFunc(f.ReturnValue.generateDeclaration)). // return value
-		Add(blockFunc(f.generateBody))                      // { body }
+		Func().                                               // "func"
+		Id(f.goName).                                         // function-name
+		Add(paramsFunc(f.Parameters.generateInDeclarations)). // (in params)
+		Add(paramsFunc(func(g *group) {                       // (return value, out params)
+			f.ReturnValue.generateDeclaration(g)    // return value
+			f.Parameters.generateOutDeclarations(g) // out params
+		})).
+		Add(blockFunc(f.generateBody)) // { body }
 	fi.Line()
 }
 
@@ -90,6 +93,7 @@ func (f *Function) generateBody(g *group) {
 	g.Line()
 
 	f.Parameters.generateInArgs(g)
+	f.Parameters.generateOutArgs(g)
 
 	// call the function
 	g.
@@ -103,12 +107,21 @@ func (f *Function) generateBody(g *group) {
 		Id(f.invokerVarName).
 		Dot("Invoke").
 		CallFunc(f.Parameters.generateCallParams)
+	g.Line()
 
 	// marshall and return any return value
+	if !f.ReturnValue.isVoid() || f.Parameters.outCount() > 0 {
+		g.ReturnFunc(f.generateReturnValues)
+	}
+}
+
+func (f *Function) generateReturnValues(g *jen.Group) {
 	if !f.ReturnValue.isVoid() {
-		g.Return(jen.
+		g.
 			Id("ret").
 			Dot(f.ReturnValue.Type.argumentValueGetFunctionName()).
-			CallFunc(f.ReturnValue.transferOwnershipJen))
+			CallFunc(f.ReturnValue.transferOwnershipJen)
 	}
+
+	f.Parameters.generateOutValues(g)
 }

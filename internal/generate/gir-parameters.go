@@ -46,9 +46,19 @@ func (pp Parameters) supported() (bool, string) {
 	return true, ""
 }
 
-func (pp Parameters) generateDeclarations(g *group) {
+func (pp Parameters) generateInDeclarations(g *group) {
 	for _, param := range pp {
-		param.generateDeclaration(g)
+		if param.isIn() {
+			param.generateInDeclaration(g)
+		}
+	}
+}
+
+func (pp Parameters) generateOutDeclarations(g *group) {
+	for _, param := range pp {
+		if param.isOut() {
+			param.generateOutDeclaration(g)
+		}
 	}
 }
 
@@ -63,31 +73,81 @@ func (pp Parameters) inCount() int {
 	return count
 }
 
+func (pp Parameters) outCount() int {
+	count := 0
+	for _, param := range pp {
+		if param.isOut() {
+			count++
+		}
+	}
+
+	return count
+}
+
 func (pp Parameters) generateInArgs(g *group) {
 	count := pp.inCount()
 	if count == 0 {
 		return
 	}
 
+	// "var inArgs [n]gi.Arguments"
 	g.
 		Var().
 		Id("inArgs").
 		Index(jen.Lit(count)).
 		Qual(gi.PackageName, "Argument")
 
-	for n, param := range pp {
+	// set values in inArgs
+	n := 0
+	for _, param := range pp {
 		if param.isIn() {
 			param.generateInArg(g, n)
+			n++
 		}
 	}
 
 	g.Line()
 }
 
+func (pp Parameters) generateOutValues(g *jen.Group) {
+	n := 0
+	for _, param := range pp {
+		if param.isOut() {
+			param.generateOutValue(g, n)
+			n++
+		}
+	}
+}
+
+func (pp Parameters) generateOutArgs(g *group) {
+	count := pp.outCount()
+	if count == 0 {
+		return
+	}
+
+	// "var outArgs [n]gi.Arguments"
+	g.
+		Var().
+		Id("outArgs").
+		Index(jen.Lit(count)).
+		Qual(gi.PackageName, "Argument")
+	g.Line()
+}
+
 func (pp Parameters) generateCallParams(g *jen.Group) {
+	// in args
 	if pp.inCount() > 0 {
 		g.
 			Id("inArgs").
+			Index(jen.Op(":"))
+	} else {
+		g.Nil()
+	}
+
+	// out args
+	if pp.outCount() > 0 {
+		g.
+			Id("outArgs").
 			Index(jen.Op(":"))
 	} else {
 		g.Nil()

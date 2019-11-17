@@ -12,5 +12,6 @@ func LibraryVersion() {
 		libraryVersionInvoker = gi.FunctionInvokerNew("freetype2", "library_version")
 	}
 
-	libraryVersionInvoker.Invoke(nil)
+	libraryVersionInvoker.Invoke(nil, nil)
+
 }

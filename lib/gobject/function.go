@@ -219,7 +219,8 @@ func SignalName(signalId uint32) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
-	ret := signalNameInvoker.Invoke(inArgs[:])
+	ret := signalNameInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -251,7 +252,8 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
 
-	signalRemoveEmissionHookInvoker.Invoke(inArgs[:])
+	signalRemoveEmissionHookInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported
@@ -342,7 +344,8 @@ func TypeGetTypeRegistrationSerial() uint32 {
 		typeGetTypeRegistrationSerialInvoker = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
 	}
 
-	ret := typeGetTypeRegistrationSerialInvoker.Invoke(nil)
+	ret := typeGetTypeRegistrationSerialInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -354,7 +357,8 @@ func TypeInit() {
 		typeInitInvoker = gi.FunctionInvokerNew("GObject", "type_init")
 	}
 
-	typeInitInvoker.Invoke(nil)
+	typeInitInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : parameter 'debug_flags' of type 'TypeDebugFlags' not supported

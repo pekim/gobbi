@@ -16,7 +16,8 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke(nil)
+	ret := getMajorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -28,7 +29,8 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke(nil)
+	ret := getMicroVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -40,7 +42,8 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke(nil)
+	ret := getMinorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -67,7 +70,8 @@ func UriForDisplay(uri string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uri)
 
-	ret := uriForDisplayInvoker.Invoke(inArgs[:])
+	ret := uriForDisplayInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 

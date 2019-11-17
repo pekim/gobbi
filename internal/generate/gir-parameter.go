@@ -50,10 +50,6 @@ func (p Parameter) supported() (bool, string) {
 		return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type.Name)
 	}
 
-	if p.Direction != "in" {
-		return false, fmt.Sprintf("parameter '%s' with direction '%s' not supported", p.Name, p.Direction)
-	}
-
 	return true, ""
 }
 
@@ -61,7 +57,11 @@ func (p *Parameter) isIn() bool {
 	return p.Direction == "in" || p.Direction == "inout"
 }
 
-func (p *Parameter) generateDeclaration(g *group) {
+func (p *Parameter) isOut() bool {
+	return p.Direction == "out" || p.Direction == "inout"
+}
+
+func (p *Parameter) generateInDeclaration(g *group) {
 	goType, err := p.Type.jenGoType()
 	if err != nil {
 		panic(err)
@@ -72,10 +72,35 @@ func (p *Parameter) generateDeclaration(g *group) {
 		Add(goType)
 }
 
+func (p *Parameter) generateOutDeclaration(g *group) {
+	goType, err := p.Type.jenGoType()
+	if err != nil {
+		panic(err)
+	}
+
+	g.Add(goType)
+}
+
 func (p Parameter) generateInArg(g *group, index int) {
 	g.
 		Id("inArgs").
 		Index(jen.Lit(index)).
 		Dot(p.Type.argumentSetFunctionName()).
 		Call(jen.Id(p.goVarName))
+}
+
+func (p Parameter) generateOutValue(g *jen.Group, index int) {
+	g.
+		Id("outArgs").
+		Index(jen.Lit(index)).
+		Dot(p.Type.argumentValueGetFunctionName()).
+		CallFunc(p.transferOwnershipJen)
+}
+
+func (p *Parameter) transferOwnershipJen(g *jen.Group) {
+	if p.Type.Name != "utf8" {
+		return
+	}
+
+	g.Lit(p.TransferOwnership == "full")
 }

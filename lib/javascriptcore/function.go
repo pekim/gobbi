@@ -12,7 +12,8 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke(nil)
+	ret := getMajorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -24,7 +25,8 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke(nil)
+	ret := getMicroVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -36,7 +38,8 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke(nil)
+	ret := getMinorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -46,17 +49,17 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'jsc_options_get_double' : parameter 'value' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_int' : parameter 'value' with direction 'out' not supported
+// UNSUPPORTED : C value 'jsc_options_get_int' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_range_string' : parameter 'value' with direction 'out' not supported
+// UNSUPPORTED : C value 'jsc_options_get_range_string' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'jsc_options_get_size' : parameter 'value' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_string' : parameter 'value' with direction 'out' not supported
+// UNSUPPORTED : C value 'jsc_options_get_string' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_uint' : parameter 'value' with direction 'out' not supported
+// UNSUPPORTED : C value 'jsc_options_get_uint' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'jsc_options_set_boolean' : parameter 'value' of type 'gboolean' not supported
 

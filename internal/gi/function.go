@@ -35,10 +35,11 @@ func FunctionInvokerNew(namespace string, funcName string) *Function {
 	}
 }
 
-func (fi *Function) Invoke(in []Argument) Argument {
+func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 	var returnValue Argument
 	var err *C.GError
 
+	// prepare in args
 	var cIn *C.GIArgument
 	var cInLen C.int
 	if in != nil {
@@ -46,11 +47,19 @@ func (fi *Function) Invoke(in []Argument) Argument {
 		cInLen = C.int(len(in))
 	}
 
+	// prepare out args
+	var cOut *C.GIArgument
+	var cOutLen C.int
+	if out != nil {
+		cOut = (*C.GIArgument)(&out[0])
+		cOutLen = C.int(len(out))
+	}
+
 	// invoke
 	invoked := C.g_function_info_invoke(
 		fi.info,
 		cIn, cInLen,
-		nil, 0,
+		cOut, cOutLen,
 		(*C.GIArgument)(&returnValue),
 		&err,
 	) == C.TRUE

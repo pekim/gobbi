@@ -18,9 +18,9 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_accelerator_name_with_keycode' : parameter 'display' of type 'Gdk.Display' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator_key' with direction 'out' not supported
+// UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator_mods' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator_key' with direction 'out' not supported
+// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator_codes' has no type
 
 // UNSUPPORTED : C value 'gtk_accelerator_set_default_mod_mask' : parameter 'default_mod_mask' of type 'Gdk.ModifierType' not supported
 
@@ -65,7 +65,8 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	inArgs[1].SetUint32(requiredMinor)
 	inArgs[2].SetUint32(requiredMicro)
 
-	ret := checkVersionInvoker.Invoke(inArgs[:])
+	ret := checkVersionInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -83,7 +84,8 @@ func DisableSetlocale() {
 		disableSetlocaleInvoker = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
 	}
 
-	disableSetlocaleInvoker.Invoke(nil)
+	disableSetlocaleInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : parameter 'sizes' of type 'RequestedSize' not supported
@@ -124,7 +126,8 @@ func GetBinaryAge() uint32 {
 		getBinaryAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_binary_age")
 	}
 
-	ret := getBinaryAgeInvoker.Invoke(nil)
+	ret := getBinaryAgeInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -142,7 +145,8 @@ func GetCurrentEventTime() uint32 {
 		getCurrentEventTimeInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
 	}
 
-	ret := getCurrentEventTimeInvoker.Invoke(nil)
+	ret := getCurrentEventTimeInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -154,7 +158,8 @@ func GetDebugFlags() uint32 {
 		getDebugFlagsInvoker = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
 	}
 
-	ret := getDebugFlagsInvoker.Invoke(nil)
+	ret := getDebugFlagsInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -170,7 +175,8 @@ func GetInterfaceAge() uint32 {
 		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_interface_age")
 	}
 
-	ret := getInterfaceAgeInvoker.Invoke(nil)
+	ret := getInterfaceAgeInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -184,7 +190,8 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke(nil)
+	ret := getMajorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -196,7 +203,8 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke(nil)
+	ret := getMicroVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -208,7 +216,8 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke(nil)
+	ret := getMinorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -230,11 +239,11 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_icon_theme_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'gtk_init' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gtk_init' : parameter 'argv' has no type
 
-// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argv' has no type
 
-// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argv' has no type
 
 // UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
@@ -249,7 +258,8 @@ func KeySnooperRemove(snooperHandlerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(snooperHandlerId)
 
-	keySnooperRemoveInvoker.Invoke(inArgs[:])
+	keySnooperRemoveInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var mainInvoker *gi.Function
@@ -260,7 +270,8 @@ func Main() {
 		mainInvoker = gi.FunctionInvokerNew("Gtk", "main")
 	}
 
-	mainInvoker.Invoke(nil)
+	mainInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_main_do_event' : parameter 'event' of type 'Gdk.Event' not supported
@@ -277,7 +288,8 @@ func MainLevel() uint32 {
 		mainLevelInvoker = gi.FunctionInvokerNew("Gtk", "main_level")
 	}
 
-	ret := mainLevelInvoker.Invoke(nil)
+	ret := mainLevelInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -289,7 +301,8 @@ func MainQuit() {
 		mainQuitInvoker = gi.FunctionInvokerNew("Gtk", "main_quit")
 	}
 
-	mainQuitInvoker.Invoke(nil)
+	mainQuitInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_paint_arrow' : parameter 'style' of type 'Style' not supported
@@ -340,13 +353,14 @@ func PaperSizeGetDefault() string {
 		paperSizeGetDefaultInvoker = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
 	}
 
-	ret := paperSizeGetDefaultInvoker.Invoke(nil)
+	ret := paperSizeGetDefaultInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : parameter 'include_custom' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argc' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' has no type
 
 // UNSUPPORTED : C value 'gtk_print_error_quark' : return type 'GLib.Quark' not supported
 
@@ -370,7 +384,8 @@ func RcGetDefaultFiles() {
 		rcGetDefaultFilesInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_default_files")
 	}
 
-	rcGetDefaultFilesInvoker.Invoke(nil)
+	rcGetDefaultFilesInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_rc_get_im_module_file' : return type 'filename' not supported
@@ -391,7 +406,8 @@ func RcGetThemeDir() string {
 		rcGetThemeDirInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
 	}
 
-	ret := rcGetThemeDirInvoker.Invoke(nil)
+	ret := rcGetThemeDirInvoker.Invoke(nil, nil)
+
 	return ret.String(true)
 }
 
@@ -406,7 +422,8 @@ func RcParse(filename string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filename)
 
-	rcParseInvoker.Invoke(inArgs[:])
+	rcParseInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_rc_parse_color' : parameter 'scanner' of type 'GLib.Scanner' not supported
@@ -428,7 +445,8 @@ func RcParseString(rcString string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(rcString)
 
-	rcParseStringInvoker.Invoke(inArgs[:])
+	rcParseStringInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_rc_property_parse_border' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
@@ -520,7 +538,8 @@ func SetDebugFlags(flags uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(flags)
 
-	setDebugFlagsInvoker.Invoke(inArgs[:])
+	setDebugFlagsInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_show_about_dialog' : parameter 'parent' of type 'Window' not supported
@@ -563,9 +582,22 @@ func SetDebugFlags(flags uint32) {
 
 // UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argcp' with direction 'inout' not supported
+// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' has no type
 
-// UNSUPPORTED : C value 'gtk_test_list_all_types' : parameter 'n_types' with direction 'out' not supported
+var testListAllTypesInvoker *gi.Function
+
+// TestListAllTypes is a representation of the C type gtk_test_list_all_types.
+func TestListAllTypes() uint32 {
+	if testListAllTypesInvoker == nil {
+		testListAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_list_all_types")
+	}
+
+	var outArgs [1]gi.Argument
+
+	testListAllTypesInvoker.Invoke(nil, outArgs[:])
+
+	return outArgs[0].Uint32()
+}
 
 var testRegisterAllTypesInvoker *gi.Function
 
@@ -575,7 +607,8 @@ func TestRegisterAllTypes() {
 		testRegisterAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
 	}
 
-	testRegisterAllTypesInvoker.Invoke(nil)
+	testRegisterAllTypesInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'gtk_test_slider_get_value' : parameter 'widget' of type 'Widget' not supported

@@ -61,7 +61,8 @@ func ConfigKeyGet(key string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
-	ret := configKeyGetInvoker.Invoke(inArgs[:])
+	ret := configKeyGetInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -76,7 +77,8 @@ func ConfigKeyGetSystem(key string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
-	ret := configKeyGetSystemInvoker.Invoke(inArgs[:])
+	ret := configKeyGetSystemInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -88,7 +90,24 @@ func ConfigKeyGetSystem(key string) string {
 
 // UNSUPPORTED : C value 'pango_find_map' : parameter 'language' of type 'Language' not supported
 
-// UNSUPPORTED : C value 'pango_find_paragraph_boundary' : parameter 'paragraph_delimiter_index' with direction 'out' not supported
+var findParagraphBoundaryInvoker *gi.Function
+
+// FindParagraphBoundary is a representation of the C type pango_find_paragraph_boundary.
+func FindParagraphBoundary(text string, length int32) (int32, int32) {
+	if findParagraphBoundaryInvoker == nil {
+		findParagraphBoundaryInvoker = gi.FunctionInvokerNew("Pango", "find_paragraph_boundary")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetInt32(length)
+
+	var outArgs [2]gi.Argument
+
+	findParagraphBoundaryInvoker.Invoke(inArgs[:], outArgs[:])
+
+	return outArgs[0].Int32(), outArgs[1].Int32()
+}
 
 // UNSUPPORTED : C value 'pango_font_description_from_string' : return type 'FontDescription' not supported
 
@@ -100,7 +119,8 @@ func GetLibSubdirectory() string {
 		getLibSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
 	}
 
-	ret := getLibSubdirectoryInvoker.Invoke(nil)
+	ret := getLibSubdirectoryInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -116,7 +136,8 @@ func GetSysconfSubdirectory() string {
 		getSysconfSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
 	}
 
-	ret := getSysconfSubdirectoryInvoker.Invoke(nil)
+	ret := getSysconfSubdirectoryInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -160,17 +181,34 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_parse_weight' : parameter 'weight' of type 'Weight' not supported
 
-// UNSUPPORTED : C value 'pango_quantize_line_geometry' : parameter 'thickness' with direction 'inout' not supported
+var quantizeLineGeometryInvoker *gi.Function
+
+// QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
+func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
+	if quantizeLineGeometryInvoker == nil {
+		quantizeLineGeometryInvoker = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(thickness)
+	inArgs[1].SetInt32(position)
+
+	var outArgs [2]gi.Argument
+
+	quantizeLineGeometryInvoker.Invoke(inArgs[:], outArgs[:])
+
+	return outArgs[0].Int32(), outArgs[1].Int32()
+}
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'pango_reorder_items' : parameter 'logical_items' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'pango_scan_int' : parameter 'pos' with direction 'inout' not supported
+// UNSUPPORTED : C value 'pango_scan_int' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'pango_scan_string' : parameter 'pos' with direction 'inout' not supported
+// UNSUPPORTED : C value 'pango_scan_string' : parameter 'out' of type 'GLib.String' not supported
 
-// UNSUPPORTED : C value 'pango_scan_word' : parameter 'pos' with direction 'inout' not supported
+// UNSUPPORTED : C value 'pango_scan_word' : parameter 'out' of type 'GLib.String' not supported
 
 // UNSUPPORTED : C value 'pango_script_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
@@ -180,7 +218,7 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_shape_full' : parameter 'analysis' of type 'Analysis' not supported
 
-// UNSUPPORTED : C value 'pango_skip_space' : parameter 'pos' with direction 'inout' not supported
+// UNSUPPORTED : C value 'pango_skip_space' : return type 'gboolean' not supported
 
 var splitFileListInvoker *gi.Function
 
@@ -193,7 +231,8 @@ func SplitFileList(str string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	splitFileListInvoker.Invoke(inArgs[:])
+	splitFileListInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var trimStringInvoker *gi.Function
@@ -207,7 +246,8 @@ func TrimString(str string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := trimStringInvoker.Invoke(inArgs[:])
+	ret := trimStringInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -225,7 +265,8 @@ func Version() int32 {
 		versionInvoker = gi.FunctionInvokerNew("Pango", "version")
 	}
 
-	ret := versionInvoker.Invoke(nil)
+	ret := versionInvoker.Invoke(nil, nil)
+
 	return ret.Int32()
 }
 
@@ -242,7 +283,8 @@ func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32)
 	inArgs[1].SetInt32(requiredMinor)
 	inArgs[2].SetInt32(requiredMicro)
 
-	ret := versionCheckInvoker.Invoke(inArgs[:])
+	ret := versionCheckInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -254,6 +296,7 @@ func VersionString() string {
 		versionStringInvoker = gi.FunctionInvokerNew("Pango", "version_string")
 	}
 
-	ret := versionStringInvoker.Invoke(nil)
+	ret := versionStringInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }

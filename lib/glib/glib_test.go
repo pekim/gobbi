@@ -26,6 +26,12 @@ func TestFunctionCallArgStringReturnString(t *testing.T) {
 	assert.Equal(t, "aabbcc-zz", Utf8Strdown("AaBbCc-Zz", -1))
 }
 
+//func TestFunctionInAndOutParams(t *testing.T) {
+//	value, end := AsciiStrtoll("1234xyx", 16)
+//	assert.Equal(t, int64(4660), value)
+//	assert.Equal(t, "xyz", end)
+//}
+
 func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		GetCodeset()

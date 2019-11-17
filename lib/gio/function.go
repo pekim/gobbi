@@ -6,7 +6,7 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_action_name_is_valid' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'action_name' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'g_action_print_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
 
@@ -41,7 +41,8 @@ func AppInfoResetTypeAssociations(contentType string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(contentType)
 
-	appInfoResetTypeAssociationsInvoker.Invoke(inArgs[:])
+	appInfoResetTypeAssociationsInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
@@ -71,7 +72,8 @@ func BusUnownName(ownerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(ownerId)
 
-	busUnownNameInvoker.Invoke(inArgs[:])
+	busUnownNameInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var busUnwatchNameInvoker *gi.Function
@@ -85,7 +87,8 @@ func BusUnwatchName(watcherId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(watcherId)
 
-	busUnwatchNameInvoker.Invoke(inArgs[:])
+	busUnwatchNameInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
@@ -111,7 +114,8 @@ func ContentTypeFromMimeType(mimeType string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mimeType)
 
-	ret := contentTypeFromMimeTypeInvoker.Invoke(inArgs[:])
+	ret := contentTypeFromMimeTypeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -126,7 +130,8 @@ func ContentTypeGetDescription(type_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
-	ret := contentTypeGetDescriptionInvoker.Invoke(inArgs[:])
+	ret := contentTypeGetDescriptionInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -141,7 +146,8 @@ func ContentTypeGetGenericIconName(type_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
-	ret := contentTypeGetGenericIconNameInvoker.Invoke(inArgs[:])
+	ret := contentTypeGetGenericIconNameInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -155,7 +161,8 @@ func ContentTypeGetMimeDirs() {
 		contentTypeGetMimeDirsInvoker = gi.FunctionInvokerNew("Gio", "content_type_get_mime_dirs")
 	}
 
-	contentTypeGetMimeDirsInvoker.Invoke(nil)
+	contentTypeGetMimeDirsInvoker.Invoke(nil, nil)
+
 }
 
 var contentTypeGetMimeTypeInvoker *gi.Function
@@ -169,7 +176,8 @@ func ContentTypeGetMimeType(type_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
-	ret := contentTypeGetMimeTypeInvoker.Invoke(inArgs[:])
+	ret := contentTypeGetMimeTypeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -200,7 +208,8 @@ func DbusAddressEscapeValue(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := dbusAddressEscapeValueInvoker.Invoke(inArgs[:])
+	ret := dbusAddressEscapeValueInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -210,7 +219,7 @@ func DbusAddressEscapeValue(string_ string) string {
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'out_guid' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_dbus_address_get_stream_sync' : parameter 'cancellable' of type 'Cancellable' not supported
 
 // UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' has no type
 
@@ -240,7 +249,8 @@ func DbusGenerateGuid() string {
 		dbusGenerateGuidInvoker = gi.FunctionInvokerNew("Gio", "dbus_generate_guid")
 	}
 
-	ret := dbusGenerateGuidInvoker.Invoke(nil)
+	ret := dbusGenerateGuidInvoker.Invoke(nil, nil)
+
 	return ret.String(true)
 }
 
@@ -312,7 +322,8 @@ func IoSchedulerCancelAllJobs() {
 		ioSchedulerCancelAllJobsInvoker = gi.FunctionInvokerNew("Gio", "io_scheduler_cancel_all_jobs")
 	}
 
-	ioSchedulerCancelAllJobsInvoker.Invoke(nil)
+	ioSchedulerCancelAllJobsInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : parameter 'job_func' of type 'IOSchedulerJobFunc' not supported
@@ -331,7 +342,8 @@ func NetworkingInit() {
 		networkingInitInvoker = gi.FunctionInvokerNew("Gio", "networking_init")
 	}
 
-	networkingInitInvoker.Invoke(nil)
+	networkingInitInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
@@ -430,8 +442,8 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_get' : parameter 'time_read' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_unix_mount_points_get' : return type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'g_unix_mounts_changed_since' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_get' : parameter 'time_read' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_unix_mounts_get' : return type 'GLib.List' not supported

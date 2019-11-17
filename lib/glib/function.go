@@ -17,7 +17,8 @@ func AsciiDigitValue(c int8) int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiDigitValueInvoker.Invoke(inArgs[:])
+	ret := asciiDigitValueInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -37,7 +38,8 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 	inArgs[0].SetString(s1)
 	inArgs[1].SetString(s2)
 
-	ret := asciiStrcasecmpInvoker.Invoke(inArgs[:])
+	ret := asciiStrcasecmpInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -53,21 +55,56 @@ func AsciiStrdown(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := asciiStrdownInvoker.Invoke(inArgs[:])
+	ret := asciiStrdownInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'g_ascii_string_to_signed' : parameter 'out_num' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_ascii_string_to_signed' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : parameter 'out_num' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 'n' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strtod' : parameter 'endptr' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_ascii_strtod' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strtoll' : parameter 'endptr' with direction 'out' not supported
+var asciiStrtollInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_ascii_strtoull' : parameter 'endptr' with direction 'out' not supported
+// AsciiStrtoll is a representation of the C type g_ascii_strtoll.
+func AsciiStrtoll(nptr string, base uint32) (int64, string) {
+	if asciiStrtollInvoker == nil {
+		asciiStrtollInvoker = gi.FunctionInvokerNew("GLib", "ascii_strtoll")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(nptr)
+	inArgs[1].SetUint32(base)
+
+	var outArgs [1]gi.Argument
+
+	ret := asciiStrtollInvoker.Invoke(inArgs[:], outArgs[:])
+
+	return ret.Int64(), outArgs[0].String(false)
+}
+
+var asciiStrtoullInvoker *gi.Function
+
+// AsciiStrtoull is a representation of the C type g_ascii_strtoull.
+func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
+	if asciiStrtoullInvoker == nil {
+		asciiStrtoullInvoker = gi.FunctionInvokerNew("GLib", "ascii_strtoull")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(nptr)
+	inArgs[1].SetUint32(base)
+
+	var outArgs [1]gi.Argument
+
+	ret := asciiStrtoullInvoker.Invoke(inArgs[:], outArgs[:])
+
+	return ret.Uint64(), outArgs[0].String(false)
+}
 
 var asciiStrupInvoker *gi.Function
 
@@ -81,7 +118,8 @@ func AsciiStrup(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := asciiStrupInvoker.Invoke(inArgs[:])
+	ret := asciiStrupInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -96,7 +134,8 @@ func AsciiTolower(c int8) int8 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiTolowerInvoker.Invoke(inArgs[:])
+	ret := asciiTolowerInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int8()
 }
 
@@ -111,7 +150,8 @@ func AsciiToupper(c int8) int8 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiToupperInvoker.Invoke(inArgs[:])
+	ret := asciiToupperInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int8()
 }
 
@@ -126,7 +166,8 @@ func AsciiXdigitValue(c int8) int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
-	ret := asciiXdigitValueInvoker.Invoke(inArgs[:])
+	ret := asciiXdigitValueInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -145,7 +186,8 @@ func AssertWarning(logDomain string, file string, line int32, prettyFunction str
 	inArgs[3].SetString(prettyFunction)
 	inArgs[4].SetString(expression)
 
-	assertWarningInvoker.Invoke(inArgs[:])
+	assertWarningInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var assertionMessageInvoker *gi.Function
@@ -163,7 +205,8 @@ func AssertionMessage(domain string, file string, line int32, func_ string, mess
 	inArgs[3].SetString(func_)
 	inArgs[4].SetString(message)
 
-	assertionMessageInvoker.Invoke(inArgs[:])
+	assertionMessageInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_assertion_message_cmpnum' : parameter 'arg1' of type 'long double' not supported
@@ -186,7 +229,8 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func_ string
 	inArgs[6].SetString(cmp)
 	inArgs[7].SetString(arg2)
 
-	assertionMessageCmpstrInvoker.Invoke(inArgs[:])
+	assertionMessageCmpstrInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'error' of type 'Error' not supported
@@ -206,7 +250,8 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 	inArgs[3].SetString(func_)
 	inArgs[4].SetString(expr)
 
-	assertionMessageExprInvoker.Invoke(inArgs[:])
+	assertionMessageExprInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_atexit' : parameter 'func' of type 'VoidFunc' not supported
@@ -223,7 +268,8 @@ func AtomicIntAdd(atomic int32, val int32) int32 {
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(val)
 
-	ret := atomicIntAddInvoker.Invoke(inArgs[:])
+	ret := atomicIntAddInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -239,7 +285,8 @@ func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
 
-	ret := atomicIntAndInvoker.Invoke(inArgs[:])
+	ret := atomicIntAndInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -259,7 +306,8 @@ func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(val)
 
-	ret := atomicIntExchangeAndAddInvoker.Invoke(inArgs[:])
+	ret := atomicIntExchangeAndAddInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -274,7 +322,8 @@ func AtomicIntGet(atomic int32) int32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(atomic)
 
-	ret := atomicIntGetInvoker.Invoke(inArgs[:])
+	ret := atomicIntGetInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -289,7 +338,8 @@ func AtomicIntInc(atomic int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(atomic)
 
-	atomicIntIncInvoker.Invoke(inArgs[:])
+	atomicIntIncInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var atomicIntOrInvoker *gi.Function
@@ -304,7 +354,8 @@ func AtomicIntOr(atomic uint32, val uint32) uint32 {
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
 
-	ret := atomicIntOrInvoker.Invoke(inArgs[:])
+	ret := atomicIntOrInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -320,7 +371,8 @@ func AtomicIntSet(atomic int32, newval int32) {
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(newval)
 
-	atomicIntSetInvoker.Invoke(inArgs[:])
+	atomicIntSetInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var atomicIntXorInvoker *gi.Function
@@ -335,7 +387,8 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
 
-	ret := atomicIntXorInvoker.Invoke(inArgs[:])
+	ret := atomicIntXorInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -382,7 +435,8 @@ func AtomicRefCountInc(arc int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(arc)
 
-	atomicRefCountIncInvoker.Invoke(inArgs[:])
+	atomicRefCountIncInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var atomicRefCountInitInvoker *gi.Function
@@ -396,7 +450,8 @@ func AtomicRefCountInit(arc int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(arc)
 
-	atomicRefCountInitInvoker.Invoke(inArgs[:])
+	atomicRefCountInitInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_base64_decode' : parameter 'out_len' of type 'gsize' not supported
@@ -425,7 +480,8 @@ func BitLock(address int32, lockBit int32) {
 	inArgs[0].SetInt32(address)
 	inArgs[1].SetInt32(lockBit)
 
-	bitLockInvoker.Invoke(inArgs[:])
+	bitLockInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var bitNthLsfInvoker *gi.Function
@@ -440,7 +496,8 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 	inArgs[0].SetUint64(mask)
 	inArgs[1].SetInt32(nthBit)
 
-	ret := bitNthLsfInvoker.Invoke(inArgs[:])
+	ret := bitNthLsfInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -456,7 +513,8 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 	inArgs[0].SetUint64(mask)
 	inArgs[1].SetInt32(nthBit)
 
-	ret := bitNthMsfInvoker.Invoke(inArgs[:])
+	ret := bitNthMsfInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -471,7 +529,8 @@ func BitStorage(number uint64) uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(number)
 
-	ret := bitStorageInvoker.Invoke(inArgs[:])
+	ret := bitStorageInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -489,7 +548,8 @@ func BitUnlock(address int32, lockBit int32) {
 	inArgs[0].SetInt32(address)
 	inArgs[1].SetInt32(lockBit)
 
-	bitUnlockInvoker.Invoke(inArgs[:])
+	bitUnlockInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
@@ -516,7 +576,8 @@ func ByteArrayNew() {
 		byteArrayNewInvoker = gi.FunctionInvokerNew("GLib", "byte_array_new")
 	}
 
-	byteArrayNewInvoker.Invoke(nil)
+	byteArrayNewInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' has no type
@@ -540,7 +601,8 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	inArgs[1].SetUint32(requiredMinor)
 	inArgs[2].SetUint32(requiredMicro)
 
-	ret := checkVersionInvoker.Invoke(inArgs[:])
+	ret := checkVersionInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -560,7 +622,8 @@ func ClearError() {
 		clearErrorInvoker = gi.FunctionInvokerNew("GLib", "clear_error")
 	}
 
-	clearErrorInvoker.Invoke(nil)
+	clearErrorInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_clear_handle_id' : parameter 'clear_func' of type 'ClearHandleFunc' not supported
@@ -664,7 +727,8 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	inArgs[1].SetString(msgid)
 	inArgs[2].SetInt32(category)
 
-	ret := dcgettextInvoker.Invoke(inArgs[:])
+	ret := dcgettextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -680,7 +744,8 @@ func Dgettext(domain string, msgid string) string {
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(msgid)
 
-	ret := dgettextInvoker.Invoke(inArgs[:])
+	ret := dgettextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -704,7 +769,8 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 	inArgs[2].SetString(msgidPlural)
 	inArgs[3].SetUint64(n)
 
-	ret := dngettextInvoker.Invoke(inArgs[:])
+	ret := dngettextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -727,7 +793,8 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	inArgs[1].SetString(context)
 	inArgs[2].SetString(msgid)
 
-	ret := dpgettext2Invoker.Invoke(inArgs[:])
+	ret := dpgettext2Invoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -755,7 +822,7 @@ func Dpgettext2(domain string, context string, msgid string) string {
 
 // UNSUPPORTED : C value 'g_filename_display_name' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_from_uri' : parameter 'hostname' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_filename_from_uri' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_filename_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
 
@@ -776,7 +843,8 @@ func FormatSize(size uint64) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(size)
 
-	ret := formatSizeInvoker.Invoke(inArgs[:])
+	ret := formatSizeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -791,7 +859,8 @@ func FormatSizeForDisplay(size int64) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(size)
 
-	ret := formatSizeForDisplayInvoker.Invoke(inArgs[:])
+	ret := formatSizeForDisplayInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -809,11 +878,12 @@ func GetApplicationName() string {
 		getApplicationNameInvoker = gi.FunctionInvokerNew("GLib", "get_application_name")
 	}
 
-	ret := getApplicationNameInvoker.Invoke(nil)
+	ret := getApplicationNameInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
-// UNSUPPORTED : C value 'g_get_charset' : parameter 'charset' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_get_charset' : return type 'gboolean' not supported
 
 var getCodesetInvoker *gi.Function
 
@@ -823,11 +893,12 @@ func GetCodeset() string {
 		getCodesetInvoker = gi.FunctionInvokerNew("GLib", "get_codeset")
 	}
 
-	ret := getCodesetInvoker.Invoke(nil)
+	ret := getCodesetInvoker.Invoke(nil, nil)
+
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'g_get_console_charset' : parameter 'charset' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_get_console_charset' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
@@ -841,7 +912,8 @@ func GetEnviron() {
 		getEnvironInvoker = gi.FunctionInvokerNew("GLib", "get_environ")
 	}
 
-	getEnvironInvoker.Invoke(nil)
+	getEnvironInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' has no type
@@ -856,7 +928,8 @@ func GetHostName() string {
 		getHostNameInvoker = gi.FunctionInvokerNew("GLib", "get_host_name")
 	}
 
-	ret := getHostNameInvoker.Invoke(nil)
+	ret := getHostNameInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -868,7 +941,8 @@ func GetLanguageNames() {
 		getLanguageNamesInvoker = gi.FunctionInvokerNew("GLib", "get_language_names")
 	}
 
-	getLanguageNamesInvoker.Invoke(nil)
+	getLanguageNamesInvoker.Invoke(nil, nil)
+
 }
 
 var getLanguageNamesWithCategoryInvoker *gi.Function
@@ -882,7 +956,8 @@ func GetLanguageNamesWithCategory(categoryName string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(categoryName)
 
-	getLanguageNamesWithCategoryInvoker.Invoke(inArgs[:])
+	getLanguageNamesWithCategoryInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var getLocaleVariantsInvoker *gi.Function
@@ -896,7 +971,8 @@ func GetLocaleVariants(locale string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(locale)
 
-	getLocaleVariantsInvoker.Invoke(inArgs[:])
+	getLocaleVariantsInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var getMonotonicTimeInvoker *gi.Function
@@ -907,7 +983,8 @@ func GetMonotonicTime() int64 {
 		getMonotonicTimeInvoker = gi.FunctionInvokerNew("GLib", "get_monotonic_time")
 	}
 
-	ret := getMonotonicTimeInvoker.Invoke(nil)
+	ret := getMonotonicTimeInvoker.Invoke(nil, nil)
+
 	return ret.Int64()
 }
 
@@ -919,7 +996,8 @@ func GetNumProcessors() uint32 {
 		getNumProcessorsInvoker = gi.FunctionInvokerNew("GLib", "get_num_processors")
 	}
 
-	ret := getNumProcessorsInvoker.Invoke(nil)
+	ret := getNumProcessorsInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -931,7 +1009,8 @@ func GetPrgname() string {
 		getPrgnameInvoker = gi.FunctionInvokerNew("GLib", "get_prgname")
 	}
 
-	ret := getPrgnameInvoker.Invoke(nil)
+	ret := getPrgnameInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -945,7 +1024,8 @@ func GetRealTime() int64 {
 		getRealTimeInvoker = gi.FunctionInvokerNew("GLib", "get_real_time")
 	}
 
-	ret := getRealTimeInvoker.Invoke(nil)
+	ret := getRealTimeInvoker.Invoke(nil, nil)
+
 	return ret.Int64()
 }
 
@@ -957,7 +1037,8 @@ func GetSystemConfigDirs() {
 		getSystemConfigDirsInvoker = gi.FunctionInvokerNew("GLib", "get_system_config_dirs")
 	}
 
-	getSystemConfigDirsInvoker.Invoke(nil)
+	getSystemConfigDirsInvoker.Invoke(nil, nil)
+
 }
 
 var getSystemDataDirsInvoker *gi.Function
@@ -968,7 +1049,8 @@ func GetSystemDataDirs() {
 		getSystemDataDirsInvoker = gi.FunctionInvokerNew("GLib", "get_system_data_dirs")
 	}
 
-	getSystemDataDirsInvoker.Invoke(nil)
+	getSystemDataDirsInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_get_tmp_dir' : return type 'filename' not supported
@@ -1044,7 +1126,8 @@ func HostnameToAscii(hostname string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
-	ret := hostnameToAsciiInvoker.Invoke(inArgs[:])
+	ret := hostnameToAsciiInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1059,7 +1142,8 @@ func HostnameToUnicode(hostname string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
-	ret := hostnameToUnicodeInvoker.Invoke(inArgs[:])
+	ret := hostnameToUnicodeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1094,7 +1178,8 @@ func InternStaticString(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := internStaticStringInvoker.Invoke(inArgs[:])
+	ret := internStaticStringInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -1109,7 +1194,8 @@ func InternString(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := internStringInvoker.Invoke(inArgs[:])
+	ret := internStringInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -1133,7 +1219,8 @@ func Listenv() {
 		listenvInvoker = gi.FunctionInvokerNew("GLib", "listenv")
 	}
 
-	listenvInvoker.Invoke(nil)
+	listenvInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_locale_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
@@ -1156,7 +1243,8 @@ func LogRemoveHandler(logDomain string, handlerId uint32) {
 	inArgs[0].SetString(logDomain)
 	inArgs[1].SetUint32(handlerId)
 
-	logRemoveHandlerInvoker.Invoke(inArgs[:])
+	logRemoveHandlerInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_log_set_always_fatal' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
@@ -1209,7 +1297,8 @@ func MainDepth() int32 {
 		mainDepthInvoker = gi.FunctionInvokerNew("GLib", "main_depth")
 	}
 
-	ret := mainDepthInvoker.Invoke(nil)
+	ret := mainDepthInvoker.Invoke(nil, nil)
+
 	return ret.Int32()
 }
 
@@ -1237,7 +1326,8 @@ func MarkupEscapeText(text string, length int32) string {
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
 
-	ret := markupEscapeTextInvoker.Invoke(inArgs[:])
+	ret := markupEscapeTextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1255,7 +1345,8 @@ func MemProfile() {
 		memProfileInvoker = gi.FunctionInvokerNew("GLib", "mem_profile")
 	}
 
-	memProfileInvoker.Invoke(nil)
+	memProfileInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_mem_set_vtable' : parameter 'vtable' of type 'MemVTable' not supported
@@ -1287,7 +1378,8 @@ func OnErrorQuery(prgName string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(prgName)
 
-	onErrorQueryInvoker.Invoke(inArgs[:])
+	onErrorQueryInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var onErrorStackTraceInvoker *gi.Function
@@ -1301,7 +1393,8 @@ func OnErrorStackTrace(prgName string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(prgName)
 
-	onErrorStackTraceInvoker.Invoke(inArgs[:])
+	onErrorStackTraceInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_once_init_enter' : parameter 'location' of type 'gpointer' not supported
@@ -1374,7 +1467,8 @@ func RandomInt() uint32 {
 		randomIntInvoker = gi.FunctionInvokerNew("GLib", "random_int")
 	}
 
-	ret := randomIntInvoker.Invoke(nil)
+	ret := randomIntInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -1390,7 +1484,8 @@ func RandomIntRange(begin int32, end int32) int32 {
 	inArgs[0].SetInt32(begin)
 	inArgs[1].SetInt32(end)
 
-	ret := randomIntRangeInvoker.Invoke(inArgs[:])
+	ret := randomIntRangeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -1405,7 +1500,8 @@ func RandomSetSeed(seed uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(seed)
 
-	randomSetSeedInvoker.Invoke(inArgs[:])
+	randomSetSeedInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
@@ -1441,7 +1537,8 @@ func RefCountInc(rc int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rc)
 
-	refCountIncInvoker.Invoke(inArgs[:])
+	refCountIncInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var refCountInitInvoker *gi.Function
@@ -1455,7 +1552,8 @@ func RefCountInit(rc int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rc)
 
-	refCountInitInvoker.Invoke(inArgs[:])
+	refCountInitInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var refStringAcquireInvoker *gi.Function
@@ -1469,7 +1567,8 @@ func RefStringAcquire(str string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := refStringAcquireInvoker.Invoke(inArgs[:])
+	ret := refStringAcquireInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1486,7 +1585,8 @@ func RefStringNew(str string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := refStringNewInvoker.Invoke(inArgs[:])
+	ret := refStringNewInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1501,7 +1601,8 @@ func RefStringNewIntern(str string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := refStringNewInternInvoker.Invoke(inArgs[:])
+	ret := refStringNewInternInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1517,7 +1618,8 @@ func RefStringNewLen(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := refStringNewLenInvoker.Invoke(inArgs[:])
+	ret := refStringNewLenInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1532,7 +1634,8 @@ func RefStringRelease(str string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	refStringReleaseInvoker.Invoke(inArgs[:])
+	refStringReleaseInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'has_references' of type 'gboolean' not supported
@@ -1551,7 +1654,8 @@ func RegexEscapeNul(string_ string, length int32) string {
 	inArgs[0].SetString(string_)
 	inArgs[1].SetInt32(length)
 
-	ret := regexEscapeNulInvoker.Invoke(inArgs[:])
+	ret := regexEscapeNulInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1569,7 +1673,8 @@ func ReloadUserSpecialDirsCache() {
 		reloadUserSpecialDirsCacheInvoker = gi.FunctionInvokerNew("GLib", "reload_user_special_dirs_cache")
 	}
 
-	reloadUserSpecialDirsCacheInvoker.Invoke(nil)
+	reloadUserSpecialDirsCacheInvoker.Invoke(nil, nil)
+
 }
 
 var returnIfFailWarningInvoker *gi.Function
@@ -1585,7 +1690,8 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 	inArgs[1].SetString(prettyFunction)
 	inArgs[2].SetString(expression)
 
-	returnIfFailWarningInvoker.Invoke(inArgs[:])
+	returnIfFailWarningInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_rmdir' : parameter 'filename' of type 'filename' not supported
@@ -1619,7 +1725,8 @@ func SetApplicationName(applicationName string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(applicationName)
 
-	setApplicationNameInvoker.Invoke(inArgs[:])
+	setApplicationNameInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_set_error' : parameter 'err' of type 'Error' not supported
@@ -1637,7 +1744,8 @@ func SetPrgname(prgname string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(prgname)
 
-	setPrgnameInvoker.Invoke(inArgs[:])
+	setPrgnameInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_set_print_handler' : parameter 'func' of type 'PrintFunc' not supported
@@ -1690,7 +1798,8 @@ func SourceSetNameById(tag uint32, name string) {
 	inArgs[0].SetUint32(tag)
 	inArgs[1].SetString(name)
 
-	sourceSetNameByIdInvoker.Invoke(inArgs[:])
+	sourceSetNameByIdInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var spacedPrimesClosestInvoker *gi.Function
@@ -1704,7 +1813,8 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(num)
 
-	ret := spacedPrimesClosestInvoker.Invoke(inArgs[:])
+	ret := spacedPrimesClosestInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -1742,7 +1852,8 @@ func Stpcpy(dest string, src string) string {
 	inArgs[0].SetString(dest)
 	inArgs[1].SetString(src)
 
-	ret := stpcpyInvoker.Invoke(inArgs[:])
+	ret := stpcpyInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1770,7 +1881,8 @@ func StrToAscii(str string, fromLocale string) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetString(fromLocale)
 
-	ret := strToAsciiInvoker.Invoke(inArgs[:])
+	ret := strToAsciiInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1789,7 +1901,8 @@ func Strcanon(string_ string, validChars string, substitutor int8) string {
 	inArgs[1].SetString(validChars)
 	inArgs[2].SetInt8(substitutor)
 
-	ret := strcanonInvoker.Invoke(inArgs[:])
+	ret := strcanonInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1805,7 +1918,8 @@ func Strcasecmp(s1 string, s2 string) int32 {
 	inArgs[0].SetString(s1)
 	inArgs[1].SetString(s2)
 
-	ret := strcasecmpInvoker.Invoke(inArgs[:])
+	ret := strcasecmpInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -1820,7 +1934,8 @@ func Strchomp(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := strchompInvoker.Invoke(inArgs[:])
+	ret := strchompInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1835,7 +1950,8 @@ func Strchug(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := strchugInvoker.Invoke(inArgs[:])
+	ret := strchugInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1851,7 +1967,8 @@ func Strcmp0(str1 string, str2 string) int32 {
 	inArgs[0].SetString(str1)
 	inArgs[1].SetString(str2)
 
-	ret := strcmp0Invoker.Invoke(inArgs[:])
+	ret := strcmp0Invoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -1866,7 +1983,8 @@ func Strcompress(source string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(source)
 
-	ret := strcompressInvoker.Invoke(inArgs[:])
+	ret := strcompressInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1885,7 +2003,8 @@ func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
 	inArgs[1].SetString(delimiters)
 	inArgs[2].SetInt8(newDelimiter)
 
-	ret := strdelimitInvoker.Invoke(inArgs[:])
+	ret := strdelimitInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1900,7 +2019,8 @@ func Strdown(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := strdownInvoker.Invoke(inArgs[:])
+	ret := strdownInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1915,7 +2035,8 @@ func Strdup(str string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := strdupInvoker.Invoke(inArgs[:])
+	ret := strdupInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1934,7 +2055,8 @@ func Strdupv(strArray string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
-	strdupvInvoker.Invoke(inArgs[:])
+	strdupvInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var strerrorInvoker *gi.Function
@@ -1948,7 +2070,8 @@ func Strerror(errnum int32) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(errnum)
 
-	ret := strerrorInvoker.Invoke(inArgs[:])
+	ret := strerrorInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -1964,7 +2087,8 @@ func Strescape(source string, exceptions string) string {
 	inArgs[0].SetString(source)
 	inArgs[1].SetString(exceptions)
 
-	ret := strescapeInvoker.Invoke(inArgs[:])
+	ret := strescapeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -1979,7 +2103,8 @@ func Strfreev(strArray string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
-	strfreevInvoker.Invoke(inArgs[:])
+	strfreevInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_string_new' : return type 'String' not supported
@@ -2000,7 +2125,8 @@ func StripContext(msgid string, msgval string) string {
 	inArgs[0].SetString(msgid)
 	inArgs[1].SetString(msgval)
 
-	ret := stripContextInvoker.Invoke(inArgs[:])
+	ret := stripContextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -2018,7 +2144,8 @@ func Strjoinv(separator string, strArray string) string {
 	inArgs[0].SetString(separator)
 	inArgs[1].SetString(strArray)
 
-	ret := strjoinvInvoker.Invoke(inArgs[:])
+	ret := strjoinvInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2039,7 +2166,8 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 	inArgs[1].SetString(s2)
 	inArgs[2].SetUint32(n)
 
-	ret := strncasecmpInvoker.Invoke(inArgs[:])
+	ret := strncasecmpInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -2058,7 +2186,8 @@ func Strreverse(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := strreverseInvoker.Invoke(inArgs[:])
+	ret := strreverseInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2074,7 +2203,8 @@ func Strrstr(haystack string, needle string) string {
 	inArgs[0].SetString(haystack)
 	inArgs[1].SetString(needle)
 
-	ret := strrstrInvoker.Invoke(inArgs[:])
+	ret := strrstrInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2091,7 +2221,8 @@ func StrrstrLen(haystack string, haystackLen int32, needle string) string {
 	inArgs[1].SetInt32(haystackLen)
 	inArgs[2].SetString(needle)
 
-	ret := strrstrLenInvoker.Invoke(inArgs[:])
+	ret := strrstrLenInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2106,7 +2237,8 @@ func Strsignal(signum int32) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(signum)
 
-	ret := strsignalInvoker.Invoke(inArgs[:])
+	ret := strsignalInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -2123,7 +2255,8 @@ func Strsplit(string_ string, delimiter string, maxTokens int32) {
 	inArgs[1].SetString(delimiter)
 	inArgs[2].SetInt32(maxTokens)
 
-	strsplitInvoker.Invoke(inArgs[:])
+	strsplitInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var strsplitSetInvoker *gi.Function
@@ -2139,7 +2272,8 @@ func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
 	inArgs[1].SetString(delimiters)
 	inArgs[2].SetInt32(maxTokens)
 
-	strsplitSetInvoker.Invoke(inArgs[:])
+	strsplitSetInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var strstrLenInvoker *gi.Function
@@ -2155,11 +2289,12 @@ func StrstrLen(haystack string, haystackLen int32, needle string) string {
 	inArgs[1].SetInt32(haystackLen)
 	inArgs[2].SetString(needle)
 
-	ret := strstrLenInvoker.Invoke(inArgs[:])
+	ret := strstrLenInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'g_strtod' : parameter 'endptr' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_strtod' : return type 'gdouble' not supported
 
 var strupInvoker *gi.Function
 
@@ -2172,7 +2307,8 @@ func Strup(string_ string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := strupInvoker.Invoke(inArgs[:])
+	ret := strupInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2193,7 +2329,8 @@ func StrvLength(strArray string) uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
-	ret := strvLengthInvoker.Invoke(inArgs[:])
+	ret := strvLengthInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -2219,7 +2356,8 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 	inArgs[2].SetInt32(line)
 	inArgs[3].SetString(func_)
 
-	testAssertExpectedMessagesInternalInvoker.Invoke(inArgs[:])
+	testAssertExpectedMessagesInternalInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var testBugInvoker *gi.Function
@@ -2233,7 +2371,8 @@ func TestBug(bugUriSnippet string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(bugUriSnippet)
 
-	testBugInvoker.Invoke(inArgs[:])
+	testBugInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var testBugBaseInvoker *gi.Function
@@ -2247,7 +2386,8 @@ func TestBugBase(uriPattern string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uriPattern)
 
-	testBugBaseInvoker.Invoke(inArgs[:])
+	testBugBaseInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_test_build_filename' : parameter 'file_type' of type 'TestFileType' not supported
@@ -2266,7 +2406,8 @@ func TestFail() {
 		testFailInvoker = gi.FunctionInvokerNew("GLib", "test_fail")
 	}
 
-	testFailInvoker.Invoke(nil)
+	testFailInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_test_failed' : return type 'gboolean' not supported
@@ -2288,7 +2429,8 @@ func TestIncomplete(msg string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(msg)
 
-	testIncompleteInvoker.Invoke(inArgs[:])
+	testIncompleteInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_test_init' : parameter '...' has no type
@@ -2319,7 +2461,8 @@ func TestRandInt() int32 {
 		testRandIntInvoker = gi.FunctionInvokerNew("GLib", "test_rand_int")
 	}
 
-	ret := testRandIntInvoker.Invoke(nil)
+	ret := testRandIntInvoker.Invoke(nil, nil)
+
 	return ret.Int32()
 }
 
@@ -2335,7 +2478,8 @@ func TestRandIntRange(begin int32, end int32) int32 {
 	inArgs[0].SetInt32(begin)
 	inArgs[1].SetInt32(end)
 
-	ret := testRandIntRangeInvoker.Invoke(inArgs[:])
+	ret := testRandIntRangeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -2347,7 +2491,8 @@ func TestRun() int32 {
 		testRunInvoker = gi.FunctionInvokerNew("GLib", "test_run")
 	}
 
-	ret := testRunInvoker.Invoke(nil)
+	ret := testRunInvoker.Invoke(nil, nil)
+
 	return ret.Int32()
 }
 
@@ -2361,7 +2506,8 @@ func TestSetNonfatalAssertions() {
 		testSetNonfatalAssertionsInvoker = gi.FunctionInvokerNew("GLib", "test_set_nonfatal_assertions")
 	}
 
-	testSetNonfatalAssertionsInvoker.Invoke(nil)
+	testSetNonfatalAssertionsInvoker.Invoke(nil, nil)
+
 }
 
 var testSkipInvoker *gi.Function
@@ -2375,7 +2521,8 @@ func TestSkip(msg string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(msg)
 
-	testSkipInvoker.Invoke(inArgs[:])
+	testSkipInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
@@ -2391,7 +2538,8 @@ func TestSummary(summary string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(summary)
 
-	testSummaryInvoker.Invoke(inArgs[:])
+	testSummaryInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_test_timer_elapsed' : return type 'gdouble' not supported
@@ -2406,7 +2554,8 @@ func TestTimerStart() {
 		testTimerStartInvoker = gi.FunctionInvokerNew("GLib", "test_timer_start")
 	}
 
-	testTimerStartInvoker.Invoke(nil)
+	testTimerStartInvoker.Invoke(nil, nil)
+
 }
 
 var testTrapAssertionsInvoker *gi.Function
@@ -2425,7 +2574,8 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 	inArgs[4].SetUint64(assertionFlags)
 	inArgs[5].SetString(pattern)
 
-	testTrapAssertionsInvoker.Invoke(inArgs[:])
+	testTrapAssertionsInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'test_trap_flags' of type 'TestTrapFlags' not supported
@@ -2448,7 +2598,8 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 		threadPoolGetMaxIdleTimeInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_idle_time")
 	}
 
-	ret := threadPoolGetMaxIdleTimeInvoker.Invoke(nil)
+	ret := threadPoolGetMaxIdleTimeInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -2460,7 +2611,8 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 		threadPoolGetMaxUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
 	}
 
-	ret := threadPoolGetMaxUnusedThreadsInvoker.Invoke(nil)
+	ret := threadPoolGetMaxUnusedThreadsInvoker.Invoke(nil, nil)
+
 	return ret.Int32()
 }
 
@@ -2472,7 +2624,8 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 		threadPoolGetNumUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_get_num_unused_threads")
 	}
 
-	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke(nil)
+	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -2487,7 +2640,8 @@ func ThreadPoolSetMaxIdleTime(interval uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(interval)
 
-	threadPoolSetMaxIdleTimeInvoker.Invoke(inArgs[:])
+	threadPoolSetMaxIdleTimeInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var threadPoolSetMaxUnusedThreadsInvoker *gi.Function
@@ -2501,7 +2655,8 @@ func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(maxThreads)
 
-	threadPoolSetMaxUnusedThreadsInvoker.Invoke(inArgs[:])
+	threadPoolSetMaxUnusedThreadsInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var threadPoolStopUnusedThreadsInvoker *gi.Function
@@ -2512,7 +2667,8 @@ func ThreadPoolStopUnusedThreads() {
 		threadPoolStopUnusedThreadsInvoker = gi.FunctionInvokerNew("GLib", "thread_pool_stop_unused_threads")
 	}
 
-	threadPoolStopUnusedThreadsInvoker.Invoke(nil)
+	threadPoolStopUnusedThreadsInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_thread_self' : return type 'Thread' not supported
@@ -2525,7 +2681,8 @@ func ThreadYield() {
 		threadYieldInvoker = gi.FunctionInvokerNew("GLib", "thread_yield")
 	}
 
-	threadYieldInvoker.Invoke(nil)
+	threadYieldInvoker.Invoke(nil, nil)
+
 }
 
 // UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'time_' of type 'TimeVal' not supported
@@ -2673,7 +2830,8 @@ func UriListExtractUris(uriList string) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uriList)
 
-	uriListExtractUrisInvoker.Invoke(inArgs[:])
+	uriListExtractUrisInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var uriParseSchemeInvoker *gi.Function
@@ -2687,7 +2845,8 @@ func UriParseScheme(uri string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uri)
 
-	ret := uriParseSchemeInvoker.Invoke(inArgs[:])
+	ret := uriParseSchemeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2704,7 +2863,8 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 	inArgs[1].SetString(escapedStringEnd)
 	inArgs[2].SetString(illegalCharacters)
 
-	ret := uriUnescapeSegmentInvoker.Invoke(inArgs[:])
+	ret := uriUnescapeSegmentInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2720,7 +2880,8 @@ func UriUnescapeString(escapedString string, illegalCharacters string) string {
 	inArgs[0].SetString(escapedString)
 	inArgs[1].SetString(illegalCharacters)
 
-	ret := uriUnescapeStringInvoker.Invoke(inArgs[:])
+	ret := uriUnescapeStringInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2735,12 +2896,30 @@ func Usleep(microseconds uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(microseconds)
 
-	usleepInvoker.Invoke(inArgs[:])
+	usleepInvoker.Invoke(inArgs[:], nil)
+
 }
 
-// UNSUPPORTED : C value 'g_utf16_to_ucs4' : parameter 'items_read' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_utf16_to_utf8' : parameter 'items_read' with direction 'out' not supported
+var utf16ToUtf8Invoker *gi.Function
+
+// Utf16ToUtf8 is a representation of the C type g_utf16_to_utf8.
+func Utf16ToUtf8(str uint16, len int64) (string, int64, int64) {
+	if utf16ToUtf8Invoker == nil {
+		utf16ToUtf8Invoker = gi.FunctionInvokerNew("GLib", "utf16_to_utf8")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint16(str)
+	inArgs[1].SetInt64(len)
+
+	var outArgs [2]gi.Argument
+
+	ret := utf16ToUtf8Invoker.Invoke(inArgs[:], outArgs[:])
+
+	return ret.String(true), outArgs[0].Int64(), outArgs[1].Int64()
+}
 
 var utf8CasefoldInvoker *gi.Function
 
@@ -2754,7 +2933,8 @@ func Utf8Casefold(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8CasefoldInvoker.Invoke(inArgs[:])
+	ret := utf8CasefoldInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2770,7 +2950,8 @@ func Utf8Collate(str1 string, str2 string) int32 {
 	inArgs[0].SetString(str1)
 	inArgs[1].SetString(str2)
 
-	ret := utf8CollateInvoker.Invoke(inArgs[:])
+	ret := utf8CollateInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int32()
 }
 
@@ -2786,7 +2967,8 @@ func Utf8CollateKey(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8CollateKeyInvoker.Invoke(inArgs[:])
+	ret := utf8CollateKeyInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2802,7 +2984,8 @@ func Utf8CollateKeyForFilename(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8CollateKeyForFilenameInvoker.Invoke(inArgs[:])
+	ret := utf8CollateKeyForFilenameInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2818,7 +3001,8 @@ func Utf8FindNextChar(p string, end string) string {
 	inArgs[0].SetString(p)
 	inArgs[1].SetString(end)
 
-	ret := utf8FindNextCharInvoker.Invoke(inArgs[:])
+	ret := utf8FindNextCharInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -2834,7 +3018,8 @@ func Utf8FindPrevChar(str string, p string) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetString(p)
 
-	ret := utf8FindPrevCharInvoker.Invoke(inArgs[:])
+	ret := utf8FindPrevCharInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -2854,7 +3039,8 @@ func Utf8MakeValid(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8MakeValidInvoker.Invoke(inArgs[:])
+	ret := utf8MakeValidInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2872,7 +3058,8 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt64(offset)
 
-	ret := utf8OffsetToPointerInvoker.Invoke(inArgs[:])
+	ret := utf8OffsetToPointerInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -2888,7 +3075,8 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 	inArgs[0].SetString(str)
 	inArgs[1].SetString(pos)
 
-	ret := utf8PointerToOffsetInvoker.Invoke(inArgs[:])
+	ret := utf8PointerToOffsetInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int64()
 }
 
@@ -2903,7 +3091,8 @@ func Utf8PrevChar(p string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(p)
 
-	ret := utf8PrevCharInvoker.Invoke(inArgs[:])
+	ret := utf8PrevCharInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -2921,7 +3110,8 @@ func Utf8Strdown(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8StrdownInvoker.Invoke(inArgs[:])
+	ret := utf8StrdownInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2937,7 +3127,8 @@ func Utf8Strlen(p string, max int32) int64 {
 	inArgs[0].SetString(p)
 	inArgs[1].SetInt32(max)
 
-	ret := utf8StrlenInvoker.Invoke(inArgs[:])
+	ret := utf8StrlenInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Int64()
 }
 
@@ -2957,7 +3148,8 @@ func Utf8Strreverse(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8StrreverseInvoker.Invoke(inArgs[:])
+	ret := utf8StrreverseInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2973,7 +3165,8 @@ func Utf8Strup(str string, len int32) string {
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
 
-	ret := utf8StrupInvoker.Invoke(inArgs[:])
+	ret := utf8StrupInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -2990,15 +3183,33 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 	inArgs[1].SetInt64(startPos)
 	inArgs[2].SetInt64(endPos)
 
-	ret := utf8SubstringInvoker.Invoke(inArgs[:])
+	ret := utf8SubstringInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4' : parameter 'items_read' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_utf8_to_ucs4' : return type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : parameter 'items_written' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : return type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_utf16' : parameter 'items_read' with direction 'out' not supported
+var utf8ToUtf16Invoker *gi.Function
+
+// Utf8ToUtf16 is a representation of the C type g_utf8_to_utf16.
+func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
+	if utf8ToUtf16Invoker == nil {
+		utf8ToUtf16Invoker = gi.FunctionInvokerNew("GLib", "utf8_to_utf16")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt64(len)
+
+	var outArgs [2]gi.Argument
+
+	ret := utf8ToUtf16Invoker.Invoke(inArgs[:], outArgs[:])
+
+	return ret.Uint16(), outArgs[0].Int64(), outArgs[1].Int64()
+}
 
 // UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
 
@@ -3014,7 +3225,8 @@ func UuidStringRandom() string {
 		uuidStringRandomInvoker = gi.FunctionInvokerNew("GLib", "uuid_string_random")
 	}
 
-	ret := uuidStringRandomInvoker.Invoke(nil)
+	ret := uuidStringRandomInvoker.Invoke(nil, nil)
+
 	return ret.String(true)
 }
 
@@ -3038,7 +3250,7 @@ func UuidStringRandom() string {
 
 // UNSUPPORTED : C value 'g_variant_type_string_is_valid' : return type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_string_scan' : parameter 'endptr' with direction 'out' not supported
+// UNSUPPORTED : C value 'g_variant_type_string_scan' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_vasprintf' : parameter 'args' of type 'va_list' not supported
 
@@ -3065,5 +3277,6 @@ func WarnMessage(domain string, file string, line int32, func_ string, warnexpr 
 	inArgs[3].SetString(func_)
 	inArgs[4].SetString(warnexpr)
 
-	warnMessageInvoker.Invoke(inArgs[:])
+	warnMessageInvoker.Invoke(inArgs[:], nil)
+
 }

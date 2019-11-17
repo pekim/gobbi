@@ -56,7 +56,8 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Soup", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke(nil)
+	ret := getMajorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -68,7 +69,8 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Soup", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke(nil)
+	ret := getMicroVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -80,7 +82,8 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Soup", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke(nil)
+	ret := getMinorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -133,7 +136,8 @@ func StatusGetPhrase(statusCode uint32) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusGetPhraseInvoker.Invoke(inArgs[:])
+	ret := statusGetPhraseInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -148,7 +152,8 @@ func StatusProxify(statusCode uint32) uint32 {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusProxifyInvoker.Invoke(inArgs[:])
+	ret := statusProxifyInvoker.Invoke(inArgs[:], nil)
+
 	return ret.Uint32()
 }
 
@@ -171,7 +176,8 @@ func TldGetBaseDomain(hostname string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
-	ret := tldGetBaseDomainInvoker.Invoke(inArgs[:])
+	ret := tldGetBaseDomainInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(false)
 }
 
@@ -186,7 +192,8 @@ func UriDecode(part string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(part)
 
-	ret := uriDecodeInvoker.Invoke(inArgs[:])
+	ret := uriDecodeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -202,7 +209,8 @@ func UriEncode(part string, escapeExtra string) string {
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(escapeExtra)
 
-	ret := uriEncodeInvoker.Invoke(inArgs[:])
+	ret := uriEncodeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -218,7 +226,8 @@ func UriNormalize(part string, unescapeExtra string) string {
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(unescapeExtra)
 
-	ret := uriNormalizeInvoker.Invoke(inArgs[:])
+	ret := uriNormalizeInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -282,7 +291,7 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter 'method_name' with direction 'out' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'error' of type 'GLib.Error' not supported
 
@@ -294,7 +303,7 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_set_response' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_call' : parameter 'method_name' with direction 'out' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_call' : parameter 'params' of type 'GObject.ValueArray' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_parse_method_response' : parameter 'value' of type 'GObject.Value' not supported
 

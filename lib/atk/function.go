@@ -24,7 +24,8 @@ func GetBinaryAge() uint32 {
 		getBinaryAgeInvoker = gi.FunctionInvokerNew("Atk", "get_binary_age")
 	}
 
-	ret := getBinaryAgeInvoker.Invoke(nil)
+	ret := getBinaryAgeInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -40,7 +41,8 @@ func GetInterfaceAge() uint32 {
 		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Atk", "get_interface_age")
 	}
 
-	ret := getInterfaceAgeInvoker.Invoke(nil)
+	ret := getInterfaceAgeInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -52,7 +54,8 @@ func GetMajorVersion() uint32 {
 		getMajorVersionInvoker = gi.FunctionInvokerNew("Atk", "get_major_version")
 	}
 
-	ret := getMajorVersionInvoker.Invoke(nil)
+	ret := getMajorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -64,7 +67,8 @@ func GetMicroVersion() uint32 {
 		getMicroVersionInvoker = gi.FunctionInvokerNew("Atk", "get_micro_version")
 	}
 
-	ret := getMicroVersionInvoker.Invoke(nil)
+	ret := getMicroVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -76,7 +80,8 @@ func GetMinorVersion() uint32 {
 		getMinorVersionInvoker = gi.FunctionInvokerNew("Atk", "get_minor_version")
 	}
 
-	ret := getMinorVersionInvoker.Invoke(nil)
+	ret := getMinorVersionInvoker.Invoke(nil, nil)
+
 	return ret.Uint32()
 }
 
@@ -90,7 +95,8 @@ func GetToolkitName() string {
 		getToolkitNameInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_name")
 	}
 
-	ret := getToolkitNameInvoker.Invoke(nil)
+	ret := getToolkitNameInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -102,7 +108,8 @@ func GetToolkitVersion() string {
 		getToolkitVersionInvoker = gi.FunctionInvokerNew("Atk", "get_toolkit_version")
 	}
 
-	ret := getToolkitVersionInvoker.Invoke(nil)
+	ret := getToolkitVersionInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -114,7 +121,8 @@ func GetVersion() string {
 		getVersionInvoker = gi.FunctionInvokerNew("Atk", "get_version")
 	}
 
-	ret := getVersionInvoker.Invoke(nil)
+	ret := getVersionInvoker.Invoke(nil, nil)
+
 	return ret.String(false)
 }
 
@@ -135,7 +143,8 @@ func RemoveFocusTracker(trackerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(trackerId)
 
-	removeFocusTrackerInvoker.Invoke(inArgs[:])
+	removeFocusTrackerInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var removeGlobalEventListenerInvoker *gi.Function
@@ -149,7 +158,8 @@ func RemoveGlobalEventListener(listenerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
-	removeGlobalEventListenerInvoker.Invoke(inArgs[:])
+	removeGlobalEventListenerInvoker.Invoke(inArgs[:], nil)
+
 }
 
 var removeKeyEventListenerInvoker *gi.Function
@@ -163,7 +173,8 @@ func RemoveKeyEventListener(listenerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
-	removeKeyEventListenerInvoker.Invoke(inArgs[:])
+	removeKeyEventListenerInvoker.Invoke(inArgs[:], nil)
+
 }
 
 // UNSUPPORTED : C value 'atk_role_for_name' : return type 'Role' not supported

@@ -31,7 +31,8 @@ func UtilsEscapeSearchText(text string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
-	ret := utilsEscapeSearchTextInvoker.Invoke(inArgs[:])
+	ret := utilsEscapeSearchTextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
 
@@ -46,6 +47,7 @@ func UtilsUnescapeSearchText(text string) string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
-	ret := utilsUnescapeSearchTextInvoker.Invoke(inArgs[:])
+	ret := utilsUnescapeSearchTextInvoker.Invoke(inArgs[:], nil)
+
 	return ret.String(true)
 }
