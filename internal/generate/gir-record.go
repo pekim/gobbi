@@ -1,6 +1,8 @@
 package generate
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Record struct {
 	Name           string `xml:"name,attr"`
@@ -12,7 +14,7 @@ type Record struct {
 	GlibGetType    string `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
 	GlibTypeStruct string `xml:"http://www.gtk.org/introspection/glib/1.0 type-struct,attr"`
 	Doc            *Doc   `xml:"doc"`
-	//Fields         Fields       `xml:"field"`
+	Fields         Fields `xml:"field"`
 	//Constructors   Constructors `xml:"constructor"`
 	Functions Functions `xml:"function"`
 	//Methods        Methods      `xml:"method"`
@@ -31,9 +33,24 @@ func (r *Record) init(ns *Namespace) {
 	//r.Constructors.init(ns, r)
 	r.Functions.init(ns /*r.GoName*/)
 	//r.Methods.init(ns, r)
-	//r.Fields.init(ns)
+	r.Fields.init(ns)
 	//r.Signals.init(ns, r)
 }
 
 func (r *Record) generate(f *file) {
+	r.generateType(f)
+}
+
+func (r *Record) generateType(f *file) {
+	f.
+		Type().
+		Id(r.goName).
+		Add(structFunc(r.generateFields))
+
+	f.Line()
+}
+
+func (r *Record) generateFields(g *group) {
+	g.Id("native").Uintptr()
+	r.Fields.generate(g)
 }

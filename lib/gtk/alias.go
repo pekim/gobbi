@@ -2,7 +2,7 @@
 
 package gtk
 
-// UNSUPPORTED : C value 'Allocation' : No Go type for 'Gdk.Rectangle'
+// UNSUPPORTED : C value 'Allocation' : no Go type for 'Gdk.Rectangle'
 
 // Stock is a representation of the C type Stock.
 type Stock string

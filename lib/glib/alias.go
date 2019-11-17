@@ -8,7 +8,7 @@ type Dateday uint8
 // Dateyear is a representation of the C type DateYear.
 type Dateyear uint16
 
-// UNSUPPORTED : C value 'MutexLocker' : No Go type for 'none'
+// UNSUPPORTED : C value 'MutexLocker' : no Go type for 'none'
 
 // Pid is a representation of the C type Pid.
 type Pid int32
@@ -16,11 +16,11 @@ type Pid int32
 // Quark is a representation of the C type Quark.
 type Quark uint32
 
-// UNSUPPORTED : C value 'RWLockReaderLocker' : No Go type for 'none'
+// UNSUPPORTED : C value 'RWLockReaderLocker' : no Go type for 'none'
 
-// UNSUPPORTED : C value 'RWLockWriterLocker' : No Go type for 'none'
+// UNSUPPORTED : C value 'RWLockWriterLocker' : no Go type for 'none'
 
-// UNSUPPORTED : C value 'RecMutexLocker' : No Go type for 'none'
+// UNSUPPORTED : C value 'RecMutexLocker' : no Go type for 'none'
 
 // Refstring is a representation of the C type RefString.
 type Refstring int8

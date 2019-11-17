@@ -62,7 +62,7 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return goType, nil
 	}
 
-	return nil, fmt.Errorf("No Go type for '%s'\n", t.Name)
+	return nil, fmt.Errorf("no Go type for '%s'", t.Name)
 }
 
 func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {

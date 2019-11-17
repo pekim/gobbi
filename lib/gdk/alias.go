@@ -2,4 +2,4 @@
 
 package gdk
 
-// UNSUPPORTED : C value 'XEvent' : No Go type for 'none'
+// UNSUPPORTED : C value 'XEvent' : no Go type for 'none'

@@ -67,3 +67,9 @@ func paramsFunc(fn func(g *group)) *jen.Statement {
 		fn(&group{jg})
 	})
 }
+
+func structFunc(fn func(g *group)) *jen.Statement {
+	return jen.StructFunc(func(jg *jen.Group) {
+		fn(&group{jg})
+	})
+}

@@ -2,9 +2,9 @@
 
 package gobject
 
-// UNSUPPORTED : C value 'SignalCMarshaller' : No Go type for 'ClosureMarshal'
+// UNSUPPORTED : C value 'SignalCMarshaller' : no Go type for 'ClosureMarshal'
 
-// UNSUPPORTED : C value 'SignalCVaMarshaller' : No Go type for 'VaClosureMarshal'
+// UNSUPPORTED : C value 'SignalCVaMarshaller' : no Go type for 'VaClosureMarshal'
 
 // Type is a representation of the C type Type.
 type Type uintptr
