@@ -119,8 +119,7 @@ func (f *Function) generateReturnValues(g *jen.Group) {
 	if !f.ReturnValue.isVoid() {
 		g.
 			Id("ret").
-			Dot(f.ReturnValue.Type.argumentValueGetFunctionName()).
-			CallFunc(f.ReturnValue.transferOwnershipJen)
+			Add(f.ReturnValue.generateValue())
 	}
 
 	f.Parameters.generateOutValues(g)

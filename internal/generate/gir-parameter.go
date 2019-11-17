@@ -6,15 +6,12 @@ import (
 )
 
 type Parameter struct {
-	Name              string `xml:"name,attr"`
-	Direction         string `xml:"direction,attr"`
-	TransferOwnership string `xml:"transfer-ownership,attr"`
-	Nullable          bool   `xml:"nullable,attr"`
-	AllowNone         bool   `xml:"allow-none,attr"`
-	Doc               *Doc   `xml:"doc"`
-	Type              *Type  `xml:"type"`
-	//Array             *Array    `xml:"array"`
-	Varargs *struct{} `xml:"varargs"`
+	Name      string `xml:"name,attr"`
+	Direction string `xml:"direction,attr"`
+	Argument
+	AllowNone bool      `xml:"allow-none,attr"`
+	Doc       *Doc      `xml:"doc"`
+	Varargs   *struct{} `xml:"varargs"`
 
 	goVarName string
 	namespace *Namespace
@@ -92,8 +89,7 @@ func (p Parameter) generateOutValue(g *jen.Group, index int) {
 	g.
 		Id("outArgs").
 		Index(jen.Lit(index)).
-		Dot(p.Type.argumentValueGetFunctionName()).
-		CallFunc(p.transferOwnershipJen)
+		Add(p.generateValue())
 }
 
 func (p *Parameter) transferOwnershipJen(g *jen.Group) {

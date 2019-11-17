@@ -2,21 +2,17 @@ package generate
 
 import (
 	"fmt"
-	"github.com/dave/jennifer/jen"
 )
 
 type ReturnValue struct {
-	Namespace *Namespace
+	Argument
+	Doc *Doc `xml:"doc"`
 
-	TransferOwnership string `xml:"transfer-ownership,attr"`
-	Nullable          bool   `xml:"nullable,attr"`
-	Doc               *Doc   `xml:"doc"`
-	Type              *Type  `xml:"type"`
-	//Array             *Array `xml:"array"`
+	namespace *Namespace
 }
 
 func (r *ReturnValue) init(ns *Namespace) {
-	r.Namespace = ns
+	r.namespace = ns
 
 	if r.Type != nil {
 		r.Type.init(ns)
@@ -29,14 +25,6 @@ func (r *ReturnValue) init(ns *Namespace) {
 
 func (r *ReturnValue) isVoid() bool {
 	return r.Type == nil || r.Type.Name == "none"
-}
-
-func (r *ReturnValue) transferOwnershipJen(g *jen.Group) {
-	if r.Type.Name != "utf8" {
-		return
-	}
-
-	g.Lit(r.TransferOwnership == "full")
 }
 
 func (r *ReturnValue) supported() (bool, string) {
