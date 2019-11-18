@@ -65,7 +65,7 @@ var newDateInvoker *gi.Function
 // DateNew is a representation of the C type g_date_new.
 func DateNew() *Date {
 	if newDateInvoker == nil {
-		newDateInvoker = gi.FunctionInvokerNew("GLib", "new")
+		newDateInvoker = gi.StructFunctionInvokerNew("GLib", "Date", "new")
 	}
 
 	ret := newDateInvoker.Invoke(nil, nil)
@@ -80,7 +80,7 @@ var newJulianDateInvoker *gi.Function
 // DateNewJulian is a representation of the C type g_date_new_julian.
 func DateNewJulian(julianDay uint32) *Date {
 	if newJulianDateInvoker == nil {
-		newJulianDateInvoker = gi.FunctionInvokerNew("GLib", "new_julian")
+		newJulianDateInvoker = gi.StructFunctionInvokerNew("GLib", "Date", "new_julian")
 	}
 
 	var inArgs [1]gi.Argument
@@ -108,7 +108,7 @@ var newFromUnixLocalDateTimeInvoker *gi.Function
 // DateTimeNewFromUnixLocal is a representation of the C type g_date_time_new_from_unix_local.
 func DateTimeNewFromUnixLocal(t int64) *DateTime {
 	if newFromUnixLocalDateTimeInvoker == nil {
-		newFromUnixLocalDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_from_unix_local")
+		newFromUnixLocalDateTimeInvoker = gi.StructFunctionInvokerNew("GLib", "DateTime", "new_from_unix_local")
 	}
 
 	var inArgs [1]gi.Argument
@@ -124,7 +124,7 @@ var newFromUnixUtcDateTimeInvoker *gi.Function
 // DateTimeNewFromUnixUtc is a representation of the C type g_date_time_new_from_unix_utc.
 func DateTimeNewFromUnixUtc(t int64) *DateTime {
 	if newFromUnixUtcDateTimeInvoker == nil {
-		newFromUnixUtcDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_from_unix_utc")
+		newFromUnixUtcDateTimeInvoker = gi.StructFunctionInvokerNew("GLib", "DateTime", "new_from_unix_utc")
 	}
 
 	var inArgs [1]gi.Argument
@@ -144,7 +144,7 @@ var newNowLocalDateTimeInvoker *gi.Function
 // DateTimeNewNowLocal is a representation of the C type g_date_time_new_now_local.
 func DateTimeNewNowLocal() *DateTime {
 	if newNowLocalDateTimeInvoker == nil {
-		newNowLocalDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_now_local")
+		newNowLocalDateTimeInvoker = gi.StructFunctionInvokerNew("GLib", "DateTime", "new_now_local")
 	}
 
 	ret := newNowLocalDateTimeInvoker.Invoke(nil, nil)
@@ -157,7 +157,7 @@ var newNowUtcDateTimeInvoker *gi.Function
 // DateTimeNewNowUtc is a representation of the C type g_date_time_new_now_utc.
 func DateTimeNewNowUtc() *DateTime {
 	if newNowUtcDateTimeInvoker == nil {
-		newNowUtcDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_now_utc")
+		newNowUtcDateTimeInvoker = gi.StructFunctionInvokerNew("GLib", "DateTime", "new_now_utc")
 	}
 
 	ret := newNowUtcDateTimeInvoker.Invoke(nil, nil)
@@ -246,7 +246,7 @@ var unixNewIOChannelInvoker *gi.Function
 // IOChannelUnixNew is a representation of the C type g_io_channel_unix_new.
 func IOChannelUnixNew(fd int32) *IOChannel {
 	if unixNewIOChannelInvoker == nil {
-		unixNewIOChannelInvoker = gi.FunctionInvokerNew("GLib", "unix_new")
+		unixNewIOChannelInvoker = gi.StructFunctionInvokerNew("GLib", "IOChannel", "unix_new")
 	}
 
 	var inArgs [1]gi.Argument
@@ -286,7 +286,7 @@ var newKeyFileInvoker *gi.Function
 // KeyFileNew is a representation of the C type g_key_file_new.
 func KeyFileNew() *KeyFile {
 	if newKeyFileInvoker == nil {
-		newKeyFileInvoker = gi.FunctionInvokerNew("GLib", "new")
+		newKeyFileInvoker = gi.StructFunctionInvokerNew("GLib", "KeyFile", "new")
 	}
 
 	ret := newKeyFileInvoker.Invoke(nil, nil)
@@ -321,7 +321,7 @@ var newMainContextInvoker *gi.Function
 // MainContextNew is a representation of the C type g_main_context_new.
 func MainContextNew() *MainContext {
 	if newMainContextInvoker == nil {
-		newMainContextInvoker = gi.FunctionInvokerNew("GLib", "new")
+		newMainContextInvoker = gi.StructFunctionInvokerNew("GLib", "MainContext", "new")
 	}
 
 	ret := newMainContextInvoker.Invoke(nil, nil)
@@ -663,7 +663,7 @@ var newTimeZoneInvoker *gi.Function
 // TimeZoneNew is a representation of the C type g_time_zone_new.
 func TimeZoneNew(identifier string) *TimeZone {
 	if newTimeZoneInvoker == nil {
-		newTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new")
+		newTimeZoneInvoker = gi.StructFunctionInvokerNew("GLib", "TimeZone", "new")
 	}
 
 	var inArgs [1]gi.Argument
@@ -679,7 +679,7 @@ var newLocalTimeZoneInvoker *gi.Function
 // TimeZoneNewLocal is a representation of the C type g_time_zone_new_local.
 func TimeZoneNewLocal() *TimeZone {
 	if newLocalTimeZoneInvoker == nil {
-		newLocalTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new_local")
+		newLocalTimeZoneInvoker = gi.StructFunctionInvokerNew("GLib", "TimeZone", "new_local")
 	}
 
 	ret := newLocalTimeZoneInvoker.Invoke(nil, nil)
@@ -692,7 +692,7 @@ var newOffsetTimeZoneInvoker *gi.Function
 // TimeZoneNewOffset is a representation of the C type g_time_zone_new_offset.
 func TimeZoneNewOffset(seconds int32) *TimeZone {
 	if newOffsetTimeZoneInvoker == nil {
-		newOffsetTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new_offset")
+		newOffsetTimeZoneInvoker = gi.StructFunctionInvokerNew("GLib", "TimeZone", "new_offset")
 	}
 
 	var inArgs [1]gi.Argument
@@ -708,7 +708,7 @@ var newUtcTimeZoneInvoker *gi.Function
 // TimeZoneNewUtc is a representation of the C type g_time_zone_new_utc.
 func TimeZoneNewUtc() *TimeZone {
 	if newUtcTimeZoneInvoker == nil {
-		newUtcTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new_utc")
+		newUtcTimeZoneInvoker = gi.StructFunctionInvokerNew("GLib", "TimeZone", "new_utc")
 	}
 
 	ret := newUtcTimeZoneInvoker.Invoke(nil, nil)
@@ -744,7 +744,7 @@ var newByteVariantInvoker *gi.Function
 // VariantNewByte is a representation of the C type g_variant_new_byte.
 func VariantNewByte(value uint8) *Variant {
 	if newByteVariantInvoker == nil {
-		newByteVariantInvoker = gi.FunctionInvokerNew("GLib", "new_byte")
+		newByteVariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_byte")
 	}
 
 	var inArgs [1]gi.Argument
@@ -774,7 +774,7 @@ var newHandleVariantInvoker *gi.Function
 // VariantNewHandle is a representation of the C type g_variant_new_handle.
 func VariantNewHandle(value int32) *Variant {
 	if newHandleVariantInvoker == nil {
-		newHandleVariantInvoker = gi.FunctionInvokerNew("GLib", "new_handle")
+		newHandleVariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_handle")
 	}
 
 	var inArgs [1]gi.Argument
@@ -790,7 +790,7 @@ var newInt16VariantInvoker *gi.Function
 // VariantNewInt16 is a representation of the C type g_variant_new_int16.
 func VariantNewInt16(value int16) *Variant {
 	if newInt16VariantInvoker == nil {
-		newInt16VariantInvoker = gi.FunctionInvokerNew("GLib", "new_int16")
+		newInt16VariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_int16")
 	}
 
 	var inArgs [1]gi.Argument
@@ -806,7 +806,7 @@ var newInt32VariantInvoker *gi.Function
 // VariantNewInt32 is a representation of the C type g_variant_new_int32.
 func VariantNewInt32(value int32) *Variant {
 	if newInt32VariantInvoker == nil {
-		newInt32VariantInvoker = gi.FunctionInvokerNew("GLib", "new_int32")
+		newInt32VariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_int32")
 	}
 
 	var inArgs [1]gi.Argument
@@ -822,7 +822,7 @@ var newInt64VariantInvoker *gi.Function
 // VariantNewInt64 is a representation of the C type g_variant_new_int64.
 func VariantNewInt64(value int64) *Variant {
 	if newInt64VariantInvoker == nil {
-		newInt64VariantInvoker = gi.FunctionInvokerNew("GLib", "new_int64")
+		newInt64VariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_int64")
 	}
 
 	var inArgs [1]gi.Argument
@@ -840,7 +840,7 @@ var newObjectPathVariantInvoker *gi.Function
 // VariantNewObjectPath is a representation of the C type g_variant_new_object_path.
 func VariantNewObjectPath(objectPath string) *Variant {
 	if newObjectPathVariantInvoker == nil {
-		newObjectPathVariantInvoker = gi.FunctionInvokerNew("GLib", "new_object_path")
+		newObjectPathVariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_object_path")
 	}
 
 	var inArgs [1]gi.Argument
@@ -864,7 +864,7 @@ var newSignatureVariantInvoker *gi.Function
 // VariantNewSignature is a representation of the C type g_variant_new_signature.
 func VariantNewSignature(signature string) *Variant {
 	if newSignatureVariantInvoker == nil {
-		newSignatureVariantInvoker = gi.FunctionInvokerNew("GLib", "new_signature")
+		newSignatureVariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_signature")
 	}
 
 	var inArgs [1]gi.Argument
@@ -880,7 +880,7 @@ var newStringVariantInvoker *gi.Function
 // VariantNewString is a representation of the C type g_variant_new_string.
 func VariantNewString(string_ string) *Variant {
 	if newStringVariantInvoker == nil {
-		newStringVariantInvoker = gi.FunctionInvokerNew("GLib", "new_string")
+		newStringVariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_string")
 	}
 
 	var inArgs [1]gi.Argument
@@ -898,7 +898,7 @@ var newTakeStringVariantInvoker *gi.Function
 // VariantNewTakeString is a representation of the C type g_variant_new_take_string.
 func VariantNewTakeString(string_ string) *Variant {
 	if newTakeStringVariantInvoker == nil {
-		newTakeStringVariantInvoker = gi.FunctionInvokerNew("GLib", "new_take_string")
+		newTakeStringVariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_take_string")
 	}
 
 	var inArgs [1]gi.Argument
@@ -916,7 +916,7 @@ var newUint16VariantInvoker *gi.Function
 // VariantNewUint16 is a representation of the C type g_variant_new_uint16.
 func VariantNewUint16(value uint16) *Variant {
 	if newUint16VariantInvoker == nil {
-		newUint16VariantInvoker = gi.FunctionInvokerNew("GLib", "new_uint16")
+		newUint16VariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_uint16")
 	}
 
 	var inArgs [1]gi.Argument
@@ -932,7 +932,7 @@ var newUint32VariantInvoker *gi.Function
 // VariantNewUint32 is a representation of the C type g_variant_new_uint32.
 func VariantNewUint32(value uint32) *Variant {
 	if newUint32VariantInvoker == nil {
-		newUint32VariantInvoker = gi.FunctionInvokerNew("GLib", "new_uint32")
+		newUint32VariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_uint32")
 	}
 
 	var inArgs [1]gi.Argument
@@ -948,7 +948,7 @@ var newUint64VariantInvoker *gi.Function
 // VariantNewUint64 is a representation of the C type g_variant_new_uint64.
 func VariantNewUint64(value uint64) *Variant {
 	if newUint64VariantInvoker == nil {
-		newUint64VariantInvoker = gi.FunctionInvokerNew("GLib", "new_uint64")
+		newUint64VariantInvoker = gi.StructFunctionInvokerNew("GLib", "Variant", "new_uint64")
 	}
 
 	var inArgs [1]gi.Argument
@@ -988,7 +988,7 @@ var newVariantTypeInvoker *gi.Function
 // VariantTypeNew is a representation of the C type g_variant_type_new.
 func VariantTypeNew(typeString string) *VariantType {
 	if newVariantTypeInvoker == nil {
-		newVariantTypeInvoker = gi.FunctionInvokerNew("GLib", "new")
+		newVariantTypeInvoker = gi.StructFunctionInvokerNew("GLib", "VariantType", "new")
 	}
 
 	var inArgs [1]gi.Argument

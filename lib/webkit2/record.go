@@ -13,7 +13,7 @@ var newApplicationInfoInvoker *gi.Function
 // ApplicationInfoNew is a representation of the C type webkit_application_info_new.
 func ApplicationInfoNew() *ApplicationInfo {
 	if newApplicationInfoInvoker == nil {
-		newApplicationInfoInvoker = gi.FunctionInvokerNew("WebKit2", "new")
+		newApplicationInfoInvoker = gi.StructFunctionInvokerNew("WebKit2", "ApplicationInfo", "new")
 	}
 
 	ret := newApplicationInfoInvoker.Invoke(nil, nil)
@@ -592,7 +592,7 @@ var newSecurityOriginInvoker *gi.Function
 // SecurityOriginNew is a representation of the C type webkit_security_origin_new.
 func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigin {
 	if newSecurityOriginInvoker == nil {
-		newSecurityOriginInvoker = gi.FunctionInvokerNew("WebKit2", "new")
+		newSecurityOriginInvoker = gi.StructFunctionInvokerNew("WebKit2", "SecurityOrigin", "new")
 	}
 
 	var inArgs [3]gi.Argument
@@ -610,7 +610,7 @@ var newForUriSecurityOriginInvoker *gi.Function
 // SecurityOriginNewForUri is a representation of the C type webkit_security_origin_new_for_uri.
 func SecurityOriginNewForUri(uri string) *SecurityOrigin {
 	if newForUriSecurityOriginInvoker == nil {
-		newForUriSecurityOriginInvoker = gi.FunctionInvokerNew("WebKit2", "new_for_uri")
+		newForUriSecurityOriginInvoker = gi.StructFunctionInvokerNew("WebKit2", "SecurityOrigin", "new_for_uri")
 	}
 
 	var inArgs [1]gi.Argument

@@ -299,7 +299,7 @@ var newValueArrayInvoker *gi.Function
 // ValueArrayNew is a representation of the C type g_value_array_new.
 func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	if newValueArrayInvoker == nil {
-		newValueArrayInvoker = gi.FunctionInvokerNew("GObject", "new")
+		newValueArrayInvoker = gi.StructFunctionInvokerNew("GObject", "ValueArray", "new")
 	}
 
 	var inArgs [1]gi.Argument

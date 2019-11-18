@@ -454,7 +454,7 @@ var newBorderInvoker *gi.Function
 // BorderNew is a representation of the C type gtk_border_new.
 func BorderNew() *Border {
 	if newBorderInvoker == nil {
-		newBorderInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newBorderInvoker = gi.StructFunctionInvokerNew("Gtk", "Border", "new")
 	}
 
 	ret := newBorderInvoker.Invoke(nil, nil)
@@ -2125,7 +2125,7 @@ var newIconSetInvoker *gi.Function
 // IconSetNew is a representation of the C type gtk_icon_set_new.
 func IconSetNew() *IconSet {
 	if newIconSetInvoker == nil {
-		newIconSetInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newIconSetInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSet", "new")
 	}
 
 	ret := newIconSetInvoker.Invoke(nil, nil)
@@ -2144,7 +2144,7 @@ var newIconSourceInvoker *gi.Function
 // IconSourceNew is a representation of the C type gtk_icon_source_new.
 func IconSourceNew() *IconSource {
 	if newIconSourceInvoker == nil {
-		newIconSourceInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newIconSourceInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSource", "new")
 	}
 
 	ret := newIconSourceInvoker.Invoke(nil, nil)
@@ -2956,7 +2956,7 @@ var newPaperSizeInvoker *gi.Function
 // PaperSizeNew is a representation of the C type gtk_paper_size_new.
 func PaperSizeNew(name string) *PaperSize {
 	if newPaperSizeInvoker == nil {
-		newPaperSizeInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newPaperSizeInvoker = gi.StructFunctionInvokerNew("Gtk", "PaperSize", "new")
 	}
 
 	var inArgs [1]gi.Argument
@@ -3477,7 +3477,7 @@ var newRequisitionInvoker *gi.Function
 // RequisitionNew is a representation of the C type gtk_requisition_new.
 func RequisitionNew() *Requisition {
 	if newRequisitionInvoker == nil {
-		newRequisitionInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newRequisitionInvoker = gi.StructFunctionInvokerNew("Gtk", "Requisition", "new")
 	}
 
 	ret := newRequisitionInvoker.Invoke(nil, nil)
@@ -4119,7 +4119,7 @@ var newNameSymbolicColorInvoker *gi.Function
 // SymbolicColorNewName is a representation of the C type gtk_symbolic_color_new_name.
 func SymbolicColorNewName(name string) *SymbolicColor {
 	if newNameSymbolicColorInvoker == nil {
-		newNameSymbolicColorInvoker = gi.FunctionInvokerNew("Gtk", "new_name")
+		newNameSymbolicColorInvoker = gi.StructFunctionInvokerNew("Gtk", "SymbolicColor", "new_name")
 	}
 
 	var inArgs [1]gi.Argument
@@ -4137,7 +4137,7 @@ var newWin32SymbolicColorInvoker *gi.Function
 // SymbolicColorNewWin32 is a representation of the C type gtk_symbolic_color_new_win32.
 func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	if newWin32SymbolicColorInvoker == nil {
-		newWin32SymbolicColorInvoker = gi.FunctionInvokerNew("Gtk", "new_win32")
+		newWin32SymbolicColorInvoker = gi.StructFunctionInvokerNew("Gtk", "SymbolicColor", "new_win32")
 	}
 
 	var inArgs [2]gi.Argument
@@ -4208,7 +4208,7 @@ var newTargetEntryInvoker *gi.Function
 // TargetEntryNew is a representation of the C type gtk_target_entry_new.
 func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	if newTargetEntryInvoker == nil {
-		newTargetEntryInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newTargetEntryInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetEntry", "new")
 	}
 
 	var inArgs [3]gi.Argument
@@ -4301,7 +4301,7 @@ var newTextAttributesInvoker *gi.Function
 // TextAttributesNew is a representation of the C type gtk_text_attributes_new.
 func TextAttributesNew() *TextAttributes {
 	if newTextAttributesInvoker == nil {
-		newTextAttributesInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newTextAttributesInvoker = gi.StructFunctionInvokerNew("Gtk", "TextAttributes", "new")
 	}
 
 	ret := newTextAttributesInvoker.Invoke(nil, nil)
@@ -4876,7 +4876,7 @@ var newTreePathInvoker *gi.Function
 // TreePathNew is a representation of the C type gtk_tree_path_new.
 func TreePathNew() *TreePath {
 	if newTreePathInvoker == nil {
-		newTreePathInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "new")
 	}
 
 	ret := newTreePathInvoker.Invoke(nil, nil)
@@ -4889,7 +4889,7 @@ var newFirstTreePathInvoker *gi.Function
 // TreePathNewFirst is a representation of the C type gtk_tree_path_new_first.
 func TreePathNewFirst() *TreePath {
 	if newFirstTreePathInvoker == nil {
-		newFirstTreePathInvoker = gi.FunctionInvokerNew("Gtk", "new_first")
+		newFirstTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "new_first")
 	}
 
 	ret := newFirstTreePathInvoker.Invoke(nil, nil)
@@ -4906,7 +4906,7 @@ var newFromStringTreePathInvoker *gi.Function
 // TreePathNewFromString is a representation of the C type gtk_tree_path_new_from_string.
 func TreePathNewFromString(path string) *TreePath {
 	if newFromStringTreePathInvoker == nil {
-		newFromStringTreePathInvoker = gi.FunctionInvokerNew("Gtk", "new_from_string")
+		newFromStringTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "new_from_string")
 	}
 
 	var inArgs [1]gi.Argument
@@ -5356,7 +5356,7 @@ var newWidgetPathInvoker *gi.Function
 // WidgetPathNew is a representation of the C type gtk_widget_path_new.
 func WidgetPathNew() *WidgetPath {
 	if newWidgetPathInvoker == nil {
-		newWidgetPathInvoker = gi.FunctionInvokerNew("Gtk", "new")
+		newWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "new")
 	}
 
 	ret := newWidgetPathInvoker.Invoke(nil, nil)

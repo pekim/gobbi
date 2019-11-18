@@ -32,6 +32,10 @@ func TestFunctionCallArgStringReturnString(t *testing.T) {
 //	assert.Equal(t, "xyz", end)
 //}
 
+func TestRecordConstructor(t *testing.T) {
+	assert.NotNil(t, DateNew().native)
+}
+
 func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		GetCodeset()

@@ -468,7 +468,7 @@ var newForXmlDBusNodeInfoInvoker *gi.Function
 // DBusNodeInfoNewForXml is a representation of the C type g_dbus_node_info_new_for_xml.
 func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
 	if newForXmlDBusNodeInfoInvoker == nil {
-		newForXmlDBusNodeInfoInvoker = gi.FunctionInvokerNew("Gio", "new_for_xml")
+		newForXmlDBusNodeInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusNodeInfo", "new_for_xml")
 	}
 
 	var inArgs [1]gi.Argument
@@ -814,7 +814,7 @@ var newFileAttributeInfoListInvoker *gi.Function
 // FileAttributeInfoListNew is a representation of the C type g_file_attribute_info_list_new.
 func FileAttributeInfoListNew() *FileAttributeInfoList {
 	if newFileAttributeInfoListInvoker == nil {
-		newFileAttributeInfoListInvoker = gi.FunctionInvokerNew("Gio", "new")
+		newFileAttributeInfoListInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeInfoList", "new")
 	}
 
 	ret := newFileAttributeInfoListInvoker.Invoke(nil, nil)
@@ -831,7 +831,7 @@ var newFileAttributeMatcherInvoker *gi.Function
 // FileAttributeMatcherNew is a representation of the C type g_file_attribute_matcher_new.
 func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 	if newFileAttributeMatcherInvoker == nil {
-		newFileAttributeMatcherInvoker = gi.FunctionInvokerNew("Gio", "new")
+		newFileAttributeMatcherInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeMatcher", "new")
 	}
 
 	var inArgs [1]gi.Argument
@@ -2262,7 +2262,7 @@ var newSrvTargetInvoker *gi.Function
 // SrvTargetNew is a representation of the C type g_srv_target_new.
 func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
 	if newSrvTargetInvoker == nil {
-		newSrvTargetInvoker = gi.FunctionInvokerNew("Gio", "new")
+		newSrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "new")
 	}
 
 	var inArgs [4]gi.Argument

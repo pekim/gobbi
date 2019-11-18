@@ -10,9 +10,10 @@ import (
 )
 
 type Function struct {
-	namespace string
-	funcName  string
-	info      *C.GIFunctionInfo
+	namespace  string
+	structName string
+	funcName   string
+	info       *C.GIFunctionInfo
 }
 
 func FunctionInvokerNew(namespace string, funcName string) *Function {
@@ -28,10 +29,50 @@ func FunctionInvokerNew(namespace string, funcName string) *Function {
 		cFuncName,
 	)
 
+	if invoker == nil {
+		panic(fmt.Sprintf("Failed to find function '%s' in namespace '%s'", funcName, namespace))
+	}
+
 	return &Function{
 		namespace: namespace,
 		funcName:  funcName,
 		info:      invoker,
+	}
+}
+
+func StructFunctionInvokerNew(namespace string, structName string, funcName string) *Function {
+	cNamespace := C.CString(namespace)
+	defer C.free(unsafe.Pointer(cNamespace))
+
+	cStructName := C.CString(structName)
+	defer C.free(unsafe.Pointer(cStructName))
+
+	cFuncName := C.CString(funcName)
+	defer C.free(unsafe.Pointer(cFuncName))
+
+	struct_ := C.g_irepository_find_by_name(
+		nil,
+		cNamespace,
+		cStructName,
+	)
+	if struct_ == nil {
+		panic(fmt.Sprintf("Failed to find struct '%s' in namespace '%s'", structName, namespace))
+	}
+
+	invoker := C.g_struct_info_find_method(
+		struct_,
+		cFuncName,
+	)
+	if invoker == nil {
+		panic(fmt.Sprintf("Failed to find function '%s' in struct %s in namespace '%s'",
+			funcName, structName, namespace))
+	}
+
+	return &Function{
+		namespace:  namespace,
+		structName: structName,
+		funcName:   funcName,
+		info:       invoker,
 	}
 }
 

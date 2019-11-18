@@ -83,7 +83,7 @@ var newAttrListInvoker *gi.Function
 // AttrListNew is a representation of the C type pango_attr_list_new.
 func AttrListNew() *AttrList {
 	if newAttrListInvoker == nil {
-		newAttrListInvoker = gi.FunctionInvokerNew("Pango", "new")
+		newAttrListInvoker = gi.StructFunctionInvokerNew("Pango", "AttrList", "new")
 	}
 
 	ret := newAttrListInvoker.Invoke(nil, nil)
@@ -206,7 +206,7 @@ var newFontDescriptionInvoker *gi.Function
 // FontDescriptionNew is a representation of the C type pango_font_description_new.
 func FontDescriptionNew() *FontDescription {
 	if newFontDescriptionInvoker == nil {
-		newFontDescriptionInvoker = gi.FunctionInvokerNew("Pango", "new")
+		newFontDescriptionInvoker = gi.StructFunctionInvokerNew("Pango", "FontDescription", "new")
 	}
 
 	ret := newFontDescriptionInvoker.Invoke(nil, nil)
@@ -280,7 +280,7 @@ var newFontMetricsInvoker *gi.Function
 // FontMetricsNew is a representation of the C type pango_font_metrics_new.
 func FontMetricsNew() *FontMetrics {
 	if newFontMetricsInvoker == nil {
-		newFontMetricsInvoker = gi.FunctionInvokerNew("Pango", "new")
+		newFontMetricsInvoker = gi.StructFunctionInvokerNew("Pango", "FontMetrics", "new")
 	}
 
 	ret := newFontMetricsInvoker.Invoke(nil, nil)
@@ -359,7 +359,7 @@ var newGlyphStringInvoker *gi.Function
 // GlyphStringNew is a representation of the C type pango_glyph_string_new.
 func GlyphStringNew() *GlyphString {
 	if newGlyphStringInvoker == nil {
-		newGlyphStringInvoker = gi.FunctionInvokerNew("Pango", "new")
+		newGlyphStringInvoker = gi.StructFunctionInvokerNew("Pango", "GlyphString", "new")
 	}
 
 	ret := newGlyphStringInvoker.Invoke(nil, nil)
@@ -397,7 +397,7 @@ var newItemInvoker *gi.Function
 // ItemNew is a representation of the C type pango_item_new.
 func ItemNew() *Item {
 	if newItemInvoker == nil {
-		newItemInvoker = gi.FunctionInvokerNew("Pango", "new")
+		newItemInvoker = gi.StructFunctionInvokerNew("Pango", "Item", "new")
 	}
 
 	ret := newItemInvoker.Invoke(nil, nil)

@@ -16,10 +16,10 @@ type Namespace struct {
 	Version string `xml:"version,attr"`
 	//SharedLibrary       string `xml:"shared-library,attr"`
 	//CDocPath            string `xml:"c-doc-path,attr"`
-	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
-	//CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
-	Aliases   Aliases      `xml:"alias"`
-	Bitfields Enumerations `xml:"bitfield"`
+	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
+	CSymbolPrefixes     string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
+	Aliases             Aliases      `xml:"alias"`
+	Bitfields           Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	//	Classes                       Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
@@ -29,13 +29,15 @@ type Namespace struct {
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
 
-	libDir        string
-	namespaces    namespaces
-	goPackageName string
+	libDir          string
+	namespaces      namespaces
+	goPackageName   string
+	cSymbolPrefixes []string
 }
 
 func (n *Namespace) init(namespaces namespaces) {
 	n.namespaces = namespaces
+	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")
 
 	n.Aliases.init(n)
 	n.Bitfields.init(n)

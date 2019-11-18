@@ -22,15 +22,22 @@ type Function struct {
 
 	namespace      *Namespace
 	goName         string
+	record         *Record
 	invokerVarName string
 }
 
-func (f *Function) init(ns *Namespace /*receiver *Record*/, namePrefix string) {
+func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.namespace = ns
 	f.Parameters.init(ns)
 	f.ReturnValue.init(ns)
 	f.goName = makeExportedGoName(f.Name)
-	f.invokerVarName = makeUnexportedGoName(f.Name, false) + namePrefix + "Invoker"
+	f.record = record
+
+	if record != nil {
+		f.invokerVarName = makeUnexportedGoName(f.Name, false) + record.Name + "Invoker"
+	} else {
+		f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
+	}
 }
 
 func (f *Function) supported() (bool, string) {
@@ -85,11 +92,22 @@ func (f *Function) generateBody(g *group) {
 		Block(jen.
 			Id(f.invokerVarName).
 			Op("=").
-			Qual(gi.PackageName, "FunctionInvokerNew").
-			Call(
-				jen.Lit(f.namespace.Name),
-				jen.Lit(f.Name),
-			))
+			Do(func(s *jen.Statement) {
+				if f.record != nil {
+					s.Qual(gi.PackageName, "StructFunctionInvokerNew").
+						Call(
+							jen.Lit(f.namespace.Name),
+							jen.Lit(f.record.Name),
+							jen.Lit(f.Name),
+						)
+				} else {
+					s.Qual(gi.PackageName, "FunctionInvokerNew").
+						Call(
+							jen.Lit(f.namespace.Name),
+							jen.Lit(f.Name),
+						)
+				}
+			}))
 	g.Line()
 
 	f.Parameters.generateInArgs(g)

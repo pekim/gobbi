@@ -201,7 +201,7 @@ var newCookieInvoker *gi.Function
 // CookieNew is a representation of the C type soup_cookie_new.
 func CookieNew(name string, value string, domain string, path string, maxAge int32) *Cookie {
 	if newCookieInvoker == nil {
-		newCookieInvoker = gi.FunctionInvokerNew("Soup", "new")
+		newCookieInvoker = gi.StructFunctionInvokerNew("Soup", "Cookie", "new")
 	}
 
 	var inArgs [5]gi.Argument
@@ -276,7 +276,7 @@ var newDateInvoker *gi.Function
 // DateNew is a representation of the C type soup_date_new.
 func DateNew(year int32, month int32, day int32, hour int32, minute int32, second int32) *Date {
 	if newDateInvoker == nil {
-		newDateInvoker = gi.FunctionInvokerNew("Soup", "new")
+		newDateInvoker = gi.StructFunctionInvokerNew("Soup", "Date", "new")
 	}
 
 	var inArgs [6]gi.Argument
@@ -297,7 +297,7 @@ var newFromNowDateInvoker *gi.Function
 // DateNewFromNow is a representation of the C type soup_date_new_from_now.
 func DateNewFromNow(offsetSeconds int32) *Date {
 	if newFromNowDateInvoker == nil {
-		newFromNowDateInvoker = gi.FunctionInvokerNew("Soup", "new_from_now")
+		newFromNowDateInvoker = gi.StructFunctionInvokerNew("Soup", "Date", "new_from_now")
 	}
 
 	var inArgs [1]gi.Argument
@@ -313,7 +313,7 @@ var newFromStringDateInvoker *gi.Function
 // DateNewFromString is a representation of the C type soup_date_new_from_string.
 func DateNewFromString(dateString string) *Date {
 	if newFromStringDateInvoker == nil {
-		newFromStringDateInvoker = gi.FunctionInvokerNew("Soup", "new_from_string")
+		newFromStringDateInvoker = gi.StructFunctionInvokerNew("Soup", "Date", "new_from_string")
 	}
 
 	var inArgs [1]gi.Argument
@@ -329,7 +329,7 @@ var newFromTimeTDateInvoker *gi.Function
 // DateNewFromTimeT is a representation of the C type soup_date_new_from_time_t.
 func DateNewFromTimeT(when int64) *Date {
 	if newFromTimeTDateInvoker == nil {
-		newFromTimeTDateInvoker = gi.FunctionInvokerNew("Soup", "new_from_time_t")
+		newFromTimeTDateInvoker = gi.StructFunctionInvokerNew("Soup", "Date", "new_from_time_t")
 	}
 
 	var inArgs [1]gi.Argument
@@ -425,7 +425,7 @@ var newMessageBodyInvoker *gi.Function
 // MessageBodyNew is a representation of the C type soup_message_body_new.
 func MessageBodyNew() *MessageBody {
 	if newMessageBodyInvoker == nil {
-		newMessageBodyInvoker = gi.FunctionInvokerNew("Soup", "new")
+		newMessageBodyInvoker = gi.StructFunctionInvokerNew("Soup", "MessageBody", "new")
 	}
 
 	ret := newMessageBodyInvoker.Invoke(nil, nil)
@@ -494,7 +494,7 @@ var newMultipartInvoker *gi.Function
 // MultipartNew is a representation of the C type soup_multipart_new.
 func MultipartNew(mimeType string) *Multipart {
 	if newMultipartInvoker == nil {
-		newMultipartInvoker = gi.FunctionInvokerNew("Soup", "new")
+		newMultipartInvoker = gi.StructFunctionInvokerNew("Soup", "Multipart", "new")
 	}
 
 	var inArgs [1]gi.Argument
@@ -762,7 +762,7 @@ var newURIInvoker *gi.Function
 // URINew is a representation of the C type soup_uri_new.
 func URINew(uriString string) *URI {
 	if newURIInvoker == nil {
-		newURIInvoker = gi.FunctionInvokerNew("Soup", "new")
+		newURIInvoker = gi.StructFunctionInvokerNew("Soup", "URI", "new")
 	}
 
 	var inArgs [1]gi.Argument
