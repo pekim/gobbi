@@ -28,7 +28,7 @@ func (r *ReturnValue) isVoid() bool {
 }
 
 func (r *ReturnValue) supported() (bool, string) {
-	if r.Type.supportedAsReturnValue() {
+	if r.supportedAsOutParameter() {
 		return true, ""
 	}
 

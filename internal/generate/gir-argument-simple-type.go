@@ -47,28 +47,3 @@ var argumentSetFunctionNames = map[string]string{
 
 	"utf8": "SetString",
 }
-
-func (t *Type) supportedAsReturnValue() bool {
-	if t == nil || t.Name == "none" {
-		// return type is void
-		return true
-	}
-
-	if _, ok := argumentGetFunctionNames[t.Name]; ok {
-		return true
-	}
-
-	return false
-}
-
-func (t *Type) supportedAsParameter() bool {
-	if t == nil || t.Name == "" {
-		return false
-	}
-
-	if _, ok := argumentSetFunctionNames[t.Name]; ok {
-		return true
-	}
-
-	return false
-}

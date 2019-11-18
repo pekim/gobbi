@@ -22,3 +22,28 @@ func (a *Argument) transferOwnershipJen(g *jen.Group) {
 
 	g.Lit(a.TransferOwnership == "full")
 }
+
+func (a Argument) supportedAsOutParameter() bool {
+	if a.Type == nil || a.Type.Name == "none" {
+		// return type is void
+		return true
+	}
+
+	if _, ok := argumentGetFunctionNames[a.Type.Name]; ok {
+		return true
+	}
+
+	return false
+}
+
+func (a Argument) supportedAsInParameter() bool {
+	if a.Type == nil || a.Type.Name == "" {
+		return false
+	}
+
+	if _, ok := argumentSetFunctionNames[a.Type.Name]; ok {
+		return true
+	}
+
+	return false
+}
