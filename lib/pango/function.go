@@ -4,31 +4,149 @@ package pango
 
 import gi "github.com/pekim/gobbi/internal/gi"
 
-// UNSUPPORTED : C value 'pango_attr_background_alpha_new' : return type 'Attribute' not supported
+var attrBackgroundAlphaNewInvoker *gi.Function
 
-// UNSUPPORTED : C value 'pango_attr_background_new' : return type 'Attribute' not supported
+// AttrBackgroundAlphaNew is a representation of the C type pango_attr_background_alpha_new.
+func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
+	if attrBackgroundAlphaNewInvoker == nil {
+		attrBackgroundAlphaNewInvoker = gi.FunctionInvokerNew("Pango", "attr_background_alpha_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(alpha)
+
+	ret := attrBackgroundAlphaNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
+
+var attrBackgroundNewInvoker *gi.Function
+
+// AttrBackgroundNew is a representation of the C type pango_attr_background_new.
+func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
+	if attrBackgroundNewInvoker == nil {
+		attrBackgroundNewInvoker = gi.FunctionInvokerNew("Pango", "attr_background_new")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint16(red)
+	inArgs[1].SetUint16(green)
+	inArgs[2].SetUint16(blue)
+
+	ret := attrBackgroundNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'pango_attr_family_new' : return type 'Attribute' not supported
+var attrFamilyNewInvoker *gi.Function
 
-// UNSUPPORTED : C value 'pango_attr_foreground_alpha_new' : return type 'Attribute' not supported
+// AttrFamilyNew is a representation of the C type pango_attr_family_new.
+func AttrFamilyNew(family string) *Attribute {
+	if attrFamilyNewInvoker == nil {
+		attrFamilyNewInvoker = gi.FunctionInvokerNew("Pango", "attr_family_new")
+	}
 
-// UNSUPPORTED : C value 'pango_attr_foreground_new' : return type 'Attribute' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(family)
+
+	ret := attrFamilyNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
+
+var attrForegroundAlphaNewInvoker *gi.Function
+
+// AttrForegroundAlphaNew is a representation of the C type pango_attr_foreground_alpha_new.
+func AttrForegroundAlphaNew(alpha uint16) *Attribute {
+	if attrForegroundAlphaNewInvoker == nil {
+		attrForegroundAlphaNewInvoker = gi.FunctionInvokerNew("Pango", "attr_foreground_alpha_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(alpha)
+
+	ret := attrForegroundAlphaNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
+
+var attrForegroundNewInvoker *gi.Function
+
+// AttrForegroundNew is a representation of the C type pango_attr_foreground_new.
+func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
+	if attrForegroundNewInvoker == nil {
+		attrForegroundNewInvoker = gi.FunctionInvokerNew("Pango", "attr_foreground_new")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint16(red)
+	inArgs[1].SetUint16(green)
+	inArgs[2].SetUint16(blue)
+
+	ret := attrForegroundNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'pango_attr_gravity_hint_new' : parameter 'hint' of type 'GravityHint' not supported
 
 // UNSUPPORTED : C value 'pango_attr_gravity_new' : parameter 'gravity' of type 'Gravity' not supported
 
-// UNSUPPORTED : C value 'pango_attr_letter_spacing_new' : return type 'Attribute' not supported
+var attrLetterSpacingNewInvoker *gi.Function
 
-// UNSUPPORTED : C value 'pango_attr_rise_new' : return type 'Attribute' not supported
+// AttrLetterSpacingNew is a representation of the C type pango_attr_letter_spacing_new.
+func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
+	if attrLetterSpacingNewInvoker == nil {
+		attrLetterSpacingNewInvoker = gi.FunctionInvokerNew("Pango", "attr_letter_spacing_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(letterSpacing)
+
+	ret := attrLetterSpacingNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
+
+var attrRiseNewInvoker *gi.Function
+
+// AttrRiseNew is a representation of the C type pango_attr_rise_new.
+func AttrRiseNew(rise int32) *Attribute {
+	if attrRiseNewInvoker == nil {
+		attrRiseNewInvoker = gi.FunctionInvokerNew("Pango", "attr_rise_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(rise)
+
+	ret := attrRiseNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'pango_attr_scale_new' : parameter 'scale_factor' of type 'gdouble' not supported
 
 // UNSUPPORTED : C value 'pango_attr_stretch_new' : parameter 'stretch' of type 'Stretch' not supported
 
-// UNSUPPORTED : C value 'pango_attr_strikethrough_color_new' : return type 'Attribute' not supported
+var attrStrikethroughColorNewInvoker *gi.Function
+
+// AttrStrikethroughColorNew is a representation of the C type pango_attr_strikethrough_color_new.
+func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
+	if attrStrikethroughColorNewInvoker == nil {
+		attrStrikethroughColorNewInvoker = gi.FunctionInvokerNew("Pango", "attr_strikethrough_color_new")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint16(red)
+	inArgs[1].SetUint16(green)
+	inArgs[2].SetUint16(blue)
+
+	ret := attrStrikethroughColorNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'pango_attr_strikethrough_new' : parameter 'strikethrough' of type 'gboolean' not supported
 
@@ -38,7 +156,23 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'pango_attr_type_register' : return type 'AttrType' not supported
 
-// UNSUPPORTED : C value 'pango_attr_underline_color_new' : return type 'Attribute' not supported
+var attrUnderlineColorNewInvoker *gi.Function
+
+// AttrUnderlineColorNew is a representation of the C type pango_attr_underline_color_new.
+func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
+	if attrUnderlineColorNewInvoker == nil {
+		attrUnderlineColorNewInvoker = gi.FunctionInvokerNew("Pango", "attr_underline_color_new")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint16(red)
+	inArgs[1].SetUint16(green)
+	inArgs[2].SetUint16(blue)
+
+	ret := attrUnderlineColorNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Attribute{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'pango_attr_underline_new' : parameter 'underline' of type 'Underline' not supported
 
@@ -109,7 +243,21 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	return outArgs[0].Int32(), outArgs[1].Int32()
 }
 
-// UNSUPPORTED : C value 'pango_font_description_from_string' : return type 'FontDescription' not supported
+var fontDescriptionFromStringInvoker *gi.Function
+
+// FontDescriptionFromString is a representation of the C type pango_font_description_from_string.
+func FontDescriptionFromString(str string) *FontDescription {
+	if fontDescriptionFromStringInvoker == nil {
+		fontDescriptionFromStringInvoker = gi.FunctionInvokerNew("Pango", "font_description_from_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	ret := fontDescriptionFromStringInvoker.Invoke(inArgs[:], nil)
+
+	return &FontDescription{native: ret.Pointer()}
+}
 
 var getLibSubdirectoryInvoker *gi.Function
 
@@ -155,9 +303,34 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_itemize_with_base_dir' : parameter 'context' of type 'Context' not supported
 
-// UNSUPPORTED : C value 'pango_language_from_string' : return type 'Language' not supported
+var languageFromStringInvoker *gi.Function
 
-// UNSUPPORTED : C value 'pango_language_get_default' : return type 'Language' not supported
+// LanguageFromString is a representation of the C type pango_language_from_string.
+func LanguageFromString(language string) *Language {
+	if languageFromStringInvoker == nil {
+		languageFromStringInvoker = gi.FunctionInvokerNew("Pango", "language_from_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(language)
+
+	ret := languageFromStringInvoker.Invoke(inArgs[:], nil)
+
+	return &Language{native: ret.Pointer()}
+}
+
+var languageGetDefaultInvoker *gi.Function
+
+// LanguageGetDefault is a representation of the C type pango_language_get_default.
+func LanguageGetDefault() *Language {
+	if languageGetDefaultInvoker == nil {
+		languageGetDefaultInvoker = gi.FunctionInvokerNew("Pango", "language_get_default")
+	}
+
+	ret := languageGetDefaultInvoker.Invoke(nil, nil)
+
+	return &Language{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'pbase_dir' of type 'Direction' not supported
 

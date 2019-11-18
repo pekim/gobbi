@@ -12,7 +12,7 @@ func (c *Constructor) init(ns *Namespace, record *Record) {
 	c.ReturnValue.Type.CType = record.CType + "*"
 	c.ReturnValue.Type.Name = record.Name
 
-	c.Function.init(ns /*nil, ""*/)
+	c.Function.init(ns /*nil*/, record.goName)
 	c.goName = record.goName + makeExportedGoName(c.Name)
 	//c.Function.ctorRecord = record
 

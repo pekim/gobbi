@@ -13,3 +13,13 @@ func (rr Records) generate(f *file) {
 		r.generate(f)
 	}
 }
+
+func (rr Records) byName(name string) (*Record, bool) {
+	for _, r := range rr {
+		if r.Name == name {
+			return r, true
+		}
+	}
+
+	return nil, false
+}

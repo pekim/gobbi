@@ -25,12 +25,12 @@ type Function struct {
 	invokerVarName string
 }
 
-func (f *Function) init(ns *Namespace /*receiver *Record, namePrefix string*/) {
+func (f *Function) init(ns *Namespace /*receiver *Record*/, namePrefix string) {
 	f.namespace = ns
 	f.Parameters.init(ns)
 	f.ReturnValue.init(ns)
 	f.goName = makeExportedGoName(f.Name)
-	f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
+	f.invokerVarName = makeUnexportedGoName(f.Name, false) + namePrefix + "Invoker"
 }
 
 func (f *Function) supported() (bool, string) {
@@ -117,8 +117,8 @@ func (f *Function) generateBody(g *group) {
 
 func (f *Function) generateReturnValues(g *jen.Group) {
 	if !f.ReturnValue.isVoid() {
-		arg := g.Id("ret")
-		f.ReturnValue.generateValue(arg)
+		arg := jen.Id("ret")
+		f.ReturnValue.generateValue(g, arg)
 	}
 
 	f.Parameters.generateOutValues(g)

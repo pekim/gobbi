@@ -2,6 +2,8 @@
 
 package pango
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type Analysis struct {
 	native uintptr
 	// UNSUPPORTED : C value 'shape_engine' : no Go type for 'EngineShape'
@@ -10,12 +12,11 @@ type Analysis struct {
 
 	// UNSUPPORTED : C value 'font' : no Go type for 'Font'
 
-	Level   uint8
-	Gravity uint8
-	Flags   uint8
-	Script  uint8
-	// UNSUPPORTED : C value 'language' : no Go type for 'Language'
-
+	Level    uint8
+	Gravity  uint8
+	Flags    uint8
+	Script   uint8
+	Language *Language
 	// UNSUPPORTED : C value 'extra_attrs' : no Go type for 'GLib.SList'
 
 }
@@ -34,40 +35,33 @@ type AttrClass struct {
 
 type AttrColor struct {
 	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
-	// UNSUPPORTED : C value 'color' : no Go type for 'Color'
-
+	Attr   *Attribute
+	Color  *Color
 }
 
 type AttrFloat struct {
 	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
+	Attr   *Attribute
 	// UNSUPPORTED : C value 'value' : no Go type for 'gdouble'
 
 }
 
 type AttrFontDesc struct {
 	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
-	// UNSUPPORTED : C value 'desc' : no Go type for 'FontDescription'
-
+	Attr   *Attribute
+	Desc   *FontDescription
 }
 
 type AttrFontFeatures struct {
-	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
+	native   uintptr
+	Attr     *Attribute
 	Features string
 }
 
 type AttrInt struct {
 	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
-	Value int32
+	Attr   *Attribute
+	Value  int32
 }
 
 type AttrIterator struct {
@@ -76,26 +70,32 @@ type AttrIterator struct {
 
 type AttrLanguage struct {
 	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
-	// UNSUPPORTED : C value 'value' : no Go type for 'Language'
-
+	Attr   *Attribute
+	Value  *Language
 }
 
 type AttrList struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_attr_list_new' : return type 'AttrList' not supported
+var newAttrListInvoker *gi.Function
+
+// AttrListNew is a representation of the C type pango_attr_list_new.
+func AttrListNew() *AttrList {
+	if newAttrListInvoker == nil {
+		newAttrListInvoker = gi.FunctionInvokerNew("Pango", "new")
+	}
+
+	ret := newAttrListInvoker.Invoke(nil, nil)
+
+	return &AttrList{native: ret.Pointer()}
+}
 
 type AttrShape struct {
-	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
-	// UNSUPPORTED : C value 'ink_rect' : no Go type for 'Rectangle'
-
-	// UNSUPPORTED : C value 'logical_rect' : no Go type for 'Rectangle'
-
+	native      uintptr
+	Attr        *Attribute
+	InkRect     *Rectangle
+	LogicalRect *Rectangle
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
 
 	// UNSUPPORTED : C value 'copy_func' : no Go type for 'AttrDataCopyFunc'
@@ -105,24 +105,21 @@ type AttrShape struct {
 }
 
 type AttrSize struct {
-	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
+	native   uintptr
+	Attr     *Attribute
 	Size     int32
 	Absolute uint32
 }
 
 type AttrString struct {
 	native uintptr
-	// UNSUPPORTED : C value 'attr' : no Go type for 'Attribute'
-
-	Value string
+	Attr   *Attribute
+	Value  string
 }
 
 type Attribute struct {
-	native uintptr
-	// UNSUPPORTED : C value 'klass' : no Go type for 'AttrClass'
-
+	native     uintptr
+	Klass      *AttrClass
 	StartIndex uint32
 	EndIndex   uint32
 }
@@ -151,9 +148,8 @@ type EngineInfo struct {
 	Id         string
 	EngineType string
 	RenderType string
-	// UNSUPPORTED : C value 'scripts' : no Go type for 'EngineScriptInfo'
-
-	NScripts int32
+	Scripts    *EngineScriptInfo
+	NScripts   int32
 }
 
 type EngineLangClass struct {
@@ -205,7 +201,18 @@ type FontDescription struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_font_description_new' : return type 'FontDescription' not supported
+var newFontDescriptionInvoker *gi.Function
+
+// FontDescriptionNew is a representation of the C type pango_font_description_new.
+func FontDescriptionNew() *FontDescription {
+	if newFontDescriptionInvoker == nil {
+		newFontDescriptionInvoker = gi.FunctionInvokerNew("Pango", "new")
+	}
+
+	ret := newFontDescriptionInvoker.Invoke(nil, nil)
+
+	return &FontDescription{native: ret.Pointer()}
+}
 
 type FontFaceClass struct {
 	native uintptr
@@ -268,7 +275,18 @@ type FontMetrics struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_font_metrics_new' : return type 'FontMetrics' not supported
+var newFontMetricsInvoker *gi.Function
+
+// FontMetricsNew is a representation of the C type pango_font_metrics_new.
+func FontMetricsNew() *FontMetrics {
+	if newFontMetricsInvoker == nil {
+		newFontMetricsInvoker = gi.FunctionInvokerNew("Pango", "new")
+	}
+
+	ret := newFontMetricsInvoker.Invoke(nil, nil)
+
+	return &FontMetrics{native: ret.Pointer()}
+}
 
 type FontsetClass struct {
 	native uintptr
@@ -304,26 +322,21 @@ type GlyphGeometry struct {
 }
 
 type GlyphInfo struct {
-	native uintptr
-	Glyph  Glyph
-	// UNSUPPORTED : C value 'geometry' : no Go type for 'GlyphGeometry'
-
-	// UNSUPPORTED : C value 'attr' : no Go type for 'GlyphVisAttr'
-
+	native   uintptr
+	Glyph    Glyph
+	Geometry *GlyphGeometry
+	Attr     *GlyphVisAttr
 }
 
 type GlyphItem struct {
 	native uintptr
-	// UNSUPPORTED : C value 'item' : no Go type for 'Item'
-
-	// UNSUPPORTED : C value 'glyphs' : no Go type for 'GlyphString'
-
+	Item   *Item
+	Glyphs *GlyphString
 }
 
 type GlyphItemIter struct {
-	native uintptr
-	// UNSUPPORTED : C value 'glyph_item' : no Go type for 'GlyphItem'
-
+	native     uintptr
+	GlyphItem  *GlyphItem
 	Text       string
 	StartGlyph int32
 	StartIndex int32
@@ -341,7 +354,18 @@ type GlyphString struct {
 	LogClusters int32
 }
 
-// UNSUPPORTED : C value 'pango_glyph_string_new' : return type 'GlyphString' not supported
+var newGlyphStringInvoker *gi.Function
+
+// GlyphStringNew is a representation of the C type pango_glyph_string_new.
+func GlyphStringNew() *GlyphString {
+	if newGlyphStringInvoker == nil {
+		newGlyphStringInvoker = gi.FunctionInvokerNew("Pango", "new")
+	}
+
+	ret := newGlyphStringInvoker.Invoke(nil, nil)
+
+	return &GlyphString{native: ret.Pointer()}
+}
 
 type GlyphVisAttr struct {
 	native         uintptr
@@ -365,11 +389,21 @@ type Item struct {
 	Offset   int32
 	Length   int32
 	NumChars int32
-	// UNSUPPORTED : C value 'analysis' : no Go type for 'Analysis'
-
+	Analysis *Analysis
 }
 
-// UNSUPPORTED : C value 'pango_item_new' : return type 'Item' not supported
+var newItemInvoker *gi.Function
+
+// ItemNew is a representation of the C type pango_item_new.
+func ItemNew() *Item {
+	if newItemInvoker == nil {
+		newItemInvoker = gi.FunctionInvokerNew("Pango", "new")
+	}
+
+	ret := newItemInvoker.Invoke(nil, nil)
+
+	return &Item{native: ret.Pointer()}
+}
 
 type Language struct {
 	native uintptr

@@ -2,6 +2,8 @@
 
 package gio
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type ActionEntry struct {
 	native uintptr
 	Name   string
@@ -238,9 +240,8 @@ type AsyncResultIface struct {
 }
 
 type BufferedInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'FilterInputStreamClass'
-
+	native      uintptr
+	ParentClass *FilterInputStreamClass
 	// UNSUPPORTED : C value 'fill' : missing Type
 
 	// UNSUPPORTED : C value 'fill_async' : missing Type
@@ -264,9 +265,8 @@ type BufferedInputStreamPrivate struct {
 }
 
 type BufferedOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'FilterOutputStreamClass'
-
+	native      uintptr
+	ParentClass *FilterOutputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -316,9 +316,8 @@ type ConverterIface struct {
 }
 
 type ConverterInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'FilterInputStreamClass'
-
+	native      uintptr
+	ParentClass *FilterInputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -336,9 +335,8 @@ type ConverterInputStreamPrivate struct {
 }
 
 type ConverterOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'FilterOutputStreamClass'
-
+	native      uintptr
+	ParentClass *FilterOutputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -465,7 +463,21 @@ type DBusNodeInfo struct {
 
 }
 
-// UNSUPPORTED : C value 'g_dbus_node_info_new_for_xml' : return type 'DBusNodeInfo' not supported
+var newForXmlDBusNodeInfoInvoker *gi.Function
+
+// DBusNodeInfoNewForXml is a representation of the C type g_dbus_node_info_new_for_xml.
+func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
+	if newForXmlDBusNodeInfoInvoker == nil {
+		newForXmlDBusNodeInfoInvoker = gi.FunctionInvokerNew("Gio", "new_for_xml")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(xmlData)
+
+	ret := newForXmlDBusNodeInfoInvoker.Invoke(inArgs[:], nil)
+
+	return &DBusNodeInfo{native: ret.Pointer()}
+}
 
 type DBusObjectIface struct {
 	native uintptr
@@ -595,9 +607,8 @@ type DBusSubtreeVTable struct {
 }
 
 type DataInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'BufferedInputStreamClass'
-
+	native      uintptr
+	ParentClass *BufferedInputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -615,9 +626,8 @@ type DataInputStreamPrivate struct {
 }
 
 type DataOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'FilterOutputStreamClass'
-
+	native      uintptr
+	ParentClass *FilterOutputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -795,18 +805,42 @@ type FileAttributeInfo struct {
 
 type FileAttributeInfoList struct {
 	native uintptr
-	// UNSUPPORTED : C value 'infos' : no Go type for 'FileAttributeInfo'
-
+	Infos  *FileAttributeInfo
 	NInfos int32
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_info_list_new' : return type 'FileAttributeInfoList' not supported
+var newFileAttributeInfoListInvoker *gi.Function
+
+// FileAttributeInfoListNew is a representation of the C type g_file_attribute_info_list_new.
+func FileAttributeInfoListNew() *FileAttributeInfoList {
+	if newFileAttributeInfoListInvoker == nil {
+		newFileAttributeInfoListInvoker = gi.FunctionInvokerNew("Gio", "new")
+	}
+
+	ret := newFileAttributeInfoListInvoker.Invoke(nil, nil)
+
+	return &FileAttributeInfoList{native: ret.Pointer()}
+}
 
 type FileAttributeMatcher struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_matcher_new' : return type 'FileAttributeMatcher' not supported
+var newFileAttributeMatcherInvoker *gi.Function
+
+// FileAttributeMatcherNew is a representation of the C type g_file_attribute_matcher_new.
+func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
+	if newFileAttributeMatcherInvoker == nil {
+		newFileAttributeMatcherInvoker = gi.FunctionInvokerNew("Gio", "new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(attributes)
+
+	ret := newFileAttributeMatcherInvoker.Invoke(inArgs[:], nil)
+
+	return &FileAttributeMatcher{native: ret.Pointer()}
+}
 
 type FileDescriptorBasedIface struct {
 	native uintptr
@@ -853,9 +887,8 @@ type FileEnumeratorPrivate struct {
 }
 
 type FileIOStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'IOStreamClass'
-
+	native      uintptr
+	ParentClass *IOStreamClass
 	// UNSUPPORTED : C value 'tell' : missing Type
 
 	// UNSUPPORTED : C value 'can_seek' : missing Type
@@ -1111,9 +1144,8 @@ type FileInfoClass struct {
 }
 
 type FileInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'InputStreamClass'
-
+	native      uintptr
+	ParentClass *InputStreamClass
 	// UNSUPPORTED : C value 'tell' : missing Type
 
 	// UNSUPPORTED : C value 'can_seek' : missing Type
@@ -1167,9 +1199,8 @@ type FileMonitorPrivate struct {
 }
 
 type FileOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'OutputStreamClass'
-
+	native      uintptr
+	ParentClass *OutputStreamClass
 	// UNSUPPORTED : C value 'tell' : missing Type
 
 	// UNSUPPORTED : C value 'can_seek' : missing Type
@@ -1219,9 +1250,8 @@ type FilenameCompleterClass struct {
 }
 
 type FilterInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'InputStreamClass'
-
+	native      uintptr
+	ParentClass *InputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -1231,9 +1261,8 @@ type FilterInputStreamClass struct {
 }
 
 type FilterOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'OutputStreamClass'
-
+	native      uintptr
+	ParentClass *OutputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -1347,9 +1376,8 @@ type InetAddressPrivate struct {
 }
 
 type InetSocketAddressClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketAddressClass'
-
+	native      uintptr
+	ParentClass *SocketAddressClass
 }
 
 type InetSocketAddressPrivate struct {
@@ -1454,9 +1482,8 @@ type LoadableIconIface struct {
 }
 
 type MemoryInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'InputStreamClass'
-
+	native      uintptr
+	ParentClass *InputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -1474,9 +1501,8 @@ type MemoryInputStreamPrivate struct {
 }
 
 type MemoryOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'OutputStreamClass'
-
+	native      uintptr
+	ParentClass *OutputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -1644,9 +1670,8 @@ type MountOperationPrivate struct {
 }
 
 type NativeSocketAddressClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketAddressClass'
-
+	native      uintptr
+	ParentClass *SocketAddressClass
 }
 
 type NativeSocketAddressPrivate struct {
@@ -1654,9 +1679,8 @@ type NativeSocketAddressPrivate struct {
 }
 
 type NativeVolumeMonitorClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'VolumeMonitorClass'
-
+	native      uintptr
+	ParentClass *VolumeMonitorClass
 	// UNSUPPORTED : C value 'get_mount_for_mount_path' : missing Type
 
 }
@@ -1699,8 +1723,7 @@ type OutputMessage struct {
 	native uintptr
 	// UNSUPPORTED : C value 'address' : no Go type for 'SocketAddress'
 
-	// UNSUPPORTED : C value 'vectors' : no Go type for 'OutputVector'
-
+	Vectors    *OutputVector
 	NumVectors uint32
 	BytesSent  uint32
 	// UNSUPPORTED : C value 'control_messages' : missing Type
@@ -1820,9 +1843,8 @@ type PollableOutputStreamInterface struct {
 }
 
 type ProxyAddressClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'InetSocketAddressClass'
-
+	native      uintptr
+	ParentClass *InetSocketAddressClass
 }
 
 type ProxyAddressEnumeratorClass struct {
@@ -2130,9 +2152,8 @@ type SocketConnectableIface struct {
 }
 
 type SocketConnectionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'IOStreamClass'
-
+	native      uintptr
+	ParentClass *IOStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -2210,9 +2231,8 @@ type SocketPrivate struct {
 }
 
 type SocketServiceClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketListenerClass'
-
+	native      uintptr
+	ParentClass *SocketListenerClass
 	// UNSUPPORTED : C value 'incoming' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
@@ -2237,7 +2257,24 @@ type SrvTarget struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_srv_target_new' : return type 'SrvTarget' not supported
+var newSrvTargetInvoker *gi.Function
+
+// SrvTargetNew is a representation of the C type g_srv_target_new.
+func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
+	if newSrvTargetInvoker == nil {
+		newSrvTargetInvoker = gi.FunctionInvokerNew("Gio", "new")
+	}
+
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(hostname)
+	inArgs[1].SetUint16(port)
+	inArgs[2].SetUint16(priority)
+	inArgs[3].SetUint16(weight)
+
+	ret := newSrvTargetInvoker.Invoke(inArgs[:], nil)
+
+	return &SrvTarget{native: ret.Pointer()}
+}
 
 type StaticResource struct {
 	native uintptr
@@ -2248,9 +2285,8 @@ type TaskClass struct {
 }
 
 type TcpConnectionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketConnectionClass'
-
+	native      uintptr
+	ParentClass *SocketConnectionClass
 }
 
 type TcpConnectionPrivate struct {
@@ -2258,9 +2294,8 @@ type TcpConnectionPrivate struct {
 }
 
 type TcpWrapperConnectionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'TcpConnectionClass'
-
+	native      uintptr
+	ParentClass *TcpConnectionClass
 }
 
 type TcpWrapperConnectionPrivate struct {
@@ -2272,9 +2307,8 @@ type ThemedIconClass struct {
 }
 
 type ThreadedSocketServiceClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketServiceClass'
-
+	native      uintptr
+	ParentClass *SocketServiceClass
 	// UNSUPPORTED : C value 'run' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
@@ -2338,9 +2372,8 @@ type TlsClientConnectionInterface struct {
 }
 
 type TlsConnectionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'IOStreamClass'
-
+	native      uintptr
+	ParentClass *IOStreamClass
 	// UNSUPPORTED : C value 'accept_certificate' : missing Type
 
 	// UNSUPPORTED : C value 'handshake' : missing Type
@@ -2440,9 +2473,8 @@ type TlsServerConnectionInterface struct {
 }
 
 type UnixConnectionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketConnectionClass'
-
+	native      uintptr
+	ParentClass *SocketConnectionClass
 }
 
 type UnixConnectionPrivate struct {
@@ -2450,9 +2482,8 @@ type UnixConnectionPrivate struct {
 }
 
 type UnixCredentialsMessageClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketControlMessageClass'
-
+	native      uintptr
+	ParentClass *SocketControlMessageClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -2484,9 +2515,8 @@ type UnixFDListPrivate struct {
 }
 
 type UnixFDMessageClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketControlMessageClass'
-
+	native      uintptr
+	ParentClass *SocketControlMessageClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -2498,9 +2528,8 @@ type UnixFDMessagePrivate struct {
 }
 
 type UnixInputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'InputStreamClass'
-
+	native      uintptr
+	ParentClass *InputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -2530,9 +2559,8 @@ type UnixMountPoint struct {
 }
 
 type UnixOutputStreamClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'OutputStreamClass'
-
+	native      uintptr
+	ParentClass *OutputStreamClass
 	// UNSUPPORTED : C value '_g_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_g_reserved2' : missing Type
@@ -2550,9 +2578,8 @@ type UnixOutputStreamPrivate struct {
 }
 
 type UnixSocketAddressClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SocketAddressClass'
-
+	native      uintptr
+	ParentClass *SocketAddressClass
 }
 
 type UnixSocketAddressPrivate struct {

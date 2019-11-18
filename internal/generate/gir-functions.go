@@ -4,7 +4,7 @@ type Functions []*Function
 
 func (ff Functions) init(ns *Namespace /*, namePrefix string*/) {
 	for _, function := range ff {
-		function.init(ns /*nil, namePrefix*/)
+		function.init(ns /*nil*/, "")
 	}
 }
 

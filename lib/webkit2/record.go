@@ -2,11 +2,24 @@
 
 package webkit2
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type ApplicationInfo struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_application_info_new' : return type 'ApplicationInfo' not supported
+var newApplicationInfoInvoker *gi.Function
+
+// ApplicationInfoNew is a representation of the C type webkit_application_info_new.
+func ApplicationInfoNew() *ApplicationInfo {
+	if newApplicationInfoInvoker == nil {
+		newApplicationInfoInvoker = gi.FunctionInvokerNew("WebKit2", "new")
+	}
+
+	ret := newApplicationInfoInvoker.Invoke(nil, nil)
+
+	return &ApplicationInfo{native: ret.Pointer()}
+}
 
 type AuthenticationRequestClass struct {
 	native uintptr
@@ -369,9 +382,8 @@ type NavigationAction struct {
 }
 
 type NavigationPolicyDecisionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'PolicyDecisionClass'
-
+	native      uintptr
+	ParentClass *PolicyDecisionClass
 	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
 
 	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
@@ -533,9 +545,8 @@ type PrintOperationPrivate struct {
 }
 
 type ResponsePolicyDecisionClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'PolicyDecisionClass'
-
+	native      uintptr
+	ParentClass *PolicyDecisionClass
 	// UNSUPPORTED : C value '_webkit_reserved0' : missing Type
 
 	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
@@ -576,9 +587,39 @@ type SecurityOrigin struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_security_origin_new' : return type 'SecurityOrigin' not supported
+var newSecurityOriginInvoker *gi.Function
 
-// UNSUPPORTED : C value 'webkit_security_origin_new_for_uri' : return type 'SecurityOrigin' not supported
+// SecurityOriginNew is a representation of the C type webkit_security_origin_new.
+func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigin {
+	if newSecurityOriginInvoker == nil {
+		newSecurityOriginInvoker = gi.FunctionInvokerNew("WebKit2", "new")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(protocol)
+	inArgs[1].SetString(host)
+	inArgs[2].SetUint16(port)
+
+	ret := newSecurityOriginInvoker.Invoke(inArgs[:], nil)
+
+	return &SecurityOrigin{native: ret.Pointer()}
+}
+
+var newForUriSecurityOriginInvoker *gi.Function
+
+// SecurityOriginNewForUri is a representation of the C type webkit_security_origin_new_for_uri.
+func SecurityOriginNewForUri(uri string) *SecurityOrigin {
+	if newForUriSecurityOriginInvoker == nil {
+		newForUriSecurityOriginInvoker = gi.FunctionInvokerNew("WebKit2", "new_for_uri")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uri)
+
+	ret := newForUriSecurityOriginInvoker.Invoke(inArgs[:], nil)
+
+	return &SecurityOrigin{native: ret.Pointer()}
+}
 
 type SettingsClass struct {
 	native uintptr
@@ -808,8 +849,7 @@ type WebViewBasePrivate struct {
 
 type WebViewClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'WebViewBaseClass'
-
+	Parent *WebViewBaseClass
 	// UNSUPPORTED : C value 'load_changed' : missing Type
 
 	// UNSUPPORTED : C value 'load_failed' : missing Type

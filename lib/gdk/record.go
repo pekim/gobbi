@@ -45,7 +45,7 @@ type EventButton struct {
 
 	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 	Button uint32
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
@@ -93,7 +93,7 @@ type EventCrossing struct {
 
 	// UNSUPPORTED : C value 'focus' : no Go type for 'gboolean'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 }
 
@@ -118,8 +118,7 @@ type EventExpose struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 
 	SendEvent int8
-	// UNSUPPORTED : C value 'area' : no Go type for 'Rectangle'
-
+	Area      *Rectangle
 	// UNSUPPORTED : C value 'region' : no Go type for 'cairo.Region'
 
 	Count int32
@@ -158,7 +157,7 @@ type EventKey struct {
 
 	SendEvent int8
 	Time      uint32
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 	Keyval          uint32
 	Length          int32
@@ -182,7 +181,7 @@ type EventMotion struct {
 
 	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 	IsHint int16
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
@@ -204,8 +203,7 @@ type EventOwnerChange struct {
 
 	// UNSUPPORTED : C value 'reason' : no Go type for 'OwnerChange'
 
-	// UNSUPPORTED : C value 'selection' : no Go type for 'Atom'
-
+	Selection     *Atom
 	Time          uint32
 	SelectionTime uint32
 }
@@ -257,10 +255,9 @@ type EventProperty struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 
 	SendEvent int8
-	// UNSUPPORTED : C value 'atom' : no Go type for 'Atom'
-
-	Time uint32
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	Atom      *Atom
+	Time      uint32
+	// UNSUPPORTED : C value 'state' : no Go type for 'PropertyState'
 
 }
 
@@ -288,7 +285,7 @@ type EventScroll struct {
 
 	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 	// UNSUPPORTED : C value 'direction' : no Go type for 'ScrollDirection'
 
@@ -312,13 +309,10 @@ type EventSelection struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 
 	SendEvent int8
-	// UNSUPPORTED : C value 'selection' : no Go type for 'Atom'
-
-	// UNSUPPORTED : C value 'target' : no Go type for 'Atom'
-
-	// UNSUPPORTED : C value 'property' : no Go type for 'Atom'
-
-	Time uint32
+	Selection *Atom
+	Target    *Atom
+	Property  *Atom
+	Time      uint32
 	// UNSUPPORTED : C value 'requestor' : no Go type for 'Window'
 
 }
@@ -353,10 +347,9 @@ type EventTouch struct {
 
 	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
-	// UNSUPPORTED : C value 'sequence' : no Go type for 'EventSequence'
-
+	Sequence *EventSequence
 	// UNSUPPORTED : C value 'emulating_pointer' : no Go type for 'gboolean'
 
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
@@ -393,7 +386,7 @@ type EventTouchpadPinch struct {
 
 	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 }
 
@@ -419,7 +412,7 @@ type EventTouchpadSwipe struct {
 
 	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
 
-	// UNSUPPORTED : C value 'state' : missing Type.Name
+	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 
 }
 

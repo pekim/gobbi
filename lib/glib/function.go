@@ -1149,7 +1149,22 @@ func HostnameToUnicode(hostname string) string {
 
 // UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
 
-// UNSUPPORTED : C value 'g_iconv_open' : return type 'IConv' not supported
+var iconvOpenInvoker *gi.Function
+
+// IconvOpen is a representation of the C type g_iconv_open.
+func IconvOpen(toCodeset string, fromCodeset string) *IConv {
+	if iconvOpenInvoker == nil {
+		iconvOpenInvoker = gi.FunctionInvokerNew("GLib", "iconv_open")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(toCodeset)
+	inArgs[1].SetString(fromCodeset)
+
+	ret := iconvOpenInvoker.Invoke(inArgs[:], nil)
+
+	return &IConv{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_idle_add' : parameter 'function' of type 'SourceFunc' not supported
 
@@ -1157,7 +1172,18 @@ func HostnameToUnicode(hostname string) string {
 
 // UNSUPPORTED : C value 'g_idle_remove_by_data' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_idle_source_new' : return type 'Source' not supported
+var idleSourceNewInvoker *gi.Function
+
+// IdleSourceNew is a representation of the C type g_idle_source_new.
+func IdleSourceNew() *Source {
+	if idleSourceNewInvoker == nil {
+		idleSourceNewInvoker = gi.FunctionInvokerNew("GLib", "idle_source_new")
+	}
+
+	ret := idleSourceNewInvoker.Invoke(nil, nil)
+
+	return &Source{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_int64_equal' : parameter 'v1' of type 'gpointer' not supported
 
@@ -1281,13 +1307,57 @@ func LogRemoveHandler(logDomain string, handlerId uint32) {
 
 // UNSUPPORTED : C value 'g_logv' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_main_context_default' : return type 'MainContext' not supported
+var mainContextDefaultInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_main_context_get_thread_default' : return type 'MainContext' not supported
+// MainContextDefault is a representation of the C type g_main_context_default.
+func MainContextDefault() *MainContext {
+	if mainContextDefaultInvoker == nil {
+		mainContextDefaultInvoker = gi.FunctionInvokerNew("GLib", "main_context_default")
+	}
 
-// UNSUPPORTED : C value 'g_main_context_ref_thread_default' : return type 'MainContext' not supported
+	ret := mainContextDefaultInvoker.Invoke(nil, nil)
 
-// UNSUPPORTED : C value 'g_main_current_source' : return type 'Source' not supported
+	return &MainContext{native: ret.Pointer()}
+}
+
+var mainContextGetThreadDefaultInvoker *gi.Function
+
+// MainContextGetThreadDefault is a representation of the C type g_main_context_get_thread_default.
+func MainContextGetThreadDefault() *MainContext {
+	if mainContextGetThreadDefaultInvoker == nil {
+		mainContextGetThreadDefaultInvoker = gi.FunctionInvokerNew("GLib", "main_context_get_thread_default")
+	}
+
+	ret := mainContextGetThreadDefaultInvoker.Invoke(nil, nil)
+
+	return &MainContext{native: ret.Pointer()}
+}
+
+var mainContextRefThreadDefaultInvoker *gi.Function
+
+// MainContextRefThreadDefault is a representation of the C type g_main_context_ref_thread_default.
+func MainContextRefThreadDefault() *MainContext {
+	if mainContextRefThreadDefaultInvoker == nil {
+		mainContextRefThreadDefaultInvoker = gi.FunctionInvokerNew("GLib", "main_context_ref_thread_default")
+	}
+
+	ret := mainContextRefThreadDefaultInvoker.Invoke(nil, nil)
+
+	return &MainContext{native: ret.Pointer()}
+}
+
+var mainCurrentSourceInvoker *gi.Function
+
+// MainCurrentSource is a representation of the C type g_main_current_source.
+func MainCurrentSource() *Source {
+	if mainCurrentSourceInvoker == nil {
+		mainCurrentSourceInvoker = gi.FunctionInvokerNew("GLib", "main_current_source")
+	}
+
+	ret := mainCurrentSourceInvoker.Invoke(nil, nil)
+
+	return &Source{native: ret.Pointer()}
+}
 
 var mainDepthInvoker *gi.Function
 
@@ -2107,9 +2177,38 @@ func Strfreev(strArray string) {
 
 }
 
-// UNSUPPORTED : C value 'g_string_new' : return type 'String' not supported
+var stringNewInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_string_new_len' : return type 'String' not supported
+// StringNew is a representation of the C type g_string_new.
+func StringNew(init string) *String {
+	if stringNewInvoker == nil {
+		stringNewInvoker = gi.FunctionInvokerNew("GLib", "string_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(init)
+
+	ret := stringNewInvoker.Invoke(inArgs[:], nil)
+
+	return &String{native: ret.Pointer()}
+}
+
+var stringNewLenInvoker *gi.Function
+
+// StringNewLen is a representation of the C type g_string_new_len.
+func StringNewLen(init string, len int32) *String {
+	if stringNewLenInvoker == nil {
+		stringNewLenInvoker = gi.FunctionInvokerNew("GLib", "string_new_len")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(init)
+	inArgs[1].SetInt32(len)
+
+	ret := stringNewLenInvoker.Invoke(inArgs[:], nil)
+
+	return &String{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
 
@@ -2394,7 +2493,21 @@ func TestBugBase(uriPattern string) {
 
 // UNSUPPORTED : C value 'g_test_create_case' : parameter 'data_size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_test_create_suite' : return type 'TestSuite' not supported
+var testCreateSuiteInvoker *gi.Function
+
+// TestCreateSuite is a representation of the C type g_test_create_suite.
+func TestCreateSuite(suiteName string) *TestSuite {
+	if testCreateSuiteInvoker == nil {
+		testCreateSuiteInvoker = gi.FunctionInvokerNew("GLib", "test_create_suite")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(suiteName)
+
+	ret := testCreateSuiteInvoker.Invoke(inArgs[:], nil)
+
+	return &TestSuite{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
@@ -2416,7 +2529,18 @@ func TestFail() {
 
 // UNSUPPORTED : C value 'g_test_get_filename' : parameter 'file_type' of type 'TestFileType' not supported
 
-// UNSUPPORTED : C value 'g_test_get_root' : return type 'TestSuite' not supported
+var testGetRootInvoker *gi.Function
+
+// TestGetRoot is a representation of the C type g_test_get_root.
+func TestGetRoot() *TestSuite {
+	if testGetRootInvoker == nil {
+		testGetRootInvoker = gi.FunctionInvokerNew("GLib", "test_get_root")
+	}
+
+	ret := testGetRootInvoker.Invoke(nil, nil)
+
+	return &TestSuite{native: ret.Pointer()}
+}
 
 var testIncompleteInvoker *gi.Function
 
@@ -2671,7 +2795,18 @@ func ThreadPoolStopUnusedThreads() {
 
 }
 
-// UNSUPPORTED : C value 'g_thread_self' : return type 'Thread' not supported
+var threadSelfInvoker *gi.Function
+
+// ThreadSelf is a representation of the C type g_thread_self.
+func ThreadSelf() *Thread {
+	if threadSelfInvoker == nil {
+		threadSelfInvoker = gi.FunctionInvokerNew("GLib", "thread_self")
+	}
+
+	ret := threadSelfInvoker.Invoke(nil, nil)
+
+	return &Thread{native: ret.Pointer()}
+}
 
 var threadYieldInvoker *gi.Function
 
@@ -2695,9 +2830,37 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_timeout_add_seconds_full' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_timeout_source_new' : return type 'Source' not supported
+var timeoutSourceNewInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_timeout_source_new_seconds' : return type 'Source' not supported
+// TimeoutSourceNew is a representation of the C type g_timeout_source_new.
+func TimeoutSourceNew(interval uint32) *Source {
+	if timeoutSourceNewInvoker == nil {
+		timeoutSourceNewInvoker = gi.FunctionInvokerNew("GLib", "timeout_source_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(interval)
+
+	ret := timeoutSourceNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Source{native: ret.Pointer()}
+}
+
+var timeoutSourceNewSecondsInvoker *gi.Function
+
+// TimeoutSourceNewSeconds is a representation of the C type g_timeout_source_new_seconds.
+func TimeoutSourceNewSeconds(interval uint32) *Source {
+	if timeoutSourceNewSecondsInvoker == nil {
+		timeoutSourceNewSecondsInvoker = gi.FunctionInvokerNew("GLib", "timeout_source_new_seconds")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(interval)
+
+	ret := timeoutSourceNewSecondsInvoker.Invoke(inArgs[:], nil)
+
+	return &Source{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_trash_stack_height' : parameter 'stack_p' of type 'TrashStack' not supported
 
@@ -2811,7 +2974,21 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_unix_signal_add_full' : parameter 'handler' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_unix_signal_source_new' : return type 'Source' not supported
+var unixSignalSourceNewInvoker *gi.Function
+
+// UnixSignalSourceNew is a representation of the C type g_unix_signal_source_new.
+func UnixSignalSourceNew(signum int32) *Source {
+	if unixSignalSourceNewInvoker == nil {
+		unixSignalSourceNewInvoker = gi.FunctionInvokerNew("GLib", "unix_signal_source_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(signum)
+
+	ret := unixSignalSourceNewInvoker.Invoke(inArgs[:], nil)
+
+	return &Source{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_unlink' : parameter 'filename' of type 'filename' not supported
 
@@ -3244,7 +3421,21 @@ func UuidStringRandom() string {
 
 // UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_checked_' : return type 'VariantType' not supported
+var variantTypeCheckedInvoker *gi.Function
+
+// VariantTypeChecked is a representation of the C type g_variant_type_checked_.
+func VariantTypeChecked(arg0 string) *VariantType {
+	if variantTypeCheckedInvoker == nil {
+		variantTypeCheckedInvoker = gi.FunctionInvokerNew("GLib", "variant_type_checked_")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(arg0)
+
+	ret := variantTypeCheckedInvoker.Invoke(inArgs[:], nil)
+
+	return &VariantType{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_type_string_get_depth_' : return type 'gsize' not supported
 

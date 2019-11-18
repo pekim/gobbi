@@ -49,3 +49,7 @@ func (a Argument) String(transferOwnership bool) string {
 	goString := C.GoString(cString)
 	return goString
 }
+
+func (a Argument) Pointer() uintptr {
+	return (uintptr)(*(*C.gpointer)(unsafe.Pointer(&a)))
+}

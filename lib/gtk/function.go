@@ -38,9 +38,37 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gtk_binding_set_by_class' : parameter 'object_class' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_find' : return type 'BindingSet' not supported
+var bindingSetFindInvoker *gi.Function
 
-// UNSUPPORTED : C value 'gtk_binding_set_new' : return type 'BindingSet' not supported
+// BindingSetFind is a representation of the C type gtk_binding_set_find.
+func BindingSetFind(setName string) *BindingSet {
+	if bindingSetFindInvoker == nil {
+		bindingSetFindInvoker = gi.FunctionInvokerNew("Gtk", "binding_set_find")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(setName)
+
+	ret := bindingSetFindInvoker.Invoke(inArgs[:], nil)
+
+	return &BindingSet{native: ret.Pointer()}
+}
+
+var bindingSetNewInvoker *gi.Function
+
+// BindingSetNew is a representation of the C type gtk_binding_set_new.
+func BindingSetNew(setName string) *BindingSet {
+	if bindingSetNewInvoker == nil {
+		bindingSetNewInvoker = gi.FunctionInvokerNew("Gtk", "binding_set_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(setName)
+
+	ret := bindingSetNewInvoker.Invoke(inArgs[:], nil)
+
+	return &BindingSet{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'gtk_bindings_activate' : parameter 'object' of type 'GObject.Object' not supported
 

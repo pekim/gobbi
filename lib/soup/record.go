@@ -2,6 +2,8 @@
 
 package soup
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type AddressClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -43,9 +45,8 @@ type AuthClass struct {
 }
 
 type AuthDomainBasicClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'AuthDomainClass'
-
+	native      uintptr
+	ParentClass *AuthDomainClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -75,9 +76,8 @@ type AuthDomainClass struct {
 }
 
 type AuthDomainDigestClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'AuthDomainClass'
-
+	native      uintptr
+	ParentClass *AuthDomainClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -102,7 +102,7 @@ type AuthManagerPrivate struct {
 
 type Buffer struct {
 	native uintptr
-	// UNSUPPORTED : C value 'data' : missing Type.Name
+	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
 
 	Length uintptr
 }
@@ -184,20 +184,37 @@ type ContentSnifferPrivate struct {
 }
 
 type Cookie struct {
-	native uintptr
-	Name   string
-	Value  string
-	Domain string
-	Path   string
-	// UNSUPPORTED : C value 'expires' : no Go type for 'Date'
-
+	native  uintptr
+	Name    string
+	Value   string
+	Domain  string
+	Path    string
+	Expires *Date
 	// UNSUPPORTED : C value 'secure' : no Go type for 'gboolean'
 
 	// UNSUPPORTED : C value 'http_only' : no Go type for 'gboolean'
 
 }
 
-// UNSUPPORTED : C value 'soup_cookie_new' : return type 'Cookie' not supported
+var newCookieInvoker *gi.Function
+
+// CookieNew is a representation of the C type soup_cookie_new.
+func CookieNew(name string, value string, domain string, path string, maxAge int32) *Cookie {
+	if newCookieInvoker == nil {
+		newCookieInvoker = gi.FunctionInvokerNew("Soup", "new")
+	}
+
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(value)
+	inArgs[2].SetString(domain)
+	inArgs[3].SetString(path)
+	inArgs[4].SetInt32(maxAge)
+
+	ret := newCookieInvoker.Invoke(inArgs[:], nil)
+
+	return &Cookie{native: ret.Pointer()}
+}
 
 type CookieJarClass struct {
 	native uintptr
@@ -216,9 +233,8 @@ type CookieJarClass struct {
 }
 
 type CookieJarDBClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'CookieJarClass'
-
+	native      uintptr
+	ParentClass *CookieJarClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -230,9 +246,8 @@ type CookieJarDBClass struct {
 }
 
 type CookieJarTextClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'CookieJarClass'
-
+	native      uintptr
+	ParentClass *CookieJarClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -256,13 +271,74 @@ type Date struct {
 	Offset int32
 }
 
-// UNSUPPORTED : C value 'soup_date_new' : return type 'Date' not supported
+var newDateInvoker *gi.Function
 
-// UNSUPPORTED : C value 'soup_date_new_from_now' : return type 'Date' not supported
+// DateNew is a representation of the C type soup_date_new.
+func DateNew(year int32, month int32, day int32, hour int32, minute int32, second int32) *Date {
+	if newDateInvoker == nil {
+		newDateInvoker = gi.FunctionInvokerNew("Soup", "new")
+	}
 
-// UNSUPPORTED : C value 'soup_date_new_from_string' : return type 'Date' not supported
+	var inArgs [6]gi.Argument
+	inArgs[0].SetInt32(year)
+	inArgs[1].SetInt32(month)
+	inArgs[2].SetInt32(day)
+	inArgs[3].SetInt32(hour)
+	inArgs[4].SetInt32(minute)
+	inArgs[5].SetInt32(second)
 
-// UNSUPPORTED : C value 'soup_date_new_from_time_t' : return type 'Date' not supported
+	ret := newDateInvoker.Invoke(inArgs[:], nil)
+
+	return &Date{native: ret.Pointer()}
+}
+
+var newFromNowDateInvoker *gi.Function
+
+// DateNewFromNow is a representation of the C type soup_date_new_from_now.
+func DateNewFromNow(offsetSeconds int32) *Date {
+	if newFromNowDateInvoker == nil {
+		newFromNowDateInvoker = gi.FunctionInvokerNew("Soup", "new_from_now")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(offsetSeconds)
+
+	ret := newFromNowDateInvoker.Invoke(inArgs[:], nil)
+
+	return &Date{native: ret.Pointer()}
+}
+
+var newFromStringDateInvoker *gi.Function
+
+// DateNewFromString is a representation of the C type soup_date_new_from_string.
+func DateNewFromString(dateString string) *Date {
+	if newFromStringDateInvoker == nil {
+		newFromStringDateInvoker = gi.FunctionInvokerNew("Soup", "new_from_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(dateString)
+
+	ret := newFromStringDateInvoker.Invoke(inArgs[:], nil)
+
+	return &Date{native: ret.Pointer()}
+}
+
+var newFromTimeTDateInvoker *gi.Function
+
+// DateNewFromTimeT is a representation of the C type soup_date_new_from_time_t.
+func DateNewFromTimeT(when int64) *Date {
+	if newFromTimeTDateInvoker == nil {
+		newFromTimeTDateInvoker = gi.FunctionInvokerNew("Soup", "new_from_time_t")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(when)
+
+	ret := newFromTimeTDateInvoker.Invoke(inArgs[:], nil)
+
+	return &Date{native: ret.Pointer()}
+}
 
 type HSTSEnforcerClass struct {
 	native uintptr
@@ -287,9 +363,8 @@ type HSTSEnforcerClass struct {
 }
 
 type HSTSEnforcerDBClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'HSTSEnforcerClass'
-
+	native      uintptr
+	ParentClass *HSTSEnforcerClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -309,11 +384,10 @@ type HSTSEnforcerPrivate struct {
 }
 
 type HSTSPolicy struct {
-	native uintptr
-	Domain string
-	MaxAge uint64
-	// UNSUPPORTED : C value 'expires' : no Go type for 'Date'
-
+	native  uintptr
+	Domain  string
+	MaxAge  uint64
+	Expires *Date
 	// UNSUPPORTED : C value 'include_subdomains' : no Go type for 'gboolean'
 
 }
@@ -346,7 +420,18 @@ type MessageBody struct {
 	Length int64
 }
 
-// UNSUPPORTED : C value 'soup_message_body_new' : return type 'MessageBody' not supported
+var newMessageBodyInvoker *gi.Function
+
+// MessageBodyNew is a representation of the C type soup_message_body_new.
+func MessageBodyNew() *MessageBody {
+	if newMessageBodyInvoker == nil {
+		newMessageBodyInvoker = gi.FunctionInvokerNew("Soup", "new")
+	}
+
+	ret := newMessageBodyInvoker.Invoke(nil, nil)
+
+	return &MessageBody{native: ret.Pointer()}
+}
 
 type MessageClass struct {
 	native uintptr
@@ -404,7 +489,21 @@ type Multipart struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'soup_multipart_new' : return type 'Multipart' not supported
+var newMultipartInvoker *gi.Function
+
+// MultipartNew is a representation of the C type soup_multipart_new.
+func MultipartNew(mimeType string) *Multipart {
+	if newMultipartInvoker == nil {
+		newMultipartInvoker = gi.FunctionInvokerNew("Soup", "new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(mimeType)
+
+	ret := newMultipartInvoker.Invoke(inArgs[:], nil)
+
+	return &Multipart{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'soup_multipart_new_from_message' : parameter 'headers' of type 'MessageHeaders' not supported
 
@@ -489,8 +588,7 @@ type RequestClass struct {
 
 type RequestDataClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'RequestClass'
-
+	Parent *RequestClass
 }
 
 type RequestDataPrivate struct {
@@ -499,8 +597,7 @@ type RequestDataPrivate struct {
 
 type RequestFileClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'RequestClass'
-
+	Parent *RequestClass
 }
 
 type RequestFilePrivate struct {
@@ -509,8 +606,7 @@ type RequestFilePrivate struct {
 
 type RequestHTTPClass struct {
 	native uintptr
-	// UNSUPPORTED : C value 'parent' : no Go type for 'RequestClass'
-
+	Parent *RequestClass
 }
 
 type RequestHTTPPrivate struct {
@@ -554,9 +650,8 @@ type ServerClass struct {
 }
 
 type SessionAsyncClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SessionClass'
-
+	native      uintptr
+	ParentClass *SessionClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -616,9 +711,8 @@ type SessionFeatureInterface struct {
 }
 
 type SessionSyncClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'SessionClass'
-
+	native      uintptr
+	ParentClass *SessionClass
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
@@ -663,7 +757,21 @@ type URI struct {
 	Fragment string
 }
 
-// UNSUPPORTED : C value 'soup_uri_new' : return type 'URI' not supported
+var newURIInvoker *gi.Function
+
+// URINew is a representation of the C type soup_uri_new.
+func URINew(uriString string) *URI {
+	if newURIInvoker == nil {
+		newURIInvoker = gi.FunctionInvokerNew("Soup", "new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uriString)
+
+	ret := newURIInvoker.Invoke(inArgs[:], nil)
+
+	return &URI{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'soup_uri_new_with_base' : parameter 'base' of type 'URI' not supported
 
@@ -713,9 +821,8 @@ type WebsocketExtensionClass struct {
 }
 
 type WebsocketExtensionDeflateClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'WebsocketExtensionClass'
-
+	native      uintptr
+	ParentClass *WebsocketExtensionClass
 }
 
 type WebsocketExtensionManagerClass struct {

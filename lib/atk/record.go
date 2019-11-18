@@ -107,9 +107,8 @@ type EditableTextIface struct {
 }
 
 type GObjectAccessibleClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ObjectClass'
-
+	native      uintptr
+	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'pad1' : no Go type for 'Function'
 
 	// UNSUPPORTED : C value 'pad2' : no Go type for 'Function'
@@ -208,15 +207,13 @@ type MiscClass struct {
 }
 
 type NoOpObjectClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ObjectClass'
-
+	native      uintptr
+	ParentClass *ObjectClass
 }
 
 type NoOpObjectFactoryClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ObjectFactoryClass'
-
+	native      uintptr
+	ParentClass *ObjectFactoryClass
 }
 
 type ObjectClass struct {
@@ -296,9 +293,8 @@ type ObjectFactoryClass struct {
 }
 
 type PlugClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ObjectClass'
-
+	native      uintptr
+	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'get_object_id' : missing Type
 
 }
@@ -371,9 +367,8 @@ type SelectionIface struct {
 }
 
 type SocketClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ObjectClass'
-
+	native      uintptr
+	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'embed' : missing Type
 
 }
@@ -559,9 +554,8 @@ type TextIface struct {
 }
 
 type TextRange struct {
-	native uintptr
-	// UNSUPPORTED : C value 'bounds' : no Go type for 'TextRectangle'
-
+	native      uintptr
+	Bounds      *TextRectangle
 	StartOffset int32
 	EndOffset   int32
 	Content     string

@@ -2,6 +2,8 @@
 
 package glib
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type Array struct {
 	native uintptr
 	Data   string
@@ -58,11 +60,36 @@ type Date struct {
 	Year       uint32
 }
 
-// UNSUPPORTED : C value 'g_date_new' : return type 'Date' not supported
+var newDateInvoker *gi.Function
+
+// DateNew is a representation of the C type g_date_new.
+func DateNew() *Date {
+	if newDateInvoker == nil {
+		newDateInvoker = gi.FunctionInvokerNew("GLib", "new")
+	}
+
+	ret := newDateInvoker.Invoke(nil, nil)
+
+	return &Date{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_date_new_dmy' : parameter 'day' of type 'DateDay' not supported
 
-// UNSUPPORTED : C value 'g_date_new_julian' : return type 'Date' not supported
+var newJulianDateInvoker *gi.Function
+
+// DateNewJulian is a representation of the C type g_date_new_julian.
+func DateNewJulian(julianDay uint32) *Date {
+	if newJulianDateInvoker == nil {
+		newJulianDateInvoker = gi.FunctionInvokerNew("GLib", "new_julian")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(julianDay)
+
+	ret := newJulianDateInvoker.Invoke(inArgs[:], nil)
+
+	return &Date{native: ret.Pointer()}
+}
 
 type DateTime struct {
 	native uintptr
@@ -76,17 +103,67 @@ type DateTime struct {
 
 // UNSUPPORTED : C value 'g_date_time_new_from_timeval_utc' : parameter 'tv' of type 'TimeVal' not supported
 
-// UNSUPPORTED : C value 'g_date_time_new_from_unix_local' : return type 'DateTime' not supported
+var newFromUnixLocalDateTimeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_date_time_new_from_unix_utc' : return type 'DateTime' not supported
+// DateTimeNewFromUnixLocal is a representation of the C type g_date_time_new_from_unix_local.
+func DateTimeNewFromUnixLocal(t int64) *DateTime {
+	if newFromUnixLocalDateTimeInvoker == nil {
+		newFromUnixLocalDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_from_unix_local")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(t)
+
+	ret := newFromUnixLocalDateTimeInvoker.Invoke(inArgs[:], nil)
+
+	return &DateTime{native: ret.Pointer()}
+}
+
+var newFromUnixUtcDateTimeInvoker *gi.Function
+
+// DateTimeNewFromUnixUtc is a representation of the C type g_date_time_new_from_unix_utc.
+func DateTimeNewFromUnixUtc(t int64) *DateTime {
+	if newFromUnixUtcDateTimeInvoker == nil {
+		newFromUnixUtcDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_from_unix_utc")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(t)
+
+	ret := newFromUnixUtcDateTimeInvoker.Invoke(inArgs[:], nil)
+
+	return &DateTime{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_date_time_new_local' : parameter 'seconds' of type 'gdouble' not supported
 
 // UNSUPPORTED : C value 'g_date_time_new_now' : parameter 'tz' of type 'TimeZone' not supported
 
-// UNSUPPORTED : C value 'g_date_time_new_now_local' : return type 'DateTime' not supported
+var newNowLocalDateTimeInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_date_time_new_now_utc' : return type 'DateTime' not supported
+// DateTimeNewNowLocal is a representation of the C type g_date_time_new_now_local.
+func DateTimeNewNowLocal() *DateTime {
+	if newNowLocalDateTimeInvoker == nil {
+		newNowLocalDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_now_local")
+	}
+
+	ret := newNowLocalDateTimeInvoker.Invoke(nil, nil)
+
+	return &DateTime{native: ret.Pointer()}
+}
+
+var newNowUtcDateTimeInvoker *gi.Function
+
+// DateTimeNewNowUtc is a representation of the C type g_date_time_new_now_utc.
+func DateTimeNewNowUtc() *DateTime {
+	if newNowUtcDateTimeInvoker == nil {
+		newNowUtcDateTimeInvoker = gi.FunctionInvokerNew("GLib", "new_now_utc")
+	}
+
+	ret := newNowUtcDateTimeInvoker.Invoke(nil, nil)
+
+	return &DateTime{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_date_time_new_utc' : parameter 'seconds' of type 'gdouble' not supported
 
@@ -129,10 +206,8 @@ type Hook struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
 
-	// UNSUPPORTED : C value 'next' : no Go type for 'Hook'
-
-	// UNSUPPORTED : C value 'prev' : no Go type for 'Hook'
-
+	Next     *Hook
+	Prev     *Hook
 	RefCount uint32
 	HookId   uint64
 	Flags    uint32
@@ -147,8 +222,7 @@ type HookList struct {
 	SeqId    uint64
 	HookSize uint32
 	IsSetup  uint32
-	// UNSUPPORTED : C value 'hooks' : no Go type for 'Hook'
-
+	Hooks    *Hook
 	// UNSUPPORTED : C value 'dummy3' : no Go type for 'gpointer'
 
 	// UNSUPPORTED : C value 'finalize_hook' : no Go type for 'HookFinalizeFunc'
@@ -167,7 +241,21 @@ type IOChannel struct {
 
 // UNSUPPORTED : C value 'g_io_channel_new_file' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_unix_new' : return type 'IOChannel' not supported
+var unixNewIOChannelInvoker *gi.Function
+
+// IOChannelUnixNew is a representation of the C type g_io_channel_unix_new.
+func IOChannelUnixNew(fd int32) *IOChannel {
+	if unixNewIOChannelInvoker == nil {
+		unixNewIOChannelInvoker = gi.FunctionInvokerNew("GLib", "unix_new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(fd)
+
+	ret := unixNewIOChannelInvoker.Invoke(inArgs[:], nil)
+
+	return &IOChannel{native: ret.Pointer()}
+}
 
 type IOFuncs struct {
 	native uintptr
@@ -193,7 +281,18 @@ type KeyFile struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_key_file_new' : return type 'KeyFile' not supported
+var newKeyFileInvoker *gi.Function
+
+// KeyFileNew is a representation of the C type g_key_file_new.
+func KeyFileNew() *KeyFile {
+	if newKeyFileInvoker == nil {
+		newKeyFileInvoker = gi.FunctionInvokerNew("GLib", "new")
+	}
+
+	ret := newKeyFileInvoker.Invoke(nil, nil)
+
+	return &KeyFile{native: ret.Pointer()}
+}
 
 type List struct {
 	native uintptr
@@ -217,7 +316,18 @@ type MainContext struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_main_context_new' : return type 'MainContext' not supported
+var newMainContextInvoker *gi.Function
+
+// MainContextNew is a representation of the C type g_main_context_new.
+func MainContextNew() *MainContext {
+	if newMainContextInvoker == nil {
+		newMainContextInvoker = gi.FunctionInvokerNew("GLib", "new")
+	}
+
+	ret := newMainContextInvoker.Invoke(nil, nil)
+
+	return &MainContext{native: ret.Pointer()}
+}
 
 type MainLoop struct {
 	native uintptr
@@ -277,14 +387,10 @@ type Node struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
 
-	// UNSUPPORTED : C value 'next' : no Go type for 'Node'
-
-	// UNSUPPORTED : C value 'prev' : no Go type for 'Node'
-
-	// UNSUPPORTED : C value 'parent' : no Go type for 'Node'
-
-	// UNSUPPORTED : C value 'children' : no Go type for 'Node'
-
+	Next     *Node
+	Prev     *Node
+	Parent   *Node
+	Children *Node
 }
 
 type Once struct {
@@ -382,10 +488,8 @@ type Scanner struct {
 	MaxParseErrors uint32
 	ParseErrors    uint32
 	InputName      string
-	// UNSUPPORTED : C value 'qdata' : no Go type for 'Data'
-
-	// UNSUPPORTED : C value 'config' : no Go type for 'ScannerConfig'
-
+	Qdata          *Data
+	Config         *ScannerConfig
 	// UNSUPPORTED : C value 'token' : no Go type for 'TokenType'
 
 	// UNSUPPORTED : C value 'value' : no Go type for 'TokenValue'
@@ -554,13 +658,63 @@ type TimeZone struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_time_zone_new' : return type 'TimeZone' not supported
+var newTimeZoneInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_time_zone_new_local' : return type 'TimeZone' not supported
+// TimeZoneNew is a representation of the C type g_time_zone_new.
+func TimeZoneNew(identifier string) *TimeZone {
+	if newTimeZoneInvoker == nil {
+		newTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new")
+	}
 
-// UNSUPPORTED : C value 'g_time_zone_new_offset' : return type 'TimeZone' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(identifier)
 
-// UNSUPPORTED : C value 'g_time_zone_new_utc' : return type 'TimeZone' not supported
+	ret := newTimeZoneInvoker.Invoke(inArgs[:], nil)
+
+	return &TimeZone{native: ret.Pointer()}
+}
+
+var newLocalTimeZoneInvoker *gi.Function
+
+// TimeZoneNewLocal is a representation of the C type g_time_zone_new_local.
+func TimeZoneNewLocal() *TimeZone {
+	if newLocalTimeZoneInvoker == nil {
+		newLocalTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new_local")
+	}
+
+	ret := newLocalTimeZoneInvoker.Invoke(nil, nil)
+
+	return &TimeZone{native: ret.Pointer()}
+}
+
+var newOffsetTimeZoneInvoker *gi.Function
+
+// TimeZoneNewOffset is a representation of the C type g_time_zone_new_offset.
+func TimeZoneNewOffset(seconds int32) *TimeZone {
+	if newOffsetTimeZoneInvoker == nil {
+		newOffsetTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new_offset")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(seconds)
+
+	ret := newOffsetTimeZoneInvoker.Invoke(inArgs[:], nil)
+
+	return &TimeZone{native: ret.Pointer()}
+}
+
+var newUtcTimeZoneInvoker *gi.Function
+
+// TimeZoneNewUtc is a representation of the C type g_time_zone_new_utc.
+func TimeZoneNewUtc() *TimeZone {
+	if newUtcTimeZoneInvoker == nil {
+		newUtcTimeZoneInvoker = gi.FunctionInvokerNew("GLib", "new_utc")
+	}
+
+	ret := newUtcTimeZoneInvoker.Invoke(nil, nil)
+
+	return &TimeZone{native: ret.Pointer()}
+}
 
 type Timer struct {
 	native uintptr
@@ -568,8 +722,7 @@ type Timer struct {
 
 type TrashStack struct {
 	native uintptr
-	// UNSUPPORTED : C value 'next' : no Go type for 'TrashStack'
-
+	Next   *TrashStack
 }
 
 type Tree struct {
@@ -586,7 +739,21 @@ type Variant struct {
 
 // UNSUPPORTED : C value 'g_variant_new_boolean' : parameter 'value' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_byte' : return type 'Variant' not supported
+var newByteVariantInvoker *gi.Function
+
+// VariantNewByte is a representation of the C type g_variant_new_byte.
+func VariantNewByte(value uint8) *Variant {
+	if newByteVariantInvoker == nil {
+		newByteVariantInvoker = gi.FunctionInvokerNew("GLib", "new_byte")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint8(value)
+
+	ret := newByteVariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_new_bytestring' : parameter 'string' has no type
 
@@ -602,17 +769,87 @@ type Variant struct {
 
 // UNSUPPORTED : C value 'g_variant_new_from_data' : parameter 'type' of type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_handle' : return type 'Variant' not supported
+var newHandleVariantInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_variant_new_int16' : return type 'Variant' not supported
+// VariantNewHandle is a representation of the C type g_variant_new_handle.
+func VariantNewHandle(value int32) *Variant {
+	if newHandleVariantInvoker == nil {
+		newHandleVariantInvoker = gi.FunctionInvokerNew("GLib", "new_handle")
+	}
 
-// UNSUPPORTED : C value 'g_variant_new_int32' : return type 'Variant' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(value)
 
-// UNSUPPORTED : C value 'g_variant_new_int64' : return type 'Variant' not supported
+	ret := newHandleVariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
+
+var newInt16VariantInvoker *gi.Function
+
+// VariantNewInt16 is a representation of the C type g_variant_new_int16.
+func VariantNewInt16(value int16) *Variant {
+	if newInt16VariantInvoker == nil {
+		newInt16VariantInvoker = gi.FunctionInvokerNew("GLib", "new_int16")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt16(value)
+
+	ret := newInt16VariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
+
+var newInt32VariantInvoker *gi.Function
+
+// VariantNewInt32 is a representation of the C type g_variant_new_int32.
+func VariantNewInt32(value int32) *Variant {
+	if newInt32VariantInvoker == nil {
+		newInt32VariantInvoker = gi.FunctionInvokerNew("GLib", "new_int32")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(value)
+
+	ret := newInt32VariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
+
+var newInt64VariantInvoker *gi.Function
+
+// VariantNewInt64 is a representation of the C type g_variant_new_int64.
+func VariantNewInt64(value int64) *Variant {
+	if newInt64VariantInvoker == nil {
+		newInt64VariantInvoker = gi.FunctionInvokerNew("GLib", "new_int64")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(value)
+
+	ret := newInt64VariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_new_maybe' : parameter 'child_type' of type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_object_path' : return type 'Variant' not supported
+var newObjectPathVariantInvoker *gi.Function
+
+// VariantNewObjectPath is a representation of the C type g_variant_new_object_path.
+func VariantNewObjectPath(objectPath string) *Variant {
+	if newObjectPathVariantInvoker == nil {
+		newObjectPathVariantInvoker = gi.FunctionInvokerNew("GLib", "new_object_path")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(objectPath)
+
+	ret := newObjectPathVariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_new_objv' : parameter 'strv' has no type
 
@@ -622,21 +859,105 @@ type Variant struct {
 
 // UNSUPPORTED : C value 'g_variant_new_printf' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_new_signature' : return type 'Variant' not supported
+var newSignatureVariantInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_variant_new_string' : return type 'Variant' not supported
+// VariantNewSignature is a representation of the C type g_variant_new_signature.
+func VariantNewSignature(signature string) *Variant {
+	if newSignatureVariantInvoker == nil {
+		newSignatureVariantInvoker = gi.FunctionInvokerNew("GLib", "new_signature")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(signature)
+
+	ret := newSignatureVariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
+
+var newStringVariantInvoker *gi.Function
+
+// VariantNewString is a representation of the C type g_variant_new_string.
+func VariantNewString(string_ string) *Variant {
+	if newStringVariantInvoker == nil {
+		newStringVariantInvoker = gi.FunctionInvokerNew("GLib", "new_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := newStringVariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_new_strv' : parameter 'strv' has no type
 
-// UNSUPPORTED : C value 'g_variant_new_take_string' : return type 'Variant' not supported
+var newTakeStringVariantInvoker *gi.Function
+
+// VariantNewTakeString is a representation of the C type g_variant_new_take_string.
+func VariantNewTakeString(string_ string) *Variant {
+	if newTakeStringVariantInvoker == nil {
+		newTakeStringVariantInvoker = gi.FunctionInvokerNew("GLib", "new_take_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	ret := newTakeStringVariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_new_tuple' : parameter 'children' has no type
 
-// UNSUPPORTED : C value 'g_variant_new_uint16' : return type 'Variant' not supported
+var newUint16VariantInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_variant_new_uint32' : return type 'Variant' not supported
+// VariantNewUint16 is a representation of the C type g_variant_new_uint16.
+func VariantNewUint16(value uint16) *Variant {
+	if newUint16VariantInvoker == nil {
+		newUint16VariantInvoker = gi.FunctionInvokerNew("GLib", "new_uint16")
+	}
 
-// UNSUPPORTED : C value 'g_variant_new_uint64' : return type 'Variant' not supported
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(value)
+
+	ret := newUint16VariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
+
+var newUint32VariantInvoker *gi.Function
+
+// VariantNewUint32 is a representation of the C type g_variant_new_uint32.
+func VariantNewUint32(value uint32) *Variant {
+	if newUint32VariantInvoker == nil {
+		newUint32VariantInvoker = gi.FunctionInvokerNew("GLib", "new_uint32")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(value)
+
+	ret := newUint32VariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
+
+var newUint64VariantInvoker *gi.Function
+
+// VariantNewUint64 is a representation of the C type g_variant_new_uint64.
+func VariantNewUint64(value uint64) *Variant {
+	if newUint64VariantInvoker == nil {
+		newUint64VariantInvoker = gi.FunctionInvokerNew("GLib", "new_uint64")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(value)
+
+	ret := newUint64VariantInvoker.Invoke(inArgs[:], nil)
+
+	return &Variant{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_new_va' : parameter 'app' of type 'va_list' not supported
 
@@ -662,7 +983,21 @@ type VariantType struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_variant_type_new' : return type 'VariantType' not supported
+var newVariantTypeInvoker *gi.Function
+
+// VariantTypeNew is a representation of the C type g_variant_type_new.
+func VariantTypeNew(typeString string) *VariantType {
+	if newVariantTypeInvoker == nil {
+		newVariantTypeInvoker = gi.FunctionInvokerNew("GLib", "new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(typeString)
+
+	ret := newVariantTypeInvoker.Invoke(inArgs[:], nil)
+
+	return &VariantType{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_variant_type_new_array' : parameter 'element' of type 'VariantType' not supported
 

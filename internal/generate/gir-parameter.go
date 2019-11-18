@@ -77,10 +77,10 @@ func (p Parameter) generateInArg(g *group, index int) {
 }
 
 func (p Parameter) generateOutValue(g *jen.Group, index int) {
-	arg := g.
+	arg := jen.
 		Id("outArgs").
 		Index(jen.Lit(index))
-	p.generateValue(arg)
+	p.generateValue(g, arg)
 }
 
 func (p *Parameter) transferOwnershipJen(g *jen.Group) {

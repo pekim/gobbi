@@ -9,10 +9,18 @@ type Argument struct {
 	//Array             *Array `xml:"array"`
 }
 
-func (a *Argument) generateValue(arg *jen.Statement) {
-	arg.
+func (a *Argument) generateValue(g *jen.Group, arg *jen.Statement) {
+	argValue := arg.
 		Dot(a.Type.argumentValueGetFunctionName()).
 		CallFunc(a.transferOwnershipJen)
+
+	createFromArgument := a.Type.createFromArgumentFunction()
+
+	if createFromArgument != nil {
+		createFromArgument(g, argValue)
+	} else {
+		g.Add(argValue)
+	}
 }
 
 func (a *Argument) transferOwnershipJen(g *jen.Group) {
@@ -30,6 +38,10 @@ func (a Argument) supportedAsOutParameter() bool {
 	}
 
 	if _, ok := argumentGetFunctionNames[a.Type.Name]; ok {
+		return true
+	}
+
+	if _, ok := a.Type.namespace.outParameterGeneratorByName(a.Type.Name); ok {
 		return true
 	}
 

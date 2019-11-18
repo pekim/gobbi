@@ -285,9 +285,8 @@ type LanguagePrivate struct {
 }
 
 type MapClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ViewClass'
-
+	native      uintptr
+	ParentClass *ViewClass
 	// UNSUPPORTED : C value 'padding' : missing Type
 
 }

@@ -49,9 +49,9 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 	if t == nil {
 		return nil, errors.New("missing Type")
 	}
-	if t.CType == "" {
-		return nil, errors.New("missing Type.Name")
-	}
+	//if t.CType == "" {
+	//	return nil, errors.New("missing Type.Name")
+	//}
 
 	if jenType, found := jenGoTypes[t.Name]; found {
 		return jenType, nil
@@ -60,6 +60,10 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 	goType, ok := t.namespace.jenGoTypeForTypeName(t.Name)
 	if ok {
 		return goType, nil
+	}
+
+	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
+		return generator.generateDeclaration(), nil
 	}
 
 	return nil, fmt.Errorf("no Go type for '%s'", t.Name)
@@ -128,9 +132,33 @@ func (t *Type) jenValueUint(stringValue string) (*jen.Statement, error) {
 }
 
 func (t *Type) argumentValueGetFunctionName() string {
-	return argumentGetFunctionNames[t.Name]
+	if getFunctionName, ok := argumentGetFunctionNames[t.Name]; ok {
+		return getFunctionName
+	}
+
+	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
+		return generator.argumentGetFunctionName()
+	}
+
+	panic(fmt.Sprintf("Cannot determine argumentGetFunctionName for %s", t.Name))
 }
 
 func (t *Type) argumentSetFunctionName() string {
-	return argumentSetFunctionNames[t.Name]
+	if setFunctionName, ok := argumentSetFunctionNames[t.Name]; ok {
+		return setFunctionName
+	}
+
+	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
+		return generator.argumentSetFunctionName()
+	}
+
+	panic(fmt.Sprintf("Cannot determine argumentSetFunctionName for %s", t.Name))
+}
+
+func (t *Type) createFromArgumentFunction() func(g *jen.Group, arg *jen.Statement) {
+	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
+		return generator.createFromArgument
+	}
+
+	return nil
 }

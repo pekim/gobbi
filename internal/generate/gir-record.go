@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"github.com/dave/jennifer/jen"
 )
 
 type Record struct {
@@ -54,4 +55,29 @@ func (r *Record) generateType(f *file) {
 func (r *Record) generateFields(g *group) {
 	g.Id("native").Uintptr()
 	r.Fields.generate(g)
+}
+
+func (r *Record) supportedAsOutParameter() bool {
+	return true
+}
+
+func (r *Record) generateDeclaration() *jen.Statement {
+	return jen.Op("*").Id(r.goName)
+}
+
+func (r *Record) argumentGetFunctionName() string {
+	return "Pointer"
+}
+
+func (r *Record) argumentSetFunctionName() string {
+	return "TODOsfn"
+}
+
+func (r *Record) createFromArgument(g *jen.Group, argValue *jen.Statement) {
+	g.
+		Op("&").
+		Id(r.goName).
+		Values(jen.Dict{
+			jen.Id("native"): argValue,
+		})
 }

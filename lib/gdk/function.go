@@ -8,7 +8,21 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'gdk_atom_intern' : parameter 'only_if_exists' of type 'gboolean' not supported
 
-// UNSUPPORTED : C value 'gdk_atom_intern_static_string' : return type 'Atom' not supported
+var atomInternStaticStringInvoker *gi.Function
+
+// AtomInternStaticString is a representation of the C type gdk_atom_intern_static_string.
+func AtomInternStaticString(atomName string) *Atom {
+	if atomInternStaticStringInvoker == nil {
+		atomInternStaticStringInvoker = gi.FunctionInvokerNew("Gdk", "atom_intern_static_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(atomName)
+
+	ret := atomInternStaticStringInvoker.Invoke(inArgs[:], nil)
+
+	return &Atom{native: ret.Pointer()}
+}
 
 var beepInvoker *gi.Function
 

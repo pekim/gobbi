@@ -2,10 +2,11 @@
 
 package gobject
 
-type CClosure struct {
-	native uintptr
-	// UNSUPPORTED : C value 'closure' : no Go type for 'Closure'
+import gi "github.com/pekim/gobbi/internal/gi"
 
+type CClosure struct {
+	native  uintptr
+	Closure *Closure
 	// UNSUPPORTED : C value 'callback' : no Go type for 'gpointer'
 
 }
@@ -31,14 +32,12 @@ type ClosureNotifyData struct {
 }
 
 type EnumClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'g_type_class' : no Go type for 'TypeClass'
-
-	Minimum int32
-	Maximum int32
-	NValues uint32
-	// UNSUPPORTED : C value 'values' : no Go type for 'EnumValue'
-
+	native     uintptr
+	GTypeClass *TypeClass
+	Minimum    int32
+	Maximum    int32
+	NValues    uint32
+	Values     *EnumValue
 }
 
 type EnumValue struct {
@@ -49,13 +48,11 @@ type EnumValue struct {
 }
 
 type FlagsClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'g_type_class' : no Go type for 'TypeClass'
-
-	Mask    uint32
-	NValues uint32
-	// UNSUPPORTED : C value 'values' : no Go type for 'FlagsValue'
-
+	native     uintptr
+	GTypeClass *TypeClass
+	Mask       uint32
+	NValues    uint32
+	Values     *FlagsValue
 }
 
 type FlagsValue struct {
@@ -66,9 +63,8 @@ type FlagsValue struct {
 }
 
 type InitiallyUnownedClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'g_type_class' : no Go type for 'TypeClass'
-
+	native     uintptr
+	GTypeClass *TypeClass
 	// UNSUPPORTED : C value 'constructor' : missing Type
 
 	// UNSUPPORTED : C value 'set_property' : missing Type
@@ -98,9 +94,8 @@ type InterfaceInfo struct {
 }
 
 type ObjectClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'g_type_class' : no Go type for 'TypeClass'
-
+	native     uintptr
+	GTypeClass *TypeClass
 	// UNSUPPORTED : C value 'constructor' : missing Type
 
 	// UNSUPPORTED : C value 'set_property' : missing Type
@@ -123,14 +118,12 @@ type ObjectConstructParam struct {
 	native uintptr
 	// UNSUPPORTED : C value 'pspec' : no Go type for 'ParamSpec'
 
-	// UNSUPPORTED : C value 'value' : no Go type for 'Value'
-
+	Value *Value
 }
 
 type ParamSpecClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'g_type_class' : no Go type for 'TypeClass'
-
+	native     uintptr
+	GTypeClass *TypeClass
 	// UNSUPPORTED : C value 'value_type' : no Go type for 'GType'
 
 	// UNSUPPORTED : C value 'finalize' : missing Type
@@ -168,8 +161,7 @@ type ParamSpecTypeInfo struct {
 type Parameter struct {
 	native uintptr
 	Name   string
-	// UNSUPPORTED : C value 'value' : no Go type for 'Value'
-
+	Value  *Value
 }
 
 type SignalInvocationHint struct {
@@ -223,8 +215,7 @@ type TypeInfo struct {
 	NPreallocs   uint16
 	// UNSUPPORTED : C value 'instance_init' : no Go type for 'InstanceInitFunc'
 
-	// UNSUPPORTED : C value 'value_table' : no Go type for 'TypeValueTable'
-
+	ValueTable *TypeValueTable
 }
 
 type TypeInstance struct {
@@ -236,9 +227,8 @@ type TypeInterface struct {
 }
 
 type TypeModuleClass struct {
-	native uintptr
-	// UNSUPPORTED : C value 'parent_class' : no Go type for 'ObjectClass'
-
+	native      uintptr
+	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'load' : missing Type
 
 	// UNSUPPORTED : C value 'unload' : missing Type
@@ -301,11 +291,24 @@ type Value struct {
 type ValueArray struct {
 	native  uintptr
 	NValues uint32
-	// UNSUPPORTED : C value 'values' : no Go type for 'Value'
-
+	Values  *Value
 }
 
-// UNSUPPORTED : C value 'g_value_array_new' : return type 'ValueArray' not supported
+var newValueArrayInvoker *gi.Function
+
+// ValueArrayNew is a representation of the C type g_value_array_new.
+func ValueArrayNew(nPrealloced uint32) *ValueArray {
+	if newValueArrayInvoker == nil {
+		newValueArrayInvoker = gi.FunctionInvokerNew("GObject", "new")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(nPrealloced)
+
+	ret := newValueArrayInvoker.Invoke(inArgs[:], nil)
+
+	return &ValueArray{native: ret.Pointer()}
+}
 
 type WeakRef struct {
 	native uintptr

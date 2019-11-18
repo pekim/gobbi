@@ -302,9 +302,37 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_io_extension_point_implement' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_io_extension_point_lookup' : return type 'IOExtensionPoint' not supported
+var ioExtensionPointLookupInvoker *gi.Function
 
-// UNSUPPORTED : C value 'g_io_extension_point_register' : return type 'IOExtensionPoint' not supported
+// IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
+func IoExtensionPointLookup(name string) *IOExtensionPoint {
+	if ioExtensionPointLookupInvoker == nil {
+		ioExtensionPointLookupInvoker = gi.FunctionInvokerNew("Gio", "io_extension_point_lookup")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	ret := ioExtensionPointLookupInvoker.Invoke(inArgs[:], nil)
+
+	return &IOExtensionPoint{native: ret.Pointer()}
+}
+
+var ioExtensionPointRegisterInvoker *gi.Function
+
+// IoExtensionPointRegister is a representation of the C type g_io_extension_point_register.
+func IoExtensionPointRegister(name string) *IOExtensionPoint {
+	if ioExtensionPointRegisterInvoker == nil {
+		ioExtensionPointRegisterInvoker = gi.FunctionInvokerNew("Gio", "io_extension_point_register")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	ret := ioExtensionPointRegisterInvoker.Invoke(inArgs[:], nil)
+
+	return &IOExtensionPoint{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : parameter 'dirname' of type 'filename' not supported
 
@@ -380,7 +408,18 @@ func NetworkingInit() {
 
 // UNSUPPORTED : C value 'g_resources_unregister' : parameter 'resource' of type 'Resource' not supported
 
-// UNSUPPORTED : C value 'g_settings_schema_source_get_default' : return type 'SettingsSchemaSource' not supported
+var settingsSchemaSourceGetDefaultInvoker *gi.Function
+
+// SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
+func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
+	if settingsSchemaSourceGetDefaultInvoker == nil {
+		settingsSchemaSourceGetDefaultInvoker = gi.FunctionInvokerNew("Gio", "settings_schema_source_get_default")
+	}
+
+	ret := settingsSchemaSourceGetDefaultInvoker.Invoke(nil, nil)
+
+	return &SettingsSchemaSource{native: ret.Pointer()}
+}
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : parameter 'object' of type 'GObject.Object' not supported
 
