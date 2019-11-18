@@ -71,8 +71,8 @@ func (f *Function) generateFunction(fi *file) {
 		Id(f.goName).                                         // function-name
 		Add(paramsFunc(f.Parameters.generateInDeclarations)). // (in params)
 		Add(paramsFunc(func(g *group) {                       // (return value, out params)
-			f.ReturnValue.generateDeclaration(g)    // return value
-			f.Parameters.generateOutDeclarations(g) // out params
+			f.ReturnValue.generateDeclaration(g)       // return value
+			f.Parameters.generateReturnDeclarations(g) // out params
 		})).
 		Add(blockFunc(f.generateBody)) // { body }
 	fi.Line()

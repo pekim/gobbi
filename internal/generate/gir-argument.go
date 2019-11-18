@@ -47,3 +47,11 @@ func (a Argument) supportedAsInParameter() bool {
 
 	return false
 }
+
+func (a Argument) generateReturnDeclaration(g *group) {
+	goType, err := a.Type.jenGoType()
+	if err != nil {
+		panic(err)
+	}
+	g.Add(goType)
+}

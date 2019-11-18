@@ -68,15 +68,6 @@ func (p *Parameter) generateInDeclaration(g *group) {
 		Add(goType)
 }
 
-func (p *Parameter) generateOutDeclaration(g *group) {
-	goType, err := p.Type.jenGoType()
-	if err != nil {
-		panic(err)
-	}
-
-	g.Add(goType)
-}
-
 func (p Parameter) generateInArg(g *group, index int) {
 	g.
 		Id("inArgs").

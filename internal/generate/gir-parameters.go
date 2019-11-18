@@ -54,10 +54,10 @@ func (pp Parameters) generateInDeclarations(g *group) {
 	}
 }
 
-func (pp Parameters) generateOutDeclarations(g *group) {
+func (pp Parameters) generateReturnDeclarations(g *group) {
 	for _, param := range pp {
 		if param.isOut() {
-			param.generateOutDeclaration(g)
+			param.generateReturnDeclaration(g)
 		}
 	}
 }

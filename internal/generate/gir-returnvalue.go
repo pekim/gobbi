@@ -40,9 +40,5 @@ func (r *ReturnValue) generateDeclaration(g *group) {
 		return
 	}
 
-	goType, err := r.Type.jenGoType()
-	if err != nil {
-		panic(err)
-	}
-	g.Add(goType)
+	r.generateReturnDeclaration(g)
 }
