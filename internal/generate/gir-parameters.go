@@ -105,8 +105,6 @@ func (pp Parameters) generateInArgs(g *group) {
 			n++
 		}
 	}
-
-	g.Line()
 }
 
 func (pp Parameters) generateOutValues(g *jen.Group) {
@@ -131,7 +129,6 @@ func (pp Parameters) generateOutArgs(g *group) {
 		Id("outArgs").
 		Index(jen.Lit(count)).
 		Qual(gi.PackageName, "Argument")
-	g.Line()
 }
 
 func (pp Parameters) generateCallParams(g *jen.Group) {

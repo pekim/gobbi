@@ -86,7 +86,18 @@ func (f *Function) generateFunction(fi *file) {
 }
 
 func (f *Function) generateBody(g *group) {
-	// initialise invoker
+	f.generateInitialiseInvoker(g)
+	g.Line()
+	f.Parameters.generateInArgs(g)
+	g.Line()
+	f.Parameters.generateOutArgs(g)
+	g.Line()
+	f.generateCallFunction(g)
+	g.Line()
+	f.generateReturnValues(g)
+}
+
+func (f *Function) generateInitialiseInvoker(g *group) {
 	g.
 		If(jen.Id(f.invokerVarName).Op("==").Nil()).
 		Block(jen.
@@ -108,12 +119,9 @@ func (f *Function) generateBody(g *group) {
 						)
 				}
 			}))
-	g.Line()
+}
 
-	f.Parameters.generateInArgs(g)
-	f.Parameters.generateOutArgs(g)
-
-	// call the function
+func (f *Function) generateCallFunction(g *group) {
 	g.
 		Do(func(s *jen.Statement) {
 			if !f.ReturnValue.isVoid() {
@@ -125,19 +133,19 @@ func (f *Function) generateBody(g *group) {
 		Id(f.invokerVarName).
 		Dot("Invoke").
 		CallFunc(f.Parameters.generateCallParams)
-	g.Line()
-
-	// marshall and return any return value
-	if !f.ReturnValue.isVoid() || f.Parameters.outCount() > 0 {
-		g.ReturnFunc(f.generateReturnValues)
-	}
 }
 
-func (f *Function) generateReturnValues(g *jen.Group) {
-	if !f.ReturnValue.isVoid() {
-		arg := jen.Id("ret")
-		f.ReturnValue.generateValue(g, arg)
+func (f *Function) generateReturnValues(g *group) {
+	if f.ReturnValue.isVoid() && f.Parameters.outCount() == 0 {
+		return
 	}
 
-	f.Parameters.generateOutValues(g)
+	g.ReturnFunc(func(g *jen.Group) {
+		if !f.ReturnValue.isVoid() {
+			arg := jen.Id("ret")
+			f.ReturnValue.generateValue(g, arg)
+		}
+
+		f.Parameters.generateOutValues(g)
+	})
 }
