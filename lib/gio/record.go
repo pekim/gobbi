@@ -476,7 +476,9 @@ func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
 
 	ret := newForXmlDBusNodeInfoInvoker.Invoke(inArgs[:], nil)
 
-	return &DBusNodeInfo{native: ret.Pointer()}
+	retGo := &DBusNodeInfo{native: ret.Pointer()}
+
+	return retGo
 }
 
 type DBusObjectIface struct {
@@ -819,7 +821,9 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 
 	ret := newFileAttributeInfoListInvoker.Invoke(nil, nil)
 
-	return &FileAttributeInfoList{native: ret.Pointer()}
+	retGo := &FileAttributeInfoList{native: ret.Pointer()}
+
+	return retGo
 }
 
 type FileAttributeMatcher struct {
@@ -839,7 +843,9 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 
 	ret := newFileAttributeMatcherInvoker.Invoke(inArgs[:], nil)
 
-	return &FileAttributeMatcher{native: ret.Pointer()}
+	retGo := &FileAttributeMatcher{native: ret.Pointer()}
+
+	return retGo
 }
 
 type FileDescriptorBasedIface struct {
@@ -2273,7 +2279,9 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 
 	ret := newSrvTargetInvoker.Invoke(inArgs[:], nil)
 
-	return &SrvTarget{native: ret.Pointer()}
+	retGo := &SrvTarget{native: ret.Pointer()}
+
+	return retGo
 }
 
 type StaticResource struct {

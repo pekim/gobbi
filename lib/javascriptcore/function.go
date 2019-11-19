@@ -14,7 +14,9 @@ func GetMajorVersion() uint32 {
 
 	ret := getMajorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -27,7 +29,9 @@ func GetMicroVersion() uint32 {
 
 	ret := getMicroVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -40,7 +44,9 @@ func GetMinorVersion() uint32 {
 
 	ret := getMinorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : parameter 'function' of type 'OptionsFunc' not supported

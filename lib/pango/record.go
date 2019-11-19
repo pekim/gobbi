@@ -88,7 +88,9 @@ func AttrListNew() *AttrList {
 
 	ret := newAttrListInvoker.Invoke(nil, nil)
 
-	return &AttrList{native: ret.Pointer()}
+	retGo := &AttrList{native: ret.Pointer()}
+
+	return retGo
 }
 
 type AttrShape struct {
@@ -211,7 +213,9 @@ func FontDescriptionNew() *FontDescription {
 
 	ret := newFontDescriptionInvoker.Invoke(nil, nil)
 
-	return &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{native: ret.Pointer()}
+
+	return retGo
 }
 
 type FontFaceClass struct {
@@ -285,7 +289,9 @@ func FontMetricsNew() *FontMetrics {
 
 	ret := newFontMetricsInvoker.Invoke(nil, nil)
 
-	return &FontMetrics{native: ret.Pointer()}
+	retGo := &FontMetrics{native: ret.Pointer()}
+
+	return retGo
 }
 
 type FontsetClass struct {
@@ -364,7 +370,9 @@ func GlyphStringNew() *GlyphString {
 
 	ret := newGlyphStringInvoker.Invoke(nil, nil)
 
-	return &GlyphString{native: ret.Pointer()}
+	retGo := &GlyphString{native: ret.Pointer()}
+
+	return retGo
 }
 
 type GlyphVisAttr struct {
@@ -402,7 +410,9 @@ func ItemNew() *Item {
 
 	ret := newItemInvoker.Invoke(nil, nil)
 
-	return &Item{native: ret.Pointer()}
+	retGo := &Item{native: ret.Pointer()}
+
+	return retGo
 }
 
 type Language struct {

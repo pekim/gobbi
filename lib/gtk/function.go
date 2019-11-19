@@ -51,7 +51,9 @@ func BindingSetFind(setName string) *BindingSet {
 
 	ret := bindingSetFindInvoker.Invoke(inArgs[:], nil)
 
-	return &BindingSet{native: ret.Pointer()}
+	retGo := &BindingSet{native: ret.Pointer()}
+
+	return retGo
 }
 
 var bindingSetNewInvoker *gi.Function
@@ -67,7 +69,9 @@ func BindingSetNew(setName string) *BindingSet {
 
 	ret := bindingSetNewInvoker.Invoke(inArgs[:], nil)
 
-	return &BindingSet{native: ret.Pointer()}
+	retGo := &BindingSet{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_bindings_activate' : parameter 'object' of type 'GObject.Object' not supported
@@ -95,7 +99,9 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 	ret := checkVersionInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_css_provider_error_quark' : return type 'GLib.Quark' not supported
@@ -156,7 +162,9 @@ func GetBinaryAge() uint32 {
 
 	ret := getBinaryAgeInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_current_event' : return type 'Gdk.Event' not supported
@@ -175,7 +183,9 @@ func GetCurrentEventTime() uint32 {
 
 	ret := getCurrentEventTimeInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getDebugFlagsInvoker *gi.Function
@@ -188,7 +198,9 @@ func GetDebugFlags() uint32 {
 
 	ret := getDebugFlagsInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_default_language' : return type 'Pango.Language' not supported
@@ -205,7 +217,9 @@ func GetInterfaceAge() uint32 {
 
 	ret := getInterfaceAgeInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_locale_direction' : return type 'TextDirection' not supported
@@ -220,7 +234,9 @@ func GetMajorVersion() uint32 {
 
 	ret := getMajorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -233,7 +249,9 @@ func GetMicroVersion() uint32 {
 
 	ret := getMicroVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -246,7 +264,9 @@ func GetMinorVersion() uint32 {
 
 	ret := getMinorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_get_option_group' : parameter 'open_default_display' of type 'gboolean' not supported
@@ -318,7 +338,9 @@ func MainLevel() uint32 {
 
 	ret := mainLevelInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var mainQuitInvoker *gi.Function
@@ -383,7 +405,9 @@ func PaperSizeGetDefault() string {
 
 	ret := paperSizeGetDefaultInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : parameter 'include_custom' of type 'gboolean' not supported
@@ -436,7 +460,9 @@ func RcGetThemeDir() string {
 
 	ret := rcGetThemeDirInvoker.Invoke(nil, nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var rcParseInvoker *gi.Function
@@ -624,7 +650,9 @@ func TestListAllTypes() uint32 {
 
 	testListAllTypesInvoker.Invoke(nil, outArgs[:])
 
-	return outArgs[0].Uint32()
+	out0 := outArgs[0].Uint32()
+
+	return out0
 }
 
 var testRegisterAllTypesInvoker *gi.Function

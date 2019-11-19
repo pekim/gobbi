@@ -213,7 +213,9 @@ func CookieNew(name string, value string, domain string, path string, maxAge int
 
 	ret := newCookieInvoker.Invoke(inArgs[:], nil)
 
-	return &Cookie{native: ret.Pointer()}
+	retGo := &Cookie{native: ret.Pointer()}
+
+	return retGo
 }
 
 type CookieJarClass struct {
@@ -289,7 +291,9 @@ func DateNew(year int32, month int32, day int32, hour int32, minute int32, secon
 
 	ret := newDateInvoker.Invoke(inArgs[:], nil)
 
-	return &Date{native: ret.Pointer()}
+	retGo := &Date{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newFromNowDateInvoker *gi.Function
@@ -305,7 +309,9 @@ func DateNewFromNow(offsetSeconds int32) *Date {
 
 	ret := newFromNowDateInvoker.Invoke(inArgs[:], nil)
 
-	return &Date{native: ret.Pointer()}
+	retGo := &Date{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newFromStringDateInvoker *gi.Function
@@ -321,7 +327,9 @@ func DateNewFromString(dateString string) *Date {
 
 	ret := newFromStringDateInvoker.Invoke(inArgs[:], nil)
 
-	return &Date{native: ret.Pointer()}
+	retGo := &Date{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newFromTimeTDateInvoker *gi.Function
@@ -337,7 +345,9 @@ func DateNewFromTimeT(when int64) *Date {
 
 	ret := newFromTimeTDateInvoker.Invoke(inArgs[:], nil)
 
-	return &Date{native: ret.Pointer()}
+	retGo := &Date{native: ret.Pointer()}
+
+	return retGo
 }
 
 type HSTSEnforcerClass struct {
@@ -430,7 +440,9 @@ func MessageBodyNew() *MessageBody {
 
 	ret := newMessageBodyInvoker.Invoke(nil, nil)
 
-	return &MessageBody{native: ret.Pointer()}
+	retGo := &MessageBody{native: ret.Pointer()}
+
+	return retGo
 }
 
 type MessageClass struct {
@@ -502,7 +514,9 @@ func MultipartNew(mimeType string) *Multipart {
 
 	ret := newMultipartInvoker.Invoke(inArgs[:], nil)
 
-	return &Multipart{native: ret.Pointer()}
+	retGo := &Multipart{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_multipart_new_from_message' : parameter 'headers' of type 'MessageHeaders' not supported
@@ -770,7 +784,9 @@ func URINew(uriString string) *URI {
 
 	ret := newURIInvoker.Invoke(inArgs[:], nil)
 
-	return &URI{native: ret.Pointer()}
+	retGo := &URI{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_uri_new_with_base' : parameter 'base' of type 'URI' not supported

@@ -17,7 +17,9 @@ func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
 
 	ret := attrBackgroundAlphaNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 var attrBackgroundNewInvoker *gi.Function
@@ -35,7 +37,9 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 
 	ret := attrBackgroundNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
@@ -53,7 +57,9 @@ func AttrFamilyNew(family string) *Attribute {
 
 	ret := attrFamilyNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 var attrForegroundAlphaNewInvoker *gi.Function
@@ -69,7 +75,9 @@ func AttrForegroundAlphaNew(alpha uint16) *Attribute {
 
 	ret := attrForegroundAlphaNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 var attrForegroundNewInvoker *gi.Function
@@ -87,7 +95,9 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 
 	ret := attrForegroundNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_attr_gravity_hint_new' : parameter 'hint' of type 'GravityHint' not supported
@@ -107,7 +117,9 @@ func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
 
 	ret := attrLetterSpacingNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 var attrRiseNewInvoker *gi.Function
@@ -123,7 +135,9 @@ func AttrRiseNew(rise int32) *Attribute {
 
 	ret := attrRiseNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_attr_scale_new' : parameter 'scale_factor' of type 'gdouble' not supported
@@ -145,7 +159,9 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 
 	ret := attrStrikethroughColorNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_attr_strikethrough_new' : parameter 'strikethrough' of type 'gboolean' not supported
@@ -171,7 +187,9 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 
 	ret := attrUnderlineColorNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Attribute{native: ret.Pointer()}
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_attr_underline_new' : parameter 'underline' of type 'Underline' not supported
@@ -197,7 +215,9 @@ func ConfigKeyGet(key string) string {
 
 	ret := configKeyGetInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var configKeyGetSystemInvoker *gi.Function
@@ -213,7 +233,9 @@ func ConfigKeyGetSystem(key string) string {
 
 	ret := configKeyGetSystemInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_default_break' : parameter 'analysis' of type 'Analysis' not supported
@@ -240,7 +262,10 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 
 	findParagraphBoundaryInvoker.Invoke(inArgs[:], outArgs[:])
 
-	return outArgs[0].Int32(), outArgs[1].Int32()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
 }
 
 var fontDescriptionFromStringInvoker *gi.Function
@@ -256,7 +281,9 @@ func FontDescriptionFromString(str string) *FontDescription {
 
 	ret := fontDescriptionFromStringInvoker.Invoke(inArgs[:], nil)
 
-	return &FontDescription{native: ret.Pointer()}
+	retGo := &FontDescription{native: ret.Pointer()}
+
+	return retGo
 }
 
 var getLibSubdirectoryInvoker *gi.Function
@@ -269,7 +296,9 @@ func GetLibSubdirectory() string {
 
 	ret := getLibSubdirectoryInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'language' of type 'Language' not supported
@@ -286,7 +315,9 @@ func GetSysconfSubdirectory() string {
 
 	ret := getSysconfSubdirectoryInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : parameter 'matrix' of type 'Matrix' not supported
@@ -316,7 +347,9 @@ func LanguageFromString(language string) *Language {
 
 	ret := languageFromStringInvoker.Invoke(inArgs[:], nil)
 
-	return &Language{native: ret.Pointer()}
+	retGo := &Language{native: ret.Pointer()}
+
+	return retGo
 }
 
 var languageGetDefaultInvoker *gi.Function
@@ -329,7 +362,9 @@ func LanguageGetDefault() *Language {
 
 	ret := languageGetDefaultInvoker.Invoke(nil, nil)
 
-	return &Language{native: ret.Pointer()}
+	retGo := &Language{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'pbase_dir' of type 'Direction' not supported
@@ -370,7 +405,10 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
 
 	quantizeLineGeometryInvoker.Invoke(inArgs[:], outArgs[:])
 
-	return outArgs[0].Int32(), outArgs[1].Int32()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
 }
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
@@ -421,7 +459,9 @@ func TrimString(str string) string {
 
 	ret := trimStringInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'pango_unichar_direction' : parameter 'ch' of type 'gunichar' not supported
@@ -440,7 +480,9 @@ func Version() int32 {
 
 	ret := versionInvoker.Invoke(nil, nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var versionCheckInvoker *gi.Function
@@ -458,7 +500,9 @@ func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32)
 
 	ret := versionCheckInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var versionStringInvoker *gi.Function
@@ -471,5 +515,7 @@ func VersionString() string {
 
 	ret := versionStringInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }

@@ -107,11 +107,11 @@ func (pp Parameters) generateInArgs(g *group) {
 	}
 }
 
-func (pp Parameters) generateOutValues(g *jen.Group) {
+func (pp Parameters) generateOutValues(g *group, varNamePrefix string) {
 	n := 0
 	for _, param := range pp {
 		if param.isOut() {
-			param.generateOutValue(g, n)
+			param.generateOutValue(g, varNamePrefix, n)
 			n++
 		}
 	}

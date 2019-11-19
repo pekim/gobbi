@@ -18,7 +18,9 @@ func GetMajorVersion() uint32 {
 
 	ret := getMajorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -31,7 +33,9 @@ func GetMicroVersion() uint32 {
 
 	ret := getMicroVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -44,7 +48,9 @@ func GetMinorVersion() uint32 {
 
 	ret := getMinorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'webkit_javascript_error_quark' : return type 'GLib.Quark' not supported
@@ -72,7 +78,9 @@ func UriForDisplay(uri string) string {
 
 	ret := uriForDisplayInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_error_quark' : return type 'GLib.Quark' not supported

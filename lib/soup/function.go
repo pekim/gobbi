@@ -58,7 +58,9 @@ func GetMajorVersion() uint32 {
 
 	ret := getMajorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -71,7 +73,9 @@ func GetMicroVersion() uint32 {
 
 	ret := getMicroVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -84,7 +88,9 @@ func GetMinorVersion() uint32 {
 
 	ret := getMinorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_header_contains' : return type 'gboolean' not supported
@@ -138,7 +144,9 @@ func StatusGetPhrase(statusCode uint32) string {
 
 	ret := statusGetPhraseInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var statusProxifyInvoker *gi.Function
@@ -154,7 +162,9 @@ func StatusProxify(statusCode uint32) uint32 {
 
 	ret := statusProxifyInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_str_case_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -178,7 +188,9 @@ func TldGetBaseDomain(hostname string) string {
 
 	ret := tldGetBaseDomainInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var uriDecodeInvoker *gi.Function
@@ -194,7 +206,9 @@ func UriDecode(part string) string {
 
 	ret := uriDecodeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var uriEncodeInvoker *gi.Function
@@ -211,7 +225,9 @@ func UriEncode(part string, escapeExtra string) string {
 
 	ret := uriEncodeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var uriNormalizeInvoker *gi.Function
@@ -228,7 +244,9 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 	ret := uriNormalizeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'soup_value_array_append' : parameter 'array' of type 'GObject.ValueArray' not supported

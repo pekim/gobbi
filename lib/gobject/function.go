@@ -221,7 +221,9 @@ func SignalName(signalId uint32) string {
 
 	ret := signalNameInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_signal_new' : parameter 'itype' of type 'GType' not supported
@@ -346,7 +348,9 @@ func TypeGetTypeRegistrationSerial() uint32 {
 
 	ret := typeGetTypeRegistrationSerialInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var typeInitInvoker *gi.Function

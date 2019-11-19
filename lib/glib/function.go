@@ -19,7 +19,9 @@ func AsciiDigitValue(c int8) int32 {
 
 	ret := asciiDigitValueInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_ascii_dtostr' : parameter 'd' of type 'gdouble' not supported
@@ -40,7 +42,9 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 
 	ret := asciiStrcasecmpInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var asciiStrdownInvoker *gi.Function
@@ -57,7 +61,9 @@ func AsciiStrdown(str string, len int32) string {
 
 	ret := asciiStrdownInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_ascii_string_to_signed' : return type 'gboolean' not supported
@@ -84,7 +90,10 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 
 	ret := asciiStrtollInvoker.Invoke(inArgs[:], outArgs[:])
 
-	return ret.Int64(), outArgs[0].String(false)
+	retGo := ret.Int64()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0
 }
 
 var asciiStrtoullInvoker *gi.Function
@@ -103,7 +112,10 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 
 	ret := asciiStrtoullInvoker.Invoke(inArgs[:], outArgs[:])
 
-	return ret.Uint64(), outArgs[0].String(false)
+	retGo := ret.Uint64()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0
 }
 
 var asciiStrupInvoker *gi.Function
@@ -120,7 +132,9 @@ func AsciiStrup(str string, len int32) string {
 
 	ret := asciiStrupInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var asciiTolowerInvoker *gi.Function
@@ -136,7 +150,9 @@ func AsciiTolower(c int8) int8 {
 
 	ret := asciiTolowerInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int8()
+	retGo := ret.Int8()
+
+	return retGo
 }
 
 var asciiToupperInvoker *gi.Function
@@ -152,7 +168,9 @@ func AsciiToupper(c int8) int8 {
 
 	ret := asciiToupperInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int8()
+	retGo := ret.Int8()
+
+	return retGo
 }
 
 var asciiXdigitValueInvoker *gi.Function
@@ -168,7 +186,9 @@ func AsciiXdigitValue(c int8) int32 {
 
 	ret := asciiXdigitValueInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var assertWarningInvoker *gi.Function
@@ -270,7 +290,9 @@ func AtomicIntAdd(atomic int32, val int32) int32 {
 
 	ret := atomicIntAddInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var atomicIntAndInvoker *gi.Function
@@ -287,7 +309,9 @@ func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 
 	ret := atomicIntAndInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : return type 'gboolean' not supported
@@ -308,7 +332,9 @@ func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
 
 	ret := atomicIntExchangeAndAddInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var atomicIntGetInvoker *gi.Function
@@ -324,7 +350,9 @@ func AtomicIntGet(atomic int32) int32 {
 
 	ret := atomicIntGetInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var atomicIntIncInvoker *gi.Function
@@ -356,7 +384,9 @@ func AtomicIntOr(atomic uint32, val uint32) uint32 {
 
 	ret := atomicIntOrInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var atomicIntSetInvoker *gi.Function
@@ -389,7 +419,9 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 	ret := atomicIntXorInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_atomic_pointer_add' : parameter 'atomic' of type 'gpointer' not supported
@@ -498,7 +530,9 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 
 	ret := bitNthLsfInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var bitNthMsfInvoker *gi.Function
@@ -515,7 +549,9 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 
 	ret := bitNthMsfInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var bitStorageInvoker *gi.Function
@@ -531,7 +567,9 @@ func BitStorage(number uint64) uint32 {
 
 	ret := bitStorageInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_bit_trylock' : return type 'gboolean' not supported
@@ -603,7 +641,9 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 	ret := checkVersionInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_checksum_type_get_length' : parameter 'checksum_type' of type 'ChecksumType' not supported
@@ -729,7 +769,9 @@ func Dcgettext(domain string, msgid string, category int32) string {
 
 	ret := dcgettextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var dgettextInvoker *gi.Function
@@ -746,7 +788,9 @@ func Dgettext(domain string, msgid string) string {
 
 	ret := dgettextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_dir_make_tmp' : parameter 'tmpl' of type 'filename' not supported
@@ -771,7 +815,9 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 
 	ret := dngettextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_double_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -795,7 +841,9 @@ func Dpgettext2(domain string, context string, msgid string) string {
 
 	ret := dpgettext2Invoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' has no type
@@ -845,7 +893,9 @@ func FormatSize(size uint64) string {
 
 	ret := formatSizeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var formatSizeForDisplayInvoker *gi.Function
@@ -861,7 +911,9 @@ func FormatSizeForDisplay(size int64) string {
 
 	ret := formatSizeForDisplayInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_format_size_full' : parameter 'flags' of type 'FormatSizeFlags' not supported
@@ -880,7 +932,9 @@ func GetApplicationName() string {
 
 	ret := getApplicationNameInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_get_charset' : return type 'gboolean' not supported
@@ -895,7 +949,9 @@ func GetCodeset() string {
 
 	ret := getCodesetInvoker.Invoke(nil, nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_get_console_charset' : return type 'gboolean' not supported
@@ -930,7 +986,9 @@ func GetHostName() string {
 
 	ret := getHostNameInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var getLanguageNamesInvoker *gi.Function
@@ -985,7 +1043,9 @@ func GetMonotonicTime() int64 {
 
 	ret := getMonotonicTimeInvoker.Invoke(nil, nil)
 
-	return ret.Int64()
+	retGo := ret.Int64()
+
+	return retGo
 }
 
 var getNumProcessorsInvoker *gi.Function
@@ -998,7 +1058,9 @@ func GetNumProcessors() uint32 {
 
 	ret := getNumProcessorsInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getPrgnameInvoker *gi.Function
@@ -1011,7 +1073,9 @@ func GetPrgname() string {
 
 	ret := getPrgnameInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
@@ -1026,7 +1090,9 @@ func GetRealTime() int64 {
 
 	ret := getRealTimeInvoker.Invoke(nil, nil)
 
-	return ret.Int64()
+	retGo := ret.Int64()
+
+	return retGo
 }
 
 var getSystemConfigDirsInvoker *gi.Function
@@ -1128,7 +1194,9 @@ func HostnameToAscii(hostname string) string {
 
 	ret := hostnameToAsciiInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var hostnameToUnicodeInvoker *gi.Function
@@ -1144,7 +1212,9 @@ func HostnameToUnicode(hostname string) string {
 
 	ret := hostnameToUnicodeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
@@ -1163,7 +1233,9 @@ func IconvOpen(toCodeset string, fromCodeset string) *IConv {
 
 	ret := iconvOpenInvoker.Invoke(inArgs[:], nil)
 
-	return &IConv{native: ret.Pointer()}
+	retGo := &IConv{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_idle_add' : parameter 'function' of type 'SourceFunc' not supported
@@ -1182,7 +1254,9 @@ func IdleSourceNew() *Source {
 
 	ret := idleSourceNewInvoker.Invoke(nil, nil)
 
-	return &Source{native: ret.Pointer()}
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_int64_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -1206,7 +1280,9 @@ func InternStaticString(string_ string) string {
 
 	ret := internStaticStringInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var internStringInvoker *gi.Function
@@ -1222,7 +1298,9 @@ func InternString(string_ string) string {
 
 	ret := internStringInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_io_add_watch' : parameter 'channel' of type 'IOChannel' not supported
@@ -1317,7 +1395,9 @@ func MainContextDefault() *MainContext {
 
 	ret := mainContextDefaultInvoker.Invoke(nil, nil)
 
-	return &MainContext{native: ret.Pointer()}
+	retGo := &MainContext{native: ret.Pointer()}
+
+	return retGo
 }
 
 var mainContextGetThreadDefaultInvoker *gi.Function
@@ -1330,7 +1410,9 @@ func MainContextGetThreadDefault() *MainContext {
 
 	ret := mainContextGetThreadDefaultInvoker.Invoke(nil, nil)
 
-	return &MainContext{native: ret.Pointer()}
+	retGo := &MainContext{native: ret.Pointer()}
+
+	return retGo
 }
 
 var mainContextRefThreadDefaultInvoker *gi.Function
@@ -1343,7 +1425,9 @@ func MainContextRefThreadDefault() *MainContext {
 
 	ret := mainContextRefThreadDefaultInvoker.Invoke(nil, nil)
 
-	return &MainContext{native: ret.Pointer()}
+	retGo := &MainContext{native: ret.Pointer()}
+
+	return retGo
 }
 
 var mainCurrentSourceInvoker *gi.Function
@@ -1356,7 +1440,9 @@ func MainCurrentSource() *Source {
 
 	ret := mainCurrentSourceInvoker.Invoke(nil, nil)
 
-	return &Source{native: ret.Pointer()}
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo
 }
 
 var mainDepthInvoker *gi.Function
@@ -1369,7 +1455,9 @@ func MainDepth() int32 {
 
 	ret := mainDepthInvoker.Invoke(nil, nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_malloc' : parameter 'n_bytes' of type 'gsize' not supported
@@ -1398,7 +1486,9 @@ func MarkupEscapeText(text string, length int32) string {
 
 	ret := markupEscapeTextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter '...' has no type
@@ -1539,7 +1629,9 @@ func RandomInt() uint32 {
 
 	ret := randomIntInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var randomIntRangeInvoker *gi.Function
@@ -1556,7 +1648,9 @@ func RandomIntRange(begin int32, end int32) int32 {
 
 	ret := randomIntRangeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var randomSetSeedInvoker *gi.Function
@@ -1639,7 +1733,9 @@ func RefStringAcquire(str string) string {
 
 	ret := refStringAcquireInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_ref_string_length' : return type 'gsize' not supported
@@ -1657,7 +1753,9 @@ func RefStringNew(str string) string {
 
 	ret := refStringNewInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var refStringNewInternInvoker *gi.Function
@@ -1673,7 +1771,9 @@ func RefStringNewIntern(str string) string {
 
 	ret := refStringNewInternInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var refStringNewLenInvoker *gi.Function
@@ -1690,7 +1790,9 @@ func RefStringNewLen(str string, len int32) string {
 
 	ret := refStringNewLenInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var refStringReleaseInvoker *gi.Function
@@ -1726,7 +1828,9 @@ func RegexEscapeNul(string_ string, length int32) string {
 
 	ret := regexEscapeNulInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' has no type
@@ -1885,7 +1989,9 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 	ret := spacedPrimesClosestInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_spawn_async' : parameter 'working_directory' of type 'filename' not supported
@@ -1924,7 +2030,9 @@ func Stpcpy(dest string, src string) string {
 
 	ret := stpcpyInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_str_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -1953,7 +2061,9 @@ func StrToAscii(str string, fromLocale string) string {
 
 	ret := strToAsciiInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' has no type
@@ -1973,7 +2083,9 @@ func Strcanon(string_ string, validChars string, substitutor int8) string {
 
 	ret := strcanonInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strcasecmpInvoker *gi.Function
@@ -1990,7 +2102,9 @@ func Strcasecmp(s1 string, s2 string) int32 {
 
 	ret := strcasecmpInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var strchompInvoker *gi.Function
@@ -2006,7 +2120,9 @@ func Strchomp(string_ string) string {
 
 	ret := strchompInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strchugInvoker *gi.Function
@@ -2022,7 +2138,9 @@ func Strchug(string_ string) string {
 
 	ret := strchugInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strcmp0Invoker *gi.Function
@@ -2039,7 +2157,9 @@ func Strcmp0(str1 string, str2 string) int32 {
 
 	ret := strcmp0Invoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var strcompressInvoker *gi.Function
@@ -2055,7 +2175,9 @@ func Strcompress(source string) string {
 
 	ret := strcompressInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strconcat' : parameter '...' has no type
@@ -2075,7 +2197,9 @@ func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
 
 	ret := strdelimitInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strdownInvoker *gi.Function
@@ -2091,7 +2215,9 @@ func Strdown(string_ string) string {
 
 	ret := strdownInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strdupInvoker *gi.Function
@@ -2107,7 +2233,9 @@ func Strdup(str string) string {
 
 	ret := strdupInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strdup_printf' : parameter '...' has no type
@@ -2142,7 +2270,9 @@ func Strerror(errnum int32) string {
 
 	ret := strerrorInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var strescapeInvoker *gi.Function
@@ -2159,7 +2289,9 @@ func Strescape(source string, exceptions string) string {
 
 	ret := strescapeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strfreevInvoker *gi.Function
@@ -2190,7 +2322,9 @@ func StringNew(init string) *String {
 
 	ret := stringNewInvoker.Invoke(inArgs[:], nil)
 
-	return &String{native: ret.Pointer()}
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo
 }
 
 var stringNewLenInvoker *gi.Function
@@ -2207,7 +2341,9 @@ func StringNewLen(init string, len int32) *String {
 
 	ret := stringNewLenInvoker.Invoke(inArgs[:], nil)
 
-	return &String{native: ret.Pointer()}
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
@@ -2226,7 +2362,9 @@ func StripContext(msgid string, msgval string) string {
 
 	ret := stripContextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strjoin' : parameter '...' has no type
@@ -2245,7 +2383,9 @@ func Strjoinv(separator string, strArray string) string {
 
 	ret := strjoinvInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strlcat' : parameter 'dest_size' of type 'gsize' not supported
@@ -2267,7 +2407,9 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 
 	ret := strncasecmpInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strndup' : parameter 'n' of type 'gsize' not supported
@@ -2287,7 +2429,9 @@ func Strreverse(string_ string) string {
 
 	ret := strreverseInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strrstrInvoker *gi.Function
@@ -2304,7 +2448,9 @@ func Strrstr(haystack string, needle string) string {
 
 	ret := strrstrInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strrstrLenInvoker *gi.Function
@@ -2322,7 +2468,9 @@ func StrrstrLen(haystack string, haystackLen int32, needle string) string {
 
 	ret := strrstrLenInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var strsignalInvoker *gi.Function
@@ -2338,7 +2486,9 @@ func Strsignal(signum int32) string {
 
 	ret := strsignalInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var strsplitInvoker *gi.Function
@@ -2390,7 +2540,9 @@ func StrstrLen(haystack string, haystackLen int32, needle string) string {
 
 	ret := strstrLenInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strtod' : return type 'gdouble' not supported
@@ -2408,7 +2560,9 @@ func Strup(string_ string) string {
 
 	ret := strupInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_strv_contains' : return type 'gboolean' not supported
@@ -2430,7 +2584,9 @@ func StrvLength(strArray string) uint32 {
 
 	ret := strvLengthInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'test_data' of type 'gpointer' not supported
@@ -2506,7 +2662,9 @@ func TestCreateSuite(suiteName string) *TestSuite {
 
 	ret := testCreateSuiteInvoker.Invoke(inArgs[:], nil)
 
-	return &TestSuite{native: ret.Pointer()}
+	retGo := &TestSuite{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_level' of type 'LogLevelFlags' not supported
@@ -2539,7 +2697,9 @@ func TestGetRoot() *TestSuite {
 
 	ret := testGetRootInvoker.Invoke(nil, nil)
 
-	return &TestSuite{native: ret.Pointer()}
+	retGo := &TestSuite{native: ret.Pointer()}
+
+	return retGo
 }
 
 var testIncompleteInvoker *gi.Function
@@ -2587,7 +2747,9 @@ func TestRandInt() int32 {
 
 	ret := testRandIntInvoker.Invoke(nil, nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var testRandIntRangeInvoker *gi.Function
@@ -2604,7 +2766,9 @@ func TestRandIntRange(begin int32, end int32) int32 {
 
 	ret := testRandIntRangeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var testRunInvoker *gi.Function
@@ -2617,7 +2781,9 @@ func TestRun() int32 {
 
 	ret := testRunInvoker.Invoke(nil, nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_test_run_suite' : parameter 'suite' of type 'TestSuite' not supported
@@ -2724,7 +2890,9 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 
 	ret := threadPoolGetMaxIdleTimeInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var threadPoolGetMaxUnusedThreadsInvoker *gi.Function
@@ -2737,7 +2905,9 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 
 	ret := threadPoolGetMaxUnusedThreadsInvoker.Invoke(nil, nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var threadPoolGetNumUnusedThreadsInvoker *gi.Function
@@ -2750,7 +2920,9 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 	ret := threadPoolGetNumUnusedThreadsInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var threadPoolSetMaxIdleTimeInvoker *gi.Function
@@ -2805,7 +2977,9 @@ func ThreadSelf() *Thread {
 
 	ret := threadSelfInvoker.Invoke(nil, nil)
 
-	return &Thread{native: ret.Pointer()}
+	retGo := &Thread{native: ret.Pointer()}
+
+	return retGo
 }
 
 var threadYieldInvoker *gi.Function
@@ -2843,7 +3017,9 @@ func TimeoutSourceNew(interval uint32) *Source {
 
 	ret := timeoutSourceNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Source{native: ret.Pointer()}
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo
 }
 
 var timeoutSourceNewSecondsInvoker *gi.Function
@@ -2859,7 +3035,9 @@ func TimeoutSourceNewSeconds(interval uint32) *Source {
 
 	ret := timeoutSourceNewSecondsInvoker.Invoke(inArgs[:], nil)
 
-	return &Source{native: ret.Pointer()}
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_trash_stack_height' : parameter 'stack_p' of type 'TrashStack' not supported
@@ -2987,7 +3165,9 @@ func UnixSignalSourceNew(signum int32) *Source {
 
 	ret := unixSignalSourceNewInvoker.Invoke(inArgs[:], nil)
 
-	return &Source{native: ret.Pointer()}
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_unlink' : parameter 'filename' of type 'filename' not supported
@@ -3024,7 +3204,9 @@ func UriParseScheme(uri string) string {
 
 	ret := uriParseSchemeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var uriUnescapeSegmentInvoker *gi.Function
@@ -3042,7 +3224,9 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 
 	ret := uriUnescapeSegmentInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var uriUnescapeStringInvoker *gi.Function
@@ -3059,7 +3243,9 @@ func UriUnescapeString(escapedString string, illegalCharacters string) string {
 
 	ret := uriUnescapeStringInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var usleepInvoker *gi.Function
@@ -3095,7 +3281,11 @@ func Utf16ToUtf8(str uint16, len int64) (string, int64, int64) {
 
 	ret := utf16ToUtf8Invoker.Invoke(inArgs[:], outArgs[:])
 
-	return ret.String(true), outArgs[0].Int64(), outArgs[1].Int64()
+	retGo := ret.String(true)
+	out0 := outArgs[0].Int64()
+	out1 := outArgs[1].Int64()
+
+	return retGo, out0, out1
 }
 
 var utf8CasefoldInvoker *gi.Function
@@ -3112,7 +3302,9 @@ func Utf8Casefold(str string, len int32) string {
 
 	ret := utf8CasefoldInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utf8CollateInvoker *gi.Function
@@ -3129,7 +3321,9 @@ func Utf8Collate(str1 string, str2 string) int32 {
 
 	ret := utf8CollateInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var utf8CollateKeyInvoker *gi.Function
@@ -3146,7 +3340,9 @@ func Utf8CollateKey(str string, len int32) string {
 
 	ret := utf8CollateKeyInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utf8CollateKeyForFilenameInvoker *gi.Function
@@ -3163,7 +3359,9 @@ func Utf8CollateKeyForFilename(str string, len int32) string {
 
 	ret := utf8CollateKeyForFilenameInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utf8FindNextCharInvoker *gi.Function
@@ -3180,7 +3378,9 @@ func Utf8FindNextChar(p string, end string) string {
 
 	ret := utf8FindNextCharInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var utf8FindPrevCharInvoker *gi.Function
@@ -3197,7 +3397,9 @@ func Utf8FindPrevChar(str string, p string) string {
 
 	ret := utf8FindPrevCharInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_utf8_get_char' : return type 'gunichar' not supported
@@ -3218,7 +3420,9 @@ func Utf8MakeValid(str string, len int32) string {
 
 	ret := utf8MakeValidInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'mode' of type 'NormalizeMode' not supported
@@ -3237,7 +3441,9 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 
 	ret := utf8OffsetToPointerInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var utf8PointerToOffsetInvoker *gi.Function
@@ -3254,7 +3460,9 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 
 	ret := utf8PointerToOffsetInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int64()
+	retGo := ret.Int64()
+
+	return retGo
 }
 
 var utf8PrevCharInvoker *gi.Function
@@ -3270,7 +3478,9 @@ func Utf8PrevChar(p string) string {
 
 	ret := utf8PrevCharInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'c' of type 'gunichar' not supported
@@ -3289,7 +3499,9 @@ func Utf8Strdown(str string, len int32) string {
 
 	ret := utf8StrdownInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utf8StrlenInvoker *gi.Function
@@ -3306,7 +3518,9 @@ func Utf8Strlen(p string, max int32) int64 {
 
 	ret := utf8StrlenInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Int64()
+	retGo := ret.Int64()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_utf8_strncpy' : parameter 'n' of type 'gsize' not supported
@@ -3327,7 +3541,9 @@ func Utf8Strreverse(str string, len int32) string {
 
 	ret := utf8StrreverseInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utf8StrupInvoker *gi.Function
@@ -3344,7 +3560,9 @@ func Utf8Strup(str string, len int32) string {
 
 	ret := utf8StrupInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utf8SubstringInvoker *gi.Function
@@ -3362,7 +3580,9 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 
 	ret := utf8SubstringInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_utf8_to_ucs4' : return type 'gunichar' not supported
@@ -3385,7 +3605,11 @@ func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
 
 	ret := utf8ToUtf16Invoker.Invoke(inArgs[:], outArgs[:])
 
-	return ret.Uint16(), outArgs[0].Int64(), outArgs[1].Int64()
+	retGo := ret.Uint16()
+	out0 := outArgs[0].Int64()
+	out1 := outArgs[1].Int64()
+
+	return retGo, out0, out1
 }
 
 // UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
@@ -3404,7 +3628,9 @@ func UuidStringRandom() string {
 
 	ret := uuidStringRandomInvoker.Invoke(nil, nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
@@ -3434,7 +3660,9 @@ func VariantTypeChecked(arg0 string) *VariantType {
 
 	ret := variantTypeCheckedInvoker.Invoke(inArgs[:], nil)
 
-	return &VariantType{native: ret.Pointer()}
+	retGo := &VariantType{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_type_string_get_depth_' : return type 'gsize' not supported

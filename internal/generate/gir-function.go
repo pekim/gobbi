@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 	"github.com/pekim/gobbi/internal/gi"
 )
@@ -94,7 +95,10 @@ func (f *Function) generateBody(g *group) {
 	g.Line()
 	f.generateCallFunction(g)
 	g.Line()
-	f.generateReturnValues(g)
+	f.generateReturnVar(g)
+	f.generateOutArgValues(g)
+	g.Line()
+	f.generateReturn(g)
 }
 
 func (f *Function) generateInitialiseInvoker(g *group) {
@@ -135,17 +139,35 @@ func (f *Function) generateCallFunction(g *group) {
 		CallFunc(f.Parameters.generateCallParams)
 }
 
-func (f *Function) generateReturnValues(g *group) {
+func (f *Function) generateReturnVar(g *group) {
+	if f.ReturnValue.isVoid() {
+		return
+	}
+
+	g.
+		Id("retGo").
+		Op(":=").
+		Do(func(s *jen.Statement) {
+			f.ReturnValue.generateValue(s, jen.Id("ret"))
+		})
+}
+
+func (f *Function) generateOutArgValues(g *group) {
+	f.Parameters.generateOutValues(g, "out")
+}
+
+func (f *Function) generateReturn(g *group) {
 	if f.ReturnValue.isVoid() && f.Parameters.outCount() == 0 {
 		return
 	}
 
 	g.ReturnFunc(func(g *jen.Group) {
 		if !f.ReturnValue.isVoid() {
-			arg := jen.Id("ret")
-			f.ReturnValue.generateValue(g, arg)
+			g.Id("retGo")
 		}
 
-		f.Parameters.generateOutValues(g)
+		for i := 0; i < f.Parameters.outCount(); i++ {
+			g.Id(fmt.Sprintf("out%d", i))
+		}
 	})
 }

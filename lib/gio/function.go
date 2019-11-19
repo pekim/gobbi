@@ -116,7 +116,9 @@ func ContentTypeFromMimeType(mimeType string) string {
 
 	ret := contentTypeFromMimeTypeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var contentTypeGetDescriptionInvoker *gi.Function
@@ -132,7 +134,9 @@ func ContentTypeGetDescription(type_ string) string {
 
 	ret := contentTypeGetDescriptionInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var contentTypeGetGenericIconNameInvoker *gi.Function
@@ -148,7 +152,9 @@ func ContentTypeGetGenericIconName(type_ string) string {
 
 	ret := contentTypeGetGenericIconNameInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
@@ -178,7 +184,9 @@ func ContentTypeGetMimeType(type_ string) string {
 
 	ret := contentTypeGetMimeTypeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : return type 'Icon' not supported
@@ -210,7 +218,9 @@ func DbusAddressEscapeValue(string_ string) string {
 
 	ret := dbusAddressEscapeValueInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
@@ -251,7 +261,9 @@ func DbusGenerateGuid() string {
 
 	ret := dbusGenerateGuidInvoker.Invoke(nil, nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : parameter 'gvalue' of type 'GObject.Value' not supported
@@ -315,7 +327,9 @@ func IoExtensionPointLookup(name string) *IOExtensionPoint {
 
 	ret := ioExtensionPointLookupInvoker.Invoke(inArgs[:], nil)
 
-	return &IOExtensionPoint{native: ret.Pointer()}
+	retGo := &IOExtensionPoint{native: ret.Pointer()}
+
+	return retGo
 }
 
 var ioExtensionPointRegisterInvoker *gi.Function
@@ -331,7 +345,9 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 
 	ret := ioExtensionPointRegisterInvoker.Invoke(inArgs[:], nil)
 
-	return &IOExtensionPoint{native: ret.Pointer()}
+	retGo := &IOExtensionPoint{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : parameter 'dirname' of type 'filename' not supported
@@ -418,7 +434,9 @@ func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 
 	ret := settingsSchemaSourceGetDefaultInvoker.Invoke(nil, nil)
 
-	return &SettingsSchemaSource{native: ret.Pointer()}
+	retGo := &SettingsSchemaSource{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : parameter 'object' of type 'GObject.Object' not supported

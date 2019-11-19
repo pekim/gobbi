@@ -9,17 +9,17 @@ type Argument struct {
 	//Array             *Array `xml:"array"`
 }
 
-func (a *Argument) generateValue(g *jen.Group, arg *jen.Statement) {
-	argValue := arg.
+func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
+	argValue := argVar.
 		Dot(a.Type.argumentValueGetFunctionName()).
 		CallFunc(a.transferOwnershipJen)
 
 	createFromArgument := a.Type.createFromArgumentFunction()
 
 	if createFromArgument != nil {
-		createFromArgument(g, argValue)
+		createFromArgument(s, argValue)
 	} else {
-		g.Add(argValue)
+		s.Add(argValue)
 	}
 }
 

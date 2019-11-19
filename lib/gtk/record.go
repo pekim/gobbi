@@ -459,7 +459,9 @@ func BorderNew() *Border {
 
 	ret := newBorderInvoker.Invoke(nil, nil)
 
-	return &Border{native: ret.Pointer()}
+	retGo := &Border{native: ret.Pointer()}
+
+	return retGo
 }
 
 type BoxClass struct {
@@ -2130,7 +2132,9 @@ func IconSetNew() *IconSet {
 
 	ret := newIconSetInvoker.Invoke(nil, nil)
 
-	return &IconSet{native: ret.Pointer()}
+	retGo := &IconSet{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_icon_set_new_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
@@ -2149,7 +2153,9 @@ func IconSourceNew() *IconSource {
 
 	ret := newIconSourceInvoker.Invoke(nil, nil)
 
-	return &IconSource{native: ret.Pointer()}
+	retGo := &IconSource{native: ret.Pointer()}
+
+	return retGo
 }
 
 type IconThemeClass struct {
@@ -2964,7 +2970,9 @@ func PaperSizeNew(name string) *PaperSize {
 
 	ret := newPaperSizeInvoker.Invoke(inArgs[:], nil)
 
-	return &PaperSize{native: ret.Pointer()}
+	retGo := &PaperSize{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_custom' : parameter 'width' of type 'gdouble' not supported
@@ -3482,7 +3490,9 @@ func RequisitionNew() *Requisition {
 
 	ret := newRequisitionInvoker.Invoke(nil, nil)
 
-	return &Requisition{native: ret.Pointer()}
+	retGo := &Requisition{native: ret.Pointer()}
+
+	return retGo
 }
 
 type RevealerClass struct {
@@ -4127,7 +4137,9 @@ func SymbolicColorNewName(name string) *SymbolicColor {
 
 	ret := newNameSymbolicColorInvoker.Invoke(inArgs[:], nil)
 
-	return &SymbolicColor{native: ret.Pointer()}
+	retGo := &SymbolicColor{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_symbolic_color_new_shade' : parameter 'color' of type 'SymbolicColor' not supported
@@ -4146,7 +4158,9 @@ func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 
 	ret := newWin32SymbolicColorInvoker.Invoke(inArgs[:], nil)
 
-	return &SymbolicColor{native: ret.Pointer()}
+	retGo := &SymbolicColor{native: ret.Pointer()}
+
+	return retGo
 }
 
 type TableChild struct {
@@ -4218,7 +4232,9 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 
 	ret := newTargetEntryInvoker.Invoke(inArgs[:], nil)
 
-	return &TargetEntry{native: ret.Pointer()}
+	retGo := &TargetEntry{native: ret.Pointer()}
+
+	return retGo
 }
 
 type TargetList struct {
@@ -4306,7 +4322,9 @@ func TextAttributesNew() *TextAttributes {
 
 	ret := newTextAttributesInvoker.Invoke(nil, nil)
 
-	return &TextAttributes{native: ret.Pointer()}
+	retGo := &TextAttributes{native: ret.Pointer()}
+
+	return retGo
 }
 
 type TextBTree struct {
@@ -4881,7 +4899,9 @@ func TreePathNew() *TreePath {
 
 	ret := newTreePathInvoker.Invoke(nil, nil)
 
-	return &TreePath{native: ret.Pointer()}
+	retGo := &TreePath{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newFirstTreePathInvoker *gi.Function
@@ -4894,7 +4914,9 @@ func TreePathNewFirst() *TreePath {
 
 	ret := newFirstTreePathInvoker.Invoke(nil, nil)
 
-	return &TreePath{native: ret.Pointer()}
+	retGo := &TreePath{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_tree_path_new_from_indices' : parameter '...' has no type
@@ -4914,7 +4936,9 @@ func TreePathNewFromString(path string) *TreePath {
 
 	ret := newFromStringTreePathInvoker.Invoke(inArgs[:], nil)
 
-	return &TreePath{native: ret.Pointer()}
+	retGo := &TreePath{native: ret.Pointer()}
+
+	return retGo
 }
 
 type TreeRowReference struct {
@@ -5361,7 +5385,9 @@ func WidgetPathNew() *WidgetPath {
 
 	ret := newWidgetPathInvoker.Invoke(nil, nil)
 
-	return &WidgetPath{native: ret.Pointer()}
+	retGo := &WidgetPath{native: ret.Pointer()}
+
+	return retGo
 }
 
 type WidgetPrivate struct {

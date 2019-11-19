@@ -155,7 +155,7 @@ func (t *Type) argumentSetFunctionName() string {
 	panic(fmt.Sprintf("Cannot determine argumentSetFunctionName for %s", t.Name))
 }
 
-func (t *Type) createFromArgumentFunction() func(g *jen.Group, arg *jen.Statement) {
+func (t *Type) createFromArgumentFunction() func(s *jen.Statement, arg *jen.Statement) {
 	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
 		return generator.createFromArgument
 	}

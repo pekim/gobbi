@@ -21,7 +21,9 @@ func AtomInternStaticString(atomName string) *Atom {
 
 	ret := atomInternStaticStringInvoker.Invoke(inArgs[:], nil)
 
-	return &Atom{native: ret.Pointer()}
+	retGo := &Atom{native: ret.Pointer()}
+
+	return retGo
 }
 
 var beepInvoker *gi.Function
@@ -110,7 +112,9 @@ func ErrorTrapPop() int32 {
 
 	ret := errorTrapPopInvoker.Invoke(nil, nil)
 
-	return ret.Int32()
+	retGo := ret.Int32()
+
+	return retGo
 }
 
 var errorTrapPopIgnoredInvoker *gi.Function
@@ -177,7 +181,9 @@ func GetDisplay() string {
 
 	ret := getDisplayInvoker.Invoke(nil, nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var getDisplayArgNameInvoker *gi.Function
@@ -190,7 +196,9 @@ func GetDisplayArgName() string {
 
 	ret := getDisplayArgNameInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var getProgramClassInvoker *gi.Function
@@ -203,7 +211,9 @@ func GetProgramClass() string {
 
 	ret := getProgramClassInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gdk_get_show_events' : return type 'gboolean' not supported
@@ -246,7 +256,10 @@ func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
 
 	keyvalConvertCaseInvoker.Invoke(inArgs[:], outArgs[:])
 
-	return outArgs[0].Uint32(), outArgs[1].Uint32()
+	out0 := outArgs[0].Uint32()
+	out1 := outArgs[1].Uint32()
+
+	return out0, out1
 }
 
 var keyvalFromNameInvoker *gi.Function
@@ -262,7 +275,9 @@ func KeyvalFromName(keyvalName string) uint32 {
 
 	ret := keyvalFromNameInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_is_lower' : return type 'gboolean' not supported
@@ -282,7 +297,9 @@ func KeyvalName(keyval uint32) string {
 
 	ret := keyvalNameInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var keyvalToLowerInvoker *gi.Function
@@ -298,7 +315,9 @@ func KeyvalToLower(keyval uint32) uint32 {
 
 	ret := keyvalToLowerInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var keyvalToUnicodeInvoker *gi.Function
@@ -314,7 +333,9 @@ func KeyvalToUnicode(keyval uint32) uint32 {
 
 	ret := keyvalToUnicodeInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var keyvalToUpperInvoker *gi.Function
@@ -330,7 +351,9 @@ func KeyvalToUpper(keyval uint32) uint32 {
 
 	ret := keyvalToUpperInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
@@ -563,7 +586,9 @@ func UnicodeToKeyval(wc uint32) uint32 {
 
 	ret := unicodeToKeyvalInvoker.Invoke(inArgs[:], nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var utf8ToStringTargetInvoker *gi.Function
@@ -579,5 +604,7 @@ func Utf8ToStringTarget(str string) string {
 
 	ret := utf8ToStringTargetInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }

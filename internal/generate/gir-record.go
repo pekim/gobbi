@@ -73,8 +73,8 @@ func (r *Record) argumentSetFunctionName() string {
 	return "TODOsfn"
 }
 
-func (r *Record) createFromArgument(g *jen.Group, argValue *jen.Statement) {
-	g.
+func (r *Record) createFromArgument(s *jen.Statement, argValue *jen.Statement) {
+	s.
 		Op("&").
 		Id(r.goName).
 		Values(jen.Dict{

@@ -18,7 +18,9 @@ func ApplicationInfoNew() *ApplicationInfo {
 
 	ret := newApplicationInfoInvoker.Invoke(nil, nil)
 
-	return &ApplicationInfo{native: ret.Pointer()}
+	retGo := &ApplicationInfo{native: ret.Pointer()}
+
+	return retGo
 }
 
 type AuthenticationRequestClass struct {
@@ -602,7 +604,9 @@ func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigi
 
 	ret := newSecurityOriginInvoker.Invoke(inArgs[:], nil)
 
-	return &SecurityOrigin{native: ret.Pointer()}
+	retGo := &SecurityOrigin{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newForUriSecurityOriginInvoker *gi.Function
@@ -618,7 +622,9 @@ func SecurityOriginNewForUri(uri string) *SecurityOrigin {
 
 	ret := newForUriSecurityOriginInvoker.Invoke(inArgs[:], nil)
 
-	return &SecurityOrigin{native: ret.Pointer()}
+	retGo := &SecurityOrigin{native: ret.Pointer()}
+
+	return retGo
 }
 
 type SettingsClass struct {

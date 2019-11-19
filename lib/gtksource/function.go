@@ -18,7 +18,9 @@ func EncodingGetCurrent() *Encoding {
 
 	ret := encodingGetCurrentInvoker.Invoke(nil, nil)
 
-	return &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_source_encoding_get_default_candidates' : return type 'GLib.SList' not supported
@@ -36,7 +38,9 @@ func EncodingGetFromCharset(charset string) *Encoding {
 
 	ret := encodingGetFromCharsetInvoker.Invoke(inArgs[:], nil)
 
-	return &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{native: ret.Pointer()}
+
+	return retGo
 }
 
 var encodingGetUtf8Invoker *gi.Function
@@ -49,7 +53,9 @@ func EncodingGetUtf8() *Encoding {
 
 	ret := encodingGetUtf8Invoker.Invoke(nil, nil)
 
-	return &Encoding{native: ret.Pointer()}
+	retGo := &Encoding{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_error_quark' : return type 'GLib.Quark' not supported
@@ -69,7 +75,9 @@ func UtilsEscapeSearchText(text string) string {
 
 	ret := utilsEscapeSearchTextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 var utilsUnescapeSearchTextInvoker *gi.Function
@@ -85,5 +93,7 @@ func UtilsUnescapeSearchText(text string) string {
 
 	ret := utilsUnescapeSearchTextInvoker.Invoke(inArgs[:], nil)
 
-	return ret.String(true)
+	retGo := ret.String(true)
+
+	return retGo
 }

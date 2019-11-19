@@ -307,7 +307,9 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 
 	ret := newValueArrayInvoker.Invoke(inArgs[:], nil)
 
-	return &ValueArray{native: ret.Pointer()}
+	retGo := &ValueArray{native: ret.Pointer()}
+
+	return retGo
 }
 
 type WeakRef struct {

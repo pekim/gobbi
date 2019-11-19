@@ -70,7 +70,9 @@ func DateNew() *Date {
 
 	ret := newDateInvoker.Invoke(nil, nil)
 
-	return &Date{native: ret.Pointer()}
+	retGo := &Date{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_date_new_dmy' : parameter 'day' of type 'DateDay' not supported
@@ -88,7 +90,9 @@ func DateNewJulian(julianDay uint32) *Date {
 
 	ret := newJulianDateInvoker.Invoke(inArgs[:], nil)
 
-	return &Date{native: ret.Pointer()}
+	retGo := &Date{native: ret.Pointer()}
+
+	return retGo
 }
 
 type DateTime struct {
@@ -116,7 +120,9 @@ func DateTimeNewFromUnixLocal(t int64) *DateTime {
 
 	ret := newFromUnixLocalDateTimeInvoker.Invoke(inArgs[:], nil)
 
-	return &DateTime{native: ret.Pointer()}
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newFromUnixUtcDateTimeInvoker *gi.Function
@@ -132,7 +138,9 @@ func DateTimeNewFromUnixUtc(t int64) *DateTime {
 
 	ret := newFromUnixUtcDateTimeInvoker.Invoke(inArgs[:], nil)
 
-	return &DateTime{native: ret.Pointer()}
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_date_time_new_local' : parameter 'seconds' of type 'gdouble' not supported
@@ -149,7 +157,9 @@ func DateTimeNewNowLocal() *DateTime {
 
 	ret := newNowLocalDateTimeInvoker.Invoke(nil, nil)
 
-	return &DateTime{native: ret.Pointer()}
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newNowUtcDateTimeInvoker *gi.Function
@@ -162,7 +172,9 @@ func DateTimeNewNowUtc() *DateTime {
 
 	ret := newNowUtcDateTimeInvoker.Invoke(nil, nil)
 
-	return &DateTime{native: ret.Pointer()}
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_date_time_new_utc' : parameter 'seconds' of type 'gdouble' not supported
@@ -254,7 +266,9 @@ func IOChannelUnixNew(fd int32) *IOChannel {
 
 	ret := unixNewIOChannelInvoker.Invoke(inArgs[:], nil)
 
-	return &IOChannel{native: ret.Pointer()}
+	retGo := &IOChannel{native: ret.Pointer()}
+
+	return retGo
 }
 
 type IOFuncs struct {
@@ -291,7 +305,9 @@ func KeyFileNew() *KeyFile {
 
 	ret := newKeyFileInvoker.Invoke(nil, nil)
 
-	return &KeyFile{native: ret.Pointer()}
+	retGo := &KeyFile{native: ret.Pointer()}
+
+	return retGo
 }
 
 type List struct {
@@ -326,7 +342,9 @@ func MainContextNew() *MainContext {
 
 	ret := newMainContextInvoker.Invoke(nil, nil)
 
-	return &MainContext{native: ret.Pointer()}
+	retGo := &MainContext{native: ret.Pointer()}
+
+	return retGo
 }
 
 type MainLoop struct {
@@ -671,7 +689,9 @@ func TimeZoneNew(identifier string) *TimeZone {
 
 	ret := newTimeZoneInvoker.Invoke(inArgs[:], nil)
 
-	return &TimeZone{native: ret.Pointer()}
+	retGo := &TimeZone{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newLocalTimeZoneInvoker *gi.Function
@@ -684,7 +704,9 @@ func TimeZoneNewLocal() *TimeZone {
 
 	ret := newLocalTimeZoneInvoker.Invoke(nil, nil)
 
-	return &TimeZone{native: ret.Pointer()}
+	retGo := &TimeZone{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newOffsetTimeZoneInvoker *gi.Function
@@ -700,7 +722,9 @@ func TimeZoneNewOffset(seconds int32) *TimeZone {
 
 	ret := newOffsetTimeZoneInvoker.Invoke(inArgs[:], nil)
 
-	return &TimeZone{native: ret.Pointer()}
+	retGo := &TimeZone{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newUtcTimeZoneInvoker *gi.Function
@@ -713,7 +737,9 @@ func TimeZoneNewUtc() *TimeZone {
 
 	ret := newUtcTimeZoneInvoker.Invoke(nil, nil)
 
-	return &TimeZone{native: ret.Pointer()}
+	retGo := &TimeZone{native: ret.Pointer()}
+
+	return retGo
 }
 
 type Timer struct {
@@ -752,7 +778,9 @@ func VariantNewByte(value uint8) *Variant {
 
 	ret := newByteVariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_new_bytestring' : parameter 'string' has no type
@@ -782,7 +810,9 @@ func VariantNewHandle(value int32) *Variant {
 
 	ret := newHandleVariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newInt16VariantInvoker *gi.Function
@@ -798,7 +828,9 @@ func VariantNewInt16(value int16) *Variant {
 
 	ret := newInt16VariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newInt32VariantInvoker *gi.Function
@@ -814,7 +846,9 @@ func VariantNewInt32(value int32) *Variant {
 
 	ret := newInt32VariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newInt64VariantInvoker *gi.Function
@@ -830,7 +864,9 @@ func VariantNewInt64(value int64) *Variant {
 
 	ret := newInt64VariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_new_maybe' : parameter 'child_type' of type 'VariantType' not supported
@@ -848,7 +884,9 @@ func VariantNewObjectPath(objectPath string) *Variant {
 
 	ret := newObjectPathVariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_new_objv' : parameter 'strv' has no type
@@ -872,7 +910,9 @@ func VariantNewSignature(signature string) *Variant {
 
 	ret := newSignatureVariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newStringVariantInvoker *gi.Function
@@ -888,7 +928,9 @@ func VariantNewString(string_ string) *Variant {
 
 	ret := newStringVariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_new_strv' : parameter 'strv' has no type
@@ -906,7 +948,9 @@ func VariantNewTakeString(string_ string) *Variant {
 
 	ret := newTakeStringVariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_new_tuple' : parameter 'children' has no type
@@ -924,7 +968,9 @@ func VariantNewUint16(value uint16) *Variant {
 
 	ret := newUint16VariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newUint32VariantInvoker *gi.Function
@@ -940,7 +986,9 @@ func VariantNewUint32(value uint32) *Variant {
 
 	ret := newUint32VariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 var newUint64VariantInvoker *gi.Function
@@ -956,7 +1004,9 @@ func VariantNewUint64(value uint64) *Variant {
 
 	ret := newUint64VariantInvoker.Invoke(inArgs[:], nil)
 
-	return &Variant{native: ret.Pointer()}
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_new_va' : parameter 'app' of type 'va_list' not supported
@@ -996,7 +1046,9 @@ func VariantTypeNew(typeString string) *VariantType {
 
 	ret := newVariantTypeInvoker.Invoke(inArgs[:], nil)
 
-	return &VariantType{native: ret.Pointer()}
+	retGo := &VariantType{native: ret.Pointer()}
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_variant_type_new_array' : parameter 'element' of type 'VariantType' not supported

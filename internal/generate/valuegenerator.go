@@ -14,5 +14,5 @@ type outParameterGenerator interface {
 	argumentGetFunctionName() string
 	argumentSetFunctionName() string
 
-	createFromArgument(g *jen.Group, arg *jen.Statement)
+	createFromArgument(s *jen.Statement, arg *jen.Statement)
 }

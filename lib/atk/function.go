@@ -26,7 +26,9 @@ func GetBinaryAge() uint32 {
 
 	ret := getBinaryAgeInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'atk_get_default_registry' : return type 'Registry' not supported
@@ -43,7 +45,9 @@ func GetInterfaceAge() uint32 {
 
 	ret := getInterfaceAgeInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMajorVersionInvoker *gi.Function
@@ -56,7 +60,9 @@ func GetMajorVersion() uint32 {
 
 	ret := getMajorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMicroVersionInvoker *gi.Function
@@ -69,7 +75,9 @@ func GetMicroVersion() uint32 {
 
 	ret := getMicroVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -82,7 +90,9 @@ func GetMinorVersion() uint32 {
 
 	ret := getMinorVersionInvoker.Invoke(nil, nil)
 
-	return ret.Uint32()
+	retGo := ret.Uint32()
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'atk_get_root' : return type 'Object' not supported
@@ -97,7 +107,9 @@ func GetToolkitName() string {
 
 	ret := getToolkitNameInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var getToolkitVersionInvoker *gi.Function
@@ -110,7 +122,9 @@ func GetToolkitVersion() string {
 
 	ret := getToolkitVersionInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var getVersionInvoker *gi.Function
@@ -123,7 +137,9 @@ func GetVersion() string {
 
 	ret := getVersionInvoker.Invoke(nil, nil)
 
-	return ret.String(false)
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'atk_relation_type_for_name' : return type 'RelationType' not supported

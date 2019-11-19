@@ -76,11 +76,17 @@ func (p Parameter) generateInArg(g *group, index int) {
 		Call(jen.Id(p.goVarName))
 }
 
-func (p Parameter) generateOutValue(g *jen.Group, index int) {
+func (p Parameter) generateOutValue(g *group, varNamePrefix string, index int) {
 	arg := jen.
 		Id("outArgs").
 		Index(jen.Lit(index))
-	p.generateValue(g, arg)
+
+	g.
+		Id(fmt.Sprintf("%s%d", varNamePrefix, index)).
+		Op(":=").
+		Do(func(s *jen.Statement) {
+			p.generateValue(s, arg)
+		})
 }
 
 func (p *Parameter) transferOwnershipJen(g *jen.Group) {
