@@ -58,6 +58,7 @@ func StructFunctionInvokerNew(namespace string, structName string, funcName stri
 	if struct_ == nil {
 		panic(fmt.Sprintf("Failed to find struct '%s' in namespace '%s'", structName, namespace))
 	}
+	defer C.g_base_info_unref(struct_)
 
 	invoker := C.g_struct_info_find_method(
 		struct_,
