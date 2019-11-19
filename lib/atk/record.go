@@ -2,6 +2,8 @@
 
 package atk
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type ActionIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'do_action' : missing Type
@@ -183,6 +185,8 @@ type Implementor struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'atk_implementor_ref_accessible' : return type 'Object' not supported
+
 type KeyEventStruct struct {
 	native    uintptr
 	Type      int32
@@ -313,6 +317,61 @@ type Range struct {
 }
 
 // UNSUPPORTED : C value 'atk_range_new' : parameter 'lower_limit' of type 'gdouble' not supported
+
+var copyRangeInvoker *gi.Function
+
+// Copy is a representation of the C type atk_range_copy.
+func (recv *Range) Copy() *Range {
+	if copyRangeInvoker == nil {
+		copyRangeInvoker = gi.StructFunctionInvokerNew("Atk", "Range", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyRangeInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Range{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeRangeInvoker *gi.Function
+
+// Free is a representation of the C type atk_range_free.
+func (recv *Range) Free() {
+	if freeRangeInvoker == nil {
+		freeRangeInvoker = gi.StructFunctionInvokerNew("Atk", "Range", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeRangeInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var getDescriptionRangeInvoker *gi.Function
+
+// GetDescription is a representation of the C type atk_range_get_description.
+func (recv *Range) GetDescription() string {
+	if getDescriptionRangeInvoker == nil {
+		getDescriptionRangeInvoker = gi.StructFunctionInvokerNew("Atk", "Range", "get_description")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getDescriptionRangeInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'atk_range_get_lower_limit' : return type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'atk_range_get_upper_limit' : return type 'gdouble' not supported
 
 type Rectangle struct {
 	native uintptr

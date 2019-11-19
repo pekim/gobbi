@@ -62,8 +62,11 @@ func (pp Parameters) generateReturnDeclarations(g *group) {
 	}
 }
 
-func (pp Parameters) inCount() int {
+func (pp Parameters) inCount(receiver bool) int {
 	count := 0
+	if receiver {
+		count++
+	}
 	for _, param := range pp {
 		if param.isIn() {
 			count++
@@ -84,8 +87,8 @@ func (pp Parameters) outCount() int {
 	return count
 }
 
-func (pp Parameters) generateInArgs(g *group) {
-	count := pp.inCount()
+func (pp Parameters) generateInArgs(g *group, receiver bool) {
+	count := pp.inCount(receiver)
 	if count == 0 {
 		return
 	}
@@ -99,6 +102,15 @@ func (pp Parameters) generateInArgs(g *group) {
 
 	// set values in inArgs
 	n := 0
+	if receiver {
+		g.
+			Id("inArgs").
+			Index(jen.Lit(n)).
+			Dot("SetPointer").
+			Call(jen.Id("recv").Dot("native"))
+
+		n++
+	}
 	for _, param := range pp {
 		if param.isIn() {
 			param.generateInArg(g, n)
@@ -131,9 +143,9 @@ func (pp Parameters) generateOutArgs(g *group) {
 		Qual(gi.PackageName, "Argument")
 }
 
-func (pp Parameters) generateCallParams(g *jen.Group) {
+func (pp Parameters) generateCallParams(g *jen.Group, receiver bool) {
 	// in args
-	if pp.inCount() > 0 {
+	if pp.inCount(receiver) > 0 {
 		g.
 			Id("inArgs").
 			Index(jen.Op(":"))

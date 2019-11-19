@@ -2,6 +2,8 @@
 
 package gtksource
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type BufferClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gtk.TextBufferClass'
@@ -158,6 +160,93 @@ type CompletionWordsPrivate struct {
 
 type Encoding struct {
 	native uintptr
+}
+
+var copyEncodingInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_source_encoding_copy.
+func (recv *Encoding) Copy() *Encoding {
+	if copyEncodingInvoker == nil {
+		copyEncodingInvoker = gi.StructFunctionInvokerNew("GtkSource", "Encoding", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyEncodingInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Encoding{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeEncodingInvoker *gi.Function
+
+// Free is a representation of the C type gtk_source_encoding_free.
+func (recv *Encoding) Free() {
+	if freeEncodingInvoker == nil {
+		freeEncodingInvoker = gi.StructFunctionInvokerNew("GtkSource", "Encoding", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeEncodingInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var getCharsetEncodingInvoker *gi.Function
+
+// GetCharset is a representation of the C type gtk_source_encoding_get_charset.
+func (recv *Encoding) GetCharset() string {
+	if getCharsetEncodingInvoker == nil {
+		getCharsetEncodingInvoker = gi.StructFunctionInvokerNew("GtkSource", "Encoding", "get_charset")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getCharsetEncodingInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getNameEncodingInvoker *gi.Function
+
+// GetName is a representation of the C type gtk_source_encoding_get_name.
+func (recv *Encoding) GetName() string {
+	if getNameEncodingInvoker == nil {
+		getNameEncodingInvoker = gi.StructFunctionInvokerNew("GtkSource", "Encoding", "get_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getNameEncodingInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var toStringEncodingInvoker *gi.Function
+
+// ToString is a representation of the C type gtk_source_encoding_to_string.
+func (recv *Encoding) ToString() string {
+	if toStringEncodingInvoker == nil {
+		toStringEncodingInvoker = gi.StructFunctionInvokerNew("GtkSource", "Encoding", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringEncodingInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 type FileClass struct {
@@ -338,6 +427,12 @@ type RegionClass struct {
 type RegionIter struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'gtk_source_region_iter_get_subregion' : parameter 'start' of type 'Gtk.TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_source_region_iter_is_end' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_source_region_iter_next' : return type 'gboolean' not supported
 
 type SearchContextClass struct {
 	native uintptr

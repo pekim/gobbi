@@ -423,6 +423,10 @@ type BindingSet struct {
 	Parsed  uint32
 }
 
+// UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
+
+// UNSUPPORTED : C value 'gtk_binding_set_add_path' : parameter 'path_type' of type 'PathType' not supported
+
 type BindingSignal struct {
 	native     uintptr
 	Next       *BindingSignal
@@ -462,6 +466,39 @@ func BorderNew() *Border {
 	retGo := &Border{native: ret.Pointer()}
 
 	return retGo
+}
+
+var copyBorderInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_border_copy.
+func (recv *Border) Copy() *Border {
+	if copyBorderInvoker == nil {
+		copyBorderInvoker = gi.StructFunctionInvokerNew("Gtk", "Border", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyBorderInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Border{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeBorderInvoker *gi.Function
+
+// Free is a representation of the C type gtk_border_free.
+func (recv *Border) Free() {
+	if freeBorderInvoker == nil {
+		freeBorderInvoker = gi.StructFunctionInvokerNew("Gtk", "Border", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeBorderInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type BoxClass struct {
@@ -736,6 +773,30 @@ type CellAreaClass struct {
 
 }
 
+// UNSUPPORTED : C value 'gtk_cell_area_class_find_cell_property' : return type 'GObject.ParamSpec' not supported
+
+// UNSUPPORTED : C value 'gtk_cell_area_class_install_cell_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+
+var listCellPropertiesCellAreaClassInvoker *gi.Function
+
+// ListCellProperties is a representation of the C type gtk_cell_area_class_list_cell_properties.
+func (recv *CellAreaClass) ListCellProperties() uint32 {
+	if listCellPropertiesCellAreaClassInvoker == nil {
+		listCellPropertiesCellAreaClassInvoker = gi.StructFunctionInvokerNew("Gtk", "CellAreaClass", "list_cell_properties")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	listCellPropertiesCellAreaClassInvoker.Invoke(inArgs[:], outArgs[:])
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
 type CellAreaContextClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'allocate' : missing Type
@@ -856,6 +917,8 @@ type CellRendererClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 
 }
+
+// UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
 
 type CellRendererClassPrivate struct {
 	native uintptr
@@ -1271,6 +1334,47 @@ type ContainerClass struct {
 
 }
 
+// UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
+
+var handleBorderWidthContainerClassInvoker *gi.Function
+
+// HandleBorderWidth is a representation of the C type gtk_container_class_handle_border_width.
+func (recv *ContainerClass) HandleBorderWidth() {
+	if handleBorderWidthContainerClassInvoker == nil {
+		handleBorderWidthContainerClassInvoker = gi.StructFunctionInvokerNew("Gtk", "ContainerClass", "handle_border_width")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	handleBorderWidthContainerClassInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' has no type
+
+// UNSUPPORTED : C value 'gtk_container_class_install_child_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+
+var listChildPropertiesContainerClassInvoker *gi.Function
+
+// ListChildProperties is a representation of the C type gtk_container_class_list_child_properties.
+func (recv *ContainerClass) ListChildProperties() uint32 {
+	if listChildPropertiesContainerClassInvoker == nil {
+		listChildPropertiesContainerClassInvoker = gi.StructFunctionInvokerNew("Gtk", "ContainerClass", "list_child_properties")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	listChildPropertiesContainerClassInvoker.Invoke(inArgs[:], outArgs[:])
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
 type ContainerPrivate struct {
 	native uintptr
 }
@@ -1295,6 +1399,133 @@ type CssProviderPrivate struct {
 
 type CssSection struct {
 	native uintptr
+}
+
+var getEndLineCssSectionInvoker *gi.Function
+
+// GetEndLine is a representation of the C type gtk_css_section_get_end_line.
+func (recv *CssSection) GetEndLine() uint32 {
+	if getEndLineCssSectionInvoker == nil {
+		getEndLineCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "get_end_line")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getEndLineCssSectionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var getEndPositionCssSectionInvoker *gi.Function
+
+// GetEndPosition is a representation of the C type gtk_css_section_get_end_position.
+func (recv *CssSection) GetEndPosition() uint32 {
+	if getEndPositionCssSectionInvoker == nil {
+		getEndPositionCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "get_end_position")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getEndPositionCssSectionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_css_section_get_file' : return type 'Gio.File' not supported
+
+var getParentCssSectionInvoker *gi.Function
+
+// GetParent is a representation of the C type gtk_css_section_get_parent.
+func (recv *CssSection) GetParent() *CssSection {
+	if getParentCssSectionInvoker == nil {
+		getParentCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "get_parent")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getParentCssSectionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &CssSection{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_css_section_get_section_type' : return type 'CssSectionType' not supported
+
+var getStartLineCssSectionInvoker *gi.Function
+
+// GetStartLine is a representation of the C type gtk_css_section_get_start_line.
+func (recv *CssSection) GetStartLine() uint32 {
+	if getStartLineCssSectionInvoker == nil {
+		getStartLineCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "get_start_line")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getStartLineCssSectionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var getStartPositionCssSectionInvoker *gi.Function
+
+// GetStartPosition is a representation of the C type gtk_css_section_get_start_position.
+func (recv *CssSection) GetStartPosition() uint32 {
+	if getStartPositionCssSectionInvoker == nil {
+		getStartPositionCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "get_start_position")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getStartPositionCssSectionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var refCssSectionInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_css_section_ref.
+func (recv *CssSection) Ref() *CssSection {
+	if refCssSectionInvoker == nil {
+		refCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refCssSectionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &CssSection{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefCssSectionInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_css_section_unref.
+func (recv *CssSection) Unref() {
+	if unrefCssSectionInvoker == nil {
+		unrefCssSectionInvoker = gi.StructFunctionInvokerNew("Gtk", "CssSection", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefCssSectionInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type DialogClass struct {
@@ -1890,6 +2121,63 @@ type Gradient struct {
 
 // UNSUPPORTED : C value 'gtk_gradient_new_radial' : parameter 'x0' of type 'gdouble' not supported
 
+// UNSUPPORTED : C value 'gtk_gradient_add_color_stop' : parameter 'offset' of type 'gdouble' not supported
+
+var refGradientInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_gradient_ref.
+func (recv *Gradient) Ref() *Gradient {
+	if refGradientInvoker == nil {
+		refGradientInvoker = gi.StructFunctionInvokerNew("Gtk", "Gradient", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refGradientInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Gradient{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_gradient_resolve' : parameter 'props' of type 'StyleProperties' not supported
+
+// UNSUPPORTED : C value 'gtk_gradient_resolve_for_context' : parameter 'context' of type 'StyleContext' not supported
+
+var toStringGradientInvoker *gi.Function
+
+// ToString is a representation of the C type gtk_gradient_to_string.
+func (recv *Gradient) ToString() string {
+	if toStringGradientInvoker == nil {
+		toStringGradientInvoker = gi.StructFunctionInvokerNew("Gtk", "Gradient", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringGradientInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var unrefGradientInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_gradient_unref.
+func (recv *Gradient) Unref() {
+	if unrefGradientInvoker == nil {
+		unrefGradientInvoker = gi.StructFunctionInvokerNew("Gtk", "Gradient", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefGradientInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type GridClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
@@ -2139,6 +2427,67 @@ func IconSetNew() *IconSet {
 
 // UNSUPPORTED : C value 'gtk_icon_set_new_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
+// UNSUPPORTED : C value 'gtk_icon_set_add_source' : parameter 'source' of type 'IconSource' not supported
+
+var copyIconSetInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_icon_set_copy.
+func (recv *IconSet) Copy() *IconSet {
+	if copyIconSetInvoker == nil {
+		copyIconSetInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSet", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyIconSetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &IconSet{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : parameter 'sizes' has no type
+
+var refIconSetInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_icon_set_ref.
+func (recv *IconSet) Ref() *IconSet {
+	if refIconSetInvoker == nil {
+		refIconSetInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSet", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refIconSetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &IconSet{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon' : parameter 'style' of type 'Style' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_pixbuf' : parameter 'context' of type 'StyleContext' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'context' of type 'StyleContext' not supported
+
+var unrefIconSetInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_icon_set_unref.
+func (recv *IconSet) Unref() {
+	if unrefIconSetInvoker == nil {
+		unrefIconSetInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSet", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefIconSetInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type IconSource struct {
 	native uintptr
 }
@@ -2157,6 +2506,105 @@ func IconSourceNew() *IconSource {
 
 	return retGo
 }
+
+var copyIconSourceInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_icon_source_copy.
+func (recv *IconSource) Copy() *IconSource {
+	if copyIconSourceInvoker == nil {
+		copyIconSourceInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSource", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyIconSourceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &IconSource{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeIconSourceInvoker *gi.Function
+
+// Free is a representation of the C type gtk_icon_source_free.
+func (recv *IconSource) Free() {
+	if freeIconSourceInvoker == nil {
+		freeIconSourceInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSource", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeIconSourceInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_direction' : return type 'TextDirection' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_direction_wildcarded' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_filename' : return type 'filename' not supported
+
+var getIconNameIconSourceInvoker *gi.Function
+
+// GetIconName is a representation of the C type gtk_icon_source_get_icon_name.
+func (recv *IconSource) GetIconName() string {
+	if getIconNameIconSourceInvoker == nil {
+		getIconNameIconSourceInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSource", "get_icon_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getIconNameIconSourceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_size' : return type 'IconSize' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_size_wildcarded' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_state' : return type 'StateType' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_get_state_wildcarded' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_direction' : parameter 'direction' of type 'TextDirection' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_direction_wildcarded' : parameter 'setting' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_filename' : parameter 'filename' of type 'filename' not supported
+
+var setIconNameIconSourceInvoker *gi.Function
+
+// SetIconName is a representation of the C type gtk_icon_source_set_icon_name.
+func (recv *IconSource) SetIconName(iconName string) {
+	if setIconNameIconSourceInvoker == nil {
+		setIconNameIconSourceInvoker = gi.StructFunctionInvokerNew("Gtk", "IconSource", "set_icon_name")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(iconName)
+
+	setIconNameIconSourceInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_size' : parameter 'size' of type 'IconSize' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_size_wildcarded' : parameter 'setting' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_state' : parameter 'state' of type 'StateType' not supported
+
+// UNSUPPORTED : C value 'gtk_icon_source_set_state_wildcarded' : parameter 'setting' of type 'gboolean' not supported
 
 type IconThemeClass struct {
 	native uintptr
@@ -2985,6 +3433,117 @@ func PaperSizeNew(name string) *PaperSize {
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_from_ppd' : parameter 'width' of type 'gdouble' not supported
 
+var copyPaperSizeInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_paper_size_copy.
+func (recv *PaperSize) Copy() *PaperSize {
+	if copyPaperSizeInvoker == nil {
+		copyPaperSizeInvoker = gi.StructFunctionInvokerNew("Gtk", "PaperSize", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyPaperSizeInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &PaperSize{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freePaperSizeInvoker *gi.Function
+
+// Free is a representation of the C type gtk_paper_size_free.
+func (recv *PaperSize) Free() {
+	if freePaperSizeInvoker == nil {
+		freePaperSizeInvoker = gi.StructFunctionInvokerNew("Gtk", "PaperSize", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freePaperSizeInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_paper_size_get_default_bottom_margin' : parameter 'unit' of type 'Unit' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_get_default_left_margin' : parameter 'unit' of type 'Unit' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_get_default_right_margin' : parameter 'unit' of type 'Unit' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_get_default_top_margin' : parameter 'unit' of type 'Unit' not supported
+
+var getDisplayNamePaperSizeInvoker *gi.Function
+
+// GetDisplayName is a representation of the C type gtk_paper_size_get_display_name.
+func (recv *PaperSize) GetDisplayName() string {
+	if getDisplayNamePaperSizeInvoker == nil {
+		getDisplayNamePaperSizeInvoker = gi.StructFunctionInvokerNew("Gtk", "PaperSize", "get_display_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getDisplayNamePaperSizeInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_paper_size_get_height' : parameter 'unit' of type 'Unit' not supported
+
+var getNamePaperSizeInvoker *gi.Function
+
+// GetName is a representation of the C type gtk_paper_size_get_name.
+func (recv *PaperSize) GetName() string {
+	if getNamePaperSizeInvoker == nil {
+		getNamePaperSizeInvoker = gi.StructFunctionInvokerNew("Gtk", "PaperSize", "get_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getNamePaperSizeInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getPpdNamePaperSizeInvoker *gi.Function
+
+// GetPpdName is a representation of the C type gtk_paper_size_get_ppd_name.
+func (recv *PaperSize) GetPpdName() string {
+	if getPpdNamePaperSizeInvoker == nil {
+		getPpdNamePaperSizeInvoker = gi.StructFunctionInvokerNew("Gtk", "PaperSize", "get_ppd_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPpdNamePaperSizeInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_paper_size_get_width' : parameter 'unit' of type 'Unit' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_is_custom' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_is_equal' : parameter 'size2' of type 'PaperSize' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_is_ipp' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_set_size' : parameter 'width' of type 'gdouble' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_to_gvariant' : return type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'gtk_paper_size_to_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+
 type PlacesSidebarClass struct {
 	native uintptr
 }
@@ -3439,6 +3998,261 @@ type RecentInfo struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gtk_recent_info_create_app_info' : return type 'Gio.AppInfo' not supported
+
+// UNSUPPORTED : C value 'gtk_recent_info_exists' : return type 'gboolean' not supported
+
+var getAddedRecentInfoInvoker *gi.Function
+
+// GetAdded is a representation of the C type gtk_recent_info_get_added.
+func (recv *RecentInfo) GetAdded() int64 {
+	if getAddedRecentInfoInvoker == nil {
+		getAddedRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_added")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getAddedRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var getAgeRecentInfoInvoker *gi.Function
+
+// GetAge is a representation of the C type gtk_recent_info_get_age.
+func (recv *RecentInfo) GetAge() int32 {
+	if getAgeRecentInfoInvoker == nil {
+		getAgeRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_age")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getAgeRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_recent_info_get_application_info' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_recent_info_get_applications' : parameter 'length' of type 'gsize' not supported
+
+var getDescriptionRecentInfoInvoker *gi.Function
+
+// GetDescription is a representation of the C type gtk_recent_info_get_description.
+func (recv *RecentInfo) GetDescription() string {
+	if getDescriptionRecentInfoInvoker == nil {
+		getDescriptionRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_description")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getDescriptionRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getDisplayNameRecentInfoInvoker *gi.Function
+
+// GetDisplayName is a representation of the C type gtk_recent_info_get_display_name.
+func (recv *RecentInfo) GetDisplayName() string {
+	if getDisplayNameRecentInfoInvoker == nil {
+		getDisplayNameRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_display_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getDisplayNameRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_recent_info_get_gicon' : return type 'Gio.Icon' not supported
+
+// UNSUPPORTED : C value 'gtk_recent_info_get_groups' : parameter 'length' of type 'gsize' not supported
+
+// UNSUPPORTED : C value 'gtk_recent_info_get_icon' : return type 'GdkPixbuf.Pixbuf' not supported
+
+var getMimeTypeRecentInfoInvoker *gi.Function
+
+// GetMimeType is a representation of the C type gtk_recent_info_get_mime_type.
+func (recv *RecentInfo) GetMimeType() string {
+	if getMimeTypeRecentInfoInvoker == nil {
+		getMimeTypeRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_mime_type")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getMimeTypeRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getModifiedRecentInfoInvoker *gi.Function
+
+// GetModified is a representation of the C type gtk_recent_info_get_modified.
+func (recv *RecentInfo) GetModified() int64 {
+	if getModifiedRecentInfoInvoker == nil {
+		getModifiedRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_modified")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getModifiedRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_recent_info_get_private_hint' : return type 'gboolean' not supported
+
+var getShortNameRecentInfoInvoker *gi.Function
+
+// GetShortName is a representation of the C type gtk_recent_info_get_short_name.
+func (recv *RecentInfo) GetShortName() string {
+	if getShortNameRecentInfoInvoker == nil {
+		getShortNameRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_short_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getShortNameRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var getUriRecentInfoInvoker *gi.Function
+
+// GetUri is a representation of the C type gtk_recent_info_get_uri.
+func (recv *RecentInfo) GetUri() string {
+	if getUriRecentInfoInvoker == nil {
+		getUriRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_uri")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getUriRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getUriDisplayRecentInfoInvoker *gi.Function
+
+// GetUriDisplay is a representation of the C type gtk_recent_info_get_uri_display.
+func (recv *RecentInfo) GetUriDisplay() string {
+	if getUriDisplayRecentInfoInvoker == nil {
+		getUriDisplayRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_uri_display")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getUriDisplayRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var getVisitedRecentInfoInvoker *gi.Function
+
+// GetVisited is a representation of the C type gtk_recent_info_get_visited.
+func (recv *RecentInfo) GetVisited() int64 {
+	if getVisitedRecentInfoInvoker == nil {
+		getVisitedRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "get_visited")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getVisitedRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_recent_info_has_application' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_recent_info_has_group' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_recent_info_is_local' : return type 'gboolean' not supported
+
+var lastApplicationRecentInfoInvoker *gi.Function
+
+// LastApplication is a representation of the C type gtk_recent_info_last_application.
+func (recv *RecentInfo) LastApplication() string {
+	if lastApplicationRecentInfoInvoker == nil {
+		lastApplicationRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "last_application")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := lastApplicationRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_recent_info_match' : parameter 'info_b' of type 'RecentInfo' not supported
+
+var refRecentInfoInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_recent_info_ref.
+func (recv *RecentInfo) Ref() *RecentInfo {
+	if refRecentInfoInvoker == nil {
+		refRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &RecentInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefRecentInfoInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_recent_info_unref.
+func (recv *RecentInfo) Unref() {
+	if unrefRecentInfoInvoker == nil {
+		unrefRecentInfoInvoker = gi.StructFunctionInvokerNew("Gtk", "RecentInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefRecentInfoInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type RecentManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'changed' : missing Type
@@ -3493,6 +4307,39 @@ func RequisitionNew() *Requisition {
 	retGo := &Requisition{native: ret.Pointer()}
 
 	return retGo
+}
+
+var copyRequisitionInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_requisition_copy.
+func (recv *Requisition) Copy() *Requisition {
+	if copyRequisitionInvoker == nil {
+		copyRequisitionInvoker = gi.StructFunctionInvokerNew("Gtk", "Requisition", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyRequisitionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Requisition{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeRequisitionInvoker *gi.Function
+
+// Free is a representation of the C type gtk_requisition_free.
+func (recv *Requisition) Free() {
+	if freeRequisitionInvoker == nil {
+		freeRequisitionInvoker = gi.StructFunctionInvokerNew("Gtk", "Requisition", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeRequisitionInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type RevealerClass struct {
@@ -3641,6 +4488,171 @@ type SearchEntryClass struct {
 type SelectionData struct {
 	native uintptr
 }
+
+var copySelectionDataInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_selection_data_copy.
+func (recv *SelectionData) Copy() *SelectionData {
+	if copySelectionDataInvoker == nil {
+		copySelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copySelectionDataInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SelectionData{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeSelectionDataInvoker *gi.Function
+
+// Free is a representation of the C type gtk_selection_data_free.
+func (recv *SelectionData) Free() {
+	if freeSelectionDataInvoker == nil {
+		freeSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeSelectionDataInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var getDataSelectionDataInvoker *gi.Function
+
+// GetData is a representation of the C type gtk_selection_data_get_data.
+func (recv *SelectionData) GetData() {
+	if getDataSelectionDataInvoker == nil {
+		getDataSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "get_data")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	getDataSelectionDataInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_selection_data_get_data_type' : return type 'Gdk.Atom' not supported
+
+var getDataWithLengthSelectionDataInvoker *gi.Function
+
+// GetDataWithLength is a representation of the C type gtk_selection_data_get_data_with_length.
+func (recv *SelectionData) GetDataWithLength() int32 {
+	if getDataWithLengthSelectionDataInvoker == nil {
+		getDataWithLengthSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "get_data_with_length")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	getDataWithLengthSelectionDataInvoker.Invoke(inArgs[:], outArgs[:])
+
+	out0 := outArgs[0].Int32()
+
+	return out0
+}
+
+// UNSUPPORTED : C value 'gtk_selection_data_get_display' : return type 'Gdk.Display' not supported
+
+var getFormatSelectionDataInvoker *gi.Function
+
+// GetFormat is a representation of the C type gtk_selection_data_get_format.
+func (recv *SelectionData) GetFormat() int32 {
+	if getFormatSelectionDataInvoker == nil {
+		getFormatSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "get_format")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getFormatSelectionDataInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var getLengthSelectionDataInvoker *gi.Function
+
+// GetLength is a representation of the C type gtk_selection_data_get_length.
+func (recv *SelectionData) GetLength() int32 {
+	if getLengthSelectionDataInvoker == nil {
+		getLengthSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "get_length")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getLengthSelectionDataInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_selection_data_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_get_selection' : return type 'Gdk.Atom' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_get_target' : return type 'Gdk.Atom' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_get_targets' : parameter 'targets' has no type
+
+var getTextSelectionDataInvoker *gi.Function
+
+// GetText is a representation of the C type gtk_selection_data_get_text.
+func (recv *SelectionData) GetText() string {
+	if getTextSelectionDataInvoker == nil {
+		getTextSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "get_text")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getTextSelectionDataInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var getUrisSelectionDataInvoker *gi.Function
+
+// GetUris is a representation of the C type gtk_selection_data_get_uris.
+func (recv *SelectionData) GetUris() {
+	if getUrisSelectionDataInvoker == nil {
+		getUrisSelectionDataInvoker = gi.StructFunctionInvokerNew("Gtk", "SelectionData", "get_uris")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	getUrisSelectionDataInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_selection_data_set' : parameter 'type' of type 'Gdk.Atom' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_set_text' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' has no type
+
+// UNSUPPORTED : C value 'gtk_selection_data_targets_include_image' : parameter 'writable' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_targets_include_rich_text' : parameter 'buffer' of type 'TextBuffer' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_targets_include_text' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_selection_data_targets_include_uri' : return type 'gboolean' not supported
 
 type SeparatorClass struct {
 	native      uintptr
@@ -3954,6 +4966,39 @@ type StockItem struct {
 	TranslationDomain string
 }
 
+var copyStockItemInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_stock_item_copy.
+func (recv *StockItem) Copy() *StockItem {
+	if copyStockItemInvoker == nil {
+		copyStockItemInvoker = gi.StructFunctionInvokerNew("Gtk", "StockItem", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyStockItemInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &StockItem{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeStockItemInvoker *gi.Function
+
+// Free is a representation of the C type gtk_stock_item_free.
+func (recv *StockItem) Free() {
+	if freeStockItemInvoker == nil {
+		freeStockItemInvoker = gi.StructFunctionInvokerNew("Gtk", "StockItem", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeStockItemInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type StyleClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -4163,6 +5208,59 @@ func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	return retGo
 }
 
+var refSymbolicColorInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_symbolic_color_ref.
+func (recv *SymbolicColor) Ref() *SymbolicColor {
+	if refSymbolicColorInvoker == nil {
+		refSymbolicColorInvoker = gi.StructFunctionInvokerNew("Gtk", "SymbolicColor", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refSymbolicColorInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SymbolicColor{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_symbolic_color_resolve' : parameter 'props' of type 'StyleProperties' not supported
+
+var toStringSymbolicColorInvoker *gi.Function
+
+// ToString is a representation of the C type gtk_symbolic_color_to_string.
+func (recv *SymbolicColor) ToString() string {
+	if toStringSymbolicColorInvoker == nil {
+		toStringSymbolicColorInvoker = gi.StructFunctionInvokerNew("Gtk", "SymbolicColor", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringSymbolicColorInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var unrefSymbolicColorInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_symbolic_color_unref.
+func (recv *SymbolicColor) Unref() {
+	if unrefSymbolicColorInvoker == nil {
+		unrefSymbolicColorInvoker = gi.StructFunctionInvokerNew("Gtk", "SymbolicColor", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefSymbolicColorInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type TableChild struct {
 	native uintptr
 	// UNSUPPORTED : C value 'widget' : no Go type for 'Widget'
@@ -4237,11 +5335,121 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	return retGo
 }
 
+var copyTargetEntryInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_target_entry_copy.
+func (recv *TargetEntry) Copy() *TargetEntry {
+	if copyTargetEntryInvoker == nil {
+		copyTargetEntryInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetEntry", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyTargetEntryInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TargetEntry{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeTargetEntryInvoker *gi.Function
+
+// Free is a representation of the C type gtk_target_entry_free.
+func (recv *TargetEntry) Free() {
+	if freeTargetEntryInvoker == nil {
+		freeTargetEntryInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetEntry", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeTargetEntryInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type TargetList struct {
 	native uintptr
 }
 
 // UNSUPPORTED : C value 'gtk_target_list_new' : parameter 'targets' has no type
+
+// UNSUPPORTED : C value 'gtk_target_list_add' : parameter 'target' of type 'Gdk.Atom' not supported
+
+// UNSUPPORTED : C value 'gtk_target_list_add_image_targets' : parameter 'writable' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_target_list_add_rich_text_targets' : parameter 'deserializable' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' has no type
+
+var addTextTargetsTargetListInvoker *gi.Function
+
+// AddTextTargets is a representation of the C type gtk_target_list_add_text_targets.
+func (recv *TargetList) AddTextTargets(info uint32) {
+	if addTextTargetsTargetListInvoker == nil {
+		addTextTargetsTargetListInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetList", "add_text_targets")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(info)
+
+	addTextTargetsTargetListInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var addUriTargetsTargetListInvoker *gi.Function
+
+// AddUriTargets is a representation of the C type gtk_target_list_add_uri_targets.
+func (recv *TargetList) AddUriTargets(info uint32) {
+	if addUriTargetsTargetListInvoker == nil {
+		addUriTargetsTargetListInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetList", "add_uri_targets")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(info)
+
+	addUriTargetsTargetListInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_target_list_find' : parameter 'target' of type 'Gdk.Atom' not supported
+
+var refTargetListInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_target_list_ref.
+func (recv *TargetList) Ref() *TargetList {
+	if refTargetListInvoker == nil {
+		refTargetListInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetList", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refTargetListInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TargetList{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_target_list_remove' : parameter 'target' of type 'Gdk.Atom' not supported
+
+var unrefTargetListInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_target_list_unref.
+func (recv *TargetList) Unref() {
+	if unrefTargetListInvoker == nil {
+		unrefTargetListInvoker = gi.StructFunctionInvokerNew("Gtk", "TargetList", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefTargetListInvoker.Invoke(inArgs[:], nil)
+
+}
 
 type TargetPair struct {
 	native uintptr
@@ -4327,6 +5535,59 @@ func TextAttributesNew() *TextAttributes {
 	return retGo
 }
 
+var copyTextAttributesInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_text_attributes_copy.
+func (recv *TextAttributes) Copy() *TextAttributes {
+	if copyTextAttributesInvoker == nil {
+		copyTextAttributesInvoker = gi.StructFunctionInvokerNew("Gtk", "TextAttributes", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyTextAttributesInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TextAttributes{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_attributes_copy_values' : parameter 'dest' of type 'TextAttributes' not supported
+
+var refTextAttributesInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_text_attributes_ref.
+func (recv *TextAttributes) Ref() *TextAttributes {
+	if refTextAttributesInvoker == nil {
+		refTextAttributesInvoker = gi.StructFunctionInvokerNew("Gtk", "TextAttributes", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refTextAttributesInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TextAttributes{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefTextAttributesInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_text_attributes_unref.
+func (recv *TextAttributes) Unref() {
+	if unrefTextAttributesInvoker == nil {
+		unrefTextAttributesInvoker = gi.StructFunctionInvokerNew("Gtk", "TextAttributes", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefTextAttributesInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type TextBTree struct {
 	native uintptr
 }
@@ -4401,6 +5662,444 @@ type TextChildAnchorClass struct {
 type TextIter struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'gtk_text_iter_assign' : parameter 'other' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_char' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_chars' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_cursor_position' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_cursor_positions' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_find_char' : parameter 'pred' of type 'TextCharPredicate' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_line' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_lines' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_sentence_start' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_sentence_starts' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_cursor_position' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_cursor_positions' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_line' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_lines' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_word_start' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_word_starts' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_word_start' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_backward_word_starts' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_begins_tag' : parameter 'tag' of type 'TextTag' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_can_insert' : parameter 'default_editability' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_compare' : parameter 'rhs' of type 'TextIter' not supported
+
+var copyTextIterInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_text_iter_copy.
+func (recv *TextIter) Copy() *TextIter {
+	if copyTextIterInvoker == nil {
+		copyTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TextIter{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_editable' : parameter 'default_setting' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_ends_line' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_ends_sentence' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_ends_tag' : parameter 'tag' of type 'TextTag' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_ends_word' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_equal' : parameter 'rhs' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_char' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_chars' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_cursor_position' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_cursor_positions' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_find_char' : parameter 'pred' of type 'TextCharPredicate' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_line' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_lines' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_sentence_end' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_sentence_ends' : return type 'gboolean' not supported
+
+var forwardToEndTextIterInvoker *gi.Function
+
+// ForwardToEnd is a representation of the C type gtk_text_iter_forward_to_end.
+func (recv *TextIter) ForwardToEnd() {
+	if forwardToEndTextIterInvoker == nil {
+		forwardToEndTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "forward_to_end")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	forwardToEndTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_to_line_end' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_cursor_position' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_cursor_positions' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_line' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_lines' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_word_end' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_word_ends' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_word_end' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_forward_word_ends' : return type 'gboolean' not supported
+
+var freeTextIterInvoker *gi.Function
+
+// Free is a representation of the C type gtk_text_iter_free.
+func (recv *TextIter) Free() {
+	if freeTextIterInvoker == nil {
+		freeTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_attributes' : parameter 'values' of type 'TextAttributes' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_buffer' : return type 'TextBuffer' not supported
+
+var getBytesInLineTextIterInvoker *gi.Function
+
+// GetBytesInLine is a representation of the C type gtk_text_iter_get_bytes_in_line.
+func (recv *TextIter) GetBytesInLine() int32 {
+	if getBytesInLineTextIterInvoker == nil {
+		getBytesInLineTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_bytes_in_line")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getBytesInLineTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_char' : return type 'gunichar' not supported
+
+var getCharsInLineTextIterInvoker *gi.Function
+
+// GetCharsInLine is a representation of the C type gtk_text_iter_get_chars_in_line.
+func (recv *TextIter) GetCharsInLine() int32 {
+	if getCharsInLineTextIterInvoker == nil {
+		getCharsInLineTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_chars_in_line")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getCharsInLineTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_child_anchor' : return type 'TextChildAnchor' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_language' : return type 'Pango.Language' not supported
+
+var getLineTextIterInvoker *gi.Function
+
+// GetLine is a representation of the C type gtk_text_iter_get_line.
+func (recv *TextIter) GetLine() int32 {
+	if getLineTextIterInvoker == nil {
+		getLineTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_line")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getLineTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var getLineIndexTextIterInvoker *gi.Function
+
+// GetLineIndex is a representation of the C type gtk_text_iter_get_line_index.
+func (recv *TextIter) GetLineIndex() int32 {
+	if getLineIndexTextIterInvoker == nil {
+		getLineIndexTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_line_index")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getLineIndexTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var getLineOffsetTextIterInvoker *gi.Function
+
+// GetLineOffset is a representation of the C type gtk_text_iter_get_line_offset.
+func (recv *TextIter) GetLineOffset() int32 {
+	if getLineOffsetTextIterInvoker == nil {
+		getLineOffsetTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_line_offset")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getLineOffsetTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_marks' : return type 'GLib.SList' not supported
+
+var getOffsetTextIterInvoker *gi.Function
+
+// GetOffset is a representation of the C type gtk_text_iter_get_offset.
+func (recv *TextIter) GetOffset() int32 {
+	if getOffsetTextIterInvoker == nil {
+		getOffsetTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_offset")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getOffsetTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_slice' : parameter 'end' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_tags' : return type 'GLib.SList' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_text' : parameter 'end' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_toggled_tags' : parameter 'toggled_on' of type 'gboolean' not supported
+
+var getVisibleLineIndexTextIterInvoker *gi.Function
+
+// GetVisibleLineIndex is a representation of the C type gtk_text_iter_get_visible_line_index.
+func (recv *TextIter) GetVisibleLineIndex() int32 {
+	if getVisibleLineIndexTextIterInvoker == nil {
+		getVisibleLineIndexTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_visible_line_index")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getVisibleLineIndexTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var getVisibleLineOffsetTextIterInvoker *gi.Function
+
+// GetVisibleLineOffset is a representation of the C type gtk_text_iter_get_visible_line_offset.
+func (recv *TextIter) GetVisibleLineOffset() int32 {
+	if getVisibleLineOffsetTextIterInvoker == nil {
+		getVisibleLineOffsetTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "get_visible_line_offset")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getVisibleLineOffsetTextIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_visible_slice' : parameter 'end' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_get_visible_text' : parameter 'end' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_has_tag' : parameter 'tag' of type 'TextTag' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_in_range' : parameter 'start' of type 'TextIter' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_inside_sentence' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_inside_word' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_is_cursor_position' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_is_end' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_is_start' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_order' : parameter 'second' of type 'TextIter' not supported
+
+var setLineTextIterInvoker *gi.Function
+
+// SetLine is a representation of the C type gtk_text_iter_set_line.
+func (recv *TextIter) SetLine(lineNumber int32) {
+	if setLineTextIterInvoker == nil {
+		setLineTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "set_line")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(lineNumber)
+
+	setLineTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var setLineIndexTextIterInvoker *gi.Function
+
+// SetLineIndex is a representation of the C type gtk_text_iter_set_line_index.
+func (recv *TextIter) SetLineIndex(byteOnLine int32) {
+	if setLineIndexTextIterInvoker == nil {
+		setLineIndexTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "set_line_index")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(byteOnLine)
+
+	setLineIndexTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var setLineOffsetTextIterInvoker *gi.Function
+
+// SetLineOffset is a representation of the C type gtk_text_iter_set_line_offset.
+func (recv *TextIter) SetLineOffset(charOnLine int32) {
+	if setLineOffsetTextIterInvoker == nil {
+		setLineOffsetTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "set_line_offset")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(charOnLine)
+
+	setLineOffsetTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var setOffsetTextIterInvoker *gi.Function
+
+// SetOffset is a representation of the C type gtk_text_iter_set_offset.
+func (recv *TextIter) SetOffset(charOffset int32) {
+	if setOffsetTextIterInvoker == nil {
+		setOffsetTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "set_offset")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(charOffset)
+
+	setOffsetTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var setVisibleLineIndexTextIterInvoker *gi.Function
+
+// SetVisibleLineIndex is a representation of the C type gtk_text_iter_set_visible_line_index.
+func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
+	if setVisibleLineIndexTextIterInvoker == nil {
+		setVisibleLineIndexTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "set_visible_line_index")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(byteOnLine)
+
+	setVisibleLineIndexTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var setVisibleLineOffsetTextIterInvoker *gi.Function
+
+// SetVisibleLineOffset is a representation of the C type gtk_text_iter_set_visible_line_offset.
+func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
+	if setVisibleLineOffsetTextIterInvoker == nil {
+		setVisibleLineOffsetTextIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TextIter", "set_visible_line_offset")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(charOnLine)
+
+	setVisibleLineOffsetTextIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_text_iter_starts_line' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_starts_sentence' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_starts_tag' : parameter 'tag' of type 'TextTag' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_starts_word' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_text_iter_toggles_tag' : parameter 'tag' of type 'TextTag' not supported
 
 type TextMarkClass struct {
 	native uintptr
@@ -4801,6 +6500,39 @@ type TreeIter struct {
 
 }
 
+var copyTreeIterInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_tree_iter_copy.
+func (recv *TreeIter) Copy() *TreeIter {
+	if copyTreeIterInvoker == nil {
+		copyTreeIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TreeIter", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyTreeIterInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TreeIter{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeTreeIterInvoker *gi.Function
+
+// Free is a representation of the C type gtk_tree_iter_free.
+func (recv *TreeIter) Free() {
+	if freeTreeIterInvoker == nil {
+		freeTreeIterInvoker = gi.StructFunctionInvokerNew("Gtk", "TreeIter", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeTreeIterInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type TreeModelFilterClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -4941,6 +6673,185 @@ func TreePathNewFromString(path string) *TreePath {
 	return retGo
 }
 
+var appendIndexTreePathInvoker *gi.Function
+
+// AppendIndex is a representation of the C type gtk_tree_path_append_index.
+func (recv *TreePath) AppendIndex(index int32) {
+	if appendIndexTreePathInvoker == nil {
+		appendIndexTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "append_index")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(index)
+
+	appendIndexTreePathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_tree_path_compare' : parameter 'b' of type 'TreePath' not supported
+
+var copyTreePathInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_tree_path_copy.
+func (recv *TreePath) Copy() *TreePath {
+	if copyTreePathInvoker == nil {
+		copyTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyTreePathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TreePath{native: ret.Pointer()}
+
+	return retGo
+}
+
+var downTreePathInvoker *gi.Function
+
+// Down is a representation of the C type gtk_tree_path_down.
+func (recv *TreePath) Down() {
+	if downTreePathInvoker == nil {
+		downTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "down")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	downTreePathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var freeTreePathInvoker *gi.Function
+
+// Free is a representation of the C type gtk_tree_path_free.
+func (recv *TreePath) Free() {
+	if freeTreePathInvoker == nil {
+		freeTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeTreePathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var getDepthTreePathInvoker *gi.Function
+
+// GetDepth is a representation of the C type gtk_tree_path_get_depth.
+func (recv *TreePath) GetDepth() int32 {
+	if getDepthTreePathInvoker == nil {
+		getDepthTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "get_depth")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getDepthTreePathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var getIndicesTreePathInvoker *gi.Function
+
+// GetIndices is a representation of the C type gtk_tree_path_get_indices.
+func (recv *TreePath) GetIndices() int32 {
+	if getIndicesTreePathInvoker == nil {
+		getIndicesTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "get_indices")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getIndicesTreePathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var getIndicesWithDepthTreePathInvoker *gi.Function
+
+// GetIndicesWithDepth is a representation of the C type gtk_tree_path_get_indices_with_depth.
+func (recv *TreePath) GetIndicesWithDepth() int32 {
+	if getIndicesWithDepthTreePathInvoker == nil {
+		getIndicesWithDepthTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "get_indices_with_depth")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	getIndicesWithDepthTreePathInvoker.Invoke(inArgs[:], outArgs[:])
+
+	out0 := outArgs[0].Int32()
+
+	return out0
+}
+
+// UNSUPPORTED : C value 'gtk_tree_path_is_ancestor' : parameter 'descendant' of type 'TreePath' not supported
+
+// UNSUPPORTED : C value 'gtk_tree_path_is_descendant' : parameter 'ancestor' of type 'TreePath' not supported
+
+var nextTreePathInvoker *gi.Function
+
+// Next is a representation of the C type gtk_tree_path_next.
+func (recv *TreePath) Next() {
+	if nextTreePathInvoker == nil {
+		nextTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "next")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	nextTreePathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var prependIndexTreePathInvoker *gi.Function
+
+// PrependIndex is a representation of the C type gtk_tree_path_prepend_index.
+func (recv *TreePath) PrependIndex(index int32) {
+	if prependIndexTreePathInvoker == nil {
+		prependIndexTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "prepend_index")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(index)
+
+	prependIndexTreePathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_tree_path_prev' : return type 'gboolean' not supported
+
+var toStringTreePathInvoker *gi.Function
+
+// ToString is a representation of the C type gtk_tree_path_to_string.
+func (recv *TreePath) ToString() string {
+	if toStringTreePathInvoker == nil {
+		toStringTreePathInvoker = gi.StructFunctionInvokerNew("Gtk", "TreePath", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringTreePathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_tree_path_up' : return type 'gboolean' not supported
+
 type TreeRowReference struct {
 	native uintptr
 }
@@ -4948,6 +6859,61 @@ type TreeRowReference struct {
 // UNSUPPORTED : C value 'gtk_tree_row_reference_new' : parameter 'model' of type 'TreeModel' not supported
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_new_proxy' : parameter 'proxy' of type 'GObject.Object' not supported
+
+var copyTreeRowReferenceInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_tree_row_reference_copy.
+func (recv *TreeRowReference) Copy() *TreeRowReference {
+	if copyTreeRowReferenceInvoker == nil {
+		copyTreeRowReferenceInvoker = gi.StructFunctionInvokerNew("Gtk", "TreeRowReference", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyTreeRowReferenceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TreeRowReference{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeTreeRowReferenceInvoker *gi.Function
+
+// Free is a representation of the C type gtk_tree_row_reference_free.
+func (recv *TreeRowReference) Free() {
+	if freeTreeRowReferenceInvoker == nil {
+		freeTreeRowReferenceInvoker = gi.StructFunctionInvokerNew("Gtk", "TreeRowReference", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeTreeRowReferenceInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_tree_row_reference_get_model' : return type 'TreeModel' not supported
+
+var getPathTreeRowReferenceInvoker *gi.Function
+
+// GetPath is a representation of the C type gtk_tree_row_reference_get_path.
+func (recv *TreeRowReference) GetPath() *TreePath {
+	if getPathTreeRowReferenceInvoker == nil {
+		getPathTreeRowReferenceInvoker = gi.StructFunctionInvokerNew("Gtk", "TreeRowReference", "get_path")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPathTreeRowReferenceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &TreePath{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_tree_row_reference_valid' : return type 'gboolean' not supported
 
 type TreeSelectionClass struct {
 	native uintptr
@@ -5367,6 +7333,94 @@ type WidgetClass struct {
 
 }
 
+// UNSUPPORTED : C value 'gtk_widget_class_bind_template_callback_full' : parameter 'callback_symbol' of type 'GObject.Callback' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_class_bind_template_child_full' : parameter 'internal_child' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_class_find_style_property' : return type 'GObject.ParamSpec' not supported
+
+var getCssNameWidgetClassInvoker *gi.Function
+
+// GetCssName is a representation of the C type gtk_widget_class_get_css_name.
+func (recv *WidgetClass) GetCssName() string {
+	if getCssNameWidgetClassInvoker == nil {
+		getCssNameWidgetClassInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetClass", "get_css_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getCssNameWidgetClassInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_widget_class_install_style_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_class_install_style_property_parser' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+
+var listStylePropertiesWidgetClassInvoker *gi.Function
+
+// ListStyleProperties is a representation of the C type gtk_widget_class_list_style_properties.
+func (recv *WidgetClass) ListStyleProperties() uint32 {
+	if listStylePropertiesWidgetClassInvoker == nil {
+		listStylePropertiesWidgetClassInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetClass", "list_style_properties")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	listStylePropertiesWidgetClassInvoker.Invoke(inArgs[:], outArgs[:])
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
+// UNSUPPORTED : C value 'gtk_widget_class_set_accessible_role' : parameter 'role' of type 'Atk.Role' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_class_set_connect_func' : parameter 'connect_func' of type 'BuilderConnectFunc' not supported
+
+var setCssNameWidgetClassInvoker *gi.Function
+
+// SetCssName is a representation of the C type gtk_widget_class_set_css_name.
+func (recv *WidgetClass) SetCssName(name string) {
+	if setCssNameWidgetClassInvoker == nil {
+		setCssNameWidgetClassInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetClass", "set_css_name")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	setCssNameWidgetClassInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_widget_class_set_template' : parameter 'template_bytes' of type 'GLib.Bytes' not supported
+
+var setTemplateFromResourceWidgetClassInvoker *gi.Function
+
+// SetTemplateFromResource is a representation of the C type gtk_widget_class_set_template_from_resource.
+func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
+	if setTemplateFromResourceWidgetClassInvoker == nil {
+		setTemplateFromResourceWidgetClassInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetClass", "set_template_from_resource")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(resourceName)
+
+	setTemplateFromResourceWidgetClassInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type WidgetClassPrivate struct {
 	native uintptr
 }
@@ -5388,6 +7442,341 @@ func WidgetPathNew() *WidgetPath {
 	retGo := &WidgetPath{native: ret.Pointer()}
 
 	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_append_for_widget' : parameter 'widget' of type 'Widget' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_append_type' : parameter 'type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_append_with_siblings' : parameter 'siblings' of type 'WidgetPath' not supported
+
+var copyWidgetPathInvoker *gi.Function
+
+// Copy is a representation of the C type gtk_widget_path_copy.
+func (recv *WidgetPath) Copy() *WidgetPath {
+	if copyWidgetPathInvoker == nil {
+		copyWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &WidgetPath{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeWidgetPathInvoker *gi.Function
+
+// Free is a representation of the C type gtk_widget_path_free.
+func (recv *WidgetPath) Free() {
+	if freeWidgetPathInvoker == nil {
+		freeWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_get_object_type' : return type 'GType' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_has_parent' : parameter 'type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_is_type' : parameter 'type' of type 'GType' not supported
+
+var iterAddClassWidgetPathInvoker *gi.Function
+
+// IterAddClass is a representation of the C type gtk_widget_path_iter_add_class.
+func (recv *WidgetPath) IterAddClass(pos int32, name string) {
+	if iterAddClassWidgetPathInvoker == nil {
+		iterAddClassWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_add_class")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	iterAddClassWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_add_region' : parameter 'flags' of type 'RegionFlags' not supported
+
+var iterClearClassesWidgetPathInvoker *gi.Function
+
+// IterClearClasses is a representation of the C type gtk_widget_path_iter_clear_classes.
+func (recv *WidgetPath) IterClearClasses(pos int32) {
+	if iterClearClassesWidgetPathInvoker == nil {
+		iterClearClassesWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_clear_classes")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+
+	iterClearClassesWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var iterClearRegionsWidgetPathInvoker *gi.Function
+
+// IterClearRegions is a representation of the C type gtk_widget_path_iter_clear_regions.
+func (recv *WidgetPath) IterClearRegions(pos int32) {
+	if iterClearRegionsWidgetPathInvoker == nil {
+		iterClearRegionsWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_clear_regions")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+
+	iterClearRegionsWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var iterGetNameWidgetPathInvoker *gi.Function
+
+// IterGetName is a representation of the C type gtk_widget_path_iter_get_name.
+func (recv *WidgetPath) IterGetName(pos int32) string {
+	if iterGetNameWidgetPathInvoker == nil {
+		iterGetNameWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_get_name")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+
+	ret := iterGetNameWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var iterGetObjectNameWidgetPathInvoker *gi.Function
+
+// IterGetObjectName is a representation of the C type gtk_widget_path_iter_get_object_name.
+func (recv *WidgetPath) IterGetObjectName(pos int32) string {
+	if iterGetObjectNameWidgetPathInvoker == nil {
+		iterGetObjectNameWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_get_object_name")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+
+	ret := iterGetObjectNameWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_get_object_type' : return type 'GType' not supported
+
+var iterGetSiblingIndexWidgetPathInvoker *gi.Function
+
+// IterGetSiblingIndex is a representation of the C type gtk_widget_path_iter_get_sibling_index.
+func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
+	if iterGetSiblingIndexWidgetPathInvoker == nil {
+		iterGetSiblingIndexWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_get_sibling_index")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+
+	ret := iterGetSiblingIndexWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var iterGetSiblingsWidgetPathInvoker *gi.Function
+
+// IterGetSiblings is a representation of the C type gtk_widget_path_iter_get_siblings.
+func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
+	if iterGetSiblingsWidgetPathInvoker == nil {
+		iterGetSiblingsWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_get_siblings")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+
+	ret := iterGetSiblingsWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &WidgetPath{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_get_state' : return type 'StateFlags' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_class' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_name' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qclass' : parameter 'qname' of type 'GLib.Quark' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qname' : parameter 'qname' of type 'GLib.Quark' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qregion' : parameter 'qname' of type 'GLib.Quark' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_region' : parameter 'flags' of type 'RegionFlags' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_list_classes' : return type 'GLib.SList' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_list_regions' : return type 'GLib.SList' not supported
+
+var iterRemoveClassWidgetPathInvoker *gi.Function
+
+// IterRemoveClass is a representation of the C type gtk_widget_path_iter_remove_class.
+func (recv *WidgetPath) IterRemoveClass(pos int32, name string) {
+	if iterRemoveClassWidgetPathInvoker == nil {
+		iterRemoveClassWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_remove_class")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	iterRemoveClassWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var iterRemoveRegionWidgetPathInvoker *gi.Function
+
+// IterRemoveRegion is a representation of the C type gtk_widget_path_iter_remove_region.
+func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) {
+	if iterRemoveRegionWidgetPathInvoker == nil {
+		iterRemoveRegionWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_remove_region")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	iterRemoveRegionWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var iterSetNameWidgetPathInvoker *gi.Function
+
+// IterSetName is a representation of the C type gtk_widget_path_iter_set_name.
+func (recv *WidgetPath) IterSetName(pos int32, name string) {
+	if iterSetNameWidgetPathInvoker == nil {
+		iterSetNameWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_set_name")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	iterSetNameWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var iterSetObjectNameWidgetPathInvoker *gi.Function
+
+// IterSetObjectName is a representation of the C type gtk_widget_path_iter_set_object_name.
+func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
+	if iterSetObjectNameWidgetPathInvoker == nil {
+		iterSetObjectNameWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "iter_set_object_name")
+	}
+
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	iterSetObjectNameWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_set_object_type' : parameter 'type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'gtk_widget_path_iter_set_state' : parameter 'state' of type 'StateFlags' not supported
+
+var lengthWidgetPathInvoker *gi.Function
+
+// Length is a representation of the C type gtk_widget_path_length.
+func (recv *WidgetPath) Length() int32 {
+	if lengthWidgetPathInvoker == nil {
+		lengthWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "length")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := lengthWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_widget_path_prepend_type' : parameter 'type' of type 'GType' not supported
+
+var refWidgetPathInvoker *gi.Function
+
+// Ref is a representation of the C type gtk_widget_path_ref.
+func (recv *WidgetPath) Ref() *WidgetPath {
+	if refWidgetPathInvoker == nil {
+		refWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &WidgetPath{native: ret.Pointer()}
+
+	return retGo
+}
+
+var toStringWidgetPathInvoker *gi.Function
+
+// ToString is a representation of the C type gtk_widget_path_to_string.
+func (recv *WidgetPath) ToString() string {
+	if toStringWidgetPathInvoker == nil {
+		toStringWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringWidgetPathInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var unrefWidgetPathInvoker *gi.Function
+
+// Unref is a representation of the C type gtk_widget_path_unref.
+func (recv *WidgetPath) Unref() {
+	if unrefWidgetPathInvoker == nil {
+		unrefWidgetPathInvoker = gi.StructFunctionInvokerNew("Gtk", "WidgetPath", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefWidgetPathInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type WidgetPrivate struct {

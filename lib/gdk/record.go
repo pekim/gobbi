@@ -2,8 +2,28 @@
 
 package gdk
 
+import gi "github.com/pekim/gobbi/internal/gi"
+
 type Atom struct {
 	native uintptr
+}
+
+var nameAtomInvoker *gi.Function
+
+// Name is a representation of the C type gdk_atom_name.
+func (recv *Atom) Name() string {
+	if nameAtomInvoker == nil {
+		nameAtomInvoker = gi.StructFunctionInvokerNew("Gdk", "Atom", "name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := nameAtomInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 type Color struct {
@@ -12,6 +32,77 @@ type Color struct {
 	Red    uint16
 	Green  uint16
 	Blue   uint16
+}
+
+var copyColorInvoker *gi.Function
+
+// Copy is a representation of the C type gdk_color_copy.
+func (recv *Color) Copy() *Color {
+	if copyColorInvoker == nil {
+		copyColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyColorInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Color{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_color_equal' : parameter 'colorb' of type 'Color' not supported
+
+var freeColorInvoker *gi.Function
+
+// Free is a representation of the C type gdk_color_free.
+func (recv *Color) Free() {
+	if freeColorInvoker == nil {
+		freeColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeColorInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var hashColorInvoker *gi.Function
+
+// Hash is a representation of the C type gdk_color_hash.
+func (recv *Color) Hash() uint32 {
+	if hashColorInvoker == nil {
+		hashColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "hash")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := hashColorInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var toStringColorInvoker *gi.Function
+
+// ToString is a representation of the C type gdk_color_to_string.
+func (recv *Color) ToString() string {
+	if toStringColorInvoker == nil {
+		toStringColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringColorInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
 }
 
 type DevicePadInterface struct {
@@ -452,6 +543,131 @@ type FrameTimings struct {
 	native uintptr
 }
 
+// UNSUPPORTED : C value 'gdk_frame_timings_get_complete' : return type 'gboolean' not supported
+
+var getFrameCounterFrameTimingsInvoker *gi.Function
+
+// GetFrameCounter is a representation of the C type gdk_frame_timings_get_frame_counter.
+func (recv *FrameTimings) GetFrameCounter() int64 {
+	if getFrameCounterFrameTimingsInvoker == nil {
+		getFrameCounterFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_frame_counter")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getFrameCounterFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var getFrameTimeFrameTimingsInvoker *gi.Function
+
+// GetFrameTime is a representation of the C type gdk_frame_timings_get_frame_time.
+func (recv *FrameTimings) GetFrameTime() int64 {
+	if getFrameTimeFrameTimingsInvoker == nil {
+		getFrameTimeFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_frame_time")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getFrameTimeFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var getPredictedPresentationTimeFrameTimingsInvoker *gi.Function
+
+// GetPredictedPresentationTime is a representation of the C type gdk_frame_timings_get_predicted_presentation_time.
+func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
+	if getPredictedPresentationTimeFrameTimingsInvoker == nil {
+		getPredictedPresentationTimeFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_predicted_presentation_time")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPredictedPresentationTimeFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var getPresentationTimeFrameTimingsInvoker *gi.Function
+
+// GetPresentationTime is a representation of the C type gdk_frame_timings_get_presentation_time.
+func (recv *FrameTimings) GetPresentationTime() int64 {
+	if getPresentationTimeFrameTimingsInvoker == nil {
+		getPresentationTimeFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_presentation_time")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPresentationTimeFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var getRefreshIntervalFrameTimingsInvoker *gi.Function
+
+// GetRefreshInterval is a representation of the C type gdk_frame_timings_get_refresh_interval.
+func (recv *FrameTimings) GetRefreshInterval() int64 {
+	if getRefreshIntervalFrameTimingsInvoker == nil {
+		getRefreshIntervalFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_refresh_interval")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getRefreshIntervalFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var refFrameTimingsInvoker *gi.Function
+
+// Ref is a representation of the C type gdk_frame_timings_ref.
+func (recv *FrameTimings) Ref() *FrameTimings {
+	if refFrameTimingsInvoker == nil {
+		refFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &FrameTimings{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefFrameTimingsInvoker *gi.Function
+
+// Unref is a representation of the C type gdk_frame_timings_unref.
+func (recv *FrameTimings) Unref() {
+	if unrefFrameTimingsInvoker == nil {
+		unrefFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefFrameTimingsInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type Geometry struct {
 	native     uintptr
 	MinWidth   int32
@@ -499,6 +715,79 @@ type RGBA struct {
 
 }
 
+var copyRGBAInvoker *gi.Function
+
+// Copy is a representation of the C type gdk_rgba_copy.
+func (recv *RGBA) Copy() *RGBA {
+	if copyRGBAInvoker == nil {
+		copyRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyRGBAInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &RGBA{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_rgba_equal' : parameter 'p2' of type 'RGBA' not supported
+
+var freeRGBAInvoker *gi.Function
+
+// Free is a representation of the C type gdk_rgba_free.
+func (recv *RGBA) Free() {
+	if freeRGBAInvoker == nil {
+		freeRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeRGBAInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var hashRGBAInvoker *gi.Function
+
+// Hash is a representation of the C type gdk_rgba_hash.
+func (recv *RGBA) Hash() uint32 {
+	if hashRGBAInvoker == nil {
+		hashRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "hash")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := hashRGBAInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_rgba_parse' : return type 'gboolean' not supported
+
+var toStringRGBAInvoker *gi.Function
+
+// ToString is a representation of the C type gdk_rgba_to_string.
+func (recv *RGBA) ToString() string {
+	if toStringRGBAInvoker == nil {
+		toStringRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringRGBAInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
 type Rectangle struct {
 	native uintptr
 	X      int32
@@ -506,6 +795,12 @@ type Rectangle struct {
 	Width  int32
 	Height int32
 }
+
+// UNSUPPORTED : C value 'gdk_rectangle_equal' : parameter 'rect2' of type 'Rectangle' not supported
+
+// UNSUPPORTED : C value 'gdk_rectangle_intersect' : parameter 'src2' of type 'Rectangle' not supported
+
+// UNSUPPORTED : C value 'gdk_rectangle_union' : parameter 'src2' of type 'Rectangle' not supported
 
 type TimeCoord struct {
 	native uintptr

@@ -44,3 +44,7 @@ func (a *Argument) SetString(value string) {
 	cString := C.CString(value)
 	*(**C.gchar)(unsafe.Pointer(a)) = cString
 }
+
+func (a *Argument) SetPointer(value uintptr) {
+	(*(*uintptr)(unsafe.Pointer(a))) = value
+}

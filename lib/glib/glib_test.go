@@ -36,6 +36,14 @@ func TestRecordConstructor(t *testing.T) {
 	assert.NotNil(t, DateNew().native)
 }
 
+func TestRecordMethod(t *testing.T) {
+	date := DateNewJulian(100)
+	date.AddDays(2)
+	dayOfYear := date.GetDayOfYear()
+
+	assert.Equal(t, uint32(102), dayOfYear)
+}
+
 func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		GetCodeset()

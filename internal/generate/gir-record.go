@@ -18,7 +18,7 @@ type Record struct {
 	Fields         Fields       `xml:"field"`
 	Constructors   Constructors `xml:"constructor"`
 	Functions      Functions    `xml:"function"`
-	//Methods        Methods      `xml:"method"`
+	Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
 	goName           string `xml:"goname,attr"`
@@ -33,7 +33,7 @@ func (r *Record) init(ns *Namespace) {
 
 	r.Constructors.init(ns, r)
 	r.Functions.init(ns /*r.GoName*/)
-	//r.Methods.init(ns, r)
+	r.Methods.init(ns, r)
 	r.Fields.init(ns)
 	//r.Signals.init(ns, r)
 }
@@ -41,6 +41,7 @@ func (r *Record) init(ns *Namespace) {
 func (r *Record) generate(f *file) {
 	r.generateType(f)
 	r.Constructors.generate(f)
+	r.Methods.generate(f)
 }
 
 func (r *Record) generateType(f *file) {

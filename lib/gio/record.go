@@ -366,12 +366,78 @@ type DBusAnnotationInfo struct {
 
 }
 
+var refDBusAnnotationInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_annotation_info_ref.
+func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
+	if refDBusAnnotationInfoInvoker == nil {
+		refDBusAnnotationInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusAnnotationInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusAnnotationInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusAnnotationInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusAnnotationInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_annotation_info_unref.
+func (recv *DBusAnnotationInfo) Unref() {
+	if unrefDBusAnnotationInfoInvoker == nil {
+		unrefDBusAnnotationInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusAnnotationInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusAnnotationInfoInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type DBusArgInfo struct {
 	native    uintptr
 	RefCount  int32
 	Name      string
 	Signature string
 	// UNSUPPORTED : C value 'annotations' : missing Type
+
+}
+
+var refDBusArgInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_arg_info_ref.
+func (recv *DBusArgInfo) Ref() *DBusArgInfo {
+	if refDBusArgInfoInvoker == nil {
+		refDBusArgInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusArgInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusArgInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusArgInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusArgInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_arg_info_unref.
+func (recv *DBusArgInfo) Unref() {
+	if unrefDBusArgInfoInvoker == nil {
+		unrefDBusArgInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusArgInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusArgInfoInvoker.Invoke(inArgs[:], nil)
 
 }
 
@@ -406,6 +472,128 @@ type DBusInterfaceInfo struct {
 	// UNSUPPORTED : C value 'properties' : missing Type
 
 	// UNSUPPORTED : C value 'annotations' : missing Type
+
+}
+
+var cacheBuildDBusInterfaceInfoInvoker *gi.Function
+
+// CacheBuild is a representation of the C type g_dbus_interface_info_cache_build.
+func (recv *DBusInterfaceInfo) CacheBuild() {
+	if cacheBuildDBusInterfaceInfoInvoker == nil {
+		cacheBuildDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "cache_build")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	cacheBuildDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var cacheReleaseDBusInterfaceInfoInvoker *gi.Function
+
+// CacheRelease is a representation of the C type g_dbus_interface_info_cache_release.
+func (recv *DBusInterfaceInfo) CacheRelease() {
+	if cacheReleaseDBusInterfaceInfoInvoker == nil {
+		cacheReleaseDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "cache_release")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	cacheReleaseDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'g_dbus_interface_info_generate_xml' : parameter 'string_builder' of type 'GLib.String' not supported
+
+var lookupMethodDBusInterfaceInfoInvoker *gi.Function
+
+// LookupMethod is a representation of the C type g_dbus_interface_info_lookup_method.
+func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
+	if lookupMethodDBusInterfaceInfoInvoker == nil {
+		lookupMethodDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "lookup_method")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := lookupMethodDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusMethodInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var lookupPropertyDBusInterfaceInfoInvoker *gi.Function
+
+// LookupProperty is a representation of the C type g_dbus_interface_info_lookup_property.
+func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
+	if lookupPropertyDBusInterfaceInfoInvoker == nil {
+		lookupPropertyDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "lookup_property")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := lookupPropertyDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusPropertyInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var lookupSignalDBusInterfaceInfoInvoker *gi.Function
+
+// LookupSignal is a representation of the C type g_dbus_interface_info_lookup_signal.
+func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
+	if lookupSignalDBusInterfaceInfoInvoker == nil {
+		lookupSignalDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "lookup_signal")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := lookupSignalDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusSignalInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var refDBusInterfaceInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_interface_info_ref.
+func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
+	if refDBusInterfaceInfoInvoker == nil {
+		refDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusInterfaceInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusInterfaceInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_interface_info_unref.
+func (recv *DBusInterfaceInfo) Unref() {
+	if unrefDBusInterfaceInfoInvoker == nil {
+		unrefDBusInterfaceInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusInterfaceInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusInterfaceInfoInvoker.Invoke(inArgs[:], nil)
 
 }
 
@@ -451,6 +639,39 @@ type DBusMethodInfo struct {
 
 }
 
+var refDBusMethodInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_method_info_ref.
+func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
+	if refDBusMethodInfoInvoker == nil {
+		refDBusMethodInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusMethodInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusMethodInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusMethodInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusMethodInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_method_info_unref.
+func (recv *DBusMethodInfo) Unref() {
+	if unrefDBusMethodInfoInvoker == nil {
+		unrefDBusMethodInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusMethodInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusMethodInfoInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type DBusNodeInfo struct {
 	native   uintptr
 	RefCount int32
@@ -479,6 +700,60 @@ func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
 	retGo := &DBusNodeInfo{native: ret.Pointer()}
 
 	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_node_info_generate_xml' : parameter 'string_builder' of type 'GLib.String' not supported
+
+var lookupInterfaceDBusNodeInfoInvoker *gi.Function
+
+// LookupInterface is a representation of the C type g_dbus_node_info_lookup_interface.
+func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
+	if lookupInterfaceDBusNodeInfoInvoker == nil {
+		lookupInterfaceDBusNodeInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusNodeInfo", "lookup_interface")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := lookupInterfaceDBusNodeInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusInterfaceInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var refDBusNodeInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_node_info_ref.
+func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
+	if refDBusNodeInfoInvoker == nil {
+		refDBusNodeInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusNodeInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusNodeInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusNodeInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusNodeInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_node_info_unref.
+func (recv *DBusNodeInfo) Unref() {
+	if unrefDBusNodeInfoInvoker == nil {
+		unrefDBusNodeInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusNodeInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusNodeInfoInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type DBusObjectIface struct {
@@ -576,6 +851,39 @@ type DBusPropertyInfo struct {
 
 }
 
+var refDBusPropertyInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_property_info_ref.
+func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
+	if refDBusPropertyInfoInvoker == nil {
+		refDBusPropertyInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusPropertyInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusPropertyInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusPropertyInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusPropertyInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_property_info_unref.
+func (recv *DBusPropertyInfo) Unref() {
+	if unrefDBusPropertyInfoInvoker == nil {
+		unrefDBusPropertyInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusPropertyInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusPropertyInfoInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type DBusProxyClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'g_properties_changed' : missing Type
@@ -595,6 +903,39 @@ type DBusSignalInfo struct {
 	// UNSUPPORTED : C value 'args' : missing Type
 
 	// UNSUPPORTED : C value 'annotations' : missing Type
+
+}
+
+var refDBusSignalInfoInvoker *gi.Function
+
+// Ref is a representation of the C type g_dbus_signal_info_ref.
+func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
+	if refDBusSignalInfoInvoker == nil {
+		refDBusSignalInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusSignalInfo", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refDBusSignalInfoInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &DBusSignalInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefDBusSignalInfoInvoker *gi.Function
+
+// Unref is a representation of the C type g_dbus_signal_info_unref.
+func (recv *DBusSignalInfo) Unref() {
+	if unrefDBusSignalInfoInvoker == nil {
+		unrefDBusSignalInfoInvoker = gi.StructFunctionInvokerNew("Gio", "DBusSignalInfo", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefDBusSignalInfoInvoker.Invoke(inArgs[:], nil)
 
 }
 
@@ -826,6 +1167,78 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 	return retGo
 }
 
+// UNSUPPORTED : C value 'g_file_attribute_info_list_add' : parameter 'type' of type 'FileAttributeType' not supported
+
+var dupFileAttributeInfoListInvoker *gi.Function
+
+// Dup is a representation of the C type g_file_attribute_info_list_dup.
+func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
+	if dupFileAttributeInfoListInvoker == nil {
+		dupFileAttributeInfoListInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeInfoList", "dup")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := dupFileAttributeInfoListInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &FileAttributeInfoList{native: ret.Pointer()}
+
+	return retGo
+}
+
+var lookupFileAttributeInfoListInvoker *gi.Function
+
+// Lookup is a representation of the C type g_file_attribute_info_list_lookup.
+func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
+	if lookupFileAttributeInfoListInvoker == nil {
+		lookupFileAttributeInfoListInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeInfoList", "lookup")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := lookupFileAttributeInfoListInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &FileAttributeInfo{native: ret.Pointer()}
+
+	return retGo
+}
+
+var refFileAttributeInfoListInvoker *gi.Function
+
+// Ref is a representation of the C type g_file_attribute_info_list_ref.
+func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
+	if refFileAttributeInfoListInvoker == nil {
+		refFileAttributeInfoListInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeInfoList", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refFileAttributeInfoListInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &FileAttributeInfoList{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefFileAttributeInfoListInvoker *gi.Function
+
+// Unref is a representation of the C type g_file_attribute_info_list_unref.
+func (recv *FileAttributeInfoList) Unref() {
+	if unrefFileAttributeInfoListInvoker == nil {
+		unrefFileAttributeInfoListInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeInfoList", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefFileAttributeInfoListInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type FileAttributeMatcher struct {
 	native uintptr
 }
@@ -846,6 +1259,83 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 	retGo := &FileAttributeMatcher{native: ret.Pointer()}
 
 	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_attribute_matcher_enumerate_namespace' : return type 'gboolean' not supported
+
+var enumerateNextFileAttributeMatcherInvoker *gi.Function
+
+// EnumerateNext is a representation of the C type g_file_attribute_matcher_enumerate_next.
+func (recv *FileAttributeMatcher) EnumerateNext() string {
+	if enumerateNextFileAttributeMatcherInvoker == nil {
+		enumerateNextFileAttributeMatcherInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeMatcher", "enumerate_next")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := enumerateNextFileAttributeMatcherInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_attribute_matcher_matches' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_file_attribute_matcher_matches_only' : return type 'gboolean' not supported
+
+var refFileAttributeMatcherInvoker *gi.Function
+
+// Ref is a representation of the C type g_file_attribute_matcher_ref.
+func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
+	if refFileAttributeMatcherInvoker == nil {
+		refFileAttributeMatcherInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeMatcher", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refFileAttributeMatcherInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &FileAttributeMatcher{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_attribute_matcher_subtract' : parameter 'subtract' of type 'FileAttributeMatcher' not supported
+
+var toStringFileAttributeMatcherInvoker *gi.Function
+
+// ToString is a representation of the C type g_file_attribute_matcher_to_string.
+func (recv *FileAttributeMatcher) ToString() string {
+	if toStringFileAttributeMatcherInvoker == nil {
+		toStringFileAttributeMatcherInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeMatcher", "to_string")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := toStringFileAttributeMatcherInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var unrefFileAttributeMatcherInvoker *gi.Function
+
+// Unref is a representation of the C type g_file_attribute_matcher_unref.
+func (recv *FileAttributeMatcher) Unref() {
+	if unrefFileAttributeMatcherInvoker == nil {
+		unrefFileAttributeMatcherInvoker = gi.StructFunctionInvokerNew("Gio", "FileAttributeMatcher", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefFileAttributeMatcherInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type FileDescriptorBasedIface struct {
@@ -1281,9 +1771,74 @@ type IOExtension struct {
 	native uintptr
 }
 
+var getNameIOExtensionInvoker *gi.Function
+
+// GetName is a representation of the C type g_io_extension_get_name.
+func (recv *IOExtension) GetName() string {
+	if getNameIOExtensionInvoker == nil {
+		getNameIOExtensionInvoker = gi.StructFunctionInvokerNew("Gio", "IOExtension", "get_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getNameIOExtensionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getPriorityIOExtensionInvoker *gi.Function
+
+// GetPriority is a representation of the C type g_io_extension_get_priority.
+func (recv *IOExtension) GetPriority() int32 {
+	if getPriorityIOExtensionInvoker == nil {
+		getPriorityIOExtensionInvoker = gi.StructFunctionInvokerNew("Gio", "IOExtension", "get_priority")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPriorityIOExtensionInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_io_extension_get_type' : return type 'GType' not supported
+
+// UNSUPPORTED : C value 'g_io_extension_ref_class' : return type 'GObject.TypeClass' not supported
+
 type IOExtensionPoint struct {
 	native uintptr
 }
+
+var getExtensionByNameIOExtensionPointInvoker *gi.Function
+
+// GetExtensionByName is a representation of the C type g_io_extension_point_get_extension_by_name.
+func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
+	if getExtensionByNameIOExtensionPointInvoker == nil {
+		getExtensionByNameIOExtensionPointInvoker = gi.StructFunctionInvokerNew("Gio", "IOExtensionPoint", "get_extension_by_name")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := getExtensionByNameIOExtensionPointInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &IOExtension{native: ret.Pointer()}
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_io_extension_point_get_extensions' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'g_io_extension_point_get_required_type' : return type 'GType' not supported
+
+// UNSUPPORTED : C value 'g_io_extension_point_set_required_type' : parameter 'type' of type 'GType' not supported
 
 type IOModuleClass struct {
 	native uintptr
@@ -1293,9 +1848,44 @@ type IOModuleScope struct {
 	native uintptr
 }
 
+var blockIOModuleScopeInvoker *gi.Function
+
+// Block is a representation of the C type g_io_module_scope_block.
+func (recv *IOModuleScope) Block(basename string) {
+	if blockIOModuleScopeInvoker == nil {
+		blockIOModuleScopeInvoker = gi.StructFunctionInvokerNew("Gio", "IOModuleScope", "block")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(basename)
+
+	blockIOModuleScopeInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var freeIOModuleScopeInvoker *gi.Function
+
+// Free is a representation of the C type g_io_module_scope_free.
+func (recv *IOModuleScope) Free() {
+	if freeIOModuleScopeInvoker == nil {
+		freeIOModuleScopeInvoker = gi.StructFunctionInvokerNew("Gio", "IOModuleScope", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeIOModuleScopeInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type IOSchedulerJob struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop' : parameter 'func' of type 'GLib.SourceFunc' not supported
+
+// UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop_async' : parameter 'func' of type 'GLib.SourceFunc' not supported
 
 type IOStreamAdapter struct {
 	native uintptr
@@ -1965,6 +2555,77 @@ type Resource struct {
 
 // UNSUPPORTED : C value 'g_resource_new_from_data' : parameter 'data' of type 'GLib.Bytes' not supported
 
+var RegisterResourceInvoker *gi.Function
+
+// Register is a representation of the C type g_resources_register.
+func (recv *Resource) Register() {
+	if RegisterResourceInvoker == nil {
+		RegisterResourceInvoker = gi.StructFunctionInvokerNew("Gio", "Resource", "_register")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	RegisterResourceInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var UnregisterResourceInvoker *gi.Function
+
+// Unregister is a representation of the C type g_resources_unregister.
+func (recv *Resource) Unregister() {
+	if UnregisterResourceInvoker == nil {
+		UnregisterResourceInvoker = gi.StructFunctionInvokerNew("Gio", "Resource", "_unregister")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	UnregisterResourceInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'g_resource_enumerate_children' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+
+// UNSUPPORTED : C value 'g_resource_get_info' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+
+// UNSUPPORTED : C value 'g_resource_lookup_data' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+
+// UNSUPPORTED : C value 'g_resource_open_stream' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+
+var refResourceInvoker *gi.Function
+
+// Ref is a representation of the C type g_resource_ref.
+func (recv *Resource) Ref() *Resource {
+	if refResourceInvoker == nil {
+		refResourceInvoker = gi.StructFunctionInvokerNew("Gio", "Resource", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refResourceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Resource{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefResourceInvoker *gi.Function
+
+// Unref is a representation of the C type g_resource_unref.
+func (recv *Resource) Unref() {
+	if unrefResourceInvoker == nil {
+		unrefResourceInvoker = gi.StructFunctionInvokerNew("Gio", "Resource", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefResourceInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type SeekableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
@@ -2035,8 +2696,223 @@ type SettingsSchema struct {
 	native uintptr
 }
 
+var getIdSettingsSchemaInvoker *gi.Function
+
+// GetId is a representation of the C type g_settings_schema_get_id.
+func (recv *SettingsSchema) GetId() string {
+	if getIdSettingsSchemaInvoker == nil {
+		getIdSettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "get_id")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getIdSettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getKeySettingsSchemaInvoker *gi.Function
+
+// GetKey is a representation of the C type g_settings_schema_get_key.
+func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
+	if getKeySettingsSchemaInvoker == nil {
+		getKeySettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "get_key")
+	}
+
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	ret := getKeySettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SettingsSchemaKey{native: ret.Pointer()}
+
+	return retGo
+}
+
+var getPathSettingsSchemaInvoker *gi.Function
+
+// GetPath is a representation of the C type g_settings_schema_get_path.
+func (recv *SettingsSchema) GetPath() string {
+	if getPathSettingsSchemaInvoker == nil {
+		getPathSettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "get_path")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPathSettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_schema_has_key' : return type 'gboolean' not supported
+
+var listChildrenSettingsSchemaInvoker *gi.Function
+
+// ListChildren is a representation of the C type g_settings_schema_list_children.
+func (recv *SettingsSchema) ListChildren() {
+	if listChildrenSettingsSchemaInvoker == nil {
+		listChildrenSettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "list_children")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	listChildrenSettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var listKeysSettingsSchemaInvoker *gi.Function
+
+// ListKeys is a representation of the C type g_settings_schema_list_keys.
+func (recv *SettingsSchema) ListKeys() {
+	if listKeysSettingsSchemaInvoker == nil {
+		listKeysSettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "list_keys")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	listKeysSettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var refSettingsSchemaInvoker *gi.Function
+
+// Ref is a representation of the C type g_settings_schema_ref.
+func (recv *SettingsSchema) Ref() *SettingsSchema {
+	if refSettingsSchemaInvoker == nil {
+		refSettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refSettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SettingsSchema{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefSettingsSchemaInvoker *gi.Function
+
+// Unref is a representation of the C type g_settings_schema_unref.
+func (recv *SettingsSchema) Unref() {
+	if unrefSettingsSchemaInvoker == nil {
+		unrefSettingsSchemaInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchema", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefSettingsSchemaInvoker.Invoke(inArgs[:], nil)
+
+}
+
 type SettingsSchemaKey struct {
 	native uintptr
+}
+
+// UNSUPPORTED : C value 'g_settings_schema_key_get_default_value' : return type 'GLib.Variant' not supported
+
+var getDescriptionSettingsSchemaKeyInvoker *gi.Function
+
+// GetDescription is a representation of the C type g_settings_schema_key_get_description.
+func (recv *SettingsSchemaKey) GetDescription() string {
+	if getDescriptionSettingsSchemaKeyInvoker == nil {
+		getDescriptionSettingsSchemaKeyInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaKey", "get_description")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getDescriptionSettingsSchemaKeyInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getNameSettingsSchemaKeyInvoker *gi.Function
+
+// GetName is a representation of the C type g_settings_schema_key_get_name.
+func (recv *SettingsSchemaKey) GetName() string {
+	if getNameSettingsSchemaKeyInvoker == nil {
+		getNameSettingsSchemaKeyInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaKey", "get_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getNameSettingsSchemaKeyInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_schema_key_get_range' : return type 'GLib.Variant' not supported
+
+var getSummarySettingsSchemaKeyInvoker *gi.Function
+
+// GetSummary is a representation of the C type g_settings_schema_key_get_summary.
+func (recv *SettingsSchemaKey) GetSummary() string {
+	if getSummarySettingsSchemaKeyInvoker == nil {
+		getSummarySettingsSchemaKeyInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaKey", "get_summary")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getSummarySettingsSchemaKeyInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_settings_schema_key_get_value_type' : return type 'GLib.VariantType' not supported
+
+// UNSUPPORTED : C value 'g_settings_schema_key_range_check' : parameter 'value' of type 'GLib.Variant' not supported
+
+var refSettingsSchemaKeyInvoker *gi.Function
+
+// Ref is a representation of the C type g_settings_schema_key_ref.
+func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
+	if refSettingsSchemaKeyInvoker == nil {
+		refSettingsSchemaKeyInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaKey", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refSettingsSchemaKeyInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SettingsSchemaKey{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefSettingsSchemaKeyInvoker *gi.Function
+
+// Unref is a representation of the C type g_settings_schema_key_unref.
+func (recv *SettingsSchemaKey) Unref() {
+	if unrefSettingsSchemaKeyInvoker == nil {
+		unrefSettingsSchemaKeyInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaKey", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefSettingsSchemaKeyInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type SettingsSchemaSource struct {
@@ -2044,6 +2920,43 @@ type SettingsSchemaSource struct {
 }
 
 // UNSUPPORTED : C value 'g_settings_schema_source_new_from_directory' : parameter 'directory' of type 'filename' not supported
+
+// UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'recursive' of type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_settings_schema_source_lookup' : parameter 'recursive' of type 'gboolean' not supported
+
+var refSettingsSchemaSourceInvoker *gi.Function
+
+// Ref is a representation of the C type g_settings_schema_source_ref.
+func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
+	if refSettingsSchemaSourceInvoker == nil {
+		refSettingsSchemaSourceInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaSource", "ref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := refSettingsSchemaSourceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SettingsSchemaSource{native: ret.Pointer()}
+
+	return retGo
+}
+
+var unrefSettingsSchemaSourceInvoker *gi.Function
+
+// Unref is a representation of the C type g_settings_schema_source_unref.
+func (recv *SettingsSchemaSource) Unref() {
+	if unrefSettingsSchemaSourceInvoker == nil {
+		unrefSettingsSchemaSourceInvoker = gi.StructFunctionInvokerNew("Gio", "SettingsSchemaSource", "unref")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	unrefSettingsSchemaSourceInvoker.Invoke(inArgs[:], nil)
+
+}
 
 type SimpleActionGroupClass struct {
 	native uintptr
@@ -2284,8 +3197,161 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 	return retGo
 }
 
+var copySrvTargetInvoker *gi.Function
+
+// Copy is a representation of the C type g_srv_target_copy.
+func (recv *SrvTarget) Copy() *SrvTarget {
+	if copySrvTargetInvoker == nil {
+		copySrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copySrvTargetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &SrvTarget{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeSrvTargetInvoker *gi.Function
+
+// Free is a representation of the C type g_srv_target_free.
+func (recv *SrvTarget) Free() {
+	if freeSrvTargetInvoker == nil {
+		freeSrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeSrvTargetInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var getHostnameSrvTargetInvoker *gi.Function
+
+// GetHostname is a representation of the C type g_srv_target_get_hostname.
+func (recv *SrvTarget) GetHostname() string {
+	if getHostnameSrvTargetInvoker == nil {
+		getHostnameSrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "get_hostname")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getHostnameSrvTargetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var getPortSrvTargetInvoker *gi.Function
+
+// GetPort is a representation of the C type g_srv_target_get_port.
+func (recv *SrvTarget) GetPort() uint16 {
+	if getPortSrvTargetInvoker == nil {
+		getPortSrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "get_port")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPortSrvTargetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
+var getPrioritySrvTargetInvoker *gi.Function
+
+// GetPriority is a representation of the C type g_srv_target_get_priority.
+func (recv *SrvTarget) GetPriority() uint16 {
+	if getPrioritySrvTargetInvoker == nil {
+		getPrioritySrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "get_priority")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getPrioritySrvTargetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
+var getWeightSrvTargetInvoker *gi.Function
+
+// GetWeight is a representation of the C type g_srv_target_get_weight.
+func (recv *SrvTarget) GetWeight() uint16 {
+	if getWeightSrvTargetInvoker == nil {
+		getWeightSrvTargetInvoker = gi.StructFunctionInvokerNew("Gio", "SrvTarget", "get_weight")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getWeightSrvTargetInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.Uint16()
+
+	return retGo
+}
+
 type StaticResource struct {
 	native uintptr
+}
+
+var finiStaticResourceInvoker *gi.Function
+
+// Fini is a representation of the C type g_static_resource_fini.
+func (recv *StaticResource) Fini() {
+	if finiStaticResourceInvoker == nil {
+		finiStaticResourceInvoker = gi.StructFunctionInvokerNew("Gio", "StaticResource", "fini")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	finiStaticResourceInvoker.Invoke(inArgs[:], nil)
+
+}
+
+var getResourceStaticResourceInvoker *gi.Function
+
+// GetResource is a representation of the C type g_static_resource_get_resource.
+func (recv *StaticResource) GetResource() *Resource {
+	if getResourceStaticResourceInvoker == nil {
+		getResourceStaticResourceInvoker = gi.StructFunctionInvokerNew("Gio", "StaticResource", "get_resource")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getResourceStaticResourceInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &Resource{native: ret.Pointer()}
+
+	return retGo
+}
+
+var initStaticResourceInvoker *gi.Function
+
+// Init is a representation of the C type g_static_resource_init.
+func (recv *StaticResource) Init() {
+	if initStaticResourceInvoker == nil {
+		initStaticResourceInvoker = gi.StructFunctionInvokerNew("Gio", "StaticResource", "init")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	initStaticResourceInvoker.Invoke(inArgs[:], nil)
+
 }
 
 type TaskClass struct {
@@ -2565,6 +3631,111 @@ type UnixMountMonitorClass struct {
 type UnixMountPoint struct {
 	native uintptr
 }
+
+// UNSUPPORTED : C value 'g_unix_mount_point_compare' : parameter 'mount2' of type 'UnixMountPoint' not supported
+
+var copyUnixMountPointInvoker *gi.Function
+
+// Copy is a representation of the C type g_unix_mount_point_copy.
+func (recv *UnixMountPoint) Copy() *UnixMountPoint {
+	if copyUnixMountPointInvoker == nil {
+		copyUnixMountPointInvoker = gi.StructFunctionInvokerNew("Gio", "UnixMountPoint", "copy")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := copyUnixMountPointInvoker.Invoke(inArgs[:], nil)
+
+	retGo := &UnixMountPoint{native: ret.Pointer()}
+
+	return retGo
+}
+
+var freeUnixMountPointInvoker *gi.Function
+
+// Free is a representation of the C type g_unix_mount_point_free.
+func (recv *UnixMountPoint) Free() {
+	if freeUnixMountPointInvoker == nil {
+		freeUnixMountPointInvoker = gi.StructFunctionInvokerNew("Gio", "UnixMountPoint", "free")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	freeUnixMountPointInvoker.Invoke(inArgs[:], nil)
+
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_point_get_device_path' : return type 'filename' not supported
+
+var getFsTypeUnixMountPointInvoker *gi.Function
+
+// GetFsType is a representation of the C type g_unix_mount_point_get_fs_type.
+func (recv *UnixMountPoint) GetFsType() string {
+	if getFsTypeUnixMountPointInvoker == nil {
+		getFsTypeUnixMountPointInvoker = gi.StructFunctionInvokerNew("Gio", "UnixMountPoint", "get_fs_type")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getFsTypeUnixMountPointInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_point_get_mount_path' : return type 'filename' not supported
+
+var getOptionsUnixMountPointInvoker *gi.Function
+
+// GetOptions is a representation of the C type g_unix_mount_point_get_options.
+func (recv *UnixMountPoint) GetOptions() string {
+	if getOptionsUnixMountPointInvoker == nil {
+		getOptionsUnixMountPointInvoker = gi.StructFunctionInvokerNew("Gio", "UnixMountPoint", "get_options")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := getOptionsUnixMountPointInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_point_guess_can_eject' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_unix_mount_point_guess_icon' : return type 'Icon' not supported
+
+var guessNameUnixMountPointInvoker *gi.Function
+
+// GuessName is a representation of the C type g_unix_mount_point_guess_name.
+func (recv *UnixMountPoint) GuessName() string {
+	if guessNameUnixMountPointInvoker == nil {
+		guessNameUnixMountPointInvoker = gi.StructFunctionInvokerNew("Gio", "UnixMountPoint", "guess_name")
+	}
+
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	ret := guessNameUnixMountPointInvoker.Invoke(inArgs[:], nil)
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_point_guess_symbolic_icon' : return type 'Icon' not supported
+
+// UNSUPPORTED : C value 'g_unix_mount_point_is_loopback' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_unix_mount_point_is_readonly' : return type 'gboolean' not supported
+
+// UNSUPPORTED : C value 'g_unix_mount_point_is_user_mountable' : return type 'gboolean' not supported
 
 type UnixOutputStreamClass struct {
 	native      uintptr

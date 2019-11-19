@@ -25,6 +25,7 @@ type Function struct {
 	goName         string
 	record         *Record
 	invokerVarName string
+	receiver       bool
 }
 
 func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
@@ -33,6 +34,7 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.ReturnValue.init(ns)
 	f.goName = makeExportedGoName(f.Name)
 	f.record = record
+	f.receiver = receiver
 
 	if record != nil {
 		f.invokerVarName = makeUnexportedGoName(f.Name, false) + record.Name + "Invoker"
@@ -76,6 +78,7 @@ func (f *Function) generateFunction(fi *file) {
 	fi.docForC(f.goName, f.CIdentifier)
 	fi.
 		Func().                                               // "func"
+		Do(f.generateReceiver).                               // (recv)
 		Id(f.goName).                                         // function-name
 		Add(paramsFunc(f.Parameters.generateInDeclarations)). // (in params)
 		Add(paramsFunc(func(g *group) {                       // (return value, out params)
@@ -86,10 +89,22 @@ func (f *Function) generateFunction(fi *file) {
 	fi.Line()
 }
 
+func (f *Function) generateReceiver(s *jen.Statement) {
+	if !f.receiver {
+		return
+	}
+
+	s.Params(jen.
+		Id("recv").
+		Op("*").
+		Id(f.record.goName),
+	)
+}
+
 func (f *Function) generateBody(g *group) {
 	f.generateInitialiseInvoker(g)
 	g.Line()
-	f.Parameters.generateInArgs(g)
+	f.Parameters.generateInArgs(g, f.receiver)
 	g.Line()
 	f.Parameters.generateOutArgs(g)
 	g.Line()
@@ -136,7 +151,9 @@ func (f *Function) generateCallFunction(g *group) {
 		}).
 		Id(f.invokerVarName).
 		Dot("Invoke").
-		CallFunc(f.Parameters.generateCallParams)
+		CallFunc(func(i *jen.Group) {
+			f.Parameters.generateCallParams(i, f.receiver)
+		})
 }
 
 func (f *Function) generateReturnVar(g *group) {
