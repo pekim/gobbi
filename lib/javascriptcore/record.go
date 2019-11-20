@@ -2,7 +2,19 @@
 
 package javascriptcore
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var GlobalContextRefStruct *gi.Struct
+var GlobalContextRefStructOnce sync.Once
+
+func GlobalContextRefStructSet() {
+	GlobalContextRefStructOnce.Do(func() {
+		GlobalContextRefStruct = gi.StructNew("JavaScriptCore", "GlobalContextRef")
+	})
+}
 
 type GlobalContextRef struct {
 	native uintptr
@@ -38,8 +50,26 @@ func (recv *GlobalContextRef) Unref() {
 
 }
 
+var ValueRefStruct *gi.Struct
+var ValueRefStructOnce sync.Once
+
+func ValueRefStructSet() {
+	ValueRefStructOnce.Do(func() {
+		ValueRefStruct = gi.StructNew("JavaScriptCore", "ValueRef")
+	})
+}
+
 type ValueRef struct {
 	native uintptr
+}
+
+var StringRefStruct *gi.Struct
+var StringRefStructOnce sync.Once
+
+func StringRefStructSet() {
+	StringRefStructOnce.Do(func() {
+		StringRefStruct = gi.StructNew("JavaScriptCore", "StringRef")
+	})
 }
 
 type StringRef struct {
@@ -80,8 +110,26 @@ func (recv *StringRef) Unref() {
 
 // UNSUPPORTED : C value 'JSStringGetUTF8CString' : parameter 'buffer_size' of type 'gsize' not supported
 
+var ClassClassStruct *gi.Struct
+var ClassClassStructOnce sync.Once
+
+func ClassClassStructSet() {
+	ClassClassStructOnce.Do(func() {
+		ClassClassStruct = gi.StructNew("JavaScriptCore", "ClassClass")
+	})
+}
+
 type ClassClass struct {
 	native uintptr
+}
+
+var ClassVTableStruct *gi.Struct
+var ClassVTableStructOnce sync.Once
+
+func ClassVTableStructSet() {
+	ClassVTableStructOnce.Do(func() {
+		ClassVTableStruct = gi.StructNew("JavaScriptCore", "ClassVTable")
+	})
 }
 
 type ClassVTable struct {
@@ -97,6 +145,15 @@ type ClassVTable struct {
 	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
+var ContextClassStruct *gi.Struct
+var ContextClassStructOnce sync.Once
+
+func ContextClassStructSet() {
+	ContextClassStructOnce.Do(func() {
+		ContextClassStruct = gi.StructNew("JavaScriptCore", "ContextClass")
+	})
+}
+
 type ContextClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -106,8 +163,26 @@ type ContextClass struct {
 	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
+var ContextPrivateStruct *gi.Struct
+var ContextPrivateStructOnce sync.Once
+
+func ContextPrivateStructSet() {
+	ContextPrivateStructOnce.Do(func() {
+		ContextPrivateStruct = gi.StructNew("JavaScriptCore", "ContextPrivate")
+	})
+}
+
 type ContextPrivate struct {
 	native uintptr
+}
+
+var ExceptionClassStruct *gi.Struct
+var ExceptionClassStructOnce sync.Once
+
+func ExceptionClassStructSet() {
+	ExceptionClassStructOnce.Do(func() {
+		ExceptionClassStruct = gi.StructNew("JavaScriptCore", "ExceptionClass")
+	})
 }
 
 type ExceptionClass struct {
@@ -119,8 +194,26 @@ type ExceptionClass struct {
 	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
+var ExceptionPrivateStruct *gi.Struct
+var ExceptionPrivateStructOnce sync.Once
+
+func ExceptionPrivateStructSet() {
+	ExceptionPrivateStructOnce.Do(func() {
+		ExceptionPrivateStruct = gi.StructNew("JavaScriptCore", "ExceptionPrivate")
+	})
+}
+
 type ExceptionPrivate struct {
 	native uintptr
+}
+
+var ValueClassStruct *gi.Struct
+var ValueClassStructOnce sync.Once
+
+func ValueClassStructSet() {
+	ValueClassStructOnce.Do(func() {
+		ValueClassStruct = gi.StructNew("JavaScriptCore", "ValueClass")
+	})
 }
 
 type ValueClass struct {
@@ -132,8 +225,26 @@ type ValueClass struct {
 	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
+var ValuePrivateStruct *gi.Struct
+var ValuePrivateStructOnce sync.Once
+
+func ValuePrivateStructSet() {
+	ValuePrivateStructOnce.Do(func() {
+		ValuePrivateStruct = gi.StructNew("JavaScriptCore", "ValuePrivate")
+	})
+}
+
 type ValuePrivate struct {
 	native uintptr
+}
+
+var VirtualMachineClassStruct *gi.Struct
+var VirtualMachineClassStructOnce sync.Once
+
+func VirtualMachineClassStructSet() {
+	VirtualMachineClassStructOnce.Do(func() {
+		VirtualMachineClassStruct = gi.StructNew("JavaScriptCore", "VirtualMachineClass")
+	})
 }
 
 type VirtualMachineClass struct {
@@ -145,8 +256,26 @@ type VirtualMachineClass struct {
 	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
 }
 
+var VirtualMachinePrivateStruct *gi.Struct
+var VirtualMachinePrivateStructOnce sync.Once
+
+func VirtualMachinePrivateStructSet() {
+	VirtualMachinePrivateStructOnce.Do(func() {
+		VirtualMachinePrivateStruct = gi.StructNew("JavaScriptCore", "VirtualMachinePrivate")
+	})
+}
+
 type VirtualMachinePrivate struct {
 	native uintptr
+}
+
+var WeakValueClassStruct *gi.Struct
+var WeakValueClassStructOnce sync.Once
+
+func WeakValueClassStructSet() {
+	WeakValueClassStructOnce.Do(func() {
+		WeakValueClassStruct = gi.StructNew("JavaScriptCore", "WeakValueClass")
+	})
 }
 
 type WeakValueClass struct {
@@ -156,6 +285,15 @@ type WeakValueClass struct {
 	// UNSUPPORTED : C value '_jsc_reserved1' : missing Type
 	// UNSUPPORTED : C value '_jsc_reserved2' : missing Type
 	// UNSUPPORTED : C value '_jsc_reserved3' : missing Type
+}
+
+var WeakValuePrivateStruct *gi.Struct
+var WeakValuePrivateStructOnce sync.Once
+
+func WeakValuePrivateStructSet() {
+	WeakValuePrivateStructOnce.Do(func() {
+		WeakValuePrivateStruct = gi.StructNew("JavaScriptCore", "WeakValuePrivate")
+	})
 }
 
 type WeakValuePrivate struct {

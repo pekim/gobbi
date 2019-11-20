@@ -2,7 +2,19 @@
 
 package atk
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var ActionIfaceStruct *gi.Struct
+var ActionIfaceStructOnce sync.Once
+
+func ActionIfaceStructSet() {
+	ActionIfaceStructOnce.Do(func() {
+		ActionIfaceStruct = gi.StructNew("Atk", "ActionIface")
+	})
+}
 
 type ActionIface struct {
 	native uintptr
@@ -15,10 +27,28 @@ type ActionIface struct {
 	// UNSUPPORTED : C value 'get_localized_name' : missing Type
 }
 
+var AttributeStruct *gi.Struct
+var AttributeStructOnce sync.Once
+
+func AttributeStructSet() {
+	AttributeStructOnce.Do(func() {
+		AttributeStruct = gi.StructNew("Atk", "Attribute")
+	})
+}
+
 type Attribute struct {
 	native uintptr
 	Name   string
 	Value  string
+}
+
+var ComponentIfaceStruct *gi.Struct
+var ComponentIfaceStructOnce sync.Once
+
+func ComponentIfaceStructSet() {
+	ComponentIfaceStructOnce.Do(func() {
+		ComponentIfaceStruct = gi.StructNew("Atk", "ComponentIface")
+	})
 }
 
 type ComponentIface struct {
@@ -42,6 +72,15 @@ type ComponentIface struct {
 	// UNSUPPORTED : C value 'scroll_to_point' : missing Type
 }
 
+var DocumentIfaceStruct *gi.Struct
+var DocumentIfaceStructOnce sync.Once
+
+func DocumentIfaceStructSet() {
+	DocumentIfaceStructOnce.Do(func() {
+		DocumentIfaceStruct = gi.StructNew("Atk", "DocumentIface")
+	})
+}
+
 type DocumentIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
@@ -53,6 +92,15 @@ type DocumentIface struct {
 	// UNSUPPORTED : C value 'set_document_attribute' : missing Type
 	// UNSUPPORTED : C value 'get_current_page_number' : missing Type
 	// UNSUPPORTED : C value 'get_page_count' : missing Type
+}
+
+var EditableTextIfaceStruct *gi.Struct
+var EditableTextIfaceStructOnce sync.Once
+
+func EditableTextIfaceStructSet() {
+	EditableTextIfaceStructOnce.Do(func() {
+		EditableTextIfaceStruct = gi.StructNew("Atk", "EditableTextIface")
+	})
 }
 
 type EditableTextIface struct {
@@ -67,11 +115,29 @@ type EditableTextIface struct {
 	// UNSUPPORTED : C value 'paste_text' : missing Type
 }
 
+var GObjectAccessibleClassStruct *gi.Struct
+var GObjectAccessibleClassStructOnce sync.Once
+
+func GObjectAccessibleClassStructSet() {
+	GObjectAccessibleClassStructOnce.Do(func() {
+		GObjectAccessibleClassStruct = gi.StructNew("Atk", "GObjectAccessibleClass")
+	})
+}
+
 type GObjectAccessibleClass struct {
 	native      uintptr
 	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'pad1' : no Go type for 'Function'
 	// UNSUPPORTED : C value 'pad2' : no Go type for 'Function'
+}
+
+var HyperlinkClassStruct *gi.Struct
+var HyperlinkClassStructOnce sync.Once
+
+func HyperlinkClassStructSet() {
+	HyperlinkClassStructOnce.Do(func() {
+		HyperlinkClassStruct = gi.StructNew("Atk", "HyperlinkClass")
+	})
 }
 
 type HyperlinkClass struct {
@@ -89,10 +155,28 @@ type HyperlinkClass struct {
 	// UNSUPPORTED : C value 'pad1' : no Go type for 'Function'
 }
 
+var HyperlinkImplIfaceStruct *gi.Struct
+var HyperlinkImplIfaceStructOnce sync.Once
+
+func HyperlinkImplIfaceStructSet() {
+	HyperlinkImplIfaceStructOnce.Do(func() {
+		HyperlinkImplIfaceStruct = gi.StructNew("Atk", "HyperlinkImplIface")
+	})
+}
+
 type HyperlinkImplIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
 	// UNSUPPORTED : C value 'get_hyperlink' : missing Type
+}
+
+var HypertextIfaceStruct *gi.Struct
+var HypertextIfaceStructOnce sync.Once
+
+func HypertextIfaceStructSet() {
+	HypertextIfaceStructOnce.Do(func() {
+		HypertextIfaceStruct = gi.StructNew("Atk", "HypertextIface")
+	})
 }
 
 type HypertextIface struct {
@@ -102,6 +186,15 @@ type HypertextIface struct {
 	// UNSUPPORTED : C value 'get_n_links' : missing Type
 	// UNSUPPORTED : C value 'get_link_index' : missing Type
 	// UNSUPPORTED : C value 'link_selected' : missing Type
+}
+
+var ImageIfaceStruct *gi.Struct
+var ImageIfaceStructOnce sync.Once
+
+func ImageIfaceStructSet() {
+	ImageIfaceStructOnce.Do(func() {
+		ImageIfaceStruct = gi.StructNew("Atk", "ImageIface")
+	})
 }
 
 type ImageIface struct {
@@ -114,11 +207,29 @@ type ImageIface struct {
 	// UNSUPPORTED : C value 'get_image_locale' : missing Type
 }
 
+var ImplementorStruct *gi.Struct
+var ImplementorStructOnce sync.Once
+
+func ImplementorStructSet() {
+	ImplementorStructOnce.Do(func() {
+		ImplementorStruct = gi.StructNew("Atk", "Implementor")
+	})
+}
+
 type Implementor struct {
 	native uintptr
 }
 
 // UNSUPPORTED : C value 'atk_implementor_ref_accessible' : return type 'Object' not supported
+
+var KeyEventStructStruct *gi.Struct
+var KeyEventStructStructOnce sync.Once
+
+func KeyEventStructStructSet() {
+	KeyEventStructStructOnce.Do(func() {
+		KeyEventStructStruct = gi.StructNew("Atk", "KeyEventStruct")
+	})
+}
 
 type KeyEventStruct struct {
 	native    uintptr
@@ -131,6 +242,15 @@ type KeyEventStruct struct {
 	Timestamp uint32
 }
 
+var MiscClassStruct *gi.Struct
+var MiscClassStructOnce sync.Once
+
+func MiscClassStructSet() {
+	MiscClassStructOnce.Do(func() {
+		MiscClassStruct = gi.StructNew("Atk", "MiscClass")
+	})
+}
+
 type MiscClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
@@ -139,14 +259,41 @@ type MiscClass struct {
 	// UNSUPPORTED : C value 'vfuncs' : missing Type
 }
 
+var NoOpObjectClassStruct *gi.Struct
+var NoOpObjectClassStructOnce sync.Once
+
+func NoOpObjectClassStructSet() {
+	NoOpObjectClassStructOnce.Do(func() {
+		NoOpObjectClassStruct = gi.StructNew("Atk", "NoOpObjectClass")
+	})
+}
+
 type NoOpObjectClass struct {
 	native      uintptr
 	ParentClass *ObjectClass
 }
 
+var NoOpObjectFactoryClassStruct *gi.Struct
+var NoOpObjectFactoryClassStructOnce sync.Once
+
+func NoOpObjectFactoryClassStructSet() {
+	NoOpObjectFactoryClassStructOnce.Do(func() {
+		NoOpObjectFactoryClassStruct = gi.StructNew("Atk", "NoOpObjectFactoryClass")
+	})
+}
+
 type NoOpObjectFactoryClass struct {
 	native      uintptr
 	ParentClass *ObjectFactoryClass
+}
+
+var ObjectClassStruct *gi.Struct
+var ObjectClassStructOnce sync.Once
+
+func ObjectClassStructSet() {
+	ObjectClassStructOnce.Do(func() {
+		ObjectClassStruct = gi.StructNew("Atk", "ObjectClass")
+	})
 }
 
 type ObjectClass struct {
@@ -181,6 +328,15 @@ type ObjectClass struct {
 	// UNSUPPORTED : C value 'pad1' : no Go type for 'Function'
 }
 
+var ObjectFactoryClassStruct *gi.Struct
+var ObjectFactoryClassStructOnce sync.Once
+
+func ObjectFactoryClassStructSet() {
+	ObjectFactoryClassStructOnce.Do(func() {
+		ObjectFactoryClassStruct = gi.StructNew("Atk", "ObjectFactoryClass")
+	})
+}
+
 type ObjectFactoryClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -191,10 +347,28 @@ type ObjectFactoryClass struct {
 	// UNSUPPORTED : C value 'pad2' : no Go type for 'Function'
 }
 
+var PlugClassStruct *gi.Struct
+var PlugClassStructOnce sync.Once
+
+func PlugClassStructSet() {
+	PlugClassStructOnce.Do(func() {
+		PlugClassStruct = gi.StructNew("Atk", "PlugClass")
+	})
+}
+
 type PlugClass struct {
 	native      uintptr
 	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'get_object_id' : missing Type
+}
+
+var PropertyValuesStruct *gi.Struct
+var PropertyValuesStructOnce sync.Once
+
+func PropertyValuesStructSet() {
+	PropertyValuesStructOnce.Do(func() {
+		PropertyValuesStruct = gi.StructNew("Atk", "PropertyValues")
+	})
 }
 
 type PropertyValues struct {
@@ -202,6 +376,15 @@ type PropertyValues struct {
 	PropertyName string
 	// UNSUPPORTED : C value 'old_value' : no Go type for 'GObject.Value'
 	// UNSUPPORTED : C value 'new_value' : no Go type for 'GObject.Value'
+}
+
+var RangeStruct *gi.Struct
+var RangeStructOnce sync.Once
+
+func RangeStructSet() {
+	RangeStructOnce.Do(func() {
+		RangeStruct = gi.StructNew("Atk", "Range")
+	})
 }
 
 type Range struct {
@@ -265,6 +448,15 @@ func (recv *Range) GetDescription() string {
 
 // UNSUPPORTED : C value 'atk_range_get_upper_limit' : return type 'gdouble' not supported
 
+var RectangleStruct *gi.Struct
+var RectangleStructOnce sync.Once
+
+func RectangleStructSet() {
+	RectangleStructOnce.Do(func() {
+		RectangleStruct = gi.StructNew("Atk", "Rectangle")
+	})
+}
+
 type Rectangle struct {
 	native uintptr
 	X      int32
@@ -273,9 +465,27 @@ type Rectangle struct {
 	Height int32
 }
 
+var RegistryClassStruct *gi.Struct
+var RegistryClassStructOnce sync.Once
+
+func RegistryClassStructSet() {
+	RegistryClassStructOnce.Do(func() {
+		RegistryClassStruct = gi.StructNew("Atk", "RegistryClass")
+	})
+}
+
 type RegistryClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
+}
+
+var RelationClassStruct *gi.Struct
+var RelationClassStructOnce sync.Once
+
+func RelationClassStructSet() {
+	RelationClassStructOnce.Do(func() {
+		RelationClassStruct = gi.StructNew("Atk", "RelationClass")
+	})
 }
 
 type RelationClass struct {
@@ -283,11 +493,29 @@ type RelationClass struct {
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
 }
 
+var RelationSetClassStruct *gi.Struct
+var RelationSetClassStructOnce sync.Once
+
+func RelationSetClassStructSet() {
+	RelationSetClassStructOnce.Do(func() {
+		RelationSetClassStruct = gi.StructNew("Atk", "RelationSetClass")
+	})
+}
+
 type RelationSetClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
 	// UNSUPPORTED : C value 'pad1' : no Go type for 'Function'
 	// UNSUPPORTED : C value 'pad2' : no Go type for 'Function'
+}
+
+var SelectionIfaceStruct *gi.Struct
+var SelectionIfaceStructOnce sync.Once
+
+func SelectionIfaceStructSet() {
+	SelectionIfaceStructOnce.Do(func() {
+		SelectionIfaceStruct = gi.StructNew("Atk", "SelectionIface")
+	})
 }
 
 type SelectionIface struct {
@@ -303,15 +531,42 @@ type SelectionIface struct {
 	// UNSUPPORTED : C value 'selection_changed' : missing Type
 }
 
+var SocketClassStruct *gi.Struct
+var SocketClassStructOnce sync.Once
+
+func SocketClassStructSet() {
+	SocketClassStructOnce.Do(func() {
+		SocketClassStruct = gi.StructNew("Atk", "SocketClass")
+	})
+}
+
 type SocketClass struct {
 	native      uintptr
 	ParentClass *ObjectClass
 	// UNSUPPORTED : C value 'embed' : missing Type
 }
 
+var StateSetClassStruct *gi.Struct
+var StateSetClassStructOnce sync.Once
+
+func StateSetClassStructSet() {
+	StateSetClassStructOnce.Do(func() {
+		StateSetClassStruct = gi.StructNew("Atk", "StateSetClass")
+	})
+}
+
 type StateSetClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
+}
+
+var StreamableContentIfaceStruct *gi.Struct
+var StreamableContentIfaceStructOnce sync.Once
+
+func StreamableContentIfaceStructSet() {
+	StreamableContentIfaceStructOnce.Do(func() {
+		StreamableContentIfaceStruct = gi.StructNew("Atk", "StreamableContentIface")
+	})
 }
 
 type StreamableContentIface struct {
@@ -326,6 +581,15 @@ type StreamableContentIface struct {
 	// UNSUPPORTED : C value 'pad3' : no Go type for 'Function'
 }
 
+var TableCellIfaceStruct *gi.Struct
+var TableCellIfaceStructOnce sync.Once
+
+func TableCellIfaceStructSet() {
+	TableCellIfaceStructOnce.Do(func() {
+		TableCellIfaceStruct = gi.StructNew("Atk", "TableCellIface")
+	})
+}
+
 type TableCellIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'get_column_span' : missing Type
@@ -335,6 +599,15 @@ type TableCellIface struct {
 	// UNSUPPORTED : C value 'get_row_header_cells' : missing Type
 	// UNSUPPORTED : C value 'get_row_column_span' : missing Type
 	// UNSUPPORTED : C value 'get_table' : missing Type
+}
+
+var TableIfaceStruct *gi.Struct
+var TableIfaceStructOnce sync.Once
+
+func TableIfaceStructSet() {
+	TableIfaceStructOnce.Do(func() {
+		TableIfaceStruct = gi.StructNew("Atk", "TableIface")
+	})
 }
 
 type TableIface struct {
@@ -378,6 +651,15 @@ type TableIface struct {
 	// UNSUPPORTED : C value 'model_changed' : missing Type
 }
 
+var TextIfaceStruct *gi.Struct
+var TextIfaceStructOnce sync.Once
+
+func TextIfaceStructSet() {
+	TextIfaceStructOnce.Do(func() {
+		TextIfaceStruct = gi.StructNew("Atk", "TextIface")
+	})
+}
+
 type TextIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
@@ -409,6 +691,15 @@ type TextIface struct {
 	// UNSUPPORTED : C value 'scroll_substring_to_point' : missing Type
 }
 
+var TextRangeStruct *gi.Struct
+var TextRangeStructOnce sync.Once
+
+func TextRangeStructSet() {
+	TextRangeStructOnce.Do(func() {
+		TextRangeStruct = gi.StructNew("Atk", "TextRange")
+	})
+}
+
 type TextRange struct {
 	native      uintptr
 	Bounds      *TextRectangle
@@ -417,12 +708,30 @@ type TextRange struct {
 	Content     string
 }
 
+var TextRectangleStruct *gi.Struct
+var TextRectangleStructOnce sync.Once
+
+func TextRectangleStructSet() {
+	TextRectangleStructOnce.Do(func() {
+		TextRectangleStruct = gi.StructNew("Atk", "TextRectangle")
+	})
+}
+
 type TextRectangle struct {
 	native uintptr
 	X      int32
 	Y      int32
 	Width  int32
 	Height int32
+}
+
+var UtilClassStruct *gi.Struct
+var UtilClassStructOnce sync.Once
+
+func UtilClassStructSet() {
+	UtilClassStructOnce.Do(func() {
+		UtilClassStruct = gi.StructNew("Atk", "UtilClass")
+	})
 }
 
 type UtilClass struct {
@@ -435,6 +744,15 @@ type UtilClass struct {
 	// UNSUPPORTED : C value 'get_root' : missing Type
 	// UNSUPPORTED : C value 'get_toolkit_name' : missing Type
 	// UNSUPPORTED : C value 'get_toolkit_version' : missing Type
+}
+
+var ValueIfaceStruct *gi.Struct
+var ValueIfaceStructOnce sync.Once
+
+func ValueIfaceStructSet() {
+	ValueIfaceStructOnce.Do(func() {
+		ValueIfaceStruct = gi.StructNew("Atk", "ValueIface")
+	})
 }
 
 type ValueIface struct {
@@ -450,6 +768,15 @@ type ValueIface struct {
 	// UNSUPPORTED : C value 'get_increment' : missing Type
 	// UNSUPPORTED : C value 'get_sub_ranges' : missing Type
 	// UNSUPPORTED : C value 'set_value' : missing Type
+}
+
+var WindowIfaceStruct *gi.Struct
+var WindowIfaceStructOnce sync.Once
+
+func WindowIfaceStructSet() {
+	WindowIfaceStructOnce.Do(func() {
+		WindowIfaceStruct = gi.StructNew("Atk", "WindowIface")
+	})
 }
 
 type WindowIface struct {

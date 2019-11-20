@@ -2,7 +2,19 @@
 
 package pango
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var AnalysisStruct *gi.Struct
+var AnalysisStructOnce sync.Once
+
+func AnalysisStructSet() {
+	AnalysisStructOnce.Do(func() {
+		AnalysisStruct = gi.StructNew("Pango", "Analysis")
+	})
+}
 
 type Analysis struct {
 	native uintptr
@@ -17,6 +29,15 @@ type Analysis struct {
 	// UNSUPPORTED : C value 'extra_attrs' : no Go type for 'GLib.SList'
 }
 
+var AttrClassStruct *gi.Struct
+var AttrClassStructOnce sync.Once
+
+func AttrClassStructSet() {
+	AttrClassStructOnce.Do(func() {
+		AttrClassStruct = gi.StructNew("Pango", "AttrClass")
+	})
+}
+
 type AttrClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'type' : no Go type for 'AttrType'
@@ -25,10 +46,28 @@ type AttrClass struct {
 	// UNSUPPORTED : C value 'equal' : missing Type
 }
 
+var AttrColorStruct *gi.Struct
+var AttrColorStructOnce sync.Once
+
+func AttrColorStructSet() {
+	AttrColorStructOnce.Do(func() {
+		AttrColorStruct = gi.StructNew("Pango", "AttrColor")
+	})
+}
+
 type AttrColor struct {
 	native uintptr
 	Attr   *Attribute
 	Color  *Color
+}
+
+var AttrFloatStruct *gi.Struct
+var AttrFloatStructOnce sync.Once
+
+func AttrFloatStructSet() {
+	AttrFloatStructOnce.Do(func() {
+		AttrFloatStruct = gi.StructNew("Pango", "AttrFloat")
+	})
 }
 
 type AttrFloat struct {
@@ -37,10 +76,28 @@ type AttrFloat struct {
 	// UNSUPPORTED : C value 'value' : no Go type for 'gdouble'
 }
 
+var AttrFontDescStruct *gi.Struct
+var AttrFontDescStructOnce sync.Once
+
+func AttrFontDescStructSet() {
+	AttrFontDescStructOnce.Do(func() {
+		AttrFontDescStruct = gi.StructNew("Pango", "AttrFontDesc")
+	})
+}
+
 type AttrFontDesc struct {
 	native uintptr
 	Attr   *Attribute
 	Desc   *FontDescription
+}
+
+var AttrFontFeaturesStruct *gi.Struct
+var AttrFontFeaturesStructOnce sync.Once
+
+func AttrFontFeaturesStructSet() {
+	AttrFontFeaturesStructOnce.Do(func() {
+		AttrFontFeaturesStruct = gi.StructNew("Pango", "AttrFontFeatures")
+	})
 }
 
 type AttrFontFeatures struct {
@@ -49,10 +106,28 @@ type AttrFontFeatures struct {
 	Features string
 }
 
+var AttrIntStruct *gi.Struct
+var AttrIntStructOnce sync.Once
+
+func AttrIntStructSet() {
+	AttrIntStructOnce.Do(func() {
+		AttrIntStruct = gi.StructNew("Pango", "AttrInt")
+	})
+}
+
 type AttrInt struct {
 	native uintptr
 	Attr   *Attribute
 	Value  int32
+}
+
+var AttrIteratorStruct *gi.Struct
+var AttrIteratorStructOnce sync.Once
+
+func AttrIteratorStructSet() {
+	AttrIteratorStructOnce.Do(func() {
+		AttrIteratorStruct = gi.StructNew("Pango", "AttrIterator")
+	})
 }
 
 type AttrIterator struct {
@@ -121,10 +196,28 @@ func (recv *AttrIterator) Range() (int32, int32) {
 	return out0, out1
 }
 
+var AttrLanguageStruct *gi.Struct
+var AttrLanguageStructOnce sync.Once
+
+func AttrLanguageStructSet() {
+	AttrLanguageStructOnce.Do(func() {
+		AttrLanguageStruct = gi.StructNew("Pango", "AttrLanguage")
+	})
+}
+
 type AttrLanguage struct {
 	native uintptr
 	Attr   *Attribute
 	Value  *Language
+}
+
+var AttrListStruct *gi.Struct
+var AttrListStructOnce sync.Once
+
+func AttrListStructSet() {
+	AttrListStructOnce.Do(func() {
+		AttrListStruct = gi.StructNew("Pango", "AttrList")
+	})
 }
 
 type AttrList struct {
@@ -225,6 +318,15 @@ func (recv *AttrList) Unref() {
 
 }
 
+var AttrShapeStruct *gi.Struct
+var AttrShapeStructOnce sync.Once
+
+func AttrShapeStructSet() {
+	AttrShapeStructOnce.Do(func() {
+		AttrShapeStruct = gi.StructNew("Pango", "AttrShape")
+	})
+}
+
 type AttrShape struct {
 	native      uintptr
 	Attr        *Attribute
@@ -235,6 +337,15 @@ type AttrShape struct {
 	// UNSUPPORTED : C value 'destroy_func' : no Go type for 'GLib.DestroyNotify'
 }
 
+var AttrSizeStruct *gi.Struct
+var AttrSizeStructOnce sync.Once
+
+func AttrSizeStructSet() {
+	AttrSizeStructOnce.Do(func() {
+		AttrSizeStruct = gi.StructNew("Pango", "AttrSize")
+	})
+}
+
 type AttrSize struct {
 	native   uintptr
 	Attr     *Attribute
@@ -242,10 +353,28 @@ type AttrSize struct {
 	Absolute uint32
 }
 
+var AttrStringStruct *gi.Struct
+var AttrStringStructOnce sync.Once
+
+func AttrStringStructSet() {
+	AttrStringStructOnce.Do(func() {
+		AttrStringStruct = gi.StructNew("Pango", "AttrString")
+	})
+}
+
 type AttrString struct {
 	native uintptr
 	Attr   *Attribute
 	Value  string
+}
+
+var AttributeStruct *gi.Struct
+var AttributeStructOnce sync.Once
+
+func AttributeStructSet() {
+	AttributeStructOnce.Do(func() {
+		AttributeStruct = gi.StructNew("Pango", "Attribute")
+	})
 }
 
 type Attribute struct {
@@ -291,6 +420,15 @@ func (recv *Attribute) Destroy() {
 // UNSUPPORTED : C value 'pango_attribute_equal' : parameter 'attr2' of type 'Attribute' not supported
 
 // UNSUPPORTED : C value 'pango_attribute_init' : parameter 'klass' of type 'AttrClass' not supported
+
+var ColorStruct *gi.Struct
+var ColorStructOnce sync.Once
+
+func ColorStructSet() {
+	ColorStructOnce.Do(func() {
+		ColorStruct = gi.StructNew("Pango", "Color")
+	})
+}
 
 type Color struct {
 	native uintptr
@@ -352,8 +490,26 @@ func (recv *Color) ToString() string {
 	return retGo
 }
 
+var ContextClassStruct *gi.Struct
+var ContextClassStructOnce sync.Once
+
+func ContextClassStructSet() {
+	ContextClassStructOnce.Do(func() {
+		ContextClassStruct = gi.StructNew("Pango", "ContextClass")
+	})
+}
+
 type ContextClass struct {
 	native uintptr
+}
+
+var CoverageStruct *gi.Struct
+var CoverageStructOnce sync.Once
+
+func CoverageStructSet() {
+	CoverageStructOnce.Do(func() {
+		CoverageStruct = gi.StructNew("Pango", "Coverage")
+	})
 }
 
 type Coverage struct {
@@ -419,8 +575,26 @@ func (recv *Coverage) Unref() {
 
 }
 
+var EngineClassStruct *gi.Struct
+var EngineClassStructOnce sync.Once
+
+func EngineClassStructSet() {
+	EngineClassStructOnce.Do(func() {
+		EngineClassStruct = gi.StructNew("Pango", "EngineClass")
+	})
+}
+
 type EngineClass struct {
 	native uintptr
+}
+
+var EngineInfoStruct *gi.Struct
+var EngineInfoStructOnce sync.Once
+
+func EngineInfoStructSet() {
+	EngineInfoStructOnce.Do(func() {
+		EngineInfoStruct = gi.StructNew("Pango", "EngineInfo")
+	})
 }
 
 type EngineInfo struct {
@@ -432,9 +606,27 @@ type EngineInfo struct {
 	NScripts   int32
 }
 
+var EngineLangClassStruct *gi.Struct
+var EngineLangClassStructOnce sync.Once
+
+func EngineLangClassStructSet() {
+	EngineLangClassStructOnce.Do(func() {
+		EngineLangClassStruct = gi.StructNew("Pango", "EngineLangClass")
+	})
+}
+
 type EngineLangClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'script_break' : missing Type
+}
+
+var EngineScriptInfoStruct *gi.Struct
+var EngineScriptInfoStructOnce sync.Once
+
+func EngineScriptInfoStructSet() {
+	EngineScriptInfoStructOnce.Do(func() {
+		EngineScriptInfoStruct = gi.StructNew("Pango", "EngineScriptInfo")
+	})
 }
 
 type EngineScriptInfo struct {
@@ -443,10 +635,28 @@ type EngineScriptInfo struct {
 	Langs string
 }
 
+var EngineShapeClassStruct *gi.Struct
+var EngineShapeClassStructOnce sync.Once
+
+func EngineShapeClassStructSet() {
+	EngineShapeClassStructOnce.Do(func() {
+		EngineShapeClassStruct = gi.StructNew("Pango", "EngineShapeClass")
+	})
+}
+
 type EngineShapeClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'script_shape' : missing Type
 	// UNSUPPORTED : C value 'covers' : missing Type
+}
+
+var FontClassStruct *gi.Struct
+var FontClassStructOnce sync.Once
+
+func FontClassStructSet() {
+	FontClassStructOnce.Do(func() {
+		FontClassStruct = gi.StructNew("Pango", "FontClass")
+	})
 }
 
 type FontClass struct {
@@ -461,6 +671,15 @@ type FontClass struct {
 	// UNSUPPORTED : C value 'describe_absolute' : missing Type
 	// UNSUPPORTED : C value '_pango_reserved1' : missing Type
 	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
+}
+
+var FontDescriptionStruct *gi.Struct
+var FontDescriptionStructOnce sync.Once
+
+func FontDescriptionStructSet() {
+	FontDescriptionStructOnce.Do(func() {
+		FontDescriptionStruct = gi.StructNew("Pango", "FontDescription")
+	})
 }
 
 type FontDescription struct {
@@ -757,6 +976,15 @@ func (recv *FontDescription) ToString() string {
 
 // UNSUPPORTED : C value 'pango_font_description_unset_fields' : parameter 'to_unset' of type 'FontMask' not supported
 
+var FontFaceClassStruct *gi.Struct
+var FontFaceClassStructOnce sync.Once
+
+func FontFaceClassStructSet() {
+	FontFaceClassStructOnce.Do(func() {
+		FontFaceClassStruct = gi.StructNew("Pango", "FontFaceClass")
+	})
+}
+
 type FontFaceClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -766,6 +994,15 @@ type FontFaceClass struct {
 	// UNSUPPORTED : C value 'is_synthesized' : missing Type
 	// UNSUPPORTED : C value '_pango_reserved3' : missing Type
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
+}
+
+var FontFamilyClassStruct *gi.Struct
+var FontFamilyClassStructOnce sync.Once
+
+func FontFamilyClassStructSet() {
+	FontFamilyClassStructOnce.Do(func() {
+		FontFamilyClassStruct = gi.StructNew("Pango", "FontFamilyClass")
+	})
 }
 
 type FontFamilyClass struct {
@@ -779,6 +1016,15 @@ type FontFamilyClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
+var FontMapClassStruct *gi.Struct
+var FontMapClassStructOnce sync.Once
+
+func FontMapClassStructSet() {
+	FontMapClassStructOnce.Do(func() {
+		FontMapClassStruct = gi.StructNew("Pango", "FontMapClass")
+	})
+}
+
 type FontMapClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -790,6 +1036,15 @@ type FontMapClass struct {
 	// UNSUPPORTED : C value 'changed' : missing Type
 	// UNSUPPORTED : C value '_pango_reserved1' : missing Type
 	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
+}
+
+var FontMetricsStruct *gi.Struct
+var FontMetricsStructOnce sync.Once
+
+func FontMetricsStructSet() {
+	FontMetricsStructOnce.Do(func() {
+		FontMetricsStruct = gi.StructNew("Pango", "FontMetrics")
+	})
 }
 
 type FontMetrics struct {
@@ -988,6 +1243,15 @@ func (recv *FontMetrics) Unref() {
 
 }
 
+var FontsetClassStruct *gi.Struct
+var FontsetClassStructOnce sync.Once
+
+func FontsetClassStructSet() {
+	FontsetClassStructOnce.Do(func() {
+		FontsetClassStruct = gi.StructNew("Pango", "FontsetClass")
+	})
+}
+
 type FontsetClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -1001,8 +1265,26 @@ type FontsetClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
+var FontsetSimpleClassStruct *gi.Struct
+var FontsetSimpleClassStructOnce sync.Once
+
+func FontsetSimpleClassStructSet() {
+	FontsetSimpleClassStructOnce.Do(func() {
+		FontsetSimpleClassStruct = gi.StructNew("Pango", "FontsetSimpleClass")
+	})
+}
+
 type FontsetSimpleClass struct {
 	native uintptr
+}
+
+var GlyphGeometryStruct *gi.Struct
+var GlyphGeometryStructOnce sync.Once
+
+func GlyphGeometryStructSet() {
+	GlyphGeometryStructOnce.Do(func() {
+		GlyphGeometryStruct = gi.StructNew("Pango", "GlyphGeometry")
+	})
 }
 
 type GlyphGeometry struct {
@@ -1012,11 +1294,29 @@ type GlyphGeometry struct {
 	YOffset GlyphUnit
 }
 
+var GlyphInfoStruct *gi.Struct
+var GlyphInfoStructOnce sync.Once
+
+func GlyphInfoStructSet() {
+	GlyphInfoStructOnce.Do(func() {
+		GlyphInfoStruct = gi.StructNew("Pango", "GlyphInfo")
+	})
+}
+
 type GlyphInfo struct {
 	native   uintptr
 	Glyph    Glyph
 	Geometry *GlyphGeometry
 	Attr     *GlyphVisAttr
+}
+
+var GlyphItemStruct *gi.Struct
+var GlyphItemStructOnce sync.Once
+
+func GlyphItemStructSet() {
+	GlyphItemStructOnce.Do(func() {
+		GlyphItemStruct = gi.StructNew("Pango", "GlyphItem")
+	})
 }
 
 type GlyphItem struct {
@@ -1084,6 +1384,15 @@ func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 	return retGo
 }
 
+var GlyphItemIterStruct *gi.Struct
+var GlyphItemIterStructOnce sync.Once
+
+func GlyphItemIterStructSet() {
+	GlyphItemIterStructOnce.Do(func() {
+		GlyphItemIterStruct = gi.StructNew("Pango", "GlyphItemIter")
+	})
+}
+
 type GlyphItemIter struct {
 	native     uintptr
 	GlyphItem  *GlyphItem
@@ -1136,6 +1445,15 @@ func (recv *GlyphItemIter) Free() {
 // UNSUPPORTED : C value 'pango_glyph_item_iter_next_cluster' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'pango_glyph_item_iter_prev_cluster' : return type 'gboolean' not supported
+
+var GlyphStringStruct *gi.Struct
+var GlyphStringStructOnce sync.Once
+
+func GlyphStringStructSet() {
+	GlyphStringStructOnce.Do(func() {
+		GlyphStringStruct = gi.StructNew("Pango", "GlyphString")
+	})
+}
 
 type GlyphString struct {
 	native    uintptr
@@ -1236,9 +1554,27 @@ func (recv *GlyphString) SetSize(newLen int32) {
 
 // UNSUPPORTED : C value 'pango_glyph_string_x_to_index' : parameter 'analysis' of type 'Analysis' not supported
 
+var GlyphVisAttrStruct *gi.Struct
+var GlyphVisAttrStructOnce sync.Once
+
+func GlyphVisAttrStructSet() {
+	GlyphVisAttrStructOnce.Do(func() {
+		GlyphVisAttrStruct = gi.StructNew("Pango", "GlyphVisAttr")
+	})
+}
+
 type GlyphVisAttr struct {
 	native         uintptr
 	IsClusterStart uint32
+}
+
+var IncludedModuleStruct *gi.Struct
+var IncludedModuleStructOnce sync.Once
+
+func IncludedModuleStructSet() {
+	IncludedModuleStructOnce.Do(func() {
+		IncludedModuleStruct = gi.StructNew("Pango", "IncludedModule")
+	})
 }
 
 type IncludedModule struct {
@@ -1247,6 +1583,15 @@ type IncludedModule struct {
 	// UNSUPPORTED : C value 'init' : missing Type
 	// UNSUPPORTED : C value 'exit' : missing Type
 	// UNSUPPORTED : C value 'create' : missing Type
+}
+
+var ItemStruct *gi.Struct
+var ItemStructOnce sync.Once
+
+func ItemStructSet() {
+	ItemStructOnce.Do(func() {
+		ItemStruct = gi.StructNew("Pango", "Item")
+	})
 }
 
 type Item struct {
@@ -1325,6 +1670,15 @@ func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 	return retGo
 }
 
+var LanguageStruct *gi.Struct
+var LanguageStructOnce sync.Once
+
+func LanguageStructSet() {
+	LanguageStructOnce.Do(func() {
+		LanguageStruct = gi.StructNew("Pango", "Language")
+	})
+}
+
 type Language struct {
 	native uintptr
 }
@@ -1389,8 +1743,26 @@ func (recv *Language) ToString() string {
 	return retGo
 }
 
+var LayoutClassStruct *gi.Struct
+var LayoutClassStructOnce sync.Once
+
+func LayoutClassStructSet() {
+	LayoutClassStructOnce.Do(func() {
+		LayoutClassStruct = gi.StructNew("Pango", "LayoutClass")
+	})
+}
+
 type LayoutClass struct {
 	native uintptr
+}
+
+var LayoutIterStruct *gi.Struct
+var LayoutIterStructOnce sync.Once
+
+func LayoutIterStructSet() {
+	LayoutIterStructOnce.Do(func() {
+		LayoutIterStruct = gi.StructNew("Pango", "LayoutIter")
+	})
 }
 
 type LayoutIter struct {
@@ -1549,6 +1921,15 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32) {
 
 // UNSUPPORTED : C value 'pango_layout_iter_next_run' : return type 'gboolean' not supported
 
+var LayoutLineStruct *gi.Struct
+var LayoutLineStructOnce sync.Once
+
+func LayoutLineStructSet() {
+	LayoutLineStructOnce.Do(func() {
+		LayoutLineStruct = gi.StructNew("Pango", "LayoutLine")
+	})
+}
+
 type LayoutLine struct {
 	native uintptr
 	// UNSUPPORTED : C value 'layout' : no Go type for 'Layout'
@@ -1602,6 +1983,15 @@ func (recv *LayoutLine) Unref() {
 
 // UNSUPPORTED : C value 'pango_layout_line_x_to_index' : return type 'gboolean' not supported
 
+var LogAttrStruct *gi.Struct
+var LogAttrStructOnce sync.Once
+
+func LogAttrStructSet() {
+	LogAttrStructOnce.Do(func() {
+		LogAttrStruct = gi.StructNew("Pango", "LogAttr")
+	})
+}
+
 type LogAttr struct {
 	native                    uintptr
 	IsLineBreak               uint32
@@ -1619,6 +2009,15 @@ type LogAttr struct {
 	IsWordBoundary            uint32
 }
 
+var MapStruct *gi.Struct
+var MapStructOnce sync.Once
+
+func MapStructSet() {
+	MapStructOnce.Do(func() {
+		MapStruct = gi.StructNew("Pango", "Map")
+	})
+}
+
 type Map struct {
 	native uintptr
 }
@@ -1627,8 +2026,26 @@ type Map struct {
 
 // UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'script' of type 'Script' not supported
 
+var MapEntryStruct *gi.Struct
+var MapEntryStructOnce sync.Once
+
+func MapEntryStructSet() {
+	MapEntryStructOnce.Do(func() {
+		MapEntryStruct = gi.StructNew("Pango", "MapEntry")
+	})
+}
+
 type MapEntry struct {
 	native uintptr
+}
+
+var MatrixStruct *gi.Struct
+var MatrixStructOnce sync.Once
+
+func MatrixStructSet() {
+	MatrixStructOnce.Do(func() {
+		MatrixStruct = gi.StructNew("Pango", "Matrix")
+	})
 }
 
 type Matrix struct {
@@ -1694,12 +2111,30 @@ func (recv *Matrix) Free() {
 
 // UNSUPPORTED : C value 'pango_matrix_translate' : parameter 'tx' of type 'gdouble' not supported
 
+var RectangleStruct *gi.Struct
+var RectangleStructOnce sync.Once
+
+func RectangleStructSet() {
+	RectangleStructOnce.Do(func() {
+		RectangleStruct = gi.StructNew("Pango", "Rectangle")
+	})
+}
+
 type Rectangle struct {
 	native uintptr
 	X      int32
 	Y      int32
 	Width  int32
 	Height int32
+}
+
+var RendererClassStruct *gi.Struct
+var RendererClassStructOnce sync.Once
+
+func RendererClassStructSet() {
+	RendererClassStructOnce.Do(func() {
+		RendererClassStruct = gi.StructNew("Pango", "RendererClass")
+	})
 }
 
 type RendererClass struct {
@@ -1720,8 +2155,26 @@ type RendererClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
+var RendererPrivateStruct *gi.Struct
+var RendererPrivateStructOnce sync.Once
+
+func RendererPrivateStructSet() {
+	RendererPrivateStructOnce.Do(func() {
+		RendererPrivateStruct = gi.StructNew("Pango", "RendererPrivate")
+	})
+}
+
 type RendererPrivate struct {
 	native uintptr
+}
+
+var ScriptIterStruct *gi.Struct
+var ScriptIterStructOnce sync.Once
+
+func ScriptIterStructSet() {
+	ScriptIterStructOnce.Do(func() {
+		ScriptIterStruct = gi.StructNew("Pango", "ScriptIter")
+	})
 }
 
 type ScriptIter struct {
@@ -1746,6 +2199,15 @@ func (recv *ScriptIter) Free() {
 // UNSUPPORTED : C value 'pango_script_iter_get_range' : parameter 'script' of type 'Script' not supported
 
 // UNSUPPORTED : C value 'pango_script_iter_next' : return type 'gboolean' not supported
+
+var TabArrayStruct *gi.Struct
+var TabArrayStructOnce sync.Once
+
+func TabArrayStructSet() {
+	TabArrayStructOnce.Do(func() {
+		TabArrayStruct = gi.StructNew("Pango", "TabArray")
+	})
+}
 
 type TabArray struct {
 	native uintptr

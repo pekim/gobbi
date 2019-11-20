@@ -2,7 +2,19 @@
 
 package soup
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var AddressClassStruct *gi.Struct
+var AddressClassStructOnce sync.Once
+
+func AddressClassStructSet() {
+	AddressClassStructOnce.Do(func() {
+		AddressClassStruct = gi.StructNew("Soup", "AddressClass")
+	})
+}
 
 type AddressClass struct {
 	native uintptr
@@ -11,6 +23,15 @@ type AddressClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var AuthClassStruct *gi.Struct
+var AuthClassStructOnce sync.Once
+
+func AuthClassStructSet() {
+	AuthClassStructOnce.Do(func() {
+		AuthClassStruct = gi.StructNew("Soup", "AuthClass")
+	})
 }
 
 type AuthClass struct {
@@ -29,6 +50,15 @@ type AuthClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var AuthDomainBasicClassStruct *gi.Struct
+var AuthDomainBasicClassStructOnce sync.Once
+
+func AuthDomainBasicClassStructSet() {
+	AuthDomainBasicClassStructOnce.Do(func() {
+		AuthDomainBasicClassStruct = gi.StructNew("Soup", "AuthDomainBasicClass")
+	})
+}
+
 type AuthDomainBasicClass struct {
 	native      uintptr
 	ParentClass *AuthDomainClass
@@ -36,6 +66,15 @@ type AuthDomainBasicClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var AuthDomainClassStruct *gi.Struct
+var AuthDomainClassStructOnce sync.Once
+
+func AuthDomainClassStructSet() {
+	AuthDomainClassStructOnce.Do(func() {
+		AuthDomainClassStruct = gi.StructNew("Soup", "AuthDomainClass")
+	})
 }
 
 type AuthDomainClass struct {
@@ -49,6 +88,15 @@ type AuthDomainClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var AuthDomainDigestClassStruct *gi.Struct
+var AuthDomainDigestClassStructOnce sync.Once
+
+func AuthDomainDigestClassStructSet() {
+	AuthDomainDigestClassStructOnce.Do(func() {
+		AuthDomainDigestClassStruct = gi.StructNew("Soup", "AuthDomainDigestClass")
+	})
+}
+
 type AuthDomainDigestClass struct {
 	native      uintptr
 	ParentClass *AuthDomainClass
@@ -58,14 +106,41 @@ type AuthDomainDigestClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var AuthManagerClassStruct *gi.Struct
+var AuthManagerClassStructOnce sync.Once
+
+func AuthManagerClassStructSet() {
+	AuthManagerClassStructOnce.Do(func() {
+		AuthManagerClassStruct = gi.StructNew("Soup", "AuthManagerClass")
+	})
+}
+
 type AuthManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 	// UNSUPPORTED : C value 'authenticate' : missing Type
 }
 
+var AuthManagerPrivateStruct *gi.Struct
+var AuthManagerPrivateStructOnce sync.Once
+
+func AuthManagerPrivateStructSet() {
+	AuthManagerPrivateStructOnce.Do(func() {
+		AuthManagerPrivateStruct = gi.StructNew("Soup", "AuthManagerPrivate")
+	})
+}
+
 type AuthManagerPrivate struct {
 	native uintptr
+}
+
+var BufferStruct *gi.Struct
+var BufferStructOnce sync.Once
+
+func BufferStructSet() {
+	BufferStructOnce.Do(func() {
+		BufferStruct = gi.StructNew("Soup", "Buffer")
+	})
 }
 
 type Buffer struct {
@@ -121,6 +196,15 @@ func (recv *Buffer) Free() {
 
 // UNSUPPORTED : C value 'soup_buffer_new_subbuffer' : parameter 'offset' of type 'gsize' not supported
 
+var CacheClassStruct *gi.Struct
+var CacheClassStructOnce sync.Once
+
+func CacheClassStructSet() {
+	CacheClassStructOnce.Do(func() {
+		CacheClassStruct = gi.StructNew("Soup", "CacheClass")
+	})
+}
+
 type CacheClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -130,8 +214,26 @@ type CacheClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 }
 
+var CachePrivateStruct *gi.Struct
+var CachePrivateStructOnce sync.Once
+
+func CachePrivateStructSet() {
+	CachePrivateStructOnce.Do(func() {
+		CachePrivateStruct = gi.StructNew("Soup", "CachePrivate")
+	})
+}
+
 type CachePrivate struct {
 	native uintptr
+}
+
+var ClientContextStruct *gi.Struct
+var ClientContextStructOnce sync.Once
+
+func ClientContextStructSet() {
+	ClientContextStructOnce.Do(func() {
+		ClientContextStruct = gi.StructNew("Soup", "ClientContext")
+	})
 }
 
 type ClientContext struct {
@@ -188,8 +290,26 @@ func (recv *ClientContext) GetHost() string {
 
 // UNSUPPORTED : C value 'soup_client_context_steal_connection' : return type 'Gio.IOStream' not supported
 
+var ConnectionStruct *gi.Struct
+var ConnectionStructOnce sync.Once
+
+func ConnectionStructSet() {
+	ConnectionStructOnce.Do(func() {
+		ConnectionStruct = gi.StructNew("Soup", "Connection")
+	})
+}
+
 type Connection struct {
 	native uintptr
+}
+
+var ContentDecoderClassStruct *gi.Struct
+var ContentDecoderClassStructOnce sync.Once
+
+func ContentDecoderClassStructSet() {
+	ContentDecoderClassStructOnce.Do(func() {
+		ContentDecoderClassStruct = gi.StructNew("Soup", "ContentDecoderClass")
+	})
 }
 
 type ContentDecoderClass struct {
@@ -202,8 +322,26 @@ type ContentDecoderClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved5' : missing Type
 }
 
+var ContentDecoderPrivateStruct *gi.Struct
+var ContentDecoderPrivateStructOnce sync.Once
+
+func ContentDecoderPrivateStructSet() {
+	ContentDecoderPrivateStructOnce.Do(func() {
+		ContentDecoderPrivateStruct = gi.StructNew("Soup", "ContentDecoderPrivate")
+	})
+}
+
 type ContentDecoderPrivate struct {
 	native uintptr
+}
+
+var ContentSnifferClassStruct *gi.Struct
+var ContentSnifferClassStructOnce sync.Once
+
+func ContentSnifferClassStructSet() {
+	ContentSnifferClassStructOnce.Do(func() {
+		ContentSnifferClassStruct = gi.StructNew("Soup", "ContentSnifferClass")
+	})
 }
 
 type ContentSnifferClass struct {
@@ -218,8 +356,26 @@ type ContentSnifferClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved5' : missing Type
 }
 
+var ContentSnifferPrivateStruct *gi.Struct
+var ContentSnifferPrivateStructOnce sync.Once
+
+func ContentSnifferPrivateStructSet() {
+	ContentSnifferPrivateStructOnce.Do(func() {
+		ContentSnifferPrivateStruct = gi.StructNew("Soup", "ContentSnifferPrivate")
+	})
+}
+
 type ContentSnifferPrivate struct {
 	native uintptr
+}
+
+var CookieStruct *gi.Struct
+var CookieStructOnce sync.Once
+
+func CookieStructSet() {
+	CookieStructOnce.Do(func() {
+		CookieStruct = gi.StructNew("Soup", "Cookie")
+	})
 }
 
 type Cookie struct {
@@ -510,6 +666,15 @@ func (recv *Cookie) ToSetCookieHeader() string {
 	return retGo
 }
 
+var CookieJarClassStruct *gi.Struct
+var CookieJarClassStructOnce sync.Once
+
+func CookieJarClassStructSet() {
+	CookieJarClassStructOnce.Do(func() {
+		CookieJarClassStruct = gi.StructNew("Soup", "CookieJarClass")
+	})
+}
+
 type CookieJarClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -518,6 +683,15 @@ type CookieJarClass struct {
 	// UNSUPPORTED : C value 'changed' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
+}
+
+var CookieJarDBClassStruct *gi.Struct
+var CookieJarDBClassStructOnce sync.Once
+
+func CookieJarDBClassStructSet() {
+	CookieJarDBClassStructOnce.Do(func() {
+		CookieJarDBClassStruct = gi.StructNew("Soup", "CookieJarDBClass")
+	})
 }
 
 type CookieJarDBClass struct {
@@ -529,6 +703,15 @@ type CookieJarDBClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var CookieJarTextClassStruct *gi.Struct
+var CookieJarTextClassStructOnce sync.Once
+
+func CookieJarTextClassStructSet() {
+	CookieJarTextClassStructOnce.Do(func() {
+		CookieJarTextClassStruct = gi.StructNew("Soup", "CookieJarTextClass")
+	})
+}
+
 type CookieJarTextClass struct {
 	native      uintptr
 	ParentClass *CookieJarClass
@@ -536,6 +719,15 @@ type CookieJarTextClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var DateStruct *gi.Struct
+var DateStructOnce sync.Once
+
+func DateStructSet() {
+	DateStructOnce.Do(func() {
+		DateStruct = gi.StructNew("Soup", "Date")
+	})
 }
 
 type Date struct {
@@ -828,6 +1020,15 @@ func (recv *Date) ToTimeT() int64 {
 
 // UNSUPPORTED : C value 'soup_date_to_timeval' : parameter 'time' of type 'GLib.TimeVal' not supported
 
+var HSTSEnforcerClassStruct *gi.Struct
+var HSTSEnforcerClassStructOnce sync.Once
+
+func HSTSEnforcerClassStructSet() {
+	HSTSEnforcerClassStructOnce.Do(func() {
+		HSTSEnforcerClassStruct = gi.StructNew("Soup", "HSTSEnforcerClass")
+	})
+}
+
 type HSTSEnforcerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -841,6 +1042,15 @@ type HSTSEnforcerClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var HSTSEnforcerDBClassStruct *gi.Struct
+var HSTSEnforcerDBClassStructOnce sync.Once
+
+func HSTSEnforcerDBClassStructSet() {
+	HSTSEnforcerDBClassStructOnce.Do(func() {
+		HSTSEnforcerDBClassStruct = gi.StructNew("Soup", "HSTSEnforcerDBClass")
+	})
+}
+
 type HSTSEnforcerDBClass struct {
 	native      uintptr
 	ParentClass *HSTSEnforcerClass
@@ -850,12 +1060,39 @@ type HSTSEnforcerDBClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var HSTSEnforcerDBPrivateStruct *gi.Struct
+var HSTSEnforcerDBPrivateStructOnce sync.Once
+
+func HSTSEnforcerDBPrivateStructSet() {
+	HSTSEnforcerDBPrivateStructOnce.Do(func() {
+		HSTSEnforcerDBPrivateStruct = gi.StructNew("Soup", "HSTSEnforcerDBPrivate")
+	})
+}
+
 type HSTSEnforcerDBPrivate struct {
 	native uintptr
 }
 
+var HSTSEnforcerPrivateStruct *gi.Struct
+var HSTSEnforcerPrivateStructOnce sync.Once
+
+func HSTSEnforcerPrivateStructSet() {
+	HSTSEnforcerPrivateStructOnce.Do(func() {
+		HSTSEnforcerPrivateStruct = gi.StructNew("Soup", "HSTSEnforcerPrivate")
+	})
+}
+
 type HSTSEnforcerPrivate struct {
 	native uintptr
+}
+
+var HSTSPolicyStruct *gi.Struct
+var HSTSPolicyStructOnce sync.Once
+
+func HSTSPolicyStructSet() {
+	HSTSPolicyStructOnce.Do(func() {
+		HSTSPolicyStruct = gi.StructNew("Soup", "HSTSPolicy")
+	})
 }
 
 type HSTSPolicy struct {
@@ -933,6 +1170,15 @@ func (recv *HSTSPolicy) GetDomain() string {
 
 // UNSUPPORTED : C value 'soup_hsts_policy_is_session_policy' : return type 'gboolean' not supported
 
+var LoggerClassStruct *gi.Struct
+var LoggerClassStructOnce sync.Once
+
+func LoggerClassStructSet() {
+	LoggerClassStructOnce.Do(func() {
+		LoggerClassStruct = gi.StructNew("Soup", "LoggerClass")
+	})
+}
+
 type LoggerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -940,6 +1186,15 @@ type LoggerClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var MessageBodyStruct *gi.Struct
+var MessageBodyStructOnce sync.Once
+
+func MessageBodyStructSet() {
+	MessageBodyStructOnce.Do(func() {
+		MessageBodyStruct = gi.StructNew("Soup", "MessageBody")
+	})
 }
 
 type MessageBody struct {
@@ -1059,6 +1314,15 @@ func (recv *MessageBody) Truncate() {
 
 // UNSUPPORTED : C value 'soup_message_body_wrote_chunk' : parameter 'chunk' of type 'Buffer' not supported
 
+var MessageClassStruct *gi.Struct
+var MessageClassStructOnce sync.Once
+
+func MessageClassStructSet() {
+	MessageClassStructOnce.Do(func() {
+		MessageClassStruct = gi.StructNew("Soup", "MessageClass")
+	})
+}
+
 type MessageClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -1076,6 +1340,15 @@ type MessageClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved1' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
+}
+
+var MessageHeadersStruct *gi.Struct
+var MessageHeadersStructOnce sync.Once
+
+func MessageHeadersStructSet() {
+	MessageHeadersStructOnce.Do(func() {
+		MessageHeadersStruct = gi.StructNew("Soup", "MessageHeaders")
+	})
 }
 
 type MessageHeaders struct {
@@ -1337,18 +1610,54 @@ func (recv *MessageHeaders) SetRange(start int64, end int64) {
 
 // UNSUPPORTED : C value 'soup_message_headers_set_ranges' : parameter 'ranges' of type 'Range' not supported
 
+var MessageHeadersIterStruct *gi.Struct
+var MessageHeadersIterStructOnce sync.Once
+
+func MessageHeadersIterStructSet() {
+	MessageHeadersIterStructOnce.Do(func() {
+		MessageHeadersIterStruct = gi.StructNew("Soup", "MessageHeadersIter")
+	})
+}
+
 type MessageHeadersIter struct {
 	native uintptr
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_iter_next' : return type 'gboolean' not supported
 
+var MessageQueueStruct *gi.Struct
+var MessageQueueStructOnce sync.Once
+
+func MessageQueueStructSet() {
+	MessageQueueStructOnce.Do(func() {
+		MessageQueueStruct = gi.StructNew("Soup", "MessageQueue")
+	})
+}
+
 type MessageQueue struct {
 	native uintptr
 }
 
+var MessageQueueItemStruct *gi.Struct
+var MessageQueueItemStructOnce sync.Once
+
+func MessageQueueItemStructSet() {
+	MessageQueueItemStructOnce.Do(func() {
+		MessageQueueItemStruct = gi.StructNew("Soup", "MessageQueueItem")
+	})
+}
+
 type MessageQueueItem struct {
 	native uintptr
+}
+
+var MultipartStruct *gi.Struct
+var MultipartStructOnce sync.Once
+
+func MultipartStructSet() {
+	MultipartStructOnce.Do(func() {
+		MultipartStruct = gi.StructNew("Soup", "Multipart")
+	})
 }
 
 type Multipart struct {
@@ -1433,13 +1742,40 @@ func (recv *Multipart) GetLength() int32 {
 
 // UNSUPPORTED : C value 'soup_multipart_to_message' : parameter 'dest_headers' of type 'MessageHeaders' not supported
 
+var MultipartInputStreamClassStruct *gi.Struct
+var MultipartInputStreamClassStructOnce sync.Once
+
+func MultipartInputStreamClassStructSet() {
+	MultipartInputStreamClassStructOnce.Do(func() {
+		MultipartInputStreamClassStruct = gi.StructNew("Soup", "MultipartInputStreamClass")
+	})
+}
+
 type MultipartInputStreamClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.FilterInputStreamClass'
 }
 
+var MultipartInputStreamPrivateStruct *gi.Struct
+var MultipartInputStreamPrivateStructOnce sync.Once
+
+func MultipartInputStreamPrivateStructSet() {
+	MultipartInputStreamPrivateStructOnce.Do(func() {
+		MultipartInputStreamPrivateStruct = gi.StructNew("Soup", "MultipartInputStreamPrivate")
+	})
+}
+
 type MultipartInputStreamPrivate struct {
 	native uintptr
+}
+
+var PasswordManagerInterfaceStruct *gi.Struct
+var PasswordManagerInterfaceStructOnce sync.Once
+
+func PasswordManagerInterfaceStructSet() {
+	PasswordManagerInterfaceStructOnce.Do(func() {
+		PasswordManagerInterfaceStruct = gi.StructNew("Soup", "PasswordManagerInterface")
+	})
 }
 
 type PasswordManagerInterface struct {
@@ -1449,9 +1785,27 @@ type PasswordManagerInterface struct {
 	// UNSUPPORTED : C value 'get_passwords_sync' : missing Type
 }
 
+var ProxyResolverDefaultClassStruct *gi.Struct
+var ProxyResolverDefaultClassStructOnce sync.Once
+
+func ProxyResolverDefaultClassStructSet() {
+	ProxyResolverDefaultClassStructOnce.Do(func() {
+		ProxyResolverDefaultClassStruct = gi.StructNew("Soup", "ProxyResolverDefaultClass")
+	})
+}
+
 type ProxyResolverDefaultClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
+}
+
+var ProxyResolverInterfaceStruct *gi.Struct
+var ProxyResolverInterfaceStructOnce sync.Once
+
+func ProxyResolverInterfaceStructSet() {
+	ProxyResolverInterfaceStructOnce.Do(func() {
+		ProxyResolverInterfaceStruct = gi.StructNew("Soup", "ProxyResolverInterface")
+	})
 }
 
 type ProxyResolverInterface struct {
@@ -1459,6 +1813,15 @@ type ProxyResolverInterface struct {
 	// UNSUPPORTED : C value 'base' : no Go type for 'GObject.TypeInterface'
 	// UNSUPPORTED : C value 'get_proxy_async' : missing Type
 	// UNSUPPORTED : C value 'get_proxy_sync' : missing Type
+}
+
+var ProxyURIResolverInterfaceStruct *gi.Struct
+var ProxyURIResolverInterfaceStructOnce sync.Once
+
+func ProxyURIResolverInterfaceStructSet() {
+	ProxyURIResolverInterfaceStructOnce.Do(func() {
+		ProxyURIResolverInterfaceStruct = gi.StructNew("Soup", "ProxyURIResolverInterface")
+	})
 }
 
 type ProxyURIResolverInterface struct {
@@ -1472,10 +1835,28 @@ type ProxyURIResolverInterface struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var RangeStruct *gi.Struct
+var RangeStructOnce sync.Once
+
+func RangeStructSet() {
+	RangeStructOnce.Do(func() {
+		RangeStruct = gi.StructNew("Soup", "Range")
+	})
+}
+
 type Range struct {
 	native uintptr
 	Start  int64
 	End    int64
+}
+
+var RequestClassStruct *gi.Struct
+var RequestClassStructOnce sync.Once
+
+func RequestClassStructSet() {
+	RequestClassStructOnce.Do(func() {
+		RequestClassStruct = gi.StructNew("Soup", "RequestClass")
+	})
 }
 
 type RequestClass struct {
@@ -1490,13 +1871,40 @@ type RequestClass struct {
 	// UNSUPPORTED : C value 'get_content_type' : missing Type
 }
 
+var RequestDataClassStruct *gi.Struct
+var RequestDataClassStructOnce sync.Once
+
+func RequestDataClassStructSet() {
+	RequestDataClassStructOnce.Do(func() {
+		RequestDataClassStruct = gi.StructNew("Soup", "RequestDataClass")
+	})
+}
+
 type RequestDataClass struct {
 	native uintptr
 	Parent *RequestClass
 }
 
+var RequestDataPrivateStruct *gi.Struct
+var RequestDataPrivateStructOnce sync.Once
+
+func RequestDataPrivateStructSet() {
+	RequestDataPrivateStructOnce.Do(func() {
+		RequestDataPrivateStruct = gi.StructNew("Soup", "RequestDataPrivate")
+	})
+}
+
 type RequestDataPrivate struct {
 	native uintptr
+}
+
+var RequestFileClassStruct *gi.Struct
+var RequestFileClassStructOnce sync.Once
+
+func RequestFileClassStructSet() {
+	RequestFileClassStructOnce.Do(func() {
+		RequestFileClassStruct = gi.StructNew("Soup", "RequestFileClass")
+	})
 }
 
 type RequestFileClass struct {
@@ -1504,8 +1912,26 @@ type RequestFileClass struct {
 	Parent *RequestClass
 }
 
+var RequestFilePrivateStruct *gi.Struct
+var RequestFilePrivateStructOnce sync.Once
+
+func RequestFilePrivateStructSet() {
+	RequestFilePrivateStructOnce.Do(func() {
+		RequestFilePrivateStruct = gi.StructNew("Soup", "RequestFilePrivate")
+	})
+}
+
 type RequestFilePrivate struct {
 	native uintptr
+}
+
+var RequestHTTPClassStruct *gi.Struct
+var RequestHTTPClassStructOnce sync.Once
+
+func RequestHTTPClassStructSet() {
+	RequestHTTPClassStructOnce.Do(func() {
+		RequestHTTPClassStruct = gi.StructNew("Soup", "RequestHTTPClass")
+	})
 }
 
 type RequestHTTPClass struct {
@@ -1513,12 +1939,39 @@ type RequestHTTPClass struct {
 	Parent *RequestClass
 }
 
+var RequestHTTPPrivateStruct *gi.Struct
+var RequestHTTPPrivateStructOnce sync.Once
+
+func RequestHTTPPrivateStructSet() {
+	RequestHTTPPrivateStructOnce.Do(func() {
+		RequestHTTPPrivateStruct = gi.StructNew("Soup", "RequestHTTPPrivate")
+	})
+}
+
 type RequestHTTPPrivate struct {
 	native uintptr
 }
 
+var RequestPrivateStruct *gi.Struct
+var RequestPrivateStructOnce sync.Once
+
+func RequestPrivateStructSet() {
+	RequestPrivateStructOnce.Do(func() {
+		RequestPrivateStruct = gi.StructNew("Soup", "RequestPrivate")
+	})
+}
+
 type RequestPrivate struct {
 	native uintptr
+}
+
+var RequesterClassStruct *gi.Struct
+var RequesterClassStructOnce sync.Once
+
+func RequesterClassStructSet() {
+	RequesterClassStructOnce.Do(func() {
+		RequesterClassStruct = gi.StructNew("Soup", "RequesterClass")
+	})
 }
 
 type RequesterClass struct {
@@ -1526,8 +1979,26 @@ type RequesterClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
+var RequesterPrivateStruct *gi.Struct
+var RequesterPrivateStructOnce sync.Once
+
+func RequesterPrivateStructSet() {
+	RequesterPrivateStructOnce.Do(func() {
+		RequesterPrivateStruct = gi.StructNew("Soup", "RequesterPrivate")
+	})
+}
+
 type RequesterPrivate struct {
 	native uintptr
+}
+
+var ServerClassStruct *gi.Struct
+var ServerClassStructOnce sync.Once
+
+func ServerClassStructSet() {
+	ServerClassStructOnce.Do(func() {
+		ServerClassStruct = gi.StructNew("Soup", "ServerClass")
+	})
 }
 
 type ServerClass struct {
@@ -1543,6 +2014,15 @@ type ServerClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var SessionAsyncClassStruct *gi.Struct
+var SessionAsyncClassStructOnce sync.Once
+
+func SessionAsyncClassStructSet() {
+	SessionAsyncClassStructOnce.Do(func() {
+		SessionAsyncClassStruct = gi.StructNew("Soup", "SessionAsyncClass")
+	})
+}
+
 type SessionAsyncClass struct {
 	native      uintptr
 	ParentClass *SessionClass
@@ -1550,6 +2030,15 @@ type SessionAsyncClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var SessionClassStruct *gi.Struct
+var SessionClassStructOnce sync.Once
+
+func SessionClassStructSet() {
+	SessionClassStructOnce.Do(func() {
+		SessionClassStruct = gi.StructNew("Soup", "SessionClass")
+	})
 }
 
 type SessionClass struct {
@@ -1567,6 +2056,15 @@ type SessionClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var SessionFeatureInterfaceStruct *gi.Struct
+var SessionFeatureInterfaceStructOnce sync.Once
+
+func SessionFeatureInterfaceStructSet() {
+	SessionFeatureInterfaceStructOnce.Do(func() {
+		SessionFeatureInterfaceStruct = gi.StructNew("Soup", "SessionFeatureInterface")
+	})
+}
+
 type SessionFeatureInterface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
@@ -1580,6 +2078,15 @@ type SessionFeatureInterface struct {
 	// UNSUPPORTED : C value 'has_feature' : missing Type
 }
 
+var SessionSyncClassStruct *gi.Struct
+var SessionSyncClassStructOnce sync.Once
+
+func SessionSyncClassStructSet() {
+	SessionSyncClassStructOnce.Do(func() {
+		SessionSyncClassStruct = gi.StructNew("Soup", "SessionSyncClass")
+	})
+}
+
 type SessionSyncClass struct {
 	native      uintptr
 	ParentClass *SessionClass
@@ -1587,6 +2094,15 @@ type SessionSyncClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var SocketClassStruct *gi.Struct
+var SocketClassStructOnce sync.Once
+
+func SocketClassStructSet() {
+	SocketClassStructOnce.Do(func() {
+		SocketClassStruct = gi.StructNew("Soup", "SocketClass")
+	})
 }
 
 type SocketClass struct {
@@ -1600,6 +2116,15 @@ type SocketClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
+}
+
+var URIStruct *gi.Struct
+var URIStructOnce sync.Once
+
+func URIStructSet() {
+	URIStructOnce.Do(func() {
+		URIStruct = gi.StructNew("Soup", "URI")
+	})
 }
 
 type URI struct {
@@ -1987,6 +2512,15 @@ func (recv *URI) SetUser(user string) {
 
 // UNSUPPORTED : C value 'soup_uri_uses_default_port' : return type 'gboolean' not supported
 
+var WebsocketConnectionClassStruct *gi.Struct
+var WebsocketConnectionClassStructOnce sync.Once
+
+func WebsocketConnectionClassStructSet() {
+	WebsocketConnectionClassStructOnce.Do(func() {
+		WebsocketConnectionClassStruct = gi.StructNew("Soup", "WebsocketConnectionClass")
+	})
+}
+
 type WebsocketConnectionClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
@@ -1997,8 +2531,26 @@ type WebsocketConnectionClass struct {
 	// UNSUPPORTED : C value 'pong' : missing Type
 }
 
+var WebsocketConnectionPrivateStruct *gi.Struct
+var WebsocketConnectionPrivateStructOnce sync.Once
+
+func WebsocketConnectionPrivateStructSet() {
+	WebsocketConnectionPrivateStructOnce.Do(func() {
+		WebsocketConnectionPrivateStruct = gi.StructNew("Soup", "WebsocketConnectionPrivate")
+	})
+}
+
 type WebsocketConnectionPrivate struct {
 	native uintptr
+}
+
+var WebsocketExtensionClassStruct *gi.Struct
+var WebsocketExtensionClassStructOnce sync.Once
+
+func WebsocketExtensionClassStructSet() {
+	WebsocketExtensionClassStructOnce.Do(func() {
+		WebsocketExtensionClassStruct = gi.StructNew("Soup", "WebsocketExtensionClass")
+	})
 }
 
 type WebsocketExtensionClass struct {
@@ -2016,14 +2568,41 @@ type WebsocketExtensionClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
+var WebsocketExtensionDeflateClassStruct *gi.Struct
+var WebsocketExtensionDeflateClassStructOnce sync.Once
+
+func WebsocketExtensionDeflateClassStructSet() {
+	WebsocketExtensionDeflateClassStructOnce.Do(func() {
+		WebsocketExtensionDeflateClassStruct = gi.StructNew("Soup", "WebsocketExtensionDeflateClass")
+	})
+}
+
 type WebsocketExtensionDeflateClass struct {
 	native      uintptr
 	ParentClass *WebsocketExtensionClass
 }
 
+var WebsocketExtensionManagerClassStruct *gi.Struct
+var WebsocketExtensionManagerClassStructOnce sync.Once
+
+func WebsocketExtensionManagerClassStructSet() {
+	WebsocketExtensionManagerClassStructOnce.Do(func() {
+		WebsocketExtensionManagerClassStruct = gi.StructNew("Soup", "WebsocketExtensionManagerClass")
+	})
+}
+
 type WebsocketExtensionManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
+}
+
+var XMLRPCParamsStruct *gi.Struct
+var XMLRPCParamsStructOnce sync.Once
+
+func XMLRPCParamsStructSet() {
+	XMLRPCParamsStructOnce.Do(func() {
+		XMLRPCParamsStruct = gi.StructNew("Soup", "XMLRPCParams")
+	})
 }
 
 type XMLRPCParams struct {

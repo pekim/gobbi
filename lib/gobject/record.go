@@ -2,12 +2,33 @@
 
 package gobject
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var CClosureStruct *gi.Struct
+var CClosureStructOnce sync.Once
+
+func CClosureStructSet() {
+	CClosureStructOnce.Do(func() {
+		CClosureStruct = gi.StructNew("GObject", "CClosure")
+	})
+}
 
 type CClosure struct {
 	native  uintptr
 	Closure *Closure
 	// UNSUPPORTED : C value 'callback' : no Go type for 'gpointer'
+}
+
+var ClosureStruct *gi.Struct
+var ClosureStructOnce sync.Once
+
+func ClosureStructSet() {
+	ClosureStructOnce.Do(func() {
+		ClosureStruct = gi.StructNew("GObject", "Closure")
+	})
 }
 
 type Closure struct {
@@ -100,10 +121,28 @@ func (recv *Closure) Unref() {
 
 }
 
+var ClosureNotifyDataStruct *gi.Struct
+var ClosureNotifyDataStructOnce sync.Once
+
+func ClosureNotifyDataStructSet() {
+	ClosureNotifyDataStructOnce.Do(func() {
+		ClosureNotifyDataStruct = gi.StructNew("GObject", "ClosureNotifyData")
+	})
+}
+
 type ClosureNotifyData struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
 	// UNSUPPORTED : C value 'notify' : no Go type for 'ClosureNotify'
+}
+
+var EnumClassStruct *gi.Struct
+var EnumClassStructOnce sync.Once
+
+func EnumClassStructSet() {
+	EnumClassStructOnce.Do(func() {
+		EnumClassStruct = gi.StructNew("GObject", "EnumClass")
+	})
 }
 
 type EnumClass struct {
@@ -115,11 +154,29 @@ type EnumClass struct {
 	Values     *EnumValue
 }
 
+var EnumValueStruct *gi.Struct
+var EnumValueStructOnce sync.Once
+
+func EnumValueStructSet() {
+	EnumValueStructOnce.Do(func() {
+		EnumValueStruct = gi.StructNew("GObject", "EnumValue")
+	})
+}
+
 type EnumValue struct {
 	native    uintptr
 	Value     int32
 	ValueName string
 	ValueNick string
+}
+
+var FlagsClassStruct *gi.Struct
+var FlagsClassStructOnce sync.Once
+
+func FlagsClassStructSet() {
+	FlagsClassStructOnce.Do(func() {
+		FlagsClassStruct = gi.StructNew("GObject", "FlagsClass")
+	})
 }
 
 type FlagsClass struct {
@@ -130,11 +187,29 @@ type FlagsClass struct {
 	Values     *FlagsValue
 }
 
+var FlagsValueStruct *gi.Struct
+var FlagsValueStructOnce sync.Once
+
+func FlagsValueStructSet() {
+	FlagsValueStructOnce.Do(func() {
+		FlagsValueStruct = gi.StructNew("GObject", "FlagsValue")
+	})
+}
+
 type FlagsValue struct {
 	native    uintptr
 	Value     uint32
 	ValueName string
 	ValueNick string
+}
+
+var InitiallyUnownedClassStruct *gi.Struct
+var InitiallyUnownedClassStructOnce sync.Once
+
+func InitiallyUnownedClassStructSet() {
+	InitiallyUnownedClassStructOnce.Do(func() {
+		InitiallyUnownedClassStruct = gi.StructNew("GObject", "InitiallyUnownedClass")
+	})
 }
 
 type InitiallyUnownedClass struct {
@@ -150,11 +225,29 @@ type InitiallyUnownedClass struct {
 	// UNSUPPORTED : C value 'constructed' : missing Type
 }
 
+var InterfaceInfoStruct *gi.Struct
+var InterfaceInfoStructOnce sync.Once
+
+func InterfaceInfoStructSet() {
+	InterfaceInfoStructOnce.Do(func() {
+		InterfaceInfoStruct = gi.StructNew("GObject", "InterfaceInfo")
+	})
+}
+
 type InterfaceInfo struct {
 	native uintptr
 	// UNSUPPORTED : C value 'interface_init' : no Go type for 'InterfaceInitFunc'
 	// UNSUPPORTED : C value 'interface_finalize' : no Go type for 'InterfaceFinalizeFunc'
 	// UNSUPPORTED : C value 'interface_data' : no Go type for 'gpointer'
+}
+
+var ObjectClassStruct *gi.Struct
+var ObjectClassStructOnce sync.Once
+
+func ObjectClassStructSet() {
+	ObjectClassStructOnce.Do(func() {
+		ObjectClassStruct = gi.StructNew("GObject", "ObjectClass")
+	})
 }
 
 type ObjectClass struct {
@@ -213,10 +306,28 @@ func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 
 }
 
+var ObjectConstructParamStruct *gi.Struct
+var ObjectConstructParamStructOnce sync.Once
+
+func ObjectConstructParamStructSet() {
+	ObjectConstructParamStructOnce.Do(func() {
+		ObjectConstructParamStruct = gi.StructNew("GObject", "ObjectConstructParam")
+	})
+}
+
 type ObjectConstructParam struct {
 	native uintptr
 	// UNSUPPORTED : C value 'pspec' : no Go type for 'ParamSpec'
 	Value *Value
+}
+
+var ParamSpecClassStruct *gi.Struct
+var ParamSpecClassStructOnce sync.Once
+
+func ParamSpecClassStructSet() {
+	ParamSpecClassStructOnce.Do(func() {
+		ParamSpecClassStruct = gi.StructNew("GObject", "ParamSpecClass")
+	})
 }
 
 type ParamSpecClass struct {
@@ -227,6 +338,15 @@ type ParamSpecClass struct {
 	// UNSUPPORTED : C value 'value_set_default' : missing Type
 	// UNSUPPORTED : C value 'value_validate' : missing Type
 	// UNSUPPORTED : C value 'values_cmp' : missing Type
+}
+
+var ParamSpecPoolStruct *gi.Struct
+var ParamSpecPoolStructOnce sync.Once
+
+func ParamSpecPoolStructSet() {
+	ParamSpecPoolStructOnce.Do(func() {
+		ParamSpecPoolStruct = gi.StructNew("GObject", "ParamSpecPool")
+	})
 }
 
 type ParamSpecPool struct {
@@ -243,6 +363,15 @@ type ParamSpecPool struct {
 
 // UNSUPPORTED : C value 'g_param_spec_pool_remove' : parameter 'pspec' of type 'ParamSpec' not supported
 
+var ParamSpecTypeInfoStruct *gi.Struct
+var ParamSpecTypeInfoStructOnce sync.Once
+
+func ParamSpecTypeInfoStructSet() {
+	ParamSpecTypeInfoStructOnce.Do(func() {
+		ParamSpecTypeInfoStruct = gi.StructNew("GObject", "ParamSpecTypeInfo")
+	})
+}
+
 type ParamSpecTypeInfo struct {
 	native       uintptr
 	InstanceSize uint16
@@ -255,10 +384,28 @@ type ParamSpecTypeInfo struct {
 	// UNSUPPORTED : C value 'values_cmp' : missing Type
 }
 
+var ParameterStruct *gi.Struct
+var ParameterStructOnce sync.Once
+
+func ParameterStructSet() {
+	ParameterStructOnce.Do(func() {
+		ParameterStruct = gi.StructNew("GObject", "Parameter")
+	})
+}
+
 type Parameter struct {
 	native uintptr
 	Name   string
 	Value  *Value
+}
+
+var SignalInvocationHintStruct *gi.Struct
+var SignalInvocationHintStructOnce sync.Once
+
+func SignalInvocationHintStructSet() {
+	SignalInvocationHintStructOnce.Do(func() {
+		SignalInvocationHintStruct = gi.StructNew("GObject", "SignalInvocationHint")
+	})
 }
 
 type SignalInvocationHint struct {
@@ -266,6 +413,15 @@ type SignalInvocationHint struct {
 	SignalId uint32
 	// UNSUPPORTED : C value 'detail' : no Go type for 'GLib.Quark'
 	// UNSUPPORTED : C value 'run_type' : no Go type for 'SignalFlags'
+}
+
+var SignalQueryStruct *gi.Struct
+var SignalQueryStructOnce sync.Once
+
+func SignalQueryStructSet() {
+	SignalQueryStructOnce.Do(func() {
+		SignalQueryStruct = gi.StructNew("GObject", "SignalQuery")
+	})
 }
 
 type SignalQuery struct {
@@ -277,6 +433,15 @@ type SignalQuery struct {
 	// UNSUPPORTED : C value 'return_type' : no Go type for 'GType'
 	NParams uint32
 	// UNSUPPORTED : C value 'param_types' : missing Type
+}
+
+var TypeClassStruct *gi.Struct
+var TypeClassStructOnce sync.Once
+
+func TypeClassStructSet() {
+	TypeClassStructOnce.Do(func() {
+		TypeClassStruct = gi.StructNew("GObject", "TypeClass")
+	})
 }
 
 type TypeClass struct {
@@ -353,9 +518,27 @@ func (recv *TypeClass) UnrefUncached() {
 
 }
 
+var TypeFundamentalInfoStruct *gi.Struct
+var TypeFundamentalInfoStructOnce sync.Once
+
+func TypeFundamentalInfoStructSet() {
+	TypeFundamentalInfoStructOnce.Do(func() {
+		TypeFundamentalInfoStruct = gi.StructNew("GObject", "TypeFundamentalInfo")
+	})
+}
+
 type TypeFundamentalInfo struct {
 	native uintptr
 	// UNSUPPORTED : C value 'type_flags' : no Go type for 'TypeFundamentalFlags'
+}
+
+var TypeInfoStruct *gi.Struct
+var TypeInfoStructOnce sync.Once
+
+func TypeInfoStructSet() {
+	TypeInfoStructOnce.Do(func() {
+		TypeInfoStruct = gi.StructNew("GObject", "TypeInfo")
+	})
 }
 
 type TypeInfo struct {
@@ -372,11 +555,29 @@ type TypeInfo struct {
 	ValueTable *TypeValueTable
 }
 
+var TypeInstanceStruct *gi.Struct
+var TypeInstanceStructOnce sync.Once
+
+func TypeInstanceStructSet() {
+	TypeInstanceStructOnce.Do(func() {
+		TypeInstanceStruct = gi.StructNew("GObject", "TypeInstance")
+	})
+}
+
 type TypeInstance struct {
 	native uintptr
 }
 
 // UNSUPPORTED : C value 'g_type_instance_get_private' : parameter 'private_type' of type 'GType' not supported
+
+var TypeInterfaceStruct *gi.Struct
+var TypeInterfaceStructOnce sync.Once
+
+func TypeInterfaceStructSet() {
+	TypeInterfaceStructOnce.Do(func() {
+		TypeInterfaceStruct = gi.StructNew("GObject", "TypeInterface")
+	})
+}
 
 type TypeInterface struct {
 	native uintptr
@@ -400,6 +601,15 @@ func (recv *TypeInterface) PeekParent() *TypeInterface {
 	return retGo
 }
 
+var TypeModuleClassStruct *gi.Struct
+var TypeModuleClassStructOnce sync.Once
+
+func TypeModuleClassStructSet() {
+	TypeModuleClassStructOnce.Do(func() {
+		TypeModuleClassStruct = gi.StructNew("GObject", "TypeModuleClass")
+	})
+}
+
 type TypeModuleClass struct {
 	native      uintptr
 	ParentClass *ObjectClass
@@ -411,6 +621,15 @@ type TypeModuleClass struct {
 	// UNSUPPORTED : C value 'reserved4' : missing Type
 }
 
+var TypePluginClassStruct *gi.Struct
+var TypePluginClassStructOnce sync.Once
+
+func TypePluginClassStructSet() {
+	TypePluginClassStructOnce.Do(func() {
+		TypePluginClassStruct = gi.StructNew("GObject", "TypePluginClass")
+	})
+}
+
 type TypePluginClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'use_plugin' : no Go type for 'TypePluginUse'
@@ -419,12 +638,30 @@ type TypePluginClass struct {
 	// UNSUPPORTED : C value 'complete_interface_info' : no Go type for 'TypePluginCompleteInterfaceInfo'
 }
 
+var TypeQueryStruct *gi.Struct
+var TypeQueryStructOnce sync.Once
+
+func TypeQueryStructSet() {
+	TypeQueryStructOnce.Do(func() {
+		TypeQueryStruct = gi.StructNew("GObject", "TypeQuery")
+	})
+}
+
 type TypeQuery struct {
 	native uintptr
 	// UNSUPPORTED : C value 'type' : no Go type for 'GType'
 	TypeName     string
 	ClassSize    uint32
 	InstanceSize uint32
+}
+
+var TypeValueTableStruct *gi.Struct
+var TypeValueTableStructOnce sync.Once
+
+func TypeValueTableStructSet() {
+	TypeValueTableStructOnce.Do(func() {
+		TypeValueTableStruct = gi.StructNew("GObject", "TypeValueTable")
+	})
 }
 
 type TypeValueTable struct {
@@ -437,6 +674,15 @@ type TypeValueTable struct {
 	// UNSUPPORTED : C value 'collect_value' : missing Type
 	LcopyFormat string
 	// UNSUPPORTED : C value 'lcopy_value' : missing Type
+}
+
+var ValueStruct *gi.Struct
+var ValueStructOnce sync.Once
+
+func ValueStructSet() {
+	ValueStructOnce.Do(func() {
+		ValueStruct = gi.StructNew("GObject", "Value")
+	})
 }
 
 type Value struct {
@@ -1025,6 +1271,15 @@ func (recv *Value) Unset() {
 
 }
 
+var ValueArrayStruct *gi.Struct
+var ValueArrayStructOnce sync.Once
+
+func ValueArrayStructSet() {
+	ValueArrayStructOnce.Do(func() {
+		ValueArrayStruct = gi.StructNew("GObject", "ValueArray")
+	})
+}
+
 type ValueArray struct {
 	native  uintptr
 	NValues uint32
@@ -1129,6 +1384,15 @@ func (recv *ValueArray) Remove(index uint32) *ValueArray {
 // UNSUPPORTED : C value 'g_value_array_sort' : parameter 'compare_func' of type 'GLib.CompareFunc' not supported
 
 // UNSUPPORTED : C value 'g_value_array_sort_with_data' : parameter 'compare_func' of type 'GLib.CompareDataFunc' not supported
+
+var WeakRefStruct *gi.Struct
+var WeakRefStructOnce sync.Once
+
+func WeakRefStructSet() {
+	WeakRefStructOnce.Do(func() {
+		WeakRefStruct = gi.StructNew("GObject", "WeakRef")
+	})
+}
 
 type WeakRef struct {
 	native uintptr

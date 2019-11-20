@@ -2,7 +2,19 @@
 
 package webkit2
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var ApplicationInfoStruct *gi.Struct
+var ApplicationInfoStructOnce sync.Once
+
+func ApplicationInfoStructSet() {
+	ApplicationInfoStructOnce.Do(func() {
+		ApplicationInfoStruct = gi.StructNew("WebKit2", "ApplicationInfo")
+	})
+}
 
 type ApplicationInfo struct {
 	native uintptr
@@ -130,6 +142,15 @@ func (recv *ApplicationInfo) Unref() {
 
 }
 
+var AuthenticationRequestClassStruct *gi.Struct
+var AuthenticationRequestClassStructOnce sync.Once
+
+func AuthenticationRequestClassStructSet() {
+	AuthenticationRequestClassStructOnce.Do(func() {
+		AuthenticationRequestClassStruct = gi.StructNew("WebKit2", "AuthenticationRequestClass")
+	})
+}
+
 type AuthenticationRequestClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -139,8 +160,26 @@ type AuthenticationRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var AuthenticationRequestPrivateStruct *gi.Struct
+var AuthenticationRequestPrivateStructOnce sync.Once
+
+func AuthenticationRequestPrivateStructSet() {
+	AuthenticationRequestPrivateStructOnce.Do(func() {
+		AuthenticationRequestPrivateStruct = gi.StructNew("WebKit2", "AuthenticationRequestPrivate")
+	})
+}
+
 type AuthenticationRequestPrivate struct {
 	native uintptr
+}
+
+var AutomationSessionClassStruct *gi.Struct
+var AutomationSessionClassStructOnce sync.Once
+
+func AutomationSessionClassStructSet() {
+	AutomationSessionClassStructOnce.Do(func() {
+		AutomationSessionClassStruct = gi.StructNew("WebKit2", "AutomationSessionClass")
+	})
 }
 
 type AutomationSessionClass struct {
@@ -152,8 +191,26 @@ type AutomationSessionClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var AutomationSessionPrivateStruct *gi.Struct
+var AutomationSessionPrivateStructOnce sync.Once
+
+func AutomationSessionPrivateStructSet() {
+	AutomationSessionPrivateStructOnce.Do(func() {
+		AutomationSessionPrivateStruct = gi.StructNew("WebKit2", "AutomationSessionPrivate")
+	})
+}
+
 type AutomationSessionPrivate struct {
 	native uintptr
+}
+
+var BackForwardListClassStruct *gi.Struct
+var BackForwardListClassStructOnce sync.Once
+
+func BackForwardListClassStructSet() {
+	BackForwardListClassStructOnce.Do(func() {
+		BackForwardListClassStruct = gi.StructNew("WebKit2", "BackForwardListClass")
+	})
 }
 
 type BackForwardListClass struct {
@@ -165,6 +222,15 @@ type BackForwardListClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var BackForwardListItemClassStruct *gi.Struct
+var BackForwardListItemClassStructOnce sync.Once
+
+func BackForwardListItemClassStructSet() {
+	BackForwardListItemClassStructOnce.Do(func() {
+		BackForwardListItemClassStruct = gi.StructNew("WebKit2", "BackForwardListItemClass")
+	})
+}
+
 type BackForwardListItemClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
@@ -174,12 +240,39 @@ type BackForwardListItemClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var BackForwardListItemPrivateStruct *gi.Struct
+var BackForwardListItemPrivateStructOnce sync.Once
+
+func BackForwardListItemPrivateStructSet() {
+	BackForwardListItemPrivateStructOnce.Do(func() {
+		BackForwardListItemPrivateStruct = gi.StructNew("WebKit2", "BackForwardListItemPrivate")
+	})
+}
+
 type BackForwardListItemPrivate struct {
 	native uintptr
 }
 
+var BackForwardListPrivateStruct *gi.Struct
+var BackForwardListPrivateStructOnce sync.Once
+
+func BackForwardListPrivateStructSet() {
+	BackForwardListPrivateStructOnce.Do(func() {
+		BackForwardListPrivateStruct = gi.StructNew("WebKit2", "BackForwardListPrivate")
+	})
+}
+
 type BackForwardListPrivate struct {
 	native uintptr
+}
+
+var ColorChooserRequestClassStruct *gi.Struct
+var ColorChooserRequestClassStructOnce sync.Once
+
+func ColorChooserRequestClassStructSet() {
+	ColorChooserRequestClassStructOnce.Do(func() {
+		ColorChooserRequestClassStruct = gi.StructNew("WebKit2", "ColorChooserRequestClass")
+	})
 }
 
 type ColorChooserRequestClass struct {
@@ -187,8 +280,26 @@ type ColorChooserRequestClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
+var ColorChooserRequestPrivateStruct *gi.Struct
+var ColorChooserRequestPrivateStructOnce sync.Once
+
+func ColorChooserRequestPrivateStructSet() {
+	ColorChooserRequestPrivateStructOnce.Do(func() {
+		ColorChooserRequestPrivateStruct = gi.StructNew("WebKit2", "ColorChooserRequestPrivate")
+	})
+}
+
 type ColorChooserRequestPrivate struct {
 	native uintptr
+}
+
+var ContextMenuClassStruct *gi.Struct
+var ContextMenuClassStructOnce sync.Once
+
+func ContextMenuClassStructSet() {
+	ContextMenuClassStructOnce.Do(func() {
+		ContextMenuClassStruct = gi.StructNew("WebKit2", "ContextMenuClass")
+	})
 }
 
 type ContextMenuClass struct {
@@ -200,6 +311,15 @@ type ContextMenuClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var ContextMenuItemClassStruct *gi.Struct
+var ContextMenuItemClassStructOnce sync.Once
+
+func ContextMenuItemClassStructSet() {
+	ContextMenuItemClassStructOnce.Do(func() {
+		ContextMenuItemClassStruct = gi.StructNew("WebKit2", "ContextMenuItemClass")
+	})
+}
+
 type ContextMenuItemClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
@@ -209,12 +329,39 @@ type ContextMenuItemClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var ContextMenuItemPrivateStruct *gi.Struct
+var ContextMenuItemPrivateStructOnce sync.Once
+
+func ContextMenuItemPrivateStructSet() {
+	ContextMenuItemPrivateStructOnce.Do(func() {
+		ContextMenuItemPrivateStruct = gi.StructNew("WebKit2", "ContextMenuItemPrivate")
+	})
+}
+
 type ContextMenuItemPrivate struct {
 	native uintptr
 }
 
+var ContextMenuPrivateStruct *gi.Struct
+var ContextMenuPrivateStructOnce sync.Once
+
+func ContextMenuPrivateStructSet() {
+	ContextMenuPrivateStructOnce.Do(func() {
+		ContextMenuPrivateStruct = gi.StructNew("WebKit2", "ContextMenuPrivate")
+	})
+}
+
 type ContextMenuPrivate struct {
 	native uintptr
+}
+
+var CookieManagerClassStruct *gi.Struct
+var CookieManagerClassStructOnce sync.Once
+
+func CookieManagerClassStructSet() {
+	CookieManagerClassStructOnce.Do(func() {
+		CookieManagerClassStruct = gi.StructNew("WebKit2", "CookieManagerClass")
+	})
 }
 
 type CookieManagerClass struct {
@@ -226,8 +373,26 @@ type CookieManagerClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var CookieManagerPrivateStruct *gi.Struct
+var CookieManagerPrivateStructOnce sync.Once
+
+func CookieManagerPrivateStructSet() {
+	CookieManagerPrivateStructOnce.Do(func() {
+		CookieManagerPrivateStruct = gi.StructNew("WebKit2", "CookieManagerPrivate")
+	})
+}
+
 type CookieManagerPrivate struct {
 	native uintptr
+}
+
+var CredentialStruct *gi.Struct
+var CredentialStructOnce sync.Once
+
+func CredentialStructSet() {
+	CredentialStructOnce.Do(func() {
+		CredentialStruct = gi.StructNew("WebKit2", "Credential")
+	})
 }
 
 type Credential struct {
@@ -309,6 +474,15 @@ func (recv *Credential) GetUsername() string {
 
 // UNSUPPORTED : C value 'webkit_credential_has_password' : return type 'gboolean' not supported
 
+var DeviceInfoPermissionRequestClassStruct *gi.Struct
+var DeviceInfoPermissionRequestClassStructOnce sync.Once
+
+func DeviceInfoPermissionRequestClassStructSet() {
+	DeviceInfoPermissionRequestClassStructOnce.Do(func() {
+		DeviceInfoPermissionRequestClassStruct = gi.StructNew("WebKit2", "DeviceInfoPermissionRequestClass")
+	})
+}
+
 type DeviceInfoPermissionRequestClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -318,8 +492,26 @@ type DeviceInfoPermissionRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var DeviceInfoPermissionRequestPrivateStruct *gi.Struct
+var DeviceInfoPermissionRequestPrivateStructOnce sync.Once
+
+func DeviceInfoPermissionRequestPrivateStructSet() {
+	DeviceInfoPermissionRequestPrivateStructOnce.Do(func() {
+		DeviceInfoPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "DeviceInfoPermissionRequestPrivate")
+	})
+}
+
 type DeviceInfoPermissionRequestPrivate struct {
 	native uintptr
+}
+
+var DownloadClassStruct *gi.Struct
+var DownloadClassStructOnce sync.Once
+
+func DownloadClassStructSet() {
+	DownloadClassStructOnce.Do(func() {
+		DownloadClassStruct = gi.StructNew("WebKit2", "DownloadClass")
+	})
 }
 
 type DownloadClass struct {
@@ -332,8 +524,26 @@ type DownloadClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var DownloadPrivateStruct *gi.Struct
+var DownloadPrivateStructOnce sync.Once
+
+func DownloadPrivateStructSet() {
+	DownloadPrivateStructOnce.Do(func() {
+		DownloadPrivateStruct = gi.StructNew("WebKit2", "DownloadPrivate")
+	})
+}
+
 type DownloadPrivate struct {
 	native uintptr
+}
+
+var EditorStateClassStruct *gi.Struct
+var EditorStateClassStructOnce sync.Once
+
+func EditorStateClassStructSet() {
+	EditorStateClassStructOnce.Do(func() {
+		EditorStateClassStruct = gi.StructNew("WebKit2", "EditorStateClass")
+	})
 }
 
 type EditorStateClass struct {
@@ -345,8 +555,26 @@ type EditorStateClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var EditorStatePrivateStruct *gi.Struct
+var EditorStatePrivateStructOnce sync.Once
+
+func EditorStatePrivateStructSet() {
+	EditorStatePrivateStructOnce.Do(func() {
+		EditorStatePrivateStruct = gi.StructNew("WebKit2", "EditorStatePrivate")
+	})
+}
+
 type EditorStatePrivate struct {
 	native uintptr
+}
+
+var FaviconDatabaseClassStruct *gi.Struct
+var FaviconDatabaseClassStructOnce sync.Once
+
+func FaviconDatabaseClassStructSet() {
+	FaviconDatabaseClassStructOnce.Do(func() {
+		FaviconDatabaseClassStruct = gi.StructNew("WebKit2", "FaviconDatabaseClass")
+	})
 }
 
 type FaviconDatabaseClass struct {
@@ -358,8 +586,26 @@ type FaviconDatabaseClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var FaviconDatabasePrivateStruct *gi.Struct
+var FaviconDatabasePrivateStructOnce sync.Once
+
+func FaviconDatabasePrivateStructSet() {
+	FaviconDatabasePrivateStructOnce.Do(func() {
+		FaviconDatabasePrivateStruct = gi.StructNew("WebKit2", "FaviconDatabasePrivate")
+	})
+}
+
 type FaviconDatabasePrivate struct {
 	native uintptr
+}
+
+var FileChooserRequestClassStruct *gi.Struct
+var FileChooserRequestClassStructOnce sync.Once
+
+func FileChooserRequestClassStructSet() {
+	FileChooserRequestClassStructOnce.Do(func() {
+		FileChooserRequestClassStruct = gi.StructNew("WebKit2", "FileChooserRequestClass")
+	})
 }
 
 type FileChooserRequestClass struct {
@@ -371,8 +617,26 @@ type FileChooserRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var FileChooserRequestPrivateStruct *gi.Struct
+var FileChooserRequestPrivateStructOnce sync.Once
+
+func FileChooserRequestPrivateStructSet() {
+	FileChooserRequestPrivateStructOnce.Do(func() {
+		FileChooserRequestPrivateStruct = gi.StructNew("WebKit2", "FileChooserRequestPrivate")
+	})
+}
+
 type FileChooserRequestPrivate struct {
 	native uintptr
+}
+
+var FindControllerClassStruct *gi.Struct
+var FindControllerClassStructOnce sync.Once
+
+func FindControllerClassStructSet() {
+	FindControllerClassStructOnce.Do(func() {
+		FindControllerClassStruct = gi.StructNew("WebKit2", "FindControllerClass")
+	})
 }
 
 type FindControllerClass struct {
@@ -384,8 +648,26 @@ type FindControllerClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var FindControllerPrivateStruct *gi.Struct
+var FindControllerPrivateStructOnce sync.Once
+
+func FindControllerPrivateStructSet() {
+	FindControllerPrivateStructOnce.Do(func() {
+		FindControllerPrivateStruct = gi.StructNew("WebKit2", "FindControllerPrivate")
+	})
+}
+
 type FindControllerPrivate struct {
 	native uintptr
+}
+
+var FormSubmissionRequestClassStruct *gi.Struct
+var FormSubmissionRequestClassStructOnce sync.Once
+
+func FormSubmissionRequestClassStructSet() {
+	FormSubmissionRequestClassStructOnce.Do(func() {
+		FormSubmissionRequestClassStruct = gi.StructNew("WebKit2", "FormSubmissionRequestClass")
+	})
 }
 
 type FormSubmissionRequestClass struct {
@@ -397,8 +679,26 @@ type FormSubmissionRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var FormSubmissionRequestPrivateStruct *gi.Struct
+var FormSubmissionRequestPrivateStructOnce sync.Once
+
+func FormSubmissionRequestPrivateStructSet() {
+	FormSubmissionRequestPrivateStructOnce.Do(func() {
+		FormSubmissionRequestPrivateStruct = gi.StructNew("WebKit2", "FormSubmissionRequestPrivate")
+	})
+}
+
 type FormSubmissionRequestPrivate struct {
 	native uintptr
+}
+
+var GeolocationManagerClassStruct *gi.Struct
+var GeolocationManagerClassStructOnce sync.Once
+
+func GeolocationManagerClassStructSet() {
+	GeolocationManagerClassStructOnce.Do(func() {
+		GeolocationManagerClassStruct = gi.StructNew("WebKit2", "GeolocationManagerClass")
+	})
 }
 
 type GeolocationManagerClass struct {
@@ -410,8 +710,26 @@ type GeolocationManagerClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var GeolocationManagerPrivateStruct *gi.Struct
+var GeolocationManagerPrivateStructOnce sync.Once
+
+func GeolocationManagerPrivateStructSet() {
+	GeolocationManagerPrivateStructOnce.Do(func() {
+		GeolocationManagerPrivateStruct = gi.StructNew("WebKit2", "GeolocationManagerPrivate")
+	})
+}
+
 type GeolocationManagerPrivate struct {
 	native uintptr
+}
+
+var GeolocationPermissionRequestClassStruct *gi.Struct
+var GeolocationPermissionRequestClassStructOnce sync.Once
+
+func GeolocationPermissionRequestClassStructSet() {
+	GeolocationPermissionRequestClassStructOnce.Do(func() {
+		GeolocationPermissionRequestClassStruct = gi.StructNew("WebKit2", "GeolocationPermissionRequestClass")
+	})
 }
 
 type GeolocationPermissionRequestClass struct {
@@ -423,8 +741,26 @@ type GeolocationPermissionRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var GeolocationPermissionRequestPrivateStruct *gi.Struct
+var GeolocationPermissionRequestPrivateStructOnce sync.Once
+
+func GeolocationPermissionRequestPrivateStructSet() {
+	GeolocationPermissionRequestPrivateStructOnce.Do(func() {
+		GeolocationPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "GeolocationPermissionRequestPrivate")
+	})
+}
+
 type GeolocationPermissionRequestPrivate struct {
 	native uintptr
+}
+
+var GeolocationPositionStruct *gi.Struct
+var GeolocationPositionStructOnce sync.Once
+
+func GeolocationPositionStructSet() {
+	GeolocationPositionStructOnce.Do(func() {
+		GeolocationPositionStruct = gi.StructNew("WebKit2", "GeolocationPosition")
+	})
 }
 
 type GeolocationPosition struct {
@@ -490,6 +826,15 @@ func (recv *GeolocationPosition) SetTimestamp(timestamp uint64) {
 
 }
 
+var HitTestResultClassStruct *gi.Struct
+var HitTestResultClassStructOnce sync.Once
+
+func HitTestResultClassStructSet() {
+	HitTestResultClassStructOnce.Do(func() {
+		HitTestResultClassStruct = gi.StructNew("WebKit2", "HitTestResultClass")
+	})
+}
+
 type HitTestResultClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -499,8 +844,26 @@ type HitTestResultClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var HitTestResultPrivateStruct *gi.Struct
+var HitTestResultPrivateStructOnce sync.Once
+
+func HitTestResultPrivateStructSet() {
+	HitTestResultPrivateStructOnce.Do(func() {
+		HitTestResultPrivateStruct = gi.StructNew("WebKit2", "HitTestResultPrivate")
+	})
+}
+
 type HitTestResultPrivate struct {
 	native uintptr
+}
+
+var InstallMissingMediaPluginsPermissionRequestClassStruct *gi.Struct
+var InstallMissingMediaPluginsPermissionRequestClassStructOnce sync.Once
+
+func InstallMissingMediaPluginsPermissionRequestClassStructSet() {
+	InstallMissingMediaPluginsPermissionRequestClassStructOnce.Do(func() {
+		InstallMissingMediaPluginsPermissionRequestClassStruct = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequestClass")
+	})
 }
 
 type InstallMissingMediaPluginsPermissionRequestClass struct {
@@ -512,8 +875,26 @@ type InstallMissingMediaPluginsPermissionRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var InstallMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
+var InstallMissingMediaPluginsPermissionRequestPrivateStructOnce sync.Once
+
+func InstallMissingMediaPluginsPermissionRequestPrivateStructSet() {
+	InstallMissingMediaPluginsPermissionRequestPrivateStructOnce.Do(func() {
+		InstallMissingMediaPluginsPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequestPrivate")
+	})
+}
+
 type InstallMissingMediaPluginsPermissionRequestPrivate struct {
 	native uintptr
+}
+
+var JavascriptResultStruct *gi.Struct
+var JavascriptResultStructOnce sync.Once
+
+func JavascriptResultStructSet() {
+	JavascriptResultStructOnce.Do(func() {
+		JavascriptResultStruct = gi.StructNew("WebKit2", "JavascriptResult")
+	})
 }
 
 type JavascriptResult struct {
@@ -557,6 +938,15 @@ func (recv *JavascriptResult) Unref() {
 
 	unrefJavascriptResultInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var MimeInfoStruct *gi.Struct
+var MimeInfoStructOnce sync.Once
+
+func MimeInfoStructSet() {
+	MimeInfoStructOnce.Do(func() {
+		MimeInfoStruct = gi.StructNew("WebKit2", "MimeInfo")
+	})
 }
 
 type MimeInfo struct {
@@ -647,6 +1037,15 @@ func (recv *MimeInfo) Unref() {
 
 }
 
+var NavigationActionStruct *gi.Struct
+var NavigationActionStructOnce sync.Once
+
+func NavigationActionStructSet() {
+	NavigationActionStructOnce.Do(func() {
+		NavigationActionStruct = gi.StructNew("WebKit2", "NavigationAction")
+	})
+}
+
 type NavigationAction struct {
 	native uintptr
 }
@@ -728,6 +1127,15 @@ func (recv *NavigationAction) GetMouseButton() uint32 {
 
 // UNSUPPORTED : C value 'webkit_navigation_action_is_user_gesture' : return type 'gboolean' not supported
 
+var NavigationPolicyDecisionClassStruct *gi.Struct
+var NavigationPolicyDecisionClassStructOnce sync.Once
+
+func NavigationPolicyDecisionClassStructSet() {
+	NavigationPolicyDecisionClassStructOnce.Do(func() {
+		NavigationPolicyDecisionClassStruct = gi.StructNew("WebKit2", "NavigationPolicyDecisionClass")
+	})
+}
+
 type NavigationPolicyDecisionClass struct {
 	native      uintptr
 	ParentClass *PolicyDecisionClass
@@ -737,8 +1145,26 @@ type NavigationPolicyDecisionClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var NavigationPolicyDecisionPrivateStruct *gi.Struct
+var NavigationPolicyDecisionPrivateStructOnce sync.Once
+
+func NavigationPolicyDecisionPrivateStructSet() {
+	NavigationPolicyDecisionPrivateStructOnce.Do(func() {
+		NavigationPolicyDecisionPrivateStruct = gi.StructNew("WebKit2", "NavigationPolicyDecisionPrivate")
+	})
+}
+
 type NavigationPolicyDecisionPrivate struct {
 	native uintptr
+}
+
+var NetworkProxySettingsStruct *gi.Struct
+var NetworkProxySettingsStructOnce sync.Once
+
+func NetworkProxySettingsStructSet() {
+	NetworkProxySettingsStructOnce.Do(func() {
+		NetworkProxySettingsStruct = gi.StructNew("WebKit2", "NetworkProxySettings")
+	})
 }
 
 type NetworkProxySettings struct {
@@ -797,6 +1223,15 @@ func (recv *NetworkProxySettings) Free() {
 
 }
 
+var NotificationClassStruct *gi.Struct
+var NotificationClassStructOnce sync.Once
+
+func NotificationClassStructSet() {
+	NotificationClassStructOnce.Do(func() {
+		NotificationClassStruct = gi.StructNew("WebKit2", "NotificationClass")
+	})
+}
+
 type NotificationClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -808,17 +1243,53 @@ type NotificationClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved5' : missing Type
 }
 
+var NotificationPermissionRequestClassStruct *gi.Struct
+var NotificationPermissionRequestClassStructOnce sync.Once
+
+func NotificationPermissionRequestClassStructSet() {
+	NotificationPermissionRequestClassStructOnce.Do(func() {
+		NotificationPermissionRequestClassStruct = gi.StructNew("WebKit2", "NotificationPermissionRequestClass")
+	})
+}
+
 type NotificationPermissionRequestClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
+}
+
+var NotificationPermissionRequestPrivateStruct *gi.Struct
+var NotificationPermissionRequestPrivateStructOnce sync.Once
+
+func NotificationPermissionRequestPrivateStructSet() {
+	NotificationPermissionRequestPrivateStructOnce.Do(func() {
+		NotificationPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "NotificationPermissionRequestPrivate")
+	})
 }
 
 type NotificationPermissionRequestPrivate struct {
 	native uintptr
 }
 
+var NotificationPrivateStruct *gi.Struct
+var NotificationPrivateStructOnce sync.Once
+
+func NotificationPrivateStructSet() {
+	NotificationPrivateStructOnce.Do(func() {
+		NotificationPrivateStruct = gi.StructNew("WebKit2", "NotificationPrivate")
+	})
+}
+
 type NotificationPrivate struct {
 	native uintptr
+}
+
+var OptionMenuClassStruct *gi.Struct
+var OptionMenuClassStructOnce sync.Once
+
+func OptionMenuClassStructSet() {
+	OptionMenuClassStructOnce.Do(func() {
+		OptionMenuClassStruct = gi.StructNew("WebKit2", "OptionMenuClass")
+	})
 }
 
 type OptionMenuClass struct {
@@ -828,6 +1299,15 @@ type OptionMenuClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
 	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
+}
+
+var OptionMenuItemStruct *gi.Struct
+var OptionMenuItemStructOnce sync.Once
+
+func OptionMenuItemStructSet() {
+	OptionMenuItemStructOnce.Do(func() {
+		OptionMenuItemStruct = gi.StructNew("WebKit2", "OptionMenuItem")
+	})
 }
 
 type OptionMenuItem struct {
@@ -911,8 +1391,26 @@ func (recv *OptionMenuItem) GetTooltip() string {
 
 // UNSUPPORTED : C value 'webkit_option_menu_item_is_selected' : return type 'gboolean' not supported
 
+var OptionMenuPrivateStruct *gi.Struct
+var OptionMenuPrivateStructOnce sync.Once
+
+func OptionMenuPrivateStructSet() {
+	OptionMenuPrivateStructOnce.Do(func() {
+		OptionMenuPrivateStruct = gi.StructNew("WebKit2", "OptionMenuPrivate")
+	})
+}
+
 type OptionMenuPrivate struct {
 	native uintptr
+}
+
+var PermissionRequestIfaceStruct *gi.Struct
+var PermissionRequestIfaceStructOnce sync.Once
+
+func PermissionRequestIfaceStructSet() {
+	PermissionRequestIfaceStructOnce.Do(func() {
+		PermissionRequestIfaceStruct = gi.StructNew("WebKit2", "PermissionRequestIface")
+	})
 }
 
 type PermissionRequestIface struct {
@@ -920,6 +1418,15 @@ type PermissionRequestIface struct {
 	// UNSUPPORTED : C value 'parent_interface' : no Go type for 'GObject.TypeInterface'
 	// UNSUPPORTED : C value 'allow' : missing Type
 	// UNSUPPORTED : C value 'deny' : missing Type
+}
+
+var PluginClassStruct *gi.Struct
+var PluginClassStructOnce sync.Once
+
+func PluginClassStructSet() {
+	PluginClassStructOnce.Do(func() {
+		PluginClassStruct = gi.StructNew("WebKit2", "PluginClass")
+	})
 }
 
 type PluginClass struct {
@@ -931,8 +1438,26 @@ type PluginClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var PluginPrivateStruct *gi.Struct
+var PluginPrivateStructOnce sync.Once
+
+func PluginPrivateStructSet() {
+	PluginPrivateStructOnce.Do(func() {
+		PluginPrivateStruct = gi.StructNew("WebKit2", "PluginPrivate")
+	})
+}
+
 type PluginPrivate struct {
 	native uintptr
+}
+
+var PolicyDecisionClassStruct *gi.Struct
+var PolicyDecisionClassStructOnce sync.Once
+
+func PolicyDecisionClassStructSet() {
+	PolicyDecisionClassStructOnce.Do(func() {
+		PolicyDecisionClassStruct = gi.StructNew("WebKit2", "PolicyDecisionClass")
+	})
 }
 
 type PolicyDecisionClass struct {
@@ -944,8 +1469,26 @@ type PolicyDecisionClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var PolicyDecisionPrivateStruct *gi.Struct
+var PolicyDecisionPrivateStructOnce sync.Once
+
+func PolicyDecisionPrivateStructSet() {
+	PolicyDecisionPrivateStructOnce.Do(func() {
+		PolicyDecisionPrivateStruct = gi.StructNew("WebKit2", "PolicyDecisionPrivate")
+	})
+}
+
 type PolicyDecisionPrivate struct {
 	native uintptr
+}
+
+var PrintCustomWidgetClassStruct *gi.Struct
+var PrintCustomWidgetClassStructOnce sync.Once
+
+func PrintCustomWidgetClassStructSet() {
+	PrintCustomWidgetClassStructOnce.Do(func() {
+		PrintCustomWidgetClassStruct = gi.StructNew("WebKit2", "PrintCustomWidgetClass")
+	})
 }
 
 type PrintCustomWidgetClass struct {
@@ -959,8 +1502,26 @@ type PrintCustomWidgetClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var PrintCustomWidgetPrivateStruct *gi.Struct
+var PrintCustomWidgetPrivateStructOnce sync.Once
+
+func PrintCustomWidgetPrivateStructSet() {
+	PrintCustomWidgetPrivateStructOnce.Do(func() {
+		PrintCustomWidgetPrivateStruct = gi.StructNew("WebKit2", "PrintCustomWidgetPrivate")
+	})
+}
+
 type PrintCustomWidgetPrivate struct {
 	native uintptr
+}
+
+var PrintOperationClassStruct *gi.Struct
+var PrintOperationClassStructOnce sync.Once
+
+func PrintOperationClassStructSet() {
+	PrintOperationClassStructOnce.Do(func() {
+		PrintOperationClassStruct = gi.StructNew("WebKit2", "PrintOperationClass")
+	})
 }
 
 type PrintOperationClass struct {
@@ -972,8 +1533,26 @@ type PrintOperationClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var PrintOperationPrivateStruct *gi.Struct
+var PrintOperationPrivateStructOnce sync.Once
+
+func PrintOperationPrivateStructSet() {
+	PrintOperationPrivateStructOnce.Do(func() {
+		PrintOperationPrivateStruct = gi.StructNew("WebKit2", "PrintOperationPrivate")
+	})
+}
+
 type PrintOperationPrivate struct {
 	native uintptr
+}
+
+var ResponsePolicyDecisionClassStruct *gi.Struct
+var ResponsePolicyDecisionClassStructOnce sync.Once
+
+func ResponsePolicyDecisionClassStructSet() {
+	ResponsePolicyDecisionClassStructOnce.Do(func() {
+		ResponsePolicyDecisionClassStruct = gi.StructNew("WebKit2", "ResponsePolicyDecisionClass")
+	})
 }
 
 type ResponsePolicyDecisionClass struct {
@@ -985,8 +1564,26 @@ type ResponsePolicyDecisionClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var ResponsePolicyDecisionPrivateStruct *gi.Struct
+var ResponsePolicyDecisionPrivateStructOnce sync.Once
+
+func ResponsePolicyDecisionPrivateStructSet() {
+	ResponsePolicyDecisionPrivateStructOnce.Do(func() {
+		ResponsePolicyDecisionPrivateStruct = gi.StructNew("WebKit2", "ResponsePolicyDecisionPrivate")
+	})
+}
+
 type ResponsePolicyDecisionPrivate struct {
 	native uintptr
+}
+
+var ScriptDialogStruct *gi.Struct
+var ScriptDialogStructOnce sync.Once
+
+func ScriptDialogStructSet() {
+	ScriptDialogStructOnce.Do(func() {
+		ScriptDialogStruct = gi.StructNew("WebKit2", "ScriptDialog")
+	})
 }
 
 type ScriptDialog struct {
@@ -1097,6 +1694,15 @@ func (recv *ScriptDialog) Unref() {
 
 }
 
+var SecurityManagerClassStruct *gi.Struct
+var SecurityManagerClassStructOnce sync.Once
+
+func SecurityManagerClassStructSet() {
+	SecurityManagerClassStructOnce.Do(func() {
+		SecurityManagerClassStruct = gi.StructNew("WebKit2", "SecurityManagerClass")
+	})
+}
+
 type SecurityManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -1106,8 +1712,26 @@ type SecurityManagerClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var SecurityManagerPrivateStruct *gi.Struct
+var SecurityManagerPrivateStructOnce sync.Once
+
+func SecurityManagerPrivateStructSet() {
+	SecurityManagerPrivateStructOnce.Do(func() {
+		SecurityManagerPrivateStruct = gi.StructNew("WebKit2", "SecurityManagerPrivate")
+	})
+}
+
 type SecurityManagerPrivate struct {
 	native uintptr
+}
+
+var SecurityOriginStruct *gi.Struct
+var SecurityOriginStructOnce sync.Once
+
+func SecurityOriginStructSet() {
+	SecurityOriginStructOnce.Do(func() {
+		SecurityOriginStruct = gi.StructNew("WebKit2", "SecurityOrigin")
+	})
 }
 
 type SecurityOrigin struct {
@@ -1259,6 +1883,15 @@ func (recv *SecurityOrigin) Unref() {
 
 }
 
+var SettingsClassStruct *gi.Struct
+var SettingsClassStructOnce sync.Once
+
+func SettingsClassStructSet() {
+	SettingsClassStructOnce.Do(func() {
+		SettingsClassStruct = gi.StructNew("WebKit2", "SettingsClass")
+	})
+}
+
 type SettingsClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -1268,8 +1901,26 @@ type SettingsClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var SettingsPrivateStruct *gi.Struct
+var SettingsPrivateStructOnce sync.Once
+
+func SettingsPrivateStructSet() {
+	SettingsPrivateStructOnce.Do(func() {
+		SettingsPrivateStruct = gi.StructNew("WebKit2", "SettingsPrivate")
+	})
+}
+
 type SettingsPrivate struct {
 	native uintptr
+}
+
+var URIRequestClassStruct *gi.Struct
+var URIRequestClassStructOnce sync.Once
+
+func URIRequestClassStructSet() {
+	URIRequestClassStructOnce.Do(func() {
+		URIRequestClassStruct = gi.StructNew("WebKit2", "URIRequestClass")
+	})
 }
 
 type URIRequestClass struct {
@@ -1281,8 +1932,26 @@ type URIRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var URIRequestPrivateStruct *gi.Struct
+var URIRequestPrivateStructOnce sync.Once
+
+func URIRequestPrivateStructSet() {
+	URIRequestPrivateStructOnce.Do(func() {
+		URIRequestPrivateStruct = gi.StructNew("WebKit2", "URIRequestPrivate")
+	})
+}
+
 type URIRequestPrivate struct {
 	native uintptr
+}
+
+var URIResponseClassStruct *gi.Struct
+var URIResponseClassStructOnce sync.Once
+
+func URIResponseClassStructSet() {
+	URIResponseClassStructOnce.Do(func() {
+		URIResponseClassStruct = gi.StructNew("WebKit2", "URIResponseClass")
+	})
 }
 
 type URIResponseClass struct {
@@ -1294,8 +1963,26 @@ type URIResponseClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var URIResponsePrivateStruct *gi.Struct
+var URIResponsePrivateStructOnce sync.Once
+
+func URIResponsePrivateStructSet() {
+	URIResponsePrivateStructOnce.Do(func() {
+		URIResponsePrivateStruct = gi.StructNew("WebKit2", "URIResponsePrivate")
+	})
+}
+
 type URIResponsePrivate struct {
 	native uintptr
+}
+
+var URISchemeRequestClassStruct *gi.Struct
+var URISchemeRequestClassStructOnce sync.Once
+
+func URISchemeRequestClassStructSet() {
+	URISchemeRequestClassStructOnce.Do(func() {
+		URISchemeRequestClassStruct = gi.StructNew("WebKit2", "URISchemeRequestClass")
+	})
 }
 
 type URISchemeRequestClass struct {
@@ -1307,8 +1994,26 @@ type URISchemeRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var URISchemeRequestPrivateStruct *gi.Struct
+var URISchemeRequestPrivateStructOnce sync.Once
+
+func URISchemeRequestPrivateStructSet() {
+	URISchemeRequestPrivateStructOnce.Do(func() {
+		URISchemeRequestPrivateStruct = gi.StructNew("WebKit2", "URISchemeRequestPrivate")
+	})
+}
+
 type URISchemeRequestPrivate struct {
 	native uintptr
+}
+
+var UserContentFilterStruct *gi.Struct
+var UserContentFilterStructOnce sync.Once
+
+func UserContentFilterStructSet() {
+	UserContentFilterStructOnce.Do(func() {
+		UserContentFilterStruct = gi.StructNew("WebKit2", "UserContentFilter")
+	})
 }
 
 type UserContentFilter struct {
@@ -1366,6 +2071,15 @@ func (recv *UserContentFilter) Unref() {
 
 }
 
+var UserContentFilterStoreClassStruct *gi.Struct
+var UserContentFilterStoreClassStructOnce sync.Once
+
+func UserContentFilterStoreClassStructSet() {
+	UserContentFilterStoreClassStructOnce.Do(func() {
+		UserContentFilterStoreClassStruct = gi.StructNew("WebKit2", "UserContentFilterStoreClass")
+	})
+}
+
 type UserContentFilterStoreClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -1375,8 +2089,26 @@ type UserContentFilterStoreClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var UserContentFilterStorePrivateStruct *gi.Struct
+var UserContentFilterStorePrivateStructOnce sync.Once
+
+func UserContentFilterStorePrivateStructSet() {
+	UserContentFilterStorePrivateStructOnce.Do(func() {
+		UserContentFilterStorePrivateStruct = gi.StructNew("WebKit2", "UserContentFilterStorePrivate")
+	})
+}
+
 type UserContentFilterStorePrivate struct {
 	native uintptr
+}
+
+var UserContentManagerClassStruct *gi.Struct
+var UserContentManagerClassStructOnce sync.Once
+
+func UserContentManagerClassStructSet() {
+	UserContentManagerClassStructOnce.Do(func() {
+		UserContentManagerClassStruct = gi.StructNew("WebKit2", "UserContentManagerClass")
+	})
 }
 
 type UserContentManagerClass struct {
@@ -1388,8 +2120,26 @@ type UserContentManagerClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var UserContentManagerPrivateStruct *gi.Struct
+var UserContentManagerPrivateStructOnce sync.Once
+
+func UserContentManagerPrivateStructSet() {
+	UserContentManagerPrivateStructOnce.Do(func() {
+		UserContentManagerPrivateStruct = gi.StructNew("WebKit2", "UserContentManagerPrivate")
+	})
+}
+
 type UserContentManagerPrivate struct {
 	native uintptr
+}
+
+var UserMediaPermissionRequestClassStruct *gi.Struct
+var UserMediaPermissionRequestClassStructOnce sync.Once
+
+func UserMediaPermissionRequestClassStructSet() {
+	UserMediaPermissionRequestClassStructOnce.Do(func() {
+		UserMediaPermissionRequestClassStruct = gi.StructNew("WebKit2", "UserMediaPermissionRequestClass")
+	})
 }
 
 type UserMediaPermissionRequestClass struct {
@@ -1401,8 +2151,26 @@ type UserMediaPermissionRequestClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var UserMediaPermissionRequestPrivateStruct *gi.Struct
+var UserMediaPermissionRequestPrivateStructOnce sync.Once
+
+func UserMediaPermissionRequestPrivateStructSet() {
+	UserMediaPermissionRequestPrivateStructOnce.Do(func() {
+		UserMediaPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "UserMediaPermissionRequestPrivate")
+	})
+}
+
 type UserMediaPermissionRequestPrivate struct {
 	native uintptr
+}
+
+var UserScriptStruct *gi.Struct
+var UserScriptStructOnce sync.Once
+
+func UserScriptStructSet() {
+	UserScriptStructOnce.Do(func() {
+		UserScriptStruct = gi.StructNew("WebKit2", "UserScript")
+	})
 }
 
 type UserScript struct {
@@ -1446,6 +2214,15 @@ func (recv *UserScript) Unref() {
 
 }
 
+var UserStyleSheetStruct *gi.Struct
+var UserStyleSheetStructOnce sync.Once
+
+func UserStyleSheetStructSet() {
+	UserStyleSheetStructOnce.Do(func() {
+		UserStyleSheetStruct = gi.StructNew("WebKit2", "UserStyleSheet")
+	})
+}
+
 type UserStyleSheet struct {
 	native uintptr
 }
@@ -1487,6 +2264,15 @@ func (recv *UserStyleSheet) Unref() {
 
 }
 
+var WebContextClassStruct *gi.Struct
+var WebContextClassStructOnce sync.Once
+
+func WebContextClassStructSet() {
+	WebContextClassStructOnce.Do(func() {
+		WebContextClassStruct = gi.StructNew("WebKit2", "WebContextClass")
+	})
+}
+
 type WebContextClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.ObjectClass'
@@ -1500,8 +2286,26 @@ type WebContextClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var WebContextPrivateStruct *gi.Struct
+var WebContextPrivateStructOnce sync.Once
+
+func WebContextPrivateStructSet() {
+	WebContextPrivateStructOnce.Do(func() {
+		WebContextPrivateStruct = gi.StructNew("WebKit2", "WebContextPrivate")
+	})
+}
+
 type WebContextPrivate struct {
 	native uintptr
+}
+
+var WebInspectorClassStruct *gi.Struct
+var WebInspectorClassStructOnce sync.Once
+
+func WebInspectorClassStructSet() {
+	WebInspectorClassStructOnce.Do(func() {
+		WebInspectorClassStruct = gi.StructNew("WebKit2", "WebInspectorClass")
+	})
 }
 
 type WebInspectorClass struct {
@@ -1513,8 +2317,26 @@ type WebInspectorClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var WebInspectorPrivateStruct *gi.Struct
+var WebInspectorPrivateStructOnce sync.Once
+
+func WebInspectorPrivateStructSet() {
+	WebInspectorPrivateStructOnce.Do(func() {
+		WebInspectorPrivateStruct = gi.StructNew("WebKit2", "WebInspectorPrivate")
+	})
+}
+
 type WebInspectorPrivate struct {
 	native uintptr
+}
+
+var WebResourceClassStruct *gi.Struct
+var WebResourceClassStructOnce sync.Once
+
+func WebResourceClassStructSet() {
+	WebResourceClassStructOnce.Do(func() {
+		WebResourceClassStruct = gi.StructNew("WebKit2", "WebResourceClass")
+	})
 }
 
 type WebResourceClass struct {
@@ -1526,8 +2348,26 @@ type WebResourceClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var WebResourcePrivateStruct *gi.Struct
+var WebResourcePrivateStructOnce sync.Once
+
+func WebResourcePrivateStructSet() {
+	WebResourcePrivateStructOnce.Do(func() {
+		WebResourcePrivateStruct = gi.StructNew("WebKit2", "WebResourcePrivate")
+	})
+}
+
 type WebResourcePrivate struct {
 	native uintptr
+}
+
+var WebViewBaseClassStruct *gi.Struct
+var WebViewBaseClassStructOnce sync.Once
+
+func WebViewBaseClassStructSet() {
+	WebViewBaseClassStructOnce.Do(func() {
+		WebViewBaseClassStruct = gi.StructNew("WebKit2", "WebViewBaseClass")
+	})
 }
 
 type WebViewBaseClass struct {
@@ -1539,8 +2379,26 @@ type WebViewBaseClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var WebViewBasePrivateStruct *gi.Struct
+var WebViewBasePrivateStructOnce sync.Once
+
+func WebViewBasePrivateStructSet() {
+	WebViewBasePrivateStructOnce.Do(func() {
+		WebViewBasePrivateStruct = gi.StructNew("WebKit2", "WebViewBasePrivate")
+	})
+}
+
 type WebViewBasePrivate struct {
 	native uintptr
+}
+
+var WebViewClassStruct *gi.Struct
+var WebViewClassStructOnce sync.Once
+
+func WebViewClassStructSet() {
+	WebViewClassStructOnce.Do(func() {
+		WebViewClassStruct = gi.StructNew("WebKit2", "WebViewClass")
+	})
 }
 
 type WebViewClass struct {
@@ -1576,8 +2434,26 @@ type WebViewClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
 }
 
+var WebViewPrivateStruct *gi.Struct
+var WebViewPrivateStructOnce sync.Once
+
+func WebViewPrivateStructSet() {
+	WebViewPrivateStructOnce.Do(func() {
+		WebViewPrivateStruct = gi.StructNew("WebKit2", "WebViewPrivate")
+	})
+}
+
 type WebViewPrivate struct {
 	native uintptr
+}
+
+var WebViewSessionStateStruct *gi.Struct
+var WebViewSessionStateStructOnce sync.Once
+
+func WebViewSessionStateStructSet() {
+	WebViewSessionStateStructOnce.Do(func() {
+		WebViewSessionStateStruct = gi.StructNew("WebKit2", "WebViewSessionState")
+	})
 }
 
 type WebViewSessionState struct {
@@ -1619,6 +2495,15 @@ func (recv *WebViewSessionState) Unref() {
 
 	unrefWebViewSessionStateInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var WebsiteDataStruct *gi.Struct
+var WebsiteDataStructOnce sync.Once
+
+func WebsiteDataStructSet() {
+	WebsiteDataStructOnce.Do(func() {
+		WebsiteDataStruct = gi.StructNew("WebKit2", "WebsiteData")
+	})
 }
 
 type WebsiteData struct {
@@ -1680,6 +2565,15 @@ func (recv *WebsiteData) Unref() {
 
 }
 
+var WebsiteDataManagerClassStruct *gi.Struct
+var WebsiteDataManagerClassStructOnce sync.Once
+
+func WebsiteDataManagerClassStructSet() {
+	WebsiteDataManagerClassStructOnce.Do(func() {
+		WebsiteDataManagerClassStruct = gi.StructNew("WebKit2", "WebsiteDataManagerClass")
+	})
+}
+
 type WebsiteDataManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -1689,8 +2583,26 @@ type WebsiteDataManagerClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
 }
 
+var WebsiteDataManagerPrivateStruct *gi.Struct
+var WebsiteDataManagerPrivateStructOnce sync.Once
+
+func WebsiteDataManagerPrivateStructSet() {
+	WebsiteDataManagerPrivateStructOnce.Do(func() {
+		WebsiteDataManagerPrivateStruct = gi.StructNew("WebKit2", "WebsiteDataManagerPrivate")
+	})
+}
+
 type WebsiteDataManagerPrivate struct {
 	native uintptr
+}
+
+var WindowPropertiesClassStruct *gi.Struct
+var WindowPropertiesClassStructOnce sync.Once
+
+func WindowPropertiesClassStructSet() {
+	WindowPropertiesClassStructOnce.Do(func() {
+		WindowPropertiesClassStruct = gi.StructNew("WebKit2", "WindowPropertiesClass")
+	})
 }
 
 type WindowPropertiesClass struct {
@@ -1700,6 +2612,15 @@ type WindowPropertiesClass struct {
 	// UNSUPPORTED : C value '_webkit_reserved1' : missing Type
 	// UNSUPPORTED : C value '_webkit_reserved2' : missing Type
 	// UNSUPPORTED : C value '_webkit_reserved3' : missing Type
+}
+
+var WindowPropertiesPrivateStruct *gi.Struct
+var WindowPropertiesPrivateStructOnce sync.Once
+
+func WindowPropertiesPrivateStructSet() {
+	WindowPropertiesPrivateStructOnce.Do(func() {
+		WindowPropertiesPrivateStruct = gi.StructNew("WebKit2", "WindowPropertiesPrivate")
+	})
 }
 
 type WindowPropertiesPrivate struct {

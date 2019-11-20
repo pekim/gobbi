@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"github.com/pekim/gobbi/internal/gi"
 )
 
 type Record struct {
@@ -21,14 +22,20 @@ type Record struct {
 	Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
-	goName           string `xml:"goname,attr"`
-	namespace        *Namespace
-	newFromCFuncName string
+	goName                  string
+	structInfoGoName        string
+	structInfoOnceGoName    string
+	structInfoSetFuncGoName string
+	namespace               *Namespace
+	newFromCFuncName        string
 }
 
 func (r *Record) init(ns *Namespace) {
 	r.namespace = ns
 	r.goName = r.Name
+	r.structInfoGoName = fmt.Sprintf("%sStruct", makeUnexportedGoName(r.Name, false))
+	r.structInfoOnceGoName = fmt.Sprintf("%sOnce", r.structInfoGoName)
+	r.structInfoSetFuncGoName = fmt.Sprintf("%sSet", r.structInfoGoName)
 	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
 	r.Constructors.init(ns, r)
@@ -39,9 +46,50 @@ func (r *Record) init(ns *Namespace) {
 }
 
 func (r *Record) generate(f *file) {
+	r.generateStructIno(f)
 	r.generateType(f)
 	r.Constructors.generate(f)
 	r.Methods.generate(f)
+}
+
+func (r *Record) generateStructIno(f *file) {
+	// var colorStruct *gi.Struct
+	f.
+		Var().
+		Id(r.structInfoGoName).
+		Op("*").
+		Qual(gi.PackageName, "Struct")
+
+	// var colorStructOnce sync.Once
+	f.
+		Var().
+		Id(r.structInfoOnceGoName).
+		Qual("sync", "Once")
+
+	// func colorStructSet() {
+	//   ...
+	// }
+	f.
+		Func().
+		Id(r.structInfoSetFuncGoName).
+		Params().
+		BlockFunc(func(g *jen.Group) {
+			//   colorStructOnce.Do(func() {
+			//     colorStruct = gi.StructNew("Gdk", "Color")
+			//   })
+			g.
+				Id(r.structInfoOnceGoName).
+				Dot("Do").
+				Call(jen.
+					Func().
+					Params().
+					Block(jen.
+						Id(r.structInfoGoName).
+						Op("=").
+						Qual(gi.PackageName, "StructNew").
+						Call(jen.Lit(r.namespace.Name),
+							jen.Lit(r.Name))))
+		})
 }
 
 func (r *Record) generateType(f *file) {

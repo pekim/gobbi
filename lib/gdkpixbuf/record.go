@@ -2,7 +2,19 @@
 
 package gdkpixbuf
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var PixbufFormatStruct *gi.Struct
+var PixbufFormatStructOnce sync.Once
+
+func PixbufFormatStructSet() {
+	PixbufFormatStructOnce.Do(func() {
+		PixbufFormatStruct = gi.StructNew("GdkPixbuf", "PixbufFormat")
+	})
+}
 
 type PixbufFormat struct {
 	native uintptr
@@ -135,6 +147,15 @@ func (recv *PixbufFormat) GetName() string {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_format_set_disabled' : parameter 'disabled' of type 'gboolean' not supported
 
+var PixbufLoaderClassStruct *gi.Struct
+var PixbufLoaderClassStructOnce sync.Once
+
+func PixbufLoaderClassStructSet() {
+	PixbufLoaderClassStructOnce.Do(func() {
+		PixbufLoaderClassStruct = gi.StructNew("GdkPixbuf", "PixbufLoaderClass")
+	})
+}
+
 type PixbufLoaderClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
@@ -142,6 +163,15 @@ type PixbufLoaderClass struct {
 	// UNSUPPORTED : C value 'area_prepared' : missing Type
 	// UNSUPPORTED : C value 'area_updated' : missing Type
 	// UNSUPPORTED : C value 'closed' : missing Type
+}
+
+var PixbufSimpleAnimClassStruct *gi.Struct
+var PixbufSimpleAnimClassStructOnce sync.Once
+
+func PixbufSimpleAnimClassStructSet() {
+	PixbufSimpleAnimClassStructOnce.Do(func() {
+		PixbufSimpleAnimClassStruct = gi.StructNew("GdkPixbuf", "PixbufSimpleAnimClass")
+	})
 }
 
 type PixbufSimpleAnimClass struct {

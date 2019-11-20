@@ -2,12 +2,33 @@
 
 package glib
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var ArrayStruct *gi.Struct
+var ArrayStructOnce sync.Once
+
+func ArrayStructSet() {
+	ArrayStructOnce.Do(func() {
+		ArrayStruct = gi.StructNew("GLib", "Array")
+	})
+}
 
 type Array struct {
 	native uintptr
 	Data   string
 	Len    uint32
+}
+
+var AsyncQueueStruct *gi.Struct
+var AsyncQueueStructOnce sync.Once
+
+func AsyncQueueStructSet() {
+	AsyncQueueStructOnce.Do(func() {
+		AsyncQueueStruct = gi.StructNew("GLib", "AsyncQueue")
+	})
 }
 
 type AsyncQueue struct {
@@ -177,6 +198,15 @@ func (recv *AsyncQueue) UnrefAndUnlock() {
 
 	unrefAndUnlockAsyncQueueInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var BookmarkFileStruct *gi.Struct
+var BookmarkFileStructOnce sync.Once
+
+func BookmarkFileStructSet() {
+	BookmarkFileStructOnce.Do(func() {
+		BookmarkFileStruct = gi.StructNew("GLib", "BookmarkFile")
+	})
 }
 
 type BookmarkFile struct {
@@ -527,10 +557,28 @@ func (recv *BookmarkFile) SetVisited(uri string, visited int64) {
 
 // UNSUPPORTED : C value 'g_bookmark_file_to_file' : parameter 'filename' of type 'filename' not supported
 
+var ByteArrayStruct *gi.Struct
+var ByteArrayStructOnce sync.Once
+
+func ByteArrayStructSet() {
+	ByteArrayStructOnce.Do(func() {
+		ByteArrayStruct = gi.StructNew("GLib", "ByteArray")
+	})
+}
+
 type ByteArray struct {
 	native uintptr
 	Data   uint8
 	Len    uint32
+}
+
+var BytesStruct *gi.Struct
+var BytesStructOnce sync.Once
+
+func BytesStructSet() {
+	BytesStructOnce.Do(func() {
+		BytesStruct = gi.StructNew("GLib", "Bytes")
+	})
 }
 
 type Bytes struct {
@@ -623,6 +671,15 @@ func (recv *Bytes) UnrefToArray() {
 
 // UNSUPPORTED : C value 'g_bytes_unref_to_data' : parameter 'size' of type 'gsize' not supported
 
+var ChecksumStruct *gi.Struct
+var ChecksumStructOnce sync.Once
+
+func ChecksumStructSet() {
+	ChecksumStructOnce.Do(func() {
+		ChecksumStruct = gi.StructNew("GLib", "Checksum")
+	})
+}
+
 type Checksum struct {
 	native uintptr
 }
@@ -699,6 +756,15 @@ func (recv *Checksum) Reset() {
 
 // UNSUPPORTED : C value 'g_checksum_update' : parameter 'data' has no type
 
+var CondStruct *gi.Struct
+var CondStructOnce sync.Once
+
+func CondStructSet() {
+	CondStructOnce.Do(func() {
+		CondStruct = gi.StructNew("GLib", "Cond")
+	})
+}
+
 type Cond struct {
 	native uintptr
 }
@@ -767,8 +833,26 @@ func (recv *Cond) Signal() {
 
 // UNSUPPORTED : C value 'g_cond_wait_until' : parameter 'mutex' of type 'Mutex' not supported
 
+var DataStruct *gi.Struct
+var DataStructOnce sync.Once
+
+func DataStructSet() {
+	DataStructOnce.Do(func() {
+		DataStruct = gi.StructNew("GLib", "Data")
+	})
+}
+
 type Data struct {
 	native uintptr
+}
+
+var DateStruct *gi.Struct
+var DateStructOnce sync.Once
+
+func DateStructSet() {
+	DateStructOnce.Do(func() {
+		DateStruct = gi.StructNew("GLib", "Date")
+	})
 }
 
 type Date struct {
@@ -1134,6 +1218,15 @@ func (recv *Date) SubtractYears(nYears uint32) {
 // UNSUPPORTED : C value 'g_date_to_struct_tm' : parameter 'tm' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_date_valid' : return type 'gboolean' not supported
+
+var DateTimeStruct *gi.Struct
+var DateTimeStructOnce sync.Once
+
+func DateTimeStructSet() {
+	DateTimeStructOnce.Do(func() {
+		DateTimeStruct = gi.StructNew("GLib", "DateTime")
+	})
+}
 
 type DateTime struct {
 	native uintptr
@@ -1731,10 +1824,28 @@ func (recv *DateTime) Unref() {
 
 }
 
+var DebugKeyStruct *gi.Struct
+var DebugKeyStructOnce sync.Once
+
+func DebugKeyStructSet() {
+	DebugKeyStructOnce.Do(func() {
+		DebugKeyStruct = gi.StructNew("GLib", "DebugKey")
+	})
+}
+
 type DebugKey struct {
 	native uintptr
 	Key    string
 	Value  uint32
+}
+
+var DirStruct *gi.Struct
+var DirStructOnce sync.Once
+
+func DirStructSet() {
+	DirStructOnce.Do(func() {
+		DirStruct = gi.StructNew("GLib", "Dir")
+	})
 }
 
 type Dir struct {
@@ -1771,6 +1882,15 @@ func (recv *Dir) Rewind() {
 
 	rewindDirInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var ErrorStruct *gi.Struct
+var ErrorStructOnce sync.Once
+
+func ErrorStructSet() {
+	ErrorStructOnce.Do(func() {
+		ErrorStruct = gi.StructNew("GLib", "Error")
+	})
 }
 
 type Error struct {
@@ -1821,8 +1941,26 @@ func (recv *Error) Free() {
 
 // UNSUPPORTED : C value 'g_error_matches' : parameter 'domain' of type 'Quark' not supported
 
+var HashTableStruct *gi.Struct
+var HashTableStructOnce sync.Once
+
+func HashTableStructSet() {
+	HashTableStructOnce.Do(func() {
+		HashTableStruct = gi.StructNew("GLib", "HashTable")
+	})
+}
+
 type HashTable struct {
 	native uintptr
+}
+
+var HashTableIterStruct *gi.Struct
+var HashTableIterStructOnce sync.Once
+
+func HashTableIterStructSet() {
+	HashTableIterStructOnce.Do(func() {
+		HashTableIterStruct = gi.StructNew("GLib", "HashTableIter")
+	})
 }
 
 type HashTableIter struct {
@@ -1865,6 +2003,15 @@ func (recv *HashTableIter) Steal() {
 
 	stealHashTableIterInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var HmacStruct *gi.Struct
+var HmacStructOnce sync.Once
+
+func HmacStructSet() {
+	HmacStructOnce.Do(func() {
+		HmacStruct = gi.StructNew("GLib", "Hmac")
+	})
 }
 
 type Hmac struct {
@@ -1944,6 +2091,15 @@ func (recv *Hmac) Unref() {
 
 // UNSUPPORTED : C value 'g_hmac_update' : parameter 'data' has no type
 
+var HookStruct *gi.Struct
+var HookStructOnce sync.Once
+
+func HookStructSet() {
+	HookStructOnce.Do(func() {
+		HookStruct = gi.StructNew("GLib", "Hook")
+	})
+}
+
 type Hook struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
@@ -1957,6 +2113,15 @@ type Hook struct {
 }
 
 // UNSUPPORTED : C value 'g_hook_compare_ids' : parameter 'sibling' of type 'Hook' not supported
+
+var HookListStruct *gi.Struct
+var HookListStructOnce sync.Once
+
+func HookListStructSet() {
+	HookListStructOnce.Do(func() {
+		HookListStruct = gi.StructNew("GLib", "HookList")
+	})
+}
 
 type HookList struct {
 	native   uintptr
@@ -2008,6 +2173,15 @@ func (recv *HookList) Init(hookSize uint32) {
 
 // UNSUPPORTED : C value 'g_hook_list_marshal_check' : parameter 'may_recurse' of type 'gboolean' not supported
 
+var IConvStruct *gi.Struct
+var IConvStructOnce sync.Once
+
+func IConvStructSet() {
+	IConvStructOnce.Do(func() {
+		IConvStruct = gi.StructNew("GLib", "IConv")
+	})
+}
+
 type IConv struct {
 	native uintptr
 }
@@ -2030,6 +2204,15 @@ func (recv *IConv) Close() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var IOChannelStruct *gi.Struct
+var IOChannelStructOnce sync.Once
+
+func IOChannelStructSet() {
+	IOChannelStructOnce.Do(func() {
+		IOChannelStruct = gi.StructNew("GLib", "IOChannel")
+	})
 }
 
 type IOChannel struct {
@@ -2237,6 +2420,15 @@ func (recv *IOChannel) Unref() {
 
 // UNSUPPORTED : C value 'g_io_channel_write_unichar' : parameter 'thechar' of type 'gunichar' not supported
 
+var IOFuncsStruct *gi.Struct
+var IOFuncsStructOnce sync.Once
+
+func IOFuncsStructSet() {
+	IOFuncsStructOnce.Do(func() {
+		IOFuncsStruct = gi.StructNew("GLib", "IOFuncs")
+	})
+}
+
 type IOFuncs struct {
 	native uintptr
 	// UNSUPPORTED : C value 'io_read' : missing Type
@@ -2247,6 +2439,15 @@ type IOFuncs struct {
 	// UNSUPPORTED : C value 'io_free' : missing Type
 	// UNSUPPORTED : C value 'io_set_flags' : missing Type
 	// UNSUPPORTED : C value 'io_get_flags' : missing Type
+}
+
+var KeyFileStruct *gi.Struct
+var KeyFileStructOnce sync.Once
+
+func KeyFileStructSet() {
+	KeyFileStructOnce.Do(func() {
+		KeyFileStruct = gi.StructNew("GLib", "KeyFile")
+	})
 }
 
 type KeyFile struct {
@@ -2679,6 +2880,15 @@ func (recv *KeyFile) Unref() {
 
 }
 
+var ListStruct *gi.Struct
+var ListStructOnce sync.Once
+
+func ListStructSet() {
+	ListStructOnce.Do(func() {
+		ListStruct = gi.StructNew("GLib", "List")
+	})
+}
+
 type List struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
@@ -2686,11 +2896,29 @@ type List struct {
 	// UNSUPPORTED : C value 'prev' : no Go type for 'GLib.List'
 }
 
+var LogFieldStruct *gi.Struct
+var LogFieldStructOnce sync.Once
+
+func LogFieldStructSet() {
+	LogFieldStructOnce.Do(func() {
+		LogFieldStruct = gi.StructNew("GLib", "LogField")
+	})
+}
+
 type LogField struct {
 	native uintptr
 	Key    string
 	// UNSUPPORTED : C value 'value' : no Go type for 'gpointer'
 	Length int32
+}
+
+var MainContextStruct *gi.Struct
+var MainContextStructOnce sync.Once
+
+func MainContextStructSet() {
+	MainContextStructOnce.Do(func() {
+		MainContextStruct = gi.StructNew("GLib", "MainContext")
+	})
 }
 
 type MainContext struct {
@@ -2871,6 +3099,15 @@ func (recv *MainContext) Wakeup() {
 
 }
 
+var MainLoopStruct *gi.Struct
+var MainLoopStructOnce sync.Once
+
+func MainLoopStructSet() {
+	MainLoopStructOnce.Do(func() {
+		MainLoopStruct = gi.StructNew("GLib", "MainLoop")
+	})
+}
+
 type MainLoop struct {
 	native uintptr
 }
@@ -2958,6 +3195,15 @@ func (recv *MainLoop) Unref() {
 
 	unrefMainLoopInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var MappedFileStruct *gi.Struct
+var MappedFileStructOnce sync.Once
+
+func MappedFileStructSet() {
+	MappedFileStructOnce.Do(func() {
+		MappedFileStruct = gi.StructNew("GLib", "MappedFile")
+	})
 }
 
 type MappedFile struct {
@@ -3052,6 +3298,15 @@ func (recv *MappedFile) Unref() {
 
 	unrefMappedFileInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var MarkupParseContextStruct *gi.Struct
+var MarkupParseContextStructOnce sync.Once
+
+func MarkupParseContextStructSet() {
+	MarkupParseContextStructOnce.Do(func() {
+		MarkupParseContextStruct = gi.StructNew("GLib", "MarkupParseContext")
+	})
 }
 
 type MarkupParseContext struct {
@@ -3155,6 +3410,15 @@ func (recv *MarkupParseContext) Unref() {
 
 }
 
+var MarkupParserStruct *gi.Struct
+var MarkupParserStructOnce sync.Once
+
+func MarkupParserStructSet() {
+	MarkupParserStructOnce.Do(func() {
+		MarkupParserStruct = gi.StructNew("GLib", "MarkupParser")
+	})
+}
+
 type MarkupParser struct {
 	native uintptr
 	// UNSUPPORTED : C value 'start_element' : missing Type
@@ -3162,6 +3426,15 @@ type MarkupParser struct {
 	// UNSUPPORTED : C value 'text' : missing Type
 	// UNSUPPORTED : C value 'passthrough' : missing Type
 	// UNSUPPORTED : C value 'error' : missing Type
+}
+
+var MatchInfoStruct *gi.Struct
+var MatchInfoStructOnce sync.Once
+
+func MatchInfoStructSet() {
+	MatchInfoStructOnce.Do(func() {
+		MatchInfoStruct = gi.StructNew("GLib", "MatchInfo")
+	})
 }
 
 type MatchInfo struct {
@@ -3352,6 +3625,15 @@ func (recv *MatchInfo) Unref() {
 
 }
 
+var MemVTableStruct *gi.Struct
+var MemVTableStructOnce sync.Once
+
+func MemVTableStructSet() {
+	MemVTableStructOnce.Do(func() {
+		MemVTableStruct = gi.StructNew("GLib", "MemVTable")
+	})
+}
+
 type MemVTable struct {
 	native uintptr
 	// UNSUPPORTED : C value 'malloc' : missing Type
@@ -3360,6 +3642,15 @@ type MemVTable struct {
 	// UNSUPPORTED : C value 'calloc' : missing Type
 	// UNSUPPORTED : C value 'try_malloc' : missing Type
 	// UNSUPPORTED : C value 'try_realloc' : missing Type
+}
+
+var NodeStruct *gi.Struct
+var NodeStructOnce sync.Once
+
+func NodeStructSet() {
+	NodeStructOnce.Do(func() {
+		NodeStruct = gi.StructNew("GLib", "Node")
+	})
 }
 
 type Node struct {
@@ -3605,6 +3896,15 @@ func (recv *Node) Unlink() {
 
 }
 
+var OnceStruct *gi.Struct
+var OnceStructOnce sync.Once
+
+func OnceStructSet() {
+	OnceStructOnce.Do(func() {
+		OnceStruct = gi.StructNew("GLib", "Once")
+	})
+}
+
 type Once struct {
 	native uintptr
 	// UNSUPPORTED : C value 'status' : no Go type for 'OnceStatus'
@@ -3612,6 +3912,15 @@ type Once struct {
 }
 
 // UNSUPPORTED : C value 'g_once_impl' : parameter 'func' of type 'ThreadFunc' not supported
+
+var OptionContextStruct *gi.Struct
+var OptionContextStructOnce sync.Once
+
+func OptionContextStructSet() {
+	OptionContextStructOnce.Do(func() {
+		OptionContextStruct = gi.StructNew("GLib", "OptionContext")
+	})
+}
 
 type OptionContext struct {
 	native uintptr
@@ -3760,6 +4069,15 @@ func (recv *OptionContext) SetTranslationDomain(domain string) {
 
 }
 
+var OptionEntryStruct *gi.Struct
+var OptionEntryStructOnce sync.Once
+
+func OptionEntryStructSet() {
+	OptionEntryStructOnce.Do(func() {
+		OptionEntryStruct = gi.StructNew("GLib", "OptionEntry")
+	})
+}
+
 type OptionEntry struct {
 	native    uintptr
 	LongName  string
@@ -3769,6 +4087,15 @@ type OptionEntry struct {
 	// UNSUPPORTED : C value 'arg_data' : no Go type for 'gpointer'
 	Description    string
 	ArgDescription string
+}
+
+var OptionGroupStruct *gi.Struct
+var OptionGroupStructOnce sync.Once
+
+func OptionGroupStructSet() {
+	OptionGroupStructOnce.Do(func() {
+		OptionGroupStruct = gi.StructNew("GLib", "OptionGroup")
+	})
 }
 
 type OptionGroup struct {
@@ -3849,6 +4176,15 @@ func (recv *OptionGroup) Unref() {
 
 }
 
+var PatternSpecStruct *gi.Struct
+var PatternSpecStructOnce sync.Once
+
+func PatternSpecStructSet() {
+	PatternSpecStructOnce.Do(func() {
+		PatternSpecStruct = gi.StructNew("GLib", "PatternSpec")
+	})
+}
+
 type PatternSpec struct {
 	native uintptr
 }
@@ -3870,11 +4206,29 @@ func (recv *PatternSpec) Free() {
 
 }
 
+var PollFDStruct *gi.Struct
+var PollFDStructOnce sync.Once
+
+func PollFDStructSet() {
+	PollFDStructOnce.Do(func() {
+		PollFDStruct = gi.StructNew("GLib", "PollFD")
+	})
+}
+
 type PollFD struct {
 	native  uintptr
 	Fd      int32
 	Events  uint16
 	Revents uint16
+}
+
+var PrivateStruct *gi.Struct
+var PrivateStructOnce sync.Once
+
+func PrivateStructSet() {
+	PrivateStructOnce.Do(func() {
+		PrivateStruct = gi.StructNew("GLib", "Private")
+	})
 }
 
 type Private struct {
@@ -3887,10 +4241,28 @@ type Private struct {
 
 // UNSUPPORTED : C value 'g_private_set' : parameter 'value' of type 'gpointer' not supported
 
+var PtrArrayStruct *gi.Struct
+var PtrArrayStructOnce sync.Once
+
+func PtrArrayStructSet() {
+	PtrArrayStructOnce.Do(func() {
+		PtrArrayStruct = gi.StructNew("GLib", "PtrArray")
+	})
+}
+
 type PtrArray struct {
 	native uintptr
 	// UNSUPPORTED : C value 'pdata' : no Go type for 'gpointer'
 	Len uint32
+}
+
+var QueueStruct *gi.Struct
+var QueueStructOnce sync.Once
+
+func QueueStructSet() {
+	QueueStructOnce.Do(func() {
+		QueueStruct = gi.StructNew("GLib", "Queue")
+	})
 }
 
 type Queue struct {
@@ -4068,6 +4440,15 @@ func (recv *Queue) Reverse() {
 
 // UNSUPPORTED : C value 'g_queue_unlink' : parameter 'link_' of type 'GLib.List' not supported
 
+var RWLockStruct *gi.Struct
+var RWLockStructOnce sync.Once
+
+func RWLockStructSet() {
+	RWLockStructOnce.Do(func() {
+		RWLockStruct = gi.StructNew("GLib", "RWLock")
+	})
+}
+
 type RWLock struct {
 	native uintptr
 }
@@ -4164,6 +4545,15 @@ func (recv *RWLock) WriterUnlock() {
 
 	writerUnlockRWLockInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var RandStruct *gi.Struct
+var RandStructOnce sync.Once
+
+func RandStructSet() {
+	RandStructOnce.Do(func() {
+		RandStruct = gi.StructNew("GLib", "Rand")
+	})
 }
 
 type Rand struct {
@@ -4278,6 +4668,15 @@ func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 
 }
 
+var RecMutexStruct *gi.Struct
+var RecMutexStructOnce sync.Once
+
+func RecMutexStructSet() {
+	RecMutexStructOnce.Do(func() {
+		RecMutexStruct = gi.StructNew("GLib", "RecMutex")
+	})
+}
+
 type RecMutex struct {
 	native uintptr
 }
@@ -4342,6 +4741,15 @@ func (recv *RecMutex) Unlock() {
 
 	unlockRecMutexInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var RegexStruct *gi.Struct
+var RegexStructOnce sync.Once
+
+func RegexStructSet() {
+	RegexStructOnce.Do(func() {
+		RegexStruct = gi.StructNew("GLib", "Regex")
+	})
 }
 
 type Regex struct {
@@ -4498,10 +4906,28 @@ func (recv *Regex) Unref() {
 
 }
 
+var SListStruct *gi.Struct
+var SListStructOnce sync.Once
+
+func SListStructSet() {
+	SListStructOnce.Do(func() {
+		SListStruct = gi.StructNew("GLib", "SList")
+	})
+}
+
 type SList struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
 	// UNSUPPORTED : C value 'next' : no Go type for 'GLib.SList'
+}
+
+var ScannerStruct *gi.Struct
+var ScannerStructOnce sync.Once
+
+func ScannerStructSet() {
+	ScannerStructOnce.Do(func() {
+		ScannerStruct = gi.StructNew("GLib", "Scanner")
+	})
 }
 
 type Scanner struct {
@@ -4682,6 +5108,15 @@ func (recv *Scanner) SyncFileOffset() {
 
 // UNSUPPORTED : C value 'g_scanner_warn' : parameter '...' has no type
 
+var ScannerConfigStruct *gi.Struct
+var ScannerConfigStructOnce sync.Once
+
+func ScannerConfigStructSet() {
+	ScannerConfigStructOnce.Do(func() {
+		ScannerConfigStruct = gi.StructNew("GLib", "ScannerConfig")
+	})
+}
+
 type ScannerConfig struct {
 	native              uintptr
 	CsetSkipCharacters  string
@@ -4710,6 +5145,15 @@ type ScannerConfig struct {
 	Symbol2Token        uint32
 	Scope0Fallback      uint32
 	StoreInt64          uint32
+}
+
+var SequenceStruct *gi.Struct
+var SequenceStructOnce sync.Once
+
+func SequenceStructSet() {
+	SequenceStructOnce.Do(func() {
+		SequenceStruct = gi.StructNew("GLib", "Sequence")
+	})
 }
 
 type Sequence struct {
@@ -4828,6 +5272,15 @@ func (recv *Sequence) GetLength() int32 {
 
 // UNSUPPORTED : C value 'g_sequence_sort_iter' : parameter 'cmp_func' of type 'SequenceIterCompareFunc' not supported
 
+var SequenceIterStruct *gi.Struct
+var SequenceIterStructOnce sync.Once
+
+func SequenceIterStructSet() {
+	SequenceIterStructOnce.Do(func() {
+		SequenceIterStruct = gi.StructNew("GLib", "SequenceIter")
+	})
+}
+
 type SequenceIter struct {
 	native uintptr
 }
@@ -4927,6 +5380,15 @@ func (recv *SequenceIter) Prev() *SequenceIter {
 	retGo := &SequenceIter{native: ret.Pointer()}
 
 	return retGo
+}
+
+var SourceStruct *gi.Struct
+var SourceStructOnce sync.Once
+
+func SourceStructSet() {
+	SourceStructOnce.Do(func() {
+		SourceStruct = gi.StructNew("GLib", "Source")
+	})
 }
 
 type Source struct {
@@ -5171,11 +5633,29 @@ func (recv *Source) Unref() {
 
 }
 
+var SourceCallbackFuncsStruct *gi.Struct
+var SourceCallbackFuncsStructOnce sync.Once
+
+func SourceCallbackFuncsStructSet() {
+	SourceCallbackFuncsStructOnce.Do(func() {
+		SourceCallbackFuncsStruct = gi.StructNew("GLib", "SourceCallbackFuncs")
+	})
+}
+
 type SourceCallbackFuncs struct {
 	native uintptr
 	// UNSUPPORTED : C value 'ref' : missing Type
 	// UNSUPPORTED : C value 'unref' : missing Type
 	// UNSUPPORTED : C value 'get' : missing Type
+}
+
+var SourceFuncsStruct *gi.Struct
+var SourceFuncsStructOnce sync.Once
+
+func SourceFuncsStructSet() {
+	SourceFuncsStructOnce.Do(func() {
+		SourceFuncsStruct = gi.StructNew("GLib", "SourceFuncs")
+	})
 }
 
 type SourceFuncs struct {
@@ -5186,12 +5666,39 @@ type SourceFuncs struct {
 	// UNSUPPORTED : C value 'finalize' : missing Type
 }
 
+var SourcePrivateStruct *gi.Struct
+var SourcePrivateStructOnce sync.Once
+
+func SourcePrivateStructSet() {
+	SourcePrivateStructOnce.Do(func() {
+		SourcePrivateStruct = gi.StructNew("GLib", "SourcePrivate")
+	})
+}
+
 type SourcePrivate struct {
 	native uintptr
 }
 
+var StatBufStruct *gi.Struct
+var StatBufStructOnce sync.Once
+
+func StatBufStructSet() {
+	StatBufStructOnce.Do(func() {
+		StatBufStruct = gi.StructNew("GLib", "StatBuf")
+	})
+}
+
 type StatBuf struct {
 	native uintptr
+}
+
+var StringStruct *gi.Struct
+var StringStructOnce sync.Once
+
+func StringStructSet() {
+	StringStructOnce.Do(func() {
+		StringStruct = gi.StructNew("GLib", "String")
+	})
 }
 
 type String struct {
@@ -5553,6 +6060,15 @@ func (recv *String) Up() *String {
 
 // UNSUPPORTED : C value 'g_string_vprintf' : parameter 'args' of type 'va_list' not supported
 
+var StringChunkStruct *gi.Struct
+var StringChunkStructOnce sync.Once
+
+func StringChunkStructSet() {
+	StringChunkStructOnce.Do(func() {
+		StringChunkStruct = gi.StructNew("GLib", "StringChunk")
+	})
+}
+
 type StringChunk struct {
 	native uintptr
 }
@@ -5645,8 +6161,26 @@ func (recv *StringChunk) InsertLen(string_ string, len int32) string {
 	return retGo
 }
 
+var TestCaseStruct *gi.Struct
+var TestCaseStructOnce sync.Once
+
+func TestCaseStructSet() {
+	TestCaseStructOnce.Do(func() {
+		TestCaseStruct = gi.StructNew("GLib", "TestCase")
+	})
+}
+
 type TestCase struct {
 	native uintptr
+}
+
+var TestConfigStruct *gi.Struct
+var TestConfigStructOnce sync.Once
+
+func TestConfigStructSet() {
+	TestConfigStructOnce.Do(func() {
+		TestConfigStruct = gi.StructNew("GLib", "TestConfig")
+	})
 }
 
 type TestConfig struct {
@@ -5657,6 +6191,15 @@ type TestConfig struct {
 	// UNSUPPORTED : C value 'test_verbose' : no Go type for 'gboolean'
 	// UNSUPPORTED : C value 'test_quiet' : no Go type for 'gboolean'
 	// UNSUPPORTED : C value 'test_undefined' : no Go type for 'gboolean'
+}
+
+var TestLogBufferStruct *gi.Struct
+var TestLogBufferStructOnce sync.Once
+
+func TestLogBufferStructSet() {
+	TestLogBufferStructOnce.Do(func() {
+		TestLogBufferStruct = gi.StructNew("GLib", "TestLogBuffer")
+	})
 }
 
 type TestLogBuffer struct {
@@ -5713,6 +6256,15 @@ func (recv *TestLogBuffer) Push(nBytes uint32, bytes uint8) {
 
 }
 
+var TestLogMsgStruct *gi.Struct
+var TestLogMsgStructOnce sync.Once
+
+func TestLogMsgStructSet() {
+	TestLogMsgStructOnce.Do(func() {
+		TestLogMsgStruct = gi.StructNew("GLib", "TestLogMsg")
+	})
+}
+
 type TestLogMsg struct {
 	native uintptr
 	// UNSUPPORTED : C value 'log_type' : no Go type for 'TestLogType'
@@ -5737,6 +6289,15 @@ func (recv *TestLogMsg) Free() {
 
 }
 
+var TestSuiteStruct *gi.Struct
+var TestSuiteStructOnce sync.Once
+
+func TestSuiteStructSet() {
+	TestSuiteStructOnce.Do(func() {
+		TestSuiteStruct = gi.StructNew("GLib", "TestSuite")
+	})
+}
+
 type TestSuite struct {
 	native uintptr
 }
@@ -5744,6 +6305,15 @@ type TestSuite struct {
 // UNSUPPORTED : C value 'g_test_suite_add' : parameter 'test_case' of type 'TestCase' not supported
 
 // UNSUPPORTED : C value 'g_test_suite_add_suite' : parameter 'nestedsuite' of type 'TestSuite' not supported
+
+var ThreadStruct *gi.Struct
+var ThreadStructOnce sync.Once
+
+func ThreadStructSet() {
+	ThreadStructOnce.Do(func() {
+		ThreadStruct = gi.StructNew("GLib", "Thread")
+	})
+}
 
 type Thread struct {
 	native uintptr
@@ -5786,6 +6356,15 @@ func (recv *Thread) Unref() {
 
 	unrefThreadInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var ThreadPoolStruct *gi.Struct
+var ThreadPoolStructOnce sync.Once
+
+func ThreadPoolStructSet() {
+	ThreadPoolStructOnce.Do(func() {
+		ThreadPoolStruct = gi.StructNew("GLib", "ThreadPool")
+	})
 }
 
 type ThreadPool struct {
@@ -5859,6 +6438,15 @@ func (recv *ThreadPool) Unprocessed() uint32 {
 	return retGo
 }
 
+var TimeValStruct *gi.Struct
+var TimeValStructOnce sync.Once
+
+func TimeValStructSet() {
+	TimeValStructOnce.Do(func() {
+		TimeValStruct = gi.StructNew("GLib", "TimeVal")
+	})
+}
+
 type TimeVal struct {
 	native uintptr
 	TvSec  int64
@@ -5897,6 +6485,15 @@ func (recv *TimeVal) ToIso8601() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var TimeZoneStruct *gi.Struct
+var TimeZoneStructOnce sync.Once
+
+func TimeZoneStructSet() {
+	TimeZoneStructOnce.Do(func() {
+		TimeZoneStruct = gi.StructNew("GLib", "TimeZone")
+	})
 }
 
 type TimeZone struct {
@@ -6064,6 +6661,15 @@ func (recv *TimeZone) Unref() {
 
 }
 
+var TimerStruct *gi.Struct
+var TimerStructOnce sync.Once
+
+func TimerStructSet() {
+	TimerStructOnce.Do(func() {
+		TimerStruct = gi.StructNew("GLib", "Timer")
+	})
+}
+
 type Timer struct {
 	native uintptr
 }
@@ -6147,9 +6753,27 @@ func (recv *Timer) Stop() {
 
 }
 
+var TrashStackStruct *gi.Struct
+var TrashStackStructOnce sync.Once
+
+func TrashStackStructSet() {
+	TrashStackStructOnce.Do(func() {
+		TrashStackStruct = gi.StructNew("GLib", "TrashStack")
+	})
+}
+
 type TrashStack struct {
 	native uintptr
 	Next   *TrashStack
+}
+
+var TreeStruct *gi.Struct
+var TreeStructOnce sync.Once
+
+func TreeStructSet() {
+	TreeStructOnce.Do(func() {
+		TreeStruct = gi.StructNew("GLib", "Tree")
+	})
 }
 
 type Tree struct {
@@ -6256,6 +6880,15 @@ func (recv *Tree) Unref() {
 
 	unrefTreeInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var VariantStruct *gi.Struct
+var VariantStructOnce sync.Once
+
+func VariantStructSet() {
+	VariantStructOnce.Do(func() {
+		VariantStruct = gi.StructNew("GLib", "Variant")
+	})
 }
 
 type Variant struct {
@@ -6970,6 +7603,15 @@ func (recv *Variant) Unref() {
 
 }
 
+var VariantBuilderStruct *gi.Struct
+var VariantBuilderStructOnce sync.Once
+
+func VariantBuilderStructSet() {
+	VariantBuilderStructOnce.Do(func() {
+		VariantBuilderStruct = gi.StructNew("GLib", "VariantBuilder")
+	})
+}
+
 type VariantBuilder struct {
 	native uintptr
 }
@@ -7067,6 +7709,15 @@ func (recv *VariantBuilder) Unref() {
 
 }
 
+var VariantDictStruct *gi.Struct
+var VariantDictStructOnce sync.Once
+
+func VariantDictStructSet() {
+	VariantDictStructOnce.Do(func() {
+		VariantDictStruct = gi.StructNew("GLib", "VariantDict")
+	})
+}
+
 type VariantDict struct {
 	native uintptr
 }
@@ -7153,6 +7804,15 @@ func (recv *VariantDict) Unref() {
 
 }
 
+var VariantIterStruct *gi.Struct
+var VariantIterStructOnce sync.Once
+
+func VariantIterStructSet() {
+	VariantIterStructOnce.Do(func() {
+		VariantIterStruct = gi.StructNew("GLib", "VariantIter")
+	})
+}
+
 type VariantIter struct {
 	native uintptr
 }
@@ -7214,6 +7874,15 @@ func (recv *VariantIter) NextValue() *Variant {
 	retGo := &Variant{native: ret.Pointer()}
 
 	return retGo
+}
+
+var VariantTypeStruct *gi.Struct
+var VariantTypeStructOnce sync.Once
+
+func VariantTypeStructSet() {
+	VariantTypeStructOnce.Do(func() {
+		VariantTypeStruct = gi.StructNew("GLib", "VariantType")
+	})
 }
 
 type VariantType struct {
