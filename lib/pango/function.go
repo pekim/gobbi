@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var AttrBackgroundAlphaNewFunction *gi.Function
-var AttrBackgroundAlphaNewFunctionOnce sync.Once
+var attrBackgroundAlphaNewFunction *gi.Function
+var attrBackgroundAlphaNewFunction_Once sync.Once
 
-func AttrBackgroundAlphaNewFunctionSet() {
-	AttrBackgroundAlphaNewFunctionOnce.Do(func() {
-		AttrBackgroundAlphaNewFunction = gi.FunctionInvokerNew("Pango", "attr_background_alpha_new")
+func attrBackgroundAlphaNewFunction_Set() {
+	attrBackgroundAlphaNewFunction_Once.Do(func() {
+		attrBackgroundAlphaNewFunction = gi.FunctionInvokerNew("Pango", "attr_background_alpha_new")
 	})
 }
 
@@ -20,26 +20,24 @@ var attrBackgroundAlphaNewInvoker *gi.Function
 
 // AttrBackgroundAlphaNew is a representation of the C type pango_attr_background_alpha_new.
 func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
-	if attrBackgroundAlphaNewInvoker == nil {
-		attrBackgroundAlphaNewInvoker = gi.FunctionInvokerNew("Pango", "attr_background_alpha_new")
-	}
+	attrBackgroundAlphaNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(alpha)
 
-	ret := attrBackgroundAlphaNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrBackgroundAlphaNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
 	return retGo
 }
 
-var AttrBackgroundNewFunction *gi.Function
-var AttrBackgroundNewFunctionOnce sync.Once
+var attrBackgroundNewFunction *gi.Function
+var attrBackgroundNewFunction_Once sync.Once
 
-func AttrBackgroundNewFunctionSet() {
-	AttrBackgroundNewFunctionOnce.Do(func() {
-		AttrBackgroundNewFunction = gi.FunctionInvokerNew("Pango", "attr_background_new")
+func attrBackgroundNewFunction_Set() {
+	attrBackgroundNewFunction_Once.Do(func() {
+		attrBackgroundNewFunction = gi.FunctionInvokerNew("Pango", "attr_background_new")
 	})
 }
 
@@ -47,16 +45,14 @@ var attrBackgroundNewInvoker *gi.Function
 
 // AttrBackgroundNew is a representation of the C type pango_attr_background_new.
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
-	if attrBackgroundNewInvoker == nil {
-		attrBackgroundNewInvoker = gi.FunctionInvokerNew("Pango", "attr_background_new")
-	}
+	attrBackgroundNewFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrBackgroundNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrBackgroundNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -65,12 +61,12 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 
 // UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
 
-var AttrFamilyNewFunction *gi.Function
-var AttrFamilyNewFunctionOnce sync.Once
+var attrFamilyNewFunction *gi.Function
+var attrFamilyNewFunction_Once sync.Once
 
-func AttrFamilyNewFunctionSet() {
-	AttrFamilyNewFunctionOnce.Do(func() {
-		AttrFamilyNewFunction = gi.FunctionInvokerNew("Pango", "attr_family_new")
+func attrFamilyNewFunction_Set() {
+	attrFamilyNewFunction_Once.Do(func() {
+		attrFamilyNewFunction = gi.FunctionInvokerNew("Pango", "attr_family_new")
 	})
 }
 
@@ -78,26 +74,24 @@ var attrFamilyNewInvoker *gi.Function
 
 // AttrFamilyNew is a representation of the C type pango_attr_family_new.
 func AttrFamilyNew(family string) *Attribute {
-	if attrFamilyNewInvoker == nil {
-		attrFamilyNewInvoker = gi.FunctionInvokerNew("Pango", "attr_family_new")
-	}
+	attrFamilyNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(family)
 
-	ret := attrFamilyNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrFamilyNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
 	return retGo
 }
 
-var AttrForegroundAlphaNewFunction *gi.Function
-var AttrForegroundAlphaNewFunctionOnce sync.Once
+var attrForegroundAlphaNewFunction *gi.Function
+var attrForegroundAlphaNewFunction_Once sync.Once
 
-func AttrForegroundAlphaNewFunctionSet() {
-	AttrForegroundAlphaNewFunctionOnce.Do(func() {
-		AttrForegroundAlphaNewFunction = gi.FunctionInvokerNew("Pango", "attr_foreground_alpha_new")
+func attrForegroundAlphaNewFunction_Set() {
+	attrForegroundAlphaNewFunction_Once.Do(func() {
+		attrForegroundAlphaNewFunction = gi.FunctionInvokerNew("Pango", "attr_foreground_alpha_new")
 	})
 }
 
@@ -105,26 +99,24 @@ var attrForegroundAlphaNewInvoker *gi.Function
 
 // AttrForegroundAlphaNew is a representation of the C type pango_attr_foreground_alpha_new.
 func AttrForegroundAlphaNew(alpha uint16) *Attribute {
-	if attrForegroundAlphaNewInvoker == nil {
-		attrForegroundAlphaNewInvoker = gi.FunctionInvokerNew("Pango", "attr_foreground_alpha_new")
-	}
+	attrForegroundAlphaNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(alpha)
 
-	ret := attrForegroundAlphaNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrForegroundAlphaNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
 	return retGo
 }
 
-var AttrForegroundNewFunction *gi.Function
-var AttrForegroundNewFunctionOnce sync.Once
+var attrForegroundNewFunction *gi.Function
+var attrForegroundNewFunction_Once sync.Once
 
-func AttrForegroundNewFunctionSet() {
-	AttrForegroundNewFunctionOnce.Do(func() {
-		AttrForegroundNewFunction = gi.FunctionInvokerNew("Pango", "attr_foreground_new")
+func attrForegroundNewFunction_Set() {
+	attrForegroundNewFunction_Once.Do(func() {
+		attrForegroundNewFunction = gi.FunctionInvokerNew("Pango", "attr_foreground_new")
 	})
 }
 
@@ -132,16 +124,14 @@ var attrForegroundNewInvoker *gi.Function
 
 // AttrForegroundNew is a representation of the C type pango_attr_foreground_new.
 func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
-	if attrForegroundNewInvoker == nil {
-		attrForegroundNewInvoker = gi.FunctionInvokerNew("Pango", "attr_foreground_new")
-	}
+	attrForegroundNewFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrForegroundNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrForegroundNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -152,12 +142,12 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 
 // UNSUPPORTED : C value 'pango_attr_gravity_new' : parameter 'gravity' of type 'Gravity' not supported
 
-var AttrLetterSpacingNewFunction *gi.Function
-var AttrLetterSpacingNewFunctionOnce sync.Once
+var attrLetterSpacingNewFunction *gi.Function
+var attrLetterSpacingNewFunction_Once sync.Once
 
-func AttrLetterSpacingNewFunctionSet() {
-	AttrLetterSpacingNewFunctionOnce.Do(func() {
-		AttrLetterSpacingNewFunction = gi.FunctionInvokerNew("Pango", "attr_letter_spacing_new")
+func attrLetterSpacingNewFunction_Set() {
+	attrLetterSpacingNewFunction_Once.Do(func() {
+		attrLetterSpacingNewFunction = gi.FunctionInvokerNew("Pango", "attr_letter_spacing_new")
 	})
 }
 
@@ -165,26 +155,24 @@ var attrLetterSpacingNewInvoker *gi.Function
 
 // AttrLetterSpacingNew is a representation of the C type pango_attr_letter_spacing_new.
 func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
-	if attrLetterSpacingNewInvoker == nil {
-		attrLetterSpacingNewInvoker = gi.FunctionInvokerNew("Pango", "attr_letter_spacing_new")
-	}
+	attrLetterSpacingNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(letterSpacing)
 
-	ret := attrLetterSpacingNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrLetterSpacingNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
 	return retGo
 }
 
-var AttrRiseNewFunction *gi.Function
-var AttrRiseNewFunctionOnce sync.Once
+var attrRiseNewFunction *gi.Function
+var attrRiseNewFunction_Once sync.Once
 
-func AttrRiseNewFunctionSet() {
-	AttrRiseNewFunctionOnce.Do(func() {
-		AttrRiseNewFunction = gi.FunctionInvokerNew("Pango", "attr_rise_new")
+func attrRiseNewFunction_Set() {
+	attrRiseNewFunction_Once.Do(func() {
+		attrRiseNewFunction = gi.FunctionInvokerNew("Pango", "attr_rise_new")
 	})
 }
 
@@ -192,14 +180,12 @@ var attrRiseNewInvoker *gi.Function
 
 // AttrRiseNew is a representation of the C type pango_attr_rise_new.
 func AttrRiseNew(rise int32) *Attribute {
-	if attrRiseNewInvoker == nil {
-		attrRiseNewInvoker = gi.FunctionInvokerNew("Pango", "attr_rise_new")
-	}
+	attrRiseNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rise)
 
-	ret := attrRiseNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrRiseNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -210,12 +196,12 @@ func AttrRiseNew(rise int32) *Attribute {
 
 // UNSUPPORTED : C value 'pango_attr_stretch_new' : parameter 'stretch' of type 'Stretch' not supported
 
-var AttrStrikethroughColorNewFunction *gi.Function
-var AttrStrikethroughColorNewFunctionOnce sync.Once
+var attrStrikethroughColorNewFunction *gi.Function
+var attrStrikethroughColorNewFunction_Once sync.Once
 
-func AttrStrikethroughColorNewFunctionSet() {
-	AttrStrikethroughColorNewFunctionOnce.Do(func() {
-		AttrStrikethroughColorNewFunction = gi.FunctionInvokerNew("Pango", "attr_strikethrough_color_new")
+func attrStrikethroughColorNewFunction_Set() {
+	attrStrikethroughColorNewFunction_Once.Do(func() {
+		attrStrikethroughColorNewFunction = gi.FunctionInvokerNew("Pango", "attr_strikethrough_color_new")
 	})
 }
 
@@ -223,16 +209,14 @@ var attrStrikethroughColorNewInvoker *gi.Function
 
 // AttrStrikethroughColorNew is a representation of the C type pango_attr_strikethrough_color_new.
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
-	if attrStrikethroughColorNewInvoker == nil {
-		attrStrikethroughColorNewInvoker = gi.FunctionInvokerNew("Pango", "attr_strikethrough_color_new")
-	}
+	attrStrikethroughColorNewFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrStrikethroughColorNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrStrikethroughColorNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -247,12 +231,12 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 
 // UNSUPPORTED : C value 'pango_attr_type_register' : return type 'AttrType' not supported
 
-var AttrUnderlineColorNewFunction *gi.Function
-var AttrUnderlineColorNewFunctionOnce sync.Once
+var attrUnderlineColorNewFunction *gi.Function
+var attrUnderlineColorNewFunction_Once sync.Once
 
-func AttrUnderlineColorNewFunctionSet() {
-	AttrUnderlineColorNewFunctionOnce.Do(func() {
-		AttrUnderlineColorNewFunction = gi.FunctionInvokerNew("Pango", "attr_underline_color_new")
+func attrUnderlineColorNewFunction_Set() {
+	attrUnderlineColorNewFunction_Once.Do(func() {
+		attrUnderlineColorNewFunction = gi.FunctionInvokerNew("Pango", "attr_underline_color_new")
 	})
 }
 
@@ -260,16 +244,14 @@ var attrUnderlineColorNewInvoker *gi.Function
 
 // AttrUnderlineColorNew is a representation of the C type pango_attr_underline_color_new.
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
-	if attrUnderlineColorNewInvoker == nil {
-		attrUnderlineColorNewInvoker = gi.FunctionInvokerNew("Pango", "attr_underline_color_new")
-	}
+	attrUnderlineColorNewFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrUnderlineColorNewInvoker.Invoke(inArgs[:], nil)
+	ret := attrUnderlineColorNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -286,12 +268,12 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 
 // UNSUPPORTED : C value 'pango_break' : parameter 'analysis' of type 'Analysis' not supported
 
-var ConfigKeyGetFunction *gi.Function
-var ConfigKeyGetFunctionOnce sync.Once
+var configKeyGetFunction *gi.Function
+var configKeyGetFunction_Once sync.Once
 
-func ConfigKeyGetFunctionSet() {
-	ConfigKeyGetFunctionOnce.Do(func() {
-		ConfigKeyGetFunction = gi.FunctionInvokerNew("Pango", "config_key_get")
+func configKeyGetFunction_Set() {
+	configKeyGetFunction_Once.Do(func() {
+		configKeyGetFunction = gi.FunctionInvokerNew("Pango", "config_key_get")
 	})
 }
 
@@ -299,26 +281,24 @@ var configKeyGetInvoker *gi.Function
 
 // ConfigKeyGet is a representation of the C type pango_config_key_get.
 func ConfigKeyGet(key string) string {
-	if configKeyGetInvoker == nil {
-		configKeyGetInvoker = gi.FunctionInvokerNew("Pango", "config_key_get")
-	}
+	configKeyGetFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
-	ret := configKeyGetInvoker.Invoke(inArgs[:], nil)
+	ret := configKeyGetFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
 	return retGo
 }
 
-var ConfigKeyGetSystemFunction *gi.Function
-var ConfigKeyGetSystemFunctionOnce sync.Once
+var configKeyGetSystemFunction *gi.Function
+var configKeyGetSystemFunction_Once sync.Once
 
-func ConfigKeyGetSystemFunctionSet() {
-	ConfigKeyGetSystemFunctionOnce.Do(func() {
-		ConfigKeyGetSystemFunction = gi.FunctionInvokerNew("Pango", "config_key_get_system")
+func configKeyGetSystemFunction_Set() {
+	configKeyGetSystemFunction_Once.Do(func() {
+		configKeyGetSystemFunction = gi.FunctionInvokerNew("Pango", "config_key_get_system")
 	})
 }
 
@@ -326,14 +306,12 @@ var configKeyGetSystemInvoker *gi.Function
 
 // ConfigKeyGetSystem is a representation of the C type pango_config_key_get_system.
 func ConfigKeyGetSystem(key string) string {
-	if configKeyGetSystemInvoker == nil {
-		configKeyGetSystemInvoker = gi.FunctionInvokerNew("Pango", "config_key_get_system")
-	}
+	configKeyGetSystemFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
-	ret := configKeyGetSystemInvoker.Invoke(inArgs[:], nil)
+	ret := configKeyGetSystemFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -348,12 +326,12 @@ func ConfigKeyGetSystem(key string) string {
 
 // UNSUPPORTED : C value 'pango_find_map' : parameter 'language' of type 'Language' not supported
 
-var FindParagraphBoundaryFunction *gi.Function
-var FindParagraphBoundaryFunctionOnce sync.Once
+var findParagraphBoundaryFunction *gi.Function
+var findParagraphBoundaryFunction_Once sync.Once
 
-func FindParagraphBoundaryFunctionSet() {
-	FindParagraphBoundaryFunctionOnce.Do(func() {
-		FindParagraphBoundaryFunction = gi.FunctionInvokerNew("Pango", "find_paragraph_boundary")
+func findParagraphBoundaryFunction_Set() {
+	findParagraphBoundaryFunction_Once.Do(func() {
+		findParagraphBoundaryFunction = gi.FunctionInvokerNew("Pango", "find_paragraph_boundary")
 	})
 }
 
@@ -361,9 +339,7 @@ var findParagraphBoundaryInvoker *gi.Function
 
 // FindParagraphBoundary is a representation of the C type pango_find_paragraph_boundary.
 func FindParagraphBoundary(text string, length int32) (int32, int32) {
-	if findParagraphBoundaryInvoker == nil {
-		findParagraphBoundaryInvoker = gi.FunctionInvokerNew("Pango", "find_paragraph_boundary")
-	}
+	findParagraphBoundaryFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(text)
@@ -371,7 +347,7 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 
 	var outArgs [2]gi.Argument
 
-	findParagraphBoundaryInvoker.Invoke(inArgs[:], outArgs[:])
+	findParagraphBoundaryFunction.Invoke(inArgs[:], outArgs[:])
 
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
@@ -379,12 +355,12 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	return out0, out1
 }
 
-var FontDescriptionFromStringFunction *gi.Function
-var FontDescriptionFromStringFunctionOnce sync.Once
+var fontDescriptionFromStringFunction *gi.Function
+var fontDescriptionFromStringFunction_Once sync.Once
 
-func FontDescriptionFromStringFunctionSet() {
-	FontDescriptionFromStringFunctionOnce.Do(func() {
-		FontDescriptionFromStringFunction = gi.FunctionInvokerNew("Pango", "font_description_from_string")
+func fontDescriptionFromStringFunction_Set() {
+	fontDescriptionFromStringFunction_Once.Do(func() {
+		fontDescriptionFromStringFunction = gi.FunctionInvokerNew("Pango", "font_description_from_string")
 	})
 }
 
@@ -392,26 +368,24 @@ var fontDescriptionFromStringInvoker *gi.Function
 
 // FontDescriptionFromString is a representation of the C type pango_font_description_from_string.
 func FontDescriptionFromString(str string) *FontDescription {
-	if fontDescriptionFromStringInvoker == nil {
-		fontDescriptionFromStringInvoker = gi.FunctionInvokerNew("Pango", "font_description_from_string")
-	}
+	fontDescriptionFromStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := fontDescriptionFromStringInvoker.Invoke(inArgs[:], nil)
+	ret := fontDescriptionFromStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
 	return retGo
 }
 
-var GetLibSubdirectoryFunction *gi.Function
-var GetLibSubdirectoryFunctionOnce sync.Once
+var getLibSubdirectoryFunction *gi.Function
+var getLibSubdirectoryFunction_Once sync.Once
 
-func GetLibSubdirectoryFunctionSet() {
-	GetLibSubdirectoryFunctionOnce.Do(func() {
-		GetLibSubdirectoryFunction = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
+func getLibSubdirectoryFunction_Set() {
+	getLibSubdirectoryFunction_Once.Do(func() {
+		getLibSubdirectoryFunction = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
 	})
 }
 
@@ -419,11 +393,9 @@ var getLibSubdirectoryInvoker *gi.Function
 
 // GetLibSubdirectory is a representation of the C type pango_get_lib_subdirectory.
 func GetLibSubdirectory() string {
-	if getLibSubdirectoryInvoker == nil {
-		getLibSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
-	}
+	getLibSubdirectoryFunction_Set()
 
-	ret := getLibSubdirectoryInvoker.Invoke(nil, nil)
+	ret := getLibSubdirectoryFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -434,12 +406,12 @@ func GetLibSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : parameter 'ch' of type 'gunichar' not supported
 
-var GetSysconfSubdirectoryFunction *gi.Function
-var GetSysconfSubdirectoryFunctionOnce sync.Once
+var getSysconfSubdirectoryFunction *gi.Function
+var getSysconfSubdirectoryFunction_Once sync.Once
 
-func GetSysconfSubdirectoryFunctionSet() {
-	GetSysconfSubdirectoryFunctionOnce.Do(func() {
-		GetSysconfSubdirectoryFunction = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
+func getSysconfSubdirectoryFunction_Set() {
+	getSysconfSubdirectoryFunction_Once.Do(func() {
+		getSysconfSubdirectoryFunction = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
 	})
 }
 
@@ -447,11 +419,9 @@ var getSysconfSubdirectoryInvoker *gi.Function
 
 // GetSysconfSubdirectory is a representation of the C type pango_get_sysconf_subdirectory.
 func GetSysconfSubdirectory() string {
-	if getSysconfSubdirectoryInvoker == nil {
-		getSysconfSubdirectoryInvoker = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
-	}
+	getSysconfSubdirectoryFunction_Set()
 
-	ret := getSysconfSubdirectoryInvoker.Invoke(nil, nil)
+	ret := getSysconfSubdirectoryFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -472,12 +442,12 @@ func GetSysconfSubdirectory() string {
 
 // UNSUPPORTED : C value 'pango_itemize_with_base_dir' : parameter 'context' of type 'Context' not supported
 
-var LanguageFromStringFunction *gi.Function
-var LanguageFromStringFunctionOnce sync.Once
+var languageFromStringFunction *gi.Function
+var languageFromStringFunction_Once sync.Once
 
-func LanguageFromStringFunctionSet() {
-	LanguageFromStringFunctionOnce.Do(func() {
-		LanguageFromStringFunction = gi.FunctionInvokerNew("Pango", "language_from_string")
+func languageFromStringFunction_Set() {
+	languageFromStringFunction_Once.Do(func() {
+		languageFromStringFunction = gi.FunctionInvokerNew("Pango", "language_from_string")
 	})
 }
 
@@ -485,26 +455,24 @@ var languageFromStringInvoker *gi.Function
 
 // LanguageFromString is a representation of the C type pango_language_from_string.
 func LanguageFromString(language string) *Language {
-	if languageFromStringInvoker == nil {
-		languageFromStringInvoker = gi.FunctionInvokerNew("Pango", "language_from_string")
-	}
+	languageFromStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(language)
 
-	ret := languageFromStringInvoker.Invoke(inArgs[:], nil)
+	ret := languageFromStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Language{native: ret.Pointer()}
 
 	return retGo
 }
 
-var LanguageGetDefaultFunction *gi.Function
-var LanguageGetDefaultFunctionOnce sync.Once
+var languageGetDefaultFunction *gi.Function
+var languageGetDefaultFunction_Once sync.Once
 
-func LanguageGetDefaultFunctionSet() {
-	LanguageGetDefaultFunctionOnce.Do(func() {
-		LanguageGetDefaultFunction = gi.FunctionInvokerNew("Pango", "language_get_default")
+func languageGetDefaultFunction_Set() {
+	languageGetDefaultFunction_Once.Do(func() {
+		languageGetDefaultFunction = gi.FunctionInvokerNew("Pango", "language_get_default")
 	})
 }
 
@@ -512,11 +480,9 @@ var languageGetDefaultInvoker *gi.Function
 
 // LanguageGetDefault is a representation of the C type pango_language_get_default.
 func LanguageGetDefault() *Language {
-	if languageGetDefaultInvoker == nil {
-		languageGetDefaultInvoker = gi.FunctionInvokerNew("Pango", "language_get_default")
-	}
+	languageGetDefaultFunction_Set()
 
-	ret := languageGetDefaultInvoker.Invoke(nil, nil)
+	ret := languageGetDefaultFunction.Invoke(nil, nil)
 
 	retGo := &Language{native: ret.Pointer()}
 
@@ -545,12 +511,12 @@ func LanguageGetDefault() *Language {
 
 // UNSUPPORTED : C value 'pango_parse_weight' : parameter 'weight' of type 'Weight' not supported
 
-var QuantizeLineGeometryFunction *gi.Function
-var QuantizeLineGeometryFunctionOnce sync.Once
+var quantizeLineGeometryFunction *gi.Function
+var quantizeLineGeometryFunction_Once sync.Once
 
-func QuantizeLineGeometryFunctionSet() {
-	QuantizeLineGeometryFunctionOnce.Do(func() {
-		QuantizeLineGeometryFunction = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
+func quantizeLineGeometryFunction_Set() {
+	quantizeLineGeometryFunction_Once.Do(func() {
+		quantizeLineGeometryFunction = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
 	})
 }
 
@@ -558,9 +524,7 @@ var quantizeLineGeometryInvoker *gi.Function
 
 // QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
 func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
-	if quantizeLineGeometryInvoker == nil {
-		quantizeLineGeometryInvoker = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
-	}
+	quantizeLineGeometryFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(thickness)
@@ -568,7 +532,7 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
 
 	var outArgs [2]gi.Argument
 
-	quantizeLineGeometryInvoker.Invoke(inArgs[:], outArgs[:])
+	quantizeLineGeometryFunction.Invoke(inArgs[:], outArgs[:])
 
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
@@ -596,12 +560,12 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
 
 // UNSUPPORTED : C value 'pango_skip_space' : return type 'gboolean' not supported
 
-var SplitFileListFunction *gi.Function
-var SplitFileListFunctionOnce sync.Once
+var splitFileListFunction *gi.Function
+var splitFileListFunction_Once sync.Once
 
-func SplitFileListFunctionSet() {
-	SplitFileListFunctionOnce.Do(func() {
-		SplitFileListFunction = gi.FunctionInvokerNew("Pango", "split_file_list")
+func splitFileListFunction_Set() {
+	splitFileListFunction_Once.Do(func() {
+		splitFileListFunction = gi.FunctionInvokerNew("Pango", "split_file_list")
 	})
 }
 
@@ -609,23 +573,21 @@ var splitFileListInvoker *gi.Function
 
 // SplitFileList is a representation of the C type pango_split_file_list.
 func SplitFileList(str string) {
-	if splitFileListInvoker == nil {
-		splitFileListInvoker = gi.FunctionInvokerNew("Pango", "split_file_list")
-	}
+	splitFileListFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	splitFileListInvoker.Invoke(inArgs[:], nil)
+	splitFileListFunction.Invoke(inArgs[:], nil)
 
 }
 
-var TrimStringFunction *gi.Function
-var TrimStringFunctionOnce sync.Once
+var trimStringFunction *gi.Function
+var trimStringFunction_Once sync.Once
 
-func TrimStringFunctionSet() {
-	TrimStringFunctionOnce.Do(func() {
-		TrimStringFunction = gi.FunctionInvokerNew("Pango", "trim_string")
+func trimStringFunction_Set() {
+	trimStringFunction_Once.Do(func() {
+		trimStringFunction = gi.FunctionInvokerNew("Pango", "trim_string")
 	})
 }
 
@@ -633,14 +595,12 @@ var trimStringInvoker *gi.Function
 
 // TrimString is a representation of the C type pango_trim_string.
 func TrimString(str string) string {
-	if trimStringInvoker == nil {
-		trimStringInvoker = gi.FunctionInvokerNew("Pango", "trim_string")
-	}
+	trimStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := trimStringInvoker.Invoke(inArgs[:], nil)
+	ret := trimStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -653,12 +613,12 @@ func TrimString(str string) string {
 
 // UNSUPPORTED : C value 'pango_units_to_double' : return type 'gdouble' not supported
 
-var VersionFunction *gi.Function
-var VersionFunctionOnce sync.Once
+var versionFunction *gi.Function
+var versionFunction_Once sync.Once
 
-func VersionFunctionSet() {
-	VersionFunctionOnce.Do(func() {
-		VersionFunction = gi.FunctionInvokerNew("Pango", "version")
+func versionFunction_Set() {
+	versionFunction_Once.Do(func() {
+		versionFunction = gi.FunctionInvokerNew("Pango", "version")
 	})
 }
 
@@ -666,23 +626,21 @@ var versionInvoker *gi.Function
 
 // Version is a representation of the C type pango_version.
 func Version() int32 {
-	if versionInvoker == nil {
-		versionInvoker = gi.FunctionInvokerNew("Pango", "version")
-	}
+	versionFunction_Set()
 
-	ret := versionInvoker.Invoke(nil, nil)
+	ret := versionFunction.Invoke(nil, nil)
 
 	retGo := ret.Int32()
 
 	return retGo
 }
 
-var VersionCheckFunction *gi.Function
-var VersionCheckFunctionOnce sync.Once
+var versionCheckFunction *gi.Function
+var versionCheckFunction_Once sync.Once
 
-func VersionCheckFunctionSet() {
-	VersionCheckFunctionOnce.Do(func() {
-		VersionCheckFunction = gi.FunctionInvokerNew("Pango", "version_check")
+func versionCheckFunction_Set() {
+	versionCheckFunction_Once.Do(func() {
+		versionCheckFunction = gi.FunctionInvokerNew("Pango", "version_check")
 	})
 }
 
@@ -690,28 +648,26 @@ var versionCheckInvoker *gi.Function
 
 // VersionCheck is a representation of the C type pango_version_check.
 func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) string {
-	if versionCheckInvoker == nil {
-		versionCheckInvoker = gi.FunctionInvokerNew("Pango", "version_check")
-	}
+	versionCheckFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetInt32(requiredMajor)
 	inArgs[1].SetInt32(requiredMinor)
 	inArgs[2].SetInt32(requiredMicro)
 
-	ret := versionCheckInvoker.Invoke(inArgs[:], nil)
+	ret := versionCheckFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
 	return retGo
 }
 
-var VersionStringFunction *gi.Function
-var VersionStringFunctionOnce sync.Once
+var versionStringFunction *gi.Function
+var versionStringFunction_Once sync.Once
 
-func VersionStringFunctionSet() {
-	VersionStringFunctionOnce.Do(func() {
-		VersionStringFunction = gi.FunctionInvokerNew("Pango", "version_string")
+func versionStringFunction_Set() {
+	versionStringFunction_Once.Do(func() {
+		versionStringFunction = gi.FunctionInvokerNew("Pango", "version_string")
 	})
 }
 
@@ -719,11 +675,9 @@ var versionStringInvoker *gi.Function
 
 // VersionString is a representation of the C type pango_version_string.
 func VersionString() string {
-	if versionStringInvoker == nil {
-		versionStringInvoker = gi.FunctionInvokerNew("Pango", "version_string")
-	}
+	versionStringFunction_Set()
 
-	ret := versionStringInvoker.Invoke(nil, nil)
+	ret := versionStringFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 

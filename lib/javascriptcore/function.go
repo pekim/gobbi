@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var GetMajorVersionFunction *gi.Function
-var GetMajorVersionFunctionOnce sync.Once
+var getMajorVersionFunction *gi.Function
+var getMajorVersionFunction_Once sync.Once
 
-func GetMajorVersionFunctionSet() {
-	GetMajorVersionFunctionOnce.Do(func() {
-		GetMajorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
+func getMajorVersionFunction_Set() {
+	getMajorVersionFunction_Once.Do(func() {
+		getMajorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
 	})
 }
 
@@ -20,23 +20,21 @@ var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type jsc_get_major_version.
 func GetMajorVersion() uint32 {
-	if getMajorVersionInvoker == nil {
-		getMajorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
-	}
+	getMajorVersionFunction_Set()
 
-	ret := getMajorVersionInvoker.Invoke(nil, nil)
+	ret := getMajorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetMicroVersionFunction *gi.Function
-var GetMicroVersionFunctionOnce sync.Once
+var getMicroVersionFunction *gi.Function
+var getMicroVersionFunction_Once sync.Once
 
-func GetMicroVersionFunctionSet() {
-	GetMicroVersionFunctionOnce.Do(func() {
-		GetMicroVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
+func getMicroVersionFunction_Set() {
+	getMicroVersionFunction_Once.Do(func() {
+		getMicroVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
 	})
 }
 
@@ -44,23 +42,21 @@ var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
 func GetMicroVersion() uint32 {
-	if getMicroVersionInvoker == nil {
-		getMicroVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
-	}
+	getMicroVersionFunction_Set()
 
-	ret := getMicroVersionInvoker.Invoke(nil, nil)
+	ret := getMicroVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetMinorVersionFunction *gi.Function
-var GetMinorVersionFunctionOnce sync.Once
+var getMinorVersionFunction *gi.Function
+var getMinorVersionFunction_Once sync.Once
 
-func GetMinorVersionFunctionSet() {
-	GetMinorVersionFunctionOnce.Do(func() {
-		GetMinorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
+func getMinorVersionFunction_Set() {
+	getMinorVersionFunction_Once.Do(func() {
+		getMinorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
 	})
 }
 
@@ -68,11 +64,9 @@ var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type jsc_get_minor_version.
 func GetMinorVersion() uint32 {
-	if getMinorVersionInvoker == nil {
-		getMinorVersionInvoker = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
-	}
+	getMinorVersionFunction_Set()
 
-	ret := getMinorVersionInvoker.Invoke(nil, nil)
+	ret := getMinorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 

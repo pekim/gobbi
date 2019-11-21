@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var ImageSurfaceCreateFunction *gi.Function
-var ImageSurfaceCreateFunctionOnce sync.Once
+var imageSurfaceCreateFunction *gi.Function
+var imageSurfaceCreateFunction_Once sync.Once
 
-func ImageSurfaceCreateFunctionSet() {
-	ImageSurfaceCreateFunctionOnce.Do(func() {
-		ImageSurfaceCreateFunction = gi.FunctionInvokerNew("cairo", "image_surface_create")
+func imageSurfaceCreateFunction_Set() {
+	imageSurfaceCreateFunction_Once.Do(func() {
+		imageSurfaceCreateFunction = gi.FunctionInvokerNew("cairo", "image_surface_create")
 	})
 }
 
@@ -20,10 +20,8 @@ var imageSurfaceCreateInvoker *gi.Function
 
 // ImageSurfaceCreate is a representation of the C type cairo_image_surface_create.
 func ImageSurfaceCreate() {
-	if imageSurfaceCreateInvoker == nil {
-		imageSurfaceCreateInvoker = gi.FunctionInvokerNew("cairo", "image_surface_create")
-	}
+	imageSurfaceCreateFunction_Set()
 
-	imageSurfaceCreateInvoker.Invoke(nil, nil)
+	imageSurfaceCreateFunction.Invoke(nil, nil)
 
 }

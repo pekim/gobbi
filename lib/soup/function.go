@@ -51,12 +51,12 @@ import (
 
 // UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : parameter 'multipart' of type 'Multipart' not supported
 
-var GetMajorVersionFunction *gi.Function
-var GetMajorVersionFunctionOnce sync.Once
+var getMajorVersionFunction *gi.Function
+var getMajorVersionFunction_Once sync.Once
 
-func GetMajorVersionFunctionSet() {
-	GetMajorVersionFunctionOnce.Do(func() {
-		GetMajorVersionFunction = gi.FunctionInvokerNew("Soup", "get_major_version")
+func getMajorVersionFunction_Set() {
+	getMajorVersionFunction_Once.Do(func() {
+		getMajorVersionFunction = gi.FunctionInvokerNew("Soup", "get_major_version")
 	})
 }
 
@@ -64,23 +64,21 @@ var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
 func GetMajorVersion() uint32 {
-	if getMajorVersionInvoker == nil {
-		getMajorVersionInvoker = gi.FunctionInvokerNew("Soup", "get_major_version")
-	}
+	getMajorVersionFunction_Set()
 
-	ret := getMajorVersionInvoker.Invoke(nil, nil)
+	ret := getMajorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetMicroVersionFunction *gi.Function
-var GetMicroVersionFunctionOnce sync.Once
+var getMicroVersionFunction *gi.Function
+var getMicroVersionFunction_Once sync.Once
 
-func GetMicroVersionFunctionSet() {
-	GetMicroVersionFunctionOnce.Do(func() {
-		GetMicroVersionFunction = gi.FunctionInvokerNew("Soup", "get_micro_version")
+func getMicroVersionFunction_Set() {
+	getMicroVersionFunction_Once.Do(func() {
+		getMicroVersionFunction = gi.FunctionInvokerNew("Soup", "get_micro_version")
 	})
 }
 
@@ -88,23 +86,21 @@ var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
 func GetMicroVersion() uint32 {
-	if getMicroVersionInvoker == nil {
-		getMicroVersionInvoker = gi.FunctionInvokerNew("Soup", "get_micro_version")
-	}
+	getMicroVersionFunction_Set()
 
-	ret := getMicroVersionInvoker.Invoke(nil, nil)
+	ret := getMicroVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetMinorVersionFunction *gi.Function
-var GetMinorVersionFunctionOnce sync.Once
+var getMinorVersionFunction *gi.Function
+var getMinorVersionFunction_Once sync.Once
 
-func GetMinorVersionFunctionSet() {
-	GetMinorVersionFunctionOnce.Do(func() {
-		GetMinorVersionFunction = gi.FunctionInvokerNew("Soup", "get_minor_version")
+func getMinorVersionFunction_Set() {
+	getMinorVersionFunction_Once.Do(func() {
+		getMinorVersionFunction = gi.FunctionInvokerNew("Soup", "get_minor_version")
 	})
 }
 
@@ -112,11 +108,9 @@ var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
 func GetMinorVersion() uint32 {
-	if getMinorVersionInvoker == nil {
-		getMinorVersionInvoker = gi.FunctionInvokerNew("Soup", "get_minor_version")
-	}
+	getMinorVersionFunction_Set()
 
-	ret := getMinorVersionInvoker.Invoke(nil, nil)
+	ret := getMinorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -161,12 +155,12 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_requester_error_quark' : return type 'GLib.Quark' not supported
 
-var StatusGetPhraseFunction *gi.Function
-var StatusGetPhraseFunctionOnce sync.Once
+var statusGetPhraseFunction *gi.Function
+var statusGetPhraseFunction_Once sync.Once
 
-func StatusGetPhraseFunctionSet() {
-	StatusGetPhraseFunctionOnce.Do(func() {
-		StatusGetPhraseFunction = gi.FunctionInvokerNew("Soup", "status_get_phrase")
+func statusGetPhraseFunction_Set() {
+	statusGetPhraseFunction_Once.Do(func() {
+		statusGetPhraseFunction = gi.FunctionInvokerNew("Soup", "status_get_phrase")
 	})
 }
 
@@ -174,26 +168,24 @@ var statusGetPhraseInvoker *gi.Function
 
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
 func StatusGetPhrase(statusCode uint32) string {
-	if statusGetPhraseInvoker == nil {
-		statusGetPhraseInvoker = gi.FunctionInvokerNew("Soup", "status_get_phrase")
-	}
+	statusGetPhraseFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusGetPhraseInvoker.Invoke(inArgs[:], nil)
+	ret := statusGetPhraseFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
 	return retGo
 }
 
-var StatusProxifyFunction *gi.Function
-var StatusProxifyFunctionOnce sync.Once
+var statusProxifyFunction *gi.Function
+var statusProxifyFunction_Once sync.Once
 
-func StatusProxifyFunctionSet() {
-	StatusProxifyFunctionOnce.Do(func() {
-		StatusProxifyFunction = gi.FunctionInvokerNew("Soup", "status_proxify")
+func statusProxifyFunction_Set() {
+	statusProxifyFunction_Once.Do(func() {
+		statusProxifyFunction = gi.FunctionInvokerNew("Soup", "status_proxify")
 	})
 }
 
@@ -201,14 +193,12 @@ var statusProxifyInvoker *gi.Function
 
 // StatusProxify is a representation of the C type soup_status_proxify.
 func StatusProxify(statusCode uint32) uint32 {
-	if statusProxifyInvoker == nil {
-		statusProxifyInvoker = gi.FunctionInvokerNew("Soup", "status_proxify")
-	}
+	statusProxifyFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusProxifyInvoker.Invoke(inArgs[:], nil)
+	ret := statusProxifyFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -223,12 +213,12 @@ func StatusProxify(statusCode uint32) uint32 {
 
 // UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
 
-var TldGetBaseDomainFunction *gi.Function
-var TldGetBaseDomainFunctionOnce sync.Once
+var tldGetBaseDomainFunction *gi.Function
+var tldGetBaseDomainFunction_Once sync.Once
 
-func TldGetBaseDomainFunctionSet() {
-	TldGetBaseDomainFunctionOnce.Do(func() {
-		TldGetBaseDomainFunction = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
+func tldGetBaseDomainFunction_Set() {
+	tldGetBaseDomainFunction_Once.Do(func() {
+		tldGetBaseDomainFunction = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
 	})
 }
 
@@ -236,26 +226,24 @@ var tldGetBaseDomainInvoker *gi.Function
 
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
 func TldGetBaseDomain(hostname string) string {
-	if tldGetBaseDomainInvoker == nil {
-		tldGetBaseDomainInvoker = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
-	}
+	tldGetBaseDomainFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
-	ret := tldGetBaseDomainInvoker.Invoke(inArgs[:], nil)
+	ret := tldGetBaseDomainFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
 	return retGo
 }
 
-var UriDecodeFunction *gi.Function
-var UriDecodeFunctionOnce sync.Once
+var uriDecodeFunction *gi.Function
+var uriDecodeFunction_Once sync.Once
 
-func UriDecodeFunctionSet() {
-	UriDecodeFunctionOnce.Do(func() {
-		UriDecodeFunction = gi.FunctionInvokerNew("Soup", "uri_decode")
+func uriDecodeFunction_Set() {
+	uriDecodeFunction_Once.Do(func() {
+		uriDecodeFunction = gi.FunctionInvokerNew("Soup", "uri_decode")
 	})
 }
 
@@ -263,26 +251,24 @@ var uriDecodeInvoker *gi.Function
 
 // UriDecode is a representation of the C type soup_uri_decode.
 func UriDecode(part string) string {
-	if uriDecodeInvoker == nil {
-		uriDecodeInvoker = gi.FunctionInvokerNew("Soup", "uri_decode")
-	}
+	uriDecodeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(part)
 
-	ret := uriDecodeInvoker.Invoke(inArgs[:], nil)
+	ret := uriDecodeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
 	return retGo
 }
 
-var UriEncodeFunction *gi.Function
-var UriEncodeFunctionOnce sync.Once
+var uriEncodeFunction *gi.Function
+var uriEncodeFunction_Once sync.Once
 
-func UriEncodeFunctionSet() {
-	UriEncodeFunctionOnce.Do(func() {
-		UriEncodeFunction = gi.FunctionInvokerNew("Soup", "uri_encode")
+func uriEncodeFunction_Set() {
+	uriEncodeFunction_Once.Do(func() {
+		uriEncodeFunction = gi.FunctionInvokerNew("Soup", "uri_encode")
 	})
 }
 
@@ -290,27 +276,25 @@ var uriEncodeInvoker *gi.Function
 
 // UriEncode is a representation of the C type soup_uri_encode.
 func UriEncode(part string, escapeExtra string) string {
-	if uriEncodeInvoker == nil {
-		uriEncodeInvoker = gi.FunctionInvokerNew("Soup", "uri_encode")
-	}
+	uriEncodeFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(escapeExtra)
 
-	ret := uriEncodeInvoker.Invoke(inArgs[:], nil)
+	ret := uriEncodeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
 	return retGo
 }
 
-var UriNormalizeFunction *gi.Function
-var UriNormalizeFunctionOnce sync.Once
+var uriNormalizeFunction *gi.Function
+var uriNormalizeFunction_Once sync.Once
 
-func UriNormalizeFunctionSet() {
-	UriNormalizeFunctionOnce.Do(func() {
-		UriNormalizeFunction = gi.FunctionInvokerNew("Soup", "uri_normalize")
+func uriNormalizeFunction_Set() {
+	uriNormalizeFunction_Once.Do(func() {
+		uriNormalizeFunction = gi.FunctionInvokerNew("Soup", "uri_normalize")
 	})
 }
 
@@ -318,15 +302,13 @@ var uriNormalizeInvoker *gi.Function
 
 // UriNormalize is a representation of the C type soup_uri_normalize.
 func UriNormalize(part string, unescapeExtra string) string {
-	if uriNormalizeInvoker == nil {
-		uriNormalizeInvoker = gi.FunctionInvokerNew("Soup", "uri_normalize")
-	}
+	uriNormalizeFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(unescapeExtra)
 
-	ret := uriNormalizeInvoker.Invoke(inArgs[:], nil)
+	ret := uriNormalizeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 

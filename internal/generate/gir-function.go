@@ -44,11 +44,11 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	if record != nil {
 		recordName = record.Name
 	}
-	f.funcInfoGoName = fmt.Sprintf("%s%sFunction",
-		makeUnexportedGoName(recordName),
-		makeExportedGoName(f.Name))
-	f.funcInfoOnceGoName = fmt.Sprintf("%sOnce", f.funcInfoGoName)
-	f.funcInfoSetFuncGoName = fmt.Sprintf("%sSet", f.funcInfoGoName)
+	f.funcInfoGoName = makeUnexportedGoName(fmt.Sprintf("%s%sFunction",
+		makeExportedGoName(recordName),
+		makeExportedGoName(f.Name)))
+	f.funcInfoOnceGoName = fmt.Sprintf("%s_Once", f.funcInfoGoName)
+	f.funcInfoSetFuncGoName = fmt.Sprintf("%s_Set", f.funcInfoGoName)
 
 	if record != nil {
 		f.invokerVarName = makeUnexportedGoName(f.Name + record.Name + "Invoker")
@@ -173,26 +173,8 @@ func (f *Function) generateBody(g *jen.Group) {
 
 func (f *Function) generateInitialiseInvoker(g *jen.Group) {
 	g.
-		If(jen.Id(f.invokerVarName).Op("==").Nil()).
-		Block(jen.
-			Id(f.invokerVarName).
-			Op("=").
-			Do(func(s *jen.Statement) {
-				if f.record != nil {
-					s.Qual(gi.PackageName, "StructFunctionInvokerNew").
-						Call(
-							jen.Lit(f.namespace.Name),
-							jen.Lit(f.record.Name),
-							jen.Lit(f.Name),
-						)
-				} else {
-					s.Qual(gi.PackageName, "FunctionInvokerNew").
-						Call(
-							jen.Lit(f.namespace.Name),
-							jen.Lit(f.Name),
-						)
-				}
-			}))
+		Id(f.funcInfoSetFuncGoName).
+		Call()
 }
 
 func (f *Function) generateCallFunction(g *jen.Group) {
@@ -204,7 +186,7 @@ func (f *Function) generateCallFunction(g *jen.Group) {
 					Op(":=")
 			}
 		}).
-		Id(f.invokerVarName).
+		Id(f.funcInfoGoName).
 		Dot("Invoke").
 		CallFunc(func(i *jen.Group) {
 			f.Parameters.generateCallParams(i, f.receiver)

@@ -394,10 +394,10 @@ type Range struct {
 // UNSUPPORTED : C value 'atk_range_new' : parameter 'lower_limit' of type 'gdouble' not supported
 
 var rangeCopyFunction *gi.Function
-var rangeCopyFunctionOnce sync.Once
+var rangeCopyFunction_Once sync.Once
 
-func rangeCopyFunctionSet() {
-	rangeCopyFunctionOnce.Do(func() {
+func rangeCopyFunction_Set() {
+	rangeCopyFunction_Once.Do(func() {
 		rangeCopyFunction = gi.FunctionInvokerNew("Atk", "copy")
 	})
 }
@@ -406,14 +406,12 @@ var copyRangeInvoker *gi.Function
 
 // Copy is a representation of the C type atk_range_copy.
 func (recv *Range) Copy() *Range {
-	if copyRangeInvoker == nil {
-		copyRangeInvoker = gi.StructFunctionInvokerNew("Atk", "Range", "copy")
-	}
+	rangeCopyFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := copyRangeInvoker.Invoke(inArgs[:], nil)
+	ret := rangeCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Range{native: ret.Pointer()}
 
@@ -421,10 +419,10 @@ func (recv *Range) Copy() *Range {
 }
 
 var rangeFreeFunction *gi.Function
-var rangeFreeFunctionOnce sync.Once
+var rangeFreeFunction_Once sync.Once
 
-func rangeFreeFunctionSet() {
-	rangeFreeFunctionOnce.Do(func() {
+func rangeFreeFunction_Set() {
+	rangeFreeFunction_Once.Do(func() {
 		rangeFreeFunction = gi.FunctionInvokerNew("Atk", "free")
 	})
 }
@@ -433,22 +431,20 @@ var freeRangeInvoker *gi.Function
 
 // Free is a representation of the C type atk_range_free.
 func (recv *Range) Free() {
-	if freeRangeInvoker == nil {
-		freeRangeInvoker = gi.StructFunctionInvokerNew("Atk", "Range", "free")
-	}
+	rangeFreeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	freeRangeInvoker.Invoke(inArgs[:], nil)
+	rangeFreeFunction.Invoke(inArgs[:], nil)
 
 }
 
 var rangeGetDescriptionFunction *gi.Function
-var rangeGetDescriptionFunctionOnce sync.Once
+var rangeGetDescriptionFunction_Once sync.Once
 
-func rangeGetDescriptionFunctionSet() {
-	rangeGetDescriptionFunctionOnce.Do(func() {
+func rangeGetDescriptionFunction_Set() {
+	rangeGetDescriptionFunction_Once.Do(func() {
 		rangeGetDescriptionFunction = gi.FunctionInvokerNew("Atk", "get_description")
 	})
 }
@@ -457,14 +453,12 @@ var getDescriptionRangeInvoker *gi.Function
 
 // GetDescription is a representation of the C type atk_range_get_description.
 func (recv *Range) GetDescription() string {
-	if getDescriptionRangeInvoker == nil {
-		getDescriptionRangeInvoker = gi.StructFunctionInvokerNew("Atk", "Range", "get_description")
-	}
+	rangeGetDescriptionFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getDescriptionRangeInvoker.Invoke(inArgs[:], nil)
+	ret := rangeGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 

@@ -49,10 +49,10 @@ type Closure struct {
 // UNSUPPORTED : C value 'g_closure_add_marshal_guards' : parameter 'pre_marshal_data' of type 'gpointer' not supported
 
 var closureInvalidateFunction *gi.Function
-var closureInvalidateFunctionOnce sync.Once
+var closureInvalidateFunction_Once sync.Once
 
-func closureInvalidateFunctionSet() {
-	closureInvalidateFunctionOnce.Do(func() {
+func closureInvalidateFunction_Set() {
+	closureInvalidateFunction_Once.Do(func() {
 		closureInvalidateFunction = gi.FunctionInvokerNew("GObject", "invalidate")
 	})
 }
@@ -61,24 +61,22 @@ var invalidateClosureInvoker *gi.Function
 
 // Invalidate is a representation of the C type g_closure_invalidate.
 func (recv *Closure) Invalidate() {
-	if invalidateClosureInvoker == nil {
-		invalidateClosureInvoker = gi.StructFunctionInvokerNew("GObject", "Closure", "invalidate")
-	}
+	closureInvalidateFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	invalidateClosureInvoker.Invoke(inArgs[:], nil)
+	closureInvalidateFunction.Invoke(inArgs[:], nil)
 
 }
 
 // UNSUPPORTED : C value 'g_closure_invoke' : parameter 'return_value' of type 'Value' not supported
 
 var closureRefFunction *gi.Function
-var closureRefFunctionOnce sync.Once
+var closureRefFunction_Once sync.Once
 
-func closureRefFunctionSet() {
-	closureRefFunctionOnce.Do(func() {
+func closureRefFunction_Set() {
+	closureRefFunction_Once.Do(func() {
 		closureRefFunction = gi.FunctionInvokerNew("GObject", "ref")
 	})
 }
@@ -87,14 +85,12 @@ var refClosureInvoker *gi.Function
 
 // Ref is a representation of the C type g_closure_ref.
 func (recv *Closure) Ref() *Closure {
-	if refClosureInvoker == nil {
-		refClosureInvoker = gi.StructFunctionInvokerNew("GObject", "Closure", "ref")
-	}
+	closureRefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := refClosureInvoker.Invoke(inArgs[:], nil)
+	ret := closureRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Closure{native: ret.Pointer()}
 
@@ -110,10 +106,10 @@ func (recv *Closure) Ref() *Closure {
 // UNSUPPORTED : C value 'g_closure_set_meta_marshal' : parameter 'marshal_data' of type 'gpointer' not supported
 
 var closureSinkFunction *gi.Function
-var closureSinkFunctionOnce sync.Once
+var closureSinkFunction_Once sync.Once
 
-func closureSinkFunctionSet() {
-	closureSinkFunctionOnce.Do(func() {
+func closureSinkFunction_Set() {
+	closureSinkFunction_Once.Do(func() {
 		closureSinkFunction = gi.FunctionInvokerNew("GObject", "sink")
 	})
 }
@@ -122,22 +118,20 @@ var sinkClosureInvoker *gi.Function
 
 // Sink is a representation of the C type g_closure_sink.
 func (recv *Closure) Sink() {
-	if sinkClosureInvoker == nil {
-		sinkClosureInvoker = gi.StructFunctionInvokerNew("GObject", "Closure", "sink")
-	}
+	closureSinkFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	sinkClosureInvoker.Invoke(inArgs[:], nil)
+	closureSinkFunction.Invoke(inArgs[:], nil)
 
 }
 
 var closureUnrefFunction *gi.Function
-var closureUnrefFunctionOnce sync.Once
+var closureUnrefFunction_Once sync.Once
 
-func closureUnrefFunctionSet() {
-	closureUnrefFunctionOnce.Do(func() {
+func closureUnrefFunction_Set() {
+	closureUnrefFunction_Once.Do(func() {
 		closureUnrefFunction = gi.FunctionInvokerNew("GObject", "unref")
 	})
 }
@@ -146,14 +140,12 @@ var unrefClosureInvoker *gi.Function
 
 // Unref is a representation of the C type g_closure_unref.
 func (recv *Closure) Unref() {
-	if unrefClosureInvoker == nil {
-		unrefClosureInvoker = gi.StructFunctionInvokerNew("GObject", "Closure", "unref")
-	}
+	closureUnrefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unrefClosureInvoker.Invoke(inArgs[:], nil)
+	closureUnrefFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -306,10 +298,10 @@ type ObjectClass struct {
 // UNSUPPORTED : C value 'g_object_class_install_property' : parameter 'pspec' of type 'ParamSpec' not supported
 
 var objectClassListPropertiesFunction *gi.Function
-var objectClassListPropertiesFunctionOnce sync.Once
+var objectClassListPropertiesFunction_Once sync.Once
 
-func objectClassListPropertiesFunctionSet() {
-	objectClassListPropertiesFunctionOnce.Do(func() {
+func objectClassListPropertiesFunction_Set() {
+	objectClassListPropertiesFunction_Once.Do(func() {
 		objectClassListPropertiesFunction = gi.FunctionInvokerNew("GObject", "list_properties")
 	})
 }
@@ -318,16 +310,14 @@ var listPropertiesObjectClassInvoker *gi.Function
 
 // ListProperties is a representation of the C type g_object_class_list_properties.
 func (recv *ObjectClass) ListProperties() uint32 {
-	if listPropertiesObjectClassInvoker == nil {
-		listPropertiesObjectClassInvoker = gi.StructFunctionInvokerNew("GObject", "ObjectClass", "list_properties")
-	}
+	objectClassListPropertiesFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [1]gi.Argument
 
-	listPropertiesObjectClassInvoker.Invoke(inArgs[:], outArgs[:])
+	objectClassListPropertiesFunction.Invoke(inArgs[:], outArgs[:])
 
 	out0 := outArgs[0].Uint32()
 
@@ -335,10 +325,10 @@ func (recv *ObjectClass) ListProperties() uint32 {
 }
 
 var objectClassOverridePropertyFunction *gi.Function
-var objectClassOverridePropertyFunctionOnce sync.Once
+var objectClassOverridePropertyFunction_Once sync.Once
 
-func objectClassOverridePropertyFunctionSet() {
-	objectClassOverridePropertyFunctionOnce.Do(func() {
+func objectClassOverridePropertyFunction_Set() {
+	objectClassOverridePropertyFunction_Once.Do(func() {
 		objectClassOverridePropertyFunction = gi.FunctionInvokerNew("GObject", "override_property")
 	})
 }
@@ -347,16 +337,14 @@ var overridePropertyObjectClassInvoker *gi.Function
 
 // OverrideProperty is a representation of the C type g_object_class_override_property.
 func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
-	if overridePropertyObjectClassInvoker == nil {
-		overridePropertyObjectClassInvoker = gi.StructFunctionInvokerNew("GObject", "ObjectClass", "override_property")
-	}
+	objectClassOverridePropertyFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(propertyId)
 	inArgs[2].SetString(name)
 
-	overridePropertyObjectClassInvoker.Invoke(inArgs[:], nil)
+	objectClassOverridePropertyFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -505,10 +493,10 @@ type TypeClass struct {
 // UNSUPPORTED : C value 'g_type_class_add_private' : parameter 'private_size' of type 'gsize' not supported
 
 var typeClassGetInstancePrivateOffsetFunction *gi.Function
-var typeClassGetInstancePrivateOffsetFunctionOnce sync.Once
+var typeClassGetInstancePrivateOffsetFunction_Once sync.Once
 
-func typeClassGetInstancePrivateOffsetFunctionSet() {
-	typeClassGetInstancePrivateOffsetFunctionOnce.Do(func() {
+func typeClassGetInstancePrivateOffsetFunction_Set() {
+	typeClassGetInstancePrivateOffsetFunction_Once.Do(func() {
 		typeClassGetInstancePrivateOffsetFunction = gi.FunctionInvokerNew("GObject", "get_instance_private_offset")
 	})
 }
@@ -517,14 +505,12 @@ var getInstancePrivateOffsetTypeClassInvoker *gi.Function
 
 // GetInstancePrivateOffset is a representation of the C type g_type_class_get_instance_private_offset.
 func (recv *TypeClass) GetInstancePrivateOffset() int32 {
-	if getInstancePrivateOffsetTypeClassInvoker == nil {
-		getInstancePrivateOffsetTypeClassInvoker = gi.StructFunctionInvokerNew("GObject", "TypeClass", "get_instance_private_offset")
-	}
+	typeClassGetInstancePrivateOffsetFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getInstancePrivateOffsetTypeClassInvoker.Invoke(inArgs[:], nil)
+	ret := typeClassGetInstancePrivateOffsetFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -534,10 +520,10 @@ func (recv *TypeClass) GetInstancePrivateOffset() int32 {
 // UNSUPPORTED : C value 'g_type_class_get_private' : parameter 'private_type' of type 'GType' not supported
 
 var typeClassPeekParentFunction *gi.Function
-var typeClassPeekParentFunctionOnce sync.Once
+var typeClassPeekParentFunction_Once sync.Once
 
-func typeClassPeekParentFunctionSet() {
-	typeClassPeekParentFunctionOnce.Do(func() {
+func typeClassPeekParentFunction_Set() {
+	typeClassPeekParentFunction_Once.Do(func() {
 		typeClassPeekParentFunction = gi.FunctionInvokerNew("GObject", "peek_parent")
 	})
 }
@@ -546,14 +532,12 @@ var peekParentTypeClassInvoker *gi.Function
 
 // PeekParent is a representation of the C type g_type_class_peek_parent.
 func (recv *TypeClass) PeekParent() *TypeClass {
-	if peekParentTypeClassInvoker == nil {
-		peekParentTypeClassInvoker = gi.StructFunctionInvokerNew("GObject", "TypeClass", "peek_parent")
-	}
+	typeClassPeekParentFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := peekParentTypeClassInvoker.Invoke(inArgs[:], nil)
+	ret := typeClassPeekParentFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TypeClass{native: ret.Pointer()}
 
@@ -561,10 +545,10 @@ func (recv *TypeClass) PeekParent() *TypeClass {
 }
 
 var typeClassUnrefFunction *gi.Function
-var typeClassUnrefFunctionOnce sync.Once
+var typeClassUnrefFunction_Once sync.Once
 
-func typeClassUnrefFunctionSet() {
-	typeClassUnrefFunctionOnce.Do(func() {
+func typeClassUnrefFunction_Set() {
+	typeClassUnrefFunction_Once.Do(func() {
 		typeClassUnrefFunction = gi.FunctionInvokerNew("GObject", "unref")
 	})
 }
@@ -573,22 +557,20 @@ var unrefTypeClassInvoker *gi.Function
 
 // Unref is a representation of the C type g_type_class_unref.
 func (recv *TypeClass) Unref() {
-	if unrefTypeClassInvoker == nil {
-		unrefTypeClassInvoker = gi.StructFunctionInvokerNew("GObject", "TypeClass", "unref")
-	}
+	typeClassUnrefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unrefTypeClassInvoker.Invoke(inArgs[:], nil)
+	typeClassUnrefFunction.Invoke(inArgs[:], nil)
 
 }
 
 var typeClassUnrefUncachedFunction *gi.Function
-var typeClassUnrefUncachedFunctionOnce sync.Once
+var typeClassUnrefUncachedFunction_Once sync.Once
 
-func typeClassUnrefUncachedFunctionSet() {
-	typeClassUnrefUncachedFunctionOnce.Do(func() {
+func typeClassUnrefUncachedFunction_Set() {
+	typeClassUnrefUncachedFunction_Once.Do(func() {
 		typeClassUnrefUncachedFunction = gi.FunctionInvokerNew("GObject", "unref_uncached")
 	})
 }
@@ -597,14 +579,12 @@ var unrefUncachedTypeClassInvoker *gi.Function
 
 // UnrefUncached is a representation of the C type g_type_class_unref_uncached.
 func (recv *TypeClass) UnrefUncached() {
-	if unrefUncachedTypeClassInvoker == nil {
-		unrefUncachedTypeClassInvoker = gi.StructFunctionInvokerNew("GObject", "TypeClass", "unref_uncached")
-	}
+	typeClassUnrefUncachedFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unrefUncachedTypeClassInvoker.Invoke(inArgs[:], nil)
+	typeClassUnrefUncachedFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -674,10 +654,10 @@ type TypeInterface struct {
 }
 
 var typeInterfacePeekParentFunction *gi.Function
-var typeInterfacePeekParentFunctionOnce sync.Once
+var typeInterfacePeekParentFunction_Once sync.Once
 
-func typeInterfacePeekParentFunctionSet() {
-	typeInterfacePeekParentFunctionOnce.Do(func() {
+func typeInterfacePeekParentFunction_Set() {
+	typeInterfacePeekParentFunction_Once.Do(func() {
 		typeInterfacePeekParentFunction = gi.FunctionInvokerNew("GObject", "peek_parent")
 	})
 }
@@ -686,14 +666,12 @@ var peekParentTypeInterfaceInvoker *gi.Function
 
 // PeekParent is a representation of the C type g_type_interface_peek_parent.
 func (recv *TypeInterface) PeekParent() *TypeInterface {
-	if peekParentTypeInterfaceInvoker == nil {
-		peekParentTypeInterfaceInvoker = gi.StructFunctionInvokerNew("GObject", "TypeInterface", "peek_parent")
-	}
+	typeInterfacePeekParentFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := peekParentTypeInterfaceInvoker.Invoke(inArgs[:], nil)
+	ret := typeInterfacePeekParentFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TypeInterface{native: ret.Pointer()}
 
@@ -798,10 +776,10 @@ type Value struct {
 // UNSUPPORTED : C value 'g_value_dup_param' : return type 'ParamSpec' not supported
 
 var valueDupStringFunction *gi.Function
-var valueDupStringFunctionOnce sync.Once
+var valueDupStringFunction_Once sync.Once
 
-func valueDupStringFunctionSet() {
-	valueDupStringFunctionOnce.Do(func() {
+func valueDupStringFunction_Set() {
+	valueDupStringFunction_Once.Do(func() {
 		valueDupStringFunction = gi.FunctionInvokerNew("GObject", "dup_string")
 	})
 }
@@ -810,14 +788,12 @@ var dupStringValueInvoker *gi.Function
 
 // DupString is a representation of the C type g_value_dup_string.
 func (recv *Value) DupString() string {
-	if dupStringValueInvoker == nil {
-		dupStringValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "dup_string")
-	}
+	valueDupStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dupStringValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueDupStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -833,10 +809,10 @@ func (recv *Value) DupString() string {
 // UNSUPPORTED : C value 'g_value_get_boxed' : return type 'gpointer' not supported
 
 var valueGetCharFunction *gi.Function
-var valueGetCharFunctionOnce sync.Once
+var valueGetCharFunction_Once sync.Once
 
-func valueGetCharFunctionSet() {
-	valueGetCharFunctionOnce.Do(func() {
+func valueGetCharFunction_Set() {
+	valueGetCharFunction_Once.Do(func() {
 		valueGetCharFunction = gi.FunctionInvokerNew("GObject", "get_char")
 	})
 }
@@ -845,14 +821,12 @@ var getCharValueInvoker *gi.Function
 
 // GetChar is a representation of the C type g_value_get_char.
 func (recv *Value) GetChar() int8 {
-	if getCharValueInvoker == nil {
-		getCharValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_char")
-	}
+	valueGetCharFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getCharValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetCharFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int8()
 
@@ -862,10 +836,10 @@ func (recv *Value) GetChar() int8 {
 // UNSUPPORTED : C value 'g_value_get_double' : return type 'gdouble' not supported
 
 var valueGetEnumFunction *gi.Function
-var valueGetEnumFunctionOnce sync.Once
+var valueGetEnumFunction_Once sync.Once
 
-func valueGetEnumFunctionSet() {
-	valueGetEnumFunctionOnce.Do(func() {
+func valueGetEnumFunction_Set() {
+	valueGetEnumFunction_Once.Do(func() {
 		valueGetEnumFunction = gi.FunctionInvokerNew("GObject", "get_enum")
 	})
 }
@@ -874,14 +848,12 @@ var getEnumValueInvoker *gi.Function
 
 // GetEnum is a representation of the C type g_value_get_enum.
 func (recv *Value) GetEnum() int32 {
-	if getEnumValueInvoker == nil {
-		getEnumValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_enum")
-	}
+	valueGetEnumFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getEnumValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetEnumFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -889,10 +861,10 @@ func (recv *Value) GetEnum() int32 {
 }
 
 var valueGetFlagsFunction *gi.Function
-var valueGetFlagsFunctionOnce sync.Once
+var valueGetFlagsFunction_Once sync.Once
 
-func valueGetFlagsFunctionSet() {
-	valueGetFlagsFunctionOnce.Do(func() {
+func valueGetFlagsFunction_Set() {
+	valueGetFlagsFunction_Once.Do(func() {
 		valueGetFlagsFunction = gi.FunctionInvokerNew("GObject", "get_flags")
 	})
 }
@@ -901,14 +873,12 @@ var getFlagsValueInvoker *gi.Function
 
 // GetFlags is a representation of the C type g_value_get_flags.
 func (recv *Value) GetFlags() uint32 {
-	if getFlagsValueInvoker == nil {
-		getFlagsValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_flags")
-	}
+	valueGetFlagsFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getFlagsValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetFlagsFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -920,10 +890,10 @@ func (recv *Value) GetFlags() uint32 {
 // UNSUPPORTED : C value 'g_value_get_gtype' : return type 'GType' not supported
 
 var valueGetIntFunction *gi.Function
-var valueGetIntFunctionOnce sync.Once
+var valueGetIntFunction_Once sync.Once
 
-func valueGetIntFunctionSet() {
-	valueGetIntFunctionOnce.Do(func() {
+func valueGetIntFunction_Set() {
+	valueGetIntFunction_Once.Do(func() {
 		valueGetIntFunction = gi.FunctionInvokerNew("GObject", "get_int")
 	})
 }
@@ -932,14 +902,12 @@ var getIntValueInvoker *gi.Function
 
 // GetInt is a representation of the C type g_value_get_int.
 func (recv *Value) GetInt() int32 {
-	if getIntValueInvoker == nil {
-		getIntValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_int")
-	}
+	valueGetIntFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getIntValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetIntFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -947,10 +915,10 @@ func (recv *Value) GetInt() int32 {
 }
 
 var valueGetInt64Function *gi.Function
-var valueGetInt64FunctionOnce sync.Once
+var valueGetInt64Function_Once sync.Once
 
-func valueGetInt64FunctionSet() {
-	valueGetInt64FunctionOnce.Do(func() {
+func valueGetInt64Function_Set() {
+	valueGetInt64Function_Once.Do(func() {
 		valueGetInt64Function = gi.FunctionInvokerNew("GObject", "get_int64")
 	})
 }
@@ -959,14 +927,12 @@ var getInt64ValueInvoker *gi.Function
 
 // GetInt64 is a representation of the C type g_value_get_int64.
 func (recv *Value) GetInt64() int64 {
-	if getInt64ValueInvoker == nil {
-		getInt64ValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_int64")
-	}
+	valueGetInt64Function_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getInt64ValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetInt64Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -974,10 +940,10 @@ func (recv *Value) GetInt64() int64 {
 }
 
 var valueGetLongFunction *gi.Function
-var valueGetLongFunctionOnce sync.Once
+var valueGetLongFunction_Once sync.Once
 
-func valueGetLongFunctionSet() {
-	valueGetLongFunctionOnce.Do(func() {
+func valueGetLongFunction_Set() {
+	valueGetLongFunction_Once.Do(func() {
 		valueGetLongFunction = gi.FunctionInvokerNew("GObject", "get_long")
 	})
 }
@@ -986,14 +952,12 @@ var getLongValueInvoker *gi.Function
 
 // GetLong is a representation of the C type g_value_get_long.
 func (recv *Value) GetLong() int64 {
-	if getLongValueInvoker == nil {
-		getLongValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_long")
-	}
+	valueGetLongFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getLongValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetLongFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -1007,10 +971,10 @@ func (recv *Value) GetLong() int64 {
 // UNSUPPORTED : C value 'g_value_get_pointer' : return type 'gpointer' not supported
 
 var valueGetScharFunction *gi.Function
-var valueGetScharFunctionOnce sync.Once
+var valueGetScharFunction_Once sync.Once
 
-func valueGetScharFunctionSet() {
-	valueGetScharFunctionOnce.Do(func() {
+func valueGetScharFunction_Set() {
+	valueGetScharFunction_Once.Do(func() {
 		valueGetScharFunction = gi.FunctionInvokerNew("GObject", "get_schar")
 	})
 }
@@ -1019,14 +983,12 @@ var getScharValueInvoker *gi.Function
 
 // GetSchar is a representation of the C type g_value_get_schar.
 func (recv *Value) GetSchar() int8 {
-	if getScharValueInvoker == nil {
-		getScharValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_schar")
-	}
+	valueGetScharFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getScharValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetScharFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int8()
 
@@ -1034,10 +996,10 @@ func (recv *Value) GetSchar() int8 {
 }
 
 var valueGetStringFunction *gi.Function
-var valueGetStringFunctionOnce sync.Once
+var valueGetStringFunction_Once sync.Once
 
-func valueGetStringFunctionSet() {
-	valueGetStringFunctionOnce.Do(func() {
+func valueGetStringFunction_Set() {
+	valueGetStringFunction_Once.Do(func() {
 		valueGetStringFunction = gi.FunctionInvokerNew("GObject", "get_string")
 	})
 }
@@ -1046,14 +1008,12 @@ var getStringValueInvoker *gi.Function
 
 // GetString is a representation of the C type g_value_get_string.
 func (recv *Value) GetString() string {
-	if getStringValueInvoker == nil {
-		getStringValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_string")
-	}
+	valueGetStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getStringValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1061,10 +1021,10 @@ func (recv *Value) GetString() string {
 }
 
 var valueGetUcharFunction *gi.Function
-var valueGetUcharFunctionOnce sync.Once
+var valueGetUcharFunction_Once sync.Once
 
-func valueGetUcharFunctionSet() {
-	valueGetUcharFunctionOnce.Do(func() {
+func valueGetUcharFunction_Set() {
+	valueGetUcharFunction_Once.Do(func() {
 		valueGetUcharFunction = gi.FunctionInvokerNew("GObject", "get_uchar")
 	})
 }
@@ -1073,14 +1033,12 @@ var getUcharValueInvoker *gi.Function
 
 // GetUchar is a representation of the C type g_value_get_uchar.
 func (recv *Value) GetUchar() uint8 {
-	if getUcharValueInvoker == nil {
-		getUcharValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_uchar")
-	}
+	valueGetUcharFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getUcharValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetUcharFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint8()
 
@@ -1088,10 +1046,10 @@ func (recv *Value) GetUchar() uint8 {
 }
 
 var valueGetUintFunction *gi.Function
-var valueGetUintFunctionOnce sync.Once
+var valueGetUintFunction_Once sync.Once
 
-func valueGetUintFunctionSet() {
-	valueGetUintFunctionOnce.Do(func() {
+func valueGetUintFunction_Set() {
+	valueGetUintFunction_Once.Do(func() {
 		valueGetUintFunction = gi.FunctionInvokerNew("GObject", "get_uint")
 	})
 }
@@ -1100,14 +1058,12 @@ var getUintValueInvoker *gi.Function
 
 // GetUint is a representation of the C type g_value_get_uint.
 func (recv *Value) GetUint() uint32 {
-	if getUintValueInvoker == nil {
-		getUintValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_uint")
-	}
+	valueGetUintFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getUintValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetUintFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1115,10 +1071,10 @@ func (recv *Value) GetUint() uint32 {
 }
 
 var valueGetUint64Function *gi.Function
-var valueGetUint64FunctionOnce sync.Once
+var valueGetUint64Function_Once sync.Once
 
-func valueGetUint64FunctionSet() {
-	valueGetUint64FunctionOnce.Do(func() {
+func valueGetUint64Function_Set() {
+	valueGetUint64Function_Once.Do(func() {
 		valueGetUint64Function = gi.FunctionInvokerNew("GObject", "get_uint64")
 	})
 }
@@ -1127,14 +1083,12 @@ var getUint64ValueInvoker *gi.Function
 
 // GetUint64 is a representation of the C type g_value_get_uint64.
 func (recv *Value) GetUint64() uint64 {
-	if getUint64ValueInvoker == nil {
-		getUint64ValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_uint64")
-	}
+	valueGetUint64Function_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getUint64ValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetUint64Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint64()
 
@@ -1142,10 +1096,10 @@ func (recv *Value) GetUint64() uint64 {
 }
 
 var valueGetUlongFunction *gi.Function
-var valueGetUlongFunctionOnce sync.Once
+var valueGetUlongFunction_Once sync.Once
 
-func valueGetUlongFunctionSet() {
-	valueGetUlongFunctionOnce.Do(func() {
+func valueGetUlongFunction_Set() {
+	valueGetUlongFunction_Once.Do(func() {
 		valueGetUlongFunction = gi.FunctionInvokerNew("GObject", "get_ulong")
 	})
 }
@@ -1154,14 +1108,12 @@ var getUlongValueInvoker *gi.Function
 
 // GetUlong is a representation of the C type g_value_get_ulong.
 func (recv *Value) GetUlong() uint64 {
-	if getUlongValueInvoker == nil {
-		getUlongValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "get_ulong")
-	}
+	valueGetUlongFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getUlongValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueGetUlongFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint64()
 
@@ -1177,10 +1129,10 @@ func (recv *Value) GetUlong() uint64 {
 // UNSUPPORTED : C value 'g_value_peek_pointer' : return type 'gpointer' not supported
 
 var valueResetFunction *gi.Function
-var valueResetFunctionOnce sync.Once
+var valueResetFunction_Once sync.Once
 
-func valueResetFunctionSet() {
-	valueResetFunctionOnce.Do(func() {
+func valueResetFunction_Set() {
+	valueResetFunction_Once.Do(func() {
 		valueResetFunction = gi.FunctionInvokerNew("GObject", "reset")
 	})
 }
@@ -1189,14 +1141,12 @@ var resetValueInvoker *gi.Function
 
 // Reset is a representation of the C type g_value_reset.
 func (recv *Value) Reset() *Value {
-	if resetValueInvoker == nil {
-		resetValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "reset")
-	}
+	valueResetFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := resetValueInvoker.Invoke(inArgs[:], nil)
+	ret := valueResetFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Value{native: ret.Pointer()}
 
@@ -1210,10 +1160,10 @@ func (recv *Value) Reset() *Value {
 // UNSUPPORTED : C value 'g_value_set_boxed_take_ownership' : parameter 'v_boxed' of type 'gpointer' not supported
 
 var valueSetCharFunction *gi.Function
-var valueSetCharFunctionOnce sync.Once
+var valueSetCharFunction_Once sync.Once
 
-func valueSetCharFunctionSet() {
-	valueSetCharFunctionOnce.Do(func() {
+func valueSetCharFunction_Set() {
+	valueSetCharFunction_Once.Do(func() {
 		valueSetCharFunction = gi.FunctionInvokerNew("GObject", "set_char")
 	})
 }
@@ -1222,25 +1172,23 @@ var setCharValueInvoker *gi.Function
 
 // SetChar is a representation of the C type g_value_set_char.
 func (recv *Value) SetChar(vChar int8) {
-	if setCharValueInvoker == nil {
-		setCharValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_char")
-	}
+	valueSetCharFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(vChar)
 
-	setCharValueInvoker.Invoke(inArgs[:], nil)
+	valueSetCharFunction.Invoke(inArgs[:], nil)
 
 }
 
 // UNSUPPORTED : C value 'g_value_set_double' : parameter 'v_double' of type 'gdouble' not supported
 
 var valueSetEnumFunction *gi.Function
-var valueSetEnumFunctionOnce sync.Once
+var valueSetEnumFunction_Once sync.Once
 
-func valueSetEnumFunctionSet() {
-	valueSetEnumFunctionOnce.Do(func() {
+func valueSetEnumFunction_Set() {
+	valueSetEnumFunction_Once.Do(func() {
 		valueSetEnumFunction = gi.FunctionInvokerNew("GObject", "set_enum")
 	})
 }
@@ -1249,23 +1197,21 @@ var setEnumValueInvoker *gi.Function
 
 // SetEnum is a representation of the C type g_value_set_enum.
 func (recv *Value) SetEnum(vEnum int32) {
-	if setEnumValueInvoker == nil {
-		setEnumValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_enum")
-	}
+	valueSetEnumFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(vEnum)
 
-	setEnumValueInvoker.Invoke(inArgs[:], nil)
+	valueSetEnumFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetFlagsFunction *gi.Function
-var valueSetFlagsFunctionOnce sync.Once
+var valueSetFlagsFunction_Once sync.Once
 
-func valueSetFlagsFunctionSet() {
-	valueSetFlagsFunctionOnce.Do(func() {
+func valueSetFlagsFunction_Set() {
+	valueSetFlagsFunction_Once.Do(func() {
 		valueSetFlagsFunction = gi.FunctionInvokerNew("GObject", "set_flags")
 	})
 }
@@ -1274,15 +1220,13 @@ var setFlagsValueInvoker *gi.Function
 
 // SetFlags is a representation of the C type g_value_set_flags.
 func (recv *Value) SetFlags(vFlags uint32) {
-	if setFlagsValueInvoker == nil {
-		setFlagsValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_flags")
-	}
+	valueSetFlagsFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(vFlags)
 
-	setFlagsValueInvoker.Invoke(inArgs[:], nil)
+	valueSetFlagsFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -1293,10 +1237,10 @@ func (recv *Value) SetFlags(vFlags uint32) {
 // UNSUPPORTED : C value 'g_value_set_instance' : parameter 'instance' of type 'gpointer' not supported
 
 var valueSetIntFunction *gi.Function
-var valueSetIntFunctionOnce sync.Once
+var valueSetIntFunction_Once sync.Once
 
-func valueSetIntFunctionSet() {
-	valueSetIntFunctionOnce.Do(func() {
+func valueSetIntFunction_Set() {
+	valueSetIntFunction_Once.Do(func() {
 		valueSetIntFunction = gi.FunctionInvokerNew("GObject", "set_int")
 	})
 }
@@ -1305,23 +1249,21 @@ var setIntValueInvoker *gi.Function
 
 // SetInt is a representation of the C type g_value_set_int.
 func (recv *Value) SetInt(vInt int32) {
-	if setIntValueInvoker == nil {
-		setIntValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_int")
-	}
+	valueSetIntFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(vInt)
 
-	setIntValueInvoker.Invoke(inArgs[:], nil)
+	valueSetIntFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetInt64Function *gi.Function
-var valueSetInt64FunctionOnce sync.Once
+var valueSetInt64Function_Once sync.Once
 
-func valueSetInt64FunctionSet() {
-	valueSetInt64FunctionOnce.Do(func() {
+func valueSetInt64Function_Set() {
+	valueSetInt64Function_Once.Do(func() {
 		valueSetInt64Function = gi.FunctionInvokerNew("GObject", "set_int64")
 	})
 }
@@ -1330,23 +1272,21 @@ var setInt64ValueInvoker *gi.Function
 
 // SetInt64 is a representation of the C type g_value_set_int64.
 func (recv *Value) SetInt64(vInt64 int64) {
-	if setInt64ValueInvoker == nil {
-		setInt64ValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_int64")
-	}
+	valueSetInt64Function_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(vInt64)
 
-	setInt64ValueInvoker.Invoke(inArgs[:], nil)
+	valueSetInt64Function.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetLongFunction *gi.Function
-var valueSetLongFunctionOnce sync.Once
+var valueSetLongFunction_Once sync.Once
 
-func valueSetLongFunctionSet() {
-	valueSetLongFunctionOnce.Do(func() {
+func valueSetLongFunction_Set() {
+	valueSetLongFunction_Once.Do(func() {
 		valueSetLongFunction = gi.FunctionInvokerNew("GObject", "set_long")
 	})
 }
@@ -1355,15 +1295,13 @@ var setLongValueInvoker *gi.Function
 
 // SetLong is a representation of the C type g_value_set_long.
 func (recv *Value) SetLong(vLong int64) {
-	if setLongValueInvoker == nil {
-		setLongValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_long")
-	}
+	valueSetLongFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(vLong)
 
-	setLongValueInvoker.Invoke(inArgs[:], nil)
+	valueSetLongFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -1378,10 +1316,10 @@ func (recv *Value) SetLong(vLong int64) {
 // UNSUPPORTED : C value 'g_value_set_pointer' : parameter 'v_pointer' of type 'gpointer' not supported
 
 var valueSetScharFunction *gi.Function
-var valueSetScharFunctionOnce sync.Once
+var valueSetScharFunction_Once sync.Once
 
-func valueSetScharFunctionSet() {
-	valueSetScharFunctionOnce.Do(func() {
+func valueSetScharFunction_Set() {
+	valueSetScharFunction_Once.Do(func() {
 		valueSetScharFunction = gi.FunctionInvokerNew("GObject", "set_schar")
 	})
 }
@@ -1390,25 +1328,23 @@ var setScharValueInvoker *gi.Function
 
 // SetSchar is a representation of the C type g_value_set_schar.
 func (recv *Value) SetSchar(vChar int8) {
-	if setScharValueInvoker == nil {
-		setScharValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_schar")
-	}
+	valueSetScharFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(vChar)
 
-	setScharValueInvoker.Invoke(inArgs[:], nil)
+	valueSetScharFunction.Invoke(inArgs[:], nil)
 
 }
 
 // UNSUPPORTED : C value 'g_value_set_static_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
 
 var valueSetStaticStringFunction *gi.Function
-var valueSetStaticStringFunctionOnce sync.Once
+var valueSetStaticStringFunction_Once sync.Once
 
-func valueSetStaticStringFunctionSet() {
-	valueSetStaticStringFunctionOnce.Do(func() {
+func valueSetStaticStringFunction_Set() {
+	valueSetStaticStringFunction_Once.Do(func() {
 		valueSetStaticStringFunction = gi.FunctionInvokerNew("GObject", "set_static_string")
 	})
 }
@@ -1417,23 +1353,21 @@ var setStaticStringValueInvoker *gi.Function
 
 // SetStaticString is a representation of the C type g_value_set_static_string.
 func (recv *Value) SetStaticString(vString string) {
-	if setStaticStringValueInvoker == nil {
-		setStaticStringValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_static_string")
-	}
+	valueSetStaticStringFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
 
-	setStaticStringValueInvoker.Invoke(inArgs[:], nil)
+	valueSetStaticStringFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetStringFunction *gi.Function
-var valueSetStringFunctionOnce sync.Once
+var valueSetStringFunction_Once sync.Once
 
-func valueSetStringFunctionSet() {
-	valueSetStringFunctionOnce.Do(func() {
+func valueSetStringFunction_Set() {
+	valueSetStringFunction_Once.Do(func() {
 		valueSetStringFunction = gi.FunctionInvokerNew("GObject", "set_string")
 	})
 }
@@ -1442,23 +1376,21 @@ var setStringValueInvoker *gi.Function
 
 // SetString is a representation of the C type g_value_set_string.
 func (recv *Value) SetString(vString string) {
-	if setStringValueInvoker == nil {
-		setStringValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_string")
-	}
+	valueSetStringFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
 
-	setStringValueInvoker.Invoke(inArgs[:], nil)
+	valueSetStringFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetStringTakeOwnershipFunction *gi.Function
-var valueSetStringTakeOwnershipFunctionOnce sync.Once
+var valueSetStringTakeOwnershipFunction_Once sync.Once
 
-func valueSetStringTakeOwnershipFunctionSet() {
-	valueSetStringTakeOwnershipFunctionOnce.Do(func() {
+func valueSetStringTakeOwnershipFunction_Set() {
+	valueSetStringTakeOwnershipFunction_Once.Do(func() {
 		valueSetStringTakeOwnershipFunction = gi.FunctionInvokerNew("GObject", "set_string_take_ownership")
 	})
 }
@@ -1467,23 +1399,21 @@ var setStringTakeOwnershipValueInvoker *gi.Function
 
 // SetStringTakeOwnership is a representation of the C type g_value_set_string_take_ownership.
 func (recv *Value) SetStringTakeOwnership(vString string) {
-	if setStringTakeOwnershipValueInvoker == nil {
-		setStringTakeOwnershipValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_string_take_ownership")
-	}
+	valueSetStringTakeOwnershipFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
 
-	setStringTakeOwnershipValueInvoker.Invoke(inArgs[:], nil)
+	valueSetStringTakeOwnershipFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetUcharFunction *gi.Function
-var valueSetUcharFunctionOnce sync.Once
+var valueSetUcharFunction_Once sync.Once
 
-func valueSetUcharFunctionSet() {
-	valueSetUcharFunctionOnce.Do(func() {
+func valueSetUcharFunction_Set() {
+	valueSetUcharFunction_Once.Do(func() {
 		valueSetUcharFunction = gi.FunctionInvokerNew("GObject", "set_uchar")
 	})
 }
@@ -1492,23 +1422,21 @@ var setUcharValueInvoker *gi.Function
 
 // SetUchar is a representation of the C type g_value_set_uchar.
 func (recv *Value) SetUchar(vUchar uint8) {
-	if setUcharValueInvoker == nil {
-		setUcharValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_uchar")
-	}
+	valueSetUcharFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint8(vUchar)
 
-	setUcharValueInvoker.Invoke(inArgs[:], nil)
+	valueSetUcharFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetUintFunction *gi.Function
-var valueSetUintFunctionOnce sync.Once
+var valueSetUintFunction_Once sync.Once
 
-func valueSetUintFunctionSet() {
-	valueSetUintFunctionOnce.Do(func() {
+func valueSetUintFunction_Set() {
+	valueSetUintFunction_Once.Do(func() {
 		valueSetUintFunction = gi.FunctionInvokerNew("GObject", "set_uint")
 	})
 }
@@ -1517,23 +1445,21 @@ var setUintValueInvoker *gi.Function
 
 // SetUint is a representation of the C type g_value_set_uint.
 func (recv *Value) SetUint(vUint uint32) {
-	if setUintValueInvoker == nil {
-		setUintValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_uint")
-	}
+	valueSetUintFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(vUint)
 
-	setUintValueInvoker.Invoke(inArgs[:], nil)
+	valueSetUintFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetUint64Function *gi.Function
-var valueSetUint64FunctionOnce sync.Once
+var valueSetUint64Function_Once sync.Once
 
-func valueSetUint64FunctionSet() {
-	valueSetUint64FunctionOnce.Do(func() {
+func valueSetUint64Function_Set() {
+	valueSetUint64Function_Once.Do(func() {
 		valueSetUint64Function = gi.FunctionInvokerNew("GObject", "set_uint64")
 	})
 }
@@ -1542,23 +1468,21 @@ var setUint64ValueInvoker *gi.Function
 
 // SetUint64 is a representation of the C type g_value_set_uint64.
 func (recv *Value) SetUint64(vUint64 uint64) {
-	if setUint64ValueInvoker == nil {
-		setUint64ValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_uint64")
-	}
+	valueSetUint64Function_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(vUint64)
 
-	setUint64ValueInvoker.Invoke(inArgs[:], nil)
+	valueSetUint64Function.Invoke(inArgs[:], nil)
 
 }
 
 var valueSetUlongFunction *gi.Function
-var valueSetUlongFunctionOnce sync.Once
+var valueSetUlongFunction_Once sync.Once
 
-func valueSetUlongFunctionSet() {
-	valueSetUlongFunctionOnce.Do(func() {
+func valueSetUlongFunction_Set() {
+	valueSetUlongFunction_Once.Do(func() {
 		valueSetUlongFunction = gi.FunctionInvokerNew("GObject", "set_ulong")
 	})
 }
@@ -1567,15 +1491,13 @@ var setUlongValueInvoker *gi.Function
 
 // SetUlong is a representation of the C type g_value_set_ulong.
 func (recv *Value) SetUlong(vUlong uint64) {
-	if setUlongValueInvoker == nil {
-		setUlongValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "set_ulong")
-	}
+	valueSetUlongFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(vUlong)
 
-	setUlongValueInvoker.Invoke(inArgs[:], nil)
+	valueSetUlongFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -1588,10 +1510,10 @@ func (recv *Value) SetUlong(vUlong uint64) {
 // UNSUPPORTED : C value 'g_value_take_param' : parameter 'param' of type 'ParamSpec' not supported
 
 var valueTakeStringFunction *gi.Function
-var valueTakeStringFunctionOnce sync.Once
+var valueTakeStringFunction_Once sync.Once
 
-func valueTakeStringFunctionSet() {
-	valueTakeStringFunctionOnce.Do(func() {
+func valueTakeStringFunction_Set() {
+	valueTakeStringFunction_Once.Do(func() {
 		valueTakeStringFunction = gi.FunctionInvokerNew("GObject", "take_string")
 	})
 }
@@ -1600,15 +1522,13 @@ var takeStringValueInvoker *gi.Function
 
 // TakeString is a representation of the C type g_value_take_string.
 func (recv *Value) TakeString(vString string) {
-	if takeStringValueInvoker == nil {
-		takeStringValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "take_string")
-	}
+	valueTakeStringFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(vString)
 
-	takeStringValueInvoker.Invoke(inArgs[:], nil)
+	valueTakeStringFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -1617,10 +1537,10 @@ func (recv *Value) TakeString(vString string) {
 // UNSUPPORTED : C value 'g_value_transform' : parameter 'dest_value' of type 'Value' not supported
 
 var valueUnsetFunction *gi.Function
-var valueUnsetFunctionOnce sync.Once
+var valueUnsetFunction_Once sync.Once
 
-func valueUnsetFunctionSet() {
-	valueUnsetFunctionOnce.Do(func() {
+func valueUnsetFunction_Set() {
+	valueUnsetFunction_Once.Do(func() {
 		valueUnsetFunction = gi.FunctionInvokerNew("GObject", "unset")
 	})
 }
@@ -1629,14 +1549,12 @@ var unsetValueInvoker *gi.Function
 
 // Unset is a representation of the C type g_value_unset.
 func (recv *Value) Unset() {
-	if unsetValueInvoker == nil {
-		unsetValueInvoker = gi.StructFunctionInvokerNew("GObject", "Value", "unset")
-	}
+	valueUnsetFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unsetValueInvoker.Invoke(inArgs[:], nil)
+	valueUnsetFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -1656,10 +1574,10 @@ type ValueArray struct {
 }
 
 var valueArrayNewFunction *gi.Function
-var valueArrayNewFunctionOnce sync.Once
+var valueArrayNewFunction_Once sync.Once
 
-func valueArrayNewFunctionSet() {
-	valueArrayNewFunctionOnce.Do(func() {
+func valueArrayNewFunction_Set() {
+	valueArrayNewFunction_Once.Do(func() {
 		valueArrayNewFunction = gi.FunctionInvokerNew("GObject", "new")
 	})
 }
@@ -1668,14 +1586,12 @@ var newValueArrayInvoker *gi.Function
 
 // ValueArrayNew is a representation of the C type g_value_array_new.
 func ValueArrayNew(nPrealloced uint32) *ValueArray {
-	if newValueArrayInvoker == nil {
-		newValueArrayInvoker = gi.StructFunctionInvokerNew("GObject", "ValueArray", "new")
-	}
+	valueArrayNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(nPrealloced)
 
-	ret := newValueArrayInvoker.Invoke(inArgs[:], nil)
+	ret := valueArrayNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
@@ -1685,10 +1601,10 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 // UNSUPPORTED : C value 'g_value_array_append' : parameter 'value' of type 'Value' not supported
 
 var valueArrayCopyFunction *gi.Function
-var valueArrayCopyFunctionOnce sync.Once
+var valueArrayCopyFunction_Once sync.Once
 
-func valueArrayCopyFunctionSet() {
-	valueArrayCopyFunctionOnce.Do(func() {
+func valueArrayCopyFunction_Set() {
+	valueArrayCopyFunction_Once.Do(func() {
 		valueArrayCopyFunction = gi.FunctionInvokerNew("GObject", "copy")
 	})
 }
@@ -1697,14 +1613,12 @@ var copyValueArrayInvoker *gi.Function
 
 // Copy is a representation of the C type g_value_array_copy.
 func (recv *ValueArray) Copy() *ValueArray {
-	if copyValueArrayInvoker == nil {
-		copyValueArrayInvoker = gi.StructFunctionInvokerNew("GObject", "ValueArray", "copy")
-	}
+	valueArrayCopyFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := copyValueArrayInvoker.Invoke(inArgs[:], nil)
+	ret := valueArrayCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
@@ -1712,10 +1626,10 @@ func (recv *ValueArray) Copy() *ValueArray {
 }
 
 var valueArrayFreeFunction *gi.Function
-var valueArrayFreeFunctionOnce sync.Once
+var valueArrayFreeFunction_Once sync.Once
 
-func valueArrayFreeFunctionSet() {
-	valueArrayFreeFunctionOnce.Do(func() {
+func valueArrayFreeFunction_Set() {
+	valueArrayFreeFunction_Once.Do(func() {
 		valueArrayFreeFunction = gi.FunctionInvokerNew("GObject", "free")
 	})
 }
@@ -1724,22 +1638,20 @@ var freeValueArrayInvoker *gi.Function
 
 // Free is a representation of the C type g_value_array_free.
 func (recv *ValueArray) Free() {
-	if freeValueArrayInvoker == nil {
-		freeValueArrayInvoker = gi.StructFunctionInvokerNew("GObject", "ValueArray", "free")
-	}
+	valueArrayFreeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	freeValueArrayInvoker.Invoke(inArgs[:], nil)
+	valueArrayFreeFunction.Invoke(inArgs[:], nil)
 
 }
 
 var valueArrayGetNthFunction *gi.Function
-var valueArrayGetNthFunctionOnce sync.Once
+var valueArrayGetNthFunction_Once sync.Once
 
-func valueArrayGetNthFunctionSet() {
-	valueArrayGetNthFunctionOnce.Do(func() {
+func valueArrayGetNthFunction_Set() {
+	valueArrayGetNthFunction_Once.Do(func() {
 		valueArrayGetNthFunction = gi.FunctionInvokerNew("GObject", "get_nth")
 	})
 }
@@ -1748,15 +1660,13 @@ var getNthValueArrayInvoker *gi.Function
 
 // GetNth is a representation of the C type g_value_array_get_nth.
 func (recv *ValueArray) GetNth(index uint32) *Value {
-	if getNthValueArrayInvoker == nil {
-		getNthValueArrayInvoker = gi.StructFunctionInvokerNew("GObject", "ValueArray", "get_nth")
-	}
+	valueArrayGetNthFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(index)
 
-	ret := getNthValueArrayInvoker.Invoke(inArgs[:], nil)
+	ret := valueArrayGetNthFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Value{native: ret.Pointer()}
 
@@ -1768,10 +1678,10 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 // UNSUPPORTED : C value 'g_value_array_prepend' : parameter 'value' of type 'Value' not supported
 
 var valueArrayRemoveFunction *gi.Function
-var valueArrayRemoveFunctionOnce sync.Once
+var valueArrayRemoveFunction_Once sync.Once
 
-func valueArrayRemoveFunctionSet() {
-	valueArrayRemoveFunctionOnce.Do(func() {
+func valueArrayRemoveFunction_Set() {
+	valueArrayRemoveFunction_Once.Do(func() {
 		valueArrayRemoveFunction = gi.FunctionInvokerNew("GObject", "remove")
 	})
 }
@@ -1780,15 +1690,13 @@ var removeValueArrayInvoker *gi.Function
 
 // Remove is a representation of the C type g_value_array_remove.
 func (recv *ValueArray) Remove(index uint32) *ValueArray {
-	if removeValueArrayInvoker == nil {
-		removeValueArrayInvoker = gi.StructFunctionInvokerNew("GObject", "ValueArray", "remove")
-	}
+	valueArrayRemoveFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(index)
 
-	ret := removeValueArrayInvoker.Invoke(inArgs[:], nil)
+	ret := valueArrayRemoveFunction.Invoke(inArgs[:], nil)
 
 	retGo := &ValueArray{native: ret.Pointer()}
 
@@ -1813,10 +1721,10 @@ type WeakRef struct {
 }
 
 var weakRefClearFunction *gi.Function
-var weakRefClearFunctionOnce sync.Once
+var weakRefClearFunction_Once sync.Once
 
-func weakRefClearFunctionSet() {
-	weakRefClearFunctionOnce.Do(func() {
+func weakRefClearFunction_Set() {
+	weakRefClearFunction_Once.Do(func() {
 		weakRefClearFunction = gi.FunctionInvokerNew("GObject", "clear")
 	})
 }
@@ -1825,14 +1733,12 @@ var clearWeakRefInvoker *gi.Function
 
 // Clear is a representation of the C type g_weak_ref_clear.
 func (recv *WeakRef) Clear() {
-	if clearWeakRefInvoker == nil {
-		clearWeakRefInvoker = gi.StructFunctionInvokerNew("GObject", "WeakRef", "clear")
-	}
+	weakRefClearFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	clearWeakRefInvoker.Invoke(inArgs[:], nil)
+	weakRefClearFunction.Invoke(inArgs[:], nil)
 
 }
 

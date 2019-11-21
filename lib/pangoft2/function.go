@@ -29,12 +29,12 @@ import (
 
 // UNSUPPORTED : C value 'pango_ft2_render_transformed' : parameter 'bitmap' of type 'freetype2.Bitmap' not supported
 
-var ShutdownDisplayFunction *gi.Function
-var ShutdownDisplayFunctionOnce sync.Once
+var shutdownDisplayFunction *gi.Function
+var shutdownDisplayFunction_Once sync.Once
 
-func ShutdownDisplayFunctionSet() {
-	ShutdownDisplayFunctionOnce.Do(func() {
-		ShutdownDisplayFunction = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
+func shutdownDisplayFunction_Set() {
+	shutdownDisplayFunction_Once.Do(func() {
+		shutdownDisplayFunction = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
 	})
 }
 
@@ -42,10 +42,8 @@ var shutdownDisplayInvoker *gi.Function
 
 // ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
 func ShutdownDisplay() {
-	if shutdownDisplayInvoker == nil {
-		shutdownDisplayInvoker = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
-	}
+	shutdownDisplayFunction_Set()
 
-	shutdownDisplayInvoker.Invoke(nil, nil)
+	shutdownDisplayFunction.Invoke(nil, nil)
 
 }

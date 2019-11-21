@@ -41,12 +41,12 @@ import (
 
 // UNSUPPORTED : C value 'gtk_binding_set_by_class' : parameter 'object_class' of type 'gpointer' not supported
 
-var BindingSetFindFunction *gi.Function
-var BindingSetFindFunctionOnce sync.Once
+var bindingSetFindFunction *gi.Function
+var bindingSetFindFunction_Once sync.Once
 
-func BindingSetFindFunctionSet() {
-	BindingSetFindFunctionOnce.Do(func() {
-		BindingSetFindFunction = gi.FunctionInvokerNew("Gtk", "binding_set_find")
+func bindingSetFindFunction_Set() {
+	bindingSetFindFunction_Once.Do(func() {
+		bindingSetFindFunction = gi.FunctionInvokerNew("Gtk", "binding_set_find")
 	})
 }
 
@@ -54,26 +54,24 @@ var bindingSetFindInvoker *gi.Function
 
 // BindingSetFind is a representation of the C type gtk_binding_set_find.
 func BindingSetFind(setName string) *BindingSet {
-	if bindingSetFindInvoker == nil {
-		bindingSetFindInvoker = gi.FunctionInvokerNew("Gtk", "binding_set_find")
-	}
+	bindingSetFindFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(setName)
 
-	ret := bindingSetFindInvoker.Invoke(inArgs[:], nil)
+	ret := bindingSetFindFunction.Invoke(inArgs[:], nil)
 
 	retGo := &BindingSet{native: ret.Pointer()}
 
 	return retGo
 }
 
-var BindingSetNewFunction *gi.Function
-var BindingSetNewFunctionOnce sync.Once
+var bindingSetNewFunction *gi.Function
+var bindingSetNewFunction_Once sync.Once
 
-func BindingSetNewFunctionSet() {
-	BindingSetNewFunctionOnce.Do(func() {
-		BindingSetNewFunction = gi.FunctionInvokerNew("Gtk", "binding_set_new")
+func bindingSetNewFunction_Set() {
+	bindingSetNewFunction_Once.Do(func() {
+		bindingSetNewFunction = gi.FunctionInvokerNew("Gtk", "binding_set_new")
 	})
 }
 
@@ -81,14 +79,12 @@ var bindingSetNewInvoker *gi.Function
 
 // BindingSetNew is a representation of the C type gtk_binding_set_new.
 func BindingSetNew(setName string) *BindingSet {
-	if bindingSetNewInvoker == nil {
-		bindingSetNewInvoker = gi.FunctionInvokerNew("Gtk", "binding_set_new")
-	}
+	bindingSetNewFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(setName)
 
-	ret := bindingSetNewInvoker.Invoke(inArgs[:], nil)
+	ret := bindingSetNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &BindingSet{native: ret.Pointer()}
 
@@ -105,12 +101,12 @@ func BindingSetNew(setName string) *BindingSet {
 
 // UNSUPPORTED : C value 'gtk_cairo_transform_to_window' : parameter 'cr' of type 'cairo.Context' not supported
 
-var CheckVersionFunction *gi.Function
-var CheckVersionFunctionOnce sync.Once
+var checkVersionFunction *gi.Function
+var checkVersionFunction_Once sync.Once
 
-func CheckVersionFunctionSet() {
-	CheckVersionFunctionOnce.Do(func() {
-		CheckVersionFunction = gi.FunctionInvokerNew("Gtk", "check_version")
+func checkVersionFunction_Set() {
+	checkVersionFunction_Once.Do(func() {
+		checkVersionFunction = gi.FunctionInvokerNew("Gtk", "check_version")
 	})
 }
 
@@ -118,16 +114,14 @@ var checkVersionInvoker *gi.Function
 
 // CheckVersion is a representation of the C type gtk_check_version.
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
-	if checkVersionInvoker == nil {
-		checkVersionInvoker = gi.FunctionInvokerNew("Gtk", "check_version")
-	}
+	checkVersionFunction_Set()
 
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(requiredMajor)
 	inArgs[1].SetUint32(requiredMinor)
 	inArgs[2].SetUint32(requiredMicro)
 
-	ret := checkVersionInvoker.Invoke(inArgs[:], nil)
+	ret := checkVersionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -140,12 +134,12 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 // UNSUPPORTED : C value 'gtk_device_grab_remove' : parameter 'widget' of type 'Widget' not supported
 
-var DisableSetlocaleFunction *gi.Function
-var DisableSetlocaleFunctionOnce sync.Once
+var disableSetlocaleFunction *gi.Function
+var disableSetlocaleFunction_Once sync.Once
 
-func DisableSetlocaleFunctionSet() {
-	DisableSetlocaleFunctionOnce.Do(func() {
-		DisableSetlocaleFunction = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
+func disableSetlocaleFunction_Set() {
+	disableSetlocaleFunction_Once.Do(func() {
+		disableSetlocaleFunction = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
 	})
 }
 
@@ -153,11 +147,9 @@ var disableSetlocaleInvoker *gi.Function
 
 // DisableSetlocale is a representation of the C type gtk_disable_setlocale.
 func DisableSetlocale() {
-	if disableSetlocaleInvoker == nil {
-		disableSetlocaleInvoker = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
-	}
+	disableSetlocaleFunction_Set()
 
-	disableSetlocaleInvoker.Invoke(nil, nil)
+	disableSetlocaleFunction.Invoke(nil, nil)
 
 }
 
@@ -191,12 +183,12 @@ func DisableSetlocale() {
 
 // UNSUPPORTED : C value 'gtk_file_chooser_error_quark' : return type 'GLib.Quark' not supported
 
-var GetBinaryAgeFunction *gi.Function
-var GetBinaryAgeFunctionOnce sync.Once
+var getBinaryAgeFunction *gi.Function
+var getBinaryAgeFunction_Once sync.Once
 
-func GetBinaryAgeFunctionSet() {
-	GetBinaryAgeFunctionOnce.Do(func() {
-		GetBinaryAgeFunction = gi.FunctionInvokerNew("Gtk", "get_binary_age")
+func getBinaryAgeFunction_Set() {
+	getBinaryAgeFunction_Once.Do(func() {
+		getBinaryAgeFunction = gi.FunctionInvokerNew("Gtk", "get_binary_age")
 	})
 }
 
@@ -204,11 +196,9 @@ var getBinaryAgeInvoker *gi.Function
 
 // GetBinaryAge is a representation of the C type gtk_get_binary_age.
 func GetBinaryAge() uint32 {
-	if getBinaryAgeInvoker == nil {
-		getBinaryAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_binary_age")
-	}
+	getBinaryAgeFunction_Set()
 
-	ret := getBinaryAgeInvoker.Invoke(nil, nil)
+	ret := getBinaryAgeFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -221,12 +211,12 @@ func GetBinaryAge() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_current_event_state' : parameter 'state' of type 'Gdk.ModifierType' not supported
 
-var GetCurrentEventTimeFunction *gi.Function
-var GetCurrentEventTimeFunctionOnce sync.Once
+var getCurrentEventTimeFunction *gi.Function
+var getCurrentEventTimeFunction_Once sync.Once
 
-func GetCurrentEventTimeFunctionSet() {
-	GetCurrentEventTimeFunctionOnce.Do(func() {
-		GetCurrentEventTimeFunction = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
+func getCurrentEventTimeFunction_Set() {
+	getCurrentEventTimeFunction_Once.Do(func() {
+		getCurrentEventTimeFunction = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
 	})
 }
 
@@ -234,23 +224,21 @@ var getCurrentEventTimeInvoker *gi.Function
 
 // GetCurrentEventTime is a representation of the C type gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
-	if getCurrentEventTimeInvoker == nil {
-		getCurrentEventTimeInvoker = gi.FunctionInvokerNew("Gtk", "get_current_event_time")
-	}
+	getCurrentEventTimeFunction_Set()
 
-	ret := getCurrentEventTimeInvoker.Invoke(nil, nil)
+	ret := getCurrentEventTimeFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetDebugFlagsFunction *gi.Function
-var GetDebugFlagsFunctionOnce sync.Once
+var getDebugFlagsFunction *gi.Function
+var getDebugFlagsFunction_Once sync.Once
 
-func GetDebugFlagsFunctionSet() {
-	GetDebugFlagsFunctionOnce.Do(func() {
-		GetDebugFlagsFunction = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
+func getDebugFlagsFunction_Set() {
+	getDebugFlagsFunction_Once.Do(func() {
+		getDebugFlagsFunction = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
 	})
 }
 
@@ -258,11 +246,9 @@ var getDebugFlagsInvoker *gi.Function
 
 // GetDebugFlags is a representation of the C type gtk_get_debug_flags.
 func GetDebugFlags() uint32 {
-	if getDebugFlagsInvoker == nil {
-		getDebugFlagsInvoker = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
-	}
+	getDebugFlagsFunction_Set()
 
-	ret := getDebugFlagsInvoker.Invoke(nil, nil)
+	ret := getDebugFlagsFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -273,12 +259,12 @@ func GetDebugFlags() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_event_widget' : parameter 'event' of type 'Gdk.Event' not supported
 
-var GetInterfaceAgeFunction *gi.Function
-var GetInterfaceAgeFunctionOnce sync.Once
+var getInterfaceAgeFunction *gi.Function
+var getInterfaceAgeFunction_Once sync.Once
 
-func GetInterfaceAgeFunctionSet() {
-	GetInterfaceAgeFunctionOnce.Do(func() {
-		GetInterfaceAgeFunction = gi.FunctionInvokerNew("Gtk", "get_interface_age")
+func getInterfaceAgeFunction_Set() {
+	getInterfaceAgeFunction_Once.Do(func() {
+		getInterfaceAgeFunction = gi.FunctionInvokerNew("Gtk", "get_interface_age")
 	})
 }
 
@@ -286,11 +272,9 @@ var getInterfaceAgeInvoker *gi.Function
 
 // GetInterfaceAge is a representation of the C type gtk_get_interface_age.
 func GetInterfaceAge() uint32 {
-	if getInterfaceAgeInvoker == nil {
-		getInterfaceAgeInvoker = gi.FunctionInvokerNew("Gtk", "get_interface_age")
-	}
+	getInterfaceAgeFunction_Set()
 
-	ret := getInterfaceAgeInvoker.Invoke(nil, nil)
+	ret := getInterfaceAgeFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -299,12 +283,12 @@ func GetInterfaceAge() uint32 {
 
 // UNSUPPORTED : C value 'gtk_get_locale_direction' : return type 'TextDirection' not supported
 
-var GetMajorVersionFunction *gi.Function
-var GetMajorVersionFunctionOnce sync.Once
+var getMajorVersionFunction *gi.Function
+var getMajorVersionFunction_Once sync.Once
 
-func GetMajorVersionFunctionSet() {
-	GetMajorVersionFunctionOnce.Do(func() {
-		GetMajorVersionFunction = gi.FunctionInvokerNew("Gtk", "get_major_version")
+func getMajorVersionFunction_Set() {
+	getMajorVersionFunction_Once.Do(func() {
+		getMajorVersionFunction = gi.FunctionInvokerNew("Gtk", "get_major_version")
 	})
 }
 
@@ -312,23 +296,21 @@ var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type gtk_get_major_version.
 func GetMajorVersion() uint32 {
-	if getMajorVersionInvoker == nil {
-		getMajorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_major_version")
-	}
+	getMajorVersionFunction_Set()
 
-	ret := getMajorVersionInvoker.Invoke(nil, nil)
+	ret := getMajorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetMicroVersionFunction *gi.Function
-var GetMicroVersionFunctionOnce sync.Once
+var getMicroVersionFunction *gi.Function
+var getMicroVersionFunction_Once sync.Once
 
-func GetMicroVersionFunctionSet() {
-	GetMicroVersionFunctionOnce.Do(func() {
-		GetMicroVersionFunction = gi.FunctionInvokerNew("Gtk", "get_micro_version")
+func getMicroVersionFunction_Set() {
+	getMicroVersionFunction_Once.Do(func() {
+		getMicroVersionFunction = gi.FunctionInvokerNew("Gtk", "get_micro_version")
 	})
 }
 
@@ -336,23 +318,21 @@ var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type gtk_get_micro_version.
 func GetMicroVersion() uint32 {
-	if getMicroVersionInvoker == nil {
-		getMicroVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_micro_version")
-	}
+	getMicroVersionFunction_Set()
 
-	ret := getMicroVersionInvoker.Invoke(nil, nil)
+	ret := getMicroVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var GetMinorVersionFunction *gi.Function
-var GetMinorVersionFunctionOnce sync.Once
+var getMinorVersionFunction *gi.Function
+var getMinorVersionFunction_Once sync.Once
 
-func GetMinorVersionFunctionSet() {
-	GetMinorVersionFunctionOnce.Do(func() {
-		GetMinorVersionFunction = gi.FunctionInvokerNew("Gtk", "get_minor_version")
+func getMinorVersionFunction_Set() {
+	getMinorVersionFunction_Once.Do(func() {
+		getMinorVersionFunction = gi.FunctionInvokerNew("Gtk", "get_minor_version")
 	})
 }
 
@@ -360,11 +340,9 @@ var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type gtk_get_minor_version.
 func GetMinorVersion() uint32 {
-	if getMinorVersionInvoker == nil {
-		getMinorVersionInvoker = gi.FunctionInvokerNew("Gtk", "get_minor_version")
-	}
+	getMinorVersionFunction_Set()
 
-	ret := getMinorVersionInvoker.Invoke(nil, nil)
+	ret := getMinorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -397,12 +375,12 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
-var KeySnooperRemoveFunction *gi.Function
-var KeySnooperRemoveFunctionOnce sync.Once
+var keySnooperRemoveFunction *gi.Function
+var keySnooperRemoveFunction_Once sync.Once
 
-func KeySnooperRemoveFunctionSet() {
-	KeySnooperRemoveFunctionOnce.Do(func() {
-		KeySnooperRemoveFunction = gi.FunctionInvokerNew("Gtk", "key_snooper_remove")
+func keySnooperRemoveFunction_Set() {
+	keySnooperRemoveFunction_Once.Do(func() {
+		keySnooperRemoveFunction = gi.FunctionInvokerNew("Gtk", "key_snooper_remove")
 	})
 }
 
@@ -410,23 +388,21 @@ var keySnooperRemoveInvoker *gi.Function
 
 // KeySnooperRemove is a representation of the C type gtk_key_snooper_remove.
 func KeySnooperRemove(snooperHandlerId uint32) {
-	if keySnooperRemoveInvoker == nil {
-		keySnooperRemoveInvoker = gi.FunctionInvokerNew("Gtk", "key_snooper_remove")
-	}
+	keySnooperRemoveFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(snooperHandlerId)
 
-	keySnooperRemoveInvoker.Invoke(inArgs[:], nil)
+	keySnooperRemoveFunction.Invoke(inArgs[:], nil)
 
 }
 
-var MainFunction *gi.Function
-var MainFunctionOnce sync.Once
+var mainFunction *gi.Function
+var mainFunction_Once sync.Once
 
-func MainFunctionSet() {
-	MainFunctionOnce.Do(func() {
-		MainFunction = gi.FunctionInvokerNew("Gtk", "main")
+func mainFunction_Set() {
+	mainFunction_Once.Do(func() {
+		mainFunction = gi.FunctionInvokerNew("Gtk", "main")
 	})
 }
 
@@ -434,11 +410,9 @@ var mainInvoker *gi.Function
 
 // Main is a representation of the C type gtk_main.
 func Main() {
-	if mainInvoker == nil {
-		mainInvoker = gi.FunctionInvokerNew("Gtk", "main")
-	}
+	mainFunction_Set()
 
-	mainInvoker.Invoke(nil, nil)
+	mainFunction.Invoke(nil, nil)
 
 }
 
@@ -448,12 +422,12 @@ func Main() {
 
 // UNSUPPORTED : C value 'gtk_main_iteration_do' : parameter 'blocking' of type 'gboolean' not supported
 
-var MainLevelFunction *gi.Function
-var MainLevelFunctionOnce sync.Once
+var mainLevelFunction *gi.Function
+var mainLevelFunction_Once sync.Once
 
-func MainLevelFunctionSet() {
-	MainLevelFunctionOnce.Do(func() {
-		MainLevelFunction = gi.FunctionInvokerNew("Gtk", "main_level")
+func mainLevelFunction_Set() {
+	mainLevelFunction_Once.Do(func() {
+		mainLevelFunction = gi.FunctionInvokerNew("Gtk", "main_level")
 	})
 }
 
@@ -461,23 +435,21 @@ var mainLevelInvoker *gi.Function
 
 // MainLevel is a representation of the C type gtk_main_level.
 func MainLevel() uint32 {
-	if mainLevelInvoker == nil {
-		mainLevelInvoker = gi.FunctionInvokerNew("Gtk", "main_level")
-	}
+	mainLevelFunction_Set()
 
-	ret := mainLevelInvoker.Invoke(nil, nil)
+	ret := mainLevelFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var MainQuitFunction *gi.Function
-var MainQuitFunctionOnce sync.Once
+var mainQuitFunction *gi.Function
+var mainQuitFunction_Once sync.Once
 
-func MainQuitFunctionSet() {
-	MainQuitFunctionOnce.Do(func() {
-		MainQuitFunction = gi.FunctionInvokerNew("Gtk", "main_quit")
+func mainQuitFunction_Set() {
+	mainQuitFunction_Once.Do(func() {
+		mainQuitFunction = gi.FunctionInvokerNew("Gtk", "main_quit")
 	})
 }
 
@@ -485,11 +457,9 @@ var mainQuitInvoker *gi.Function
 
 // MainQuit is a representation of the C type gtk_main_quit.
 func MainQuit() {
-	if mainQuitInvoker == nil {
-		mainQuitInvoker = gi.FunctionInvokerNew("Gtk", "main_quit")
-	}
+	mainQuitFunction_Set()
 
-	mainQuitInvoker.Invoke(nil, nil)
+	mainQuitFunction.Invoke(nil, nil)
 
 }
 
@@ -533,12 +503,12 @@ func MainQuit() {
 
 // UNSUPPORTED : C value 'gtk_paint_vline' : parameter 'style' of type 'Style' not supported
 
-var PaperSizeGetDefaultFunction *gi.Function
-var PaperSizeGetDefaultFunctionOnce sync.Once
+var paperSizeGetDefaultFunction *gi.Function
+var paperSizeGetDefaultFunction_Once sync.Once
 
-func PaperSizeGetDefaultFunctionSet() {
-	PaperSizeGetDefaultFunctionOnce.Do(func() {
-		PaperSizeGetDefaultFunction = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
+func paperSizeGetDefaultFunction_Set() {
+	paperSizeGetDefaultFunction_Once.Do(func() {
+		paperSizeGetDefaultFunction = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
 	})
 }
 
@@ -546,11 +516,9 @@ var paperSizeGetDefaultInvoker *gi.Function
 
 // PaperSizeGetDefault is a representation of the C type gtk_paper_size_get_default.
 func PaperSizeGetDefault() string {
-	if paperSizeGetDefaultInvoker == nil {
-		paperSizeGetDefaultInvoker = gi.FunctionInvokerNew("Gtk", "paper_size_get_default")
-	}
+	paperSizeGetDefaultFunction_Set()
 
-	ret := paperSizeGetDefaultInvoker.Invoke(nil, nil)
+	ret := paperSizeGetDefaultFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -575,12 +543,12 @@ func PaperSizeGetDefault() string {
 
 // UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'settings' of type 'Settings' not supported
 
-var RcGetDefaultFilesFunction *gi.Function
-var RcGetDefaultFilesFunctionOnce sync.Once
+var rcGetDefaultFilesFunction *gi.Function
+var rcGetDefaultFilesFunction_Once sync.Once
 
-func RcGetDefaultFilesFunctionSet() {
-	RcGetDefaultFilesFunctionOnce.Do(func() {
-		RcGetDefaultFilesFunction = gi.FunctionInvokerNew("Gtk", "rc_get_default_files")
+func rcGetDefaultFilesFunction_Set() {
+	rcGetDefaultFilesFunction_Once.Do(func() {
+		rcGetDefaultFilesFunction = gi.FunctionInvokerNew("Gtk", "rc_get_default_files")
 	})
 }
 
@@ -588,11 +556,9 @@ var rcGetDefaultFilesInvoker *gi.Function
 
 // RcGetDefaultFiles is a representation of the C type gtk_rc_get_default_files.
 func RcGetDefaultFiles() {
-	if rcGetDefaultFilesInvoker == nil {
-		rcGetDefaultFilesInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_default_files")
-	}
+	rcGetDefaultFilesFunction_Set()
 
-	rcGetDefaultFilesInvoker.Invoke(nil, nil)
+	rcGetDefaultFilesFunction.Invoke(nil, nil)
 
 }
 
@@ -606,12 +572,12 @@ func RcGetDefaultFiles() {
 
 // UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : parameter 'settings' of type 'Settings' not supported
 
-var RcGetThemeDirFunction *gi.Function
-var RcGetThemeDirFunctionOnce sync.Once
+var rcGetThemeDirFunction *gi.Function
+var rcGetThemeDirFunction_Once sync.Once
 
-func RcGetThemeDirFunctionSet() {
-	RcGetThemeDirFunctionOnce.Do(func() {
-		RcGetThemeDirFunction = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
+func rcGetThemeDirFunction_Set() {
+	rcGetThemeDirFunction_Once.Do(func() {
+		rcGetThemeDirFunction = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
 	})
 }
 
@@ -619,23 +585,21 @@ var rcGetThemeDirInvoker *gi.Function
 
 // RcGetThemeDir is a representation of the C type gtk_rc_get_theme_dir.
 func RcGetThemeDir() string {
-	if rcGetThemeDirInvoker == nil {
-		rcGetThemeDirInvoker = gi.FunctionInvokerNew("Gtk", "rc_get_theme_dir")
-	}
+	rcGetThemeDirFunction_Set()
 
-	ret := rcGetThemeDirInvoker.Invoke(nil, nil)
+	ret := rcGetThemeDirFunction.Invoke(nil, nil)
 
 	retGo := ret.String(true)
 
 	return retGo
 }
 
-var RcParseFunction *gi.Function
-var RcParseFunctionOnce sync.Once
+var rcParseFunction *gi.Function
+var rcParseFunction_Once sync.Once
 
-func RcParseFunctionSet() {
-	RcParseFunctionOnce.Do(func() {
-		RcParseFunction = gi.FunctionInvokerNew("Gtk", "rc_parse")
+func rcParseFunction_Set() {
+	rcParseFunction_Once.Do(func() {
+		rcParseFunction = gi.FunctionInvokerNew("Gtk", "rc_parse")
 	})
 }
 
@@ -643,14 +607,12 @@ var rcParseInvoker *gi.Function
 
 // RcParse is a representation of the C type gtk_rc_parse.
 func RcParse(filename string) {
-	if rcParseInvoker == nil {
-		rcParseInvoker = gi.FunctionInvokerNew("Gtk", "rc_parse")
-	}
+	rcParseFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filename)
 
-	rcParseInvoker.Invoke(inArgs[:], nil)
+	rcParseFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -662,12 +624,12 @@ func RcParse(filename string) {
 
 // UNSUPPORTED : C value 'gtk_rc_parse_state' : parameter 'scanner' of type 'GLib.Scanner' not supported
 
-var RcParseStringFunction *gi.Function
-var RcParseStringFunctionOnce sync.Once
+var rcParseStringFunction *gi.Function
+var rcParseStringFunction_Once sync.Once
 
-func RcParseStringFunctionSet() {
-	RcParseStringFunctionOnce.Do(func() {
-		RcParseStringFunction = gi.FunctionInvokerNew("Gtk", "rc_parse_string")
+func rcParseStringFunction_Set() {
+	rcParseStringFunction_Once.Do(func() {
+		rcParseStringFunction = gi.FunctionInvokerNew("Gtk", "rc_parse_string")
 	})
 }
 
@@ -675,14 +637,12 @@ var rcParseStringInvoker *gi.Function
 
 // RcParseString is a representation of the C type gtk_rc_parse_string.
 func RcParseString(rcString string) {
-	if rcParseStringInvoker == nil {
-		rcParseStringInvoker = gi.FunctionInvokerNew("Gtk", "rc_parse_string")
-	}
+	rcParseStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(rcString)
 
-	rcParseStringInvoker.Invoke(inArgs[:], nil)
+	rcParseStringFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -764,12 +724,12 @@ func RcParseString(rcString string) {
 
 // UNSUPPORTED : C value 'gtk_selection_remove_all' : parameter 'widget' of type 'Widget' not supported
 
-var SetDebugFlagsFunction *gi.Function
-var SetDebugFlagsFunctionOnce sync.Once
+var setDebugFlagsFunction *gi.Function
+var setDebugFlagsFunction_Once sync.Once
 
-func SetDebugFlagsFunctionSet() {
-	SetDebugFlagsFunctionOnce.Do(func() {
-		SetDebugFlagsFunction = gi.FunctionInvokerNew("Gtk", "set_debug_flags")
+func setDebugFlagsFunction_Set() {
+	setDebugFlagsFunction_Once.Do(func() {
+		setDebugFlagsFunction = gi.FunctionInvokerNew("Gtk", "set_debug_flags")
 	})
 }
 
@@ -777,14 +737,12 @@ var setDebugFlagsInvoker *gi.Function
 
 // SetDebugFlags is a representation of the C type gtk_set_debug_flags.
 func SetDebugFlags(flags uint32) {
-	if setDebugFlagsInvoker == nil {
-		setDebugFlagsInvoker = gi.FunctionInvokerNew("Gtk", "set_debug_flags")
-	}
+	setDebugFlagsFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(flags)
 
-	setDebugFlagsInvoker.Invoke(inArgs[:], nil)
+	setDebugFlagsFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -830,12 +788,12 @@ func SetDebugFlags(flags uint32) {
 
 // UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' has no type
 
-var TestListAllTypesFunction *gi.Function
-var TestListAllTypesFunctionOnce sync.Once
+var testListAllTypesFunction *gi.Function
+var testListAllTypesFunction_Once sync.Once
 
-func TestListAllTypesFunctionSet() {
-	TestListAllTypesFunctionOnce.Do(func() {
-		TestListAllTypesFunction = gi.FunctionInvokerNew("Gtk", "test_list_all_types")
+func testListAllTypesFunction_Set() {
+	testListAllTypesFunction_Once.Do(func() {
+		testListAllTypesFunction = gi.FunctionInvokerNew("Gtk", "test_list_all_types")
 	})
 }
 
@@ -843,25 +801,23 @@ var testListAllTypesInvoker *gi.Function
 
 // TestListAllTypes is a representation of the C type gtk_test_list_all_types.
 func TestListAllTypes() uint32 {
-	if testListAllTypesInvoker == nil {
-		testListAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_list_all_types")
-	}
+	testListAllTypesFunction_Set()
 
 	var outArgs [1]gi.Argument
 
-	testListAllTypesInvoker.Invoke(nil, outArgs[:])
+	testListAllTypesFunction.Invoke(nil, outArgs[:])
 
 	out0 := outArgs[0].Uint32()
 
 	return out0
 }
 
-var TestRegisterAllTypesFunction *gi.Function
-var TestRegisterAllTypesFunctionOnce sync.Once
+var testRegisterAllTypesFunction *gi.Function
+var testRegisterAllTypesFunction_Once sync.Once
 
-func TestRegisterAllTypesFunctionSet() {
-	TestRegisterAllTypesFunctionOnce.Do(func() {
-		TestRegisterAllTypesFunction = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
+func testRegisterAllTypesFunction_Set() {
+	testRegisterAllTypesFunction_Once.Do(func() {
+		testRegisterAllTypesFunction = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
 	})
 }
 
@@ -869,11 +825,9 @@ var testRegisterAllTypesInvoker *gi.Function
 
 // TestRegisterAllTypes is a representation of the C type gtk_test_register_all_types.
 func TestRegisterAllTypes() {
-	if testRegisterAllTypesInvoker == nil {
-		testRegisterAllTypesInvoker = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
-	}
+	testRegisterAllTypesFunction_Set()
 
-	testRegisterAllTypesInvoker.Invoke(nil, nil)
+	testRegisterAllTypesFunction.Invoke(nil, nil)
 
 }
 

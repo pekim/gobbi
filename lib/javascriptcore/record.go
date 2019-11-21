@@ -21,10 +21,10 @@ type GlobalContextRef struct {
 }
 
 var globalContextRefRefFunction *gi.Function
-var globalContextRefRefFunctionOnce sync.Once
+var globalContextRefRefFunction_Once sync.Once
 
-func globalContextRefRefFunctionSet() {
-	globalContextRefRefFunctionOnce.Do(func() {
+func globalContextRefRefFunction_Set() {
+	globalContextRefRefFunction_Once.Do(func() {
 		globalContextRefRefFunction = gi.FunctionInvokerNew("JavaScriptCore", "ref")
 	})
 }
@@ -33,22 +33,20 @@ var refGlobalContextRefInvoker *gi.Function
 
 // Ref is a representation of the C type JSGlobalContextRetain.
 func (recv *GlobalContextRef) Ref() {
-	if refGlobalContextRefInvoker == nil {
-		refGlobalContextRefInvoker = gi.StructFunctionInvokerNew("JavaScriptCore", "GlobalContextRef", "ref")
-	}
+	globalContextRefRefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	refGlobalContextRefInvoker.Invoke(inArgs[:], nil)
+	globalContextRefRefFunction.Invoke(inArgs[:], nil)
 
 }
 
 var globalContextRefUnrefFunction *gi.Function
-var globalContextRefUnrefFunctionOnce sync.Once
+var globalContextRefUnrefFunction_Once sync.Once
 
-func globalContextRefUnrefFunctionSet() {
-	globalContextRefUnrefFunctionOnce.Do(func() {
+func globalContextRefUnrefFunction_Set() {
+	globalContextRefUnrefFunction_Once.Do(func() {
 		globalContextRefUnrefFunction = gi.FunctionInvokerNew("JavaScriptCore", "unref")
 	})
 }
@@ -57,14 +55,12 @@ var unrefGlobalContextRefInvoker *gi.Function
 
 // Unref is a representation of the C type JSGlobalContextRelease.
 func (recv *GlobalContextRef) Unref() {
-	if unrefGlobalContextRefInvoker == nil {
-		unrefGlobalContextRefInvoker = gi.StructFunctionInvokerNew("JavaScriptCore", "GlobalContextRef", "unref")
-	}
+	globalContextRefUnrefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unrefGlobalContextRefInvoker.Invoke(inArgs[:], nil)
+	globalContextRefUnrefFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -95,10 +91,10 @@ type StringRef struct {
 }
 
 var stringRefRefFunction *gi.Function
-var stringRefRefFunctionOnce sync.Once
+var stringRefRefFunction_Once sync.Once
 
-func stringRefRefFunctionSet() {
-	stringRefRefFunctionOnce.Do(func() {
+func stringRefRefFunction_Set() {
+	stringRefRefFunction_Once.Do(func() {
 		stringRefRefFunction = gi.FunctionInvokerNew("JavaScriptCore", "ref")
 	})
 }
@@ -107,22 +103,20 @@ var refStringRefInvoker *gi.Function
 
 // Ref is a representation of the C type JSStringRetain.
 func (recv *StringRef) Ref() {
-	if refStringRefInvoker == nil {
-		refStringRefInvoker = gi.StructFunctionInvokerNew("JavaScriptCore", "StringRef", "ref")
-	}
+	stringRefRefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	refStringRefInvoker.Invoke(inArgs[:], nil)
+	stringRefRefFunction.Invoke(inArgs[:], nil)
 
 }
 
 var stringRefUnrefFunction *gi.Function
-var stringRefUnrefFunctionOnce sync.Once
+var stringRefUnrefFunction_Once sync.Once
 
-func stringRefUnrefFunctionSet() {
-	stringRefUnrefFunctionOnce.Do(func() {
+func stringRefUnrefFunction_Set() {
+	stringRefUnrefFunction_Once.Do(func() {
 		stringRefUnrefFunction = gi.FunctionInvokerNew("JavaScriptCore", "unref")
 	})
 }
@@ -131,14 +125,12 @@ var unrefStringRefInvoker *gi.Function
 
 // Unref is a representation of the C type JSStringRelease.
 func (recv *StringRef) Unref() {
-	if unrefStringRefInvoker == nil {
-		unrefStringRefInvoker = gi.StructFunctionInvokerNew("JavaScriptCore", "StringRef", "unref")
-	}
+	stringRefUnrefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unrefStringRefInvoker.Invoke(inArgs[:], nil)
+	stringRefUnrefFunction.Invoke(inArgs[:], nil)
 
 }
 

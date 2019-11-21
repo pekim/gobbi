@@ -11,12 +11,12 @@ import (
 
 // UNSUPPORTED : C value 'gdk_atom_intern' : parameter 'only_if_exists' of type 'gboolean' not supported
 
-var AtomInternStaticStringFunction *gi.Function
-var AtomInternStaticStringFunctionOnce sync.Once
+var atomInternStaticStringFunction *gi.Function
+var atomInternStaticStringFunction_Once sync.Once
 
-func AtomInternStaticStringFunctionSet() {
-	AtomInternStaticStringFunctionOnce.Do(func() {
-		AtomInternStaticStringFunction = gi.FunctionInvokerNew("Gdk", "atom_intern_static_string")
+func atomInternStaticStringFunction_Set() {
+	atomInternStaticStringFunction_Once.Do(func() {
+		atomInternStaticStringFunction = gi.FunctionInvokerNew("Gdk", "atom_intern_static_string")
 	})
 }
 
@@ -24,26 +24,24 @@ var atomInternStaticStringInvoker *gi.Function
 
 // AtomInternStaticString is a representation of the C type gdk_atom_intern_static_string.
 func AtomInternStaticString(atomName string) *Atom {
-	if atomInternStaticStringInvoker == nil {
-		atomInternStaticStringInvoker = gi.FunctionInvokerNew("Gdk", "atom_intern_static_string")
-	}
+	atomInternStaticStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(atomName)
 
-	ret := atomInternStaticStringInvoker.Invoke(inArgs[:], nil)
+	ret := atomInternStaticStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Atom{native: ret.Pointer()}
 
 	return retGo
 }
 
-var BeepFunction *gi.Function
-var BeepFunctionOnce sync.Once
+var beepFunction *gi.Function
+var beepFunction_Once sync.Once
 
-func BeepFunctionSet() {
-	BeepFunctionOnce.Do(func() {
-		BeepFunction = gi.FunctionInvokerNew("Gdk", "beep")
+func beepFunction_Set() {
+	beepFunction_Once.Do(func() {
+		beepFunction = gi.FunctionInvokerNew("Gdk", "beep")
 	})
 }
 
@@ -51,11 +49,9 @@ var beepInvoker *gi.Function
 
 // Beep is a representation of the C type gdk_beep.
 func Beep() {
-	if beepInvoker == nil {
-		beepInvoker = gi.FunctionInvokerNew("Gdk", "beep")
-	}
+	beepFunction_Set()
 
-	beepInvoker.Invoke(nil, nil)
+	beepFunction.Invoke(nil, nil)
 
 }
 
@@ -85,12 +81,12 @@ func Beep() {
 
 // UNSUPPORTED : C value 'gdk_color_parse' : parameter 'color' of type 'Color' not supported
 
-var DisableMultideviceFunction *gi.Function
-var DisableMultideviceFunctionOnce sync.Once
+var disableMultideviceFunction *gi.Function
+var disableMultideviceFunction_Once sync.Once
 
-func DisableMultideviceFunctionSet() {
-	DisableMultideviceFunctionOnce.Do(func() {
-		DisableMultideviceFunction = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
+func disableMultideviceFunction_Set() {
+	disableMultideviceFunction_Once.Do(func() {
+		disableMultideviceFunction = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
 	})
 }
 
@@ -98,11 +94,9 @@ var disableMultideviceInvoker *gi.Function
 
 // DisableMultidevice is a representation of the C type gdk_disable_multidevice.
 func DisableMultidevice() {
-	if disableMultideviceInvoker == nil {
-		disableMultideviceInvoker = gi.FunctionInvokerNew("Gdk", "disable_multidevice")
-	}
+	disableMultideviceFunction_Set()
 
-	disableMultideviceInvoker.Invoke(nil, nil)
+	disableMultideviceFunction.Invoke(nil, nil)
 
 }
 
@@ -132,12 +126,12 @@ func DisableMultidevice() {
 
 // UNSUPPORTED : C value 'gdk_drop_reply' : parameter 'context' of type 'DragContext' not supported
 
-var ErrorTrapPopFunction *gi.Function
-var ErrorTrapPopFunctionOnce sync.Once
+var errorTrapPopFunction *gi.Function
+var errorTrapPopFunction_Once sync.Once
 
-func ErrorTrapPopFunctionSet() {
-	ErrorTrapPopFunctionOnce.Do(func() {
-		ErrorTrapPopFunction = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
+func errorTrapPopFunction_Set() {
+	errorTrapPopFunction_Once.Do(func() {
+		errorTrapPopFunction = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
 	})
 }
 
@@ -145,23 +139,21 @@ var errorTrapPopInvoker *gi.Function
 
 // ErrorTrapPop is a representation of the C type gdk_error_trap_pop.
 func ErrorTrapPop() int32 {
-	if errorTrapPopInvoker == nil {
-		errorTrapPopInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop")
-	}
+	errorTrapPopFunction_Set()
 
-	ret := errorTrapPopInvoker.Invoke(nil, nil)
+	ret := errorTrapPopFunction.Invoke(nil, nil)
 
 	retGo := ret.Int32()
 
 	return retGo
 }
 
-var ErrorTrapPopIgnoredFunction *gi.Function
-var ErrorTrapPopIgnoredFunctionOnce sync.Once
+var errorTrapPopIgnoredFunction *gi.Function
+var errorTrapPopIgnoredFunction_Once sync.Once
 
-func ErrorTrapPopIgnoredFunctionSet() {
-	ErrorTrapPopIgnoredFunctionOnce.Do(func() {
-		ErrorTrapPopIgnoredFunction = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
+func errorTrapPopIgnoredFunction_Set() {
+	errorTrapPopIgnoredFunction_Once.Do(func() {
+		errorTrapPopIgnoredFunction = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
 	})
 }
 
@@ -169,20 +161,18 @@ var errorTrapPopIgnoredInvoker *gi.Function
 
 // ErrorTrapPopIgnored is a representation of the C type gdk_error_trap_pop_ignored.
 func ErrorTrapPopIgnored() {
-	if errorTrapPopIgnoredInvoker == nil {
-		errorTrapPopIgnoredInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_pop_ignored")
-	}
+	errorTrapPopIgnoredFunction_Set()
 
-	errorTrapPopIgnoredInvoker.Invoke(nil, nil)
+	errorTrapPopIgnoredFunction.Invoke(nil, nil)
 
 }
 
-var ErrorTrapPushFunction *gi.Function
-var ErrorTrapPushFunctionOnce sync.Once
+var errorTrapPushFunction *gi.Function
+var errorTrapPushFunction_Once sync.Once
 
-func ErrorTrapPushFunctionSet() {
-	ErrorTrapPushFunctionOnce.Do(func() {
-		ErrorTrapPushFunction = gi.FunctionInvokerNew("Gdk", "error_trap_push")
+func errorTrapPushFunction_Set() {
+	errorTrapPushFunction_Once.Do(func() {
+		errorTrapPushFunction = gi.FunctionInvokerNew("Gdk", "error_trap_push")
 	})
 }
 
@@ -190,11 +180,9 @@ var errorTrapPushInvoker *gi.Function
 
 // ErrorTrapPush is a representation of the C type gdk_error_trap_push.
 func ErrorTrapPush() {
-	if errorTrapPushInvoker == nil {
-		errorTrapPushInvoker = gi.FunctionInvokerNew("Gdk", "error_trap_push")
-	}
+	errorTrapPushFunction_Set()
 
-	errorTrapPushInvoker.Invoke(nil, nil)
+	errorTrapPushFunction.Invoke(nil, nil)
 
 }
 
@@ -214,12 +202,12 @@ func ErrorTrapPush() {
 
 // UNSUPPORTED : C value 'gdk_events_pending' : return type 'gboolean' not supported
 
-var FlushFunction *gi.Function
-var FlushFunctionOnce sync.Once
+var flushFunction *gi.Function
+var flushFunction_Once sync.Once
 
-func FlushFunctionSet() {
-	FlushFunctionOnce.Do(func() {
-		FlushFunction = gi.FunctionInvokerNew("Gdk", "flush")
+func flushFunction_Set() {
+	flushFunction_Once.Do(func() {
+		flushFunction = gi.FunctionInvokerNew("Gdk", "flush")
 	})
 }
 
@@ -227,22 +215,20 @@ var flushInvoker *gi.Function
 
 // Flush is a representation of the C type gdk_flush.
 func Flush() {
-	if flushInvoker == nil {
-		flushInvoker = gi.FunctionInvokerNew("Gdk", "flush")
-	}
+	flushFunction_Set()
 
-	flushInvoker.Invoke(nil, nil)
+	flushFunction.Invoke(nil, nil)
 
 }
 
 // UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
 
-var GetDisplayFunction *gi.Function
-var GetDisplayFunctionOnce sync.Once
+var getDisplayFunction *gi.Function
+var getDisplayFunction_Once sync.Once
 
-func GetDisplayFunctionSet() {
-	GetDisplayFunctionOnce.Do(func() {
-		GetDisplayFunction = gi.FunctionInvokerNew("Gdk", "get_display")
+func getDisplayFunction_Set() {
+	getDisplayFunction_Once.Do(func() {
+		getDisplayFunction = gi.FunctionInvokerNew("Gdk", "get_display")
 	})
 }
 
@@ -250,23 +236,21 @@ var getDisplayInvoker *gi.Function
 
 // GetDisplay is a representation of the C type gdk_get_display.
 func GetDisplay() string {
-	if getDisplayInvoker == nil {
-		getDisplayInvoker = gi.FunctionInvokerNew("Gdk", "get_display")
-	}
+	getDisplayFunction_Set()
 
-	ret := getDisplayInvoker.Invoke(nil, nil)
+	ret := getDisplayFunction.Invoke(nil, nil)
 
 	retGo := ret.String(true)
 
 	return retGo
 }
 
-var GetDisplayArgNameFunction *gi.Function
-var GetDisplayArgNameFunctionOnce sync.Once
+var getDisplayArgNameFunction *gi.Function
+var getDisplayArgNameFunction_Once sync.Once
 
-func GetDisplayArgNameFunctionSet() {
-	GetDisplayArgNameFunctionOnce.Do(func() {
-		GetDisplayArgNameFunction = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
+func getDisplayArgNameFunction_Set() {
+	getDisplayArgNameFunction_Once.Do(func() {
+		getDisplayArgNameFunction = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
 	})
 }
 
@@ -274,23 +258,21 @@ var getDisplayArgNameInvoker *gi.Function
 
 // GetDisplayArgName is a representation of the C type gdk_get_display_arg_name.
 func GetDisplayArgName() string {
-	if getDisplayArgNameInvoker == nil {
-		getDisplayArgNameInvoker = gi.FunctionInvokerNew("Gdk", "get_display_arg_name")
-	}
+	getDisplayArgNameFunction_Set()
 
-	ret := getDisplayArgNameInvoker.Invoke(nil, nil)
+	ret := getDisplayArgNameFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
 	return retGo
 }
 
-var GetProgramClassFunction *gi.Function
-var GetProgramClassFunctionOnce sync.Once
+var getProgramClassFunction *gi.Function
+var getProgramClassFunction_Once sync.Once
 
-func GetProgramClassFunctionSet() {
-	GetProgramClassFunctionOnce.Do(func() {
-		GetProgramClassFunction = gi.FunctionInvokerNew("Gdk", "get_program_class")
+func getProgramClassFunction_Set() {
+	getProgramClassFunction_Once.Do(func() {
+		getProgramClassFunction = gi.FunctionInvokerNew("Gdk", "get_program_class")
 	})
 }
 
@@ -298,11 +280,9 @@ var getProgramClassInvoker *gi.Function
 
 // GetProgramClass is a representation of the C type gdk_get_program_class.
 func GetProgramClass() string {
-	if getProgramClassInvoker == nil {
-		getProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "get_program_class")
-	}
+	getProgramClassFunction_Set()
 
-	ret := getProgramClassInvoker.Invoke(nil, nil)
+	ret := getProgramClassFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -319,12 +299,12 @@ func GetProgramClass() string {
 
 // UNSUPPORTED : C value 'gdk_keyboard_grab' : parameter 'window' of type 'Window' not supported
 
-var KeyboardUngrabFunction *gi.Function
-var KeyboardUngrabFunctionOnce sync.Once
+var keyboardUngrabFunction *gi.Function
+var keyboardUngrabFunction_Once sync.Once
 
-func KeyboardUngrabFunctionSet() {
-	KeyboardUngrabFunctionOnce.Do(func() {
-		KeyboardUngrabFunction = gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
+func keyboardUngrabFunction_Set() {
+	keyboardUngrabFunction_Once.Do(func() {
+		keyboardUngrabFunction = gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
 	})
 }
 
@@ -332,23 +312,21 @@ var keyboardUngrabInvoker *gi.Function
 
 // KeyboardUngrab is a representation of the C type gdk_keyboard_ungrab.
 func KeyboardUngrab(time uint32) {
-	if keyboardUngrabInvoker == nil {
-		keyboardUngrabInvoker = gi.FunctionInvokerNew("Gdk", "keyboard_ungrab")
-	}
+	keyboardUngrabFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(time)
 
-	keyboardUngrabInvoker.Invoke(inArgs[:], nil)
+	keyboardUngrabFunction.Invoke(inArgs[:], nil)
 
 }
 
-var KeyvalConvertCaseFunction *gi.Function
-var KeyvalConvertCaseFunctionOnce sync.Once
+var keyvalConvertCaseFunction *gi.Function
+var keyvalConvertCaseFunction_Once sync.Once
 
-func KeyvalConvertCaseFunctionSet() {
-	KeyvalConvertCaseFunctionOnce.Do(func() {
-		KeyvalConvertCaseFunction = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
+func keyvalConvertCaseFunction_Set() {
+	keyvalConvertCaseFunction_Once.Do(func() {
+		keyvalConvertCaseFunction = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
 	})
 }
 
@@ -356,16 +334,14 @@ var keyvalConvertCaseInvoker *gi.Function
 
 // KeyvalConvertCase is a representation of the C type gdk_keyval_convert_case.
 func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
-	if keyvalConvertCaseInvoker == nil {
-		keyvalConvertCaseInvoker = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
-	}
+	keyvalConvertCaseFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(symbol)
 
 	var outArgs [2]gi.Argument
 
-	keyvalConvertCaseInvoker.Invoke(inArgs[:], outArgs[:])
+	keyvalConvertCaseFunction.Invoke(inArgs[:], outArgs[:])
 
 	out0 := outArgs[0].Uint32()
 	out1 := outArgs[1].Uint32()
@@ -373,12 +349,12 @@ func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
 	return out0, out1
 }
 
-var KeyvalFromNameFunction *gi.Function
-var KeyvalFromNameFunctionOnce sync.Once
+var keyvalFromNameFunction *gi.Function
+var keyvalFromNameFunction_Once sync.Once
 
-func KeyvalFromNameFunctionSet() {
-	KeyvalFromNameFunctionOnce.Do(func() {
-		KeyvalFromNameFunction = gi.FunctionInvokerNew("Gdk", "keyval_from_name")
+func keyvalFromNameFunction_Set() {
+	keyvalFromNameFunction_Once.Do(func() {
+		keyvalFromNameFunction = gi.FunctionInvokerNew("Gdk", "keyval_from_name")
 	})
 }
 
@@ -386,14 +362,12 @@ var keyvalFromNameInvoker *gi.Function
 
 // KeyvalFromName is a representation of the C type gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) uint32 {
-	if keyvalFromNameInvoker == nil {
-		keyvalFromNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_from_name")
-	}
+	keyvalFromNameFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(keyvalName)
 
-	ret := keyvalFromNameInvoker.Invoke(inArgs[:], nil)
+	ret := keyvalFromNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -404,12 +378,12 @@ func KeyvalFromName(keyvalName string) uint32 {
 
 // UNSUPPORTED : C value 'gdk_keyval_is_upper' : return type 'gboolean' not supported
 
-var KeyvalNameFunction *gi.Function
-var KeyvalNameFunctionOnce sync.Once
+var keyvalNameFunction *gi.Function
+var keyvalNameFunction_Once sync.Once
 
-func KeyvalNameFunctionSet() {
-	KeyvalNameFunctionOnce.Do(func() {
-		KeyvalNameFunction = gi.FunctionInvokerNew("Gdk", "keyval_name")
+func keyvalNameFunction_Set() {
+	keyvalNameFunction_Once.Do(func() {
+		keyvalNameFunction = gi.FunctionInvokerNew("Gdk", "keyval_name")
 	})
 }
 
@@ -417,26 +391,24 @@ var keyvalNameInvoker *gi.Function
 
 // KeyvalName is a representation of the C type gdk_keyval_name.
 func KeyvalName(keyval uint32) string {
-	if keyvalNameInvoker == nil {
-		keyvalNameInvoker = gi.FunctionInvokerNew("Gdk", "keyval_name")
-	}
+	keyvalNameFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalNameInvoker.Invoke(inArgs[:], nil)
+	ret := keyvalNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
 	return retGo
 }
 
-var KeyvalToLowerFunction *gi.Function
-var KeyvalToLowerFunctionOnce sync.Once
+var keyvalToLowerFunction *gi.Function
+var keyvalToLowerFunction_Once sync.Once
 
-func KeyvalToLowerFunctionSet() {
-	KeyvalToLowerFunctionOnce.Do(func() {
-		KeyvalToLowerFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
+func keyvalToLowerFunction_Set() {
+	keyvalToLowerFunction_Once.Do(func() {
+		keyvalToLowerFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
 	})
 }
 
@@ -444,26 +416,24 @@ var keyvalToLowerInvoker *gi.Function
 
 // KeyvalToLower is a representation of the C type gdk_keyval_to_lower.
 func KeyvalToLower(keyval uint32) uint32 {
-	if keyvalToLowerInvoker == nil {
-		keyvalToLowerInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
-	}
+	keyvalToLowerFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalToLowerInvoker.Invoke(inArgs[:], nil)
+	ret := keyvalToLowerFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var KeyvalToUnicodeFunction *gi.Function
-var KeyvalToUnicodeFunctionOnce sync.Once
+var keyvalToUnicodeFunction *gi.Function
+var keyvalToUnicodeFunction_Once sync.Once
 
-func KeyvalToUnicodeFunctionSet() {
-	KeyvalToUnicodeFunctionOnce.Do(func() {
-		KeyvalToUnicodeFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
+func keyvalToUnicodeFunction_Set() {
+	keyvalToUnicodeFunction_Once.Do(func() {
+		keyvalToUnicodeFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
 	})
 }
 
@@ -471,26 +441,24 @@ var keyvalToUnicodeInvoker *gi.Function
 
 // KeyvalToUnicode is a representation of the C type gdk_keyval_to_unicode.
 func KeyvalToUnicode(keyval uint32) uint32 {
-	if keyvalToUnicodeInvoker == nil {
-		keyvalToUnicodeInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_unicode")
-	}
+	keyvalToUnicodeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalToUnicodeInvoker.Invoke(inArgs[:], nil)
+	ret := keyvalToUnicodeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var KeyvalToUpperFunction *gi.Function
-var KeyvalToUpperFunctionOnce sync.Once
+var keyvalToUpperFunction *gi.Function
+var keyvalToUpperFunction_Once sync.Once
 
-func KeyvalToUpperFunctionSet() {
-	KeyvalToUpperFunctionOnce.Do(func() {
-		KeyvalToUpperFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
+func keyvalToUpperFunction_Set() {
+	keyvalToUpperFunction_Once.Do(func() {
+		keyvalToUpperFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
 	})
 }
 
@@ -498,14 +466,12 @@ var keyvalToUpperInvoker *gi.Function
 
 // KeyvalToUpper is a representation of the C type gdk_keyval_to_upper.
 func KeyvalToUpper(keyval uint32) uint32 {
-	if keyvalToUpperInvoker == nil {
-		keyvalToUpperInvoker = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
-	}
+	keyvalToUpperFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
-	ret := keyvalToUpperInvoker.Invoke(inArgs[:], nil)
+	ret := keyvalToUpperFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -514,12 +480,12 @@ func KeyvalToUpper(keyval uint32) uint32 {
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
 
-var NotifyStartupCompleteFunction *gi.Function
-var NotifyStartupCompleteFunctionOnce sync.Once
+var notifyStartupCompleteFunction *gi.Function
+var notifyStartupCompleteFunction_Once sync.Once
 
-func NotifyStartupCompleteFunctionSet() {
-	NotifyStartupCompleteFunctionOnce.Do(func() {
-		NotifyStartupCompleteFunction = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
+func notifyStartupCompleteFunction_Set() {
+	notifyStartupCompleteFunction_Once.Do(func() {
+		notifyStartupCompleteFunction = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
 	})
 }
 
@@ -527,20 +493,18 @@ var notifyStartupCompleteInvoker *gi.Function
 
 // NotifyStartupComplete is a representation of the C type gdk_notify_startup_complete.
 func NotifyStartupComplete() {
-	if notifyStartupCompleteInvoker == nil {
-		notifyStartupCompleteInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete")
-	}
+	notifyStartupCompleteFunction_Set()
 
-	notifyStartupCompleteInvoker.Invoke(nil, nil)
+	notifyStartupCompleteFunction.Invoke(nil, nil)
 
 }
 
-var NotifyStartupCompleteWithIdFunction *gi.Function
-var NotifyStartupCompleteWithIdFunctionOnce sync.Once
+var notifyStartupCompleteWithIdFunction *gi.Function
+var notifyStartupCompleteWithIdFunction_Once sync.Once
 
-func NotifyStartupCompleteWithIdFunctionSet() {
-	NotifyStartupCompleteWithIdFunctionOnce.Do(func() {
-		NotifyStartupCompleteWithIdFunction = gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
+func notifyStartupCompleteWithIdFunction_Set() {
+	notifyStartupCompleteWithIdFunction_Once.Do(func() {
+		notifyStartupCompleteWithIdFunction = gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
 	})
 }
 
@@ -548,14 +512,12 @@ var notifyStartupCompleteWithIdInvoker *gi.Function
 
 // NotifyStartupCompleteWithId is a representation of the C type gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId(startupId string) {
-	if notifyStartupCompleteWithIdInvoker == nil {
-		notifyStartupCompleteWithIdInvoker = gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
-	}
+	notifyStartupCompleteWithIdFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(startupId)
 
-	notifyStartupCompleteWithIdInvoker.Invoke(inArgs[:], nil)
+	notifyStartupCompleteWithIdFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -585,12 +547,12 @@ func NotifyStartupCompleteWithId(startupId string) {
 
 // UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : return type 'gboolean' not supported
 
-var PointerUngrabFunction *gi.Function
-var PointerUngrabFunctionOnce sync.Once
+var pointerUngrabFunction *gi.Function
+var pointerUngrabFunction_Once sync.Once
 
-func PointerUngrabFunctionSet() {
-	PointerUngrabFunctionOnce.Do(func() {
-		PointerUngrabFunction = gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
+func pointerUngrabFunction_Set() {
+	pointerUngrabFunction_Once.Do(func() {
+		pointerUngrabFunction = gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
 	})
 }
 
@@ -598,23 +560,21 @@ var pointerUngrabInvoker *gi.Function
 
 // PointerUngrab is a representation of the C type gdk_pointer_ungrab.
 func PointerUngrab(time uint32) {
-	if pointerUngrabInvoker == nil {
-		pointerUngrabInvoker = gi.FunctionInvokerNew("Gdk", "pointer_ungrab")
-	}
+	pointerUngrabFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(time)
 
-	pointerUngrabInvoker.Invoke(inArgs[:], nil)
+	pointerUngrabFunction.Invoke(inArgs[:], nil)
 
 }
 
-var PreParseLibgtkOnlyFunction *gi.Function
-var PreParseLibgtkOnlyFunctionOnce sync.Once
+var preParseLibgtkOnlyFunction *gi.Function
+var preParseLibgtkOnlyFunction_Once sync.Once
 
-func PreParseLibgtkOnlyFunctionSet() {
-	PreParseLibgtkOnlyFunctionOnce.Do(func() {
-		PreParseLibgtkOnlyFunction = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
+func preParseLibgtkOnlyFunction_Set() {
+	preParseLibgtkOnlyFunction_Once.Do(func() {
+		preParseLibgtkOnlyFunction = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
 	})
 }
 
@@ -622,11 +582,9 @@ var preParseLibgtkOnlyInvoker *gi.Function
 
 // PreParseLibgtkOnly is a representation of the C type gdk_pre_parse_libgtk_only.
 func PreParseLibgtkOnly() {
-	if preParseLibgtkOnlyInvoker == nil {
-		preParseLibgtkOnlyInvoker = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
-	}
+	preParseLibgtkOnlyFunction_Set()
 
-	preParseLibgtkOnlyInvoker.Invoke(nil, nil)
+	preParseLibgtkOnlyFunction.Invoke(nil, nil)
 
 }
 
@@ -656,12 +614,12 @@ func PreParseLibgtkOnly() {
 
 // UNSUPPORTED : C value 'gdk_selection_send_notify_for_display' : parameter 'display' of type 'Display' not supported
 
-var SetAllowedBackendsFunction *gi.Function
-var SetAllowedBackendsFunctionOnce sync.Once
+var setAllowedBackendsFunction *gi.Function
+var setAllowedBackendsFunction_Once sync.Once
 
-func SetAllowedBackendsFunctionSet() {
-	SetAllowedBackendsFunctionOnce.Do(func() {
-		SetAllowedBackendsFunction = gi.FunctionInvokerNew("Gdk", "set_allowed_backends")
+func setAllowedBackendsFunction_Set() {
+	setAllowedBackendsFunction_Once.Do(func() {
+		setAllowedBackendsFunction = gi.FunctionInvokerNew("Gdk", "set_allowed_backends")
 	})
 }
 
@@ -669,23 +627,21 @@ var setAllowedBackendsInvoker *gi.Function
 
 // SetAllowedBackends is a representation of the C type gdk_set_allowed_backends.
 func SetAllowedBackends(backends string) {
-	if setAllowedBackendsInvoker == nil {
-		setAllowedBackendsInvoker = gi.FunctionInvokerNew("Gdk", "set_allowed_backends")
-	}
+	setAllowedBackendsFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(backends)
 
-	setAllowedBackendsInvoker.Invoke(inArgs[:], nil)
+	setAllowedBackendsFunction.Invoke(inArgs[:], nil)
 
 }
 
-var SetDoubleClickTimeFunction *gi.Function
-var SetDoubleClickTimeFunctionOnce sync.Once
+var setDoubleClickTimeFunction *gi.Function
+var setDoubleClickTimeFunction_Once sync.Once
 
-func SetDoubleClickTimeFunctionSet() {
-	SetDoubleClickTimeFunctionOnce.Do(func() {
-		SetDoubleClickTimeFunction = gi.FunctionInvokerNew("Gdk", "set_double_click_time")
+func setDoubleClickTimeFunction_Set() {
+	setDoubleClickTimeFunction_Once.Do(func() {
+		setDoubleClickTimeFunction = gi.FunctionInvokerNew("Gdk", "set_double_click_time")
 	})
 }
 
@@ -693,23 +649,21 @@ var setDoubleClickTimeInvoker *gi.Function
 
 // SetDoubleClickTime is a representation of the C type gdk_set_double_click_time.
 func SetDoubleClickTime(msec uint32) {
-	if setDoubleClickTimeInvoker == nil {
-		setDoubleClickTimeInvoker = gi.FunctionInvokerNew("Gdk", "set_double_click_time")
-	}
+	setDoubleClickTimeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(msec)
 
-	setDoubleClickTimeInvoker.Invoke(inArgs[:], nil)
+	setDoubleClickTimeFunction.Invoke(inArgs[:], nil)
 
 }
 
-var SetProgramClassFunction *gi.Function
-var SetProgramClassFunctionOnce sync.Once
+var setProgramClassFunction *gi.Function
+var setProgramClassFunction_Once sync.Once
 
-func SetProgramClassFunctionSet() {
-	SetProgramClassFunctionOnce.Do(func() {
-		SetProgramClassFunction = gi.FunctionInvokerNew("Gdk", "set_program_class")
+func setProgramClassFunction_Set() {
+	setProgramClassFunction_Once.Do(func() {
+		setProgramClassFunction = gi.FunctionInvokerNew("Gdk", "set_program_class")
 	})
 }
 
@@ -717,14 +671,12 @@ var setProgramClassInvoker *gi.Function
 
 // SetProgramClass is a representation of the C type gdk_set_program_class.
 func SetProgramClass(programClass string) {
-	if setProgramClassInvoker == nil {
-		setProgramClassInvoker = gi.FunctionInvokerNew("Gdk", "set_program_class")
-	}
+	setProgramClassFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(programClass)
 
-	setProgramClassInvoker.Invoke(inArgs[:], nil)
+	setProgramClassFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -754,12 +706,12 @@ func SetProgramClass(programClass string) {
 
 // UNSUPPORTED : C value 'gdk_threads_add_timeout_seconds_full' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-var ThreadsEnterFunction *gi.Function
-var ThreadsEnterFunctionOnce sync.Once
+var threadsEnterFunction *gi.Function
+var threadsEnterFunction_Once sync.Once
 
-func ThreadsEnterFunctionSet() {
-	ThreadsEnterFunctionOnce.Do(func() {
-		ThreadsEnterFunction = gi.FunctionInvokerNew("Gdk", "threads_enter")
+func threadsEnterFunction_Set() {
+	threadsEnterFunction_Once.Do(func() {
+		threadsEnterFunction = gi.FunctionInvokerNew("Gdk", "threads_enter")
 	})
 }
 
@@ -767,20 +719,18 @@ var threadsEnterInvoker *gi.Function
 
 // ThreadsEnter is a representation of the C type gdk_threads_enter.
 func ThreadsEnter() {
-	if threadsEnterInvoker == nil {
-		threadsEnterInvoker = gi.FunctionInvokerNew("Gdk", "threads_enter")
-	}
+	threadsEnterFunction_Set()
 
-	threadsEnterInvoker.Invoke(nil, nil)
+	threadsEnterFunction.Invoke(nil, nil)
 
 }
 
-var ThreadsInitFunction *gi.Function
-var ThreadsInitFunctionOnce sync.Once
+var threadsInitFunction *gi.Function
+var threadsInitFunction_Once sync.Once
 
-func ThreadsInitFunctionSet() {
-	ThreadsInitFunctionOnce.Do(func() {
-		ThreadsInitFunction = gi.FunctionInvokerNew("Gdk", "threads_init")
+func threadsInitFunction_Set() {
+	threadsInitFunction_Once.Do(func() {
+		threadsInitFunction = gi.FunctionInvokerNew("Gdk", "threads_init")
 	})
 }
 
@@ -788,20 +738,18 @@ var threadsInitInvoker *gi.Function
 
 // ThreadsInit is a representation of the C type gdk_threads_init.
 func ThreadsInit() {
-	if threadsInitInvoker == nil {
-		threadsInitInvoker = gi.FunctionInvokerNew("Gdk", "threads_init")
-	}
+	threadsInitFunction_Set()
 
-	threadsInitInvoker.Invoke(nil, nil)
+	threadsInitFunction.Invoke(nil, nil)
 
 }
 
-var ThreadsLeaveFunction *gi.Function
-var ThreadsLeaveFunctionOnce sync.Once
+var threadsLeaveFunction *gi.Function
+var threadsLeaveFunction_Once sync.Once
 
-func ThreadsLeaveFunctionSet() {
-	ThreadsLeaveFunctionOnce.Do(func() {
-		ThreadsLeaveFunction = gi.FunctionInvokerNew("Gdk", "threads_leave")
+func threadsLeaveFunction_Set() {
+	threadsLeaveFunction_Once.Do(func() {
+		threadsLeaveFunction = gi.FunctionInvokerNew("Gdk", "threads_leave")
 	})
 }
 
@@ -809,22 +757,20 @@ var threadsLeaveInvoker *gi.Function
 
 // ThreadsLeave is a representation of the C type gdk_threads_leave.
 func ThreadsLeave() {
-	if threadsLeaveInvoker == nil {
-		threadsLeaveInvoker = gi.FunctionInvokerNew("Gdk", "threads_leave")
-	}
+	threadsLeaveFunction_Set()
 
-	threadsLeaveInvoker.Invoke(nil, nil)
+	threadsLeaveFunction.Invoke(nil, nil)
 
 }
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : parameter 'enter_fn' of type 'GObject.Callback' not supported
 
-var UnicodeToKeyvalFunction *gi.Function
-var UnicodeToKeyvalFunctionOnce sync.Once
+var unicodeToKeyvalFunction *gi.Function
+var unicodeToKeyvalFunction_Once sync.Once
 
-func UnicodeToKeyvalFunctionSet() {
-	UnicodeToKeyvalFunctionOnce.Do(func() {
-		UnicodeToKeyvalFunction = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
+func unicodeToKeyvalFunction_Set() {
+	unicodeToKeyvalFunction_Once.Do(func() {
+		unicodeToKeyvalFunction = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
 	})
 }
 
@@ -832,26 +778,24 @@ var unicodeToKeyvalInvoker *gi.Function
 
 // UnicodeToKeyval is a representation of the C type gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) uint32 {
-	if unicodeToKeyvalInvoker == nil {
-		unicodeToKeyvalInvoker = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
-	}
+	unicodeToKeyvalFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(wc)
 
-	ret := unicodeToKeyvalInvoker.Invoke(inArgs[:], nil)
+	ret := unicodeToKeyvalFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var Utf8ToStringTargetFunction *gi.Function
-var Utf8ToStringTargetFunctionOnce sync.Once
+var utf8ToStringTargetFunction *gi.Function
+var utf8ToStringTargetFunction_Once sync.Once
 
-func Utf8ToStringTargetFunctionSet() {
-	Utf8ToStringTargetFunctionOnce.Do(func() {
-		Utf8ToStringTargetFunction = gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
+func utf8ToStringTargetFunction_Set() {
+	utf8ToStringTargetFunction_Once.Do(func() {
+		utf8ToStringTargetFunction = gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
 	})
 }
 
@@ -859,14 +803,12 @@ var utf8ToStringTargetInvoker *gi.Function
 
 // Utf8ToStringTarget is a representation of the C type gdk_utf8_to_string_target.
 func Utf8ToStringTarget(str string) string {
-	if utf8ToStringTargetInvoker == nil {
-		utf8ToStringTargetInvoker = gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
-	}
+	utf8ToStringTargetFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := utf8ToStringTargetInvoker.Invoke(inArgs[:], nil)
+	ret := utf8ToStringTargetFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 

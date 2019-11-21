@@ -211,12 +211,12 @@ import (
 
 // UNSUPPORTED : C value 'g_signal_lookup' : parameter 'itype' of type 'GType' not supported
 
-var SignalNameFunction *gi.Function
-var SignalNameFunctionOnce sync.Once
+var signalNameFunction *gi.Function
+var signalNameFunction_Once sync.Once
 
-func SignalNameFunctionSet() {
-	SignalNameFunctionOnce.Do(func() {
-		SignalNameFunction = gi.FunctionInvokerNew("GObject", "signal_name")
+func signalNameFunction_Set() {
+	signalNameFunction_Once.Do(func() {
+		signalNameFunction = gi.FunctionInvokerNew("GObject", "signal_name")
 	})
 }
 
@@ -224,14 +224,12 @@ var signalNameInvoker *gi.Function
 
 // SignalName is a representation of the C type g_signal_name.
 func SignalName(signalId uint32) string {
-	if signalNameInvoker == nil {
-		signalNameInvoker = gi.FunctionInvokerNew("GObject", "signal_name")
-	}
+	signalNameFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
-	ret := signalNameInvoker.Invoke(inArgs[:], nil)
+	ret := signalNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -254,12 +252,12 @@ func SignalName(signalId uint32) string {
 
 // UNSUPPORTED : C value 'g_signal_query' : parameter 'query' of type 'SignalQuery' not supported
 
-var SignalRemoveEmissionHookFunction *gi.Function
-var SignalRemoveEmissionHookFunctionOnce sync.Once
+var signalRemoveEmissionHookFunction *gi.Function
+var signalRemoveEmissionHookFunction_Once sync.Once
 
-func SignalRemoveEmissionHookFunctionSet() {
-	SignalRemoveEmissionHookFunctionOnce.Do(func() {
-		SignalRemoveEmissionHookFunction = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
+func signalRemoveEmissionHookFunction_Set() {
+	signalRemoveEmissionHookFunction_Once.Do(func() {
+		signalRemoveEmissionHookFunction = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
 	})
 }
 
@@ -267,15 +265,13 @@ var signalRemoveEmissionHookInvoker *gi.Function
 
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
-	if signalRemoveEmissionHookInvoker == nil {
-		signalRemoveEmissionHookInvoker = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
-	}
+	signalRemoveEmissionHookFunction_Set()
 
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
 
-	signalRemoveEmissionHookInvoker.Invoke(inArgs[:], nil)
+	signalRemoveEmissionHookFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -359,12 +355,12 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 // UNSUPPORTED : C value 'g_type_get_qdata' : parameter 'type' of type 'GType' not supported
 
-var TypeGetTypeRegistrationSerialFunction *gi.Function
-var TypeGetTypeRegistrationSerialFunctionOnce sync.Once
+var typeGetTypeRegistrationSerialFunction *gi.Function
+var typeGetTypeRegistrationSerialFunction_Once sync.Once
 
-func TypeGetTypeRegistrationSerialFunctionSet() {
-	TypeGetTypeRegistrationSerialFunctionOnce.Do(func() {
-		TypeGetTypeRegistrationSerialFunction = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
+func typeGetTypeRegistrationSerialFunction_Set() {
+	typeGetTypeRegistrationSerialFunction_Once.Do(func() {
+		typeGetTypeRegistrationSerialFunction = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
 	})
 }
 
@@ -372,23 +368,21 @@ var typeGetTypeRegistrationSerialInvoker *gi.Function
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
 func TypeGetTypeRegistrationSerial() uint32 {
-	if typeGetTypeRegistrationSerialInvoker == nil {
-		typeGetTypeRegistrationSerialInvoker = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
-	}
+	typeGetTypeRegistrationSerialFunction_Set()
 
-	ret := typeGetTypeRegistrationSerialInvoker.Invoke(nil, nil)
+	ret := typeGetTypeRegistrationSerialFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
 	return retGo
 }
 
-var TypeInitFunction *gi.Function
-var TypeInitFunctionOnce sync.Once
+var typeInitFunction *gi.Function
+var typeInitFunction_Once sync.Once
 
-func TypeInitFunctionSet() {
-	TypeInitFunctionOnce.Do(func() {
-		TypeInitFunction = gi.FunctionInvokerNew("GObject", "type_init")
+func typeInitFunction_Set() {
+	typeInitFunction_Once.Do(func() {
+		typeInitFunction = gi.FunctionInvokerNew("GObject", "type_init")
 	})
 }
 
@@ -396,11 +390,9 @@ var typeInitInvoker *gi.Function
 
 // TypeInit is a representation of the C type g_type_init.
 func TypeInit() {
-	if typeInitInvoker == nil {
-		typeInitInvoker = gi.FunctionInvokerNew("GObject", "type_init")
-	}
+	typeInitFunction_Set()
 
-	typeInitInvoker.Invoke(nil, nil)
+	typeInitFunction.Invoke(nil, nil)
 
 }
 

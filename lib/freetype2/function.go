@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var LibraryVersionFunction *gi.Function
-var LibraryVersionFunctionOnce sync.Once
+var libraryVersionFunction *gi.Function
+var libraryVersionFunction_Once sync.Once
 
-func LibraryVersionFunctionSet() {
-	LibraryVersionFunctionOnce.Do(func() {
-		LibraryVersionFunction = gi.FunctionInvokerNew("freetype2", "library_version")
+func libraryVersionFunction_Set() {
+	libraryVersionFunction_Once.Do(func() {
+		libraryVersionFunction = gi.FunctionInvokerNew("freetype2", "library_version")
 	})
 }
 
@@ -20,10 +20,8 @@ var libraryVersionInvoker *gi.Function
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
 func LibraryVersion() {
-	if libraryVersionInvoker == nil {
-		libraryVersionInvoker = gi.FunctionInvokerNew("freetype2", "library_version")
-	}
+	libraryVersionFunction_Set()
 
-	libraryVersionInvoker.Invoke(nil, nil)
+	libraryVersionFunction.Invoke(nil, nil)
 
 }

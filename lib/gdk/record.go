@@ -21,10 +21,10 @@ type Atom struct {
 }
 
 var atomNameFunction *gi.Function
-var atomNameFunctionOnce sync.Once
+var atomNameFunction_Once sync.Once
 
-func atomNameFunctionSet() {
-	atomNameFunctionOnce.Do(func() {
+func atomNameFunction_Set() {
+	atomNameFunction_Once.Do(func() {
 		atomNameFunction = gi.FunctionInvokerNew("Gdk", "name")
 	})
 }
@@ -33,14 +33,12 @@ var nameAtomInvoker *gi.Function
 
 // Name is a representation of the C type gdk_atom_name.
 func (recv *Atom) Name() string {
-	if nameAtomInvoker == nil {
-		nameAtomInvoker = gi.StructFunctionInvokerNew("Gdk", "Atom", "name")
-	}
+	atomNameFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nameAtomInvoker.Invoke(inArgs[:], nil)
+	ret := atomNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -65,10 +63,10 @@ type Color struct {
 }
 
 var colorCopyFunction *gi.Function
-var colorCopyFunctionOnce sync.Once
+var colorCopyFunction_Once sync.Once
 
-func colorCopyFunctionSet() {
-	colorCopyFunctionOnce.Do(func() {
+func colorCopyFunction_Set() {
+	colorCopyFunction_Once.Do(func() {
 		colorCopyFunction = gi.FunctionInvokerNew("Gdk", "copy")
 	})
 }
@@ -77,14 +75,12 @@ var copyColorInvoker *gi.Function
 
 // Copy is a representation of the C type gdk_color_copy.
 func (recv *Color) Copy() *Color {
-	if copyColorInvoker == nil {
-		copyColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "copy")
-	}
+	colorCopyFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := copyColorInvoker.Invoke(inArgs[:], nil)
+	ret := colorCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Color{native: ret.Pointer()}
 
@@ -94,10 +90,10 @@ func (recv *Color) Copy() *Color {
 // UNSUPPORTED : C value 'gdk_color_equal' : parameter 'colorb' of type 'Color' not supported
 
 var colorFreeFunction *gi.Function
-var colorFreeFunctionOnce sync.Once
+var colorFreeFunction_Once sync.Once
 
-func colorFreeFunctionSet() {
-	colorFreeFunctionOnce.Do(func() {
+func colorFreeFunction_Set() {
+	colorFreeFunction_Once.Do(func() {
 		colorFreeFunction = gi.FunctionInvokerNew("Gdk", "free")
 	})
 }
@@ -106,22 +102,20 @@ var freeColorInvoker *gi.Function
 
 // Free is a representation of the C type gdk_color_free.
 func (recv *Color) Free() {
-	if freeColorInvoker == nil {
-		freeColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "free")
-	}
+	colorFreeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	freeColorInvoker.Invoke(inArgs[:], nil)
+	colorFreeFunction.Invoke(inArgs[:], nil)
 
 }
 
 var colorHashFunction *gi.Function
-var colorHashFunctionOnce sync.Once
+var colorHashFunction_Once sync.Once
 
-func colorHashFunctionSet() {
-	colorHashFunctionOnce.Do(func() {
+func colorHashFunction_Set() {
+	colorHashFunction_Once.Do(func() {
 		colorHashFunction = gi.FunctionInvokerNew("Gdk", "hash")
 	})
 }
@@ -130,14 +124,12 @@ var hashColorInvoker *gi.Function
 
 // Hash is a representation of the C type gdk_color_hash.
 func (recv *Color) Hash() uint32 {
-	if hashColorInvoker == nil {
-		hashColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "hash")
-	}
+	colorHashFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := hashColorInvoker.Invoke(inArgs[:], nil)
+	ret := colorHashFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -145,10 +137,10 @@ func (recv *Color) Hash() uint32 {
 }
 
 var colorToStringFunction *gi.Function
-var colorToStringFunctionOnce sync.Once
+var colorToStringFunction_Once sync.Once
 
-func colorToStringFunctionSet() {
-	colorToStringFunctionOnce.Do(func() {
+func colorToStringFunction_Set() {
+	colorToStringFunction_Once.Do(func() {
 		colorToStringFunction = gi.FunctionInvokerNew("Gdk", "to_string")
 	})
 }
@@ -157,14 +149,12 @@ var toStringColorInvoker *gi.Function
 
 // ToString is a representation of the C type gdk_color_to_string.
 func (recv *Color) ToString() string {
-	if toStringColorInvoker == nil {
-		toStringColorInvoker = gi.StructFunctionInvokerNew("Gdk", "Color", "to_string")
-	}
+	colorToStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := toStringColorInvoker.Invoke(inArgs[:], nil)
+	ret := colorToStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -762,10 +752,10 @@ type FrameTimings struct {
 // UNSUPPORTED : C value 'gdk_frame_timings_get_complete' : return type 'gboolean' not supported
 
 var frameTimingsGetFrameCounterFunction *gi.Function
-var frameTimingsGetFrameCounterFunctionOnce sync.Once
+var frameTimingsGetFrameCounterFunction_Once sync.Once
 
-func frameTimingsGetFrameCounterFunctionSet() {
-	frameTimingsGetFrameCounterFunctionOnce.Do(func() {
+func frameTimingsGetFrameCounterFunction_Set() {
+	frameTimingsGetFrameCounterFunction_Once.Do(func() {
 		frameTimingsGetFrameCounterFunction = gi.FunctionInvokerNew("Gdk", "get_frame_counter")
 	})
 }
@@ -774,14 +764,12 @@ var getFrameCounterFrameTimingsInvoker *gi.Function
 
 // GetFrameCounter is a representation of the C type gdk_frame_timings_get_frame_counter.
 func (recv *FrameTimings) GetFrameCounter() int64 {
-	if getFrameCounterFrameTimingsInvoker == nil {
-		getFrameCounterFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_frame_counter")
-	}
+	frameTimingsGetFrameCounterFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getFrameCounterFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	ret := frameTimingsGetFrameCounterFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -789,10 +777,10 @@ func (recv *FrameTimings) GetFrameCounter() int64 {
 }
 
 var frameTimingsGetFrameTimeFunction *gi.Function
-var frameTimingsGetFrameTimeFunctionOnce sync.Once
+var frameTimingsGetFrameTimeFunction_Once sync.Once
 
-func frameTimingsGetFrameTimeFunctionSet() {
-	frameTimingsGetFrameTimeFunctionOnce.Do(func() {
+func frameTimingsGetFrameTimeFunction_Set() {
+	frameTimingsGetFrameTimeFunction_Once.Do(func() {
 		frameTimingsGetFrameTimeFunction = gi.FunctionInvokerNew("Gdk", "get_frame_time")
 	})
 }
@@ -801,14 +789,12 @@ var getFrameTimeFrameTimingsInvoker *gi.Function
 
 // GetFrameTime is a representation of the C type gdk_frame_timings_get_frame_time.
 func (recv *FrameTimings) GetFrameTime() int64 {
-	if getFrameTimeFrameTimingsInvoker == nil {
-		getFrameTimeFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_frame_time")
-	}
+	frameTimingsGetFrameTimeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getFrameTimeFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	ret := frameTimingsGetFrameTimeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -816,10 +802,10 @@ func (recv *FrameTimings) GetFrameTime() int64 {
 }
 
 var frameTimingsGetPredictedPresentationTimeFunction *gi.Function
-var frameTimingsGetPredictedPresentationTimeFunctionOnce sync.Once
+var frameTimingsGetPredictedPresentationTimeFunction_Once sync.Once
 
-func frameTimingsGetPredictedPresentationTimeFunctionSet() {
-	frameTimingsGetPredictedPresentationTimeFunctionOnce.Do(func() {
+func frameTimingsGetPredictedPresentationTimeFunction_Set() {
+	frameTimingsGetPredictedPresentationTimeFunction_Once.Do(func() {
 		frameTimingsGetPredictedPresentationTimeFunction = gi.FunctionInvokerNew("Gdk", "get_predicted_presentation_time")
 	})
 }
@@ -828,14 +814,12 @@ var getPredictedPresentationTimeFrameTimingsInvoker *gi.Function
 
 // GetPredictedPresentationTime is a representation of the C type gdk_frame_timings_get_predicted_presentation_time.
 func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
-	if getPredictedPresentationTimeFrameTimingsInvoker == nil {
-		getPredictedPresentationTimeFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_predicted_presentation_time")
-	}
+	frameTimingsGetPredictedPresentationTimeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getPredictedPresentationTimeFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	ret := frameTimingsGetPredictedPresentationTimeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -843,10 +827,10 @@ func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
 }
 
 var frameTimingsGetPresentationTimeFunction *gi.Function
-var frameTimingsGetPresentationTimeFunctionOnce sync.Once
+var frameTimingsGetPresentationTimeFunction_Once sync.Once
 
-func frameTimingsGetPresentationTimeFunctionSet() {
-	frameTimingsGetPresentationTimeFunctionOnce.Do(func() {
+func frameTimingsGetPresentationTimeFunction_Set() {
+	frameTimingsGetPresentationTimeFunction_Once.Do(func() {
 		frameTimingsGetPresentationTimeFunction = gi.FunctionInvokerNew("Gdk", "get_presentation_time")
 	})
 }
@@ -855,14 +839,12 @@ var getPresentationTimeFrameTimingsInvoker *gi.Function
 
 // GetPresentationTime is a representation of the C type gdk_frame_timings_get_presentation_time.
 func (recv *FrameTimings) GetPresentationTime() int64 {
-	if getPresentationTimeFrameTimingsInvoker == nil {
-		getPresentationTimeFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_presentation_time")
-	}
+	frameTimingsGetPresentationTimeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getPresentationTimeFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	ret := frameTimingsGetPresentationTimeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -870,10 +852,10 @@ func (recv *FrameTimings) GetPresentationTime() int64 {
 }
 
 var frameTimingsGetRefreshIntervalFunction *gi.Function
-var frameTimingsGetRefreshIntervalFunctionOnce sync.Once
+var frameTimingsGetRefreshIntervalFunction_Once sync.Once
 
-func frameTimingsGetRefreshIntervalFunctionSet() {
-	frameTimingsGetRefreshIntervalFunctionOnce.Do(func() {
+func frameTimingsGetRefreshIntervalFunction_Set() {
+	frameTimingsGetRefreshIntervalFunction_Once.Do(func() {
 		frameTimingsGetRefreshIntervalFunction = gi.FunctionInvokerNew("Gdk", "get_refresh_interval")
 	})
 }
@@ -882,14 +864,12 @@ var getRefreshIntervalFrameTimingsInvoker *gi.Function
 
 // GetRefreshInterval is a representation of the C type gdk_frame_timings_get_refresh_interval.
 func (recv *FrameTimings) GetRefreshInterval() int64 {
-	if getRefreshIntervalFrameTimingsInvoker == nil {
-		getRefreshIntervalFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "get_refresh_interval")
-	}
+	frameTimingsGetRefreshIntervalFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := getRefreshIntervalFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	ret := frameTimingsGetRefreshIntervalFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -897,10 +877,10 @@ func (recv *FrameTimings) GetRefreshInterval() int64 {
 }
 
 var frameTimingsRefFunction *gi.Function
-var frameTimingsRefFunctionOnce sync.Once
+var frameTimingsRefFunction_Once sync.Once
 
-func frameTimingsRefFunctionSet() {
-	frameTimingsRefFunctionOnce.Do(func() {
+func frameTimingsRefFunction_Set() {
+	frameTimingsRefFunction_Once.Do(func() {
 		frameTimingsRefFunction = gi.FunctionInvokerNew("Gdk", "ref")
 	})
 }
@@ -909,14 +889,12 @@ var refFrameTimingsInvoker *gi.Function
 
 // Ref is a representation of the C type gdk_frame_timings_ref.
 func (recv *FrameTimings) Ref() *FrameTimings {
-	if refFrameTimingsInvoker == nil {
-		refFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "ref")
-	}
+	frameTimingsRefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := refFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	ret := frameTimingsRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &FrameTimings{native: ret.Pointer()}
 
@@ -924,10 +902,10 @@ func (recv *FrameTimings) Ref() *FrameTimings {
 }
 
 var frameTimingsUnrefFunction *gi.Function
-var frameTimingsUnrefFunctionOnce sync.Once
+var frameTimingsUnrefFunction_Once sync.Once
 
-func frameTimingsUnrefFunctionSet() {
-	frameTimingsUnrefFunctionOnce.Do(func() {
+func frameTimingsUnrefFunction_Set() {
+	frameTimingsUnrefFunction_Once.Do(func() {
 		frameTimingsUnrefFunction = gi.FunctionInvokerNew("Gdk", "unref")
 	})
 }
@@ -936,14 +914,12 @@ var unrefFrameTimingsInvoker *gi.Function
 
 // Unref is a representation of the C type gdk_frame_timings_unref.
 func (recv *FrameTimings) Unref() {
-	if unrefFrameTimingsInvoker == nil {
-		unrefFrameTimingsInvoker = gi.StructFunctionInvokerNew("Gdk", "FrameTimings", "unref")
-	}
+	frameTimingsUnrefFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unrefFrameTimingsInvoker.Invoke(inArgs[:], nil)
+	frameTimingsUnrefFunction.Invoke(inArgs[:], nil)
 
 }
 
@@ -1033,10 +1009,10 @@ type RGBA struct {
 }
 
 var rGBACopyFunction *gi.Function
-var rGBACopyFunctionOnce sync.Once
+var rGBACopyFunction_Once sync.Once
 
-func rGBACopyFunctionSet() {
-	rGBACopyFunctionOnce.Do(func() {
+func rGBACopyFunction_Set() {
+	rGBACopyFunction_Once.Do(func() {
 		rGBACopyFunction = gi.FunctionInvokerNew("Gdk", "copy")
 	})
 }
@@ -1045,14 +1021,12 @@ var copyRGBAInvoker *gi.Function
 
 // Copy is a representation of the C type gdk_rgba_copy.
 func (recv *RGBA) Copy() *RGBA {
-	if copyRGBAInvoker == nil {
-		copyRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "copy")
-	}
+	rGBACopyFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := copyRGBAInvoker.Invoke(inArgs[:], nil)
+	ret := rGBACopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &RGBA{native: ret.Pointer()}
 
@@ -1062,10 +1036,10 @@ func (recv *RGBA) Copy() *RGBA {
 // UNSUPPORTED : C value 'gdk_rgba_equal' : parameter 'p2' of type 'RGBA' not supported
 
 var rGBAFreeFunction *gi.Function
-var rGBAFreeFunctionOnce sync.Once
+var rGBAFreeFunction_Once sync.Once
 
-func rGBAFreeFunctionSet() {
-	rGBAFreeFunctionOnce.Do(func() {
+func rGBAFreeFunction_Set() {
+	rGBAFreeFunction_Once.Do(func() {
 		rGBAFreeFunction = gi.FunctionInvokerNew("Gdk", "free")
 	})
 }
@@ -1074,22 +1048,20 @@ var freeRGBAInvoker *gi.Function
 
 // Free is a representation of the C type gdk_rgba_free.
 func (recv *RGBA) Free() {
-	if freeRGBAInvoker == nil {
-		freeRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "free")
-	}
+	rGBAFreeFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	freeRGBAInvoker.Invoke(inArgs[:], nil)
+	rGBAFreeFunction.Invoke(inArgs[:], nil)
 
 }
 
 var rGBAHashFunction *gi.Function
-var rGBAHashFunctionOnce sync.Once
+var rGBAHashFunction_Once sync.Once
 
-func rGBAHashFunctionSet() {
-	rGBAHashFunctionOnce.Do(func() {
+func rGBAHashFunction_Set() {
+	rGBAHashFunction_Once.Do(func() {
 		rGBAHashFunction = gi.FunctionInvokerNew("Gdk", "hash")
 	})
 }
@@ -1098,14 +1070,12 @@ var hashRGBAInvoker *gi.Function
 
 // Hash is a representation of the C type gdk_rgba_hash.
 func (recv *RGBA) Hash() uint32 {
-	if hashRGBAInvoker == nil {
-		hashRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "hash")
-	}
+	rGBAHashFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := hashRGBAInvoker.Invoke(inArgs[:], nil)
+	ret := rGBAHashFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1115,10 +1085,10 @@ func (recv *RGBA) Hash() uint32 {
 // UNSUPPORTED : C value 'gdk_rgba_parse' : return type 'gboolean' not supported
 
 var rGBAToStringFunction *gi.Function
-var rGBAToStringFunctionOnce sync.Once
+var rGBAToStringFunction_Once sync.Once
 
-func rGBAToStringFunctionSet() {
-	rGBAToStringFunctionOnce.Do(func() {
+func rGBAToStringFunction_Set() {
+	rGBAToStringFunction_Once.Do(func() {
 		rGBAToStringFunction = gi.FunctionInvokerNew("Gdk", "to_string")
 	})
 }
@@ -1127,14 +1097,12 @@ var toStringRGBAInvoker *gi.Function
 
 // ToString is a representation of the C type gdk_rgba_to_string.
 func (recv *RGBA) ToString() string {
-	if toStringRGBAInvoker == nil {
-		toStringRGBAInvoker = gi.StructFunctionInvokerNew("Gdk", "RGBA", "to_string")
-	}
+	rGBAToStringFunction_Set()
 
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := toStringRGBAInvoker.Invoke(inArgs[:], nil)
+	ret := rGBAToStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
