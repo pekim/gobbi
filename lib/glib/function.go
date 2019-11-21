@@ -18,8 +18,6 @@ func asciiDigitValueFunction_Set() {
 	})
 }
 
-var asciiDigitValueInvoker *gi.Function
-
 // AsciiDigitValue is a representation of the C type g_ascii_digit_value.
 func AsciiDigitValue(c int8) int32 {
 	asciiDigitValueFunction_Set()
@@ -47,8 +45,6 @@ func asciiStrcasecmpFunction_Set() {
 	})
 }
 
-var asciiStrcasecmpInvoker *gi.Function
-
 // AsciiStrcasecmp is a representation of the C type g_ascii_strcasecmp.
 func AsciiStrcasecmp(s1 string, s2 string) int32 {
 	asciiStrcasecmpFunction_Set()
@@ -72,8 +68,6 @@ func asciiStrdownFunction_Set() {
 		asciiStrdownFunction = gi.FunctionInvokerNew("GLib", "ascii_strdown")
 	})
 }
-
-var asciiStrdownInvoker *gi.Function
 
 // AsciiStrdown is a representation of the C type g_ascii_strdown.
 func AsciiStrdown(str string, len int32) string {
@@ -107,8 +101,6 @@ func asciiStrtollFunction_Set() {
 	})
 }
 
-var asciiStrtollInvoker *gi.Function
-
 // AsciiStrtoll is a representation of the C type g_ascii_strtoll.
 func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 	asciiStrtollFunction_Set()
@@ -135,8 +127,6 @@ func asciiStrtoullFunction_Set() {
 		asciiStrtoullFunction = gi.FunctionInvokerNew("GLib", "ascii_strtoull")
 	})
 }
-
-var asciiStrtoullInvoker *gi.Function
 
 // AsciiStrtoull is a representation of the C type g_ascii_strtoull.
 func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
@@ -165,8 +155,6 @@ func asciiStrupFunction_Set() {
 	})
 }
 
-var asciiStrupInvoker *gi.Function
-
 // AsciiStrup is a representation of the C type g_ascii_strup.
 func AsciiStrup(str string, len int32) string {
 	asciiStrupFunction_Set()
@@ -191,8 +179,6 @@ func asciiTolowerFunction_Set() {
 	})
 }
 
-var asciiTolowerInvoker *gi.Function
-
 // AsciiTolower is a representation of the C type g_ascii_tolower.
 func AsciiTolower(c int8) int8 {
 	asciiTolowerFunction_Set()
@@ -215,8 +201,6 @@ func asciiToupperFunction_Set() {
 		asciiToupperFunction = gi.FunctionInvokerNew("GLib", "ascii_toupper")
 	})
 }
-
-var asciiToupperInvoker *gi.Function
 
 // AsciiToupper is a representation of the C type g_ascii_toupper.
 func AsciiToupper(c int8) int8 {
@@ -241,8 +225,6 @@ func asciiXdigitValueFunction_Set() {
 	})
 }
 
-var asciiXdigitValueInvoker *gi.Function
-
 // AsciiXdigitValue is a representation of the C type g_ascii_xdigit_value.
 func AsciiXdigitValue(c int8) int32 {
 	asciiXdigitValueFunction_Set()
@@ -265,8 +247,6 @@ func assertWarningFunction_Set() {
 		assertWarningFunction = gi.FunctionInvokerNew("GLib", "assert_warning")
 	})
 }
-
-var assertWarningInvoker *gi.Function
 
 // AssertWarning is a representation of the C type g_assert_warning.
 func AssertWarning(logDomain string, file string, line int32, prettyFunction string, expression string) {
@@ -291,8 +271,6 @@ func assertionMessageFunction_Set() {
 		assertionMessageFunction = gi.FunctionInvokerNew("GLib", "assertion_message")
 	})
 }
-
-var assertionMessageInvoker *gi.Function
 
 // AssertionMessage is a representation of the C type g_assertion_message.
 func AssertionMessage(domain string, file string, line int32, func_ string, message string) {
@@ -319,8 +297,6 @@ func assertionMessageCmpstrFunction_Set() {
 		assertionMessageCmpstrFunction = gi.FunctionInvokerNew("GLib", "assertion_message_cmpstr")
 	})
 }
-
-var assertionMessageCmpstrInvoker *gi.Function
 
 // AssertionMessageCmpstr is a representation of the C type g_assertion_message_cmpstr.
 func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
@@ -351,8 +327,6 @@ func assertionMessageExprFunction_Set() {
 	})
 }
 
-var assertionMessageExprInvoker *gi.Function
-
 // AssertionMessageExpr is a representation of the C type g_assertion_message_expr.
 func AssertionMessageExpr(domain string, file string, line int32, func_ string, expr string) {
 	assertionMessageExprFunction_Set()
@@ -379,8 +353,6 @@ func atomicIntAddFunction_Set() {
 	})
 }
 
-var atomicIntAddInvoker *gi.Function
-
 // AtomicIntAdd is a representation of the C type g_atomic_int_add.
 func AtomicIntAdd(atomic int32, val int32) int32 {
 	atomicIntAddFunction_Set()
@@ -404,8 +376,6 @@ func atomicIntAndFunction_Set() {
 		atomicIntAndFunction = gi.FunctionInvokerNew("GLib", "atomic_int_and")
 	})
 }
-
-var atomicIntAndInvoker *gi.Function
 
 // AtomicIntAnd is a representation of the C type g_atomic_int_and.
 func AtomicIntAnd(atomic uint32, val uint32) uint32 {
@@ -435,8 +405,6 @@ func atomicIntExchangeAndAddFunction_Set() {
 	})
 }
 
-var atomicIntExchangeAndAddInvoker *gi.Function
-
 // AtomicIntExchangeAndAdd is a representation of the C type g_atomic_int_exchange_and_add.
 func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
 	atomicIntExchangeAndAddFunction_Set()
@@ -461,8 +429,6 @@ func atomicIntGetFunction_Set() {
 	})
 }
 
-var atomicIntGetInvoker *gi.Function
-
 // AtomicIntGet is a representation of the C type g_atomic_int_get.
 func AtomicIntGet(atomic int32) int32 {
 	atomicIntGetFunction_Set()
@@ -486,8 +452,6 @@ func atomicIntIncFunction_Set() {
 	})
 }
 
-var atomicIntIncInvoker *gi.Function
-
 // AtomicIntInc is a representation of the C type g_atomic_int_inc.
 func AtomicIntInc(atomic int32) {
 	atomicIntIncFunction_Set()
@@ -507,8 +471,6 @@ func atomicIntOrFunction_Set() {
 		atomicIntOrFunction = gi.FunctionInvokerNew("GLib", "atomic_int_or")
 	})
 }
-
-var atomicIntOrInvoker *gi.Function
 
 // AtomicIntOr is a representation of the C type g_atomic_int_or.
 func AtomicIntOr(atomic uint32, val uint32) uint32 {
@@ -534,8 +496,6 @@ func atomicIntSetFunction_Set() {
 	})
 }
 
-var atomicIntSetInvoker *gi.Function
-
 // AtomicIntSet is a representation of the C type g_atomic_int_set.
 func AtomicIntSet(atomic int32, newval int32) {
 	atomicIntSetFunction_Set()
@@ -556,8 +516,6 @@ func atomicIntXorFunction_Set() {
 		atomicIntXorFunction = gi.FunctionInvokerNew("GLib", "atomic_int_xor")
 	})
 }
-
-var atomicIntXorInvoker *gi.Function
 
 // AtomicIntXor is a representation of the C type g_atomic_int_xor.
 func AtomicIntXor(atomic uint32, val uint32) uint32 {
@@ -615,8 +573,6 @@ func atomicRefCountIncFunction_Set() {
 	})
 }
 
-var atomicRefCountIncInvoker *gi.Function
-
 // AtomicRefCountInc is a representation of the C type g_atomic_ref_count_inc.
 func AtomicRefCountInc(arc int32) {
 	atomicRefCountIncFunction_Set()
@@ -636,8 +592,6 @@ func atomicRefCountInitFunction_Set() {
 		atomicRefCountInitFunction = gi.FunctionInvokerNew("GLib", "atomic_ref_count_init")
 	})
 }
-
-var atomicRefCountInitInvoker *gi.Function
 
 // AtomicRefCountInit is a representation of the C type g_atomic_ref_count_init.
 func AtomicRefCountInit(arc int32) {
@@ -673,8 +627,6 @@ func bitLockFunction_Set() {
 	})
 }
 
-var bitLockInvoker *gi.Function
-
 // BitLock is a representation of the C type g_bit_lock.
 func BitLock(address int32, lockBit int32) {
 	bitLockFunction_Set()
@@ -695,8 +647,6 @@ func bitNthLsfFunction_Set() {
 		bitNthLsfFunction = gi.FunctionInvokerNew("GLib", "bit_nth_lsf")
 	})
 }
-
-var bitNthLsfInvoker *gi.Function
 
 // BitNthLsf is a representation of the C type g_bit_nth_lsf.
 func BitNthLsf(mask uint64, nthBit int32) int32 {
@@ -722,8 +672,6 @@ func bitNthMsfFunction_Set() {
 	})
 }
 
-var bitNthMsfInvoker *gi.Function
-
 // BitNthMsf is a representation of the C type g_bit_nth_msf.
 func BitNthMsf(mask uint64, nthBit int32) int32 {
 	bitNthMsfFunction_Set()
@@ -747,8 +695,6 @@ func bitStorageFunction_Set() {
 		bitStorageFunction = gi.FunctionInvokerNew("GLib", "bit_storage")
 	})
 }
-
-var bitStorageInvoker *gi.Function
 
 // BitStorage is a representation of the C type g_bit_storage.
 func BitStorage(number uint64) uint32 {
@@ -774,8 +720,6 @@ func bitUnlockFunction_Set() {
 		bitUnlockFunction = gi.FunctionInvokerNew("GLib", "bit_unlock")
 	})
 }
-
-var bitUnlockInvoker *gi.Function
 
 // BitUnlock is a representation of the C type g_bit_unlock.
 func BitUnlock(address int32, lockBit int32) {
@@ -814,8 +758,6 @@ func byteArrayNewFunction_Set() {
 	})
 }
 
-var byteArrayNewInvoker *gi.Function
-
 // ByteArrayNew is a representation of the C type g_byte_array_new.
 func ByteArrayNew() {
 	byteArrayNewFunction_Set()
@@ -840,8 +782,6 @@ func checkVersionFunction_Set() {
 		checkVersionFunction = gi.FunctionInvokerNew("GLib", "check_version")
 	})
 }
-
-var checkVersionInvoker *gi.Function
 
 // CheckVersion is a representation of the C type glib_check_version.
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
@@ -875,8 +815,6 @@ func clearErrorFunction_Set() {
 		clearErrorFunction = gi.FunctionInvokerNew("GLib", "clear_error")
 	})
 }
-
-var clearErrorInvoker *gi.Function
 
 // ClearError is a representation of the C type g_clear_error.
 func ClearError() {
@@ -983,8 +921,6 @@ func dcgettextFunction_Set() {
 	})
 }
 
-var dcgettextInvoker *gi.Function
-
 // Dcgettext is a representation of the C type g_dcgettext.
 func Dcgettext(domain string, msgid string, category int32) string {
 	dcgettextFunction_Set()
@@ -1009,8 +945,6 @@ func dgettextFunction_Set() {
 		dgettextFunction = gi.FunctionInvokerNew("GLib", "dgettext")
 	})
 }
-
-var dgettextInvoker *gi.Function
 
 // Dgettext is a representation of the C type g_dgettext.
 func Dgettext(domain string, msgid string) string {
@@ -1041,8 +975,6 @@ func dngettextFunction_Set() {
 		dngettextFunction = gi.FunctionInvokerNew("GLib", "dngettext")
 	})
 }
-
-var dngettextInvoker *gi.Function
 
 // Dngettext is a representation of the C type g_dngettext.
 func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string {
@@ -1075,8 +1007,6 @@ func dpgettext2Function_Set() {
 		dpgettext2Function = gi.FunctionInvokerNew("GLib", "dpgettext2")
 	})
 }
-
-var dpgettext2Invoker *gi.Function
 
 // Dpgettext2 is a representation of the C type g_dpgettext2.
 func Dpgettext2(domain string, context string, msgid string) string {
@@ -1137,8 +1067,6 @@ func formatSizeFunction_Set() {
 	})
 }
 
-var formatSizeInvoker *gi.Function
-
 // FormatSize is a representation of the C type g_format_size.
 func FormatSize(size uint64) string {
 	formatSizeFunction_Set()
@@ -1161,8 +1089,6 @@ func formatSizeForDisplayFunction_Set() {
 		formatSizeForDisplayFunction = gi.FunctionInvokerNew("GLib", "format_size_for_display")
 	})
 }
-
-var formatSizeForDisplayInvoker *gi.Function
 
 // FormatSizeForDisplay is a representation of the C type g_format_size_for_display.
 func FormatSizeForDisplay(size int64) string {
@@ -1193,8 +1119,6 @@ func getApplicationNameFunction_Set() {
 	})
 }
 
-var getApplicationNameInvoker *gi.Function
-
 // GetApplicationName is a representation of the C type g_get_application_name.
 func GetApplicationName() string {
 	getApplicationNameFunction_Set()
@@ -1216,8 +1140,6 @@ func getCodesetFunction_Set() {
 		getCodesetFunction = gi.FunctionInvokerNew("GLib", "get_codeset")
 	})
 }
-
-var getCodesetInvoker *gi.Function
 
 // GetCodeset is a representation of the C type g_get_codeset.
 func GetCodeset() string {
@@ -1245,8 +1167,6 @@ func getEnvironFunction_Set() {
 	})
 }
 
-var getEnvironInvoker *gi.Function
-
 // GetEnviron is a representation of the C type g_get_environ.
 func GetEnviron() {
 	getEnvironFunction_Set()
@@ -1268,8 +1188,6 @@ func getHostNameFunction_Set() {
 	})
 }
 
-var getHostNameInvoker *gi.Function
-
 // GetHostName is a representation of the C type g_get_host_name.
 func GetHostName() string {
 	getHostNameFunction_Set()
@@ -1290,8 +1208,6 @@ func getLanguageNamesFunction_Set() {
 	})
 }
 
-var getLanguageNamesInvoker *gi.Function
-
 // GetLanguageNames is a representation of the C type g_get_language_names.
 func GetLanguageNames() {
 	getLanguageNamesFunction_Set()
@@ -1308,8 +1224,6 @@ func getLanguageNamesWithCategoryFunction_Set() {
 		getLanguageNamesWithCategoryFunction = gi.FunctionInvokerNew("GLib", "get_language_names_with_category")
 	})
 }
-
-var getLanguageNamesWithCategoryInvoker *gi.Function
 
 // GetLanguageNamesWithCategory is a representation of the C type g_get_language_names_with_category.
 func GetLanguageNamesWithCategory(categoryName string) {
@@ -1331,8 +1245,6 @@ func getLocaleVariantsFunction_Set() {
 	})
 }
 
-var getLocaleVariantsInvoker *gi.Function
-
 // GetLocaleVariants is a representation of the C type g_get_locale_variants.
 func GetLocaleVariants(locale string) {
 	getLocaleVariantsFunction_Set()
@@ -1352,8 +1264,6 @@ func getMonotonicTimeFunction_Set() {
 		getMonotonicTimeFunction = gi.FunctionInvokerNew("GLib", "get_monotonic_time")
 	})
 }
-
-var getMonotonicTimeInvoker *gi.Function
 
 // GetMonotonicTime is a representation of the C type g_get_monotonic_time.
 func GetMonotonicTime() int64 {
@@ -1375,8 +1285,6 @@ func getNumProcessorsFunction_Set() {
 	})
 }
 
-var getNumProcessorsInvoker *gi.Function
-
 // GetNumProcessors is a representation of the C type g_get_num_processors.
 func GetNumProcessors() uint32 {
 	getNumProcessorsFunction_Set()
@@ -1396,8 +1304,6 @@ func getPrgnameFunction_Set() {
 		getPrgnameFunction = gi.FunctionInvokerNew("GLib", "get_prgname")
 	})
 }
-
-var getPrgnameInvoker *gi.Function
 
 // GetPrgname is a representation of the C type g_get_prgname.
 func GetPrgname() string {
@@ -1421,8 +1327,6 @@ func getRealTimeFunction_Set() {
 	})
 }
 
-var getRealTimeInvoker *gi.Function
-
 // GetRealTime is a representation of the C type g_get_real_time.
 func GetRealTime() int64 {
 	getRealTimeFunction_Set()
@@ -1443,8 +1347,6 @@ func getSystemConfigDirsFunction_Set() {
 	})
 }
 
-var getSystemConfigDirsInvoker *gi.Function
-
 // GetSystemConfigDirs is a representation of the C type g_get_system_config_dirs.
 func GetSystemConfigDirs() {
 	getSystemConfigDirsFunction_Set()
@@ -1461,8 +1363,6 @@ func getSystemDataDirsFunction_Set() {
 		getSystemDataDirsFunction = gi.FunctionInvokerNew("GLib", "get_system_data_dirs")
 	})
 }
-
-var getSystemDataDirsInvoker *gi.Function
 
 // GetSystemDataDirs is a representation of the C type g_get_system_data_dirs.
 func GetSystemDataDirs() {
@@ -1543,8 +1443,6 @@ func hostnameToAsciiFunction_Set() {
 	})
 }
 
-var hostnameToAsciiInvoker *gi.Function
-
 // HostnameToAscii is a representation of the C type g_hostname_to_ascii.
 func HostnameToAscii(hostname string) string {
 	hostnameToAsciiFunction_Set()
@@ -1567,8 +1465,6 @@ func hostnameToUnicodeFunction_Set() {
 		hostnameToUnicodeFunction = gi.FunctionInvokerNew("GLib", "hostname_to_unicode")
 	})
 }
-
-var hostnameToUnicodeInvoker *gi.Function
 
 // HostnameToUnicode is a representation of the C type g_hostname_to_unicode.
 func HostnameToUnicode(hostname string) string {
@@ -1594,8 +1490,6 @@ func iconvOpenFunction_Set() {
 		iconvOpenFunction = gi.FunctionInvokerNew("GLib", "iconv_open")
 	})
 }
-
-var iconvOpenInvoker *gi.Function
 
 // IconvOpen is a representation of the C type g_iconv_open.
 func IconvOpen(toCodeset string, fromCodeset string) *IConv {
@@ -1627,8 +1521,6 @@ func idleSourceNewFunction_Set() {
 	})
 }
 
-var idleSourceNewInvoker *gi.Function
-
 // IdleSourceNew is a representation of the C type g_idle_source_new.
 func IdleSourceNew() *Source {
 	idleSourceNewFunction_Set()
@@ -1657,8 +1549,6 @@ func internStaticStringFunction_Set() {
 	})
 }
 
-var internStaticStringInvoker *gi.Function
-
 // InternStaticString is a representation of the C type g_intern_static_string.
 func InternStaticString(string_ string) string {
 	internStaticStringFunction_Set()
@@ -1681,8 +1571,6 @@ func internStringFunction_Set() {
 		internStringFunction = gi.FunctionInvokerNew("GLib", "intern_string")
 	})
 }
-
-var internStringInvoker *gi.Function
 
 // InternString is a representation of the C type g_intern_string.
 func InternString(string_ string) string {
@@ -1719,8 +1607,6 @@ func listenvFunction_Set() {
 	})
 }
 
-var listenvInvoker *gi.Function
-
 // Listenv is a representation of the C type g_listenv.
 func Listenv() {
 	listenvFunction_Set()
@@ -1745,8 +1631,6 @@ func logRemoveHandlerFunction_Set() {
 		logRemoveHandlerFunction = gi.FunctionInvokerNew("GLib", "log_remove_handler")
 	})
 }
-
-var logRemoveHandlerInvoker *gi.Function
 
 // LogRemoveHandler is a representation of the C type g_log_remove_handler.
 func LogRemoveHandler(logDomain string, handlerId uint32) {
@@ -1803,8 +1687,6 @@ func mainContextDefaultFunction_Set() {
 	})
 }
 
-var mainContextDefaultInvoker *gi.Function
-
 // MainContextDefault is a representation of the C type g_main_context_default.
 func MainContextDefault() *MainContext {
 	mainContextDefaultFunction_Set()
@@ -1824,8 +1706,6 @@ func mainContextGetThreadDefaultFunction_Set() {
 		mainContextGetThreadDefaultFunction = gi.FunctionInvokerNew("GLib", "main_context_get_thread_default")
 	})
 }
-
-var mainContextGetThreadDefaultInvoker *gi.Function
 
 // MainContextGetThreadDefault is a representation of the C type g_main_context_get_thread_default.
 func MainContextGetThreadDefault() *MainContext {
@@ -1847,8 +1727,6 @@ func mainContextRefThreadDefaultFunction_Set() {
 	})
 }
 
-var mainContextRefThreadDefaultInvoker *gi.Function
-
 // MainContextRefThreadDefault is a representation of the C type g_main_context_ref_thread_default.
 func MainContextRefThreadDefault() *MainContext {
 	mainContextRefThreadDefaultFunction_Set()
@@ -1869,8 +1747,6 @@ func mainCurrentSourceFunction_Set() {
 	})
 }
 
-var mainCurrentSourceInvoker *gi.Function
-
 // MainCurrentSource is a representation of the C type g_main_current_source.
 func MainCurrentSource() *Source {
 	mainCurrentSourceFunction_Set()
@@ -1890,8 +1766,6 @@ func mainDepthFunction_Set() {
 		mainDepthFunction = gi.FunctionInvokerNew("GLib", "main_depth")
 	})
 }
-
-var mainDepthInvoker *gi.Function
 
 // MainDepth is a representation of the C type g_main_depth.
 func MainDepth() int32 {
@@ -1925,8 +1799,6 @@ func markupEscapeTextFunction_Set() {
 	})
 }
 
-var markupEscapeTextInvoker *gi.Function
-
 // MarkupEscapeText is a representation of the C type g_markup_escape_text.
 func MarkupEscapeText(text string, length int32) string {
 	markupEscapeTextFunction_Set()
@@ -1956,8 +1828,6 @@ func memProfileFunction_Set() {
 		memProfileFunction = gi.FunctionInvokerNew("GLib", "mem_profile")
 	})
 }
-
-var memProfileInvoker *gi.Function
 
 // MemProfile is a representation of the C type g_mem_profile.
 func MemProfile() {
@@ -1994,8 +1864,6 @@ func onErrorQueryFunction_Set() {
 	})
 }
 
-var onErrorQueryInvoker *gi.Function
-
 // OnErrorQuery is a representation of the C type g_on_error_query.
 func OnErrorQuery(prgName string) {
 	onErrorQueryFunction_Set()
@@ -2015,8 +1883,6 @@ func onErrorStackTraceFunction_Set() {
 		onErrorStackTraceFunction = gi.FunctionInvokerNew("GLib", "on_error_stack_trace")
 	})
 }
-
-var onErrorStackTraceInvoker *gi.Function
 
 // OnErrorStackTrace is a representation of the C type g_on_error_stack_trace.
 func OnErrorStackTrace(prgName string) {
@@ -2100,8 +1966,6 @@ func randomIntFunction_Set() {
 	})
 }
 
-var randomIntInvoker *gi.Function
-
 // RandomInt is a representation of the C type g_random_int.
 func RandomInt() uint32 {
 	randomIntFunction_Set()
@@ -2121,8 +1985,6 @@ func randomIntRangeFunction_Set() {
 		randomIntRangeFunction = gi.FunctionInvokerNew("GLib", "random_int_range")
 	})
 }
-
-var randomIntRangeInvoker *gi.Function
 
 // RandomIntRange is a representation of the C type g_random_int_range.
 func RandomIntRange(begin int32, end int32) int32 {
@@ -2147,8 +2009,6 @@ func randomSetSeedFunction_Set() {
 		randomSetSeedFunction = gi.FunctionInvokerNew("GLib", "random_set_seed")
 	})
 }
-
-var randomSetSeedInvoker *gi.Function
 
 // RandomSetSeed is a representation of the C type g_random_set_seed.
 func RandomSetSeed(seed uint32) {
@@ -2192,8 +2052,6 @@ func refCountIncFunction_Set() {
 	})
 }
 
-var refCountIncInvoker *gi.Function
-
 // RefCountInc is a representation of the C type g_ref_count_inc.
 func RefCountInc(rc int32) {
 	refCountIncFunction_Set()
@@ -2214,8 +2072,6 @@ func refCountInitFunction_Set() {
 	})
 }
 
-var refCountInitInvoker *gi.Function
-
 // RefCountInit is a representation of the C type g_ref_count_init.
 func RefCountInit(rc int32) {
 	refCountInitFunction_Set()
@@ -2235,8 +2091,6 @@ func refStringAcquireFunction_Set() {
 		refStringAcquireFunction = gi.FunctionInvokerNew("GLib", "ref_string_acquire")
 	})
 }
-
-var refStringAcquireInvoker *gi.Function
 
 // RefStringAcquire is a representation of the C type g_ref_string_acquire.
 func RefStringAcquire(str string) string {
@@ -2263,8 +2117,6 @@ func refStringNewFunction_Set() {
 	})
 }
 
-var refStringNewInvoker *gi.Function
-
 // RefStringNew is a representation of the C type g_ref_string_new.
 func RefStringNew(str string) string {
 	refStringNewFunction_Set()
@@ -2288,8 +2140,6 @@ func refStringNewInternFunction_Set() {
 	})
 }
 
-var refStringNewInternInvoker *gi.Function
-
 // RefStringNewIntern is a representation of the C type g_ref_string_new_intern.
 func RefStringNewIntern(str string) string {
 	refStringNewInternFunction_Set()
@@ -2312,8 +2162,6 @@ func refStringNewLenFunction_Set() {
 		refStringNewLenFunction = gi.FunctionInvokerNew("GLib", "ref_string_new_len")
 	})
 }
-
-var refStringNewLenInvoker *gi.Function
 
 // RefStringNewLen is a representation of the C type g_ref_string_new_len.
 func RefStringNewLen(str string, len int32) string {
@@ -2339,8 +2187,6 @@ func refStringReleaseFunction_Set() {
 	})
 }
 
-var refStringReleaseInvoker *gi.Function
-
 // RefStringRelease is a representation of the C type g_ref_string_release.
 func RefStringRelease(str string) {
 	refStringReleaseFunction_Set()
@@ -2364,8 +2210,6 @@ func regexEscapeNulFunction_Set() {
 		regexEscapeNulFunction = gi.FunctionInvokerNew("GLib", "regex_escape_nul")
 	})
 }
-
-var regexEscapeNulInvoker *gi.Function
 
 // RegexEscapeNul is a representation of the C type g_regex_escape_nul.
 func RegexEscapeNul(string_ string, length int32) string {
@@ -2397,8 +2241,6 @@ func reloadUserSpecialDirsCacheFunction_Set() {
 	})
 }
 
-var reloadUserSpecialDirsCacheInvoker *gi.Function
-
 // ReloadUserSpecialDirsCache is a representation of the C type g_reload_user_special_dirs_cache.
 func ReloadUserSpecialDirsCache() {
 	reloadUserSpecialDirsCacheFunction_Set()
@@ -2415,8 +2257,6 @@ func returnIfFailWarningFunction_Set() {
 		returnIfFailWarningFunction = gi.FunctionInvokerNew("GLib", "return_if_fail_warning")
 	})
 }
-
-var returnIfFailWarningInvoker *gi.Function
 
 // ReturnIfFailWarning is a representation of the C type g_return_if_fail_warning.
 func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
@@ -2460,8 +2300,6 @@ func setApplicationNameFunction_Set() {
 	})
 }
 
-var setApplicationNameInvoker *gi.Function
-
 // SetApplicationName is a representation of the C type g_set_application_name.
 func SetApplicationName(applicationName string) {
 	setApplicationNameFunction_Set()
@@ -2485,8 +2323,6 @@ func setPrgnameFunction_Set() {
 		setPrgnameFunction = gi.FunctionInvokerNew("GLib", "set_prgname")
 	})
 }
-
-var setPrgnameInvoker *gi.Function
 
 // SetPrgname is a representation of the C type g_set_prgname.
 func SetPrgname(prgname string) {
@@ -2546,8 +2382,6 @@ func sourceSetNameByIdFunction_Set() {
 	})
 }
 
-var sourceSetNameByIdInvoker *gi.Function
-
 // SourceSetNameById is a representation of the C type g_source_set_name_by_id.
 func SourceSetNameById(tag uint32, name string) {
 	sourceSetNameByIdFunction_Set()
@@ -2568,8 +2402,6 @@ func spacedPrimesClosestFunction_Set() {
 		spacedPrimesClosestFunction = gi.FunctionInvokerNew("GLib", "spaced_primes_closest")
 	})
 }
-
-var spacedPrimesClosestInvoker *gi.Function
 
 // SpacedPrimesClosest is a representation of the C type g_spaced_primes_closest.
 func SpacedPrimesClosest(num uint32) uint32 {
@@ -2616,8 +2448,6 @@ func stpcpyFunction_Set() {
 	})
 }
 
-var stpcpyInvoker *gi.Function
-
 // Stpcpy is a representation of the C type g_stpcpy.
 func Stpcpy(dest string, src string) string {
 	stpcpyFunction_Set()
@@ -2654,8 +2484,6 @@ func strToAsciiFunction_Set() {
 	})
 }
 
-var strToAsciiInvoker *gi.Function
-
 // StrToAscii is a representation of the C type g_str_to_ascii.
 func StrToAscii(str string, fromLocale string) string {
 	strToAsciiFunction_Set()
@@ -2682,8 +2510,6 @@ func strcanonFunction_Set() {
 	})
 }
 
-var strcanonInvoker *gi.Function
-
 // Strcanon is a representation of the C type g_strcanon.
 func Strcanon(string_ string, validChars string, substitutor int8) string {
 	strcanonFunction_Set()
@@ -2709,8 +2535,6 @@ func strcasecmpFunction_Set() {
 	})
 }
 
-var strcasecmpInvoker *gi.Function
-
 // Strcasecmp is a representation of the C type g_strcasecmp.
 func Strcasecmp(s1 string, s2 string) int32 {
 	strcasecmpFunction_Set()
@@ -2735,8 +2559,6 @@ func strchompFunction_Set() {
 	})
 }
 
-var strchompInvoker *gi.Function
-
 // Strchomp is a representation of the C type g_strchomp.
 func Strchomp(string_ string) string {
 	strchompFunction_Set()
@@ -2759,8 +2581,6 @@ func strchugFunction_Set() {
 		strchugFunction = gi.FunctionInvokerNew("GLib", "strchug")
 	})
 }
-
-var strchugInvoker *gi.Function
 
 // Strchug is a representation of the C type g_strchug.
 func Strchug(string_ string) string {
@@ -2785,8 +2605,6 @@ func strcmp0Function_Set() {
 	})
 }
 
-var strcmp0Invoker *gi.Function
-
 // Strcmp0 is a representation of the C type g_strcmp0.
 func Strcmp0(str1 string, str2 string) int32 {
 	strcmp0Function_Set()
@@ -2810,8 +2628,6 @@ func strcompressFunction_Set() {
 		strcompressFunction = gi.FunctionInvokerNew("GLib", "strcompress")
 	})
 }
-
-var strcompressInvoker *gi.Function
 
 // Strcompress is a representation of the C type g_strcompress.
 func Strcompress(source string) string {
@@ -2838,8 +2654,6 @@ func strdelimitFunction_Set() {
 	})
 }
 
-var strdelimitInvoker *gi.Function
-
 // Strdelimit is a representation of the C type g_strdelimit.
 func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
 	strdelimitFunction_Set()
@@ -2865,8 +2679,6 @@ func strdownFunction_Set() {
 	})
 }
 
-var strdownInvoker *gi.Function
-
 // Strdown is a representation of the C type g_strdown.
 func Strdown(string_ string) string {
 	strdownFunction_Set()
@@ -2889,8 +2701,6 @@ func strdupFunction_Set() {
 		strdupFunction = gi.FunctionInvokerNew("GLib", "strdup")
 	})
 }
-
-var strdupInvoker *gi.Function
 
 // Strdup is a representation of the C type g_strdup.
 func Strdup(str string) string {
@@ -2919,8 +2729,6 @@ func strdupvFunction_Set() {
 	})
 }
 
-var strdupvInvoker *gi.Function
-
 // Strdupv is a representation of the C type g_strdupv.
 func Strdupv(strArray string) {
 	strdupvFunction_Set()
@@ -2940,8 +2748,6 @@ func strerrorFunction_Set() {
 		strerrorFunction = gi.FunctionInvokerNew("GLib", "strerror")
 	})
 }
-
-var strerrorInvoker *gi.Function
 
 // Strerror is a representation of the C type g_strerror.
 func Strerror(errnum int32) string {
@@ -2965,8 +2771,6 @@ func strescapeFunction_Set() {
 		strescapeFunction = gi.FunctionInvokerNew("GLib", "strescape")
 	})
 }
-
-var strescapeInvoker *gi.Function
 
 // Strescape is a representation of the C type g_strescape.
 func Strescape(source string, exceptions string) string {
@@ -2992,8 +2796,6 @@ func strfreevFunction_Set() {
 	})
 }
 
-var strfreevInvoker *gi.Function
-
 // Strfreev is a representation of the C type g_strfreev.
 func Strfreev(strArray string) {
 	strfreevFunction_Set()
@@ -3013,8 +2815,6 @@ func stringNewFunction_Set() {
 		stringNewFunction = gi.FunctionInvokerNew("GLib", "string_new")
 	})
 }
-
-var stringNewInvoker *gi.Function
 
 // StringNew is a representation of the C type g_string_new.
 func StringNew(init string) *String {
@@ -3038,8 +2838,6 @@ func stringNewLenFunction_Set() {
 		stringNewLenFunction = gi.FunctionInvokerNew("GLib", "string_new_len")
 	})
 }
-
-var stringNewLenInvoker *gi.Function
 
 // StringNewLen is a representation of the C type g_string_new_len.
 func StringNewLen(init string, len int32) *String {
@@ -3067,8 +2865,6 @@ func stripContextFunction_Set() {
 	})
 }
 
-var stripContextInvoker *gi.Function
-
 // StripContext is a representation of the C type g_strip_context.
 func StripContext(msgid string, msgval string) string {
 	stripContextFunction_Set()
@@ -3094,8 +2890,6 @@ func strjoinvFunction_Set() {
 		strjoinvFunction = gi.FunctionInvokerNew("GLib", "strjoinv")
 	})
 }
-
-var strjoinvInvoker *gi.Function
 
 // Strjoinv is a representation of the C type g_strjoinv.
 func Strjoinv(separator string, strArray string) string {
@@ -3124,8 +2918,6 @@ func strncasecmpFunction_Set() {
 		strncasecmpFunction = gi.FunctionInvokerNew("GLib", "strncasecmp")
 	})
 }
-
-var strncasecmpInvoker *gi.Function
 
 // Strncasecmp is a representation of the C type g_strncasecmp.
 func Strncasecmp(s1 string, s2 string, n uint32) int32 {
@@ -3156,8 +2948,6 @@ func strreverseFunction_Set() {
 	})
 }
 
-var strreverseInvoker *gi.Function
-
 // Strreverse is a representation of the C type g_strreverse.
 func Strreverse(string_ string) string {
 	strreverseFunction_Set()
@@ -3180,8 +2970,6 @@ func strrstrFunction_Set() {
 		strrstrFunction = gi.FunctionInvokerNew("GLib", "strrstr")
 	})
 }
-
-var strrstrInvoker *gi.Function
 
 // Strrstr is a representation of the C type g_strrstr.
 func Strrstr(haystack string, needle string) string {
@@ -3206,8 +2994,6 @@ func strrstrLenFunction_Set() {
 		strrstrLenFunction = gi.FunctionInvokerNew("GLib", "strrstr_len")
 	})
 }
-
-var strrstrLenInvoker *gi.Function
 
 // StrrstrLen is a representation of the C type g_strrstr_len.
 func StrrstrLen(haystack string, haystackLen int32, needle string) string {
@@ -3234,8 +3020,6 @@ func strsignalFunction_Set() {
 	})
 }
 
-var strsignalInvoker *gi.Function
-
 // Strsignal is a representation of the C type g_strsignal.
 func Strsignal(signum int32) string {
 	strsignalFunction_Set()
@@ -3259,8 +3043,6 @@ func strsplitFunction_Set() {
 	})
 }
 
-var strsplitInvoker *gi.Function
-
 // Strsplit is a representation of the C type g_strsplit.
 func Strsplit(string_ string, delimiter string, maxTokens int32) {
 	strsplitFunction_Set()
@@ -3283,8 +3065,6 @@ func strsplitSetFunction_Set() {
 	})
 }
 
-var strsplitSetInvoker *gi.Function
-
 // StrsplitSet is a representation of the C type g_strsplit_set.
 func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
 	strsplitSetFunction_Set()
@@ -3306,8 +3086,6 @@ func strstrLenFunction_Set() {
 		strstrLenFunction = gi.FunctionInvokerNew("GLib", "strstr_len")
 	})
 }
-
-var strstrLenInvoker *gi.Function
 
 // StrstrLen is a representation of the C type g_strstr_len.
 func StrstrLen(haystack string, haystackLen int32, needle string) string {
@@ -3335,8 +3113,6 @@ func strupFunction_Set() {
 		strupFunction = gi.FunctionInvokerNew("GLib", "strup")
 	})
 }
-
-var strupInvoker *gi.Function
 
 // Strup is a representation of the C type g_strup.
 func Strup(string_ string) string {
@@ -3366,8 +3142,6 @@ func strvLengthFunction_Set() {
 		strvLengthFunction = gi.FunctionInvokerNew("GLib", "strv_length")
 	})
 }
-
-var strvLengthInvoker *gi.Function
 
 // StrvLength is a representation of the C type g_strv_length.
 func StrvLength(strArray string) uint32 {
@@ -3400,8 +3174,6 @@ func testAssertExpectedMessagesInternalFunction_Set() {
 	})
 }
 
-var testAssertExpectedMessagesInternalInvoker *gi.Function
-
 // TestAssertExpectedMessagesInternal is a representation of the C type g_test_assert_expected_messages_internal.
 func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
 	testAssertExpectedMessagesInternalFunction_Set()
@@ -3425,8 +3197,6 @@ func testBugFunction_Set() {
 	})
 }
 
-var testBugInvoker *gi.Function
-
 // TestBug is a representation of the C type g_test_bug.
 func TestBug(bugUriSnippet string) {
 	testBugFunction_Set()
@@ -3446,8 +3216,6 @@ func testBugBaseFunction_Set() {
 		testBugBaseFunction = gi.FunctionInvokerNew("GLib", "test_bug_base")
 	})
 }
-
-var testBugBaseInvoker *gi.Function
 
 // TestBugBase is a representation of the C type g_test_bug_base.
 func TestBugBase(uriPattern string) {
@@ -3472,8 +3240,6 @@ func testCreateSuiteFunction_Set() {
 		testCreateSuiteFunction = gi.FunctionInvokerNew("GLib", "test_create_suite")
 	})
 }
-
-var testCreateSuiteInvoker *gi.Function
 
 // TestCreateSuite is a representation of the C type g_test_create_suite.
 func TestCreateSuite(suiteName string) *TestSuite {
@@ -3500,8 +3266,6 @@ func testFailFunction_Set() {
 	})
 }
 
-var testFailInvoker *gi.Function
-
 // TestFail is a representation of the C type g_test_fail.
 func TestFail() {
 	testFailFunction_Set()
@@ -3525,8 +3289,6 @@ func testGetRootFunction_Set() {
 	})
 }
 
-var testGetRootInvoker *gi.Function
-
 // TestGetRoot is a representation of the C type g_test_get_root.
 func TestGetRoot() *TestSuite {
 	testGetRootFunction_Set()
@@ -3546,8 +3308,6 @@ func testIncompleteFunction_Set() {
 		testIncompleteFunction = gi.FunctionInvokerNew("GLib", "test_incomplete")
 	})
 }
-
-var testIncompleteInvoker *gi.Function
 
 // TestIncomplete is a representation of the C type g_test_incomplete.
 func TestIncomplete(msg string) {
@@ -3589,8 +3349,6 @@ func testRandIntFunction_Set() {
 	})
 }
 
-var testRandIntInvoker *gi.Function
-
 // TestRandInt is a representation of the C type g_test_rand_int.
 func TestRandInt() int32 {
 	testRandIntFunction_Set()
@@ -3610,8 +3368,6 @@ func testRandIntRangeFunction_Set() {
 		testRandIntRangeFunction = gi.FunctionInvokerNew("GLib", "test_rand_int_range")
 	})
 }
-
-var testRandIntRangeInvoker *gi.Function
 
 // TestRandIntRange is a representation of the C type g_test_rand_int_range.
 func TestRandIntRange(begin int32, end int32) int32 {
@@ -3637,8 +3393,6 @@ func testRunFunction_Set() {
 	})
 }
 
-var testRunInvoker *gi.Function
-
 // TestRun is a representation of the C type g_test_run.
 func TestRun() int32 {
 	testRunFunction_Set()
@@ -3661,8 +3415,6 @@ func testSetNonfatalAssertionsFunction_Set() {
 	})
 }
 
-var testSetNonfatalAssertionsInvoker *gi.Function
-
 // TestSetNonfatalAssertions is a representation of the C type g_test_set_nonfatal_assertions.
 func TestSetNonfatalAssertions() {
 	testSetNonfatalAssertionsFunction_Set()
@@ -3679,8 +3431,6 @@ func testSkipFunction_Set() {
 		testSkipFunction = gi.FunctionInvokerNew("GLib", "test_skip")
 	})
 }
-
-var testSkipInvoker *gi.Function
 
 // TestSkip is a representation of the C type g_test_skip.
 func TestSkip(msg string) {
@@ -3703,8 +3453,6 @@ func testSummaryFunction_Set() {
 		testSummaryFunction = gi.FunctionInvokerNew("GLib", "test_summary")
 	})
 }
-
-var testSummaryInvoker *gi.Function
 
 // TestSummary is a representation of the C type g_test_summary.
 func TestSummary(summary string) {
@@ -3730,8 +3478,6 @@ func testTimerStartFunction_Set() {
 	})
 }
 
-var testTimerStartInvoker *gi.Function
-
 // TestTimerStart is a representation of the C type g_test_timer_start.
 func TestTimerStart() {
 	testTimerStartFunction_Set()
@@ -3748,8 +3494,6 @@ func testTrapAssertionsFunction_Set() {
 		testTrapAssertionsFunction = gi.FunctionInvokerNew("GLib", "test_trap_assertions")
 	})
 }
-
-var testTrapAssertionsInvoker *gi.Function
 
 // TestTrapAssertions is a representation of the C type g_test_trap_assertions.
 func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) {
@@ -3788,8 +3532,6 @@ func threadPoolGetMaxIdleTimeFunction_Set() {
 	})
 }
 
-var threadPoolGetMaxIdleTimeInvoker *gi.Function
-
 // ThreadPoolGetMaxIdleTime is a representation of the C type g_thread_pool_get_max_idle_time.
 func ThreadPoolGetMaxIdleTime() uint32 {
 	threadPoolGetMaxIdleTimeFunction_Set()
@@ -3809,8 +3551,6 @@ func threadPoolGetMaxUnusedThreadsFunction_Set() {
 		threadPoolGetMaxUnusedThreadsFunction = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
 	})
 }
-
-var threadPoolGetMaxUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolGetMaxUnusedThreads is a representation of the C type g_thread_pool_get_max_unused_threads.
 func ThreadPoolGetMaxUnusedThreads() int32 {
@@ -3832,8 +3572,6 @@ func threadPoolGetNumUnusedThreadsFunction_Set() {
 	})
 }
 
-var threadPoolGetNumUnusedThreadsInvoker *gi.Function
-
 // ThreadPoolGetNumUnusedThreads is a representation of the C type g_thread_pool_get_num_unused_threads.
 func ThreadPoolGetNumUnusedThreads() uint32 {
 	threadPoolGetNumUnusedThreadsFunction_Set()
@@ -3853,8 +3591,6 @@ func threadPoolSetMaxIdleTimeFunction_Set() {
 		threadPoolSetMaxIdleTimeFunction = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_idle_time")
 	})
 }
-
-var threadPoolSetMaxIdleTimeInvoker *gi.Function
 
 // ThreadPoolSetMaxIdleTime is a representation of the C type g_thread_pool_set_max_idle_time.
 func ThreadPoolSetMaxIdleTime(interval uint32) {
@@ -3876,8 +3612,6 @@ func threadPoolSetMaxUnusedThreadsFunction_Set() {
 	})
 }
 
-var threadPoolSetMaxUnusedThreadsInvoker *gi.Function
-
 // ThreadPoolSetMaxUnusedThreads is a representation of the C type g_thread_pool_set_max_unused_threads.
 func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 	threadPoolSetMaxUnusedThreadsFunction_Set()
@@ -3898,8 +3632,6 @@ func threadPoolStopUnusedThreadsFunction_Set() {
 	})
 }
 
-var threadPoolStopUnusedThreadsInvoker *gi.Function
-
 // ThreadPoolStopUnusedThreads is a representation of the C type g_thread_pool_stop_unused_threads.
 func ThreadPoolStopUnusedThreads() {
 	threadPoolStopUnusedThreadsFunction_Set()
@@ -3916,8 +3648,6 @@ func threadSelfFunction_Set() {
 		threadSelfFunction = gi.FunctionInvokerNew("GLib", "thread_self")
 	})
 }
-
-var threadSelfInvoker *gi.Function
 
 // ThreadSelf is a representation of the C type g_thread_self.
 func ThreadSelf() *Thread {
@@ -3938,8 +3668,6 @@ func threadYieldFunction_Set() {
 		threadYieldFunction = gi.FunctionInvokerNew("GLib", "thread_yield")
 	})
 }
-
-var threadYieldInvoker *gi.Function
 
 // ThreadYield is a representation of the C type g_thread_yield.
 func ThreadYield() {
@@ -3968,8 +3696,6 @@ func timeoutSourceNewFunction_Set() {
 	})
 }
 
-var timeoutSourceNewInvoker *gi.Function
-
 // TimeoutSourceNew is a representation of the C type g_timeout_source_new.
 func TimeoutSourceNew(interval uint32) *Source {
 	timeoutSourceNewFunction_Set()
@@ -3992,8 +3718,6 @@ func timeoutSourceNewSecondsFunction_Set() {
 		timeoutSourceNewSecondsFunction = gi.FunctionInvokerNew("GLib", "timeout_source_new_seconds")
 	})
 }
-
-var timeoutSourceNewSecondsInvoker *gi.Function
 
 // TimeoutSourceNewSeconds is a representation of the C type g_timeout_source_new_seconds.
 func TimeoutSourceNewSeconds(interval uint32) *Source {
@@ -4130,8 +3854,6 @@ func unixSignalSourceNewFunction_Set() {
 	})
 }
 
-var unixSignalSourceNewInvoker *gi.Function
-
 // UnixSignalSourceNew is a representation of the C type g_unix_signal_source_new.
 func UnixSignalSourceNew(signum int32) *Source {
 	unixSignalSourceNewFunction_Set()
@@ -4161,8 +3883,6 @@ func uriListExtractUrisFunction_Set() {
 	})
 }
 
-var uriListExtractUrisInvoker *gi.Function
-
 // UriListExtractUris is a representation of the C type g_uri_list_extract_uris.
 func UriListExtractUris(uriList string) {
 	uriListExtractUrisFunction_Set()
@@ -4182,8 +3902,6 @@ func uriParseSchemeFunction_Set() {
 		uriParseSchemeFunction = gi.FunctionInvokerNew("GLib", "uri_parse_scheme")
 	})
 }
-
-var uriParseSchemeInvoker *gi.Function
 
 // UriParseScheme is a representation of the C type g_uri_parse_scheme.
 func UriParseScheme(uri string) string {
@@ -4207,8 +3925,6 @@ func uriUnescapeSegmentFunction_Set() {
 		uriUnescapeSegmentFunction = gi.FunctionInvokerNew("GLib", "uri_unescape_segment")
 	})
 }
-
-var uriUnescapeSegmentInvoker *gi.Function
 
 // UriUnescapeSegment is a representation of the C type g_uri_unescape_segment.
 func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCharacters string) string {
@@ -4235,8 +3951,6 @@ func uriUnescapeStringFunction_Set() {
 	})
 }
 
-var uriUnescapeStringInvoker *gi.Function
-
 // UriUnescapeString is a representation of the C type g_uri_unescape_string.
 func UriUnescapeString(escapedString string, illegalCharacters string) string {
 	uriUnescapeStringFunction_Set()
@@ -4261,8 +3975,6 @@ func usleepFunction_Set() {
 	})
 }
 
-var usleepInvoker *gi.Function
-
 // Usleep is a representation of the C type g_usleep.
 func Usleep(microseconds uint64) {
 	usleepFunction_Set()
@@ -4284,8 +3996,6 @@ func utf16ToUtf8Function_Set() {
 		utf16ToUtf8Function = gi.FunctionInvokerNew("GLib", "utf16_to_utf8")
 	})
 }
-
-var utf16ToUtf8Invoker *gi.Function
 
 // Utf16ToUtf8 is a representation of the C type g_utf16_to_utf8.
 func Utf16ToUtf8(str uint16, len int64) (string, int64, int64) {
@@ -4315,8 +4025,6 @@ func utf8CasefoldFunction_Set() {
 	})
 }
 
-var utf8CasefoldInvoker *gi.Function
-
 // Utf8Casefold is a representation of the C type g_utf8_casefold.
 func Utf8Casefold(str string, len int32) string {
 	utf8CasefoldFunction_Set()
@@ -4340,8 +4048,6 @@ func utf8CollateFunction_Set() {
 		utf8CollateFunction = gi.FunctionInvokerNew("GLib", "utf8_collate")
 	})
 }
-
-var utf8CollateInvoker *gi.Function
 
 // Utf8Collate is a representation of the C type g_utf8_collate.
 func Utf8Collate(str1 string, str2 string) int32 {
@@ -4367,8 +4073,6 @@ func utf8CollateKeyFunction_Set() {
 	})
 }
 
-var utf8CollateKeyInvoker *gi.Function
-
 // Utf8CollateKey is a representation of the C type g_utf8_collate_key.
 func Utf8CollateKey(str string, len int32) string {
 	utf8CollateKeyFunction_Set()
@@ -4392,8 +4096,6 @@ func utf8CollateKeyForFilenameFunction_Set() {
 		utf8CollateKeyForFilenameFunction = gi.FunctionInvokerNew("GLib", "utf8_collate_key_for_filename")
 	})
 }
-
-var utf8CollateKeyForFilenameInvoker *gi.Function
 
 // Utf8CollateKeyForFilename is a representation of the C type g_utf8_collate_key_for_filename.
 func Utf8CollateKeyForFilename(str string, len int32) string {
@@ -4419,8 +4121,6 @@ func utf8FindNextCharFunction_Set() {
 	})
 }
 
-var utf8FindNextCharInvoker *gi.Function
-
 // Utf8FindNextChar is a representation of the C type g_utf8_find_next_char.
 func Utf8FindNextChar(p string, end string) string {
 	utf8FindNextCharFunction_Set()
@@ -4444,8 +4144,6 @@ func utf8FindPrevCharFunction_Set() {
 		utf8FindPrevCharFunction = gi.FunctionInvokerNew("GLib", "utf8_find_prev_char")
 	})
 }
-
-var utf8FindPrevCharInvoker *gi.Function
 
 // Utf8FindPrevChar is a representation of the C type g_utf8_find_prev_char.
 func Utf8FindPrevChar(str string, p string) string {
@@ -4475,8 +4173,6 @@ func utf8MakeValidFunction_Set() {
 	})
 }
 
-var utf8MakeValidInvoker *gi.Function
-
 // Utf8MakeValid is a representation of the C type g_utf8_make_valid.
 func Utf8MakeValid(str string, len int32) string {
 	utf8MakeValidFunction_Set()
@@ -4503,8 +4199,6 @@ func utf8OffsetToPointerFunction_Set() {
 	})
 }
 
-var utf8OffsetToPointerInvoker *gi.Function
-
 // Utf8OffsetToPointer is a representation of the C type g_utf8_offset_to_pointer.
 func Utf8OffsetToPointer(str string, offset int64) string {
 	utf8OffsetToPointerFunction_Set()
@@ -4529,8 +4223,6 @@ func utf8PointerToOffsetFunction_Set() {
 	})
 }
 
-var utf8PointerToOffsetInvoker *gi.Function
-
 // Utf8PointerToOffset is a representation of the C type g_utf8_pointer_to_offset.
 func Utf8PointerToOffset(str string, pos string) int64 {
 	utf8PointerToOffsetFunction_Set()
@@ -4554,8 +4246,6 @@ func utf8PrevCharFunction_Set() {
 		utf8PrevCharFunction = gi.FunctionInvokerNew("GLib", "utf8_prev_char")
 	})
 }
-
-var utf8PrevCharInvoker *gi.Function
 
 // Utf8PrevChar is a representation of the C type g_utf8_prev_char.
 func Utf8PrevChar(p string) string {
@@ -4582,8 +4272,6 @@ func utf8StrdownFunction_Set() {
 	})
 }
 
-var utf8StrdownInvoker *gi.Function
-
 // Utf8Strdown is a representation of the C type g_utf8_strdown.
 func Utf8Strdown(str string, len int32) string {
 	utf8StrdownFunction_Set()
@@ -4607,8 +4295,6 @@ func utf8StrlenFunction_Set() {
 		utf8StrlenFunction = gi.FunctionInvokerNew("GLib", "utf8_strlen")
 	})
 }
-
-var utf8StrlenInvoker *gi.Function
 
 // Utf8Strlen is a representation of the C type g_utf8_strlen.
 func Utf8Strlen(p string, max int32) int64 {
@@ -4638,8 +4324,6 @@ func utf8StrreverseFunction_Set() {
 	})
 }
 
-var utf8StrreverseInvoker *gi.Function
-
 // Utf8Strreverse is a representation of the C type g_utf8_strreverse.
 func Utf8Strreverse(str string, len int32) string {
 	utf8StrreverseFunction_Set()
@@ -4664,8 +4348,6 @@ func utf8StrupFunction_Set() {
 	})
 }
 
-var utf8StrupInvoker *gi.Function
-
 // Utf8Strup is a representation of the C type g_utf8_strup.
 func Utf8Strup(str string, len int32) string {
 	utf8StrupFunction_Set()
@@ -4689,8 +4371,6 @@ func utf8SubstringFunction_Set() {
 		utf8SubstringFunction = gi.FunctionInvokerNew("GLib", "utf8_substring")
 	})
 }
-
-var utf8SubstringInvoker *gi.Function
 
 // Utf8Substring is a representation of the C type g_utf8_substring.
 func Utf8Substring(str string, startPos int64, endPos int64) string {
@@ -4720,8 +4400,6 @@ func utf8ToUtf16Function_Set() {
 		utf8ToUtf16Function = gi.FunctionInvokerNew("GLib", "utf8_to_utf16")
 	})
 }
-
-var utf8ToUtf16Invoker *gi.Function
 
 // Utf8ToUtf16 is a representation of the C type g_utf8_to_utf16.
 func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
@@ -4757,8 +4435,6 @@ func uuidStringRandomFunction_Set() {
 	})
 }
 
-var uuidStringRandomInvoker *gi.Function
-
 // UuidStringRandom is a representation of the C type g_uuid_string_random.
 func UuidStringRandom() string {
 	uuidStringRandomFunction_Set()
@@ -4792,8 +4468,6 @@ func variantTypeCheckedFunction_Set() {
 		variantTypeCheckedFunction = gi.FunctionInvokerNew("GLib", "variant_type_checked_")
 	})
 }
-
-var variantTypeCheckedInvoker *gi.Function
 
 // VariantTypeChecked is a representation of the C type g_variant_type_checked_.
 func VariantTypeChecked(arg0 string) *VariantType {
@@ -4833,8 +4507,6 @@ func warnMessageFunction_Set() {
 		warnMessageFunction = gi.FunctionInvokerNew("GLib", "warn_message")
 	})
 }
-
-var warnMessageInvoker *gi.Function
 
 // WarnMessage is a representation of the C type g_warn_message.
 func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) {

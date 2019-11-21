@@ -20,8 +20,6 @@ func getMajorVersionFunction_Set() {
 	})
 }
 
-var getMajorVersionInvoker *gi.Function
-
 // GetMajorVersion is a representation of the C type webkit_get_major_version.
 func GetMajorVersion() uint32 {
 	getMajorVersionFunction_Set()
@@ -42,8 +40,6 @@ func getMicroVersionFunction_Set() {
 	})
 }
 
-var getMicroVersionInvoker *gi.Function
-
 // GetMicroVersion is a representation of the C type webkit_get_micro_version.
 func GetMicroVersion() uint32 {
 	getMicroVersionFunction_Set()
@@ -63,8 +59,6 @@ func getMinorVersionFunction_Set() {
 		getMinorVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
 	})
 }
-
-var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type webkit_get_minor_version.
 func GetMinorVersion() uint32 {
@@ -97,8 +91,6 @@ func uriForDisplayFunction_Set() {
 		uriForDisplayFunction = gi.FunctionInvokerNew("WebKit2", "uri_for_display")
 	})
 }
-
-var uriForDisplayInvoker *gi.Function
 
 // UriForDisplay is a representation of the C type webkit_uri_for_display.
 func UriForDisplay(uri string) string {

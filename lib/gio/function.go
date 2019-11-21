@@ -42,8 +42,6 @@ func appInfoResetTypeAssociationsFunction_Set() {
 	})
 }
 
-var appInfoResetTypeAssociationsInvoker *gi.Function
-
 // AppInfoResetTypeAssociations is a representation of the C type g_app_info_reset_type_associations.
 func AppInfoResetTypeAssociations(contentType string) {
 	appInfoResetTypeAssociationsFunction_Set()
@@ -80,8 +78,6 @@ func busUnownNameFunction_Set() {
 	})
 }
 
-var busUnownNameInvoker *gi.Function
-
 // BusUnownName is a representation of the C type g_bus_unown_name.
 func BusUnownName(ownerId uint32) {
 	busUnownNameFunction_Set()
@@ -101,8 +97,6 @@ func busUnwatchNameFunction_Set() {
 		busUnwatchNameFunction = gi.FunctionInvokerNew("Gio", "bus_unwatch_name")
 	})
 }
-
-var busUnwatchNameInvoker *gi.Function
 
 // BusUnwatchName is a representation of the C type g_bus_unwatch_name.
 func BusUnwatchName(watcherId uint32) {
@@ -136,8 +130,6 @@ func contentTypeFromMimeTypeFunction_Set() {
 	})
 }
 
-var contentTypeFromMimeTypeInvoker *gi.Function
-
 // ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
 func ContentTypeFromMimeType(mimeType string) string {
 	contentTypeFromMimeTypeFunction_Set()
@@ -161,8 +153,6 @@ func contentTypeGetDescriptionFunction_Set() {
 	})
 }
 
-var contentTypeGetDescriptionInvoker *gi.Function
-
 // ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
 func ContentTypeGetDescription(type_ string) string {
 	contentTypeGetDescriptionFunction_Set()
@@ -185,8 +175,6 @@ func contentTypeGetGenericIconNameFunction_Set() {
 		contentTypeGetGenericIconNameFunction = gi.FunctionInvokerNew("Gio", "content_type_get_generic_icon_name")
 	})
 }
-
-var contentTypeGetGenericIconNameInvoker *gi.Function
 
 // ContentTypeGetGenericIconName is a representation of the C type g_content_type_get_generic_icon_name.
 func ContentTypeGetGenericIconName(type_ string) string {
@@ -213,8 +201,6 @@ func contentTypeGetMimeDirsFunction_Set() {
 	})
 }
 
-var contentTypeGetMimeDirsInvoker *gi.Function
-
 // ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
 func ContentTypeGetMimeDirs() {
 	contentTypeGetMimeDirsFunction_Set()
@@ -231,8 +217,6 @@ func contentTypeGetMimeTypeFunction_Set() {
 		contentTypeGetMimeTypeFunction = gi.FunctionInvokerNew("Gio", "content_type_get_mime_type")
 	})
 }
-
-var contentTypeGetMimeTypeInvoker *gi.Function
 
 // ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
 func ContentTypeGetMimeType(type_ string) string {
@@ -272,8 +256,6 @@ func dbusAddressEscapeValueFunction_Set() {
 		dbusAddressEscapeValueFunction = gi.FunctionInvokerNew("Gio", "dbus_address_escape_value")
 	})
 }
-
-var dbusAddressEscapeValueInvoker *gi.Function
 
 // DbusAddressEscapeValue is a representation of the C type g_dbus_address_escape_value.
 func DbusAddressEscapeValue(string_ string) string {
@@ -325,8 +307,6 @@ func dbusGenerateGuidFunction_Set() {
 		dbusGenerateGuidFunction = gi.FunctionInvokerNew("Gio", "dbus_generate_guid")
 	})
 }
-
-var dbusGenerateGuidInvoker *gi.Function
 
 // DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
 func DbusGenerateGuid() string {
@@ -396,8 +376,6 @@ func ioExtensionPointLookupFunction_Set() {
 	})
 }
 
-var ioExtensionPointLookupInvoker *gi.Function
-
 // IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
 func IoExtensionPointLookup(name string) *IOExtensionPoint {
 	ioExtensionPointLookupFunction_Set()
@@ -420,8 +398,6 @@ func ioExtensionPointRegisterFunction_Set() {
 		ioExtensionPointRegisterFunction = gi.FunctionInvokerNew("Gio", "io_extension_point_register")
 	})
 }
-
-var ioExtensionPointRegisterInvoker *gi.Function
 
 // IoExtensionPointRegister is a representation of the C type g_io_extension_point_register.
 func IoExtensionPointRegister(name string) *IOExtensionPoint {
@@ -454,8 +430,6 @@ func ioSchedulerCancelAllJobsFunction_Set() {
 	})
 }
 
-var ioSchedulerCancelAllJobsInvoker *gi.Function
-
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
 func IoSchedulerCancelAllJobs() {
 	ioSchedulerCancelAllJobsFunction_Set()
@@ -480,8 +454,6 @@ func networkingInitFunction_Set() {
 		networkingInitFunction = gi.FunctionInvokerNew("Gio", "networking_init")
 	})
 }
-
-var networkingInitInvoker *gi.Function
 
 // NetworkingInit is a representation of the C type g_networking_init.
 func NetworkingInit() {
@@ -533,8 +505,6 @@ func settingsSchemaSourceGetDefaultFunction_Set() {
 		settingsSchemaSourceGetDefaultFunction = gi.FunctionInvokerNew("Gio", "settings_schema_source_get_default")
 	})
 }
-
-var settingsSchemaSourceGetDefaultInvoker *gi.Function
 
 // SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
 func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {

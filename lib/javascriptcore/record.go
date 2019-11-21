@@ -8,10 +8,10 @@ import (
 )
 
 var globalContextRefStruct *gi.Struct
-var globalContextRefStructOnce sync.Once
+var globalContextRefStruct_Once sync.Once
 
-func globalContextRefStructSet() {
-	globalContextRefStructOnce.Do(func() {
+func globalContextRefStruct_Set() {
+	globalContextRefStruct_Once.Do(func() {
 		globalContextRefStruct = gi.StructNew("JavaScriptCore", "GlobalContextRef")
 	})
 }
@@ -25,11 +25,10 @@ var globalContextRefRefFunction_Once sync.Once
 
 func globalContextRefRefFunction_Set() {
 	globalContextRefRefFunction_Once.Do(func() {
-		globalContextRefRefFunction = gi.FunctionInvokerNew("JavaScriptCore", "ref")
+		globalContextRefStruct_Set()
+		globalContextRefRefFunction = globalContextRefStruct.InvokerNew("ref")
 	})
 }
-
-var refGlobalContextRefInvoker *gi.Function
 
 // Ref is a representation of the C type JSGlobalContextRetain.
 func (recv *GlobalContextRef) Ref() {
@@ -47,11 +46,10 @@ var globalContextRefUnrefFunction_Once sync.Once
 
 func globalContextRefUnrefFunction_Set() {
 	globalContextRefUnrefFunction_Once.Do(func() {
-		globalContextRefUnrefFunction = gi.FunctionInvokerNew("JavaScriptCore", "unref")
+		globalContextRefStruct_Set()
+		globalContextRefUnrefFunction = globalContextRefStruct.InvokerNew("unref")
 	})
 }
-
-var unrefGlobalContextRefInvoker *gi.Function
 
 // Unref is a representation of the C type JSGlobalContextRelease.
 func (recv *GlobalContextRef) Unref() {
@@ -65,10 +63,10 @@ func (recv *GlobalContextRef) Unref() {
 }
 
 var valueRefStruct *gi.Struct
-var valueRefStructOnce sync.Once
+var valueRefStruct_Once sync.Once
 
-func valueRefStructSet() {
-	valueRefStructOnce.Do(func() {
+func valueRefStruct_Set() {
+	valueRefStruct_Once.Do(func() {
 		valueRefStruct = gi.StructNew("JavaScriptCore", "ValueRef")
 	})
 }
@@ -78,10 +76,10 @@ type ValueRef struct {
 }
 
 var stringRefStruct *gi.Struct
-var stringRefStructOnce sync.Once
+var stringRefStruct_Once sync.Once
 
-func stringRefStructSet() {
-	stringRefStructOnce.Do(func() {
+func stringRefStruct_Set() {
+	stringRefStruct_Once.Do(func() {
 		stringRefStruct = gi.StructNew("JavaScriptCore", "StringRef")
 	})
 }
@@ -95,11 +93,10 @@ var stringRefRefFunction_Once sync.Once
 
 func stringRefRefFunction_Set() {
 	stringRefRefFunction_Once.Do(func() {
-		stringRefRefFunction = gi.FunctionInvokerNew("JavaScriptCore", "ref")
+		stringRefStruct_Set()
+		stringRefRefFunction = stringRefStruct.InvokerNew("ref")
 	})
 }
-
-var refStringRefInvoker *gi.Function
 
 // Ref is a representation of the C type JSStringRetain.
 func (recv *StringRef) Ref() {
@@ -117,11 +114,10 @@ var stringRefUnrefFunction_Once sync.Once
 
 func stringRefUnrefFunction_Set() {
 	stringRefUnrefFunction_Once.Do(func() {
-		stringRefUnrefFunction = gi.FunctionInvokerNew("JavaScriptCore", "unref")
+		stringRefStruct_Set()
+		stringRefUnrefFunction = stringRefStruct.InvokerNew("unref")
 	})
 }
-
-var unrefStringRefInvoker *gi.Function
 
 // Unref is a representation of the C type JSStringRelease.
 func (recv *StringRef) Unref() {
@@ -139,10 +135,10 @@ func (recv *StringRef) Unref() {
 // UNSUPPORTED : C value 'JSStringGetUTF8CString' : parameter 'buffer_size' of type 'gsize' not supported
 
 var classClassStruct *gi.Struct
-var classClassStructOnce sync.Once
+var classClassStruct_Once sync.Once
 
-func classClassStructSet() {
-	classClassStructOnce.Do(func() {
+func classClassStruct_Set() {
+	classClassStruct_Once.Do(func() {
 		classClassStruct = gi.StructNew("JavaScriptCore", "ClassClass")
 	})
 }
@@ -152,10 +148,10 @@ type ClassClass struct {
 }
 
 var classVTableStruct *gi.Struct
-var classVTableStructOnce sync.Once
+var classVTableStruct_Once sync.Once
 
-func classVTableStructSet() {
-	classVTableStructOnce.Do(func() {
+func classVTableStruct_Set() {
+	classVTableStruct_Once.Do(func() {
 		classVTableStruct = gi.StructNew("JavaScriptCore", "ClassVTable")
 	})
 }
@@ -174,10 +170,10 @@ type ClassVTable struct {
 }
 
 var contextClassStruct *gi.Struct
-var contextClassStructOnce sync.Once
+var contextClassStruct_Once sync.Once
 
-func contextClassStructSet() {
-	contextClassStructOnce.Do(func() {
+func contextClassStruct_Set() {
+	contextClassStruct_Once.Do(func() {
 		contextClassStruct = gi.StructNew("JavaScriptCore", "ContextClass")
 	})
 }
@@ -192,10 +188,10 @@ type ContextClass struct {
 }
 
 var contextPrivateStruct *gi.Struct
-var contextPrivateStructOnce sync.Once
+var contextPrivateStruct_Once sync.Once
 
-func contextPrivateStructSet() {
-	contextPrivateStructOnce.Do(func() {
+func contextPrivateStruct_Set() {
+	contextPrivateStruct_Once.Do(func() {
 		contextPrivateStruct = gi.StructNew("JavaScriptCore", "ContextPrivate")
 	})
 }
@@ -205,10 +201,10 @@ type ContextPrivate struct {
 }
 
 var exceptionClassStruct *gi.Struct
-var exceptionClassStructOnce sync.Once
+var exceptionClassStruct_Once sync.Once
 
-func exceptionClassStructSet() {
-	exceptionClassStructOnce.Do(func() {
+func exceptionClassStruct_Set() {
+	exceptionClassStruct_Once.Do(func() {
 		exceptionClassStruct = gi.StructNew("JavaScriptCore", "ExceptionClass")
 	})
 }
@@ -223,10 +219,10 @@ type ExceptionClass struct {
 }
 
 var exceptionPrivateStruct *gi.Struct
-var exceptionPrivateStructOnce sync.Once
+var exceptionPrivateStruct_Once sync.Once
 
-func exceptionPrivateStructSet() {
-	exceptionPrivateStructOnce.Do(func() {
+func exceptionPrivateStruct_Set() {
+	exceptionPrivateStruct_Once.Do(func() {
 		exceptionPrivateStruct = gi.StructNew("JavaScriptCore", "ExceptionPrivate")
 	})
 }
@@ -236,10 +232,10 @@ type ExceptionPrivate struct {
 }
 
 var valueClassStruct *gi.Struct
-var valueClassStructOnce sync.Once
+var valueClassStruct_Once sync.Once
 
-func valueClassStructSet() {
-	valueClassStructOnce.Do(func() {
+func valueClassStruct_Set() {
+	valueClassStruct_Once.Do(func() {
 		valueClassStruct = gi.StructNew("JavaScriptCore", "ValueClass")
 	})
 }
@@ -254,10 +250,10 @@ type ValueClass struct {
 }
 
 var valuePrivateStruct *gi.Struct
-var valuePrivateStructOnce sync.Once
+var valuePrivateStruct_Once sync.Once
 
-func valuePrivateStructSet() {
-	valuePrivateStructOnce.Do(func() {
+func valuePrivateStruct_Set() {
+	valuePrivateStruct_Once.Do(func() {
 		valuePrivateStruct = gi.StructNew("JavaScriptCore", "ValuePrivate")
 	})
 }
@@ -267,10 +263,10 @@ type ValuePrivate struct {
 }
 
 var virtualMachineClassStruct *gi.Struct
-var virtualMachineClassStructOnce sync.Once
+var virtualMachineClassStruct_Once sync.Once
 
-func virtualMachineClassStructSet() {
-	virtualMachineClassStructOnce.Do(func() {
+func virtualMachineClassStruct_Set() {
+	virtualMachineClassStruct_Once.Do(func() {
 		virtualMachineClassStruct = gi.StructNew("JavaScriptCore", "VirtualMachineClass")
 	})
 }
@@ -285,10 +281,10 @@ type VirtualMachineClass struct {
 }
 
 var virtualMachinePrivateStruct *gi.Struct
-var virtualMachinePrivateStructOnce sync.Once
+var virtualMachinePrivateStruct_Once sync.Once
 
-func virtualMachinePrivateStructSet() {
-	virtualMachinePrivateStructOnce.Do(func() {
+func virtualMachinePrivateStruct_Set() {
+	virtualMachinePrivateStruct_Once.Do(func() {
 		virtualMachinePrivateStruct = gi.StructNew("JavaScriptCore", "VirtualMachinePrivate")
 	})
 }
@@ -298,10 +294,10 @@ type VirtualMachinePrivate struct {
 }
 
 var weakValueClassStruct *gi.Struct
-var weakValueClassStructOnce sync.Once
+var weakValueClassStruct_Once sync.Once
 
-func weakValueClassStructSet() {
-	weakValueClassStructOnce.Do(func() {
+func weakValueClassStruct_Set() {
+	weakValueClassStruct_Once.Do(func() {
 		weakValueClassStruct = gi.StructNew("JavaScriptCore", "WeakValueClass")
 	})
 }
@@ -316,10 +312,10 @@ type WeakValueClass struct {
 }
 
 var weakValuePrivateStruct *gi.Struct
-var weakValuePrivateStructOnce sync.Once
+var weakValuePrivateStruct_Once sync.Once
 
-func weakValuePrivateStructSet() {
-	weakValuePrivateStructOnce.Do(func() {
+func weakValuePrivateStruct_Set() {
+	weakValuePrivateStruct_Once.Do(func() {
 		weakValuePrivateStruct = gi.StructNew("JavaScriptCore", "WeakValuePrivate")
 	})
 }

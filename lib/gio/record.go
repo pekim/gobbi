@@ -8,10 +8,10 @@ import (
 )
 
 var actionEntryStruct *gi.Struct
-var actionEntryStructOnce sync.Once
+var actionEntryStruct_Once sync.Once
 
-func actionEntryStructSet() {
-	actionEntryStructOnce.Do(func() {
+func actionEntryStruct_Set() {
+	actionEntryStruct_Once.Do(func() {
 		actionEntryStruct = gi.StructNew("Gio", "ActionEntry")
 	})
 }
@@ -26,10 +26,10 @@ type ActionEntry struct {
 }
 
 var actionGroupInterfaceStruct *gi.Struct
-var actionGroupInterfaceStructOnce sync.Once
+var actionGroupInterfaceStruct_Once sync.Once
 
-func actionGroupInterfaceStructSet() {
-	actionGroupInterfaceStructOnce.Do(func() {
+func actionGroupInterfaceStruct_Set() {
+	actionGroupInterfaceStruct_Once.Do(func() {
 		actionGroupInterfaceStruct = gi.StructNew("Gio", "ActionGroupInterface")
 	})
 }
@@ -54,10 +54,10 @@ type ActionGroupInterface struct {
 }
 
 var actionInterfaceStruct *gi.Struct
-var actionInterfaceStructOnce sync.Once
+var actionInterfaceStruct_Once sync.Once
 
-func actionInterfaceStructSet() {
-	actionInterfaceStructOnce.Do(func() {
+func actionInterfaceStruct_Set() {
+	actionInterfaceStruct_Once.Do(func() {
 		actionInterfaceStruct = gi.StructNew("Gio", "ActionInterface")
 	})
 }
@@ -76,10 +76,10 @@ type ActionInterface struct {
 }
 
 var actionMapInterfaceStruct *gi.Struct
-var actionMapInterfaceStructOnce sync.Once
+var actionMapInterfaceStruct_Once sync.Once
 
-func actionMapInterfaceStructSet() {
-	actionMapInterfaceStructOnce.Do(func() {
+func actionMapInterfaceStruct_Set() {
+	actionMapInterfaceStruct_Once.Do(func() {
 		actionMapInterfaceStruct = gi.StructNew("Gio", "ActionMapInterface")
 	})
 }
@@ -93,10 +93,10 @@ type ActionMapInterface struct {
 }
 
 var appInfoIfaceStruct *gi.Struct
-var appInfoIfaceStructOnce sync.Once
+var appInfoIfaceStruct_Once sync.Once
 
-func appInfoIfaceStructSet() {
-	appInfoIfaceStructOnce.Do(func() {
+func appInfoIfaceStruct_Set() {
+	appInfoIfaceStruct_Once.Do(func() {
 		appInfoIfaceStruct = gi.StructNew("Gio", "AppInfoIface")
 	})
 }
@@ -132,10 +132,10 @@ type AppInfoIface struct {
 }
 
 var appLaunchContextClassStruct *gi.Struct
-var appLaunchContextClassStructOnce sync.Once
+var appLaunchContextClassStruct_Once sync.Once
 
-func appLaunchContextClassStructSet() {
-	appLaunchContextClassStructOnce.Do(func() {
+func appLaunchContextClassStruct_Set() {
+	appLaunchContextClassStruct_Once.Do(func() {
 		appLaunchContextClassStruct = gi.StructNew("Gio", "AppLaunchContextClass")
 	})
 }
@@ -154,10 +154,10 @@ type AppLaunchContextClass struct {
 }
 
 var appLaunchContextPrivateStruct *gi.Struct
-var appLaunchContextPrivateStructOnce sync.Once
+var appLaunchContextPrivateStruct_Once sync.Once
 
-func appLaunchContextPrivateStructSet() {
-	appLaunchContextPrivateStructOnce.Do(func() {
+func appLaunchContextPrivateStruct_Set() {
+	appLaunchContextPrivateStruct_Once.Do(func() {
 		appLaunchContextPrivateStruct = gi.StructNew("Gio", "AppLaunchContextPrivate")
 	})
 }
@@ -167,10 +167,10 @@ type AppLaunchContextPrivate struct {
 }
 
 var applicationClassStruct *gi.Struct
-var applicationClassStructOnce sync.Once
+var applicationClassStruct_Once sync.Once
 
-func applicationClassStructSet() {
-	applicationClassStructOnce.Do(func() {
+func applicationClassStruct_Set() {
+	applicationClassStruct_Once.Do(func() {
 		applicationClassStruct = gi.StructNew("Gio", "ApplicationClass")
 	})
 }
@@ -195,10 +195,10 @@ type ApplicationClass struct {
 }
 
 var applicationCommandLineClassStruct *gi.Struct
-var applicationCommandLineClassStructOnce sync.Once
+var applicationCommandLineClassStruct_Once sync.Once
 
-func applicationCommandLineClassStructSet() {
-	applicationCommandLineClassStructOnce.Do(func() {
+func applicationCommandLineClassStruct_Set() {
+	applicationCommandLineClassStruct_Once.Do(func() {
 		applicationCommandLineClassStruct = gi.StructNew("Gio", "ApplicationCommandLineClass")
 	})
 }
@@ -211,10 +211,10 @@ type ApplicationCommandLineClass struct {
 }
 
 var applicationCommandLinePrivateStruct *gi.Struct
-var applicationCommandLinePrivateStructOnce sync.Once
+var applicationCommandLinePrivateStruct_Once sync.Once
 
-func applicationCommandLinePrivateStructSet() {
-	applicationCommandLinePrivateStructOnce.Do(func() {
+func applicationCommandLinePrivateStruct_Set() {
+	applicationCommandLinePrivateStruct_Once.Do(func() {
 		applicationCommandLinePrivateStruct = gi.StructNew("Gio", "ApplicationCommandLinePrivate")
 	})
 }
@@ -224,10 +224,10 @@ type ApplicationCommandLinePrivate struct {
 }
 
 var applicationPrivateStruct *gi.Struct
-var applicationPrivateStructOnce sync.Once
+var applicationPrivateStruct_Once sync.Once
 
-func applicationPrivateStructSet() {
-	applicationPrivateStructOnce.Do(func() {
+func applicationPrivateStruct_Set() {
+	applicationPrivateStruct_Once.Do(func() {
 		applicationPrivateStruct = gi.StructNew("Gio", "ApplicationPrivate")
 	})
 }
@@ -237,10 +237,10 @@ type ApplicationPrivate struct {
 }
 
 var asyncInitableIfaceStruct *gi.Struct
-var asyncInitableIfaceStructOnce sync.Once
+var asyncInitableIfaceStruct_Once sync.Once
 
-func asyncInitableIfaceStructSet() {
-	asyncInitableIfaceStructOnce.Do(func() {
+func asyncInitableIfaceStruct_Set() {
+	asyncInitableIfaceStruct_Once.Do(func() {
 		asyncInitableIfaceStruct = gi.StructNew("Gio", "AsyncInitableIface")
 	})
 }
@@ -253,10 +253,10 @@ type AsyncInitableIface struct {
 }
 
 var asyncResultIfaceStruct *gi.Struct
-var asyncResultIfaceStructOnce sync.Once
+var asyncResultIfaceStruct_Once sync.Once
 
-func asyncResultIfaceStructSet() {
-	asyncResultIfaceStructOnce.Do(func() {
+func asyncResultIfaceStruct_Set() {
+	asyncResultIfaceStruct_Once.Do(func() {
 		asyncResultIfaceStruct = gi.StructNew("Gio", "AsyncResultIface")
 	})
 }
@@ -270,10 +270,10 @@ type AsyncResultIface struct {
 }
 
 var bufferedInputStreamClassStruct *gi.Struct
-var bufferedInputStreamClassStructOnce sync.Once
+var bufferedInputStreamClassStruct_Once sync.Once
 
-func bufferedInputStreamClassStructSet() {
-	bufferedInputStreamClassStructOnce.Do(func() {
+func bufferedInputStreamClassStruct_Set() {
+	bufferedInputStreamClassStruct_Once.Do(func() {
 		bufferedInputStreamClassStruct = gi.StructNew("Gio", "BufferedInputStreamClass")
 	})
 }
@@ -292,10 +292,10 @@ type BufferedInputStreamClass struct {
 }
 
 var bufferedInputStreamPrivateStruct *gi.Struct
-var bufferedInputStreamPrivateStructOnce sync.Once
+var bufferedInputStreamPrivateStruct_Once sync.Once
 
-func bufferedInputStreamPrivateStructSet() {
-	bufferedInputStreamPrivateStructOnce.Do(func() {
+func bufferedInputStreamPrivateStruct_Set() {
+	bufferedInputStreamPrivateStruct_Once.Do(func() {
 		bufferedInputStreamPrivateStruct = gi.StructNew("Gio", "BufferedInputStreamPrivate")
 	})
 }
@@ -305,10 +305,10 @@ type BufferedInputStreamPrivate struct {
 }
 
 var bufferedOutputStreamClassStruct *gi.Struct
-var bufferedOutputStreamClassStructOnce sync.Once
+var bufferedOutputStreamClassStruct_Once sync.Once
 
-func bufferedOutputStreamClassStructSet() {
-	bufferedOutputStreamClassStructOnce.Do(func() {
+func bufferedOutputStreamClassStruct_Set() {
+	bufferedOutputStreamClassStruct_Once.Do(func() {
 		bufferedOutputStreamClassStruct = gi.StructNew("Gio", "BufferedOutputStreamClass")
 	})
 }
@@ -321,10 +321,10 @@ type BufferedOutputStreamClass struct {
 }
 
 var bufferedOutputStreamPrivateStruct *gi.Struct
-var bufferedOutputStreamPrivateStructOnce sync.Once
+var bufferedOutputStreamPrivateStruct_Once sync.Once
 
-func bufferedOutputStreamPrivateStructSet() {
-	bufferedOutputStreamPrivateStructOnce.Do(func() {
+func bufferedOutputStreamPrivateStruct_Set() {
+	bufferedOutputStreamPrivateStruct_Once.Do(func() {
 		bufferedOutputStreamPrivateStruct = gi.StructNew("Gio", "BufferedOutputStreamPrivate")
 	})
 }
@@ -334,10 +334,10 @@ type BufferedOutputStreamPrivate struct {
 }
 
 var cancellableClassStruct *gi.Struct
-var cancellableClassStructOnce sync.Once
+var cancellableClassStruct_Once sync.Once
 
-func cancellableClassStructSet() {
-	cancellableClassStructOnce.Do(func() {
+func cancellableClassStruct_Set() {
+	cancellableClassStruct_Once.Do(func() {
 		cancellableClassStruct = gi.StructNew("Gio", "CancellableClass")
 	})
 }
@@ -354,10 +354,10 @@ type CancellableClass struct {
 }
 
 var cancellablePrivateStruct *gi.Struct
-var cancellablePrivateStructOnce sync.Once
+var cancellablePrivateStruct_Once sync.Once
 
-func cancellablePrivateStructSet() {
-	cancellablePrivateStructOnce.Do(func() {
+func cancellablePrivateStruct_Set() {
+	cancellablePrivateStruct_Once.Do(func() {
 		cancellablePrivateStruct = gi.StructNew("Gio", "CancellablePrivate")
 	})
 }
@@ -367,10 +367,10 @@ type CancellablePrivate struct {
 }
 
 var charsetConverterClassStruct *gi.Struct
-var charsetConverterClassStructOnce sync.Once
+var charsetConverterClassStruct_Once sync.Once
 
-func charsetConverterClassStructSet() {
-	charsetConverterClassStructOnce.Do(func() {
+func charsetConverterClassStruct_Set() {
+	charsetConverterClassStruct_Once.Do(func() {
 		charsetConverterClassStruct = gi.StructNew("Gio", "CharsetConverterClass")
 	})
 }
@@ -381,10 +381,10 @@ type CharsetConverterClass struct {
 }
 
 var converterIfaceStruct *gi.Struct
-var converterIfaceStructOnce sync.Once
+var converterIfaceStruct_Once sync.Once
 
-func converterIfaceStructSet() {
-	converterIfaceStructOnce.Do(func() {
+func converterIfaceStruct_Set() {
+	converterIfaceStruct_Once.Do(func() {
 		converterIfaceStruct = gi.StructNew("Gio", "ConverterIface")
 	})
 }
@@ -397,10 +397,10 @@ type ConverterIface struct {
 }
 
 var converterInputStreamClassStruct *gi.Struct
-var converterInputStreamClassStructOnce sync.Once
+var converterInputStreamClassStruct_Once sync.Once
 
-func converterInputStreamClassStructSet() {
-	converterInputStreamClassStructOnce.Do(func() {
+func converterInputStreamClassStruct_Set() {
+	converterInputStreamClassStruct_Once.Do(func() {
 		converterInputStreamClassStruct = gi.StructNew("Gio", "ConverterInputStreamClass")
 	})
 }
@@ -416,10 +416,10 @@ type ConverterInputStreamClass struct {
 }
 
 var converterInputStreamPrivateStruct *gi.Struct
-var converterInputStreamPrivateStructOnce sync.Once
+var converterInputStreamPrivateStruct_Once sync.Once
 
-func converterInputStreamPrivateStructSet() {
-	converterInputStreamPrivateStructOnce.Do(func() {
+func converterInputStreamPrivateStruct_Set() {
+	converterInputStreamPrivateStruct_Once.Do(func() {
 		converterInputStreamPrivateStruct = gi.StructNew("Gio", "ConverterInputStreamPrivate")
 	})
 }
@@ -429,10 +429,10 @@ type ConverterInputStreamPrivate struct {
 }
 
 var converterOutputStreamClassStruct *gi.Struct
-var converterOutputStreamClassStructOnce sync.Once
+var converterOutputStreamClassStruct_Once sync.Once
 
-func converterOutputStreamClassStructSet() {
-	converterOutputStreamClassStructOnce.Do(func() {
+func converterOutputStreamClassStruct_Set() {
+	converterOutputStreamClassStruct_Once.Do(func() {
 		converterOutputStreamClassStruct = gi.StructNew("Gio", "ConverterOutputStreamClass")
 	})
 }
@@ -448,10 +448,10 @@ type ConverterOutputStreamClass struct {
 }
 
 var converterOutputStreamPrivateStruct *gi.Struct
-var converterOutputStreamPrivateStructOnce sync.Once
+var converterOutputStreamPrivateStruct_Once sync.Once
 
-func converterOutputStreamPrivateStructSet() {
-	converterOutputStreamPrivateStructOnce.Do(func() {
+func converterOutputStreamPrivateStruct_Set() {
+	converterOutputStreamPrivateStruct_Once.Do(func() {
 		converterOutputStreamPrivateStruct = gi.StructNew("Gio", "ConverterOutputStreamPrivate")
 	})
 }
@@ -461,10 +461,10 @@ type ConverterOutputStreamPrivate struct {
 }
 
 var credentialsClassStruct *gi.Struct
-var credentialsClassStructOnce sync.Once
+var credentialsClassStruct_Once sync.Once
 
-func credentialsClassStructSet() {
-	credentialsClassStructOnce.Do(func() {
+func credentialsClassStruct_Set() {
+	credentialsClassStruct_Once.Do(func() {
 		credentialsClassStruct = gi.StructNew("Gio", "CredentialsClass")
 	})
 }
@@ -474,10 +474,10 @@ type CredentialsClass struct {
 }
 
 var dBusAnnotationInfoStruct *gi.Struct
-var dBusAnnotationInfoStructOnce sync.Once
+var dBusAnnotationInfoStruct_Once sync.Once
 
-func dBusAnnotationInfoStructSet() {
-	dBusAnnotationInfoStructOnce.Do(func() {
+func dBusAnnotationInfoStruct_Set() {
+	dBusAnnotationInfoStruct_Once.Do(func() {
 		dBusAnnotationInfoStruct = gi.StructNew("Gio", "DBusAnnotationInfo")
 	})
 }
@@ -495,11 +495,10 @@ var dBusAnnotationInfoRefFunction_Once sync.Once
 
 func dBusAnnotationInfoRefFunction_Set() {
 	dBusAnnotationInfoRefFunction_Once.Do(func() {
-		dBusAnnotationInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusAnnotationInfoStruct_Set()
+		dBusAnnotationInfoRefFunction = dBusAnnotationInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusAnnotationInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_annotation_info_ref.
 func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
@@ -520,11 +519,10 @@ var dBusAnnotationInfoUnrefFunction_Once sync.Once
 
 func dBusAnnotationInfoUnrefFunction_Set() {
 	dBusAnnotationInfoUnrefFunction_Once.Do(func() {
-		dBusAnnotationInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusAnnotationInfoStruct_Set()
+		dBusAnnotationInfoUnrefFunction = dBusAnnotationInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusAnnotationInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_annotation_info_unref.
 func (recv *DBusAnnotationInfo) Unref() {
@@ -538,10 +536,10 @@ func (recv *DBusAnnotationInfo) Unref() {
 }
 
 var dBusArgInfoStruct *gi.Struct
-var dBusArgInfoStructOnce sync.Once
+var dBusArgInfoStruct_Once sync.Once
 
-func dBusArgInfoStructSet() {
-	dBusArgInfoStructOnce.Do(func() {
+func dBusArgInfoStruct_Set() {
+	dBusArgInfoStruct_Once.Do(func() {
 		dBusArgInfoStruct = gi.StructNew("Gio", "DBusArgInfo")
 	})
 }
@@ -559,11 +557,10 @@ var dBusArgInfoRefFunction_Once sync.Once
 
 func dBusArgInfoRefFunction_Set() {
 	dBusArgInfoRefFunction_Once.Do(func() {
-		dBusArgInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusArgInfoStruct_Set()
+		dBusArgInfoRefFunction = dBusArgInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusArgInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_arg_info_ref.
 func (recv *DBusArgInfo) Ref() *DBusArgInfo {
@@ -584,11 +581,10 @@ var dBusArgInfoUnrefFunction_Once sync.Once
 
 func dBusArgInfoUnrefFunction_Set() {
 	dBusArgInfoUnrefFunction_Once.Do(func() {
-		dBusArgInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusArgInfoStruct_Set()
+		dBusArgInfoUnrefFunction = dBusArgInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusArgInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_arg_info_unref.
 func (recv *DBusArgInfo) Unref() {
@@ -602,10 +598,10 @@ func (recv *DBusArgInfo) Unref() {
 }
 
 var dBusErrorEntryStruct *gi.Struct
-var dBusErrorEntryStructOnce sync.Once
+var dBusErrorEntryStruct_Once sync.Once
 
-func dBusErrorEntryStructSet() {
-	dBusErrorEntryStructOnce.Do(func() {
+func dBusErrorEntryStruct_Set() {
+	dBusErrorEntryStruct_Once.Do(func() {
 		dBusErrorEntryStruct = gi.StructNew("Gio", "DBusErrorEntry")
 	})
 }
@@ -617,10 +613,10 @@ type DBusErrorEntry struct {
 }
 
 var dBusInterfaceIfaceStruct *gi.Struct
-var dBusInterfaceIfaceStructOnce sync.Once
+var dBusInterfaceIfaceStruct_Once sync.Once
 
-func dBusInterfaceIfaceStructSet() {
-	dBusInterfaceIfaceStructOnce.Do(func() {
+func dBusInterfaceIfaceStruct_Set() {
+	dBusInterfaceIfaceStruct_Once.Do(func() {
 		dBusInterfaceIfaceStruct = gi.StructNew("Gio", "DBusInterfaceIface")
 	})
 }
@@ -635,10 +631,10 @@ type DBusInterfaceIface struct {
 }
 
 var dBusInterfaceInfoStruct *gi.Struct
-var dBusInterfaceInfoStructOnce sync.Once
+var dBusInterfaceInfoStruct_Once sync.Once
 
-func dBusInterfaceInfoStructSet() {
-	dBusInterfaceInfoStructOnce.Do(func() {
+func dBusInterfaceInfoStruct_Set() {
+	dBusInterfaceInfoStruct_Once.Do(func() {
 		dBusInterfaceInfoStruct = gi.StructNew("Gio", "DBusInterfaceInfo")
 	})
 }
@@ -658,11 +654,10 @@ var dBusInterfaceInfoCacheBuildFunction_Once sync.Once
 
 func dBusInterfaceInfoCacheBuildFunction_Set() {
 	dBusInterfaceInfoCacheBuildFunction_Once.Do(func() {
-		dBusInterfaceInfoCacheBuildFunction = gi.FunctionInvokerNew("Gio", "cache_build")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoCacheBuildFunction = dBusInterfaceInfoStruct.InvokerNew("cache_build")
 	})
 }
-
-var cacheBuildDBusInterfaceInfoInvoker *gi.Function
 
 // CacheBuild is a representation of the C type g_dbus_interface_info_cache_build.
 func (recv *DBusInterfaceInfo) CacheBuild() {
@@ -680,11 +675,10 @@ var dBusInterfaceInfoCacheReleaseFunction_Once sync.Once
 
 func dBusInterfaceInfoCacheReleaseFunction_Set() {
 	dBusInterfaceInfoCacheReleaseFunction_Once.Do(func() {
-		dBusInterfaceInfoCacheReleaseFunction = gi.FunctionInvokerNew("Gio", "cache_release")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoCacheReleaseFunction = dBusInterfaceInfoStruct.InvokerNew("cache_release")
 	})
 }
-
-var cacheReleaseDBusInterfaceInfoInvoker *gi.Function
 
 // CacheRelease is a representation of the C type g_dbus_interface_info_cache_release.
 func (recv *DBusInterfaceInfo) CacheRelease() {
@@ -704,11 +698,10 @@ var dBusInterfaceInfoLookupMethodFunction_Once sync.Once
 
 func dBusInterfaceInfoLookupMethodFunction_Set() {
 	dBusInterfaceInfoLookupMethodFunction_Once.Do(func() {
-		dBusInterfaceInfoLookupMethodFunction = gi.FunctionInvokerNew("Gio", "lookup_method")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoLookupMethodFunction = dBusInterfaceInfoStruct.InvokerNew("lookup_method")
 	})
 }
-
-var lookupMethodDBusInterfaceInfoInvoker *gi.Function
 
 // LookupMethod is a representation of the C type g_dbus_interface_info_lookup_method.
 func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
@@ -730,11 +723,10 @@ var dBusInterfaceInfoLookupPropertyFunction_Once sync.Once
 
 func dBusInterfaceInfoLookupPropertyFunction_Set() {
 	dBusInterfaceInfoLookupPropertyFunction_Once.Do(func() {
-		dBusInterfaceInfoLookupPropertyFunction = gi.FunctionInvokerNew("Gio", "lookup_property")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoLookupPropertyFunction = dBusInterfaceInfoStruct.InvokerNew("lookup_property")
 	})
 }
-
-var lookupPropertyDBusInterfaceInfoInvoker *gi.Function
 
 // LookupProperty is a representation of the C type g_dbus_interface_info_lookup_property.
 func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
@@ -756,11 +748,10 @@ var dBusInterfaceInfoLookupSignalFunction_Once sync.Once
 
 func dBusInterfaceInfoLookupSignalFunction_Set() {
 	dBusInterfaceInfoLookupSignalFunction_Once.Do(func() {
-		dBusInterfaceInfoLookupSignalFunction = gi.FunctionInvokerNew("Gio", "lookup_signal")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoLookupSignalFunction = dBusInterfaceInfoStruct.InvokerNew("lookup_signal")
 	})
 }
-
-var lookupSignalDBusInterfaceInfoInvoker *gi.Function
 
 // LookupSignal is a representation of the C type g_dbus_interface_info_lookup_signal.
 func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
@@ -782,11 +773,10 @@ var dBusInterfaceInfoRefFunction_Once sync.Once
 
 func dBusInterfaceInfoRefFunction_Set() {
 	dBusInterfaceInfoRefFunction_Once.Do(func() {
-		dBusInterfaceInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoRefFunction = dBusInterfaceInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusInterfaceInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_interface_info_ref.
 func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
@@ -807,11 +797,10 @@ var dBusInterfaceInfoUnrefFunction_Once sync.Once
 
 func dBusInterfaceInfoUnrefFunction_Set() {
 	dBusInterfaceInfoUnrefFunction_Once.Do(func() {
-		dBusInterfaceInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusInterfaceInfoStruct_Set()
+		dBusInterfaceInfoUnrefFunction = dBusInterfaceInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusInterfaceInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_interface_info_unref.
 func (recv *DBusInterfaceInfo) Unref() {
@@ -825,10 +814,10 @@ func (recv *DBusInterfaceInfo) Unref() {
 }
 
 var dBusInterfaceSkeletonClassStruct *gi.Struct
-var dBusInterfaceSkeletonClassStructOnce sync.Once
+var dBusInterfaceSkeletonClassStruct_Once sync.Once
 
-func dBusInterfaceSkeletonClassStructSet() {
-	dBusInterfaceSkeletonClassStructOnce.Do(func() {
+func dBusInterfaceSkeletonClassStruct_Set() {
+	dBusInterfaceSkeletonClassStruct_Once.Do(func() {
 		dBusInterfaceSkeletonClassStruct = gi.StructNew("Gio", "DBusInterfaceSkeletonClass")
 	})
 }
@@ -844,10 +833,10 @@ type DBusInterfaceSkeletonClass struct {
 }
 
 var dBusInterfaceSkeletonPrivateStruct *gi.Struct
-var dBusInterfaceSkeletonPrivateStructOnce sync.Once
+var dBusInterfaceSkeletonPrivateStruct_Once sync.Once
 
-func dBusInterfaceSkeletonPrivateStructSet() {
-	dBusInterfaceSkeletonPrivateStructOnce.Do(func() {
+func dBusInterfaceSkeletonPrivateStruct_Set() {
+	dBusInterfaceSkeletonPrivateStruct_Once.Do(func() {
 		dBusInterfaceSkeletonPrivateStruct = gi.StructNew("Gio", "DBusInterfaceSkeletonPrivate")
 	})
 }
@@ -857,10 +846,10 @@ type DBusInterfaceSkeletonPrivate struct {
 }
 
 var dBusInterfaceVTableStruct *gi.Struct
-var dBusInterfaceVTableStructOnce sync.Once
+var dBusInterfaceVTableStruct_Once sync.Once
 
-func dBusInterfaceVTableStructSet() {
-	dBusInterfaceVTableStructOnce.Do(func() {
+func dBusInterfaceVTableStruct_Set() {
+	dBusInterfaceVTableStruct_Once.Do(func() {
 		dBusInterfaceVTableStruct = gi.StructNew("Gio", "DBusInterfaceVTable")
 	})
 }
@@ -873,10 +862,10 @@ type DBusInterfaceVTable struct {
 }
 
 var dBusMethodInfoStruct *gi.Struct
-var dBusMethodInfoStructOnce sync.Once
+var dBusMethodInfoStruct_Once sync.Once
 
-func dBusMethodInfoStructSet() {
-	dBusMethodInfoStructOnce.Do(func() {
+func dBusMethodInfoStruct_Set() {
+	dBusMethodInfoStruct_Once.Do(func() {
 		dBusMethodInfoStruct = gi.StructNew("Gio", "DBusMethodInfo")
 	})
 }
@@ -895,11 +884,10 @@ var dBusMethodInfoRefFunction_Once sync.Once
 
 func dBusMethodInfoRefFunction_Set() {
 	dBusMethodInfoRefFunction_Once.Do(func() {
-		dBusMethodInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusMethodInfoStruct_Set()
+		dBusMethodInfoRefFunction = dBusMethodInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusMethodInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_method_info_ref.
 func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
@@ -920,11 +908,10 @@ var dBusMethodInfoUnrefFunction_Once sync.Once
 
 func dBusMethodInfoUnrefFunction_Set() {
 	dBusMethodInfoUnrefFunction_Once.Do(func() {
-		dBusMethodInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusMethodInfoStruct_Set()
+		dBusMethodInfoUnrefFunction = dBusMethodInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusMethodInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_method_info_unref.
 func (recv *DBusMethodInfo) Unref() {
@@ -938,10 +925,10 @@ func (recv *DBusMethodInfo) Unref() {
 }
 
 var dBusNodeInfoStruct *gi.Struct
-var dBusNodeInfoStructOnce sync.Once
+var dBusNodeInfoStruct_Once sync.Once
 
-func dBusNodeInfoStructSet() {
-	dBusNodeInfoStructOnce.Do(func() {
+func dBusNodeInfoStruct_Set() {
+	dBusNodeInfoStruct_Once.Do(func() {
 		dBusNodeInfoStruct = gi.StructNew("Gio", "DBusNodeInfo")
 	})
 }
@@ -960,11 +947,10 @@ var dBusNodeInfoNewForXmlFunction_Once sync.Once
 
 func dBusNodeInfoNewForXmlFunction_Set() {
 	dBusNodeInfoNewForXmlFunction_Once.Do(func() {
-		dBusNodeInfoNewForXmlFunction = gi.FunctionInvokerNew("Gio", "new_for_xml")
+		dBusNodeInfoStruct_Set()
+		dBusNodeInfoNewForXmlFunction = dBusNodeInfoStruct.InvokerNew("new_for_xml")
 	})
 }
-
-var newForXmlDBusNodeInfoInvoker *gi.Function
 
 // DBusNodeInfoNewForXml is a representation of the C type g_dbus_node_info_new_for_xml.
 func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
@@ -987,11 +973,10 @@ var dBusNodeInfoLookupInterfaceFunction_Once sync.Once
 
 func dBusNodeInfoLookupInterfaceFunction_Set() {
 	dBusNodeInfoLookupInterfaceFunction_Once.Do(func() {
-		dBusNodeInfoLookupInterfaceFunction = gi.FunctionInvokerNew("Gio", "lookup_interface")
+		dBusNodeInfoStruct_Set()
+		dBusNodeInfoLookupInterfaceFunction = dBusNodeInfoStruct.InvokerNew("lookup_interface")
 	})
 }
-
-var lookupInterfaceDBusNodeInfoInvoker *gi.Function
 
 // LookupInterface is a representation of the C type g_dbus_node_info_lookup_interface.
 func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
@@ -1013,11 +998,10 @@ var dBusNodeInfoRefFunction_Once sync.Once
 
 func dBusNodeInfoRefFunction_Set() {
 	dBusNodeInfoRefFunction_Once.Do(func() {
-		dBusNodeInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusNodeInfoStruct_Set()
+		dBusNodeInfoRefFunction = dBusNodeInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusNodeInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_node_info_ref.
 func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
@@ -1038,11 +1022,10 @@ var dBusNodeInfoUnrefFunction_Once sync.Once
 
 func dBusNodeInfoUnrefFunction_Set() {
 	dBusNodeInfoUnrefFunction_Once.Do(func() {
-		dBusNodeInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusNodeInfoStruct_Set()
+		dBusNodeInfoUnrefFunction = dBusNodeInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusNodeInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_node_info_unref.
 func (recv *DBusNodeInfo) Unref() {
@@ -1056,10 +1039,10 @@ func (recv *DBusNodeInfo) Unref() {
 }
 
 var dBusObjectIfaceStruct *gi.Struct
-var dBusObjectIfaceStructOnce sync.Once
+var dBusObjectIfaceStruct_Once sync.Once
 
-func dBusObjectIfaceStructSet() {
-	dBusObjectIfaceStructOnce.Do(func() {
+func dBusObjectIfaceStruct_Set() {
+	dBusObjectIfaceStruct_Once.Do(func() {
 		dBusObjectIfaceStruct = gi.StructNew("Gio", "DBusObjectIface")
 	})
 }
@@ -1075,10 +1058,10 @@ type DBusObjectIface struct {
 }
 
 var dBusObjectManagerClientClassStruct *gi.Struct
-var dBusObjectManagerClientClassStructOnce sync.Once
+var dBusObjectManagerClientClassStruct_Once sync.Once
 
-func dBusObjectManagerClientClassStructSet() {
-	dBusObjectManagerClientClassStructOnce.Do(func() {
+func dBusObjectManagerClientClassStruct_Set() {
+	dBusObjectManagerClientClassStruct_Once.Do(func() {
 		dBusObjectManagerClientClassStruct = gi.StructNew("Gio", "DBusObjectManagerClientClass")
 	})
 }
@@ -1091,10 +1074,10 @@ type DBusObjectManagerClientClass struct {
 }
 
 var dBusObjectManagerClientPrivateStruct *gi.Struct
-var dBusObjectManagerClientPrivateStructOnce sync.Once
+var dBusObjectManagerClientPrivateStruct_Once sync.Once
 
-func dBusObjectManagerClientPrivateStructSet() {
-	dBusObjectManagerClientPrivateStructOnce.Do(func() {
+func dBusObjectManagerClientPrivateStruct_Set() {
+	dBusObjectManagerClientPrivateStruct_Once.Do(func() {
 		dBusObjectManagerClientPrivateStruct = gi.StructNew("Gio", "DBusObjectManagerClientPrivate")
 	})
 }
@@ -1104,10 +1087,10 @@ type DBusObjectManagerClientPrivate struct {
 }
 
 var dBusObjectManagerIfaceStruct *gi.Struct
-var dBusObjectManagerIfaceStructOnce sync.Once
+var dBusObjectManagerIfaceStruct_Once sync.Once
 
-func dBusObjectManagerIfaceStructSet() {
-	dBusObjectManagerIfaceStructOnce.Do(func() {
+func dBusObjectManagerIfaceStruct_Set() {
+	dBusObjectManagerIfaceStruct_Once.Do(func() {
 		dBusObjectManagerIfaceStruct = gi.StructNew("Gio", "DBusObjectManagerIface")
 	})
 }
@@ -1126,10 +1109,10 @@ type DBusObjectManagerIface struct {
 }
 
 var dBusObjectManagerServerClassStruct *gi.Struct
-var dBusObjectManagerServerClassStructOnce sync.Once
+var dBusObjectManagerServerClassStruct_Once sync.Once
 
-func dBusObjectManagerServerClassStructSet() {
-	dBusObjectManagerServerClassStructOnce.Do(func() {
+func dBusObjectManagerServerClassStruct_Set() {
+	dBusObjectManagerServerClassStruct_Once.Do(func() {
 		dBusObjectManagerServerClassStruct = gi.StructNew("Gio", "DBusObjectManagerServerClass")
 	})
 }
@@ -1140,10 +1123,10 @@ type DBusObjectManagerServerClass struct {
 }
 
 var dBusObjectManagerServerPrivateStruct *gi.Struct
-var dBusObjectManagerServerPrivateStructOnce sync.Once
+var dBusObjectManagerServerPrivateStruct_Once sync.Once
 
-func dBusObjectManagerServerPrivateStructSet() {
-	dBusObjectManagerServerPrivateStructOnce.Do(func() {
+func dBusObjectManagerServerPrivateStruct_Set() {
+	dBusObjectManagerServerPrivateStruct_Once.Do(func() {
 		dBusObjectManagerServerPrivateStruct = gi.StructNew("Gio", "DBusObjectManagerServerPrivate")
 	})
 }
@@ -1153,10 +1136,10 @@ type DBusObjectManagerServerPrivate struct {
 }
 
 var dBusObjectProxyClassStruct *gi.Struct
-var dBusObjectProxyClassStructOnce sync.Once
+var dBusObjectProxyClassStruct_Once sync.Once
 
-func dBusObjectProxyClassStructSet() {
-	dBusObjectProxyClassStructOnce.Do(func() {
+func dBusObjectProxyClassStruct_Set() {
+	dBusObjectProxyClassStruct_Once.Do(func() {
 		dBusObjectProxyClassStruct = gi.StructNew("Gio", "DBusObjectProxyClass")
 	})
 }
@@ -1167,10 +1150,10 @@ type DBusObjectProxyClass struct {
 }
 
 var dBusObjectProxyPrivateStruct *gi.Struct
-var dBusObjectProxyPrivateStructOnce sync.Once
+var dBusObjectProxyPrivateStruct_Once sync.Once
 
-func dBusObjectProxyPrivateStructSet() {
-	dBusObjectProxyPrivateStructOnce.Do(func() {
+func dBusObjectProxyPrivateStruct_Set() {
+	dBusObjectProxyPrivateStruct_Once.Do(func() {
 		dBusObjectProxyPrivateStruct = gi.StructNew("Gio", "DBusObjectProxyPrivate")
 	})
 }
@@ -1180,10 +1163,10 @@ type DBusObjectProxyPrivate struct {
 }
 
 var dBusObjectSkeletonClassStruct *gi.Struct
-var dBusObjectSkeletonClassStructOnce sync.Once
+var dBusObjectSkeletonClassStruct_Once sync.Once
 
-func dBusObjectSkeletonClassStructSet() {
-	dBusObjectSkeletonClassStructOnce.Do(func() {
+func dBusObjectSkeletonClassStruct_Set() {
+	dBusObjectSkeletonClassStruct_Once.Do(func() {
 		dBusObjectSkeletonClassStruct = gi.StructNew("Gio", "DBusObjectSkeletonClass")
 	})
 }
@@ -1195,10 +1178,10 @@ type DBusObjectSkeletonClass struct {
 }
 
 var dBusObjectSkeletonPrivateStruct *gi.Struct
-var dBusObjectSkeletonPrivateStructOnce sync.Once
+var dBusObjectSkeletonPrivateStruct_Once sync.Once
 
-func dBusObjectSkeletonPrivateStructSet() {
-	dBusObjectSkeletonPrivateStructOnce.Do(func() {
+func dBusObjectSkeletonPrivateStruct_Set() {
+	dBusObjectSkeletonPrivateStruct_Once.Do(func() {
 		dBusObjectSkeletonPrivateStruct = gi.StructNew("Gio", "DBusObjectSkeletonPrivate")
 	})
 }
@@ -1208,10 +1191,10 @@ type DBusObjectSkeletonPrivate struct {
 }
 
 var dBusPropertyInfoStruct *gi.Struct
-var dBusPropertyInfoStructOnce sync.Once
+var dBusPropertyInfoStruct_Once sync.Once
 
-func dBusPropertyInfoStructSet() {
-	dBusPropertyInfoStructOnce.Do(func() {
+func dBusPropertyInfoStruct_Set() {
+	dBusPropertyInfoStruct_Once.Do(func() {
 		dBusPropertyInfoStruct = gi.StructNew("Gio", "DBusPropertyInfo")
 	})
 }
@@ -1230,11 +1213,10 @@ var dBusPropertyInfoRefFunction_Once sync.Once
 
 func dBusPropertyInfoRefFunction_Set() {
 	dBusPropertyInfoRefFunction_Once.Do(func() {
-		dBusPropertyInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusPropertyInfoStruct_Set()
+		dBusPropertyInfoRefFunction = dBusPropertyInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusPropertyInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_property_info_ref.
 func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
@@ -1255,11 +1237,10 @@ var dBusPropertyInfoUnrefFunction_Once sync.Once
 
 func dBusPropertyInfoUnrefFunction_Set() {
 	dBusPropertyInfoUnrefFunction_Once.Do(func() {
-		dBusPropertyInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusPropertyInfoStruct_Set()
+		dBusPropertyInfoUnrefFunction = dBusPropertyInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusPropertyInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_property_info_unref.
 func (recv *DBusPropertyInfo) Unref() {
@@ -1273,10 +1254,10 @@ func (recv *DBusPropertyInfo) Unref() {
 }
 
 var dBusProxyClassStruct *gi.Struct
-var dBusProxyClassStructOnce sync.Once
+var dBusProxyClassStruct_Once sync.Once
 
-func dBusProxyClassStructSet() {
-	dBusProxyClassStructOnce.Do(func() {
+func dBusProxyClassStruct_Set() {
+	dBusProxyClassStruct_Once.Do(func() {
 		dBusProxyClassStruct = gi.StructNew("Gio", "DBusProxyClass")
 	})
 }
@@ -1288,10 +1269,10 @@ type DBusProxyClass struct {
 }
 
 var dBusProxyPrivateStruct *gi.Struct
-var dBusProxyPrivateStructOnce sync.Once
+var dBusProxyPrivateStruct_Once sync.Once
 
-func dBusProxyPrivateStructSet() {
-	dBusProxyPrivateStructOnce.Do(func() {
+func dBusProxyPrivateStruct_Set() {
+	dBusProxyPrivateStruct_Once.Do(func() {
 		dBusProxyPrivateStruct = gi.StructNew("Gio", "DBusProxyPrivate")
 	})
 }
@@ -1301,10 +1282,10 @@ type DBusProxyPrivate struct {
 }
 
 var dBusSignalInfoStruct *gi.Struct
-var dBusSignalInfoStructOnce sync.Once
+var dBusSignalInfoStruct_Once sync.Once
 
-func dBusSignalInfoStructSet() {
-	dBusSignalInfoStructOnce.Do(func() {
+func dBusSignalInfoStruct_Set() {
+	dBusSignalInfoStruct_Once.Do(func() {
 		dBusSignalInfoStruct = gi.StructNew("Gio", "DBusSignalInfo")
 	})
 }
@@ -1322,11 +1303,10 @@ var dBusSignalInfoRefFunction_Once sync.Once
 
 func dBusSignalInfoRefFunction_Set() {
 	dBusSignalInfoRefFunction_Once.Do(func() {
-		dBusSignalInfoRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		dBusSignalInfoStruct_Set()
+		dBusSignalInfoRefFunction = dBusSignalInfoStruct.InvokerNew("ref")
 	})
 }
-
-var refDBusSignalInfoInvoker *gi.Function
 
 // Ref is a representation of the C type g_dbus_signal_info_ref.
 func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
@@ -1347,11 +1327,10 @@ var dBusSignalInfoUnrefFunction_Once sync.Once
 
 func dBusSignalInfoUnrefFunction_Set() {
 	dBusSignalInfoUnrefFunction_Once.Do(func() {
-		dBusSignalInfoUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		dBusSignalInfoStruct_Set()
+		dBusSignalInfoUnrefFunction = dBusSignalInfoStruct.InvokerNew("unref")
 	})
 }
-
-var unrefDBusSignalInfoInvoker *gi.Function
 
 // Unref is a representation of the C type g_dbus_signal_info_unref.
 func (recv *DBusSignalInfo) Unref() {
@@ -1365,10 +1344,10 @@ func (recv *DBusSignalInfo) Unref() {
 }
 
 var dBusSubtreeVTableStruct *gi.Struct
-var dBusSubtreeVTableStructOnce sync.Once
+var dBusSubtreeVTableStruct_Once sync.Once
 
-func dBusSubtreeVTableStructSet() {
-	dBusSubtreeVTableStructOnce.Do(func() {
+func dBusSubtreeVTableStruct_Set() {
+	dBusSubtreeVTableStruct_Once.Do(func() {
 		dBusSubtreeVTableStruct = gi.StructNew("Gio", "DBusSubtreeVTable")
 	})
 }
@@ -1381,10 +1360,10 @@ type DBusSubtreeVTable struct {
 }
 
 var dataInputStreamClassStruct *gi.Struct
-var dataInputStreamClassStructOnce sync.Once
+var dataInputStreamClassStruct_Once sync.Once
 
-func dataInputStreamClassStructSet() {
-	dataInputStreamClassStructOnce.Do(func() {
+func dataInputStreamClassStruct_Set() {
+	dataInputStreamClassStruct_Once.Do(func() {
 		dataInputStreamClassStruct = gi.StructNew("Gio", "DataInputStreamClass")
 	})
 }
@@ -1400,10 +1379,10 @@ type DataInputStreamClass struct {
 }
 
 var dataInputStreamPrivateStruct *gi.Struct
-var dataInputStreamPrivateStructOnce sync.Once
+var dataInputStreamPrivateStruct_Once sync.Once
 
-func dataInputStreamPrivateStructSet() {
-	dataInputStreamPrivateStructOnce.Do(func() {
+func dataInputStreamPrivateStruct_Set() {
+	dataInputStreamPrivateStruct_Once.Do(func() {
 		dataInputStreamPrivateStruct = gi.StructNew("Gio", "DataInputStreamPrivate")
 	})
 }
@@ -1413,10 +1392,10 @@ type DataInputStreamPrivate struct {
 }
 
 var dataOutputStreamClassStruct *gi.Struct
-var dataOutputStreamClassStructOnce sync.Once
+var dataOutputStreamClassStruct_Once sync.Once
 
-func dataOutputStreamClassStructSet() {
-	dataOutputStreamClassStructOnce.Do(func() {
+func dataOutputStreamClassStruct_Set() {
+	dataOutputStreamClassStruct_Once.Do(func() {
 		dataOutputStreamClassStruct = gi.StructNew("Gio", "DataOutputStreamClass")
 	})
 }
@@ -1432,10 +1411,10 @@ type DataOutputStreamClass struct {
 }
 
 var dataOutputStreamPrivateStruct *gi.Struct
-var dataOutputStreamPrivateStructOnce sync.Once
+var dataOutputStreamPrivateStruct_Once sync.Once
 
-func dataOutputStreamPrivateStructSet() {
-	dataOutputStreamPrivateStructOnce.Do(func() {
+func dataOutputStreamPrivateStruct_Set() {
+	dataOutputStreamPrivateStruct_Once.Do(func() {
 		dataOutputStreamPrivateStruct = gi.StructNew("Gio", "DataOutputStreamPrivate")
 	})
 }
@@ -1445,10 +1424,10 @@ type DataOutputStreamPrivate struct {
 }
 
 var datagramBasedInterfaceStruct *gi.Struct
-var datagramBasedInterfaceStructOnce sync.Once
+var datagramBasedInterfaceStruct_Once sync.Once
 
-func datagramBasedInterfaceStructSet() {
-	datagramBasedInterfaceStructOnce.Do(func() {
+func datagramBasedInterfaceStruct_Set() {
+	datagramBasedInterfaceStruct_Once.Do(func() {
 		datagramBasedInterfaceStruct = gi.StructNew("Gio", "DatagramBasedInterface")
 	})
 }
@@ -1464,10 +1443,10 @@ type DatagramBasedInterface struct {
 }
 
 var desktopAppInfoClassStruct *gi.Struct
-var desktopAppInfoClassStructOnce sync.Once
+var desktopAppInfoClassStruct_Once sync.Once
 
-func desktopAppInfoClassStructSet() {
-	desktopAppInfoClassStructOnce.Do(func() {
+func desktopAppInfoClassStruct_Set() {
+	desktopAppInfoClassStruct_Once.Do(func() {
 		desktopAppInfoClassStruct = gi.StructNew("Gio", "DesktopAppInfoClass")
 	})
 }
@@ -1478,10 +1457,10 @@ type DesktopAppInfoClass struct {
 }
 
 var desktopAppInfoLookupIfaceStruct *gi.Struct
-var desktopAppInfoLookupIfaceStructOnce sync.Once
+var desktopAppInfoLookupIfaceStruct_Once sync.Once
 
-func desktopAppInfoLookupIfaceStructSet() {
-	desktopAppInfoLookupIfaceStructOnce.Do(func() {
+func desktopAppInfoLookupIfaceStruct_Set() {
+	desktopAppInfoLookupIfaceStruct_Once.Do(func() {
 		desktopAppInfoLookupIfaceStruct = gi.StructNew("Gio", "DesktopAppInfoLookupIface")
 	})
 }
@@ -1493,10 +1472,10 @@ type DesktopAppInfoLookupIface struct {
 }
 
 var driveIfaceStruct *gi.Struct
-var driveIfaceStructOnce sync.Once
+var driveIfaceStruct_Once sync.Once
 
-func driveIfaceStructSet() {
-	driveIfaceStructOnce.Do(func() {
+func driveIfaceStruct_Set() {
+	driveIfaceStruct_Once.Do(func() {
 		driveIfaceStruct = gi.StructNew("Gio", "DriveIface")
 	})
 }
@@ -1539,10 +1518,10 @@ type DriveIface struct {
 }
 
 var dtlsClientConnectionInterfaceStruct *gi.Struct
-var dtlsClientConnectionInterfaceStructOnce sync.Once
+var dtlsClientConnectionInterfaceStruct_Once sync.Once
 
-func dtlsClientConnectionInterfaceStructSet() {
-	dtlsClientConnectionInterfaceStructOnce.Do(func() {
+func dtlsClientConnectionInterfaceStruct_Set() {
+	dtlsClientConnectionInterfaceStruct_Once.Do(func() {
 		dtlsClientConnectionInterfaceStruct = gi.StructNew("Gio", "DtlsClientConnectionInterface")
 	})
 }
@@ -1553,10 +1532,10 @@ type DtlsClientConnectionInterface struct {
 }
 
 var dtlsConnectionInterfaceStruct *gi.Struct
-var dtlsConnectionInterfaceStructOnce sync.Once
+var dtlsConnectionInterfaceStruct_Once sync.Once
 
-func dtlsConnectionInterfaceStructSet() {
-	dtlsConnectionInterfaceStructOnce.Do(func() {
+func dtlsConnectionInterfaceStruct_Set() {
+	dtlsConnectionInterfaceStruct_Once.Do(func() {
 		dtlsConnectionInterfaceStruct = gi.StructNew("Gio", "DtlsConnectionInterface")
 	})
 }
@@ -1576,10 +1555,10 @@ type DtlsConnectionInterface struct {
 }
 
 var dtlsServerConnectionInterfaceStruct *gi.Struct
-var dtlsServerConnectionInterfaceStructOnce sync.Once
+var dtlsServerConnectionInterfaceStruct_Once sync.Once
 
-func dtlsServerConnectionInterfaceStructSet() {
-	dtlsServerConnectionInterfaceStructOnce.Do(func() {
+func dtlsServerConnectionInterfaceStruct_Set() {
+	dtlsServerConnectionInterfaceStruct_Once.Do(func() {
 		dtlsServerConnectionInterfaceStruct = gi.StructNew("Gio", "DtlsServerConnectionInterface")
 	})
 }
@@ -1590,10 +1569,10 @@ type DtlsServerConnectionInterface struct {
 }
 
 var emblemClassStruct *gi.Struct
-var emblemClassStructOnce sync.Once
+var emblemClassStruct_Once sync.Once
 
-func emblemClassStructSet() {
-	emblemClassStructOnce.Do(func() {
+func emblemClassStruct_Set() {
+	emblemClassStruct_Once.Do(func() {
 		emblemClassStruct = gi.StructNew("Gio", "EmblemClass")
 	})
 }
@@ -1603,10 +1582,10 @@ type EmblemClass struct {
 }
 
 var emblemedIconClassStruct *gi.Struct
-var emblemedIconClassStructOnce sync.Once
+var emblemedIconClassStruct_Once sync.Once
 
-func emblemedIconClassStructSet() {
-	emblemedIconClassStructOnce.Do(func() {
+func emblemedIconClassStruct_Set() {
+	emblemedIconClassStruct_Once.Do(func() {
 		emblemedIconClassStruct = gi.StructNew("Gio", "EmblemedIconClass")
 	})
 }
@@ -1617,10 +1596,10 @@ type EmblemedIconClass struct {
 }
 
 var emblemedIconPrivateStruct *gi.Struct
-var emblemedIconPrivateStructOnce sync.Once
+var emblemedIconPrivateStruct_Once sync.Once
 
-func emblemedIconPrivateStructSet() {
-	emblemedIconPrivateStructOnce.Do(func() {
+func emblemedIconPrivateStruct_Set() {
+	emblemedIconPrivateStruct_Once.Do(func() {
 		emblemedIconPrivateStruct = gi.StructNew("Gio", "EmblemedIconPrivate")
 	})
 }
@@ -1630,10 +1609,10 @@ type EmblemedIconPrivate struct {
 }
 
 var fileAttributeInfoStruct *gi.Struct
-var fileAttributeInfoStructOnce sync.Once
+var fileAttributeInfoStruct_Once sync.Once
 
-func fileAttributeInfoStructSet() {
-	fileAttributeInfoStructOnce.Do(func() {
+func fileAttributeInfoStruct_Set() {
+	fileAttributeInfoStruct_Once.Do(func() {
 		fileAttributeInfoStruct = gi.StructNew("Gio", "FileAttributeInfo")
 	})
 }
@@ -1646,10 +1625,10 @@ type FileAttributeInfo struct {
 }
 
 var fileAttributeInfoListStruct *gi.Struct
-var fileAttributeInfoListStructOnce sync.Once
+var fileAttributeInfoListStruct_Once sync.Once
 
-func fileAttributeInfoListStructSet() {
-	fileAttributeInfoListStructOnce.Do(func() {
+func fileAttributeInfoListStruct_Set() {
+	fileAttributeInfoListStruct_Once.Do(func() {
 		fileAttributeInfoListStruct = gi.StructNew("Gio", "FileAttributeInfoList")
 	})
 }
@@ -1665,11 +1644,10 @@ var fileAttributeInfoListNewFunction_Once sync.Once
 
 func fileAttributeInfoListNewFunction_Set() {
 	fileAttributeInfoListNewFunction_Once.Do(func() {
-		fileAttributeInfoListNewFunction = gi.FunctionInvokerNew("Gio", "new")
+		fileAttributeInfoListStruct_Set()
+		fileAttributeInfoListNewFunction = fileAttributeInfoListStruct.InvokerNew("new")
 	})
 }
-
-var newFileAttributeInfoListInvoker *gi.Function
 
 // FileAttributeInfoListNew is a representation of the C type g_file_attribute_info_list_new.
 func FileAttributeInfoListNew() *FileAttributeInfoList {
@@ -1689,11 +1667,10 @@ var fileAttributeInfoListDupFunction_Once sync.Once
 
 func fileAttributeInfoListDupFunction_Set() {
 	fileAttributeInfoListDupFunction_Once.Do(func() {
-		fileAttributeInfoListDupFunction = gi.FunctionInvokerNew("Gio", "dup")
+		fileAttributeInfoListStruct_Set()
+		fileAttributeInfoListDupFunction = fileAttributeInfoListStruct.InvokerNew("dup")
 	})
 }
-
-var dupFileAttributeInfoListInvoker *gi.Function
 
 // Dup is a representation of the C type g_file_attribute_info_list_dup.
 func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
@@ -1714,11 +1691,10 @@ var fileAttributeInfoListLookupFunction_Once sync.Once
 
 func fileAttributeInfoListLookupFunction_Set() {
 	fileAttributeInfoListLookupFunction_Once.Do(func() {
-		fileAttributeInfoListLookupFunction = gi.FunctionInvokerNew("Gio", "lookup")
+		fileAttributeInfoListStruct_Set()
+		fileAttributeInfoListLookupFunction = fileAttributeInfoListStruct.InvokerNew("lookup")
 	})
 }
-
-var lookupFileAttributeInfoListInvoker *gi.Function
 
 // Lookup is a representation of the C type g_file_attribute_info_list_lookup.
 func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
@@ -1740,11 +1716,10 @@ var fileAttributeInfoListRefFunction_Once sync.Once
 
 func fileAttributeInfoListRefFunction_Set() {
 	fileAttributeInfoListRefFunction_Once.Do(func() {
-		fileAttributeInfoListRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		fileAttributeInfoListStruct_Set()
+		fileAttributeInfoListRefFunction = fileAttributeInfoListStruct.InvokerNew("ref")
 	})
 }
-
-var refFileAttributeInfoListInvoker *gi.Function
 
 // Ref is a representation of the C type g_file_attribute_info_list_ref.
 func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
@@ -1765,11 +1740,10 @@ var fileAttributeInfoListUnrefFunction_Once sync.Once
 
 func fileAttributeInfoListUnrefFunction_Set() {
 	fileAttributeInfoListUnrefFunction_Once.Do(func() {
-		fileAttributeInfoListUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		fileAttributeInfoListStruct_Set()
+		fileAttributeInfoListUnrefFunction = fileAttributeInfoListStruct.InvokerNew("unref")
 	})
 }
-
-var unrefFileAttributeInfoListInvoker *gi.Function
 
 // Unref is a representation of the C type g_file_attribute_info_list_unref.
 func (recv *FileAttributeInfoList) Unref() {
@@ -1783,10 +1757,10 @@ func (recv *FileAttributeInfoList) Unref() {
 }
 
 var fileAttributeMatcherStruct *gi.Struct
-var fileAttributeMatcherStructOnce sync.Once
+var fileAttributeMatcherStruct_Once sync.Once
 
-func fileAttributeMatcherStructSet() {
-	fileAttributeMatcherStructOnce.Do(func() {
+func fileAttributeMatcherStruct_Set() {
+	fileAttributeMatcherStruct_Once.Do(func() {
 		fileAttributeMatcherStruct = gi.StructNew("Gio", "FileAttributeMatcher")
 	})
 }
@@ -1800,11 +1774,10 @@ var fileAttributeMatcherNewFunction_Once sync.Once
 
 func fileAttributeMatcherNewFunction_Set() {
 	fileAttributeMatcherNewFunction_Once.Do(func() {
-		fileAttributeMatcherNewFunction = gi.FunctionInvokerNew("Gio", "new")
+		fileAttributeMatcherStruct_Set()
+		fileAttributeMatcherNewFunction = fileAttributeMatcherStruct.InvokerNew("new")
 	})
 }
-
-var newFileAttributeMatcherInvoker *gi.Function
 
 // FileAttributeMatcherNew is a representation of the C type g_file_attribute_matcher_new.
 func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
@@ -1827,11 +1800,10 @@ var fileAttributeMatcherEnumerateNextFunction_Once sync.Once
 
 func fileAttributeMatcherEnumerateNextFunction_Set() {
 	fileAttributeMatcherEnumerateNextFunction_Once.Do(func() {
-		fileAttributeMatcherEnumerateNextFunction = gi.FunctionInvokerNew("Gio", "enumerate_next")
+		fileAttributeMatcherStruct_Set()
+		fileAttributeMatcherEnumerateNextFunction = fileAttributeMatcherStruct.InvokerNew("enumerate_next")
 	})
 }
-
-var enumerateNextFileAttributeMatcherInvoker *gi.Function
 
 // EnumerateNext is a representation of the C type g_file_attribute_matcher_enumerate_next.
 func (recv *FileAttributeMatcher) EnumerateNext() string {
@@ -1856,11 +1828,10 @@ var fileAttributeMatcherRefFunction_Once sync.Once
 
 func fileAttributeMatcherRefFunction_Set() {
 	fileAttributeMatcherRefFunction_Once.Do(func() {
-		fileAttributeMatcherRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		fileAttributeMatcherStruct_Set()
+		fileAttributeMatcherRefFunction = fileAttributeMatcherStruct.InvokerNew("ref")
 	})
 }
-
-var refFileAttributeMatcherInvoker *gi.Function
 
 // Ref is a representation of the C type g_file_attribute_matcher_ref.
 func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
@@ -1883,11 +1854,10 @@ var fileAttributeMatcherToStringFunction_Once sync.Once
 
 func fileAttributeMatcherToStringFunction_Set() {
 	fileAttributeMatcherToStringFunction_Once.Do(func() {
-		fileAttributeMatcherToStringFunction = gi.FunctionInvokerNew("Gio", "to_string")
+		fileAttributeMatcherStruct_Set()
+		fileAttributeMatcherToStringFunction = fileAttributeMatcherStruct.InvokerNew("to_string")
 	})
 }
-
-var toStringFileAttributeMatcherInvoker *gi.Function
 
 // ToString is a representation of the C type g_file_attribute_matcher_to_string.
 func (recv *FileAttributeMatcher) ToString() string {
@@ -1908,11 +1878,10 @@ var fileAttributeMatcherUnrefFunction_Once sync.Once
 
 func fileAttributeMatcherUnrefFunction_Set() {
 	fileAttributeMatcherUnrefFunction_Once.Do(func() {
-		fileAttributeMatcherUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		fileAttributeMatcherStruct_Set()
+		fileAttributeMatcherUnrefFunction = fileAttributeMatcherStruct.InvokerNew("unref")
 	})
 }
-
-var unrefFileAttributeMatcherInvoker *gi.Function
 
 // Unref is a representation of the C type g_file_attribute_matcher_unref.
 func (recv *FileAttributeMatcher) Unref() {
@@ -1926,10 +1895,10 @@ func (recv *FileAttributeMatcher) Unref() {
 }
 
 var fileDescriptorBasedIfaceStruct *gi.Struct
-var fileDescriptorBasedIfaceStructOnce sync.Once
+var fileDescriptorBasedIfaceStruct_Once sync.Once
 
-func fileDescriptorBasedIfaceStructSet() {
-	fileDescriptorBasedIfaceStructOnce.Do(func() {
+func fileDescriptorBasedIfaceStruct_Set() {
+	fileDescriptorBasedIfaceStruct_Once.Do(func() {
 		fileDescriptorBasedIfaceStruct = gi.StructNew("Gio", "FileDescriptorBasedIface")
 	})
 }
@@ -1941,10 +1910,10 @@ type FileDescriptorBasedIface struct {
 }
 
 var fileEnumeratorClassStruct *gi.Struct
-var fileEnumeratorClassStructOnce sync.Once
+var fileEnumeratorClassStruct_Once sync.Once
 
-func fileEnumeratorClassStructSet() {
-	fileEnumeratorClassStructOnce.Do(func() {
+func fileEnumeratorClassStruct_Set() {
+	fileEnumeratorClassStruct_Once.Do(func() {
 		fileEnumeratorClassStruct = gi.StructNew("Gio", "FileEnumeratorClass")
 	})
 }
@@ -1968,10 +1937,10 @@ type FileEnumeratorClass struct {
 }
 
 var fileEnumeratorPrivateStruct *gi.Struct
-var fileEnumeratorPrivateStructOnce sync.Once
+var fileEnumeratorPrivateStruct_Once sync.Once
 
-func fileEnumeratorPrivateStructSet() {
-	fileEnumeratorPrivateStructOnce.Do(func() {
+func fileEnumeratorPrivateStruct_Set() {
+	fileEnumeratorPrivateStruct_Once.Do(func() {
 		fileEnumeratorPrivateStruct = gi.StructNew("Gio", "FileEnumeratorPrivate")
 	})
 }
@@ -1981,10 +1950,10 @@ type FileEnumeratorPrivate struct {
 }
 
 var fileIOStreamClassStruct *gi.Struct
-var fileIOStreamClassStructOnce sync.Once
+var fileIOStreamClassStruct_Once sync.Once
 
-func fileIOStreamClassStructSet() {
-	fileIOStreamClassStructOnce.Do(func() {
+func fileIOStreamClassStruct_Set() {
+	fileIOStreamClassStruct_Once.Do(func() {
 		fileIOStreamClassStruct = gi.StructNew("Gio", "FileIOStreamClass")
 	})
 }
@@ -2009,10 +1978,10 @@ type FileIOStreamClass struct {
 }
 
 var fileIOStreamPrivateStruct *gi.Struct
-var fileIOStreamPrivateStructOnce sync.Once
+var fileIOStreamPrivateStruct_Once sync.Once
 
-func fileIOStreamPrivateStructSet() {
-	fileIOStreamPrivateStructOnce.Do(func() {
+func fileIOStreamPrivateStruct_Set() {
+	fileIOStreamPrivateStruct_Once.Do(func() {
 		fileIOStreamPrivateStruct = gi.StructNew("Gio", "FileIOStreamPrivate")
 	})
 }
@@ -2022,10 +1991,10 @@ type FileIOStreamPrivate struct {
 }
 
 var fileIconClassStruct *gi.Struct
-var fileIconClassStructOnce sync.Once
+var fileIconClassStruct_Once sync.Once
 
-func fileIconClassStructSet() {
-	fileIconClassStructOnce.Do(func() {
+func fileIconClassStruct_Set() {
+	fileIconClassStruct_Once.Do(func() {
 		fileIconClassStruct = gi.StructNew("Gio", "FileIconClass")
 	})
 }
@@ -2035,10 +2004,10 @@ type FileIconClass struct {
 }
 
 var fileIfaceStruct *gi.Struct
-var fileIfaceStructOnce sync.Once
+var fileIfaceStruct_Once sync.Once
 
-func fileIfaceStructSet() {
-	fileIfaceStructOnce.Do(func() {
+func fileIfaceStruct_Set() {
+	fileIfaceStruct_Once.Do(func() {
 		fileIfaceStruct = gi.StructNew("Gio", "FileIface")
 	})
 }
@@ -2152,10 +2121,10 @@ type FileIface struct {
 }
 
 var fileInfoClassStruct *gi.Struct
-var fileInfoClassStructOnce sync.Once
+var fileInfoClassStruct_Once sync.Once
 
-func fileInfoClassStructSet() {
-	fileInfoClassStructOnce.Do(func() {
+func fileInfoClassStruct_Set() {
+	fileInfoClassStruct_Once.Do(func() {
 		fileInfoClassStruct = gi.StructNew("Gio", "FileInfoClass")
 	})
 }
@@ -2165,10 +2134,10 @@ type FileInfoClass struct {
 }
 
 var fileInputStreamClassStruct *gi.Struct
-var fileInputStreamClassStructOnce sync.Once
+var fileInputStreamClassStruct_Once sync.Once
 
-func fileInputStreamClassStructSet() {
-	fileInputStreamClassStructOnce.Do(func() {
+func fileInputStreamClassStruct_Set() {
+	fileInputStreamClassStruct_Once.Do(func() {
 		fileInputStreamClassStruct = gi.StructNew("Gio", "FileInputStreamClass")
 	})
 }
@@ -2190,10 +2159,10 @@ type FileInputStreamClass struct {
 }
 
 var fileInputStreamPrivateStruct *gi.Struct
-var fileInputStreamPrivateStructOnce sync.Once
+var fileInputStreamPrivateStruct_Once sync.Once
 
-func fileInputStreamPrivateStructSet() {
-	fileInputStreamPrivateStructOnce.Do(func() {
+func fileInputStreamPrivateStruct_Set() {
+	fileInputStreamPrivateStruct_Once.Do(func() {
 		fileInputStreamPrivateStruct = gi.StructNew("Gio", "FileInputStreamPrivate")
 	})
 }
@@ -2203,10 +2172,10 @@ type FileInputStreamPrivate struct {
 }
 
 var fileMonitorClassStruct *gi.Struct
-var fileMonitorClassStructOnce sync.Once
+var fileMonitorClassStruct_Once sync.Once
 
-func fileMonitorClassStructSet() {
-	fileMonitorClassStructOnce.Do(func() {
+func fileMonitorClassStruct_Set() {
+	fileMonitorClassStruct_Once.Do(func() {
 		fileMonitorClassStruct = gi.StructNew("Gio", "FileMonitorClass")
 	})
 }
@@ -2224,10 +2193,10 @@ type FileMonitorClass struct {
 }
 
 var fileMonitorPrivateStruct *gi.Struct
-var fileMonitorPrivateStructOnce sync.Once
+var fileMonitorPrivateStruct_Once sync.Once
 
-func fileMonitorPrivateStructSet() {
-	fileMonitorPrivateStructOnce.Do(func() {
+func fileMonitorPrivateStruct_Set() {
+	fileMonitorPrivateStruct_Once.Do(func() {
 		fileMonitorPrivateStruct = gi.StructNew("Gio", "FileMonitorPrivate")
 	})
 }
@@ -2237,10 +2206,10 @@ type FileMonitorPrivate struct {
 }
 
 var fileOutputStreamClassStruct *gi.Struct
-var fileOutputStreamClassStructOnce sync.Once
+var fileOutputStreamClassStruct_Once sync.Once
 
-func fileOutputStreamClassStructSet() {
-	fileOutputStreamClassStructOnce.Do(func() {
+func fileOutputStreamClassStruct_Set() {
+	fileOutputStreamClassStruct_Once.Do(func() {
 		fileOutputStreamClassStruct = gi.StructNew("Gio", "FileOutputStreamClass")
 	})
 }
@@ -2265,10 +2234,10 @@ type FileOutputStreamClass struct {
 }
 
 var fileOutputStreamPrivateStruct *gi.Struct
-var fileOutputStreamPrivateStructOnce sync.Once
+var fileOutputStreamPrivateStruct_Once sync.Once
 
-func fileOutputStreamPrivateStructSet() {
-	fileOutputStreamPrivateStructOnce.Do(func() {
+func fileOutputStreamPrivateStruct_Set() {
+	fileOutputStreamPrivateStruct_Once.Do(func() {
 		fileOutputStreamPrivateStruct = gi.StructNew("Gio", "FileOutputStreamPrivate")
 	})
 }
@@ -2278,10 +2247,10 @@ type FileOutputStreamPrivate struct {
 }
 
 var filenameCompleterClassStruct *gi.Struct
-var filenameCompleterClassStructOnce sync.Once
+var filenameCompleterClassStruct_Once sync.Once
 
-func filenameCompleterClassStructSet() {
-	filenameCompleterClassStructOnce.Do(func() {
+func filenameCompleterClassStruct_Set() {
+	filenameCompleterClassStruct_Once.Do(func() {
 		filenameCompleterClassStruct = gi.StructNew("Gio", "FilenameCompleterClass")
 	})
 }
@@ -2296,10 +2265,10 @@ type FilenameCompleterClass struct {
 }
 
 var filterInputStreamClassStruct *gi.Struct
-var filterInputStreamClassStructOnce sync.Once
+var filterInputStreamClassStruct_Once sync.Once
 
-func filterInputStreamClassStructSet() {
-	filterInputStreamClassStructOnce.Do(func() {
+func filterInputStreamClassStruct_Set() {
+	filterInputStreamClassStruct_Once.Do(func() {
 		filterInputStreamClassStruct = gi.StructNew("Gio", "FilterInputStreamClass")
 	})
 }
@@ -2313,10 +2282,10 @@ type FilterInputStreamClass struct {
 }
 
 var filterOutputStreamClassStruct *gi.Struct
-var filterOutputStreamClassStructOnce sync.Once
+var filterOutputStreamClassStruct_Once sync.Once
 
-func filterOutputStreamClassStructSet() {
-	filterOutputStreamClassStructOnce.Do(func() {
+func filterOutputStreamClassStruct_Set() {
+	filterOutputStreamClassStruct_Once.Do(func() {
 		filterOutputStreamClassStruct = gi.StructNew("Gio", "FilterOutputStreamClass")
 	})
 }
@@ -2330,10 +2299,10 @@ type FilterOutputStreamClass struct {
 }
 
 var iOExtensionStruct *gi.Struct
-var iOExtensionStructOnce sync.Once
+var iOExtensionStruct_Once sync.Once
 
-func iOExtensionStructSet() {
-	iOExtensionStructOnce.Do(func() {
+func iOExtensionStruct_Set() {
+	iOExtensionStruct_Once.Do(func() {
 		iOExtensionStruct = gi.StructNew("Gio", "IOExtension")
 	})
 }
@@ -2347,11 +2316,10 @@ var iOExtensionGetNameFunction_Once sync.Once
 
 func iOExtensionGetNameFunction_Set() {
 	iOExtensionGetNameFunction_Once.Do(func() {
-		iOExtensionGetNameFunction = gi.FunctionInvokerNew("Gio", "get_name")
+		iOExtensionStruct_Set()
+		iOExtensionGetNameFunction = iOExtensionStruct.InvokerNew("get_name")
 	})
 }
-
-var getNameIOExtensionInvoker *gi.Function
 
 // GetName is a representation of the C type g_io_extension_get_name.
 func (recv *IOExtension) GetName() string {
@@ -2372,11 +2340,10 @@ var iOExtensionGetPriorityFunction_Once sync.Once
 
 func iOExtensionGetPriorityFunction_Set() {
 	iOExtensionGetPriorityFunction_Once.Do(func() {
-		iOExtensionGetPriorityFunction = gi.FunctionInvokerNew("Gio", "get_priority")
+		iOExtensionStruct_Set()
+		iOExtensionGetPriorityFunction = iOExtensionStruct.InvokerNew("get_priority")
 	})
 }
-
-var getPriorityIOExtensionInvoker *gi.Function
 
 // GetPriority is a representation of the C type g_io_extension_get_priority.
 func (recv *IOExtension) GetPriority() int32 {
@@ -2397,10 +2364,10 @@ func (recv *IOExtension) GetPriority() int32 {
 // UNSUPPORTED : C value 'g_io_extension_ref_class' : return type 'GObject.TypeClass' not supported
 
 var iOExtensionPointStruct *gi.Struct
-var iOExtensionPointStructOnce sync.Once
+var iOExtensionPointStruct_Once sync.Once
 
-func iOExtensionPointStructSet() {
-	iOExtensionPointStructOnce.Do(func() {
+func iOExtensionPointStruct_Set() {
+	iOExtensionPointStruct_Once.Do(func() {
 		iOExtensionPointStruct = gi.StructNew("Gio", "IOExtensionPoint")
 	})
 }
@@ -2414,11 +2381,10 @@ var iOExtensionPointGetExtensionByNameFunction_Once sync.Once
 
 func iOExtensionPointGetExtensionByNameFunction_Set() {
 	iOExtensionPointGetExtensionByNameFunction_Once.Do(func() {
-		iOExtensionPointGetExtensionByNameFunction = gi.FunctionInvokerNew("Gio", "get_extension_by_name")
+		iOExtensionPointStruct_Set()
+		iOExtensionPointGetExtensionByNameFunction = iOExtensionPointStruct.InvokerNew("get_extension_by_name")
 	})
 }
-
-var getExtensionByNameIOExtensionPointInvoker *gi.Function
 
 // GetExtensionByName is a representation of the C type g_io_extension_point_get_extension_by_name.
 func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
@@ -2442,10 +2408,10 @@ func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 // UNSUPPORTED : C value 'g_io_extension_point_set_required_type' : parameter 'type' of type 'GType' not supported
 
 var iOModuleClassStruct *gi.Struct
-var iOModuleClassStructOnce sync.Once
+var iOModuleClassStruct_Once sync.Once
 
-func iOModuleClassStructSet() {
-	iOModuleClassStructOnce.Do(func() {
+func iOModuleClassStruct_Set() {
+	iOModuleClassStruct_Once.Do(func() {
 		iOModuleClassStruct = gi.StructNew("Gio", "IOModuleClass")
 	})
 }
@@ -2455,10 +2421,10 @@ type IOModuleClass struct {
 }
 
 var iOModuleScopeStruct *gi.Struct
-var iOModuleScopeStructOnce sync.Once
+var iOModuleScopeStruct_Once sync.Once
 
-func iOModuleScopeStructSet() {
-	iOModuleScopeStructOnce.Do(func() {
+func iOModuleScopeStruct_Set() {
+	iOModuleScopeStruct_Once.Do(func() {
 		iOModuleScopeStruct = gi.StructNew("Gio", "IOModuleScope")
 	})
 }
@@ -2472,11 +2438,10 @@ var iOModuleScopeBlockFunction_Once sync.Once
 
 func iOModuleScopeBlockFunction_Set() {
 	iOModuleScopeBlockFunction_Once.Do(func() {
-		iOModuleScopeBlockFunction = gi.FunctionInvokerNew("Gio", "block")
+		iOModuleScopeStruct_Set()
+		iOModuleScopeBlockFunction = iOModuleScopeStruct.InvokerNew("block")
 	})
 }
-
-var blockIOModuleScopeInvoker *gi.Function
 
 // Block is a representation of the C type g_io_module_scope_block.
 func (recv *IOModuleScope) Block(basename string) {
@@ -2495,11 +2460,10 @@ var iOModuleScopeFreeFunction_Once sync.Once
 
 func iOModuleScopeFreeFunction_Set() {
 	iOModuleScopeFreeFunction_Once.Do(func() {
-		iOModuleScopeFreeFunction = gi.FunctionInvokerNew("Gio", "free")
+		iOModuleScopeStruct_Set()
+		iOModuleScopeFreeFunction = iOModuleScopeStruct.InvokerNew("free")
 	})
 }
-
-var freeIOModuleScopeInvoker *gi.Function
 
 // Free is a representation of the C type g_io_module_scope_free.
 func (recv *IOModuleScope) Free() {
@@ -2513,10 +2477,10 @@ func (recv *IOModuleScope) Free() {
 }
 
 var iOSchedulerJobStruct *gi.Struct
-var iOSchedulerJobStructOnce sync.Once
+var iOSchedulerJobStruct_Once sync.Once
 
-func iOSchedulerJobStructSet() {
-	iOSchedulerJobStructOnce.Do(func() {
+func iOSchedulerJobStruct_Set() {
+	iOSchedulerJobStruct_Once.Do(func() {
 		iOSchedulerJobStruct = gi.StructNew("Gio", "IOSchedulerJob")
 	})
 }
@@ -2530,10 +2494,10 @@ type IOSchedulerJob struct {
 // UNSUPPORTED : C value 'g_io_scheduler_job_send_to_mainloop_async' : parameter 'func' of type 'GLib.SourceFunc' not supported
 
 var iOStreamAdapterStruct *gi.Struct
-var iOStreamAdapterStructOnce sync.Once
+var iOStreamAdapterStruct_Once sync.Once
 
-func iOStreamAdapterStructSet() {
-	iOStreamAdapterStructOnce.Do(func() {
+func iOStreamAdapterStruct_Set() {
+	iOStreamAdapterStruct_Once.Do(func() {
 		iOStreamAdapterStruct = gi.StructNew("Gio", "IOStreamAdapter")
 	})
 }
@@ -2543,10 +2507,10 @@ type IOStreamAdapter struct {
 }
 
 var iOStreamClassStruct *gi.Struct
-var iOStreamClassStructOnce sync.Once
+var iOStreamClassStruct_Once sync.Once
 
-func iOStreamClassStructSet() {
-	iOStreamClassStructOnce.Do(func() {
+func iOStreamClassStruct_Set() {
+	iOStreamClassStruct_Once.Do(func() {
 		iOStreamClassStruct = gi.StructNew("Gio", "IOStreamClass")
 	})
 }
@@ -2572,10 +2536,10 @@ type IOStreamClass struct {
 }
 
 var iOStreamPrivateStruct *gi.Struct
-var iOStreamPrivateStructOnce sync.Once
+var iOStreamPrivateStruct_Once sync.Once
 
-func iOStreamPrivateStructSet() {
-	iOStreamPrivateStructOnce.Do(func() {
+func iOStreamPrivateStruct_Set() {
+	iOStreamPrivateStruct_Once.Do(func() {
 		iOStreamPrivateStruct = gi.StructNew("Gio", "IOStreamPrivate")
 	})
 }
@@ -2585,10 +2549,10 @@ type IOStreamPrivate struct {
 }
 
 var iconIfaceStruct *gi.Struct
-var iconIfaceStructOnce sync.Once
+var iconIfaceStruct_Once sync.Once
 
-func iconIfaceStructSet() {
-	iconIfaceStructOnce.Do(func() {
+func iconIfaceStruct_Set() {
+	iconIfaceStruct_Once.Do(func() {
 		iconIfaceStruct = gi.StructNew("Gio", "IconIface")
 	})
 }
@@ -2604,10 +2568,10 @@ type IconIface struct {
 }
 
 var inetAddressClassStruct *gi.Struct
-var inetAddressClassStructOnce sync.Once
+var inetAddressClassStruct_Once sync.Once
 
-func inetAddressClassStructSet() {
-	inetAddressClassStructOnce.Do(func() {
+func inetAddressClassStruct_Set() {
+	inetAddressClassStruct_Once.Do(func() {
 		inetAddressClassStruct = gi.StructNew("Gio", "InetAddressClass")
 	})
 }
@@ -2620,10 +2584,10 @@ type InetAddressClass struct {
 }
 
 var inetAddressMaskClassStruct *gi.Struct
-var inetAddressMaskClassStructOnce sync.Once
+var inetAddressMaskClassStruct_Once sync.Once
 
-func inetAddressMaskClassStructSet() {
-	inetAddressMaskClassStructOnce.Do(func() {
+func inetAddressMaskClassStruct_Set() {
+	inetAddressMaskClassStruct_Once.Do(func() {
 		inetAddressMaskClassStruct = gi.StructNew("Gio", "InetAddressMaskClass")
 	})
 }
@@ -2634,10 +2598,10 @@ type InetAddressMaskClass struct {
 }
 
 var inetAddressMaskPrivateStruct *gi.Struct
-var inetAddressMaskPrivateStructOnce sync.Once
+var inetAddressMaskPrivateStruct_Once sync.Once
 
-func inetAddressMaskPrivateStructSet() {
-	inetAddressMaskPrivateStructOnce.Do(func() {
+func inetAddressMaskPrivateStruct_Set() {
+	inetAddressMaskPrivateStruct_Once.Do(func() {
 		inetAddressMaskPrivateStruct = gi.StructNew("Gio", "InetAddressMaskPrivate")
 	})
 }
@@ -2647,10 +2611,10 @@ type InetAddressMaskPrivate struct {
 }
 
 var inetAddressPrivateStruct *gi.Struct
-var inetAddressPrivateStructOnce sync.Once
+var inetAddressPrivateStruct_Once sync.Once
 
-func inetAddressPrivateStructSet() {
-	inetAddressPrivateStructOnce.Do(func() {
+func inetAddressPrivateStruct_Set() {
+	inetAddressPrivateStruct_Once.Do(func() {
 		inetAddressPrivateStruct = gi.StructNew("Gio", "InetAddressPrivate")
 	})
 }
@@ -2660,10 +2624,10 @@ type InetAddressPrivate struct {
 }
 
 var inetSocketAddressClassStruct *gi.Struct
-var inetSocketAddressClassStructOnce sync.Once
+var inetSocketAddressClassStruct_Once sync.Once
 
-func inetSocketAddressClassStructSet() {
-	inetSocketAddressClassStructOnce.Do(func() {
+func inetSocketAddressClassStruct_Set() {
+	inetSocketAddressClassStruct_Once.Do(func() {
 		inetSocketAddressClassStruct = gi.StructNew("Gio", "InetSocketAddressClass")
 	})
 }
@@ -2674,10 +2638,10 @@ type InetSocketAddressClass struct {
 }
 
 var inetSocketAddressPrivateStruct *gi.Struct
-var inetSocketAddressPrivateStructOnce sync.Once
+var inetSocketAddressPrivateStruct_Once sync.Once
 
-func inetSocketAddressPrivateStructSet() {
-	inetSocketAddressPrivateStructOnce.Do(func() {
+func inetSocketAddressPrivateStruct_Set() {
+	inetSocketAddressPrivateStruct_Once.Do(func() {
 		inetSocketAddressPrivateStruct = gi.StructNew("Gio", "InetSocketAddressPrivate")
 	})
 }
@@ -2687,10 +2651,10 @@ type InetSocketAddressPrivate struct {
 }
 
 var initableIfaceStruct *gi.Struct
-var initableIfaceStructOnce sync.Once
+var initableIfaceStruct_Once sync.Once
 
-func initableIfaceStructSet() {
-	initableIfaceStructOnce.Do(func() {
+func initableIfaceStruct_Set() {
+	initableIfaceStruct_Once.Do(func() {
 		initableIfaceStruct = gi.StructNew("Gio", "InitableIface")
 	})
 }
@@ -2702,10 +2666,10 @@ type InitableIface struct {
 }
 
 var inputMessageStruct *gi.Struct
-var inputMessageStructOnce sync.Once
+var inputMessageStruct_Once sync.Once
 
-func inputMessageStructSet() {
-	inputMessageStructOnce.Do(func() {
+func inputMessageStruct_Set() {
+	inputMessageStruct_Once.Do(func() {
 		inputMessageStruct = gi.StructNew("Gio", "InputMessage")
 	})
 }
@@ -2722,10 +2686,10 @@ type InputMessage struct {
 }
 
 var inputStreamClassStruct *gi.Struct
-var inputStreamClassStructOnce sync.Once
+var inputStreamClassStruct_Once sync.Once
 
-func inputStreamClassStructSet() {
-	inputStreamClassStructOnce.Do(func() {
+func inputStreamClassStruct_Set() {
+	inputStreamClassStruct_Once.Do(func() {
 		inputStreamClassStruct = gi.StructNew("Gio", "InputStreamClass")
 	})
 }
@@ -2750,10 +2714,10 @@ type InputStreamClass struct {
 }
 
 var inputStreamPrivateStruct *gi.Struct
-var inputStreamPrivateStructOnce sync.Once
+var inputStreamPrivateStruct_Once sync.Once
 
-func inputStreamPrivateStructSet() {
-	inputStreamPrivateStructOnce.Do(func() {
+func inputStreamPrivateStruct_Set() {
+	inputStreamPrivateStruct_Once.Do(func() {
 		inputStreamPrivateStruct = gi.StructNew("Gio", "InputStreamPrivate")
 	})
 }
@@ -2763,10 +2727,10 @@ type InputStreamPrivate struct {
 }
 
 var inputVectorStruct *gi.Struct
-var inputVectorStructOnce sync.Once
+var inputVectorStruct_Once sync.Once
 
-func inputVectorStructSet() {
-	inputVectorStructOnce.Do(func() {
+func inputVectorStruct_Set() {
+	inputVectorStruct_Once.Do(func() {
 		inputVectorStruct = gi.StructNew("Gio", "InputVector")
 	})
 }
@@ -2778,10 +2742,10 @@ type InputVector struct {
 }
 
 var listModelInterfaceStruct *gi.Struct
-var listModelInterfaceStructOnce sync.Once
+var listModelInterfaceStruct_Once sync.Once
 
-func listModelInterfaceStructSet() {
-	listModelInterfaceStructOnce.Do(func() {
+func listModelInterfaceStruct_Set() {
+	listModelInterfaceStruct_Once.Do(func() {
 		listModelInterfaceStruct = gi.StructNew("Gio", "ListModelInterface")
 	})
 }
@@ -2795,10 +2759,10 @@ type ListModelInterface struct {
 }
 
 var listStoreClassStruct *gi.Struct
-var listStoreClassStructOnce sync.Once
+var listStoreClassStruct_Once sync.Once
 
-func listStoreClassStructSet() {
-	listStoreClassStructOnce.Do(func() {
+func listStoreClassStruct_Set() {
+	listStoreClassStruct_Once.Do(func() {
 		listStoreClassStruct = gi.StructNew("Gio", "ListStoreClass")
 	})
 }
@@ -2809,10 +2773,10 @@ type ListStoreClass struct {
 }
 
 var loadableIconIfaceStruct *gi.Struct
-var loadableIconIfaceStructOnce sync.Once
+var loadableIconIfaceStruct_Once sync.Once
 
-func loadableIconIfaceStructSet() {
-	loadableIconIfaceStructOnce.Do(func() {
+func loadableIconIfaceStruct_Set() {
+	loadableIconIfaceStruct_Once.Do(func() {
 		loadableIconIfaceStruct = gi.StructNew("Gio", "LoadableIconIface")
 	})
 }
@@ -2826,10 +2790,10 @@ type LoadableIconIface struct {
 }
 
 var memoryInputStreamClassStruct *gi.Struct
-var memoryInputStreamClassStructOnce sync.Once
+var memoryInputStreamClassStruct_Once sync.Once
 
-func memoryInputStreamClassStructSet() {
-	memoryInputStreamClassStructOnce.Do(func() {
+func memoryInputStreamClassStruct_Set() {
+	memoryInputStreamClassStruct_Once.Do(func() {
 		memoryInputStreamClassStruct = gi.StructNew("Gio", "MemoryInputStreamClass")
 	})
 }
@@ -2845,10 +2809,10 @@ type MemoryInputStreamClass struct {
 }
 
 var memoryInputStreamPrivateStruct *gi.Struct
-var memoryInputStreamPrivateStructOnce sync.Once
+var memoryInputStreamPrivateStruct_Once sync.Once
 
-func memoryInputStreamPrivateStructSet() {
-	memoryInputStreamPrivateStructOnce.Do(func() {
+func memoryInputStreamPrivateStruct_Set() {
+	memoryInputStreamPrivateStruct_Once.Do(func() {
 		memoryInputStreamPrivateStruct = gi.StructNew("Gio", "MemoryInputStreamPrivate")
 	})
 }
@@ -2858,10 +2822,10 @@ type MemoryInputStreamPrivate struct {
 }
 
 var memoryOutputStreamClassStruct *gi.Struct
-var memoryOutputStreamClassStructOnce sync.Once
+var memoryOutputStreamClassStruct_Once sync.Once
 
-func memoryOutputStreamClassStructSet() {
-	memoryOutputStreamClassStructOnce.Do(func() {
+func memoryOutputStreamClassStruct_Set() {
+	memoryOutputStreamClassStruct_Once.Do(func() {
 		memoryOutputStreamClassStruct = gi.StructNew("Gio", "MemoryOutputStreamClass")
 	})
 }
@@ -2877,10 +2841,10 @@ type MemoryOutputStreamClass struct {
 }
 
 var memoryOutputStreamPrivateStruct *gi.Struct
-var memoryOutputStreamPrivateStructOnce sync.Once
+var memoryOutputStreamPrivateStruct_Once sync.Once
 
-func memoryOutputStreamPrivateStructSet() {
-	memoryOutputStreamPrivateStructOnce.Do(func() {
+func memoryOutputStreamPrivateStruct_Set() {
+	memoryOutputStreamPrivateStruct_Once.Do(func() {
 		memoryOutputStreamPrivateStruct = gi.StructNew("Gio", "MemoryOutputStreamPrivate")
 	})
 }
@@ -2890,10 +2854,10 @@ type MemoryOutputStreamPrivate struct {
 }
 
 var menuAttributeIterClassStruct *gi.Struct
-var menuAttributeIterClassStructOnce sync.Once
+var menuAttributeIterClassStruct_Once sync.Once
 
-func menuAttributeIterClassStructSet() {
-	menuAttributeIterClassStructOnce.Do(func() {
+func menuAttributeIterClassStruct_Set() {
+	menuAttributeIterClassStruct_Once.Do(func() {
 		menuAttributeIterClassStruct = gi.StructNew("Gio", "MenuAttributeIterClass")
 	})
 }
@@ -2905,10 +2869,10 @@ type MenuAttributeIterClass struct {
 }
 
 var menuAttributeIterPrivateStruct *gi.Struct
-var menuAttributeIterPrivateStructOnce sync.Once
+var menuAttributeIterPrivateStruct_Once sync.Once
 
-func menuAttributeIterPrivateStructSet() {
-	menuAttributeIterPrivateStructOnce.Do(func() {
+func menuAttributeIterPrivateStruct_Set() {
+	menuAttributeIterPrivateStruct_Once.Do(func() {
 		menuAttributeIterPrivateStruct = gi.StructNew("Gio", "MenuAttributeIterPrivate")
 	})
 }
@@ -2918,10 +2882,10 @@ type MenuAttributeIterPrivate struct {
 }
 
 var menuLinkIterClassStruct *gi.Struct
-var menuLinkIterClassStructOnce sync.Once
+var menuLinkIterClassStruct_Once sync.Once
 
-func menuLinkIterClassStructSet() {
-	menuLinkIterClassStructOnce.Do(func() {
+func menuLinkIterClassStruct_Set() {
+	menuLinkIterClassStruct_Once.Do(func() {
 		menuLinkIterClassStruct = gi.StructNew("Gio", "MenuLinkIterClass")
 	})
 }
@@ -2933,10 +2897,10 @@ type MenuLinkIterClass struct {
 }
 
 var menuLinkIterPrivateStruct *gi.Struct
-var menuLinkIterPrivateStructOnce sync.Once
+var menuLinkIterPrivateStruct_Once sync.Once
 
-func menuLinkIterPrivateStructSet() {
-	menuLinkIterPrivateStructOnce.Do(func() {
+func menuLinkIterPrivateStruct_Set() {
+	menuLinkIterPrivateStruct_Once.Do(func() {
 		menuLinkIterPrivateStruct = gi.StructNew("Gio", "MenuLinkIterPrivate")
 	})
 }
@@ -2946,10 +2910,10 @@ type MenuLinkIterPrivate struct {
 }
 
 var menuModelClassStruct *gi.Struct
-var menuModelClassStructOnce sync.Once
+var menuModelClassStruct_Once sync.Once
 
-func menuModelClassStructSet() {
-	menuModelClassStructOnce.Do(func() {
+func menuModelClassStruct_Set() {
+	menuModelClassStruct_Once.Do(func() {
 		menuModelClassStruct = gi.StructNew("Gio", "MenuModelClass")
 	})
 }
@@ -2968,10 +2932,10 @@ type MenuModelClass struct {
 }
 
 var menuModelPrivateStruct *gi.Struct
-var menuModelPrivateStructOnce sync.Once
+var menuModelPrivateStruct_Once sync.Once
 
-func menuModelPrivateStructSet() {
-	menuModelPrivateStructOnce.Do(func() {
+func menuModelPrivateStruct_Set() {
+	menuModelPrivateStruct_Once.Do(func() {
 		menuModelPrivateStruct = gi.StructNew("Gio", "MenuModelPrivate")
 	})
 }
@@ -2981,10 +2945,10 @@ type MenuModelPrivate struct {
 }
 
 var mountIfaceStruct *gi.Struct
-var mountIfaceStructOnce sync.Once
+var mountIfaceStruct_Once sync.Once
 
-func mountIfaceStructSet() {
-	mountIfaceStructOnce.Do(func() {
+func mountIfaceStruct_Set() {
+	mountIfaceStruct_Once.Do(func() {
 		mountIfaceStruct = gi.StructNew("Gio", "MountIface")
 	})
 }
@@ -3022,10 +2986,10 @@ type MountIface struct {
 }
 
 var mountOperationClassStruct *gi.Struct
-var mountOperationClassStructOnce sync.Once
+var mountOperationClassStruct_Once sync.Once
 
-func mountOperationClassStructSet() {
-	mountOperationClassStructOnce.Do(func() {
+func mountOperationClassStruct_Set() {
+	mountOperationClassStruct_Once.Do(func() {
 		mountOperationClassStruct = gi.StructNew("Gio", "MountOperationClass")
 	})
 }
@@ -3051,10 +3015,10 @@ type MountOperationClass struct {
 }
 
 var mountOperationPrivateStruct *gi.Struct
-var mountOperationPrivateStructOnce sync.Once
+var mountOperationPrivateStruct_Once sync.Once
 
-func mountOperationPrivateStructSet() {
-	mountOperationPrivateStructOnce.Do(func() {
+func mountOperationPrivateStruct_Set() {
+	mountOperationPrivateStruct_Once.Do(func() {
 		mountOperationPrivateStruct = gi.StructNew("Gio", "MountOperationPrivate")
 	})
 }
@@ -3064,10 +3028,10 @@ type MountOperationPrivate struct {
 }
 
 var nativeSocketAddressClassStruct *gi.Struct
-var nativeSocketAddressClassStructOnce sync.Once
+var nativeSocketAddressClassStruct_Once sync.Once
 
-func nativeSocketAddressClassStructSet() {
-	nativeSocketAddressClassStructOnce.Do(func() {
+func nativeSocketAddressClassStruct_Set() {
+	nativeSocketAddressClassStruct_Once.Do(func() {
 		nativeSocketAddressClassStruct = gi.StructNew("Gio", "NativeSocketAddressClass")
 	})
 }
@@ -3078,10 +3042,10 @@ type NativeSocketAddressClass struct {
 }
 
 var nativeSocketAddressPrivateStruct *gi.Struct
-var nativeSocketAddressPrivateStructOnce sync.Once
+var nativeSocketAddressPrivateStruct_Once sync.Once
 
-func nativeSocketAddressPrivateStructSet() {
-	nativeSocketAddressPrivateStructOnce.Do(func() {
+func nativeSocketAddressPrivateStruct_Set() {
+	nativeSocketAddressPrivateStruct_Once.Do(func() {
 		nativeSocketAddressPrivateStruct = gi.StructNew("Gio", "NativeSocketAddressPrivate")
 	})
 }
@@ -3091,10 +3055,10 @@ type NativeSocketAddressPrivate struct {
 }
 
 var nativeVolumeMonitorClassStruct *gi.Struct
-var nativeVolumeMonitorClassStructOnce sync.Once
+var nativeVolumeMonitorClassStruct_Once sync.Once
 
-func nativeVolumeMonitorClassStructSet() {
-	nativeVolumeMonitorClassStructOnce.Do(func() {
+func nativeVolumeMonitorClassStruct_Set() {
+	nativeVolumeMonitorClassStruct_Once.Do(func() {
 		nativeVolumeMonitorClassStruct = gi.StructNew("Gio", "NativeVolumeMonitorClass")
 	})
 }
@@ -3106,10 +3070,10 @@ type NativeVolumeMonitorClass struct {
 }
 
 var networkAddressClassStruct *gi.Struct
-var networkAddressClassStructOnce sync.Once
+var networkAddressClassStruct_Once sync.Once
 
-func networkAddressClassStructSet() {
-	networkAddressClassStructOnce.Do(func() {
+func networkAddressClassStruct_Set() {
+	networkAddressClassStruct_Once.Do(func() {
 		networkAddressClassStruct = gi.StructNew("Gio", "NetworkAddressClass")
 	})
 }
@@ -3120,10 +3084,10 @@ type NetworkAddressClass struct {
 }
 
 var networkAddressPrivateStruct *gi.Struct
-var networkAddressPrivateStructOnce sync.Once
+var networkAddressPrivateStruct_Once sync.Once
 
-func networkAddressPrivateStructSet() {
-	networkAddressPrivateStructOnce.Do(func() {
+func networkAddressPrivateStruct_Set() {
+	networkAddressPrivateStruct_Once.Do(func() {
 		networkAddressPrivateStruct = gi.StructNew("Gio", "NetworkAddressPrivate")
 	})
 }
@@ -3133,10 +3097,10 @@ type NetworkAddressPrivate struct {
 }
 
 var networkMonitorInterfaceStruct *gi.Struct
-var networkMonitorInterfaceStructOnce sync.Once
+var networkMonitorInterfaceStruct_Once sync.Once
 
-func networkMonitorInterfaceStructSet() {
-	networkMonitorInterfaceStructOnce.Do(func() {
+func networkMonitorInterfaceStruct_Set() {
+	networkMonitorInterfaceStruct_Once.Do(func() {
 		networkMonitorInterfaceStruct = gi.StructNew("Gio", "NetworkMonitorInterface")
 	})
 }
@@ -3151,10 +3115,10 @@ type NetworkMonitorInterface struct {
 }
 
 var networkServiceClassStruct *gi.Struct
-var networkServiceClassStructOnce sync.Once
+var networkServiceClassStruct_Once sync.Once
 
-func networkServiceClassStructSet() {
-	networkServiceClassStructOnce.Do(func() {
+func networkServiceClassStruct_Set() {
+	networkServiceClassStruct_Once.Do(func() {
 		networkServiceClassStruct = gi.StructNew("Gio", "NetworkServiceClass")
 	})
 }
@@ -3165,10 +3129,10 @@ type NetworkServiceClass struct {
 }
 
 var networkServicePrivateStruct *gi.Struct
-var networkServicePrivateStructOnce sync.Once
+var networkServicePrivateStruct_Once sync.Once
 
-func networkServicePrivateStructSet() {
-	networkServicePrivateStructOnce.Do(func() {
+func networkServicePrivateStruct_Set() {
+	networkServicePrivateStruct_Once.Do(func() {
 		networkServicePrivateStruct = gi.StructNew("Gio", "NetworkServicePrivate")
 	})
 }
@@ -3178,10 +3142,10 @@ type NetworkServicePrivate struct {
 }
 
 var outputMessageStruct *gi.Struct
-var outputMessageStructOnce sync.Once
+var outputMessageStruct_Once sync.Once
 
-func outputMessageStructSet() {
-	outputMessageStructOnce.Do(func() {
+func outputMessageStruct_Set() {
+	outputMessageStruct_Once.Do(func() {
 		outputMessageStruct = gi.StructNew("Gio", "OutputMessage")
 	})
 }
@@ -3197,10 +3161,10 @@ type OutputMessage struct {
 }
 
 var outputStreamClassStruct *gi.Struct
-var outputStreamClassStructOnce sync.Once
+var outputStreamClassStruct_Once sync.Once
 
-func outputStreamClassStructSet() {
-	outputStreamClassStructOnce.Do(func() {
+func outputStreamClassStruct_Set() {
+	outputStreamClassStruct_Once.Do(func() {
 		outputStreamClassStruct = gi.StructNew("Gio", "OutputStreamClass")
 	})
 }
@@ -3231,10 +3195,10 @@ type OutputStreamClass struct {
 }
 
 var outputStreamPrivateStruct *gi.Struct
-var outputStreamPrivateStructOnce sync.Once
+var outputStreamPrivateStruct_Once sync.Once
 
-func outputStreamPrivateStructSet() {
-	outputStreamPrivateStructOnce.Do(func() {
+func outputStreamPrivateStruct_Set() {
+	outputStreamPrivateStruct_Once.Do(func() {
 		outputStreamPrivateStruct = gi.StructNew("Gio", "OutputStreamPrivate")
 	})
 }
@@ -3244,10 +3208,10 @@ type OutputStreamPrivate struct {
 }
 
 var outputVectorStruct *gi.Struct
-var outputVectorStructOnce sync.Once
+var outputVectorStruct_Once sync.Once
 
-func outputVectorStructSet() {
-	outputVectorStructOnce.Do(func() {
+func outputVectorStruct_Set() {
+	outputVectorStruct_Once.Do(func() {
 		outputVectorStruct = gi.StructNew("Gio", "OutputVector")
 	})
 }
@@ -3259,10 +3223,10 @@ type OutputVector struct {
 }
 
 var permissionClassStruct *gi.Struct
-var permissionClassStructOnce sync.Once
+var permissionClassStruct_Once sync.Once
 
-func permissionClassStructSet() {
-	permissionClassStructOnce.Do(func() {
+func permissionClassStruct_Set() {
+	permissionClassStruct_Once.Do(func() {
 		permissionClassStruct = gi.StructNew("Gio", "PermissionClass")
 	})
 }
@@ -3280,10 +3244,10 @@ type PermissionClass struct {
 }
 
 var permissionPrivateStruct *gi.Struct
-var permissionPrivateStructOnce sync.Once
+var permissionPrivateStruct_Once sync.Once
 
-func permissionPrivateStructSet() {
-	permissionPrivateStructOnce.Do(func() {
+func permissionPrivateStruct_Set() {
+	permissionPrivateStruct_Once.Do(func() {
 		permissionPrivateStruct = gi.StructNew("Gio", "PermissionPrivate")
 	})
 }
@@ -3293,10 +3257,10 @@ type PermissionPrivate struct {
 }
 
 var pollableInputStreamInterfaceStruct *gi.Struct
-var pollableInputStreamInterfaceStructOnce sync.Once
+var pollableInputStreamInterfaceStruct_Once sync.Once
 
-func pollableInputStreamInterfaceStructSet() {
-	pollableInputStreamInterfaceStructOnce.Do(func() {
+func pollableInputStreamInterfaceStruct_Set() {
+	pollableInputStreamInterfaceStruct_Once.Do(func() {
 		pollableInputStreamInterfaceStruct = gi.StructNew("Gio", "PollableInputStreamInterface")
 	})
 }
@@ -3311,10 +3275,10 @@ type PollableInputStreamInterface struct {
 }
 
 var pollableOutputStreamInterfaceStruct *gi.Struct
-var pollableOutputStreamInterfaceStructOnce sync.Once
+var pollableOutputStreamInterfaceStruct_Once sync.Once
 
-func pollableOutputStreamInterfaceStructSet() {
-	pollableOutputStreamInterfaceStructOnce.Do(func() {
+func pollableOutputStreamInterfaceStruct_Set() {
+	pollableOutputStreamInterfaceStruct_Once.Do(func() {
 		pollableOutputStreamInterfaceStruct = gi.StructNew("Gio", "PollableOutputStreamInterface")
 	})
 }
@@ -3330,10 +3294,10 @@ type PollableOutputStreamInterface struct {
 }
 
 var proxyAddressClassStruct *gi.Struct
-var proxyAddressClassStructOnce sync.Once
+var proxyAddressClassStruct_Once sync.Once
 
-func proxyAddressClassStructSet() {
-	proxyAddressClassStructOnce.Do(func() {
+func proxyAddressClassStruct_Set() {
+	proxyAddressClassStruct_Once.Do(func() {
 		proxyAddressClassStruct = gi.StructNew("Gio", "ProxyAddressClass")
 	})
 }
@@ -3344,10 +3308,10 @@ type ProxyAddressClass struct {
 }
 
 var proxyAddressEnumeratorClassStruct *gi.Struct
-var proxyAddressEnumeratorClassStructOnce sync.Once
+var proxyAddressEnumeratorClassStruct_Once sync.Once
 
-func proxyAddressEnumeratorClassStructSet() {
-	proxyAddressEnumeratorClassStructOnce.Do(func() {
+func proxyAddressEnumeratorClassStruct_Set() {
+	proxyAddressEnumeratorClassStruct_Once.Do(func() {
 		proxyAddressEnumeratorClassStruct = gi.StructNew("Gio", "ProxyAddressEnumeratorClass")
 	})
 }
@@ -3364,10 +3328,10 @@ type ProxyAddressEnumeratorClass struct {
 }
 
 var proxyAddressEnumeratorPrivateStruct *gi.Struct
-var proxyAddressEnumeratorPrivateStructOnce sync.Once
+var proxyAddressEnumeratorPrivateStruct_Once sync.Once
 
-func proxyAddressEnumeratorPrivateStructSet() {
-	proxyAddressEnumeratorPrivateStructOnce.Do(func() {
+func proxyAddressEnumeratorPrivateStruct_Set() {
+	proxyAddressEnumeratorPrivateStruct_Once.Do(func() {
 		proxyAddressEnumeratorPrivateStruct = gi.StructNew("Gio", "ProxyAddressEnumeratorPrivate")
 	})
 }
@@ -3377,10 +3341,10 @@ type ProxyAddressEnumeratorPrivate struct {
 }
 
 var proxyAddressPrivateStruct *gi.Struct
-var proxyAddressPrivateStructOnce sync.Once
+var proxyAddressPrivateStruct_Once sync.Once
 
-func proxyAddressPrivateStructSet() {
-	proxyAddressPrivateStructOnce.Do(func() {
+func proxyAddressPrivateStruct_Set() {
+	proxyAddressPrivateStruct_Once.Do(func() {
 		proxyAddressPrivateStruct = gi.StructNew("Gio", "ProxyAddressPrivate")
 	})
 }
@@ -3390,10 +3354,10 @@ type ProxyAddressPrivate struct {
 }
 
 var proxyInterfaceStruct *gi.Struct
-var proxyInterfaceStructOnce sync.Once
+var proxyInterfaceStruct_Once sync.Once
 
-func proxyInterfaceStructSet() {
-	proxyInterfaceStructOnce.Do(func() {
+func proxyInterfaceStruct_Set() {
+	proxyInterfaceStruct_Once.Do(func() {
 		proxyInterfaceStruct = gi.StructNew("Gio", "ProxyInterface")
 	})
 }
@@ -3408,10 +3372,10 @@ type ProxyInterface struct {
 }
 
 var proxyResolverInterfaceStruct *gi.Struct
-var proxyResolverInterfaceStructOnce sync.Once
+var proxyResolverInterfaceStruct_Once sync.Once
 
-func proxyResolverInterfaceStructSet() {
-	proxyResolverInterfaceStructOnce.Do(func() {
+func proxyResolverInterfaceStruct_Set() {
+	proxyResolverInterfaceStruct_Once.Do(func() {
 		proxyResolverInterfaceStruct = gi.StructNew("Gio", "ProxyResolverInterface")
 	})
 }
@@ -3426,10 +3390,10 @@ type ProxyResolverInterface struct {
 }
 
 var remoteActionGroupInterfaceStruct *gi.Struct
-var remoteActionGroupInterfaceStructOnce sync.Once
+var remoteActionGroupInterfaceStruct_Once sync.Once
 
-func remoteActionGroupInterfaceStructSet() {
-	remoteActionGroupInterfaceStructOnce.Do(func() {
+func remoteActionGroupInterfaceStruct_Set() {
+	remoteActionGroupInterfaceStruct_Once.Do(func() {
 		remoteActionGroupInterfaceStruct = gi.StructNew("Gio", "RemoteActionGroupInterface")
 	})
 }
@@ -3442,10 +3406,10 @@ type RemoteActionGroupInterface struct {
 }
 
 var resolverClassStruct *gi.Struct
-var resolverClassStructOnce sync.Once
+var resolverClassStruct_Once sync.Once
 
-func resolverClassStructSet() {
-	resolverClassStructOnce.Do(func() {
+func resolverClassStruct_Set() {
+	resolverClassStruct_Once.Do(func() {
 		resolverClassStruct = gi.StructNew("Gio", "ResolverClass")
 	})
 }
@@ -3472,10 +3436,10 @@ type ResolverClass struct {
 }
 
 var resolverPrivateStruct *gi.Struct
-var resolverPrivateStructOnce sync.Once
+var resolverPrivateStruct_Once sync.Once
 
-func resolverPrivateStructSet() {
-	resolverPrivateStructOnce.Do(func() {
+func resolverPrivateStruct_Set() {
+	resolverPrivateStruct_Once.Do(func() {
 		resolverPrivateStruct = gi.StructNew("Gio", "ResolverPrivate")
 	})
 }
@@ -3485,10 +3449,10 @@ type ResolverPrivate struct {
 }
 
 var resourceStruct *gi.Struct
-var resourceStructOnce sync.Once
+var resourceStruct_Once sync.Once
 
-func resourceStructSet() {
-	resourceStructOnce.Do(func() {
+func resourceStruct_Set() {
+	resourceStruct_Once.Do(func() {
 		resourceStruct = gi.StructNew("Gio", "Resource")
 	})
 }
@@ -3504,11 +3468,10 @@ var resourceRegisterFunction_Once sync.Once
 
 func resourceRegisterFunction_Set() {
 	resourceRegisterFunction_Once.Do(func() {
-		resourceRegisterFunction = gi.FunctionInvokerNew("Gio", "_register")
+		resourceStruct_Set()
+		resourceRegisterFunction = resourceStruct.InvokerNew("_register")
 	})
 }
-
-var registerResourceInvoker *gi.Function
 
 // Register is a representation of the C type g_resources_register.
 func (recv *Resource) Register() {
@@ -3526,11 +3489,10 @@ var resourceUnregisterFunction_Once sync.Once
 
 func resourceUnregisterFunction_Set() {
 	resourceUnregisterFunction_Once.Do(func() {
-		resourceUnregisterFunction = gi.FunctionInvokerNew("Gio", "_unregister")
+		resourceStruct_Set()
+		resourceUnregisterFunction = resourceStruct.InvokerNew("_unregister")
 	})
 }
-
-var unregisterResourceInvoker *gi.Function
 
 // Unregister is a representation of the C type g_resources_unregister.
 func (recv *Resource) Unregister() {
@@ -3556,11 +3518,10 @@ var resourceRefFunction_Once sync.Once
 
 func resourceRefFunction_Set() {
 	resourceRefFunction_Once.Do(func() {
-		resourceRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		resourceStruct_Set()
+		resourceRefFunction = resourceStruct.InvokerNew("ref")
 	})
 }
-
-var refResourceInvoker *gi.Function
 
 // Ref is a representation of the C type g_resource_ref.
 func (recv *Resource) Ref() *Resource {
@@ -3581,11 +3542,10 @@ var resourceUnrefFunction_Once sync.Once
 
 func resourceUnrefFunction_Set() {
 	resourceUnrefFunction_Once.Do(func() {
-		resourceUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		resourceStruct_Set()
+		resourceUnrefFunction = resourceStruct.InvokerNew("unref")
 	})
 }
-
-var unrefResourceInvoker *gi.Function
 
 // Unref is a representation of the C type g_resource_unref.
 func (recv *Resource) Unref() {
@@ -3599,10 +3559,10 @@ func (recv *Resource) Unref() {
 }
 
 var seekableIfaceStruct *gi.Struct
-var seekableIfaceStructOnce sync.Once
+var seekableIfaceStruct_Once sync.Once
 
-func seekableIfaceStructSet() {
-	seekableIfaceStructOnce.Do(func() {
+func seekableIfaceStruct_Set() {
+	seekableIfaceStruct_Once.Do(func() {
 		seekableIfaceStruct = gi.StructNew("Gio", "SeekableIface")
 	})
 }
@@ -3618,10 +3578,10 @@ type SeekableIface struct {
 }
 
 var settingsBackendClassStruct *gi.Struct
-var settingsBackendClassStructOnce sync.Once
+var settingsBackendClassStruct_Once sync.Once
 
-func settingsBackendClassStructSet() {
-	settingsBackendClassStructOnce.Do(func() {
+func settingsBackendClassStruct_Set() {
+	settingsBackendClassStruct_Once.Do(func() {
 		settingsBackendClassStruct = gi.StructNew("Gio", "SettingsBackendClass")
 	})
 }
@@ -3642,10 +3602,10 @@ type SettingsBackendClass struct {
 }
 
 var settingsBackendPrivateStruct *gi.Struct
-var settingsBackendPrivateStructOnce sync.Once
+var settingsBackendPrivateStruct_Once sync.Once
 
-func settingsBackendPrivateStructSet() {
-	settingsBackendPrivateStructOnce.Do(func() {
+func settingsBackendPrivateStruct_Set() {
+	settingsBackendPrivateStruct_Once.Do(func() {
 		settingsBackendPrivateStruct = gi.StructNew("Gio", "SettingsBackendPrivate")
 	})
 }
@@ -3655,10 +3615,10 @@ type SettingsBackendPrivate struct {
 }
 
 var settingsClassStruct *gi.Struct
-var settingsClassStructOnce sync.Once
+var settingsClassStruct_Once sync.Once
 
-func settingsClassStructSet() {
-	settingsClassStructOnce.Do(func() {
+func settingsClassStruct_Set() {
+	settingsClassStruct_Once.Do(func() {
 		settingsClassStruct = gi.StructNew("Gio", "SettingsClass")
 	})
 }
@@ -3674,10 +3634,10 @@ type SettingsClass struct {
 }
 
 var settingsPrivateStruct *gi.Struct
-var settingsPrivateStructOnce sync.Once
+var settingsPrivateStruct_Once sync.Once
 
-func settingsPrivateStructSet() {
-	settingsPrivateStructOnce.Do(func() {
+func settingsPrivateStruct_Set() {
+	settingsPrivateStruct_Once.Do(func() {
 		settingsPrivateStruct = gi.StructNew("Gio", "SettingsPrivate")
 	})
 }
@@ -3687,10 +3647,10 @@ type SettingsPrivate struct {
 }
 
 var settingsSchemaStruct *gi.Struct
-var settingsSchemaStructOnce sync.Once
+var settingsSchemaStruct_Once sync.Once
 
-func settingsSchemaStructSet() {
-	settingsSchemaStructOnce.Do(func() {
+func settingsSchemaStruct_Set() {
+	settingsSchemaStruct_Once.Do(func() {
 		settingsSchemaStruct = gi.StructNew("Gio", "SettingsSchema")
 	})
 }
@@ -3704,11 +3664,10 @@ var settingsSchemaGetIdFunction_Once sync.Once
 
 func settingsSchemaGetIdFunction_Set() {
 	settingsSchemaGetIdFunction_Once.Do(func() {
-		settingsSchemaGetIdFunction = gi.FunctionInvokerNew("Gio", "get_id")
+		settingsSchemaStruct_Set()
+		settingsSchemaGetIdFunction = settingsSchemaStruct.InvokerNew("get_id")
 	})
 }
-
-var getIdSettingsSchemaInvoker *gi.Function
 
 // GetId is a representation of the C type g_settings_schema_get_id.
 func (recv *SettingsSchema) GetId() string {
@@ -3729,11 +3688,10 @@ var settingsSchemaGetKeyFunction_Once sync.Once
 
 func settingsSchemaGetKeyFunction_Set() {
 	settingsSchemaGetKeyFunction_Once.Do(func() {
-		settingsSchemaGetKeyFunction = gi.FunctionInvokerNew("Gio", "get_key")
+		settingsSchemaStruct_Set()
+		settingsSchemaGetKeyFunction = settingsSchemaStruct.InvokerNew("get_key")
 	})
 }
-
-var getKeySettingsSchemaInvoker *gi.Function
 
 // GetKey is a representation of the C type g_settings_schema_get_key.
 func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
@@ -3755,11 +3713,10 @@ var settingsSchemaGetPathFunction_Once sync.Once
 
 func settingsSchemaGetPathFunction_Set() {
 	settingsSchemaGetPathFunction_Once.Do(func() {
-		settingsSchemaGetPathFunction = gi.FunctionInvokerNew("Gio", "get_path")
+		settingsSchemaStruct_Set()
+		settingsSchemaGetPathFunction = settingsSchemaStruct.InvokerNew("get_path")
 	})
 }
-
-var getPathSettingsSchemaInvoker *gi.Function
 
 // GetPath is a representation of the C type g_settings_schema_get_path.
 func (recv *SettingsSchema) GetPath() string {
@@ -3782,11 +3739,10 @@ var settingsSchemaListChildrenFunction_Once sync.Once
 
 func settingsSchemaListChildrenFunction_Set() {
 	settingsSchemaListChildrenFunction_Once.Do(func() {
-		settingsSchemaListChildrenFunction = gi.FunctionInvokerNew("Gio", "list_children")
+		settingsSchemaStruct_Set()
+		settingsSchemaListChildrenFunction = settingsSchemaStruct.InvokerNew("list_children")
 	})
 }
-
-var listChildrenSettingsSchemaInvoker *gi.Function
 
 // ListChildren is a representation of the C type g_settings_schema_list_children.
 func (recv *SettingsSchema) ListChildren() {
@@ -3804,11 +3760,10 @@ var settingsSchemaListKeysFunction_Once sync.Once
 
 func settingsSchemaListKeysFunction_Set() {
 	settingsSchemaListKeysFunction_Once.Do(func() {
-		settingsSchemaListKeysFunction = gi.FunctionInvokerNew("Gio", "list_keys")
+		settingsSchemaStruct_Set()
+		settingsSchemaListKeysFunction = settingsSchemaStruct.InvokerNew("list_keys")
 	})
 }
-
-var listKeysSettingsSchemaInvoker *gi.Function
 
 // ListKeys is a representation of the C type g_settings_schema_list_keys.
 func (recv *SettingsSchema) ListKeys() {
@@ -3826,11 +3781,10 @@ var settingsSchemaRefFunction_Once sync.Once
 
 func settingsSchemaRefFunction_Set() {
 	settingsSchemaRefFunction_Once.Do(func() {
-		settingsSchemaRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		settingsSchemaStruct_Set()
+		settingsSchemaRefFunction = settingsSchemaStruct.InvokerNew("ref")
 	})
 }
-
-var refSettingsSchemaInvoker *gi.Function
 
 // Ref is a representation of the C type g_settings_schema_ref.
 func (recv *SettingsSchema) Ref() *SettingsSchema {
@@ -3851,11 +3805,10 @@ var settingsSchemaUnrefFunction_Once sync.Once
 
 func settingsSchemaUnrefFunction_Set() {
 	settingsSchemaUnrefFunction_Once.Do(func() {
-		settingsSchemaUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		settingsSchemaStruct_Set()
+		settingsSchemaUnrefFunction = settingsSchemaStruct.InvokerNew("unref")
 	})
 }
-
-var unrefSettingsSchemaInvoker *gi.Function
 
 // Unref is a representation of the C type g_settings_schema_unref.
 func (recv *SettingsSchema) Unref() {
@@ -3869,10 +3822,10 @@ func (recv *SettingsSchema) Unref() {
 }
 
 var settingsSchemaKeyStruct *gi.Struct
-var settingsSchemaKeyStructOnce sync.Once
+var settingsSchemaKeyStruct_Once sync.Once
 
-func settingsSchemaKeyStructSet() {
-	settingsSchemaKeyStructOnce.Do(func() {
+func settingsSchemaKeyStruct_Set() {
+	settingsSchemaKeyStruct_Once.Do(func() {
 		settingsSchemaKeyStruct = gi.StructNew("Gio", "SettingsSchemaKey")
 	})
 }
@@ -3888,11 +3841,10 @@ var settingsSchemaKeyGetDescriptionFunction_Once sync.Once
 
 func settingsSchemaKeyGetDescriptionFunction_Set() {
 	settingsSchemaKeyGetDescriptionFunction_Once.Do(func() {
-		settingsSchemaKeyGetDescriptionFunction = gi.FunctionInvokerNew("Gio", "get_description")
+		settingsSchemaKeyStruct_Set()
+		settingsSchemaKeyGetDescriptionFunction = settingsSchemaKeyStruct.InvokerNew("get_description")
 	})
 }
-
-var getDescriptionSettingsSchemaKeyInvoker *gi.Function
 
 // GetDescription is a representation of the C type g_settings_schema_key_get_description.
 func (recv *SettingsSchemaKey) GetDescription() string {
@@ -3913,11 +3865,10 @@ var settingsSchemaKeyGetNameFunction_Once sync.Once
 
 func settingsSchemaKeyGetNameFunction_Set() {
 	settingsSchemaKeyGetNameFunction_Once.Do(func() {
-		settingsSchemaKeyGetNameFunction = gi.FunctionInvokerNew("Gio", "get_name")
+		settingsSchemaKeyStruct_Set()
+		settingsSchemaKeyGetNameFunction = settingsSchemaKeyStruct.InvokerNew("get_name")
 	})
 }
-
-var getNameSettingsSchemaKeyInvoker *gi.Function
 
 // GetName is a representation of the C type g_settings_schema_key_get_name.
 func (recv *SettingsSchemaKey) GetName() string {
@@ -3940,11 +3891,10 @@ var settingsSchemaKeyGetSummaryFunction_Once sync.Once
 
 func settingsSchemaKeyGetSummaryFunction_Set() {
 	settingsSchemaKeyGetSummaryFunction_Once.Do(func() {
-		settingsSchemaKeyGetSummaryFunction = gi.FunctionInvokerNew("Gio", "get_summary")
+		settingsSchemaKeyStruct_Set()
+		settingsSchemaKeyGetSummaryFunction = settingsSchemaKeyStruct.InvokerNew("get_summary")
 	})
 }
-
-var getSummarySettingsSchemaKeyInvoker *gi.Function
 
 // GetSummary is a representation of the C type g_settings_schema_key_get_summary.
 func (recv *SettingsSchemaKey) GetSummary() string {
@@ -3969,11 +3919,10 @@ var settingsSchemaKeyRefFunction_Once sync.Once
 
 func settingsSchemaKeyRefFunction_Set() {
 	settingsSchemaKeyRefFunction_Once.Do(func() {
-		settingsSchemaKeyRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		settingsSchemaKeyStruct_Set()
+		settingsSchemaKeyRefFunction = settingsSchemaKeyStruct.InvokerNew("ref")
 	})
 }
-
-var refSettingsSchemaKeyInvoker *gi.Function
 
 // Ref is a representation of the C type g_settings_schema_key_ref.
 func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
@@ -3994,11 +3943,10 @@ var settingsSchemaKeyUnrefFunction_Once sync.Once
 
 func settingsSchemaKeyUnrefFunction_Set() {
 	settingsSchemaKeyUnrefFunction_Once.Do(func() {
-		settingsSchemaKeyUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		settingsSchemaKeyStruct_Set()
+		settingsSchemaKeyUnrefFunction = settingsSchemaKeyStruct.InvokerNew("unref")
 	})
 }
-
-var unrefSettingsSchemaKeyInvoker *gi.Function
 
 // Unref is a representation of the C type g_settings_schema_key_unref.
 func (recv *SettingsSchemaKey) Unref() {
@@ -4012,10 +3960,10 @@ func (recv *SettingsSchemaKey) Unref() {
 }
 
 var settingsSchemaSourceStruct *gi.Struct
-var settingsSchemaSourceStructOnce sync.Once
+var settingsSchemaSourceStruct_Once sync.Once
 
-func settingsSchemaSourceStructSet() {
-	settingsSchemaSourceStructOnce.Do(func() {
+func settingsSchemaSourceStruct_Set() {
+	settingsSchemaSourceStruct_Once.Do(func() {
 		settingsSchemaSourceStruct = gi.StructNew("Gio", "SettingsSchemaSource")
 	})
 }
@@ -4035,11 +3983,10 @@ var settingsSchemaSourceRefFunction_Once sync.Once
 
 func settingsSchemaSourceRefFunction_Set() {
 	settingsSchemaSourceRefFunction_Once.Do(func() {
-		settingsSchemaSourceRefFunction = gi.FunctionInvokerNew("Gio", "ref")
+		settingsSchemaSourceStruct_Set()
+		settingsSchemaSourceRefFunction = settingsSchemaSourceStruct.InvokerNew("ref")
 	})
 }
-
-var refSettingsSchemaSourceInvoker *gi.Function
 
 // Ref is a representation of the C type g_settings_schema_source_ref.
 func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
@@ -4060,11 +4007,10 @@ var settingsSchemaSourceUnrefFunction_Once sync.Once
 
 func settingsSchemaSourceUnrefFunction_Set() {
 	settingsSchemaSourceUnrefFunction_Once.Do(func() {
-		settingsSchemaSourceUnrefFunction = gi.FunctionInvokerNew("Gio", "unref")
+		settingsSchemaSourceStruct_Set()
+		settingsSchemaSourceUnrefFunction = settingsSchemaSourceStruct.InvokerNew("unref")
 	})
 }
-
-var unrefSettingsSchemaSourceInvoker *gi.Function
 
 // Unref is a representation of the C type g_settings_schema_source_unref.
 func (recv *SettingsSchemaSource) Unref() {
@@ -4078,10 +4024,10 @@ func (recv *SettingsSchemaSource) Unref() {
 }
 
 var simpleActionGroupClassStruct *gi.Struct
-var simpleActionGroupClassStructOnce sync.Once
+var simpleActionGroupClassStruct_Once sync.Once
 
-func simpleActionGroupClassStructSet() {
-	simpleActionGroupClassStructOnce.Do(func() {
+func simpleActionGroupClassStruct_Set() {
+	simpleActionGroupClassStruct_Once.Do(func() {
 		simpleActionGroupClassStruct = gi.StructNew("Gio", "SimpleActionGroupClass")
 	})
 }
@@ -4091,10 +4037,10 @@ type SimpleActionGroupClass struct {
 }
 
 var simpleActionGroupPrivateStruct *gi.Struct
-var simpleActionGroupPrivateStructOnce sync.Once
+var simpleActionGroupPrivateStruct_Once sync.Once
 
-func simpleActionGroupPrivateStructSet() {
-	simpleActionGroupPrivateStructOnce.Do(func() {
+func simpleActionGroupPrivateStruct_Set() {
+	simpleActionGroupPrivateStruct_Once.Do(func() {
 		simpleActionGroupPrivateStruct = gi.StructNew("Gio", "SimpleActionGroupPrivate")
 	})
 }
@@ -4104,10 +4050,10 @@ type SimpleActionGroupPrivate struct {
 }
 
 var simpleAsyncResultClassStruct *gi.Struct
-var simpleAsyncResultClassStructOnce sync.Once
+var simpleAsyncResultClassStruct_Once sync.Once
 
-func simpleAsyncResultClassStructSet() {
-	simpleAsyncResultClassStructOnce.Do(func() {
+func simpleAsyncResultClassStruct_Set() {
+	simpleAsyncResultClassStruct_Once.Do(func() {
 		simpleAsyncResultClassStruct = gi.StructNew("Gio", "SimpleAsyncResultClass")
 	})
 }
@@ -4117,10 +4063,10 @@ type SimpleAsyncResultClass struct {
 }
 
 var simpleProxyResolverClassStruct *gi.Struct
-var simpleProxyResolverClassStructOnce sync.Once
+var simpleProxyResolverClassStruct_Once sync.Once
 
-func simpleProxyResolverClassStructSet() {
-	simpleProxyResolverClassStructOnce.Do(func() {
+func simpleProxyResolverClassStruct_Set() {
+	simpleProxyResolverClassStruct_Once.Do(func() {
 		simpleProxyResolverClassStruct = gi.StructNew("Gio", "SimpleProxyResolverClass")
 	})
 }
@@ -4136,10 +4082,10 @@ type SimpleProxyResolverClass struct {
 }
 
 var simpleProxyResolverPrivateStruct *gi.Struct
-var simpleProxyResolverPrivateStructOnce sync.Once
+var simpleProxyResolverPrivateStruct_Once sync.Once
 
-func simpleProxyResolverPrivateStructSet() {
-	simpleProxyResolverPrivateStructOnce.Do(func() {
+func simpleProxyResolverPrivateStruct_Set() {
+	simpleProxyResolverPrivateStruct_Once.Do(func() {
 		simpleProxyResolverPrivateStruct = gi.StructNew("Gio", "SimpleProxyResolverPrivate")
 	})
 }
@@ -4149,10 +4095,10 @@ type SimpleProxyResolverPrivate struct {
 }
 
 var socketAddressClassStruct *gi.Struct
-var socketAddressClassStructOnce sync.Once
+var socketAddressClassStruct_Once sync.Once
 
-func socketAddressClassStructSet() {
-	socketAddressClassStructOnce.Do(func() {
+func socketAddressClassStruct_Set() {
+	socketAddressClassStruct_Once.Do(func() {
 		socketAddressClassStruct = gi.StructNew("Gio", "SocketAddressClass")
 	})
 }
@@ -4166,10 +4112,10 @@ type SocketAddressClass struct {
 }
 
 var socketAddressEnumeratorClassStruct *gi.Struct
-var socketAddressEnumeratorClassStructOnce sync.Once
+var socketAddressEnumeratorClassStruct_Once sync.Once
 
-func socketAddressEnumeratorClassStructSet() {
-	socketAddressEnumeratorClassStructOnce.Do(func() {
+func socketAddressEnumeratorClassStruct_Set() {
+	socketAddressEnumeratorClassStruct_Once.Do(func() {
 		socketAddressEnumeratorClassStruct = gi.StructNew("Gio", "SocketAddressEnumeratorClass")
 	})
 }
@@ -4182,10 +4128,10 @@ type SocketAddressEnumeratorClass struct {
 }
 
 var socketClassStruct *gi.Struct
-var socketClassStructOnce sync.Once
+var socketClassStruct_Once sync.Once
 
-func socketClassStructSet() {
-	socketClassStructOnce.Do(func() {
+func socketClassStruct_Set() {
+	socketClassStruct_Once.Do(func() {
 		socketClassStruct = gi.StructNew("Gio", "SocketClass")
 	})
 }
@@ -4206,10 +4152,10 @@ type SocketClass struct {
 }
 
 var socketClientClassStruct *gi.Struct
-var socketClientClassStructOnce sync.Once
+var socketClientClassStruct_Once sync.Once
 
-func socketClientClassStructSet() {
-	socketClientClassStructOnce.Do(func() {
+func socketClientClassStruct_Set() {
+	socketClientClassStruct_Once.Do(func() {
 		socketClientClassStruct = gi.StructNew("Gio", "SocketClientClass")
 	})
 }
@@ -4225,10 +4171,10 @@ type SocketClientClass struct {
 }
 
 var socketClientPrivateStruct *gi.Struct
-var socketClientPrivateStructOnce sync.Once
+var socketClientPrivateStruct_Once sync.Once
 
-func socketClientPrivateStructSet() {
-	socketClientPrivateStructOnce.Do(func() {
+func socketClientPrivateStruct_Set() {
+	socketClientPrivateStruct_Once.Do(func() {
 		socketClientPrivateStruct = gi.StructNew("Gio", "SocketClientPrivate")
 	})
 }
@@ -4238,10 +4184,10 @@ type SocketClientPrivate struct {
 }
 
 var socketConnectableIfaceStruct *gi.Struct
-var socketConnectableIfaceStructOnce sync.Once
+var socketConnectableIfaceStruct_Once sync.Once
 
-func socketConnectableIfaceStructSet() {
-	socketConnectableIfaceStructOnce.Do(func() {
+func socketConnectableIfaceStruct_Set() {
+	socketConnectableIfaceStruct_Once.Do(func() {
 		socketConnectableIfaceStruct = gi.StructNew("Gio", "SocketConnectableIface")
 	})
 }
@@ -4255,10 +4201,10 @@ type SocketConnectableIface struct {
 }
 
 var socketConnectionClassStruct *gi.Struct
-var socketConnectionClassStructOnce sync.Once
+var socketConnectionClassStruct_Once sync.Once
 
-func socketConnectionClassStructSet() {
-	socketConnectionClassStructOnce.Do(func() {
+func socketConnectionClassStruct_Set() {
+	socketConnectionClassStruct_Once.Do(func() {
 		socketConnectionClassStruct = gi.StructNew("Gio", "SocketConnectionClass")
 	})
 }
@@ -4275,10 +4221,10 @@ type SocketConnectionClass struct {
 }
 
 var socketConnectionPrivateStruct *gi.Struct
-var socketConnectionPrivateStructOnce sync.Once
+var socketConnectionPrivateStruct_Once sync.Once
 
-func socketConnectionPrivateStructSet() {
-	socketConnectionPrivateStructOnce.Do(func() {
+func socketConnectionPrivateStruct_Set() {
+	socketConnectionPrivateStruct_Once.Do(func() {
 		socketConnectionPrivateStruct = gi.StructNew("Gio", "SocketConnectionPrivate")
 	})
 }
@@ -4288,10 +4234,10 @@ type SocketConnectionPrivate struct {
 }
 
 var socketControlMessageClassStruct *gi.Struct
-var socketControlMessageClassStructOnce sync.Once
+var socketControlMessageClassStruct_Once sync.Once
 
-func socketControlMessageClassStructSet() {
-	socketControlMessageClassStructOnce.Do(func() {
+func socketControlMessageClassStruct_Set() {
+	socketControlMessageClassStruct_Once.Do(func() {
 		socketControlMessageClassStruct = gi.StructNew("Gio", "SocketControlMessageClass")
 	})
 }
@@ -4312,10 +4258,10 @@ type SocketControlMessageClass struct {
 }
 
 var socketControlMessagePrivateStruct *gi.Struct
-var socketControlMessagePrivateStructOnce sync.Once
+var socketControlMessagePrivateStruct_Once sync.Once
 
-func socketControlMessagePrivateStructSet() {
-	socketControlMessagePrivateStructOnce.Do(func() {
+func socketControlMessagePrivateStruct_Set() {
+	socketControlMessagePrivateStruct_Once.Do(func() {
 		socketControlMessagePrivateStruct = gi.StructNew("Gio", "SocketControlMessagePrivate")
 	})
 }
@@ -4325,10 +4271,10 @@ type SocketControlMessagePrivate struct {
 }
 
 var socketListenerClassStruct *gi.Struct
-var socketListenerClassStructOnce sync.Once
+var socketListenerClassStruct_Once sync.Once
 
-func socketListenerClassStructSet() {
-	socketListenerClassStructOnce.Do(func() {
+func socketListenerClassStruct_Set() {
+	socketListenerClassStruct_Once.Do(func() {
 		socketListenerClassStruct = gi.StructNew("Gio", "SocketListenerClass")
 	})
 }
@@ -4346,10 +4292,10 @@ type SocketListenerClass struct {
 }
 
 var socketListenerPrivateStruct *gi.Struct
-var socketListenerPrivateStructOnce sync.Once
+var socketListenerPrivateStruct_Once sync.Once
 
-func socketListenerPrivateStructSet() {
-	socketListenerPrivateStructOnce.Do(func() {
+func socketListenerPrivateStruct_Set() {
+	socketListenerPrivateStruct_Once.Do(func() {
 		socketListenerPrivateStruct = gi.StructNew("Gio", "SocketListenerPrivate")
 	})
 }
@@ -4359,10 +4305,10 @@ type SocketListenerPrivate struct {
 }
 
 var socketPrivateStruct *gi.Struct
-var socketPrivateStructOnce sync.Once
+var socketPrivateStruct_Once sync.Once
 
-func socketPrivateStructSet() {
-	socketPrivateStructOnce.Do(func() {
+func socketPrivateStruct_Set() {
+	socketPrivateStruct_Once.Do(func() {
 		socketPrivateStruct = gi.StructNew("Gio", "SocketPrivate")
 	})
 }
@@ -4372,10 +4318,10 @@ type SocketPrivate struct {
 }
 
 var socketServiceClassStruct *gi.Struct
-var socketServiceClassStructOnce sync.Once
+var socketServiceClassStruct_Once sync.Once
 
-func socketServiceClassStructSet() {
-	socketServiceClassStructOnce.Do(func() {
+func socketServiceClassStruct_Set() {
+	socketServiceClassStruct_Once.Do(func() {
 		socketServiceClassStruct = gi.StructNew("Gio", "SocketServiceClass")
 	})
 }
@@ -4393,10 +4339,10 @@ type SocketServiceClass struct {
 }
 
 var socketServicePrivateStruct *gi.Struct
-var socketServicePrivateStructOnce sync.Once
+var socketServicePrivateStruct_Once sync.Once
 
-func socketServicePrivateStructSet() {
-	socketServicePrivateStructOnce.Do(func() {
+func socketServicePrivateStruct_Set() {
+	socketServicePrivateStruct_Once.Do(func() {
 		socketServicePrivateStruct = gi.StructNew("Gio", "SocketServicePrivate")
 	})
 }
@@ -4406,10 +4352,10 @@ type SocketServicePrivate struct {
 }
 
 var srvTargetStruct *gi.Struct
-var srvTargetStructOnce sync.Once
+var srvTargetStruct_Once sync.Once
 
-func srvTargetStructSet() {
-	srvTargetStructOnce.Do(func() {
+func srvTargetStruct_Set() {
+	srvTargetStruct_Once.Do(func() {
 		srvTargetStruct = gi.StructNew("Gio", "SrvTarget")
 	})
 }
@@ -4423,11 +4369,10 @@ var srvTargetNewFunction_Once sync.Once
 
 func srvTargetNewFunction_Set() {
 	srvTargetNewFunction_Once.Do(func() {
-		srvTargetNewFunction = gi.FunctionInvokerNew("Gio", "new")
+		srvTargetStruct_Set()
+		srvTargetNewFunction = srvTargetStruct.InvokerNew("new")
 	})
 }
-
-var newSrvTargetInvoker *gi.Function
 
 // SrvTargetNew is a representation of the C type g_srv_target_new.
 func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
@@ -4451,11 +4396,10 @@ var srvTargetCopyFunction_Once sync.Once
 
 func srvTargetCopyFunction_Set() {
 	srvTargetCopyFunction_Once.Do(func() {
-		srvTargetCopyFunction = gi.FunctionInvokerNew("Gio", "copy")
+		srvTargetStruct_Set()
+		srvTargetCopyFunction = srvTargetStruct.InvokerNew("copy")
 	})
 }
-
-var copySrvTargetInvoker *gi.Function
 
 // Copy is a representation of the C type g_srv_target_copy.
 func (recv *SrvTarget) Copy() *SrvTarget {
@@ -4476,11 +4420,10 @@ var srvTargetFreeFunction_Once sync.Once
 
 func srvTargetFreeFunction_Set() {
 	srvTargetFreeFunction_Once.Do(func() {
-		srvTargetFreeFunction = gi.FunctionInvokerNew("Gio", "free")
+		srvTargetStruct_Set()
+		srvTargetFreeFunction = srvTargetStruct.InvokerNew("free")
 	})
 }
-
-var freeSrvTargetInvoker *gi.Function
 
 // Free is a representation of the C type g_srv_target_free.
 func (recv *SrvTarget) Free() {
@@ -4498,11 +4441,10 @@ var srvTargetGetHostnameFunction_Once sync.Once
 
 func srvTargetGetHostnameFunction_Set() {
 	srvTargetGetHostnameFunction_Once.Do(func() {
-		srvTargetGetHostnameFunction = gi.FunctionInvokerNew("Gio", "get_hostname")
+		srvTargetStruct_Set()
+		srvTargetGetHostnameFunction = srvTargetStruct.InvokerNew("get_hostname")
 	})
 }
-
-var getHostnameSrvTargetInvoker *gi.Function
 
 // GetHostname is a representation of the C type g_srv_target_get_hostname.
 func (recv *SrvTarget) GetHostname() string {
@@ -4523,11 +4465,10 @@ var srvTargetGetPortFunction_Once sync.Once
 
 func srvTargetGetPortFunction_Set() {
 	srvTargetGetPortFunction_Once.Do(func() {
-		srvTargetGetPortFunction = gi.FunctionInvokerNew("Gio", "get_port")
+		srvTargetStruct_Set()
+		srvTargetGetPortFunction = srvTargetStruct.InvokerNew("get_port")
 	})
 }
-
-var getPortSrvTargetInvoker *gi.Function
 
 // GetPort is a representation of the C type g_srv_target_get_port.
 func (recv *SrvTarget) GetPort() uint16 {
@@ -4548,11 +4489,10 @@ var srvTargetGetPriorityFunction_Once sync.Once
 
 func srvTargetGetPriorityFunction_Set() {
 	srvTargetGetPriorityFunction_Once.Do(func() {
-		srvTargetGetPriorityFunction = gi.FunctionInvokerNew("Gio", "get_priority")
+		srvTargetStruct_Set()
+		srvTargetGetPriorityFunction = srvTargetStruct.InvokerNew("get_priority")
 	})
 }
-
-var getPrioritySrvTargetInvoker *gi.Function
 
 // GetPriority is a representation of the C type g_srv_target_get_priority.
 func (recv *SrvTarget) GetPriority() uint16 {
@@ -4573,11 +4513,10 @@ var srvTargetGetWeightFunction_Once sync.Once
 
 func srvTargetGetWeightFunction_Set() {
 	srvTargetGetWeightFunction_Once.Do(func() {
-		srvTargetGetWeightFunction = gi.FunctionInvokerNew("Gio", "get_weight")
+		srvTargetStruct_Set()
+		srvTargetGetWeightFunction = srvTargetStruct.InvokerNew("get_weight")
 	})
 }
-
-var getWeightSrvTargetInvoker *gi.Function
 
 // GetWeight is a representation of the C type g_srv_target_get_weight.
 func (recv *SrvTarget) GetWeight() uint16 {
@@ -4594,10 +4533,10 @@ func (recv *SrvTarget) GetWeight() uint16 {
 }
 
 var staticResourceStruct *gi.Struct
-var staticResourceStructOnce sync.Once
+var staticResourceStruct_Once sync.Once
 
-func staticResourceStructSet() {
-	staticResourceStructOnce.Do(func() {
+func staticResourceStruct_Set() {
+	staticResourceStruct_Once.Do(func() {
 		staticResourceStruct = gi.StructNew("Gio", "StaticResource")
 	})
 }
@@ -4611,11 +4550,10 @@ var staticResourceFiniFunction_Once sync.Once
 
 func staticResourceFiniFunction_Set() {
 	staticResourceFiniFunction_Once.Do(func() {
-		staticResourceFiniFunction = gi.FunctionInvokerNew("Gio", "fini")
+		staticResourceStruct_Set()
+		staticResourceFiniFunction = staticResourceStruct.InvokerNew("fini")
 	})
 }
-
-var finiStaticResourceInvoker *gi.Function
 
 // Fini is a representation of the C type g_static_resource_fini.
 func (recv *StaticResource) Fini() {
@@ -4633,11 +4571,10 @@ var staticResourceGetResourceFunction_Once sync.Once
 
 func staticResourceGetResourceFunction_Set() {
 	staticResourceGetResourceFunction_Once.Do(func() {
-		staticResourceGetResourceFunction = gi.FunctionInvokerNew("Gio", "get_resource")
+		staticResourceStruct_Set()
+		staticResourceGetResourceFunction = staticResourceStruct.InvokerNew("get_resource")
 	})
 }
-
-var getResourceStaticResourceInvoker *gi.Function
 
 // GetResource is a representation of the C type g_static_resource_get_resource.
 func (recv *StaticResource) GetResource() *Resource {
@@ -4658,11 +4595,10 @@ var staticResourceInitFunction_Once sync.Once
 
 func staticResourceInitFunction_Set() {
 	staticResourceInitFunction_Once.Do(func() {
-		staticResourceInitFunction = gi.FunctionInvokerNew("Gio", "init")
+		staticResourceStruct_Set()
+		staticResourceInitFunction = staticResourceStruct.InvokerNew("init")
 	})
 }
-
-var initStaticResourceInvoker *gi.Function
 
 // Init is a representation of the C type g_static_resource_init.
 func (recv *StaticResource) Init() {
@@ -4676,10 +4612,10 @@ func (recv *StaticResource) Init() {
 }
 
 var taskClassStruct *gi.Struct
-var taskClassStructOnce sync.Once
+var taskClassStruct_Once sync.Once
 
-func taskClassStructSet() {
-	taskClassStructOnce.Do(func() {
+func taskClassStruct_Set() {
+	taskClassStruct_Once.Do(func() {
 		taskClassStruct = gi.StructNew("Gio", "TaskClass")
 	})
 }
@@ -4689,10 +4625,10 @@ type TaskClass struct {
 }
 
 var tcpConnectionClassStruct *gi.Struct
-var tcpConnectionClassStructOnce sync.Once
+var tcpConnectionClassStruct_Once sync.Once
 
-func tcpConnectionClassStructSet() {
-	tcpConnectionClassStructOnce.Do(func() {
+func tcpConnectionClassStruct_Set() {
+	tcpConnectionClassStruct_Once.Do(func() {
 		tcpConnectionClassStruct = gi.StructNew("Gio", "TcpConnectionClass")
 	})
 }
@@ -4703,10 +4639,10 @@ type TcpConnectionClass struct {
 }
 
 var tcpConnectionPrivateStruct *gi.Struct
-var tcpConnectionPrivateStructOnce sync.Once
+var tcpConnectionPrivateStruct_Once sync.Once
 
-func tcpConnectionPrivateStructSet() {
-	tcpConnectionPrivateStructOnce.Do(func() {
+func tcpConnectionPrivateStruct_Set() {
+	tcpConnectionPrivateStruct_Once.Do(func() {
 		tcpConnectionPrivateStruct = gi.StructNew("Gio", "TcpConnectionPrivate")
 	})
 }
@@ -4716,10 +4652,10 @@ type TcpConnectionPrivate struct {
 }
 
 var tcpWrapperConnectionClassStruct *gi.Struct
-var tcpWrapperConnectionClassStructOnce sync.Once
+var tcpWrapperConnectionClassStruct_Once sync.Once
 
-func tcpWrapperConnectionClassStructSet() {
-	tcpWrapperConnectionClassStructOnce.Do(func() {
+func tcpWrapperConnectionClassStruct_Set() {
+	tcpWrapperConnectionClassStruct_Once.Do(func() {
 		tcpWrapperConnectionClassStruct = gi.StructNew("Gio", "TcpWrapperConnectionClass")
 	})
 }
@@ -4730,10 +4666,10 @@ type TcpWrapperConnectionClass struct {
 }
 
 var tcpWrapperConnectionPrivateStruct *gi.Struct
-var tcpWrapperConnectionPrivateStructOnce sync.Once
+var tcpWrapperConnectionPrivateStruct_Once sync.Once
 
-func tcpWrapperConnectionPrivateStructSet() {
-	tcpWrapperConnectionPrivateStructOnce.Do(func() {
+func tcpWrapperConnectionPrivateStruct_Set() {
+	tcpWrapperConnectionPrivateStruct_Once.Do(func() {
 		tcpWrapperConnectionPrivateStruct = gi.StructNew("Gio", "TcpWrapperConnectionPrivate")
 	})
 }
@@ -4743,10 +4679,10 @@ type TcpWrapperConnectionPrivate struct {
 }
 
 var themedIconClassStruct *gi.Struct
-var themedIconClassStructOnce sync.Once
+var themedIconClassStruct_Once sync.Once
 
-func themedIconClassStructSet() {
-	themedIconClassStructOnce.Do(func() {
+func themedIconClassStruct_Set() {
+	themedIconClassStruct_Once.Do(func() {
 		themedIconClassStruct = gi.StructNew("Gio", "ThemedIconClass")
 	})
 }
@@ -4756,10 +4692,10 @@ type ThemedIconClass struct {
 }
 
 var threadedSocketServiceClassStruct *gi.Struct
-var threadedSocketServiceClassStructOnce sync.Once
+var threadedSocketServiceClassStruct_Once sync.Once
 
-func threadedSocketServiceClassStructSet() {
-	threadedSocketServiceClassStructOnce.Do(func() {
+func threadedSocketServiceClassStruct_Set() {
+	threadedSocketServiceClassStruct_Once.Do(func() {
 		threadedSocketServiceClassStruct = gi.StructNew("Gio", "ThreadedSocketServiceClass")
 	})
 }
@@ -4776,10 +4712,10 @@ type ThreadedSocketServiceClass struct {
 }
 
 var threadedSocketServicePrivateStruct *gi.Struct
-var threadedSocketServicePrivateStructOnce sync.Once
+var threadedSocketServicePrivateStruct_Once sync.Once
 
-func threadedSocketServicePrivateStructSet() {
-	threadedSocketServicePrivateStructOnce.Do(func() {
+func threadedSocketServicePrivateStruct_Set() {
+	threadedSocketServicePrivateStruct_Once.Do(func() {
 		threadedSocketServicePrivateStruct = gi.StructNew("Gio", "ThreadedSocketServicePrivate")
 	})
 }
@@ -4789,10 +4725,10 @@ type ThreadedSocketServicePrivate struct {
 }
 
 var tlsBackendInterfaceStruct *gi.Struct
-var tlsBackendInterfaceStructOnce sync.Once
+var tlsBackendInterfaceStruct_Once sync.Once
 
-func tlsBackendInterfaceStructSet() {
-	tlsBackendInterfaceStructOnce.Do(func() {
+func tlsBackendInterfaceStruct_Set() {
+	tlsBackendInterfaceStruct_Once.Do(func() {
 		tlsBackendInterfaceStruct = gi.StructNew("Gio", "TlsBackendInterface")
 	})
 }
@@ -4812,10 +4748,10 @@ type TlsBackendInterface struct {
 }
 
 var tlsCertificateClassStruct *gi.Struct
-var tlsCertificateClassStructOnce sync.Once
+var tlsCertificateClassStruct_Once sync.Once
 
-func tlsCertificateClassStructSet() {
-	tlsCertificateClassStructOnce.Do(func() {
+func tlsCertificateClassStruct_Set() {
+	tlsCertificateClassStruct_Once.Do(func() {
 		tlsCertificateClassStruct = gi.StructNew("Gio", "TlsCertificateClass")
 	})
 }
@@ -4827,10 +4763,10 @@ type TlsCertificateClass struct {
 }
 
 var tlsCertificatePrivateStruct *gi.Struct
-var tlsCertificatePrivateStructOnce sync.Once
+var tlsCertificatePrivateStruct_Once sync.Once
 
-func tlsCertificatePrivateStructSet() {
-	tlsCertificatePrivateStructOnce.Do(func() {
+func tlsCertificatePrivateStruct_Set() {
+	tlsCertificatePrivateStruct_Once.Do(func() {
 		tlsCertificatePrivateStruct = gi.StructNew("Gio", "TlsCertificatePrivate")
 	})
 }
@@ -4840,10 +4776,10 @@ type TlsCertificatePrivate struct {
 }
 
 var tlsClientConnectionInterfaceStruct *gi.Struct
-var tlsClientConnectionInterfaceStructOnce sync.Once
+var tlsClientConnectionInterfaceStruct_Once sync.Once
 
-func tlsClientConnectionInterfaceStructSet() {
-	tlsClientConnectionInterfaceStructOnce.Do(func() {
+func tlsClientConnectionInterfaceStruct_Set() {
+	tlsClientConnectionInterfaceStruct_Once.Do(func() {
 		tlsClientConnectionInterfaceStruct = gi.StructNew("Gio", "TlsClientConnectionInterface")
 	})
 }
@@ -4855,10 +4791,10 @@ type TlsClientConnectionInterface struct {
 }
 
 var tlsConnectionClassStruct *gi.Struct
-var tlsConnectionClassStructOnce sync.Once
+var tlsConnectionClassStruct_Once sync.Once
 
-func tlsConnectionClassStructSet() {
-	tlsConnectionClassStructOnce.Do(func() {
+func tlsConnectionClassStruct_Set() {
+	tlsConnectionClassStruct_Once.Do(func() {
 		tlsConnectionClassStruct = gi.StructNew("Gio", "TlsConnectionClass")
 	})
 }
@@ -4873,10 +4809,10 @@ type TlsConnectionClass struct {
 }
 
 var tlsConnectionPrivateStruct *gi.Struct
-var tlsConnectionPrivateStructOnce sync.Once
+var tlsConnectionPrivateStruct_Once sync.Once
 
-func tlsConnectionPrivateStructSet() {
-	tlsConnectionPrivateStructOnce.Do(func() {
+func tlsConnectionPrivateStruct_Set() {
+	tlsConnectionPrivateStruct_Once.Do(func() {
 		tlsConnectionPrivateStruct = gi.StructNew("Gio", "TlsConnectionPrivate")
 	})
 }
@@ -4886,10 +4822,10 @@ type TlsConnectionPrivate struct {
 }
 
 var tlsDatabaseClassStruct *gi.Struct
-var tlsDatabaseClassStructOnce sync.Once
+var tlsDatabaseClassStruct_Once sync.Once
 
-func tlsDatabaseClassStructSet() {
-	tlsDatabaseClassStructOnce.Do(func() {
+func tlsDatabaseClassStruct_Set() {
+	tlsDatabaseClassStruct_Once.Do(func() {
 		tlsDatabaseClassStruct = gi.StructNew("Gio", "TlsDatabaseClass")
 	})
 }
@@ -4913,10 +4849,10 @@ type TlsDatabaseClass struct {
 }
 
 var tlsDatabasePrivateStruct *gi.Struct
-var tlsDatabasePrivateStructOnce sync.Once
+var tlsDatabasePrivateStruct_Once sync.Once
 
-func tlsDatabasePrivateStructSet() {
-	tlsDatabasePrivateStructOnce.Do(func() {
+func tlsDatabasePrivateStruct_Set() {
+	tlsDatabasePrivateStruct_Once.Do(func() {
 		tlsDatabasePrivateStruct = gi.StructNew("Gio", "TlsDatabasePrivate")
 	})
 }
@@ -4926,10 +4862,10 @@ type TlsDatabasePrivate struct {
 }
 
 var tlsFileDatabaseInterfaceStruct *gi.Struct
-var tlsFileDatabaseInterfaceStructOnce sync.Once
+var tlsFileDatabaseInterfaceStruct_Once sync.Once
 
-func tlsFileDatabaseInterfaceStructSet() {
-	tlsFileDatabaseInterfaceStructOnce.Do(func() {
+func tlsFileDatabaseInterfaceStruct_Set() {
+	tlsFileDatabaseInterfaceStruct_Once.Do(func() {
 		tlsFileDatabaseInterfaceStruct = gi.StructNew("Gio", "TlsFileDatabaseInterface")
 	})
 }
@@ -4940,10 +4876,10 @@ type TlsFileDatabaseInterface struct {
 }
 
 var tlsInteractionClassStruct *gi.Struct
-var tlsInteractionClassStructOnce sync.Once
+var tlsInteractionClassStruct_Once sync.Once
 
-func tlsInteractionClassStructSet() {
-	tlsInteractionClassStructOnce.Do(func() {
+func tlsInteractionClassStruct_Set() {
+	tlsInteractionClassStruct_Once.Do(func() {
 		tlsInteractionClassStruct = gi.StructNew("Gio", "TlsInteractionClass")
 	})
 }
@@ -4959,10 +4895,10 @@ type TlsInteractionClass struct {
 }
 
 var tlsInteractionPrivateStruct *gi.Struct
-var tlsInteractionPrivateStructOnce sync.Once
+var tlsInteractionPrivateStruct_Once sync.Once
 
-func tlsInteractionPrivateStructSet() {
-	tlsInteractionPrivateStructOnce.Do(func() {
+func tlsInteractionPrivateStruct_Set() {
+	tlsInteractionPrivateStruct_Once.Do(func() {
 		tlsInteractionPrivateStruct = gi.StructNew("Gio", "TlsInteractionPrivate")
 	})
 }
@@ -4972,10 +4908,10 @@ type TlsInteractionPrivate struct {
 }
 
 var tlsPasswordClassStruct *gi.Struct
-var tlsPasswordClassStructOnce sync.Once
+var tlsPasswordClassStruct_Once sync.Once
 
-func tlsPasswordClassStructSet() {
-	tlsPasswordClassStructOnce.Do(func() {
+func tlsPasswordClassStruct_Set() {
+	tlsPasswordClassStruct_Once.Do(func() {
 		tlsPasswordClassStruct = gi.StructNew("Gio", "TlsPasswordClass")
 	})
 }
@@ -4989,10 +4925,10 @@ type TlsPasswordClass struct {
 }
 
 var tlsPasswordPrivateStruct *gi.Struct
-var tlsPasswordPrivateStructOnce sync.Once
+var tlsPasswordPrivateStruct_Once sync.Once
 
-func tlsPasswordPrivateStructSet() {
-	tlsPasswordPrivateStructOnce.Do(func() {
+func tlsPasswordPrivateStruct_Set() {
+	tlsPasswordPrivateStruct_Once.Do(func() {
 		tlsPasswordPrivateStruct = gi.StructNew("Gio", "TlsPasswordPrivate")
 	})
 }
@@ -5002,10 +4938,10 @@ type TlsPasswordPrivate struct {
 }
 
 var tlsServerConnectionInterfaceStruct *gi.Struct
-var tlsServerConnectionInterfaceStructOnce sync.Once
+var tlsServerConnectionInterfaceStruct_Once sync.Once
 
-func tlsServerConnectionInterfaceStructSet() {
-	tlsServerConnectionInterfaceStructOnce.Do(func() {
+func tlsServerConnectionInterfaceStruct_Set() {
+	tlsServerConnectionInterfaceStruct_Once.Do(func() {
 		tlsServerConnectionInterfaceStruct = gi.StructNew("Gio", "TlsServerConnectionInterface")
 	})
 }
@@ -5016,10 +4952,10 @@ type TlsServerConnectionInterface struct {
 }
 
 var unixConnectionClassStruct *gi.Struct
-var unixConnectionClassStructOnce sync.Once
+var unixConnectionClassStruct_Once sync.Once
 
-func unixConnectionClassStructSet() {
-	unixConnectionClassStructOnce.Do(func() {
+func unixConnectionClassStruct_Set() {
+	unixConnectionClassStruct_Once.Do(func() {
 		unixConnectionClassStruct = gi.StructNew("Gio", "UnixConnectionClass")
 	})
 }
@@ -5030,10 +4966,10 @@ type UnixConnectionClass struct {
 }
 
 var unixConnectionPrivateStruct *gi.Struct
-var unixConnectionPrivateStructOnce sync.Once
+var unixConnectionPrivateStruct_Once sync.Once
 
-func unixConnectionPrivateStructSet() {
-	unixConnectionPrivateStructOnce.Do(func() {
+func unixConnectionPrivateStruct_Set() {
+	unixConnectionPrivateStruct_Once.Do(func() {
 		unixConnectionPrivateStruct = gi.StructNew("Gio", "UnixConnectionPrivate")
 	})
 }
@@ -5043,10 +4979,10 @@ type UnixConnectionPrivate struct {
 }
 
 var unixCredentialsMessageClassStruct *gi.Struct
-var unixCredentialsMessageClassStructOnce sync.Once
+var unixCredentialsMessageClassStruct_Once sync.Once
 
-func unixCredentialsMessageClassStructSet() {
-	unixCredentialsMessageClassStructOnce.Do(func() {
+func unixCredentialsMessageClassStruct_Set() {
+	unixCredentialsMessageClassStruct_Once.Do(func() {
 		unixCredentialsMessageClassStruct = gi.StructNew("Gio", "UnixCredentialsMessageClass")
 	})
 }
@@ -5059,10 +4995,10 @@ type UnixCredentialsMessageClass struct {
 }
 
 var unixCredentialsMessagePrivateStruct *gi.Struct
-var unixCredentialsMessagePrivateStructOnce sync.Once
+var unixCredentialsMessagePrivateStruct_Once sync.Once
 
-func unixCredentialsMessagePrivateStructSet() {
-	unixCredentialsMessagePrivateStructOnce.Do(func() {
+func unixCredentialsMessagePrivateStruct_Set() {
+	unixCredentialsMessagePrivateStruct_Once.Do(func() {
 		unixCredentialsMessagePrivateStruct = gi.StructNew("Gio", "UnixCredentialsMessagePrivate")
 	})
 }
@@ -5072,10 +5008,10 @@ type UnixCredentialsMessagePrivate struct {
 }
 
 var unixFDListClassStruct *gi.Struct
-var unixFDListClassStructOnce sync.Once
+var unixFDListClassStruct_Once sync.Once
 
-func unixFDListClassStructSet() {
-	unixFDListClassStructOnce.Do(func() {
+func unixFDListClassStruct_Set() {
+	unixFDListClassStruct_Once.Do(func() {
 		unixFDListClassStruct = gi.StructNew("Gio", "UnixFDListClass")
 	})
 }
@@ -5091,10 +5027,10 @@ type UnixFDListClass struct {
 }
 
 var unixFDListPrivateStruct *gi.Struct
-var unixFDListPrivateStructOnce sync.Once
+var unixFDListPrivateStruct_Once sync.Once
 
-func unixFDListPrivateStructSet() {
-	unixFDListPrivateStructOnce.Do(func() {
+func unixFDListPrivateStruct_Set() {
+	unixFDListPrivateStruct_Once.Do(func() {
 		unixFDListPrivateStruct = gi.StructNew("Gio", "UnixFDListPrivate")
 	})
 }
@@ -5104,10 +5040,10 @@ type UnixFDListPrivate struct {
 }
 
 var unixFDMessageClassStruct *gi.Struct
-var unixFDMessageClassStructOnce sync.Once
+var unixFDMessageClassStruct_Once sync.Once
 
-func unixFDMessageClassStructSet() {
-	unixFDMessageClassStructOnce.Do(func() {
+func unixFDMessageClassStruct_Set() {
+	unixFDMessageClassStruct_Once.Do(func() {
 		unixFDMessageClassStruct = gi.StructNew("Gio", "UnixFDMessageClass")
 	})
 }
@@ -5120,10 +5056,10 @@ type UnixFDMessageClass struct {
 }
 
 var unixFDMessagePrivateStruct *gi.Struct
-var unixFDMessagePrivateStructOnce sync.Once
+var unixFDMessagePrivateStruct_Once sync.Once
 
-func unixFDMessagePrivateStructSet() {
-	unixFDMessagePrivateStructOnce.Do(func() {
+func unixFDMessagePrivateStruct_Set() {
+	unixFDMessagePrivateStruct_Once.Do(func() {
 		unixFDMessagePrivateStruct = gi.StructNew("Gio", "UnixFDMessagePrivate")
 	})
 }
@@ -5133,10 +5069,10 @@ type UnixFDMessagePrivate struct {
 }
 
 var unixInputStreamClassStruct *gi.Struct
-var unixInputStreamClassStructOnce sync.Once
+var unixInputStreamClassStruct_Once sync.Once
 
-func unixInputStreamClassStructSet() {
-	unixInputStreamClassStructOnce.Do(func() {
+func unixInputStreamClassStruct_Set() {
+	unixInputStreamClassStruct_Once.Do(func() {
 		unixInputStreamClassStruct = gi.StructNew("Gio", "UnixInputStreamClass")
 	})
 }
@@ -5152,10 +5088,10 @@ type UnixInputStreamClass struct {
 }
 
 var unixInputStreamPrivateStruct *gi.Struct
-var unixInputStreamPrivateStructOnce sync.Once
+var unixInputStreamPrivateStruct_Once sync.Once
 
-func unixInputStreamPrivateStructSet() {
-	unixInputStreamPrivateStructOnce.Do(func() {
+func unixInputStreamPrivateStruct_Set() {
+	unixInputStreamPrivateStruct_Once.Do(func() {
 		unixInputStreamPrivateStruct = gi.StructNew("Gio", "UnixInputStreamPrivate")
 	})
 }
@@ -5165,10 +5101,10 @@ type UnixInputStreamPrivate struct {
 }
 
 var unixMountEntryStruct *gi.Struct
-var unixMountEntryStructOnce sync.Once
+var unixMountEntryStruct_Once sync.Once
 
-func unixMountEntryStructSet() {
-	unixMountEntryStructOnce.Do(func() {
+func unixMountEntryStruct_Set() {
+	unixMountEntryStruct_Once.Do(func() {
 		unixMountEntryStruct = gi.StructNew("Gio", "UnixMountEntry")
 	})
 }
@@ -5178,10 +5114,10 @@ type UnixMountEntry struct {
 }
 
 var unixMountMonitorClassStruct *gi.Struct
-var unixMountMonitorClassStructOnce sync.Once
+var unixMountMonitorClassStruct_Once sync.Once
 
-func unixMountMonitorClassStructSet() {
-	unixMountMonitorClassStructOnce.Do(func() {
+func unixMountMonitorClassStruct_Set() {
+	unixMountMonitorClassStruct_Once.Do(func() {
 		unixMountMonitorClassStruct = gi.StructNew("Gio", "UnixMountMonitorClass")
 	})
 }
@@ -5191,10 +5127,10 @@ type UnixMountMonitorClass struct {
 }
 
 var unixMountPointStruct *gi.Struct
-var unixMountPointStructOnce sync.Once
+var unixMountPointStruct_Once sync.Once
 
-func unixMountPointStructSet() {
-	unixMountPointStructOnce.Do(func() {
+func unixMountPointStruct_Set() {
+	unixMountPointStruct_Once.Do(func() {
 		unixMountPointStruct = gi.StructNew("Gio", "UnixMountPoint")
 	})
 }
@@ -5210,11 +5146,10 @@ var unixMountPointCopyFunction_Once sync.Once
 
 func unixMountPointCopyFunction_Set() {
 	unixMountPointCopyFunction_Once.Do(func() {
-		unixMountPointCopyFunction = gi.FunctionInvokerNew("Gio", "copy")
+		unixMountPointStruct_Set()
+		unixMountPointCopyFunction = unixMountPointStruct.InvokerNew("copy")
 	})
 }
-
-var copyUnixMountPointInvoker *gi.Function
 
 // Copy is a representation of the C type g_unix_mount_point_copy.
 func (recv *UnixMountPoint) Copy() *UnixMountPoint {
@@ -5235,11 +5170,10 @@ var unixMountPointFreeFunction_Once sync.Once
 
 func unixMountPointFreeFunction_Set() {
 	unixMountPointFreeFunction_Once.Do(func() {
-		unixMountPointFreeFunction = gi.FunctionInvokerNew("Gio", "free")
+		unixMountPointStruct_Set()
+		unixMountPointFreeFunction = unixMountPointStruct.InvokerNew("free")
 	})
 }
-
-var freeUnixMountPointInvoker *gi.Function
 
 // Free is a representation of the C type g_unix_mount_point_free.
 func (recv *UnixMountPoint) Free() {
@@ -5259,11 +5193,10 @@ var unixMountPointGetFsTypeFunction_Once sync.Once
 
 func unixMountPointGetFsTypeFunction_Set() {
 	unixMountPointGetFsTypeFunction_Once.Do(func() {
-		unixMountPointGetFsTypeFunction = gi.FunctionInvokerNew("Gio", "get_fs_type")
+		unixMountPointStruct_Set()
+		unixMountPointGetFsTypeFunction = unixMountPointStruct.InvokerNew("get_fs_type")
 	})
 }
-
-var getFsTypeUnixMountPointInvoker *gi.Function
 
 // GetFsType is a representation of the C type g_unix_mount_point_get_fs_type.
 func (recv *UnixMountPoint) GetFsType() string {
@@ -5286,11 +5219,10 @@ var unixMountPointGetOptionsFunction_Once sync.Once
 
 func unixMountPointGetOptionsFunction_Set() {
 	unixMountPointGetOptionsFunction_Once.Do(func() {
-		unixMountPointGetOptionsFunction = gi.FunctionInvokerNew("Gio", "get_options")
+		unixMountPointStruct_Set()
+		unixMountPointGetOptionsFunction = unixMountPointStruct.InvokerNew("get_options")
 	})
 }
-
-var getOptionsUnixMountPointInvoker *gi.Function
 
 // GetOptions is a representation of the C type g_unix_mount_point_get_options.
 func (recv *UnixMountPoint) GetOptions() string {
@@ -5315,11 +5247,10 @@ var unixMountPointGuessNameFunction_Once sync.Once
 
 func unixMountPointGuessNameFunction_Set() {
 	unixMountPointGuessNameFunction_Once.Do(func() {
-		unixMountPointGuessNameFunction = gi.FunctionInvokerNew("Gio", "guess_name")
+		unixMountPointStruct_Set()
+		unixMountPointGuessNameFunction = unixMountPointStruct.InvokerNew("guess_name")
 	})
 }
-
-var guessNameUnixMountPointInvoker *gi.Function
 
 // GuessName is a representation of the C type g_unix_mount_point_guess_name.
 func (recv *UnixMountPoint) GuessName() string {
@@ -5344,10 +5275,10 @@ func (recv *UnixMountPoint) GuessName() string {
 // UNSUPPORTED : C value 'g_unix_mount_point_is_user_mountable' : return type 'gboolean' not supported
 
 var unixOutputStreamClassStruct *gi.Struct
-var unixOutputStreamClassStructOnce sync.Once
+var unixOutputStreamClassStruct_Once sync.Once
 
-func unixOutputStreamClassStructSet() {
-	unixOutputStreamClassStructOnce.Do(func() {
+func unixOutputStreamClassStruct_Set() {
+	unixOutputStreamClassStruct_Once.Do(func() {
 		unixOutputStreamClassStruct = gi.StructNew("Gio", "UnixOutputStreamClass")
 	})
 }
@@ -5363,10 +5294,10 @@ type UnixOutputStreamClass struct {
 }
 
 var unixOutputStreamPrivateStruct *gi.Struct
-var unixOutputStreamPrivateStructOnce sync.Once
+var unixOutputStreamPrivateStruct_Once sync.Once
 
-func unixOutputStreamPrivateStructSet() {
-	unixOutputStreamPrivateStructOnce.Do(func() {
+func unixOutputStreamPrivateStruct_Set() {
+	unixOutputStreamPrivateStruct_Once.Do(func() {
 		unixOutputStreamPrivateStruct = gi.StructNew("Gio", "UnixOutputStreamPrivate")
 	})
 }
@@ -5376,10 +5307,10 @@ type UnixOutputStreamPrivate struct {
 }
 
 var unixSocketAddressClassStruct *gi.Struct
-var unixSocketAddressClassStructOnce sync.Once
+var unixSocketAddressClassStruct_Once sync.Once
 
-func unixSocketAddressClassStructSet() {
-	unixSocketAddressClassStructOnce.Do(func() {
+func unixSocketAddressClassStruct_Set() {
+	unixSocketAddressClassStruct_Once.Do(func() {
 		unixSocketAddressClassStruct = gi.StructNew("Gio", "UnixSocketAddressClass")
 	})
 }
@@ -5390,10 +5321,10 @@ type UnixSocketAddressClass struct {
 }
 
 var unixSocketAddressPrivateStruct *gi.Struct
-var unixSocketAddressPrivateStructOnce sync.Once
+var unixSocketAddressPrivateStruct_Once sync.Once
 
-func unixSocketAddressPrivateStructSet() {
-	unixSocketAddressPrivateStructOnce.Do(func() {
+func unixSocketAddressPrivateStruct_Set() {
+	unixSocketAddressPrivateStruct_Once.Do(func() {
 		unixSocketAddressPrivateStruct = gi.StructNew("Gio", "UnixSocketAddressPrivate")
 	})
 }
@@ -5403,10 +5334,10 @@ type UnixSocketAddressPrivate struct {
 }
 
 var vfsClassStruct *gi.Struct
-var vfsClassStructOnce sync.Once
+var vfsClassStruct_Once sync.Once
 
-func vfsClassStructSet() {
-	vfsClassStructOnce.Do(func() {
+func vfsClassStruct_Set() {
+	vfsClassStruct_Once.Do(func() {
 		vfsClassStruct = gi.StructNew("Gio", "VfsClass")
 	})
 }
@@ -5434,10 +5365,10 @@ type VfsClass struct {
 }
 
 var volumeIfaceStruct *gi.Struct
-var volumeIfaceStructOnce sync.Once
+var volumeIfaceStruct_Once sync.Once
 
-func volumeIfaceStructSet() {
-	volumeIfaceStructOnce.Do(func() {
+func volumeIfaceStruct_Set() {
+	volumeIfaceStruct_Once.Do(func() {
 		volumeIfaceStruct = gi.StructNew("Gio", "VolumeIface")
 	})
 }
@@ -5469,10 +5400,10 @@ type VolumeIface struct {
 }
 
 var volumeMonitorClassStruct *gi.Struct
-var volumeMonitorClassStructOnce sync.Once
+var volumeMonitorClassStruct_Once sync.Once
 
-func volumeMonitorClassStructSet() {
-	volumeMonitorClassStructOnce.Do(func() {
+func volumeMonitorClassStruct_Set() {
+	volumeMonitorClassStruct_Once.Do(func() {
 		volumeMonitorClassStruct = gi.StructNew("Gio", "VolumeMonitorClass")
 	})
 }
@@ -5508,10 +5439,10 @@ type VolumeMonitorClass struct {
 }
 
 var zlibCompressorClassStruct *gi.Struct
-var zlibCompressorClassStructOnce sync.Once
+var zlibCompressorClassStruct_Once sync.Once
 
-func zlibCompressorClassStructSet() {
-	zlibCompressorClassStructOnce.Do(func() {
+func zlibCompressorClassStruct_Set() {
+	zlibCompressorClassStruct_Once.Do(func() {
 		zlibCompressorClassStruct = gi.StructNew("Gio", "ZlibCompressorClass")
 	})
 }
@@ -5522,10 +5453,10 @@ type ZlibCompressorClass struct {
 }
 
 var zlibDecompressorClassStruct *gi.Struct
-var zlibDecompressorClassStructOnce sync.Once
+var zlibDecompressorClassStruct_Once sync.Once
 
-func zlibDecompressorClassStructSet() {
-	zlibDecompressorClassStructOnce.Do(func() {
+func zlibDecompressorClassStruct_Set() {
+	zlibDecompressorClassStruct_Once.Do(func() {
 		zlibDecompressorClassStruct = gi.StructNew("Gio", "ZlibDecompressorClass")
 	})
 }

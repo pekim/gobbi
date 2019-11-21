@@ -60,8 +60,6 @@ func getMajorVersionFunction_Set() {
 	})
 }
 
-var getMajorVersionInvoker *gi.Function
-
 // GetMajorVersion is a representation of the C type soup_get_major_version.
 func GetMajorVersion() uint32 {
 	getMajorVersionFunction_Set()
@@ -82,8 +80,6 @@ func getMicroVersionFunction_Set() {
 	})
 }
 
-var getMicroVersionInvoker *gi.Function
-
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
 func GetMicroVersion() uint32 {
 	getMicroVersionFunction_Set()
@@ -103,8 +99,6 @@ func getMinorVersionFunction_Set() {
 		getMinorVersionFunction = gi.FunctionInvokerNew("Soup", "get_minor_version")
 	})
 }
-
-var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
 func GetMinorVersion() uint32 {
@@ -164,8 +158,6 @@ func statusGetPhraseFunction_Set() {
 	})
 }
 
-var statusGetPhraseInvoker *gi.Function
-
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
 func StatusGetPhrase(statusCode uint32) string {
 	statusGetPhraseFunction_Set()
@@ -188,8 +180,6 @@ func statusProxifyFunction_Set() {
 		statusProxifyFunction = gi.FunctionInvokerNew("Soup", "status_proxify")
 	})
 }
-
-var statusProxifyInvoker *gi.Function
 
 // StatusProxify is a representation of the C type soup_status_proxify.
 func StatusProxify(statusCode uint32) uint32 {
@@ -222,8 +212,6 @@ func tldGetBaseDomainFunction_Set() {
 	})
 }
 
-var tldGetBaseDomainInvoker *gi.Function
-
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
 func TldGetBaseDomain(hostname string) string {
 	tldGetBaseDomainFunction_Set()
@@ -246,8 +234,6 @@ func uriDecodeFunction_Set() {
 		uriDecodeFunction = gi.FunctionInvokerNew("Soup", "uri_decode")
 	})
 }
-
-var uriDecodeInvoker *gi.Function
 
 // UriDecode is a representation of the C type soup_uri_decode.
 func UriDecode(part string) string {
@@ -272,8 +258,6 @@ func uriEncodeFunction_Set() {
 	})
 }
 
-var uriEncodeInvoker *gi.Function
-
 // UriEncode is a representation of the C type soup_uri_encode.
 func UriEncode(part string, escapeExtra string) string {
 	uriEncodeFunction_Set()
@@ -297,8 +281,6 @@ func uriNormalizeFunction_Set() {
 		uriNormalizeFunction = gi.FunctionInvokerNew("Soup", "uri_normalize")
 	})
 }
-
-var uriNormalizeInvoker *gi.Function
 
 // UriNormalize is a representation of the C type soup_uri_normalize.
 func UriNormalize(part string, unescapeExtra string) string {

@@ -16,8 +16,6 @@ func attrBackgroundAlphaNewFunction_Set() {
 	})
 }
 
-var attrBackgroundAlphaNewInvoker *gi.Function
-
 // AttrBackgroundAlphaNew is a representation of the C type pango_attr_background_alpha_new.
 func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
 	attrBackgroundAlphaNewFunction_Set()
@@ -40,8 +38,6 @@ func attrBackgroundNewFunction_Set() {
 		attrBackgroundNewFunction = gi.FunctionInvokerNew("Pango", "attr_background_new")
 	})
 }
-
-var attrBackgroundNewInvoker *gi.Function
 
 // AttrBackgroundNew is a representation of the C type pango_attr_background_new.
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
@@ -70,8 +66,6 @@ func attrFamilyNewFunction_Set() {
 	})
 }
 
-var attrFamilyNewInvoker *gi.Function
-
 // AttrFamilyNew is a representation of the C type pango_attr_family_new.
 func AttrFamilyNew(family string) *Attribute {
 	attrFamilyNewFunction_Set()
@@ -95,8 +89,6 @@ func attrForegroundAlphaNewFunction_Set() {
 	})
 }
 
-var attrForegroundAlphaNewInvoker *gi.Function
-
 // AttrForegroundAlphaNew is a representation of the C type pango_attr_foreground_alpha_new.
 func AttrForegroundAlphaNew(alpha uint16) *Attribute {
 	attrForegroundAlphaNewFunction_Set()
@@ -119,8 +111,6 @@ func attrForegroundNewFunction_Set() {
 		attrForegroundNewFunction = gi.FunctionInvokerNew("Pango", "attr_foreground_new")
 	})
 }
-
-var attrForegroundNewInvoker *gi.Function
 
 // AttrForegroundNew is a representation of the C type pango_attr_foreground_new.
 func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
@@ -151,8 +141,6 @@ func attrLetterSpacingNewFunction_Set() {
 	})
 }
 
-var attrLetterSpacingNewInvoker *gi.Function
-
 // AttrLetterSpacingNew is a representation of the C type pango_attr_letter_spacing_new.
 func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
 	attrLetterSpacingNewFunction_Set()
@@ -175,8 +163,6 @@ func attrRiseNewFunction_Set() {
 		attrRiseNewFunction = gi.FunctionInvokerNew("Pango", "attr_rise_new")
 	})
 }
-
-var attrRiseNewInvoker *gi.Function
 
 // AttrRiseNew is a representation of the C type pango_attr_rise_new.
 func AttrRiseNew(rise int32) *Attribute {
@@ -204,8 +190,6 @@ func attrStrikethroughColorNewFunction_Set() {
 		attrStrikethroughColorNewFunction = gi.FunctionInvokerNew("Pango", "attr_strikethrough_color_new")
 	})
 }
-
-var attrStrikethroughColorNewInvoker *gi.Function
 
 // AttrStrikethroughColorNew is a representation of the C type pango_attr_strikethrough_color_new.
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
@@ -239,8 +223,6 @@ func attrUnderlineColorNewFunction_Set() {
 		attrUnderlineColorNewFunction = gi.FunctionInvokerNew("Pango", "attr_underline_color_new")
 	})
 }
-
-var attrUnderlineColorNewInvoker *gi.Function
 
 // AttrUnderlineColorNew is a representation of the C type pango_attr_underline_color_new.
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
@@ -277,8 +259,6 @@ func configKeyGetFunction_Set() {
 	})
 }
 
-var configKeyGetInvoker *gi.Function
-
 // ConfigKeyGet is a representation of the C type pango_config_key_get.
 func ConfigKeyGet(key string) string {
 	configKeyGetFunction_Set()
@@ -301,8 +281,6 @@ func configKeyGetSystemFunction_Set() {
 		configKeyGetSystemFunction = gi.FunctionInvokerNew("Pango", "config_key_get_system")
 	})
 }
-
-var configKeyGetSystemInvoker *gi.Function
 
 // ConfigKeyGetSystem is a representation of the C type pango_config_key_get_system.
 func ConfigKeyGetSystem(key string) string {
@@ -335,8 +313,6 @@ func findParagraphBoundaryFunction_Set() {
 	})
 }
 
-var findParagraphBoundaryInvoker *gi.Function
-
 // FindParagraphBoundary is a representation of the C type pango_find_paragraph_boundary.
 func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	findParagraphBoundaryFunction_Set()
@@ -364,8 +340,6 @@ func fontDescriptionFromStringFunction_Set() {
 	})
 }
 
-var fontDescriptionFromStringInvoker *gi.Function
-
 // FontDescriptionFromString is a representation of the C type pango_font_description_from_string.
 func FontDescriptionFromString(str string) *FontDescription {
 	fontDescriptionFromStringFunction_Set()
@@ -388,8 +362,6 @@ func getLibSubdirectoryFunction_Set() {
 		getLibSubdirectoryFunction = gi.FunctionInvokerNew("Pango", "get_lib_subdirectory")
 	})
 }
-
-var getLibSubdirectoryInvoker *gi.Function
 
 // GetLibSubdirectory is a representation of the C type pango_get_lib_subdirectory.
 func GetLibSubdirectory() string {
@@ -414,8 +386,6 @@ func getSysconfSubdirectoryFunction_Set() {
 		getSysconfSubdirectoryFunction = gi.FunctionInvokerNew("Pango", "get_sysconf_subdirectory")
 	})
 }
-
-var getSysconfSubdirectoryInvoker *gi.Function
 
 // GetSysconfSubdirectory is a representation of the C type pango_get_sysconf_subdirectory.
 func GetSysconfSubdirectory() string {
@@ -451,8 +421,6 @@ func languageFromStringFunction_Set() {
 	})
 }
 
-var languageFromStringInvoker *gi.Function
-
 // LanguageFromString is a representation of the C type pango_language_from_string.
 func LanguageFromString(language string) *Language {
 	languageFromStringFunction_Set()
@@ -475,8 +443,6 @@ func languageGetDefaultFunction_Set() {
 		languageGetDefaultFunction = gi.FunctionInvokerNew("Pango", "language_get_default")
 	})
 }
-
-var languageGetDefaultInvoker *gi.Function
 
 // LanguageGetDefault is a representation of the C type pango_language_get_default.
 func LanguageGetDefault() *Language {
@@ -519,8 +485,6 @@ func quantizeLineGeometryFunction_Set() {
 		quantizeLineGeometryFunction = gi.FunctionInvokerNew("Pango", "quantize_line_geometry")
 	})
 }
-
-var quantizeLineGeometryInvoker *gi.Function
 
 // QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
 func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
@@ -569,8 +533,6 @@ func splitFileListFunction_Set() {
 	})
 }
 
-var splitFileListInvoker *gi.Function
-
 // SplitFileList is a representation of the C type pango_split_file_list.
 func SplitFileList(str string) {
 	splitFileListFunction_Set()
@@ -590,8 +552,6 @@ func trimStringFunction_Set() {
 		trimStringFunction = gi.FunctionInvokerNew("Pango", "trim_string")
 	})
 }
-
-var trimStringInvoker *gi.Function
 
 // TrimString is a representation of the C type pango_trim_string.
 func TrimString(str string) string {
@@ -622,8 +582,6 @@ func versionFunction_Set() {
 	})
 }
 
-var versionInvoker *gi.Function
-
 // Version is a representation of the C type pango_version.
 func Version() int32 {
 	versionFunction_Set()
@@ -643,8 +601,6 @@ func versionCheckFunction_Set() {
 		versionCheckFunction = gi.FunctionInvokerNew("Pango", "version_check")
 	})
 }
-
-var versionCheckInvoker *gi.Function
 
 // VersionCheck is a representation of the C type pango_version_check.
 func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) string {
@@ -670,8 +626,6 @@ func versionStringFunction_Set() {
 		versionStringFunction = gi.FunctionInvokerNew("Pango", "version_string")
 	})
 }
-
-var versionStringInvoker *gi.Function
 
 // VersionString is a representation of the C type pango_version_string.
 func VersionString() string {

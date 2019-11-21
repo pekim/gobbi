@@ -37,8 +37,8 @@ func (r *Record) init(ns *Namespace) {
 	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
 	r.structInfoGoName = fmt.Sprintf("%sStruct", makeUnexportedGoName(r.Name))
-	r.structInfoOnceGoName = fmt.Sprintf("%sOnce", r.structInfoGoName)
-	r.structInfoSetFuncGoName = fmt.Sprintf("%sSet", r.structInfoGoName)
+	r.structInfoOnceGoName = fmt.Sprintf("%s_Once", r.structInfoGoName)
+	r.structInfoSetFuncGoName = fmt.Sprintf("%s_Set", r.structInfoGoName)
 
 	r.Constructors.init(ns, r)
 	r.Functions.init(ns /*r.GoName*/)

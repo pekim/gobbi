@@ -16,8 +16,6 @@ func libraryVersionFunction_Set() {
 	})
 }
 
-var libraryVersionInvoker *gi.Function
-
 // LibraryVersion is a representation of the C type FT_Library_Version.
 func LibraryVersion() {
 	libraryVersionFunction_Set()

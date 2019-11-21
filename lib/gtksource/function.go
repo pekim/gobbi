@@ -20,8 +20,6 @@ func encodingGetCurrentFunction_Set() {
 	})
 }
 
-var encodingGetCurrentInvoker *gi.Function
-
 // EncodingGetCurrent is a representation of the C type gtk_source_encoding_get_current.
 func EncodingGetCurrent() *Encoding {
 	encodingGetCurrentFunction_Set()
@@ -43,8 +41,6 @@ func encodingGetFromCharsetFunction_Set() {
 		encodingGetFromCharsetFunction = gi.FunctionInvokerNew("GtkSource", "encoding_get_from_charset")
 	})
 }
-
-var encodingGetFromCharsetInvoker *gi.Function
 
 // EncodingGetFromCharset is a representation of the C type gtk_source_encoding_get_from_charset.
 func EncodingGetFromCharset(charset string) *Encoding {
@@ -68,8 +64,6 @@ func encodingGetUtf8Function_Set() {
 		encodingGetUtf8Function = gi.FunctionInvokerNew("GtkSource", "encoding_get_utf8")
 	})
 }
-
-var encodingGetUtf8Invoker *gi.Function
 
 // EncodingGetUtf8 is a representation of the C type gtk_source_encoding_get_utf8.
 func EncodingGetUtf8() *Encoding {
@@ -95,8 +89,6 @@ func utilsEscapeSearchTextFunction_Set() {
 	})
 }
 
-var utilsEscapeSearchTextInvoker *gi.Function
-
 // UtilsEscapeSearchText is a representation of the C type gtk_source_utils_escape_search_text.
 func UtilsEscapeSearchText(text string) string {
 	utilsEscapeSearchTextFunction_Set()
@@ -119,8 +111,6 @@ func utilsUnescapeSearchTextFunction_Set() {
 		utilsUnescapeSearchTextFunction = gi.FunctionInvokerNew("GtkSource", "utils_unescape_search_text")
 	})
 }
-
-var utilsUnescapeSearchTextInvoker *gi.Function
 
 // UtilsUnescapeSearchText is a representation of the C type gtk_source_utils_unescape_search_text.
 func UtilsUnescapeSearchText(text string) string {

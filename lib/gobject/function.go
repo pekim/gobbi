@@ -220,8 +220,6 @@ func signalNameFunction_Set() {
 	})
 }
 
-var signalNameInvoker *gi.Function
-
 // SignalName is a representation of the C type g_signal_name.
 func SignalName(signalId uint32) string {
 	signalNameFunction_Set()
@@ -260,8 +258,6 @@ func signalRemoveEmissionHookFunction_Set() {
 		signalRemoveEmissionHookFunction = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
 	})
 }
-
-var signalRemoveEmissionHookInvoker *gi.Function
 
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
@@ -364,8 +360,6 @@ func typeGetTypeRegistrationSerialFunction_Set() {
 	})
 }
 
-var typeGetTypeRegistrationSerialInvoker *gi.Function
-
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
 func TypeGetTypeRegistrationSerial() uint32 {
 	typeGetTypeRegistrationSerialFunction_Set()
@@ -385,8 +379,6 @@ func typeInitFunction_Set() {
 		typeInitFunction = gi.FunctionInvokerNew("GObject", "type_init")
 	})
 }
-
-var typeInitInvoker *gi.Function
 
 // TypeInit is a representation of the C type g_type_init.
 func TypeInit() {

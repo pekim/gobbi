@@ -16,8 +16,6 @@ func getMajorVersionFunction_Set() {
 	})
 }
 
-var getMajorVersionInvoker *gi.Function
-
 // GetMajorVersion is a representation of the C type jsc_get_major_version.
 func GetMajorVersion() uint32 {
 	getMajorVersionFunction_Set()
@@ -38,8 +36,6 @@ func getMicroVersionFunction_Set() {
 	})
 }
 
-var getMicroVersionInvoker *gi.Function
-
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
 func GetMicroVersion() uint32 {
 	getMicroVersionFunction_Set()
@@ -59,8 +55,6 @@ func getMinorVersionFunction_Set() {
 		getMinorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
 	})
 }
-
-var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type jsc_get_minor_version.
 func GetMinorVersion() uint32 {

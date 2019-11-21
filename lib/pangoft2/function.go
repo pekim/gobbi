@@ -38,8 +38,6 @@ func shutdownDisplayFunction_Set() {
 	})
 }
 
-var shutdownDisplayInvoker *gi.Function
-
 // ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
 func ShutdownDisplay() {
 	shutdownDisplayFunction_Set()

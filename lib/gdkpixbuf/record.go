@@ -8,10 +8,10 @@ import (
 )
 
 var pixbufFormatStruct *gi.Struct
-var pixbufFormatStructOnce sync.Once
+var pixbufFormatStruct_Once sync.Once
 
-func pixbufFormatStructSet() {
-	pixbufFormatStructOnce.Do(func() {
+func pixbufFormatStruct_Set() {
+	pixbufFormatStruct_Once.Do(func() {
 		pixbufFormatStruct = gi.StructNew("GdkPixbuf", "PixbufFormat")
 	})
 }
@@ -25,11 +25,10 @@ var pixbufFormatCopyFunction_Once sync.Once
 
 func pixbufFormatCopyFunction_Set() {
 	pixbufFormatCopyFunction_Once.Do(func() {
-		pixbufFormatCopyFunction = gi.FunctionInvokerNew("GdkPixbuf", "copy")
+		pixbufFormatStruct_Set()
+		pixbufFormatCopyFunction = pixbufFormatStruct.InvokerNew("copy")
 	})
 }
-
-var copyPixbufFormatInvoker *gi.Function
 
 // Copy is a representation of the C type gdk_pixbuf_format_copy.
 func (recv *PixbufFormat) Copy() *PixbufFormat {
@@ -50,11 +49,10 @@ var pixbufFormatFreeFunction_Once sync.Once
 
 func pixbufFormatFreeFunction_Set() {
 	pixbufFormatFreeFunction_Once.Do(func() {
-		pixbufFormatFreeFunction = gi.FunctionInvokerNew("GdkPixbuf", "free")
+		pixbufFormatStruct_Set()
+		pixbufFormatFreeFunction = pixbufFormatStruct.InvokerNew("free")
 	})
 }
-
-var freePixbufFormatInvoker *gi.Function
 
 // Free is a representation of the C type gdk_pixbuf_format_free.
 func (recv *PixbufFormat) Free() {
@@ -72,11 +70,10 @@ var pixbufFormatGetDescriptionFunction_Once sync.Once
 
 func pixbufFormatGetDescriptionFunction_Set() {
 	pixbufFormatGetDescriptionFunction_Once.Do(func() {
-		pixbufFormatGetDescriptionFunction = gi.FunctionInvokerNew("GdkPixbuf", "get_description")
+		pixbufFormatStruct_Set()
+		pixbufFormatGetDescriptionFunction = pixbufFormatStruct.InvokerNew("get_description")
 	})
 }
-
-var getDescriptionPixbufFormatInvoker *gi.Function
 
 // GetDescription is a representation of the C type gdk_pixbuf_format_get_description.
 func (recv *PixbufFormat) GetDescription() string {
@@ -97,11 +94,10 @@ var pixbufFormatGetExtensionsFunction_Once sync.Once
 
 func pixbufFormatGetExtensionsFunction_Set() {
 	pixbufFormatGetExtensionsFunction_Once.Do(func() {
-		pixbufFormatGetExtensionsFunction = gi.FunctionInvokerNew("GdkPixbuf", "get_extensions")
+		pixbufFormatStruct_Set()
+		pixbufFormatGetExtensionsFunction = pixbufFormatStruct.InvokerNew("get_extensions")
 	})
 }
-
-var getExtensionsPixbufFormatInvoker *gi.Function
 
 // GetExtensions is a representation of the C type gdk_pixbuf_format_get_extensions.
 func (recv *PixbufFormat) GetExtensions() {
@@ -119,11 +115,10 @@ var pixbufFormatGetLicenseFunction_Once sync.Once
 
 func pixbufFormatGetLicenseFunction_Set() {
 	pixbufFormatGetLicenseFunction_Once.Do(func() {
-		pixbufFormatGetLicenseFunction = gi.FunctionInvokerNew("GdkPixbuf", "get_license")
+		pixbufFormatStruct_Set()
+		pixbufFormatGetLicenseFunction = pixbufFormatStruct.InvokerNew("get_license")
 	})
 }
-
-var getLicensePixbufFormatInvoker *gi.Function
 
 // GetLicense is a representation of the C type gdk_pixbuf_format_get_license.
 func (recv *PixbufFormat) GetLicense() string {
@@ -144,11 +139,10 @@ var pixbufFormatGetMimeTypesFunction_Once sync.Once
 
 func pixbufFormatGetMimeTypesFunction_Set() {
 	pixbufFormatGetMimeTypesFunction_Once.Do(func() {
-		pixbufFormatGetMimeTypesFunction = gi.FunctionInvokerNew("GdkPixbuf", "get_mime_types")
+		pixbufFormatStruct_Set()
+		pixbufFormatGetMimeTypesFunction = pixbufFormatStruct.InvokerNew("get_mime_types")
 	})
 }
-
-var getMimeTypesPixbufFormatInvoker *gi.Function
 
 // GetMimeTypes is a representation of the C type gdk_pixbuf_format_get_mime_types.
 func (recv *PixbufFormat) GetMimeTypes() {
@@ -166,11 +160,10 @@ var pixbufFormatGetNameFunction_Once sync.Once
 
 func pixbufFormatGetNameFunction_Set() {
 	pixbufFormatGetNameFunction_Once.Do(func() {
-		pixbufFormatGetNameFunction = gi.FunctionInvokerNew("GdkPixbuf", "get_name")
+		pixbufFormatStruct_Set()
+		pixbufFormatGetNameFunction = pixbufFormatStruct.InvokerNew("get_name")
 	})
 }
-
-var getNamePixbufFormatInvoker *gi.Function
 
 // GetName is a representation of the C type gdk_pixbuf_format_get_name.
 func (recv *PixbufFormat) GetName() string {
@@ -197,10 +190,10 @@ func (recv *PixbufFormat) GetName() string {
 // UNSUPPORTED : C value 'gdk_pixbuf_format_set_disabled' : parameter 'disabled' of type 'gboolean' not supported
 
 var pixbufLoaderClassStruct *gi.Struct
-var pixbufLoaderClassStructOnce sync.Once
+var pixbufLoaderClassStruct_Once sync.Once
 
-func pixbufLoaderClassStructSet() {
-	pixbufLoaderClassStructOnce.Do(func() {
+func pixbufLoaderClassStruct_Set() {
+	pixbufLoaderClassStruct_Once.Do(func() {
 		pixbufLoaderClassStruct = gi.StructNew("GdkPixbuf", "PixbufLoaderClass")
 	})
 }
@@ -215,10 +208,10 @@ type PixbufLoaderClass struct {
 }
 
 var pixbufSimpleAnimClassStruct *gi.Struct
-var pixbufSimpleAnimClassStructOnce sync.Once
+var pixbufSimpleAnimClassStruct_Once sync.Once
 
-func pixbufSimpleAnimClassStructSet() {
-	pixbufSimpleAnimClassStructOnce.Do(func() {
+func pixbufSimpleAnimClassStruct_Set() {
+	pixbufSimpleAnimClassStruct_Once.Do(func() {
 		pixbufSimpleAnimClassStruct = gi.StructNew("GdkPixbuf", "PixbufSimpleAnimClass")
 	})
 }

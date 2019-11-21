@@ -21,11 +21,10 @@ type Function struct {
 	Throws         int          `xml:"throws,attr"`
 	Introspectable string       `xml:"introspectable,attr"`
 
-	namespace      *Namespace
-	goName         string
-	record         *Record
-	invokerVarName string
-	receiver       bool
+	namespace *Namespace
+	goName    string
+	record    *Record
+	receiver  bool
 
 	funcInfoGoName        string
 	funcInfoOnceGoName    string
@@ -49,12 +48,6 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 		makeExportedGoName(f.Name)))
 	f.funcInfoOnceGoName = fmt.Sprintf("%s_Once", f.funcInfoGoName)
 	f.funcInfoSetFuncGoName = fmt.Sprintf("%s_Set", f.funcInfoGoName)
-
-	if record != nil {
-		f.invokerVarName = makeUnexportedGoName(f.Name + record.Name + "Invoker")
-	} else {
-		f.invokerVarName = makeUnexportedGoName(f.Name + "Invoker")
-	}
 }
 
 func (f *Function) supported() (bool, string) {
@@ -76,7 +69,6 @@ func (f *Function) generate(fi *file) {
 	}
 
 	f.generateFuncInfo(fi)
-	f.generateInvokerVar(fi)
 	f.generateFunction(fi)
 }
 
@@ -102,31 +94,40 @@ func (f *Function) generateFuncInfo(fi *file) {
 		Id(f.funcInfoSetFuncGoName).
 		Params().
 		BlockFunc(func(g *jen.Group) {
-			//   somefunctionFuncOnce.Do(func() {
-			//     somefunctionFunc = gi.FunctionInvokerNew("Gdk", "SomeFunction")
-			//   })
+			// somefunctionFuncOnce.Do(func() {
+			//   ...
+			// })
 			g.
 				Id(f.funcInfoOnceGoName).
 				Dot("Do").
 				Call(jen.
 					Func().
 					Params().
-					Block(jen.
-						Id(f.funcInfoGoName).
-						Op("=").
-						Qual(gi.PackageName, "FunctionInvokerNew").
-						Call(jen.Lit(f.namespace.Name),
-							jen.Lit(f.Name))))
-		})
-}
+					BlockFunc(func(g *jen.Group) {
+						if f.record != nil {
+							// someStruct_Set()
+							g.
+								Id(f.record.structInfoSetFuncGoName).
+								Call()
 
-func (f *Function) generateInvokerVar(fi *file) {
-	fi.
-		Var().
-		Id(f.invokerVarName).
-		Op("*").
-		Qual(gi.PackageName, "Function")
-	fi.Line()
+							// somefunctionFunc = someStruct.InvokerNew("SomeFunction")
+							g.
+								Id(f.funcInfoGoName).
+								Op("=").
+								Id(f.record.structInfoGoName).
+								Dot("InvokerNew").
+								Call(jen.Lit(f.Name))
+						} else {
+							// somefunctionFunc = gi.FunctionInvokerNew("Gdk", "SomeFunction")
+							g.
+								Id(f.funcInfoGoName).
+								Op("=").
+								Qual(gi.PackageName, "FunctionInvokerNew").
+								Call(jen.Lit(f.namespace.Name),
+									jen.Lit(f.Name))
+						}
+					}))
+		})
 }
 
 func (f *Function) generateFunction(fi *file) {

@@ -8,10 +8,10 @@ import (
 )
 
 var bufferClassStruct *gi.Struct
-var bufferClassStructOnce sync.Once
+var bufferClassStruct_Once sync.Once
 
-func bufferClassStructSet() {
-	bufferClassStructOnce.Do(func() {
+func bufferClassStruct_Set() {
+	bufferClassStruct_Once.Do(func() {
 		bufferClassStruct = gi.StructNew("GtkSource", "BufferClass")
 	})
 }
@@ -28,10 +28,10 @@ type BufferClass struct {
 }
 
 var bufferPrivateStruct *gi.Struct
-var bufferPrivateStructOnce sync.Once
+var bufferPrivateStruct_Once sync.Once
 
-func bufferPrivateStructSet() {
-	bufferPrivateStructOnce.Do(func() {
+func bufferPrivateStruct_Set() {
+	bufferPrivateStruct_Once.Do(func() {
 		bufferPrivateStruct = gi.StructNew("GtkSource", "BufferPrivate")
 	})
 }
@@ -41,10 +41,10 @@ type BufferPrivate struct {
 }
 
 var completionClassStruct *gi.Struct
-var completionClassStructOnce sync.Once
+var completionClassStruct_Once sync.Once
 
-func completionClassStructSet() {
-	completionClassStructOnce.Do(func() {
+func completionClassStruct_Set() {
+	completionClassStruct_Once.Do(func() {
 		completionClassStruct = gi.StructNew("GtkSource", "CompletionClass")
 	})
 }
@@ -62,10 +62,10 @@ type CompletionClass struct {
 }
 
 var completionContextClassStruct *gi.Struct
-var completionContextClassStructOnce sync.Once
+var completionContextClassStruct_Once sync.Once
 
-func completionContextClassStructSet() {
-	completionContextClassStructOnce.Do(func() {
+func completionContextClassStruct_Set() {
+	completionContextClassStruct_Once.Do(func() {
 		completionContextClassStruct = gi.StructNew("GtkSource", "CompletionContextClass")
 	})
 }
@@ -80,10 +80,10 @@ type CompletionContextClass struct {
 }
 
 var completionContextPrivateStruct *gi.Struct
-var completionContextPrivateStructOnce sync.Once
+var completionContextPrivateStruct_Once sync.Once
 
-func completionContextPrivateStructSet() {
-	completionContextPrivateStructOnce.Do(func() {
+func completionContextPrivateStruct_Set() {
+	completionContextPrivateStruct_Once.Do(func() {
 		completionContextPrivateStruct = gi.StructNew("GtkSource", "CompletionContextPrivate")
 	})
 }
@@ -93,10 +93,10 @@ type CompletionContextPrivate struct {
 }
 
 var completionInfoClassStruct *gi.Struct
-var completionInfoClassStructOnce sync.Once
+var completionInfoClassStruct_Once sync.Once
 
-func completionInfoClassStructSet() {
-	completionInfoClassStructOnce.Do(func() {
+func completionInfoClassStruct_Set() {
+	completionInfoClassStruct_Once.Do(func() {
 		completionInfoClassStruct = gi.StructNew("GtkSource", "CompletionInfoClass")
 	})
 }
@@ -108,10 +108,10 @@ type CompletionInfoClass struct {
 }
 
 var completionInfoPrivateStruct *gi.Struct
-var completionInfoPrivateStructOnce sync.Once
+var completionInfoPrivateStruct_Once sync.Once
 
-func completionInfoPrivateStructSet() {
-	completionInfoPrivateStructOnce.Do(func() {
+func completionInfoPrivateStruct_Set() {
+	completionInfoPrivateStruct_Once.Do(func() {
 		completionInfoPrivateStruct = gi.StructNew("GtkSource", "CompletionInfoPrivate")
 	})
 }
@@ -121,10 +121,10 @@ type CompletionInfoPrivate struct {
 }
 
 var completionItemClassStruct *gi.Struct
-var completionItemClassStructOnce sync.Once
+var completionItemClassStruct_Once sync.Once
 
-func completionItemClassStructSet() {
-	completionItemClassStructOnce.Do(func() {
+func completionItemClassStruct_Set() {
+	completionItemClassStruct_Once.Do(func() {
 		completionItemClassStruct = gi.StructNew("GtkSource", "CompletionItemClass")
 	})
 }
@@ -135,10 +135,10 @@ type CompletionItemClass struct {
 }
 
 var completionItemPrivateStruct *gi.Struct
-var completionItemPrivateStructOnce sync.Once
+var completionItemPrivateStruct_Once sync.Once
 
-func completionItemPrivateStructSet() {
-	completionItemPrivateStructOnce.Do(func() {
+func completionItemPrivateStruct_Set() {
+	completionItemPrivateStruct_Once.Do(func() {
 		completionItemPrivateStruct = gi.StructNew("GtkSource", "CompletionItemPrivate")
 	})
 }
@@ -148,10 +148,10 @@ type CompletionItemPrivate struct {
 }
 
 var completionPrivateStruct *gi.Struct
-var completionPrivateStructOnce sync.Once
+var completionPrivateStruct_Once sync.Once
 
-func completionPrivateStructSet() {
-	completionPrivateStructOnce.Do(func() {
+func completionPrivateStruct_Set() {
+	completionPrivateStruct_Once.Do(func() {
 		completionPrivateStruct = gi.StructNew("GtkSource", "CompletionPrivate")
 	})
 }
@@ -161,10 +161,10 @@ type CompletionPrivate struct {
 }
 
 var completionProposalIfaceStruct *gi.Struct
-var completionProposalIfaceStructOnce sync.Once
+var completionProposalIfaceStruct_Once sync.Once
 
-func completionProposalIfaceStructSet() {
-	completionProposalIfaceStructOnce.Do(func() {
+func completionProposalIfaceStruct_Set() {
+	completionProposalIfaceStruct_Once.Do(func() {
 		completionProposalIfaceStruct = gi.StructNew("GtkSource", "CompletionProposalIface")
 	})
 }
@@ -185,10 +185,10 @@ type CompletionProposalIface struct {
 }
 
 var completionProviderIfaceStruct *gi.Struct
-var completionProviderIfaceStructOnce sync.Once
+var completionProviderIfaceStruct_Once sync.Once
 
-func completionProviderIfaceStructSet() {
-	completionProviderIfaceStructOnce.Do(func() {
+func completionProviderIfaceStruct_Set() {
+	completionProviderIfaceStruct_Once.Do(func() {
 		completionProviderIfaceStruct = gi.StructNew("GtkSource", "CompletionProviderIface")
 	})
 }
@@ -212,10 +212,10 @@ type CompletionProviderIface struct {
 }
 
 var completionWordsClassStruct *gi.Struct
-var completionWordsClassStructOnce sync.Once
+var completionWordsClassStruct_Once sync.Once
 
-func completionWordsClassStructSet() {
-	completionWordsClassStructOnce.Do(func() {
+func completionWordsClassStruct_Set() {
+	completionWordsClassStruct_Once.Do(func() {
 		completionWordsClassStruct = gi.StructNew("GtkSource", "CompletionWordsClass")
 	})
 }
@@ -226,10 +226,10 @@ type CompletionWordsClass struct {
 }
 
 var completionWordsPrivateStruct *gi.Struct
-var completionWordsPrivateStructOnce sync.Once
+var completionWordsPrivateStruct_Once sync.Once
 
-func completionWordsPrivateStructSet() {
-	completionWordsPrivateStructOnce.Do(func() {
+func completionWordsPrivateStruct_Set() {
+	completionWordsPrivateStruct_Once.Do(func() {
 		completionWordsPrivateStruct = gi.StructNew("GtkSource", "CompletionWordsPrivate")
 	})
 }
@@ -239,10 +239,10 @@ type CompletionWordsPrivate struct {
 }
 
 var encodingStruct *gi.Struct
-var encodingStructOnce sync.Once
+var encodingStruct_Once sync.Once
 
-func encodingStructSet() {
-	encodingStructOnce.Do(func() {
+func encodingStruct_Set() {
+	encodingStruct_Once.Do(func() {
 		encodingStruct = gi.StructNew("GtkSource", "Encoding")
 	})
 }
@@ -256,11 +256,10 @@ var encodingCopyFunction_Once sync.Once
 
 func encodingCopyFunction_Set() {
 	encodingCopyFunction_Once.Do(func() {
-		encodingCopyFunction = gi.FunctionInvokerNew("GtkSource", "copy")
+		encodingStruct_Set()
+		encodingCopyFunction = encodingStruct.InvokerNew("copy")
 	})
 }
-
-var copyEncodingInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_source_encoding_copy.
 func (recv *Encoding) Copy() *Encoding {
@@ -281,11 +280,10 @@ var encodingFreeFunction_Once sync.Once
 
 func encodingFreeFunction_Set() {
 	encodingFreeFunction_Once.Do(func() {
-		encodingFreeFunction = gi.FunctionInvokerNew("GtkSource", "free")
+		encodingStruct_Set()
+		encodingFreeFunction = encodingStruct.InvokerNew("free")
 	})
 }
-
-var freeEncodingInvoker *gi.Function
 
 // Free is a representation of the C type gtk_source_encoding_free.
 func (recv *Encoding) Free() {
@@ -303,11 +301,10 @@ var encodingGetCharsetFunction_Once sync.Once
 
 func encodingGetCharsetFunction_Set() {
 	encodingGetCharsetFunction_Once.Do(func() {
-		encodingGetCharsetFunction = gi.FunctionInvokerNew("GtkSource", "get_charset")
+		encodingStruct_Set()
+		encodingGetCharsetFunction = encodingStruct.InvokerNew("get_charset")
 	})
 }
-
-var getCharsetEncodingInvoker *gi.Function
 
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
 func (recv *Encoding) GetCharset() string {
@@ -328,11 +325,10 @@ var encodingGetNameFunction_Once sync.Once
 
 func encodingGetNameFunction_Set() {
 	encodingGetNameFunction_Once.Do(func() {
-		encodingGetNameFunction = gi.FunctionInvokerNew("GtkSource", "get_name")
+		encodingStruct_Set()
+		encodingGetNameFunction = encodingStruct.InvokerNew("get_name")
 	})
 }
-
-var getNameEncodingInvoker *gi.Function
 
 // GetName is a representation of the C type gtk_source_encoding_get_name.
 func (recv *Encoding) GetName() string {
@@ -353,11 +349,10 @@ var encodingToStringFunction_Once sync.Once
 
 func encodingToStringFunction_Set() {
 	encodingToStringFunction_Once.Do(func() {
-		encodingToStringFunction = gi.FunctionInvokerNew("GtkSource", "to_string")
+		encodingStruct_Set()
+		encodingToStringFunction = encodingStruct.InvokerNew("to_string")
 	})
 }
-
-var toStringEncodingInvoker *gi.Function
 
 // ToString is a representation of the C type gtk_source_encoding_to_string.
 func (recv *Encoding) ToString() string {
@@ -374,10 +369,10 @@ func (recv *Encoding) ToString() string {
 }
 
 var fileClassStruct *gi.Struct
-var fileClassStructOnce sync.Once
+var fileClassStruct_Once sync.Once
 
-func fileClassStructSet() {
-	fileClassStructOnce.Do(func() {
+func fileClassStruct_Set() {
+	fileClassStruct_Once.Do(func() {
 		fileClassStruct = gi.StructNew("GtkSource", "FileClass")
 	})
 }
@@ -389,10 +384,10 @@ type FileClass struct {
 }
 
 var fileLoaderClassStruct *gi.Struct
-var fileLoaderClassStructOnce sync.Once
+var fileLoaderClassStruct_Once sync.Once
 
-func fileLoaderClassStructSet() {
-	fileLoaderClassStructOnce.Do(func() {
+func fileLoaderClassStruct_Set() {
+	fileLoaderClassStruct_Once.Do(func() {
 		fileLoaderClassStruct = gi.StructNew("GtkSource", "FileLoaderClass")
 	})
 }
@@ -404,10 +399,10 @@ type FileLoaderClass struct {
 }
 
 var fileLoaderPrivateStruct *gi.Struct
-var fileLoaderPrivateStructOnce sync.Once
+var fileLoaderPrivateStruct_Once sync.Once
 
-func fileLoaderPrivateStructSet() {
-	fileLoaderPrivateStructOnce.Do(func() {
+func fileLoaderPrivateStruct_Set() {
+	fileLoaderPrivateStruct_Once.Do(func() {
 		fileLoaderPrivateStruct = gi.StructNew("GtkSource", "FileLoaderPrivate")
 	})
 }
@@ -417,10 +412,10 @@ type FileLoaderPrivate struct {
 }
 
 var filePrivateStruct *gi.Struct
-var filePrivateStructOnce sync.Once
+var filePrivateStruct_Once sync.Once
 
-func filePrivateStructSet() {
-	filePrivateStructOnce.Do(func() {
+func filePrivateStruct_Set() {
+	filePrivateStruct_Once.Do(func() {
 		filePrivateStruct = gi.StructNew("GtkSource", "FilePrivate")
 	})
 }
@@ -430,10 +425,10 @@ type FilePrivate struct {
 }
 
 var fileSaverClassStruct *gi.Struct
-var fileSaverClassStructOnce sync.Once
+var fileSaverClassStruct_Once sync.Once
 
-func fileSaverClassStructSet() {
-	fileSaverClassStructOnce.Do(func() {
+func fileSaverClassStruct_Set() {
+	fileSaverClassStruct_Once.Do(func() {
 		fileSaverClassStruct = gi.StructNew("GtkSource", "FileSaverClass")
 	})
 }
@@ -445,10 +440,10 @@ type FileSaverClass struct {
 }
 
 var fileSaverPrivateStruct *gi.Struct
-var fileSaverPrivateStructOnce sync.Once
+var fileSaverPrivateStruct_Once sync.Once
 
-func fileSaverPrivateStructSet() {
-	fileSaverPrivateStructOnce.Do(func() {
+func fileSaverPrivateStruct_Set() {
+	fileSaverPrivateStruct_Once.Do(func() {
 		fileSaverPrivateStruct = gi.StructNew("GtkSource", "FileSaverPrivate")
 	})
 }
@@ -458,10 +453,10 @@ type FileSaverPrivate struct {
 }
 
 var gutterClassStruct *gi.Struct
-var gutterClassStructOnce sync.Once
+var gutterClassStruct_Once sync.Once
 
-func gutterClassStructSet() {
-	gutterClassStructOnce.Do(func() {
+func gutterClassStruct_Set() {
+	gutterClassStruct_Once.Do(func() {
 		gutterClassStruct = gi.StructNew("GtkSource", "GutterClass")
 	})
 }
@@ -472,10 +467,10 @@ type GutterClass struct {
 }
 
 var gutterPrivateStruct *gi.Struct
-var gutterPrivateStructOnce sync.Once
+var gutterPrivateStruct_Once sync.Once
 
-func gutterPrivateStructSet() {
-	gutterPrivateStructOnce.Do(func() {
+func gutterPrivateStruct_Set() {
+	gutterPrivateStruct_Once.Do(func() {
 		gutterPrivateStruct = gi.StructNew("GtkSource", "GutterPrivate")
 	})
 }
@@ -485,10 +480,10 @@ type GutterPrivate struct {
 }
 
 var gutterRendererClassStruct *gi.Struct
-var gutterRendererClassStructOnce sync.Once
+var gutterRendererClassStruct_Once sync.Once
 
-func gutterRendererClassStructSet() {
-	gutterRendererClassStructOnce.Do(func() {
+func gutterRendererClassStruct_Set() {
+	gutterRendererClassStruct_Once.Do(func() {
 		gutterRendererClassStruct = gi.StructNew("GtkSource", "GutterRendererClass")
 	})
 }
@@ -509,10 +504,10 @@ type GutterRendererClass struct {
 }
 
 var gutterRendererPixbufClassStruct *gi.Struct
-var gutterRendererPixbufClassStructOnce sync.Once
+var gutterRendererPixbufClassStruct_Once sync.Once
 
-func gutterRendererPixbufClassStructSet() {
-	gutterRendererPixbufClassStructOnce.Do(func() {
+func gutterRendererPixbufClassStruct_Set() {
+	gutterRendererPixbufClassStruct_Once.Do(func() {
 		gutterRendererPixbufClassStruct = gi.StructNew("GtkSource", "GutterRendererPixbufClass")
 	})
 }
@@ -522,10 +517,10 @@ type GutterRendererPixbufClass struct {
 }
 
 var gutterRendererPixbufPrivateStruct *gi.Struct
-var gutterRendererPixbufPrivateStructOnce sync.Once
+var gutterRendererPixbufPrivateStruct_Once sync.Once
 
-func gutterRendererPixbufPrivateStructSet() {
-	gutterRendererPixbufPrivateStructOnce.Do(func() {
+func gutterRendererPixbufPrivateStruct_Set() {
+	gutterRendererPixbufPrivateStruct_Once.Do(func() {
 		gutterRendererPixbufPrivateStruct = gi.StructNew("GtkSource", "GutterRendererPixbufPrivate")
 	})
 }
@@ -535,10 +530,10 @@ type GutterRendererPixbufPrivate struct {
 }
 
 var gutterRendererPrivateStruct *gi.Struct
-var gutterRendererPrivateStructOnce sync.Once
+var gutterRendererPrivateStruct_Once sync.Once
 
-func gutterRendererPrivateStructSet() {
-	gutterRendererPrivateStructOnce.Do(func() {
+func gutterRendererPrivateStruct_Set() {
+	gutterRendererPrivateStruct_Once.Do(func() {
 		gutterRendererPrivateStruct = gi.StructNew("GtkSource", "GutterRendererPrivate")
 	})
 }
@@ -548,10 +543,10 @@ type GutterRendererPrivate struct {
 }
 
 var gutterRendererTextClassStruct *gi.Struct
-var gutterRendererTextClassStructOnce sync.Once
+var gutterRendererTextClassStruct_Once sync.Once
 
-func gutterRendererTextClassStructSet() {
-	gutterRendererTextClassStructOnce.Do(func() {
+func gutterRendererTextClassStruct_Set() {
+	gutterRendererTextClassStruct_Once.Do(func() {
 		gutterRendererTextClassStruct = gi.StructNew("GtkSource", "GutterRendererTextClass")
 	})
 }
@@ -561,10 +556,10 @@ type GutterRendererTextClass struct {
 }
 
 var gutterRendererTextPrivateStruct *gi.Struct
-var gutterRendererTextPrivateStructOnce sync.Once
+var gutterRendererTextPrivateStruct_Once sync.Once
 
-func gutterRendererTextPrivateStructSet() {
-	gutterRendererTextPrivateStructOnce.Do(func() {
+func gutterRendererTextPrivateStruct_Set() {
+	gutterRendererTextPrivateStruct_Once.Do(func() {
 		gutterRendererTextPrivateStruct = gi.StructNew("GtkSource", "GutterRendererTextPrivate")
 	})
 }
@@ -574,10 +569,10 @@ type GutterRendererTextPrivate struct {
 }
 
 var languageClassStruct *gi.Struct
-var languageClassStructOnce sync.Once
+var languageClassStruct_Once sync.Once
 
-func languageClassStructSet() {
-	languageClassStructOnce.Do(func() {
+func languageClassStruct_Set() {
+	languageClassStruct_Once.Do(func() {
 		languageClassStruct = gi.StructNew("GtkSource", "LanguageClass")
 	})
 }
@@ -590,10 +585,10 @@ type LanguageClass struct {
 }
 
 var languageManagerClassStruct *gi.Struct
-var languageManagerClassStructOnce sync.Once
+var languageManagerClassStruct_Once sync.Once
 
-func languageManagerClassStructSet() {
-	languageManagerClassStructOnce.Do(func() {
+func languageManagerClassStruct_Set() {
+	languageManagerClassStruct_Once.Do(func() {
 		languageManagerClassStruct = gi.StructNew("GtkSource", "LanguageManagerClass")
 	})
 }
@@ -608,10 +603,10 @@ type LanguageManagerClass struct {
 }
 
 var languageManagerPrivateStruct *gi.Struct
-var languageManagerPrivateStructOnce sync.Once
+var languageManagerPrivateStruct_Once sync.Once
 
-func languageManagerPrivateStructSet() {
-	languageManagerPrivateStructOnce.Do(func() {
+func languageManagerPrivateStruct_Set() {
+	languageManagerPrivateStruct_Once.Do(func() {
 		languageManagerPrivateStruct = gi.StructNew("GtkSource", "LanguageManagerPrivate")
 	})
 }
@@ -621,10 +616,10 @@ type LanguageManagerPrivate struct {
 }
 
 var languagePrivateStruct *gi.Struct
-var languagePrivateStructOnce sync.Once
+var languagePrivateStruct_Once sync.Once
 
-func languagePrivateStructSet() {
-	languagePrivateStructOnce.Do(func() {
+func languagePrivateStruct_Set() {
+	languagePrivateStruct_Once.Do(func() {
 		languagePrivateStruct = gi.StructNew("GtkSource", "LanguagePrivate")
 	})
 }
@@ -634,10 +629,10 @@ type LanguagePrivate struct {
 }
 
 var mapClassStruct *gi.Struct
-var mapClassStructOnce sync.Once
+var mapClassStruct_Once sync.Once
 
-func mapClassStructSet() {
-	mapClassStructOnce.Do(func() {
+func mapClassStruct_Set() {
+	mapClassStruct_Once.Do(func() {
 		mapClassStruct = gi.StructNew("GtkSource", "MapClass")
 	})
 }
@@ -649,10 +644,10 @@ type MapClass struct {
 }
 
 var markAttributesClassStruct *gi.Struct
-var markAttributesClassStructOnce sync.Once
+var markAttributesClassStruct_Once sync.Once
 
-func markAttributesClassStructSet() {
-	markAttributesClassStructOnce.Do(func() {
+func markAttributesClassStruct_Set() {
+	markAttributesClassStruct_Once.Do(func() {
 		markAttributesClassStruct = gi.StructNew("GtkSource", "MarkAttributesClass")
 	})
 }
@@ -662,10 +657,10 @@ type MarkAttributesClass struct {
 }
 
 var markAttributesPrivateStruct *gi.Struct
-var markAttributesPrivateStructOnce sync.Once
+var markAttributesPrivateStruct_Once sync.Once
 
-func markAttributesPrivateStructSet() {
-	markAttributesPrivateStructOnce.Do(func() {
+func markAttributesPrivateStruct_Set() {
+	markAttributesPrivateStruct_Once.Do(func() {
 		markAttributesPrivateStruct = gi.StructNew("GtkSource", "MarkAttributesPrivate")
 	})
 }
@@ -675,10 +670,10 @@ type MarkAttributesPrivate struct {
 }
 
 var markClassStruct *gi.Struct
-var markClassStructOnce sync.Once
+var markClassStruct_Once sync.Once
 
-func markClassStructSet() {
-	markClassStructOnce.Do(func() {
+func markClassStruct_Set() {
+	markClassStruct_Once.Do(func() {
 		markClassStruct = gi.StructNew("GtkSource", "MarkClass")
 	})
 }
@@ -691,10 +686,10 @@ type MarkClass struct {
 }
 
 var markPrivateStruct *gi.Struct
-var markPrivateStructOnce sync.Once
+var markPrivateStruct_Once sync.Once
 
-func markPrivateStructSet() {
-	markPrivateStructOnce.Do(func() {
+func markPrivateStruct_Set() {
+	markPrivateStruct_Once.Do(func() {
 		markPrivateStruct = gi.StructNew("GtkSource", "MarkPrivate")
 	})
 }
@@ -704,10 +699,10 @@ type MarkPrivate struct {
 }
 
 var printCompositorClassStruct *gi.Struct
-var printCompositorClassStructOnce sync.Once
+var printCompositorClassStruct_Once sync.Once
 
-func printCompositorClassStructSet() {
-	printCompositorClassStructOnce.Do(func() {
+func printCompositorClassStruct_Set() {
+	printCompositorClassStruct_Once.Do(func() {
 		printCompositorClassStruct = gi.StructNew("GtkSource", "PrintCompositorClass")
 	})
 }
@@ -720,10 +715,10 @@ type PrintCompositorClass struct {
 }
 
 var printCompositorPrivateStruct *gi.Struct
-var printCompositorPrivateStructOnce sync.Once
+var printCompositorPrivateStruct_Once sync.Once
 
-func printCompositorPrivateStructSet() {
-	printCompositorPrivateStructOnce.Do(func() {
+func printCompositorPrivateStruct_Set() {
+	printCompositorPrivateStruct_Once.Do(func() {
 		printCompositorPrivateStruct = gi.StructNew("GtkSource", "PrintCompositorPrivate")
 	})
 }
@@ -733,10 +728,10 @@ type PrintCompositorPrivate struct {
 }
 
 var regionClassStruct *gi.Struct
-var regionClassStructOnce sync.Once
+var regionClassStruct_Once sync.Once
 
-func regionClassStructSet() {
-	regionClassStructOnce.Do(func() {
+func regionClassStruct_Set() {
+	regionClassStruct_Once.Do(func() {
 		regionClassStruct = gi.StructNew("GtkSource", "RegionClass")
 	})
 }
@@ -748,10 +743,10 @@ type RegionClass struct {
 }
 
 var regionIterStruct *gi.Struct
-var regionIterStructOnce sync.Once
+var regionIterStruct_Once sync.Once
 
-func regionIterStructSet() {
-	regionIterStructOnce.Do(func() {
+func regionIterStruct_Set() {
+	regionIterStruct_Once.Do(func() {
 		regionIterStruct = gi.StructNew("GtkSource", "RegionIter")
 	})
 }
@@ -767,10 +762,10 @@ type RegionIter struct {
 // UNSUPPORTED : C value 'gtk_source_region_iter_next' : return type 'gboolean' not supported
 
 var searchContextClassStruct *gi.Struct
-var searchContextClassStructOnce sync.Once
+var searchContextClassStruct_Once sync.Once
 
-func searchContextClassStructSet() {
-	searchContextClassStructOnce.Do(func() {
+func searchContextClassStruct_Set() {
+	searchContextClassStruct_Once.Do(func() {
 		searchContextClassStruct = gi.StructNew("GtkSource", "SearchContextClass")
 	})
 }
@@ -782,10 +777,10 @@ type SearchContextClass struct {
 }
 
 var searchContextPrivateStruct *gi.Struct
-var searchContextPrivateStructOnce sync.Once
+var searchContextPrivateStruct_Once sync.Once
 
-func searchContextPrivateStructSet() {
-	searchContextPrivateStructOnce.Do(func() {
+func searchContextPrivateStruct_Set() {
+	searchContextPrivateStruct_Once.Do(func() {
 		searchContextPrivateStruct = gi.StructNew("GtkSource", "SearchContextPrivate")
 	})
 }
@@ -795,10 +790,10 @@ type SearchContextPrivate struct {
 }
 
 var searchSettingsClassStruct *gi.Struct
-var searchSettingsClassStructOnce sync.Once
+var searchSettingsClassStruct_Once sync.Once
 
-func searchSettingsClassStructSet() {
-	searchSettingsClassStructOnce.Do(func() {
+func searchSettingsClassStruct_Set() {
+	searchSettingsClassStruct_Once.Do(func() {
 		searchSettingsClassStruct = gi.StructNew("GtkSource", "SearchSettingsClass")
 	})
 }
@@ -810,10 +805,10 @@ type SearchSettingsClass struct {
 }
 
 var searchSettingsPrivateStruct *gi.Struct
-var searchSettingsPrivateStructOnce sync.Once
+var searchSettingsPrivateStruct_Once sync.Once
 
-func searchSettingsPrivateStructSet() {
-	searchSettingsPrivateStructOnce.Do(func() {
+func searchSettingsPrivateStruct_Set() {
+	searchSettingsPrivateStruct_Once.Do(func() {
 		searchSettingsPrivateStruct = gi.StructNew("GtkSource", "SearchSettingsPrivate")
 	})
 }
@@ -823,10 +818,10 @@ type SearchSettingsPrivate struct {
 }
 
 var spaceDrawerClassStruct *gi.Struct
-var spaceDrawerClassStructOnce sync.Once
+var spaceDrawerClassStruct_Once sync.Once
 
-func spaceDrawerClassStructSet() {
-	spaceDrawerClassStructOnce.Do(func() {
+func spaceDrawerClassStruct_Set() {
+	spaceDrawerClassStruct_Once.Do(func() {
 		spaceDrawerClassStruct = gi.StructNew("GtkSource", "SpaceDrawerClass")
 	})
 }
@@ -838,10 +833,10 @@ type SpaceDrawerClass struct {
 }
 
 var spaceDrawerPrivateStruct *gi.Struct
-var spaceDrawerPrivateStructOnce sync.Once
+var spaceDrawerPrivateStruct_Once sync.Once
 
-func spaceDrawerPrivateStructSet() {
-	spaceDrawerPrivateStructOnce.Do(func() {
+func spaceDrawerPrivateStruct_Set() {
+	spaceDrawerPrivateStruct_Once.Do(func() {
 		spaceDrawerPrivateStruct = gi.StructNew("GtkSource", "SpaceDrawerPrivate")
 	})
 }
@@ -851,10 +846,10 @@ type SpaceDrawerPrivate struct {
 }
 
 var styleClassStruct *gi.Struct
-var styleClassStructOnce sync.Once
+var styleClassStruct_Once sync.Once
 
-func styleClassStructSet() {
-	styleClassStructOnce.Do(func() {
+func styleClassStruct_Set() {
+	styleClassStruct_Once.Do(func() {
 		styleClassStruct = gi.StructNew("GtkSource", "StyleClass")
 	})
 }
@@ -864,10 +859,10 @@ type StyleClass struct {
 }
 
 var styleSchemeChooserButtonClassStruct *gi.Struct
-var styleSchemeChooserButtonClassStructOnce sync.Once
+var styleSchemeChooserButtonClassStruct_Once sync.Once
 
-func styleSchemeChooserButtonClassStructSet() {
-	styleSchemeChooserButtonClassStructOnce.Do(func() {
+func styleSchemeChooserButtonClassStruct_Set() {
+	styleSchemeChooserButtonClassStruct_Once.Do(func() {
 		styleSchemeChooserButtonClassStruct = gi.StructNew("GtkSource", "StyleSchemeChooserButtonClass")
 	})
 }
@@ -878,10 +873,10 @@ type StyleSchemeChooserButtonClass struct {
 }
 
 var styleSchemeChooserInterfaceStruct *gi.Struct
-var styleSchemeChooserInterfaceStructOnce sync.Once
+var styleSchemeChooserInterfaceStruct_Once sync.Once
 
-func styleSchemeChooserInterfaceStructSet() {
-	styleSchemeChooserInterfaceStructOnce.Do(func() {
+func styleSchemeChooserInterfaceStruct_Set() {
+	styleSchemeChooserInterfaceStruct_Once.Do(func() {
 		styleSchemeChooserInterfaceStruct = gi.StructNew("GtkSource", "StyleSchemeChooserInterface")
 	})
 }
@@ -895,10 +890,10 @@ type StyleSchemeChooserInterface struct {
 }
 
 var styleSchemeChooserWidgetClassStruct *gi.Struct
-var styleSchemeChooserWidgetClassStructOnce sync.Once
+var styleSchemeChooserWidgetClassStruct_Once sync.Once
 
-func styleSchemeChooserWidgetClassStructSet() {
-	styleSchemeChooserWidgetClassStructOnce.Do(func() {
+func styleSchemeChooserWidgetClassStruct_Set() {
+	styleSchemeChooserWidgetClassStruct_Once.Do(func() {
 		styleSchemeChooserWidgetClassStruct = gi.StructNew("GtkSource", "StyleSchemeChooserWidgetClass")
 	})
 }
@@ -909,10 +904,10 @@ type StyleSchemeChooserWidgetClass struct {
 }
 
 var styleSchemeClassStruct *gi.Struct
-var styleSchemeClassStructOnce sync.Once
+var styleSchemeClassStruct_Once sync.Once
 
-func styleSchemeClassStructSet() {
-	styleSchemeClassStructOnce.Do(func() {
+func styleSchemeClassStruct_Set() {
+	styleSchemeClassStruct_Once.Do(func() {
 		styleSchemeClassStruct = gi.StructNew("GtkSource", "StyleSchemeClass")
 	})
 }
@@ -925,10 +920,10 @@ type StyleSchemeClass struct {
 }
 
 var styleSchemeManagerClassStruct *gi.Struct
-var styleSchemeManagerClassStructOnce sync.Once
+var styleSchemeManagerClassStruct_Once sync.Once
 
-func styleSchemeManagerClassStructSet() {
-	styleSchemeManagerClassStructOnce.Do(func() {
+func styleSchemeManagerClassStruct_Set() {
+	styleSchemeManagerClassStruct_Once.Do(func() {
 		styleSchemeManagerClassStruct = gi.StructNew("GtkSource", "StyleSchemeManagerClass")
 	})
 }
@@ -943,10 +938,10 @@ type StyleSchemeManagerClass struct {
 }
 
 var styleSchemeManagerPrivateStruct *gi.Struct
-var styleSchemeManagerPrivateStructOnce sync.Once
+var styleSchemeManagerPrivateStruct_Once sync.Once
 
-func styleSchemeManagerPrivateStructSet() {
-	styleSchemeManagerPrivateStructOnce.Do(func() {
+func styleSchemeManagerPrivateStruct_Set() {
+	styleSchemeManagerPrivateStruct_Once.Do(func() {
 		styleSchemeManagerPrivateStruct = gi.StructNew("GtkSource", "StyleSchemeManagerPrivate")
 	})
 }
@@ -956,10 +951,10 @@ type StyleSchemeManagerPrivate struct {
 }
 
 var styleSchemePrivateStruct *gi.Struct
-var styleSchemePrivateStructOnce sync.Once
+var styleSchemePrivateStruct_Once sync.Once
 
-func styleSchemePrivateStructSet() {
-	styleSchemePrivateStructOnce.Do(func() {
+func styleSchemePrivateStruct_Set() {
+	styleSchemePrivateStruct_Once.Do(func() {
 		styleSchemePrivateStruct = gi.StructNew("GtkSource", "StyleSchemePrivate")
 	})
 }
@@ -969,10 +964,10 @@ type StyleSchemePrivate struct {
 }
 
 var tagClassStruct *gi.Struct
-var tagClassStructOnce sync.Once
+var tagClassStruct_Once sync.Once
 
-func tagClassStructSet() {
-	tagClassStructOnce.Do(func() {
+func tagClassStruct_Set() {
+	tagClassStruct_Once.Do(func() {
 		tagClassStruct = gi.StructNew("GtkSource", "TagClass")
 	})
 }
@@ -984,10 +979,10 @@ type TagClass struct {
 }
 
 var undoManagerIfaceStruct *gi.Struct
-var undoManagerIfaceStructOnce sync.Once
+var undoManagerIfaceStruct_Once sync.Once
 
-func undoManagerIfaceStructSet() {
-	undoManagerIfaceStructOnce.Do(func() {
+func undoManagerIfaceStruct_Set() {
+	undoManagerIfaceStruct_Once.Do(func() {
 		undoManagerIfaceStruct = gi.StructNew("GtkSource", "UndoManagerIface")
 	})
 }
@@ -1006,10 +1001,10 @@ type UndoManagerIface struct {
 }
 
 var viewClassStruct *gi.Struct
-var viewClassStructOnce sync.Once
+var viewClassStruct_Once sync.Once
 
-func viewClassStructSet() {
-	viewClassStructOnce.Do(func() {
+func viewClassStruct_Set() {
+	viewClassStruct_Once.Do(func() {
 		viewClassStruct = gi.StructNew("GtkSource", "ViewClass")
 	})
 }
@@ -1026,10 +1021,10 @@ type ViewClass struct {
 }
 
 var viewPrivateStruct *gi.Struct
-var viewPrivateStructOnce sync.Once
+var viewPrivateStruct_Once sync.Once
 
-func viewPrivateStructSet() {
-	viewPrivateStructOnce.Do(func() {
+func viewPrivateStruct_Set() {
+	viewPrivateStruct_Once.Do(func() {
 		viewPrivateStruct = gi.StructNew("GtkSource", "ViewPrivate")
 	})
 }

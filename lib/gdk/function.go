@@ -20,8 +20,6 @@ func atomInternStaticStringFunction_Set() {
 	})
 }
 
-var atomInternStaticStringInvoker *gi.Function
-
 // AtomInternStaticString is a representation of the C type gdk_atom_intern_static_string.
 func AtomInternStaticString(atomName string) *Atom {
 	atomInternStaticStringFunction_Set()
@@ -44,8 +42,6 @@ func beepFunction_Set() {
 		beepFunction = gi.FunctionInvokerNew("Gdk", "beep")
 	})
 }
-
-var beepInvoker *gi.Function
 
 // Beep is a representation of the C type gdk_beep.
 func Beep() {
@@ -90,8 +86,6 @@ func disableMultideviceFunction_Set() {
 	})
 }
 
-var disableMultideviceInvoker *gi.Function
-
 // DisableMultidevice is a representation of the C type gdk_disable_multidevice.
 func DisableMultidevice() {
 	disableMultideviceFunction_Set()
@@ -135,8 +129,6 @@ func errorTrapPopFunction_Set() {
 	})
 }
 
-var errorTrapPopInvoker *gi.Function
-
 // ErrorTrapPop is a representation of the C type gdk_error_trap_pop.
 func ErrorTrapPop() int32 {
 	errorTrapPopFunction_Set()
@@ -157,8 +149,6 @@ func errorTrapPopIgnoredFunction_Set() {
 	})
 }
 
-var errorTrapPopIgnoredInvoker *gi.Function
-
 // ErrorTrapPopIgnored is a representation of the C type gdk_error_trap_pop_ignored.
 func ErrorTrapPopIgnored() {
 	errorTrapPopIgnoredFunction_Set()
@@ -175,8 +165,6 @@ func errorTrapPushFunction_Set() {
 		errorTrapPushFunction = gi.FunctionInvokerNew("Gdk", "error_trap_push")
 	})
 }
-
-var errorTrapPushInvoker *gi.Function
 
 // ErrorTrapPush is a representation of the C type gdk_error_trap_push.
 func ErrorTrapPush() {
@@ -211,8 +199,6 @@ func flushFunction_Set() {
 	})
 }
 
-var flushInvoker *gi.Function
-
 // Flush is a representation of the C type gdk_flush.
 func Flush() {
 	flushFunction_Set()
@@ -231,8 +217,6 @@ func getDisplayFunction_Set() {
 		getDisplayFunction = gi.FunctionInvokerNew("Gdk", "get_display")
 	})
 }
-
-var getDisplayInvoker *gi.Function
 
 // GetDisplay is a representation of the C type gdk_get_display.
 func GetDisplay() string {
@@ -254,8 +238,6 @@ func getDisplayArgNameFunction_Set() {
 	})
 }
 
-var getDisplayArgNameInvoker *gi.Function
-
 // GetDisplayArgName is a representation of the C type gdk_get_display_arg_name.
 func GetDisplayArgName() string {
 	getDisplayArgNameFunction_Set()
@@ -275,8 +257,6 @@ func getProgramClassFunction_Set() {
 		getProgramClassFunction = gi.FunctionInvokerNew("Gdk", "get_program_class")
 	})
 }
-
-var getProgramClassInvoker *gi.Function
 
 // GetProgramClass is a representation of the C type gdk_get_program_class.
 func GetProgramClass() string {
@@ -308,8 +288,6 @@ func keyboardUngrabFunction_Set() {
 	})
 }
 
-var keyboardUngrabInvoker *gi.Function
-
 // KeyboardUngrab is a representation of the C type gdk_keyboard_ungrab.
 func KeyboardUngrab(time uint32) {
 	keyboardUngrabFunction_Set()
@@ -329,8 +307,6 @@ func keyvalConvertCaseFunction_Set() {
 		keyvalConvertCaseFunction = gi.FunctionInvokerNew("Gdk", "keyval_convert_case")
 	})
 }
-
-var keyvalConvertCaseInvoker *gi.Function
 
 // KeyvalConvertCase is a representation of the C type gdk_keyval_convert_case.
 func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
@@ -357,8 +333,6 @@ func keyvalFromNameFunction_Set() {
 		keyvalFromNameFunction = gi.FunctionInvokerNew("Gdk", "keyval_from_name")
 	})
 }
-
-var keyvalFromNameInvoker *gi.Function
 
 // KeyvalFromName is a representation of the C type gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) uint32 {
@@ -387,8 +361,6 @@ func keyvalNameFunction_Set() {
 	})
 }
 
-var keyvalNameInvoker *gi.Function
-
 // KeyvalName is a representation of the C type gdk_keyval_name.
 func KeyvalName(keyval uint32) string {
 	keyvalNameFunction_Set()
@@ -411,8 +383,6 @@ func keyvalToLowerFunction_Set() {
 		keyvalToLowerFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_lower")
 	})
 }
-
-var keyvalToLowerInvoker *gi.Function
 
 // KeyvalToLower is a representation of the C type gdk_keyval_to_lower.
 func KeyvalToLower(keyval uint32) uint32 {
@@ -437,8 +407,6 @@ func keyvalToUnicodeFunction_Set() {
 	})
 }
 
-var keyvalToUnicodeInvoker *gi.Function
-
 // KeyvalToUnicode is a representation of the C type gdk_keyval_to_unicode.
 func KeyvalToUnicode(keyval uint32) uint32 {
 	keyvalToUnicodeFunction_Set()
@@ -461,8 +429,6 @@ func keyvalToUpperFunction_Set() {
 		keyvalToUpperFunction = gi.FunctionInvokerNew("Gdk", "keyval_to_upper")
 	})
 }
-
-var keyvalToUpperInvoker *gi.Function
 
 // KeyvalToUpper is a representation of the C type gdk_keyval_to_upper.
 func KeyvalToUpper(keyval uint32) uint32 {
@@ -489,8 +455,6 @@ func notifyStartupCompleteFunction_Set() {
 	})
 }
 
-var notifyStartupCompleteInvoker *gi.Function
-
 // NotifyStartupComplete is a representation of the C type gdk_notify_startup_complete.
 func NotifyStartupComplete() {
 	notifyStartupCompleteFunction_Set()
@@ -507,8 +471,6 @@ func notifyStartupCompleteWithIdFunction_Set() {
 		notifyStartupCompleteWithIdFunction = gi.FunctionInvokerNew("Gdk", "notify_startup_complete_with_id")
 	})
 }
-
-var notifyStartupCompleteWithIdInvoker *gi.Function
 
 // NotifyStartupCompleteWithId is a representation of the C type gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId(startupId string) {
@@ -556,8 +518,6 @@ func pointerUngrabFunction_Set() {
 	})
 }
 
-var pointerUngrabInvoker *gi.Function
-
 // PointerUngrab is a representation of the C type gdk_pointer_ungrab.
 func PointerUngrab(time uint32) {
 	pointerUngrabFunction_Set()
@@ -577,8 +537,6 @@ func preParseLibgtkOnlyFunction_Set() {
 		preParseLibgtkOnlyFunction = gi.FunctionInvokerNew("Gdk", "pre_parse_libgtk_only")
 	})
 }
-
-var preParseLibgtkOnlyInvoker *gi.Function
 
 // PreParseLibgtkOnly is a representation of the C type gdk_pre_parse_libgtk_only.
 func PreParseLibgtkOnly() {
@@ -623,8 +581,6 @@ func setAllowedBackendsFunction_Set() {
 	})
 }
 
-var setAllowedBackendsInvoker *gi.Function
-
 // SetAllowedBackends is a representation of the C type gdk_set_allowed_backends.
 func SetAllowedBackends(backends string) {
 	setAllowedBackendsFunction_Set()
@@ -645,8 +601,6 @@ func setDoubleClickTimeFunction_Set() {
 	})
 }
 
-var setDoubleClickTimeInvoker *gi.Function
-
 // SetDoubleClickTime is a representation of the C type gdk_set_double_click_time.
 func SetDoubleClickTime(msec uint32) {
 	setDoubleClickTimeFunction_Set()
@@ -666,8 +620,6 @@ func setProgramClassFunction_Set() {
 		setProgramClassFunction = gi.FunctionInvokerNew("Gdk", "set_program_class")
 	})
 }
-
-var setProgramClassInvoker *gi.Function
 
 // SetProgramClass is a representation of the C type gdk_set_program_class.
 func SetProgramClass(programClass string) {
@@ -715,8 +667,6 @@ func threadsEnterFunction_Set() {
 	})
 }
 
-var threadsEnterInvoker *gi.Function
-
 // ThreadsEnter is a representation of the C type gdk_threads_enter.
 func ThreadsEnter() {
 	threadsEnterFunction_Set()
@@ -734,8 +684,6 @@ func threadsInitFunction_Set() {
 	})
 }
 
-var threadsInitInvoker *gi.Function
-
 // ThreadsInit is a representation of the C type gdk_threads_init.
 func ThreadsInit() {
 	threadsInitFunction_Set()
@@ -752,8 +700,6 @@ func threadsLeaveFunction_Set() {
 		threadsLeaveFunction = gi.FunctionInvokerNew("Gdk", "threads_leave")
 	})
 }
-
-var threadsLeaveInvoker *gi.Function
 
 // ThreadsLeave is a representation of the C type gdk_threads_leave.
 func ThreadsLeave() {
@@ -773,8 +719,6 @@ func unicodeToKeyvalFunction_Set() {
 		unicodeToKeyvalFunction = gi.FunctionInvokerNew("Gdk", "unicode_to_keyval")
 	})
 }
-
-var unicodeToKeyvalInvoker *gi.Function
 
 // UnicodeToKeyval is a representation of the C type gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) uint32 {
@@ -798,8 +742,6 @@ func utf8ToStringTargetFunction_Set() {
 		utf8ToStringTargetFunction = gi.FunctionInvokerNew("Gdk", "utf8_to_string_target")
 	})
 }
-
-var utf8ToStringTargetInvoker *gi.Function
 
 // Utf8ToStringTarget is a representation of the C type gdk_utf8_to_string_target.
 func Utf8ToStringTarget(str string) string {

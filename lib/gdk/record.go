@@ -8,10 +8,10 @@ import (
 )
 
 var atomStruct *gi.Struct
-var atomStructOnce sync.Once
+var atomStruct_Once sync.Once
 
-func atomStructSet() {
-	atomStructOnce.Do(func() {
+func atomStruct_Set() {
+	atomStruct_Once.Do(func() {
 		atomStruct = gi.StructNew("Gdk", "Atom")
 	})
 }
@@ -25,11 +25,10 @@ var atomNameFunction_Once sync.Once
 
 func atomNameFunction_Set() {
 	atomNameFunction_Once.Do(func() {
-		atomNameFunction = gi.FunctionInvokerNew("Gdk", "name")
+		atomStruct_Set()
+		atomNameFunction = atomStruct.InvokerNew("name")
 	})
 }
-
-var nameAtomInvoker *gi.Function
 
 // Name is a representation of the C type gdk_atom_name.
 func (recv *Atom) Name() string {
@@ -46,10 +45,10 @@ func (recv *Atom) Name() string {
 }
 
 var colorStruct *gi.Struct
-var colorStructOnce sync.Once
+var colorStruct_Once sync.Once
 
-func colorStructSet() {
-	colorStructOnce.Do(func() {
+func colorStruct_Set() {
+	colorStruct_Once.Do(func() {
 		colorStruct = gi.StructNew("Gdk", "Color")
 	})
 }
@@ -67,11 +66,10 @@ var colorCopyFunction_Once sync.Once
 
 func colorCopyFunction_Set() {
 	colorCopyFunction_Once.Do(func() {
-		colorCopyFunction = gi.FunctionInvokerNew("Gdk", "copy")
+		colorStruct_Set()
+		colorCopyFunction = colorStruct.InvokerNew("copy")
 	})
 }
-
-var copyColorInvoker *gi.Function
 
 // Copy is a representation of the C type gdk_color_copy.
 func (recv *Color) Copy() *Color {
@@ -94,11 +92,10 @@ var colorFreeFunction_Once sync.Once
 
 func colorFreeFunction_Set() {
 	colorFreeFunction_Once.Do(func() {
-		colorFreeFunction = gi.FunctionInvokerNew("Gdk", "free")
+		colorStruct_Set()
+		colorFreeFunction = colorStruct.InvokerNew("free")
 	})
 }
-
-var freeColorInvoker *gi.Function
 
 // Free is a representation of the C type gdk_color_free.
 func (recv *Color) Free() {
@@ -116,11 +113,10 @@ var colorHashFunction_Once sync.Once
 
 func colorHashFunction_Set() {
 	colorHashFunction_Once.Do(func() {
-		colorHashFunction = gi.FunctionInvokerNew("Gdk", "hash")
+		colorStruct_Set()
+		colorHashFunction = colorStruct.InvokerNew("hash")
 	})
 }
-
-var hashColorInvoker *gi.Function
 
 // Hash is a representation of the C type gdk_color_hash.
 func (recv *Color) Hash() uint32 {
@@ -141,11 +137,10 @@ var colorToStringFunction_Once sync.Once
 
 func colorToStringFunction_Set() {
 	colorToStringFunction_Once.Do(func() {
-		colorToStringFunction = gi.FunctionInvokerNew("Gdk", "to_string")
+		colorStruct_Set()
+		colorToStringFunction = colorStruct.InvokerNew("to_string")
 	})
 }
-
-var toStringColorInvoker *gi.Function
 
 // ToString is a representation of the C type gdk_color_to_string.
 func (recv *Color) ToString() string {
@@ -162,10 +157,10 @@ func (recv *Color) ToString() string {
 }
 
 var devicePadInterfaceStruct *gi.Struct
-var devicePadInterfaceStructOnce sync.Once
+var devicePadInterfaceStruct_Once sync.Once
 
-func devicePadInterfaceStructSet() {
-	devicePadInterfaceStructOnce.Do(func() {
+func devicePadInterfaceStruct_Set() {
+	devicePadInterfaceStruct_Once.Do(func() {
 		devicePadInterfaceStruct = gi.StructNew("Gdk", "DevicePadInterface")
 	})
 }
@@ -175,10 +170,10 @@ type DevicePadInterface struct {
 }
 
 var drawingContextClassStruct *gi.Struct
-var drawingContextClassStructOnce sync.Once
+var drawingContextClassStruct_Once sync.Once
 
-func drawingContextClassStructSet() {
-	drawingContextClassStructOnce.Do(func() {
+func drawingContextClassStruct_Set() {
+	drawingContextClassStruct_Once.Do(func() {
 		drawingContextClassStruct = gi.StructNew("Gdk", "DrawingContextClass")
 	})
 }
@@ -188,10 +183,10 @@ type DrawingContextClass struct {
 }
 
 var eventAnyStruct *gi.Struct
-var eventAnyStructOnce sync.Once
+var eventAnyStruct_Once sync.Once
 
-func eventAnyStructSet() {
-	eventAnyStructOnce.Do(func() {
+func eventAnyStruct_Set() {
+	eventAnyStruct_Once.Do(func() {
 		eventAnyStruct = gi.StructNew("Gdk", "EventAny")
 	})
 }
@@ -204,10 +199,10 @@ type EventAny struct {
 }
 
 var eventButtonStruct *gi.Struct
-var eventButtonStructOnce sync.Once
+var eventButtonStruct_Once sync.Once
 
-func eventButtonStructSet() {
-	eventButtonStructOnce.Do(func() {
+func eventButtonStruct_Set() {
+	eventButtonStruct_Once.Do(func() {
 		eventButtonStruct = gi.StructNew("Gdk", "EventButton")
 	})
 }
@@ -229,10 +224,10 @@ type EventButton struct {
 }
 
 var eventConfigureStruct *gi.Struct
-var eventConfigureStructOnce sync.Once
+var eventConfigureStruct_Once sync.Once
 
-func eventConfigureStructSet() {
-	eventConfigureStructOnce.Do(func() {
+func eventConfigureStruct_Set() {
+	eventConfigureStruct_Once.Do(func() {
 		eventConfigureStruct = gi.StructNew("Gdk", "EventConfigure")
 	})
 }
@@ -249,10 +244,10 @@ type EventConfigure struct {
 }
 
 var eventCrossingStruct *gi.Struct
-var eventCrossingStructOnce sync.Once
+var eventCrossingStruct_Once sync.Once
 
-func eventCrossingStructSet() {
-	eventCrossingStructOnce.Do(func() {
+func eventCrossingStruct_Set() {
+	eventCrossingStruct_Once.Do(func() {
 		eventCrossingStruct = gi.StructNew("Gdk", "EventCrossing")
 	})
 }
@@ -275,10 +270,10 @@ type EventCrossing struct {
 }
 
 var eventDNDStruct *gi.Struct
-var eventDNDStructOnce sync.Once
+var eventDNDStruct_Once sync.Once
 
-func eventDNDStructSet() {
-	eventDNDStructOnce.Do(func() {
+func eventDNDStruct_Set() {
+	eventDNDStruct_Once.Do(func() {
 		eventDNDStruct = gi.StructNew("Gdk", "EventDND")
 	})
 }
@@ -295,10 +290,10 @@ type EventDND struct {
 }
 
 var eventExposeStruct *gi.Struct
-var eventExposeStructOnce sync.Once
+var eventExposeStruct_Once sync.Once
 
-func eventExposeStructSet() {
-	eventExposeStructOnce.Do(func() {
+func eventExposeStruct_Set() {
+	eventExposeStruct_Once.Do(func() {
 		eventExposeStruct = gi.StructNew("Gdk", "EventExpose")
 	})
 }
@@ -314,10 +309,10 @@ type EventExpose struct {
 }
 
 var eventFocusStruct *gi.Struct
-var eventFocusStructOnce sync.Once
+var eventFocusStruct_Once sync.Once
 
-func eventFocusStructSet() {
-	eventFocusStructOnce.Do(func() {
+func eventFocusStruct_Set() {
+	eventFocusStruct_Once.Do(func() {
 		eventFocusStruct = gi.StructNew("Gdk", "EventFocus")
 	})
 }
@@ -331,10 +326,10 @@ type EventFocus struct {
 }
 
 var eventGrabBrokenStruct *gi.Struct
-var eventGrabBrokenStructOnce sync.Once
+var eventGrabBrokenStruct_Once sync.Once
 
-func eventGrabBrokenStructSet() {
-	eventGrabBrokenStructOnce.Do(func() {
+func eventGrabBrokenStruct_Set() {
+	eventGrabBrokenStruct_Once.Do(func() {
 		eventGrabBrokenStruct = gi.StructNew("Gdk", "EventGrabBroken")
 	})
 }
@@ -350,10 +345,10 @@ type EventGrabBroken struct {
 }
 
 var eventKeyStruct *gi.Struct
-var eventKeyStructOnce sync.Once
+var eventKeyStruct_Once sync.Once
 
-func eventKeyStructSet() {
-	eventKeyStructOnce.Do(func() {
+func eventKeyStruct_Set() {
+	eventKeyStruct_Once.Do(func() {
 		eventKeyStruct = gi.StructNew("Gdk", "EventKey")
 	})
 }
@@ -374,10 +369,10 @@ type EventKey struct {
 }
 
 var eventMotionStruct *gi.Struct
-var eventMotionStructOnce sync.Once
+var eventMotionStruct_Once sync.Once
 
-func eventMotionStructSet() {
-	eventMotionStructOnce.Do(func() {
+func eventMotionStruct_Set() {
+	eventMotionStruct_Once.Do(func() {
 		eventMotionStruct = gi.StructNew("Gdk", "EventMotion")
 	})
 }
@@ -399,10 +394,10 @@ type EventMotion struct {
 }
 
 var eventOwnerChangeStruct *gi.Struct
-var eventOwnerChangeStructOnce sync.Once
+var eventOwnerChangeStruct_Once sync.Once
 
-func eventOwnerChangeStructSet() {
-	eventOwnerChangeStructOnce.Do(func() {
+func eventOwnerChangeStruct_Set() {
+	eventOwnerChangeStruct_Once.Do(func() {
 		eventOwnerChangeStruct = gi.StructNew("Gdk", "EventOwnerChange")
 	})
 }
@@ -420,10 +415,10 @@ type EventOwnerChange struct {
 }
 
 var eventPadAxisStruct *gi.Struct
-var eventPadAxisStructOnce sync.Once
+var eventPadAxisStruct_Once sync.Once
 
-func eventPadAxisStructSet() {
-	eventPadAxisStructOnce.Do(func() {
+func eventPadAxisStruct_Set() {
+	eventPadAxisStruct_Once.Do(func() {
 		eventPadAxisStruct = gi.StructNew("Gdk", "EventPadAxis")
 	})
 }
@@ -441,10 +436,10 @@ type EventPadAxis struct {
 }
 
 var eventPadButtonStruct *gi.Struct
-var eventPadButtonStructOnce sync.Once
+var eventPadButtonStruct_Once sync.Once
 
-func eventPadButtonStructSet() {
-	eventPadButtonStructOnce.Do(func() {
+func eventPadButtonStruct_Set() {
+	eventPadButtonStruct_Once.Do(func() {
 		eventPadButtonStruct = gi.StructNew("Gdk", "EventPadButton")
 	})
 }
@@ -461,10 +456,10 @@ type EventPadButton struct {
 }
 
 var eventPadGroupModeStruct *gi.Struct
-var eventPadGroupModeStructOnce sync.Once
+var eventPadGroupModeStruct_Once sync.Once
 
-func eventPadGroupModeStructSet() {
-	eventPadGroupModeStructOnce.Do(func() {
+func eventPadGroupModeStruct_Set() {
+	eventPadGroupModeStruct_Once.Do(func() {
 		eventPadGroupModeStruct = gi.StructNew("Gdk", "EventPadGroupMode")
 	})
 }
@@ -480,10 +475,10 @@ type EventPadGroupMode struct {
 }
 
 var eventPropertyStruct *gi.Struct
-var eventPropertyStructOnce sync.Once
+var eventPropertyStruct_Once sync.Once
 
-func eventPropertyStructSet() {
-	eventPropertyStructOnce.Do(func() {
+func eventPropertyStruct_Set() {
+	eventPropertyStruct_Once.Do(func() {
 		eventPropertyStruct = gi.StructNew("Gdk", "EventProperty")
 	})
 }
@@ -499,10 +494,10 @@ type EventProperty struct {
 }
 
 var eventProximityStruct *gi.Struct
-var eventProximityStructOnce sync.Once
+var eventProximityStruct_Once sync.Once
 
-func eventProximityStructSet() {
-	eventProximityStructOnce.Do(func() {
+func eventProximityStruct_Set() {
+	eventProximityStruct_Once.Do(func() {
 		eventProximityStruct = gi.StructNew("Gdk", "EventProximity")
 	})
 }
@@ -517,10 +512,10 @@ type EventProximity struct {
 }
 
 var eventScrollStruct *gi.Struct
-var eventScrollStructOnce sync.Once
+var eventScrollStruct_Once sync.Once
 
-func eventScrollStructSet() {
-	eventScrollStructOnce.Do(func() {
+func eventScrollStruct_Set() {
+	eventScrollStruct_Once.Do(func() {
 		eventScrollStruct = gi.StructNew("Gdk", "EventScroll")
 	})
 }
@@ -544,10 +539,10 @@ type EventScroll struct {
 }
 
 var eventSelectionStruct *gi.Struct
-var eventSelectionStructOnce sync.Once
+var eventSelectionStruct_Once sync.Once
 
-func eventSelectionStructSet() {
-	eventSelectionStructOnce.Do(func() {
+func eventSelectionStruct_Set() {
+	eventSelectionStruct_Once.Do(func() {
 		eventSelectionStruct = gi.StructNew("Gdk", "EventSelection")
 	})
 }
@@ -565,10 +560,10 @@ type EventSelection struct {
 }
 
 var eventSequenceStruct *gi.Struct
-var eventSequenceStructOnce sync.Once
+var eventSequenceStruct_Once sync.Once
 
-func eventSequenceStructSet() {
-	eventSequenceStructOnce.Do(func() {
+func eventSequenceStruct_Set() {
+	eventSequenceStruct_Once.Do(func() {
 		eventSequenceStruct = gi.StructNew("Gdk", "EventSequence")
 	})
 }
@@ -578,10 +573,10 @@ type EventSequence struct {
 }
 
 var eventSettingStruct *gi.Struct
-var eventSettingStructOnce sync.Once
+var eventSettingStruct_Once sync.Once
 
-func eventSettingStructSet() {
-	eventSettingStructOnce.Do(func() {
+func eventSettingStruct_Set() {
+	eventSettingStruct_Once.Do(func() {
 		eventSettingStruct = gi.StructNew("Gdk", "EventSetting")
 	})
 }
@@ -596,10 +591,10 @@ type EventSetting struct {
 }
 
 var eventTouchStruct *gi.Struct
-var eventTouchStructOnce sync.Once
+var eventTouchStruct_Once sync.Once
 
-func eventTouchStructSet() {
-	eventTouchStructOnce.Do(func() {
+func eventTouchStruct_Set() {
+	eventTouchStruct_Once.Do(func() {
 		eventTouchStruct = gi.StructNew("Gdk", "EventTouch")
 	})
 }
@@ -622,10 +617,10 @@ type EventTouch struct {
 }
 
 var eventTouchpadPinchStruct *gi.Struct
-var eventTouchpadPinchStructOnce sync.Once
+var eventTouchpadPinchStruct_Once sync.Once
 
-func eventTouchpadPinchStructSet() {
-	eventTouchpadPinchStructOnce.Do(func() {
+func eventTouchpadPinchStruct_Set() {
+	eventTouchpadPinchStruct_Once.Do(func() {
 		eventTouchpadPinchStruct = gi.StructNew("Gdk", "EventTouchpadPinch")
 	})
 }
@@ -650,10 +645,10 @@ type EventTouchpadPinch struct {
 }
 
 var eventTouchpadSwipeStruct *gi.Struct
-var eventTouchpadSwipeStructOnce sync.Once
+var eventTouchpadSwipeStruct_Once sync.Once
 
-func eventTouchpadSwipeStructSet() {
-	eventTouchpadSwipeStructOnce.Do(func() {
+func eventTouchpadSwipeStruct_Set() {
+	eventTouchpadSwipeStruct_Once.Do(func() {
 		eventTouchpadSwipeStruct = gi.StructNew("Gdk", "EventTouchpadSwipe")
 	})
 }
@@ -676,10 +671,10 @@ type EventTouchpadSwipe struct {
 }
 
 var eventVisibilityStruct *gi.Struct
-var eventVisibilityStructOnce sync.Once
+var eventVisibilityStruct_Once sync.Once
 
-func eventVisibilityStructSet() {
-	eventVisibilityStructOnce.Do(func() {
+func eventVisibilityStruct_Set() {
+	eventVisibilityStruct_Once.Do(func() {
 		eventVisibilityStruct = gi.StructNew("Gdk", "EventVisibility")
 	})
 }
@@ -693,10 +688,10 @@ type EventVisibility struct {
 }
 
 var eventWindowStateStruct *gi.Struct
-var eventWindowStateStructOnce sync.Once
+var eventWindowStateStruct_Once sync.Once
 
-func eventWindowStateStructSet() {
-	eventWindowStateStructOnce.Do(func() {
+func eventWindowStateStruct_Set() {
+	eventWindowStateStruct_Once.Do(func() {
 		eventWindowStateStruct = gi.StructNew("Gdk", "EventWindowState")
 	})
 }
@@ -711,10 +706,10 @@ type EventWindowState struct {
 }
 
 var frameClockClassStruct *gi.Struct
-var frameClockClassStructOnce sync.Once
+var frameClockClassStruct_Once sync.Once
 
-func frameClockClassStructSet() {
-	frameClockClassStructOnce.Do(func() {
+func frameClockClassStruct_Set() {
+	frameClockClassStruct_Once.Do(func() {
 		frameClockClassStruct = gi.StructNew("Gdk", "FrameClockClass")
 	})
 }
@@ -724,10 +719,10 @@ type FrameClockClass struct {
 }
 
 var frameClockPrivateStruct *gi.Struct
-var frameClockPrivateStructOnce sync.Once
+var frameClockPrivateStruct_Once sync.Once
 
-func frameClockPrivateStructSet() {
-	frameClockPrivateStructOnce.Do(func() {
+func frameClockPrivateStruct_Set() {
+	frameClockPrivateStruct_Once.Do(func() {
 		frameClockPrivateStruct = gi.StructNew("Gdk", "FrameClockPrivate")
 	})
 }
@@ -737,10 +732,10 @@ type FrameClockPrivate struct {
 }
 
 var frameTimingsStruct *gi.Struct
-var frameTimingsStructOnce sync.Once
+var frameTimingsStruct_Once sync.Once
 
-func frameTimingsStructSet() {
-	frameTimingsStructOnce.Do(func() {
+func frameTimingsStruct_Set() {
+	frameTimingsStruct_Once.Do(func() {
 		frameTimingsStruct = gi.StructNew("Gdk", "FrameTimings")
 	})
 }
@@ -756,11 +751,10 @@ var frameTimingsGetFrameCounterFunction_Once sync.Once
 
 func frameTimingsGetFrameCounterFunction_Set() {
 	frameTimingsGetFrameCounterFunction_Once.Do(func() {
-		frameTimingsGetFrameCounterFunction = gi.FunctionInvokerNew("Gdk", "get_frame_counter")
+		frameTimingsStruct_Set()
+		frameTimingsGetFrameCounterFunction = frameTimingsStruct.InvokerNew("get_frame_counter")
 	})
 }
-
-var getFrameCounterFrameTimingsInvoker *gi.Function
 
 // GetFrameCounter is a representation of the C type gdk_frame_timings_get_frame_counter.
 func (recv *FrameTimings) GetFrameCounter() int64 {
@@ -781,11 +775,10 @@ var frameTimingsGetFrameTimeFunction_Once sync.Once
 
 func frameTimingsGetFrameTimeFunction_Set() {
 	frameTimingsGetFrameTimeFunction_Once.Do(func() {
-		frameTimingsGetFrameTimeFunction = gi.FunctionInvokerNew("Gdk", "get_frame_time")
+		frameTimingsStruct_Set()
+		frameTimingsGetFrameTimeFunction = frameTimingsStruct.InvokerNew("get_frame_time")
 	})
 }
-
-var getFrameTimeFrameTimingsInvoker *gi.Function
 
 // GetFrameTime is a representation of the C type gdk_frame_timings_get_frame_time.
 func (recv *FrameTimings) GetFrameTime() int64 {
@@ -806,11 +799,10 @@ var frameTimingsGetPredictedPresentationTimeFunction_Once sync.Once
 
 func frameTimingsGetPredictedPresentationTimeFunction_Set() {
 	frameTimingsGetPredictedPresentationTimeFunction_Once.Do(func() {
-		frameTimingsGetPredictedPresentationTimeFunction = gi.FunctionInvokerNew("Gdk", "get_predicted_presentation_time")
+		frameTimingsStruct_Set()
+		frameTimingsGetPredictedPresentationTimeFunction = frameTimingsStruct.InvokerNew("get_predicted_presentation_time")
 	})
 }
-
-var getPredictedPresentationTimeFrameTimingsInvoker *gi.Function
 
 // GetPredictedPresentationTime is a representation of the C type gdk_frame_timings_get_predicted_presentation_time.
 func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
@@ -831,11 +823,10 @@ var frameTimingsGetPresentationTimeFunction_Once sync.Once
 
 func frameTimingsGetPresentationTimeFunction_Set() {
 	frameTimingsGetPresentationTimeFunction_Once.Do(func() {
-		frameTimingsGetPresentationTimeFunction = gi.FunctionInvokerNew("Gdk", "get_presentation_time")
+		frameTimingsStruct_Set()
+		frameTimingsGetPresentationTimeFunction = frameTimingsStruct.InvokerNew("get_presentation_time")
 	})
 }
-
-var getPresentationTimeFrameTimingsInvoker *gi.Function
 
 // GetPresentationTime is a representation of the C type gdk_frame_timings_get_presentation_time.
 func (recv *FrameTimings) GetPresentationTime() int64 {
@@ -856,11 +847,10 @@ var frameTimingsGetRefreshIntervalFunction_Once sync.Once
 
 func frameTimingsGetRefreshIntervalFunction_Set() {
 	frameTimingsGetRefreshIntervalFunction_Once.Do(func() {
-		frameTimingsGetRefreshIntervalFunction = gi.FunctionInvokerNew("Gdk", "get_refresh_interval")
+		frameTimingsStruct_Set()
+		frameTimingsGetRefreshIntervalFunction = frameTimingsStruct.InvokerNew("get_refresh_interval")
 	})
 }
-
-var getRefreshIntervalFrameTimingsInvoker *gi.Function
 
 // GetRefreshInterval is a representation of the C type gdk_frame_timings_get_refresh_interval.
 func (recv *FrameTimings) GetRefreshInterval() int64 {
@@ -881,11 +871,10 @@ var frameTimingsRefFunction_Once sync.Once
 
 func frameTimingsRefFunction_Set() {
 	frameTimingsRefFunction_Once.Do(func() {
-		frameTimingsRefFunction = gi.FunctionInvokerNew("Gdk", "ref")
+		frameTimingsStruct_Set()
+		frameTimingsRefFunction = frameTimingsStruct.InvokerNew("ref")
 	})
 }
-
-var refFrameTimingsInvoker *gi.Function
 
 // Ref is a representation of the C type gdk_frame_timings_ref.
 func (recv *FrameTimings) Ref() *FrameTimings {
@@ -906,11 +895,10 @@ var frameTimingsUnrefFunction_Once sync.Once
 
 func frameTimingsUnrefFunction_Set() {
 	frameTimingsUnrefFunction_Once.Do(func() {
-		frameTimingsUnrefFunction = gi.FunctionInvokerNew("Gdk", "unref")
+		frameTimingsStruct_Set()
+		frameTimingsUnrefFunction = frameTimingsStruct.InvokerNew("unref")
 	})
 }
-
-var unrefFrameTimingsInvoker *gi.Function
 
 // Unref is a representation of the C type gdk_frame_timings_unref.
 func (recv *FrameTimings) Unref() {
@@ -924,10 +912,10 @@ func (recv *FrameTimings) Unref() {
 }
 
 var geometryStruct *gi.Struct
-var geometryStructOnce sync.Once
+var geometryStruct_Once sync.Once
 
-func geometryStructSet() {
-	geometryStructOnce.Do(func() {
+func geometryStruct_Set() {
+	geometryStruct_Once.Do(func() {
 		geometryStruct = gi.StructNew("Gdk", "Geometry")
 	})
 }
@@ -948,10 +936,10 @@ type Geometry struct {
 }
 
 var keymapKeyStruct *gi.Struct
-var keymapKeyStructOnce sync.Once
+var keymapKeyStruct_Once sync.Once
 
-func keymapKeyStructSet() {
-	keymapKeyStructOnce.Do(func() {
+func keymapKeyStruct_Set() {
+	keymapKeyStruct_Once.Do(func() {
 		keymapKeyStruct = gi.StructNew("Gdk", "KeymapKey")
 	})
 }
@@ -964,10 +952,10 @@ type KeymapKey struct {
 }
 
 var monitorClassStruct *gi.Struct
-var monitorClassStructOnce sync.Once
+var monitorClassStruct_Once sync.Once
 
-func monitorClassStructSet() {
-	monitorClassStructOnce.Do(func() {
+func monitorClassStruct_Set() {
+	monitorClassStruct_Once.Do(func() {
 		monitorClassStruct = gi.StructNew("Gdk", "MonitorClass")
 	})
 }
@@ -977,10 +965,10 @@ type MonitorClass struct {
 }
 
 var pointStruct *gi.Struct
-var pointStructOnce sync.Once
+var pointStruct_Once sync.Once
 
-func pointStructSet() {
-	pointStructOnce.Do(func() {
+func pointStruct_Set() {
+	pointStruct_Once.Do(func() {
 		pointStruct = gi.StructNew("Gdk", "Point")
 	})
 }
@@ -992,10 +980,10 @@ type Point struct {
 }
 
 var rGBAStruct *gi.Struct
-var rGBAStructOnce sync.Once
+var rGBAStruct_Once sync.Once
 
-func rGBAStructSet() {
-	rGBAStructOnce.Do(func() {
+func rGBAStruct_Set() {
+	rGBAStruct_Once.Do(func() {
 		rGBAStruct = gi.StructNew("Gdk", "RGBA")
 	})
 }
@@ -1013,11 +1001,10 @@ var rGBACopyFunction_Once sync.Once
 
 func rGBACopyFunction_Set() {
 	rGBACopyFunction_Once.Do(func() {
-		rGBACopyFunction = gi.FunctionInvokerNew("Gdk", "copy")
+		rGBAStruct_Set()
+		rGBACopyFunction = rGBAStruct.InvokerNew("copy")
 	})
 }
-
-var copyRGBAInvoker *gi.Function
 
 // Copy is a representation of the C type gdk_rgba_copy.
 func (recv *RGBA) Copy() *RGBA {
@@ -1040,11 +1027,10 @@ var rGBAFreeFunction_Once sync.Once
 
 func rGBAFreeFunction_Set() {
 	rGBAFreeFunction_Once.Do(func() {
-		rGBAFreeFunction = gi.FunctionInvokerNew("Gdk", "free")
+		rGBAStruct_Set()
+		rGBAFreeFunction = rGBAStruct.InvokerNew("free")
 	})
 }
-
-var freeRGBAInvoker *gi.Function
 
 // Free is a representation of the C type gdk_rgba_free.
 func (recv *RGBA) Free() {
@@ -1062,11 +1048,10 @@ var rGBAHashFunction_Once sync.Once
 
 func rGBAHashFunction_Set() {
 	rGBAHashFunction_Once.Do(func() {
-		rGBAHashFunction = gi.FunctionInvokerNew("Gdk", "hash")
+		rGBAStruct_Set()
+		rGBAHashFunction = rGBAStruct.InvokerNew("hash")
 	})
 }
-
-var hashRGBAInvoker *gi.Function
 
 // Hash is a representation of the C type gdk_rgba_hash.
 func (recv *RGBA) Hash() uint32 {
@@ -1089,11 +1074,10 @@ var rGBAToStringFunction_Once sync.Once
 
 func rGBAToStringFunction_Set() {
 	rGBAToStringFunction_Once.Do(func() {
-		rGBAToStringFunction = gi.FunctionInvokerNew("Gdk", "to_string")
+		rGBAStruct_Set()
+		rGBAToStringFunction = rGBAStruct.InvokerNew("to_string")
 	})
 }
-
-var toStringRGBAInvoker *gi.Function
 
 // ToString is a representation of the C type gdk_rgba_to_string.
 func (recv *RGBA) ToString() string {
@@ -1110,10 +1094,10 @@ func (recv *RGBA) ToString() string {
 }
 
 var rectangleStruct *gi.Struct
-var rectangleStructOnce sync.Once
+var rectangleStruct_Once sync.Once
 
-func rectangleStructSet() {
-	rectangleStructOnce.Do(func() {
+func rectangleStruct_Set() {
+	rectangleStruct_Once.Do(func() {
 		rectangleStruct = gi.StructNew("Gdk", "Rectangle")
 	})
 }
@@ -1133,10 +1117,10 @@ type Rectangle struct {
 // UNSUPPORTED : C value 'gdk_rectangle_union' : parameter 'src2' of type 'Rectangle' not supported
 
 var timeCoordStruct *gi.Struct
-var timeCoordStructOnce sync.Once
+var timeCoordStruct_Once sync.Once
 
-func timeCoordStructSet() {
-	timeCoordStructOnce.Do(func() {
+func timeCoordStruct_Set() {
+	timeCoordStruct_Once.Do(func() {
 		timeCoordStruct = gi.StructNew("Gdk", "TimeCoord")
 	})
 }
@@ -1148,10 +1132,10 @@ type TimeCoord struct {
 }
 
 var windowAttrStruct *gi.Struct
-var windowAttrStructOnce sync.Once
+var windowAttrStruct_Once sync.Once
 
-func windowAttrStructSet() {
-	windowAttrStructOnce.Do(func() {
+func windowAttrStruct_Set() {
+	windowAttrStruct_Once.Do(func() {
 		windowAttrStruct = gi.StructNew("Gdk", "WindowAttr")
 	})
 }
@@ -1175,10 +1159,10 @@ type WindowAttr struct {
 }
 
 var windowClassStruct *gi.Struct
-var windowClassStructOnce sync.Once
+var windowClassStruct_Once sync.Once
 
-func windowClassStructSet() {
-	windowClassStructOnce.Do(func() {
+func windowClassStruct_Set() {
+	windowClassStruct_Once.Do(func() {
 		windowClassStruct = gi.StructNew("Gdk", "WindowClass")
 	})
 }
@@ -1201,10 +1185,10 @@ type WindowClass struct {
 }
 
 var windowRedirectStruct *gi.Struct
-var windowRedirectStructOnce sync.Once
+var windowRedirectStruct_Once sync.Once
 
-func windowRedirectStructSet() {
-	windowRedirectStructOnce.Do(func() {
+func windowRedirectStruct_Set() {
+	windowRedirectStruct_Once.Do(func() {
 		windowRedirectStruct = gi.StructNew("Gdk", "WindowRedirect")
 	})
 }

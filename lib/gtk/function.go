@@ -50,8 +50,6 @@ func bindingSetFindFunction_Set() {
 	})
 }
 
-var bindingSetFindInvoker *gi.Function
-
 // BindingSetFind is a representation of the C type gtk_binding_set_find.
 func BindingSetFind(setName string) *BindingSet {
 	bindingSetFindFunction_Set()
@@ -74,8 +72,6 @@ func bindingSetNewFunction_Set() {
 		bindingSetNewFunction = gi.FunctionInvokerNew("Gtk", "binding_set_new")
 	})
 }
-
-var bindingSetNewInvoker *gi.Function
 
 // BindingSetNew is a representation of the C type gtk_binding_set_new.
 func BindingSetNew(setName string) *BindingSet {
@@ -110,8 +106,6 @@ func checkVersionFunction_Set() {
 	})
 }
 
-var checkVersionInvoker *gi.Function
-
 // CheckVersion is a representation of the C type gtk_check_version.
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
 	checkVersionFunction_Set()
@@ -142,8 +136,6 @@ func disableSetlocaleFunction_Set() {
 		disableSetlocaleFunction = gi.FunctionInvokerNew("Gtk", "disable_setlocale")
 	})
 }
-
-var disableSetlocaleInvoker *gi.Function
 
 // DisableSetlocale is a representation of the C type gtk_disable_setlocale.
 func DisableSetlocale() {
@@ -192,8 +184,6 @@ func getBinaryAgeFunction_Set() {
 	})
 }
 
-var getBinaryAgeInvoker *gi.Function
-
 // GetBinaryAge is a representation of the C type gtk_get_binary_age.
 func GetBinaryAge() uint32 {
 	getBinaryAgeFunction_Set()
@@ -220,8 +210,6 @@ func getCurrentEventTimeFunction_Set() {
 	})
 }
 
-var getCurrentEventTimeInvoker *gi.Function
-
 // GetCurrentEventTime is a representation of the C type gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
 	getCurrentEventTimeFunction_Set()
@@ -241,8 +229,6 @@ func getDebugFlagsFunction_Set() {
 		getDebugFlagsFunction = gi.FunctionInvokerNew("Gtk", "get_debug_flags")
 	})
 }
-
-var getDebugFlagsInvoker *gi.Function
 
 // GetDebugFlags is a representation of the C type gtk_get_debug_flags.
 func GetDebugFlags() uint32 {
@@ -268,8 +254,6 @@ func getInterfaceAgeFunction_Set() {
 	})
 }
 
-var getInterfaceAgeInvoker *gi.Function
-
 // GetInterfaceAge is a representation of the C type gtk_get_interface_age.
 func GetInterfaceAge() uint32 {
 	getInterfaceAgeFunction_Set()
@@ -292,8 +276,6 @@ func getMajorVersionFunction_Set() {
 	})
 }
 
-var getMajorVersionInvoker *gi.Function
-
 // GetMajorVersion is a representation of the C type gtk_get_major_version.
 func GetMajorVersion() uint32 {
 	getMajorVersionFunction_Set()
@@ -314,8 +296,6 @@ func getMicroVersionFunction_Set() {
 	})
 }
 
-var getMicroVersionInvoker *gi.Function
-
 // GetMicroVersion is a representation of the C type gtk_get_micro_version.
 func GetMicroVersion() uint32 {
 	getMicroVersionFunction_Set()
@@ -335,8 +315,6 @@ func getMinorVersionFunction_Set() {
 		getMinorVersionFunction = gi.FunctionInvokerNew("Gtk", "get_minor_version")
 	})
 }
-
-var getMinorVersionInvoker *gi.Function
 
 // GetMinorVersion is a representation of the C type gtk_get_minor_version.
 func GetMinorVersion() uint32 {
@@ -384,8 +362,6 @@ func keySnooperRemoveFunction_Set() {
 	})
 }
 
-var keySnooperRemoveInvoker *gi.Function
-
 // KeySnooperRemove is a representation of the C type gtk_key_snooper_remove.
 func KeySnooperRemove(snooperHandlerId uint32) {
 	keySnooperRemoveFunction_Set()
@@ -405,8 +381,6 @@ func mainFunction_Set() {
 		mainFunction = gi.FunctionInvokerNew("Gtk", "main")
 	})
 }
-
-var mainInvoker *gi.Function
 
 // Main is a representation of the C type gtk_main.
 func Main() {
@@ -431,8 +405,6 @@ func mainLevelFunction_Set() {
 	})
 }
 
-var mainLevelInvoker *gi.Function
-
 // MainLevel is a representation of the C type gtk_main_level.
 func MainLevel() uint32 {
 	mainLevelFunction_Set()
@@ -452,8 +424,6 @@ func mainQuitFunction_Set() {
 		mainQuitFunction = gi.FunctionInvokerNew("Gtk", "main_quit")
 	})
 }
-
-var mainQuitInvoker *gi.Function
 
 // MainQuit is a representation of the C type gtk_main_quit.
 func MainQuit() {
@@ -512,8 +482,6 @@ func paperSizeGetDefaultFunction_Set() {
 	})
 }
 
-var paperSizeGetDefaultInvoker *gi.Function
-
 // PaperSizeGetDefault is a representation of the C type gtk_paper_size_get_default.
 func PaperSizeGetDefault() string {
 	paperSizeGetDefaultFunction_Set()
@@ -552,8 +520,6 @@ func rcGetDefaultFilesFunction_Set() {
 	})
 }
 
-var rcGetDefaultFilesInvoker *gi.Function
-
 // RcGetDefaultFiles is a representation of the C type gtk_rc_get_default_files.
 func RcGetDefaultFiles() {
 	rcGetDefaultFilesFunction_Set()
@@ -581,8 +547,6 @@ func rcGetThemeDirFunction_Set() {
 	})
 }
 
-var rcGetThemeDirInvoker *gi.Function
-
 // RcGetThemeDir is a representation of the C type gtk_rc_get_theme_dir.
 func RcGetThemeDir() string {
 	rcGetThemeDirFunction_Set()
@@ -602,8 +566,6 @@ func rcParseFunction_Set() {
 		rcParseFunction = gi.FunctionInvokerNew("Gtk", "rc_parse")
 	})
 }
-
-var rcParseInvoker *gi.Function
 
 // RcParse is a representation of the C type gtk_rc_parse.
 func RcParse(filename string) {
@@ -632,8 +594,6 @@ func rcParseStringFunction_Set() {
 		rcParseStringFunction = gi.FunctionInvokerNew("Gtk", "rc_parse_string")
 	})
 }
-
-var rcParseStringInvoker *gi.Function
 
 // RcParseString is a representation of the C type gtk_rc_parse_string.
 func RcParseString(rcString string) {
@@ -733,8 +693,6 @@ func setDebugFlagsFunction_Set() {
 	})
 }
 
-var setDebugFlagsInvoker *gi.Function
-
 // SetDebugFlags is a representation of the C type gtk_set_debug_flags.
 func SetDebugFlags(flags uint32) {
 	setDebugFlagsFunction_Set()
@@ -797,8 +755,6 @@ func testListAllTypesFunction_Set() {
 	})
 }
 
-var testListAllTypesInvoker *gi.Function
-
 // TestListAllTypes is a representation of the C type gtk_test_list_all_types.
 func TestListAllTypes() uint32 {
 	testListAllTypesFunction_Set()
@@ -820,8 +776,6 @@ func testRegisterAllTypesFunction_Set() {
 		testRegisterAllTypesFunction = gi.FunctionInvokerNew("Gtk", "test_register_all_types")
 	})
 }
-
-var testRegisterAllTypesInvoker *gi.Function
 
 // TestRegisterAllTypes is a representation of the C type gtk_test_register_all_types.
 func TestRegisterAllTypes() {
