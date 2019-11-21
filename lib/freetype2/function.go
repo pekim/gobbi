@@ -2,7 +2,19 @@
 
 package freetype2
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var LibraryVersionFunction *gi.Function
+var LibraryVersionFunctionOnce sync.Once
+
+func LibraryVersionFunctionSet() {
+	LibraryVersionFunctionOnce.Do(func() {
+		LibraryVersionFunction = gi.FunctionInvokerNew("freetype2", "library_version")
+	})
+}
 
 var libraryVersionInvoker *gi.Function
 

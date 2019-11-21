@@ -2,7 +2,19 @@
 
 package javascriptcore
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var GetMajorVersionFunction *gi.Function
+var GetMajorVersionFunctionOnce sync.Once
+
+func GetMajorVersionFunctionSet() {
+	GetMajorVersionFunctionOnce.Do(func() {
+		GetMajorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_major_version")
+	})
+}
 
 var getMajorVersionInvoker *gi.Function
 
@@ -19,6 +31,15 @@ func GetMajorVersion() uint32 {
 	return retGo
 }
 
+var GetMicroVersionFunction *gi.Function
+var GetMicroVersionFunctionOnce sync.Once
+
+func GetMicroVersionFunctionSet() {
+	GetMicroVersionFunctionOnce.Do(func() {
+		GetMicroVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_micro_version")
+	})
+}
+
 var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
@@ -32,6 +53,15 @@ func GetMicroVersion() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var GetMinorVersionFunction *gi.Function
+var GetMinorVersionFunctionOnce sync.Once
+
+func GetMinorVersionFunctionSet() {
+	GetMinorVersionFunctionOnce.Do(func() {
+		GetMinorVersionFunction = gi.FunctionInvokerNew("JavaScriptCore", "get_minor_version")
+	})
 }
 
 var getMinorVersionInvoker *gi.Function

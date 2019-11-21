@@ -22,21 +22,23 @@ type Record struct {
 	Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
-	goName                  string
+	goName           string
+	namespace        *Namespace
+	newFromCFuncName string
+
 	structInfoGoName        string
 	structInfoOnceGoName    string
 	structInfoSetFuncGoName string
-	namespace               *Namespace
-	newFromCFuncName        string
 }
 
 func (r *Record) init(ns *Namespace) {
 	r.namespace = ns
 	r.goName = r.Name
-	r.structInfoGoName = fmt.Sprintf("%sStruct", makeUnexportedGoName(r.Name, false))
+	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
+
+	r.structInfoGoName = fmt.Sprintf("%sStruct", makeUnexportedGoName(r.Name))
 	r.structInfoOnceGoName = fmt.Sprintf("%sOnce", r.structInfoGoName)
 	r.structInfoSetFuncGoName = fmt.Sprintf("%sSet", r.structInfoGoName)
-	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
 	r.Constructors.init(ns, r)
 	r.Functions.init(ns /*r.GoName*/)
@@ -46,13 +48,13 @@ func (r *Record) init(ns *Namespace) {
 }
 
 func (r *Record) generate(f *file) {
-	r.generateStructIno(f)
+	r.generateStructInfo(f)
 	r.generateType(f)
 	r.Constructors.generate(f)
 	r.Methods.generate(f)
 }
 
-func (r *Record) generateStructIno(f *file) {
+func (r *Record) generateStructInfo(f *file) {
 	// var colorStruct *gi.Struct
 	f.
 		Var().

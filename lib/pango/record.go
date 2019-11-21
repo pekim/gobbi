@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var AnalysisStruct *gi.Struct
-var AnalysisStructOnce sync.Once
+var analysisStruct *gi.Struct
+var analysisStructOnce sync.Once
 
-func AnalysisStructSet() {
-	AnalysisStructOnce.Do(func() {
-		AnalysisStruct = gi.StructNew("Pango", "Analysis")
+func analysisStructSet() {
+	analysisStructOnce.Do(func() {
+		analysisStruct = gi.StructNew("Pango", "Analysis")
 	})
 }
 
@@ -29,12 +29,12 @@ type Analysis struct {
 	// UNSUPPORTED : C value 'extra_attrs' : no Go type for 'GLib.SList'
 }
 
-var AttrClassStruct *gi.Struct
-var AttrClassStructOnce sync.Once
+var attrClassStruct *gi.Struct
+var attrClassStructOnce sync.Once
 
-func AttrClassStructSet() {
-	AttrClassStructOnce.Do(func() {
-		AttrClassStruct = gi.StructNew("Pango", "AttrClass")
+func attrClassStructSet() {
+	attrClassStructOnce.Do(func() {
+		attrClassStruct = gi.StructNew("Pango", "AttrClass")
 	})
 }
 
@@ -46,12 +46,12 @@ type AttrClass struct {
 	// UNSUPPORTED : C value 'equal' : missing Type
 }
 
-var AttrColorStruct *gi.Struct
-var AttrColorStructOnce sync.Once
+var attrColorStruct *gi.Struct
+var attrColorStructOnce sync.Once
 
-func AttrColorStructSet() {
-	AttrColorStructOnce.Do(func() {
-		AttrColorStruct = gi.StructNew("Pango", "AttrColor")
+func attrColorStructSet() {
+	attrColorStructOnce.Do(func() {
+		attrColorStruct = gi.StructNew("Pango", "AttrColor")
 	})
 }
 
@@ -61,12 +61,12 @@ type AttrColor struct {
 	Color  *Color
 }
 
-var AttrFloatStruct *gi.Struct
-var AttrFloatStructOnce sync.Once
+var attrFloatStruct *gi.Struct
+var attrFloatStructOnce sync.Once
 
-func AttrFloatStructSet() {
-	AttrFloatStructOnce.Do(func() {
-		AttrFloatStruct = gi.StructNew("Pango", "AttrFloat")
+func attrFloatStructSet() {
+	attrFloatStructOnce.Do(func() {
+		attrFloatStruct = gi.StructNew("Pango", "AttrFloat")
 	})
 }
 
@@ -76,12 +76,12 @@ type AttrFloat struct {
 	// UNSUPPORTED : C value 'value' : no Go type for 'gdouble'
 }
 
-var AttrFontDescStruct *gi.Struct
-var AttrFontDescStructOnce sync.Once
+var attrFontDescStruct *gi.Struct
+var attrFontDescStructOnce sync.Once
 
-func AttrFontDescStructSet() {
-	AttrFontDescStructOnce.Do(func() {
-		AttrFontDescStruct = gi.StructNew("Pango", "AttrFontDesc")
+func attrFontDescStructSet() {
+	attrFontDescStructOnce.Do(func() {
+		attrFontDescStruct = gi.StructNew("Pango", "AttrFontDesc")
 	})
 }
 
@@ -91,12 +91,12 @@ type AttrFontDesc struct {
 	Desc   *FontDescription
 }
 
-var AttrFontFeaturesStruct *gi.Struct
-var AttrFontFeaturesStructOnce sync.Once
+var attrFontFeaturesStruct *gi.Struct
+var attrFontFeaturesStructOnce sync.Once
 
-func AttrFontFeaturesStructSet() {
-	AttrFontFeaturesStructOnce.Do(func() {
-		AttrFontFeaturesStruct = gi.StructNew("Pango", "AttrFontFeatures")
+func attrFontFeaturesStructSet() {
+	attrFontFeaturesStructOnce.Do(func() {
+		attrFontFeaturesStruct = gi.StructNew("Pango", "AttrFontFeatures")
 	})
 }
 
@@ -106,12 +106,12 @@ type AttrFontFeatures struct {
 	Features string
 }
 
-var AttrIntStruct *gi.Struct
-var AttrIntStructOnce sync.Once
+var attrIntStruct *gi.Struct
+var attrIntStructOnce sync.Once
 
-func AttrIntStructSet() {
-	AttrIntStructOnce.Do(func() {
-		AttrIntStruct = gi.StructNew("Pango", "AttrInt")
+func attrIntStructSet() {
+	attrIntStructOnce.Do(func() {
+		attrIntStruct = gi.StructNew("Pango", "AttrInt")
 	})
 }
 
@@ -121,17 +121,26 @@ type AttrInt struct {
 	Value  int32
 }
 
-var AttrIteratorStruct *gi.Struct
-var AttrIteratorStructOnce sync.Once
+var attrIteratorStruct *gi.Struct
+var attrIteratorStructOnce sync.Once
 
-func AttrIteratorStructSet() {
-	AttrIteratorStructOnce.Do(func() {
-		AttrIteratorStruct = gi.StructNew("Pango", "AttrIterator")
+func attrIteratorStructSet() {
+	attrIteratorStructOnce.Do(func() {
+		attrIteratorStruct = gi.StructNew("Pango", "AttrIterator")
 	})
 }
 
 type AttrIterator struct {
 	native uintptr
+}
+
+var attrIteratorCopyFunction *gi.Function
+var attrIteratorCopyFunctionOnce sync.Once
+
+func attrIteratorCopyFunctionSet() {
+	attrIteratorCopyFunctionOnce.Do(func() {
+		attrIteratorCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyAttrIteratorInvoker *gi.Function
@@ -150,6 +159,15 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 	retGo := &AttrIterator{native: ret.Pointer()}
 
 	return retGo
+}
+
+var attrIteratorDestroyFunction *gi.Function
+var attrIteratorDestroyFunctionOnce sync.Once
+
+func attrIteratorDestroyFunctionSet() {
+	attrIteratorDestroyFunctionOnce.Do(func() {
+		attrIteratorDestroyFunction = gi.FunctionInvokerNew("Pango", "destroy")
+	})
 }
 
 var destroyAttrIteratorInvoker *gi.Function
@@ -175,6 +193,15 @@ func (recv *AttrIterator) Destroy() {
 
 // UNSUPPORTED : C value 'pango_attr_iterator_next' : return type 'gboolean' not supported
 
+var attrIteratorRangeFunction *gi.Function
+var attrIteratorRangeFunctionOnce sync.Once
+
+func attrIteratorRangeFunctionSet() {
+	attrIteratorRangeFunctionOnce.Do(func() {
+		attrIteratorRangeFunction = gi.FunctionInvokerNew("Pango", "range")
+	})
+}
+
 var rangeAttrIteratorInvoker *gi.Function
 
 // Range is a representation of the C type pango_attr_iterator_range.
@@ -196,12 +223,12 @@ func (recv *AttrIterator) Range() (int32, int32) {
 	return out0, out1
 }
 
-var AttrLanguageStruct *gi.Struct
-var AttrLanguageStructOnce sync.Once
+var attrLanguageStruct *gi.Struct
+var attrLanguageStructOnce sync.Once
 
-func AttrLanguageStructSet() {
-	AttrLanguageStructOnce.Do(func() {
-		AttrLanguageStruct = gi.StructNew("Pango", "AttrLanguage")
+func attrLanguageStructSet() {
+	attrLanguageStructOnce.Do(func() {
+		attrLanguageStruct = gi.StructNew("Pango", "AttrLanguage")
 	})
 }
 
@@ -211,17 +238,26 @@ type AttrLanguage struct {
 	Value  *Language
 }
 
-var AttrListStruct *gi.Struct
-var AttrListStructOnce sync.Once
+var attrListStruct *gi.Struct
+var attrListStructOnce sync.Once
 
-func AttrListStructSet() {
-	AttrListStructOnce.Do(func() {
-		AttrListStruct = gi.StructNew("Pango", "AttrList")
+func attrListStructSet() {
+	attrListStructOnce.Do(func() {
+		attrListStruct = gi.StructNew("Pango", "AttrList")
 	})
 }
 
 type AttrList struct {
 	native uintptr
+}
+
+var attrListNewFunction *gi.Function
+var attrListNewFunctionOnce sync.Once
+
+func attrListNewFunctionSet() {
+	attrListNewFunctionOnce.Do(func() {
+		attrListNewFunction = gi.FunctionInvokerNew("Pango", "new")
+	})
 }
 
 var newAttrListInvoker *gi.Function
@@ -240,6 +276,15 @@ func AttrListNew() *AttrList {
 }
 
 // UNSUPPORTED : C value 'pango_attr_list_change' : parameter 'attr' of type 'Attribute' not supported
+
+var attrListCopyFunction *gi.Function
+var attrListCopyFunctionOnce sync.Once
+
+func attrListCopyFunctionSet() {
+	attrListCopyFunctionOnce.Do(func() {
+		attrListCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
+}
 
 var copyAttrListInvoker *gi.Function
 
@@ -260,6 +305,15 @@ func (recv *AttrList) Copy() *AttrList {
 }
 
 // UNSUPPORTED : C value 'pango_attr_list_filter' : parameter 'func' of type 'AttrFilterFunc' not supported
+
+var attrListGetIteratorFunction *gi.Function
+var attrListGetIteratorFunctionOnce sync.Once
+
+func attrListGetIteratorFunctionSet() {
+	attrListGetIteratorFunctionOnce.Do(func() {
+		attrListGetIteratorFunction = gi.FunctionInvokerNew("Pango", "get_iterator")
+	})
+}
 
 var getIteratorAttrListInvoker *gi.Function
 
@@ -283,6 +337,15 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 
 // UNSUPPORTED : C value 'pango_attr_list_insert_before' : parameter 'attr' of type 'Attribute' not supported
 
+var attrListRefFunction *gi.Function
+var attrListRefFunctionOnce sync.Once
+
+func attrListRefFunctionSet() {
+	attrListRefFunctionOnce.Do(func() {
+		attrListRefFunction = gi.FunctionInvokerNew("Pango", "ref")
+	})
+}
+
 var refAttrListInvoker *gi.Function
 
 // Ref is a representation of the C type pango_attr_list_ref.
@@ -303,6 +366,15 @@ func (recv *AttrList) Ref() *AttrList {
 
 // UNSUPPORTED : C value 'pango_attr_list_splice' : parameter 'other' of type 'AttrList' not supported
 
+var attrListUnrefFunction *gi.Function
+var attrListUnrefFunctionOnce sync.Once
+
+func attrListUnrefFunctionSet() {
+	attrListUnrefFunctionOnce.Do(func() {
+		attrListUnrefFunction = gi.FunctionInvokerNew("Pango", "unref")
+	})
+}
+
 var unrefAttrListInvoker *gi.Function
 
 // Unref is a representation of the C type pango_attr_list_unref.
@@ -318,12 +390,12 @@ func (recv *AttrList) Unref() {
 
 }
 
-var AttrShapeStruct *gi.Struct
-var AttrShapeStructOnce sync.Once
+var attrShapeStruct *gi.Struct
+var attrShapeStructOnce sync.Once
 
-func AttrShapeStructSet() {
-	AttrShapeStructOnce.Do(func() {
-		AttrShapeStruct = gi.StructNew("Pango", "AttrShape")
+func attrShapeStructSet() {
+	attrShapeStructOnce.Do(func() {
+		attrShapeStruct = gi.StructNew("Pango", "AttrShape")
 	})
 }
 
@@ -337,12 +409,12 @@ type AttrShape struct {
 	// UNSUPPORTED : C value 'destroy_func' : no Go type for 'GLib.DestroyNotify'
 }
 
-var AttrSizeStruct *gi.Struct
-var AttrSizeStructOnce sync.Once
+var attrSizeStruct *gi.Struct
+var attrSizeStructOnce sync.Once
 
-func AttrSizeStructSet() {
-	AttrSizeStructOnce.Do(func() {
-		AttrSizeStruct = gi.StructNew("Pango", "AttrSize")
+func attrSizeStructSet() {
+	attrSizeStructOnce.Do(func() {
+		attrSizeStruct = gi.StructNew("Pango", "AttrSize")
 	})
 }
 
@@ -353,12 +425,12 @@ type AttrSize struct {
 	Absolute uint32
 }
 
-var AttrStringStruct *gi.Struct
-var AttrStringStructOnce sync.Once
+var attrStringStruct *gi.Struct
+var attrStringStructOnce sync.Once
 
-func AttrStringStructSet() {
-	AttrStringStructOnce.Do(func() {
-		AttrStringStruct = gi.StructNew("Pango", "AttrString")
+func attrStringStructSet() {
+	attrStringStructOnce.Do(func() {
+		attrStringStruct = gi.StructNew("Pango", "AttrString")
 	})
 }
 
@@ -368,12 +440,12 @@ type AttrString struct {
 	Value  string
 }
 
-var AttributeStruct *gi.Struct
-var AttributeStructOnce sync.Once
+var attributeStruct *gi.Struct
+var attributeStructOnce sync.Once
 
-func AttributeStructSet() {
-	AttributeStructOnce.Do(func() {
-		AttributeStruct = gi.StructNew("Pango", "Attribute")
+func attributeStructSet() {
+	attributeStructOnce.Do(func() {
+		attributeStruct = gi.StructNew("Pango", "Attribute")
 	})
 }
 
@@ -382,6 +454,15 @@ type Attribute struct {
 	Klass      *AttrClass
 	StartIndex uint32
 	EndIndex   uint32
+}
+
+var attributeCopyFunction *gi.Function
+var attributeCopyFunctionOnce sync.Once
+
+func attributeCopyFunctionSet() {
+	attributeCopyFunctionOnce.Do(func() {
+		attributeCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyAttributeInvoker *gi.Function
@@ -400,6 +481,15 @@ func (recv *Attribute) Copy() *Attribute {
 	retGo := &Attribute{native: ret.Pointer()}
 
 	return retGo
+}
+
+var attributeDestroyFunction *gi.Function
+var attributeDestroyFunctionOnce sync.Once
+
+func attributeDestroyFunctionSet() {
+	attributeDestroyFunctionOnce.Do(func() {
+		attributeDestroyFunction = gi.FunctionInvokerNew("Pango", "destroy")
+	})
 }
 
 var destroyAttributeInvoker *gi.Function
@@ -421,12 +511,12 @@ func (recv *Attribute) Destroy() {
 
 // UNSUPPORTED : C value 'pango_attribute_init' : parameter 'klass' of type 'AttrClass' not supported
 
-var ColorStruct *gi.Struct
-var ColorStructOnce sync.Once
+var colorStruct *gi.Struct
+var colorStructOnce sync.Once
 
-func ColorStructSet() {
-	ColorStructOnce.Do(func() {
-		ColorStruct = gi.StructNew("Pango", "Color")
+func colorStructSet() {
+	colorStructOnce.Do(func() {
+		colorStruct = gi.StructNew("Pango", "Color")
 	})
 }
 
@@ -435,6 +525,15 @@ type Color struct {
 	Red    uint16
 	Green  uint16
 	Blue   uint16
+}
+
+var colorCopyFunction *gi.Function
+var colorCopyFunctionOnce sync.Once
+
+func colorCopyFunctionSet() {
+	colorCopyFunctionOnce.Do(func() {
+		colorCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyColorInvoker *gi.Function
@@ -455,6 +554,15 @@ func (recv *Color) Copy() *Color {
 	return retGo
 }
 
+var colorFreeFunction *gi.Function
+var colorFreeFunctionOnce sync.Once
+
+func colorFreeFunctionSet() {
+	colorFreeFunctionOnce.Do(func() {
+		colorFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
+}
+
 var freeColorInvoker *gi.Function
 
 // Free is a representation of the C type pango_color_free.
@@ -471,6 +579,15 @@ func (recv *Color) Free() {
 }
 
 // UNSUPPORTED : C value 'pango_color_parse' : return type 'gboolean' not supported
+
+var colorToStringFunction *gi.Function
+var colorToStringFunctionOnce sync.Once
+
+func colorToStringFunctionSet() {
+	colorToStringFunctionOnce.Do(func() {
+		colorToStringFunction = gi.FunctionInvokerNew("Pango", "to_string")
+	})
+}
 
 var toStringColorInvoker *gi.Function
 
@@ -490,12 +607,12 @@ func (recv *Color) ToString() string {
 	return retGo
 }
 
-var ContextClassStruct *gi.Struct
-var ContextClassStructOnce sync.Once
+var contextClassStruct *gi.Struct
+var contextClassStructOnce sync.Once
 
-func ContextClassStructSet() {
-	ContextClassStructOnce.Do(func() {
-		ContextClassStruct = gi.StructNew("Pango", "ContextClass")
+func contextClassStructSet() {
+	contextClassStructOnce.Do(func() {
+		contextClassStruct = gi.StructNew("Pango", "ContextClass")
 	})
 }
 
@@ -503,17 +620,26 @@ type ContextClass struct {
 	native uintptr
 }
 
-var CoverageStruct *gi.Struct
-var CoverageStructOnce sync.Once
+var coverageStruct *gi.Struct
+var coverageStructOnce sync.Once
 
-func CoverageStructSet() {
-	CoverageStructOnce.Do(func() {
-		CoverageStruct = gi.StructNew("Pango", "Coverage")
+func coverageStructSet() {
+	coverageStructOnce.Do(func() {
+		coverageStruct = gi.StructNew("Pango", "Coverage")
 	})
 }
 
 type Coverage struct {
 	native uintptr
+}
+
+var coverageCopyFunction *gi.Function
+var coverageCopyFunctionOnce sync.Once
+
+func coverageCopyFunctionSet() {
+	coverageCopyFunctionOnce.Do(func() {
+		coverageCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyCoverageInvoker *gi.Function
@@ -538,6 +664,15 @@ func (recv *Coverage) Copy() *Coverage {
 
 // UNSUPPORTED : C value 'pango_coverage_max' : parameter 'other' of type 'Coverage' not supported
 
+var coverageRefFunction *gi.Function
+var coverageRefFunctionOnce sync.Once
+
+func coverageRefFunctionSet() {
+	coverageRefFunctionOnce.Do(func() {
+		coverageRefFunction = gi.FunctionInvokerNew("Pango", "ref")
+	})
+}
+
 var refCoverageInvoker *gi.Function
 
 // Ref is a representation of the C type pango_coverage_ref.
@@ -560,6 +695,15 @@ func (recv *Coverage) Ref() *Coverage {
 
 // UNSUPPORTED : C value 'pango_coverage_to_bytes' : parameter 'bytes' has no type
 
+var coverageUnrefFunction *gi.Function
+var coverageUnrefFunctionOnce sync.Once
+
+func coverageUnrefFunctionSet() {
+	coverageUnrefFunctionOnce.Do(func() {
+		coverageUnrefFunction = gi.FunctionInvokerNew("Pango", "unref")
+	})
+}
+
 var unrefCoverageInvoker *gi.Function
 
 // Unref is a representation of the C type pango_coverage_unref.
@@ -575,12 +719,12 @@ func (recv *Coverage) Unref() {
 
 }
 
-var EngineClassStruct *gi.Struct
-var EngineClassStructOnce sync.Once
+var engineClassStruct *gi.Struct
+var engineClassStructOnce sync.Once
 
-func EngineClassStructSet() {
-	EngineClassStructOnce.Do(func() {
-		EngineClassStruct = gi.StructNew("Pango", "EngineClass")
+func engineClassStructSet() {
+	engineClassStructOnce.Do(func() {
+		engineClassStruct = gi.StructNew("Pango", "EngineClass")
 	})
 }
 
@@ -588,12 +732,12 @@ type EngineClass struct {
 	native uintptr
 }
 
-var EngineInfoStruct *gi.Struct
-var EngineInfoStructOnce sync.Once
+var engineInfoStruct *gi.Struct
+var engineInfoStructOnce sync.Once
 
-func EngineInfoStructSet() {
-	EngineInfoStructOnce.Do(func() {
-		EngineInfoStruct = gi.StructNew("Pango", "EngineInfo")
+func engineInfoStructSet() {
+	engineInfoStructOnce.Do(func() {
+		engineInfoStruct = gi.StructNew("Pango", "EngineInfo")
 	})
 }
 
@@ -606,12 +750,12 @@ type EngineInfo struct {
 	NScripts   int32
 }
 
-var EngineLangClassStruct *gi.Struct
-var EngineLangClassStructOnce sync.Once
+var engineLangClassStruct *gi.Struct
+var engineLangClassStructOnce sync.Once
 
-func EngineLangClassStructSet() {
-	EngineLangClassStructOnce.Do(func() {
-		EngineLangClassStruct = gi.StructNew("Pango", "EngineLangClass")
+func engineLangClassStructSet() {
+	engineLangClassStructOnce.Do(func() {
+		engineLangClassStruct = gi.StructNew("Pango", "EngineLangClass")
 	})
 }
 
@@ -620,12 +764,12 @@ type EngineLangClass struct {
 	// UNSUPPORTED : C value 'script_break' : missing Type
 }
 
-var EngineScriptInfoStruct *gi.Struct
-var EngineScriptInfoStructOnce sync.Once
+var engineScriptInfoStruct *gi.Struct
+var engineScriptInfoStructOnce sync.Once
 
-func EngineScriptInfoStructSet() {
-	EngineScriptInfoStructOnce.Do(func() {
-		EngineScriptInfoStruct = gi.StructNew("Pango", "EngineScriptInfo")
+func engineScriptInfoStructSet() {
+	engineScriptInfoStructOnce.Do(func() {
+		engineScriptInfoStruct = gi.StructNew("Pango", "EngineScriptInfo")
 	})
 }
 
@@ -635,12 +779,12 @@ type EngineScriptInfo struct {
 	Langs string
 }
 
-var EngineShapeClassStruct *gi.Struct
-var EngineShapeClassStructOnce sync.Once
+var engineShapeClassStruct *gi.Struct
+var engineShapeClassStructOnce sync.Once
 
-func EngineShapeClassStructSet() {
-	EngineShapeClassStructOnce.Do(func() {
-		EngineShapeClassStruct = gi.StructNew("Pango", "EngineShapeClass")
+func engineShapeClassStructSet() {
+	engineShapeClassStructOnce.Do(func() {
+		engineShapeClassStruct = gi.StructNew("Pango", "EngineShapeClass")
 	})
 }
 
@@ -650,12 +794,12 @@ type EngineShapeClass struct {
 	// UNSUPPORTED : C value 'covers' : missing Type
 }
 
-var FontClassStruct *gi.Struct
-var FontClassStructOnce sync.Once
+var fontClassStruct *gi.Struct
+var fontClassStructOnce sync.Once
 
-func FontClassStructSet() {
-	FontClassStructOnce.Do(func() {
-		FontClassStruct = gi.StructNew("Pango", "FontClass")
+func fontClassStructSet() {
+	fontClassStructOnce.Do(func() {
+		fontClassStruct = gi.StructNew("Pango", "FontClass")
 	})
 }
 
@@ -673,17 +817,26 @@ type FontClass struct {
 	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
 }
 
-var FontDescriptionStruct *gi.Struct
-var FontDescriptionStructOnce sync.Once
+var fontDescriptionStruct *gi.Struct
+var fontDescriptionStructOnce sync.Once
 
-func FontDescriptionStructSet() {
-	FontDescriptionStructOnce.Do(func() {
-		FontDescriptionStruct = gi.StructNew("Pango", "FontDescription")
+func fontDescriptionStructSet() {
+	fontDescriptionStructOnce.Do(func() {
+		fontDescriptionStruct = gi.StructNew("Pango", "FontDescription")
 	})
 }
 
 type FontDescription struct {
 	native uintptr
+}
+
+var fontDescriptionNewFunction *gi.Function
+var fontDescriptionNewFunctionOnce sync.Once
+
+func fontDescriptionNewFunctionSet() {
+	fontDescriptionNewFunctionOnce.Do(func() {
+		fontDescriptionNewFunction = gi.FunctionInvokerNew("Pango", "new")
+	})
 }
 
 var newFontDescriptionInvoker *gi.Function
@@ -703,6 +856,15 @@ func FontDescriptionNew() *FontDescription {
 
 // UNSUPPORTED : C value 'pango_font_description_better_match' : parameter 'old_match' of type 'FontDescription' not supported
 
+var fontDescriptionCopyFunction *gi.Function
+var fontDescriptionCopyFunctionOnce sync.Once
+
+func fontDescriptionCopyFunctionSet() {
+	fontDescriptionCopyFunctionOnce.Do(func() {
+		fontDescriptionCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
+}
+
 var copyFontDescriptionInvoker *gi.Function
 
 // Copy is a representation of the C type pango_font_description_copy.
@@ -719,6 +881,15 @@ func (recv *FontDescription) Copy() *FontDescription {
 	retGo := &FontDescription{native: ret.Pointer()}
 
 	return retGo
+}
+
+var fontDescriptionCopyStaticFunction *gi.Function
+var fontDescriptionCopyStaticFunctionOnce sync.Once
+
+func fontDescriptionCopyStaticFunctionSet() {
+	fontDescriptionCopyStaticFunctionOnce.Do(func() {
+		fontDescriptionCopyStaticFunction = gi.FunctionInvokerNew("Pango", "copy_static")
+	})
 }
 
 var copyStaticFontDescriptionInvoker *gi.Function
@@ -741,6 +912,15 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 
 // UNSUPPORTED : C value 'pango_font_description_equal' : parameter 'desc2' of type 'FontDescription' not supported
 
+var fontDescriptionFreeFunction *gi.Function
+var fontDescriptionFreeFunctionOnce sync.Once
+
+func fontDescriptionFreeFunctionSet() {
+	fontDescriptionFreeFunctionOnce.Do(func() {
+		fontDescriptionFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
+}
+
 var freeFontDescriptionInvoker *gi.Function
 
 // Free is a representation of the C type pango_font_description_free.
@@ -754,6 +934,15 @@ func (recv *FontDescription) Free() {
 
 	freeFontDescriptionInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var fontDescriptionGetFamilyFunction *gi.Function
+var fontDescriptionGetFamilyFunctionOnce sync.Once
+
+func fontDescriptionGetFamilyFunctionSet() {
+	fontDescriptionGetFamilyFunctionOnce.Do(func() {
+		fontDescriptionGetFamilyFunction = gi.FunctionInvokerNew("Pango", "get_family")
+	})
 }
 
 var getFamilyFontDescriptionInvoker *gi.Function
@@ -777,6 +966,15 @@ func (recv *FontDescription) GetFamily() string {
 // UNSUPPORTED : C value 'pango_font_description_get_gravity' : return type 'Gravity' not supported
 
 // UNSUPPORTED : C value 'pango_font_description_get_set_fields' : return type 'FontMask' not supported
+
+var fontDescriptionGetSizeFunction *gi.Function
+var fontDescriptionGetSizeFunctionOnce sync.Once
+
+func fontDescriptionGetSizeFunctionSet() {
+	fontDescriptionGetSizeFunctionOnce.Do(func() {
+		fontDescriptionGetSizeFunction = gi.FunctionInvokerNew("Pango", "get_size")
+	})
+}
 
 var getSizeFontDescriptionInvoker *gi.Function
 
@@ -804,6 +1002,15 @@ func (recv *FontDescription) GetSize() int32 {
 
 // UNSUPPORTED : C value 'pango_font_description_get_variant' : return type 'Variant' not supported
 
+var fontDescriptionGetVariationsFunction *gi.Function
+var fontDescriptionGetVariationsFunctionOnce sync.Once
+
+func fontDescriptionGetVariationsFunctionSet() {
+	fontDescriptionGetVariationsFunctionOnce.Do(func() {
+		fontDescriptionGetVariationsFunction = gi.FunctionInvokerNew("Pango", "get_variations")
+	})
+}
+
 var getVariationsFontDescriptionInvoker *gi.Function
 
 // GetVariations is a representation of the C type pango_font_description_get_variations.
@@ -823,6 +1030,15 @@ func (recv *FontDescription) GetVariations() string {
 }
 
 // UNSUPPORTED : C value 'pango_font_description_get_weight' : return type 'Weight' not supported
+
+var fontDescriptionHashFunction *gi.Function
+var fontDescriptionHashFunctionOnce sync.Once
+
+func fontDescriptionHashFunctionSet() {
+	fontDescriptionHashFunctionOnce.Do(func() {
+		fontDescriptionHashFunction = gi.FunctionInvokerNew("Pango", "hash")
+	})
+}
 
 var hashFontDescriptionInvoker *gi.Function
 
@@ -848,6 +1064,15 @@ func (recv *FontDescription) Hash() uint32 {
 
 // UNSUPPORTED : C value 'pango_font_description_set_absolute_size' : parameter 'size' of type 'gdouble' not supported
 
+var fontDescriptionSetFamilyFunction *gi.Function
+var fontDescriptionSetFamilyFunctionOnce sync.Once
+
+func fontDescriptionSetFamilyFunctionSet() {
+	fontDescriptionSetFamilyFunctionOnce.Do(func() {
+		fontDescriptionSetFamilyFunction = gi.FunctionInvokerNew("Pango", "set_family")
+	})
+}
+
 var setFamilyFontDescriptionInvoker *gi.Function
 
 // SetFamily is a representation of the C type pango_font_description_set_family.
@@ -862,6 +1087,15 @@ func (recv *FontDescription) SetFamily(family string) {
 
 	setFamilyFontDescriptionInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var fontDescriptionSetFamilyStaticFunction *gi.Function
+var fontDescriptionSetFamilyStaticFunctionOnce sync.Once
+
+func fontDescriptionSetFamilyStaticFunctionSet() {
+	fontDescriptionSetFamilyStaticFunctionOnce.Do(func() {
+		fontDescriptionSetFamilyStaticFunction = gi.FunctionInvokerNew("Pango", "set_family_static")
+	})
 }
 
 var setFamilyStaticFontDescriptionInvoker *gi.Function
@@ -881,6 +1115,15 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 }
 
 // UNSUPPORTED : C value 'pango_font_description_set_gravity' : parameter 'gravity' of type 'Gravity' not supported
+
+var fontDescriptionSetSizeFunction *gi.Function
+var fontDescriptionSetSizeFunctionOnce sync.Once
+
+func fontDescriptionSetSizeFunctionSet() {
+	fontDescriptionSetSizeFunctionOnce.Do(func() {
+		fontDescriptionSetSizeFunction = gi.FunctionInvokerNew("Pango", "set_size")
+	})
+}
 
 var setSizeFontDescriptionInvoker *gi.Function
 
@@ -904,6 +1147,15 @@ func (recv *FontDescription) SetSize(size int32) {
 
 // UNSUPPORTED : C value 'pango_font_description_set_variant' : parameter 'variant' of type 'Variant' not supported
 
+var fontDescriptionSetVariationsFunction *gi.Function
+var fontDescriptionSetVariationsFunctionOnce sync.Once
+
+func fontDescriptionSetVariationsFunctionSet() {
+	fontDescriptionSetVariationsFunctionOnce.Do(func() {
+		fontDescriptionSetVariationsFunction = gi.FunctionInvokerNew("Pango", "set_variations")
+	})
+}
+
 var setVariationsFontDescriptionInvoker *gi.Function
 
 // SetVariations is a representation of the C type pango_font_description_set_variations.
@@ -918,6 +1170,15 @@ func (recv *FontDescription) SetVariations(settings string) {
 
 	setVariationsFontDescriptionInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var fontDescriptionSetVariationsStaticFunction *gi.Function
+var fontDescriptionSetVariationsStaticFunctionOnce sync.Once
+
+func fontDescriptionSetVariationsStaticFunctionSet() {
+	fontDescriptionSetVariationsStaticFunctionOnce.Do(func() {
+		fontDescriptionSetVariationsStaticFunction = gi.FunctionInvokerNew("Pango", "set_variations_static")
+	})
 }
 
 var setVariationsStaticFontDescriptionInvoker *gi.Function
@@ -938,6 +1199,15 @@ func (recv *FontDescription) SetVariationsStatic(settings string) {
 
 // UNSUPPORTED : C value 'pango_font_description_set_weight' : parameter 'weight' of type 'Weight' not supported
 
+var fontDescriptionToFilenameFunction *gi.Function
+var fontDescriptionToFilenameFunctionOnce sync.Once
+
+func fontDescriptionToFilenameFunctionSet() {
+	fontDescriptionToFilenameFunctionOnce.Do(func() {
+		fontDescriptionToFilenameFunction = gi.FunctionInvokerNew("Pango", "to_filename")
+	})
+}
+
 var toFilenameFontDescriptionInvoker *gi.Function
 
 // ToFilename is a representation of the C type pango_font_description_to_filename.
@@ -954,6 +1224,15 @@ func (recv *FontDescription) ToFilename() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var fontDescriptionToStringFunction *gi.Function
+var fontDescriptionToStringFunctionOnce sync.Once
+
+func fontDescriptionToStringFunctionSet() {
+	fontDescriptionToStringFunctionOnce.Do(func() {
+		fontDescriptionToStringFunction = gi.FunctionInvokerNew("Pango", "to_string")
+	})
 }
 
 var toStringFontDescriptionInvoker *gi.Function
@@ -976,12 +1255,12 @@ func (recv *FontDescription) ToString() string {
 
 // UNSUPPORTED : C value 'pango_font_description_unset_fields' : parameter 'to_unset' of type 'FontMask' not supported
 
-var FontFaceClassStruct *gi.Struct
-var FontFaceClassStructOnce sync.Once
+var fontFaceClassStruct *gi.Struct
+var fontFaceClassStructOnce sync.Once
 
-func FontFaceClassStructSet() {
-	FontFaceClassStructOnce.Do(func() {
-		FontFaceClassStruct = gi.StructNew("Pango", "FontFaceClass")
+func fontFaceClassStructSet() {
+	fontFaceClassStructOnce.Do(func() {
+		fontFaceClassStruct = gi.StructNew("Pango", "FontFaceClass")
 	})
 }
 
@@ -996,12 +1275,12 @@ type FontFaceClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
-var FontFamilyClassStruct *gi.Struct
-var FontFamilyClassStructOnce sync.Once
+var fontFamilyClassStruct *gi.Struct
+var fontFamilyClassStructOnce sync.Once
 
-func FontFamilyClassStructSet() {
-	FontFamilyClassStructOnce.Do(func() {
-		FontFamilyClassStruct = gi.StructNew("Pango", "FontFamilyClass")
+func fontFamilyClassStructSet() {
+	fontFamilyClassStructOnce.Do(func() {
+		fontFamilyClassStruct = gi.StructNew("Pango", "FontFamilyClass")
 	})
 }
 
@@ -1016,12 +1295,12 @@ type FontFamilyClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
-var FontMapClassStruct *gi.Struct
-var FontMapClassStructOnce sync.Once
+var fontMapClassStruct *gi.Struct
+var fontMapClassStructOnce sync.Once
 
-func FontMapClassStructSet() {
-	FontMapClassStructOnce.Do(func() {
-		FontMapClassStruct = gi.StructNew("Pango", "FontMapClass")
+func fontMapClassStructSet() {
+	fontMapClassStructOnce.Do(func() {
+		fontMapClassStruct = gi.StructNew("Pango", "FontMapClass")
 	})
 }
 
@@ -1038,17 +1317,26 @@ type FontMapClass struct {
 	// UNSUPPORTED : C value '_pango_reserved2' : missing Type
 }
 
-var FontMetricsStruct *gi.Struct
-var FontMetricsStructOnce sync.Once
+var fontMetricsStruct *gi.Struct
+var fontMetricsStructOnce sync.Once
 
-func FontMetricsStructSet() {
-	FontMetricsStructOnce.Do(func() {
-		FontMetricsStruct = gi.StructNew("Pango", "FontMetrics")
+func fontMetricsStructSet() {
+	fontMetricsStructOnce.Do(func() {
+		fontMetricsStruct = gi.StructNew("Pango", "FontMetrics")
 	})
 }
 
 type FontMetrics struct {
 	native uintptr
+}
+
+var fontMetricsNewFunction *gi.Function
+var fontMetricsNewFunctionOnce sync.Once
+
+func fontMetricsNewFunctionSet() {
+	fontMetricsNewFunctionOnce.Do(func() {
+		fontMetricsNewFunction = gi.FunctionInvokerNew("Pango", "new")
+	})
 }
 
 var newFontMetricsInvoker *gi.Function
@@ -1064,6 +1352,15 @@ func FontMetricsNew() *FontMetrics {
 	retGo := &FontMetrics{native: ret.Pointer()}
 
 	return retGo
+}
+
+var fontMetricsGetApproximateCharWidthFunction *gi.Function
+var fontMetricsGetApproximateCharWidthFunctionOnce sync.Once
+
+func fontMetricsGetApproximateCharWidthFunctionSet() {
+	fontMetricsGetApproximateCharWidthFunctionOnce.Do(func() {
+		fontMetricsGetApproximateCharWidthFunction = gi.FunctionInvokerNew("Pango", "get_approximate_char_width")
+	})
 }
 
 var getApproximateCharWidthFontMetricsInvoker *gi.Function
@@ -1084,6 +1381,15 @@ func (recv *FontMetrics) GetApproximateCharWidth() int32 {
 	return retGo
 }
 
+var fontMetricsGetApproximateDigitWidthFunction *gi.Function
+var fontMetricsGetApproximateDigitWidthFunctionOnce sync.Once
+
+func fontMetricsGetApproximateDigitWidthFunctionSet() {
+	fontMetricsGetApproximateDigitWidthFunctionOnce.Do(func() {
+		fontMetricsGetApproximateDigitWidthFunction = gi.FunctionInvokerNew("Pango", "get_approximate_digit_width")
+	})
+}
+
 var getApproximateDigitWidthFontMetricsInvoker *gi.Function
 
 // GetApproximateDigitWidth is a representation of the C type pango_font_metrics_get_approximate_digit_width.
@@ -1100,6 +1406,15 @@ func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var fontMetricsGetAscentFunction *gi.Function
+var fontMetricsGetAscentFunctionOnce sync.Once
+
+func fontMetricsGetAscentFunctionSet() {
+	fontMetricsGetAscentFunctionOnce.Do(func() {
+		fontMetricsGetAscentFunction = gi.FunctionInvokerNew("Pango", "get_ascent")
+	})
 }
 
 var getAscentFontMetricsInvoker *gi.Function
@@ -1120,6 +1435,15 @@ func (recv *FontMetrics) GetAscent() int32 {
 	return retGo
 }
 
+var fontMetricsGetDescentFunction *gi.Function
+var fontMetricsGetDescentFunctionOnce sync.Once
+
+func fontMetricsGetDescentFunctionSet() {
+	fontMetricsGetDescentFunctionOnce.Do(func() {
+		fontMetricsGetDescentFunction = gi.FunctionInvokerNew("Pango", "get_descent")
+	})
+}
+
 var getDescentFontMetricsInvoker *gi.Function
 
 // GetDescent is a representation of the C type pango_font_metrics_get_descent.
@@ -1136,6 +1460,15 @@ func (recv *FontMetrics) GetDescent() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var fontMetricsGetStrikethroughPositionFunction *gi.Function
+var fontMetricsGetStrikethroughPositionFunctionOnce sync.Once
+
+func fontMetricsGetStrikethroughPositionFunctionSet() {
+	fontMetricsGetStrikethroughPositionFunctionOnce.Do(func() {
+		fontMetricsGetStrikethroughPositionFunction = gi.FunctionInvokerNew("Pango", "get_strikethrough_position")
+	})
 }
 
 var getStrikethroughPositionFontMetricsInvoker *gi.Function
@@ -1156,6 +1489,15 @@ func (recv *FontMetrics) GetStrikethroughPosition() int32 {
 	return retGo
 }
 
+var fontMetricsGetStrikethroughThicknessFunction *gi.Function
+var fontMetricsGetStrikethroughThicknessFunctionOnce sync.Once
+
+func fontMetricsGetStrikethroughThicknessFunctionSet() {
+	fontMetricsGetStrikethroughThicknessFunctionOnce.Do(func() {
+		fontMetricsGetStrikethroughThicknessFunction = gi.FunctionInvokerNew("Pango", "get_strikethrough_thickness")
+	})
+}
+
 var getStrikethroughThicknessFontMetricsInvoker *gi.Function
 
 // GetStrikethroughThickness is a representation of the C type pango_font_metrics_get_strikethrough_thickness.
@@ -1172,6 +1514,15 @@ func (recv *FontMetrics) GetStrikethroughThickness() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var fontMetricsGetUnderlinePositionFunction *gi.Function
+var fontMetricsGetUnderlinePositionFunctionOnce sync.Once
+
+func fontMetricsGetUnderlinePositionFunctionSet() {
+	fontMetricsGetUnderlinePositionFunctionOnce.Do(func() {
+		fontMetricsGetUnderlinePositionFunction = gi.FunctionInvokerNew("Pango", "get_underline_position")
+	})
 }
 
 var getUnderlinePositionFontMetricsInvoker *gi.Function
@@ -1192,6 +1543,15 @@ func (recv *FontMetrics) GetUnderlinePosition() int32 {
 	return retGo
 }
 
+var fontMetricsGetUnderlineThicknessFunction *gi.Function
+var fontMetricsGetUnderlineThicknessFunctionOnce sync.Once
+
+func fontMetricsGetUnderlineThicknessFunctionSet() {
+	fontMetricsGetUnderlineThicknessFunctionOnce.Do(func() {
+		fontMetricsGetUnderlineThicknessFunction = gi.FunctionInvokerNew("Pango", "get_underline_thickness")
+	})
+}
+
 var getUnderlineThicknessFontMetricsInvoker *gi.Function
 
 // GetUnderlineThickness is a representation of the C type pango_font_metrics_get_underline_thickness.
@@ -1208,6 +1568,15 @@ func (recv *FontMetrics) GetUnderlineThickness() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var fontMetricsRefFunction *gi.Function
+var fontMetricsRefFunctionOnce sync.Once
+
+func fontMetricsRefFunctionSet() {
+	fontMetricsRefFunctionOnce.Do(func() {
+		fontMetricsRefFunction = gi.FunctionInvokerNew("Pango", "ref")
+	})
 }
 
 var refFontMetricsInvoker *gi.Function
@@ -1228,6 +1597,15 @@ func (recv *FontMetrics) Ref() *FontMetrics {
 	return retGo
 }
 
+var fontMetricsUnrefFunction *gi.Function
+var fontMetricsUnrefFunctionOnce sync.Once
+
+func fontMetricsUnrefFunctionSet() {
+	fontMetricsUnrefFunctionOnce.Do(func() {
+		fontMetricsUnrefFunction = gi.FunctionInvokerNew("Pango", "unref")
+	})
+}
+
 var unrefFontMetricsInvoker *gi.Function
 
 // Unref is a representation of the C type pango_font_metrics_unref.
@@ -1243,12 +1621,12 @@ func (recv *FontMetrics) Unref() {
 
 }
 
-var FontsetClassStruct *gi.Struct
-var FontsetClassStructOnce sync.Once
+var fontsetClassStruct *gi.Struct
+var fontsetClassStructOnce sync.Once
 
-func FontsetClassStructSet() {
-	FontsetClassStructOnce.Do(func() {
-		FontsetClassStruct = gi.StructNew("Pango", "FontsetClass")
+func fontsetClassStructSet() {
+	fontsetClassStructOnce.Do(func() {
+		fontsetClassStruct = gi.StructNew("Pango", "FontsetClass")
 	})
 }
 
@@ -1265,12 +1643,12 @@ type FontsetClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
-var FontsetSimpleClassStruct *gi.Struct
-var FontsetSimpleClassStructOnce sync.Once
+var fontsetSimpleClassStruct *gi.Struct
+var fontsetSimpleClassStructOnce sync.Once
 
-func FontsetSimpleClassStructSet() {
-	FontsetSimpleClassStructOnce.Do(func() {
-		FontsetSimpleClassStruct = gi.StructNew("Pango", "FontsetSimpleClass")
+func fontsetSimpleClassStructSet() {
+	fontsetSimpleClassStructOnce.Do(func() {
+		fontsetSimpleClassStruct = gi.StructNew("Pango", "FontsetSimpleClass")
 	})
 }
 
@@ -1278,12 +1656,12 @@ type FontsetSimpleClass struct {
 	native uintptr
 }
 
-var GlyphGeometryStruct *gi.Struct
-var GlyphGeometryStructOnce sync.Once
+var glyphGeometryStruct *gi.Struct
+var glyphGeometryStructOnce sync.Once
 
-func GlyphGeometryStructSet() {
-	GlyphGeometryStructOnce.Do(func() {
-		GlyphGeometryStruct = gi.StructNew("Pango", "GlyphGeometry")
+func glyphGeometryStructSet() {
+	glyphGeometryStructOnce.Do(func() {
+		glyphGeometryStruct = gi.StructNew("Pango", "GlyphGeometry")
 	})
 }
 
@@ -1294,12 +1672,12 @@ type GlyphGeometry struct {
 	YOffset GlyphUnit
 }
 
-var GlyphInfoStruct *gi.Struct
-var GlyphInfoStructOnce sync.Once
+var glyphInfoStruct *gi.Struct
+var glyphInfoStructOnce sync.Once
 
-func GlyphInfoStructSet() {
-	GlyphInfoStructOnce.Do(func() {
-		GlyphInfoStruct = gi.StructNew("Pango", "GlyphInfo")
+func glyphInfoStructSet() {
+	glyphInfoStructOnce.Do(func() {
+		glyphInfoStruct = gi.StructNew("Pango", "GlyphInfo")
 	})
 }
 
@@ -1310,12 +1688,12 @@ type GlyphInfo struct {
 	Attr     *GlyphVisAttr
 }
 
-var GlyphItemStruct *gi.Struct
-var GlyphItemStructOnce sync.Once
+var glyphItemStruct *gi.Struct
+var glyphItemStructOnce sync.Once
 
-func GlyphItemStructSet() {
-	GlyphItemStructOnce.Do(func() {
-		GlyphItemStruct = gi.StructNew("Pango", "GlyphItem")
+func glyphItemStructSet() {
+	glyphItemStructOnce.Do(func() {
+		glyphItemStruct = gi.StructNew("Pango", "GlyphItem")
 	})
 }
 
@@ -1326,6 +1704,15 @@ type GlyphItem struct {
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : parameter 'list' of type 'AttrList' not supported
+
+var glyphItemCopyFunction *gi.Function
+var glyphItemCopyFunctionOnce sync.Once
+
+func glyphItemCopyFunctionSet() {
+	glyphItemCopyFunctionOnce.Do(func() {
+		glyphItemCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
+}
 
 var copyGlyphItemInvoker *gi.Function
 
@@ -1343,6 +1730,15 @@ func (recv *GlyphItem) Copy() *GlyphItem {
 	retGo := &GlyphItem{native: ret.Pointer()}
 
 	return retGo
+}
+
+var glyphItemFreeFunction *gi.Function
+var glyphItemFreeFunctionOnce sync.Once
+
+func glyphItemFreeFunctionSet() {
+	glyphItemFreeFunctionOnce.Do(func() {
+		glyphItemFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
 }
 
 var freeGlyphItemInvoker *gi.Function
@@ -1364,6 +1760,15 @@ func (recv *GlyphItem) Free() {
 
 // UNSUPPORTED : C value 'pango_glyph_item_letter_space' : parameter 'log_attrs' has no type
 
+var glyphItemSplitFunction *gi.Function
+var glyphItemSplitFunctionOnce sync.Once
+
+func glyphItemSplitFunctionSet() {
+	glyphItemSplitFunctionOnce.Do(func() {
+		glyphItemSplitFunction = gi.FunctionInvokerNew("Pango", "split")
+	})
+}
+
 var splitGlyphItemInvoker *gi.Function
 
 // Split is a representation of the C type pango_glyph_item_split.
@@ -1384,12 +1789,12 @@ func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 	return retGo
 }
 
-var GlyphItemIterStruct *gi.Struct
-var GlyphItemIterStructOnce sync.Once
+var glyphItemIterStruct *gi.Struct
+var glyphItemIterStructOnce sync.Once
 
-func GlyphItemIterStructSet() {
-	GlyphItemIterStructOnce.Do(func() {
-		GlyphItemIterStruct = gi.StructNew("Pango", "GlyphItemIter")
+func glyphItemIterStructSet() {
+	glyphItemIterStructOnce.Do(func() {
+		glyphItemIterStruct = gi.StructNew("Pango", "GlyphItemIter")
 	})
 }
 
@@ -1403,6 +1808,15 @@ type GlyphItemIter struct {
 	EndGlyph   int32
 	EndIndex   int32
 	EndChar    int32
+}
+
+var glyphItemIterCopyFunction *gi.Function
+var glyphItemIterCopyFunctionOnce sync.Once
+
+func glyphItemIterCopyFunctionSet() {
+	glyphItemIterCopyFunctionOnce.Do(func() {
+		glyphItemIterCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyGlyphItemIterInvoker *gi.Function
@@ -1421,6 +1835,15 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	retGo := &GlyphItemIter{native: ret.Pointer()}
 
 	return retGo
+}
+
+var glyphItemIterFreeFunction *gi.Function
+var glyphItemIterFreeFunctionOnce sync.Once
+
+func glyphItemIterFreeFunctionSet() {
+	glyphItemIterFreeFunctionOnce.Do(func() {
+		glyphItemIterFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
 }
 
 var freeGlyphItemIterInvoker *gi.Function
@@ -1446,12 +1869,12 @@ func (recv *GlyphItemIter) Free() {
 
 // UNSUPPORTED : C value 'pango_glyph_item_iter_prev_cluster' : return type 'gboolean' not supported
 
-var GlyphStringStruct *gi.Struct
-var GlyphStringStructOnce sync.Once
+var glyphStringStruct *gi.Struct
+var glyphStringStructOnce sync.Once
 
-func GlyphStringStructSet() {
-	GlyphStringStructOnce.Do(func() {
-		GlyphStringStruct = gi.StructNew("Pango", "GlyphString")
+func glyphStringStructSet() {
+	glyphStringStructOnce.Do(func() {
+		glyphStringStruct = gi.StructNew("Pango", "GlyphString")
 	})
 }
 
@@ -1460,6 +1883,15 @@ type GlyphString struct {
 	NumGlyphs int32
 	// UNSUPPORTED : C value 'glyphs' : missing Type
 	LogClusters int32
+}
+
+var glyphStringNewFunction *gi.Function
+var glyphStringNewFunctionOnce sync.Once
+
+func glyphStringNewFunctionSet() {
+	glyphStringNewFunctionOnce.Do(func() {
+		glyphStringNewFunction = gi.FunctionInvokerNew("Pango", "new")
+	})
 }
 
 var newGlyphStringInvoker *gi.Function
@@ -1475,6 +1907,15 @@ func GlyphStringNew() *GlyphString {
 	retGo := &GlyphString{native: ret.Pointer()}
 
 	return retGo
+}
+
+var glyphStringCopyFunction *gi.Function
+var glyphStringCopyFunctionOnce sync.Once
+
+func glyphStringCopyFunctionSet() {
+	glyphStringCopyFunctionOnce.Do(func() {
+		glyphStringCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyGlyphStringInvoker *gi.Function
@@ -1499,6 +1940,15 @@ func (recv *GlyphString) Copy() *GlyphString {
 
 // UNSUPPORTED : C value 'pango_glyph_string_extents_range' : parameter 'font' of type 'Font' not supported
 
+var glyphStringFreeFunction *gi.Function
+var glyphStringFreeFunctionOnce sync.Once
+
+func glyphStringFreeFunctionSet() {
+	glyphStringFreeFunctionOnce.Do(func() {
+		glyphStringFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
+}
+
 var freeGlyphStringInvoker *gi.Function
 
 // Free is a representation of the C type pango_glyph_string_free.
@@ -1515,6 +1965,15 @@ func (recv *GlyphString) Free() {
 }
 
 // UNSUPPORTED : C value 'pango_glyph_string_get_logical_widths' : parameter 'logical_widths' has no type
+
+var glyphStringGetWidthFunction *gi.Function
+var glyphStringGetWidthFunctionOnce sync.Once
+
+func glyphStringGetWidthFunctionSet() {
+	glyphStringGetWidthFunctionOnce.Do(func() {
+		glyphStringGetWidthFunction = gi.FunctionInvokerNew("Pango", "get_width")
+	})
+}
 
 var getWidthGlyphStringInvoker *gi.Function
 
@@ -1536,6 +1995,15 @@ func (recv *GlyphString) GetWidth() int32 {
 
 // UNSUPPORTED : C value 'pango_glyph_string_index_to_x' : parameter 'analysis' of type 'Analysis' not supported
 
+var glyphStringSetSizeFunction *gi.Function
+var glyphStringSetSizeFunctionOnce sync.Once
+
+func glyphStringSetSizeFunctionSet() {
+	glyphStringSetSizeFunctionOnce.Do(func() {
+		glyphStringSetSizeFunction = gi.FunctionInvokerNew("Pango", "set_size")
+	})
+}
+
 var setSizeGlyphStringInvoker *gi.Function
 
 // SetSize is a representation of the C type pango_glyph_string_set_size.
@@ -1554,12 +2022,12 @@ func (recv *GlyphString) SetSize(newLen int32) {
 
 // UNSUPPORTED : C value 'pango_glyph_string_x_to_index' : parameter 'analysis' of type 'Analysis' not supported
 
-var GlyphVisAttrStruct *gi.Struct
-var GlyphVisAttrStructOnce sync.Once
+var glyphVisAttrStruct *gi.Struct
+var glyphVisAttrStructOnce sync.Once
 
-func GlyphVisAttrStructSet() {
-	GlyphVisAttrStructOnce.Do(func() {
-		GlyphVisAttrStruct = gi.StructNew("Pango", "GlyphVisAttr")
+func glyphVisAttrStructSet() {
+	glyphVisAttrStructOnce.Do(func() {
+		glyphVisAttrStruct = gi.StructNew("Pango", "GlyphVisAttr")
 	})
 }
 
@@ -1568,12 +2036,12 @@ type GlyphVisAttr struct {
 	IsClusterStart uint32
 }
 
-var IncludedModuleStruct *gi.Struct
-var IncludedModuleStructOnce sync.Once
+var includedModuleStruct *gi.Struct
+var includedModuleStructOnce sync.Once
 
-func IncludedModuleStructSet() {
-	IncludedModuleStructOnce.Do(func() {
-		IncludedModuleStruct = gi.StructNew("Pango", "IncludedModule")
+func includedModuleStructSet() {
+	includedModuleStructOnce.Do(func() {
+		includedModuleStruct = gi.StructNew("Pango", "IncludedModule")
 	})
 }
 
@@ -1585,12 +2053,12 @@ type IncludedModule struct {
 	// UNSUPPORTED : C value 'create' : missing Type
 }
 
-var ItemStruct *gi.Struct
-var ItemStructOnce sync.Once
+var itemStruct *gi.Struct
+var itemStructOnce sync.Once
 
-func ItemStructSet() {
-	ItemStructOnce.Do(func() {
-		ItemStruct = gi.StructNew("Pango", "Item")
+func itemStructSet() {
+	itemStructOnce.Do(func() {
+		itemStruct = gi.StructNew("Pango", "Item")
 	})
 }
 
@@ -1600,6 +2068,15 @@ type Item struct {
 	Length   int32
 	NumChars int32
 	Analysis *Analysis
+}
+
+var itemNewFunction *gi.Function
+var itemNewFunctionOnce sync.Once
+
+func itemNewFunctionSet() {
+	itemNewFunctionOnce.Do(func() {
+		itemNewFunction = gi.FunctionInvokerNew("Pango", "new")
+	})
 }
 
 var newItemInvoker *gi.Function
@@ -1615,6 +2092,15 @@ func ItemNew() *Item {
 	retGo := &Item{native: ret.Pointer()}
 
 	return retGo
+}
+
+var itemCopyFunction *gi.Function
+var itemCopyFunctionOnce sync.Once
+
+func itemCopyFunctionSet() {
+	itemCopyFunctionOnce.Do(func() {
+		itemCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
 }
 
 var copyItemInvoker *gi.Function
@@ -1635,6 +2121,15 @@ func (recv *Item) Copy() *Item {
 	return retGo
 }
 
+var itemFreeFunction *gi.Function
+var itemFreeFunctionOnce sync.Once
+
+func itemFreeFunctionSet() {
+	itemFreeFunctionOnce.Do(func() {
+		itemFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
+}
+
 var freeItemInvoker *gi.Function
 
 // Free is a representation of the C type pango_item_free.
@@ -1648,6 +2143,15 @@ func (recv *Item) Free() {
 
 	freeItemInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var itemSplitFunction *gi.Function
+var itemSplitFunctionOnce sync.Once
+
+func itemSplitFunctionSet() {
+	itemSplitFunctionOnce.Do(func() {
+		itemSplitFunction = gi.FunctionInvokerNew("Pango", "split")
+	})
 }
 
 var splitItemInvoker *gi.Function
@@ -1670,17 +2174,26 @@ func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 	return retGo
 }
 
-var LanguageStruct *gi.Struct
-var LanguageStructOnce sync.Once
+var languageStruct *gi.Struct
+var languageStructOnce sync.Once
 
-func LanguageStructSet() {
-	LanguageStructOnce.Do(func() {
-		LanguageStruct = gi.StructNew("Pango", "Language")
+func languageStructSet() {
+	languageStructOnce.Do(func() {
+		languageStruct = gi.StructNew("Pango", "Language")
 	})
 }
 
 type Language struct {
 	native uintptr
+}
+
+var languageGetSampleStringFunction *gi.Function
+var languageGetSampleStringFunctionOnce sync.Once
+
+func languageGetSampleStringFunctionSet() {
+	languageGetSampleStringFunctionOnce.Do(func() {
+		languageGetSampleStringFunction = gi.FunctionInvokerNew("Pango", "get_sample_string")
+	})
 }
 
 var getSampleStringLanguageInvoker *gi.Function
@@ -1699,6 +2212,15 @@ func (recv *Language) GetSampleString() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var languageGetScriptsFunction *gi.Function
+var languageGetScriptsFunctionOnce sync.Once
+
+func languageGetScriptsFunctionSet() {
+	languageGetScriptsFunctionOnce.Do(func() {
+		languageGetScriptsFunction = gi.FunctionInvokerNew("Pango", "get_scripts")
+	})
 }
 
 var getScriptsLanguageInvoker *gi.Function
@@ -1725,6 +2247,15 @@ func (recv *Language) GetScripts() int32 {
 
 // UNSUPPORTED : C value 'pango_language_matches' : return type 'gboolean' not supported
 
+var languageToStringFunction *gi.Function
+var languageToStringFunctionOnce sync.Once
+
+func languageToStringFunctionSet() {
+	languageToStringFunctionOnce.Do(func() {
+		languageToStringFunction = gi.FunctionInvokerNew("Pango", "to_string")
+	})
+}
+
 var toStringLanguageInvoker *gi.Function
 
 // ToString is a representation of the C type pango_language_to_string.
@@ -1743,12 +2274,12 @@ func (recv *Language) ToString() string {
 	return retGo
 }
 
-var LayoutClassStruct *gi.Struct
-var LayoutClassStructOnce sync.Once
+var layoutClassStruct *gi.Struct
+var layoutClassStructOnce sync.Once
 
-func LayoutClassStructSet() {
-	LayoutClassStructOnce.Do(func() {
-		LayoutClassStruct = gi.StructNew("Pango", "LayoutClass")
+func layoutClassStructSet() {
+	layoutClassStructOnce.Do(func() {
+		layoutClassStruct = gi.StructNew("Pango", "LayoutClass")
 	})
 }
 
@@ -1756,12 +2287,12 @@ type LayoutClass struct {
 	native uintptr
 }
 
-var LayoutIterStruct *gi.Struct
-var LayoutIterStructOnce sync.Once
+var layoutIterStruct *gi.Struct
+var layoutIterStructOnce sync.Once
 
-func LayoutIterStructSet() {
-	LayoutIterStructOnce.Do(func() {
-		LayoutIterStruct = gi.StructNew("Pango", "LayoutIter")
+func layoutIterStructSet() {
+	layoutIterStructOnce.Do(func() {
+		layoutIterStruct = gi.StructNew("Pango", "LayoutIter")
 	})
 }
 
@@ -1770,6 +2301,15 @@ type LayoutIter struct {
 }
 
 // UNSUPPORTED : C value 'pango_layout_iter_at_last_line' : return type 'gboolean' not supported
+
+var layoutIterCopyFunction *gi.Function
+var layoutIterCopyFunctionOnce sync.Once
+
+func layoutIterCopyFunctionSet() {
+	layoutIterCopyFunctionOnce.Do(func() {
+		layoutIterCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
+}
 
 var copyLayoutIterInvoker *gi.Function
 
@@ -1789,6 +2329,15 @@ func (recv *LayoutIter) Copy() *LayoutIter {
 	return retGo
 }
 
+var layoutIterFreeFunction *gi.Function
+var layoutIterFreeFunctionOnce sync.Once
+
+func layoutIterFreeFunctionSet() {
+	layoutIterFreeFunctionOnce.Do(func() {
+		layoutIterFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
+}
+
 var freeLayoutIterInvoker *gi.Function
 
 // Free is a representation of the C type pango_layout_iter_free.
@@ -1802,6 +2351,15 @@ func (recv *LayoutIter) Free() {
 
 	freeLayoutIterInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var layoutIterGetBaselineFunction *gi.Function
+var layoutIterGetBaselineFunctionOnce sync.Once
+
+func layoutIterGetBaselineFunctionSet() {
+	layoutIterGetBaselineFunctionOnce.Do(func() {
+		layoutIterGetBaselineFunction = gi.FunctionInvokerNew("Pango", "get_baseline")
+	})
 }
 
 var getBaselineLayoutIterInvoker *gi.Function
@@ -1826,6 +2384,15 @@ func (recv *LayoutIter) GetBaseline() int32 {
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_cluster_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
 
+var layoutIterGetIndexFunction *gi.Function
+var layoutIterGetIndexFunctionOnce sync.Once
+
+func layoutIterGetIndexFunctionSet() {
+	layoutIterGetIndexFunctionOnce.Do(func() {
+		layoutIterGetIndexFunction = gi.FunctionInvokerNew("Pango", "get_index")
+	})
+}
+
 var getIndexLayoutIterInvoker *gi.Function
 
 // GetIndex is a representation of the C type pango_layout_iter_get_index.
@@ -1848,6 +2415,15 @@ func (recv *LayoutIter) GetIndex() int32 {
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_layout_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
 
+var layoutIterGetLineFunction *gi.Function
+var layoutIterGetLineFunctionOnce sync.Once
+
+func layoutIterGetLineFunctionSet() {
+	layoutIterGetLineFunctionOnce.Do(func() {
+		layoutIterGetLineFunction = gi.FunctionInvokerNew("Pango", "get_line")
+	})
+}
+
 var getLineLayoutIterInvoker *gi.Function
 
 // GetLine is a representation of the C type pango_layout_iter_get_line.
@@ -1868,6 +2444,15 @@ func (recv *LayoutIter) GetLine() *LayoutLine {
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_line_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
 
+var layoutIterGetLineReadonlyFunction *gi.Function
+var layoutIterGetLineReadonlyFunctionOnce sync.Once
+
+func layoutIterGetLineReadonlyFunctionSet() {
+	layoutIterGetLineReadonlyFunctionOnce.Do(func() {
+		layoutIterGetLineReadonlyFunction = gi.FunctionInvokerNew("Pango", "get_line_readonly")
+	})
+}
+
 var getLineReadonlyLayoutIterInvoker *gi.Function
 
 // GetLineReadonly is a representation of the C type pango_layout_iter_get_line_readonly.
@@ -1884,6 +2469,15 @@ func (recv *LayoutIter) GetLineReadonly() *LayoutLine {
 	retGo := &LayoutLine{native: ret.Pointer()}
 
 	return retGo
+}
+
+var layoutIterGetLineYrangeFunction *gi.Function
+var layoutIterGetLineYrangeFunctionOnce sync.Once
+
+func layoutIterGetLineYrangeFunctionSet() {
+	layoutIterGetLineYrangeFunctionOnce.Do(func() {
+		layoutIterGetLineYrangeFunction = gi.FunctionInvokerNew("Pango", "get_line_yrange")
+	})
 }
 
 var getLineYrangeLayoutIterInvoker *gi.Function
@@ -1921,12 +2515,12 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32) {
 
 // UNSUPPORTED : C value 'pango_layout_iter_next_run' : return type 'gboolean' not supported
 
-var LayoutLineStruct *gi.Struct
-var LayoutLineStructOnce sync.Once
+var layoutLineStruct *gi.Struct
+var layoutLineStructOnce sync.Once
 
-func LayoutLineStructSet() {
-	LayoutLineStructOnce.Do(func() {
-		LayoutLineStruct = gi.StructNew("Pango", "LayoutLine")
+func layoutLineStructSet() {
+	layoutLineStructOnce.Do(func() {
+		layoutLineStruct = gi.StructNew("Pango", "LayoutLine")
 	})
 }
 
@@ -1948,6 +2542,15 @@ type LayoutLine struct {
 
 // UNSUPPORTED : C value 'pango_layout_line_index_to_x' : parameter 'trailing' of type 'gboolean' not supported
 
+var layoutLineRefFunction *gi.Function
+var layoutLineRefFunctionOnce sync.Once
+
+func layoutLineRefFunctionSet() {
+	layoutLineRefFunctionOnce.Do(func() {
+		layoutLineRefFunction = gi.FunctionInvokerNew("Pango", "ref")
+	})
+}
+
 var refLayoutLineInvoker *gi.Function
 
 // Ref is a representation of the C type pango_layout_line_ref.
@@ -1964,6 +2567,15 @@ func (recv *LayoutLine) Ref() *LayoutLine {
 	retGo := &LayoutLine{native: ret.Pointer()}
 
 	return retGo
+}
+
+var layoutLineUnrefFunction *gi.Function
+var layoutLineUnrefFunctionOnce sync.Once
+
+func layoutLineUnrefFunctionSet() {
+	layoutLineUnrefFunctionOnce.Do(func() {
+		layoutLineUnrefFunction = gi.FunctionInvokerNew("Pango", "unref")
+	})
 }
 
 var unrefLayoutLineInvoker *gi.Function
@@ -1983,12 +2595,12 @@ func (recv *LayoutLine) Unref() {
 
 // UNSUPPORTED : C value 'pango_layout_line_x_to_index' : return type 'gboolean' not supported
 
-var LogAttrStruct *gi.Struct
-var LogAttrStructOnce sync.Once
+var logAttrStruct *gi.Struct
+var logAttrStructOnce sync.Once
 
-func LogAttrStructSet() {
-	LogAttrStructOnce.Do(func() {
-		LogAttrStruct = gi.StructNew("Pango", "LogAttr")
+func logAttrStructSet() {
+	logAttrStructOnce.Do(func() {
+		logAttrStruct = gi.StructNew("Pango", "LogAttr")
 	})
 }
 
@@ -2009,12 +2621,12 @@ type LogAttr struct {
 	IsWordBoundary            uint32
 }
 
-var MapStruct *gi.Struct
-var MapStructOnce sync.Once
+var mapStruct *gi.Struct
+var mapStructOnce sync.Once
 
-func MapStructSet() {
-	MapStructOnce.Do(func() {
-		MapStruct = gi.StructNew("Pango", "Map")
+func mapStructSet() {
+	mapStructOnce.Do(func() {
+		mapStruct = gi.StructNew("Pango", "Map")
 	})
 }
 
@@ -2026,12 +2638,12 @@ type Map struct {
 
 // UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'script' of type 'Script' not supported
 
-var MapEntryStruct *gi.Struct
-var MapEntryStructOnce sync.Once
+var mapEntryStruct *gi.Struct
+var mapEntryStructOnce sync.Once
 
-func MapEntryStructSet() {
-	MapEntryStructOnce.Do(func() {
-		MapEntryStruct = gi.StructNew("Pango", "MapEntry")
+func mapEntryStructSet() {
+	mapEntryStructOnce.Do(func() {
+		mapEntryStruct = gi.StructNew("Pango", "MapEntry")
 	})
 }
 
@@ -2039,12 +2651,12 @@ type MapEntry struct {
 	native uintptr
 }
 
-var MatrixStruct *gi.Struct
-var MatrixStructOnce sync.Once
+var matrixStruct *gi.Struct
+var matrixStructOnce sync.Once
 
-func MatrixStructSet() {
-	MatrixStructOnce.Do(func() {
-		MatrixStruct = gi.StructNew("Pango", "Matrix")
+func matrixStructSet() {
+	matrixStructOnce.Do(func() {
+		matrixStruct = gi.StructNew("Pango", "Matrix")
 	})
 }
 
@@ -2059,6 +2671,15 @@ type Matrix struct {
 }
 
 // UNSUPPORTED : C value 'pango_matrix_concat' : parameter 'new_matrix' of type 'Matrix' not supported
+
+var matrixCopyFunction *gi.Function
+var matrixCopyFunctionOnce sync.Once
+
+func matrixCopyFunctionSet() {
+	matrixCopyFunctionOnce.Do(func() {
+		matrixCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
+}
 
 var copyMatrixInvoker *gi.Function
 
@@ -2076,6 +2697,15 @@ func (recv *Matrix) Copy() *Matrix {
 	retGo := &Matrix{native: ret.Pointer()}
 
 	return retGo
+}
+
+var matrixFreeFunction *gi.Function
+var matrixFreeFunctionOnce sync.Once
+
+func matrixFreeFunctionSet() {
+	matrixFreeFunctionOnce.Do(func() {
+		matrixFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
 }
 
 var freeMatrixInvoker *gi.Function
@@ -2111,12 +2741,12 @@ func (recv *Matrix) Free() {
 
 // UNSUPPORTED : C value 'pango_matrix_translate' : parameter 'tx' of type 'gdouble' not supported
 
-var RectangleStruct *gi.Struct
-var RectangleStructOnce sync.Once
+var rectangleStruct *gi.Struct
+var rectangleStructOnce sync.Once
 
-func RectangleStructSet() {
-	RectangleStructOnce.Do(func() {
-		RectangleStruct = gi.StructNew("Pango", "Rectangle")
+func rectangleStructSet() {
+	rectangleStructOnce.Do(func() {
+		rectangleStruct = gi.StructNew("Pango", "Rectangle")
 	})
 }
 
@@ -2128,12 +2758,12 @@ type Rectangle struct {
 	Height int32
 }
 
-var RendererClassStruct *gi.Struct
-var RendererClassStructOnce sync.Once
+var rendererClassStruct *gi.Struct
+var rendererClassStructOnce sync.Once
 
-func RendererClassStructSet() {
-	RendererClassStructOnce.Do(func() {
-		RendererClassStruct = gi.StructNew("Pango", "RendererClass")
+func rendererClassStructSet() {
+	rendererClassStructOnce.Do(func() {
+		rendererClassStruct = gi.StructNew("Pango", "RendererClass")
 	})
 }
 
@@ -2155,12 +2785,12 @@ type RendererClass struct {
 	// UNSUPPORTED : C value '_pango_reserved4' : missing Type
 }
 
-var RendererPrivateStruct *gi.Struct
-var RendererPrivateStructOnce sync.Once
+var rendererPrivateStruct *gi.Struct
+var rendererPrivateStructOnce sync.Once
 
-func RendererPrivateStructSet() {
-	RendererPrivateStructOnce.Do(func() {
-		RendererPrivateStruct = gi.StructNew("Pango", "RendererPrivate")
+func rendererPrivateStructSet() {
+	rendererPrivateStructOnce.Do(func() {
+		rendererPrivateStruct = gi.StructNew("Pango", "RendererPrivate")
 	})
 }
 
@@ -2168,17 +2798,26 @@ type RendererPrivate struct {
 	native uintptr
 }
 
-var ScriptIterStruct *gi.Struct
-var ScriptIterStructOnce sync.Once
+var scriptIterStruct *gi.Struct
+var scriptIterStructOnce sync.Once
 
-func ScriptIterStructSet() {
-	ScriptIterStructOnce.Do(func() {
-		ScriptIterStruct = gi.StructNew("Pango", "ScriptIter")
+func scriptIterStructSet() {
+	scriptIterStructOnce.Do(func() {
+		scriptIterStruct = gi.StructNew("Pango", "ScriptIter")
 	})
 }
 
 type ScriptIter struct {
 	native uintptr
+}
+
+var scriptIterFreeFunction *gi.Function
+var scriptIterFreeFunctionOnce sync.Once
+
+func scriptIterFreeFunctionSet() {
+	scriptIterFreeFunctionOnce.Do(func() {
+		scriptIterFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
 }
 
 var freeScriptIterInvoker *gi.Function
@@ -2200,12 +2839,12 @@ func (recv *ScriptIter) Free() {
 
 // UNSUPPORTED : C value 'pango_script_iter_next' : return type 'gboolean' not supported
 
-var TabArrayStruct *gi.Struct
-var TabArrayStructOnce sync.Once
+var tabArrayStruct *gi.Struct
+var tabArrayStructOnce sync.Once
 
-func TabArrayStructSet() {
-	TabArrayStructOnce.Do(func() {
-		TabArrayStruct = gi.StructNew("Pango", "TabArray")
+func tabArrayStructSet() {
+	tabArrayStructOnce.Do(func() {
+		tabArrayStruct = gi.StructNew("Pango", "TabArray")
 	})
 }
 
@@ -2216,6 +2855,15 @@ type TabArray struct {
 // UNSUPPORTED : C value 'pango_tab_array_new' : parameter 'positions_in_pixels' of type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'pango_tab_array_new_with_positions' : parameter 'positions_in_pixels' of type 'gboolean' not supported
+
+var tabArrayCopyFunction *gi.Function
+var tabArrayCopyFunctionOnce sync.Once
+
+func tabArrayCopyFunctionSet() {
+	tabArrayCopyFunctionOnce.Do(func() {
+		tabArrayCopyFunction = gi.FunctionInvokerNew("Pango", "copy")
+	})
+}
 
 var copyTabArrayInvoker *gi.Function
 
@@ -2235,6 +2883,15 @@ func (recv *TabArray) Copy() *TabArray {
 	return retGo
 }
 
+var tabArrayFreeFunction *gi.Function
+var tabArrayFreeFunctionOnce sync.Once
+
+func tabArrayFreeFunctionSet() {
+	tabArrayFreeFunctionOnce.Do(func() {
+		tabArrayFreeFunction = gi.FunctionInvokerNew("Pango", "free")
+	})
+}
+
 var freeTabArrayInvoker *gi.Function
 
 // Free is a representation of the C type pango_tab_array_free.
@@ -2251,6 +2908,15 @@ func (recv *TabArray) Free() {
 }
 
 // UNSUPPORTED : C value 'pango_tab_array_get_positions_in_pixels' : return type 'gboolean' not supported
+
+var tabArrayGetSizeFunction *gi.Function
+var tabArrayGetSizeFunctionOnce sync.Once
+
+func tabArrayGetSizeFunctionSet() {
+	tabArrayGetSizeFunctionOnce.Do(func() {
+		tabArrayGetSizeFunction = gi.FunctionInvokerNew("Pango", "get_size")
+	})
+}
 
 var getSizeTabArrayInvoker *gi.Function
 
@@ -2273,6 +2939,15 @@ func (recv *TabArray) GetSize() int32 {
 // UNSUPPORTED : C value 'pango_tab_array_get_tab' : parameter 'alignment' of type 'TabAlign' not supported
 
 // UNSUPPORTED : C value 'pango_tab_array_get_tabs' : parameter 'alignments' of type 'TabAlign' not supported
+
+var tabArrayResizeFunction *gi.Function
+var tabArrayResizeFunctionOnce sync.Once
+
+func tabArrayResizeFunctionSet() {
+	tabArrayResizeFunctionOnce.Do(func() {
+		tabArrayResizeFunction = gi.FunctionInvokerNew("Pango", "resize")
+	})
+}
 
 var resizeTabArrayInvoker *gi.Function
 

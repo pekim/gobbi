@@ -13,11 +13,14 @@ var goNameReservedWords = map[string]bool{
 }
 
 func makeExportedGoName(cName string) string {
-	return makeUnexportedGoName(cName, true)
+	return makeGoName(cName, true)
 }
 
-func makeUnexportedGoName(cName string, uppercaseFirstChar bool) string {
-	goName := makeGoName(cName, uppercaseFirstChar)
+func makeUnexportedGoName(cName string) string {
+	goName := makeGoName(cName, false)
+	if len(goName) > 0 {
+		goName = strings.ToLower(goName[0:1]) + goName[1:]
+	}
 
 	if _, isReserved := goNameReservedWords[goName]; isReserved {
 		goName += "_"
@@ -27,6 +30,16 @@ func makeUnexportedGoName(cName string, uppercaseFirstChar bool) string {
 }
 
 func makeGoName(cName string, uppercaseFirstChar bool) string {
+	if len(cName) == 0 {
+		return cName
+	}
+
+	//if uppercaseFirstChar{
+	//	cName = strings.ToLower(goName[0:1]) + goName[1:]
+	//}else {
+	//
+	//}
+
 	cParts := strings.Split(cName, "_")
 	if len(cParts) == 1 {
 		cParts = strings.Split(cName, "-")

@@ -2,7 +2,10 @@
 
 package soup
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'soup_add_completion' : parameter 'async_context' of type 'GLib.MainContext' not supported
 
@@ -48,6 +51,15 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : parameter 'multipart' of type 'Multipart' not supported
 
+var GetMajorVersionFunction *gi.Function
+var GetMajorVersionFunctionOnce sync.Once
+
+func GetMajorVersionFunctionSet() {
+	GetMajorVersionFunctionOnce.Do(func() {
+		GetMajorVersionFunction = gi.FunctionInvokerNew("Soup", "get_major_version")
+	})
+}
+
 var getMajorVersionInvoker *gi.Function
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
@@ -63,6 +75,15 @@ func GetMajorVersion() uint32 {
 	return retGo
 }
 
+var GetMicroVersionFunction *gi.Function
+var GetMicroVersionFunctionOnce sync.Once
+
+func GetMicroVersionFunctionSet() {
+	GetMicroVersionFunctionOnce.Do(func() {
+		GetMicroVersionFunction = gi.FunctionInvokerNew("Soup", "get_micro_version")
+	})
+}
+
 var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
@@ -76,6 +97,15 @@ func GetMicroVersion() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var GetMinorVersionFunction *gi.Function
+var GetMinorVersionFunctionOnce sync.Once
+
+func GetMinorVersionFunctionSet() {
+	GetMinorVersionFunctionOnce.Do(func() {
+		GetMinorVersionFunction = gi.FunctionInvokerNew("Soup", "get_minor_version")
+	})
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -131,6 +161,15 @@ func GetMinorVersion() uint32 {
 
 // UNSUPPORTED : C value 'soup_requester_error_quark' : return type 'GLib.Quark' not supported
 
+var StatusGetPhraseFunction *gi.Function
+var StatusGetPhraseFunctionOnce sync.Once
+
+func StatusGetPhraseFunctionSet() {
+	StatusGetPhraseFunctionOnce.Do(func() {
+		StatusGetPhraseFunction = gi.FunctionInvokerNew("Soup", "status_get_phrase")
+	})
+}
+
 var statusGetPhraseInvoker *gi.Function
 
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
@@ -147,6 +186,15 @@ func StatusGetPhrase(statusCode uint32) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var StatusProxifyFunction *gi.Function
+var StatusProxifyFunctionOnce sync.Once
+
+func StatusProxifyFunctionSet() {
+	StatusProxifyFunctionOnce.Do(func() {
+		StatusProxifyFunction = gi.FunctionInvokerNew("Soup", "status_proxify")
+	})
 }
 
 var statusProxifyInvoker *gi.Function
@@ -175,6 +223,15 @@ func StatusProxify(statusCode uint32) uint32 {
 
 // UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
 
+var TldGetBaseDomainFunction *gi.Function
+var TldGetBaseDomainFunctionOnce sync.Once
+
+func TldGetBaseDomainFunctionSet() {
+	TldGetBaseDomainFunctionOnce.Do(func() {
+		TldGetBaseDomainFunction = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
+	})
+}
+
 var tldGetBaseDomainInvoker *gi.Function
 
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
@@ -191,6 +248,15 @@ func TldGetBaseDomain(hostname string) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var UriDecodeFunction *gi.Function
+var UriDecodeFunctionOnce sync.Once
+
+func UriDecodeFunctionSet() {
+	UriDecodeFunctionOnce.Do(func() {
+		UriDecodeFunction = gi.FunctionInvokerNew("Soup", "uri_decode")
+	})
 }
 
 var uriDecodeInvoker *gi.Function
@@ -211,6 +277,15 @@ func UriDecode(part string) string {
 	return retGo
 }
 
+var UriEncodeFunction *gi.Function
+var UriEncodeFunctionOnce sync.Once
+
+func UriEncodeFunctionSet() {
+	UriEncodeFunctionOnce.Do(func() {
+		UriEncodeFunction = gi.FunctionInvokerNew("Soup", "uri_encode")
+	})
+}
+
 var uriEncodeInvoker *gi.Function
 
 // UriEncode is a representation of the C type soup_uri_encode.
@@ -228,6 +303,15 @@ func UriEncode(part string, escapeExtra string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var UriNormalizeFunction *gi.Function
+var UriNormalizeFunctionOnce sync.Once
+
+func UriNormalizeFunctionSet() {
+	UriNormalizeFunctionOnce.Do(func() {
+		UriNormalizeFunction = gi.FunctionInvokerNew("Soup", "uri_normalize")
+	})
 }
 
 var uriNormalizeInvoker *gi.Function

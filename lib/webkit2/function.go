@@ -2,11 +2,23 @@
 
 package webkit2
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'webkit_download_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'webkit_favicon_database_error_quark' : return type 'GLib.Quark' not supported
+
+var GetMajorVersionFunction *gi.Function
+var GetMajorVersionFunctionOnce sync.Once
+
+func GetMajorVersionFunctionSet() {
+	GetMajorVersionFunctionOnce.Do(func() {
+		GetMajorVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_major_version")
+	})
+}
 
 var getMajorVersionInvoker *gi.Function
 
@@ -23,6 +35,15 @@ func GetMajorVersion() uint32 {
 	return retGo
 }
 
+var GetMicroVersionFunction *gi.Function
+var GetMicroVersionFunctionOnce sync.Once
+
+func GetMicroVersionFunctionSet() {
+	GetMicroVersionFunctionOnce.Do(func() {
+		GetMicroVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_micro_version")
+	})
+}
+
 var getMicroVersionInvoker *gi.Function
 
 // GetMicroVersion is a representation of the C type webkit_get_micro_version.
@@ -36,6 +57,15 @@ func GetMicroVersion() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var GetMinorVersionFunction *gi.Function
+var GetMinorVersionFunctionOnce sync.Once
+
+func GetMinorVersionFunctionSet() {
+	GetMinorVersionFunctionOnce.Do(func() {
+		GetMinorVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
+	})
 }
 
 var getMinorVersionInvoker *gi.Function
@@ -64,6 +94,15 @@ func GetMinorVersion() uint32 {
 // UNSUPPORTED : C value 'webkit_print_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'webkit_snapshot_error_quark' : return type 'GLib.Quark' not supported
+
+var UriForDisplayFunction *gi.Function
+var UriForDisplayFunctionOnce sync.Once
+
+func UriForDisplayFunctionSet() {
+	UriForDisplayFunctionOnce.Do(func() {
+		UriForDisplayFunction = gi.FunctionInvokerNew("WebKit2", "uri_for_display")
+	})
+}
 
 var uriForDisplayInvoker *gi.Function
 

@@ -2,7 +2,10 @@
 
 package pangoft2
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'pango_ft2_font_get_coverage' : parameter 'font' of type 'Pango.Font' not supported
 
@@ -25,6 +28,15 @@ import gi "github.com/pekim/gobbi/internal/gi"
 // UNSUPPORTED : C value 'pango_ft2_render_layout_subpixel' : parameter 'bitmap' of type 'freetype2.Bitmap' not supported
 
 // UNSUPPORTED : C value 'pango_ft2_render_transformed' : parameter 'bitmap' of type 'freetype2.Bitmap' not supported
+
+var ShutdownDisplayFunction *gi.Function
+var ShutdownDisplayFunctionOnce sync.Once
+
+func ShutdownDisplayFunctionSet() {
+	ShutdownDisplayFunctionOnce.Do(func() {
+		ShutdownDisplayFunction = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
+	})
+}
 
 var shutdownDisplayInvoker *gi.Function
 

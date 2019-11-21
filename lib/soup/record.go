@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var AddressClassStruct *gi.Struct
-var AddressClassStructOnce sync.Once
+var addressClassStruct *gi.Struct
+var addressClassStructOnce sync.Once
 
-func AddressClassStructSet() {
-	AddressClassStructOnce.Do(func() {
-		AddressClassStruct = gi.StructNew("Soup", "AddressClass")
+func addressClassStructSet() {
+	addressClassStructOnce.Do(func() {
+		addressClassStruct = gi.StructNew("Soup", "AddressClass")
 	})
 }
 
@@ -25,12 +25,12 @@ type AddressClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var AuthClassStruct *gi.Struct
-var AuthClassStructOnce sync.Once
+var authClassStruct *gi.Struct
+var authClassStructOnce sync.Once
 
-func AuthClassStructSet() {
-	AuthClassStructOnce.Do(func() {
-		AuthClassStruct = gi.StructNew("Soup", "AuthClass")
+func authClassStructSet() {
+	authClassStructOnce.Do(func() {
+		authClassStruct = gi.StructNew("Soup", "AuthClass")
 	})
 }
 
@@ -50,12 +50,12 @@ type AuthClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var AuthDomainBasicClassStruct *gi.Struct
-var AuthDomainBasicClassStructOnce sync.Once
+var authDomainBasicClassStruct *gi.Struct
+var authDomainBasicClassStructOnce sync.Once
 
-func AuthDomainBasicClassStructSet() {
-	AuthDomainBasicClassStructOnce.Do(func() {
-		AuthDomainBasicClassStruct = gi.StructNew("Soup", "AuthDomainBasicClass")
+func authDomainBasicClassStructSet() {
+	authDomainBasicClassStructOnce.Do(func() {
+		authDomainBasicClassStruct = gi.StructNew("Soup", "AuthDomainBasicClass")
 	})
 }
 
@@ -68,12 +68,12 @@ type AuthDomainBasicClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var AuthDomainClassStruct *gi.Struct
-var AuthDomainClassStructOnce sync.Once
+var authDomainClassStruct *gi.Struct
+var authDomainClassStructOnce sync.Once
 
-func AuthDomainClassStructSet() {
-	AuthDomainClassStructOnce.Do(func() {
-		AuthDomainClassStruct = gi.StructNew("Soup", "AuthDomainClass")
+func authDomainClassStructSet() {
+	authDomainClassStructOnce.Do(func() {
+		authDomainClassStruct = gi.StructNew("Soup", "AuthDomainClass")
 	})
 }
 
@@ -88,12 +88,12 @@ type AuthDomainClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var AuthDomainDigestClassStruct *gi.Struct
-var AuthDomainDigestClassStructOnce sync.Once
+var authDomainDigestClassStruct *gi.Struct
+var authDomainDigestClassStructOnce sync.Once
 
-func AuthDomainDigestClassStructSet() {
-	AuthDomainDigestClassStructOnce.Do(func() {
-		AuthDomainDigestClassStruct = gi.StructNew("Soup", "AuthDomainDigestClass")
+func authDomainDigestClassStructSet() {
+	authDomainDigestClassStructOnce.Do(func() {
+		authDomainDigestClassStruct = gi.StructNew("Soup", "AuthDomainDigestClass")
 	})
 }
 
@@ -106,12 +106,12 @@ type AuthDomainDigestClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var AuthManagerClassStruct *gi.Struct
-var AuthManagerClassStructOnce sync.Once
+var authManagerClassStruct *gi.Struct
+var authManagerClassStructOnce sync.Once
 
-func AuthManagerClassStructSet() {
-	AuthManagerClassStructOnce.Do(func() {
-		AuthManagerClassStruct = gi.StructNew("Soup", "AuthManagerClass")
+func authManagerClassStructSet() {
+	authManagerClassStructOnce.Do(func() {
+		authManagerClassStruct = gi.StructNew("Soup", "AuthManagerClass")
 	})
 }
 
@@ -121,12 +121,12 @@ type AuthManagerClass struct {
 	// UNSUPPORTED : C value 'authenticate' : missing Type
 }
 
-var AuthManagerPrivateStruct *gi.Struct
-var AuthManagerPrivateStructOnce sync.Once
+var authManagerPrivateStruct *gi.Struct
+var authManagerPrivateStructOnce sync.Once
 
-func AuthManagerPrivateStructSet() {
-	AuthManagerPrivateStructOnce.Do(func() {
-		AuthManagerPrivateStruct = gi.StructNew("Soup", "AuthManagerPrivate")
+func authManagerPrivateStructSet() {
+	authManagerPrivateStructOnce.Do(func() {
+		authManagerPrivateStruct = gi.StructNew("Soup", "AuthManagerPrivate")
 	})
 }
 
@@ -134,12 +134,12 @@ type AuthManagerPrivate struct {
 	native uintptr
 }
 
-var BufferStruct *gi.Struct
-var BufferStructOnce sync.Once
+var bufferStruct *gi.Struct
+var bufferStructOnce sync.Once
 
-func BufferStructSet() {
-	BufferStructOnce.Do(func() {
-		BufferStruct = gi.StructNew("Soup", "Buffer")
+func bufferStructSet() {
+	bufferStructOnce.Do(func() {
+		bufferStruct = gi.StructNew("Soup", "Buffer")
 	})
 }
 
@@ -154,6 +154,15 @@ type Buffer struct {
 // UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' has no type
 
 // UNSUPPORTED : C value 'soup_buffer_new_with_owner' : parameter 'data' has no type
+
+var bufferCopyFunction *gi.Function
+var bufferCopyFunctionOnce sync.Once
+
+func bufferCopyFunctionSet() {
+	bufferCopyFunctionOnce.Do(func() {
+		bufferCopyFunction = gi.FunctionInvokerNew("Soup", "copy")
+	})
+}
 
 var copyBufferInvoker *gi.Function
 
@@ -171,6 +180,15 @@ func (recv *Buffer) Copy() *Buffer {
 	retGo := &Buffer{native: ret.Pointer()}
 
 	return retGo
+}
+
+var bufferFreeFunction *gi.Function
+var bufferFreeFunctionOnce sync.Once
+
+func bufferFreeFunctionSet() {
+	bufferFreeFunctionOnce.Do(func() {
+		bufferFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
 }
 
 var freeBufferInvoker *gi.Function
@@ -196,12 +214,12 @@ func (recv *Buffer) Free() {
 
 // UNSUPPORTED : C value 'soup_buffer_new_subbuffer' : parameter 'offset' of type 'gsize' not supported
 
-var CacheClassStruct *gi.Struct
-var CacheClassStructOnce sync.Once
+var cacheClassStruct *gi.Struct
+var cacheClassStructOnce sync.Once
 
-func CacheClassStructSet() {
-	CacheClassStructOnce.Do(func() {
-		CacheClassStruct = gi.StructNew("Soup", "CacheClass")
+func cacheClassStructSet() {
+	cacheClassStructOnce.Do(func() {
+		cacheClassStruct = gi.StructNew("Soup", "CacheClass")
 	})
 }
 
@@ -214,12 +232,12 @@ type CacheClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 }
 
-var CachePrivateStruct *gi.Struct
-var CachePrivateStructOnce sync.Once
+var cachePrivateStruct *gi.Struct
+var cachePrivateStructOnce sync.Once
 
-func CachePrivateStructSet() {
-	CachePrivateStructOnce.Do(func() {
-		CachePrivateStruct = gi.StructNew("Soup", "CachePrivate")
+func cachePrivateStructSet() {
+	cachePrivateStructOnce.Do(func() {
+		cachePrivateStruct = gi.StructNew("Soup", "CachePrivate")
 	})
 }
 
@@ -227,12 +245,12 @@ type CachePrivate struct {
 	native uintptr
 }
 
-var ClientContextStruct *gi.Struct
-var ClientContextStructOnce sync.Once
+var clientContextStruct *gi.Struct
+var clientContextStructOnce sync.Once
 
-func ClientContextStructSet() {
-	ClientContextStructOnce.Do(func() {
-		ClientContextStruct = gi.StructNew("Soup", "ClientContext")
+func clientContextStructSet() {
+	clientContextStructOnce.Do(func() {
+		clientContextStruct = gi.StructNew("Soup", "ClientContext")
 	})
 }
 
@@ -243,6 +261,15 @@ type ClientContext struct {
 // UNSUPPORTED : C value 'soup_client_context_get_address' : return type 'Address' not supported
 
 // UNSUPPORTED : C value 'soup_client_context_get_auth_domain' : return type 'AuthDomain' not supported
+
+var clientContextGetAuthUserFunction *gi.Function
+var clientContextGetAuthUserFunctionOnce sync.Once
+
+func clientContextGetAuthUserFunctionSet() {
+	clientContextGetAuthUserFunctionOnce.Do(func() {
+		clientContextGetAuthUserFunction = gi.FunctionInvokerNew("Soup", "get_auth_user")
+	})
+}
 
 var getAuthUserClientContextInvoker *gi.Function
 
@@ -263,6 +290,15 @@ func (recv *ClientContext) GetAuthUser() string {
 }
 
 // UNSUPPORTED : C value 'soup_client_context_get_gsocket' : return type 'Gio.Socket' not supported
+
+var clientContextGetHostFunction *gi.Function
+var clientContextGetHostFunctionOnce sync.Once
+
+func clientContextGetHostFunctionSet() {
+	clientContextGetHostFunctionOnce.Do(func() {
+		clientContextGetHostFunction = gi.FunctionInvokerNew("Soup", "get_host")
+	})
+}
 
 var getHostClientContextInvoker *gi.Function
 
@@ -290,12 +326,12 @@ func (recv *ClientContext) GetHost() string {
 
 // UNSUPPORTED : C value 'soup_client_context_steal_connection' : return type 'Gio.IOStream' not supported
 
-var ConnectionStruct *gi.Struct
-var ConnectionStructOnce sync.Once
+var connectionStruct *gi.Struct
+var connectionStructOnce sync.Once
 
-func ConnectionStructSet() {
-	ConnectionStructOnce.Do(func() {
-		ConnectionStruct = gi.StructNew("Soup", "Connection")
+func connectionStructSet() {
+	connectionStructOnce.Do(func() {
+		connectionStruct = gi.StructNew("Soup", "Connection")
 	})
 }
 
@@ -303,12 +339,12 @@ type Connection struct {
 	native uintptr
 }
 
-var ContentDecoderClassStruct *gi.Struct
-var ContentDecoderClassStructOnce sync.Once
+var contentDecoderClassStruct *gi.Struct
+var contentDecoderClassStructOnce sync.Once
 
-func ContentDecoderClassStructSet() {
-	ContentDecoderClassStructOnce.Do(func() {
-		ContentDecoderClassStruct = gi.StructNew("Soup", "ContentDecoderClass")
+func contentDecoderClassStructSet() {
+	contentDecoderClassStructOnce.Do(func() {
+		contentDecoderClassStruct = gi.StructNew("Soup", "ContentDecoderClass")
 	})
 }
 
@@ -322,12 +358,12 @@ type ContentDecoderClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved5' : missing Type
 }
 
-var ContentDecoderPrivateStruct *gi.Struct
-var ContentDecoderPrivateStructOnce sync.Once
+var contentDecoderPrivateStruct *gi.Struct
+var contentDecoderPrivateStructOnce sync.Once
 
-func ContentDecoderPrivateStructSet() {
-	ContentDecoderPrivateStructOnce.Do(func() {
-		ContentDecoderPrivateStruct = gi.StructNew("Soup", "ContentDecoderPrivate")
+func contentDecoderPrivateStructSet() {
+	contentDecoderPrivateStructOnce.Do(func() {
+		contentDecoderPrivateStruct = gi.StructNew("Soup", "ContentDecoderPrivate")
 	})
 }
 
@@ -335,12 +371,12 @@ type ContentDecoderPrivate struct {
 	native uintptr
 }
 
-var ContentSnifferClassStruct *gi.Struct
-var ContentSnifferClassStructOnce sync.Once
+var contentSnifferClassStruct *gi.Struct
+var contentSnifferClassStructOnce sync.Once
 
-func ContentSnifferClassStructSet() {
-	ContentSnifferClassStructOnce.Do(func() {
-		ContentSnifferClassStruct = gi.StructNew("Soup", "ContentSnifferClass")
+func contentSnifferClassStructSet() {
+	contentSnifferClassStructOnce.Do(func() {
+		contentSnifferClassStruct = gi.StructNew("Soup", "ContentSnifferClass")
 	})
 }
 
@@ -356,12 +392,12 @@ type ContentSnifferClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved5' : missing Type
 }
 
-var ContentSnifferPrivateStruct *gi.Struct
-var ContentSnifferPrivateStructOnce sync.Once
+var contentSnifferPrivateStruct *gi.Struct
+var contentSnifferPrivateStructOnce sync.Once
 
-func ContentSnifferPrivateStructSet() {
-	ContentSnifferPrivateStructOnce.Do(func() {
-		ContentSnifferPrivateStruct = gi.StructNew("Soup", "ContentSnifferPrivate")
+func contentSnifferPrivateStructSet() {
+	contentSnifferPrivateStructOnce.Do(func() {
+		contentSnifferPrivateStruct = gi.StructNew("Soup", "ContentSnifferPrivate")
 	})
 }
 
@@ -369,12 +405,12 @@ type ContentSnifferPrivate struct {
 	native uintptr
 }
 
-var CookieStruct *gi.Struct
-var CookieStructOnce sync.Once
+var cookieStruct *gi.Struct
+var cookieStructOnce sync.Once
 
-func CookieStructSet() {
-	CookieStructOnce.Do(func() {
-		CookieStruct = gi.StructNew("Soup", "Cookie")
+func cookieStructSet() {
+	cookieStructOnce.Do(func() {
+		cookieStruct = gi.StructNew("Soup", "Cookie")
 	})
 }
 
@@ -387,6 +423,15 @@ type Cookie struct {
 	Expires *Date
 	// UNSUPPORTED : C value 'secure' : no Go type for 'gboolean'
 	// UNSUPPORTED : C value 'http_only' : no Go type for 'gboolean'
+}
+
+var cookieNewFunction *gi.Function
+var cookieNewFunctionOnce sync.Once
+
+func cookieNewFunctionSet() {
+	cookieNewFunctionOnce.Do(func() {
+		cookieNewFunction = gi.FunctionInvokerNew("Soup", "new")
+	})
 }
 
 var newCookieInvoker *gi.Function
@@ -413,6 +458,15 @@ func CookieNew(name string, value string, domain string, path string, maxAge int
 
 // UNSUPPORTED : C value 'soup_cookie_applies_to_uri' : parameter 'uri' of type 'URI' not supported
 
+var cookieCopyFunction *gi.Function
+var cookieCopyFunctionOnce sync.Once
+
+func cookieCopyFunctionSet() {
+	cookieCopyFunctionOnce.Do(func() {
+		cookieCopyFunction = gi.FunctionInvokerNew("Soup", "copy")
+	})
+}
+
 var copyCookieInvoker *gi.Function
 
 // Copy is a representation of the C type soup_cookie_copy.
@@ -435,6 +489,15 @@ func (recv *Cookie) Copy() *Cookie {
 
 // UNSUPPORTED : C value 'soup_cookie_equal' : parameter 'cookie2' of type 'Cookie' not supported
 
+var cookieFreeFunction *gi.Function
+var cookieFreeFunctionOnce sync.Once
+
+func cookieFreeFunctionSet() {
+	cookieFreeFunctionOnce.Do(func() {
+		cookieFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeCookieInvoker *gi.Function
 
 // Free is a representation of the C type soup_cookie_free.
@@ -448,6 +511,15 @@ func (recv *Cookie) Free() {
 
 	freeCookieInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var cookieGetDomainFunction *gi.Function
+var cookieGetDomainFunctionOnce sync.Once
+
+func cookieGetDomainFunctionSet() {
+	cookieGetDomainFunctionOnce.Do(func() {
+		cookieGetDomainFunction = gi.FunctionInvokerNew("Soup", "get_domain")
+	})
 }
 
 var getDomainCookieInvoker *gi.Function
@@ -466,6 +538,15 @@ func (recv *Cookie) GetDomain() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var cookieGetExpiresFunction *gi.Function
+var cookieGetExpiresFunctionOnce sync.Once
+
+func cookieGetExpiresFunctionSet() {
+	cookieGetExpiresFunctionOnce.Do(func() {
+		cookieGetExpiresFunction = gi.FunctionInvokerNew("Soup", "get_expires")
+	})
 }
 
 var getExpiresCookieInvoker *gi.Function
@@ -488,6 +569,15 @@ func (recv *Cookie) GetExpires() *Date {
 
 // UNSUPPORTED : C value 'soup_cookie_get_http_only' : return type 'gboolean' not supported
 
+var cookieGetNameFunction *gi.Function
+var cookieGetNameFunctionOnce sync.Once
+
+func cookieGetNameFunctionSet() {
+	cookieGetNameFunctionOnce.Do(func() {
+		cookieGetNameFunction = gi.FunctionInvokerNew("Soup", "get_name")
+	})
+}
+
 var getNameCookieInvoker *gi.Function
 
 // GetName is a representation of the C type soup_cookie_get_name.
@@ -504,6 +594,15 @@ func (recv *Cookie) GetName() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var cookieGetPathFunction *gi.Function
+var cookieGetPathFunctionOnce sync.Once
+
+func cookieGetPathFunctionSet() {
+	cookieGetPathFunctionOnce.Do(func() {
+		cookieGetPathFunction = gi.FunctionInvokerNew("Soup", "get_path")
+	})
 }
 
 var getPathCookieInvoker *gi.Function
@@ -526,6 +625,15 @@ func (recv *Cookie) GetPath() string {
 
 // UNSUPPORTED : C value 'soup_cookie_get_secure' : return type 'gboolean' not supported
 
+var cookieGetValueFunction *gi.Function
+var cookieGetValueFunctionOnce sync.Once
+
+func cookieGetValueFunctionSet() {
+	cookieGetValueFunctionOnce.Do(func() {
+		cookieGetValueFunction = gi.FunctionInvokerNew("Soup", "get_value")
+	})
+}
+
 var getValueCookieInvoker *gi.Function
 
 // GetValue is a representation of the C type soup_cookie_get_value.
@@ -542,6 +650,15 @@ func (recv *Cookie) GetValue() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var cookieSetDomainFunction *gi.Function
+var cookieSetDomainFunctionOnce sync.Once
+
+func cookieSetDomainFunctionSet() {
+	cookieSetDomainFunctionOnce.Do(func() {
+		cookieSetDomainFunction = gi.FunctionInvokerNew("Soup", "set_domain")
+	})
 }
 
 var setDomainCookieInvoker *gi.Function
@@ -564,6 +681,15 @@ func (recv *Cookie) SetDomain(domain string) {
 
 // UNSUPPORTED : C value 'soup_cookie_set_http_only' : parameter 'http_only' of type 'gboolean' not supported
 
+var cookieSetMaxAgeFunction *gi.Function
+var cookieSetMaxAgeFunctionOnce sync.Once
+
+func cookieSetMaxAgeFunctionSet() {
+	cookieSetMaxAgeFunctionOnce.Do(func() {
+		cookieSetMaxAgeFunction = gi.FunctionInvokerNew("Soup", "set_max_age")
+	})
+}
+
 var setMaxAgeCookieInvoker *gi.Function
 
 // SetMaxAge is a representation of the C type soup_cookie_set_max_age.
@@ -580,6 +706,15 @@ func (recv *Cookie) SetMaxAge(maxAge int32) {
 
 }
 
+var cookieSetNameFunction *gi.Function
+var cookieSetNameFunctionOnce sync.Once
+
+func cookieSetNameFunctionSet() {
+	cookieSetNameFunctionOnce.Do(func() {
+		cookieSetNameFunction = gi.FunctionInvokerNew("Soup", "set_name")
+	})
+}
+
 var setNameCookieInvoker *gi.Function
 
 // SetName is a representation of the C type soup_cookie_set_name.
@@ -594,6 +729,15 @@ func (recv *Cookie) SetName(name string) {
 
 	setNameCookieInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var cookieSetPathFunction *gi.Function
+var cookieSetPathFunctionOnce sync.Once
+
+func cookieSetPathFunctionSet() {
+	cookieSetPathFunctionOnce.Do(func() {
+		cookieSetPathFunction = gi.FunctionInvokerNew("Soup", "set_path")
+	})
 }
 
 var setPathCookieInvoker *gi.Function
@@ -614,6 +758,15 @@ func (recv *Cookie) SetPath(path string) {
 
 // UNSUPPORTED : C value 'soup_cookie_set_secure' : parameter 'secure' of type 'gboolean' not supported
 
+var cookieSetValueFunction *gi.Function
+var cookieSetValueFunctionOnce sync.Once
+
+func cookieSetValueFunctionSet() {
+	cookieSetValueFunctionOnce.Do(func() {
+		cookieSetValueFunction = gi.FunctionInvokerNew("Soup", "set_value")
+	})
+}
+
 var setValueCookieInvoker *gi.Function
 
 // SetValue is a representation of the C type soup_cookie_set_value.
@@ -628,6 +781,15 @@ func (recv *Cookie) SetValue(value string) {
 
 	setValueCookieInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var cookieToCookieHeaderFunction *gi.Function
+var cookieToCookieHeaderFunctionOnce sync.Once
+
+func cookieToCookieHeaderFunctionSet() {
+	cookieToCookieHeaderFunctionOnce.Do(func() {
+		cookieToCookieHeaderFunction = gi.FunctionInvokerNew("Soup", "to_cookie_header")
+	})
 }
 
 var toCookieHeaderCookieInvoker *gi.Function
@@ -648,6 +810,15 @@ func (recv *Cookie) ToCookieHeader() string {
 	return retGo
 }
 
+var cookieToSetCookieHeaderFunction *gi.Function
+var cookieToSetCookieHeaderFunctionOnce sync.Once
+
+func cookieToSetCookieHeaderFunctionSet() {
+	cookieToSetCookieHeaderFunctionOnce.Do(func() {
+		cookieToSetCookieHeaderFunction = gi.FunctionInvokerNew("Soup", "to_set_cookie_header")
+	})
+}
+
 var toSetCookieHeaderCookieInvoker *gi.Function
 
 // ToSetCookieHeader is a representation of the C type soup_cookie_to_set_cookie_header.
@@ -666,12 +837,12 @@ func (recv *Cookie) ToSetCookieHeader() string {
 	return retGo
 }
 
-var CookieJarClassStruct *gi.Struct
-var CookieJarClassStructOnce sync.Once
+var cookieJarClassStruct *gi.Struct
+var cookieJarClassStructOnce sync.Once
 
-func CookieJarClassStructSet() {
-	CookieJarClassStructOnce.Do(func() {
-		CookieJarClassStruct = gi.StructNew("Soup", "CookieJarClass")
+func cookieJarClassStructSet() {
+	cookieJarClassStructOnce.Do(func() {
+		cookieJarClassStruct = gi.StructNew("Soup", "CookieJarClass")
 	})
 }
 
@@ -685,12 +856,12 @@ type CookieJarClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved2' : missing Type
 }
 
-var CookieJarDBClassStruct *gi.Struct
-var CookieJarDBClassStructOnce sync.Once
+var cookieJarDBClassStruct *gi.Struct
+var cookieJarDBClassStructOnce sync.Once
 
-func CookieJarDBClassStructSet() {
-	CookieJarDBClassStructOnce.Do(func() {
-		CookieJarDBClassStruct = gi.StructNew("Soup", "CookieJarDBClass")
+func cookieJarDBClassStructSet() {
+	cookieJarDBClassStructOnce.Do(func() {
+		cookieJarDBClassStruct = gi.StructNew("Soup", "CookieJarDBClass")
 	})
 }
 
@@ -703,12 +874,12 @@ type CookieJarDBClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var CookieJarTextClassStruct *gi.Struct
-var CookieJarTextClassStructOnce sync.Once
+var cookieJarTextClassStruct *gi.Struct
+var cookieJarTextClassStructOnce sync.Once
 
-func CookieJarTextClassStructSet() {
-	CookieJarTextClassStructOnce.Do(func() {
-		CookieJarTextClassStruct = gi.StructNew("Soup", "CookieJarTextClass")
+func cookieJarTextClassStructSet() {
+	cookieJarTextClassStructOnce.Do(func() {
+		cookieJarTextClassStruct = gi.StructNew("Soup", "CookieJarTextClass")
 	})
 }
 
@@ -721,12 +892,12 @@ type CookieJarTextClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var DateStruct *gi.Struct
-var DateStructOnce sync.Once
+var dateStruct *gi.Struct
+var dateStructOnce sync.Once
 
-func DateStructSet() {
-	DateStructOnce.Do(func() {
-		DateStruct = gi.StructNew("Soup", "Date")
+func dateStructSet() {
+	dateStructOnce.Do(func() {
+		dateStruct = gi.StructNew("Soup", "Date")
 	})
 }
 
@@ -740,6 +911,15 @@ type Date struct {
 	Second int32
 	// UNSUPPORTED : C value 'utc' : no Go type for 'gboolean'
 	Offset int32
+}
+
+var dateNewFunction *gi.Function
+var dateNewFunctionOnce sync.Once
+
+func dateNewFunctionSet() {
+	dateNewFunctionOnce.Do(func() {
+		dateNewFunction = gi.FunctionInvokerNew("Soup", "new")
+	})
 }
 
 var newDateInvoker *gi.Function
@@ -765,6 +945,15 @@ func DateNew(year int32, month int32, day int32, hour int32, minute int32, secon
 	return retGo
 }
 
+var dateNewFromNowFunction *gi.Function
+var dateNewFromNowFunctionOnce sync.Once
+
+func dateNewFromNowFunctionSet() {
+	dateNewFromNowFunctionOnce.Do(func() {
+		dateNewFromNowFunction = gi.FunctionInvokerNew("Soup", "new_from_now")
+	})
+}
+
 var newFromNowDateInvoker *gi.Function
 
 // DateNewFromNow is a representation of the C type soup_date_new_from_now.
@@ -781,6 +970,15 @@ func DateNewFromNow(offsetSeconds int32) *Date {
 	retGo := &Date{native: ret.Pointer()}
 
 	return retGo
+}
+
+var dateNewFromStringFunction *gi.Function
+var dateNewFromStringFunctionOnce sync.Once
+
+func dateNewFromStringFunctionSet() {
+	dateNewFromStringFunctionOnce.Do(func() {
+		dateNewFromStringFunction = gi.FunctionInvokerNew("Soup", "new_from_string")
+	})
 }
 
 var newFromStringDateInvoker *gi.Function
@@ -801,6 +999,15 @@ func DateNewFromString(dateString string) *Date {
 	return retGo
 }
 
+var dateNewFromTimeTFunction *gi.Function
+var dateNewFromTimeTFunctionOnce sync.Once
+
+func dateNewFromTimeTFunctionSet() {
+	dateNewFromTimeTFunctionOnce.Do(func() {
+		dateNewFromTimeTFunction = gi.FunctionInvokerNew("Soup", "new_from_time_t")
+	})
+}
+
 var newFromTimeTDateInvoker *gi.Function
 
 // DateNewFromTimeT is a representation of the C type soup_date_new_from_time_t.
@@ -817,6 +1024,15 @@ func DateNewFromTimeT(when int64) *Date {
 	retGo := &Date{native: ret.Pointer()}
 
 	return retGo
+}
+
+var dateCopyFunction *gi.Function
+var dateCopyFunctionOnce sync.Once
+
+func dateCopyFunctionSet() {
+	dateCopyFunctionOnce.Do(func() {
+		dateCopyFunction = gi.FunctionInvokerNew("Soup", "copy")
+	})
 }
 
 var copyDateInvoker *gi.Function
@@ -837,6 +1053,15 @@ func (recv *Date) Copy() *Date {
 	return retGo
 }
 
+var dateFreeFunction *gi.Function
+var dateFreeFunctionOnce sync.Once
+
+func dateFreeFunctionSet() {
+	dateFreeFunctionOnce.Do(func() {
+		dateFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeDateInvoker *gi.Function
 
 // Free is a representation of the C type soup_date_free.
@@ -850,6 +1075,15 @@ func (recv *Date) Free() {
 
 	freeDateInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var dateGetDayFunction *gi.Function
+var dateGetDayFunctionOnce sync.Once
+
+func dateGetDayFunctionSet() {
+	dateGetDayFunctionOnce.Do(func() {
+		dateGetDayFunction = gi.FunctionInvokerNew("Soup", "get_day")
+	})
 }
 
 var getDayDateInvoker *gi.Function
@@ -870,6 +1104,15 @@ func (recv *Date) GetDay() int32 {
 	return retGo
 }
 
+var dateGetHourFunction *gi.Function
+var dateGetHourFunctionOnce sync.Once
+
+func dateGetHourFunctionSet() {
+	dateGetHourFunctionOnce.Do(func() {
+		dateGetHourFunction = gi.FunctionInvokerNew("Soup", "get_hour")
+	})
+}
+
 var getHourDateInvoker *gi.Function
 
 // GetHour is a representation of the C type soup_date_get_hour.
@@ -886,6 +1129,15 @@ func (recv *Date) GetHour() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var dateGetMinuteFunction *gi.Function
+var dateGetMinuteFunctionOnce sync.Once
+
+func dateGetMinuteFunctionSet() {
+	dateGetMinuteFunctionOnce.Do(func() {
+		dateGetMinuteFunction = gi.FunctionInvokerNew("Soup", "get_minute")
+	})
 }
 
 var getMinuteDateInvoker *gi.Function
@@ -906,6 +1158,15 @@ func (recv *Date) GetMinute() int32 {
 	return retGo
 }
 
+var dateGetMonthFunction *gi.Function
+var dateGetMonthFunctionOnce sync.Once
+
+func dateGetMonthFunctionSet() {
+	dateGetMonthFunctionOnce.Do(func() {
+		dateGetMonthFunction = gi.FunctionInvokerNew("Soup", "get_month")
+	})
+}
+
 var getMonthDateInvoker *gi.Function
 
 // GetMonth is a representation of the C type soup_date_get_month.
@@ -922,6 +1183,15 @@ func (recv *Date) GetMonth() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var dateGetOffsetFunction *gi.Function
+var dateGetOffsetFunctionOnce sync.Once
+
+func dateGetOffsetFunctionSet() {
+	dateGetOffsetFunctionOnce.Do(func() {
+		dateGetOffsetFunction = gi.FunctionInvokerNew("Soup", "get_offset")
+	})
 }
 
 var getOffsetDateInvoker *gi.Function
@@ -942,6 +1212,15 @@ func (recv *Date) GetOffset() int32 {
 	return retGo
 }
 
+var dateGetSecondFunction *gi.Function
+var dateGetSecondFunctionOnce sync.Once
+
+func dateGetSecondFunctionSet() {
+	dateGetSecondFunctionOnce.Do(func() {
+		dateGetSecondFunction = gi.FunctionInvokerNew("Soup", "get_second")
+	})
+}
+
 var getSecondDateInvoker *gi.Function
 
 // GetSecond is a representation of the C type soup_date_get_second.
@@ -960,6 +1239,15 @@ func (recv *Date) GetSecond() int32 {
 	return retGo
 }
 
+var dateGetUtcFunction *gi.Function
+var dateGetUtcFunctionOnce sync.Once
+
+func dateGetUtcFunctionSet() {
+	dateGetUtcFunctionOnce.Do(func() {
+		dateGetUtcFunction = gi.FunctionInvokerNew("Soup", "get_utc")
+	})
+}
+
 var getUtcDateInvoker *gi.Function
 
 // GetUtc is a representation of the C type soup_date_get_utc.
@@ -976,6 +1264,15 @@ func (recv *Date) GetUtc() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var dateGetYearFunction *gi.Function
+var dateGetYearFunctionOnce sync.Once
+
+func dateGetYearFunctionSet() {
+	dateGetYearFunctionOnce.Do(func() {
+		dateGetYearFunction = gi.FunctionInvokerNew("Soup", "get_year")
+	})
 }
 
 var getYearDateInvoker *gi.Function
@@ -1000,6 +1297,15 @@ func (recv *Date) GetYear() int32 {
 
 // UNSUPPORTED : C value 'soup_date_to_string' : parameter 'format' of type 'DateFormat' not supported
 
+var dateToTimeTFunction *gi.Function
+var dateToTimeTFunctionOnce sync.Once
+
+func dateToTimeTFunctionSet() {
+	dateToTimeTFunctionOnce.Do(func() {
+		dateToTimeTFunction = gi.FunctionInvokerNew("Soup", "to_time_t")
+	})
+}
+
 var toTimeTDateInvoker *gi.Function
 
 // ToTimeT is a representation of the C type soup_date_to_time_t.
@@ -1020,12 +1326,12 @@ func (recv *Date) ToTimeT() int64 {
 
 // UNSUPPORTED : C value 'soup_date_to_timeval' : parameter 'time' of type 'GLib.TimeVal' not supported
 
-var HSTSEnforcerClassStruct *gi.Struct
-var HSTSEnforcerClassStructOnce sync.Once
+var hSTSEnforcerClassStruct *gi.Struct
+var hSTSEnforcerClassStructOnce sync.Once
 
-func HSTSEnforcerClassStructSet() {
-	HSTSEnforcerClassStructOnce.Do(func() {
-		HSTSEnforcerClassStruct = gi.StructNew("Soup", "HSTSEnforcerClass")
+func hSTSEnforcerClassStructSet() {
+	hSTSEnforcerClassStructOnce.Do(func() {
+		hSTSEnforcerClassStruct = gi.StructNew("Soup", "HSTSEnforcerClass")
 	})
 }
 
@@ -1042,12 +1348,12 @@ type HSTSEnforcerClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var HSTSEnforcerDBClassStruct *gi.Struct
-var HSTSEnforcerDBClassStructOnce sync.Once
+var hSTSEnforcerDBClassStruct *gi.Struct
+var hSTSEnforcerDBClassStructOnce sync.Once
 
-func HSTSEnforcerDBClassStructSet() {
-	HSTSEnforcerDBClassStructOnce.Do(func() {
-		HSTSEnforcerDBClassStruct = gi.StructNew("Soup", "HSTSEnforcerDBClass")
+func hSTSEnforcerDBClassStructSet() {
+	hSTSEnforcerDBClassStructOnce.Do(func() {
+		hSTSEnforcerDBClassStruct = gi.StructNew("Soup", "HSTSEnforcerDBClass")
 	})
 }
 
@@ -1060,12 +1366,12 @@ type HSTSEnforcerDBClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var HSTSEnforcerDBPrivateStruct *gi.Struct
-var HSTSEnforcerDBPrivateStructOnce sync.Once
+var hSTSEnforcerDBPrivateStruct *gi.Struct
+var hSTSEnforcerDBPrivateStructOnce sync.Once
 
-func HSTSEnforcerDBPrivateStructSet() {
-	HSTSEnforcerDBPrivateStructOnce.Do(func() {
-		HSTSEnforcerDBPrivateStruct = gi.StructNew("Soup", "HSTSEnforcerDBPrivate")
+func hSTSEnforcerDBPrivateStructSet() {
+	hSTSEnforcerDBPrivateStructOnce.Do(func() {
+		hSTSEnforcerDBPrivateStruct = gi.StructNew("Soup", "HSTSEnforcerDBPrivate")
 	})
 }
 
@@ -1073,12 +1379,12 @@ type HSTSEnforcerDBPrivate struct {
 	native uintptr
 }
 
-var HSTSEnforcerPrivateStruct *gi.Struct
-var HSTSEnforcerPrivateStructOnce sync.Once
+var hSTSEnforcerPrivateStruct *gi.Struct
+var hSTSEnforcerPrivateStructOnce sync.Once
 
-func HSTSEnforcerPrivateStructSet() {
-	HSTSEnforcerPrivateStructOnce.Do(func() {
-		HSTSEnforcerPrivateStruct = gi.StructNew("Soup", "HSTSEnforcerPrivate")
+func hSTSEnforcerPrivateStructSet() {
+	hSTSEnforcerPrivateStructOnce.Do(func() {
+		hSTSEnforcerPrivateStruct = gi.StructNew("Soup", "HSTSEnforcerPrivate")
 	})
 }
 
@@ -1086,12 +1392,12 @@ type HSTSEnforcerPrivate struct {
 	native uintptr
 }
 
-var HSTSPolicyStruct *gi.Struct
-var HSTSPolicyStructOnce sync.Once
+var hSTSPolicyStruct *gi.Struct
+var hSTSPolicyStructOnce sync.Once
 
-func HSTSPolicyStructSet() {
-	HSTSPolicyStructOnce.Do(func() {
-		HSTSPolicyStruct = gi.StructNew("Soup", "HSTSPolicy")
+func hSTSPolicyStructSet() {
+	hSTSPolicyStructOnce.Do(func() {
+		hSTSPolicyStruct = gi.StructNew("Soup", "HSTSPolicy")
 	})
 }
 
@@ -1110,6 +1416,15 @@ type HSTSPolicy struct {
 // UNSUPPORTED : C value 'soup_hsts_policy_new_full' : parameter 'expires' of type 'Date' not supported
 
 // UNSUPPORTED : C value 'soup_hsts_policy_new_session_policy' : parameter 'include_subdomains' of type 'gboolean' not supported
+
+var hSTSPolicyCopyFunction *gi.Function
+var hSTSPolicyCopyFunctionOnce sync.Once
+
+func hSTSPolicyCopyFunctionSet() {
+	hSTSPolicyCopyFunctionOnce.Do(func() {
+		hSTSPolicyCopyFunction = gi.FunctionInvokerNew("Soup", "copy")
+	})
+}
 
 var copyHSTSPolicyInvoker *gi.Function
 
@@ -1131,6 +1446,15 @@ func (recv *HSTSPolicy) Copy() *HSTSPolicy {
 
 // UNSUPPORTED : C value 'soup_hsts_policy_equal' : parameter 'policy2' of type 'HSTSPolicy' not supported
 
+var hSTSPolicyFreeFunction *gi.Function
+var hSTSPolicyFreeFunctionOnce sync.Once
+
+func hSTSPolicyFreeFunctionSet() {
+	hSTSPolicyFreeFunctionOnce.Do(func() {
+		hSTSPolicyFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeHSTSPolicyInvoker *gi.Function
 
 // Free is a representation of the C type soup_hsts_policy_free.
@@ -1144,6 +1468,15 @@ func (recv *HSTSPolicy) Free() {
 
 	freeHSTSPolicyInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var hSTSPolicyGetDomainFunction *gi.Function
+var hSTSPolicyGetDomainFunctionOnce sync.Once
+
+func hSTSPolicyGetDomainFunctionSet() {
+	hSTSPolicyGetDomainFunctionOnce.Do(func() {
+		hSTSPolicyGetDomainFunction = gi.FunctionInvokerNew("Soup", "get_domain")
+	})
 }
 
 var getDomainHSTSPolicyInvoker *gi.Function
@@ -1170,12 +1503,12 @@ func (recv *HSTSPolicy) GetDomain() string {
 
 // UNSUPPORTED : C value 'soup_hsts_policy_is_session_policy' : return type 'gboolean' not supported
 
-var LoggerClassStruct *gi.Struct
-var LoggerClassStructOnce sync.Once
+var loggerClassStruct *gi.Struct
+var loggerClassStructOnce sync.Once
 
-func LoggerClassStructSet() {
-	LoggerClassStructOnce.Do(func() {
-		LoggerClassStruct = gi.StructNew("Soup", "LoggerClass")
+func loggerClassStructSet() {
+	loggerClassStructOnce.Do(func() {
+		loggerClassStruct = gi.StructNew("Soup", "LoggerClass")
 	})
 }
 
@@ -1188,12 +1521,12 @@ type LoggerClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var MessageBodyStruct *gi.Struct
-var MessageBodyStructOnce sync.Once
+var messageBodyStruct *gi.Struct
+var messageBodyStructOnce sync.Once
 
-func MessageBodyStructSet() {
-	MessageBodyStructOnce.Do(func() {
-		MessageBodyStruct = gi.StructNew("Soup", "MessageBody")
+func messageBodyStructSet() {
+	messageBodyStructOnce.Do(func() {
+		messageBodyStruct = gi.StructNew("Soup", "MessageBody")
 	})
 }
 
@@ -1201,6 +1534,15 @@ type MessageBody struct {
 	native uintptr
 	Data   string
 	Length int64
+}
+
+var messageBodyNewFunction *gi.Function
+var messageBodyNewFunctionOnce sync.Once
+
+func messageBodyNewFunctionSet() {
+	messageBodyNewFunctionOnce.Do(func() {
+		messageBodyNewFunction = gi.FunctionInvokerNew("Soup", "new")
+	})
 }
 
 var newMessageBodyInvoker *gi.Function
@@ -1224,6 +1566,15 @@ func MessageBodyNew() *MessageBody {
 
 // UNSUPPORTED : C value 'soup_message_body_append_take' : parameter 'data' has no type
 
+var messageBodyCompleteFunction *gi.Function
+var messageBodyCompleteFunctionOnce sync.Once
+
+func messageBodyCompleteFunctionSet() {
+	messageBodyCompleteFunctionOnce.Do(func() {
+		messageBodyCompleteFunction = gi.FunctionInvokerNew("Soup", "complete")
+	})
+}
+
 var completeMessageBodyInvoker *gi.Function
 
 // Complete is a representation of the C type soup_message_body_complete.
@@ -1237,6 +1588,15 @@ func (recv *MessageBody) Complete() {
 
 	completeMessageBodyInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var messageBodyFlattenFunction *gi.Function
+var messageBodyFlattenFunctionOnce sync.Once
+
+func messageBodyFlattenFunctionSet() {
+	messageBodyFlattenFunctionOnce.Do(func() {
+		messageBodyFlattenFunction = gi.FunctionInvokerNew("Soup", "flatten")
+	})
 }
 
 var flattenMessageBodyInvoker *gi.Function
@@ -1257,6 +1617,15 @@ func (recv *MessageBody) Flatten() *Buffer {
 	return retGo
 }
 
+var messageBodyFreeFunction *gi.Function
+var messageBodyFreeFunctionOnce sync.Once
+
+func messageBodyFreeFunctionSet() {
+	messageBodyFreeFunctionOnce.Do(func() {
+		messageBodyFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeMessageBodyInvoker *gi.Function
 
 // Free is a representation of the C type soup_message_body_free.
@@ -1273,6 +1642,15 @@ func (recv *MessageBody) Free() {
 }
 
 // UNSUPPORTED : C value 'soup_message_body_get_accumulate' : return type 'gboolean' not supported
+
+var messageBodyGetChunkFunction *gi.Function
+var messageBodyGetChunkFunctionOnce sync.Once
+
+func messageBodyGetChunkFunctionSet() {
+	messageBodyGetChunkFunctionOnce.Do(func() {
+		messageBodyGetChunkFunction = gi.FunctionInvokerNew("Soup", "get_chunk")
+	})
+}
 
 var getChunkMessageBodyInvoker *gi.Function
 
@@ -1297,6 +1675,15 @@ func (recv *MessageBody) GetChunk(offset int64) *Buffer {
 
 // UNSUPPORTED : C value 'soup_message_body_set_accumulate' : parameter 'accumulate' of type 'gboolean' not supported
 
+var messageBodyTruncateFunction *gi.Function
+var messageBodyTruncateFunctionOnce sync.Once
+
+func messageBodyTruncateFunctionSet() {
+	messageBodyTruncateFunctionOnce.Do(func() {
+		messageBodyTruncateFunction = gi.FunctionInvokerNew("Soup", "truncate")
+	})
+}
+
 var truncateMessageBodyInvoker *gi.Function
 
 // Truncate is a representation of the C type soup_message_body_truncate.
@@ -1314,12 +1701,12 @@ func (recv *MessageBody) Truncate() {
 
 // UNSUPPORTED : C value 'soup_message_body_wrote_chunk' : parameter 'chunk' of type 'Buffer' not supported
 
-var MessageClassStruct *gi.Struct
-var MessageClassStructOnce sync.Once
+var messageClassStruct *gi.Struct
+var messageClassStructOnce sync.Once
 
-func MessageClassStructSet() {
-	MessageClassStructOnce.Do(func() {
-		MessageClassStruct = gi.StructNew("Soup", "MessageClass")
+func messageClassStructSet() {
+	messageClassStructOnce.Do(func() {
+		messageClassStruct = gi.StructNew("Soup", "MessageClass")
 	})
 }
 
@@ -1342,12 +1729,12 @@ type MessageClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved3' : missing Type
 }
 
-var MessageHeadersStruct *gi.Struct
-var MessageHeadersStructOnce sync.Once
+var messageHeadersStruct *gi.Struct
+var messageHeadersStructOnce sync.Once
 
-func MessageHeadersStructSet() {
-	MessageHeadersStructOnce.Do(func() {
-		MessageHeadersStruct = gi.StructNew("Soup", "MessageHeaders")
+func messageHeadersStructSet() {
+	messageHeadersStructOnce.Do(func() {
+		messageHeadersStruct = gi.StructNew("Soup", "MessageHeaders")
 	})
 }
 
@@ -1356,6 +1743,15 @@ type MessageHeaders struct {
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_new' : parameter 'type' of type 'MessageHeadersType' not supported
+
+var messageHeadersAppendFunction *gi.Function
+var messageHeadersAppendFunctionOnce sync.Once
+
+func messageHeadersAppendFunctionSet() {
+	messageHeadersAppendFunctionOnce.Do(func() {
+		messageHeadersAppendFunction = gi.FunctionInvokerNew("Soup", "append")
+	})
+}
 
 var appendMessageHeadersInvoker *gi.Function
 
@@ -1374,6 +1770,15 @@ func (recv *MessageHeaders) Append(name string, value string) {
 
 }
 
+var messageHeadersCleanConnectionHeadersFunction *gi.Function
+var messageHeadersCleanConnectionHeadersFunctionOnce sync.Once
+
+func messageHeadersCleanConnectionHeadersFunctionSet() {
+	messageHeadersCleanConnectionHeadersFunctionOnce.Do(func() {
+		messageHeadersCleanConnectionHeadersFunction = gi.FunctionInvokerNew("Soup", "clean_connection_headers")
+	})
+}
+
 var cleanConnectionHeadersMessageHeadersInvoker *gi.Function
 
 // CleanConnectionHeaders is a representation of the C type soup_message_headers_clean_connection_headers.
@@ -1387,6 +1792,15 @@ func (recv *MessageHeaders) CleanConnectionHeaders() {
 
 	cleanConnectionHeadersMessageHeadersInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var messageHeadersClearFunction *gi.Function
+var messageHeadersClearFunctionOnce sync.Once
+
+func messageHeadersClearFunctionSet() {
+	messageHeadersClearFunctionOnce.Do(func() {
+		messageHeadersClearFunction = gi.FunctionInvokerNew("Soup", "clear")
+	})
 }
 
 var clearMessageHeadersInvoker *gi.Function
@@ -1406,6 +1820,15 @@ func (recv *MessageHeaders) Clear() {
 
 // UNSUPPORTED : C value 'soup_message_headers_foreach' : parameter 'func' of type 'MessageHeadersForeachFunc' not supported
 
+var messageHeadersFreeFunction *gi.Function
+var messageHeadersFreeFunctionOnce sync.Once
+
+func messageHeadersFreeFunctionSet() {
+	messageHeadersFreeFunctionOnce.Do(func() {
+		messageHeadersFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeMessageHeadersInvoker *gi.Function
 
 // Free is a representation of the C type soup_message_headers_free.
@@ -1422,6 +1845,15 @@ func (recv *MessageHeaders) Free() {
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_free_ranges' : parameter 'ranges' of type 'Range' not supported
+
+var messageHeadersGetFunction *gi.Function
+var messageHeadersGetFunctionOnce sync.Once
+
+func messageHeadersGetFunctionSet() {
+	messageHeadersGetFunctionOnce.Do(func() {
+		messageHeadersGetFunction = gi.FunctionInvokerNew("Soup", "get")
+	})
+}
 
 var getMessageHeadersInvoker *gi.Function
 
@@ -1443,6 +1875,15 @@ func (recv *MessageHeaders) Get(name string) string {
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_get_content_disposition' : parameter 'params' of type 'GLib.HashTable' not supported
+
+var messageHeadersGetContentLengthFunction *gi.Function
+var messageHeadersGetContentLengthFunctionOnce sync.Once
+
+func messageHeadersGetContentLengthFunctionSet() {
+	messageHeadersGetContentLengthFunctionOnce.Do(func() {
+		messageHeadersGetContentLengthFunction = gi.FunctionInvokerNew("Soup", "get_content_length")
+	})
+}
 
 var getContentLengthMessageHeadersInvoker *gi.Function
 
@@ -1472,6 +1913,15 @@ func (recv *MessageHeaders) GetContentLength() int64 {
 
 // UNSUPPORTED : C value 'soup_message_headers_get_headers_type' : return type 'MessageHeadersType' not supported
 
+var messageHeadersGetListFunction *gi.Function
+var messageHeadersGetListFunctionOnce sync.Once
+
+func messageHeadersGetListFunctionSet() {
+	messageHeadersGetListFunctionOnce.Do(func() {
+		messageHeadersGetListFunction = gi.FunctionInvokerNew("Soup", "get_list")
+	})
+}
+
 var getListMessageHeadersInvoker *gi.Function
 
 // GetList is a representation of the C type soup_message_headers_get_list.
@@ -1489,6 +1939,15 @@ func (recv *MessageHeaders) GetList(name string) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var messageHeadersGetOneFunction *gi.Function
+var messageHeadersGetOneFunctionOnce sync.Once
+
+func messageHeadersGetOneFunctionSet() {
+	messageHeadersGetOneFunctionOnce.Do(func() {
+		messageHeadersGetOneFunction = gi.FunctionInvokerNew("Soup", "get_one")
+	})
 }
 
 var getOneMessageHeadersInvoker *gi.Function
@@ -1516,6 +1975,15 @@ func (recv *MessageHeaders) GetOne(name string) string {
 
 // UNSUPPORTED : C value 'soup_message_headers_header_equals' : return type 'gboolean' not supported
 
+var messageHeadersRemoveFunction *gi.Function
+var messageHeadersRemoveFunctionOnce sync.Once
+
+func messageHeadersRemoveFunctionSet() {
+	messageHeadersRemoveFunctionOnce.Do(func() {
+		messageHeadersRemoveFunction = gi.FunctionInvokerNew("Soup", "remove")
+	})
+}
+
 var removeMessageHeadersInvoker *gi.Function
 
 // Remove is a representation of the C type soup_message_headers_remove.
@@ -1530,6 +1998,15 @@ func (recv *MessageHeaders) Remove(name string) {
 
 	removeMessageHeadersInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var messageHeadersReplaceFunction *gi.Function
+var messageHeadersReplaceFunctionOnce sync.Once
+
+func messageHeadersReplaceFunctionSet() {
+	messageHeadersReplaceFunctionOnce.Do(func() {
+		messageHeadersReplaceFunction = gi.FunctionInvokerNew("Soup", "replace")
+	})
 }
 
 var replaceMessageHeadersInvoker *gi.Function
@@ -1551,6 +2028,15 @@ func (recv *MessageHeaders) Replace(name string, value string) {
 
 // UNSUPPORTED : C value 'soup_message_headers_set_content_disposition' : parameter 'params' of type 'GLib.HashTable' not supported
 
+var messageHeadersSetContentLengthFunction *gi.Function
+var messageHeadersSetContentLengthFunctionOnce sync.Once
+
+func messageHeadersSetContentLengthFunctionSet() {
+	messageHeadersSetContentLengthFunctionOnce.Do(func() {
+		messageHeadersSetContentLengthFunction = gi.FunctionInvokerNew("Soup", "set_content_length")
+	})
+}
+
 var setContentLengthMessageHeadersInvoker *gi.Function
 
 // SetContentLength is a representation of the C type soup_message_headers_set_content_length.
@@ -1565,6 +2051,15 @@ func (recv *MessageHeaders) SetContentLength(contentLength int64) {
 
 	setContentLengthMessageHeadersInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var messageHeadersSetContentRangeFunction *gi.Function
+var messageHeadersSetContentRangeFunctionOnce sync.Once
+
+func messageHeadersSetContentRangeFunctionSet() {
+	messageHeadersSetContentRangeFunctionOnce.Do(func() {
+		messageHeadersSetContentRangeFunction = gi.FunctionInvokerNew("Soup", "set_content_range")
+	})
 }
 
 var setContentRangeMessageHeadersInvoker *gi.Function
@@ -1591,6 +2086,15 @@ func (recv *MessageHeaders) SetContentRange(start int64, end int64, totalLength 
 
 // UNSUPPORTED : C value 'soup_message_headers_set_expectations' : parameter 'expectations' of type 'Expectation' not supported
 
+var messageHeadersSetRangeFunction *gi.Function
+var messageHeadersSetRangeFunctionOnce sync.Once
+
+func messageHeadersSetRangeFunctionSet() {
+	messageHeadersSetRangeFunctionOnce.Do(func() {
+		messageHeadersSetRangeFunction = gi.FunctionInvokerNew("Soup", "set_range")
+	})
+}
+
 var setRangeMessageHeadersInvoker *gi.Function
 
 // SetRange is a representation of the C type soup_message_headers_set_range.
@@ -1610,12 +2114,12 @@ func (recv *MessageHeaders) SetRange(start int64, end int64) {
 
 // UNSUPPORTED : C value 'soup_message_headers_set_ranges' : parameter 'ranges' of type 'Range' not supported
 
-var MessageHeadersIterStruct *gi.Struct
-var MessageHeadersIterStructOnce sync.Once
+var messageHeadersIterStruct *gi.Struct
+var messageHeadersIterStructOnce sync.Once
 
-func MessageHeadersIterStructSet() {
-	MessageHeadersIterStructOnce.Do(func() {
-		MessageHeadersIterStruct = gi.StructNew("Soup", "MessageHeadersIter")
+func messageHeadersIterStructSet() {
+	messageHeadersIterStructOnce.Do(func() {
+		messageHeadersIterStruct = gi.StructNew("Soup", "MessageHeadersIter")
 	})
 }
 
@@ -1625,12 +2129,12 @@ type MessageHeadersIter struct {
 
 // UNSUPPORTED : C value 'soup_message_headers_iter_next' : return type 'gboolean' not supported
 
-var MessageQueueStruct *gi.Struct
-var MessageQueueStructOnce sync.Once
+var messageQueueStruct *gi.Struct
+var messageQueueStructOnce sync.Once
 
-func MessageQueueStructSet() {
-	MessageQueueStructOnce.Do(func() {
-		MessageQueueStruct = gi.StructNew("Soup", "MessageQueue")
+func messageQueueStructSet() {
+	messageQueueStructOnce.Do(func() {
+		messageQueueStruct = gi.StructNew("Soup", "MessageQueue")
 	})
 }
 
@@ -1638,12 +2142,12 @@ type MessageQueue struct {
 	native uintptr
 }
 
-var MessageQueueItemStruct *gi.Struct
-var MessageQueueItemStructOnce sync.Once
+var messageQueueItemStruct *gi.Struct
+var messageQueueItemStructOnce sync.Once
 
-func MessageQueueItemStructSet() {
-	MessageQueueItemStructOnce.Do(func() {
-		MessageQueueItemStruct = gi.StructNew("Soup", "MessageQueueItem")
+func messageQueueItemStructSet() {
+	messageQueueItemStructOnce.Do(func() {
+		messageQueueItemStruct = gi.StructNew("Soup", "MessageQueueItem")
 	})
 }
 
@@ -1651,17 +2155,26 @@ type MessageQueueItem struct {
 	native uintptr
 }
 
-var MultipartStruct *gi.Struct
-var MultipartStructOnce sync.Once
+var multipartStruct *gi.Struct
+var multipartStructOnce sync.Once
 
-func MultipartStructSet() {
-	MultipartStructOnce.Do(func() {
-		MultipartStruct = gi.StructNew("Soup", "Multipart")
+func multipartStructSet() {
+	multipartStructOnce.Do(func() {
+		multipartStruct = gi.StructNew("Soup", "Multipart")
 	})
 }
 
 type Multipart struct {
 	native uintptr
+}
+
+var multipartNewFunction *gi.Function
+var multipartNewFunctionOnce sync.Once
+
+func multipartNewFunctionSet() {
+	multipartNewFunctionOnce.Do(func() {
+		multipartNewFunction = gi.FunctionInvokerNew("Soup", "new")
+	})
 }
 
 var newMultipartInvoker *gi.Function
@@ -1686,6 +2199,15 @@ func MultipartNew(mimeType string) *Multipart {
 
 // UNSUPPORTED : C value 'soup_multipart_append_form_file' : parameter 'body' of type 'Buffer' not supported
 
+var multipartAppendFormStringFunction *gi.Function
+var multipartAppendFormStringFunctionOnce sync.Once
+
+func multipartAppendFormStringFunctionSet() {
+	multipartAppendFormStringFunctionOnce.Do(func() {
+		multipartAppendFormStringFunction = gi.FunctionInvokerNew("Soup", "append_form_string")
+	})
+}
+
 var appendFormStringMultipartInvoker *gi.Function
 
 // AppendFormString is a representation of the C type soup_multipart_append_form_string.
@@ -1705,6 +2227,15 @@ func (recv *Multipart) AppendFormString(controlName string, data string) {
 
 // UNSUPPORTED : C value 'soup_multipart_append_part' : parameter 'headers' of type 'MessageHeaders' not supported
 
+var multipartFreeFunction *gi.Function
+var multipartFreeFunctionOnce sync.Once
+
+func multipartFreeFunctionSet() {
+	multipartFreeFunctionOnce.Do(func() {
+		multipartFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeMultipartInvoker *gi.Function
 
 // Free is a representation of the C type soup_multipart_free.
@@ -1718,6 +2249,15 @@ func (recv *Multipart) Free() {
 
 	freeMultipartInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var multipartGetLengthFunction *gi.Function
+var multipartGetLengthFunctionOnce sync.Once
+
+func multipartGetLengthFunctionSet() {
+	multipartGetLengthFunctionOnce.Do(func() {
+		multipartGetLengthFunction = gi.FunctionInvokerNew("Soup", "get_length")
+	})
 }
 
 var getLengthMultipartInvoker *gi.Function
@@ -1742,12 +2282,12 @@ func (recv *Multipart) GetLength() int32 {
 
 // UNSUPPORTED : C value 'soup_multipart_to_message' : parameter 'dest_headers' of type 'MessageHeaders' not supported
 
-var MultipartInputStreamClassStruct *gi.Struct
-var MultipartInputStreamClassStructOnce sync.Once
+var multipartInputStreamClassStruct *gi.Struct
+var multipartInputStreamClassStructOnce sync.Once
 
-func MultipartInputStreamClassStructSet() {
-	MultipartInputStreamClassStructOnce.Do(func() {
-		MultipartInputStreamClassStruct = gi.StructNew("Soup", "MultipartInputStreamClass")
+func multipartInputStreamClassStructSet() {
+	multipartInputStreamClassStructOnce.Do(func() {
+		multipartInputStreamClassStruct = gi.StructNew("Soup", "MultipartInputStreamClass")
 	})
 }
 
@@ -1756,12 +2296,12 @@ type MultipartInputStreamClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.FilterInputStreamClass'
 }
 
-var MultipartInputStreamPrivateStruct *gi.Struct
-var MultipartInputStreamPrivateStructOnce sync.Once
+var multipartInputStreamPrivateStruct *gi.Struct
+var multipartInputStreamPrivateStructOnce sync.Once
 
-func MultipartInputStreamPrivateStructSet() {
-	MultipartInputStreamPrivateStructOnce.Do(func() {
-		MultipartInputStreamPrivateStruct = gi.StructNew("Soup", "MultipartInputStreamPrivate")
+func multipartInputStreamPrivateStructSet() {
+	multipartInputStreamPrivateStructOnce.Do(func() {
+		multipartInputStreamPrivateStruct = gi.StructNew("Soup", "MultipartInputStreamPrivate")
 	})
 }
 
@@ -1769,12 +2309,12 @@ type MultipartInputStreamPrivate struct {
 	native uintptr
 }
 
-var PasswordManagerInterfaceStruct *gi.Struct
-var PasswordManagerInterfaceStructOnce sync.Once
+var passwordManagerInterfaceStruct *gi.Struct
+var passwordManagerInterfaceStructOnce sync.Once
 
-func PasswordManagerInterfaceStructSet() {
-	PasswordManagerInterfaceStructOnce.Do(func() {
-		PasswordManagerInterfaceStruct = gi.StructNew("Soup", "PasswordManagerInterface")
+func passwordManagerInterfaceStructSet() {
+	passwordManagerInterfaceStructOnce.Do(func() {
+		passwordManagerInterfaceStruct = gi.StructNew("Soup", "PasswordManagerInterface")
 	})
 }
 
@@ -1785,12 +2325,12 @@ type PasswordManagerInterface struct {
 	// UNSUPPORTED : C value 'get_passwords_sync' : missing Type
 }
 
-var ProxyResolverDefaultClassStruct *gi.Struct
-var ProxyResolverDefaultClassStructOnce sync.Once
+var proxyResolverDefaultClassStruct *gi.Struct
+var proxyResolverDefaultClassStructOnce sync.Once
 
-func ProxyResolverDefaultClassStructSet() {
-	ProxyResolverDefaultClassStructOnce.Do(func() {
-		ProxyResolverDefaultClassStruct = gi.StructNew("Soup", "ProxyResolverDefaultClass")
+func proxyResolverDefaultClassStructSet() {
+	proxyResolverDefaultClassStructOnce.Do(func() {
+		proxyResolverDefaultClassStruct = gi.StructNew("Soup", "ProxyResolverDefaultClass")
 	})
 }
 
@@ -1799,12 +2339,12 @@ type ProxyResolverDefaultClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
-var ProxyResolverInterfaceStruct *gi.Struct
-var ProxyResolverInterfaceStructOnce sync.Once
+var proxyResolverInterfaceStruct *gi.Struct
+var proxyResolverInterfaceStructOnce sync.Once
 
-func ProxyResolverInterfaceStructSet() {
-	ProxyResolverInterfaceStructOnce.Do(func() {
-		ProxyResolverInterfaceStruct = gi.StructNew("Soup", "ProxyResolverInterface")
+func proxyResolverInterfaceStructSet() {
+	proxyResolverInterfaceStructOnce.Do(func() {
+		proxyResolverInterfaceStruct = gi.StructNew("Soup", "ProxyResolverInterface")
 	})
 }
 
@@ -1815,12 +2355,12 @@ type ProxyResolverInterface struct {
 	// UNSUPPORTED : C value 'get_proxy_sync' : missing Type
 }
 
-var ProxyURIResolverInterfaceStruct *gi.Struct
-var ProxyURIResolverInterfaceStructOnce sync.Once
+var proxyURIResolverInterfaceStruct *gi.Struct
+var proxyURIResolverInterfaceStructOnce sync.Once
 
-func ProxyURIResolverInterfaceStructSet() {
-	ProxyURIResolverInterfaceStructOnce.Do(func() {
-		ProxyURIResolverInterfaceStruct = gi.StructNew("Soup", "ProxyURIResolverInterface")
+func proxyURIResolverInterfaceStructSet() {
+	proxyURIResolverInterfaceStructOnce.Do(func() {
+		proxyURIResolverInterfaceStruct = gi.StructNew("Soup", "ProxyURIResolverInterface")
 	})
 }
 
@@ -1835,12 +2375,12 @@ type ProxyURIResolverInterface struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var RangeStruct *gi.Struct
-var RangeStructOnce sync.Once
+var rangeStruct *gi.Struct
+var rangeStructOnce sync.Once
 
-func RangeStructSet() {
-	RangeStructOnce.Do(func() {
-		RangeStruct = gi.StructNew("Soup", "Range")
+func rangeStructSet() {
+	rangeStructOnce.Do(func() {
+		rangeStruct = gi.StructNew("Soup", "Range")
 	})
 }
 
@@ -1850,12 +2390,12 @@ type Range struct {
 	End    int64
 }
 
-var RequestClassStruct *gi.Struct
-var RequestClassStructOnce sync.Once
+var requestClassStruct *gi.Struct
+var requestClassStructOnce sync.Once
 
-func RequestClassStructSet() {
-	RequestClassStructOnce.Do(func() {
-		RequestClassStruct = gi.StructNew("Soup", "RequestClass")
+func requestClassStructSet() {
+	requestClassStructOnce.Do(func() {
+		requestClassStruct = gi.StructNew("Soup", "RequestClass")
 	})
 }
 
@@ -1871,12 +2411,12 @@ type RequestClass struct {
 	// UNSUPPORTED : C value 'get_content_type' : missing Type
 }
 
-var RequestDataClassStruct *gi.Struct
-var RequestDataClassStructOnce sync.Once
+var requestDataClassStruct *gi.Struct
+var requestDataClassStructOnce sync.Once
 
-func RequestDataClassStructSet() {
-	RequestDataClassStructOnce.Do(func() {
-		RequestDataClassStruct = gi.StructNew("Soup", "RequestDataClass")
+func requestDataClassStructSet() {
+	requestDataClassStructOnce.Do(func() {
+		requestDataClassStruct = gi.StructNew("Soup", "RequestDataClass")
 	})
 }
 
@@ -1885,12 +2425,12 @@ type RequestDataClass struct {
 	Parent *RequestClass
 }
 
-var RequestDataPrivateStruct *gi.Struct
-var RequestDataPrivateStructOnce sync.Once
+var requestDataPrivateStruct *gi.Struct
+var requestDataPrivateStructOnce sync.Once
 
-func RequestDataPrivateStructSet() {
-	RequestDataPrivateStructOnce.Do(func() {
-		RequestDataPrivateStruct = gi.StructNew("Soup", "RequestDataPrivate")
+func requestDataPrivateStructSet() {
+	requestDataPrivateStructOnce.Do(func() {
+		requestDataPrivateStruct = gi.StructNew("Soup", "RequestDataPrivate")
 	})
 }
 
@@ -1898,12 +2438,12 @@ type RequestDataPrivate struct {
 	native uintptr
 }
 
-var RequestFileClassStruct *gi.Struct
-var RequestFileClassStructOnce sync.Once
+var requestFileClassStruct *gi.Struct
+var requestFileClassStructOnce sync.Once
 
-func RequestFileClassStructSet() {
-	RequestFileClassStructOnce.Do(func() {
-		RequestFileClassStruct = gi.StructNew("Soup", "RequestFileClass")
+func requestFileClassStructSet() {
+	requestFileClassStructOnce.Do(func() {
+		requestFileClassStruct = gi.StructNew("Soup", "RequestFileClass")
 	})
 }
 
@@ -1912,12 +2452,12 @@ type RequestFileClass struct {
 	Parent *RequestClass
 }
 
-var RequestFilePrivateStruct *gi.Struct
-var RequestFilePrivateStructOnce sync.Once
+var requestFilePrivateStruct *gi.Struct
+var requestFilePrivateStructOnce sync.Once
 
-func RequestFilePrivateStructSet() {
-	RequestFilePrivateStructOnce.Do(func() {
-		RequestFilePrivateStruct = gi.StructNew("Soup", "RequestFilePrivate")
+func requestFilePrivateStructSet() {
+	requestFilePrivateStructOnce.Do(func() {
+		requestFilePrivateStruct = gi.StructNew("Soup", "RequestFilePrivate")
 	})
 }
 
@@ -1925,12 +2465,12 @@ type RequestFilePrivate struct {
 	native uintptr
 }
 
-var RequestHTTPClassStruct *gi.Struct
-var RequestHTTPClassStructOnce sync.Once
+var requestHTTPClassStruct *gi.Struct
+var requestHTTPClassStructOnce sync.Once
 
-func RequestHTTPClassStructSet() {
-	RequestHTTPClassStructOnce.Do(func() {
-		RequestHTTPClassStruct = gi.StructNew("Soup", "RequestHTTPClass")
+func requestHTTPClassStructSet() {
+	requestHTTPClassStructOnce.Do(func() {
+		requestHTTPClassStruct = gi.StructNew("Soup", "RequestHTTPClass")
 	})
 }
 
@@ -1939,12 +2479,12 @@ type RequestHTTPClass struct {
 	Parent *RequestClass
 }
 
-var RequestHTTPPrivateStruct *gi.Struct
-var RequestHTTPPrivateStructOnce sync.Once
+var requestHTTPPrivateStruct *gi.Struct
+var requestHTTPPrivateStructOnce sync.Once
 
-func RequestHTTPPrivateStructSet() {
-	RequestHTTPPrivateStructOnce.Do(func() {
-		RequestHTTPPrivateStruct = gi.StructNew("Soup", "RequestHTTPPrivate")
+func requestHTTPPrivateStructSet() {
+	requestHTTPPrivateStructOnce.Do(func() {
+		requestHTTPPrivateStruct = gi.StructNew("Soup", "RequestHTTPPrivate")
 	})
 }
 
@@ -1952,12 +2492,12 @@ type RequestHTTPPrivate struct {
 	native uintptr
 }
 
-var RequestPrivateStruct *gi.Struct
-var RequestPrivateStructOnce sync.Once
+var requestPrivateStruct *gi.Struct
+var requestPrivateStructOnce sync.Once
 
-func RequestPrivateStructSet() {
-	RequestPrivateStructOnce.Do(func() {
-		RequestPrivateStruct = gi.StructNew("Soup", "RequestPrivate")
+func requestPrivateStructSet() {
+	requestPrivateStructOnce.Do(func() {
+		requestPrivateStruct = gi.StructNew("Soup", "RequestPrivate")
 	})
 }
 
@@ -1965,12 +2505,12 @@ type RequestPrivate struct {
 	native uintptr
 }
 
-var RequesterClassStruct *gi.Struct
-var RequesterClassStructOnce sync.Once
+var requesterClassStruct *gi.Struct
+var requesterClassStructOnce sync.Once
 
-func RequesterClassStructSet() {
-	RequesterClassStructOnce.Do(func() {
-		RequesterClassStruct = gi.StructNew("Soup", "RequesterClass")
+func requesterClassStructSet() {
+	requesterClassStructOnce.Do(func() {
+		requesterClassStruct = gi.StructNew("Soup", "RequesterClass")
 	})
 }
 
@@ -1979,12 +2519,12 @@ type RequesterClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
-var RequesterPrivateStruct *gi.Struct
-var RequesterPrivateStructOnce sync.Once
+var requesterPrivateStruct *gi.Struct
+var requesterPrivateStructOnce sync.Once
 
-func RequesterPrivateStructSet() {
-	RequesterPrivateStructOnce.Do(func() {
-		RequesterPrivateStruct = gi.StructNew("Soup", "RequesterPrivate")
+func requesterPrivateStructSet() {
+	requesterPrivateStructOnce.Do(func() {
+		requesterPrivateStruct = gi.StructNew("Soup", "RequesterPrivate")
 	})
 }
 
@@ -1992,12 +2532,12 @@ type RequesterPrivate struct {
 	native uintptr
 }
 
-var ServerClassStruct *gi.Struct
-var ServerClassStructOnce sync.Once
+var serverClassStruct *gi.Struct
+var serverClassStructOnce sync.Once
 
-func ServerClassStructSet() {
-	ServerClassStructOnce.Do(func() {
-		ServerClassStruct = gi.StructNew("Soup", "ServerClass")
+func serverClassStructSet() {
+	serverClassStructOnce.Do(func() {
+		serverClassStruct = gi.StructNew("Soup", "ServerClass")
 	})
 }
 
@@ -2014,12 +2554,12 @@ type ServerClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var SessionAsyncClassStruct *gi.Struct
-var SessionAsyncClassStructOnce sync.Once
+var sessionAsyncClassStruct *gi.Struct
+var sessionAsyncClassStructOnce sync.Once
 
-func SessionAsyncClassStructSet() {
-	SessionAsyncClassStructOnce.Do(func() {
-		SessionAsyncClassStruct = gi.StructNew("Soup", "SessionAsyncClass")
+func sessionAsyncClassStructSet() {
+	sessionAsyncClassStructOnce.Do(func() {
+		sessionAsyncClassStruct = gi.StructNew("Soup", "SessionAsyncClass")
 	})
 }
 
@@ -2032,12 +2572,12 @@ type SessionAsyncClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var SessionClassStruct *gi.Struct
-var SessionClassStructOnce sync.Once
+var sessionClassStruct *gi.Struct
+var sessionClassStructOnce sync.Once
 
-func SessionClassStructSet() {
-	SessionClassStructOnce.Do(func() {
-		SessionClassStruct = gi.StructNew("Soup", "SessionClass")
+func sessionClassStructSet() {
+	sessionClassStructOnce.Do(func() {
+		sessionClassStruct = gi.StructNew("Soup", "SessionClass")
 	})
 }
 
@@ -2056,12 +2596,12 @@ type SessionClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var SessionFeatureInterfaceStruct *gi.Struct
-var SessionFeatureInterfaceStructOnce sync.Once
+var sessionFeatureInterfaceStruct *gi.Struct
+var sessionFeatureInterfaceStructOnce sync.Once
 
-func SessionFeatureInterfaceStructSet() {
-	SessionFeatureInterfaceStructOnce.Do(func() {
-		SessionFeatureInterfaceStruct = gi.StructNew("Soup", "SessionFeatureInterface")
+func sessionFeatureInterfaceStructSet() {
+	sessionFeatureInterfaceStructOnce.Do(func() {
+		sessionFeatureInterfaceStruct = gi.StructNew("Soup", "SessionFeatureInterface")
 	})
 }
 
@@ -2078,12 +2618,12 @@ type SessionFeatureInterface struct {
 	// UNSUPPORTED : C value 'has_feature' : missing Type
 }
 
-var SessionSyncClassStruct *gi.Struct
-var SessionSyncClassStructOnce sync.Once
+var sessionSyncClassStruct *gi.Struct
+var sessionSyncClassStructOnce sync.Once
 
-func SessionSyncClassStructSet() {
-	SessionSyncClassStructOnce.Do(func() {
-		SessionSyncClassStruct = gi.StructNew("Soup", "SessionSyncClass")
+func sessionSyncClassStructSet() {
+	sessionSyncClassStructOnce.Do(func() {
+		sessionSyncClassStruct = gi.StructNew("Soup", "SessionSyncClass")
 	})
 }
 
@@ -2096,12 +2636,12 @@ type SessionSyncClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var SocketClassStruct *gi.Struct
-var SocketClassStructOnce sync.Once
+var socketClassStruct *gi.Struct
+var socketClassStructOnce sync.Once
 
-func SocketClassStructSet() {
-	SocketClassStructOnce.Do(func() {
-		SocketClassStruct = gi.StructNew("Soup", "SocketClass")
+func socketClassStructSet() {
+	socketClassStructOnce.Do(func() {
+		socketClassStruct = gi.StructNew("Soup", "SocketClass")
 	})
 }
 
@@ -2118,12 +2658,12 @@ type SocketClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var URIStruct *gi.Struct
-var URIStructOnce sync.Once
+var uRIStruct *gi.Struct
+var uRIStructOnce sync.Once
 
-func URIStructSet() {
-	URIStructOnce.Do(func() {
-		URIStruct = gi.StructNew("Soup", "URI")
+func uRIStructSet() {
+	uRIStructOnce.Do(func() {
+		uRIStruct = gi.StructNew("Soup", "URI")
 	})
 }
 
@@ -2137,6 +2677,15 @@ type URI struct {
 	Path     string
 	Query    string
 	Fragment string
+}
+
+var uRINewFunction *gi.Function
+var uRINewFunctionOnce sync.Once
+
+func uRINewFunctionSet() {
+	uRINewFunctionOnce.Do(func() {
+		uRINewFunction = gi.FunctionInvokerNew("Soup", "new")
+	})
 }
 
 var newURIInvoker *gi.Function
@@ -2159,6 +2708,15 @@ func URINew(uriString string) *URI {
 
 // UNSUPPORTED : C value 'soup_uri_new_with_base' : parameter 'base' of type 'URI' not supported
 
+var uRICopyFunction *gi.Function
+var uRICopyFunctionOnce sync.Once
+
+func uRICopyFunctionSet() {
+	uRICopyFunctionOnce.Do(func() {
+		uRICopyFunction = gi.FunctionInvokerNew("Soup", "copy")
+	})
+}
+
 var copyURIInvoker *gi.Function
 
 // Copy is a representation of the C type soup_uri_copy.
@@ -2175,6 +2733,15 @@ func (recv *URI) Copy() *URI {
 	retGo := &URI{native: ret.Pointer()}
 
 	return retGo
+}
+
+var uRICopyHostFunction *gi.Function
+var uRICopyHostFunctionOnce sync.Once
+
+func uRICopyHostFunctionSet() {
+	uRICopyHostFunctionOnce.Do(func() {
+		uRICopyHostFunction = gi.FunctionInvokerNew("Soup", "copy_host")
+	})
 }
 
 var copyHostURIInvoker *gi.Function
@@ -2197,6 +2764,15 @@ func (recv *URI) CopyHost() *URI {
 
 // UNSUPPORTED : C value 'soup_uri_equal' : parameter 'uri2' of type 'URI' not supported
 
+var uRIFreeFunction *gi.Function
+var uRIFreeFunctionOnce sync.Once
+
+func uRIFreeFunctionSet() {
+	uRIFreeFunctionOnce.Do(func() {
+		uRIFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
+}
+
 var freeURIInvoker *gi.Function
 
 // Free is a representation of the C type soup_uri_free.
@@ -2210,6 +2786,15 @@ func (recv *URI) Free() {
 
 	freeURIInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var uRIGetFragmentFunction *gi.Function
+var uRIGetFragmentFunctionOnce sync.Once
+
+func uRIGetFragmentFunctionSet() {
+	uRIGetFragmentFunctionOnce.Do(func() {
+		uRIGetFragmentFunction = gi.FunctionInvokerNew("Soup", "get_fragment")
+	})
 }
 
 var getFragmentURIInvoker *gi.Function
@@ -2230,6 +2815,15 @@ func (recv *URI) GetFragment() string {
 	return retGo
 }
 
+var uRIGetHostFunction *gi.Function
+var uRIGetHostFunctionOnce sync.Once
+
+func uRIGetHostFunctionSet() {
+	uRIGetHostFunctionOnce.Do(func() {
+		uRIGetHostFunction = gi.FunctionInvokerNew("Soup", "get_host")
+	})
+}
+
 var getHostURIInvoker *gi.Function
 
 // GetHost is a representation of the C type soup_uri_get_host.
@@ -2246,6 +2840,15 @@ func (recv *URI) GetHost() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var uRIGetPasswordFunction *gi.Function
+var uRIGetPasswordFunctionOnce sync.Once
+
+func uRIGetPasswordFunctionSet() {
+	uRIGetPasswordFunctionOnce.Do(func() {
+		uRIGetPasswordFunction = gi.FunctionInvokerNew("Soup", "get_password")
+	})
 }
 
 var getPasswordURIInvoker *gi.Function
@@ -2266,6 +2869,15 @@ func (recv *URI) GetPassword() string {
 	return retGo
 }
 
+var uRIGetPathFunction *gi.Function
+var uRIGetPathFunctionOnce sync.Once
+
+func uRIGetPathFunctionSet() {
+	uRIGetPathFunctionOnce.Do(func() {
+		uRIGetPathFunction = gi.FunctionInvokerNew("Soup", "get_path")
+	})
+}
+
 var getPathURIInvoker *gi.Function
 
 // GetPath is a representation of the C type soup_uri_get_path.
@@ -2282,6 +2894,15 @@ func (recv *URI) GetPath() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var uRIGetPortFunction *gi.Function
+var uRIGetPortFunctionOnce sync.Once
+
+func uRIGetPortFunctionSet() {
+	uRIGetPortFunctionOnce.Do(func() {
+		uRIGetPortFunction = gi.FunctionInvokerNew("Soup", "get_port")
+	})
 }
 
 var getPortURIInvoker *gi.Function
@@ -2302,6 +2923,15 @@ func (recv *URI) GetPort() uint32 {
 	return retGo
 }
 
+var uRIGetQueryFunction *gi.Function
+var uRIGetQueryFunctionOnce sync.Once
+
+func uRIGetQueryFunctionSet() {
+	uRIGetQueryFunctionOnce.Do(func() {
+		uRIGetQueryFunction = gi.FunctionInvokerNew("Soup", "get_query")
+	})
+}
+
 var getQueryURIInvoker *gi.Function
 
 // GetQuery is a representation of the C type soup_uri_get_query.
@@ -2320,6 +2950,15 @@ func (recv *URI) GetQuery() string {
 	return retGo
 }
 
+var uRIGetSchemeFunction *gi.Function
+var uRIGetSchemeFunctionOnce sync.Once
+
+func uRIGetSchemeFunctionSet() {
+	uRIGetSchemeFunctionOnce.Do(func() {
+		uRIGetSchemeFunction = gi.FunctionInvokerNew("Soup", "get_scheme")
+	})
+}
+
 var getSchemeURIInvoker *gi.Function
 
 // GetScheme is a representation of the C type soup_uri_get_scheme.
@@ -2336,6 +2975,15 @@ func (recv *URI) GetScheme() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var uRIGetUserFunction *gi.Function
+var uRIGetUserFunctionOnce sync.Once
+
+func uRIGetUserFunctionSet() {
+	uRIGetUserFunctionOnce.Do(func() {
+		uRIGetUserFunction = gi.FunctionInvokerNew("Soup", "get_user")
+	})
 }
 
 var getUserURIInvoker *gi.Function
@@ -2358,6 +3006,15 @@ func (recv *URI) GetUser() string {
 
 // UNSUPPORTED : C value 'soup_uri_host_equal' : parameter 'v2' of type 'URI' not supported
 
+var uRIHostHashFunction *gi.Function
+var uRIHostHashFunctionOnce sync.Once
+
+func uRIHostHashFunctionSet() {
+	uRIHostHashFunctionOnce.Do(func() {
+		uRIHostHashFunction = gi.FunctionInvokerNew("Soup", "host_hash")
+	})
+}
+
 var hostHashURIInvoker *gi.Function
 
 // HostHash is a representation of the C type soup_uri_host_hash.
@@ -2376,6 +3033,15 @@ func (recv *URI) HostHash() uint32 {
 	return retGo
 }
 
+var uRISetFragmentFunction *gi.Function
+var uRISetFragmentFunctionOnce sync.Once
+
+func uRISetFragmentFunctionSet() {
+	uRISetFragmentFunctionOnce.Do(func() {
+		uRISetFragmentFunction = gi.FunctionInvokerNew("Soup", "set_fragment")
+	})
+}
+
 var setFragmentURIInvoker *gi.Function
 
 // SetFragment is a representation of the C type soup_uri_set_fragment.
@@ -2390,6 +3056,15 @@ func (recv *URI) SetFragment(fragment string) {
 
 	setFragmentURIInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var uRISetHostFunction *gi.Function
+var uRISetHostFunctionOnce sync.Once
+
+func uRISetHostFunctionSet() {
+	uRISetHostFunctionOnce.Do(func() {
+		uRISetHostFunction = gi.FunctionInvokerNew("Soup", "set_host")
+	})
 }
 
 var setHostURIInvoker *gi.Function
@@ -2408,6 +3083,15 @@ func (recv *URI) SetHost(host string) {
 
 }
 
+var uRISetPasswordFunction *gi.Function
+var uRISetPasswordFunctionOnce sync.Once
+
+func uRISetPasswordFunctionSet() {
+	uRISetPasswordFunctionOnce.Do(func() {
+		uRISetPasswordFunction = gi.FunctionInvokerNew("Soup", "set_password")
+	})
+}
+
 var setPasswordURIInvoker *gi.Function
 
 // SetPassword is a representation of the C type soup_uri_set_password.
@@ -2422,6 +3106,15 @@ func (recv *URI) SetPassword(password string) {
 
 	setPasswordURIInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var uRISetPathFunction *gi.Function
+var uRISetPathFunctionOnce sync.Once
+
+func uRISetPathFunctionSet() {
+	uRISetPathFunctionOnce.Do(func() {
+		uRISetPathFunction = gi.FunctionInvokerNew("Soup", "set_path")
+	})
 }
 
 var setPathURIInvoker *gi.Function
@@ -2440,6 +3133,15 @@ func (recv *URI) SetPath(path string) {
 
 }
 
+var uRISetPortFunction *gi.Function
+var uRISetPortFunctionOnce sync.Once
+
+func uRISetPortFunctionSet() {
+	uRISetPortFunctionOnce.Do(func() {
+		uRISetPortFunction = gi.FunctionInvokerNew("Soup", "set_port")
+	})
+}
+
 var setPortURIInvoker *gi.Function
 
 // SetPort is a representation of the C type soup_uri_set_port.
@@ -2454,6 +3156,15 @@ func (recv *URI) SetPort(port uint32) {
 
 	setPortURIInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var uRISetQueryFunction *gi.Function
+var uRISetQueryFunctionOnce sync.Once
+
+func uRISetQueryFunctionSet() {
+	uRISetQueryFunctionOnce.Do(func() {
+		uRISetQueryFunction = gi.FunctionInvokerNew("Soup", "set_query")
+	})
 }
 
 var setQueryURIInvoker *gi.Function
@@ -2476,6 +3187,15 @@ func (recv *URI) SetQuery(query string) {
 
 // UNSUPPORTED : C value 'soup_uri_set_query_from_form' : parameter 'form' of type 'GLib.HashTable' not supported
 
+var uRISetSchemeFunction *gi.Function
+var uRISetSchemeFunctionOnce sync.Once
+
+func uRISetSchemeFunctionSet() {
+	uRISetSchemeFunctionOnce.Do(func() {
+		uRISetSchemeFunction = gi.FunctionInvokerNew("Soup", "set_scheme")
+	})
+}
+
 var setSchemeURIInvoker *gi.Function
 
 // SetScheme is a representation of the C type soup_uri_set_scheme.
@@ -2490,6 +3210,15 @@ func (recv *URI) SetScheme(scheme string) {
 
 	setSchemeURIInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var uRISetUserFunction *gi.Function
+var uRISetUserFunctionOnce sync.Once
+
+func uRISetUserFunctionSet() {
+	uRISetUserFunctionOnce.Do(func() {
+		uRISetUserFunction = gi.FunctionInvokerNew("Soup", "set_user")
+	})
 }
 
 var setUserURIInvoker *gi.Function
@@ -2512,12 +3241,12 @@ func (recv *URI) SetUser(user string) {
 
 // UNSUPPORTED : C value 'soup_uri_uses_default_port' : return type 'gboolean' not supported
 
-var WebsocketConnectionClassStruct *gi.Struct
-var WebsocketConnectionClassStructOnce sync.Once
+var websocketConnectionClassStruct *gi.Struct
+var websocketConnectionClassStructOnce sync.Once
 
-func WebsocketConnectionClassStructSet() {
-	WebsocketConnectionClassStructOnce.Do(func() {
-		WebsocketConnectionClassStruct = gi.StructNew("Soup", "WebsocketConnectionClass")
+func websocketConnectionClassStructSet() {
+	websocketConnectionClassStructOnce.Do(func() {
+		websocketConnectionClassStruct = gi.StructNew("Soup", "WebsocketConnectionClass")
 	})
 }
 
@@ -2531,12 +3260,12 @@ type WebsocketConnectionClass struct {
 	// UNSUPPORTED : C value 'pong' : missing Type
 }
 
-var WebsocketConnectionPrivateStruct *gi.Struct
-var WebsocketConnectionPrivateStructOnce sync.Once
+var websocketConnectionPrivateStruct *gi.Struct
+var websocketConnectionPrivateStructOnce sync.Once
 
-func WebsocketConnectionPrivateStructSet() {
-	WebsocketConnectionPrivateStructOnce.Do(func() {
-		WebsocketConnectionPrivateStruct = gi.StructNew("Soup", "WebsocketConnectionPrivate")
+func websocketConnectionPrivateStructSet() {
+	websocketConnectionPrivateStructOnce.Do(func() {
+		websocketConnectionPrivateStruct = gi.StructNew("Soup", "WebsocketConnectionPrivate")
 	})
 }
 
@@ -2544,12 +3273,12 @@ type WebsocketConnectionPrivate struct {
 	native uintptr
 }
 
-var WebsocketExtensionClassStruct *gi.Struct
-var WebsocketExtensionClassStructOnce sync.Once
+var websocketExtensionClassStruct *gi.Struct
+var websocketExtensionClassStructOnce sync.Once
 
-func WebsocketExtensionClassStructSet() {
-	WebsocketExtensionClassStructOnce.Do(func() {
-		WebsocketExtensionClassStruct = gi.StructNew("Soup", "WebsocketExtensionClass")
+func websocketExtensionClassStructSet() {
+	websocketExtensionClassStructOnce.Do(func() {
+		websocketExtensionClassStruct = gi.StructNew("Soup", "WebsocketExtensionClass")
 	})
 }
 
@@ -2568,12 +3297,12 @@ type WebsocketExtensionClass struct {
 	// UNSUPPORTED : C value '_libsoup_reserved4' : missing Type
 }
 
-var WebsocketExtensionDeflateClassStruct *gi.Struct
-var WebsocketExtensionDeflateClassStructOnce sync.Once
+var websocketExtensionDeflateClassStruct *gi.Struct
+var websocketExtensionDeflateClassStructOnce sync.Once
 
-func WebsocketExtensionDeflateClassStructSet() {
-	WebsocketExtensionDeflateClassStructOnce.Do(func() {
-		WebsocketExtensionDeflateClassStruct = gi.StructNew("Soup", "WebsocketExtensionDeflateClass")
+func websocketExtensionDeflateClassStructSet() {
+	websocketExtensionDeflateClassStructOnce.Do(func() {
+		websocketExtensionDeflateClassStruct = gi.StructNew("Soup", "WebsocketExtensionDeflateClass")
 	})
 }
 
@@ -2582,12 +3311,12 @@ type WebsocketExtensionDeflateClass struct {
 	ParentClass *WebsocketExtensionClass
 }
 
-var WebsocketExtensionManagerClassStruct *gi.Struct
-var WebsocketExtensionManagerClassStructOnce sync.Once
+var websocketExtensionManagerClassStruct *gi.Struct
+var websocketExtensionManagerClassStructOnce sync.Once
 
-func WebsocketExtensionManagerClassStructSet() {
-	WebsocketExtensionManagerClassStructOnce.Do(func() {
-		WebsocketExtensionManagerClassStruct = gi.StructNew("Soup", "WebsocketExtensionManagerClass")
+func websocketExtensionManagerClassStructSet() {
+	websocketExtensionManagerClassStructOnce.Do(func() {
+		websocketExtensionManagerClassStruct = gi.StructNew("Soup", "WebsocketExtensionManagerClass")
 	})
 }
 
@@ -2596,17 +3325,26 @@ type WebsocketExtensionManagerClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
 }
 
-var XMLRPCParamsStruct *gi.Struct
-var XMLRPCParamsStructOnce sync.Once
+var xMLRPCParamsStruct *gi.Struct
+var xMLRPCParamsStructOnce sync.Once
 
-func XMLRPCParamsStructSet() {
-	XMLRPCParamsStructOnce.Do(func() {
-		XMLRPCParamsStruct = gi.StructNew("Soup", "XMLRPCParams")
+func xMLRPCParamsStructSet() {
+	xMLRPCParamsStructOnce.Do(func() {
+		xMLRPCParamsStruct = gi.StructNew("Soup", "XMLRPCParams")
 	})
 }
 
 type XMLRPCParams struct {
 	native uintptr
+}
+
+var xMLRPCParamsFreeFunction *gi.Function
+var xMLRPCParamsFreeFunctionOnce sync.Once
+
+func xMLRPCParamsFreeFunctionSet() {
+	xMLRPCParamsFreeFunctionOnce.Do(func() {
+		xMLRPCParamsFreeFunction = gi.FunctionInvokerNew("Soup", "free")
+	})
 }
 
 var freeXMLRPCParamsInvoker *gi.Function

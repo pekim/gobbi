@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var ContextStruct *gi.Struct
-var ContextStructOnce sync.Once
+var contextStruct *gi.Struct
+var contextStructOnce sync.Once
 
-func ContextStructSet() {
-	ContextStructOnce.Do(func() {
-		ContextStruct = gi.StructNew("cairo", "Context")
+func contextStructSet() {
+	contextStructOnce.Do(func() {
+		contextStruct = gi.StructNew("cairo", "Context")
 	})
 }
 
@@ -20,12 +20,12 @@ type Context struct {
 	native uintptr
 }
 
-var DeviceStruct *gi.Struct
-var DeviceStructOnce sync.Once
+var deviceStruct *gi.Struct
+var deviceStructOnce sync.Once
 
-func DeviceStructSet() {
-	DeviceStructOnce.Do(func() {
-		DeviceStruct = gi.StructNew("cairo", "Device")
+func deviceStructSet() {
+	deviceStructOnce.Do(func() {
+		deviceStruct = gi.StructNew("cairo", "Device")
 	})
 }
 
@@ -33,12 +33,12 @@ type Device struct {
 	native uintptr
 }
 
-var SurfaceStruct *gi.Struct
-var SurfaceStructOnce sync.Once
+var surfaceStruct *gi.Struct
+var surfaceStructOnce sync.Once
 
-func SurfaceStructSet() {
-	SurfaceStructOnce.Do(func() {
-		SurfaceStruct = gi.StructNew("cairo", "Surface")
+func surfaceStructSet() {
+	surfaceStructOnce.Do(func() {
+		surfaceStruct = gi.StructNew("cairo", "Surface")
 	})
 }
 
@@ -46,12 +46,12 @@ type Surface struct {
 	native uintptr
 }
 
-var MatrixStruct *gi.Struct
-var MatrixStructOnce sync.Once
+var matrixStruct *gi.Struct
+var matrixStructOnce sync.Once
 
-func MatrixStructSet() {
-	MatrixStructOnce.Do(func() {
-		MatrixStruct = gi.StructNew("cairo", "Matrix")
+func matrixStructSet() {
+	matrixStructOnce.Do(func() {
+		matrixStruct = gi.StructNew("cairo", "Matrix")
 	})
 }
 
@@ -59,12 +59,12 @@ type Matrix struct {
 	native uintptr
 }
 
-var PatternStruct *gi.Struct
-var PatternStructOnce sync.Once
+var patternStruct *gi.Struct
+var patternStructOnce sync.Once
 
-func PatternStructSet() {
-	PatternStructOnce.Do(func() {
-		PatternStruct = gi.StructNew("cairo", "Pattern")
+func patternStructSet() {
+	patternStructOnce.Do(func() {
+		patternStruct = gi.StructNew("cairo", "Pattern")
 	})
 }
 
@@ -72,12 +72,12 @@ type Pattern struct {
 	native uintptr
 }
 
-var RegionStruct *gi.Struct
-var RegionStructOnce sync.Once
+var regionStruct *gi.Struct
+var regionStructOnce sync.Once
 
-func RegionStructSet() {
-	RegionStructOnce.Do(func() {
-		RegionStruct = gi.StructNew("cairo", "Region")
+func regionStructSet() {
+	regionStructOnce.Do(func() {
+		regionStruct = gi.StructNew("cairo", "Region")
 	})
 }
 
@@ -85,12 +85,12 @@ type Region struct {
 	native uintptr
 }
 
-var FontOptionsStruct *gi.Struct
-var FontOptionsStructOnce sync.Once
+var fontOptionsStruct *gi.Struct
+var fontOptionsStructOnce sync.Once
 
-func FontOptionsStructSet() {
-	FontOptionsStructOnce.Do(func() {
-		FontOptionsStruct = gi.StructNew("cairo", "FontOptions")
+func fontOptionsStructSet() {
+	fontOptionsStructOnce.Do(func() {
+		fontOptionsStruct = gi.StructNew("cairo", "FontOptions")
 	})
 }
 
@@ -98,12 +98,12 @@ type FontOptions struct {
 	native uintptr
 }
 
-var FontFaceStruct *gi.Struct
-var FontFaceStructOnce sync.Once
+var fontFaceStruct *gi.Struct
+var fontFaceStructOnce sync.Once
 
-func FontFaceStructSet() {
-	FontFaceStructOnce.Do(func() {
-		FontFaceStruct = gi.StructNew("cairo", "FontFace")
+func fontFaceStructSet() {
+	fontFaceStructOnce.Do(func() {
+		fontFaceStruct = gi.StructNew("cairo", "FontFace")
 	})
 }
 
@@ -111,12 +111,12 @@ type FontFace struct {
 	native uintptr
 }
 
-var ScaledFontStruct *gi.Struct
-var ScaledFontStructOnce sync.Once
+var scaledFontStruct *gi.Struct
+var scaledFontStructOnce sync.Once
 
-func ScaledFontStructSet() {
-	ScaledFontStructOnce.Do(func() {
-		ScaledFontStruct = gi.StructNew("cairo", "ScaledFont")
+func scaledFontStructSet() {
+	scaledFontStructOnce.Do(func() {
+		scaledFontStruct = gi.StructNew("cairo", "ScaledFont")
 	})
 }
 
@@ -124,12 +124,12 @@ type ScaledFont struct {
 	native uintptr
 }
 
-var PathStruct *gi.Struct
-var PathStructOnce sync.Once
+var pathStruct *gi.Struct
+var pathStructOnce sync.Once
 
-func PathStructSet() {
-	PathStructOnce.Do(func() {
-		PathStruct = gi.StructNew("cairo", "Path")
+func pathStructSet() {
+	pathStructOnce.Do(func() {
+		pathStruct = gi.StructNew("cairo", "Path")
 	})
 }
 
@@ -137,12 +137,12 @@ type Path struct {
 	native uintptr
 }
 
-var RectangleStruct *gi.Struct
-var RectangleStructOnce sync.Once
+var rectangleStruct *gi.Struct
+var rectangleStructOnce sync.Once
 
-func RectangleStructSet() {
-	RectangleStructOnce.Do(func() {
-		RectangleStruct = gi.StructNew("cairo", "Rectangle")
+func rectangleStructSet() {
+	rectangleStructOnce.Do(func() {
+		rectangleStruct = gi.StructNew("cairo", "Rectangle")
 	})
 }
 
@@ -154,12 +154,12 @@ type Rectangle struct {
 	// UNSUPPORTED : C value 'height' : no Go type for 'gdouble'
 }
 
-var RectangleIntStruct *gi.Struct
-var RectangleIntStructOnce sync.Once
+var rectangleIntStruct *gi.Struct
+var rectangleIntStructOnce sync.Once
 
-func RectangleIntStructSet() {
-	RectangleIntStructOnce.Do(func() {
-		RectangleIntStruct = gi.StructNew("cairo", "RectangleInt")
+func rectangleIntStructSet() {
+	rectangleIntStructOnce.Do(func() {
+		rectangleIntStruct = gi.StructNew("cairo", "RectangleInt")
 	})
 }
 

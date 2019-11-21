@@ -19,7 +19,7 @@ type Parameter struct {
 
 func (p *Parameter) init(ns *Namespace) {
 	p.namespace = ns
-	p.goVarName = makeUnexportedGoName(p.Name, false)
+	p.goVarName = makeUnexportedGoName(p.Name)
 
 	if p.Direction == "" {
 		p.Direction = "in"

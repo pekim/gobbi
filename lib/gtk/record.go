@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var AboutDialogClassStruct *gi.Struct
-var AboutDialogClassStructOnce sync.Once
+var aboutDialogClassStruct *gi.Struct
+var aboutDialogClassStructOnce sync.Once
 
-func AboutDialogClassStructSet() {
-	AboutDialogClassStructOnce.Do(func() {
-		AboutDialogClassStruct = gi.StructNew("Gtk", "AboutDialogClass")
+func aboutDialogClassStructSet() {
+	aboutDialogClassStructOnce.Do(func() {
+		aboutDialogClassStruct = gi.StructNew("Gtk", "AboutDialogClass")
 	})
 }
 
@@ -26,12 +26,12 @@ type AboutDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AboutDialogPrivateStruct *gi.Struct
-var AboutDialogPrivateStructOnce sync.Once
+var aboutDialogPrivateStruct *gi.Struct
+var aboutDialogPrivateStructOnce sync.Once
 
-func AboutDialogPrivateStructSet() {
-	AboutDialogPrivateStructOnce.Do(func() {
-		AboutDialogPrivateStruct = gi.StructNew("Gtk", "AboutDialogPrivate")
+func aboutDialogPrivateStructSet() {
+	aboutDialogPrivateStructOnce.Do(func() {
+		aboutDialogPrivateStruct = gi.StructNew("Gtk", "AboutDialogPrivate")
 	})
 }
 
@@ -39,12 +39,12 @@ type AboutDialogPrivate struct {
 	native uintptr
 }
 
-var AccelGroupClassStruct *gi.Struct
-var AccelGroupClassStructOnce sync.Once
+var accelGroupClassStruct *gi.Struct
+var accelGroupClassStructOnce sync.Once
 
-func AccelGroupClassStructSet() {
-	AccelGroupClassStructOnce.Do(func() {
-		AccelGroupClassStruct = gi.StructNew("Gtk", "AccelGroupClass")
+func accelGroupClassStructSet() {
+	accelGroupClassStructOnce.Do(func() {
+		accelGroupClassStruct = gi.StructNew("Gtk", "AccelGroupClass")
 	})
 }
 
@@ -58,12 +58,12 @@ type AccelGroupClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AccelGroupEntryStruct *gi.Struct
-var AccelGroupEntryStructOnce sync.Once
+var accelGroupEntryStruct *gi.Struct
+var accelGroupEntryStructOnce sync.Once
 
-func AccelGroupEntryStructSet() {
-	AccelGroupEntryStructOnce.Do(func() {
-		AccelGroupEntryStruct = gi.StructNew("Gtk", "AccelGroupEntry")
+func accelGroupEntryStructSet() {
+	accelGroupEntryStructOnce.Do(func() {
+		accelGroupEntryStruct = gi.StructNew("Gtk", "AccelGroupEntry")
 	})
 }
 
@@ -74,12 +74,12 @@ type AccelGroupEntry struct {
 	// UNSUPPORTED : C value 'accel_path_quark' : no Go type for 'GLib.Quark'
 }
 
-var AccelGroupPrivateStruct *gi.Struct
-var AccelGroupPrivateStructOnce sync.Once
+var accelGroupPrivateStruct *gi.Struct
+var accelGroupPrivateStructOnce sync.Once
 
-func AccelGroupPrivateStructSet() {
-	AccelGroupPrivateStructOnce.Do(func() {
-		AccelGroupPrivateStruct = gi.StructNew("Gtk", "AccelGroupPrivate")
+func accelGroupPrivateStructSet() {
+	accelGroupPrivateStructOnce.Do(func() {
+		accelGroupPrivateStruct = gi.StructNew("Gtk", "AccelGroupPrivate")
 	})
 }
 
@@ -87,12 +87,12 @@ type AccelGroupPrivate struct {
 	native uintptr
 }
 
-var AccelKeyStruct *gi.Struct
-var AccelKeyStructOnce sync.Once
+var accelKeyStruct *gi.Struct
+var accelKeyStructOnce sync.Once
 
-func AccelKeyStructSet() {
-	AccelKeyStructOnce.Do(func() {
-		AccelKeyStruct = gi.StructNew("Gtk", "AccelKey")
+func accelKeyStructSet() {
+	accelKeyStructOnce.Do(func() {
+		accelKeyStruct = gi.StructNew("Gtk", "AccelKey")
 	})
 }
 
@@ -103,12 +103,12 @@ type AccelKey struct {
 	AccelFlags uint32
 }
 
-var AccelLabelClassStruct *gi.Struct
-var AccelLabelClassStructOnce sync.Once
+var accelLabelClassStruct *gi.Struct
+var accelLabelClassStructOnce sync.Once
 
-func AccelLabelClassStructSet() {
-	AccelLabelClassStructOnce.Do(func() {
-		AccelLabelClassStruct = gi.StructNew("Gtk", "AccelLabelClass")
+func accelLabelClassStructSet() {
+	accelLabelClassStructOnce.Do(func() {
+		accelLabelClassStruct = gi.StructNew("Gtk", "AccelLabelClass")
 	})
 }
 
@@ -127,12 +127,12 @@ type AccelLabelClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AccelLabelPrivateStruct *gi.Struct
-var AccelLabelPrivateStructOnce sync.Once
+var accelLabelPrivateStruct *gi.Struct
+var accelLabelPrivateStructOnce sync.Once
 
-func AccelLabelPrivateStructSet() {
-	AccelLabelPrivateStructOnce.Do(func() {
-		AccelLabelPrivateStruct = gi.StructNew("Gtk", "AccelLabelPrivate")
+func accelLabelPrivateStructSet() {
+	accelLabelPrivateStructOnce.Do(func() {
+		accelLabelPrivateStruct = gi.StructNew("Gtk", "AccelLabelPrivate")
 	})
 }
 
@@ -140,12 +140,12 @@ type AccelLabelPrivate struct {
 	native uintptr
 }
 
-var AccelMapClassStruct *gi.Struct
-var AccelMapClassStructOnce sync.Once
+var accelMapClassStruct *gi.Struct
+var accelMapClassStructOnce sync.Once
 
-func AccelMapClassStructSet() {
-	AccelMapClassStructOnce.Do(func() {
-		AccelMapClassStruct = gi.StructNew("Gtk", "AccelMapClass")
+func accelMapClassStructSet() {
+	accelMapClassStructOnce.Do(func() {
+		accelMapClassStruct = gi.StructNew("Gtk", "AccelMapClass")
 	})
 }
 
@@ -153,12 +153,12 @@ type AccelMapClass struct {
 	native uintptr
 }
 
-var AccessibleClassStruct *gi.Struct
-var AccessibleClassStructOnce sync.Once
+var accessibleClassStruct *gi.Struct
+var accessibleClassStructOnce sync.Once
 
-func AccessibleClassStructSet() {
-	AccessibleClassStructOnce.Do(func() {
-		AccessibleClassStruct = gi.StructNew("Gtk", "AccessibleClass")
+func accessibleClassStructSet() {
+	accessibleClassStructOnce.Do(func() {
+		accessibleClassStruct = gi.StructNew("Gtk", "AccessibleClass")
 	})
 }
 
@@ -172,12 +172,12 @@ type AccessibleClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AccessiblePrivateStruct *gi.Struct
-var AccessiblePrivateStructOnce sync.Once
+var accessiblePrivateStruct *gi.Struct
+var accessiblePrivateStructOnce sync.Once
 
-func AccessiblePrivateStructSet() {
-	AccessiblePrivateStructOnce.Do(func() {
-		AccessiblePrivateStruct = gi.StructNew("Gtk", "AccessiblePrivate")
+func accessiblePrivateStructSet() {
+	accessiblePrivateStructOnce.Do(func() {
+		accessiblePrivateStruct = gi.StructNew("Gtk", "AccessiblePrivate")
 	})
 }
 
@@ -185,12 +185,12 @@ type AccessiblePrivate struct {
 	native uintptr
 }
 
-var ActionBarClassStruct *gi.Struct
-var ActionBarClassStructOnce sync.Once
+var actionBarClassStruct *gi.Struct
+var actionBarClassStructOnce sync.Once
 
-func ActionBarClassStructSet() {
-	ActionBarClassStructOnce.Do(func() {
-		ActionBarClassStruct = gi.StructNew("Gtk", "ActionBarClass")
+func actionBarClassStructSet() {
+	actionBarClassStructOnce.Do(func() {
+		actionBarClassStruct = gi.StructNew("Gtk", "ActionBarClass")
 	})
 }
 
@@ -202,12 +202,12 @@ type ActionBarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ActionBarPrivateStruct *gi.Struct
-var ActionBarPrivateStructOnce sync.Once
+var actionBarPrivateStruct *gi.Struct
+var actionBarPrivateStructOnce sync.Once
 
-func ActionBarPrivateStructSet() {
-	ActionBarPrivateStructOnce.Do(func() {
-		ActionBarPrivateStruct = gi.StructNew("Gtk", "ActionBarPrivate")
+func actionBarPrivateStructSet() {
+	actionBarPrivateStructOnce.Do(func() {
+		actionBarPrivateStruct = gi.StructNew("Gtk", "ActionBarPrivate")
 	})
 }
 
@@ -215,12 +215,12 @@ type ActionBarPrivate struct {
 	native uintptr
 }
 
-var ActionClassStruct *gi.Struct
-var ActionClassStructOnce sync.Once
+var actionClassStruct *gi.Struct
+var actionClassStructOnce sync.Once
 
-func ActionClassStructSet() {
-	ActionClassStructOnce.Do(func() {
-		ActionClassStruct = gi.StructNew("Gtk", "ActionClass")
+func actionClassStructSet() {
+	actionClassStructOnce.Do(func() {
+		actionClassStruct = gi.StructNew("Gtk", "ActionClass")
 	})
 }
 
@@ -239,12 +239,12 @@ type ActionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ActionEntryStruct *gi.Struct
-var ActionEntryStructOnce sync.Once
+var actionEntryStruct *gi.Struct
+var actionEntryStructOnce sync.Once
 
-func ActionEntryStructSet() {
-	ActionEntryStructOnce.Do(func() {
-		ActionEntryStruct = gi.StructNew("Gtk", "ActionEntry")
+func actionEntryStructSet() {
+	actionEntryStructOnce.Do(func() {
+		actionEntryStruct = gi.StructNew("Gtk", "ActionEntry")
 	})
 }
 
@@ -258,12 +258,12 @@ type ActionEntry struct {
 	// UNSUPPORTED : C value 'callback' : no Go type for 'GObject.Callback'
 }
 
-var ActionGroupClassStruct *gi.Struct
-var ActionGroupClassStructOnce sync.Once
+var actionGroupClassStruct *gi.Struct
+var actionGroupClassStructOnce sync.Once
 
-func ActionGroupClassStructSet() {
-	ActionGroupClassStructOnce.Do(func() {
-		ActionGroupClassStruct = gi.StructNew("Gtk", "ActionGroupClass")
+func actionGroupClassStructSet() {
+	actionGroupClassStructOnce.Do(func() {
+		actionGroupClassStruct = gi.StructNew("Gtk", "ActionGroupClass")
 	})
 }
 
@@ -277,12 +277,12 @@ type ActionGroupClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ActionGroupPrivateStruct *gi.Struct
-var ActionGroupPrivateStructOnce sync.Once
+var actionGroupPrivateStruct *gi.Struct
+var actionGroupPrivateStructOnce sync.Once
 
-func ActionGroupPrivateStructSet() {
-	ActionGroupPrivateStructOnce.Do(func() {
-		ActionGroupPrivateStruct = gi.StructNew("Gtk", "ActionGroupPrivate")
+func actionGroupPrivateStructSet() {
+	actionGroupPrivateStructOnce.Do(func() {
+		actionGroupPrivateStruct = gi.StructNew("Gtk", "ActionGroupPrivate")
 	})
 }
 
@@ -290,12 +290,12 @@ type ActionGroupPrivate struct {
 	native uintptr
 }
 
-var ActionPrivateStruct *gi.Struct
-var ActionPrivateStructOnce sync.Once
+var actionPrivateStruct *gi.Struct
+var actionPrivateStructOnce sync.Once
 
-func ActionPrivateStructSet() {
-	ActionPrivateStructOnce.Do(func() {
-		ActionPrivateStruct = gi.StructNew("Gtk", "ActionPrivate")
+func actionPrivateStructSet() {
+	actionPrivateStructOnce.Do(func() {
+		actionPrivateStruct = gi.StructNew("Gtk", "ActionPrivate")
 	})
 }
 
@@ -303,12 +303,12 @@ type ActionPrivate struct {
 	native uintptr
 }
 
-var ActionableInterfaceStruct *gi.Struct
-var ActionableInterfaceStructOnce sync.Once
+var actionableInterfaceStruct *gi.Struct
+var actionableInterfaceStructOnce sync.Once
 
-func ActionableInterfaceStructSet() {
-	ActionableInterfaceStructOnce.Do(func() {
-		ActionableInterfaceStruct = gi.StructNew("Gtk", "ActionableInterface")
+func actionableInterfaceStructSet() {
+	actionableInterfaceStructOnce.Do(func() {
+		actionableInterfaceStruct = gi.StructNew("Gtk", "ActionableInterface")
 	})
 }
 
@@ -320,12 +320,12 @@ type ActionableInterface struct {
 	// UNSUPPORTED : C value 'set_action_target_value' : missing Type
 }
 
-var ActivatableIfaceStruct *gi.Struct
-var ActivatableIfaceStructOnce sync.Once
+var activatableIfaceStruct *gi.Struct
+var activatableIfaceStructOnce sync.Once
 
-func ActivatableIfaceStructSet() {
-	ActivatableIfaceStructOnce.Do(func() {
-		ActivatableIfaceStruct = gi.StructNew("Gtk", "ActivatableIface")
+func activatableIfaceStructSet() {
+	activatableIfaceStructOnce.Do(func() {
+		activatableIfaceStruct = gi.StructNew("Gtk", "ActivatableIface")
 	})
 }
 
@@ -335,12 +335,12 @@ type ActivatableIface struct {
 	// UNSUPPORTED : C value 'sync_action_properties' : missing Type
 }
 
-var AdjustmentClassStruct *gi.Struct
-var AdjustmentClassStructOnce sync.Once
+var adjustmentClassStruct *gi.Struct
+var adjustmentClassStructOnce sync.Once
 
-func AdjustmentClassStructSet() {
-	AdjustmentClassStructOnce.Do(func() {
-		AdjustmentClassStruct = gi.StructNew("Gtk", "AdjustmentClass")
+func adjustmentClassStructSet() {
+	adjustmentClassStructOnce.Do(func() {
+		adjustmentClassStruct = gi.StructNew("Gtk", "AdjustmentClass")
 	})
 }
 
@@ -355,12 +355,12 @@ type AdjustmentClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AdjustmentPrivateStruct *gi.Struct
-var AdjustmentPrivateStructOnce sync.Once
+var adjustmentPrivateStruct *gi.Struct
+var adjustmentPrivateStructOnce sync.Once
 
-func AdjustmentPrivateStructSet() {
-	AdjustmentPrivateStructOnce.Do(func() {
-		AdjustmentPrivateStruct = gi.StructNew("Gtk", "AdjustmentPrivate")
+func adjustmentPrivateStructSet() {
+	adjustmentPrivateStructOnce.Do(func() {
+		adjustmentPrivateStruct = gi.StructNew("Gtk", "AdjustmentPrivate")
 	})
 }
 
@@ -368,12 +368,12 @@ type AdjustmentPrivate struct {
 	native uintptr
 }
 
-var AlignmentClassStruct *gi.Struct
-var AlignmentClassStructOnce sync.Once
+var alignmentClassStruct *gi.Struct
+var alignmentClassStructOnce sync.Once
 
-func AlignmentClassStructSet() {
-	AlignmentClassStructOnce.Do(func() {
-		AlignmentClassStruct = gi.StructNew("Gtk", "AlignmentClass")
+func alignmentClassStructSet() {
+	alignmentClassStructOnce.Do(func() {
+		alignmentClassStruct = gi.StructNew("Gtk", "AlignmentClass")
 	})
 }
 
@@ -386,12 +386,12 @@ type AlignmentClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AlignmentPrivateStruct *gi.Struct
-var AlignmentPrivateStructOnce sync.Once
+var alignmentPrivateStruct *gi.Struct
+var alignmentPrivateStructOnce sync.Once
 
-func AlignmentPrivateStructSet() {
-	AlignmentPrivateStructOnce.Do(func() {
-		AlignmentPrivateStruct = gi.StructNew("Gtk", "AlignmentPrivate")
+func alignmentPrivateStructSet() {
+	alignmentPrivateStructOnce.Do(func() {
+		alignmentPrivateStruct = gi.StructNew("Gtk", "AlignmentPrivate")
 	})
 }
 
@@ -399,12 +399,12 @@ type AlignmentPrivate struct {
 	native uintptr
 }
 
-var AppChooserButtonClassStruct *gi.Struct
-var AppChooserButtonClassStructOnce sync.Once
+var appChooserButtonClassStruct *gi.Struct
+var appChooserButtonClassStructOnce sync.Once
 
-func AppChooserButtonClassStructSet() {
-	AppChooserButtonClassStructOnce.Do(func() {
-		AppChooserButtonClassStruct = gi.StructNew("Gtk", "AppChooserButtonClass")
+func appChooserButtonClassStructSet() {
+	appChooserButtonClassStructOnce.Do(func() {
+		appChooserButtonClassStruct = gi.StructNew("Gtk", "AppChooserButtonClass")
 	})
 }
 
@@ -414,12 +414,12 @@ type AppChooserButtonClass struct {
 	// UNSUPPORTED : C value 'custom_item_activated' : missing Type
 }
 
-var AppChooserButtonPrivateStruct *gi.Struct
-var AppChooserButtonPrivateStructOnce sync.Once
+var appChooserButtonPrivateStruct *gi.Struct
+var appChooserButtonPrivateStructOnce sync.Once
 
-func AppChooserButtonPrivateStructSet() {
-	AppChooserButtonPrivateStructOnce.Do(func() {
-		AppChooserButtonPrivateStruct = gi.StructNew("Gtk", "AppChooserButtonPrivate")
+func appChooserButtonPrivateStructSet() {
+	appChooserButtonPrivateStructOnce.Do(func() {
+		appChooserButtonPrivateStruct = gi.StructNew("Gtk", "AppChooserButtonPrivate")
 	})
 }
 
@@ -427,12 +427,12 @@ type AppChooserButtonPrivate struct {
 	native uintptr
 }
 
-var AppChooserDialogClassStruct *gi.Struct
-var AppChooserDialogClassStructOnce sync.Once
+var appChooserDialogClassStruct *gi.Struct
+var appChooserDialogClassStructOnce sync.Once
 
-func AppChooserDialogClassStructSet() {
-	AppChooserDialogClassStructOnce.Do(func() {
-		AppChooserDialogClassStruct = gi.StructNew("Gtk", "AppChooserDialogClass")
+func appChooserDialogClassStructSet() {
+	appChooserDialogClassStructOnce.Do(func() {
+		appChooserDialogClassStruct = gi.StructNew("Gtk", "AppChooserDialogClass")
 	})
 }
 
@@ -441,12 +441,12 @@ type AppChooserDialogClass struct {
 	ParentClass *DialogClass
 }
 
-var AppChooserDialogPrivateStruct *gi.Struct
-var AppChooserDialogPrivateStructOnce sync.Once
+var appChooserDialogPrivateStruct *gi.Struct
+var appChooserDialogPrivateStructOnce sync.Once
 
-func AppChooserDialogPrivateStructSet() {
-	AppChooserDialogPrivateStructOnce.Do(func() {
-		AppChooserDialogPrivateStruct = gi.StructNew("Gtk", "AppChooserDialogPrivate")
+func appChooserDialogPrivateStructSet() {
+	appChooserDialogPrivateStructOnce.Do(func() {
+		appChooserDialogPrivateStruct = gi.StructNew("Gtk", "AppChooserDialogPrivate")
 	})
 }
 
@@ -454,12 +454,12 @@ type AppChooserDialogPrivate struct {
 	native uintptr
 }
 
-var AppChooserWidgetClassStruct *gi.Struct
-var AppChooserWidgetClassStructOnce sync.Once
+var appChooserWidgetClassStruct *gi.Struct
+var appChooserWidgetClassStructOnce sync.Once
 
-func AppChooserWidgetClassStructSet() {
-	AppChooserWidgetClassStructOnce.Do(func() {
-		AppChooserWidgetClassStruct = gi.StructNew("Gtk", "AppChooserWidgetClass")
+func appChooserWidgetClassStructSet() {
+	appChooserWidgetClassStructOnce.Do(func() {
+		appChooserWidgetClassStruct = gi.StructNew("Gtk", "AppChooserWidgetClass")
 	})
 }
 
@@ -471,12 +471,12 @@ type AppChooserWidgetClass struct {
 	// UNSUPPORTED : C value 'populate_popup' : missing Type
 }
 
-var AppChooserWidgetPrivateStruct *gi.Struct
-var AppChooserWidgetPrivateStructOnce sync.Once
+var appChooserWidgetPrivateStruct *gi.Struct
+var appChooserWidgetPrivateStructOnce sync.Once
 
-func AppChooserWidgetPrivateStructSet() {
-	AppChooserWidgetPrivateStructOnce.Do(func() {
-		AppChooserWidgetPrivateStruct = gi.StructNew("Gtk", "AppChooserWidgetPrivate")
+func appChooserWidgetPrivateStructSet() {
+	appChooserWidgetPrivateStructOnce.Do(func() {
+		appChooserWidgetPrivateStruct = gi.StructNew("Gtk", "AppChooserWidgetPrivate")
 	})
 }
 
@@ -484,12 +484,12 @@ type AppChooserWidgetPrivate struct {
 	native uintptr
 }
 
-var ApplicationClassStruct *gi.Struct
-var ApplicationClassStructOnce sync.Once
+var applicationClassStruct *gi.Struct
+var applicationClassStructOnce sync.Once
 
-func ApplicationClassStructSet() {
-	ApplicationClassStructOnce.Do(func() {
-		ApplicationClassStruct = gi.StructNew("Gtk", "ApplicationClass")
+func applicationClassStructSet() {
+	applicationClassStructOnce.Do(func() {
+		applicationClassStruct = gi.StructNew("Gtk", "ApplicationClass")
 	})
 }
 
@@ -500,12 +500,12 @@ type ApplicationClass struct {
 	// UNSUPPORTED : C value 'window_removed' : missing Type
 }
 
-var ApplicationPrivateStruct *gi.Struct
-var ApplicationPrivateStructOnce sync.Once
+var applicationPrivateStruct *gi.Struct
+var applicationPrivateStructOnce sync.Once
 
-func ApplicationPrivateStructSet() {
-	ApplicationPrivateStructOnce.Do(func() {
-		ApplicationPrivateStruct = gi.StructNew("Gtk", "ApplicationPrivate")
+func applicationPrivateStructSet() {
+	applicationPrivateStructOnce.Do(func() {
+		applicationPrivateStruct = gi.StructNew("Gtk", "ApplicationPrivate")
 	})
 }
 
@@ -513,12 +513,12 @@ type ApplicationPrivate struct {
 	native uintptr
 }
 
-var ApplicationWindowClassStruct *gi.Struct
-var ApplicationWindowClassStructOnce sync.Once
+var applicationWindowClassStruct *gi.Struct
+var applicationWindowClassStructOnce sync.Once
 
-func ApplicationWindowClassStructSet() {
-	ApplicationWindowClassStructOnce.Do(func() {
-		ApplicationWindowClassStruct = gi.StructNew("Gtk", "ApplicationWindowClass")
+func applicationWindowClassStructSet() {
+	applicationWindowClassStructOnce.Do(func() {
+		applicationWindowClassStruct = gi.StructNew("Gtk", "ApplicationWindowClass")
 	})
 }
 
@@ -527,12 +527,12 @@ type ApplicationWindowClass struct {
 	ParentClass *WindowClass
 }
 
-var ApplicationWindowPrivateStruct *gi.Struct
-var ApplicationWindowPrivateStructOnce sync.Once
+var applicationWindowPrivateStruct *gi.Struct
+var applicationWindowPrivateStructOnce sync.Once
 
-func ApplicationWindowPrivateStructSet() {
-	ApplicationWindowPrivateStructOnce.Do(func() {
-		ApplicationWindowPrivateStruct = gi.StructNew("Gtk", "ApplicationWindowPrivate")
+func applicationWindowPrivateStructSet() {
+	applicationWindowPrivateStructOnce.Do(func() {
+		applicationWindowPrivateStruct = gi.StructNew("Gtk", "ApplicationWindowPrivate")
 	})
 }
 
@@ -540,12 +540,12 @@ type ApplicationWindowPrivate struct {
 	native uintptr
 }
 
-var ArrowAccessibleClassStruct *gi.Struct
-var ArrowAccessibleClassStructOnce sync.Once
+var arrowAccessibleClassStruct *gi.Struct
+var arrowAccessibleClassStructOnce sync.Once
 
-func ArrowAccessibleClassStructSet() {
-	ArrowAccessibleClassStructOnce.Do(func() {
-		ArrowAccessibleClassStruct = gi.StructNew("Gtk", "ArrowAccessibleClass")
+func arrowAccessibleClassStructSet() {
+	arrowAccessibleClassStructOnce.Do(func() {
+		arrowAccessibleClassStruct = gi.StructNew("Gtk", "ArrowAccessibleClass")
 	})
 }
 
@@ -554,12 +554,12 @@ type ArrowAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var ArrowAccessiblePrivateStruct *gi.Struct
-var ArrowAccessiblePrivateStructOnce sync.Once
+var arrowAccessiblePrivateStruct *gi.Struct
+var arrowAccessiblePrivateStructOnce sync.Once
 
-func ArrowAccessiblePrivateStructSet() {
-	ArrowAccessiblePrivateStructOnce.Do(func() {
-		ArrowAccessiblePrivateStruct = gi.StructNew("Gtk", "ArrowAccessiblePrivate")
+func arrowAccessiblePrivateStructSet() {
+	arrowAccessiblePrivateStructOnce.Do(func() {
+		arrowAccessiblePrivateStruct = gi.StructNew("Gtk", "ArrowAccessiblePrivate")
 	})
 }
 
@@ -567,12 +567,12 @@ type ArrowAccessiblePrivate struct {
 	native uintptr
 }
 
-var ArrowClassStruct *gi.Struct
-var ArrowClassStructOnce sync.Once
+var arrowClassStruct *gi.Struct
+var arrowClassStructOnce sync.Once
 
-func ArrowClassStructSet() {
-	ArrowClassStructOnce.Do(func() {
-		ArrowClassStruct = gi.StructNew("Gtk", "ArrowClass")
+func arrowClassStructSet() {
+	arrowClassStructOnce.Do(func() {
+		arrowClassStruct = gi.StructNew("Gtk", "ArrowClass")
 	})
 }
 
@@ -585,12 +585,12 @@ type ArrowClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ArrowPrivateStruct *gi.Struct
-var ArrowPrivateStructOnce sync.Once
+var arrowPrivateStruct *gi.Struct
+var arrowPrivateStructOnce sync.Once
 
-func ArrowPrivateStructSet() {
-	ArrowPrivateStructOnce.Do(func() {
-		ArrowPrivateStruct = gi.StructNew("Gtk", "ArrowPrivate")
+func arrowPrivateStructSet() {
+	arrowPrivateStructOnce.Do(func() {
+		arrowPrivateStruct = gi.StructNew("Gtk", "ArrowPrivate")
 	})
 }
 
@@ -598,12 +598,12 @@ type ArrowPrivate struct {
 	native uintptr
 }
 
-var AspectFrameClassStruct *gi.Struct
-var AspectFrameClassStructOnce sync.Once
+var aspectFrameClassStruct *gi.Struct
+var aspectFrameClassStructOnce sync.Once
 
-func AspectFrameClassStructSet() {
-	AspectFrameClassStructOnce.Do(func() {
-		AspectFrameClassStruct = gi.StructNew("Gtk", "AspectFrameClass")
+func aspectFrameClassStructSet() {
+	aspectFrameClassStructOnce.Do(func() {
+		aspectFrameClassStruct = gi.StructNew("Gtk", "AspectFrameClass")
 	})
 }
 
@@ -616,12 +616,12 @@ type AspectFrameClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var AspectFramePrivateStruct *gi.Struct
-var AspectFramePrivateStructOnce sync.Once
+var aspectFramePrivateStruct *gi.Struct
+var aspectFramePrivateStructOnce sync.Once
 
-func AspectFramePrivateStructSet() {
-	AspectFramePrivateStructOnce.Do(func() {
-		AspectFramePrivateStruct = gi.StructNew("Gtk", "AspectFramePrivate")
+func aspectFramePrivateStructSet() {
+	aspectFramePrivateStructOnce.Do(func() {
+		aspectFramePrivateStruct = gi.StructNew("Gtk", "AspectFramePrivate")
 	})
 }
 
@@ -629,12 +629,12 @@ type AspectFramePrivate struct {
 	native uintptr
 }
 
-var AssistantClassStruct *gi.Struct
-var AssistantClassStructOnce sync.Once
+var assistantClassStruct *gi.Struct
+var assistantClassStructOnce sync.Once
 
-func AssistantClassStructSet() {
-	AssistantClassStructOnce.Do(func() {
-		AssistantClassStruct = gi.StructNew("Gtk", "AssistantClass")
+func assistantClassStructSet() {
+	assistantClassStructOnce.Do(func() {
+		assistantClassStruct = gi.StructNew("Gtk", "AssistantClass")
 	})
 }
 
@@ -652,12 +652,12 @@ type AssistantClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
 }
 
-var AssistantPrivateStruct *gi.Struct
-var AssistantPrivateStructOnce sync.Once
+var assistantPrivateStruct *gi.Struct
+var assistantPrivateStructOnce sync.Once
 
-func AssistantPrivateStructSet() {
-	AssistantPrivateStructOnce.Do(func() {
-		AssistantPrivateStruct = gi.StructNew("Gtk", "AssistantPrivate")
+func assistantPrivateStructSet() {
+	assistantPrivateStructOnce.Do(func() {
+		assistantPrivateStruct = gi.StructNew("Gtk", "AssistantPrivate")
 	})
 }
 
@@ -665,12 +665,12 @@ type AssistantPrivate struct {
 	native uintptr
 }
 
-var BinClassStruct *gi.Struct
-var BinClassStructOnce sync.Once
+var binClassStruct *gi.Struct
+var binClassStructOnce sync.Once
 
-func BinClassStructSet() {
-	BinClassStructOnce.Do(func() {
-		BinClassStruct = gi.StructNew("Gtk", "BinClass")
+func binClassStructSet() {
+	binClassStructOnce.Do(func() {
+		binClassStruct = gi.StructNew("Gtk", "BinClass")
 	})
 }
 
@@ -683,12 +683,12 @@ type BinClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var BinPrivateStruct *gi.Struct
-var BinPrivateStructOnce sync.Once
+var binPrivateStruct *gi.Struct
+var binPrivateStructOnce sync.Once
 
-func BinPrivateStructSet() {
-	BinPrivateStructOnce.Do(func() {
-		BinPrivateStruct = gi.StructNew("Gtk", "BinPrivate")
+func binPrivateStructSet() {
+	binPrivateStructOnce.Do(func() {
+		binPrivateStruct = gi.StructNew("Gtk", "BinPrivate")
 	})
 }
 
@@ -696,12 +696,12 @@ type BinPrivate struct {
 	native uintptr
 }
 
-var BindingArgStruct *gi.Struct
-var BindingArgStructOnce sync.Once
+var bindingArgStruct *gi.Struct
+var bindingArgStructOnce sync.Once
 
-func BindingArgStructSet() {
-	BindingArgStructOnce.Do(func() {
-		BindingArgStruct = gi.StructNew("Gtk", "BindingArg")
+func bindingArgStructSet() {
+	bindingArgStructOnce.Do(func() {
+		bindingArgStruct = gi.StructNew("Gtk", "BindingArg")
 	})
 }
 
@@ -710,12 +710,12 @@ type BindingArg struct {
 	// UNSUPPORTED : C value 'arg_type' : no Go type for 'GType'
 }
 
-var BindingEntryStruct *gi.Struct
-var BindingEntryStructOnce sync.Once
+var bindingEntryStruct *gi.Struct
+var bindingEntryStructOnce sync.Once
 
-func BindingEntryStructSet() {
-	BindingEntryStructOnce.Do(func() {
-		BindingEntryStruct = gi.StructNew("Gtk", "BindingEntry")
+func bindingEntryStructSet() {
+	bindingEntryStructOnce.Do(func() {
+		bindingEntryStruct = gi.StructNew("Gtk", "BindingEntry")
 	})
 }
 
@@ -732,12 +732,12 @@ type BindingEntry struct {
 	Signals      *BindingSignal
 }
 
-var BindingSetStruct *gi.Struct
-var BindingSetStructOnce sync.Once
+var bindingSetStruct *gi.Struct
+var bindingSetStructOnce sync.Once
 
-func BindingSetStructSet() {
-	BindingSetStructOnce.Do(func() {
-		BindingSetStruct = gi.StructNew("Gtk", "BindingSet")
+func bindingSetStructSet() {
+	bindingSetStructOnce.Do(func() {
+		bindingSetStruct = gi.StructNew("Gtk", "BindingSet")
 	})
 }
 
@@ -757,12 +757,12 @@ type BindingSet struct {
 
 // UNSUPPORTED : C value 'gtk_binding_set_add_path' : parameter 'path_type' of type 'PathType' not supported
 
-var BindingSignalStruct *gi.Struct
-var BindingSignalStructOnce sync.Once
+var bindingSignalStruct *gi.Struct
+var bindingSignalStructOnce sync.Once
 
-func BindingSignalStructSet() {
-	BindingSignalStructOnce.Do(func() {
-		BindingSignalStruct = gi.StructNew("Gtk", "BindingSignal")
+func bindingSignalStructSet() {
+	bindingSignalStructOnce.Do(func() {
+		bindingSignalStruct = gi.StructNew("Gtk", "BindingSignal")
 	})
 }
 
@@ -774,12 +774,12 @@ type BindingSignal struct {
 	// UNSUPPORTED : C value 'args' : missing Type
 }
 
-var BooleanCellAccessibleClassStruct *gi.Struct
-var BooleanCellAccessibleClassStructOnce sync.Once
+var booleanCellAccessibleClassStruct *gi.Struct
+var booleanCellAccessibleClassStructOnce sync.Once
 
-func BooleanCellAccessibleClassStructSet() {
-	BooleanCellAccessibleClassStructOnce.Do(func() {
-		BooleanCellAccessibleClassStruct = gi.StructNew("Gtk", "BooleanCellAccessibleClass")
+func booleanCellAccessibleClassStructSet() {
+	booleanCellAccessibleClassStructOnce.Do(func() {
+		booleanCellAccessibleClassStruct = gi.StructNew("Gtk", "BooleanCellAccessibleClass")
 	})
 }
 
@@ -788,12 +788,12 @@ type BooleanCellAccessibleClass struct {
 	ParentClass *RendererCellAccessibleClass
 }
 
-var BooleanCellAccessiblePrivateStruct *gi.Struct
-var BooleanCellAccessiblePrivateStructOnce sync.Once
+var booleanCellAccessiblePrivateStruct *gi.Struct
+var booleanCellAccessiblePrivateStructOnce sync.Once
 
-func BooleanCellAccessiblePrivateStructSet() {
-	BooleanCellAccessiblePrivateStructOnce.Do(func() {
-		BooleanCellAccessiblePrivateStruct = gi.StructNew("Gtk", "BooleanCellAccessiblePrivate")
+func booleanCellAccessiblePrivateStructSet() {
+	booleanCellAccessiblePrivateStructOnce.Do(func() {
+		booleanCellAccessiblePrivateStruct = gi.StructNew("Gtk", "BooleanCellAccessiblePrivate")
 	})
 }
 
@@ -801,12 +801,12 @@ type BooleanCellAccessiblePrivate struct {
 	native uintptr
 }
 
-var BorderStruct *gi.Struct
-var BorderStructOnce sync.Once
+var borderStruct *gi.Struct
+var borderStructOnce sync.Once
 
-func BorderStructSet() {
-	BorderStructOnce.Do(func() {
-		BorderStruct = gi.StructNew("Gtk", "Border")
+func borderStructSet() {
+	borderStructOnce.Do(func() {
+		borderStruct = gi.StructNew("Gtk", "Border")
 	})
 }
 
@@ -816,6 +816,15 @@ type Border struct {
 	Right  int16
 	Top    int16
 	Bottom int16
+}
+
+var borderNewFunction *gi.Function
+var borderNewFunctionOnce sync.Once
+
+func borderNewFunctionSet() {
+	borderNewFunctionOnce.Do(func() {
+		borderNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newBorderInvoker *gi.Function
@@ -831,6 +840,15 @@ func BorderNew() *Border {
 	retGo := &Border{native: ret.Pointer()}
 
 	return retGo
+}
+
+var borderCopyFunction *gi.Function
+var borderCopyFunctionOnce sync.Once
+
+func borderCopyFunctionSet() {
+	borderCopyFunctionOnce.Do(func() {
+		borderCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copyBorderInvoker *gi.Function
@@ -851,6 +869,15 @@ func (recv *Border) Copy() *Border {
 	return retGo
 }
 
+var borderFreeFunction *gi.Function
+var borderFreeFunctionOnce sync.Once
+
+func borderFreeFunctionSet() {
+	borderFreeFunctionOnce.Do(func() {
+		borderFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeBorderInvoker *gi.Function
 
 // Free is a representation of the C type gtk_border_free.
@@ -866,12 +893,12 @@ func (recv *Border) Free() {
 
 }
 
-var BoxClassStruct *gi.Struct
-var BoxClassStructOnce sync.Once
+var boxClassStruct *gi.Struct
+var boxClassStructOnce sync.Once
 
-func BoxClassStructSet() {
-	BoxClassStructOnce.Do(func() {
-		BoxClassStruct = gi.StructNew("Gtk", "BoxClass")
+func boxClassStructSet() {
+	boxClassStructOnce.Do(func() {
+		boxClassStruct = gi.StructNew("Gtk", "BoxClass")
 	})
 }
 
@@ -884,12 +911,12 @@ type BoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var BoxPrivateStruct *gi.Struct
-var BoxPrivateStructOnce sync.Once
+var boxPrivateStruct *gi.Struct
+var boxPrivateStructOnce sync.Once
 
-func BoxPrivateStructSet() {
-	BoxPrivateStructOnce.Do(func() {
-		BoxPrivateStruct = gi.StructNew("Gtk", "BoxPrivate")
+func boxPrivateStructSet() {
+	boxPrivateStructOnce.Do(func() {
+		boxPrivateStruct = gi.StructNew("Gtk", "BoxPrivate")
 	})
 }
 
@@ -897,12 +924,12 @@ type BoxPrivate struct {
 	native uintptr
 }
 
-var BuildableIfaceStruct *gi.Struct
-var BuildableIfaceStructOnce sync.Once
+var buildableIfaceStruct *gi.Struct
+var buildableIfaceStructOnce sync.Once
 
-func BuildableIfaceStructSet() {
-	BuildableIfaceStructOnce.Do(func() {
-		BuildableIfaceStruct = gi.StructNew("Gtk", "BuildableIface")
+func buildableIfaceStructSet() {
+	buildableIfaceStructOnce.Do(func() {
+		buildableIfaceStruct = gi.StructNew("Gtk", "BuildableIface")
 	})
 }
 
@@ -921,12 +948,12 @@ type BuildableIface struct {
 	// UNSUPPORTED : C value 'get_internal_child' : missing Type
 }
 
-var BuilderClassStruct *gi.Struct
-var BuilderClassStructOnce sync.Once
+var builderClassStruct *gi.Struct
+var builderClassStructOnce sync.Once
 
-func BuilderClassStructSet() {
-	BuilderClassStructOnce.Do(func() {
-		BuilderClassStruct = gi.StructNew("Gtk", "BuilderClass")
+func builderClassStructSet() {
+	builderClassStructOnce.Do(func() {
+		builderClassStruct = gi.StructNew("Gtk", "BuilderClass")
 	})
 }
 
@@ -944,12 +971,12 @@ type BuilderClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var BuilderPrivateStruct *gi.Struct
-var BuilderPrivateStructOnce sync.Once
+var builderPrivateStruct *gi.Struct
+var builderPrivateStructOnce sync.Once
 
-func BuilderPrivateStructSet() {
-	BuilderPrivateStructOnce.Do(func() {
-		BuilderPrivateStruct = gi.StructNew("Gtk", "BuilderPrivate")
+func builderPrivateStructSet() {
+	builderPrivateStructOnce.Do(func() {
+		builderPrivateStruct = gi.StructNew("Gtk", "BuilderPrivate")
 	})
 }
 
@@ -957,12 +984,12 @@ type BuilderPrivate struct {
 	native uintptr
 }
 
-var ButtonAccessibleClassStruct *gi.Struct
-var ButtonAccessibleClassStructOnce sync.Once
+var buttonAccessibleClassStruct *gi.Struct
+var buttonAccessibleClassStructOnce sync.Once
 
-func ButtonAccessibleClassStructSet() {
-	ButtonAccessibleClassStructOnce.Do(func() {
-		ButtonAccessibleClassStruct = gi.StructNew("Gtk", "ButtonAccessibleClass")
+func buttonAccessibleClassStructSet() {
+	buttonAccessibleClassStructOnce.Do(func() {
+		buttonAccessibleClassStruct = gi.StructNew("Gtk", "ButtonAccessibleClass")
 	})
 }
 
@@ -971,12 +998,12 @@ type ButtonAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var ButtonAccessiblePrivateStruct *gi.Struct
-var ButtonAccessiblePrivateStructOnce sync.Once
+var buttonAccessiblePrivateStruct *gi.Struct
+var buttonAccessiblePrivateStructOnce sync.Once
 
-func ButtonAccessiblePrivateStructSet() {
-	ButtonAccessiblePrivateStructOnce.Do(func() {
-		ButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "ButtonAccessiblePrivate")
+func buttonAccessiblePrivateStructSet() {
+	buttonAccessiblePrivateStructOnce.Do(func() {
+		buttonAccessiblePrivateStruct = gi.StructNew("Gtk", "ButtonAccessiblePrivate")
 	})
 }
 
@@ -984,12 +1011,12 @@ type ButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var ButtonBoxClassStruct *gi.Struct
-var ButtonBoxClassStructOnce sync.Once
+var buttonBoxClassStruct *gi.Struct
+var buttonBoxClassStructOnce sync.Once
 
-func ButtonBoxClassStructSet() {
-	ButtonBoxClassStructOnce.Do(func() {
-		ButtonBoxClassStruct = gi.StructNew("Gtk", "ButtonBoxClass")
+func buttonBoxClassStructSet() {
+	buttonBoxClassStructOnce.Do(func() {
+		buttonBoxClassStruct = gi.StructNew("Gtk", "ButtonBoxClass")
 	})
 }
 
@@ -1002,12 +1029,12 @@ type ButtonBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ButtonBoxPrivateStruct *gi.Struct
-var ButtonBoxPrivateStructOnce sync.Once
+var buttonBoxPrivateStruct *gi.Struct
+var buttonBoxPrivateStructOnce sync.Once
 
-func ButtonBoxPrivateStructSet() {
-	ButtonBoxPrivateStructOnce.Do(func() {
-		ButtonBoxPrivateStruct = gi.StructNew("Gtk", "ButtonBoxPrivate")
+func buttonBoxPrivateStructSet() {
+	buttonBoxPrivateStructOnce.Do(func() {
+		buttonBoxPrivateStruct = gi.StructNew("Gtk", "ButtonBoxPrivate")
 	})
 }
 
@@ -1015,12 +1042,12 @@ type ButtonBoxPrivate struct {
 	native uintptr
 }
 
-var ButtonClassStruct *gi.Struct
-var ButtonClassStructOnce sync.Once
+var buttonClassStruct *gi.Struct
+var buttonClassStructOnce sync.Once
 
-func ButtonClassStructSet() {
-	ButtonClassStructOnce.Do(func() {
-		ButtonClassStruct = gi.StructNew("Gtk", "ButtonClass")
+func buttonClassStructSet() {
+	buttonClassStructOnce.Do(func() {
+		buttonClassStruct = gi.StructNew("Gtk", "ButtonClass")
 	})
 }
 
@@ -1039,12 +1066,12 @@ type ButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ButtonPrivateStruct *gi.Struct
-var ButtonPrivateStructOnce sync.Once
+var buttonPrivateStruct *gi.Struct
+var buttonPrivateStructOnce sync.Once
 
-func ButtonPrivateStructSet() {
-	ButtonPrivateStructOnce.Do(func() {
-		ButtonPrivateStruct = gi.StructNew("Gtk", "ButtonPrivate")
+func buttonPrivateStructSet() {
+	buttonPrivateStructOnce.Do(func() {
+		buttonPrivateStruct = gi.StructNew("Gtk", "ButtonPrivate")
 	})
 }
 
@@ -1052,12 +1079,12 @@ type ButtonPrivate struct {
 	native uintptr
 }
 
-var CalendarClassStruct *gi.Struct
-var CalendarClassStructOnce sync.Once
+var calendarClassStruct *gi.Struct
+var calendarClassStructOnce sync.Once
 
-func CalendarClassStructSet() {
-	CalendarClassStructOnce.Do(func() {
-		CalendarClassStruct = gi.StructNew("Gtk", "CalendarClass")
+func calendarClassStructSet() {
+	calendarClassStructOnce.Do(func() {
+		calendarClassStruct = gi.StructNew("Gtk", "CalendarClass")
 	})
 }
 
@@ -1077,12 +1104,12 @@ type CalendarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CalendarPrivateStruct *gi.Struct
-var CalendarPrivateStructOnce sync.Once
+var calendarPrivateStruct *gi.Struct
+var calendarPrivateStructOnce sync.Once
 
-func CalendarPrivateStructSet() {
-	CalendarPrivateStructOnce.Do(func() {
-		CalendarPrivateStruct = gi.StructNew("Gtk", "CalendarPrivate")
+func calendarPrivateStructSet() {
+	calendarPrivateStructOnce.Do(func() {
+		calendarPrivateStruct = gi.StructNew("Gtk", "CalendarPrivate")
 	})
 }
 
@@ -1090,12 +1117,12 @@ type CalendarPrivate struct {
 	native uintptr
 }
 
-var CellAccessibleClassStruct *gi.Struct
-var CellAccessibleClassStructOnce sync.Once
+var cellAccessibleClassStruct *gi.Struct
+var cellAccessibleClassStructOnce sync.Once
 
-func CellAccessibleClassStructSet() {
-	CellAccessibleClassStructOnce.Do(func() {
-		CellAccessibleClassStruct = gi.StructNew("Gtk", "CellAccessibleClass")
+func cellAccessibleClassStructSet() {
+	cellAccessibleClassStructOnce.Do(func() {
+		cellAccessibleClassStruct = gi.StructNew("Gtk", "CellAccessibleClass")
 	})
 }
 
@@ -1105,12 +1132,12 @@ type CellAccessibleClass struct {
 	// UNSUPPORTED : C value 'update_cache' : missing Type
 }
 
-var CellAccessibleParentIfaceStruct *gi.Struct
-var CellAccessibleParentIfaceStructOnce sync.Once
+var cellAccessibleParentIfaceStruct *gi.Struct
+var cellAccessibleParentIfaceStructOnce sync.Once
 
-func CellAccessibleParentIfaceStructSet() {
-	CellAccessibleParentIfaceStructOnce.Do(func() {
-		CellAccessibleParentIfaceStruct = gi.StructNew("Gtk", "CellAccessibleParentIface")
+func cellAccessibleParentIfaceStructSet() {
+	cellAccessibleParentIfaceStructOnce.Do(func() {
+		cellAccessibleParentIfaceStruct = gi.StructNew("Gtk", "CellAccessibleParentIface")
 	})
 }
 
@@ -1131,12 +1158,12 @@ type CellAccessibleParentIface struct {
 	// UNSUPPORTED : C value 'get_row_header_cells' : missing Type
 }
 
-var CellAccessiblePrivateStruct *gi.Struct
-var CellAccessiblePrivateStructOnce sync.Once
+var cellAccessiblePrivateStruct *gi.Struct
+var cellAccessiblePrivateStructOnce sync.Once
 
-func CellAccessiblePrivateStructSet() {
-	CellAccessiblePrivateStructOnce.Do(func() {
-		CellAccessiblePrivateStruct = gi.StructNew("Gtk", "CellAccessiblePrivate")
+func cellAccessiblePrivateStructSet() {
+	cellAccessiblePrivateStructOnce.Do(func() {
+		cellAccessiblePrivateStruct = gi.StructNew("Gtk", "CellAccessiblePrivate")
 	})
 }
 
@@ -1144,12 +1171,12 @@ type CellAccessiblePrivate struct {
 	native uintptr
 }
 
-var CellAreaBoxClassStruct *gi.Struct
-var CellAreaBoxClassStructOnce sync.Once
+var cellAreaBoxClassStruct *gi.Struct
+var cellAreaBoxClassStructOnce sync.Once
 
-func CellAreaBoxClassStructSet() {
-	CellAreaBoxClassStructOnce.Do(func() {
-		CellAreaBoxClassStruct = gi.StructNew("Gtk", "CellAreaBoxClass")
+func cellAreaBoxClassStructSet() {
+	cellAreaBoxClassStructOnce.Do(func() {
+		cellAreaBoxClassStruct = gi.StructNew("Gtk", "CellAreaBoxClass")
 	})
 }
 
@@ -1161,12 +1188,12 @@ type CellAreaBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellAreaBoxPrivateStruct *gi.Struct
-var CellAreaBoxPrivateStructOnce sync.Once
+var cellAreaBoxPrivateStruct *gi.Struct
+var cellAreaBoxPrivateStructOnce sync.Once
 
-func CellAreaBoxPrivateStructSet() {
-	CellAreaBoxPrivateStructOnce.Do(func() {
-		CellAreaBoxPrivateStruct = gi.StructNew("Gtk", "CellAreaBoxPrivate")
+func cellAreaBoxPrivateStructSet() {
+	cellAreaBoxPrivateStructOnce.Do(func() {
+		cellAreaBoxPrivateStruct = gi.StructNew("Gtk", "CellAreaBoxPrivate")
 	})
 }
 
@@ -1174,12 +1201,12 @@ type CellAreaBoxPrivate struct {
 	native uintptr
 }
 
-var CellAreaClassStruct *gi.Struct
-var CellAreaClassStructOnce sync.Once
+var cellAreaClassStruct *gi.Struct
+var cellAreaClassStructOnce sync.Once
 
-func CellAreaClassStructSet() {
-	CellAreaClassStructOnce.Do(func() {
-		CellAreaClassStruct = gi.StructNew("Gtk", "CellAreaClass")
+func cellAreaClassStructSet() {
+	cellAreaClassStructOnce.Do(func() {
+		cellAreaClassStruct = gi.StructNew("Gtk", "CellAreaClass")
 	})
 }
 
@@ -1218,6 +1245,15 @@ type CellAreaClass struct {
 
 // UNSUPPORTED : C value 'gtk_cell_area_class_install_cell_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
+var cellAreaClassListCellPropertiesFunction *gi.Function
+var cellAreaClassListCellPropertiesFunctionOnce sync.Once
+
+func cellAreaClassListCellPropertiesFunctionSet() {
+	cellAreaClassListCellPropertiesFunctionOnce.Do(func() {
+		cellAreaClassListCellPropertiesFunction = gi.FunctionInvokerNew("Gtk", "list_cell_properties")
+	})
+}
+
 var listCellPropertiesCellAreaClassInvoker *gi.Function
 
 // ListCellProperties is a representation of the C type gtk_cell_area_class_list_cell_properties.
@@ -1238,12 +1274,12 @@ func (recv *CellAreaClass) ListCellProperties() uint32 {
 	return out0
 }
 
-var CellAreaContextClassStruct *gi.Struct
-var CellAreaContextClassStructOnce sync.Once
+var cellAreaContextClassStruct *gi.Struct
+var cellAreaContextClassStructOnce sync.Once
 
-func CellAreaContextClassStructSet() {
-	CellAreaContextClassStructOnce.Do(func() {
-		CellAreaContextClassStruct = gi.StructNew("Gtk", "CellAreaContextClass")
+func cellAreaContextClassStructSet() {
+	cellAreaContextClassStructOnce.Do(func() {
+		cellAreaContextClassStruct = gi.StructNew("Gtk", "CellAreaContextClass")
 	})
 }
 
@@ -1261,12 +1297,12 @@ type CellAreaContextClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
 }
 
-var CellAreaContextPrivateStruct *gi.Struct
-var CellAreaContextPrivateStructOnce sync.Once
+var cellAreaContextPrivateStruct *gi.Struct
+var cellAreaContextPrivateStructOnce sync.Once
 
-func CellAreaContextPrivateStructSet() {
-	CellAreaContextPrivateStructOnce.Do(func() {
-		CellAreaContextPrivateStruct = gi.StructNew("Gtk", "CellAreaContextPrivate")
+func cellAreaContextPrivateStructSet() {
+	cellAreaContextPrivateStructOnce.Do(func() {
+		cellAreaContextPrivateStruct = gi.StructNew("Gtk", "CellAreaContextPrivate")
 	})
 }
 
@@ -1274,12 +1310,12 @@ type CellAreaContextPrivate struct {
 	native uintptr
 }
 
-var CellAreaPrivateStruct *gi.Struct
-var CellAreaPrivateStructOnce sync.Once
+var cellAreaPrivateStruct *gi.Struct
+var cellAreaPrivateStructOnce sync.Once
 
-func CellAreaPrivateStructSet() {
-	CellAreaPrivateStructOnce.Do(func() {
-		CellAreaPrivateStruct = gi.StructNew("Gtk", "CellAreaPrivate")
+func cellAreaPrivateStructSet() {
+	cellAreaPrivateStructOnce.Do(func() {
+		cellAreaPrivateStruct = gi.StructNew("Gtk", "CellAreaPrivate")
 	})
 }
 
@@ -1287,12 +1323,12 @@ type CellAreaPrivate struct {
 	native uintptr
 }
 
-var CellEditableIfaceStruct *gi.Struct
-var CellEditableIfaceStructOnce sync.Once
+var cellEditableIfaceStruct *gi.Struct
+var cellEditableIfaceStructOnce sync.Once
 
-func CellEditableIfaceStructSet() {
-	CellEditableIfaceStructOnce.Do(func() {
-		CellEditableIfaceStruct = gi.StructNew("Gtk", "CellEditableIface")
+func cellEditableIfaceStructSet() {
+	cellEditableIfaceStructOnce.Do(func() {
+		cellEditableIfaceStruct = gi.StructNew("Gtk", "CellEditableIface")
 	})
 }
 
@@ -1303,12 +1339,12 @@ type CellEditableIface struct {
 	// UNSUPPORTED : C value 'start_editing' : missing Type
 }
 
-var CellLayoutIfaceStruct *gi.Struct
-var CellLayoutIfaceStructOnce sync.Once
+var cellLayoutIfaceStruct *gi.Struct
+var cellLayoutIfaceStructOnce sync.Once
 
-func CellLayoutIfaceStructSet() {
-	CellLayoutIfaceStructOnce.Do(func() {
-		CellLayoutIfaceStruct = gi.StructNew("Gtk", "CellLayoutIface")
+func cellLayoutIfaceStructSet() {
+	cellLayoutIfaceStructOnce.Do(func() {
+		cellLayoutIfaceStruct = gi.StructNew("Gtk", "CellLayoutIface")
 	})
 }
 
@@ -1325,12 +1361,12 @@ type CellLayoutIface struct {
 	// UNSUPPORTED : C value 'get_area' : missing Type
 }
 
-var CellRendererAccelClassStruct *gi.Struct
-var CellRendererAccelClassStructOnce sync.Once
+var cellRendererAccelClassStruct *gi.Struct
+var cellRendererAccelClassStructOnce sync.Once
 
-func CellRendererAccelClassStructSet() {
-	CellRendererAccelClassStructOnce.Do(func() {
-		CellRendererAccelClassStruct = gi.StructNew("Gtk", "CellRendererAccelClass")
+func cellRendererAccelClassStructSet() {
+	cellRendererAccelClassStructOnce.Do(func() {
+		cellRendererAccelClassStruct = gi.StructNew("Gtk", "CellRendererAccelClass")
 	})
 }
 
@@ -1346,12 +1382,12 @@ type CellRendererAccelClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererAccelPrivateStruct *gi.Struct
-var CellRendererAccelPrivateStructOnce sync.Once
+var cellRendererAccelPrivateStruct *gi.Struct
+var cellRendererAccelPrivateStructOnce sync.Once
 
-func CellRendererAccelPrivateStructSet() {
-	CellRendererAccelPrivateStructOnce.Do(func() {
-		CellRendererAccelPrivateStruct = gi.StructNew("Gtk", "CellRendererAccelPrivate")
+func cellRendererAccelPrivateStructSet() {
+	cellRendererAccelPrivateStructOnce.Do(func() {
+		cellRendererAccelPrivateStruct = gi.StructNew("Gtk", "CellRendererAccelPrivate")
 	})
 }
 
@@ -1359,12 +1395,12 @@ type CellRendererAccelPrivate struct {
 	native uintptr
 }
 
-var CellRendererClassStruct *gi.Struct
-var CellRendererClassStructOnce sync.Once
+var cellRendererClassStruct *gi.Struct
+var cellRendererClassStructOnce sync.Once
 
-func CellRendererClassStructSet() {
-	CellRendererClassStructOnce.Do(func() {
-		CellRendererClassStruct = gi.StructNew("Gtk", "CellRendererClass")
+func cellRendererClassStructSet() {
+	cellRendererClassStructOnce.Do(func() {
+		cellRendererClassStruct = gi.StructNew("Gtk", "CellRendererClass")
 	})
 }
 
@@ -1389,12 +1425,12 @@ type CellRendererClass struct {
 
 // UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
 
-var CellRendererClassPrivateStruct *gi.Struct
-var CellRendererClassPrivateStructOnce sync.Once
+var cellRendererClassPrivateStruct *gi.Struct
+var cellRendererClassPrivateStructOnce sync.Once
 
-func CellRendererClassPrivateStructSet() {
-	CellRendererClassPrivateStructOnce.Do(func() {
-		CellRendererClassPrivateStruct = gi.StructNew("Gtk", "CellRendererClassPrivate")
+func cellRendererClassPrivateStructSet() {
+	cellRendererClassPrivateStructOnce.Do(func() {
+		cellRendererClassPrivateStruct = gi.StructNew("Gtk", "CellRendererClassPrivate")
 	})
 }
 
@@ -1402,12 +1438,12 @@ type CellRendererClassPrivate struct {
 	native uintptr
 }
 
-var CellRendererComboClassStruct *gi.Struct
-var CellRendererComboClassStructOnce sync.Once
+var cellRendererComboClassStruct *gi.Struct
+var cellRendererComboClassStructOnce sync.Once
 
-func CellRendererComboClassStructSet() {
-	CellRendererComboClassStructOnce.Do(func() {
-		CellRendererComboClassStruct = gi.StructNew("Gtk", "CellRendererComboClass")
+func cellRendererComboClassStructSet() {
+	cellRendererComboClassStructOnce.Do(func() {
+		cellRendererComboClassStruct = gi.StructNew("Gtk", "CellRendererComboClass")
 	})
 }
 
@@ -1420,12 +1456,12 @@ type CellRendererComboClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererComboPrivateStruct *gi.Struct
-var CellRendererComboPrivateStructOnce sync.Once
+var cellRendererComboPrivateStruct *gi.Struct
+var cellRendererComboPrivateStructOnce sync.Once
 
-func CellRendererComboPrivateStructSet() {
-	CellRendererComboPrivateStructOnce.Do(func() {
-		CellRendererComboPrivateStruct = gi.StructNew("Gtk", "CellRendererComboPrivate")
+func cellRendererComboPrivateStructSet() {
+	cellRendererComboPrivateStructOnce.Do(func() {
+		cellRendererComboPrivateStruct = gi.StructNew("Gtk", "CellRendererComboPrivate")
 	})
 }
 
@@ -1433,12 +1469,12 @@ type CellRendererComboPrivate struct {
 	native uintptr
 }
 
-var CellRendererPixbufClassStruct *gi.Struct
-var CellRendererPixbufClassStructOnce sync.Once
+var cellRendererPixbufClassStruct *gi.Struct
+var cellRendererPixbufClassStructOnce sync.Once
 
-func CellRendererPixbufClassStructSet() {
-	CellRendererPixbufClassStructOnce.Do(func() {
-		CellRendererPixbufClassStruct = gi.StructNew("Gtk", "CellRendererPixbufClass")
+func cellRendererPixbufClassStructSet() {
+	cellRendererPixbufClassStructOnce.Do(func() {
+		cellRendererPixbufClassStruct = gi.StructNew("Gtk", "CellRendererPixbufClass")
 	})
 }
 
@@ -1451,12 +1487,12 @@ type CellRendererPixbufClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererPixbufPrivateStruct *gi.Struct
-var CellRendererPixbufPrivateStructOnce sync.Once
+var cellRendererPixbufPrivateStruct *gi.Struct
+var cellRendererPixbufPrivateStructOnce sync.Once
 
-func CellRendererPixbufPrivateStructSet() {
-	CellRendererPixbufPrivateStructOnce.Do(func() {
-		CellRendererPixbufPrivateStruct = gi.StructNew("Gtk", "CellRendererPixbufPrivate")
+func cellRendererPixbufPrivateStructSet() {
+	cellRendererPixbufPrivateStructOnce.Do(func() {
+		cellRendererPixbufPrivateStruct = gi.StructNew("Gtk", "CellRendererPixbufPrivate")
 	})
 }
 
@@ -1464,12 +1500,12 @@ type CellRendererPixbufPrivate struct {
 	native uintptr
 }
 
-var CellRendererPrivateStruct *gi.Struct
-var CellRendererPrivateStructOnce sync.Once
+var cellRendererPrivateStruct *gi.Struct
+var cellRendererPrivateStructOnce sync.Once
 
-func CellRendererPrivateStructSet() {
-	CellRendererPrivateStructOnce.Do(func() {
-		CellRendererPrivateStruct = gi.StructNew("Gtk", "CellRendererPrivate")
+func cellRendererPrivateStructSet() {
+	cellRendererPrivateStructOnce.Do(func() {
+		cellRendererPrivateStruct = gi.StructNew("Gtk", "CellRendererPrivate")
 	})
 }
 
@@ -1477,12 +1513,12 @@ type CellRendererPrivate struct {
 	native uintptr
 }
 
-var CellRendererProgressClassStruct *gi.Struct
-var CellRendererProgressClassStructOnce sync.Once
+var cellRendererProgressClassStruct *gi.Struct
+var cellRendererProgressClassStructOnce sync.Once
 
-func CellRendererProgressClassStructSet() {
-	CellRendererProgressClassStructOnce.Do(func() {
-		CellRendererProgressClassStruct = gi.StructNew("Gtk", "CellRendererProgressClass")
+func cellRendererProgressClassStructSet() {
+	cellRendererProgressClassStructOnce.Do(func() {
+		cellRendererProgressClassStruct = gi.StructNew("Gtk", "CellRendererProgressClass")
 	})
 }
 
@@ -1495,12 +1531,12 @@ type CellRendererProgressClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererProgressPrivateStruct *gi.Struct
-var CellRendererProgressPrivateStructOnce sync.Once
+var cellRendererProgressPrivateStruct *gi.Struct
+var cellRendererProgressPrivateStructOnce sync.Once
 
-func CellRendererProgressPrivateStructSet() {
-	CellRendererProgressPrivateStructOnce.Do(func() {
-		CellRendererProgressPrivateStruct = gi.StructNew("Gtk", "CellRendererProgressPrivate")
+func cellRendererProgressPrivateStructSet() {
+	cellRendererProgressPrivateStructOnce.Do(func() {
+		cellRendererProgressPrivateStruct = gi.StructNew("Gtk", "CellRendererProgressPrivate")
 	})
 }
 
@@ -1508,12 +1544,12 @@ type CellRendererProgressPrivate struct {
 	native uintptr
 }
 
-var CellRendererSpinClassStruct *gi.Struct
-var CellRendererSpinClassStructOnce sync.Once
+var cellRendererSpinClassStruct *gi.Struct
+var cellRendererSpinClassStructOnce sync.Once
 
-func CellRendererSpinClassStructSet() {
-	CellRendererSpinClassStructOnce.Do(func() {
-		CellRendererSpinClassStruct = gi.StructNew("Gtk", "CellRendererSpinClass")
+func cellRendererSpinClassStructSet() {
+	cellRendererSpinClassStructOnce.Do(func() {
+		cellRendererSpinClassStruct = gi.StructNew("Gtk", "CellRendererSpinClass")
 	})
 }
 
@@ -1526,12 +1562,12 @@ type CellRendererSpinClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererSpinPrivateStruct *gi.Struct
-var CellRendererSpinPrivateStructOnce sync.Once
+var cellRendererSpinPrivateStruct *gi.Struct
+var cellRendererSpinPrivateStructOnce sync.Once
 
-func CellRendererSpinPrivateStructSet() {
-	CellRendererSpinPrivateStructOnce.Do(func() {
-		CellRendererSpinPrivateStruct = gi.StructNew("Gtk", "CellRendererSpinPrivate")
+func cellRendererSpinPrivateStructSet() {
+	cellRendererSpinPrivateStructOnce.Do(func() {
+		cellRendererSpinPrivateStruct = gi.StructNew("Gtk", "CellRendererSpinPrivate")
 	})
 }
 
@@ -1539,12 +1575,12 @@ type CellRendererSpinPrivate struct {
 	native uintptr
 }
 
-var CellRendererSpinnerClassStruct *gi.Struct
-var CellRendererSpinnerClassStructOnce sync.Once
+var cellRendererSpinnerClassStruct *gi.Struct
+var cellRendererSpinnerClassStructOnce sync.Once
 
-func CellRendererSpinnerClassStructSet() {
-	CellRendererSpinnerClassStructOnce.Do(func() {
-		CellRendererSpinnerClassStruct = gi.StructNew("Gtk", "CellRendererSpinnerClass")
+func cellRendererSpinnerClassStructSet() {
+	cellRendererSpinnerClassStructOnce.Do(func() {
+		cellRendererSpinnerClassStruct = gi.StructNew("Gtk", "CellRendererSpinnerClass")
 	})
 }
 
@@ -1557,12 +1593,12 @@ type CellRendererSpinnerClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererSpinnerPrivateStruct *gi.Struct
-var CellRendererSpinnerPrivateStructOnce sync.Once
+var cellRendererSpinnerPrivateStruct *gi.Struct
+var cellRendererSpinnerPrivateStructOnce sync.Once
 
-func CellRendererSpinnerPrivateStructSet() {
-	CellRendererSpinnerPrivateStructOnce.Do(func() {
-		CellRendererSpinnerPrivateStruct = gi.StructNew("Gtk", "CellRendererSpinnerPrivate")
+func cellRendererSpinnerPrivateStructSet() {
+	cellRendererSpinnerPrivateStructOnce.Do(func() {
+		cellRendererSpinnerPrivateStruct = gi.StructNew("Gtk", "CellRendererSpinnerPrivate")
 	})
 }
 
@@ -1570,12 +1606,12 @@ type CellRendererSpinnerPrivate struct {
 	native uintptr
 }
 
-var CellRendererTextClassStruct *gi.Struct
-var CellRendererTextClassStructOnce sync.Once
+var cellRendererTextClassStruct *gi.Struct
+var cellRendererTextClassStructOnce sync.Once
 
-func CellRendererTextClassStructSet() {
-	CellRendererTextClassStructOnce.Do(func() {
-		CellRendererTextClassStruct = gi.StructNew("Gtk", "CellRendererTextClass")
+func cellRendererTextClassStructSet() {
+	cellRendererTextClassStructOnce.Do(func() {
+		cellRendererTextClassStruct = gi.StructNew("Gtk", "CellRendererTextClass")
 	})
 }
 
@@ -1589,12 +1625,12 @@ type CellRendererTextClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererTextPrivateStruct *gi.Struct
-var CellRendererTextPrivateStructOnce sync.Once
+var cellRendererTextPrivateStruct *gi.Struct
+var cellRendererTextPrivateStructOnce sync.Once
 
-func CellRendererTextPrivateStructSet() {
-	CellRendererTextPrivateStructOnce.Do(func() {
-		CellRendererTextPrivateStruct = gi.StructNew("Gtk", "CellRendererTextPrivate")
+func cellRendererTextPrivateStructSet() {
+	cellRendererTextPrivateStructOnce.Do(func() {
+		cellRendererTextPrivateStruct = gi.StructNew("Gtk", "CellRendererTextPrivate")
 	})
 }
 
@@ -1602,12 +1638,12 @@ type CellRendererTextPrivate struct {
 	native uintptr
 }
 
-var CellRendererToggleClassStruct *gi.Struct
-var CellRendererToggleClassStructOnce sync.Once
+var cellRendererToggleClassStruct *gi.Struct
+var cellRendererToggleClassStructOnce sync.Once
 
-func CellRendererToggleClassStructSet() {
-	CellRendererToggleClassStructOnce.Do(func() {
-		CellRendererToggleClassStruct = gi.StructNew("Gtk", "CellRendererToggleClass")
+func cellRendererToggleClassStructSet() {
+	cellRendererToggleClassStructOnce.Do(func() {
+		cellRendererToggleClassStruct = gi.StructNew("Gtk", "CellRendererToggleClass")
 	})
 }
 
@@ -1621,12 +1657,12 @@ type CellRendererToggleClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellRendererTogglePrivateStruct *gi.Struct
-var CellRendererTogglePrivateStructOnce sync.Once
+var cellRendererTogglePrivateStruct *gi.Struct
+var cellRendererTogglePrivateStructOnce sync.Once
 
-func CellRendererTogglePrivateStructSet() {
-	CellRendererTogglePrivateStructOnce.Do(func() {
-		CellRendererTogglePrivateStruct = gi.StructNew("Gtk", "CellRendererTogglePrivate")
+func cellRendererTogglePrivateStructSet() {
+	cellRendererTogglePrivateStructOnce.Do(func() {
+		cellRendererTogglePrivateStruct = gi.StructNew("Gtk", "CellRendererTogglePrivate")
 	})
 }
 
@@ -1634,12 +1670,12 @@ type CellRendererTogglePrivate struct {
 	native uintptr
 }
 
-var CellViewClassStruct *gi.Struct
-var CellViewClassStructOnce sync.Once
+var cellViewClassStruct *gi.Struct
+var cellViewClassStructOnce sync.Once
 
-func CellViewClassStructSet() {
-	CellViewClassStructOnce.Do(func() {
-		CellViewClassStruct = gi.StructNew("Gtk", "CellViewClass")
+func cellViewClassStructSet() {
+	cellViewClassStructOnce.Do(func() {
+		cellViewClassStruct = gi.StructNew("Gtk", "CellViewClass")
 	})
 }
 
@@ -1652,12 +1688,12 @@ type CellViewClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CellViewPrivateStruct *gi.Struct
-var CellViewPrivateStructOnce sync.Once
+var cellViewPrivateStruct *gi.Struct
+var cellViewPrivateStructOnce sync.Once
 
-func CellViewPrivateStructSet() {
-	CellViewPrivateStructOnce.Do(func() {
-		CellViewPrivateStruct = gi.StructNew("Gtk", "CellViewPrivate")
+func cellViewPrivateStructSet() {
+	cellViewPrivateStructOnce.Do(func() {
+		cellViewPrivateStruct = gi.StructNew("Gtk", "CellViewPrivate")
 	})
 }
 
@@ -1665,12 +1701,12 @@ type CellViewPrivate struct {
 	native uintptr
 }
 
-var CheckButtonClassStruct *gi.Struct
-var CheckButtonClassStructOnce sync.Once
+var checkButtonClassStruct *gi.Struct
+var checkButtonClassStructOnce sync.Once
 
-func CheckButtonClassStructSet() {
-	CheckButtonClassStructOnce.Do(func() {
-		CheckButtonClassStruct = gi.StructNew("Gtk", "CheckButtonClass")
+func checkButtonClassStructSet() {
+	checkButtonClassStructOnce.Do(func() {
+		checkButtonClassStruct = gi.StructNew("Gtk", "CheckButtonClass")
 	})
 }
 
@@ -1684,12 +1720,12 @@ type CheckButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CheckMenuItemAccessibleClassStruct *gi.Struct
-var CheckMenuItemAccessibleClassStructOnce sync.Once
+var checkMenuItemAccessibleClassStruct *gi.Struct
+var checkMenuItemAccessibleClassStructOnce sync.Once
 
-func CheckMenuItemAccessibleClassStructSet() {
-	CheckMenuItemAccessibleClassStructOnce.Do(func() {
-		CheckMenuItemAccessibleClassStruct = gi.StructNew("Gtk", "CheckMenuItemAccessibleClass")
+func checkMenuItemAccessibleClassStructSet() {
+	checkMenuItemAccessibleClassStructOnce.Do(func() {
+		checkMenuItemAccessibleClassStruct = gi.StructNew("Gtk", "CheckMenuItemAccessibleClass")
 	})
 }
 
@@ -1698,12 +1734,12 @@ type CheckMenuItemAccessibleClass struct {
 	ParentClass *MenuItemAccessibleClass
 }
 
-var CheckMenuItemAccessiblePrivateStruct *gi.Struct
-var CheckMenuItemAccessiblePrivateStructOnce sync.Once
+var checkMenuItemAccessiblePrivateStruct *gi.Struct
+var checkMenuItemAccessiblePrivateStructOnce sync.Once
 
-func CheckMenuItemAccessiblePrivateStructSet() {
-	CheckMenuItemAccessiblePrivateStructOnce.Do(func() {
-		CheckMenuItemAccessiblePrivateStruct = gi.StructNew("Gtk", "CheckMenuItemAccessiblePrivate")
+func checkMenuItemAccessiblePrivateStructSet() {
+	checkMenuItemAccessiblePrivateStructOnce.Do(func() {
+		checkMenuItemAccessiblePrivateStruct = gi.StructNew("Gtk", "CheckMenuItemAccessiblePrivate")
 	})
 }
 
@@ -1711,12 +1747,12 @@ type CheckMenuItemAccessiblePrivate struct {
 	native uintptr
 }
 
-var CheckMenuItemClassStruct *gi.Struct
-var CheckMenuItemClassStructOnce sync.Once
+var checkMenuItemClassStruct *gi.Struct
+var checkMenuItemClassStructOnce sync.Once
 
-func CheckMenuItemClassStructSet() {
-	CheckMenuItemClassStructOnce.Do(func() {
-		CheckMenuItemClassStruct = gi.StructNew("Gtk", "CheckMenuItemClass")
+func checkMenuItemClassStructSet() {
+	checkMenuItemClassStructOnce.Do(func() {
+		checkMenuItemClassStruct = gi.StructNew("Gtk", "CheckMenuItemClass")
 	})
 }
 
@@ -1731,12 +1767,12 @@ type CheckMenuItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CheckMenuItemPrivateStruct *gi.Struct
-var CheckMenuItemPrivateStructOnce sync.Once
+var checkMenuItemPrivateStruct *gi.Struct
+var checkMenuItemPrivateStructOnce sync.Once
 
-func CheckMenuItemPrivateStructSet() {
-	CheckMenuItemPrivateStructOnce.Do(func() {
-		CheckMenuItemPrivateStruct = gi.StructNew("Gtk", "CheckMenuItemPrivate")
+func checkMenuItemPrivateStructSet() {
+	checkMenuItemPrivateStructOnce.Do(func() {
+		checkMenuItemPrivateStruct = gi.StructNew("Gtk", "CheckMenuItemPrivate")
 	})
 }
 
@@ -1744,12 +1780,12 @@ type CheckMenuItemPrivate struct {
 	native uintptr
 }
 
-var ColorButtonClassStruct *gi.Struct
-var ColorButtonClassStructOnce sync.Once
+var colorButtonClassStruct *gi.Struct
+var colorButtonClassStructOnce sync.Once
 
-func ColorButtonClassStructSet() {
-	ColorButtonClassStructOnce.Do(func() {
-		ColorButtonClassStruct = gi.StructNew("Gtk", "ColorButtonClass")
+func colorButtonClassStructSet() {
+	colorButtonClassStructOnce.Do(func() {
+		colorButtonClassStruct = gi.StructNew("Gtk", "ColorButtonClass")
 	})
 }
 
@@ -1763,12 +1799,12 @@ type ColorButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ColorButtonPrivateStruct *gi.Struct
-var ColorButtonPrivateStructOnce sync.Once
+var colorButtonPrivateStruct *gi.Struct
+var colorButtonPrivateStructOnce sync.Once
 
-func ColorButtonPrivateStructSet() {
-	ColorButtonPrivateStructOnce.Do(func() {
-		ColorButtonPrivateStruct = gi.StructNew("Gtk", "ColorButtonPrivate")
+func colorButtonPrivateStructSet() {
+	colorButtonPrivateStructOnce.Do(func() {
+		colorButtonPrivateStruct = gi.StructNew("Gtk", "ColorButtonPrivate")
 	})
 }
 
@@ -1776,12 +1812,12 @@ type ColorButtonPrivate struct {
 	native uintptr
 }
 
-var ColorChooserDialogClassStruct *gi.Struct
-var ColorChooserDialogClassStructOnce sync.Once
+var colorChooserDialogClassStruct *gi.Struct
+var colorChooserDialogClassStructOnce sync.Once
 
-func ColorChooserDialogClassStructSet() {
-	ColorChooserDialogClassStructOnce.Do(func() {
-		ColorChooserDialogClassStruct = gi.StructNew("Gtk", "ColorChooserDialogClass")
+func colorChooserDialogClassStructSet() {
+	colorChooserDialogClassStructOnce.Do(func() {
+		colorChooserDialogClassStruct = gi.StructNew("Gtk", "ColorChooserDialogClass")
 	})
 }
 
@@ -1794,12 +1830,12 @@ type ColorChooserDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ColorChooserDialogPrivateStruct *gi.Struct
-var ColorChooserDialogPrivateStructOnce sync.Once
+var colorChooserDialogPrivateStruct *gi.Struct
+var colorChooserDialogPrivateStructOnce sync.Once
 
-func ColorChooserDialogPrivateStructSet() {
-	ColorChooserDialogPrivateStructOnce.Do(func() {
-		ColorChooserDialogPrivateStruct = gi.StructNew("Gtk", "ColorChooserDialogPrivate")
+func colorChooserDialogPrivateStructSet() {
+	colorChooserDialogPrivateStructOnce.Do(func() {
+		colorChooserDialogPrivateStruct = gi.StructNew("Gtk", "ColorChooserDialogPrivate")
 	})
 }
 
@@ -1807,12 +1843,12 @@ type ColorChooserDialogPrivate struct {
 	native uintptr
 }
 
-var ColorChooserInterfaceStruct *gi.Struct
-var ColorChooserInterfaceStructOnce sync.Once
+var colorChooserInterfaceStruct *gi.Struct
+var colorChooserInterfaceStructOnce sync.Once
 
-func ColorChooserInterfaceStructSet() {
-	ColorChooserInterfaceStructOnce.Do(func() {
-		ColorChooserInterfaceStruct = gi.StructNew("Gtk", "ColorChooserInterface")
+func colorChooserInterfaceStructSet() {
+	colorChooserInterfaceStructOnce.Do(func() {
+		colorChooserInterfaceStruct = gi.StructNew("Gtk", "ColorChooserInterface")
 	})
 }
 
@@ -1826,12 +1862,12 @@ type ColorChooserInterface struct {
 	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
-var ColorChooserWidgetClassStruct *gi.Struct
-var ColorChooserWidgetClassStructOnce sync.Once
+var colorChooserWidgetClassStruct *gi.Struct
+var colorChooserWidgetClassStructOnce sync.Once
 
-func ColorChooserWidgetClassStructSet() {
-	ColorChooserWidgetClassStructOnce.Do(func() {
-		ColorChooserWidgetClassStruct = gi.StructNew("Gtk", "ColorChooserWidgetClass")
+func colorChooserWidgetClassStructSet() {
+	colorChooserWidgetClassStructOnce.Do(func() {
+		colorChooserWidgetClassStruct = gi.StructNew("Gtk", "ColorChooserWidgetClass")
 	})
 }
 
@@ -1848,12 +1884,12 @@ type ColorChooserWidgetClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var ColorChooserWidgetPrivateStruct *gi.Struct
-var ColorChooserWidgetPrivateStructOnce sync.Once
+var colorChooserWidgetPrivateStruct *gi.Struct
+var colorChooserWidgetPrivateStructOnce sync.Once
 
-func ColorChooserWidgetPrivateStructSet() {
-	ColorChooserWidgetPrivateStructOnce.Do(func() {
-		ColorChooserWidgetPrivateStruct = gi.StructNew("Gtk", "ColorChooserWidgetPrivate")
+func colorChooserWidgetPrivateStructSet() {
+	colorChooserWidgetPrivateStructOnce.Do(func() {
+		colorChooserWidgetPrivateStruct = gi.StructNew("Gtk", "ColorChooserWidgetPrivate")
 	})
 }
 
@@ -1861,12 +1897,12 @@ type ColorChooserWidgetPrivate struct {
 	native uintptr
 }
 
-var ColorSelectionClassStruct *gi.Struct
-var ColorSelectionClassStructOnce sync.Once
+var colorSelectionClassStruct *gi.Struct
+var colorSelectionClassStructOnce sync.Once
 
-func ColorSelectionClassStructSet() {
-	ColorSelectionClassStructOnce.Do(func() {
-		ColorSelectionClassStruct = gi.StructNew("Gtk", "ColorSelectionClass")
+func colorSelectionClassStructSet() {
+	colorSelectionClassStructOnce.Do(func() {
+		colorSelectionClassStruct = gi.StructNew("Gtk", "ColorSelectionClass")
 	})
 }
 
@@ -1880,12 +1916,12 @@ type ColorSelectionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ColorSelectionDialogClassStruct *gi.Struct
-var ColorSelectionDialogClassStructOnce sync.Once
+var colorSelectionDialogClassStruct *gi.Struct
+var colorSelectionDialogClassStructOnce sync.Once
 
-func ColorSelectionDialogClassStructSet() {
-	ColorSelectionDialogClassStructOnce.Do(func() {
-		ColorSelectionDialogClassStruct = gi.StructNew("Gtk", "ColorSelectionDialogClass")
+func colorSelectionDialogClassStructSet() {
+	colorSelectionDialogClassStructOnce.Do(func() {
+		colorSelectionDialogClassStruct = gi.StructNew("Gtk", "ColorSelectionDialogClass")
 	})
 }
 
@@ -1898,12 +1934,12 @@ type ColorSelectionDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ColorSelectionDialogPrivateStruct *gi.Struct
-var ColorSelectionDialogPrivateStructOnce sync.Once
+var colorSelectionDialogPrivateStruct *gi.Struct
+var colorSelectionDialogPrivateStructOnce sync.Once
 
-func ColorSelectionDialogPrivateStructSet() {
-	ColorSelectionDialogPrivateStructOnce.Do(func() {
-		ColorSelectionDialogPrivateStruct = gi.StructNew("Gtk", "ColorSelectionDialogPrivate")
+func colorSelectionDialogPrivateStructSet() {
+	colorSelectionDialogPrivateStructOnce.Do(func() {
+		colorSelectionDialogPrivateStruct = gi.StructNew("Gtk", "ColorSelectionDialogPrivate")
 	})
 }
 
@@ -1911,12 +1947,12 @@ type ColorSelectionDialogPrivate struct {
 	native uintptr
 }
 
-var ColorSelectionPrivateStruct *gi.Struct
-var ColorSelectionPrivateStructOnce sync.Once
+var colorSelectionPrivateStruct *gi.Struct
+var colorSelectionPrivateStructOnce sync.Once
 
-func ColorSelectionPrivateStructSet() {
-	ColorSelectionPrivateStructOnce.Do(func() {
-		ColorSelectionPrivateStruct = gi.StructNew("Gtk", "ColorSelectionPrivate")
+func colorSelectionPrivateStructSet() {
+	colorSelectionPrivateStructOnce.Do(func() {
+		colorSelectionPrivateStruct = gi.StructNew("Gtk", "ColorSelectionPrivate")
 	})
 }
 
@@ -1924,12 +1960,12 @@ type ColorSelectionPrivate struct {
 	native uintptr
 }
 
-var ComboBoxAccessibleClassStruct *gi.Struct
-var ComboBoxAccessibleClassStructOnce sync.Once
+var comboBoxAccessibleClassStruct *gi.Struct
+var comboBoxAccessibleClassStructOnce sync.Once
 
-func ComboBoxAccessibleClassStructSet() {
-	ComboBoxAccessibleClassStructOnce.Do(func() {
-		ComboBoxAccessibleClassStruct = gi.StructNew("Gtk", "ComboBoxAccessibleClass")
+func comboBoxAccessibleClassStructSet() {
+	comboBoxAccessibleClassStructOnce.Do(func() {
+		comboBoxAccessibleClassStruct = gi.StructNew("Gtk", "ComboBoxAccessibleClass")
 	})
 }
 
@@ -1938,12 +1974,12 @@ type ComboBoxAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var ComboBoxAccessiblePrivateStruct *gi.Struct
-var ComboBoxAccessiblePrivateStructOnce sync.Once
+var comboBoxAccessiblePrivateStruct *gi.Struct
+var comboBoxAccessiblePrivateStructOnce sync.Once
 
-func ComboBoxAccessiblePrivateStructSet() {
-	ComboBoxAccessiblePrivateStructOnce.Do(func() {
-		ComboBoxAccessiblePrivateStruct = gi.StructNew("Gtk", "ComboBoxAccessiblePrivate")
+func comboBoxAccessiblePrivateStructSet() {
+	comboBoxAccessiblePrivateStructOnce.Do(func() {
+		comboBoxAccessiblePrivateStruct = gi.StructNew("Gtk", "ComboBoxAccessiblePrivate")
 	})
 }
 
@@ -1951,12 +1987,12 @@ type ComboBoxAccessiblePrivate struct {
 	native uintptr
 }
 
-var ComboBoxClassStruct *gi.Struct
-var ComboBoxClassStructOnce sync.Once
+var comboBoxClassStruct *gi.Struct
+var comboBoxClassStructOnce sync.Once
 
-func ComboBoxClassStructSet() {
-	ComboBoxClassStructOnce.Do(func() {
-		ComboBoxClassStruct = gi.StructNew("Gtk", "ComboBoxClass")
+func comboBoxClassStructSet() {
+	comboBoxClassStructOnce.Do(func() {
+		comboBoxClassStruct = gi.StructNew("Gtk", "ComboBoxClass")
 	})
 }
 
@@ -1970,12 +2006,12 @@ type ComboBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
 }
 
-var ComboBoxPrivateStruct *gi.Struct
-var ComboBoxPrivateStructOnce sync.Once
+var comboBoxPrivateStruct *gi.Struct
+var comboBoxPrivateStructOnce sync.Once
 
-func ComboBoxPrivateStructSet() {
-	ComboBoxPrivateStructOnce.Do(func() {
-		ComboBoxPrivateStruct = gi.StructNew("Gtk", "ComboBoxPrivate")
+func comboBoxPrivateStructSet() {
+	comboBoxPrivateStructOnce.Do(func() {
+		comboBoxPrivateStruct = gi.StructNew("Gtk", "ComboBoxPrivate")
 	})
 }
 
@@ -1983,12 +2019,12 @@ type ComboBoxPrivate struct {
 	native uintptr
 }
 
-var ComboBoxTextClassStruct *gi.Struct
-var ComboBoxTextClassStructOnce sync.Once
+var comboBoxTextClassStruct *gi.Struct
+var comboBoxTextClassStructOnce sync.Once
 
-func ComboBoxTextClassStructSet() {
-	ComboBoxTextClassStructOnce.Do(func() {
-		ComboBoxTextClassStruct = gi.StructNew("Gtk", "ComboBoxTextClass")
+func comboBoxTextClassStructSet() {
+	comboBoxTextClassStructOnce.Do(func() {
+		comboBoxTextClassStruct = gi.StructNew("Gtk", "ComboBoxTextClass")
 	})
 }
 
@@ -2001,12 +2037,12 @@ type ComboBoxTextClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ComboBoxTextPrivateStruct *gi.Struct
-var ComboBoxTextPrivateStructOnce sync.Once
+var comboBoxTextPrivateStruct *gi.Struct
+var comboBoxTextPrivateStructOnce sync.Once
 
-func ComboBoxTextPrivateStructSet() {
-	ComboBoxTextPrivateStructOnce.Do(func() {
-		ComboBoxTextPrivateStruct = gi.StructNew("Gtk", "ComboBoxTextPrivate")
+func comboBoxTextPrivateStructSet() {
+	comboBoxTextPrivateStructOnce.Do(func() {
+		comboBoxTextPrivateStruct = gi.StructNew("Gtk", "ComboBoxTextPrivate")
 	})
 }
 
@@ -2014,12 +2050,12 @@ type ComboBoxTextPrivate struct {
 	native uintptr
 }
 
-var ContainerAccessibleClassStruct *gi.Struct
-var ContainerAccessibleClassStructOnce sync.Once
+var containerAccessibleClassStruct *gi.Struct
+var containerAccessibleClassStructOnce sync.Once
 
-func ContainerAccessibleClassStructSet() {
-	ContainerAccessibleClassStructOnce.Do(func() {
-		ContainerAccessibleClassStruct = gi.StructNew("Gtk", "ContainerAccessibleClass")
+func containerAccessibleClassStructSet() {
+	containerAccessibleClassStructOnce.Do(func() {
+		containerAccessibleClassStruct = gi.StructNew("Gtk", "ContainerAccessibleClass")
 	})
 }
 
@@ -2030,12 +2066,12 @@ type ContainerAccessibleClass struct {
 	// UNSUPPORTED : C value 'remove_gtk' : missing Type
 }
 
-var ContainerAccessiblePrivateStruct *gi.Struct
-var ContainerAccessiblePrivateStructOnce sync.Once
+var containerAccessiblePrivateStruct *gi.Struct
+var containerAccessiblePrivateStructOnce sync.Once
 
-func ContainerAccessiblePrivateStructSet() {
-	ContainerAccessiblePrivateStructOnce.Do(func() {
-		ContainerAccessiblePrivateStruct = gi.StructNew("Gtk", "ContainerAccessiblePrivate")
+func containerAccessiblePrivateStructSet() {
+	containerAccessiblePrivateStructOnce.Do(func() {
+		containerAccessiblePrivateStruct = gi.StructNew("Gtk", "ContainerAccessiblePrivate")
 	})
 }
 
@@ -2043,12 +2079,12 @@ type ContainerAccessiblePrivate struct {
 	native uintptr
 }
 
-var ContainerCellAccessibleClassStruct *gi.Struct
-var ContainerCellAccessibleClassStructOnce sync.Once
+var containerCellAccessibleClassStruct *gi.Struct
+var containerCellAccessibleClassStructOnce sync.Once
 
-func ContainerCellAccessibleClassStructSet() {
-	ContainerCellAccessibleClassStructOnce.Do(func() {
-		ContainerCellAccessibleClassStruct = gi.StructNew("Gtk", "ContainerCellAccessibleClass")
+func containerCellAccessibleClassStructSet() {
+	containerCellAccessibleClassStructOnce.Do(func() {
+		containerCellAccessibleClassStruct = gi.StructNew("Gtk", "ContainerCellAccessibleClass")
 	})
 }
 
@@ -2057,12 +2093,12 @@ type ContainerCellAccessibleClass struct {
 	ParentClass *CellAccessibleClass
 }
 
-var ContainerCellAccessiblePrivateStruct *gi.Struct
-var ContainerCellAccessiblePrivateStructOnce sync.Once
+var containerCellAccessiblePrivateStruct *gi.Struct
+var containerCellAccessiblePrivateStructOnce sync.Once
 
-func ContainerCellAccessiblePrivateStructSet() {
-	ContainerCellAccessiblePrivateStructOnce.Do(func() {
-		ContainerCellAccessiblePrivateStruct = gi.StructNew("Gtk", "ContainerCellAccessiblePrivate")
+func containerCellAccessiblePrivateStructSet() {
+	containerCellAccessiblePrivateStructOnce.Do(func() {
+		containerCellAccessiblePrivateStruct = gi.StructNew("Gtk", "ContainerCellAccessiblePrivate")
 	})
 }
 
@@ -2070,12 +2106,12 @@ type ContainerCellAccessiblePrivate struct {
 	native uintptr
 }
 
-var ContainerClassStruct *gi.Struct
-var ContainerClassStructOnce sync.Once
+var containerClassStruct *gi.Struct
+var containerClassStructOnce sync.Once
 
-func ContainerClassStructSet() {
-	ContainerClassStructOnce.Do(func() {
-		ContainerClassStruct = gi.StructNew("Gtk", "ContainerClass")
+func containerClassStructSet() {
+	containerClassStructOnce.Do(func() {
+		containerClassStruct = gi.StructNew("Gtk", "ContainerClass")
 	})
 }
 
@@ -2104,6 +2140,15 @@ type ContainerClass struct {
 
 // UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
 
+var containerClassHandleBorderWidthFunction *gi.Function
+var containerClassHandleBorderWidthFunctionOnce sync.Once
+
+func containerClassHandleBorderWidthFunctionSet() {
+	containerClassHandleBorderWidthFunctionOnce.Do(func() {
+		containerClassHandleBorderWidthFunction = gi.FunctionInvokerNew("Gtk", "handle_border_width")
+	})
+}
+
 var handleBorderWidthContainerClassInvoker *gi.Function
 
 // HandleBorderWidth is a representation of the C type gtk_container_class_handle_border_width.
@@ -2122,6 +2167,15 @@ func (recv *ContainerClass) HandleBorderWidth() {
 // UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' has no type
 
 // UNSUPPORTED : C value 'gtk_container_class_install_child_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+
+var containerClassListChildPropertiesFunction *gi.Function
+var containerClassListChildPropertiesFunctionOnce sync.Once
+
+func containerClassListChildPropertiesFunctionSet() {
+	containerClassListChildPropertiesFunctionOnce.Do(func() {
+		containerClassListChildPropertiesFunction = gi.FunctionInvokerNew("Gtk", "list_child_properties")
+	})
+}
 
 var listChildPropertiesContainerClassInvoker *gi.Function
 
@@ -2143,12 +2197,12 @@ func (recv *ContainerClass) ListChildProperties() uint32 {
 	return out0
 }
 
-var ContainerPrivateStruct *gi.Struct
-var ContainerPrivateStructOnce sync.Once
+var containerPrivateStruct *gi.Struct
+var containerPrivateStructOnce sync.Once
 
-func ContainerPrivateStructSet() {
-	ContainerPrivateStructOnce.Do(func() {
-		ContainerPrivateStruct = gi.StructNew("Gtk", "ContainerPrivate")
+func containerPrivateStructSet() {
+	containerPrivateStructOnce.Do(func() {
+		containerPrivateStruct = gi.StructNew("Gtk", "ContainerPrivate")
 	})
 }
 
@@ -2156,12 +2210,12 @@ type ContainerPrivate struct {
 	native uintptr
 }
 
-var CssProviderClassStruct *gi.Struct
-var CssProviderClassStructOnce sync.Once
+var cssProviderClassStruct *gi.Struct
+var cssProviderClassStructOnce sync.Once
 
-func CssProviderClassStructSet() {
-	CssProviderClassStructOnce.Do(func() {
-		CssProviderClassStruct = gi.StructNew("Gtk", "CssProviderClass")
+func cssProviderClassStructSet() {
+	cssProviderClassStructOnce.Do(func() {
+		cssProviderClassStruct = gi.StructNew("Gtk", "CssProviderClass")
 	})
 }
 
@@ -2174,12 +2228,12 @@ type CssProviderClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var CssProviderPrivateStruct *gi.Struct
-var CssProviderPrivateStructOnce sync.Once
+var cssProviderPrivateStruct *gi.Struct
+var cssProviderPrivateStructOnce sync.Once
 
-func CssProviderPrivateStructSet() {
-	CssProviderPrivateStructOnce.Do(func() {
-		CssProviderPrivateStruct = gi.StructNew("Gtk", "CssProviderPrivate")
+func cssProviderPrivateStructSet() {
+	cssProviderPrivateStructOnce.Do(func() {
+		cssProviderPrivateStruct = gi.StructNew("Gtk", "CssProviderPrivate")
 	})
 }
 
@@ -2187,17 +2241,26 @@ type CssProviderPrivate struct {
 	native uintptr
 }
 
-var CssSectionStruct *gi.Struct
-var CssSectionStructOnce sync.Once
+var cssSectionStruct *gi.Struct
+var cssSectionStructOnce sync.Once
 
-func CssSectionStructSet() {
-	CssSectionStructOnce.Do(func() {
-		CssSectionStruct = gi.StructNew("Gtk", "CssSection")
+func cssSectionStructSet() {
+	cssSectionStructOnce.Do(func() {
+		cssSectionStruct = gi.StructNew("Gtk", "CssSection")
 	})
 }
 
 type CssSection struct {
 	native uintptr
+}
+
+var cssSectionGetEndLineFunction *gi.Function
+var cssSectionGetEndLineFunctionOnce sync.Once
+
+func cssSectionGetEndLineFunctionSet() {
+	cssSectionGetEndLineFunctionOnce.Do(func() {
+		cssSectionGetEndLineFunction = gi.FunctionInvokerNew("Gtk", "get_end_line")
+	})
 }
 
 var getEndLineCssSectionInvoker *gi.Function
@@ -2216,6 +2279,15 @@ func (recv *CssSection) GetEndLine() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var cssSectionGetEndPositionFunction *gi.Function
+var cssSectionGetEndPositionFunctionOnce sync.Once
+
+func cssSectionGetEndPositionFunctionSet() {
+	cssSectionGetEndPositionFunctionOnce.Do(func() {
+		cssSectionGetEndPositionFunction = gi.FunctionInvokerNew("Gtk", "get_end_position")
+	})
 }
 
 var getEndPositionCssSectionInvoker *gi.Function
@@ -2238,6 +2310,15 @@ func (recv *CssSection) GetEndPosition() uint32 {
 
 // UNSUPPORTED : C value 'gtk_css_section_get_file' : return type 'Gio.File' not supported
 
+var cssSectionGetParentFunction *gi.Function
+var cssSectionGetParentFunctionOnce sync.Once
+
+func cssSectionGetParentFunctionSet() {
+	cssSectionGetParentFunctionOnce.Do(func() {
+		cssSectionGetParentFunction = gi.FunctionInvokerNew("Gtk", "get_parent")
+	})
+}
+
 var getParentCssSectionInvoker *gi.Function
 
 // GetParent is a representation of the C type gtk_css_section_get_parent.
@@ -2258,6 +2339,15 @@ func (recv *CssSection) GetParent() *CssSection {
 
 // UNSUPPORTED : C value 'gtk_css_section_get_section_type' : return type 'CssSectionType' not supported
 
+var cssSectionGetStartLineFunction *gi.Function
+var cssSectionGetStartLineFunctionOnce sync.Once
+
+func cssSectionGetStartLineFunctionSet() {
+	cssSectionGetStartLineFunctionOnce.Do(func() {
+		cssSectionGetStartLineFunction = gi.FunctionInvokerNew("Gtk", "get_start_line")
+	})
+}
+
 var getStartLineCssSectionInvoker *gi.Function
 
 // GetStartLine is a representation of the C type gtk_css_section_get_start_line.
@@ -2274,6 +2364,15 @@ func (recv *CssSection) GetStartLine() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var cssSectionGetStartPositionFunction *gi.Function
+var cssSectionGetStartPositionFunctionOnce sync.Once
+
+func cssSectionGetStartPositionFunctionSet() {
+	cssSectionGetStartPositionFunctionOnce.Do(func() {
+		cssSectionGetStartPositionFunction = gi.FunctionInvokerNew("Gtk", "get_start_position")
+	})
 }
 
 var getStartPositionCssSectionInvoker *gi.Function
@@ -2294,6 +2393,15 @@ func (recv *CssSection) GetStartPosition() uint32 {
 	return retGo
 }
 
+var cssSectionRefFunction *gi.Function
+var cssSectionRefFunctionOnce sync.Once
+
+func cssSectionRefFunctionSet() {
+	cssSectionRefFunctionOnce.Do(func() {
+		cssSectionRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
+
 var refCssSectionInvoker *gi.Function
 
 // Ref is a representation of the C type gtk_css_section_ref.
@@ -2312,6 +2420,15 @@ func (recv *CssSection) Ref() *CssSection {
 	return retGo
 }
 
+var cssSectionUnrefFunction *gi.Function
+var cssSectionUnrefFunctionOnce sync.Once
+
+func cssSectionUnrefFunctionSet() {
+	cssSectionUnrefFunctionOnce.Do(func() {
+		cssSectionUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefCssSectionInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_css_section_unref.
@@ -2327,12 +2444,12 @@ func (recv *CssSection) Unref() {
 
 }
 
-var DialogClassStruct *gi.Struct
-var DialogClassStructOnce sync.Once
+var dialogClassStruct *gi.Struct
+var dialogClassStructOnce sync.Once
 
-func DialogClassStructSet() {
-	DialogClassStructOnce.Do(func() {
-		DialogClassStruct = gi.StructNew("Gtk", "DialogClass")
+func dialogClassStructSet() {
+	dialogClassStructOnce.Do(func() {
+		dialogClassStruct = gi.StructNew("Gtk", "DialogClass")
 	})
 }
 
@@ -2347,12 +2464,12 @@ type DialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var DialogPrivateStruct *gi.Struct
-var DialogPrivateStructOnce sync.Once
+var dialogPrivateStruct *gi.Struct
+var dialogPrivateStructOnce sync.Once
 
-func DialogPrivateStructSet() {
-	DialogPrivateStructOnce.Do(func() {
-		DialogPrivateStruct = gi.StructNew("Gtk", "DialogPrivate")
+func dialogPrivateStructSet() {
+	dialogPrivateStructOnce.Do(func() {
+		dialogPrivateStruct = gi.StructNew("Gtk", "DialogPrivate")
 	})
 }
 
@@ -2360,12 +2477,12 @@ type DialogPrivate struct {
 	native uintptr
 }
 
-var DrawingAreaClassStruct *gi.Struct
-var DrawingAreaClassStructOnce sync.Once
+var drawingAreaClassStruct *gi.Struct
+var drawingAreaClassStructOnce sync.Once
 
-func DrawingAreaClassStructSet() {
-	DrawingAreaClassStructOnce.Do(func() {
-		DrawingAreaClassStruct = gi.StructNew("Gtk", "DrawingAreaClass")
+func drawingAreaClassStructSet() {
+	drawingAreaClassStructOnce.Do(func() {
+		drawingAreaClassStruct = gi.StructNew("Gtk", "DrawingAreaClass")
 	})
 }
 
@@ -2378,12 +2495,12 @@ type DrawingAreaClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var EditableInterfaceStruct *gi.Struct
-var EditableInterfaceStructOnce sync.Once
+var editableInterfaceStruct *gi.Struct
+var editableInterfaceStructOnce sync.Once
 
-func EditableInterfaceStructSet() {
-	EditableInterfaceStructOnce.Do(func() {
-		EditableInterfaceStruct = gi.StructNew("Gtk", "EditableInterface")
+func editableInterfaceStructSet() {
+	editableInterfaceStructOnce.Do(func() {
+		editableInterfaceStruct = gi.StructNew("Gtk", "EditableInterface")
 	})
 }
 
@@ -2402,12 +2519,12 @@ type EditableInterface struct {
 	// UNSUPPORTED : C value 'get_position' : missing Type
 }
 
-var EntryAccessibleClassStruct *gi.Struct
-var EntryAccessibleClassStructOnce sync.Once
+var entryAccessibleClassStruct *gi.Struct
+var entryAccessibleClassStructOnce sync.Once
 
-func EntryAccessibleClassStructSet() {
-	EntryAccessibleClassStructOnce.Do(func() {
-		EntryAccessibleClassStruct = gi.StructNew("Gtk", "EntryAccessibleClass")
+func entryAccessibleClassStructSet() {
+	entryAccessibleClassStructOnce.Do(func() {
+		entryAccessibleClassStruct = gi.StructNew("Gtk", "EntryAccessibleClass")
 	})
 }
 
@@ -2416,12 +2533,12 @@ type EntryAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var EntryAccessiblePrivateStruct *gi.Struct
-var EntryAccessiblePrivateStructOnce sync.Once
+var entryAccessiblePrivateStruct *gi.Struct
+var entryAccessiblePrivateStructOnce sync.Once
 
-func EntryAccessiblePrivateStructSet() {
-	EntryAccessiblePrivateStructOnce.Do(func() {
-		EntryAccessiblePrivateStruct = gi.StructNew("Gtk", "EntryAccessiblePrivate")
+func entryAccessiblePrivateStructSet() {
+	entryAccessiblePrivateStructOnce.Do(func() {
+		entryAccessiblePrivateStruct = gi.StructNew("Gtk", "EntryAccessiblePrivate")
 	})
 }
 
@@ -2429,12 +2546,12 @@ type EntryAccessiblePrivate struct {
 	native uintptr
 }
 
-var EntryBufferClassStruct *gi.Struct
-var EntryBufferClassStructOnce sync.Once
+var entryBufferClassStruct *gi.Struct
+var entryBufferClassStructOnce sync.Once
 
-func EntryBufferClassStructSet() {
-	EntryBufferClassStructOnce.Do(func() {
-		EntryBufferClassStruct = gi.StructNew("Gtk", "EntryBufferClass")
+func entryBufferClassStructSet() {
+	entryBufferClassStructOnce.Do(func() {
+		entryBufferClassStruct = gi.StructNew("Gtk", "EntryBufferClass")
 	})
 }
 
@@ -2457,12 +2574,12 @@ type EntryBufferClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var EntryBufferPrivateStruct *gi.Struct
-var EntryBufferPrivateStructOnce sync.Once
+var entryBufferPrivateStruct *gi.Struct
+var entryBufferPrivateStructOnce sync.Once
 
-func EntryBufferPrivateStructSet() {
-	EntryBufferPrivateStructOnce.Do(func() {
-		EntryBufferPrivateStruct = gi.StructNew("Gtk", "EntryBufferPrivate")
+func entryBufferPrivateStructSet() {
+	entryBufferPrivateStructOnce.Do(func() {
+		entryBufferPrivateStruct = gi.StructNew("Gtk", "EntryBufferPrivate")
 	})
 }
 
@@ -2470,12 +2587,12 @@ type EntryBufferPrivate struct {
 	native uintptr
 }
 
-var EntryClassStruct *gi.Struct
-var EntryClassStructOnce sync.Once
+var entryClassStruct *gi.Struct
+var entryClassStructOnce sync.Once
 
-func EntryClassStructSet() {
-	EntryClassStructOnce.Do(func() {
-		EntryClassStruct = gi.StructNew("Gtk", "EntryClass")
+func entryClassStructSet() {
+	entryClassStructOnce.Do(func() {
+		entryClassStruct = gi.StructNew("Gtk", "EntryClass")
 	})
 }
 
@@ -2503,12 +2620,12 @@ type EntryClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
 }
 
-var EntryCompletionClassStruct *gi.Struct
-var EntryCompletionClassStructOnce sync.Once
+var entryCompletionClassStruct *gi.Struct
+var entryCompletionClassStructOnce sync.Once
 
-func EntryCompletionClassStructSet() {
-	EntryCompletionClassStructOnce.Do(func() {
-		EntryCompletionClassStruct = gi.StructNew("Gtk", "EntryCompletionClass")
+func entryCompletionClassStructSet() {
+	entryCompletionClassStructOnce.Do(func() {
+		entryCompletionClassStruct = gi.StructNew("Gtk", "EntryCompletionClass")
 	})
 }
 
@@ -2525,12 +2642,12 @@ type EntryCompletionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
 }
 
-var EntryCompletionPrivateStruct *gi.Struct
-var EntryCompletionPrivateStructOnce sync.Once
+var entryCompletionPrivateStruct *gi.Struct
+var entryCompletionPrivateStructOnce sync.Once
 
-func EntryCompletionPrivateStructSet() {
-	EntryCompletionPrivateStructOnce.Do(func() {
-		EntryCompletionPrivateStruct = gi.StructNew("Gtk", "EntryCompletionPrivate")
+func entryCompletionPrivateStructSet() {
+	entryCompletionPrivateStructOnce.Do(func() {
+		entryCompletionPrivateStruct = gi.StructNew("Gtk", "EntryCompletionPrivate")
 	})
 }
 
@@ -2538,12 +2655,12 @@ type EntryCompletionPrivate struct {
 	native uintptr
 }
 
-var EntryPrivateStruct *gi.Struct
-var EntryPrivateStructOnce sync.Once
+var entryPrivateStruct *gi.Struct
+var entryPrivateStructOnce sync.Once
 
-func EntryPrivateStructSet() {
-	EntryPrivateStructOnce.Do(func() {
-		EntryPrivateStruct = gi.StructNew("Gtk", "EntryPrivate")
+func entryPrivateStructSet() {
+	entryPrivateStructOnce.Do(func() {
+		entryPrivateStruct = gi.StructNew("Gtk", "EntryPrivate")
 	})
 }
 
@@ -2551,12 +2668,12 @@ type EntryPrivate struct {
 	native uintptr
 }
 
-var EventBoxClassStruct *gi.Struct
-var EventBoxClassStructOnce sync.Once
+var eventBoxClassStruct *gi.Struct
+var eventBoxClassStructOnce sync.Once
 
-func EventBoxClassStructSet() {
-	EventBoxClassStructOnce.Do(func() {
-		EventBoxClassStruct = gi.StructNew("Gtk", "EventBoxClass")
+func eventBoxClassStructSet() {
+	eventBoxClassStructOnce.Do(func() {
+		eventBoxClassStruct = gi.StructNew("Gtk", "EventBoxClass")
 	})
 }
 
@@ -2569,12 +2686,12 @@ type EventBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var EventBoxPrivateStruct *gi.Struct
-var EventBoxPrivateStructOnce sync.Once
+var eventBoxPrivateStruct *gi.Struct
+var eventBoxPrivateStructOnce sync.Once
 
-func EventBoxPrivateStructSet() {
-	EventBoxPrivateStructOnce.Do(func() {
-		EventBoxPrivateStruct = gi.StructNew("Gtk", "EventBoxPrivate")
+func eventBoxPrivateStructSet() {
+	eventBoxPrivateStructOnce.Do(func() {
+		eventBoxPrivateStruct = gi.StructNew("Gtk", "EventBoxPrivate")
 	})
 }
 
@@ -2582,12 +2699,12 @@ type EventBoxPrivate struct {
 	native uintptr
 }
 
-var EventControllerClassStruct *gi.Struct
-var EventControllerClassStructOnce sync.Once
+var eventControllerClassStruct *gi.Struct
+var eventControllerClassStructOnce sync.Once
 
-func EventControllerClassStructSet() {
-	EventControllerClassStructOnce.Do(func() {
-		EventControllerClassStruct = gi.StructNew("Gtk", "EventControllerClass")
+func eventControllerClassStructSet() {
+	eventControllerClassStructOnce.Do(func() {
+		eventControllerClassStruct = gi.StructNew("Gtk", "EventControllerClass")
 	})
 }
 
@@ -2595,12 +2712,12 @@ type EventControllerClass struct {
 	native uintptr
 }
 
-var EventControllerKeyClassStruct *gi.Struct
-var EventControllerKeyClassStructOnce sync.Once
+var eventControllerKeyClassStruct *gi.Struct
+var eventControllerKeyClassStructOnce sync.Once
 
-func EventControllerKeyClassStructSet() {
-	EventControllerKeyClassStructOnce.Do(func() {
-		EventControllerKeyClassStruct = gi.StructNew("Gtk", "EventControllerKeyClass")
+func eventControllerKeyClassStructSet() {
+	eventControllerKeyClassStructOnce.Do(func() {
+		eventControllerKeyClassStruct = gi.StructNew("Gtk", "EventControllerKeyClass")
 	})
 }
 
@@ -2608,12 +2725,12 @@ type EventControllerKeyClass struct {
 	native uintptr
 }
 
-var EventControllerMotionClassStruct *gi.Struct
-var EventControllerMotionClassStructOnce sync.Once
+var eventControllerMotionClassStruct *gi.Struct
+var eventControllerMotionClassStructOnce sync.Once
 
-func EventControllerMotionClassStructSet() {
-	EventControllerMotionClassStructOnce.Do(func() {
-		EventControllerMotionClassStruct = gi.StructNew("Gtk", "EventControllerMotionClass")
+func eventControllerMotionClassStructSet() {
+	eventControllerMotionClassStructOnce.Do(func() {
+		eventControllerMotionClassStruct = gi.StructNew("Gtk", "EventControllerMotionClass")
 	})
 }
 
@@ -2621,12 +2738,12 @@ type EventControllerMotionClass struct {
 	native uintptr
 }
 
-var EventControllerScrollClassStruct *gi.Struct
-var EventControllerScrollClassStructOnce sync.Once
+var eventControllerScrollClassStruct *gi.Struct
+var eventControllerScrollClassStructOnce sync.Once
 
-func EventControllerScrollClassStructSet() {
-	EventControllerScrollClassStructOnce.Do(func() {
-		EventControllerScrollClassStruct = gi.StructNew("Gtk", "EventControllerScrollClass")
+func eventControllerScrollClassStructSet() {
+	eventControllerScrollClassStructOnce.Do(func() {
+		eventControllerScrollClassStruct = gi.StructNew("Gtk", "EventControllerScrollClass")
 	})
 }
 
@@ -2634,12 +2751,12 @@ type EventControllerScrollClass struct {
 	native uintptr
 }
 
-var ExpanderAccessibleClassStruct *gi.Struct
-var ExpanderAccessibleClassStructOnce sync.Once
+var expanderAccessibleClassStruct *gi.Struct
+var expanderAccessibleClassStructOnce sync.Once
 
-func ExpanderAccessibleClassStructSet() {
-	ExpanderAccessibleClassStructOnce.Do(func() {
-		ExpanderAccessibleClassStruct = gi.StructNew("Gtk", "ExpanderAccessibleClass")
+func expanderAccessibleClassStructSet() {
+	expanderAccessibleClassStructOnce.Do(func() {
+		expanderAccessibleClassStruct = gi.StructNew("Gtk", "ExpanderAccessibleClass")
 	})
 }
 
@@ -2648,12 +2765,12 @@ type ExpanderAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var ExpanderAccessiblePrivateStruct *gi.Struct
-var ExpanderAccessiblePrivateStructOnce sync.Once
+var expanderAccessiblePrivateStruct *gi.Struct
+var expanderAccessiblePrivateStructOnce sync.Once
 
-func ExpanderAccessiblePrivateStructSet() {
-	ExpanderAccessiblePrivateStructOnce.Do(func() {
-		ExpanderAccessiblePrivateStruct = gi.StructNew("Gtk", "ExpanderAccessiblePrivate")
+func expanderAccessiblePrivateStructSet() {
+	expanderAccessiblePrivateStructOnce.Do(func() {
+		expanderAccessiblePrivateStruct = gi.StructNew("Gtk", "ExpanderAccessiblePrivate")
 	})
 }
 
@@ -2661,12 +2778,12 @@ type ExpanderAccessiblePrivate struct {
 	native uintptr
 }
 
-var ExpanderClassStruct *gi.Struct
-var ExpanderClassStructOnce sync.Once
+var expanderClassStruct *gi.Struct
+var expanderClassStructOnce sync.Once
 
-func ExpanderClassStructSet() {
-	ExpanderClassStructOnce.Do(func() {
-		ExpanderClassStruct = gi.StructNew("Gtk", "ExpanderClass")
+func expanderClassStructSet() {
+	expanderClassStructOnce.Do(func() {
+		expanderClassStruct = gi.StructNew("Gtk", "ExpanderClass")
 	})
 }
 
@@ -2680,12 +2797,12 @@ type ExpanderClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ExpanderPrivateStruct *gi.Struct
-var ExpanderPrivateStructOnce sync.Once
+var expanderPrivateStruct *gi.Struct
+var expanderPrivateStructOnce sync.Once
 
-func ExpanderPrivateStructSet() {
-	ExpanderPrivateStructOnce.Do(func() {
-		ExpanderPrivateStruct = gi.StructNew("Gtk", "ExpanderPrivate")
+func expanderPrivateStructSet() {
+	expanderPrivateStructOnce.Do(func() {
+		expanderPrivateStruct = gi.StructNew("Gtk", "ExpanderPrivate")
 	})
 }
 
@@ -2693,12 +2810,12 @@ type ExpanderPrivate struct {
 	native uintptr
 }
 
-var FileChooserButtonClassStruct *gi.Struct
-var FileChooserButtonClassStructOnce sync.Once
+var fileChooserButtonClassStruct *gi.Struct
+var fileChooserButtonClassStructOnce sync.Once
 
-func FileChooserButtonClassStructSet() {
-	FileChooserButtonClassStructOnce.Do(func() {
-		FileChooserButtonClassStruct = gi.StructNew("Gtk", "FileChooserButtonClass")
+func fileChooserButtonClassStructSet() {
+	fileChooserButtonClassStructOnce.Do(func() {
+		fileChooserButtonClassStruct = gi.StructNew("Gtk", "FileChooserButtonClass")
 	})
 }
 
@@ -2712,12 +2829,12 @@ type FileChooserButtonClass struct {
 	// UNSUPPORTED : C value '__gtk_reserved4' : missing Type
 }
 
-var FileChooserButtonPrivateStruct *gi.Struct
-var FileChooserButtonPrivateStructOnce sync.Once
+var fileChooserButtonPrivateStruct *gi.Struct
+var fileChooserButtonPrivateStructOnce sync.Once
 
-func FileChooserButtonPrivateStructSet() {
-	FileChooserButtonPrivateStructOnce.Do(func() {
-		FileChooserButtonPrivateStruct = gi.StructNew("Gtk", "FileChooserButtonPrivate")
+func fileChooserButtonPrivateStructSet() {
+	fileChooserButtonPrivateStructOnce.Do(func() {
+		fileChooserButtonPrivateStruct = gi.StructNew("Gtk", "FileChooserButtonPrivate")
 	})
 }
 
@@ -2725,12 +2842,12 @@ type FileChooserButtonPrivate struct {
 	native uintptr
 }
 
-var FileChooserDialogClassStruct *gi.Struct
-var FileChooserDialogClassStructOnce sync.Once
+var fileChooserDialogClassStruct *gi.Struct
+var fileChooserDialogClassStructOnce sync.Once
 
-func FileChooserDialogClassStructSet() {
-	FileChooserDialogClassStructOnce.Do(func() {
-		FileChooserDialogClassStruct = gi.StructNew("Gtk", "FileChooserDialogClass")
+func fileChooserDialogClassStructSet() {
+	fileChooserDialogClassStructOnce.Do(func() {
+		fileChooserDialogClassStruct = gi.StructNew("Gtk", "FileChooserDialogClass")
 	})
 }
 
@@ -2743,12 +2860,12 @@ type FileChooserDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FileChooserDialogPrivateStruct *gi.Struct
-var FileChooserDialogPrivateStructOnce sync.Once
+var fileChooserDialogPrivateStruct *gi.Struct
+var fileChooserDialogPrivateStructOnce sync.Once
 
-func FileChooserDialogPrivateStructSet() {
-	FileChooserDialogPrivateStructOnce.Do(func() {
-		FileChooserDialogPrivateStruct = gi.StructNew("Gtk", "FileChooserDialogPrivate")
+func fileChooserDialogPrivateStructSet() {
+	fileChooserDialogPrivateStructOnce.Do(func() {
+		fileChooserDialogPrivateStruct = gi.StructNew("Gtk", "FileChooserDialogPrivate")
 	})
 }
 
@@ -2756,12 +2873,12 @@ type FileChooserDialogPrivate struct {
 	native uintptr
 }
 
-var FileChooserNativeClassStruct *gi.Struct
-var FileChooserNativeClassStructOnce sync.Once
+var fileChooserNativeClassStruct *gi.Struct
+var fileChooserNativeClassStructOnce sync.Once
 
-func FileChooserNativeClassStructSet() {
-	FileChooserNativeClassStructOnce.Do(func() {
-		FileChooserNativeClassStruct = gi.StructNew("Gtk", "FileChooserNativeClass")
+func fileChooserNativeClassStructSet() {
+	fileChooserNativeClassStructOnce.Do(func() {
+		fileChooserNativeClassStruct = gi.StructNew("Gtk", "FileChooserNativeClass")
 	})
 }
 
@@ -2770,12 +2887,12 @@ type FileChooserNativeClass struct {
 	ParentClass *NativeDialogClass
 }
 
-var FileChooserWidgetClassStruct *gi.Struct
-var FileChooserWidgetClassStructOnce sync.Once
+var fileChooserWidgetClassStruct *gi.Struct
+var fileChooserWidgetClassStructOnce sync.Once
 
-func FileChooserWidgetClassStructSet() {
-	FileChooserWidgetClassStructOnce.Do(func() {
-		FileChooserWidgetClassStruct = gi.StructNew("Gtk", "FileChooserWidgetClass")
+func fileChooserWidgetClassStructSet() {
+	fileChooserWidgetClassStructOnce.Do(func() {
+		fileChooserWidgetClassStruct = gi.StructNew("Gtk", "FileChooserWidgetClass")
 	})
 }
 
@@ -2788,12 +2905,12 @@ type FileChooserWidgetClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FileChooserWidgetPrivateStruct *gi.Struct
-var FileChooserWidgetPrivateStructOnce sync.Once
+var fileChooserWidgetPrivateStruct *gi.Struct
+var fileChooserWidgetPrivateStructOnce sync.Once
 
-func FileChooserWidgetPrivateStructSet() {
-	FileChooserWidgetPrivateStructOnce.Do(func() {
-		FileChooserWidgetPrivateStruct = gi.StructNew("Gtk", "FileChooserWidgetPrivate")
+func fileChooserWidgetPrivateStructSet() {
+	fileChooserWidgetPrivateStructOnce.Do(func() {
+		fileChooserWidgetPrivateStruct = gi.StructNew("Gtk", "FileChooserWidgetPrivate")
 	})
 }
 
@@ -2801,12 +2918,12 @@ type FileChooserWidgetPrivate struct {
 	native uintptr
 }
 
-var FileFilterInfoStruct *gi.Struct
-var FileFilterInfoStructOnce sync.Once
+var fileFilterInfoStruct *gi.Struct
+var fileFilterInfoStructOnce sync.Once
 
-func FileFilterInfoStructSet() {
-	FileFilterInfoStructOnce.Do(func() {
-		FileFilterInfoStruct = gi.StructNew("Gtk", "FileFilterInfo")
+func fileFilterInfoStructSet() {
+	fileFilterInfoStructOnce.Do(func() {
+		fileFilterInfoStruct = gi.StructNew("Gtk", "FileFilterInfo")
 	})
 }
 
@@ -2819,12 +2936,12 @@ type FileFilterInfo struct {
 	MimeType    string
 }
 
-var FixedChildStruct *gi.Struct
-var FixedChildStructOnce sync.Once
+var fixedChildStruct *gi.Struct
+var fixedChildStructOnce sync.Once
 
-func FixedChildStructSet() {
-	FixedChildStructOnce.Do(func() {
-		FixedChildStruct = gi.StructNew("Gtk", "FixedChild")
+func fixedChildStructSet() {
+	fixedChildStructOnce.Do(func() {
+		fixedChildStruct = gi.StructNew("Gtk", "FixedChild")
 	})
 }
 
@@ -2835,12 +2952,12 @@ type FixedChild struct {
 	Y int32
 }
 
-var FixedClassStruct *gi.Struct
-var FixedClassStructOnce sync.Once
+var fixedClassStruct *gi.Struct
+var fixedClassStructOnce sync.Once
 
-func FixedClassStructSet() {
-	FixedClassStructOnce.Do(func() {
-		FixedClassStruct = gi.StructNew("Gtk", "FixedClass")
+func fixedClassStructSet() {
+	fixedClassStructOnce.Do(func() {
+		fixedClassStruct = gi.StructNew("Gtk", "FixedClass")
 	})
 }
 
@@ -2853,12 +2970,12 @@ type FixedClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FixedPrivateStruct *gi.Struct
-var FixedPrivateStructOnce sync.Once
+var fixedPrivateStruct *gi.Struct
+var fixedPrivateStructOnce sync.Once
 
-func FixedPrivateStructSet() {
-	FixedPrivateStructOnce.Do(func() {
-		FixedPrivateStruct = gi.StructNew("Gtk", "FixedPrivate")
+func fixedPrivateStructSet() {
+	fixedPrivateStructOnce.Do(func() {
+		fixedPrivateStruct = gi.StructNew("Gtk", "FixedPrivate")
 	})
 }
 
@@ -2866,12 +2983,12 @@ type FixedPrivate struct {
 	native uintptr
 }
 
-var FlowBoxAccessibleClassStruct *gi.Struct
-var FlowBoxAccessibleClassStructOnce sync.Once
+var flowBoxAccessibleClassStruct *gi.Struct
+var flowBoxAccessibleClassStructOnce sync.Once
 
-func FlowBoxAccessibleClassStructSet() {
-	FlowBoxAccessibleClassStructOnce.Do(func() {
-		FlowBoxAccessibleClassStruct = gi.StructNew("Gtk", "FlowBoxAccessibleClass")
+func flowBoxAccessibleClassStructSet() {
+	flowBoxAccessibleClassStructOnce.Do(func() {
+		flowBoxAccessibleClassStruct = gi.StructNew("Gtk", "FlowBoxAccessibleClass")
 	})
 }
 
@@ -2880,12 +2997,12 @@ type FlowBoxAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var FlowBoxAccessiblePrivateStruct *gi.Struct
-var FlowBoxAccessiblePrivateStructOnce sync.Once
+var flowBoxAccessiblePrivateStruct *gi.Struct
+var flowBoxAccessiblePrivateStructOnce sync.Once
 
-func FlowBoxAccessiblePrivateStructSet() {
-	FlowBoxAccessiblePrivateStructOnce.Do(func() {
-		FlowBoxAccessiblePrivateStruct = gi.StructNew("Gtk", "FlowBoxAccessiblePrivate")
+func flowBoxAccessiblePrivateStructSet() {
+	flowBoxAccessiblePrivateStructOnce.Do(func() {
+		flowBoxAccessiblePrivateStruct = gi.StructNew("Gtk", "FlowBoxAccessiblePrivate")
 	})
 }
 
@@ -2893,12 +3010,12 @@ type FlowBoxAccessiblePrivate struct {
 	native uintptr
 }
 
-var FlowBoxChildAccessibleClassStruct *gi.Struct
-var FlowBoxChildAccessibleClassStructOnce sync.Once
+var flowBoxChildAccessibleClassStruct *gi.Struct
+var flowBoxChildAccessibleClassStructOnce sync.Once
 
-func FlowBoxChildAccessibleClassStructSet() {
-	FlowBoxChildAccessibleClassStructOnce.Do(func() {
-		FlowBoxChildAccessibleClassStruct = gi.StructNew("Gtk", "FlowBoxChildAccessibleClass")
+func flowBoxChildAccessibleClassStructSet() {
+	flowBoxChildAccessibleClassStructOnce.Do(func() {
+		flowBoxChildAccessibleClassStruct = gi.StructNew("Gtk", "FlowBoxChildAccessibleClass")
 	})
 }
 
@@ -2907,12 +3024,12 @@ type FlowBoxChildAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var FlowBoxChildClassStruct *gi.Struct
-var FlowBoxChildClassStructOnce sync.Once
+var flowBoxChildClassStruct *gi.Struct
+var flowBoxChildClassStructOnce sync.Once
 
-func FlowBoxChildClassStructSet() {
-	FlowBoxChildClassStructOnce.Do(func() {
-		FlowBoxChildClassStruct = gi.StructNew("Gtk", "FlowBoxChildClass")
+func flowBoxChildClassStructSet() {
+	flowBoxChildClassStructOnce.Do(func() {
+		flowBoxChildClassStruct = gi.StructNew("Gtk", "FlowBoxChildClass")
 	})
 }
 
@@ -2924,12 +3041,12 @@ type FlowBoxChildClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
 }
 
-var FlowBoxClassStruct *gi.Struct
-var FlowBoxClassStructOnce sync.Once
+var flowBoxClassStruct *gi.Struct
+var flowBoxClassStructOnce sync.Once
 
-func FlowBoxClassStructSet() {
-	FlowBoxClassStructOnce.Do(func() {
-		FlowBoxClassStruct = gi.StructNew("Gtk", "FlowBoxClass")
+func flowBoxClassStructSet() {
+	flowBoxClassStructOnce.Do(func() {
+		flowBoxClassStruct = gi.StructNew("Gtk", "FlowBoxClass")
 	})
 }
 
@@ -2951,12 +3068,12 @@ type FlowBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
 }
 
-var FontButtonClassStruct *gi.Struct
-var FontButtonClassStructOnce sync.Once
+var fontButtonClassStruct *gi.Struct
+var fontButtonClassStructOnce sync.Once
 
-func FontButtonClassStructSet() {
-	FontButtonClassStructOnce.Do(func() {
-		FontButtonClassStruct = gi.StructNew("Gtk", "FontButtonClass")
+func fontButtonClassStructSet() {
+	fontButtonClassStructOnce.Do(func() {
+		fontButtonClassStruct = gi.StructNew("Gtk", "FontButtonClass")
 	})
 }
 
@@ -2970,12 +3087,12 @@ type FontButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FontButtonPrivateStruct *gi.Struct
-var FontButtonPrivateStructOnce sync.Once
+var fontButtonPrivateStruct *gi.Struct
+var fontButtonPrivateStructOnce sync.Once
 
-func FontButtonPrivateStructSet() {
-	FontButtonPrivateStructOnce.Do(func() {
-		FontButtonPrivateStruct = gi.StructNew("Gtk", "FontButtonPrivate")
+func fontButtonPrivateStructSet() {
+	fontButtonPrivateStructOnce.Do(func() {
+		fontButtonPrivateStruct = gi.StructNew("Gtk", "FontButtonPrivate")
 	})
 }
 
@@ -2983,12 +3100,12 @@ type FontButtonPrivate struct {
 	native uintptr
 }
 
-var FontChooserDialogClassStruct *gi.Struct
-var FontChooserDialogClassStructOnce sync.Once
+var fontChooserDialogClassStruct *gi.Struct
+var fontChooserDialogClassStructOnce sync.Once
 
-func FontChooserDialogClassStructSet() {
-	FontChooserDialogClassStructOnce.Do(func() {
-		FontChooserDialogClassStruct = gi.StructNew("Gtk", "FontChooserDialogClass")
+func fontChooserDialogClassStructSet() {
+	fontChooserDialogClassStructOnce.Do(func() {
+		fontChooserDialogClassStruct = gi.StructNew("Gtk", "FontChooserDialogClass")
 	})
 }
 
@@ -3001,12 +3118,12 @@ type FontChooserDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FontChooserDialogPrivateStruct *gi.Struct
-var FontChooserDialogPrivateStructOnce sync.Once
+var fontChooserDialogPrivateStruct *gi.Struct
+var fontChooserDialogPrivateStructOnce sync.Once
 
-func FontChooserDialogPrivateStructSet() {
-	FontChooserDialogPrivateStructOnce.Do(func() {
-		FontChooserDialogPrivateStruct = gi.StructNew("Gtk", "FontChooserDialogPrivate")
+func fontChooserDialogPrivateStructSet() {
+	fontChooserDialogPrivateStructOnce.Do(func() {
+		fontChooserDialogPrivateStruct = gi.StructNew("Gtk", "FontChooserDialogPrivate")
 	})
 }
 
@@ -3014,12 +3131,12 @@ type FontChooserDialogPrivate struct {
 	native uintptr
 }
 
-var FontChooserIfaceStruct *gi.Struct
-var FontChooserIfaceStructOnce sync.Once
+var fontChooserIfaceStruct *gi.Struct
+var fontChooserIfaceStructOnce sync.Once
 
-func FontChooserIfaceStructSet() {
-	FontChooserIfaceStructOnce.Do(func() {
-		FontChooserIfaceStruct = gi.StructNew("Gtk", "FontChooserIface")
+func fontChooserIfaceStructSet() {
+	fontChooserIfaceStructOnce.Do(func() {
+		fontChooserIfaceStruct = gi.StructNew("Gtk", "FontChooserIface")
 	})
 }
 
@@ -3036,12 +3153,12 @@ type FontChooserIface struct {
 	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
-var FontChooserWidgetClassStruct *gi.Struct
-var FontChooserWidgetClassStructOnce sync.Once
+var fontChooserWidgetClassStruct *gi.Struct
+var fontChooserWidgetClassStructOnce sync.Once
 
-func FontChooserWidgetClassStructSet() {
-	FontChooserWidgetClassStructOnce.Do(func() {
-		FontChooserWidgetClassStruct = gi.StructNew("Gtk", "FontChooserWidgetClass")
+func fontChooserWidgetClassStructSet() {
+	fontChooserWidgetClassStructOnce.Do(func() {
+		fontChooserWidgetClassStruct = gi.StructNew("Gtk", "FontChooserWidgetClass")
 	})
 }
 
@@ -3058,12 +3175,12 @@ type FontChooserWidgetClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var FontChooserWidgetPrivateStruct *gi.Struct
-var FontChooserWidgetPrivateStructOnce sync.Once
+var fontChooserWidgetPrivateStruct *gi.Struct
+var fontChooserWidgetPrivateStructOnce sync.Once
 
-func FontChooserWidgetPrivateStructSet() {
-	FontChooserWidgetPrivateStructOnce.Do(func() {
-		FontChooserWidgetPrivateStruct = gi.StructNew("Gtk", "FontChooserWidgetPrivate")
+func fontChooserWidgetPrivateStructSet() {
+	fontChooserWidgetPrivateStructOnce.Do(func() {
+		fontChooserWidgetPrivateStruct = gi.StructNew("Gtk", "FontChooserWidgetPrivate")
 	})
 }
 
@@ -3071,12 +3188,12 @@ type FontChooserWidgetPrivate struct {
 	native uintptr
 }
 
-var FontSelectionClassStruct *gi.Struct
-var FontSelectionClassStructOnce sync.Once
+var fontSelectionClassStruct *gi.Struct
+var fontSelectionClassStructOnce sync.Once
 
-func FontSelectionClassStructSet() {
-	FontSelectionClassStructOnce.Do(func() {
-		FontSelectionClassStruct = gi.StructNew("Gtk", "FontSelectionClass")
+func fontSelectionClassStructSet() {
+	fontSelectionClassStructOnce.Do(func() {
+		fontSelectionClassStruct = gi.StructNew("Gtk", "FontSelectionClass")
 	})
 }
 
@@ -3089,12 +3206,12 @@ type FontSelectionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FontSelectionDialogClassStruct *gi.Struct
-var FontSelectionDialogClassStructOnce sync.Once
+var fontSelectionDialogClassStruct *gi.Struct
+var fontSelectionDialogClassStructOnce sync.Once
 
-func FontSelectionDialogClassStructSet() {
-	FontSelectionDialogClassStructOnce.Do(func() {
-		FontSelectionDialogClassStruct = gi.StructNew("Gtk", "FontSelectionDialogClass")
+func fontSelectionDialogClassStructSet() {
+	fontSelectionDialogClassStructOnce.Do(func() {
+		fontSelectionDialogClassStruct = gi.StructNew("Gtk", "FontSelectionDialogClass")
 	})
 }
 
@@ -3107,12 +3224,12 @@ type FontSelectionDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FontSelectionDialogPrivateStruct *gi.Struct
-var FontSelectionDialogPrivateStructOnce sync.Once
+var fontSelectionDialogPrivateStruct *gi.Struct
+var fontSelectionDialogPrivateStructOnce sync.Once
 
-func FontSelectionDialogPrivateStructSet() {
-	FontSelectionDialogPrivateStructOnce.Do(func() {
-		FontSelectionDialogPrivateStruct = gi.StructNew("Gtk", "FontSelectionDialogPrivate")
+func fontSelectionDialogPrivateStructSet() {
+	fontSelectionDialogPrivateStructOnce.Do(func() {
+		fontSelectionDialogPrivateStruct = gi.StructNew("Gtk", "FontSelectionDialogPrivate")
 	})
 }
 
@@ -3120,12 +3237,12 @@ type FontSelectionDialogPrivate struct {
 	native uintptr
 }
 
-var FontSelectionPrivateStruct *gi.Struct
-var FontSelectionPrivateStructOnce sync.Once
+var fontSelectionPrivateStruct *gi.Struct
+var fontSelectionPrivateStructOnce sync.Once
 
-func FontSelectionPrivateStructSet() {
-	FontSelectionPrivateStructOnce.Do(func() {
-		FontSelectionPrivateStruct = gi.StructNew("Gtk", "FontSelectionPrivate")
+func fontSelectionPrivateStructSet() {
+	fontSelectionPrivateStructOnce.Do(func() {
+		fontSelectionPrivateStruct = gi.StructNew("Gtk", "FontSelectionPrivate")
 	})
 }
 
@@ -3133,12 +3250,12 @@ type FontSelectionPrivate struct {
 	native uintptr
 }
 
-var FrameAccessibleClassStruct *gi.Struct
-var FrameAccessibleClassStructOnce sync.Once
+var frameAccessibleClassStruct *gi.Struct
+var frameAccessibleClassStructOnce sync.Once
 
-func FrameAccessibleClassStructSet() {
-	FrameAccessibleClassStructOnce.Do(func() {
-		FrameAccessibleClassStruct = gi.StructNew("Gtk", "FrameAccessibleClass")
+func frameAccessibleClassStructSet() {
+	frameAccessibleClassStructOnce.Do(func() {
+		frameAccessibleClassStruct = gi.StructNew("Gtk", "FrameAccessibleClass")
 	})
 }
 
@@ -3147,12 +3264,12 @@ type FrameAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var FrameAccessiblePrivateStruct *gi.Struct
-var FrameAccessiblePrivateStructOnce sync.Once
+var frameAccessiblePrivateStruct *gi.Struct
+var frameAccessiblePrivateStructOnce sync.Once
 
-func FrameAccessiblePrivateStructSet() {
-	FrameAccessiblePrivateStructOnce.Do(func() {
-		FrameAccessiblePrivateStruct = gi.StructNew("Gtk", "FrameAccessiblePrivate")
+func frameAccessiblePrivateStructSet() {
+	frameAccessiblePrivateStructOnce.Do(func() {
+		frameAccessiblePrivateStruct = gi.StructNew("Gtk", "FrameAccessiblePrivate")
 	})
 }
 
@@ -3160,12 +3277,12 @@ type FrameAccessiblePrivate struct {
 	native uintptr
 }
 
-var FrameClassStruct *gi.Struct
-var FrameClassStructOnce sync.Once
+var frameClassStruct *gi.Struct
+var frameClassStructOnce sync.Once
 
-func FrameClassStructSet() {
-	FrameClassStructOnce.Do(func() {
-		FrameClassStruct = gi.StructNew("Gtk", "FrameClass")
+func frameClassStructSet() {
+	frameClassStructOnce.Do(func() {
+		frameClassStruct = gi.StructNew("Gtk", "FrameClass")
 	})
 }
 
@@ -3179,12 +3296,12 @@ type FrameClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var FramePrivateStruct *gi.Struct
-var FramePrivateStructOnce sync.Once
+var framePrivateStruct *gi.Struct
+var framePrivateStructOnce sync.Once
 
-func FramePrivateStructSet() {
-	FramePrivateStructOnce.Do(func() {
-		FramePrivateStruct = gi.StructNew("Gtk", "FramePrivate")
+func framePrivateStructSet() {
+	framePrivateStructOnce.Do(func() {
+		framePrivateStruct = gi.StructNew("Gtk", "FramePrivate")
 	})
 }
 
@@ -3192,12 +3309,12 @@ type FramePrivate struct {
 	native uintptr
 }
 
-var GLAreaClassStruct *gi.Struct
-var GLAreaClassStructOnce sync.Once
+var gLAreaClassStruct *gi.Struct
+var gLAreaClassStructOnce sync.Once
 
-func GLAreaClassStructSet() {
-	GLAreaClassStructOnce.Do(func() {
-		GLAreaClassStruct = gi.StructNew("Gtk", "GLAreaClass")
+func gLAreaClassStructSet() {
+	gLAreaClassStructOnce.Do(func() {
+		gLAreaClassStruct = gi.StructNew("Gtk", "GLAreaClass")
 	})
 }
 
@@ -3208,12 +3325,12 @@ type GLAreaClass struct {
 	// UNSUPPORTED : C value 'create_context' : missing Type
 }
 
-var GestureClassStruct *gi.Struct
-var GestureClassStructOnce sync.Once
+var gestureClassStruct *gi.Struct
+var gestureClassStructOnce sync.Once
 
-func GestureClassStructSet() {
-	GestureClassStructOnce.Do(func() {
-		GestureClassStruct = gi.StructNew("Gtk", "GestureClass")
+func gestureClassStructSet() {
+	gestureClassStructOnce.Do(func() {
+		gestureClassStruct = gi.StructNew("Gtk", "GestureClass")
 	})
 }
 
@@ -3221,12 +3338,12 @@ type GestureClass struct {
 	native uintptr
 }
 
-var GestureDragClassStruct *gi.Struct
-var GestureDragClassStructOnce sync.Once
+var gestureDragClassStruct *gi.Struct
+var gestureDragClassStructOnce sync.Once
 
-func GestureDragClassStructSet() {
-	GestureDragClassStructOnce.Do(func() {
-		GestureDragClassStruct = gi.StructNew("Gtk", "GestureDragClass")
+func gestureDragClassStructSet() {
+	gestureDragClassStructOnce.Do(func() {
+		gestureDragClassStruct = gi.StructNew("Gtk", "GestureDragClass")
 	})
 }
 
@@ -3234,12 +3351,12 @@ type GestureDragClass struct {
 	native uintptr
 }
 
-var GestureLongPressClassStruct *gi.Struct
-var GestureLongPressClassStructOnce sync.Once
+var gestureLongPressClassStruct *gi.Struct
+var gestureLongPressClassStructOnce sync.Once
 
-func GestureLongPressClassStructSet() {
-	GestureLongPressClassStructOnce.Do(func() {
-		GestureLongPressClassStruct = gi.StructNew("Gtk", "GestureLongPressClass")
+func gestureLongPressClassStructSet() {
+	gestureLongPressClassStructOnce.Do(func() {
+		gestureLongPressClassStruct = gi.StructNew("Gtk", "GestureLongPressClass")
 	})
 }
 
@@ -3247,12 +3364,12 @@ type GestureLongPressClass struct {
 	native uintptr
 }
 
-var GestureMultiPressClassStruct *gi.Struct
-var GestureMultiPressClassStructOnce sync.Once
+var gestureMultiPressClassStruct *gi.Struct
+var gestureMultiPressClassStructOnce sync.Once
 
-func GestureMultiPressClassStructSet() {
-	GestureMultiPressClassStructOnce.Do(func() {
-		GestureMultiPressClassStruct = gi.StructNew("Gtk", "GestureMultiPressClass")
+func gestureMultiPressClassStructSet() {
+	gestureMultiPressClassStructOnce.Do(func() {
+		gestureMultiPressClassStruct = gi.StructNew("Gtk", "GestureMultiPressClass")
 	})
 }
 
@@ -3260,12 +3377,12 @@ type GestureMultiPressClass struct {
 	native uintptr
 }
 
-var GesturePanClassStruct *gi.Struct
-var GesturePanClassStructOnce sync.Once
+var gesturePanClassStruct *gi.Struct
+var gesturePanClassStructOnce sync.Once
 
-func GesturePanClassStructSet() {
-	GesturePanClassStructOnce.Do(func() {
-		GesturePanClassStruct = gi.StructNew("Gtk", "GesturePanClass")
+func gesturePanClassStructSet() {
+	gesturePanClassStructOnce.Do(func() {
+		gesturePanClassStruct = gi.StructNew("Gtk", "GesturePanClass")
 	})
 }
 
@@ -3273,12 +3390,12 @@ type GesturePanClass struct {
 	native uintptr
 }
 
-var GestureRotateClassStruct *gi.Struct
-var GestureRotateClassStructOnce sync.Once
+var gestureRotateClassStruct *gi.Struct
+var gestureRotateClassStructOnce sync.Once
 
-func GestureRotateClassStructSet() {
-	GestureRotateClassStructOnce.Do(func() {
-		GestureRotateClassStruct = gi.StructNew("Gtk", "GestureRotateClass")
+func gestureRotateClassStructSet() {
+	gestureRotateClassStructOnce.Do(func() {
+		gestureRotateClassStruct = gi.StructNew("Gtk", "GestureRotateClass")
 	})
 }
 
@@ -3286,12 +3403,12 @@ type GestureRotateClass struct {
 	native uintptr
 }
 
-var GestureSingleClassStruct *gi.Struct
-var GestureSingleClassStructOnce sync.Once
+var gestureSingleClassStruct *gi.Struct
+var gestureSingleClassStructOnce sync.Once
 
-func GestureSingleClassStructSet() {
-	GestureSingleClassStructOnce.Do(func() {
-		GestureSingleClassStruct = gi.StructNew("Gtk", "GestureSingleClass")
+func gestureSingleClassStructSet() {
+	gestureSingleClassStructOnce.Do(func() {
+		gestureSingleClassStruct = gi.StructNew("Gtk", "GestureSingleClass")
 	})
 }
 
@@ -3299,12 +3416,12 @@ type GestureSingleClass struct {
 	native uintptr
 }
 
-var GestureStylusClassStruct *gi.Struct
-var GestureStylusClassStructOnce sync.Once
+var gestureStylusClassStruct *gi.Struct
+var gestureStylusClassStructOnce sync.Once
 
-func GestureStylusClassStructSet() {
-	GestureStylusClassStructOnce.Do(func() {
-		GestureStylusClassStruct = gi.StructNew("Gtk", "GestureStylusClass")
+func gestureStylusClassStructSet() {
+	gestureStylusClassStructOnce.Do(func() {
+		gestureStylusClassStruct = gi.StructNew("Gtk", "GestureStylusClass")
 	})
 }
 
@@ -3312,12 +3429,12 @@ type GestureStylusClass struct {
 	native uintptr
 }
 
-var GestureSwipeClassStruct *gi.Struct
-var GestureSwipeClassStructOnce sync.Once
+var gestureSwipeClassStruct *gi.Struct
+var gestureSwipeClassStructOnce sync.Once
 
-func GestureSwipeClassStructSet() {
-	GestureSwipeClassStructOnce.Do(func() {
-		GestureSwipeClassStruct = gi.StructNew("Gtk", "GestureSwipeClass")
+func gestureSwipeClassStructSet() {
+	gestureSwipeClassStructOnce.Do(func() {
+		gestureSwipeClassStruct = gi.StructNew("Gtk", "GestureSwipeClass")
 	})
 }
 
@@ -3325,12 +3442,12 @@ type GestureSwipeClass struct {
 	native uintptr
 }
 
-var GestureZoomClassStruct *gi.Struct
-var GestureZoomClassStructOnce sync.Once
+var gestureZoomClassStruct *gi.Struct
+var gestureZoomClassStructOnce sync.Once
 
-func GestureZoomClassStructSet() {
-	GestureZoomClassStructOnce.Do(func() {
-		GestureZoomClassStruct = gi.StructNew("Gtk", "GestureZoomClass")
+func gestureZoomClassStructSet() {
+	gestureZoomClassStructOnce.Do(func() {
+		gestureZoomClassStruct = gi.StructNew("Gtk", "GestureZoomClass")
 	})
 }
 
@@ -3338,12 +3455,12 @@ type GestureZoomClass struct {
 	native uintptr
 }
 
-var GradientStruct *gi.Struct
-var GradientStructOnce sync.Once
+var gradientStruct *gi.Struct
+var gradientStructOnce sync.Once
 
-func GradientStructSet() {
-	GradientStructOnce.Do(func() {
-		GradientStruct = gi.StructNew("Gtk", "Gradient")
+func gradientStructSet() {
+	gradientStructOnce.Do(func() {
+		gradientStruct = gi.StructNew("Gtk", "Gradient")
 	})
 }
 
@@ -3356,6 +3473,15 @@ type Gradient struct {
 // UNSUPPORTED : C value 'gtk_gradient_new_radial' : parameter 'x0' of type 'gdouble' not supported
 
 // UNSUPPORTED : C value 'gtk_gradient_add_color_stop' : parameter 'offset' of type 'gdouble' not supported
+
+var gradientRefFunction *gi.Function
+var gradientRefFunctionOnce sync.Once
+
+func gradientRefFunctionSet() {
+	gradientRefFunctionOnce.Do(func() {
+		gradientRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
 
 var refGradientInvoker *gi.Function
 
@@ -3379,6 +3505,15 @@ func (recv *Gradient) Ref() *Gradient {
 
 // UNSUPPORTED : C value 'gtk_gradient_resolve_for_context' : parameter 'context' of type 'StyleContext' not supported
 
+var gradientToStringFunction *gi.Function
+var gradientToStringFunctionOnce sync.Once
+
+func gradientToStringFunctionSet() {
+	gradientToStringFunctionOnce.Do(func() {
+		gradientToStringFunction = gi.FunctionInvokerNew("Gtk", "to_string")
+	})
+}
+
 var toStringGradientInvoker *gi.Function
 
 // ToString is a representation of the C type gtk_gradient_to_string.
@@ -3397,6 +3532,15 @@ func (recv *Gradient) ToString() string {
 	return retGo
 }
 
+var gradientUnrefFunction *gi.Function
+var gradientUnrefFunctionOnce sync.Once
+
+func gradientUnrefFunctionSet() {
+	gradientUnrefFunctionOnce.Do(func() {
+		gradientUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefGradientInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_gradient_unref.
@@ -3412,12 +3556,12 @@ func (recv *Gradient) Unref() {
 
 }
 
-var GridClassStruct *gi.Struct
-var GridClassStructOnce sync.Once
+var gridClassStruct *gi.Struct
+var gridClassStructOnce sync.Once
 
-func GridClassStructSet() {
-	GridClassStructOnce.Do(func() {
-		GridClassStruct = gi.StructNew("Gtk", "GridClass")
+func gridClassStructSet() {
+	gridClassStructOnce.Do(func() {
+		gridClassStruct = gi.StructNew("Gtk", "GridClass")
 	})
 }
 
@@ -3434,12 +3578,12 @@ type GridClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var GridPrivateStruct *gi.Struct
-var GridPrivateStructOnce sync.Once
+var gridPrivateStruct *gi.Struct
+var gridPrivateStructOnce sync.Once
 
-func GridPrivateStructSet() {
-	GridPrivateStructOnce.Do(func() {
-		GridPrivateStruct = gi.StructNew("Gtk", "GridPrivate")
+func gridPrivateStructSet() {
+	gridPrivateStructOnce.Do(func() {
+		gridPrivateStruct = gi.StructNew("Gtk", "GridPrivate")
 	})
 }
 
@@ -3447,12 +3591,12 @@ type GridPrivate struct {
 	native uintptr
 }
 
-var HBoxClassStruct *gi.Struct
-var HBoxClassStructOnce sync.Once
+var hBoxClassStruct *gi.Struct
+var hBoxClassStructOnce sync.Once
 
-func HBoxClassStructSet() {
-	HBoxClassStructOnce.Do(func() {
-		HBoxClassStruct = gi.StructNew("Gtk", "HBoxClass")
+func hBoxClassStructSet() {
+	hBoxClassStructOnce.Do(func() {
+		hBoxClassStruct = gi.StructNew("Gtk", "HBoxClass")
 	})
 }
 
@@ -3461,12 +3605,12 @@ type HBoxClass struct {
 	ParentClass *BoxClass
 }
 
-var HButtonBoxClassStruct *gi.Struct
-var HButtonBoxClassStructOnce sync.Once
+var hButtonBoxClassStruct *gi.Struct
+var hButtonBoxClassStructOnce sync.Once
 
-func HButtonBoxClassStructSet() {
-	HButtonBoxClassStructOnce.Do(func() {
-		HButtonBoxClassStruct = gi.StructNew("Gtk", "HButtonBoxClass")
+func hButtonBoxClassStructSet() {
+	hButtonBoxClassStructOnce.Do(func() {
+		hButtonBoxClassStruct = gi.StructNew("Gtk", "HButtonBoxClass")
 	})
 }
 
@@ -3475,12 +3619,12 @@ type HButtonBoxClass struct {
 	ParentClass *ButtonBoxClass
 }
 
-var HPanedClassStruct *gi.Struct
-var HPanedClassStructOnce sync.Once
+var hPanedClassStruct *gi.Struct
+var hPanedClassStructOnce sync.Once
 
-func HPanedClassStructSet() {
-	HPanedClassStructOnce.Do(func() {
-		HPanedClassStruct = gi.StructNew("Gtk", "HPanedClass")
+func hPanedClassStructSet() {
+	hPanedClassStructOnce.Do(func() {
+		hPanedClassStruct = gi.StructNew("Gtk", "HPanedClass")
 	})
 }
 
@@ -3489,12 +3633,12 @@ type HPanedClass struct {
 	ParentClass *PanedClass
 }
 
-var HSVClassStruct *gi.Struct
-var HSVClassStructOnce sync.Once
+var hSVClassStruct *gi.Struct
+var hSVClassStructOnce sync.Once
 
-func HSVClassStructSet() {
-	HSVClassStructOnce.Do(func() {
-		HSVClassStruct = gi.StructNew("Gtk", "HSVClass")
+func hSVClassStructSet() {
+	hSVClassStructOnce.Do(func() {
+		hSVClassStruct = gi.StructNew("Gtk", "HSVClass")
 	})
 }
 
@@ -3509,12 +3653,12 @@ type HSVClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var HSVPrivateStruct *gi.Struct
-var HSVPrivateStructOnce sync.Once
+var hSVPrivateStruct *gi.Struct
+var hSVPrivateStructOnce sync.Once
 
-func HSVPrivateStructSet() {
-	HSVPrivateStructOnce.Do(func() {
-		HSVPrivateStruct = gi.StructNew("Gtk", "HSVPrivate")
+func hSVPrivateStructSet() {
+	hSVPrivateStructOnce.Do(func() {
+		hSVPrivateStruct = gi.StructNew("Gtk", "HSVPrivate")
 	})
 }
 
@@ -3522,12 +3666,12 @@ type HSVPrivate struct {
 	native uintptr
 }
 
-var HScaleClassStruct *gi.Struct
-var HScaleClassStructOnce sync.Once
+var hScaleClassStruct *gi.Struct
+var hScaleClassStructOnce sync.Once
 
-func HScaleClassStructSet() {
-	HScaleClassStructOnce.Do(func() {
-		HScaleClassStruct = gi.StructNew("Gtk", "HScaleClass")
+func hScaleClassStructSet() {
+	hScaleClassStructOnce.Do(func() {
+		hScaleClassStruct = gi.StructNew("Gtk", "HScaleClass")
 	})
 }
 
@@ -3536,12 +3680,12 @@ type HScaleClass struct {
 	ParentClass *ScaleClass
 }
 
-var HScrollbarClassStruct *gi.Struct
-var HScrollbarClassStructOnce sync.Once
+var hScrollbarClassStruct *gi.Struct
+var hScrollbarClassStructOnce sync.Once
 
-func HScrollbarClassStructSet() {
-	HScrollbarClassStructOnce.Do(func() {
-		HScrollbarClassStruct = gi.StructNew("Gtk", "HScrollbarClass")
+func hScrollbarClassStructSet() {
+	hScrollbarClassStructOnce.Do(func() {
+		hScrollbarClassStruct = gi.StructNew("Gtk", "HScrollbarClass")
 	})
 }
 
@@ -3550,12 +3694,12 @@ type HScrollbarClass struct {
 	ParentClass *ScrollbarClass
 }
 
-var HSeparatorClassStruct *gi.Struct
-var HSeparatorClassStructOnce sync.Once
+var hSeparatorClassStruct *gi.Struct
+var hSeparatorClassStructOnce sync.Once
 
-func HSeparatorClassStructSet() {
-	HSeparatorClassStructOnce.Do(func() {
-		HSeparatorClassStruct = gi.StructNew("Gtk", "HSeparatorClass")
+func hSeparatorClassStructSet() {
+	hSeparatorClassStructOnce.Do(func() {
+		hSeparatorClassStruct = gi.StructNew("Gtk", "HSeparatorClass")
 	})
 }
 
@@ -3564,12 +3708,12 @@ type HSeparatorClass struct {
 	ParentClass *SeparatorClass
 }
 
-var HandleBoxClassStruct *gi.Struct
-var HandleBoxClassStructOnce sync.Once
+var handleBoxClassStruct *gi.Struct
+var handleBoxClassStructOnce sync.Once
 
-func HandleBoxClassStructSet() {
-	HandleBoxClassStructOnce.Do(func() {
-		HandleBoxClassStruct = gi.StructNew("Gtk", "HandleBoxClass")
+func handleBoxClassStructSet() {
+	handleBoxClassStructOnce.Do(func() {
+		handleBoxClassStruct = gi.StructNew("Gtk", "HandleBoxClass")
 	})
 }
 
@@ -3584,12 +3728,12 @@ type HandleBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var HandleBoxPrivateStruct *gi.Struct
-var HandleBoxPrivateStructOnce sync.Once
+var handleBoxPrivateStruct *gi.Struct
+var handleBoxPrivateStructOnce sync.Once
 
-func HandleBoxPrivateStructSet() {
-	HandleBoxPrivateStructOnce.Do(func() {
-		HandleBoxPrivateStruct = gi.StructNew("Gtk", "HandleBoxPrivate")
+func handleBoxPrivateStructSet() {
+	handleBoxPrivateStructOnce.Do(func() {
+		handleBoxPrivateStruct = gi.StructNew("Gtk", "HandleBoxPrivate")
 	})
 }
 
@@ -3597,12 +3741,12 @@ type HandleBoxPrivate struct {
 	native uintptr
 }
 
-var HeaderBarAccessibleClassStruct *gi.Struct
-var HeaderBarAccessibleClassStructOnce sync.Once
+var headerBarAccessibleClassStruct *gi.Struct
+var headerBarAccessibleClassStructOnce sync.Once
 
-func HeaderBarAccessibleClassStructSet() {
-	HeaderBarAccessibleClassStructOnce.Do(func() {
-		HeaderBarAccessibleClassStruct = gi.StructNew("Gtk", "HeaderBarAccessibleClass")
+func headerBarAccessibleClassStructSet() {
+	headerBarAccessibleClassStructOnce.Do(func() {
+		headerBarAccessibleClassStruct = gi.StructNew("Gtk", "HeaderBarAccessibleClass")
 	})
 }
 
@@ -3611,12 +3755,12 @@ type HeaderBarAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var HeaderBarAccessiblePrivateStruct *gi.Struct
-var HeaderBarAccessiblePrivateStructOnce sync.Once
+var headerBarAccessiblePrivateStruct *gi.Struct
+var headerBarAccessiblePrivateStructOnce sync.Once
 
-func HeaderBarAccessiblePrivateStructSet() {
-	HeaderBarAccessiblePrivateStructOnce.Do(func() {
-		HeaderBarAccessiblePrivateStruct = gi.StructNew("Gtk", "HeaderBarAccessiblePrivate")
+func headerBarAccessiblePrivateStructSet() {
+	headerBarAccessiblePrivateStructOnce.Do(func() {
+		headerBarAccessiblePrivateStruct = gi.StructNew("Gtk", "HeaderBarAccessiblePrivate")
 	})
 }
 
@@ -3624,12 +3768,12 @@ type HeaderBarAccessiblePrivate struct {
 	native uintptr
 }
 
-var HeaderBarClassStruct *gi.Struct
-var HeaderBarClassStructOnce sync.Once
+var headerBarClassStruct *gi.Struct
+var headerBarClassStructOnce sync.Once
 
-func HeaderBarClassStructSet() {
-	HeaderBarClassStructOnce.Do(func() {
-		HeaderBarClassStruct = gi.StructNew("Gtk", "HeaderBarClass")
+func headerBarClassStructSet() {
+	headerBarClassStructOnce.Do(func() {
+		headerBarClassStruct = gi.StructNew("Gtk", "HeaderBarClass")
 	})
 }
 
@@ -3642,12 +3786,12 @@ type HeaderBarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var HeaderBarPrivateStruct *gi.Struct
-var HeaderBarPrivateStructOnce sync.Once
+var headerBarPrivateStruct *gi.Struct
+var headerBarPrivateStructOnce sync.Once
 
-func HeaderBarPrivateStructSet() {
-	HeaderBarPrivateStructOnce.Do(func() {
-		HeaderBarPrivateStruct = gi.StructNew("Gtk", "HeaderBarPrivate")
+func headerBarPrivateStructSet() {
+	headerBarPrivateStructOnce.Do(func() {
+		headerBarPrivateStruct = gi.StructNew("Gtk", "HeaderBarPrivate")
 	})
 }
 
@@ -3655,12 +3799,12 @@ type HeaderBarPrivate struct {
 	native uintptr
 }
 
-var IMContextClassStruct *gi.Struct
-var IMContextClassStructOnce sync.Once
+var iMContextClassStruct *gi.Struct
+var iMContextClassStructOnce sync.Once
 
-func IMContextClassStructSet() {
-	IMContextClassStructOnce.Do(func() {
-		IMContextClassStruct = gi.StructNew("Gtk", "IMContextClass")
+func iMContextClassStructSet() {
+	iMContextClassStructOnce.Do(func() {
+		iMContextClassStruct = gi.StructNew("Gtk", "IMContextClass")
 	})
 }
 
@@ -3690,12 +3834,12 @@ type IMContextClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
 }
 
-var IMContextInfoStruct *gi.Struct
-var IMContextInfoStructOnce sync.Once
+var iMContextInfoStruct *gi.Struct
+var iMContextInfoStructOnce sync.Once
 
-func IMContextInfoStructSet() {
-	IMContextInfoStructOnce.Do(func() {
-		IMContextInfoStruct = gi.StructNew("Gtk", "IMContextInfo")
+func iMContextInfoStructSet() {
+	iMContextInfoStructOnce.Do(func() {
+		iMContextInfoStruct = gi.StructNew("Gtk", "IMContextInfo")
 	})
 }
 
@@ -3708,12 +3852,12 @@ type IMContextInfo struct {
 	DefaultLocales string
 }
 
-var IMContextSimpleClassStruct *gi.Struct
-var IMContextSimpleClassStructOnce sync.Once
+var iMContextSimpleClassStruct *gi.Struct
+var iMContextSimpleClassStructOnce sync.Once
 
-func IMContextSimpleClassStructSet() {
-	IMContextSimpleClassStructOnce.Do(func() {
-		IMContextSimpleClassStruct = gi.StructNew("Gtk", "IMContextSimpleClass")
+func iMContextSimpleClassStructSet() {
+	iMContextSimpleClassStructOnce.Do(func() {
+		iMContextSimpleClassStruct = gi.StructNew("Gtk", "IMContextSimpleClass")
 	})
 }
 
@@ -3722,12 +3866,12 @@ type IMContextSimpleClass struct {
 	ParentClass *IMContextClass
 }
 
-var IMContextSimplePrivateStruct *gi.Struct
-var IMContextSimplePrivateStructOnce sync.Once
+var iMContextSimplePrivateStruct *gi.Struct
+var iMContextSimplePrivateStructOnce sync.Once
 
-func IMContextSimplePrivateStructSet() {
-	IMContextSimplePrivateStructOnce.Do(func() {
-		IMContextSimplePrivateStruct = gi.StructNew("Gtk", "IMContextSimplePrivate")
+func iMContextSimplePrivateStructSet() {
+	iMContextSimplePrivateStructOnce.Do(func() {
+		iMContextSimplePrivateStruct = gi.StructNew("Gtk", "IMContextSimplePrivate")
 	})
 }
 
@@ -3735,12 +3879,12 @@ type IMContextSimplePrivate struct {
 	native uintptr
 }
 
-var IMMulticontextClassStruct *gi.Struct
-var IMMulticontextClassStructOnce sync.Once
+var iMMulticontextClassStruct *gi.Struct
+var iMMulticontextClassStructOnce sync.Once
 
-func IMMulticontextClassStructSet() {
-	IMMulticontextClassStructOnce.Do(func() {
-		IMMulticontextClassStruct = gi.StructNew("Gtk", "IMMulticontextClass")
+func iMMulticontextClassStructSet() {
+	iMMulticontextClassStructOnce.Do(func() {
+		iMMulticontextClassStruct = gi.StructNew("Gtk", "IMMulticontextClass")
 	})
 }
 
@@ -3753,12 +3897,12 @@ type IMMulticontextClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var IMMulticontextPrivateStruct *gi.Struct
-var IMMulticontextPrivateStructOnce sync.Once
+var iMMulticontextPrivateStruct *gi.Struct
+var iMMulticontextPrivateStructOnce sync.Once
 
-func IMMulticontextPrivateStructSet() {
-	IMMulticontextPrivateStructOnce.Do(func() {
-		IMMulticontextPrivateStruct = gi.StructNew("Gtk", "IMMulticontextPrivate")
+func iMMulticontextPrivateStructSet() {
+	iMMulticontextPrivateStructOnce.Do(func() {
+		iMMulticontextPrivateStruct = gi.StructNew("Gtk", "IMMulticontextPrivate")
 	})
 }
 
@@ -3766,12 +3910,12 @@ type IMMulticontextPrivate struct {
 	native uintptr
 }
 
-var IconFactoryClassStruct *gi.Struct
-var IconFactoryClassStructOnce sync.Once
+var iconFactoryClassStruct *gi.Struct
+var iconFactoryClassStructOnce sync.Once
 
-func IconFactoryClassStructSet() {
-	IconFactoryClassStructOnce.Do(func() {
-		IconFactoryClassStruct = gi.StructNew("Gtk", "IconFactoryClass")
+func iconFactoryClassStructSet() {
+	iconFactoryClassStructOnce.Do(func() {
+		iconFactoryClassStruct = gi.StructNew("Gtk", "IconFactoryClass")
 	})
 }
 
@@ -3784,12 +3928,12 @@ type IconFactoryClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var IconFactoryPrivateStruct *gi.Struct
-var IconFactoryPrivateStructOnce sync.Once
+var iconFactoryPrivateStruct *gi.Struct
+var iconFactoryPrivateStructOnce sync.Once
 
-func IconFactoryPrivateStructSet() {
-	IconFactoryPrivateStructOnce.Do(func() {
-		IconFactoryPrivateStruct = gi.StructNew("Gtk", "IconFactoryPrivate")
+func iconFactoryPrivateStructSet() {
+	iconFactoryPrivateStructOnce.Do(func() {
+		iconFactoryPrivateStruct = gi.StructNew("Gtk", "IconFactoryPrivate")
 	})
 }
 
@@ -3797,12 +3941,12 @@ type IconFactoryPrivate struct {
 	native uintptr
 }
 
-var IconInfoClassStruct *gi.Struct
-var IconInfoClassStructOnce sync.Once
+var iconInfoClassStruct *gi.Struct
+var iconInfoClassStructOnce sync.Once
 
-func IconInfoClassStructSet() {
-	IconInfoClassStructOnce.Do(func() {
-		IconInfoClassStruct = gi.StructNew("Gtk", "IconInfoClass")
+func iconInfoClassStructSet() {
+	iconInfoClassStructOnce.Do(func() {
+		iconInfoClassStruct = gi.StructNew("Gtk", "IconInfoClass")
 	})
 }
 
@@ -3810,17 +3954,26 @@ type IconInfoClass struct {
 	native uintptr
 }
 
-var IconSetStruct *gi.Struct
-var IconSetStructOnce sync.Once
+var iconSetStruct *gi.Struct
+var iconSetStructOnce sync.Once
 
-func IconSetStructSet() {
-	IconSetStructOnce.Do(func() {
-		IconSetStruct = gi.StructNew("Gtk", "IconSet")
+func iconSetStructSet() {
+	iconSetStructOnce.Do(func() {
+		iconSetStruct = gi.StructNew("Gtk", "IconSet")
 	})
 }
 
 type IconSet struct {
 	native uintptr
+}
+
+var iconSetNewFunction *gi.Function
+var iconSetNewFunctionOnce sync.Once
+
+func iconSetNewFunctionSet() {
+	iconSetNewFunctionOnce.Do(func() {
+		iconSetNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newIconSetInvoker *gi.Function
@@ -3842,6 +3995,15 @@ func IconSetNew() *IconSet {
 
 // UNSUPPORTED : C value 'gtk_icon_set_add_source' : parameter 'source' of type 'IconSource' not supported
 
+var iconSetCopyFunction *gi.Function
+var iconSetCopyFunctionOnce sync.Once
+
+func iconSetCopyFunctionSet() {
+	iconSetCopyFunctionOnce.Do(func() {
+		iconSetCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
+
 var copyIconSetInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_icon_set_copy.
@@ -3861,6 +4023,15 @@ func (recv *IconSet) Copy() *IconSet {
 }
 
 // UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : parameter 'sizes' has no type
+
+var iconSetRefFunction *gi.Function
+var iconSetRefFunctionOnce sync.Once
+
+func iconSetRefFunctionSet() {
+	iconSetRefFunctionOnce.Do(func() {
+		iconSetRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
 
 var refIconSetInvoker *gi.Function
 
@@ -3886,6 +4057,15 @@ func (recv *IconSet) Ref() *IconSet {
 
 // UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'context' of type 'StyleContext' not supported
 
+var iconSetUnrefFunction *gi.Function
+var iconSetUnrefFunctionOnce sync.Once
+
+func iconSetUnrefFunctionSet() {
+	iconSetUnrefFunctionOnce.Do(func() {
+		iconSetUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefIconSetInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_icon_set_unref.
@@ -3901,17 +4081,26 @@ func (recv *IconSet) Unref() {
 
 }
 
-var IconSourceStruct *gi.Struct
-var IconSourceStructOnce sync.Once
+var iconSourceStruct *gi.Struct
+var iconSourceStructOnce sync.Once
 
-func IconSourceStructSet() {
-	IconSourceStructOnce.Do(func() {
-		IconSourceStruct = gi.StructNew("Gtk", "IconSource")
+func iconSourceStructSet() {
+	iconSourceStructOnce.Do(func() {
+		iconSourceStruct = gi.StructNew("Gtk", "IconSource")
 	})
 }
 
 type IconSource struct {
 	native uintptr
+}
+
+var iconSourceNewFunction *gi.Function
+var iconSourceNewFunctionOnce sync.Once
+
+func iconSourceNewFunctionSet() {
+	iconSourceNewFunctionOnce.Do(func() {
+		iconSourceNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newIconSourceInvoker *gi.Function
@@ -3927,6 +4116,15 @@ func IconSourceNew() *IconSource {
 	retGo := &IconSource{native: ret.Pointer()}
 
 	return retGo
+}
+
+var iconSourceCopyFunction *gi.Function
+var iconSourceCopyFunctionOnce sync.Once
+
+func iconSourceCopyFunctionSet() {
+	iconSourceCopyFunctionOnce.Do(func() {
+		iconSourceCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copyIconSourceInvoker *gi.Function
@@ -3945,6 +4143,15 @@ func (recv *IconSource) Copy() *IconSource {
 	retGo := &IconSource{native: ret.Pointer()}
 
 	return retGo
+}
+
+var iconSourceFreeFunction *gi.Function
+var iconSourceFreeFunctionOnce sync.Once
+
+func iconSourceFreeFunctionSet() {
+	iconSourceFreeFunctionOnce.Do(func() {
+		iconSourceFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
 }
 
 var freeIconSourceInvoker *gi.Function
@@ -3967,6 +4174,15 @@ func (recv *IconSource) Free() {
 // UNSUPPORTED : C value 'gtk_icon_source_get_direction_wildcarded' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_filename' : return type 'filename' not supported
+
+var iconSourceGetIconNameFunction *gi.Function
+var iconSourceGetIconNameFunctionOnce sync.Once
+
+func iconSourceGetIconNameFunctionSet() {
+	iconSourceGetIconNameFunctionOnce.Do(func() {
+		iconSourceGetIconNameFunction = gi.FunctionInvokerNew("Gtk", "get_icon_name")
+	})
+}
 
 var getIconNameIconSourceInvoker *gi.Function
 
@@ -4002,6 +4218,15 @@ func (recv *IconSource) GetIconName() string {
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_filename' : parameter 'filename' of type 'filename' not supported
 
+var iconSourceSetIconNameFunction *gi.Function
+var iconSourceSetIconNameFunctionOnce sync.Once
+
+func iconSourceSetIconNameFunctionSet() {
+	iconSourceSetIconNameFunctionOnce.Do(func() {
+		iconSourceSetIconNameFunction = gi.FunctionInvokerNew("Gtk", "set_icon_name")
+	})
+}
+
 var setIconNameIconSourceInvoker *gi.Function
 
 // SetIconName is a representation of the C type gtk_icon_source_set_icon_name.
@@ -4028,12 +4253,12 @@ func (recv *IconSource) SetIconName(iconName string) {
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_state_wildcarded' : parameter 'setting' of type 'gboolean' not supported
 
-var IconThemeClassStruct *gi.Struct
-var IconThemeClassStructOnce sync.Once
+var iconThemeClassStruct *gi.Struct
+var iconThemeClassStructOnce sync.Once
 
-func IconThemeClassStructSet() {
-	IconThemeClassStructOnce.Do(func() {
-		IconThemeClassStruct = gi.StructNew("Gtk", "IconThemeClass")
+func iconThemeClassStructSet() {
+	iconThemeClassStructOnce.Do(func() {
+		iconThemeClassStruct = gi.StructNew("Gtk", "IconThemeClass")
 	})
 }
 
@@ -4047,12 +4272,12 @@ type IconThemeClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var IconThemePrivateStruct *gi.Struct
-var IconThemePrivateStructOnce sync.Once
+var iconThemePrivateStruct *gi.Struct
+var iconThemePrivateStructOnce sync.Once
 
-func IconThemePrivateStructSet() {
-	IconThemePrivateStructOnce.Do(func() {
-		IconThemePrivateStruct = gi.StructNew("Gtk", "IconThemePrivate")
+func iconThemePrivateStructSet() {
+	iconThemePrivateStructOnce.Do(func() {
+		iconThemePrivateStruct = gi.StructNew("Gtk", "IconThemePrivate")
 	})
 }
 
@@ -4060,12 +4285,12 @@ type IconThemePrivate struct {
 	native uintptr
 }
 
-var IconViewAccessibleClassStruct *gi.Struct
-var IconViewAccessibleClassStructOnce sync.Once
+var iconViewAccessibleClassStruct *gi.Struct
+var iconViewAccessibleClassStructOnce sync.Once
 
-func IconViewAccessibleClassStructSet() {
-	IconViewAccessibleClassStructOnce.Do(func() {
-		IconViewAccessibleClassStruct = gi.StructNew("Gtk", "IconViewAccessibleClass")
+func iconViewAccessibleClassStructSet() {
+	iconViewAccessibleClassStructOnce.Do(func() {
+		iconViewAccessibleClassStruct = gi.StructNew("Gtk", "IconViewAccessibleClass")
 	})
 }
 
@@ -4074,12 +4299,12 @@ type IconViewAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var IconViewAccessiblePrivateStruct *gi.Struct
-var IconViewAccessiblePrivateStructOnce sync.Once
+var iconViewAccessiblePrivateStruct *gi.Struct
+var iconViewAccessiblePrivateStructOnce sync.Once
 
-func IconViewAccessiblePrivateStructSet() {
-	IconViewAccessiblePrivateStructOnce.Do(func() {
-		IconViewAccessiblePrivateStruct = gi.StructNew("Gtk", "IconViewAccessiblePrivate")
+func iconViewAccessiblePrivateStructSet() {
+	iconViewAccessiblePrivateStructOnce.Do(func() {
+		iconViewAccessiblePrivateStruct = gi.StructNew("Gtk", "IconViewAccessiblePrivate")
 	})
 }
 
@@ -4087,12 +4312,12 @@ type IconViewAccessiblePrivate struct {
 	native uintptr
 }
 
-var IconViewClassStruct *gi.Struct
-var IconViewClassStructOnce sync.Once
+var iconViewClassStruct *gi.Struct
+var iconViewClassStructOnce sync.Once
 
-func IconViewClassStructSet() {
-	IconViewClassStructOnce.Do(func() {
-		IconViewClassStruct = gi.StructNew("Gtk", "IconViewClass")
+func iconViewClassStructSet() {
+	iconViewClassStructOnce.Do(func() {
+		iconViewClassStruct = gi.StructNew("Gtk", "IconViewClass")
 	})
 }
 
@@ -4113,12 +4338,12 @@ type IconViewClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var IconViewPrivateStruct *gi.Struct
-var IconViewPrivateStructOnce sync.Once
+var iconViewPrivateStruct *gi.Struct
+var iconViewPrivateStructOnce sync.Once
 
-func IconViewPrivateStructSet() {
-	IconViewPrivateStructOnce.Do(func() {
-		IconViewPrivateStruct = gi.StructNew("Gtk", "IconViewPrivate")
+func iconViewPrivateStructSet() {
+	iconViewPrivateStructOnce.Do(func() {
+		iconViewPrivateStruct = gi.StructNew("Gtk", "IconViewPrivate")
 	})
 }
 
@@ -4126,12 +4351,12 @@ type IconViewPrivate struct {
 	native uintptr
 }
 
-var ImageAccessibleClassStruct *gi.Struct
-var ImageAccessibleClassStructOnce sync.Once
+var imageAccessibleClassStruct *gi.Struct
+var imageAccessibleClassStructOnce sync.Once
 
-func ImageAccessibleClassStructSet() {
-	ImageAccessibleClassStructOnce.Do(func() {
-		ImageAccessibleClassStruct = gi.StructNew("Gtk", "ImageAccessibleClass")
+func imageAccessibleClassStructSet() {
+	imageAccessibleClassStructOnce.Do(func() {
+		imageAccessibleClassStruct = gi.StructNew("Gtk", "ImageAccessibleClass")
 	})
 }
 
@@ -4140,12 +4365,12 @@ type ImageAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var ImageAccessiblePrivateStruct *gi.Struct
-var ImageAccessiblePrivateStructOnce sync.Once
+var imageAccessiblePrivateStruct *gi.Struct
+var imageAccessiblePrivateStructOnce sync.Once
 
-func ImageAccessiblePrivateStructSet() {
-	ImageAccessiblePrivateStructOnce.Do(func() {
-		ImageAccessiblePrivateStruct = gi.StructNew("Gtk", "ImageAccessiblePrivate")
+func imageAccessiblePrivateStructSet() {
+	imageAccessiblePrivateStructOnce.Do(func() {
+		imageAccessiblePrivateStruct = gi.StructNew("Gtk", "ImageAccessiblePrivate")
 	})
 }
 
@@ -4153,12 +4378,12 @@ type ImageAccessiblePrivate struct {
 	native uintptr
 }
 
-var ImageCellAccessibleClassStruct *gi.Struct
-var ImageCellAccessibleClassStructOnce sync.Once
+var imageCellAccessibleClassStruct *gi.Struct
+var imageCellAccessibleClassStructOnce sync.Once
 
-func ImageCellAccessibleClassStructSet() {
-	ImageCellAccessibleClassStructOnce.Do(func() {
-		ImageCellAccessibleClassStruct = gi.StructNew("Gtk", "ImageCellAccessibleClass")
+func imageCellAccessibleClassStructSet() {
+	imageCellAccessibleClassStructOnce.Do(func() {
+		imageCellAccessibleClassStruct = gi.StructNew("Gtk", "ImageCellAccessibleClass")
 	})
 }
 
@@ -4167,12 +4392,12 @@ type ImageCellAccessibleClass struct {
 	ParentClass *RendererCellAccessibleClass
 }
 
-var ImageCellAccessiblePrivateStruct *gi.Struct
-var ImageCellAccessiblePrivateStructOnce sync.Once
+var imageCellAccessiblePrivateStruct *gi.Struct
+var imageCellAccessiblePrivateStructOnce sync.Once
 
-func ImageCellAccessiblePrivateStructSet() {
-	ImageCellAccessiblePrivateStructOnce.Do(func() {
-		ImageCellAccessiblePrivateStruct = gi.StructNew("Gtk", "ImageCellAccessiblePrivate")
+func imageCellAccessiblePrivateStructSet() {
+	imageCellAccessiblePrivateStructOnce.Do(func() {
+		imageCellAccessiblePrivateStruct = gi.StructNew("Gtk", "ImageCellAccessiblePrivate")
 	})
 }
 
@@ -4180,12 +4405,12 @@ type ImageCellAccessiblePrivate struct {
 	native uintptr
 }
 
-var ImageClassStruct *gi.Struct
-var ImageClassStructOnce sync.Once
+var imageClassStruct *gi.Struct
+var imageClassStructOnce sync.Once
 
-func ImageClassStructSet() {
-	ImageClassStructOnce.Do(func() {
-		ImageClassStruct = gi.StructNew("Gtk", "ImageClass")
+func imageClassStructSet() {
+	imageClassStructOnce.Do(func() {
+		imageClassStruct = gi.StructNew("Gtk", "ImageClass")
 	})
 }
 
@@ -4198,12 +4423,12 @@ type ImageClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ImageMenuItemClassStruct *gi.Struct
-var ImageMenuItemClassStructOnce sync.Once
+var imageMenuItemClassStruct *gi.Struct
+var imageMenuItemClassStructOnce sync.Once
 
-func ImageMenuItemClassStructSet() {
-	ImageMenuItemClassStructOnce.Do(func() {
-		ImageMenuItemClassStruct = gi.StructNew("Gtk", "ImageMenuItemClass")
+func imageMenuItemClassStructSet() {
+	imageMenuItemClassStructOnce.Do(func() {
+		imageMenuItemClassStruct = gi.StructNew("Gtk", "ImageMenuItemClass")
 	})
 }
 
@@ -4216,12 +4441,12 @@ type ImageMenuItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ImageMenuItemPrivateStruct *gi.Struct
-var ImageMenuItemPrivateStructOnce sync.Once
+var imageMenuItemPrivateStruct *gi.Struct
+var imageMenuItemPrivateStructOnce sync.Once
 
-func ImageMenuItemPrivateStructSet() {
-	ImageMenuItemPrivateStructOnce.Do(func() {
-		ImageMenuItemPrivateStruct = gi.StructNew("Gtk", "ImageMenuItemPrivate")
+func imageMenuItemPrivateStructSet() {
+	imageMenuItemPrivateStructOnce.Do(func() {
+		imageMenuItemPrivateStruct = gi.StructNew("Gtk", "ImageMenuItemPrivate")
 	})
 }
 
@@ -4229,12 +4454,12 @@ type ImageMenuItemPrivate struct {
 	native uintptr
 }
 
-var ImagePrivateStruct *gi.Struct
-var ImagePrivateStructOnce sync.Once
+var imagePrivateStruct *gi.Struct
+var imagePrivateStructOnce sync.Once
 
-func ImagePrivateStructSet() {
-	ImagePrivateStructOnce.Do(func() {
-		ImagePrivateStruct = gi.StructNew("Gtk", "ImagePrivate")
+func imagePrivateStructSet() {
+	imagePrivateStructOnce.Do(func() {
+		imagePrivateStruct = gi.StructNew("Gtk", "ImagePrivate")
 	})
 }
 
@@ -4242,12 +4467,12 @@ type ImagePrivate struct {
 	native uintptr
 }
 
-var InfoBarClassStruct *gi.Struct
-var InfoBarClassStructOnce sync.Once
+var infoBarClassStruct *gi.Struct
+var infoBarClassStructOnce sync.Once
 
-func InfoBarClassStructSet() {
-	InfoBarClassStructOnce.Do(func() {
-		InfoBarClassStruct = gi.StructNew("Gtk", "InfoBarClass")
+func infoBarClassStructSet() {
+	infoBarClassStructOnce.Do(func() {
+		infoBarClassStruct = gi.StructNew("Gtk", "InfoBarClass")
 	})
 }
 
@@ -4262,12 +4487,12 @@ type InfoBarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var InfoBarPrivateStruct *gi.Struct
-var InfoBarPrivateStructOnce sync.Once
+var infoBarPrivateStruct *gi.Struct
+var infoBarPrivateStructOnce sync.Once
 
-func InfoBarPrivateStructSet() {
-	InfoBarPrivateStructOnce.Do(func() {
-		InfoBarPrivateStruct = gi.StructNew("Gtk", "InfoBarPrivate")
+func infoBarPrivateStructSet() {
+	infoBarPrivateStructOnce.Do(func() {
+		infoBarPrivateStruct = gi.StructNew("Gtk", "InfoBarPrivate")
 	})
 }
 
@@ -4275,12 +4500,12 @@ type InfoBarPrivate struct {
 	native uintptr
 }
 
-var InvisibleClassStruct *gi.Struct
-var InvisibleClassStructOnce sync.Once
+var invisibleClassStruct *gi.Struct
+var invisibleClassStructOnce sync.Once
 
-func InvisibleClassStructSet() {
-	InvisibleClassStructOnce.Do(func() {
-		InvisibleClassStruct = gi.StructNew("Gtk", "InvisibleClass")
+func invisibleClassStructSet() {
+	invisibleClassStructOnce.Do(func() {
+		invisibleClassStruct = gi.StructNew("Gtk", "InvisibleClass")
 	})
 }
 
@@ -4293,12 +4518,12 @@ type InvisibleClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var InvisiblePrivateStruct *gi.Struct
-var InvisiblePrivateStructOnce sync.Once
+var invisiblePrivateStruct *gi.Struct
+var invisiblePrivateStructOnce sync.Once
 
-func InvisiblePrivateStructSet() {
-	InvisiblePrivateStructOnce.Do(func() {
-		InvisiblePrivateStruct = gi.StructNew("Gtk", "InvisiblePrivate")
+func invisiblePrivateStructSet() {
+	invisiblePrivateStructOnce.Do(func() {
+		invisiblePrivateStruct = gi.StructNew("Gtk", "InvisiblePrivate")
 	})
 }
 
@@ -4306,12 +4531,12 @@ type InvisiblePrivate struct {
 	native uintptr
 }
 
-var LabelAccessibleClassStruct *gi.Struct
-var LabelAccessibleClassStructOnce sync.Once
+var labelAccessibleClassStruct *gi.Struct
+var labelAccessibleClassStructOnce sync.Once
 
-func LabelAccessibleClassStructSet() {
-	LabelAccessibleClassStructOnce.Do(func() {
-		LabelAccessibleClassStruct = gi.StructNew("Gtk", "LabelAccessibleClass")
+func labelAccessibleClassStructSet() {
+	labelAccessibleClassStructOnce.Do(func() {
+		labelAccessibleClassStruct = gi.StructNew("Gtk", "LabelAccessibleClass")
 	})
 }
 
@@ -4320,12 +4545,12 @@ type LabelAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var LabelAccessiblePrivateStruct *gi.Struct
-var LabelAccessiblePrivateStructOnce sync.Once
+var labelAccessiblePrivateStruct *gi.Struct
+var labelAccessiblePrivateStructOnce sync.Once
 
-func LabelAccessiblePrivateStructSet() {
-	LabelAccessiblePrivateStructOnce.Do(func() {
-		LabelAccessiblePrivateStruct = gi.StructNew("Gtk", "LabelAccessiblePrivate")
+func labelAccessiblePrivateStructSet() {
+	labelAccessiblePrivateStructOnce.Do(func() {
+		labelAccessiblePrivateStruct = gi.StructNew("Gtk", "LabelAccessiblePrivate")
 	})
 }
 
@@ -4333,12 +4558,12 @@ type LabelAccessiblePrivate struct {
 	native uintptr
 }
 
-var LabelClassStruct *gi.Struct
-var LabelClassStructOnce sync.Once
+var labelClassStruct *gi.Struct
+var labelClassStructOnce sync.Once
 
-func LabelClassStructSet() {
-	LabelClassStructOnce.Do(func() {
-		LabelClassStruct = gi.StructNew("Gtk", "LabelClass")
+func labelClassStructSet() {
+	labelClassStructOnce.Do(func() {
+		labelClassStruct = gi.StructNew("Gtk", "LabelClass")
 	})
 }
 
@@ -4359,12 +4584,12 @@ type LabelClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var LabelPrivateStruct *gi.Struct
-var LabelPrivateStructOnce sync.Once
+var labelPrivateStruct *gi.Struct
+var labelPrivateStructOnce sync.Once
 
-func LabelPrivateStructSet() {
-	LabelPrivateStructOnce.Do(func() {
-		LabelPrivateStruct = gi.StructNew("Gtk", "LabelPrivate")
+func labelPrivateStructSet() {
+	labelPrivateStructOnce.Do(func() {
+		labelPrivateStruct = gi.StructNew("Gtk", "LabelPrivate")
 	})
 }
 
@@ -4372,12 +4597,12 @@ type LabelPrivate struct {
 	native uintptr
 }
 
-var LabelSelectionInfoStruct *gi.Struct
-var LabelSelectionInfoStructOnce sync.Once
+var labelSelectionInfoStruct *gi.Struct
+var labelSelectionInfoStructOnce sync.Once
 
-func LabelSelectionInfoStructSet() {
-	LabelSelectionInfoStructOnce.Do(func() {
-		LabelSelectionInfoStruct = gi.StructNew("Gtk", "LabelSelectionInfo")
+func labelSelectionInfoStructSet() {
+	labelSelectionInfoStructOnce.Do(func() {
+		labelSelectionInfoStruct = gi.StructNew("Gtk", "LabelSelectionInfo")
 	})
 }
 
@@ -4385,12 +4610,12 @@ type LabelSelectionInfo struct {
 	native uintptr
 }
 
-var LayoutClassStruct *gi.Struct
-var LayoutClassStructOnce sync.Once
+var layoutClassStruct *gi.Struct
+var layoutClassStructOnce sync.Once
 
-func LayoutClassStructSet() {
-	LayoutClassStructOnce.Do(func() {
-		LayoutClassStruct = gi.StructNew("Gtk", "LayoutClass")
+func layoutClassStructSet() {
+	layoutClassStructOnce.Do(func() {
+		layoutClassStruct = gi.StructNew("Gtk", "LayoutClass")
 	})
 }
 
@@ -4403,12 +4628,12 @@ type LayoutClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var LayoutPrivateStruct *gi.Struct
-var LayoutPrivateStructOnce sync.Once
+var layoutPrivateStruct *gi.Struct
+var layoutPrivateStructOnce sync.Once
 
-func LayoutPrivateStructSet() {
-	LayoutPrivateStructOnce.Do(func() {
-		LayoutPrivateStruct = gi.StructNew("Gtk", "LayoutPrivate")
+func layoutPrivateStructSet() {
+	layoutPrivateStructOnce.Do(func() {
+		layoutPrivateStruct = gi.StructNew("Gtk", "LayoutPrivate")
 	})
 }
 
@@ -4416,12 +4641,12 @@ type LayoutPrivate struct {
 	native uintptr
 }
 
-var LevelBarAccessibleClassStruct *gi.Struct
-var LevelBarAccessibleClassStructOnce sync.Once
+var levelBarAccessibleClassStruct *gi.Struct
+var levelBarAccessibleClassStructOnce sync.Once
 
-func LevelBarAccessibleClassStructSet() {
-	LevelBarAccessibleClassStructOnce.Do(func() {
-		LevelBarAccessibleClassStruct = gi.StructNew("Gtk", "LevelBarAccessibleClass")
+func levelBarAccessibleClassStructSet() {
+	levelBarAccessibleClassStructOnce.Do(func() {
+		levelBarAccessibleClassStruct = gi.StructNew("Gtk", "LevelBarAccessibleClass")
 	})
 }
 
@@ -4430,12 +4655,12 @@ type LevelBarAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var LevelBarAccessiblePrivateStruct *gi.Struct
-var LevelBarAccessiblePrivateStructOnce sync.Once
+var levelBarAccessiblePrivateStruct *gi.Struct
+var levelBarAccessiblePrivateStructOnce sync.Once
 
-func LevelBarAccessiblePrivateStructSet() {
-	LevelBarAccessiblePrivateStructOnce.Do(func() {
-		LevelBarAccessiblePrivateStruct = gi.StructNew("Gtk", "LevelBarAccessiblePrivate")
+func levelBarAccessiblePrivateStructSet() {
+	levelBarAccessiblePrivateStructOnce.Do(func() {
+		levelBarAccessiblePrivateStruct = gi.StructNew("Gtk", "LevelBarAccessiblePrivate")
 	})
 }
 
@@ -4443,12 +4668,12 @@ type LevelBarAccessiblePrivate struct {
 	native uintptr
 }
 
-var LevelBarClassStruct *gi.Struct
-var LevelBarClassStructOnce sync.Once
+var levelBarClassStruct *gi.Struct
+var levelBarClassStructOnce sync.Once
 
-func LevelBarClassStructSet() {
-	LevelBarClassStructOnce.Do(func() {
-		LevelBarClassStruct = gi.StructNew("Gtk", "LevelBarClass")
+func levelBarClassStructSet() {
+	levelBarClassStructOnce.Do(func() {
+		levelBarClassStruct = gi.StructNew("Gtk", "LevelBarClass")
 	})
 }
 
@@ -4457,12 +4682,12 @@ type LevelBarClass struct {
 	// UNSUPPORTED : C value 'offset_changed' : missing Type
 }
 
-var LevelBarPrivateStruct *gi.Struct
-var LevelBarPrivateStructOnce sync.Once
+var levelBarPrivateStruct *gi.Struct
+var levelBarPrivateStructOnce sync.Once
 
-func LevelBarPrivateStructSet() {
-	LevelBarPrivateStructOnce.Do(func() {
-		LevelBarPrivateStruct = gi.StructNew("Gtk", "LevelBarPrivate")
+func levelBarPrivateStructSet() {
+	levelBarPrivateStructOnce.Do(func() {
+		levelBarPrivateStruct = gi.StructNew("Gtk", "LevelBarPrivate")
 	})
 }
 
@@ -4470,12 +4695,12 @@ type LevelBarPrivate struct {
 	native uintptr
 }
 
-var LinkButtonAccessibleClassStruct *gi.Struct
-var LinkButtonAccessibleClassStructOnce sync.Once
+var linkButtonAccessibleClassStruct *gi.Struct
+var linkButtonAccessibleClassStructOnce sync.Once
 
-func LinkButtonAccessibleClassStructSet() {
-	LinkButtonAccessibleClassStructOnce.Do(func() {
-		LinkButtonAccessibleClassStruct = gi.StructNew("Gtk", "LinkButtonAccessibleClass")
+func linkButtonAccessibleClassStructSet() {
+	linkButtonAccessibleClassStructOnce.Do(func() {
+		linkButtonAccessibleClassStruct = gi.StructNew("Gtk", "LinkButtonAccessibleClass")
 	})
 }
 
@@ -4484,12 +4709,12 @@ type LinkButtonAccessibleClass struct {
 	ParentClass *ButtonAccessibleClass
 }
 
-var LinkButtonAccessiblePrivateStruct *gi.Struct
-var LinkButtonAccessiblePrivateStructOnce sync.Once
+var linkButtonAccessiblePrivateStruct *gi.Struct
+var linkButtonAccessiblePrivateStructOnce sync.Once
 
-func LinkButtonAccessiblePrivateStructSet() {
-	LinkButtonAccessiblePrivateStructOnce.Do(func() {
-		LinkButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "LinkButtonAccessiblePrivate")
+func linkButtonAccessiblePrivateStructSet() {
+	linkButtonAccessiblePrivateStructOnce.Do(func() {
+		linkButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "LinkButtonAccessiblePrivate")
 	})
 }
 
@@ -4497,12 +4722,12 @@ type LinkButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var LinkButtonClassStruct *gi.Struct
-var LinkButtonClassStructOnce sync.Once
+var linkButtonClassStruct *gi.Struct
+var linkButtonClassStructOnce sync.Once
 
-func LinkButtonClassStructSet() {
-	LinkButtonClassStructOnce.Do(func() {
-		LinkButtonClassStruct = gi.StructNew("Gtk", "LinkButtonClass")
+func linkButtonClassStructSet() {
+	linkButtonClassStructOnce.Do(func() {
+		linkButtonClassStruct = gi.StructNew("Gtk", "LinkButtonClass")
 	})
 }
 
@@ -4515,12 +4740,12 @@ type LinkButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_padding4' : missing Type
 }
 
-var LinkButtonPrivateStruct *gi.Struct
-var LinkButtonPrivateStructOnce sync.Once
+var linkButtonPrivateStruct *gi.Struct
+var linkButtonPrivateStructOnce sync.Once
 
-func LinkButtonPrivateStructSet() {
-	LinkButtonPrivateStructOnce.Do(func() {
-		LinkButtonPrivateStruct = gi.StructNew("Gtk", "LinkButtonPrivate")
+func linkButtonPrivateStructSet() {
+	linkButtonPrivateStructOnce.Do(func() {
+		linkButtonPrivateStruct = gi.StructNew("Gtk", "LinkButtonPrivate")
 	})
 }
 
@@ -4528,12 +4753,12 @@ type LinkButtonPrivate struct {
 	native uintptr
 }
 
-var ListBoxAccessibleClassStruct *gi.Struct
-var ListBoxAccessibleClassStructOnce sync.Once
+var listBoxAccessibleClassStruct *gi.Struct
+var listBoxAccessibleClassStructOnce sync.Once
 
-func ListBoxAccessibleClassStructSet() {
-	ListBoxAccessibleClassStructOnce.Do(func() {
-		ListBoxAccessibleClassStruct = gi.StructNew("Gtk", "ListBoxAccessibleClass")
+func listBoxAccessibleClassStructSet() {
+	listBoxAccessibleClassStructOnce.Do(func() {
+		listBoxAccessibleClassStruct = gi.StructNew("Gtk", "ListBoxAccessibleClass")
 	})
 }
 
@@ -4542,12 +4767,12 @@ type ListBoxAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var ListBoxAccessiblePrivateStruct *gi.Struct
-var ListBoxAccessiblePrivateStructOnce sync.Once
+var listBoxAccessiblePrivateStruct *gi.Struct
+var listBoxAccessiblePrivateStructOnce sync.Once
 
-func ListBoxAccessiblePrivateStructSet() {
-	ListBoxAccessiblePrivateStructOnce.Do(func() {
-		ListBoxAccessiblePrivateStruct = gi.StructNew("Gtk", "ListBoxAccessiblePrivate")
+func listBoxAccessiblePrivateStructSet() {
+	listBoxAccessiblePrivateStructOnce.Do(func() {
+		listBoxAccessiblePrivateStruct = gi.StructNew("Gtk", "ListBoxAccessiblePrivate")
 	})
 }
 
@@ -4555,12 +4780,12 @@ type ListBoxAccessiblePrivate struct {
 	native uintptr
 }
 
-var ListBoxClassStruct *gi.Struct
-var ListBoxClassStructOnce sync.Once
+var listBoxClassStruct *gi.Struct
+var listBoxClassStructOnce sync.Once
 
-func ListBoxClassStructSet() {
-	ListBoxClassStructOnce.Do(func() {
-		ListBoxClassStruct = gi.StructNew("Gtk", "ListBoxClass")
+func listBoxClassStructSet() {
+	listBoxClassStructOnce.Do(func() {
+		listBoxClassStruct = gi.StructNew("Gtk", "ListBoxClass")
 	})
 }
 
@@ -4580,12 +4805,12 @@ type ListBoxClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
 }
 
-var ListBoxRowAccessibleClassStruct *gi.Struct
-var ListBoxRowAccessibleClassStructOnce sync.Once
+var listBoxRowAccessibleClassStruct *gi.Struct
+var listBoxRowAccessibleClassStructOnce sync.Once
 
-func ListBoxRowAccessibleClassStructSet() {
-	ListBoxRowAccessibleClassStructOnce.Do(func() {
-		ListBoxRowAccessibleClassStruct = gi.StructNew("Gtk", "ListBoxRowAccessibleClass")
+func listBoxRowAccessibleClassStructSet() {
+	listBoxRowAccessibleClassStructOnce.Do(func() {
+		listBoxRowAccessibleClassStruct = gi.StructNew("Gtk", "ListBoxRowAccessibleClass")
 	})
 }
 
@@ -4594,12 +4819,12 @@ type ListBoxRowAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var ListBoxRowClassStruct *gi.Struct
-var ListBoxRowClassStructOnce sync.Once
+var listBoxRowClassStruct *gi.Struct
+var listBoxRowClassStructOnce sync.Once
 
-func ListBoxRowClassStructSet() {
-	ListBoxRowClassStructOnce.Do(func() {
-		ListBoxRowClassStruct = gi.StructNew("Gtk", "ListBoxRowClass")
+func listBoxRowClassStructSet() {
+	listBoxRowClassStructOnce.Do(func() {
+		listBoxRowClassStruct = gi.StructNew("Gtk", "ListBoxRowClass")
 	})
 }
 
@@ -4611,12 +4836,12 @@ type ListBoxRowClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
 }
 
-var ListStoreClassStruct *gi.Struct
-var ListStoreClassStructOnce sync.Once
+var listStoreClassStruct *gi.Struct
+var listStoreClassStructOnce sync.Once
 
-func ListStoreClassStructSet() {
-	ListStoreClassStructOnce.Do(func() {
-		ListStoreClassStruct = gi.StructNew("Gtk", "ListStoreClass")
+func listStoreClassStructSet() {
+	listStoreClassStructOnce.Do(func() {
+		listStoreClassStruct = gi.StructNew("Gtk", "ListStoreClass")
 	})
 }
 
@@ -4629,12 +4854,12 @@ type ListStoreClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ListStorePrivateStruct *gi.Struct
-var ListStorePrivateStructOnce sync.Once
+var listStorePrivateStruct *gi.Struct
+var listStorePrivateStructOnce sync.Once
 
-func ListStorePrivateStructSet() {
-	ListStorePrivateStructOnce.Do(func() {
-		ListStorePrivateStruct = gi.StructNew("Gtk", "ListStorePrivate")
+func listStorePrivateStructSet() {
+	listStorePrivateStructOnce.Do(func() {
+		listStorePrivateStruct = gi.StructNew("Gtk", "ListStorePrivate")
 	})
 }
 
@@ -4642,12 +4867,12 @@ type ListStorePrivate struct {
 	native uintptr
 }
 
-var LockButtonAccessibleClassStruct *gi.Struct
-var LockButtonAccessibleClassStructOnce sync.Once
+var lockButtonAccessibleClassStruct *gi.Struct
+var lockButtonAccessibleClassStructOnce sync.Once
 
-func LockButtonAccessibleClassStructSet() {
-	LockButtonAccessibleClassStructOnce.Do(func() {
-		LockButtonAccessibleClassStruct = gi.StructNew("Gtk", "LockButtonAccessibleClass")
+func lockButtonAccessibleClassStructSet() {
+	lockButtonAccessibleClassStructOnce.Do(func() {
+		lockButtonAccessibleClassStruct = gi.StructNew("Gtk", "LockButtonAccessibleClass")
 	})
 }
 
@@ -4656,12 +4881,12 @@ type LockButtonAccessibleClass struct {
 	ParentClass *ButtonAccessibleClass
 }
 
-var LockButtonAccessiblePrivateStruct *gi.Struct
-var LockButtonAccessiblePrivateStructOnce sync.Once
+var lockButtonAccessiblePrivateStruct *gi.Struct
+var lockButtonAccessiblePrivateStructOnce sync.Once
 
-func LockButtonAccessiblePrivateStructSet() {
-	LockButtonAccessiblePrivateStructOnce.Do(func() {
-		LockButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "LockButtonAccessiblePrivate")
+func lockButtonAccessiblePrivateStructSet() {
+	lockButtonAccessiblePrivateStructOnce.Do(func() {
+		lockButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "LockButtonAccessiblePrivate")
 	})
 }
 
@@ -4669,12 +4894,12 @@ type LockButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var LockButtonClassStruct *gi.Struct
-var LockButtonClassStructOnce sync.Once
+var lockButtonClassStruct *gi.Struct
+var lockButtonClassStructOnce sync.Once
 
-func LockButtonClassStructSet() {
-	LockButtonClassStructOnce.Do(func() {
-		LockButtonClassStruct = gi.StructNew("Gtk", "LockButtonClass")
+func lockButtonClassStructSet() {
+	lockButtonClassStructOnce.Do(func() {
+		lockButtonClassStruct = gi.StructNew("Gtk", "LockButtonClass")
 	})
 }
 
@@ -4691,12 +4916,12 @@ type LockButtonClass struct {
 	// UNSUPPORTED : C value 'reserved7' : missing Type
 }
 
-var LockButtonPrivateStruct *gi.Struct
-var LockButtonPrivateStructOnce sync.Once
+var lockButtonPrivateStruct *gi.Struct
+var lockButtonPrivateStructOnce sync.Once
 
-func LockButtonPrivateStructSet() {
-	LockButtonPrivateStructOnce.Do(func() {
-		LockButtonPrivateStruct = gi.StructNew("Gtk", "LockButtonPrivate")
+func lockButtonPrivateStructSet() {
+	lockButtonPrivateStructOnce.Do(func() {
+		lockButtonPrivateStruct = gi.StructNew("Gtk", "LockButtonPrivate")
 	})
 }
 
@@ -4704,12 +4929,12 @@ type LockButtonPrivate struct {
 	native uintptr
 }
 
-var MenuAccessibleClassStruct *gi.Struct
-var MenuAccessibleClassStructOnce sync.Once
+var menuAccessibleClassStruct *gi.Struct
+var menuAccessibleClassStructOnce sync.Once
 
-func MenuAccessibleClassStructSet() {
-	MenuAccessibleClassStructOnce.Do(func() {
-		MenuAccessibleClassStruct = gi.StructNew("Gtk", "MenuAccessibleClass")
+func menuAccessibleClassStructSet() {
+	menuAccessibleClassStructOnce.Do(func() {
+		menuAccessibleClassStruct = gi.StructNew("Gtk", "MenuAccessibleClass")
 	})
 }
 
@@ -4718,12 +4943,12 @@ type MenuAccessibleClass struct {
 	ParentClass *MenuShellAccessibleClass
 }
 
-var MenuAccessiblePrivateStruct *gi.Struct
-var MenuAccessiblePrivateStructOnce sync.Once
+var menuAccessiblePrivateStruct *gi.Struct
+var menuAccessiblePrivateStructOnce sync.Once
 
-func MenuAccessiblePrivateStructSet() {
-	MenuAccessiblePrivateStructOnce.Do(func() {
-		MenuAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuAccessiblePrivate")
+func menuAccessiblePrivateStructSet() {
+	menuAccessiblePrivateStructOnce.Do(func() {
+		menuAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuAccessiblePrivate")
 	})
 }
 
@@ -4731,12 +4956,12 @@ type MenuAccessiblePrivate struct {
 	native uintptr
 }
 
-var MenuBarClassStruct *gi.Struct
-var MenuBarClassStructOnce sync.Once
+var menuBarClassStruct *gi.Struct
+var menuBarClassStructOnce sync.Once
 
-func MenuBarClassStructSet() {
-	MenuBarClassStructOnce.Do(func() {
-		MenuBarClassStruct = gi.StructNew("Gtk", "MenuBarClass")
+func menuBarClassStructSet() {
+	menuBarClassStructOnce.Do(func() {
+		menuBarClassStruct = gi.StructNew("Gtk", "MenuBarClass")
 	})
 }
 
@@ -4749,12 +4974,12 @@ type MenuBarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MenuBarPrivateStruct *gi.Struct
-var MenuBarPrivateStructOnce sync.Once
+var menuBarPrivateStruct *gi.Struct
+var menuBarPrivateStructOnce sync.Once
 
-func MenuBarPrivateStructSet() {
-	MenuBarPrivateStructOnce.Do(func() {
-		MenuBarPrivateStruct = gi.StructNew("Gtk", "MenuBarPrivate")
+func menuBarPrivateStructSet() {
+	menuBarPrivateStructOnce.Do(func() {
+		menuBarPrivateStruct = gi.StructNew("Gtk", "MenuBarPrivate")
 	})
 }
 
@@ -4762,12 +4987,12 @@ type MenuBarPrivate struct {
 	native uintptr
 }
 
-var MenuButtonAccessibleClassStruct *gi.Struct
-var MenuButtonAccessibleClassStructOnce sync.Once
+var menuButtonAccessibleClassStruct *gi.Struct
+var menuButtonAccessibleClassStructOnce sync.Once
 
-func MenuButtonAccessibleClassStructSet() {
-	MenuButtonAccessibleClassStructOnce.Do(func() {
-		MenuButtonAccessibleClassStruct = gi.StructNew("Gtk", "MenuButtonAccessibleClass")
+func menuButtonAccessibleClassStructSet() {
+	menuButtonAccessibleClassStructOnce.Do(func() {
+		menuButtonAccessibleClassStruct = gi.StructNew("Gtk", "MenuButtonAccessibleClass")
 	})
 }
 
@@ -4776,12 +5001,12 @@ type MenuButtonAccessibleClass struct {
 	ParentClass *ToggleButtonAccessibleClass
 }
 
-var MenuButtonAccessiblePrivateStruct *gi.Struct
-var MenuButtonAccessiblePrivateStructOnce sync.Once
+var menuButtonAccessiblePrivateStruct *gi.Struct
+var menuButtonAccessiblePrivateStructOnce sync.Once
 
-func MenuButtonAccessiblePrivateStructSet() {
-	MenuButtonAccessiblePrivateStructOnce.Do(func() {
-		MenuButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuButtonAccessiblePrivate")
+func menuButtonAccessiblePrivateStructSet() {
+	menuButtonAccessiblePrivateStructOnce.Do(func() {
+		menuButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuButtonAccessiblePrivate")
 	})
 }
 
@@ -4789,12 +5014,12 @@ type MenuButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var MenuButtonClassStruct *gi.Struct
-var MenuButtonClassStructOnce sync.Once
+var menuButtonClassStruct *gi.Struct
+var menuButtonClassStructOnce sync.Once
 
-func MenuButtonClassStructSet() {
-	MenuButtonClassStructOnce.Do(func() {
-		MenuButtonClassStruct = gi.StructNew("Gtk", "MenuButtonClass")
+func menuButtonClassStructSet() {
+	menuButtonClassStructOnce.Do(func() {
+		menuButtonClassStruct = gi.StructNew("Gtk", "MenuButtonClass")
 	})
 }
 
@@ -4807,12 +5032,12 @@ type MenuButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MenuButtonPrivateStruct *gi.Struct
-var MenuButtonPrivateStructOnce sync.Once
+var menuButtonPrivateStruct *gi.Struct
+var menuButtonPrivateStructOnce sync.Once
 
-func MenuButtonPrivateStructSet() {
-	MenuButtonPrivateStructOnce.Do(func() {
-		MenuButtonPrivateStruct = gi.StructNew("Gtk", "MenuButtonPrivate")
+func menuButtonPrivateStructSet() {
+	menuButtonPrivateStructOnce.Do(func() {
+		menuButtonPrivateStruct = gi.StructNew("Gtk", "MenuButtonPrivate")
 	})
 }
 
@@ -4820,12 +5045,12 @@ type MenuButtonPrivate struct {
 	native uintptr
 }
 
-var MenuClassStruct *gi.Struct
-var MenuClassStructOnce sync.Once
+var menuClassStruct *gi.Struct
+var menuClassStructOnce sync.Once
 
-func MenuClassStructSet() {
-	MenuClassStructOnce.Do(func() {
-		MenuClassStruct = gi.StructNew("Gtk", "MenuClass")
+func menuClassStructSet() {
+	menuClassStructOnce.Do(func() {
+		menuClassStruct = gi.StructNew("Gtk", "MenuClass")
 	})
 }
 
@@ -4838,12 +5063,12 @@ type MenuClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MenuItemAccessibleClassStruct *gi.Struct
-var MenuItemAccessibleClassStructOnce sync.Once
+var menuItemAccessibleClassStruct *gi.Struct
+var menuItemAccessibleClassStructOnce sync.Once
 
-func MenuItemAccessibleClassStructSet() {
-	MenuItemAccessibleClassStructOnce.Do(func() {
-		MenuItemAccessibleClassStruct = gi.StructNew("Gtk", "MenuItemAccessibleClass")
+func menuItemAccessibleClassStructSet() {
+	menuItemAccessibleClassStructOnce.Do(func() {
+		menuItemAccessibleClassStruct = gi.StructNew("Gtk", "MenuItemAccessibleClass")
 	})
 }
 
@@ -4852,12 +5077,12 @@ type MenuItemAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var MenuItemAccessiblePrivateStruct *gi.Struct
-var MenuItemAccessiblePrivateStructOnce sync.Once
+var menuItemAccessiblePrivateStruct *gi.Struct
+var menuItemAccessiblePrivateStructOnce sync.Once
 
-func MenuItemAccessiblePrivateStructSet() {
-	MenuItemAccessiblePrivateStructOnce.Do(func() {
-		MenuItemAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuItemAccessiblePrivate")
+func menuItemAccessiblePrivateStructSet() {
+	menuItemAccessiblePrivateStructOnce.Do(func() {
+		menuItemAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuItemAccessiblePrivate")
 	})
 }
 
@@ -4865,12 +5090,12 @@ type MenuItemAccessiblePrivate struct {
 	native uintptr
 }
 
-var MenuItemClassStruct *gi.Struct
-var MenuItemClassStructOnce sync.Once
+var menuItemClassStruct *gi.Struct
+var menuItemClassStructOnce sync.Once
 
-func MenuItemClassStructSet() {
-	MenuItemClassStructOnce.Do(func() {
-		MenuItemClassStruct = gi.StructNew("Gtk", "MenuItemClass")
+func menuItemClassStructSet() {
+	menuItemClassStructOnce.Do(func() {
+		menuItemClassStruct = gi.StructNew("Gtk", "MenuItemClass")
 	})
 }
 
@@ -4892,12 +5117,12 @@ type MenuItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MenuItemPrivateStruct *gi.Struct
-var MenuItemPrivateStructOnce sync.Once
+var menuItemPrivateStruct *gi.Struct
+var menuItemPrivateStructOnce sync.Once
 
-func MenuItemPrivateStructSet() {
-	MenuItemPrivateStructOnce.Do(func() {
-		MenuItemPrivateStruct = gi.StructNew("Gtk", "MenuItemPrivate")
+func menuItemPrivateStructSet() {
+	menuItemPrivateStructOnce.Do(func() {
+		menuItemPrivateStruct = gi.StructNew("Gtk", "MenuItemPrivate")
 	})
 }
 
@@ -4905,12 +5130,12 @@ type MenuItemPrivate struct {
 	native uintptr
 }
 
-var MenuPrivateStruct *gi.Struct
-var MenuPrivateStructOnce sync.Once
+var menuPrivateStruct *gi.Struct
+var menuPrivateStructOnce sync.Once
 
-func MenuPrivateStructSet() {
-	MenuPrivateStructOnce.Do(func() {
-		MenuPrivateStruct = gi.StructNew("Gtk", "MenuPrivate")
+func menuPrivateStructSet() {
+	menuPrivateStructOnce.Do(func() {
+		menuPrivateStruct = gi.StructNew("Gtk", "MenuPrivate")
 	})
 }
 
@@ -4918,12 +5143,12 @@ type MenuPrivate struct {
 	native uintptr
 }
 
-var MenuShellAccessibleClassStruct *gi.Struct
-var MenuShellAccessibleClassStructOnce sync.Once
+var menuShellAccessibleClassStruct *gi.Struct
+var menuShellAccessibleClassStructOnce sync.Once
 
-func MenuShellAccessibleClassStructSet() {
-	MenuShellAccessibleClassStructOnce.Do(func() {
-		MenuShellAccessibleClassStruct = gi.StructNew("Gtk", "MenuShellAccessibleClass")
+func menuShellAccessibleClassStructSet() {
+	menuShellAccessibleClassStructOnce.Do(func() {
+		menuShellAccessibleClassStruct = gi.StructNew("Gtk", "MenuShellAccessibleClass")
 	})
 }
 
@@ -4932,12 +5157,12 @@ type MenuShellAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var MenuShellAccessiblePrivateStruct *gi.Struct
-var MenuShellAccessiblePrivateStructOnce sync.Once
+var menuShellAccessiblePrivateStruct *gi.Struct
+var menuShellAccessiblePrivateStructOnce sync.Once
 
-func MenuShellAccessiblePrivateStructSet() {
-	MenuShellAccessiblePrivateStructOnce.Do(func() {
-		MenuShellAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuShellAccessiblePrivate")
+func menuShellAccessiblePrivateStructSet() {
+	menuShellAccessiblePrivateStructOnce.Do(func() {
+		menuShellAccessiblePrivateStruct = gi.StructNew("Gtk", "MenuShellAccessiblePrivate")
 	})
 }
 
@@ -4945,12 +5170,12 @@ type MenuShellAccessiblePrivate struct {
 	native uintptr
 }
 
-var MenuShellClassStruct *gi.Struct
-var MenuShellClassStructOnce sync.Once
+var menuShellClassStruct *gi.Struct
+var menuShellClassStructOnce sync.Once
 
-func MenuShellClassStructSet() {
-	MenuShellClassStructOnce.Do(func() {
-		MenuShellClassStruct = gi.StructNew("Gtk", "MenuShellClass")
+func menuShellClassStructSet() {
+	menuShellClassStructOnce.Do(func() {
+		menuShellClassStruct = gi.StructNew("Gtk", "MenuShellClass")
 	})
 }
 
@@ -4973,12 +5198,12 @@ type MenuShellClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MenuShellPrivateStruct *gi.Struct
-var MenuShellPrivateStructOnce sync.Once
+var menuShellPrivateStruct *gi.Struct
+var menuShellPrivateStructOnce sync.Once
 
-func MenuShellPrivateStructSet() {
-	MenuShellPrivateStructOnce.Do(func() {
-		MenuShellPrivateStruct = gi.StructNew("Gtk", "MenuShellPrivate")
+func menuShellPrivateStructSet() {
+	menuShellPrivateStructOnce.Do(func() {
+		menuShellPrivateStruct = gi.StructNew("Gtk", "MenuShellPrivate")
 	})
 }
 
@@ -4986,12 +5211,12 @@ type MenuShellPrivate struct {
 	native uintptr
 }
 
-var MenuToolButtonClassStruct *gi.Struct
-var MenuToolButtonClassStructOnce sync.Once
+var menuToolButtonClassStruct *gi.Struct
+var menuToolButtonClassStructOnce sync.Once
 
-func MenuToolButtonClassStructSet() {
-	MenuToolButtonClassStructOnce.Do(func() {
-		MenuToolButtonClassStruct = gi.StructNew("Gtk", "MenuToolButtonClass")
+func menuToolButtonClassStructSet() {
+	menuToolButtonClassStructOnce.Do(func() {
+		menuToolButtonClassStruct = gi.StructNew("Gtk", "MenuToolButtonClass")
 	})
 }
 
@@ -5005,12 +5230,12 @@ type MenuToolButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MenuToolButtonPrivateStruct *gi.Struct
-var MenuToolButtonPrivateStructOnce sync.Once
+var menuToolButtonPrivateStruct *gi.Struct
+var menuToolButtonPrivateStructOnce sync.Once
 
-func MenuToolButtonPrivateStructSet() {
-	MenuToolButtonPrivateStructOnce.Do(func() {
-		MenuToolButtonPrivateStruct = gi.StructNew("Gtk", "MenuToolButtonPrivate")
+func menuToolButtonPrivateStructSet() {
+	menuToolButtonPrivateStructOnce.Do(func() {
+		menuToolButtonPrivateStruct = gi.StructNew("Gtk", "MenuToolButtonPrivate")
 	})
 }
 
@@ -5018,12 +5243,12 @@ type MenuToolButtonPrivate struct {
 	native uintptr
 }
 
-var MessageDialogClassStruct *gi.Struct
-var MessageDialogClassStructOnce sync.Once
+var messageDialogClassStruct *gi.Struct
+var messageDialogClassStructOnce sync.Once
 
-func MessageDialogClassStructSet() {
-	MessageDialogClassStructOnce.Do(func() {
-		MessageDialogClassStruct = gi.StructNew("Gtk", "MessageDialogClass")
+func messageDialogClassStructSet() {
+	messageDialogClassStructOnce.Do(func() {
+		messageDialogClassStruct = gi.StructNew("Gtk", "MessageDialogClass")
 	})
 }
 
@@ -5036,12 +5261,12 @@ type MessageDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MessageDialogPrivateStruct *gi.Struct
-var MessageDialogPrivateStructOnce sync.Once
+var messageDialogPrivateStruct *gi.Struct
+var messageDialogPrivateStructOnce sync.Once
 
-func MessageDialogPrivateStructSet() {
-	MessageDialogPrivateStructOnce.Do(func() {
-		MessageDialogPrivateStruct = gi.StructNew("Gtk", "MessageDialogPrivate")
+func messageDialogPrivateStructSet() {
+	messageDialogPrivateStructOnce.Do(func() {
+		messageDialogPrivateStruct = gi.StructNew("Gtk", "MessageDialogPrivate")
 	})
 }
 
@@ -5049,12 +5274,12 @@ type MessageDialogPrivate struct {
 	native uintptr
 }
 
-var MiscClassStruct *gi.Struct
-var MiscClassStructOnce sync.Once
+var miscClassStruct *gi.Struct
+var miscClassStructOnce sync.Once
 
-func MiscClassStructSet() {
-	MiscClassStructOnce.Do(func() {
-		MiscClassStruct = gi.StructNew("Gtk", "MiscClass")
+func miscClassStructSet() {
+	miscClassStructOnce.Do(func() {
+		miscClassStruct = gi.StructNew("Gtk", "MiscClass")
 	})
 }
 
@@ -5067,12 +5292,12 @@ type MiscClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MiscPrivateStruct *gi.Struct
-var MiscPrivateStructOnce sync.Once
+var miscPrivateStruct *gi.Struct
+var miscPrivateStructOnce sync.Once
 
-func MiscPrivateStructSet() {
-	MiscPrivateStructOnce.Do(func() {
-		MiscPrivateStruct = gi.StructNew("Gtk", "MiscPrivate")
+func miscPrivateStructSet() {
+	miscPrivateStructOnce.Do(func() {
+		miscPrivateStruct = gi.StructNew("Gtk", "MiscPrivate")
 	})
 }
 
@@ -5080,12 +5305,12 @@ type MiscPrivate struct {
 	native uintptr
 }
 
-var MountOperationClassStruct *gi.Struct
-var MountOperationClassStructOnce sync.Once
+var mountOperationClassStruct *gi.Struct
+var mountOperationClassStructOnce sync.Once
 
-func MountOperationClassStructSet() {
-	MountOperationClassStructOnce.Do(func() {
-		MountOperationClassStruct = gi.StructNew("Gtk", "MountOperationClass")
+func mountOperationClassStructSet() {
+	mountOperationClassStructOnce.Do(func() {
+		mountOperationClassStruct = gi.StructNew("Gtk", "MountOperationClass")
 	})
 }
 
@@ -5098,12 +5323,12 @@ type MountOperationClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var MountOperationPrivateStruct *gi.Struct
-var MountOperationPrivateStructOnce sync.Once
+var mountOperationPrivateStruct *gi.Struct
+var mountOperationPrivateStructOnce sync.Once
 
-func MountOperationPrivateStructSet() {
-	MountOperationPrivateStructOnce.Do(func() {
-		MountOperationPrivateStruct = gi.StructNew("Gtk", "MountOperationPrivate")
+func mountOperationPrivateStructSet() {
+	mountOperationPrivateStructOnce.Do(func() {
+		mountOperationPrivateStruct = gi.StructNew("Gtk", "MountOperationPrivate")
 	})
 }
 
@@ -5111,12 +5336,12 @@ type MountOperationPrivate struct {
 	native uintptr
 }
 
-var NativeDialogClassStruct *gi.Struct
-var NativeDialogClassStructOnce sync.Once
+var nativeDialogClassStruct *gi.Struct
+var nativeDialogClassStructOnce sync.Once
 
-func NativeDialogClassStructSet() {
-	NativeDialogClassStructOnce.Do(func() {
-		NativeDialogClassStruct = gi.StructNew("Gtk", "NativeDialogClass")
+func nativeDialogClassStructSet() {
+	nativeDialogClassStructOnce.Do(func() {
+		nativeDialogClassStruct = gi.StructNew("Gtk", "NativeDialogClass")
 	})
 }
 
@@ -5132,12 +5357,12 @@ type NativeDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var NotebookAccessibleClassStruct *gi.Struct
-var NotebookAccessibleClassStructOnce sync.Once
+var notebookAccessibleClassStruct *gi.Struct
+var notebookAccessibleClassStructOnce sync.Once
 
-func NotebookAccessibleClassStructSet() {
-	NotebookAccessibleClassStructOnce.Do(func() {
-		NotebookAccessibleClassStruct = gi.StructNew("Gtk", "NotebookAccessibleClass")
+func notebookAccessibleClassStructSet() {
+	notebookAccessibleClassStructOnce.Do(func() {
+		notebookAccessibleClassStruct = gi.StructNew("Gtk", "NotebookAccessibleClass")
 	})
 }
 
@@ -5146,12 +5371,12 @@ type NotebookAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var NotebookAccessiblePrivateStruct *gi.Struct
-var NotebookAccessiblePrivateStructOnce sync.Once
+var notebookAccessiblePrivateStruct *gi.Struct
+var notebookAccessiblePrivateStructOnce sync.Once
 
-func NotebookAccessiblePrivateStructSet() {
-	NotebookAccessiblePrivateStructOnce.Do(func() {
-		NotebookAccessiblePrivateStruct = gi.StructNew("Gtk", "NotebookAccessiblePrivate")
+func notebookAccessiblePrivateStructSet() {
+	notebookAccessiblePrivateStructOnce.Do(func() {
+		notebookAccessiblePrivateStruct = gi.StructNew("Gtk", "NotebookAccessiblePrivate")
 	})
 }
 
@@ -5159,12 +5384,12 @@ type NotebookAccessiblePrivate struct {
 	native uintptr
 }
 
-var NotebookClassStruct *gi.Struct
-var NotebookClassStructOnce sync.Once
+var notebookClassStruct *gi.Struct
+var notebookClassStructOnce sync.Once
 
-func NotebookClassStructSet() {
-	NotebookClassStructOnce.Do(func() {
-		NotebookClassStruct = gi.StructNew("Gtk", "NotebookClass")
+func notebookClassStructSet() {
+	notebookClassStructOnce.Do(func() {
+		notebookClassStruct = gi.StructNew("Gtk", "NotebookClass")
 	})
 }
 
@@ -5192,12 +5417,12 @@ type NotebookClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var NotebookPageAccessibleClassStruct *gi.Struct
-var NotebookPageAccessibleClassStructOnce sync.Once
+var notebookPageAccessibleClassStruct *gi.Struct
+var notebookPageAccessibleClassStructOnce sync.Once
 
-func NotebookPageAccessibleClassStructSet() {
-	NotebookPageAccessibleClassStructOnce.Do(func() {
-		NotebookPageAccessibleClassStruct = gi.StructNew("Gtk", "NotebookPageAccessibleClass")
+func notebookPageAccessibleClassStructSet() {
+	notebookPageAccessibleClassStructOnce.Do(func() {
+		notebookPageAccessibleClassStruct = gi.StructNew("Gtk", "NotebookPageAccessibleClass")
 	})
 }
 
@@ -5206,12 +5431,12 @@ type NotebookPageAccessibleClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
 }
 
-var NotebookPageAccessiblePrivateStruct *gi.Struct
-var NotebookPageAccessiblePrivateStructOnce sync.Once
+var notebookPageAccessiblePrivateStruct *gi.Struct
+var notebookPageAccessiblePrivateStructOnce sync.Once
 
-func NotebookPageAccessiblePrivateStructSet() {
-	NotebookPageAccessiblePrivateStructOnce.Do(func() {
-		NotebookPageAccessiblePrivateStruct = gi.StructNew("Gtk", "NotebookPageAccessiblePrivate")
+func notebookPageAccessiblePrivateStructSet() {
+	notebookPageAccessiblePrivateStructOnce.Do(func() {
+		notebookPageAccessiblePrivateStruct = gi.StructNew("Gtk", "NotebookPageAccessiblePrivate")
 	})
 }
 
@@ -5219,12 +5444,12 @@ type NotebookPageAccessiblePrivate struct {
 	native uintptr
 }
 
-var NotebookPrivateStruct *gi.Struct
-var NotebookPrivateStructOnce sync.Once
+var notebookPrivateStruct *gi.Struct
+var notebookPrivateStructOnce sync.Once
 
-func NotebookPrivateStructSet() {
-	NotebookPrivateStructOnce.Do(func() {
-		NotebookPrivateStruct = gi.StructNew("Gtk", "NotebookPrivate")
+func notebookPrivateStructSet() {
+	notebookPrivateStructOnce.Do(func() {
+		notebookPrivateStruct = gi.StructNew("Gtk", "NotebookPrivate")
 	})
 }
 
@@ -5232,12 +5457,12 @@ type NotebookPrivate struct {
 	native uintptr
 }
 
-var NumerableIconClassStruct *gi.Struct
-var NumerableIconClassStructOnce sync.Once
+var numerableIconClassStruct *gi.Struct
+var numerableIconClassStructOnce sync.Once
 
-func NumerableIconClassStructSet() {
-	NumerableIconClassStructOnce.Do(func() {
-		NumerableIconClassStruct = gi.StructNew("Gtk", "NumerableIconClass")
+func numerableIconClassStructSet() {
+	numerableIconClassStructOnce.Do(func() {
+		numerableIconClassStruct = gi.StructNew("Gtk", "NumerableIconClass")
 	})
 }
 
@@ -5247,12 +5472,12 @@ type NumerableIconClass struct {
 	// UNSUPPORTED : C value 'padding' : missing Type
 }
 
-var NumerableIconPrivateStruct *gi.Struct
-var NumerableIconPrivateStructOnce sync.Once
+var numerableIconPrivateStruct *gi.Struct
+var numerableIconPrivateStructOnce sync.Once
 
-func NumerableIconPrivateStructSet() {
-	NumerableIconPrivateStructOnce.Do(func() {
-		NumerableIconPrivateStruct = gi.StructNew("Gtk", "NumerableIconPrivate")
+func numerableIconPrivateStructSet() {
+	numerableIconPrivateStructOnce.Do(func() {
+		numerableIconPrivateStruct = gi.StructNew("Gtk", "NumerableIconPrivate")
 	})
 }
 
@@ -5260,12 +5485,12 @@ type NumerableIconPrivate struct {
 	native uintptr
 }
 
-var OffscreenWindowClassStruct *gi.Struct
-var OffscreenWindowClassStructOnce sync.Once
+var offscreenWindowClassStruct *gi.Struct
+var offscreenWindowClassStructOnce sync.Once
 
-func OffscreenWindowClassStructSet() {
-	OffscreenWindowClassStructOnce.Do(func() {
-		OffscreenWindowClassStruct = gi.StructNew("Gtk", "OffscreenWindowClass")
+func offscreenWindowClassStructSet() {
+	offscreenWindowClassStructOnce.Do(func() {
+		offscreenWindowClassStruct = gi.StructNew("Gtk", "OffscreenWindowClass")
 	})
 }
 
@@ -5278,12 +5503,12 @@ type OffscreenWindowClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var OrientableIfaceStruct *gi.Struct
-var OrientableIfaceStructOnce sync.Once
+var orientableIfaceStruct *gi.Struct
+var orientableIfaceStructOnce sync.Once
 
-func OrientableIfaceStructSet() {
-	OrientableIfaceStructOnce.Do(func() {
-		OrientableIfaceStruct = gi.StructNew("Gtk", "OrientableIface")
+func orientableIfaceStructSet() {
+	orientableIfaceStructOnce.Do(func() {
+		orientableIfaceStruct = gi.StructNew("Gtk", "OrientableIface")
 	})
 }
 
@@ -5292,12 +5517,12 @@ type OrientableIface struct {
 	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
 }
 
-var OverlayClassStruct *gi.Struct
-var OverlayClassStructOnce sync.Once
+var overlayClassStruct *gi.Struct
+var overlayClassStructOnce sync.Once
 
-func OverlayClassStructSet() {
-	OverlayClassStructOnce.Do(func() {
-		OverlayClassStruct = gi.StructNew("Gtk", "OverlayClass")
+func overlayClassStructSet() {
+	overlayClassStructOnce.Do(func() {
+		overlayClassStruct = gi.StructNew("Gtk", "OverlayClass")
 	})
 }
 
@@ -5315,12 +5540,12 @@ type OverlayClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var OverlayPrivateStruct *gi.Struct
-var OverlayPrivateStructOnce sync.Once
+var overlayPrivateStruct *gi.Struct
+var overlayPrivateStructOnce sync.Once
 
-func OverlayPrivateStructSet() {
-	OverlayPrivateStructOnce.Do(func() {
-		OverlayPrivateStruct = gi.StructNew("Gtk", "OverlayPrivate")
+func overlayPrivateStructSet() {
+	overlayPrivateStructOnce.Do(func() {
+		overlayPrivateStruct = gi.StructNew("Gtk", "OverlayPrivate")
 	})
 }
 
@@ -5328,12 +5553,12 @@ type OverlayPrivate struct {
 	native uintptr
 }
 
-var PadActionEntryStruct *gi.Struct
-var PadActionEntryStructOnce sync.Once
+var padActionEntryStruct *gi.Struct
+var padActionEntryStructOnce sync.Once
 
-func PadActionEntryStructSet() {
-	PadActionEntryStructOnce.Do(func() {
-		PadActionEntryStruct = gi.StructNew("Gtk", "PadActionEntry")
+func padActionEntryStructSet() {
+	padActionEntryStructOnce.Do(func() {
+		padActionEntryStruct = gi.StructNew("Gtk", "PadActionEntry")
 	})
 }
 
@@ -5346,12 +5571,12 @@ type PadActionEntry struct {
 	ActionName string
 }
 
-var PadControllerClassStruct *gi.Struct
-var PadControllerClassStructOnce sync.Once
+var padControllerClassStruct *gi.Struct
+var padControllerClassStructOnce sync.Once
 
-func PadControllerClassStructSet() {
-	PadControllerClassStructOnce.Do(func() {
-		PadControllerClassStruct = gi.StructNew("Gtk", "PadControllerClass")
+func padControllerClassStructSet() {
+	padControllerClassStructOnce.Do(func() {
+		padControllerClassStruct = gi.StructNew("Gtk", "PadControllerClass")
 	})
 }
 
@@ -5359,12 +5584,12 @@ type PadControllerClass struct {
 	native uintptr
 }
 
-var PageRangeStruct *gi.Struct
-var PageRangeStructOnce sync.Once
+var pageRangeStruct *gi.Struct
+var pageRangeStructOnce sync.Once
 
-func PageRangeStructSet() {
-	PageRangeStructOnce.Do(func() {
-		PageRangeStruct = gi.StructNew("Gtk", "PageRange")
+func pageRangeStructSet() {
+	pageRangeStructOnce.Do(func() {
+		pageRangeStruct = gi.StructNew("Gtk", "PageRange")
 	})
 }
 
@@ -5374,12 +5599,12 @@ type PageRange struct {
 	End    int32
 }
 
-var PanedAccessibleClassStruct *gi.Struct
-var PanedAccessibleClassStructOnce sync.Once
+var panedAccessibleClassStruct *gi.Struct
+var panedAccessibleClassStructOnce sync.Once
 
-func PanedAccessibleClassStructSet() {
-	PanedAccessibleClassStructOnce.Do(func() {
-		PanedAccessibleClassStruct = gi.StructNew("Gtk", "PanedAccessibleClass")
+func panedAccessibleClassStructSet() {
+	panedAccessibleClassStructOnce.Do(func() {
+		panedAccessibleClassStruct = gi.StructNew("Gtk", "PanedAccessibleClass")
 	})
 }
 
@@ -5388,12 +5613,12 @@ type PanedAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var PanedAccessiblePrivateStruct *gi.Struct
-var PanedAccessiblePrivateStructOnce sync.Once
+var panedAccessiblePrivateStruct *gi.Struct
+var panedAccessiblePrivateStructOnce sync.Once
 
-func PanedAccessiblePrivateStructSet() {
-	PanedAccessiblePrivateStructOnce.Do(func() {
-		PanedAccessiblePrivateStruct = gi.StructNew("Gtk", "PanedAccessiblePrivate")
+func panedAccessiblePrivateStructSet() {
+	panedAccessiblePrivateStructOnce.Do(func() {
+		panedAccessiblePrivateStruct = gi.StructNew("Gtk", "PanedAccessiblePrivate")
 	})
 }
 
@@ -5401,12 +5626,12 @@ type PanedAccessiblePrivate struct {
 	native uintptr
 }
 
-var PanedClassStruct *gi.Struct
-var PanedClassStructOnce sync.Once
+var panedClassStruct *gi.Struct
+var panedClassStructOnce sync.Once
 
-func PanedClassStructSet() {
-	PanedClassStructOnce.Do(func() {
-		PanedClassStruct = gi.StructNew("Gtk", "PanedClass")
+func panedClassStructSet() {
+	panedClassStructOnce.Do(func() {
+		panedClassStruct = gi.StructNew("Gtk", "PanedClass")
 	})
 }
 
@@ -5425,12 +5650,12 @@ type PanedClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var PanedPrivateStruct *gi.Struct
-var PanedPrivateStructOnce sync.Once
+var panedPrivateStruct *gi.Struct
+var panedPrivateStructOnce sync.Once
 
-func PanedPrivateStructSet() {
-	PanedPrivateStructOnce.Do(func() {
-		PanedPrivateStruct = gi.StructNew("Gtk", "PanedPrivate")
+func panedPrivateStructSet() {
+	panedPrivateStructOnce.Do(func() {
+		panedPrivateStruct = gi.StructNew("Gtk", "PanedPrivate")
 	})
 }
 
@@ -5438,17 +5663,26 @@ type PanedPrivate struct {
 	native uintptr
 }
 
-var PaperSizeStruct *gi.Struct
-var PaperSizeStructOnce sync.Once
+var paperSizeStruct *gi.Struct
+var paperSizeStructOnce sync.Once
 
-func PaperSizeStructSet() {
-	PaperSizeStructOnce.Do(func() {
-		PaperSizeStruct = gi.StructNew("Gtk", "PaperSize")
+func paperSizeStructSet() {
+	paperSizeStructOnce.Do(func() {
+		paperSizeStruct = gi.StructNew("Gtk", "PaperSize")
 	})
 }
 
 type PaperSize struct {
 	native uintptr
+}
+
+var paperSizeNewFunction *gi.Function
+var paperSizeNewFunctionOnce sync.Once
+
+func paperSizeNewFunctionSet() {
+	paperSizeNewFunctionOnce.Do(func() {
+		paperSizeNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newPaperSizeInvoker *gi.Function
@@ -5479,6 +5713,15 @@ func PaperSizeNew(name string) *PaperSize {
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_from_ppd' : parameter 'width' of type 'gdouble' not supported
 
+var paperSizeCopyFunction *gi.Function
+var paperSizeCopyFunctionOnce sync.Once
+
+func paperSizeCopyFunctionSet() {
+	paperSizeCopyFunctionOnce.Do(func() {
+		paperSizeCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
+
 var copyPaperSizeInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_paper_size_copy.
@@ -5495,6 +5738,15 @@ func (recv *PaperSize) Copy() *PaperSize {
 	retGo := &PaperSize{native: ret.Pointer()}
 
 	return retGo
+}
+
+var paperSizeFreeFunction *gi.Function
+var paperSizeFreeFunctionOnce sync.Once
+
+func paperSizeFreeFunctionSet() {
+	paperSizeFreeFunctionOnce.Do(func() {
+		paperSizeFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
 }
 
 var freePaperSizeInvoker *gi.Function
@@ -5520,6 +5772,15 @@ func (recv *PaperSize) Free() {
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_default_top_margin' : parameter 'unit' of type 'Unit' not supported
 
+var paperSizeGetDisplayNameFunction *gi.Function
+var paperSizeGetDisplayNameFunctionOnce sync.Once
+
+func paperSizeGetDisplayNameFunctionSet() {
+	paperSizeGetDisplayNameFunctionOnce.Do(func() {
+		paperSizeGetDisplayNameFunction = gi.FunctionInvokerNew("Gtk", "get_display_name")
+	})
+}
+
 var getDisplayNamePaperSizeInvoker *gi.Function
 
 // GetDisplayName is a representation of the C type gtk_paper_size_get_display_name.
@@ -5540,6 +5801,15 @@ func (recv *PaperSize) GetDisplayName() string {
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_height' : parameter 'unit' of type 'Unit' not supported
 
+var paperSizeGetNameFunction *gi.Function
+var paperSizeGetNameFunctionOnce sync.Once
+
+func paperSizeGetNameFunctionSet() {
+	paperSizeGetNameFunctionOnce.Do(func() {
+		paperSizeGetNameFunction = gi.FunctionInvokerNew("Gtk", "get_name")
+	})
+}
+
 var getNamePaperSizeInvoker *gi.Function
 
 // GetName is a representation of the C type gtk_paper_size_get_name.
@@ -5556,6 +5826,15 @@ func (recv *PaperSize) GetName() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var paperSizeGetPpdNameFunction *gi.Function
+var paperSizeGetPpdNameFunctionOnce sync.Once
+
+func paperSizeGetPpdNameFunctionSet() {
+	paperSizeGetPpdNameFunctionOnce.Do(func() {
+		paperSizeGetPpdNameFunction = gi.FunctionInvokerNew("Gtk", "get_ppd_name")
+	})
 }
 
 var getPpdNamePaperSizeInvoker *gi.Function
@@ -5590,12 +5869,12 @@ func (recv *PaperSize) GetPpdName() string {
 
 // UNSUPPORTED : C value 'gtk_paper_size_to_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
 
-var PlacesSidebarClassStruct *gi.Struct
-var PlacesSidebarClassStructOnce sync.Once
+var placesSidebarClassStruct *gi.Struct
+var placesSidebarClassStructOnce sync.Once
 
-func PlacesSidebarClassStructSet() {
-	PlacesSidebarClassStructOnce.Do(func() {
-		PlacesSidebarClassStruct = gi.StructNew("Gtk", "PlacesSidebarClass")
+func placesSidebarClassStructSet() {
+	placesSidebarClassStructOnce.Do(func() {
+		placesSidebarClassStruct = gi.StructNew("Gtk", "PlacesSidebarClass")
 	})
 }
 
@@ -5603,12 +5882,12 @@ type PlacesSidebarClass struct {
 	native uintptr
 }
 
-var PlugClassStruct *gi.Struct
-var PlugClassStructOnce sync.Once
+var plugClassStruct *gi.Struct
+var plugClassStructOnce sync.Once
 
-func PlugClassStructSet() {
-	PlugClassStructOnce.Do(func() {
-		PlugClassStruct = gi.StructNew("Gtk", "PlugClass")
+func plugClassStructSet() {
+	plugClassStructOnce.Do(func() {
+		plugClassStruct = gi.StructNew("Gtk", "PlugClass")
 	})
 }
 
@@ -5622,12 +5901,12 @@ type PlugClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var PlugPrivateStruct *gi.Struct
-var PlugPrivateStructOnce sync.Once
+var plugPrivateStruct *gi.Struct
+var plugPrivateStructOnce sync.Once
 
-func PlugPrivateStructSet() {
-	PlugPrivateStructOnce.Do(func() {
-		PlugPrivateStruct = gi.StructNew("Gtk", "PlugPrivate")
+func plugPrivateStructSet() {
+	plugPrivateStructOnce.Do(func() {
+		plugPrivateStruct = gi.StructNew("Gtk", "PlugPrivate")
 	})
 }
 
@@ -5635,12 +5914,12 @@ type PlugPrivate struct {
 	native uintptr
 }
 
-var PopoverAccessibleClassStruct *gi.Struct
-var PopoverAccessibleClassStructOnce sync.Once
+var popoverAccessibleClassStruct *gi.Struct
+var popoverAccessibleClassStructOnce sync.Once
 
-func PopoverAccessibleClassStructSet() {
-	PopoverAccessibleClassStructOnce.Do(func() {
-		PopoverAccessibleClassStruct = gi.StructNew("Gtk", "PopoverAccessibleClass")
+func popoverAccessibleClassStructSet() {
+	popoverAccessibleClassStructOnce.Do(func() {
+		popoverAccessibleClassStruct = gi.StructNew("Gtk", "PopoverAccessibleClass")
 	})
 }
 
@@ -5649,12 +5928,12 @@ type PopoverAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var PopoverClassStruct *gi.Struct
-var PopoverClassStructOnce sync.Once
+var popoverClassStruct *gi.Struct
+var popoverClassStructOnce sync.Once
 
-func PopoverClassStructSet() {
-	PopoverClassStructOnce.Do(func() {
-		PopoverClassStruct = gi.StructNew("Gtk", "PopoverClass")
+func popoverClassStructSet() {
+	popoverClassStructOnce.Do(func() {
+		popoverClassStruct = gi.StructNew("Gtk", "PopoverClass")
 	})
 }
 
@@ -5664,12 +5943,12 @@ type PopoverClass struct {
 	// UNSUPPORTED : C value 'closed' : missing Type
 }
 
-var PopoverMenuClassStruct *gi.Struct
-var PopoverMenuClassStructOnce sync.Once
+var popoverMenuClassStruct *gi.Struct
+var popoverMenuClassStructOnce sync.Once
 
-func PopoverMenuClassStructSet() {
-	PopoverMenuClassStructOnce.Do(func() {
-		PopoverMenuClassStruct = gi.StructNew("Gtk", "PopoverMenuClass")
+func popoverMenuClassStructSet() {
+	popoverMenuClassStructOnce.Do(func() {
+		popoverMenuClassStruct = gi.StructNew("Gtk", "PopoverMenuClass")
 	})
 }
 
@@ -5678,12 +5957,12 @@ type PopoverMenuClass struct {
 	ParentClass *PopoverClass
 }
 
-var PopoverPrivateStruct *gi.Struct
-var PopoverPrivateStructOnce sync.Once
+var popoverPrivateStruct *gi.Struct
+var popoverPrivateStructOnce sync.Once
 
-func PopoverPrivateStructSet() {
-	PopoverPrivateStructOnce.Do(func() {
-		PopoverPrivateStruct = gi.StructNew("Gtk", "PopoverPrivate")
+func popoverPrivateStructSet() {
+	popoverPrivateStructOnce.Do(func() {
+		popoverPrivateStruct = gi.StructNew("Gtk", "PopoverPrivate")
 	})
 }
 
@@ -5691,12 +5970,12 @@ type PopoverPrivate struct {
 	native uintptr
 }
 
-var PrintOperationClassStruct *gi.Struct
-var PrintOperationClassStructOnce sync.Once
+var printOperationClassStruct *gi.Struct
+var printOperationClassStructOnce sync.Once
 
-func PrintOperationClassStructSet() {
-	PrintOperationClassStructOnce.Do(func() {
-		PrintOperationClassStruct = gi.StructNew("Gtk", "PrintOperationClass")
+func printOperationClassStructSet() {
+	printOperationClassStructOnce.Do(func() {
+		printOperationClassStruct = gi.StructNew("Gtk", "PrintOperationClass")
 	})
 }
 
@@ -5724,12 +6003,12 @@ type PrintOperationClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var PrintOperationPreviewIfaceStruct *gi.Struct
-var PrintOperationPreviewIfaceStructOnce sync.Once
+var printOperationPreviewIfaceStruct *gi.Struct
+var printOperationPreviewIfaceStructOnce sync.Once
 
-func PrintOperationPreviewIfaceStructSet() {
-	PrintOperationPreviewIfaceStructOnce.Do(func() {
-		PrintOperationPreviewIfaceStruct = gi.StructNew("Gtk", "PrintOperationPreviewIface")
+func printOperationPreviewIfaceStructSet() {
+	printOperationPreviewIfaceStructOnce.Do(func() {
+		printOperationPreviewIfaceStruct = gi.StructNew("Gtk", "PrintOperationPreviewIface")
 	})
 }
 
@@ -5751,12 +6030,12 @@ type PrintOperationPreviewIface struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var PrintOperationPrivateStruct *gi.Struct
-var PrintOperationPrivateStructOnce sync.Once
+var printOperationPrivateStruct *gi.Struct
+var printOperationPrivateStructOnce sync.Once
 
-func PrintOperationPrivateStructSet() {
-	PrintOperationPrivateStructOnce.Do(func() {
-		PrintOperationPrivateStruct = gi.StructNew("Gtk", "PrintOperationPrivate")
+func printOperationPrivateStructSet() {
+	printOperationPrivateStructOnce.Do(func() {
+		printOperationPrivateStruct = gi.StructNew("Gtk", "PrintOperationPrivate")
 	})
 }
 
@@ -5764,12 +6043,12 @@ type PrintOperationPrivate struct {
 	native uintptr
 }
 
-var ProgressBarAccessibleClassStruct *gi.Struct
-var ProgressBarAccessibleClassStructOnce sync.Once
+var progressBarAccessibleClassStruct *gi.Struct
+var progressBarAccessibleClassStructOnce sync.Once
 
-func ProgressBarAccessibleClassStructSet() {
-	ProgressBarAccessibleClassStructOnce.Do(func() {
-		ProgressBarAccessibleClassStruct = gi.StructNew("Gtk", "ProgressBarAccessibleClass")
+func progressBarAccessibleClassStructSet() {
+	progressBarAccessibleClassStructOnce.Do(func() {
+		progressBarAccessibleClassStruct = gi.StructNew("Gtk", "ProgressBarAccessibleClass")
 	})
 }
 
@@ -5778,12 +6057,12 @@ type ProgressBarAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var ProgressBarAccessiblePrivateStruct *gi.Struct
-var ProgressBarAccessiblePrivateStructOnce sync.Once
+var progressBarAccessiblePrivateStruct *gi.Struct
+var progressBarAccessiblePrivateStructOnce sync.Once
 
-func ProgressBarAccessiblePrivateStructSet() {
-	ProgressBarAccessiblePrivateStructOnce.Do(func() {
-		ProgressBarAccessiblePrivateStruct = gi.StructNew("Gtk", "ProgressBarAccessiblePrivate")
+func progressBarAccessiblePrivateStructSet() {
+	progressBarAccessiblePrivateStructOnce.Do(func() {
+		progressBarAccessiblePrivateStruct = gi.StructNew("Gtk", "ProgressBarAccessiblePrivate")
 	})
 }
 
@@ -5791,12 +6070,12 @@ type ProgressBarAccessiblePrivate struct {
 	native uintptr
 }
 
-var ProgressBarClassStruct *gi.Struct
-var ProgressBarClassStructOnce sync.Once
+var progressBarClassStruct *gi.Struct
+var progressBarClassStructOnce sync.Once
 
-func ProgressBarClassStructSet() {
-	ProgressBarClassStructOnce.Do(func() {
-		ProgressBarClassStruct = gi.StructNew("Gtk", "ProgressBarClass")
+func progressBarClassStructSet() {
+	progressBarClassStructOnce.Do(func() {
+		progressBarClassStruct = gi.StructNew("Gtk", "ProgressBarClass")
 	})
 }
 
@@ -5809,12 +6088,12 @@ type ProgressBarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ProgressBarPrivateStruct *gi.Struct
-var ProgressBarPrivateStructOnce sync.Once
+var progressBarPrivateStruct *gi.Struct
+var progressBarPrivateStructOnce sync.Once
 
-func ProgressBarPrivateStructSet() {
-	ProgressBarPrivateStructOnce.Do(func() {
-		ProgressBarPrivateStruct = gi.StructNew("Gtk", "ProgressBarPrivate")
+func progressBarPrivateStructSet() {
+	progressBarPrivateStructOnce.Do(func() {
+		progressBarPrivateStruct = gi.StructNew("Gtk", "ProgressBarPrivate")
 	})
 }
 
@@ -5822,12 +6101,12 @@ type ProgressBarPrivate struct {
 	native uintptr
 }
 
-var RadioActionClassStruct *gi.Struct
-var RadioActionClassStructOnce sync.Once
+var radioActionClassStruct *gi.Struct
+var radioActionClassStructOnce sync.Once
 
-func RadioActionClassStructSet() {
-	RadioActionClassStructOnce.Do(func() {
-		RadioActionClassStruct = gi.StructNew("Gtk", "RadioActionClass")
+func radioActionClassStructSet() {
+	radioActionClassStructOnce.Do(func() {
+		radioActionClassStruct = gi.StructNew("Gtk", "RadioActionClass")
 	})
 }
 
@@ -5841,12 +6120,12 @@ type RadioActionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RadioActionEntryStruct *gi.Struct
-var RadioActionEntryStructOnce sync.Once
+var radioActionEntryStruct *gi.Struct
+var radioActionEntryStructOnce sync.Once
 
-func RadioActionEntryStructSet() {
-	RadioActionEntryStructOnce.Do(func() {
-		RadioActionEntryStruct = gi.StructNew("Gtk", "RadioActionEntry")
+func radioActionEntryStructSet() {
+	radioActionEntryStructOnce.Do(func() {
+		radioActionEntryStruct = gi.StructNew("Gtk", "RadioActionEntry")
 	})
 }
 
@@ -5860,12 +6139,12 @@ type RadioActionEntry struct {
 	Value       int32
 }
 
-var RadioActionPrivateStruct *gi.Struct
-var RadioActionPrivateStructOnce sync.Once
+var radioActionPrivateStruct *gi.Struct
+var radioActionPrivateStructOnce sync.Once
 
-func RadioActionPrivateStructSet() {
-	RadioActionPrivateStructOnce.Do(func() {
-		RadioActionPrivateStruct = gi.StructNew("Gtk", "RadioActionPrivate")
+func radioActionPrivateStructSet() {
+	radioActionPrivateStructOnce.Do(func() {
+		radioActionPrivateStruct = gi.StructNew("Gtk", "RadioActionPrivate")
 	})
 }
 
@@ -5873,12 +6152,12 @@ type RadioActionPrivate struct {
 	native uintptr
 }
 
-var RadioButtonAccessibleClassStruct *gi.Struct
-var RadioButtonAccessibleClassStructOnce sync.Once
+var radioButtonAccessibleClassStruct *gi.Struct
+var radioButtonAccessibleClassStructOnce sync.Once
 
-func RadioButtonAccessibleClassStructSet() {
-	RadioButtonAccessibleClassStructOnce.Do(func() {
-		RadioButtonAccessibleClassStruct = gi.StructNew("Gtk", "RadioButtonAccessibleClass")
+func radioButtonAccessibleClassStructSet() {
+	radioButtonAccessibleClassStructOnce.Do(func() {
+		radioButtonAccessibleClassStruct = gi.StructNew("Gtk", "RadioButtonAccessibleClass")
 	})
 }
 
@@ -5887,12 +6166,12 @@ type RadioButtonAccessibleClass struct {
 	ParentClass *ToggleButtonAccessibleClass
 }
 
-var RadioButtonAccessiblePrivateStruct *gi.Struct
-var RadioButtonAccessiblePrivateStructOnce sync.Once
+var radioButtonAccessiblePrivateStruct *gi.Struct
+var radioButtonAccessiblePrivateStructOnce sync.Once
 
-func RadioButtonAccessiblePrivateStructSet() {
-	RadioButtonAccessiblePrivateStructOnce.Do(func() {
-		RadioButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "RadioButtonAccessiblePrivate")
+func radioButtonAccessiblePrivateStructSet() {
+	radioButtonAccessiblePrivateStructOnce.Do(func() {
+		radioButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "RadioButtonAccessiblePrivate")
 	})
 }
 
@@ -5900,12 +6179,12 @@ type RadioButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var RadioButtonClassStruct *gi.Struct
-var RadioButtonClassStructOnce sync.Once
+var radioButtonClassStruct *gi.Struct
+var radioButtonClassStructOnce sync.Once
 
-func RadioButtonClassStructSet() {
-	RadioButtonClassStructOnce.Do(func() {
-		RadioButtonClassStruct = gi.StructNew("Gtk", "RadioButtonClass")
+func radioButtonClassStructSet() {
+	radioButtonClassStructOnce.Do(func() {
+		radioButtonClassStruct = gi.StructNew("Gtk", "RadioButtonClass")
 	})
 }
 
@@ -5919,12 +6198,12 @@ type RadioButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RadioButtonPrivateStruct *gi.Struct
-var RadioButtonPrivateStructOnce sync.Once
+var radioButtonPrivateStruct *gi.Struct
+var radioButtonPrivateStructOnce sync.Once
 
-func RadioButtonPrivateStructSet() {
-	RadioButtonPrivateStructOnce.Do(func() {
-		RadioButtonPrivateStruct = gi.StructNew("Gtk", "RadioButtonPrivate")
+func radioButtonPrivateStructSet() {
+	radioButtonPrivateStructOnce.Do(func() {
+		radioButtonPrivateStruct = gi.StructNew("Gtk", "RadioButtonPrivate")
 	})
 }
 
@@ -5932,12 +6211,12 @@ type RadioButtonPrivate struct {
 	native uintptr
 }
 
-var RadioMenuItemAccessibleClassStruct *gi.Struct
-var RadioMenuItemAccessibleClassStructOnce sync.Once
+var radioMenuItemAccessibleClassStruct *gi.Struct
+var radioMenuItemAccessibleClassStructOnce sync.Once
 
-func RadioMenuItemAccessibleClassStructSet() {
-	RadioMenuItemAccessibleClassStructOnce.Do(func() {
-		RadioMenuItemAccessibleClassStruct = gi.StructNew("Gtk", "RadioMenuItemAccessibleClass")
+func radioMenuItemAccessibleClassStructSet() {
+	radioMenuItemAccessibleClassStructOnce.Do(func() {
+		radioMenuItemAccessibleClassStruct = gi.StructNew("Gtk", "RadioMenuItemAccessibleClass")
 	})
 }
 
@@ -5946,12 +6225,12 @@ type RadioMenuItemAccessibleClass struct {
 	ParentClass *CheckMenuItemAccessibleClass
 }
 
-var RadioMenuItemAccessiblePrivateStruct *gi.Struct
-var RadioMenuItemAccessiblePrivateStructOnce sync.Once
+var radioMenuItemAccessiblePrivateStruct *gi.Struct
+var radioMenuItemAccessiblePrivateStructOnce sync.Once
 
-func RadioMenuItemAccessiblePrivateStructSet() {
-	RadioMenuItemAccessiblePrivateStructOnce.Do(func() {
-		RadioMenuItemAccessiblePrivateStruct = gi.StructNew("Gtk", "RadioMenuItemAccessiblePrivate")
+func radioMenuItemAccessiblePrivateStructSet() {
+	radioMenuItemAccessiblePrivateStructOnce.Do(func() {
+		radioMenuItemAccessiblePrivateStruct = gi.StructNew("Gtk", "RadioMenuItemAccessiblePrivate")
 	})
 }
 
@@ -5959,12 +6238,12 @@ type RadioMenuItemAccessiblePrivate struct {
 	native uintptr
 }
 
-var RadioMenuItemClassStruct *gi.Struct
-var RadioMenuItemClassStructOnce sync.Once
+var radioMenuItemClassStruct *gi.Struct
+var radioMenuItemClassStructOnce sync.Once
 
-func RadioMenuItemClassStructSet() {
-	RadioMenuItemClassStructOnce.Do(func() {
-		RadioMenuItemClassStruct = gi.StructNew("Gtk", "RadioMenuItemClass")
+func radioMenuItemClassStructSet() {
+	radioMenuItemClassStructOnce.Do(func() {
+		radioMenuItemClassStruct = gi.StructNew("Gtk", "RadioMenuItemClass")
 	})
 }
 
@@ -5978,12 +6257,12 @@ type RadioMenuItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RadioMenuItemPrivateStruct *gi.Struct
-var RadioMenuItemPrivateStructOnce sync.Once
+var radioMenuItemPrivateStruct *gi.Struct
+var radioMenuItemPrivateStructOnce sync.Once
 
-func RadioMenuItemPrivateStructSet() {
-	RadioMenuItemPrivateStructOnce.Do(func() {
-		RadioMenuItemPrivateStruct = gi.StructNew("Gtk", "RadioMenuItemPrivate")
+func radioMenuItemPrivateStructSet() {
+	radioMenuItemPrivateStructOnce.Do(func() {
+		radioMenuItemPrivateStruct = gi.StructNew("Gtk", "RadioMenuItemPrivate")
 	})
 }
 
@@ -5991,12 +6270,12 @@ type RadioMenuItemPrivate struct {
 	native uintptr
 }
 
-var RadioToolButtonClassStruct *gi.Struct
-var RadioToolButtonClassStructOnce sync.Once
+var radioToolButtonClassStruct *gi.Struct
+var radioToolButtonClassStructOnce sync.Once
 
-func RadioToolButtonClassStructSet() {
-	RadioToolButtonClassStructOnce.Do(func() {
-		RadioToolButtonClassStruct = gi.StructNew("Gtk", "RadioToolButtonClass")
+func radioToolButtonClassStructSet() {
+	radioToolButtonClassStructOnce.Do(func() {
+		radioToolButtonClassStruct = gi.StructNew("Gtk", "RadioToolButtonClass")
 	})
 }
 
@@ -6009,12 +6288,12 @@ type RadioToolButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RangeAccessibleClassStruct *gi.Struct
-var RangeAccessibleClassStructOnce sync.Once
+var rangeAccessibleClassStruct *gi.Struct
+var rangeAccessibleClassStructOnce sync.Once
 
-func RangeAccessibleClassStructSet() {
-	RangeAccessibleClassStructOnce.Do(func() {
-		RangeAccessibleClassStruct = gi.StructNew("Gtk", "RangeAccessibleClass")
+func rangeAccessibleClassStructSet() {
+	rangeAccessibleClassStructOnce.Do(func() {
+		rangeAccessibleClassStruct = gi.StructNew("Gtk", "RangeAccessibleClass")
 	})
 }
 
@@ -6023,12 +6302,12 @@ type RangeAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var RangeAccessiblePrivateStruct *gi.Struct
-var RangeAccessiblePrivateStructOnce sync.Once
+var rangeAccessiblePrivateStruct *gi.Struct
+var rangeAccessiblePrivateStructOnce sync.Once
 
-func RangeAccessiblePrivateStructSet() {
-	RangeAccessiblePrivateStructOnce.Do(func() {
-		RangeAccessiblePrivateStruct = gi.StructNew("Gtk", "RangeAccessiblePrivate")
+func rangeAccessiblePrivateStructSet() {
+	rangeAccessiblePrivateStructOnce.Do(func() {
+		rangeAccessiblePrivateStruct = gi.StructNew("Gtk", "RangeAccessiblePrivate")
 	})
 }
 
@@ -6036,12 +6315,12 @@ type RangeAccessiblePrivate struct {
 	native uintptr
 }
 
-var RangeClassStruct *gi.Struct
-var RangeClassStructOnce sync.Once
+var rangeClassStruct *gi.Struct
+var rangeClassStructOnce sync.Once
 
-func RangeClassStructSet() {
-	RangeClassStructOnce.Do(func() {
-		RangeClassStruct = gi.StructNew("Gtk", "RangeClass")
+func rangeClassStructSet() {
+	rangeClassStructOnce.Do(func() {
+		rangeClassStruct = gi.StructNew("Gtk", "RangeClass")
 	})
 }
 
@@ -6061,12 +6340,12 @@ type RangeClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
 }
 
-var RangePrivateStruct *gi.Struct
-var RangePrivateStructOnce sync.Once
+var rangePrivateStruct *gi.Struct
+var rangePrivateStructOnce sync.Once
 
-func RangePrivateStructSet() {
-	RangePrivateStructOnce.Do(func() {
-		RangePrivateStruct = gi.StructNew("Gtk", "RangePrivate")
+func rangePrivateStructSet() {
+	rangePrivateStructOnce.Do(func() {
+		rangePrivateStruct = gi.StructNew("Gtk", "RangePrivate")
 	})
 }
 
@@ -6074,12 +6353,12 @@ type RangePrivate struct {
 	native uintptr
 }
 
-var RcContextStruct *gi.Struct
-var RcContextStructOnce sync.Once
+var rcContextStruct *gi.Struct
+var rcContextStructOnce sync.Once
 
-func RcContextStructSet() {
-	RcContextStructOnce.Do(func() {
-		RcContextStruct = gi.StructNew("Gtk", "RcContext")
+func rcContextStructSet() {
+	rcContextStructOnce.Do(func() {
+		rcContextStruct = gi.StructNew("Gtk", "RcContext")
 	})
 }
 
@@ -6087,12 +6366,12 @@ type RcContext struct {
 	native uintptr
 }
 
-var RcPropertyStruct *gi.Struct
-var RcPropertyStructOnce sync.Once
+var rcPropertyStruct *gi.Struct
+var rcPropertyStructOnce sync.Once
 
-func RcPropertyStructSet() {
-	RcPropertyStructOnce.Do(func() {
-		RcPropertyStruct = gi.StructNew("Gtk", "RcProperty")
+func rcPropertyStructSet() {
+	rcPropertyStructOnce.Do(func() {
+		rcPropertyStruct = gi.StructNew("Gtk", "RcProperty")
 	})
 }
 
@@ -6104,12 +6383,12 @@ type RcProperty struct {
 	// UNSUPPORTED : C value 'value' : no Go type for 'GObject.Value'
 }
 
-var RcStyleClassStruct *gi.Struct
-var RcStyleClassStructOnce sync.Once
+var rcStyleClassStruct *gi.Struct
+var rcStyleClassStructOnce sync.Once
 
-func RcStyleClassStructSet() {
-	RcStyleClassStructOnce.Do(func() {
-		RcStyleClassStruct = gi.StructNew("Gtk", "RcStyleClass")
+func rcStyleClassStructSet() {
+	rcStyleClassStructOnce.Do(func() {
+		rcStyleClassStruct = gi.StructNew("Gtk", "RcStyleClass")
 	})
 }
 
@@ -6126,12 +6405,12 @@ type RcStyleClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RecentActionClassStruct *gi.Struct
-var RecentActionClassStructOnce sync.Once
+var recentActionClassStruct *gi.Struct
+var recentActionClassStructOnce sync.Once
 
-func RecentActionClassStructSet() {
-	RecentActionClassStructOnce.Do(func() {
-		RecentActionClassStruct = gi.StructNew("Gtk", "RecentActionClass")
+func recentActionClassStructSet() {
+	recentActionClassStructOnce.Do(func() {
+		recentActionClassStruct = gi.StructNew("Gtk", "RecentActionClass")
 	})
 }
 
@@ -6144,12 +6423,12 @@ type RecentActionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RecentActionPrivateStruct *gi.Struct
-var RecentActionPrivateStructOnce sync.Once
+var recentActionPrivateStruct *gi.Struct
+var recentActionPrivateStructOnce sync.Once
 
-func RecentActionPrivateStructSet() {
-	RecentActionPrivateStructOnce.Do(func() {
-		RecentActionPrivateStruct = gi.StructNew("Gtk", "RecentActionPrivate")
+func recentActionPrivateStructSet() {
+	recentActionPrivateStructOnce.Do(func() {
+		recentActionPrivateStruct = gi.StructNew("Gtk", "RecentActionPrivate")
 	})
 }
 
@@ -6157,12 +6436,12 @@ type RecentActionPrivate struct {
 	native uintptr
 }
 
-var RecentChooserDialogClassStruct *gi.Struct
-var RecentChooserDialogClassStructOnce sync.Once
+var recentChooserDialogClassStruct *gi.Struct
+var recentChooserDialogClassStructOnce sync.Once
 
-func RecentChooserDialogClassStructSet() {
-	RecentChooserDialogClassStructOnce.Do(func() {
-		RecentChooserDialogClassStruct = gi.StructNew("Gtk", "RecentChooserDialogClass")
+func recentChooserDialogClassStructSet() {
+	recentChooserDialogClassStructOnce.Do(func() {
+		recentChooserDialogClassStruct = gi.StructNew("Gtk", "RecentChooserDialogClass")
 	})
 }
 
@@ -6175,12 +6454,12 @@ type RecentChooserDialogClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RecentChooserDialogPrivateStruct *gi.Struct
-var RecentChooserDialogPrivateStructOnce sync.Once
+var recentChooserDialogPrivateStruct *gi.Struct
+var recentChooserDialogPrivateStructOnce sync.Once
 
-func RecentChooserDialogPrivateStructSet() {
-	RecentChooserDialogPrivateStructOnce.Do(func() {
-		RecentChooserDialogPrivateStruct = gi.StructNew("Gtk", "RecentChooserDialogPrivate")
+func recentChooserDialogPrivateStructSet() {
+	recentChooserDialogPrivateStructOnce.Do(func() {
+		recentChooserDialogPrivateStruct = gi.StructNew("Gtk", "RecentChooserDialogPrivate")
 	})
 }
 
@@ -6188,12 +6467,12 @@ type RecentChooserDialogPrivate struct {
 	native uintptr
 }
 
-var RecentChooserIfaceStruct *gi.Struct
-var RecentChooserIfaceStructOnce sync.Once
+var recentChooserIfaceStruct *gi.Struct
+var recentChooserIfaceStructOnce sync.Once
 
-func RecentChooserIfaceStructSet() {
-	RecentChooserIfaceStructOnce.Do(func() {
-		RecentChooserIfaceStruct = gi.StructNew("Gtk", "RecentChooserIface")
+func recentChooserIfaceStructSet() {
+	recentChooserIfaceStructOnce.Do(func() {
+		recentChooserIfaceStruct = gi.StructNew("Gtk", "RecentChooserIface")
 	})
 }
 
@@ -6215,12 +6494,12 @@ type RecentChooserIface struct {
 	// UNSUPPORTED : C value 'selection_changed' : missing Type
 }
 
-var RecentChooserMenuClassStruct *gi.Struct
-var RecentChooserMenuClassStructOnce sync.Once
+var recentChooserMenuClassStruct *gi.Struct
+var recentChooserMenuClassStructOnce sync.Once
 
-func RecentChooserMenuClassStructSet() {
-	RecentChooserMenuClassStructOnce.Do(func() {
-		RecentChooserMenuClassStruct = gi.StructNew("Gtk", "RecentChooserMenuClass")
+func recentChooserMenuClassStructSet() {
+	recentChooserMenuClassStructOnce.Do(func() {
+		recentChooserMenuClassStruct = gi.StructNew("Gtk", "RecentChooserMenuClass")
 	})
 }
 
@@ -6233,12 +6512,12 @@ type RecentChooserMenuClass struct {
 	// UNSUPPORTED : C value 'gtk_recent4' : missing Type
 }
 
-var RecentChooserMenuPrivateStruct *gi.Struct
-var RecentChooserMenuPrivateStructOnce sync.Once
+var recentChooserMenuPrivateStruct *gi.Struct
+var recentChooserMenuPrivateStructOnce sync.Once
 
-func RecentChooserMenuPrivateStructSet() {
-	RecentChooserMenuPrivateStructOnce.Do(func() {
-		RecentChooserMenuPrivateStruct = gi.StructNew("Gtk", "RecentChooserMenuPrivate")
+func recentChooserMenuPrivateStructSet() {
+	recentChooserMenuPrivateStructOnce.Do(func() {
+		recentChooserMenuPrivateStruct = gi.StructNew("Gtk", "RecentChooserMenuPrivate")
 	})
 }
 
@@ -6246,12 +6525,12 @@ type RecentChooserMenuPrivate struct {
 	native uintptr
 }
 
-var RecentChooserWidgetClassStruct *gi.Struct
-var RecentChooserWidgetClassStructOnce sync.Once
+var recentChooserWidgetClassStruct *gi.Struct
+var recentChooserWidgetClassStructOnce sync.Once
 
-func RecentChooserWidgetClassStructSet() {
-	RecentChooserWidgetClassStructOnce.Do(func() {
-		RecentChooserWidgetClassStruct = gi.StructNew("Gtk", "RecentChooserWidgetClass")
+func recentChooserWidgetClassStructSet() {
+	recentChooserWidgetClassStructOnce.Do(func() {
+		recentChooserWidgetClassStruct = gi.StructNew("Gtk", "RecentChooserWidgetClass")
 	})
 }
 
@@ -6264,12 +6543,12 @@ type RecentChooserWidgetClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var RecentChooserWidgetPrivateStruct *gi.Struct
-var RecentChooserWidgetPrivateStructOnce sync.Once
+var recentChooserWidgetPrivateStruct *gi.Struct
+var recentChooserWidgetPrivateStructOnce sync.Once
 
-func RecentChooserWidgetPrivateStructSet() {
-	RecentChooserWidgetPrivateStructOnce.Do(func() {
-		RecentChooserWidgetPrivateStruct = gi.StructNew("Gtk", "RecentChooserWidgetPrivate")
+func recentChooserWidgetPrivateStructSet() {
+	recentChooserWidgetPrivateStructOnce.Do(func() {
+		recentChooserWidgetPrivateStruct = gi.StructNew("Gtk", "RecentChooserWidgetPrivate")
 	})
 }
 
@@ -6277,12 +6556,12 @@ type RecentChooserWidgetPrivate struct {
 	native uintptr
 }
 
-var RecentDataStruct *gi.Struct
-var RecentDataStructOnce sync.Once
+var recentDataStruct *gi.Struct
+var recentDataStructOnce sync.Once
 
-func RecentDataStructSet() {
-	RecentDataStructOnce.Do(func() {
-		RecentDataStruct = gi.StructNew("Gtk", "RecentData")
+func recentDataStructSet() {
+	recentDataStructOnce.Do(func() {
+		recentDataStruct = gi.StructNew("Gtk", "RecentData")
 	})
 }
 
@@ -6297,12 +6576,12 @@ type RecentData struct {
 	// UNSUPPORTED : C value 'is_private' : no Go type for 'gboolean'
 }
 
-var RecentFilterInfoStruct *gi.Struct
-var RecentFilterInfoStructOnce sync.Once
+var recentFilterInfoStruct *gi.Struct
+var recentFilterInfoStructOnce sync.Once
 
-func RecentFilterInfoStructSet() {
-	RecentFilterInfoStructOnce.Do(func() {
-		RecentFilterInfoStruct = gi.StructNew("Gtk", "RecentFilterInfo")
+func recentFilterInfoStructSet() {
+	recentFilterInfoStructOnce.Do(func() {
+		recentFilterInfoStruct = gi.StructNew("Gtk", "RecentFilterInfo")
 	})
 }
 
@@ -6317,12 +6596,12 @@ type RecentFilterInfo struct {
 	Age int32
 }
 
-var RecentInfoStruct *gi.Struct
-var RecentInfoStructOnce sync.Once
+var recentInfoStruct *gi.Struct
+var recentInfoStructOnce sync.Once
 
-func RecentInfoStructSet() {
-	RecentInfoStructOnce.Do(func() {
-		RecentInfoStruct = gi.StructNew("Gtk", "RecentInfo")
+func recentInfoStructSet() {
+	recentInfoStructOnce.Do(func() {
+		recentInfoStruct = gi.StructNew("Gtk", "RecentInfo")
 	})
 }
 
@@ -6333,6 +6612,15 @@ type RecentInfo struct {
 // UNSUPPORTED : C value 'gtk_recent_info_create_app_info' : return type 'Gio.AppInfo' not supported
 
 // UNSUPPORTED : C value 'gtk_recent_info_exists' : return type 'gboolean' not supported
+
+var recentInfoGetAddedFunction *gi.Function
+var recentInfoGetAddedFunctionOnce sync.Once
+
+func recentInfoGetAddedFunctionSet() {
+	recentInfoGetAddedFunctionOnce.Do(func() {
+		recentInfoGetAddedFunction = gi.FunctionInvokerNew("Gtk", "get_added")
+	})
+}
 
 var getAddedRecentInfoInvoker *gi.Function
 
@@ -6350,6 +6638,15 @@ func (recv *RecentInfo) GetAdded() int64 {
 	retGo := ret.Int64()
 
 	return retGo
+}
+
+var recentInfoGetAgeFunction *gi.Function
+var recentInfoGetAgeFunctionOnce sync.Once
+
+func recentInfoGetAgeFunctionSet() {
+	recentInfoGetAgeFunctionOnce.Do(func() {
+		recentInfoGetAgeFunction = gi.FunctionInvokerNew("Gtk", "get_age")
+	})
 }
 
 var getAgeRecentInfoInvoker *gi.Function
@@ -6374,6 +6671,15 @@ func (recv *RecentInfo) GetAge() int32 {
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_applications' : parameter 'length' of type 'gsize' not supported
 
+var recentInfoGetDescriptionFunction *gi.Function
+var recentInfoGetDescriptionFunctionOnce sync.Once
+
+func recentInfoGetDescriptionFunctionSet() {
+	recentInfoGetDescriptionFunctionOnce.Do(func() {
+		recentInfoGetDescriptionFunction = gi.FunctionInvokerNew("Gtk", "get_description")
+	})
+}
+
 var getDescriptionRecentInfoInvoker *gi.Function
 
 // GetDescription is a representation of the C type gtk_recent_info_get_description.
@@ -6390,6 +6696,15 @@ func (recv *RecentInfo) GetDescription() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var recentInfoGetDisplayNameFunction *gi.Function
+var recentInfoGetDisplayNameFunctionOnce sync.Once
+
+func recentInfoGetDisplayNameFunctionSet() {
+	recentInfoGetDisplayNameFunctionOnce.Do(func() {
+		recentInfoGetDisplayNameFunction = gi.FunctionInvokerNew("Gtk", "get_display_name")
+	})
 }
 
 var getDisplayNameRecentInfoInvoker *gi.Function
@@ -6416,6 +6731,15 @@ func (recv *RecentInfo) GetDisplayName() string {
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_icon' : return type 'GdkPixbuf.Pixbuf' not supported
 
+var recentInfoGetMimeTypeFunction *gi.Function
+var recentInfoGetMimeTypeFunctionOnce sync.Once
+
+func recentInfoGetMimeTypeFunctionSet() {
+	recentInfoGetMimeTypeFunctionOnce.Do(func() {
+		recentInfoGetMimeTypeFunction = gi.FunctionInvokerNew("Gtk", "get_mime_type")
+	})
+}
+
 var getMimeTypeRecentInfoInvoker *gi.Function
 
 // GetMimeType is a representation of the C type gtk_recent_info_get_mime_type.
@@ -6432,6 +6756,15 @@ func (recv *RecentInfo) GetMimeType() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var recentInfoGetModifiedFunction *gi.Function
+var recentInfoGetModifiedFunctionOnce sync.Once
+
+func recentInfoGetModifiedFunctionSet() {
+	recentInfoGetModifiedFunctionOnce.Do(func() {
+		recentInfoGetModifiedFunction = gi.FunctionInvokerNew("Gtk", "get_modified")
+	})
 }
 
 var getModifiedRecentInfoInvoker *gi.Function
@@ -6454,6 +6787,15 @@ func (recv *RecentInfo) GetModified() int64 {
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_private_hint' : return type 'gboolean' not supported
 
+var recentInfoGetShortNameFunction *gi.Function
+var recentInfoGetShortNameFunctionOnce sync.Once
+
+func recentInfoGetShortNameFunctionSet() {
+	recentInfoGetShortNameFunctionOnce.Do(func() {
+		recentInfoGetShortNameFunction = gi.FunctionInvokerNew("Gtk", "get_short_name")
+	})
+}
+
 var getShortNameRecentInfoInvoker *gi.Function
 
 // GetShortName is a representation of the C type gtk_recent_info_get_short_name.
@@ -6470,6 +6812,15 @@ func (recv *RecentInfo) GetShortName() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var recentInfoGetUriFunction *gi.Function
+var recentInfoGetUriFunctionOnce sync.Once
+
+func recentInfoGetUriFunctionSet() {
+	recentInfoGetUriFunctionOnce.Do(func() {
+		recentInfoGetUriFunction = gi.FunctionInvokerNew("Gtk", "get_uri")
+	})
 }
 
 var getUriRecentInfoInvoker *gi.Function
@@ -6490,6 +6841,15 @@ func (recv *RecentInfo) GetUri() string {
 	return retGo
 }
 
+var recentInfoGetUriDisplayFunction *gi.Function
+var recentInfoGetUriDisplayFunctionOnce sync.Once
+
+func recentInfoGetUriDisplayFunctionSet() {
+	recentInfoGetUriDisplayFunctionOnce.Do(func() {
+		recentInfoGetUriDisplayFunction = gi.FunctionInvokerNew("Gtk", "get_uri_display")
+	})
+}
+
 var getUriDisplayRecentInfoInvoker *gi.Function
 
 // GetUriDisplay is a representation of the C type gtk_recent_info_get_uri_display.
@@ -6506,6 +6866,15 @@ func (recv *RecentInfo) GetUriDisplay() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var recentInfoGetVisitedFunction *gi.Function
+var recentInfoGetVisitedFunctionOnce sync.Once
+
+func recentInfoGetVisitedFunctionSet() {
+	recentInfoGetVisitedFunctionOnce.Do(func() {
+		recentInfoGetVisitedFunction = gi.FunctionInvokerNew("Gtk", "get_visited")
+	})
 }
 
 var getVisitedRecentInfoInvoker *gi.Function
@@ -6532,6 +6901,15 @@ func (recv *RecentInfo) GetVisited() int64 {
 
 // UNSUPPORTED : C value 'gtk_recent_info_is_local' : return type 'gboolean' not supported
 
+var recentInfoLastApplicationFunction *gi.Function
+var recentInfoLastApplicationFunctionOnce sync.Once
+
+func recentInfoLastApplicationFunctionSet() {
+	recentInfoLastApplicationFunctionOnce.Do(func() {
+		recentInfoLastApplicationFunction = gi.FunctionInvokerNew("Gtk", "last_application")
+	})
+}
+
 var lastApplicationRecentInfoInvoker *gi.Function
 
 // LastApplication is a representation of the C type gtk_recent_info_last_application.
@@ -6552,6 +6930,15 @@ func (recv *RecentInfo) LastApplication() string {
 
 // UNSUPPORTED : C value 'gtk_recent_info_match' : parameter 'info_b' of type 'RecentInfo' not supported
 
+var recentInfoRefFunction *gi.Function
+var recentInfoRefFunctionOnce sync.Once
+
+func recentInfoRefFunctionSet() {
+	recentInfoRefFunctionOnce.Do(func() {
+		recentInfoRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
+
 var refRecentInfoInvoker *gi.Function
 
 // Ref is a representation of the C type gtk_recent_info_ref.
@@ -6570,6 +6957,15 @@ func (recv *RecentInfo) Ref() *RecentInfo {
 	return retGo
 }
 
+var recentInfoUnrefFunction *gi.Function
+var recentInfoUnrefFunctionOnce sync.Once
+
+func recentInfoUnrefFunctionSet() {
+	recentInfoUnrefFunctionOnce.Do(func() {
+		recentInfoUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefRecentInfoInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_recent_info_unref.
@@ -6585,12 +6981,12 @@ func (recv *RecentInfo) Unref() {
 
 }
 
-var RecentManagerClassStruct *gi.Struct
-var RecentManagerClassStructOnce sync.Once
+var recentManagerClassStruct *gi.Struct
+var recentManagerClassStructOnce sync.Once
 
-func RecentManagerClassStructSet() {
-	RecentManagerClassStructOnce.Do(func() {
-		RecentManagerClassStruct = gi.StructNew("Gtk", "RecentManagerClass")
+func recentManagerClassStructSet() {
+	recentManagerClassStructOnce.Do(func() {
+		recentManagerClassStruct = gi.StructNew("Gtk", "RecentManagerClass")
 	})
 }
 
@@ -6603,12 +6999,12 @@ type RecentManagerClass struct {
 	// UNSUPPORTED : C value '_gtk_recent4' : missing Type
 }
 
-var RecentManagerPrivateStruct *gi.Struct
-var RecentManagerPrivateStructOnce sync.Once
+var recentManagerPrivateStruct *gi.Struct
+var recentManagerPrivateStructOnce sync.Once
 
-func RecentManagerPrivateStructSet() {
-	RecentManagerPrivateStructOnce.Do(func() {
-		RecentManagerPrivateStruct = gi.StructNew("Gtk", "RecentManagerPrivate")
+func recentManagerPrivateStructSet() {
+	recentManagerPrivateStructOnce.Do(func() {
+		recentManagerPrivateStruct = gi.StructNew("Gtk", "RecentManagerPrivate")
 	})
 }
 
@@ -6616,12 +7012,12 @@ type RecentManagerPrivate struct {
 	native uintptr
 }
 
-var RendererCellAccessibleClassStruct *gi.Struct
-var RendererCellAccessibleClassStructOnce sync.Once
+var rendererCellAccessibleClassStruct *gi.Struct
+var rendererCellAccessibleClassStructOnce sync.Once
 
-func RendererCellAccessibleClassStructSet() {
-	RendererCellAccessibleClassStructOnce.Do(func() {
-		RendererCellAccessibleClassStruct = gi.StructNew("Gtk", "RendererCellAccessibleClass")
+func rendererCellAccessibleClassStructSet() {
+	rendererCellAccessibleClassStructOnce.Do(func() {
+		rendererCellAccessibleClassStruct = gi.StructNew("Gtk", "RendererCellAccessibleClass")
 	})
 }
 
@@ -6630,12 +7026,12 @@ type RendererCellAccessibleClass struct {
 	ParentClass *CellAccessibleClass
 }
 
-var RendererCellAccessiblePrivateStruct *gi.Struct
-var RendererCellAccessiblePrivateStructOnce sync.Once
+var rendererCellAccessiblePrivateStruct *gi.Struct
+var rendererCellAccessiblePrivateStructOnce sync.Once
 
-func RendererCellAccessiblePrivateStructSet() {
-	RendererCellAccessiblePrivateStructOnce.Do(func() {
-		RendererCellAccessiblePrivateStruct = gi.StructNew("Gtk", "RendererCellAccessiblePrivate")
+func rendererCellAccessiblePrivateStructSet() {
+	rendererCellAccessiblePrivateStructOnce.Do(func() {
+		rendererCellAccessiblePrivateStruct = gi.StructNew("Gtk", "RendererCellAccessiblePrivate")
 	})
 }
 
@@ -6643,12 +7039,12 @@ type RendererCellAccessiblePrivate struct {
 	native uintptr
 }
 
-var RequestedSizeStruct *gi.Struct
-var RequestedSizeStructOnce sync.Once
+var requestedSizeStruct *gi.Struct
+var requestedSizeStructOnce sync.Once
 
-func RequestedSizeStructSet() {
-	RequestedSizeStructOnce.Do(func() {
-		RequestedSizeStruct = gi.StructNew("Gtk", "RequestedSize")
+func requestedSizeStructSet() {
+	requestedSizeStructOnce.Do(func() {
+		requestedSizeStruct = gi.StructNew("Gtk", "RequestedSize")
 	})
 }
 
@@ -6659,12 +7055,12 @@ type RequestedSize struct {
 	NaturalSize int32
 }
 
-var RequisitionStruct *gi.Struct
-var RequisitionStructOnce sync.Once
+var requisitionStruct *gi.Struct
+var requisitionStructOnce sync.Once
 
-func RequisitionStructSet() {
-	RequisitionStructOnce.Do(func() {
-		RequisitionStruct = gi.StructNew("Gtk", "Requisition")
+func requisitionStructSet() {
+	requisitionStructOnce.Do(func() {
+		requisitionStruct = gi.StructNew("Gtk", "Requisition")
 	})
 }
 
@@ -6672,6 +7068,15 @@ type Requisition struct {
 	native uintptr
 	Width  int32
 	Height int32
+}
+
+var requisitionNewFunction *gi.Function
+var requisitionNewFunctionOnce sync.Once
+
+func requisitionNewFunctionSet() {
+	requisitionNewFunctionOnce.Do(func() {
+		requisitionNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newRequisitionInvoker *gi.Function
@@ -6687,6 +7092,15 @@ func RequisitionNew() *Requisition {
 	retGo := &Requisition{native: ret.Pointer()}
 
 	return retGo
+}
+
+var requisitionCopyFunction *gi.Function
+var requisitionCopyFunctionOnce sync.Once
+
+func requisitionCopyFunctionSet() {
+	requisitionCopyFunctionOnce.Do(func() {
+		requisitionCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copyRequisitionInvoker *gi.Function
@@ -6707,6 +7121,15 @@ func (recv *Requisition) Copy() *Requisition {
 	return retGo
 }
 
+var requisitionFreeFunction *gi.Function
+var requisitionFreeFunctionOnce sync.Once
+
+func requisitionFreeFunctionSet() {
+	requisitionFreeFunctionOnce.Do(func() {
+		requisitionFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeRequisitionInvoker *gi.Function
 
 // Free is a representation of the C type gtk_requisition_free.
@@ -6722,12 +7145,12 @@ func (recv *Requisition) Free() {
 
 }
 
-var RevealerClassStruct *gi.Struct
-var RevealerClassStructOnce sync.Once
+var revealerClassStruct *gi.Struct
+var revealerClassStructOnce sync.Once
 
-func RevealerClassStructSet() {
-	RevealerClassStructOnce.Do(func() {
-		RevealerClassStruct = gi.StructNew("Gtk", "RevealerClass")
+func revealerClassStructSet() {
+	revealerClassStructOnce.Do(func() {
+		revealerClassStruct = gi.StructNew("Gtk", "RevealerClass")
 	})
 }
 
@@ -6736,12 +7159,12 @@ type RevealerClass struct {
 	ParentClass *BinClass
 }
 
-var ScaleAccessibleClassStruct *gi.Struct
-var ScaleAccessibleClassStructOnce sync.Once
+var scaleAccessibleClassStruct *gi.Struct
+var scaleAccessibleClassStructOnce sync.Once
 
-func ScaleAccessibleClassStructSet() {
-	ScaleAccessibleClassStructOnce.Do(func() {
-		ScaleAccessibleClassStruct = gi.StructNew("Gtk", "ScaleAccessibleClass")
+func scaleAccessibleClassStructSet() {
+	scaleAccessibleClassStructOnce.Do(func() {
+		scaleAccessibleClassStruct = gi.StructNew("Gtk", "ScaleAccessibleClass")
 	})
 }
 
@@ -6750,12 +7173,12 @@ type ScaleAccessibleClass struct {
 	ParentClass *RangeAccessibleClass
 }
 
-var ScaleAccessiblePrivateStruct *gi.Struct
-var ScaleAccessiblePrivateStructOnce sync.Once
+var scaleAccessiblePrivateStruct *gi.Struct
+var scaleAccessiblePrivateStructOnce sync.Once
 
-func ScaleAccessiblePrivateStructSet() {
-	ScaleAccessiblePrivateStructOnce.Do(func() {
-		ScaleAccessiblePrivateStruct = gi.StructNew("Gtk", "ScaleAccessiblePrivate")
+func scaleAccessiblePrivateStructSet() {
+	scaleAccessiblePrivateStructOnce.Do(func() {
+		scaleAccessiblePrivateStruct = gi.StructNew("Gtk", "ScaleAccessiblePrivate")
 	})
 }
 
@@ -6763,12 +7186,12 @@ type ScaleAccessiblePrivate struct {
 	native uintptr
 }
 
-var ScaleButtonAccessibleClassStruct *gi.Struct
-var ScaleButtonAccessibleClassStructOnce sync.Once
+var scaleButtonAccessibleClassStruct *gi.Struct
+var scaleButtonAccessibleClassStructOnce sync.Once
 
-func ScaleButtonAccessibleClassStructSet() {
-	ScaleButtonAccessibleClassStructOnce.Do(func() {
-		ScaleButtonAccessibleClassStruct = gi.StructNew("Gtk", "ScaleButtonAccessibleClass")
+func scaleButtonAccessibleClassStructSet() {
+	scaleButtonAccessibleClassStructOnce.Do(func() {
+		scaleButtonAccessibleClassStruct = gi.StructNew("Gtk", "ScaleButtonAccessibleClass")
 	})
 }
 
@@ -6777,12 +7200,12 @@ type ScaleButtonAccessibleClass struct {
 	ParentClass *ButtonAccessibleClass
 }
 
-var ScaleButtonAccessiblePrivateStruct *gi.Struct
-var ScaleButtonAccessiblePrivateStructOnce sync.Once
+var scaleButtonAccessiblePrivateStruct *gi.Struct
+var scaleButtonAccessiblePrivateStructOnce sync.Once
 
-func ScaleButtonAccessiblePrivateStructSet() {
-	ScaleButtonAccessiblePrivateStructOnce.Do(func() {
-		ScaleButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "ScaleButtonAccessiblePrivate")
+func scaleButtonAccessiblePrivateStructSet() {
+	scaleButtonAccessiblePrivateStructOnce.Do(func() {
+		scaleButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "ScaleButtonAccessiblePrivate")
 	})
 }
 
@@ -6790,12 +7213,12 @@ type ScaleButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var ScaleButtonClassStruct *gi.Struct
-var ScaleButtonClassStructOnce sync.Once
+var scaleButtonClassStruct *gi.Struct
+var scaleButtonClassStructOnce sync.Once
 
-func ScaleButtonClassStructSet() {
-	ScaleButtonClassStructOnce.Do(func() {
-		ScaleButtonClassStruct = gi.StructNew("Gtk", "ScaleButtonClass")
+func scaleButtonClassStructSet() {
+	scaleButtonClassStructOnce.Do(func() {
+		scaleButtonClassStruct = gi.StructNew("Gtk", "ScaleButtonClass")
 	})
 }
 
@@ -6809,12 +7232,12 @@ type ScaleButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ScaleButtonPrivateStruct *gi.Struct
-var ScaleButtonPrivateStructOnce sync.Once
+var scaleButtonPrivateStruct *gi.Struct
+var scaleButtonPrivateStructOnce sync.Once
 
-func ScaleButtonPrivateStructSet() {
-	ScaleButtonPrivateStructOnce.Do(func() {
-		ScaleButtonPrivateStruct = gi.StructNew("Gtk", "ScaleButtonPrivate")
+func scaleButtonPrivateStructSet() {
+	scaleButtonPrivateStructOnce.Do(func() {
+		scaleButtonPrivateStruct = gi.StructNew("Gtk", "ScaleButtonPrivate")
 	})
 }
 
@@ -6822,12 +7245,12 @@ type ScaleButtonPrivate struct {
 	native uintptr
 }
 
-var ScaleClassStruct *gi.Struct
-var ScaleClassStructOnce sync.Once
+var scaleClassStruct *gi.Struct
+var scaleClassStructOnce sync.Once
 
-func ScaleClassStructSet() {
-	ScaleClassStructOnce.Do(func() {
-		ScaleClassStruct = gi.StructNew("Gtk", "ScaleClass")
+func scaleClassStructSet() {
+	scaleClassStructOnce.Do(func() {
+		scaleClassStruct = gi.StructNew("Gtk", "ScaleClass")
 	})
 }
 
@@ -6843,12 +7266,12 @@ type ScaleClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ScalePrivateStruct *gi.Struct
-var ScalePrivateStructOnce sync.Once
+var scalePrivateStruct *gi.Struct
+var scalePrivateStructOnce sync.Once
 
-func ScalePrivateStructSet() {
-	ScalePrivateStructOnce.Do(func() {
-		ScalePrivateStruct = gi.StructNew("Gtk", "ScalePrivate")
+func scalePrivateStructSet() {
+	scalePrivateStructOnce.Do(func() {
+		scalePrivateStruct = gi.StructNew("Gtk", "ScalePrivate")
 	})
 }
 
@@ -6856,12 +7279,12 @@ type ScalePrivate struct {
 	native uintptr
 }
 
-var ScrollableInterfaceStruct *gi.Struct
-var ScrollableInterfaceStructOnce sync.Once
+var scrollableInterfaceStruct *gi.Struct
+var scrollableInterfaceStructOnce sync.Once
 
-func ScrollableInterfaceStructSet() {
-	ScrollableInterfaceStructOnce.Do(func() {
-		ScrollableInterfaceStruct = gi.StructNew("Gtk", "ScrollableInterface")
+func scrollableInterfaceStructSet() {
+	scrollableInterfaceStructOnce.Do(func() {
+		scrollableInterfaceStruct = gi.StructNew("Gtk", "ScrollableInterface")
 	})
 }
 
@@ -6871,12 +7294,12 @@ type ScrollableInterface struct {
 	// UNSUPPORTED : C value 'get_border' : missing Type
 }
 
-var ScrollbarClassStruct *gi.Struct
-var ScrollbarClassStructOnce sync.Once
+var scrollbarClassStruct *gi.Struct
+var scrollbarClassStructOnce sync.Once
 
-func ScrollbarClassStructSet() {
-	ScrollbarClassStructOnce.Do(func() {
-		ScrollbarClassStruct = gi.StructNew("Gtk", "ScrollbarClass")
+func scrollbarClassStructSet() {
+	scrollbarClassStructOnce.Do(func() {
+		scrollbarClassStruct = gi.StructNew("Gtk", "ScrollbarClass")
 	})
 }
 
@@ -6889,12 +7312,12 @@ type ScrollbarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ScrolledWindowAccessibleClassStruct *gi.Struct
-var ScrolledWindowAccessibleClassStructOnce sync.Once
+var scrolledWindowAccessibleClassStruct *gi.Struct
+var scrolledWindowAccessibleClassStructOnce sync.Once
 
-func ScrolledWindowAccessibleClassStructSet() {
-	ScrolledWindowAccessibleClassStructOnce.Do(func() {
-		ScrolledWindowAccessibleClassStruct = gi.StructNew("Gtk", "ScrolledWindowAccessibleClass")
+func scrolledWindowAccessibleClassStructSet() {
+	scrolledWindowAccessibleClassStructOnce.Do(func() {
+		scrolledWindowAccessibleClassStruct = gi.StructNew("Gtk", "ScrolledWindowAccessibleClass")
 	})
 }
 
@@ -6903,12 +7326,12 @@ type ScrolledWindowAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var ScrolledWindowAccessiblePrivateStruct *gi.Struct
-var ScrolledWindowAccessiblePrivateStructOnce sync.Once
+var scrolledWindowAccessiblePrivateStruct *gi.Struct
+var scrolledWindowAccessiblePrivateStructOnce sync.Once
 
-func ScrolledWindowAccessiblePrivateStructSet() {
-	ScrolledWindowAccessiblePrivateStructOnce.Do(func() {
-		ScrolledWindowAccessiblePrivateStruct = gi.StructNew("Gtk", "ScrolledWindowAccessiblePrivate")
+func scrolledWindowAccessiblePrivateStructSet() {
+	scrolledWindowAccessiblePrivateStructOnce.Do(func() {
+		scrolledWindowAccessiblePrivateStruct = gi.StructNew("Gtk", "ScrolledWindowAccessiblePrivate")
 	})
 }
 
@@ -6916,12 +7339,12 @@ type ScrolledWindowAccessiblePrivate struct {
 	native uintptr
 }
 
-var ScrolledWindowClassStruct *gi.Struct
-var ScrolledWindowClassStructOnce sync.Once
+var scrolledWindowClassStruct *gi.Struct
+var scrolledWindowClassStructOnce sync.Once
 
-func ScrolledWindowClassStructSet() {
-	ScrolledWindowClassStructOnce.Do(func() {
-		ScrolledWindowClassStruct = gi.StructNew("Gtk", "ScrolledWindowClass")
+func scrolledWindowClassStructSet() {
+	scrolledWindowClassStructOnce.Do(func() {
+		scrolledWindowClassStruct = gi.StructNew("Gtk", "ScrolledWindowClass")
 	})
 }
 
@@ -6937,12 +7360,12 @@ type ScrolledWindowClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ScrolledWindowPrivateStruct *gi.Struct
-var ScrolledWindowPrivateStructOnce sync.Once
+var scrolledWindowPrivateStruct *gi.Struct
+var scrolledWindowPrivateStructOnce sync.Once
 
-func ScrolledWindowPrivateStructSet() {
-	ScrolledWindowPrivateStructOnce.Do(func() {
-		ScrolledWindowPrivateStruct = gi.StructNew("Gtk", "ScrolledWindowPrivate")
+func scrolledWindowPrivateStructSet() {
+	scrolledWindowPrivateStructOnce.Do(func() {
+		scrolledWindowPrivateStruct = gi.StructNew("Gtk", "ScrolledWindowPrivate")
 	})
 }
 
@@ -6950,12 +7373,12 @@ type ScrolledWindowPrivate struct {
 	native uintptr
 }
 
-var SearchBarClassStruct *gi.Struct
-var SearchBarClassStructOnce sync.Once
+var searchBarClassStruct *gi.Struct
+var searchBarClassStructOnce sync.Once
 
-func SearchBarClassStructSet() {
-	SearchBarClassStructOnce.Do(func() {
-		SearchBarClassStruct = gi.StructNew("Gtk", "SearchBarClass")
+func searchBarClassStructSet() {
+	searchBarClassStructOnce.Do(func() {
+		searchBarClassStruct = gi.StructNew("Gtk", "SearchBarClass")
 	})
 }
 
@@ -6968,12 +7391,12 @@ type SearchBarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SearchEntryClassStruct *gi.Struct
-var SearchEntryClassStructOnce sync.Once
+var searchEntryClassStruct *gi.Struct
+var searchEntryClassStructOnce sync.Once
 
-func SearchEntryClassStructSet() {
-	SearchEntryClassStructOnce.Do(func() {
-		SearchEntryClassStruct = gi.StructNew("Gtk", "SearchEntryClass")
+func searchEntryClassStructSet() {
+	searchEntryClassStructOnce.Do(func() {
+		searchEntryClassStruct = gi.StructNew("Gtk", "SearchEntryClass")
 	})
 }
 
@@ -6986,17 +7409,26 @@ type SearchEntryClass struct {
 	// UNSUPPORTED : C value 'stop_search' : missing Type
 }
 
-var SelectionDataStruct *gi.Struct
-var SelectionDataStructOnce sync.Once
+var selectionDataStruct *gi.Struct
+var selectionDataStructOnce sync.Once
 
-func SelectionDataStructSet() {
-	SelectionDataStructOnce.Do(func() {
-		SelectionDataStruct = gi.StructNew("Gtk", "SelectionData")
+func selectionDataStructSet() {
+	selectionDataStructOnce.Do(func() {
+		selectionDataStruct = gi.StructNew("Gtk", "SelectionData")
 	})
 }
 
 type SelectionData struct {
 	native uintptr
+}
+
+var selectionDataCopyFunction *gi.Function
+var selectionDataCopyFunctionOnce sync.Once
+
+func selectionDataCopyFunctionSet() {
+	selectionDataCopyFunctionOnce.Do(func() {
+		selectionDataCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copySelectionDataInvoker *gi.Function
@@ -7017,6 +7449,15 @@ func (recv *SelectionData) Copy() *SelectionData {
 	return retGo
 }
 
+var selectionDataFreeFunction *gi.Function
+var selectionDataFreeFunctionOnce sync.Once
+
+func selectionDataFreeFunctionSet() {
+	selectionDataFreeFunctionOnce.Do(func() {
+		selectionDataFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeSelectionDataInvoker *gi.Function
 
 // Free is a representation of the C type gtk_selection_data_free.
@@ -7030,6 +7471,15 @@ func (recv *SelectionData) Free() {
 
 	freeSelectionDataInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var selectionDataGetDataFunction *gi.Function
+var selectionDataGetDataFunctionOnce sync.Once
+
+func selectionDataGetDataFunctionSet() {
+	selectionDataGetDataFunctionOnce.Do(func() {
+		selectionDataGetDataFunction = gi.FunctionInvokerNew("Gtk", "get_data")
+	})
 }
 
 var getDataSelectionDataInvoker *gi.Function
@@ -7048,6 +7498,15 @@ func (recv *SelectionData) GetData() {
 }
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_data_type' : return type 'Gdk.Atom' not supported
+
+var selectionDataGetDataWithLengthFunction *gi.Function
+var selectionDataGetDataWithLengthFunctionOnce sync.Once
+
+func selectionDataGetDataWithLengthFunctionSet() {
+	selectionDataGetDataWithLengthFunctionOnce.Do(func() {
+		selectionDataGetDataWithLengthFunction = gi.FunctionInvokerNew("Gtk", "get_data_with_length")
+	})
+}
 
 var getDataWithLengthSelectionDataInvoker *gi.Function
 
@@ -7071,6 +7530,15 @@ func (recv *SelectionData) GetDataWithLength() int32 {
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_display' : return type 'Gdk.Display' not supported
 
+var selectionDataGetFormatFunction *gi.Function
+var selectionDataGetFormatFunctionOnce sync.Once
+
+func selectionDataGetFormatFunctionSet() {
+	selectionDataGetFormatFunctionOnce.Do(func() {
+		selectionDataGetFormatFunction = gi.FunctionInvokerNew("Gtk", "get_format")
+	})
+}
+
 var getFormatSelectionDataInvoker *gi.Function
 
 // GetFormat is a representation of the C type gtk_selection_data_get_format.
@@ -7087,6 +7555,15 @@ func (recv *SelectionData) GetFormat() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var selectionDataGetLengthFunction *gi.Function
+var selectionDataGetLengthFunctionOnce sync.Once
+
+func selectionDataGetLengthFunctionSet() {
+	selectionDataGetLengthFunctionOnce.Do(func() {
+		selectionDataGetLengthFunction = gi.FunctionInvokerNew("Gtk", "get_length")
+	})
 }
 
 var getLengthSelectionDataInvoker *gi.Function
@@ -7115,6 +7592,15 @@ func (recv *SelectionData) GetLength() int32 {
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_targets' : parameter 'targets' has no type
 
+var selectionDataGetTextFunction *gi.Function
+var selectionDataGetTextFunctionOnce sync.Once
+
+func selectionDataGetTextFunctionSet() {
+	selectionDataGetTextFunctionOnce.Do(func() {
+		selectionDataGetTextFunction = gi.FunctionInvokerNew("Gtk", "get_text")
+	})
+}
+
 var getTextSelectionDataInvoker *gi.Function
 
 // GetText is a representation of the C type gtk_selection_data_get_text.
@@ -7131,6 +7617,15 @@ func (recv *SelectionData) GetText() string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var selectionDataGetUrisFunction *gi.Function
+var selectionDataGetUrisFunctionOnce sync.Once
+
+func selectionDataGetUrisFunctionSet() {
+	selectionDataGetUrisFunctionOnce.Do(func() {
+		selectionDataGetUrisFunction = gi.FunctionInvokerNew("Gtk", "get_uris")
+	})
 }
 
 var getUrisSelectionDataInvoker *gi.Function
@@ -7164,12 +7659,12 @@ func (recv *SelectionData) GetUris() {
 
 // UNSUPPORTED : C value 'gtk_selection_data_targets_include_uri' : return type 'gboolean' not supported
 
-var SeparatorClassStruct *gi.Struct
-var SeparatorClassStructOnce sync.Once
+var separatorClassStruct *gi.Struct
+var separatorClassStructOnce sync.Once
 
-func SeparatorClassStructSet() {
-	SeparatorClassStructOnce.Do(func() {
-		SeparatorClassStruct = gi.StructNew("Gtk", "SeparatorClass")
+func separatorClassStructSet() {
+	separatorClassStructOnce.Do(func() {
+		separatorClassStruct = gi.StructNew("Gtk", "SeparatorClass")
 	})
 }
 
@@ -7182,12 +7677,12 @@ type SeparatorClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SeparatorMenuItemClassStruct *gi.Struct
-var SeparatorMenuItemClassStructOnce sync.Once
+var separatorMenuItemClassStruct *gi.Struct
+var separatorMenuItemClassStructOnce sync.Once
 
-func SeparatorMenuItemClassStructSet() {
-	SeparatorMenuItemClassStructOnce.Do(func() {
-		SeparatorMenuItemClassStruct = gi.StructNew("Gtk", "SeparatorMenuItemClass")
+func separatorMenuItemClassStructSet() {
+	separatorMenuItemClassStructOnce.Do(func() {
+		separatorMenuItemClassStruct = gi.StructNew("Gtk", "SeparatorMenuItemClass")
 	})
 }
 
@@ -7200,12 +7695,12 @@ type SeparatorMenuItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SeparatorPrivateStruct *gi.Struct
-var SeparatorPrivateStructOnce sync.Once
+var separatorPrivateStruct *gi.Struct
+var separatorPrivateStructOnce sync.Once
 
-func SeparatorPrivateStructSet() {
-	SeparatorPrivateStructOnce.Do(func() {
-		SeparatorPrivateStruct = gi.StructNew("Gtk", "SeparatorPrivate")
+func separatorPrivateStructSet() {
+	separatorPrivateStructOnce.Do(func() {
+		separatorPrivateStruct = gi.StructNew("Gtk", "SeparatorPrivate")
 	})
 }
 
@@ -7213,12 +7708,12 @@ type SeparatorPrivate struct {
 	native uintptr
 }
 
-var SeparatorToolItemClassStruct *gi.Struct
-var SeparatorToolItemClassStructOnce sync.Once
+var separatorToolItemClassStruct *gi.Struct
+var separatorToolItemClassStructOnce sync.Once
 
-func SeparatorToolItemClassStructSet() {
-	SeparatorToolItemClassStructOnce.Do(func() {
-		SeparatorToolItemClassStruct = gi.StructNew("Gtk", "SeparatorToolItemClass")
+func separatorToolItemClassStructSet() {
+	separatorToolItemClassStructOnce.Do(func() {
+		separatorToolItemClassStruct = gi.StructNew("Gtk", "SeparatorToolItemClass")
 	})
 }
 
@@ -7231,12 +7726,12 @@ type SeparatorToolItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SeparatorToolItemPrivateStruct *gi.Struct
-var SeparatorToolItemPrivateStructOnce sync.Once
+var separatorToolItemPrivateStruct *gi.Struct
+var separatorToolItemPrivateStructOnce sync.Once
 
-func SeparatorToolItemPrivateStructSet() {
-	SeparatorToolItemPrivateStructOnce.Do(func() {
-		SeparatorToolItemPrivateStruct = gi.StructNew("Gtk", "SeparatorToolItemPrivate")
+func separatorToolItemPrivateStructSet() {
+	separatorToolItemPrivateStructOnce.Do(func() {
+		separatorToolItemPrivateStruct = gi.StructNew("Gtk", "SeparatorToolItemPrivate")
 	})
 }
 
@@ -7244,12 +7739,12 @@ type SeparatorToolItemPrivate struct {
 	native uintptr
 }
 
-var SettingsClassStruct *gi.Struct
-var SettingsClassStructOnce sync.Once
+var settingsClassStruct *gi.Struct
+var settingsClassStructOnce sync.Once
 
-func SettingsClassStructSet() {
-	SettingsClassStructOnce.Do(func() {
-		SettingsClassStruct = gi.StructNew("Gtk", "SettingsClass")
+func settingsClassStructSet() {
+	settingsClassStructOnce.Do(func() {
+		settingsClassStruct = gi.StructNew("Gtk", "SettingsClass")
 	})
 }
 
@@ -7262,12 +7757,12 @@ type SettingsClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SettingsPrivateStruct *gi.Struct
-var SettingsPrivateStructOnce sync.Once
+var settingsPrivateStruct *gi.Struct
+var settingsPrivateStructOnce sync.Once
 
-func SettingsPrivateStructSet() {
-	SettingsPrivateStructOnce.Do(func() {
-		SettingsPrivateStruct = gi.StructNew("Gtk", "SettingsPrivate")
+func settingsPrivateStructSet() {
+	settingsPrivateStructOnce.Do(func() {
+		settingsPrivateStruct = gi.StructNew("Gtk", "SettingsPrivate")
 	})
 }
 
@@ -7275,12 +7770,12 @@ type SettingsPrivate struct {
 	native uintptr
 }
 
-var SettingsValueStruct *gi.Struct
-var SettingsValueStructOnce sync.Once
+var settingsValueStruct *gi.Struct
+var settingsValueStructOnce sync.Once
 
-func SettingsValueStructSet() {
-	SettingsValueStructOnce.Do(func() {
-		SettingsValueStruct = gi.StructNew("Gtk", "SettingsValue")
+func settingsValueStructSet() {
+	settingsValueStructOnce.Do(func() {
+		settingsValueStruct = gi.StructNew("Gtk", "SettingsValue")
 	})
 }
 
@@ -7290,12 +7785,12 @@ type SettingsValue struct {
 	// UNSUPPORTED : C value 'value' : no Go type for 'GObject.Value'
 }
 
-var ShortcutLabelClassStruct *gi.Struct
-var ShortcutLabelClassStructOnce sync.Once
+var shortcutLabelClassStruct *gi.Struct
+var shortcutLabelClassStructOnce sync.Once
 
-func ShortcutLabelClassStructSet() {
-	ShortcutLabelClassStructOnce.Do(func() {
-		ShortcutLabelClassStruct = gi.StructNew("Gtk", "ShortcutLabelClass")
+func shortcutLabelClassStructSet() {
+	shortcutLabelClassStructOnce.Do(func() {
+		shortcutLabelClassStruct = gi.StructNew("Gtk", "ShortcutLabelClass")
 	})
 }
 
@@ -7303,12 +7798,12 @@ type ShortcutLabelClass struct {
 	native uintptr
 }
 
-var ShortcutsGroupClassStruct *gi.Struct
-var ShortcutsGroupClassStructOnce sync.Once
+var shortcutsGroupClassStruct *gi.Struct
+var shortcutsGroupClassStructOnce sync.Once
 
-func ShortcutsGroupClassStructSet() {
-	ShortcutsGroupClassStructOnce.Do(func() {
-		ShortcutsGroupClassStruct = gi.StructNew("Gtk", "ShortcutsGroupClass")
+func shortcutsGroupClassStructSet() {
+	shortcutsGroupClassStructOnce.Do(func() {
+		shortcutsGroupClassStruct = gi.StructNew("Gtk", "ShortcutsGroupClass")
 	})
 }
 
@@ -7316,12 +7811,12 @@ type ShortcutsGroupClass struct {
 	native uintptr
 }
 
-var ShortcutsSectionClassStruct *gi.Struct
-var ShortcutsSectionClassStructOnce sync.Once
+var shortcutsSectionClassStruct *gi.Struct
+var shortcutsSectionClassStructOnce sync.Once
 
-func ShortcutsSectionClassStructSet() {
-	ShortcutsSectionClassStructOnce.Do(func() {
-		ShortcutsSectionClassStruct = gi.StructNew("Gtk", "ShortcutsSectionClass")
+func shortcutsSectionClassStructSet() {
+	shortcutsSectionClassStructOnce.Do(func() {
+		shortcutsSectionClassStruct = gi.StructNew("Gtk", "ShortcutsSectionClass")
 	})
 }
 
@@ -7329,12 +7824,12 @@ type ShortcutsSectionClass struct {
 	native uintptr
 }
 
-var ShortcutsShortcutClassStruct *gi.Struct
-var ShortcutsShortcutClassStructOnce sync.Once
+var shortcutsShortcutClassStruct *gi.Struct
+var shortcutsShortcutClassStructOnce sync.Once
 
-func ShortcutsShortcutClassStructSet() {
-	ShortcutsShortcutClassStructOnce.Do(func() {
-		ShortcutsShortcutClassStruct = gi.StructNew("Gtk", "ShortcutsShortcutClass")
+func shortcutsShortcutClassStructSet() {
+	shortcutsShortcutClassStructOnce.Do(func() {
+		shortcutsShortcutClassStruct = gi.StructNew("Gtk", "ShortcutsShortcutClass")
 	})
 }
 
@@ -7342,12 +7837,12 @@ type ShortcutsShortcutClass struct {
 	native uintptr
 }
 
-var ShortcutsWindowClassStruct *gi.Struct
-var ShortcutsWindowClassStructOnce sync.Once
+var shortcutsWindowClassStruct *gi.Struct
+var shortcutsWindowClassStructOnce sync.Once
 
-func ShortcutsWindowClassStructSet() {
-	ShortcutsWindowClassStructOnce.Do(func() {
-		ShortcutsWindowClassStruct = gi.StructNew("Gtk", "ShortcutsWindowClass")
+func shortcutsWindowClassStructSet() {
+	shortcutsWindowClassStructOnce.Do(func() {
+		shortcutsWindowClassStruct = gi.StructNew("Gtk", "ShortcutsWindowClass")
 	})
 }
 
@@ -7358,12 +7853,12 @@ type ShortcutsWindowClass struct {
 	// UNSUPPORTED : C value 'search' : missing Type
 }
 
-var SizeGroupClassStruct *gi.Struct
-var SizeGroupClassStructOnce sync.Once
+var sizeGroupClassStruct *gi.Struct
+var sizeGroupClassStructOnce sync.Once
 
-func SizeGroupClassStructSet() {
-	SizeGroupClassStructOnce.Do(func() {
-		SizeGroupClassStruct = gi.StructNew("Gtk", "SizeGroupClass")
+func sizeGroupClassStructSet() {
+	sizeGroupClassStructOnce.Do(func() {
+		sizeGroupClassStruct = gi.StructNew("Gtk", "SizeGroupClass")
 	})
 }
 
@@ -7376,12 +7871,12 @@ type SizeGroupClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SizeGroupPrivateStruct *gi.Struct
-var SizeGroupPrivateStructOnce sync.Once
+var sizeGroupPrivateStruct *gi.Struct
+var sizeGroupPrivateStructOnce sync.Once
 
-func SizeGroupPrivateStructSet() {
-	SizeGroupPrivateStructOnce.Do(func() {
-		SizeGroupPrivateStruct = gi.StructNew("Gtk", "SizeGroupPrivate")
+func sizeGroupPrivateStructSet() {
+	sizeGroupPrivateStructOnce.Do(func() {
+		sizeGroupPrivateStruct = gi.StructNew("Gtk", "SizeGroupPrivate")
 	})
 }
 
@@ -7389,12 +7884,12 @@ type SizeGroupPrivate struct {
 	native uintptr
 }
 
-var SocketClassStruct *gi.Struct
-var SocketClassStructOnce sync.Once
+var socketClassStruct *gi.Struct
+var socketClassStructOnce sync.Once
 
-func SocketClassStructSet() {
-	SocketClassStructOnce.Do(func() {
-		SocketClassStruct = gi.StructNew("Gtk", "SocketClass")
+func socketClassStructSet() {
+	socketClassStructOnce.Do(func() {
+		socketClassStruct = gi.StructNew("Gtk", "SocketClass")
 	})
 }
 
@@ -7409,12 +7904,12 @@ type SocketClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SocketPrivateStruct *gi.Struct
-var SocketPrivateStructOnce sync.Once
+var socketPrivateStruct *gi.Struct
+var socketPrivateStructOnce sync.Once
 
-func SocketPrivateStructSet() {
-	SocketPrivateStructOnce.Do(func() {
-		SocketPrivateStruct = gi.StructNew("Gtk", "SocketPrivate")
+func socketPrivateStructSet() {
+	socketPrivateStructOnce.Do(func() {
+		socketPrivateStruct = gi.StructNew("Gtk", "SocketPrivate")
 	})
 }
 
@@ -7422,12 +7917,12 @@ type SocketPrivate struct {
 	native uintptr
 }
 
-var SpinButtonAccessibleClassStruct *gi.Struct
-var SpinButtonAccessibleClassStructOnce sync.Once
+var spinButtonAccessibleClassStruct *gi.Struct
+var spinButtonAccessibleClassStructOnce sync.Once
 
-func SpinButtonAccessibleClassStructSet() {
-	SpinButtonAccessibleClassStructOnce.Do(func() {
-		SpinButtonAccessibleClassStruct = gi.StructNew("Gtk", "SpinButtonAccessibleClass")
+func spinButtonAccessibleClassStructSet() {
+	spinButtonAccessibleClassStructOnce.Do(func() {
+		spinButtonAccessibleClassStruct = gi.StructNew("Gtk", "SpinButtonAccessibleClass")
 	})
 }
 
@@ -7436,12 +7931,12 @@ type SpinButtonAccessibleClass struct {
 	ParentClass *EntryAccessibleClass
 }
 
-var SpinButtonAccessiblePrivateStruct *gi.Struct
-var SpinButtonAccessiblePrivateStructOnce sync.Once
+var spinButtonAccessiblePrivateStruct *gi.Struct
+var spinButtonAccessiblePrivateStructOnce sync.Once
 
-func SpinButtonAccessiblePrivateStructSet() {
-	SpinButtonAccessiblePrivateStructOnce.Do(func() {
-		SpinButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "SpinButtonAccessiblePrivate")
+func spinButtonAccessiblePrivateStructSet() {
+	spinButtonAccessiblePrivateStructOnce.Do(func() {
+		spinButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "SpinButtonAccessiblePrivate")
 	})
 }
 
@@ -7449,12 +7944,12 @@ type SpinButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var SpinButtonClassStruct *gi.Struct
-var SpinButtonClassStructOnce sync.Once
+var spinButtonClassStruct *gi.Struct
+var spinButtonClassStructOnce sync.Once
 
-func SpinButtonClassStructSet() {
-	SpinButtonClassStructOnce.Do(func() {
-		SpinButtonClassStruct = gi.StructNew("Gtk", "SpinButtonClass")
+func spinButtonClassStructSet() {
+	spinButtonClassStructOnce.Do(func() {
+		spinButtonClassStruct = gi.StructNew("Gtk", "SpinButtonClass")
 	})
 }
 
@@ -7472,12 +7967,12 @@ type SpinButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SpinButtonPrivateStruct *gi.Struct
-var SpinButtonPrivateStructOnce sync.Once
+var spinButtonPrivateStruct *gi.Struct
+var spinButtonPrivateStructOnce sync.Once
 
-func SpinButtonPrivateStructSet() {
-	SpinButtonPrivateStructOnce.Do(func() {
-		SpinButtonPrivateStruct = gi.StructNew("Gtk", "SpinButtonPrivate")
+func spinButtonPrivateStructSet() {
+	spinButtonPrivateStructOnce.Do(func() {
+		spinButtonPrivateStruct = gi.StructNew("Gtk", "SpinButtonPrivate")
 	})
 }
 
@@ -7485,12 +7980,12 @@ type SpinButtonPrivate struct {
 	native uintptr
 }
 
-var SpinnerAccessibleClassStruct *gi.Struct
-var SpinnerAccessibleClassStructOnce sync.Once
+var spinnerAccessibleClassStruct *gi.Struct
+var spinnerAccessibleClassStructOnce sync.Once
 
-func SpinnerAccessibleClassStructSet() {
-	SpinnerAccessibleClassStructOnce.Do(func() {
-		SpinnerAccessibleClassStruct = gi.StructNew("Gtk", "SpinnerAccessibleClass")
+func spinnerAccessibleClassStructSet() {
+	spinnerAccessibleClassStructOnce.Do(func() {
+		spinnerAccessibleClassStruct = gi.StructNew("Gtk", "SpinnerAccessibleClass")
 	})
 }
 
@@ -7499,12 +7994,12 @@ type SpinnerAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var SpinnerAccessiblePrivateStruct *gi.Struct
-var SpinnerAccessiblePrivateStructOnce sync.Once
+var spinnerAccessiblePrivateStruct *gi.Struct
+var spinnerAccessiblePrivateStructOnce sync.Once
 
-func SpinnerAccessiblePrivateStructSet() {
-	SpinnerAccessiblePrivateStructOnce.Do(func() {
-		SpinnerAccessiblePrivateStruct = gi.StructNew("Gtk", "SpinnerAccessiblePrivate")
+func spinnerAccessiblePrivateStructSet() {
+	spinnerAccessiblePrivateStructOnce.Do(func() {
+		spinnerAccessiblePrivateStruct = gi.StructNew("Gtk", "SpinnerAccessiblePrivate")
 	})
 }
 
@@ -7512,12 +8007,12 @@ type SpinnerAccessiblePrivate struct {
 	native uintptr
 }
 
-var SpinnerClassStruct *gi.Struct
-var SpinnerClassStructOnce sync.Once
+var spinnerClassStruct *gi.Struct
+var spinnerClassStructOnce sync.Once
 
-func SpinnerClassStructSet() {
-	SpinnerClassStructOnce.Do(func() {
-		SpinnerClassStruct = gi.StructNew("Gtk", "SpinnerClass")
+func spinnerClassStructSet() {
+	spinnerClassStructOnce.Do(func() {
+		spinnerClassStruct = gi.StructNew("Gtk", "SpinnerClass")
 	})
 }
 
@@ -7530,12 +8025,12 @@ type SpinnerClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var SpinnerPrivateStruct *gi.Struct
-var SpinnerPrivateStructOnce sync.Once
+var spinnerPrivateStruct *gi.Struct
+var spinnerPrivateStructOnce sync.Once
 
-func SpinnerPrivateStructSet() {
-	SpinnerPrivateStructOnce.Do(func() {
-		SpinnerPrivateStruct = gi.StructNew("Gtk", "SpinnerPrivate")
+func spinnerPrivateStructSet() {
+	spinnerPrivateStructOnce.Do(func() {
+		spinnerPrivateStruct = gi.StructNew("Gtk", "SpinnerPrivate")
 	})
 }
 
@@ -7543,12 +8038,12 @@ type SpinnerPrivate struct {
 	native uintptr
 }
 
-var StackAccessibleClassStruct *gi.Struct
-var StackAccessibleClassStructOnce sync.Once
+var stackAccessibleClassStruct *gi.Struct
+var stackAccessibleClassStructOnce sync.Once
 
-func StackAccessibleClassStructSet() {
-	StackAccessibleClassStructOnce.Do(func() {
-		StackAccessibleClassStruct = gi.StructNew("Gtk", "StackAccessibleClass")
+func stackAccessibleClassStructSet() {
+	stackAccessibleClassStructOnce.Do(func() {
+		stackAccessibleClassStruct = gi.StructNew("Gtk", "StackAccessibleClass")
 	})
 }
 
@@ -7557,12 +8052,12 @@ type StackAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var StackClassStruct *gi.Struct
-var StackClassStructOnce sync.Once
+var stackClassStruct *gi.Struct
+var stackClassStructOnce sync.Once
 
-func StackClassStructSet() {
-	StackClassStructOnce.Do(func() {
-		StackClassStruct = gi.StructNew("Gtk", "StackClass")
+func stackClassStructSet() {
+	stackClassStructOnce.Do(func() {
+		stackClassStruct = gi.StructNew("Gtk", "StackClass")
 	})
 }
 
@@ -7571,12 +8066,12 @@ type StackClass struct {
 	ParentClass *ContainerClass
 }
 
-var StackSidebarClassStruct *gi.Struct
-var StackSidebarClassStructOnce sync.Once
+var stackSidebarClassStruct *gi.Struct
+var stackSidebarClassStructOnce sync.Once
 
-func StackSidebarClassStructSet() {
-	StackSidebarClassStructOnce.Do(func() {
-		StackSidebarClassStruct = gi.StructNew("Gtk", "StackSidebarClass")
+func stackSidebarClassStructSet() {
+	stackSidebarClassStructOnce.Do(func() {
+		stackSidebarClassStruct = gi.StructNew("Gtk", "StackSidebarClass")
 	})
 }
 
@@ -7589,12 +8084,12 @@ type StackSidebarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var StackSidebarPrivateStruct *gi.Struct
-var StackSidebarPrivateStructOnce sync.Once
+var stackSidebarPrivateStruct *gi.Struct
+var stackSidebarPrivateStructOnce sync.Once
 
-func StackSidebarPrivateStructSet() {
-	StackSidebarPrivateStructOnce.Do(func() {
-		StackSidebarPrivateStruct = gi.StructNew("Gtk", "StackSidebarPrivate")
+func stackSidebarPrivateStructSet() {
+	stackSidebarPrivateStructOnce.Do(func() {
+		stackSidebarPrivateStruct = gi.StructNew("Gtk", "StackSidebarPrivate")
 	})
 }
 
@@ -7602,12 +8097,12 @@ type StackSidebarPrivate struct {
 	native uintptr
 }
 
-var StackSwitcherClassStruct *gi.Struct
-var StackSwitcherClassStructOnce sync.Once
+var stackSwitcherClassStruct *gi.Struct
+var stackSwitcherClassStructOnce sync.Once
 
-func StackSwitcherClassStructSet() {
-	StackSwitcherClassStructOnce.Do(func() {
-		StackSwitcherClassStruct = gi.StructNew("Gtk", "StackSwitcherClass")
+func stackSwitcherClassStructSet() {
+	stackSwitcherClassStructOnce.Do(func() {
+		stackSwitcherClassStruct = gi.StructNew("Gtk", "StackSwitcherClass")
 	})
 }
 
@@ -7620,12 +8115,12 @@ type StackSwitcherClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var StatusIconClassStruct *gi.Struct
-var StatusIconClassStructOnce sync.Once
+var statusIconClassStruct *gi.Struct
+var statusIconClassStructOnce sync.Once
 
-func StatusIconClassStructSet() {
-	StatusIconClassStructOnce.Do(func() {
-		StatusIconClassStruct = gi.StructNew("Gtk", "StatusIconClass")
+func statusIconClassStructSet() {
+	statusIconClassStructOnce.Do(func() {
+		statusIconClassStruct = gi.StructNew("Gtk", "StatusIconClass")
 	})
 }
 
@@ -7645,12 +8140,12 @@ type StatusIconClass struct {
 	// UNSUPPORTED : C value '__gtk_reserved4' : missing Type
 }
 
-var StatusIconPrivateStruct *gi.Struct
-var StatusIconPrivateStructOnce sync.Once
+var statusIconPrivateStruct *gi.Struct
+var statusIconPrivateStructOnce sync.Once
 
-func StatusIconPrivateStructSet() {
-	StatusIconPrivateStructOnce.Do(func() {
-		StatusIconPrivateStruct = gi.StructNew("Gtk", "StatusIconPrivate")
+func statusIconPrivateStructSet() {
+	statusIconPrivateStructOnce.Do(func() {
+		statusIconPrivateStruct = gi.StructNew("Gtk", "StatusIconPrivate")
 	})
 }
 
@@ -7658,12 +8153,12 @@ type StatusIconPrivate struct {
 	native uintptr
 }
 
-var StatusbarAccessibleClassStruct *gi.Struct
-var StatusbarAccessibleClassStructOnce sync.Once
+var statusbarAccessibleClassStruct *gi.Struct
+var statusbarAccessibleClassStructOnce sync.Once
 
-func StatusbarAccessibleClassStructSet() {
-	StatusbarAccessibleClassStructOnce.Do(func() {
-		StatusbarAccessibleClassStruct = gi.StructNew("Gtk", "StatusbarAccessibleClass")
+func statusbarAccessibleClassStructSet() {
+	statusbarAccessibleClassStructOnce.Do(func() {
+		statusbarAccessibleClassStruct = gi.StructNew("Gtk", "StatusbarAccessibleClass")
 	})
 }
 
@@ -7672,12 +8167,12 @@ type StatusbarAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var StatusbarAccessiblePrivateStruct *gi.Struct
-var StatusbarAccessiblePrivateStructOnce sync.Once
+var statusbarAccessiblePrivateStruct *gi.Struct
+var statusbarAccessiblePrivateStructOnce sync.Once
 
-func StatusbarAccessiblePrivateStructSet() {
-	StatusbarAccessiblePrivateStructOnce.Do(func() {
-		StatusbarAccessiblePrivateStruct = gi.StructNew("Gtk", "StatusbarAccessiblePrivate")
+func statusbarAccessiblePrivateStructSet() {
+	statusbarAccessiblePrivateStructOnce.Do(func() {
+		statusbarAccessiblePrivateStruct = gi.StructNew("Gtk", "StatusbarAccessiblePrivate")
 	})
 }
 
@@ -7685,12 +8180,12 @@ type StatusbarAccessiblePrivate struct {
 	native uintptr
 }
 
-var StatusbarClassStruct *gi.Struct
-var StatusbarClassStructOnce sync.Once
+var statusbarClassStruct *gi.Struct
+var statusbarClassStructOnce sync.Once
 
-func StatusbarClassStructSet() {
-	StatusbarClassStructOnce.Do(func() {
-		StatusbarClassStruct = gi.StructNew("Gtk", "StatusbarClass")
+func statusbarClassStructSet() {
+	statusbarClassStructOnce.Do(func() {
+		statusbarClassStruct = gi.StructNew("Gtk", "StatusbarClass")
 	})
 }
 
@@ -7706,12 +8201,12 @@ type StatusbarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var StatusbarPrivateStruct *gi.Struct
-var StatusbarPrivateStructOnce sync.Once
+var statusbarPrivateStruct *gi.Struct
+var statusbarPrivateStructOnce sync.Once
 
-func StatusbarPrivateStructSet() {
-	StatusbarPrivateStructOnce.Do(func() {
-		StatusbarPrivateStruct = gi.StructNew("Gtk", "StatusbarPrivate")
+func statusbarPrivateStructSet() {
+	statusbarPrivateStructOnce.Do(func() {
+		statusbarPrivateStruct = gi.StructNew("Gtk", "StatusbarPrivate")
 	})
 }
 
@@ -7719,12 +8214,12 @@ type StatusbarPrivate struct {
 	native uintptr
 }
 
-var StockItemStruct *gi.Struct
-var StockItemStructOnce sync.Once
+var stockItemStruct *gi.Struct
+var stockItemStructOnce sync.Once
 
-func StockItemStructSet() {
-	StockItemStructOnce.Do(func() {
-		StockItemStruct = gi.StructNew("Gtk", "StockItem")
+func stockItemStructSet() {
+	stockItemStructOnce.Do(func() {
+		stockItemStruct = gi.StructNew("Gtk", "StockItem")
 	})
 }
 
@@ -7735,6 +8230,15 @@ type StockItem struct {
 	// UNSUPPORTED : C value 'modifier' : no Go type for 'Gdk.ModifierType'
 	Keyval            uint32
 	TranslationDomain string
+}
+
+var stockItemCopyFunction *gi.Function
+var stockItemCopyFunctionOnce sync.Once
+
+func stockItemCopyFunctionSet() {
+	stockItemCopyFunctionOnce.Do(func() {
+		stockItemCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copyStockItemInvoker *gi.Function
@@ -7755,6 +8259,15 @@ func (recv *StockItem) Copy() *StockItem {
 	return retGo
 }
 
+var stockItemFreeFunction *gi.Function
+var stockItemFreeFunctionOnce sync.Once
+
+func stockItemFreeFunctionSet() {
+	stockItemFreeFunctionOnce.Do(func() {
+		stockItemFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeStockItemInvoker *gi.Function
 
 // Free is a representation of the C type gtk_stock_item_free.
@@ -7770,12 +8283,12 @@ func (recv *StockItem) Free() {
 
 }
 
-var StyleClassStruct *gi.Struct
-var StyleClassStructOnce sync.Once
+var styleClassStruct *gi.Struct
+var styleClassStructOnce sync.Once
 
-func StyleClassStructSet() {
-	StyleClassStructOnce.Do(func() {
-		StyleClassStruct = gi.StructNew("Gtk", "StyleClass")
+func styleClassStructSet() {
+	styleClassStructOnce.Do(func() {
+		styleClassStruct = gi.StructNew("Gtk", "StyleClass")
 	})
 }
 
@@ -7822,12 +8335,12 @@ type StyleClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved11' : missing Type
 }
 
-var StyleContextClassStruct *gi.Struct
-var StyleContextClassStructOnce sync.Once
+var styleContextClassStruct *gi.Struct
+var styleContextClassStructOnce sync.Once
 
-func StyleContextClassStructSet() {
-	StyleContextClassStructOnce.Do(func() {
-		StyleContextClassStruct = gi.StructNew("Gtk", "StyleContextClass")
+func styleContextClassStructSet() {
+	styleContextClassStructOnce.Do(func() {
+		styleContextClassStruct = gi.StructNew("Gtk", "StyleContextClass")
 	})
 }
 
@@ -7841,12 +8354,12 @@ type StyleContextClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var StyleContextPrivateStruct *gi.Struct
-var StyleContextPrivateStructOnce sync.Once
+var styleContextPrivateStruct *gi.Struct
+var styleContextPrivateStructOnce sync.Once
 
-func StyleContextPrivateStructSet() {
-	StyleContextPrivateStructOnce.Do(func() {
-		StyleContextPrivateStruct = gi.StructNew("Gtk", "StyleContextPrivate")
+func styleContextPrivateStructSet() {
+	styleContextPrivateStructOnce.Do(func() {
+		styleContextPrivateStruct = gi.StructNew("Gtk", "StyleContextPrivate")
 	})
 }
 
@@ -7854,12 +8367,12 @@ type StyleContextPrivate struct {
 	native uintptr
 }
 
-var StylePropertiesClassStruct *gi.Struct
-var StylePropertiesClassStructOnce sync.Once
+var stylePropertiesClassStruct *gi.Struct
+var stylePropertiesClassStructOnce sync.Once
 
-func StylePropertiesClassStructSet() {
-	StylePropertiesClassStructOnce.Do(func() {
-		StylePropertiesClassStruct = gi.StructNew("Gtk", "StylePropertiesClass")
+func stylePropertiesClassStructSet() {
+	stylePropertiesClassStructOnce.Do(func() {
+		stylePropertiesClassStruct = gi.StructNew("Gtk", "StylePropertiesClass")
 	})
 }
 
@@ -7871,12 +8384,12 @@ type StylePropertiesClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var StylePropertiesPrivateStruct *gi.Struct
-var StylePropertiesPrivateStructOnce sync.Once
+var stylePropertiesPrivateStruct *gi.Struct
+var stylePropertiesPrivateStructOnce sync.Once
 
-func StylePropertiesPrivateStructSet() {
-	StylePropertiesPrivateStructOnce.Do(func() {
-		StylePropertiesPrivateStruct = gi.StructNew("Gtk", "StylePropertiesPrivate")
+func stylePropertiesPrivateStructSet() {
+	stylePropertiesPrivateStructOnce.Do(func() {
+		stylePropertiesPrivateStruct = gi.StructNew("Gtk", "StylePropertiesPrivate")
 	})
 }
 
@@ -7884,12 +8397,12 @@ type StylePropertiesPrivate struct {
 	native uintptr
 }
 
-var StyleProviderIfaceStruct *gi.Struct
-var StyleProviderIfaceStructOnce sync.Once
+var styleProviderIfaceStruct *gi.Struct
+var styleProviderIfaceStructOnce sync.Once
 
-func StyleProviderIfaceStructSet() {
-	StyleProviderIfaceStructOnce.Do(func() {
-		StyleProviderIfaceStruct = gi.StructNew("Gtk", "StyleProviderIface")
+func styleProviderIfaceStructSet() {
+	styleProviderIfaceStructOnce.Do(func() {
+		styleProviderIfaceStruct = gi.StructNew("Gtk", "StyleProviderIface")
 	})
 }
 
@@ -7900,12 +8413,12 @@ type StyleProviderIface struct {
 	// UNSUPPORTED : C value 'get_icon_factory' : missing Type
 }
 
-var SwitchAccessibleClassStruct *gi.Struct
-var SwitchAccessibleClassStructOnce sync.Once
+var switchAccessibleClassStruct *gi.Struct
+var switchAccessibleClassStructOnce sync.Once
 
-func SwitchAccessibleClassStructSet() {
-	SwitchAccessibleClassStructOnce.Do(func() {
-		SwitchAccessibleClassStruct = gi.StructNew("Gtk", "SwitchAccessibleClass")
+func switchAccessibleClassStructSet() {
+	switchAccessibleClassStructOnce.Do(func() {
+		switchAccessibleClassStruct = gi.StructNew("Gtk", "SwitchAccessibleClass")
 	})
 }
 
@@ -7914,12 +8427,12 @@ type SwitchAccessibleClass struct {
 	ParentClass *WidgetAccessibleClass
 }
 
-var SwitchAccessiblePrivateStruct *gi.Struct
-var SwitchAccessiblePrivateStructOnce sync.Once
+var switchAccessiblePrivateStruct *gi.Struct
+var switchAccessiblePrivateStructOnce sync.Once
 
-func SwitchAccessiblePrivateStructSet() {
-	SwitchAccessiblePrivateStructOnce.Do(func() {
-		SwitchAccessiblePrivateStruct = gi.StructNew("Gtk", "SwitchAccessiblePrivate")
+func switchAccessiblePrivateStructSet() {
+	switchAccessiblePrivateStructOnce.Do(func() {
+		switchAccessiblePrivateStruct = gi.StructNew("Gtk", "SwitchAccessiblePrivate")
 	})
 }
 
@@ -7927,12 +8440,12 @@ type SwitchAccessiblePrivate struct {
 	native uintptr
 }
 
-var SwitchClassStruct *gi.Struct
-var SwitchClassStructOnce sync.Once
+var switchClassStruct *gi.Struct
+var switchClassStructOnce sync.Once
 
-func SwitchClassStructSet() {
-	SwitchClassStructOnce.Do(func() {
-		SwitchClassStruct = gi.StructNew("Gtk", "SwitchClass")
+func switchClassStructSet() {
+	switchClassStructOnce.Do(func() {
+		switchClassStruct = gi.StructNew("Gtk", "SwitchClass")
 	})
 }
 
@@ -7948,12 +8461,12 @@ type SwitchClass struct {
 	// UNSUPPORTED : C value '_switch_padding_5' : missing Type
 }
 
-var SwitchPrivateStruct *gi.Struct
-var SwitchPrivateStructOnce sync.Once
+var switchPrivateStruct *gi.Struct
+var switchPrivateStructOnce sync.Once
 
-func SwitchPrivateStructSet() {
-	SwitchPrivateStructOnce.Do(func() {
-		SwitchPrivateStruct = gi.StructNew("Gtk", "SwitchPrivate")
+func switchPrivateStructSet() {
+	switchPrivateStructOnce.Do(func() {
+		switchPrivateStruct = gi.StructNew("Gtk", "SwitchPrivate")
 	})
 }
 
@@ -7961,12 +8474,12 @@ type SwitchPrivate struct {
 	native uintptr
 }
 
-var SymbolicColorStruct *gi.Struct
-var SymbolicColorStructOnce sync.Once
+var symbolicColorStruct *gi.Struct
+var symbolicColorStructOnce sync.Once
 
-func SymbolicColorStructSet() {
-	SymbolicColorStructOnce.Do(func() {
-		SymbolicColorStruct = gi.StructNew("Gtk", "SymbolicColor")
+func symbolicColorStructSet() {
+	symbolicColorStructOnce.Do(func() {
+		symbolicColorStruct = gi.StructNew("Gtk", "SymbolicColor")
 	})
 }
 
@@ -7979,6 +8492,15 @@ type SymbolicColor struct {
 // UNSUPPORTED : C value 'gtk_symbolic_color_new_literal' : parameter 'color' of type 'Gdk.RGBA' not supported
 
 // UNSUPPORTED : C value 'gtk_symbolic_color_new_mix' : parameter 'color1' of type 'SymbolicColor' not supported
+
+var symbolicColorNewNameFunction *gi.Function
+var symbolicColorNewNameFunctionOnce sync.Once
+
+func symbolicColorNewNameFunctionSet() {
+	symbolicColorNewNameFunctionOnce.Do(func() {
+		symbolicColorNewNameFunction = gi.FunctionInvokerNew("Gtk", "new_name")
+	})
+}
 
 var newNameSymbolicColorInvoker *gi.Function
 
@@ -8000,6 +8522,15 @@ func SymbolicColorNewName(name string) *SymbolicColor {
 
 // UNSUPPORTED : C value 'gtk_symbolic_color_new_shade' : parameter 'color' of type 'SymbolicColor' not supported
 
+var symbolicColorNewWin32Function *gi.Function
+var symbolicColorNewWin32FunctionOnce sync.Once
+
+func symbolicColorNewWin32FunctionSet() {
+	symbolicColorNewWin32FunctionOnce.Do(func() {
+		symbolicColorNewWin32Function = gi.FunctionInvokerNew("Gtk", "new_win32")
+	})
+}
+
 var newWin32SymbolicColorInvoker *gi.Function
 
 // SymbolicColorNewWin32 is a representation of the C type gtk_symbolic_color_new_win32.
@@ -8017,6 +8548,15 @@ func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
 	return retGo
+}
+
+var symbolicColorRefFunction *gi.Function
+var symbolicColorRefFunctionOnce sync.Once
+
+func symbolicColorRefFunctionSet() {
+	symbolicColorRefFunctionOnce.Do(func() {
+		symbolicColorRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
 }
 
 var refSymbolicColorInvoker *gi.Function
@@ -8039,6 +8579,15 @@ func (recv *SymbolicColor) Ref() *SymbolicColor {
 
 // UNSUPPORTED : C value 'gtk_symbolic_color_resolve' : parameter 'props' of type 'StyleProperties' not supported
 
+var symbolicColorToStringFunction *gi.Function
+var symbolicColorToStringFunctionOnce sync.Once
+
+func symbolicColorToStringFunctionSet() {
+	symbolicColorToStringFunctionOnce.Do(func() {
+		symbolicColorToStringFunction = gi.FunctionInvokerNew("Gtk", "to_string")
+	})
+}
+
 var toStringSymbolicColorInvoker *gi.Function
 
 // ToString is a representation of the C type gtk_symbolic_color_to_string.
@@ -8057,6 +8606,15 @@ func (recv *SymbolicColor) ToString() string {
 	return retGo
 }
 
+var symbolicColorUnrefFunction *gi.Function
+var symbolicColorUnrefFunctionOnce sync.Once
+
+func symbolicColorUnrefFunctionSet() {
+	symbolicColorUnrefFunctionOnce.Do(func() {
+		symbolicColorUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefSymbolicColorInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_symbolic_color_unref.
@@ -8072,12 +8630,12 @@ func (recv *SymbolicColor) Unref() {
 
 }
 
-var TableChildStruct *gi.Struct
-var TableChildStructOnce sync.Once
+var tableChildStruct *gi.Struct
+var tableChildStructOnce sync.Once
 
-func TableChildStructSet() {
-	TableChildStructOnce.Do(func() {
-		TableChildStruct = gi.StructNew("Gtk", "TableChild")
+func tableChildStructSet() {
+	tableChildStructOnce.Do(func() {
+		tableChildStruct = gi.StructNew("Gtk", "TableChild")
 	})
 }
 
@@ -8098,12 +8656,12 @@ type TableChild struct {
 	Yfill        uint32
 }
 
-var TableClassStruct *gi.Struct
-var TableClassStructOnce sync.Once
+var tableClassStruct *gi.Struct
+var tableClassStructOnce sync.Once
 
-func TableClassStructSet() {
-	TableClassStructOnce.Do(func() {
-		TableClassStruct = gi.StructNew("Gtk", "TableClass")
+func tableClassStructSet() {
+	tableClassStructOnce.Do(func() {
+		tableClassStruct = gi.StructNew("Gtk", "TableClass")
 	})
 }
 
@@ -8116,12 +8674,12 @@ type TableClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TablePrivateStruct *gi.Struct
-var TablePrivateStructOnce sync.Once
+var tablePrivateStruct *gi.Struct
+var tablePrivateStructOnce sync.Once
 
-func TablePrivateStructSet() {
-	TablePrivateStructOnce.Do(func() {
-		TablePrivateStruct = gi.StructNew("Gtk", "TablePrivate")
+func tablePrivateStructSet() {
+	tablePrivateStructOnce.Do(func() {
+		tablePrivateStruct = gi.StructNew("Gtk", "TablePrivate")
 	})
 }
 
@@ -8129,12 +8687,12 @@ type TablePrivate struct {
 	native uintptr
 }
 
-var TableRowColStruct *gi.Struct
-var TableRowColStructOnce sync.Once
+var tableRowColStruct *gi.Struct
+var tableRowColStructOnce sync.Once
 
-func TableRowColStructSet() {
-	TableRowColStructOnce.Do(func() {
-		TableRowColStruct = gi.StructNew("Gtk", "TableRowCol")
+func tableRowColStructSet() {
+	tableRowColStructOnce.Do(func() {
+		tableRowColStruct = gi.StructNew("Gtk", "TableRowCol")
 	})
 }
 
@@ -8150,12 +8708,12 @@ type TableRowCol struct {
 	Empty       uint32
 }
 
-var TargetEntryStruct *gi.Struct
-var TargetEntryStructOnce sync.Once
+var targetEntryStruct *gi.Struct
+var targetEntryStructOnce sync.Once
 
-func TargetEntryStructSet() {
-	TargetEntryStructOnce.Do(func() {
-		TargetEntryStruct = gi.StructNew("Gtk", "TargetEntry")
+func targetEntryStructSet() {
+	targetEntryStructOnce.Do(func() {
+		targetEntryStruct = gi.StructNew("Gtk", "TargetEntry")
 	})
 }
 
@@ -8164,6 +8722,15 @@ type TargetEntry struct {
 	Target string
 	Flags  uint32
 	Info   uint32
+}
+
+var targetEntryNewFunction *gi.Function
+var targetEntryNewFunctionOnce sync.Once
+
+func targetEntryNewFunctionSet() {
+	targetEntryNewFunctionOnce.Do(func() {
+		targetEntryNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newTargetEntryInvoker *gi.Function
@@ -8186,6 +8753,15 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	return retGo
 }
 
+var targetEntryCopyFunction *gi.Function
+var targetEntryCopyFunctionOnce sync.Once
+
+func targetEntryCopyFunctionSet() {
+	targetEntryCopyFunctionOnce.Do(func() {
+		targetEntryCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
+
 var copyTargetEntryInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_target_entry_copy.
@@ -8204,6 +8780,15 @@ func (recv *TargetEntry) Copy() *TargetEntry {
 	return retGo
 }
 
+var targetEntryFreeFunction *gi.Function
+var targetEntryFreeFunctionOnce sync.Once
+
+func targetEntryFreeFunctionSet() {
+	targetEntryFreeFunctionOnce.Do(func() {
+		targetEntryFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeTargetEntryInvoker *gi.Function
 
 // Free is a representation of the C type gtk_target_entry_free.
@@ -8219,12 +8804,12 @@ func (recv *TargetEntry) Free() {
 
 }
 
-var TargetListStruct *gi.Struct
-var TargetListStructOnce sync.Once
+var targetListStruct *gi.Struct
+var targetListStructOnce sync.Once
 
-func TargetListStructSet() {
-	TargetListStructOnce.Do(func() {
-		TargetListStruct = gi.StructNew("Gtk", "TargetList")
+func targetListStructSet() {
+	targetListStructOnce.Do(func() {
+		targetListStruct = gi.StructNew("Gtk", "TargetList")
 	})
 }
 
@@ -8242,6 +8827,15 @@ type TargetList struct {
 
 // UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' has no type
 
+var targetListAddTextTargetsFunction *gi.Function
+var targetListAddTextTargetsFunctionOnce sync.Once
+
+func targetListAddTextTargetsFunctionSet() {
+	targetListAddTextTargetsFunctionOnce.Do(func() {
+		targetListAddTextTargetsFunction = gi.FunctionInvokerNew("Gtk", "add_text_targets")
+	})
+}
+
 var addTextTargetsTargetListInvoker *gi.Function
 
 // AddTextTargets is a representation of the C type gtk_target_list_add_text_targets.
@@ -8256,6 +8850,15 @@ func (recv *TargetList) AddTextTargets(info uint32) {
 
 	addTextTargetsTargetListInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var targetListAddUriTargetsFunction *gi.Function
+var targetListAddUriTargetsFunctionOnce sync.Once
+
+func targetListAddUriTargetsFunctionSet() {
+	targetListAddUriTargetsFunctionOnce.Do(func() {
+		targetListAddUriTargetsFunction = gi.FunctionInvokerNew("Gtk", "add_uri_targets")
+	})
 }
 
 var addUriTargetsTargetListInvoker *gi.Function
@@ -8275,6 +8878,15 @@ func (recv *TargetList) AddUriTargets(info uint32) {
 }
 
 // UNSUPPORTED : C value 'gtk_target_list_find' : parameter 'target' of type 'Gdk.Atom' not supported
+
+var targetListRefFunction *gi.Function
+var targetListRefFunctionOnce sync.Once
+
+func targetListRefFunctionSet() {
+	targetListRefFunctionOnce.Do(func() {
+		targetListRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
 
 var refTargetListInvoker *gi.Function
 
@@ -8296,6 +8908,15 @@ func (recv *TargetList) Ref() *TargetList {
 
 // UNSUPPORTED : C value 'gtk_target_list_remove' : parameter 'target' of type 'Gdk.Atom' not supported
 
+var targetListUnrefFunction *gi.Function
+var targetListUnrefFunctionOnce sync.Once
+
+func targetListUnrefFunctionSet() {
+	targetListUnrefFunctionOnce.Do(func() {
+		targetListUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefTargetListInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_target_list_unref.
@@ -8311,12 +8932,12 @@ func (recv *TargetList) Unref() {
 
 }
 
-var TargetPairStruct *gi.Struct
-var TargetPairStructOnce sync.Once
+var targetPairStruct *gi.Struct
+var targetPairStructOnce sync.Once
 
-func TargetPairStructSet() {
-	TargetPairStructOnce.Do(func() {
-		TargetPairStruct = gi.StructNew("Gtk", "TargetPair")
+func targetPairStructSet() {
+	targetPairStructOnce.Do(func() {
+		targetPairStruct = gi.StructNew("Gtk", "TargetPair")
 	})
 }
 
@@ -8327,12 +8948,12 @@ type TargetPair struct {
 	Info  uint32
 }
 
-var TearoffMenuItemClassStruct *gi.Struct
-var TearoffMenuItemClassStructOnce sync.Once
+var tearoffMenuItemClassStruct *gi.Struct
+var tearoffMenuItemClassStructOnce sync.Once
 
-func TearoffMenuItemClassStructSet() {
-	TearoffMenuItemClassStructOnce.Do(func() {
-		TearoffMenuItemClassStruct = gi.StructNew("Gtk", "TearoffMenuItemClass")
+func tearoffMenuItemClassStructSet() {
+	tearoffMenuItemClassStructOnce.Do(func() {
+		tearoffMenuItemClassStruct = gi.StructNew("Gtk", "TearoffMenuItemClass")
 	})
 }
 
@@ -8345,12 +8966,12 @@ type TearoffMenuItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TearoffMenuItemPrivateStruct *gi.Struct
-var TearoffMenuItemPrivateStructOnce sync.Once
+var tearoffMenuItemPrivateStruct *gi.Struct
+var tearoffMenuItemPrivateStructOnce sync.Once
 
-func TearoffMenuItemPrivateStructSet() {
-	TearoffMenuItemPrivateStructOnce.Do(func() {
-		TearoffMenuItemPrivateStruct = gi.StructNew("Gtk", "TearoffMenuItemPrivate")
+func tearoffMenuItemPrivateStructSet() {
+	tearoffMenuItemPrivateStructOnce.Do(func() {
+		tearoffMenuItemPrivateStruct = gi.StructNew("Gtk", "TearoffMenuItemPrivate")
 	})
 }
 
@@ -8358,12 +8979,12 @@ type TearoffMenuItemPrivate struct {
 	native uintptr
 }
 
-var TextAppearanceStruct *gi.Struct
-var TextAppearanceStructOnce sync.Once
+var textAppearanceStruct *gi.Struct
+var textAppearanceStructOnce sync.Once
 
-func TextAppearanceStructSet() {
-	TextAppearanceStructOnce.Do(func() {
-		TextAppearanceStruct = gi.StructNew("Gtk", "TextAppearance")
+func textAppearanceStructSet() {
+	textAppearanceStructOnce.Do(func() {
+		textAppearanceStruct = gi.StructNew("Gtk", "TextAppearance")
 	})
 }
 
@@ -8379,12 +9000,12 @@ type TextAppearance struct {
 	IsText          uint32
 }
 
-var TextAttributesStruct *gi.Struct
-var TextAttributesStructOnce sync.Once
+var textAttributesStruct *gi.Struct
+var textAttributesStructOnce sync.Once
 
-func TextAttributesStructSet() {
-	TextAttributesStructOnce.Do(func() {
-		TextAttributesStruct = gi.StructNew("Gtk", "TextAttributes")
+func textAttributesStructSet() {
+	textAttributesStructOnce.Do(func() {
+		textAttributesStruct = gi.StructNew("Gtk", "TextAttributes")
 	})
 }
 
@@ -8411,6 +9032,15 @@ type TextAttributes struct {
 	LetterSpacing int32
 }
 
+var textAttributesNewFunction *gi.Function
+var textAttributesNewFunctionOnce sync.Once
+
+func textAttributesNewFunctionSet() {
+	textAttributesNewFunctionOnce.Do(func() {
+		textAttributesNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
+}
+
 var newTextAttributesInvoker *gi.Function
 
 // TextAttributesNew is a representation of the C type gtk_text_attributes_new.
@@ -8424,6 +9054,15 @@ func TextAttributesNew() *TextAttributes {
 	retGo := &TextAttributes{native: ret.Pointer()}
 
 	return retGo
+}
+
+var textAttributesCopyFunction *gi.Function
+var textAttributesCopyFunctionOnce sync.Once
+
+func textAttributesCopyFunctionSet() {
+	textAttributesCopyFunctionOnce.Do(func() {
+		textAttributesCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copyTextAttributesInvoker *gi.Function
@@ -8446,6 +9085,15 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 
 // UNSUPPORTED : C value 'gtk_text_attributes_copy_values' : parameter 'dest' of type 'TextAttributes' not supported
 
+var textAttributesRefFunction *gi.Function
+var textAttributesRefFunctionOnce sync.Once
+
+func textAttributesRefFunctionSet() {
+	textAttributesRefFunctionOnce.Do(func() {
+		textAttributesRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
+
 var refTextAttributesInvoker *gi.Function
 
 // Ref is a representation of the C type gtk_text_attributes_ref.
@@ -8464,6 +9112,15 @@ func (recv *TextAttributes) Ref() *TextAttributes {
 	return retGo
 }
 
+var textAttributesUnrefFunction *gi.Function
+var textAttributesUnrefFunctionOnce sync.Once
+
+func textAttributesUnrefFunctionSet() {
+	textAttributesUnrefFunctionOnce.Do(func() {
+		textAttributesUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefTextAttributesInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_text_attributes_unref.
@@ -8479,12 +9136,12 @@ func (recv *TextAttributes) Unref() {
 
 }
 
-var TextBTreeStruct *gi.Struct
-var TextBTreeStructOnce sync.Once
+var textBTreeStruct *gi.Struct
+var textBTreeStructOnce sync.Once
 
-func TextBTreeStructSet() {
-	TextBTreeStructOnce.Do(func() {
-		TextBTreeStruct = gi.StructNew("Gtk", "TextBTree")
+func textBTreeStructSet() {
+	textBTreeStructOnce.Do(func() {
+		textBTreeStruct = gi.StructNew("Gtk", "TextBTree")
 	})
 }
 
@@ -8492,12 +9149,12 @@ type TextBTree struct {
 	native uintptr
 }
 
-var TextBufferClassStruct *gi.Struct
-var TextBufferClassStructOnce sync.Once
+var textBufferClassStruct *gi.Struct
+var textBufferClassStructOnce sync.Once
 
-func TextBufferClassStructSet() {
-	TextBufferClassStructOnce.Do(func() {
-		TextBufferClassStruct = gi.StructNew("Gtk", "TextBufferClass")
+func textBufferClassStructSet() {
+	textBufferClassStructOnce.Do(func() {
+		textBufferClassStruct = gi.StructNew("Gtk", "TextBufferClass")
 	})
 }
 
@@ -8523,12 +9180,12 @@ type TextBufferClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TextBufferPrivateStruct *gi.Struct
-var TextBufferPrivateStructOnce sync.Once
+var textBufferPrivateStruct *gi.Struct
+var textBufferPrivateStructOnce sync.Once
 
-func TextBufferPrivateStructSet() {
-	TextBufferPrivateStructOnce.Do(func() {
-		TextBufferPrivateStruct = gi.StructNew("Gtk", "TextBufferPrivate")
+func textBufferPrivateStructSet() {
+	textBufferPrivateStructOnce.Do(func() {
+		textBufferPrivateStruct = gi.StructNew("Gtk", "TextBufferPrivate")
 	})
 }
 
@@ -8536,12 +9193,12 @@ type TextBufferPrivate struct {
 	native uintptr
 }
 
-var TextCellAccessibleClassStruct *gi.Struct
-var TextCellAccessibleClassStructOnce sync.Once
+var textCellAccessibleClassStruct *gi.Struct
+var textCellAccessibleClassStructOnce sync.Once
 
-func TextCellAccessibleClassStructSet() {
-	TextCellAccessibleClassStructOnce.Do(func() {
-		TextCellAccessibleClassStruct = gi.StructNew("Gtk", "TextCellAccessibleClass")
+func textCellAccessibleClassStructSet() {
+	textCellAccessibleClassStructOnce.Do(func() {
+		textCellAccessibleClassStruct = gi.StructNew("Gtk", "TextCellAccessibleClass")
 	})
 }
 
@@ -8550,12 +9207,12 @@ type TextCellAccessibleClass struct {
 	ParentClass *RendererCellAccessibleClass
 }
 
-var TextCellAccessiblePrivateStruct *gi.Struct
-var TextCellAccessiblePrivateStructOnce sync.Once
+var textCellAccessiblePrivateStruct *gi.Struct
+var textCellAccessiblePrivateStructOnce sync.Once
 
-func TextCellAccessiblePrivateStructSet() {
-	TextCellAccessiblePrivateStructOnce.Do(func() {
-		TextCellAccessiblePrivateStruct = gi.StructNew("Gtk", "TextCellAccessiblePrivate")
+func textCellAccessiblePrivateStructSet() {
+	textCellAccessiblePrivateStructOnce.Do(func() {
+		textCellAccessiblePrivateStruct = gi.StructNew("Gtk", "TextCellAccessiblePrivate")
 	})
 }
 
@@ -8563,12 +9220,12 @@ type TextCellAccessiblePrivate struct {
 	native uintptr
 }
 
-var TextChildAnchorClassStruct *gi.Struct
-var TextChildAnchorClassStructOnce sync.Once
+var textChildAnchorClassStruct *gi.Struct
+var textChildAnchorClassStructOnce sync.Once
 
-func TextChildAnchorClassStructSet() {
-	TextChildAnchorClassStructOnce.Do(func() {
-		TextChildAnchorClassStruct = gi.StructNew("Gtk", "TextChildAnchorClass")
+func textChildAnchorClassStructSet() {
+	textChildAnchorClassStructOnce.Do(func() {
+		textChildAnchorClassStruct = gi.StructNew("Gtk", "TextChildAnchorClass")
 	})
 }
 
@@ -8581,12 +9238,12 @@ type TextChildAnchorClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TextIterStruct *gi.Struct
-var TextIterStructOnce sync.Once
+var textIterStruct *gi.Struct
+var textIterStructOnce sync.Once
 
-func TextIterStructSet() {
-	TextIterStructOnce.Do(func() {
-		TextIterStruct = gi.StructNew("Gtk", "TextIter")
+func textIterStructSet() {
+	textIterStructOnce.Do(func() {
+		textIterStruct = gi.StructNew("Gtk", "TextIter")
 	})
 }
 
@@ -8640,6 +9297,15 @@ type TextIter struct {
 
 // UNSUPPORTED : C value 'gtk_text_iter_compare' : parameter 'rhs' of type 'TextIter' not supported
 
+var textIterCopyFunction *gi.Function
+var textIterCopyFunctionOnce sync.Once
+
+func textIterCopyFunctionSet() {
+	textIterCopyFunctionOnce.Do(func() {
+		textIterCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
+
 var copyTextIterInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_text_iter_copy.
@@ -8690,6 +9356,15 @@ func (recv *TextIter) Copy() *TextIter {
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_sentence_ends' : return type 'gboolean' not supported
 
+var textIterForwardToEndFunction *gi.Function
+var textIterForwardToEndFunctionOnce sync.Once
+
+func textIterForwardToEndFunctionSet() {
+	textIterForwardToEndFunctionOnce.Do(func() {
+		textIterForwardToEndFunction = gi.FunctionInvokerNew("Gtk", "forward_to_end")
+	})
+}
+
 var forwardToEndTextIterInvoker *gi.Function
 
 // ForwardToEnd is a representation of the C type gtk_text_iter_forward_to_end.
@@ -8725,6 +9400,15 @@ func (recv *TextIter) ForwardToEnd() {
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_word_ends' : return type 'gboolean' not supported
 
+var textIterFreeFunction *gi.Function
+var textIterFreeFunctionOnce sync.Once
+
+func textIterFreeFunctionSet() {
+	textIterFreeFunctionOnce.Do(func() {
+		textIterFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeTextIterInvoker *gi.Function
 
 // Free is a representation of the C type gtk_text_iter_free.
@@ -8743,6 +9427,15 @@ func (recv *TextIter) Free() {
 // UNSUPPORTED : C value 'gtk_text_iter_get_attributes' : parameter 'values' of type 'TextAttributes' not supported
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_buffer' : return type 'TextBuffer' not supported
+
+var textIterGetBytesInLineFunction *gi.Function
+var textIterGetBytesInLineFunctionOnce sync.Once
+
+func textIterGetBytesInLineFunctionSet() {
+	textIterGetBytesInLineFunctionOnce.Do(func() {
+		textIterGetBytesInLineFunction = gi.FunctionInvokerNew("Gtk", "get_bytes_in_line")
+	})
+}
 
 var getBytesInLineTextIterInvoker *gi.Function
 
@@ -8763,6 +9456,15 @@ func (recv *TextIter) GetBytesInLine() int32 {
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_char' : return type 'gunichar' not supported
+
+var textIterGetCharsInLineFunction *gi.Function
+var textIterGetCharsInLineFunctionOnce sync.Once
+
+func textIterGetCharsInLineFunctionSet() {
+	textIterGetCharsInLineFunctionOnce.Do(func() {
+		textIterGetCharsInLineFunction = gi.FunctionInvokerNew("Gtk", "get_chars_in_line")
+	})
+}
 
 var getCharsInLineTextIterInvoker *gi.Function
 
@@ -8786,6 +9488,15 @@ func (recv *TextIter) GetCharsInLine() int32 {
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_language' : return type 'Pango.Language' not supported
 
+var textIterGetLineFunction *gi.Function
+var textIterGetLineFunctionOnce sync.Once
+
+func textIterGetLineFunctionSet() {
+	textIterGetLineFunctionOnce.Do(func() {
+		textIterGetLineFunction = gi.FunctionInvokerNew("Gtk", "get_line")
+	})
+}
+
 var getLineTextIterInvoker *gi.Function
 
 // GetLine is a representation of the C type gtk_text_iter_get_line.
@@ -8804,6 +9515,15 @@ func (recv *TextIter) GetLine() int32 {
 	return retGo
 }
 
+var textIterGetLineIndexFunction *gi.Function
+var textIterGetLineIndexFunctionOnce sync.Once
+
+func textIterGetLineIndexFunctionSet() {
+	textIterGetLineIndexFunctionOnce.Do(func() {
+		textIterGetLineIndexFunction = gi.FunctionInvokerNew("Gtk", "get_line_index")
+	})
+}
+
 var getLineIndexTextIterInvoker *gi.Function
 
 // GetLineIndex is a representation of the C type gtk_text_iter_get_line_index.
@@ -8820,6 +9540,15 @@ func (recv *TextIter) GetLineIndex() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var textIterGetLineOffsetFunction *gi.Function
+var textIterGetLineOffsetFunctionOnce sync.Once
+
+func textIterGetLineOffsetFunctionSet() {
+	textIterGetLineOffsetFunctionOnce.Do(func() {
+		textIterGetLineOffsetFunction = gi.FunctionInvokerNew("Gtk", "get_line_offset")
+	})
 }
 
 var getLineOffsetTextIterInvoker *gi.Function
@@ -8841,6 +9570,15 @@ func (recv *TextIter) GetLineOffset() int32 {
 }
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_marks' : return type 'GLib.SList' not supported
+
+var textIterGetOffsetFunction *gi.Function
+var textIterGetOffsetFunctionOnce sync.Once
+
+func textIterGetOffsetFunctionSet() {
+	textIterGetOffsetFunctionOnce.Do(func() {
+		textIterGetOffsetFunction = gi.FunctionInvokerNew("Gtk", "get_offset")
+	})
+}
 
 var getOffsetTextIterInvoker *gi.Function
 
@@ -8870,6 +9608,15 @@ func (recv *TextIter) GetOffset() int32 {
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_toggled_tags' : parameter 'toggled_on' of type 'gboolean' not supported
 
+var textIterGetVisibleLineIndexFunction *gi.Function
+var textIterGetVisibleLineIndexFunctionOnce sync.Once
+
+func textIterGetVisibleLineIndexFunctionSet() {
+	textIterGetVisibleLineIndexFunctionOnce.Do(func() {
+		textIterGetVisibleLineIndexFunction = gi.FunctionInvokerNew("Gtk", "get_visible_line_index")
+	})
+}
+
 var getVisibleLineIndexTextIterInvoker *gi.Function
 
 // GetVisibleLineIndex is a representation of the C type gtk_text_iter_get_visible_line_index.
@@ -8886,6 +9633,15 @@ func (recv *TextIter) GetVisibleLineIndex() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var textIterGetVisibleLineOffsetFunction *gi.Function
+var textIterGetVisibleLineOffsetFunctionOnce sync.Once
+
+func textIterGetVisibleLineOffsetFunctionSet() {
+	textIterGetVisibleLineOffsetFunctionOnce.Do(func() {
+		textIterGetVisibleLineOffsetFunction = gi.FunctionInvokerNew("Gtk", "get_visible_line_offset")
+	})
 }
 
 var getVisibleLineOffsetTextIterInvoker *gi.Function
@@ -8926,6 +9682,15 @@ func (recv *TextIter) GetVisibleLineOffset() int32 {
 
 // UNSUPPORTED : C value 'gtk_text_iter_order' : parameter 'second' of type 'TextIter' not supported
 
+var textIterSetLineFunction *gi.Function
+var textIterSetLineFunctionOnce sync.Once
+
+func textIterSetLineFunctionSet() {
+	textIterSetLineFunctionOnce.Do(func() {
+		textIterSetLineFunction = gi.FunctionInvokerNew("Gtk", "set_line")
+	})
+}
+
 var setLineTextIterInvoker *gi.Function
 
 // SetLine is a representation of the C type gtk_text_iter_set_line.
@@ -8940,6 +9705,15 @@ func (recv *TextIter) SetLine(lineNumber int32) {
 
 	setLineTextIterInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var textIterSetLineIndexFunction *gi.Function
+var textIterSetLineIndexFunctionOnce sync.Once
+
+func textIterSetLineIndexFunctionSet() {
+	textIterSetLineIndexFunctionOnce.Do(func() {
+		textIterSetLineIndexFunction = gi.FunctionInvokerNew("Gtk", "set_line_index")
+	})
 }
 
 var setLineIndexTextIterInvoker *gi.Function
@@ -8958,6 +9732,15 @@ func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 
 }
 
+var textIterSetLineOffsetFunction *gi.Function
+var textIterSetLineOffsetFunctionOnce sync.Once
+
+func textIterSetLineOffsetFunctionSet() {
+	textIterSetLineOffsetFunctionOnce.Do(func() {
+		textIterSetLineOffsetFunction = gi.FunctionInvokerNew("Gtk", "set_line_offset")
+	})
+}
+
 var setLineOffsetTextIterInvoker *gi.Function
 
 // SetLineOffset is a representation of the C type gtk_text_iter_set_line_offset.
@@ -8972,6 +9755,15 @@ func (recv *TextIter) SetLineOffset(charOnLine int32) {
 
 	setLineOffsetTextIterInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var textIterSetOffsetFunction *gi.Function
+var textIterSetOffsetFunctionOnce sync.Once
+
+func textIterSetOffsetFunctionSet() {
+	textIterSetOffsetFunctionOnce.Do(func() {
+		textIterSetOffsetFunction = gi.FunctionInvokerNew("Gtk", "set_offset")
+	})
 }
 
 var setOffsetTextIterInvoker *gi.Function
@@ -8990,6 +9782,15 @@ func (recv *TextIter) SetOffset(charOffset int32) {
 
 }
 
+var textIterSetVisibleLineIndexFunction *gi.Function
+var textIterSetVisibleLineIndexFunctionOnce sync.Once
+
+func textIterSetVisibleLineIndexFunctionSet() {
+	textIterSetVisibleLineIndexFunctionOnce.Do(func() {
+		textIterSetVisibleLineIndexFunction = gi.FunctionInvokerNew("Gtk", "set_visible_line_index")
+	})
+}
+
 var setVisibleLineIndexTextIterInvoker *gi.Function
 
 // SetVisibleLineIndex is a representation of the C type gtk_text_iter_set_visible_line_index.
@@ -9004,6 +9805,15 @@ func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 
 	setVisibleLineIndexTextIterInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var textIterSetVisibleLineOffsetFunction *gi.Function
+var textIterSetVisibleLineOffsetFunctionOnce sync.Once
+
+func textIterSetVisibleLineOffsetFunctionSet() {
+	textIterSetVisibleLineOffsetFunctionOnce.Do(func() {
+		textIterSetVisibleLineOffsetFunction = gi.FunctionInvokerNew("Gtk", "set_visible_line_offset")
+	})
 }
 
 var setVisibleLineOffsetTextIterInvoker *gi.Function
@@ -9032,12 +9842,12 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 
 // UNSUPPORTED : C value 'gtk_text_iter_toggles_tag' : parameter 'tag' of type 'TextTag' not supported
 
-var TextMarkClassStruct *gi.Struct
-var TextMarkClassStructOnce sync.Once
+var textMarkClassStruct *gi.Struct
+var textMarkClassStructOnce sync.Once
 
-func TextMarkClassStructSet() {
-	TextMarkClassStructOnce.Do(func() {
-		TextMarkClassStruct = gi.StructNew("Gtk", "TextMarkClass")
+func textMarkClassStructSet() {
+	textMarkClassStructOnce.Do(func() {
+		textMarkClassStruct = gi.StructNew("Gtk", "TextMarkClass")
 	})
 }
 
@@ -9050,12 +9860,12 @@ type TextMarkClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TextTagClassStruct *gi.Struct
-var TextTagClassStructOnce sync.Once
+var textTagClassStruct *gi.Struct
+var textTagClassStructOnce sync.Once
 
-func TextTagClassStructSet() {
-	TextTagClassStructOnce.Do(func() {
-		TextTagClassStruct = gi.StructNew("Gtk", "TextTagClass")
+func textTagClassStructSet() {
+	textTagClassStructOnce.Do(func() {
+		textTagClassStruct = gi.StructNew("Gtk", "TextTagClass")
 	})
 }
 
@@ -9069,12 +9879,12 @@ type TextTagClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TextTagPrivateStruct *gi.Struct
-var TextTagPrivateStructOnce sync.Once
+var textTagPrivateStruct *gi.Struct
+var textTagPrivateStructOnce sync.Once
 
-func TextTagPrivateStructSet() {
-	TextTagPrivateStructOnce.Do(func() {
-		TextTagPrivateStruct = gi.StructNew("Gtk", "TextTagPrivate")
+func textTagPrivateStructSet() {
+	textTagPrivateStructOnce.Do(func() {
+		textTagPrivateStruct = gi.StructNew("Gtk", "TextTagPrivate")
 	})
 }
 
@@ -9082,12 +9892,12 @@ type TextTagPrivate struct {
 	native uintptr
 }
 
-var TextTagTableClassStruct *gi.Struct
-var TextTagTableClassStructOnce sync.Once
+var textTagTableClassStruct *gi.Struct
+var textTagTableClassStructOnce sync.Once
 
-func TextTagTableClassStructSet() {
-	TextTagTableClassStructOnce.Do(func() {
-		TextTagTableClassStruct = gi.StructNew("Gtk", "TextTagTableClass")
+func textTagTableClassStructSet() {
+	textTagTableClassStructOnce.Do(func() {
+		textTagTableClassStruct = gi.StructNew("Gtk", "TextTagTableClass")
 	})
 }
 
@@ -9103,12 +9913,12 @@ type TextTagTableClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TextTagTablePrivateStruct *gi.Struct
-var TextTagTablePrivateStructOnce sync.Once
+var textTagTablePrivateStruct *gi.Struct
+var textTagTablePrivateStructOnce sync.Once
 
-func TextTagTablePrivateStructSet() {
-	TextTagTablePrivateStructOnce.Do(func() {
-		TextTagTablePrivateStruct = gi.StructNew("Gtk", "TextTagTablePrivate")
+func textTagTablePrivateStructSet() {
+	textTagTablePrivateStructOnce.Do(func() {
+		textTagTablePrivateStruct = gi.StructNew("Gtk", "TextTagTablePrivate")
 	})
 }
 
@@ -9116,12 +9926,12 @@ type TextTagTablePrivate struct {
 	native uintptr
 }
 
-var TextViewAccessibleClassStruct *gi.Struct
-var TextViewAccessibleClassStructOnce sync.Once
+var textViewAccessibleClassStruct *gi.Struct
+var textViewAccessibleClassStructOnce sync.Once
 
-func TextViewAccessibleClassStructSet() {
-	TextViewAccessibleClassStructOnce.Do(func() {
-		TextViewAccessibleClassStruct = gi.StructNew("Gtk", "TextViewAccessibleClass")
+func textViewAccessibleClassStructSet() {
+	textViewAccessibleClassStructOnce.Do(func() {
+		textViewAccessibleClassStruct = gi.StructNew("Gtk", "TextViewAccessibleClass")
 	})
 }
 
@@ -9130,12 +9940,12 @@ type TextViewAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var TextViewAccessiblePrivateStruct *gi.Struct
-var TextViewAccessiblePrivateStructOnce sync.Once
+var textViewAccessiblePrivateStruct *gi.Struct
+var textViewAccessiblePrivateStructOnce sync.Once
 
-func TextViewAccessiblePrivateStructSet() {
-	TextViewAccessiblePrivateStructOnce.Do(func() {
-		TextViewAccessiblePrivateStruct = gi.StructNew("Gtk", "TextViewAccessiblePrivate")
+func textViewAccessiblePrivateStructSet() {
+	textViewAccessiblePrivateStructOnce.Do(func() {
+		textViewAccessiblePrivateStruct = gi.StructNew("Gtk", "TextViewAccessiblePrivate")
 	})
 }
 
@@ -9143,12 +9953,12 @@ type TextViewAccessiblePrivate struct {
 	native uintptr
 }
 
-var TextViewClassStruct *gi.Struct
-var TextViewClassStructOnce sync.Once
+var textViewClassStruct *gi.Struct
+var textViewClassStructOnce sync.Once
 
-func TextViewClassStructSet() {
-	TextViewClassStructOnce.Do(func() {
-		TextViewClassStruct = gi.StructNew("Gtk", "TextViewClass")
+func textViewClassStructSet() {
+	textViewClassStructOnce.Do(func() {
+		textViewClassStruct = gi.StructNew("Gtk", "TextViewClass")
 	})
 }
 
@@ -9175,12 +9985,12 @@ type TextViewClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TextViewPrivateStruct *gi.Struct
-var TextViewPrivateStructOnce sync.Once
+var textViewPrivateStruct *gi.Struct
+var textViewPrivateStructOnce sync.Once
 
-func TextViewPrivateStructSet() {
-	TextViewPrivateStructOnce.Do(func() {
-		TextViewPrivateStruct = gi.StructNew("Gtk", "TextViewPrivate")
+func textViewPrivateStructSet() {
+	textViewPrivateStructOnce.Do(func() {
+		textViewPrivateStruct = gi.StructNew("Gtk", "TextViewPrivate")
 	})
 }
 
@@ -9188,12 +9998,12 @@ type TextViewPrivate struct {
 	native uintptr
 }
 
-var ThemeEngineStruct *gi.Struct
-var ThemeEngineStructOnce sync.Once
+var themeEngineStruct *gi.Struct
+var themeEngineStructOnce sync.Once
 
-func ThemeEngineStructSet() {
-	ThemeEngineStructOnce.Do(func() {
-		ThemeEngineStruct = gi.StructNew("Gtk", "ThemeEngine")
+func themeEngineStructSet() {
+	themeEngineStructOnce.Do(func() {
+		themeEngineStruct = gi.StructNew("Gtk", "ThemeEngine")
 	})
 }
 
@@ -9201,12 +10011,12 @@ type ThemeEngine struct {
 	native uintptr
 }
 
-var ThemingEngineClassStruct *gi.Struct
-var ThemingEngineClassStructOnce sync.Once
+var themingEngineClassStruct *gi.Struct
+var themingEngineClassStructOnce sync.Once
 
-func ThemingEngineClassStructSet() {
-	ThemingEngineClassStructOnce.Do(func() {
-		ThemingEngineClassStruct = gi.StructNew("Gtk", "ThemingEngineClass")
+func themingEngineClassStructSet() {
+	themingEngineClassStructOnce.Do(func() {
+		themingEngineClassStruct = gi.StructNew("Gtk", "ThemingEngineClass")
 	})
 }
 
@@ -9232,12 +10042,12 @@ type ThemingEngineClass struct {
 	// UNSUPPORTED : C value 'render_icon_surface' : missing Type
 }
 
-var ThemingEnginePrivateStruct *gi.Struct
-var ThemingEnginePrivateStructOnce sync.Once
+var themingEnginePrivateStruct *gi.Struct
+var themingEnginePrivateStructOnce sync.Once
 
-func ThemingEnginePrivateStructSet() {
-	ThemingEnginePrivateStructOnce.Do(func() {
-		ThemingEnginePrivateStruct = gi.StructNew("Gtk", "ThemingEnginePrivate")
+func themingEnginePrivateStructSet() {
+	themingEnginePrivateStructOnce.Do(func() {
+		themingEnginePrivateStruct = gi.StructNew("Gtk", "ThemingEnginePrivate")
 	})
 }
 
@@ -9245,12 +10055,12 @@ type ThemingEnginePrivate struct {
 	native uintptr
 }
 
-var ToggleActionClassStruct *gi.Struct
-var ToggleActionClassStructOnce sync.Once
+var toggleActionClassStruct *gi.Struct
+var toggleActionClassStructOnce sync.Once
 
-func ToggleActionClassStructSet() {
-	ToggleActionClassStructOnce.Do(func() {
-		ToggleActionClassStruct = gi.StructNew("Gtk", "ToggleActionClass")
+func toggleActionClassStructSet() {
+	toggleActionClassStructOnce.Do(func() {
+		toggleActionClassStruct = gi.StructNew("Gtk", "ToggleActionClass")
 	})
 }
 
@@ -9264,12 +10074,12 @@ type ToggleActionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToggleActionEntryStruct *gi.Struct
-var ToggleActionEntryStructOnce sync.Once
+var toggleActionEntryStruct *gi.Struct
+var toggleActionEntryStructOnce sync.Once
 
-func ToggleActionEntryStructSet() {
-	ToggleActionEntryStructOnce.Do(func() {
-		ToggleActionEntryStruct = gi.StructNew("Gtk", "ToggleActionEntry")
+func toggleActionEntryStructSet() {
+	toggleActionEntryStructOnce.Do(func() {
+		toggleActionEntryStruct = gi.StructNew("Gtk", "ToggleActionEntry")
 	})
 }
 
@@ -9284,12 +10094,12 @@ type ToggleActionEntry struct {
 	// UNSUPPORTED : C value 'is_active' : no Go type for 'gboolean'
 }
 
-var ToggleActionPrivateStruct *gi.Struct
-var ToggleActionPrivateStructOnce sync.Once
+var toggleActionPrivateStruct *gi.Struct
+var toggleActionPrivateStructOnce sync.Once
 
-func ToggleActionPrivateStructSet() {
-	ToggleActionPrivateStructOnce.Do(func() {
-		ToggleActionPrivateStruct = gi.StructNew("Gtk", "ToggleActionPrivate")
+func toggleActionPrivateStructSet() {
+	toggleActionPrivateStructOnce.Do(func() {
+		toggleActionPrivateStruct = gi.StructNew("Gtk", "ToggleActionPrivate")
 	})
 }
 
@@ -9297,12 +10107,12 @@ type ToggleActionPrivate struct {
 	native uintptr
 }
 
-var ToggleButtonAccessibleClassStruct *gi.Struct
-var ToggleButtonAccessibleClassStructOnce sync.Once
+var toggleButtonAccessibleClassStruct *gi.Struct
+var toggleButtonAccessibleClassStructOnce sync.Once
 
-func ToggleButtonAccessibleClassStructSet() {
-	ToggleButtonAccessibleClassStructOnce.Do(func() {
-		ToggleButtonAccessibleClassStruct = gi.StructNew("Gtk", "ToggleButtonAccessibleClass")
+func toggleButtonAccessibleClassStructSet() {
+	toggleButtonAccessibleClassStructOnce.Do(func() {
+		toggleButtonAccessibleClassStruct = gi.StructNew("Gtk", "ToggleButtonAccessibleClass")
 	})
 }
 
@@ -9311,12 +10121,12 @@ type ToggleButtonAccessibleClass struct {
 	ParentClass *ButtonAccessibleClass
 }
 
-var ToggleButtonAccessiblePrivateStruct *gi.Struct
-var ToggleButtonAccessiblePrivateStructOnce sync.Once
+var toggleButtonAccessiblePrivateStruct *gi.Struct
+var toggleButtonAccessiblePrivateStructOnce sync.Once
 
-func ToggleButtonAccessiblePrivateStructSet() {
-	ToggleButtonAccessiblePrivateStructOnce.Do(func() {
-		ToggleButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "ToggleButtonAccessiblePrivate")
+func toggleButtonAccessiblePrivateStructSet() {
+	toggleButtonAccessiblePrivateStructOnce.Do(func() {
+		toggleButtonAccessiblePrivateStruct = gi.StructNew("Gtk", "ToggleButtonAccessiblePrivate")
 	})
 }
 
@@ -9324,12 +10134,12 @@ type ToggleButtonAccessiblePrivate struct {
 	native uintptr
 }
 
-var ToggleButtonClassStruct *gi.Struct
-var ToggleButtonClassStructOnce sync.Once
+var toggleButtonClassStruct *gi.Struct
+var toggleButtonClassStructOnce sync.Once
 
-func ToggleButtonClassStructSet() {
-	ToggleButtonClassStructOnce.Do(func() {
-		ToggleButtonClassStruct = gi.StructNew("Gtk", "ToggleButtonClass")
+func toggleButtonClassStructSet() {
+	toggleButtonClassStructOnce.Do(func() {
+		toggleButtonClassStruct = gi.StructNew("Gtk", "ToggleButtonClass")
 	})
 }
 
@@ -9343,12 +10153,12 @@ type ToggleButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToggleButtonPrivateStruct *gi.Struct
-var ToggleButtonPrivateStructOnce sync.Once
+var toggleButtonPrivateStruct *gi.Struct
+var toggleButtonPrivateStructOnce sync.Once
 
-func ToggleButtonPrivateStructSet() {
-	ToggleButtonPrivateStructOnce.Do(func() {
-		ToggleButtonPrivateStruct = gi.StructNew("Gtk", "ToggleButtonPrivate")
+func toggleButtonPrivateStructSet() {
+	toggleButtonPrivateStructOnce.Do(func() {
+		toggleButtonPrivateStruct = gi.StructNew("Gtk", "ToggleButtonPrivate")
 	})
 }
 
@@ -9356,12 +10166,12 @@ type ToggleButtonPrivate struct {
 	native uintptr
 }
 
-var ToggleToolButtonClassStruct *gi.Struct
-var ToggleToolButtonClassStructOnce sync.Once
+var toggleToolButtonClassStruct *gi.Struct
+var toggleToolButtonClassStructOnce sync.Once
 
-func ToggleToolButtonClassStructSet() {
-	ToggleToolButtonClassStructOnce.Do(func() {
-		ToggleToolButtonClassStruct = gi.StructNew("Gtk", "ToggleToolButtonClass")
+func toggleToolButtonClassStructSet() {
+	toggleToolButtonClassStructOnce.Do(func() {
+		toggleToolButtonClassStruct = gi.StructNew("Gtk", "ToggleToolButtonClass")
 	})
 }
 
@@ -9375,12 +10185,12 @@ type ToggleToolButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToggleToolButtonPrivateStruct *gi.Struct
-var ToggleToolButtonPrivateStructOnce sync.Once
+var toggleToolButtonPrivateStruct *gi.Struct
+var toggleToolButtonPrivateStructOnce sync.Once
 
-func ToggleToolButtonPrivateStructSet() {
-	ToggleToolButtonPrivateStructOnce.Do(func() {
-		ToggleToolButtonPrivateStruct = gi.StructNew("Gtk", "ToggleToolButtonPrivate")
+func toggleToolButtonPrivateStructSet() {
+	toggleToolButtonPrivateStructOnce.Do(func() {
+		toggleToolButtonPrivateStruct = gi.StructNew("Gtk", "ToggleToolButtonPrivate")
 	})
 }
 
@@ -9388,12 +10198,12 @@ type ToggleToolButtonPrivate struct {
 	native uintptr
 }
 
-var ToolButtonClassStruct *gi.Struct
-var ToolButtonClassStructOnce sync.Once
+var toolButtonClassStruct *gi.Struct
+var toolButtonClassStructOnce sync.Once
 
-func ToolButtonClassStructSet() {
-	ToolButtonClassStructOnce.Do(func() {
-		ToolButtonClassStruct = gi.StructNew("Gtk", "ToolButtonClass")
+func toolButtonClassStructSet() {
+	toolButtonClassStructOnce.Do(func() {
+		toolButtonClassStruct = gi.StructNew("Gtk", "ToolButtonClass")
 	})
 }
 
@@ -9408,12 +10218,12 @@ type ToolButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToolButtonPrivateStruct *gi.Struct
-var ToolButtonPrivateStructOnce sync.Once
+var toolButtonPrivateStruct *gi.Struct
+var toolButtonPrivateStructOnce sync.Once
 
-func ToolButtonPrivateStructSet() {
-	ToolButtonPrivateStructOnce.Do(func() {
-		ToolButtonPrivateStruct = gi.StructNew("Gtk", "ToolButtonPrivate")
+func toolButtonPrivateStructSet() {
+	toolButtonPrivateStructOnce.Do(func() {
+		toolButtonPrivateStruct = gi.StructNew("Gtk", "ToolButtonPrivate")
 	})
 }
 
@@ -9421,12 +10231,12 @@ type ToolButtonPrivate struct {
 	native uintptr
 }
 
-var ToolItemClassStruct *gi.Struct
-var ToolItemClassStructOnce sync.Once
+var toolItemClassStruct *gi.Struct
+var toolItemClassStructOnce sync.Once
 
-func ToolItemClassStructSet() {
-	ToolItemClassStructOnce.Do(func() {
-		ToolItemClassStruct = gi.StructNew("Gtk", "ToolItemClass")
+func toolItemClassStructSet() {
+	toolItemClassStructOnce.Do(func() {
+		toolItemClassStruct = gi.StructNew("Gtk", "ToolItemClass")
 	})
 }
 
@@ -9441,12 +10251,12 @@ type ToolItemClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToolItemGroupClassStruct *gi.Struct
-var ToolItemGroupClassStructOnce sync.Once
+var toolItemGroupClassStruct *gi.Struct
+var toolItemGroupClassStructOnce sync.Once
 
-func ToolItemGroupClassStructSet() {
-	ToolItemGroupClassStructOnce.Do(func() {
-		ToolItemGroupClassStruct = gi.StructNew("Gtk", "ToolItemGroupClass")
+func toolItemGroupClassStructSet() {
+	toolItemGroupClassStructOnce.Do(func() {
+		toolItemGroupClassStruct = gi.StructNew("Gtk", "ToolItemGroupClass")
 	})
 }
 
@@ -9459,12 +10269,12 @@ type ToolItemGroupClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToolItemGroupPrivateStruct *gi.Struct
-var ToolItemGroupPrivateStructOnce sync.Once
+var toolItemGroupPrivateStruct *gi.Struct
+var toolItemGroupPrivateStructOnce sync.Once
 
-func ToolItemGroupPrivateStructSet() {
-	ToolItemGroupPrivateStructOnce.Do(func() {
-		ToolItemGroupPrivateStruct = gi.StructNew("Gtk", "ToolItemGroupPrivate")
+func toolItemGroupPrivateStructSet() {
+	toolItemGroupPrivateStructOnce.Do(func() {
+		toolItemGroupPrivateStruct = gi.StructNew("Gtk", "ToolItemGroupPrivate")
 	})
 }
 
@@ -9472,12 +10282,12 @@ type ToolItemGroupPrivate struct {
 	native uintptr
 }
 
-var ToolItemPrivateStruct *gi.Struct
-var ToolItemPrivateStructOnce sync.Once
+var toolItemPrivateStruct *gi.Struct
+var toolItemPrivateStructOnce sync.Once
 
-func ToolItemPrivateStructSet() {
-	ToolItemPrivateStructOnce.Do(func() {
-		ToolItemPrivateStruct = gi.StructNew("Gtk", "ToolItemPrivate")
+func toolItemPrivateStructSet() {
+	toolItemPrivateStructOnce.Do(func() {
+		toolItemPrivateStruct = gi.StructNew("Gtk", "ToolItemPrivate")
 	})
 }
 
@@ -9485,12 +10295,12 @@ type ToolItemPrivate struct {
 	native uintptr
 }
 
-var ToolPaletteClassStruct *gi.Struct
-var ToolPaletteClassStructOnce sync.Once
+var toolPaletteClassStruct *gi.Struct
+var toolPaletteClassStructOnce sync.Once
 
-func ToolPaletteClassStructSet() {
-	ToolPaletteClassStructOnce.Do(func() {
-		ToolPaletteClassStruct = gi.StructNew("Gtk", "ToolPaletteClass")
+func toolPaletteClassStructSet() {
+	toolPaletteClassStructOnce.Do(func() {
+		toolPaletteClassStruct = gi.StructNew("Gtk", "ToolPaletteClass")
 	})
 }
 
@@ -9503,12 +10313,12 @@ type ToolPaletteClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToolPalettePrivateStruct *gi.Struct
-var ToolPalettePrivateStructOnce sync.Once
+var toolPalettePrivateStruct *gi.Struct
+var toolPalettePrivateStructOnce sync.Once
 
-func ToolPalettePrivateStructSet() {
-	ToolPalettePrivateStructOnce.Do(func() {
-		ToolPalettePrivateStruct = gi.StructNew("Gtk", "ToolPalettePrivate")
+func toolPalettePrivateStructSet() {
+	toolPalettePrivateStructOnce.Do(func() {
+		toolPalettePrivateStruct = gi.StructNew("Gtk", "ToolPalettePrivate")
 	})
 }
 
@@ -9516,12 +10326,12 @@ type ToolPalettePrivate struct {
 	native uintptr
 }
 
-var ToolShellIfaceStruct *gi.Struct
-var ToolShellIfaceStructOnce sync.Once
+var toolShellIfaceStruct *gi.Struct
+var toolShellIfaceStructOnce sync.Once
 
-func ToolShellIfaceStructSet() {
-	ToolShellIfaceStructOnce.Do(func() {
-		ToolShellIfaceStruct = gi.StructNew("Gtk", "ToolShellIface")
+func toolShellIfaceStructSet() {
+	toolShellIfaceStructOnce.Do(func() {
+		toolShellIfaceStruct = gi.StructNew("Gtk", "ToolShellIface")
 	})
 }
 
@@ -9538,12 +10348,12 @@ type ToolShellIface struct {
 	// UNSUPPORTED : C value 'get_text_size_group' : missing Type
 }
 
-var ToolbarClassStruct *gi.Struct
-var ToolbarClassStructOnce sync.Once
+var toolbarClassStruct *gi.Struct
+var toolbarClassStructOnce sync.Once
 
-func ToolbarClassStructSet() {
-	ToolbarClassStructOnce.Do(func() {
-		ToolbarClassStruct = gi.StructNew("Gtk", "ToolbarClass")
+func toolbarClassStructSet() {
+	toolbarClassStructOnce.Do(func() {
+		toolbarClassStruct = gi.StructNew("Gtk", "ToolbarClass")
 	})
 }
 
@@ -9559,12 +10369,12 @@ type ToolbarClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ToolbarPrivateStruct *gi.Struct
-var ToolbarPrivateStructOnce sync.Once
+var toolbarPrivateStruct *gi.Struct
+var toolbarPrivateStructOnce sync.Once
 
-func ToolbarPrivateStructSet() {
-	ToolbarPrivateStructOnce.Do(func() {
-		ToolbarPrivateStruct = gi.StructNew("Gtk", "ToolbarPrivate")
+func toolbarPrivateStructSet() {
+	toolbarPrivateStructOnce.Do(func() {
+		toolbarPrivateStruct = gi.StructNew("Gtk", "ToolbarPrivate")
 	})
 }
 
@@ -9572,12 +10382,12 @@ type ToolbarPrivate struct {
 	native uintptr
 }
 
-var ToplevelAccessibleClassStruct *gi.Struct
-var ToplevelAccessibleClassStructOnce sync.Once
+var toplevelAccessibleClassStruct *gi.Struct
+var toplevelAccessibleClassStructOnce sync.Once
 
-func ToplevelAccessibleClassStructSet() {
-	ToplevelAccessibleClassStructOnce.Do(func() {
-		ToplevelAccessibleClassStruct = gi.StructNew("Gtk", "ToplevelAccessibleClass")
+func toplevelAccessibleClassStructSet() {
+	toplevelAccessibleClassStructOnce.Do(func() {
+		toplevelAccessibleClassStruct = gi.StructNew("Gtk", "ToplevelAccessibleClass")
 	})
 }
 
@@ -9586,12 +10396,12 @@ type ToplevelAccessibleClass struct {
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
 }
 
-var ToplevelAccessiblePrivateStruct *gi.Struct
-var ToplevelAccessiblePrivateStructOnce sync.Once
+var toplevelAccessiblePrivateStruct *gi.Struct
+var toplevelAccessiblePrivateStructOnce sync.Once
 
-func ToplevelAccessiblePrivateStructSet() {
-	ToplevelAccessiblePrivateStructOnce.Do(func() {
-		ToplevelAccessiblePrivateStruct = gi.StructNew("Gtk", "ToplevelAccessiblePrivate")
+func toplevelAccessiblePrivateStructSet() {
+	toplevelAccessiblePrivateStructOnce.Do(func() {
+		toplevelAccessiblePrivateStruct = gi.StructNew("Gtk", "ToplevelAccessiblePrivate")
 	})
 }
 
@@ -9599,12 +10409,12 @@ type ToplevelAccessiblePrivate struct {
 	native uintptr
 }
 
-var TreeDragDestIfaceStruct *gi.Struct
-var TreeDragDestIfaceStructOnce sync.Once
+var treeDragDestIfaceStruct *gi.Struct
+var treeDragDestIfaceStructOnce sync.Once
 
-func TreeDragDestIfaceStructSet() {
-	TreeDragDestIfaceStructOnce.Do(func() {
-		TreeDragDestIfaceStruct = gi.StructNew("Gtk", "TreeDragDestIface")
+func treeDragDestIfaceStructSet() {
+	treeDragDestIfaceStructOnce.Do(func() {
+		treeDragDestIfaceStruct = gi.StructNew("Gtk", "TreeDragDestIface")
 	})
 }
 
@@ -9614,12 +10424,12 @@ type TreeDragDestIface struct {
 	// UNSUPPORTED : C value 'row_drop_possible' : missing Type
 }
 
-var TreeDragSourceIfaceStruct *gi.Struct
-var TreeDragSourceIfaceStructOnce sync.Once
+var treeDragSourceIfaceStruct *gi.Struct
+var treeDragSourceIfaceStructOnce sync.Once
 
-func TreeDragSourceIfaceStructSet() {
-	TreeDragSourceIfaceStructOnce.Do(func() {
-		TreeDragSourceIfaceStruct = gi.StructNew("Gtk", "TreeDragSourceIface")
+func treeDragSourceIfaceStructSet() {
+	treeDragSourceIfaceStructOnce.Do(func() {
+		treeDragSourceIfaceStruct = gi.StructNew("Gtk", "TreeDragSourceIface")
 	})
 }
 
@@ -9630,12 +10440,12 @@ type TreeDragSourceIface struct {
 	// UNSUPPORTED : C value 'drag_data_delete' : missing Type
 }
 
-var TreeIterStruct *gi.Struct
-var TreeIterStructOnce sync.Once
+var treeIterStruct *gi.Struct
+var treeIterStructOnce sync.Once
 
-func TreeIterStructSet() {
-	TreeIterStructOnce.Do(func() {
-		TreeIterStruct = gi.StructNew("Gtk", "TreeIter")
+func treeIterStructSet() {
+	treeIterStructOnce.Do(func() {
+		treeIterStruct = gi.StructNew("Gtk", "TreeIter")
 	})
 }
 
@@ -9645,6 +10455,15 @@ type TreeIter struct {
 	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
 	// UNSUPPORTED : C value 'user_data2' : no Go type for 'gpointer'
 	// UNSUPPORTED : C value 'user_data3' : no Go type for 'gpointer'
+}
+
+var treeIterCopyFunction *gi.Function
+var treeIterCopyFunctionOnce sync.Once
+
+func treeIterCopyFunctionSet() {
+	treeIterCopyFunctionOnce.Do(func() {
+		treeIterCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
 }
 
 var copyTreeIterInvoker *gi.Function
@@ -9665,6 +10484,15 @@ func (recv *TreeIter) Copy() *TreeIter {
 	return retGo
 }
 
+var treeIterFreeFunction *gi.Function
+var treeIterFreeFunctionOnce sync.Once
+
+func treeIterFreeFunctionSet() {
+	treeIterFreeFunctionOnce.Do(func() {
+		treeIterFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeTreeIterInvoker *gi.Function
 
 // Free is a representation of the C type gtk_tree_iter_free.
@@ -9680,12 +10508,12 @@ func (recv *TreeIter) Free() {
 
 }
 
-var TreeModelFilterClassStruct *gi.Struct
-var TreeModelFilterClassStructOnce sync.Once
+var treeModelFilterClassStruct *gi.Struct
+var treeModelFilterClassStructOnce sync.Once
 
-func TreeModelFilterClassStructSet() {
-	TreeModelFilterClassStructOnce.Do(func() {
-		TreeModelFilterClassStruct = gi.StructNew("Gtk", "TreeModelFilterClass")
+func treeModelFilterClassStructSet() {
+	treeModelFilterClassStructOnce.Do(func() {
+		treeModelFilterClassStruct = gi.StructNew("Gtk", "TreeModelFilterClass")
 	})
 }
 
@@ -9700,12 +10528,12 @@ type TreeModelFilterClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TreeModelFilterPrivateStruct *gi.Struct
-var TreeModelFilterPrivateStructOnce sync.Once
+var treeModelFilterPrivateStruct *gi.Struct
+var treeModelFilterPrivateStructOnce sync.Once
 
-func TreeModelFilterPrivateStructSet() {
-	TreeModelFilterPrivateStructOnce.Do(func() {
-		TreeModelFilterPrivateStruct = gi.StructNew("Gtk", "TreeModelFilterPrivate")
+func treeModelFilterPrivateStructSet() {
+	treeModelFilterPrivateStructOnce.Do(func() {
+		treeModelFilterPrivateStruct = gi.StructNew("Gtk", "TreeModelFilterPrivate")
 	})
 }
 
@@ -9713,12 +10541,12 @@ type TreeModelFilterPrivate struct {
 	native uintptr
 }
 
-var TreeModelIfaceStruct *gi.Struct
-var TreeModelIfaceStructOnce sync.Once
+var treeModelIfaceStruct *gi.Struct
+var treeModelIfaceStructOnce sync.Once
 
-func TreeModelIfaceStructSet() {
-	TreeModelIfaceStructOnce.Do(func() {
-		TreeModelIfaceStruct = gi.StructNew("Gtk", "TreeModelIface")
+func treeModelIfaceStructSet() {
+	treeModelIfaceStructOnce.Do(func() {
+		treeModelIfaceStruct = gi.StructNew("Gtk", "TreeModelIface")
 	})
 }
 
@@ -9746,12 +10574,12 @@ type TreeModelIface struct {
 	// UNSUPPORTED : C value 'unref_node' : missing Type
 }
 
-var TreeModelSortClassStruct *gi.Struct
-var TreeModelSortClassStructOnce sync.Once
+var treeModelSortClassStruct *gi.Struct
+var treeModelSortClassStructOnce sync.Once
 
-func TreeModelSortClassStructSet() {
-	TreeModelSortClassStructOnce.Do(func() {
-		TreeModelSortClassStruct = gi.StructNew("Gtk", "TreeModelSortClass")
+func treeModelSortClassStructSet() {
+	treeModelSortClassStructOnce.Do(func() {
+		treeModelSortClassStruct = gi.StructNew("Gtk", "TreeModelSortClass")
 	})
 }
 
@@ -9764,12 +10592,12 @@ type TreeModelSortClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TreeModelSortPrivateStruct *gi.Struct
-var TreeModelSortPrivateStructOnce sync.Once
+var treeModelSortPrivateStruct *gi.Struct
+var treeModelSortPrivateStructOnce sync.Once
 
-func TreeModelSortPrivateStructSet() {
-	TreeModelSortPrivateStructOnce.Do(func() {
-		TreeModelSortPrivateStruct = gi.StructNew("Gtk", "TreeModelSortPrivate")
+func treeModelSortPrivateStructSet() {
+	treeModelSortPrivateStructOnce.Do(func() {
+		treeModelSortPrivateStruct = gi.StructNew("Gtk", "TreeModelSortPrivate")
 	})
 }
 
@@ -9777,17 +10605,26 @@ type TreeModelSortPrivate struct {
 	native uintptr
 }
 
-var TreePathStruct *gi.Struct
-var TreePathStructOnce sync.Once
+var treePathStruct *gi.Struct
+var treePathStructOnce sync.Once
 
-func TreePathStructSet() {
-	TreePathStructOnce.Do(func() {
-		TreePathStruct = gi.StructNew("Gtk", "TreePath")
+func treePathStructSet() {
+	treePathStructOnce.Do(func() {
+		treePathStruct = gi.StructNew("Gtk", "TreePath")
 	})
 }
 
 type TreePath struct {
 	native uintptr
+}
+
+var treePathNewFunction *gi.Function
+var treePathNewFunctionOnce sync.Once
+
+func treePathNewFunctionSet() {
+	treePathNewFunctionOnce.Do(func() {
+		treePathNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newTreePathInvoker *gi.Function
@@ -9803,6 +10640,15 @@ func TreePathNew() *TreePath {
 	retGo := &TreePath{native: ret.Pointer()}
 
 	return retGo
+}
+
+var treePathNewFirstFunction *gi.Function
+var treePathNewFirstFunctionOnce sync.Once
+
+func treePathNewFirstFunctionSet() {
+	treePathNewFirstFunctionOnce.Do(func() {
+		treePathNewFirstFunction = gi.FunctionInvokerNew("Gtk", "new_first")
+	})
 }
 
 var newFirstTreePathInvoker *gi.Function
@@ -9824,6 +10670,15 @@ func TreePathNewFirst() *TreePath {
 
 // UNSUPPORTED : C value 'gtk_tree_path_new_from_indicesv' : parameter 'indices' has no type
 
+var treePathNewFromStringFunction *gi.Function
+var treePathNewFromStringFunctionOnce sync.Once
+
+func treePathNewFromStringFunctionSet() {
+	treePathNewFromStringFunctionOnce.Do(func() {
+		treePathNewFromStringFunction = gi.FunctionInvokerNew("Gtk", "new_from_string")
+	})
+}
+
 var newFromStringTreePathInvoker *gi.Function
 
 // TreePathNewFromString is a representation of the C type gtk_tree_path_new_from_string.
@@ -9840,6 +10695,15 @@ func TreePathNewFromString(path string) *TreePath {
 	retGo := &TreePath{native: ret.Pointer()}
 
 	return retGo
+}
+
+var treePathAppendIndexFunction *gi.Function
+var treePathAppendIndexFunctionOnce sync.Once
+
+func treePathAppendIndexFunctionSet() {
+	treePathAppendIndexFunctionOnce.Do(func() {
+		treePathAppendIndexFunction = gi.FunctionInvokerNew("Gtk", "append_index")
+	})
 }
 
 var appendIndexTreePathInvoker *gi.Function
@@ -9860,6 +10724,15 @@ func (recv *TreePath) AppendIndex(index int32) {
 
 // UNSUPPORTED : C value 'gtk_tree_path_compare' : parameter 'b' of type 'TreePath' not supported
 
+var treePathCopyFunction *gi.Function
+var treePathCopyFunctionOnce sync.Once
+
+func treePathCopyFunctionSet() {
+	treePathCopyFunctionOnce.Do(func() {
+		treePathCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
+
 var copyTreePathInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_tree_path_copy.
@@ -9878,6 +10751,15 @@ func (recv *TreePath) Copy() *TreePath {
 	return retGo
 }
 
+var treePathDownFunction *gi.Function
+var treePathDownFunctionOnce sync.Once
+
+func treePathDownFunctionSet() {
+	treePathDownFunctionOnce.Do(func() {
+		treePathDownFunction = gi.FunctionInvokerNew("Gtk", "down")
+	})
+}
+
 var downTreePathInvoker *gi.Function
 
 // Down is a representation of the C type gtk_tree_path_down.
@@ -9893,6 +10775,15 @@ func (recv *TreePath) Down() {
 
 }
 
+var treePathFreeFunction *gi.Function
+var treePathFreeFunctionOnce sync.Once
+
+func treePathFreeFunctionSet() {
+	treePathFreeFunctionOnce.Do(func() {
+		treePathFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeTreePathInvoker *gi.Function
 
 // Free is a representation of the C type gtk_tree_path_free.
@@ -9906,6 +10797,15 @@ func (recv *TreePath) Free() {
 
 	freeTreePathInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var treePathGetDepthFunction *gi.Function
+var treePathGetDepthFunctionOnce sync.Once
+
+func treePathGetDepthFunctionSet() {
+	treePathGetDepthFunctionOnce.Do(func() {
+		treePathGetDepthFunction = gi.FunctionInvokerNew("Gtk", "get_depth")
+	})
 }
 
 var getDepthTreePathInvoker *gi.Function
@@ -9926,6 +10826,15 @@ func (recv *TreePath) GetDepth() int32 {
 	return retGo
 }
 
+var treePathGetIndicesFunction *gi.Function
+var treePathGetIndicesFunctionOnce sync.Once
+
+func treePathGetIndicesFunctionSet() {
+	treePathGetIndicesFunctionOnce.Do(func() {
+		treePathGetIndicesFunction = gi.FunctionInvokerNew("Gtk", "get_indices")
+	})
+}
+
 var getIndicesTreePathInvoker *gi.Function
 
 // GetIndices is a representation of the C type gtk_tree_path_get_indices.
@@ -9942,6 +10851,15 @@ func (recv *TreePath) GetIndices() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var treePathGetIndicesWithDepthFunction *gi.Function
+var treePathGetIndicesWithDepthFunctionOnce sync.Once
+
+func treePathGetIndicesWithDepthFunctionSet() {
+	treePathGetIndicesWithDepthFunctionOnce.Do(func() {
+		treePathGetIndicesWithDepthFunction = gi.FunctionInvokerNew("Gtk", "get_indices_with_depth")
+	})
 }
 
 var getIndicesWithDepthTreePathInvoker *gi.Function
@@ -9968,6 +10886,15 @@ func (recv *TreePath) GetIndicesWithDepth() int32 {
 
 // UNSUPPORTED : C value 'gtk_tree_path_is_descendant' : parameter 'ancestor' of type 'TreePath' not supported
 
+var treePathNextFunction *gi.Function
+var treePathNextFunctionOnce sync.Once
+
+func treePathNextFunctionSet() {
+	treePathNextFunctionOnce.Do(func() {
+		treePathNextFunction = gi.FunctionInvokerNew("Gtk", "next")
+	})
+}
+
 var nextTreePathInvoker *gi.Function
 
 // Next is a representation of the C type gtk_tree_path_next.
@@ -9981,6 +10908,15 @@ func (recv *TreePath) Next() {
 
 	nextTreePathInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var treePathPrependIndexFunction *gi.Function
+var treePathPrependIndexFunctionOnce sync.Once
+
+func treePathPrependIndexFunctionSet() {
+	treePathPrependIndexFunctionOnce.Do(func() {
+		treePathPrependIndexFunction = gi.FunctionInvokerNew("Gtk", "prepend_index")
+	})
 }
 
 var prependIndexTreePathInvoker *gi.Function
@@ -10000,6 +10936,15 @@ func (recv *TreePath) PrependIndex(index int32) {
 }
 
 // UNSUPPORTED : C value 'gtk_tree_path_prev' : return type 'gboolean' not supported
+
+var treePathToStringFunction *gi.Function
+var treePathToStringFunctionOnce sync.Once
+
+func treePathToStringFunctionSet() {
+	treePathToStringFunctionOnce.Do(func() {
+		treePathToStringFunction = gi.FunctionInvokerNew("Gtk", "to_string")
+	})
+}
 
 var toStringTreePathInvoker *gi.Function
 
@@ -10021,12 +10966,12 @@ func (recv *TreePath) ToString() string {
 
 // UNSUPPORTED : C value 'gtk_tree_path_up' : return type 'gboolean' not supported
 
-var TreeRowReferenceStruct *gi.Struct
-var TreeRowReferenceStructOnce sync.Once
+var treeRowReferenceStruct *gi.Struct
+var treeRowReferenceStructOnce sync.Once
 
-func TreeRowReferenceStructSet() {
-	TreeRowReferenceStructOnce.Do(func() {
-		TreeRowReferenceStruct = gi.StructNew("Gtk", "TreeRowReference")
+func treeRowReferenceStructSet() {
+	treeRowReferenceStructOnce.Do(func() {
+		treeRowReferenceStruct = gi.StructNew("Gtk", "TreeRowReference")
 	})
 }
 
@@ -10037,6 +10982,15 @@ type TreeRowReference struct {
 // UNSUPPORTED : C value 'gtk_tree_row_reference_new' : parameter 'model' of type 'TreeModel' not supported
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_new_proxy' : parameter 'proxy' of type 'GObject.Object' not supported
+
+var treeRowReferenceCopyFunction *gi.Function
+var treeRowReferenceCopyFunctionOnce sync.Once
+
+func treeRowReferenceCopyFunctionSet() {
+	treeRowReferenceCopyFunctionOnce.Do(func() {
+		treeRowReferenceCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
 
 var copyTreeRowReferenceInvoker *gi.Function
 
@@ -10056,6 +11010,15 @@ func (recv *TreeRowReference) Copy() *TreeRowReference {
 	return retGo
 }
 
+var treeRowReferenceFreeFunction *gi.Function
+var treeRowReferenceFreeFunctionOnce sync.Once
+
+func treeRowReferenceFreeFunctionSet() {
+	treeRowReferenceFreeFunctionOnce.Do(func() {
+		treeRowReferenceFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
+}
+
 var freeTreeRowReferenceInvoker *gi.Function
 
 // Free is a representation of the C type gtk_tree_row_reference_free.
@@ -10072,6 +11035,15 @@ func (recv *TreeRowReference) Free() {
 }
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_get_model' : return type 'TreeModel' not supported
+
+var treeRowReferenceGetPathFunction *gi.Function
+var treeRowReferenceGetPathFunctionOnce sync.Once
+
+func treeRowReferenceGetPathFunctionSet() {
+	treeRowReferenceGetPathFunctionOnce.Do(func() {
+		treeRowReferenceGetPathFunction = gi.FunctionInvokerNew("Gtk", "get_path")
+	})
+}
 
 var getPathTreeRowReferenceInvoker *gi.Function
 
@@ -10093,12 +11065,12 @@ func (recv *TreeRowReference) GetPath() *TreePath {
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_valid' : return type 'gboolean' not supported
 
-var TreeSelectionClassStruct *gi.Struct
-var TreeSelectionClassStructOnce sync.Once
+var treeSelectionClassStruct *gi.Struct
+var treeSelectionClassStructOnce sync.Once
 
-func TreeSelectionClassStructSet() {
-	TreeSelectionClassStructOnce.Do(func() {
-		TreeSelectionClassStruct = gi.StructNew("Gtk", "TreeSelectionClass")
+func treeSelectionClassStructSet() {
+	treeSelectionClassStructOnce.Do(func() {
+		treeSelectionClassStruct = gi.StructNew("Gtk", "TreeSelectionClass")
 	})
 }
 
@@ -10112,12 +11084,12 @@ type TreeSelectionClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TreeSelectionPrivateStruct *gi.Struct
-var TreeSelectionPrivateStructOnce sync.Once
+var treeSelectionPrivateStruct *gi.Struct
+var treeSelectionPrivateStructOnce sync.Once
 
-func TreeSelectionPrivateStructSet() {
-	TreeSelectionPrivateStructOnce.Do(func() {
-		TreeSelectionPrivateStruct = gi.StructNew("Gtk", "TreeSelectionPrivate")
+func treeSelectionPrivateStructSet() {
+	treeSelectionPrivateStructOnce.Do(func() {
+		treeSelectionPrivateStruct = gi.StructNew("Gtk", "TreeSelectionPrivate")
 	})
 }
 
@@ -10125,12 +11097,12 @@ type TreeSelectionPrivate struct {
 	native uintptr
 }
 
-var TreeSortableIfaceStruct *gi.Struct
-var TreeSortableIfaceStructOnce sync.Once
+var treeSortableIfaceStruct *gi.Struct
+var treeSortableIfaceStructOnce sync.Once
 
-func TreeSortableIfaceStructSet() {
-	TreeSortableIfaceStructOnce.Do(func() {
-		TreeSortableIfaceStruct = gi.StructNew("Gtk", "TreeSortableIface")
+func treeSortableIfaceStructSet() {
+	treeSortableIfaceStructOnce.Do(func() {
+		treeSortableIfaceStruct = gi.StructNew("Gtk", "TreeSortableIface")
 	})
 }
 
@@ -10144,12 +11116,12 @@ type TreeSortableIface struct {
 	// UNSUPPORTED : C value 'has_default_sort_func' : missing Type
 }
 
-var TreeStoreClassStruct *gi.Struct
-var TreeStoreClassStructOnce sync.Once
+var treeStoreClassStruct *gi.Struct
+var treeStoreClassStructOnce sync.Once
 
-func TreeStoreClassStructSet() {
-	TreeStoreClassStructOnce.Do(func() {
-		TreeStoreClassStruct = gi.StructNew("Gtk", "TreeStoreClass")
+func treeStoreClassStructSet() {
+	treeStoreClassStructOnce.Do(func() {
+		treeStoreClassStruct = gi.StructNew("Gtk", "TreeStoreClass")
 	})
 }
 
@@ -10162,12 +11134,12 @@ type TreeStoreClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TreeStorePrivateStruct *gi.Struct
-var TreeStorePrivateStructOnce sync.Once
+var treeStorePrivateStruct *gi.Struct
+var treeStorePrivateStructOnce sync.Once
 
-func TreeStorePrivateStructSet() {
-	TreeStorePrivateStructOnce.Do(func() {
-		TreeStorePrivateStruct = gi.StructNew("Gtk", "TreeStorePrivate")
+func treeStorePrivateStructSet() {
+	treeStorePrivateStructOnce.Do(func() {
+		treeStorePrivateStruct = gi.StructNew("Gtk", "TreeStorePrivate")
 	})
 }
 
@@ -10175,12 +11147,12 @@ type TreeStorePrivate struct {
 	native uintptr
 }
 
-var TreeViewAccessibleClassStruct *gi.Struct
-var TreeViewAccessibleClassStructOnce sync.Once
+var treeViewAccessibleClassStruct *gi.Struct
+var treeViewAccessibleClassStructOnce sync.Once
 
-func TreeViewAccessibleClassStructSet() {
-	TreeViewAccessibleClassStructOnce.Do(func() {
-		TreeViewAccessibleClassStruct = gi.StructNew("Gtk", "TreeViewAccessibleClass")
+func treeViewAccessibleClassStructSet() {
+	treeViewAccessibleClassStructOnce.Do(func() {
+		treeViewAccessibleClassStruct = gi.StructNew("Gtk", "TreeViewAccessibleClass")
 	})
 }
 
@@ -10189,12 +11161,12 @@ type TreeViewAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var TreeViewAccessiblePrivateStruct *gi.Struct
-var TreeViewAccessiblePrivateStructOnce sync.Once
+var treeViewAccessiblePrivateStruct *gi.Struct
+var treeViewAccessiblePrivateStructOnce sync.Once
 
-func TreeViewAccessiblePrivateStructSet() {
-	TreeViewAccessiblePrivateStructOnce.Do(func() {
-		TreeViewAccessiblePrivateStruct = gi.StructNew("Gtk", "TreeViewAccessiblePrivate")
+func treeViewAccessiblePrivateStructSet() {
+	treeViewAccessiblePrivateStructOnce.Do(func() {
+		treeViewAccessiblePrivateStruct = gi.StructNew("Gtk", "TreeViewAccessiblePrivate")
 	})
 }
 
@@ -10202,12 +11174,12 @@ type TreeViewAccessiblePrivate struct {
 	native uintptr
 }
 
-var TreeViewClassStruct *gi.Struct
-var TreeViewClassStructOnce sync.Once
+var treeViewClassStruct *gi.Struct
+var treeViewClassStructOnce sync.Once
 
-func TreeViewClassStructSet() {
-	TreeViewClassStructOnce.Do(func() {
-		TreeViewClassStruct = gi.StructNew("Gtk", "TreeViewClass")
+func treeViewClassStructSet() {
+	treeViewClassStructOnce.Do(func() {
+		treeViewClassStruct = gi.StructNew("Gtk", "TreeViewClass")
 	})
 }
 
@@ -10239,12 +11211,12 @@ type TreeViewClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
 }
 
-var TreeViewColumnClassStruct *gi.Struct
-var TreeViewColumnClassStructOnce sync.Once
+var treeViewColumnClassStruct *gi.Struct
+var treeViewColumnClassStructOnce sync.Once
 
-func TreeViewColumnClassStructSet() {
-	TreeViewColumnClassStructOnce.Do(func() {
-		TreeViewColumnClassStruct = gi.StructNew("Gtk", "TreeViewColumnClass")
+func treeViewColumnClassStructSet() {
+	treeViewColumnClassStructOnce.Do(func() {
+		treeViewColumnClassStruct = gi.StructNew("Gtk", "TreeViewColumnClass")
 	})
 }
 
@@ -10258,12 +11230,12 @@ type TreeViewColumnClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var TreeViewColumnPrivateStruct *gi.Struct
-var TreeViewColumnPrivateStructOnce sync.Once
+var treeViewColumnPrivateStruct *gi.Struct
+var treeViewColumnPrivateStructOnce sync.Once
 
-func TreeViewColumnPrivateStructSet() {
-	TreeViewColumnPrivateStructOnce.Do(func() {
-		TreeViewColumnPrivateStruct = gi.StructNew("Gtk", "TreeViewColumnPrivate")
+func treeViewColumnPrivateStructSet() {
+	treeViewColumnPrivateStructOnce.Do(func() {
+		treeViewColumnPrivateStruct = gi.StructNew("Gtk", "TreeViewColumnPrivate")
 	})
 }
 
@@ -10271,12 +11243,12 @@ type TreeViewColumnPrivate struct {
 	native uintptr
 }
 
-var TreeViewPrivateStruct *gi.Struct
-var TreeViewPrivateStructOnce sync.Once
+var treeViewPrivateStruct *gi.Struct
+var treeViewPrivateStructOnce sync.Once
 
-func TreeViewPrivateStructSet() {
-	TreeViewPrivateStructOnce.Do(func() {
-		TreeViewPrivateStruct = gi.StructNew("Gtk", "TreeViewPrivate")
+func treeViewPrivateStructSet() {
+	treeViewPrivateStructOnce.Do(func() {
+		treeViewPrivateStruct = gi.StructNew("Gtk", "TreeViewPrivate")
 	})
 }
 
@@ -10284,12 +11256,12 @@ type TreeViewPrivate struct {
 	native uintptr
 }
 
-var UIManagerClassStruct *gi.Struct
-var UIManagerClassStructOnce sync.Once
+var uIManagerClassStruct *gi.Struct
+var uIManagerClassStructOnce sync.Once
 
-func UIManagerClassStructSet() {
-	UIManagerClassStructOnce.Do(func() {
-		UIManagerClassStruct = gi.StructNew("Gtk", "UIManagerClass")
+func uIManagerClassStructSet() {
+	uIManagerClassStructOnce.Do(func() {
+		uIManagerClassStruct = gi.StructNew("Gtk", "UIManagerClass")
 	})
 }
 
@@ -10310,12 +11282,12 @@ type UIManagerClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var UIManagerPrivateStruct *gi.Struct
-var UIManagerPrivateStructOnce sync.Once
+var uIManagerPrivateStruct *gi.Struct
+var uIManagerPrivateStructOnce sync.Once
 
-func UIManagerPrivateStructSet() {
-	UIManagerPrivateStructOnce.Do(func() {
-		UIManagerPrivateStruct = gi.StructNew("Gtk", "UIManagerPrivate")
+func uIManagerPrivateStructSet() {
+	uIManagerPrivateStructOnce.Do(func() {
+		uIManagerPrivateStruct = gi.StructNew("Gtk", "UIManagerPrivate")
 	})
 }
 
@@ -10323,12 +11295,12 @@ type UIManagerPrivate struct {
 	native uintptr
 }
 
-var VBoxClassStruct *gi.Struct
-var VBoxClassStructOnce sync.Once
+var vBoxClassStruct *gi.Struct
+var vBoxClassStructOnce sync.Once
 
-func VBoxClassStructSet() {
-	VBoxClassStructOnce.Do(func() {
-		VBoxClassStruct = gi.StructNew("Gtk", "VBoxClass")
+func vBoxClassStructSet() {
+	vBoxClassStructOnce.Do(func() {
+		vBoxClassStruct = gi.StructNew("Gtk", "VBoxClass")
 	})
 }
 
@@ -10337,12 +11309,12 @@ type VBoxClass struct {
 	ParentClass *BoxClass
 }
 
-var VButtonBoxClassStruct *gi.Struct
-var VButtonBoxClassStructOnce sync.Once
+var vButtonBoxClassStruct *gi.Struct
+var vButtonBoxClassStructOnce sync.Once
 
-func VButtonBoxClassStructSet() {
-	VButtonBoxClassStructOnce.Do(func() {
-		VButtonBoxClassStruct = gi.StructNew("Gtk", "VButtonBoxClass")
+func vButtonBoxClassStructSet() {
+	vButtonBoxClassStructOnce.Do(func() {
+		vButtonBoxClassStruct = gi.StructNew("Gtk", "VButtonBoxClass")
 	})
 }
 
@@ -10351,12 +11323,12 @@ type VButtonBoxClass struct {
 	ParentClass *ButtonBoxClass
 }
 
-var VPanedClassStruct *gi.Struct
-var VPanedClassStructOnce sync.Once
+var vPanedClassStruct *gi.Struct
+var vPanedClassStructOnce sync.Once
 
-func VPanedClassStructSet() {
-	VPanedClassStructOnce.Do(func() {
-		VPanedClassStruct = gi.StructNew("Gtk", "VPanedClass")
+func vPanedClassStructSet() {
+	vPanedClassStructOnce.Do(func() {
+		vPanedClassStruct = gi.StructNew("Gtk", "VPanedClass")
 	})
 }
 
@@ -10365,12 +11337,12 @@ type VPanedClass struct {
 	ParentClass *PanedClass
 }
 
-var VScaleClassStruct *gi.Struct
-var VScaleClassStructOnce sync.Once
+var vScaleClassStruct *gi.Struct
+var vScaleClassStructOnce sync.Once
 
-func VScaleClassStructSet() {
-	VScaleClassStructOnce.Do(func() {
-		VScaleClassStruct = gi.StructNew("Gtk", "VScaleClass")
+func vScaleClassStructSet() {
+	vScaleClassStructOnce.Do(func() {
+		vScaleClassStruct = gi.StructNew("Gtk", "VScaleClass")
 	})
 }
 
@@ -10379,12 +11351,12 @@ type VScaleClass struct {
 	ParentClass *ScaleClass
 }
 
-var VScrollbarClassStruct *gi.Struct
-var VScrollbarClassStructOnce sync.Once
+var vScrollbarClassStruct *gi.Struct
+var vScrollbarClassStructOnce sync.Once
 
-func VScrollbarClassStructSet() {
-	VScrollbarClassStructOnce.Do(func() {
-		VScrollbarClassStruct = gi.StructNew("Gtk", "VScrollbarClass")
+func vScrollbarClassStructSet() {
+	vScrollbarClassStructOnce.Do(func() {
+		vScrollbarClassStruct = gi.StructNew("Gtk", "VScrollbarClass")
 	})
 }
 
@@ -10393,12 +11365,12 @@ type VScrollbarClass struct {
 	ParentClass *ScrollbarClass
 }
 
-var VSeparatorClassStruct *gi.Struct
-var VSeparatorClassStructOnce sync.Once
+var vSeparatorClassStruct *gi.Struct
+var vSeparatorClassStructOnce sync.Once
 
-func VSeparatorClassStructSet() {
-	VSeparatorClassStructOnce.Do(func() {
-		VSeparatorClassStruct = gi.StructNew("Gtk", "VSeparatorClass")
+func vSeparatorClassStructSet() {
+	vSeparatorClassStructOnce.Do(func() {
+		vSeparatorClassStruct = gi.StructNew("Gtk", "VSeparatorClass")
 	})
 }
 
@@ -10407,12 +11379,12 @@ type VSeparatorClass struct {
 	ParentClass *SeparatorClass
 }
 
-var ViewportClassStruct *gi.Struct
-var ViewportClassStructOnce sync.Once
+var viewportClassStruct *gi.Struct
+var viewportClassStructOnce sync.Once
 
-func ViewportClassStructSet() {
-	ViewportClassStructOnce.Do(func() {
-		ViewportClassStruct = gi.StructNew("Gtk", "ViewportClass")
+func viewportClassStructSet() {
+	viewportClassStructOnce.Do(func() {
+		viewportClassStruct = gi.StructNew("Gtk", "ViewportClass")
 	})
 }
 
@@ -10425,12 +11397,12 @@ type ViewportClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var ViewportPrivateStruct *gi.Struct
-var ViewportPrivateStructOnce sync.Once
+var viewportPrivateStruct *gi.Struct
+var viewportPrivateStructOnce sync.Once
 
-func ViewportPrivateStructSet() {
-	ViewportPrivateStructOnce.Do(func() {
-		ViewportPrivateStruct = gi.StructNew("Gtk", "ViewportPrivate")
+func viewportPrivateStructSet() {
+	viewportPrivateStructOnce.Do(func() {
+		viewportPrivateStruct = gi.StructNew("Gtk", "ViewportPrivate")
 	})
 }
 
@@ -10438,12 +11410,12 @@ type ViewportPrivate struct {
 	native uintptr
 }
 
-var VolumeButtonClassStruct *gi.Struct
-var VolumeButtonClassStructOnce sync.Once
+var volumeButtonClassStruct *gi.Struct
+var volumeButtonClassStructOnce sync.Once
 
-func VolumeButtonClassStructSet() {
-	VolumeButtonClassStructOnce.Do(func() {
-		VolumeButtonClassStruct = gi.StructNew("Gtk", "VolumeButtonClass")
+func volumeButtonClassStructSet() {
+	volumeButtonClassStructOnce.Do(func() {
+		volumeButtonClassStruct = gi.StructNew("Gtk", "VolumeButtonClass")
 	})
 }
 
@@ -10456,12 +11428,12 @@ type VolumeButtonClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var WidgetAccessibleClassStruct *gi.Struct
-var WidgetAccessibleClassStructOnce sync.Once
+var widgetAccessibleClassStruct *gi.Struct
+var widgetAccessibleClassStructOnce sync.Once
 
-func WidgetAccessibleClassStructSet() {
-	WidgetAccessibleClassStructOnce.Do(func() {
-		WidgetAccessibleClassStruct = gi.StructNew("Gtk", "WidgetAccessibleClass")
+func widgetAccessibleClassStructSet() {
+	widgetAccessibleClassStructOnce.Do(func() {
+		widgetAccessibleClassStruct = gi.StructNew("Gtk", "WidgetAccessibleClass")
 	})
 }
 
@@ -10471,12 +11443,12 @@ type WidgetAccessibleClass struct {
 	// UNSUPPORTED : C value 'notify_gtk' : missing Type
 }
 
-var WidgetAccessiblePrivateStruct *gi.Struct
-var WidgetAccessiblePrivateStructOnce sync.Once
+var widgetAccessiblePrivateStruct *gi.Struct
+var widgetAccessiblePrivateStructOnce sync.Once
 
-func WidgetAccessiblePrivateStructSet() {
-	WidgetAccessiblePrivateStructOnce.Do(func() {
-		WidgetAccessiblePrivateStruct = gi.StructNew("Gtk", "WidgetAccessiblePrivate")
+func widgetAccessiblePrivateStructSet() {
+	widgetAccessiblePrivateStructOnce.Do(func() {
+		widgetAccessiblePrivateStruct = gi.StructNew("Gtk", "WidgetAccessiblePrivate")
 	})
 }
 
@@ -10484,12 +11456,12 @@ type WidgetAccessiblePrivate struct {
 	native uintptr
 }
 
-var WidgetClassStruct *gi.Struct
-var WidgetClassStructOnce sync.Once
+var widgetClassStruct *gi.Struct
+var widgetClassStructOnce sync.Once
 
-func WidgetClassStructSet() {
-	WidgetClassStructOnce.Do(func() {
-		WidgetClassStruct = gi.StructNew("Gtk", "WidgetClass")
+func widgetClassStructSet() {
+	widgetClassStructOnce.Do(func() {
+		widgetClassStruct = gi.StructNew("Gtk", "WidgetClass")
 	})
 }
 
@@ -10589,6 +11561,15 @@ type WidgetClass struct {
 
 // UNSUPPORTED : C value 'gtk_widget_class_find_style_property' : return type 'GObject.ParamSpec' not supported
 
+var widgetClassGetCssNameFunction *gi.Function
+var widgetClassGetCssNameFunctionOnce sync.Once
+
+func widgetClassGetCssNameFunctionSet() {
+	widgetClassGetCssNameFunctionOnce.Do(func() {
+		widgetClassGetCssNameFunction = gi.FunctionInvokerNew("Gtk", "get_css_name")
+	})
+}
+
 var getCssNameWidgetClassInvoker *gi.Function
 
 // GetCssName is a representation of the C type gtk_widget_class_get_css_name.
@@ -10610,6 +11591,15 @@ func (recv *WidgetClass) GetCssName() string {
 // UNSUPPORTED : C value 'gtk_widget_class_install_style_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
 // UNSUPPORTED : C value 'gtk_widget_class_install_style_property_parser' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+
+var widgetClassListStylePropertiesFunction *gi.Function
+var widgetClassListStylePropertiesFunctionOnce sync.Once
+
+func widgetClassListStylePropertiesFunctionSet() {
+	widgetClassListStylePropertiesFunctionOnce.Do(func() {
+		widgetClassListStylePropertiesFunction = gi.FunctionInvokerNew("Gtk", "list_style_properties")
+	})
+}
 
 var listStylePropertiesWidgetClassInvoker *gi.Function
 
@@ -10637,6 +11627,15 @@ func (recv *WidgetClass) ListStyleProperties() uint32 {
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_connect_func' : parameter 'connect_func' of type 'BuilderConnectFunc' not supported
 
+var widgetClassSetCssNameFunction *gi.Function
+var widgetClassSetCssNameFunctionOnce sync.Once
+
+func widgetClassSetCssNameFunctionSet() {
+	widgetClassSetCssNameFunctionOnce.Do(func() {
+		widgetClassSetCssNameFunction = gi.FunctionInvokerNew("Gtk", "set_css_name")
+	})
+}
+
 var setCssNameWidgetClassInvoker *gi.Function
 
 // SetCssName is a representation of the C type gtk_widget_class_set_css_name.
@@ -10655,6 +11654,15 @@ func (recv *WidgetClass) SetCssName(name string) {
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_template' : parameter 'template_bytes' of type 'GLib.Bytes' not supported
 
+var widgetClassSetTemplateFromResourceFunction *gi.Function
+var widgetClassSetTemplateFromResourceFunctionOnce sync.Once
+
+func widgetClassSetTemplateFromResourceFunctionSet() {
+	widgetClassSetTemplateFromResourceFunctionOnce.Do(func() {
+		widgetClassSetTemplateFromResourceFunction = gi.FunctionInvokerNew("Gtk", "set_template_from_resource")
+	})
+}
+
 var setTemplateFromResourceWidgetClassInvoker *gi.Function
 
 // SetTemplateFromResource is a representation of the C type gtk_widget_class_set_template_from_resource.
@@ -10671,12 +11679,12 @@ func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
 
 }
 
-var WidgetClassPrivateStruct *gi.Struct
-var WidgetClassPrivateStructOnce sync.Once
+var widgetClassPrivateStruct *gi.Struct
+var widgetClassPrivateStructOnce sync.Once
 
-func WidgetClassPrivateStructSet() {
-	WidgetClassPrivateStructOnce.Do(func() {
-		WidgetClassPrivateStruct = gi.StructNew("Gtk", "WidgetClassPrivate")
+func widgetClassPrivateStructSet() {
+	widgetClassPrivateStructOnce.Do(func() {
+		widgetClassPrivateStruct = gi.StructNew("Gtk", "WidgetClassPrivate")
 	})
 }
 
@@ -10684,17 +11692,26 @@ type WidgetClassPrivate struct {
 	native uintptr
 }
 
-var WidgetPathStruct *gi.Struct
-var WidgetPathStructOnce sync.Once
+var widgetPathStruct *gi.Struct
+var widgetPathStructOnce sync.Once
 
-func WidgetPathStructSet() {
-	WidgetPathStructOnce.Do(func() {
-		WidgetPathStruct = gi.StructNew("Gtk", "WidgetPath")
+func widgetPathStructSet() {
+	widgetPathStructOnce.Do(func() {
+		widgetPathStruct = gi.StructNew("Gtk", "WidgetPath")
 	})
 }
 
 type WidgetPath struct {
 	native uintptr
+}
+
+var widgetPathNewFunction *gi.Function
+var widgetPathNewFunctionOnce sync.Once
+
+func widgetPathNewFunctionSet() {
+	widgetPathNewFunctionOnce.Do(func() {
+		widgetPathNewFunction = gi.FunctionInvokerNew("Gtk", "new")
+	})
 }
 
 var newWidgetPathInvoker *gi.Function
@@ -10718,6 +11735,15 @@ func WidgetPathNew() *WidgetPath {
 
 // UNSUPPORTED : C value 'gtk_widget_path_append_with_siblings' : parameter 'siblings' of type 'WidgetPath' not supported
 
+var widgetPathCopyFunction *gi.Function
+var widgetPathCopyFunctionOnce sync.Once
+
+func widgetPathCopyFunctionSet() {
+	widgetPathCopyFunctionOnce.Do(func() {
+		widgetPathCopyFunction = gi.FunctionInvokerNew("Gtk", "copy")
+	})
+}
+
 var copyWidgetPathInvoker *gi.Function
 
 // Copy is a representation of the C type gtk_widget_path_copy.
@@ -10734,6 +11760,15 @@ func (recv *WidgetPath) Copy() *WidgetPath {
 	retGo := &WidgetPath{native: ret.Pointer()}
 
 	return retGo
+}
+
+var widgetPathFreeFunction *gi.Function
+var widgetPathFreeFunctionOnce sync.Once
+
+func widgetPathFreeFunctionSet() {
+	widgetPathFreeFunctionOnce.Do(func() {
+		widgetPathFreeFunction = gi.FunctionInvokerNew("Gtk", "free")
+	})
 }
 
 var freeWidgetPathInvoker *gi.Function
@@ -10757,6 +11792,15 @@ func (recv *WidgetPath) Free() {
 
 // UNSUPPORTED : C value 'gtk_widget_path_is_type' : parameter 'type' of type 'GType' not supported
 
+var widgetPathIterAddClassFunction *gi.Function
+var widgetPathIterAddClassFunctionOnce sync.Once
+
+func widgetPathIterAddClassFunctionSet() {
+	widgetPathIterAddClassFunctionOnce.Do(func() {
+		widgetPathIterAddClassFunction = gi.FunctionInvokerNew("Gtk", "iter_add_class")
+	})
+}
+
 var iterAddClassWidgetPathInvoker *gi.Function
 
 // IterAddClass is a representation of the C type gtk_widget_path_iter_add_class.
@@ -10776,6 +11820,15 @@ func (recv *WidgetPath) IterAddClass(pos int32, name string) {
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_add_region' : parameter 'flags' of type 'RegionFlags' not supported
 
+var widgetPathIterClearClassesFunction *gi.Function
+var widgetPathIterClearClassesFunctionOnce sync.Once
+
+func widgetPathIterClearClassesFunctionSet() {
+	widgetPathIterClearClassesFunctionOnce.Do(func() {
+		widgetPathIterClearClassesFunction = gi.FunctionInvokerNew("Gtk", "iter_clear_classes")
+	})
+}
+
 var iterClearClassesWidgetPathInvoker *gi.Function
 
 // IterClearClasses is a representation of the C type gtk_widget_path_iter_clear_classes.
@@ -10792,6 +11845,15 @@ func (recv *WidgetPath) IterClearClasses(pos int32) {
 
 }
 
+var widgetPathIterClearRegionsFunction *gi.Function
+var widgetPathIterClearRegionsFunctionOnce sync.Once
+
+func widgetPathIterClearRegionsFunctionSet() {
+	widgetPathIterClearRegionsFunctionOnce.Do(func() {
+		widgetPathIterClearRegionsFunction = gi.FunctionInvokerNew("Gtk", "iter_clear_regions")
+	})
+}
+
 var iterClearRegionsWidgetPathInvoker *gi.Function
 
 // IterClearRegions is a representation of the C type gtk_widget_path_iter_clear_regions.
@@ -10806,6 +11868,15 @@ func (recv *WidgetPath) IterClearRegions(pos int32) {
 
 	iterClearRegionsWidgetPathInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var widgetPathIterGetNameFunction *gi.Function
+var widgetPathIterGetNameFunctionOnce sync.Once
+
+func widgetPathIterGetNameFunctionSet() {
+	widgetPathIterGetNameFunctionOnce.Do(func() {
+		widgetPathIterGetNameFunction = gi.FunctionInvokerNew("Gtk", "iter_get_name")
+	})
 }
 
 var iterGetNameWidgetPathInvoker *gi.Function
@@ -10825,6 +11896,15 @@ func (recv *WidgetPath) IterGetName(pos int32) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var widgetPathIterGetObjectNameFunction *gi.Function
+var widgetPathIterGetObjectNameFunctionOnce sync.Once
+
+func widgetPathIterGetObjectNameFunctionSet() {
+	widgetPathIterGetObjectNameFunctionOnce.Do(func() {
+		widgetPathIterGetObjectNameFunction = gi.FunctionInvokerNew("Gtk", "iter_get_object_name")
+	})
 }
 
 var iterGetObjectNameWidgetPathInvoker *gi.Function
@@ -10848,6 +11928,15 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_get_object_type' : return type 'GType' not supported
 
+var widgetPathIterGetSiblingIndexFunction *gi.Function
+var widgetPathIterGetSiblingIndexFunctionOnce sync.Once
+
+func widgetPathIterGetSiblingIndexFunctionSet() {
+	widgetPathIterGetSiblingIndexFunctionOnce.Do(func() {
+		widgetPathIterGetSiblingIndexFunction = gi.FunctionInvokerNew("Gtk", "iter_get_sibling_index")
+	})
+}
+
 var iterGetSiblingIndexWidgetPathInvoker *gi.Function
 
 // IterGetSiblingIndex is a representation of the C type gtk_widget_path_iter_get_sibling_index.
@@ -10865,6 +11954,15 @@ func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var widgetPathIterGetSiblingsFunction *gi.Function
+var widgetPathIterGetSiblingsFunctionOnce sync.Once
+
+func widgetPathIterGetSiblingsFunctionSet() {
+	widgetPathIterGetSiblingsFunctionOnce.Do(func() {
+		widgetPathIterGetSiblingsFunction = gi.FunctionInvokerNew("Gtk", "iter_get_siblings")
+	})
 }
 
 var iterGetSiblingsWidgetPathInvoker *gi.Function
@@ -10904,6 +12002,15 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_list_regions' : return type 'GLib.SList' not supported
 
+var widgetPathIterRemoveClassFunction *gi.Function
+var widgetPathIterRemoveClassFunctionOnce sync.Once
+
+func widgetPathIterRemoveClassFunctionSet() {
+	widgetPathIterRemoveClassFunctionOnce.Do(func() {
+		widgetPathIterRemoveClassFunction = gi.FunctionInvokerNew("Gtk", "iter_remove_class")
+	})
+}
+
 var iterRemoveClassWidgetPathInvoker *gi.Function
 
 // IterRemoveClass is a representation of the C type gtk_widget_path_iter_remove_class.
@@ -10919,6 +12026,15 @@ func (recv *WidgetPath) IterRemoveClass(pos int32, name string) {
 
 	iterRemoveClassWidgetPathInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var widgetPathIterRemoveRegionFunction *gi.Function
+var widgetPathIterRemoveRegionFunctionOnce sync.Once
+
+func widgetPathIterRemoveRegionFunctionSet() {
+	widgetPathIterRemoveRegionFunctionOnce.Do(func() {
+		widgetPathIterRemoveRegionFunction = gi.FunctionInvokerNew("Gtk", "iter_remove_region")
+	})
 }
 
 var iterRemoveRegionWidgetPathInvoker *gi.Function
@@ -10938,6 +12054,15 @@ func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) {
 
 }
 
+var widgetPathIterSetNameFunction *gi.Function
+var widgetPathIterSetNameFunctionOnce sync.Once
+
+func widgetPathIterSetNameFunctionSet() {
+	widgetPathIterSetNameFunctionOnce.Do(func() {
+		widgetPathIterSetNameFunction = gi.FunctionInvokerNew("Gtk", "iter_set_name")
+	})
+}
+
 var iterSetNameWidgetPathInvoker *gi.Function
 
 // IterSetName is a representation of the C type gtk_widget_path_iter_set_name.
@@ -10953,6 +12078,15 @@ func (recv *WidgetPath) IterSetName(pos int32, name string) {
 
 	iterSetNameWidgetPathInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var widgetPathIterSetObjectNameFunction *gi.Function
+var widgetPathIterSetObjectNameFunctionOnce sync.Once
+
+func widgetPathIterSetObjectNameFunctionSet() {
+	widgetPathIterSetObjectNameFunctionOnce.Do(func() {
+		widgetPathIterSetObjectNameFunction = gi.FunctionInvokerNew("Gtk", "iter_set_object_name")
+	})
 }
 
 var iterSetObjectNameWidgetPathInvoker *gi.Function
@@ -10976,6 +12110,15 @@ func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_set_state' : parameter 'state' of type 'StateFlags' not supported
 
+var widgetPathLengthFunction *gi.Function
+var widgetPathLengthFunctionOnce sync.Once
+
+func widgetPathLengthFunctionSet() {
+	widgetPathLengthFunctionOnce.Do(func() {
+		widgetPathLengthFunction = gi.FunctionInvokerNew("Gtk", "length")
+	})
+}
+
 var lengthWidgetPathInvoker *gi.Function
 
 // Length is a representation of the C type gtk_widget_path_length.
@@ -10996,6 +12139,15 @@ func (recv *WidgetPath) Length() int32 {
 
 // UNSUPPORTED : C value 'gtk_widget_path_prepend_type' : parameter 'type' of type 'GType' not supported
 
+var widgetPathRefFunction *gi.Function
+var widgetPathRefFunctionOnce sync.Once
+
+func widgetPathRefFunctionSet() {
+	widgetPathRefFunctionOnce.Do(func() {
+		widgetPathRefFunction = gi.FunctionInvokerNew("Gtk", "ref")
+	})
+}
+
 var refWidgetPathInvoker *gi.Function
 
 // Ref is a representation of the C type gtk_widget_path_ref.
@@ -11012,6 +12164,15 @@ func (recv *WidgetPath) Ref() *WidgetPath {
 	retGo := &WidgetPath{native: ret.Pointer()}
 
 	return retGo
+}
+
+var widgetPathToStringFunction *gi.Function
+var widgetPathToStringFunctionOnce sync.Once
+
+func widgetPathToStringFunctionSet() {
+	widgetPathToStringFunctionOnce.Do(func() {
+		widgetPathToStringFunction = gi.FunctionInvokerNew("Gtk", "to_string")
+	})
 }
 
 var toStringWidgetPathInvoker *gi.Function
@@ -11032,6 +12193,15 @@ func (recv *WidgetPath) ToString() string {
 	return retGo
 }
 
+var widgetPathUnrefFunction *gi.Function
+var widgetPathUnrefFunctionOnce sync.Once
+
+func widgetPathUnrefFunctionSet() {
+	widgetPathUnrefFunctionOnce.Do(func() {
+		widgetPathUnrefFunction = gi.FunctionInvokerNew("Gtk", "unref")
+	})
+}
+
 var unrefWidgetPathInvoker *gi.Function
 
 // Unref is a representation of the C type gtk_widget_path_unref.
@@ -11047,12 +12217,12 @@ func (recv *WidgetPath) Unref() {
 
 }
 
-var WidgetPrivateStruct *gi.Struct
-var WidgetPrivateStructOnce sync.Once
+var widgetPrivateStruct *gi.Struct
+var widgetPrivateStructOnce sync.Once
 
-func WidgetPrivateStructSet() {
-	WidgetPrivateStructOnce.Do(func() {
-		WidgetPrivateStruct = gi.StructNew("Gtk", "WidgetPrivate")
+func widgetPrivateStructSet() {
+	widgetPrivateStructOnce.Do(func() {
+		widgetPrivateStruct = gi.StructNew("Gtk", "WidgetPrivate")
 	})
 }
 
@@ -11060,12 +12230,12 @@ type WidgetPrivate struct {
 	native uintptr
 }
 
-var WindowAccessibleClassStruct *gi.Struct
-var WindowAccessibleClassStructOnce sync.Once
+var windowAccessibleClassStruct *gi.Struct
+var windowAccessibleClassStructOnce sync.Once
 
-func WindowAccessibleClassStructSet() {
-	WindowAccessibleClassStructOnce.Do(func() {
-		WindowAccessibleClassStruct = gi.StructNew("Gtk", "WindowAccessibleClass")
+func windowAccessibleClassStructSet() {
+	windowAccessibleClassStructOnce.Do(func() {
+		windowAccessibleClassStruct = gi.StructNew("Gtk", "WindowAccessibleClass")
 	})
 }
 
@@ -11074,12 +12244,12 @@ type WindowAccessibleClass struct {
 	ParentClass *ContainerAccessibleClass
 }
 
-var WindowAccessiblePrivateStruct *gi.Struct
-var WindowAccessiblePrivateStructOnce sync.Once
+var windowAccessiblePrivateStruct *gi.Struct
+var windowAccessiblePrivateStructOnce sync.Once
 
-func WindowAccessiblePrivateStructSet() {
-	WindowAccessiblePrivateStructOnce.Do(func() {
-		WindowAccessiblePrivateStruct = gi.StructNew("Gtk", "WindowAccessiblePrivate")
+func windowAccessiblePrivateStructSet() {
+	windowAccessiblePrivateStructOnce.Do(func() {
+		windowAccessiblePrivateStruct = gi.StructNew("Gtk", "WindowAccessiblePrivate")
 	})
 }
 
@@ -11087,12 +12257,12 @@ type WindowAccessiblePrivate struct {
 	native uintptr
 }
 
-var WindowClassStruct *gi.Struct
-var WindowClassStructOnce sync.Once
+var windowClassStruct *gi.Struct
+var windowClassStructOnce sync.Once
 
-func WindowClassStructSet() {
-	WindowClassStructOnce.Do(func() {
-		WindowClassStruct = gi.StructNew("Gtk", "WindowClass")
+func windowClassStructSet() {
+	windowClassStructOnce.Do(func() {
+		windowClassStruct = gi.StructNew("Gtk", "WindowClass")
 	})
 }
 
@@ -11109,12 +12279,12 @@ type WindowClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
 }
 
-var WindowGeometryInfoStruct *gi.Struct
-var WindowGeometryInfoStructOnce sync.Once
+var windowGeometryInfoStruct *gi.Struct
+var windowGeometryInfoStructOnce sync.Once
 
-func WindowGeometryInfoStructSet() {
-	WindowGeometryInfoStructOnce.Do(func() {
-		WindowGeometryInfoStruct = gi.StructNew("Gtk", "WindowGeometryInfo")
+func windowGeometryInfoStructSet() {
+	windowGeometryInfoStructOnce.Do(func() {
+		windowGeometryInfoStruct = gi.StructNew("Gtk", "WindowGeometryInfo")
 	})
 }
 
@@ -11122,12 +12292,12 @@ type WindowGeometryInfo struct {
 	native uintptr
 }
 
-var WindowGroupClassStruct *gi.Struct
-var WindowGroupClassStructOnce sync.Once
+var windowGroupClassStruct *gi.Struct
+var windowGroupClassStructOnce sync.Once
 
-func WindowGroupClassStructSet() {
-	WindowGroupClassStructOnce.Do(func() {
-		WindowGroupClassStruct = gi.StructNew("Gtk", "WindowGroupClass")
+func windowGroupClassStructSet() {
+	windowGroupClassStructOnce.Do(func() {
+		windowGroupClassStruct = gi.StructNew("Gtk", "WindowGroupClass")
 	})
 }
 
@@ -11140,12 +12310,12 @@ type WindowGroupClass struct {
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
 }
 
-var WindowGroupPrivateStruct *gi.Struct
-var WindowGroupPrivateStructOnce sync.Once
+var windowGroupPrivateStruct *gi.Struct
+var windowGroupPrivateStructOnce sync.Once
 
-func WindowGroupPrivateStructSet() {
-	WindowGroupPrivateStructOnce.Do(func() {
-		WindowGroupPrivateStruct = gi.StructNew("Gtk", "WindowGroupPrivate")
+func windowGroupPrivateStructSet() {
+	windowGroupPrivateStructOnce.Do(func() {
+		windowGroupPrivateStruct = gi.StructNew("Gtk", "WindowGroupPrivate")
 	})
 }
 
@@ -11153,12 +12323,12 @@ type WindowGroupPrivate struct {
 	native uintptr
 }
 
-var WindowPrivateStruct *gi.Struct
-var WindowPrivateStructOnce sync.Once
+var windowPrivateStruct *gi.Struct
+var windowPrivateStructOnce sync.Once
 
-func WindowPrivateStructSet() {
-	WindowPrivateStructOnce.Do(func() {
-		WindowPrivateStruct = gi.StructNew("Gtk", "WindowPrivate")
+func windowPrivateStructSet() {
+	windowPrivateStructOnce.Do(func() {
+		windowPrivateStruct = gi.StructNew("Gtk", "WindowPrivate")
 	})
 }
 

@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-var BitmapStruct *gi.Struct
-var BitmapStructOnce sync.Once
+var bitmapStruct *gi.Struct
+var bitmapStructOnce sync.Once
 
-func BitmapStructSet() {
-	BitmapStructOnce.Do(func() {
-		BitmapStruct = gi.StructNew("freetype2", "Bitmap")
+func bitmapStructSet() {
+	bitmapStructOnce.Do(func() {
+		bitmapStruct = gi.StructNew("freetype2", "Bitmap")
 	})
 }
 
@@ -20,12 +20,12 @@ type Bitmap struct {
 	native uintptr
 }
 
-var FaceStruct *gi.Struct
-var FaceStructOnce sync.Once
+var faceStruct *gi.Struct
+var faceStructOnce sync.Once
 
-func FaceStructSet() {
-	FaceStructOnce.Do(func() {
-		FaceStruct = gi.StructNew("freetype2", "Face")
+func faceStructSet() {
+	faceStructOnce.Do(func() {
+		faceStruct = gi.StructNew("freetype2", "Face")
 	})
 }
 
@@ -33,12 +33,12 @@ type Face struct {
 	native uintptr
 }
 
-var LibraryStruct *gi.Struct
-var LibraryStructOnce sync.Once
+var libraryStruct *gi.Struct
+var libraryStructOnce sync.Once
 
-func LibraryStructSet() {
-	LibraryStructOnce.Do(func() {
-		LibraryStruct = gi.StructNew("freetype2", "Library")
+func libraryStructSet() {
+	libraryStructOnce.Do(func() {
+		libraryStruct = gi.StructNew("freetype2", "Library")
 	})
 }
 

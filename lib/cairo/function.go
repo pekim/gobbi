@@ -2,7 +2,19 @@
 
 package cairo
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
+
+var ImageSurfaceCreateFunction *gi.Function
+var ImageSurfaceCreateFunctionOnce sync.Once
+
+func ImageSurfaceCreateFunctionSet() {
+	ImageSurfaceCreateFunctionOnce.Do(func() {
+		ImageSurfaceCreateFunction = gi.FunctionInvokerNew("cairo", "image_surface_create")
+	})
+}
 
 var imageSurfaceCreateInvoker *gi.Function
 

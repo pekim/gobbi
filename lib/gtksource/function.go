@@ -2,11 +2,23 @@
 
 package gtksource
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'gtk_source_completion_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_source_encoding_get_all' : return type 'GLib.SList' not supported
+
+var EncodingGetCurrentFunction *gi.Function
+var EncodingGetCurrentFunctionOnce sync.Once
+
+func EncodingGetCurrentFunctionSet() {
+	EncodingGetCurrentFunctionOnce.Do(func() {
+		EncodingGetCurrentFunction = gi.FunctionInvokerNew("GtkSource", "encoding_get_current")
+	})
+}
 
 var encodingGetCurrentInvoker *gi.Function
 
@@ -25,6 +37,15 @@ func EncodingGetCurrent() *Encoding {
 
 // UNSUPPORTED : C value 'gtk_source_encoding_get_default_candidates' : return type 'GLib.SList' not supported
 
+var EncodingGetFromCharsetFunction *gi.Function
+var EncodingGetFromCharsetFunctionOnce sync.Once
+
+func EncodingGetFromCharsetFunctionSet() {
+	EncodingGetFromCharsetFunctionOnce.Do(func() {
+		EncodingGetFromCharsetFunction = gi.FunctionInvokerNew("GtkSource", "encoding_get_from_charset")
+	})
+}
+
 var encodingGetFromCharsetInvoker *gi.Function
 
 // EncodingGetFromCharset is a representation of the C type gtk_source_encoding_get_from_charset.
@@ -41,6 +62,15 @@ func EncodingGetFromCharset(charset string) *Encoding {
 	retGo := &Encoding{native: ret.Pointer()}
 
 	return retGo
+}
+
+var EncodingGetUtf8Function *gi.Function
+var EncodingGetUtf8FunctionOnce sync.Once
+
+func EncodingGetUtf8FunctionSet() {
+	EncodingGetUtf8FunctionOnce.Do(func() {
+		EncodingGetUtf8Function = gi.FunctionInvokerNew("GtkSource", "encoding_get_utf8")
+	})
 }
 
 var encodingGetUtf8Invoker *gi.Function
@@ -62,6 +92,15 @@ func EncodingGetUtf8() *Encoding {
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_error_quark' : return type 'GLib.Quark' not supported
 
+var UtilsEscapeSearchTextFunction *gi.Function
+var UtilsEscapeSearchTextFunctionOnce sync.Once
+
+func UtilsEscapeSearchTextFunctionSet() {
+	UtilsEscapeSearchTextFunctionOnce.Do(func() {
+		UtilsEscapeSearchTextFunction = gi.FunctionInvokerNew("GtkSource", "utils_escape_search_text")
+	})
+}
+
 var utilsEscapeSearchTextInvoker *gi.Function
 
 // UtilsEscapeSearchText is a representation of the C type gtk_source_utils_escape_search_text.
@@ -78,6 +117,15 @@ func UtilsEscapeSearchText(text string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var UtilsUnescapeSearchTextFunction *gi.Function
+var UtilsUnescapeSearchTextFunctionOnce sync.Once
+
+func UtilsUnescapeSearchTextFunctionSet() {
+	UtilsUnescapeSearchTextFunctionOnce.Do(func() {
+		UtilsUnescapeSearchTextFunction = gi.FunctionInvokerNew("GtkSource", "utils_unescape_search_text")
+	})
 }
 
 var utilsUnescapeSearchTextInvoker *gi.Function

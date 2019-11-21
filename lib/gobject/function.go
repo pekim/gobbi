@@ -2,7 +2,10 @@
 
 package gobject
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'g_boxed_copy' : parameter 'boxed_type' of type 'GType' not supported
 
@@ -208,6 +211,15 @@ import gi "github.com/pekim/gobbi/internal/gi"
 
 // UNSUPPORTED : C value 'g_signal_lookup' : parameter 'itype' of type 'GType' not supported
 
+var SignalNameFunction *gi.Function
+var SignalNameFunctionOnce sync.Once
+
+func SignalNameFunctionSet() {
+	SignalNameFunctionOnce.Do(func() {
+		SignalNameFunction = gi.FunctionInvokerNew("GObject", "signal_name")
+	})
+}
+
 var signalNameInvoker *gi.Function
 
 // SignalName is a representation of the C type g_signal_name.
@@ -241,6 +253,15 @@ func SignalName(signalId uint32) string {
 // UNSUPPORTED : C value 'g_signal_parse_name' : parameter 'itype' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_signal_query' : parameter 'query' of type 'SignalQuery' not supported
+
+var SignalRemoveEmissionHookFunction *gi.Function
+var SignalRemoveEmissionHookFunctionOnce sync.Once
+
+func SignalRemoveEmissionHookFunctionSet() {
+	SignalRemoveEmissionHookFunctionOnce.Do(func() {
+		SignalRemoveEmissionHookFunction = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
+	})
+}
 
 var signalRemoveEmissionHookInvoker *gi.Function
 
@@ -338,6 +359,15 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 // UNSUPPORTED : C value 'g_type_get_qdata' : parameter 'type' of type 'GType' not supported
 
+var TypeGetTypeRegistrationSerialFunction *gi.Function
+var TypeGetTypeRegistrationSerialFunctionOnce sync.Once
+
+func TypeGetTypeRegistrationSerialFunctionSet() {
+	TypeGetTypeRegistrationSerialFunctionOnce.Do(func() {
+		TypeGetTypeRegistrationSerialFunction = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
+	})
+}
+
 var typeGetTypeRegistrationSerialInvoker *gi.Function
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
@@ -351,6 +381,15 @@ func TypeGetTypeRegistrationSerial() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var TypeInitFunction *gi.Function
+var TypeInitFunctionOnce sync.Once
+
+func TypeInitFunctionSet() {
+	TypeInitFunctionOnce.Do(func() {
+		TypeInitFunction = gi.FunctionInvokerNew("GObject", "type_init")
+	})
 }
 
 var typeInitInvoker *gi.Function

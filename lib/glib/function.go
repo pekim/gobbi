@@ -2,9 +2,21 @@
 
 package glib
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'g_access' : parameter 'filename' of type 'filename' not supported
+
+var AsciiDigitValueFunction *gi.Function
+var AsciiDigitValueFunctionOnce sync.Once
+
+func AsciiDigitValueFunctionSet() {
+	AsciiDigitValueFunctionOnce.Do(func() {
+		AsciiDigitValueFunction = gi.FunctionInvokerNew("GLib", "ascii_digit_value")
+	})
+}
 
 var asciiDigitValueInvoker *gi.Function
 
@@ -28,6 +40,15 @@ func AsciiDigitValue(c int8) int32 {
 
 // UNSUPPORTED : C value 'g_ascii_formatd' : parameter 'd' of type 'gdouble' not supported
 
+var AsciiStrcasecmpFunction *gi.Function
+var AsciiStrcasecmpFunctionOnce sync.Once
+
+func AsciiStrcasecmpFunctionSet() {
+	AsciiStrcasecmpFunctionOnce.Do(func() {
+		AsciiStrcasecmpFunction = gi.FunctionInvokerNew("GLib", "ascii_strcasecmp")
+	})
+}
+
 var asciiStrcasecmpInvoker *gi.Function
 
 // AsciiStrcasecmp is a representation of the C type g_ascii_strcasecmp.
@@ -45,6 +66,15 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var AsciiStrdownFunction *gi.Function
+var AsciiStrdownFunctionOnce sync.Once
+
+func AsciiStrdownFunctionSet() {
+	AsciiStrdownFunctionOnce.Do(func() {
+		AsciiStrdownFunction = gi.FunctionInvokerNew("GLib", "ascii_strdown")
+	})
 }
 
 var asciiStrdownInvoker *gi.Function
@@ -74,6 +104,15 @@ func AsciiStrdown(str string, len int32) string {
 
 // UNSUPPORTED : C value 'g_ascii_strtod' : return type 'gdouble' not supported
 
+var AsciiStrtollFunction *gi.Function
+var AsciiStrtollFunctionOnce sync.Once
+
+func AsciiStrtollFunctionSet() {
+	AsciiStrtollFunctionOnce.Do(func() {
+		AsciiStrtollFunction = gi.FunctionInvokerNew("GLib", "ascii_strtoll")
+	})
+}
+
 var asciiStrtollInvoker *gi.Function
 
 // AsciiStrtoll is a representation of the C type g_ascii_strtoll.
@@ -94,6 +133,15 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 	out0 := outArgs[0].String(false)
 
 	return retGo, out0
+}
+
+var AsciiStrtoullFunction *gi.Function
+var AsciiStrtoullFunctionOnce sync.Once
+
+func AsciiStrtoullFunctionSet() {
+	AsciiStrtoullFunctionOnce.Do(func() {
+		AsciiStrtoullFunction = gi.FunctionInvokerNew("GLib", "ascii_strtoull")
+	})
 }
 
 var asciiStrtoullInvoker *gi.Function
@@ -118,6 +166,15 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 	return retGo, out0
 }
 
+var AsciiStrupFunction *gi.Function
+var AsciiStrupFunctionOnce sync.Once
+
+func AsciiStrupFunctionSet() {
+	AsciiStrupFunctionOnce.Do(func() {
+		AsciiStrupFunction = gi.FunctionInvokerNew("GLib", "ascii_strup")
+	})
+}
+
 var asciiStrupInvoker *gi.Function
 
 // AsciiStrup is a representation of the C type g_ascii_strup.
@@ -135,6 +192,15 @@ func AsciiStrup(str string, len int32) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var AsciiTolowerFunction *gi.Function
+var AsciiTolowerFunctionOnce sync.Once
+
+func AsciiTolowerFunctionSet() {
+	AsciiTolowerFunctionOnce.Do(func() {
+		AsciiTolowerFunction = gi.FunctionInvokerNew("GLib", "ascii_tolower")
+	})
 }
 
 var asciiTolowerInvoker *gi.Function
@@ -155,6 +221,15 @@ func AsciiTolower(c int8) int8 {
 	return retGo
 }
 
+var AsciiToupperFunction *gi.Function
+var AsciiToupperFunctionOnce sync.Once
+
+func AsciiToupperFunctionSet() {
+	AsciiToupperFunctionOnce.Do(func() {
+		AsciiToupperFunction = gi.FunctionInvokerNew("GLib", "ascii_toupper")
+	})
+}
+
 var asciiToupperInvoker *gi.Function
 
 // AsciiToupper is a representation of the C type g_ascii_toupper.
@@ -171,6 +246,15 @@ func AsciiToupper(c int8) int8 {
 	retGo := ret.Int8()
 
 	return retGo
+}
+
+var AsciiXdigitValueFunction *gi.Function
+var AsciiXdigitValueFunctionOnce sync.Once
+
+func AsciiXdigitValueFunctionSet() {
+	AsciiXdigitValueFunctionOnce.Do(func() {
+		AsciiXdigitValueFunction = gi.FunctionInvokerNew("GLib", "ascii_xdigit_value")
+	})
 }
 
 var asciiXdigitValueInvoker *gi.Function
@@ -191,6 +275,15 @@ func AsciiXdigitValue(c int8) int32 {
 	return retGo
 }
 
+var AssertWarningFunction *gi.Function
+var AssertWarningFunctionOnce sync.Once
+
+func AssertWarningFunctionSet() {
+	AssertWarningFunctionOnce.Do(func() {
+		AssertWarningFunction = gi.FunctionInvokerNew("GLib", "assert_warning")
+	})
+}
+
 var assertWarningInvoker *gi.Function
 
 // AssertWarning is a representation of the C type g_assert_warning.
@@ -208,6 +301,15 @@ func AssertWarning(logDomain string, file string, line int32, prettyFunction str
 
 	assertWarningInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var AssertionMessageFunction *gi.Function
+var AssertionMessageFunctionOnce sync.Once
+
+func AssertionMessageFunctionSet() {
+	AssertionMessageFunctionOnce.Do(func() {
+		AssertionMessageFunction = gi.FunctionInvokerNew("GLib", "assertion_message")
+	})
 }
 
 var assertionMessageInvoker *gi.Function
@@ -230,6 +332,15 @@ func AssertionMessage(domain string, file string, line int32, func_ string, mess
 }
 
 // UNSUPPORTED : C value 'g_assertion_message_cmpnum' : parameter 'arg1' of type 'long double' not supported
+
+var AssertionMessageCmpstrFunction *gi.Function
+var AssertionMessageCmpstrFunctionOnce sync.Once
+
+func AssertionMessageCmpstrFunctionSet() {
+	AssertionMessageCmpstrFunctionOnce.Do(func() {
+		AssertionMessageCmpstrFunction = gi.FunctionInvokerNew("GLib", "assertion_message_cmpstr")
+	})
+}
 
 var assertionMessageCmpstrInvoker *gi.Function
 
@@ -255,6 +366,15 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func_ string
 
 // UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'error' of type 'Error' not supported
 
+var AssertionMessageExprFunction *gi.Function
+var AssertionMessageExprFunctionOnce sync.Once
+
+func AssertionMessageExprFunctionSet() {
+	AssertionMessageExprFunctionOnce.Do(func() {
+		AssertionMessageExprFunction = gi.FunctionInvokerNew("GLib", "assertion_message_expr")
+	})
+}
+
 var assertionMessageExprInvoker *gi.Function
 
 // AssertionMessageExpr is a representation of the C type g_assertion_message_expr.
@@ -276,6 +396,15 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 
 // UNSUPPORTED : C value 'g_atexit' : parameter 'func' of type 'VoidFunc' not supported
 
+var AtomicIntAddFunction *gi.Function
+var AtomicIntAddFunctionOnce sync.Once
+
+func AtomicIntAddFunctionSet() {
+	AtomicIntAddFunctionOnce.Do(func() {
+		AtomicIntAddFunction = gi.FunctionInvokerNew("GLib", "atomic_int_add")
+	})
+}
+
 var atomicIntAddInvoker *gi.Function
 
 // AtomicIntAdd is a representation of the C type g_atomic_int_add.
@@ -293,6 +422,15 @@ func AtomicIntAdd(atomic int32, val int32) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var AtomicIntAndFunction *gi.Function
+var AtomicIntAndFunctionOnce sync.Once
+
+func AtomicIntAndFunctionSet() {
+	AtomicIntAndFunctionOnce.Do(func() {
+		AtomicIntAndFunction = gi.FunctionInvokerNew("GLib", "atomic_int_and")
+	})
 }
 
 var atomicIntAndInvoker *gi.Function
@@ -318,6 +456,15 @@ func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 
 // UNSUPPORTED : C value 'g_atomic_int_dec_and_test' : return type 'gboolean' not supported
 
+var AtomicIntExchangeAndAddFunction *gi.Function
+var AtomicIntExchangeAndAddFunctionOnce sync.Once
+
+func AtomicIntExchangeAndAddFunctionSet() {
+	AtomicIntExchangeAndAddFunctionOnce.Do(func() {
+		AtomicIntExchangeAndAddFunction = gi.FunctionInvokerNew("GLib", "atomic_int_exchange_and_add")
+	})
+}
+
 var atomicIntExchangeAndAddInvoker *gi.Function
 
 // AtomicIntExchangeAndAdd is a representation of the C type g_atomic_int_exchange_and_add.
@@ -335,6 +482,15 @@ func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var AtomicIntGetFunction *gi.Function
+var AtomicIntGetFunctionOnce sync.Once
+
+func AtomicIntGetFunctionSet() {
+	AtomicIntGetFunctionOnce.Do(func() {
+		AtomicIntGetFunction = gi.FunctionInvokerNew("GLib", "atomic_int_get")
+	})
 }
 
 var atomicIntGetInvoker *gi.Function
@@ -355,6 +511,15 @@ func AtomicIntGet(atomic int32) int32 {
 	return retGo
 }
 
+var AtomicIntIncFunction *gi.Function
+var AtomicIntIncFunctionOnce sync.Once
+
+func AtomicIntIncFunctionSet() {
+	AtomicIntIncFunctionOnce.Do(func() {
+		AtomicIntIncFunction = gi.FunctionInvokerNew("GLib", "atomic_int_inc")
+	})
+}
+
 var atomicIntIncInvoker *gi.Function
 
 // AtomicIntInc is a representation of the C type g_atomic_int_inc.
@@ -368,6 +533,15 @@ func AtomicIntInc(atomic int32) {
 
 	atomicIntIncInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var AtomicIntOrFunction *gi.Function
+var AtomicIntOrFunctionOnce sync.Once
+
+func AtomicIntOrFunctionSet() {
+	AtomicIntOrFunctionOnce.Do(func() {
+		AtomicIntOrFunction = gi.FunctionInvokerNew("GLib", "atomic_int_or")
+	})
 }
 
 var atomicIntOrInvoker *gi.Function
@@ -389,6 +563,15 @@ func AtomicIntOr(atomic uint32, val uint32) uint32 {
 	return retGo
 }
 
+var AtomicIntSetFunction *gi.Function
+var AtomicIntSetFunctionOnce sync.Once
+
+func AtomicIntSetFunctionSet() {
+	AtomicIntSetFunctionOnce.Do(func() {
+		AtomicIntSetFunction = gi.FunctionInvokerNew("GLib", "atomic_int_set")
+	})
+}
+
 var atomicIntSetInvoker *gi.Function
 
 // AtomicIntSet is a representation of the C type g_atomic_int_set.
@@ -403,6 +586,15 @@ func AtomicIntSet(atomic int32, newval int32) {
 
 	atomicIntSetInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var AtomicIntXorFunction *gi.Function
+var AtomicIntXorFunctionOnce sync.Once
+
+func AtomicIntXorFunctionSet() {
+	AtomicIntXorFunctionOnce.Do(func() {
+		AtomicIntXorFunction = gi.FunctionInvokerNew("GLib", "atomic_int_xor")
+	})
 }
 
 var atomicIntXorInvoker *gi.Function
@@ -456,6 +648,15 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 // UNSUPPORTED : C value 'g_atomic_ref_count_dec' : return type 'gboolean' not supported
 
+var AtomicRefCountIncFunction *gi.Function
+var AtomicRefCountIncFunctionOnce sync.Once
+
+func AtomicRefCountIncFunctionSet() {
+	AtomicRefCountIncFunctionOnce.Do(func() {
+		AtomicRefCountIncFunction = gi.FunctionInvokerNew("GLib", "atomic_ref_count_inc")
+	})
+}
+
 var atomicRefCountIncInvoker *gi.Function
 
 // AtomicRefCountInc is a representation of the C type g_atomic_ref_count_inc.
@@ -469,6 +670,15 @@ func AtomicRefCountInc(arc int32) {
 
 	atomicRefCountIncInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var AtomicRefCountInitFunction *gi.Function
+var AtomicRefCountInitFunctionOnce sync.Once
+
+func AtomicRefCountInitFunctionSet() {
+	AtomicRefCountInitFunctionOnce.Do(func() {
+		AtomicRefCountInitFunction = gi.FunctionInvokerNew("GLib", "atomic_ref_count_init")
+	})
 }
 
 var atomicRefCountInitInvoker *gi.Function
@@ -500,6 +710,15 @@ func AtomicRefCountInit(arc int32) {
 
 // UNSUPPORTED : C value 'g_basename' : parameter 'file_name' of type 'filename' not supported
 
+var BitLockFunction *gi.Function
+var BitLockFunctionOnce sync.Once
+
+func BitLockFunctionSet() {
+	BitLockFunctionOnce.Do(func() {
+		BitLockFunction = gi.FunctionInvokerNew("GLib", "bit_lock")
+	})
+}
+
 var bitLockInvoker *gi.Function
 
 // BitLock is a representation of the C type g_bit_lock.
@@ -514,6 +733,15 @@ func BitLock(address int32, lockBit int32) {
 
 	bitLockInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var BitNthLsfFunction *gi.Function
+var BitNthLsfFunctionOnce sync.Once
+
+func BitNthLsfFunctionSet() {
+	BitNthLsfFunctionOnce.Do(func() {
+		BitNthLsfFunction = gi.FunctionInvokerNew("GLib", "bit_nth_lsf")
+	})
 }
 
 var bitNthLsfInvoker *gi.Function
@@ -535,6 +763,15 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 	return retGo
 }
 
+var BitNthMsfFunction *gi.Function
+var BitNthMsfFunctionOnce sync.Once
+
+func BitNthMsfFunctionSet() {
+	BitNthMsfFunctionOnce.Do(func() {
+		BitNthMsfFunction = gi.FunctionInvokerNew("GLib", "bit_nth_msf")
+	})
+}
+
 var bitNthMsfInvoker *gi.Function
 
 // BitNthMsf is a representation of the C type g_bit_nth_msf.
@@ -552,6 +789,15 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var BitStorageFunction *gi.Function
+var BitStorageFunctionOnce sync.Once
+
+func BitStorageFunctionSet() {
+	BitStorageFunctionOnce.Do(func() {
+		BitStorageFunction = gi.FunctionInvokerNew("GLib", "bit_storage")
+	})
 }
 
 var bitStorageInvoker *gi.Function
@@ -573,6 +819,15 @@ func BitStorage(number uint64) uint32 {
 }
 
 // UNSUPPORTED : C value 'g_bit_trylock' : return type 'gboolean' not supported
+
+var BitUnlockFunction *gi.Function
+var BitUnlockFunctionOnce sync.Once
+
+func BitUnlockFunctionSet() {
+	BitUnlockFunctionOnce.Do(func() {
+		BitUnlockFunction = gi.FunctionInvokerNew("GLib", "bit_unlock")
+	})
+}
 
 var bitUnlockInvoker *gi.Function
 
@@ -606,6 +861,15 @@ func BitUnlock(address int32, lockBit int32) {
 
 // UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : parameter 'array' has no type
 
+var ByteArrayNewFunction *gi.Function
+var ByteArrayNewFunctionOnce sync.Once
+
+func ByteArrayNewFunctionSet() {
+	ByteArrayNewFunctionOnce.Do(func() {
+		ByteArrayNewFunction = gi.FunctionInvokerNew("GLib", "byte_array_new")
+	})
+}
+
 var byteArrayNewInvoker *gi.Function
 
 // ByteArrayNew is a representation of the C type g_byte_array_new.
@@ -625,6 +889,15 @@ func ByteArrayNew() {
 // UNSUPPORTED : C value 'g_canonicalize_filename' : parameter 'filename' of type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_chdir' : parameter 'path' of type 'filename' not supported
+
+var CheckVersionFunction *gi.Function
+var CheckVersionFunctionOnce sync.Once
+
+func CheckVersionFunctionSet() {
+	CheckVersionFunctionOnce.Do(func() {
+		CheckVersionFunction = gi.FunctionInvokerNew("GLib", "check_version")
+	})
+}
 
 var checkVersionInvoker *gi.Function
 
@@ -653,6 +926,15 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 // UNSUPPORTED : C value 'g_child_watch_add_full' : parameter 'pid' of type 'Pid' not supported
 
 // UNSUPPORTED : C value 'g_child_watch_source_new' : parameter 'pid' of type 'Pid' not supported
+
+var ClearErrorFunction *gi.Function
+var ClearErrorFunctionOnce sync.Once
+
+func ClearErrorFunctionSet() {
+	ClearErrorFunctionOnce.Do(func() {
+		ClearErrorFunction = gi.FunctionInvokerNew("GLib", "clear_error")
+	})
+}
 
 var clearErrorInvoker *gi.Function
 
@@ -754,6 +1036,15 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_date_valid_year' : parameter 'year' of type 'DateYear' not supported
 
+var DcgettextFunction *gi.Function
+var DcgettextFunctionOnce sync.Once
+
+func DcgettextFunctionSet() {
+	DcgettextFunctionOnce.Do(func() {
+		DcgettextFunction = gi.FunctionInvokerNew("GLib", "dcgettext")
+	})
+}
+
 var dcgettextInvoker *gi.Function
 
 // Dcgettext is a representation of the C type g_dcgettext.
@@ -772,6 +1063,15 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var DgettextFunction *gi.Function
+var DgettextFunctionOnce sync.Once
+
+func DgettextFunctionSet() {
+	DgettextFunctionOnce.Do(func() {
+		DgettextFunction = gi.FunctionInvokerNew("GLib", "dgettext")
+	})
 }
 
 var dgettextInvoker *gi.Function
@@ -799,6 +1099,15 @@ func Dgettext(domain string, msgid string) string {
 
 // UNSUPPORTED : C value 'g_direct_hash' : parameter 'v' of type 'gpointer' not supported
 
+var DngettextFunction *gi.Function
+var DngettextFunctionOnce sync.Once
+
+func DngettextFunctionSet() {
+	DngettextFunctionOnce.Do(func() {
+		DngettextFunction = gi.FunctionInvokerNew("GLib", "dngettext")
+	})
+}
+
 var dngettextInvoker *gi.Function
 
 // Dngettext is a representation of the C type g_dngettext.
@@ -825,6 +1134,15 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 // UNSUPPORTED : C value 'g_double_hash' : parameter 'v' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_dpgettext' : parameter 'msgidoffset' of type 'gsize' not supported
+
+var Dpgettext2Function *gi.Function
+var Dpgettext2FunctionOnce sync.Once
+
+func Dpgettext2FunctionSet() {
+	Dpgettext2FunctionOnce.Do(func() {
+		Dpgettext2Function = gi.FunctionInvokerNew("GLib", "dpgettext2")
+	})
+}
 
 var dpgettext2Invoker *gi.Function
 
@@ -880,6 +1198,15 @@ func Dpgettext2(domain string, context string, msgid string) string {
 
 // UNSUPPORTED : C value 'g_find_program_in_path' : parameter 'program' of type 'filename' not supported
 
+var FormatSizeFunction *gi.Function
+var FormatSizeFunctionOnce sync.Once
+
+func FormatSizeFunctionSet() {
+	FormatSizeFunctionOnce.Do(func() {
+		FormatSizeFunction = gi.FunctionInvokerNew("GLib", "format_size")
+	})
+}
+
 var formatSizeInvoker *gi.Function
 
 // FormatSize is a representation of the C type g_format_size.
@@ -896,6 +1223,15 @@ func FormatSize(size uint64) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var FormatSizeForDisplayFunction *gi.Function
+var FormatSizeForDisplayFunctionOnce sync.Once
+
+func FormatSizeForDisplayFunctionSet() {
+	FormatSizeForDisplayFunctionOnce.Do(func() {
+		FormatSizeForDisplayFunction = gi.FunctionInvokerNew("GLib", "format_size_for_display")
+	})
 }
 
 var formatSizeForDisplayInvoker *gi.Function
@@ -922,6 +1258,15 @@ func FormatSizeForDisplay(size int64) string {
 
 // UNSUPPORTED : C value 'g_free' : parameter 'mem' of type 'gpointer' not supported
 
+var GetApplicationNameFunction *gi.Function
+var GetApplicationNameFunctionOnce sync.Once
+
+func GetApplicationNameFunctionSet() {
+	GetApplicationNameFunctionOnce.Do(func() {
+		GetApplicationNameFunction = gi.FunctionInvokerNew("GLib", "get_application_name")
+	})
+}
+
 var getApplicationNameInvoker *gi.Function
 
 // GetApplicationName is a representation of the C type g_get_application_name.
@@ -938,6 +1283,15 @@ func GetApplicationName() string {
 }
 
 // UNSUPPORTED : C value 'g_get_charset' : return type 'gboolean' not supported
+
+var GetCodesetFunction *gi.Function
+var GetCodesetFunctionOnce sync.Once
+
+func GetCodesetFunctionSet() {
+	GetCodesetFunctionOnce.Do(func() {
+		GetCodesetFunction = gi.FunctionInvokerNew("GLib", "get_codeset")
+	})
+}
 
 var getCodesetInvoker *gi.Function
 
@@ -960,6 +1314,15 @@ func GetCodeset() string {
 
 // UNSUPPORTED : C value 'g_get_current_time' : parameter 'result' of type 'TimeVal' not supported
 
+var GetEnvironFunction *gi.Function
+var GetEnvironFunctionOnce sync.Once
+
+func GetEnvironFunctionSet() {
+	GetEnvironFunctionOnce.Do(func() {
+		GetEnvironFunction = gi.FunctionInvokerNew("GLib", "get_environ")
+	})
+}
+
 var getEnvironInvoker *gi.Function
 
 // GetEnviron is a representation of the C type g_get_environ.
@@ -976,6 +1339,15 @@ func GetEnviron() {
 
 // UNSUPPORTED : C value 'g_get_home_dir' : return type 'filename' not supported
 
+var GetHostNameFunction *gi.Function
+var GetHostNameFunctionOnce sync.Once
+
+func GetHostNameFunctionSet() {
+	GetHostNameFunctionOnce.Do(func() {
+		GetHostNameFunction = gi.FunctionInvokerNew("GLib", "get_host_name")
+	})
+}
+
 var getHostNameInvoker *gi.Function
 
 // GetHostName is a representation of the C type g_get_host_name.
@@ -991,6 +1363,15 @@ func GetHostName() string {
 	return retGo
 }
 
+var GetLanguageNamesFunction *gi.Function
+var GetLanguageNamesFunctionOnce sync.Once
+
+func GetLanguageNamesFunctionSet() {
+	GetLanguageNamesFunctionOnce.Do(func() {
+		GetLanguageNamesFunction = gi.FunctionInvokerNew("GLib", "get_language_names")
+	})
+}
+
 var getLanguageNamesInvoker *gi.Function
 
 // GetLanguageNames is a representation of the C type g_get_language_names.
@@ -1001,6 +1382,15 @@ func GetLanguageNames() {
 
 	getLanguageNamesInvoker.Invoke(nil, nil)
 
+}
+
+var GetLanguageNamesWithCategoryFunction *gi.Function
+var GetLanguageNamesWithCategoryFunctionOnce sync.Once
+
+func GetLanguageNamesWithCategoryFunctionSet() {
+	GetLanguageNamesWithCategoryFunctionOnce.Do(func() {
+		GetLanguageNamesWithCategoryFunction = gi.FunctionInvokerNew("GLib", "get_language_names_with_category")
+	})
 }
 
 var getLanguageNamesWithCategoryInvoker *gi.Function
@@ -1018,6 +1408,15 @@ func GetLanguageNamesWithCategory(categoryName string) {
 
 }
 
+var GetLocaleVariantsFunction *gi.Function
+var GetLocaleVariantsFunctionOnce sync.Once
+
+func GetLocaleVariantsFunctionSet() {
+	GetLocaleVariantsFunctionOnce.Do(func() {
+		GetLocaleVariantsFunction = gi.FunctionInvokerNew("GLib", "get_locale_variants")
+	})
+}
+
 var getLocaleVariantsInvoker *gi.Function
 
 // GetLocaleVariants is a representation of the C type g_get_locale_variants.
@@ -1031,6 +1430,15 @@ func GetLocaleVariants(locale string) {
 
 	getLocaleVariantsInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var GetMonotonicTimeFunction *gi.Function
+var GetMonotonicTimeFunctionOnce sync.Once
+
+func GetMonotonicTimeFunctionSet() {
+	GetMonotonicTimeFunctionOnce.Do(func() {
+		GetMonotonicTimeFunction = gi.FunctionInvokerNew("GLib", "get_monotonic_time")
+	})
 }
 
 var getMonotonicTimeInvoker *gi.Function
@@ -1048,6 +1456,15 @@ func GetMonotonicTime() int64 {
 	return retGo
 }
 
+var GetNumProcessorsFunction *gi.Function
+var GetNumProcessorsFunctionOnce sync.Once
+
+func GetNumProcessorsFunctionSet() {
+	GetNumProcessorsFunctionOnce.Do(func() {
+		GetNumProcessorsFunction = gi.FunctionInvokerNew("GLib", "get_num_processors")
+	})
+}
+
 var getNumProcessorsInvoker *gi.Function
 
 // GetNumProcessors is a representation of the C type g_get_num_processors.
@@ -1061,6 +1478,15 @@ func GetNumProcessors() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var GetPrgnameFunction *gi.Function
+var GetPrgnameFunctionOnce sync.Once
+
+func GetPrgnameFunctionSet() {
+	GetPrgnameFunctionOnce.Do(func() {
+		GetPrgnameFunction = gi.FunctionInvokerNew("GLib", "get_prgname")
+	})
 }
 
 var getPrgnameInvoker *gi.Function
@@ -1080,6 +1506,15 @@ func GetPrgname() string {
 
 // UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
 
+var GetRealTimeFunction *gi.Function
+var GetRealTimeFunctionOnce sync.Once
+
+func GetRealTimeFunctionSet() {
+	GetRealTimeFunctionOnce.Do(func() {
+		GetRealTimeFunction = gi.FunctionInvokerNew("GLib", "get_real_time")
+	})
+}
+
 var getRealTimeInvoker *gi.Function
 
 // GetRealTime is a representation of the C type g_get_real_time.
@@ -1095,6 +1530,15 @@ func GetRealTime() int64 {
 	return retGo
 }
 
+var GetSystemConfigDirsFunction *gi.Function
+var GetSystemConfigDirsFunctionOnce sync.Once
+
+func GetSystemConfigDirsFunctionSet() {
+	GetSystemConfigDirsFunctionOnce.Do(func() {
+		GetSystemConfigDirsFunction = gi.FunctionInvokerNew("GLib", "get_system_config_dirs")
+	})
+}
+
 var getSystemConfigDirsInvoker *gi.Function
 
 // GetSystemConfigDirs is a representation of the C type g_get_system_config_dirs.
@@ -1105,6 +1549,15 @@ func GetSystemConfigDirs() {
 
 	getSystemConfigDirsInvoker.Invoke(nil, nil)
 
+}
+
+var GetSystemDataDirsFunction *gi.Function
+var GetSystemDataDirsFunctionOnce sync.Once
+
+func GetSystemDataDirsFunctionSet() {
+	GetSystemDataDirsFunctionOnce.Do(func() {
+		GetSystemDataDirsFunction = gi.FunctionInvokerNew("GLib", "get_system_data_dirs")
+	})
 }
 
 var getSystemDataDirsInvoker *gi.Function
@@ -1181,6 +1634,15 @@ func GetSystemDataDirs() {
 
 // UNSUPPORTED : C value 'g_hostname_is_non_ascii' : return type 'gboolean' not supported
 
+var HostnameToAsciiFunction *gi.Function
+var HostnameToAsciiFunctionOnce sync.Once
+
+func HostnameToAsciiFunctionSet() {
+	HostnameToAsciiFunctionOnce.Do(func() {
+		HostnameToAsciiFunction = gi.FunctionInvokerNew("GLib", "hostname_to_ascii")
+	})
+}
+
 var hostnameToAsciiInvoker *gi.Function
 
 // HostnameToAscii is a representation of the C type g_hostname_to_ascii.
@@ -1197,6 +1659,15 @@ func HostnameToAscii(hostname string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var HostnameToUnicodeFunction *gi.Function
+var HostnameToUnicodeFunctionOnce sync.Once
+
+func HostnameToUnicodeFunctionSet() {
+	HostnameToUnicodeFunctionOnce.Do(func() {
+		HostnameToUnicodeFunction = gi.FunctionInvokerNew("GLib", "hostname_to_unicode")
+	})
 }
 
 var hostnameToUnicodeInvoker *gi.Function
@@ -1218,6 +1689,15 @@ func HostnameToUnicode(hostname string) string {
 }
 
 // UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
+
+var IconvOpenFunction *gi.Function
+var IconvOpenFunctionOnce sync.Once
+
+func IconvOpenFunctionSet() {
+	IconvOpenFunctionOnce.Do(func() {
+		IconvOpenFunction = gi.FunctionInvokerNew("GLib", "iconv_open")
+	})
+}
 
 var iconvOpenInvoker *gi.Function
 
@@ -1244,6 +1724,15 @@ func IconvOpen(toCodeset string, fromCodeset string) *IConv {
 
 // UNSUPPORTED : C value 'g_idle_remove_by_data' : parameter 'data' of type 'gpointer' not supported
 
+var IdleSourceNewFunction *gi.Function
+var IdleSourceNewFunctionOnce sync.Once
+
+func IdleSourceNewFunctionSet() {
+	IdleSourceNewFunctionOnce.Do(func() {
+		IdleSourceNewFunction = gi.FunctionInvokerNew("GLib", "idle_source_new")
+	})
+}
+
 var idleSourceNewInvoker *gi.Function
 
 // IdleSourceNew is a representation of the C type g_idle_source_new.
@@ -1267,6 +1756,15 @@ func IdleSourceNew() *Source {
 
 // UNSUPPORTED : C value 'g_int_hash' : parameter 'v' of type 'gpointer' not supported
 
+var InternStaticStringFunction *gi.Function
+var InternStaticStringFunctionOnce sync.Once
+
+func InternStaticStringFunctionSet() {
+	InternStaticStringFunctionOnce.Do(func() {
+		InternStaticStringFunction = gi.FunctionInvokerNew("GLib", "intern_static_string")
+	})
+}
+
 var internStaticStringInvoker *gi.Function
 
 // InternStaticString is a representation of the C type g_intern_static_string.
@@ -1283,6 +1781,15 @@ func InternStaticString(string_ string) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var InternStringFunction *gi.Function
+var InternStringFunctionOnce sync.Once
+
+func InternStringFunctionSet() {
+	InternStringFunctionOnce.Do(func() {
+		InternStringFunction = gi.FunctionInvokerNew("GLib", "intern_string")
+	})
 }
 
 var internStringInvoker *gi.Function
@@ -1315,6 +1822,15 @@ func InternString(string_ string) string {
 
 // UNSUPPORTED : C value 'g_key_file_error_quark' : return type 'Quark' not supported
 
+var ListenvFunction *gi.Function
+var ListenvFunctionOnce sync.Once
+
+func ListenvFunctionSet() {
+	ListenvFunctionOnce.Do(func() {
+		ListenvFunction = gi.FunctionInvokerNew("GLib", "listenv")
+	})
+}
+
 var listenvInvoker *gi.Function
 
 // Listenv is a representation of the C type g_listenv.
@@ -1334,6 +1850,15 @@ func Listenv() {
 // UNSUPPORTED : C value 'g_log' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_default_handler' : parameter 'log_level' of type 'LogLevelFlags' not supported
+
+var LogRemoveHandlerFunction *gi.Function
+var LogRemoveHandlerFunctionOnce sync.Once
+
+func LogRemoveHandlerFunctionSet() {
+	LogRemoveHandlerFunctionOnce.Do(func() {
+		LogRemoveHandlerFunction = gi.FunctionInvokerNew("GLib", "log_remove_handler")
+	})
+}
 
 var logRemoveHandlerInvoker *gi.Function
 
@@ -1385,6 +1910,15 @@ func LogRemoveHandler(logDomain string, handlerId uint32) {
 
 // UNSUPPORTED : C value 'g_logv' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
+var MainContextDefaultFunction *gi.Function
+var MainContextDefaultFunctionOnce sync.Once
+
+func MainContextDefaultFunctionSet() {
+	MainContextDefaultFunctionOnce.Do(func() {
+		MainContextDefaultFunction = gi.FunctionInvokerNew("GLib", "main_context_default")
+	})
+}
+
 var mainContextDefaultInvoker *gi.Function
 
 // MainContextDefault is a representation of the C type g_main_context_default.
@@ -1398,6 +1932,15 @@ func MainContextDefault() *MainContext {
 	retGo := &MainContext{native: ret.Pointer()}
 
 	return retGo
+}
+
+var MainContextGetThreadDefaultFunction *gi.Function
+var MainContextGetThreadDefaultFunctionOnce sync.Once
+
+func MainContextGetThreadDefaultFunctionSet() {
+	MainContextGetThreadDefaultFunctionOnce.Do(func() {
+		MainContextGetThreadDefaultFunction = gi.FunctionInvokerNew("GLib", "main_context_get_thread_default")
+	})
 }
 
 var mainContextGetThreadDefaultInvoker *gi.Function
@@ -1415,6 +1958,15 @@ func MainContextGetThreadDefault() *MainContext {
 	return retGo
 }
 
+var MainContextRefThreadDefaultFunction *gi.Function
+var MainContextRefThreadDefaultFunctionOnce sync.Once
+
+func MainContextRefThreadDefaultFunctionSet() {
+	MainContextRefThreadDefaultFunctionOnce.Do(func() {
+		MainContextRefThreadDefaultFunction = gi.FunctionInvokerNew("GLib", "main_context_ref_thread_default")
+	})
+}
+
 var mainContextRefThreadDefaultInvoker *gi.Function
 
 // MainContextRefThreadDefault is a representation of the C type g_main_context_ref_thread_default.
@@ -1430,6 +1982,15 @@ func MainContextRefThreadDefault() *MainContext {
 	return retGo
 }
 
+var MainCurrentSourceFunction *gi.Function
+var MainCurrentSourceFunctionOnce sync.Once
+
+func MainCurrentSourceFunctionSet() {
+	MainCurrentSourceFunctionOnce.Do(func() {
+		MainCurrentSourceFunction = gi.FunctionInvokerNew("GLib", "main_current_source")
+	})
+}
+
 var mainCurrentSourceInvoker *gi.Function
 
 // MainCurrentSource is a representation of the C type g_main_current_source.
@@ -1443,6 +2004,15 @@ func MainCurrentSource() *Source {
 	retGo := &Source{native: ret.Pointer()}
 
 	return retGo
+}
+
+var MainDepthFunction *gi.Function
+var MainDepthFunctionOnce sync.Once
+
+func MainDepthFunctionSet() {
+	MainDepthFunctionOnce.Do(func() {
+		MainDepthFunction = gi.FunctionInvokerNew("GLib", "main_depth")
+	})
 }
 
 var mainDepthInvoker *gi.Function
@@ -1472,6 +2042,15 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_markup_error_quark' : return type 'Quark' not supported
 
+var MarkupEscapeTextFunction *gi.Function
+var MarkupEscapeTextFunctionOnce sync.Once
+
+func MarkupEscapeTextFunctionSet() {
+	MarkupEscapeTextFunctionOnce.Do(func() {
+		MarkupEscapeTextFunction = gi.FunctionInvokerNew("GLib", "markup_escape_text")
+	})
+}
+
 var markupEscapeTextInvoker *gi.Function
 
 // MarkupEscapeText is a representation of the C type g_markup_escape_text.
@@ -1496,6 +2075,15 @@ func MarkupEscapeText(text string, length int32) string {
 // UNSUPPORTED : C value 'g_markup_vprintf_escaped' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type 'gboolean' not supported
+
+var MemProfileFunction *gi.Function
+var MemProfileFunctionOnce sync.Once
+
+func MemProfileFunctionSet() {
+	MemProfileFunctionOnce.Do(func() {
+		MemProfileFunction = gi.FunctionInvokerNew("GLib", "mem_profile")
+	})
+}
 
 var memProfileInvoker *gi.Function
 
@@ -1527,6 +2115,15 @@ func MemProfile() {
 
 // UNSUPPORTED : C value 'g_number_parser_error_quark' : return type 'Quark' not supported
 
+var OnErrorQueryFunction *gi.Function
+var OnErrorQueryFunctionOnce sync.Once
+
+func OnErrorQueryFunctionSet() {
+	OnErrorQueryFunctionOnce.Do(func() {
+		OnErrorQueryFunction = gi.FunctionInvokerNew("GLib", "on_error_query")
+	})
+}
+
 var onErrorQueryInvoker *gi.Function
 
 // OnErrorQuery is a representation of the C type g_on_error_query.
@@ -1540,6 +2137,15 @@ func OnErrorQuery(prgName string) {
 
 	onErrorQueryInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var OnErrorStackTraceFunction *gi.Function
+var OnErrorStackTraceFunctionOnce sync.Once
+
+func OnErrorStackTraceFunctionSet() {
+	OnErrorStackTraceFunctionOnce.Do(func() {
+		OnErrorStackTraceFunction = gi.FunctionInvokerNew("GLib", "on_error_stack_trace")
+	})
 }
 
 var onErrorStackTraceInvoker *gi.Function
@@ -1619,6 +2225,15 @@ func OnErrorStackTrace(prgName string) {
 
 // UNSUPPORTED : C value 'g_random_double_range' : parameter 'begin' of type 'gdouble' not supported
 
+var RandomIntFunction *gi.Function
+var RandomIntFunctionOnce sync.Once
+
+func RandomIntFunctionSet() {
+	RandomIntFunctionOnce.Do(func() {
+		RandomIntFunction = gi.FunctionInvokerNew("GLib", "random_int")
+	})
+}
+
 var randomIntInvoker *gi.Function
 
 // RandomInt is a representation of the C type g_random_int.
@@ -1632,6 +2247,15 @@ func RandomInt() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var RandomIntRangeFunction *gi.Function
+var RandomIntRangeFunctionOnce sync.Once
+
+func RandomIntRangeFunctionSet() {
+	RandomIntRangeFunctionOnce.Do(func() {
+		RandomIntRangeFunction = gi.FunctionInvokerNew("GLib", "random_int_range")
+	})
 }
 
 var randomIntRangeInvoker *gi.Function
@@ -1651,6 +2275,15 @@ func RandomIntRange(begin int32, end int32) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var RandomSetSeedFunction *gi.Function
+var RandomSetSeedFunctionOnce sync.Once
+
+func RandomSetSeedFunctionSet() {
+	RandomSetSeedFunctionOnce.Do(func() {
+		RandomSetSeedFunction = gi.FunctionInvokerNew("GLib", "random_set_seed")
+	})
 }
 
 var randomSetSeedInvoker *gi.Function
@@ -1690,6 +2323,15 @@ func RandomSetSeed(seed uint32) {
 
 // UNSUPPORTED : C value 'g_ref_count_dec' : return type 'gboolean' not supported
 
+var RefCountIncFunction *gi.Function
+var RefCountIncFunctionOnce sync.Once
+
+func RefCountIncFunctionSet() {
+	RefCountIncFunctionOnce.Do(func() {
+		RefCountIncFunction = gi.FunctionInvokerNew("GLib", "ref_count_inc")
+	})
+}
+
 var refCountIncInvoker *gi.Function
 
 // RefCountInc is a representation of the C type g_ref_count_inc.
@@ -1705,6 +2347,15 @@ func RefCountInc(rc int32) {
 
 }
 
+var RefCountInitFunction *gi.Function
+var RefCountInitFunctionOnce sync.Once
+
+func RefCountInitFunctionSet() {
+	RefCountInitFunctionOnce.Do(func() {
+		RefCountInitFunction = gi.FunctionInvokerNew("GLib", "ref_count_init")
+	})
+}
+
 var refCountInitInvoker *gi.Function
 
 // RefCountInit is a representation of the C type g_ref_count_init.
@@ -1718,6 +2369,15 @@ func RefCountInit(rc int32) {
 
 	refCountInitInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var RefStringAcquireFunction *gi.Function
+var RefStringAcquireFunctionOnce sync.Once
+
+func RefStringAcquireFunctionSet() {
+	RefStringAcquireFunctionOnce.Do(func() {
+		RefStringAcquireFunction = gi.FunctionInvokerNew("GLib", "ref_string_acquire")
+	})
 }
 
 var refStringAcquireInvoker *gi.Function
@@ -1740,6 +2400,15 @@ func RefStringAcquire(str string) string {
 
 // UNSUPPORTED : C value 'g_ref_string_length' : return type 'gsize' not supported
 
+var RefStringNewFunction *gi.Function
+var RefStringNewFunctionOnce sync.Once
+
+func RefStringNewFunctionSet() {
+	RefStringNewFunctionOnce.Do(func() {
+		RefStringNewFunction = gi.FunctionInvokerNew("GLib", "ref_string_new")
+	})
+}
+
 var refStringNewInvoker *gi.Function
 
 // RefStringNew is a representation of the C type g_ref_string_new.
@@ -1758,6 +2427,15 @@ func RefStringNew(str string) string {
 	return retGo
 }
 
+var RefStringNewInternFunction *gi.Function
+var RefStringNewInternFunctionOnce sync.Once
+
+func RefStringNewInternFunctionSet() {
+	RefStringNewInternFunctionOnce.Do(func() {
+		RefStringNewInternFunction = gi.FunctionInvokerNew("GLib", "ref_string_new_intern")
+	})
+}
+
 var refStringNewInternInvoker *gi.Function
 
 // RefStringNewIntern is a representation of the C type g_ref_string_new_intern.
@@ -1774,6 +2452,15 @@ func RefStringNewIntern(str string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var RefStringNewLenFunction *gi.Function
+var RefStringNewLenFunctionOnce sync.Once
+
+func RefStringNewLenFunctionSet() {
+	RefStringNewLenFunctionOnce.Do(func() {
+		RefStringNewLenFunction = gi.FunctionInvokerNew("GLib", "ref_string_new_len")
+	})
 }
 
 var refStringNewLenInvoker *gi.Function
@@ -1795,6 +2482,15 @@ func RefStringNewLen(str string, len int32) string {
 	return retGo
 }
 
+var RefStringReleaseFunction *gi.Function
+var RefStringReleaseFunctionOnce sync.Once
+
+func RefStringReleaseFunctionSet() {
+	RefStringReleaseFunctionOnce.Do(func() {
+		RefStringReleaseFunction = gi.FunctionInvokerNew("GLib", "ref_string_release")
+	})
+}
+
 var refStringReleaseInvoker *gi.Function
 
 // RefStringRelease is a representation of the C type g_ref_string_release.
@@ -1813,6 +2509,15 @@ func RefStringRelease(str string) {
 // UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'has_references' of type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_regex_error_quark' : return type 'Quark' not supported
+
+var RegexEscapeNulFunction *gi.Function
+var RegexEscapeNulFunctionOnce sync.Once
+
+func RegexEscapeNulFunctionSet() {
+	RegexEscapeNulFunctionOnce.Do(func() {
+		RegexEscapeNulFunction = gi.FunctionInvokerNew("GLib", "regex_escape_nul")
+	})
+}
 
 var regexEscapeNulInvoker *gi.Function
 
@@ -1839,6 +2544,15 @@ func RegexEscapeNul(string_ string, length int32) string {
 
 // UNSUPPORTED : C value 'g_regex_split_simple' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
 
+var ReloadUserSpecialDirsCacheFunction *gi.Function
+var ReloadUserSpecialDirsCacheFunctionOnce sync.Once
+
+func ReloadUserSpecialDirsCacheFunctionSet() {
+	ReloadUserSpecialDirsCacheFunctionOnce.Do(func() {
+		ReloadUserSpecialDirsCacheFunction = gi.FunctionInvokerNew("GLib", "reload_user_special_dirs_cache")
+	})
+}
+
 var reloadUserSpecialDirsCacheInvoker *gi.Function
 
 // ReloadUserSpecialDirsCache is a representation of the C type g_reload_user_special_dirs_cache.
@@ -1849,6 +2563,15 @@ func ReloadUserSpecialDirsCache() {
 
 	reloadUserSpecialDirsCacheInvoker.Invoke(nil, nil)
 
+}
+
+var ReturnIfFailWarningFunction *gi.Function
+var ReturnIfFailWarningFunctionOnce sync.Once
+
+func ReturnIfFailWarningFunctionSet() {
+	ReturnIfFailWarningFunctionOnce.Do(func() {
+		ReturnIfFailWarningFunction = gi.FunctionInvokerNew("GLib", "return_if_fail_warning")
+	})
 }
 
 var returnIfFailWarningInvoker *gi.Function
@@ -1888,6 +2611,15 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 
 // UNSUPPORTED : C value 'g_sequence_swap' : parameter 'a' of type 'SequenceIter' not supported
 
+var SetApplicationNameFunction *gi.Function
+var SetApplicationNameFunctionOnce sync.Once
+
+func SetApplicationNameFunctionSet() {
+	SetApplicationNameFunctionOnce.Do(func() {
+		SetApplicationNameFunction = gi.FunctionInvokerNew("GLib", "set_application_name")
+	})
+}
+
 var setApplicationNameInvoker *gi.Function
 
 // SetApplicationName is a representation of the C type g_set_application_name.
@@ -1906,6 +2638,15 @@ func SetApplicationName(applicationName string) {
 // UNSUPPORTED : C value 'g_set_error' : parameter 'err' of type 'Error' not supported
 
 // UNSUPPORTED : C value 'g_set_error_literal' : parameter 'err' of type 'Error' not supported
+
+var SetPrgnameFunction *gi.Function
+var SetPrgnameFunctionOnce sync.Once
+
+func SetPrgnameFunctionSet() {
+	SetPrgnameFunctionOnce.Do(func() {
+		SetPrgnameFunction = gi.FunctionInvokerNew("GLib", "set_prgname")
+	})
+}
 
 var setPrgnameInvoker *gi.Function
 
@@ -1960,6 +2701,15 @@ func SetPrgname(prgname string) {
 
 // UNSUPPORTED : C value 'g_source_remove_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
+var SourceSetNameByIdFunction *gi.Function
+var SourceSetNameByIdFunctionOnce sync.Once
+
+func SourceSetNameByIdFunctionSet() {
+	SourceSetNameByIdFunctionOnce.Do(func() {
+		SourceSetNameByIdFunction = gi.FunctionInvokerNew("GLib", "source_set_name_by_id")
+	})
+}
+
 var sourceSetNameByIdInvoker *gi.Function
 
 // SourceSetNameById is a representation of the C type g_source_set_name_by_id.
@@ -1974,6 +2724,15 @@ func SourceSetNameById(tag uint32, name string) {
 
 	sourceSetNameByIdInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var SpacedPrimesClosestFunction *gi.Function
+var SpacedPrimesClosestFunctionOnce sync.Once
+
+func SpacedPrimesClosestFunctionSet() {
+	SpacedPrimesClosestFunctionOnce.Do(func() {
+		SpacedPrimesClosestFunction = gi.FunctionInvokerNew("GLib", "spaced_primes_closest")
+	})
 }
 
 var spacedPrimesClosestInvoker *gi.Function
@@ -2016,6 +2775,15 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // UNSUPPORTED : C value 'g_sprintf' : parameter '...' has no type
 
+var StpcpyFunction *gi.Function
+var StpcpyFunctionOnce sync.Once
+
+func StpcpyFunctionSet() {
+	StpcpyFunctionOnce.Do(func() {
+		StpcpyFunction = gi.FunctionInvokerNew("GLib", "stpcpy")
+	})
+}
+
 var stpcpyInvoker *gi.Function
 
 // Stpcpy is a representation of the C type g_stpcpy.
@@ -2047,6 +2815,15 @@ func Stpcpy(dest string, src string) string {
 
 // UNSUPPORTED : C value 'g_str_match_string' : parameter 'accept_alternates' of type 'gboolean' not supported
 
+var StrToAsciiFunction *gi.Function
+var StrToAsciiFunctionOnce sync.Once
+
+func StrToAsciiFunctionSet() {
+	StrToAsciiFunctionOnce.Do(func() {
+		StrToAsciiFunction = gi.FunctionInvokerNew("GLib", "str_to_ascii")
+	})
+}
+
 var strToAsciiInvoker *gi.Function
 
 // StrToAscii is a representation of the C type g_str_to_ascii.
@@ -2068,6 +2845,15 @@ func StrToAscii(str string, fromLocale string) string {
 
 // UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' has no type
 
+var StrcanonFunction *gi.Function
+var StrcanonFunctionOnce sync.Once
+
+func StrcanonFunctionSet() {
+	StrcanonFunctionOnce.Do(func() {
+		StrcanonFunction = gi.FunctionInvokerNew("GLib", "strcanon")
+	})
+}
+
 var strcanonInvoker *gi.Function
 
 // Strcanon is a representation of the C type g_strcanon.
@@ -2086,6 +2872,15 @@ func Strcanon(string_ string, validChars string, substitutor int8) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var StrcasecmpFunction *gi.Function
+var StrcasecmpFunctionOnce sync.Once
+
+func StrcasecmpFunctionSet() {
+	StrcasecmpFunctionOnce.Do(func() {
+		StrcasecmpFunction = gi.FunctionInvokerNew("GLib", "strcasecmp")
+	})
 }
 
 var strcasecmpInvoker *gi.Function
@@ -2107,6 +2902,15 @@ func Strcasecmp(s1 string, s2 string) int32 {
 	return retGo
 }
 
+var StrchompFunction *gi.Function
+var StrchompFunctionOnce sync.Once
+
+func StrchompFunctionSet() {
+	StrchompFunctionOnce.Do(func() {
+		StrchompFunction = gi.FunctionInvokerNew("GLib", "strchomp")
+	})
+}
+
 var strchompInvoker *gi.Function
 
 // Strchomp is a representation of the C type g_strchomp.
@@ -2123,6 +2927,15 @@ func Strchomp(string_ string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var StrchugFunction *gi.Function
+var StrchugFunctionOnce sync.Once
+
+func StrchugFunctionSet() {
+	StrchugFunctionOnce.Do(func() {
+		StrchugFunction = gi.FunctionInvokerNew("GLib", "strchug")
+	})
 }
 
 var strchugInvoker *gi.Function
@@ -2143,6 +2956,15 @@ func Strchug(string_ string) string {
 	return retGo
 }
 
+var Strcmp0Function *gi.Function
+var Strcmp0FunctionOnce sync.Once
+
+func Strcmp0FunctionSet() {
+	Strcmp0FunctionOnce.Do(func() {
+		Strcmp0Function = gi.FunctionInvokerNew("GLib", "strcmp0")
+	})
+}
+
 var strcmp0Invoker *gi.Function
 
 // Strcmp0 is a representation of the C type g_strcmp0.
@@ -2160,6 +2982,15 @@ func Strcmp0(str1 string, str2 string) int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var StrcompressFunction *gi.Function
+var StrcompressFunctionOnce sync.Once
+
+func StrcompressFunctionSet() {
+	StrcompressFunctionOnce.Do(func() {
+		StrcompressFunction = gi.FunctionInvokerNew("GLib", "strcompress")
+	})
 }
 
 var strcompressInvoker *gi.Function
@@ -2182,6 +3013,15 @@ func Strcompress(source string) string {
 
 // UNSUPPORTED : C value 'g_strconcat' : parameter '...' has no type
 
+var StrdelimitFunction *gi.Function
+var StrdelimitFunctionOnce sync.Once
+
+func StrdelimitFunctionSet() {
+	StrdelimitFunctionOnce.Do(func() {
+		StrdelimitFunction = gi.FunctionInvokerNew("GLib", "strdelimit")
+	})
+}
+
 var strdelimitInvoker *gi.Function
 
 // Strdelimit is a representation of the C type g_strdelimit.
@@ -2202,6 +3042,15 @@ func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
 	return retGo
 }
 
+var StrdownFunction *gi.Function
+var StrdownFunctionOnce sync.Once
+
+func StrdownFunctionSet() {
+	StrdownFunctionOnce.Do(func() {
+		StrdownFunction = gi.FunctionInvokerNew("GLib", "strdown")
+	})
+}
+
 var strdownInvoker *gi.Function
 
 // Strdown is a representation of the C type g_strdown.
@@ -2218,6 +3067,15 @@ func Strdown(string_ string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var StrdupFunction *gi.Function
+var StrdupFunctionOnce sync.Once
+
+func StrdupFunctionSet() {
+	StrdupFunctionOnce.Do(func() {
+		StrdupFunction = gi.FunctionInvokerNew("GLib", "strdup")
+	})
 }
 
 var strdupInvoker *gi.Function
@@ -2242,6 +3100,15 @@ func Strdup(str string) string {
 
 // UNSUPPORTED : C value 'g_strdup_vprintf' : parameter 'args' of type 'va_list' not supported
 
+var StrdupvFunction *gi.Function
+var StrdupvFunctionOnce sync.Once
+
+func StrdupvFunctionSet() {
+	StrdupvFunctionOnce.Do(func() {
+		StrdupvFunction = gi.FunctionInvokerNew("GLib", "strdupv")
+	})
+}
+
 var strdupvInvoker *gi.Function
 
 // Strdupv is a representation of the C type g_strdupv.
@@ -2255,6 +3122,15 @@ func Strdupv(strArray string) {
 
 	strdupvInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var StrerrorFunction *gi.Function
+var StrerrorFunctionOnce sync.Once
+
+func StrerrorFunctionSet() {
+	StrerrorFunctionOnce.Do(func() {
+		StrerrorFunction = gi.FunctionInvokerNew("GLib", "strerror")
+	})
 }
 
 var strerrorInvoker *gi.Function
@@ -2273,6 +3149,15 @@ func Strerror(errnum int32) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var StrescapeFunction *gi.Function
+var StrescapeFunctionOnce sync.Once
+
+func StrescapeFunctionSet() {
+	StrescapeFunctionOnce.Do(func() {
+		StrescapeFunction = gi.FunctionInvokerNew("GLib", "strescape")
+	})
 }
 
 var strescapeInvoker *gi.Function
@@ -2294,6 +3179,15 @@ func Strescape(source string, exceptions string) string {
 	return retGo
 }
 
+var StrfreevFunction *gi.Function
+var StrfreevFunctionOnce sync.Once
+
+func StrfreevFunctionSet() {
+	StrfreevFunctionOnce.Do(func() {
+		StrfreevFunction = gi.FunctionInvokerNew("GLib", "strfreev")
+	})
+}
+
 var strfreevInvoker *gi.Function
 
 // Strfreev is a representation of the C type g_strfreev.
@@ -2307,6 +3201,15 @@ func Strfreev(strArray string) {
 
 	strfreevInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var StringNewFunction *gi.Function
+var StringNewFunctionOnce sync.Once
+
+func StringNewFunctionSet() {
+	StringNewFunctionOnce.Do(func() {
+		StringNewFunction = gi.FunctionInvokerNew("GLib", "string_new")
+	})
 }
 
 var stringNewInvoker *gi.Function
@@ -2325,6 +3228,15 @@ func StringNew(init string) *String {
 	retGo := &String{native: ret.Pointer()}
 
 	return retGo
+}
+
+var StringNewLenFunction *gi.Function
+var StringNewLenFunctionOnce sync.Once
+
+func StringNewLenFunctionSet() {
+	StringNewLenFunctionOnce.Do(func() {
+		StringNewLenFunction = gi.FunctionInvokerNew("GLib", "string_new_len")
+	})
 }
 
 var stringNewLenInvoker *gi.Function
@@ -2348,6 +3260,15 @@ func StringNewLen(init string, len int32) *String {
 
 // UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
 
+var StripContextFunction *gi.Function
+var StripContextFunctionOnce sync.Once
+
+func StripContextFunctionSet() {
+	StripContextFunctionOnce.Do(func() {
+		StripContextFunction = gi.FunctionInvokerNew("GLib", "strip_context")
+	})
+}
+
 var stripContextInvoker *gi.Function
 
 // StripContext is a representation of the C type g_strip_context.
@@ -2368,6 +3289,15 @@ func StripContext(msgid string, msgval string) string {
 }
 
 // UNSUPPORTED : C value 'g_strjoin' : parameter '...' has no type
+
+var StrjoinvFunction *gi.Function
+var StrjoinvFunctionOnce sync.Once
+
+func StrjoinvFunctionSet() {
+	StrjoinvFunctionOnce.Do(func() {
+		StrjoinvFunction = gi.FunctionInvokerNew("GLib", "strjoinv")
+	})
+}
 
 var strjoinvInvoker *gi.Function
 
@@ -2391,6 +3321,15 @@ func Strjoinv(separator string, strArray string) string {
 // UNSUPPORTED : C value 'g_strlcat' : parameter 'dest_size' of type 'gsize' not supported
 
 // UNSUPPORTED : C value 'g_strlcpy' : parameter 'dest_size' of type 'gsize' not supported
+
+var StrncasecmpFunction *gi.Function
+var StrncasecmpFunctionOnce sync.Once
+
+func StrncasecmpFunctionSet() {
+	StrncasecmpFunctionOnce.Do(func() {
+		StrncasecmpFunction = gi.FunctionInvokerNew("GLib", "strncasecmp")
+	})
+}
 
 var strncasecmpInvoker *gi.Function
 
@@ -2416,6 +3355,15 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 
 // UNSUPPORTED : C value 'g_strnfill' : parameter 'length' of type 'gsize' not supported
 
+var StrreverseFunction *gi.Function
+var StrreverseFunctionOnce sync.Once
+
+func StrreverseFunctionSet() {
+	StrreverseFunctionOnce.Do(func() {
+		StrreverseFunction = gi.FunctionInvokerNew("GLib", "strreverse")
+	})
+}
+
 var strreverseInvoker *gi.Function
 
 // Strreverse is a representation of the C type g_strreverse.
@@ -2432,6 +3380,15 @@ func Strreverse(string_ string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var StrrstrFunction *gi.Function
+var StrrstrFunctionOnce sync.Once
+
+func StrrstrFunctionSet() {
+	StrrstrFunctionOnce.Do(func() {
+		StrrstrFunction = gi.FunctionInvokerNew("GLib", "strrstr")
+	})
 }
 
 var strrstrInvoker *gi.Function
@@ -2451,6 +3408,15 @@ func Strrstr(haystack string, needle string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var StrrstrLenFunction *gi.Function
+var StrrstrLenFunctionOnce sync.Once
+
+func StrrstrLenFunctionSet() {
+	StrrstrLenFunctionOnce.Do(func() {
+		StrrstrLenFunction = gi.FunctionInvokerNew("GLib", "strrstr_len")
+	})
 }
 
 var strrstrLenInvoker *gi.Function
@@ -2473,6 +3439,15 @@ func StrrstrLen(haystack string, haystackLen int32, needle string) string {
 	return retGo
 }
 
+var StrsignalFunction *gi.Function
+var StrsignalFunctionOnce sync.Once
+
+func StrsignalFunctionSet() {
+	StrsignalFunctionOnce.Do(func() {
+		StrsignalFunction = gi.FunctionInvokerNew("GLib", "strsignal")
+	})
+}
+
 var strsignalInvoker *gi.Function
 
 // Strsignal is a representation of the C type g_strsignal.
@@ -2489,6 +3464,15 @@ func Strsignal(signum int32) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var StrsplitFunction *gi.Function
+var StrsplitFunctionOnce sync.Once
+
+func StrsplitFunctionSet() {
+	StrsplitFunctionOnce.Do(func() {
+		StrsplitFunction = gi.FunctionInvokerNew("GLib", "strsplit")
+	})
 }
 
 var strsplitInvoker *gi.Function
@@ -2508,6 +3492,15 @@ func Strsplit(string_ string, delimiter string, maxTokens int32) {
 
 }
 
+var StrsplitSetFunction *gi.Function
+var StrsplitSetFunctionOnce sync.Once
+
+func StrsplitSetFunctionSet() {
+	StrsplitSetFunctionOnce.Do(func() {
+		StrsplitSetFunction = gi.FunctionInvokerNew("GLib", "strsplit_set")
+	})
+}
+
 var strsplitSetInvoker *gi.Function
 
 // StrsplitSet is a representation of the C type g_strsplit_set.
@@ -2523,6 +3516,15 @@ func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
 
 	strsplitSetInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var StrstrLenFunction *gi.Function
+var StrstrLenFunctionOnce sync.Once
+
+func StrstrLenFunctionSet() {
+	StrstrLenFunctionOnce.Do(func() {
+		StrstrLenFunction = gi.FunctionInvokerNew("GLib", "strstr_len")
+	})
 }
 
 var strstrLenInvoker *gi.Function
@@ -2547,6 +3549,15 @@ func StrstrLen(haystack string, haystackLen int32, needle string) string {
 
 // UNSUPPORTED : C value 'g_strtod' : return type 'gdouble' not supported
 
+var StrupFunction *gi.Function
+var StrupFunctionOnce sync.Once
+
+func StrupFunctionSet() {
+	StrupFunctionOnce.Do(func() {
+		StrupFunction = gi.FunctionInvokerNew("GLib", "strup")
+	})
+}
+
 var strupInvoker *gi.Function
 
 // Strup is a representation of the C type g_strup.
@@ -2570,6 +3581,15 @@ func Strup(string_ string) string {
 // UNSUPPORTED : C value 'g_strv_equal' : return type 'gboolean' not supported
 
 // UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
+
+var StrvLengthFunction *gi.Function
+var StrvLengthFunctionOnce sync.Once
+
+func StrvLengthFunctionSet() {
+	StrvLengthFunctionOnce.Do(func() {
+		StrvLengthFunction = gi.FunctionInvokerNew("GLib", "strv_length")
+	})
+}
 
 var strvLengthInvoker *gi.Function
 
@@ -2597,6 +3617,15 @@ func StrvLength(strArray string) uint32 {
 
 // UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'data_size' of type 'gsize' not supported
 
+var TestAssertExpectedMessagesInternalFunction *gi.Function
+var TestAssertExpectedMessagesInternalFunctionOnce sync.Once
+
+func TestAssertExpectedMessagesInternalFunctionSet() {
+	TestAssertExpectedMessagesInternalFunctionOnce.Do(func() {
+		TestAssertExpectedMessagesInternalFunction = gi.FunctionInvokerNew("GLib", "test_assert_expected_messages_internal")
+	})
+}
+
 var testAssertExpectedMessagesInternalInvoker *gi.Function
 
 // TestAssertExpectedMessagesInternal is a representation of the C type g_test_assert_expected_messages_internal.
@@ -2615,6 +3644,15 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 
 }
 
+var TestBugFunction *gi.Function
+var TestBugFunctionOnce sync.Once
+
+func TestBugFunctionSet() {
+	TestBugFunctionOnce.Do(func() {
+		TestBugFunction = gi.FunctionInvokerNew("GLib", "test_bug")
+	})
+}
+
 var testBugInvoker *gi.Function
 
 // TestBug is a representation of the C type g_test_bug.
@@ -2628,6 +3666,15 @@ func TestBug(bugUriSnippet string) {
 
 	testBugInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var TestBugBaseFunction *gi.Function
+var TestBugBaseFunctionOnce sync.Once
+
+func TestBugBaseFunctionSet() {
+	TestBugBaseFunctionOnce.Do(func() {
+		TestBugBaseFunction = gi.FunctionInvokerNew("GLib", "test_bug_base")
+	})
 }
 
 var testBugBaseInvoker *gi.Function
@@ -2649,6 +3696,15 @@ func TestBugBase(uriPattern string) {
 
 // UNSUPPORTED : C value 'g_test_create_case' : parameter 'data_size' of type 'gsize' not supported
 
+var TestCreateSuiteFunction *gi.Function
+var TestCreateSuiteFunctionOnce sync.Once
+
+func TestCreateSuiteFunctionSet() {
+	TestCreateSuiteFunctionOnce.Do(func() {
+		TestCreateSuiteFunction = gi.FunctionInvokerNew("GLib", "test_create_suite")
+	})
+}
+
 var testCreateSuiteInvoker *gi.Function
 
 // TestCreateSuite is a representation of the C type g_test_create_suite.
@@ -2669,6 +3725,15 @@ func TestCreateSuite(suiteName string) *TestSuite {
 
 // UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
+var TestFailFunction *gi.Function
+var TestFailFunctionOnce sync.Once
+
+func TestFailFunctionSet() {
+	TestFailFunctionOnce.Do(func() {
+		TestFailFunction = gi.FunctionInvokerNew("GLib", "test_fail")
+	})
+}
+
 var testFailInvoker *gi.Function
 
 // TestFail is a representation of the C type g_test_fail.
@@ -2687,6 +3752,15 @@ func TestFail() {
 
 // UNSUPPORTED : C value 'g_test_get_filename' : parameter 'file_type' of type 'TestFileType' not supported
 
+var TestGetRootFunction *gi.Function
+var TestGetRootFunctionOnce sync.Once
+
+func TestGetRootFunctionSet() {
+	TestGetRootFunctionOnce.Do(func() {
+		TestGetRootFunction = gi.FunctionInvokerNew("GLib", "test_get_root")
+	})
+}
+
 var testGetRootInvoker *gi.Function
 
 // TestGetRoot is a representation of the C type g_test_get_root.
@@ -2700,6 +3774,15 @@ func TestGetRoot() *TestSuite {
 	retGo := &TestSuite{native: ret.Pointer()}
 
 	return retGo
+}
+
+var TestIncompleteFunction *gi.Function
+var TestIncompleteFunctionOnce sync.Once
+
+func TestIncompleteFunctionSet() {
+	TestIncompleteFunctionOnce.Do(func() {
+		TestIncompleteFunction = gi.FunctionInvokerNew("GLib", "test_incomplete")
+	})
 }
 
 var testIncompleteInvoker *gi.Function
@@ -2737,6 +3820,15 @@ func TestIncomplete(msg string) {
 
 // UNSUPPORTED : C value 'g_test_rand_double_range' : parameter 'range_start' of type 'gdouble' not supported
 
+var TestRandIntFunction *gi.Function
+var TestRandIntFunctionOnce sync.Once
+
+func TestRandIntFunctionSet() {
+	TestRandIntFunctionOnce.Do(func() {
+		TestRandIntFunction = gi.FunctionInvokerNew("GLib", "test_rand_int")
+	})
+}
+
 var testRandIntInvoker *gi.Function
 
 // TestRandInt is a representation of the C type g_test_rand_int.
@@ -2750,6 +3842,15 @@ func TestRandInt() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+var TestRandIntRangeFunction *gi.Function
+var TestRandIntRangeFunctionOnce sync.Once
+
+func TestRandIntRangeFunctionSet() {
+	TestRandIntRangeFunctionOnce.Do(func() {
+		TestRandIntRangeFunction = gi.FunctionInvokerNew("GLib", "test_rand_int_range")
+	})
 }
 
 var testRandIntRangeInvoker *gi.Function
@@ -2771,6 +3872,15 @@ func TestRandIntRange(begin int32, end int32) int32 {
 	return retGo
 }
 
+var TestRunFunction *gi.Function
+var TestRunFunctionOnce sync.Once
+
+func TestRunFunctionSet() {
+	TestRunFunctionOnce.Do(func() {
+		TestRunFunction = gi.FunctionInvokerNew("GLib", "test_run")
+	})
+}
+
 var testRunInvoker *gi.Function
 
 // TestRun is a representation of the C type g_test_run.
@@ -2788,6 +3898,15 @@ func TestRun() int32 {
 
 // UNSUPPORTED : C value 'g_test_run_suite' : parameter 'suite' of type 'TestSuite' not supported
 
+var TestSetNonfatalAssertionsFunction *gi.Function
+var TestSetNonfatalAssertionsFunctionOnce sync.Once
+
+func TestSetNonfatalAssertionsFunctionSet() {
+	TestSetNonfatalAssertionsFunctionOnce.Do(func() {
+		TestSetNonfatalAssertionsFunction = gi.FunctionInvokerNew("GLib", "test_set_nonfatal_assertions")
+	})
+}
+
 var testSetNonfatalAssertionsInvoker *gi.Function
 
 // TestSetNonfatalAssertions is a representation of the C type g_test_set_nonfatal_assertions.
@@ -2798,6 +3917,15 @@ func TestSetNonfatalAssertions() {
 
 	testSetNonfatalAssertionsInvoker.Invoke(nil, nil)
 
+}
+
+var TestSkipFunction *gi.Function
+var TestSkipFunctionOnce sync.Once
+
+func TestSkipFunctionSet() {
+	TestSkipFunctionOnce.Do(func() {
+		TestSkipFunction = gi.FunctionInvokerNew("GLib", "test_skip")
+	})
 }
 
 var testSkipInvoker *gi.Function
@@ -2816,6 +3944,15 @@ func TestSkip(msg string) {
 }
 
 // UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
+
+var TestSummaryFunction *gi.Function
+var TestSummaryFunctionOnce sync.Once
+
+func TestSummaryFunctionSet() {
+	TestSummaryFunctionOnce.Do(func() {
+		TestSummaryFunction = gi.FunctionInvokerNew("GLib", "test_summary")
+	})
+}
 
 var testSummaryInvoker *gi.Function
 
@@ -2836,6 +3973,15 @@ func TestSummary(summary string) {
 
 // UNSUPPORTED : C value 'g_test_timer_last' : return type 'gdouble' not supported
 
+var TestTimerStartFunction *gi.Function
+var TestTimerStartFunctionOnce sync.Once
+
+func TestTimerStartFunctionSet() {
+	TestTimerStartFunctionOnce.Do(func() {
+		TestTimerStartFunction = gi.FunctionInvokerNew("GLib", "test_timer_start")
+	})
+}
+
 var testTimerStartInvoker *gi.Function
 
 // TestTimerStart is a representation of the C type g_test_timer_start.
@@ -2846,6 +3992,15 @@ func TestTimerStart() {
 
 	testTimerStartInvoker.Invoke(nil, nil)
 
+}
+
+var TestTrapAssertionsFunction *gi.Function
+var TestTrapAssertionsFunctionOnce sync.Once
+
+func TestTrapAssertionsFunctionSet() {
+	TestTrapAssertionsFunctionOnce.Do(func() {
+		TestTrapAssertionsFunction = gi.FunctionInvokerNew("GLib", "test_trap_assertions")
+	})
 }
 
 var testTrapAssertionsInvoker *gi.Function
@@ -2880,6 +4035,15 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 
 // UNSUPPORTED : C value 'g_thread_exit' : parameter 'retval' of type 'gpointer' not supported
 
+var ThreadPoolGetMaxIdleTimeFunction *gi.Function
+var ThreadPoolGetMaxIdleTimeFunctionOnce sync.Once
+
+func ThreadPoolGetMaxIdleTimeFunctionSet() {
+	ThreadPoolGetMaxIdleTimeFunctionOnce.Do(func() {
+		ThreadPoolGetMaxIdleTimeFunction = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_idle_time")
+	})
+}
+
 var threadPoolGetMaxIdleTimeInvoker *gi.Function
 
 // ThreadPoolGetMaxIdleTime is a representation of the C type g_thread_pool_get_max_idle_time.
@@ -2893,6 +4057,15 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var ThreadPoolGetMaxUnusedThreadsFunction *gi.Function
+var ThreadPoolGetMaxUnusedThreadsFunctionOnce sync.Once
+
+func ThreadPoolGetMaxUnusedThreadsFunctionSet() {
+	ThreadPoolGetMaxUnusedThreadsFunctionOnce.Do(func() {
+		ThreadPoolGetMaxUnusedThreadsFunction = gi.FunctionInvokerNew("GLib", "thread_pool_get_max_unused_threads")
+	})
 }
 
 var threadPoolGetMaxUnusedThreadsInvoker *gi.Function
@@ -2910,6 +4083,15 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 	return retGo
 }
 
+var ThreadPoolGetNumUnusedThreadsFunction *gi.Function
+var ThreadPoolGetNumUnusedThreadsFunctionOnce sync.Once
+
+func ThreadPoolGetNumUnusedThreadsFunctionSet() {
+	ThreadPoolGetNumUnusedThreadsFunctionOnce.Do(func() {
+		ThreadPoolGetNumUnusedThreadsFunction = gi.FunctionInvokerNew("GLib", "thread_pool_get_num_unused_threads")
+	})
+}
+
 var threadPoolGetNumUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolGetNumUnusedThreads is a representation of the C type g_thread_pool_get_num_unused_threads.
@@ -2923,6 +4105,15 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+var ThreadPoolSetMaxIdleTimeFunction *gi.Function
+var ThreadPoolSetMaxIdleTimeFunctionOnce sync.Once
+
+func ThreadPoolSetMaxIdleTimeFunctionSet() {
+	ThreadPoolSetMaxIdleTimeFunctionOnce.Do(func() {
+		ThreadPoolSetMaxIdleTimeFunction = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_idle_time")
+	})
 }
 
 var threadPoolSetMaxIdleTimeInvoker *gi.Function
@@ -2940,6 +4131,15 @@ func ThreadPoolSetMaxIdleTime(interval uint32) {
 
 }
 
+var ThreadPoolSetMaxUnusedThreadsFunction *gi.Function
+var ThreadPoolSetMaxUnusedThreadsFunctionOnce sync.Once
+
+func ThreadPoolSetMaxUnusedThreadsFunctionSet() {
+	ThreadPoolSetMaxUnusedThreadsFunctionOnce.Do(func() {
+		ThreadPoolSetMaxUnusedThreadsFunction = gi.FunctionInvokerNew("GLib", "thread_pool_set_max_unused_threads")
+	})
+}
+
 var threadPoolSetMaxUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolSetMaxUnusedThreads is a representation of the C type g_thread_pool_set_max_unused_threads.
@@ -2955,6 +4155,15 @@ func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 
 }
 
+var ThreadPoolStopUnusedThreadsFunction *gi.Function
+var ThreadPoolStopUnusedThreadsFunctionOnce sync.Once
+
+func ThreadPoolStopUnusedThreadsFunctionSet() {
+	ThreadPoolStopUnusedThreadsFunctionOnce.Do(func() {
+		ThreadPoolStopUnusedThreadsFunction = gi.FunctionInvokerNew("GLib", "thread_pool_stop_unused_threads")
+	})
+}
+
 var threadPoolStopUnusedThreadsInvoker *gi.Function
 
 // ThreadPoolStopUnusedThreads is a representation of the C type g_thread_pool_stop_unused_threads.
@@ -2965,6 +4174,15 @@ func ThreadPoolStopUnusedThreads() {
 
 	threadPoolStopUnusedThreadsInvoker.Invoke(nil, nil)
 
+}
+
+var ThreadSelfFunction *gi.Function
+var ThreadSelfFunctionOnce sync.Once
+
+func ThreadSelfFunctionSet() {
+	ThreadSelfFunctionOnce.Do(func() {
+		ThreadSelfFunction = gi.FunctionInvokerNew("GLib", "thread_self")
+	})
 }
 
 var threadSelfInvoker *gi.Function
@@ -2980,6 +4198,15 @@ func ThreadSelf() *Thread {
 	retGo := &Thread{native: ret.Pointer()}
 
 	return retGo
+}
+
+var ThreadYieldFunction *gi.Function
+var ThreadYieldFunctionOnce sync.Once
+
+func ThreadYieldFunctionSet() {
+	ThreadYieldFunctionOnce.Do(func() {
+		ThreadYieldFunction = gi.FunctionInvokerNew("GLib", "thread_yield")
+	})
 }
 
 var threadYieldInvoker *gi.Function
@@ -3004,6 +4231,15 @@ func ThreadYield() {
 
 // UNSUPPORTED : C value 'g_timeout_add_seconds_full' : parameter 'function' of type 'SourceFunc' not supported
 
+var TimeoutSourceNewFunction *gi.Function
+var TimeoutSourceNewFunctionOnce sync.Once
+
+func TimeoutSourceNewFunctionSet() {
+	TimeoutSourceNewFunctionOnce.Do(func() {
+		TimeoutSourceNewFunction = gi.FunctionInvokerNew("GLib", "timeout_source_new")
+	})
+}
+
 var timeoutSourceNewInvoker *gi.Function
 
 // TimeoutSourceNew is a representation of the C type g_timeout_source_new.
@@ -3020,6 +4256,15 @@ func TimeoutSourceNew(interval uint32) *Source {
 	retGo := &Source{native: ret.Pointer()}
 
 	return retGo
+}
+
+var TimeoutSourceNewSecondsFunction *gi.Function
+var TimeoutSourceNewSecondsFunctionOnce sync.Once
+
+func TimeoutSourceNewSecondsFunctionSet() {
+	TimeoutSourceNewSecondsFunctionOnce.Do(func() {
+		TimeoutSourceNewSecondsFunction = gi.FunctionInvokerNew("GLib", "timeout_source_new_seconds")
+	})
 }
 
 var timeoutSourceNewSecondsInvoker *gi.Function
@@ -3152,6 +4397,15 @@ func TimeoutSourceNewSeconds(interval uint32) *Source {
 
 // UNSUPPORTED : C value 'g_unix_signal_add_full' : parameter 'handler' of type 'SourceFunc' not supported
 
+var UnixSignalSourceNewFunction *gi.Function
+var UnixSignalSourceNewFunctionOnce sync.Once
+
+func UnixSignalSourceNewFunctionSet() {
+	UnixSignalSourceNewFunctionOnce.Do(func() {
+		UnixSignalSourceNewFunction = gi.FunctionInvokerNew("GLib", "unix_signal_source_new")
+	})
+}
+
 var unixSignalSourceNewInvoker *gi.Function
 
 // UnixSignalSourceNew is a representation of the C type g_unix_signal_source_new.
@@ -3176,6 +4430,15 @@ func UnixSignalSourceNew(signum int32) *Source {
 
 // UNSUPPORTED : C value 'g_uri_escape_string' : parameter 'allow_utf8' of type 'gboolean' not supported
 
+var UriListExtractUrisFunction *gi.Function
+var UriListExtractUrisFunctionOnce sync.Once
+
+func UriListExtractUrisFunctionSet() {
+	UriListExtractUrisFunctionOnce.Do(func() {
+		UriListExtractUrisFunction = gi.FunctionInvokerNew("GLib", "uri_list_extract_uris")
+	})
+}
+
 var uriListExtractUrisInvoker *gi.Function
 
 // UriListExtractUris is a representation of the C type g_uri_list_extract_uris.
@@ -3189,6 +4452,15 @@ func UriListExtractUris(uriList string) {
 
 	uriListExtractUrisInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var UriParseSchemeFunction *gi.Function
+var UriParseSchemeFunctionOnce sync.Once
+
+func UriParseSchemeFunctionSet() {
+	UriParseSchemeFunctionOnce.Do(func() {
+		UriParseSchemeFunction = gi.FunctionInvokerNew("GLib", "uri_parse_scheme")
+	})
 }
 
 var uriParseSchemeInvoker *gi.Function
@@ -3207,6 +4479,15 @@ func UriParseScheme(uri string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var UriUnescapeSegmentFunction *gi.Function
+var UriUnescapeSegmentFunctionOnce sync.Once
+
+func UriUnescapeSegmentFunctionSet() {
+	UriUnescapeSegmentFunctionOnce.Do(func() {
+		UriUnescapeSegmentFunction = gi.FunctionInvokerNew("GLib", "uri_unescape_segment")
+	})
 }
 
 var uriUnescapeSegmentInvoker *gi.Function
@@ -3229,6 +4510,15 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 	return retGo
 }
 
+var UriUnescapeStringFunction *gi.Function
+var UriUnescapeStringFunctionOnce sync.Once
+
+func UriUnescapeStringFunctionSet() {
+	UriUnescapeStringFunctionOnce.Do(func() {
+		UriUnescapeStringFunction = gi.FunctionInvokerNew("GLib", "uri_unescape_string")
+	})
+}
+
 var uriUnescapeStringInvoker *gi.Function
 
 // UriUnescapeString is a representation of the C type g_uri_unescape_string.
@@ -3248,6 +4538,15 @@ func UriUnescapeString(escapedString string, illegalCharacters string) string {
 	return retGo
 }
 
+var UsleepFunction *gi.Function
+var UsleepFunctionOnce sync.Once
+
+func UsleepFunctionSet() {
+	UsleepFunctionOnce.Do(func() {
+		UsleepFunction = gi.FunctionInvokerNew("GLib", "usleep")
+	})
+}
+
 var usleepInvoker *gi.Function
 
 // Usleep is a representation of the C type g_usleep.
@@ -3264,6 +4563,15 @@ func Usleep(microseconds uint64) {
 }
 
 // UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
+
+var Utf16ToUtf8Function *gi.Function
+var Utf16ToUtf8FunctionOnce sync.Once
+
+func Utf16ToUtf8FunctionSet() {
+	Utf16ToUtf8FunctionOnce.Do(func() {
+		Utf16ToUtf8Function = gi.FunctionInvokerNew("GLib", "utf16_to_utf8")
+	})
+}
 
 var utf16ToUtf8Invoker *gi.Function
 
@@ -3288,6 +4596,15 @@ func Utf16ToUtf8(str uint16, len int64) (string, int64, int64) {
 	return retGo, out0, out1
 }
 
+var Utf8CasefoldFunction *gi.Function
+var Utf8CasefoldFunctionOnce sync.Once
+
+func Utf8CasefoldFunctionSet() {
+	Utf8CasefoldFunctionOnce.Do(func() {
+		Utf8CasefoldFunction = gi.FunctionInvokerNew("GLib", "utf8_casefold")
+	})
+}
+
 var utf8CasefoldInvoker *gi.Function
 
 // Utf8Casefold is a representation of the C type g_utf8_casefold.
@@ -3305,6 +4622,15 @@ func Utf8Casefold(str string, len int32) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var Utf8CollateFunction *gi.Function
+var Utf8CollateFunctionOnce sync.Once
+
+func Utf8CollateFunctionSet() {
+	Utf8CollateFunctionOnce.Do(func() {
+		Utf8CollateFunction = gi.FunctionInvokerNew("GLib", "utf8_collate")
+	})
 }
 
 var utf8CollateInvoker *gi.Function
@@ -3326,6 +4652,15 @@ func Utf8Collate(str1 string, str2 string) int32 {
 	return retGo
 }
 
+var Utf8CollateKeyFunction *gi.Function
+var Utf8CollateKeyFunctionOnce sync.Once
+
+func Utf8CollateKeyFunctionSet() {
+	Utf8CollateKeyFunctionOnce.Do(func() {
+		Utf8CollateKeyFunction = gi.FunctionInvokerNew("GLib", "utf8_collate_key")
+	})
+}
+
 var utf8CollateKeyInvoker *gi.Function
 
 // Utf8CollateKey is a representation of the C type g_utf8_collate_key.
@@ -3343,6 +4678,15 @@ func Utf8CollateKey(str string, len int32) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var Utf8CollateKeyForFilenameFunction *gi.Function
+var Utf8CollateKeyForFilenameFunctionOnce sync.Once
+
+func Utf8CollateKeyForFilenameFunctionSet() {
+	Utf8CollateKeyForFilenameFunctionOnce.Do(func() {
+		Utf8CollateKeyForFilenameFunction = gi.FunctionInvokerNew("GLib", "utf8_collate_key_for_filename")
+	})
 }
 
 var utf8CollateKeyForFilenameInvoker *gi.Function
@@ -3364,6 +4708,15 @@ func Utf8CollateKeyForFilename(str string, len int32) string {
 	return retGo
 }
 
+var Utf8FindNextCharFunction *gi.Function
+var Utf8FindNextCharFunctionOnce sync.Once
+
+func Utf8FindNextCharFunctionSet() {
+	Utf8FindNextCharFunctionOnce.Do(func() {
+		Utf8FindNextCharFunction = gi.FunctionInvokerNew("GLib", "utf8_find_next_char")
+	})
+}
+
 var utf8FindNextCharInvoker *gi.Function
 
 // Utf8FindNextChar is a representation of the C type g_utf8_find_next_char.
@@ -3381,6 +4734,15 @@ func Utf8FindNextChar(p string, end string) string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+var Utf8FindPrevCharFunction *gi.Function
+var Utf8FindPrevCharFunctionOnce sync.Once
+
+func Utf8FindPrevCharFunctionSet() {
+	Utf8FindPrevCharFunctionOnce.Do(func() {
+		Utf8FindPrevCharFunction = gi.FunctionInvokerNew("GLib", "utf8_find_prev_char")
+	})
 }
 
 var utf8FindPrevCharInvoker *gi.Function
@@ -3406,6 +4768,15 @@ func Utf8FindPrevChar(str string, p string) string {
 
 // UNSUPPORTED : C value 'g_utf8_get_char_validated' : return type 'gunichar' not supported
 
+var Utf8MakeValidFunction *gi.Function
+var Utf8MakeValidFunctionOnce sync.Once
+
+func Utf8MakeValidFunctionSet() {
+	Utf8MakeValidFunctionOnce.Do(func() {
+		Utf8MakeValidFunction = gi.FunctionInvokerNew("GLib", "utf8_make_valid")
+	})
+}
+
 var utf8MakeValidInvoker *gi.Function
 
 // Utf8MakeValid is a representation of the C type g_utf8_make_valid.
@@ -3427,6 +4798,15 @@ func Utf8MakeValid(str string, len int32) string {
 
 // UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'mode' of type 'NormalizeMode' not supported
 
+var Utf8OffsetToPointerFunction *gi.Function
+var Utf8OffsetToPointerFunctionOnce sync.Once
+
+func Utf8OffsetToPointerFunctionSet() {
+	Utf8OffsetToPointerFunctionOnce.Do(func() {
+		Utf8OffsetToPointerFunction = gi.FunctionInvokerNew("GLib", "utf8_offset_to_pointer")
+	})
+}
+
 var utf8OffsetToPointerInvoker *gi.Function
 
 // Utf8OffsetToPointer is a representation of the C type g_utf8_offset_to_pointer.
@@ -3446,6 +4826,15 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 	return retGo
 }
 
+var Utf8PointerToOffsetFunction *gi.Function
+var Utf8PointerToOffsetFunctionOnce sync.Once
+
+func Utf8PointerToOffsetFunctionSet() {
+	Utf8PointerToOffsetFunctionOnce.Do(func() {
+		Utf8PointerToOffsetFunction = gi.FunctionInvokerNew("GLib", "utf8_pointer_to_offset")
+	})
+}
+
 var utf8PointerToOffsetInvoker *gi.Function
 
 // Utf8PointerToOffset is a representation of the C type g_utf8_pointer_to_offset.
@@ -3463,6 +4852,15 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 	retGo := ret.Int64()
 
 	return retGo
+}
+
+var Utf8PrevCharFunction *gi.Function
+var Utf8PrevCharFunctionOnce sync.Once
+
+func Utf8PrevCharFunctionSet() {
+	Utf8PrevCharFunctionOnce.Do(func() {
+		Utf8PrevCharFunction = gi.FunctionInvokerNew("GLib", "utf8_prev_char")
+	})
 }
 
 var utf8PrevCharInvoker *gi.Function
@@ -3485,6 +4883,15 @@ func Utf8PrevChar(p string) string {
 
 // UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'c' of type 'gunichar' not supported
 
+var Utf8StrdownFunction *gi.Function
+var Utf8StrdownFunctionOnce sync.Once
+
+func Utf8StrdownFunctionSet() {
+	Utf8StrdownFunctionOnce.Do(func() {
+		Utf8StrdownFunction = gi.FunctionInvokerNew("GLib", "utf8_strdown")
+	})
+}
+
 var utf8StrdownInvoker *gi.Function
 
 // Utf8Strdown is a representation of the C type g_utf8_strdown.
@@ -3502,6 +4909,15 @@ func Utf8Strdown(str string, len int32) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var Utf8StrlenFunction *gi.Function
+var Utf8StrlenFunctionOnce sync.Once
+
+func Utf8StrlenFunctionSet() {
+	Utf8StrlenFunctionOnce.Do(func() {
+		Utf8StrlenFunction = gi.FunctionInvokerNew("GLib", "utf8_strlen")
+	})
 }
 
 var utf8StrlenInvoker *gi.Function
@@ -3527,6 +4943,15 @@ func Utf8Strlen(p string, max int32) int64 {
 
 // UNSUPPORTED : C value 'g_utf8_strrchr' : parameter 'c' of type 'gunichar' not supported
 
+var Utf8StrreverseFunction *gi.Function
+var Utf8StrreverseFunctionOnce sync.Once
+
+func Utf8StrreverseFunctionSet() {
+	Utf8StrreverseFunctionOnce.Do(func() {
+		Utf8StrreverseFunction = gi.FunctionInvokerNew("GLib", "utf8_strreverse")
+	})
+}
+
 var utf8StrreverseInvoker *gi.Function
 
 // Utf8Strreverse is a representation of the C type g_utf8_strreverse.
@@ -3546,6 +4971,15 @@ func Utf8Strreverse(str string, len int32) string {
 	return retGo
 }
 
+var Utf8StrupFunction *gi.Function
+var Utf8StrupFunctionOnce sync.Once
+
+func Utf8StrupFunctionSet() {
+	Utf8StrupFunctionOnce.Do(func() {
+		Utf8StrupFunction = gi.FunctionInvokerNew("GLib", "utf8_strup")
+	})
+}
+
 var utf8StrupInvoker *gi.Function
 
 // Utf8Strup is a representation of the C type g_utf8_strup.
@@ -3563,6 +4997,15 @@ func Utf8Strup(str string, len int32) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var Utf8SubstringFunction *gi.Function
+var Utf8SubstringFunctionOnce sync.Once
+
+func Utf8SubstringFunctionSet() {
+	Utf8SubstringFunctionOnce.Do(func() {
+		Utf8SubstringFunction = gi.FunctionInvokerNew("GLib", "utf8_substring")
+	})
 }
 
 var utf8SubstringInvoker *gi.Function
@@ -3588,6 +5031,15 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 // UNSUPPORTED : C value 'g_utf8_to_ucs4' : return type 'gunichar' not supported
 
 // UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : return type 'gunichar' not supported
+
+var Utf8ToUtf16Function *gi.Function
+var Utf8ToUtf16FunctionOnce sync.Once
+
+func Utf8ToUtf16FunctionSet() {
+	Utf8ToUtf16FunctionOnce.Do(func() {
+		Utf8ToUtf16Function = gi.FunctionInvokerNew("GLib", "utf8_to_utf16")
+	})
+}
 
 var utf8ToUtf16Invoker *gi.Function
 
@@ -3618,6 +5070,15 @@ func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
 
 // UNSUPPORTED : C value 'g_uuid_string_is_valid' : return type 'gboolean' not supported
 
+var UuidStringRandomFunction *gi.Function
+var UuidStringRandomFunctionOnce sync.Once
+
+func UuidStringRandomFunctionSet() {
+	UuidStringRandomFunctionOnce.Do(func() {
+		UuidStringRandomFunction = gi.FunctionInvokerNew("GLib", "uuid_string_random")
+	})
+}
+
 var uuidStringRandomInvoker *gi.Function
 
 // UuidStringRandom is a representation of the C type g_uuid_string_random.
@@ -3646,6 +5107,15 @@ func UuidStringRandom() string {
 // UNSUPPORTED : C value 'g_variant_parse_error_quark' : return type 'Quark' not supported
 
 // UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
+
+var VariantTypeCheckedFunction *gi.Function
+var VariantTypeCheckedFunctionOnce sync.Once
+
+func VariantTypeCheckedFunctionSet() {
+	VariantTypeCheckedFunctionOnce.Do(func() {
+		VariantTypeCheckedFunction = gi.FunctionInvokerNew("GLib", "variant_type_checked_")
+	})
+}
 
 var variantTypeCheckedInvoker *gi.Function
 
@@ -3680,6 +5150,15 @@ func VariantTypeChecked(arg0 string) *VariantType {
 // UNSUPPORTED : C value 'g_vsnprintf' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_vsprintf' : parameter 'args' of type 'va_list' not supported
+
+var WarnMessageFunction *gi.Function
+var WarnMessageFunctionOnce sync.Once
+
+func WarnMessageFunctionSet() {
+	WarnMessageFunctionOnce.Do(func() {
+		WarnMessageFunction = gi.FunctionInvokerNew("GLib", "warn_message")
+	})
+}
 
 var warnMessageInvoker *gi.Function
 

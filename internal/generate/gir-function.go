@@ -26,6 +26,10 @@ type Function struct {
 	record         *Record
 	invokerVarName string
 	receiver       bool
+
+	funcInfoGoName        string
+	funcInfoOnceGoName    string
+	funcInfoSetFuncGoName string
 }
 
 func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
@@ -36,10 +40,20 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.record = record
 	f.receiver = receiver
 
+	recordName := ""
 	if record != nil {
-		f.invokerVarName = makeUnexportedGoName(f.Name, false) + record.Name + "Invoker"
+		recordName = record.Name
+	}
+	f.funcInfoGoName = fmt.Sprintf("%s%sFunction",
+		makeUnexportedGoName(recordName),
+		makeExportedGoName(f.Name))
+	f.funcInfoOnceGoName = fmt.Sprintf("%sOnce", f.funcInfoGoName)
+	f.funcInfoSetFuncGoName = fmt.Sprintf("%sSet", f.funcInfoGoName)
+
+	if record != nil {
+		f.invokerVarName = makeUnexportedGoName(f.Name) + record.Name + "Invoker"
 	} else {
-		f.invokerVarName = makeUnexportedGoName(f.Name, false) + "Invoker"
+		f.invokerVarName = makeUnexportedGoName(f.Name) + "Invoker"
 	}
 }
 
@@ -61,8 +75,49 @@ func (f *Function) generate(fi *file) {
 		return
 	}
 
+	f.generateFuncInfo(fi)
 	f.generateInvokerVar(fi)
 	f.generateFunction(fi)
+}
+
+func (f *Function) generateFuncInfo(fi *file) {
+	//var somefunctionFunc *gi.Function
+	fi.
+		Var().
+		Id(f.funcInfoGoName).
+		Op("*").
+		Qual(gi.PackageName, "Function")
+
+	// var somefunctionFuncOnce sync.Once
+	fi.
+		Var().
+		Id(f.funcInfoOnceGoName).
+		Qual("sync", "Once")
+
+	// func somefunctionFuncSet() {
+	//   ...
+	// }
+	fi.
+		Func().
+		Id(f.funcInfoSetFuncGoName).
+		Params().
+		BlockFunc(func(g *jen.Group) {
+			//   somefunctionFuncOnce.Do(func() {
+			//     somefunctionFunc = gi.FunctionInvokerNew("Gdk", "SomeFunction")
+			//   })
+			g.
+				Id(f.funcInfoOnceGoName).
+				Dot("Do").
+				Call(jen.
+					Func().
+					Params().
+					Block(jen.
+						Id(f.funcInfoGoName).
+						Op("=").
+						Qual(gi.PackageName, "FunctionInvokerNew").
+						Call(jen.Lit(f.namespace.Name),
+							jen.Lit(f.Name))))
+		})
 }
 
 func (f *Function) generateInvokerVar(fi *file) {

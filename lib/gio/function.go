@@ -2,7 +2,10 @@
 
 package gio
 
-import gi "github.com/pekim/gobbi/internal/gi"
+import (
+	gi "github.com/pekim/gobbi/internal/gi"
+	"sync"
+)
 
 // UNSUPPORTED : C value 'g_action_name_is_valid' : return type 'gboolean' not supported
 
@@ -29,6 +32,15 @@ import gi "github.com/pekim/gobbi/internal/gi"
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'context' of type 'AppLaunchContext' not supported
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+var AppInfoResetTypeAssociationsFunction *gi.Function
+var AppInfoResetTypeAssociationsFunctionOnce sync.Once
+
+func AppInfoResetTypeAssociationsFunctionSet() {
+	AppInfoResetTypeAssociationsFunctionOnce.Do(func() {
+		AppInfoResetTypeAssociationsFunction = gi.FunctionInvokerNew("Gio", "app_info_reset_type_associations")
+	})
+}
 
 var appInfoResetTypeAssociationsInvoker *gi.Function
 
@@ -61,6 +73,15 @@ func AppInfoResetTypeAssociations(contentType string) {
 
 // UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
+var BusUnownNameFunction *gi.Function
+var BusUnownNameFunctionOnce sync.Once
+
+func BusUnownNameFunctionSet() {
+	BusUnownNameFunctionOnce.Do(func() {
+		BusUnownNameFunction = gi.FunctionInvokerNew("Gio", "bus_unown_name")
+	})
+}
+
 var busUnownNameInvoker *gi.Function
 
 // BusUnownName is a representation of the C type g_bus_unown_name.
@@ -74,6 +95,15 @@ func BusUnownName(ownerId uint32) {
 
 	busUnownNameInvoker.Invoke(inArgs[:], nil)
 
+}
+
+var BusUnwatchNameFunction *gi.Function
+var BusUnwatchNameFunctionOnce sync.Once
+
+func BusUnwatchNameFunctionSet() {
+	BusUnwatchNameFunctionOnce.Do(func() {
+		BusUnwatchNameFunction = gi.FunctionInvokerNew("Gio", "bus_unwatch_name")
+	})
 }
 
 var busUnwatchNameInvoker *gi.Function
@@ -103,6 +133,15 @@ func BusUnwatchName(watcherId uint32) {
 
 // UNSUPPORTED : C value 'g_content_type_equals' : return type 'gboolean' not supported
 
+var ContentTypeFromMimeTypeFunction *gi.Function
+var ContentTypeFromMimeTypeFunctionOnce sync.Once
+
+func ContentTypeFromMimeTypeFunctionSet() {
+	ContentTypeFromMimeTypeFunctionOnce.Do(func() {
+		ContentTypeFromMimeTypeFunction = gi.FunctionInvokerNew("Gio", "content_type_from_mime_type")
+	})
+}
+
 var contentTypeFromMimeTypeInvoker *gi.Function
 
 // ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
@@ -121,6 +160,15 @@ func ContentTypeFromMimeType(mimeType string) string {
 	return retGo
 }
 
+var ContentTypeGetDescriptionFunction *gi.Function
+var ContentTypeGetDescriptionFunctionOnce sync.Once
+
+func ContentTypeGetDescriptionFunctionSet() {
+	ContentTypeGetDescriptionFunctionOnce.Do(func() {
+		ContentTypeGetDescriptionFunction = gi.FunctionInvokerNew("Gio", "content_type_get_description")
+	})
+}
+
 var contentTypeGetDescriptionInvoker *gi.Function
 
 // ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
@@ -137,6 +185,15 @@ func ContentTypeGetDescription(type_ string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+var ContentTypeGetGenericIconNameFunction *gi.Function
+var ContentTypeGetGenericIconNameFunctionOnce sync.Once
+
+func ContentTypeGetGenericIconNameFunctionSet() {
+	ContentTypeGetGenericIconNameFunctionOnce.Do(func() {
+		ContentTypeGetGenericIconNameFunction = gi.FunctionInvokerNew("Gio", "content_type_get_generic_icon_name")
+	})
 }
 
 var contentTypeGetGenericIconNameInvoker *gi.Function
@@ -159,6 +216,15 @@ func ContentTypeGetGenericIconName(type_ string) string {
 
 // UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
 
+var ContentTypeGetMimeDirsFunction *gi.Function
+var ContentTypeGetMimeDirsFunctionOnce sync.Once
+
+func ContentTypeGetMimeDirsFunctionSet() {
+	ContentTypeGetMimeDirsFunctionOnce.Do(func() {
+		ContentTypeGetMimeDirsFunction = gi.FunctionInvokerNew("Gio", "content_type_get_mime_dirs")
+	})
+}
+
 var contentTypeGetMimeDirsInvoker *gi.Function
 
 // ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
@@ -169,6 +235,15 @@ func ContentTypeGetMimeDirs() {
 
 	contentTypeGetMimeDirsInvoker.Invoke(nil, nil)
 
+}
+
+var ContentTypeGetMimeTypeFunction *gi.Function
+var ContentTypeGetMimeTypeFunctionOnce sync.Once
+
+func ContentTypeGetMimeTypeFunctionSet() {
+	ContentTypeGetMimeTypeFunctionOnce.Do(func() {
+		ContentTypeGetMimeTypeFunction = gi.FunctionInvokerNew("Gio", "content_type_get_mime_type")
+	})
 }
 
 var contentTypeGetMimeTypeInvoker *gi.Function
@@ -204,6 +279,15 @@ func ContentTypeGetMimeType(type_ string) string {
 // UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' has no type
 
 // UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
+
+var DbusAddressEscapeValueFunction *gi.Function
+var DbusAddressEscapeValueFunctionOnce sync.Once
+
+func DbusAddressEscapeValueFunctionSet() {
+	DbusAddressEscapeValueFunctionOnce.Do(func() {
+		DbusAddressEscapeValueFunction = gi.FunctionInvokerNew("Gio", "dbus_address_escape_value")
+	})
+}
 
 var dbusAddressEscapeValueInvoker *gi.Function
 
@@ -250,6 +334,15 @@ func DbusAddressEscapeValue(string_ string) string {
 // UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_unregister_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
+
+var DbusGenerateGuidFunction *gi.Function
+var DbusGenerateGuidFunctionOnce sync.Once
+
+func DbusGenerateGuidFunctionSet() {
+	DbusGenerateGuidFunctionOnce.Do(func() {
+		DbusGenerateGuidFunction = gi.FunctionInvokerNew("Gio", "dbus_generate_guid")
+	})
+}
 
 var dbusGenerateGuidInvoker *gi.Function
 
@@ -314,6 +407,15 @@ func DbusGenerateGuid() string {
 
 // UNSUPPORTED : C value 'g_io_extension_point_implement' : parameter 'type' of type 'GType' not supported
 
+var IoExtensionPointLookupFunction *gi.Function
+var IoExtensionPointLookupFunctionOnce sync.Once
+
+func IoExtensionPointLookupFunctionSet() {
+	IoExtensionPointLookupFunctionOnce.Do(func() {
+		IoExtensionPointLookupFunction = gi.FunctionInvokerNew("Gio", "io_extension_point_lookup")
+	})
+}
+
 var ioExtensionPointLookupInvoker *gi.Function
 
 // IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
@@ -330,6 +432,15 @@ func IoExtensionPointLookup(name string) *IOExtensionPoint {
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
 	return retGo
+}
+
+var IoExtensionPointRegisterFunction *gi.Function
+var IoExtensionPointRegisterFunctionOnce sync.Once
+
+func IoExtensionPointRegisterFunctionSet() {
+	IoExtensionPointRegisterFunctionOnce.Do(func() {
+		IoExtensionPointRegisterFunction = gi.FunctionInvokerNew("Gio", "io_extension_point_register")
+	})
 }
 
 var ioExtensionPointRegisterInvoker *gi.Function
@@ -358,6 +469,15 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 
 // UNSUPPORTED : C value 'g_io_modules_scan_all_in_directory_with_scope' : parameter 'dirname' of type 'filename' not supported
 
+var IoSchedulerCancelAllJobsFunction *gi.Function
+var IoSchedulerCancelAllJobsFunctionOnce sync.Once
+
+func IoSchedulerCancelAllJobsFunctionSet() {
+	IoSchedulerCancelAllJobsFunctionOnce.Do(func() {
+		IoSchedulerCancelAllJobsFunction = gi.FunctionInvokerNew("Gio", "io_scheduler_cancel_all_jobs")
+	})
+}
+
 var ioSchedulerCancelAllJobsInvoker *gi.Function
 
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
@@ -377,6 +497,15 @@ func IoSchedulerCancelAllJobs() {
 // UNSUPPORTED : C value 'g_memory_settings_backend_new' : return type 'SettingsBackend' not supported
 
 // UNSUPPORTED : C value 'g_network_monitor_get_default' : return type 'NetworkMonitor' not supported
+
+var NetworkingInitFunction *gi.Function
+var NetworkingInitFunctionOnce sync.Once
+
+func NetworkingInitFunctionSet() {
+	NetworkingInitFunctionOnce.Do(func() {
+		NetworkingInitFunction = gi.FunctionInvokerNew("Gio", "networking_init")
+	})
+}
 
 var networkingInitInvoker *gi.Function
 
@@ -423,6 +552,15 @@ func NetworkingInit() {
 // UNSUPPORTED : C value 'g_resources_register' : parameter 'resource' of type 'Resource' not supported
 
 // UNSUPPORTED : C value 'g_resources_unregister' : parameter 'resource' of type 'Resource' not supported
+
+var SettingsSchemaSourceGetDefaultFunction *gi.Function
+var SettingsSchemaSourceGetDefaultFunctionOnce sync.Once
+
+func SettingsSchemaSourceGetDefaultFunctionSet() {
+	SettingsSchemaSourceGetDefaultFunctionOnce.Do(func() {
+		SettingsSchemaSourceGetDefaultFunction = gi.FunctionInvokerNew("Gio", "settings_schema_source_get_default")
+	})
+}
 
 var settingsSchemaSourceGetDefaultInvoker *gi.Function
 
