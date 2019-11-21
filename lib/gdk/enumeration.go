@@ -3,6 +3,7 @@
 package gdk
 
 // AxisUse is a representation of the C type GdkAxisUse.
+//
 type AxisUse int
 
 const (
@@ -31,6 +32,7 @@ const (
 )
 
 // ByteOrder is a representation of the C type GdkByteOrder.
+//
 type ByteOrder int
 
 const (
@@ -41,6 +43,7 @@ const (
 )
 
 // CrossingMode is a representation of the C type GdkCrossingMode.
+//
 type CrossingMode int
 
 const (
@@ -65,6 +68,7 @@ const (
 )
 
 // CursorType is a representation of the C type GdkCursorType.
+//
 type CursorType int
 
 const (
@@ -231,6 +235,7 @@ const (
 )
 
 // DevicePadFeature is a representation of the C type GdkDevicePadFeature.
+//
 type DevicePadFeature int
 
 const (
@@ -267,6 +272,7 @@ const (
 )
 
 // DeviceType is a representation of the C type GdkDeviceType.
+//
 type DeviceType int
 
 const (
@@ -293,6 +299,7 @@ const (
 )
 
 // DragProtocol is a representation of the C type GdkDragProtocol.
+//
 type DragProtocol int
 
 const (
@@ -315,6 +322,7 @@ const (
 )
 
 // EventType is a representation of the C type GdkEventType.
+//
 type EventType int
 
 const (
@@ -423,6 +431,7 @@ const (
 )
 
 // FilterReturn is a representation of the C type GdkFilterReturn.
+//
 type FilterReturn int
 
 const (
@@ -461,6 +470,7 @@ const (
 )
 
 // GrabOwnership is a representation of the C type GdkGrabOwnership.
+//
 type GrabOwnership int
 
 const (
@@ -473,6 +483,7 @@ const (
 )
 
 // GrabStatus is a representation of the C type GdkGrabStatus.
+//
 type GrabStatus int
 
 const (
@@ -491,6 +502,7 @@ const (
 )
 
 // Gravity is a representation of the C type GdkGravity.
+//
 type Gravity int
 
 const (
@@ -517,6 +529,7 @@ const (
 )
 
 // InputMode is a representation of the C type GdkInputMode.
+//
 type InputMode int
 
 const (
@@ -529,6 +542,7 @@ const (
 )
 
 // InputSource is a representation of the C type GdkInputSource.
+//
 type InputSource int
 
 const (
@@ -575,6 +589,7 @@ const (
 )
 
 // NotifyType is a representation of the C type GdkNotifyType.
+//
 type NotifyType int
 
 const (
@@ -593,6 +608,7 @@ const (
 )
 
 // OwnerChange is a representation of the C type GdkOwnerChange.
+//
 type OwnerChange int
 
 const (
@@ -605,6 +621,7 @@ const (
 )
 
 // PropMode is a representation of the C type GdkPropMode.
+//
 type PropMode int
 
 const (
@@ -617,6 +634,7 @@ const (
 )
 
 // PropertyState is a representation of the C type GdkPropertyState.
+//
 type PropertyState int
 
 const (
@@ -627,6 +645,7 @@ const (
 )
 
 // ScrollDirection is a representation of the C type GdkScrollDirection.
+//
 type ScrollDirection int
 
 const (
@@ -643,6 +662,7 @@ const (
 )
 
 // SettingAction is a representation of the C type GdkSettingAction.
+//
 type SettingAction int
 
 const (
@@ -655,6 +675,7 @@ const (
 )
 
 // Status is a representation of the C type GdkStatus.
+//
 type Status int
 
 const (
@@ -691,6 +712,7 @@ const (
 )
 
 // TouchpadGesturePhase is a representation of the C type GdkTouchpadGesturePhase.
+//
 type TouchpadGesturePhase int
 
 const (
@@ -705,6 +727,7 @@ const (
 )
 
 // VisibilityState is a representation of the C type GdkVisibilityState.
+//
 type VisibilityState int
 
 const (
@@ -717,6 +740,7 @@ const (
 )
 
 // VisualType is a representation of the C type GdkVisualType.
+//
 type VisualType int
 
 const (
@@ -735,6 +759,7 @@ const (
 )
 
 // WindowEdge is a representation of the C type GdkWindowEdge.
+//
 type WindowEdge int
 
 const (
@@ -757,6 +782,7 @@ const (
 )
 
 // WindowType is a representation of the C type GdkWindowType.
+//
 type WindowType int
 
 const (
@@ -777,6 +803,7 @@ const (
 )
 
 // WindowTypeHint is a representation of the C type GdkWindowTypeHint.
+//
 type WindowTypeHint int
 
 const (
@@ -811,6 +838,7 @@ const (
 )
 
 // WindowWindowClass is a representation of the C type GdkWindowWindowClass.
+//
 type WindowWindowClass int
 
 const (

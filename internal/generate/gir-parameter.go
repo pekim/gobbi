@@ -57,7 +57,7 @@ func (p *Parameter) isOut() bool {
 	return p.Direction == "out" || p.Direction == "inout"
 }
 
-func (p *Parameter) generateInDeclaration(g *group) {
+func (p *Parameter) generateInDeclaration(g *jen.Group) {
 	goType, err := p.Type.jenGoType()
 	if err != nil {
 		panic(err)
@@ -68,7 +68,7 @@ func (p *Parameter) generateInDeclaration(g *group) {
 		Add(goType)
 }
 
-func (p Parameter) generateInArg(g *group, index int) {
+func (p Parameter) generateInArg(g *jen.Group, index int) {
 	g.
 		Id("inArgs").
 		Index(jen.Lit(index)).
@@ -76,7 +76,7 @@ func (p Parameter) generateInArg(g *group, index int) {
 		Call(jen.Id(p.goVarName))
 }
 
-func (p Parameter) generateOutValue(g *group, varNamePrefix string, index int) {
+func (p Parameter) generateOutValue(g *jen.Group, varNamePrefix string, index int) {
 	arg := jen.
 		Id("outArgs").
 		Index(jen.Lit(index))

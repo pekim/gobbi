@@ -3,6 +3,7 @@
 package glib
 
 // AsciiType is a representation of the C type GAsciiType.
+//
 type AsciiType int
 
 const (
@@ -31,6 +32,7 @@ const (
 )
 
 // FileTest is a representation of the C type GFileTest.
+//
 type FileTest int
 
 const (
@@ -47,6 +49,7 @@ const (
 )
 
 // FormatSizeFlags is a representation of the C type GFormatSizeFlags.
+//
 type FormatSizeFlags int
 
 const (
@@ -61,6 +64,7 @@ const (
 )
 
 // HookFlagMask is a representation of the C type GHookFlagMask.
+//
 type HookFlagMask int
 
 const (
@@ -73,6 +77,7 @@ const (
 )
 
 // IOCondition is a representation of the C type GIOCondition.
+//
 type IOCondition int
 
 const (
@@ -91,6 +96,7 @@ const (
 )
 
 // IOFlags is a representation of the C type GIOFlags.
+//
 type IOFlags int
 
 const (
@@ -115,6 +121,7 @@ const (
 )
 
 // KeyFileFlags is a representation of the C type GKeyFileFlags.
+//
 type KeyFileFlags int
 
 const (
@@ -127,6 +134,7 @@ const (
 )
 
 // LogLevelFlags is a representation of the C type GLogLevelFlags.
+//
 type LogLevelFlags int
 
 const (
@@ -151,6 +159,7 @@ const (
 )
 
 // MarkupCollectType is a representation of the C type GMarkupCollectType.
+//
 type MarkupCollectType int
 
 const (
@@ -169,6 +178,7 @@ const (
 )
 
 // MarkupParseFlags is a representation of the C type GMarkupParseFlags.
+//
 type MarkupParseFlags int
 
 const (
@@ -183,6 +193,7 @@ const (
 )
 
 // OptionFlags is a representation of the C type GOptionFlags.
+//
 type OptionFlags int
 
 const (
@@ -287,6 +298,7 @@ const (
 )
 
 // SpawnFlags is a representation of the C type GSpawnFlags.
+//
 type SpawnFlags int
 
 const (
@@ -313,6 +325,7 @@ const (
 )
 
 // TestSubprocessFlags is a representation of the C type GTestSubprocessFlags.
+//
 type TestSubprocessFlags int
 
 const (
@@ -325,6 +338,7 @@ const (
 )
 
 // TestTrapFlags is a representation of the C type GTestTrapFlags.
+//
 type TestTrapFlags int
 
 const (
@@ -337,6 +351,7 @@ const (
 )
 
 // TraverseFlags is a representation of the C type GTraverseFlags.
+//
 type TraverseFlags int
 
 const (

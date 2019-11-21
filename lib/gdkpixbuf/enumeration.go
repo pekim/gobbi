@@ -3,6 +3,7 @@
 package gdkpixbuf
 
 // Colorspace is a representation of the C type GdkColorspace.
+//
 type Colorspace int
 
 const (
@@ -11,6 +12,7 @@ const (
 )
 
 // InterpType is a representation of the C type GdkInterpType.
+//
 type InterpType int
 
 const (
@@ -25,6 +27,7 @@ const (
 )
 
 // PixbufAlphaMode is a representation of the C type GdkPixbufAlphaMode.
+//
 type PixbufAlphaMode int
 
 const (
@@ -35,6 +38,7 @@ const (
 )
 
 // PixbufError is a representation of the C type GdkPixbufError.
+//
 type PixbufError int
 
 const (
@@ -55,6 +59,7 @@ const (
 )
 
 // PixbufRotation is a representation of the C type GdkPixbufRotation.
+//
 type PixbufRotation int
 
 const (

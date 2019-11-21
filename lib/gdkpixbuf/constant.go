@@ -3,16 +3,21 @@
 package gdkpixbuf
 
 // PIXBUF_FEATURES_H is a representation of the C type PIXBUF_FEATURES_H.
+//
 const PIXBUF_FEATURES_H = int32(1)
 
 // PIXBUF_MAJOR is a representation of the C type PIXBUF_MAJOR.
+//
 const PIXBUF_MAJOR = int32(2)
 
 // PIXBUF_MICRO is a representation of the C type PIXBUF_MICRO.
+//
 const PIXBUF_MICRO = int32(0)
 
 // PIXBUF_MINOR is a representation of the C type PIXBUF_MINOR.
+//
 const PIXBUF_MINOR = int32(40)
 
 // PIXBUF_VERSION is a representation of the C type PIXBUF_VERSION.
+//
 const PIXBUF_VERSION = "2.40.0"

@@ -3,6 +3,7 @@
 package pango
 
 // FontMask is a representation of the C type PangoFontMask.
+//
 type FontMask int
 
 const (

@@ -15,6 +15,7 @@ const (
 )
 
 // BracketMatchType is a representation of the C type GtkSourceBracketMatchType.
+//
 type BracketMatchType int
 
 const (
@@ -45,6 +46,7 @@ const (
 )
 
 // CompletionError is a representation of the C type GtkSourceCompletionError.
+//
 type CompletionError int
 
 const (
@@ -67,6 +69,7 @@ const (
 )
 
 // FileLoaderError is a representation of the C type GtkSourceFileLoaderError.
+//
 type FileLoaderError int
 
 const (
@@ -91,6 +94,7 @@ const (
 )
 
 // GutterRendererAlignmentMode is a representation of the C type GtkSourceGutterRendererAlignmentMode.
+//
 type GutterRendererAlignmentMode int
 
 const (
@@ -117,6 +121,7 @@ const (
 )
 
 // SmartHomeEndType is a representation of the C type GtkSourceSmartHomeEndType.
+//
 type SmartHomeEndType int
 
 const (
@@ -131,6 +136,7 @@ const (
 )
 
 // ViewGutterPosition is a representation of the C type GtkSourceViewGutterPosition.
+//
 type ViewGutterPosition int
 
 const (

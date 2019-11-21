@@ -3,6 +3,7 @@
 package gio
 
 // AppInfoCreateFlags is a representation of the C type GAppInfoCreateFlags.
+//
 type AppInfoCreateFlags int
 
 const (
@@ -45,6 +46,7 @@ const (
 )
 
 // AskPasswordFlags is a representation of the C type GAskPasswordFlags.
+//
 type AskPasswordFlags int
 
 const (
@@ -289,6 +291,7 @@ const (
 )
 
 // FileAttributeInfoFlags is a representation of the C type GFileAttributeInfoFlags.
+//
 type FileAttributeInfoFlags int
 
 const (
@@ -301,6 +304,7 @@ const (
 )
 
 // FileCopyFlags is a representation of the C type GFileCopyFlags.
+//
 type FileCopyFlags int
 
 const (
@@ -321,6 +325,7 @@ const (
 )
 
 // FileCreateFlags is a representation of the C type GFileCreateFlags.
+//
 type FileCreateFlags int
 
 const (
@@ -349,6 +354,7 @@ const (
 )
 
 // FileMonitorFlags is a representation of the C type GFileMonitorFlags.
+//
 type FileMonitorFlags int
 
 const (
@@ -365,6 +371,7 @@ const (
 )
 
 // FileQueryInfoFlags is a representation of the C type GFileQueryInfoFlags.
+//
 type FileQueryInfoFlags int
 
 const (
@@ -391,6 +398,7 @@ const (
 )
 
 // MountMountFlags is a representation of the C type GMountMountFlags.
+//
 type MountMountFlags int
 
 const (
@@ -399,6 +407,7 @@ const (
 )
 
 // MountUnmountFlags is a representation of the C type GMountUnmountFlags.
+//
 type MountUnmountFlags int
 
 const (
@@ -409,6 +418,7 @@ const (
 )
 
 // OutputStreamSpliceFlags is a representation of the C type GOutputStreamSpliceFlags.
+//
 type OutputStreamSpliceFlags int
 
 const (
@@ -457,6 +467,7 @@ const (
 )
 
 // SettingsBindFlags is a representation of the C type GSettingsBindFlags.
+//
 type SettingsBindFlags int
 
 const (

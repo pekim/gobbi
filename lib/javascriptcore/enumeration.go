@@ -3,6 +3,7 @@
 package javascriptcore
 
 // CheckSyntaxMode is a representation of the C type JSCCheckSyntaxMode.
+//
 type CheckSyntaxMode int
 
 const (
@@ -13,6 +14,7 @@ const (
 )
 
 // CheckSyntaxResult is a representation of the C type JSCCheckSyntaxResult.
+//
 type CheckSyntaxResult int
 
 const (

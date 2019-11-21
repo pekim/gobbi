@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"github.com/dave/jennifer/jen"
 )
 
 type ReturnValue struct {
@@ -35,7 +36,7 @@ func (r *ReturnValue) supported() (bool, string) {
 	return false, fmt.Sprintf("return type '%s' not supported", r.Type.Name)
 }
 
-func (r *ReturnValue) generateDeclaration(g *group) {
+func (r *ReturnValue) generateDeclaration(g *jen.Group) {
 	if r.isVoid() {
 		return
 	}

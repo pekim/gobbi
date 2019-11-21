@@ -77,15 +77,15 @@ func (f *Function) generateInvokerVar(fi *file) {
 func (f *Function) generateFunction(fi *file) {
 	fi.docForC(f.goName, f.CIdentifier)
 	fi.
-		Func().                                               // "func"
-		Do(f.generateReceiver).                               // (recv)
-		Id(f.goName).                                         // function-name
-		Add(paramsFunc(f.Parameters.generateInDeclarations)). // (in params)
-		Add(paramsFunc(func(g *group) {                       // (return value, out params)
+		Func().                                          // "func"
+		Do(f.generateReceiver).                          // (recv)
+		Id(f.goName).                                    // function-name
+		ParamsFunc(f.Parameters.generateInDeclarations). // (in params)
+		ParamsFunc(func(g *jen.Group) {                  // (return value, out params)
 			f.ReturnValue.generateDeclaration(g)       // return value
 			f.Parameters.generateReturnDeclarations(g) // out params
-		})).
-		Add(blockFunc(f.generateBody)) // { body }
+		}).
+		BlockFunc(f.generateBody) // { body }
 	fi.Line()
 }
 
@@ -101,7 +101,7 @@ func (f *Function) generateReceiver(s *jen.Statement) {
 	)
 }
 
-func (f *Function) generateBody(g *group) {
+func (f *Function) generateBody(g *jen.Group) {
 	f.generateInitialiseInvoker(g)
 	g.Line()
 	f.Parameters.generateInArgs(g, f.receiver)
@@ -116,7 +116,7 @@ func (f *Function) generateBody(g *group) {
 	f.generateReturn(g)
 }
 
-func (f *Function) generateInitialiseInvoker(g *group) {
+func (f *Function) generateInitialiseInvoker(g *jen.Group) {
 	g.
 		If(jen.Id(f.invokerVarName).Op("==").Nil()).
 		Block(jen.
@@ -140,7 +140,7 @@ func (f *Function) generateInitialiseInvoker(g *group) {
 			}))
 }
 
-func (f *Function) generateCallFunction(g *group) {
+func (f *Function) generateCallFunction(g *jen.Group) {
 	g.
 		Do(func(s *jen.Statement) {
 			if !f.ReturnValue.isVoid() {
@@ -156,7 +156,7 @@ func (f *Function) generateCallFunction(g *group) {
 		})
 }
 
-func (f *Function) generateReturnVar(g *group) {
+func (f *Function) generateReturnVar(g *jen.Group) {
 	if f.ReturnValue.isVoid() {
 		return
 	}
@@ -169,11 +169,11 @@ func (f *Function) generateReturnVar(g *group) {
 		})
 }
 
-func (f *Function) generateOutArgValues(g *group) {
+func (f *Function) generateOutArgValues(g *jen.Group) {
 	f.Parameters.generateOutValues(g, "out")
 }
 
-func (f *Function) generateReturn(g *group) {
+func (f *Function) generateReturn(g *jen.Group) {
 	if f.ReturnValue.isVoid() && f.Parameters.outCount() == 0 {
 		return
 	}

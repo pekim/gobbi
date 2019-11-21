@@ -8,15 +8,10 @@ type AboutDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value 'activate_link' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AboutDialogPrivate struct {
@@ -26,26 +21,18 @@ type AboutDialogPrivate struct {
 type AccelGroupClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'accel_changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AccelGroupEntry struct {
 	native uintptr
 	Key    *AccelKey
 	// UNSUPPORTED : C value 'closure' : no Go type for 'GObject.Closure'
-
 	// UNSUPPORTED : C value 'accel_path_quark' : no Go type for 'GLib.Quark'
-
 }
 
 type AccelGroupPrivate struct {
@@ -56,7 +43,6 @@ type AccelKey struct {
 	native   uintptr
 	AccelKey uint32
 	// UNSUPPORTED : C value 'accel_mods' : no Go type for 'Gdk.ModifierType'
-
 	AccelFlags uint32
 }
 
@@ -70,13 +56,9 @@ type AccelLabelClass struct {
 	ModNameAlt     string
 	ModSeparator   string
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AccelLabelPrivate struct {
@@ -90,17 +72,11 @@ type AccelMapClass struct {
 type AccessibleClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
-
 	// UNSUPPORTED : C value 'connect_widget_destroyed' : missing Type
-
 	// UNSUPPORTED : C value 'widget_set' : missing Type
-
 	// UNSUPPORTED : C value 'widget_unset' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AccessiblePrivate struct {
@@ -110,13 +86,9 @@ type AccessiblePrivate struct {
 type ActionBarClass struct {
 	native uintptr
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ActionBarPrivate struct {
@@ -126,27 +98,16 @@ type ActionBarPrivate struct {
 type ActionClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'create_menu_item' : missing Type
-
 	// UNSUPPORTED : C value 'create_tool_item' : missing Type
-
 	// UNSUPPORTED : C value 'connect_proxy' : missing Type
-
 	// UNSUPPORTED : C value 'disconnect_proxy' : missing Type
-
 	// UNSUPPORTED : C value 'create_menu' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ActionEntry struct {
@@ -157,23 +118,16 @@ type ActionEntry struct {
 	Accelerator string
 	Tooltip     string
 	// UNSUPPORTED : C value 'callback' : no Go type for 'GObject.Callback'
-
 }
 
 type ActionGroupClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'get_action' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ActionGroupPrivate struct {
@@ -187,39 +141,26 @@ type ActionPrivate struct {
 type ActionableInterface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'get_action_name' : missing Type
-
 	// UNSUPPORTED : C value 'set_action_name' : missing Type
-
 	// UNSUPPORTED : C value 'get_action_target_value' : missing Type
-
 	// UNSUPPORTED : C value 'set_action_target_value' : missing Type
-
 }
 
 type ActivatableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'update' : missing Type
-
 	// UNSUPPORTED : C value 'sync_action_properties' : missing Type
-
 }
 
 type AdjustmentClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value 'value_changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AdjustmentPrivate struct {
@@ -230,13 +171,9 @@ type AlignmentClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AlignmentPrivate struct {
@@ -247,7 +184,6 @@ type AppChooserButtonClass struct {
 	native      uintptr
 	ParentClass *ComboBoxClass
 	// UNSUPPORTED : C value 'custom_item_activated' : missing Type
-
 }
 
 type AppChooserButtonPrivate struct {
@@ -267,11 +203,8 @@ type AppChooserWidgetClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value 'application_selected' : missing Type
-
 	// UNSUPPORTED : C value 'application_activated' : missing Type
-
 	// UNSUPPORTED : C value 'populate_popup' : missing Type
-
 }
 
 type AppChooserWidgetPrivate struct {
@@ -281,11 +214,8 @@ type AppChooserWidgetPrivate struct {
 type ApplicationClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.ApplicationClass'
-
 	// UNSUPPORTED : C value 'window_added' : missing Type
-
 	// UNSUPPORTED : C value 'window_removed' : missing Type
-
 }
 
 type ApplicationPrivate struct {
@@ -314,13 +244,9 @@ type ArrowClass struct {
 	native      uintptr
 	ParentClass *MiscClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ArrowPrivate struct {
@@ -331,13 +257,9 @@ type AspectFrameClass struct {
 	native      uintptr
 	ParentClass *FrameClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type AspectFramePrivate struct {
@@ -348,23 +270,14 @@ type AssistantClass struct {
 	native      uintptr
 	ParentClass *WindowClass
 	// UNSUPPORTED : C value 'prepare' : missing Type
-
 	// UNSUPPORTED : C value 'apply' : missing Type
-
 	// UNSUPPORTED : C value 'close' : missing Type
-
 	// UNSUPPORTED : C value 'cancel' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 }
 
 type AssistantPrivate struct {
@@ -375,13 +288,9 @@ type BinClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type BinPrivate struct {
@@ -391,14 +300,12 @@ type BinPrivate struct {
 type BindingArg struct {
 	native uintptr
 	// UNSUPPORTED : C value 'arg_type' : no Go type for 'GType'
-
 }
 
 type BindingEntry struct {
 	native uintptr
 	Keyval uint32
 	// UNSUPPORTED : C value 'modifiers' : no Go type for 'Gdk.ModifierType'
-
 	BindingSet   *BindingSet
 	Destroyed    uint32
 	InEmission   uint32
@@ -413,11 +320,8 @@ type BindingSet struct {
 	SetName  string
 	Priority int32
 	// UNSUPPORTED : C value 'widget_path_pspecs' : no Go type for 'GLib.SList'
-
 	// UNSUPPORTED : C value 'widget_class_pspecs' : no Go type for 'GLib.SList'
-
 	// UNSUPPORTED : C value 'class_branch_pspecs' : no Go type for 'GLib.SList'
-
 	Entries *BindingEntry
 	Current *BindingEntry
 	Parsed  uint32
@@ -433,7 +337,6 @@ type BindingSignal struct {
 	SignalName string
 	NArgs      uint32
 	// UNSUPPORTED : C value 'args' : missing Type
-
 }
 
 type BooleanCellAccessibleClass struct {
@@ -505,13 +408,9 @@ type BoxClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type BoxPrivate struct {
@@ -521,51 +420,30 @@ type BoxPrivate struct {
 type BuildableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'set_name' : missing Type
-
 	// UNSUPPORTED : C value 'get_name' : missing Type
-
 	// UNSUPPORTED : C value 'add_child' : missing Type
-
 	// UNSUPPORTED : C value 'set_buildable_property' : missing Type
-
 	// UNSUPPORTED : C value 'construct_child' : missing Type
-
 	// UNSUPPORTED : C value 'custom_tag_start' : missing Type
-
 	// UNSUPPORTED : C value 'custom_tag_end' : missing Type
-
 	// UNSUPPORTED : C value 'custom_finished' : missing Type
-
 	// UNSUPPORTED : C value 'parser_finished' : missing Type
-
 	// UNSUPPORTED : C value 'get_internal_child' : missing Type
-
 }
 
 type BuilderClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'get_type_from_name' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type BuilderPrivate struct {
@@ -585,13 +463,9 @@ type ButtonBoxClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ButtonBoxPrivate struct {
@@ -602,25 +476,15 @@ type ButtonClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'pressed' : missing Type
-
 	// UNSUPPORTED : C value 'released' : missing Type
-
 	// UNSUPPORTED : C value 'clicked' : missing Type
-
 	// UNSUPPORTED : C value 'enter' : missing Type
-
 	// UNSUPPORTED : C value 'leave' : missing Type
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ButtonPrivate struct {
@@ -631,27 +495,16 @@ type CalendarClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value 'month_changed' : missing Type
-
 	// UNSUPPORTED : C value 'day_selected' : missing Type
-
 	// UNSUPPORTED : C value 'day_selected_double_click' : missing Type
-
 	// UNSUPPORTED : C value 'prev_month' : missing Type
-
 	// UNSUPPORTED : C value 'next_month' : missing Type
-
 	// UNSUPPORTED : C value 'prev_year' : missing Type
-
 	// UNSUPPORTED : C value 'next_year' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CalendarPrivate struct {
@@ -662,37 +515,23 @@ type CellAccessibleClass struct {
 	native      uintptr
 	ParentClass *AccessibleClass
 	// UNSUPPORTED : C value 'update_cache' : missing Type
-
 }
 
 type CellAccessibleParentIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'get_cell_extents' : missing Type
-
 	// UNSUPPORTED : C value 'get_cell_area' : missing Type
-
 	// UNSUPPORTED : C value 'grab_focus' : missing Type
-
 	// UNSUPPORTED : C value 'get_child_index' : missing Type
-
 	// UNSUPPORTED : C value 'get_renderer_state' : missing Type
-
 	// UNSUPPORTED : C value 'expand_collapse' : missing Type
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'edit' : missing Type
-
 	// UNSUPPORTED : C value 'update_relationset' : missing Type
-
 	// UNSUPPORTED : C value 'get_cell_position' : missing Type
-
 	// UNSUPPORTED : C value 'get_column_header_cells' : missing Type
-
 	// UNSUPPORTED : C value 'get_row_header_cells' : missing Type
-
 }
 
 type CellAccessiblePrivate struct {
@@ -702,13 +541,9 @@ type CellAccessiblePrivate struct {
 type CellAreaBoxClass struct {
 	native uintptr
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellAreaBoxPrivate struct {
@@ -718,59 +553,32 @@ type CellAreaBoxPrivate struct {
 type CellAreaClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'add' : missing Type
-
 	// UNSUPPORTED : C value 'remove' : missing Type
-
 	// UNSUPPORTED : C value 'foreach' : missing Type
-
 	// UNSUPPORTED : C value 'foreach_alloc' : missing Type
-
 	// UNSUPPORTED : C value 'event' : missing Type
-
 	// UNSUPPORTED : C value 'render' : missing Type
-
 	// UNSUPPORTED : C value 'apply_attributes' : missing Type
-
 	// UNSUPPORTED : C value 'create_context' : missing Type
-
 	// UNSUPPORTED : C value 'copy_context' : missing Type
-
 	// UNSUPPORTED : C value 'get_request_mode' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-
 	// UNSUPPORTED : C value 'set_cell_property' : missing Type
-
 	// UNSUPPORTED : C value 'get_cell_property' : missing Type
-
 	// UNSUPPORTED : C value 'focus' : missing Type
-
 	// UNSUPPORTED : C value 'is_activatable' : missing Type
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 // UNSUPPORTED : C value 'gtk_cell_area_class_find_cell_property' : return type 'GObject.ParamSpec' not supported
@@ -800,25 +608,15 @@ func (recv *CellAreaClass) ListCellProperties() uint32 {
 type CellAreaContextClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'allocate' : missing Type
-
 	// UNSUPPORTED : C value 'reset' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 }
 
 type CellAreaContextPrivate struct {
@@ -832,52 +630,33 @@ type CellAreaPrivate struct {
 type CellEditableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'editing_done' : missing Type
-
 	// UNSUPPORTED : C value 'remove_widget' : missing Type
-
 	// UNSUPPORTED : C value 'start_editing' : missing Type
-
 }
 
 type CellLayoutIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'pack_start' : missing Type
-
 	// UNSUPPORTED : C value 'pack_end' : missing Type
-
 	// UNSUPPORTED : C value 'clear' : missing Type
-
 	// UNSUPPORTED : C value 'add_attribute' : missing Type
-
 	// UNSUPPORTED : C value 'set_cell_data_func' : missing Type
-
 	// UNSUPPORTED : C value 'clear_attributes' : missing Type
-
 	// UNSUPPORTED : C value 'reorder' : missing Type
-
 	// UNSUPPORTED : C value 'get_cells' : missing Type
-
 	// UNSUPPORTED : C value 'get_area' : missing Type
-
 }
 
 type CellRendererAccelClass struct {
 	native      uintptr
 	ParentClass *CellRendererTextClass
 	// UNSUPPORTED : C value 'accel_edited' : missing Type
-
 	// UNSUPPORTED : C value 'accel_cleared' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved0' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererAccelPrivate struct {
@@ -887,35 +666,20 @@ type CellRendererAccelPrivate struct {
 type CellRendererClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'get_request_mode' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-
 	// UNSUPPORTED : C value 'get_aligned_area' : missing Type
-
 	// UNSUPPORTED : C value 'get_size' : missing Type
-
 	// UNSUPPORTED : C value 'render' : missing Type
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'start_editing' : missing Type
-
 	// UNSUPPORTED : C value 'editing_canceled' : missing Type
-
 	// UNSUPPORTED : C value 'editing_started' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 // UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
@@ -928,13 +692,9 @@ type CellRendererComboClass struct {
 	native uintptr
 	Parent *CellRendererTextClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererComboPrivate struct {
@@ -945,13 +705,9 @@ type CellRendererPixbufClass struct {
 	native      uintptr
 	ParentClass *CellRendererClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererPixbufPrivate struct {
@@ -966,13 +722,9 @@ type CellRendererProgressClass struct {
 	native      uintptr
 	ParentClass *CellRendererClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererProgressPrivate struct {
@@ -983,13 +735,9 @@ type CellRendererSpinClass struct {
 	native uintptr
 	Parent *CellRendererTextClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererSpinPrivate struct {
@@ -1000,13 +748,9 @@ type CellRendererSpinnerClass struct {
 	native      uintptr
 	ParentClass *CellRendererClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererSpinnerPrivate struct {
@@ -1017,15 +761,10 @@ type CellRendererTextClass struct {
 	native      uintptr
 	ParentClass *CellRendererClass
 	// UNSUPPORTED : C value 'edited' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererTextPrivate struct {
@@ -1036,15 +775,10 @@ type CellRendererToggleClass struct {
 	native      uintptr
 	ParentClass *CellRendererClass
 	// UNSUPPORTED : C value 'toggled' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellRendererTogglePrivate struct {
@@ -1055,13 +789,9 @@ type CellViewClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CellViewPrivate struct {
@@ -1072,15 +802,10 @@ type CheckButtonClass struct {
 	native      uintptr
 	ParentClass *ToggleButtonClass
 	// UNSUPPORTED : C value 'draw_indicator' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CheckMenuItemAccessibleClass struct {
@@ -1096,17 +821,11 @@ type CheckMenuItemClass struct {
 	native      uintptr
 	ParentClass *MenuItemClass
 	// UNSUPPORTED : C value 'toggled' : missing Type
-
 	// UNSUPPORTED : C value 'draw_indicator' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CheckMenuItemPrivate struct {
@@ -1117,15 +836,10 @@ type ColorButtonClass struct {
 	native      uintptr
 	ParentClass *ButtonClass
 	// UNSUPPORTED : C value 'color_set' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ColorButtonPrivate struct {
@@ -1136,13 +850,9 @@ type ColorChooserDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ColorChooserDialogPrivate struct {
@@ -1152,38 +862,24 @@ type ColorChooserDialogPrivate struct {
 type ColorChooserInterface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'base_interface' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'get_rgba' : missing Type
-
 	// UNSUPPORTED : C value 'set_rgba' : missing Type
-
 	// UNSUPPORTED : C value 'add_palette' : missing Type
-
 	// UNSUPPORTED : C value 'color_activated' : missing Type
-
 	// UNSUPPORTED : C value 'padding' : missing Type
-
 }
 
 type ColorChooserWidgetClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type ColorChooserWidgetPrivate struct {
@@ -1194,28 +890,19 @@ type ColorSelectionClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value 'color_changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ColorSelectionDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ColorSelectionDialogPrivate struct {
@@ -1239,15 +926,10 @@ type ComboBoxClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value 'format_entry_text' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 }
 
 type ComboBoxPrivate struct {
@@ -1258,13 +940,9 @@ type ComboBoxTextClass struct {
 	native      uintptr
 	ParentClass *ComboBoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ComboBoxTextPrivate struct {
@@ -1275,9 +953,7 @@ type ContainerAccessibleClass struct {
 	native      uintptr
 	ParentClass *WidgetAccessibleClass
 	// UNSUPPORTED : C value 'add_gtk' : missing Type
-
 	// UNSUPPORTED : C value 'remove_gtk' : missing Type
-
 }
 
 type ContainerAccessiblePrivate struct {
@@ -1297,41 +973,23 @@ type ContainerClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value 'add' : missing Type
-
 	// UNSUPPORTED : C value 'remove' : missing Type
-
 	// UNSUPPORTED : C value 'check_resize' : missing Type
-
 	// UNSUPPORTED : C value 'forall' : missing Type
-
 	// UNSUPPORTED : C value 'set_focus_child' : missing Type
-
 	// UNSUPPORTED : C value 'child_type' : missing Type
-
 	// UNSUPPORTED : C value 'composite_name' : missing Type
-
 	// UNSUPPORTED : C value 'set_child_property' : missing Type
-
 	// UNSUPPORTED : C value 'get_child_property' : missing Type
-
 	// UNSUPPORTED : C value 'get_path_for_child' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 // UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
@@ -1382,15 +1040,10 @@ type ContainerPrivate struct {
 type CssProviderClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'parsing_error' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type CssProviderPrivate struct {
@@ -1532,17 +1185,11 @@ type DialogClass struct {
 	native      uintptr
 	ParentClass *WindowClass
 	// UNSUPPORTED : C value 'response' : missing Type
-
 	// UNSUPPORTED : C value 'close' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type DialogPrivate struct {
@@ -1553,39 +1200,24 @@ type DrawingAreaClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type EditableInterface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'insert_text' : missing Type
-
 	// UNSUPPORTED : C value 'delete_text' : missing Type
-
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value 'do_insert_text' : missing Type
-
 	// UNSUPPORTED : C value 'do_delete_text' : missing Type
-
 	// UNSUPPORTED : C value 'get_chars' : missing Type
-
 	// UNSUPPORTED : C value 'set_selection_bounds' : missing Type
-
 	// UNSUPPORTED : C value 'get_selection_bounds' : missing Type
-
 	// UNSUPPORTED : C value 'set_position' : missing Type
-
 	// UNSUPPORTED : C value 'get_position' : missing Type
-
 }
 
 type EntryAccessibleClass struct {
@@ -1600,35 +1232,20 @@ type EntryAccessiblePrivate struct {
 type EntryBufferClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'inserted_text' : missing Type
-
 	// UNSUPPORTED : C value 'deleted_text' : missing Type
-
 	// UNSUPPORTED : C value 'get_text' : missing Type
-
 	// UNSUPPORTED : C value 'get_length' : missing Type
-
 	// UNSUPPORTED : C value 'insert_text' : missing Type
-
 	// UNSUPPORTED : C value 'delete_text' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type EntryBufferPrivate struct {
@@ -1639,65 +1256,37 @@ type EntryClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value 'populate_popup' : missing Type
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'insert_at_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'delete_from_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'backspace' : missing Type
-
 	// UNSUPPORTED : C value 'cut_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'copy_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'paste_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_overwrite' : missing Type
-
 	// UNSUPPORTED : C value 'get_text_area_size' : missing Type
-
 	// UNSUPPORTED : C value 'get_frame_size' : missing Type
-
 	// UNSUPPORTED : C value 'insert_emoji' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 }
 
 type EntryCompletionClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'match_selected' : missing Type
-
 	// UNSUPPORTED : C value 'action_activated' : missing Type
-
 	// UNSUPPORTED : C value 'insert_prefix' : missing Type
-
 	// UNSUPPORTED : C value 'cursor_on_match' : missing Type
-
 	// UNSUPPORTED : C value 'no_matches' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved0' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 }
 
 type EntryCompletionPrivate struct {
@@ -1712,13 +1301,9 @@ type EventBoxClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type EventBoxPrivate struct {
@@ -1754,15 +1339,10 @@ type ExpanderClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ExpanderPrivate struct {
@@ -1773,15 +1353,10 @@ type FileChooserButtonClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value 'file_set' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved4' : missing Type
-
 }
 
 type FileChooserButtonPrivate struct {
@@ -1792,13 +1367,9 @@ type FileChooserDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FileChooserDialogPrivate struct {
@@ -1814,13 +1385,9 @@ type FileChooserWidgetClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FileChooserWidgetPrivate struct {
@@ -1830,7 +1397,6 @@ type FileChooserWidgetPrivate struct {
 type FileFilterInfo struct {
 	native uintptr
 	// UNSUPPORTED : C value 'contains' : no Go type for 'FileFilterFlags'
-
 	Filename    string
 	Uri         string
 	DisplayName string
@@ -1840,7 +1406,6 @@ type FileFilterInfo struct {
 type FixedChild struct {
 	native uintptr
 	// UNSUPPORTED : C value 'widget' : no Go type for 'Widget'
-
 	X int32
 	Y int32
 }
@@ -1849,13 +1414,9 @@ type FixedClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FixedPrivate struct {
@@ -1880,57 +1441,36 @@ type FlowBoxChildClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 }
 
 type FlowBoxClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'child_activated' : missing Type
-
 	// UNSUPPORTED : C value 'selected_children_changed' : missing Type
-
 	// UNSUPPORTED : C value 'activate_cursor_child' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_cursor_child' : missing Type
-
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'select_all' : missing Type
-
 	// UNSUPPORTED : C value 'unselect_all' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 }
 
 type FontButtonClass struct {
 	native      uintptr
 	ParentClass *ButtonClass
 	// UNSUPPORTED : C value 'font_set' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FontButtonPrivate struct {
@@ -1941,13 +1481,9 @@ type FontChooserDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FontChooserDialogPrivate struct {
@@ -1957,44 +1493,27 @@ type FontChooserDialogPrivate struct {
 type FontChooserIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'get_font_family' : missing Type
-
 	// UNSUPPORTED : C value 'get_font_face' : missing Type
-
 	// UNSUPPORTED : C value 'get_font_size' : missing Type
-
 	// UNSUPPORTED : C value 'set_filter_func' : missing Type
-
 	// UNSUPPORTED : C value 'font_activated' : missing Type
-
 	// UNSUPPORTED : C value 'set_font_map' : missing Type
-
 	// UNSUPPORTED : C value 'get_font_map' : missing Type
-
 	// UNSUPPORTED : C value 'padding' : missing Type
-
 }
 
 type FontChooserWidgetClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type FontChooserWidgetPrivate struct {
@@ -2005,26 +1524,18 @@ type FontSelectionClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FontSelectionDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FontSelectionDialogPrivate struct {
@@ -2048,15 +1559,10 @@ type FrameClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'compute_child_allocation' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type FramePrivate struct {
@@ -2066,11 +1572,8 @@ type FramePrivate struct {
 type GLAreaClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'render' : missing Type
-
 	// UNSUPPORTED : C value 'resize' : missing Type
-
 	// UNSUPPORTED : C value 'create_context' : missing Type
-
 }
 
 type GestureClass struct {
@@ -2182,21 +1685,13 @@ type GridClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type GridPrivate struct {
@@ -2222,17 +1717,11 @@ type HSVClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value 'move' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type HSVPrivate struct {
@@ -2258,17 +1747,11 @@ type HandleBoxClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'child_attached' : missing Type
-
 	// UNSUPPORTED : C value 'child_detached' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type HandleBoxPrivate struct {
@@ -2288,13 +1771,9 @@ type HeaderBarClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type HeaderBarPrivate struct {
@@ -2304,49 +1783,27 @@ type HeaderBarPrivate struct {
 type IMContextClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'preedit_start' : missing Type
-
 	// UNSUPPORTED : C value 'preedit_end' : missing Type
-
 	// UNSUPPORTED : C value 'preedit_changed' : missing Type
-
 	// UNSUPPORTED : C value 'commit' : missing Type
-
 	// UNSUPPORTED : C value 'retrieve_surrounding' : missing Type
-
 	// UNSUPPORTED : C value 'delete_surrounding' : missing Type
-
 	// UNSUPPORTED : C value 'set_client_window' : missing Type
-
 	// UNSUPPORTED : C value 'get_preedit_string' : missing Type
-
 	// UNSUPPORTED : C value 'filter_keypress' : missing Type
-
 	// UNSUPPORTED : C value 'focus_in' : missing Type
-
 	// UNSUPPORTED : C value 'focus_out' : missing Type
-
 	// UNSUPPORTED : C value 'reset' : missing Type
-
 	// UNSUPPORTED : C value 'set_cursor_location' : missing Type
-
 	// UNSUPPORTED : C value 'set_use_preedit' : missing Type
-
 	// UNSUPPORTED : C value 'set_surrounding' : missing Type
-
 	// UNSUPPORTED : C value 'get_surrounding' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 }
 
 type IMContextInfo struct {
@@ -2371,13 +1828,9 @@ type IMMulticontextClass struct {
 	native      uintptr
 	ParentClass *IMContextClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type IMMulticontextPrivate struct {
@@ -2387,15 +1840,10 @@ type IMMulticontextPrivate struct {
 type IconFactoryClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type IconFactoryPrivate struct {
@@ -2609,17 +2057,11 @@ func (recv *IconSource) SetIconName(iconName string) {
 type IconThemeClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type IconThemePrivate struct {
@@ -2639,29 +2081,17 @@ type IconViewClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'item_activated' : missing Type
-
 	// UNSUPPORTED : C value 'selection_changed' : missing Type
-
 	// UNSUPPORTED : C value 'select_all' : missing Type
-
 	// UNSUPPORTED : C value 'unselect_all' : missing Type
-
 	// UNSUPPORTED : C value 'select_cursor_item' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_cursor_item' : missing Type
-
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'activate_cursor_item' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type IconViewPrivate struct {
@@ -2690,26 +2120,18 @@ type ImageClass struct {
 	native      uintptr
 	ParentClass *MiscClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ImageMenuItemClass struct {
 	native      uintptr
 	ParentClass *MenuItemClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ImageMenuItemPrivate struct {
@@ -2724,17 +2146,11 @@ type InfoBarClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value 'response' : missing Type
-
 	// UNSUPPORTED : C value 'close' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type InfoBarPrivate struct {
@@ -2745,13 +2161,9 @@ type InvisibleClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type InvisiblePrivate struct {
@@ -2771,29 +2183,17 @@ type LabelClass struct {
 	native      uintptr
 	ParentClass *MiscClass
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'copy_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'populate_popup' : missing Type
-
 	// UNSUPPORTED : C value 'activate_link' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type LabelPrivate struct {
@@ -2808,13 +2208,9 @@ type LayoutClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type LayoutPrivate struct {
@@ -2833,7 +2229,6 @@ type LevelBarAccessiblePrivate struct {
 type LevelBarClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'offset_changed' : missing Type
-
 }
 
 type LevelBarPrivate struct {
@@ -2852,15 +2247,10 @@ type LinkButtonAccessiblePrivate struct {
 type LinkButtonClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'activate_link' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_padding1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_padding2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_padding3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_padding4' : missing Type
-
 }
 
 type LinkButtonPrivate struct {
@@ -2880,27 +2270,16 @@ type ListBoxClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'row_selected' : missing Type
-
 	// UNSUPPORTED : C value 'row_activated' : missing Type
-
 	// UNSUPPORTED : C value 'activate_cursor_row' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_cursor_row' : missing Type
-
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'selected_rows_changed' : missing Type
-
 	// UNSUPPORTED : C value 'select_all' : missing Type
-
 	// UNSUPPORTED : C value 'unselect_all' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 }
 
 type ListBoxRowAccessibleClass struct {
@@ -2912,25 +2291,17 @@ type ListBoxRowClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 }
 
 type ListStoreClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ListStorePrivate struct {
@@ -2950,21 +2321,13 @@ type LockButtonClass struct {
 	native      uintptr
 	ParentClass *ButtonClass
 	// UNSUPPORTED : C value 'reserved0' : missing Type
-
 	// UNSUPPORTED : C value 'reserved1' : missing Type
-
 	// UNSUPPORTED : C value 'reserved2' : missing Type
-
 	// UNSUPPORTED : C value 'reserved3' : missing Type
-
 	// UNSUPPORTED : C value 'reserved4' : missing Type
-
 	// UNSUPPORTED : C value 'reserved5' : missing Type
-
 	// UNSUPPORTED : C value 'reserved6' : missing Type
-
 	// UNSUPPORTED : C value 'reserved7' : missing Type
-
 }
 
 type LockButtonPrivate struct {
@@ -2984,13 +2347,9 @@ type MenuBarClass struct {
 	native      uintptr
 	ParentClass *MenuShellClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MenuBarPrivate struct {
@@ -3010,13 +2369,9 @@ type MenuButtonClass struct {
 	native      uintptr
 	ParentClass *ToggleButtonClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MenuButtonPrivate struct {
@@ -3027,13 +2382,9 @@ type MenuClass struct {
 	native      uintptr
 	ParentClass *MenuShellClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MenuItemAccessibleClass struct {
@@ -3050,29 +2401,17 @@ type MenuItemClass struct {
 	ParentClass    *BinClass
 	HideOnActivate uint32
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'activate_item' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_size_request' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_size_allocate' : missing Type
-
 	// UNSUPPORTED : C value 'set_label' : missing Type
-
 	// UNSUPPORTED : C value 'get_label' : missing Type
-
 	// UNSUPPORTED : C value 'select' : missing Type
-
 	// UNSUPPORTED : C value 'deselect' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MenuItemPrivate struct {
@@ -3097,31 +2436,18 @@ type MenuShellClass struct {
 	ParentClass      *ContainerClass
 	SubmenuPlacement uint32
 	// UNSUPPORTED : C value 'deactivate' : missing Type
-
 	// UNSUPPORTED : C value 'selection_done' : missing Type
-
 	// UNSUPPORTED : C value 'move_current' : missing Type
-
 	// UNSUPPORTED : C value 'activate_current' : missing Type
-
 	// UNSUPPORTED : C value 'cancel' : missing Type
-
 	// UNSUPPORTED : C value 'select_item' : missing Type
-
 	// UNSUPPORTED : C value 'insert' : missing Type
-
 	// UNSUPPORTED : C value 'get_popup_delay' : missing Type
-
 	// UNSUPPORTED : C value 'move_selected' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MenuShellPrivate struct {
@@ -3132,15 +2458,10 @@ type MenuToolButtonClass struct {
 	native      uintptr
 	ParentClass *ToolButtonClass
 	// UNSUPPORTED : C value 'show_menu' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MenuToolButtonPrivate struct {
@@ -3151,13 +2472,9 @@ type MessageDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MessageDialogPrivate struct {
@@ -3168,13 +2485,9 @@ type MiscClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MiscPrivate struct {
@@ -3184,15 +2497,10 @@ type MiscPrivate struct {
 type MountOperationClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.MountOperationClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type MountOperationPrivate struct {
@@ -3202,21 +2510,13 @@ type MountOperationPrivate struct {
 type NativeDialogClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'response' : missing Type
-
 	// UNSUPPORTED : C value 'show' : missing Type
-
 	// UNSUPPORTED : C value 'hide' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type NotebookAccessibleClass struct {
@@ -3232,49 +2532,29 @@ type NotebookClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'switch_page' : missing Type
-
 	// UNSUPPORTED : C value 'select_page' : missing Type
-
 	// UNSUPPORTED : C value 'focus_tab' : missing Type
-
 	// UNSUPPORTED : C value 'change_current_page' : missing Type
-
 	// UNSUPPORTED : C value 'move_focus_out' : missing Type
-
 	// UNSUPPORTED : C value 'reorder_tab' : missing Type
-
 	// UNSUPPORTED : C value 'insert_page' : missing Type
-
 	// UNSUPPORTED : C value 'create_window' : missing Type
-
 	// UNSUPPORTED : C value 'page_reordered' : missing Type
-
 	// UNSUPPORTED : C value 'page_removed' : missing Type
-
 	// UNSUPPORTED : C value 'page_added' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type NotebookPageAccessibleClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
-
 }
 
 type NotebookPageAccessiblePrivate struct {
@@ -3288,9 +2568,7 @@ type NotebookPrivate struct {
 type NumerableIconClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Gio.EmblemedIconClass'
-
 	// UNSUPPORTED : C value 'padding' : missing Type
-
 }
 
 type NumerableIconPrivate struct {
@@ -3301,42 +2579,28 @@ type OffscreenWindowClass struct {
 	native      uintptr
 	ParentClass *WindowClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type OrientableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-
 }
 
 type OverlayClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'get_child_position' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type OverlayPrivate struct {
@@ -3346,7 +2610,6 @@ type OverlayPrivate struct {
 type PadActionEntry struct {
 	native uintptr
 	// UNSUPPORTED : C value 'type' : no Go type for 'PadActionType'
-
 	Index      int32
 	Mode       int32
 	Label      string
@@ -3376,25 +2639,15 @@ type PanedClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'cycle_child_focus' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_handle_focus' : missing Type
-
 	// UNSUPPORTED : C value 'move_handle' : missing Type
-
 	// UNSUPPORTED : C value 'cycle_handle_focus' : missing Type
-
 	// UNSUPPORTED : C value 'accept_position' : missing Type
-
 	// UNSUPPORTED : C value 'cancel_position' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type PanedPrivate struct {
@@ -3552,15 +2805,10 @@ type PlugClass struct {
 	native      uintptr
 	ParentClass *WindowClass
 	// UNSUPPORTED : C value 'embedded' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type PlugPrivate struct {
@@ -3576,7 +2824,6 @@ type PopoverClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'closed' : missing Type
-
 }
 
 type PopoverMenuClass struct {
@@ -3591,77 +2838,43 @@ type PopoverPrivate struct {
 type PrintOperationClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'done' : missing Type
-
 	// UNSUPPORTED : C value 'begin_print' : missing Type
-
 	// UNSUPPORTED : C value 'paginate' : missing Type
-
 	// UNSUPPORTED : C value 'request_page_setup' : missing Type
-
 	// UNSUPPORTED : C value 'draw_page' : missing Type
-
 	// UNSUPPORTED : C value 'end_print' : missing Type
-
 	// UNSUPPORTED : C value 'status_changed' : missing Type
-
 	// UNSUPPORTED : C value 'create_custom_widget' : missing Type
-
 	// UNSUPPORTED : C value 'custom_widget_apply' : missing Type
-
 	// UNSUPPORTED : C value 'preview' : missing Type
-
 	// UNSUPPORTED : C value 'update_custom_widget' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type PrintOperationPreviewIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'g_iface' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'ready' : missing Type
-
 	// UNSUPPORTED : C value 'got_page_size' : missing Type
-
 	// UNSUPPORTED : C value 'render_page' : missing Type
-
 	// UNSUPPORTED : C value 'is_selected' : missing Type
-
 	// UNSUPPORTED : C value 'end_preview' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type PrintOperationPrivate struct {
@@ -3681,13 +2894,9 @@ type ProgressBarClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ProgressBarPrivate struct {
@@ -3698,15 +2907,10 @@ type RadioActionClass struct {
 	native      uintptr
 	ParentClass *ToggleActionClass
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RadioActionEntry struct {
@@ -3736,15 +2940,10 @@ type RadioButtonClass struct {
 	native      uintptr
 	ParentClass *CheckButtonClass
 	// UNSUPPORTED : C value 'group_changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RadioButtonPrivate struct {
@@ -3764,15 +2963,10 @@ type RadioMenuItemClass struct {
 	native      uintptr
 	ParentClass *CheckMenuItemClass
 	// UNSUPPORTED : C value 'group_changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RadioMenuItemPrivate struct {
@@ -3783,13 +2977,9 @@ type RadioToolButtonClass struct {
 	native      uintptr
 	ParentClass *ToggleToolButtonClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RangeAccessibleClass struct {
@@ -3807,23 +2997,14 @@ type RangeClass struct {
 	SliderDetail  string
 	StepperDetail string
 	// UNSUPPORTED : C value 'value_changed' : missing Type
-
 	// UNSUPPORTED : C value 'adjust_bounds' : missing Type
-
 	// UNSUPPORTED : C value 'move_slider' : missing Type
-
 	// UNSUPPORTED : C value 'get_range_border' : missing Type
-
 	// UNSUPPORTED : C value 'change_value' : missing Type
-
 	// UNSUPPORTED : C value 'get_range_size_request' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 }
 
 type RangePrivate struct {
@@ -3837,47 +3018,31 @@ type RcContext struct {
 type RcProperty struct {
 	native uintptr
 	// UNSUPPORTED : C value 'type_name' : no Go type for 'GLib.Quark'
-
 	// UNSUPPORTED : C value 'property_name' : no Go type for 'GLib.Quark'
-
 	Origin string
 	// UNSUPPORTED : C value 'value' : no Go type for 'GObject.Value'
-
 }
 
 type RcStyleClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'create_rc_style' : missing Type
-
 	// UNSUPPORTED : C value 'parse' : missing Type
-
 	// UNSUPPORTED : C value 'merge' : missing Type
-
 	// UNSUPPORTED : C value 'create_style' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RecentActionClass struct {
 	native      uintptr
 	ParentClass *ActionClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RecentActionPrivate struct {
@@ -3888,13 +3053,9 @@ type RecentChooserDialogClass struct {
 	native      uintptr
 	ParentClass *DialogClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RecentChooserDialogPrivate struct {
@@ -3904,46 +3065,28 @@ type RecentChooserDialogPrivate struct {
 type RecentChooserIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'set_current_uri' : missing Type
-
 	// UNSUPPORTED : C value 'get_current_uri' : missing Type
-
 	// UNSUPPORTED : C value 'select_uri' : missing Type
-
 	// UNSUPPORTED : C value 'unselect_uri' : missing Type
-
 	// UNSUPPORTED : C value 'select_all' : missing Type
-
 	// UNSUPPORTED : C value 'unselect_all' : missing Type
-
 	// UNSUPPORTED : C value 'get_items' : missing Type
-
 	// UNSUPPORTED : C value 'get_recent_manager' : missing Type
-
 	// UNSUPPORTED : C value 'add_filter' : missing Type
-
 	// UNSUPPORTED : C value 'remove_filter' : missing Type
-
 	// UNSUPPORTED : C value 'list_filters' : missing Type
-
 	// UNSUPPORTED : C value 'set_sort_func' : missing Type
-
 	// UNSUPPORTED : C value 'item_activated' : missing Type
-
 	// UNSUPPORTED : C value 'selection_changed' : missing Type
-
 }
 
 type RecentChooserMenuClass struct {
 	native      uintptr
 	ParentClass *MenuClass
 	// UNSUPPORTED : C value 'gtk_recent1' : missing Type
-
 	// UNSUPPORTED : C value 'gtk_recent2' : missing Type
-
 	// UNSUPPORTED : C value 'gtk_recent3' : missing Type
-
 	// UNSUPPORTED : C value 'gtk_recent4' : missing Type
-
 }
 
 type RecentChooserMenuPrivate struct {
@@ -3954,13 +3097,9 @@ type RecentChooserWidgetClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type RecentChooserWidgetPrivate struct {
@@ -3975,22 +3114,17 @@ type RecentData struct {
 	AppName     string
 	AppExec     string
 	// UNSUPPORTED : C value 'groups' : missing Type
-
 	// UNSUPPORTED : C value 'is_private' : no Go type for 'gboolean'
-
 }
 
 type RecentFilterInfo struct {
 	native uintptr
 	// UNSUPPORTED : C value 'contains' : no Go type for 'RecentFilterFlags'
-
 	Uri         string
 	DisplayName string
 	MimeType    string
 	// UNSUPPORTED : C value 'applications' : missing Type
-
 	// UNSUPPORTED : C value 'groups' : missing Type
-
 	Age int32
 }
 
@@ -4256,15 +3390,10 @@ func (recv *RecentInfo) Unref() {
 type RecentManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_recent1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_recent2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_recent3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_recent4' : missing Type
-
 }
 
 type RecentManagerPrivate struct {
@@ -4283,7 +3412,6 @@ type RendererCellAccessiblePrivate struct {
 type RequestedSize struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-
 	MinimumSize int32
 	NaturalSize int32
 }
@@ -4369,15 +3497,10 @@ type ScaleButtonClass struct {
 	native      uintptr
 	ParentClass *ButtonClass
 	// UNSUPPORTED : C value 'value_changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ScaleButtonPrivate struct {
@@ -4388,19 +3511,12 @@ type ScaleClass struct {
 	native      uintptr
 	ParentClass *RangeClass
 	// UNSUPPORTED : C value 'format_value' : missing Type
-
 	// UNSUPPORTED : C value 'draw_value' : missing Type
-
 	// UNSUPPORTED : C value 'get_layout_offsets' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ScalePrivate struct {
@@ -4410,22 +3526,16 @@ type ScalePrivate struct {
 type ScrollableInterface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'base_iface' : no Go type for 'GObject.TypeInterface'
-
 	// UNSUPPORTED : C value 'get_border' : missing Type
-
 }
 
 type ScrollbarClass struct {
 	native      uintptr
 	ParentClass *RangeClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ScrolledWindowAccessibleClass struct {
@@ -4442,17 +3552,11 @@ type ScrolledWindowClass struct {
 	ParentClass      *BinClass
 	ScrollbarSpacing int32
 	// UNSUPPORTED : C value 'scroll_child' : missing Type
-
 	// UNSUPPORTED : C value 'move_focus_out' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ScrolledWindowPrivate struct {
@@ -4463,26 +3567,18 @@ type SearchBarClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SearchEntryClass struct {
 	native      uintptr
 	ParentClass *EntryClass
 	// UNSUPPORTED : C value 'search_changed' : missing Type
-
 	// UNSUPPORTED : C value 'next_match' : missing Type
-
 	// UNSUPPORTED : C value 'previous_match' : missing Type
-
 	// UNSUPPORTED : C value 'stop_search' : missing Type
-
 }
 
 type SelectionData struct {
@@ -4658,26 +3754,18 @@ type SeparatorClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SeparatorMenuItemClass struct {
 	native      uintptr
 	ParentClass *MenuItemClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SeparatorPrivate struct {
@@ -4688,13 +3776,9 @@ type SeparatorToolItemClass struct {
 	native      uintptr
 	ParentClass *ToolItemClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SeparatorToolItemPrivate struct {
@@ -4704,15 +3788,10 @@ type SeparatorToolItemPrivate struct {
 type SettingsClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SettingsPrivate struct {
@@ -4723,7 +3802,6 @@ type SettingsValue struct {
 	native uintptr
 	Origin string
 	// UNSUPPORTED : C value 'value' : no Go type for 'GObject.Value'
-
 }
 
 type ShortcutLabelClass struct {
@@ -4746,23 +3824,16 @@ type ShortcutsWindowClass struct {
 	native      uintptr
 	ParentClass *WindowClass
 	// UNSUPPORTED : C value 'close' : missing Type
-
 	// UNSUPPORTED : C value 'search' : missing Type
-
 }
 
 type SizeGroupClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SizeGroupPrivate struct {
@@ -4773,17 +3844,11 @@ type SocketClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'plug_added' : missing Type
-
 	// UNSUPPORTED : C value 'plug_removed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SocketPrivate struct {
@@ -4803,23 +3868,14 @@ type SpinButtonClass struct {
 	native      uintptr
 	ParentClass *EntryClass
 	// UNSUPPORTED : C value 'input' : missing Type
-
 	// UNSUPPORTED : C value 'output' : missing Type
-
 	// UNSUPPORTED : C value 'value_changed' : missing Type
-
 	// UNSUPPORTED : C value 'change_value' : missing Type
-
 	// UNSUPPORTED : C value 'wrapped' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SpinButtonPrivate struct {
@@ -4839,13 +3895,9 @@ type SpinnerClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type SpinnerPrivate struct {
@@ -4866,13 +3918,9 @@ type StackSidebarClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type StackSidebarPrivate struct {
@@ -4883,41 +3931,25 @@ type StackSwitcherClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type StatusIconClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'popup_menu' : missing Type
-
 	// UNSUPPORTED : C value 'size_changed' : missing Type
-
 	// UNSUPPORTED : C value 'button_press_event' : missing Type
-
 	// UNSUPPORTED : C value 'button_release_event' : missing Type
-
 	// UNSUPPORTED : C value 'scroll_event' : missing Type
-
 	// UNSUPPORTED : C value 'query_tooltip' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '__gtk_reserved4' : missing Type
-
 }
 
 type StatusIconPrivate struct {
@@ -4937,19 +3969,12 @@ type StatusbarClass struct {
 	native      uintptr
 	ParentClass *BoxClass
 	// UNSUPPORTED : C value 'reserved' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'text_pushed' : missing Type
-
 	// UNSUPPORTED : C value 'text_popped' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type StatusbarPrivate struct {
@@ -4961,7 +3986,6 @@ type StockItem struct {
 	StockId string
 	Label   string
 	// UNSUPPORTED : C value 'modifier' : no Go type for 'Gdk.ModifierType'
-
 	Keyval            uint32
 	TranslationDomain string
 }
@@ -5002,99 +4026,54 @@ func (recv *StockItem) Free() {
 type StyleClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'realize' : missing Type
-
 	// UNSUPPORTED : C value 'unrealize' : missing Type
-
 	// UNSUPPORTED : C value 'copy' : missing Type
-
 	// UNSUPPORTED : C value 'clone' : missing Type
-
 	// UNSUPPORTED : C value 'init_from_rc' : missing Type
-
 	// UNSUPPORTED : C value 'set_background' : missing Type
-
 	// UNSUPPORTED : C value 'render_icon' : missing Type
-
 	// UNSUPPORTED : C value 'draw_hline' : missing Type
-
 	// UNSUPPORTED : C value 'draw_vline' : missing Type
-
 	// UNSUPPORTED : C value 'draw_shadow' : missing Type
-
 	// UNSUPPORTED : C value 'draw_arrow' : missing Type
-
 	// UNSUPPORTED : C value 'draw_diamond' : missing Type
-
 	// UNSUPPORTED : C value 'draw_box' : missing Type
-
 	// UNSUPPORTED : C value 'draw_flat_box' : missing Type
-
 	// UNSUPPORTED : C value 'draw_check' : missing Type
-
 	// UNSUPPORTED : C value 'draw_option' : missing Type
-
 	// UNSUPPORTED : C value 'draw_tab' : missing Type
-
 	// UNSUPPORTED : C value 'draw_shadow_gap' : missing Type
-
 	// UNSUPPORTED : C value 'draw_box_gap' : missing Type
-
 	// UNSUPPORTED : C value 'draw_extension' : missing Type
-
 	// UNSUPPORTED : C value 'draw_focus' : missing Type
-
 	// UNSUPPORTED : C value 'draw_slider' : missing Type
-
 	// UNSUPPORTED : C value 'draw_handle' : missing Type
-
 	// UNSUPPORTED : C value 'draw_expander' : missing Type
-
 	// UNSUPPORTED : C value 'draw_layout' : missing Type
-
 	// UNSUPPORTED : C value 'draw_resize_grip' : missing Type
-
 	// UNSUPPORTED : C value 'draw_spinner' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved9' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved10' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved11' : missing Type
-
 }
 
 type StyleContextClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type StyleContextPrivate struct {
@@ -5104,13 +4083,9 @@ type StyleContextPrivate struct {
 type StylePropertiesClass struct {
 	native uintptr
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type StylePropertiesPrivate struct {
@@ -5120,11 +4095,8 @@ type StylePropertiesPrivate struct {
 type StyleProviderIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'get_style' : missing Type
-
 	// UNSUPPORTED : C value 'get_style_property' : missing Type
-
 	// UNSUPPORTED : C value 'get_icon_factory' : missing Type
-
 }
 
 type SwitchAccessibleClass struct {
@@ -5140,19 +4112,12 @@ type SwitchClass struct {
 	native      uintptr
 	ParentClass *WidgetClass
 	// UNSUPPORTED : C value 'activate' : missing Type
-
 	// UNSUPPORTED : C value 'state_set' : missing Type
-
 	// UNSUPPORTED : C value '_switch_padding_1' : missing Type
-
 	// UNSUPPORTED : C value '_switch_padding_2' : missing Type
-
 	// UNSUPPORTED : C value '_switch_padding_3' : missing Type
-
 	// UNSUPPORTED : C value '_switch_padding_4' : missing Type
-
 	// UNSUPPORTED : C value '_switch_padding_5' : missing Type
-
 }
 
 type SwitchPrivate struct {
@@ -5264,7 +4229,6 @@ func (recv *SymbolicColor) Unref() {
 type TableChild struct {
 	native uintptr
 	// UNSUPPORTED : C value 'widget' : no Go type for 'Widget'
-
 	LeftAttach   uint16
 	RightAttach  uint16
 	TopAttach    uint16
@@ -5283,13 +4247,9 @@ type TableClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TablePrivate struct {
@@ -5454,7 +4414,6 @@ func (recv *TargetList) Unref() {
 type TargetPair struct {
 	native uintptr
 	// UNSUPPORTED : C value 'target' : no Go type for 'Gdk.Atom'
-
 	Flags uint32
 	Info  uint32
 }
@@ -5463,13 +4422,9 @@ type TearoffMenuItemClass struct {
 	native      uintptr
 	ParentClass *MenuItemClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TearoffMenuItemPrivate struct {
@@ -5479,9 +4434,7 @@ type TearoffMenuItemPrivate struct {
 type TextAppearance struct {
 	native uintptr
 	// UNSUPPORTED : C value 'bg_color' : no Go type for 'Gdk.Color'
-
 	// UNSUPPORTED : C value 'fg_color' : no Go type for 'Gdk.Color'
-
 	Rise            int32
 	Underline       uint32
 	Strikethrough   uint32
@@ -5494,13 +4447,9 @@ type TextAttributes struct {
 	native     uintptr
 	Appearance *TextAppearance
 	// UNSUPPORTED : C value 'justification' : no Go type for 'Justification'
-
 	// UNSUPPORTED : C value 'direction' : no Go type for 'TextDirection'
-
 	// UNSUPPORTED : C value 'font' : no Go type for 'Pango.FontDescription'
-
 	// UNSUPPORTED : C value 'font_scale' : no Go type for 'gdouble'
-
 	LeftMargin       int32
 	RightMargin      int32
 	Indent           int32
@@ -5508,11 +4457,8 @@ type TextAttributes struct {
 	PixelsBelowLines int32
 	PixelsInsideWrap int32
 	// UNSUPPORTED : C value 'tabs' : no Go type for 'Pango.TabArray'
-
 	// UNSUPPORTED : C value 'wrap_mode' : no Go type for 'WrapMode'
-
 	// UNSUPPORTED : C value 'language' : no Go type for 'Pango.Language'
-
 	Invisible     uint32
 	BgFullHeight  uint32
 	Editable      uint32
@@ -5595,41 +4541,23 @@ type TextBTree struct {
 type TextBufferClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'insert_text' : missing Type
-
 	// UNSUPPORTED : C value 'insert_pixbuf' : missing Type
-
 	// UNSUPPORTED : C value 'insert_child_anchor' : missing Type
-
 	// UNSUPPORTED : C value 'delete_range' : missing Type
-
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value 'modified_changed' : missing Type
-
 	// UNSUPPORTED : C value 'mark_set' : missing Type
-
 	// UNSUPPORTED : C value 'mark_deleted' : missing Type
-
 	// UNSUPPORTED : C value 'apply_tag' : missing Type
-
 	// UNSUPPORTED : C value 'remove_tag' : missing Type
-
 	// UNSUPPORTED : C value 'begin_user_action' : missing Type
-
 	// UNSUPPORTED : C value 'end_user_action' : missing Type
-
 	// UNSUPPORTED : C value 'paste_done' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TextBufferPrivate struct {
@@ -5648,15 +4576,10 @@ type TextCellAccessiblePrivate struct {
 type TextChildAnchorClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TextIter struct {
@@ -6104,31 +5027,20 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 type TextMarkClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TextTagClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'event' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TextTagPrivate struct {
@@ -6138,21 +5050,13 @@ type TextTagPrivate struct {
 type TextTagTableClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'tag_changed' : missing Type
-
 	// UNSUPPORTED : C value 'tag_added' : missing Type
-
 	// UNSUPPORTED : C value 'tag_removed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TextTagTablePrivate struct {
@@ -6172,41 +5076,23 @@ type TextViewClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'populate_popup' : missing Type
-
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'set_anchor' : missing Type
-
 	// UNSUPPORTED : C value 'insert_at_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'delete_from_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'backspace' : missing Type
-
 	// UNSUPPORTED : C value 'cut_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'copy_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'paste_clipboard' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_overwrite' : missing Type
-
 	// UNSUPPORTED : C value 'create_buffer' : missing Type
-
 	// UNSUPPORTED : C value 'draw_layer' : missing Type
-
 	// UNSUPPORTED : C value 'extend_selection' : missing Type
-
 	// UNSUPPORTED : C value 'insert_emoji' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TextViewPrivate struct {
@@ -6220,41 +5106,23 @@ type ThemeEngine struct {
 type ThemingEngineClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'render_line' : missing Type
-
 	// UNSUPPORTED : C value 'render_background' : missing Type
-
 	// UNSUPPORTED : C value 'render_frame' : missing Type
-
 	// UNSUPPORTED : C value 'render_frame_gap' : missing Type
-
 	// UNSUPPORTED : C value 'render_extension' : missing Type
-
 	// UNSUPPORTED : C value 'render_check' : missing Type
-
 	// UNSUPPORTED : C value 'render_option' : missing Type
-
 	// UNSUPPORTED : C value 'render_arrow' : missing Type
-
 	// UNSUPPORTED : C value 'render_expander' : missing Type
-
 	// UNSUPPORTED : C value 'render_focus' : missing Type
-
 	// UNSUPPORTED : C value 'render_layout' : missing Type
-
 	// UNSUPPORTED : C value 'render_slider' : missing Type
-
 	// UNSUPPORTED : C value 'render_handle' : missing Type
-
 	// UNSUPPORTED : C value 'render_activity' : missing Type
-
 	// UNSUPPORTED : C value 'render_icon_pixbuf' : missing Type
-
 	// UNSUPPORTED : C value 'render_icon' : missing Type
-
 	// UNSUPPORTED : C value 'render_icon_surface' : missing Type
-
 }
 
 type ThemingEnginePrivate struct {
@@ -6265,15 +5133,10 @@ type ToggleActionClass struct {
 	native      uintptr
 	ParentClass *ActionClass
 	// UNSUPPORTED : C value 'toggled' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToggleActionEntry struct {
@@ -6284,9 +5147,7 @@ type ToggleActionEntry struct {
 	Accelerator string
 	Tooltip     string
 	// UNSUPPORTED : C value 'callback' : no Go type for 'GObject.Callback'
-
 	// UNSUPPORTED : C value 'is_active' : no Go type for 'gboolean'
-
 }
 
 type ToggleActionPrivate struct {
@@ -6306,15 +5167,10 @@ type ToggleButtonClass struct {
 	native      uintptr
 	ParentClass *ButtonClass
 	// UNSUPPORTED : C value 'toggled' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToggleButtonPrivate struct {
@@ -6325,15 +5181,10 @@ type ToggleToolButtonClass struct {
 	native      uintptr
 	ParentClass *ToolButtonClass
 	// UNSUPPORTED : C value 'toggled' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToggleToolButtonPrivate struct {
@@ -6344,17 +5195,11 @@ type ToolButtonClass struct {
 	native      uintptr
 	ParentClass *ToolItemClass
 	// UNSUPPORTED : C value 'button_type' : no Go type for 'GType'
-
 	// UNSUPPORTED : C value 'clicked' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToolButtonPrivate struct {
@@ -6365,30 +5210,20 @@ type ToolItemClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'create_menu_proxy' : missing Type
-
 	// UNSUPPORTED : C value 'toolbar_reconfigured' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToolItemGroupClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToolItemGroupPrivate struct {
@@ -6403,13 +5238,9 @@ type ToolPaletteClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToolPalettePrivate struct {
@@ -6419,42 +5250,26 @@ type ToolPalettePrivate struct {
 type ToolShellIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'get_icon_size' : missing Type
-
 	// UNSUPPORTED : C value 'get_orientation' : missing Type
-
 	// UNSUPPORTED : C value 'get_style' : missing Type
-
 	// UNSUPPORTED : C value 'get_relief_style' : missing Type
-
 	// UNSUPPORTED : C value 'rebuild_menu' : missing Type
-
 	// UNSUPPORTED : C value 'get_text_orientation' : missing Type
-
 	// UNSUPPORTED : C value 'get_text_alignment' : missing Type
-
 	// UNSUPPORTED : C value 'get_ellipsize_mode' : missing Type
-
 	// UNSUPPORTED : C value 'get_text_size_group' : missing Type
-
 }
 
 type ToolbarClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'orientation_changed' : missing Type
-
 	// UNSUPPORTED : C value 'style_changed' : missing Type
-
 	// UNSUPPORTED : C value 'popup_context_menu' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ToolbarPrivate struct {
@@ -6464,7 +5279,6 @@ type ToolbarPrivate struct {
 type ToplevelAccessibleClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'Atk.ObjectClass'
-
 }
 
 type ToplevelAccessiblePrivate struct {
@@ -6474,30 +5288,22 @@ type ToplevelAccessiblePrivate struct {
 type TreeDragDestIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'drag_data_received' : missing Type
-
 	// UNSUPPORTED : C value 'row_drop_possible' : missing Type
-
 }
 
 type TreeDragSourceIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'row_draggable' : missing Type
-
 	// UNSUPPORTED : C value 'drag_data_get' : missing Type
-
 	// UNSUPPORTED : C value 'drag_data_delete' : missing Type
-
 }
 
 type TreeIter struct {
 	native uintptr
 	Stamp  int32
 	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'user_data2' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'user_data3' : no Go type for 'gpointer'
-
 }
 
 var copyTreeIterInvoker *gi.Function
@@ -6536,19 +5342,12 @@ func (recv *TreeIter) Free() {
 type TreeModelFilterClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'visible' : missing Type
-
 	// UNSUPPORTED : C value 'modify' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TreeModelFilterPrivate struct {
@@ -6558,59 +5357,34 @@ type TreeModelFilterPrivate struct {
 type TreeModelIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'row_changed' : missing Type
-
 	// UNSUPPORTED : C value 'row_inserted' : missing Type
-
 	// UNSUPPORTED : C value 'row_has_child_toggled' : missing Type
-
 	// UNSUPPORTED : C value 'row_deleted' : missing Type
-
 	// UNSUPPORTED : C value 'rows_reordered' : missing Type
-
 	// UNSUPPORTED : C value 'get_flags' : missing Type
-
 	// UNSUPPORTED : C value 'get_n_columns' : missing Type
-
 	// UNSUPPORTED : C value 'get_column_type' : missing Type
-
 	// UNSUPPORTED : C value 'get_iter' : missing Type
-
 	// UNSUPPORTED : C value 'get_path' : missing Type
-
 	// UNSUPPORTED : C value 'get_value' : missing Type
-
 	// UNSUPPORTED : C value 'iter_next' : missing Type
-
 	// UNSUPPORTED : C value 'iter_previous' : missing Type
-
 	// UNSUPPORTED : C value 'iter_children' : missing Type
-
 	// UNSUPPORTED : C value 'iter_has_child' : missing Type
-
 	// UNSUPPORTED : C value 'iter_n_children' : missing Type
-
 	// UNSUPPORTED : C value 'iter_nth_child' : missing Type
-
 	// UNSUPPORTED : C value 'iter_parent' : missing Type
-
 	// UNSUPPORTED : C value 'ref_node' : missing Type
-
 	// UNSUPPORTED : C value 'unref_node' : missing Type
-
 }
 
 type TreeModelSortClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TreeModelSortPrivate struct {
@@ -6918,17 +5692,11 @@ func (recv *TreeRowReference) GetPath() *TreePath {
 type TreeSelectionClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'changed' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TreeSelectionPrivate struct {
@@ -6938,31 +5706,20 @@ type TreeSelectionPrivate struct {
 type TreeSortableIface struct {
 	native uintptr
 	// UNSUPPORTED : C value 'sort_column_changed' : missing Type
-
 	// UNSUPPORTED : C value 'get_sort_column_id' : missing Type
-
 	// UNSUPPORTED : C value 'set_sort_column_id' : missing Type
-
 	// UNSUPPORTED : C value 'set_sort_func' : missing Type
-
 	// UNSUPPORTED : C value 'set_default_sort_func' : missing Type
-
 	// UNSUPPORTED : C value 'has_default_sort_func' : missing Type
-
 }
 
 type TreeStoreClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TreeStorePrivate struct {
@@ -6982,67 +5739,38 @@ type TreeViewClass struct {
 	native      uintptr
 	ParentClass *ContainerClass
 	// UNSUPPORTED : C value 'row_activated' : missing Type
-
 	// UNSUPPORTED : C value 'test_expand_row' : missing Type
-
 	// UNSUPPORTED : C value 'test_collapse_row' : missing Type
-
 	// UNSUPPORTED : C value 'row_expanded' : missing Type
-
 	// UNSUPPORTED : C value 'row_collapsed' : missing Type
-
 	// UNSUPPORTED : C value 'columns_changed' : missing Type
-
 	// UNSUPPORTED : C value 'cursor_changed' : missing Type
-
 	// UNSUPPORTED : C value 'move_cursor' : missing Type
-
 	// UNSUPPORTED : C value 'select_all' : missing Type
-
 	// UNSUPPORTED : C value 'unselect_all' : missing Type
-
 	// UNSUPPORTED : C value 'select_cursor_row' : missing Type
-
 	// UNSUPPORTED : C value 'toggle_cursor_row' : missing Type
-
 	// UNSUPPORTED : C value 'expand_collapse_cursor_row' : missing Type
-
 	// UNSUPPORTED : C value 'select_cursor_parent' : missing Type
-
 	// UNSUPPORTED : C value 'start_interactive_search' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved5' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved8' : missing Type
-
 }
 
 type TreeViewColumnClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-
 	// UNSUPPORTED : C value 'clicked' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type TreeViewColumnPrivate struct {
@@ -7056,31 +5784,18 @@ type TreeViewPrivate struct {
 type UIManagerClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value 'add_widget' : missing Type
-
 	// UNSUPPORTED : C value 'actions_changed' : missing Type
-
 	// UNSUPPORTED : C value 'connect_proxy' : missing Type
-
 	// UNSUPPORTED : C value 'disconnect_proxy' : missing Type
-
 	// UNSUPPORTED : C value 'pre_activate' : missing Type
-
 	// UNSUPPORTED : C value 'post_activate' : missing Type
-
 	// UNSUPPORTED : C value 'get_widget' : missing Type
-
 	// UNSUPPORTED : C value 'get_action' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type UIManagerPrivate struct {
@@ -7121,13 +5836,9 @@ type ViewportClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type ViewportPrivate struct {
@@ -7138,20 +5849,15 @@ type VolumeButtonClass struct {
 	native      uintptr
 	ParentClass *ScaleButtonClass
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type WidgetAccessibleClass struct {
 	native      uintptr
 	ParentClass *AccessibleClass
 	// UNSUPPORTED : C value 'notify_gtk' : missing Type
-
 }
 
 type WidgetAccessiblePrivate struct {
@@ -7161,176 +5867,91 @@ type WidgetAccessiblePrivate struct {
 type WidgetClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.InitiallyUnownedClass'
-
 	ActivateSignal uint32
 	// UNSUPPORTED : C value 'dispatch_child_properties_changed' : missing Type
-
 	// UNSUPPORTED : C value 'destroy' : missing Type
-
 	// UNSUPPORTED : C value 'show' : missing Type
-
 	// UNSUPPORTED : C value 'show_all' : missing Type
-
 	// UNSUPPORTED : C value 'hide' : missing Type
-
 	// UNSUPPORTED : C value 'map' : missing Type
-
 	// UNSUPPORTED : C value 'unmap' : missing Type
-
 	// UNSUPPORTED : C value 'realize' : missing Type
-
 	// UNSUPPORTED : C value 'unrealize' : missing Type
-
 	// UNSUPPORTED : C value 'size_allocate' : missing Type
-
 	// UNSUPPORTED : C value 'state_changed' : missing Type
-
 	// UNSUPPORTED : C value 'state_flags_changed' : missing Type
-
 	// UNSUPPORTED : C value 'parent_set' : missing Type
-
 	// UNSUPPORTED : C value 'hierarchy_changed' : missing Type
-
 	// UNSUPPORTED : C value 'style_set' : missing Type
-
 	// UNSUPPORTED : C value 'direction_changed' : missing Type
-
 	// UNSUPPORTED : C value 'grab_notify' : missing Type
-
 	// UNSUPPORTED : C value 'child_notify' : missing Type
-
 	// UNSUPPORTED : C value 'draw' : missing Type
-
 	// UNSUPPORTED : C value 'get_request_mode' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width_for_height' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_width' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height_for_width' : missing Type
-
 	// UNSUPPORTED : C value 'mnemonic_activate' : missing Type
-
 	// UNSUPPORTED : C value 'grab_focus' : missing Type
-
 	// UNSUPPORTED : C value 'focus' : missing Type
-
 	// UNSUPPORTED : C value 'move_focus' : missing Type
-
 	// UNSUPPORTED : C value 'keynav_failed' : missing Type
-
 	// UNSUPPORTED : C value 'event' : missing Type
-
 	// UNSUPPORTED : C value 'button_press_event' : missing Type
-
 	// UNSUPPORTED : C value 'button_release_event' : missing Type
-
 	// UNSUPPORTED : C value 'scroll_event' : missing Type
-
 	// UNSUPPORTED : C value 'motion_notify_event' : missing Type
-
 	// UNSUPPORTED : C value 'delete_event' : missing Type
-
 	// UNSUPPORTED : C value 'destroy_event' : missing Type
-
 	// UNSUPPORTED : C value 'key_press_event' : missing Type
-
 	// UNSUPPORTED : C value 'key_release_event' : missing Type
-
 	// UNSUPPORTED : C value 'enter_notify_event' : missing Type
-
 	// UNSUPPORTED : C value 'leave_notify_event' : missing Type
-
 	// UNSUPPORTED : C value 'configure_event' : missing Type
-
 	// UNSUPPORTED : C value 'focus_in_event' : missing Type
-
 	// UNSUPPORTED : C value 'focus_out_event' : missing Type
-
 	// UNSUPPORTED : C value 'map_event' : missing Type
-
 	// UNSUPPORTED : C value 'unmap_event' : missing Type
-
 	// UNSUPPORTED : C value 'property_notify_event' : missing Type
-
 	// UNSUPPORTED : C value 'selection_clear_event' : missing Type
-
 	// UNSUPPORTED : C value 'selection_request_event' : missing Type
-
 	// UNSUPPORTED : C value 'selection_notify_event' : missing Type
-
 	// UNSUPPORTED : C value 'proximity_in_event' : missing Type
-
 	// UNSUPPORTED : C value 'proximity_out_event' : missing Type
-
 	// UNSUPPORTED : C value 'visibility_notify_event' : missing Type
-
 	// UNSUPPORTED : C value 'window_state_event' : missing Type
-
 	// UNSUPPORTED : C value 'damage_event' : missing Type
-
 	// UNSUPPORTED : C value 'grab_broken_event' : missing Type
-
 	// UNSUPPORTED : C value 'selection_get' : missing Type
-
 	// UNSUPPORTED : C value 'selection_received' : missing Type
-
 	// UNSUPPORTED : C value 'drag_begin' : missing Type
-
 	// UNSUPPORTED : C value 'drag_end' : missing Type
-
 	// UNSUPPORTED : C value 'drag_data_get' : missing Type
-
 	// UNSUPPORTED : C value 'drag_data_delete' : missing Type
-
 	// UNSUPPORTED : C value 'drag_leave' : missing Type
-
 	// UNSUPPORTED : C value 'drag_motion' : missing Type
-
 	// UNSUPPORTED : C value 'drag_drop' : missing Type
-
 	// UNSUPPORTED : C value 'drag_data_received' : missing Type
-
 	// UNSUPPORTED : C value 'drag_failed' : missing Type
-
 	// UNSUPPORTED : C value 'popup_menu' : missing Type
-
 	// UNSUPPORTED : C value 'show_help' : missing Type
-
 	// UNSUPPORTED : C value 'get_accessible' : missing Type
-
 	// UNSUPPORTED : C value 'screen_changed' : missing Type
-
 	// UNSUPPORTED : C value 'can_activate_accel' : missing Type
-
 	// UNSUPPORTED : C value 'composited_changed' : missing Type
-
 	// UNSUPPORTED : C value 'query_tooltip' : missing Type
-
 	// UNSUPPORTED : C value 'compute_expand' : missing Type
-
 	// UNSUPPORTED : C value 'adjust_size_request' : missing Type
-
 	// UNSUPPORTED : C value 'adjust_size_allocation' : missing Type
-
 	// UNSUPPORTED : C value 'style_updated' : missing Type
-
 	// UNSUPPORTED : C value 'touch_event' : missing Type
-
 	// UNSUPPORTED : C value 'get_preferred_height_and_baseline_for_width' : missing Type
-
 	// UNSUPPORTED : C value 'adjust_baseline_request' : missing Type
-
 	// UNSUPPORTED : C value 'adjust_baseline_allocation' : missing Type
-
 	// UNSUPPORTED : C value 'queue_draw_region' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved6' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved7' : missing Type
-
 }
 
 // UNSUPPORTED : C value 'gtk_widget_class_bind_template_callback_full' : parameter 'callback_symbol' of type 'GObject.Callback' not supported
@@ -7796,21 +6417,13 @@ type WindowClass struct {
 	native      uintptr
 	ParentClass *BinClass
 	// UNSUPPORTED : C value 'set_focus' : missing Type
-
 	// UNSUPPORTED : C value 'activate_focus' : missing Type
-
 	// UNSUPPORTED : C value 'activate_default' : missing Type
-
 	// UNSUPPORTED : C value 'keys_changed' : missing Type
-
 	// UNSUPPORTED : C value 'enable_debugging' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 }
 
 type WindowGeometryInfo struct {
@@ -7820,15 +6433,10 @@ type WindowGeometryInfo struct {
 type WindowGroupClass struct {
 	native uintptr
 	// UNSUPPORTED : C value 'parent_class' : no Go type for 'GObject.ObjectClass'
-
 	// UNSUPPORTED : C value '_gtk_reserved1' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved2' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved3' : missing Type
-
 	// UNSUPPORTED : C value '_gtk_reserved4' : missing Type
-
 }
 
 type WindowGroupPrivate struct {

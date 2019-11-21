@@ -29,6 +29,7 @@ const (
 )
 
 // CacheModel is a representation of the C type WebKitCacheModel.
+//
 type CacheModel int
 
 const (
@@ -41,6 +42,7 @@ const (
 )
 
 // ContextMenuAction is a representation of the C type WebKitContextMenuAction.
+//
 type ContextMenuAction int
 
 const (
@@ -139,6 +141,7 @@ const (
 )
 
 // CookieAcceptPolicy is a representation of the C type WebKitCookieAcceptPolicy.
+//
 type CookieAcceptPolicy int
 
 const (
@@ -151,6 +154,7 @@ const (
 )
 
 // CookiePersistentStorage is a representation of the C type WebKitCookiePersistentStorage.
+//
 type CookiePersistentStorage int
 
 const (
@@ -175,6 +179,7 @@ const (
 )
 
 // DownloadError is a representation of the C type WebKitDownloadError.
+//
 type DownloadError int
 
 const (
@@ -187,6 +192,7 @@ const (
 )
 
 // FaviconDatabaseError is a representation of the C type WebKitFaviconDatabaseError.
+//
 type FaviconDatabaseError int
 
 const (
@@ -213,6 +219,7 @@ const (
 )
 
 // InsecureContentEvent is a representation of the C type WebKitInsecureContentEvent.
+//
 type InsecureContentEvent int
 
 const (
@@ -223,6 +230,7 @@ const (
 )
 
 // JavascriptError is a representation of the C type WebKitJavascriptError.
+//
 type JavascriptError int
 
 const (
@@ -231,6 +239,7 @@ const (
 )
 
 // LoadEvent is a representation of the C type WebKitLoadEvent.
+//
 type LoadEvent int
 
 const (
@@ -245,6 +254,7 @@ const (
 )
 
 // NavigationType is a representation of the C type WebKitNavigationType.
+//
 type NavigationType int
 
 const (
@@ -263,6 +273,7 @@ const (
 )
 
 // NetworkError is a representation of the C type WebKitNetworkError.
+//
 type NetworkError int
 
 const (
@@ -293,6 +304,7 @@ const (
 )
 
 // PluginError is a representation of the C type WebKitPluginError.
+//
 type PluginError int
 
 const (
@@ -311,6 +323,7 @@ const (
 )
 
 // PolicyDecisionType is a representation of the C type WebKitPolicyDecisionType.
+//
 type PolicyDecisionType int
 
 const (
@@ -323,6 +336,7 @@ const (
 )
 
 // PolicyError is a representation of the C type WebKitPolicyError.
+//
 type PolicyError int
 
 const (
@@ -339,6 +353,7 @@ const (
 )
 
 // PrintError is a representation of the C type WebKitPrintError.
+//
 type PrintError int
 
 const (
@@ -351,6 +366,7 @@ const (
 )
 
 // PrintOperationResponse is a representation of the C type WebKitPrintOperationResponse.
+//
 type PrintOperationResponse int
 
 const (
@@ -373,6 +389,7 @@ const (
 )
 
 // SaveMode is a representation of the C type WebKitSaveMode.
+//
 type SaveMode int
 
 const (
@@ -381,6 +398,7 @@ const (
 )
 
 // ScriptDialogType is a representation of the C type WebKitScriptDialogType.
+//
 type ScriptDialogType int
 
 const (
@@ -395,6 +413,7 @@ const (
 )
 
 // SnapshotError is a representation of the C type WebKitSnapshotError.
+//
 type SnapshotError int
 
 const (
@@ -403,6 +422,7 @@ const (
 )
 
 // SnapshotRegion is a representation of the C type WebKitSnapshotRegion.
+//
 type SnapshotRegion int
 
 const (
@@ -413,6 +433,7 @@ const (
 )
 
 // TLSErrorsPolicy is a representation of the C type WebKitTLSErrorsPolicy.
+//
 type TLSErrorsPolicy int
 
 const (

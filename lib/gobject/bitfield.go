@@ -19,6 +19,7 @@ const (
 )
 
 // ConnectFlags is a representation of the C type GConnectFlags.
+//
 type ConnectFlags int
 
 const (
@@ -29,6 +30,7 @@ const (
 )
 
 // ParamFlags is a representation of the C type GParamFlags.
+//
 type ParamFlags int
 
 const (
@@ -59,6 +61,7 @@ const (
 )
 
 // SignalFlags is a representation of the C type GSignalFlags.
+//
 type SignalFlags int
 
 const (
@@ -83,6 +86,7 @@ const (
 )
 
 // SignalMatchType is a representation of the C type GSignalMatchType.
+//
 type SignalMatchType int
 
 const (
@@ -101,6 +105,7 @@ const (
 )
 
 // TypeDebugFlags is a representation of the C type GTypeDebugFlags.
+//
 type TypeDebugFlags int
 
 const (
@@ -117,6 +122,7 @@ const (
 )
 
 // TypeFlags is a representation of the C type GTypeFlags.
+//
 type TypeFlags int
 
 const (
@@ -127,6 +133,7 @@ const (
 )
 
 // TypeFundamentalFlags is a representation of the C type GTypeFundamentalFlags.
+//
 type TypeFundamentalFlags int
 
 const (

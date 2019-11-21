@@ -3,6 +3,7 @@
 package gtksource
 
 // CompletionActivation is a representation of the C type GtkSourceCompletionActivation.
+//
 type CompletionActivation int
 
 const (
@@ -15,6 +16,7 @@ const (
 )
 
 // DrawSpacesFlags is a representation of the C type GtkSourceDrawSpacesFlags.
+//
 type DrawSpacesFlags int
 
 const (
@@ -53,6 +55,7 @@ const (
 )
 
 // GutterRendererState is a representation of the C type GtkSourceGutterRendererState.
+//
 type GutterRendererState int
 
 const (

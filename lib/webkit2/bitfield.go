@@ -21,6 +21,7 @@ const (
 )
 
 // FindOptions is a representation of the C type WebKitFindOptions.
+//
 type FindOptions int
 
 const (
@@ -39,6 +40,7 @@ const (
 )
 
 // HitTestResultContext is a representation of the C type WebKitHitTestResultContext.
+//
 type HitTestResultContext int
 
 const (
@@ -59,6 +61,7 @@ const (
 )
 
 // SnapshotOptions is a representation of the C type WebKitSnapshotOptions.
+//
 type SnapshotOptions int
 
 const (

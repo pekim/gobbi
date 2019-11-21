@@ -211,6 +211,7 @@ const (
 )
 
 // DataStreamByteOrder is a representation of the C type GDataStreamByteOrder.
+//
 type DataStreamByteOrder int
 
 const (
@@ -223,6 +224,7 @@ const (
 )
 
 // DataStreamNewlineType is a representation of the C type GDataStreamNewlineType.
+//
 type DataStreamNewlineType int
 
 const (
@@ -271,6 +273,7 @@ const (
 )
 
 // FileAttributeStatus is a representation of the C type GFileAttributeStatus.
+//
 type FileAttributeStatus int
 
 const (
@@ -283,6 +286,7 @@ const (
 )
 
 // FileAttributeType is a representation of the C type GFileAttributeType.
+//
 type FileAttributeType int
 
 const (
@@ -309,6 +313,7 @@ const (
 )
 
 // FileMonitorEvent is a representation of the C type GFileMonitorEvent.
+//
 type FileMonitorEvent int
 
 const (
@@ -337,6 +342,7 @@ const (
 )
 
 // FileType is a representation of the C type GFileType.
+//
 type FileType int
 
 const (
@@ -357,6 +363,7 @@ const (
 )
 
 // FilesystemPreviewType is a representation of the C type GFilesystemPreviewType.
+//
 type FilesystemPreviewType int
 
 const (
@@ -369,6 +376,7 @@ const (
 )
 
 // IOErrorEnum is a representation of the C type GIOErrorEnum.
+//
 type IOErrorEnum int
 
 const (
@@ -483,6 +491,7 @@ const (
 )
 
 // MountOperationResult is a representation of the C type GMountOperationResult.
+//
 type MountOperationResult int
 
 const (
@@ -527,6 +536,7 @@ const (
 )
 
 // PasswordSave is a representation of the C type GPasswordSave.
+//
 type PasswordSave int
 
 const (

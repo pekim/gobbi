@@ -1947,16 +1947,13 @@ func (recv *Hmac) Unref() {
 type Hook struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-
 	Next     *Hook
 	Prev     *Hook
 	RefCount uint32
 	HookId   uint64
 	Flags    uint32
 	// UNSUPPORTED : C value 'func' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'destroy' : no Go type for 'DestroyNotify'
-
 }
 
 // UNSUPPORTED : C value 'g_hook_compare_ids' : parameter 'sibling' of type 'Hook' not supported
@@ -1968,11 +1965,8 @@ type HookList struct {
 	IsSetup  uint32
 	Hooks    *Hook
 	// UNSUPPORTED : C value 'dummy3' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'finalize_hook' : no Go type for 'HookFinalizeFunc'
-
 	// UNSUPPORTED : C value 'dummy' : missing Type
-
 }
 
 var clearHookListInvoker *gi.Function
@@ -2246,21 +2240,13 @@ func (recv *IOChannel) Unref() {
 type IOFuncs struct {
 	native uintptr
 	// UNSUPPORTED : C value 'io_read' : missing Type
-
 	// UNSUPPORTED : C value 'io_write' : missing Type
-
 	// UNSUPPORTED : C value 'io_seek' : missing Type
-
 	// UNSUPPORTED : C value 'io_close' : missing Type
-
 	// UNSUPPORTED : C value 'io_create_watch' : missing Type
-
 	// UNSUPPORTED : C value 'io_free' : missing Type
-
 	// UNSUPPORTED : C value 'io_set_flags' : missing Type
-
 	// UNSUPPORTED : C value 'io_get_flags' : missing Type
-
 }
 
 type KeyFile struct {
@@ -2696,18 +2682,14 @@ func (recv *KeyFile) Unref() {
 type List struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'next' : no Go type for 'GLib.List'
-
 	// UNSUPPORTED : C value 'prev' : no Go type for 'GLib.List'
-
 }
 
 type LogField struct {
 	native uintptr
 	Key    string
 	// UNSUPPORTED : C value 'value' : no Go type for 'gpointer'
-
 	Length int32
 }
 
@@ -3176,15 +3158,10 @@ func (recv *MarkupParseContext) Unref() {
 type MarkupParser struct {
 	native uintptr
 	// UNSUPPORTED : C value 'start_element' : missing Type
-
 	// UNSUPPORTED : C value 'end_element' : missing Type
-
 	// UNSUPPORTED : C value 'text' : missing Type
-
 	// UNSUPPORTED : C value 'passthrough' : missing Type
-
 	// UNSUPPORTED : C value 'error' : missing Type
-
 }
 
 type MatchInfo struct {
@@ -3378,23 +3355,16 @@ func (recv *MatchInfo) Unref() {
 type MemVTable struct {
 	native uintptr
 	// UNSUPPORTED : C value 'malloc' : missing Type
-
 	// UNSUPPORTED : C value 'realloc' : missing Type
-
 	// UNSUPPORTED : C value 'free' : missing Type
-
 	// UNSUPPORTED : C value 'calloc' : missing Type
-
 	// UNSUPPORTED : C value 'try_malloc' : missing Type
-
 	// UNSUPPORTED : C value 'try_realloc' : missing Type
-
 }
 
 type Node struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-
 	Next     *Node
 	Prev     *Node
 	Parent   *Node
@@ -3638,9 +3608,7 @@ func (recv *Node) Unlink() {
 type Once struct {
 	native uintptr
 	// UNSUPPORTED : C value 'status' : no Go type for 'OnceStatus'
-
 	// UNSUPPORTED : C value 'retval' : no Go type for 'gpointer'
-
 }
 
 // UNSUPPORTED : C value 'g_once_impl' : parameter 'func' of type 'ThreadFunc' not supported
@@ -3798,9 +3766,7 @@ type OptionEntry struct {
 	ShortName int8
 	Flags     int32
 	// UNSUPPORTED : C value 'arg' : no Go type for 'OptionArg'
-
 	// UNSUPPORTED : C value 'arg_data' : no Go type for 'gpointer'
-
 	Description    string
 	ArgDescription string
 }
@@ -3924,16 +3890,13 @@ type Private struct {
 type PtrArray struct {
 	native uintptr
 	// UNSUPPORTED : C value 'pdata' : no Go type for 'gpointer'
-
 	Len uint32
 }
 
 type Queue struct {
 	native uintptr
 	// UNSUPPORTED : C value 'head' : no Go type for 'GLib.List'
-
 	// UNSUPPORTED : C value 'tail' : no Go type for 'GLib.List'
-
 	Length uint32
 }
 
@@ -4538,34 +4501,26 @@ func (recv *Regex) Unref() {
 type SList struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'next' : no Go type for 'GLib.SList'
-
 }
 
 type Scanner struct {
 	native uintptr
 	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-
 	MaxParseErrors uint32
 	ParseErrors    uint32
 	InputName      string
 	Qdata          *Data
 	Config         *ScannerConfig
 	// UNSUPPORTED : C value 'token' : no Go type for 'TokenType'
-
 	// UNSUPPORTED : C value 'value' : no Go type for 'TokenValue'
-
 	Line     uint32
 	Position uint32
 	// UNSUPPORTED : C value 'next_token' : no Go type for 'TokenType'
-
 	// UNSUPPORTED : C value 'next_value' : no Go type for 'TokenValue'
-
 	NextLine     uint32
 	NextPosition uint32
 	// UNSUPPORTED : C value 'msg_handler' : no Go type for 'ScannerMsgFunc'
-
 }
 
 var curLineScannerInvoker *gi.Function
@@ -5219,23 +5174,16 @@ func (recv *Source) Unref() {
 type SourceCallbackFuncs struct {
 	native uintptr
 	// UNSUPPORTED : C value 'ref' : missing Type
-
 	// UNSUPPORTED : C value 'unref' : missing Type
-
 	// UNSUPPORTED : C value 'get' : missing Type
-
 }
 
 type SourceFuncs struct {
 	native uintptr
 	// UNSUPPORTED : C value 'prepare' : missing Type
-
 	// UNSUPPORTED : C value 'check' : missing Type
-
 	// UNSUPPORTED : C value 'dispatch' : missing Type
-
 	// UNSUPPORTED : C value 'finalize' : missing Type
-
 }
 
 type SourcePrivate struct {
@@ -5704,17 +5652,11 @@ type TestCase struct {
 type TestConfig struct {
 	native uintptr
 	// UNSUPPORTED : C value 'test_initialized' : no Go type for 'gboolean'
-
 	// UNSUPPORTED : C value 'test_quick' : no Go type for 'gboolean'
-
 	// UNSUPPORTED : C value 'test_perf' : no Go type for 'gboolean'
-
 	// UNSUPPORTED : C value 'test_verbose' : no Go type for 'gboolean'
-
 	// UNSUPPORTED : C value 'test_quiet' : no Go type for 'gboolean'
-
 	// UNSUPPORTED : C value 'test_undefined' : no Go type for 'gboolean'
-
 }
 
 type TestLogBuffer struct {
@@ -5774,12 +5716,10 @@ func (recv *TestLogBuffer) Push(nBytes uint32, bytes uint8) {
 type TestLogMsg struct {
 	native uintptr
 	// UNSUPPORTED : C value 'log_type' : no Go type for 'TestLogType'
-
 	NStrings uint32
 	Strings  string
 	NNums    uint32
 	// UNSUPPORTED : C value 'nums' : no Go type for 'long double'
-
 }
 
 var freeTestLogMsgInvoker *gi.Function
@@ -5851,11 +5791,8 @@ func (recv *Thread) Unref() {
 type ThreadPool struct {
 	native uintptr
 	// UNSUPPORTED : C value 'func' : no Go type for 'Func'
-
 	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-
 	// UNSUPPORTED : C value 'exclusive' : no Go type for 'gboolean'
-
 }
 
 // UNSUPPORTED : C value 'g_thread_pool_free' : parameter 'immediate' of type 'gboolean' not supported

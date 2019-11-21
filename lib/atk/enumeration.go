@@ -3,6 +3,7 @@
 package atk
 
 // CoordType is a representation of the C type AtkCoordType.
+//
 type CoordType int
 
 const (
@@ -15,6 +16,7 @@ const (
 )
 
 // KeyEventType is a representation of the C type AtkKeyEventType.
+//
 type KeyEventType int
 
 const (
@@ -27,6 +29,7 @@ const (
 )
 
 // Layer is a representation of the C type AtkLayer.
+//
 type Layer int
 
 const (
@@ -49,6 +52,7 @@ const (
 )
 
 // RelationType is a representation of the C type AtkRelationType.
+//
 type RelationType int
 
 const (
@@ -99,6 +103,7 @@ const (
 )
 
 // Role is a representation of the C type AtkRole.
+//
 type Role int
 
 const (
@@ -379,6 +384,7 @@ const (
 )
 
 // StateType is a representation of the C type AtkStateType.
+//
 type StateType int
 
 const (
@@ -473,6 +479,7 @@ const (
 )
 
 // TextAttribute is a representation of the C type AtkTextAttribute.
+//
 type TextAttribute int
 
 const (
@@ -537,6 +544,7 @@ const (
 )
 
 // TextBoundary is a representation of the C type AtkTextBoundary.
+//
 type TextBoundary int
 
 const (
@@ -557,6 +565,7 @@ const (
 )
 
 // TextClipType is a representation of the C type AtkTextClipType.
+//
 type TextClipType int
 
 const (
@@ -571,6 +580,7 @@ const (
 )
 
 // TextGranularity is a representation of the C type AtkTextGranularity.
+//
 type TextGranularity int
 
 const (
@@ -587,6 +597,7 @@ const (
 )
 
 // ValueType is a representation of the C type AtkValueType.
+//
 type ValueType int
 
 const (

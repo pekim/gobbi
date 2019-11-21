@@ -3,6 +3,7 @@
 package gtk
 
 // AccelFlags is a representation of the C type GtkAccelFlags.
+//
 type AccelFlags int
 
 const (
@@ -31,6 +32,7 @@ const (
 )
 
 // AttachOptions is a representation of the C type GtkAttachOptions.
+//
 type AttachOptions int
 
 const (
@@ -43,6 +45,7 @@ const (
 )
 
 // CalendarDisplayOptions is a representation of the C type GtkCalendarDisplayOptions.
+//
 type CalendarDisplayOptions int
 
 const (
@@ -59,6 +62,7 @@ const (
 )
 
 // CellRendererState is a representation of the C type GtkCellRendererState.
+//
 type CellRendererState int
 
 const (
@@ -79,6 +83,7 @@ const (
 )
 
 // DebugFlag is a representation of the C type GtkDebugFlag.
+//
 type DebugFlag int
 
 const (
@@ -129,6 +134,7 @@ const (
 )
 
 // DestDefaults is a representation of the C type GtkDestDefaults.
+//
 type DestDefaults int
 
 const (
@@ -143,6 +149,7 @@ const (
 )
 
 // DialogFlags is a representation of the C type GtkDialogFlags.
+//
 type DialogFlags int
 
 const (
@@ -175,6 +182,7 @@ const (
 )
 
 // FileFilterFlags is a representation of the C type GtkFileFilterFlags.
+//
 type FileFilterFlags int
 
 const (
@@ -189,6 +197,7 @@ const (
 )
 
 // FontChooserLevel is a representation of the C type GtkFontChooserLevel.
+//
 type FontChooserLevel int
 
 const (
@@ -205,6 +214,7 @@ const (
 )
 
 // IconLookupFlags is a representation of the C type GtkIconLookupFlags.
+//
 type IconLookupFlags int
 
 const (
@@ -261,6 +271,7 @@ const (
 )
 
 // JunctionSides is a representation of the C type GtkJunctionSides.
+//
 type JunctionSides int
 
 const (
@@ -285,6 +296,7 @@ const (
 )
 
 // PlacesOpenFlags is a representation of the C type GtkPlacesOpenFlags.
+//
 type PlacesOpenFlags int
 
 const (
@@ -297,6 +309,7 @@ const (
 )
 
 // RcFlags is a representation of the C type GtkRcFlags.
+//
 type RcFlags int
 
 const (
@@ -311,6 +324,7 @@ const (
 )
 
 // RecentFilterFlags is a representation of the C type GtkRecentFilterFlags.
+//
 type RecentFilterFlags int
 
 const (
@@ -329,6 +343,7 @@ const (
 )
 
 // RegionFlags is a representation of the C type GtkRegionFlags.
+//
 type RegionFlags int
 
 const (
@@ -347,6 +362,7 @@ const (
 )
 
 // StateFlags is a representation of the C type GtkStateFlags.
+//
 type StateFlags int
 
 const (
@@ -381,6 +397,7 @@ const (
 )
 
 // StyleContextPrintFlags is a representation of the C type GtkStyleContextPrintFlags.
+//
 type StyleContextPrintFlags int
 
 const (
@@ -393,6 +410,7 @@ const (
 )
 
 // TargetFlags is a representation of the C type GtkTargetFlags.
+//
 type TargetFlags int
 
 const (
@@ -407,6 +425,7 @@ const (
 )
 
 // TextSearchFlags is a representation of the C type GtkTextSearchFlags.
+//
 type TextSearchFlags int
 
 const (
@@ -419,6 +438,7 @@ const (
 )
 
 // ToolPaletteDragTargets is a representation of the C type GtkToolPaletteDragTargets.
+//
 type ToolPaletteDragTargets int
 
 const (
@@ -429,6 +449,7 @@ const (
 )
 
 // TreeModelFlags is a representation of the C type GtkTreeModelFlags.
+//
 type TreeModelFlags int
 
 const (
@@ -439,6 +460,7 @@ const (
 )
 
 // UIManagerItemType is a representation of the C type GtkUIManagerItemType.
+//
 type UIManagerItemType int
 
 const (

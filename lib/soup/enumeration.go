@@ -3,6 +3,7 @@
 package soup
 
 // AddressFamily is a representation of the C type SoupAddressFamily.
+//
 type AddressFamily int
 
 const (
@@ -15,6 +16,7 @@ const (
 )
 
 // CacheResponse is a representation of the C type SoupCacheResponse.
+//
 type CacheResponse int
 
 const (
@@ -39,6 +41,7 @@ const (
 )
 
 // ConnectionState is a representation of the C type SoupConnectionState.
+//
 type ConnectionState int
 
 const (
@@ -71,6 +74,7 @@ const (
 )
 
 // DateFormat is a representation of the C type SoupDateFormat.
+//
 type DateFormat int
 
 const (
@@ -91,6 +95,7 @@ const (
 )
 
 // Encoding is a representation of the C type SoupEncoding.
+//
 type Encoding int
 
 const (
@@ -109,6 +114,7 @@ const (
 )
 
 // HTTPVersion is a representation of the C type SoupHTTPVersion.
+//
 type HTTPVersion int
 
 const (
@@ -119,6 +125,7 @@ const (
 )
 
 // KnownStatusCode is a representation of the C type SoupKnownStatusCode.
+//
 type KnownStatusCode int
 
 const (
@@ -251,6 +258,7 @@ const (
 )
 
 // LoggerLogLevel is a representation of the C type SoupLoggerLogLevel.
+//
 type LoggerLogLevel int
 
 const (
@@ -265,6 +273,7 @@ const (
 )
 
 // MemoryUse is a representation of the C type SoupMemoryUse.
+//
 type MemoryUse int
 
 const (
@@ -279,6 +288,7 @@ const (
 )
 
 // MessageHeadersType is a representation of the C type SoupMessageHeadersType.
+//
 type MessageHeadersType int
 
 const (
@@ -291,6 +301,7 @@ const (
 )
 
 // MessagePriority is a representation of the C type SoupMessagePriority.
+//
 type MessagePriority int
 
 const (
@@ -323,6 +334,7 @@ const (
 )
 
 // RequesterError is a representation of the C type SoupRequesterError.
+//
 type RequesterError int
 
 const (
@@ -333,6 +345,7 @@ const (
 )
 
 // SocketIOStatus is a representation of the C type SoupSocketIOStatus.
+//
 type SocketIOStatus int
 
 const (
@@ -347,6 +360,7 @@ const (
 )
 
 // Status is a representation of the C type SoupStatus.
+//
 type Status int
 
 const (
@@ -585,6 +599,7 @@ const (
 )
 
 // XMLRPCError is a representation of the C type SoupXMLRPCError.
+//
 type XMLRPCError int
 
 const (
@@ -595,6 +610,7 @@ const (
 )
 
 // XMLRPCFault is a representation of the C type SoupXMLRPCFault.
+//
 type XMLRPCFault int
 
 const (

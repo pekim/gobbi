@@ -3,45 +3,59 @@
 package glib
 
 // ANALYZER_ANALYZING is a representation of the C type ANALYZER_ANALYZING.
+//
 const ANALYZER_ANALYZING = int32(1)
 
 // ASCII_DTOSTR_BUF_SIZE is a representation of the C type ASCII_DTOSTR_BUF_SIZE.
+//
 const ASCII_DTOSTR_BUF_SIZE = int32(39)
 
 // BIG_ENDIAN is a representation of the C type BIG_ENDIAN.
+//
 const BIG_ENDIAN = int32(4321)
 
 // CSET_A_2_Z is a representation of the C type CSET_A_2_Z.
+//
 const CSET_A_2_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 // CSET_DIGITS is a representation of the C type CSET_DIGITS.
+//
 const CSET_DIGITS = "0123456789"
 
 // CSET_a_2_z is a representation of the C type CSET_a_2_z.
+//
 const CSET_a_2_z = "abcdefghijklmnopqrstuvwxyz"
 
 // DATALIST_FLAGS_MASK is a representation of the C type DATALIST_FLAGS_MASK.
+//
 const DATALIST_FLAGS_MASK = int32(3)
 
 // DATE_BAD_DAY is a representation of the C type DATE_BAD_DAY.
+//
 const DATE_BAD_DAY = int32(0)
 
 // DATE_BAD_JULIAN is a representation of the C type DATE_BAD_JULIAN.
+//
 const DATE_BAD_JULIAN = int32(0)
 
 // DATE_BAD_YEAR is a representation of the C type DATE_BAD_YEAR.
+//
 const DATE_BAD_YEAR = int32(0)
 
 // DIR_SEPARATOR is a representation of the C type DIR_SEPARATOR.
+//
 const DIR_SEPARATOR = int32(47)
 
 // DIR_SEPARATOR_S is a representation of the C type DIR_SEPARATOR_S.
+//
 const DIR_SEPARATOR_S = "/"
 
 // E is a representation of the C type E.
+//
 const E = 2.718282
 
 // GINT16_FORMAT is a representation of the C type GINT16_FORMAT.
+//
 const GINT16_FORMAT = "hi"
 
 // GINT16_MODIFIER is a representation of the C type GINT16_MODIFIER.
@@ -50,6 +64,7 @@ const GINT16_FORMAT = "hi"
 const GINT16_MODIFIER = "h"
 
 // GINT32_FORMAT is a representation of the C type GINT32_FORMAT.
+//
 const GINT32_FORMAT = "i"
 
 // GINT32_MODIFIER is a representation of the C type GINT32_MODIFIER.
@@ -58,6 +73,7 @@ const GINT32_FORMAT = "i"
 const GINT32_MODIFIER = ""
 
 // GINT64_FORMAT is a representation of the C type GINT64_FORMAT.
+//
 const GINT64_FORMAT = "li"
 
 // GINT64_MODIFIER is a representation of the C type GINT64_MODIFIER.
@@ -76,9 +92,11 @@ const GINTPTR_FORMAT = "li"
 const GINTPTR_MODIFIER = "l"
 
 // GNUC_FUNCTION is a representation of the C type GNUC_FUNCTION.
+//
 const GNUC_FUNCTION = ""
 
 // GNUC_PRETTY_FUNCTION is a representation of the C type GNUC_PRETTY_FUNCTION.
+//
 const GNUC_PRETTY_FUNCTION = ""
 
 // GSIZE_FORMAT is a representation of the C type GSIZE_FORMAT.
@@ -102,12 +120,15 @@ const GSSIZE_FORMAT = "li"
 const GSSIZE_MODIFIER = "l"
 
 // GUINT16_FORMAT is a representation of the C type GUINT16_FORMAT.
+//
 const GUINT16_FORMAT = "hu"
 
 // GUINT32_FORMAT is a representation of the C type GUINT32_FORMAT.
+//
 const GUINT32_FORMAT = "u"
 
 // GUINT64_FORMAT is a representation of the C type GUINT64_FORMAT.
+//
 const GUINT64_FORMAT = "lu"
 
 // GUINTPTR_FORMAT is a representation of the C type GUINTPTR_FORMAT.
@@ -116,30 +137,39 @@ const GUINT64_FORMAT = "lu"
 const GUINTPTR_FORMAT = "lu"
 
 // HAVE_GINT64 is a representation of the C type HAVE_GINT64.
+//
 const HAVE_GINT64 = int32(1)
 
 // HAVE_GNUC_VARARGS is a representation of the C type HAVE_GNUC_VARARGS.
+//
 const HAVE_GNUC_VARARGS = int32(1)
 
 // HAVE_GNUC_VISIBILITY is a representation of the C type HAVE_GNUC_VISIBILITY.
+//
 const HAVE_GNUC_VISIBILITY = int32(1)
 
 // HAVE_GROWING_STACK is a representation of the C type HAVE_GROWING_STACK.
+//
 const HAVE_GROWING_STACK = int32(0)
 
 // HAVE_ISO_VARARGS is a representation of the C type HAVE_ISO_VARARGS.
+//
 const HAVE_ISO_VARARGS = int32(1)
 
 // HOOK_FLAG_USER_SHIFT is a representation of the C type HOOK_FLAG_USER_SHIFT.
+//
 const HOOK_FLAG_USER_SHIFT = int32(4)
 
 // IEEE754_DOUBLE_BIAS is a representation of the C type IEEE754_DOUBLE_BIAS.
+//
 const IEEE754_DOUBLE_BIAS = int32(1023)
 
 // IEEE754_FLOAT_BIAS is a representation of the C type IEEE754_FLOAT_BIAS.
+//
 const IEEE754_FLOAT_BIAS = int32(127)
 
 // KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX is a representation of the C type KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX.
+//
 const KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX = "Desktop Action"
 
 // KEY_FILE_DESKTOP_GROUP is a representation of the C type KEY_FILE_DESKTOP_GROUP.
@@ -173,6 +203,7 @@ const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE = "DBusActivatable"
 const KEY_FILE_DESKTOP_KEY_EXEC = "Exec"
 
 // KEY_FILE_DESKTOP_KEY_FULLNAME is a representation of the C type KEY_FILE_DESKTOP_KEY_FULLNAME.
+//
 const KEY_FILE_DESKTOP_KEY_FULLNAME = "X-GNOME-FullName"
 
 // KEY_FILE_DESKTOP_KEY_GENERIC_NAME is a representation of the C type KEY_FILE_DESKTOP_KEY_GENERIC_NAME.
@@ -181,6 +212,7 @@ const KEY_FILE_DESKTOP_KEY_FULLNAME = "X-GNOME-FullName"
 const KEY_FILE_DESKTOP_KEY_GENERIC_NAME = "GenericName"
 
 // KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN is a representation of the C type KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN.
+//
 const KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN = "X-GNOME-Gettext-Domain"
 
 // KEY_FILE_DESKTOP_KEY_HIDDEN is a representation of the C type KEY_FILE_DESKTOP_KEY_HIDDEN.
@@ -194,6 +226,7 @@ const KEY_FILE_DESKTOP_KEY_HIDDEN = "Hidden"
 const KEY_FILE_DESKTOP_KEY_ICON = "Icon"
 
 // KEY_FILE_DESKTOP_KEY_KEYWORDS is a representation of the C type KEY_FILE_DESKTOP_KEY_KEYWORDS.
+//
 const KEY_FILE_DESKTOP_KEY_KEYWORDS = "Keywords"
 
 // KEY_FILE_DESKTOP_KEY_MIME_TYPE is a representation of the C type KEY_FILE_DESKTOP_KEY_MIME_TYPE.
@@ -277,27 +310,35 @@ const KEY_FILE_DESKTOP_TYPE_DIRECTORY = "Directory"
 const KEY_FILE_DESKTOP_TYPE_LINK = "Link"
 
 // LITTLE_ENDIAN is a representation of the C type LITTLE_ENDIAN.
+//
 const LITTLE_ENDIAN = int32(1234)
 
 // LN10 is a representation of the C type LN10.
+//
 const LN10 = 2.302585
 
 // LN2 is a representation of the C type LN2.
+//
 const LN2 = 0.693147
 
 // LOG_2_BASE_10 is a representation of the C type LOG_2_BASE_10.
+//
 const LOG_2_BASE_10 = 0.30103
 
 // LOG_DOMAIN is a representation of the C type LOG_DOMAIN.
+//
 const LOG_DOMAIN = int8(0)
 
 // LOG_FATAL_MASK is a representation of the C type LOG_FATAL_MASK.
+//
 const LOG_FATAL_MASK = int32(5)
 
 // LOG_LEVEL_USER_SHIFT is a representation of the C type LOG_LEVEL_USER_SHIFT.
+//
 const LOG_LEVEL_USER_SHIFT = int32(8)
 
 // MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+//
 const MAJOR_VERSION = int32(2)
 
 // MAXINT16 is a representation of the C type MAXINT16.
@@ -311,6 +352,7 @@ const MAXINT16 = int16(32767)
 const MAXINT32 = int32(2147483647)
 
 // MAXINT64 is a representation of the C type MAXINT64.
+//
 const MAXINT64 = int64(9223372036854775807)
 
 // MAXINT8 is a representation of the C type MAXINT8.
@@ -329,6 +371,7 @@ const MAXUINT16 = uint16(0xffff)
 const MAXUINT32 = uint32(0xffffffff)
 
 // MAXUINT64 is a representation of the C type MAXUINT64.
+//
 const MAXUINT64 = uint64(0xffffffffffffffff)
 
 // MAXUINT8 is a representation of the C type MAXUINT8.
@@ -337,6 +380,7 @@ const MAXUINT64 = uint64(0xffffffffffffffff)
 const MAXUINT8 = uint8(0xff)
 
 // MICRO_VERSION is a representation of the C type MICRO_VERSION.
+//
 const MICRO_VERSION = int32(0)
 
 // MININT16 is a representation of the C type MININT16.
@@ -350,6 +394,7 @@ const MININT16 = int16(-32768)
 const MININT32 = int32(-2147483648)
 
 // MININT64 is a representation of the C type MININT64.
+//
 const MININT64 = int64(-9223372036854775808)
 
 // MININT8 is a representation of the C type MININT8.
@@ -358,9 +403,11 @@ const MININT64 = int64(-9223372036854775808)
 const MININT8 = int8(-128)
 
 // MINOR_VERSION is a representation of the C type MINOR_VERSION.
+//
 const MINOR_VERSION = int32(62)
 
 // MODULE_SUFFIX is a representation of the C type MODULE_SUFFIX.
+//
 const MODULE_SUFFIX = "so"
 
 // OPTION_REMAINING is a representation of the C type OPTION_REMAINING.
@@ -369,9 +416,11 @@ const MODULE_SUFFIX = "so"
 const OPTION_REMAINING = ""
 
 // PDP_ENDIAN is a representation of the C type PDP_ENDIAN.
+//
 const PDP_ENDIAN = int32(3412)
 
 // PI is a representation of the C type PI.
+//
 const PI = 3.141593
 
 // PID_FORMAT is a representation of the C type PID_FORMAT.
@@ -380,45 +429,59 @@ const PI = 3.141593
 const PID_FORMAT = "i"
 
 // PI_2 is a representation of the C type PI_2.
+//
 const PI_2 = 1.570796
 
 // PI_4 is a representation of the C type PI_4.
+//
 const PI_4 = 0.785398
 
 // POLLFD_FORMAT is a representation of the C type POLLFD_FORMAT.
+//
 const POLLFD_FORMAT = "%d"
 
 // PRIORITY_DEFAULT is a representation of the C type PRIORITY_DEFAULT.
+//
 const PRIORITY_DEFAULT = int32(0)
 
 // PRIORITY_DEFAULT_IDLE is a representation of the C type PRIORITY_DEFAULT_IDLE.
+//
 const PRIORITY_DEFAULT_IDLE = int32(200)
 
 // PRIORITY_HIGH is a representation of the C type PRIORITY_HIGH.
+//
 const PRIORITY_HIGH = int32(-100)
 
 // PRIORITY_HIGH_IDLE is a representation of the C type PRIORITY_HIGH_IDLE.
+//
 const PRIORITY_HIGH_IDLE = int32(100)
 
 // PRIORITY_LOW is a representation of the C type PRIORITY_LOW.
+//
 const PRIORITY_LOW = int32(300)
 
 // SEARCHPATH_SEPARATOR is a representation of the C type SEARCHPATH_SEPARATOR.
+//
 const SEARCHPATH_SEPARATOR = int32(58)
 
 // SEARCHPATH_SEPARATOR_S is a representation of the C type SEARCHPATH_SEPARATOR_S.
+//
 const SEARCHPATH_SEPARATOR_S = ":"
 
 // SIZEOF_LONG is a representation of the C type SIZEOF_LONG.
+//
 const SIZEOF_LONG = int32(8)
 
 // SIZEOF_SIZE_T is a representation of the C type SIZEOF_SIZE_T.
+//
 const SIZEOF_SIZE_T = int32(8)
 
 // SIZEOF_SSIZE_T is a representation of the C type SIZEOF_SSIZE_T.
+//
 const SIZEOF_SSIZE_T = int32(8)
 
 // SIZEOF_VOID_P is a representation of the C type SIZEOF_VOID_P.
+//
 const SIZEOF_VOID_P = int32(8)
 
 // SOURCE_CONTINUE is a representation of the C type SOURCE_CONTINUE.
@@ -432,27 +495,35 @@ const SOURCE_CONTINUE = true
 const SOURCE_REMOVE = false
 
 // SQRT2 is a representation of the C type SQRT2.
+//
 const SQRT2 = 1.414214
 
 // STR_DELIMITERS is a representation of the C type STR_DELIMITERS.
+//
 const STR_DELIMITERS = "_-|> <."
 
 // SYSDEF_AF_INET is a representation of the C type SYSDEF_AF_INET.
+//
 const SYSDEF_AF_INET = int32(2)
 
 // SYSDEF_AF_INET6 is a representation of the C type SYSDEF_AF_INET6.
+//
 const SYSDEF_AF_INET6 = int32(10)
 
 // SYSDEF_AF_UNIX is a representation of the C type SYSDEF_AF_UNIX.
+//
 const SYSDEF_AF_UNIX = int32(1)
 
 // SYSDEF_MSG_DONTROUTE is a representation of the C type SYSDEF_MSG_DONTROUTE.
+//
 const SYSDEF_MSG_DONTROUTE = int32(4)
 
 // SYSDEF_MSG_OOB is a representation of the C type SYSDEF_MSG_OOB.
+//
 const SYSDEF_MSG_OOB = int32(1)
 
 // SYSDEF_MSG_PEEK is a representation of the C type SYSDEF_MSG_PEEK.
+//
 const SYSDEF_MSG_PEEK = int32(2)
 
 // TEST_OPTION_ISOLATE_DIRS is a representation of the C type TEST_OPTION_ISOLATE_DIRS.
@@ -491,15 +562,19 @@ const TIME_SPAN_SECOND = int64(1000000)
 const UNICHAR_MAX_DECOMPOSITION_LENGTH = int32(18)
 
 // URI_RESERVED_CHARS_GENERIC_DELIMITERS is a representation of the C type URI_RESERVED_CHARS_GENERIC_DELIMITERS.
+//
 const URI_RESERVED_CHARS_GENERIC_DELIMITERS = ":/?#[]@"
 
 // URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS is a representation of the C type URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS.
+//
 const URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS = "!$&'()*+,;="
 
 // USEC_PER_SEC is a representation of the C type USEC_PER_SEC.
+//
 const USEC_PER_SEC = int32(1000000)
 
 // VA_COPY_AS_ARRAY is a representation of the C type VA_COPY_AS_ARRAY.
+//
 const VA_COPY_AS_ARRAY = int32(1)
 
 // VERSION_MIN_REQUIRED is a representation of the C type VERSION_MIN_REQUIRED.
@@ -508,4 +583,5 @@ const VA_COPY_AS_ARRAY = int32(1)
 const VERSION_MIN_REQUIRED = int32(2)
 
 // WIN32_MSG_HANDLE is a representation of the C type WIN32_MSG_HANDLE.
+//
 const WIN32_MSG_HANDLE = int32(19981206)

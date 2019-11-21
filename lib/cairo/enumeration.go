@@ -3,6 +3,7 @@
 package cairo
 
 // Status is a representation of the C type cairo_status_t.
+//
 type Status int
 
 const (
@@ -87,6 +88,7 @@ const (
 )
 
 // Content is a representation of the C type cairo_content_t.
+//
 type Content int
 
 const (
@@ -99,6 +101,7 @@ const (
 )
 
 // Operator is a representation of the C type cairo_operator_t.
+//
 type Operator int
 
 const (
@@ -163,6 +166,7 @@ const (
 )
 
 // Antialias is a representation of the C type cairo_antialias_t.
+//
 type Antialias int
 
 const (
@@ -183,6 +187,7 @@ const (
 )
 
 // FillRule is a representation of the C type cairo_fill_rule_t.
+//
 type FillRule int
 
 const (
@@ -193,6 +198,7 @@ const (
 )
 
 // LineCap is a representation of the C type cairo_line_cap_t.
+//
 type LineCap int
 
 const (
@@ -205,6 +211,7 @@ const (
 )
 
 // LineJoin is a representation of the C type cairo_line_join_t.
+//
 type LineJoin int
 
 const (
@@ -217,6 +224,7 @@ const (
 )
 
 // TextClusterFlags is a representation of the C type cairo_text_cluster_flags_t.
+//
 type TextClusterFlags int
 
 const (
@@ -225,6 +233,7 @@ const (
 )
 
 // FontSlant is a representation of the C type cairo_font_slant_t.
+//
 type FontSlant int
 
 const (
@@ -237,6 +246,7 @@ const (
 )
 
 // FontWeight is a representation of the C type cairo_font_weight_t.
+//
 type FontWeight int
 
 const (
@@ -247,6 +257,7 @@ const (
 )
 
 // SubpixelOrder is a representation of the C type cairo_subpixel_order_t.
+//
 type SubpixelOrder int
 
 const (
@@ -263,6 +274,7 @@ const (
 )
 
 // HintStyle is a representation of the C type cairo_hint_style_t.
+//
 type HintStyle int
 
 const (
@@ -279,6 +291,7 @@ const (
 )
 
 // HintMetrics is a representation of the C type cairo_hint_metrics_t.
+//
 type HintMetrics int
 
 const (
@@ -291,6 +304,7 @@ const (
 )
 
 // FontType is a representation of the C type cairo_font_type_t.
+//
 type FontType int
 
 const (
@@ -307,6 +321,7 @@ const (
 )
 
 // PathDataType is a representation of the C type cairo_path_data_type_t.
+//
 type PathDataType int
 
 const (
@@ -321,6 +336,7 @@ const (
 )
 
 // DeviceType is a representation of the C type cairo_device_type_t.
+//
 type DeviceType int
 
 const (
@@ -345,6 +361,7 @@ const (
 )
 
 // SurfaceType is a representation of the C type cairo_surface_type_t.
+//
 type SurfaceType int
 
 const (
@@ -401,6 +418,7 @@ const (
 )
 
 // Format is a representation of the C type cairo_format_t.
+//
 type Format int
 
 const (
@@ -421,6 +439,7 @@ const (
 )
 
 // PatternType is a representation of the C type cairo_pattern_type_t.
+//
 type PatternType int
 
 const (
@@ -439,6 +458,7 @@ const (
 )
 
 // Extend is a representation of the C type cairo_extend_t.
+//
 type Extend int
 
 const (
@@ -453,6 +473,7 @@ const (
 )
 
 // Filter is a representation of the C type cairo_filter_t.
+//
 type Filter int
 
 const (
@@ -471,6 +492,7 @@ const (
 )
 
 // RegionOverlap is a representation of the C type cairo_region_overlap_t.
+//
 type RegionOverlap int
 
 const (

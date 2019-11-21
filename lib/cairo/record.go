@@ -45,13 +45,9 @@ type Path struct {
 type Rectangle struct {
 	native uintptr
 	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-
 	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-
 	// UNSUPPORTED : C value 'width' : no Go type for 'gdouble'
-
 	// UNSUPPORTED : C value 'height' : no Go type for 'gdouble'
-
 }
 
 type RectangleInt struct {

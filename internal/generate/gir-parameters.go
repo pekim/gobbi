@@ -46,7 +46,7 @@ func (pp Parameters) supported() (bool, string) {
 	return true, ""
 }
 
-func (pp Parameters) generateInDeclarations(g *group) {
+func (pp Parameters) generateInDeclarations(g *jen.Group) {
 	for _, param := range pp {
 		if param.isIn() {
 			param.generateInDeclaration(g)
@@ -54,7 +54,7 @@ func (pp Parameters) generateInDeclarations(g *group) {
 	}
 }
 
-func (pp Parameters) generateReturnDeclarations(g *group) {
+func (pp Parameters) generateReturnDeclarations(g *jen.Group) {
 	for _, param := range pp {
 		if param.isOut() {
 			param.generateReturnDeclaration(g)
@@ -87,7 +87,7 @@ func (pp Parameters) outCount() int {
 	return count
 }
 
-func (pp Parameters) generateInArgs(g *group, receiver bool) {
+func (pp Parameters) generateInArgs(g *jen.Group, receiver bool) {
 	count := pp.inCount(receiver)
 	if count == 0 {
 		return
@@ -119,7 +119,7 @@ func (pp Parameters) generateInArgs(g *group, receiver bool) {
 	}
 }
 
-func (pp Parameters) generateOutValues(g *group, varNamePrefix string) {
+func (pp Parameters) generateOutValues(g *jen.Group, varNamePrefix string) {
 	n := 0
 	for _, param := range pp {
 		if param.isOut() {
@@ -129,7 +129,7 @@ func (pp Parameters) generateOutValues(g *group, varNamePrefix string) {
 	}
 }
 
-func (pp Parameters) generateOutArgs(g *group) {
+func (pp Parameters) generateOutArgs(g *jen.Group) {
 	count := pp.outCount()
 	if count == 0 {
 		return

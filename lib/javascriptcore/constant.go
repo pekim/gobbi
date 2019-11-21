@@ -3,12 +3,15 @@
 package javascriptcore
 
 // MAJOR_VERSION is a representation of the C type MAJOR_VERSION.
+//
 const MAJOR_VERSION = int32(2)
 
 // MICRO_VERSION is a representation of the C type MICRO_VERSION.
+//
 const MICRO_VERSION = int32(1)
 
 // MINOR_VERSION is a representation of the C type MINOR_VERSION.
+//
 const MINOR_VERSION = int32(26)
 
 // OPTIONS_USE_DFG is a representation of the C type OPTIONS_USE_DFG.

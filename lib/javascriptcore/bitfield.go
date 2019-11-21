@@ -3,6 +3,7 @@
 package javascriptcore
 
 // ValuePropertyFlags is a representation of the C type JSCValuePropertyFlags.
+//
 type ValuePropertyFlags int
 
 const (

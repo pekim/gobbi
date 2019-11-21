@@ -3,6 +3,7 @@
 package atk
 
 // HyperlinkStateFlags is a representation of the C type AtkHyperlinkStateFlags.
+//
 type HyperlinkStateFlags int
 
 const (

@@ -3,6 +3,7 @@
 package pango
 
 // Alignment is a representation of the C type PangoAlignment.
+//
 type Alignment int
 
 const (
@@ -15,6 +16,7 @@ const (
 )
 
 // AttrType is a representation of the C type PangoAttrType.
+//
 type AttrType int
 
 const (
@@ -119,6 +121,7 @@ const (
 )
 
 // CoverageLevel is a representation of the C type PangoCoverageLevel.
+//
 type CoverageLevel int
 
 const (
@@ -133,6 +136,7 @@ const (
 )
 
 // Direction is a representation of the C type PangoDirection.
+//
 type Direction int
 
 const (
@@ -153,6 +157,7 @@ const (
 )
 
 // EllipsizeMode is a representation of the C type PangoEllipsizeMode.
+//
 type EllipsizeMode int
 
 const (
@@ -215,6 +220,7 @@ const (
 )
 
 // Script is a representation of the C type PangoScript.
+//
 type Script int
 
 const (
@@ -457,6 +463,7 @@ const (
 )
 
 // Stretch is a representation of the C type PangoStretch.
+//
 type Stretch int
 
 const (
@@ -481,6 +488,7 @@ const (
 )
 
 // Style is a representation of the C type PangoStyle.
+//
 type Style int
 
 const (
@@ -493,6 +501,7 @@ const (
 )
 
 // TabAlign is a representation of the C type PangoTabAlign.
+//
 type TabAlign int
 
 const (
@@ -501,6 +510,7 @@ const (
 )
 
 // Underline is a representation of the C type PangoUnderline.
+//
 type Underline int
 
 const (
@@ -517,6 +527,7 @@ const (
 )
 
 // Variant is a representation of the C type PangoVariant.
+//
 type Variant int
 
 const (
@@ -527,6 +538,7 @@ const (
 )
 
 // Weight is a representation of the C type PangoWeight.
+//
 type Weight int
 
 const (
@@ -557,6 +569,7 @@ const (
 )
 
 // WrapMode is a representation of the C type PangoWrapMode.
+//
 type WrapMode int
 
 const (

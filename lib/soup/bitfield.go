@@ -3,6 +3,7 @@
 package soup
 
 // Cacheability is a representation of the C type SoupCacheability.
+//
 type Cacheability int
 
 const (
@@ -17,6 +18,7 @@ const (
 )
 
 // Expectation is a representation of the C type SoupExpectation.
+//
 type Expectation int
 
 const (
@@ -27,6 +29,7 @@ const (
 )
 
 // MessageFlags is a representation of the C type SoupMessageFlags.
+//
 type MessageFlags int
 
 const (

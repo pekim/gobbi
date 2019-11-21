@@ -48,12 +48,12 @@ func (r *Record) generateType(f *file) {
 	f.
 		Type().
 		Id(r.goName).
-		Add(structFunc(r.generateFields))
+		StructFunc(r.generateFields)
 
 	f.Line()
 }
 
-func (r *Record) generateFields(g *group) {
+func (r *Record) generateFields(g *jen.Group) {
 	g.Id("native").Uintptr()
 	r.Fields.generate(g)
 }

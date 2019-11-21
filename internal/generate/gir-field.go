@@ -1,5 +1,7 @@
 package generate
 
+import "github.com/dave/jennifer/jen"
+
 type Field struct {
 	Name     string `xml:"name,attr"`
 	Writable int    `xml:"writable,attr"`
@@ -21,14 +23,14 @@ func (f *Field) init(ns *Namespace) {
 	}
 }
 
-func (f Field) generate(g *group) {
+func (f Field) generate(g *jen.Group) {
 	if f.Private {
 		return
 	}
 
 	goType, err := f.Type.jenGoType()
 	if err != nil {
-		g.unsupported(f.Name, err.Error())
+		g.Comment(unsupportedf(f.Name, err.Error()))
 		return
 	}
 

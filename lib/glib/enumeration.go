@@ -3,6 +3,7 @@
 package glib
 
 // BookmarkFileError is a representation of the C type GBookmarkFileError.
+//
 type BookmarkFileError int
 
 const (
@@ -43,6 +44,7 @@ const (
 )
 
 // ConvertError is a representation of the C type GConvertError.
+//
 type ConvertError int
 
 const (
@@ -65,6 +67,7 @@ const (
 )
 
 // DateDMY is a representation of the C type GDateDMY.
+//
 type DateDMY int
 
 const (
@@ -77,6 +80,7 @@ const (
 )
 
 // DateMonth is a representation of the C type GDateMonth.
+//
 type DateMonth int
 
 const (
@@ -109,6 +113,7 @@ const (
 )
 
 // DateWeekday is a representation of the C type GDateWeekday.
+//
 type DateWeekday int
 
 const (
@@ -131,6 +136,7 @@ const (
 )
 
 // ErrorType is a representation of the C type GErrorType.
+//
 type ErrorType int
 
 const (
@@ -153,6 +159,7 @@ const (
 )
 
 // FileError is a representation of the C type GFileError.
+//
 type FileError int
 
 const (
@@ -209,6 +216,7 @@ const (
 )
 
 // IOChannelError is a representation of the C type GIOChannelError.
+//
 type IOChannelError int
 
 const (
@@ -233,6 +241,7 @@ const (
 )
 
 // IOError is a representation of the C type GIOError.
+//
 type IOError int
 
 const (
@@ -247,6 +256,7 @@ const (
 )
 
 // IOStatus is a representation of the C type GIOStatus.
+//
 type IOStatus int
 
 const (
@@ -261,6 +271,7 @@ const (
 )
 
 // KeyFileError is a representation of the C type GKeyFileError.
+//
 type KeyFileError int
 
 const (
@@ -291,6 +302,7 @@ const (
 )
 
 // MarkupError is a representation of the C type GMarkupError.
+//
 type MarkupError int
 
 const (
@@ -311,6 +323,7 @@ const (
 )
 
 // NormalizeMode is a representation of the C type GNormalizeMode.
+//
 type NormalizeMode int
 
 const (
@@ -359,6 +372,7 @@ const (
 )
 
 // OptionArg is a representation of the C type GOptionArg.
+//
 type OptionArg int
 
 const (
@@ -383,6 +397,7 @@ const (
 )
 
 // OptionError is a representation of the C type GOptionError.
+//
 type OptionError int
 
 const (
@@ -517,6 +532,7 @@ const (
 )
 
 // SeekType is a representation of the C type GSeekType.
+//
 type SeekType int
 
 const (
@@ -529,6 +545,7 @@ const (
 )
 
 // ShellError is a representation of the C type GShellError.
+//
 type ShellError int
 
 const (
@@ -541,6 +558,7 @@ const (
 )
 
 // SliceConfig is a representation of the C type GSliceConfig.
+//
 type SliceConfig int
 
 const (
@@ -559,6 +577,7 @@ const (
 )
 
 // SpawnError is a representation of the C type GSpawnError.
+//
 type SpawnError int
 
 const (
@@ -619,6 +638,7 @@ const (
 )
 
 // TestLogType is a representation of the C type GTestLogType.
+//
 type TestLogType int
 
 const (
@@ -649,6 +669,7 @@ const (
 )
 
 // TestResult is a representation of the C type GTestResult.
+//
 type TestResult int
 
 const (
@@ -663,6 +684,7 @@ const (
 )
 
 // ThreadError is a representation of the C type GThreadError.
+//
 type ThreadError int
 
 const (
@@ -671,6 +693,7 @@ const (
 )
 
 // TimeType is a representation of the C type GTimeType.
+//
 type TimeType int
 
 const (
@@ -683,6 +706,7 @@ const (
 )
 
 // TokenType is a representation of the C type GTokenType.
+//
 type TokenType int
 
 const (
@@ -735,6 +759,7 @@ const (
 )
 
 // TraverseType is a representation of the C type GTraverseType.
+//
 type TraverseType int
 
 const (
@@ -749,6 +774,7 @@ const (
 )
 
 // UnicodeBreakType is a representation of the C type GUnicodeBreakType.
+//
 type UnicodeBreakType int
 
 const (
@@ -841,6 +867,7 @@ const (
 )
 
 // UnicodeScript is a representation of the C type GUnicodeScript.
+//
 type UnicodeScript int
 
 const (
@@ -1155,6 +1182,7 @@ const (
 )
 
 // UnicodeType is a representation of the C type GUnicodeType.
+//
 type UnicodeType int
 
 const (
@@ -1291,6 +1319,7 @@ const (
 )
 
 // VariantParseError is a representation of the C type GVariantParseError.
+//
 type VariantParseError int
 
 const (

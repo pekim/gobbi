@@ -55,6 +55,7 @@ const (
 )
 
 // DragAction is a representation of the C type GdkDragAction.
+//
 type DragAction int
 
 const (
@@ -73,6 +74,7 @@ const (
 )
 
 // EventMask is a representation of the C type GdkEventMask.
+//
 type EventMask int
 
 const (
@@ -155,6 +157,7 @@ const (
 )
 
 // ModifierType is a representation of the C type GdkModifierType.
+//
 type ModifierType int
 
 const (
@@ -247,6 +250,7 @@ const (
 )
 
 // WMDecoration is a representation of the C type GdkWMDecoration.
+//
 type WMDecoration int
 
 const (
@@ -267,6 +271,7 @@ const (
 )
 
 // WMFunction is a representation of the C type GdkWMFunction.
+//
 type WMFunction int
 
 const (
@@ -285,6 +290,7 @@ const (
 )
 
 // WindowAttributesType is a representation of the C type GdkWindowAttributesType.
+//
 type WindowAttributesType int
 
 const (
@@ -307,6 +313,7 @@ const (
 )
 
 // WindowHints is a representation of the C type GdkWindowHints.
+//
 type WindowHints int
 
 const (
@@ -331,6 +338,7 @@ const (
 )
 
 // WindowState is a representation of the C type GdkWindowState.
+//
 type WindowState int
 
 const (

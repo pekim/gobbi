@@ -3,6 +3,7 @@
 package gtk
 
 // Align is a representation of the C type GtkAlign.
+//
 type Align int
 
 const (
@@ -19,6 +20,7 @@ const (
 )
 
 // ArrowPlacement is a representation of the C type GtkArrowPlacement.
+//
 type ArrowPlacement int
 
 const (
@@ -31,6 +33,7 @@ const (
 )
 
 // ArrowType is a representation of the C type GtkArrowType.
+//
 type ArrowType int
 
 const (
@@ -47,6 +50,7 @@ const (
 )
 
 // AssistantPageType is a representation of the C type GtkAssistantPageType.
+//
 type AssistantPageType int
 
 const (
@@ -79,6 +83,7 @@ const (
 )
 
 // BorderStyle is a representation of the C type GtkBorderStyle.
+//
 type BorderStyle int
 
 const (
@@ -105,6 +110,7 @@ const (
 )
 
 // BuilderError is a representation of the C type GtkBuilderError.
+//
 type BuilderError int
 
 const (
@@ -139,6 +145,7 @@ const (
 )
 
 // ButtonBoxStyle is a representation of the C type GtkButtonBoxStyle.
+//
 type ButtonBoxStyle int
 
 const (
@@ -157,6 +164,7 @@ const (
 )
 
 // ButtonRole is a representation of the C type GtkButtonRole.
+//
 type ButtonRole int
 
 const (
@@ -169,6 +177,7 @@ const (
 )
 
 // ButtonsType is a representation of the C type GtkButtonsType.
+//
 type ButtonsType int
 
 const (
@@ -187,6 +196,7 @@ const (
 )
 
 // CellRendererAccelMode is a representation of the C type GtkCellRendererAccelMode.
+//
 type CellRendererAccelMode int
 
 const (
@@ -199,6 +209,7 @@ const (
 )
 
 // CellRendererMode is a representation of the C type GtkCellRendererMode.
+//
 type CellRendererMode int
 
 const (
@@ -211,6 +222,7 @@ const (
 )
 
 // CornerType is a representation of the C type GtkCornerType.
+//
 type CornerType int
 
 const (
@@ -225,6 +237,7 @@ const (
 )
 
 // CssProviderError is a representation of the C type GtkCssProviderError.
+//
 type CssProviderError int
 
 const (
@@ -269,6 +282,7 @@ const (
 )
 
 // DeleteType is a representation of the C type GtkDeleteType.
+//
 type DeleteType int
 
 const (
@@ -291,6 +305,7 @@ const (
 )
 
 // DirectionType is a representation of the C type GtkDirectionType.
+//
 type DirectionType int
 
 const (
@@ -309,6 +324,7 @@ const (
 )
 
 // DragResult is a representation of the C type GtkDragResult.
+//
 type DragResult int
 
 const (
@@ -353,6 +369,7 @@ const (
 )
 
 // ExpanderStyle is a representation of the C type GtkExpanderStyle.
+//
 type ExpanderStyle int
 
 const (
@@ -367,6 +384,7 @@ const (
 )
 
 // FileChooserAction is a representation of the C type GtkFileChooserAction.
+//
 type FileChooserAction int
 
 const (
@@ -395,6 +413,7 @@ const (
 )
 
 // FileChooserError is a representation of the C type GtkFileChooserError.
+//
 type FileChooserError int
 
 const (
@@ -409,6 +428,7 @@ const (
 )
 
 // IMPreeditStyle is a representation of the C type GtkIMPreeditStyle.
+//
 type IMPreeditStyle int
 
 const (
@@ -421,6 +441,7 @@ const (
 )
 
 // IMStatusStyle is a representation of the C type GtkIMStatusStyle.
+//
 type IMStatusStyle int
 
 const (
@@ -433,6 +454,7 @@ const (
 )
 
 // IconSize is a representation of the C type GtkIconSize.
+//
 type IconSize int
 
 const (
@@ -453,6 +475,7 @@ const (
 )
 
 // IconThemeError is a representation of the C type GtkIconThemeError.
+//
 type IconThemeError int
 
 const (
@@ -463,6 +486,7 @@ const (
 )
 
 // IconViewDropPosition is a representation of the C type GtkIconViewDropPosition.
+//
 type IconViewDropPosition int
 
 const (
@@ -481,6 +505,7 @@ const (
 )
 
 // ImageType is a representation of the C type GtkImageType.
+//
 type ImageType int
 
 const (
@@ -531,6 +556,7 @@ const (
 )
 
 // Justification is a representation of the C type GtkJustification.
+//
 type Justification int
 
 const (
@@ -595,6 +621,7 @@ const (
 )
 
 // MenuDirectionType is a representation of the C type GtkMenuDirectionType.
+//
 type MenuDirectionType int
 
 const (
@@ -609,6 +636,7 @@ const (
 )
 
 // MessageType is a representation of the C type GtkMessageType.
+//
 type MessageType int
 
 const (
@@ -625,6 +653,7 @@ const (
 )
 
 // MovementStep is a representation of the C type GtkMovementStep.
+//
 type MovementStep int
 
 const (
@@ -651,6 +680,7 @@ const (
 )
 
 // NotebookTab is a representation of the C type GtkNotebookTab.
+//
 type NotebookTab int
 
 const (
@@ -661,6 +691,7 @@ const (
 )
 
 // NumberUpLayout is a representation of the C type GtkNumberUpLayout.
+//
 type NumberUpLayout int
 
 const (
@@ -683,6 +714,7 @@ const (
 )
 
 // Orientation is a representation of the C type GtkOrientation.
+//
 type Orientation int
 
 const (
@@ -693,6 +725,7 @@ const (
 )
 
 // PackDirection is a representation of the C type GtkPackDirection.
+//
 type PackDirection int
 
 const (
@@ -707,6 +740,7 @@ const (
 )
 
 // PackType is a representation of the C type GtkPackType.
+//
 type PackType int
 
 const (
@@ -717,6 +751,7 @@ const (
 )
 
 // PadActionType is a representation of the C type GtkPadActionType.
+//
 type PadActionType int
 
 const (
@@ -729,6 +764,7 @@ const (
 )
 
 // PageOrientation is a representation of the C type GtkPageOrientation.
+//
 type PageOrientation int
 
 const (
@@ -743,6 +779,7 @@ const (
 )
 
 // PageSet is a representation of the C type GtkPageSet.
+//
 type PageSet int
 
 const (
@@ -771,6 +808,7 @@ const (
 )
 
 // PathPriorityType is a representation of the C type GtkPathPriorityType.
+//
 type PathPriorityType int
 
 const (
@@ -789,6 +827,7 @@ const (
 )
 
 // PathType is a representation of the C type GtkPathType.
+//
 type PathType int
 
 const (
@@ -801,6 +840,7 @@ const (
 )
 
 // PolicyType is a representation of the C type GtkPolicyType.
+//
 type PolicyType int
 
 const (
@@ -827,6 +867,7 @@ const (
 )
 
 // PositionType is a representation of the C type GtkPositionType.
+//
 type PositionType int
 
 const (
@@ -841,6 +882,7 @@ const (
 )
 
 // PrintDuplex is a representation of the C type GtkPrintDuplex.
+//
 type PrintDuplex int
 
 const (
@@ -853,6 +895,7 @@ const (
 )
 
 // PrintError is a representation of the C type GtkPrintError.
+//
 type PrintError int
 
 const (
@@ -867,6 +910,7 @@ const (
 )
 
 // PrintOperationAction is a representation of the C type GtkPrintOperationAction.
+//
 type PrintOperationAction int
 
 const (
@@ -881,6 +925,7 @@ const (
 )
 
 // PrintOperationResult is a representation of the C type GtkPrintOperationResult.
+//
 type PrintOperationResult int
 
 const (
@@ -895,6 +940,7 @@ const (
 )
 
 // PrintPages is a representation of the C type GtkPrintPages.
+//
 type PrintPages int
 
 const (
@@ -909,6 +955,7 @@ const (
 )
 
 // PrintQuality is a representation of the C type GtkPrintQuality.
+//
 type PrintQuality int
 
 const (
@@ -923,6 +970,7 @@ const (
 )
 
 // PrintStatus is a representation of the C type GtkPrintStatus.
+//
 type PrintStatus int
 
 const (
@@ -963,6 +1011,7 @@ const (
 )
 
 // RcTokenType is a representation of the C type GtkRcTokenType.
+//
 type RcTokenType int
 
 const (
@@ -1099,6 +1148,7 @@ const (
 )
 
 // ReliefStyle is a representation of the C type GtkReliefStyle.
+//
 type ReliefStyle int
 
 const (
@@ -1111,6 +1161,7 @@ const (
 )
 
 // ResizeMode is a representation of the C type GtkResizeMode.
+//
 type ResizeMode int
 
 const (
@@ -1123,6 +1174,7 @@ const (
 )
 
 // ResponseType is a representation of the C type GtkResponseType.
+//
 type ResponseType int
 
 const (
@@ -1151,6 +1203,7 @@ const (
 )
 
 // RevealerTransitionType is a representation of the C type GtkRevealerTransitionType.
+//
 type RevealerTransitionType int
 
 const (
@@ -1169,6 +1222,7 @@ const (
 )
 
 // ScrollStep is a representation of the C type GtkScrollStep.
+//
 type ScrollStep int
 
 const (
@@ -1187,6 +1241,7 @@ const (
 )
 
 // ScrollType is a representation of the C type GtkScrollType.
+//
 type ScrollType int
 
 const (
@@ -1225,6 +1280,7 @@ const (
 )
 
 // ScrollablePolicy is a representation of the C type GtkScrollablePolicy.
+//
 type ScrollablePolicy int
 
 const (
@@ -1235,6 +1291,7 @@ const (
 )
 
 // SelectionMode is a representation of the C type GtkSelectionMode.
+//
 type SelectionMode int
 
 const (
@@ -1249,6 +1306,7 @@ const (
 )
 
 // SensitivityType is a representation of the C type GtkSensitivityType.
+//
 type SensitivityType int
 
 const (
@@ -1261,6 +1319,7 @@ const (
 )
 
 // ShadowType is a representation of the C type GtkShadowType.
+//
 type ShadowType int
 
 const (
@@ -1301,6 +1360,7 @@ const (
 )
 
 // SizeGroupMode is a representation of the C type GtkSizeGroupMode.
+//
 type SizeGroupMode int
 
 const (
@@ -1315,6 +1375,7 @@ const (
 )
 
 // SizeRequestMode is a representation of the C type GtkSizeRequestMode.
+//
 type SizeRequestMode int
 
 const (
@@ -1327,6 +1388,7 @@ const (
 )
 
 // SortType is a representation of the C type GtkSortType.
+//
 type SortType int
 
 const (
@@ -1337,6 +1399,7 @@ const (
 )
 
 // SpinButtonUpdatePolicy is a representation of the C type GtkSpinButtonUpdatePolicy.
+//
 type SpinButtonUpdatePolicy int
 
 const (
@@ -1347,6 +1410,7 @@ const (
 )
 
 // SpinType is a representation of the C type GtkSpinType.
+//
 type SpinType int
 
 const (
@@ -1367,6 +1431,7 @@ const (
 )
 
 // StackTransitionType is a representation of the C type GtkStackTransitionType.
+//
 type StackTransitionType int
 
 const (
@@ -1413,6 +1478,7 @@ const (
 )
 
 // StateType is a representation of the C type GtkStateType.
+//
 type StateType int
 
 const (
@@ -1433,6 +1499,7 @@ const (
 )
 
 // TextBufferTargetInfo is a representation of the C type GtkTextBufferTargetInfo.
+//
 type TextBufferTargetInfo int
 
 const (
@@ -1445,6 +1512,7 @@ const (
 )
 
 // TextDirection is a representation of the C type GtkTextDirection.
+//
 type TextDirection int
 
 const (
@@ -1469,6 +1537,7 @@ const (
 )
 
 // TextViewLayer is a representation of the C type GtkTextViewLayer.
+//
 type TextViewLayer int
 
 const (
@@ -1483,6 +1552,7 @@ const (
 )
 
 // TextWindowType is a representation of the C type GtkTextWindowType.
+//
 type TextWindowType int
 
 const (
@@ -1503,6 +1573,7 @@ const (
 )
 
 // ToolbarSpaceStyle is a representation of the C type GtkToolbarSpaceStyle.
+//
 type ToolbarSpaceStyle int
 
 const (
@@ -1513,6 +1584,7 @@ const (
 )
 
 // ToolbarStyle is a representation of the C type GtkToolbarStyle.
+//
 type ToolbarStyle int
 
 const (
@@ -1527,6 +1599,7 @@ const (
 )
 
 // TreeViewColumnSizing is a representation of the C type GtkTreeViewColumnSizing.
+//
 type TreeViewColumnSizing int
 
 const (
@@ -1539,6 +1612,7 @@ const (
 )
 
 // TreeViewDropPosition is a representation of the C type GtkTreeViewDropPosition.
+//
 type TreeViewDropPosition int
 
 const (
@@ -1553,6 +1627,7 @@ const (
 )
 
 // TreeViewGridLines is a representation of the C type GtkTreeViewGridLines.
+//
 type TreeViewGridLines int
 
 const (
@@ -1567,6 +1642,7 @@ const (
 )
 
 // Unit is a representation of the C type GtkUnit.
+//
 type Unit int
 
 const (
@@ -1581,6 +1657,7 @@ const (
 )
 
 // WidgetHelpType is a representation of the C type GtkWidgetHelpType.
+//
 type WidgetHelpType int
 
 const (
@@ -1591,6 +1668,7 @@ const (
 )
 
 // WindowPosition is a representation of the C type GtkWindowPosition.
+//
 type WindowPosition int
 
 const (
@@ -1607,6 +1685,7 @@ const (
 )
 
 // WindowType is a representation of the C type GtkWindowType.
+//
 type WindowType int
 
 const (
@@ -1617,6 +1696,7 @@ const (
 )
 
 // WrapMode is a representation of the C type GtkWrapMode.
+//
 type WrapMode int
 
 const (
