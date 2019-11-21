@@ -51,9 +51,9 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.funcInfoSetFuncGoName = fmt.Sprintf("%sSet", f.funcInfoGoName)
 
 	if record != nil {
-		f.invokerVarName = makeUnexportedGoName(f.Name) + record.Name + "Invoker"
+		f.invokerVarName = makeUnexportedGoName(f.Name + record.Name + "Invoker")
 	} else {
-		f.invokerVarName = makeUnexportedGoName(f.Name) + "Invoker"
+		f.invokerVarName = makeUnexportedGoName(f.Name + "Invoker")
 	}
 }
 

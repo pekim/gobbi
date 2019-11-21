@@ -18,9 +18,6 @@ func makeExportedGoName(cName string) string {
 
 func makeUnexportedGoName(cName string) string {
 	goName := makeGoName(cName, false)
-	if len(goName) > 0 {
-		goName = strings.ToLower(goName[0:1]) + goName[1:]
-	}
 
 	if _, isReserved := goNameReservedWords[goName]; isReserved {
 		goName += "_"
@@ -34,22 +31,28 @@ func makeGoName(cName string, uppercaseFirstChar bool) string {
 		return cName
 	}
 
-	//if uppercaseFirstChar{
-	//	cName = strings.ToLower(goName[0:1]) + goName[1:]
-	//}else {
-	//
-	//}
-
 	cParts := strings.Split(cName, "_")
 	if len(cParts) == 1 {
 		cParts = strings.Split(cName, "-")
+	}
+	if cParts[0] == "" {
+		cParts = cParts[1:]
 	}
 
 	goParts := []string{}
 
 	for i, cPart := range cParts {
 		goPart := cPart
-		if uppercaseFirstChar || i > 0 {
+
+		if i == 0 {
+			if len(goPart) > 0 {
+				if uppercaseFirstChar {
+					goPart = strings.ToUpper(goPart[0:1]) + goPart[1:]
+				} else {
+					goPart = strings.ToLower(goPart[0:1]) + goPart[1:]
+				}
+			}
+		} else {
 			goPart = strings.Title(goPart)
 		}
 
