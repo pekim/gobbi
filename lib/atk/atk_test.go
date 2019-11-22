@@ -9,5 +9,7 @@ import (
 func TestCleanBuild(t *testing.T) {
 	assert.Equal(t, int32(2), MAJOR_VERSION)
 
-	assert.True(t, strings.HasPrefix(GetVersion(), "2."))
+	version, err := GetVersion()
+	assert.Nil(t, err)
+	assert.True(t, strings.HasPrefix(version, "2."))
 }

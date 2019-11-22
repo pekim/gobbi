@@ -166,7 +166,7 @@ func attrIteratorCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_attr_iterator_copy.
-func (recv *AttrIterator) Copy() *AttrIterator {
+func (recv *AttrIterator) Copy() (*AttrIterator, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -179,7 +179,7 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 
 	retGo := &AttrIterator{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var attrIteratorDestroyFunction *gi.Function
@@ -198,7 +198,7 @@ func attrIteratorDestroyFunction_Set() error {
 }
 
 // Destroy is a representation of the C type pango_attr_iterator_destroy.
-func (recv *AttrIterator) Destroy() {
+func (recv *AttrIterator) Destroy() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -207,6 +207,7 @@ func (recv *AttrIterator) Destroy() {
 		attrIteratorDestroyFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_attr_iterator_get' : parameter 'type' of type 'AttrType' not supported
@@ -233,7 +234,7 @@ func attrIteratorRangeFunction_Set() error {
 }
 
 // Range is a representation of the C type pango_attr_iterator_range.
-func (recv *AttrIterator) Range() (int32, int32) {
+func (recv *AttrIterator) Range() (int32, int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -247,7 +248,7 @@ func (recv *AttrIterator) Range() (int32, int32) {
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
 
-	return out0, out1
+	return out0, out1, err
 }
 
 var attrLanguageStruct *gi.Struct
@@ -298,7 +299,7 @@ func attrListNewFunction_Set() error {
 }
 
 // AttrListNew is a representation of the C type pango_attr_list_new.
-func AttrListNew() *AttrList {
+func AttrListNew() (*AttrList, error) {
 
 	var ret gi.Argument
 
@@ -309,7 +310,7 @@ func AttrListNew() *AttrList {
 
 	retGo := &AttrList{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_list_change' : parameter 'attr' of type 'Attribute' not supported
@@ -330,7 +331,7 @@ func attrListCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_attr_list_copy.
-func (recv *AttrList) Copy() *AttrList {
+func (recv *AttrList) Copy() (*AttrList, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -343,7 +344,7 @@ func (recv *AttrList) Copy() *AttrList {
 
 	retGo := &AttrList{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_list_filter' : parameter 'func' of type 'AttrFilterFunc' not supported
@@ -364,7 +365,7 @@ func attrListGetIteratorFunction_Set() error {
 }
 
 // GetIterator is a representation of the C type pango_attr_list_get_iterator.
-func (recv *AttrList) GetIterator() *AttrIterator {
+func (recv *AttrList) GetIterator() (*AttrIterator, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -377,7 +378,7 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 
 	retGo := &AttrIterator{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_list_insert' : parameter 'attr' of type 'Attribute' not supported
@@ -400,7 +401,7 @@ func attrListRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type pango_attr_list_ref.
-func (recv *AttrList) Ref() *AttrList {
+func (recv *AttrList) Ref() (*AttrList, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -413,7 +414,7 @@ func (recv *AttrList) Ref() *AttrList {
 
 	retGo := &AttrList{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_list_splice' : parameter 'other' of type 'AttrList' not supported
@@ -434,7 +435,7 @@ func attrListUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type pango_attr_list_unref.
-func (recv *AttrList) Unref() {
+func (recv *AttrList) Unref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -443,6 +444,7 @@ func (recv *AttrList) Unref() {
 		attrListUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var attrShapeStruct *gi.Struct
@@ -535,7 +537,7 @@ func attributeCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_attribute_copy.
-func (recv *Attribute) Copy() *Attribute {
+func (recv *Attribute) Copy() (*Attribute, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -548,7 +550,7 @@ func (recv *Attribute) Copy() *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var attributeDestroyFunction *gi.Function
@@ -567,7 +569,7 @@ func attributeDestroyFunction_Set() error {
 }
 
 // Destroy is a representation of the C type pango_attribute_destroy.
-func (recv *Attribute) Destroy() {
+func (recv *Attribute) Destroy() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -576,6 +578,7 @@ func (recv *Attribute) Destroy() {
 		attributeDestroyFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_attribute_equal' : parameter 'attr2' of type 'Attribute' not supported
@@ -616,7 +619,7 @@ func colorCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_color_copy.
-func (recv *Color) Copy() *Color {
+func (recv *Color) Copy() (*Color, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -629,7 +632,7 @@ func (recv *Color) Copy() *Color {
 
 	retGo := &Color{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var colorFreeFunction *gi.Function
@@ -648,7 +651,7 @@ func colorFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_color_free.
-func (recv *Color) Free() {
+func (recv *Color) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -657,6 +660,7 @@ func (recv *Color) Free() {
 		colorFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_color_parse' : return type 'gboolean' not supported
@@ -677,7 +681,7 @@ func colorToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type pango_color_to_string.
-func (recv *Color) ToString() string {
+func (recv *Color) ToString() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -690,7 +694,7 @@ func (recv *Color) ToString() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var contextClassStruct *gi.Struct
@@ -739,7 +743,7 @@ func coverageCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_coverage_copy.
-func (recv *Coverage) Copy() *Coverage {
+func (recv *Coverage) Copy() (*Coverage, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -752,7 +756,7 @@ func (recv *Coverage) Copy() *Coverage {
 
 	retGo := &Coverage{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_coverage_get' : return type 'CoverageLevel' not supported
@@ -775,7 +779,7 @@ func coverageRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type pango_coverage_ref.
-func (recv *Coverage) Ref() *Coverage {
+func (recv *Coverage) Ref() (*Coverage, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -788,7 +792,7 @@ func (recv *Coverage) Ref() *Coverage {
 
 	retGo := &Coverage{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_coverage_set' : parameter 'level' of type 'CoverageLevel' not supported
@@ -811,7 +815,7 @@ func coverageUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type pango_coverage_unref.
-func (recv *Coverage) Unref() {
+func (recv *Coverage) Unref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -820,6 +824,7 @@ func (recv *Coverage) Unref() {
 		coverageUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var engineClassStruct *gi.Struct
@@ -963,7 +968,7 @@ func fontDescriptionNewFunction_Set() error {
 }
 
 // FontDescriptionNew is a representation of the C type pango_font_description_new.
-func FontDescriptionNew() *FontDescription {
+func FontDescriptionNew() (*FontDescription, error) {
 
 	var ret gi.Argument
 
@@ -974,7 +979,7 @@ func FontDescriptionNew() *FontDescription {
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_better_match' : parameter 'old_match' of type 'FontDescription' not supported
@@ -995,7 +1000,7 @@ func fontDescriptionCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_font_description_copy.
-func (recv *FontDescription) Copy() *FontDescription {
+func (recv *FontDescription) Copy() (*FontDescription, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1008,7 +1013,7 @@ func (recv *FontDescription) Copy() *FontDescription {
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var fontDescriptionCopyStaticFunction *gi.Function
@@ -1027,7 +1032,7 @@ func fontDescriptionCopyStaticFunction_Set() error {
 }
 
 // CopyStatic is a representation of the C type pango_font_description_copy_static.
-func (recv *FontDescription) CopyStatic() *FontDescription {
+func (recv *FontDescription) CopyStatic() (*FontDescription, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1040,7 +1045,7 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_equal' : parameter 'desc2' of type 'FontDescription' not supported
@@ -1061,7 +1066,7 @@ func fontDescriptionFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_font_description_free.
-func (recv *FontDescription) Free() {
+func (recv *FontDescription) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1070,6 +1075,7 @@ func (recv *FontDescription) Free() {
 		fontDescriptionFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var fontDescriptionGetFamilyFunction *gi.Function
@@ -1088,7 +1094,7 @@ func fontDescriptionGetFamilyFunction_Set() error {
 }
 
 // GetFamily is a representation of the C type pango_font_description_get_family.
-func (recv *FontDescription) GetFamily() string {
+func (recv *FontDescription) GetFamily() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1101,7 +1107,7 @@ func (recv *FontDescription) GetFamily() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_get_gravity' : return type 'Gravity' not supported
@@ -1124,7 +1130,7 @@ func fontDescriptionGetSizeFunction_Set() error {
 }
 
 // GetSize is a representation of the C type pango_font_description_get_size.
-func (recv *FontDescription) GetSize() int32 {
+func (recv *FontDescription) GetSize() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1137,7 +1143,7 @@ func (recv *FontDescription) GetSize() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_get_size_is_absolute' : return type 'gboolean' not supported
@@ -1164,7 +1170,7 @@ func fontDescriptionGetVariationsFunction_Set() error {
 }
 
 // GetVariations is a representation of the C type pango_font_description_get_variations.
-func (recv *FontDescription) GetVariations() string {
+func (recv *FontDescription) GetVariations() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1177,7 +1183,7 @@ func (recv *FontDescription) GetVariations() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_get_weight' : return type 'Weight' not supported
@@ -1198,7 +1204,7 @@ func fontDescriptionHashFunction_Set() error {
 }
 
 // Hash is a representation of the C type pango_font_description_hash.
-func (recv *FontDescription) Hash() uint32 {
+func (recv *FontDescription) Hash() (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1211,7 +1217,7 @@ func (recv *FontDescription) Hash() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_merge' : parameter 'desc_to_merge' of type 'FontDescription' not supported
@@ -1236,7 +1242,7 @@ func fontDescriptionSetFamilyFunction_Set() error {
 }
 
 // SetFamily is a representation of the C type pango_font_description_set_family.
-func (recv *FontDescription) SetFamily(family string) {
+func (recv *FontDescription) SetFamily(family string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(family)
@@ -1246,6 +1252,7 @@ func (recv *FontDescription) SetFamily(family string) {
 		fontDescriptionSetFamilyFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var fontDescriptionSetFamilyStaticFunction *gi.Function
@@ -1264,7 +1271,7 @@ func fontDescriptionSetFamilyStaticFunction_Set() error {
 }
 
 // SetFamilyStatic is a representation of the C type pango_font_description_set_family_static.
-func (recv *FontDescription) SetFamilyStatic(family string) {
+func (recv *FontDescription) SetFamilyStatic(family string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(family)
@@ -1274,6 +1281,7 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 		fontDescriptionSetFamilyStaticFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_set_gravity' : parameter 'gravity' of type 'Gravity' not supported
@@ -1294,7 +1302,7 @@ func fontDescriptionSetSizeFunction_Set() error {
 }
 
 // SetSize is a representation of the C type pango_font_description_set_size.
-func (recv *FontDescription) SetSize(size int32) {
+func (recv *FontDescription) SetSize(size int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(size)
@@ -1304,6 +1312,7 @@ func (recv *FontDescription) SetSize(size int32) {
 		fontDescriptionSetSizeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_set_stretch' : parameter 'stretch' of type 'Stretch' not supported
@@ -1328,7 +1337,7 @@ func fontDescriptionSetVariationsFunction_Set() error {
 }
 
 // SetVariations is a representation of the C type pango_font_description_set_variations.
-func (recv *FontDescription) SetVariations(settings string) {
+func (recv *FontDescription) SetVariations(settings string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(settings)
@@ -1338,6 +1347,7 @@ func (recv *FontDescription) SetVariations(settings string) {
 		fontDescriptionSetVariationsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var fontDescriptionSetVariationsStaticFunction *gi.Function
@@ -1356,7 +1366,7 @@ func fontDescriptionSetVariationsStaticFunction_Set() error {
 }
 
 // SetVariationsStatic is a representation of the C type pango_font_description_set_variations_static.
-func (recv *FontDescription) SetVariationsStatic(settings string) {
+func (recv *FontDescription) SetVariationsStatic(settings string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(settings)
@@ -1366,6 +1376,7 @@ func (recv *FontDescription) SetVariationsStatic(settings string) {
 		fontDescriptionSetVariationsStaticFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_set_weight' : parameter 'weight' of type 'Weight' not supported
@@ -1386,7 +1397,7 @@ func fontDescriptionToFilenameFunction_Set() error {
 }
 
 // ToFilename is a representation of the C type pango_font_description_to_filename.
-func (recv *FontDescription) ToFilename() string {
+func (recv *FontDescription) ToFilename() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1399,7 +1410,7 @@ func (recv *FontDescription) ToFilename() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var fontDescriptionToStringFunction *gi.Function
@@ -1418,7 +1429,7 @@ func fontDescriptionToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type pango_font_description_to_string.
-func (recv *FontDescription) ToString() string {
+func (recv *FontDescription) ToString() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1431,7 +1442,7 @@ func (recv *FontDescription) ToString() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_font_description_unset_fields' : parameter 'to_unset' of type 'FontMask' not supported
@@ -1535,7 +1546,7 @@ func fontMetricsNewFunction_Set() error {
 }
 
 // FontMetricsNew is a representation of the C type pango_font_metrics_new.
-func FontMetricsNew() *FontMetrics {
+func FontMetricsNew() (*FontMetrics, error) {
 
 	var ret gi.Argument
 
@@ -1546,7 +1557,7 @@ func FontMetricsNew() *FontMetrics {
 
 	retGo := &FontMetrics{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetApproximateCharWidthFunction *gi.Function
@@ -1565,7 +1576,7 @@ func fontMetricsGetApproximateCharWidthFunction_Set() error {
 }
 
 // GetApproximateCharWidth is a representation of the C type pango_font_metrics_get_approximate_char_width.
-func (recv *FontMetrics) GetApproximateCharWidth() int32 {
+func (recv *FontMetrics) GetApproximateCharWidth() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1578,7 +1589,7 @@ func (recv *FontMetrics) GetApproximateCharWidth() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetApproximateDigitWidthFunction *gi.Function
@@ -1597,7 +1608,7 @@ func fontMetricsGetApproximateDigitWidthFunction_Set() error {
 }
 
 // GetApproximateDigitWidth is a representation of the C type pango_font_metrics_get_approximate_digit_width.
-func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
+func (recv *FontMetrics) GetApproximateDigitWidth() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1610,7 +1621,7 @@ func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetAscentFunction *gi.Function
@@ -1629,7 +1640,7 @@ func fontMetricsGetAscentFunction_Set() error {
 }
 
 // GetAscent is a representation of the C type pango_font_metrics_get_ascent.
-func (recv *FontMetrics) GetAscent() int32 {
+func (recv *FontMetrics) GetAscent() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1642,7 +1653,7 @@ func (recv *FontMetrics) GetAscent() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetDescentFunction *gi.Function
@@ -1661,7 +1672,7 @@ func fontMetricsGetDescentFunction_Set() error {
 }
 
 // GetDescent is a representation of the C type pango_font_metrics_get_descent.
-func (recv *FontMetrics) GetDescent() int32 {
+func (recv *FontMetrics) GetDescent() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1674,7 +1685,7 @@ func (recv *FontMetrics) GetDescent() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetStrikethroughPositionFunction *gi.Function
@@ -1693,7 +1704,7 @@ func fontMetricsGetStrikethroughPositionFunction_Set() error {
 }
 
 // GetStrikethroughPosition is a representation of the C type pango_font_metrics_get_strikethrough_position.
-func (recv *FontMetrics) GetStrikethroughPosition() int32 {
+func (recv *FontMetrics) GetStrikethroughPosition() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1706,7 +1717,7 @@ func (recv *FontMetrics) GetStrikethroughPosition() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetStrikethroughThicknessFunction *gi.Function
@@ -1725,7 +1736,7 @@ func fontMetricsGetStrikethroughThicknessFunction_Set() error {
 }
 
 // GetStrikethroughThickness is a representation of the C type pango_font_metrics_get_strikethrough_thickness.
-func (recv *FontMetrics) GetStrikethroughThickness() int32 {
+func (recv *FontMetrics) GetStrikethroughThickness() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1738,7 +1749,7 @@ func (recv *FontMetrics) GetStrikethroughThickness() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetUnderlinePositionFunction *gi.Function
@@ -1757,7 +1768,7 @@ func fontMetricsGetUnderlinePositionFunction_Set() error {
 }
 
 // GetUnderlinePosition is a representation of the C type pango_font_metrics_get_underline_position.
-func (recv *FontMetrics) GetUnderlinePosition() int32 {
+func (recv *FontMetrics) GetUnderlinePosition() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1770,7 +1781,7 @@ func (recv *FontMetrics) GetUnderlinePosition() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsGetUnderlineThicknessFunction *gi.Function
@@ -1789,7 +1800,7 @@ func fontMetricsGetUnderlineThicknessFunction_Set() error {
 }
 
 // GetUnderlineThickness is a representation of the C type pango_font_metrics_get_underline_thickness.
-func (recv *FontMetrics) GetUnderlineThickness() int32 {
+func (recv *FontMetrics) GetUnderlineThickness() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1802,7 +1813,7 @@ func (recv *FontMetrics) GetUnderlineThickness() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsRefFunction *gi.Function
@@ -1821,7 +1832,7 @@ func fontMetricsRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type pango_font_metrics_ref.
-func (recv *FontMetrics) Ref() *FontMetrics {
+func (recv *FontMetrics) Ref() (*FontMetrics, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1834,7 +1845,7 @@ func (recv *FontMetrics) Ref() *FontMetrics {
 
 	retGo := &FontMetrics{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var fontMetricsUnrefFunction *gi.Function
@@ -1853,7 +1864,7 @@ func fontMetricsUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type pango_font_metrics_unref.
-func (recv *FontMetrics) Unref() {
+func (recv *FontMetrics) Unref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1862,6 +1873,7 @@ func (recv *FontMetrics) Unref() {
 		fontMetricsUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var fontsetClassStruct *gi.Struct
@@ -1974,7 +1986,7 @@ func glyphItemCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_glyph_item_copy.
-func (recv *GlyphItem) Copy() *GlyphItem {
+func (recv *GlyphItem) Copy() (*GlyphItem, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1987,7 +1999,7 @@ func (recv *GlyphItem) Copy() *GlyphItem {
 
 	retGo := &GlyphItem{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var glyphItemFreeFunction *gi.Function
@@ -2006,7 +2018,7 @@ func glyphItemFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_glyph_item_free.
-func (recv *GlyphItem) Free() {
+func (recv *GlyphItem) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2015,6 +2027,7 @@ func (recv *GlyphItem) Free() {
 		glyphItemFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_get_logical_widths' : parameter 'logical_widths' has no type
@@ -2037,7 +2050,7 @@ func glyphItemSplitFunction_Set() error {
 }
 
 // Split is a representation of the C type pango_glyph_item_split.
-func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
+func (recv *GlyphItem) Split(text string, splitIndex int32) (*GlyphItem, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
@@ -2052,7 +2065,7 @@ func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 
 	retGo := &GlyphItem{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var glyphItemIterStruct *gi.Struct
@@ -2094,7 +2107,7 @@ func glyphItemIterCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_glyph_item_iter_copy.
-func (recv *GlyphItemIter) Copy() *GlyphItemIter {
+func (recv *GlyphItemIter) Copy() (*GlyphItemIter, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2107,7 +2120,7 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 
 	retGo := &GlyphItemIter{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var glyphItemIterFreeFunction *gi.Function
@@ -2126,7 +2139,7 @@ func glyphItemIterFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_glyph_item_iter_free.
-func (recv *GlyphItemIter) Free() {
+func (recv *GlyphItemIter) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2135,6 +2148,7 @@ func (recv *GlyphItemIter) Free() {
 		glyphItemIterFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_iter_init_end' : parameter 'glyph_item' of type 'GlyphItem' not supported
@@ -2179,7 +2193,7 @@ func glyphStringNewFunction_Set() error {
 }
 
 // GlyphStringNew is a representation of the C type pango_glyph_string_new.
-func GlyphStringNew() *GlyphString {
+func GlyphStringNew() (*GlyphString, error) {
 
 	var ret gi.Argument
 
@@ -2190,7 +2204,7 @@ func GlyphStringNew() *GlyphString {
 
 	retGo := &GlyphString{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var glyphStringCopyFunction *gi.Function
@@ -2209,7 +2223,7 @@ func glyphStringCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_glyph_string_copy.
-func (recv *GlyphString) Copy() *GlyphString {
+func (recv *GlyphString) Copy() (*GlyphString, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2222,7 +2236,7 @@ func (recv *GlyphString) Copy() *GlyphString {
 
 	retGo := &GlyphString{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_glyph_string_extents' : parameter 'font' of type 'Font' not supported
@@ -2245,7 +2259,7 @@ func glyphStringFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_glyph_string_free.
-func (recv *GlyphString) Free() {
+func (recv *GlyphString) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2254,6 +2268,7 @@ func (recv *GlyphString) Free() {
 		glyphStringFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_glyph_string_get_logical_widths' : parameter 'logical_widths' has no type
@@ -2274,7 +2289,7 @@ func glyphStringGetWidthFunction_Set() error {
 }
 
 // GetWidth is a representation of the C type pango_glyph_string_get_width.
-func (recv *GlyphString) GetWidth() int32 {
+func (recv *GlyphString) GetWidth() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2287,7 +2302,7 @@ func (recv *GlyphString) GetWidth() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_glyph_string_index_to_x' : parameter 'analysis' of type 'Analysis' not supported
@@ -2308,7 +2323,7 @@ func glyphStringSetSizeFunction_Set() error {
 }
 
 // SetSize is a representation of the C type pango_glyph_string_set_size.
-func (recv *GlyphString) SetSize(newLen int32) {
+func (recv *GlyphString) SetSize(newLen int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(newLen)
@@ -2318,6 +2333,7 @@ func (recv *GlyphString) SetSize(newLen int32) {
 		glyphStringSetSizeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_glyph_string_x_to_index' : parameter 'analysis' of type 'Analysis' not supported
@@ -2392,7 +2408,7 @@ func itemNewFunction_Set() error {
 }
 
 // ItemNew is a representation of the C type pango_item_new.
-func ItemNew() *Item {
+func ItemNew() (*Item, error) {
 
 	var ret gi.Argument
 
@@ -2403,7 +2419,7 @@ func ItemNew() *Item {
 
 	retGo := &Item{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var itemCopyFunction *gi.Function
@@ -2422,7 +2438,7 @@ func itemCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_item_copy.
-func (recv *Item) Copy() *Item {
+func (recv *Item) Copy() (*Item, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2435,7 +2451,7 @@ func (recv *Item) Copy() *Item {
 
 	retGo := &Item{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var itemFreeFunction *gi.Function
@@ -2454,7 +2470,7 @@ func itemFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_item_free.
-func (recv *Item) Free() {
+func (recv *Item) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2463,6 +2479,7 @@ func (recv *Item) Free() {
 		itemFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var itemSplitFunction *gi.Function
@@ -2481,7 +2498,7 @@ func itemSplitFunction_Set() error {
 }
 
 // Split is a representation of the C type pango_item_split.
-func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
+func (recv *Item) Split(splitIndex int32, splitOffset int32) (*Item, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(splitIndex)
@@ -2496,7 +2513,7 @@ func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 
 	retGo := &Item{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var languageStruct *gi.Struct
@@ -2530,7 +2547,7 @@ func languageGetSampleStringFunction_Set() error {
 }
 
 // GetSampleString is a representation of the C type pango_language_get_sample_string.
-func (recv *Language) GetSampleString() string {
+func (recv *Language) GetSampleString() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2543,7 +2560,7 @@ func (recv *Language) GetSampleString() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var languageGetScriptsFunction *gi.Function
@@ -2562,7 +2579,7 @@ func languageGetScriptsFunction_Set() error {
 }
 
 // GetScripts is a representation of the C type pango_language_get_scripts.
-func (recv *Language) GetScripts() int32 {
+func (recv *Language) GetScripts() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2575,7 +2592,7 @@ func (recv *Language) GetScripts() int32 {
 
 	out0 := outArgs[0].Int32()
 
-	return out0
+	return out0, err
 }
 
 // UNSUPPORTED : C value 'pango_language_includes_script' : parameter 'script' of type 'Script' not supported
@@ -2598,7 +2615,7 @@ func languageToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type pango_language_to_string.
-func (recv *Language) ToString() string {
+func (recv *Language) ToString() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2611,7 +2628,7 @@ func (recv *Language) ToString() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var layoutClassStruct *gi.Struct
@@ -2662,7 +2679,7 @@ func layoutIterCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_layout_iter_copy.
-func (recv *LayoutIter) Copy() *LayoutIter {
+func (recv *LayoutIter) Copy() (*LayoutIter, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2675,7 +2692,7 @@ func (recv *LayoutIter) Copy() *LayoutIter {
 
 	retGo := &LayoutIter{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var layoutIterFreeFunction *gi.Function
@@ -2694,7 +2711,7 @@ func layoutIterFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_layout_iter_free.
-func (recv *LayoutIter) Free() {
+func (recv *LayoutIter) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2703,6 +2720,7 @@ func (recv *LayoutIter) Free() {
 		layoutIterFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var layoutIterGetBaselineFunction *gi.Function
@@ -2721,7 +2739,7 @@ func layoutIterGetBaselineFunction_Set() error {
 }
 
 // GetBaseline is a representation of the C type pango_layout_iter_get_baseline.
-func (recv *LayoutIter) GetBaseline() int32 {
+func (recv *LayoutIter) GetBaseline() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2734,7 +2752,7 @@ func (recv *LayoutIter) GetBaseline() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_char_extents' : parameter 'logical_rect' of type 'Rectangle' not supported
@@ -2757,7 +2775,7 @@ func layoutIterGetIndexFunction_Set() error {
 }
 
 // GetIndex is a representation of the C type pango_layout_iter_get_index.
-func (recv *LayoutIter) GetIndex() int32 {
+func (recv *LayoutIter) GetIndex() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2770,7 +2788,7 @@ func (recv *LayoutIter) GetIndex() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_layout' : return type 'Layout' not supported
@@ -2793,7 +2811,7 @@ func layoutIterGetLineFunction_Set() error {
 }
 
 // GetLine is a representation of the C type pango_layout_iter_get_line.
-func (recv *LayoutIter) GetLine() *LayoutLine {
+func (recv *LayoutIter) GetLine() (*LayoutLine, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2806,7 +2824,7 @@ func (recv *LayoutIter) GetLine() *LayoutLine {
 
 	retGo := &LayoutLine{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_line_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
@@ -2827,7 +2845,7 @@ func layoutIterGetLineReadonlyFunction_Set() error {
 }
 
 // GetLineReadonly is a representation of the C type pango_layout_iter_get_line_readonly.
-func (recv *LayoutIter) GetLineReadonly() *LayoutLine {
+func (recv *LayoutIter) GetLineReadonly() (*LayoutLine, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2840,7 +2858,7 @@ func (recv *LayoutIter) GetLineReadonly() *LayoutLine {
 
 	retGo := &LayoutLine{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var layoutIterGetLineYrangeFunction *gi.Function
@@ -2859,7 +2877,7 @@ func layoutIterGetLineYrangeFunction_Set() error {
 }
 
 // GetLineYrange is a representation of the C type pango_layout_iter_get_line_yrange.
-func (recv *LayoutIter) GetLineYrange() (int32, int32) {
+func (recv *LayoutIter) GetLineYrange() (int32, int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2873,7 +2891,7 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32) {
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
 
-	return out0, out1
+	return out0, out1, err
 }
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_run' : return type 'LayoutRun' not supported
@@ -2935,7 +2953,7 @@ func layoutLineRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type pango_layout_line_ref.
-func (recv *LayoutLine) Ref() *LayoutLine {
+func (recv *LayoutLine) Ref() (*LayoutLine, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2948,7 +2966,7 @@ func (recv *LayoutLine) Ref() *LayoutLine {
 
 	retGo := &LayoutLine{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var layoutLineUnrefFunction *gi.Function
@@ -2967,7 +2985,7 @@ func layoutLineUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type pango_layout_line_unref.
-func (recv *LayoutLine) Unref() {
+func (recv *LayoutLine) Unref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2976,6 +2994,7 @@ func (recv *LayoutLine) Unref() {
 		layoutLineUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_layout_line_x_to_index' : return type 'gboolean' not supported
@@ -3081,7 +3100,7 @@ func matrixCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_matrix_copy.
-func (recv *Matrix) Copy() *Matrix {
+func (recv *Matrix) Copy() (*Matrix, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3094,7 +3113,7 @@ func (recv *Matrix) Copy() *Matrix {
 
 	retGo := &Matrix{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var matrixFreeFunction *gi.Function
@@ -3113,7 +3132,7 @@ func matrixFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_matrix_free.
-func (recv *Matrix) Free() {
+func (recv *Matrix) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3122,6 +3141,7 @@ func (recv *Matrix) Free() {
 		matrixFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_matrix_get_font_scale_factor' : return type 'gdouble' not supported
@@ -3236,7 +3256,7 @@ func scriptIterFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_script_iter_free.
-func (recv *ScriptIter) Free() {
+func (recv *ScriptIter) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3245,6 +3265,7 @@ func (recv *ScriptIter) Free() {
 		scriptIterFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_script_iter_get_range' : parameter 'script' of type 'Script' not supported
@@ -3286,7 +3307,7 @@ func tabArrayCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type pango_tab_array_copy.
-func (recv *TabArray) Copy() *TabArray {
+func (recv *TabArray) Copy() (*TabArray, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3299,7 +3320,7 @@ func (recv *TabArray) Copy() *TabArray {
 
 	retGo := &TabArray{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var tabArrayFreeFunction *gi.Function
@@ -3318,7 +3339,7 @@ func tabArrayFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type pango_tab_array_free.
-func (recv *TabArray) Free() {
+func (recv *TabArray) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3327,6 +3348,7 @@ func (recv *TabArray) Free() {
 		tabArrayFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_tab_array_get_positions_in_pixels' : return type 'gboolean' not supported
@@ -3347,7 +3369,7 @@ func tabArrayGetSizeFunction_Set() error {
 }
 
 // GetSize is a representation of the C type pango_tab_array_get_size.
-func (recv *TabArray) GetSize() int32 {
+func (recv *TabArray) GetSize() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3360,7 +3382,7 @@ func (recv *TabArray) GetSize() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_tab_array_get_tab' : parameter 'alignment' of type 'TabAlign' not supported
@@ -3383,7 +3405,7 @@ func tabArrayResizeFunction_Set() error {
 }
 
 // Resize is a representation of the C type pango_tab_array_resize.
-func (recv *TabArray) Resize(newSize int32) {
+func (recv *TabArray) Resize(newSize int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(newSize)
@@ -3393,6 +3415,7 @@ func (recv *TabArray) Resize(newSize int32) {
 		tabArrayResizeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'pango_tab_array_set_tab' : parameter 'alignment' of type 'TabAlign' not supported

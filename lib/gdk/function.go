@@ -23,7 +23,7 @@ func atomInternStaticStringFunction_Set() error {
 }
 
 // AtomInternStaticString is a representation of the C type gdk_atom_intern_static_string.
-func AtomInternStaticString(atomName string) *Atom {
+func AtomInternStaticString(atomName string) (*Atom, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(atomName)
 
@@ -36,7 +36,7 @@ func AtomInternStaticString(atomName string) *Atom {
 
 	retGo := &Atom{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var beepFunction *gi.Function
@@ -51,13 +51,14 @@ func beepFunction_Set() error {
 }
 
 // Beep is a representation of the C type gdk_beep.
-func Beep() {
+func Beep() error {
 
 	err := beepFunction_Set()
 	if err == nil {
 		beepFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_cairo_create' : parameter 'window' of type 'Window' not supported
@@ -98,13 +99,14 @@ func disableMultideviceFunction_Set() error {
 }
 
 // DisableMultidevice is a representation of the C type gdk_disable_multidevice.
-func DisableMultidevice() {
+func DisableMultidevice() error {
 
 	err := disableMultideviceFunction_Set()
 	if err == nil {
 		disableMultideviceFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_drag_abort' : parameter 'context' of type 'DragContext' not supported
@@ -145,7 +147,7 @@ func errorTrapPopFunction_Set() error {
 }
 
 // ErrorTrapPop is a representation of the C type gdk_error_trap_pop.
-func ErrorTrapPop() int32 {
+func ErrorTrapPop() (int32, error) {
 
 	var ret gi.Argument
 
@@ -156,7 +158,7 @@ func ErrorTrapPop() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var errorTrapPopIgnoredFunction *gi.Function
@@ -171,13 +173,14 @@ func errorTrapPopIgnoredFunction_Set() error {
 }
 
 // ErrorTrapPopIgnored is a representation of the C type gdk_error_trap_pop_ignored.
-func ErrorTrapPopIgnored() {
+func ErrorTrapPopIgnored() error {
 
 	err := errorTrapPopIgnoredFunction_Set()
 	if err == nil {
 		errorTrapPopIgnoredFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var errorTrapPushFunction *gi.Function
@@ -192,13 +195,14 @@ func errorTrapPushFunction_Set() error {
 }
 
 // ErrorTrapPush is a representation of the C type gdk_error_trap_push.
-func ErrorTrapPush() {
+func ErrorTrapPush() error {
 
 	err := errorTrapPushFunction_Set()
 	if err == nil {
 		errorTrapPushFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_event_get' : return type 'Event' not supported
@@ -229,13 +233,14 @@ func flushFunction_Set() error {
 }
 
 // Flush is a representation of the C type gdk_flush.
-func Flush() {
+func Flush() error {
 
 	err := flushFunction_Set()
 	if err == nil {
 		flushFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_get_default_root_window' : return type 'Window' not supported
@@ -252,7 +257,7 @@ func getDisplayFunction_Set() error {
 }
 
 // GetDisplay is a representation of the C type gdk_get_display.
-func GetDisplay() string {
+func GetDisplay() (string, error) {
 
 	var ret gi.Argument
 
@@ -263,7 +268,7 @@ func GetDisplay() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var getDisplayArgNameFunction *gi.Function
@@ -278,7 +283,7 @@ func getDisplayArgNameFunction_Set() error {
 }
 
 // GetDisplayArgName is a representation of the C type gdk_get_display_arg_name.
-func GetDisplayArgName() string {
+func GetDisplayArgName() (string, error) {
 
 	var ret gi.Argument
 
@@ -289,7 +294,7 @@ func GetDisplayArgName() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var getProgramClassFunction *gi.Function
@@ -304,7 +309,7 @@ func getProgramClassFunction_Set() error {
 }
 
 // GetProgramClass is a representation of the C type gdk_get_program_class.
-func GetProgramClass() string {
+func GetProgramClass() (string, error) {
 
 	var ret gi.Argument
 
@@ -315,7 +320,7 @@ func GetProgramClass() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'gdk_get_show_events' : return type 'gboolean' not supported
@@ -340,7 +345,7 @@ func keyboardUngrabFunction_Set() error {
 }
 
 // KeyboardUngrab is a representation of the C type gdk_keyboard_ungrab.
-func KeyboardUngrab(time uint32) {
+func KeyboardUngrab(time uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(time)
 
@@ -349,6 +354,7 @@ func KeyboardUngrab(time uint32) {
 		keyboardUngrabFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var keyvalConvertCaseFunction *gi.Function
@@ -363,7 +369,7 @@ func keyvalConvertCaseFunction_Set() error {
 }
 
 // KeyvalConvertCase is a representation of the C type gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
+func KeyvalConvertCase(symbol uint32) (uint32, uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(symbol)
 
@@ -377,7 +383,7 @@ func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
 	out0 := outArgs[0].Uint32()
 	out1 := outArgs[1].Uint32()
 
-	return out0, out1
+	return out0, out1, err
 }
 
 var keyvalFromNameFunction *gi.Function
@@ -392,7 +398,7 @@ func keyvalFromNameFunction_Set() error {
 }
 
 // KeyvalFromName is a representation of the C type gdk_keyval_from_name.
-func KeyvalFromName(keyvalName string) uint32 {
+func KeyvalFromName(keyvalName string) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(keyvalName)
 
@@ -405,7 +411,7 @@ func KeyvalFromName(keyvalName string) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'gdk_keyval_is_lower' : return type 'gboolean' not supported
@@ -424,7 +430,7 @@ func keyvalNameFunction_Set() error {
 }
 
 // KeyvalName is a representation of the C type gdk_keyval_name.
-func KeyvalName(keyval uint32) string {
+func KeyvalName(keyval uint32) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
@@ -437,7 +443,7 @@ func KeyvalName(keyval uint32) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var keyvalToLowerFunction *gi.Function
@@ -452,7 +458,7 @@ func keyvalToLowerFunction_Set() error {
 }
 
 // KeyvalToLower is a representation of the C type gdk_keyval_to_lower.
-func KeyvalToLower(keyval uint32) uint32 {
+func KeyvalToLower(keyval uint32) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
@@ -465,7 +471,7 @@ func KeyvalToLower(keyval uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var keyvalToUnicodeFunction *gi.Function
@@ -480,7 +486,7 @@ func keyvalToUnicodeFunction_Set() error {
 }
 
 // KeyvalToUnicode is a representation of the C type gdk_keyval_to_unicode.
-func KeyvalToUnicode(keyval uint32) uint32 {
+func KeyvalToUnicode(keyval uint32) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
@@ -493,7 +499,7 @@ func KeyvalToUnicode(keyval uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var keyvalToUpperFunction *gi.Function
@@ -508,7 +514,7 @@ func keyvalToUpperFunction_Set() error {
 }
 
 // KeyvalToUpper is a representation of the C type gdk_keyval_to_upper.
-func KeyvalToUpper(keyval uint32) uint32 {
+func KeyvalToUpper(keyval uint32) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(keyval)
 
@@ -521,7 +527,7 @@ func KeyvalToUpper(keyval uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
@@ -538,13 +544,14 @@ func notifyStartupCompleteFunction_Set() error {
 }
 
 // NotifyStartupComplete is a representation of the C type gdk_notify_startup_complete.
-func NotifyStartupComplete() {
+func NotifyStartupComplete() error {
 
 	err := notifyStartupCompleteFunction_Set()
 	if err == nil {
 		notifyStartupCompleteFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var notifyStartupCompleteWithIdFunction *gi.Function
@@ -559,7 +566,7 @@ func notifyStartupCompleteWithIdFunction_Set() error {
 }
 
 // NotifyStartupCompleteWithId is a representation of the C type gdk_notify_startup_complete_with_id.
-func NotifyStartupCompleteWithId(startupId string) {
+func NotifyStartupCompleteWithId(startupId string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(startupId)
 
@@ -568,6 +575,7 @@ func NotifyStartupCompleteWithId(startupId string) {
 		notifyStartupCompleteWithIdFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_offscreen_window_get_embedder' : parameter 'window' of type 'Window' not supported
@@ -608,7 +616,7 @@ func pointerUngrabFunction_Set() error {
 }
 
 // PointerUngrab is a representation of the C type gdk_pointer_ungrab.
-func PointerUngrab(time uint32) {
+func PointerUngrab(time uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(time)
 
@@ -617,6 +625,7 @@ func PointerUngrab(time uint32) {
 		pointerUngrabFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var preParseLibgtkOnlyFunction *gi.Function
@@ -631,13 +640,14 @@ func preParseLibgtkOnlyFunction_Set() error {
 }
 
 // PreParseLibgtkOnly is a representation of the C type gdk_pre_parse_libgtk_only.
-func PreParseLibgtkOnly() {
+func PreParseLibgtkOnly() error {
 
 	err := preParseLibgtkOnlyFunction_Set()
 	if err == nil {
 		preParseLibgtkOnlyFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_property_change' : parameter 'window' of type 'Window' not supported
@@ -678,7 +688,7 @@ func setAllowedBackendsFunction_Set() error {
 }
 
 // SetAllowedBackends is a representation of the C type gdk_set_allowed_backends.
-func SetAllowedBackends(backends string) {
+func SetAllowedBackends(backends string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(backends)
 
@@ -687,6 +697,7 @@ func SetAllowedBackends(backends string) {
 		setAllowedBackendsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var setDoubleClickTimeFunction *gi.Function
@@ -701,7 +712,7 @@ func setDoubleClickTimeFunction_Set() error {
 }
 
 // SetDoubleClickTime is a representation of the C type gdk_set_double_click_time.
-func SetDoubleClickTime(msec uint32) {
+func SetDoubleClickTime(msec uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(msec)
 
@@ -710,6 +721,7 @@ func SetDoubleClickTime(msec uint32) {
 		setDoubleClickTimeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var setProgramClassFunction *gi.Function
@@ -724,7 +736,7 @@ func setProgramClassFunction_Set() error {
 }
 
 // SetProgramClass is a representation of the C type gdk_set_program_class.
-func SetProgramClass(programClass string) {
+func SetProgramClass(programClass string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(programClass)
 
@@ -733,6 +745,7 @@ func SetProgramClass(programClass string) {
 		setProgramClassFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_set_show_events' : parameter 'show_events' of type 'gboolean' not supported
@@ -773,13 +786,14 @@ func threadsEnterFunction_Set() error {
 }
 
 // ThreadsEnter is a representation of the C type gdk_threads_enter.
-func ThreadsEnter() {
+func ThreadsEnter() error {
 
 	err := threadsEnterFunction_Set()
 	if err == nil {
 		threadsEnterFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var threadsInitFunction *gi.Function
@@ -794,13 +808,14 @@ func threadsInitFunction_Set() error {
 }
 
 // ThreadsInit is a representation of the C type gdk_threads_init.
-func ThreadsInit() {
+func ThreadsInit() error {
 
 	err := threadsInitFunction_Set()
 	if err == nil {
 		threadsInitFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var threadsLeaveFunction *gi.Function
@@ -815,13 +830,14 @@ func threadsLeaveFunction_Set() error {
 }
 
 // ThreadsLeave is a representation of the C type gdk_threads_leave.
-func ThreadsLeave() {
+func ThreadsLeave() error {
 
 	err := threadsLeaveFunction_Set()
 	if err == nil {
 		threadsLeaveFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'gdk_threads_set_lock_functions' : parameter 'enter_fn' of type 'GObject.Callback' not supported
@@ -838,7 +854,7 @@ func unicodeToKeyvalFunction_Set() error {
 }
 
 // UnicodeToKeyval is a representation of the C type gdk_unicode_to_keyval.
-func UnicodeToKeyval(wc uint32) uint32 {
+func UnicodeToKeyval(wc uint32) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(wc)
 
@@ -851,7 +867,7 @@ func UnicodeToKeyval(wc uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var utf8ToStringTargetFunction *gi.Function
@@ -866,7 +882,7 @@ func utf8ToStringTargetFunction_Set() error {
 }
 
 // Utf8ToStringTarget is a representation of the C type gdk_utf8_to_string_target.
-func Utf8ToStringTarget(str string) string {
+func Utf8ToStringTarget(str string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -879,5 +895,5 @@ func Utf8ToStringTarget(str string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }

@@ -19,11 +19,12 @@ func libraryVersionFunction_Set() error {
 }
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
-func LibraryVersion() {
+func LibraryVersion() error {
 
 	err := libraryVersionFunction_Set()
 	if err == nil {
 		libraryVersionFunction.Invoke(nil, nil)
 	}
 
+	return err
 }

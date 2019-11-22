@@ -21,7 +21,7 @@ func asciiDigitValueFunction_Set() error {
 }
 
 // AsciiDigitValue is a representation of the C type g_ascii_digit_value.
-func AsciiDigitValue(c int8) int32 {
+func AsciiDigitValue(c int8) (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
@@ -34,7 +34,7 @@ func AsciiDigitValue(c int8) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_ascii_dtostr' : parameter 'd' of type 'gdouble' not supported
@@ -53,7 +53,7 @@ func asciiStrcasecmpFunction_Set() error {
 }
 
 // AsciiStrcasecmp is a representation of the C type g_ascii_strcasecmp.
-func AsciiStrcasecmp(s1 string, s2 string) int32 {
+func AsciiStrcasecmp(s1 string, s2 string) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(s1)
 	inArgs[1].SetString(s2)
@@ -67,7 +67,7 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var asciiStrdownFunction *gi.Function
@@ -82,7 +82,7 @@ func asciiStrdownFunction_Set() error {
 }
 
 // AsciiStrdown is a representation of the C type g_ascii_strdown.
-func AsciiStrdown(str string, len int32) string {
+func AsciiStrdown(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -96,7 +96,7 @@ func AsciiStrdown(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_ascii_string_to_signed' : return type 'gboolean' not supported
@@ -119,7 +119,7 @@ func asciiStrtollFunction_Set() error {
 }
 
 // AsciiStrtoll is a representation of the C type g_ascii_strtoll.
-func AsciiStrtoll(nptr string, base uint32) (int64, string) {
+func AsciiStrtoll(nptr string, base uint32) (int64, string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(nptr)
 	inArgs[1].SetUint32(base)
@@ -135,7 +135,7 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 	retGo := ret.Int64()
 	out0 := outArgs[0].String(false)
 
-	return retGo, out0
+	return retGo, out0, err
 }
 
 var asciiStrtoullFunction *gi.Function
@@ -150,7 +150,7 @@ func asciiStrtoullFunction_Set() error {
 }
 
 // AsciiStrtoull is a representation of the C type g_ascii_strtoull.
-func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
+func AsciiStrtoull(nptr string, base uint32) (uint64, string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(nptr)
 	inArgs[1].SetUint32(base)
@@ -166,7 +166,7 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 	retGo := ret.Uint64()
 	out0 := outArgs[0].String(false)
 
-	return retGo, out0
+	return retGo, out0, err
 }
 
 var asciiStrupFunction *gi.Function
@@ -181,7 +181,7 @@ func asciiStrupFunction_Set() error {
 }
 
 // AsciiStrup is a representation of the C type g_ascii_strup.
-func AsciiStrup(str string, len int32) string {
+func AsciiStrup(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -195,7 +195,7 @@ func AsciiStrup(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var asciiTolowerFunction *gi.Function
@@ -210,7 +210,7 @@ func asciiTolowerFunction_Set() error {
 }
 
 // AsciiTolower is a representation of the C type g_ascii_tolower.
-func AsciiTolower(c int8) int8 {
+func AsciiTolower(c int8) (int8, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
@@ -223,7 +223,7 @@ func AsciiTolower(c int8) int8 {
 
 	retGo := ret.Int8()
 
-	return retGo
+	return retGo, err
 }
 
 var asciiToupperFunction *gi.Function
@@ -238,7 +238,7 @@ func asciiToupperFunction_Set() error {
 }
 
 // AsciiToupper is a representation of the C type g_ascii_toupper.
-func AsciiToupper(c int8) int8 {
+func AsciiToupper(c int8) (int8, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
@@ -251,7 +251,7 @@ func AsciiToupper(c int8) int8 {
 
 	retGo := ret.Int8()
 
-	return retGo
+	return retGo, err
 }
 
 var asciiXdigitValueFunction *gi.Function
@@ -266,7 +266,7 @@ func asciiXdigitValueFunction_Set() error {
 }
 
 // AsciiXdigitValue is a representation of the C type g_ascii_xdigit_value.
-func AsciiXdigitValue(c int8) int32 {
+func AsciiXdigitValue(c int8) (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt8(c)
 
@@ -279,7 +279,7 @@ func AsciiXdigitValue(c int8) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var assertWarningFunction *gi.Function
@@ -294,7 +294,7 @@ func assertWarningFunction_Set() error {
 }
 
 // AssertWarning is a representation of the C type g_assert_warning.
-func AssertWarning(logDomain string, file string, line int32, prettyFunction string, expression string) {
+func AssertWarning(logDomain string, file string, line int32, prettyFunction string, expression string) error {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(logDomain)
 	inArgs[1].SetString(file)
@@ -307,6 +307,7 @@ func AssertWarning(logDomain string, file string, line int32, prettyFunction str
 		assertWarningFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var assertionMessageFunction *gi.Function
@@ -321,7 +322,7 @@ func assertionMessageFunction_Set() error {
 }
 
 // AssertionMessage is a representation of the C type g_assertion_message.
-func AssertionMessage(domain string, file string, line int32, func_ string, message string) {
+func AssertionMessage(domain string, file string, line int32, func_ string, message string) error {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(file)
@@ -334,6 +335,7 @@ func AssertionMessage(domain string, file string, line int32, func_ string, mess
 		assertionMessageFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_assertion_message_cmpnum' : parameter 'arg1' of type 'long double' not supported
@@ -350,7 +352,7 @@ func assertionMessageCmpstrFunction_Set() error {
 }
 
 // AssertionMessageCmpstr is a representation of the C type g_assertion_message_cmpstr.
-func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
+func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) error {
 	var inArgs [8]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(file)
@@ -366,6 +368,7 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func_ string
 		assertionMessageCmpstrFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'error' of type 'Error' not supported
@@ -382,7 +385,7 @@ func assertionMessageExprFunction_Set() error {
 }
 
 // AssertionMessageExpr is a representation of the C type g_assertion_message_expr.
-func AssertionMessageExpr(domain string, file string, line int32, func_ string, expr string) {
+func AssertionMessageExpr(domain string, file string, line int32, func_ string, expr string) error {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(file)
@@ -395,6 +398,7 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 		assertionMessageExprFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_atexit' : parameter 'func' of type 'VoidFunc' not supported
@@ -411,7 +415,7 @@ func atomicIntAddFunction_Set() error {
 }
 
 // AtomicIntAdd is a representation of the C type g_atomic_int_add.
-func AtomicIntAdd(atomic int32, val int32) int32 {
+func AtomicIntAdd(atomic int32, val int32) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(val)
@@ -425,7 +429,7 @@ func AtomicIntAdd(atomic int32, val int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var atomicIntAndFunction *gi.Function
@@ -440,7 +444,7 @@ func atomicIntAndFunction_Set() error {
 }
 
 // AtomicIntAnd is a representation of the C type g_atomic_int_and.
-func AtomicIntAnd(atomic uint32, val uint32) uint32 {
+func AtomicIntAnd(atomic uint32, val uint32) (uint32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
@@ -454,7 +458,7 @@ func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : return type 'gboolean' not supported
@@ -473,7 +477,7 @@ func atomicIntExchangeAndAddFunction_Set() error {
 }
 
 // AtomicIntExchangeAndAdd is a representation of the C type g_atomic_int_exchange_and_add.
-func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
+func AtomicIntExchangeAndAdd(atomic int32, val int32) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(val)
@@ -487,7 +491,7 @@ func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var atomicIntGetFunction *gi.Function
@@ -502,7 +506,7 @@ func atomicIntGetFunction_Set() error {
 }
 
 // AtomicIntGet is a representation of the C type g_atomic_int_get.
-func AtomicIntGet(atomic int32) int32 {
+func AtomicIntGet(atomic int32) (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(atomic)
 
@@ -515,7 +519,7 @@ func AtomicIntGet(atomic int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var atomicIntIncFunction *gi.Function
@@ -530,7 +534,7 @@ func atomicIntIncFunction_Set() error {
 }
 
 // AtomicIntInc is a representation of the C type g_atomic_int_inc.
-func AtomicIntInc(atomic int32) {
+func AtomicIntInc(atomic int32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(atomic)
 
@@ -539,6 +543,7 @@ func AtomicIntInc(atomic int32) {
 		atomicIntIncFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var atomicIntOrFunction *gi.Function
@@ -553,7 +558,7 @@ func atomicIntOrFunction_Set() error {
 }
 
 // AtomicIntOr is a representation of the C type g_atomic_int_or.
-func AtomicIntOr(atomic uint32, val uint32) uint32 {
+func AtomicIntOr(atomic uint32, val uint32) (uint32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
@@ -567,7 +572,7 @@ func AtomicIntOr(atomic uint32, val uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var atomicIntSetFunction *gi.Function
@@ -582,7 +587,7 @@ func atomicIntSetFunction_Set() error {
 }
 
 // AtomicIntSet is a representation of the C type g_atomic_int_set.
-func AtomicIntSet(atomic int32, newval int32) {
+func AtomicIntSet(atomic int32, newval int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(atomic)
 	inArgs[1].SetInt32(newval)
@@ -592,6 +597,7 @@ func AtomicIntSet(atomic int32, newval int32) {
 		atomicIntSetFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var atomicIntXorFunction *gi.Function
@@ -606,7 +612,7 @@ func atomicIntXorFunction_Set() error {
 }
 
 // AtomicIntXor is a representation of the C type g_atomic_int_xor.
-func AtomicIntXor(atomic uint32, val uint32) uint32 {
+func AtomicIntXor(atomic uint32, val uint32) (uint32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(atomic)
 	inArgs[1].SetUint32(val)
@@ -620,7 +626,7 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_atomic_pointer_add' : parameter 'atomic' of type 'gpointer' not supported
@@ -667,7 +673,7 @@ func atomicRefCountIncFunction_Set() error {
 }
 
 // AtomicRefCountInc is a representation of the C type g_atomic_ref_count_inc.
-func AtomicRefCountInc(arc int32) {
+func AtomicRefCountInc(arc int32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(arc)
 
@@ -676,6 +682,7 @@ func AtomicRefCountInc(arc int32) {
 		atomicRefCountIncFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var atomicRefCountInitFunction *gi.Function
@@ -690,7 +697,7 @@ func atomicRefCountInitFunction_Set() error {
 }
 
 // AtomicRefCountInit is a representation of the C type g_atomic_ref_count_init.
-func AtomicRefCountInit(arc int32) {
+func AtomicRefCountInit(arc int32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(arc)
 
@@ -699,6 +706,7 @@ func AtomicRefCountInit(arc int32) {
 		atomicRefCountInitFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_base64_decode' : parameter 'out_len' of type 'gsize' not supported
@@ -727,7 +735,7 @@ func bitLockFunction_Set() error {
 }
 
 // BitLock is a representation of the C type g_bit_lock.
-func BitLock(address int32, lockBit int32) {
+func BitLock(address int32, lockBit int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(address)
 	inArgs[1].SetInt32(lockBit)
@@ -737,6 +745,7 @@ func BitLock(address int32, lockBit int32) {
 		bitLockFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var bitNthLsfFunction *gi.Function
@@ -751,7 +760,7 @@ func bitNthLsfFunction_Set() error {
 }
 
 // BitNthLsf is a representation of the C type g_bit_nth_lsf.
-func BitNthLsf(mask uint64, nthBit int32) int32 {
+func BitNthLsf(mask uint64, nthBit int32) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint64(mask)
 	inArgs[1].SetInt32(nthBit)
@@ -765,7 +774,7 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var bitNthMsfFunction *gi.Function
@@ -780,7 +789,7 @@ func bitNthMsfFunction_Set() error {
 }
 
 // BitNthMsf is a representation of the C type g_bit_nth_msf.
-func BitNthMsf(mask uint64, nthBit int32) int32 {
+func BitNthMsf(mask uint64, nthBit int32) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint64(mask)
 	inArgs[1].SetInt32(nthBit)
@@ -794,7 +803,7 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var bitStorageFunction *gi.Function
@@ -809,7 +818,7 @@ func bitStorageFunction_Set() error {
 }
 
 // BitStorage is a representation of the C type g_bit_storage.
-func BitStorage(number uint64) uint32 {
+func BitStorage(number uint64) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(number)
 
@@ -822,7 +831,7 @@ func BitStorage(number uint64) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_bit_trylock' : return type 'gboolean' not supported
@@ -839,7 +848,7 @@ func bitUnlockFunction_Set() error {
 }
 
 // BitUnlock is a representation of the C type g_bit_unlock.
-func BitUnlock(address int32, lockBit int32) {
+func BitUnlock(address int32, lockBit int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(address)
 	inArgs[1].SetInt32(lockBit)
@@ -849,6 +858,7 @@ func BitUnlock(address int32, lockBit int32) {
 		bitUnlockFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
@@ -879,13 +889,14 @@ func byteArrayNewFunction_Set() error {
 }
 
 // ByteArrayNew is a representation of the C type g_byte_array_new.
-func ByteArrayNew() {
+func ByteArrayNew() error {
 
 	err := byteArrayNewFunction_Set()
 	if err == nil {
 		byteArrayNewFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' has no type
@@ -908,7 +919,7 @@ func checkVersionFunction_Set() error {
 }
 
 // CheckVersion is a representation of the C type glib_check_version.
-func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
+func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(requiredMajor)
 	inArgs[1].SetUint32(requiredMinor)
@@ -923,7 +934,7 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_checksum_type_get_length' : parameter 'checksum_type' of type 'ChecksumType' not supported
@@ -946,13 +957,14 @@ func clearErrorFunction_Set() error {
 }
 
 // ClearError is a representation of the C type g_clear_error.
-func ClearError() {
+func ClearError() error {
 
 	err := clearErrorFunction_Set()
 	if err == nil {
 		clearErrorFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_clear_handle_id' : parameter 'clear_func' of type 'ClearHandleFunc' not supported
@@ -1055,7 +1067,7 @@ func dcgettextFunction_Set() error {
 }
 
 // Dcgettext is a representation of the C type g_dcgettext.
-func Dcgettext(domain string, msgid string, category int32) string {
+func Dcgettext(domain string, msgid string, category int32) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(msgid)
@@ -1070,7 +1082,7 @@ func Dcgettext(domain string, msgid string, category int32) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var dgettextFunction *gi.Function
@@ -1085,7 +1097,7 @@ func dgettextFunction_Set() error {
 }
 
 // Dgettext is a representation of the C type g_dgettext.
-func Dgettext(domain string, msgid string) string {
+func Dgettext(domain string, msgid string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(msgid)
@@ -1099,7 +1111,7 @@ func Dgettext(domain string, msgid string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_dir_make_tmp' : parameter 'tmpl' of type 'filename' not supported
@@ -1120,7 +1132,7 @@ func dngettextFunction_Set() error {
 }
 
 // Dngettext is a representation of the C type g_dngettext.
-func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string {
+func Dngettext(domain string, msgid string, msgidPlural string, n uint64) (string, error) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(msgid)
@@ -1136,7 +1148,7 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_double_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -1157,7 +1169,7 @@ func dpgettext2Function_Set() error {
 }
 
 // Dpgettext2 is a representation of the C type g_dpgettext2.
-func Dpgettext2(domain string, context string, msgid string) string {
+func Dpgettext2(domain string, context string, msgid string) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(context)
@@ -1172,7 +1184,7 @@ func Dpgettext2(domain string, context string, msgid string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' has no type
@@ -1221,7 +1233,7 @@ func formatSizeFunction_Set() error {
 }
 
 // FormatSize is a representation of the C type g_format_size.
-func FormatSize(size uint64) string {
+func FormatSize(size uint64) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(size)
 
@@ -1234,7 +1246,7 @@ func FormatSize(size uint64) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var formatSizeForDisplayFunction *gi.Function
@@ -1249,7 +1261,7 @@ func formatSizeForDisplayFunction_Set() error {
 }
 
 // FormatSizeForDisplay is a representation of the C type g_format_size_for_display.
-func FormatSizeForDisplay(size int64) string {
+func FormatSizeForDisplay(size int64) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(size)
 
@@ -1262,7 +1274,7 @@ func FormatSizeForDisplay(size int64) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_format_size_full' : parameter 'flags' of type 'FormatSizeFlags' not supported
@@ -1283,7 +1295,7 @@ func getApplicationNameFunction_Set() error {
 }
 
 // GetApplicationName is a representation of the C type g_get_application_name.
-func GetApplicationName() string {
+func GetApplicationName() (string, error) {
 
 	var ret gi.Argument
 
@@ -1294,7 +1306,7 @@ func GetApplicationName() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_get_charset' : return type 'gboolean' not supported
@@ -1311,7 +1323,7 @@ func getCodesetFunction_Set() error {
 }
 
 // GetCodeset is a representation of the C type g_get_codeset.
-func GetCodeset() string {
+func GetCodeset() (string, error) {
 
 	var ret gi.Argument
 
@@ -1322,7 +1334,7 @@ func GetCodeset() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_get_console_charset' : return type 'gboolean' not supported
@@ -1343,13 +1355,14 @@ func getEnvironFunction_Set() error {
 }
 
 // GetEnviron is a representation of the C type g_get_environ.
-func GetEnviron() {
+func GetEnviron() error {
 
 	err := getEnvironFunction_Set()
 	if err == nil {
 		getEnvironFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' has no type
@@ -1368,7 +1381,7 @@ func getHostNameFunction_Set() error {
 }
 
 // GetHostName is a representation of the C type g_get_host_name.
-func GetHostName() string {
+func GetHostName() (string, error) {
 
 	var ret gi.Argument
 
@@ -1379,7 +1392,7 @@ func GetHostName() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var getLanguageNamesFunction *gi.Function
@@ -1394,13 +1407,14 @@ func getLanguageNamesFunction_Set() error {
 }
 
 // GetLanguageNames is a representation of the C type g_get_language_names.
-func GetLanguageNames() {
+func GetLanguageNames() error {
 
 	err := getLanguageNamesFunction_Set()
 	if err == nil {
 		getLanguageNamesFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var getLanguageNamesWithCategoryFunction *gi.Function
@@ -1415,7 +1429,7 @@ func getLanguageNamesWithCategoryFunction_Set() error {
 }
 
 // GetLanguageNamesWithCategory is a representation of the C type g_get_language_names_with_category.
-func GetLanguageNamesWithCategory(categoryName string) {
+func GetLanguageNamesWithCategory(categoryName string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(categoryName)
 
@@ -1424,6 +1438,7 @@ func GetLanguageNamesWithCategory(categoryName string) {
 		getLanguageNamesWithCategoryFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var getLocaleVariantsFunction *gi.Function
@@ -1438,7 +1453,7 @@ func getLocaleVariantsFunction_Set() error {
 }
 
 // GetLocaleVariants is a representation of the C type g_get_locale_variants.
-func GetLocaleVariants(locale string) {
+func GetLocaleVariants(locale string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(locale)
 
@@ -1447,6 +1462,7 @@ func GetLocaleVariants(locale string) {
 		getLocaleVariantsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var getMonotonicTimeFunction *gi.Function
@@ -1461,7 +1477,7 @@ func getMonotonicTimeFunction_Set() error {
 }
 
 // GetMonotonicTime is a representation of the C type g_get_monotonic_time.
-func GetMonotonicTime() int64 {
+func GetMonotonicTime() (int64, error) {
 
 	var ret gi.Argument
 
@@ -1472,7 +1488,7 @@ func GetMonotonicTime() int64 {
 
 	retGo := ret.Int64()
 
-	return retGo
+	return retGo, err
 }
 
 var getNumProcessorsFunction *gi.Function
@@ -1487,7 +1503,7 @@ func getNumProcessorsFunction_Set() error {
 }
 
 // GetNumProcessors is a representation of the C type g_get_num_processors.
-func GetNumProcessors() uint32 {
+func GetNumProcessors() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -1498,7 +1514,7 @@ func GetNumProcessors() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getPrgnameFunction *gi.Function
@@ -1513,7 +1529,7 @@ func getPrgnameFunction_Set() error {
 }
 
 // GetPrgname is a representation of the C type g_get_prgname.
-func GetPrgname() string {
+func GetPrgname() (string, error) {
 
 	var ret gi.Argument
 
@@ -1524,7 +1540,7 @@ func GetPrgname() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_get_real_name' : return type 'filename' not supported
@@ -1541,7 +1557,7 @@ func getRealTimeFunction_Set() error {
 }
 
 // GetRealTime is a representation of the C type g_get_real_time.
-func GetRealTime() int64 {
+func GetRealTime() (int64, error) {
 
 	var ret gi.Argument
 
@@ -1552,7 +1568,7 @@ func GetRealTime() int64 {
 
 	retGo := ret.Int64()
 
-	return retGo
+	return retGo, err
 }
 
 var getSystemConfigDirsFunction *gi.Function
@@ -1567,13 +1583,14 @@ func getSystemConfigDirsFunction_Set() error {
 }
 
 // GetSystemConfigDirs is a representation of the C type g_get_system_config_dirs.
-func GetSystemConfigDirs() {
+func GetSystemConfigDirs() error {
 
 	err := getSystemConfigDirsFunction_Set()
 	if err == nil {
 		getSystemConfigDirsFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var getSystemDataDirsFunction *gi.Function
@@ -1588,13 +1605,14 @@ func getSystemDataDirsFunction_Set() error {
 }
 
 // GetSystemDataDirs is a representation of the C type g_get_system_data_dirs.
-func GetSystemDataDirs() {
+func GetSystemDataDirs() error {
 
 	err := getSystemDataDirsFunction_Set()
 	if err == nil {
 		getSystemDataDirsFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_get_tmp_dir' : return type 'filename' not supported
@@ -1671,7 +1689,7 @@ func hostnameToAsciiFunction_Set() error {
 }
 
 // HostnameToAscii is a representation of the C type g_hostname_to_ascii.
-func HostnameToAscii(hostname string) string {
+func HostnameToAscii(hostname string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
@@ -1684,7 +1702,7 @@ func HostnameToAscii(hostname string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var hostnameToUnicodeFunction *gi.Function
@@ -1699,7 +1717,7 @@ func hostnameToUnicodeFunction_Set() error {
 }
 
 // HostnameToUnicode is a representation of the C type g_hostname_to_unicode.
-func HostnameToUnicode(hostname string) string {
+func HostnameToUnicode(hostname string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
@@ -1712,7 +1730,7 @@ func HostnameToUnicode(hostname string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
@@ -1729,7 +1747,7 @@ func iconvOpenFunction_Set() error {
 }
 
 // IconvOpen is a representation of the C type g_iconv_open.
-func IconvOpen(toCodeset string, fromCodeset string) *IConv {
+func IconvOpen(toCodeset string, fromCodeset string) (*IConv, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(toCodeset)
 	inArgs[1].SetString(fromCodeset)
@@ -1743,7 +1761,7 @@ func IconvOpen(toCodeset string, fromCodeset string) *IConv {
 
 	retGo := &IConv{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_idle_add' : parameter 'function' of type 'SourceFunc' not supported
@@ -1764,7 +1782,7 @@ func idleSourceNewFunction_Set() error {
 }
 
 // IdleSourceNew is a representation of the C type g_idle_source_new.
-func IdleSourceNew() *Source {
+func IdleSourceNew() (*Source, error) {
 
 	var ret gi.Argument
 
@@ -1775,7 +1793,7 @@ func IdleSourceNew() *Source {
 
 	retGo := &Source{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_int64_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -1798,7 +1816,7 @@ func internStaticStringFunction_Set() error {
 }
 
 // InternStaticString is a representation of the C type g_intern_static_string.
-func InternStaticString(string_ string) string {
+func InternStaticString(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -1811,7 +1829,7 @@ func InternStaticString(string_ string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var internStringFunction *gi.Function
@@ -1826,7 +1844,7 @@ func internStringFunction_Set() error {
 }
 
 // InternString is a representation of the C type g_intern_string.
-func InternString(string_ string) string {
+func InternString(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -1839,7 +1857,7 @@ func InternString(string_ string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_io_add_watch' : parameter 'channel' of type 'IOChannel' not supported
@@ -1866,13 +1884,14 @@ func listenvFunction_Set() error {
 }
 
 // Listenv is a representation of the C type g_listenv.
-func Listenv() {
+func Listenv() error {
 
 	err := listenvFunction_Set()
 	if err == nil {
 		listenvFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_locale_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
@@ -1895,7 +1914,7 @@ func logRemoveHandlerFunction_Set() error {
 }
 
 // LogRemoveHandler is a representation of the C type g_log_remove_handler.
-func LogRemoveHandler(logDomain string, handlerId uint32) {
+func LogRemoveHandler(logDomain string, handlerId uint32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(logDomain)
 	inArgs[1].SetUint32(handlerId)
@@ -1905,6 +1924,7 @@ func LogRemoveHandler(logDomain string, handlerId uint32) {
 		logRemoveHandlerFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_log_set_always_fatal' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
@@ -1953,7 +1973,7 @@ func mainContextDefaultFunction_Set() error {
 }
 
 // MainContextDefault is a representation of the C type g_main_context_default.
-func MainContextDefault() *MainContext {
+func MainContextDefault() (*MainContext, error) {
 
 	var ret gi.Argument
 
@@ -1964,7 +1984,7 @@ func MainContextDefault() *MainContext {
 
 	retGo := &MainContext{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var mainContextGetThreadDefaultFunction *gi.Function
@@ -1979,7 +1999,7 @@ func mainContextGetThreadDefaultFunction_Set() error {
 }
 
 // MainContextGetThreadDefault is a representation of the C type g_main_context_get_thread_default.
-func MainContextGetThreadDefault() *MainContext {
+func MainContextGetThreadDefault() (*MainContext, error) {
 
 	var ret gi.Argument
 
@@ -1990,7 +2010,7 @@ func MainContextGetThreadDefault() *MainContext {
 
 	retGo := &MainContext{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var mainContextRefThreadDefaultFunction *gi.Function
@@ -2005,7 +2025,7 @@ func mainContextRefThreadDefaultFunction_Set() error {
 }
 
 // MainContextRefThreadDefault is a representation of the C type g_main_context_ref_thread_default.
-func MainContextRefThreadDefault() *MainContext {
+func MainContextRefThreadDefault() (*MainContext, error) {
 
 	var ret gi.Argument
 
@@ -2016,7 +2036,7 @@ func MainContextRefThreadDefault() *MainContext {
 
 	retGo := &MainContext{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var mainCurrentSourceFunction *gi.Function
@@ -2031,7 +2051,7 @@ func mainCurrentSourceFunction_Set() error {
 }
 
 // MainCurrentSource is a representation of the C type g_main_current_source.
-func MainCurrentSource() *Source {
+func MainCurrentSource() (*Source, error) {
 
 	var ret gi.Argument
 
@@ -2042,7 +2062,7 @@ func MainCurrentSource() *Source {
 
 	retGo := &Source{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var mainDepthFunction *gi.Function
@@ -2057,7 +2077,7 @@ func mainDepthFunction_Set() error {
 }
 
 // MainDepth is a representation of the C type g_main_depth.
-func MainDepth() int32 {
+func MainDepth() (int32, error) {
 
 	var ret gi.Argument
 
@@ -2068,7 +2088,7 @@ func MainDepth() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_malloc' : parameter 'n_bytes' of type 'gsize' not supported
@@ -2095,7 +2115,7 @@ func markupEscapeTextFunction_Set() error {
 }
 
 // MarkupEscapeText is a representation of the C type g_markup_escape_text.
-func MarkupEscapeText(text string, length int32) string {
+func MarkupEscapeText(text string, length int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
@@ -2109,7 +2129,7 @@ func MarkupEscapeText(text string, length int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_markup_printf_escaped' : parameter '...' has no type
@@ -2130,13 +2150,14 @@ func memProfileFunction_Set() error {
 }
 
 // MemProfile is a representation of the C type g_mem_profile.
-func MemProfile() {
+func MemProfile() error {
 
 	err := memProfileFunction_Set()
 	if err == nil {
 		memProfileFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_mem_set_vtable' : parameter 'vtable' of type 'MemVTable' not supported
@@ -2169,7 +2190,7 @@ func onErrorQueryFunction_Set() error {
 }
 
 // OnErrorQuery is a representation of the C type g_on_error_query.
-func OnErrorQuery(prgName string) {
+func OnErrorQuery(prgName string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(prgName)
 
@@ -2178,6 +2199,7 @@ func OnErrorQuery(prgName string) {
 		onErrorQueryFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var onErrorStackTraceFunction *gi.Function
@@ -2192,7 +2214,7 @@ func onErrorStackTraceFunction_Set() error {
 }
 
 // OnErrorStackTrace is a representation of the C type g_on_error_stack_trace.
-func OnErrorStackTrace(prgName string) {
+func OnErrorStackTrace(prgName string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(prgName)
 
@@ -2201,6 +2223,7 @@ func OnErrorStackTrace(prgName string) {
 		onErrorStackTraceFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_once_init_enter' : parameter 'location' of type 'gpointer' not supported
@@ -2277,7 +2300,7 @@ func randomIntFunction_Set() error {
 }
 
 // RandomInt is a representation of the C type g_random_int.
-func RandomInt() uint32 {
+func RandomInt() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -2288,7 +2311,7 @@ func RandomInt() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var randomIntRangeFunction *gi.Function
@@ -2303,7 +2326,7 @@ func randomIntRangeFunction_Set() error {
 }
 
 // RandomIntRange is a representation of the C type g_random_int_range.
-func RandomIntRange(begin int32, end int32) int32 {
+func RandomIntRange(begin int32, end int32) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(begin)
 	inArgs[1].SetInt32(end)
@@ -2317,7 +2340,7 @@ func RandomIntRange(begin int32, end int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var randomSetSeedFunction *gi.Function
@@ -2332,7 +2355,7 @@ func randomSetSeedFunction_Set() error {
 }
 
 // RandomSetSeed is a representation of the C type g_random_set_seed.
-func RandomSetSeed(seed uint32) {
+func RandomSetSeed(seed uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(seed)
 
@@ -2341,6 +2364,7 @@ func RandomSetSeed(seed uint32) {
 		randomSetSeedFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
@@ -2377,7 +2401,7 @@ func refCountIncFunction_Set() error {
 }
 
 // RefCountInc is a representation of the C type g_ref_count_inc.
-func RefCountInc(rc int32) {
+func RefCountInc(rc int32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rc)
 
@@ -2386,6 +2410,7 @@ func RefCountInc(rc int32) {
 		refCountIncFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var refCountInitFunction *gi.Function
@@ -2400,7 +2425,7 @@ func refCountInitFunction_Set() error {
 }
 
 // RefCountInit is a representation of the C type g_ref_count_init.
-func RefCountInit(rc int32) {
+func RefCountInit(rc int32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rc)
 
@@ -2409,6 +2434,7 @@ func RefCountInit(rc int32) {
 		refCountInitFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var refStringAcquireFunction *gi.Function
@@ -2423,7 +2449,7 @@ func refStringAcquireFunction_Set() error {
 }
 
 // RefStringAcquire is a representation of the C type g_ref_string_acquire.
-func RefStringAcquire(str string) string {
+func RefStringAcquire(str string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -2436,7 +2462,7 @@ func RefStringAcquire(str string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_ref_string_length' : return type 'gsize' not supported
@@ -2453,7 +2479,7 @@ func refStringNewFunction_Set() error {
 }
 
 // RefStringNew is a representation of the C type g_ref_string_new.
-func RefStringNew(str string) string {
+func RefStringNew(str string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -2466,7 +2492,7 @@ func RefStringNew(str string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var refStringNewInternFunction *gi.Function
@@ -2481,7 +2507,7 @@ func refStringNewInternFunction_Set() error {
 }
 
 // RefStringNewIntern is a representation of the C type g_ref_string_new_intern.
-func RefStringNewIntern(str string) string {
+func RefStringNewIntern(str string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -2494,7 +2520,7 @@ func RefStringNewIntern(str string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var refStringNewLenFunction *gi.Function
@@ -2509,7 +2535,7 @@ func refStringNewLenFunction_Set() error {
 }
 
 // RefStringNewLen is a representation of the C type g_ref_string_new_len.
-func RefStringNewLen(str string, len int32) string {
+func RefStringNewLen(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -2523,7 +2549,7 @@ func RefStringNewLen(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var refStringReleaseFunction *gi.Function
@@ -2538,7 +2564,7 @@ func refStringReleaseFunction_Set() error {
 }
 
 // RefStringRelease is a representation of the C type g_ref_string_release.
-func RefStringRelease(str string) {
+func RefStringRelease(str string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -2547,6 +2573,7 @@ func RefStringRelease(str string) {
 		refStringReleaseFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'has_references' of type 'gboolean' not supported
@@ -2565,7 +2592,7 @@ func regexEscapeNulFunction_Set() error {
 }
 
 // RegexEscapeNul is a representation of the C type g_regex_escape_nul.
-func RegexEscapeNul(string_ string, length int32) string {
+func RegexEscapeNul(string_ string, length int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetInt32(length)
@@ -2579,7 +2606,7 @@ func RegexEscapeNul(string_ string, length int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' has no type
@@ -2600,13 +2627,14 @@ func reloadUserSpecialDirsCacheFunction_Set() error {
 }
 
 // ReloadUserSpecialDirsCache is a representation of the C type g_reload_user_special_dirs_cache.
-func ReloadUserSpecialDirsCache() {
+func ReloadUserSpecialDirsCache() error {
 
 	err := reloadUserSpecialDirsCacheFunction_Set()
 	if err == nil {
 		reloadUserSpecialDirsCacheFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var returnIfFailWarningFunction *gi.Function
@@ -2621,7 +2649,7 @@ func returnIfFailWarningFunction_Set() error {
 }
 
 // ReturnIfFailWarning is a representation of the C type g_return_if_fail_warning.
-func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
+func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(logDomain)
 	inArgs[1].SetString(prettyFunction)
@@ -2632,6 +2660,7 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 		returnIfFailWarningFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_rmdir' : parameter 'filename' of type 'filename' not supported
@@ -2666,7 +2695,7 @@ func setApplicationNameFunction_Set() error {
 }
 
 // SetApplicationName is a representation of the C type g_set_application_name.
-func SetApplicationName(applicationName string) {
+func SetApplicationName(applicationName string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(applicationName)
 
@@ -2675,6 +2704,7 @@ func SetApplicationName(applicationName string) {
 		setApplicationNameFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_set_error' : parameter 'err' of type 'Error' not supported
@@ -2693,7 +2723,7 @@ func setPrgnameFunction_Set() error {
 }
 
 // SetPrgname is a representation of the C type g_set_prgname.
-func SetPrgname(prgname string) {
+func SetPrgname(prgname string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(prgname)
 
@@ -2702,6 +2732,7 @@ func SetPrgname(prgname string) {
 		setPrgnameFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_set_print_handler' : parameter 'func' of type 'PrintFunc' not supported
@@ -2754,7 +2785,7 @@ func sourceSetNameByIdFunction_Set() error {
 }
 
 // SourceSetNameById is a representation of the C type g_source_set_name_by_id.
-func SourceSetNameById(tag uint32, name string) {
+func SourceSetNameById(tag uint32, name string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(tag)
 	inArgs[1].SetString(name)
@@ -2764,6 +2795,7 @@ func SourceSetNameById(tag uint32, name string) {
 		sourceSetNameByIdFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var spacedPrimesClosestFunction *gi.Function
@@ -2778,7 +2810,7 @@ func spacedPrimesClosestFunction_Set() error {
 }
 
 // SpacedPrimesClosest is a representation of the C type g_spaced_primes_closest.
-func SpacedPrimesClosest(num uint32) uint32 {
+func SpacedPrimesClosest(num uint32) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(num)
 
@@ -2791,7 +2823,7 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_spawn_async' : parameter 'working_directory' of type 'filename' not supported
@@ -2828,7 +2860,7 @@ func stpcpyFunction_Set() error {
 }
 
 // Stpcpy is a representation of the C type g_stpcpy.
-func Stpcpy(dest string, src string) string {
+func Stpcpy(dest string, src string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(dest)
 	inArgs[1].SetString(src)
@@ -2842,7 +2874,7 @@ func Stpcpy(dest string, src string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_str_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -2869,7 +2901,7 @@ func strToAsciiFunction_Set() error {
 }
 
 // StrToAscii is a representation of the C type g_str_to_ascii.
-func StrToAscii(str string, fromLocale string) string {
+func StrToAscii(str string, fromLocale string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetString(fromLocale)
@@ -2883,7 +2915,7 @@ func StrToAscii(str string, fromLocale string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' has no type
@@ -2900,7 +2932,7 @@ func strcanonFunction_Set() error {
 }
 
 // Strcanon is a representation of the C type g_strcanon.
-func Strcanon(string_ string, validChars string, substitutor int8) string {
+func Strcanon(string_ string, validChars string, substitutor int8) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(validChars)
@@ -2915,7 +2947,7 @@ func Strcanon(string_ string, validChars string, substitutor int8) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strcasecmpFunction *gi.Function
@@ -2930,7 +2962,7 @@ func strcasecmpFunction_Set() error {
 }
 
 // Strcasecmp is a representation of the C type g_strcasecmp.
-func Strcasecmp(s1 string, s2 string) int32 {
+func Strcasecmp(s1 string, s2 string) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(s1)
 	inArgs[1].SetString(s2)
@@ -2944,7 +2976,7 @@ func Strcasecmp(s1 string, s2 string) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var strchompFunction *gi.Function
@@ -2959,7 +2991,7 @@ func strchompFunction_Set() error {
 }
 
 // Strchomp is a representation of the C type g_strchomp.
-func Strchomp(string_ string) string {
+func Strchomp(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -2972,7 +3004,7 @@ func Strchomp(string_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strchugFunction *gi.Function
@@ -2987,7 +3019,7 @@ func strchugFunction_Set() error {
 }
 
 // Strchug is a representation of the C type g_strchug.
-func Strchug(string_ string) string {
+func Strchug(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -3000,7 +3032,7 @@ func Strchug(string_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strcmp0Function *gi.Function
@@ -3015,7 +3047,7 @@ func strcmp0Function_Set() error {
 }
 
 // Strcmp0 is a representation of the C type g_strcmp0.
-func Strcmp0(str1 string, str2 string) int32 {
+func Strcmp0(str1 string, str2 string) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str1)
 	inArgs[1].SetString(str2)
@@ -3029,7 +3061,7 @@ func Strcmp0(str1 string, str2 string) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var strcompressFunction *gi.Function
@@ -3044,7 +3076,7 @@ func strcompressFunction_Set() error {
 }
 
 // Strcompress is a representation of the C type g_strcompress.
-func Strcompress(source string) string {
+func Strcompress(source string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(source)
 
@@ -3057,7 +3089,7 @@ func Strcompress(source string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strconcat' : parameter '...' has no type
@@ -3074,7 +3106,7 @@ func strdelimitFunction_Set() error {
 }
 
 // Strdelimit is a representation of the C type g_strdelimit.
-func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
+func Strdelimit(string_ string, delimiters string, newDelimiter int8) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(delimiters)
@@ -3089,7 +3121,7 @@ func Strdelimit(string_ string, delimiters string, newDelimiter int8) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strdownFunction *gi.Function
@@ -3104,7 +3136,7 @@ func strdownFunction_Set() error {
 }
 
 // Strdown is a representation of the C type g_strdown.
-func Strdown(string_ string) string {
+func Strdown(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -3117,7 +3149,7 @@ func Strdown(string_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strdupFunction *gi.Function
@@ -3132,7 +3164,7 @@ func strdupFunction_Set() error {
 }
 
 // Strdup is a representation of the C type g_strdup.
-func Strdup(str string) string {
+func Strdup(str string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -3145,7 +3177,7 @@ func Strdup(str string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strdup_printf' : parameter '...' has no type
@@ -3164,7 +3196,7 @@ func strdupvFunction_Set() error {
 }
 
 // Strdupv is a representation of the C type g_strdupv.
-func Strdupv(strArray string) {
+func Strdupv(strArray string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
@@ -3173,6 +3205,7 @@ func Strdupv(strArray string) {
 		strdupvFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var strerrorFunction *gi.Function
@@ -3187,7 +3220,7 @@ func strerrorFunction_Set() error {
 }
 
 // Strerror is a representation of the C type g_strerror.
-func Strerror(errnum int32) string {
+func Strerror(errnum int32) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(errnum)
 
@@ -3200,7 +3233,7 @@ func Strerror(errnum int32) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var strescapeFunction *gi.Function
@@ -3215,7 +3248,7 @@ func strescapeFunction_Set() error {
 }
 
 // Strescape is a representation of the C type g_strescape.
-func Strescape(source string, exceptions string) string {
+func Strescape(source string, exceptions string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(source)
 	inArgs[1].SetString(exceptions)
@@ -3229,7 +3262,7 @@ func Strescape(source string, exceptions string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strfreevFunction *gi.Function
@@ -3244,7 +3277,7 @@ func strfreevFunction_Set() error {
 }
 
 // Strfreev is a representation of the C type g_strfreev.
-func Strfreev(strArray string) {
+func Strfreev(strArray string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
@@ -3253,6 +3286,7 @@ func Strfreev(strArray string) {
 		strfreevFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var stringNewFunction *gi.Function
@@ -3267,7 +3301,7 @@ func stringNewFunction_Set() error {
 }
 
 // StringNew is a representation of the C type g_string_new.
-func StringNew(init string) *String {
+func StringNew(init string) (*String, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(init)
 
@@ -3280,7 +3314,7 @@ func StringNew(init string) *String {
 
 	retGo := &String{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var stringNewLenFunction *gi.Function
@@ -3295,7 +3329,7 @@ func stringNewLenFunction_Set() error {
 }
 
 // StringNewLen is a representation of the C type g_string_new_len.
-func StringNewLen(init string, len int32) *String {
+func StringNewLen(init string, len int32) (*String, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(init)
 	inArgs[1].SetInt32(len)
@@ -3309,7 +3343,7 @@ func StringNewLen(init string, len int32) *String {
 
 	retGo := &String{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
@@ -3326,7 +3360,7 @@ func stripContextFunction_Set() error {
 }
 
 // StripContext is a representation of the C type g_strip_context.
-func StripContext(msgid string, msgval string) string {
+func StripContext(msgid string, msgval string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(msgid)
 	inArgs[1].SetString(msgval)
@@ -3340,7 +3374,7 @@ func StripContext(msgid string, msgval string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strjoin' : parameter '...' has no type
@@ -3357,7 +3391,7 @@ func strjoinvFunction_Set() error {
 }
 
 // Strjoinv is a representation of the C type g_strjoinv.
-func Strjoinv(separator string, strArray string) string {
+func Strjoinv(separator string, strArray string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(separator)
 	inArgs[1].SetString(strArray)
@@ -3371,7 +3405,7 @@ func Strjoinv(separator string, strArray string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strlcat' : parameter 'dest_size' of type 'gsize' not supported
@@ -3390,7 +3424,7 @@ func strncasecmpFunction_Set() error {
 }
 
 // Strncasecmp is a representation of the C type g_strncasecmp.
-func Strncasecmp(s1 string, s2 string, n uint32) int32 {
+func Strncasecmp(s1 string, s2 string, n uint32) (int32, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(s1)
 	inArgs[1].SetString(s2)
@@ -3405,7 +3439,7 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strndup' : parameter 'n' of type 'gsize' not supported
@@ -3424,7 +3458,7 @@ func strreverseFunction_Set() error {
 }
 
 // Strreverse is a representation of the C type g_strreverse.
-func Strreverse(string_ string) string {
+func Strreverse(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -3437,7 +3471,7 @@ func Strreverse(string_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strrstrFunction *gi.Function
@@ -3452,7 +3486,7 @@ func strrstrFunction_Set() error {
 }
 
 // Strrstr is a representation of the C type g_strrstr.
-func Strrstr(haystack string, needle string) string {
+func Strrstr(haystack string, needle string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(haystack)
 	inArgs[1].SetString(needle)
@@ -3466,7 +3500,7 @@ func Strrstr(haystack string, needle string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strrstrLenFunction *gi.Function
@@ -3481,7 +3515,7 @@ func strrstrLenFunction_Set() error {
 }
 
 // StrrstrLen is a representation of the C type g_strrstr_len.
-func StrrstrLen(haystack string, haystackLen int32, needle string) string {
+func StrrstrLen(haystack string, haystackLen int32, needle string) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(haystack)
 	inArgs[1].SetInt32(haystackLen)
@@ -3496,7 +3530,7 @@ func StrrstrLen(haystack string, haystackLen int32, needle string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var strsignalFunction *gi.Function
@@ -3511,7 +3545,7 @@ func strsignalFunction_Set() error {
 }
 
 // Strsignal is a representation of the C type g_strsignal.
-func Strsignal(signum int32) string {
+func Strsignal(signum int32) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(signum)
 
@@ -3524,7 +3558,7 @@ func Strsignal(signum int32) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var strsplitFunction *gi.Function
@@ -3539,7 +3573,7 @@ func strsplitFunction_Set() error {
 }
 
 // Strsplit is a representation of the C type g_strsplit.
-func Strsplit(string_ string, delimiter string, maxTokens int32) {
+func Strsplit(string_ string, delimiter string, maxTokens int32) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(delimiter)
@@ -3550,6 +3584,7 @@ func Strsplit(string_ string, delimiter string, maxTokens int32) {
 		strsplitFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var strsplitSetFunction *gi.Function
@@ -3564,7 +3599,7 @@ func strsplitSetFunction_Set() error {
 }
 
 // StrsplitSet is a representation of the C type g_strsplit_set.
-func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
+func StrsplitSet(string_ string, delimiters string, maxTokens int32) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(delimiters)
@@ -3575,6 +3610,7 @@ func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
 		strsplitSetFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var strstrLenFunction *gi.Function
@@ -3589,7 +3625,7 @@ func strstrLenFunction_Set() error {
 }
 
 // StrstrLen is a representation of the C type g_strstr_len.
-func StrstrLen(haystack string, haystackLen int32, needle string) string {
+func StrstrLen(haystack string, haystackLen int32, needle string) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(haystack)
 	inArgs[1].SetInt32(haystackLen)
@@ -3604,7 +3640,7 @@ func StrstrLen(haystack string, haystackLen int32, needle string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strtod' : return type 'gdouble' not supported
@@ -3621,7 +3657,7 @@ func strupFunction_Set() error {
 }
 
 // Strup is a representation of the C type g_strup.
-func Strup(string_ string) string {
+func Strup(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -3634,7 +3670,7 @@ func Strup(string_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_strv_contains' : return type 'gboolean' not supported
@@ -3655,7 +3691,7 @@ func strvLengthFunction_Set() error {
 }
 
 // StrvLength is a representation of the C type g_strv_length.
-func StrvLength(strArray string) uint32 {
+func StrvLength(strArray string) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
@@ -3668,7 +3704,7 @@ func StrvLength(strArray string) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'test_data' of type 'gpointer' not supported
@@ -3691,7 +3727,7 @@ func testAssertExpectedMessagesInternalFunction_Set() error {
 }
 
 // TestAssertExpectedMessagesInternal is a representation of the C type g_test_assert_expected_messages_internal.
-func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
+func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) error {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(file)
@@ -3703,6 +3739,7 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 		testAssertExpectedMessagesInternalFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var testBugFunction *gi.Function
@@ -3717,7 +3754,7 @@ func testBugFunction_Set() error {
 }
 
 // TestBug is a representation of the C type g_test_bug.
-func TestBug(bugUriSnippet string) {
+func TestBug(bugUriSnippet string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(bugUriSnippet)
 
@@ -3726,6 +3763,7 @@ func TestBug(bugUriSnippet string) {
 		testBugFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var testBugBaseFunction *gi.Function
@@ -3740,7 +3778,7 @@ func testBugBaseFunction_Set() error {
 }
 
 // TestBugBase is a representation of the C type g_test_bug_base.
-func TestBugBase(uriPattern string) {
+func TestBugBase(uriPattern string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uriPattern)
 
@@ -3749,6 +3787,7 @@ func TestBugBase(uriPattern string) {
 		testBugBaseFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_test_build_filename' : parameter 'file_type' of type 'TestFileType' not supported
@@ -3767,7 +3806,7 @@ func testCreateSuiteFunction_Set() error {
 }
 
 // TestCreateSuite is a representation of the C type g_test_create_suite.
-func TestCreateSuite(suiteName string) *TestSuite {
+func TestCreateSuite(suiteName string) (*TestSuite, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(suiteName)
 
@@ -3780,7 +3819,7 @@ func TestCreateSuite(suiteName string) *TestSuite {
 
 	retGo := &TestSuite{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_level' of type 'LogLevelFlags' not supported
@@ -3797,13 +3836,14 @@ func testFailFunction_Set() error {
 }
 
 // TestFail is a representation of the C type g_test_fail.
-func TestFail() {
+func TestFail() error {
 
 	err := testFailFunction_Set()
 	if err == nil {
 		testFailFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_test_failed' : return type 'gboolean' not supported
@@ -3824,7 +3864,7 @@ func testGetRootFunction_Set() error {
 }
 
 // TestGetRoot is a representation of the C type g_test_get_root.
-func TestGetRoot() *TestSuite {
+func TestGetRoot() (*TestSuite, error) {
 
 	var ret gi.Argument
 
@@ -3835,7 +3875,7 @@ func TestGetRoot() *TestSuite {
 
 	retGo := &TestSuite{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var testIncompleteFunction *gi.Function
@@ -3850,7 +3890,7 @@ func testIncompleteFunction_Set() error {
 }
 
 // TestIncomplete is a representation of the C type g_test_incomplete.
-func TestIncomplete(msg string) {
+func TestIncomplete(msg string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(msg)
 
@@ -3859,6 +3899,7 @@ func TestIncomplete(msg string) {
 		testIncompleteFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_test_init' : parameter '...' has no type
@@ -3893,7 +3934,7 @@ func testRandIntFunction_Set() error {
 }
 
 // TestRandInt is a representation of the C type g_test_rand_int.
-func TestRandInt() int32 {
+func TestRandInt() (int32, error) {
 
 	var ret gi.Argument
 
@@ -3904,7 +3945,7 @@ func TestRandInt() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var testRandIntRangeFunction *gi.Function
@@ -3919,7 +3960,7 @@ func testRandIntRangeFunction_Set() error {
 }
 
 // TestRandIntRange is a representation of the C type g_test_rand_int_range.
-func TestRandIntRange(begin int32, end int32) int32 {
+func TestRandIntRange(begin int32, end int32) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(begin)
 	inArgs[1].SetInt32(end)
@@ -3933,7 +3974,7 @@ func TestRandIntRange(begin int32, end int32) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var testRunFunction *gi.Function
@@ -3948,7 +3989,7 @@ func testRunFunction_Set() error {
 }
 
 // TestRun is a representation of the C type g_test_run.
-func TestRun() int32 {
+func TestRun() (int32, error) {
 
 	var ret gi.Argument
 
@@ -3959,7 +4000,7 @@ func TestRun() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_test_run_suite' : parameter 'suite' of type 'TestSuite' not supported
@@ -3976,13 +4017,14 @@ func testSetNonfatalAssertionsFunction_Set() error {
 }
 
 // TestSetNonfatalAssertions is a representation of the C type g_test_set_nonfatal_assertions.
-func TestSetNonfatalAssertions() {
+func TestSetNonfatalAssertions() error {
 
 	err := testSetNonfatalAssertionsFunction_Set()
 	if err == nil {
 		testSetNonfatalAssertionsFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var testSkipFunction *gi.Function
@@ -3997,7 +4039,7 @@ func testSkipFunction_Set() error {
 }
 
 // TestSkip is a representation of the C type g_test_skip.
-func TestSkip(msg string) {
+func TestSkip(msg string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(msg)
 
@@ -4006,6 +4048,7 @@ func TestSkip(msg string) {
 		testSkipFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
@@ -4022,7 +4065,7 @@ func testSummaryFunction_Set() error {
 }
 
 // TestSummary is a representation of the C type g_test_summary.
-func TestSummary(summary string) {
+func TestSummary(summary string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(summary)
 
@@ -4031,6 +4074,7 @@ func TestSummary(summary string) {
 		testSummaryFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_test_timer_elapsed' : return type 'gdouble' not supported
@@ -4049,13 +4093,14 @@ func testTimerStartFunction_Set() error {
 }
 
 // TestTimerStart is a representation of the C type g_test_timer_start.
-func TestTimerStart() {
+func TestTimerStart() error {
 
 	err := testTimerStartFunction_Set()
 	if err == nil {
 		testTimerStartFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var testTrapAssertionsFunction *gi.Function
@@ -4070,7 +4115,7 @@ func testTrapAssertionsFunction_Set() error {
 }
 
 // TestTrapAssertions is a representation of the C type g_test_trap_assertions.
-func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) {
+func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) error {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(file)
@@ -4084,6 +4129,7 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 		testTrapAssertionsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'test_trap_flags' of type 'TestTrapFlags' not supported
@@ -4110,7 +4156,7 @@ func threadPoolGetMaxIdleTimeFunction_Set() error {
 }
 
 // ThreadPoolGetMaxIdleTime is a representation of the C type g_thread_pool_get_max_idle_time.
-func ThreadPoolGetMaxIdleTime() uint32 {
+func ThreadPoolGetMaxIdleTime() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -4121,7 +4167,7 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var threadPoolGetMaxUnusedThreadsFunction *gi.Function
@@ -4136,7 +4182,7 @@ func threadPoolGetMaxUnusedThreadsFunction_Set() error {
 }
 
 // ThreadPoolGetMaxUnusedThreads is a representation of the C type g_thread_pool_get_max_unused_threads.
-func ThreadPoolGetMaxUnusedThreads() int32 {
+func ThreadPoolGetMaxUnusedThreads() (int32, error) {
 
 	var ret gi.Argument
 
@@ -4147,7 +4193,7 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var threadPoolGetNumUnusedThreadsFunction *gi.Function
@@ -4162,7 +4208,7 @@ func threadPoolGetNumUnusedThreadsFunction_Set() error {
 }
 
 // ThreadPoolGetNumUnusedThreads is a representation of the C type g_thread_pool_get_num_unused_threads.
-func ThreadPoolGetNumUnusedThreads() uint32 {
+func ThreadPoolGetNumUnusedThreads() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -4173,7 +4219,7 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var threadPoolSetMaxIdleTimeFunction *gi.Function
@@ -4188,7 +4234,7 @@ func threadPoolSetMaxIdleTimeFunction_Set() error {
 }
 
 // ThreadPoolSetMaxIdleTime is a representation of the C type g_thread_pool_set_max_idle_time.
-func ThreadPoolSetMaxIdleTime(interval uint32) {
+func ThreadPoolSetMaxIdleTime(interval uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(interval)
 
@@ -4197,6 +4243,7 @@ func ThreadPoolSetMaxIdleTime(interval uint32) {
 		threadPoolSetMaxIdleTimeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var threadPoolSetMaxUnusedThreadsFunction *gi.Function
@@ -4211,7 +4258,7 @@ func threadPoolSetMaxUnusedThreadsFunction_Set() error {
 }
 
 // ThreadPoolSetMaxUnusedThreads is a representation of the C type g_thread_pool_set_max_unused_threads.
-func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
+func ThreadPoolSetMaxUnusedThreads(maxThreads int32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(maxThreads)
 
@@ -4220,6 +4267,7 @@ func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 		threadPoolSetMaxUnusedThreadsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var threadPoolStopUnusedThreadsFunction *gi.Function
@@ -4234,13 +4282,14 @@ func threadPoolStopUnusedThreadsFunction_Set() error {
 }
 
 // ThreadPoolStopUnusedThreads is a representation of the C type g_thread_pool_stop_unused_threads.
-func ThreadPoolStopUnusedThreads() {
+func ThreadPoolStopUnusedThreads() error {
 
 	err := threadPoolStopUnusedThreadsFunction_Set()
 	if err == nil {
 		threadPoolStopUnusedThreadsFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var threadSelfFunction *gi.Function
@@ -4255,7 +4304,7 @@ func threadSelfFunction_Set() error {
 }
 
 // ThreadSelf is a representation of the C type g_thread_self.
-func ThreadSelf() *Thread {
+func ThreadSelf() (*Thread, error) {
 
 	var ret gi.Argument
 
@@ -4266,7 +4315,7 @@ func ThreadSelf() *Thread {
 
 	retGo := &Thread{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var threadYieldFunction *gi.Function
@@ -4281,13 +4330,14 @@ func threadYieldFunction_Set() error {
 }
 
 // ThreadYield is a representation of the C type g_thread_yield.
-func ThreadYield() {
+func ThreadYield() error {
 
 	err := threadYieldFunction_Set()
 	if err == nil {
 		threadYieldFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'time_' of type 'TimeVal' not supported
@@ -4312,7 +4362,7 @@ func timeoutSourceNewFunction_Set() error {
 }
 
 // TimeoutSourceNew is a representation of the C type g_timeout_source_new.
-func TimeoutSourceNew(interval uint32) *Source {
+func TimeoutSourceNew(interval uint32) (*Source, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(interval)
 
@@ -4325,7 +4375,7 @@ func TimeoutSourceNew(interval uint32) *Source {
 
 	retGo := &Source{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var timeoutSourceNewSecondsFunction *gi.Function
@@ -4340,7 +4390,7 @@ func timeoutSourceNewSecondsFunction_Set() error {
 }
 
 // TimeoutSourceNewSeconds is a representation of the C type g_timeout_source_new_seconds.
-func TimeoutSourceNewSeconds(interval uint32) *Source {
+func TimeoutSourceNewSeconds(interval uint32) (*Source, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(interval)
 
@@ -4353,7 +4403,7 @@ func TimeoutSourceNewSeconds(interval uint32) *Source {
 
 	retGo := &Source{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_trash_stack_height' : parameter 'stack_p' of type 'TrashStack' not supported
@@ -4480,7 +4530,7 @@ func unixSignalSourceNewFunction_Set() error {
 }
 
 // UnixSignalSourceNew is a representation of the C type g_unix_signal_source_new.
-func UnixSignalSourceNew(signum int32) *Source {
+func UnixSignalSourceNew(signum int32) (*Source, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(signum)
 
@@ -4493,7 +4543,7 @@ func UnixSignalSourceNew(signum int32) *Source {
 
 	retGo := &Source{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_unlink' : parameter 'filename' of type 'filename' not supported
@@ -4514,7 +4564,7 @@ func uriListExtractUrisFunction_Set() error {
 }
 
 // UriListExtractUris is a representation of the C type g_uri_list_extract_uris.
-func UriListExtractUris(uriList string) {
+func UriListExtractUris(uriList string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uriList)
 
@@ -4523,6 +4573,7 @@ func UriListExtractUris(uriList string) {
 		uriListExtractUrisFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uriParseSchemeFunction *gi.Function
@@ -4537,7 +4588,7 @@ func uriParseSchemeFunction_Set() error {
 }
 
 // UriParseScheme is a representation of the C type g_uri_parse_scheme.
-func UriParseScheme(uri string) string {
+func UriParseScheme(uri string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uri)
 
@@ -4550,7 +4601,7 @@ func UriParseScheme(uri string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var uriUnescapeSegmentFunction *gi.Function
@@ -4565,7 +4616,7 @@ func uriUnescapeSegmentFunction_Set() error {
 }
 
 // UriUnescapeSegment is a representation of the C type g_uri_unescape_segment.
-func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCharacters string) string {
+func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCharacters string) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(escapedString)
 	inArgs[1].SetString(escapedStringEnd)
@@ -4580,7 +4631,7 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var uriUnescapeStringFunction *gi.Function
@@ -4595,7 +4646,7 @@ func uriUnescapeStringFunction_Set() error {
 }
 
 // UriUnescapeString is a representation of the C type g_uri_unescape_string.
-func UriUnescapeString(escapedString string, illegalCharacters string) string {
+func UriUnescapeString(escapedString string, illegalCharacters string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(escapedString)
 	inArgs[1].SetString(illegalCharacters)
@@ -4609,7 +4660,7 @@ func UriUnescapeString(escapedString string, illegalCharacters string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var usleepFunction *gi.Function
@@ -4624,7 +4675,7 @@ func usleepFunction_Set() error {
 }
 
 // Usleep is a representation of the C type g_usleep.
-func Usleep(microseconds uint64) {
+func Usleep(microseconds uint64) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(microseconds)
 
@@ -4633,6 +4684,7 @@ func Usleep(microseconds uint64) {
 		usleepFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
@@ -4649,7 +4701,7 @@ func utf16ToUtf8Function_Set() error {
 }
 
 // Utf16ToUtf8 is a representation of the C type g_utf16_to_utf8.
-func Utf16ToUtf8(str uint16, len int64) (string, int64, int64) {
+func Utf16ToUtf8(str uint16, len int64) (string, int64, int64, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint16(str)
 	inArgs[1].SetInt64(len)
@@ -4666,7 +4718,7 @@ func Utf16ToUtf8(str uint16, len int64) (string, int64, int64) {
 	out0 := outArgs[0].Int64()
 	out1 := outArgs[1].Int64()
 
-	return retGo, out0, out1
+	return retGo, out0, out1, err
 }
 
 var utf8CasefoldFunction *gi.Function
@@ -4681,7 +4733,7 @@ func utf8CasefoldFunction_Set() error {
 }
 
 // Utf8Casefold is a representation of the C type g_utf8_casefold.
-func Utf8Casefold(str string, len int32) string {
+func Utf8Casefold(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -4695,7 +4747,7 @@ func Utf8Casefold(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8CollateFunction *gi.Function
@@ -4710,7 +4762,7 @@ func utf8CollateFunction_Set() error {
 }
 
 // Utf8Collate is a representation of the C type g_utf8_collate.
-func Utf8Collate(str1 string, str2 string) int32 {
+func Utf8Collate(str1 string, str2 string) (int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str1)
 	inArgs[1].SetString(str2)
@@ -4724,7 +4776,7 @@ func Utf8Collate(str1 string, str2 string) int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var utf8CollateKeyFunction *gi.Function
@@ -4739,7 +4791,7 @@ func utf8CollateKeyFunction_Set() error {
 }
 
 // Utf8CollateKey is a representation of the C type g_utf8_collate_key.
-func Utf8CollateKey(str string, len int32) string {
+func Utf8CollateKey(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -4753,7 +4805,7 @@ func Utf8CollateKey(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8CollateKeyForFilenameFunction *gi.Function
@@ -4768,7 +4820,7 @@ func utf8CollateKeyForFilenameFunction_Set() error {
 }
 
 // Utf8CollateKeyForFilename is a representation of the C type g_utf8_collate_key_for_filename.
-func Utf8CollateKeyForFilename(str string, len int32) string {
+func Utf8CollateKeyForFilename(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -4782,7 +4834,7 @@ func Utf8CollateKeyForFilename(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8FindNextCharFunction *gi.Function
@@ -4797,7 +4849,7 @@ func utf8FindNextCharFunction_Set() error {
 }
 
 // Utf8FindNextChar is a representation of the C type g_utf8_find_next_char.
-func Utf8FindNextChar(p string, end string) string {
+func Utf8FindNextChar(p string, end string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(p)
 	inArgs[1].SetString(end)
@@ -4811,7 +4863,7 @@ func Utf8FindNextChar(p string, end string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8FindPrevCharFunction *gi.Function
@@ -4826,7 +4878,7 @@ func utf8FindPrevCharFunction_Set() error {
 }
 
 // Utf8FindPrevChar is a representation of the C type g_utf8_find_prev_char.
-func Utf8FindPrevChar(str string, p string) string {
+func Utf8FindPrevChar(str string, p string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetString(p)
@@ -4840,7 +4892,7 @@ func Utf8FindPrevChar(str string, p string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_utf8_get_char' : return type 'gunichar' not supported
@@ -4859,7 +4911,7 @@ func utf8MakeValidFunction_Set() error {
 }
 
 // Utf8MakeValid is a representation of the C type g_utf8_make_valid.
-func Utf8MakeValid(str string, len int32) string {
+func Utf8MakeValid(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -4873,7 +4925,7 @@ func Utf8MakeValid(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_utf8_normalize' : parameter 'mode' of type 'NormalizeMode' not supported
@@ -4890,7 +4942,7 @@ func utf8OffsetToPointerFunction_Set() error {
 }
 
 // Utf8OffsetToPointer is a representation of the C type g_utf8_offset_to_pointer.
-func Utf8OffsetToPointer(str string, offset int64) string {
+func Utf8OffsetToPointer(str string, offset int64) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt64(offset)
@@ -4904,7 +4956,7 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8PointerToOffsetFunction *gi.Function
@@ -4919,7 +4971,7 @@ func utf8PointerToOffsetFunction_Set() error {
 }
 
 // Utf8PointerToOffset is a representation of the C type g_utf8_pointer_to_offset.
-func Utf8PointerToOffset(str string, pos string) int64 {
+func Utf8PointerToOffset(str string, pos string) (int64, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetString(pos)
@@ -4933,7 +4985,7 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 
 	retGo := ret.Int64()
 
-	return retGo
+	return retGo, err
 }
 
 var utf8PrevCharFunction *gi.Function
@@ -4948,7 +5000,7 @@ func utf8PrevCharFunction_Set() error {
 }
 
 // Utf8PrevChar is a representation of the C type g_utf8_prev_char.
-func Utf8PrevChar(p string) string {
+func Utf8PrevChar(p string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(p)
 
@@ -4961,7 +5013,7 @@ func Utf8PrevChar(p string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_utf8_strchr' : parameter 'c' of type 'gunichar' not supported
@@ -4978,7 +5030,7 @@ func utf8StrdownFunction_Set() error {
 }
 
 // Utf8Strdown is a representation of the C type g_utf8_strdown.
-func Utf8Strdown(str string, len int32) string {
+func Utf8Strdown(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -4992,7 +5044,7 @@ func Utf8Strdown(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8StrlenFunction *gi.Function
@@ -5007,7 +5059,7 @@ func utf8StrlenFunction_Set() error {
 }
 
 // Utf8Strlen is a representation of the C type g_utf8_strlen.
-func Utf8Strlen(p string, max int32) int64 {
+func Utf8Strlen(p string, max int32) (int64, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(p)
 	inArgs[1].SetInt32(max)
@@ -5021,7 +5073,7 @@ func Utf8Strlen(p string, max int32) int64 {
 
 	retGo := ret.Int64()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_utf8_strncpy' : parameter 'n' of type 'gsize' not supported
@@ -5040,7 +5092,7 @@ func utf8StrreverseFunction_Set() error {
 }
 
 // Utf8Strreverse is a representation of the C type g_utf8_strreverse.
-func Utf8Strreverse(str string, len int32) string {
+func Utf8Strreverse(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -5054,7 +5106,7 @@ func Utf8Strreverse(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8StrupFunction *gi.Function
@@ -5069,7 +5121,7 @@ func utf8StrupFunction_Set() error {
 }
 
 // Utf8Strup is a representation of the C type g_utf8_strup.
-func Utf8Strup(str string, len int32) string {
+func Utf8Strup(str string, len int32) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
@@ -5083,7 +5135,7 @@ func Utf8Strup(str string, len int32) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var utf8SubstringFunction *gi.Function
@@ -5098,7 +5150,7 @@ func utf8SubstringFunction_Set() error {
 }
 
 // Utf8Substring is a representation of the C type g_utf8_substring.
-func Utf8Substring(str string, startPos int64, endPos int64) string {
+func Utf8Substring(str string, startPos int64, endPos int64) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt64(startPos)
@@ -5113,7 +5165,7 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_utf8_to_ucs4' : return type 'gunichar' not supported
@@ -5132,7 +5184,7 @@ func utf8ToUtf16Function_Set() error {
 }
 
 // Utf8ToUtf16 is a representation of the C type g_utf8_to_utf16.
-func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
+func Utf8ToUtf16(str string, len int64) (uint16, int64, int64, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt64(len)
@@ -5149,7 +5201,7 @@ func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
 	out0 := outArgs[0].Int64()
 	out1 := outArgs[1].Int64()
 
-	return retGo, out0, out1
+	return retGo, out0, out1, err
 }
 
 // UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' has no type
@@ -5170,7 +5222,7 @@ func uuidStringRandomFunction_Set() error {
 }
 
 // UuidStringRandom is a representation of the C type g_uuid_string_random.
-func UuidStringRandom() string {
+func UuidStringRandom() (string, error) {
 
 	var ret gi.Argument
 
@@ -5181,7 +5233,7 @@ func UuidStringRandom() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
@@ -5210,7 +5262,7 @@ func variantTypeCheckedFunction_Set() error {
 }
 
 // VariantTypeChecked is a representation of the C type g_variant_type_checked_.
-func VariantTypeChecked(arg0 string) *VariantType {
+func VariantTypeChecked(arg0 string) (*VariantType, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(arg0)
 
@@ -5223,7 +5275,7 @@ func VariantTypeChecked(arg0 string) *VariantType {
 
 	retGo := &VariantType{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_variant_type_string_get_depth_' : return type 'gsize' not supported
@@ -5254,7 +5306,7 @@ func warnMessageFunction_Set() error {
 }
 
 // WarnMessage is a representation of the C type g_warn_message.
-func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) {
+func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) error {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(domain)
 	inArgs[1].SetString(file)
@@ -5267,4 +5319,5 @@ func WarnMessage(domain string, file string, line int32, func_ string, warnexpr 
 		warnMessageFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }

@@ -297,7 +297,7 @@ func encodingCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gtk_source_encoding_copy.
-func (recv *Encoding) Copy() *Encoding {
+func (recv *Encoding) Copy() (*Encoding, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -310,7 +310,7 @@ func (recv *Encoding) Copy() *Encoding {
 
 	retGo := &Encoding{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var encodingFreeFunction *gi.Function
@@ -329,7 +329,7 @@ func encodingFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gtk_source_encoding_free.
-func (recv *Encoding) Free() {
+func (recv *Encoding) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -338,6 +338,7 @@ func (recv *Encoding) Free() {
 		encodingFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var encodingGetCharsetFunction *gi.Function
@@ -356,7 +357,7 @@ func encodingGetCharsetFunction_Set() error {
 }
 
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
-func (recv *Encoding) GetCharset() string {
+func (recv *Encoding) GetCharset() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -369,7 +370,7 @@ func (recv *Encoding) GetCharset() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var encodingGetNameFunction *gi.Function
@@ -388,7 +389,7 @@ func encodingGetNameFunction_Set() error {
 }
 
 // GetName is a representation of the C type gtk_source_encoding_get_name.
-func (recv *Encoding) GetName() string {
+func (recv *Encoding) GetName() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -401,7 +402,7 @@ func (recv *Encoding) GetName() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var encodingToStringFunction *gi.Function
@@ -420,7 +421,7 @@ func encodingToStringFunction_Set() error {
 }
 
 // ToString is a representation of the C type gtk_source_encoding_to_string.
-func (recv *Encoding) ToString() string {
+func (recv *Encoding) ToString() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -433,7 +434,7 @@ func (recv *Encoding) ToString() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var fileClassStruct *gi.Struct

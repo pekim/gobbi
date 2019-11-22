@@ -19,7 +19,7 @@ func getMajorVersionFunction_Set() error {
 }
 
 // GetMajorVersion is a representation of the C type jsc_get_major_version.
-func GetMajorVersion() uint32 {
+func GetMajorVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -30,7 +30,7 @@ func GetMajorVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMicroVersionFunction *gi.Function
@@ -45,7 +45,7 @@ func getMicroVersionFunction_Set() error {
 }
 
 // GetMicroVersion is a representation of the C type jsc_get_micro_version.
-func GetMicroVersion() uint32 {
+func GetMicroVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -56,7 +56,7 @@ func GetMicroVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMinorVersionFunction *gi.Function
@@ -71,7 +71,7 @@ func getMinorVersionFunction_Set() error {
 }
 
 // GetMinorVersion is a representation of the C type jsc_get_minor_version.
-func GetMinorVersion() uint32 {
+func GetMinorVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -82,7 +82,7 @@ func GetMinorVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : parameter 'function' of type 'OptionsFunc' not supported

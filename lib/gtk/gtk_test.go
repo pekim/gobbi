@@ -14,6 +14,6 @@ func TestFunctionCall(t *testing.T) {
 	//gtk.Init()
 	//gtk.MainQuit()
 
-	v := GetMajorVersion()
+	v, _ := GetMajorVersion()
 	assert.Equal(t, uint32(3), v)
 }

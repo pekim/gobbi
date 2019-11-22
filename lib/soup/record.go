@@ -187,7 +187,7 @@ func bufferCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type soup_buffer_copy.
-func (recv *Buffer) Copy() *Buffer {
+func (recv *Buffer) Copy() (*Buffer, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -200,7 +200,7 @@ func (recv *Buffer) Copy() *Buffer {
 
 	retGo := &Buffer{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var bufferFreeFunction *gi.Function
@@ -219,7 +219,7 @@ func bufferFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_buffer_free.
-func (recv *Buffer) Free() {
+func (recv *Buffer) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -228,6 +228,7 @@ func (recv *Buffer) Free() {
 		bufferFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_buffer_get_as_bytes' : return type 'GLib.Bytes' not supported
@@ -308,7 +309,7 @@ func clientContextGetAuthUserFunction_Set() error {
 }
 
 // GetAuthUser is a representation of the C type soup_client_context_get_auth_user.
-func (recv *ClientContext) GetAuthUser() string {
+func (recv *ClientContext) GetAuthUser() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -321,7 +322,7 @@ func (recv *ClientContext) GetAuthUser() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_client_context_get_gsocket' : return type 'Gio.Socket' not supported
@@ -342,7 +343,7 @@ func clientContextGetHostFunction_Set() error {
 }
 
 // GetHost is a representation of the C type soup_client_context_get_host.
-func (recv *ClientContext) GetHost() string {
+func (recv *ClientContext) GetHost() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -355,7 +356,7 @@ func (recv *ClientContext) GetHost() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_client_context_get_local_address' : return type 'Gio.SocketAddress' not supported
@@ -493,7 +494,7 @@ func cookieNewFunction_Set() error {
 }
 
 // CookieNew is a representation of the C type soup_cookie_new.
-func CookieNew(name string, value string, domain string, path string, maxAge int32) *Cookie {
+func CookieNew(name string, value string, domain string, path string, maxAge int32) (*Cookie, error) {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(name)
 	inArgs[1].SetString(value)
@@ -510,7 +511,7 @@ func CookieNew(name string, value string, domain string, path string, maxAge int
 
 	retGo := &Cookie{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_cookie_applies_to_uri' : parameter 'uri' of type 'URI' not supported
@@ -531,7 +532,7 @@ func cookieCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type soup_cookie_copy.
-func (recv *Cookie) Copy() *Cookie {
+func (recv *Cookie) Copy() (*Cookie, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -544,7 +545,7 @@ func (recv *Cookie) Copy() *Cookie {
 
 	retGo := &Cookie{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_cookie_domain_matches' : return type 'gboolean' not supported
@@ -567,7 +568,7 @@ func cookieFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_cookie_free.
-func (recv *Cookie) Free() {
+func (recv *Cookie) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -576,6 +577,7 @@ func (recv *Cookie) Free() {
 		cookieFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var cookieGetDomainFunction *gi.Function
@@ -594,7 +596,7 @@ func cookieGetDomainFunction_Set() error {
 }
 
 // GetDomain is a representation of the C type soup_cookie_get_domain.
-func (recv *Cookie) GetDomain() string {
+func (recv *Cookie) GetDomain() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -607,7 +609,7 @@ func (recv *Cookie) GetDomain() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var cookieGetExpiresFunction *gi.Function
@@ -626,7 +628,7 @@ func cookieGetExpiresFunction_Set() error {
 }
 
 // GetExpires is a representation of the C type soup_cookie_get_expires.
-func (recv *Cookie) GetExpires() *Date {
+func (recv *Cookie) GetExpires() (*Date, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -639,7 +641,7 @@ func (recv *Cookie) GetExpires() *Date {
 
 	retGo := &Date{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_cookie_get_http_only' : return type 'gboolean' not supported
@@ -660,7 +662,7 @@ func cookieGetNameFunction_Set() error {
 }
 
 // GetName is a representation of the C type soup_cookie_get_name.
-func (recv *Cookie) GetName() string {
+func (recv *Cookie) GetName() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -673,7 +675,7 @@ func (recv *Cookie) GetName() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var cookieGetPathFunction *gi.Function
@@ -692,7 +694,7 @@ func cookieGetPathFunction_Set() error {
 }
 
 // GetPath is a representation of the C type soup_cookie_get_path.
-func (recv *Cookie) GetPath() string {
+func (recv *Cookie) GetPath() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -705,7 +707,7 @@ func (recv *Cookie) GetPath() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_cookie_get_secure' : return type 'gboolean' not supported
@@ -726,7 +728,7 @@ func cookieGetValueFunction_Set() error {
 }
 
 // GetValue is a representation of the C type soup_cookie_get_value.
-func (recv *Cookie) GetValue() string {
+func (recv *Cookie) GetValue() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -739,7 +741,7 @@ func (recv *Cookie) GetValue() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var cookieSetDomainFunction *gi.Function
@@ -758,7 +760,7 @@ func cookieSetDomainFunction_Set() error {
 }
 
 // SetDomain is a representation of the C type soup_cookie_set_domain.
-func (recv *Cookie) SetDomain(domain string) {
+func (recv *Cookie) SetDomain(domain string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
@@ -768,6 +770,7 @@ func (recv *Cookie) SetDomain(domain string) {
 		cookieSetDomainFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_cookie_set_expires' : parameter 'expires' of type 'Date' not supported
@@ -790,7 +793,7 @@ func cookieSetMaxAgeFunction_Set() error {
 }
 
 // SetMaxAge is a representation of the C type soup_cookie_set_max_age.
-func (recv *Cookie) SetMaxAge(maxAge int32) {
+func (recv *Cookie) SetMaxAge(maxAge int32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(maxAge)
@@ -800,6 +803,7 @@ func (recv *Cookie) SetMaxAge(maxAge int32) {
 		cookieSetMaxAgeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var cookieSetNameFunction *gi.Function
@@ -818,7 +822,7 @@ func cookieSetNameFunction_Set() error {
 }
 
 // SetName is a representation of the C type soup_cookie_set_name.
-func (recv *Cookie) SetName(name string) {
+func (recv *Cookie) SetName(name string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -828,6 +832,7 @@ func (recv *Cookie) SetName(name string) {
 		cookieSetNameFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var cookieSetPathFunction *gi.Function
@@ -846,7 +851,7 @@ func cookieSetPathFunction_Set() error {
 }
 
 // SetPath is a representation of the C type soup_cookie_set_path.
-func (recv *Cookie) SetPath(path string) {
+func (recv *Cookie) SetPath(path string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
@@ -856,6 +861,7 @@ func (recv *Cookie) SetPath(path string) {
 		cookieSetPathFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_cookie_set_secure' : parameter 'secure' of type 'gboolean' not supported
@@ -876,7 +882,7 @@ func cookieSetValueFunction_Set() error {
 }
 
 // SetValue is a representation of the C type soup_cookie_set_value.
-func (recv *Cookie) SetValue(value string) {
+func (recv *Cookie) SetValue(value string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(value)
@@ -886,6 +892,7 @@ func (recv *Cookie) SetValue(value string) {
 		cookieSetValueFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var cookieToCookieHeaderFunction *gi.Function
@@ -904,7 +911,7 @@ func cookieToCookieHeaderFunction_Set() error {
 }
 
 // ToCookieHeader is a representation of the C type soup_cookie_to_cookie_header.
-func (recv *Cookie) ToCookieHeader() string {
+func (recv *Cookie) ToCookieHeader() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -917,7 +924,7 @@ func (recv *Cookie) ToCookieHeader() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var cookieToSetCookieHeaderFunction *gi.Function
@@ -936,7 +943,7 @@ func cookieToSetCookieHeaderFunction_Set() error {
 }
 
 // ToSetCookieHeader is a representation of the C type soup_cookie_to_set_cookie_header.
-func (recv *Cookie) ToSetCookieHeader() string {
+func (recv *Cookie) ToSetCookieHeader() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -949,7 +956,7 @@ func (recv *Cookie) ToSetCookieHeader() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var cookieJarClassStruct *gi.Struct
@@ -1052,7 +1059,7 @@ func dateNewFunction_Set() error {
 }
 
 // DateNew is a representation of the C type soup_date_new.
-func DateNew(year int32, month int32, day int32, hour int32, minute int32, second int32) *Date {
+func DateNew(year int32, month int32, day int32, hour int32, minute int32, second int32) (*Date, error) {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetInt32(year)
 	inArgs[1].SetInt32(month)
@@ -1070,7 +1077,7 @@ func DateNew(year int32, month int32, day int32, hour int32, minute int32, secon
 
 	retGo := &Date{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var dateNewFromNowFunction *gi.Function
@@ -1089,7 +1096,7 @@ func dateNewFromNowFunction_Set() error {
 }
 
 // DateNewFromNow is a representation of the C type soup_date_new_from_now.
-func DateNewFromNow(offsetSeconds int32) *Date {
+func DateNewFromNow(offsetSeconds int32) (*Date, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(offsetSeconds)
 
@@ -1102,7 +1109,7 @@ func DateNewFromNow(offsetSeconds int32) *Date {
 
 	retGo := &Date{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var dateNewFromStringFunction *gi.Function
@@ -1121,7 +1128,7 @@ func dateNewFromStringFunction_Set() error {
 }
 
 // DateNewFromString is a representation of the C type soup_date_new_from_string.
-func DateNewFromString(dateString string) *Date {
+func DateNewFromString(dateString string) (*Date, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(dateString)
 
@@ -1134,7 +1141,7 @@ func DateNewFromString(dateString string) *Date {
 
 	retGo := &Date{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var dateNewFromTimeTFunction *gi.Function
@@ -1153,7 +1160,7 @@ func dateNewFromTimeTFunction_Set() error {
 }
 
 // DateNewFromTimeT is a representation of the C type soup_date_new_from_time_t.
-func DateNewFromTimeT(when int64) *Date {
+func DateNewFromTimeT(when int64) (*Date, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(when)
 
@@ -1166,7 +1173,7 @@ func DateNewFromTimeT(when int64) *Date {
 
 	retGo := &Date{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var dateCopyFunction *gi.Function
@@ -1185,7 +1192,7 @@ func dateCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type soup_date_copy.
-func (recv *Date) Copy() *Date {
+func (recv *Date) Copy() (*Date, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1198,7 +1205,7 @@ func (recv *Date) Copy() *Date {
 
 	retGo := &Date{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var dateFreeFunction *gi.Function
@@ -1217,7 +1224,7 @@ func dateFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_date_free.
-func (recv *Date) Free() {
+func (recv *Date) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1226,6 +1233,7 @@ func (recv *Date) Free() {
 		dateFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var dateGetDayFunction *gi.Function
@@ -1244,7 +1252,7 @@ func dateGetDayFunction_Set() error {
 }
 
 // GetDay is a representation of the C type soup_date_get_day.
-func (recv *Date) GetDay() int32 {
+func (recv *Date) GetDay() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1257,7 +1265,7 @@ func (recv *Date) GetDay() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetHourFunction *gi.Function
@@ -1276,7 +1284,7 @@ func dateGetHourFunction_Set() error {
 }
 
 // GetHour is a representation of the C type soup_date_get_hour.
-func (recv *Date) GetHour() int32 {
+func (recv *Date) GetHour() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1289,7 +1297,7 @@ func (recv *Date) GetHour() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetMinuteFunction *gi.Function
@@ -1308,7 +1316,7 @@ func dateGetMinuteFunction_Set() error {
 }
 
 // GetMinute is a representation of the C type soup_date_get_minute.
-func (recv *Date) GetMinute() int32 {
+func (recv *Date) GetMinute() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1321,7 +1329,7 @@ func (recv *Date) GetMinute() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetMonthFunction *gi.Function
@@ -1340,7 +1348,7 @@ func dateGetMonthFunction_Set() error {
 }
 
 // GetMonth is a representation of the C type soup_date_get_month.
-func (recv *Date) GetMonth() int32 {
+func (recv *Date) GetMonth() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1353,7 +1361,7 @@ func (recv *Date) GetMonth() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetOffsetFunction *gi.Function
@@ -1372,7 +1380,7 @@ func dateGetOffsetFunction_Set() error {
 }
 
 // GetOffset is a representation of the C type soup_date_get_offset.
-func (recv *Date) GetOffset() int32 {
+func (recv *Date) GetOffset() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1385,7 +1393,7 @@ func (recv *Date) GetOffset() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetSecondFunction *gi.Function
@@ -1404,7 +1412,7 @@ func dateGetSecondFunction_Set() error {
 }
 
 // GetSecond is a representation of the C type soup_date_get_second.
-func (recv *Date) GetSecond() int32 {
+func (recv *Date) GetSecond() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1417,7 +1425,7 @@ func (recv *Date) GetSecond() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetUtcFunction *gi.Function
@@ -1436,7 +1444,7 @@ func dateGetUtcFunction_Set() error {
 }
 
 // GetUtc is a representation of the C type soup_date_get_utc.
-func (recv *Date) GetUtc() int32 {
+func (recv *Date) GetUtc() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1449,7 +1457,7 @@ func (recv *Date) GetUtc() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var dateGetYearFunction *gi.Function
@@ -1468,7 +1476,7 @@ func dateGetYearFunction_Set() error {
 }
 
 // GetYear is a representation of the C type soup_date_get_year.
-func (recv *Date) GetYear() int32 {
+func (recv *Date) GetYear() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1481,7 +1489,7 @@ func (recv *Date) GetYear() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_date_is_past' : return type 'gboolean' not supported
@@ -1504,7 +1512,7 @@ func dateToTimeTFunction_Set() error {
 }
 
 // ToTimeT is a representation of the C type soup_date_to_time_t.
-func (recv *Date) ToTimeT() int64 {
+func (recv *Date) ToTimeT() (int64, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1517,7 +1525,7 @@ func (recv *Date) ToTimeT() int64 {
 
 	retGo := ret.Int64()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_date_to_timeval' : parameter 'time' of type 'GLib.TimeVal' not supported
@@ -1639,7 +1647,7 @@ func hSTSPolicyCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type soup_hsts_policy_copy.
-func (recv *HSTSPolicy) Copy() *HSTSPolicy {
+func (recv *HSTSPolicy) Copy() (*HSTSPolicy, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1652,7 +1660,7 @@ func (recv *HSTSPolicy) Copy() *HSTSPolicy {
 
 	retGo := &HSTSPolicy{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_hsts_policy_equal' : parameter 'policy2' of type 'HSTSPolicy' not supported
@@ -1673,7 +1681,7 @@ func hSTSPolicyFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_hsts_policy_free.
-func (recv *HSTSPolicy) Free() {
+func (recv *HSTSPolicy) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1682,6 +1690,7 @@ func (recv *HSTSPolicy) Free() {
 		hSTSPolicyFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var hSTSPolicyGetDomainFunction *gi.Function
@@ -1700,7 +1709,7 @@ func hSTSPolicyGetDomainFunction_Set() error {
 }
 
 // GetDomain is a representation of the C type soup_hsts_policy_get_domain.
-func (recv *HSTSPolicy) GetDomain() string {
+func (recv *HSTSPolicy) GetDomain() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1713,7 +1722,7 @@ func (recv *HSTSPolicy) GetDomain() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_hsts_policy_includes_subdomains' : return type 'gboolean' not supported
@@ -1775,7 +1784,7 @@ func messageBodyNewFunction_Set() error {
 }
 
 // MessageBodyNew is a representation of the C type soup_message_body_new.
-func MessageBodyNew() *MessageBody {
+func MessageBodyNew() (*MessageBody, error) {
 
 	var ret gi.Argument
 
@@ -1786,7 +1795,7 @@ func MessageBodyNew() *MessageBody {
 
 	retGo := &MessageBody{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_message_body_append' : parameter 'use' of type 'MemoryUse' not supported
@@ -1811,7 +1820,7 @@ func messageBodyCompleteFunction_Set() error {
 }
 
 // Complete is a representation of the C type soup_message_body_complete.
-func (recv *MessageBody) Complete() {
+func (recv *MessageBody) Complete() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1820,6 +1829,7 @@ func (recv *MessageBody) Complete() {
 		messageBodyCompleteFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var messageBodyFlattenFunction *gi.Function
@@ -1838,7 +1848,7 @@ func messageBodyFlattenFunction_Set() error {
 }
 
 // Flatten is a representation of the C type soup_message_body_flatten.
-func (recv *MessageBody) Flatten() *Buffer {
+func (recv *MessageBody) Flatten() (*Buffer, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1851,7 +1861,7 @@ func (recv *MessageBody) Flatten() *Buffer {
 
 	retGo := &Buffer{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var messageBodyFreeFunction *gi.Function
@@ -1870,7 +1880,7 @@ func messageBodyFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_message_body_free.
-func (recv *MessageBody) Free() {
+func (recv *MessageBody) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1879,6 +1889,7 @@ func (recv *MessageBody) Free() {
 		messageBodyFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_body_get_accumulate' : return type 'gboolean' not supported
@@ -1899,7 +1910,7 @@ func messageBodyGetChunkFunction_Set() error {
 }
 
 // GetChunk is a representation of the C type soup_message_body_get_chunk.
-func (recv *MessageBody) GetChunk(offset int64) *Buffer {
+func (recv *MessageBody) GetChunk(offset int64) (*Buffer, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(offset)
@@ -1913,7 +1924,7 @@ func (recv *MessageBody) GetChunk(offset int64) *Buffer {
 
 	retGo := &Buffer{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_message_body_got_chunk' : parameter 'chunk' of type 'Buffer' not supported
@@ -1936,7 +1947,7 @@ func messageBodyTruncateFunction_Set() error {
 }
 
 // Truncate is a representation of the C type soup_message_body_truncate.
-func (recv *MessageBody) Truncate() {
+func (recv *MessageBody) Truncate() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -1945,6 +1956,7 @@ func (recv *MessageBody) Truncate() {
 		messageBodyTruncateFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_body_wrote_chunk' : parameter 'chunk' of type 'Buffer' not supported
@@ -2012,7 +2024,7 @@ func messageHeadersAppendFunction_Set() error {
 }
 
 // Append is a representation of the C type soup_message_headers_append.
-func (recv *MessageHeaders) Append(name string, value string) {
+func (recv *MessageHeaders) Append(name string, value string) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -2023,6 +2035,7 @@ func (recv *MessageHeaders) Append(name string, value string) {
 		messageHeadersAppendFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var messageHeadersCleanConnectionHeadersFunction *gi.Function
@@ -2041,7 +2054,7 @@ func messageHeadersCleanConnectionHeadersFunction_Set() error {
 }
 
 // CleanConnectionHeaders is a representation of the C type soup_message_headers_clean_connection_headers.
-func (recv *MessageHeaders) CleanConnectionHeaders() {
+func (recv *MessageHeaders) CleanConnectionHeaders() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2050,6 +2063,7 @@ func (recv *MessageHeaders) CleanConnectionHeaders() {
 		messageHeadersCleanConnectionHeadersFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var messageHeadersClearFunction *gi.Function
@@ -2068,7 +2082,7 @@ func messageHeadersClearFunction_Set() error {
 }
 
 // Clear is a representation of the C type soup_message_headers_clear.
-func (recv *MessageHeaders) Clear() {
+func (recv *MessageHeaders) Clear() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2077,6 +2091,7 @@ func (recv *MessageHeaders) Clear() {
 		messageHeadersClearFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_foreach' : parameter 'func' of type 'MessageHeadersForeachFunc' not supported
@@ -2097,7 +2112,7 @@ func messageHeadersFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_message_headers_free.
-func (recv *MessageHeaders) Free() {
+func (recv *MessageHeaders) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2106,6 +2121,7 @@ func (recv *MessageHeaders) Free() {
 		messageHeadersFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_free_ranges' : parameter 'ranges' of type 'Range' not supported
@@ -2126,7 +2142,7 @@ func messageHeadersGetFunction_Set() error {
 }
 
 // Get is a representation of the C type soup_message_headers_get.
-func (recv *MessageHeaders) Get(name string) string {
+func (recv *MessageHeaders) Get(name string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -2140,7 +2156,7 @@ func (recv *MessageHeaders) Get(name string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_get_content_disposition' : parameter 'params' of type 'GLib.HashTable' not supported
@@ -2161,7 +2177,7 @@ func messageHeadersGetContentLengthFunction_Set() error {
 }
 
 // GetContentLength is a representation of the C type soup_message_headers_get_content_length.
-func (recv *MessageHeaders) GetContentLength() int64 {
+func (recv *MessageHeaders) GetContentLength() (int64, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2174,7 +2190,7 @@ func (recv *MessageHeaders) GetContentLength() int64 {
 
 	retGo := ret.Int64()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_get_content_range' : return type 'gboolean' not supported
@@ -2203,7 +2219,7 @@ func messageHeadersGetListFunction_Set() error {
 }
 
 // GetList is a representation of the C type soup_message_headers_get_list.
-func (recv *MessageHeaders) GetList(name string) string {
+func (recv *MessageHeaders) GetList(name string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -2217,7 +2233,7 @@ func (recv *MessageHeaders) GetList(name string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var messageHeadersGetOneFunction *gi.Function
@@ -2236,7 +2252,7 @@ func messageHeadersGetOneFunction_Set() error {
 }
 
 // GetOne is a representation of the C type soup_message_headers_get_one.
-func (recv *MessageHeaders) GetOne(name string) string {
+func (recv *MessageHeaders) GetOne(name string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -2250,7 +2266,7 @@ func (recv *MessageHeaders) GetOne(name string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_get_ranges' : parameter 'ranges' has no type
@@ -2275,7 +2291,7 @@ func messageHeadersRemoveFunction_Set() error {
 }
 
 // Remove is a representation of the C type soup_message_headers_remove.
-func (recv *MessageHeaders) Remove(name string) {
+func (recv *MessageHeaders) Remove(name string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -2285,6 +2301,7 @@ func (recv *MessageHeaders) Remove(name string) {
 		messageHeadersRemoveFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var messageHeadersReplaceFunction *gi.Function
@@ -2303,7 +2320,7 @@ func messageHeadersReplaceFunction_Set() error {
 }
 
 // Replace is a representation of the C type soup_message_headers_replace.
-func (recv *MessageHeaders) Replace(name string, value string) {
+func (recv *MessageHeaders) Replace(name string, value string) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
@@ -2314,6 +2331,7 @@ func (recv *MessageHeaders) Replace(name string, value string) {
 		messageHeadersReplaceFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_set_content_disposition' : parameter 'params' of type 'GLib.HashTable' not supported
@@ -2334,7 +2352,7 @@ func messageHeadersSetContentLengthFunction_Set() error {
 }
 
 // SetContentLength is a representation of the C type soup_message_headers_set_content_length.
-func (recv *MessageHeaders) SetContentLength(contentLength int64) {
+func (recv *MessageHeaders) SetContentLength(contentLength int64) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(contentLength)
@@ -2344,6 +2362,7 @@ func (recv *MessageHeaders) SetContentLength(contentLength int64) {
 		messageHeadersSetContentLengthFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var messageHeadersSetContentRangeFunction *gi.Function
@@ -2362,7 +2381,7 @@ func messageHeadersSetContentRangeFunction_Set() error {
 }
 
 // SetContentRange is a representation of the C type soup_message_headers_set_content_range.
-func (recv *MessageHeaders) SetContentRange(start int64, end int64, totalLength int64) {
+func (recv *MessageHeaders) SetContentRange(start int64, end int64, totalLength int64) error {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(start)
@@ -2374,6 +2393,7 @@ func (recv *MessageHeaders) SetContentRange(start int64, end int64, totalLength 
 		messageHeadersSetContentRangeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_set_content_type' : parameter 'params' of type 'GLib.HashTable' not supported
@@ -2398,7 +2418,7 @@ func messageHeadersSetRangeFunction_Set() error {
 }
 
 // SetRange is a representation of the C type soup_message_headers_set_range.
-func (recv *MessageHeaders) SetRange(start int64, end int64) {
+func (recv *MessageHeaders) SetRange(start int64, end int64) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(start)
@@ -2409,6 +2429,7 @@ func (recv *MessageHeaders) SetRange(start int64, end int64) {
 		messageHeadersSetRangeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_message_headers_set_ranges' : parameter 'ranges' of type 'Range' not supported
@@ -2491,7 +2512,7 @@ func multipartNewFunction_Set() error {
 }
 
 // MultipartNew is a representation of the C type soup_multipart_new.
-func MultipartNew(mimeType string) *Multipart {
+func MultipartNew(mimeType string) (*Multipart, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mimeType)
 
@@ -2504,7 +2525,7 @@ func MultipartNew(mimeType string) *Multipart {
 
 	retGo := &Multipart{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_multipart_new_from_message' : parameter 'headers' of type 'MessageHeaders' not supported
@@ -2527,7 +2548,7 @@ func multipartAppendFormStringFunction_Set() error {
 }
 
 // AppendFormString is a representation of the C type soup_multipart_append_form_string.
-func (recv *Multipart) AppendFormString(controlName string, data string) {
+func (recv *Multipart) AppendFormString(controlName string, data string) error {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(controlName)
@@ -2538,6 +2559,7 @@ func (recv *Multipart) AppendFormString(controlName string, data string) {
 		multipartAppendFormStringFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_multipart_append_part' : parameter 'headers' of type 'MessageHeaders' not supported
@@ -2558,7 +2580,7 @@ func multipartFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_multipart_free.
-func (recv *Multipart) Free() {
+func (recv *Multipart) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2567,6 +2589,7 @@ func (recv *Multipart) Free() {
 		multipartFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var multipartGetLengthFunction *gi.Function
@@ -2585,7 +2608,7 @@ func multipartGetLengthFunction_Set() error {
 }
 
 // GetLength is a representation of the C type soup_multipart_get_length.
-func (recv *Multipart) GetLength() int32 {
+func (recv *Multipart) GetLength() (int32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -2598,7 +2621,7 @@ func (recv *Multipart) GetLength() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_multipart_get_part' : parameter 'headers' of type 'MessageHeaders' not supported
@@ -3066,7 +3089,7 @@ func uRINewFunction_Set() error {
 }
 
 // URINew is a representation of the C type soup_uri_new.
-func URINew(uriString string) *URI {
+func URINew(uriString string) (*URI, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uriString)
 
@@ -3079,7 +3102,7 @@ func URINew(uriString string) *URI {
 
 	retGo := &URI{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_uri_new_with_base' : parameter 'base' of type 'URI' not supported
@@ -3100,7 +3123,7 @@ func uRICopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type soup_uri_copy.
-func (recv *URI) Copy() *URI {
+func (recv *URI) Copy() (*URI, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3113,7 +3136,7 @@ func (recv *URI) Copy() *URI {
 
 	retGo := &URI{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var uRICopyHostFunction *gi.Function
@@ -3132,7 +3155,7 @@ func uRICopyHostFunction_Set() error {
 }
 
 // CopyHost is a representation of the C type soup_uri_copy_host.
-func (recv *URI) CopyHost() *URI {
+func (recv *URI) CopyHost() (*URI, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3145,7 +3168,7 @@ func (recv *URI) CopyHost() *URI {
 
 	retGo := &URI{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_uri_equal' : parameter 'uri2' of type 'URI' not supported
@@ -3166,7 +3189,7 @@ func uRIFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_uri_free.
-func (recv *URI) Free() {
+func (recv *URI) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3175,6 +3198,7 @@ func (recv *URI) Free() {
 		uRIFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRIGetFragmentFunction *gi.Function
@@ -3193,7 +3217,7 @@ func uRIGetFragmentFunction_Set() error {
 }
 
 // GetFragment is a representation of the C type soup_uri_get_fragment.
-func (recv *URI) GetFragment() string {
+func (recv *URI) GetFragment() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3206,7 +3230,7 @@ func (recv *URI) GetFragment() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetHostFunction *gi.Function
@@ -3225,7 +3249,7 @@ func uRIGetHostFunction_Set() error {
 }
 
 // GetHost is a representation of the C type soup_uri_get_host.
-func (recv *URI) GetHost() string {
+func (recv *URI) GetHost() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3238,7 +3262,7 @@ func (recv *URI) GetHost() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetPasswordFunction *gi.Function
@@ -3257,7 +3281,7 @@ func uRIGetPasswordFunction_Set() error {
 }
 
 // GetPassword is a representation of the C type soup_uri_get_password.
-func (recv *URI) GetPassword() string {
+func (recv *URI) GetPassword() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3270,7 +3294,7 @@ func (recv *URI) GetPassword() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetPathFunction *gi.Function
@@ -3289,7 +3313,7 @@ func uRIGetPathFunction_Set() error {
 }
 
 // GetPath is a representation of the C type soup_uri_get_path.
-func (recv *URI) GetPath() string {
+func (recv *URI) GetPath() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3302,7 +3326,7 @@ func (recv *URI) GetPath() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetPortFunction *gi.Function
@@ -3321,7 +3345,7 @@ func uRIGetPortFunction_Set() error {
 }
 
 // GetPort is a representation of the C type soup_uri_get_port.
-func (recv *URI) GetPort() uint32 {
+func (recv *URI) GetPort() (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3334,7 +3358,7 @@ func (recv *URI) GetPort() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetQueryFunction *gi.Function
@@ -3353,7 +3377,7 @@ func uRIGetQueryFunction_Set() error {
 }
 
 // GetQuery is a representation of the C type soup_uri_get_query.
-func (recv *URI) GetQuery() string {
+func (recv *URI) GetQuery() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3366,7 +3390,7 @@ func (recv *URI) GetQuery() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetSchemeFunction *gi.Function
@@ -3385,7 +3409,7 @@ func uRIGetSchemeFunction_Set() error {
 }
 
 // GetScheme is a representation of the C type soup_uri_get_scheme.
-func (recv *URI) GetScheme() string {
+func (recv *URI) GetScheme() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3398,7 +3422,7 @@ func (recv *URI) GetScheme() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uRIGetUserFunction *gi.Function
@@ -3417,7 +3441,7 @@ func uRIGetUserFunction_Set() error {
 }
 
 // GetUser is a representation of the C type soup_uri_get_user.
-func (recv *URI) GetUser() string {
+func (recv *URI) GetUser() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3430,7 +3454,7 @@ func (recv *URI) GetUser() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_uri_host_equal' : parameter 'v2' of type 'URI' not supported
@@ -3451,7 +3475,7 @@ func uRIHostHashFunction_Set() error {
 }
 
 // HostHash is a representation of the C type soup_uri_host_hash.
-func (recv *URI) HostHash() uint32 {
+func (recv *URI) HostHash() (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3464,7 +3488,7 @@ func (recv *URI) HostHash() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var uRISetFragmentFunction *gi.Function
@@ -3483,7 +3507,7 @@ func uRISetFragmentFunction_Set() error {
 }
 
 // SetFragment is a representation of the C type soup_uri_set_fragment.
-func (recv *URI) SetFragment(fragment string) {
+func (recv *URI) SetFragment(fragment string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(fragment)
@@ -3493,6 +3517,7 @@ func (recv *URI) SetFragment(fragment string) {
 		uRISetFragmentFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRISetHostFunction *gi.Function
@@ -3511,7 +3536,7 @@ func uRISetHostFunction_Set() error {
 }
 
 // SetHost is a representation of the C type soup_uri_set_host.
-func (recv *URI) SetHost(host string) {
+func (recv *URI) SetHost(host string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(host)
@@ -3521,6 +3546,7 @@ func (recv *URI) SetHost(host string) {
 		uRISetHostFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRISetPasswordFunction *gi.Function
@@ -3539,7 +3565,7 @@ func uRISetPasswordFunction_Set() error {
 }
 
 // SetPassword is a representation of the C type soup_uri_set_password.
-func (recv *URI) SetPassword(password string) {
+func (recv *URI) SetPassword(password string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(password)
@@ -3549,6 +3575,7 @@ func (recv *URI) SetPassword(password string) {
 		uRISetPasswordFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRISetPathFunction *gi.Function
@@ -3567,7 +3594,7 @@ func uRISetPathFunction_Set() error {
 }
 
 // SetPath is a representation of the C type soup_uri_set_path.
-func (recv *URI) SetPath(path string) {
+func (recv *URI) SetPath(path string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(path)
@@ -3577,6 +3604,7 @@ func (recv *URI) SetPath(path string) {
 		uRISetPathFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRISetPortFunction *gi.Function
@@ -3595,7 +3623,7 @@ func uRISetPortFunction_Set() error {
 }
 
 // SetPort is a representation of the C type soup_uri_set_port.
-func (recv *URI) SetPort(port uint32) {
+func (recv *URI) SetPort(port uint32) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(port)
@@ -3605,6 +3633,7 @@ func (recv *URI) SetPort(port uint32) {
 		uRISetPortFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRISetQueryFunction *gi.Function
@@ -3623,7 +3652,7 @@ func uRISetQueryFunction_Set() error {
 }
 
 // SetQuery is a representation of the C type soup_uri_set_query.
-func (recv *URI) SetQuery(query string) {
+func (recv *URI) SetQuery(query string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(query)
@@ -3633,6 +3662,7 @@ func (recv *URI) SetQuery(query string) {
 		uRISetQueryFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_uri_set_query_from_fields' : parameter '...' has no type
@@ -3655,7 +3685,7 @@ func uRISetSchemeFunction_Set() error {
 }
 
 // SetScheme is a representation of the C type soup_uri_set_scheme.
-func (recv *URI) SetScheme(scheme string) {
+func (recv *URI) SetScheme(scheme string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(scheme)
@@ -3665,6 +3695,7 @@ func (recv *URI) SetScheme(scheme string) {
 		uRISetSchemeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var uRISetUserFunction *gi.Function
@@ -3683,7 +3714,7 @@ func uRISetUserFunction_Set() error {
 }
 
 // SetUser is a representation of the C type soup_uri_set_user.
-func (recv *URI) SetUser(user string) {
+func (recv *URI) SetUser(user string) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(user)
@@ -3693,6 +3724,7 @@ func (recv *URI) SetUser(user string) {
 		uRISetUserFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_uri_to_string' : parameter 'just_path_and_query' of type 'gboolean' not supported
@@ -3824,7 +3856,7 @@ func xMLRPCParamsFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type soup_xmlrpc_params_free.
-func (recv *XMLRPCParams) Free() {
+func (recv *XMLRPCParams) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -3833,6 +3865,7 @@ func (recv *XMLRPCParams) Free() {
 		xMLRPCParamsFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'soup_xmlrpc_params_parse' : return type 'GLib.Variant' not supported

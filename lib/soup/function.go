@@ -63,7 +63,7 @@ func getMajorVersionFunction_Set() error {
 }
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
-func GetMajorVersion() uint32 {
+func GetMajorVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -74,7 +74,7 @@ func GetMajorVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMicroVersionFunction *gi.Function
@@ -89,7 +89,7 @@ func getMicroVersionFunction_Set() error {
 }
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
-func GetMicroVersion() uint32 {
+func GetMicroVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -100,7 +100,7 @@ func GetMicroVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMinorVersionFunction *gi.Function
@@ -115,7 +115,7 @@ func getMinorVersionFunction_Set() error {
 }
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
-func GetMinorVersion() uint32 {
+func GetMinorVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -126,7 +126,7 @@ func GetMinorVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_header_contains' : return type 'gboolean' not supported
@@ -179,7 +179,7 @@ func statusGetPhraseFunction_Set() error {
 }
 
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
-func StatusGetPhrase(statusCode uint32) string {
+func StatusGetPhrase(statusCode uint32) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
@@ -192,7 +192,7 @@ func StatusGetPhrase(statusCode uint32) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var statusProxifyFunction *gi.Function
@@ -207,7 +207,7 @@ func statusProxifyFunction_Set() error {
 }
 
 // StatusProxify is a representation of the C type soup_status_proxify.
-func StatusProxify(statusCode uint32) uint32 {
+func StatusProxify(statusCode uint32) (uint32, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
@@ -220,7 +220,7 @@ func StatusProxify(statusCode uint32) uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_str_case_equal' : parameter 'v1' of type 'gpointer' not supported
@@ -243,7 +243,7 @@ func tldGetBaseDomainFunction_Set() error {
 }
 
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
-func TldGetBaseDomain(hostname string) string {
+func TldGetBaseDomain(hostname string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
@@ -256,7 +256,7 @@ func TldGetBaseDomain(hostname string) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var uriDecodeFunction *gi.Function
@@ -271,7 +271,7 @@ func uriDecodeFunction_Set() error {
 }
 
 // UriDecode is a representation of the C type soup_uri_decode.
-func UriDecode(part string) string {
+func UriDecode(part string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(part)
 
@@ -284,7 +284,7 @@ func UriDecode(part string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var uriEncodeFunction *gi.Function
@@ -299,7 +299,7 @@ func uriEncodeFunction_Set() error {
 }
 
 // UriEncode is a representation of the C type soup_uri_encode.
-func UriEncode(part string, escapeExtra string) string {
+func UriEncode(part string, escapeExtra string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(escapeExtra)
@@ -313,7 +313,7 @@ func UriEncode(part string, escapeExtra string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var uriNormalizeFunction *gi.Function
@@ -328,7 +328,7 @@ func uriNormalizeFunction_Set() error {
 }
 
 // UriNormalize is a representation of the C type soup_uri_normalize.
-func UriNormalize(part string, unescapeExtra string) string {
+func UriNormalize(part string, unescapeExtra string) (string, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(unescapeExtra)
@@ -342,7 +342,7 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'soup_value_array_append' : parameter 'array' of type 'GObject.ValueArray' not supported

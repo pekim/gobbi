@@ -38,7 +38,7 @@ func pixbufFormatCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type gdk_pixbuf_format_copy.
-func (recv *PixbufFormat) Copy() *PixbufFormat {
+func (recv *PixbufFormat) Copy() (*PixbufFormat, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -51,7 +51,7 @@ func (recv *PixbufFormat) Copy() *PixbufFormat {
 
 	retGo := &PixbufFormat{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var pixbufFormatFreeFunction *gi.Function
@@ -70,7 +70,7 @@ func pixbufFormatFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type gdk_pixbuf_format_free.
-func (recv *PixbufFormat) Free() {
+func (recv *PixbufFormat) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -79,6 +79,7 @@ func (recv *PixbufFormat) Free() {
 		pixbufFormatFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var pixbufFormatGetDescriptionFunction *gi.Function
@@ -97,7 +98,7 @@ func pixbufFormatGetDescriptionFunction_Set() error {
 }
 
 // GetDescription is a representation of the C type gdk_pixbuf_format_get_description.
-func (recv *PixbufFormat) GetDescription() string {
+func (recv *PixbufFormat) GetDescription() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -110,7 +111,7 @@ func (recv *PixbufFormat) GetDescription() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var pixbufFormatGetExtensionsFunction *gi.Function
@@ -129,7 +130,7 @@ func pixbufFormatGetExtensionsFunction_Set() error {
 }
 
 // GetExtensions is a representation of the C type gdk_pixbuf_format_get_extensions.
-func (recv *PixbufFormat) GetExtensions() {
+func (recv *PixbufFormat) GetExtensions() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -138,6 +139,7 @@ func (recv *PixbufFormat) GetExtensions() {
 		pixbufFormatGetExtensionsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var pixbufFormatGetLicenseFunction *gi.Function
@@ -156,7 +158,7 @@ func pixbufFormatGetLicenseFunction_Set() error {
 }
 
 // GetLicense is a representation of the C type gdk_pixbuf_format_get_license.
-func (recv *PixbufFormat) GetLicense() string {
+func (recv *PixbufFormat) GetLicense() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -169,7 +171,7 @@ func (recv *PixbufFormat) GetLicense() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var pixbufFormatGetMimeTypesFunction *gi.Function
@@ -188,7 +190,7 @@ func pixbufFormatGetMimeTypesFunction_Set() error {
 }
 
 // GetMimeTypes is a representation of the C type gdk_pixbuf_format_get_mime_types.
-func (recv *PixbufFormat) GetMimeTypes() {
+func (recv *PixbufFormat) GetMimeTypes() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -197,6 +199,7 @@ func (recv *PixbufFormat) GetMimeTypes() {
 		pixbufFormatGetMimeTypesFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var pixbufFormatGetNameFunction *gi.Function
@@ -215,7 +218,7 @@ func pixbufFormatGetNameFunction_Set() error {
 }
 
 // GetName is a representation of the C type gdk_pixbuf_format_get_name.
-func (recv *PixbufFormat) GetName() string {
+func (recv *PixbufFormat) GetName() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -228,7 +231,7 @@ func (recv *PixbufFormat) GetName() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'gdk_pixbuf_format_is_disabled' : return type 'gboolean' not supported

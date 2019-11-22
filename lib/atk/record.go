@@ -449,7 +449,7 @@ func rangeCopyFunction_Set() error {
 }
 
 // Copy is a representation of the C type atk_range_copy.
-func (recv *Range) Copy() *Range {
+func (recv *Range) Copy() (*Range, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -462,7 +462,7 @@ func (recv *Range) Copy() *Range {
 
 	retGo := &Range{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var rangeFreeFunction *gi.Function
@@ -481,7 +481,7 @@ func rangeFreeFunction_Set() error {
 }
 
 // Free is a representation of the C type atk_range_free.
-func (recv *Range) Free() {
+func (recv *Range) Free() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -490,6 +490,7 @@ func (recv *Range) Free() {
 		rangeFreeFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var rangeGetDescriptionFunction *gi.Function
@@ -508,7 +509,7 @@ func rangeGetDescriptionFunction_Set() error {
 }
 
 // GetDescription is a representation of the C type atk_range_get_description.
-func (recv *Range) GetDescription() string {
+func (recv *Range) GetDescription() (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -521,7 +522,7 @@ func (recv *Range) GetDescription() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'atk_range_get_lower_limit' : return type 'gdouble' not supported

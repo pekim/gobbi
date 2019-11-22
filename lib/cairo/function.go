@@ -19,11 +19,12 @@ func imageSurfaceCreateFunction_Set() error {
 }
 
 // ImageSurfaceCreate is a representation of the C type cairo_image_surface_create.
-func ImageSurfaceCreate() {
+func ImageSurfaceCreate() error {
 
 	err := imageSurfaceCreateFunction_Set()
 	if err == nil {
 		imageSurfaceCreateFunction.Invoke(nil, nil)
 	}
 
+	return err
 }

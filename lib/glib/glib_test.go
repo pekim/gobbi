@@ -11,19 +11,24 @@ func TestCleanBuild(t *testing.T) {
 }
 
 func TestFunctionCall(t *testing.T) {
-	assert.True(t, GetNumProcessors() > 0)
+	numProc, err := GetNumProcessors()
+	assert.Nil(t, err)
+	assert.True(t, numProc > 0)
 }
 
 func TestReturnedTransferOwnershipSring(t *testing.T) {
-	assert.True(t, strings.HasPrefix(GetCodeset(), "ANSI_"))
+	codeset, _ := GetCodeset()
+	assert.True(t, strings.HasPrefix(codeset, "ANSI_"))
 }
 
 func TestFunctionCallWithIntegers(t *testing.T) {
-	assert.Equal(t, int32(4), AsciiDigitValue('4'))
+	value, _ := AsciiDigitValue('4')
+	assert.Equal(t, int32(4), value)
 }
 
 func TestFunctionCallArgStringReturnString(t *testing.T) {
-	assert.Equal(t, "aabbcc-zz", Utf8Strdown("AaBbCc-Zz", -1))
+	result, _ := Utf8Strdown("AaBbCc-Zz", -1)
+	assert.Equal(t, "aabbcc-zz", result)
 }
 
 //func TestFunctionInAndOutParams(t *testing.T) {
@@ -33,13 +38,14 @@ func TestFunctionCallArgStringReturnString(t *testing.T) {
 //}
 
 func TestRecordConstructor(t *testing.T) {
-	assert.NotNil(t, DateNew().native)
+	date, _ := DateNew()
+	assert.NotNil(t, date.native)
 }
 
 func TestRecordMethod(t *testing.T) {
-	date := DateNewJulian(100)
+	date, _ := DateNewJulian(100)
 	date.AddDays(2)
-	dayOfYear := date.GetDayOfYear()
+	dayOfYear, _ := date.GetDayOfYear()
 
 	assert.Equal(t, uint32(102), dayOfYear)
 }

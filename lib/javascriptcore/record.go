@@ -38,7 +38,7 @@ func globalContextRefRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type JSGlobalContextRetain.
-func (recv *GlobalContextRef) Ref() {
+func (recv *GlobalContextRef) Ref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -47,6 +47,7 @@ func (recv *GlobalContextRef) Ref() {
 		globalContextRefRefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var globalContextRefUnrefFunction *gi.Function
@@ -65,7 +66,7 @@ func globalContextRefUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type JSGlobalContextRelease.
-func (recv *GlobalContextRef) Unref() {
+func (recv *GlobalContextRef) Unref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -74,6 +75,7 @@ func (recv *GlobalContextRef) Unref() {
 		globalContextRefUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var valueRefStruct *gi.Struct
@@ -122,7 +124,7 @@ func stringRefRefFunction_Set() error {
 }
 
 // Ref is a representation of the C type JSStringRetain.
-func (recv *StringRef) Ref() {
+func (recv *StringRef) Ref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -131,6 +133,7 @@ func (recv *StringRef) Ref() {
 		stringRefRefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var stringRefUnrefFunction *gi.Function
@@ -149,7 +152,7 @@ func stringRefUnrefFunction_Set() error {
 }
 
 // Unref is a representation of the C type JSStringRelease.
-func (recv *StringRef) Unref() {
+func (recv *StringRef) Unref() error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
@@ -158,6 +161,7 @@ func (recv *StringRef) Unref() {
 		stringRefUnrefFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'JSStringGetMaximumUTF8CStringSize' : return type 'gsize' not supported

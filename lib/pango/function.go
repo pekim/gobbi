@@ -19,7 +19,7 @@ func attrBackgroundAlphaNewFunction_Set() error {
 }
 
 // AttrBackgroundAlphaNew is a representation of the C type pango_attr_background_alpha_new.
-func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
+func AttrBackgroundAlphaNew(alpha uint16) (*Attribute, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(alpha)
 
@@ -32,7 +32,7 @@ func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var attrBackgroundNewFunction *gi.Function
@@ -47,7 +47,7 @@ func attrBackgroundNewFunction_Set() error {
 }
 
 // AttrBackgroundNew is a representation of the C type pango_attr_background_new.
-func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
+func AttrBackgroundNew(red uint16, green uint16, blue uint16) (*Attribute, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
@@ -62,7 +62,7 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
@@ -79,7 +79,7 @@ func attrFamilyNewFunction_Set() error {
 }
 
 // AttrFamilyNew is a representation of the C type pango_attr_family_new.
-func AttrFamilyNew(family string) *Attribute {
+func AttrFamilyNew(family string) (*Attribute, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(family)
 
@@ -92,7 +92,7 @@ func AttrFamilyNew(family string) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var attrForegroundAlphaNewFunction *gi.Function
@@ -107,7 +107,7 @@ func attrForegroundAlphaNewFunction_Set() error {
 }
 
 // AttrForegroundAlphaNew is a representation of the C type pango_attr_foreground_alpha_new.
-func AttrForegroundAlphaNew(alpha uint16) *Attribute {
+func AttrForegroundAlphaNew(alpha uint16) (*Attribute, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(alpha)
 
@@ -120,7 +120,7 @@ func AttrForegroundAlphaNew(alpha uint16) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var attrForegroundNewFunction *gi.Function
@@ -135,7 +135,7 @@ func attrForegroundNewFunction_Set() error {
 }
 
 // AttrForegroundNew is a representation of the C type pango_attr_foreground_new.
-func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
+func AttrForegroundNew(red uint16, green uint16, blue uint16) (*Attribute, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
@@ -150,7 +150,7 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_gravity_hint_new' : parameter 'hint' of type 'GravityHint' not supported
@@ -169,7 +169,7 @@ func attrLetterSpacingNewFunction_Set() error {
 }
 
 // AttrLetterSpacingNew is a representation of the C type pango_attr_letter_spacing_new.
-func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
+func AttrLetterSpacingNew(letterSpacing int32) (*Attribute, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(letterSpacing)
 
@@ -182,7 +182,7 @@ func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var attrRiseNewFunction *gi.Function
@@ -197,7 +197,7 @@ func attrRiseNewFunction_Set() error {
 }
 
 // AttrRiseNew is a representation of the C type pango_attr_rise_new.
-func AttrRiseNew(rise int32) *Attribute {
+func AttrRiseNew(rise int32) (*Attribute, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rise)
 
@@ -210,7 +210,7 @@ func AttrRiseNew(rise int32) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_scale_new' : parameter 'scale_factor' of type 'gdouble' not supported
@@ -229,7 +229,7 @@ func attrStrikethroughColorNewFunction_Set() error {
 }
 
 // AttrStrikethroughColorNew is a representation of the C type pango_attr_strikethrough_color_new.
-func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
+func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) (*Attribute, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
@@ -244,7 +244,7 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_strikethrough_new' : parameter 'strikethrough' of type 'gboolean' not supported
@@ -267,7 +267,7 @@ func attrUnderlineColorNewFunction_Set() error {
 }
 
 // AttrUnderlineColorNew is a representation of the C type pango_attr_underline_color_new.
-func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
+func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) (*Attribute, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
@@ -282,7 +282,7 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 
 	retGo := &Attribute{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_attr_underline_new' : parameter 'underline' of type 'Underline' not supported
@@ -307,7 +307,7 @@ func configKeyGetFunction_Set() error {
 }
 
 // ConfigKeyGet is a representation of the C type pango_config_key_get.
-func ConfigKeyGet(key string) string {
+func ConfigKeyGet(key string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
@@ -320,7 +320,7 @@ func ConfigKeyGet(key string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var configKeyGetSystemFunction *gi.Function
@@ -335,7 +335,7 @@ func configKeyGetSystemFunction_Set() error {
 }
 
 // ConfigKeyGetSystem is a representation of the C type pango_config_key_get_system.
-func ConfigKeyGetSystem(key string) string {
+func ConfigKeyGetSystem(key string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
@@ -348,7 +348,7 @@ func ConfigKeyGetSystem(key string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_default_break' : parameter 'analysis' of type 'Analysis' not supported
@@ -371,7 +371,7 @@ func findParagraphBoundaryFunction_Set() error {
 }
 
 // FindParagraphBoundary is a representation of the C type pango_find_paragraph_boundary.
-func FindParagraphBoundary(text string, length int32) (int32, int32) {
+func FindParagraphBoundary(text string, length int32) (int32, int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
@@ -386,7 +386,7 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
 
-	return out0, out1
+	return out0, out1, err
 }
 
 var fontDescriptionFromStringFunction *gi.Function
@@ -401,7 +401,7 @@ func fontDescriptionFromStringFunction_Set() error {
 }
 
 // FontDescriptionFromString is a representation of the C type pango_font_description_from_string.
-func FontDescriptionFromString(str string) *FontDescription {
+func FontDescriptionFromString(str string) (*FontDescription, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -414,7 +414,7 @@ func FontDescriptionFromString(str string) *FontDescription {
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var getLibSubdirectoryFunction *gi.Function
@@ -429,7 +429,7 @@ func getLibSubdirectoryFunction_Set() error {
 }
 
 // GetLibSubdirectory is a representation of the C type pango_get_lib_subdirectory.
-func GetLibSubdirectory() string {
+func GetLibSubdirectory() (string, error) {
 
 	var ret gi.Argument
 
@@ -440,7 +440,7 @@ func GetLibSubdirectory() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'language' of type 'Language' not supported
@@ -459,7 +459,7 @@ func getSysconfSubdirectoryFunction_Set() error {
 }
 
 // GetSysconfSubdirectory is a representation of the C type pango_get_sysconf_subdirectory.
-func GetSysconfSubdirectory() string {
+func GetSysconfSubdirectory() (string, error) {
 
 	var ret gi.Argument
 
@@ -470,7 +470,7 @@ func GetSysconfSubdirectory() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : parameter 'matrix' of type 'Matrix' not supported
@@ -499,7 +499,7 @@ func languageFromStringFunction_Set() error {
 }
 
 // LanguageFromString is a representation of the C type pango_language_from_string.
-func LanguageFromString(language string) *Language {
+func LanguageFromString(language string) (*Language, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(language)
 
@@ -512,7 +512,7 @@ func LanguageFromString(language string) *Language {
 
 	retGo := &Language{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var languageGetDefaultFunction *gi.Function
@@ -527,7 +527,7 @@ func languageGetDefaultFunction_Set() error {
 }
 
 // LanguageGetDefault is a representation of the C type pango_language_get_default.
-func LanguageGetDefault() *Language {
+func LanguageGetDefault() (*Language, error) {
 
 	var ret gi.Argument
 
@@ -538,7 +538,7 @@ func LanguageGetDefault() *Language {
 
 	retGo := &Language{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_log2vis_get_embedding_levels' : parameter 'pbase_dir' of type 'Direction' not supported
@@ -575,7 +575,7 @@ func quantizeLineGeometryFunction_Set() error {
 }
 
 // QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
-func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
+func QuantizeLineGeometry(thickness int32, position int32) (int32, int32, error) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(thickness)
 	inArgs[1].SetInt32(position)
@@ -590,7 +590,7 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
 
-	return out0, out1
+	return out0, out1, err
 }
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
@@ -625,7 +625,7 @@ func splitFileListFunction_Set() error {
 }
 
 // SplitFileList is a representation of the C type pango_split_file_list.
-func SplitFileList(str string) {
+func SplitFileList(str string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -634,6 +634,7 @@ func SplitFileList(str string) {
 		splitFileListFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var trimStringFunction *gi.Function
@@ -648,7 +649,7 @@ func trimStringFunction_Set() error {
 }
 
 // TrimString is a representation of the C type pango_trim_string.
-func TrimString(str string) string {
+func TrimString(str string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
@@ -661,7 +662,7 @@ func TrimString(str string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'pango_unichar_direction' : parameter 'ch' of type 'gunichar' not supported
@@ -682,7 +683,7 @@ func versionFunction_Set() error {
 }
 
 // Version is a representation of the C type pango_version.
-func Version() int32 {
+func Version() (int32, error) {
 
 	var ret gi.Argument
 
@@ -693,7 +694,7 @@ func Version() int32 {
 
 	retGo := ret.Int32()
 
-	return retGo
+	return retGo, err
 }
 
 var versionCheckFunction *gi.Function
@@ -708,7 +709,7 @@ func versionCheckFunction_Set() error {
 }
 
 // VersionCheck is a representation of the C type pango_version_check.
-func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) string {
+func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) (string, error) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetInt32(requiredMajor)
 	inArgs[1].SetInt32(requiredMinor)
@@ -723,7 +724,7 @@ func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32)
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var versionStringFunction *gi.Function
@@ -738,7 +739,7 @@ func versionStringFunction_Set() error {
 }
 
 // VersionString is a representation of the C type pango_version_string.
-func VersionString() string {
+func VersionString() (string, error) {
 
 	var ret gi.Argument
 
@@ -749,5 +750,5 @@ func VersionString() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }

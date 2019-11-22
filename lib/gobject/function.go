@@ -223,7 +223,7 @@ func signalNameFunction_Set() error {
 }
 
 // SignalName is a representation of the C type g_signal_name.
-func SignalName(signalId uint32) string {
+func SignalName(signalId uint32) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
@@ -236,7 +236,7 @@ func SignalName(signalId uint32) string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_signal_new' : parameter 'itype' of type 'GType' not supported
@@ -267,7 +267,7 @@ func signalRemoveEmissionHookFunction_Set() error {
 }
 
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
-func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
+func SignalRemoveEmissionHook(signalId uint32, hookId uint64) error {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
@@ -277,6 +277,7 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 		signalRemoveEmissionHookFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported
@@ -371,7 +372,7 @@ func typeGetTypeRegistrationSerialFunction_Set() error {
 }
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
-func TypeGetTypeRegistrationSerial() uint32 {
+func TypeGetTypeRegistrationSerial() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -382,7 +383,7 @@ func TypeGetTypeRegistrationSerial() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var typeInitFunction *gi.Function
@@ -397,13 +398,14 @@ func typeInitFunction_Set() error {
 }
 
 // TypeInit is a representation of the C type g_type_init.
-func TypeInit() {
+func TypeInit() error {
 
 	err := typeInitFunction_Set()
 	if err == nil {
 		typeInitFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_type_init_with_debug_flags' : parameter 'debug_flags' of type 'TypeDebugFlags' not supported

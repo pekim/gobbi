@@ -45,7 +45,7 @@ func appInfoResetTypeAssociationsFunction_Set() error {
 }
 
 // AppInfoResetTypeAssociations is a representation of the C type g_app_info_reset_type_associations.
-func AppInfoResetTypeAssociations(contentType string) {
+func AppInfoResetTypeAssociations(contentType string) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(contentType)
 
@@ -54,6 +54,7 @@ func AppInfoResetTypeAssociations(contentType string) {
 		appInfoResetTypeAssociationsFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
@@ -84,7 +85,7 @@ func busUnownNameFunction_Set() error {
 }
 
 // BusUnownName is a representation of the C type g_bus_unown_name.
-func BusUnownName(ownerId uint32) {
+func BusUnownName(ownerId uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(ownerId)
 
@@ -93,6 +94,7 @@ func BusUnownName(ownerId uint32) {
 		busUnownNameFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var busUnwatchNameFunction *gi.Function
@@ -107,7 +109,7 @@ func busUnwatchNameFunction_Set() error {
 }
 
 // BusUnwatchName is a representation of the C type g_bus_unwatch_name.
-func BusUnwatchName(watcherId uint32) {
+func BusUnwatchName(watcherId uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(watcherId)
 
@@ -116,6 +118,7 @@ func BusUnwatchName(watcherId uint32) {
 		busUnwatchNameFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'bus_type' of type 'BusType' not supported
@@ -142,7 +145,7 @@ func contentTypeFromMimeTypeFunction_Set() error {
 }
 
 // ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
-func ContentTypeFromMimeType(mimeType string) string {
+func ContentTypeFromMimeType(mimeType string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mimeType)
 
@@ -155,7 +158,7 @@ func ContentTypeFromMimeType(mimeType string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var contentTypeGetDescriptionFunction *gi.Function
@@ -170,7 +173,7 @@ func contentTypeGetDescriptionFunction_Set() error {
 }
 
 // ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
-func ContentTypeGetDescription(type_ string) string {
+func ContentTypeGetDescription(type_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -183,7 +186,7 @@ func ContentTypeGetDescription(type_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 var contentTypeGetGenericIconNameFunction *gi.Function
@@ -198,7 +201,7 @@ func contentTypeGetGenericIconNameFunction_Set() error {
 }
 
 // ContentTypeGetGenericIconName is a representation of the C type g_content_type_get_generic_icon_name.
-func ContentTypeGetGenericIconName(type_ string) string {
+func ContentTypeGetGenericIconName(type_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -211,7 +214,7 @@ func ContentTypeGetGenericIconName(type_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
@@ -228,13 +231,14 @@ func contentTypeGetMimeDirsFunction_Set() error {
 }
 
 // ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
-func ContentTypeGetMimeDirs() {
+func ContentTypeGetMimeDirs() error {
 
 	err := contentTypeGetMimeDirsFunction_Set()
 	if err == nil {
 		contentTypeGetMimeDirsFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 var contentTypeGetMimeTypeFunction *gi.Function
@@ -249,7 +253,7 @@ func contentTypeGetMimeTypeFunction_Set() error {
 }
 
 // ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
-func ContentTypeGetMimeType(type_ string) string {
+func ContentTypeGetMimeType(type_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
@@ -262,7 +266,7 @@ func ContentTypeGetMimeType(type_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : return type 'Icon' not supported
@@ -293,7 +297,7 @@ func dbusAddressEscapeValueFunction_Set() error {
 }
 
 // DbusAddressEscapeValue is a representation of the C type g_dbus_address_escape_value.
-func DbusAddressEscapeValue(string_ string) string {
+func DbusAddressEscapeValue(string_ string) (string, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
@@ -306,7 +310,7 @@ func DbusAddressEscapeValue(string_ string) string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_dbus_address_get_for_bus_sync' : parameter 'bus_type' of type 'BusType' not supported
@@ -349,7 +353,7 @@ func dbusGenerateGuidFunction_Set() error {
 }
 
 // DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
-func DbusGenerateGuid() string {
+func DbusGenerateGuid() (string, error) {
 
 	var ret gi.Argument
 
@@ -360,7 +364,7 @@ func DbusGenerateGuid() string {
 
 	retGo := ret.String(true)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : parameter 'gvalue' of type 'GObject.Value' not supported
@@ -423,7 +427,7 @@ func ioExtensionPointLookupFunction_Set() error {
 }
 
 // IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
-func IoExtensionPointLookup(name string) *IOExtensionPoint {
+func IoExtensionPointLookup(name string) (*IOExtensionPoint, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
@@ -436,7 +440,7 @@ func IoExtensionPointLookup(name string) *IOExtensionPoint {
 
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 var ioExtensionPointRegisterFunction *gi.Function
@@ -451,7 +455,7 @@ func ioExtensionPointRegisterFunction_Set() error {
 }
 
 // IoExtensionPointRegister is a representation of the C type g_io_extension_point_register.
-func IoExtensionPointRegister(name string) *IOExtensionPoint {
+func IoExtensionPointRegister(name string) (*IOExtensionPoint, error) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
@@ -464,7 +468,7 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : parameter 'dirname' of type 'filename' not supported
@@ -487,13 +491,14 @@ func ioSchedulerCancelAllJobsFunction_Set() error {
 }
 
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
-func IoSchedulerCancelAllJobs() {
+func IoSchedulerCancelAllJobs() error {
 
 	err := ioSchedulerCancelAllJobsFunction_Set()
 	if err == nil {
 		ioSchedulerCancelAllJobsFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_io_scheduler_push_job' : parameter 'job_func' of type 'IOSchedulerJobFunc' not supported
@@ -516,13 +521,14 @@ func networkingInitFunction_Set() error {
 }
 
 // NetworkingInit is a representation of the C type g_networking_init.
-func NetworkingInit() {
+func NetworkingInit() error {
 
 	err := networkingInitFunction_Set()
 	if err == nil {
 		networkingInitFunction.Invoke(nil, nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'g_null_settings_backend_new' : return type 'SettingsBackend' not supported
@@ -571,7 +577,7 @@ func settingsSchemaSourceGetDefaultFunction_Set() error {
 }
 
 // SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
-func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
+func SettingsSchemaSourceGetDefault() (*SettingsSchemaSource, error) {
 
 	var ret gi.Argument
 
@@ -582,7 +588,7 @@ func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 
 	retGo := &SettingsSchemaSource{native: ret.Pointer()}
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'g_simple_async_report_error_in_idle' : parameter 'object' of type 'GObject.Object' not supported

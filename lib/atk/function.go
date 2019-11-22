@@ -31,7 +31,7 @@ func getBinaryAgeFunction_Set() error {
 }
 
 // GetBinaryAge is a representation of the C type atk_get_binary_age.
-func GetBinaryAge() uint32 {
+func GetBinaryAge() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -42,7 +42,7 @@ func GetBinaryAge() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'atk_get_default_registry' : return type 'Registry' not supported
@@ -61,7 +61,7 @@ func getInterfaceAgeFunction_Set() error {
 }
 
 // GetInterfaceAge is a representation of the C type atk_get_interface_age.
-func GetInterfaceAge() uint32 {
+func GetInterfaceAge() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -72,7 +72,7 @@ func GetInterfaceAge() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMajorVersionFunction *gi.Function
@@ -87,7 +87,7 @@ func getMajorVersionFunction_Set() error {
 }
 
 // GetMajorVersion is a representation of the C type atk_get_major_version.
-func GetMajorVersion() uint32 {
+func GetMajorVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -98,7 +98,7 @@ func GetMajorVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMicroVersionFunction *gi.Function
@@ -113,7 +113,7 @@ func getMicroVersionFunction_Set() error {
 }
 
 // GetMicroVersion is a representation of the C type atk_get_micro_version.
-func GetMicroVersion() uint32 {
+func GetMicroVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -124,7 +124,7 @@ func GetMicroVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 var getMinorVersionFunction *gi.Function
@@ -139,7 +139,7 @@ func getMinorVersionFunction_Set() error {
 }
 
 // GetMinorVersion is a representation of the C type atk_get_minor_version.
-func GetMinorVersion() uint32 {
+func GetMinorVersion() (uint32, error) {
 
 	var ret gi.Argument
 
@@ -150,7 +150,7 @@ func GetMinorVersion() uint32 {
 
 	retGo := ret.Uint32()
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'atk_get_root' : return type 'Object' not supported
@@ -167,7 +167,7 @@ func getToolkitNameFunction_Set() error {
 }
 
 // GetToolkitName is a representation of the C type atk_get_toolkit_name.
-func GetToolkitName() string {
+func GetToolkitName() (string, error) {
 
 	var ret gi.Argument
 
@@ -178,7 +178,7 @@ func GetToolkitName() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var getToolkitVersionFunction *gi.Function
@@ -193,7 +193,7 @@ func getToolkitVersionFunction_Set() error {
 }
 
 // GetToolkitVersion is a representation of the C type atk_get_toolkit_version.
-func GetToolkitVersion() string {
+func GetToolkitVersion() (string, error) {
 
 	var ret gi.Argument
 
@@ -204,7 +204,7 @@ func GetToolkitVersion() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 var getVersionFunction *gi.Function
@@ -219,7 +219,7 @@ func getVersionFunction_Set() error {
 }
 
 // GetVersion is a representation of the C type atk_get_version.
-func GetVersion() string {
+func GetVersion() (string, error) {
 
 	var ret gi.Argument
 
@@ -230,7 +230,7 @@ func GetVersion() string {
 
 	retGo := ret.String(false)
 
-	return retGo
+	return retGo, err
 }
 
 // UNSUPPORTED : C value 'atk_relation_type_for_name' : return type 'RelationType' not supported
@@ -251,7 +251,7 @@ func removeFocusTrackerFunction_Set() error {
 }
 
 // RemoveFocusTracker is a representation of the C type atk_remove_focus_tracker.
-func RemoveFocusTracker(trackerId uint32) {
+func RemoveFocusTracker(trackerId uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(trackerId)
 
@@ -260,6 +260,7 @@ func RemoveFocusTracker(trackerId uint32) {
 		removeFocusTrackerFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var removeGlobalEventListenerFunction *gi.Function
@@ -274,7 +275,7 @@ func removeGlobalEventListenerFunction_Set() error {
 }
 
 // RemoveGlobalEventListener is a representation of the C type atk_remove_global_event_listener.
-func RemoveGlobalEventListener(listenerId uint32) {
+func RemoveGlobalEventListener(listenerId uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
@@ -283,6 +284,7 @@ func RemoveGlobalEventListener(listenerId uint32) {
 		removeGlobalEventListenerFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 var removeKeyEventListenerFunction *gi.Function
@@ -297,7 +299,7 @@ func removeKeyEventListenerFunction_Set() error {
 }
 
 // RemoveKeyEventListener is a representation of the C type atk_remove_key_event_listener.
-func RemoveKeyEventListener(listenerId uint32) {
+func RemoveKeyEventListener(listenerId uint32) error {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
@@ -306,6 +308,7 @@ func RemoveKeyEventListener(listenerId uint32) {
 		removeKeyEventListenerFunction.Invoke(inArgs[:], nil)
 	}
 
+	return err
 }
 
 // UNSUPPORTED : C value 'atk_role_for_name' : return type 'Role' not supported
