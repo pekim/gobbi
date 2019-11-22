@@ -15,7 +15,7 @@ type Struct struct {
 	info       *C.GIStructInfo
 }
 
-func StructNew(namespace string, structName string) *Struct {
+func StructNew(namespace string, structName string) (*Struct, error) {
 	cNamespace := C.CString(namespace)
 	defer C.free(unsafe.Pointer(cNamespace))
 
@@ -28,17 +28,17 @@ func StructNew(namespace string, structName string) *Struct {
 		cStructName,
 	)
 	if struct_ == nil {
-		panic(fmt.Sprintf("Failed to find struct '%s' in namespace '%s'", structName, namespace))
+		return nil, fmt.Errorf("Failed to find struct '%s' in namespace '%s'", structName, namespace)
 	}
 
 	return &Struct{
 		namespace:  namespace,
 		structName: structName,
 		info:       struct_,
-	}
+	}, nil
 }
 
-func (s *Struct) InvokerNew(funcName string) *Function {
+func (s *Struct) InvokerNew(funcName string) (*Function, error) {
 	cFuncName := C.CString(funcName)
 	defer C.free(unsafe.Pointer(cFuncName))
 
@@ -47,8 +47,8 @@ func (s *Struct) InvokerNew(funcName string) *Function {
 		cFuncName,
 	)
 	if invoker == nil {
-		panic(fmt.Sprintf("Failed to find function '%s' in struct %s in namespace '%s'",
-			funcName, s.structName, s.namespace))
+		return nil, fmt.Errorf("Failed to find function '%s' in struct %s in namespace '%s'",
+			funcName, s.structName, s.namespace)
 	}
 
 	return &Function{
@@ -56,5 +56,5 @@ func (s *Struct) InvokerNew(funcName string) *Function {
 		structName: s.structName,
 		funcName:   funcName,
 		info:       invoker,
-	}
+	}, nil
 }

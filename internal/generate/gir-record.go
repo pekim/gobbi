@@ -68,16 +68,23 @@ func (r *Record) generateStructInfo(f *file) {
 		Id(r.structInfoOnceGoName).
 		Qual("sync", "Once")
 
-	// func colorStructSet() {
+	// func colorStructSet() error {
 	//   ...
 	// }
 	f.
 		Func().
 		Id(r.structInfoSetFuncGoName).
 		Params().
+		Params(jen.Id("error")).
 		BlockFunc(func(g *jen.Group) {
+			// var err error
+			g.
+				Var().
+				Id("err").
+				Id("error")
+
 			//   colorStructOnce.Do(func() {
-			//     colorStruct = gi.StructNew("Gdk", "Color")
+			//     colorStruct, err = gi.StructNew("Gdk", "Color")
 			//   })
 			g.
 				Id(r.structInfoOnceGoName).
@@ -87,10 +94,15 @@ func (r *Record) generateStructInfo(f *file) {
 					Params().
 					Block(jen.
 						Id(r.structInfoGoName).
+						Op(",").
+						Id("err").
 						Op("=").
 						Qual(gi.PackageName, "StructNew").
 						Call(jen.Lit(r.namespace.Name),
 							jen.Lit(r.Name))))
+
+			// return err
+			g.Return(jen.Id("err"))
 		})
 }
 

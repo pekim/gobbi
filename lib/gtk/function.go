@@ -52,12 +52,14 @@ func bindingSetFindFunction_Set() {
 
 // BindingSetFind is a representation of the C type gtk_binding_set_find.
 func BindingSetFind(setName string) *BindingSet {
-	bindingSetFindFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(setName)
 
-	ret := bindingSetFindFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bindingSetFindFunction_Set()
+
+	ret = bindingSetFindFunction.Invoke(inArgs[:], nil)
 
 	retGo := &BindingSet{native: ret.Pointer()}
 
@@ -75,12 +77,14 @@ func bindingSetNewFunction_Set() {
 
 // BindingSetNew is a representation of the C type gtk_binding_set_new.
 func BindingSetNew(setName string) *BindingSet {
-	bindingSetNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(setName)
 
-	ret := bindingSetNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bindingSetNewFunction_Set()
+
+	ret = bindingSetNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &BindingSet{native: ret.Pointer()}
 
@@ -108,14 +112,16 @@ func checkVersionFunction_Set() {
 
 // CheckVersion is a representation of the C type gtk_check_version.
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
-	checkVersionFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint32(requiredMajor)
 	inArgs[1].SetUint32(requiredMinor)
 	inArgs[2].SetUint32(requiredMicro)
 
-	ret := checkVersionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	checkVersionFunction_Set()
+
+	ret = checkVersionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -139,6 +145,7 @@ func disableSetlocaleFunction_Set() {
 
 // DisableSetlocale is a representation of the C type gtk_disable_setlocale.
 func DisableSetlocale() {
+
 	disableSetlocaleFunction_Set()
 
 	disableSetlocaleFunction.Invoke(nil, nil)
@@ -186,9 +193,12 @@ func getBinaryAgeFunction_Set() {
 
 // GetBinaryAge is a representation of the C type gtk_get_binary_age.
 func GetBinaryAge() uint32 {
+
+	var ret gi.Argument
+
 	getBinaryAgeFunction_Set()
 
-	ret := getBinaryAgeFunction.Invoke(nil, nil)
+	ret = getBinaryAgeFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -212,9 +222,12 @@ func getCurrentEventTimeFunction_Set() {
 
 // GetCurrentEventTime is a representation of the C type gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
+
+	var ret gi.Argument
+
 	getCurrentEventTimeFunction_Set()
 
-	ret := getCurrentEventTimeFunction.Invoke(nil, nil)
+	ret = getCurrentEventTimeFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -232,9 +245,12 @@ func getDebugFlagsFunction_Set() {
 
 // GetDebugFlags is a representation of the C type gtk_get_debug_flags.
 func GetDebugFlags() uint32 {
+
+	var ret gi.Argument
+
 	getDebugFlagsFunction_Set()
 
-	ret := getDebugFlagsFunction.Invoke(nil, nil)
+	ret = getDebugFlagsFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -256,9 +272,12 @@ func getInterfaceAgeFunction_Set() {
 
 // GetInterfaceAge is a representation of the C type gtk_get_interface_age.
 func GetInterfaceAge() uint32 {
+
+	var ret gi.Argument
+
 	getInterfaceAgeFunction_Set()
 
-	ret := getInterfaceAgeFunction.Invoke(nil, nil)
+	ret = getInterfaceAgeFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -278,9 +297,12 @@ func getMajorVersionFunction_Set() {
 
 // GetMajorVersion is a representation of the C type gtk_get_major_version.
 func GetMajorVersion() uint32 {
+
+	var ret gi.Argument
+
 	getMajorVersionFunction_Set()
 
-	ret := getMajorVersionFunction.Invoke(nil, nil)
+	ret = getMajorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -298,9 +320,12 @@ func getMicroVersionFunction_Set() {
 
 // GetMicroVersion is a representation of the C type gtk_get_micro_version.
 func GetMicroVersion() uint32 {
+
+	var ret gi.Argument
+
 	getMicroVersionFunction_Set()
 
-	ret := getMicroVersionFunction.Invoke(nil, nil)
+	ret = getMicroVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -318,9 +343,12 @@ func getMinorVersionFunction_Set() {
 
 // GetMinorVersion is a representation of the C type gtk_get_minor_version.
 func GetMinorVersion() uint32 {
+
+	var ret gi.Argument
+
 	getMinorVersionFunction_Set()
 
-	ret := getMinorVersionFunction.Invoke(nil, nil)
+	ret = getMinorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -364,10 +392,10 @@ func keySnooperRemoveFunction_Set() {
 
 // KeySnooperRemove is a representation of the C type gtk_key_snooper_remove.
 func KeySnooperRemove(snooperHandlerId uint32) {
-	keySnooperRemoveFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(snooperHandlerId)
+
+	keySnooperRemoveFunction_Set()
 
 	keySnooperRemoveFunction.Invoke(inArgs[:], nil)
 
@@ -384,6 +412,7 @@ func mainFunction_Set() {
 
 // Main is a representation of the C type gtk_main.
 func Main() {
+
 	mainFunction_Set()
 
 	mainFunction.Invoke(nil, nil)
@@ -407,9 +436,12 @@ func mainLevelFunction_Set() {
 
 // MainLevel is a representation of the C type gtk_main_level.
 func MainLevel() uint32 {
+
+	var ret gi.Argument
+
 	mainLevelFunction_Set()
 
-	ret := mainLevelFunction.Invoke(nil, nil)
+	ret = mainLevelFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -427,6 +459,7 @@ func mainQuitFunction_Set() {
 
 // MainQuit is a representation of the C type gtk_main_quit.
 func MainQuit() {
+
 	mainQuitFunction_Set()
 
 	mainQuitFunction.Invoke(nil, nil)
@@ -484,9 +517,12 @@ func paperSizeGetDefaultFunction_Set() {
 
 // PaperSizeGetDefault is a representation of the C type gtk_paper_size_get_default.
 func PaperSizeGetDefault() string {
+
+	var ret gi.Argument
+
 	paperSizeGetDefaultFunction_Set()
 
-	ret := paperSizeGetDefaultFunction.Invoke(nil, nil)
+	ret = paperSizeGetDefaultFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -522,6 +558,7 @@ func rcGetDefaultFilesFunction_Set() {
 
 // RcGetDefaultFiles is a representation of the C type gtk_rc_get_default_files.
 func RcGetDefaultFiles() {
+
 	rcGetDefaultFilesFunction_Set()
 
 	rcGetDefaultFilesFunction.Invoke(nil, nil)
@@ -549,9 +586,12 @@ func rcGetThemeDirFunction_Set() {
 
 // RcGetThemeDir is a representation of the C type gtk_rc_get_theme_dir.
 func RcGetThemeDir() string {
+
+	var ret gi.Argument
+
 	rcGetThemeDirFunction_Set()
 
-	ret := rcGetThemeDirFunction.Invoke(nil, nil)
+	ret = rcGetThemeDirFunction.Invoke(nil, nil)
 
 	retGo := ret.String(true)
 
@@ -569,10 +609,10 @@ func rcParseFunction_Set() {
 
 // RcParse is a representation of the C type gtk_rc_parse.
 func RcParse(filename string) {
-	rcParseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(filename)
+
+	rcParseFunction_Set()
 
 	rcParseFunction.Invoke(inArgs[:], nil)
 
@@ -597,10 +637,10 @@ func rcParseStringFunction_Set() {
 
 // RcParseString is a representation of the C type gtk_rc_parse_string.
 func RcParseString(rcString string) {
-	rcParseStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(rcString)
+
+	rcParseStringFunction_Set()
 
 	rcParseStringFunction.Invoke(inArgs[:], nil)
 
@@ -695,10 +735,10 @@ func setDebugFlagsFunction_Set() {
 
 // SetDebugFlags is a representation of the C type gtk_set_debug_flags.
 func SetDebugFlags(flags uint32) {
-	setDebugFlagsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(flags)
+
+	setDebugFlagsFunction_Set()
 
 	setDebugFlagsFunction.Invoke(inArgs[:], nil)
 
@@ -757,9 +797,10 @@ func testListAllTypesFunction_Set() {
 
 // TestListAllTypes is a representation of the C type gtk_test_list_all_types.
 func TestListAllTypes() uint32 {
-	testListAllTypesFunction_Set()
 
 	var outArgs [1]gi.Argument
+
+	testListAllTypesFunction_Set()
 
 	testListAllTypesFunction.Invoke(nil, outArgs[:])
 
@@ -779,6 +820,7 @@ func testRegisterAllTypesFunction_Set() {
 
 // TestRegisterAllTypes is a representation of the C type gtk_test_register_all_types.
 func TestRegisterAllTypes() {
+
 	testRegisterAllTypesFunction_Set()
 
 	testRegisterAllTypesFunction.Invoke(nil, nil)

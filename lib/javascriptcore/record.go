@@ -10,10 +10,12 @@ import (
 var globalContextRefStruct *gi.Struct
 var globalContextRefStruct_Once sync.Once
 
-func globalContextRefStruct_Set() {
+func globalContextRefStruct_Set() error {
+	var err error
 	globalContextRefStruct_Once.Do(func() {
-		globalContextRefStruct = gi.StructNew("JavaScriptCore", "GlobalContextRef")
+		globalContextRefStruct, err = gi.StructNew("JavaScriptCore", "GlobalContextRef")
 	})
+	return err
 }
 
 type GlobalContextRef struct {
@@ -32,10 +34,10 @@ func globalContextRefRefFunction_Set() {
 
 // Ref is a representation of the C type JSGlobalContextRetain.
 func (recv *GlobalContextRef) Ref() {
-	globalContextRefRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	globalContextRefRefFunction_Set()
 
 	globalContextRefRefFunction.Invoke(inArgs[:], nil)
 
@@ -53,10 +55,10 @@ func globalContextRefUnrefFunction_Set() {
 
 // Unref is a representation of the C type JSGlobalContextRelease.
 func (recv *GlobalContextRef) Unref() {
-	globalContextRefUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	globalContextRefUnrefFunction_Set()
 
 	globalContextRefUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -65,10 +67,12 @@ func (recv *GlobalContextRef) Unref() {
 var valueRefStruct *gi.Struct
 var valueRefStruct_Once sync.Once
 
-func valueRefStruct_Set() {
+func valueRefStruct_Set() error {
+	var err error
 	valueRefStruct_Once.Do(func() {
-		valueRefStruct = gi.StructNew("JavaScriptCore", "ValueRef")
+		valueRefStruct, err = gi.StructNew("JavaScriptCore", "ValueRef")
 	})
+	return err
 }
 
 type ValueRef struct {
@@ -78,10 +82,12 @@ type ValueRef struct {
 var stringRefStruct *gi.Struct
 var stringRefStruct_Once sync.Once
 
-func stringRefStruct_Set() {
+func stringRefStruct_Set() error {
+	var err error
 	stringRefStruct_Once.Do(func() {
-		stringRefStruct = gi.StructNew("JavaScriptCore", "StringRef")
+		stringRefStruct, err = gi.StructNew("JavaScriptCore", "StringRef")
 	})
+	return err
 }
 
 type StringRef struct {
@@ -100,10 +106,10 @@ func stringRefRefFunction_Set() {
 
 // Ref is a representation of the C type JSStringRetain.
 func (recv *StringRef) Ref() {
-	stringRefRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	stringRefRefFunction_Set()
 
 	stringRefRefFunction.Invoke(inArgs[:], nil)
 
@@ -121,10 +127,10 @@ func stringRefUnrefFunction_Set() {
 
 // Unref is a representation of the C type JSStringRelease.
 func (recv *StringRef) Unref() {
-	stringRefUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	stringRefUnrefFunction_Set()
 
 	stringRefUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -137,10 +143,12 @@ func (recv *StringRef) Unref() {
 var classClassStruct *gi.Struct
 var classClassStruct_Once sync.Once
 
-func classClassStruct_Set() {
+func classClassStruct_Set() error {
+	var err error
 	classClassStruct_Once.Do(func() {
-		classClassStruct = gi.StructNew("JavaScriptCore", "ClassClass")
+		classClassStruct, err = gi.StructNew("JavaScriptCore", "ClassClass")
 	})
+	return err
 }
 
 type ClassClass struct {
@@ -150,10 +158,12 @@ type ClassClass struct {
 var classVTableStruct *gi.Struct
 var classVTableStruct_Once sync.Once
 
-func classVTableStruct_Set() {
+func classVTableStruct_Set() error {
+	var err error
 	classVTableStruct_Once.Do(func() {
-		classVTableStruct = gi.StructNew("JavaScriptCore", "ClassVTable")
+		classVTableStruct, err = gi.StructNew("JavaScriptCore", "ClassVTable")
 	})
+	return err
 }
 
 type ClassVTable struct {
@@ -172,10 +182,12 @@ type ClassVTable struct {
 var contextClassStruct *gi.Struct
 var contextClassStruct_Once sync.Once
 
-func contextClassStruct_Set() {
+func contextClassStruct_Set() error {
+	var err error
 	contextClassStruct_Once.Do(func() {
-		contextClassStruct = gi.StructNew("JavaScriptCore", "ContextClass")
+		contextClassStruct, err = gi.StructNew("JavaScriptCore", "ContextClass")
 	})
+	return err
 }
 
 type ContextClass struct {
@@ -190,10 +202,12 @@ type ContextClass struct {
 var contextPrivateStruct *gi.Struct
 var contextPrivateStruct_Once sync.Once
 
-func contextPrivateStruct_Set() {
+func contextPrivateStruct_Set() error {
+	var err error
 	contextPrivateStruct_Once.Do(func() {
-		contextPrivateStruct = gi.StructNew("JavaScriptCore", "ContextPrivate")
+		contextPrivateStruct, err = gi.StructNew("JavaScriptCore", "ContextPrivate")
 	})
+	return err
 }
 
 type ContextPrivate struct {
@@ -203,10 +217,12 @@ type ContextPrivate struct {
 var exceptionClassStruct *gi.Struct
 var exceptionClassStruct_Once sync.Once
 
-func exceptionClassStruct_Set() {
+func exceptionClassStruct_Set() error {
+	var err error
 	exceptionClassStruct_Once.Do(func() {
-		exceptionClassStruct = gi.StructNew("JavaScriptCore", "ExceptionClass")
+		exceptionClassStruct, err = gi.StructNew("JavaScriptCore", "ExceptionClass")
 	})
+	return err
 }
 
 type ExceptionClass struct {
@@ -221,10 +237,12 @@ type ExceptionClass struct {
 var exceptionPrivateStruct *gi.Struct
 var exceptionPrivateStruct_Once sync.Once
 
-func exceptionPrivateStruct_Set() {
+func exceptionPrivateStruct_Set() error {
+	var err error
 	exceptionPrivateStruct_Once.Do(func() {
-		exceptionPrivateStruct = gi.StructNew("JavaScriptCore", "ExceptionPrivate")
+		exceptionPrivateStruct, err = gi.StructNew("JavaScriptCore", "ExceptionPrivate")
 	})
+	return err
 }
 
 type ExceptionPrivate struct {
@@ -234,10 +252,12 @@ type ExceptionPrivate struct {
 var valueClassStruct *gi.Struct
 var valueClassStruct_Once sync.Once
 
-func valueClassStruct_Set() {
+func valueClassStruct_Set() error {
+	var err error
 	valueClassStruct_Once.Do(func() {
-		valueClassStruct = gi.StructNew("JavaScriptCore", "ValueClass")
+		valueClassStruct, err = gi.StructNew("JavaScriptCore", "ValueClass")
 	})
+	return err
 }
 
 type ValueClass struct {
@@ -252,10 +272,12 @@ type ValueClass struct {
 var valuePrivateStruct *gi.Struct
 var valuePrivateStruct_Once sync.Once
 
-func valuePrivateStruct_Set() {
+func valuePrivateStruct_Set() error {
+	var err error
 	valuePrivateStruct_Once.Do(func() {
-		valuePrivateStruct = gi.StructNew("JavaScriptCore", "ValuePrivate")
+		valuePrivateStruct, err = gi.StructNew("JavaScriptCore", "ValuePrivate")
 	})
+	return err
 }
 
 type ValuePrivate struct {
@@ -265,10 +287,12 @@ type ValuePrivate struct {
 var virtualMachineClassStruct *gi.Struct
 var virtualMachineClassStruct_Once sync.Once
 
-func virtualMachineClassStruct_Set() {
+func virtualMachineClassStruct_Set() error {
+	var err error
 	virtualMachineClassStruct_Once.Do(func() {
-		virtualMachineClassStruct = gi.StructNew("JavaScriptCore", "VirtualMachineClass")
+		virtualMachineClassStruct, err = gi.StructNew("JavaScriptCore", "VirtualMachineClass")
 	})
+	return err
 }
 
 type VirtualMachineClass struct {
@@ -283,10 +307,12 @@ type VirtualMachineClass struct {
 var virtualMachinePrivateStruct *gi.Struct
 var virtualMachinePrivateStruct_Once sync.Once
 
-func virtualMachinePrivateStruct_Set() {
+func virtualMachinePrivateStruct_Set() error {
+	var err error
 	virtualMachinePrivateStruct_Once.Do(func() {
-		virtualMachinePrivateStruct = gi.StructNew("JavaScriptCore", "VirtualMachinePrivate")
+		virtualMachinePrivateStruct, err = gi.StructNew("JavaScriptCore", "VirtualMachinePrivate")
 	})
+	return err
 }
 
 type VirtualMachinePrivate struct {
@@ -296,10 +322,12 @@ type VirtualMachinePrivate struct {
 var weakValueClassStruct *gi.Struct
 var weakValueClassStruct_Once sync.Once
 
-func weakValueClassStruct_Set() {
+func weakValueClassStruct_Set() error {
+	var err error
 	weakValueClassStruct_Once.Do(func() {
-		weakValueClassStruct = gi.StructNew("JavaScriptCore", "WeakValueClass")
+		weakValueClassStruct, err = gi.StructNew("JavaScriptCore", "WeakValueClass")
 	})
+	return err
 }
 
 type WeakValueClass struct {
@@ -314,10 +342,12 @@ type WeakValueClass struct {
 var weakValuePrivateStruct *gi.Struct
 var weakValuePrivateStruct_Once sync.Once
 
-func weakValuePrivateStruct_Set() {
+func weakValuePrivateStruct_Set() error {
+	var err error
 	weakValuePrivateStruct_Once.Do(func() {
-		weakValuePrivateStruct = gi.StructNew("JavaScriptCore", "WeakValuePrivate")
+		weakValuePrivateStruct, err = gi.StructNew("JavaScriptCore", "WeakValuePrivate")
 	})
+	return err
 }
 
 type WeakValuePrivate struct {

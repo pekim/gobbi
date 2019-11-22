@@ -18,6 +18,7 @@ func imageSurfaceCreateFunction_Set() {
 
 // ImageSurfaceCreate is a representation of the C type cairo_image_surface_create.
 func ImageSurfaceCreate() {
+
 	imageSurfaceCreateFunction_Set()
 
 	imageSurfaceCreateFunction.Invoke(nil, nil)

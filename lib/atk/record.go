@@ -10,10 +10,12 @@ import (
 var actionIfaceStruct *gi.Struct
 var actionIfaceStruct_Once sync.Once
 
-func actionIfaceStruct_Set() {
+func actionIfaceStruct_Set() error {
+	var err error
 	actionIfaceStruct_Once.Do(func() {
-		actionIfaceStruct = gi.StructNew("Atk", "ActionIface")
+		actionIfaceStruct, err = gi.StructNew("Atk", "ActionIface")
 	})
+	return err
 }
 
 type ActionIface struct {
@@ -30,10 +32,12 @@ type ActionIface struct {
 var attributeStruct *gi.Struct
 var attributeStruct_Once sync.Once
 
-func attributeStruct_Set() {
+func attributeStruct_Set() error {
+	var err error
 	attributeStruct_Once.Do(func() {
-		attributeStruct = gi.StructNew("Atk", "Attribute")
+		attributeStruct, err = gi.StructNew("Atk", "Attribute")
 	})
+	return err
 }
 
 type Attribute struct {
@@ -45,10 +49,12 @@ type Attribute struct {
 var componentIfaceStruct *gi.Struct
 var componentIfaceStruct_Once sync.Once
 
-func componentIfaceStruct_Set() {
+func componentIfaceStruct_Set() error {
+	var err error
 	componentIfaceStruct_Once.Do(func() {
-		componentIfaceStruct = gi.StructNew("Atk", "ComponentIface")
+		componentIfaceStruct, err = gi.StructNew("Atk", "ComponentIface")
 	})
+	return err
 }
 
 type ComponentIface struct {
@@ -75,10 +81,12 @@ type ComponentIface struct {
 var documentIfaceStruct *gi.Struct
 var documentIfaceStruct_Once sync.Once
 
-func documentIfaceStruct_Set() {
+func documentIfaceStruct_Set() error {
+	var err error
 	documentIfaceStruct_Once.Do(func() {
-		documentIfaceStruct = gi.StructNew("Atk", "DocumentIface")
+		documentIfaceStruct, err = gi.StructNew("Atk", "DocumentIface")
 	})
+	return err
 }
 
 type DocumentIface struct {
@@ -97,10 +105,12 @@ type DocumentIface struct {
 var editableTextIfaceStruct *gi.Struct
 var editableTextIfaceStruct_Once sync.Once
 
-func editableTextIfaceStruct_Set() {
+func editableTextIfaceStruct_Set() error {
+	var err error
 	editableTextIfaceStruct_Once.Do(func() {
-		editableTextIfaceStruct = gi.StructNew("Atk", "EditableTextIface")
+		editableTextIfaceStruct, err = gi.StructNew("Atk", "EditableTextIface")
 	})
+	return err
 }
 
 type EditableTextIface struct {
@@ -118,10 +128,12 @@ type EditableTextIface struct {
 var gObjectAccessibleClassStruct *gi.Struct
 var gObjectAccessibleClassStruct_Once sync.Once
 
-func gObjectAccessibleClassStruct_Set() {
+func gObjectAccessibleClassStruct_Set() error {
+	var err error
 	gObjectAccessibleClassStruct_Once.Do(func() {
-		gObjectAccessibleClassStruct = gi.StructNew("Atk", "GObjectAccessibleClass")
+		gObjectAccessibleClassStruct, err = gi.StructNew("Atk", "GObjectAccessibleClass")
 	})
+	return err
 }
 
 type GObjectAccessibleClass struct {
@@ -134,10 +146,12 @@ type GObjectAccessibleClass struct {
 var hyperlinkClassStruct *gi.Struct
 var hyperlinkClassStruct_Once sync.Once
 
-func hyperlinkClassStruct_Set() {
+func hyperlinkClassStruct_Set() error {
+	var err error
 	hyperlinkClassStruct_Once.Do(func() {
-		hyperlinkClassStruct = gi.StructNew("Atk", "HyperlinkClass")
+		hyperlinkClassStruct, err = gi.StructNew("Atk", "HyperlinkClass")
 	})
+	return err
 }
 
 type HyperlinkClass struct {
@@ -158,10 +172,12 @@ type HyperlinkClass struct {
 var hyperlinkImplIfaceStruct *gi.Struct
 var hyperlinkImplIfaceStruct_Once sync.Once
 
-func hyperlinkImplIfaceStruct_Set() {
+func hyperlinkImplIfaceStruct_Set() error {
+	var err error
 	hyperlinkImplIfaceStruct_Once.Do(func() {
-		hyperlinkImplIfaceStruct = gi.StructNew("Atk", "HyperlinkImplIface")
+		hyperlinkImplIfaceStruct, err = gi.StructNew("Atk", "HyperlinkImplIface")
 	})
+	return err
 }
 
 type HyperlinkImplIface struct {
@@ -173,10 +189,12 @@ type HyperlinkImplIface struct {
 var hypertextIfaceStruct *gi.Struct
 var hypertextIfaceStruct_Once sync.Once
 
-func hypertextIfaceStruct_Set() {
+func hypertextIfaceStruct_Set() error {
+	var err error
 	hypertextIfaceStruct_Once.Do(func() {
-		hypertextIfaceStruct = gi.StructNew("Atk", "HypertextIface")
+		hypertextIfaceStruct, err = gi.StructNew("Atk", "HypertextIface")
 	})
+	return err
 }
 
 type HypertextIface struct {
@@ -191,10 +209,12 @@ type HypertextIface struct {
 var imageIfaceStruct *gi.Struct
 var imageIfaceStruct_Once sync.Once
 
-func imageIfaceStruct_Set() {
+func imageIfaceStruct_Set() error {
+	var err error
 	imageIfaceStruct_Once.Do(func() {
-		imageIfaceStruct = gi.StructNew("Atk", "ImageIface")
+		imageIfaceStruct, err = gi.StructNew("Atk", "ImageIface")
 	})
+	return err
 }
 
 type ImageIface struct {
@@ -210,10 +230,12 @@ type ImageIface struct {
 var implementorStruct *gi.Struct
 var implementorStruct_Once sync.Once
 
-func implementorStruct_Set() {
+func implementorStruct_Set() error {
+	var err error
 	implementorStruct_Once.Do(func() {
-		implementorStruct = gi.StructNew("Atk", "Implementor")
+		implementorStruct, err = gi.StructNew("Atk", "Implementor")
 	})
+	return err
 }
 
 type Implementor struct {
@@ -225,10 +247,12 @@ type Implementor struct {
 var keyEventStructStruct *gi.Struct
 var keyEventStructStruct_Once sync.Once
 
-func keyEventStructStruct_Set() {
+func keyEventStructStruct_Set() error {
+	var err error
 	keyEventStructStruct_Once.Do(func() {
-		keyEventStructStruct = gi.StructNew("Atk", "KeyEventStruct")
+		keyEventStructStruct, err = gi.StructNew("Atk", "KeyEventStruct")
 	})
+	return err
 }
 
 type KeyEventStruct struct {
@@ -245,10 +269,12 @@ type KeyEventStruct struct {
 var miscClassStruct *gi.Struct
 var miscClassStruct_Once sync.Once
 
-func miscClassStruct_Set() {
+func miscClassStruct_Set() error {
+	var err error
 	miscClassStruct_Once.Do(func() {
-		miscClassStruct = gi.StructNew("Atk", "MiscClass")
+		miscClassStruct, err = gi.StructNew("Atk", "MiscClass")
 	})
+	return err
 }
 
 type MiscClass struct {
@@ -262,10 +288,12 @@ type MiscClass struct {
 var noOpObjectClassStruct *gi.Struct
 var noOpObjectClassStruct_Once sync.Once
 
-func noOpObjectClassStruct_Set() {
+func noOpObjectClassStruct_Set() error {
+	var err error
 	noOpObjectClassStruct_Once.Do(func() {
-		noOpObjectClassStruct = gi.StructNew("Atk", "NoOpObjectClass")
+		noOpObjectClassStruct, err = gi.StructNew("Atk", "NoOpObjectClass")
 	})
+	return err
 }
 
 type NoOpObjectClass struct {
@@ -276,10 +304,12 @@ type NoOpObjectClass struct {
 var noOpObjectFactoryClassStruct *gi.Struct
 var noOpObjectFactoryClassStruct_Once sync.Once
 
-func noOpObjectFactoryClassStruct_Set() {
+func noOpObjectFactoryClassStruct_Set() error {
+	var err error
 	noOpObjectFactoryClassStruct_Once.Do(func() {
-		noOpObjectFactoryClassStruct = gi.StructNew("Atk", "NoOpObjectFactoryClass")
+		noOpObjectFactoryClassStruct, err = gi.StructNew("Atk", "NoOpObjectFactoryClass")
 	})
+	return err
 }
 
 type NoOpObjectFactoryClass struct {
@@ -290,10 +320,12 @@ type NoOpObjectFactoryClass struct {
 var objectClassStruct *gi.Struct
 var objectClassStruct_Once sync.Once
 
-func objectClassStruct_Set() {
+func objectClassStruct_Set() error {
+	var err error
 	objectClassStruct_Once.Do(func() {
-		objectClassStruct = gi.StructNew("Atk", "ObjectClass")
+		objectClassStruct, err = gi.StructNew("Atk", "ObjectClass")
 	})
+	return err
 }
 
 type ObjectClass struct {
@@ -331,10 +363,12 @@ type ObjectClass struct {
 var objectFactoryClassStruct *gi.Struct
 var objectFactoryClassStruct_Once sync.Once
 
-func objectFactoryClassStruct_Set() {
+func objectFactoryClassStruct_Set() error {
+	var err error
 	objectFactoryClassStruct_Once.Do(func() {
-		objectFactoryClassStruct = gi.StructNew("Atk", "ObjectFactoryClass")
+		objectFactoryClassStruct, err = gi.StructNew("Atk", "ObjectFactoryClass")
 	})
+	return err
 }
 
 type ObjectFactoryClass struct {
@@ -350,10 +384,12 @@ type ObjectFactoryClass struct {
 var plugClassStruct *gi.Struct
 var plugClassStruct_Once sync.Once
 
-func plugClassStruct_Set() {
+func plugClassStruct_Set() error {
+	var err error
 	plugClassStruct_Once.Do(func() {
-		plugClassStruct = gi.StructNew("Atk", "PlugClass")
+		plugClassStruct, err = gi.StructNew("Atk", "PlugClass")
 	})
+	return err
 }
 
 type PlugClass struct {
@@ -365,10 +401,12 @@ type PlugClass struct {
 var propertyValuesStruct *gi.Struct
 var propertyValuesStruct_Once sync.Once
 
-func propertyValuesStruct_Set() {
+func propertyValuesStruct_Set() error {
+	var err error
 	propertyValuesStruct_Once.Do(func() {
-		propertyValuesStruct = gi.StructNew("Atk", "PropertyValues")
+		propertyValuesStruct, err = gi.StructNew("Atk", "PropertyValues")
 	})
+	return err
 }
 
 type PropertyValues struct {
@@ -381,10 +419,12 @@ type PropertyValues struct {
 var rangeStruct *gi.Struct
 var rangeStruct_Once sync.Once
 
-func rangeStruct_Set() {
+func rangeStruct_Set() error {
+	var err error
 	rangeStruct_Once.Do(func() {
-		rangeStruct = gi.StructNew("Atk", "Range")
+		rangeStruct, err = gi.StructNew("Atk", "Range")
 	})
+	return err
 }
 
 type Range struct {
@@ -405,12 +445,14 @@ func rangeCopyFunction_Set() {
 
 // Copy is a representation of the C type atk_range_copy.
 func (recv *Range) Copy() *Range {
-	rangeCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := rangeCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	rangeCopyFunction_Set()
+
+	ret = rangeCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Range{native: ret.Pointer()}
 
@@ -429,10 +471,10 @@ func rangeFreeFunction_Set() {
 
 // Free is a representation of the C type atk_range_free.
 func (recv *Range) Free() {
-	rangeFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rangeFreeFunction_Set()
 
 	rangeFreeFunction.Invoke(inArgs[:], nil)
 
@@ -450,12 +492,14 @@ func rangeGetDescriptionFunction_Set() {
 
 // GetDescription is a representation of the C type atk_range_get_description.
 func (recv *Range) GetDescription() string {
-	rangeGetDescriptionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := rangeGetDescriptionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	rangeGetDescriptionFunction_Set()
+
+	ret = rangeGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -469,10 +513,12 @@ func (recv *Range) GetDescription() string {
 var rectangleStruct *gi.Struct
 var rectangleStruct_Once sync.Once
 
-func rectangleStruct_Set() {
+func rectangleStruct_Set() error {
+	var err error
 	rectangleStruct_Once.Do(func() {
-		rectangleStruct = gi.StructNew("Atk", "Rectangle")
+		rectangleStruct, err = gi.StructNew("Atk", "Rectangle")
 	})
+	return err
 }
 
 type Rectangle struct {
@@ -486,10 +532,12 @@ type Rectangle struct {
 var registryClassStruct *gi.Struct
 var registryClassStruct_Once sync.Once
 
-func registryClassStruct_Set() {
+func registryClassStruct_Set() error {
+	var err error
 	registryClassStruct_Once.Do(func() {
-		registryClassStruct = gi.StructNew("Atk", "RegistryClass")
+		registryClassStruct, err = gi.StructNew("Atk", "RegistryClass")
 	})
+	return err
 }
 
 type RegistryClass struct {
@@ -500,10 +548,12 @@ type RegistryClass struct {
 var relationClassStruct *gi.Struct
 var relationClassStruct_Once sync.Once
 
-func relationClassStruct_Set() {
+func relationClassStruct_Set() error {
+	var err error
 	relationClassStruct_Once.Do(func() {
-		relationClassStruct = gi.StructNew("Atk", "RelationClass")
+		relationClassStruct, err = gi.StructNew("Atk", "RelationClass")
 	})
+	return err
 }
 
 type RelationClass struct {
@@ -514,10 +564,12 @@ type RelationClass struct {
 var relationSetClassStruct *gi.Struct
 var relationSetClassStruct_Once sync.Once
 
-func relationSetClassStruct_Set() {
+func relationSetClassStruct_Set() error {
+	var err error
 	relationSetClassStruct_Once.Do(func() {
-		relationSetClassStruct = gi.StructNew("Atk", "RelationSetClass")
+		relationSetClassStruct, err = gi.StructNew("Atk", "RelationSetClass")
 	})
+	return err
 }
 
 type RelationSetClass struct {
@@ -530,10 +582,12 @@ type RelationSetClass struct {
 var selectionIfaceStruct *gi.Struct
 var selectionIfaceStruct_Once sync.Once
 
-func selectionIfaceStruct_Set() {
+func selectionIfaceStruct_Set() error {
+	var err error
 	selectionIfaceStruct_Once.Do(func() {
-		selectionIfaceStruct = gi.StructNew("Atk", "SelectionIface")
+		selectionIfaceStruct, err = gi.StructNew("Atk", "SelectionIface")
 	})
+	return err
 }
 
 type SelectionIface struct {
@@ -552,10 +606,12 @@ type SelectionIface struct {
 var socketClassStruct *gi.Struct
 var socketClassStruct_Once sync.Once
 
-func socketClassStruct_Set() {
+func socketClassStruct_Set() error {
+	var err error
 	socketClassStruct_Once.Do(func() {
-		socketClassStruct = gi.StructNew("Atk", "SocketClass")
+		socketClassStruct, err = gi.StructNew("Atk", "SocketClass")
 	})
+	return err
 }
 
 type SocketClass struct {
@@ -567,10 +623,12 @@ type SocketClass struct {
 var stateSetClassStruct *gi.Struct
 var stateSetClassStruct_Once sync.Once
 
-func stateSetClassStruct_Set() {
+func stateSetClassStruct_Set() error {
+	var err error
 	stateSetClassStruct_Once.Do(func() {
-		stateSetClassStruct = gi.StructNew("Atk", "StateSetClass")
+		stateSetClassStruct, err = gi.StructNew("Atk", "StateSetClass")
 	})
+	return err
 }
 
 type StateSetClass struct {
@@ -581,10 +639,12 @@ type StateSetClass struct {
 var streamableContentIfaceStruct *gi.Struct
 var streamableContentIfaceStruct_Once sync.Once
 
-func streamableContentIfaceStruct_Set() {
+func streamableContentIfaceStruct_Set() error {
+	var err error
 	streamableContentIfaceStruct_Once.Do(func() {
-		streamableContentIfaceStruct = gi.StructNew("Atk", "StreamableContentIface")
+		streamableContentIfaceStruct, err = gi.StructNew("Atk", "StreamableContentIface")
 	})
+	return err
 }
 
 type StreamableContentIface struct {
@@ -602,10 +662,12 @@ type StreamableContentIface struct {
 var tableCellIfaceStruct *gi.Struct
 var tableCellIfaceStruct_Once sync.Once
 
-func tableCellIfaceStruct_Set() {
+func tableCellIfaceStruct_Set() error {
+	var err error
 	tableCellIfaceStruct_Once.Do(func() {
-		tableCellIfaceStruct = gi.StructNew("Atk", "TableCellIface")
+		tableCellIfaceStruct, err = gi.StructNew("Atk", "TableCellIface")
 	})
+	return err
 }
 
 type TableCellIface struct {
@@ -622,10 +684,12 @@ type TableCellIface struct {
 var tableIfaceStruct *gi.Struct
 var tableIfaceStruct_Once sync.Once
 
-func tableIfaceStruct_Set() {
+func tableIfaceStruct_Set() error {
+	var err error
 	tableIfaceStruct_Once.Do(func() {
-		tableIfaceStruct = gi.StructNew("Atk", "TableIface")
+		tableIfaceStruct, err = gi.StructNew("Atk", "TableIface")
 	})
+	return err
 }
 
 type TableIface struct {
@@ -672,10 +736,12 @@ type TableIface struct {
 var textIfaceStruct *gi.Struct
 var textIfaceStruct_Once sync.Once
 
-func textIfaceStruct_Set() {
+func textIfaceStruct_Set() error {
+	var err error
 	textIfaceStruct_Once.Do(func() {
-		textIfaceStruct = gi.StructNew("Atk", "TextIface")
+		textIfaceStruct, err = gi.StructNew("Atk", "TextIface")
 	})
+	return err
 }
 
 type TextIface struct {
@@ -712,10 +778,12 @@ type TextIface struct {
 var textRangeStruct *gi.Struct
 var textRangeStruct_Once sync.Once
 
-func textRangeStruct_Set() {
+func textRangeStruct_Set() error {
+	var err error
 	textRangeStruct_Once.Do(func() {
-		textRangeStruct = gi.StructNew("Atk", "TextRange")
+		textRangeStruct, err = gi.StructNew("Atk", "TextRange")
 	})
+	return err
 }
 
 type TextRange struct {
@@ -729,10 +797,12 @@ type TextRange struct {
 var textRectangleStruct *gi.Struct
 var textRectangleStruct_Once sync.Once
 
-func textRectangleStruct_Set() {
+func textRectangleStruct_Set() error {
+	var err error
 	textRectangleStruct_Once.Do(func() {
-		textRectangleStruct = gi.StructNew("Atk", "TextRectangle")
+		textRectangleStruct, err = gi.StructNew("Atk", "TextRectangle")
 	})
+	return err
 }
 
 type TextRectangle struct {
@@ -746,10 +816,12 @@ type TextRectangle struct {
 var utilClassStruct *gi.Struct
 var utilClassStruct_Once sync.Once
 
-func utilClassStruct_Set() {
+func utilClassStruct_Set() error {
+	var err error
 	utilClassStruct_Once.Do(func() {
-		utilClassStruct = gi.StructNew("Atk", "UtilClass")
+		utilClassStruct, err = gi.StructNew("Atk", "UtilClass")
 	})
+	return err
 }
 
 type UtilClass struct {
@@ -767,10 +839,12 @@ type UtilClass struct {
 var valueIfaceStruct *gi.Struct
 var valueIfaceStruct_Once sync.Once
 
-func valueIfaceStruct_Set() {
+func valueIfaceStruct_Set() error {
+	var err error
 	valueIfaceStruct_Once.Do(func() {
-		valueIfaceStruct = gi.StructNew("Atk", "ValueIface")
+		valueIfaceStruct, err = gi.StructNew("Atk", "ValueIface")
 	})
+	return err
 }
 
 type ValueIface struct {
@@ -791,10 +865,12 @@ type ValueIface struct {
 var windowIfaceStruct *gi.Struct
 var windowIfaceStruct_Once sync.Once
 
-func windowIfaceStruct_Set() {
+func windowIfaceStruct_Set() error {
+	var err error
 	windowIfaceStruct_Once.Do(func() {
-		windowIfaceStruct = gi.StructNew("Atk", "WindowIface")
+		windowIfaceStruct, err = gi.StructNew("Atk", "WindowIface")
 	})
+	return err
 }
 
 type WindowIface struct {

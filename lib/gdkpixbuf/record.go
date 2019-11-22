@@ -10,10 +10,12 @@ import (
 var pixbufFormatStruct *gi.Struct
 var pixbufFormatStruct_Once sync.Once
 
-func pixbufFormatStruct_Set() {
+func pixbufFormatStruct_Set() error {
+	var err error
 	pixbufFormatStruct_Once.Do(func() {
-		pixbufFormatStruct = gi.StructNew("GdkPixbuf", "PixbufFormat")
+		pixbufFormatStruct, err = gi.StructNew("GdkPixbuf", "PixbufFormat")
 	})
+	return err
 }
 
 type PixbufFormat struct {
@@ -32,12 +34,14 @@ func pixbufFormatCopyFunction_Set() {
 
 // Copy is a representation of the C type gdk_pixbuf_format_copy.
 func (recv *PixbufFormat) Copy() *PixbufFormat {
-	pixbufFormatCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := pixbufFormatCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	pixbufFormatCopyFunction_Set()
+
+	ret = pixbufFormatCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &PixbufFormat{native: ret.Pointer()}
 
@@ -56,10 +60,10 @@ func pixbufFormatFreeFunction_Set() {
 
 // Free is a representation of the C type gdk_pixbuf_format_free.
 func (recv *PixbufFormat) Free() {
-	pixbufFormatFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	pixbufFormatFreeFunction_Set()
 
 	pixbufFormatFreeFunction.Invoke(inArgs[:], nil)
 
@@ -77,12 +81,14 @@ func pixbufFormatGetDescriptionFunction_Set() {
 
 // GetDescription is a representation of the C type gdk_pixbuf_format_get_description.
 func (recv *PixbufFormat) GetDescription() string {
-	pixbufFormatGetDescriptionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := pixbufFormatGetDescriptionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	pixbufFormatGetDescriptionFunction_Set()
+
+	ret = pixbufFormatGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -101,10 +107,10 @@ func pixbufFormatGetExtensionsFunction_Set() {
 
 // GetExtensions is a representation of the C type gdk_pixbuf_format_get_extensions.
 func (recv *PixbufFormat) GetExtensions() {
-	pixbufFormatGetExtensionsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	pixbufFormatGetExtensionsFunction_Set()
 
 	pixbufFormatGetExtensionsFunction.Invoke(inArgs[:], nil)
 
@@ -122,12 +128,14 @@ func pixbufFormatGetLicenseFunction_Set() {
 
 // GetLicense is a representation of the C type gdk_pixbuf_format_get_license.
 func (recv *PixbufFormat) GetLicense() string {
-	pixbufFormatGetLicenseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := pixbufFormatGetLicenseFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	pixbufFormatGetLicenseFunction_Set()
+
+	ret = pixbufFormatGetLicenseFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -146,10 +154,10 @@ func pixbufFormatGetMimeTypesFunction_Set() {
 
 // GetMimeTypes is a representation of the C type gdk_pixbuf_format_get_mime_types.
 func (recv *PixbufFormat) GetMimeTypes() {
-	pixbufFormatGetMimeTypesFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	pixbufFormatGetMimeTypesFunction_Set()
 
 	pixbufFormatGetMimeTypesFunction.Invoke(inArgs[:], nil)
 
@@ -167,12 +175,14 @@ func pixbufFormatGetNameFunction_Set() {
 
 // GetName is a representation of the C type gdk_pixbuf_format_get_name.
 func (recv *PixbufFormat) GetName() string {
-	pixbufFormatGetNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := pixbufFormatGetNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	pixbufFormatGetNameFunction_Set()
+
+	ret = pixbufFormatGetNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -192,10 +202,12 @@ func (recv *PixbufFormat) GetName() string {
 var pixbufLoaderClassStruct *gi.Struct
 var pixbufLoaderClassStruct_Once sync.Once
 
-func pixbufLoaderClassStruct_Set() {
+func pixbufLoaderClassStruct_Set() error {
+	var err error
 	pixbufLoaderClassStruct_Once.Do(func() {
-		pixbufLoaderClassStruct = gi.StructNew("GdkPixbuf", "PixbufLoaderClass")
+		pixbufLoaderClassStruct, err = gi.StructNew("GdkPixbuf", "PixbufLoaderClass")
 	})
+	return err
 }
 
 type PixbufLoaderClass struct {
@@ -210,10 +222,12 @@ type PixbufLoaderClass struct {
 var pixbufSimpleAnimClassStruct *gi.Struct
 var pixbufSimpleAnimClassStruct_Once sync.Once
 
-func pixbufSimpleAnimClassStruct_Set() {
+func pixbufSimpleAnimClassStruct_Set() error {
+	var err error
 	pixbufSimpleAnimClassStruct_Once.Do(func() {
-		pixbufSimpleAnimClassStruct = gi.StructNew("GdkPixbuf", "PixbufSimpleAnimClass")
+		pixbufSimpleAnimClassStruct, err = gi.StructNew("GdkPixbuf", "PixbufSimpleAnimClass")
 	})
+	return err
 }
 
 type PixbufSimpleAnimClass struct {

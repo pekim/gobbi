@@ -10,10 +10,12 @@ import (
 var bufferClassStruct *gi.Struct
 var bufferClassStruct_Once sync.Once
 
-func bufferClassStruct_Set() {
+func bufferClassStruct_Set() error {
+	var err error
 	bufferClassStruct_Once.Do(func() {
-		bufferClassStruct = gi.StructNew("GtkSource", "BufferClass")
+		bufferClassStruct, err = gi.StructNew("GtkSource", "BufferClass")
 	})
+	return err
 }
 
 type BufferClass struct {
@@ -30,10 +32,12 @@ type BufferClass struct {
 var bufferPrivateStruct *gi.Struct
 var bufferPrivateStruct_Once sync.Once
 
-func bufferPrivateStruct_Set() {
+func bufferPrivateStruct_Set() error {
+	var err error
 	bufferPrivateStruct_Once.Do(func() {
-		bufferPrivateStruct = gi.StructNew("GtkSource", "BufferPrivate")
+		bufferPrivateStruct, err = gi.StructNew("GtkSource", "BufferPrivate")
 	})
+	return err
 }
 
 type BufferPrivate struct {
@@ -43,10 +47,12 @@ type BufferPrivate struct {
 var completionClassStruct *gi.Struct
 var completionClassStruct_Once sync.Once
 
-func completionClassStruct_Set() {
+func completionClassStruct_Set() error {
+	var err error
 	completionClassStruct_Once.Do(func() {
-		completionClassStruct = gi.StructNew("GtkSource", "CompletionClass")
+		completionClassStruct, err = gi.StructNew("GtkSource", "CompletionClass")
 	})
+	return err
 }
 
 type CompletionClass struct {
@@ -64,10 +70,12 @@ type CompletionClass struct {
 var completionContextClassStruct *gi.Struct
 var completionContextClassStruct_Once sync.Once
 
-func completionContextClassStruct_Set() {
+func completionContextClassStruct_Set() error {
+	var err error
 	completionContextClassStruct_Once.Do(func() {
-		completionContextClassStruct = gi.StructNew("GtkSource", "CompletionContextClass")
+		completionContextClassStruct, err = gi.StructNew("GtkSource", "CompletionContextClass")
 	})
+	return err
 }
 
 type CompletionContextClass struct {
@@ -82,10 +90,12 @@ type CompletionContextClass struct {
 var completionContextPrivateStruct *gi.Struct
 var completionContextPrivateStruct_Once sync.Once
 
-func completionContextPrivateStruct_Set() {
+func completionContextPrivateStruct_Set() error {
+	var err error
 	completionContextPrivateStruct_Once.Do(func() {
-		completionContextPrivateStruct = gi.StructNew("GtkSource", "CompletionContextPrivate")
+		completionContextPrivateStruct, err = gi.StructNew("GtkSource", "CompletionContextPrivate")
 	})
+	return err
 }
 
 type CompletionContextPrivate struct {
@@ -95,10 +105,12 @@ type CompletionContextPrivate struct {
 var completionInfoClassStruct *gi.Struct
 var completionInfoClassStruct_Once sync.Once
 
-func completionInfoClassStruct_Set() {
+func completionInfoClassStruct_Set() error {
+	var err error
 	completionInfoClassStruct_Once.Do(func() {
-		completionInfoClassStruct = gi.StructNew("GtkSource", "CompletionInfoClass")
+		completionInfoClassStruct, err = gi.StructNew("GtkSource", "CompletionInfoClass")
 	})
+	return err
 }
 
 type CompletionInfoClass struct {
@@ -110,10 +122,12 @@ type CompletionInfoClass struct {
 var completionInfoPrivateStruct *gi.Struct
 var completionInfoPrivateStruct_Once sync.Once
 
-func completionInfoPrivateStruct_Set() {
+func completionInfoPrivateStruct_Set() error {
+	var err error
 	completionInfoPrivateStruct_Once.Do(func() {
-		completionInfoPrivateStruct = gi.StructNew("GtkSource", "CompletionInfoPrivate")
+		completionInfoPrivateStruct, err = gi.StructNew("GtkSource", "CompletionInfoPrivate")
 	})
+	return err
 }
 
 type CompletionInfoPrivate struct {
@@ -123,10 +137,12 @@ type CompletionInfoPrivate struct {
 var completionItemClassStruct *gi.Struct
 var completionItemClassStruct_Once sync.Once
 
-func completionItemClassStruct_Set() {
+func completionItemClassStruct_Set() error {
+	var err error
 	completionItemClassStruct_Once.Do(func() {
-		completionItemClassStruct = gi.StructNew("GtkSource", "CompletionItemClass")
+		completionItemClassStruct, err = gi.StructNew("GtkSource", "CompletionItemClass")
 	})
+	return err
 }
 
 type CompletionItemClass struct {
@@ -137,10 +153,12 @@ type CompletionItemClass struct {
 var completionItemPrivateStruct *gi.Struct
 var completionItemPrivateStruct_Once sync.Once
 
-func completionItemPrivateStruct_Set() {
+func completionItemPrivateStruct_Set() error {
+	var err error
 	completionItemPrivateStruct_Once.Do(func() {
-		completionItemPrivateStruct = gi.StructNew("GtkSource", "CompletionItemPrivate")
+		completionItemPrivateStruct, err = gi.StructNew("GtkSource", "CompletionItemPrivate")
 	})
+	return err
 }
 
 type CompletionItemPrivate struct {
@@ -150,10 +168,12 @@ type CompletionItemPrivate struct {
 var completionPrivateStruct *gi.Struct
 var completionPrivateStruct_Once sync.Once
 
-func completionPrivateStruct_Set() {
+func completionPrivateStruct_Set() error {
+	var err error
 	completionPrivateStruct_Once.Do(func() {
-		completionPrivateStruct = gi.StructNew("GtkSource", "CompletionPrivate")
+		completionPrivateStruct, err = gi.StructNew("GtkSource", "CompletionPrivate")
 	})
+	return err
 }
 
 type CompletionPrivate struct {
@@ -163,10 +183,12 @@ type CompletionPrivate struct {
 var completionProposalIfaceStruct *gi.Struct
 var completionProposalIfaceStruct_Once sync.Once
 
-func completionProposalIfaceStruct_Set() {
+func completionProposalIfaceStruct_Set() error {
+	var err error
 	completionProposalIfaceStruct_Once.Do(func() {
-		completionProposalIfaceStruct = gi.StructNew("GtkSource", "CompletionProposalIface")
+		completionProposalIfaceStruct, err = gi.StructNew("GtkSource", "CompletionProposalIface")
 	})
+	return err
 }
 
 type CompletionProposalIface struct {
@@ -187,10 +209,12 @@ type CompletionProposalIface struct {
 var completionProviderIfaceStruct *gi.Struct
 var completionProviderIfaceStruct_Once sync.Once
 
-func completionProviderIfaceStruct_Set() {
+func completionProviderIfaceStruct_Set() error {
+	var err error
 	completionProviderIfaceStruct_Once.Do(func() {
-		completionProviderIfaceStruct = gi.StructNew("GtkSource", "CompletionProviderIface")
+		completionProviderIfaceStruct, err = gi.StructNew("GtkSource", "CompletionProviderIface")
 	})
+	return err
 }
 
 type CompletionProviderIface struct {
@@ -214,10 +238,12 @@ type CompletionProviderIface struct {
 var completionWordsClassStruct *gi.Struct
 var completionWordsClassStruct_Once sync.Once
 
-func completionWordsClassStruct_Set() {
+func completionWordsClassStruct_Set() error {
+	var err error
 	completionWordsClassStruct_Once.Do(func() {
-		completionWordsClassStruct = gi.StructNew("GtkSource", "CompletionWordsClass")
+		completionWordsClassStruct, err = gi.StructNew("GtkSource", "CompletionWordsClass")
 	})
+	return err
 }
 
 type CompletionWordsClass struct {
@@ -228,10 +254,12 @@ type CompletionWordsClass struct {
 var completionWordsPrivateStruct *gi.Struct
 var completionWordsPrivateStruct_Once sync.Once
 
-func completionWordsPrivateStruct_Set() {
+func completionWordsPrivateStruct_Set() error {
+	var err error
 	completionWordsPrivateStruct_Once.Do(func() {
-		completionWordsPrivateStruct = gi.StructNew("GtkSource", "CompletionWordsPrivate")
+		completionWordsPrivateStruct, err = gi.StructNew("GtkSource", "CompletionWordsPrivate")
 	})
+	return err
 }
 
 type CompletionWordsPrivate struct {
@@ -241,10 +269,12 @@ type CompletionWordsPrivate struct {
 var encodingStruct *gi.Struct
 var encodingStruct_Once sync.Once
 
-func encodingStruct_Set() {
+func encodingStruct_Set() error {
+	var err error
 	encodingStruct_Once.Do(func() {
-		encodingStruct = gi.StructNew("GtkSource", "Encoding")
+		encodingStruct, err = gi.StructNew("GtkSource", "Encoding")
 	})
+	return err
 }
 
 type Encoding struct {
@@ -263,12 +293,14 @@ func encodingCopyFunction_Set() {
 
 // Copy is a representation of the C type gtk_source_encoding_copy.
 func (recv *Encoding) Copy() *Encoding {
-	encodingCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := encodingCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	encodingCopyFunction_Set()
+
+	ret = encodingCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -287,10 +319,10 @@ func encodingFreeFunction_Set() {
 
 // Free is a representation of the C type gtk_source_encoding_free.
 func (recv *Encoding) Free() {
-	encodingFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	encodingFreeFunction_Set()
 
 	encodingFreeFunction.Invoke(inArgs[:], nil)
 
@@ -308,12 +340,14 @@ func encodingGetCharsetFunction_Set() {
 
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
 func (recv *Encoding) GetCharset() string {
-	encodingGetCharsetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := encodingGetCharsetFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	encodingGetCharsetFunction_Set()
+
+	ret = encodingGetCharsetFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -332,12 +366,14 @@ func encodingGetNameFunction_Set() {
 
 // GetName is a representation of the C type gtk_source_encoding_get_name.
 func (recv *Encoding) GetName() string {
-	encodingGetNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := encodingGetNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	encodingGetNameFunction_Set()
+
+	ret = encodingGetNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -356,12 +392,14 @@ func encodingToStringFunction_Set() {
 
 // ToString is a representation of the C type gtk_source_encoding_to_string.
 func (recv *Encoding) ToString() string {
-	encodingToStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := encodingToStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	encodingToStringFunction_Set()
+
+	ret = encodingToStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -371,10 +409,12 @@ func (recv *Encoding) ToString() string {
 var fileClassStruct *gi.Struct
 var fileClassStruct_Once sync.Once
 
-func fileClassStruct_Set() {
+func fileClassStruct_Set() error {
+	var err error
 	fileClassStruct_Once.Do(func() {
-		fileClassStruct = gi.StructNew("GtkSource", "FileClass")
+		fileClassStruct, err = gi.StructNew("GtkSource", "FileClass")
 	})
+	return err
 }
 
 type FileClass struct {
@@ -386,10 +426,12 @@ type FileClass struct {
 var fileLoaderClassStruct *gi.Struct
 var fileLoaderClassStruct_Once sync.Once
 
-func fileLoaderClassStruct_Set() {
+func fileLoaderClassStruct_Set() error {
+	var err error
 	fileLoaderClassStruct_Once.Do(func() {
-		fileLoaderClassStruct = gi.StructNew("GtkSource", "FileLoaderClass")
+		fileLoaderClassStruct, err = gi.StructNew("GtkSource", "FileLoaderClass")
 	})
+	return err
 }
 
 type FileLoaderClass struct {
@@ -401,10 +443,12 @@ type FileLoaderClass struct {
 var fileLoaderPrivateStruct *gi.Struct
 var fileLoaderPrivateStruct_Once sync.Once
 
-func fileLoaderPrivateStruct_Set() {
+func fileLoaderPrivateStruct_Set() error {
+	var err error
 	fileLoaderPrivateStruct_Once.Do(func() {
-		fileLoaderPrivateStruct = gi.StructNew("GtkSource", "FileLoaderPrivate")
+		fileLoaderPrivateStruct, err = gi.StructNew("GtkSource", "FileLoaderPrivate")
 	})
+	return err
 }
 
 type FileLoaderPrivate struct {
@@ -414,10 +458,12 @@ type FileLoaderPrivate struct {
 var filePrivateStruct *gi.Struct
 var filePrivateStruct_Once sync.Once
 
-func filePrivateStruct_Set() {
+func filePrivateStruct_Set() error {
+	var err error
 	filePrivateStruct_Once.Do(func() {
-		filePrivateStruct = gi.StructNew("GtkSource", "FilePrivate")
+		filePrivateStruct, err = gi.StructNew("GtkSource", "FilePrivate")
 	})
+	return err
 }
 
 type FilePrivate struct {
@@ -427,10 +473,12 @@ type FilePrivate struct {
 var fileSaverClassStruct *gi.Struct
 var fileSaverClassStruct_Once sync.Once
 
-func fileSaverClassStruct_Set() {
+func fileSaverClassStruct_Set() error {
+	var err error
 	fileSaverClassStruct_Once.Do(func() {
-		fileSaverClassStruct = gi.StructNew("GtkSource", "FileSaverClass")
+		fileSaverClassStruct, err = gi.StructNew("GtkSource", "FileSaverClass")
 	})
+	return err
 }
 
 type FileSaverClass struct {
@@ -442,10 +490,12 @@ type FileSaverClass struct {
 var fileSaverPrivateStruct *gi.Struct
 var fileSaverPrivateStruct_Once sync.Once
 
-func fileSaverPrivateStruct_Set() {
+func fileSaverPrivateStruct_Set() error {
+	var err error
 	fileSaverPrivateStruct_Once.Do(func() {
-		fileSaverPrivateStruct = gi.StructNew("GtkSource", "FileSaverPrivate")
+		fileSaverPrivateStruct, err = gi.StructNew("GtkSource", "FileSaverPrivate")
 	})
+	return err
 }
 
 type FileSaverPrivate struct {
@@ -455,10 +505,12 @@ type FileSaverPrivate struct {
 var gutterClassStruct *gi.Struct
 var gutterClassStruct_Once sync.Once
 
-func gutterClassStruct_Set() {
+func gutterClassStruct_Set() error {
+	var err error
 	gutterClassStruct_Once.Do(func() {
-		gutterClassStruct = gi.StructNew("GtkSource", "GutterClass")
+		gutterClassStruct, err = gi.StructNew("GtkSource", "GutterClass")
 	})
+	return err
 }
 
 type GutterClass struct {
@@ -469,10 +521,12 @@ type GutterClass struct {
 var gutterPrivateStruct *gi.Struct
 var gutterPrivateStruct_Once sync.Once
 
-func gutterPrivateStruct_Set() {
+func gutterPrivateStruct_Set() error {
+	var err error
 	gutterPrivateStruct_Once.Do(func() {
-		gutterPrivateStruct = gi.StructNew("GtkSource", "GutterPrivate")
+		gutterPrivateStruct, err = gi.StructNew("GtkSource", "GutterPrivate")
 	})
+	return err
 }
 
 type GutterPrivate struct {
@@ -482,10 +536,12 @@ type GutterPrivate struct {
 var gutterRendererClassStruct *gi.Struct
 var gutterRendererClassStruct_Once sync.Once
 
-func gutterRendererClassStruct_Set() {
+func gutterRendererClassStruct_Set() error {
+	var err error
 	gutterRendererClassStruct_Once.Do(func() {
-		gutterRendererClassStruct = gi.StructNew("GtkSource", "GutterRendererClass")
+		gutterRendererClassStruct, err = gi.StructNew("GtkSource", "GutterRendererClass")
 	})
+	return err
 }
 
 type GutterRendererClass struct {
@@ -506,10 +562,12 @@ type GutterRendererClass struct {
 var gutterRendererPixbufClassStruct *gi.Struct
 var gutterRendererPixbufClassStruct_Once sync.Once
 
-func gutterRendererPixbufClassStruct_Set() {
+func gutterRendererPixbufClassStruct_Set() error {
+	var err error
 	gutterRendererPixbufClassStruct_Once.Do(func() {
-		gutterRendererPixbufClassStruct = gi.StructNew("GtkSource", "GutterRendererPixbufClass")
+		gutterRendererPixbufClassStruct, err = gi.StructNew("GtkSource", "GutterRendererPixbufClass")
 	})
+	return err
 }
 
 type GutterRendererPixbufClass struct {
@@ -519,10 +577,12 @@ type GutterRendererPixbufClass struct {
 var gutterRendererPixbufPrivateStruct *gi.Struct
 var gutterRendererPixbufPrivateStruct_Once sync.Once
 
-func gutterRendererPixbufPrivateStruct_Set() {
+func gutterRendererPixbufPrivateStruct_Set() error {
+	var err error
 	gutterRendererPixbufPrivateStruct_Once.Do(func() {
-		gutterRendererPixbufPrivateStruct = gi.StructNew("GtkSource", "GutterRendererPixbufPrivate")
+		gutterRendererPixbufPrivateStruct, err = gi.StructNew("GtkSource", "GutterRendererPixbufPrivate")
 	})
+	return err
 }
 
 type GutterRendererPixbufPrivate struct {
@@ -532,10 +592,12 @@ type GutterRendererPixbufPrivate struct {
 var gutterRendererPrivateStruct *gi.Struct
 var gutterRendererPrivateStruct_Once sync.Once
 
-func gutterRendererPrivateStruct_Set() {
+func gutterRendererPrivateStruct_Set() error {
+	var err error
 	gutterRendererPrivateStruct_Once.Do(func() {
-		gutterRendererPrivateStruct = gi.StructNew("GtkSource", "GutterRendererPrivate")
+		gutterRendererPrivateStruct, err = gi.StructNew("GtkSource", "GutterRendererPrivate")
 	})
+	return err
 }
 
 type GutterRendererPrivate struct {
@@ -545,10 +607,12 @@ type GutterRendererPrivate struct {
 var gutterRendererTextClassStruct *gi.Struct
 var gutterRendererTextClassStruct_Once sync.Once
 
-func gutterRendererTextClassStruct_Set() {
+func gutterRendererTextClassStruct_Set() error {
+	var err error
 	gutterRendererTextClassStruct_Once.Do(func() {
-		gutterRendererTextClassStruct = gi.StructNew("GtkSource", "GutterRendererTextClass")
+		gutterRendererTextClassStruct, err = gi.StructNew("GtkSource", "GutterRendererTextClass")
 	})
+	return err
 }
 
 type GutterRendererTextClass struct {
@@ -558,10 +622,12 @@ type GutterRendererTextClass struct {
 var gutterRendererTextPrivateStruct *gi.Struct
 var gutterRendererTextPrivateStruct_Once sync.Once
 
-func gutterRendererTextPrivateStruct_Set() {
+func gutterRendererTextPrivateStruct_Set() error {
+	var err error
 	gutterRendererTextPrivateStruct_Once.Do(func() {
-		gutterRendererTextPrivateStruct = gi.StructNew("GtkSource", "GutterRendererTextPrivate")
+		gutterRendererTextPrivateStruct, err = gi.StructNew("GtkSource", "GutterRendererTextPrivate")
 	})
+	return err
 }
 
 type GutterRendererTextPrivate struct {
@@ -571,10 +637,12 @@ type GutterRendererTextPrivate struct {
 var languageClassStruct *gi.Struct
 var languageClassStruct_Once sync.Once
 
-func languageClassStruct_Set() {
+func languageClassStruct_Set() error {
+	var err error
 	languageClassStruct_Once.Do(func() {
-		languageClassStruct = gi.StructNew("GtkSource", "LanguageClass")
+		languageClassStruct, err = gi.StructNew("GtkSource", "LanguageClass")
 	})
+	return err
 }
 
 type LanguageClass struct {
@@ -587,10 +655,12 @@ type LanguageClass struct {
 var languageManagerClassStruct *gi.Struct
 var languageManagerClassStruct_Once sync.Once
 
-func languageManagerClassStruct_Set() {
+func languageManagerClassStruct_Set() error {
+	var err error
 	languageManagerClassStruct_Once.Do(func() {
-		languageManagerClassStruct = gi.StructNew("GtkSource", "LanguageManagerClass")
+		languageManagerClassStruct, err = gi.StructNew("GtkSource", "LanguageManagerClass")
 	})
+	return err
 }
 
 type LanguageManagerClass struct {
@@ -605,10 +675,12 @@ type LanguageManagerClass struct {
 var languageManagerPrivateStruct *gi.Struct
 var languageManagerPrivateStruct_Once sync.Once
 
-func languageManagerPrivateStruct_Set() {
+func languageManagerPrivateStruct_Set() error {
+	var err error
 	languageManagerPrivateStruct_Once.Do(func() {
-		languageManagerPrivateStruct = gi.StructNew("GtkSource", "LanguageManagerPrivate")
+		languageManagerPrivateStruct, err = gi.StructNew("GtkSource", "LanguageManagerPrivate")
 	})
+	return err
 }
 
 type LanguageManagerPrivate struct {
@@ -618,10 +690,12 @@ type LanguageManagerPrivate struct {
 var languagePrivateStruct *gi.Struct
 var languagePrivateStruct_Once sync.Once
 
-func languagePrivateStruct_Set() {
+func languagePrivateStruct_Set() error {
+	var err error
 	languagePrivateStruct_Once.Do(func() {
-		languagePrivateStruct = gi.StructNew("GtkSource", "LanguagePrivate")
+		languagePrivateStruct, err = gi.StructNew("GtkSource", "LanguagePrivate")
 	})
+	return err
 }
 
 type LanguagePrivate struct {
@@ -631,10 +705,12 @@ type LanguagePrivate struct {
 var mapClassStruct *gi.Struct
 var mapClassStruct_Once sync.Once
 
-func mapClassStruct_Set() {
+func mapClassStruct_Set() error {
+	var err error
 	mapClassStruct_Once.Do(func() {
-		mapClassStruct = gi.StructNew("GtkSource", "MapClass")
+		mapClassStruct, err = gi.StructNew("GtkSource", "MapClass")
 	})
+	return err
 }
 
 type MapClass struct {
@@ -646,10 +722,12 @@ type MapClass struct {
 var markAttributesClassStruct *gi.Struct
 var markAttributesClassStruct_Once sync.Once
 
-func markAttributesClassStruct_Set() {
+func markAttributesClassStruct_Set() error {
+	var err error
 	markAttributesClassStruct_Once.Do(func() {
-		markAttributesClassStruct = gi.StructNew("GtkSource", "MarkAttributesClass")
+		markAttributesClassStruct, err = gi.StructNew("GtkSource", "MarkAttributesClass")
 	})
+	return err
 }
 
 type MarkAttributesClass struct {
@@ -659,10 +737,12 @@ type MarkAttributesClass struct {
 var markAttributesPrivateStruct *gi.Struct
 var markAttributesPrivateStruct_Once sync.Once
 
-func markAttributesPrivateStruct_Set() {
+func markAttributesPrivateStruct_Set() error {
+	var err error
 	markAttributesPrivateStruct_Once.Do(func() {
-		markAttributesPrivateStruct = gi.StructNew("GtkSource", "MarkAttributesPrivate")
+		markAttributesPrivateStruct, err = gi.StructNew("GtkSource", "MarkAttributesPrivate")
 	})
+	return err
 }
 
 type MarkAttributesPrivate struct {
@@ -672,10 +752,12 @@ type MarkAttributesPrivate struct {
 var markClassStruct *gi.Struct
 var markClassStruct_Once sync.Once
 
-func markClassStruct_Set() {
+func markClassStruct_Set() error {
+	var err error
 	markClassStruct_Once.Do(func() {
-		markClassStruct = gi.StructNew("GtkSource", "MarkClass")
+		markClassStruct, err = gi.StructNew("GtkSource", "MarkClass")
 	})
+	return err
 }
 
 type MarkClass struct {
@@ -688,10 +770,12 @@ type MarkClass struct {
 var markPrivateStruct *gi.Struct
 var markPrivateStruct_Once sync.Once
 
-func markPrivateStruct_Set() {
+func markPrivateStruct_Set() error {
+	var err error
 	markPrivateStruct_Once.Do(func() {
-		markPrivateStruct = gi.StructNew("GtkSource", "MarkPrivate")
+		markPrivateStruct, err = gi.StructNew("GtkSource", "MarkPrivate")
 	})
+	return err
 }
 
 type MarkPrivate struct {
@@ -701,10 +785,12 @@ type MarkPrivate struct {
 var printCompositorClassStruct *gi.Struct
 var printCompositorClassStruct_Once sync.Once
 
-func printCompositorClassStruct_Set() {
+func printCompositorClassStruct_Set() error {
+	var err error
 	printCompositorClassStruct_Once.Do(func() {
-		printCompositorClassStruct = gi.StructNew("GtkSource", "PrintCompositorClass")
+		printCompositorClassStruct, err = gi.StructNew("GtkSource", "PrintCompositorClass")
 	})
+	return err
 }
 
 type PrintCompositorClass struct {
@@ -717,10 +803,12 @@ type PrintCompositorClass struct {
 var printCompositorPrivateStruct *gi.Struct
 var printCompositorPrivateStruct_Once sync.Once
 
-func printCompositorPrivateStruct_Set() {
+func printCompositorPrivateStruct_Set() error {
+	var err error
 	printCompositorPrivateStruct_Once.Do(func() {
-		printCompositorPrivateStruct = gi.StructNew("GtkSource", "PrintCompositorPrivate")
+		printCompositorPrivateStruct, err = gi.StructNew("GtkSource", "PrintCompositorPrivate")
 	})
+	return err
 }
 
 type PrintCompositorPrivate struct {
@@ -730,10 +818,12 @@ type PrintCompositorPrivate struct {
 var regionClassStruct *gi.Struct
 var regionClassStruct_Once sync.Once
 
-func regionClassStruct_Set() {
+func regionClassStruct_Set() error {
+	var err error
 	regionClassStruct_Once.Do(func() {
-		regionClassStruct = gi.StructNew("GtkSource", "RegionClass")
+		regionClassStruct, err = gi.StructNew("GtkSource", "RegionClass")
 	})
+	return err
 }
 
 type RegionClass struct {
@@ -745,10 +835,12 @@ type RegionClass struct {
 var regionIterStruct *gi.Struct
 var regionIterStruct_Once sync.Once
 
-func regionIterStruct_Set() {
+func regionIterStruct_Set() error {
+	var err error
 	regionIterStruct_Once.Do(func() {
-		regionIterStruct = gi.StructNew("GtkSource", "RegionIter")
+		regionIterStruct, err = gi.StructNew("GtkSource", "RegionIter")
 	})
+	return err
 }
 
 type RegionIter struct {
@@ -764,10 +856,12 @@ type RegionIter struct {
 var searchContextClassStruct *gi.Struct
 var searchContextClassStruct_Once sync.Once
 
-func searchContextClassStruct_Set() {
+func searchContextClassStruct_Set() error {
+	var err error
 	searchContextClassStruct_Once.Do(func() {
-		searchContextClassStruct = gi.StructNew("GtkSource", "SearchContextClass")
+		searchContextClassStruct, err = gi.StructNew("GtkSource", "SearchContextClass")
 	})
+	return err
 }
 
 type SearchContextClass struct {
@@ -779,10 +873,12 @@ type SearchContextClass struct {
 var searchContextPrivateStruct *gi.Struct
 var searchContextPrivateStruct_Once sync.Once
 
-func searchContextPrivateStruct_Set() {
+func searchContextPrivateStruct_Set() error {
+	var err error
 	searchContextPrivateStruct_Once.Do(func() {
-		searchContextPrivateStruct = gi.StructNew("GtkSource", "SearchContextPrivate")
+		searchContextPrivateStruct, err = gi.StructNew("GtkSource", "SearchContextPrivate")
 	})
+	return err
 }
 
 type SearchContextPrivate struct {
@@ -792,10 +888,12 @@ type SearchContextPrivate struct {
 var searchSettingsClassStruct *gi.Struct
 var searchSettingsClassStruct_Once sync.Once
 
-func searchSettingsClassStruct_Set() {
+func searchSettingsClassStruct_Set() error {
+	var err error
 	searchSettingsClassStruct_Once.Do(func() {
-		searchSettingsClassStruct = gi.StructNew("GtkSource", "SearchSettingsClass")
+		searchSettingsClassStruct, err = gi.StructNew("GtkSource", "SearchSettingsClass")
 	})
+	return err
 }
 
 type SearchSettingsClass struct {
@@ -807,10 +905,12 @@ type SearchSettingsClass struct {
 var searchSettingsPrivateStruct *gi.Struct
 var searchSettingsPrivateStruct_Once sync.Once
 
-func searchSettingsPrivateStruct_Set() {
+func searchSettingsPrivateStruct_Set() error {
+	var err error
 	searchSettingsPrivateStruct_Once.Do(func() {
-		searchSettingsPrivateStruct = gi.StructNew("GtkSource", "SearchSettingsPrivate")
+		searchSettingsPrivateStruct, err = gi.StructNew("GtkSource", "SearchSettingsPrivate")
 	})
+	return err
 }
 
 type SearchSettingsPrivate struct {
@@ -820,10 +920,12 @@ type SearchSettingsPrivate struct {
 var spaceDrawerClassStruct *gi.Struct
 var spaceDrawerClassStruct_Once sync.Once
 
-func spaceDrawerClassStruct_Set() {
+func spaceDrawerClassStruct_Set() error {
+	var err error
 	spaceDrawerClassStruct_Once.Do(func() {
-		spaceDrawerClassStruct = gi.StructNew("GtkSource", "SpaceDrawerClass")
+		spaceDrawerClassStruct, err = gi.StructNew("GtkSource", "SpaceDrawerClass")
 	})
+	return err
 }
 
 type SpaceDrawerClass struct {
@@ -835,10 +937,12 @@ type SpaceDrawerClass struct {
 var spaceDrawerPrivateStruct *gi.Struct
 var spaceDrawerPrivateStruct_Once sync.Once
 
-func spaceDrawerPrivateStruct_Set() {
+func spaceDrawerPrivateStruct_Set() error {
+	var err error
 	spaceDrawerPrivateStruct_Once.Do(func() {
-		spaceDrawerPrivateStruct = gi.StructNew("GtkSource", "SpaceDrawerPrivate")
+		spaceDrawerPrivateStruct, err = gi.StructNew("GtkSource", "SpaceDrawerPrivate")
 	})
+	return err
 }
 
 type SpaceDrawerPrivate struct {
@@ -848,10 +952,12 @@ type SpaceDrawerPrivate struct {
 var styleClassStruct *gi.Struct
 var styleClassStruct_Once sync.Once
 
-func styleClassStruct_Set() {
+func styleClassStruct_Set() error {
+	var err error
 	styleClassStruct_Once.Do(func() {
-		styleClassStruct = gi.StructNew("GtkSource", "StyleClass")
+		styleClassStruct, err = gi.StructNew("GtkSource", "StyleClass")
 	})
+	return err
 }
 
 type StyleClass struct {
@@ -861,10 +967,12 @@ type StyleClass struct {
 var styleSchemeChooserButtonClassStruct *gi.Struct
 var styleSchemeChooserButtonClassStruct_Once sync.Once
 
-func styleSchemeChooserButtonClassStruct_Set() {
+func styleSchemeChooserButtonClassStruct_Set() error {
+	var err error
 	styleSchemeChooserButtonClassStruct_Once.Do(func() {
-		styleSchemeChooserButtonClassStruct = gi.StructNew("GtkSource", "StyleSchemeChooserButtonClass")
+		styleSchemeChooserButtonClassStruct, err = gi.StructNew("GtkSource", "StyleSchemeChooserButtonClass")
 	})
+	return err
 }
 
 type StyleSchemeChooserButtonClass struct {
@@ -875,10 +983,12 @@ type StyleSchemeChooserButtonClass struct {
 var styleSchemeChooserInterfaceStruct *gi.Struct
 var styleSchemeChooserInterfaceStruct_Once sync.Once
 
-func styleSchemeChooserInterfaceStruct_Set() {
+func styleSchemeChooserInterfaceStruct_Set() error {
+	var err error
 	styleSchemeChooserInterfaceStruct_Once.Do(func() {
-		styleSchemeChooserInterfaceStruct = gi.StructNew("GtkSource", "StyleSchemeChooserInterface")
+		styleSchemeChooserInterfaceStruct, err = gi.StructNew("GtkSource", "StyleSchemeChooserInterface")
 	})
+	return err
 }
 
 type StyleSchemeChooserInterface struct {
@@ -892,10 +1002,12 @@ type StyleSchemeChooserInterface struct {
 var styleSchemeChooserWidgetClassStruct *gi.Struct
 var styleSchemeChooserWidgetClassStruct_Once sync.Once
 
-func styleSchemeChooserWidgetClassStruct_Set() {
+func styleSchemeChooserWidgetClassStruct_Set() error {
+	var err error
 	styleSchemeChooserWidgetClassStruct_Once.Do(func() {
-		styleSchemeChooserWidgetClassStruct = gi.StructNew("GtkSource", "StyleSchemeChooserWidgetClass")
+		styleSchemeChooserWidgetClassStruct, err = gi.StructNew("GtkSource", "StyleSchemeChooserWidgetClass")
 	})
+	return err
 }
 
 type StyleSchemeChooserWidgetClass struct {
@@ -906,10 +1018,12 @@ type StyleSchemeChooserWidgetClass struct {
 var styleSchemeClassStruct *gi.Struct
 var styleSchemeClassStruct_Once sync.Once
 
-func styleSchemeClassStruct_Set() {
+func styleSchemeClassStruct_Set() error {
+	var err error
 	styleSchemeClassStruct_Once.Do(func() {
-		styleSchemeClassStruct = gi.StructNew("GtkSource", "StyleSchemeClass")
+		styleSchemeClassStruct, err = gi.StructNew("GtkSource", "StyleSchemeClass")
 	})
+	return err
 }
 
 type StyleSchemeClass struct {
@@ -922,10 +1036,12 @@ type StyleSchemeClass struct {
 var styleSchemeManagerClassStruct *gi.Struct
 var styleSchemeManagerClassStruct_Once sync.Once
 
-func styleSchemeManagerClassStruct_Set() {
+func styleSchemeManagerClassStruct_Set() error {
+	var err error
 	styleSchemeManagerClassStruct_Once.Do(func() {
-		styleSchemeManagerClassStruct = gi.StructNew("GtkSource", "StyleSchemeManagerClass")
+		styleSchemeManagerClassStruct, err = gi.StructNew("GtkSource", "StyleSchemeManagerClass")
 	})
+	return err
 }
 
 type StyleSchemeManagerClass struct {
@@ -940,10 +1056,12 @@ type StyleSchemeManagerClass struct {
 var styleSchemeManagerPrivateStruct *gi.Struct
 var styleSchemeManagerPrivateStruct_Once sync.Once
 
-func styleSchemeManagerPrivateStruct_Set() {
+func styleSchemeManagerPrivateStruct_Set() error {
+	var err error
 	styleSchemeManagerPrivateStruct_Once.Do(func() {
-		styleSchemeManagerPrivateStruct = gi.StructNew("GtkSource", "StyleSchemeManagerPrivate")
+		styleSchemeManagerPrivateStruct, err = gi.StructNew("GtkSource", "StyleSchemeManagerPrivate")
 	})
+	return err
 }
 
 type StyleSchemeManagerPrivate struct {
@@ -953,10 +1071,12 @@ type StyleSchemeManagerPrivate struct {
 var styleSchemePrivateStruct *gi.Struct
 var styleSchemePrivateStruct_Once sync.Once
 
-func styleSchemePrivateStruct_Set() {
+func styleSchemePrivateStruct_Set() error {
+	var err error
 	styleSchemePrivateStruct_Once.Do(func() {
-		styleSchemePrivateStruct = gi.StructNew("GtkSource", "StyleSchemePrivate")
+		styleSchemePrivateStruct, err = gi.StructNew("GtkSource", "StyleSchemePrivate")
 	})
+	return err
 }
 
 type StyleSchemePrivate struct {
@@ -966,10 +1086,12 @@ type StyleSchemePrivate struct {
 var tagClassStruct *gi.Struct
 var tagClassStruct_Once sync.Once
 
-func tagClassStruct_Set() {
+func tagClassStruct_Set() error {
+	var err error
 	tagClassStruct_Once.Do(func() {
-		tagClassStruct = gi.StructNew("GtkSource", "TagClass")
+		tagClassStruct, err = gi.StructNew("GtkSource", "TagClass")
 	})
+	return err
 }
 
 type TagClass struct {
@@ -981,10 +1103,12 @@ type TagClass struct {
 var undoManagerIfaceStruct *gi.Struct
 var undoManagerIfaceStruct_Once sync.Once
 
-func undoManagerIfaceStruct_Set() {
+func undoManagerIfaceStruct_Set() error {
+	var err error
 	undoManagerIfaceStruct_Once.Do(func() {
-		undoManagerIfaceStruct = gi.StructNew("GtkSource", "UndoManagerIface")
+		undoManagerIfaceStruct, err = gi.StructNew("GtkSource", "UndoManagerIface")
 	})
+	return err
 }
 
 type UndoManagerIface struct {
@@ -1003,10 +1127,12 @@ type UndoManagerIface struct {
 var viewClassStruct *gi.Struct
 var viewClassStruct_Once sync.Once
 
-func viewClassStruct_Set() {
+func viewClassStruct_Set() error {
+	var err error
 	viewClassStruct_Once.Do(func() {
-		viewClassStruct = gi.StructNew("GtkSource", "ViewClass")
+		viewClassStruct, err = gi.StructNew("GtkSource", "ViewClass")
 	})
+	return err
 }
 
 type ViewClass struct {
@@ -1023,10 +1149,12 @@ type ViewClass struct {
 var viewPrivateStruct *gi.Struct
 var viewPrivateStruct_Once sync.Once
 
-func viewPrivateStruct_Set() {
+func viewPrivateStruct_Set() error {
+	var err error
 	viewPrivateStruct_Once.Do(func() {
-		viewPrivateStruct = gi.StructNew("GtkSource", "ViewPrivate")
+		viewPrivateStruct, err = gi.StructNew("GtkSource", "ViewPrivate")
 	})
+	return err
 }
 
 type ViewPrivate struct {

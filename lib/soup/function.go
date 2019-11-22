@@ -62,9 +62,12 @@ func getMajorVersionFunction_Set() {
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
 func GetMajorVersion() uint32 {
+
+	var ret gi.Argument
+
 	getMajorVersionFunction_Set()
 
-	ret := getMajorVersionFunction.Invoke(nil, nil)
+	ret = getMajorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -82,9 +85,12 @@ func getMicroVersionFunction_Set() {
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
 func GetMicroVersion() uint32 {
+
+	var ret gi.Argument
+
 	getMicroVersionFunction_Set()
 
-	ret := getMicroVersionFunction.Invoke(nil, nil)
+	ret = getMicroVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -102,9 +108,12 @@ func getMinorVersionFunction_Set() {
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
 func GetMinorVersion() uint32 {
+
+	var ret gi.Argument
+
 	getMinorVersionFunction_Set()
 
-	ret := getMinorVersionFunction.Invoke(nil, nil)
+	ret = getMinorVersionFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -160,12 +169,14 @@ func statusGetPhraseFunction_Set() {
 
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
 func StatusGetPhrase(statusCode uint32) string {
-	statusGetPhraseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusGetPhraseFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	statusGetPhraseFunction_Set()
+
+	ret = statusGetPhraseFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -183,12 +194,14 @@ func statusProxifyFunction_Set() {
 
 // StatusProxify is a representation of the C type soup_status_proxify.
 func StatusProxify(statusCode uint32) uint32 {
-	statusProxifyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(statusCode)
 
-	ret := statusProxifyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	statusProxifyFunction_Set()
+
+	ret = statusProxifyFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -214,12 +227,14 @@ func tldGetBaseDomainFunction_Set() {
 
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
 func TldGetBaseDomain(hostname string) string {
-	tldGetBaseDomainFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(hostname)
 
-	ret := tldGetBaseDomainFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	tldGetBaseDomainFunction_Set()
+
+	ret = tldGetBaseDomainFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -237,12 +252,14 @@ func uriDecodeFunction_Set() {
 
 // UriDecode is a representation of the C type soup_uri_decode.
 func UriDecode(part string) string {
-	uriDecodeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(part)
 
-	ret := uriDecodeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	uriDecodeFunction_Set()
+
+	ret = uriDecodeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -260,13 +277,15 @@ func uriEncodeFunction_Set() {
 
 // UriEncode is a representation of the C type soup_uri_encode.
 func UriEncode(part string, escapeExtra string) string {
-	uriEncodeFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(escapeExtra)
 
-	ret := uriEncodeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	uriEncodeFunction_Set()
+
+	ret = uriEncodeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -284,13 +303,15 @@ func uriNormalizeFunction_Set() {
 
 // UriNormalize is a representation of the C type soup_uri_normalize.
 func UriNormalize(part string, unescapeExtra string) string {
-	uriNormalizeFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(part)
 	inArgs[1].SetString(unescapeExtra)
 
-	ret := uriNormalizeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	uriNormalizeFunction_Set()
+
+	ret = uriNormalizeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 

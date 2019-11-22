@@ -22,9 +22,12 @@ func encodingGetCurrentFunction_Set() {
 
 // EncodingGetCurrent is a representation of the C type gtk_source_encoding_get_current.
 func EncodingGetCurrent() *Encoding {
+
+	var ret gi.Argument
+
 	encodingGetCurrentFunction_Set()
 
-	ret := encodingGetCurrentFunction.Invoke(nil, nil)
+	ret = encodingGetCurrentFunction.Invoke(nil, nil)
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -44,12 +47,14 @@ func encodingGetFromCharsetFunction_Set() {
 
 // EncodingGetFromCharset is a representation of the C type gtk_source_encoding_get_from_charset.
 func EncodingGetFromCharset(charset string) *Encoding {
-	encodingGetFromCharsetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(charset)
 
-	ret := encodingGetFromCharsetFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	encodingGetFromCharsetFunction_Set()
+
+	ret = encodingGetFromCharsetFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -67,9 +72,12 @@ func encodingGetUtf8Function_Set() {
 
 // EncodingGetUtf8 is a representation of the C type gtk_source_encoding_get_utf8.
 func EncodingGetUtf8() *Encoding {
+
+	var ret gi.Argument
+
 	encodingGetUtf8Function_Set()
 
-	ret := encodingGetUtf8Function.Invoke(nil, nil)
+	ret = encodingGetUtf8Function.Invoke(nil, nil)
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -91,12 +99,14 @@ func utilsEscapeSearchTextFunction_Set() {
 
 // UtilsEscapeSearchText is a representation of the C type gtk_source_utils_escape_search_text.
 func UtilsEscapeSearchText(text string) string {
-	utilsEscapeSearchTextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
-	ret := utilsEscapeSearchTextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	utilsEscapeSearchTextFunction_Set()
+
+	ret = utilsEscapeSearchTextFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -114,12 +124,14 @@ func utilsUnescapeSearchTextFunction_Set() {
 
 // UtilsUnescapeSearchText is a representation of the C type gtk_source_utils_unescape_search_text.
 func UtilsUnescapeSearchText(text string) string {
-	utilsUnescapeSearchTextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
-	ret := utilsUnescapeSearchTextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	utilsUnescapeSearchTextFunction_Set()
+
+	ret = utilsUnescapeSearchTextFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 

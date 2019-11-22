@@ -158,11 +158,12 @@ func (f *Function) generateReceiver(s *jen.Statement) {
 }
 
 func (f *Function) generateBody(g *jen.Group) {
-	f.generateInitialiseInvoker(g)
-	g.Line()
 	f.Parameters.generateInArgs(g, f.receiver)
 	g.Line()
 	f.Parameters.generateOutArgs(g)
+	f.generateReturnArg(g)
+	g.Line()
+	f.generateInitialiseInvoker(g)
 	g.Line()
 	f.generateCallFunction(g)
 	g.Line()
@@ -178,13 +179,24 @@ func (f *Function) generateInitialiseInvoker(g *jen.Group) {
 		Call()
 }
 
+func (f *Function) generateReturnArg(g *jen.Group) {
+	if f.ReturnValue.isVoid() {
+		return
+	}
+
+	g.
+		Var().
+		Id("ret").
+		Qual(gi.PackageName, "Argument")
+}
+
 func (f *Function) generateCallFunction(g *jen.Group) {
 	g.
 		Do(func(s *jen.Statement) {
 			if !f.ReturnValue.isVoid() {
 				s.
 					Id("ret").
-					Op(":=")
+					Op("=")
 			}
 		}).
 		Id(f.funcInfoGoName).

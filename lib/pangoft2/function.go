@@ -40,6 +40,7 @@ func shutdownDisplayFunction_Set() {
 
 // ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
 func ShutdownDisplay() {
+
 	shutdownDisplayFunction_Set()
 
 	shutdownDisplayFunction.Invoke(nil, nil)

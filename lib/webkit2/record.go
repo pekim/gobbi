@@ -10,10 +10,12 @@ import (
 var applicationInfoStruct *gi.Struct
 var applicationInfoStruct_Once sync.Once
 
-func applicationInfoStruct_Set() {
+func applicationInfoStruct_Set() error {
+	var err error
 	applicationInfoStruct_Once.Do(func() {
-		applicationInfoStruct = gi.StructNew("WebKit2", "ApplicationInfo")
+		applicationInfoStruct, err = gi.StructNew("WebKit2", "ApplicationInfo")
 	})
+	return err
 }
 
 type ApplicationInfo struct {
@@ -32,9 +34,12 @@ func applicationInfoNewFunction_Set() {
 
 // ApplicationInfoNew is a representation of the C type webkit_application_info_new.
 func ApplicationInfoNew() *ApplicationInfo {
+
+	var ret gi.Argument
+
 	applicationInfoNewFunction_Set()
 
-	ret := applicationInfoNewFunction.Invoke(nil, nil)
+	ret = applicationInfoNewFunction.Invoke(nil, nil)
 
 	retGo := &ApplicationInfo{native: ret.Pointer()}
 
@@ -53,12 +58,14 @@ func applicationInfoGetNameFunction_Set() {
 
 // GetName is a representation of the C type webkit_application_info_get_name.
 func (recv *ApplicationInfo) GetName() string {
-	applicationInfoGetNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := applicationInfoGetNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	applicationInfoGetNameFunction_Set()
+
+	ret = applicationInfoGetNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -77,12 +84,12 @@ func applicationInfoGetVersionFunction_Set() {
 
 // GetVersion is a representation of the C type webkit_application_info_get_version.
 func (recv *ApplicationInfo) GetVersion() (uint64, uint64, uint64) {
-	applicationInfoGetVersionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [3]gi.Argument
+
+	applicationInfoGetVersionFunction_Set()
 
 	applicationInfoGetVersionFunction.Invoke(inArgs[:], outArgs[:])
 
@@ -105,12 +112,14 @@ func applicationInfoRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_application_info_ref.
 func (recv *ApplicationInfo) Ref() *ApplicationInfo {
-	applicationInfoRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := applicationInfoRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	applicationInfoRefFunction_Set()
+
+	ret = applicationInfoRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &ApplicationInfo{native: ret.Pointer()}
 
@@ -129,11 +138,11 @@ func applicationInfoSetNameFunction_Set() {
 
 // SetName is a representation of the C type webkit_application_info_set_name.
 func (recv *ApplicationInfo) SetName(name string) {
-	applicationInfoSetNameFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
+
+	applicationInfoSetNameFunction_Set()
 
 	applicationInfoSetNameFunction.Invoke(inArgs[:], nil)
 
@@ -151,13 +160,13 @@ func applicationInfoSetVersionFunction_Set() {
 
 // SetVersion is a representation of the C type webkit_application_info_set_version.
 func (recv *ApplicationInfo) SetVersion(major uint64, minor uint64, micro uint64) {
-	applicationInfoSetVersionFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(major)
 	inArgs[2].SetUint64(minor)
 	inArgs[3].SetUint64(micro)
+
+	applicationInfoSetVersionFunction_Set()
 
 	applicationInfoSetVersionFunction.Invoke(inArgs[:], nil)
 
@@ -175,10 +184,10 @@ func applicationInfoUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_application_info_unref.
 func (recv *ApplicationInfo) Unref() {
-	applicationInfoUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	applicationInfoUnrefFunction_Set()
 
 	applicationInfoUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -187,10 +196,12 @@ func (recv *ApplicationInfo) Unref() {
 var authenticationRequestClassStruct *gi.Struct
 var authenticationRequestClassStruct_Once sync.Once
 
-func authenticationRequestClassStruct_Set() {
+func authenticationRequestClassStruct_Set() error {
+	var err error
 	authenticationRequestClassStruct_Once.Do(func() {
-		authenticationRequestClassStruct = gi.StructNew("WebKit2", "AuthenticationRequestClass")
+		authenticationRequestClassStruct, err = gi.StructNew("WebKit2", "AuthenticationRequestClass")
 	})
+	return err
 }
 
 type AuthenticationRequestClass struct {
@@ -205,10 +216,12 @@ type AuthenticationRequestClass struct {
 var authenticationRequestPrivateStruct *gi.Struct
 var authenticationRequestPrivateStruct_Once sync.Once
 
-func authenticationRequestPrivateStruct_Set() {
+func authenticationRequestPrivateStruct_Set() error {
+	var err error
 	authenticationRequestPrivateStruct_Once.Do(func() {
-		authenticationRequestPrivateStruct = gi.StructNew("WebKit2", "AuthenticationRequestPrivate")
+		authenticationRequestPrivateStruct, err = gi.StructNew("WebKit2", "AuthenticationRequestPrivate")
 	})
+	return err
 }
 
 type AuthenticationRequestPrivate struct {
@@ -218,10 +231,12 @@ type AuthenticationRequestPrivate struct {
 var automationSessionClassStruct *gi.Struct
 var automationSessionClassStruct_Once sync.Once
 
-func automationSessionClassStruct_Set() {
+func automationSessionClassStruct_Set() error {
+	var err error
 	automationSessionClassStruct_Once.Do(func() {
-		automationSessionClassStruct = gi.StructNew("WebKit2", "AutomationSessionClass")
+		automationSessionClassStruct, err = gi.StructNew("WebKit2", "AutomationSessionClass")
 	})
+	return err
 }
 
 type AutomationSessionClass struct {
@@ -236,10 +251,12 @@ type AutomationSessionClass struct {
 var automationSessionPrivateStruct *gi.Struct
 var automationSessionPrivateStruct_Once sync.Once
 
-func automationSessionPrivateStruct_Set() {
+func automationSessionPrivateStruct_Set() error {
+	var err error
 	automationSessionPrivateStruct_Once.Do(func() {
-		automationSessionPrivateStruct = gi.StructNew("WebKit2", "AutomationSessionPrivate")
+		automationSessionPrivateStruct, err = gi.StructNew("WebKit2", "AutomationSessionPrivate")
 	})
+	return err
 }
 
 type AutomationSessionPrivate struct {
@@ -249,10 +266,12 @@ type AutomationSessionPrivate struct {
 var backForwardListClassStruct *gi.Struct
 var backForwardListClassStruct_Once sync.Once
 
-func backForwardListClassStruct_Set() {
+func backForwardListClassStruct_Set() error {
+	var err error
 	backForwardListClassStruct_Once.Do(func() {
-		backForwardListClassStruct = gi.StructNew("WebKit2", "BackForwardListClass")
+		backForwardListClassStruct, err = gi.StructNew("WebKit2", "BackForwardListClass")
 	})
+	return err
 }
 
 type BackForwardListClass struct {
@@ -267,10 +286,12 @@ type BackForwardListClass struct {
 var backForwardListItemClassStruct *gi.Struct
 var backForwardListItemClassStruct_Once sync.Once
 
-func backForwardListItemClassStruct_Set() {
+func backForwardListItemClassStruct_Set() error {
+	var err error
 	backForwardListItemClassStruct_Once.Do(func() {
-		backForwardListItemClassStruct = gi.StructNew("WebKit2", "BackForwardListItemClass")
+		backForwardListItemClassStruct, err = gi.StructNew("WebKit2", "BackForwardListItemClass")
 	})
+	return err
 }
 
 type BackForwardListItemClass struct {
@@ -285,10 +306,12 @@ type BackForwardListItemClass struct {
 var backForwardListItemPrivateStruct *gi.Struct
 var backForwardListItemPrivateStruct_Once sync.Once
 
-func backForwardListItemPrivateStruct_Set() {
+func backForwardListItemPrivateStruct_Set() error {
+	var err error
 	backForwardListItemPrivateStruct_Once.Do(func() {
-		backForwardListItemPrivateStruct = gi.StructNew("WebKit2", "BackForwardListItemPrivate")
+		backForwardListItemPrivateStruct, err = gi.StructNew("WebKit2", "BackForwardListItemPrivate")
 	})
+	return err
 }
 
 type BackForwardListItemPrivate struct {
@@ -298,10 +321,12 @@ type BackForwardListItemPrivate struct {
 var backForwardListPrivateStruct *gi.Struct
 var backForwardListPrivateStruct_Once sync.Once
 
-func backForwardListPrivateStruct_Set() {
+func backForwardListPrivateStruct_Set() error {
+	var err error
 	backForwardListPrivateStruct_Once.Do(func() {
-		backForwardListPrivateStruct = gi.StructNew("WebKit2", "BackForwardListPrivate")
+		backForwardListPrivateStruct, err = gi.StructNew("WebKit2", "BackForwardListPrivate")
 	})
+	return err
 }
 
 type BackForwardListPrivate struct {
@@ -311,10 +336,12 @@ type BackForwardListPrivate struct {
 var colorChooserRequestClassStruct *gi.Struct
 var colorChooserRequestClassStruct_Once sync.Once
 
-func colorChooserRequestClassStruct_Set() {
+func colorChooserRequestClassStruct_Set() error {
+	var err error
 	colorChooserRequestClassStruct_Once.Do(func() {
-		colorChooserRequestClassStruct = gi.StructNew("WebKit2", "ColorChooserRequestClass")
+		colorChooserRequestClassStruct, err = gi.StructNew("WebKit2", "ColorChooserRequestClass")
 	})
+	return err
 }
 
 type ColorChooserRequestClass struct {
@@ -325,10 +352,12 @@ type ColorChooserRequestClass struct {
 var colorChooserRequestPrivateStruct *gi.Struct
 var colorChooserRequestPrivateStruct_Once sync.Once
 
-func colorChooserRequestPrivateStruct_Set() {
+func colorChooserRequestPrivateStruct_Set() error {
+	var err error
 	colorChooserRequestPrivateStruct_Once.Do(func() {
-		colorChooserRequestPrivateStruct = gi.StructNew("WebKit2", "ColorChooserRequestPrivate")
+		colorChooserRequestPrivateStruct, err = gi.StructNew("WebKit2", "ColorChooserRequestPrivate")
 	})
+	return err
 }
 
 type ColorChooserRequestPrivate struct {
@@ -338,10 +367,12 @@ type ColorChooserRequestPrivate struct {
 var contextMenuClassStruct *gi.Struct
 var contextMenuClassStruct_Once sync.Once
 
-func contextMenuClassStruct_Set() {
+func contextMenuClassStruct_Set() error {
+	var err error
 	contextMenuClassStruct_Once.Do(func() {
-		contextMenuClassStruct = gi.StructNew("WebKit2", "ContextMenuClass")
+		contextMenuClassStruct, err = gi.StructNew("WebKit2", "ContextMenuClass")
 	})
+	return err
 }
 
 type ContextMenuClass struct {
@@ -356,10 +387,12 @@ type ContextMenuClass struct {
 var contextMenuItemClassStruct *gi.Struct
 var contextMenuItemClassStruct_Once sync.Once
 
-func contextMenuItemClassStruct_Set() {
+func contextMenuItemClassStruct_Set() error {
+	var err error
 	contextMenuItemClassStruct_Once.Do(func() {
-		contextMenuItemClassStruct = gi.StructNew("WebKit2", "ContextMenuItemClass")
+		contextMenuItemClassStruct, err = gi.StructNew("WebKit2", "ContextMenuItemClass")
 	})
+	return err
 }
 
 type ContextMenuItemClass struct {
@@ -374,10 +407,12 @@ type ContextMenuItemClass struct {
 var contextMenuItemPrivateStruct *gi.Struct
 var contextMenuItemPrivateStruct_Once sync.Once
 
-func contextMenuItemPrivateStruct_Set() {
+func contextMenuItemPrivateStruct_Set() error {
+	var err error
 	contextMenuItemPrivateStruct_Once.Do(func() {
-		contextMenuItemPrivateStruct = gi.StructNew("WebKit2", "ContextMenuItemPrivate")
+		contextMenuItemPrivateStruct, err = gi.StructNew("WebKit2", "ContextMenuItemPrivate")
 	})
+	return err
 }
 
 type ContextMenuItemPrivate struct {
@@ -387,10 +422,12 @@ type ContextMenuItemPrivate struct {
 var contextMenuPrivateStruct *gi.Struct
 var contextMenuPrivateStruct_Once sync.Once
 
-func contextMenuPrivateStruct_Set() {
+func contextMenuPrivateStruct_Set() error {
+	var err error
 	contextMenuPrivateStruct_Once.Do(func() {
-		contextMenuPrivateStruct = gi.StructNew("WebKit2", "ContextMenuPrivate")
+		contextMenuPrivateStruct, err = gi.StructNew("WebKit2", "ContextMenuPrivate")
 	})
+	return err
 }
 
 type ContextMenuPrivate struct {
@@ -400,10 +437,12 @@ type ContextMenuPrivate struct {
 var cookieManagerClassStruct *gi.Struct
 var cookieManagerClassStruct_Once sync.Once
 
-func cookieManagerClassStruct_Set() {
+func cookieManagerClassStruct_Set() error {
+	var err error
 	cookieManagerClassStruct_Once.Do(func() {
-		cookieManagerClassStruct = gi.StructNew("WebKit2", "CookieManagerClass")
+		cookieManagerClassStruct, err = gi.StructNew("WebKit2", "CookieManagerClass")
 	})
+	return err
 }
 
 type CookieManagerClass struct {
@@ -418,10 +457,12 @@ type CookieManagerClass struct {
 var cookieManagerPrivateStruct *gi.Struct
 var cookieManagerPrivateStruct_Once sync.Once
 
-func cookieManagerPrivateStruct_Set() {
+func cookieManagerPrivateStruct_Set() error {
+	var err error
 	cookieManagerPrivateStruct_Once.Do(func() {
-		cookieManagerPrivateStruct = gi.StructNew("WebKit2", "CookieManagerPrivate")
+		cookieManagerPrivateStruct, err = gi.StructNew("WebKit2", "CookieManagerPrivate")
 	})
+	return err
 }
 
 type CookieManagerPrivate struct {
@@ -431,10 +472,12 @@ type CookieManagerPrivate struct {
 var credentialStruct *gi.Struct
 var credentialStruct_Once sync.Once
 
-func credentialStruct_Set() {
+func credentialStruct_Set() error {
+	var err error
 	credentialStruct_Once.Do(func() {
-		credentialStruct = gi.StructNew("WebKit2", "Credential")
+		credentialStruct, err = gi.StructNew("WebKit2", "Credential")
 	})
+	return err
 }
 
 type Credential struct {
@@ -455,12 +498,14 @@ func credentialCopyFunction_Set() {
 
 // Copy is a representation of the C type webkit_credential_copy.
 func (recv *Credential) Copy() *Credential {
-	credentialCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := credentialCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	credentialCopyFunction_Set()
+
+	ret = credentialCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Credential{native: ret.Pointer()}
 
@@ -479,10 +524,10 @@ func credentialFreeFunction_Set() {
 
 // Free is a representation of the C type webkit_credential_free.
 func (recv *Credential) Free() {
-	credentialFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	credentialFreeFunction_Set()
 
 	credentialFreeFunction.Invoke(inArgs[:], nil)
 
@@ -500,12 +545,14 @@ func credentialGetPasswordFunction_Set() {
 
 // GetPassword is a representation of the C type webkit_credential_get_password.
 func (recv *Credential) GetPassword() string {
-	credentialGetPasswordFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := credentialGetPasswordFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	credentialGetPasswordFunction_Set()
+
+	ret = credentialGetPasswordFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -526,12 +573,14 @@ func credentialGetUsernameFunction_Set() {
 
 // GetUsername is a representation of the C type webkit_credential_get_username.
 func (recv *Credential) GetUsername() string {
-	credentialGetUsernameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := credentialGetUsernameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	credentialGetUsernameFunction_Set()
+
+	ret = credentialGetUsernameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -543,10 +592,12 @@ func (recv *Credential) GetUsername() string {
 var deviceInfoPermissionRequestClassStruct *gi.Struct
 var deviceInfoPermissionRequestClassStruct_Once sync.Once
 
-func deviceInfoPermissionRequestClassStruct_Set() {
+func deviceInfoPermissionRequestClassStruct_Set() error {
+	var err error
 	deviceInfoPermissionRequestClassStruct_Once.Do(func() {
-		deviceInfoPermissionRequestClassStruct = gi.StructNew("WebKit2", "DeviceInfoPermissionRequestClass")
+		deviceInfoPermissionRequestClassStruct, err = gi.StructNew("WebKit2", "DeviceInfoPermissionRequestClass")
 	})
+	return err
 }
 
 type DeviceInfoPermissionRequestClass struct {
@@ -561,10 +612,12 @@ type DeviceInfoPermissionRequestClass struct {
 var deviceInfoPermissionRequestPrivateStruct *gi.Struct
 var deviceInfoPermissionRequestPrivateStruct_Once sync.Once
 
-func deviceInfoPermissionRequestPrivateStruct_Set() {
+func deviceInfoPermissionRequestPrivateStruct_Set() error {
+	var err error
 	deviceInfoPermissionRequestPrivateStruct_Once.Do(func() {
-		deviceInfoPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "DeviceInfoPermissionRequestPrivate")
+		deviceInfoPermissionRequestPrivateStruct, err = gi.StructNew("WebKit2", "DeviceInfoPermissionRequestPrivate")
 	})
+	return err
 }
 
 type DeviceInfoPermissionRequestPrivate struct {
@@ -574,10 +627,12 @@ type DeviceInfoPermissionRequestPrivate struct {
 var downloadClassStruct *gi.Struct
 var downloadClassStruct_Once sync.Once
 
-func downloadClassStruct_Set() {
+func downloadClassStruct_Set() error {
+	var err error
 	downloadClassStruct_Once.Do(func() {
-		downloadClassStruct = gi.StructNew("WebKit2", "DownloadClass")
+		downloadClassStruct, err = gi.StructNew("WebKit2", "DownloadClass")
 	})
+	return err
 }
 
 type DownloadClass struct {
@@ -593,10 +648,12 @@ type DownloadClass struct {
 var downloadPrivateStruct *gi.Struct
 var downloadPrivateStruct_Once sync.Once
 
-func downloadPrivateStruct_Set() {
+func downloadPrivateStruct_Set() error {
+	var err error
 	downloadPrivateStruct_Once.Do(func() {
-		downloadPrivateStruct = gi.StructNew("WebKit2", "DownloadPrivate")
+		downloadPrivateStruct, err = gi.StructNew("WebKit2", "DownloadPrivate")
 	})
+	return err
 }
 
 type DownloadPrivate struct {
@@ -606,10 +663,12 @@ type DownloadPrivate struct {
 var editorStateClassStruct *gi.Struct
 var editorStateClassStruct_Once sync.Once
 
-func editorStateClassStruct_Set() {
+func editorStateClassStruct_Set() error {
+	var err error
 	editorStateClassStruct_Once.Do(func() {
-		editorStateClassStruct = gi.StructNew("WebKit2", "EditorStateClass")
+		editorStateClassStruct, err = gi.StructNew("WebKit2", "EditorStateClass")
 	})
+	return err
 }
 
 type EditorStateClass struct {
@@ -624,10 +683,12 @@ type EditorStateClass struct {
 var editorStatePrivateStruct *gi.Struct
 var editorStatePrivateStruct_Once sync.Once
 
-func editorStatePrivateStruct_Set() {
+func editorStatePrivateStruct_Set() error {
+	var err error
 	editorStatePrivateStruct_Once.Do(func() {
-		editorStatePrivateStruct = gi.StructNew("WebKit2", "EditorStatePrivate")
+		editorStatePrivateStruct, err = gi.StructNew("WebKit2", "EditorStatePrivate")
 	})
+	return err
 }
 
 type EditorStatePrivate struct {
@@ -637,10 +698,12 @@ type EditorStatePrivate struct {
 var faviconDatabaseClassStruct *gi.Struct
 var faviconDatabaseClassStruct_Once sync.Once
 
-func faviconDatabaseClassStruct_Set() {
+func faviconDatabaseClassStruct_Set() error {
+	var err error
 	faviconDatabaseClassStruct_Once.Do(func() {
-		faviconDatabaseClassStruct = gi.StructNew("WebKit2", "FaviconDatabaseClass")
+		faviconDatabaseClassStruct, err = gi.StructNew("WebKit2", "FaviconDatabaseClass")
 	})
+	return err
 }
 
 type FaviconDatabaseClass struct {
@@ -655,10 +718,12 @@ type FaviconDatabaseClass struct {
 var faviconDatabasePrivateStruct *gi.Struct
 var faviconDatabasePrivateStruct_Once sync.Once
 
-func faviconDatabasePrivateStruct_Set() {
+func faviconDatabasePrivateStruct_Set() error {
+	var err error
 	faviconDatabasePrivateStruct_Once.Do(func() {
-		faviconDatabasePrivateStruct = gi.StructNew("WebKit2", "FaviconDatabasePrivate")
+		faviconDatabasePrivateStruct, err = gi.StructNew("WebKit2", "FaviconDatabasePrivate")
 	})
+	return err
 }
 
 type FaviconDatabasePrivate struct {
@@ -668,10 +733,12 @@ type FaviconDatabasePrivate struct {
 var fileChooserRequestClassStruct *gi.Struct
 var fileChooserRequestClassStruct_Once sync.Once
 
-func fileChooserRequestClassStruct_Set() {
+func fileChooserRequestClassStruct_Set() error {
+	var err error
 	fileChooserRequestClassStruct_Once.Do(func() {
-		fileChooserRequestClassStruct = gi.StructNew("WebKit2", "FileChooserRequestClass")
+		fileChooserRequestClassStruct, err = gi.StructNew("WebKit2", "FileChooserRequestClass")
 	})
+	return err
 }
 
 type FileChooserRequestClass struct {
@@ -686,10 +753,12 @@ type FileChooserRequestClass struct {
 var fileChooserRequestPrivateStruct *gi.Struct
 var fileChooserRequestPrivateStruct_Once sync.Once
 
-func fileChooserRequestPrivateStruct_Set() {
+func fileChooserRequestPrivateStruct_Set() error {
+	var err error
 	fileChooserRequestPrivateStruct_Once.Do(func() {
-		fileChooserRequestPrivateStruct = gi.StructNew("WebKit2", "FileChooserRequestPrivate")
+		fileChooserRequestPrivateStruct, err = gi.StructNew("WebKit2", "FileChooserRequestPrivate")
 	})
+	return err
 }
 
 type FileChooserRequestPrivate struct {
@@ -699,10 +768,12 @@ type FileChooserRequestPrivate struct {
 var findControllerClassStruct *gi.Struct
 var findControllerClassStruct_Once sync.Once
 
-func findControllerClassStruct_Set() {
+func findControllerClassStruct_Set() error {
+	var err error
 	findControllerClassStruct_Once.Do(func() {
-		findControllerClassStruct = gi.StructNew("WebKit2", "FindControllerClass")
+		findControllerClassStruct, err = gi.StructNew("WebKit2", "FindControllerClass")
 	})
+	return err
 }
 
 type FindControllerClass struct {
@@ -717,10 +788,12 @@ type FindControllerClass struct {
 var findControllerPrivateStruct *gi.Struct
 var findControllerPrivateStruct_Once sync.Once
 
-func findControllerPrivateStruct_Set() {
+func findControllerPrivateStruct_Set() error {
+	var err error
 	findControllerPrivateStruct_Once.Do(func() {
-		findControllerPrivateStruct = gi.StructNew("WebKit2", "FindControllerPrivate")
+		findControllerPrivateStruct, err = gi.StructNew("WebKit2", "FindControllerPrivate")
 	})
+	return err
 }
 
 type FindControllerPrivate struct {
@@ -730,10 +803,12 @@ type FindControllerPrivate struct {
 var formSubmissionRequestClassStruct *gi.Struct
 var formSubmissionRequestClassStruct_Once sync.Once
 
-func formSubmissionRequestClassStruct_Set() {
+func formSubmissionRequestClassStruct_Set() error {
+	var err error
 	formSubmissionRequestClassStruct_Once.Do(func() {
-		formSubmissionRequestClassStruct = gi.StructNew("WebKit2", "FormSubmissionRequestClass")
+		formSubmissionRequestClassStruct, err = gi.StructNew("WebKit2", "FormSubmissionRequestClass")
 	})
+	return err
 }
 
 type FormSubmissionRequestClass struct {
@@ -748,10 +823,12 @@ type FormSubmissionRequestClass struct {
 var formSubmissionRequestPrivateStruct *gi.Struct
 var formSubmissionRequestPrivateStruct_Once sync.Once
 
-func formSubmissionRequestPrivateStruct_Set() {
+func formSubmissionRequestPrivateStruct_Set() error {
+	var err error
 	formSubmissionRequestPrivateStruct_Once.Do(func() {
-		formSubmissionRequestPrivateStruct = gi.StructNew("WebKit2", "FormSubmissionRequestPrivate")
+		formSubmissionRequestPrivateStruct, err = gi.StructNew("WebKit2", "FormSubmissionRequestPrivate")
 	})
+	return err
 }
 
 type FormSubmissionRequestPrivate struct {
@@ -761,10 +838,12 @@ type FormSubmissionRequestPrivate struct {
 var geolocationManagerClassStruct *gi.Struct
 var geolocationManagerClassStruct_Once sync.Once
 
-func geolocationManagerClassStruct_Set() {
+func geolocationManagerClassStruct_Set() error {
+	var err error
 	geolocationManagerClassStruct_Once.Do(func() {
-		geolocationManagerClassStruct = gi.StructNew("WebKit2", "GeolocationManagerClass")
+		geolocationManagerClassStruct, err = gi.StructNew("WebKit2", "GeolocationManagerClass")
 	})
+	return err
 }
 
 type GeolocationManagerClass struct {
@@ -779,10 +858,12 @@ type GeolocationManagerClass struct {
 var geolocationManagerPrivateStruct *gi.Struct
 var geolocationManagerPrivateStruct_Once sync.Once
 
-func geolocationManagerPrivateStruct_Set() {
+func geolocationManagerPrivateStruct_Set() error {
+	var err error
 	geolocationManagerPrivateStruct_Once.Do(func() {
-		geolocationManagerPrivateStruct = gi.StructNew("WebKit2", "GeolocationManagerPrivate")
+		geolocationManagerPrivateStruct, err = gi.StructNew("WebKit2", "GeolocationManagerPrivate")
 	})
+	return err
 }
 
 type GeolocationManagerPrivate struct {
@@ -792,10 +873,12 @@ type GeolocationManagerPrivate struct {
 var geolocationPermissionRequestClassStruct *gi.Struct
 var geolocationPermissionRequestClassStruct_Once sync.Once
 
-func geolocationPermissionRequestClassStruct_Set() {
+func geolocationPermissionRequestClassStruct_Set() error {
+	var err error
 	geolocationPermissionRequestClassStruct_Once.Do(func() {
-		geolocationPermissionRequestClassStruct = gi.StructNew("WebKit2", "GeolocationPermissionRequestClass")
+		geolocationPermissionRequestClassStruct, err = gi.StructNew("WebKit2", "GeolocationPermissionRequestClass")
 	})
+	return err
 }
 
 type GeolocationPermissionRequestClass struct {
@@ -810,10 +893,12 @@ type GeolocationPermissionRequestClass struct {
 var geolocationPermissionRequestPrivateStruct *gi.Struct
 var geolocationPermissionRequestPrivateStruct_Once sync.Once
 
-func geolocationPermissionRequestPrivateStruct_Set() {
+func geolocationPermissionRequestPrivateStruct_Set() error {
+	var err error
 	geolocationPermissionRequestPrivateStruct_Once.Do(func() {
-		geolocationPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "GeolocationPermissionRequestPrivate")
+		geolocationPermissionRequestPrivateStruct, err = gi.StructNew("WebKit2", "GeolocationPermissionRequestPrivate")
 	})
+	return err
 }
 
 type GeolocationPermissionRequestPrivate struct {
@@ -823,10 +908,12 @@ type GeolocationPermissionRequestPrivate struct {
 var geolocationPositionStruct *gi.Struct
 var geolocationPositionStruct_Once sync.Once
 
-func geolocationPositionStruct_Set() {
+func geolocationPositionStruct_Set() error {
+	var err error
 	geolocationPositionStruct_Once.Do(func() {
-		geolocationPositionStruct = gi.StructNew("WebKit2", "GeolocationPosition")
+		geolocationPositionStruct, err = gi.StructNew("WebKit2", "GeolocationPosition")
 	})
+	return err
 }
 
 type GeolocationPosition struct {
@@ -847,12 +934,14 @@ func geolocationPositionCopyFunction_Set() {
 
 // Copy is a representation of the C type webkit_geolocation_position_copy.
 func (recv *GeolocationPosition) Copy() *GeolocationPosition {
-	geolocationPositionCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := geolocationPositionCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	geolocationPositionCopyFunction_Set()
+
+	ret = geolocationPositionCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &GeolocationPosition{native: ret.Pointer()}
 
@@ -871,10 +960,10 @@ func geolocationPositionFreeFunction_Set() {
 
 // Free is a representation of the C type webkit_geolocation_position_free.
 func (recv *GeolocationPosition) Free() {
-	geolocationPositionFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	geolocationPositionFreeFunction_Set()
 
 	geolocationPositionFreeFunction.Invoke(inArgs[:], nil)
 
@@ -900,11 +989,11 @@ func geolocationPositionSetTimestampFunction_Set() {
 
 // SetTimestamp is a representation of the C type webkit_geolocation_position_set_timestamp.
 func (recv *GeolocationPosition) SetTimestamp(timestamp uint64) {
-	geolocationPositionSetTimestampFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(timestamp)
+
+	geolocationPositionSetTimestampFunction_Set()
 
 	geolocationPositionSetTimestampFunction.Invoke(inArgs[:], nil)
 
@@ -913,10 +1002,12 @@ func (recv *GeolocationPosition) SetTimestamp(timestamp uint64) {
 var hitTestResultClassStruct *gi.Struct
 var hitTestResultClassStruct_Once sync.Once
 
-func hitTestResultClassStruct_Set() {
+func hitTestResultClassStruct_Set() error {
+	var err error
 	hitTestResultClassStruct_Once.Do(func() {
-		hitTestResultClassStruct = gi.StructNew("WebKit2", "HitTestResultClass")
+		hitTestResultClassStruct, err = gi.StructNew("WebKit2", "HitTestResultClass")
 	})
+	return err
 }
 
 type HitTestResultClass struct {
@@ -931,10 +1022,12 @@ type HitTestResultClass struct {
 var hitTestResultPrivateStruct *gi.Struct
 var hitTestResultPrivateStruct_Once sync.Once
 
-func hitTestResultPrivateStruct_Set() {
+func hitTestResultPrivateStruct_Set() error {
+	var err error
 	hitTestResultPrivateStruct_Once.Do(func() {
-		hitTestResultPrivateStruct = gi.StructNew("WebKit2", "HitTestResultPrivate")
+		hitTestResultPrivateStruct, err = gi.StructNew("WebKit2", "HitTestResultPrivate")
 	})
+	return err
 }
 
 type HitTestResultPrivate struct {
@@ -944,10 +1037,12 @@ type HitTestResultPrivate struct {
 var installMissingMediaPluginsPermissionRequestClassStruct *gi.Struct
 var installMissingMediaPluginsPermissionRequestClassStruct_Once sync.Once
 
-func installMissingMediaPluginsPermissionRequestClassStruct_Set() {
+func installMissingMediaPluginsPermissionRequestClassStruct_Set() error {
+	var err error
 	installMissingMediaPluginsPermissionRequestClassStruct_Once.Do(func() {
-		installMissingMediaPluginsPermissionRequestClassStruct = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequestClass")
+		installMissingMediaPluginsPermissionRequestClassStruct, err = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequestClass")
 	})
+	return err
 }
 
 type InstallMissingMediaPluginsPermissionRequestClass struct {
@@ -962,10 +1057,12 @@ type InstallMissingMediaPluginsPermissionRequestClass struct {
 var installMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
 var installMissingMediaPluginsPermissionRequestPrivateStruct_Once sync.Once
 
-func installMissingMediaPluginsPermissionRequestPrivateStruct_Set() {
+func installMissingMediaPluginsPermissionRequestPrivateStruct_Set() error {
+	var err error
 	installMissingMediaPluginsPermissionRequestPrivateStruct_Once.Do(func() {
-		installMissingMediaPluginsPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequestPrivate")
+		installMissingMediaPluginsPermissionRequestPrivateStruct, err = gi.StructNew("WebKit2", "InstallMissingMediaPluginsPermissionRequestPrivate")
 	})
+	return err
 }
 
 type InstallMissingMediaPluginsPermissionRequestPrivate struct {
@@ -975,10 +1072,12 @@ type InstallMissingMediaPluginsPermissionRequestPrivate struct {
 var javascriptResultStruct *gi.Struct
 var javascriptResultStruct_Once sync.Once
 
-func javascriptResultStruct_Set() {
+func javascriptResultStruct_Set() error {
+	var err error
 	javascriptResultStruct_Once.Do(func() {
-		javascriptResultStruct = gi.StructNew("WebKit2", "JavascriptResult")
+		javascriptResultStruct, err = gi.StructNew("WebKit2", "JavascriptResult")
 	})
+	return err
 }
 
 type JavascriptResult struct {
@@ -1003,12 +1102,14 @@ func javascriptResultRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_javascript_result_ref.
 func (recv *JavascriptResult) Ref() *JavascriptResult {
-	javascriptResultRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := javascriptResultRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	javascriptResultRefFunction_Set()
+
+	ret = javascriptResultRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &JavascriptResult{native: ret.Pointer()}
 
@@ -1027,10 +1128,10 @@ func javascriptResultUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_javascript_result_unref.
 func (recv *JavascriptResult) Unref() {
-	javascriptResultUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	javascriptResultUnrefFunction_Set()
 
 	javascriptResultUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -1039,10 +1140,12 @@ func (recv *JavascriptResult) Unref() {
 var mimeInfoStruct *gi.Struct
 var mimeInfoStruct_Once sync.Once
 
-func mimeInfoStruct_Set() {
+func mimeInfoStruct_Set() error {
+	var err error
 	mimeInfoStruct_Once.Do(func() {
-		mimeInfoStruct = gi.StructNew("WebKit2", "MimeInfo")
+		mimeInfoStruct, err = gi.StructNew("WebKit2", "MimeInfo")
 	})
+	return err
 }
 
 type MimeInfo struct {
@@ -1061,12 +1164,14 @@ func mimeInfoGetDescriptionFunction_Set() {
 
 // GetDescription is a representation of the C type webkit_mime_info_get_description.
 func (recv *MimeInfo) GetDescription() string {
-	mimeInfoGetDescriptionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mimeInfoGetDescriptionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mimeInfoGetDescriptionFunction_Set()
+
+	ret = mimeInfoGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1085,10 +1190,10 @@ func mimeInfoGetExtensionsFunction_Set() {
 
 // GetExtensions is a representation of the C type webkit_mime_info_get_extensions.
 func (recv *MimeInfo) GetExtensions() {
-	mimeInfoGetExtensionsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mimeInfoGetExtensionsFunction_Set()
 
 	mimeInfoGetExtensionsFunction.Invoke(inArgs[:], nil)
 
@@ -1106,12 +1211,14 @@ func mimeInfoGetMimeTypeFunction_Set() {
 
 // GetMimeType is a representation of the C type webkit_mime_info_get_mime_type.
 func (recv *MimeInfo) GetMimeType() string {
-	mimeInfoGetMimeTypeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mimeInfoGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mimeInfoGetMimeTypeFunction_Set()
+
+	ret = mimeInfoGetMimeTypeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1130,12 +1237,14 @@ func mimeInfoRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_mime_info_ref.
 func (recv *MimeInfo) Ref() *MimeInfo {
-	mimeInfoRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mimeInfoRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mimeInfoRefFunction_Set()
+
+	ret = mimeInfoRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MimeInfo{native: ret.Pointer()}
 
@@ -1154,10 +1263,10 @@ func mimeInfoUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_mime_info_unref.
 func (recv *MimeInfo) Unref() {
-	mimeInfoUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mimeInfoUnrefFunction_Set()
 
 	mimeInfoUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -1166,10 +1275,12 @@ func (recv *MimeInfo) Unref() {
 var navigationActionStruct *gi.Struct
 var navigationActionStruct_Once sync.Once
 
-func navigationActionStruct_Set() {
+func navigationActionStruct_Set() error {
+	var err error
 	navigationActionStruct_Once.Do(func() {
-		navigationActionStruct = gi.StructNew("WebKit2", "NavigationAction")
+		navigationActionStruct, err = gi.StructNew("WebKit2", "NavigationAction")
 	})
+	return err
 }
 
 type NavigationAction struct {
@@ -1188,12 +1299,14 @@ func navigationActionCopyFunction_Set() {
 
 // Copy is a representation of the C type webkit_navigation_action_copy.
 func (recv *NavigationAction) Copy() *NavigationAction {
-	navigationActionCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := navigationActionCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	navigationActionCopyFunction_Set()
+
+	ret = navigationActionCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &NavigationAction{native: ret.Pointer()}
 
@@ -1212,10 +1325,10 @@ func navigationActionFreeFunction_Set() {
 
 // Free is a representation of the C type webkit_navigation_action_free.
 func (recv *NavigationAction) Free() {
-	navigationActionFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	navigationActionFreeFunction_Set()
 
 	navigationActionFreeFunction.Invoke(inArgs[:], nil)
 
@@ -1233,12 +1346,14 @@ func navigationActionGetModifiersFunction_Set() {
 
 // GetModifiers is a representation of the C type webkit_navigation_action_get_modifiers.
 func (recv *NavigationAction) GetModifiers() uint32 {
-	navigationActionGetModifiersFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := navigationActionGetModifiersFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	navigationActionGetModifiersFunction_Set()
+
+	ret = navigationActionGetModifiersFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1257,12 +1372,14 @@ func navigationActionGetMouseButtonFunction_Set() {
 
 // GetMouseButton is a representation of the C type webkit_navigation_action_get_mouse_button.
 func (recv *NavigationAction) GetMouseButton() uint32 {
-	navigationActionGetMouseButtonFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := navigationActionGetMouseButtonFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	navigationActionGetMouseButtonFunction_Set()
+
+	ret = navigationActionGetMouseButtonFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1280,10 +1397,12 @@ func (recv *NavigationAction) GetMouseButton() uint32 {
 var navigationPolicyDecisionClassStruct *gi.Struct
 var navigationPolicyDecisionClassStruct_Once sync.Once
 
-func navigationPolicyDecisionClassStruct_Set() {
+func navigationPolicyDecisionClassStruct_Set() error {
+	var err error
 	navigationPolicyDecisionClassStruct_Once.Do(func() {
-		navigationPolicyDecisionClassStruct = gi.StructNew("WebKit2", "NavigationPolicyDecisionClass")
+		navigationPolicyDecisionClassStruct, err = gi.StructNew("WebKit2", "NavigationPolicyDecisionClass")
 	})
+	return err
 }
 
 type NavigationPolicyDecisionClass struct {
@@ -1298,10 +1417,12 @@ type NavigationPolicyDecisionClass struct {
 var navigationPolicyDecisionPrivateStruct *gi.Struct
 var navigationPolicyDecisionPrivateStruct_Once sync.Once
 
-func navigationPolicyDecisionPrivateStruct_Set() {
+func navigationPolicyDecisionPrivateStruct_Set() error {
+	var err error
 	navigationPolicyDecisionPrivateStruct_Once.Do(func() {
-		navigationPolicyDecisionPrivateStruct = gi.StructNew("WebKit2", "NavigationPolicyDecisionPrivate")
+		navigationPolicyDecisionPrivateStruct, err = gi.StructNew("WebKit2", "NavigationPolicyDecisionPrivate")
 	})
+	return err
 }
 
 type NavigationPolicyDecisionPrivate struct {
@@ -1311,10 +1432,12 @@ type NavigationPolicyDecisionPrivate struct {
 var networkProxySettingsStruct *gi.Struct
 var networkProxySettingsStruct_Once sync.Once
 
-func networkProxySettingsStruct_Set() {
+func networkProxySettingsStruct_Set() error {
+	var err error
 	networkProxySettingsStruct_Once.Do(func() {
-		networkProxySettingsStruct = gi.StructNew("WebKit2", "NetworkProxySettings")
+		networkProxySettingsStruct, err = gi.StructNew("WebKit2", "NetworkProxySettings")
 	})
+	return err
 }
 
 type NetworkProxySettings struct {
@@ -1335,12 +1458,12 @@ func networkProxySettingsAddProxyForSchemeFunction_Set() {
 
 // AddProxyForScheme is a representation of the C type webkit_network_proxy_settings_add_proxy_for_scheme.
 func (recv *NetworkProxySettings) AddProxyForScheme(scheme string, proxyUri string) {
-	networkProxySettingsAddProxyForSchemeFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(scheme)
 	inArgs[2].SetString(proxyUri)
+
+	networkProxySettingsAddProxyForSchemeFunction_Set()
 
 	networkProxySettingsAddProxyForSchemeFunction.Invoke(inArgs[:], nil)
 
@@ -1358,12 +1481,14 @@ func networkProxySettingsCopyFunction_Set() {
 
 // Copy is a representation of the C type webkit_network_proxy_settings_copy.
 func (recv *NetworkProxySettings) Copy() *NetworkProxySettings {
-	networkProxySettingsCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := networkProxySettingsCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	networkProxySettingsCopyFunction_Set()
+
+	ret = networkProxySettingsCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &NetworkProxySettings{native: ret.Pointer()}
 
@@ -1382,10 +1507,10 @@ func networkProxySettingsFreeFunction_Set() {
 
 // Free is a representation of the C type webkit_network_proxy_settings_free.
 func (recv *NetworkProxySettings) Free() {
-	networkProxySettingsFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	networkProxySettingsFreeFunction_Set()
 
 	networkProxySettingsFreeFunction.Invoke(inArgs[:], nil)
 
@@ -1394,10 +1519,12 @@ func (recv *NetworkProxySettings) Free() {
 var notificationClassStruct *gi.Struct
 var notificationClassStruct_Once sync.Once
 
-func notificationClassStruct_Set() {
+func notificationClassStruct_Set() error {
+	var err error
 	notificationClassStruct_Once.Do(func() {
-		notificationClassStruct = gi.StructNew("WebKit2", "NotificationClass")
+		notificationClassStruct, err = gi.StructNew("WebKit2", "NotificationClass")
 	})
+	return err
 }
 
 type NotificationClass struct {
@@ -1414,10 +1541,12 @@ type NotificationClass struct {
 var notificationPermissionRequestClassStruct *gi.Struct
 var notificationPermissionRequestClassStruct_Once sync.Once
 
-func notificationPermissionRequestClassStruct_Set() {
+func notificationPermissionRequestClassStruct_Set() error {
+	var err error
 	notificationPermissionRequestClassStruct_Once.Do(func() {
-		notificationPermissionRequestClassStruct = gi.StructNew("WebKit2", "NotificationPermissionRequestClass")
+		notificationPermissionRequestClassStruct, err = gi.StructNew("WebKit2", "NotificationPermissionRequestClass")
 	})
+	return err
 }
 
 type NotificationPermissionRequestClass struct {
@@ -1428,10 +1557,12 @@ type NotificationPermissionRequestClass struct {
 var notificationPermissionRequestPrivateStruct *gi.Struct
 var notificationPermissionRequestPrivateStruct_Once sync.Once
 
-func notificationPermissionRequestPrivateStruct_Set() {
+func notificationPermissionRequestPrivateStruct_Set() error {
+	var err error
 	notificationPermissionRequestPrivateStruct_Once.Do(func() {
-		notificationPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "NotificationPermissionRequestPrivate")
+		notificationPermissionRequestPrivateStruct, err = gi.StructNew("WebKit2", "NotificationPermissionRequestPrivate")
 	})
+	return err
 }
 
 type NotificationPermissionRequestPrivate struct {
@@ -1441,10 +1572,12 @@ type NotificationPermissionRequestPrivate struct {
 var notificationPrivateStruct *gi.Struct
 var notificationPrivateStruct_Once sync.Once
 
-func notificationPrivateStruct_Set() {
+func notificationPrivateStruct_Set() error {
+	var err error
 	notificationPrivateStruct_Once.Do(func() {
-		notificationPrivateStruct = gi.StructNew("WebKit2", "NotificationPrivate")
+		notificationPrivateStruct, err = gi.StructNew("WebKit2", "NotificationPrivate")
 	})
+	return err
 }
 
 type NotificationPrivate struct {
@@ -1454,10 +1587,12 @@ type NotificationPrivate struct {
 var optionMenuClassStruct *gi.Struct
 var optionMenuClassStruct_Once sync.Once
 
-func optionMenuClassStruct_Set() {
+func optionMenuClassStruct_Set() error {
+	var err error
 	optionMenuClassStruct_Once.Do(func() {
-		optionMenuClassStruct = gi.StructNew("WebKit2", "OptionMenuClass")
+		optionMenuClassStruct, err = gi.StructNew("WebKit2", "OptionMenuClass")
 	})
+	return err
 }
 
 type OptionMenuClass struct {
@@ -1472,10 +1607,12 @@ type OptionMenuClass struct {
 var optionMenuItemStruct *gi.Struct
 var optionMenuItemStruct_Once sync.Once
 
-func optionMenuItemStruct_Set() {
+func optionMenuItemStruct_Set() error {
+	var err error
 	optionMenuItemStruct_Once.Do(func() {
-		optionMenuItemStruct = gi.StructNew("WebKit2", "OptionMenuItem")
+		optionMenuItemStruct, err = gi.StructNew("WebKit2", "OptionMenuItem")
 	})
+	return err
 }
 
 type OptionMenuItem struct {
@@ -1494,12 +1631,14 @@ func optionMenuItemCopyFunction_Set() {
 
 // Copy is a representation of the C type webkit_option_menu_item_copy.
 func (recv *OptionMenuItem) Copy() *OptionMenuItem {
-	optionMenuItemCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionMenuItemCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionMenuItemCopyFunction_Set()
+
+	ret = optionMenuItemCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &OptionMenuItem{native: ret.Pointer()}
 
@@ -1518,10 +1657,10 @@ func optionMenuItemFreeFunction_Set() {
 
 // Free is a representation of the C type webkit_option_menu_item_free.
 func (recv *OptionMenuItem) Free() {
-	optionMenuItemFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	optionMenuItemFreeFunction_Set()
 
 	optionMenuItemFreeFunction.Invoke(inArgs[:], nil)
 
@@ -1539,12 +1678,14 @@ func optionMenuItemGetLabelFunction_Set() {
 
 // GetLabel is a representation of the C type webkit_option_menu_item_get_label.
 func (recv *OptionMenuItem) GetLabel() string {
-	optionMenuItemGetLabelFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionMenuItemGetLabelFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionMenuItemGetLabelFunction_Set()
+
+	ret = optionMenuItemGetLabelFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1563,12 +1704,14 @@ func optionMenuItemGetTooltipFunction_Set() {
 
 // GetTooltip is a representation of the C type webkit_option_menu_item_get_tooltip.
 func (recv *OptionMenuItem) GetTooltip() string {
-	optionMenuItemGetTooltipFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionMenuItemGetTooltipFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionMenuItemGetTooltipFunction_Set()
+
+	ret = optionMenuItemGetTooltipFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1586,10 +1729,12 @@ func (recv *OptionMenuItem) GetTooltip() string {
 var optionMenuPrivateStruct *gi.Struct
 var optionMenuPrivateStruct_Once sync.Once
 
-func optionMenuPrivateStruct_Set() {
+func optionMenuPrivateStruct_Set() error {
+	var err error
 	optionMenuPrivateStruct_Once.Do(func() {
-		optionMenuPrivateStruct = gi.StructNew("WebKit2", "OptionMenuPrivate")
+		optionMenuPrivateStruct, err = gi.StructNew("WebKit2", "OptionMenuPrivate")
 	})
+	return err
 }
 
 type OptionMenuPrivate struct {
@@ -1599,10 +1744,12 @@ type OptionMenuPrivate struct {
 var permissionRequestIfaceStruct *gi.Struct
 var permissionRequestIfaceStruct_Once sync.Once
 
-func permissionRequestIfaceStruct_Set() {
+func permissionRequestIfaceStruct_Set() error {
+	var err error
 	permissionRequestIfaceStruct_Once.Do(func() {
-		permissionRequestIfaceStruct = gi.StructNew("WebKit2", "PermissionRequestIface")
+		permissionRequestIfaceStruct, err = gi.StructNew("WebKit2", "PermissionRequestIface")
 	})
+	return err
 }
 
 type PermissionRequestIface struct {
@@ -1615,10 +1762,12 @@ type PermissionRequestIface struct {
 var pluginClassStruct *gi.Struct
 var pluginClassStruct_Once sync.Once
 
-func pluginClassStruct_Set() {
+func pluginClassStruct_Set() error {
+	var err error
 	pluginClassStruct_Once.Do(func() {
-		pluginClassStruct = gi.StructNew("WebKit2", "PluginClass")
+		pluginClassStruct, err = gi.StructNew("WebKit2", "PluginClass")
 	})
+	return err
 }
 
 type PluginClass struct {
@@ -1633,10 +1782,12 @@ type PluginClass struct {
 var pluginPrivateStruct *gi.Struct
 var pluginPrivateStruct_Once sync.Once
 
-func pluginPrivateStruct_Set() {
+func pluginPrivateStruct_Set() error {
+	var err error
 	pluginPrivateStruct_Once.Do(func() {
-		pluginPrivateStruct = gi.StructNew("WebKit2", "PluginPrivate")
+		pluginPrivateStruct, err = gi.StructNew("WebKit2", "PluginPrivate")
 	})
+	return err
 }
 
 type PluginPrivate struct {
@@ -1646,10 +1797,12 @@ type PluginPrivate struct {
 var policyDecisionClassStruct *gi.Struct
 var policyDecisionClassStruct_Once sync.Once
 
-func policyDecisionClassStruct_Set() {
+func policyDecisionClassStruct_Set() error {
+	var err error
 	policyDecisionClassStruct_Once.Do(func() {
-		policyDecisionClassStruct = gi.StructNew("WebKit2", "PolicyDecisionClass")
+		policyDecisionClassStruct, err = gi.StructNew("WebKit2", "PolicyDecisionClass")
 	})
+	return err
 }
 
 type PolicyDecisionClass struct {
@@ -1664,10 +1817,12 @@ type PolicyDecisionClass struct {
 var policyDecisionPrivateStruct *gi.Struct
 var policyDecisionPrivateStruct_Once sync.Once
 
-func policyDecisionPrivateStruct_Set() {
+func policyDecisionPrivateStruct_Set() error {
+	var err error
 	policyDecisionPrivateStruct_Once.Do(func() {
-		policyDecisionPrivateStruct = gi.StructNew("WebKit2", "PolicyDecisionPrivate")
+		policyDecisionPrivateStruct, err = gi.StructNew("WebKit2", "PolicyDecisionPrivate")
 	})
+	return err
 }
 
 type PolicyDecisionPrivate struct {
@@ -1677,10 +1832,12 @@ type PolicyDecisionPrivate struct {
 var printCustomWidgetClassStruct *gi.Struct
 var printCustomWidgetClassStruct_Once sync.Once
 
-func printCustomWidgetClassStruct_Set() {
+func printCustomWidgetClassStruct_Set() error {
+	var err error
 	printCustomWidgetClassStruct_Once.Do(func() {
-		printCustomWidgetClassStruct = gi.StructNew("WebKit2", "PrintCustomWidgetClass")
+		printCustomWidgetClassStruct, err = gi.StructNew("WebKit2", "PrintCustomWidgetClass")
 	})
+	return err
 }
 
 type PrintCustomWidgetClass struct {
@@ -1697,10 +1854,12 @@ type PrintCustomWidgetClass struct {
 var printCustomWidgetPrivateStruct *gi.Struct
 var printCustomWidgetPrivateStruct_Once sync.Once
 
-func printCustomWidgetPrivateStruct_Set() {
+func printCustomWidgetPrivateStruct_Set() error {
+	var err error
 	printCustomWidgetPrivateStruct_Once.Do(func() {
-		printCustomWidgetPrivateStruct = gi.StructNew("WebKit2", "PrintCustomWidgetPrivate")
+		printCustomWidgetPrivateStruct, err = gi.StructNew("WebKit2", "PrintCustomWidgetPrivate")
 	})
+	return err
 }
 
 type PrintCustomWidgetPrivate struct {
@@ -1710,10 +1869,12 @@ type PrintCustomWidgetPrivate struct {
 var printOperationClassStruct *gi.Struct
 var printOperationClassStruct_Once sync.Once
 
-func printOperationClassStruct_Set() {
+func printOperationClassStruct_Set() error {
+	var err error
 	printOperationClassStruct_Once.Do(func() {
-		printOperationClassStruct = gi.StructNew("WebKit2", "PrintOperationClass")
+		printOperationClassStruct, err = gi.StructNew("WebKit2", "PrintOperationClass")
 	})
+	return err
 }
 
 type PrintOperationClass struct {
@@ -1728,10 +1889,12 @@ type PrintOperationClass struct {
 var printOperationPrivateStruct *gi.Struct
 var printOperationPrivateStruct_Once sync.Once
 
-func printOperationPrivateStruct_Set() {
+func printOperationPrivateStruct_Set() error {
+	var err error
 	printOperationPrivateStruct_Once.Do(func() {
-		printOperationPrivateStruct = gi.StructNew("WebKit2", "PrintOperationPrivate")
+		printOperationPrivateStruct, err = gi.StructNew("WebKit2", "PrintOperationPrivate")
 	})
+	return err
 }
 
 type PrintOperationPrivate struct {
@@ -1741,10 +1904,12 @@ type PrintOperationPrivate struct {
 var responsePolicyDecisionClassStruct *gi.Struct
 var responsePolicyDecisionClassStruct_Once sync.Once
 
-func responsePolicyDecisionClassStruct_Set() {
+func responsePolicyDecisionClassStruct_Set() error {
+	var err error
 	responsePolicyDecisionClassStruct_Once.Do(func() {
-		responsePolicyDecisionClassStruct = gi.StructNew("WebKit2", "ResponsePolicyDecisionClass")
+		responsePolicyDecisionClassStruct, err = gi.StructNew("WebKit2", "ResponsePolicyDecisionClass")
 	})
+	return err
 }
 
 type ResponsePolicyDecisionClass struct {
@@ -1759,10 +1924,12 @@ type ResponsePolicyDecisionClass struct {
 var responsePolicyDecisionPrivateStruct *gi.Struct
 var responsePolicyDecisionPrivateStruct_Once sync.Once
 
-func responsePolicyDecisionPrivateStruct_Set() {
+func responsePolicyDecisionPrivateStruct_Set() error {
+	var err error
 	responsePolicyDecisionPrivateStruct_Once.Do(func() {
-		responsePolicyDecisionPrivateStruct = gi.StructNew("WebKit2", "ResponsePolicyDecisionPrivate")
+		responsePolicyDecisionPrivateStruct, err = gi.StructNew("WebKit2", "ResponsePolicyDecisionPrivate")
 	})
+	return err
 }
 
 type ResponsePolicyDecisionPrivate struct {
@@ -1772,10 +1939,12 @@ type ResponsePolicyDecisionPrivate struct {
 var scriptDialogStruct *gi.Struct
 var scriptDialogStruct_Once sync.Once
 
-func scriptDialogStruct_Set() {
+func scriptDialogStruct_Set() error {
+	var err error
 	scriptDialogStruct_Once.Do(func() {
-		scriptDialogStruct = gi.StructNew("WebKit2", "ScriptDialog")
+		scriptDialogStruct, err = gi.StructNew("WebKit2", "ScriptDialog")
 	})
+	return err
 }
 
 type ScriptDialog struct {
@@ -1794,10 +1963,10 @@ func scriptDialogCloseFunction_Set() {
 
 // Close is a representation of the C type webkit_script_dialog_close.
 func (recv *ScriptDialog) Close() {
-	scriptDialogCloseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	scriptDialogCloseFunction_Set()
 
 	scriptDialogCloseFunction.Invoke(inArgs[:], nil)
 
@@ -1819,12 +1988,14 @@ func scriptDialogGetMessageFunction_Set() {
 
 // GetMessage is a representation of the C type webkit_script_dialog_get_message.
 func (recv *ScriptDialog) GetMessage() string {
-	scriptDialogGetMessageFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := scriptDialogGetMessageFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	scriptDialogGetMessageFunction_Set()
+
+	ret = scriptDialogGetMessageFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1843,12 +2014,14 @@ func scriptDialogPromptGetDefaultTextFunction_Set() {
 
 // PromptGetDefaultText is a representation of the C type webkit_script_dialog_prompt_get_default_text.
 func (recv *ScriptDialog) PromptGetDefaultText() string {
-	scriptDialogPromptGetDefaultTextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := scriptDialogPromptGetDefaultTextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	scriptDialogPromptGetDefaultTextFunction_Set()
+
+	ret = scriptDialogPromptGetDefaultTextFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -1867,11 +2040,11 @@ func scriptDialogPromptSetTextFunction_Set() {
 
 // PromptSetText is a representation of the C type webkit_script_dialog_prompt_set_text.
 func (recv *ScriptDialog) PromptSetText(text string) {
-	scriptDialogPromptSetTextFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
+
+	scriptDialogPromptSetTextFunction_Set()
 
 	scriptDialogPromptSetTextFunction.Invoke(inArgs[:], nil)
 
@@ -1889,12 +2062,14 @@ func scriptDialogRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_script_dialog_ref.
 func (recv *ScriptDialog) Ref() *ScriptDialog {
-	scriptDialogRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := scriptDialogRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	scriptDialogRefFunction_Set()
+
+	ret = scriptDialogRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &ScriptDialog{native: ret.Pointer()}
 
@@ -1913,10 +2088,10 @@ func scriptDialogUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_script_dialog_unref.
 func (recv *ScriptDialog) Unref() {
-	scriptDialogUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	scriptDialogUnrefFunction_Set()
 
 	scriptDialogUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -1925,10 +2100,12 @@ func (recv *ScriptDialog) Unref() {
 var securityManagerClassStruct *gi.Struct
 var securityManagerClassStruct_Once sync.Once
 
-func securityManagerClassStruct_Set() {
+func securityManagerClassStruct_Set() error {
+	var err error
 	securityManagerClassStruct_Once.Do(func() {
-		securityManagerClassStruct = gi.StructNew("WebKit2", "SecurityManagerClass")
+		securityManagerClassStruct, err = gi.StructNew("WebKit2", "SecurityManagerClass")
 	})
+	return err
 }
 
 type SecurityManagerClass struct {
@@ -1943,10 +2120,12 @@ type SecurityManagerClass struct {
 var securityManagerPrivateStruct *gi.Struct
 var securityManagerPrivateStruct_Once sync.Once
 
-func securityManagerPrivateStruct_Set() {
+func securityManagerPrivateStruct_Set() error {
+	var err error
 	securityManagerPrivateStruct_Once.Do(func() {
-		securityManagerPrivateStruct = gi.StructNew("WebKit2", "SecurityManagerPrivate")
+		securityManagerPrivateStruct, err = gi.StructNew("WebKit2", "SecurityManagerPrivate")
 	})
+	return err
 }
 
 type SecurityManagerPrivate struct {
@@ -1956,10 +2135,12 @@ type SecurityManagerPrivate struct {
 var securityOriginStruct *gi.Struct
 var securityOriginStruct_Once sync.Once
 
-func securityOriginStruct_Set() {
+func securityOriginStruct_Set() error {
+	var err error
 	securityOriginStruct_Once.Do(func() {
-		securityOriginStruct = gi.StructNew("WebKit2", "SecurityOrigin")
+		securityOriginStruct, err = gi.StructNew("WebKit2", "SecurityOrigin")
 	})
+	return err
 }
 
 type SecurityOrigin struct {
@@ -1978,14 +2159,16 @@ func securityOriginNewFunction_Set() {
 
 // SecurityOriginNew is a representation of the C type webkit_security_origin_new.
 func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigin {
-	securityOriginNewFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(protocol)
 	inArgs[1].SetString(host)
 	inArgs[2].SetUint16(port)
 
-	ret := securityOriginNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginNewFunction_Set()
+
+	ret = securityOriginNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SecurityOrigin{native: ret.Pointer()}
 
@@ -2004,12 +2187,14 @@ func securityOriginNewForUriFunction_Set() {
 
 // SecurityOriginNewForUri is a representation of the C type webkit_security_origin_new_for_uri.
 func SecurityOriginNewForUri(uri string) *SecurityOrigin {
-	securityOriginNewForUriFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uri)
 
-	ret := securityOriginNewForUriFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginNewForUriFunction_Set()
+
+	ret = securityOriginNewForUriFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SecurityOrigin{native: ret.Pointer()}
 
@@ -2028,12 +2213,14 @@ func securityOriginGetHostFunction_Set() {
 
 // GetHost is a representation of the C type webkit_security_origin_get_host.
 func (recv *SecurityOrigin) GetHost() string {
-	securityOriginGetHostFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := securityOriginGetHostFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginGetHostFunction_Set()
+
+	ret = securityOriginGetHostFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2052,12 +2239,14 @@ func securityOriginGetPortFunction_Set() {
 
 // GetPort is a representation of the C type webkit_security_origin_get_port.
 func (recv *SecurityOrigin) GetPort() uint16 {
-	securityOriginGetPortFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := securityOriginGetPortFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginGetPortFunction_Set()
+
+	ret = securityOriginGetPortFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint16()
 
@@ -2076,12 +2265,14 @@ func securityOriginGetProtocolFunction_Set() {
 
 // GetProtocol is a representation of the C type webkit_security_origin_get_protocol.
 func (recv *SecurityOrigin) GetProtocol() string {
-	securityOriginGetProtocolFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := securityOriginGetProtocolFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginGetProtocolFunction_Set()
+
+	ret = securityOriginGetProtocolFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2102,12 +2293,14 @@ func securityOriginRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_security_origin_ref.
 func (recv *SecurityOrigin) Ref() *SecurityOrigin {
-	securityOriginRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := securityOriginRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginRefFunction_Set()
+
+	ret = securityOriginRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SecurityOrigin{native: ret.Pointer()}
 
@@ -2126,12 +2319,14 @@ func securityOriginToStringFunction_Set() {
 
 // ToString is a representation of the C type webkit_security_origin_to_string.
 func (recv *SecurityOrigin) ToString() string {
-	securityOriginToStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := securityOriginToStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	securityOriginToStringFunction_Set()
+
+	ret = securityOriginToStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -2150,10 +2345,10 @@ func securityOriginUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_security_origin_unref.
 func (recv *SecurityOrigin) Unref() {
-	securityOriginUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	securityOriginUnrefFunction_Set()
 
 	securityOriginUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2162,10 +2357,12 @@ func (recv *SecurityOrigin) Unref() {
 var settingsClassStruct *gi.Struct
 var settingsClassStruct_Once sync.Once
 
-func settingsClassStruct_Set() {
+func settingsClassStruct_Set() error {
+	var err error
 	settingsClassStruct_Once.Do(func() {
-		settingsClassStruct = gi.StructNew("WebKit2", "SettingsClass")
+		settingsClassStruct, err = gi.StructNew("WebKit2", "SettingsClass")
 	})
+	return err
 }
 
 type SettingsClass struct {
@@ -2180,10 +2377,12 @@ type SettingsClass struct {
 var settingsPrivateStruct *gi.Struct
 var settingsPrivateStruct_Once sync.Once
 
-func settingsPrivateStruct_Set() {
+func settingsPrivateStruct_Set() error {
+	var err error
 	settingsPrivateStruct_Once.Do(func() {
-		settingsPrivateStruct = gi.StructNew("WebKit2", "SettingsPrivate")
+		settingsPrivateStruct, err = gi.StructNew("WebKit2", "SettingsPrivate")
 	})
+	return err
 }
 
 type SettingsPrivate struct {
@@ -2193,10 +2392,12 @@ type SettingsPrivate struct {
 var uRIRequestClassStruct *gi.Struct
 var uRIRequestClassStruct_Once sync.Once
 
-func uRIRequestClassStruct_Set() {
+func uRIRequestClassStruct_Set() error {
+	var err error
 	uRIRequestClassStruct_Once.Do(func() {
-		uRIRequestClassStruct = gi.StructNew("WebKit2", "URIRequestClass")
+		uRIRequestClassStruct, err = gi.StructNew("WebKit2", "URIRequestClass")
 	})
+	return err
 }
 
 type URIRequestClass struct {
@@ -2211,10 +2412,12 @@ type URIRequestClass struct {
 var uRIRequestPrivateStruct *gi.Struct
 var uRIRequestPrivateStruct_Once sync.Once
 
-func uRIRequestPrivateStruct_Set() {
+func uRIRequestPrivateStruct_Set() error {
+	var err error
 	uRIRequestPrivateStruct_Once.Do(func() {
-		uRIRequestPrivateStruct = gi.StructNew("WebKit2", "URIRequestPrivate")
+		uRIRequestPrivateStruct, err = gi.StructNew("WebKit2", "URIRequestPrivate")
 	})
+	return err
 }
 
 type URIRequestPrivate struct {
@@ -2224,10 +2427,12 @@ type URIRequestPrivate struct {
 var uRIResponseClassStruct *gi.Struct
 var uRIResponseClassStruct_Once sync.Once
 
-func uRIResponseClassStruct_Set() {
+func uRIResponseClassStruct_Set() error {
+	var err error
 	uRIResponseClassStruct_Once.Do(func() {
-		uRIResponseClassStruct = gi.StructNew("WebKit2", "URIResponseClass")
+		uRIResponseClassStruct, err = gi.StructNew("WebKit2", "URIResponseClass")
 	})
+	return err
 }
 
 type URIResponseClass struct {
@@ -2242,10 +2447,12 @@ type URIResponseClass struct {
 var uRIResponsePrivateStruct *gi.Struct
 var uRIResponsePrivateStruct_Once sync.Once
 
-func uRIResponsePrivateStruct_Set() {
+func uRIResponsePrivateStruct_Set() error {
+	var err error
 	uRIResponsePrivateStruct_Once.Do(func() {
-		uRIResponsePrivateStruct = gi.StructNew("WebKit2", "URIResponsePrivate")
+		uRIResponsePrivateStruct, err = gi.StructNew("WebKit2", "URIResponsePrivate")
 	})
+	return err
 }
 
 type URIResponsePrivate struct {
@@ -2255,10 +2462,12 @@ type URIResponsePrivate struct {
 var uRISchemeRequestClassStruct *gi.Struct
 var uRISchemeRequestClassStruct_Once sync.Once
 
-func uRISchemeRequestClassStruct_Set() {
+func uRISchemeRequestClassStruct_Set() error {
+	var err error
 	uRISchemeRequestClassStruct_Once.Do(func() {
-		uRISchemeRequestClassStruct = gi.StructNew("WebKit2", "URISchemeRequestClass")
+		uRISchemeRequestClassStruct, err = gi.StructNew("WebKit2", "URISchemeRequestClass")
 	})
+	return err
 }
 
 type URISchemeRequestClass struct {
@@ -2273,10 +2482,12 @@ type URISchemeRequestClass struct {
 var uRISchemeRequestPrivateStruct *gi.Struct
 var uRISchemeRequestPrivateStruct_Once sync.Once
 
-func uRISchemeRequestPrivateStruct_Set() {
+func uRISchemeRequestPrivateStruct_Set() error {
+	var err error
 	uRISchemeRequestPrivateStruct_Once.Do(func() {
-		uRISchemeRequestPrivateStruct = gi.StructNew("WebKit2", "URISchemeRequestPrivate")
+		uRISchemeRequestPrivateStruct, err = gi.StructNew("WebKit2", "URISchemeRequestPrivate")
 	})
+	return err
 }
 
 type URISchemeRequestPrivate struct {
@@ -2286,10 +2497,12 @@ type URISchemeRequestPrivate struct {
 var userContentFilterStruct *gi.Struct
 var userContentFilterStruct_Once sync.Once
 
-func userContentFilterStruct_Set() {
+func userContentFilterStruct_Set() error {
+	var err error
 	userContentFilterStruct_Once.Do(func() {
-		userContentFilterStruct = gi.StructNew("WebKit2", "UserContentFilter")
+		userContentFilterStruct, err = gi.StructNew("WebKit2", "UserContentFilter")
 	})
+	return err
 }
 
 type UserContentFilter struct {
@@ -2308,12 +2521,14 @@ func userContentFilterGetIdentifierFunction_Set() {
 
 // GetIdentifier is a representation of the C type webkit_user_content_filter_get_identifier.
 func (recv *UserContentFilter) GetIdentifier() string {
-	userContentFilterGetIdentifierFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := userContentFilterGetIdentifierFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	userContentFilterGetIdentifierFunction_Set()
+
+	ret = userContentFilterGetIdentifierFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2332,12 +2547,14 @@ func userContentFilterRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_user_content_filter_ref.
 func (recv *UserContentFilter) Ref() *UserContentFilter {
-	userContentFilterRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := userContentFilterRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	userContentFilterRefFunction_Set()
+
+	ret = userContentFilterRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &UserContentFilter{native: ret.Pointer()}
 
@@ -2356,10 +2573,10 @@ func userContentFilterUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_user_content_filter_unref.
 func (recv *UserContentFilter) Unref() {
-	userContentFilterUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	userContentFilterUnrefFunction_Set()
 
 	userContentFilterUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2368,10 +2585,12 @@ func (recv *UserContentFilter) Unref() {
 var userContentFilterStoreClassStruct *gi.Struct
 var userContentFilterStoreClassStruct_Once sync.Once
 
-func userContentFilterStoreClassStruct_Set() {
+func userContentFilterStoreClassStruct_Set() error {
+	var err error
 	userContentFilterStoreClassStruct_Once.Do(func() {
-		userContentFilterStoreClassStruct = gi.StructNew("WebKit2", "UserContentFilterStoreClass")
+		userContentFilterStoreClassStruct, err = gi.StructNew("WebKit2", "UserContentFilterStoreClass")
 	})
+	return err
 }
 
 type UserContentFilterStoreClass struct {
@@ -2386,10 +2605,12 @@ type UserContentFilterStoreClass struct {
 var userContentFilterStorePrivateStruct *gi.Struct
 var userContentFilterStorePrivateStruct_Once sync.Once
 
-func userContentFilterStorePrivateStruct_Set() {
+func userContentFilterStorePrivateStruct_Set() error {
+	var err error
 	userContentFilterStorePrivateStruct_Once.Do(func() {
-		userContentFilterStorePrivateStruct = gi.StructNew("WebKit2", "UserContentFilterStorePrivate")
+		userContentFilterStorePrivateStruct, err = gi.StructNew("WebKit2", "UserContentFilterStorePrivate")
 	})
+	return err
 }
 
 type UserContentFilterStorePrivate struct {
@@ -2399,10 +2620,12 @@ type UserContentFilterStorePrivate struct {
 var userContentManagerClassStruct *gi.Struct
 var userContentManagerClassStruct_Once sync.Once
 
-func userContentManagerClassStruct_Set() {
+func userContentManagerClassStruct_Set() error {
+	var err error
 	userContentManagerClassStruct_Once.Do(func() {
-		userContentManagerClassStruct = gi.StructNew("WebKit2", "UserContentManagerClass")
+		userContentManagerClassStruct, err = gi.StructNew("WebKit2", "UserContentManagerClass")
 	})
+	return err
 }
 
 type UserContentManagerClass struct {
@@ -2417,10 +2640,12 @@ type UserContentManagerClass struct {
 var userContentManagerPrivateStruct *gi.Struct
 var userContentManagerPrivateStruct_Once sync.Once
 
-func userContentManagerPrivateStruct_Set() {
+func userContentManagerPrivateStruct_Set() error {
+	var err error
 	userContentManagerPrivateStruct_Once.Do(func() {
-		userContentManagerPrivateStruct = gi.StructNew("WebKit2", "UserContentManagerPrivate")
+		userContentManagerPrivateStruct, err = gi.StructNew("WebKit2", "UserContentManagerPrivate")
 	})
+	return err
 }
 
 type UserContentManagerPrivate struct {
@@ -2430,10 +2655,12 @@ type UserContentManagerPrivate struct {
 var userMediaPermissionRequestClassStruct *gi.Struct
 var userMediaPermissionRequestClassStruct_Once sync.Once
 
-func userMediaPermissionRequestClassStruct_Set() {
+func userMediaPermissionRequestClassStruct_Set() error {
+	var err error
 	userMediaPermissionRequestClassStruct_Once.Do(func() {
-		userMediaPermissionRequestClassStruct = gi.StructNew("WebKit2", "UserMediaPermissionRequestClass")
+		userMediaPermissionRequestClassStruct, err = gi.StructNew("WebKit2", "UserMediaPermissionRequestClass")
 	})
+	return err
 }
 
 type UserMediaPermissionRequestClass struct {
@@ -2448,10 +2675,12 @@ type UserMediaPermissionRequestClass struct {
 var userMediaPermissionRequestPrivateStruct *gi.Struct
 var userMediaPermissionRequestPrivateStruct_Once sync.Once
 
-func userMediaPermissionRequestPrivateStruct_Set() {
+func userMediaPermissionRequestPrivateStruct_Set() error {
+	var err error
 	userMediaPermissionRequestPrivateStruct_Once.Do(func() {
-		userMediaPermissionRequestPrivateStruct = gi.StructNew("WebKit2", "UserMediaPermissionRequestPrivate")
+		userMediaPermissionRequestPrivateStruct, err = gi.StructNew("WebKit2", "UserMediaPermissionRequestPrivate")
 	})
+	return err
 }
 
 type UserMediaPermissionRequestPrivate struct {
@@ -2461,10 +2690,12 @@ type UserMediaPermissionRequestPrivate struct {
 var userScriptStruct *gi.Struct
 var userScriptStruct_Once sync.Once
 
-func userScriptStruct_Set() {
+func userScriptStruct_Set() error {
+	var err error
 	userScriptStruct_Once.Do(func() {
-		userScriptStruct = gi.StructNew("WebKit2", "UserScript")
+		userScriptStruct, err = gi.StructNew("WebKit2", "UserScript")
 	})
+	return err
 }
 
 type UserScript struct {
@@ -2487,12 +2718,14 @@ func userScriptRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_user_script_ref.
 func (recv *UserScript) Ref() *UserScript {
-	userScriptRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := userScriptRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	userScriptRefFunction_Set()
+
+	ret = userScriptRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &UserScript{native: ret.Pointer()}
 
@@ -2511,10 +2744,10 @@ func userScriptUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_user_script_unref.
 func (recv *UserScript) Unref() {
-	userScriptUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	userScriptUnrefFunction_Set()
 
 	userScriptUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2523,10 +2756,12 @@ func (recv *UserScript) Unref() {
 var userStyleSheetStruct *gi.Struct
 var userStyleSheetStruct_Once sync.Once
 
-func userStyleSheetStruct_Set() {
+func userStyleSheetStruct_Set() error {
+	var err error
 	userStyleSheetStruct_Once.Do(func() {
-		userStyleSheetStruct = gi.StructNew("WebKit2", "UserStyleSheet")
+		userStyleSheetStruct, err = gi.StructNew("WebKit2", "UserStyleSheet")
 	})
+	return err
 }
 
 type UserStyleSheet struct {
@@ -2549,12 +2784,14 @@ func userStyleSheetRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_user_style_sheet_ref.
 func (recv *UserStyleSheet) Ref() *UserStyleSheet {
-	userStyleSheetRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := userStyleSheetRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	userStyleSheetRefFunction_Set()
+
+	ret = userStyleSheetRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &UserStyleSheet{native: ret.Pointer()}
 
@@ -2573,10 +2810,10 @@ func userStyleSheetUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_user_style_sheet_unref.
 func (recv *UserStyleSheet) Unref() {
-	userStyleSheetUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	userStyleSheetUnrefFunction_Set()
 
 	userStyleSheetUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2585,10 +2822,12 @@ func (recv *UserStyleSheet) Unref() {
 var webContextClassStruct *gi.Struct
 var webContextClassStruct_Once sync.Once
 
-func webContextClassStruct_Set() {
+func webContextClassStruct_Set() error {
+	var err error
 	webContextClassStruct_Once.Do(func() {
-		webContextClassStruct = gi.StructNew("WebKit2", "WebContextClass")
+		webContextClassStruct, err = gi.StructNew("WebKit2", "WebContextClass")
 	})
+	return err
 }
 
 type WebContextClass struct {
@@ -2607,10 +2846,12 @@ type WebContextClass struct {
 var webContextPrivateStruct *gi.Struct
 var webContextPrivateStruct_Once sync.Once
 
-func webContextPrivateStruct_Set() {
+func webContextPrivateStruct_Set() error {
+	var err error
 	webContextPrivateStruct_Once.Do(func() {
-		webContextPrivateStruct = gi.StructNew("WebKit2", "WebContextPrivate")
+		webContextPrivateStruct, err = gi.StructNew("WebKit2", "WebContextPrivate")
 	})
+	return err
 }
 
 type WebContextPrivate struct {
@@ -2620,10 +2861,12 @@ type WebContextPrivate struct {
 var webInspectorClassStruct *gi.Struct
 var webInspectorClassStruct_Once sync.Once
 
-func webInspectorClassStruct_Set() {
+func webInspectorClassStruct_Set() error {
+	var err error
 	webInspectorClassStruct_Once.Do(func() {
-		webInspectorClassStruct = gi.StructNew("WebKit2", "WebInspectorClass")
+		webInspectorClassStruct, err = gi.StructNew("WebKit2", "WebInspectorClass")
 	})
+	return err
 }
 
 type WebInspectorClass struct {
@@ -2638,10 +2881,12 @@ type WebInspectorClass struct {
 var webInspectorPrivateStruct *gi.Struct
 var webInspectorPrivateStruct_Once sync.Once
 
-func webInspectorPrivateStruct_Set() {
+func webInspectorPrivateStruct_Set() error {
+	var err error
 	webInspectorPrivateStruct_Once.Do(func() {
-		webInspectorPrivateStruct = gi.StructNew("WebKit2", "WebInspectorPrivate")
+		webInspectorPrivateStruct, err = gi.StructNew("WebKit2", "WebInspectorPrivate")
 	})
+	return err
 }
 
 type WebInspectorPrivate struct {
@@ -2651,10 +2896,12 @@ type WebInspectorPrivate struct {
 var webResourceClassStruct *gi.Struct
 var webResourceClassStruct_Once sync.Once
 
-func webResourceClassStruct_Set() {
+func webResourceClassStruct_Set() error {
+	var err error
 	webResourceClassStruct_Once.Do(func() {
-		webResourceClassStruct = gi.StructNew("WebKit2", "WebResourceClass")
+		webResourceClassStruct, err = gi.StructNew("WebKit2", "WebResourceClass")
 	})
+	return err
 }
 
 type WebResourceClass struct {
@@ -2669,10 +2916,12 @@ type WebResourceClass struct {
 var webResourcePrivateStruct *gi.Struct
 var webResourcePrivateStruct_Once sync.Once
 
-func webResourcePrivateStruct_Set() {
+func webResourcePrivateStruct_Set() error {
+	var err error
 	webResourcePrivateStruct_Once.Do(func() {
-		webResourcePrivateStruct = gi.StructNew("WebKit2", "WebResourcePrivate")
+		webResourcePrivateStruct, err = gi.StructNew("WebKit2", "WebResourcePrivate")
 	})
+	return err
 }
 
 type WebResourcePrivate struct {
@@ -2682,10 +2931,12 @@ type WebResourcePrivate struct {
 var webViewBaseClassStruct *gi.Struct
 var webViewBaseClassStruct_Once sync.Once
 
-func webViewBaseClassStruct_Set() {
+func webViewBaseClassStruct_Set() error {
+	var err error
 	webViewBaseClassStruct_Once.Do(func() {
-		webViewBaseClassStruct = gi.StructNew("WebKit2", "WebViewBaseClass")
+		webViewBaseClassStruct, err = gi.StructNew("WebKit2", "WebViewBaseClass")
 	})
+	return err
 }
 
 type WebViewBaseClass struct {
@@ -2700,10 +2951,12 @@ type WebViewBaseClass struct {
 var webViewBasePrivateStruct *gi.Struct
 var webViewBasePrivateStruct_Once sync.Once
 
-func webViewBasePrivateStruct_Set() {
+func webViewBasePrivateStruct_Set() error {
+	var err error
 	webViewBasePrivateStruct_Once.Do(func() {
-		webViewBasePrivateStruct = gi.StructNew("WebKit2", "WebViewBasePrivate")
+		webViewBasePrivateStruct, err = gi.StructNew("WebKit2", "WebViewBasePrivate")
 	})
+	return err
 }
 
 type WebViewBasePrivate struct {
@@ -2713,10 +2966,12 @@ type WebViewBasePrivate struct {
 var webViewClassStruct *gi.Struct
 var webViewClassStruct_Once sync.Once
 
-func webViewClassStruct_Set() {
+func webViewClassStruct_Set() error {
+	var err error
 	webViewClassStruct_Once.Do(func() {
-		webViewClassStruct = gi.StructNew("WebKit2", "WebViewClass")
+		webViewClassStruct, err = gi.StructNew("WebKit2", "WebViewClass")
 	})
+	return err
 }
 
 type WebViewClass struct {
@@ -2755,10 +3010,12 @@ type WebViewClass struct {
 var webViewPrivateStruct *gi.Struct
 var webViewPrivateStruct_Once sync.Once
 
-func webViewPrivateStruct_Set() {
+func webViewPrivateStruct_Set() error {
+	var err error
 	webViewPrivateStruct_Once.Do(func() {
-		webViewPrivateStruct = gi.StructNew("WebKit2", "WebViewPrivate")
+		webViewPrivateStruct, err = gi.StructNew("WebKit2", "WebViewPrivate")
 	})
+	return err
 }
 
 type WebViewPrivate struct {
@@ -2768,10 +3025,12 @@ type WebViewPrivate struct {
 var webViewSessionStateStruct *gi.Struct
 var webViewSessionStateStruct_Once sync.Once
 
-func webViewSessionStateStruct_Set() {
+func webViewSessionStateStruct_Set() error {
+	var err error
 	webViewSessionStateStruct_Once.Do(func() {
-		webViewSessionStateStruct = gi.StructNew("WebKit2", "WebViewSessionState")
+		webViewSessionStateStruct, err = gi.StructNew("WebKit2", "WebViewSessionState")
 	})
+	return err
 }
 
 type WebViewSessionState struct {
@@ -2792,12 +3051,14 @@ func webViewSessionStateRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_web_view_session_state_ref.
 func (recv *WebViewSessionState) Ref() *WebViewSessionState {
-	webViewSessionStateRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := webViewSessionStateRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	webViewSessionStateRefFunction_Set()
+
+	ret = webViewSessionStateRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &WebViewSessionState{native: ret.Pointer()}
 
@@ -2818,10 +3079,10 @@ func webViewSessionStateUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_web_view_session_state_unref.
 func (recv *WebViewSessionState) Unref() {
-	webViewSessionStateUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	webViewSessionStateUnrefFunction_Set()
 
 	webViewSessionStateUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2830,10 +3091,12 @@ func (recv *WebViewSessionState) Unref() {
 var websiteDataStruct *gi.Struct
 var websiteDataStruct_Once sync.Once
 
-func websiteDataStruct_Set() {
+func websiteDataStruct_Set() error {
+	var err error
 	websiteDataStruct_Once.Do(func() {
-		websiteDataStruct = gi.StructNew("WebKit2", "WebsiteData")
+		websiteDataStruct, err = gi.StructNew("WebKit2", "WebsiteData")
 	})
+	return err
 }
 
 type WebsiteData struct {
@@ -2852,12 +3115,14 @@ func websiteDataGetNameFunction_Set() {
 
 // GetName is a representation of the C type webkit_website_data_get_name.
 func (recv *WebsiteData) GetName() string {
-	websiteDataGetNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := websiteDataGetNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	websiteDataGetNameFunction_Set()
+
+	ret = websiteDataGetNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2880,12 +3145,14 @@ func websiteDataRefFunction_Set() {
 
 // Ref is a representation of the C type webkit_website_data_ref.
 func (recv *WebsiteData) Ref() *WebsiteData {
-	websiteDataRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := websiteDataRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	websiteDataRefFunction_Set()
+
+	ret = websiteDataRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &WebsiteData{native: ret.Pointer()}
 
@@ -2904,10 +3171,10 @@ func websiteDataUnrefFunction_Set() {
 
 // Unref is a representation of the C type webkit_website_data_unref.
 func (recv *WebsiteData) Unref() {
-	websiteDataUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	websiteDataUnrefFunction_Set()
 
 	websiteDataUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2916,10 +3183,12 @@ func (recv *WebsiteData) Unref() {
 var websiteDataManagerClassStruct *gi.Struct
 var websiteDataManagerClassStruct_Once sync.Once
 
-func websiteDataManagerClassStruct_Set() {
+func websiteDataManagerClassStruct_Set() error {
+	var err error
 	websiteDataManagerClassStruct_Once.Do(func() {
-		websiteDataManagerClassStruct = gi.StructNew("WebKit2", "WebsiteDataManagerClass")
+		websiteDataManagerClassStruct, err = gi.StructNew("WebKit2", "WebsiteDataManagerClass")
 	})
+	return err
 }
 
 type WebsiteDataManagerClass struct {
@@ -2934,10 +3203,12 @@ type WebsiteDataManagerClass struct {
 var websiteDataManagerPrivateStruct *gi.Struct
 var websiteDataManagerPrivateStruct_Once sync.Once
 
-func websiteDataManagerPrivateStruct_Set() {
+func websiteDataManagerPrivateStruct_Set() error {
+	var err error
 	websiteDataManagerPrivateStruct_Once.Do(func() {
-		websiteDataManagerPrivateStruct = gi.StructNew("WebKit2", "WebsiteDataManagerPrivate")
+		websiteDataManagerPrivateStruct, err = gi.StructNew("WebKit2", "WebsiteDataManagerPrivate")
 	})
+	return err
 }
 
 type WebsiteDataManagerPrivate struct {
@@ -2947,10 +3218,12 @@ type WebsiteDataManagerPrivate struct {
 var windowPropertiesClassStruct *gi.Struct
 var windowPropertiesClassStruct_Once sync.Once
 
-func windowPropertiesClassStruct_Set() {
+func windowPropertiesClassStruct_Set() error {
+	var err error
 	windowPropertiesClassStruct_Once.Do(func() {
-		windowPropertiesClassStruct = gi.StructNew("WebKit2", "WindowPropertiesClass")
+		windowPropertiesClassStruct, err = gi.StructNew("WebKit2", "WindowPropertiesClass")
 	})
+	return err
 }
 
 type WindowPropertiesClass struct {
@@ -2965,10 +3238,12 @@ type WindowPropertiesClass struct {
 var windowPropertiesPrivateStruct *gi.Struct
 var windowPropertiesPrivateStruct_Once sync.Once
 
-func windowPropertiesPrivateStruct_Set() {
+func windowPropertiesPrivateStruct_Set() error {
+	var err error
 	windowPropertiesPrivateStruct_Once.Do(func() {
-		windowPropertiesPrivateStruct = gi.StructNew("WebKit2", "WindowPropertiesPrivate")
+		windowPropertiesPrivateStruct, err = gi.StructNew("WebKit2", "WindowPropertiesPrivate")
 	})
+	return err
 }
 
 type WindowPropertiesPrivate struct {

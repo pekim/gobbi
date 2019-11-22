@@ -10,10 +10,12 @@ import (
 var arrayStruct *gi.Struct
 var arrayStruct_Once sync.Once
 
-func arrayStruct_Set() {
+func arrayStruct_Set() error {
+	var err error
 	arrayStruct_Once.Do(func() {
-		arrayStruct = gi.StructNew("GLib", "Array")
+		arrayStruct, err = gi.StructNew("GLib", "Array")
 	})
+	return err
 }
 
 type Array struct {
@@ -25,10 +27,12 @@ type Array struct {
 var asyncQueueStruct *gi.Struct
 var asyncQueueStruct_Once sync.Once
 
-func asyncQueueStruct_Set() {
+func asyncQueueStruct_Set() error {
+	var err error
 	asyncQueueStruct_Once.Do(func() {
-		asyncQueueStruct = gi.StructNew("GLib", "AsyncQueue")
+		asyncQueueStruct, err = gi.StructNew("GLib", "AsyncQueue")
 	})
+	return err
 }
 
 type AsyncQueue struct {
@@ -47,12 +51,14 @@ func asyncQueueLengthFunction_Set() {
 
 // Length is a representation of the C type g_async_queue_length.
 func (recv *AsyncQueue) Length() int32 {
-	asyncQueueLengthFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := asyncQueueLengthFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	asyncQueueLengthFunction_Set()
+
+	ret = asyncQueueLengthFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -71,12 +77,14 @@ func asyncQueueLengthUnlockedFunction_Set() {
 
 // LengthUnlocked is a representation of the C type g_async_queue_length_unlocked.
 func (recv *AsyncQueue) LengthUnlocked() int32 {
-	asyncQueueLengthUnlockedFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := asyncQueueLengthUnlockedFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	asyncQueueLengthUnlockedFunction_Set()
+
+	ret = asyncQueueLengthUnlockedFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -95,10 +103,10 @@ func asyncQueueLockFunction_Set() {
 
 // Lock is a representation of the C type g_async_queue_lock.
 func (recv *AsyncQueue) Lock() {
-	asyncQueueLockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	asyncQueueLockFunction_Set()
 
 	asyncQueueLockFunction.Invoke(inArgs[:], nil)
 
@@ -132,12 +140,14 @@ func asyncQueueRefFunction_Set() {
 
 // Ref is a representation of the C type g_async_queue_ref.
 func (recv *AsyncQueue) Ref() *AsyncQueue {
-	asyncQueueRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := asyncQueueRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	asyncQueueRefFunction_Set()
+
+	ret = asyncQueueRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &AsyncQueue{native: ret.Pointer()}
 
@@ -156,10 +166,10 @@ func asyncQueueRefUnlockedFunction_Set() {
 
 // RefUnlocked is a representation of the C type g_async_queue_ref_unlocked.
 func (recv *AsyncQueue) RefUnlocked() {
-	asyncQueueRefUnlockedFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	asyncQueueRefUnlockedFunction_Set()
 
 	asyncQueueRefUnlockedFunction.Invoke(inArgs[:], nil)
 
@@ -197,10 +207,10 @@ func asyncQueueUnlockFunction_Set() {
 
 // Unlock is a representation of the C type g_async_queue_unlock.
 func (recv *AsyncQueue) Unlock() {
-	asyncQueueUnlockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	asyncQueueUnlockFunction_Set()
 
 	asyncQueueUnlockFunction.Invoke(inArgs[:], nil)
 
@@ -218,10 +228,10 @@ func asyncQueueUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_async_queue_unref.
 func (recv *AsyncQueue) Unref() {
-	asyncQueueUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	asyncQueueUnrefFunction_Set()
 
 	asyncQueueUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -239,10 +249,10 @@ func asyncQueueUnrefAndUnlockFunction_Set() {
 
 // UnrefAndUnlock is a representation of the C type g_async_queue_unref_and_unlock.
 func (recv *AsyncQueue) UnrefAndUnlock() {
-	asyncQueueUnrefAndUnlockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	asyncQueueUnrefAndUnlockFunction_Set()
 
 	asyncQueueUnrefAndUnlockFunction.Invoke(inArgs[:], nil)
 
@@ -251,10 +261,12 @@ func (recv *AsyncQueue) UnrefAndUnlock() {
 var bookmarkFileStruct *gi.Struct
 var bookmarkFileStruct_Once sync.Once
 
-func bookmarkFileStruct_Set() {
+func bookmarkFileStruct_Set() error {
+	var err error
 	bookmarkFileStruct_Once.Do(func() {
-		bookmarkFileStruct = gi.StructNew("GLib", "BookmarkFile")
+		bookmarkFileStruct, err = gi.StructNew("GLib", "BookmarkFile")
 	})
+	return err
 }
 
 type BookmarkFile struct {
@@ -273,13 +285,13 @@ func bookmarkFileAddApplicationFunction_Set() {
 
 // AddApplication is a representation of the C type g_bookmark_file_add_application.
 func (recv *BookmarkFile) AddApplication(uri string, name string, exec string) {
-	bookmarkFileAddApplicationFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(name)
 	inArgs[3].SetString(exec)
+
+	bookmarkFileAddApplicationFunction_Set()
 
 	bookmarkFileAddApplicationFunction.Invoke(inArgs[:], nil)
 
@@ -297,12 +309,12 @@ func bookmarkFileAddGroupFunction_Set() {
 
 // AddGroup is a representation of the C type g_bookmark_file_add_group.
 func (recv *BookmarkFile) AddGroup(uri string, group string) {
-	bookmarkFileAddGroupFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(group)
+
+	bookmarkFileAddGroupFunction_Set()
 
 	bookmarkFileAddGroupFunction.Invoke(inArgs[:], nil)
 
@@ -320,10 +332,10 @@ func bookmarkFileFreeFunction_Set() {
 
 // Free is a representation of the C type g_bookmark_file_free.
 func (recv *BookmarkFile) Free() {
-	bookmarkFileFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	bookmarkFileFreeFunction_Set()
 
 	bookmarkFileFreeFunction.Invoke(inArgs[:], nil)
 
@@ -341,13 +353,15 @@ func bookmarkFileGetAddedFunction_Set() {
 
 // GetAdded is a representation of the C type g_bookmark_file_get_added.
 func (recv *BookmarkFile) GetAdded(uri string) int64 {
-	bookmarkFileGetAddedFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
-	ret := bookmarkFileGetAddedFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetAddedFunction_Set()
+
+	ret = bookmarkFileGetAddedFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -370,13 +384,15 @@ func bookmarkFileGetDescriptionFunction_Set() {
 
 // GetDescription is a representation of the C type g_bookmark_file_get_description.
 func (recv *BookmarkFile) GetDescription(uri string) string {
-	bookmarkFileGetDescriptionFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
-	ret := bookmarkFileGetDescriptionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetDescriptionFunction_Set()
+
+	ret = bookmarkFileGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -401,13 +417,15 @@ func bookmarkFileGetMimeTypeFunction_Set() {
 
 // GetMimeType is a representation of the C type g_bookmark_file_get_mime_type.
 func (recv *BookmarkFile) GetMimeType(uri string) string {
-	bookmarkFileGetMimeTypeFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
-	ret := bookmarkFileGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetMimeTypeFunction_Set()
+
+	ret = bookmarkFileGetMimeTypeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -426,13 +444,15 @@ func bookmarkFileGetModifiedFunction_Set() {
 
 // GetModified is a representation of the C type g_bookmark_file_get_modified.
 func (recv *BookmarkFile) GetModified(uri string) int64 {
-	bookmarkFileGetModifiedFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
-	ret := bookmarkFileGetModifiedFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetModifiedFunction_Set()
+
+	ret = bookmarkFileGetModifiedFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -451,12 +471,14 @@ func bookmarkFileGetSizeFunction_Set() {
 
 // GetSize is a representation of the C type g_bookmark_file_get_size.
 func (recv *BookmarkFile) GetSize() int32 {
-	bookmarkFileGetSizeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := bookmarkFileGetSizeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetSizeFunction_Set()
+
+	ret = bookmarkFileGetSizeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -475,13 +497,15 @@ func bookmarkFileGetTitleFunction_Set() {
 
 // GetTitle is a representation of the C type g_bookmark_file_get_title.
 func (recv *BookmarkFile) GetTitle(uri string) string {
-	bookmarkFileGetTitleFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
-	ret := bookmarkFileGetTitleFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetTitleFunction_Set()
+
+	ret = bookmarkFileGetTitleFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -502,13 +526,15 @@ func bookmarkFileGetVisitedFunction_Set() {
 
 // GetVisited is a representation of the C type g_bookmark_file_get_visited.
 func (recv *BookmarkFile) GetVisited(uri string) int64 {
-	bookmarkFileGetVisitedFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 
-	ret := bookmarkFileGetVisitedFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bookmarkFileGetVisitedFunction_Set()
+
+	ret = bookmarkFileGetVisitedFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -547,12 +573,12 @@ func bookmarkFileSetAddedFunction_Set() {
 
 // SetAdded is a representation of the C type g_bookmark_file_set_added.
 func (recv *BookmarkFile) SetAdded(uri string, added int64) {
-	bookmarkFileSetAddedFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetInt64(added)
+
+	bookmarkFileSetAddedFunction_Set()
 
 	bookmarkFileSetAddedFunction.Invoke(inArgs[:], nil)
 
@@ -572,12 +598,12 @@ func bookmarkFileSetDescriptionFunction_Set() {
 
 // SetDescription is a representation of the C type g_bookmark_file_set_description.
 func (recv *BookmarkFile) SetDescription(uri string, description string) {
-	bookmarkFileSetDescriptionFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(description)
+
+	bookmarkFileSetDescriptionFunction_Set()
 
 	bookmarkFileSetDescriptionFunction.Invoke(inArgs[:], nil)
 
@@ -597,13 +623,13 @@ func bookmarkFileSetIconFunction_Set() {
 
 // SetIcon is a representation of the C type g_bookmark_file_set_icon.
 func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
-	bookmarkFileSetIconFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(href)
 	inArgs[3].SetString(mimeType)
+
+	bookmarkFileSetIconFunction_Set()
 
 	bookmarkFileSetIconFunction.Invoke(inArgs[:], nil)
 
@@ -623,12 +649,12 @@ func bookmarkFileSetMimeTypeFunction_Set() {
 
 // SetMimeType is a representation of the C type g_bookmark_file_set_mime_type.
 func (recv *BookmarkFile) SetMimeType(uri string, mimeType string) {
-	bookmarkFileSetMimeTypeFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(mimeType)
+
+	bookmarkFileSetMimeTypeFunction_Set()
 
 	bookmarkFileSetMimeTypeFunction.Invoke(inArgs[:], nil)
 
@@ -646,12 +672,12 @@ func bookmarkFileSetModifiedFunction_Set() {
 
 // SetModified is a representation of the C type g_bookmark_file_set_modified.
 func (recv *BookmarkFile) SetModified(uri string, modified int64) {
-	bookmarkFileSetModifiedFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetInt64(modified)
+
+	bookmarkFileSetModifiedFunction_Set()
 
 	bookmarkFileSetModifiedFunction.Invoke(inArgs[:], nil)
 
@@ -669,12 +695,12 @@ func bookmarkFileSetTitleFunction_Set() {
 
 // SetTitle is a representation of the C type g_bookmark_file_set_title.
 func (recv *BookmarkFile) SetTitle(uri string, title string) {
-	bookmarkFileSetTitleFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetString(title)
+
+	bookmarkFileSetTitleFunction_Set()
 
 	bookmarkFileSetTitleFunction.Invoke(inArgs[:], nil)
 
@@ -692,12 +718,12 @@ func bookmarkFileSetVisitedFunction_Set() {
 
 // SetVisited is a representation of the C type g_bookmark_file_set_visited.
 func (recv *BookmarkFile) SetVisited(uri string, visited int64) {
-	bookmarkFileSetVisitedFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(uri)
 	inArgs[2].SetInt64(visited)
+
+	bookmarkFileSetVisitedFunction_Set()
 
 	bookmarkFileSetVisitedFunction.Invoke(inArgs[:], nil)
 
@@ -710,10 +736,12 @@ func (recv *BookmarkFile) SetVisited(uri string, visited int64) {
 var byteArrayStruct *gi.Struct
 var byteArrayStruct_Once sync.Once
 
-func byteArrayStruct_Set() {
+func byteArrayStruct_Set() error {
+	var err error
 	byteArrayStruct_Once.Do(func() {
-		byteArrayStruct = gi.StructNew("GLib", "ByteArray")
+		byteArrayStruct, err = gi.StructNew("GLib", "ByteArray")
 	})
+	return err
 }
 
 type ByteArray struct {
@@ -725,10 +753,12 @@ type ByteArray struct {
 var bytesStruct *gi.Struct
 var bytesStruct_Once sync.Once
 
-func bytesStruct_Set() {
+func bytesStruct_Set() error {
+	var err error
 	bytesStruct_Once.Do(func() {
-		bytesStruct = gi.StructNew("GLib", "Bytes")
+		bytesStruct, err = gi.StructNew("GLib", "Bytes")
 	})
+	return err
 }
 
 type Bytes struct {
@@ -763,12 +793,14 @@ func bytesHashFunction_Set() {
 
 // Hash is a representation of the C type g_bytes_hash.
 func (recv *Bytes) Hash() uint32 {
-	bytesHashFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := bytesHashFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bytesHashFunction_Set()
+
+	ret = bytesHashFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -789,12 +821,14 @@ func bytesRefFunction_Set() {
 
 // Ref is a representation of the C type g_bytes_ref.
 func (recv *Bytes) Ref() *Bytes {
-	bytesRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := bytesRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	bytesRefFunction_Set()
+
+	ret = bytesRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Bytes{native: ret.Pointer()}
 
@@ -813,10 +847,10 @@ func bytesUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_bytes_unref.
 func (recv *Bytes) Unref() {
-	bytesUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	bytesUnrefFunction_Set()
 
 	bytesUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -834,10 +868,10 @@ func bytesUnrefToArrayFunction_Set() {
 
 // UnrefToArray is a representation of the C type g_bytes_unref_to_array.
 func (recv *Bytes) UnrefToArray() {
-	bytesUnrefToArrayFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	bytesUnrefToArrayFunction_Set()
 
 	bytesUnrefToArrayFunction.Invoke(inArgs[:], nil)
 
@@ -848,10 +882,12 @@ func (recv *Bytes) UnrefToArray() {
 var checksumStruct *gi.Struct
 var checksumStruct_Once sync.Once
 
-func checksumStruct_Set() {
+func checksumStruct_Set() error {
+	var err error
 	checksumStruct_Once.Do(func() {
-		checksumStruct = gi.StructNew("GLib", "Checksum")
+		checksumStruct, err = gi.StructNew("GLib", "Checksum")
 	})
+	return err
 }
 
 type Checksum struct {
@@ -872,12 +908,14 @@ func checksumCopyFunction_Set() {
 
 // Copy is a representation of the C type g_checksum_copy.
 func (recv *Checksum) Copy() *Checksum {
-	checksumCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := checksumCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	checksumCopyFunction_Set()
+
+	ret = checksumCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Checksum{native: ret.Pointer()}
 
@@ -896,10 +934,10 @@ func checksumFreeFunction_Set() {
 
 // Free is a representation of the C type g_checksum_free.
 func (recv *Checksum) Free() {
-	checksumFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	checksumFreeFunction_Set()
 
 	checksumFreeFunction.Invoke(inArgs[:], nil)
 
@@ -919,12 +957,14 @@ func checksumGetStringFunction_Set() {
 
 // GetString is a representation of the C type g_checksum_get_string.
 func (recv *Checksum) GetString() string {
-	checksumGetStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := checksumGetStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	checksumGetStringFunction_Set()
+
+	ret = checksumGetStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -943,10 +983,10 @@ func checksumResetFunction_Set() {
 
 // Reset is a representation of the C type g_checksum_reset.
 func (recv *Checksum) Reset() {
-	checksumResetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	checksumResetFunction_Set()
 
 	checksumResetFunction.Invoke(inArgs[:], nil)
 
@@ -957,10 +997,12 @@ func (recv *Checksum) Reset() {
 var condStruct *gi.Struct
 var condStruct_Once sync.Once
 
-func condStruct_Set() {
+func condStruct_Set() error {
+	var err error
 	condStruct_Once.Do(func() {
-		condStruct = gi.StructNew("GLib", "Cond")
+		condStruct, err = gi.StructNew("GLib", "Cond")
 	})
+	return err
 }
 
 type Cond struct {
@@ -979,10 +1021,10 @@ func condBroadcastFunction_Set() {
 
 // Broadcast is a representation of the C type g_cond_broadcast.
 func (recv *Cond) Broadcast() {
-	condBroadcastFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	condBroadcastFunction_Set()
 
 	condBroadcastFunction.Invoke(inArgs[:], nil)
 
@@ -1000,10 +1042,10 @@ func condClearFunction_Set() {
 
 // Clear is a representation of the C type g_cond_clear.
 func (recv *Cond) Clear() {
-	condClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	condClearFunction_Set()
 
 	condClearFunction.Invoke(inArgs[:], nil)
 
@@ -1021,10 +1063,10 @@ func condInitFunction_Set() {
 
 // Init is a representation of the C type g_cond_init.
 func (recv *Cond) Init() {
-	condInitFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	condInitFunction_Set()
 
 	condInitFunction.Invoke(inArgs[:], nil)
 
@@ -1042,10 +1084,10 @@ func condSignalFunction_Set() {
 
 // Signal is a representation of the C type g_cond_signal.
 func (recv *Cond) Signal() {
-	condSignalFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	condSignalFunction_Set()
 
 	condSignalFunction.Invoke(inArgs[:], nil)
 
@@ -1058,10 +1100,12 @@ func (recv *Cond) Signal() {
 var dataStruct *gi.Struct
 var dataStruct_Once sync.Once
 
-func dataStruct_Set() {
+func dataStruct_Set() error {
+	var err error
 	dataStruct_Once.Do(func() {
-		dataStruct = gi.StructNew("GLib", "Data")
+		dataStruct, err = gi.StructNew("GLib", "Data")
 	})
+	return err
 }
 
 type Data struct {
@@ -1071,10 +1115,12 @@ type Data struct {
 var dateStruct *gi.Struct
 var dateStruct_Once sync.Once
 
-func dateStruct_Set() {
+func dateStruct_Set() error {
+	var err error
 	dateStruct_Once.Do(func() {
-		dateStruct = gi.StructNew("GLib", "Date")
+		dateStruct, err = gi.StructNew("GLib", "Date")
 	})
+	return err
 }
 
 type Date struct {
@@ -1099,9 +1145,12 @@ func dateNewFunction_Set() {
 
 // DateNew is a representation of the C type g_date_new.
 func DateNew() *Date {
+
+	var ret gi.Argument
+
 	dateNewFunction_Set()
 
-	ret := dateNewFunction.Invoke(nil, nil)
+	ret = dateNewFunction.Invoke(nil, nil)
 
 	retGo := &Date{native: ret.Pointer()}
 
@@ -1122,12 +1171,14 @@ func dateNewJulianFunction_Set() {
 
 // DateNewJulian is a representation of the C type g_date_new_julian.
 func DateNewJulian(julianDay uint32) *Date {
-	dateNewJulianFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(julianDay)
 
-	ret := dateNewJulianFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateNewJulianFunction_Set()
+
+	ret = dateNewJulianFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Date{native: ret.Pointer()}
 
@@ -1146,11 +1197,11 @@ func dateAddDaysFunction_Set() {
 
 // AddDays is a representation of the C type g_date_add_days.
 func (recv *Date) AddDays(nDays uint32) {
-	dateAddDaysFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nDays)
+
+	dateAddDaysFunction_Set()
 
 	dateAddDaysFunction.Invoke(inArgs[:], nil)
 
@@ -1168,11 +1219,11 @@ func dateAddMonthsFunction_Set() {
 
 // AddMonths is a representation of the C type g_date_add_months.
 func (recv *Date) AddMonths(nMonths uint32) {
-	dateAddMonthsFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nMonths)
+
+	dateAddMonthsFunction_Set()
 
 	dateAddMonthsFunction.Invoke(inArgs[:], nil)
 
@@ -1190,11 +1241,11 @@ func dateAddYearsFunction_Set() {
 
 // AddYears is a representation of the C type g_date_add_years.
 func (recv *Date) AddYears(nYears uint32) {
-	dateAddYearsFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nYears)
+
+	dateAddYearsFunction_Set()
 
 	dateAddYearsFunction.Invoke(inArgs[:], nil)
 
@@ -1214,11 +1265,11 @@ func dateClearFunction_Set() {
 
 // Clear is a representation of the C type g_date_clear.
 func (recv *Date) Clear(nDates uint32) {
-	dateClearFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nDates)
+
+	dateClearFunction_Set()
 
 	dateClearFunction.Invoke(inArgs[:], nil)
 
@@ -1238,12 +1289,14 @@ func dateCopyFunction_Set() {
 
 // Copy is a representation of the C type g_date_copy.
 func (recv *Date) Copy() *Date {
-	dateCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateCopyFunction_Set()
+
+	ret = dateCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Date{native: ret.Pointer()}
 
@@ -1264,10 +1317,10 @@ func dateFreeFunction_Set() {
 
 // Free is a representation of the C type g_date_free.
 func (recv *Date) Free() {
-	dateFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	dateFreeFunction_Set()
 
 	dateFreeFunction.Invoke(inArgs[:], nil)
 
@@ -1287,12 +1340,14 @@ func dateGetDayOfYearFunction_Set() {
 
 // GetDayOfYear is a representation of the C type g_date_get_day_of_year.
 func (recv *Date) GetDayOfYear() uint32 {
-	dateGetDayOfYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateGetDayOfYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateGetDayOfYearFunction_Set()
+
+	ret = dateGetDayOfYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1311,12 +1366,14 @@ func dateGetIso8601WeekOfYearFunction_Set() {
 
 // GetIso8601WeekOfYear is a representation of the C type g_date_get_iso8601_week_of_year.
 func (recv *Date) GetIso8601WeekOfYear() uint32 {
-	dateGetIso8601WeekOfYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateGetIso8601WeekOfYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateGetIso8601WeekOfYearFunction_Set()
+
+	ret = dateGetIso8601WeekOfYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1335,12 +1392,14 @@ func dateGetJulianFunction_Set() {
 
 // GetJulian is a representation of the C type g_date_get_julian.
 func (recv *Date) GetJulian() uint32 {
-	dateGetJulianFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateGetJulianFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateGetJulianFunction_Set()
+
+	ret = dateGetJulianFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1359,12 +1418,14 @@ func dateGetMondayWeekOfYearFunction_Set() {
 
 // GetMondayWeekOfYear is a representation of the C type g_date_get_monday_week_of_year.
 func (recv *Date) GetMondayWeekOfYear() uint32 {
-	dateGetMondayWeekOfYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateGetMondayWeekOfYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateGetMondayWeekOfYearFunction_Set()
+
+	ret = dateGetMondayWeekOfYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1385,12 +1446,14 @@ func dateGetSundayWeekOfYearFunction_Set() {
 
 // GetSundayWeekOfYear is a representation of the C type g_date_get_sunday_week_of_year.
 func (recv *Date) GetSundayWeekOfYear() uint32 {
-	dateGetSundayWeekOfYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateGetSundayWeekOfYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateGetSundayWeekOfYearFunction_Set()
+
+	ret = dateGetSundayWeekOfYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -1423,11 +1486,11 @@ func dateSetJulianFunction_Set() {
 
 // SetJulian is a representation of the C type g_date_set_julian.
 func (recv *Date) SetJulian(julianDate uint32) {
-	dateSetJulianFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(julianDate)
+
+	dateSetJulianFunction_Set()
 
 	dateSetJulianFunction.Invoke(inArgs[:], nil)
 
@@ -1447,11 +1510,11 @@ func dateSetParseFunction_Set() {
 
 // SetParse is a representation of the C type g_date_set_parse.
 func (recv *Date) SetParse(str string) {
-	dateSetParseFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(str)
+
+	dateSetParseFunction_Set()
 
 	dateSetParseFunction.Invoke(inArgs[:], nil)
 
@@ -1471,11 +1534,11 @@ func dateSetTimeTFunction_Set() {
 
 // SetTimeT is a representation of the C type g_date_set_time_t.
 func (recv *Date) SetTimeT(timet int64) {
-	dateSetTimeTFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(timet)
+
+	dateSetTimeTFunction_Set()
 
 	dateSetTimeTFunction.Invoke(inArgs[:], nil)
 
@@ -1497,11 +1560,11 @@ func dateSubtractDaysFunction_Set() {
 
 // SubtractDays is a representation of the C type g_date_subtract_days.
 func (recv *Date) SubtractDays(nDays uint32) {
-	dateSubtractDaysFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nDays)
+
+	dateSubtractDaysFunction_Set()
 
 	dateSubtractDaysFunction.Invoke(inArgs[:], nil)
 
@@ -1519,11 +1582,11 @@ func dateSubtractMonthsFunction_Set() {
 
 // SubtractMonths is a representation of the C type g_date_subtract_months.
 func (recv *Date) SubtractMonths(nMonths uint32) {
-	dateSubtractMonthsFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nMonths)
+
+	dateSubtractMonthsFunction_Set()
 
 	dateSubtractMonthsFunction.Invoke(inArgs[:], nil)
 
@@ -1541,11 +1604,11 @@ func dateSubtractYearsFunction_Set() {
 
 // SubtractYears is a representation of the C type g_date_subtract_years.
 func (recv *Date) SubtractYears(nYears uint32) {
-	dateSubtractYearsFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nYears)
+
+	dateSubtractYearsFunction_Set()
 
 	dateSubtractYearsFunction.Invoke(inArgs[:], nil)
 
@@ -1558,10 +1621,12 @@ func (recv *Date) SubtractYears(nYears uint32) {
 var dateTimeStruct *gi.Struct
 var dateTimeStruct_Once sync.Once
 
-func dateTimeStruct_Set() {
+func dateTimeStruct_Set() error {
+	var err error
 	dateTimeStruct_Once.Do(func() {
-		dateTimeStruct = gi.StructNew("GLib", "DateTime")
+		dateTimeStruct, err = gi.StructNew("GLib", "DateTime")
 	})
+	return err
 }
 
 type DateTime struct {
@@ -1588,12 +1653,14 @@ func dateTimeNewFromUnixLocalFunction_Set() {
 
 // DateTimeNewFromUnixLocal is a representation of the C type g_date_time_new_from_unix_local.
 func DateTimeNewFromUnixLocal(t int64) *DateTime {
-	dateTimeNewFromUnixLocalFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(t)
 
-	ret := dateTimeNewFromUnixLocalFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeNewFromUnixLocalFunction_Set()
+
+	ret = dateTimeNewFromUnixLocalFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1612,12 +1679,14 @@ func dateTimeNewFromUnixUtcFunction_Set() {
 
 // DateTimeNewFromUnixUtc is a representation of the C type g_date_time_new_from_unix_utc.
 func DateTimeNewFromUnixUtc(t int64) *DateTime {
-	dateTimeNewFromUnixUtcFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(t)
 
-	ret := dateTimeNewFromUnixUtcFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeNewFromUnixUtcFunction_Set()
+
+	ret = dateTimeNewFromUnixUtcFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1640,9 +1709,12 @@ func dateTimeNewNowLocalFunction_Set() {
 
 // DateTimeNewNowLocal is a representation of the C type g_date_time_new_now_local.
 func DateTimeNewNowLocal() *DateTime {
+
+	var ret gi.Argument
+
 	dateTimeNewNowLocalFunction_Set()
 
-	ret := dateTimeNewNowLocalFunction.Invoke(nil, nil)
+	ret = dateTimeNewNowLocalFunction.Invoke(nil, nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1661,9 +1733,12 @@ func dateTimeNewNowUtcFunction_Set() {
 
 // DateTimeNewNowUtc is a representation of the C type g_date_time_new_now_utc.
 func DateTimeNewNowUtc() *DateTime {
+
+	var ret gi.Argument
+
 	dateTimeNewNowUtcFunction_Set()
 
-	ret := dateTimeNewNowUtcFunction.Invoke(nil, nil)
+	ret = dateTimeNewNowUtcFunction.Invoke(nil, nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1686,13 +1761,15 @@ func dateTimeAddDaysFunction_Set() {
 
 // AddDays is a representation of the C type g_date_time_add_days.
 func (recv *DateTime) AddDays(days int32) *DateTime {
-	dateTimeAddDaysFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(days)
 
-	ret := dateTimeAddDaysFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeAddDaysFunction_Set()
+
+	ret = dateTimeAddDaysFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1713,13 +1790,15 @@ func dateTimeAddHoursFunction_Set() {
 
 // AddHours is a representation of the C type g_date_time_add_hours.
 func (recv *DateTime) AddHours(hours int32) *DateTime {
-	dateTimeAddHoursFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(hours)
 
-	ret := dateTimeAddHoursFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeAddHoursFunction_Set()
+
+	ret = dateTimeAddHoursFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1738,13 +1817,15 @@ func dateTimeAddMinutesFunction_Set() {
 
 // AddMinutes is a representation of the C type g_date_time_add_minutes.
 func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
-	dateTimeAddMinutesFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(minutes)
 
-	ret := dateTimeAddMinutesFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeAddMinutesFunction_Set()
+
+	ret = dateTimeAddMinutesFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1763,13 +1844,15 @@ func dateTimeAddMonthsFunction_Set() {
 
 // AddMonths is a representation of the C type g_date_time_add_months.
 func (recv *DateTime) AddMonths(months int32) *DateTime {
-	dateTimeAddMonthsFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(months)
 
-	ret := dateTimeAddMonthsFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeAddMonthsFunction_Set()
+
+	ret = dateTimeAddMonthsFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1790,13 +1873,15 @@ func dateTimeAddWeeksFunction_Set() {
 
 // AddWeeks is a representation of the C type g_date_time_add_weeks.
 func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
-	dateTimeAddWeeksFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(weeks)
 
-	ret := dateTimeAddWeeksFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeAddWeeksFunction_Set()
+
+	ret = dateTimeAddWeeksFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1815,13 +1900,15 @@ func dateTimeAddYearsFunction_Set() {
 
 // AddYears is a representation of the C type g_date_time_add_years.
 func (recv *DateTime) AddYears(years int32) *DateTime {
-	dateTimeAddYearsFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(years)
 
-	ret := dateTimeAddYearsFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeAddYearsFunction_Set()
+
+	ret = dateTimeAddYearsFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -1842,13 +1929,15 @@ func dateTimeFormatFunction_Set() {
 
 // Format is a representation of the C type g_date_time_format.
 func (recv *DateTime) Format(format string) string {
-	dateTimeFormatFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(format)
 
-	ret := dateTimeFormatFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeFormatFunction_Set()
+
+	ret = dateTimeFormatFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -1867,12 +1956,14 @@ func dateTimeFormatIso8601Function_Set() {
 
 // FormatIso8601 is a representation of the C type g_date_time_format_iso8601.
 func (recv *DateTime) FormatIso8601() string {
-	dateTimeFormatIso8601Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeFormatIso8601Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeFormatIso8601Function_Set()
+
+	ret = dateTimeFormatIso8601Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -1891,12 +1982,14 @@ func dateTimeGetDayOfMonthFunction_Set() {
 
 // GetDayOfMonth is a representation of the C type g_date_time_get_day_of_month.
 func (recv *DateTime) GetDayOfMonth() int32 {
-	dateTimeGetDayOfMonthFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetDayOfMonthFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetDayOfMonthFunction_Set()
+
+	ret = dateTimeGetDayOfMonthFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -1915,12 +2008,14 @@ func dateTimeGetDayOfWeekFunction_Set() {
 
 // GetDayOfWeek is a representation of the C type g_date_time_get_day_of_week.
 func (recv *DateTime) GetDayOfWeek() int32 {
-	dateTimeGetDayOfWeekFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetDayOfWeekFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetDayOfWeekFunction_Set()
+
+	ret = dateTimeGetDayOfWeekFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -1939,12 +2034,14 @@ func dateTimeGetDayOfYearFunction_Set() {
 
 // GetDayOfYear is a representation of the C type g_date_time_get_day_of_year.
 func (recv *DateTime) GetDayOfYear() int32 {
-	dateTimeGetDayOfYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetDayOfYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetDayOfYearFunction_Set()
+
+	ret = dateTimeGetDayOfYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -1963,12 +2060,14 @@ func dateTimeGetHourFunction_Set() {
 
 // GetHour is a representation of the C type g_date_time_get_hour.
 func (recv *DateTime) GetHour() int32 {
-	dateTimeGetHourFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetHourFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetHourFunction_Set()
+
+	ret = dateTimeGetHourFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -1987,12 +2086,14 @@ func dateTimeGetMicrosecondFunction_Set() {
 
 // GetMicrosecond is a representation of the C type g_date_time_get_microsecond.
 func (recv *DateTime) GetMicrosecond() int32 {
-	dateTimeGetMicrosecondFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetMicrosecondFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetMicrosecondFunction_Set()
+
+	ret = dateTimeGetMicrosecondFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2011,12 +2112,14 @@ func dateTimeGetMinuteFunction_Set() {
 
 // GetMinute is a representation of the C type g_date_time_get_minute.
 func (recv *DateTime) GetMinute() int32 {
-	dateTimeGetMinuteFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetMinuteFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetMinuteFunction_Set()
+
+	ret = dateTimeGetMinuteFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2035,12 +2138,14 @@ func dateTimeGetMonthFunction_Set() {
 
 // GetMonth is a representation of the C type g_date_time_get_month.
 func (recv *DateTime) GetMonth() int32 {
-	dateTimeGetMonthFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetMonthFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetMonthFunction_Set()
+
+	ret = dateTimeGetMonthFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2059,12 +2164,14 @@ func dateTimeGetSecondFunction_Set() {
 
 // GetSecond is a representation of the C type g_date_time_get_second.
 func (recv *DateTime) GetSecond() int32 {
-	dateTimeGetSecondFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetSecondFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetSecondFunction_Set()
+
+	ret = dateTimeGetSecondFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2085,12 +2192,14 @@ func dateTimeGetTimezoneFunction_Set() {
 
 // GetTimezone is a representation of the C type g_date_time_get_timezone.
 func (recv *DateTime) GetTimezone() *TimeZone {
-	dateTimeGetTimezoneFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetTimezoneFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetTimezoneFunction_Set()
+
+	ret = dateTimeGetTimezoneFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TimeZone{native: ret.Pointer()}
 
@@ -2109,12 +2218,14 @@ func dateTimeGetTimezoneAbbreviationFunction_Set() {
 
 // GetTimezoneAbbreviation is a representation of the C type g_date_time_get_timezone_abbreviation.
 func (recv *DateTime) GetTimezoneAbbreviation() string {
-	dateTimeGetTimezoneAbbreviationFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetTimezoneAbbreviationFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetTimezoneAbbreviationFunction_Set()
+
+	ret = dateTimeGetTimezoneAbbreviationFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2135,12 +2246,14 @@ func dateTimeGetWeekNumberingYearFunction_Set() {
 
 // GetWeekNumberingYear is a representation of the C type g_date_time_get_week_numbering_year.
 func (recv *DateTime) GetWeekNumberingYear() int32 {
-	dateTimeGetWeekNumberingYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetWeekNumberingYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetWeekNumberingYearFunction_Set()
+
+	ret = dateTimeGetWeekNumberingYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2159,12 +2272,14 @@ func dateTimeGetWeekOfYearFunction_Set() {
 
 // GetWeekOfYear is a representation of the C type g_date_time_get_week_of_year.
 func (recv *DateTime) GetWeekOfYear() int32 {
-	dateTimeGetWeekOfYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetWeekOfYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetWeekOfYearFunction_Set()
+
+	ret = dateTimeGetWeekOfYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2183,12 +2298,14 @@ func dateTimeGetYearFunction_Set() {
 
 // GetYear is a representation of the C type g_date_time_get_year.
 func (recv *DateTime) GetYear() int32 {
-	dateTimeGetYearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeGetYearFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeGetYearFunction_Set()
+
+	ret = dateTimeGetYearFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2207,12 +2324,12 @@ func dateTimeGetYmdFunction_Set() {
 
 // GetYmd is a representation of the C type g_date_time_get_ymd.
 func (recv *DateTime) GetYmd() (int32, int32, int32) {
-	dateTimeGetYmdFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
 	var outArgs [3]gi.Argument
+
+	dateTimeGetYmdFunction_Set()
 
 	dateTimeGetYmdFunction.Invoke(inArgs[:], outArgs[:])
 
@@ -2237,12 +2354,14 @@ func dateTimeRefFunction_Set() {
 
 // Ref is a representation of the C type g_date_time_ref.
 func (recv *DateTime) Ref() *DateTime {
-	dateTimeRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeRefFunction_Set()
+
+	ret = dateTimeRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -2261,12 +2380,14 @@ func dateTimeToLocalFunction_Set() {
 
 // ToLocal is a representation of the C type g_date_time_to_local.
 func (recv *DateTime) ToLocal() *DateTime {
-	dateTimeToLocalFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeToLocalFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeToLocalFunction_Set()
+
+	ret = dateTimeToLocalFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -2289,12 +2410,14 @@ func dateTimeToUnixFunction_Set() {
 
 // ToUnix is a representation of the C type g_date_time_to_unix.
 func (recv *DateTime) ToUnix() int64 {
-	dateTimeToUnixFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeToUnixFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeToUnixFunction_Set()
+
+	ret = dateTimeToUnixFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -2313,12 +2436,14 @@ func dateTimeToUtcFunction_Set() {
 
 // ToUtc is a representation of the C type g_date_time_to_utc.
 func (recv *DateTime) ToUtc() *DateTime {
-	dateTimeToUtcFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := dateTimeToUtcFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dateTimeToUtcFunction_Set()
+
+	ret = dateTimeToUtcFunction.Invoke(inArgs[:], nil)
 
 	retGo := &DateTime{native: ret.Pointer()}
 
@@ -2337,10 +2462,10 @@ func dateTimeUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_date_time_unref.
 func (recv *DateTime) Unref() {
-	dateTimeUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	dateTimeUnrefFunction_Set()
 
 	dateTimeUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2349,10 +2474,12 @@ func (recv *DateTime) Unref() {
 var debugKeyStruct *gi.Struct
 var debugKeyStruct_Once sync.Once
 
-func debugKeyStruct_Set() {
+func debugKeyStruct_Set() error {
+	var err error
 	debugKeyStruct_Once.Do(func() {
-		debugKeyStruct = gi.StructNew("GLib", "DebugKey")
+		debugKeyStruct, err = gi.StructNew("GLib", "DebugKey")
 	})
+	return err
 }
 
 type DebugKey struct {
@@ -2364,10 +2491,12 @@ type DebugKey struct {
 var dirStruct *gi.Struct
 var dirStruct_Once sync.Once
 
-func dirStruct_Set() {
+func dirStruct_Set() error {
+	var err error
 	dirStruct_Once.Do(func() {
-		dirStruct = gi.StructNew("GLib", "Dir")
+		dirStruct, err = gi.StructNew("GLib", "Dir")
 	})
+	return err
 }
 
 type Dir struct {
@@ -2386,10 +2515,10 @@ func dirCloseFunction_Set() {
 
 // Close is a representation of the C type g_dir_close.
 func (recv *Dir) Close() {
-	dirCloseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	dirCloseFunction_Set()
 
 	dirCloseFunction.Invoke(inArgs[:], nil)
 
@@ -2409,10 +2538,10 @@ func dirRewindFunction_Set() {
 
 // Rewind is a representation of the C type g_dir_rewind.
 func (recv *Dir) Rewind() {
-	dirRewindFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	dirRewindFunction_Set()
 
 	dirRewindFunction.Invoke(inArgs[:], nil)
 
@@ -2421,10 +2550,12 @@ func (recv *Dir) Rewind() {
 var errorStruct *gi.Struct
 var errorStruct_Once sync.Once
 
-func errorStruct_Set() {
+func errorStruct_Set() error {
+	var err error
 	errorStruct_Once.Do(func() {
-		errorStruct = gi.StructNew("GLib", "Error")
+		errorStruct, err = gi.StructNew("GLib", "Error")
 	})
+	return err
 }
 
 type Error struct {
@@ -2452,12 +2583,14 @@ func errorCopyFunction_Set() {
 
 // Copy is a representation of the C type g_error_copy.
 func (recv *Error) Copy() *Error {
-	errorCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := errorCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	errorCopyFunction_Set()
+
+	ret = errorCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Error{native: ret.Pointer()}
 
@@ -2476,10 +2609,10 @@ func errorFreeFunction_Set() {
 
 // Free is a representation of the C type g_error_free.
 func (recv *Error) Free() {
-	errorFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	errorFreeFunction_Set()
 
 	errorFreeFunction.Invoke(inArgs[:], nil)
 
@@ -2490,10 +2623,12 @@ func (recv *Error) Free() {
 var hashTableStruct *gi.Struct
 var hashTableStruct_Once sync.Once
 
-func hashTableStruct_Set() {
+func hashTableStruct_Set() error {
+	var err error
 	hashTableStruct_Once.Do(func() {
-		hashTableStruct = gi.StructNew("GLib", "HashTable")
+		hashTableStruct, err = gi.StructNew("GLib", "HashTable")
 	})
+	return err
 }
 
 type HashTable struct {
@@ -2503,10 +2638,12 @@ type HashTable struct {
 var hashTableIterStruct *gi.Struct
 var hashTableIterStruct_Once sync.Once
 
-func hashTableIterStruct_Set() {
+func hashTableIterStruct_Set() error {
+	var err error
 	hashTableIterStruct_Once.Do(func() {
-		hashTableIterStruct = gi.StructNew("GLib", "HashTableIter")
+		hashTableIterStruct, err = gi.StructNew("GLib", "HashTableIter")
 	})
+	return err
 }
 
 type HashTableIter struct {
@@ -2531,10 +2668,10 @@ func hashTableIterRemoveFunction_Set() {
 
 // Remove is a representation of the C type g_hash_table_iter_remove.
 func (recv *HashTableIter) Remove() {
-	hashTableIterRemoveFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	hashTableIterRemoveFunction_Set()
 
 	hashTableIterRemoveFunction.Invoke(inArgs[:], nil)
 
@@ -2554,10 +2691,10 @@ func hashTableIterStealFunction_Set() {
 
 // Steal is a representation of the C type g_hash_table_iter_steal.
 func (recv *HashTableIter) Steal() {
-	hashTableIterStealFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	hashTableIterStealFunction_Set()
 
 	hashTableIterStealFunction.Invoke(inArgs[:], nil)
 
@@ -2566,10 +2703,12 @@ func (recv *HashTableIter) Steal() {
 var hmacStruct *gi.Struct
 var hmacStruct_Once sync.Once
 
-func hmacStruct_Set() {
+func hmacStruct_Set() error {
+	var err error
 	hmacStruct_Once.Do(func() {
-		hmacStruct = gi.StructNew("GLib", "Hmac")
+		hmacStruct, err = gi.StructNew("GLib", "Hmac")
 	})
+	return err
 }
 
 type Hmac struct {
@@ -2588,12 +2727,14 @@ func hmacCopyFunction_Set() {
 
 // Copy is a representation of the C type g_hmac_copy.
 func (recv *Hmac) Copy() *Hmac {
-	hmacCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := hmacCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	hmacCopyFunction_Set()
+
+	ret = hmacCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Hmac{native: ret.Pointer()}
 
@@ -2614,12 +2755,14 @@ func hmacGetStringFunction_Set() {
 
 // GetString is a representation of the C type g_hmac_get_string.
 func (recv *Hmac) GetString() string {
-	hmacGetStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := hmacGetStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	hmacGetStringFunction_Set()
+
+	ret = hmacGetStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2638,12 +2781,14 @@ func hmacRefFunction_Set() {
 
 // Ref is a representation of the C type g_hmac_ref.
 func (recv *Hmac) Ref() *Hmac {
-	hmacRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := hmacRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	hmacRefFunction_Set()
+
+	ret = hmacRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Hmac{native: ret.Pointer()}
 
@@ -2662,10 +2807,10 @@ func hmacUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_hmac_unref.
 func (recv *Hmac) Unref() {
-	hmacUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	hmacUnrefFunction_Set()
 
 	hmacUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -2676,10 +2821,12 @@ func (recv *Hmac) Unref() {
 var hookStruct *gi.Struct
 var hookStruct_Once sync.Once
 
-func hookStruct_Set() {
+func hookStruct_Set() error {
+	var err error
 	hookStruct_Once.Do(func() {
-		hookStruct = gi.StructNew("GLib", "Hook")
+		hookStruct, err = gi.StructNew("GLib", "Hook")
 	})
+	return err
 }
 
 type Hook struct {
@@ -2699,10 +2846,12 @@ type Hook struct {
 var hookListStruct *gi.Struct
 var hookListStruct_Once sync.Once
 
-func hookListStruct_Set() {
+func hookListStruct_Set() error {
+	var err error
 	hookListStruct_Once.Do(func() {
-		hookListStruct = gi.StructNew("GLib", "HookList")
+		hookListStruct, err = gi.StructNew("GLib", "HookList")
 	})
+	return err
 }
 
 type HookList struct {
@@ -2728,10 +2877,10 @@ func hookListClearFunction_Set() {
 
 // Clear is a representation of the C type g_hook_list_clear.
 func (recv *HookList) Clear() {
-	hookListClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	hookListClearFunction_Set()
 
 	hookListClearFunction.Invoke(inArgs[:], nil)
 
@@ -2749,11 +2898,11 @@ func hookListInitFunction_Set() {
 
 // Init is a representation of the C type g_hook_list_init.
 func (recv *HookList) Init(hookSize uint32) {
-	hookListInitFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(hookSize)
+
+	hookListInitFunction_Set()
 
 	hookListInitFunction.Invoke(inArgs[:], nil)
 
@@ -2770,10 +2919,12 @@ func (recv *HookList) Init(hookSize uint32) {
 var iConvStruct *gi.Struct
 var iConvStruct_Once sync.Once
 
-func iConvStruct_Set() {
+func iConvStruct_Set() error {
+	var err error
 	iConvStruct_Once.Do(func() {
-		iConvStruct = gi.StructNew("GLib", "IConv")
+		iConvStruct, err = gi.StructNew("GLib", "IConv")
 	})
+	return err
 }
 
 type IConv struct {
@@ -2794,12 +2945,14 @@ func iConvCloseFunction_Set() {
 
 // Close is a representation of the C type g_iconv_close.
 func (recv *IConv) Close() int32 {
-	iConvCloseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := iConvCloseFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	iConvCloseFunction_Set()
+
+	ret = iConvCloseFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -2809,10 +2962,12 @@ func (recv *IConv) Close() int32 {
 var iOChannelStruct *gi.Struct
 var iOChannelStruct_Once sync.Once
 
-func iOChannelStruct_Set() {
+func iOChannelStruct_Set() error {
+	var err error
 	iOChannelStruct_Once.Do(func() {
-		iOChannelStruct = gi.StructNew("GLib", "IOChannel")
+		iOChannelStruct, err = gi.StructNew("GLib", "IOChannel")
 	})
+	return err
 }
 
 type IOChannel struct {
@@ -2833,12 +2988,14 @@ func iOChannelUnixNewFunction_Set() {
 
 // IOChannelUnixNew is a representation of the C type g_io_channel_unix_new.
 func IOChannelUnixNew(fd int32) *IOChannel {
-	iOChannelUnixNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(fd)
 
-	ret := iOChannelUnixNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	iOChannelUnixNewFunction_Set()
+
+	ret = iOChannelUnixNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &IOChannel{native: ret.Pointer()}
 
@@ -2857,10 +3014,10 @@ func iOChannelCloseFunction_Set() {
 
 // Close is a representation of the C type g_io_channel_close.
 func (recv *IOChannel) Close() {
-	iOChannelCloseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	iOChannelCloseFunction_Set()
 
 	iOChannelCloseFunction.Invoke(inArgs[:], nil)
 
@@ -2888,12 +3045,14 @@ func iOChannelGetEncodingFunction_Set() {
 
 // GetEncoding is a representation of the C type g_io_channel_get_encoding.
 func (recv *IOChannel) GetEncoding() string {
-	iOChannelGetEncodingFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := iOChannelGetEncodingFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	iOChannelGetEncodingFunction_Set()
+
+	ret = iOChannelGetEncodingFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2914,13 +3073,15 @@ func iOChannelGetLineTermFunction_Set() {
 
 // GetLineTerm is a representation of the C type g_io_channel_get_line_term.
 func (recv *IOChannel) GetLineTerm(length int32) string {
-	iOChannelGetLineTermFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(length)
 
-	ret := iOChannelGetLineTermFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	iOChannelGetLineTermFunction_Set()
+
+	ret = iOChannelGetLineTermFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -2939,10 +3100,10 @@ func iOChannelInitFunction_Set() {
 
 // Init is a representation of the C type g_io_channel_init.
 func (recv *IOChannel) Init() {
-	iOChannelInitFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	iOChannelInitFunction_Set()
 
 	iOChannelInitFunction.Invoke(inArgs[:], nil)
 
@@ -2972,12 +3133,14 @@ func iOChannelRefFunction_Set() {
 
 // Ref is a representation of the C type g_io_channel_ref.
 func (recv *IOChannel) Ref() *IOChannel {
-	iOChannelRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := iOChannelRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	iOChannelRefFunction_Set()
+
+	ret = iOChannelRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &IOChannel{native: ret.Pointer()}
 
@@ -3010,12 +3173,12 @@ func iOChannelSetLineTermFunction_Set() {
 
 // SetLineTerm is a representation of the C type g_io_channel_set_line_term.
 func (recv *IOChannel) SetLineTerm(lineTerm string, length int32) {
-	iOChannelSetLineTermFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(lineTerm)
 	inArgs[2].SetInt32(length)
+
+	iOChannelSetLineTermFunction_Set()
 
 	iOChannelSetLineTermFunction.Invoke(inArgs[:], nil)
 
@@ -3035,12 +3198,14 @@ func iOChannelUnixGetFdFunction_Set() {
 
 // UnixGetFd is a representation of the C type g_io_channel_unix_get_fd.
 func (recv *IOChannel) UnixGetFd() int32 {
-	iOChannelUnixGetFdFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := iOChannelUnixGetFdFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	iOChannelUnixGetFdFunction_Set()
+
+	ret = iOChannelUnixGetFdFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -3059,10 +3224,10 @@ func iOChannelUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_io_channel_unref.
 func (recv *IOChannel) Unref() {
-	iOChannelUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	iOChannelUnrefFunction_Set()
 
 	iOChannelUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -3077,10 +3242,12 @@ func (recv *IOChannel) Unref() {
 var iOFuncsStruct *gi.Struct
 var iOFuncsStruct_Once sync.Once
 
-func iOFuncsStruct_Set() {
+func iOFuncsStruct_Set() error {
+	var err error
 	iOFuncsStruct_Once.Do(func() {
-		iOFuncsStruct = gi.StructNew("GLib", "IOFuncs")
+		iOFuncsStruct, err = gi.StructNew("GLib", "IOFuncs")
 	})
+	return err
 }
 
 type IOFuncs struct {
@@ -3098,10 +3265,12 @@ type IOFuncs struct {
 var keyFileStruct *gi.Struct
 var keyFileStruct_Once sync.Once
 
-func keyFileStruct_Set() {
+func keyFileStruct_Set() error {
+	var err error
 	keyFileStruct_Once.Do(func() {
-		keyFileStruct = gi.StructNew("GLib", "KeyFile")
+		keyFileStruct, err = gi.StructNew("GLib", "KeyFile")
 	})
+	return err
 }
 
 type KeyFile struct {
@@ -3120,9 +3289,12 @@ func keyFileNewFunction_Set() {
 
 // KeyFileNew is a representation of the C type g_key_file_new.
 func KeyFileNew() *KeyFile {
+
+	var ret gi.Argument
+
 	keyFileNewFunction_Set()
 
-	ret := keyFileNewFunction.Invoke(nil, nil)
+	ret = keyFileNewFunction.Invoke(nil, nil)
 
 	retGo := &KeyFile{native: ret.Pointer()}
 
@@ -3141,10 +3313,10 @@ func keyFileFreeFunction_Set() {
 
 // Free is a representation of the C type g_key_file_free.
 func (recv *KeyFile) Free() {
-	keyFileFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	keyFileFreeFunction_Set()
 
 	keyFileFreeFunction.Invoke(inArgs[:], nil)
 
@@ -3166,14 +3338,16 @@ func keyFileGetCommentFunction_Set() {
 
 // GetComment is a representation of the C type g_key_file_get_comment.
 func (recv *KeyFile) GetComment(groupName string, key string) string {
-	keyFileGetCommentFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
-	ret := keyFileGetCommentFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetCommentFunction_Set()
+
+	ret = keyFileGetCommentFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -3198,14 +3372,16 @@ func keyFileGetInt64Function_Set() {
 
 // GetInt64 is a representation of the C type g_key_file_get_int64.
 func (recv *KeyFile) GetInt64(groupName string, key string) int64 {
-	keyFileGetInt64Function_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
-	ret := keyFileGetInt64Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetInt64Function_Set()
+
+	ret = keyFileGetInt64Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -3224,14 +3400,16 @@ func keyFileGetIntegerFunction_Set() {
 
 // GetInteger is a representation of the C type g_key_file_get_integer.
 func (recv *KeyFile) GetInteger(groupName string, key string) int32 {
-	keyFileGetIntegerFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
-	ret := keyFileGetIntegerFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetIntegerFunction_Set()
+
+	ret = keyFileGetIntegerFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -3254,15 +3432,17 @@ func keyFileGetLocaleForKeyFunction_Set() {
 
 // GetLocaleForKey is a representation of the C type g_key_file_get_locale_for_key.
 func (recv *KeyFile) GetLocaleForKey(groupName string, key string, locale string) string {
-	keyFileGetLocaleForKeyFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
 
-	ret := keyFileGetLocaleForKeyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetLocaleForKeyFunction_Set()
+
+	ret = keyFileGetLocaleForKeyFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -3281,15 +3461,17 @@ func keyFileGetLocaleStringFunction_Set() {
 
 // GetLocaleString is a representation of the C type g_key_file_get_locale_string.
 func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string) string {
-	keyFileGetLocaleStringFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
 
-	ret := keyFileGetLocaleStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetLocaleStringFunction_Set()
+
+	ret = keyFileGetLocaleStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -3310,12 +3492,14 @@ func keyFileGetStartGroupFunction_Set() {
 
 // GetStartGroup is a representation of the C type g_key_file_get_start_group.
 func (recv *KeyFile) GetStartGroup() string {
-	keyFileGetStartGroupFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := keyFileGetStartGroupFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetStartGroupFunction_Set()
+
+	ret = keyFileGetStartGroupFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -3334,14 +3518,16 @@ func keyFileGetStringFunction_Set() {
 
 // GetString is a representation of the C type g_key_file_get_string.
 func (recv *KeyFile) GetString(groupName string, key string) string {
-	keyFileGetStringFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
-	ret := keyFileGetStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetStringFunction_Set()
+
+	ret = keyFileGetStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -3362,14 +3548,16 @@ func keyFileGetUint64Function_Set() {
 
 // GetUint64 is a representation of the C type g_key_file_get_uint64.
 func (recv *KeyFile) GetUint64(groupName string, key string) uint64 {
-	keyFileGetUint64Function_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
-	ret := keyFileGetUint64Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetUint64Function_Set()
+
+	ret = keyFileGetUint64Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint64()
 
@@ -3388,14 +3576,16 @@ func keyFileGetValueFunction_Set() {
 
 // GetValue is a representation of the C type g_key_file_get_value.
 func (recv *KeyFile) GetValue(groupName string, key string) string {
-	keyFileGetValueFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
-	ret := keyFileGetValueFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileGetValueFunction_Set()
+
+	ret = keyFileGetValueFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -3428,12 +3618,14 @@ func keyFileRefFunction_Set() {
 
 // Ref is a representation of the C type g_key_file_ref.
 func (recv *KeyFile) Ref() *KeyFile {
-	keyFileRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := keyFileRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	keyFileRefFunction_Set()
+
+	ret = keyFileRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &KeyFile{native: ret.Pointer()}
 
@@ -3470,13 +3662,13 @@ func keyFileSetInt64Function_Set() {
 
 // SetInt64 is a representation of the C type g_key_file_set_int64.
 func (recv *KeyFile) SetInt64(groupName string, key string, value int64) {
-	keyFileSetInt64Function_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetInt64(value)
+
+	keyFileSetInt64Function_Set()
 
 	keyFileSetInt64Function.Invoke(inArgs[:], nil)
 
@@ -3494,13 +3686,13 @@ func keyFileSetIntegerFunction_Set() {
 
 // SetInteger is a representation of the C type g_key_file_set_integer.
 func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
-	keyFileSetIntegerFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetInt32(value)
+
+	keyFileSetIntegerFunction_Set()
 
 	keyFileSetIntegerFunction.Invoke(inArgs[:], nil)
 
@@ -3520,11 +3712,11 @@ func keyFileSetListSeparatorFunction_Set() {
 
 // SetListSeparator is a representation of the C type g_key_file_set_list_separator.
 func (recv *KeyFile) SetListSeparator(separator int8) {
-	keyFileSetListSeparatorFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(separator)
+
+	keyFileSetListSeparatorFunction_Set()
 
 	keyFileSetListSeparatorFunction.Invoke(inArgs[:], nil)
 
@@ -3542,14 +3734,14 @@ func keyFileSetLocaleStringFunction_Set() {
 
 // SetLocaleString is a representation of the C type g_key_file_set_locale_string.
 func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string, string_ string) {
-	keyFileSetLocaleStringFunction_Set()
-
 	var inArgs [5]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(locale)
 	inArgs[4].SetString(string_)
+
+	keyFileSetLocaleStringFunction_Set()
 
 	keyFileSetLocaleStringFunction.Invoke(inArgs[:], nil)
 
@@ -3569,13 +3761,13 @@ func keyFileSetStringFunction_Set() {
 
 // SetString is a representation of the C type g_key_file_set_string.
 func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
-	keyFileSetStringFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(string_)
+
+	keyFileSetStringFunction_Set()
 
 	keyFileSetStringFunction.Invoke(inArgs[:], nil)
 
@@ -3595,13 +3787,13 @@ func keyFileSetUint64Function_Set() {
 
 // SetUint64 is a representation of the C type g_key_file_set_uint64.
 func (recv *KeyFile) SetUint64(groupName string, key string, value uint64) {
-	keyFileSetUint64Function_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetUint64(value)
+
+	keyFileSetUint64Function_Set()
 
 	keyFileSetUint64Function.Invoke(inArgs[:], nil)
 
@@ -3619,13 +3811,13 @@ func keyFileSetValueFunction_Set() {
 
 // SetValue is a representation of the C type g_key_file_set_value.
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {
-	keyFileSetValueFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 	inArgs[3].SetString(value)
+
+	keyFileSetValueFunction_Set()
 
 	keyFileSetValueFunction.Invoke(inArgs[:], nil)
 
@@ -3645,10 +3837,10 @@ func keyFileUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_key_file_unref.
 func (recv *KeyFile) Unref() {
-	keyFileUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	keyFileUnrefFunction_Set()
 
 	keyFileUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -3657,10 +3849,12 @@ func (recv *KeyFile) Unref() {
 var listStruct *gi.Struct
 var listStruct_Once sync.Once
 
-func listStruct_Set() {
+func listStruct_Set() error {
+	var err error
 	listStruct_Once.Do(func() {
-		listStruct = gi.StructNew("GLib", "List")
+		listStruct, err = gi.StructNew("GLib", "List")
 	})
+	return err
 }
 
 type List struct {
@@ -3673,10 +3867,12 @@ type List struct {
 var logFieldStruct *gi.Struct
 var logFieldStruct_Once sync.Once
 
-func logFieldStruct_Set() {
+func logFieldStruct_Set() error {
+	var err error
 	logFieldStruct_Once.Do(func() {
-		logFieldStruct = gi.StructNew("GLib", "LogField")
+		logFieldStruct, err = gi.StructNew("GLib", "LogField")
 	})
+	return err
 }
 
 type LogField struct {
@@ -3689,10 +3885,12 @@ type LogField struct {
 var mainContextStruct *gi.Struct
 var mainContextStruct_Once sync.Once
 
-func mainContextStruct_Set() {
+func mainContextStruct_Set() error {
+	var err error
 	mainContextStruct_Once.Do(func() {
-		mainContextStruct = gi.StructNew("GLib", "MainContext")
+		mainContextStruct, err = gi.StructNew("GLib", "MainContext")
 	})
+	return err
 }
 
 type MainContext struct {
@@ -3711,9 +3909,12 @@ func mainContextNewFunction_Set() {
 
 // MainContextNew is a representation of the C type g_main_context_new.
 func MainContextNew() *MainContext {
+
+	var ret gi.Argument
+
 	mainContextNewFunction_Set()
 
-	ret := mainContextNewFunction.Invoke(nil, nil)
+	ret = mainContextNewFunction.Invoke(nil, nil)
 
 	retGo := &MainContext{native: ret.Pointer()}
 
@@ -3738,10 +3939,10 @@ func mainContextDispatchFunction_Set() {
 
 // Dispatch is a representation of the C type g_main_context_dispatch.
 func (recv *MainContext) Dispatch() {
-	mainContextDispatchFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainContextDispatchFunction_Set()
 
 	mainContextDispatchFunction.Invoke(inArgs[:], nil)
 
@@ -3761,13 +3962,15 @@ func mainContextFindSourceByIdFunction_Set() {
 
 // FindSourceById is a representation of the C type g_main_context_find_source_by_id.
 func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
-	mainContextFindSourceByIdFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(sourceId)
 
-	ret := mainContextFindSourceByIdFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mainContextFindSourceByIdFunction_Set()
+
+	ret = mainContextFindSourceByIdFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Source{native: ret.Pointer()}
 
@@ -3800,10 +4003,10 @@ func mainContextPopThreadDefaultFunction_Set() {
 
 // PopThreadDefault is a representation of the C type g_main_context_pop_thread_default.
 func (recv *MainContext) PopThreadDefault() {
-	mainContextPopThreadDefaultFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainContextPopThreadDefaultFunction_Set()
 
 	mainContextPopThreadDefaultFunction.Invoke(inArgs[:], nil)
 
@@ -3823,10 +4026,10 @@ func mainContextPushThreadDefaultFunction_Set() {
 
 // PushThreadDefault is a representation of the C type g_main_context_push_thread_default.
 func (recv *MainContext) PushThreadDefault() {
-	mainContextPushThreadDefaultFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainContextPushThreadDefaultFunction_Set()
 
 	mainContextPushThreadDefaultFunction.Invoke(inArgs[:], nil)
 
@@ -3846,12 +4049,14 @@ func mainContextRefFunction_Set() {
 
 // Ref is a representation of the C type g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {
-	mainContextRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mainContextRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mainContextRefFunction_Set()
+
+	ret = mainContextRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MainContext{native: ret.Pointer()}
 
@@ -3870,10 +4075,10 @@ func mainContextReleaseFunction_Set() {
 
 // Release is a representation of the C type g_main_context_release.
 func (recv *MainContext) Release() {
-	mainContextReleaseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainContextReleaseFunction_Set()
 
 	mainContextReleaseFunction.Invoke(inArgs[:], nil)
 
@@ -3895,10 +4100,10 @@ func mainContextUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_main_context_unref.
 func (recv *MainContext) Unref() {
-	mainContextUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainContextUnrefFunction_Set()
 
 	mainContextUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -3918,10 +4123,10 @@ func mainContextWakeupFunction_Set() {
 
 // Wakeup is a representation of the C type g_main_context_wakeup.
 func (recv *MainContext) Wakeup() {
-	mainContextWakeupFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainContextWakeupFunction_Set()
 
 	mainContextWakeupFunction.Invoke(inArgs[:], nil)
 
@@ -3930,10 +4135,12 @@ func (recv *MainContext) Wakeup() {
 var mainLoopStruct *gi.Struct
 var mainLoopStruct_Once sync.Once
 
-func mainLoopStruct_Set() {
+func mainLoopStruct_Set() error {
+	var err error
 	mainLoopStruct_Once.Do(func() {
-		mainLoopStruct = gi.StructNew("GLib", "MainLoop")
+		mainLoopStruct, err = gi.StructNew("GLib", "MainLoop")
 	})
+	return err
 }
 
 type MainLoop struct {
@@ -3954,12 +4161,14 @@ func mainLoopGetContextFunction_Set() {
 
 // GetContext is a representation of the C type g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
-	mainLoopGetContextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mainLoopGetContextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mainLoopGetContextFunction_Set()
+
+	ret = mainLoopGetContextFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MainContext{native: ret.Pointer()}
 
@@ -3980,10 +4189,10 @@ func mainLoopQuitFunction_Set() {
 
 // Quit is a representation of the C type g_main_loop_quit.
 func (recv *MainLoop) Quit() {
-	mainLoopQuitFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainLoopQuitFunction_Set()
 
 	mainLoopQuitFunction.Invoke(inArgs[:], nil)
 
@@ -4001,12 +4210,14 @@ func mainLoopRefFunction_Set() {
 
 // Ref is a representation of the C type g_main_loop_ref.
 func (recv *MainLoop) Ref() *MainLoop {
-	mainLoopRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mainLoopRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mainLoopRefFunction_Set()
+
+	ret = mainLoopRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MainLoop{native: ret.Pointer()}
 
@@ -4025,10 +4236,10 @@ func mainLoopRunFunction_Set() {
 
 // Run is a representation of the C type g_main_loop_run.
 func (recv *MainLoop) Run() {
-	mainLoopRunFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainLoopRunFunction_Set()
 
 	mainLoopRunFunction.Invoke(inArgs[:], nil)
 
@@ -4046,10 +4257,10 @@ func mainLoopUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_main_loop_unref.
 func (recv *MainLoop) Unref() {
-	mainLoopUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mainLoopUnrefFunction_Set()
 
 	mainLoopUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -4058,10 +4269,12 @@ func (recv *MainLoop) Unref() {
 var mappedFileStruct *gi.Struct
 var mappedFileStruct_Once sync.Once
 
-func mappedFileStruct_Set() {
+func mappedFileStruct_Set() error {
+	var err error
 	mappedFileStruct_Once.Do(func() {
-		mappedFileStruct = gi.StructNew("GLib", "MappedFile")
+		mappedFileStruct, err = gi.StructNew("GLib", "MappedFile")
 	})
+	return err
 }
 
 type MappedFile struct {
@@ -4084,10 +4297,10 @@ func mappedFileFreeFunction_Set() {
 
 // Free is a representation of the C type g_mapped_file_free.
 func (recv *MappedFile) Free() {
-	mappedFileFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mappedFileFreeFunction_Set()
 
 	mappedFileFreeFunction.Invoke(inArgs[:], nil)
 
@@ -4105,12 +4318,14 @@ func mappedFileGetBytesFunction_Set() {
 
 // GetBytes is a representation of the C type g_mapped_file_get_bytes.
 func (recv *MappedFile) GetBytes() *Bytes {
-	mappedFileGetBytesFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mappedFileGetBytesFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mappedFileGetBytesFunction_Set()
+
+	ret = mappedFileGetBytesFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Bytes{native: ret.Pointer()}
 
@@ -4129,12 +4344,14 @@ func mappedFileGetContentsFunction_Set() {
 
 // GetContents is a representation of the C type g_mapped_file_get_contents.
 func (recv *MappedFile) GetContents() string {
-	mappedFileGetContentsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mappedFileGetContentsFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mappedFileGetContentsFunction_Set()
+
+	ret = mappedFileGetContentsFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -4155,12 +4372,14 @@ func mappedFileRefFunction_Set() {
 
 // Ref is a representation of the C type g_mapped_file_ref.
 func (recv *MappedFile) Ref() *MappedFile {
-	mappedFileRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := mappedFileRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	mappedFileRefFunction_Set()
+
+	ret = mappedFileRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MappedFile{native: ret.Pointer()}
 
@@ -4179,10 +4398,10 @@ func mappedFileUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_mapped_file_unref.
 func (recv *MappedFile) Unref() {
-	mappedFileUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	mappedFileUnrefFunction_Set()
 
 	mappedFileUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -4191,10 +4410,12 @@ func (recv *MappedFile) Unref() {
 var markupParseContextStruct *gi.Struct
 var markupParseContextStruct_Once sync.Once
 
-func markupParseContextStruct_Set() {
+func markupParseContextStruct_Set() error {
+	var err error
 	markupParseContextStruct_Once.Do(func() {
-		markupParseContextStruct = gi.StructNew("GLib", "MarkupParseContext")
+		markupParseContextStruct, err = gi.StructNew("GLib", "MarkupParseContext")
 	})
+	return err
 }
 
 type MarkupParseContext struct {
@@ -4217,10 +4438,10 @@ func markupParseContextFreeFunction_Set() {
 
 // Free is a representation of the C type g_markup_parse_context_free.
 func (recv *MarkupParseContext) Free() {
-	markupParseContextFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	markupParseContextFreeFunction_Set()
 
 	markupParseContextFreeFunction.Invoke(inArgs[:], nil)
 
@@ -4238,12 +4459,14 @@ func markupParseContextGetElementFunction_Set() {
 
 // GetElement is a representation of the C type g_markup_parse_context_get_element.
 func (recv *MarkupParseContext) GetElement() string {
-	markupParseContextGetElementFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := markupParseContextGetElementFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	markupParseContextGetElementFunction_Set()
+
+	ret = markupParseContextGetElementFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -4264,12 +4487,12 @@ func markupParseContextGetPositionFunction_Set() {
 
 // GetPosition is a representation of the C type g_markup_parse_context_get_position.
 func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) {
-	markupParseContextGetPositionFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(lineNumber)
 	inArgs[2].SetInt32(charNumber)
+
+	markupParseContextGetPositionFunction_Set()
 
 	markupParseContextGetPositionFunction.Invoke(inArgs[:], nil)
 
@@ -4295,12 +4518,14 @@ func markupParseContextRefFunction_Set() {
 
 // Ref is a representation of the C type g_markup_parse_context_ref.
 func (recv *MarkupParseContext) Ref() *MarkupParseContext {
-	markupParseContextRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := markupParseContextRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	markupParseContextRefFunction_Set()
+
+	ret = markupParseContextRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MarkupParseContext{native: ret.Pointer()}
 
@@ -4319,10 +4544,10 @@ func markupParseContextUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_markup_parse_context_unref.
 func (recv *MarkupParseContext) Unref() {
-	markupParseContextUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	markupParseContextUnrefFunction_Set()
 
 	markupParseContextUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -4331,10 +4556,12 @@ func (recv *MarkupParseContext) Unref() {
 var markupParserStruct *gi.Struct
 var markupParserStruct_Once sync.Once
 
-func markupParserStruct_Set() {
+func markupParserStruct_Set() error {
+	var err error
 	markupParserStruct_Once.Do(func() {
-		markupParserStruct = gi.StructNew("GLib", "MarkupParser")
+		markupParserStruct, err = gi.StructNew("GLib", "MarkupParser")
 	})
+	return err
 }
 
 type MarkupParser struct {
@@ -4349,10 +4576,12 @@ type MarkupParser struct {
 var matchInfoStruct *gi.Struct
 var matchInfoStruct_Once sync.Once
 
-func matchInfoStruct_Set() {
+func matchInfoStruct_Set() error {
+	var err error
 	matchInfoStruct_Once.Do(func() {
-		matchInfoStruct = gi.StructNew("GLib", "MatchInfo")
+		matchInfoStruct, err = gi.StructNew("GLib", "MatchInfo")
 	})
+	return err
 }
 
 type MatchInfo struct {
@@ -4371,13 +4600,15 @@ func matchInfoExpandReferencesFunction_Set() {
 
 // ExpandReferences is a representation of the C type g_match_info_expand_references.
 func (recv *MatchInfo) ExpandReferences(stringToExpand string) string {
-	matchInfoExpandReferencesFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(stringToExpand)
 
-	ret := matchInfoExpandReferencesFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoExpandReferencesFunction_Set()
+
+	ret = matchInfoExpandReferencesFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -4396,13 +4627,15 @@ func matchInfoFetchFunction_Set() {
 
 // Fetch is a representation of the C type g_match_info_fetch.
 func (recv *MatchInfo) Fetch(matchNum int32) string {
-	matchInfoFetchFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(matchNum)
 
-	ret := matchInfoFetchFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoFetchFunction_Set()
+
+	ret = matchInfoFetchFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -4421,10 +4654,10 @@ func matchInfoFetchAllFunction_Set() {
 
 // FetchAll is a representation of the C type g_match_info_fetch_all.
 func (recv *MatchInfo) FetchAll() {
-	matchInfoFetchAllFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	matchInfoFetchAllFunction_Set()
 
 	matchInfoFetchAllFunction.Invoke(inArgs[:], nil)
 
@@ -4442,13 +4675,15 @@ func matchInfoFetchNamedFunction_Set() {
 
 // FetchNamed is a representation of the C type g_match_info_fetch_named.
 func (recv *MatchInfo) FetchNamed(name string) string {
-	matchInfoFetchNamedFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
-	ret := matchInfoFetchNamedFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoFetchNamedFunction_Set()
+
+	ret = matchInfoFetchNamedFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -4471,10 +4706,10 @@ func matchInfoFreeFunction_Set() {
 
 // Free is a representation of the C type g_match_info_free.
 func (recv *MatchInfo) Free() {
-	matchInfoFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	matchInfoFreeFunction_Set()
 
 	matchInfoFreeFunction.Invoke(inArgs[:], nil)
 
@@ -4492,12 +4727,14 @@ func matchInfoGetMatchCountFunction_Set() {
 
 // GetMatchCount is a representation of the C type g_match_info_get_match_count.
 func (recv *MatchInfo) GetMatchCount() int32 {
-	matchInfoGetMatchCountFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := matchInfoGetMatchCountFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoGetMatchCountFunction_Set()
+
+	ret = matchInfoGetMatchCountFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -4516,12 +4753,14 @@ func matchInfoGetRegexFunction_Set() {
 
 // GetRegex is a representation of the C type g_match_info_get_regex.
 func (recv *MatchInfo) GetRegex() *Regex {
-	matchInfoGetRegexFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := matchInfoGetRegexFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoGetRegexFunction_Set()
+
+	ret = matchInfoGetRegexFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Regex{native: ret.Pointer()}
 
@@ -4540,12 +4779,14 @@ func matchInfoGetStringFunction_Set() {
 
 // GetString is a representation of the C type g_match_info_get_string.
 func (recv *MatchInfo) GetString() string {
-	matchInfoGetStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := matchInfoGetStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoGetStringFunction_Set()
+
+	ret = matchInfoGetStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -4570,12 +4811,14 @@ func matchInfoRefFunction_Set() {
 
 // Ref is a representation of the C type g_match_info_ref.
 func (recv *MatchInfo) Ref() *MatchInfo {
-	matchInfoRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := matchInfoRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	matchInfoRefFunction_Set()
+
+	ret = matchInfoRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MatchInfo{native: ret.Pointer()}
 
@@ -4594,10 +4837,10 @@ func matchInfoUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_match_info_unref.
 func (recv *MatchInfo) Unref() {
-	matchInfoUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	matchInfoUnrefFunction_Set()
 
 	matchInfoUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -4606,10 +4849,12 @@ func (recv *MatchInfo) Unref() {
 var memVTableStruct *gi.Struct
 var memVTableStruct_Once sync.Once
 
-func memVTableStruct_Set() {
+func memVTableStruct_Set() error {
+	var err error
 	memVTableStruct_Once.Do(func() {
-		memVTableStruct = gi.StructNew("GLib", "MemVTable")
+		memVTableStruct, err = gi.StructNew("GLib", "MemVTable")
 	})
+	return err
 }
 
 type MemVTable struct {
@@ -4625,10 +4870,12 @@ type MemVTable struct {
 var nodeStruct *gi.Struct
 var nodeStruct_Once sync.Once
 
-func nodeStruct_Set() {
+func nodeStruct_Set() error {
+	var err error
 	nodeStruct_Once.Do(func() {
-		nodeStruct = gi.StructNew("GLib", "Node")
+		nodeStruct, err = gi.StructNew("GLib", "Node")
 	})
+	return err
 }
 
 type Node struct {
@@ -4658,12 +4905,14 @@ func nodeCopyFunction_Set() {
 
 // Copy is a representation of the C type g_node_copy.
 func (recv *Node) Copy() *Node {
-	nodeCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeCopyFunction_Set()
+
+	ret = nodeCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Node{native: ret.Pointer()}
 
@@ -4684,12 +4933,14 @@ func nodeDepthFunction_Set() {
 
 // Depth is a representation of the C type g_node_depth.
 func (recv *Node) Depth() uint32 {
-	nodeDepthFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeDepthFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeDepthFunction_Set()
+
+	ret = nodeDepthFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -4708,10 +4959,10 @@ func nodeDestroyFunction_Set() {
 
 // Destroy is a representation of the C type g_node_destroy.
 func (recv *Node) Destroy() {
-	nodeDestroyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	nodeDestroyFunction_Set()
 
 	nodeDestroyFunction.Invoke(inArgs[:], nil)
 
@@ -4733,12 +4984,14 @@ func nodeFirstSiblingFunction_Set() {
 
 // FirstSibling is a representation of the C type g_node_first_sibling.
 func (recv *Node) FirstSibling() *Node {
-	nodeFirstSiblingFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeFirstSiblingFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeFirstSiblingFunction_Set()
+
+	ret = nodeFirstSiblingFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Node{native: ret.Pointer()}
 
@@ -4757,12 +5010,14 @@ func nodeGetRootFunction_Set() {
 
 // GetRoot is a representation of the C type g_node_get_root.
 func (recv *Node) GetRoot() *Node {
-	nodeGetRootFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeGetRootFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeGetRootFunction_Set()
+
+	ret = nodeGetRootFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Node{native: ret.Pointer()}
 
@@ -4789,12 +5044,14 @@ func nodeLastChildFunction_Set() {
 
 // LastChild is a representation of the C type g_node_last_child.
 func (recv *Node) LastChild() *Node {
-	nodeLastChildFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeLastChildFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeLastChildFunction_Set()
+
+	ret = nodeLastChildFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Node{native: ret.Pointer()}
 
@@ -4813,12 +5070,14 @@ func nodeLastSiblingFunction_Set() {
 
 // LastSibling is a representation of the C type g_node_last_sibling.
 func (recv *Node) LastSibling() *Node {
-	nodeLastSiblingFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeLastSiblingFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeLastSiblingFunction_Set()
+
+	ret = nodeLastSiblingFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Node{native: ret.Pointer()}
 
@@ -4837,12 +5096,14 @@ func nodeMaxHeightFunction_Set() {
 
 // MaxHeight is a representation of the C type g_node_max_height.
 func (recv *Node) MaxHeight() uint32 {
-	nodeMaxHeightFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeMaxHeightFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeMaxHeightFunction_Set()
+
+	ret = nodeMaxHeightFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -4861,12 +5122,14 @@ func nodeNChildrenFunction_Set() {
 
 // NChildren is a representation of the C type g_node_n_children.
 func (recv *Node) NChildren() uint32 {
-	nodeNChildrenFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := nodeNChildrenFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeNChildrenFunction_Set()
+
+	ret = nodeNChildrenFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -4887,13 +5150,15 @@ func nodeNthChildFunction_Set() {
 
 // NthChild is a representation of the C type g_node_nth_child.
 func (recv *Node) NthChild(n uint32) *Node {
-	nodeNthChildFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(n)
 
-	ret := nodeNthChildFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	nodeNthChildFunction_Set()
+
+	ret = nodeNthChildFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Node{native: ret.Pointer()}
 
@@ -4914,10 +5179,10 @@ func nodeReverseChildrenFunction_Set() {
 
 // ReverseChildren is a representation of the C type g_node_reverse_children.
 func (recv *Node) ReverseChildren() {
-	nodeReverseChildrenFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	nodeReverseChildrenFunction_Set()
 
 	nodeReverseChildrenFunction.Invoke(inArgs[:], nil)
 
@@ -4937,10 +5202,10 @@ func nodeUnlinkFunction_Set() {
 
 // Unlink is a representation of the C type g_node_unlink.
 func (recv *Node) Unlink() {
-	nodeUnlinkFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	nodeUnlinkFunction_Set()
 
 	nodeUnlinkFunction.Invoke(inArgs[:], nil)
 
@@ -4949,10 +5214,12 @@ func (recv *Node) Unlink() {
 var onceStruct *gi.Struct
 var onceStruct_Once sync.Once
 
-func onceStruct_Set() {
+func onceStruct_Set() error {
+	var err error
 	onceStruct_Once.Do(func() {
-		onceStruct = gi.StructNew("GLib", "Once")
+		onceStruct, err = gi.StructNew("GLib", "Once")
 	})
+	return err
 }
 
 type Once struct {
@@ -4966,10 +5233,12 @@ type Once struct {
 var optionContextStruct *gi.Struct
 var optionContextStruct_Once sync.Once
 
-func optionContextStruct_Set() {
+func optionContextStruct_Set() error {
+	var err error
 	optionContextStruct_Once.Do(func() {
-		optionContextStruct = gi.StructNew("GLib", "OptionContext")
+		optionContextStruct, err = gi.StructNew("GLib", "OptionContext")
 	})
+	return err
 }
 
 type OptionContext struct {
@@ -4992,10 +5261,10 @@ func optionContextFreeFunction_Set() {
 
 // Free is a representation of the C type g_option_context_free.
 func (recv *OptionContext) Free() {
-	optionContextFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	optionContextFreeFunction_Set()
 
 	optionContextFreeFunction.Invoke(inArgs[:], nil)
 
@@ -5013,12 +5282,14 @@ func optionContextGetDescriptionFunction_Set() {
 
 // GetDescription is a representation of the C type g_option_context_get_description.
 func (recv *OptionContext) GetDescription() string {
-	optionContextGetDescriptionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionContextGetDescriptionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionContextGetDescriptionFunction_Set()
+
+	ret = optionContextGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -5043,12 +5314,14 @@ func optionContextGetMainGroupFunction_Set() {
 
 // GetMainGroup is a representation of the C type g_option_context_get_main_group.
 func (recv *OptionContext) GetMainGroup() *OptionGroup {
-	optionContextGetMainGroupFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionContextGetMainGroupFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionContextGetMainGroupFunction_Set()
+
+	ret = optionContextGetMainGroupFunction.Invoke(inArgs[:], nil)
 
 	retGo := &OptionGroup{native: ret.Pointer()}
 
@@ -5069,12 +5342,14 @@ func optionContextGetSummaryFunction_Set() {
 
 // GetSummary is a representation of the C type g_option_context_get_summary.
 func (recv *OptionContext) GetSummary() string {
-	optionContextGetSummaryFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionContextGetSummaryFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionContextGetSummaryFunction_Set()
+
+	ret = optionContextGetSummaryFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -5097,11 +5372,11 @@ func optionContextSetDescriptionFunction_Set() {
 
 // SetDescription is a representation of the C type g_option_context_set_description.
 func (recv *OptionContext) SetDescription(description string) {
-	optionContextSetDescriptionFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(description)
+
+	optionContextSetDescriptionFunction_Set()
 
 	optionContextSetDescriptionFunction.Invoke(inArgs[:], nil)
 
@@ -5127,11 +5402,11 @@ func optionContextSetSummaryFunction_Set() {
 
 // SetSummary is a representation of the C type g_option_context_set_summary.
 func (recv *OptionContext) SetSummary(summary string) {
-	optionContextSetSummaryFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(summary)
+
+	optionContextSetSummaryFunction_Set()
 
 	optionContextSetSummaryFunction.Invoke(inArgs[:], nil)
 
@@ -5151,11 +5426,11 @@ func optionContextSetTranslationDomainFunction_Set() {
 
 // SetTranslationDomain is a representation of the C type g_option_context_set_translation_domain.
 func (recv *OptionContext) SetTranslationDomain(domain string) {
-	optionContextSetTranslationDomainFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
+
+	optionContextSetTranslationDomainFunction_Set()
 
 	optionContextSetTranslationDomainFunction.Invoke(inArgs[:], nil)
 
@@ -5164,10 +5439,12 @@ func (recv *OptionContext) SetTranslationDomain(domain string) {
 var optionEntryStruct *gi.Struct
 var optionEntryStruct_Once sync.Once
 
-func optionEntryStruct_Set() {
+func optionEntryStruct_Set() error {
+	var err error
 	optionEntryStruct_Once.Do(func() {
-		optionEntryStruct = gi.StructNew("GLib", "OptionEntry")
+		optionEntryStruct, err = gi.StructNew("GLib", "OptionEntry")
 	})
+	return err
 }
 
 type OptionEntry struct {
@@ -5184,10 +5461,12 @@ type OptionEntry struct {
 var optionGroupStruct *gi.Struct
 var optionGroupStruct_Once sync.Once
 
-func optionGroupStruct_Set() {
+func optionGroupStruct_Set() error {
+	var err error
 	optionGroupStruct_Once.Do(func() {
-		optionGroupStruct = gi.StructNew("GLib", "OptionGroup")
+		optionGroupStruct, err = gi.StructNew("GLib", "OptionGroup")
 	})
+	return err
 }
 
 type OptionGroup struct {
@@ -5210,10 +5489,10 @@ func optionGroupFreeFunction_Set() {
 
 // Free is a representation of the C type g_option_group_free.
 func (recv *OptionGroup) Free() {
-	optionGroupFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	optionGroupFreeFunction_Set()
 
 	optionGroupFreeFunction.Invoke(inArgs[:], nil)
 
@@ -5231,12 +5510,14 @@ func optionGroupRefFunction_Set() {
 
 // Ref is a representation of the C type g_option_group_ref.
 func (recv *OptionGroup) Ref() *OptionGroup {
-	optionGroupRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := optionGroupRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	optionGroupRefFunction_Set()
+
+	ret = optionGroupRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &OptionGroup{native: ret.Pointer()}
 
@@ -5261,11 +5542,11 @@ func optionGroupSetTranslationDomainFunction_Set() {
 
 // SetTranslationDomain is a representation of the C type g_option_group_set_translation_domain.
 func (recv *OptionGroup) SetTranslationDomain(domain string) {
-	optionGroupSetTranslationDomainFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(domain)
+
+	optionGroupSetTranslationDomainFunction_Set()
 
 	optionGroupSetTranslationDomainFunction.Invoke(inArgs[:], nil)
 
@@ -5283,10 +5564,10 @@ func optionGroupUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_option_group_unref.
 func (recv *OptionGroup) Unref() {
-	optionGroupUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	optionGroupUnrefFunction_Set()
 
 	optionGroupUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -5295,10 +5576,12 @@ func (recv *OptionGroup) Unref() {
 var patternSpecStruct *gi.Struct
 var patternSpecStruct_Once sync.Once
 
-func patternSpecStruct_Set() {
+func patternSpecStruct_Set() error {
+	var err error
 	patternSpecStruct_Once.Do(func() {
-		patternSpecStruct = gi.StructNew("GLib", "PatternSpec")
+		patternSpecStruct, err = gi.StructNew("GLib", "PatternSpec")
 	})
+	return err
 }
 
 type PatternSpec struct {
@@ -5319,10 +5602,10 @@ func patternSpecFreeFunction_Set() {
 
 // Free is a representation of the C type g_pattern_spec_free.
 func (recv *PatternSpec) Free() {
-	patternSpecFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	patternSpecFreeFunction_Set()
 
 	patternSpecFreeFunction.Invoke(inArgs[:], nil)
 
@@ -5331,10 +5614,12 @@ func (recv *PatternSpec) Free() {
 var pollFDStruct *gi.Struct
 var pollFDStruct_Once sync.Once
 
-func pollFDStruct_Set() {
+func pollFDStruct_Set() error {
+	var err error
 	pollFDStruct_Once.Do(func() {
-		pollFDStruct = gi.StructNew("GLib", "PollFD")
+		pollFDStruct, err = gi.StructNew("GLib", "PollFD")
 	})
+	return err
 }
 
 type PollFD struct {
@@ -5347,10 +5632,12 @@ type PollFD struct {
 var privateStruct *gi.Struct
 var privateStruct_Once sync.Once
 
-func privateStruct_Set() {
+func privateStruct_Set() error {
+	var err error
 	privateStruct_Once.Do(func() {
-		privateStruct = gi.StructNew("GLib", "Private")
+		privateStruct, err = gi.StructNew("GLib", "Private")
 	})
+	return err
 }
 
 type Private struct {
@@ -5366,10 +5653,12 @@ type Private struct {
 var ptrArrayStruct *gi.Struct
 var ptrArrayStruct_Once sync.Once
 
-func ptrArrayStruct_Set() {
+func ptrArrayStruct_Set() error {
+	var err error
 	ptrArrayStruct_Once.Do(func() {
-		ptrArrayStruct = gi.StructNew("GLib", "PtrArray")
+		ptrArrayStruct, err = gi.StructNew("GLib", "PtrArray")
 	})
+	return err
 }
 
 type PtrArray struct {
@@ -5381,10 +5670,12 @@ type PtrArray struct {
 var queueStruct *gi.Struct
 var queueStruct_Once sync.Once
 
-func queueStruct_Set() {
+func queueStruct_Set() error {
+	var err error
 	queueStruct_Once.Do(func() {
-		queueStruct = gi.StructNew("GLib", "Queue")
+		queueStruct, err = gi.StructNew("GLib", "Queue")
 	})
+	return err
 }
 
 type Queue struct {
@@ -5406,10 +5697,10 @@ func queueClearFunction_Set() {
 
 // Clear is a representation of the C type g_queue_clear.
 func (recv *Queue) Clear() {
-	queueClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	queueClearFunction_Set()
 
 	queueClearFunction.Invoke(inArgs[:], nil)
 
@@ -5429,12 +5720,14 @@ func queueCopyFunction_Set() {
 
 // Copy is a representation of the C type g_queue_copy.
 func (recv *Queue) Copy() *Queue {
-	queueCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := queueCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	queueCopyFunction_Set()
+
+	ret = queueCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Queue{native: ret.Pointer()}
 
@@ -5461,10 +5754,10 @@ func queueFreeFunction_Set() {
 
 // Free is a representation of the C type g_queue_free.
 func (recv *Queue) Free() {
-	queueFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	queueFreeFunction_Set()
 
 	queueFreeFunction.Invoke(inArgs[:], nil)
 
@@ -5484,12 +5777,14 @@ func queueGetLengthFunction_Set() {
 
 // GetLength is a representation of the C type g_queue_get_length.
 func (recv *Queue) GetLength() uint32 {
-	queueGetLengthFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := queueGetLengthFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	queueGetLengthFunction_Set()
+
+	ret = queueGetLengthFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -5510,10 +5805,10 @@ func queueInitFunction_Set() {
 
 // Init is a representation of the C type g_queue_init.
 func (recv *Queue) Init() {
-	queueInitFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	queueInitFunction_Set()
 
 	queueInitFunction.Invoke(inArgs[:], nil)
 
@@ -5585,10 +5880,10 @@ func queueReverseFunction_Set() {
 
 // Reverse is a representation of the C type g_queue_reverse.
 func (recv *Queue) Reverse() {
-	queueReverseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	queueReverseFunction_Set()
 
 	queueReverseFunction.Invoke(inArgs[:], nil)
 
@@ -5601,10 +5896,12 @@ func (recv *Queue) Reverse() {
 var rWLockStruct *gi.Struct
 var rWLockStruct_Once sync.Once
 
-func rWLockStruct_Set() {
+func rWLockStruct_Set() error {
+	var err error
 	rWLockStruct_Once.Do(func() {
-		rWLockStruct = gi.StructNew("GLib", "RWLock")
+		rWLockStruct, err = gi.StructNew("GLib", "RWLock")
 	})
+	return err
 }
 
 type RWLock struct {
@@ -5623,10 +5920,10 @@ func rWLockClearFunction_Set() {
 
 // Clear is a representation of the C type g_rw_lock_clear.
 func (recv *RWLock) Clear() {
-	rWLockClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rWLockClearFunction_Set()
 
 	rWLockClearFunction.Invoke(inArgs[:], nil)
 
@@ -5644,10 +5941,10 @@ func rWLockInitFunction_Set() {
 
 // Init is a representation of the C type g_rw_lock_init.
 func (recv *RWLock) Init() {
-	rWLockInitFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rWLockInitFunction_Set()
 
 	rWLockInitFunction.Invoke(inArgs[:], nil)
 
@@ -5665,10 +5962,10 @@ func rWLockReaderLockFunction_Set() {
 
 // ReaderLock is a representation of the C type g_rw_lock_reader_lock.
 func (recv *RWLock) ReaderLock() {
-	rWLockReaderLockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rWLockReaderLockFunction_Set()
 
 	rWLockReaderLockFunction.Invoke(inArgs[:], nil)
 
@@ -5688,10 +5985,10 @@ func rWLockReaderUnlockFunction_Set() {
 
 // ReaderUnlock is a representation of the C type g_rw_lock_reader_unlock.
 func (recv *RWLock) ReaderUnlock() {
-	rWLockReaderUnlockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rWLockReaderUnlockFunction_Set()
 
 	rWLockReaderUnlockFunction.Invoke(inArgs[:], nil)
 
@@ -5709,10 +6006,10 @@ func rWLockWriterLockFunction_Set() {
 
 // WriterLock is a representation of the C type g_rw_lock_writer_lock.
 func (recv *RWLock) WriterLock() {
-	rWLockWriterLockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rWLockWriterLockFunction_Set()
 
 	rWLockWriterLockFunction.Invoke(inArgs[:], nil)
 
@@ -5732,10 +6029,10 @@ func rWLockWriterUnlockFunction_Set() {
 
 // WriterUnlock is a representation of the C type g_rw_lock_writer_unlock.
 func (recv *RWLock) WriterUnlock() {
-	rWLockWriterUnlockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	rWLockWriterUnlockFunction_Set()
 
 	rWLockWriterUnlockFunction.Invoke(inArgs[:], nil)
 
@@ -5744,10 +6041,12 @@ func (recv *RWLock) WriterUnlock() {
 var randStruct *gi.Struct
 var randStruct_Once sync.Once
 
-func randStruct_Set() {
+func randStruct_Set() error {
+	var err error
 	randStruct_Once.Do(func() {
-		randStruct = gi.StructNew("GLib", "Rand")
+		randStruct, err = gi.StructNew("GLib", "Rand")
 	})
+	return err
 }
 
 type Rand struct {
@@ -5766,12 +6065,14 @@ func randCopyFunction_Set() {
 
 // Copy is a representation of the C type g_rand_copy.
 func (recv *Rand) Copy() *Rand {
-	randCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := randCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	randCopyFunction_Set()
+
+	ret = randCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Rand{native: ret.Pointer()}
 
@@ -5794,10 +6095,10 @@ func randFreeFunction_Set() {
 
 // Free is a representation of the C type g_rand_free.
 func (recv *Rand) Free() {
-	randFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	randFreeFunction_Set()
 
 	randFreeFunction.Invoke(inArgs[:], nil)
 
@@ -5815,12 +6116,14 @@ func randIntFunction_Set() {
 
 // Int is a representation of the C type g_rand_int.
 func (recv *Rand) Int() uint32 {
-	randIntFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := randIntFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	randIntFunction_Set()
+
+	ret = randIntFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -5839,14 +6142,16 @@ func randIntRangeFunction_Set() {
 
 // IntRange is a representation of the C type g_rand_int_range.
 func (recv *Rand) IntRange(begin int32, end int32) int32 {
-	randIntRangeFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(begin)
 	inArgs[2].SetInt32(end)
 
-	ret := randIntRangeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	randIntRangeFunction_Set()
+
+	ret = randIntRangeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -5865,11 +6170,11 @@ func randSetSeedFunction_Set() {
 
 // SetSeed is a representation of the C type g_rand_set_seed.
 func (recv *Rand) SetSeed(seed uint32) {
-	randSetSeedFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(seed)
+
+	randSetSeedFunction_Set()
 
 	randSetSeedFunction.Invoke(inArgs[:], nil)
 
@@ -5887,12 +6192,12 @@ func randSetSeedArrayFunction_Set() {
 
 // SetSeedArray is a representation of the C type g_rand_set_seed_array.
 func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
-	randSetSeedArrayFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(seed)
 	inArgs[2].SetUint32(seedLength)
+
+	randSetSeedArrayFunction_Set()
 
 	randSetSeedArrayFunction.Invoke(inArgs[:], nil)
 
@@ -5901,10 +6206,12 @@ func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 var recMutexStruct *gi.Struct
 var recMutexStruct_Once sync.Once
 
-func recMutexStruct_Set() {
+func recMutexStruct_Set() error {
+	var err error
 	recMutexStruct_Once.Do(func() {
-		recMutexStruct = gi.StructNew("GLib", "RecMutex")
+		recMutexStruct, err = gi.StructNew("GLib", "RecMutex")
 	})
+	return err
 }
 
 type RecMutex struct {
@@ -5923,10 +6230,10 @@ func recMutexClearFunction_Set() {
 
 // Clear is a representation of the C type g_rec_mutex_clear.
 func (recv *RecMutex) Clear() {
-	recMutexClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	recMutexClearFunction_Set()
 
 	recMutexClearFunction.Invoke(inArgs[:], nil)
 
@@ -5944,10 +6251,10 @@ func recMutexInitFunction_Set() {
 
 // Init is a representation of the C type g_rec_mutex_init.
 func (recv *RecMutex) Init() {
-	recMutexInitFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	recMutexInitFunction_Set()
 
 	recMutexInitFunction.Invoke(inArgs[:], nil)
 
@@ -5965,10 +6272,10 @@ func recMutexLockFunction_Set() {
 
 // Lock is a representation of the C type g_rec_mutex_lock.
 func (recv *RecMutex) Lock() {
-	recMutexLockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	recMutexLockFunction_Set()
 
 	recMutexLockFunction.Invoke(inArgs[:], nil)
 
@@ -5988,10 +6295,10 @@ func recMutexUnlockFunction_Set() {
 
 // Unlock is a representation of the C type g_rec_mutex_unlock.
 func (recv *RecMutex) Unlock() {
-	recMutexUnlockFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	recMutexUnlockFunction_Set()
 
 	recMutexUnlockFunction.Invoke(inArgs[:], nil)
 
@@ -6000,10 +6307,12 @@ func (recv *RecMutex) Unlock() {
 var regexStruct *gi.Struct
 var regexStruct_Once sync.Once
 
-func regexStruct_Set() {
+func regexStruct_Set() error {
+	var err error
 	regexStruct_Once.Do(func() {
-		regexStruct = gi.StructNew("GLib", "Regex")
+		regexStruct, err = gi.StructNew("GLib", "Regex")
 	})
+	return err
 }
 
 type Regex struct {
@@ -6024,12 +6333,14 @@ func regexGetCaptureCountFunction_Set() {
 
 // GetCaptureCount is a representation of the C type g_regex_get_capture_count.
 func (recv *Regex) GetCaptureCount() int32 {
-	regexGetCaptureCountFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := regexGetCaptureCountFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	regexGetCaptureCountFunction_Set()
+
+	ret = regexGetCaptureCountFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6054,12 +6365,14 @@ func regexGetMaxBackrefFunction_Set() {
 
 // GetMaxBackref is a representation of the C type g_regex_get_max_backref.
 func (recv *Regex) GetMaxBackref() int32 {
-	regexGetMaxBackrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := regexGetMaxBackrefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	regexGetMaxBackrefFunction_Set()
+
+	ret = regexGetMaxBackrefFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6078,12 +6391,14 @@ func regexGetMaxLookbehindFunction_Set() {
 
 // GetMaxLookbehind is a representation of the C type g_regex_get_max_lookbehind.
 func (recv *Regex) GetMaxLookbehind() int32 {
-	regexGetMaxLookbehindFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := regexGetMaxLookbehindFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	regexGetMaxLookbehindFunction_Set()
+
+	ret = regexGetMaxLookbehindFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6102,12 +6417,14 @@ func regexGetPatternFunction_Set() {
 
 // GetPattern is a representation of the C type g_regex_get_pattern.
 func (recv *Regex) GetPattern() string {
-	regexGetPatternFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := regexGetPatternFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	regexGetPatternFunction_Set()
+
+	ret = regexGetPatternFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -6126,13 +6443,15 @@ func regexGetStringNumberFunction_Set() {
 
 // GetStringNumber is a representation of the C type g_regex_get_string_number.
 func (recv *Regex) GetStringNumber(name string) int32 {
-	regexGetStringNumberFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
-	ret := regexGetStringNumberFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	regexGetStringNumberFunction_Set()
+
+	ret = regexGetStringNumberFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6159,12 +6478,14 @@ func regexRefFunction_Set() {
 
 // Ref is a representation of the C type g_regex_ref.
 func (recv *Regex) Ref() *Regex {
-	regexRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := regexRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	regexRefFunction_Set()
+
+	ret = regexRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Regex{native: ret.Pointer()}
 
@@ -6193,10 +6514,10 @@ func regexUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_regex_unref.
 func (recv *Regex) Unref() {
-	regexUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	regexUnrefFunction_Set()
 
 	regexUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -6205,10 +6526,12 @@ func (recv *Regex) Unref() {
 var sListStruct *gi.Struct
 var sListStruct_Once sync.Once
 
-func sListStruct_Set() {
+func sListStruct_Set() error {
+	var err error
 	sListStruct_Once.Do(func() {
-		sListStruct = gi.StructNew("GLib", "SList")
+		sListStruct, err = gi.StructNew("GLib", "SList")
 	})
+	return err
 }
 
 type SList struct {
@@ -6220,10 +6543,12 @@ type SList struct {
 var scannerStruct *gi.Struct
 var scannerStruct_Once sync.Once
 
-func scannerStruct_Set() {
+func scannerStruct_Set() error {
+	var err error
 	scannerStruct_Once.Do(func() {
-		scannerStruct = gi.StructNew("GLib", "Scanner")
+		scannerStruct, err = gi.StructNew("GLib", "Scanner")
 	})
+	return err
 }
 
 type Scanner struct {
@@ -6257,12 +6582,14 @@ func scannerCurLineFunction_Set() {
 
 // CurLine is a representation of the C type g_scanner_cur_line.
 func (recv *Scanner) CurLine() uint32 {
-	scannerCurLineFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := scannerCurLineFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	scannerCurLineFunction_Set()
+
+	ret = scannerCurLineFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -6281,12 +6608,14 @@ func scannerCurPositionFunction_Set() {
 
 // CurPosition is a representation of the C type g_scanner_cur_position.
 func (recv *Scanner) CurPosition() uint32 {
-	scannerCurPositionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := scannerCurPositionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	scannerCurPositionFunction_Set()
+
+	ret = scannerCurPositionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -6309,10 +6638,10 @@ func scannerDestroyFunction_Set() {
 
 // Destroy is a representation of the C type g_scanner_destroy.
 func (recv *Scanner) Destroy() {
-	scannerDestroyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	scannerDestroyFunction_Set()
 
 	scannerDestroyFunction.Invoke(inArgs[:], nil)
 
@@ -6336,11 +6665,11 @@ func scannerInputFileFunction_Set() {
 
 // InputFile is a representation of the C type g_scanner_input_file.
 func (recv *Scanner) InputFile(inputFd int32) {
-	scannerInputFileFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(inputFd)
+
+	scannerInputFileFunction_Set()
 
 	scannerInputFileFunction.Invoke(inArgs[:], nil)
 
@@ -6358,12 +6687,12 @@ func scannerInputTextFunction_Set() {
 
 // InputText is a representation of the C type g_scanner_input_text.
 func (recv *Scanner) InputText(text string, textLen uint32) {
-	scannerInputTextFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 	inArgs[2].SetUint32(textLen)
+
+	scannerInputTextFunction_Set()
 
 	scannerInputTextFunction.Invoke(inArgs[:], nil)
 
@@ -6391,12 +6720,12 @@ func scannerScopeRemoveSymbolFunction_Set() {
 
 // ScopeRemoveSymbol is a representation of the C type g_scanner_scope_remove_symbol.
 func (recv *Scanner) ScopeRemoveSymbol(scopeId uint32, symbol string) {
-	scannerScopeRemoveSymbolFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(scopeId)
 	inArgs[2].SetString(symbol)
+
+	scannerScopeRemoveSymbolFunction_Set()
 
 	scannerScopeRemoveSymbolFunction.Invoke(inArgs[:], nil)
 
@@ -6414,13 +6743,15 @@ func scannerSetScopeFunction_Set() {
 
 // SetScope is a representation of the C type g_scanner_set_scope.
 func (recv *Scanner) SetScope(scopeId uint32) uint32 {
-	scannerSetScopeFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(scopeId)
 
-	ret := scannerSetScopeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	scannerSetScopeFunction_Set()
+
+	ret = scannerSetScopeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -6439,10 +6770,10 @@ func scannerSyncFileOffsetFunction_Set() {
 
 // SyncFileOffset is a representation of the C type g_scanner_sync_file_offset.
 func (recv *Scanner) SyncFileOffset() {
-	scannerSyncFileOffsetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	scannerSyncFileOffsetFunction_Set()
 
 	scannerSyncFileOffsetFunction.Invoke(inArgs[:], nil)
 
@@ -6455,10 +6786,12 @@ func (recv *Scanner) SyncFileOffset() {
 var scannerConfigStruct *gi.Struct
 var scannerConfigStruct_Once sync.Once
 
-func scannerConfigStruct_Set() {
+func scannerConfigStruct_Set() error {
+	var err error
 	scannerConfigStruct_Once.Do(func() {
-		scannerConfigStruct = gi.StructNew("GLib", "ScannerConfig")
+		scannerConfigStruct, err = gi.StructNew("GLib", "ScannerConfig")
 	})
+	return err
 }
 
 type ScannerConfig struct {
@@ -6494,10 +6827,12 @@ type ScannerConfig struct {
 var sequenceStruct *gi.Struct
 var sequenceStruct_Once sync.Once
 
-func sequenceStruct_Set() {
+func sequenceStruct_Set() error {
+	var err error
 	sequenceStruct_Once.Do(func() {
-		sequenceStruct = gi.StructNew("GLib", "Sequence")
+		sequenceStruct, err = gi.StructNew("GLib", "Sequence")
 	})
+	return err
 }
 
 type Sequence struct {
@@ -6520,10 +6855,10 @@ func sequenceFreeFunction_Set() {
 
 // Free is a representation of the C type g_sequence_free.
 func (recv *Sequence) Free() {
-	sequenceFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	sequenceFreeFunction_Set()
 
 	sequenceFreeFunction.Invoke(inArgs[:], nil)
 
@@ -6541,12 +6876,14 @@ func sequenceGetBeginIterFunction_Set() {
 
 // GetBeginIter is a representation of the C type g_sequence_get_begin_iter.
 func (recv *Sequence) GetBeginIter() *SequenceIter {
-	sequenceGetBeginIterFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceGetBeginIterFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceGetBeginIterFunction_Set()
+
+	ret = sequenceGetBeginIterFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SequenceIter{native: ret.Pointer()}
 
@@ -6565,12 +6902,14 @@ func sequenceGetEndIterFunction_Set() {
 
 // GetEndIter is a representation of the C type g_sequence_get_end_iter.
 func (recv *Sequence) GetEndIter() *SequenceIter {
-	sequenceGetEndIterFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceGetEndIterFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceGetEndIterFunction_Set()
+
+	ret = sequenceGetEndIterFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SequenceIter{native: ret.Pointer()}
 
@@ -6589,13 +6928,15 @@ func sequenceGetIterAtPosFunction_Set() {
 
 // GetIterAtPos is a representation of the C type g_sequence_get_iter_at_pos.
 func (recv *Sequence) GetIterAtPos(pos int32) *SequenceIter {
-	sequenceGetIterAtPosFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 
-	ret := sequenceGetIterAtPosFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceGetIterAtPosFunction_Set()
+
+	ret = sequenceGetIterAtPosFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SequenceIter{native: ret.Pointer()}
 
@@ -6614,12 +6955,14 @@ func sequenceGetLengthFunction_Set() {
 
 // GetLength is a representation of the C type g_sequence_get_length.
 func (recv *Sequence) GetLength() int32 {
-	sequenceGetLengthFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceGetLengthFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceGetLengthFunction_Set()
+
+	ret = sequenceGetLengthFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6649,10 +6992,12 @@ func (recv *Sequence) GetLength() int32 {
 var sequenceIterStruct *gi.Struct
 var sequenceIterStruct_Once sync.Once
 
-func sequenceIterStruct_Set() {
+func sequenceIterStruct_Set() error {
+	var err error
 	sequenceIterStruct_Once.Do(func() {
-		sequenceIterStruct = gi.StructNew("GLib", "SequenceIter")
+		sequenceIterStruct, err = gi.StructNew("GLib", "SequenceIter")
 	})
+	return err
 }
 
 type SequenceIter struct {
@@ -6673,12 +7018,14 @@ func sequenceIterGetPositionFunction_Set() {
 
 // GetPosition is a representation of the C type g_sequence_iter_get_position.
 func (recv *SequenceIter) GetPosition() int32 {
-	sequenceIterGetPositionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceIterGetPositionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceIterGetPositionFunction_Set()
+
+	ret = sequenceIterGetPositionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6697,12 +7044,14 @@ func sequenceIterGetSequenceFunction_Set() {
 
 // GetSequence is a representation of the C type g_sequence_iter_get_sequence.
 func (recv *SequenceIter) GetSequence() *Sequence {
-	sequenceIterGetSequenceFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceIterGetSequenceFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceIterGetSequenceFunction_Set()
+
+	ret = sequenceIterGetSequenceFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Sequence{native: ret.Pointer()}
 
@@ -6725,13 +7074,15 @@ func sequenceIterMoveFunction_Set() {
 
 // Move is a representation of the C type g_sequence_iter_move.
 func (recv *SequenceIter) Move(delta int32) *SequenceIter {
-	sequenceIterMoveFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(delta)
 
-	ret := sequenceIterMoveFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceIterMoveFunction_Set()
+
+	ret = sequenceIterMoveFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SequenceIter{native: ret.Pointer()}
 
@@ -6750,12 +7101,14 @@ func sequenceIterNextFunction_Set() {
 
 // Next is a representation of the C type g_sequence_iter_next.
 func (recv *SequenceIter) Next() *SequenceIter {
-	sequenceIterNextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceIterNextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceIterNextFunction_Set()
+
+	ret = sequenceIterNextFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SequenceIter{native: ret.Pointer()}
 
@@ -6774,12 +7127,14 @@ func sequenceIterPrevFunction_Set() {
 
 // Prev is a representation of the C type g_sequence_iter_prev.
 func (recv *SequenceIter) Prev() *SequenceIter {
-	sequenceIterPrevFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sequenceIterPrevFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sequenceIterPrevFunction_Set()
+
+	ret = sequenceIterPrevFunction.Invoke(inArgs[:], nil)
 
 	retGo := &SequenceIter{native: ret.Pointer()}
 
@@ -6789,10 +7144,12 @@ func (recv *SequenceIter) Prev() *SequenceIter {
 var sourceStruct *gi.Struct
 var sourceStruct_Once sync.Once
 
-func sourceStruct_Set() {
+func sourceStruct_Set() error {
+	var err error
 	sourceStruct_Once.Do(func() {
-		sourceStruct = gi.StructNew("GLib", "Source")
+		sourceStruct, err = gi.StructNew("GLib", "Source")
 	})
+	return err
 }
 
 type Source struct {
@@ -6821,10 +7178,10 @@ func sourceDestroyFunction_Set() {
 
 // Destroy is a representation of the C type g_source_destroy.
 func (recv *Source) Destroy() {
-	sourceDestroyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	sourceDestroyFunction_Set()
 
 	sourceDestroyFunction.Invoke(inArgs[:], nil)
 
@@ -6844,12 +7201,14 @@ func sourceGetContextFunction_Set() {
 
 // GetContext is a representation of the C type g_source_get_context.
 func (recv *Source) GetContext() *MainContext {
-	sourceGetContextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceGetContextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceGetContextFunction_Set()
+
+	ret = sourceGetContextFunction.Invoke(inArgs[:], nil)
 
 	retGo := &MainContext{native: ret.Pointer()}
 
@@ -6870,12 +7229,14 @@ func sourceGetIdFunction_Set() {
 
 // GetId is a representation of the C type g_source_get_id.
 func (recv *Source) GetId() uint32 {
-	sourceGetIdFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceGetIdFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceGetIdFunction_Set()
+
+	ret = sourceGetIdFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -6894,12 +7255,14 @@ func sourceGetNameFunction_Set() {
 
 // GetName is a representation of the C type g_source_get_name.
 func (recv *Source) GetName() string {
-	sourceGetNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceGetNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceGetNameFunction_Set()
+
+	ret = sourceGetNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -6918,12 +7281,14 @@ func sourceGetPriorityFunction_Set() {
 
 // GetPriority is a representation of the C type g_source_get_priority.
 func (recv *Source) GetPriority() int32 {
-	sourceGetPriorityFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceGetPriorityFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceGetPriorityFunction_Set()
+
+	ret = sourceGetPriorityFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -6942,12 +7307,14 @@ func sourceGetReadyTimeFunction_Set() {
 
 // GetReadyTime is a representation of the C type g_source_get_ready_time.
 func (recv *Source) GetReadyTime() int64 {
-	sourceGetReadyTimeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceGetReadyTimeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceGetReadyTimeFunction_Set()
+
+	ret = sourceGetReadyTimeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -6966,12 +7333,14 @@ func sourceGetTimeFunction_Set() {
 
 // GetTime is a representation of the C type g_source_get_time.
 func (recv *Source) GetTime() int64 {
-	sourceGetTimeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceGetTimeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceGetTimeFunction_Set()
+
+	ret = sourceGetTimeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -6996,12 +7365,14 @@ func sourceRefFunction_Set() {
 
 // Ref is a representation of the C type g_source_ref.
 func (recv *Source) Ref() *Source {
-	sourceRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := sourceRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	sourceRefFunction_Set()
+
+	ret = sourceRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Source{native: ret.Pointer()}
 
@@ -7034,11 +7405,11 @@ func sourceSetNameFunction_Set() {
 
 // SetName is a representation of the C type g_source_set_name.
 func (recv *Source) SetName(name string) {
-	sourceSetNameFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
+
+	sourceSetNameFunction_Set()
 
 	sourceSetNameFunction.Invoke(inArgs[:], nil)
 
@@ -7056,11 +7427,11 @@ func sourceSetPriorityFunction_Set() {
 
 // SetPriority is a representation of the C type g_source_set_priority.
 func (recv *Source) SetPriority(priority int32) {
-	sourceSetPriorityFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(priority)
+
+	sourceSetPriorityFunction_Set()
 
 	sourceSetPriorityFunction.Invoke(inArgs[:], nil)
 
@@ -7078,11 +7449,11 @@ func sourceSetReadyTimeFunction_Set() {
 
 // SetReadyTime is a representation of the C type g_source_set_ready_time.
 func (recv *Source) SetReadyTime(readyTime int64) {
-	sourceSetReadyTimeFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(readyTime)
+
+	sourceSetReadyTimeFunction_Set()
 
 	sourceSetReadyTimeFunction.Invoke(inArgs[:], nil)
 
@@ -7100,10 +7471,10 @@ func sourceUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_source_unref.
 func (recv *Source) Unref() {
-	sourceUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	sourceUnrefFunction_Set()
 
 	sourceUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -7112,10 +7483,12 @@ func (recv *Source) Unref() {
 var sourceCallbackFuncsStruct *gi.Struct
 var sourceCallbackFuncsStruct_Once sync.Once
 
-func sourceCallbackFuncsStruct_Set() {
+func sourceCallbackFuncsStruct_Set() error {
+	var err error
 	sourceCallbackFuncsStruct_Once.Do(func() {
-		sourceCallbackFuncsStruct = gi.StructNew("GLib", "SourceCallbackFuncs")
+		sourceCallbackFuncsStruct, err = gi.StructNew("GLib", "SourceCallbackFuncs")
 	})
+	return err
 }
 
 type SourceCallbackFuncs struct {
@@ -7128,10 +7501,12 @@ type SourceCallbackFuncs struct {
 var sourceFuncsStruct *gi.Struct
 var sourceFuncsStruct_Once sync.Once
 
-func sourceFuncsStruct_Set() {
+func sourceFuncsStruct_Set() error {
+	var err error
 	sourceFuncsStruct_Once.Do(func() {
-		sourceFuncsStruct = gi.StructNew("GLib", "SourceFuncs")
+		sourceFuncsStruct, err = gi.StructNew("GLib", "SourceFuncs")
 	})
+	return err
 }
 
 type SourceFuncs struct {
@@ -7145,10 +7520,12 @@ type SourceFuncs struct {
 var sourcePrivateStruct *gi.Struct
 var sourcePrivateStruct_Once sync.Once
 
-func sourcePrivateStruct_Set() {
+func sourcePrivateStruct_Set() error {
+	var err error
 	sourcePrivateStruct_Once.Do(func() {
-		sourcePrivateStruct = gi.StructNew("GLib", "SourcePrivate")
+		sourcePrivateStruct, err = gi.StructNew("GLib", "SourcePrivate")
 	})
+	return err
 }
 
 type SourcePrivate struct {
@@ -7158,10 +7535,12 @@ type SourcePrivate struct {
 var statBufStruct *gi.Struct
 var statBufStruct_Once sync.Once
 
-func statBufStruct_Set() {
+func statBufStruct_Set() error {
+	var err error
 	statBufStruct_Once.Do(func() {
-		statBufStruct = gi.StructNew("GLib", "StatBuf")
+		statBufStruct, err = gi.StructNew("GLib", "StatBuf")
 	})
+	return err
 }
 
 type StatBuf struct {
@@ -7171,10 +7550,12 @@ type StatBuf struct {
 var string_Struct *gi.Struct
 var string_Struct_Once sync.Once
 
-func string_Struct_Set() {
+func string_Struct_Set() error {
+	var err error
 	string_Struct_Once.Do(func() {
-		string_Struct = gi.StructNew("GLib", "String")
+		string_Struct, err = gi.StructNew("GLib", "String")
 	})
+	return err
 }
 
 type String struct {
@@ -7196,13 +7577,15 @@ func stringAppendFunction_Set() {
 
 // Append is a representation of the C type g_string_append.
 func (recv *String) Append(val string) *String {
-	stringAppendFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 
-	ret := stringAppendFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringAppendFunction_Set()
+
+	ret = stringAppendFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7221,13 +7604,15 @@ func stringAppendCFunction_Set() {
 
 // AppendC is a representation of the C type g_string_append_c.
 func (recv *String) AppendC(c int8) *String {
-	stringAppendCFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(c)
 
-	ret := stringAppendCFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringAppendCFunction_Set()
+
+	ret = stringAppendCFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7246,14 +7631,16 @@ func stringAppendLenFunction_Set() {
 
 // AppendLen is a representation of the C type g_string_append_len.
 func (recv *String) AppendLen(val string, len int32) *String {
-	stringAppendLenFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 	inArgs[2].SetInt32(len)
 
-	ret := stringAppendLenFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringAppendLenFunction_Set()
+
+	ret = stringAppendLenFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7280,12 +7667,14 @@ func stringAsciiDownFunction_Set() {
 
 // AsciiDown is a representation of the C type g_string_ascii_down.
 func (recv *String) AsciiDown() *String {
-	stringAsciiDownFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := stringAsciiDownFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringAsciiDownFunction_Set()
+
+	ret = stringAsciiDownFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7304,12 +7693,14 @@ func stringAsciiUpFunction_Set() {
 
 // AsciiUp is a representation of the C type g_string_ascii_up.
 func (recv *String) AsciiUp() *String {
-	stringAsciiUpFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := stringAsciiUpFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringAsciiUpFunction_Set()
+
+	ret = stringAsciiUpFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7328,13 +7719,15 @@ func stringAssignFunction_Set() {
 
 // Assign is a representation of the C type g_string_assign.
 func (recv *String) Assign(rval string) *String {
-	stringAssignFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(rval)
 
-	ret := stringAssignFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringAssignFunction_Set()
+
+	ret = stringAssignFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7353,12 +7746,14 @@ func stringDownFunction_Set() {
 
 // Down is a representation of the C type g_string_down.
 func (recv *String) Down() *String {
-	stringDownFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := stringDownFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringDownFunction_Set()
+
+	ret = stringDownFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7379,14 +7774,16 @@ func stringEraseFunction_Set() {
 
 // Erase is a representation of the C type g_string_erase.
 func (recv *String) Erase(pos int32, len int32) *String {
-	stringEraseFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetInt32(len)
 
-	ret := stringEraseFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringEraseFunction_Set()
+
+	ret = stringEraseFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7407,12 +7804,14 @@ func stringFreeToBytesFunction_Set() {
 
 // FreeToBytes is a representation of the C type g_string_free_to_bytes.
 func (recv *String) FreeToBytes() *Bytes {
-	stringFreeToBytesFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := stringFreeToBytesFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringFreeToBytesFunction_Set()
+
+	ret = stringFreeToBytesFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Bytes{native: ret.Pointer()}
 
@@ -7431,12 +7830,14 @@ func stringHashFunction_Set() {
 
 // Hash is a representation of the C type g_string_hash.
 func (recv *String) Hash() uint32 {
-	stringHashFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := stringHashFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringHashFunction_Set()
+
+	ret = stringHashFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -7455,14 +7856,16 @@ func stringInsertFunction_Set() {
 
 // Insert is a representation of the C type g_string_insert.
 func (recv *String) Insert(pos int32, val string) *String {
-	stringInsertFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(val)
 
-	ret := stringInsertFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringInsertFunction_Set()
+
+	ret = stringInsertFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7481,14 +7884,16 @@ func stringInsertCFunction_Set() {
 
 // InsertC is a representation of the C type g_string_insert_c.
 func (recv *String) InsertC(pos int32, c int8) *String {
-	stringInsertCFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetInt8(c)
 
-	ret := stringInsertCFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringInsertCFunction_Set()
+
+	ret = stringInsertCFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7507,15 +7912,17 @@ func stringInsertLenFunction_Set() {
 
 // InsertLen is a representation of the C type g_string_insert_len.
 func (recv *String) InsertLen(pos int32, val string, len int32) *String {
-	stringInsertLenFunction_Set()
-
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(val)
 	inArgs[3].SetInt32(len)
 
-	ret := stringInsertLenFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringInsertLenFunction_Set()
+
+	ret = stringInsertLenFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7540,13 +7947,15 @@ func stringPrependFunction_Set() {
 
 // Prepend is a representation of the C type g_string_prepend.
 func (recv *String) Prepend(val string) *String {
-	stringPrependFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 
-	ret := stringPrependFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringPrependFunction_Set()
+
+	ret = stringPrependFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7565,13 +7974,15 @@ func stringPrependCFunction_Set() {
 
 // PrependC is a representation of the C type g_string_prepend_c.
 func (recv *String) PrependC(c int8) *String {
-	stringPrependCFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt8(c)
 
-	ret := stringPrependCFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringPrependCFunction_Set()
+
+	ret = stringPrependCFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7590,14 +8001,16 @@ func stringPrependLenFunction_Set() {
 
 // PrependLen is a representation of the C type g_string_prepend_len.
 func (recv *String) PrependLen(val string, len int32) *String {
-	stringPrependLenFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(val)
 	inArgs[2].SetInt32(len)
 
-	ret := stringPrependLenFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringPrependLenFunction_Set()
+
+	ret = stringPrependLenFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7624,12 +8037,14 @@ func stringUpFunction_Set() {
 
 // Up is a representation of the C type g_string_up.
 func (recv *String) Up() *String {
-	stringUpFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := stringUpFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringUpFunction_Set()
+
+	ret = stringUpFunction.Invoke(inArgs[:], nil)
 
 	retGo := &String{native: ret.Pointer()}
 
@@ -7641,10 +8056,12 @@ func (recv *String) Up() *String {
 var stringChunkStruct *gi.Struct
 var stringChunkStruct_Once sync.Once
 
-func stringChunkStruct_Set() {
+func stringChunkStruct_Set() error {
+	var err error
 	stringChunkStruct_Once.Do(func() {
-		stringChunkStruct = gi.StructNew("GLib", "StringChunk")
+		stringChunkStruct, err = gi.StructNew("GLib", "StringChunk")
 	})
+	return err
 }
 
 type StringChunk struct {
@@ -7663,10 +8080,10 @@ func stringChunkClearFunction_Set() {
 
 // Clear is a representation of the C type g_string_chunk_clear.
 func (recv *StringChunk) Clear() {
-	stringChunkClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	stringChunkClearFunction_Set()
 
 	stringChunkClearFunction.Invoke(inArgs[:], nil)
 
@@ -7684,10 +8101,10 @@ func stringChunkFreeFunction_Set() {
 
 // Free is a representation of the C type g_string_chunk_free.
 func (recv *StringChunk) Free() {
-	stringChunkFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	stringChunkFreeFunction_Set()
 
 	stringChunkFreeFunction.Invoke(inArgs[:], nil)
 
@@ -7705,13 +8122,15 @@ func stringChunkInsertFunction_Set() {
 
 // Insert is a representation of the C type g_string_chunk_insert.
 func (recv *StringChunk) Insert(string_ string) string {
-	stringChunkInsertFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(string_)
 
-	ret := stringChunkInsertFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringChunkInsertFunction_Set()
+
+	ret = stringChunkInsertFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -7730,13 +8149,15 @@ func stringChunkInsertConstFunction_Set() {
 
 // InsertConst is a representation of the C type g_string_chunk_insert_const.
 func (recv *StringChunk) InsertConst(string_ string) string {
-	stringChunkInsertConstFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(string_)
 
-	ret := stringChunkInsertConstFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringChunkInsertConstFunction_Set()
+
+	ret = stringChunkInsertConstFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -7755,14 +8176,16 @@ func stringChunkInsertLenFunction_Set() {
 
 // InsertLen is a representation of the C type g_string_chunk_insert_len.
 func (recv *StringChunk) InsertLen(string_ string, len int32) string {
-	stringChunkInsertLenFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(string_)
 	inArgs[2].SetInt32(len)
 
-	ret := stringChunkInsertLenFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	stringChunkInsertLenFunction_Set()
+
+	ret = stringChunkInsertLenFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -7772,10 +8195,12 @@ func (recv *StringChunk) InsertLen(string_ string, len int32) string {
 var testCaseStruct *gi.Struct
 var testCaseStruct_Once sync.Once
 
-func testCaseStruct_Set() {
+func testCaseStruct_Set() error {
+	var err error
 	testCaseStruct_Once.Do(func() {
-		testCaseStruct = gi.StructNew("GLib", "TestCase")
+		testCaseStruct, err = gi.StructNew("GLib", "TestCase")
 	})
+	return err
 }
 
 type TestCase struct {
@@ -7785,10 +8210,12 @@ type TestCase struct {
 var testConfigStruct *gi.Struct
 var testConfigStruct_Once sync.Once
 
-func testConfigStruct_Set() {
+func testConfigStruct_Set() error {
+	var err error
 	testConfigStruct_Once.Do(func() {
-		testConfigStruct = gi.StructNew("GLib", "TestConfig")
+		testConfigStruct, err = gi.StructNew("GLib", "TestConfig")
 	})
+	return err
 }
 
 type TestConfig struct {
@@ -7804,10 +8231,12 @@ type TestConfig struct {
 var testLogBufferStruct *gi.Struct
 var testLogBufferStruct_Once sync.Once
 
-func testLogBufferStruct_Set() {
+func testLogBufferStruct_Set() error {
+	var err error
 	testLogBufferStruct_Once.Do(func() {
-		testLogBufferStruct = gi.StructNew("GLib", "TestLogBuffer")
+		testLogBufferStruct, err = gi.StructNew("GLib", "TestLogBuffer")
 	})
+	return err
 }
 
 type TestLogBuffer struct {
@@ -7826,10 +8255,10 @@ func testLogBufferFreeFunction_Set() {
 
 // Free is a representation of the C type g_test_log_buffer_free.
 func (recv *TestLogBuffer) Free() {
-	testLogBufferFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	testLogBufferFreeFunction_Set()
 
 	testLogBufferFreeFunction.Invoke(inArgs[:], nil)
 
@@ -7847,12 +8276,14 @@ func testLogBufferPopFunction_Set() {
 
 // Pop is a representation of the C type g_test_log_buffer_pop.
 func (recv *TestLogBuffer) Pop() *TestLogMsg {
-	testLogBufferPopFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := testLogBufferPopFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	testLogBufferPopFunction_Set()
+
+	ret = testLogBufferPopFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TestLogMsg{native: ret.Pointer()}
 
@@ -7871,12 +8302,12 @@ func testLogBufferPushFunction_Set() {
 
 // Push is a representation of the C type g_test_log_buffer_push.
 func (recv *TestLogBuffer) Push(nBytes uint32, bytes uint8) {
-	testLogBufferPushFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(nBytes)
 	inArgs[2].SetUint8(bytes)
+
+	testLogBufferPushFunction_Set()
 
 	testLogBufferPushFunction.Invoke(inArgs[:], nil)
 
@@ -7885,10 +8316,12 @@ func (recv *TestLogBuffer) Push(nBytes uint32, bytes uint8) {
 var testLogMsgStruct *gi.Struct
 var testLogMsgStruct_Once sync.Once
 
-func testLogMsgStruct_Set() {
+func testLogMsgStruct_Set() error {
+	var err error
 	testLogMsgStruct_Once.Do(func() {
-		testLogMsgStruct = gi.StructNew("GLib", "TestLogMsg")
+		testLogMsgStruct, err = gi.StructNew("GLib", "TestLogMsg")
 	})
+	return err
 }
 
 type TestLogMsg struct {
@@ -7912,10 +8345,10 @@ func testLogMsgFreeFunction_Set() {
 
 // Free is a representation of the C type g_test_log_msg_free.
 func (recv *TestLogMsg) Free() {
-	testLogMsgFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	testLogMsgFreeFunction_Set()
 
 	testLogMsgFreeFunction.Invoke(inArgs[:], nil)
 
@@ -7924,10 +8357,12 @@ func (recv *TestLogMsg) Free() {
 var testSuiteStruct *gi.Struct
 var testSuiteStruct_Once sync.Once
 
-func testSuiteStruct_Set() {
+func testSuiteStruct_Set() error {
+	var err error
 	testSuiteStruct_Once.Do(func() {
-		testSuiteStruct = gi.StructNew("GLib", "TestSuite")
+		testSuiteStruct, err = gi.StructNew("GLib", "TestSuite")
 	})
+	return err
 }
 
 type TestSuite struct {
@@ -7941,10 +8376,12 @@ type TestSuite struct {
 var threadStruct *gi.Struct
 var threadStruct_Once sync.Once
 
-func threadStruct_Set() {
+func threadStruct_Set() error {
+	var err error
 	threadStruct_Once.Do(func() {
-		threadStruct = gi.StructNew("GLib", "Thread")
+		threadStruct, err = gi.StructNew("GLib", "Thread")
 	})
+	return err
 }
 
 type Thread struct {
@@ -7969,12 +8406,14 @@ func threadRefFunction_Set() {
 
 // Ref is a representation of the C type g_thread_ref.
 func (recv *Thread) Ref() *Thread {
-	threadRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := threadRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	threadRefFunction_Set()
+
+	ret = threadRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Thread{native: ret.Pointer()}
 
@@ -7993,10 +8432,10 @@ func threadUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_thread_unref.
 func (recv *Thread) Unref() {
-	threadUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	threadUnrefFunction_Set()
 
 	threadUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -8005,10 +8444,12 @@ func (recv *Thread) Unref() {
 var threadPoolStruct *gi.Struct
 var threadPoolStruct_Once sync.Once
 
-func threadPoolStruct_Set() {
+func threadPoolStruct_Set() error {
+	var err error
 	threadPoolStruct_Once.Do(func() {
-		threadPoolStruct = gi.StructNew("GLib", "ThreadPool")
+		threadPoolStruct, err = gi.StructNew("GLib", "ThreadPool")
 	})
+	return err
 }
 
 type ThreadPool struct {
@@ -8032,12 +8473,14 @@ func threadPoolGetMaxThreadsFunction_Set() {
 
 // GetMaxThreads is a representation of the C type g_thread_pool_get_max_threads.
 func (recv *ThreadPool) GetMaxThreads() int32 {
-	threadPoolGetMaxThreadsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := threadPoolGetMaxThreadsFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	threadPoolGetMaxThreadsFunction_Set()
+
+	ret = threadPoolGetMaxThreadsFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -8056,12 +8499,14 @@ func threadPoolGetNumThreadsFunction_Set() {
 
 // GetNumThreads is a representation of the C type g_thread_pool_get_num_threads.
 func (recv *ThreadPool) GetNumThreads() uint32 {
-	threadPoolGetNumThreadsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := threadPoolGetNumThreadsFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	threadPoolGetNumThreadsFunction_Set()
+
+	ret = threadPoolGetNumThreadsFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -8088,12 +8533,14 @@ func threadPoolUnprocessedFunction_Set() {
 
 // Unprocessed is a representation of the C type g_thread_pool_unprocessed.
 func (recv *ThreadPool) Unprocessed() uint32 {
-	threadPoolUnprocessedFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := threadPoolUnprocessedFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	threadPoolUnprocessedFunction_Set()
+
+	ret = threadPoolUnprocessedFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -8103,10 +8550,12 @@ func (recv *ThreadPool) Unprocessed() uint32 {
 var timeValStruct *gi.Struct
 var timeValStruct_Once sync.Once
 
-func timeValStruct_Set() {
+func timeValStruct_Set() error {
+	var err error
 	timeValStruct_Once.Do(func() {
-		timeValStruct = gi.StructNew("GLib", "TimeVal")
+		timeValStruct, err = gi.StructNew("GLib", "TimeVal")
 	})
+	return err
 }
 
 type TimeVal struct {
@@ -8127,11 +8576,11 @@ func timeValAddFunction_Set() {
 
 // Add is a representation of the C type g_time_val_add.
 func (recv *TimeVal) Add(microseconds int64) {
-	timeValAddFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt64(microseconds)
+
+	timeValAddFunction_Set()
 
 	timeValAddFunction.Invoke(inArgs[:], nil)
 
@@ -8149,12 +8598,14 @@ func timeValToIso8601Function_Set() {
 
 // ToIso8601 is a representation of the C type g_time_val_to_iso8601.
 func (recv *TimeVal) ToIso8601() string {
-	timeValToIso8601Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := timeValToIso8601Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeValToIso8601Function_Set()
+
+	ret = timeValToIso8601Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -8164,10 +8615,12 @@ func (recv *TimeVal) ToIso8601() string {
 var timeZoneStruct *gi.Struct
 var timeZoneStruct_Once sync.Once
 
-func timeZoneStruct_Set() {
+func timeZoneStruct_Set() error {
+	var err error
 	timeZoneStruct_Once.Do(func() {
-		timeZoneStruct = gi.StructNew("GLib", "TimeZone")
+		timeZoneStruct, err = gi.StructNew("GLib", "TimeZone")
 	})
+	return err
 }
 
 type TimeZone struct {
@@ -8186,12 +8639,14 @@ func timeZoneNewFunction_Set() {
 
 // TimeZoneNew is a representation of the C type g_time_zone_new.
 func TimeZoneNew(identifier string) *TimeZone {
-	timeZoneNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(identifier)
 
-	ret := timeZoneNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeZoneNewFunction_Set()
+
+	ret = timeZoneNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TimeZone{native: ret.Pointer()}
 
@@ -8210,9 +8665,12 @@ func timeZoneNewLocalFunction_Set() {
 
 // TimeZoneNewLocal is a representation of the C type g_time_zone_new_local.
 func TimeZoneNewLocal() *TimeZone {
+
+	var ret gi.Argument
+
 	timeZoneNewLocalFunction_Set()
 
-	ret := timeZoneNewLocalFunction.Invoke(nil, nil)
+	ret = timeZoneNewLocalFunction.Invoke(nil, nil)
 
 	retGo := &TimeZone{native: ret.Pointer()}
 
@@ -8231,12 +8689,14 @@ func timeZoneNewOffsetFunction_Set() {
 
 // TimeZoneNewOffset is a representation of the C type g_time_zone_new_offset.
 func TimeZoneNewOffset(seconds int32) *TimeZone {
-	timeZoneNewOffsetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(seconds)
 
-	ret := timeZoneNewOffsetFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeZoneNewOffsetFunction_Set()
+
+	ret = timeZoneNewOffsetFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TimeZone{native: ret.Pointer()}
 
@@ -8255,9 +8715,12 @@ func timeZoneNewUtcFunction_Set() {
 
 // TimeZoneNewUtc is a representation of the C type g_time_zone_new_utc.
 func TimeZoneNewUtc() *TimeZone {
+
+	var ret gi.Argument
+
 	timeZoneNewUtcFunction_Set()
 
-	ret := timeZoneNewUtcFunction.Invoke(nil, nil)
+	ret = timeZoneNewUtcFunction.Invoke(nil, nil)
 
 	retGo := &TimeZone{native: ret.Pointer()}
 
@@ -8280,13 +8743,15 @@ func timeZoneGetAbbreviationFunction_Set() {
 
 // GetAbbreviation is a representation of the C type g_time_zone_get_abbreviation.
 func (recv *TimeZone) GetAbbreviation(interval int32) string {
-	timeZoneGetAbbreviationFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(interval)
 
-	ret := timeZoneGetAbbreviationFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeZoneGetAbbreviationFunction_Set()
+
+	ret = timeZoneGetAbbreviationFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -8305,12 +8770,14 @@ func timeZoneGetIdentifierFunction_Set() {
 
 // GetIdentifier is a representation of the C type g_time_zone_get_identifier.
 func (recv *TimeZone) GetIdentifier() string {
-	timeZoneGetIdentifierFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := timeZoneGetIdentifierFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeZoneGetIdentifierFunction_Set()
+
+	ret = timeZoneGetIdentifierFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -8329,13 +8796,15 @@ func timeZoneGetOffsetFunction_Set() {
 
 // GetOffset is a representation of the C type g_time_zone_get_offset.
 func (recv *TimeZone) GetOffset(interval int32) int32 {
-	timeZoneGetOffsetFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(interval)
 
-	ret := timeZoneGetOffsetFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeZoneGetOffsetFunction_Set()
+
+	ret = timeZoneGetOffsetFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -8356,12 +8825,14 @@ func timeZoneRefFunction_Set() {
 
 // Ref is a representation of the C type g_time_zone_ref.
 func (recv *TimeZone) Ref() *TimeZone {
-	timeZoneRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := timeZoneRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	timeZoneRefFunction_Set()
+
+	ret = timeZoneRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &TimeZone{native: ret.Pointer()}
 
@@ -8380,10 +8851,10 @@ func timeZoneUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_time_zone_unref.
 func (recv *TimeZone) Unref() {
-	timeZoneUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	timeZoneUnrefFunction_Set()
 
 	timeZoneUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -8392,10 +8863,12 @@ func (recv *TimeZone) Unref() {
 var timerStruct *gi.Struct
 var timerStruct_Once sync.Once
 
-func timerStruct_Set() {
+func timerStruct_Set() error {
+	var err error
 	timerStruct_Once.Do(func() {
-		timerStruct = gi.StructNew("GLib", "Timer")
+		timerStruct, err = gi.StructNew("GLib", "Timer")
 	})
+	return err
 }
 
 type Timer struct {
@@ -8414,10 +8887,10 @@ func timerContinueFunction_Set() {
 
 // Continue is a representation of the C type g_timer_continue.
 func (recv *Timer) Continue() {
-	timerContinueFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	timerContinueFunction_Set()
 
 	timerContinueFunction.Invoke(inArgs[:], nil)
 
@@ -8435,10 +8908,10 @@ func timerDestroyFunction_Set() {
 
 // Destroy is a representation of the C type g_timer_destroy.
 func (recv *Timer) Destroy() {
-	timerDestroyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	timerDestroyFunction_Set()
 
 	timerDestroyFunction.Invoke(inArgs[:], nil)
 
@@ -8460,10 +8933,10 @@ func timerResetFunction_Set() {
 
 // Reset is a representation of the C type g_timer_reset.
 func (recv *Timer) Reset() {
-	timerResetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	timerResetFunction_Set()
 
 	timerResetFunction.Invoke(inArgs[:], nil)
 
@@ -8481,10 +8954,10 @@ func timerStartFunction_Set() {
 
 // Start is a representation of the C type g_timer_start.
 func (recv *Timer) Start() {
-	timerStartFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	timerStartFunction_Set()
 
 	timerStartFunction.Invoke(inArgs[:], nil)
 
@@ -8502,10 +8975,10 @@ func timerStopFunction_Set() {
 
 // Stop is a representation of the C type g_timer_stop.
 func (recv *Timer) Stop() {
-	timerStopFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	timerStopFunction_Set()
 
 	timerStopFunction.Invoke(inArgs[:], nil)
 
@@ -8514,10 +8987,12 @@ func (recv *Timer) Stop() {
 var trashStackStruct *gi.Struct
 var trashStackStruct_Once sync.Once
 
-func trashStackStruct_Set() {
+func trashStackStruct_Set() error {
+	var err error
 	trashStackStruct_Once.Do(func() {
-		trashStackStruct = gi.StructNew("GLib", "TrashStack")
+		trashStackStruct, err = gi.StructNew("GLib", "TrashStack")
 	})
+	return err
 }
 
 type TrashStack struct {
@@ -8528,10 +9003,12 @@ type TrashStack struct {
 var treeStruct *gi.Struct
 var treeStruct_Once sync.Once
 
-func treeStruct_Set() {
+func treeStruct_Set() error {
+	var err error
 	treeStruct_Once.Do(func() {
-		treeStruct = gi.StructNew("GLib", "Tree")
+		treeStruct, err = gi.StructNew("GLib", "Tree")
 	})
+	return err
 }
 
 type Tree struct {
@@ -8550,10 +9027,10 @@ func treeDestroyFunction_Set() {
 
 // Destroy is a representation of the C type g_tree_destroy.
 func (recv *Tree) Destroy() {
-	treeDestroyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	treeDestroyFunction_Set()
 
 	treeDestroyFunction.Invoke(inArgs[:], nil)
 
@@ -8573,12 +9050,14 @@ func treeHeightFunction_Set() {
 
 // Height is a representation of the C type g_tree_height.
 func (recv *Tree) Height() int32 {
-	treeHeightFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := treeHeightFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	treeHeightFunction_Set()
+
+	ret = treeHeightFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -8603,12 +9082,14 @@ func treeNnodesFunction_Set() {
 
 // Nnodes is a representation of the C type g_tree_nnodes.
 func (recv *Tree) Nnodes() int32 {
-	treeNnodesFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := treeNnodesFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	treeNnodesFunction_Set()
+
+	ret = treeNnodesFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -8627,12 +9108,14 @@ func treeRefFunction_Set() {
 
 // Ref is a representation of the C type g_tree_ref.
 func (recv *Tree) Ref() *Tree {
-	treeRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := treeRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	treeRefFunction_Set()
+
+	ret = treeRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Tree{native: ret.Pointer()}
 
@@ -8661,10 +9144,10 @@ func treeUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_tree_unref.
 func (recv *Tree) Unref() {
-	treeUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	treeUnrefFunction_Set()
 
 	treeUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -8673,10 +9156,12 @@ func (recv *Tree) Unref() {
 var variantStruct *gi.Struct
 var variantStruct_Once sync.Once
 
-func variantStruct_Set() {
+func variantStruct_Set() error {
+	var err error
 	variantStruct_Once.Do(func() {
-		variantStruct = gi.StructNew("GLib", "Variant")
+		variantStruct, err = gi.StructNew("GLib", "Variant")
 	})
+	return err
 }
 
 type Variant struct {
@@ -8701,12 +9186,14 @@ func variantNewByteFunction_Set() {
 
 // VariantNewByte is a representation of the C type g_variant_new_byte.
 func VariantNewByte(value uint8) *Variant {
-	variantNewByteFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint8(value)
 
-	ret := variantNewByteFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewByteFunction_Set()
+
+	ret = variantNewByteFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8739,12 +9226,14 @@ func variantNewHandleFunction_Set() {
 
 // VariantNewHandle is a representation of the C type g_variant_new_handle.
 func VariantNewHandle(value int32) *Variant {
-	variantNewHandleFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(value)
 
-	ret := variantNewHandleFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewHandleFunction_Set()
+
+	ret = variantNewHandleFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8763,12 +9252,14 @@ func variantNewInt16Function_Set() {
 
 // VariantNewInt16 is a representation of the C type g_variant_new_int16.
 func VariantNewInt16(value int16) *Variant {
-	variantNewInt16Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt16(value)
 
-	ret := variantNewInt16Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewInt16Function_Set()
+
+	ret = variantNewInt16Function.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8787,12 +9278,14 @@ func variantNewInt32Function_Set() {
 
 // VariantNewInt32 is a representation of the C type g_variant_new_int32.
 func VariantNewInt32(value int32) *Variant {
-	variantNewInt32Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(value)
 
-	ret := variantNewInt32Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewInt32Function_Set()
+
+	ret = variantNewInt32Function.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8811,12 +9304,14 @@ func variantNewInt64Function_Set() {
 
 // VariantNewInt64 is a representation of the C type g_variant_new_int64.
 func VariantNewInt64(value int64) *Variant {
-	variantNewInt64Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt64(value)
 
-	ret := variantNewInt64Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewInt64Function_Set()
+
+	ret = variantNewInt64Function.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8837,12 +9332,14 @@ func variantNewObjectPathFunction_Set() {
 
 // VariantNewObjectPath is a representation of the C type g_variant_new_object_path.
 func VariantNewObjectPath(objectPath string) *Variant {
-	variantNewObjectPathFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(objectPath)
 
-	ret := variantNewObjectPathFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewObjectPathFunction_Set()
+
+	ret = variantNewObjectPathFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8869,12 +9366,14 @@ func variantNewSignatureFunction_Set() {
 
 // VariantNewSignature is a representation of the C type g_variant_new_signature.
 func VariantNewSignature(signature string) *Variant {
-	variantNewSignatureFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(signature)
 
-	ret := variantNewSignatureFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewSignatureFunction_Set()
+
+	ret = variantNewSignatureFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8893,12 +9392,14 @@ func variantNewStringFunction_Set() {
 
 // VariantNewString is a representation of the C type g_variant_new_string.
 func VariantNewString(string_ string) *Variant {
-	variantNewStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := variantNewStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewStringFunction_Set()
+
+	ret = variantNewStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8919,12 +9420,14 @@ func variantNewTakeStringFunction_Set() {
 
 // VariantNewTakeString is a representation of the C type g_variant_new_take_string.
 func VariantNewTakeString(string_ string) *Variant {
-	variantNewTakeStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := variantNewTakeStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewTakeStringFunction_Set()
+
+	ret = variantNewTakeStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8945,12 +9448,14 @@ func variantNewUint16Function_Set() {
 
 // VariantNewUint16 is a representation of the C type g_variant_new_uint16.
 func VariantNewUint16(value uint16) *Variant {
-	variantNewUint16Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(value)
 
-	ret := variantNewUint16Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewUint16Function_Set()
+
+	ret = variantNewUint16Function.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8969,12 +9474,14 @@ func variantNewUint32Function_Set() {
 
 // VariantNewUint32 is a representation of the C type g_variant_new_uint32.
 func VariantNewUint32(value uint32) *Variant {
-	variantNewUint32Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(value)
 
-	ret := variantNewUint32Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewUint32Function_Set()
+
+	ret = variantNewUint32Function.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -8993,12 +9500,14 @@ func variantNewUint64Function_Set() {
 
 // VariantNewUint64 is a representation of the C type g_variant_new_uint64.
 func VariantNewUint64(value uint64) *Variant {
-	variantNewUint64Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint64(value)
 
-	ret := variantNewUint64Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantNewUint64Function_Set()
+
+	ret = variantNewUint64Function.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9021,12 +9530,14 @@ func variantByteswapFunction_Set() {
 
 // Byteswap is a representation of the C type g_variant_byteswap.
 func (recv *Variant) Byteswap() *Variant {
-	variantByteswapFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantByteswapFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantByteswapFunction_Set()
+
+	ret = variantByteswapFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9067,12 +9578,14 @@ func variantGetByteFunction_Set() {
 
 // GetByte is a representation of the C type g_variant_get_byte.
 func (recv *Variant) GetByte() uint8 {
-	variantGetByteFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetByteFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetByteFunction_Set()
+
+	ret = variantGetByteFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint8()
 
@@ -9091,10 +9604,10 @@ func variantGetBytestringFunction_Set() {
 
 // GetBytestring is a representation of the C type g_variant_get_bytestring.
 func (recv *Variant) GetBytestring() {
-	variantGetBytestringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantGetBytestringFunction_Set()
 
 	variantGetBytestringFunction.Invoke(inArgs[:], nil)
 
@@ -9120,12 +9633,14 @@ func variantGetDataAsBytesFunction_Set() {
 
 // GetDataAsBytes is a representation of the C type g_variant_get_data_as_bytes.
 func (recv *Variant) GetDataAsBytes() *Bytes {
-	variantGetDataAsBytesFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetDataAsBytesFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetDataAsBytesFunction_Set()
+
+	ret = variantGetDataAsBytesFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Bytes{native: ret.Pointer()}
 
@@ -9148,12 +9663,14 @@ func variantGetHandleFunction_Set() {
 
 // GetHandle is a representation of the C type g_variant_get_handle.
 func (recv *Variant) GetHandle() int32 {
-	variantGetHandleFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetHandleFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetHandleFunction_Set()
+
+	ret = variantGetHandleFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -9172,12 +9689,14 @@ func variantGetInt16Function_Set() {
 
 // GetInt16 is a representation of the C type g_variant_get_int16.
 func (recv *Variant) GetInt16() int16 {
-	variantGetInt16Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetInt16Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetInt16Function_Set()
+
+	ret = variantGetInt16Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int16()
 
@@ -9196,12 +9715,14 @@ func variantGetInt32Function_Set() {
 
 // GetInt32 is a representation of the C type g_variant_get_int32.
 func (recv *Variant) GetInt32() int32 {
-	variantGetInt32Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetInt32Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetInt32Function_Set()
+
+	ret = variantGetInt32Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int32()
 
@@ -9220,12 +9741,14 @@ func variantGetInt64Function_Set() {
 
 // GetInt64 is a representation of the C type g_variant_get_int64.
 func (recv *Variant) GetInt64() int64 {
-	variantGetInt64Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetInt64Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetInt64Function_Set()
+
+	ret = variantGetInt64Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Int64()
 
@@ -9244,12 +9767,14 @@ func variantGetMaybeFunction_Set() {
 
 // GetMaybe is a representation of the C type g_variant_get_maybe.
 func (recv *Variant) GetMaybe() *Variant {
-	variantGetMaybeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetMaybeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetMaybeFunction_Set()
+
+	ret = variantGetMaybeFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9268,12 +9793,14 @@ func variantGetNormalFormFunction_Set() {
 
 // GetNormalForm is a representation of the C type g_variant_get_normal_form.
 func (recv *Variant) GetNormalForm() *Variant {
-	variantGetNormalFormFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetNormalFormFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetNormalFormFunction_Set()
+
+	ret = variantGetNormalFormFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9300,12 +9827,14 @@ func variantGetTypeFunction_Set() {
 
 // GetType is a representation of the C type g_variant_get_type.
 func (recv *Variant) GetType() *VariantType {
-	variantGetTypeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetTypeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetTypeFunction_Set()
+
+	ret = variantGetTypeFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -9324,12 +9853,14 @@ func variantGetTypeStringFunction_Set() {
 
 // GetTypeString is a representation of the C type g_variant_get_type_string.
 func (recv *Variant) GetTypeString() string {
-	variantGetTypeStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetTypeStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetTypeStringFunction_Set()
+
+	ret = variantGetTypeStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -9348,12 +9879,14 @@ func variantGetUint16Function_Set() {
 
 // GetUint16 is a representation of the C type g_variant_get_uint16.
 func (recv *Variant) GetUint16() uint16 {
-	variantGetUint16Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetUint16Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetUint16Function_Set()
+
+	ret = variantGetUint16Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint16()
 
@@ -9372,12 +9905,14 @@ func variantGetUint32Function_Set() {
 
 // GetUint32 is a representation of the C type g_variant_get_uint32.
 func (recv *Variant) GetUint32() uint32 {
-	variantGetUint32Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetUint32Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetUint32Function_Set()
+
+	ret = variantGetUint32Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -9396,12 +9931,14 @@ func variantGetUint64Function_Set() {
 
 // GetUint64 is a representation of the C type g_variant_get_uint64.
 func (recv *Variant) GetUint64() uint64 {
-	variantGetUint64Function_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetUint64Function.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetUint64Function_Set()
+
+	ret = variantGetUint64Function.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint64()
 
@@ -9422,12 +9959,14 @@ func variantGetVariantFunction_Set() {
 
 // GetVariant is a representation of the C type g_variant_get_variant.
 func (recv *Variant) GetVariant() *Variant {
-	variantGetVariantFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantGetVariantFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantGetVariantFunction_Set()
+
+	ret = variantGetVariantFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9446,12 +9985,14 @@ func variantHashFunction_Set() {
 
 // Hash is a representation of the C type g_variant_hash.
 func (recv *Variant) Hash() uint32 {
-	variantHashFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantHashFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantHashFunction_Set()
+
+	ret = variantHashFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -9478,12 +10019,14 @@ func variantIterNewFunction_Set() {
 
 // IterNew is a representation of the C type g_variant_iter_new.
 func (recv *Variant) IterNew() *VariantIter {
-	variantIterNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantIterNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantIterNewFunction_Set()
+
+	ret = variantIterNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantIter{native: ret.Pointer()}
 
@@ -9512,12 +10055,14 @@ func variantRefFunction_Set() {
 
 // Ref is a representation of the C type g_variant_ref.
 func (recv *Variant) Ref() *Variant {
-	variantRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantRefFunction_Set()
+
+	ret = variantRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9536,12 +10081,14 @@ func variantRefSinkFunction_Set() {
 
 // RefSink is a representation of the C type g_variant_ref_sink.
 func (recv *Variant) RefSink() *Variant {
-	variantRefSinkFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantRefSinkFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantRefSinkFunction_Set()
+
+	ret = variantRefSinkFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9562,12 +10109,14 @@ func variantTakeRefFunction_Set() {
 
 // TakeRef is a representation of the C type g_variant_take_ref.
 func (recv *Variant) TakeRef() *Variant {
-	variantTakeRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTakeRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTakeRefFunction_Set()
+
+	ret = variantTakeRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9586,10 +10135,10 @@ func variantUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_variant_unref.
 func (recv *Variant) Unref() {
-	variantUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantUnrefFunction_Set()
 
 	variantUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -9598,10 +10147,12 @@ func (recv *Variant) Unref() {
 var variantBuilderStruct *gi.Struct
 var variantBuilderStruct_Once sync.Once
 
-func variantBuilderStruct_Set() {
+func variantBuilderStruct_Set() error {
+	var err error
 	variantBuilderStruct_Once.Do(func() {
-		variantBuilderStruct = gi.StructNew("GLib", "VariantBuilder")
+		variantBuilderStruct, err = gi.StructNew("GLib", "VariantBuilder")
 	})
+	return err
 }
 
 type VariantBuilder struct {
@@ -9628,10 +10179,10 @@ func variantBuilderClearFunction_Set() {
 
 // Clear is a representation of the C type g_variant_builder_clear.
 func (recv *VariantBuilder) Clear() {
-	variantBuilderClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantBuilderClearFunction_Set()
 
 	variantBuilderClearFunction.Invoke(inArgs[:], nil)
 
@@ -9649,10 +10200,10 @@ func variantBuilderCloseFunction_Set() {
 
 // Close is a representation of the C type g_variant_builder_close.
 func (recv *VariantBuilder) Close() {
-	variantBuilderCloseFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantBuilderCloseFunction_Set()
 
 	variantBuilderCloseFunction.Invoke(inArgs[:], nil)
 
@@ -9670,12 +10221,14 @@ func variantBuilderEndFunction_Set() {
 
 // End is a representation of the C type g_variant_builder_end.
 func (recv *VariantBuilder) End() *Variant {
-	variantBuilderEndFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantBuilderEndFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantBuilderEndFunction_Set()
+
+	ret = variantBuilderEndFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9698,12 +10251,14 @@ func variantBuilderRefFunction_Set() {
 
 // Ref is a representation of the C type g_variant_builder_ref.
 func (recv *VariantBuilder) Ref() *VariantBuilder {
-	variantBuilderRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantBuilderRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantBuilderRefFunction_Set()
+
+	ret = variantBuilderRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantBuilder{native: ret.Pointer()}
 
@@ -9722,10 +10277,10 @@ func variantBuilderUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_variant_builder_unref.
 func (recv *VariantBuilder) Unref() {
-	variantBuilderUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantBuilderUnrefFunction_Set()
 
 	variantBuilderUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -9734,10 +10289,12 @@ func (recv *VariantBuilder) Unref() {
 var variantDictStruct *gi.Struct
 var variantDictStruct_Once sync.Once
 
-func variantDictStruct_Set() {
+func variantDictStruct_Set() error {
+	var err error
 	variantDictStruct_Once.Do(func() {
-		variantDictStruct = gi.StructNew("GLib", "VariantDict")
+		variantDictStruct, err = gi.StructNew("GLib", "VariantDict")
 	})
+	return err
 }
 
 type VariantDict struct {
@@ -9758,10 +10315,10 @@ func variantDictClearFunction_Set() {
 
 // Clear is a representation of the C type g_variant_dict_clear.
 func (recv *VariantDict) Clear() {
-	variantDictClearFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantDictClearFunction_Set()
 
 	variantDictClearFunction.Invoke(inArgs[:], nil)
 
@@ -9781,12 +10338,14 @@ func variantDictEndFunction_Set() {
 
 // End is a representation of the C type g_variant_dict_end.
 func (recv *VariantDict) End() *Variant {
-	variantDictEndFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantDictEndFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantDictEndFunction_Set()
+
+	ret = variantDictEndFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9815,12 +10374,14 @@ func variantDictRefFunction_Set() {
 
 // Ref is a representation of the C type g_variant_dict_ref.
 func (recv *VariantDict) Ref() *VariantDict {
-	variantDictRefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantDictRefFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantDictRefFunction_Set()
+
+	ret = variantDictRefFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantDict{native: ret.Pointer()}
 
@@ -9841,10 +10402,10 @@ func variantDictUnrefFunction_Set() {
 
 // Unref is a representation of the C type g_variant_dict_unref.
 func (recv *VariantDict) Unref() {
-	variantDictUnrefFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantDictUnrefFunction_Set()
 
 	variantDictUnrefFunction.Invoke(inArgs[:], nil)
 
@@ -9853,10 +10414,12 @@ func (recv *VariantDict) Unref() {
 var variantIterStruct *gi.Struct
 var variantIterStruct_Once sync.Once
 
-func variantIterStruct_Set() {
+func variantIterStruct_Set() error {
+	var err error
 	variantIterStruct_Once.Do(func() {
-		variantIterStruct = gi.StructNew("GLib", "VariantIter")
+		variantIterStruct, err = gi.StructNew("GLib", "VariantIter")
 	})
+	return err
 }
 
 type VariantIter struct {
@@ -9875,12 +10438,14 @@ func variantIterCopyFunction_Set() {
 
 // Copy is a representation of the C type g_variant_iter_copy.
 func (recv *VariantIter) Copy() *VariantIter {
-	variantIterCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantIterCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantIterCopyFunction_Set()
+
+	ret = variantIterCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantIter{native: ret.Pointer()}
 
@@ -9899,10 +10464,10 @@ func variantIterFreeFunction_Set() {
 
 // Free is a representation of the C type g_variant_iter_free.
 func (recv *VariantIter) Free() {
-	variantIterFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantIterFreeFunction_Set()
 
 	variantIterFreeFunction.Invoke(inArgs[:], nil)
 
@@ -9928,12 +10493,14 @@ func variantIterNextValueFunction_Set() {
 
 // NextValue is a representation of the C type g_variant_iter_next_value.
 func (recv *VariantIter) NextValue() *Variant {
-	variantIterNextValueFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantIterNextValueFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantIterNextValueFunction_Set()
+
+	ret = variantIterNextValueFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Variant{native: ret.Pointer()}
 
@@ -9943,10 +10510,12 @@ func (recv *VariantIter) NextValue() *Variant {
 var variantTypeStruct *gi.Struct
 var variantTypeStruct_Once sync.Once
 
-func variantTypeStruct_Set() {
+func variantTypeStruct_Set() error {
+	var err error
 	variantTypeStruct_Once.Do(func() {
-		variantTypeStruct = gi.StructNew("GLib", "VariantType")
+		variantTypeStruct, err = gi.StructNew("GLib", "VariantType")
 	})
+	return err
 }
 
 type VariantType struct {
@@ -9965,12 +10534,14 @@ func variantTypeNewFunction_Set() {
 
 // VariantTypeNew is a representation of the C type g_variant_type_new.
 func VariantTypeNew(typeString string) *VariantType {
-	variantTypeNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(typeString)
 
-	ret := variantTypeNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeNewFunction_Set()
+
+	ret = variantTypeNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -9997,12 +10568,14 @@ func variantTypeCopyFunction_Set() {
 
 // Copy is a representation of the C type g_variant_type_copy.
 func (recv *VariantType) Copy() *VariantType {
-	variantTypeCopyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeCopyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeCopyFunction_Set()
+
+	ret = variantTypeCopyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -10021,12 +10594,14 @@ func variantTypeDupStringFunction_Set() {
 
 // DupString is a representation of the C type g_variant_type_dup_string.
 func (recv *VariantType) DupString() string {
-	variantTypeDupStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeDupStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeDupStringFunction_Set()
+
+	ret = variantTypeDupStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -10045,12 +10620,14 @@ func variantTypeElementFunction_Set() {
 
 // Element is a representation of the C type g_variant_type_element.
 func (recv *VariantType) Element() *VariantType {
-	variantTypeElementFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeElementFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeElementFunction_Set()
+
+	ret = variantTypeElementFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -10071,12 +10648,14 @@ func variantTypeFirstFunction_Set() {
 
 // First is a representation of the C type g_variant_type_first.
 func (recv *VariantType) First() *VariantType {
-	variantTypeFirstFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeFirstFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeFirstFunction_Set()
+
+	ret = variantTypeFirstFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -10095,10 +10674,10 @@ func variantTypeFreeFunction_Set() {
 
 // Free is a representation of the C type g_variant_type_free.
 func (recv *VariantType) Free() {
-	variantTypeFreeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
+
+	variantTypeFreeFunction_Set()
 
 	variantTypeFreeFunction.Invoke(inArgs[:], nil)
 
@@ -10118,12 +10697,14 @@ func variantTypeHashFunction_Set() {
 
 // Hash is a representation of the C type g_variant_type_hash.
 func (recv *VariantType) Hash() uint32 {
-	variantTypeHashFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeHashFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeHashFunction_Set()
+
+	ret = variantTypeHashFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.Uint32()
 
@@ -10160,12 +10741,14 @@ func variantTypeKeyFunction_Set() {
 
 // Key is a representation of the C type g_variant_type_key.
 func (recv *VariantType) Key() *VariantType {
-	variantTypeKeyFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeKeyFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeKeyFunction_Set()
+
+	ret = variantTypeKeyFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -10186,12 +10769,14 @@ func variantTypeNextFunction_Set() {
 
 // Next is a representation of the C type g_variant_type_next.
 func (recv *VariantType) Next() *VariantType {
-	variantTypeNextFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeNextFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeNextFunction_Set()
+
+	ret = variantTypeNextFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 
@@ -10210,12 +10795,14 @@ func variantTypePeekStringFunction_Set() {
 
 // PeekString is a representation of the C type g_variant_type_peek_string.
 func (recv *VariantType) PeekString() string {
-	variantTypePeekStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypePeekStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypePeekStringFunction_Set()
+
+	ret = variantTypePeekStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -10234,12 +10821,14 @@ func variantTypeValueFunction_Set() {
 
 // Value is a representation of the C type g_variant_type_value.
 func (recv *VariantType) Value() *VariantType {
-	variantTypeValueFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	ret := variantTypeValueFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	variantTypeValueFunction_Set()
+
+	ret = variantTypeValueFunction.Invoke(inArgs[:], nil)
 
 	retGo := &VariantType{native: ret.Pointer()}
 

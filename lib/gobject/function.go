@@ -222,12 +222,14 @@ func signalNameFunction_Set() {
 
 // SignalName is a representation of the C type g_signal_name.
 func SignalName(signalId uint32) string {
-	signalNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
-	ret := signalNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	signalNameFunction_Set()
+
+	ret = signalNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -261,11 +263,11 @@ func signalRemoveEmissionHookFunction_Set() {
 
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
-	signalRemoveEmissionHookFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
+
+	signalRemoveEmissionHookFunction_Set()
 
 	signalRemoveEmissionHookFunction.Invoke(inArgs[:], nil)
 
@@ -362,9 +364,12 @@ func typeGetTypeRegistrationSerialFunction_Set() {
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
 func TypeGetTypeRegistrationSerial() uint32 {
+
+	var ret gi.Argument
+
 	typeGetTypeRegistrationSerialFunction_Set()
 
-	ret := typeGetTypeRegistrationSerialFunction.Invoke(nil, nil)
+	ret = typeGetTypeRegistrationSerialFunction.Invoke(nil, nil)
 
 	retGo := ret.Uint32()
 
@@ -382,6 +387,7 @@ func typeInitFunction_Set() {
 
 // TypeInit is a representation of the C type g_type_init.
 func TypeInit() {
+
 	typeInitFunction_Set()
 
 	typeInitFunction.Invoke(nil, nil)

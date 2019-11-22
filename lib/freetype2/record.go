@@ -10,10 +10,12 @@ import (
 var bitmapStruct *gi.Struct
 var bitmapStruct_Once sync.Once
 
-func bitmapStruct_Set() {
+func bitmapStruct_Set() error {
+	var err error
 	bitmapStruct_Once.Do(func() {
-		bitmapStruct = gi.StructNew("freetype2", "Bitmap")
+		bitmapStruct, err = gi.StructNew("freetype2", "Bitmap")
 	})
+	return err
 }
 
 type Bitmap struct {
@@ -23,10 +25,12 @@ type Bitmap struct {
 var faceStruct *gi.Struct
 var faceStruct_Once sync.Once
 
-func faceStruct_Set() {
+func faceStruct_Set() error {
+	var err error
 	faceStruct_Once.Do(func() {
-		faceStruct = gi.StructNew("freetype2", "Face")
+		faceStruct, err = gi.StructNew("freetype2", "Face")
 	})
+	return err
 }
 
 type Face struct {
@@ -36,10 +40,12 @@ type Face struct {
 var libraryStruct *gi.Struct
 var libraryStruct_Once sync.Once
 
-func libraryStruct_Set() {
+func libraryStruct_Set() error {
+	var err error
 	libraryStruct_Once.Do(func() {
-		libraryStruct = gi.StructNew("freetype2", "Library")
+		libraryStruct, err = gi.StructNew("freetype2", "Library")
 	})
+	return err
 }
 
 type Library struct {

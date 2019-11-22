@@ -18,6 +18,7 @@ func libraryVersionFunction_Set() {
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
 func LibraryVersion() {
+
 	libraryVersionFunction_Set()
 
 	libraryVersionFunction.Invoke(nil, nil)

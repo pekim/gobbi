@@ -44,10 +44,10 @@ func appInfoResetTypeAssociationsFunction_Set() {
 
 // AppInfoResetTypeAssociations is a representation of the C type g_app_info_reset_type_associations.
 func AppInfoResetTypeAssociations(contentType string) {
-	appInfoResetTypeAssociationsFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(contentType)
+
+	appInfoResetTypeAssociationsFunction_Set()
 
 	appInfoResetTypeAssociationsFunction.Invoke(inArgs[:], nil)
 
@@ -80,10 +80,10 @@ func busUnownNameFunction_Set() {
 
 // BusUnownName is a representation of the C type g_bus_unown_name.
 func BusUnownName(ownerId uint32) {
-	busUnownNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(ownerId)
+
+	busUnownNameFunction_Set()
 
 	busUnownNameFunction.Invoke(inArgs[:], nil)
 
@@ -100,10 +100,10 @@ func busUnwatchNameFunction_Set() {
 
 // BusUnwatchName is a representation of the C type g_bus_unwatch_name.
 func BusUnwatchName(watcherId uint32) {
-	busUnwatchNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(watcherId)
+
+	busUnwatchNameFunction_Set()
 
 	busUnwatchNameFunction.Invoke(inArgs[:], nil)
 
@@ -132,12 +132,14 @@ func contentTypeFromMimeTypeFunction_Set() {
 
 // ContentTypeFromMimeType is a representation of the C type g_content_type_from_mime_type.
 func ContentTypeFromMimeType(mimeType string) string {
-	contentTypeFromMimeTypeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(mimeType)
 
-	ret := contentTypeFromMimeTypeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	contentTypeFromMimeTypeFunction_Set()
+
+	ret = contentTypeFromMimeTypeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -155,12 +157,14 @@ func contentTypeGetDescriptionFunction_Set() {
 
 // ContentTypeGetDescription is a representation of the C type g_content_type_get_description.
 func ContentTypeGetDescription(type_ string) string {
-	contentTypeGetDescriptionFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
-	ret := contentTypeGetDescriptionFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	contentTypeGetDescriptionFunction_Set()
+
+	ret = contentTypeGetDescriptionFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -178,12 +182,14 @@ func contentTypeGetGenericIconNameFunction_Set() {
 
 // ContentTypeGetGenericIconName is a representation of the C type g_content_type_get_generic_icon_name.
 func ContentTypeGetGenericIconName(type_ string) string {
-	contentTypeGetGenericIconNameFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
-	ret := contentTypeGetGenericIconNameFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	contentTypeGetGenericIconNameFunction_Set()
+
+	ret = contentTypeGetGenericIconNameFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -203,6 +209,7 @@ func contentTypeGetMimeDirsFunction_Set() {
 
 // ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
 func ContentTypeGetMimeDirs() {
+
 	contentTypeGetMimeDirsFunction_Set()
 
 	contentTypeGetMimeDirsFunction.Invoke(nil, nil)
@@ -220,12 +227,14 @@ func contentTypeGetMimeTypeFunction_Set() {
 
 // ContentTypeGetMimeType is a representation of the C type g_content_type_get_mime_type.
 func ContentTypeGetMimeType(type_ string) string {
-	contentTypeGetMimeTypeFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(type_)
 
-	ret := contentTypeGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	contentTypeGetMimeTypeFunction_Set()
+
+	ret = contentTypeGetMimeTypeFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -259,12 +268,14 @@ func dbusAddressEscapeValueFunction_Set() {
 
 // DbusAddressEscapeValue is a representation of the C type g_dbus_address_escape_value.
 func DbusAddressEscapeValue(string_ string) string {
-	dbusAddressEscapeValueFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(string_)
 
-	ret := dbusAddressEscapeValueFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	dbusAddressEscapeValueFunction_Set()
+
+	ret = dbusAddressEscapeValueFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -310,9 +321,12 @@ func dbusGenerateGuidFunction_Set() {
 
 // DbusGenerateGuid is a representation of the C type g_dbus_generate_guid.
 func DbusGenerateGuid() string {
+
+	var ret gi.Argument
+
 	dbusGenerateGuidFunction_Set()
 
-	ret := dbusGenerateGuidFunction.Invoke(nil, nil)
+	ret = dbusGenerateGuidFunction.Invoke(nil, nil)
 
 	retGo := ret.String(true)
 
@@ -378,12 +392,14 @@ func ioExtensionPointLookupFunction_Set() {
 
 // IoExtensionPointLookup is a representation of the C type g_io_extension_point_lookup.
 func IoExtensionPointLookup(name string) *IOExtensionPoint {
-	ioExtensionPointLookupFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
-	ret := ioExtensionPointLookupFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	ioExtensionPointLookupFunction_Set()
+
+	ret = ioExtensionPointLookupFunction.Invoke(inArgs[:], nil)
 
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
@@ -401,12 +417,14 @@ func ioExtensionPointRegisterFunction_Set() {
 
 // IoExtensionPointRegister is a representation of the C type g_io_extension_point_register.
 func IoExtensionPointRegister(name string) *IOExtensionPoint {
-	ioExtensionPointRegisterFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(name)
 
-	ret := ioExtensionPointRegisterFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	ioExtensionPointRegisterFunction_Set()
+
+	ret = ioExtensionPointRegisterFunction.Invoke(inArgs[:], nil)
 
 	retGo := &IOExtensionPoint{native: ret.Pointer()}
 
@@ -432,6 +450,7 @@ func ioSchedulerCancelAllJobsFunction_Set() {
 
 // IoSchedulerCancelAllJobs is a representation of the C type g_io_scheduler_cancel_all_jobs.
 func IoSchedulerCancelAllJobs() {
+
 	ioSchedulerCancelAllJobsFunction_Set()
 
 	ioSchedulerCancelAllJobsFunction.Invoke(nil, nil)
@@ -457,6 +476,7 @@ func networkingInitFunction_Set() {
 
 // NetworkingInit is a representation of the C type g_networking_init.
 func NetworkingInit() {
+
 	networkingInitFunction_Set()
 
 	networkingInitFunction.Invoke(nil, nil)
@@ -508,9 +528,12 @@ func settingsSchemaSourceGetDefaultFunction_Set() {
 
 // SettingsSchemaSourceGetDefault is a representation of the C type g_settings_schema_source_get_default.
 func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
+
+	var ret gi.Argument
+
 	settingsSchemaSourceGetDefaultFunction_Set()
 
-	ret := settingsSchemaSourceGetDefaultFunction.Invoke(nil, nil)
+	ret = settingsSchemaSourceGetDefaultFunction.Invoke(nil, nil)
 
 	retGo := &SettingsSchemaSource{native: ret.Pointer()}
 

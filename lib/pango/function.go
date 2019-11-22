@@ -18,12 +18,14 @@ func attrBackgroundAlphaNewFunction_Set() {
 
 // AttrBackgroundAlphaNew is a representation of the C type pango_attr_background_alpha_new.
 func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
-	attrBackgroundAlphaNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(alpha)
 
-	ret := attrBackgroundAlphaNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrBackgroundAlphaNewFunction_Set()
+
+	ret = attrBackgroundAlphaNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -41,14 +43,16 @@ func attrBackgroundNewFunction_Set() {
 
 // AttrBackgroundNew is a representation of the C type pango_attr_background_new.
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
-	attrBackgroundNewFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrBackgroundNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrBackgroundNewFunction_Set()
+
+	ret = attrBackgroundNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -68,12 +72,14 @@ func attrFamilyNewFunction_Set() {
 
 // AttrFamilyNew is a representation of the C type pango_attr_family_new.
 func AttrFamilyNew(family string) *Attribute {
-	attrFamilyNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(family)
 
-	ret := attrFamilyNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrFamilyNewFunction_Set()
+
+	ret = attrFamilyNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -91,12 +97,14 @@ func attrForegroundAlphaNewFunction_Set() {
 
 // AttrForegroundAlphaNew is a representation of the C type pango_attr_foreground_alpha_new.
 func AttrForegroundAlphaNew(alpha uint16) *Attribute {
-	attrForegroundAlphaNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint16(alpha)
 
-	ret := attrForegroundAlphaNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrForegroundAlphaNewFunction_Set()
+
+	ret = attrForegroundAlphaNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -114,14 +122,16 @@ func attrForegroundNewFunction_Set() {
 
 // AttrForegroundNew is a representation of the C type pango_attr_foreground_new.
 func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
-	attrForegroundNewFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrForegroundNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrForegroundNewFunction_Set()
+
+	ret = attrForegroundNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -143,12 +153,14 @@ func attrLetterSpacingNewFunction_Set() {
 
 // AttrLetterSpacingNew is a representation of the C type pango_attr_letter_spacing_new.
 func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
-	attrLetterSpacingNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(letterSpacing)
 
-	ret := attrLetterSpacingNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrLetterSpacingNewFunction_Set()
+
+	ret = attrLetterSpacingNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -166,12 +178,14 @@ func attrRiseNewFunction_Set() {
 
 // AttrRiseNew is a representation of the C type pango_attr_rise_new.
 func AttrRiseNew(rise int32) *Attribute {
-	attrRiseNewFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetInt32(rise)
 
-	ret := attrRiseNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrRiseNewFunction_Set()
+
+	ret = attrRiseNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -193,14 +207,16 @@ func attrStrikethroughColorNewFunction_Set() {
 
 // AttrStrikethroughColorNew is a representation of the C type pango_attr_strikethrough_color_new.
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
-	attrStrikethroughColorNewFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrStrikethroughColorNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrStrikethroughColorNewFunction_Set()
+
+	ret = attrStrikethroughColorNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -226,14 +242,16 @@ func attrUnderlineColorNewFunction_Set() {
 
 // AttrUnderlineColorNew is a representation of the C type pango_attr_underline_color_new.
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
-	attrUnderlineColorNewFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetUint16(red)
 	inArgs[1].SetUint16(green)
 	inArgs[2].SetUint16(blue)
 
-	ret := attrUnderlineColorNewFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	attrUnderlineColorNewFunction_Set()
+
+	ret = attrUnderlineColorNewFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -261,12 +279,14 @@ func configKeyGetFunction_Set() {
 
 // ConfigKeyGet is a representation of the C type pango_config_key_get.
 func ConfigKeyGet(key string) string {
-	configKeyGetFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
-	ret := configKeyGetFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	configKeyGetFunction_Set()
+
+	ret = configKeyGetFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -284,12 +304,14 @@ func configKeyGetSystemFunction_Set() {
 
 // ConfigKeyGetSystem is a representation of the C type pango_config_key_get_system.
 func ConfigKeyGetSystem(key string) string {
-	configKeyGetSystemFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(key)
 
-	ret := configKeyGetSystemFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	configKeyGetSystemFunction_Set()
+
+	ret = configKeyGetSystemFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -315,13 +337,13 @@ func findParagraphBoundaryFunction_Set() {
 
 // FindParagraphBoundary is a representation of the C type pango_find_paragraph_boundary.
 func FindParagraphBoundary(text string, length int32) (int32, int32) {
-	findParagraphBoundaryFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
 
 	var outArgs [2]gi.Argument
+
+	findParagraphBoundaryFunction_Set()
 
 	findParagraphBoundaryFunction.Invoke(inArgs[:], outArgs[:])
 
@@ -342,12 +364,14 @@ func fontDescriptionFromStringFunction_Set() {
 
 // FontDescriptionFromString is a representation of the C type pango_font_description_from_string.
 func FontDescriptionFromString(str string) *FontDescription {
-	fontDescriptionFromStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := fontDescriptionFromStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	fontDescriptionFromStringFunction_Set()
+
+	ret = fontDescriptionFromStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
@@ -365,9 +389,12 @@ func getLibSubdirectoryFunction_Set() {
 
 // GetLibSubdirectory is a representation of the C type pango_get_lib_subdirectory.
 func GetLibSubdirectory() string {
+
+	var ret gi.Argument
+
 	getLibSubdirectoryFunction_Set()
 
-	ret := getLibSubdirectoryFunction.Invoke(nil, nil)
+	ret = getLibSubdirectoryFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -389,9 +416,12 @@ func getSysconfSubdirectoryFunction_Set() {
 
 // GetSysconfSubdirectory is a representation of the C type pango_get_sysconf_subdirectory.
 func GetSysconfSubdirectory() string {
+
+	var ret gi.Argument
+
 	getSysconfSubdirectoryFunction_Set()
 
-	ret := getSysconfSubdirectoryFunction.Invoke(nil, nil)
+	ret = getSysconfSubdirectoryFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 
@@ -423,12 +453,14 @@ func languageFromStringFunction_Set() {
 
 // LanguageFromString is a representation of the C type pango_language_from_string.
 func LanguageFromString(language string) *Language {
-	languageFromStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(language)
 
-	ret := languageFromStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	languageFromStringFunction_Set()
+
+	ret = languageFromStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := &Language{native: ret.Pointer()}
 
@@ -446,9 +478,12 @@ func languageGetDefaultFunction_Set() {
 
 // LanguageGetDefault is a representation of the C type pango_language_get_default.
 func LanguageGetDefault() *Language {
+
+	var ret gi.Argument
+
 	languageGetDefaultFunction_Set()
 
-	ret := languageGetDefaultFunction.Invoke(nil, nil)
+	ret = languageGetDefaultFunction.Invoke(nil, nil)
 
 	retGo := &Language{native: ret.Pointer()}
 
@@ -488,13 +523,13 @@ func quantizeLineGeometryFunction_Set() {
 
 // QuantizeLineGeometry is a representation of the C type pango_quantize_line_geometry.
 func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
-	quantizeLineGeometryFunction_Set()
-
 	var inArgs [2]gi.Argument
 	inArgs[0].SetInt32(thickness)
 	inArgs[1].SetInt32(position)
 
 	var outArgs [2]gi.Argument
+
+	quantizeLineGeometryFunction_Set()
 
 	quantizeLineGeometryFunction.Invoke(inArgs[:], outArgs[:])
 
@@ -535,10 +570,10 @@ func splitFileListFunction_Set() {
 
 // SplitFileList is a representation of the C type pango_split_file_list.
 func SplitFileList(str string) {
-	splitFileListFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
+
+	splitFileListFunction_Set()
 
 	splitFileListFunction.Invoke(inArgs[:], nil)
 
@@ -555,12 +590,14 @@ func trimStringFunction_Set() {
 
 // TrimString is a representation of the C type pango_trim_string.
 func TrimString(str string) string {
-	trimStringFunction_Set()
-
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
-	ret := trimStringFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	trimStringFunction_Set()
+
+	ret = trimStringFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(true)
 
@@ -584,9 +621,12 @@ func versionFunction_Set() {
 
 // Version is a representation of the C type pango_version.
 func Version() int32 {
+
+	var ret gi.Argument
+
 	versionFunction_Set()
 
-	ret := versionFunction.Invoke(nil, nil)
+	ret = versionFunction.Invoke(nil, nil)
 
 	retGo := ret.Int32()
 
@@ -604,14 +644,16 @@ func versionCheckFunction_Set() {
 
 // VersionCheck is a representation of the C type pango_version_check.
 func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) string {
-	versionCheckFunction_Set()
-
 	var inArgs [3]gi.Argument
 	inArgs[0].SetInt32(requiredMajor)
 	inArgs[1].SetInt32(requiredMinor)
 	inArgs[2].SetInt32(requiredMicro)
 
-	ret := versionCheckFunction.Invoke(inArgs[:], nil)
+	var ret gi.Argument
+
+	versionCheckFunction_Set()
+
+	ret = versionCheckFunction.Invoke(inArgs[:], nil)
 
 	retGo := ret.String(false)
 
@@ -629,9 +671,12 @@ func versionStringFunction_Set() {
 
 // VersionString is a representation of the C type pango_version_string.
 func VersionString() string {
+
+	var ret gi.Argument
+
 	versionStringFunction_Set()
 
-	ret := versionStringFunction.Invoke(nil, nil)
+	ret = versionStringFunction.Invoke(nil, nil)
 
 	retGo := ret.String(false)
 

@@ -10,10 +10,12 @@ import (
 var contextStruct *gi.Struct
 var contextStruct_Once sync.Once
 
-func contextStruct_Set() {
+func contextStruct_Set() error {
+	var err error
 	contextStruct_Once.Do(func() {
-		contextStruct = gi.StructNew("cairo", "Context")
+		contextStruct, err = gi.StructNew("cairo", "Context")
 	})
+	return err
 }
 
 type Context struct {
@@ -23,10 +25,12 @@ type Context struct {
 var deviceStruct *gi.Struct
 var deviceStruct_Once sync.Once
 
-func deviceStruct_Set() {
+func deviceStruct_Set() error {
+	var err error
 	deviceStruct_Once.Do(func() {
-		deviceStruct = gi.StructNew("cairo", "Device")
+		deviceStruct, err = gi.StructNew("cairo", "Device")
 	})
+	return err
 }
 
 type Device struct {
@@ -36,10 +40,12 @@ type Device struct {
 var surfaceStruct *gi.Struct
 var surfaceStruct_Once sync.Once
 
-func surfaceStruct_Set() {
+func surfaceStruct_Set() error {
+	var err error
 	surfaceStruct_Once.Do(func() {
-		surfaceStruct = gi.StructNew("cairo", "Surface")
+		surfaceStruct, err = gi.StructNew("cairo", "Surface")
 	})
+	return err
 }
 
 type Surface struct {
@@ -49,10 +55,12 @@ type Surface struct {
 var matrixStruct *gi.Struct
 var matrixStruct_Once sync.Once
 
-func matrixStruct_Set() {
+func matrixStruct_Set() error {
+	var err error
 	matrixStruct_Once.Do(func() {
-		matrixStruct = gi.StructNew("cairo", "Matrix")
+		matrixStruct, err = gi.StructNew("cairo", "Matrix")
 	})
+	return err
 }
 
 type Matrix struct {
@@ -62,10 +70,12 @@ type Matrix struct {
 var patternStruct *gi.Struct
 var patternStruct_Once sync.Once
 
-func patternStruct_Set() {
+func patternStruct_Set() error {
+	var err error
 	patternStruct_Once.Do(func() {
-		patternStruct = gi.StructNew("cairo", "Pattern")
+		patternStruct, err = gi.StructNew("cairo", "Pattern")
 	})
+	return err
 }
 
 type Pattern struct {
@@ -75,10 +85,12 @@ type Pattern struct {
 var regionStruct *gi.Struct
 var regionStruct_Once sync.Once
 
-func regionStruct_Set() {
+func regionStruct_Set() error {
+	var err error
 	regionStruct_Once.Do(func() {
-		regionStruct = gi.StructNew("cairo", "Region")
+		regionStruct, err = gi.StructNew("cairo", "Region")
 	})
+	return err
 }
 
 type Region struct {
@@ -88,10 +100,12 @@ type Region struct {
 var fontOptionsStruct *gi.Struct
 var fontOptionsStruct_Once sync.Once
 
-func fontOptionsStruct_Set() {
+func fontOptionsStruct_Set() error {
+	var err error
 	fontOptionsStruct_Once.Do(func() {
-		fontOptionsStruct = gi.StructNew("cairo", "FontOptions")
+		fontOptionsStruct, err = gi.StructNew("cairo", "FontOptions")
 	})
+	return err
 }
 
 type FontOptions struct {
@@ -101,10 +115,12 @@ type FontOptions struct {
 var fontFaceStruct *gi.Struct
 var fontFaceStruct_Once sync.Once
 
-func fontFaceStruct_Set() {
+func fontFaceStruct_Set() error {
+	var err error
 	fontFaceStruct_Once.Do(func() {
-		fontFaceStruct = gi.StructNew("cairo", "FontFace")
+		fontFaceStruct, err = gi.StructNew("cairo", "FontFace")
 	})
+	return err
 }
 
 type FontFace struct {
@@ -114,10 +130,12 @@ type FontFace struct {
 var scaledFontStruct *gi.Struct
 var scaledFontStruct_Once sync.Once
 
-func scaledFontStruct_Set() {
+func scaledFontStruct_Set() error {
+	var err error
 	scaledFontStruct_Once.Do(func() {
-		scaledFontStruct = gi.StructNew("cairo", "ScaledFont")
+		scaledFontStruct, err = gi.StructNew("cairo", "ScaledFont")
 	})
+	return err
 }
 
 type ScaledFont struct {
@@ -127,10 +145,12 @@ type ScaledFont struct {
 var pathStruct *gi.Struct
 var pathStruct_Once sync.Once
 
-func pathStruct_Set() {
+func pathStruct_Set() error {
+	var err error
 	pathStruct_Once.Do(func() {
-		pathStruct = gi.StructNew("cairo", "Path")
+		pathStruct, err = gi.StructNew("cairo", "Path")
 	})
+	return err
 }
 
 type Path struct {
@@ -140,10 +160,12 @@ type Path struct {
 var rectangleStruct *gi.Struct
 var rectangleStruct_Once sync.Once
 
-func rectangleStruct_Set() {
+func rectangleStruct_Set() error {
+	var err error
 	rectangleStruct_Once.Do(func() {
-		rectangleStruct = gi.StructNew("cairo", "Rectangle")
+		rectangleStruct, err = gi.StructNew("cairo", "Rectangle")
 	})
+	return err
 }
 
 type Rectangle struct {
@@ -157,10 +179,12 @@ type Rectangle struct {
 var rectangleIntStruct *gi.Struct
 var rectangleIntStruct_Once sync.Once
 
-func rectangleIntStruct_Set() {
+func rectangleIntStruct_Set() error {
+	var err error
 	rectangleIntStruct_Once.Do(func() {
-		rectangleIntStruct = gi.StructNew("cairo", "RectangleInt")
+		rectangleIntStruct, err = gi.StructNew("cairo", "RectangleInt")
 	})
+	return err
 }
 
 type RectangleInt struct {
