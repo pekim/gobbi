@@ -32,17 +32,20 @@ import (
 var shutdownDisplayFunction *gi.Function
 var shutdownDisplayFunction_Once sync.Once
 
-func shutdownDisplayFunction_Set() {
+func shutdownDisplayFunction_Set() error {
+	var err error
 	shutdownDisplayFunction_Once.Do(func() {
-		shutdownDisplayFunction = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
+		shutdownDisplayFunction, err = gi.FunctionInvokerNew("PangoFT2", "shutdown_display")
 	})
+	return err
 }
 
 // ShutdownDisplay is a representation of the C type pango_ft2_shutdown_display.
 func ShutdownDisplay() {
 
-	shutdownDisplayFunction_Set()
-
-	shutdownDisplayFunction.Invoke(nil, nil)
+	err := shutdownDisplayFunction_Set()
+	if err == nil {
+		shutdownDisplayFunction.Invoke(nil, nil)
+	}
 
 }

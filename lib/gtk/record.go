@@ -923,11 +923,16 @@ type Border struct {
 var borderNewFunction *gi.Function
 var borderNewFunction_Once sync.Once
 
-func borderNewFunction_Set() {
+func borderNewFunction_Set() error {
+	var err error
 	borderNewFunction_Once.Do(func() {
-		borderStruct_Set()
-		borderNewFunction = borderStruct.InvokerNew("new")
+		err = borderStruct_Set()
+		if err != nil {
+			return
+		}
+		borderNewFunction, err = borderStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // BorderNew is a representation of the C type gtk_border_new.
@@ -935,9 +940,10 @@ func BorderNew() *Border {
 
 	var ret gi.Argument
 
-	borderNewFunction_Set()
-
-	ret = borderNewFunction.Invoke(nil, nil)
+	err := borderNewFunction_Set()
+	if err == nil {
+		ret = borderNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &Border{native: ret.Pointer()}
 
@@ -947,11 +953,16 @@ func BorderNew() *Border {
 var borderCopyFunction *gi.Function
 var borderCopyFunction_Once sync.Once
 
-func borderCopyFunction_Set() {
+func borderCopyFunction_Set() error {
+	var err error
 	borderCopyFunction_Once.Do(func() {
-		borderStruct_Set()
-		borderCopyFunction = borderStruct.InvokerNew("copy")
+		err = borderStruct_Set()
+		if err != nil {
+			return
+		}
+		borderCopyFunction, err = borderStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_border_copy.
@@ -961,9 +972,10 @@ func (recv *Border) Copy() *Border {
 
 	var ret gi.Argument
 
-	borderCopyFunction_Set()
-
-	ret = borderCopyFunction.Invoke(inArgs[:], nil)
+	err := borderCopyFunction_Set()
+	if err == nil {
+		ret = borderCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Border{native: ret.Pointer()}
 
@@ -973,11 +985,16 @@ func (recv *Border) Copy() *Border {
 var borderFreeFunction *gi.Function
 var borderFreeFunction_Once sync.Once
 
-func borderFreeFunction_Set() {
+func borderFreeFunction_Set() error {
+	var err error
 	borderFreeFunction_Once.Do(func() {
-		borderStruct_Set()
-		borderFreeFunction = borderStruct.InvokerNew("free")
+		err = borderStruct_Set()
+		if err != nil {
+			return
+		}
+		borderFreeFunction, err = borderStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_border_free.
@@ -985,9 +1002,10 @@ func (recv *Border) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	borderFreeFunction_Set()
-
-	borderFreeFunction.Invoke(inArgs[:], nil)
+	err := borderFreeFunction_Set()
+	if err == nil {
+		borderFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1384,11 +1402,16 @@ type CellAreaClass struct {
 var cellAreaClassListCellPropertiesFunction *gi.Function
 var cellAreaClassListCellPropertiesFunction_Once sync.Once
 
-func cellAreaClassListCellPropertiesFunction_Set() {
+func cellAreaClassListCellPropertiesFunction_Set() error {
+	var err error
 	cellAreaClassListCellPropertiesFunction_Once.Do(func() {
-		cellAreaClassStruct_Set()
-		cellAreaClassListCellPropertiesFunction = cellAreaClassStruct.InvokerNew("list_cell_properties")
+		err = cellAreaClassStruct_Set()
+		if err != nil {
+			return
+		}
+		cellAreaClassListCellPropertiesFunction, err = cellAreaClassStruct.InvokerNew("list_cell_properties")
 	})
+	return err
 }
 
 // ListCellProperties is a representation of the C type gtk_cell_area_class_list_cell_properties.
@@ -1398,9 +1421,10 @@ func (recv *CellAreaClass) ListCellProperties() uint32 {
 
 	var outArgs [1]gi.Argument
 
-	cellAreaClassListCellPropertiesFunction_Set()
-
-	cellAreaClassListCellPropertiesFunction.Invoke(inArgs[:], outArgs[:])
+	err := cellAreaClassListCellPropertiesFunction_Set()
+	if err == nil {
+		cellAreaClassListCellPropertiesFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Uint32()
 
@@ -2382,11 +2406,16 @@ type ContainerClass struct {
 var containerClassHandleBorderWidthFunction *gi.Function
 var containerClassHandleBorderWidthFunction_Once sync.Once
 
-func containerClassHandleBorderWidthFunction_Set() {
+func containerClassHandleBorderWidthFunction_Set() error {
+	var err error
 	containerClassHandleBorderWidthFunction_Once.Do(func() {
-		containerClassStruct_Set()
-		containerClassHandleBorderWidthFunction = containerClassStruct.InvokerNew("handle_border_width")
+		err = containerClassStruct_Set()
+		if err != nil {
+			return
+		}
+		containerClassHandleBorderWidthFunction, err = containerClassStruct.InvokerNew("handle_border_width")
 	})
+	return err
 }
 
 // HandleBorderWidth is a representation of the C type gtk_container_class_handle_border_width.
@@ -2394,9 +2423,10 @@ func (recv *ContainerClass) HandleBorderWidth() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	containerClassHandleBorderWidthFunction_Set()
-
-	containerClassHandleBorderWidthFunction.Invoke(inArgs[:], nil)
+	err := containerClassHandleBorderWidthFunction_Set()
+	if err == nil {
+		containerClassHandleBorderWidthFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2407,11 +2437,16 @@ func (recv *ContainerClass) HandleBorderWidth() {
 var containerClassListChildPropertiesFunction *gi.Function
 var containerClassListChildPropertiesFunction_Once sync.Once
 
-func containerClassListChildPropertiesFunction_Set() {
+func containerClassListChildPropertiesFunction_Set() error {
+	var err error
 	containerClassListChildPropertiesFunction_Once.Do(func() {
-		containerClassStruct_Set()
-		containerClassListChildPropertiesFunction = containerClassStruct.InvokerNew("list_child_properties")
+		err = containerClassStruct_Set()
+		if err != nil {
+			return
+		}
+		containerClassListChildPropertiesFunction, err = containerClassStruct.InvokerNew("list_child_properties")
 	})
+	return err
 }
 
 // ListChildProperties is a representation of the C type gtk_container_class_list_child_properties.
@@ -2421,9 +2456,10 @@ func (recv *ContainerClass) ListChildProperties() uint32 {
 
 	var outArgs [1]gi.Argument
 
-	containerClassListChildPropertiesFunction_Set()
-
-	containerClassListChildPropertiesFunction.Invoke(inArgs[:], outArgs[:])
+	err := containerClassListChildPropertiesFunction_Set()
+	if err == nil {
+		containerClassListChildPropertiesFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Uint32()
 
@@ -2498,11 +2534,16 @@ type CssSection struct {
 var cssSectionGetEndLineFunction *gi.Function
 var cssSectionGetEndLineFunction_Once sync.Once
 
-func cssSectionGetEndLineFunction_Set() {
+func cssSectionGetEndLineFunction_Set() error {
+	var err error
 	cssSectionGetEndLineFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionGetEndLineFunction = cssSectionStruct.InvokerNew("get_end_line")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetEndLineFunction, err = cssSectionStruct.InvokerNew("get_end_line")
 	})
+	return err
 }
 
 // GetEndLine is a representation of the C type gtk_css_section_get_end_line.
@@ -2512,9 +2553,10 @@ func (recv *CssSection) GetEndLine() uint32 {
 
 	var ret gi.Argument
 
-	cssSectionGetEndLineFunction_Set()
-
-	ret = cssSectionGetEndLineFunction.Invoke(inArgs[:], nil)
+	err := cssSectionGetEndLineFunction_Set()
+	if err == nil {
+		ret = cssSectionGetEndLineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -2524,11 +2566,16 @@ func (recv *CssSection) GetEndLine() uint32 {
 var cssSectionGetEndPositionFunction *gi.Function
 var cssSectionGetEndPositionFunction_Once sync.Once
 
-func cssSectionGetEndPositionFunction_Set() {
+func cssSectionGetEndPositionFunction_Set() error {
+	var err error
 	cssSectionGetEndPositionFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionGetEndPositionFunction = cssSectionStruct.InvokerNew("get_end_position")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetEndPositionFunction, err = cssSectionStruct.InvokerNew("get_end_position")
 	})
+	return err
 }
 
 // GetEndPosition is a representation of the C type gtk_css_section_get_end_position.
@@ -2538,9 +2585,10 @@ func (recv *CssSection) GetEndPosition() uint32 {
 
 	var ret gi.Argument
 
-	cssSectionGetEndPositionFunction_Set()
-
-	ret = cssSectionGetEndPositionFunction.Invoke(inArgs[:], nil)
+	err := cssSectionGetEndPositionFunction_Set()
+	if err == nil {
+		ret = cssSectionGetEndPositionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -2552,11 +2600,16 @@ func (recv *CssSection) GetEndPosition() uint32 {
 var cssSectionGetParentFunction *gi.Function
 var cssSectionGetParentFunction_Once sync.Once
 
-func cssSectionGetParentFunction_Set() {
+func cssSectionGetParentFunction_Set() error {
+	var err error
 	cssSectionGetParentFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionGetParentFunction = cssSectionStruct.InvokerNew("get_parent")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetParentFunction, err = cssSectionStruct.InvokerNew("get_parent")
 	})
+	return err
 }
 
 // GetParent is a representation of the C type gtk_css_section_get_parent.
@@ -2566,9 +2619,10 @@ func (recv *CssSection) GetParent() *CssSection {
 
 	var ret gi.Argument
 
-	cssSectionGetParentFunction_Set()
-
-	ret = cssSectionGetParentFunction.Invoke(inArgs[:], nil)
+	err := cssSectionGetParentFunction_Set()
+	if err == nil {
+		ret = cssSectionGetParentFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &CssSection{native: ret.Pointer()}
 
@@ -2580,11 +2634,16 @@ func (recv *CssSection) GetParent() *CssSection {
 var cssSectionGetStartLineFunction *gi.Function
 var cssSectionGetStartLineFunction_Once sync.Once
 
-func cssSectionGetStartLineFunction_Set() {
+func cssSectionGetStartLineFunction_Set() error {
+	var err error
 	cssSectionGetStartLineFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionGetStartLineFunction = cssSectionStruct.InvokerNew("get_start_line")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetStartLineFunction, err = cssSectionStruct.InvokerNew("get_start_line")
 	})
+	return err
 }
 
 // GetStartLine is a representation of the C type gtk_css_section_get_start_line.
@@ -2594,9 +2653,10 @@ func (recv *CssSection) GetStartLine() uint32 {
 
 	var ret gi.Argument
 
-	cssSectionGetStartLineFunction_Set()
-
-	ret = cssSectionGetStartLineFunction.Invoke(inArgs[:], nil)
+	err := cssSectionGetStartLineFunction_Set()
+	if err == nil {
+		ret = cssSectionGetStartLineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -2606,11 +2666,16 @@ func (recv *CssSection) GetStartLine() uint32 {
 var cssSectionGetStartPositionFunction *gi.Function
 var cssSectionGetStartPositionFunction_Once sync.Once
 
-func cssSectionGetStartPositionFunction_Set() {
+func cssSectionGetStartPositionFunction_Set() error {
+	var err error
 	cssSectionGetStartPositionFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionGetStartPositionFunction = cssSectionStruct.InvokerNew("get_start_position")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetStartPositionFunction, err = cssSectionStruct.InvokerNew("get_start_position")
 	})
+	return err
 }
 
 // GetStartPosition is a representation of the C type gtk_css_section_get_start_position.
@@ -2620,9 +2685,10 @@ func (recv *CssSection) GetStartPosition() uint32 {
 
 	var ret gi.Argument
 
-	cssSectionGetStartPositionFunction_Set()
-
-	ret = cssSectionGetStartPositionFunction.Invoke(inArgs[:], nil)
+	err := cssSectionGetStartPositionFunction_Set()
+	if err == nil {
+		ret = cssSectionGetStartPositionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -2632,11 +2698,16 @@ func (recv *CssSection) GetStartPosition() uint32 {
 var cssSectionRefFunction *gi.Function
 var cssSectionRefFunction_Once sync.Once
 
-func cssSectionRefFunction_Set() {
+func cssSectionRefFunction_Set() error {
+	var err error
 	cssSectionRefFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionRefFunction = cssSectionStruct.InvokerNew("ref")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionRefFunction, err = cssSectionStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_css_section_ref.
@@ -2646,9 +2717,10 @@ func (recv *CssSection) Ref() *CssSection {
 
 	var ret gi.Argument
 
-	cssSectionRefFunction_Set()
-
-	ret = cssSectionRefFunction.Invoke(inArgs[:], nil)
+	err := cssSectionRefFunction_Set()
+	if err == nil {
+		ret = cssSectionRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &CssSection{native: ret.Pointer()}
 
@@ -2658,11 +2730,16 @@ func (recv *CssSection) Ref() *CssSection {
 var cssSectionUnrefFunction *gi.Function
 var cssSectionUnrefFunction_Once sync.Once
 
-func cssSectionUnrefFunction_Set() {
+func cssSectionUnrefFunction_Set() error {
+	var err error
 	cssSectionUnrefFunction_Once.Do(func() {
-		cssSectionStruct_Set()
-		cssSectionUnrefFunction = cssSectionStruct.InvokerNew("unref")
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionUnrefFunction, err = cssSectionStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_css_section_unref.
@@ -2670,9 +2747,10 @@ func (recv *CssSection) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	cssSectionUnrefFunction_Set()
-
-	cssSectionUnrefFunction.Invoke(inArgs[:], nil)
+	err := cssSectionUnrefFunction_Set()
+	if err == nil {
+		cssSectionUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -3839,11 +3917,16 @@ type Gradient struct {
 var gradientRefFunction *gi.Function
 var gradientRefFunction_Once sync.Once
 
-func gradientRefFunction_Set() {
+func gradientRefFunction_Set() error {
+	var err error
 	gradientRefFunction_Once.Do(func() {
-		gradientStruct_Set()
-		gradientRefFunction = gradientStruct.InvokerNew("ref")
+		err = gradientStruct_Set()
+		if err != nil {
+			return
+		}
+		gradientRefFunction, err = gradientStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_gradient_ref.
@@ -3853,9 +3936,10 @@ func (recv *Gradient) Ref() *Gradient {
 
 	var ret gi.Argument
 
-	gradientRefFunction_Set()
-
-	ret = gradientRefFunction.Invoke(inArgs[:], nil)
+	err := gradientRefFunction_Set()
+	if err == nil {
+		ret = gradientRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Gradient{native: ret.Pointer()}
 
@@ -3869,11 +3953,16 @@ func (recv *Gradient) Ref() *Gradient {
 var gradientToStringFunction *gi.Function
 var gradientToStringFunction_Once sync.Once
 
-func gradientToStringFunction_Set() {
+func gradientToStringFunction_Set() error {
+	var err error
 	gradientToStringFunction_Once.Do(func() {
-		gradientStruct_Set()
-		gradientToStringFunction = gradientStruct.InvokerNew("to_string")
+		err = gradientStruct_Set()
+		if err != nil {
+			return
+		}
+		gradientToStringFunction, err = gradientStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type gtk_gradient_to_string.
@@ -3883,9 +3972,10 @@ func (recv *Gradient) ToString() string {
 
 	var ret gi.Argument
 
-	gradientToStringFunction_Set()
-
-	ret = gradientToStringFunction.Invoke(inArgs[:], nil)
+	err := gradientToStringFunction_Set()
+	if err == nil {
+		ret = gradientToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -3895,11 +3985,16 @@ func (recv *Gradient) ToString() string {
 var gradientUnrefFunction *gi.Function
 var gradientUnrefFunction_Once sync.Once
 
-func gradientUnrefFunction_Set() {
+func gradientUnrefFunction_Set() error {
+	var err error
 	gradientUnrefFunction_Once.Do(func() {
-		gradientStruct_Set()
-		gradientUnrefFunction = gradientStruct.InvokerNew("unref")
+		err = gradientStruct_Set()
+		if err != nil {
+			return
+		}
+		gradientUnrefFunction, err = gradientStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_gradient_unref.
@@ -3907,9 +4002,10 @@ func (recv *Gradient) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	gradientUnrefFunction_Set()
-
-	gradientUnrefFunction.Invoke(inArgs[:], nil)
+	err := gradientUnrefFunction_Set()
+	if err == nil {
+		gradientUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4379,11 +4475,16 @@ type IconSet struct {
 var iconSetNewFunction *gi.Function
 var iconSetNewFunction_Once sync.Once
 
-func iconSetNewFunction_Set() {
+func iconSetNewFunction_Set() error {
+	var err error
 	iconSetNewFunction_Once.Do(func() {
-		iconSetStruct_Set()
-		iconSetNewFunction = iconSetStruct.InvokerNew("new")
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetNewFunction, err = iconSetStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // IconSetNew is a representation of the C type gtk_icon_set_new.
@@ -4391,9 +4492,10 @@ func IconSetNew() *IconSet {
 
 	var ret gi.Argument
 
-	iconSetNewFunction_Set()
-
-	ret = iconSetNewFunction.Invoke(nil, nil)
+	err := iconSetNewFunction_Set()
+	if err == nil {
+		ret = iconSetNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &IconSet{native: ret.Pointer()}
 
@@ -4407,11 +4509,16 @@ func IconSetNew() *IconSet {
 var iconSetCopyFunction *gi.Function
 var iconSetCopyFunction_Once sync.Once
 
-func iconSetCopyFunction_Set() {
+func iconSetCopyFunction_Set() error {
+	var err error
 	iconSetCopyFunction_Once.Do(func() {
-		iconSetStruct_Set()
-		iconSetCopyFunction = iconSetStruct.InvokerNew("copy")
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetCopyFunction, err = iconSetStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_icon_set_copy.
@@ -4421,9 +4528,10 @@ func (recv *IconSet) Copy() *IconSet {
 
 	var ret gi.Argument
 
-	iconSetCopyFunction_Set()
-
-	ret = iconSetCopyFunction.Invoke(inArgs[:], nil)
+	err := iconSetCopyFunction_Set()
+	if err == nil {
+		ret = iconSetCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &IconSet{native: ret.Pointer()}
 
@@ -4435,11 +4543,16 @@ func (recv *IconSet) Copy() *IconSet {
 var iconSetRefFunction *gi.Function
 var iconSetRefFunction_Once sync.Once
 
-func iconSetRefFunction_Set() {
+func iconSetRefFunction_Set() error {
+	var err error
 	iconSetRefFunction_Once.Do(func() {
-		iconSetStruct_Set()
-		iconSetRefFunction = iconSetStruct.InvokerNew("ref")
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetRefFunction, err = iconSetStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_icon_set_ref.
@@ -4449,9 +4562,10 @@ func (recv *IconSet) Ref() *IconSet {
 
 	var ret gi.Argument
 
-	iconSetRefFunction_Set()
-
-	ret = iconSetRefFunction.Invoke(inArgs[:], nil)
+	err := iconSetRefFunction_Set()
+	if err == nil {
+		ret = iconSetRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &IconSet{native: ret.Pointer()}
 
@@ -4467,11 +4581,16 @@ func (recv *IconSet) Ref() *IconSet {
 var iconSetUnrefFunction *gi.Function
 var iconSetUnrefFunction_Once sync.Once
 
-func iconSetUnrefFunction_Set() {
+func iconSetUnrefFunction_Set() error {
+	var err error
 	iconSetUnrefFunction_Once.Do(func() {
-		iconSetStruct_Set()
-		iconSetUnrefFunction = iconSetStruct.InvokerNew("unref")
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetUnrefFunction, err = iconSetStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_icon_set_unref.
@@ -4479,9 +4598,10 @@ func (recv *IconSet) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	iconSetUnrefFunction_Set()
-
-	iconSetUnrefFunction.Invoke(inArgs[:], nil)
+	err := iconSetUnrefFunction_Set()
+	if err == nil {
+		iconSetUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4503,11 +4623,16 @@ type IconSource struct {
 var iconSourceNewFunction *gi.Function
 var iconSourceNewFunction_Once sync.Once
 
-func iconSourceNewFunction_Set() {
+func iconSourceNewFunction_Set() error {
+	var err error
 	iconSourceNewFunction_Once.Do(func() {
-		iconSourceStruct_Set()
-		iconSourceNewFunction = iconSourceStruct.InvokerNew("new")
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceNewFunction, err = iconSourceStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // IconSourceNew is a representation of the C type gtk_icon_source_new.
@@ -4515,9 +4640,10 @@ func IconSourceNew() *IconSource {
 
 	var ret gi.Argument
 
-	iconSourceNewFunction_Set()
-
-	ret = iconSourceNewFunction.Invoke(nil, nil)
+	err := iconSourceNewFunction_Set()
+	if err == nil {
+		ret = iconSourceNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &IconSource{native: ret.Pointer()}
 
@@ -4527,11 +4653,16 @@ func IconSourceNew() *IconSource {
 var iconSourceCopyFunction *gi.Function
 var iconSourceCopyFunction_Once sync.Once
 
-func iconSourceCopyFunction_Set() {
+func iconSourceCopyFunction_Set() error {
+	var err error
 	iconSourceCopyFunction_Once.Do(func() {
-		iconSourceStruct_Set()
-		iconSourceCopyFunction = iconSourceStruct.InvokerNew("copy")
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceCopyFunction, err = iconSourceStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_icon_source_copy.
@@ -4541,9 +4672,10 @@ func (recv *IconSource) Copy() *IconSource {
 
 	var ret gi.Argument
 
-	iconSourceCopyFunction_Set()
-
-	ret = iconSourceCopyFunction.Invoke(inArgs[:], nil)
+	err := iconSourceCopyFunction_Set()
+	if err == nil {
+		ret = iconSourceCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &IconSource{native: ret.Pointer()}
 
@@ -4553,11 +4685,16 @@ func (recv *IconSource) Copy() *IconSource {
 var iconSourceFreeFunction *gi.Function
 var iconSourceFreeFunction_Once sync.Once
 
-func iconSourceFreeFunction_Set() {
+func iconSourceFreeFunction_Set() error {
+	var err error
 	iconSourceFreeFunction_Once.Do(func() {
-		iconSourceStruct_Set()
-		iconSourceFreeFunction = iconSourceStruct.InvokerNew("free")
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceFreeFunction, err = iconSourceStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_icon_source_free.
@@ -4565,9 +4702,10 @@ func (recv *IconSource) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	iconSourceFreeFunction_Set()
-
-	iconSourceFreeFunction.Invoke(inArgs[:], nil)
+	err := iconSourceFreeFunction_Set()
+	if err == nil {
+		iconSourceFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4580,11 +4718,16 @@ func (recv *IconSource) Free() {
 var iconSourceGetIconNameFunction *gi.Function
 var iconSourceGetIconNameFunction_Once sync.Once
 
-func iconSourceGetIconNameFunction_Set() {
+func iconSourceGetIconNameFunction_Set() error {
+	var err error
 	iconSourceGetIconNameFunction_Once.Do(func() {
-		iconSourceStruct_Set()
-		iconSourceGetIconNameFunction = iconSourceStruct.InvokerNew("get_icon_name")
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetIconNameFunction, err = iconSourceStruct.InvokerNew("get_icon_name")
 	})
+	return err
 }
 
 // GetIconName is a representation of the C type gtk_icon_source_get_icon_name.
@@ -4594,9 +4737,10 @@ func (recv *IconSource) GetIconName() string {
 
 	var ret gi.Argument
 
-	iconSourceGetIconNameFunction_Set()
-
-	ret = iconSourceGetIconNameFunction.Invoke(inArgs[:], nil)
+	err := iconSourceGetIconNameFunction_Set()
+	if err == nil {
+		ret = iconSourceGetIconNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4622,11 +4766,16 @@ func (recv *IconSource) GetIconName() string {
 var iconSourceSetIconNameFunction *gi.Function
 var iconSourceSetIconNameFunction_Once sync.Once
 
-func iconSourceSetIconNameFunction_Set() {
+func iconSourceSetIconNameFunction_Set() error {
+	var err error
 	iconSourceSetIconNameFunction_Once.Do(func() {
-		iconSourceStruct_Set()
-		iconSourceSetIconNameFunction = iconSourceStruct.InvokerNew("set_icon_name")
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetIconNameFunction, err = iconSourceStruct.InvokerNew("set_icon_name")
 	})
+	return err
 }
 
 // SetIconName is a representation of the C type gtk_icon_source_set_icon_name.
@@ -4635,9 +4784,10 @@ func (recv *IconSource) SetIconName(iconName string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(iconName)
 
-	iconSourceSetIconNameFunction_Set()
-
-	iconSourceSetIconNameFunction.Invoke(inArgs[:], nil)
+	err := iconSourceSetIconNameFunction_Set()
+	if err == nil {
+		iconSourceSetIconNameFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -6259,11 +6409,16 @@ type PaperSize struct {
 var paperSizeNewFunction *gi.Function
 var paperSizeNewFunction_Once sync.Once
 
-func paperSizeNewFunction_Set() {
+func paperSizeNewFunction_Set() error {
+	var err error
 	paperSizeNewFunction_Once.Do(func() {
-		paperSizeStruct_Set()
-		paperSizeNewFunction = paperSizeStruct.InvokerNew("new")
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeNewFunction, err = paperSizeStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // PaperSizeNew is a representation of the C type gtk_paper_size_new.
@@ -6273,9 +6428,10 @@ func PaperSizeNew(name string) *PaperSize {
 
 	var ret gi.Argument
 
-	paperSizeNewFunction_Set()
-
-	ret = paperSizeNewFunction.Invoke(inArgs[:], nil)
+	err := paperSizeNewFunction_Set()
+	if err == nil {
+		ret = paperSizeNewFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &PaperSize{native: ret.Pointer()}
 
@@ -6295,11 +6451,16 @@ func PaperSizeNew(name string) *PaperSize {
 var paperSizeCopyFunction *gi.Function
 var paperSizeCopyFunction_Once sync.Once
 
-func paperSizeCopyFunction_Set() {
+func paperSizeCopyFunction_Set() error {
+	var err error
 	paperSizeCopyFunction_Once.Do(func() {
-		paperSizeStruct_Set()
-		paperSizeCopyFunction = paperSizeStruct.InvokerNew("copy")
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeCopyFunction, err = paperSizeStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_paper_size_copy.
@@ -6309,9 +6470,10 @@ func (recv *PaperSize) Copy() *PaperSize {
 
 	var ret gi.Argument
 
-	paperSizeCopyFunction_Set()
-
-	ret = paperSizeCopyFunction.Invoke(inArgs[:], nil)
+	err := paperSizeCopyFunction_Set()
+	if err == nil {
+		ret = paperSizeCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &PaperSize{native: ret.Pointer()}
 
@@ -6321,11 +6483,16 @@ func (recv *PaperSize) Copy() *PaperSize {
 var paperSizeFreeFunction *gi.Function
 var paperSizeFreeFunction_Once sync.Once
 
-func paperSizeFreeFunction_Set() {
+func paperSizeFreeFunction_Set() error {
+	var err error
 	paperSizeFreeFunction_Once.Do(func() {
-		paperSizeStruct_Set()
-		paperSizeFreeFunction = paperSizeStruct.InvokerNew("free")
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeFreeFunction, err = paperSizeStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_paper_size_free.
@@ -6333,9 +6500,10 @@ func (recv *PaperSize) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	paperSizeFreeFunction_Set()
-
-	paperSizeFreeFunction.Invoke(inArgs[:], nil)
+	err := paperSizeFreeFunction_Set()
+	if err == nil {
+		paperSizeFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -6350,11 +6518,16 @@ func (recv *PaperSize) Free() {
 var paperSizeGetDisplayNameFunction *gi.Function
 var paperSizeGetDisplayNameFunction_Once sync.Once
 
-func paperSizeGetDisplayNameFunction_Set() {
+func paperSizeGetDisplayNameFunction_Set() error {
+	var err error
 	paperSizeGetDisplayNameFunction_Once.Do(func() {
-		paperSizeStruct_Set()
-		paperSizeGetDisplayNameFunction = paperSizeStruct.InvokerNew("get_display_name")
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetDisplayNameFunction, err = paperSizeStruct.InvokerNew("get_display_name")
 	})
+	return err
 }
 
 // GetDisplayName is a representation of the C type gtk_paper_size_get_display_name.
@@ -6364,9 +6537,10 @@ func (recv *PaperSize) GetDisplayName() string {
 
 	var ret gi.Argument
 
-	paperSizeGetDisplayNameFunction_Set()
-
-	ret = paperSizeGetDisplayNameFunction.Invoke(inArgs[:], nil)
+	err := paperSizeGetDisplayNameFunction_Set()
+	if err == nil {
+		ret = paperSizeGetDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -6378,11 +6552,16 @@ func (recv *PaperSize) GetDisplayName() string {
 var paperSizeGetNameFunction *gi.Function
 var paperSizeGetNameFunction_Once sync.Once
 
-func paperSizeGetNameFunction_Set() {
+func paperSizeGetNameFunction_Set() error {
+	var err error
 	paperSizeGetNameFunction_Once.Do(func() {
-		paperSizeStruct_Set()
-		paperSizeGetNameFunction = paperSizeStruct.InvokerNew("get_name")
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetNameFunction, err = paperSizeStruct.InvokerNew("get_name")
 	})
+	return err
 }
 
 // GetName is a representation of the C type gtk_paper_size_get_name.
@@ -6392,9 +6571,10 @@ func (recv *PaperSize) GetName() string {
 
 	var ret gi.Argument
 
-	paperSizeGetNameFunction_Set()
-
-	ret = paperSizeGetNameFunction.Invoke(inArgs[:], nil)
+	err := paperSizeGetNameFunction_Set()
+	if err == nil {
+		ret = paperSizeGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -6404,11 +6584,16 @@ func (recv *PaperSize) GetName() string {
 var paperSizeGetPpdNameFunction *gi.Function
 var paperSizeGetPpdNameFunction_Once sync.Once
 
-func paperSizeGetPpdNameFunction_Set() {
+func paperSizeGetPpdNameFunction_Set() error {
+	var err error
 	paperSizeGetPpdNameFunction_Once.Do(func() {
-		paperSizeStruct_Set()
-		paperSizeGetPpdNameFunction = paperSizeStruct.InvokerNew("get_ppd_name")
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeGetPpdNameFunction, err = paperSizeStruct.InvokerNew("get_ppd_name")
 	})
+	return err
 }
 
 // GetPpdName is a representation of the C type gtk_paper_size_get_ppd_name.
@@ -6418,9 +6603,10 @@ func (recv *PaperSize) GetPpdName() string {
 
 	var ret gi.Argument
 
-	paperSizeGetPpdNameFunction_Set()
-
-	ret = paperSizeGetPpdNameFunction.Invoke(inArgs[:], nil)
+	err := paperSizeGetPpdNameFunction_Set()
+	if err == nil {
+		ret = paperSizeGetPpdNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -7278,11 +7464,16 @@ type RecentInfo struct {
 var recentInfoGetAddedFunction *gi.Function
 var recentInfoGetAddedFunction_Once sync.Once
 
-func recentInfoGetAddedFunction_Set() {
+func recentInfoGetAddedFunction_Set() error {
+	var err error
 	recentInfoGetAddedFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetAddedFunction = recentInfoStruct.InvokerNew("get_added")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetAddedFunction, err = recentInfoStruct.InvokerNew("get_added")
 	})
+	return err
 }
 
 // GetAdded is a representation of the C type gtk_recent_info_get_added.
@@ -7292,9 +7483,10 @@ func (recv *RecentInfo) GetAdded() int64 {
 
 	var ret gi.Argument
 
-	recentInfoGetAddedFunction_Set()
-
-	ret = recentInfoGetAddedFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetAddedFunction_Set()
+	if err == nil {
+		ret = recentInfoGetAddedFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int64()
 
@@ -7304,11 +7496,16 @@ func (recv *RecentInfo) GetAdded() int64 {
 var recentInfoGetAgeFunction *gi.Function
 var recentInfoGetAgeFunction_Once sync.Once
 
-func recentInfoGetAgeFunction_Set() {
+func recentInfoGetAgeFunction_Set() error {
+	var err error
 	recentInfoGetAgeFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetAgeFunction = recentInfoStruct.InvokerNew("get_age")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetAgeFunction, err = recentInfoStruct.InvokerNew("get_age")
 	})
+	return err
 }
 
 // GetAge is a representation of the C type gtk_recent_info_get_age.
@@ -7318,9 +7515,10 @@ func (recv *RecentInfo) GetAge() int32 {
 
 	var ret gi.Argument
 
-	recentInfoGetAgeFunction_Set()
-
-	ret = recentInfoGetAgeFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetAgeFunction_Set()
+	if err == nil {
+		ret = recentInfoGetAgeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -7334,11 +7532,16 @@ func (recv *RecentInfo) GetAge() int32 {
 var recentInfoGetDescriptionFunction *gi.Function
 var recentInfoGetDescriptionFunction_Once sync.Once
 
-func recentInfoGetDescriptionFunction_Set() {
+func recentInfoGetDescriptionFunction_Set() error {
+	var err error
 	recentInfoGetDescriptionFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetDescriptionFunction = recentInfoStruct.InvokerNew("get_description")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetDescriptionFunction, err = recentInfoStruct.InvokerNew("get_description")
 	})
+	return err
 }
 
 // GetDescription is a representation of the C type gtk_recent_info_get_description.
@@ -7348,9 +7551,10 @@ func (recv *RecentInfo) GetDescription() string {
 
 	var ret gi.Argument
 
-	recentInfoGetDescriptionFunction_Set()
-
-	ret = recentInfoGetDescriptionFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetDescriptionFunction_Set()
+	if err == nil {
+		ret = recentInfoGetDescriptionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -7360,11 +7564,16 @@ func (recv *RecentInfo) GetDescription() string {
 var recentInfoGetDisplayNameFunction *gi.Function
 var recentInfoGetDisplayNameFunction_Once sync.Once
 
-func recentInfoGetDisplayNameFunction_Set() {
+func recentInfoGetDisplayNameFunction_Set() error {
+	var err error
 	recentInfoGetDisplayNameFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetDisplayNameFunction = recentInfoStruct.InvokerNew("get_display_name")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetDisplayNameFunction, err = recentInfoStruct.InvokerNew("get_display_name")
 	})
+	return err
 }
 
 // GetDisplayName is a representation of the C type gtk_recent_info_get_display_name.
@@ -7374,9 +7583,10 @@ func (recv *RecentInfo) GetDisplayName() string {
 
 	var ret gi.Argument
 
-	recentInfoGetDisplayNameFunction_Set()
-
-	ret = recentInfoGetDisplayNameFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetDisplayNameFunction_Set()
+	if err == nil {
+		ret = recentInfoGetDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -7392,11 +7602,16 @@ func (recv *RecentInfo) GetDisplayName() string {
 var recentInfoGetMimeTypeFunction *gi.Function
 var recentInfoGetMimeTypeFunction_Once sync.Once
 
-func recentInfoGetMimeTypeFunction_Set() {
+func recentInfoGetMimeTypeFunction_Set() error {
+	var err error
 	recentInfoGetMimeTypeFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetMimeTypeFunction = recentInfoStruct.InvokerNew("get_mime_type")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetMimeTypeFunction, err = recentInfoStruct.InvokerNew("get_mime_type")
 	})
+	return err
 }
 
 // GetMimeType is a representation of the C type gtk_recent_info_get_mime_type.
@@ -7406,9 +7621,10 @@ func (recv *RecentInfo) GetMimeType() string {
 
 	var ret gi.Argument
 
-	recentInfoGetMimeTypeFunction_Set()
-
-	ret = recentInfoGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetMimeTypeFunction_Set()
+	if err == nil {
+		ret = recentInfoGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -7418,11 +7634,16 @@ func (recv *RecentInfo) GetMimeType() string {
 var recentInfoGetModifiedFunction *gi.Function
 var recentInfoGetModifiedFunction_Once sync.Once
 
-func recentInfoGetModifiedFunction_Set() {
+func recentInfoGetModifiedFunction_Set() error {
+	var err error
 	recentInfoGetModifiedFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetModifiedFunction = recentInfoStruct.InvokerNew("get_modified")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetModifiedFunction, err = recentInfoStruct.InvokerNew("get_modified")
 	})
+	return err
 }
 
 // GetModified is a representation of the C type gtk_recent_info_get_modified.
@@ -7432,9 +7653,10 @@ func (recv *RecentInfo) GetModified() int64 {
 
 	var ret gi.Argument
 
-	recentInfoGetModifiedFunction_Set()
-
-	ret = recentInfoGetModifiedFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetModifiedFunction_Set()
+	if err == nil {
+		ret = recentInfoGetModifiedFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int64()
 
@@ -7446,11 +7668,16 @@ func (recv *RecentInfo) GetModified() int64 {
 var recentInfoGetShortNameFunction *gi.Function
 var recentInfoGetShortNameFunction_Once sync.Once
 
-func recentInfoGetShortNameFunction_Set() {
+func recentInfoGetShortNameFunction_Set() error {
+	var err error
 	recentInfoGetShortNameFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetShortNameFunction = recentInfoStruct.InvokerNew("get_short_name")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetShortNameFunction, err = recentInfoStruct.InvokerNew("get_short_name")
 	})
+	return err
 }
 
 // GetShortName is a representation of the C type gtk_recent_info_get_short_name.
@@ -7460,9 +7687,10 @@ func (recv *RecentInfo) GetShortName() string {
 
 	var ret gi.Argument
 
-	recentInfoGetShortNameFunction_Set()
-
-	ret = recentInfoGetShortNameFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetShortNameFunction_Set()
+	if err == nil {
+		ret = recentInfoGetShortNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -7472,11 +7700,16 @@ func (recv *RecentInfo) GetShortName() string {
 var recentInfoGetUriFunction *gi.Function
 var recentInfoGetUriFunction_Once sync.Once
 
-func recentInfoGetUriFunction_Set() {
+func recentInfoGetUriFunction_Set() error {
+	var err error
 	recentInfoGetUriFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetUriFunction = recentInfoStruct.InvokerNew("get_uri")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetUriFunction, err = recentInfoStruct.InvokerNew("get_uri")
 	})
+	return err
 }
 
 // GetUri is a representation of the C type gtk_recent_info_get_uri.
@@ -7486,9 +7719,10 @@ func (recv *RecentInfo) GetUri() string {
 
 	var ret gi.Argument
 
-	recentInfoGetUriFunction_Set()
-
-	ret = recentInfoGetUriFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetUriFunction_Set()
+	if err == nil {
+		ret = recentInfoGetUriFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -7498,11 +7732,16 @@ func (recv *RecentInfo) GetUri() string {
 var recentInfoGetUriDisplayFunction *gi.Function
 var recentInfoGetUriDisplayFunction_Once sync.Once
 
-func recentInfoGetUriDisplayFunction_Set() {
+func recentInfoGetUriDisplayFunction_Set() error {
+	var err error
 	recentInfoGetUriDisplayFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetUriDisplayFunction = recentInfoStruct.InvokerNew("get_uri_display")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetUriDisplayFunction, err = recentInfoStruct.InvokerNew("get_uri_display")
 	})
+	return err
 }
 
 // GetUriDisplay is a representation of the C type gtk_recent_info_get_uri_display.
@@ -7512,9 +7751,10 @@ func (recv *RecentInfo) GetUriDisplay() string {
 
 	var ret gi.Argument
 
-	recentInfoGetUriDisplayFunction_Set()
-
-	ret = recentInfoGetUriDisplayFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetUriDisplayFunction_Set()
+	if err == nil {
+		ret = recentInfoGetUriDisplayFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -7524,11 +7764,16 @@ func (recv *RecentInfo) GetUriDisplay() string {
 var recentInfoGetVisitedFunction *gi.Function
 var recentInfoGetVisitedFunction_Once sync.Once
 
-func recentInfoGetVisitedFunction_Set() {
+func recentInfoGetVisitedFunction_Set() error {
+	var err error
 	recentInfoGetVisitedFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoGetVisitedFunction = recentInfoStruct.InvokerNew("get_visited")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetVisitedFunction, err = recentInfoStruct.InvokerNew("get_visited")
 	})
+	return err
 }
 
 // GetVisited is a representation of the C type gtk_recent_info_get_visited.
@@ -7538,9 +7783,10 @@ func (recv *RecentInfo) GetVisited() int64 {
 
 	var ret gi.Argument
 
-	recentInfoGetVisitedFunction_Set()
-
-	ret = recentInfoGetVisitedFunction.Invoke(inArgs[:], nil)
+	err := recentInfoGetVisitedFunction_Set()
+	if err == nil {
+		ret = recentInfoGetVisitedFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int64()
 
@@ -7556,11 +7802,16 @@ func (recv *RecentInfo) GetVisited() int64 {
 var recentInfoLastApplicationFunction *gi.Function
 var recentInfoLastApplicationFunction_Once sync.Once
 
-func recentInfoLastApplicationFunction_Set() {
+func recentInfoLastApplicationFunction_Set() error {
+	var err error
 	recentInfoLastApplicationFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoLastApplicationFunction = recentInfoStruct.InvokerNew("last_application")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoLastApplicationFunction, err = recentInfoStruct.InvokerNew("last_application")
 	})
+	return err
 }
 
 // LastApplication is a representation of the C type gtk_recent_info_last_application.
@@ -7570,9 +7821,10 @@ func (recv *RecentInfo) LastApplication() string {
 
 	var ret gi.Argument
 
-	recentInfoLastApplicationFunction_Set()
-
-	ret = recentInfoLastApplicationFunction.Invoke(inArgs[:], nil)
+	err := recentInfoLastApplicationFunction_Set()
+	if err == nil {
+		ret = recentInfoLastApplicationFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -7584,11 +7836,16 @@ func (recv *RecentInfo) LastApplication() string {
 var recentInfoRefFunction *gi.Function
 var recentInfoRefFunction_Once sync.Once
 
-func recentInfoRefFunction_Set() {
+func recentInfoRefFunction_Set() error {
+	var err error
 	recentInfoRefFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoRefFunction = recentInfoStruct.InvokerNew("ref")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoRefFunction, err = recentInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_recent_info_ref.
@@ -7598,9 +7855,10 @@ func (recv *RecentInfo) Ref() *RecentInfo {
 
 	var ret gi.Argument
 
-	recentInfoRefFunction_Set()
-
-	ret = recentInfoRefFunction.Invoke(inArgs[:], nil)
+	err := recentInfoRefFunction_Set()
+	if err == nil {
+		ret = recentInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &RecentInfo{native: ret.Pointer()}
 
@@ -7610,11 +7868,16 @@ func (recv *RecentInfo) Ref() *RecentInfo {
 var recentInfoUnrefFunction *gi.Function
 var recentInfoUnrefFunction_Once sync.Once
 
-func recentInfoUnrefFunction_Set() {
+func recentInfoUnrefFunction_Set() error {
+	var err error
 	recentInfoUnrefFunction_Once.Do(func() {
-		recentInfoStruct_Set()
-		recentInfoUnrefFunction = recentInfoStruct.InvokerNew("unref")
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoUnrefFunction, err = recentInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_recent_info_unref.
@@ -7622,9 +7885,10 @@ func (recv *RecentInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	recentInfoUnrefFunction_Set()
-
-	recentInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := recentInfoUnrefFunction_Set()
+	if err == nil {
+		recentInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -7732,11 +7996,16 @@ type Requisition struct {
 var requisitionNewFunction *gi.Function
 var requisitionNewFunction_Once sync.Once
 
-func requisitionNewFunction_Set() {
+func requisitionNewFunction_Set() error {
+	var err error
 	requisitionNewFunction_Once.Do(func() {
-		requisitionStruct_Set()
-		requisitionNewFunction = requisitionStruct.InvokerNew("new")
+		err = requisitionStruct_Set()
+		if err != nil {
+			return
+		}
+		requisitionNewFunction, err = requisitionStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // RequisitionNew is a representation of the C type gtk_requisition_new.
@@ -7744,9 +8013,10 @@ func RequisitionNew() *Requisition {
 
 	var ret gi.Argument
 
-	requisitionNewFunction_Set()
-
-	ret = requisitionNewFunction.Invoke(nil, nil)
+	err := requisitionNewFunction_Set()
+	if err == nil {
+		ret = requisitionNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &Requisition{native: ret.Pointer()}
 
@@ -7756,11 +8026,16 @@ func RequisitionNew() *Requisition {
 var requisitionCopyFunction *gi.Function
 var requisitionCopyFunction_Once sync.Once
 
-func requisitionCopyFunction_Set() {
+func requisitionCopyFunction_Set() error {
+	var err error
 	requisitionCopyFunction_Once.Do(func() {
-		requisitionStruct_Set()
-		requisitionCopyFunction = requisitionStruct.InvokerNew("copy")
+		err = requisitionStruct_Set()
+		if err != nil {
+			return
+		}
+		requisitionCopyFunction, err = requisitionStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_requisition_copy.
@@ -7770,9 +8045,10 @@ func (recv *Requisition) Copy() *Requisition {
 
 	var ret gi.Argument
 
-	requisitionCopyFunction_Set()
-
-	ret = requisitionCopyFunction.Invoke(inArgs[:], nil)
+	err := requisitionCopyFunction_Set()
+	if err == nil {
+		ret = requisitionCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Requisition{native: ret.Pointer()}
 
@@ -7782,11 +8058,16 @@ func (recv *Requisition) Copy() *Requisition {
 var requisitionFreeFunction *gi.Function
 var requisitionFreeFunction_Once sync.Once
 
-func requisitionFreeFunction_Set() {
+func requisitionFreeFunction_Set() error {
+	var err error
 	requisitionFreeFunction_Once.Do(func() {
-		requisitionStruct_Set()
-		requisitionFreeFunction = requisitionStruct.InvokerNew("free")
+		err = requisitionStruct_Set()
+		if err != nil {
+			return
+		}
+		requisitionFreeFunction, err = requisitionStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_requisition_free.
@@ -7794,9 +8075,10 @@ func (recv *Requisition) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	requisitionFreeFunction_Set()
-
-	requisitionFreeFunction.Invoke(inArgs[:], nil)
+	err := requisitionFreeFunction_Set()
+	if err == nil {
+		requisitionFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -8116,11 +8398,16 @@ type SelectionData struct {
 var selectionDataCopyFunction *gi.Function
 var selectionDataCopyFunction_Once sync.Once
 
-func selectionDataCopyFunction_Set() {
+func selectionDataCopyFunction_Set() error {
+	var err error
 	selectionDataCopyFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataCopyFunction = selectionDataStruct.InvokerNew("copy")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataCopyFunction, err = selectionDataStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_selection_data_copy.
@@ -8130,9 +8417,10 @@ func (recv *SelectionData) Copy() *SelectionData {
 
 	var ret gi.Argument
 
-	selectionDataCopyFunction_Set()
-
-	ret = selectionDataCopyFunction.Invoke(inArgs[:], nil)
+	err := selectionDataCopyFunction_Set()
+	if err == nil {
+		ret = selectionDataCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SelectionData{native: ret.Pointer()}
 
@@ -8142,11 +8430,16 @@ func (recv *SelectionData) Copy() *SelectionData {
 var selectionDataFreeFunction *gi.Function
 var selectionDataFreeFunction_Once sync.Once
 
-func selectionDataFreeFunction_Set() {
+func selectionDataFreeFunction_Set() error {
+	var err error
 	selectionDataFreeFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataFreeFunction = selectionDataStruct.InvokerNew("free")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataFreeFunction, err = selectionDataStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_selection_data_free.
@@ -8154,20 +8447,26 @@ func (recv *SelectionData) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	selectionDataFreeFunction_Set()
-
-	selectionDataFreeFunction.Invoke(inArgs[:], nil)
+	err := selectionDataFreeFunction_Set()
+	if err == nil {
+		selectionDataFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var selectionDataGetDataFunction *gi.Function
 var selectionDataGetDataFunction_Once sync.Once
 
-func selectionDataGetDataFunction_Set() {
+func selectionDataGetDataFunction_Set() error {
+	var err error
 	selectionDataGetDataFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataGetDataFunction = selectionDataStruct.InvokerNew("get_data")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetDataFunction, err = selectionDataStruct.InvokerNew("get_data")
 	})
+	return err
 }
 
 // GetData is a representation of the C type gtk_selection_data_get_data.
@@ -8175,9 +8474,10 @@ func (recv *SelectionData) GetData() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	selectionDataGetDataFunction_Set()
-
-	selectionDataGetDataFunction.Invoke(inArgs[:], nil)
+	err := selectionDataGetDataFunction_Set()
+	if err == nil {
+		selectionDataGetDataFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -8186,11 +8486,16 @@ func (recv *SelectionData) GetData() {
 var selectionDataGetDataWithLengthFunction *gi.Function
 var selectionDataGetDataWithLengthFunction_Once sync.Once
 
-func selectionDataGetDataWithLengthFunction_Set() {
+func selectionDataGetDataWithLengthFunction_Set() error {
+	var err error
 	selectionDataGetDataWithLengthFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataGetDataWithLengthFunction = selectionDataStruct.InvokerNew("get_data_with_length")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetDataWithLengthFunction, err = selectionDataStruct.InvokerNew("get_data_with_length")
 	})
+	return err
 }
 
 // GetDataWithLength is a representation of the C type gtk_selection_data_get_data_with_length.
@@ -8200,9 +8505,10 @@ func (recv *SelectionData) GetDataWithLength() int32 {
 
 	var outArgs [1]gi.Argument
 
-	selectionDataGetDataWithLengthFunction_Set()
-
-	selectionDataGetDataWithLengthFunction.Invoke(inArgs[:], outArgs[:])
+	err := selectionDataGetDataWithLengthFunction_Set()
+	if err == nil {
+		selectionDataGetDataWithLengthFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Int32()
 
@@ -8214,11 +8520,16 @@ func (recv *SelectionData) GetDataWithLength() int32 {
 var selectionDataGetFormatFunction *gi.Function
 var selectionDataGetFormatFunction_Once sync.Once
 
-func selectionDataGetFormatFunction_Set() {
+func selectionDataGetFormatFunction_Set() error {
+	var err error
 	selectionDataGetFormatFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataGetFormatFunction = selectionDataStruct.InvokerNew("get_format")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetFormatFunction, err = selectionDataStruct.InvokerNew("get_format")
 	})
+	return err
 }
 
 // GetFormat is a representation of the C type gtk_selection_data_get_format.
@@ -8228,9 +8539,10 @@ func (recv *SelectionData) GetFormat() int32 {
 
 	var ret gi.Argument
 
-	selectionDataGetFormatFunction_Set()
-
-	ret = selectionDataGetFormatFunction.Invoke(inArgs[:], nil)
+	err := selectionDataGetFormatFunction_Set()
+	if err == nil {
+		ret = selectionDataGetFormatFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -8240,11 +8552,16 @@ func (recv *SelectionData) GetFormat() int32 {
 var selectionDataGetLengthFunction *gi.Function
 var selectionDataGetLengthFunction_Once sync.Once
 
-func selectionDataGetLengthFunction_Set() {
+func selectionDataGetLengthFunction_Set() error {
+	var err error
 	selectionDataGetLengthFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataGetLengthFunction = selectionDataStruct.InvokerNew("get_length")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetLengthFunction, err = selectionDataStruct.InvokerNew("get_length")
 	})
+	return err
 }
 
 // GetLength is a representation of the C type gtk_selection_data_get_length.
@@ -8254,9 +8571,10 @@ func (recv *SelectionData) GetLength() int32 {
 
 	var ret gi.Argument
 
-	selectionDataGetLengthFunction_Set()
-
-	ret = selectionDataGetLengthFunction.Invoke(inArgs[:], nil)
+	err := selectionDataGetLengthFunction_Set()
+	if err == nil {
+		ret = selectionDataGetLengthFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -8274,11 +8592,16 @@ func (recv *SelectionData) GetLength() int32 {
 var selectionDataGetTextFunction *gi.Function
 var selectionDataGetTextFunction_Once sync.Once
 
-func selectionDataGetTextFunction_Set() {
+func selectionDataGetTextFunction_Set() error {
+	var err error
 	selectionDataGetTextFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataGetTextFunction = selectionDataStruct.InvokerNew("get_text")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetTextFunction, err = selectionDataStruct.InvokerNew("get_text")
 	})
+	return err
 }
 
 // GetText is a representation of the C type gtk_selection_data_get_text.
@@ -8288,9 +8611,10 @@ func (recv *SelectionData) GetText() string {
 
 	var ret gi.Argument
 
-	selectionDataGetTextFunction_Set()
-
-	ret = selectionDataGetTextFunction.Invoke(inArgs[:], nil)
+	err := selectionDataGetTextFunction_Set()
+	if err == nil {
+		ret = selectionDataGetTextFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -8300,11 +8624,16 @@ func (recv *SelectionData) GetText() string {
 var selectionDataGetUrisFunction *gi.Function
 var selectionDataGetUrisFunction_Once sync.Once
 
-func selectionDataGetUrisFunction_Set() {
+func selectionDataGetUrisFunction_Set() error {
+	var err error
 	selectionDataGetUrisFunction_Once.Do(func() {
-		selectionDataStruct_Set()
-		selectionDataGetUrisFunction = selectionDataStruct.InvokerNew("get_uris")
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetUrisFunction, err = selectionDataStruct.InvokerNew("get_uris")
 	})
+	return err
 }
 
 // GetUris is a representation of the C type gtk_selection_data_get_uris.
@@ -8312,9 +8641,10 @@ func (recv *SelectionData) GetUris() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	selectionDataGetUrisFunction_Set()
-
-	selectionDataGetUrisFunction.Invoke(inArgs[:], nil)
+	err := selectionDataGetUrisFunction_Set()
+	if err == nil {
+		selectionDataGetUrisFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -8984,11 +9314,16 @@ type StockItem struct {
 var stockItemCopyFunction *gi.Function
 var stockItemCopyFunction_Once sync.Once
 
-func stockItemCopyFunction_Set() {
+func stockItemCopyFunction_Set() error {
+	var err error
 	stockItemCopyFunction_Once.Do(func() {
-		stockItemStruct_Set()
-		stockItemCopyFunction = stockItemStruct.InvokerNew("copy")
+		err = stockItemStruct_Set()
+		if err != nil {
+			return
+		}
+		stockItemCopyFunction, err = stockItemStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_stock_item_copy.
@@ -8998,9 +9333,10 @@ func (recv *StockItem) Copy() *StockItem {
 
 	var ret gi.Argument
 
-	stockItemCopyFunction_Set()
-
-	ret = stockItemCopyFunction.Invoke(inArgs[:], nil)
+	err := stockItemCopyFunction_Set()
+	if err == nil {
+		ret = stockItemCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &StockItem{native: ret.Pointer()}
 
@@ -9010,11 +9346,16 @@ func (recv *StockItem) Copy() *StockItem {
 var stockItemFreeFunction *gi.Function
 var stockItemFreeFunction_Once sync.Once
 
-func stockItemFreeFunction_Set() {
+func stockItemFreeFunction_Set() error {
+	var err error
 	stockItemFreeFunction_Once.Do(func() {
-		stockItemStruct_Set()
-		stockItemFreeFunction = stockItemStruct.InvokerNew("free")
+		err = stockItemStruct_Set()
+		if err != nil {
+			return
+		}
+		stockItemFreeFunction, err = stockItemStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_stock_item_free.
@@ -9022,9 +9363,10 @@ func (recv *StockItem) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	stockItemFreeFunction_Set()
-
-	stockItemFreeFunction.Invoke(inArgs[:], nil)
+	err := stockItemFreeFunction_Set()
+	if err == nil {
+		stockItemFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -9263,11 +9605,16 @@ type SymbolicColor struct {
 var symbolicColorNewNameFunction *gi.Function
 var symbolicColorNewNameFunction_Once sync.Once
 
-func symbolicColorNewNameFunction_Set() {
+func symbolicColorNewNameFunction_Set() error {
+	var err error
 	symbolicColorNewNameFunction_Once.Do(func() {
-		symbolicColorStruct_Set()
-		symbolicColorNewNameFunction = symbolicColorStruct.InvokerNew("new_name")
+		err = symbolicColorStruct_Set()
+		if err != nil {
+			return
+		}
+		symbolicColorNewNameFunction, err = symbolicColorStruct.InvokerNew("new_name")
 	})
+	return err
 }
 
 // SymbolicColorNewName is a representation of the C type gtk_symbolic_color_new_name.
@@ -9277,9 +9624,10 @@ func SymbolicColorNewName(name string) *SymbolicColor {
 
 	var ret gi.Argument
 
-	symbolicColorNewNameFunction_Set()
-
-	ret = symbolicColorNewNameFunction.Invoke(inArgs[:], nil)
+	err := symbolicColorNewNameFunction_Set()
+	if err == nil {
+		ret = symbolicColorNewNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
@@ -9291,11 +9639,16 @@ func SymbolicColorNewName(name string) *SymbolicColor {
 var symbolicColorNewWin32Function *gi.Function
 var symbolicColorNewWin32Function_Once sync.Once
 
-func symbolicColorNewWin32Function_Set() {
+func symbolicColorNewWin32Function_Set() error {
+	var err error
 	symbolicColorNewWin32Function_Once.Do(func() {
-		symbolicColorStruct_Set()
-		symbolicColorNewWin32Function = symbolicColorStruct.InvokerNew("new_win32")
+		err = symbolicColorStruct_Set()
+		if err != nil {
+			return
+		}
+		symbolicColorNewWin32Function, err = symbolicColorStruct.InvokerNew("new_win32")
 	})
+	return err
 }
 
 // SymbolicColorNewWin32 is a representation of the C type gtk_symbolic_color_new_win32.
@@ -9306,9 +9659,10 @@ func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 
 	var ret gi.Argument
 
-	symbolicColorNewWin32Function_Set()
-
-	ret = symbolicColorNewWin32Function.Invoke(inArgs[:], nil)
+	err := symbolicColorNewWin32Function_Set()
+	if err == nil {
+		ret = symbolicColorNewWin32Function.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
@@ -9318,11 +9672,16 @@ func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 var symbolicColorRefFunction *gi.Function
 var symbolicColorRefFunction_Once sync.Once
 
-func symbolicColorRefFunction_Set() {
+func symbolicColorRefFunction_Set() error {
+	var err error
 	symbolicColorRefFunction_Once.Do(func() {
-		symbolicColorStruct_Set()
-		symbolicColorRefFunction = symbolicColorStruct.InvokerNew("ref")
+		err = symbolicColorStruct_Set()
+		if err != nil {
+			return
+		}
+		symbolicColorRefFunction, err = symbolicColorStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_symbolic_color_ref.
@@ -9332,9 +9691,10 @@ func (recv *SymbolicColor) Ref() *SymbolicColor {
 
 	var ret gi.Argument
 
-	symbolicColorRefFunction_Set()
-
-	ret = symbolicColorRefFunction.Invoke(inArgs[:], nil)
+	err := symbolicColorRefFunction_Set()
+	if err == nil {
+		ret = symbolicColorRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SymbolicColor{native: ret.Pointer()}
 
@@ -9346,11 +9706,16 @@ func (recv *SymbolicColor) Ref() *SymbolicColor {
 var symbolicColorToStringFunction *gi.Function
 var symbolicColorToStringFunction_Once sync.Once
 
-func symbolicColorToStringFunction_Set() {
+func symbolicColorToStringFunction_Set() error {
+	var err error
 	symbolicColorToStringFunction_Once.Do(func() {
-		symbolicColorStruct_Set()
-		symbolicColorToStringFunction = symbolicColorStruct.InvokerNew("to_string")
+		err = symbolicColorStruct_Set()
+		if err != nil {
+			return
+		}
+		symbolicColorToStringFunction, err = symbolicColorStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type gtk_symbolic_color_to_string.
@@ -9360,9 +9725,10 @@ func (recv *SymbolicColor) ToString() string {
 
 	var ret gi.Argument
 
-	symbolicColorToStringFunction_Set()
-
-	ret = symbolicColorToStringFunction.Invoke(inArgs[:], nil)
+	err := symbolicColorToStringFunction_Set()
+	if err == nil {
+		ret = symbolicColorToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -9372,11 +9738,16 @@ func (recv *SymbolicColor) ToString() string {
 var symbolicColorUnrefFunction *gi.Function
 var symbolicColorUnrefFunction_Once sync.Once
 
-func symbolicColorUnrefFunction_Set() {
+func symbolicColorUnrefFunction_Set() error {
+	var err error
 	symbolicColorUnrefFunction_Once.Do(func() {
-		symbolicColorStruct_Set()
-		symbolicColorUnrefFunction = symbolicColorStruct.InvokerNew("unref")
+		err = symbolicColorStruct_Set()
+		if err != nil {
+			return
+		}
+		symbolicColorUnrefFunction, err = symbolicColorStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_symbolic_color_unref.
@@ -9384,9 +9755,10 @@ func (recv *SymbolicColor) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	symbolicColorUnrefFunction_Set()
-
-	symbolicColorUnrefFunction.Invoke(inArgs[:], nil)
+	err := symbolicColorUnrefFunction_Set()
+	if err == nil {
+		symbolicColorUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -9497,11 +9869,16 @@ type TargetEntry struct {
 var targetEntryNewFunction *gi.Function
 var targetEntryNewFunction_Once sync.Once
 
-func targetEntryNewFunction_Set() {
+func targetEntryNewFunction_Set() error {
+	var err error
 	targetEntryNewFunction_Once.Do(func() {
-		targetEntryStruct_Set()
-		targetEntryNewFunction = targetEntryStruct.InvokerNew("new")
+		err = targetEntryStruct_Set()
+		if err != nil {
+			return
+		}
+		targetEntryNewFunction, err = targetEntryStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // TargetEntryNew is a representation of the C type gtk_target_entry_new.
@@ -9513,9 +9890,10 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 
 	var ret gi.Argument
 
-	targetEntryNewFunction_Set()
-
-	ret = targetEntryNewFunction.Invoke(inArgs[:], nil)
+	err := targetEntryNewFunction_Set()
+	if err == nil {
+		ret = targetEntryNewFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TargetEntry{native: ret.Pointer()}
 
@@ -9525,11 +9903,16 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 var targetEntryCopyFunction *gi.Function
 var targetEntryCopyFunction_Once sync.Once
 
-func targetEntryCopyFunction_Set() {
+func targetEntryCopyFunction_Set() error {
+	var err error
 	targetEntryCopyFunction_Once.Do(func() {
-		targetEntryStruct_Set()
-		targetEntryCopyFunction = targetEntryStruct.InvokerNew("copy")
+		err = targetEntryStruct_Set()
+		if err != nil {
+			return
+		}
+		targetEntryCopyFunction, err = targetEntryStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_target_entry_copy.
@@ -9539,9 +9922,10 @@ func (recv *TargetEntry) Copy() *TargetEntry {
 
 	var ret gi.Argument
 
-	targetEntryCopyFunction_Set()
-
-	ret = targetEntryCopyFunction.Invoke(inArgs[:], nil)
+	err := targetEntryCopyFunction_Set()
+	if err == nil {
+		ret = targetEntryCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TargetEntry{native: ret.Pointer()}
 
@@ -9551,11 +9935,16 @@ func (recv *TargetEntry) Copy() *TargetEntry {
 var targetEntryFreeFunction *gi.Function
 var targetEntryFreeFunction_Once sync.Once
 
-func targetEntryFreeFunction_Set() {
+func targetEntryFreeFunction_Set() error {
+	var err error
 	targetEntryFreeFunction_Once.Do(func() {
-		targetEntryStruct_Set()
-		targetEntryFreeFunction = targetEntryStruct.InvokerNew("free")
+		err = targetEntryStruct_Set()
+		if err != nil {
+			return
+		}
+		targetEntryFreeFunction, err = targetEntryStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_target_entry_free.
@@ -9563,9 +9952,10 @@ func (recv *TargetEntry) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	targetEntryFreeFunction_Set()
-
-	targetEntryFreeFunction.Invoke(inArgs[:], nil)
+	err := targetEntryFreeFunction_Set()
+	if err == nil {
+		targetEntryFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -9597,11 +9987,16 @@ type TargetList struct {
 var targetListAddTextTargetsFunction *gi.Function
 var targetListAddTextTargetsFunction_Once sync.Once
 
-func targetListAddTextTargetsFunction_Set() {
+func targetListAddTextTargetsFunction_Set() error {
+	var err error
 	targetListAddTextTargetsFunction_Once.Do(func() {
-		targetListStruct_Set()
-		targetListAddTextTargetsFunction = targetListStruct.InvokerNew("add_text_targets")
+		err = targetListStruct_Set()
+		if err != nil {
+			return
+		}
+		targetListAddTextTargetsFunction, err = targetListStruct.InvokerNew("add_text_targets")
 	})
+	return err
 }
 
 // AddTextTargets is a representation of the C type gtk_target_list_add_text_targets.
@@ -9610,20 +10005,26 @@ func (recv *TargetList) AddTextTargets(info uint32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(info)
 
-	targetListAddTextTargetsFunction_Set()
-
-	targetListAddTextTargetsFunction.Invoke(inArgs[:], nil)
+	err := targetListAddTextTargetsFunction_Set()
+	if err == nil {
+		targetListAddTextTargetsFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var targetListAddUriTargetsFunction *gi.Function
 var targetListAddUriTargetsFunction_Once sync.Once
 
-func targetListAddUriTargetsFunction_Set() {
+func targetListAddUriTargetsFunction_Set() error {
+	var err error
 	targetListAddUriTargetsFunction_Once.Do(func() {
-		targetListStruct_Set()
-		targetListAddUriTargetsFunction = targetListStruct.InvokerNew("add_uri_targets")
+		err = targetListStruct_Set()
+		if err != nil {
+			return
+		}
+		targetListAddUriTargetsFunction, err = targetListStruct.InvokerNew("add_uri_targets")
 	})
+	return err
 }
 
 // AddUriTargets is a representation of the C type gtk_target_list_add_uri_targets.
@@ -9632,9 +10033,10 @@ func (recv *TargetList) AddUriTargets(info uint32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint32(info)
 
-	targetListAddUriTargetsFunction_Set()
-
-	targetListAddUriTargetsFunction.Invoke(inArgs[:], nil)
+	err := targetListAddUriTargetsFunction_Set()
+	if err == nil {
+		targetListAddUriTargetsFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -9643,11 +10045,16 @@ func (recv *TargetList) AddUriTargets(info uint32) {
 var targetListRefFunction *gi.Function
 var targetListRefFunction_Once sync.Once
 
-func targetListRefFunction_Set() {
+func targetListRefFunction_Set() error {
+	var err error
 	targetListRefFunction_Once.Do(func() {
-		targetListStruct_Set()
-		targetListRefFunction = targetListStruct.InvokerNew("ref")
+		err = targetListStruct_Set()
+		if err != nil {
+			return
+		}
+		targetListRefFunction, err = targetListStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_target_list_ref.
@@ -9657,9 +10064,10 @@ func (recv *TargetList) Ref() *TargetList {
 
 	var ret gi.Argument
 
-	targetListRefFunction_Set()
-
-	ret = targetListRefFunction.Invoke(inArgs[:], nil)
+	err := targetListRefFunction_Set()
+	if err == nil {
+		ret = targetListRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TargetList{native: ret.Pointer()}
 
@@ -9671,11 +10079,16 @@ func (recv *TargetList) Ref() *TargetList {
 var targetListUnrefFunction *gi.Function
 var targetListUnrefFunction_Once sync.Once
 
-func targetListUnrefFunction_Set() {
+func targetListUnrefFunction_Set() error {
+	var err error
 	targetListUnrefFunction_Once.Do(func() {
-		targetListStruct_Set()
-		targetListUnrefFunction = targetListStruct.InvokerNew("unref")
+		err = targetListStruct_Set()
+		if err != nil {
+			return
+		}
+		targetListUnrefFunction, err = targetListStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_target_list_unref.
@@ -9683,9 +10096,10 @@ func (recv *TargetList) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	targetListUnrefFunction_Set()
-
-	targetListUnrefFunction.Invoke(inArgs[:], nil)
+	err := targetListUnrefFunction_Set()
+	if err == nil {
+		targetListUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -9802,11 +10216,16 @@ type TextAttributes struct {
 var textAttributesNewFunction *gi.Function
 var textAttributesNewFunction_Once sync.Once
 
-func textAttributesNewFunction_Set() {
+func textAttributesNewFunction_Set() error {
+	var err error
 	textAttributesNewFunction_Once.Do(func() {
-		textAttributesStruct_Set()
-		textAttributesNewFunction = textAttributesStruct.InvokerNew("new")
+		err = textAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		textAttributesNewFunction, err = textAttributesStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // TextAttributesNew is a representation of the C type gtk_text_attributes_new.
@@ -9814,9 +10233,10 @@ func TextAttributesNew() *TextAttributes {
 
 	var ret gi.Argument
 
-	textAttributesNewFunction_Set()
-
-	ret = textAttributesNewFunction.Invoke(nil, nil)
+	err := textAttributesNewFunction_Set()
+	if err == nil {
+		ret = textAttributesNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &TextAttributes{native: ret.Pointer()}
 
@@ -9826,11 +10246,16 @@ func TextAttributesNew() *TextAttributes {
 var textAttributesCopyFunction *gi.Function
 var textAttributesCopyFunction_Once sync.Once
 
-func textAttributesCopyFunction_Set() {
+func textAttributesCopyFunction_Set() error {
+	var err error
 	textAttributesCopyFunction_Once.Do(func() {
-		textAttributesStruct_Set()
-		textAttributesCopyFunction = textAttributesStruct.InvokerNew("copy")
+		err = textAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		textAttributesCopyFunction, err = textAttributesStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_text_attributes_copy.
@@ -9840,9 +10265,10 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 
 	var ret gi.Argument
 
-	textAttributesCopyFunction_Set()
-
-	ret = textAttributesCopyFunction.Invoke(inArgs[:], nil)
+	err := textAttributesCopyFunction_Set()
+	if err == nil {
+		ret = textAttributesCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TextAttributes{native: ret.Pointer()}
 
@@ -9854,11 +10280,16 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 var textAttributesRefFunction *gi.Function
 var textAttributesRefFunction_Once sync.Once
 
-func textAttributesRefFunction_Set() {
+func textAttributesRefFunction_Set() error {
+	var err error
 	textAttributesRefFunction_Once.Do(func() {
-		textAttributesStruct_Set()
-		textAttributesRefFunction = textAttributesStruct.InvokerNew("ref")
+		err = textAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		textAttributesRefFunction, err = textAttributesStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_text_attributes_ref.
@@ -9868,9 +10299,10 @@ func (recv *TextAttributes) Ref() *TextAttributes {
 
 	var ret gi.Argument
 
-	textAttributesRefFunction_Set()
-
-	ret = textAttributesRefFunction.Invoke(inArgs[:], nil)
+	err := textAttributesRefFunction_Set()
+	if err == nil {
+		ret = textAttributesRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TextAttributes{native: ret.Pointer()}
 
@@ -9880,11 +10312,16 @@ func (recv *TextAttributes) Ref() *TextAttributes {
 var textAttributesUnrefFunction *gi.Function
 var textAttributesUnrefFunction_Once sync.Once
 
-func textAttributesUnrefFunction_Set() {
+func textAttributesUnrefFunction_Set() error {
+	var err error
 	textAttributesUnrefFunction_Once.Do(func() {
-		textAttributesStruct_Set()
-		textAttributesUnrefFunction = textAttributesStruct.InvokerNew("unref")
+		err = textAttributesStruct_Set()
+		if err != nil {
+			return
+		}
+		textAttributesUnrefFunction, err = textAttributesStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_text_attributes_unref.
@@ -9892,9 +10329,10 @@ func (recv *TextAttributes) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	textAttributesUnrefFunction_Set()
-
-	textAttributesUnrefFunction.Invoke(inArgs[:], nil)
+	err := textAttributesUnrefFunction_Set()
+	if err == nil {
+		textAttributesUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -10076,11 +10514,16 @@ type TextIter struct {
 var textIterCopyFunction *gi.Function
 var textIterCopyFunction_Once sync.Once
 
-func textIterCopyFunction_Set() {
+func textIterCopyFunction_Set() error {
+	var err error
 	textIterCopyFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterCopyFunction = textIterStruct.InvokerNew("copy")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterCopyFunction, err = textIterStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_text_iter_copy.
@@ -10090,9 +10533,10 @@ func (recv *TextIter) Copy() *TextIter {
 
 	var ret gi.Argument
 
-	textIterCopyFunction_Set()
-
-	ret = textIterCopyFunction.Invoke(inArgs[:], nil)
+	err := textIterCopyFunction_Set()
+	if err == nil {
+		ret = textIterCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TextIter{native: ret.Pointer()}
 
@@ -10134,11 +10578,16 @@ func (recv *TextIter) Copy() *TextIter {
 var textIterForwardToEndFunction *gi.Function
 var textIterForwardToEndFunction_Once sync.Once
 
-func textIterForwardToEndFunction_Set() {
+func textIterForwardToEndFunction_Set() error {
+	var err error
 	textIterForwardToEndFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterForwardToEndFunction = textIterStruct.InvokerNew("forward_to_end")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardToEndFunction, err = textIterStruct.InvokerNew("forward_to_end")
 	})
+	return err
 }
 
 // ForwardToEnd is a representation of the C type gtk_text_iter_forward_to_end.
@@ -10146,9 +10595,10 @@ func (recv *TextIter) ForwardToEnd() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	textIterForwardToEndFunction_Set()
-
-	textIterForwardToEndFunction.Invoke(inArgs[:], nil)
+	err := textIterForwardToEndFunction_Set()
+	if err == nil {
+		textIterForwardToEndFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -10175,11 +10625,16 @@ func (recv *TextIter) ForwardToEnd() {
 var textIterFreeFunction *gi.Function
 var textIterFreeFunction_Once sync.Once
 
-func textIterFreeFunction_Set() {
+func textIterFreeFunction_Set() error {
+	var err error
 	textIterFreeFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterFreeFunction = textIterStruct.InvokerNew("free")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterFreeFunction, err = textIterStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_text_iter_free.
@@ -10187,9 +10642,10 @@ func (recv *TextIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	textIterFreeFunction_Set()
-
-	textIterFreeFunction.Invoke(inArgs[:], nil)
+	err := textIterFreeFunction_Set()
+	if err == nil {
+		textIterFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -10200,11 +10656,16 @@ func (recv *TextIter) Free() {
 var textIterGetBytesInLineFunction *gi.Function
 var textIterGetBytesInLineFunction_Once sync.Once
 
-func textIterGetBytesInLineFunction_Set() {
+func textIterGetBytesInLineFunction_Set() error {
+	var err error
 	textIterGetBytesInLineFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetBytesInLineFunction = textIterStruct.InvokerNew("get_bytes_in_line")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetBytesInLineFunction, err = textIterStruct.InvokerNew("get_bytes_in_line")
 	})
+	return err
 }
 
 // GetBytesInLine is a representation of the C type gtk_text_iter_get_bytes_in_line.
@@ -10214,9 +10675,10 @@ func (recv *TextIter) GetBytesInLine() int32 {
 
 	var ret gi.Argument
 
-	textIterGetBytesInLineFunction_Set()
-
-	ret = textIterGetBytesInLineFunction.Invoke(inArgs[:], nil)
+	err := textIterGetBytesInLineFunction_Set()
+	if err == nil {
+		ret = textIterGetBytesInLineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10228,11 +10690,16 @@ func (recv *TextIter) GetBytesInLine() int32 {
 var textIterGetCharsInLineFunction *gi.Function
 var textIterGetCharsInLineFunction_Once sync.Once
 
-func textIterGetCharsInLineFunction_Set() {
+func textIterGetCharsInLineFunction_Set() error {
+	var err error
 	textIterGetCharsInLineFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetCharsInLineFunction = textIterStruct.InvokerNew("get_chars_in_line")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetCharsInLineFunction, err = textIterStruct.InvokerNew("get_chars_in_line")
 	})
+	return err
 }
 
 // GetCharsInLine is a representation of the C type gtk_text_iter_get_chars_in_line.
@@ -10242,9 +10709,10 @@ func (recv *TextIter) GetCharsInLine() int32 {
 
 	var ret gi.Argument
 
-	textIterGetCharsInLineFunction_Set()
-
-	ret = textIterGetCharsInLineFunction.Invoke(inArgs[:], nil)
+	err := textIterGetCharsInLineFunction_Set()
+	if err == nil {
+		ret = textIterGetCharsInLineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10258,11 +10726,16 @@ func (recv *TextIter) GetCharsInLine() int32 {
 var textIterGetLineFunction *gi.Function
 var textIterGetLineFunction_Once sync.Once
 
-func textIterGetLineFunction_Set() {
+func textIterGetLineFunction_Set() error {
+	var err error
 	textIterGetLineFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetLineFunction = textIterStruct.InvokerNew("get_line")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetLineFunction, err = textIterStruct.InvokerNew("get_line")
 	})
+	return err
 }
 
 // GetLine is a representation of the C type gtk_text_iter_get_line.
@@ -10272,9 +10745,10 @@ func (recv *TextIter) GetLine() int32 {
 
 	var ret gi.Argument
 
-	textIterGetLineFunction_Set()
-
-	ret = textIterGetLineFunction.Invoke(inArgs[:], nil)
+	err := textIterGetLineFunction_Set()
+	if err == nil {
+		ret = textIterGetLineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10284,11 +10758,16 @@ func (recv *TextIter) GetLine() int32 {
 var textIterGetLineIndexFunction *gi.Function
 var textIterGetLineIndexFunction_Once sync.Once
 
-func textIterGetLineIndexFunction_Set() {
+func textIterGetLineIndexFunction_Set() error {
+	var err error
 	textIterGetLineIndexFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetLineIndexFunction = textIterStruct.InvokerNew("get_line_index")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetLineIndexFunction, err = textIterStruct.InvokerNew("get_line_index")
 	})
+	return err
 }
 
 // GetLineIndex is a representation of the C type gtk_text_iter_get_line_index.
@@ -10298,9 +10777,10 @@ func (recv *TextIter) GetLineIndex() int32 {
 
 	var ret gi.Argument
 
-	textIterGetLineIndexFunction_Set()
-
-	ret = textIterGetLineIndexFunction.Invoke(inArgs[:], nil)
+	err := textIterGetLineIndexFunction_Set()
+	if err == nil {
+		ret = textIterGetLineIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10310,11 +10790,16 @@ func (recv *TextIter) GetLineIndex() int32 {
 var textIterGetLineOffsetFunction *gi.Function
 var textIterGetLineOffsetFunction_Once sync.Once
 
-func textIterGetLineOffsetFunction_Set() {
+func textIterGetLineOffsetFunction_Set() error {
+	var err error
 	textIterGetLineOffsetFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetLineOffsetFunction = textIterStruct.InvokerNew("get_line_offset")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetLineOffsetFunction, err = textIterStruct.InvokerNew("get_line_offset")
 	})
+	return err
 }
 
 // GetLineOffset is a representation of the C type gtk_text_iter_get_line_offset.
@@ -10324,9 +10809,10 @@ func (recv *TextIter) GetLineOffset() int32 {
 
 	var ret gi.Argument
 
-	textIterGetLineOffsetFunction_Set()
-
-	ret = textIterGetLineOffsetFunction.Invoke(inArgs[:], nil)
+	err := textIterGetLineOffsetFunction_Set()
+	if err == nil {
+		ret = textIterGetLineOffsetFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10338,11 +10824,16 @@ func (recv *TextIter) GetLineOffset() int32 {
 var textIterGetOffsetFunction *gi.Function
 var textIterGetOffsetFunction_Once sync.Once
 
-func textIterGetOffsetFunction_Set() {
+func textIterGetOffsetFunction_Set() error {
+	var err error
 	textIterGetOffsetFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetOffsetFunction = textIterStruct.InvokerNew("get_offset")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetOffsetFunction, err = textIterStruct.InvokerNew("get_offset")
 	})
+	return err
 }
 
 // GetOffset is a representation of the C type gtk_text_iter_get_offset.
@@ -10352,9 +10843,10 @@ func (recv *TextIter) GetOffset() int32 {
 
 	var ret gi.Argument
 
-	textIterGetOffsetFunction_Set()
-
-	ret = textIterGetOffsetFunction.Invoke(inArgs[:], nil)
+	err := textIterGetOffsetFunction_Set()
+	if err == nil {
+		ret = textIterGetOffsetFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10374,11 +10866,16 @@ func (recv *TextIter) GetOffset() int32 {
 var textIterGetVisibleLineIndexFunction *gi.Function
 var textIterGetVisibleLineIndexFunction_Once sync.Once
 
-func textIterGetVisibleLineIndexFunction_Set() {
+func textIterGetVisibleLineIndexFunction_Set() error {
+	var err error
 	textIterGetVisibleLineIndexFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetVisibleLineIndexFunction = textIterStruct.InvokerNew("get_visible_line_index")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetVisibleLineIndexFunction, err = textIterStruct.InvokerNew("get_visible_line_index")
 	})
+	return err
 }
 
 // GetVisibleLineIndex is a representation of the C type gtk_text_iter_get_visible_line_index.
@@ -10388,9 +10885,10 @@ func (recv *TextIter) GetVisibleLineIndex() int32 {
 
 	var ret gi.Argument
 
-	textIterGetVisibleLineIndexFunction_Set()
-
-	ret = textIterGetVisibleLineIndexFunction.Invoke(inArgs[:], nil)
+	err := textIterGetVisibleLineIndexFunction_Set()
+	if err == nil {
+		ret = textIterGetVisibleLineIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10400,11 +10898,16 @@ func (recv *TextIter) GetVisibleLineIndex() int32 {
 var textIterGetVisibleLineOffsetFunction *gi.Function
 var textIterGetVisibleLineOffsetFunction_Once sync.Once
 
-func textIterGetVisibleLineOffsetFunction_Set() {
+func textIterGetVisibleLineOffsetFunction_Set() error {
+	var err error
 	textIterGetVisibleLineOffsetFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterGetVisibleLineOffsetFunction = textIterStruct.InvokerNew("get_visible_line_offset")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetVisibleLineOffsetFunction, err = textIterStruct.InvokerNew("get_visible_line_offset")
 	})
+	return err
 }
 
 // GetVisibleLineOffset is a representation of the C type gtk_text_iter_get_visible_line_offset.
@@ -10414,9 +10917,10 @@ func (recv *TextIter) GetVisibleLineOffset() int32 {
 
 	var ret gi.Argument
 
-	textIterGetVisibleLineOffsetFunction_Set()
-
-	ret = textIterGetVisibleLineOffsetFunction.Invoke(inArgs[:], nil)
+	err := textIterGetVisibleLineOffsetFunction_Set()
+	if err == nil {
+		ret = textIterGetVisibleLineOffsetFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -10446,11 +10950,16 @@ func (recv *TextIter) GetVisibleLineOffset() int32 {
 var textIterSetLineFunction *gi.Function
 var textIterSetLineFunction_Once sync.Once
 
-func textIterSetLineFunction_Set() {
+func textIterSetLineFunction_Set() error {
+	var err error
 	textIterSetLineFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterSetLineFunction = textIterStruct.InvokerNew("set_line")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterSetLineFunction, err = textIterStruct.InvokerNew("set_line")
 	})
+	return err
 }
 
 // SetLine is a representation of the C type gtk_text_iter_set_line.
@@ -10459,20 +10968,26 @@ func (recv *TextIter) SetLine(lineNumber int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(lineNumber)
 
-	textIterSetLineFunction_Set()
-
-	textIterSetLineFunction.Invoke(inArgs[:], nil)
+	err := textIterSetLineFunction_Set()
+	if err == nil {
+		textIterSetLineFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var textIterSetLineIndexFunction *gi.Function
 var textIterSetLineIndexFunction_Once sync.Once
 
-func textIterSetLineIndexFunction_Set() {
+func textIterSetLineIndexFunction_Set() error {
+	var err error
 	textIterSetLineIndexFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterSetLineIndexFunction = textIterStruct.InvokerNew("set_line_index")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterSetLineIndexFunction, err = textIterStruct.InvokerNew("set_line_index")
 	})
+	return err
 }
 
 // SetLineIndex is a representation of the C type gtk_text_iter_set_line_index.
@@ -10481,20 +10996,26 @@ func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(byteOnLine)
 
-	textIterSetLineIndexFunction_Set()
-
-	textIterSetLineIndexFunction.Invoke(inArgs[:], nil)
+	err := textIterSetLineIndexFunction_Set()
+	if err == nil {
+		textIterSetLineIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var textIterSetLineOffsetFunction *gi.Function
 var textIterSetLineOffsetFunction_Once sync.Once
 
-func textIterSetLineOffsetFunction_Set() {
+func textIterSetLineOffsetFunction_Set() error {
+	var err error
 	textIterSetLineOffsetFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterSetLineOffsetFunction = textIterStruct.InvokerNew("set_line_offset")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterSetLineOffsetFunction, err = textIterStruct.InvokerNew("set_line_offset")
 	})
+	return err
 }
 
 // SetLineOffset is a representation of the C type gtk_text_iter_set_line_offset.
@@ -10503,20 +11024,26 @@ func (recv *TextIter) SetLineOffset(charOnLine int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(charOnLine)
 
-	textIterSetLineOffsetFunction_Set()
-
-	textIterSetLineOffsetFunction.Invoke(inArgs[:], nil)
+	err := textIterSetLineOffsetFunction_Set()
+	if err == nil {
+		textIterSetLineOffsetFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var textIterSetOffsetFunction *gi.Function
 var textIterSetOffsetFunction_Once sync.Once
 
-func textIterSetOffsetFunction_Set() {
+func textIterSetOffsetFunction_Set() error {
+	var err error
 	textIterSetOffsetFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterSetOffsetFunction = textIterStruct.InvokerNew("set_offset")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterSetOffsetFunction, err = textIterStruct.InvokerNew("set_offset")
 	})
+	return err
 }
 
 // SetOffset is a representation of the C type gtk_text_iter_set_offset.
@@ -10525,20 +11052,26 @@ func (recv *TextIter) SetOffset(charOffset int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(charOffset)
 
-	textIterSetOffsetFunction_Set()
-
-	textIterSetOffsetFunction.Invoke(inArgs[:], nil)
+	err := textIterSetOffsetFunction_Set()
+	if err == nil {
+		textIterSetOffsetFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var textIterSetVisibleLineIndexFunction *gi.Function
 var textIterSetVisibleLineIndexFunction_Once sync.Once
 
-func textIterSetVisibleLineIndexFunction_Set() {
+func textIterSetVisibleLineIndexFunction_Set() error {
+	var err error
 	textIterSetVisibleLineIndexFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterSetVisibleLineIndexFunction = textIterStruct.InvokerNew("set_visible_line_index")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterSetVisibleLineIndexFunction, err = textIterStruct.InvokerNew("set_visible_line_index")
 	})
+	return err
 }
 
 // SetVisibleLineIndex is a representation of the C type gtk_text_iter_set_visible_line_index.
@@ -10547,20 +11080,26 @@ func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(byteOnLine)
 
-	textIterSetVisibleLineIndexFunction_Set()
-
-	textIterSetVisibleLineIndexFunction.Invoke(inArgs[:], nil)
+	err := textIterSetVisibleLineIndexFunction_Set()
+	if err == nil {
+		textIterSetVisibleLineIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var textIterSetVisibleLineOffsetFunction *gi.Function
 var textIterSetVisibleLineOffsetFunction_Once sync.Once
 
-func textIterSetVisibleLineOffsetFunction_Set() {
+func textIterSetVisibleLineOffsetFunction_Set() error {
+	var err error
 	textIterSetVisibleLineOffsetFunction_Once.Do(func() {
-		textIterStruct_Set()
-		textIterSetVisibleLineOffsetFunction = textIterStruct.InvokerNew("set_visible_line_offset")
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterSetVisibleLineOffsetFunction, err = textIterStruct.InvokerNew("set_visible_line_offset")
 	})
+	return err
 }
 
 // SetVisibleLineOffset is a representation of the C type gtk_text_iter_set_visible_line_offset.
@@ -10569,9 +11108,10 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(charOnLine)
 
-	textIterSetVisibleLineOffsetFunction_Set()
-
-	textIterSetVisibleLineOffsetFunction.Invoke(inArgs[:], nil)
+	err := textIterSetVisibleLineOffsetFunction_Set()
+	if err == nil {
+		textIterSetVisibleLineOffsetFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -11277,11 +11817,16 @@ type TreeIter struct {
 var treeIterCopyFunction *gi.Function
 var treeIterCopyFunction_Once sync.Once
 
-func treeIterCopyFunction_Set() {
+func treeIterCopyFunction_Set() error {
+	var err error
 	treeIterCopyFunction_Once.Do(func() {
-		treeIterStruct_Set()
-		treeIterCopyFunction = treeIterStruct.InvokerNew("copy")
+		err = treeIterStruct_Set()
+		if err != nil {
+			return
+		}
+		treeIterCopyFunction, err = treeIterStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_tree_iter_copy.
@@ -11291,9 +11836,10 @@ func (recv *TreeIter) Copy() *TreeIter {
 
 	var ret gi.Argument
 
-	treeIterCopyFunction_Set()
-
-	ret = treeIterCopyFunction.Invoke(inArgs[:], nil)
+	err := treeIterCopyFunction_Set()
+	if err == nil {
+		ret = treeIterCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TreeIter{native: ret.Pointer()}
 
@@ -11303,11 +11849,16 @@ func (recv *TreeIter) Copy() *TreeIter {
 var treeIterFreeFunction *gi.Function
 var treeIterFreeFunction_Once sync.Once
 
-func treeIterFreeFunction_Set() {
+func treeIterFreeFunction_Set() error {
+	var err error
 	treeIterFreeFunction_Once.Do(func() {
-		treeIterStruct_Set()
-		treeIterFreeFunction = treeIterStruct.InvokerNew("free")
+		err = treeIterStruct_Set()
+		if err != nil {
+			return
+		}
+		treeIterFreeFunction, err = treeIterStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_tree_iter_free.
@@ -11315,9 +11866,10 @@ func (recv *TreeIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	treeIterFreeFunction_Set()
-
-	treeIterFreeFunction.Invoke(inArgs[:], nil)
+	err := treeIterFreeFunction_Set()
+	if err == nil {
+		treeIterFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -11446,11 +11998,16 @@ type TreePath struct {
 var treePathNewFunction *gi.Function
 var treePathNewFunction_Once sync.Once
 
-func treePathNewFunction_Set() {
+func treePathNewFunction_Set() error {
+	var err error
 	treePathNewFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathNewFunction = treePathStruct.InvokerNew("new")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathNewFunction, err = treePathStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // TreePathNew is a representation of the C type gtk_tree_path_new.
@@ -11458,9 +12015,10 @@ func TreePathNew() *TreePath {
 
 	var ret gi.Argument
 
-	treePathNewFunction_Set()
-
-	ret = treePathNewFunction.Invoke(nil, nil)
+	err := treePathNewFunction_Set()
+	if err == nil {
+		ret = treePathNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &TreePath{native: ret.Pointer()}
 
@@ -11470,11 +12028,16 @@ func TreePathNew() *TreePath {
 var treePathNewFirstFunction *gi.Function
 var treePathNewFirstFunction_Once sync.Once
 
-func treePathNewFirstFunction_Set() {
+func treePathNewFirstFunction_Set() error {
+	var err error
 	treePathNewFirstFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathNewFirstFunction = treePathStruct.InvokerNew("new_first")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathNewFirstFunction, err = treePathStruct.InvokerNew("new_first")
 	})
+	return err
 }
 
 // TreePathNewFirst is a representation of the C type gtk_tree_path_new_first.
@@ -11482,9 +12045,10 @@ func TreePathNewFirst() *TreePath {
 
 	var ret gi.Argument
 
-	treePathNewFirstFunction_Set()
-
-	ret = treePathNewFirstFunction.Invoke(nil, nil)
+	err := treePathNewFirstFunction_Set()
+	if err == nil {
+		ret = treePathNewFirstFunction.Invoke(nil, nil)
+	}
 
 	retGo := &TreePath{native: ret.Pointer()}
 
@@ -11498,11 +12062,16 @@ func TreePathNewFirst() *TreePath {
 var treePathNewFromStringFunction *gi.Function
 var treePathNewFromStringFunction_Once sync.Once
 
-func treePathNewFromStringFunction_Set() {
+func treePathNewFromStringFunction_Set() error {
+	var err error
 	treePathNewFromStringFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathNewFromStringFunction = treePathStruct.InvokerNew("new_from_string")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathNewFromStringFunction, err = treePathStruct.InvokerNew("new_from_string")
 	})
+	return err
 }
 
 // TreePathNewFromString is a representation of the C type gtk_tree_path_new_from_string.
@@ -11512,9 +12081,10 @@ func TreePathNewFromString(path string) *TreePath {
 
 	var ret gi.Argument
 
-	treePathNewFromStringFunction_Set()
-
-	ret = treePathNewFromStringFunction.Invoke(inArgs[:], nil)
+	err := treePathNewFromStringFunction_Set()
+	if err == nil {
+		ret = treePathNewFromStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TreePath{native: ret.Pointer()}
 
@@ -11524,11 +12094,16 @@ func TreePathNewFromString(path string) *TreePath {
 var treePathAppendIndexFunction *gi.Function
 var treePathAppendIndexFunction_Once sync.Once
 
-func treePathAppendIndexFunction_Set() {
+func treePathAppendIndexFunction_Set() error {
+	var err error
 	treePathAppendIndexFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathAppendIndexFunction = treePathStruct.InvokerNew("append_index")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathAppendIndexFunction, err = treePathStruct.InvokerNew("append_index")
 	})
+	return err
 }
 
 // AppendIndex is a representation of the C type gtk_tree_path_append_index.
@@ -11537,9 +12112,10 @@ func (recv *TreePath) AppendIndex(index int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(index)
 
-	treePathAppendIndexFunction_Set()
-
-	treePathAppendIndexFunction.Invoke(inArgs[:], nil)
+	err := treePathAppendIndexFunction_Set()
+	if err == nil {
+		treePathAppendIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -11548,11 +12124,16 @@ func (recv *TreePath) AppendIndex(index int32) {
 var treePathCopyFunction *gi.Function
 var treePathCopyFunction_Once sync.Once
 
-func treePathCopyFunction_Set() {
+func treePathCopyFunction_Set() error {
+	var err error
 	treePathCopyFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathCopyFunction = treePathStruct.InvokerNew("copy")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathCopyFunction, err = treePathStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_tree_path_copy.
@@ -11562,9 +12143,10 @@ func (recv *TreePath) Copy() *TreePath {
 
 	var ret gi.Argument
 
-	treePathCopyFunction_Set()
-
-	ret = treePathCopyFunction.Invoke(inArgs[:], nil)
+	err := treePathCopyFunction_Set()
+	if err == nil {
+		ret = treePathCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TreePath{native: ret.Pointer()}
 
@@ -11574,11 +12156,16 @@ func (recv *TreePath) Copy() *TreePath {
 var treePathDownFunction *gi.Function
 var treePathDownFunction_Once sync.Once
 
-func treePathDownFunction_Set() {
+func treePathDownFunction_Set() error {
+	var err error
 	treePathDownFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathDownFunction = treePathStruct.InvokerNew("down")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathDownFunction, err = treePathStruct.InvokerNew("down")
 	})
+	return err
 }
 
 // Down is a representation of the C type gtk_tree_path_down.
@@ -11586,20 +12173,26 @@ func (recv *TreePath) Down() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	treePathDownFunction_Set()
-
-	treePathDownFunction.Invoke(inArgs[:], nil)
+	err := treePathDownFunction_Set()
+	if err == nil {
+		treePathDownFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var treePathFreeFunction *gi.Function
 var treePathFreeFunction_Once sync.Once
 
-func treePathFreeFunction_Set() {
+func treePathFreeFunction_Set() error {
+	var err error
 	treePathFreeFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathFreeFunction = treePathStruct.InvokerNew("free")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathFreeFunction, err = treePathStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_tree_path_free.
@@ -11607,20 +12200,26 @@ func (recv *TreePath) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	treePathFreeFunction_Set()
-
-	treePathFreeFunction.Invoke(inArgs[:], nil)
+	err := treePathFreeFunction_Set()
+	if err == nil {
+		treePathFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var treePathGetDepthFunction *gi.Function
 var treePathGetDepthFunction_Once sync.Once
 
-func treePathGetDepthFunction_Set() {
+func treePathGetDepthFunction_Set() error {
+	var err error
 	treePathGetDepthFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathGetDepthFunction = treePathStruct.InvokerNew("get_depth")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathGetDepthFunction, err = treePathStruct.InvokerNew("get_depth")
 	})
+	return err
 }
 
 // GetDepth is a representation of the C type gtk_tree_path_get_depth.
@@ -11630,9 +12229,10 @@ func (recv *TreePath) GetDepth() int32 {
 
 	var ret gi.Argument
 
-	treePathGetDepthFunction_Set()
-
-	ret = treePathGetDepthFunction.Invoke(inArgs[:], nil)
+	err := treePathGetDepthFunction_Set()
+	if err == nil {
+		ret = treePathGetDepthFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -11642,11 +12242,16 @@ func (recv *TreePath) GetDepth() int32 {
 var treePathGetIndicesFunction *gi.Function
 var treePathGetIndicesFunction_Once sync.Once
 
-func treePathGetIndicesFunction_Set() {
+func treePathGetIndicesFunction_Set() error {
+	var err error
 	treePathGetIndicesFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathGetIndicesFunction = treePathStruct.InvokerNew("get_indices")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathGetIndicesFunction, err = treePathStruct.InvokerNew("get_indices")
 	})
+	return err
 }
 
 // GetIndices is a representation of the C type gtk_tree_path_get_indices.
@@ -11656,9 +12261,10 @@ func (recv *TreePath) GetIndices() int32 {
 
 	var ret gi.Argument
 
-	treePathGetIndicesFunction_Set()
-
-	ret = treePathGetIndicesFunction.Invoke(inArgs[:], nil)
+	err := treePathGetIndicesFunction_Set()
+	if err == nil {
+		ret = treePathGetIndicesFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -11668,11 +12274,16 @@ func (recv *TreePath) GetIndices() int32 {
 var treePathGetIndicesWithDepthFunction *gi.Function
 var treePathGetIndicesWithDepthFunction_Once sync.Once
 
-func treePathGetIndicesWithDepthFunction_Set() {
+func treePathGetIndicesWithDepthFunction_Set() error {
+	var err error
 	treePathGetIndicesWithDepthFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathGetIndicesWithDepthFunction = treePathStruct.InvokerNew("get_indices_with_depth")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathGetIndicesWithDepthFunction, err = treePathStruct.InvokerNew("get_indices_with_depth")
 	})
+	return err
 }
 
 // GetIndicesWithDepth is a representation of the C type gtk_tree_path_get_indices_with_depth.
@@ -11682,9 +12293,10 @@ func (recv *TreePath) GetIndicesWithDepth() int32 {
 
 	var outArgs [1]gi.Argument
 
-	treePathGetIndicesWithDepthFunction_Set()
-
-	treePathGetIndicesWithDepthFunction.Invoke(inArgs[:], outArgs[:])
+	err := treePathGetIndicesWithDepthFunction_Set()
+	if err == nil {
+		treePathGetIndicesWithDepthFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Int32()
 
@@ -11698,11 +12310,16 @@ func (recv *TreePath) GetIndicesWithDepth() int32 {
 var treePathNextFunction *gi.Function
 var treePathNextFunction_Once sync.Once
 
-func treePathNextFunction_Set() {
+func treePathNextFunction_Set() error {
+	var err error
 	treePathNextFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathNextFunction = treePathStruct.InvokerNew("next")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathNextFunction, err = treePathStruct.InvokerNew("next")
 	})
+	return err
 }
 
 // Next is a representation of the C type gtk_tree_path_next.
@@ -11710,20 +12327,26 @@ func (recv *TreePath) Next() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	treePathNextFunction_Set()
-
-	treePathNextFunction.Invoke(inArgs[:], nil)
+	err := treePathNextFunction_Set()
+	if err == nil {
+		treePathNextFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var treePathPrependIndexFunction *gi.Function
 var treePathPrependIndexFunction_Once sync.Once
 
-func treePathPrependIndexFunction_Set() {
+func treePathPrependIndexFunction_Set() error {
+	var err error
 	treePathPrependIndexFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathPrependIndexFunction = treePathStruct.InvokerNew("prepend_index")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathPrependIndexFunction, err = treePathStruct.InvokerNew("prepend_index")
 	})
+	return err
 }
 
 // PrependIndex is a representation of the C type gtk_tree_path_prepend_index.
@@ -11732,9 +12355,10 @@ func (recv *TreePath) PrependIndex(index int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(index)
 
-	treePathPrependIndexFunction_Set()
-
-	treePathPrependIndexFunction.Invoke(inArgs[:], nil)
+	err := treePathPrependIndexFunction_Set()
+	if err == nil {
+		treePathPrependIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -11743,11 +12367,16 @@ func (recv *TreePath) PrependIndex(index int32) {
 var treePathToStringFunction *gi.Function
 var treePathToStringFunction_Once sync.Once
 
-func treePathToStringFunction_Set() {
+func treePathToStringFunction_Set() error {
+	var err error
 	treePathToStringFunction_Once.Do(func() {
-		treePathStruct_Set()
-		treePathToStringFunction = treePathStruct.InvokerNew("to_string")
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathToStringFunction, err = treePathStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type gtk_tree_path_to_string.
@@ -11757,9 +12386,10 @@ func (recv *TreePath) ToString() string {
 
 	var ret gi.Argument
 
-	treePathToStringFunction_Set()
-
-	ret = treePathToStringFunction.Invoke(inArgs[:], nil)
+	err := treePathToStringFunction_Set()
+	if err == nil {
+		ret = treePathToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -11790,11 +12420,16 @@ type TreeRowReference struct {
 var treeRowReferenceCopyFunction *gi.Function
 var treeRowReferenceCopyFunction_Once sync.Once
 
-func treeRowReferenceCopyFunction_Set() {
+func treeRowReferenceCopyFunction_Set() error {
+	var err error
 	treeRowReferenceCopyFunction_Once.Do(func() {
-		treeRowReferenceStruct_Set()
-		treeRowReferenceCopyFunction = treeRowReferenceStruct.InvokerNew("copy")
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceCopyFunction, err = treeRowReferenceStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_tree_row_reference_copy.
@@ -11804,9 +12439,10 @@ func (recv *TreeRowReference) Copy() *TreeRowReference {
 
 	var ret gi.Argument
 
-	treeRowReferenceCopyFunction_Set()
-
-	ret = treeRowReferenceCopyFunction.Invoke(inArgs[:], nil)
+	err := treeRowReferenceCopyFunction_Set()
+	if err == nil {
+		ret = treeRowReferenceCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TreeRowReference{native: ret.Pointer()}
 
@@ -11816,11 +12452,16 @@ func (recv *TreeRowReference) Copy() *TreeRowReference {
 var treeRowReferenceFreeFunction *gi.Function
 var treeRowReferenceFreeFunction_Once sync.Once
 
-func treeRowReferenceFreeFunction_Set() {
+func treeRowReferenceFreeFunction_Set() error {
+	var err error
 	treeRowReferenceFreeFunction_Once.Do(func() {
-		treeRowReferenceStruct_Set()
-		treeRowReferenceFreeFunction = treeRowReferenceStruct.InvokerNew("free")
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceFreeFunction, err = treeRowReferenceStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_tree_row_reference_free.
@@ -11828,9 +12469,10 @@ func (recv *TreeRowReference) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	treeRowReferenceFreeFunction_Set()
-
-	treeRowReferenceFreeFunction.Invoke(inArgs[:], nil)
+	err := treeRowReferenceFreeFunction_Set()
+	if err == nil {
+		treeRowReferenceFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -11839,11 +12481,16 @@ func (recv *TreeRowReference) Free() {
 var treeRowReferenceGetPathFunction *gi.Function
 var treeRowReferenceGetPathFunction_Once sync.Once
 
-func treeRowReferenceGetPathFunction_Set() {
+func treeRowReferenceGetPathFunction_Set() error {
+	var err error
 	treeRowReferenceGetPathFunction_Once.Do(func() {
-		treeRowReferenceStruct_Set()
-		treeRowReferenceGetPathFunction = treeRowReferenceStruct.InvokerNew("get_path")
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceGetPathFunction, err = treeRowReferenceStruct.InvokerNew("get_path")
 	})
+	return err
 }
 
 // GetPath is a representation of the C type gtk_tree_row_reference_get_path.
@@ -11853,9 +12500,10 @@ func (recv *TreeRowReference) GetPath() *TreePath {
 
 	var ret gi.Argument
 
-	treeRowReferenceGetPathFunction_Set()
-
-	ret = treeRowReferenceGetPathFunction.Invoke(inArgs[:], nil)
+	err := treeRowReferenceGetPathFunction_Set()
+	if err == nil {
+		ret = treeRowReferenceGetPathFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TreePath{native: ret.Pointer()}
 
@@ -12413,11 +13061,16 @@ type WidgetClass struct {
 var widgetClassGetCssNameFunction *gi.Function
 var widgetClassGetCssNameFunction_Once sync.Once
 
-func widgetClassGetCssNameFunction_Set() {
+func widgetClassGetCssNameFunction_Set() error {
+	var err error
 	widgetClassGetCssNameFunction_Once.Do(func() {
-		widgetClassStruct_Set()
-		widgetClassGetCssNameFunction = widgetClassStruct.InvokerNew("get_css_name")
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassGetCssNameFunction, err = widgetClassStruct.InvokerNew("get_css_name")
 	})
+	return err
 }
 
 // GetCssName is a representation of the C type gtk_widget_class_get_css_name.
@@ -12427,9 +13080,10 @@ func (recv *WidgetClass) GetCssName() string {
 
 	var ret gi.Argument
 
-	widgetClassGetCssNameFunction_Set()
-
-	ret = widgetClassGetCssNameFunction.Invoke(inArgs[:], nil)
+	err := widgetClassGetCssNameFunction_Set()
+	if err == nil {
+		ret = widgetClassGetCssNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -12443,11 +13097,16 @@ func (recv *WidgetClass) GetCssName() string {
 var widgetClassListStylePropertiesFunction *gi.Function
 var widgetClassListStylePropertiesFunction_Once sync.Once
 
-func widgetClassListStylePropertiesFunction_Set() {
+func widgetClassListStylePropertiesFunction_Set() error {
+	var err error
 	widgetClassListStylePropertiesFunction_Once.Do(func() {
-		widgetClassStruct_Set()
-		widgetClassListStylePropertiesFunction = widgetClassStruct.InvokerNew("list_style_properties")
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassListStylePropertiesFunction, err = widgetClassStruct.InvokerNew("list_style_properties")
 	})
+	return err
 }
 
 // ListStyleProperties is a representation of the C type gtk_widget_class_list_style_properties.
@@ -12457,9 +13116,10 @@ func (recv *WidgetClass) ListStyleProperties() uint32 {
 
 	var outArgs [1]gi.Argument
 
-	widgetClassListStylePropertiesFunction_Set()
-
-	widgetClassListStylePropertiesFunction.Invoke(inArgs[:], outArgs[:])
+	err := widgetClassListStylePropertiesFunction_Set()
+	if err == nil {
+		widgetClassListStylePropertiesFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Uint32()
 
@@ -12475,11 +13135,16 @@ func (recv *WidgetClass) ListStyleProperties() uint32 {
 var widgetClassSetCssNameFunction *gi.Function
 var widgetClassSetCssNameFunction_Once sync.Once
 
-func widgetClassSetCssNameFunction_Set() {
+func widgetClassSetCssNameFunction_Set() error {
+	var err error
 	widgetClassSetCssNameFunction_Once.Do(func() {
-		widgetClassStruct_Set()
-		widgetClassSetCssNameFunction = widgetClassStruct.InvokerNew("set_css_name")
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassSetCssNameFunction, err = widgetClassStruct.InvokerNew("set_css_name")
 	})
+	return err
 }
 
 // SetCssName is a representation of the C type gtk_widget_class_set_css_name.
@@ -12488,9 +13153,10 @@ func (recv *WidgetClass) SetCssName(name string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
-	widgetClassSetCssNameFunction_Set()
-
-	widgetClassSetCssNameFunction.Invoke(inArgs[:], nil)
+	err := widgetClassSetCssNameFunction_Set()
+	if err == nil {
+		widgetClassSetCssNameFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -12499,11 +13165,16 @@ func (recv *WidgetClass) SetCssName(name string) {
 var widgetClassSetTemplateFromResourceFunction *gi.Function
 var widgetClassSetTemplateFromResourceFunction_Once sync.Once
 
-func widgetClassSetTemplateFromResourceFunction_Set() {
+func widgetClassSetTemplateFromResourceFunction_Set() error {
+	var err error
 	widgetClassSetTemplateFromResourceFunction_Once.Do(func() {
-		widgetClassStruct_Set()
-		widgetClassSetTemplateFromResourceFunction = widgetClassStruct.InvokerNew("set_template_from_resource")
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassSetTemplateFromResourceFunction, err = widgetClassStruct.InvokerNew("set_template_from_resource")
 	})
+	return err
 }
 
 // SetTemplateFromResource is a representation of the C type gtk_widget_class_set_template_from_resource.
@@ -12512,9 +13183,10 @@ func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(resourceName)
 
-	widgetClassSetTemplateFromResourceFunction_Set()
-
-	widgetClassSetTemplateFromResourceFunction.Invoke(inArgs[:], nil)
+	err := widgetClassSetTemplateFromResourceFunction_Set()
+	if err == nil {
+		widgetClassSetTemplateFromResourceFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -12551,11 +13223,16 @@ type WidgetPath struct {
 var widgetPathNewFunction *gi.Function
 var widgetPathNewFunction_Once sync.Once
 
-func widgetPathNewFunction_Set() {
+func widgetPathNewFunction_Set() error {
+	var err error
 	widgetPathNewFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathNewFunction = widgetPathStruct.InvokerNew("new")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathNewFunction, err = widgetPathStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // WidgetPathNew is a representation of the C type gtk_widget_path_new.
@@ -12563,9 +13240,10 @@ func WidgetPathNew() *WidgetPath {
 
 	var ret gi.Argument
 
-	widgetPathNewFunction_Set()
-
-	ret = widgetPathNewFunction.Invoke(nil, nil)
+	err := widgetPathNewFunction_Set()
+	if err == nil {
+		ret = widgetPathNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
@@ -12581,11 +13259,16 @@ func WidgetPathNew() *WidgetPath {
 var widgetPathCopyFunction *gi.Function
 var widgetPathCopyFunction_Once sync.Once
 
-func widgetPathCopyFunction_Set() {
+func widgetPathCopyFunction_Set() error {
+	var err error
 	widgetPathCopyFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathCopyFunction = widgetPathStruct.InvokerNew("copy")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathCopyFunction, err = widgetPathStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_widget_path_copy.
@@ -12595,9 +13278,10 @@ func (recv *WidgetPath) Copy() *WidgetPath {
 
 	var ret gi.Argument
 
-	widgetPathCopyFunction_Set()
-
-	ret = widgetPathCopyFunction.Invoke(inArgs[:], nil)
+	err := widgetPathCopyFunction_Set()
+	if err == nil {
+		ret = widgetPathCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
@@ -12607,11 +13291,16 @@ func (recv *WidgetPath) Copy() *WidgetPath {
 var widgetPathFreeFunction *gi.Function
 var widgetPathFreeFunction_Once sync.Once
 
-func widgetPathFreeFunction_Set() {
+func widgetPathFreeFunction_Set() error {
+	var err error
 	widgetPathFreeFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathFreeFunction = widgetPathStruct.InvokerNew("free")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathFreeFunction, err = widgetPathStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_widget_path_free.
@@ -12619,9 +13308,10 @@ func (recv *WidgetPath) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	widgetPathFreeFunction_Set()
-
-	widgetPathFreeFunction.Invoke(inArgs[:], nil)
+	err := widgetPathFreeFunction_Set()
+	if err == nil {
+		widgetPathFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -12634,11 +13324,16 @@ func (recv *WidgetPath) Free() {
 var widgetPathIterAddClassFunction *gi.Function
 var widgetPathIterAddClassFunction_Once sync.Once
 
-func widgetPathIterAddClassFunction_Set() {
+func widgetPathIterAddClassFunction_Set() error {
+	var err error
 	widgetPathIterAddClassFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterAddClassFunction = widgetPathStruct.InvokerNew("iter_add_class")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterAddClassFunction, err = widgetPathStruct.InvokerNew("iter_add_class")
 	})
+	return err
 }
 
 // IterAddClass is a representation of the C type gtk_widget_path_iter_add_class.
@@ -12648,9 +13343,10 @@ func (recv *WidgetPath) IterAddClass(pos int32, name string) {
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
-	widgetPathIterAddClassFunction_Set()
-
-	widgetPathIterAddClassFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterAddClassFunction_Set()
+	if err == nil {
+		widgetPathIterAddClassFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -12659,11 +13355,16 @@ func (recv *WidgetPath) IterAddClass(pos int32, name string) {
 var widgetPathIterClearClassesFunction *gi.Function
 var widgetPathIterClearClassesFunction_Once sync.Once
 
-func widgetPathIterClearClassesFunction_Set() {
+func widgetPathIterClearClassesFunction_Set() error {
+	var err error
 	widgetPathIterClearClassesFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterClearClassesFunction = widgetPathStruct.InvokerNew("iter_clear_classes")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterClearClassesFunction, err = widgetPathStruct.InvokerNew("iter_clear_classes")
 	})
+	return err
 }
 
 // IterClearClasses is a representation of the C type gtk_widget_path_iter_clear_classes.
@@ -12672,20 +13373,26 @@ func (recv *WidgetPath) IterClearClasses(pos int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 
-	widgetPathIterClearClassesFunction_Set()
-
-	widgetPathIterClearClassesFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterClearClassesFunction_Set()
+	if err == nil {
+		widgetPathIterClearClassesFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var widgetPathIterClearRegionsFunction *gi.Function
 var widgetPathIterClearRegionsFunction_Once sync.Once
 
-func widgetPathIterClearRegionsFunction_Set() {
+func widgetPathIterClearRegionsFunction_Set() error {
+	var err error
 	widgetPathIterClearRegionsFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterClearRegionsFunction = widgetPathStruct.InvokerNew("iter_clear_regions")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterClearRegionsFunction, err = widgetPathStruct.InvokerNew("iter_clear_regions")
 	})
+	return err
 }
 
 // IterClearRegions is a representation of the C type gtk_widget_path_iter_clear_regions.
@@ -12694,20 +13401,26 @@ func (recv *WidgetPath) IterClearRegions(pos int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(pos)
 
-	widgetPathIterClearRegionsFunction_Set()
-
-	widgetPathIterClearRegionsFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterClearRegionsFunction_Set()
+	if err == nil {
+		widgetPathIterClearRegionsFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var widgetPathIterGetNameFunction *gi.Function
 var widgetPathIterGetNameFunction_Once sync.Once
 
-func widgetPathIterGetNameFunction_Set() {
+func widgetPathIterGetNameFunction_Set() error {
+	var err error
 	widgetPathIterGetNameFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterGetNameFunction = widgetPathStruct.InvokerNew("iter_get_name")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterGetNameFunction, err = widgetPathStruct.InvokerNew("iter_get_name")
 	})
+	return err
 }
 
 // IterGetName is a representation of the C type gtk_widget_path_iter_get_name.
@@ -12718,9 +13431,10 @@ func (recv *WidgetPath) IterGetName(pos int32) string {
 
 	var ret gi.Argument
 
-	widgetPathIterGetNameFunction_Set()
-
-	ret = widgetPathIterGetNameFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterGetNameFunction_Set()
+	if err == nil {
+		ret = widgetPathIterGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -12730,11 +13444,16 @@ func (recv *WidgetPath) IterGetName(pos int32) string {
 var widgetPathIterGetObjectNameFunction *gi.Function
 var widgetPathIterGetObjectNameFunction_Once sync.Once
 
-func widgetPathIterGetObjectNameFunction_Set() {
+func widgetPathIterGetObjectNameFunction_Set() error {
+	var err error
 	widgetPathIterGetObjectNameFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterGetObjectNameFunction = widgetPathStruct.InvokerNew("iter_get_object_name")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterGetObjectNameFunction, err = widgetPathStruct.InvokerNew("iter_get_object_name")
 	})
+	return err
 }
 
 // IterGetObjectName is a representation of the C type gtk_widget_path_iter_get_object_name.
@@ -12745,9 +13464,10 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 
 	var ret gi.Argument
 
-	widgetPathIterGetObjectNameFunction_Set()
-
-	ret = widgetPathIterGetObjectNameFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterGetObjectNameFunction_Set()
+	if err == nil {
+		ret = widgetPathIterGetObjectNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -12759,11 +13479,16 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 var widgetPathIterGetSiblingIndexFunction *gi.Function
 var widgetPathIterGetSiblingIndexFunction_Once sync.Once
 
-func widgetPathIterGetSiblingIndexFunction_Set() {
+func widgetPathIterGetSiblingIndexFunction_Set() error {
+	var err error
 	widgetPathIterGetSiblingIndexFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterGetSiblingIndexFunction = widgetPathStruct.InvokerNew("iter_get_sibling_index")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterGetSiblingIndexFunction, err = widgetPathStruct.InvokerNew("iter_get_sibling_index")
 	})
+	return err
 }
 
 // IterGetSiblingIndex is a representation of the C type gtk_widget_path_iter_get_sibling_index.
@@ -12774,9 +13499,10 @@ func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 
 	var ret gi.Argument
 
-	widgetPathIterGetSiblingIndexFunction_Set()
-
-	ret = widgetPathIterGetSiblingIndexFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterGetSiblingIndexFunction_Set()
+	if err == nil {
+		ret = widgetPathIterGetSiblingIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -12786,11 +13512,16 @@ func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 var widgetPathIterGetSiblingsFunction *gi.Function
 var widgetPathIterGetSiblingsFunction_Once sync.Once
 
-func widgetPathIterGetSiblingsFunction_Set() {
+func widgetPathIterGetSiblingsFunction_Set() error {
+	var err error
 	widgetPathIterGetSiblingsFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterGetSiblingsFunction = widgetPathStruct.InvokerNew("iter_get_siblings")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterGetSiblingsFunction, err = widgetPathStruct.InvokerNew("iter_get_siblings")
 	})
+	return err
 }
 
 // IterGetSiblings is a representation of the C type gtk_widget_path_iter_get_siblings.
@@ -12801,9 +13532,10 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 
 	var ret gi.Argument
 
-	widgetPathIterGetSiblingsFunction_Set()
-
-	ret = widgetPathIterGetSiblingsFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterGetSiblingsFunction_Set()
+	if err == nil {
+		ret = widgetPathIterGetSiblingsFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
@@ -12831,11 +13563,16 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 var widgetPathIterRemoveClassFunction *gi.Function
 var widgetPathIterRemoveClassFunction_Once sync.Once
 
-func widgetPathIterRemoveClassFunction_Set() {
+func widgetPathIterRemoveClassFunction_Set() error {
+	var err error
 	widgetPathIterRemoveClassFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterRemoveClassFunction = widgetPathStruct.InvokerNew("iter_remove_class")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterRemoveClassFunction, err = widgetPathStruct.InvokerNew("iter_remove_class")
 	})
+	return err
 }
 
 // IterRemoveClass is a representation of the C type gtk_widget_path_iter_remove_class.
@@ -12845,20 +13582,26 @@ func (recv *WidgetPath) IterRemoveClass(pos int32, name string) {
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
-	widgetPathIterRemoveClassFunction_Set()
-
-	widgetPathIterRemoveClassFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterRemoveClassFunction_Set()
+	if err == nil {
+		widgetPathIterRemoveClassFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var widgetPathIterRemoveRegionFunction *gi.Function
 var widgetPathIterRemoveRegionFunction_Once sync.Once
 
-func widgetPathIterRemoveRegionFunction_Set() {
+func widgetPathIterRemoveRegionFunction_Set() error {
+	var err error
 	widgetPathIterRemoveRegionFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterRemoveRegionFunction = widgetPathStruct.InvokerNew("iter_remove_region")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterRemoveRegionFunction, err = widgetPathStruct.InvokerNew("iter_remove_region")
 	})
+	return err
 }
 
 // IterRemoveRegion is a representation of the C type gtk_widget_path_iter_remove_region.
@@ -12868,20 +13611,26 @@ func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) {
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
-	widgetPathIterRemoveRegionFunction_Set()
-
-	widgetPathIterRemoveRegionFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterRemoveRegionFunction_Set()
+	if err == nil {
+		widgetPathIterRemoveRegionFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var widgetPathIterSetNameFunction *gi.Function
 var widgetPathIterSetNameFunction_Once sync.Once
 
-func widgetPathIterSetNameFunction_Set() {
+func widgetPathIterSetNameFunction_Set() error {
+	var err error
 	widgetPathIterSetNameFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterSetNameFunction = widgetPathStruct.InvokerNew("iter_set_name")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterSetNameFunction, err = widgetPathStruct.InvokerNew("iter_set_name")
 	})
+	return err
 }
 
 // IterSetName is a representation of the C type gtk_widget_path_iter_set_name.
@@ -12891,20 +13640,26 @@ func (recv *WidgetPath) IterSetName(pos int32, name string) {
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
-	widgetPathIterSetNameFunction_Set()
-
-	widgetPathIterSetNameFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterSetNameFunction_Set()
+	if err == nil {
+		widgetPathIterSetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var widgetPathIterSetObjectNameFunction *gi.Function
 var widgetPathIterSetObjectNameFunction_Once sync.Once
 
-func widgetPathIterSetObjectNameFunction_Set() {
+func widgetPathIterSetObjectNameFunction_Set() error {
+	var err error
 	widgetPathIterSetObjectNameFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathIterSetObjectNameFunction = widgetPathStruct.InvokerNew("iter_set_object_name")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterSetObjectNameFunction, err = widgetPathStruct.InvokerNew("iter_set_object_name")
 	})
+	return err
 }
 
 // IterSetObjectName is a representation of the C type gtk_widget_path_iter_set_object_name.
@@ -12914,9 +13669,10 @@ func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
-	widgetPathIterSetObjectNameFunction_Set()
-
-	widgetPathIterSetObjectNameFunction.Invoke(inArgs[:], nil)
+	err := widgetPathIterSetObjectNameFunction_Set()
+	if err == nil {
+		widgetPathIterSetObjectNameFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -12927,11 +13683,16 @@ func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 var widgetPathLengthFunction *gi.Function
 var widgetPathLengthFunction_Once sync.Once
 
-func widgetPathLengthFunction_Set() {
+func widgetPathLengthFunction_Set() error {
+	var err error
 	widgetPathLengthFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathLengthFunction = widgetPathStruct.InvokerNew("length")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathLengthFunction, err = widgetPathStruct.InvokerNew("length")
 	})
+	return err
 }
 
 // Length is a representation of the C type gtk_widget_path_length.
@@ -12941,9 +13702,10 @@ func (recv *WidgetPath) Length() int32 {
 
 	var ret gi.Argument
 
-	widgetPathLengthFunction_Set()
-
-	ret = widgetPathLengthFunction.Invoke(inArgs[:], nil)
+	err := widgetPathLengthFunction_Set()
+	if err == nil {
+		ret = widgetPathLengthFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -12955,11 +13717,16 @@ func (recv *WidgetPath) Length() int32 {
 var widgetPathRefFunction *gi.Function
 var widgetPathRefFunction_Once sync.Once
 
-func widgetPathRefFunction_Set() {
+func widgetPathRefFunction_Set() error {
+	var err error
 	widgetPathRefFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathRefFunction = widgetPathStruct.InvokerNew("ref")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathRefFunction, err = widgetPathStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type gtk_widget_path_ref.
@@ -12969,9 +13736,10 @@ func (recv *WidgetPath) Ref() *WidgetPath {
 
 	var ret gi.Argument
 
-	widgetPathRefFunction_Set()
-
-	ret = widgetPathRefFunction.Invoke(inArgs[:], nil)
+	err := widgetPathRefFunction_Set()
+	if err == nil {
+		ret = widgetPathRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &WidgetPath{native: ret.Pointer()}
 
@@ -12981,11 +13749,16 @@ func (recv *WidgetPath) Ref() *WidgetPath {
 var widgetPathToStringFunction *gi.Function
 var widgetPathToStringFunction_Once sync.Once
 
-func widgetPathToStringFunction_Set() {
+func widgetPathToStringFunction_Set() error {
+	var err error
 	widgetPathToStringFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathToStringFunction = widgetPathStruct.InvokerNew("to_string")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathToStringFunction, err = widgetPathStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type gtk_widget_path_to_string.
@@ -12995,9 +13768,10 @@ func (recv *WidgetPath) ToString() string {
 
 	var ret gi.Argument
 
-	widgetPathToStringFunction_Set()
-
-	ret = widgetPathToStringFunction.Invoke(inArgs[:], nil)
+	err := widgetPathToStringFunction_Set()
+	if err == nil {
+		ret = widgetPathToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -13007,11 +13781,16 @@ func (recv *WidgetPath) ToString() string {
 var widgetPathUnrefFunction *gi.Function
 var widgetPathUnrefFunction_Once sync.Once
 
-func widgetPathUnrefFunction_Set() {
+func widgetPathUnrefFunction_Set() error {
+	var err error
 	widgetPathUnrefFunction_Once.Do(func() {
-		widgetPathStruct_Set()
-		widgetPathUnrefFunction = widgetPathStruct.InvokerNew("unref")
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathUnrefFunction, err = widgetPathStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type gtk_widget_path_unref.
@@ -13019,9 +13798,10 @@ func (recv *WidgetPath) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	widgetPathUnrefFunction_Set()
-
-	widgetPathUnrefFunction.Invoke(inArgs[:], nil)
+	err := widgetPathUnrefFunction_Set()
+	if err == nil {
+		widgetPathUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 

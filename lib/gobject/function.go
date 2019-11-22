@@ -214,10 +214,12 @@ import (
 var signalNameFunction *gi.Function
 var signalNameFunction_Once sync.Once
 
-func signalNameFunction_Set() {
+func signalNameFunction_Set() error {
+	var err error
 	signalNameFunction_Once.Do(func() {
-		signalNameFunction = gi.FunctionInvokerNew("GObject", "signal_name")
+		signalNameFunction, err = gi.FunctionInvokerNew("GObject", "signal_name")
 	})
+	return err
 }
 
 // SignalName is a representation of the C type g_signal_name.
@@ -227,9 +229,10 @@ func SignalName(signalId uint32) string {
 
 	var ret gi.Argument
 
-	signalNameFunction_Set()
-
-	ret = signalNameFunction.Invoke(inArgs[:], nil)
+	err := signalNameFunction_Set()
+	if err == nil {
+		ret = signalNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -255,10 +258,12 @@ func SignalName(signalId uint32) string {
 var signalRemoveEmissionHookFunction *gi.Function
 var signalRemoveEmissionHookFunction_Once sync.Once
 
-func signalRemoveEmissionHookFunction_Set() {
+func signalRemoveEmissionHookFunction_Set() error {
+	var err error
 	signalRemoveEmissionHookFunction_Once.Do(func() {
-		signalRemoveEmissionHookFunction = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
+		signalRemoveEmissionHookFunction, err = gi.FunctionInvokerNew("GObject", "signal_remove_emission_hook")
 	})
+	return err
 }
 
 // SignalRemoveEmissionHook is a representation of the C type g_signal_remove_emission_hook.
@@ -267,9 +272,10 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	inArgs[0].SetUint32(signalId)
 	inArgs[1].SetUint64(hookId)
 
-	signalRemoveEmissionHookFunction_Set()
-
-	signalRemoveEmissionHookFunction.Invoke(inArgs[:], nil)
+	err := signalRemoveEmissionHookFunction_Set()
+	if err == nil {
+		signalRemoveEmissionHookFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -356,10 +362,12 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 var typeGetTypeRegistrationSerialFunction *gi.Function
 var typeGetTypeRegistrationSerialFunction_Once sync.Once
 
-func typeGetTypeRegistrationSerialFunction_Set() {
+func typeGetTypeRegistrationSerialFunction_Set() error {
+	var err error
 	typeGetTypeRegistrationSerialFunction_Once.Do(func() {
-		typeGetTypeRegistrationSerialFunction = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
+		typeGetTypeRegistrationSerialFunction, err = gi.FunctionInvokerNew("GObject", "type_get_type_registration_serial")
 	})
+	return err
 }
 
 // TypeGetTypeRegistrationSerial is a representation of the C type g_type_get_type_registration_serial.
@@ -367,9 +375,10 @@ func TypeGetTypeRegistrationSerial() uint32 {
 
 	var ret gi.Argument
 
-	typeGetTypeRegistrationSerialFunction_Set()
-
-	ret = typeGetTypeRegistrationSerialFunction.Invoke(nil, nil)
+	err := typeGetTypeRegistrationSerialFunction_Set()
+	if err == nil {
+		ret = typeGetTypeRegistrationSerialFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -379,18 +388,21 @@ func TypeGetTypeRegistrationSerial() uint32 {
 var typeInitFunction *gi.Function
 var typeInitFunction_Once sync.Once
 
-func typeInitFunction_Set() {
+func typeInitFunction_Set() error {
+	var err error
 	typeInitFunction_Once.Do(func() {
-		typeInitFunction = gi.FunctionInvokerNew("GObject", "type_init")
+		typeInitFunction, err = gi.FunctionInvokerNew("GObject", "type_init")
 	})
+	return err
 }
 
 // TypeInit is a representation of the C type g_type_init.
 func TypeInit() {
 
-	typeInitFunction_Set()
-
-	typeInitFunction.Invoke(nil, nil)
+	err := typeInitFunction_Set()
+	if err == nil {
+		typeInitFunction.Invoke(nil, nil)
+	}
 
 }
 

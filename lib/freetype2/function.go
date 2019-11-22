@@ -10,17 +10,20 @@ import (
 var libraryVersionFunction *gi.Function
 var libraryVersionFunction_Once sync.Once
 
-func libraryVersionFunction_Set() {
+func libraryVersionFunction_Set() error {
+	var err error
 	libraryVersionFunction_Once.Do(func() {
-		libraryVersionFunction = gi.FunctionInvokerNew("freetype2", "library_version")
+		libraryVersionFunction, err = gi.FunctionInvokerNew("freetype2", "library_version")
 	})
+	return err
 }
 
 // LibraryVersion is a representation of the C type FT_Library_Version.
 func LibraryVersion() {
 
-	libraryVersionFunction_Set()
-
-	libraryVersionFunction.Invoke(nil, nil)
+	err := libraryVersionFunction_Set()
+	if err == nil {
+		libraryVersionFunction.Invoke(nil, nil)
+	}
 
 }

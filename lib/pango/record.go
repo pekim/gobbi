@@ -153,11 +153,16 @@ type AttrIterator struct {
 var attrIteratorCopyFunction *gi.Function
 var attrIteratorCopyFunction_Once sync.Once
 
-func attrIteratorCopyFunction_Set() {
+func attrIteratorCopyFunction_Set() error {
+	var err error
 	attrIteratorCopyFunction_Once.Do(func() {
-		attrIteratorStruct_Set()
-		attrIteratorCopyFunction = attrIteratorStruct.InvokerNew("copy")
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorCopyFunction, err = attrIteratorStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_attr_iterator_copy.
@@ -167,9 +172,10 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 
 	var ret gi.Argument
 
-	attrIteratorCopyFunction_Set()
-
-	ret = attrIteratorCopyFunction.Invoke(inArgs[:], nil)
+	err := attrIteratorCopyFunction_Set()
+	if err == nil {
+		ret = attrIteratorCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &AttrIterator{native: ret.Pointer()}
 
@@ -179,11 +185,16 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 var attrIteratorDestroyFunction *gi.Function
 var attrIteratorDestroyFunction_Once sync.Once
 
-func attrIteratorDestroyFunction_Set() {
+func attrIteratorDestroyFunction_Set() error {
+	var err error
 	attrIteratorDestroyFunction_Once.Do(func() {
-		attrIteratorStruct_Set()
-		attrIteratorDestroyFunction = attrIteratorStruct.InvokerNew("destroy")
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorDestroyFunction, err = attrIteratorStruct.InvokerNew("destroy")
 	})
+	return err
 }
 
 // Destroy is a representation of the C type pango_attr_iterator_destroy.
@@ -191,9 +202,10 @@ func (recv *AttrIterator) Destroy() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	attrIteratorDestroyFunction_Set()
-
-	attrIteratorDestroyFunction.Invoke(inArgs[:], nil)
+	err := attrIteratorDestroyFunction_Set()
+	if err == nil {
+		attrIteratorDestroyFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -208,11 +220,16 @@ func (recv *AttrIterator) Destroy() {
 var attrIteratorRangeFunction *gi.Function
 var attrIteratorRangeFunction_Once sync.Once
 
-func attrIteratorRangeFunction_Set() {
+func attrIteratorRangeFunction_Set() error {
+	var err error
 	attrIteratorRangeFunction_Once.Do(func() {
-		attrIteratorStruct_Set()
-		attrIteratorRangeFunction = attrIteratorStruct.InvokerNew("range")
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorRangeFunction, err = attrIteratorStruct.InvokerNew("range")
 	})
+	return err
 }
 
 // Range is a representation of the C type pango_attr_iterator_range.
@@ -222,9 +239,10 @@ func (recv *AttrIterator) Range() (int32, int32) {
 
 	var outArgs [2]gi.Argument
 
-	attrIteratorRangeFunction_Set()
-
-	attrIteratorRangeFunction.Invoke(inArgs[:], outArgs[:])
+	err := attrIteratorRangeFunction_Set()
+	if err == nil {
+		attrIteratorRangeFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
@@ -267,11 +285,16 @@ type AttrList struct {
 var attrListNewFunction *gi.Function
 var attrListNewFunction_Once sync.Once
 
-func attrListNewFunction_Set() {
+func attrListNewFunction_Set() error {
+	var err error
 	attrListNewFunction_Once.Do(func() {
-		attrListStruct_Set()
-		attrListNewFunction = attrListStruct.InvokerNew("new")
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListNewFunction, err = attrListStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // AttrListNew is a representation of the C type pango_attr_list_new.
@@ -279,9 +302,10 @@ func AttrListNew() *AttrList {
 
 	var ret gi.Argument
 
-	attrListNewFunction_Set()
-
-	ret = attrListNewFunction.Invoke(nil, nil)
+	err := attrListNewFunction_Set()
+	if err == nil {
+		ret = attrListNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &AttrList{native: ret.Pointer()}
 
@@ -293,11 +317,16 @@ func AttrListNew() *AttrList {
 var attrListCopyFunction *gi.Function
 var attrListCopyFunction_Once sync.Once
 
-func attrListCopyFunction_Set() {
+func attrListCopyFunction_Set() error {
+	var err error
 	attrListCopyFunction_Once.Do(func() {
-		attrListStruct_Set()
-		attrListCopyFunction = attrListStruct.InvokerNew("copy")
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListCopyFunction, err = attrListStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_attr_list_copy.
@@ -307,9 +336,10 @@ func (recv *AttrList) Copy() *AttrList {
 
 	var ret gi.Argument
 
-	attrListCopyFunction_Set()
-
-	ret = attrListCopyFunction.Invoke(inArgs[:], nil)
+	err := attrListCopyFunction_Set()
+	if err == nil {
+		ret = attrListCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &AttrList{native: ret.Pointer()}
 
@@ -321,11 +351,16 @@ func (recv *AttrList) Copy() *AttrList {
 var attrListGetIteratorFunction *gi.Function
 var attrListGetIteratorFunction_Once sync.Once
 
-func attrListGetIteratorFunction_Set() {
+func attrListGetIteratorFunction_Set() error {
+	var err error
 	attrListGetIteratorFunction_Once.Do(func() {
-		attrListStruct_Set()
-		attrListGetIteratorFunction = attrListStruct.InvokerNew("get_iterator")
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListGetIteratorFunction, err = attrListStruct.InvokerNew("get_iterator")
 	})
+	return err
 }
 
 // GetIterator is a representation of the C type pango_attr_list_get_iterator.
@@ -335,9 +370,10 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 
 	var ret gi.Argument
 
-	attrListGetIteratorFunction_Set()
-
-	ret = attrListGetIteratorFunction.Invoke(inArgs[:], nil)
+	err := attrListGetIteratorFunction_Set()
+	if err == nil {
+		ret = attrListGetIteratorFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &AttrIterator{native: ret.Pointer()}
 
@@ -351,11 +387,16 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 var attrListRefFunction *gi.Function
 var attrListRefFunction_Once sync.Once
 
-func attrListRefFunction_Set() {
+func attrListRefFunction_Set() error {
+	var err error
 	attrListRefFunction_Once.Do(func() {
-		attrListStruct_Set()
-		attrListRefFunction = attrListStruct.InvokerNew("ref")
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListRefFunction, err = attrListStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type pango_attr_list_ref.
@@ -365,9 +406,10 @@ func (recv *AttrList) Ref() *AttrList {
 
 	var ret gi.Argument
 
-	attrListRefFunction_Set()
-
-	ret = attrListRefFunction.Invoke(inArgs[:], nil)
+	err := attrListRefFunction_Set()
+	if err == nil {
+		ret = attrListRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &AttrList{native: ret.Pointer()}
 
@@ -379,11 +421,16 @@ func (recv *AttrList) Ref() *AttrList {
 var attrListUnrefFunction *gi.Function
 var attrListUnrefFunction_Once sync.Once
 
-func attrListUnrefFunction_Set() {
+func attrListUnrefFunction_Set() error {
+	var err error
 	attrListUnrefFunction_Once.Do(func() {
-		attrListStruct_Set()
-		attrListUnrefFunction = attrListStruct.InvokerNew("unref")
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListUnrefFunction, err = attrListStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type pango_attr_list_unref.
@@ -391,9 +438,10 @@ func (recv *AttrList) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	attrListUnrefFunction_Set()
-
-	attrListUnrefFunction.Invoke(inArgs[:], nil)
+	err := attrListUnrefFunction_Set()
+	if err == nil {
+		attrListUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -474,11 +522,16 @@ type Attribute struct {
 var attributeCopyFunction *gi.Function
 var attributeCopyFunction_Once sync.Once
 
-func attributeCopyFunction_Set() {
+func attributeCopyFunction_Set() error {
+	var err error
 	attributeCopyFunction_Once.Do(func() {
-		attributeStruct_Set()
-		attributeCopyFunction = attributeStruct.InvokerNew("copy")
+		err = attributeStruct_Set()
+		if err != nil {
+			return
+		}
+		attributeCopyFunction, err = attributeStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_attribute_copy.
@@ -488,9 +541,10 @@ func (recv *Attribute) Copy() *Attribute {
 
 	var ret gi.Argument
 
-	attributeCopyFunction_Set()
-
-	ret = attributeCopyFunction.Invoke(inArgs[:], nil)
+	err := attributeCopyFunction_Set()
+	if err == nil {
+		ret = attributeCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Attribute{native: ret.Pointer()}
 
@@ -500,11 +554,16 @@ func (recv *Attribute) Copy() *Attribute {
 var attributeDestroyFunction *gi.Function
 var attributeDestroyFunction_Once sync.Once
 
-func attributeDestroyFunction_Set() {
+func attributeDestroyFunction_Set() error {
+	var err error
 	attributeDestroyFunction_Once.Do(func() {
-		attributeStruct_Set()
-		attributeDestroyFunction = attributeStruct.InvokerNew("destroy")
+		err = attributeStruct_Set()
+		if err != nil {
+			return
+		}
+		attributeDestroyFunction, err = attributeStruct.InvokerNew("destroy")
 	})
+	return err
 }
 
 // Destroy is a representation of the C type pango_attribute_destroy.
@@ -512,9 +571,10 @@ func (recv *Attribute) Destroy() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	attributeDestroyFunction_Set()
-
-	attributeDestroyFunction.Invoke(inArgs[:], nil)
+	err := attributeDestroyFunction_Set()
+	if err == nil {
+		attributeDestroyFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -543,11 +603,16 @@ type Color struct {
 var colorCopyFunction *gi.Function
 var colorCopyFunction_Once sync.Once
 
-func colorCopyFunction_Set() {
+func colorCopyFunction_Set() error {
+	var err error
 	colorCopyFunction_Once.Do(func() {
-		colorStruct_Set()
-		colorCopyFunction = colorStruct.InvokerNew("copy")
+		err = colorStruct_Set()
+		if err != nil {
+			return
+		}
+		colorCopyFunction, err = colorStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_color_copy.
@@ -557,9 +622,10 @@ func (recv *Color) Copy() *Color {
 
 	var ret gi.Argument
 
-	colorCopyFunction_Set()
-
-	ret = colorCopyFunction.Invoke(inArgs[:], nil)
+	err := colorCopyFunction_Set()
+	if err == nil {
+		ret = colorCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Color{native: ret.Pointer()}
 
@@ -569,11 +635,16 @@ func (recv *Color) Copy() *Color {
 var colorFreeFunction *gi.Function
 var colorFreeFunction_Once sync.Once
 
-func colorFreeFunction_Set() {
+func colorFreeFunction_Set() error {
+	var err error
 	colorFreeFunction_Once.Do(func() {
-		colorStruct_Set()
-		colorFreeFunction = colorStruct.InvokerNew("free")
+		err = colorStruct_Set()
+		if err != nil {
+			return
+		}
+		colorFreeFunction, err = colorStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_color_free.
@@ -581,9 +652,10 @@ func (recv *Color) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	colorFreeFunction_Set()
-
-	colorFreeFunction.Invoke(inArgs[:], nil)
+	err := colorFreeFunction_Set()
+	if err == nil {
+		colorFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -592,11 +664,16 @@ func (recv *Color) Free() {
 var colorToStringFunction *gi.Function
 var colorToStringFunction_Once sync.Once
 
-func colorToStringFunction_Set() {
+func colorToStringFunction_Set() error {
+	var err error
 	colorToStringFunction_Once.Do(func() {
-		colorStruct_Set()
-		colorToStringFunction = colorStruct.InvokerNew("to_string")
+		err = colorStruct_Set()
+		if err != nil {
+			return
+		}
+		colorToStringFunction, err = colorStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type pango_color_to_string.
@@ -606,9 +683,10 @@ func (recv *Color) ToString() string {
 
 	var ret gi.Argument
 
-	colorToStringFunction_Set()
-
-	ret = colorToStringFunction.Invoke(inArgs[:], nil)
+	err := colorToStringFunction_Set()
+	if err == nil {
+		ret = colorToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -648,11 +726,16 @@ type Coverage struct {
 var coverageCopyFunction *gi.Function
 var coverageCopyFunction_Once sync.Once
 
-func coverageCopyFunction_Set() {
+func coverageCopyFunction_Set() error {
+	var err error
 	coverageCopyFunction_Once.Do(func() {
-		coverageStruct_Set()
-		coverageCopyFunction = coverageStruct.InvokerNew("copy")
+		err = coverageStruct_Set()
+		if err != nil {
+			return
+		}
+		coverageCopyFunction, err = coverageStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_coverage_copy.
@@ -662,9 +745,10 @@ func (recv *Coverage) Copy() *Coverage {
 
 	var ret gi.Argument
 
-	coverageCopyFunction_Set()
-
-	ret = coverageCopyFunction.Invoke(inArgs[:], nil)
+	err := coverageCopyFunction_Set()
+	if err == nil {
+		ret = coverageCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Coverage{native: ret.Pointer()}
 
@@ -678,11 +762,16 @@ func (recv *Coverage) Copy() *Coverage {
 var coverageRefFunction *gi.Function
 var coverageRefFunction_Once sync.Once
 
-func coverageRefFunction_Set() {
+func coverageRefFunction_Set() error {
+	var err error
 	coverageRefFunction_Once.Do(func() {
-		coverageStruct_Set()
-		coverageRefFunction = coverageStruct.InvokerNew("ref")
+		err = coverageStruct_Set()
+		if err != nil {
+			return
+		}
+		coverageRefFunction, err = coverageStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type pango_coverage_ref.
@@ -692,9 +781,10 @@ func (recv *Coverage) Ref() *Coverage {
 
 	var ret gi.Argument
 
-	coverageRefFunction_Set()
-
-	ret = coverageRefFunction.Invoke(inArgs[:], nil)
+	err := coverageRefFunction_Set()
+	if err == nil {
+		ret = coverageRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Coverage{native: ret.Pointer()}
 
@@ -708,11 +798,16 @@ func (recv *Coverage) Ref() *Coverage {
 var coverageUnrefFunction *gi.Function
 var coverageUnrefFunction_Once sync.Once
 
-func coverageUnrefFunction_Set() {
+func coverageUnrefFunction_Set() error {
+	var err error
 	coverageUnrefFunction_Once.Do(func() {
-		coverageStruct_Set()
-		coverageUnrefFunction = coverageStruct.InvokerNew("unref")
+		err = coverageStruct_Set()
+		if err != nil {
+			return
+		}
+		coverageUnrefFunction, err = coverageStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type pango_coverage_unref.
@@ -720,9 +815,10 @@ func (recv *Coverage) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	coverageUnrefFunction_Set()
-
-	coverageUnrefFunction.Invoke(inArgs[:], nil)
+	err := coverageUnrefFunction_Set()
+	if err == nil {
+		coverageUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -854,11 +950,16 @@ type FontDescription struct {
 var fontDescriptionNewFunction *gi.Function
 var fontDescriptionNewFunction_Once sync.Once
 
-func fontDescriptionNewFunction_Set() {
+func fontDescriptionNewFunction_Set() error {
+	var err error
 	fontDescriptionNewFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionNewFunction = fontDescriptionStruct.InvokerNew("new")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionNewFunction, err = fontDescriptionStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // FontDescriptionNew is a representation of the C type pango_font_description_new.
@@ -866,9 +967,10 @@ func FontDescriptionNew() *FontDescription {
 
 	var ret gi.Argument
 
-	fontDescriptionNewFunction_Set()
-
-	ret = fontDescriptionNewFunction.Invoke(nil, nil)
+	err := fontDescriptionNewFunction_Set()
+	if err == nil {
+		ret = fontDescriptionNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
@@ -880,11 +982,16 @@ func FontDescriptionNew() *FontDescription {
 var fontDescriptionCopyFunction *gi.Function
 var fontDescriptionCopyFunction_Once sync.Once
 
-func fontDescriptionCopyFunction_Set() {
+func fontDescriptionCopyFunction_Set() error {
+	var err error
 	fontDescriptionCopyFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionCopyFunction = fontDescriptionStruct.InvokerNew("copy")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionCopyFunction, err = fontDescriptionStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_font_description_copy.
@@ -894,9 +1001,10 @@ func (recv *FontDescription) Copy() *FontDescription {
 
 	var ret gi.Argument
 
-	fontDescriptionCopyFunction_Set()
-
-	ret = fontDescriptionCopyFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionCopyFunction_Set()
+	if err == nil {
+		ret = fontDescriptionCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
@@ -906,11 +1014,16 @@ func (recv *FontDescription) Copy() *FontDescription {
 var fontDescriptionCopyStaticFunction *gi.Function
 var fontDescriptionCopyStaticFunction_Once sync.Once
 
-func fontDescriptionCopyStaticFunction_Set() {
+func fontDescriptionCopyStaticFunction_Set() error {
+	var err error
 	fontDescriptionCopyStaticFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionCopyStaticFunction = fontDescriptionStruct.InvokerNew("copy_static")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionCopyStaticFunction, err = fontDescriptionStruct.InvokerNew("copy_static")
 	})
+	return err
 }
 
 // CopyStatic is a representation of the C type pango_font_description_copy_static.
@@ -920,9 +1033,10 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 
 	var ret gi.Argument
 
-	fontDescriptionCopyStaticFunction_Set()
-
-	ret = fontDescriptionCopyStaticFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionCopyStaticFunction_Set()
+	if err == nil {
+		ret = fontDescriptionCopyStaticFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FontDescription{native: ret.Pointer()}
 
@@ -934,11 +1048,16 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 var fontDescriptionFreeFunction *gi.Function
 var fontDescriptionFreeFunction_Once sync.Once
 
-func fontDescriptionFreeFunction_Set() {
+func fontDescriptionFreeFunction_Set() error {
+	var err error
 	fontDescriptionFreeFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionFreeFunction = fontDescriptionStruct.InvokerNew("free")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionFreeFunction, err = fontDescriptionStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_font_description_free.
@@ -946,20 +1065,26 @@ func (recv *FontDescription) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	fontDescriptionFreeFunction_Set()
-
-	fontDescriptionFreeFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionFreeFunction_Set()
+	if err == nil {
+		fontDescriptionFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var fontDescriptionGetFamilyFunction *gi.Function
 var fontDescriptionGetFamilyFunction_Once sync.Once
 
-func fontDescriptionGetFamilyFunction_Set() {
+func fontDescriptionGetFamilyFunction_Set() error {
+	var err error
 	fontDescriptionGetFamilyFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionGetFamilyFunction = fontDescriptionStruct.InvokerNew("get_family")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetFamilyFunction, err = fontDescriptionStruct.InvokerNew("get_family")
 	})
+	return err
 }
 
 // GetFamily is a representation of the C type pango_font_description_get_family.
@@ -969,9 +1094,10 @@ func (recv *FontDescription) GetFamily() string {
 
 	var ret gi.Argument
 
-	fontDescriptionGetFamilyFunction_Set()
-
-	ret = fontDescriptionGetFamilyFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionGetFamilyFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetFamilyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -985,11 +1111,16 @@ func (recv *FontDescription) GetFamily() string {
 var fontDescriptionGetSizeFunction *gi.Function
 var fontDescriptionGetSizeFunction_Once sync.Once
 
-func fontDescriptionGetSizeFunction_Set() {
+func fontDescriptionGetSizeFunction_Set() error {
+	var err error
 	fontDescriptionGetSizeFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionGetSizeFunction = fontDescriptionStruct.InvokerNew("get_size")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetSizeFunction, err = fontDescriptionStruct.InvokerNew("get_size")
 	})
+	return err
 }
 
 // GetSize is a representation of the C type pango_font_description_get_size.
@@ -999,9 +1130,10 @@ func (recv *FontDescription) GetSize() int32 {
 
 	var ret gi.Argument
 
-	fontDescriptionGetSizeFunction_Set()
-
-	ret = fontDescriptionGetSizeFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionGetSizeFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetSizeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1019,11 +1151,16 @@ func (recv *FontDescription) GetSize() int32 {
 var fontDescriptionGetVariationsFunction *gi.Function
 var fontDescriptionGetVariationsFunction_Once sync.Once
 
-func fontDescriptionGetVariationsFunction_Set() {
+func fontDescriptionGetVariationsFunction_Set() error {
+	var err error
 	fontDescriptionGetVariationsFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionGetVariationsFunction = fontDescriptionStruct.InvokerNew("get_variations")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetVariationsFunction, err = fontDescriptionStruct.InvokerNew("get_variations")
 	})
+	return err
 }
 
 // GetVariations is a representation of the C type pango_font_description_get_variations.
@@ -1033,9 +1170,10 @@ func (recv *FontDescription) GetVariations() string {
 
 	var ret gi.Argument
 
-	fontDescriptionGetVariationsFunction_Set()
-
-	ret = fontDescriptionGetVariationsFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionGetVariationsFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetVariationsFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -1047,11 +1185,16 @@ func (recv *FontDescription) GetVariations() string {
 var fontDescriptionHashFunction *gi.Function
 var fontDescriptionHashFunction_Once sync.Once
 
-func fontDescriptionHashFunction_Set() {
+func fontDescriptionHashFunction_Set() error {
+	var err error
 	fontDescriptionHashFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionHashFunction = fontDescriptionStruct.InvokerNew("hash")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionHashFunction, err = fontDescriptionStruct.InvokerNew("hash")
 	})
+	return err
 }
 
 // Hash is a representation of the C type pango_font_description_hash.
@@ -1061,9 +1204,10 @@ func (recv *FontDescription) Hash() uint32 {
 
 	var ret gi.Argument
 
-	fontDescriptionHashFunction_Set()
-
-	ret = fontDescriptionHashFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionHashFunction_Set()
+	if err == nil {
+		ret = fontDescriptionHashFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -1079,11 +1223,16 @@ func (recv *FontDescription) Hash() uint32 {
 var fontDescriptionSetFamilyFunction *gi.Function
 var fontDescriptionSetFamilyFunction_Once sync.Once
 
-func fontDescriptionSetFamilyFunction_Set() {
+func fontDescriptionSetFamilyFunction_Set() error {
+	var err error
 	fontDescriptionSetFamilyFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionSetFamilyFunction = fontDescriptionStruct.InvokerNew("set_family")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetFamilyFunction, err = fontDescriptionStruct.InvokerNew("set_family")
 	})
+	return err
 }
 
 // SetFamily is a representation of the C type pango_font_description_set_family.
@@ -1092,20 +1241,26 @@ func (recv *FontDescription) SetFamily(family string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(family)
 
-	fontDescriptionSetFamilyFunction_Set()
-
-	fontDescriptionSetFamilyFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionSetFamilyFunction_Set()
+	if err == nil {
+		fontDescriptionSetFamilyFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var fontDescriptionSetFamilyStaticFunction *gi.Function
 var fontDescriptionSetFamilyStaticFunction_Once sync.Once
 
-func fontDescriptionSetFamilyStaticFunction_Set() {
+func fontDescriptionSetFamilyStaticFunction_Set() error {
+	var err error
 	fontDescriptionSetFamilyStaticFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionSetFamilyStaticFunction = fontDescriptionStruct.InvokerNew("set_family_static")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetFamilyStaticFunction, err = fontDescriptionStruct.InvokerNew("set_family_static")
 	})
+	return err
 }
 
 // SetFamilyStatic is a representation of the C type pango_font_description_set_family_static.
@@ -1114,9 +1269,10 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(family)
 
-	fontDescriptionSetFamilyStaticFunction_Set()
-
-	fontDescriptionSetFamilyStaticFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionSetFamilyStaticFunction_Set()
+	if err == nil {
+		fontDescriptionSetFamilyStaticFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1125,11 +1281,16 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 var fontDescriptionSetSizeFunction *gi.Function
 var fontDescriptionSetSizeFunction_Once sync.Once
 
-func fontDescriptionSetSizeFunction_Set() {
+func fontDescriptionSetSizeFunction_Set() error {
+	var err error
 	fontDescriptionSetSizeFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionSetSizeFunction = fontDescriptionStruct.InvokerNew("set_size")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetSizeFunction, err = fontDescriptionStruct.InvokerNew("set_size")
 	})
+	return err
 }
 
 // SetSize is a representation of the C type pango_font_description_set_size.
@@ -1138,9 +1299,10 @@ func (recv *FontDescription) SetSize(size int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(size)
 
-	fontDescriptionSetSizeFunction_Set()
-
-	fontDescriptionSetSizeFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionSetSizeFunction_Set()
+	if err == nil {
+		fontDescriptionSetSizeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1153,11 +1315,16 @@ func (recv *FontDescription) SetSize(size int32) {
 var fontDescriptionSetVariationsFunction *gi.Function
 var fontDescriptionSetVariationsFunction_Once sync.Once
 
-func fontDescriptionSetVariationsFunction_Set() {
+func fontDescriptionSetVariationsFunction_Set() error {
+	var err error
 	fontDescriptionSetVariationsFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionSetVariationsFunction = fontDescriptionStruct.InvokerNew("set_variations")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetVariationsFunction, err = fontDescriptionStruct.InvokerNew("set_variations")
 	})
+	return err
 }
 
 // SetVariations is a representation of the C type pango_font_description_set_variations.
@@ -1166,20 +1333,26 @@ func (recv *FontDescription) SetVariations(settings string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(settings)
 
-	fontDescriptionSetVariationsFunction_Set()
-
-	fontDescriptionSetVariationsFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionSetVariationsFunction_Set()
+	if err == nil {
+		fontDescriptionSetVariationsFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var fontDescriptionSetVariationsStaticFunction *gi.Function
 var fontDescriptionSetVariationsStaticFunction_Once sync.Once
 
-func fontDescriptionSetVariationsStaticFunction_Set() {
+func fontDescriptionSetVariationsStaticFunction_Set() error {
+	var err error
 	fontDescriptionSetVariationsStaticFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionSetVariationsStaticFunction = fontDescriptionStruct.InvokerNew("set_variations_static")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetVariationsStaticFunction, err = fontDescriptionStruct.InvokerNew("set_variations_static")
 	})
+	return err
 }
 
 // SetVariationsStatic is a representation of the C type pango_font_description_set_variations_static.
@@ -1188,9 +1361,10 @@ func (recv *FontDescription) SetVariationsStatic(settings string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(settings)
 
-	fontDescriptionSetVariationsStaticFunction_Set()
-
-	fontDescriptionSetVariationsStaticFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionSetVariationsStaticFunction_Set()
+	if err == nil {
+		fontDescriptionSetVariationsStaticFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1199,11 +1373,16 @@ func (recv *FontDescription) SetVariationsStatic(settings string) {
 var fontDescriptionToFilenameFunction *gi.Function
 var fontDescriptionToFilenameFunction_Once sync.Once
 
-func fontDescriptionToFilenameFunction_Set() {
+func fontDescriptionToFilenameFunction_Set() error {
+	var err error
 	fontDescriptionToFilenameFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionToFilenameFunction = fontDescriptionStruct.InvokerNew("to_filename")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionToFilenameFunction, err = fontDescriptionStruct.InvokerNew("to_filename")
 	})
+	return err
 }
 
 // ToFilename is a representation of the C type pango_font_description_to_filename.
@@ -1213,9 +1392,10 @@ func (recv *FontDescription) ToFilename() string {
 
 	var ret gi.Argument
 
-	fontDescriptionToFilenameFunction_Set()
-
-	ret = fontDescriptionToFilenameFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionToFilenameFunction_Set()
+	if err == nil {
+		ret = fontDescriptionToFilenameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -1225,11 +1405,16 @@ func (recv *FontDescription) ToFilename() string {
 var fontDescriptionToStringFunction *gi.Function
 var fontDescriptionToStringFunction_Once sync.Once
 
-func fontDescriptionToStringFunction_Set() {
+func fontDescriptionToStringFunction_Set() error {
+	var err error
 	fontDescriptionToStringFunction_Once.Do(func() {
-		fontDescriptionStruct_Set()
-		fontDescriptionToStringFunction = fontDescriptionStruct.InvokerNew("to_string")
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionToStringFunction, err = fontDescriptionStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type pango_font_description_to_string.
@@ -1239,9 +1424,10 @@ func (recv *FontDescription) ToString() string {
 
 	var ret gi.Argument
 
-	fontDescriptionToStringFunction_Set()
-
-	ret = fontDescriptionToStringFunction.Invoke(inArgs[:], nil)
+	err := fontDescriptionToStringFunction_Set()
+	if err == nil {
+		ret = fontDescriptionToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -1336,11 +1522,16 @@ type FontMetrics struct {
 var fontMetricsNewFunction *gi.Function
 var fontMetricsNewFunction_Once sync.Once
 
-func fontMetricsNewFunction_Set() {
+func fontMetricsNewFunction_Set() error {
+	var err error
 	fontMetricsNewFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsNewFunction = fontMetricsStruct.InvokerNew("new")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsNewFunction, err = fontMetricsStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // FontMetricsNew is a representation of the C type pango_font_metrics_new.
@@ -1348,9 +1539,10 @@ func FontMetricsNew() *FontMetrics {
 
 	var ret gi.Argument
 
-	fontMetricsNewFunction_Set()
-
-	ret = fontMetricsNewFunction.Invoke(nil, nil)
+	err := fontMetricsNewFunction_Set()
+	if err == nil {
+		ret = fontMetricsNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &FontMetrics{native: ret.Pointer()}
 
@@ -1360,11 +1552,16 @@ func FontMetricsNew() *FontMetrics {
 var fontMetricsGetApproximateCharWidthFunction *gi.Function
 var fontMetricsGetApproximateCharWidthFunction_Once sync.Once
 
-func fontMetricsGetApproximateCharWidthFunction_Set() {
+func fontMetricsGetApproximateCharWidthFunction_Set() error {
+	var err error
 	fontMetricsGetApproximateCharWidthFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetApproximateCharWidthFunction = fontMetricsStruct.InvokerNew("get_approximate_char_width")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetApproximateCharWidthFunction, err = fontMetricsStruct.InvokerNew("get_approximate_char_width")
 	})
+	return err
 }
 
 // GetApproximateCharWidth is a representation of the C type pango_font_metrics_get_approximate_char_width.
@@ -1374,9 +1571,10 @@ func (recv *FontMetrics) GetApproximateCharWidth() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetApproximateCharWidthFunction_Set()
-
-	ret = fontMetricsGetApproximateCharWidthFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetApproximateCharWidthFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetApproximateCharWidthFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1386,11 +1584,16 @@ func (recv *FontMetrics) GetApproximateCharWidth() int32 {
 var fontMetricsGetApproximateDigitWidthFunction *gi.Function
 var fontMetricsGetApproximateDigitWidthFunction_Once sync.Once
 
-func fontMetricsGetApproximateDigitWidthFunction_Set() {
+func fontMetricsGetApproximateDigitWidthFunction_Set() error {
+	var err error
 	fontMetricsGetApproximateDigitWidthFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetApproximateDigitWidthFunction = fontMetricsStruct.InvokerNew("get_approximate_digit_width")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetApproximateDigitWidthFunction, err = fontMetricsStruct.InvokerNew("get_approximate_digit_width")
 	})
+	return err
 }
 
 // GetApproximateDigitWidth is a representation of the C type pango_font_metrics_get_approximate_digit_width.
@@ -1400,9 +1603,10 @@ func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetApproximateDigitWidthFunction_Set()
-
-	ret = fontMetricsGetApproximateDigitWidthFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetApproximateDigitWidthFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetApproximateDigitWidthFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1412,11 +1616,16 @@ func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
 var fontMetricsGetAscentFunction *gi.Function
 var fontMetricsGetAscentFunction_Once sync.Once
 
-func fontMetricsGetAscentFunction_Set() {
+func fontMetricsGetAscentFunction_Set() error {
+	var err error
 	fontMetricsGetAscentFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetAscentFunction = fontMetricsStruct.InvokerNew("get_ascent")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetAscentFunction, err = fontMetricsStruct.InvokerNew("get_ascent")
 	})
+	return err
 }
 
 // GetAscent is a representation of the C type pango_font_metrics_get_ascent.
@@ -1426,9 +1635,10 @@ func (recv *FontMetrics) GetAscent() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetAscentFunction_Set()
-
-	ret = fontMetricsGetAscentFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetAscentFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetAscentFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1438,11 +1648,16 @@ func (recv *FontMetrics) GetAscent() int32 {
 var fontMetricsGetDescentFunction *gi.Function
 var fontMetricsGetDescentFunction_Once sync.Once
 
-func fontMetricsGetDescentFunction_Set() {
+func fontMetricsGetDescentFunction_Set() error {
+	var err error
 	fontMetricsGetDescentFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetDescentFunction = fontMetricsStruct.InvokerNew("get_descent")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetDescentFunction, err = fontMetricsStruct.InvokerNew("get_descent")
 	})
+	return err
 }
 
 // GetDescent is a representation of the C type pango_font_metrics_get_descent.
@@ -1452,9 +1667,10 @@ func (recv *FontMetrics) GetDescent() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetDescentFunction_Set()
-
-	ret = fontMetricsGetDescentFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetDescentFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetDescentFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1464,11 +1680,16 @@ func (recv *FontMetrics) GetDescent() int32 {
 var fontMetricsGetStrikethroughPositionFunction *gi.Function
 var fontMetricsGetStrikethroughPositionFunction_Once sync.Once
 
-func fontMetricsGetStrikethroughPositionFunction_Set() {
+func fontMetricsGetStrikethroughPositionFunction_Set() error {
+	var err error
 	fontMetricsGetStrikethroughPositionFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetStrikethroughPositionFunction = fontMetricsStruct.InvokerNew("get_strikethrough_position")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetStrikethroughPositionFunction, err = fontMetricsStruct.InvokerNew("get_strikethrough_position")
 	})
+	return err
 }
 
 // GetStrikethroughPosition is a representation of the C type pango_font_metrics_get_strikethrough_position.
@@ -1478,9 +1699,10 @@ func (recv *FontMetrics) GetStrikethroughPosition() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetStrikethroughPositionFunction_Set()
-
-	ret = fontMetricsGetStrikethroughPositionFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetStrikethroughPositionFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetStrikethroughPositionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1490,11 +1712,16 @@ func (recv *FontMetrics) GetStrikethroughPosition() int32 {
 var fontMetricsGetStrikethroughThicknessFunction *gi.Function
 var fontMetricsGetStrikethroughThicknessFunction_Once sync.Once
 
-func fontMetricsGetStrikethroughThicknessFunction_Set() {
+func fontMetricsGetStrikethroughThicknessFunction_Set() error {
+	var err error
 	fontMetricsGetStrikethroughThicknessFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetStrikethroughThicknessFunction = fontMetricsStruct.InvokerNew("get_strikethrough_thickness")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetStrikethroughThicknessFunction, err = fontMetricsStruct.InvokerNew("get_strikethrough_thickness")
 	})
+	return err
 }
 
 // GetStrikethroughThickness is a representation of the C type pango_font_metrics_get_strikethrough_thickness.
@@ -1504,9 +1731,10 @@ func (recv *FontMetrics) GetStrikethroughThickness() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetStrikethroughThicknessFunction_Set()
-
-	ret = fontMetricsGetStrikethroughThicknessFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetStrikethroughThicknessFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetStrikethroughThicknessFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1516,11 +1744,16 @@ func (recv *FontMetrics) GetStrikethroughThickness() int32 {
 var fontMetricsGetUnderlinePositionFunction *gi.Function
 var fontMetricsGetUnderlinePositionFunction_Once sync.Once
 
-func fontMetricsGetUnderlinePositionFunction_Set() {
+func fontMetricsGetUnderlinePositionFunction_Set() error {
+	var err error
 	fontMetricsGetUnderlinePositionFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetUnderlinePositionFunction = fontMetricsStruct.InvokerNew("get_underline_position")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetUnderlinePositionFunction, err = fontMetricsStruct.InvokerNew("get_underline_position")
 	})
+	return err
 }
 
 // GetUnderlinePosition is a representation of the C type pango_font_metrics_get_underline_position.
@@ -1530,9 +1763,10 @@ func (recv *FontMetrics) GetUnderlinePosition() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetUnderlinePositionFunction_Set()
-
-	ret = fontMetricsGetUnderlinePositionFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetUnderlinePositionFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetUnderlinePositionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1542,11 +1776,16 @@ func (recv *FontMetrics) GetUnderlinePosition() int32 {
 var fontMetricsGetUnderlineThicknessFunction *gi.Function
 var fontMetricsGetUnderlineThicknessFunction_Once sync.Once
 
-func fontMetricsGetUnderlineThicknessFunction_Set() {
+func fontMetricsGetUnderlineThicknessFunction_Set() error {
+	var err error
 	fontMetricsGetUnderlineThicknessFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsGetUnderlineThicknessFunction = fontMetricsStruct.InvokerNew("get_underline_thickness")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsGetUnderlineThicknessFunction, err = fontMetricsStruct.InvokerNew("get_underline_thickness")
 	})
+	return err
 }
 
 // GetUnderlineThickness is a representation of the C type pango_font_metrics_get_underline_thickness.
@@ -1556,9 +1795,10 @@ func (recv *FontMetrics) GetUnderlineThickness() int32 {
 
 	var ret gi.Argument
 
-	fontMetricsGetUnderlineThicknessFunction_Set()
-
-	ret = fontMetricsGetUnderlineThicknessFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsGetUnderlineThicknessFunction_Set()
+	if err == nil {
+		ret = fontMetricsGetUnderlineThicknessFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1568,11 +1808,16 @@ func (recv *FontMetrics) GetUnderlineThickness() int32 {
 var fontMetricsRefFunction *gi.Function
 var fontMetricsRefFunction_Once sync.Once
 
-func fontMetricsRefFunction_Set() {
+func fontMetricsRefFunction_Set() error {
+	var err error
 	fontMetricsRefFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsRefFunction = fontMetricsStruct.InvokerNew("ref")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsRefFunction, err = fontMetricsStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type pango_font_metrics_ref.
@@ -1582,9 +1827,10 @@ func (recv *FontMetrics) Ref() *FontMetrics {
 
 	var ret gi.Argument
 
-	fontMetricsRefFunction_Set()
-
-	ret = fontMetricsRefFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsRefFunction_Set()
+	if err == nil {
+		ret = fontMetricsRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FontMetrics{native: ret.Pointer()}
 
@@ -1594,11 +1840,16 @@ func (recv *FontMetrics) Ref() *FontMetrics {
 var fontMetricsUnrefFunction *gi.Function
 var fontMetricsUnrefFunction_Once sync.Once
 
-func fontMetricsUnrefFunction_Set() {
+func fontMetricsUnrefFunction_Set() error {
+	var err error
 	fontMetricsUnrefFunction_Once.Do(func() {
-		fontMetricsStruct_Set()
-		fontMetricsUnrefFunction = fontMetricsStruct.InvokerNew("unref")
+		err = fontMetricsStruct_Set()
+		if err != nil {
+			return
+		}
+		fontMetricsUnrefFunction, err = fontMetricsStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type pango_font_metrics_unref.
@@ -1606,9 +1857,10 @@ func (recv *FontMetrics) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	fontMetricsUnrefFunction_Set()
-
-	fontMetricsUnrefFunction.Invoke(inArgs[:], nil)
+	err := fontMetricsUnrefFunction_Set()
+	if err == nil {
+		fontMetricsUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1709,11 +1961,16 @@ type GlyphItem struct {
 var glyphItemCopyFunction *gi.Function
 var glyphItemCopyFunction_Once sync.Once
 
-func glyphItemCopyFunction_Set() {
+func glyphItemCopyFunction_Set() error {
+	var err error
 	glyphItemCopyFunction_Once.Do(func() {
-		glyphItemStruct_Set()
-		glyphItemCopyFunction = glyphItemStruct.InvokerNew("copy")
+		err = glyphItemStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemCopyFunction, err = glyphItemStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_glyph_item_copy.
@@ -1723,9 +1980,10 @@ func (recv *GlyphItem) Copy() *GlyphItem {
 
 	var ret gi.Argument
 
-	glyphItemCopyFunction_Set()
-
-	ret = glyphItemCopyFunction.Invoke(inArgs[:], nil)
+	err := glyphItemCopyFunction_Set()
+	if err == nil {
+		ret = glyphItemCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &GlyphItem{native: ret.Pointer()}
 
@@ -1735,11 +1993,16 @@ func (recv *GlyphItem) Copy() *GlyphItem {
 var glyphItemFreeFunction *gi.Function
 var glyphItemFreeFunction_Once sync.Once
 
-func glyphItemFreeFunction_Set() {
+func glyphItemFreeFunction_Set() error {
+	var err error
 	glyphItemFreeFunction_Once.Do(func() {
-		glyphItemStruct_Set()
-		glyphItemFreeFunction = glyphItemStruct.InvokerNew("free")
+		err = glyphItemStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemFreeFunction, err = glyphItemStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_glyph_item_free.
@@ -1747,9 +2010,10 @@ func (recv *GlyphItem) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	glyphItemFreeFunction_Set()
-
-	glyphItemFreeFunction.Invoke(inArgs[:], nil)
+	err := glyphItemFreeFunction_Set()
+	if err == nil {
+		glyphItemFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1760,11 +2024,16 @@ func (recv *GlyphItem) Free() {
 var glyphItemSplitFunction *gi.Function
 var glyphItemSplitFunction_Once sync.Once
 
-func glyphItemSplitFunction_Set() {
+func glyphItemSplitFunction_Set() error {
+	var err error
 	glyphItemSplitFunction_Once.Do(func() {
-		glyphItemStruct_Set()
-		glyphItemSplitFunction = glyphItemStruct.InvokerNew("split")
+		err = glyphItemStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemSplitFunction, err = glyphItemStruct.InvokerNew("split")
 	})
+	return err
 }
 
 // Split is a representation of the C type pango_glyph_item_split.
@@ -1776,9 +2045,10 @@ func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 
 	var ret gi.Argument
 
-	glyphItemSplitFunction_Set()
-
-	ret = glyphItemSplitFunction.Invoke(inArgs[:], nil)
+	err := glyphItemSplitFunction_Set()
+	if err == nil {
+		ret = glyphItemSplitFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &GlyphItem{native: ret.Pointer()}
 
@@ -1811,11 +2081,16 @@ type GlyphItemIter struct {
 var glyphItemIterCopyFunction *gi.Function
 var glyphItemIterCopyFunction_Once sync.Once
 
-func glyphItemIterCopyFunction_Set() {
+func glyphItemIterCopyFunction_Set() error {
+	var err error
 	glyphItemIterCopyFunction_Once.Do(func() {
-		glyphItemIterStruct_Set()
-		glyphItemIterCopyFunction = glyphItemIterStruct.InvokerNew("copy")
+		err = glyphItemIterStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemIterCopyFunction, err = glyphItemIterStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_glyph_item_iter_copy.
@@ -1825,9 +2100,10 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 
 	var ret gi.Argument
 
-	glyphItemIterCopyFunction_Set()
-
-	ret = glyphItemIterCopyFunction.Invoke(inArgs[:], nil)
+	err := glyphItemIterCopyFunction_Set()
+	if err == nil {
+		ret = glyphItemIterCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &GlyphItemIter{native: ret.Pointer()}
 
@@ -1837,11 +2113,16 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 var glyphItemIterFreeFunction *gi.Function
 var glyphItemIterFreeFunction_Once sync.Once
 
-func glyphItemIterFreeFunction_Set() {
+func glyphItemIterFreeFunction_Set() error {
+	var err error
 	glyphItemIterFreeFunction_Once.Do(func() {
-		glyphItemIterStruct_Set()
-		glyphItemIterFreeFunction = glyphItemIterStruct.InvokerNew("free")
+		err = glyphItemIterStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemIterFreeFunction, err = glyphItemIterStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_glyph_item_iter_free.
@@ -1849,9 +2130,10 @@ func (recv *GlyphItemIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	glyphItemIterFreeFunction_Set()
-
-	glyphItemIterFreeFunction.Invoke(inArgs[:], nil)
+	err := glyphItemIterFreeFunction_Set()
+	if err == nil {
+		glyphItemIterFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1884,11 +2166,16 @@ type GlyphString struct {
 var glyphStringNewFunction *gi.Function
 var glyphStringNewFunction_Once sync.Once
 
-func glyphStringNewFunction_Set() {
+func glyphStringNewFunction_Set() error {
+	var err error
 	glyphStringNewFunction_Once.Do(func() {
-		glyphStringStruct_Set()
-		glyphStringNewFunction = glyphStringStruct.InvokerNew("new")
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringNewFunction, err = glyphStringStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // GlyphStringNew is a representation of the C type pango_glyph_string_new.
@@ -1896,9 +2183,10 @@ func GlyphStringNew() *GlyphString {
 
 	var ret gi.Argument
 
-	glyphStringNewFunction_Set()
-
-	ret = glyphStringNewFunction.Invoke(nil, nil)
+	err := glyphStringNewFunction_Set()
+	if err == nil {
+		ret = glyphStringNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &GlyphString{native: ret.Pointer()}
 
@@ -1908,11 +2196,16 @@ func GlyphStringNew() *GlyphString {
 var glyphStringCopyFunction *gi.Function
 var glyphStringCopyFunction_Once sync.Once
 
-func glyphStringCopyFunction_Set() {
+func glyphStringCopyFunction_Set() error {
+	var err error
 	glyphStringCopyFunction_Once.Do(func() {
-		glyphStringStruct_Set()
-		glyphStringCopyFunction = glyphStringStruct.InvokerNew("copy")
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringCopyFunction, err = glyphStringStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_glyph_string_copy.
@@ -1922,9 +2215,10 @@ func (recv *GlyphString) Copy() *GlyphString {
 
 	var ret gi.Argument
 
-	glyphStringCopyFunction_Set()
-
-	ret = glyphStringCopyFunction.Invoke(inArgs[:], nil)
+	err := glyphStringCopyFunction_Set()
+	if err == nil {
+		ret = glyphStringCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &GlyphString{native: ret.Pointer()}
 
@@ -1938,11 +2232,16 @@ func (recv *GlyphString) Copy() *GlyphString {
 var glyphStringFreeFunction *gi.Function
 var glyphStringFreeFunction_Once sync.Once
 
-func glyphStringFreeFunction_Set() {
+func glyphStringFreeFunction_Set() error {
+	var err error
 	glyphStringFreeFunction_Once.Do(func() {
-		glyphStringStruct_Set()
-		glyphStringFreeFunction = glyphStringStruct.InvokerNew("free")
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringFreeFunction, err = glyphStringStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_glyph_string_free.
@@ -1950,9 +2249,10 @@ func (recv *GlyphString) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	glyphStringFreeFunction_Set()
-
-	glyphStringFreeFunction.Invoke(inArgs[:], nil)
+	err := glyphStringFreeFunction_Set()
+	if err == nil {
+		glyphStringFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1961,11 +2261,16 @@ func (recv *GlyphString) Free() {
 var glyphStringGetWidthFunction *gi.Function
 var glyphStringGetWidthFunction_Once sync.Once
 
-func glyphStringGetWidthFunction_Set() {
+func glyphStringGetWidthFunction_Set() error {
+	var err error
 	glyphStringGetWidthFunction_Once.Do(func() {
-		glyphStringStruct_Set()
-		glyphStringGetWidthFunction = glyphStringStruct.InvokerNew("get_width")
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringGetWidthFunction, err = glyphStringStruct.InvokerNew("get_width")
 	})
+	return err
 }
 
 // GetWidth is a representation of the C type pango_glyph_string_get_width.
@@ -1975,9 +2280,10 @@ func (recv *GlyphString) GetWidth() int32 {
 
 	var ret gi.Argument
 
-	glyphStringGetWidthFunction_Set()
-
-	ret = glyphStringGetWidthFunction.Invoke(inArgs[:], nil)
+	err := glyphStringGetWidthFunction_Set()
+	if err == nil {
+		ret = glyphStringGetWidthFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -1989,11 +2295,16 @@ func (recv *GlyphString) GetWidth() int32 {
 var glyphStringSetSizeFunction *gi.Function
 var glyphStringSetSizeFunction_Once sync.Once
 
-func glyphStringSetSizeFunction_Set() {
+func glyphStringSetSizeFunction_Set() error {
+	var err error
 	glyphStringSetSizeFunction_Once.Do(func() {
-		glyphStringStruct_Set()
-		glyphStringSetSizeFunction = glyphStringStruct.InvokerNew("set_size")
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringSetSizeFunction, err = glyphStringStruct.InvokerNew("set_size")
 	})
+	return err
 }
 
 // SetSize is a representation of the C type pango_glyph_string_set_size.
@@ -2002,9 +2313,10 @@ func (recv *GlyphString) SetSize(newLen int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(newLen)
 
-	glyphStringSetSizeFunction_Set()
-
-	glyphStringSetSizeFunction.Invoke(inArgs[:], nil)
+	err := glyphStringSetSizeFunction_Set()
+	if err == nil {
+		glyphStringSetSizeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2067,11 +2379,16 @@ type Item struct {
 var itemNewFunction *gi.Function
 var itemNewFunction_Once sync.Once
 
-func itemNewFunction_Set() {
+func itemNewFunction_Set() error {
+	var err error
 	itemNewFunction_Once.Do(func() {
-		itemStruct_Set()
-		itemNewFunction = itemStruct.InvokerNew("new")
+		err = itemStruct_Set()
+		if err != nil {
+			return
+		}
+		itemNewFunction, err = itemStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // ItemNew is a representation of the C type pango_item_new.
@@ -2079,9 +2396,10 @@ func ItemNew() *Item {
 
 	var ret gi.Argument
 
-	itemNewFunction_Set()
-
-	ret = itemNewFunction.Invoke(nil, nil)
+	err := itemNewFunction_Set()
+	if err == nil {
+		ret = itemNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &Item{native: ret.Pointer()}
 
@@ -2091,11 +2409,16 @@ func ItemNew() *Item {
 var itemCopyFunction *gi.Function
 var itemCopyFunction_Once sync.Once
 
-func itemCopyFunction_Set() {
+func itemCopyFunction_Set() error {
+	var err error
 	itemCopyFunction_Once.Do(func() {
-		itemStruct_Set()
-		itemCopyFunction = itemStruct.InvokerNew("copy")
+		err = itemStruct_Set()
+		if err != nil {
+			return
+		}
+		itemCopyFunction, err = itemStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_item_copy.
@@ -2105,9 +2428,10 @@ func (recv *Item) Copy() *Item {
 
 	var ret gi.Argument
 
-	itemCopyFunction_Set()
-
-	ret = itemCopyFunction.Invoke(inArgs[:], nil)
+	err := itemCopyFunction_Set()
+	if err == nil {
+		ret = itemCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Item{native: ret.Pointer()}
 
@@ -2117,11 +2441,16 @@ func (recv *Item) Copy() *Item {
 var itemFreeFunction *gi.Function
 var itemFreeFunction_Once sync.Once
 
-func itemFreeFunction_Set() {
+func itemFreeFunction_Set() error {
+	var err error
 	itemFreeFunction_Once.Do(func() {
-		itemStruct_Set()
-		itemFreeFunction = itemStruct.InvokerNew("free")
+		err = itemStruct_Set()
+		if err != nil {
+			return
+		}
+		itemFreeFunction, err = itemStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_item_free.
@@ -2129,20 +2458,26 @@ func (recv *Item) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	itemFreeFunction_Set()
-
-	itemFreeFunction.Invoke(inArgs[:], nil)
+	err := itemFreeFunction_Set()
+	if err == nil {
+		itemFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var itemSplitFunction *gi.Function
 var itemSplitFunction_Once sync.Once
 
-func itemSplitFunction_Set() {
+func itemSplitFunction_Set() error {
+	var err error
 	itemSplitFunction_Once.Do(func() {
-		itemStruct_Set()
-		itemSplitFunction = itemStruct.InvokerNew("split")
+		err = itemStruct_Set()
+		if err != nil {
+			return
+		}
+		itemSplitFunction, err = itemStruct.InvokerNew("split")
 	})
+	return err
 }
 
 // Split is a representation of the C type pango_item_split.
@@ -2154,9 +2489,10 @@ func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 
 	var ret gi.Argument
 
-	itemSplitFunction_Set()
-
-	ret = itemSplitFunction.Invoke(inArgs[:], nil)
+	err := itemSplitFunction_Set()
+	if err == nil {
+		ret = itemSplitFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Item{native: ret.Pointer()}
 
@@ -2181,11 +2517,16 @@ type Language struct {
 var languageGetSampleStringFunction *gi.Function
 var languageGetSampleStringFunction_Once sync.Once
 
-func languageGetSampleStringFunction_Set() {
+func languageGetSampleStringFunction_Set() error {
+	var err error
 	languageGetSampleStringFunction_Once.Do(func() {
-		languageStruct_Set()
-		languageGetSampleStringFunction = languageStruct.InvokerNew("get_sample_string")
+		err = languageStruct_Set()
+		if err != nil {
+			return
+		}
+		languageGetSampleStringFunction, err = languageStruct.InvokerNew("get_sample_string")
 	})
+	return err
 }
 
 // GetSampleString is a representation of the C type pango_language_get_sample_string.
@@ -2195,9 +2536,10 @@ func (recv *Language) GetSampleString() string {
 
 	var ret gi.Argument
 
-	languageGetSampleStringFunction_Set()
-
-	ret = languageGetSampleStringFunction.Invoke(inArgs[:], nil)
+	err := languageGetSampleStringFunction_Set()
+	if err == nil {
+		ret = languageGetSampleStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2207,11 +2549,16 @@ func (recv *Language) GetSampleString() string {
 var languageGetScriptsFunction *gi.Function
 var languageGetScriptsFunction_Once sync.Once
 
-func languageGetScriptsFunction_Set() {
+func languageGetScriptsFunction_Set() error {
+	var err error
 	languageGetScriptsFunction_Once.Do(func() {
-		languageStruct_Set()
-		languageGetScriptsFunction = languageStruct.InvokerNew("get_scripts")
+		err = languageStruct_Set()
+		if err != nil {
+			return
+		}
+		languageGetScriptsFunction, err = languageStruct.InvokerNew("get_scripts")
 	})
+	return err
 }
 
 // GetScripts is a representation of the C type pango_language_get_scripts.
@@ -2221,9 +2568,10 @@ func (recv *Language) GetScripts() int32 {
 
 	var outArgs [1]gi.Argument
 
-	languageGetScriptsFunction_Set()
-
-	languageGetScriptsFunction.Invoke(inArgs[:], outArgs[:])
+	err := languageGetScriptsFunction_Set()
+	if err == nil {
+		languageGetScriptsFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Int32()
 
@@ -2237,11 +2585,16 @@ func (recv *Language) GetScripts() int32 {
 var languageToStringFunction *gi.Function
 var languageToStringFunction_Once sync.Once
 
-func languageToStringFunction_Set() {
+func languageToStringFunction_Set() error {
+	var err error
 	languageToStringFunction_Once.Do(func() {
-		languageStruct_Set()
-		languageToStringFunction = languageStruct.InvokerNew("to_string")
+		err = languageStruct_Set()
+		if err != nil {
+			return
+		}
+		languageToStringFunction, err = languageStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type pango_language_to_string.
@@ -2251,9 +2604,10 @@ func (recv *Language) ToString() string {
 
 	var ret gi.Argument
 
-	languageToStringFunction_Set()
-
-	ret = languageToStringFunction.Invoke(inArgs[:], nil)
+	err := languageToStringFunction_Set()
+	if err == nil {
+		ret = languageToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2295,11 +2649,16 @@ type LayoutIter struct {
 var layoutIterCopyFunction *gi.Function
 var layoutIterCopyFunction_Once sync.Once
 
-func layoutIterCopyFunction_Set() {
+func layoutIterCopyFunction_Set() error {
+	var err error
 	layoutIterCopyFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterCopyFunction = layoutIterStruct.InvokerNew("copy")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterCopyFunction, err = layoutIterStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_layout_iter_copy.
@@ -2309,9 +2668,10 @@ func (recv *LayoutIter) Copy() *LayoutIter {
 
 	var ret gi.Argument
 
-	layoutIterCopyFunction_Set()
-
-	ret = layoutIterCopyFunction.Invoke(inArgs[:], nil)
+	err := layoutIterCopyFunction_Set()
+	if err == nil {
+		ret = layoutIterCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &LayoutIter{native: ret.Pointer()}
 
@@ -2321,11 +2681,16 @@ func (recv *LayoutIter) Copy() *LayoutIter {
 var layoutIterFreeFunction *gi.Function
 var layoutIterFreeFunction_Once sync.Once
 
-func layoutIterFreeFunction_Set() {
+func layoutIterFreeFunction_Set() error {
+	var err error
 	layoutIterFreeFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterFreeFunction = layoutIterStruct.InvokerNew("free")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterFreeFunction, err = layoutIterStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_layout_iter_free.
@@ -2333,20 +2698,26 @@ func (recv *LayoutIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	layoutIterFreeFunction_Set()
-
-	layoutIterFreeFunction.Invoke(inArgs[:], nil)
+	err := layoutIterFreeFunction_Set()
+	if err == nil {
+		layoutIterFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var layoutIterGetBaselineFunction *gi.Function
 var layoutIterGetBaselineFunction_Once sync.Once
 
-func layoutIterGetBaselineFunction_Set() {
+func layoutIterGetBaselineFunction_Set() error {
+	var err error
 	layoutIterGetBaselineFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterGetBaselineFunction = layoutIterStruct.InvokerNew("get_baseline")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetBaselineFunction, err = layoutIterStruct.InvokerNew("get_baseline")
 	})
+	return err
 }
 
 // GetBaseline is a representation of the C type pango_layout_iter_get_baseline.
@@ -2356,9 +2727,10 @@ func (recv *LayoutIter) GetBaseline() int32 {
 
 	var ret gi.Argument
 
-	layoutIterGetBaselineFunction_Set()
-
-	ret = layoutIterGetBaselineFunction.Invoke(inArgs[:], nil)
+	err := layoutIterGetBaselineFunction_Set()
+	if err == nil {
+		ret = layoutIterGetBaselineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -2372,11 +2744,16 @@ func (recv *LayoutIter) GetBaseline() int32 {
 var layoutIterGetIndexFunction *gi.Function
 var layoutIterGetIndexFunction_Once sync.Once
 
-func layoutIterGetIndexFunction_Set() {
+func layoutIterGetIndexFunction_Set() error {
+	var err error
 	layoutIterGetIndexFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterGetIndexFunction = layoutIterStruct.InvokerNew("get_index")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetIndexFunction, err = layoutIterStruct.InvokerNew("get_index")
 	})
+	return err
 }
 
 // GetIndex is a representation of the C type pango_layout_iter_get_index.
@@ -2386,9 +2763,10 @@ func (recv *LayoutIter) GetIndex() int32 {
 
 	var ret gi.Argument
 
-	layoutIterGetIndexFunction_Set()
-
-	ret = layoutIterGetIndexFunction.Invoke(inArgs[:], nil)
+	err := layoutIterGetIndexFunction_Set()
+	if err == nil {
+		ret = layoutIterGetIndexFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -2402,11 +2780,16 @@ func (recv *LayoutIter) GetIndex() int32 {
 var layoutIterGetLineFunction *gi.Function
 var layoutIterGetLineFunction_Once sync.Once
 
-func layoutIterGetLineFunction_Set() {
+func layoutIterGetLineFunction_Set() error {
+	var err error
 	layoutIterGetLineFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterGetLineFunction = layoutIterStruct.InvokerNew("get_line")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetLineFunction, err = layoutIterStruct.InvokerNew("get_line")
 	})
+	return err
 }
 
 // GetLine is a representation of the C type pango_layout_iter_get_line.
@@ -2416,9 +2799,10 @@ func (recv *LayoutIter) GetLine() *LayoutLine {
 
 	var ret gi.Argument
 
-	layoutIterGetLineFunction_Set()
-
-	ret = layoutIterGetLineFunction.Invoke(inArgs[:], nil)
+	err := layoutIterGetLineFunction_Set()
+	if err == nil {
+		ret = layoutIterGetLineFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &LayoutLine{native: ret.Pointer()}
 
@@ -2430,11 +2814,16 @@ func (recv *LayoutIter) GetLine() *LayoutLine {
 var layoutIterGetLineReadonlyFunction *gi.Function
 var layoutIterGetLineReadonlyFunction_Once sync.Once
 
-func layoutIterGetLineReadonlyFunction_Set() {
+func layoutIterGetLineReadonlyFunction_Set() error {
+	var err error
 	layoutIterGetLineReadonlyFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterGetLineReadonlyFunction = layoutIterStruct.InvokerNew("get_line_readonly")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetLineReadonlyFunction, err = layoutIterStruct.InvokerNew("get_line_readonly")
 	})
+	return err
 }
 
 // GetLineReadonly is a representation of the C type pango_layout_iter_get_line_readonly.
@@ -2444,9 +2833,10 @@ func (recv *LayoutIter) GetLineReadonly() *LayoutLine {
 
 	var ret gi.Argument
 
-	layoutIterGetLineReadonlyFunction_Set()
-
-	ret = layoutIterGetLineReadonlyFunction.Invoke(inArgs[:], nil)
+	err := layoutIterGetLineReadonlyFunction_Set()
+	if err == nil {
+		ret = layoutIterGetLineReadonlyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &LayoutLine{native: ret.Pointer()}
 
@@ -2456,11 +2846,16 @@ func (recv *LayoutIter) GetLineReadonly() *LayoutLine {
 var layoutIterGetLineYrangeFunction *gi.Function
 var layoutIterGetLineYrangeFunction_Once sync.Once
 
-func layoutIterGetLineYrangeFunction_Set() {
+func layoutIterGetLineYrangeFunction_Set() error {
+	var err error
 	layoutIterGetLineYrangeFunction_Once.Do(func() {
-		layoutIterStruct_Set()
-		layoutIterGetLineYrangeFunction = layoutIterStruct.InvokerNew("get_line_yrange")
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetLineYrangeFunction, err = layoutIterStruct.InvokerNew("get_line_yrange")
 	})
+	return err
 }
 
 // GetLineYrange is a representation of the C type pango_layout_iter_get_line_yrange.
@@ -2470,9 +2865,10 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32) {
 
 	var outArgs [2]gi.Argument
 
-	layoutIterGetLineYrangeFunction_Set()
-
-	layoutIterGetLineYrangeFunction.Invoke(inArgs[:], outArgs[:])
+	err := layoutIterGetLineYrangeFunction_Set()
+	if err == nil {
+		layoutIterGetLineYrangeFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Int32()
 	out1 := outArgs[1].Int32()
@@ -2526,11 +2922,16 @@ type LayoutLine struct {
 var layoutLineRefFunction *gi.Function
 var layoutLineRefFunction_Once sync.Once
 
-func layoutLineRefFunction_Set() {
+func layoutLineRefFunction_Set() error {
+	var err error
 	layoutLineRefFunction_Once.Do(func() {
-		layoutLineStruct_Set()
-		layoutLineRefFunction = layoutLineStruct.InvokerNew("ref")
+		err = layoutLineStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutLineRefFunction, err = layoutLineStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type pango_layout_line_ref.
@@ -2540,9 +2941,10 @@ func (recv *LayoutLine) Ref() *LayoutLine {
 
 	var ret gi.Argument
 
-	layoutLineRefFunction_Set()
-
-	ret = layoutLineRefFunction.Invoke(inArgs[:], nil)
+	err := layoutLineRefFunction_Set()
+	if err == nil {
+		ret = layoutLineRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &LayoutLine{native: ret.Pointer()}
 
@@ -2552,11 +2954,16 @@ func (recv *LayoutLine) Ref() *LayoutLine {
 var layoutLineUnrefFunction *gi.Function
 var layoutLineUnrefFunction_Once sync.Once
 
-func layoutLineUnrefFunction_Set() {
+func layoutLineUnrefFunction_Set() error {
+	var err error
 	layoutLineUnrefFunction_Once.Do(func() {
-		layoutLineStruct_Set()
-		layoutLineUnrefFunction = layoutLineStruct.InvokerNew("unref")
+		err = layoutLineStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutLineUnrefFunction, err = layoutLineStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type pango_layout_line_unref.
@@ -2564,9 +2971,10 @@ func (recv *LayoutLine) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	layoutLineUnrefFunction_Set()
-
-	layoutLineUnrefFunction.Invoke(inArgs[:], nil)
+	err := layoutLineUnrefFunction_Set()
+	if err == nil {
+		layoutLineUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2660,11 +3068,16 @@ type Matrix struct {
 var matrixCopyFunction *gi.Function
 var matrixCopyFunction_Once sync.Once
 
-func matrixCopyFunction_Set() {
+func matrixCopyFunction_Set() error {
+	var err error
 	matrixCopyFunction_Once.Do(func() {
-		matrixStruct_Set()
-		matrixCopyFunction = matrixStruct.InvokerNew("copy")
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixCopyFunction, err = matrixStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_matrix_copy.
@@ -2674,9 +3087,10 @@ func (recv *Matrix) Copy() *Matrix {
 
 	var ret gi.Argument
 
-	matrixCopyFunction_Set()
-
-	ret = matrixCopyFunction.Invoke(inArgs[:], nil)
+	err := matrixCopyFunction_Set()
+	if err == nil {
+		ret = matrixCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Matrix{native: ret.Pointer()}
 
@@ -2686,11 +3100,16 @@ func (recv *Matrix) Copy() *Matrix {
 var matrixFreeFunction *gi.Function
 var matrixFreeFunction_Once sync.Once
 
-func matrixFreeFunction_Set() {
+func matrixFreeFunction_Set() error {
+	var err error
 	matrixFreeFunction_Once.Do(func() {
-		matrixStruct_Set()
-		matrixFreeFunction = matrixStruct.InvokerNew("free")
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixFreeFunction, err = matrixStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_matrix_free.
@@ -2698,9 +3117,10 @@ func (recv *Matrix) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	matrixFreeFunction_Set()
-
-	matrixFreeFunction.Invoke(inArgs[:], nil)
+	err := matrixFreeFunction_Set()
+	if err == nil {
+		matrixFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2803,11 +3223,16 @@ type ScriptIter struct {
 var scriptIterFreeFunction *gi.Function
 var scriptIterFreeFunction_Once sync.Once
 
-func scriptIterFreeFunction_Set() {
+func scriptIterFreeFunction_Set() error {
+	var err error
 	scriptIterFreeFunction_Once.Do(func() {
-		scriptIterStruct_Set()
-		scriptIterFreeFunction = scriptIterStruct.InvokerNew("free")
+		err = scriptIterStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptIterFreeFunction, err = scriptIterStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_script_iter_free.
@@ -2815,9 +3240,10 @@ func (recv *ScriptIter) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	scriptIterFreeFunction_Set()
-
-	scriptIterFreeFunction.Invoke(inArgs[:], nil)
+	err := scriptIterFreeFunction_Set()
+	if err == nil {
+		scriptIterFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2847,11 +3273,16 @@ type TabArray struct {
 var tabArrayCopyFunction *gi.Function
 var tabArrayCopyFunction_Once sync.Once
 
-func tabArrayCopyFunction_Set() {
+func tabArrayCopyFunction_Set() error {
+	var err error
 	tabArrayCopyFunction_Once.Do(func() {
-		tabArrayStruct_Set()
-		tabArrayCopyFunction = tabArrayStruct.InvokerNew("copy")
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayCopyFunction, err = tabArrayStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type pango_tab_array_copy.
@@ -2861,9 +3292,10 @@ func (recv *TabArray) Copy() *TabArray {
 
 	var ret gi.Argument
 
-	tabArrayCopyFunction_Set()
-
-	ret = tabArrayCopyFunction.Invoke(inArgs[:], nil)
+	err := tabArrayCopyFunction_Set()
+	if err == nil {
+		ret = tabArrayCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &TabArray{native: ret.Pointer()}
 
@@ -2873,11 +3305,16 @@ func (recv *TabArray) Copy() *TabArray {
 var tabArrayFreeFunction *gi.Function
 var tabArrayFreeFunction_Once sync.Once
 
-func tabArrayFreeFunction_Set() {
+func tabArrayFreeFunction_Set() error {
+	var err error
 	tabArrayFreeFunction_Once.Do(func() {
-		tabArrayStruct_Set()
-		tabArrayFreeFunction = tabArrayStruct.InvokerNew("free")
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayFreeFunction, err = tabArrayStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type pango_tab_array_free.
@@ -2885,9 +3322,10 @@ func (recv *TabArray) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	tabArrayFreeFunction_Set()
-
-	tabArrayFreeFunction.Invoke(inArgs[:], nil)
+	err := tabArrayFreeFunction_Set()
+	if err == nil {
+		tabArrayFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2896,11 +3334,16 @@ func (recv *TabArray) Free() {
 var tabArrayGetSizeFunction *gi.Function
 var tabArrayGetSizeFunction_Once sync.Once
 
-func tabArrayGetSizeFunction_Set() {
+func tabArrayGetSizeFunction_Set() error {
+	var err error
 	tabArrayGetSizeFunction_Once.Do(func() {
-		tabArrayStruct_Set()
-		tabArrayGetSizeFunction = tabArrayStruct.InvokerNew("get_size")
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayGetSizeFunction, err = tabArrayStruct.InvokerNew("get_size")
 	})
+	return err
 }
 
 // GetSize is a representation of the C type pango_tab_array_get_size.
@@ -2910,9 +3353,10 @@ func (recv *TabArray) GetSize() int32 {
 
 	var ret gi.Argument
 
-	tabArrayGetSizeFunction_Set()
-
-	ret = tabArrayGetSizeFunction.Invoke(inArgs[:], nil)
+	err := tabArrayGetSizeFunction_Set()
+	if err == nil {
+		ret = tabArrayGetSizeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -2926,11 +3370,16 @@ func (recv *TabArray) GetSize() int32 {
 var tabArrayResizeFunction *gi.Function
 var tabArrayResizeFunction_Once sync.Once
 
-func tabArrayResizeFunction_Set() {
+func tabArrayResizeFunction_Set() error {
+	var err error
 	tabArrayResizeFunction_Once.Do(func() {
-		tabArrayStruct_Set()
-		tabArrayResizeFunction = tabArrayStruct.InvokerNew("resize")
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayResizeFunction, err = tabArrayStruct.InvokerNew("resize")
 	})
+	return err
 }
 
 // Resize is a representation of the C type pango_tab_array_resize.
@@ -2939,9 +3388,10 @@ func (recv *TabArray) Resize(newSize int32) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetInt32(newSize)
 
-	tabArrayResizeFunction_Set()
-
-	tabArrayResizeFunction.Invoke(inArgs[:], nil)
+	err := tabArrayResizeFunction_Set()
+	if err == nil {
+		tabArrayResizeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 

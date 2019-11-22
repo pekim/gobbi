@@ -54,10 +54,12 @@ import (
 var getMajorVersionFunction *gi.Function
 var getMajorVersionFunction_Once sync.Once
 
-func getMajorVersionFunction_Set() {
+func getMajorVersionFunction_Set() error {
+	var err error
 	getMajorVersionFunction_Once.Do(func() {
-		getMajorVersionFunction = gi.FunctionInvokerNew("Soup", "get_major_version")
+		getMajorVersionFunction, err = gi.FunctionInvokerNew("Soup", "get_major_version")
 	})
+	return err
 }
 
 // GetMajorVersion is a representation of the C type soup_get_major_version.
@@ -65,9 +67,10 @@ func GetMajorVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMajorVersionFunction_Set()
-
-	ret = getMajorVersionFunction.Invoke(nil, nil)
+	err := getMajorVersionFunction_Set()
+	if err == nil {
+		ret = getMajorVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -77,10 +80,12 @@ func GetMajorVersion() uint32 {
 var getMicroVersionFunction *gi.Function
 var getMicroVersionFunction_Once sync.Once
 
-func getMicroVersionFunction_Set() {
+func getMicroVersionFunction_Set() error {
+	var err error
 	getMicroVersionFunction_Once.Do(func() {
-		getMicroVersionFunction = gi.FunctionInvokerNew("Soup", "get_micro_version")
+		getMicroVersionFunction, err = gi.FunctionInvokerNew("Soup", "get_micro_version")
 	})
+	return err
 }
 
 // GetMicroVersion is a representation of the C type soup_get_micro_version.
@@ -88,9 +93,10 @@ func GetMicroVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMicroVersionFunction_Set()
-
-	ret = getMicroVersionFunction.Invoke(nil, nil)
+	err := getMicroVersionFunction_Set()
+	if err == nil {
+		ret = getMicroVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -100,10 +106,12 @@ func GetMicroVersion() uint32 {
 var getMinorVersionFunction *gi.Function
 var getMinorVersionFunction_Once sync.Once
 
-func getMinorVersionFunction_Set() {
+func getMinorVersionFunction_Set() error {
+	var err error
 	getMinorVersionFunction_Once.Do(func() {
-		getMinorVersionFunction = gi.FunctionInvokerNew("Soup", "get_minor_version")
+		getMinorVersionFunction, err = gi.FunctionInvokerNew("Soup", "get_minor_version")
 	})
+	return err
 }
 
 // GetMinorVersion is a representation of the C type soup_get_minor_version.
@@ -111,9 +119,10 @@ func GetMinorVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMinorVersionFunction_Set()
-
-	ret = getMinorVersionFunction.Invoke(nil, nil)
+	err := getMinorVersionFunction_Set()
+	if err == nil {
+		ret = getMinorVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -161,10 +170,12 @@ func GetMinorVersion() uint32 {
 var statusGetPhraseFunction *gi.Function
 var statusGetPhraseFunction_Once sync.Once
 
-func statusGetPhraseFunction_Set() {
+func statusGetPhraseFunction_Set() error {
+	var err error
 	statusGetPhraseFunction_Once.Do(func() {
-		statusGetPhraseFunction = gi.FunctionInvokerNew("Soup", "status_get_phrase")
+		statusGetPhraseFunction, err = gi.FunctionInvokerNew("Soup", "status_get_phrase")
 	})
+	return err
 }
 
 // StatusGetPhrase is a representation of the C type soup_status_get_phrase.
@@ -174,9 +185,10 @@ func StatusGetPhrase(statusCode uint32) string {
 
 	var ret gi.Argument
 
-	statusGetPhraseFunction_Set()
-
-	ret = statusGetPhraseFunction.Invoke(inArgs[:], nil)
+	err := statusGetPhraseFunction_Set()
+	if err == nil {
+		ret = statusGetPhraseFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -186,10 +198,12 @@ func StatusGetPhrase(statusCode uint32) string {
 var statusProxifyFunction *gi.Function
 var statusProxifyFunction_Once sync.Once
 
-func statusProxifyFunction_Set() {
+func statusProxifyFunction_Set() error {
+	var err error
 	statusProxifyFunction_Once.Do(func() {
-		statusProxifyFunction = gi.FunctionInvokerNew("Soup", "status_proxify")
+		statusProxifyFunction, err = gi.FunctionInvokerNew("Soup", "status_proxify")
 	})
+	return err
 }
 
 // StatusProxify is a representation of the C type soup_status_proxify.
@@ -199,9 +213,10 @@ func StatusProxify(statusCode uint32) uint32 {
 
 	var ret gi.Argument
 
-	statusProxifyFunction_Set()
-
-	ret = statusProxifyFunction.Invoke(inArgs[:], nil)
+	err := statusProxifyFunction_Set()
+	if err == nil {
+		ret = statusProxifyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -219,10 +234,12 @@ func StatusProxify(statusCode uint32) uint32 {
 var tldGetBaseDomainFunction *gi.Function
 var tldGetBaseDomainFunction_Once sync.Once
 
-func tldGetBaseDomainFunction_Set() {
+func tldGetBaseDomainFunction_Set() error {
+	var err error
 	tldGetBaseDomainFunction_Once.Do(func() {
-		tldGetBaseDomainFunction = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
+		tldGetBaseDomainFunction, err = gi.FunctionInvokerNew("Soup", "tld_get_base_domain")
 	})
+	return err
 }
 
 // TldGetBaseDomain is a representation of the C type soup_tld_get_base_domain.
@@ -232,9 +249,10 @@ func TldGetBaseDomain(hostname string) string {
 
 	var ret gi.Argument
 
-	tldGetBaseDomainFunction_Set()
-
-	ret = tldGetBaseDomainFunction.Invoke(inArgs[:], nil)
+	err := tldGetBaseDomainFunction_Set()
+	if err == nil {
+		ret = tldGetBaseDomainFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -244,10 +262,12 @@ func TldGetBaseDomain(hostname string) string {
 var uriDecodeFunction *gi.Function
 var uriDecodeFunction_Once sync.Once
 
-func uriDecodeFunction_Set() {
+func uriDecodeFunction_Set() error {
+	var err error
 	uriDecodeFunction_Once.Do(func() {
-		uriDecodeFunction = gi.FunctionInvokerNew("Soup", "uri_decode")
+		uriDecodeFunction, err = gi.FunctionInvokerNew("Soup", "uri_decode")
 	})
+	return err
 }
 
 // UriDecode is a representation of the C type soup_uri_decode.
@@ -257,9 +277,10 @@ func UriDecode(part string) string {
 
 	var ret gi.Argument
 
-	uriDecodeFunction_Set()
-
-	ret = uriDecodeFunction.Invoke(inArgs[:], nil)
+	err := uriDecodeFunction_Set()
+	if err == nil {
+		ret = uriDecodeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -269,10 +290,12 @@ func UriDecode(part string) string {
 var uriEncodeFunction *gi.Function
 var uriEncodeFunction_Once sync.Once
 
-func uriEncodeFunction_Set() {
+func uriEncodeFunction_Set() error {
+	var err error
 	uriEncodeFunction_Once.Do(func() {
-		uriEncodeFunction = gi.FunctionInvokerNew("Soup", "uri_encode")
+		uriEncodeFunction, err = gi.FunctionInvokerNew("Soup", "uri_encode")
 	})
+	return err
 }
 
 // UriEncode is a representation of the C type soup_uri_encode.
@@ -283,9 +306,10 @@ func UriEncode(part string, escapeExtra string) string {
 
 	var ret gi.Argument
 
-	uriEncodeFunction_Set()
-
-	ret = uriEncodeFunction.Invoke(inArgs[:], nil)
+	err := uriEncodeFunction_Set()
+	if err == nil {
+		ret = uriEncodeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -295,10 +319,12 @@ func UriEncode(part string, escapeExtra string) string {
 var uriNormalizeFunction *gi.Function
 var uriNormalizeFunction_Once sync.Once
 
-func uriNormalizeFunction_Set() {
+func uriNormalizeFunction_Set() error {
+	var err error
 	uriNormalizeFunction_Once.Do(func() {
-		uriNormalizeFunction = gi.FunctionInvokerNew("Soup", "uri_normalize")
+		uriNormalizeFunction, err = gi.FunctionInvokerNew("Soup", "uri_normalize")
 	})
+	return err
 }
 
 // UriNormalize is a representation of the C type soup_uri_normalize.
@@ -309,9 +335,10 @@ func UriNormalize(part string, unescapeExtra string) string {
 
 	var ret gi.Argument
 
-	uriNormalizeFunction_Set()
-
-	ret = uriNormalizeFunction.Invoke(inArgs[:], nil)
+	err := uriNormalizeFunction_Set()
+	if err == nil {
+		ret = uriNormalizeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 

@@ -14,10 +14,12 @@ import (
 var getMajorVersionFunction *gi.Function
 var getMajorVersionFunction_Once sync.Once
 
-func getMajorVersionFunction_Set() {
+func getMajorVersionFunction_Set() error {
+	var err error
 	getMajorVersionFunction_Once.Do(func() {
-		getMajorVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_major_version")
+		getMajorVersionFunction, err = gi.FunctionInvokerNew("WebKit2", "get_major_version")
 	})
+	return err
 }
 
 // GetMajorVersion is a representation of the C type webkit_get_major_version.
@@ -25,9 +27,10 @@ func GetMajorVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMajorVersionFunction_Set()
-
-	ret = getMajorVersionFunction.Invoke(nil, nil)
+	err := getMajorVersionFunction_Set()
+	if err == nil {
+		ret = getMajorVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -37,10 +40,12 @@ func GetMajorVersion() uint32 {
 var getMicroVersionFunction *gi.Function
 var getMicroVersionFunction_Once sync.Once
 
-func getMicroVersionFunction_Set() {
+func getMicroVersionFunction_Set() error {
+	var err error
 	getMicroVersionFunction_Once.Do(func() {
-		getMicroVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_micro_version")
+		getMicroVersionFunction, err = gi.FunctionInvokerNew("WebKit2", "get_micro_version")
 	})
+	return err
 }
 
 // GetMicroVersion is a representation of the C type webkit_get_micro_version.
@@ -48,9 +53,10 @@ func GetMicroVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMicroVersionFunction_Set()
-
-	ret = getMicroVersionFunction.Invoke(nil, nil)
+	err := getMicroVersionFunction_Set()
+	if err == nil {
+		ret = getMicroVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -60,10 +66,12 @@ func GetMicroVersion() uint32 {
 var getMinorVersionFunction *gi.Function
 var getMinorVersionFunction_Once sync.Once
 
-func getMinorVersionFunction_Set() {
+func getMinorVersionFunction_Set() error {
+	var err error
 	getMinorVersionFunction_Once.Do(func() {
-		getMinorVersionFunction = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
+		getMinorVersionFunction, err = gi.FunctionInvokerNew("WebKit2", "get_minor_version")
 	})
+	return err
 }
 
 // GetMinorVersion is a representation of the C type webkit_get_minor_version.
@@ -71,9 +79,10 @@ func GetMinorVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMinorVersionFunction_Set()
-
-	ret = getMinorVersionFunction.Invoke(nil, nil)
+	err := getMinorVersionFunction_Set()
+	if err == nil {
+		ret = getMinorVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -95,10 +104,12 @@ func GetMinorVersion() uint32 {
 var uriForDisplayFunction *gi.Function
 var uriForDisplayFunction_Once sync.Once
 
-func uriForDisplayFunction_Set() {
+func uriForDisplayFunction_Set() error {
+	var err error
 	uriForDisplayFunction_Once.Do(func() {
-		uriForDisplayFunction = gi.FunctionInvokerNew("WebKit2", "uri_for_display")
+		uriForDisplayFunction, err = gi.FunctionInvokerNew("WebKit2", "uri_for_display")
 	})
+	return err
 }
 
 // UriForDisplay is a representation of the C type webkit_uri_for_display.
@@ -108,9 +119,10 @@ func UriForDisplay(uri string) string {
 
 	var ret gi.Argument
 
-	uriForDisplayFunction_Set()
-
-	ret = uriForDisplayFunction.Invoke(inArgs[:], nil)
+	err := uriForDisplayFunction_Set()
+	if err == nil {
+		ret = uriForDisplayFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 

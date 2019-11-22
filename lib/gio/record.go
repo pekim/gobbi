@@ -547,11 +547,16 @@ type DBusAnnotationInfo struct {
 var dBusAnnotationInfoRefFunction *gi.Function
 var dBusAnnotationInfoRefFunction_Once sync.Once
 
-func dBusAnnotationInfoRefFunction_Set() {
+func dBusAnnotationInfoRefFunction_Set() error {
+	var err error
 	dBusAnnotationInfoRefFunction_Once.Do(func() {
-		dBusAnnotationInfoStruct_Set()
-		dBusAnnotationInfoRefFunction = dBusAnnotationInfoStruct.InvokerNew("ref")
+		err = dBusAnnotationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusAnnotationInfoRefFunction, err = dBusAnnotationInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_annotation_info_ref.
@@ -561,9 +566,10 @@ func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 
 	var ret gi.Argument
 
-	dBusAnnotationInfoRefFunction_Set()
-
-	ret = dBusAnnotationInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusAnnotationInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusAnnotationInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusAnnotationInfo{native: ret.Pointer()}
 
@@ -573,11 +579,16 @@ func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 var dBusAnnotationInfoUnrefFunction *gi.Function
 var dBusAnnotationInfoUnrefFunction_Once sync.Once
 
-func dBusAnnotationInfoUnrefFunction_Set() {
+func dBusAnnotationInfoUnrefFunction_Set() error {
+	var err error
 	dBusAnnotationInfoUnrefFunction_Once.Do(func() {
-		dBusAnnotationInfoStruct_Set()
-		dBusAnnotationInfoUnrefFunction = dBusAnnotationInfoStruct.InvokerNew("unref")
+		err = dBusAnnotationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusAnnotationInfoUnrefFunction, err = dBusAnnotationInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_annotation_info_unref.
@@ -585,9 +596,10 @@ func (recv *DBusAnnotationInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusAnnotationInfoUnrefFunction_Set()
-
-	dBusAnnotationInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusAnnotationInfoUnrefFunction_Set()
+	if err == nil {
+		dBusAnnotationInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -613,11 +625,16 @@ type DBusArgInfo struct {
 var dBusArgInfoRefFunction *gi.Function
 var dBusArgInfoRefFunction_Once sync.Once
 
-func dBusArgInfoRefFunction_Set() {
+func dBusArgInfoRefFunction_Set() error {
+	var err error
 	dBusArgInfoRefFunction_Once.Do(func() {
-		dBusArgInfoStruct_Set()
-		dBusArgInfoRefFunction = dBusArgInfoStruct.InvokerNew("ref")
+		err = dBusArgInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusArgInfoRefFunction, err = dBusArgInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_arg_info_ref.
@@ -627,9 +644,10 @@ func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 
 	var ret gi.Argument
 
-	dBusArgInfoRefFunction_Set()
-
-	ret = dBusArgInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusArgInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusArgInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusArgInfo{native: ret.Pointer()}
 
@@ -639,11 +657,16 @@ func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 var dBusArgInfoUnrefFunction *gi.Function
 var dBusArgInfoUnrefFunction_Once sync.Once
 
-func dBusArgInfoUnrefFunction_Set() {
+func dBusArgInfoUnrefFunction_Set() error {
+	var err error
 	dBusArgInfoUnrefFunction_Once.Do(func() {
-		dBusArgInfoStruct_Set()
-		dBusArgInfoUnrefFunction = dBusArgInfoStruct.InvokerNew("unref")
+		err = dBusArgInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusArgInfoUnrefFunction, err = dBusArgInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_arg_info_unref.
@@ -651,9 +674,10 @@ func (recv *DBusArgInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusArgInfoUnrefFunction_Set()
-
-	dBusArgInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusArgInfoUnrefFunction_Set()
+	if err == nil {
+		dBusArgInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -718,11 +742,16 @@ type DBusInterfaceInfo struct {
 var dBusInterfaceInfoCacheBuildFunction *gi.Function
 var dBusInterfaceInfoCacheBuildFunction_Once sync.Once
 
-func dBusInterfaceInfoCacheBuildFunction_Set() {
+func dBusInterfaceInfoCacheBuildFunction_Set() error {
+	var err error
 	dBusInterfaceInfoCacheBuildFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoCacheBuildFunction = dBusInterfaceInfoStruct.InvokerNew("cache_build")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoCacheBuildFunction, err = dBusInterfaceInfoStruct.InvokerNew("cache_build")
 	})
+	return err
 }
 
 // CacheBuild is a representation of the C type g_dbus_interface_info_cache_build.
@@ -730,20 +759,26 @@ func (recv *DBusInterfaceInfo) CacheBuild() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusInterfaceInfoCacheBuildFunction_Set()
-
-	dBusInterfaceInfoCacheBuildFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoCacheBuildFunction_Set()
+	if err == nil {
+		dBusInterfaceInfoCacheBuildFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var dBusInterfaceInfoCacheReleaseFunction *gi.Function
 var dBusInterfaceInfoCacheReleaseFunction_Once sync.Once
 
-func dBusInterfaceInfoCacheReleaseFunction_Set() {
+func dBusInterfaceInfoCacheReleaseFunction_Set() error {
+	var err error
 	dBusInterfaceInfoCacheReleaseFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoCacheReleaseFunction = dBusInterfaceInfoStruct.InvokerNew("cache_release")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoCacheReleaseFunction, err = dBusInterfaceInfoStruct.InvokerNew("cache_release")
 	})
+	return err
 }
 
 // CacheRelease is a representation of the C type g_dbus_interface_info_cache_release.
@@ -751,9 +786,10 @@ func (recv *DBusInterfaceInfo) CacheRelease() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusInterfaceInfoCacheReleaseFunction_Set()
-
-	dBusInterfaceInfoCacheReleaseFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoCacheReleaseFunction_Set()
+	if err == nil {
+		dBusInterfaceInfoCacheReleaseFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -762,11 +798,16 @@ func (recv *DBusInterfaceInfo) CacheRelease() {
 var dBusInterfaceInfoLookupMethodFunction *gi.Function
 var dBusInterfaceInfoLookupMethodFunction_Once sync.Once
 
-func dBusInterfaceInfoLookupMethodFunction_Set() {
+func dBusInterfaceInfoLookupMethodFunction_Set() error {
+	var err error
 	dBusInterfaceInfoLookupMethodFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoLookupMethodFunction = dBusInterfaceInfoStruct.InvokerNew("lookup_method")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoLookupMethodFunction, err = dBusInterfaceInfoStruct.InvokerNew("lookup_method")
 	})
+	return err
 }
 
 // LookupMethod is a representation of the C type g_dbus_interface_info_lookup_method.
@@ -777,9 +818,10 @@ func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
 
 	var ret gi.Argument
 
-	dBusInterfaceInfoLookupMethodFunction_Set()
-
-	ret = dBusInterfaceInfoLookupMethodFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoLookupMethodFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceInfoLookupMethodFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusMethodInfo{native: ret.Pointer()}
 
@@ -789,11 +831,16 @@ func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
 var dBusInterfaceInfoLookupPropertyFunction *gi.Function
 var dBusInterfaceInfoLookupPropertyFunction_Once sync.Once
 
-func dBusInterfaceInfoLookupPropertyFunction_Set() {
+func dBusInterfaceInfoLookupPropertyFunction_Set() error {
+	var err error
 	dBusInterfaceInfoLookupPropertyFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoLookupPropertyFunction = dBusInterfaceInfoStruct.InvokerNew("lookup_property")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoLookupPropertyFunction, err = dBusInterfaceInfoStruct.InvokerNew("lookup_property")
 	})
+	return err
 }
 
 // LookupProperty is a representation of the C type g_dbus_interface_info_lookup_property.
@@ -804,9 +851,10 @@ func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
 
 	var ret gi.Argument
 
-	dBusInterfaceInfoLookupPropertyFunction_Set()
-
-	ret = dBusInterfaceInfoLookupPropertyFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoLookupPropertyFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceInfoLookupPropertyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusPropertyInfo{native: ret.Pointer()}
 
@@ -816,11 +864,16 @@ func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
 var dBusInterfaceInfoLookupSignalFunction *gi.Function
 var dBusInterfaceInfoLookupSignalFunction_Once sync.Once
 
-func dBusInterfaceInfoLookupSignalFunction_Set() {
+func dBusInterfaceInfoLookupSignalFunction_Set() error {
+	var err error
 	dBusInterfaceInfoLookupSignalFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoLookupSignalFunction = dBusInterfaceInfoStruct.InvokerNew("lookup_signal")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoLookupSignalFunction, err = dBusInterfaceInfoStruct.InvokerNew("lookup_signal")
 	})
+	return err
 }
 
 // LookupSignal is a representation of the C type g_dbus_interface_info_lookup_signal.
@@ -831,9 +884,10 @@ func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
 
 	var ret gi.Argument
 
-	dBusInterfaceInfoLookupSignalFunction_Set()
-
-	ret = dBusInterfaceInfoLookupSignalFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoLookupSignalFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceInfoLookupSignalFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusSignalInfo{native: ret.Pointer()}
 
@@ -843,11 +897,16 @@ func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
 var dBusInterfaceInfoRefFunction *gi.Function
 var dBusInterfaceInfoRefFunction_Once sync.Once
 
-func dBusInterfaceInfoRefFunction_Set() {
+func dBusInterfaceInfoRefFunction_Set() error {
+	var err error
 	dBusInterfaceInfoRefFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoRefFunction = dBusInterfaceInfoStruct.InvokerNew("ref")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoRefFunction, err = dBusInterfaceInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_interface_info_ref.
@@ -857,9 +916,10 @@ func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 
 	var ret gi.Argument
 
-	dBusInterfaceInfoRefFunction_Set()
-
-	ret = dBusInterfaceInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusInterfaceInfo{native: ret.Pointer()}
 
@@ -869,11 +929,16 @@ func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 var dBusInterfaceInfoUnrefFunction *gi.Function
 var dBusInterfaceInfoUnrefFunction_Once sync.Once
 
-func dBusInterfaceInfoUnrefFunction_Set() {
+func dBusInterfaceInfoUnrefFunction_Set() error {
+	var err error
 	dBusInterfaceInfoUnrefFunction_Once.Do(func() {
-		dBusInterfaceInfoStruct_Set()
-		dBusInterfaceInfoUnrefFunction = dBusInterfaceInfoStruct.InvokerNew("unref")
+		err = dBusInterfaceInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceInfoUnrefFunction, err = dBusInterfaceInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_interface_info_unref.
@@ -881,9 +946,10 @@ func (recv *DBusInterfaceInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusInterfaceInfoUnrefFunction_Set()
-
-	dBusInterfaceInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusInterfaceInfoUnrefFunction_Set()
+	if err == nil {
+		dBusInterfaceInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -964,11 +1030,16 @@ type DBusMethodInfo struct {
 var dBusMethodInfoRefFunction *gi.Function
 var dBusMethodInfoRefFunction_Once sync.Once
 
-func dBusMethodInfoRefFunction_Set() {
+func dBusMethodInfoRefFunction_Set() error {
+	var err error
 	dBusMethodInfoRefFunction_Once.Do(func() {
-		dBusMethodInfoStruct_Set()
-		dBusMethodInfoRefFunction = dBusMethodInfoStruct.InvokerNew("ref")
+		err = dBusMethodInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInfoRefFunction, err = dBusMethodInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_method_info_ref.
@@ -978,9 +1049,10 @@ func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 
 	var ret gi.Argument
 
-	dBusMethodInfoRefFunction_Set()
-
-	ret = dBusMethodInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusMethodInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusMethodInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusMethodInfo{native: ret.Pointer()}
 
@@ -990,11 +1062,16 @@ func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 var dBusMethodInfoUnrefFunction *gi.Function
 var dBusMethodInfoUnrefFunction_Once sync.Once
 
-func dBusMethodInfoUnrefFunction_Set() {
+func dBusMethodInfoUnrefFunction_Set() error {
+	var err error
 	dBusMethodInfoUnrefFunction_Once.Do(func() {
-		dBusMethodInfoStruct_Set()
-		dBusMethodInfoUnrefFunction = dBusMethodInfoStruct.InvokerNew("unref")
+		err = dBusMethodInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInfoUnrefFunction, err = dBusMethodInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_method_info_unref.
@@ -1002,9 +1079,10 @@ func (recv *DBusMethodInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusMethodInfoUnrefFunction_Set()
-
-	dBusMethodInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusMethodInfoUnrefFunction_Set()
+	if err == nil {
+		dBusMethodInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1031,11 +1109,16 @@ type DBusNodeInfo struct {
 var dBusNodeInfoNewForXmlFunction *gi.Function
 var dBusNodeInfoNewForXmlFunction_Once sync.Once
 
-func dBusNodeInfoNewForXmlFunction_Set() {
+func dBusNodeInfoNewForXmlFunction_Set() error {
+	var err error
 	dBusNodeInfoNewForXmlFunction_Once.Do(func() {
-		dBusNodeInfoStruct_Set()
-		dBusNodeInfoNewForXmlFunction = dBusNodeInfoStruct.InvokerNew("new_for_xml")
+		err = dBusNodeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusNodeInfoNewForXmlFunction, err = dBusNodeInfoStruct.InvokerNew("new_for_xml")
 	})
+	return err
 }
 
 // DBusNodeInfoNewForXml is a representation of the C type g_dbus_node_info_new_for_xml.
@@ -1045,9 +1128,10 @@ func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
 
 	var ret gi.Argument
 
-	dBusNodeInfoNewForXmlFunction_Set()
-
-	ret = dBusNodeInfoNewForXmlFunction.Invoke(inArgs[:], nil)
+	err := dBusNodeInfoNewForXmlFunction_Set()
+	if err == nil {
+		ret = dBusNodeInfoNewForXmlFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusNodeInfo{native: ret.Pointer()}
 
@@ -1059,11 +1143,16 @@ func DBusNodeInfoNewForXml(xmlData string) *DBusNodeInfo {
 var dBusNodeInfoLookupInterfaceFunction *gi.Function
 var dBusNodeInfoLookupInterfaceFunction_Once sync.Once
 
-func dBusNodeInfoLookupInterfaceFunction_Set() {
+func dBusNodeInfoLookupInterfaceFunction_Set() error {
+	var err error
 	dBusNodeInfoLookupInterfaceFunction_Once.Do(func() {
-		dBusNodeInfoStruct_Set()
-		dBusNodeInfoLookupInterfaceFunction = dBusNodeInfoStruct.InvokerNew("lookup_interface")
+		err = dBusNodeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusNodeInfoLookupInterfaceFunction, err = dBusNodeInfoStruct.InvokerNew("lookup_interface")
 	})
+	return err
 }
 
 // LookupInterface is a representation of the C type g_dbus_node_info_lookup_interface.
@@ -1074,9 +1163,10 @@ func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
 
 	var ret gi.Argument
 
-	dBusNodeInfoLookupInterfaceFunction_Set()
-
-	ret = dBusNodeInfoLookupInterfaceFunction.Invoke(inArgs[:], nil)
+	err := dBusNodeInfoLookupInterfaceFunction_Set()
+	if err == nil {
+		ret = dBusNodeInfoLookupInterfaceFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusInterfaceInfo{native: ret.Pointer()}
 
@@ -1086,11 +1176,16 @@ func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
 var dBusNodeInfoRefFunction *gi.Function
 var dBusNodeInfoRefFunction_Once sync.Once
 
-func dBusNodeInfoRefFunction_Set() {
+func dBusNodeInfoRefFunction_Set() error {
+	var err error
 	dBusNodeInfoRefFunction_Once.Do(func() {
-		dBusNodeInfoStruct_Set()
-		dBusNodeInfoRefFunction = dBusNodeInfoStruct.InvokerNew("ref")
+		err = dBusNodeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusNodeInfoRefFunction, err = dBusNodeInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_node_info_ref.
@@ -1100,9 +1195,10 @@ func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 
 	var ret gi.Argument
 
-	dBusNodeInfoRefFunction_Set()
-
-	ret = dBusNodeInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusNodeInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusNodeInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusNodeInfo{native: ret.Pointer()}
 
@@ -1112,11 +1208,16 @@ func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 var dBusNodeInfoUnrefFunction *gi.Function
 var dBusNodeInfoUnrefFunction_Once sync.Once
 
-func dBusNodeInfoUnrefFunction_Set() {
+func dBusNodeInfoUnrefFunction_Set() error {
+	var err error
 	dBusNodeInfoUnrefFunction_Once.Do(func() {
-		dBusNodeInfoStruct_Set()
-		dBusNodeInfoUnrefFunction = dBusNodeInfoStruct.InvokerNew("unref")
+		err = dBusNodeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusNodeInfoUnrefFunction, err = dBusNodeInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_node_info_unref.
@@ -1124,9 +1225,10 @@ func (recv *DBusNodeInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusNodeInfoUnrefFunction_Set()
-
-	dBusNodeInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusNodeInfoUnrefFunction_Set()
+	if err == nil {
+		dBusNodeInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1325,11 +1427,16 @@ type DBusPropertyInfo struct {
 var dBusPropertyInfoRefFunction *gi.Function
 var dBusPropertyInfoRefFunction_Once sync.Once
 
-func dBusPropertyInfoRefFunction_Set() {
+func dBusPropertyInfoRefFunction_Set() error {
+	var err error
 	dBusPropertyInfoRefFunction_Once.Do(func() {
-		dBusPropertyInfoStruct_Set()
-		dBusPropertyInfoRefFunction = dBusPropertyInfoStruct.InvokerNew("ref")
+		err = dBusPropertyInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusPropertyInfoRefFunction, err = dBusPropertyInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_property_info_ref.
@@ -1339,9 +1446,10 @@ func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 
 	var ret gi.Argument
 
-	dBusPropertyInfoRefFunction_Set()
-
-	ret = dBusPropertyInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusPropertyInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusPropertyInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusPropertyInfo{native: ret.Pointer()}
 
@@ -1351,11 +1459,16 @@ func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 var dBusPropertyInfoUnrefFunction *gi.Function
 var dBusPropertyInfoUnrefFunction_Once sync.Once
 
-func dBusPropertyInfoUnrefFunction_Set() {
+func dBusPropertyInfoUnrefFunction_Set() error {
+	var err error
 	dBusPropertyInfoUnrefFunction_Once.Do(func() {
-		dBusPropertyInfoStruct_Set()
-		dBusPropertyInfoUnrefFunction = dBusPropertyInfoStruct.InvokerNew("unref")
+		err = dBusPropertyInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusPropertyInfoUnrefFunction, err = dBusPropertyInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_property_info_unref.
@@ -1363,9 +1476,10 @@ func (recv *DBusPropertyInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusPropertyInfoUnrefFunction_Set()
-
-	dBusPropertyInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusPropertyInfoUnrefFunction_Set()
+	if err == nil {
+		dBusPropertyInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1423,11 +1537,16 @@ type DBusSignalInfo struct {
 var dBusSignalInfoRefFunction *gi.Function
 var dBusSignalInfoRefFunction_Once sync.Once
 
-func dBusSignalInfoRefFunction_Set() {
+func dBusSignalInfoRefFunction_Set() error {
+	var err error
 	dBusSignalInfoRefFunction_Once.Do(func() {
-		dBusSignalInfoStruct_Set()
-		dBusSignalInfoRefFunction = dBusSignalInfoStruct.InvokerNew("ref")
+		err = dBusSignalInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusSignalInfoRefFunction, err = dBusSignalInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_dbus_signal_info_ref.
@@ -1437,9 +1556,10 @@ func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 
 	var ret gi.Argument
 
-	dBusSignalInfoRefFunction_Set()
-
-	ret = dBusSignalInfoRefFunction.Invoke(inArgs[:], nil)
+	err := dBusSignalInfoRefFunction_Set()
+	if err == nil {
+		ret = dBusSignalInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &DBusSignalInfo{native: ret.Pointer()}
 
@@ -1449,11 +1569,16 @@ func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 var dBusSignalInfoUnrefFunction *gi.Function
 var dBusSignalInfoUnrefFunction_Once sync.Once
 
-func dBusSignalInfoUnrefFunction_Set() {
+func dBusSignalInfoUnrefFunction_Set() error {
+	var err error
 	dBusSignalInfoUnrefFunction_Once.Do(func() {
-		dBusSignalInfoStruct_Set()
-		dBusSignalInfoUnrefFunction = dBusSignalInfoStruct.InvokerNew("unref")
+		err = dBusSignalInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		dBusSignalInfoUnrefFunction, err = dBusSignalInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_dbus_signal_info_unref.
@@ -1461,9 +1586,10 @@ func (recv *DBusSignalInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	dBusSignalInfoUnrefFunction_Set()
-
-	dBusSignalInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := dBusSignalInfoUnrefFunction_Set()
+	if err == nil {
+		dBusSignalInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1800,11 +1926,16 @@ type FileAttributeInfoList struct {
 var fileAttributeInfoListNewFunction *gi.Function
 var fileAttributeInfoListNewFunction_Once sync.Once
 
-func fileAttributeInfoListNewFunction_Set() {
+func fileAttributeInfoListNewFunction_Set() error {
+	var err error
 	fileAttributeInfoListNewFunction_Once.Do(func() {
-		fileAttributeInfoListStruct_Set()
-		fileAttributeInfoListNewFunction = fileAttributeInfoListStruct.InvokerNew("new")
+		err = fileAttributeInfoListStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeInfoListNewFunction, err = fileAttributeInfoListStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // FileAttributeInfoListNew is a representation of the C type g_file_attribute_info_list_new.
@@ -1812,9 +1943,10 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 
 	var ret gi.Argument
 
-	fileAttributeInfoListNewFunction_Set()
-
-	ret = fileAttributeInfoListNewFunction.Invoke(nil, nil)
+	err := fileAttributeInfoListNewFunction_Set()
+	if err == nil {
+		ret = fileAttributeInfoListNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &FileAttributeInfoList{native: ret.Pointer()}
 
@@ -1826,11 +1958,16 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 var fileAttributeInfoListDupFunction *gi.Function
 var fileAttributeInfoListDupFunction_Once sync.Once
 
-func fileAttributeInfoListDupFunction_Set() {
+func fileAttributeInfoListDupFunction_Set() error {
+	var err error
 	fileAttributeInfoListDupFunction_Once.Do(func() {
-		fileAttributeInfoListStruct_Set()
-		fileAttributeInfoListDupFunction = fileAttributeInfoListStruct.InvokerNew("dup")
+		err = fileAttributeInfoListStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeInfoListDupFunction, err = fileAttributeInfoListStruct.InvokerNew("dup")
 	})
+	return err
 }
 
 // Dup is a representation of the C type g_file_attribute_info_list_dup.
@@ -1840,9 +1977,10 @@ func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
 
 	var ret gi.Argument
 
-	fileAttributeInfoListDupFunction_Set()
-
-	ret = fileAttributeInfoListDupFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeInfoListDupFunction_Set()
+	if err == nil {
+		ret = fileAttributeInfoListDupFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FileAttributeInfoList{native: ret.Pointer()}
 
@@ -1852,11 +1990,16 @@ func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
 var fileAttributeInfoListLookupFunction *gi.Function
 var fileAttributeInfoListLookupFunction_Once sync.Once
 
-func fileAttributeInfoListLookupFunction_Set() {
+func fileAttributeInfoListLookupFunction_Set() error {
+	var err error
 	fileAttributeInfoListLookupFunction_Once.Do(func() {
-		fileAttributeInfoListStruct_Set()
-		fileAttributeInfoListLookupFunction = fileAttributeInfoListStruct.InvokerNew("lookup")
+		err = fileAttributeInfoListStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeInfoListLookupFunction, err = fileAttributeInfoListStruct.InvokerNew("lookup")
 	})
+	return err
 }
 
 // Lookup is a representation of the C type g_file_attribute_info_list_lookup.
@@ -1867,9 +2010,10 @@ func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
 
 	var ret gi.Argument
 
-	fileAttributeInfoListLookupFunction_Set()
-
-	ret = fileAttributeInfoListLookupFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeInfoListLookupFunction_Set()
+	if err == nil {
+		ret = fileAttributeInfoListLookupFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FileAttributeInfo{native: ret.Pointer()}
 
@@ -1879,11 +2023,16 @@ func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
 var fileAttributeInfoListRefFunction *gi.Function
 var fileAttributeInfoListRefFunction_Once sync.Once
 
-func fileAttributeInfoListRefFunction_Set() {
+func fileAttributeInfoListRefFunction_Set() error {
+	var err error
 	fileAttributeInfoListRefFunction_Once.Do(func() {
-		fileAttributeInfoListStruct_Set()
-		fileAttributeInfoListRefFunction = fileAttributeInfoListStruct.InvokerNew("ref")
+		err = fileAttributeInfoListStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeInfoListRefFunction, err = fileAttributeInfoListStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_file_attribute_info_list_ref.
@@ -1893,9 +2042,10 @@ func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 
 	var ret gi.Argument
 
-	fileAttributeInfoListRefFunction_Set()
-
-	ret = fileAttributeInfoListRefFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeInfoListRefFunction_Set()
+	if err == nil {
+		ret = fileAttributeInfoListRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FileAttributeInfoList{native: ret.Pointer()}
 
@@ -1905,11 +2055,16 @@ func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 var fileAttributeInfoListUnrefFunction *gi.Function
 var fileAttributeInfoListUnrefFunction_Once sync.Once
 
-func fileAttributeInfoListUnrefFunction_Set() {
+func fileAttributeInfoListUnrefFunction_Set() error {
+	var err error
 	fileAttributeInfoListUnrefFunction_Once.Do(func() {
-		fileAttributeInfoListStruct_Set()
-		fileAttributeInfoListUnrefFunction = fileAttributeInfoListStruct.InvokerNew("unref")
+		err = fileAttributeInfoListStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeInfoListUnrefFunction, err = fileAttributeInfoListStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_file_attribute_info_list_unref.
@@ -1917,9 +2072,10 @@ func (recv *FileAttributeInfoList) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	fileAttributeInfoListUnrefFunction_Set()
-
-	fileAttributeInfoListUnrefFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeInfoListUnrefFunction_Set()
+	if err == nil {
+		fileAttributeInfoListUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1941,11 +2097,16 @@ type FileAttributeMatcher struct {
 var fileAttributeMatcherNewFunction *gi.Function
 var fileAttributeMatcherNewFunction_Once sync.Once
 
-func fileAttributeMatcherNewFunction_Set() {
+func fileAttributeMatcherNewFunction_Set() error {
+	var err error
 	fileAttributeMatcherNewFunction_Once.Do(func() {
-		fileAttributeMatcherStruct_Set()
-		fileAttributeMatcherNewFunction = fileAttributeMatcherStruct.InvokerNew("new")
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherNewFunction, err = fileAttributeMatcherStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // FileAttributeMatcherNew is a representation of the C type g_file_attribute_matcher_new.
@@ -1955,9 +2116,10 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 
 	var ret gi.Argument
 
-	fileAttributeMatcherNewFunction_Set()
-
-	ret = fileAttributeMatcherNewFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeMatcherNewFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherNewFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FileAttributeMatcher{native: ret.Pointer()}
 
@@ -1969,11 +2131,16 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 var fileAttributeMatcherEnumerateNextFunction *gi.Function
 var fileAttributeMatcherEnumerateNextFunction_Once sync.Once
 
-func fileAttributeMatcherEnumerateNextFunction_Set() {
+func fileAttributeMatcherEnumerateNextFunction_Set() error {
+	var err error
 	fileAttributeMatcherEnumerateNextFunction_Once.Do(func() {
-		fileAttributeMatcherStruct_Set()
-		fileAttributeMatcherEnumerateNextFunction = fileAttributeMatcherStruct.InvokerNew("enumerate_next")
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherEnumerateNextFunction, err = fileAttributeMatcherStruct.InvokerNew("enumerate_next")
 	})
+	return err
 }
 
 // EnumerateNext is a representation of the C type g_file_attribute_matcher_enumerate_next.
@@ -1983,9 +2150,10 @@ func (recv *FileAttributeMatcher) EnumerateNext() string {
 
 	var ret gi.Argument
 
-	fileAttributeMatcherEnumerateNextFunction_Set()
-
-	ret = fileAttributeMatcherEnumerateNextFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeMatcherEnumerateNextFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherEnumerateNextFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -1999,11 +2167,16 @@ func (recv *FileAttributeMatcher) EnumerateNext() string {
 var fileAttributeMatcherRefFunction *gi.Function
 var fileAttributeMatcherRefFunction_Once sync.Once
 
-func fileAttributeMatcherRefFunction_Set() {
+func fileAttributeMatcherRefFunction_Set() error {
+	var err error
 	fileAttributeMatcherRefFunction_Once.Do(func() {
-		fileAttributeMatcherStruct_Set()
-		fileAttributeMatcherRefFunction = fileAttributeMatcherStruct.InvokerNew("ref")
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherRefFunction, err = fileAttributeMatcherStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_file_attribute_matcher_ref.
@@ -2013,9 +2186,10 @@ func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 
 	var ret gi.Argument
 
-	fileAttributeMatcherRefFunction_Set()
-
-	ret = fileAttributeMatcherRefFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeMatcherRefFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &FileAttributeMatcher{native: ret.Pointer()}
 
@@ -2027,11 +2201,16 @@ func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 var fileAttributeMatcherToStringFunction *gi.Function
 var fileAttributeMatcherToStringFunction_Once sync.Once
 
-func fileAttributeMatcherToStringFunction_Set() {
+func fileAttributeMatcherToStringFunction_Set() error {
+	var err error
 	fileAttributeMatcherToStringFunction_Once.Do(func() {
-		fileAttributeMatcherStruct_Set()
-		fileAttributeMatcherToStringFunction = fileAttributeMatcherStruct.InvokerNew("to_string")
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherToStringFunction, err = fileAttributeMatcherStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type g_file_attribute_matcher_to_string.
@@ -2041,9 +2220,10 @@ func (recv *FileAttributeMatcher) ToString() string {
 
 	var ret gi.Argument
 
-	fileAttributeMatcherToStringFunction_Set()
-
-	ret = fileAttributeMatcherToStringFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeMatcherToStringFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -2053,11 +2233,16 @@ func (recv *FileAttributeMatcher) ToString() string {
 var fileAttributeMatcherUnrefFunction *gi.Function
 var fileAttributeMatcherUnrefFunction_Once sync.Once
 
-func fileAttributeMatcherUnrefFunction_Set() {
+func fileAttributeMatcherUnrefFunction_Set() error {
+	var err error
 	fileAttributeMatcherUnrefFunction_Once.Do(func() {
-		fileAttributeMatcherStruct_Set()
-		fileAttributeMatcherUnrefFunction = fileAttributeMatcherStruct.InvokerNew("unref")
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherUnrefFunction, err = fileAttributeMatcherStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_file_attribute_matcher_unref.
@@ -2065,9 +2250,10 @@ func (recv *FileAttributeMatcher) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	fileAttributeMatcherUnrefFunction_Set()
-
-	fileAttributeMatcherUnrefFunction.Invoke(inArgs[:], nil)
+	err := fileAttributeMatcherUnrefFunction_Set()
+	if err == nil {
+		fileAttributeMatcherUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2527,11 +2713,16 @@ type IOExtension struct {
 var iOExtensionGetNameFunction *gi.Function
 var iOExtensionGetNameFunction_Once sync.Once
 
-func iOExtensionGetNameFunction_Set() {
+func iOExtensionGetNameFunction_Set() error {
+	var err error
 	iOExtensionGetNameFunction_Once.Do(func() {
-		iOExtensionStruct_Set()
-		iOExtensionGetNameFunction = iOExtensionStruct.InvokerNew("get_name")
+		err = iOExtensionStruct_Set()
+		if err != nil {
+			return
+		}
+		iOExtensionGetNameFunction, err = iOExtensionStruct.InvokerNew("get_name")
 	})
+	return err
 }
 
 // GetName is a representation of the C type g_io_extension_get_name.
@@ -2541,9 +2732,10 @@ func (recv *IOExtension) GetName() string {
 
 	var ret gi.Argument
 
-	iOExtensionGetNameFunction_Set()
-
-	ret = iOExtensionGetNameFunction.Invoke(inArgs[:], nil)
+	err := iOExtensionGetNameFunction_Set()
+	if err == nil {
+		ret = iOExtensionGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2553,11 +2745,16 @@ func (recv *IOExtension) GetName() string {
 var iOExtensionGetPriorityFunction *gi.Function
 var iOExtensionGetPriorityFunction_Once sync.Once
 
-func iOExtensionGetPriorityFunction_Set() {
+func iOExtensionGetPriorityFunction_Set() error {
+	var err error
 	iOExtensionGetPriorityFunction_Once.Do(func() {
-		iOExtensionStruct_Set()
-		iOExtensionGetPriorityFunction = iOExtensionStruct.InvokerNew("get_priority")
+		err = iOExtensionStruct_Set()
+		if err != nil {
+			return
+		}
+		iOExtensionGetPriorityFunction, err = iOExtensionStruct.InvokerNew("get_priority")
 	})
+	return err
 }
 
 // GetPriority is a representation of the C type g_io_extension_get_priority.
@@ -2567,9 +2764,10 @@ func (recv *IOExtension) GetPriority() int32 {
 
 	var ret gi.Argument
 
-	iOExtensionGetPriorityFunction_Set()
-
-	ret = iOExtensionGetPriorityFunction.Invoke(inArgs[:], nil)
+	err := iOExtensionGetPriorityFunction_Set()
+	if err == nil {
+		ret = iOExtensionGetPriorityFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Int32()
 
@@ -2598,11 +2796,16 @@ type IOExtensionPoint struct {
 var iOExtensionPointGetExtensionByNameFunction *gi.Function
 var iOExtensionPointGetExtensionByNameFunction_Once sync.Once
 
-func iOExtensionPointGetExtensionByNameFunction_Set() {
+func iOExtensionPointGetExtensionByNameFunction_Set() error {
+	var err error
 	iOExtensionPointGetExtensionByNameFunction_Once.Do(func() {
-		iOExtensionPointStruct_Set()
-		iOExtensionPointGetExtensionByNameFunction = iOExtensionPointStruct.InvokerNew("get_extension_by_name")
+		err = iOExtensionPointStruct_Set()
+		if err != nil {
+			return
+		}
+		iOExtensionPointGetExtensionByNameFunction, err = iOExtensionPointStruct.InvokerNew("get_extension_by_name")
 	})
+	return err
 }
 
 // GetExtensionByName is a representation of the C type g_io_extension_point_get_extension_by_name.
@@ -2613,9 +2816,10 @@ func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 
 	var ret gi.Argument
 
-	iOExtensionPointGetExtensionByNameFunction_Set()
-
-	ret = iOExtensionPointGetExtensionByNameFunction.Invoke(inArgs[:], nil)
+	err := iOExtensionPointGetExtensionByNameFunction_Set()
+	if err == nil {
+		ret = iOExtensionPointGetExtensionByNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &IOExtension{native: ret.Pointer()}
 
@@ -2661,11 +2865,16 @@ type IOModuleScope struct {
 var iOModuleScopeBlockFunction *gi.Function
 var iOModuleScopeBlockFunction_Once sync.Once
 
-func iOModuleScopeBlockFunction_Set() {
+func iOModuleScopeBlockFunction_Set() error {
+	var err error
 	iOModuleScopeBlockFunction_Once.Do(func() {
-		iOModuleScopeStruct_Set()
-		iOModuleScopeBlockFunction = iOModuleScopeStruct.InvokerNew("block")
+		err = iOModuleScopeStruct_Set()
+		if err != nil {
+			return
+		}
+		iOModuleScopeBlockFunction, err = iOModuleScopeStruct.InvokerNew("block")
 	})
+	return err
 }
 
 // Block is a representation of the C type g_io_module_scope_block.
@@ -2674,20 +2883,26 @@ func (recv *IOModuleScope) Block(basename string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(basename)
 
-	iOModuleScopeBlockFunction_Set()
-
-	iOModuleScopeBlockFunction.Invoke(inArgs[:], nil)
+	err := iOModuleScopeBlockFunction_Set()
+	if err == nil {
+		iOModuleScopeBlockFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var iOModuleScopeFreeFunction *gi.Function
 var iOModuleScopeFreeFunction_Once sync.Once
 
-func iOModuleScopeFreeFunction_Set() {
+func iOModuleScopeFreeFunction_Set() error {
+	var err error
 	iOModuleScopeFreeFunction_Once.Do(func() {
-		iOModuleScopeStruct_Set()
-		iOModuleScopeFreeFunction = iOModuleScopeStruct.InvokerNew("free")
+		err = iOModuleScopeStruct_Set()
+		if err != nil {
+			return
+		}
+		iOModuleScopeFreeFunction, err = iOModuleScopeStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type g_io_module_scope_free.
@@ -2695,9 +2910,10 @@ func (recv *IOModuleScope) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	iOModuleScopeFreeFunction_Set()
-
-	iOModuleScopeFreeFunction.Invoke(inArgs[:], nil)
+	err := iOModuleScopeFreeFunction_Set()
+	if err == nil {
+		iOModuleScopeFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -3807,11 +4023,16 @@ type Resource struct {
 var resourceRegisterFunction *gi.Function
 var resourceRegisterFunction_Once sync.Once
 
-func resourceRegisterFunction_Set() {
+func resourceRegisterFunction_Set() error {
+	var err error
 	resourceRegisterFunction_Once.Do(func() {
-		resourceStruct_Set()
-		resourceRegisterFunction = resourceStruct.InvokerNew("_register")
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceRegisterFunction, err = resourceStruct.InvokerNew("_register")
 	})
+	return err
 }
 
 // Register is a representation of the C type g_resources_register.
@@ -3819,20 +4040,26 @@ func (recv *Resource) Register() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	resourceRegisterFunction_Set()
-
-	resourceRegisterFunction.Invoke(inArgs[:], nil)
+	err := resourceRegisterFunction_Set()
+	if err == nil {
+		resourceRegisterFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var resourceUnregisterFunction *gi.Function
 var resourceUnregisterFunction_Once sync.Once
 
-func resourceUnregisterFunction_Set() {
+func resourceUnregisterFunction_Set() error {
+	var err error
 	resourceUnregisterFunction_Once.Do(func() {
-		resourceStruct_Set()
-		resourceUnregisterFunction = resourceStruct.InvokerNew("_unregister")
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceUnregisterFunction, err = resourceStruct.InvokerNew("_unregister")
 	})
+	return err
 }
 
 // Unregister is a representation of the C type g_resources_unregister.
@@ -3840,9 +4067,10 @@ func (recv *Resource) Unregister() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	resourceUnregisterFunction_Set()
-
-	resourceUnregisterFunction.Invoke(inArgs[:], nil)
+	err := resourceUnregisterFunction_Set()
+	if err == nil {
+		resourceUnregisterFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -3857,11 +4085,16 @@ func (recv *Resource) Unregister() {
 var resourceRefFunction *gi.Function
 var resourceRefFunction_Once sync.Once
 
-func resourceRefFunction_Set() {
+func resourceRefFunction_Set() error {
+	var err error
 	resourceRefFunction_Once.Do(func() {
-		resourceStruct_Set()
-		resourceRefFunction = resourceStruct.InvokerNew("ref")
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceRefFunction, err = resourceStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_resource_ref.
@@ -3871,9 +4104,10 @@ func (recv *Resource) Ref() *Resource {
 
 	var ret gi.Argument
 
-	resourceRefFunction_Set()
-
-	ret = resourceRefFunction.Invoke(inArgs[:], nil)
+	err := resourceRefFunction_Set()
+	if err == nil {
+		ret = resourceRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Resource{native: ret.Pointer()}
 
@@ -3883,11 +4117,16 @@ func (recv *Resource) Ref() *Resource {
 var resourceUnrefFunction *gi.Function
 var resourceUnrefFunction_Once sync.Once
 
-func resourceUnrefFunction_Set() {
+func resourceUnrefFunction_Set() error {
+	var err error
 	resourceUnrefFunction_Once.Do(func() {
-		resourceStruct_Set()
-		resourceUnrefFunction = resourceStruct.InvokerNew("unref")
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceUnrefFunction, err = resourceStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_resource_unref.
@@ -3895,9 +4134,10 @@ func (recv *Resource) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	resourceUnrefFunction_Set()
-
-	resourceUnrefFunction.Invoke(inArgs[:], nil)
+	err := resourceUnrefFunction_Set()
+	if err == nil {
+		resourceUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4017,11 +4257,16 @@ type SettingsSchema struct {
 var settingsSchemaGetIdFunction *gi.Function
 var settingsSchemaGetIdFunction_Once sync.Once
 
-func settingsSchemaGetIdFunction_Set() {
+func settingsSchemaGetIdFunction_Set() error {
+	var err error
 	settingsSchemaGetIdFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaGetIdFunction = settingsSchemaStruct.InvokerNew("get_id")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaGetIdFunction, err = settingsSchemaStruct.InvokerNew("get_id")
 	})
+	return err
 }
 
 // GetId is a representation of the C type g_settings_schema_get_id.
@@ -4031,9 +4276,10 @@ func (recv *SettingsSchema) GetId() string {
 
 	var ret gi.Argument
 
-	settingsSchemaGetIdFunction_Set()
-
-	ret = settingsSchemaGetIdFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaGetIdFunction_Set()
+	if err == nil {
+		ret = settingsSchemaGetIdFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4043,11 +4289,16 @@ func (recv *SettingsSchema) GetId() string {
 var settingsSchemaGetKeyFunction *gi.Function
 var settingsSchemaGetKeyFunction_Once sync.Once
 
-func settingsSchemaGetKeyFunction_Set() {
+func settingsSchemaGetKeyFunction_Set() error {
+	var err error
 	settingsSchemaGetKeyFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaGetKeyFunction = settingsSchemaStruct.InvokerNew("get_key")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaGetKeyFunction, err = settingsSchemaStruct.InvokerNew("get_key")
 	})
+	return err
 }
 
 // GetKey is a representation of the C type g_settings_schema_get_key.
@@ -4058,9 +4309,10 @@ func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 
 	var ret gi.Argument
 
-	settingsSchemaGetKeyFunction_Set()
-
-	ret = settingsSchemaGetKeyFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaGetKeyFunction_Set()
+	if err == nil {
+		ret = settingsSchemaGetKeyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SettingsSchemaKey{native: ret.Pointer()}
 
@@ -4070,11 +4322,16 @@ func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 var settingsSchemaGetPathFunction *gi.Function
 var settingsSchemaGetPathFunction_Once sync.Once
 
-func settingsSchemaGetPathFunction_Set() {
+func settingsSchemaGetPathFunction_Set() error {
+	var err error
 	settingsSchemaGetPathFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaGetPathFunction = settingsSchemaStruct.InvokerNew("get_path")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaGetPathFunction, err = settingsSchemaStruct.InvokerNew("get_path")
 	})
+	return err
 }
 
 // GetPath is a representation of the C type g_settings_schema_get_path.
@@ -4084,9 +4341,10 @@ func (recv *SettingsSchema) GetPath() string {
 
 	var ret gi.Argument
 
-	settingsSchemaGetPathFunction_Set()
-
-	ret = settingsSchemaGetPathFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaGetPathFunction_Set()
+	if err == nil {
+		ret = settingsSchemaGetPathFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4098,11 +4356,16 @@ func (recv *SettingsSchema) GetPath() string {
 var settingsSchemaListChildrenFunction *gi.Function
 var settingsSchemaListChildrenFunction_Once sync.Once
 
-func settingsSchemaListChildrenFunction_Set() {
+func settingsSchemaListChildrenFunction_Set() error {
+	var err error
 	settingsSchemaListChildrenFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaListChildrenFunction = settingsSchemaStruct.InvokerNew("list_children")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaListChildrenFunction, err = settingsSchemaStruct.InvokerNew("list_children")
 	})
+	return err
 }
 
 // ListChildren is a representation of the C type g_settings_schema_list_children.
@@ -4110,20 +4373,26 @@ func (recv *SettingsSchema) ListChildren() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	settingsSchemaListChildrenFunction_Set()
-
-	settingsSchemaListChildrenFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaListChildrenFunction_Set()
+	if err == nil {
+		settingsSchemaListChildrenFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var settingsSchemaListKeysFunction *gi.Function
 var settingsSchemaListKeysFunction_Once sync.Once
 
-func settingsSchemaListKeysFunction_Set() {
+func settingsSchemaListKeysFunction_Set() error {
+	var err error
 	settingsSchemaListKeysFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaListKeysFunction = settingsSchemaStruct.InvokerNew("list_keys")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaListKeysFunction, err = settingsSchemaStruct.InvokerNew("list_keys")
 	})
+	return err
 }
 
 // ListKeys is a representation of the C type g_settings_schema_list_keys.
@@ -4131,20 +4400,26 @@ func (recv *SettingsSchema) ListKeys() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	settingsSchemaListKeysFunction_Set()
-
-	settingsSchemaListKeysFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaListKeysFunction_Set()
+	if err == nil {
+		settingsSchemaListKeysFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var settingsSchemaRefFunction *gi.Function
 var settingsSchemaRefFunction_Once sync.Once
 
-func settingsSchemaRefFunction_Set() {
+func settingsSchemaRefFunction_Set() error {
+	var err error
 	settingsSchemaRefFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaRefFunction = settingsSchemaStruct.InvokerNew("ref")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaRefFunction, err = settingsSchemaStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_settings_schema_ref.
@@ -4154,9 +4429,10 @@ func (recv *SettingsSchema) Ref() *SettingsSchema {
 
 	var ret gi.Argument
 
-	settingsSchemaRefFunction_Set()
-
-	ret = settingsSchemaRefFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaRefFunction_Set()
+	if err == nil {
+		ret = settingsSchemaRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SettingsSchema{native: ret.Pointer()}
 
@@ -4166,11 +4442,16 @@ func (recv *SettingsSchema) Ref() *SettingsSchema {
 var settingsSchemaUnrefFunction *gi.Function
 var settingsSchemaUnrefFunction_Once sync.Once
 
-func settingsSchemaUnrefFunction_Set() {
+func settingsSchemaUnrefFunction_Set() error {
+	var err error
 	settingsSchemaUnrefFunction_Once.Do(func() {
-		settingsSchemaStruct_Set()
-		settingsSchemaUnrefFunction = settingsSchemaStruct.InvokerNew("unref")
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaUnrefFunction, err = settingsSchemaStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_settings_schema_unref.
@@ -4178,9 +4459,10 @@ func (recv *SettingsSchema) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	settingsSchemaUnrefFunction_Set()
-
-	settingsSchemaUnrefFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaUnrefFunction_Set()
+	if err == nil {
+		settingsSchemaUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4204,11 +4486,16 @@ type SettingsSchemaKey struct {
 var settingsSchemaKeyGetDescriptionFunction *gi.Function
 var settingsSchemaKeyGetDescriptionFunction_Once sync.Once
 
-func settingsSchemaKeyGetDescriptionFunction_Set() {
+func settingsSchemaKeyGetDescriptionFunction_Set() error {
+	var err error
 	settingsSchemaKeyGetDescriptionFunction_Once.Do(func() {
-		settingsSchemaKeyStruct_Set()
-		settingsSchemaKeyGetDescriptionFunction = settingsSchemaKeyStruct.InvokerNew("get_description")
+		err = settingsSchemaKeyStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaKeyGetDescriptionFunction, err = settingsSchemaKeyStruct.InvokerNew("get_description")
 	})
+	return err
 }
 
 // GetDescription is a representation of the C type g_settings_schema_key_get_description.
@@ -4218,9 +4505,10 @@ func (recv *SettingsSchemaKey) GetDescription() string {
 
 	var ret gi.Argument
 
-	settingsSchemaKeyGetDescriptionFunction_Set()
-
-	ret = settingsSchemaKeyGetDescriptionFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaKeyGetDescriptionFunction_Set()
+	if err == nil {
+		ret = settingsSchemaKeyGetDescriptionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4230,11 +4518,16 @@ func (recv *SettingsSchemaKey) GetDescription() string {
 var settingsSchemaKeyGetNameFunction *gi.Function
 var settingsSchemaKeyGetNameFunction_Once sync.Once
 
-func settingsSchemaKeyGetNameFunction_Set() {
+func settingsSchemaKeyGetNameFunction_Set() error {
+	var err error
 	settingsSchemaKeyGetNameFunction_Once.Do(func() {
-		settingsSchemaKeyStruct_Set()
-		settingsSchemaKeyGetNameFunction = settingsSchemaKeyStruct.InvokerNew("get_name")
+		err = settingsSchemaKeyStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaKeyGetNameFunction, err = settingsSchemaKeyStruct.InvokerNew("get_name")
 	})
+	return err
 }
 
 // GetName is a representation of the C type g_settings_schema_key_get_name.
@@ -4244,9 +4537,10 @@ func (recv *SettingsSchemaKey) GetName() string {
 
 	var ret gi.Argument
 
-	settingsSchemaKeyGetNameFunction_Set()
-
-	ret = settingsSchemaKeyGetNameFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaKeyGetNameFunction_Set()
+	if err == nil {
+		ret = settingsSchemaKeyGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4258,11 +4552,16 @@ func (recv *SettingsSchemaKey) GetName() string {
 var settingsSchemaKeyGetSummaryFunction *gi.Function
 var settingsSchemaKeyGetSummaryFunction_Once sync.Once
 
-func settingsSchemaKeyGetSummaryFunction_Set() {
+func settingsSchemaKeyGetSummaryFunction_Set() error {
+	var err error
 	settingsSchemaKeyGetSummaryFunction_Once.Do(func() {
-		settingsSchemaKeyStruct_Set()
-		settingsSchemaKeyGetSummaryFunction = settingsSchemaKeyStruct.InvokerNew("get_summary")
+		err = settingsSchemaKeyStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaKeyGetSummaryFunction, err = settingsSchemaKeyStruct.InvokerNew("get_summary")
 	})
+	return err
 }
 
 // GetSummary is a representation of the C type g_settings_schema_key_get_summary.
@@ -4272,9 +4571,10 @@ func (recv *SettingsSchemaKey) GetSummary() string {
 
 	var ret gi.Argument
 
-	settingsSchemaKeyGetSummaryFunction_Set()
-
-	ret = settingsSchemaKeyGetSummaryFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaKeyGetSummaryFunction_Set()
+	if err == nil {
+		ret = settingsSchemaKeyGetSummaryFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4288,11 +4588,16 @@ func (recv *SettingsSchemaKey) GetSummary() string {
 var settingsSchemaKeyRefFunction *gi.Function
 var settingsSchemaKeyRefFunction_Once sync.Once
 
-func settingsSchemaKeyRefFunction_Set() {
+func settingsSchemaKeyRefFunction_Set() error {
+	var err error
 	settingsSchemaKeyRefFunction_Once.Do(func() {
-		settingsSchemaKeyStruct_Set()
-		settingsSchemaKeyRefFunction = settingsSchemaKeyStruct.InvokerNew("ref")
+		err = settingsSchemaKeyStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaKeyRefFunction, err = settingsSchemaKeyStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_settings_schema_key_ref.
@@ -4302,9 +4607,10 @@ func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
 
 	var ret gi.Argument
 
-	settingsSchemaKeyRefFunction_Set()
-
-	ret = settingsSchemaKeyRefFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaKeyRefFunction_Set()
+	if err == nil {
+		ret = settingsSchemaKeyRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SettingsSchemaKey{native: ret.Pointer()}
 
@@ -4314,11 +4620,16 @@ func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
 var settingsSchemaKeyUnrefFunction *gi.Function
 var settingsSchemaKeyUnrefFunction_Once sync.Once
 
-func settingsSchemaKeyUnrefFunction_Set() {
+func settingsSchemaKeyUnrefFunction_Set() error {
+	var err error
 	settingsSchemaKeyUnrefFunction_Once.Do(func() {
-		settingsSchemaKeyStruct_Set()
-		settingsSchemaKeyUnrefFunction = settingsSchemaKeyStruct.InvokerNew("unref")
+		err = settingsSchemaKeyStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaKeyUnrefFunction, err = settingsSchemaKeyStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_settings_schema_key_unref.
@@ -4326,9 +4637,10 @@ func (recv *SettingsSchemaKey) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	settingsSchemaKeyUnrefFunction_Set()
-
-	settingsSchemaKeyUnrefFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaKeyUnrefFunction_Set()
+	if err == nil {
+		settingsSchemaKeyUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4356,11 +4668,16 @@ type SettingsSchemaSource struct {
 var settingsSchemaSourceRefFunction *gi.Function
 var settingsSchemaSourceRefFunction_Once sync.Once
 
-func settingsSchemaSourceRefFunction_Set() {
+func settingsSchemaSourceRefFunction_Set() error {
+	var err error
 	settingsSchemaSourceRefFunction_Once.Do(func() {
-		settingsSchemaSourceStruct_Set()
-		settingsSchemaSourceRefFunction = settingsSchemaSourceStruct.InvokerNew("ref")
+		err = settingsSchemaSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaSourceRefFunction, err = settingsSchemaSourceStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type g_settings_schema_source_ref.
@@ -4370,9 +4687,10 @@ func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 
 	var ret gi.Argument
 
-	settingsSchemaSourceRefFunction_Set()
-
-	ret = settingsSchemaSourceRefFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaSourceRefFunction_Set()
+	if err == nil {
+		ret = settingsSchemaSourceRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SettingsSchemaSource{native: ret.Pointer()}
 
@@ -4382,11 +4700,16 @@ func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 var settingsSchemaSourceUnrefFunction *gi.Function
 var settingsSchemaSourceUnrefFunction_Once sync.Once
 
-func settingsSchemaSourceUnrefFunction_Set() {
+func settingsSchemaSourceUnrefFunction_Set() error {
+	var err error
 	settingsSchemaSourceUnrefFunction_Once.Do(func() {
-		settingsSchemaSourceStruct_Set()
-		settingsSchemaSourceUnrefFunction = settingsSchemaSourceStruct.InvokerNew("unref")
+		err = settingsSchemaSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaSourceUnrefFunction, err = settingsSchemaSourceStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type g_settings_schema_source_unref.
@@ -4394,9 +4717,10 @@ func (recv *SettingsSchemaSource) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	settingsSchemaSourceUnrefFunction_Set()
-
-	settingsSchemaSourceUnrefFunction.Invoke(inArgs[:], nil)
+	err := settingsSchemaSourceUnrefFunction_Set()
+	if err == nil {
+		settingsSchemaSourceUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -4786,11 +5110,16 @@ type SrvTarget struct {
 var srvTargetNewFunction *gi.Function
 var srvTargetNewFunction_Once sync.Once
 
-func srvTargetNewFunction_Set() {
+func srvTargetNewFunction_Set() error {
+	var err error
 	srvTargetNewFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetNewFunction = srvTargetStruct.InvokerNew("new")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetNewFunction, err = srvTargetStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // SrvTargetNew is a representation of the C type g_srv_target_new.
@@ -4803,9 +5132,10 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 
 	var ret gi.Argument
 
-	srvTargetNewFunction_Set()
-
-	ret = srvTargetNewFunction.Invoke(inArgs[:], nil)
+	err := srvTargetNewFunction_Set()
+	if err == nil {
+		ret = srvTargetNewFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SrvTarget{native: ret.Pointer()}
 
@@ -4815,11 +5145,16 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 var srvTargetCopyFunction *gi.Function
 var srvTargetCopyFunction_Once sync.Once
 
-func srvTargetCopyFunction_Set() {
+func srvTargetCopyFunction_Set() error {
+	var err error
 	srvTargetCopyFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetCopyFunction = srvTargetStruct.InvokerNew("copy")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetCopyFunction, err = srvTargetStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type g_srv_target_copy.
@@ -4829,9 +5164,10 @@ func (recv *SrvTarget) Copy() *SrvTarget {
 
 	var ret gi.Argument
 
-	srvTargetCopyFunction_Set()
-
-	ret = srvTargetCopyFunction.Invoke(inArgs[:], nil)
+	err := srvTargetCopyFunction_Set()
+	if err == nil {
+		ret = srvTargetCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SrvTarget{native: ret.Pointer()}
 
@@ -4841,11 +5177,16 @@ func (recv *SrvTarget) Copy() *SrvTarget {
 var srvTargetFreeFunction *gi.Function
 var srvTargetFreeFunction_Once sync.Once
 
-func srvTargetFreeFunction_Set() {
+func srvTargetFreeFunction_Set() error {
+	var err error
 	srvTargetFreeFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetFreeFunction = srvTargetStruct.InvokerNew("free")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetFreeFunction, err = srvTargetStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type g_srv_target_free.
@@ -4853,20 +5194,26 @@ func (recv *SrvTarget) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	srvTargetFreeFunction_Set()
-
-	srvTargetFreeFunction.Invoke(inArgs[:], nil)
+	err := srvTargetFreeFunction_Set()
+	if err == nil {
+		srvTargetFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var srvTargetGetHostnameFunction *gi.Function
 var srvTargetGetHostnameFunction_Once sync.Once
 
-func srvTargetGetHostnameFunction_Set() {
+func srvTargetGetHostnameFunction_Set() error {
+	var err error
 	srvTargetGetHostnameFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetGetHostnameFunction = srvTargetStruct.InvokerNew("get_hostname")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetGetHostnameFunction, err = srvTargetStruct.InvokerNew("get_hostname")
 	})
+	return err
 }
 
 // GetHostname is a representation of the C type g_srv_target_get_hostname.
@@ -4876,9 +5223,10 @@ func (recv *SrvTarget) GetHostname() string {
 
 	var ret gi.Argument
 
-	srvTargetGetHostnameFunction_Set()
-
-	ret = srvTargetGetHostnameFunction.Invoke(inArgs[:], nil)
+	err := srvTargetGetHostnameFunction_Set()
+	if err == nil {
+		ret = srvTargetGetHostnameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -4888,11 +5236,16 @@ func (recv *SrvTarget) GetHostname() string {
 var srvTargetGetPortFunction *gi.Function
 var srvTargetGetPortFunction_Once sync.Once
 
-func srvTargetGetPortFunction_Set() {
+func srvTargetGetPortFunction_Set() error {
+	var err error
 	srvTargetGetPortFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetGetPortFunction = srvTargetStruct.InvokerNew("get_port")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetGetPortFunction, err = srvTargetStruct.InvokerNew("get_port")
 	})
+	return err
 }
 
 // GetPort is a representation of the C type g_srv_target_get_port.
@@ -4902,9 +5255,10 @@ func (recv *SrvTarget) GetPort() uint16 {
 
 	var ret gi.Argument
 
-	srvTargetGetPortFunction_Set()
-
-	ret = srvTargetGetPortFunction.Invoke(inArgs[:], nil)
+	err := srvTargetGetPortFunction_Set()
+	if err == nil {
+		ret = srvTargetGetPortFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint16()
 
@@ -4914,11 +5268,16 @@ func (recv *SrvTarget) GetPort() uint16 {
 var srvTargetGetPriorityFunction *gi.Function
 var srvTargetGetPriorityFunction_Once sync.Once
 
-func srvTargetGetPriorityFunction_Set() {
+func srvTargetGetPriorityFunction_Set() error {
+	var err error
 	srvTargetGetPriorityFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetGetPriorityFunction = srvTargetStruct.InvokerNew("get_priority")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetGetPriorityFunction, err = srvTargetStruct.InvokerNew("get_priority")
 	})
+	return err
 }
 
 // GetPriority is a representation of the C type g_srv_target_get_priority.
@@ -4928,9 +5287,10 @@ func (recv *SrvTarget) GetPriority() uint16 {
 
 	var ret gi.Argument
 
-	srvTargetGetPriorityFunction_Set()
-
-	ret = srvTargetGetPriorityFunction.Invoke(inArgs[:], nil)
+	err := srvTargetGetPriorityFunction_Set()
+	if err == nil {
+		ret = srvTargetGetPriorityFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint16()
 
@@ -4940,11 +5300,16 @@ func (recv *SrvTarget) GetPriority() uint16 {
 var srvTargetGetWeightFunction *gi.Function
 var srvTargetGetWeightFunction_Once sync.Once
 
-func srvTargetGetWeightFunction_Set() {
+func srvTargetGetWeightFunction_Set() error {
+	var err error
 	srvTargetGetWeightFunction_Once.Do(func() {
-		srvTargetStruct_Set()
-		srvTargetGetWeightFunction = srvTargetStruct.InvokerNew("get_weight")
+		err = srvTargetStruct_Set()
+		if err != nil {
+			return
+		}
+		srvTargetGetWeightFunction, err = srvTargetStruct.InvokerNew("get_weight")
 	})
+	return err
 }
 
 // GetWeight is a representation of the C type g_srv_target_get_weight.
@@ -4954,9 +5319,10 @@ func (recv *SrvTarget) GetWeight() uint16 {
 
 	var ret gi.Argument
 
-	srvTargetGetWeightFunction_Set()
-
-	ret = srvTargetGetWeightFunction.Invoke(inArgs[:], nil)
+	err := srvTargetGetWeightFunction_Set()
+	if err == nil {
+		ret = srvTargetGetWeightFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint16()
 
@@ -4981,11 +5347,16 @@ type StaticResource struct {
 var staticResourceFiniFunction *gi.Function
 var staticResourceFiniFunction_Once sync.Once
 
-func staticResourceFiniFunction_Set() {
+func staticResourceFiniFunction_Set() error {
+	var err error
 	staticResourceFiniFunction_Once.Do(func() {
-		staticResourceStruct_Set()
-		staticResourceFiniFunction = staticResourceStruct.InvokerNew("fini")
+		err = staticResourceStruct_Set()
+		if err != nil {
+			return
+		}
+		staticResourceFiniFunction, err = staticResourceStruct.InvokerNew("fini")
 	})
+	return err
 }
 
 // Fini is a representation of the C type g_static_resource_fini.
@@ -4993,20 +5364,26 @@ func (recv *StaticResource) Fini() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	staticResourceFiniFunction_Set()
-
-	staticResourceFiniFunction.Invoke(inArgs[:], nil)
+	err := staticResourceFiniFunction_Set()
+	if err == nil {
+		staticResourceFiniFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var staticResourceGetResourceFunction *gi.Function
 var staticResourceGetResourceFunction_Once sync.Once
 
-func staticResourceGetResourceFunction_Set() {
+func staticResourceGetResourceFunction_Set() error {
+	var err error
 	staticResourceGetResourceFunction_Once.Do(func() {
-		staticResourceStruct_Set()
-		staticResourceGetResourceFunction = staticResourceStruct.InvokerNew("get_resource")
+		err = staticResourceStruct_Set()
+		if err != nil {
+			return
+		}
+		staticResourceGetResourceFunction, err = staticResourceStruct.InvokerNew("get_resource")
 	})
+	return err
 }
 
 // GetResource is a representation of the C type g_static_resource_get_resource.
@@ -5016,9 +5393,10 @@ func (recv *StaticResource) GetResource() *Resource {
 
 	var ret gi.Argument
 
-	staticResourceGetResourceFunction_Set()
-
-	ret = staticResourceGetResourceFunction.Invoke(inArgs[:], nil)
+	err := staticResourceGetResourceFunction_Set()
+	if err == nil {
+		ret = staticResourceGetResourceFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Resource{native: ret.Pointer()}
 
@@ -5028,11 +5406,16 @@ func (recv *StaticResource) GetResource() *Resource {
 var staticResourceInitFunction *gi.Function
 var staticResourceInitFunction_Once sync.Once
 
-func staticResourceInitFunction_Set() {
+func staticResourceInitFunction_Set() error {
+	var err error
 	staticResourceInitFunction_Once.Do(func() {
-		staticResourceStruct_Set()
-		staticResourceInitFunction = staticResourceStruct.InvokerNew("init")
+		err = staticResourceStruct_Set()
+		if err != nil {
+			return
+		}
+		staticResourceInitFunction, err = staticResourceStruct.InvokerNew("init")
 	})
+	return err
 }
 
 // Init is a representation of the C type g_static_resource_init.
@@ -5040,9 +5423,10 @@ func (recv *StaticResource) Init() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	staticResourceInitFunction_Set()
-
-	staticResourceInitFunction.Invoke(inArgs[:], nil)
+	err := staticResourceInitFunction_Set()
+	if err == nil {
+		staticResourceInitFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -5649,11 +6033,16 @@ type UnixMountPoint struct {
 var unixMountPointCopyFunction *gi.Function
 var unixMountPointCopyFunction_Once sync.Once
 
-func unixMountPointCopyFunction_Set() {
+func unixMountPointCopyFunction_Set() error {
+	var err error
 	unixMountPointCopyFunction_Once.Do(func() {
-		unixMountPointStruct_Set()
-		unixMountPointCopyFunction = unixMountPointStruct.InvokerNew("copy")
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointCopyFunction, err = unixMountPointStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type g_unix_mount_point_copy.
@@ -5663,9 +6052,10 @@ func (recv *UnixMountPoint) Copy() *UnixMountPoint {
 
 	var ret gi.Argument
 
-	unixMountPointCopyFunction_Set()
-
-	ret = unixMountPointCopyFunction.Invoke(inArgs[:], nil)
+	err := unixMountPointCopyFunction_Set()
+	if err == nil {
+		ret = unixMountPointCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &UnixMountPoint{native: ret.Pointer()}
 
@@ -5675,11 +6065,16 @@ func (recv *UnixMountPoint) Copy() *UnixMountPoint {
 var unixMountPointFreeFunction *gi.Function
 var unixMountPointFreeFunction_Once sync.Once
 
-func unixMountPointFreeFunction_Set() {
+func unixMountPointFreeFunction_Set() error {
+	var err error
 	unixMountPointFreeFunction_Once.Do(func() {
-		unixMountPointStruct_Set()
-		unixMountPointFreeFunction = unixMountPointStruct.InvokerNew("free")
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointFreeFunction, err = unixMountPointStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type g_unix_mount_point_free.
@@ -5687,9 +6082,10 @@ func (recv *UnixMountPoint) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	unixMountPointFreeFunction_Set()
-
-	unixMountPointFreeFunction.Invoke(inArgs[:], nil)
+	err := unixMountPointFreeFunction_Set()
+	if err == nil {
+		unixMountPointFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -5698,11 +6094,16 @@ func (recv *UnixMountPoint) Free() {
 var unixMountPointGetFsTypeFunction *gi.Function
 var unixMountPointGetFsTypeFunction_Once sync.Once
 
-func unixMountPointGetFsTypeFunction_Set() {
+func unixMountPointGetFsTypeFunction_Set() error {
+	var err error
 	unixMountPointGetFsTypeFunction_Once.Do(func() {
-		unixMountPointStruct_Set()
-		unixMountPointGetFsTypeFunction = unixMountPointStruct.InvokerNew("get_fs_type")
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGetFsTypeFunction, err = unixMountPointStruct.InvokerNew("get_fs_type")
 	})
+	return err
 }
 
 // GetFsType is a representation of the C type g_unix_mount_point_get_fs_type.
@@ -5712,9 +6113,10 @@ func (recv *UnixMountPoint) GetFsType() string {
 
 	var ret gi.Argument
 
-	unixMountPointGetFsTypeFunction_Set()
-
-	ret = unixMountPointGetFsTypeFunction.Invoke(inArgs[:], nil)
+	err := unixMountPointGetFsTypeFunction_Set()
+	if err == nil {
+		ret = unixMountPointGetFsTypeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -5726,11 +6128,16 @@ func (recv *UnixMountPoint) GetFsType() string {
 var unixMountPointGetOptionsFunction *gi.Function
 var unixMountPointGetOptionsFunction_Once sync.Once
 
-func unixMountPointGetOptionsFunction_Set() {
+func unixMountPointGetOptionsFunction_Set() error {
+	var err error
 	unixMountPointGetOptionsFunction_Once.Do(func() {
-		unixMountPointStruct_Set()
-		unixMountPointGetOptionsFunction = unixMountPointStruct.InvokerNew("get_options")
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGetOptionsFunction, err = unixMountPointStruct.InvokerNew("get_options")
 	})
+	return err
 }
 
 // GetOptions is a representation of the C type g_unix_mount_point_get_options.
@@ -5740,9 +6147,10 @@ func (recv *UnixMountPoint) GetOptions() string {
 
 	var ret gi.Argument
 
-	unixMountPointGetOptionsFunction_Set()
-
-	ret = unixMountPointGetOptionsFunction.Invoke(inArgs[:], nil)
+	err := unixMountPointGetOptionsFunction_Set()
+	if err == nil {
+		ret = unixMountPointGetOptionsFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -5756,11 +6164,16 @@ func (recv *UnixMountPoint) GetOptions() string {
 var unixMountPointGuessNameFunction *gi.Function
 var unixMountPointGuessNameFunction_Once sync.Once
 
-func unixMountPointGuessNameFunction_Set() {
+func unixMountPointGuessNameFunction_Set() error {
+	var err error
 	unixMountPointGuessNameFunction_Once.Do(func() {
-		unixMountPointStruct_Set()
-		unixMountPointGuessNameFunction = unixMountPointStruct.InvokerNew("guess_name")
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGuessNameFunction, err = unixMountPointStruct.InvokerNew("guess_name")
 	})
+	return err
 }
 
 // GuessName is a representation of the C type g_unix_mount_point_guess_name.
@@ -5770,9 +6183,10 @@ func (recv *UnixMountPoint) GuessName() string {
 
 	var ret gi.Argument
 
-	unixMountPointGuessNameFunction_Set()
-
-	ret = unixMountPointGuessNameFunction.Invoke(inArgs[:], nil)
+	err := unixMountPointGuessNameFunction_Set()
+	if err == nil {
+		ret = unixMountPointGuessNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 

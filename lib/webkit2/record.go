@@ -25,11 +25,16 @@ type ApplicationInfo struct {
 var applicationInfoNewFunction *gi.Function
 var applicationInfoNewFunction_Once sync.Once
 
-func applicationInfoNewFunction_Set() {
+func applicationInfoNewFunction_Set() error {
+	var err error
 	applicationInfoNewFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoNewFunction = applicationInfoStruct.InvokerNew("new")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoNewFunction, err = applicationInfoStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // ApplicationInfoNew is a representation of the C type webkit_application_info_new.
@@ -37,9 +42,10 @@ func ApplicationInfoNew() *ApplicationInfo {
 
 	var ret gi.Argument
 
-	applicationInfoNewFunction_Set()
-
-	ret = applicationInfoNewFunction.Invoke(nil, nil)
+	err := applicationInfoNewFunction_Set()
+	if err == nil {
+		ret = applicationInfoNewFunction.Invoke(nil, nil)
+	}
 
 	retGo := &ApplicationInfo{native: ret.Pointer()}
 
@@ -49,11 +55,16 @@ func ApplicationInfoNew() *ApplicationInfo {
 var applicationInfoGetNameFunction *gi.Function
 var applicationInfoGetNameFunction_Once sync.Once
 
-func applicationInfoGetNameFunction_Set() {
+func applicationInfoGetNameFunction_Set() error {
+	var err error
 	applicationInfoGetNameFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoGetNameFunction = applicationInfoStruct.InvokerNew("get_name")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoGetNameFunction, err = applicationInfoStruct.InvokerNew("get_name")
 	})
+	return err
 }
 
 // GetName is a representation of the C type webkit_application_info_get_name.
@@ -63,9 +74,10 @@ func (recv *ApplicationInfo) GetName() string {
 
 	var ret gi.Argument
 
-	applicationInfoGetNameFunction_Set()
-
-	ret = applicationInfoGetNameFunction.Invoke(inArgs[:], nil)
+	err := applicationInfoGetNameFunction_Set()
+	if err == nil {
+		ret = applicationInfoGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -75,11 +87,16 @@ func (recv *ApplicationInfo) GetName() string {
 var applicationInfoGetVersionFunction *gi.Function
 var applicationInfoGetVersionFunction_Once sync.Once
 
-func applicationInfoGetVersionFunction_Set() {
+func applicationInfoGetVersionFunction_Set() error {
+	var err error
 	applicationInfoGetVersionFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoGetVersionFunction = applicationInfoStruct.InvokerNew("get_version")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoGetVersionFunction, err = applicationInfoStruct.InvokerNew("get_version")
 	})
+	return err
 }
 
 // GetVersion is a representation of the C type webkit_application_info_get_version.
@@ -89,9 +106,10 @@ func (recv *ApplicationInfo) GetVersion() (uint64, uint64, uint64) {
 
 	var outArgs [3]gi.Argument
 
-	applicationInfoGetVersionFunction_Set()
-
-	applicationInfoGetVersionFunction.Invoke(inArgs[:], outArgs[:])
+	err := applicationInfoGetVersionFunction_Set()
+	if err == nil {
+		applicationInfoGetVersionFunction.Invoke(inArgs[:], outArgs[:])
+	}
 
 	out0 := outArgs[0].Uint64()
 	out1 := outArgs[1].Uint64()
@@ -103,11 +121,16 @@ func (recv *ApplicationInfo) GetVersion() (uint64, uint64, uint64) {
 var applicationInfoRefFunction *gi.Function
 var applicationInfoRefFunction_Once sync.Once
 
-func applicationInfoRefFunction_Set() {
+func applicationInfoRefFunction_Set() error {
+	var err error
 	applicationInfoRefFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoRefFunction = applicationInfoStruct.InvokerNew("ref")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoRefFunction, err = applicationInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_application_info_ref.
@@ -117,9 +140,10 @@ func (recv *ApplicationInfo) Ref() *ApplicationInfo {
 
 	var ret gi.Argument
 
-	applicationInfoRefFunction_Set()
-
-	ret = applicationInfoRefFunction.Invoke(inArgs[:], nil)
+	err := applicationInfoRefFunction_Set()
+	if err == nil {
+		ret = applicationInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &ApplicationInfo{native: ret.Pointer()}
 
@@ -129,11 +153,16 @@ func (recv *ApplicationInfo) Ref() *ApplicationInfo {
 var applicationInfoSetNameFunction *gi.Function
 var applicationInfoSetNameFunction_Once sync.Once
 
-func applicationInfoSetNameFunction_Set() {
+func applicationInfoSetNameFunction_Set() error {
+	var err error
 	applicationInfoSetNameFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoSetNameFunction = applicationInfoStruct.InvokerNew("set_name")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoSetNameFunction, err = applicationInfoStruct.InvokerNew("set_name")
 	})
+	return err
 }
 
 // SetName is a representation of the C type webkit_application_info_set_name.
@@ -142,20 +171,26 @@ func (recv *ApplicationInfo) SetName(name string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(name)
 
-	applicationInfoSetNameFunction_Set()
-
-	applicationInfoSetNameFunction.Invoke(inArgs[:], nil)
+	err := applicationInfoSetNameFunction_Set()
+	if err == nil {
+		applicationInfoSetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var applicationInfoSetVersionFunction *gi.Function
 var applicationInfoSetVersionFunction_Once sync.Once
 
-func applicationInfoSetVersionFunction_Set() {
+func applicationInfoSetVersionFunction_Set() error {
+	var err error
 	applicationInfoSetVersionFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoSetVersionFunction = applicationInfoStruct.InvokerNew("set_version")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoSetVersionFunction, err = applicationInfoStruct.InvokerNew("set_version")
 	})
+	return err
 }
 
 // SetVersion is a representation of the C type webkit_application_info_set_version.
@@ -166,20 +201,26 @@ func (recv *ApplicationInfo) SetVersion(major uint64, minor uint64, micro uint64
 	inArgs[2].SetUint64(minor)
 	inArgs[3].SetUint64(micro)
 
-	applicationInfoSetVersionFunction_Set()
-
-	applicationInfoSetVersionFunction.Invoke(inArgs[:], nil)
+	err := applicationInfoSetVersionFunction_Set()
+	if err == nil {
+		applicationInfoSetVersionFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var applicationInfoUnrefFunction *gi.Function
 var applicationInfoUnrefFunction_Once sync.Once
 
-func applicationInfoUnrefFunction_Set() {
+func applicationInfoUnrefFunction_Set() error {
+	var err error
 	applicationInfoUnrefFunction_Once.Do(func() {
-		applicationInfoStruct_Set()
-		applicationInfoUnrefFunction = applicationInfoStruct.InvokerNew("unref")
+		err = applicationInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		applicationInfoUnrefFunction, err = applicationInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_application_info_unref.
@@ -187,9 +228,10 @@ func (recv *ApplicationInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	applicationInfoUnrefFunction_Set()
-
-	applicationInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := applicationInfoUnrefFunction_Set()
+	if err == nil {
+		applicationInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -489,11 +531,16 @@ type Credential struct {
 var credentialCopyFunction *gi.Function
 var credentialCopyFunction_Once sync.Once
 
-func credentialCopyFunction_Set() {
+func credentialCopyFunction_Set() error {
+	var err error
 	credentialCopyFunction_Once.Do(func() {
-		credentialStruct_Set()
-		credentialCopyFunction = credentialStruct.InvokerNew("copy")
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialCopyFunction, err = credentialStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type webkit_credential_copy.
@@ -503,9 +550,10 @@ func (recv *Credential) Copy() *Credential {
 
 	var ret gi.Argument
 
-	credentialCopyFunction_Set()
-
-	ret = credentialCopyFunction.Invoke(inArgs[:], nil)
+	err := credentialCopyFunction_Set()
+	if err == nil {
+		ret = credentialCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Credential{native: ret.Pointer()}
 
@@ -515,11 +563,16 @@ func (recv *Credential) Copy() *Credential {
 var credentialFreeFunction *gi.Function
 var credentialFreeFunction_Once sync.Once
 
-func credentialFreeFunction_Set() {
+func credentialFreeFunction_Set() error {
+	var err error
 	credentialFreeFunction_Once.Do(func() {
-		credentialStruct_Set()
-		credentialFreeFunction = credentialStruct.InvokerNew("free")
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialFreeFunction, err = credentialStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type webkit_credential_free.
@@ -527,20 +580,26 @@ func (recv *Credential) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	credentialFreeFunction_Set()
-
-	credentialFreeFunction.Invoke(inArgs[:], nil)
+	err := credentialFreeFunction_Set()
+	if err == nil {
+		credentialFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var credentialGetPasswordFunction *gi.Function
 var credentialGetPasswordFunction_Once sync.Once
 
-func credentialGetPasswordFunction_Set() {
+func credentialGetPasswordFunction_Set() error {
+	var err error
 	credentialGetPasswordFunction_Once.Do(func() {
-		credentialStruct_Set()
-		credentialGetPasswordFunction = credentialStruct.InvokerNew("get_password")
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialGetPasswordFunction, err = credentialStruct.InvokerNew("get_password")
 	})
+	return err
 }
 
 // GetPassword is a representation of the C type webkit_credential_get_password.
@@ -550,9 +609,10 @@ func (recv *Credential) GetPassword() string {
 
 	var ret gi.Argument
 
-	credentialGetPasswordFunction_Set()
-
-	ret = credentialGetPasswordFunction.Invoke(inArgs[:], nil)
+	err := credentialGetPasswordFunction_Set()
+	if err == nil {
+		ret = credentialGetPasswordFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -564,11 +624,16 @@ func (recv *Credential) GetPassword() string {
 var credentialGetUsernameFunction *gi.Function
 var credentialGetUsernameFunction_Once sync.Once
 
-func credentialGetUsernameFunction_Set() {
+func credentialGetUsernameFunction_Set() error {
+	var err error
 	credentialGetUsernameFunction_Once.Do(func() {
-		credentialStruct_Set()
-		credentialGetUsernameFunction = credentialStruct.InvokerNew("get_username")
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialGetUsernameFunction, err = credentialStruct.InvokerNew("get_username")
 	})
+	return err
 }
 
 // GetUsername is a representation of the C type webkit_credential_get_username.
@@ -578,9 +643,10 @@ func (recv *Credential) GetUsername() string {
 
 	var ret gi.Argument
 
-	credentialGetUsernameFunction_Set()
-
-	ret = credentialGetUsernameFunction.Invoke(inArgs[:], nil)
+	err := credentialGetUsernameFunction_Set()
+	if err == nil {
+		ret = credentialGetUsernameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -925,11 +991,16 @@ type GeolocationPosition struct {
 var geolocationPositionCopyFunction *gi.Function
 var geolocationPositionCopyFunction_Once sync.Once
 
-func geolocationPositionCopyFunction_Set() {
+func geolocationPositionCopyFunction_Set() error {
+	var err error
 	geolocationPositionCopyFunction_Once.Do(func() {
-		geolocationPositionStruct_Set()
-		geolocationPositionCopyFunction = geolocationPositionStruct.InvokerNew("copy")
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionCopyFunction, err = geolocationPositionStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type webkit_geolocation_position_copy.
@@ -939,9 +1010,10 @@ func (recv *GeolocationPosition) Copy() *GeolocationPosition {
 
 	var ret gi.Argument
 
-	geolocationPositionCopyFunction_Set()
-
-	ret = geolocationPositionCopyFunction.Invoke(inArgs[:], nil)
+	err := geolocationPositionCopyFunction_Set()
+	if err == nil {
+		ret = geolocationPositionCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &GeolocationPosition{native: ret.Pointer()}
 
@@ -951,11 +1023,16 @@ func (recv *GeolocationPosition) Copy() *GeolocationPosition {
 var geolocationPositionFreeFunction *gi.Function
 var geolocationPositionFreeFunction_Once sync.Once
 
-func geolocationPositionFreeFunction_Set() {
+func geolocationPositionFreeFunction_Set() error {
+	var err error
 	geolocationPositionFreeFunction_Once.Do(func() {
-		geolocationPositionStruct_Set()
-		geolocationPositionFreeFunction = geolocationPositionStruct.InvokerNew("free")
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionFreeFunction, err = geolocationPositionStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type webkit_geolocation_position_free.
@@ -963,9 +1040,10 @@ func (recv *GeolocationPosition) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	geolocationPositionFreeFunction_Set()
-
-	geolocationPositionFreeFunction.Invoke(inArgs[:], nil)
+	err := geolocationPositionFreeFunction_Set()
+	if err == nil {
+		geolocationPositionFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -980,11 +1058,16 @@ func (recv *GeolocationPosition) Free() {
 var geolocationPositionSetTimestampFunction *gi.Function
 var geolocationPositionSetTimestampFunction_Once sync.Once
 
-func geolocationPositionSetTimestampFunction_Set() {
+func geolocationPositionSetTimestampFunction_Set() error {
+	var err error
 	geolocationPositionSetTimestampFunction_Once.Do(func() {
-		geolocationPositionStruct_Set()
-		geolocationPositionSetTimestampFunction = geolocationPositionStruct.InvokerNew("set_timestamp")
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionSetTimestampFunction, err = geolocationPositionStruct.InvokerNew("set_timestamp")
 	})
+	return err
 }
 
 // SetTimestamp is a representation of the C type webkit_geolocation_position_set_timestamp.
@@ -993,9 +1076,10 @@ func (recv *GeolocationPosition) SetTimestamp(timestamp uint64) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetUint64(timestamp)
 
-	geolocationPositionSetTimestampFunction_Set()
-
-	geolocationPositionSetTimestampFunction.Invoke(inArgs[:], nil)
+	err := geolocationPositionSetTimestampFunction_Set()
+	if err == nil {
+		geolocationPositionSetTimestampFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1093,11 +1177,16 @@ type JavascriptResult struct {
 var javascriptResultRefFunction *gi.Function
 var javascriptResultRefFunction_Once sync.Once
 
-func javascriptResultRefFunction_Set() {
+func javascriptResultRefFunction_Set() error {
+	var err error
 	javascriptResultRefFunction_Once.Do(func() {
-		javascriptResultStruct_Set()
-		javascriptResultRefFunction = javascriptResultStruct.InvokerNew("ref")
+		err = javascriptResultStruct_Set()
+		if err != nil {
+			return
+		}
+		javascriptResultRefFunction, err = javascriptResultStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_javascript_result_ref.
@@ -1107,9 +1196,10 @@ func (recv *JavascriptResult) Ref() *JavascriptResult {
 
 	var ret gi.Argument
 
-	javascriptResultRefFunction_Set()
-
-	ret = javascriptResultRefFunction.Invoke(inArgs[:], nil)
+	err := javascriptResultRefFunction_Set()
+	if err == nil {
+		ret = javascriptResultRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &JavascriptResult{native: ret.Pointer()}
 
@@ -1119,11 +1209,16 @@ func (recv *JavascriptResult) Ref() *JavascriptResult {
 var javascriptResultUnrefFunction *gi.Function
 var javascriptResultUnrefFunction_Once sync.Once
 
-func javascriptResultUnrefFunction_Set() {
+func javascriptResultUnrefFunction_Set() error {
+	var err error
 	javascriptResultUnrefFunction_Once.Do(func() {
-		javascriptResultStruct_Set()
-		javascriptResultUnrefFunction = javascriptResultStruct.InvokerNew("unref")
+		err = javascriptResultStruct_Set()
+		if err != nil {
+			return
+		}
+		javascriptResultUnrefFunction, err = javascriptResultStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_javascript_result_unref.
@@ -1131,9 +1226,10 @@ func (recv *JavascriptResult) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	javascriptResultUnrefFunction_Set()
-
-	javascriptResultUnrefFunction.Invoke(inArgs[:], nil)
+	err := javascriptResultUnrefFunction_Set()
+	if err == nil {
+		javascriptResultUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1155,11 +1251,16 @@ type MimeInfo struct {
 var mimeInfoGetDescriptionFunction *gi.Function
 var mimeInfoGetDescriptionFunction_Once sync.Once
 
-func mimeInfoGetDescriptionFunction_Set() {
+func mimeInfoGetDescriptionFunction_Set() error {
+	var err error
 	mimeInfoGetDescriptionFunction_Once.Do(func() {
-		mimeInfoStruct_Set()
-		mimeInfoGetDescriptionFunction = mimeInfoStruct.InvokerNew("get_description")
+		err = mimeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		mimeInfoGetDescriptionFunction, err = mimeInfoStruct.InvokerNew("get_description")
 	})
+	return err
 }
 
 // GetDescription is a representation of the C type webkit_mime_info_get_description.
@@ -1169,9 +1270,10 @@ func (recv *MimeInfo) GetDescription() string {
 
 	var ret gi.Argument
 
-	mimeInfoGetDescriptionFunction_Set()
-
-	ret = mimeInfoGetDescriptionFunction.Invoke(inArgs[:], nil)
+	err := mimeInfoGetDescriptionFunction_Set()
+	if err == nil {
+		ret = mimeInfoGetDescriptionFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -1181,11 +1283,16 @@ func (recv *MimeInfo) GetDescription() string {
 var mimeInfoGetExtensionsFunction *gi.Function
 var mimeInfoGetExtensionsFunction_Once sync.Once
 
-func mimeInfoGetExtensionsFunction_Set() {
+func mimeInfoGetExtensionsFunction_Set() error {
+	var err error
 	mimeInfoGetExtensionsFunction_Once.Do(func() {
-		mimeInfoStruct_Set()
-		mimeInfoGetExtensionsFunction = mimeInfoStruct.InvokerNew("get_extensions")
+		err = mimeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		mimeInfoGetExtensionsFunction, err = mimeInfoStruct.InvokerNew("get_extensions")
 	})
+	return err
 }
 
 // GetExtensions is a representation of the C type webkit_mime_info_get_extensions.
@@ -1193,20 +1300,26 @@ func (recv *MimeInfo) GetExtensions() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	mimeInfoGetExtensionsFunction_Set()
-
-	mimeInfoGetExtensionsFunction.Invoke(inArgs[:], nil)
+	err := mimeInfoGetExtensionsFunction_Set()
+	if err == nil {
+		mimeInfoGetExtensionsFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var mimeInfoGetMimeTypeFunction *gi.Function
 var mimeInfoGetMimeTypeFunction_Once sync.Once
 
-func mimeInfoGetMimeTypeFunction_Set() {
+func mimeInfoGetMimeTypeFunction_Set() error {
+	var err error
 	mimeInfoGetMimeTypeFunction_Once.Do(func() {
-		mimeInfoStruct_Set()
-		mimeInfoGetMimeTypeFunction = mimeInfoStruct.InvokerNew("get_mime_type")
+		err = mimeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		mimeInfoGetMimeTypeFunction, err = mimeInfoStruct.InvokerNew("get_mime_type")
 	})
+	return err
 }
 
 // GetMimeType is a representation of the C type webkit_mime_info_get_mime_type.
@@ -1216,9 +1329,10 @@ func (recv *MimeInfo) GetMimeType() string {
 
 	var ret gi.Argument
 
-	mimeInfoGetMimeTypeFunction_Set()
-
-	ret = mimeInfoGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	err := mimeInfoGetMimeTypeFunction_Set()
+	if err == nil {
+		ret = mimeInfoGetMimeTypeFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -1228,11 +1342,16 @@ func (recv *MimeInfo) GetMimeType() string {
 var mimeInfoRefFunction *gi.Function
 var mimeInfoRefFunction_Once sync.Once
 
-func mimeInfoRefFunction_Set() {
+func mimeInfoRefFunction_Set() error {
+	var err error
 	mimeInfoRefFunction_Once.Do(func() {
-		mimeInfoStruct_Set()
-		mimeInfoRefFunction = mimeInfoStruct.InvokerNew("ref")
+		err = mimeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		mimeInfoRefFunction, err = mimeInfoStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_mime_info_ref.
@@ -1242,9 +1361,10 @@ func (recv *MimeInfo) Ref() *MimeInfo {
 
 	var ret gi.Argument
 
-	mimeInfoRefFunction_Set()
-
-	ret = mimeInfoRefFunction.Invoke(inArgs[:], nil)
+	err := mimeInfoRefFunction_Set()
+	if err == nil {
+		ret = mimeInfoRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &MimeInfo{native: ret.Pointer()}
 
@@ -1254,11 +1374,16 @@ func (recv *MimeInfo) Ref() *MimeInfo {
 var mimeInfoUnrefFunction *gi.Function
 var mimeInfoUnrefFunction_Once sync.Once
 
-func mimeInfoUnrefFunction_Set() {
+func mimeInfoUnrefFunction_Set() error {
+	var err error
 	mimeInfoUnrefFunction_Once.Do(func() {
-		mimeInfoStruct_Set()
-		mimeInfoUnrefFunction = mimeInfoStruct.InvokerNew("unref")
+		err = mimeInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		mimeInfoUnrefFunction, err = mimeInfoStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_mime_info_unref.
@@ -1266,9 +1391,10 @@ func (recv *MimeInfo) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	mimeInfoUnrefFunction_Set()
-
-	mimeInfoUnrefFunction.Invoke(inArgs[:], nil)
+	err := mimeInfoUnrefFunction_Set()
+	if err == nil {
+		mimeInfoUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1290,11 +1416,16 @@ type NavigationAction struct {
 var navigationActionCopyFunction *gi.Function
 var navigationActionCopyFunction_Once sync.Once
 
-func navigationActionCopyFunction_Set() {
+func navigationActionCopyFunction_Set() error {
+	var err error
 	navigationActionCopyFunction_Once.Do(func() {
-		navigationActionStruct_Set()
-		navigationActionCopyFunction = navigationActionStruct.InvokerNew("copy")
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionCopyFunction, err = navigationActionStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type webkit_navigation_action_copy.
@@ -1304,9 +1435,10 @@ func (recv *NavigationAction) Copy() *NavigationAction {
 
 	var ret gi.Argument
 
-	navigationActionCopyFunction_Set()
-
-	ret = navigationActionCopyFunction.Invoke(inArgs[:], nil)
+	err := navigationActionCopyFunction_Set()
+	if err == nil {
+		ret = navigationActionCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &NavigationAction{native: ret.Pointer()}
 
@@ -1316,11 +1448,16 @@ func (recv *NavigationAction) Copy() *NavigationAction {
 var navigationActionFreeFunction *gi.Function
 var navigationActionFreeFunction_Once sync.Once
 
-func navigationActionFreeFunction_Set() {
+func navigationActionFreeFunction_Set() error {
+	var err error
 	navigationActionFreeFunction_Once.Do(func() {
-		navigationActionStruct_Set()
-		navigationActionFreeFunction = navigationActionStruct.InvokerNew("free")
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionFreeFunction, err = navigationActionStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type webkit_navigation_action_free.
@@ -1328,20 +1465,26 @@ func (recv *NavigationAction) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	navigationActionFreeFunction_Set()
-
-	navigationActionFreeFunction.Invoke(inArgs[:], nil)
+	err := navigationActionFreeFunction_Set()
+	if err == nil {
+		navigationActionFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var navigationActionGetModifiersFunction *gi.Function
 var navigationActionGetModifiersFunction_Once sync.Once
 
-func navigationActionGetModifiersFunction_Set() {
+func navigationActionGetModifiersFunction_Set() error {
+	var err error
 	navigationActionGetModifiersFunction_Once.Do(func() {
-		navigationActionStruct_Set()
-		navigationActionGetModifiersFunction = navigationActionStruct.InvokerNew("get_modifiers")
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionGetModifiersFunction, err = navigationActionStruct.InvokerNew("get_modifiers")
 	})
+	return err
 }
 
 // GetModifiers is a representation of the C type webkit_navigation_action_get_modifiers.
@@ -1351,9 +1494,10 @@ func (recv *NavigationAction) GetModifiers() uint32 {
 
 	var ret gi.Argument
 
-	navigationActionGetModifiersFunction_Set()
-
-	ret = navigationActionGetModifiersFunction.Invoke(inArgs[:], nil)
+	err := navigationActionGetModifiersFunction_Set()
+	if err == nil {
+		ret = navigationActionGetModifiersFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -1363,11 +1507,16 @@ func (recv *NavigationAction) GetModifiers() uint32 {
 var navigationActionGetMouseButtonFunction *gi.Function
 var navigationActionGetMouseButtonFunction_Once sync.Once
 
-func navigationActionGetMouseButtonFunction_Set() {
+func navigationActionGetMouseButtonFunction_Set() error {
+	var err error
 	navigationActionGetMouseButtonFunction_Once.Do(func() {
-		navigationActionStruct_Set()
-		navigationActionGetMouseButtonFunction = navigationActionStruct.InvokerNew("get_mouse_button")
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionGetMouseButtonFunction, err = navigationActionStruct.InvokerNew("get_mouse_button")
 	})
+	return err
 }
 
 // GetMouseButton is a representation of the C type webkit_navigation_action_get_mouse_button.
@@ -1377,9 +1526,10 @@ func (recv *NavigationAction) GetMouseButton() uint32 {
 
 	var ret gi.Argument
 
-	navigationActionGetMouseButtonFunction_Set()
-
-	ret = navigationActionGetMouseButtonFunction.Invoke(inArgs[:], nil)
+	err := navigationActionGetMouseButtonFunction_Set()
+	if err == nil {
+		ret = navigationActionGetMouseButtonFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -1449,11 +1599,16 @@ type NetworkProxySettings struct {
 var networkProxySettingsAddProxyForSchemeFunction *gi.Function
 var networkProxySettingsAddProxyForSchemeFunction_Once sync.Once
 
-func networkProxySettingsAddProxyForSchemeFunction_Set() {
+func networkProxySettingsAddProxyForSchemeFunction_Set() error {
+	var err error
 	networkProxySettingsAddProxyForSchemeFunction_Once.Do(func() {
-		networkProxySettingsStruct_Set()
-		networkProxySettingsAddProxyForSchemeFunction = networkProxySettingsStruct.InvokerNew("add_proxy_for_scheme")
+		err = networkProxySettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		networkProxySettingsAddProxyForSchemeFunction, err = networkProxySettingsStruct.InvokerNew("add_proxy_for_scheme")
 	})
+	return err
 }
 
 // AddProxyForScheme is a representation of the C type webkit_network_proxy_settings_add_proxy_for_scheme.
@@ -1463,20 +1618,26 @@ func (recv *NetworkProxySettings) AddProxyForScheme(scheme string, proxyUri stri
 	inArgs[1].SetString(scheme)
 	inArgs[2].SetString(proxyUri)
 
-	networkProxySettingsAddProxyForSchemeFunction_Set()
-
-	networkProxySettingsAddProxyForSchemeFunction.Invoke(inArgs[:], nil)
+	err := networkProxySettingsAddProxyForSchemeFunction_Set()
+	if err == nil {
+		networkProxySettingsAddProxyForSchemeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var networkProxySettingsCopyFunction *gi.Function
 var networkProxySettingsCopyFunction_Once sync.Once
 
-func networkProxySettingsCopyFunction_Set() {
+func networkProxySettingsCopyFunction_Set() error {
+	var err error
 	networkProxySettingsCopyFunction_Once.Do(func() {
-		networkProxySettingsStruct_Set()
-		networkProxySettingsCopyFunction = networkProxySettingsStruct.InvokerNew("copy")
+		err = networkProxySettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		networkProxySettingsCopyFunction, err = networkProxySettingsStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type webkit_network_proxy_settings_copy.
@@ -1486,9 +1647,10 @@ func (recv *NetworkProxySettings) Copy() *NetworkProxySettings {
 
 	var ret gi.Argument
 
-	networkProxySettingsCopyFunction_Set()
-
-	ret = networkProxySettingsCopyFunction.Invoke(inArgs[:], nil)
+	err := networkProxySettingsCopyFunction_Set()
+	if err == nil {
+		ret = networkProxySettingsCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &NetworkProxySettings{native: ret.Pointer()}
 
@@ -1498,11 +1660,16 @@ func (recv *NetworkProxySettings) Copy() *NetworkProxySettings {
 var networkProxySettingsFreeFunction *gi.Function
 var networkProxySettingsFreeFunction_Once sync.Once
 
-func networkProxySettingsFreeFunction_Set() {
+func networkProxySettingsFreeFunction_Set() error {
+	var err error
 	networkProxySettingsFreeFunction_Once.Do(func() {
-		networkProxySettingsStruct_Set()
-		networkProxySettingsFreeFunction = networkProxySettingsStruct.InvokerNew("free")
+		err = networkProxySettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		networkProxySettingsFreeFunction, err = networkProxySettingsStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type webkit_network_proxy_settings_free.
@@ -1510,9 +1677,10 @@ func (recv *NetworkProxySettings) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	networkProxySettingsFreeFunction_Set()
-
-	networkProxySettingsFreeFunction.Invoke(inArgs[:], nil)
+	err := networkProxySettingsFreeFunction_Set()
+	if err == nil {
+		networkProxySettingsFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1622,11 +1790,16 @@ type OptionMenuItem struct {
 var optionMenuItemCopyFunction *gi.Function
 var optionMenuItemCopyFunction_Once sync.Once
 
-func optionMenuItemCopyFunction_Set() {
+func optionMenuItemCopyFunction_Set() error {
+	var err error
 	optionMenuItemCopyFunction_Once.Do(func() {
-		optionMenuItemStruct_Set()
-		optionMenuItemCopyFunction = optionMenuItemStruct.InvokerNew("copy")
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemCopyFunction, err = optionMenuItemStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type webkit_option_menu_item_copy.
@@ -1636,9 +1809,10 @@ func (recv *OptionMenuItem) Copy() *OptionMenuItem {
 
 	var ret gi.Argument
 
-	optionMenuItemCopyFunction_Set()
-
-	ret = optionMenuItemCopyFunction.Invoke(inArgs[:], nil)
+	err := optionMenuItemCopyFunction_Set()
+	if err == nil {
+		ret = optionMenuItemCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &OptionMenuItem{native: ret.Pointer()}
 
@@ -1648,11 +1822,16 @@ func (recv *OptionMenuItem) Copy() *OptionMenuItem {
 var optionMenuItemFreeFunction *gi.Function
 var optionMenuItemFreeFunction_Once sync.Once
 
-func optionMenuItemFreeFunction_Set() {
+func optionMenuItemFreeFunction_Set() error {
+	var err error
 	optionMenuItemFreeFunction_Once.Do(func() {
-		optionMenuItemStruct_Set()
-		optionMenuItemFreeFunction = optionMenuItemStruct.InvokerNew("free")
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemFreeFunction, err = optionMenuItemStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type webkit_option_menu_item_free.
@@ -1660,20 +1839,26 @@ func (recv *OptionMenuItem) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	optionMenuItemFreeFunction_Set()
-
-	optionMenuItemFreeFunction.Invoke(inArgs[:], nil)
+	err := optionMenuItemFreeFunction_Set()
+	if err == nil {
+		optionMenuItemFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var optionMenuItemGetLabelFunction *gi.Function
 var optionMenuItemGetLabelFunction_Once sync.Once
 
-func optionMenuItemGetLabelFunction_Set() {
+func optionMenuItemGetLabelFunction_Set() error {
+	var err error
 	optionMenuItemGetLabelFunction_Once.Do(func() {
-		optionMenuItemStruct_Set()
-		optionMenuItemGetLabelFunction = optionMenuItemStruct.InvokerNew("get_label")
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemGetLabelFunction, err = optionMenuItemStruct.InvokerNew("get_label")
 	})
+	return err
 }
 
 // GetLabel is a representation of the C type webkit_option_menu_item_get_label.
@@ -1683,9 +1868,10 @@ func (recv *OptionMenuItem) GetLabel() string {
 
 	var ret gi.Argument
 
-	optionMenuItemGetLabelFunction_Set()
-
-	ret = optionMenuItemGetLabelFunction.Invoke(inArgs[:], nil)
+	err := optionMenuItemGetLabelFunction_Set()
+	if err == nil {
+		ret = optionMenuItemGetLabelFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -1695,11 +1881,16 @@ func (recv *OptionMenuItem) GetLabel() string {
 var optionMenuItemGetTooltipFunction *gi.Function
 var optionMenuItemGetTooltipFunction_Once sync.Once
 
-func optionMenuItemGetTooltipFunction_Set() {
+func optionMenuItemGetTooltipFunction_Set() error {
+	var err error
 	optionMenuItemGetTooltipFunction_Once.Do(func() {
-		optionMenuItemStruct_Set()
-		optionMenuItemGetTooltipFunction = optionMenuItemStruct.InvokerNew("get_tooltip")
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemGetTooltipFunction, err = optionMenuItemStruct.InvokerNew("get_tooltip")
 	})
+	return err
 }
 
 // GetTooltip is a representation of the C type webkit_option_menu_item_get_tooltip.
@@ -1709,9 +1900,10 @@ func (recv *OptionMenuItem) GetTooltip() string {
 
 	var ret gi.Argument
 
-	optionMenuItemGetTooltipFunction_Set()
-
-	ret = optionMenuItemGetTooltipFunction.Invoke(inArgs[:], nil)
+	err := optionMenuItemGetTooltipFunction_Set()
+	if err == nil {
+		ret = optionMenuItemGetTooltipFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -1954,11 +2146,16 @@ type ScriptDialog struct {
 var scriptDialogCloseFunction *gi.Function
 var scriptDialogCloseFunction_Once sync.Once
 
-func scriptDialogCloseFunction_Set() {
+func scriptDialogCloseFunction_Set() error {
+	var err error
 	scriptDialogCloseFunction_Once.Do(func() {
-		scriptDialogStruct_Set()
-		scriptDialogCloseFunction = scriptDialogStruct.InvokerNew("close")
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogCloseFunction, err = scriptDialogStruct.InvokerNew("close")
 	})
+	return err
 }
 
 // Close is a representation of the C type webkit_script_dialog_close.
@@ -1966,9 +2163,10 @@ func (recv *ScriptDialog) Close() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	scriptDialogCloseFunction_Set()
-
-	scriptDialogCloseFunction.Invoke(inArgs[:], nil)
+	err := scriptDialogCloseFunction_Set()
+	if err == nil {
+		scriptDialogCloseFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -1979,11 +2177,16 @@ func (recv *ScriptDialog) Close() {
 var scriptDialogGetMessageFunction *gi.Function
 var scriptDialogGetMessageFunction_Once sync.Once
 
-func scriptDialogGetMessageFunction_Set() {
+func scriptDialogGetMessageFunction_Set() error {
+	var err error
 	scriptDialogGetMessageFunction_Once.Do(func() {
-		scriptDialogStruct_Set()
-		scriptDialogGetMessageFunction = scriptDialogStruct.InvokerNew("get_message")
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogGetMessageFunction, err = scriptDialogStruct.InvokerNew("get_message")
 	})
+	return err
 }
 
 // GetMessage is a representation of the C type webkit_script_dialog_get_message.
@@ -1993,9 +2196,10 @@ func (recv *ScriptDialog) GetMessage() string {
 
 	var ret gi.Argument
 
-	scriptDialogGetMessageFunction_Set()
-
-	ret = scriptDialogGetMessageFunction.Invoke(inArgs[:], nil)
+	err := scriptDialogGetMessageFunction_Set()
+	if err == nil {
+		ret = scriptDialogGetMessageFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2005,11 +2209,16 @@ func (recv *ScriptDialog) GetMessage() string {
 var scriptDialogPromptGetDefaultTextFunction *gi.Function
 var scriptDialogPromptGetDefaultTextFunction_Once sync.Once
 
-func scriptDialogPromptGetDefaultTextFunction_Set() {
+func scriptDialogPromptGetDefaultTextFunction_Set() error {
+	var err error
 	scriptDialogPromptGetDefaultTextFunction_Once.Do(func() {
-		scriptDialogStruct_Set()
-		scriptDialogPromptGetDefaultTextFunction = scriptDialogStruct.InvokerNew("prompt_get_default_text")
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogPromptGetDefaultTextFunction, err = scriptDialogStruct.InvokerNew("prompt_get_default_text")
 	})
+	return err
 }
 
 // PromptGetDefaultText is a representation of the C type webkit_script_dialog_prompt_get_default_text.
@@ -2019,9 +2228,10 @@ func (recv *ScriptDialog) PromptGetDefaultText() string {
 
 	var ret gi.Argument
 
-	scriptDialogPromptGetDefaultTextFunction_Set()
-
-	ret = scriptDialogPromptGetDefaultTextFunction.Invoke(inArgs[:], nil)
+	err := scriptDialogPromptGetDefaultTextFunction_Set()
+	if err == nil {
+		ret = scriptDialogPromptGetDefaultTextFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2031,11 +2241,16 @@ func (recv *ScriptDialog) PromptGetDefaultText() string {
 var scriptDialogPromptSetTextFunction *gi.Function
 var scriptDialogPromptSetTextFunction_Once sync.Once
 
-func scriptDialogPromptSetTextFunction_Set() {
+func scriptDialogPromptSetTextFunction_Set() error {
+	var err error
 	scriptDialogPromptSetTextFunction_Once.Do(func() {
-		scriptDialogStruct_Set()
-		scriptDialogPromptSetTextFunction = scriptDialogStruct.InvokerNew("prompt_set_text")
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogPromptSetTextFunction, err = scriptDialogStruct.InvokerNew("prompt_set_text")
 	})
+	return err
 }
 
 // PromptSetText is a representation of the C type webkit_script_dialog_prompt_set_text.
@@ -2044,20 +2259,26 @@ func (recv *ScriptDialog) PromptSetText(text string) {
 	inArgs[0].SetPointer(recv.native)
 	inArgs[1].SetString(text)
 
-	scriptDialogPromptSetTextFunction_Set()
-
-	scriptDialogPromptSetTextFunction.Invoke(inArgs[:], nil)
+	err := scriptDialogPromptSetTextFunction_Set()
+	if err == nil {
+		scriptDialogPromptSetTextFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var scriptDialogRefFunction *gi.Function
 var scriptDialogRefFunction_Once sync.Once
 
-func scriptDialogRefFunction_Set() {
+func scriptDialogRefFunction_Set() error {
+	var err error
 	scriptDialogRefFunction_Once.Do(func() {
-		scriptDialogStruct_Set()
-		scriptDialogRefFunction = scriptDialogStruct.InvokerNew("ref")
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogRefFunction, err = scriptDialogStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_script_dialog_ref.
@@ -2067,9 +2288,10 @@ func (recv *ScriptDialog) Ref() *ScriptDialog {
 
 	var ret gi.Argument
 
-	scriptDialogRefFunction_Set()
-
-	ret = scriptDialogRefFunction.Invoke(inArgs[:], nil)
+	err := scriptDialogRefFunction_Set()
+	if err == nil {
+		ret = scriptDialogRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &ScriptDialog{native: ret.Pointer()}
 
@@ -2079,11 +2301,16 @@ func (recv *ScriptDialog) Ref() *ScriptDialog {
 var scriptDialogUnrefFunction *gi.Function
 var scriptDialogUnrefFunction_Once sync.Once
 
-func scriptDialogUnrefFunction_Set() {
+func scriptDialogUnrefFunction_Set() error {
+	var err error
 	scriptDialogUnrefFunction_Once.Do(func() {
-		scriptDialogStruct_Set()
-		scriptDialogUnrefFunction = scriptDialogStruct.InvokerNew("unref")
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogUnrefFunction, err = scriptDialogStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_script_dialog_unref.
@@ -2091,9 +2318,10 @@ func (recv *ScriptDialog) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	scriptDialogUnrefFunction_Set()
-
-	scriptDialogUnrefFunction.Invoke(inArgs[:], nil)
+	err := scriptDialogUnrefFunction_Set()
+	if err == nil {
+		scriptDialogUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2150,11 +2378,16 @@ type SecurityOrigin struct {
 var securityOriginNewFunction *gi.Function
 var securityOriginNewFunction_Once sync.Once
 
-func securityOriginNewFunction_Set() {
+func securityOriginNewFunction_Set() error {
+	var err error
 	securityOriginNewFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginNewFunction = securityOriginStruct.InvokerNew("new")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginNewFunction, err = securityOriginStruct.InvokerNew("new")
 	})
+	return err
 }
 
 // SecurityOriginNew is a representation of the C type webkit_security_origin_new.
@@ -2166,9 +2399,10 @@ func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigi
 
 	var ret gi.Argument
 
-	securityOriginNewFunction_Set()
-
-	ret = securityOriginNewFunction.Invoke(inArgs[:], nil)
+	err := securityOriginNewFunction_Set()
+	if err == nil {
+		ret = securityOriginNewFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SecurityOrigin{native: ret.Pointer()}
 
@@ -2178,11 +2412,16 @@ func SecurityOriginNew(protocol string, host string, port uint16) *SecurityOrigi
 var securityOriginNewForUriFunction *gi.Function
 var securityOriginNewForUriFunction_Once sync.Once
 
-func securityOriginNewForUriFunction_Set() {
+func securityOriginNewForUriFunction_Set() error {
+	var err error
 	securityOriginNewForUriFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginNewForUriFunction = securityOriginStruct.InvokerNew("new_for_uri")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginNewForUriFunction, err = securityOriginStruct.InvokerNew("new_for_uri")
 	})
+	return err
 }
 
 // SecurityOriginNewForUri is a representation of the C type webkit_security_origin_new_for_uri.
@@ -2192,9 +2431,10 @@ func SecurityOriginNewForUri(uri string) *SecurityOrigin {
 
 	var ret gi.Argument
 
-	securityOriginNewForUriFunction_Set()
-
-	ret = securityOriginNewForUriFunction.Invoke(inArgs[:], nil)
+	err := securityOriginNewForUriFunction_Set()
+	if err == nil {
+		ret = securityOriginNewForUriFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SecurityOrigin{native: ret.Pointer()}
 
@@ -2204,11 +2444,16 @@ func SecurityOriginNewForUri(uri string) *SecurityOrigin {
 var securityOriginGetHostFunction *gi.Function
 var securityOriginGetHostFunction_Once sync.Once
 
-func securityOriginGetHostFunction_Set() {
+func securityOriginGetHostFunction_Set() error {
+	var err error
 	securityOriginGetHostFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginGetHostFunction = securityOriginStruct.InvokerNew("get_host")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginGetHostFunction, err = securityOriginStruct.InvokerNew("get_host")
 	})
+	return err
 }
 
 // GetHost is a representation of the C type webkit_security_origin_get_host.
@@ -2218,9 +2463,10 @@ func (recv *SecurityOrigin) GetHost() string {
 
 	var ret gi.Argument
 
-	securityOriginGetHostFunction_Set()
-
-	ret = securityOriginGetHostFunction.Invoke(inArgs[:], nil)
+	err := securityOriginGetHostFunction_Set()
+	if err == nil {
+		ret = securityOriginGetHostFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2230,11 +2476,16 @@ func (recv *SecurityOrigin) GetHost() string {
 var securityOriginGetPortFunction *gi.Function
 var securityOriginGetPortFunction_Once sync.Once
 
-func securityOriginGetPortFunction_Set() {
+func securityOriginGetPortFunction_Set() error {
+	var err error
 	securityOriginGetPortFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginGetPortFunction = securityOriginStruct.InvokerNew("get_port")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginGetPortFunction, err = securityOriginStruct.InvokerNew("get_port")
 	})
+	return err
 }
 
 // GetPort is a representation of the C type webkit_security_origin_get_port.
@@ -2244,9 +2495,10 @@ func (recv *SecurityOrigin) GetPort() uint16 {
 
 	var ret gi.Argument
 
-	securityOriginGetPortFunction_Set()
-
-	ret = securityOriginGetPortFunction.Invoke(inArgs[:], nil)
+	err := securityOriginGetPortFunction_Set()
+	if err == nil {
+		ret = securityOriginGetPortFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.Uint16()
 
@@ -2256,11 +2508,16 @@ func (recv *SecurityOrigin) GetPort() uint16 {
 var securityOriginGetProtocolFunction *gi.Function
 var securityOriginGetProtocolFunction_Once sync.Once
 
-func securityOriginGetProtocolFunction_Set() {
+func securityOriginGetProtocolFunction_Set() error {
+	var err error
 	securityOriginGetProtocolFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginGetProtocolFunction = securityOriginStruct.InvokerNew("get_protocol")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginGetProtocolFunction, err = securityOriginStruct.InvokerNew("get_protocol")
 	})
+	return err
 }
 
 // GetProtocol is a representation of the C type webkit_security_origin_get_protocol.
@@ -2270,9 +2527,10 @@ func (recv *SecurityOrigin) GetProtocol() string {
 
 	var ret gi.Argument
 
-	securityOriginGetProtocolFunction_Set()
-
-	ret = securityOriginGetProtocolFunction.Invoke(inArgs[:], nil)
+	err := securityOriginGetProtocolFunction_Set()
+	if err == nil {
+		ret = securityOriginGetProtocolFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2284,11 +2542,16 @@ func (recv *SecurityOrigin) GetProtocol() string {
 var securityOriginRefFunction *gi.Function
 var securityOriginRefFunction_Once sync.Once
 
-func securityOriginRefFunction_Set() {
+func securityOriginRefFunction_Set() error {
+	var err error
 	securityOriginRefFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginRefFunction = securityOriginStruct.InvokerNew("ref")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginRefFunction, err = securityOriginStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_security_origin_ref.
@@ -2298,9 +2561,10 @@ func (recv *SecurityOrigin) Ref() *SecurityOrigin {
 
 	var ret gi.Argument
 
-	securityOriginRefFunction_Set()
-
-	ret = securityOriginRefFunction.Invoke(inArgs[:], nil)
+	err := securityOriginRefFunction_Set()
+	if err == nil {
+		ret = securityOriginRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &SecurityOrigin{native: ret.Pointer()}
 
@@ -2310,11 +2574,16 @@ func (recv *SecurityOrigin) Ref() *SecurityOrigin {
 var securityOriginToStringFunction *gi.Function
 var securityOriginToStringFunction_Once sync.Once
 
-func securityOriginToStringFunction_Set() {
+func securityOriginToStringFunction_Set() error {
+	var err error
 	securityOriginToStringFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginToStringFunction = securityOriginStruct.InvokerNew("to_string")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginToStringFunction, err = securityOriginStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type webkit_security_origin_to_string.
@@ -2324,9 +2593,10 @@ func (recv *SecurityOrigin) ToString() string {
 
 	var ret gi.Argument
 
-	securityOriginToStringFunction_Set()
-
-	ret = securityOriginToStringFunction.Invoke(inArgs[:], nil)
+	err := securityOriginToStringFunction_Set()
+	if err == nil {
+		ret = securityOriginToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -2336,11 +2606,16 @@ func (recv *SecurityOrigin) ToString() string {
 var securityOriginUnrefFunction *gi.Function
 var securityOriginUnrefFunction_Once sync.Once
 
-func securityOriginUnrefFunction_Set() {
+func securityOriginUnrefFunction_Set() error {
+	var err error
 	securityOriginUnrefFunction_Once.Do(func() {
-		securityOriginStruct_Set()
-		securityOriginUnrefFunction = securityOriginStruct.InvokerNew("unref")
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginUnrefFunction, err = securityOriginStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_security_origin_unref.
@@ -2348,9 +2623,10 @@ func (recv *SecurityOrigin) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	securityOriginUnrefFunction_Set()
-
-	securityOriginUnrefFunction.Invoke(inArgs[:], nil)
+	err := securityOriginUnrefFunction_Set()
+	if err == nil {
+		securityOriginUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2512,11 +2788,16 @@ type UserContentFilter struct {
 var userContentFilterGetIdentifierFunction *gi.Function
 var userContentFilterGetIdentifierFunction_Once sync.Once
 
-func userContentFilterGetIdentifierFunction_Set() {
+func userContentFilterGetIdentifierFunction_Set() error {
+	var err error
 	userContentFilterGetIdentifierFunction_Once.Do(func() {
-		userContentFilterStruct_Set()
-		userContentFilterGetIdentifierFunction = userContentFilterStruct.InvokerNew("get_identifier")
+		err = userContentFilterStruct_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterGetIdentifierFunction, err = userContentFilterStruct.InvokerNew("get_identifier")
 	})
+	return err
 }
 
 // GetIdentifier is a representation of the C type webkit_user_content_filter_get_identifier.
@@ -2526,9 +2807,10 @@ func (recv *UserContentFilter) GetIdentifier() string {
 
 	var ret gi.Argument
 
-	userContentFilterGetIdentifierFunction_Set()
-
-	ret = userContentFilterGetIdentifierFunction.Invoke(inArgs[:], nil)
+	err := userContentFilterGetIdentifierFunction_Set()
+	if err == nil {
+		ret = userContentFilterGetIdentifierFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -2538,11 +2820,16 @@ func (recv *UserContentFilter) GetIdentifier() string {
 var userContentFilterRefFunction *gi.Function
 var userContentFilterRefFunction_Once sync.Once
 
-func userContentFilterRefFunction_Set() {
+func userContentFilterRefFunction_Set() error {
+	var err error
 	userContentFilterRefFunction_Once.Do(func() {
-		userContentFilterStruct_Set()
-		userContentFilterRefFunction = userContentFilterStruct.InvokerNew("ref")
+		err = userContentFilterStruct_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterRefFunction, err = userContentFilterStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_user_content_filter_ref.
@@ -2552,9 +2839,10 @@ func (recv *UserContentFilter) Ref() *UserContentFilter {
 
 	var ret gi.Argument
 
-	userContentFilterRefFunction_Set()
-
-	ret = userContentFilterRefFunction.Invoke(inArgs[:], nil)
+	err := userContentFilterRefFunction_Set()
+	if err == nil {
+		ret = userContentFilterRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &UserContentFilter{native: ret.Pointer()}
 
@@ -2564,11 +2852,16 @@ func (recv *UserContentFilter) Ref() *UserContentFilter {
 var userContentFilterUnrefFunction *gi.Function
 var userContentFilterUnrefFunction_Once sync.Once
 
-func userContentFilterUnrefFunction_Set() {
+func userContentFilterUnrefFunction_Set() error {
+	var err error
 	userContentFilterUnrefFunction_Once.Do(func() {
-		userContentFilterStruct_Set()
-		userContentFilterUnrefFunction = userContentFilterStruct.InvokerNew("unref")
+		err = userContentFilterStruct_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterUnrefFunction, err = userContentFilterStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_user_content_filter_unref.
@@ -2576,9 +2869,10 @@ func (recv *UserContentFilter) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	userContentFilterUnrefFunction_Set()
-
-	userContentFilterUnrefFunction.Invoke(inArgs[:], nil)
+	err := userContentFilterUnrefFunction_Set()
+	if err == nil {
+		userContentFilterUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2709,11 +3003,16 @@ type UserScript struct {
 var userScriptRefFunction *gi.Function
 var userScriptRefFunction_Once sync.Once
 
-func userScriptRefFunction_Set() {
+func userScriptRefFunction_Set() error {
+	var err error
 	userScriptRefFunction_Once.Do(func() {
-		userScriptStruct_Set()
-		userScriptRefFunction = userScriptStruct.InvokerNew("ref")
+		err = userScriptStruct_Set()
+		if err != nil {
+			return
+		}
+		userScriptRefFunction, err = userScriptStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_user_script_ref.
@@ -2723,9 +3022,10 @@ func (recv *UserScript) Ref() *UserScript {
 
 	var ret gi.Argument
 
-	userScriptRefFunction_Set()
-
-	ret = userScriptRefFunction.Invoke(inArgs[:], nil)
+	err := userScriptRefFunction_Set()
+	if err == nil {
+		ret = userScriptRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &UserScript{native: ret.Pointer()}
 
@@ -2735,11 +3035,16 @@ func (recv *UserScript) Ref() *UserScript {
 var userScriptUnrefFunction *gi.Function
 var userScriptUnrefFunction_Once sync.Once
 
-func userScriptUnrefFunction_Set() {
+func userScriptUnrefFunction_Set() error {
+	var err error
 	userScriptUnrefFunction_Once.Do(func() {
-		userScriptStruct_Set()
-		userScriptUnrefFunction = userScriptStruct.InvokerNew("unref")
+		err = userScriptStruct_Set()
+		if err != nil {
+			return
+		}
+		userScriptUnrefFunction, err = userScriptStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_user_script_unref.
@@ -2747,9 +3052,10 @@ func (recv *UserScript) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	userScriptUnrefFunction_Set()
-
-	userScriptUnrefFunction.Invoke(inArgs[:], nil)
+	err := userScriptUnrefFunction_Set()
+	if err == nil {
+		userScriptUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -2775,11 +3081,16 @@ type UserStyleSheet struct {
 var userStyleSheetRefFunction *gi.Function
 var userStyleSheetRefFunction_Once sync.Once
 
-func userStyleSheetRefFunction_Set() {
+func userStyleSheetRefFunction_Set() error {
+	var err error
 	userStyleSheetRefFunction_Once.Do(func() {
-		userStyleSheetStruct_Set()
-		userStyleSheetRefFunction = userStyleSheetStruct.InvokerNew("ref")
+		err = userStyleSheetStruct_Set()
+		if err != nil {
+			return
+		}
+		userStyleSheetRefFunction, err = userStyleSheetStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_user_style_sheet_ref.
@@ -2789,9 +3100,10 @@ func (recv *UserStyleSheet) Ref() *UserStyleSheet {
 
 	var ret gi.Argument
 
-	userStyleSheetRefFunction_Set()
-
-	ret = userStyleSheetRefFunction.Invoke(inArgs[:], nil)
+	err := userStyleSheetRefFunction_Set()
+	if err == nil {
+		ret = userStyleSheetRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &UserStyleSheet{native: ret.Pointer()}
 
@@ -2801,11 +3113,16 @@ func (recv *UserStyleSheet) Ref() *UserStyleSheet {
 var userStyleSheetUnrefFunction *gi.Function
 var userStyleSheetUnrefFunction_Once sync.Once
 
-func userStyleSheetUnrefFunction_Set() {
+func userStyleSheetUnrefFunction_Set() error {
+	var err error
 	userStyleSheetUnrefFunction_Once.Do(func() {
-		userStyleSheetStruct_Set()
-		userStyleSheetUnrefFunction = userStyleSheetStruct.InvokerNew("unref")
+		err = userStyleSheetStruct_Set()
+		if err != nil {
+			return
+		}
+		userStyleSheetUnrefFunction, err = userStyleSheetStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_user_style_sheet_unref.
@@ -2813,9 +3130,10 @@ func (recv *UserStyleSheet) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	userStyleSheetUnrefFunction_Set()
-
-	userStyleSheetUnrefFunction.Invoke(inArgs[:], nil)
+	err := userStyleSheetUnrefFunction_Set()
+	if err == nil {
+		userStyleSheetUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -3042,11 +3360,16 @@ type WebViewSessionState struct {
 var webViewSessionStateRefFunction *gi.Function
 var webViewSessionStateRefFunction_Once sync.Once
 
-func webViewSessionStateRefFunction_Set() {
+func webViewSessionStateRefFunction_Set() error {
+	var err error
 	webViewSessionStateRefFunction_Once.Do(func() {
-		webViewSessionStateStruct_Set()
-		webViewSessionStateRefFunction = webViewSessionStateStruct.InvokerNew("ref")
+		err = webViewSessionStateStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewSessionStateRefFunction, err = webViewSessionStateStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_web_view_session_state_ref.
@@ -3056,9 +3379,10 @@ func (recv *WebViewSessionState) Ref() *WebViewSessionState {
 
 	var ret gi.Argument
 
-	webViewSessionStateRefFunction_Set()
-
-	ret = webViewSessionStateRefFunction.Invoke(inArgs[:], nil)
+	err := webViewSessionStateRefFunction_Set()
+	if err == nil {
+		ret = webViewSessionStateRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &WebViewSessionState{native: ret.Pointer()}
 
@@ -3070,11 +3394,16 @@ func (recv *WebViewSessionState) Ref() *WebViewSessionState {
 var webViewSessionStateUnrefFunction *gi.Function
 var webViewSessionStateUnrefFunction_Once sync.Once
 
-func webViewSessionStateUnrefFunction_Set() {
+func webViewSessionStateUnrefFunction_Set() error {
+	var err error
 	webViewSessionStateUnrefFunction_Once.Do(func() {
-		webViewSessionStateStruct_Set()
-		webViewSessionStateUnrefFunction = webViewSessionStateStruct.InvokerNew("unref")
+		err = webViewSessionStateStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewSessionStateUnrefFunction, err = webViewSessionStateStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_web_view_session_state_unref.
@@ -3082,9 +3411,10 @@ func (recv *WebViewSessionState) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	webViewSessionStateUnrefFunction_Set()
-
-	webViewSessionStateUnrefFunction.Invoke(inArgs[:], nil)
+	err := webViewSessionStateUnrefFunction_Set()
+	if err == nil {
+		webViewSessionStateUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
@@ -3106,11 +3436,16 @@ type WebsiteData struct {
 var websiteDataGetNameFunction *gi.Function
 var websiteDataGetNameFunction_Once sync.Once
 
-func websiteDataGetNameFunction_Set() {
+func websiteDataGetNameFunction_Set() error {
+	var err error
 	websiteDataGetNameFunction_Once.Do(func() {
-		websiteDataStruct_Set()
-		websiteDataGetNameFunction = websiteDataStruct.InvokerNew("get_name")
+		err = websiteDataStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataGetNameFunction, err = websiteDataStruct.InvokerNew("get_name")
 	})
+	return err
 }
 
 // GetName is a representation of the C type webkit_website_data_get_name.
@@ -3120,9 +3455,10 @@ func (recv *WebsiteData) GetName() string {
 
 	var ret gi.Argument
 
-	websiteDataGetNameFunction_Set()
-
-	ret = websiteDataGetNameFunction.Invoke(inArgs[:], nil)
+	err := websiteDataGetNameFunction_Set()
+	if err == nil {
+		ret = websiteDataGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -3136,11 +3472,16 @@ func (recv *WebsiteData) GetName() string {
 var websiteDataRefFunction *gi.Function
 var websiteDataRefFunction_Once sync.Once
 
-func websiteDataRefFunction_Set() {
+func websiteDataRefFunction_Set() error {
+	var err error
 	websiteDataRefFunction_Once.Do(func() {
-		websiteDataStruct_Set()
-		websiteDataRefFunction = websiteDataStruct.InvokerNew("ref")
+		err = websiteDataStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataRefFunction, err = websiteDataStruct.InvokerNew("ref")
 	})
+	return err
 }
 
 // Ref is a representation of the C type webkit_website_data_ref.
@@ -3150,9 +3491,10 @@ func (recv *WebsiteData) Ref() *WebsiteData {
 
 	var ret gi.Argument
 
-	websiteDataRefFunction_Set()
-
-	ret = websiteDataRefFunction.Invoke(inArgs[:], nil)
+	err := websiteDataRefFunction_Set()
+	if err == nil {
+		ret = websiteDataRefFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &WebsiteData{native: ret.Pointer()}
 
@@ -3162,11 +3504,16 @@ func (recv *WebsiteData) Ref() *WebsiteData {
 var websiteDataUnrefFunction *gi.Function
 var websiteDataUnrefFunction_Once sync.Once
 
-func websiteDataUnrefFunction_Set() {
+func websiteDataUnrefFunction_Set() error {
+	var err error
 	websiteDataUnrefFunction_Once.Do(func() {
-		websiteDataStruct_Set()
-		websiteDataUnrefFunction = websiteDataStruct.InvokerNew("unref")
+		err = websiteDataStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataUnrefFunction, err = websiteDataStruct.InvokerNew("unref")
 	})
+	return err
 }
 
 // Unref is a representation of the C type webkit_website_data_unref.
@@ -3174,9 +3521,10 @@ func (recv *WebsiteData) Unref() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	websiteDataUnrefFunction_Set()
-
-	websiteDataUnrefFunction.Invoke(inArgs[:], nil)
+	err := websiteDataUnrefFunction_Set()
+	if err == nil {
+		websiteDataUnrefFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 

@@ -22,10 +22,12 @@ import (
 var getBinaryAgeFunction *gi.Function
 var getBinaryAgeFunction_Once sync.Once
 
-func getBinaryAgeFunction_Set() {
+func getBinaryAgeFunction_Set() error {
+	var err error
 	getBinaryAgeFunction_Once.Do(func() {
-		getBinaryAgeFunction = gi.FunctionInvokerNew("Atk", "get_binary_age")
+		getBinaryAgeFunction, err = gi.FunctionInvokerNew("Atk", "get_binary_age")
 	})
+	return err
 }
 
 // GetBinaryAge is a representation of the C type atk_get_binary_age.
@@ -33,9 +35,10 @@ func GetBinaryAge() uint32 {
 
 	var ret gi.Argument
 
-	getBinaryAgeFunction_Set()
-
-	ret = getBinaryAgeFunction.Invoke(nil, nil)
+	err := getBinaryAgeFunction_Set()
+	if err == nil {
+		ret = getBinaryAgeFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -49,10 +52,12 @@ func GetBinaryAge() uint32 {
 var getInterfaceAgeFunction *gi.Function
 var getInterfaceAgeFunction_Once sync.Once
 
-func getInterfaceAgeFunction_Set() {
+func getInterfaceAgeFunction_Set() error {
+	var err error
 	getInterfaceAgeFunction_Once.Do(func() {
-		getInterfaceAgeFunction = gi.FunctionInvokerNew("Atk", "get_interface_age")
+		getInterfaceAgeFunction, err = gi.FunctionInvokerNew("Atk", "get_interface_age")
 	})
+	return err
 }
 
 // GetInterfaceAge is a representation of the C type atk_get_interface_age.
@@ -60,9 +65,10 @@ func GetInterfaceAge() uint32 {
 
 	var ret gi.Argument
 
-	getInterfaceAgeFunction_Set()
-
-	ret = getInterfaceAgeFunction.Invoke(nil, nil)
+	err := getInterfaceAgeFunction_Set()
+	if err == nil {
+		ret = getInterfaceAgeFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -72,10 +78,12 @@ func GetInterfaceAge() uint32 {
 var getMajorVersionFunction *gi.Function
 var getMajorVersionFunction_Once sync.Once
 
-func getMajorVersionFunction_Set() {
+func getMajorVersionFunction_Set() error {
+	var err error
 	getMajorVersionFunction_Once.Do(func() {
-		getMajorVersionFunction = gi.FunctionInvokerNew("Atk", "get_major_version")
+		getMajorVersionFunction, err = gi.FunctionInvokerNew("Atk", "get_major_version")
 	})
+	return err
 }
 
 // GetMajorVersion is a representation of the C type atk_get_major_version.
@@ -83,9 +91,10 @@ func GetMajorVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMajorVersionFunction_Set()
-
-	ret = getMajorVersionFunction.Invoke(nil, nil)
+	err := getMajorVersionFunction_Set()
+	if err == nil {
+		ret = getMajorVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -95,10 +104,12 @@ func GetMajorVersion() uint32 {
 var getMicroVersionFunction *gi.Function
 var getMicroVersionFunction_Once sync.Once
 
-func getMicroVersionFunction_Set() {
+func getMicroVersionFunction_Set() error {
+	var err error
 	getMicroVersionFunction_Once.Do(func() {
-		getMicroVersionFunction = gi.FunctionInvokerNew("Atk", "get_micro_version")
+		getMicroVersionFunction, err = gi.FunctionInvokerNew("Atk", "get_micro_version")
 	})
+	return err
 }
 
 // GetMicroVersion is a representation of the C type atk_get_micro_version.
@@ -106,9 +117,10 @@ func GetMicroVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMicroVersionFunction_Set()
-
-	ret = getMicroVersionFunction.Invoke(nil, nil)
+	err := getMicroVersionFunction_Set()
+	if err == nil {
+		ret = getMicroVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -118,10 +130,12 @@ func GetMicroVersion() uint32 {
 var getMinorVersionFunction *gi.Function
 var getMinorVersionFunction_Once sync.Once
 
-func getMinorVersionFunction_Set() {
+func getMinorVersionFunction_Set() error {
+	var err error
 	getMinorVersionFunction_Once.Do(func() {
-		getMinorVersionFunction = gi.FunctionInvokerNew("Atk", "get_minor_version")
+		getMinorVersionFunction, err = gi.FunctionInvokerNew("Atk", "get_minor_version")
 	})
+	return err
 }
 
 // GetMinorVersion is a representation of the C type atk_get_minor_version.
@@ -129,9 +143,10 @@ func GetMinorVersion() uint32 {
 
 	var ret gi.Argument
 
-	getMinorVersionFunction_Set()
-
-	ret = getMinorVersionFunction.Invoke(nil, nil)
+	err := getMinorVersionFunction_Set()
+	if err == nil {
+		ret = getMinorVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.Uint32()
 
@@ -143,10 +158,12 @@ func GetMinorVersion() uint32 {
 var getToolkitNameFunction *gi.Function
 var getToolkitNameFunction_Once sync.Once
 
-func getToolkitNameFunction_Set() {
+func getToolkitNameFunction_Set() error {
+	var err error
 	getToolkitNameFunction_Once.Do(func() {
-		getToolkitNameFunction = gi.FunctionInvokerNew("Atk", "get_toolkit_name")
+		getToolkitNameFunction, err = gi.FunctionInvokerNew("Atk", "get_toolkit_name")
 	})
+	return err
 }
 
 // GetToolkitName is a representation of the C type atk_get_toolkit_name.
@@ -154,9 +171,10 @@ func GetToolkitName() string {
 
 	var ret gi.Argument
 
-	getToolkitNameFunction_Set()
-
-	ret = getToolkitNameFunction.Invoke(nil, nil)
+	err := getToolkitNameFunction_Set()
+	if err == nil {
+		ret = getToolkitNameFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -166,10 +184,12 @@ func GetToolkitName() string {
 var getToolkitVersionFunction *gi.Function
 var getToolkitVersionFunction_Once sync.Once
 
-func getToolkitVersionFunction_Set() {
+func getToolkitVersionFunction_Set() error {
+	var err error
 	getToolkitVersionFunction_Once.Do(func() {
-		getToolkitVersionFunction = gi.FunctionInvokerNew("Atk", "get_toolkit_version")
+		getToolkitVersionFunction, err = gi.FunctionInvokerNew("Atk", "get_toolkit_version")
 	})
+	return err
 }
 
 // GetToolkitVersion is a representation of the C type atk_get_toolkit_version.
@@ -177,9 +197,10 @@ func GetToolkitVersion() string {
 
 	var ret gi.Argument
 
-	getToolkitVersionFunction_Set()
-
-	ret = getToolkitVersionFunction.Invoke(nil, nil)
+	err := getToolkitVersionFunction_Set()
+	if err == nil {
+		ret = getToolkitVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -189,10 +210,12 @@ func GetToolkitVersion() string {
 var getVersionFunction *gi.Function
 var getVersionFunction_Once sync.Once
 
-func getVersionFunction_Set() {
+func getVersionFunction_Set() error {
+	var err error
 	getVersionFunction_Once.Do(func() {
-		getVersionFunction = gi.FunctionInvokerNew("Atk", "get_version")
+		getVersionFunction, err = gi.FunctionInvokerNew("Atk", "get_version")
 	})
+	return err
 }
 
 // GetVersion is a representation of the C type atk_get_version.
@@ -200,9 +223,10 @@ func GetVersion() string {
 
 	var ret gi.Argument
 
-	getVersionFunction_Set()
-
-	ret = getVersionFunction.Invoke(nil, nil)
+	err := getVersionFunction_Set()
+	if err == nil {
+		ret = getVersionFunction.Invoke(nil, nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -218,10 +242,12 @@ func GetVersion() string {
 var removeFocusTrackerFunction *gi.Function
 var removeFocusTrackerFunction_Once sync.Once
 
-func removeFocusTrackerFunction_Set() {
+func removeFocusTrackerFunction_Set() error {
+	var err error
 	removeFocusTrackerFunction_Once.Do(func() {
-		removeFocusTrackerFunction = gi.FunctionInvokerNew("Atk", "remove_focus_tracker")
+		removeFocusTrackerFunction, err = gi.FunctionInvokerNew("Atk", "remove_focus_tracker")
 	})
+	return err
 }
 
 // RemoveFocusTracker is a representation of the C type atk_remove_focus_tracker.
@@ -229,19 +255,22 @@ func RemoveFocusTracker(trackerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(trackerId)
 
-	removeFocusTrackerFunction_Set()
-
-	removeFocusTrackerFunction.Invoke(inArgs[:], nil)
+	err := removeFocusTrackerFunction_Set()
+	if err == nil {
+		removeFocusTrackerFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var removeGlobalEventListenerFunction *gi.Function
 var removeGlobalEventListenerFunction_Once sync.Once
 
-func removeGlobalEventListenerFunction_Set() {
+func removeGlobalEventListenerFunction_Set() error {
+	var err error
 	removeGlobalEventListenerFunction_Once.Do(func() {
-		removeGlobalEventListenerFunction = gi.FunctionInvokerNew("Atk", "remove_global_event_listener")
+		removeGlobalEventListenerFunction, err = gi.FunctionInvokerNew("Atk", "remove_global_event_listener")
 	})
+	return err
 }
 
 // RemoveGlobalEventListener is a representation of the C type atk_remove_global_event_listener.
@@ -249,19 +278,22 @@ func RemoveGlobalEventListener(listenerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
-	removeGlobalEventListenerFunction_Set()
-
-	removeGlobalEventListenerFunction.Invoke(inArgs[:], nil)
+	err := removeGlobalEventListenerFunction_Set()
+	if err == nil {
+		removeGlobalEventListenerFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var removeKeyEventListenerFunction *gi.Function
 var removeKeyEventListenerFunction_Once sync.Once
 
-func removeKeyEventListenerFunction_Set() {
+func removeKeyEventListenerFunction_Set() error {
+	var err error
 	removeKeyEventListenerFunction_Once.Do(func() {
-		removeKeyEventListenerFunction = gi.FunctionInvokerNew("Atk", "remove_key_event_listener")
+		removeKeyEventListenerFunction, err = gi.FunctionInvokerNew("Atk", "remove_key_event_listener")
 	})
+	return err
 }
 
 // RemoveKeyEventListener is a representation of the C type atk_remove_key_event_listener.
@@ -269,9 +301,10 @@ func RemoveKeyEventListener(listenerId uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(listenerId)
 
-	removeKeyEventListenerFunction_Set()
-
-	removeKeyEventListenerFunction.Invoke(inArgs[:], nil)
+	err := removeKeyEventListenerFunction_Set()
+	if err == nil {
+		removeKeyEventListenerFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 

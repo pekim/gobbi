@@ -86,14 +86,18 @@ func (f *Function) generateFuncInfo(fi *file) {
 		Id(f.funcInfoOnceGoName).
 		Qual("sync", "Once")
 
-	// func somefunctionFuncSet() {
+	// func somefunctionFuncSet() error {
 	//   ...
 	// }
 	fi.
 		Func().
 		Id(f.funcInfoSetFuncGoName).
 		Params().
+		List(jen.Id("error")).
 		BlockFunc(func(g *jen.Group) {
+			// var err error
+			g.Var().Id("err").Id("error")
+
 			// somefunctionFuncOnce.Do(func() {
 			//   ...
 			// })
@@ -105,28 +109,43 @@ func (f *Function) generateFuncInfo(fi *file) {
 					Params().
 					BlockFunc(func(g *jen.Group) {
 						if f.record != nil {
-							// someStruct_Set()
+							// err = someStruct_Set()
 							g.
+								Id("err").
+								Op("=").
 								Id(f.record.structInfoSetFuncGoName).
 								Call()
 
-							// somefunctionFunc = someStruct.InvokerNew("SomeFunction")
+							// if err != nil {
+							//   return
+							// }
+							g.
+								If(jen.Id("err").Op("!=").Nil()).
+								Block(jen.Return())
+
+							// somefunctionFunc, err = someStruct.InvokerNew("SomeFunction")
 							g.
 								Id(f.funcInfoGoName).
+								Op(",").
+								Id("err").
 								Op("=").
 								Id(f.record.structInfoGoName).
 								Dot("InvokerNew").
 								Call(jen.Lit(f.Name))
 						} else {
-							// somefunctionFunc = gi.FunctionInvokerNew("Gdk", "SomeFunction")
+							// somefunctionFunc, err = gi.FunctionInvokerNew("Gdk", "SomeFunction")
 							g.
 								Id(f.funcInfoGoName).
+								Op(",").
+								Id("err").
 								Op("=").
 								Qual(gi.PackageName, "FunctionInvokerNew").
 								Call(jen.Lit(f.namespace.Name),
 									jen.Lit(f.Name))
 						}
 					}))
+
+			g.Return().Id("err")
 		})
 }
 
@@ -164,7 +183,6 @@ func (f *Function) generateBody(g *jen.Group) {
 	f.generateReturnArg(g)
 	g.Line()
 	f.generateInitialiseInvoker(g)
-	g.Line()
 	f.generateCallFunction(g)
 	g.Line()
 	f.generateReturnVar(g)
@@ -175,6 +193,8 @@ func (f *Function) generateBody(g *jen.Group) {
 
 func (f *Function) generateInitialiseInvoker(g *jen.Group) {
 	g.
+		Id("err").
+		Op(":=").
 		Id(f.funcInfoSetFuncGoName).
 		Call()
 }
@@ -192,17 +212,20 @@ func (f *Function) generateReturnArg(g *jen.Group) {
 
 func (f *Function) generateCallFunction(g *jen.Group) {
 	g.
-		Do(func(s *jen.Statement) {
-			if !f.ReturnValue.isVoid() {
-				s.
-					Id("ret").
-					Op("=")
-			}
-		}).
-		Id(f.funcInfoGoName).
-		Dot("Invoke").
-		CallFunc(func(i *jen.Group) {
-			f.Parameters.generateCallParams(i, f.receiver)
+		If(jen.Id("err").Op("==").Nil()).
+		BlockFunc(func(g *jen.Group) {
+			g.Do(func(s *jen.Statement) {
+				if !f.ReturnValue.isVoid() {
+					s.
+						Id("ret").
+						Op("=")
+				}
+			}).
+				Id(f.funcInfoGoName).
+				Dot("Invoke").
+				CallFunc(func(i *jen.Group) {
+					f.Parameters.generateCallParams(i, f.receiver)
+				})
 		})
 }
 

@@ -75,13 +75,10 @@ func (r *Record) generateStructInfo(f *file) {
 		Func().
 		Id(r.structInfoSetFuncGoName).
 		Params().
-		Params(jen.Id("error")).
+		List(jen.Id("error")).
 		BlockFunc(func(g *jen.Group) {
 			// var err error
-			g.
-				Var().
-				Id("err").
-				Id("error")
+			g.Var().Id("err").Id("error")
 
 			//   colorStructOnce.Do(func() {
 			//     colorStruct, err = gi.StructNew("Gdk", "Color")

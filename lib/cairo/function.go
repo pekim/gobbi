@@ -10,17 +10,20 @@ import (
 var imageSurfaceCreateFunction *gi.Function
 var imageSurfaceCreateFunction_Once sync.Once
 
-func imageSurfaceCreateFunction_Set() {
+func imageSurfaceCreateFunction_Set() error {
+	var err error
 	imageSurfaceCreateFunction_Once.Do(func() {
-		imageSurfaceCreateFunction = gi.FunctionInvokerNew("cairo", "image_surface_create")
+		imageSurfaceCreateFunction, err = gi.FunctionInvokerNew("cairo", "image_surface_create")
 	})
+	return err
 }
 
 // ImageSurfaceCreate is a representation of the C type cairo_image_surface_create.
 func ImageSurfaceCreate() {
 
-	imageSurfaceCreateFunction_Set()
-
-	imageSurfaceCreateFunction.Invoke(nil, nil)
+	err := imageSurfaceCreateFunction_Set()
+	if err == nil {
+		imageSurfaceCreateFunction.Invoke(nil, nil)
+	}
 
 }

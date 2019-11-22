@@ -14,10 +14,12 @@ import (
 var encodingGetCurrentFunction *gi.Function
 var encodingGetCurrentFunction_Once sync.Once
 
-func encodingGetCurrentFunction_Set() {
+func encodingGetCurrentFunction_Set() error {
+	var err error
 	encodingGetCurrentFunction_Once.Do(func() {
-		encodingGetCurrentFunction = gi.FunctionInvokerNew("GtkSource", "encoding_get_current")
+		encodingGetCurrentFunction, err = gi.FunctionInvokerNew("GtkSource", "encoding_get_current")
 	})
+	return err
 }
 
 // EncodingGetCurrent is a representation of the C type gtk_source_encoding_get_current.
@@ -25,9 +27,10 @@ func EncodingGetCurrent() *Encoding {
 
 	var ret gi.Argument
 
-	encodingGetCurrentFunction_Set()
-
-	ret = encodingGetCurrentFunction.Invoke(nil, nil)
+	err := encodingGetCurrentFunction_Set()
+	if err == nil {
+		ret = encodingGetCurrentFunction.Invoke(nil, nil)
+	}
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -39,10 +42,12 @@ func EncodingGetCurrent() *Encoding {
 var encodingGetFromCharsetFunction *gi.Function
 var encodingGetFromCharsetFunction_Once sync.Once
 
-func encodingGetFromCharsetFunction_Set() {
+func encodingGetFromCharsetFunction_Set() error {
+	var err error
 	encodingGetFromCharsetFunction_Once.Do(func() {
-		encodingGetFromCharsetFunction = gi.FunctionInvokerNew("GtkSource", "encoding_get_from_charset")
+		encodingGetFromCharsetFunction, err = gi.FunctionInvokerNew("GtkSource", "encoding_get_from_charset")
 	})
+	return err
 }
 
 // EncodingGetFromCharset is a representation of the C type gtk_source_encoding_get_from_charset.
@@ -52,9 +57,10 @@ func EncodingGetFromCharset(charset string) *Encoding {
 
 	var ret gi.Argument
 
-	encodingGetFromCharsetFunction_Set()
-
-	ret = encodingGetFromCharsetFunction.Invoke(inArgs[:], nil)
+	err := encodingGetFromCharsetFunction_Set()
+	if err == nil {
+		ret = encodingGetFromCharsetFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -64,10 +70,12 @@ func EncodingGetFromCharset(charset string) *Encoding {
 var encodingGetUtf8Function *gi.Function
 var encodingGetUtf8Function_Once sync.Once
 
-func encodingGetUtf8Function_Set() {
+func encodingGetUtf8Function_Set() error {
+	var err error
 	encodingGetUtf8Function_Once.Do(func() {
-		encodingGetUtf8Function = gi.FunctionInvokerNew("GtkSource", "encoding_get_utf8")
+		encodingGetUtf8Function, err = gi.FunctionInvokerNew("GtkSource", "encoding_get_utf8")
 	})
+	return err
 }
 
 // EncodingGetUtf8 is a representation of the C type gtk_source_encoding_get_utf8.
@@ -75,9 +83,10 @@ func EncodingGetUtf8() *Encoding {
 
 	var ret gi.Argument
 
-	encodingGetUtf8Function_Set()
-
-	ret = encodingGetUtf8Function.Invoke(nil, nil)
+	err := encodingGetUtf8Function_Set()
+	if err == nil {
+		ret = encodingGetUtf8Function.Invoke(nil, nil)
+	}
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -91,10 +100,12 @@ func EncodingGetUtf8() *Encoding {
 var utilsEscapeSearchTextFunction *gi.Function
 var utilsEscapeSearchTextFunction_Once sync.Once
 
-func utilsEscapeSearchTextFunction_Set() {
+func utilsEscapeSearchTextFunction_Set() error {
+	var err error
 	utilsEscapeSearchTextFunction_Once.Do(func() {
-		utilsEscapeSearchTextFunction = gi.FunctionInvokerNew("GtkSource", "utils_escape_search_text")
+		utilsEscapeSearchTextFunction, err = gi.FunctionInvokerNew("GtkSource", "utils_escape_search_text")
 	})
+	return err
 }
 
 // UtilsEscapeSearchText is a representation of the C type gtk_source_utils_escape_search_text.
@@ -104,9 +115,10 @@ func UtilsEscapeSearchText(text string) string {
 
 	var ret gi.Argument
 
-	utilsEscapeSearchTextFunction_Set()
-
-	ret = utilsEscapeSearchTextFunction.Invoke(inArgs[:], nil)
+	err := utilsEscapeSearchTextFunction_Set()
+	if err == nil {
+		ret = utilsEscapeSearchTextFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
@@ -116,10 +128,12 @@ func UtilsEscapeSearchText(text string) string {
 var utilsUnescapeSearchTextFunction *gi.Function
 var utilsUnescapeSearchTextFunction_Once sync.Once
 
-func utilsUnescapeSearchTextFunction_Set() {
+func utilsUnescapeSearchTextFunction_Set() error {
+	var err error
 	utilsUnescapeSearchTextFunction_Once.Do(func() {
-		utilsUnescapeSearchTextFunction = gi.FunctionInvokerNew("GtkSource", "utils_unescape_search_text")
+		utilsUnescapeSearchTextFunction, err = gi.FunctionInvokerNew("GtkSource", "utils_unescape_search_text")
 	})
+	return err
 }
 
 // UtilsUnescapeSearchText is a representation of the C type gtk_source_utils_unescape_search_text.
@@ -129,9 +143,10 @@ func UtilsUnescapeSearchText(text string) string {
 
 	var ret gi.Argument
 
-	utilsUnescapeSearchTextFunction_Set()
-
-	ret = utilsUnescapeSearchTextFunction.Invoke(inArgs[:], nil)
+	err := utilsUnescapeSearchTextFunction_Set()
+	if err == nil {
+		ret = utilsUnescapeSearchTextFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 

@@ -284,11 +284,16 @@ type Encoding struct {
 var encodingCopyFunction *gi.Function
 var encodingCopyFunction_Once sync.Once
 
-func encodingCopyFunction_Set() {
+func encodingCopyFunction_Set() error {
+	var err error
 	encodingCopyFunction_Once.Do(func() {
-		encodingStruct_Set()
-		encodingCopyFunction = encodingStruct.InvokerNew("copy")
+		err = encodingStruct_Set()
+		if err != nil {
+			return
+		}
+		encodingCopyFunction, err = encodingStruct.InvokerNew("copy")
 	})
+	return err
 }
 
 // Copy is a representation of the C type gtk_source_encoding_copy.
@@ -298,9 +303,10 @@ func (recv *Encoding) Copy() *Encoding {
 
 	var ret gi.Argument
 
-	encodingCopyFunction_Set()
-
-	ret = encodingCopyFunction.Invoke(inArgs[:], nil)
+	err := encodingCopyFunction_Set()
+	if err == nil {
+		ret = encodingCopyFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := &Encoding{native: ret.Pointer()}
 
@@ -310,11 +316,16 @@ func (recv *Encoding) Copy() *Encoding {
 var encodingFreeFunction *gi.Function
 var encodingFreeFunction_Once sync.Once
 
-func encodingFreeFunction_Set() {
+func encodingFreeFunction_Set() error {
+	var err error
 	encodingFreeFunction_Once.Do(func() {
-		encodingStruct_Set()
-		encodingFreeFunction = encodingStruct.InvokerNew("free")
+		err = encodingStruct_Set()
+		if err != nil {
+			return
+		}
+		encodingFreeFunction, err = encodingStruct.InvokerNew("free")
 	})
+	return err
 }
 
 // Free is a representation of the C type gtk_source_encoding_free.
@@ -322,20 +333,26 @@ func (recv *Encoding) Free() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.native)
 
-	encodingFreeFunction_Set()
-
-	encodingFreeFunction.Invoke(inArgs[:], nil)
+	err := encodingFreeFunction_Set()
+	if err == nil {
+		encodingFreeFunction.Invoke(inArgs[:], nil)
+	}
 
 }
 
 var encodingGetCharsetFunction *gi.Function
 var encodingGetCharsetFunction_Once sync.Once
 
-func encodingGetCharsetFunction_Set() {
+func encodingGetCharsetFunction_Set() error {
+	var err error
 	encodingGetCharsetFunction_Once.Do(func() {
-		encodingStruct_Set()
-		encodingGetCharsetFunction = encodingStruct.InvokerNew("get_charset")
+		err = encodingStruct_Set()
+		if err != nil {
+			return
+		}
+		encodingGetCharsetFunction, err = encodingStruct.InvokerNew("get_charset")
 	})
+	return err
 }
 
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
@@ -345,9 +362,10 @@ func (recv *Encoding) GetCharset() string {
 
 	var ret gi.Argument
 
-	encodingGetCharsetFunction_Set()
-
-	ret = encodingGetCharsetFunction.Invoke(inArgs[:], nil)
+	err := encodingGetCharsetFunction_Set()
+	if err == nil {
+		ret = encodingGetCharsetFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -357,11 +375,16 @@ func (recv *Encoding) GetCharset() string {
 var encodingGetNameFunction *gi.Function
 var encodingGetNameFunction_Once sync.Once
 
-func encodingGetNameFunction_Set() {
+func encodingGetNameFunction_Set() error {
+	var err error
 	encodingGetNameFunction_Once.Do(func() {
-		encodingStruct_Set()
-		encodingGetNameFunction = encodingStruct.InvokerNew("get_name")
+		err = encodingStruct_Set()
+		if err != nil {
+			return
+		}
+		encodingGetNameFunction, err = encodingStruct.InvokerNew("get_name")
 	})
+	return err
 }
 
 // GetName is a representation of the C type gtk_source_encoding_get_name.
@@ -371,9 +394,10 @@ func (recv *Encoding) GetName() string {
 
 	var ret gi.Argument
 
-	encodingGetNameFunction_Set()
-
-	ret = encodingGetNameFunction.Invoke(inArgs[:], nil)
+	err := encodingGetNameFunction_Set()
+	if err == nil {
+		ret = encodingGetNameFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(false)
 
@@ -383,11 +407,16 @@ func (recv *Encoding) GetName() string {
 var encodingToStringFunction *gi.Function
 var encodingToStringFunction_Once sync.Once
 
-func encodingToStringFunction_Set() {
+func encodingToStringFunction_Set() error {
+	var err error
 	encodingToStringFunction_Once.Do(func() {
-		encodingStruct_Set()
-		encodingToStringFunction = encodingStruct.InvokerNew("to_string")
+		err = encodingStruct_Set()
+		if err != nil {
+			return
+		}
+		encodingToStringFunction, err = encodingStruct.InvokerNew("to_string")
 	})
+	return err
 }
 
 // ToString is a representation of the C type gtk_source_encoding_to_string.
@@ -397,9 +426,10 @@ func (recv *Encoding) ToString() string {
 
 	var ret gi.Argument
 
-	encodingToStringFunction_Set()
-
-	ret = encodingToStringFunction.Invoke(inArgs[:], nil)
+	err := encodingToStringFunction_Set()
+	if err == nil {
+		ret = encodingToStringFunction.Invoke(inArgs[:], nil)
+	}
 
 	retGo := ret.String(true)
 
