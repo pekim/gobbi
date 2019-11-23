@@ -40,6 +40,11 @@ func (a Argument) Uint64() uint64 {
 	return (uint64)(*(*C.guint)(unsafe.Pointer(&a)))
 }
 
+func (a Argument) Boolean() bool {
+	value := *(*C.gboolean)(unsafe.Pointer(&a))
+	return value == C.TRUE
+}
+
 func (a Argument) String(transferOwnership bool) string {
 	cString := *(**C.gchar)(unsafe.Pointer(&a))
 	if transferOwnership {

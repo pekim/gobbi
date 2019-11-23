@@ -189,9 +189,57 @@ func DisableSetlocale() error {
 
 // UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_events_pending' : return type 'gboolean' not supported
+var eventsPendingFunction *gi.Function
+var eventsPendingFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_false' : return type 'gboolean' not supported
+func eventsPendingFunction_Set() error {
+	var err error
+	eventsPendingFunction_Once.Do(func() {
+		eventsPendingFunction, err = gi.FunctionInvokerNew("Gtk", "events_pending")
+	})
+	return err
+}
+
+// EventsPending is a representation of the C type gtk_events_pending.
+func EventsPending() (bool, error) {
+
+	var ret gi.Argument
+
+	err := eventsPendingFunction_Set()
+	if err == nil {
+		ret = eventsPendingFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var falseFunction *gi.Function
+var falseFunction_Once sync.Once
+
+func falseFunction_Set() error {
+	var err error
+	falseFunction_Once.Do(func() {
+		falseFunction, err = gi.FunctionInvokerNew("Gtk", "false")
+	})
+	return err
+}
+
+// False is a representation of the C type gtk_false.
+func False() (bool, error) {
+
+	var ret gi.Argument
+
+	err := falseFunction_Set()
+	if err == nil {
+		ret = falseFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_file_chooser_error_quark' : return type 'GLib.Quark' not supported
 
@@ -389,7 +437,7 @@ func GetMinorVersion() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_get_option_group' : parameter 'open_default_display' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'gtk_get_option_group' : return type 'GLib.OptionGroup' not supported
 
 // UNSUPPORTED : C value 'gtk_grab_get_current' : return type 'Widget' not supported
 
@@ -463,9 +511,59 @@ func Main() error {
 
 // UNSUPPORTED : C value 'gtk_main_do_event' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_main_iteration' : return type 'gboolean' not supported
+var mainIterationFunction *gi.Function
+var mainIterationFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_main_iteration_do' : parameter 'blocking' of type 'gboolean' not supported
+func mainIterationFunction_Set() error {
+	var err error
+	mainIterationFunction_Once.Do(func() {
+		mainIterationFunction, err = gi.FunctionInvokerNew("Gtk", "main_iteration")
+	})
+	return err
+}
+
+// MainIteration is a representation of the C type gtk_main_iteration.
+func MainIteration() (bool, error) {
+
+	var ret gi.Argument
+
+	err := mainIterationFunction_Set()
+	if err == nil {
+		ret = mainIterationFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var mainIterationDoFunction *gi.Function
+var mainIterationDoFunction_Once sync.Once
+
+func mainIterationDoFunction_Set() error {
+	var err error
+	mainIterationDoFunction_Once.Do(func() {
+		mainIterationDoFunction, err = gi.FunctionInvokerNew("Gtk", "main_iteration_do")
+	})
+	return err
+}
+
+// MainIterationDo is a representation of the C type gtk_main_iteration_do.
+func MainIterationDo(blocking bool) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(blocking)
+
+	var ret gi.Argument
+
+	err := mainIterationDoFunction_Set()
+	if err == nil {
+		ret = mainIterationDoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var mainLevelFunction *gi.Function
 var mainLevelFunction_Once sync.Once
@@ -581,7 +679,7 @@ func PaperSizeGetDefault() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : parameter 'include_custom' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : return type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' has no type
 
@@ -723,7 +821,31 @@ func RcParseString(rcString string) error {
 
 // UNSUPPORTED : C value 'gtk_rc_property_parse_requisition' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
 
-// UNSUPPORTED : C value 'gtk_rc_reparse_all' : return type 'gboolean' not supported
+var rcReparseAllFunction *gi.Function
+var rcReparseAllFunction_Once sync.Once
+
+func rcReparseAllFunction_Set() error {
+	var err error
+	rcReparseAllFunction_Once.Do(func() {
+		rcReparseAllFunction, err = gi.FunctionInvokerNew("Gtk", "rc_reparse_all")
+	})
+	return err
+}
+
+// RcReparseAll is a representation of the C type gtk_rc_reparse_all.
+func RcReparseAll() (bool, error) {
+
+	var ret gi.Argument
+
+	err := rcReparseAllFunction_Set()
+	if err == nil {
+		ret = rcReparseAllFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_rc_reparse_all_for_settings' : parameter 'settings' of type 'Settings' not supported
 
@@ -931,4 +1053,28 @@ func TestRegisterAllTypes() error {
 
 // UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : parameter 'selection_data' of type 'SelectionData' not supported
 
-// UNSUPPORTED : C value 'gtk_true' : return type 'gboolean' not supported
+var trueFunction *gi.Function
+var trueFunction_Once sync.Once
+
+func trueFunction_Set() error {
+	var err error
+	trueFunction_Once.Do(func() {
+		trueFunction, err = gi.FunctionInvokerNew("Gtk", "true")
+	})
+	return err
+}
+
+// True is a representation of the C type gtk_true.
+func True() (bool, error) {
+
+	var ret gi.Argument
+
+	err := trueFunction_Set()
+	if err == nil {
+		ret = trueFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}

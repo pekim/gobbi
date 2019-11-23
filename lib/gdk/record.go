@@ -320,7 +320,7 @@ type EventCrossing struct {
 	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
 	// UNSUPPORTED : C value 'mode' : no Go type for 'CrossingMode'
 	// UNSUPPORTED : C value 'detail' : no Go type for 'NotifyType'
-	// UNSUPPORTED : C value 'focus' : no Go type for 'gboolean'
+	Focus bool
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 }
 
@@ -402,8 +402,8 @@ type EventGrabBroken struct {
 	// UNSUPPORTED : C value 'type' : no Go type for 'EventType'
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 	SendEvent int8
-	// UNSUPPORTED : C value 'keyboard' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'implicit' : no Go type for 'gboolean'
+	Keyboard  bool
+	Implicit  bool
 	// UNSUPPORTED : C value 'grab_window' : no Go type for 'Window'
 }
 
@@ -698,8 +698,8 @@ type EventTouch struct {
 	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
 	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
-	Sequence *EventSequence
-	// UNSUPPORTED : C value 'emulating_pointer' : no Go type for 'gboolean'
+	Sequence         *EventSequence
+	EmulatingPointer bool
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
 	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
 	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
@@ -847,7 +847,37 @@ type FrameTimings struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gdk_frame_timings_get_complete' : return type 'gboolean' not supported
+var frameTimingsGetCompleteFunction *gi.Function
+var frameTimingsGetCompleteFunction_Once sync.Once
+
+func frameTimingsGetCompleteFunction_Set() error {
+	var err error
+	frameTimingsGetCompleteFunction_Once.Do(func() {
+		err = frameTimingsStruct_Set()
+		if err != nil {
+			return
+		}
+		frameTimingsGetCompleteFunction, err = frameTimingsStruct.InvokerNew("get_complete")
+	})
+	return err
+}
+
+// GetComplete is a representation of the C type gdk_frame_timings_get_complete.
+func (recv *FrameTimings) GetComplete() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := frameTimingsGetCompleteFunction_Set()
+	if err == nil {
+		ret = frameTimingsGetCompleteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var frameTimingsGetFrameCounterFunction *gi.Function
 var frameTimingsGetFrameCounterFunction_Once sync.Once
@@ -1258,7 +1288,38 @@ func (recv *RGBA) Hash() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gdk_rgba_parse' : return type 'gboolean' not supported
+var rGBAParseFunction *gi.Function
+var rGBAParseFunction_Once sync.Once
+
+func rGBAParseFunction_Set() error {
+	var err error
+	rGBAParseFunction_Once.Do(func() {
+		err = rGBAStruct_Set()
+		if err != nil {
+			return
+		}
+		rGBAParseFunction, err = rGBAStruct.InvokerNew("parse")
+	})
+	return err
+}
+
+// Parse is a representation of the C type gdk_rgba_parse.
+func (recv *RGBA) Parse(spec string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(spec)
+
+	var ret gi.Argument
+
+	err := rGBAParseFunction_Set()
+	if err == nil {
+		ret = rGBAParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var rGBAToStringFunction *gi.Function
 var rGBAToStringFunction_Once sync.Once
@@ -1357,9 +1418,9 @@ type WindowAttr struct {
 	// UNSUPPORTED : C value 'visual' : no Go type for 'Visual'
 	// UNSUPPORTED : C value 'window_type' : no Go type for 'WindowType'
 	// UNSUPPORTED : C value 'cursor' : no Go type for 'Cursor'
-	WmclassName  string
-	WmclassClass string
-	// UNSUPPORTED : C value 'override_redirect' : no Go type for 'gboolean'
+	WmclassName      string
+	WmclassClass     string
+	OverrideRedirect bool
 	// UNSUPPORTED : C value 'type_hint' : no Go type for 'WindowTypeHint'
 }
 

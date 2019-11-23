@@ -216,7 +216,37 @@ func (recv *AttrIterator) Destroy() error {
 
 // UNSUPPORTED : C value 'pango_attr_iterator_get_font' : parameter 'desc' of type 'FontDescription' not supported
 
-// UNSUPPORTED : C value 'pango_attr_iterator_next' : return type 'gboolean' not supported
+var attrIteratorNextFunction *gi.Function
+var attrIteratorNextFunction_Once sync.Once
+
+func attrIteratorNextFunction_Set() error {
+	var err error
+	attrIteratorNextFunction_Once.Do(func() {
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorNextFunction, err = attrIteratorStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type pango_attr_iterator_next.
+func (recv *AttrIterator) Next() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := attrIteratorNextFunction_Set()
+	if err == nil {
+		ret = attrIteratorNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var attrIteratorRangeFunction *gi.Function
 var attrIteratorRangeFunction_Once sync.Once
@@ -663,7 +693,38 @@ func (recv *Color) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_color_parse' : return type 'gboolean' not supported
+var colorParseFunction *gi.Function
+var colorParseFunction_Once sync.Once
+
+func colorParseFunction_Set() error {
+	var err error
+	colorParseFunction_Once.Do(func() {
+		err = colorStruct_Set()
+		if err != nil {
+			return
+		}
+		colorParseFunction, err = colorStruct.InvokerNew("parse")
+	})
+	return err
+}
+
+// Parse is a representation of the C type pango_color_parse.
+func (recv *Color) Parse(spec string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(spec)
+
+	var ret gi.Argument
+
+	err := colorParseFunction_Set()
+	if err == nil {
+		ret = colorParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var colorToStringFunction *gi.Function
 var colorToStringFunction_Once sync.Once
@@ -1146,7 +1207,37 @@ func (recv *FontDescription) GetSize() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_font_description_get_size_is_absolute' : return type 'gboolean' not supported
+var fontDescriptionGetSizeIsAbsoluteFunction *gi.Function
+var fontDescriptionGetSizeIsAbsoluteFunction_Once sync.Once
+
+func fontDescriptionGetSizeIsAbsoluteFunction_Set() error {
+	var err error
+	fontDescriptionGetSizeIsAbsoluteFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetSizeIsAbsoluteFunction, err = fontDescriptionStruct.InvokerNew("get_size_is_absolute")
+	})
+	return err
+}
+
+// GetSizeIsAbsolute is a representation of the C type pango_font_description_get_size_is_absolute.
+func (recv *FontDescription) GetSizeIsAbsolute() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetSizeIsAbsoluteFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetSizeIsAbsoluteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'pango_font_description_get_stretch' : return type 'Stretch' not supported
 
@@ -2155,9 +2246,69 @@ func (recv *GlyphItemIter) Free() error {
 
 // UNSUPPORTED : C value 'pango_glyph_item_iter_init_start' : parameter 'glyph_item' of type 'GlyphItem' not supported
 
-// UNSUPPORTED : C value 'pango_glyph_item_iter_next_cluster' : return type 'gboolean' not supported
+var glyphItemIterNextClusterFunction *gi.Function
+var glyphItemIterNextClusterFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_glyph_item_iter_prev_cluster' : return type 'gboolean' not supported
+func glyphItemIterNextClusterFunction_Set() error {
+	var err error
+	glyphItemIterNextClusterFunction_Once.Do(func() {
+		err = glyphItemIterStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemIterNextClusterFunction, err = glyphItemIterStruct.InvokerNew("next_cluster")
+	})
+	return err
+}
+
+// NextCluster is a representation of the C type pango_glyph_item_iter_next_cluster.
+func (recv *GlyphItemIter) NextCluster() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := glyphItemIterNextClusterFunction_Set()
+	if err == nil {
+		ret = glyphItemIterNextClusterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var glyphItemIterPrevClusterFunction *gi.Function
+var glyphItemIterPrevClusterFunction_Once sync.Once
+
+func glyphItemIterPrevClusterFunction_Set() error {
+	var err error
+	glyphItemIterPrevClusterFunction_Once.Do(func() {
+		err = glyphItemIterStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemIterPrevClusterFunction, err = glyphItemIterStruct.InvokerNew("prev_cluster")
+	})
+	return err
+}
+
+// PrevCluster is a representation of the C type pango_glyph_item_iter_prev_cluster.
+func (recv *GlyphItemIter) PrevCluster() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := glyphItemIterPrevClusterFunction_Set()
+	if err == nil {
+		ret = glyphItemIterPrevClusterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var glyphStringStruct *gi.Struct
 var glyphStringStruct_Once sync.Once
@@ -2597,7 +2748,38 @@ func (recv *Language) GetScripts() (int32, error) {
 
 // UNSUPPORTED : C value 'pango_language_includes_script' : parameter 'script' of type 'Script' not supported
 
-// UNSUPPORTED : C value 'pango_language_matches' : return type 'gboolean' not supported
+var languageMatchesFunction *gi.Function
+var languageMatchesFunction_Once sync.Once
+
+func languageMatchesFunction_Set() error {
+	var err error
+	languageMatchesFunction_Once.Do(func() {
+		err = languageStruct_Set()
+		if err != nil {
+			return
+		}
+		languageMatchesFunction, err = languageStruct.InvokerNew("matches")
+	})
+	return err
+}
+
+// Matches is a representation of the C type pango_language_matches.
+func (recv *Language) Matches(rangeList string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(rangeList)
+
+	var ret gi.Argument
+
+	err := languageMatchesFunction_Set()
+	if err == nil {
+		ret = languageMatchesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var languageToStringFunction *gi.Function
 var languageToStringFunction_Once sync.Once
@@ -2661,7 +2843,37 @@ type LayoutIter struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_layout_iter_at_last_line' : return type 'gboolean' not supported
+var layoutIterAtLastLineFunction *gi.Function
+var layoutIterAtLastLineFunction_Once sync.Once
+
+func layoutIterAtLastLineFunction_Set() error {
+	var err error
+	layoutIterAtLastLineFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterAtLastLineFunction, err = layoutIterStruct.InvokerNew("at_last_line")
+	})
+	return err
+}
+
+// AtLastLine is a representation of the C type pango_layout_iter_at_last_line.
+func (recv *LayoutIter) AtLastLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutIterAtLastLineFunction_Set()
+	if err == nil {
+		ret = layoutIterAtLastLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var layoutIterCopyFunction *gi.Function
 var layoutIterCopyFunction_Once sync.Once
@@ -2900,13 +3112,133 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32, error) {
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_run_readonly' : return type 'LayoutRun' not supported
 
-// UNSUPPORTED : C value 'pango_layout_iter_next_char' : return type 'gboolean' not supported
+var layoutIterNextCharFunction *gi.Function
+var layoutIterNextCharFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_layout_iter_next_cluster' : return type 'gboolean' not supported
+func layoutIterNextCharFunction_Set() error {
+	var err error
+	layoutIterNextCharFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterNextCharFunction, err = layoutIterStruct.InvokerNew("next_char")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_layout_iter_next_line' : return type 'gboolean' not supported
+// NextChar is a representation of the C type pango_layout_iter_next_char.
+func (recv *LayoutIter) NextChar() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'pango_layout_iter_next_run' : return type 'gboolean' not supported
+	var ret gi.Argument
+
+	err := layoutIterNextCharFunction_Set()
+	if err == nil {
+		ret = layoutIterNextCharFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var layoutIterNextClusterFunction *gi.Function
+var layoutIterNextClusterFunction_Once sync.Once
+
+func layoutIterNextClusterFunction_Set() error {
+	var err error
+	layoutIterNextClusterFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterNextClusterFunction, err = layoutIterStruct.InvokerNew("next_cluster")
+	})
+	return err
+}
+
+// NextCluster is a representation of the C type pango_layout_iter_next_cluster.
+func (recv *LayoutIter) NextCluster() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutIterNextClusterFunction_Set()
+	if err == nil {
+		ret = layoutIterNextClusterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var layoutIterNextLineFunction *gi.Function
+var layoutIterNextLineFunction_Once sync.Once
+
+func layoutIterNextLineFunction_Set() error {
+	var err error
+	layoutIterNextLineFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterNextLineFunction, err = layoutIterStruct.InvokerNew("next_line")
+	})
+	return err
+}
+
+// NextLine is a representation of the C type pango_layout_iter_next_line.
+func (recv *LayoutIter) NextLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutIterNextLineFunction_Set()
+	if err == nil {
+		ret = layoutIterNextLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var layoutIterNextRunFunction *gi.Function
+var layoutIterNextRunFunction_Once sync.Once
+
+func layoutIterNextRunFunction_Set() error {
+	var err error
+	layoutIterNextRunFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterNextRunFunction, err = layoutIterStruct.InvokerNew("next_run")
+	})
+	return err
+}
+
+// NextRun is a representation of the C type pango_layout_iter_next_run.
+func (recv *LayoutIter) NextRun() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := layoutIterNextRunFunction_Set()
+	if err == nil {
+		ret = layoutIterNextRunFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var layoutLineStruct *gi.Struct
 var layoutLineStruct_Once sync.Once
@@ -2935,7 +3267,39 @@ type LayoutLine struct {
 
 // UNSUPPORTED : C value 'pango_layout_line_get_x_ranges' : parameter 'ranges' has no type
 
-// UNSUPPORTED : C value 'pango_layout_line_index_to_x' : parameter 'trailing' of type 'gboolean' not supported
+var layoutLineIndexToXFunction *gi.Function
+var layoutLineIndexToXFunction_Once sync.Once
+
+func layoutLineIndexToXFunction_Set() error {
+	var err error
+	layoutLineIndexToXFunction_Once.Do(func() {
+		err = layoutLineStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutLineIndexToXFunction, err = layoutLineStruct.InvokerNew("index_to_x")
+	})
+	return err
+}
+
+// IndexToX is a representation of the C type pango_layout_line_index_to_x.
+func (recv *LayoutLine) IndexToX(index int32, trailing bool) (int32, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(index)
+	inArgs[2].SetBoolean(trailing)
+
+	var outArgs [1]gi.Argument
+
+	err := layoutLineIndexToXFunction_Set()
+	if err == nil {
+		layoutLineIndexToXFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0, err
+}
 
 var layoutLineRefFunction *gi.Function
 var layoutLineRefFunction_Once sync.Once
@@ -2997,7 +3361,41 @@ func (recv *LayoutLine) Unref() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_layout_line_x_to_index' : return type 'gboolean' not supported
+var layoutLineXToIndexFunction *gi.Function
+var layoutLineXToIndexFunction_Once sync.Once
+
+func layoutLineXToIndexFunction_Set() error {
+	var err error
+	layoutLineXToIndexFunction_Once.Do(func() {
+		err = layoutLineStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutLineXToIndexFunction, err = layoutLineStruct.InvokerNew("x_to_index")
+	})
+	return err
+}
+
+// XToIndex is a representation of the C type pango_layout_line_x_to_index.
+func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(xPos)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := layoutLineXToIndexFunction_Set()
+	if err == nil {
+		ret = layoutLineXToIndexFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return retGo, out0, out1, err
+}
 
 var logAttrStruct *gi.Struct
 var logAttrStruct_Once sync.Once
@@ -3270,7 +3668,37 @@ func (recv *ScriptIter) Free() error {
 
 // UNSUPPORTED : C value 'pango_script_iter_get_range' : parameter 'script' of type 'Script' not supported
 
-// UNSUPPORTED : C value 'pango_script_iter_next' : return type 'gboolean' not supported
+var scriptIterNextFunction *gi.Function
+var scriptIterNextFunction_Once sync.Once
+
+func scriptIterNextFunction_Set() error {
+	var err error
+	scriptIterNextFunction_Once.Do(func() {
+		err = scriptIterStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptIterNextFunction, err = scriptIterStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type pango_script_iter_next.
+func (recv *ScriptIter) Next() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := scriptIterNextFunction_Set()
+	if err == nil {
+		ret = scriptIterNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var tabArrayStruct *gi.Struct
 var tabArrayStruct_Once sync.Once
@@ -3287,9 +3715,40 @@ type TabArray struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'pango_tab_array_new' : parameter 'positions_in_pixels' of type 'gboolean' not supported
+var tabArrayNewFunction *gi.Function
+var tabArrayNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_tab_array_new_with_positions' : parameter 'positions_in_pixels' of type 'gboolean' not supported
+func tabArrayNewFunction_Set() error {
+	var err error
+	tabArrayNewFunction_Once.Do(func() {
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayNewFunction, err = tabArrayStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// TabArrayNew is a representation of the C type pango_tab_array_new.
+func TabArrayNew(initialSize int32, positionsInPixels bool) (*TabArray, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(initialSize)
+	inArgs[1].SetBoolean(positionsInPixels)
+
+	var ret gi.Argument
+
+	err := tabArrayNewFunction_Set()
+	if err == nil {
+		ret = tabArrayNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &TabArray{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'pango_tab_array_new_with_positions' : parameter 'first_alignment' of type 'TabAlign' not supported
 
 var tabArrayCopyFunction *gi.Function
 var tabArrayCopyFunction_Once sync.Once
@@ -3351,7 +3810,37 @@ func (recv *TabArray) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_tab_array_get_positions_in_pixels' : return type 'gboolean' not supported
+var tabArrayGetPositionsInPixelsFunction *gi.Function
+var tabArrayGetPositionsInPixelsFunction_Once sync.Once
+
+func tabArrayGetPositionsInPixelsFunction_Set() error {
+	var err error
+	tabArrayGetPositionsInPixelsFunction_Once.Do(func() {
+		err = tabArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		tabArrayGetPositionsInPixelsFunction, err = tabArrayStruct.InvokerNew("get_positions_in_pixels")
+	})
+	return err
+}
+
+// GetPositionsInPixels is a representation of the C type pango_tab_array_get_positions_in_pixels.
+func (recv *TabArray) GetPositionsInPixels() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := tabArrayGetPositionsInPixelsFunction_Set()
+	if err == nil {
+		ret = tabArrayGetPositionsInPixelsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var tabArrayGetSizeFunction *gi.Function
 var tabArrayGetSizeFunction_Once sync.Once

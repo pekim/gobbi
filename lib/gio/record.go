@@ -2136,7 +2136,38 @@ func FileAttributeMatcherNew(attributes string) (*FileAttributeMatcher, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_matcher_enumerate_namespace' : return type 'gboolean' not supported
+var fileAttributeMatcherEnumerateNamespaceFunction *gi.Function
+var fileAttributeMatcherEnumerateNamespaceFunction_Once sync.Once
+
+func fileAttributeMatcherEnumerateNamespaceFunction_Set() error {
+	var err error
+	fileAttributeMatcherEnumerateNamespaceFunction_Once.Do(func() {
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherEnumerateNamespaceFunction, err = fileAttributeMatcherStruct.InvokerNew("enumerate_namespace")
+	})
+	return err
+}
+
+// EnumerateNamespace is a representation of the C type g_file_attribute_matcher_enumerate_namespace.
+func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(ns)
+
+	var ret gi.Argument
+
+	err := fileAttributeMatcherEnumerateNamespaceFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherEnumerateNamespaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var fileAttributeMatcherEnumerateNextFunction *gi.Function
 var fileAttributeMatcherEnumerateNextFunction_Once sync.Once
@@ -2170,9 +2201,71 @@ func (recv *FileAttributeMatcher) EnumerateNext() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_matcher_matches' : return type 'gboolean' not supported
+var fileAttributeMatcherMatchesFunction *gi.Function
+var fileAttributeMatcherMatchesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_attribute_matcher_matches_only' : return type 'gboolean' not supported
+func fileAttributeMatcherMatchesFunction_Set() error {
+	var err error
+	fileAttributeMatcherMatchesFunction_Once.Do(func() {
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherMatchesFunction, err = fileAttributeMatcherStruct.InvokerNew("matches")
+	})
+	return err
+}
+
+// Matches is a representation of the C type g_file_attribute_matcher_matches.
+func (recv *FileAttributeMatcher) Matches(attribute string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileAttributeMatcherMatchesFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherMatchesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var fileAttributeMatcherMatchesOnlyFunction *gi.Function
+var fileAttributeMatcherMatchesOnlyFunction_Once sync.Once
+
+func fileAttributeMatcherMatchesOnlyFunction_Set() error {
+	var err error
+	fileAttributeMatcherMatchesOnlyFunction_Once.Do(func() {
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherMatchesOnlyFunction, err = fileAttributeMatcherStruct.InvokerNew("matches_only")
+	})
+	return err
+}
+
+// MatchesOnly is a representation of the C type g_file_attribute_matcher_matches_only.
+func (recv *FileAttributeMatcher) MatchesOnly(attribute string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(attribute)
+
+	var ret gi.Argument
+
+	err := fileAttributeMatcherMatchesOnlyFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherMatchesOnlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var fileAttributeMatcherRefFunction *gi.Function
 var fileAttributeMatcherRefFunction_Once sync.Once
@@ -2496,7 +2589,7 @@ type FileIface struct {
 	// UNSUPPORTED : C value 'start_mountable_finish' : missing Type
 	// UNSUPPORTED : C value 'stop_mountable' : missing Type
 	// UNSUPPORTED : C value 'stop_mountable_finish' : missing Type
-	// UNSUPPORTED : C value 'supports_thread_contexts' : no Go type for 'gboolean'
+	SupportsThreadContexts bool
 	// UNSUPPORTED : C value 'unmount_mountable_with_operation' : missing Type
 	// UNSUPPORTED : C value 'unmount_mountable_with_operation_finish' : missing Type
 	// UNSUPPORTED : C value 'eject_mountable_with_operation' : missing Type
@@ -4367,7 +4460,38 @@ func (recv *SettingsSchema) GetPath() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_settings_schema_has_key' : return type 'gboolean' not supported
+var settingsSchemaHasKeyFunction *gi.Function
+var settingsSchemaHasKeyFunction_Once sync.Once
+
+func settingsSchemaHasKeyFunction_Set() error {
+	var err error
+	settingsSchemaHasKeyFunction_Once.Do(func() {
+		err = settingsSchemaStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaHasKeyFunction, err = settingsSchemaStruct.InvokerNew("has_key")
+	})
+	return err
+}
+
+// HasKey is a representation of the C type g_settings_schema_has_key.
+func (recv *SettingsSchema) HasKey(name string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	var ret gi.Argument
+
+	err := settingsSchemaHasKeyFunction_Set()
+	if err == nil {
+		ret = settingsSchemaHasKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var settingsSchemaListChildrenFunction *gi.Function
 var settingsSchemaListChildrenFunction_Once sync.Once
@@ -4681,9 +4805,41 @@ type SettingsSchemaSource struct {
 
 // UNSUPPORTED : C value 'g_settings_schema_source_new_from_directory' : parameter 'directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'recursive' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'non_relocatable' has no type
 
-// UNSUPPORTED : C value 'g_settings_schema_source_lookup' : parameter 'recursive' of type 'gboolean' not supported
+var settingsSchemaSourceLookupFunction *gi.Function
+var settingsSchemaSourceLookupFunction_Once sync.Once
+
+func settingsSchemaSourceLookupFunction_Set() error {
+	var err error
+	settingsSchemaSourceLookupFunction_Once.Do(func() {
+		err = settingsSchemaSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaSourceLookupFunction, err = settingsSchemaSourceStruct.InvokerNew("lookup")
+	})
+	return err
+}
+
+// Lookup is a representation of the C type g_settings_schema_source_lookup.
+func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) (*SettingsSchema, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(schemaId)
+	inArgs[2].SetBoolean(recursive)
+
+	var ret gi.Argument
+
+	err := settingsSchemaSourceLookupFunction_Set()
+	if err == nil {
+		ret = settingsSchemaSourceLookupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SettingsSchema{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var settingsSchemaSourceRefFunction *gi.Function
 var settingsSchemaSourceRefFunction_Once sync.Once
@@ -6182,7 +6338,37 @@ func (recv *UnixMountPoint) GetOptions() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_point_guess_can_eject' : return type 'gboolean' not supported
+var unixMountPointGuessCanEjectFunction *gi.Function
+var unixMountPointGuessCanEjectFunction_Once sync.Once
+
+func unixMountPointGuessCanEjectFunction_Set() error {
+	var err error
+	unixMountPointGuessCanEjectFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGuessCanEjectFunction, err = unixMountPointStruct.InvokerNew("guess_can_eject")
+	})
+	return err
+}
+
+// GuessCanEject is a representation of the C type g_unix_mount_point_guess_can_eject.
+func (recv *UnixMountPoint) GuessCanEject() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointGuessCanEjectFunction_Set()
+	if err == nil {
+		ret = unixMountPointGuessCanEjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_point_guess_icon' : return type 'Icon' not supported
 
@@ -6220,11 +6406,101 @@ func (recv *UnixMountPoint) GuessName() (string, error) {
 
 // UNSUPPORTED : C value 'g_unix_mount_point_guess_symbolic_icon' : return type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_point_is_loopback' : return type 'gboolean' not supported
+var unixMountPointIsLoopbackFunction *gi.Function
+var unixMountPointIsLoopbackFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unix_mount_point_is_readonly' : return type 'gboolean' not supported
+func unixMountPointIsLoopbackFunction_Set() error {
+	var err error
+	unixMountPointIsLoopbackFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointIsLoopbackFunction, err = unixMountPointStruct.InvokerNew("is_loopback")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_unix_mount_point_is_user_mountable' : return type 'gboolean' not supported
+// IsLoopback is a representation of the C type g_unix_mount_point_is_loopback.
+func (recv *UnixMountPoint) IsLoopback() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointIsLoopbackFunction_Set()
+	if err == nil {
+		ret = unixMountPointIsLoopbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var unixMountPointIsReadonlyFunction *gi.Function
+var unixMountPointIsReadonlyFunction_Once sync.Once
+
+func unixMountPointIsReadonlyFunction_Set() error {
+	var err error
+	unixMountPointIsReadonlyFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointIsReadonlyFunction, err = unixMountPointStruct.InvokerNew("is_readonly")
+	})
+	return err
+}
+
+// IsReadonly is a representation of the C type g_unix_mount_point_is_readonly.
+func (recv *UnixMountPoint) IsReadonly() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointIsReadonlyFunction_Set()
+	if err == nil {
+		ret = unixMountPointIsReadonlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var unixMountPointIsUserMountableFunction *gi.Function
+var unixMountPointIsUserMountableFunction_Once sync.Once
+
+func unixMountPointIsUserMountableFunction_Set() error {
+	var err error
+	unixMountPointIsUserMountableFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointIsUserMountableFunction, err = unixMountPointStruct.InvokerNew("is_user_mountable")
+	})
+	return err
+}
+
+// IsUserMountable is a representation of the C type g_unix_mount_point_is_user_mountable.
+func (recv *UnixMountPoint) IsUserMountable() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointIsUserMountableFunction_Set()
+	if err == nil {
+		ret = unixMountPointIsUserMountableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var unixOutputStreamClassStruct *gi.Struct
 var unixOutputStreamClassStruct_Once sync.Once

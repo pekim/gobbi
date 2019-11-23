@@ -657,7 +657,37 @@ func (recv *Credential) GetUsername() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'webkit_credential_has_password' : return type 'gboolean' not supported
+var credentialHasPasswordFunction *gi.Function
+var credentialHasPasswordFunction_Once sync.Once
+
+func credentialHasPasswordFunction_Set() error {
+	var err error
+	credentialHasPasswordFunction_Once.Do(func() {
+		err = credentialStruct_Set()
+		if err != nil {
+			return
+		}
+		credentialHasPasswordFunction, err = credentialStruct.InvokerNew("has_password")
+	})
+	return err
+}
+
+// HasPassword is a representation of the C type webkit_credential_has_password.
+func (recv *Credential) HasPassword() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := credentialHasPasswordFunction_Set()
+	if err == nil {
+		ret = credentialHasPasswordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var deviceInfoPermissionRequestClassStruct *gi.Struct
 var deviceInfoPermissionRequestClassStruct_Once sync.Once
@@ -1550,9 +1580,69 @@ func (recv *NavigationAction) GetMouseButton() (uint32, error) {
 
 // UNSUPPORTED : C value 'webkit_navigation_action_get_request' : return type 'URIRequest' not supported
 
-// UNSUPPORTED : C value 'webkit_navigation_action_is_redirect' : return type 'gboolean' not supported
+var navigationActionIsRedirectFunction *gi.Function
+var navigationActionIsRedirectFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_navigation_action_is_user_gesture' : return type 'gboolean' not supported
+func navigationActionIsRedirectFunction_Set() error {
+	var err error
+	navigationActionIsRedirectFunction_Once.Do(func() {
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionIsRedirectFunction, err = navigationActionStruct.InvokerNew("is_redirect")
+	})
+	return err
+}
+
+// IsRedirect is a representation of the C type webkit_navigation_action_is_redirect.
+func (recv *NavigationAction) IsRedirect() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := navigationActionIsRedirectFunction_Set()
+	if err == nil {
+		ret = navigationActionIsRedirectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var navigationActionIsUserGestureFunction *gi.Function
+var navigationActionIsUserGestureFunction_Once sync.Once
+
+func navigationActionIsUserGestureFunction_Set() error {
+	var err error
+	navigationActionIsUserGestureFunction_Once.Do(func() {
+		err = navigationActionStruct_Set()
+		if err != nil {
+			return
+		}
+		navigationActionIsUserGestureFunction, err = navigationActionStruct.InvokerNew("is_user_gesture")
+	})
+	return err
+}
+
+// IsUserGesture is a representation of the C type webkit_navigation_action_is_user_gesture.
+func (recv *NavigationAction) IsUserGesture() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := navigationActionIsUserGestureFunction_Set()
+	if err == nil {
+		ret = navigationActionIsUserGestureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var navigationPolicyDecisionClassStruct *gi.Struct
 var navigationPolicyDecisionClassStruct_Once sync.Once
@@ -1923,13 +2013,133 @@ func (recv *OptionMenuItem) GetTooltip() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'webkit_option_menu_item_is_enabled' : return type 'gboolean' not supported
+var optionMenuItemIsEnabledFunction *gi.Function
+var optionMenuItemIsEnabledFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_option_menu_item_is_group_child' : return type 'gboolean' not supported
+func optionMenuItemIsEnabledFunction_Set() error {
+	var err error
+	optionMenuItemIsEnabledFunction_Once.Do(func() {
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemIsEnabledFunction, err = optionMenuItemStruct.InvokerNew("is_enabled")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_option_menu_item_is_group_label' : return type 'gboolean' not supported
+// IsEnabled is a representation of the C type webkit_option_menu_item_is_enabled.
+func (recv *OptionMenuItem) IsEnabled() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'webkit_option_menu_item_is_selected' : return type 'gboolean' not supported
+	var ret gi.Argument
+
+	err := optionMenuItemIsEnabledFunction_Set()
+	if err == nil {
+		ret = optionMenuItemIsEnabledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var optionMenuItemIsGroupChildFunction *gi.Function
+var optionMenuItemIsGroupChildFunction_Once sync.Once
+
+func optionMenuItemIsGroupChildFunction_Set() error {
+	var err error
+	optionMenuItemIsGroupChildFunction_Once.Do(func() {
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemIsGroupChildFunction, err = optionMenuItemStruct.InvokerNew("is_group_child")
+	})
+	return err
+}
+
+// IsGroupChild is a representation of the C type webkit_option_menu_item_is_group_child.
+func (recv *OptionMenuItem) IsGroupChild() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := optionMenuItemIsGroupChildFunction_Set()
+	if err == nil {
+		ret = optionMenuItemIsGroupChildFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var optionMenuItemIsGroupLabelFunction *gi.Function
+var optionMenuItemIsGroupLabelFunction_Once sync.Once
+
+func optionMenuItemIsGroupLabelFunction_Set() error {
+	var err error
+	optionMenuItemIsGroupLabelFunction_Once.Do(func() {
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemIsGroupLabelFunction, err = optionMenuItemStruct.InvokerNew("is_group_label")
+	})
+	return err
+}
+
+// IsGroupLabel is a representation of the C type webkit_option_menu_item_is_group_label.
+func (recv *OptionMenuItem) IsGroupLabel() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := optionMenuItemIsGroupLabelFunction_Set()
+	if err == nil {
+		ret = optionMenuItemIsGroupLabelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var optionMenuItemIsSelectedFunction *gi.Function
+var optionMenuItemIsSelectedFunction_Once sync.Once
+
+func optionMenuItemIsSelectedFunction_Set() error {
+	var err error
+	optionMenuItemIsSelectedFunction_Once.Do(func() {
+		err = optionMenuItemStruct_Set()
+		if err != nil {
+			return
+		}
+		optionMenuItemIsSelectedFunction, err = optionMenuItemStruct.InvokerNew("is_selected")
+	})
+	return err
+}
+
+// IsSelected is a representation of the C type webkit_option_menu_item_is_selected.
+func (recv *OptionMenuItem) IsSelected() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := optionMenuItemIsSelectedFunction_Set()
+	if err == nil {
+		ret = optionMenuItemIsSelectedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var optionMenuPrivateStruct *gi.Struct
 var optionMenuPrivateStruct_Once sync.Once
@@ -2184,7 +2394,34 @@ func (recv *ScriptDialog) Close() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'webkit_script_dialog_confirm_set_confirmed' : parameter 'confirmed' of type 'gboolean' not supported
+var scriptDialogConfirmSetConfirmedFunction *gi.Function
+var scriptDialogConfirmSetConfirmedFunction_Once sync.Once
+
+func scriptDialogConfirmSetConfirmedFunction_Set() error {
+	var err error
+	scriptDialogConfirmSetConfirmedFunction_Once.Do(func() {
+		err = scriptDialogStruct_Set()
+		if err != nil {
+			return
+		}
+		scriptDialogConfirmSetConfirmedFunction, err = scriptDialogStruct.InvokerNew("confirm_set_confirmed")
+	})
+	return err
+}
+
+// ConfirmSetConfirmed is a representation of the C type webkit_script_dialog_confirm_set_confirmed.
+func (recv *ScriptDialog) ConfirmSetConfirmed(confirmed bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(confirmed)
+
+	err := scriptDialogConfirmSetConfirmedFunction_Set()
+	if err == nil {
+		scriptDialogConfirmSetConfirmedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'webkit_script_dialog_get_dialog_type' : return type 'ScriptDialogType' not supported
 
@@ -2553,7 +2790,37 @@ func (recv *SecurityOrigin) GetProtocol() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'webkit_security_origin_is_opaque' : return type 'gboolean' not supported
+var securityOriginIsOpaqueFunction *gi.Function
+var securityOriginIsOpaqueFunction_Once sync.Once
+
+func securityOriginIsOpaqueFunction_Set() error {
+	var err error
+	securityOriginIsOpaqueFunction_Once.Do(func() {
+		err = securityOriginStruct_Set()
+		if err != nil {
+			return
+		}
+		securityOriginIsOpaqueFunction, err = securityOriginStruct.InvokerNew("is_opaque")
+	})
+	return err
+}
+
+// IsOpaque is a representation of the C type webkit_security_origin_is_opaque.
+func (recv *SecurityOrigin) IsOpaque() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := securityOriginIsOpaqueFunction_Set()
+	if err == nil {
+		ret = securityOriginIsOpaqueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var securityOriginRefFunction *gi.Function
 var securityOriginRefFunction_Once sync.Once

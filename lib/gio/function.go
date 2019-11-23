@@ -7,7 +7,33 @@ import (
 	"sync"
 )
 
-// UNSUPPORTED : C value 'g_action_name_is_valid' : return type 'gboolean' not supported
+var actionNameIsValidFunction *gi.Function
+var actionNameIsValidFunction_Once sync.Once
+
+func actionNameIsValidFunction_Set() error {
+	var err error
+	actionNameIsValidFunction_Once.Do(func() {
+		actionNameIsValidFunction, err = gi.FunctionInvokerNew("Gio", "action_name_is_valid")
+	})
+	return err
+}
+
+// ActionNameIsValid is a representation of the C type g_action_name_is_valid.
+func ActionNameIsValid(actionName string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(actionName)
+
+	var ret gi.Argument
+
+	err := actionNameIsValidFunction_Set()
+	if err == nil {
+		ret = actionNameIsValidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
 
@@ -19,7 +45,7 @@ import (
 
 // UNSUPPORTED : C value 'g_app_info_get_all_for_type' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : parameter 'must_support_uris' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : return type 'AppInfo' not supported
 
 // UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : return type 'AppInfo' not supported
 
@@ -129,9 +155,62 @@ func BusUnwatchName(watcherId uint32) error {
 
 // UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'bus_type' of type 'BusType' not supported
 
-// UNSUPPORTED : C value 'g_content_type_can_be_executable' : return type 'gboolean' not supported
+var contentTypeCanBeExecutableFunction *gi.Function
+var contentTypeCanBeExecutableFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_content_type_equals' : return type 'gboolean' not supported
+func contentTypeCanBeExecutableFunction_Set() error {
+	var err error
+	contentTypeCanBeExecutableFunction_Once.Do(func() {
+		contentTypeCanBeExecutableFunction, err = gi.FunctionInvokerNew("Gio", "content_type_can_be_executable")
+	})
+	return err
+}
+
+// ContentTypeCanBeExecutable is a representation of the C type g_content_type_can_be_executable.
+func ContentTypeCanBeExecutable(type_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	var ret gi.Argument
+
+	err := contentTypeCanBeExecutableFunction_Set()
+	if err == nil {
+		ret = contentTypeCanBeExecutableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var contentTypeEqualsFunction *gi.Function
+var contentTypeEqualsFunction_Once sync.Once
+
+func contentTypeEqualsFunction_Set() error {
+	var err error
+	contentTypeEqualsFunction_Once.Do(func() {
+		contentTypeEqualsFunction, err = gi.FunctionInvokerNew("Gio", "content_type_equals")
+	})
+	return err
+}
+
+// ContentTypeEquals is a representation of the C type g_content_type_equals.
+func ContentTypeEquals(type1 string, type2 string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(type1)
+	inArgs[1].SetString(type2)
+
+	var ret gi.Argument
+
+	err := contentTypeEqualsFunction_Set()
+	if err == nil {
+		ret = contentTypeEqualsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var contentTypeFromMimeTypeFunction *gi.Function
 var contentTypeFromMimeTypeFunction_Once sync.Once
@@ -275,11 +354,91 @@ func ContentTypeGetMimeType(type_ string) (string, error) {
 
 // UNSUPPORTED : C value 'g_content_type_guess_for_tree' : parameter 'root' of type 'File' not supported
 
-// UNSUPPORTED : C value 'g_content_type_is_a' : return type 'gboolean' not supported
+var contentTypeIsAFunction *gi.Function
+var contentTypeIsAFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_content_type_is_mime_type' : return type 'gboolean' not supported
+func contentTypeIsAFunction_Set() error {
+	var err error
+	contentTypeIsAFunction_Once.Do(func() {
+		contentTypeIsAFunction, err = gi.FunctionInvokerNew("Gio", "content_type_is_a")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_content_type_is_unknown' : return type 'gboolean' not supported
+// ContentTypeIsA is a representation of the C type g_content_type_is_a.
+func ContentTypeIsA(type_ string, supertype string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(type_)
+	inArgs[1].SetString(supertype)
+
+	var ret gi.Argument
+
+	err := contentTypeIsAFunction_Set()
+	if err == nil {
+		ret = contentTypeIsAFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var contentTypeIsMimeTypeFunction *gi.Function
+var contentTypeIsMimeTypeFunction_Once sync.Once
+
+func contentTypeIsMimeTypeFunction_Set() error {
+	var err error
+	contentTypeIsMimeTypeFunction_Once.Do(func() {
+		contentTypeIsMimeTypeFunction, err = gi.FunctionInvokerNew("Gio", "content_type_is_mime_type")
+	})
+	return err
+}
+
+// ContentTypeIsMimeType is a representation of the C type g_content_type_is_mime_type.
+func ContentTypeIsMimeType(type_ string, mimeType string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(type_)
+	inArgs[1].SetString(mimeType)
+
+	var ret gi.Argument
+
+	err := contentTypeIsMimeTypeFunction_Set()
+	if err == nil {
+		ret = contentTypeIsMimeTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var contentTypeIsUnknownFunction *gi.Function
+var contentTypeIsUnknownFunction_Once sync.Once
+
+func contentTypeIsUnknownFunction_Set() error {
+	var err error
+	contentTypeIsUnknownFunction_Once.Do(func() {
+		contentTypeIsUnknownFunction, err = gi.FunctionInvokerNew("Gio", "content_type_is_unknown")
+	})
+	return err
+}
+
+// ContentTypeIsUnknown is a representation of the C type g_content_type_is_unknown.
+func ContentTypeIsUnknown(type_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	var ret gi.Argument
+
+	err := contentTypeIsUnknownFunction_Set()
+	if err == nil {
+		ret = contentTypeIsUnknownFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' has no type
 
@@ -371,19 +530,201 @@ func DbusGenerateGuid() (string, error) {
 
 // UNSUPPORTED : C value 'g_dbus_gvariant_to_gvalue' : parameter 'value' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_dbus_is_address' : return type 'gboolean' not supported
+var dbusIsAddressFunction *gi.Function
+var dbusIsAddressFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_is_guid' : return type 'gboolean' not supported
+func dbusIsAddressFunction_Set() error {
+	var err error
+	dbusIsAddressFunction_Once.Do(func() {
+		dbusIsAddressFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_address")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_dbus_is_interface_name' : return type 'gboolean' not supported
+// DbusIsAddress is a representation of the C type g_dbus_is_address.
+func DbusIsAddress(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
 
-// UNSUPPORTED : C value 'g_dbus_is_member_name' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_dbus_is_name' : return type 'gboolean' not supported
+	err := dbusIsAddressFunction_Set()
+	if err == nil {
+		ret = dbusIsAddressFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_dbus_is_supported_address' : return type 'gboolean' not supported
+	retGo := ret.Boolean()
 
-// UNSUPPORTED : C value 'g_dbus_is_unique_name' : return type 'gboolean' not supported
+	return retGo, err
+}
+
+var dbusIsGuidFunction *gi.Function
+var dbusIsGuidFunction_Once sync.Once
+
+func dbusIsGuidFunction_Set() error {
+	var err error
+	dbusIsGuidFunction_Once.Do(func() {
+		dbusIsGuidFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_guid")
+	})
+	return err
+}
+
+// DbusIsGuid is a representation of the C type g_dbus_is_guid.
+func DbusIsGuid(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := dbusIsGuidFunction_Set()
+	if err == nil {
+		ret = dbusIsGuidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dbusIsInterfaceNameFunction *gi.Function
+var dbusIsInterfaceNameFunction_Once sync.Once
+
+func dbusIsInterfaceNameFunction_Set() error {
+	var err error
+	dbusIsInterfaceNameFunction_Once.Do(func() {
+		dbusIsInterfaceNameFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_interface_name")
+	})
+	return err
+}
+
+// DbusIsInterfaceName is a representation of the C type g_dbus_is_interface_name.
+func DbusIsInterfaceName(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := dbusIsInterfaceNameFunction_Set()
+	if err == nil {
+		ret = dbusIsInterfaceNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dbusIsMemberNameFunction *gi.Function
+var dbusIsMemberNameFunction_Once sync.Once
+
+func dbusIsMemberNameFunction_Set() error {
+	var err error
+	dbusIsMemberNameFunction_Once.Do(func() {
+		dbusIsMemberNameFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_member_name")
+	})
+	return err
+}
+
+// DbusIsMemberName is a representation of the C type g_dbus_is_member_name.
+func DbusIsMemberName(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := dbusIsMemberNameFunction_Set()
+	if err == nil {
+		ret = dbusIsMemberNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dbusIsNameFunction *gi.Function
+var dbusIsNameFunction_Once sync.Once
+
+func dbusIsNameFunction_Set() error {
+	var err error
+	dbusIsNameFunction_Once.Do(func() {
+		dbusIsNameFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_name")
+	})
+	return err
+}
+
+// DbusIsName is a representation of the C type g_dbus_is_name.
+func DbusIsName(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := dbusIsNameFunction_Set()
+	if err == nil {
+		ret = dbusIsNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dbusIsSupportedAddressFunction *gi.Function
+var dbusIsSupportedAddressFunction_Once sync.Once
+
+func dbusIsSupportedAddressFunction_Set() error {
+	var err error
+	dbusIsSupportedAddressFunction_Once.Do(func() {
+		dbusIsSupportedAddressFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_supported_address")
+	})
+	return err
+}
+
+// DbusIsSupportedAddress is a representation of the C type g_dbus_is_supported_address.
+func DbusIsSupportedAddress(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := dbusIsSupportedAddressFunction_Set()
+	if err == nil {
+		ret = dbusIsSupportedAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dbusIsUniqueNameFunction *gi.Function
+var dbusIsUniqueNameFunction_Once sync.Once
+
+func dbusIsUniqueNameFunction_Set() error {
+	var err error
+	dbusIsUniqueNameFunction_Once.Do(func() {
+		dbusIsUniqueNameFunction, err = gi.FunctionInvokerNew("Gio", "dbus_is_unique_name")
+	})
+	return err
+}
+
+// DbusIsUniqueName is a representation of the C type g_dbus_is_unique_name.
+func DbusIsUniqueName(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := dbusIsUniqueNameFunction_Set()
+	if err == nil {
+		ret = dbusIsUniqueNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
 
@@ -611,9 +952,61 @@ func SettingsSchemaSourceGetDefault() (*SettingsSchemaSource, error) {
 
 // UNSUPPORTED : C value 'g_unix_is_mount_path_system_internal' : parameter 'mount_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_is_system_device_path' : return type 'gboolean' not supported
+var unixIsSystemDevicePathFunction *gi.Function
+var unixIsSystemDevicePathFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unix_is_system_fs_type' : return type 'gboolean' not supported
+func unixIsSystemDevicePathFunction_Set() error {
+	var err error
+	unixIsSystemDevicePathFunction_Once.Do(func() {
+		unixIsSystemDevicePathFunction, err = gi.FunctionInvokerNew("Gio", "unix_is_system_device_path")
+	})
+	return err
+}
+
+// UnixIsSystemDevicePath is a representation of the C type g_unix_is_system_device_path.
+func UnixIsSystemDevicePath(devicePath string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(devicePath)
+
+	var ret gi.Argument
+
+	err := unixIsSystemDevicePathFunction_Set()
+	if err == nil {
+		ret = unixIsSystemDevicePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var unixIsSystemFsTypeFunction *gi.Function
+var unixIsSystemFsTypeFunction_Once sync.Once
+
+func unixIsSystemFsTypeFunction_Set() error {
+	var err error
+	unixIsSystemFsTypeFunction_Once.Do(func() {
+		unixIsSystemFsTypeFunction, err = gi.FunctionInvokerNew("Gio", "unix_is_system_fs_type")
+	})
+	return err
+}
+
+// UnixIsSystemFsType is a representation of the C type g_unix_is_system_fs_type.
+func UnixIsSystemFsType(fsType string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fsType)
+
+	var ret gi.Argument
+
+	err := unixIsSystemFsTypeFunction_Set()
+	if err == nil {
+		ret = unixIsSystemFsTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_at' : parameter 'mount_path' of type 'filename' not supported
 
@@ -649,10 +1042,62 @@ func SettingsSchemaSourceGetDefault() (*SettingsSchemaSource, error) {
 
 // UNSUPPORTED : C value 'g_unix_mount_is_system_internal' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_points_changed_since' : return type 'gboolean' not supported
+var unixMountPointsChangedSinceFunction *gi.Function
+var unixMountPointsChangedSinceFunction_Once sync.Once
+
+func unixMountPointsChangedSinceFunction_Set() error {
+	var err error
+	unixMountPointsChangedSinceFunction_Once.Do(func() {
+		unixMountPointsChangedSinceFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_points_changed_since")
+	})
+	return err
+}
+
+// UnixMountPointsChangedSince is a representation of the C type g_unix_mount_points_changed_since.
+func UnixMountPointsChangedSince(time uint64) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(time)
+
+	var ret gi.Argument
+
+	err := unixMountPointsChangedSinceFunction_Set()
+	if err == nil {
+		ret = unixMountPointsChangedSinceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_points_get' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_unix_mounts_changed_since' : return type 'gboolean' not supported
+var unixMountsChangedSinceFunction *gi.Function
+var unixMountsChangedSinceFunction_Once sync.Once
+
+func unixMountsChangedSinceFunction_Set() error {
+	var err error
+	unixMountsChangedSinceFunction_Once.Do(func() {
+		unixMountsChangedSinceFunction, err = gi.FunctionInvokerNew("Gio", "unix_mounts_changed_since")
+	})
+	return err
+}
+
+// UnixMountsChangedSince is a representation of the C type g_unix_mounts_changed_since.
+func UnixMountsChangedSince(time uint64) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(time)
+
+	var ret gi.Argument
+
+	err := unixMountsChangedSinceFunction_Set()
+	if err == nil {
+		ret = unixMountsChangedSinceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_mounts_get' : return type 'GLib.List' not supported

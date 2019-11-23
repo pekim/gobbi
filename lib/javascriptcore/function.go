@@ -87,32 +87,307 @@ func GetMinorVersion() (uint32, error) {
 
 // UNSUPPORTED : C value 'jsc_options_foreach' : parameter 'function' of type 'OptionsFunc' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_boolean' : parameter 'value' of type 'gboolean' not supported
+var optionsGetBooleanFunction *gi.Function
+var optionsGetBooleanFunction_Once sync.Once
+
+func optionsGetBooleanFunction_Set() error {
+	var err error
+	optionsGetBooleanFunction_Once.Do(func() {
+		optionsGetBooleanFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_boolean")
+	})
+	return err
+}
+
+// OptionsGetBoolean is a representation of the C type jsc_options_get_boolean.
+func OptionsGetBoolean(option string) (bool, bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetBooleanFunction_Set()
+	if err == nil {
+		ret = optionsGetBooleanFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Boolean()
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'jsc_options_get_double' : parameter 'value' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_int' : return type 'gboolean' not supported
+var optionsGetIntFunction *gi.Function
+var optionsGetIntFunction_Once sync.Once
+
+func optionsGetIntFunction_Set() error {
+	var err error
+	optionsGetIntFunction_Once.Do(func() {
+		optionsGetIntFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_int")
+	})
+	return err
+}
+
+// OptionsGetInt is a representation of the C type jsc_options_get_int.
+func OptionsGetInt(option string) (bool, int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetIntFunction_Set()
+	if err == nil {
+		ret = optionsGetIntFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_range_string' : return type 'gboolean' not supported
+var optionsGetRangeStringFunction *gi.Function
+var optionsGetRangeStringFunction_Once sync.Once
+
+func optionsGetRangeStringFunction_Set() error {
+	var err error
+	optionsGetRangeStringFunction_Once.Do(func() {
+		optionsGetRangeStringFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_range_string")
+	})
+	return err
+}
+
+// OptionsGetRangeString is a representation of the C type jsc_options_get_range_string.
+func OptionsGetRangeString(option string) (bool, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetRangeStringFunction_Set()
+	if err == nil {
+		ret = optionsGetRangeStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'jsc_options_get_size' : parameter 'value' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'jsc_options_get_string' : return type 'gboolean' not supported
+var optionsGetStringFunction *gi.Function
+var optionsGetStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_options_get_uint' : return type 'gboolean' not supported
+func optionsGetStringFunction_Set() error {
+	var err error
+	optionsGetStringFunction_Once.Do(func() {
+		optionsGetStringFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_string")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'jsc_options_set_boolean' : parameter 'value' of type 'gboolean' not supported
+// OptionsGetString is a representation of the C type jsc_options_get_string.
+func OptionsGetString(option string) (bool, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetStringFunction_Set()
+	if err == nil {
+		ret = optionsGetStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0, err
+}
+
+var optionsGetUintFunction *gi.Function
+var optionsGetUintFunction_Once sync.Once
+
+func optionsGetUintFunction_Set() error {
+	var err error
+	optionsGetUintFunction_Once.Do(func() {
+		optionsGetUintFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_uint")
+	})
+	return err
+}
+
+// OptionsGetUint is a representation of the C type jsc_options_get_uint.
+func OptionsGetUint(option string) (bool, uint32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetUintFunction_Set()
+	if err == nil {
+		ret = optionsGetUintFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint32()
+
+	return retGo, out0, err
+}
+
+var optionsSetBooleanFunction *gi.Function
+var optionsSetBooleanFunction_Once sync.Once
+
+func optionsSetBooleanFunction_Set() error {
+	var err error
+	optionsSetBooleanFunction_Once.Do(func() {
+		optionsSetBooleanFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_boolean")
+	})
+	return err
+}
+
+// OptionsSetBoolean is a representation of the C type jsc_options_set_boolean.
+func OptionsSetBoolean(option string, value bool) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetBoolean(value)
+
+	var ret gi.Argument
+
+	err := optionsSetBooleanFunction_Set()
+	if err == nil {
+		ret = optionsSetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'jsc_options_set_double' : parameter 'value' of type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_int' : return type 'gboolean' not supported
+var optionsSetIntFunction *gi.Function
+var optionsSetIntFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_options_set_range_string' : return type 'gboolean' not supported
+func optionsSetIntFunction_Set() error {
+	var err error
+	optionsSetIntFunction_Once.Do(func() {
+		optionsSetIntFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_int")
+	})
+	return err
+}
+
+// OptionsSetInt is a representation of the C type jsc_options_set_int.
+func OptionsSetInt(option string, value int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetInt32(value)
+
+	var ret gi.Argument
+
+	err := optionsSetIntFunction_Set()
+	if err == nil {
+		ret = optionsSetIntFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var optionsSetRangeStringFunction *gi.Function
+var optionsSetRangeStringFunction_Once sync.Once
+
+func optionsSetRangeStringFunction_Set() error {
+	var err error
+	optionsSetRangeStringFunction_Once.Do(func() {
+		optionsSetRangeStringFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_range_string")
+	})
+	return err
+}
+
+// OptionsSetRangeString is a representation of the C type jsc_options_set_range_string.
+func OptionsSetRangeString(option string, value string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetString(value)
+
+	var ret gi.Argument
+
+	err := optionsSetRangeStringFunction_Set()
+	if err == nil {
+		ret = optionsSetRangeStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'jsc_options_set_size' : parameter 'value' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'jsc_options_set_string' : return type 'gboolean' not supported
+var optionsSetStringFunction *gi.Function
+var optionsSetStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'jsc_options_set_uint' : return type 'gboolean' not supported
+func optionsSetStringFunction_Set() error {
+	var err error
+	optionsSetStringFunction_Once.Do(func() {
+		optionsSetStringFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_string")
+	})
+	return err
+}
+
+// OptionsSetString is a representation of the C type jsc_options_set_string.
+func OptionsSetString(option string, value string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetString(value)
+
+	var ret gi.Argument
+
+	err := optionsSetStringFunction_Set()
+	if err == nil {
+		ret = optionsSetStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var optionsSetUintFunction *gi.Function
+var optionsSetUintFunction_Once sync.Once
+
+func optionsSetUintFunction_Set() error {
+	var err error
+	optionsSetUintFunction_Once.Do(func() {
+		optionsSetUintFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_uint")
+	})
+	return err
+}
+
+// OptionsSetUint is a representation of the C type jsc_options_set_uint.
+func OptionsSetUint(option string, value uint32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetUint32(value)
+
+	var ret gi.Argument
+
+	err := optionsSetUintFunction_Set()
+	if err == nil {
+		ret = optionsSetUintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}

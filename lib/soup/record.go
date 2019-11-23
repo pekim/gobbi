@@ -468,14 +468,14 @@ func cookieStruct_Set() error {
 }
 
 type Cookie struct {
-	native  uintptr
-	Name    string
-	Value   string
-	Domain  string
-	Path    string
-	Expires *Date
-	// UNSUPPORTED : C value 'secure' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'http_only' : no Go type for 'gboolean'
+	native   uintptr
+	Name     string
+	Value    string
+	Domain   string
+	Path     string
+	Expires  *Date
+	Secure   bool
+	HttpOnly bool
 }
 
 var cookieNewFunction *gi.Function
@@ -548,7 +548,38 @@ func (recv *Cookie) Copy() (*Cookie, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_domain_matches' : return type 'gboolean' not supported
+var cookieDomainMatchesFunction *gi.Function
+var cookieDomainMatchesFunction_Once sync.Once
+
+func cookieDomainMatchesFunction_Set() error {
+	var err error
+	cookieDomainMatchesFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieDomainMatchesFunction, err = cookieStruct.InvokerNew("domain_matches")
+	})
+	return err
+}
+
+// DomainMatches is a representation of the C type soup_cookie_domain_matches.
+func (recv *Cookie) DomainMatches(host string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(host)
+
+	var ret gi.Argument
+
+	err := cookieDomainMatchesFunction_Set()
+	if err == nil {
+		ret = cookieDomainMatchesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_cookie_equal' : parameter 'cookie2' of type 'Cookie' not supported
 
@@ -644,7 +675,37 @@ func (recv *Cookie) GetExpires() (*Date, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_get_http_only' : return type 'gboolean' not supported
+var cookieGetHttpOnlyFunction *gi.Function
+var cookieGetHttpOnlyFunction_Once sync.Once
+
+func cookieGetHttpOnlyFunction_Set() error {
+	var err error
+	cookieGetHttpOnlyFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieGetHttpOnlyFunction, err = cookieStruct.InvokerNew("get_http_only")
+	})
+	return err
+}
+
+// GetHttpOnly is a representation of the C type soup_cookie_get_http_only.
+func (recv *Cookie) GetHttpOnly() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := cookieGetHttpOnlyFunction_Set()
+	if err == nil {
+		ret = cookieGetHttpOnlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var cookieGetNameFunction *gi.Function
 var cookieGetNameFunction_Once sync.Once
@@ -710,7 +771,37 @@ func (recv *Cookie) GetPath() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_get_secure' : return type 'gboolean' not supported
+var cookieGetSecureFunction *gi.Function
+var cookieGetSecureFunction_Once sync.Once
+
+func cookieGetSecureFunction_Set() error {
+	var err error
+	cookieGetSecureFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieGetSecureFunction, err = cookieStruct.InvokerNew("get_secure")
+	})
+	return err
+}
+
+// GetSecure is a representation of the C type soup_cookie_get_secure.
+func (recv *Cookie) GetSecure() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := cookieGetSecureFunction_Set()
+	if err == nil {
+		ret = cookieGetSecureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var cookieGetValueFunction *gi.Function
 var cookieGetValueFunction_Once sync.Once
@@ -775,7 +866,34 @@ func (recv *Cookie) SetDomain(domain string) error {
 
 // UNSUPPORTED : C value 'soup_cookie_set_expires' : parameter 'expires' of type 'Date' not supported
 
-// UNSUPPORTED : C value 'soup_cookie_set_http_only' : parameter 'http_only' of type 'gboolean' not supported
+var cookieSetHttpOnlyFunction *gi.Function
+var cookieSetHttpOnlyFunction_Once sync.Once
+
+func cookieSetHttpOnlyFunction_Set() error {
+	var err error
+	cookieSetHttpOnlyFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieSetHttpOnlyFunction, err = cookieStruct.InvokerNew("set_http_only")
+	})
+	return err
+}
+
+// SetHttpOnly is a representation of the C type soup_cookie_set_http_only.
+func (recv *Cookie) SetHttpOnly(httpOnly bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(httpOnly)
+
+	err := cookieSetHttpOnlyFunction_Set()
+	if err == nil {
+		cookieSetHttpOnlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var cookieSetMaxAgeFunction *gi.Function
 var cookieSetMaxAgeFunction_Once sync.Once
@@ -864,7 +982,34 @@ func (recv *Cookie) SetPath(path string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_set_secure' : parameter 'secure' of type 'gboolean' not supported
+var cookieSetSecureFunction *gi.Function
+var cookieSetSecureFunction_Once sync.Once
+
+func cookieSetSecureFunction_Set() error {
+	var err error
+	cookieSetSecureFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieSetSecureFunction, err = cookieStruct.InvokerNew("set_secure")
+	})
+	return err
+}
+
+// SetSecure is a representation of the C type soup_cookie_set_secure.
+func (recv *Cookie) SetSecure(secure bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(secure)
+
+	err := cookieSetSecureFunction_Set()
+	if err == nil {
+		cookieSetSecureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var cookieSetValueFunction *gi.Function
 var cookieSetValueFunction_Once sync.Once
@@ -1039,7 +1184,7 @@ type Date struct {
 	Hour   int32
 	Minute int32
 	Second int32
-	// UNSUPPORTED : C value 'utc' : no Go type for 'gboolean'
+	Utc    bool
 	Offset int32
 }
 
@@ -1492,7 +1637,37 @@ func (recv *Date) GetYear() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_date_is_past' : return type 'gboolean' not supported
+var dateIsPastFunction *gi.Function
+var dateIsPastFunction_Once sync.Once
+
+func dateIsPastFunction_Set() error {
+	var err error
+	dateIsPastFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateIsPastFunction, err = dateStruct.InvokerNew("is_past")
+	})
+	return err
+}
+
+// IsPast is a representation of the C type soup_date_is_past.
+func (recv *Date) IsPast() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateIsPastFunction_Set()
+	if err == nil {
+		ret = dateIsPastFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_date_to_string' : parameter 'format' of type 'DateFormat' not supported
 
@@ -1616,20 +1791,83 @@ func hSTSPolicyStruct_Set() error {
 }
 
 type HSTSPolicy struct {
-	native  uintptr
-	Domain  string
-	MaxAge  uint64
-	Expires *Date
-	// UNSUPPORTED : C value 'include_subdomains' : no Go type for 'gboolean'
+	native            uintptr
+	Domain            string
+	MaxAge            uint64
+	Expires           *Date
+	IncludeSubdomains bool
 }
 
-// UNSUPPORTED : C value 'soup_hsts_policy_new' : parameter 'include_subdomains' of type 'gboolean' not supported
+var hSTSPolicyNewFunction *gi.Function
+var hSTSPolicyNewFunction_Once sync.Once
+
+func hSTSPolicyNewFunction_Set() error {
+	var err error
+	hSTSPolicyNewFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyNewFunction, err = hSTSPolicyStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// HSTSPolicyNew is a representation of the C type soup_hsts_policy_new.
+func HSTSPolicyNew(domain string, maxAge uint64, includeSubdomains bool) (*HSTSPolicy, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetUint64(maxAge)
+	inArgs[2].SetBoolean(includeSubdomains)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyNewFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &HSTSPolicy{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_hsts_policy_new_from_response' : parameter 'msg' of type 'Message' not supported
 
 // UNSUPPORTED : C value 'soup_hsts_policy_new_full' : parameter 'expires' of type 'Date' not supported
 
-// UNSUPPORTED : C value 'soup_hsts_policy_new_session_policy' : parameter 'include_subdomains' of type 'gboolean' not supported
+var hSTSPolicyNewSessionPolicyFunction *gi.Function
+var hSTSPolicyNewSessionPolicyFunction_Once sync.Once
+
+func hSTSPolicyNewSessionPolicyFunction_Set() error {
+	var err error
+	hSTSPolicyNewSessionPolicyFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyNewSessionPolicyFunction, err = hSTSPolicyStruct.InvokerNew("new_session_policy")
+	})
+	return err
+}
+
+// HSTSPolicyNewSessionPolicy is a representation of the C type soup_hsts_policy_new_session_policy.
+func HSTSPolicyNewSessionPolicy(domain string, includeSubdomains bool) (*HSTSPolicy, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetBoolean(includeSubdomains)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyNewSessionPolicyFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyNewSessionPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &HSTSPolicy{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var hSTSPolicyCopyFunction *gi.Function
 var hSTSPolicyCopyFunction_Once sync.Once
@@ -1725,11 +1963,101 @@ func (recv *HSTSPolicy) GetDomain() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_hsts_policy_includes_subdomains' : return type 'gboolean' not supported
+var hSTSPolicyIncludesSubdomainsFunction *gi.Function
+var hSTSPolicyIncludesSubdomainsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_hsts_policy_is_expired' : return type 'gboolean' not supported
+func hSTSPolicyIncludesSubdomainsFunction_Set() error {
+	var err error
+	hSTSPolicyIncludesSubdomainsFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyIncludesSubdomainsFunction, err = hSTSPolicyStruct.InvokerNew("includes_subdomains")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_hsts_policy_is_session_policy' : return type 'gboolean' not supported
+// IncludesSubdomains is a representation of the C type soup_hsts_policy_includes_subdomains.
+func (recv *HSTSPolicy) IncludesSubdomains() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyIncludesSubdomainsFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyIncludesSubdomainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var hSTSPolicyIsExpiredFunction *gi.Function
+var hSTSPolicyIsExpiredFunction_Once sync.Once
+
+func hSTSPolicyIsExpiredFunction_Set() error {
+	var err error
+	hSTSPolicyIsExpiredFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyIsExpiredFunction, err = hSTSPolicyStruct.InvokerNew("is_expired")
+	})
+	return err
+}
+
+// IsExpired is a representation of the C type soup_hsts_policy_is_expired.
+func (recv *HSTSPolicy) IsExpired() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyIsExpiredFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyIsExpiredFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var hSTSPolicyIsSessionPolicyFunction *gi.Function
+var hSTSPolicyIsSessionPolicyFunction_Once sync.Once
+
+func hSTSPolicyIsSessionPolicyFunction_Set() error {
+	var err error
+	hSTSPolicyIsSessionPolicyFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyIsSessionPolicyFunction, err = hSTSPolicyStruct.InvokerNew("is_session_policy")
+	})
+	return err
+}
+
+// IsSessionPolicy is a representation of the C type soup_hsts_policy_is_session_policy.
+func (recv *HSTSPolicy) IsSessionPolicy() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyIsSessionPolicyFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyIsSessionPolicyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var loggerClassStruct *gi.Struct
 var loggerClassStruct_Once sync.Once
@@ -1892,7 +2220,37 @@ func (recv *MessageBody) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_message_body_get_accumulate' : return type 'gboolean' not supported
+var messageBodyGetAccumulateFunction *gi.Function
+var messageBodyGetAccumulateFunction_Once sync.Once
+
+func messageBodyGetAccumulateFunction_Set() error {
+	var err error
+	messageBodyGetAccumulateFunction_Once.Do(func() {
+		err = messageBodyStruct_Set()
+		if err != nil {
+			return
+		}
+		messageBodyGetAccumulateFunction, err = messageBodyStruct.InvokerNew("get_accumulate")
+	})
+	return err
+}
+
+// GetAccumulate is a representation of the C type soup_message_body_get_accumulate.
+func (recv *MessageBody) GetAccumulate() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := messageBodyGetAccumulateFunction_Set()
+	if err == nil {
+		ret = messageBodyGetAccumulateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var messageBodyGetChunkFunction *gi.Function
 var messageBodyGetChunkFunction_Once sync.Once
@@ -1929,7 +2287,34 @@ func (recv *MessageBody) GetChunk(offset int64) (*Buffer, error) {
 
 // UNSUPPORTED : C value 'soup_message_body_got_chunk' : parameter 'chunk' of type 'Buffer' not supported
 
-// UNSUPPORTED : C value 'soup_message_body_set_accumulate' : parameter 'accumulate' of type 'gboolean' not supported
+var messageBodySetAccumulateFunction *gi.Function
+var messageBodySetAccumulateFunction_Once sync.Once
+
+func messageBodySetAccumulateFunction_Set() error {
+	var err error
+	messageBodySetAccumulateFunction_Once.Do(func() {
+		err = messageBodyStruct_Set()
+		if err != nil {
+			return
+		}
+		messageBodySetAccumulateFunction, err = messageBodyStruct.InvokerNew("set_accumulate")
+	})
+	return err
+}
+
+// SetAccumulate is a representation of the C type soup_message_body_set_accumulate.
+func (recv *MessageBody) SetAccumulate(accumulate bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(accumulate)
+
+	err := messageBodySetAccumulateFunction_Set()
+	if err == nil {
+		messageBodySetAccumulateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var messageBodyTruncateFunction *gi.Function
 var messageBodyTruncateFunction_Once sync.Once
@@ -2193,7 +2578,41 @@ func (recv *MessageHeaders) GetContentLength() (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_get_content_range' : return type 'gboolean' not supported
+var messageHeadersGetContentRangeFunction *gi.Function
+var messageHeadersGetContentRangeFunction_Once sync.Once
+
+func messageHeadersGetContentRangeFunction_Set() error {
+	var err error
+	messageHeadersGetContentRangeFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersGetContentRangeFunction, err = messageHeadersStruct.InvokerNew("get_content_range")
+	})
+	return err
+}
+
+// GetContentRange is a representation of the C type soup_message_headers_get_content_range.
+func (recv *MessageHeaders) GetContentRange() (bool, int64, int64, int64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := messageHeadersGetContentRangeFunction_Set()
+	if err == nil {
+		ret = messageHeadersGetContentRangeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int64()
+	out1 := outArgs[1].Int64()
+	out2 := outArgs[2].Int64()
+
+	return retGo, out0, out1, out2, err
+}
 
 // UNSUPPORTED : C value 'soup_message_headers_get_content_type' : parameter 'params' of type 'GLib.HashTable' not supported
 
@@ -2271,9 +2690,73 @@ func (recv *MessageHeaders) GetOne(name string) (string, error) {
 
 // UNSUPPORTED : C value 'soup_message_headers_get_ranges' : parameter 'ranges' has no type
 
-// UNSUPPORTED : C value 'soup_message_headers_header_contains' : return type 'gboolean' not supported
+var messageHeadersHeaderContainsFunction *gi.Function
+var messageHeadersHeaderContainsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_message_headers_header_equals' : return type 'gboolean' not supported
+func messageHeadersHeaderContainsFunction_Set() error {
+	var err error
+	messageHeadersHeaderContainsFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersHeaderContainsFunction, err = messageHeadersStruct.InvokerNew("header_contains")
+	})
+	return err
+}
+
+// HeaderContains is a representation of the C type soup_message_headers_header_contains.
+func (recv *MessageHeaders) HeaderContains(name string, token string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(token)
+
+	var ret gi.Argument
+
+	err := messageHeadersHeaderContainsFunction_Set()
+	if err == nil {
+		ret = messageHeadersHeaderContainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var messageHeadersHeaderEqualsFunction *gi.Function
+var messageHeadersHeaderEqualsFunction_Once sync.Once
+
+func messageHeadersHeaderEqualsFunction_Set() error {
+	var err error
+	messageHeadersHeaderEqualsFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersHeaderEqualsFunction, err = messageHeadersStruct.InvokerNew("header_equals")
+	})
+	return err
+}
+
+// HeaderEquals is a representation of the C type soup_message_headers_header_equals.
+func (recv *MessageHeaders) HeaderEquals(name string, value string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(value)
+
+	var ret gi.Argument
+
+	err := messageHeadersHeaderEqualsFunction_Set()
+	if err == nil {
+		ret = messageHeadersHeaderEqualsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var messageHeadersRemoveFunction *gi.Function
 var messageHeadersRemoveFunction_Once sync.Once
@@ -2449,7 +2932,40 @@ type MessageHeadersIter struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_iter_next' : return type 'gboolean' not supported
+var messageHeadersIterNextFunction *gi.Function
+var messageHeadersIterNextFunction_Once sync.Once
+
+func messageHeadersIterNextFunction_Set() error {
+	var err error
+	messageHeadersIterNextFunction_Once.Do(func() {
+		err = messageHeadersIterStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersIterNextFunction, err = messageHeadersIterStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type soup_message_headers_iter_next.
+func (recv *MessageHeadersIter) Next() (bool, string, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := messageHeadersIterNextFunction_Set()
+	if err == nil {
+		ret = messageHeadersIterNextFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(false)
+	out1 := outArgs[1].String(false)
+
+	return retGo, out0, out1, err
+}
 
 var messageQueueStruct *gi.Struct
 var messageQueueStruct_Once sync.Once
@@ -3727,9 +4243,70 @@ func (recv *URI) SetUser(user string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_uri_to_string' : parameter 'just_path_and_query' of type 'gboolean' not supported
+var uRIToStringFunction *gi.Function
+var uRIToStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_uri_uses_default_port' : return type 'gboolean' not supported
+func uRIToStringFunction_Set() error {
+	var err error
+	uRIToStringFunction_Once.Do(func() {
+		err = uRIStruct_Set()
+		if err != nil {
+			return
+		}
+		uRIToStringFunction, err = uRIStruct.InvokerNew("to_string")
+	})
+	return err
+}
+
+// ToString is a representation of the C type soup_uri_to_string.
+func (recv *URI) ToString(justPathAndQuery bool) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(justPathAndQuery)
+
+	var ret gi.Argument
+
+	err := uRIToStringFunction_Set()
+	if err == nil {
+		ret = uRIToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var uRIUsesDefaultPortFunction *gi.Function
+var uRIUsesDefaultPortFunction_Once sync.Once
+
+func uRIUsesDefaultPortFunction_Set() error {
+	var err error
+	uRIUsesDefaultPortFunction_Once.Do(func() {
+		err = uRIStruct_Set()
+		if err != nil {
+			return
+		}
+		uRIUsesDefaultPortFunction, err = uRIStruct.InvokerNew("uses_default_port")
+	})
+	return err
+}
+
+// UsesDefaultPort is a representation of the C type soup_uri_uses_default_port.
+func (recv *URI) UsesDefaultPort() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := uRIUsesDefaultPortFunction_Set()
+	if err == nil {
+		ret = uRIUsesDefaultPortFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var websocketConnectionClassStruct *gi.Struct
 var websocketConnectionClassStruct_Once sync.Once

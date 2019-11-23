@@ -880,9 +880,69 @@ type RegionIter struct {
 
 // UNSUPPORTED : C value 'gtk_source_region_iter_get_subregion' : parameter 'start' of type 'Gtk.TextIter' not supported
 
-// UNSUPPORTED : C value 'gtk_source_region_iter_is_end' : return type 'gboolean' not supported
+var regionIterIsEndFunction *gi.Function
+var regionIterIsEndFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_region_iter_next' : return type 'gboolean' not supported
+func regionIterIsEndFunction_Set() error {
+	var err error
+	regionIterIsEndFunction_Once.Do(func() {
+		err = regionIterStruct_Set()
+		if err != nil {
+			return
+		}
+		regionIterIsEndFunction, err = regionIterStruct.InvokerNew("is_end")
+	})
+	return err
+}
+
+// IsEnd is a representation of the C type gtk_source_region_iter_is_end.
+func (recv *RegionIter) IsEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := regionIterIsEndFunction_Set()
+	if err == nil {
+		ret = regionIterIsEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var regionIterNextFunction *gi.Function
+var regionIterNextFunction_Once sync.Once
+
+func regionIterNextFunction_Set() error {
+	var err error
+	regionIterNextFunction_Once.Do(func() {
+		err = regionIterStruct_Set()
+		if err != nil {
+			return
+		}
+		regionIterNextFunction, err = regionIterStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type gtk_source_region_iter_next.
+func (recv *RegionIter) Next() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := regionIterNextFunction_Set()
+	if err == nil {
+		ret = regionIterNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var searchContextClassStruct *gi.Struct
 var searchContextClassStruct_Once sync.Once

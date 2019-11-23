@@ -15,7 +15,35 @@ import (
 
 // UNSUPPORTED : C value 'soup_add_timeout' : parameter 'async_context' of type 'GLib.MainContext' not supported
 
-// UNSUPPORTED : C value 'soup_check_version' : return type 'gboolean' not supported
+var checkVersionFunction *gi.Function
+var checkVersionFunction_Once sync.Once
+
+func checkVersionFunction_Set() error {
+	var err error
+	checkVersionFunction_Once.Do(func() {
+		checkVersionFunction, err = gi.FunctionInvokerNew("Soup", "check_version")
+	})
+	return err
+}
+
+// CheckVersion is a representation of the C type soup_check_version.
+func CheckVersion(major uint32, minor uint32, micro uint32) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint32(major)
+	inArgs[1].SetUint32(minor)
+	inArgs[2].SetUint32(micro)
+
+	var ret gi.Argument
+
+	err := checkVersionFunction_Set()
+	if err == nil {
+		ret = checkVersionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_cookie_parse' : parameter 'origin' of type 'URI' not supported
 
@@ -129,7 +157,34 @@ func GetMinorVersion() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_header_contains' : return type 'gboolean' not supported
+var headerContainsFunction *gi.Function
+var headerContainsFunction_Once sync.Once
+
+func headerContainsFunction_Set() error {
+	var err error
+	headerContainsFunction_Once.Do(func() {
+		headerContainsFunction, err = gi.FunctionInvokerNew("Soup", "header_contains")
+	})
+	return err
+}
+
+// HeaderContains is a representation of the C type soup_header_contains.
+func HeaderContains(header string, token string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(header)
+	inArgs[1].SetString(token)
+
+	var ret gi.Argument
+
+	err := headerContainsFunction_Set()
+	if err == nil {
+		ret = headerContainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_header_free_list' : parameter 'list' of type 'GLib.SList' not supported
 
@@ -227,7 +282,33 @@ func StatusProxify(statusCode uint32) (uint32, error) {
 
 // UNSUPPORTED : C value 'soup_str_case_hash' : parameter 'key' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'soup_tld_domain_is_public_suffix' : return type 'gboolean' not supported
+var tldDomainIsPublicSuffixFunction *gi.Function
+var tldDomainIsPublicSuffixFunction_Once sync.Once
+
+func tldDomainIsPublicSuffixFunction_Set() error {
+	var err error
+	tldDomainIsPublicSuffixFunction_Once.Do(func() {
+		tldDomainIsPublicSuffixFunction, err = gi.FunctionInvokerNew("Soup", "tld_domain_is_public_suffix")
+	})
+	return err
+}
+
+// TldDomainIsPublicSuffix is a representation of the C type soup_tld_domain_is_public_suffix.
+func TldDomainIsPublicSuffix(domain string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(domain)
+
+	var ret gi.Argument
+
+	err := tldDomainIsPublicSuffixFunction_Set()
+	if err == nil {
+		ret = tldDomainIsPublicSuffixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
 

@@ -40,6 +40,14 @@ func (a *Argument) SetUint64(value uint64) {
 	(*(*uint64)(unsafe.Pointer(a))) = value
 }
 
+func (a *Argument) SetBoolean(value bool) {
+	var cValue C.gboolean = C.FALSE
+	if value {
+		cValue = C.TRUE
+	}
+	(*(*C.gboolean)(unsafe.Pointer(a))) = cValue
+}
+
 func (a *Argument) SetString(value string) {
 	cString := C.CString(value)
 	*(**C.gchar)(unsafe.Pointer(a)) = cString

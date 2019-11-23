@@ -448,7 +448,43 @@ func (recv *BookmarkFile) GetAdded(uri string) (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_get_app_info' : return type 'gboolean' not supported
+var bookmarkFileGetAppInfoFunction *gi.Function
+var bookmarkFileGetAppInfoFunction_Once sync.Once
+
+func bookmarkFileGetAppInfoFunction_Set() error {
+	var err error
+	bookmarkFileGetAppInfoFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileGetAppInfoFunction, err = bookmarkFileStruct.InvokerNew("get_app_info")
+	})
+	return err
+}
+
+// GetAppInfo is a representation of the C type g_bookmark_file_get_app_info.
+func (recv *BookmarkFile) GetAppInfo(uri string, name string) (bool, string, uint32, int64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetString(name)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := bookmarkFileGetAppInfoFunction_Set()
+	if err == nil {
+		ret = bookmarkFileGetAppInfoFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].Uint32()
+	out2 := outArgs[2].Int64()
+
+	return retGo, out0, out1, out2, err
+}
 
 // UNSUPPORTED : C value 'g_bookmark_file_get_applications' : parameter 'length' of type 'gsize' not supported
 
@@ -487,9 +523,74 @@ func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
 
 // UNSUPPORTED : C value 'g_bookmark_file_get_groups' : parameter 'length' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_bookmark_file_get_icon' : return type 'gboolean' not supported
+var bookmarkFileGetIconFunction *gi.Function
+var bookmarkFileGetIconFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bookmark_file_get_is_private' : return type 'gboolean' not supported
+func bookmarkFileGetIconFunction_Set() error {
+	var err error
+	bookmarkFileGetIconFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileGetIconFunction, err = bookmarkFileStruct.InvokerNew("get_icon")
+	})
+	return err
+}
+
+// GetIcon is a representation of the C type g_bookmark_file_get_icon.
+func (recv *BookmarkFile) GetIcon(uri string) (bool, string, string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := bookmarkFileGetIconFunction_Set()
+	if err == nil {
+		ret = bookmarkFileGetIconFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].String(true)
+
+	return retGo, out0, out1, err
+}
+
+var bookmarkFileGetIsPrivateFunction *gi.Function
+var bookmarkFileGetIsPrivateFunction_Once sync.Once
+
+func bookmarkFileGetIsPrivateFunction_Set() error {
+	var err error
+	bookmarkFileGetIsPrivateFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileGetIsPrivateFunction, err = bookmarkFileStruct.InvokerNew("get_is_private")
+	})
+	return err
+}
+
+// GetIsPrivate is a representation of the C type g_bookmark_file_get_is_private.
+func (recv *BookmarkFile) GetIsPrivate(uri string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var ret gi.Argument
+
+	err := bookmarkFileGetIsPrivateFunction_Set()
+	if err == nil {
+		ret = bookmarkFileGetIsPrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var bookmarkFileGetMimeTypeFunction *gi.Function
 var bookmarkFileGetMimeTypeFunction_Once sync.Once
@@ -657,11 +758,106 @@ func (recv *BookmarkFile) GetVisited(uri string) (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_has_application' : return type 'gboolean' not supported
+var bookmarkFileHasApplicationFunction *gi.Function
+var bookmarkFileHasApplicationFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bookmark_file_has_group' : return type 'gboolean' not supported
+func bookmarkFileHasApplicationFunction_Set() error {
+	var err error
+	bookmarkFileHasApplicationFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileHasApplicationFunction, err = bookmarkFileStruct.InvokerNew("has_application")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_bookmark_file_has_item' : return type 'gboolean' not supported
+// HasApplication is a representation of the C type g_bookmark_file_has_application.
+func (recv *BookmarkFile) HasApplication(uri string, name string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetString(name)
+
+	var ret gi.Argument
+
+	err := bookmarkFileHasApplicationFunction_Set()
+	if err == nil {
+		ret = bookmarkFileHasApplicationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var bookmarkFileHasGroupFunction *gi.Function
+var bookmarkFileHasGroupFunction_Once sync.Once
+
+func bookmarkFileHasGroupFunction_Set() error {
+	var err error
+	bookmarkFileHasGroupFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileHasGroupFunction, err = bookmarkFileStruct.InvokerNew("has_group")
+	})
+	return err
+}
+
+// HasGroup is a representation of the C type g_bookmark_file_has_group.
+func (recv *BookmarkFile) HasGroup(uri string, group string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetString(group)
+
+	var ret gi.Argument
+
+	err := bookmarkFileHasGroupFunction_Set()
+	if err == nil {
+		ret = bookmarkFileHasGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var bookmarkFileHasItemFunction *gi.Function
+var bookmarkFileHasItemFunction_Once sync.Once
+
+func bookmarkFileHasItemFunction_Set() error {
+	var err error
+	bookmarkFileHasItemFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileHasItemFunction, err = bookmarkFileStruct.InvokerNew("has_item")
+	})
+	return err
+}
+
+// HasItem is a representation of the C type g_bookmark_file_has_item.
+func (recv *BookmarkFile) HasItem(uri string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var ret gi.Argument
+
+	err := bookmarkFileHasItemFunction_Set()
+	if err == nil {
+		ret = bookmarkFileHasItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_bookmark_file_load_from_data' : parameter 'data' has no type
 
@@ -669,13 +865,140 @@ func (recv *BookmarkFile) GetVisited(uri string) (int64, error) {
 
 // UNSUPPORTED : C value 'g_bookmark_file_load_from_file' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_bookmark_file_move_item' : return type 'gboolean' not supported
+var bookmarkFileMoveItemFunction *gi.Function
+var bookmarkFileMoveItemFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bookmark_file_remove_application' : return type 'gboolean' not supported
+func bookmarkFileMoveItemFunction_Set() error {
+	var err error
+	bookmarkFileMoveItemFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileMoveItemFunction, err = bookmarkFileStruct.InvokerNew("move_item")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_bookmark_file_remove_group' : return type 'gboolean' not supported
+// MoveItem is a representation of the C type g_bookmark_file_move_item.
+func (recv *BookmarkFile) MoveItem(oldUri string, newUri string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(oldUri)
+	inArgs[2].SetString(newUri)
 
-// UNSUPPORTED : C value 'g_bookmark_file_remove_item' : return type 'gboolean' not supported
+	var ret gi.Argument
+
+	err := bookmarkFileMoveItemFunction_Set()
+	if err == nil {
+		ret = bookmarkFileMoveItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var bookmarkFileRemoveApplicationFunction *gi.Function
+var bookmarkFileRemoveApplicationFunction_Once sync.Once
+
+func bookmarkFileRemoveApplicationFunction_Set() error {
+	var err error
+	bookmarkFileRemoveApplicationFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileRemoveApplicationFunction, err = bookmarkFileStruct.InvokerNew("remove_application")
+	})
+	return err
+}
+
+// RemoveApplication is a representation of the C type g_bookmark_file_remove_application.
+func (recv *BookmarkFile) RemoveApplication(uri string, name string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetString(name)
+
+	var ret gi.Argument
+
+	err := bookmarkFileRemoveApplicationFunction_Set()
+	if err == nil {
+		ret = bookmarkFileRemoveApplicationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var bookmarkFileRemoveGroupFunction *gi.Function
+var bookmarkFileRemoveGroupFunction_Once sync.Once
+
+func bookmarkFileRemoveGroupFunction_Set() error {
+	var err error
+	bookmarkFileRemoveGroupFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileRemoveGroupFunction, err = bookmarkFileStruct.InvokerNew("remove_group")
+	})
+	return err
+}
+
+// RemoveGroup is a representation of the C type g_bookmark_file_remove_group.
+func (recv *BookmarkFile) RemoveGroup(uri string, group string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetString(group)
+
+	var ret gi.Argument
+
+	err := bookmarkFileRemoveGroupFunction_Set()
+	if err == nil {
+		ret = bookmarkFileRemoveGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var bookmarkFileRemoveItemFunction *gi.Function
+var bookmarkFileRemoveItemFunction_Once sync.Once
+
+func bookmarkFileRemoveItemFunction_Set() error {
+	var err error
+	bookmarkFileRemoveItemFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileRemoveItemFunction, err = bookmarkFileStruct.InvokerNew("remove_item")
+	})
+	return err
+}
+
+// RemoveItem is a representation of the C type g_bookmark_file_remove_item.
+func (recv *BookmarkFile) RemoveItem(uri string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var ret gi.Argument
+
+	err := bookmarkFileRemoveItemFunction_Set()
+	if err == nil {
+		ret = bookmarkFileRemoveItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var bookmarkFileSetAddedFunction *gi.Function
 var bookmarkFileSetAddedFunction_Once sync.Once
@@ -707,7 +1030,42 @@ func (recv *BookmarkFile) SetAdded(uri string, added int64) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_set_app_info' : return type 'gboolean' not supported
+var bookmarkFileSetAppInfoFunction *gi.Function
+var bookmarkFileSetAppInfoFunction_Once sync.Once
+
+func bookmarkFileSetAppInfoFunction_Set() error {
+	var err error
+	bookmarkFileSetAppInfoFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileSetAppInfoFunction, err = bookmarkFileStruct.InvokerNew("set_app_info")
+	})
+	return err
+}
+
+// SetAppInfo is a representation of the C type g_bookmark_file_set_app_info.
+func (recv *BookmarkFile) SetAppInfo(uri string, name string, exec string, count int32, stamp int64) (bool, error) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetString(name)
+	inArgs[3].SetString(exec)
+	inArgs[4].SetInt32(count)
+	inArgs[5].SetInt64(stamp)
+
+	var ret gi.Argument
+
+	err := bookmarkFileSetAppInfoFunction_Set()
+	if err == nil {
+		ret = bookmarkFileSetAppInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var bookmarkFileSetDescriptionFunction *gi.Function
 var bookmarkFileSetDescriptionFunction_Once sync.Once
@@ -772,7 +1130,35 @@ func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) erro
 	return err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_set_is_private' : parameter 'is_private' of type 'gboolean' not supported
+var bookmarkFileSetIsPrivateFunction *gi.Function
+var bookmarkFileSetIsPrivateFunction_Once sync.Once
+
+func bookmarkFileSetIsPrivateFunction_Set() error {
+	var err error
+	bookmarkFileSetIsPrivateFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileSetIsPrivateFunction, err = bookmarkFileStruct.InvokerNew("set_is_private")
+	})
+	return err
+}
+
+// SetIsPrivate is a representation of the C type g_bookmark_file_set_is_private.
+func (recv *BookmarkFile) SetIsPrivate(uri string, isPrivate bool) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetBoolean(isPrivate)
+
+	err := bookmarkFileSetIsPrivateFunction_Set()
+	if err == nil {
+		bookmarkFileSetIsPrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var bookmarkFileSetMimeTypeFunction *gi.Function
 var bookmarkFileSetMimeTypeFunction_Once sync.Once
@@ -1792,9 +2178,69 @@ func (recv *Date) GetSundayWeekOfYear() (uint32, error) {
 
 // UNSUPPORTED : C value 'g_date_get_year' : return type 'DateYear' not supported
 
-// UNSUPPORTED : C value 'g_date_is_first_of_month' : return type 'gboolean' not supported
+var dateIsFirstOfMonthFunction *gi.Function
+var dateIsFirstOfMonthFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_is_last_of_month' : return type 'gboolean' not supported
+func dateIsFirstOfMonthFunction_Set() error {
+	var err error
+	dateIsFirstOfMonthFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateIsFirstOfMonthFunction, err = dateStruct.InvokerNew("is_first_of_month")
+	})
+	return err
+}
+
+// IsFirstOfMonth is a representation of the C type g_date_is_first_of_month.
+func (recv *Date) IsFirstOfMonth() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateIsFirstOfMonthFunction_Set()
+	if err == nil {
+		ret = dateIsFirstOfMonthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dateIsLastOfMonthFunction *gi.Function
+var dateIsLastOfMonthFunction_Once sync.Once
+
+func dateIsLastOfMonthFunction_Set() error {
+	var err error
+	dateIsLastOfMonthFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateIsLastOfMonthFunction, err = dateStruct.InvokerNew("is_last_of_month")
+	})
+	return err
+}
+
+// IsLastOfMonth is a representation of the C type g_date_is_last_of_month.
+func (recv *Date) IsLastOfMonth() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateIsLastOfMonthFunction_Set()
+	if err == nil {
+		ret = dateIsLastOfMonthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_date_order' : parameter 'date2' of type 'Date' not supported
 
@@ -1986,7 +2432,37 @@ func (recv *Date) SubtractYears(nYears uint32) error {
 
 // UNSUPPORTED : C value 'g_date_to_struct_tm' : parameter 'tm' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_valid' : return type 'gboolean' not supported
+var dateValidFunction *gi.Function
+var dateValidFunction_Once sync.Once
+
+func dateValidFunction_Set() error {
+	var err error
+	dateValidFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateValidFunction, err = dateStruct.InvokerNew("valid")
+	})
+	return err
+}
+
+// Valid is a representation of the C type g_date_valid.
+func (recv *Date) Valid() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateValidFunction_Set()
+	if err == nil {
+		ret = dateValidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var dateTimeStruct *gi.Struct
 var dateTimeStruct_Once sync.Once
@@ -2866,7 +3342,37 @@ func (recv *DateTime) GetYmd() (int32, int32, int32, error) {
 	return out0, out1, out2, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_is_daylight_savings' : return type 'gboolean' not supported
+var dateTimeIsDaylightSavingsFunction *gi.Function
+var dateTimeIsDaylightSavingsFunction_Once sync.Once
+
+func dateTimeIsDaylightSavingsFunction_Set() error {
+	var err error
+	dateTimeIsDaylightSavingsFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeIsDaylightSavingsFunction, err = dateTimeStruct.InvokerNew("is_daylight_savings")
+	})
+	return err
+}
+
+// IsDaylightSavings is a representation of the C type g_date_time_is_daylight_savings.
+func (recv *DateTime) IsDaylightSavings() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateTimeIsDaylightSavingsFunction_Set()
+	if err == nil {
+		ret = dateTimeIsDaylightSavingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var dateTimeRefFunction *gi.Function
 var dateTimeRefFunction_Once sync.Once
@@ -3545,13 +4051,67 @@ func (recv *HookList) Init(hookSize uint32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_hook_list_invoke' : parameter 'may_recurse' of type 'gboolean' not supported
+var hookListInvokeFunction *gi.Function
+var hookListInvokeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_hook_list_invoke_check' : parameter 'may_recurse' of type 'gboolean' not supported
+func hookListInvokeFunction_Set() error {
+	var err error
+	hookListInvokeFunction_Once.Do(func() {
+		err = hookListStruct_Set()
+		if err != nil {
+			return
+		}
+		hookListInvokeFunction, err = hookListStruct.InvokerNew("invoke")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_hook_list_marshal' : parameter 'may_recurse' of type 'gboolean' not supported
+// Invoke is a representation of the C type g_hook_list_invoke.
+func (recv *HookList) Invoke(mayRecurse bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(mayRecurse)
 
-// UNSUPPORTED : C value 'g_hook_list_marshal_check' : parameter 'may_recurse' of type 'gboolean' not supported
+	err := hookListInvokeFunction_Set()
+	if err == nil {
+		hookListInvokeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var hookListInvokeCheckFunction *gi.Function
+var hookListInvokeCheckFunction_Once sync.Once
+
+func hookListInvokeCheckFunction_Set() error {
+	var err error
+	hookListInvokeCheckFunction_Once.Do(func() {
+		err = hookListStruct_Set()
+		if err != nil {
+			return
+		}
+		hookListInvokeCheckFunction, err = hookListStruct.InvokerNew("invoke_check")
+	})
+	return err
+}
+
+// InvokeCheck is a representation of the C type g_hook_list_invoke_check.
+func (recv *HookList) InvokeCheck(mayRecurse bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(mayRecurse)
+
+	err := hookListInvokeCheckFunction_Set()
+	if err == nil {
+		hookListInvokeCheckFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+// UNSUPPORTED : C value 'g_hook_list_marshal' : parameter 'marshaller' of type 'HookMarshaller' not supported
+
+// UNSUPPORTED : C value 'g_hook_list_marshal_check' : parameter 'marshaller' of type 'HookCheckMarshaller' not supported
 
 var iConvStruct *gi.Struct
 var iConvStruct_Once sync.Once
@@ -3685,9 +4245,69 @@ func (recv *IOChannel) Close() error {
 
 // UNSUPPORTED : C value 'g_io_channel_get_buffer_size' : return type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_get_buffered' : return type 'gboolean' not supported
+var iOChannelGetBufferedFunction *gi.Function
+var iOChannelGetBufferedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_channel_get_close_on_unref' : return type 'gboolean' not supported
+func iOChannelGetBufferedFunction_Set() error {
+	var err error
+	iOChannelGetBufferedFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelGetBufferedFunction, err = iOChannelStruct.InvokerNew("get_buffered")
+	})
+	return err
+}
+
+// GetBuffered is a representation of the C type g_io_channel_get_buffered.
+func (recv *IOChannel) GetBuffered() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iOChannelGetBufferedFunction_Set()
+	if err == nil {
+		ret = iOChannelGetBufferedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var iOChannelGetCloseOnUnrefFunction *gi.Function
+var iOChannelGetCloseOnUnrefFunction_Once sync.Once
+
+func iOChannelGetCloseOnUnrefFunction_Set() error {
+	var err error
+	iOChannelGetCloseOnUnrefFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelGetCloseOnUnrefFunction, err = iOChannelStruct.InvokerNew("get_close_on_unref")
+	})
+	return err
+}
+
+// GetCloseOnUnref is a representation of the C type g_io_channel_get_close_on_unref.
+func (recv *IOChannel) GetCloseOnUnref() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iOChannelGetCloseOnUnrefFunction_Set()
+	if err == nil {
+		ret = iOChannelGetCloseOnUnrefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var iOChannelGetEncodingFunction *gi.Function
 var iOChannelGetEncodingFunction_Once sync.Once
@@ -3834,9 +4454,63 @@ func (recv *IOChannel) Ref() (*IOChannel, error) {
 
 // UNSUPPORTED : C value 'g_io_channel_set_buffer_size' : parameter 'size' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_set_buffered' : parameter 'buffered' of type 'gboolean' not supported
+var iOChannelSetBufferedFunction *gi.Function
+var iOChannelSetBufferedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_channel_set_close_on_unref' : parameter 'do_close' of type 'gboolean' not supported
+func iOChannelSetBufferedFunction_Set() error {
+	var err error
+	iOChannelSetBufferedFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSetBufferedFunction, err = iOChannelStruct.InvokerNew("set_buffered")
+	})
+	return err
+}
+
+// SetBuffered is a representation of the C type g_io_channel_set_buffered.
+func (recv *IOChannel) SetBuffered(buffered bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(buffered)
+
+	err := iOChannelSetBufferedFunction_Set()
+	if err == nil {
+		iOChannelSetBufferedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var iOChannelSetCloseOnUnrefFunction *gi.Function
+var iOChannelSetCloseOnUnrefFunction_Once sync.Once
+
+func iOChannelSetCloseOnUnrefFunction_Set() error {
+	var err error
+	iOChannelSetCloseOnUnrefFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSetCloseOnUnrefFunction, err = iOChannelStruct.InvokerNew("set_close_on_unref")
+	})
+	return err
+}
+
+// SetCloseOnUnref is a representation of the C type g_io_channel_set_close_on_unref.
+func (recv *IOChannel) SetCloseOnUnref(doClose bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(doClose)
+
+	err := iOChannelSetCloseOnUnrefFunction_Set()
+	if err == nil {
+		iOChannelSetCloseOnUnrefFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_io_channel_set_encoding' : return type 'IOStatus' not supported
 
@@ -3872,7 +4546,7 @@ func (recv *IOChannel) SetLineTerm(lineTerm string, length int32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_io_channel_shutdown' : parameter 'flush' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_io_channel_shutdown' : return type 'IOStatus' not supported
 
 var iOChannelUnixGetFdFunction *gi.Function
 var iOChannelUnixGetFdFunction_Once sync.Once
@@ -4036,7 +4710,39 @@ func (recv *KeyFile) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_boolean' : return type 'gboolean' not supported
+var keyFileGetBooleanFunction *gi.Function
+var keyFileGetBooleanFunction_Once sync.Once
+
+func keyFileGetBooleanFunction_Set() error {
+	var err error
+	keyFileGetBooleanFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetBooleanFunction, err = keyFileStruct.InvokerNew("get_boolean")
+	})
+	return err
+}
+
+// GetBoolean is a representation of the C type g_key_file_get_boolean.
+func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var ret gi.Argument
+
+	err := keyFileGetBooleanFunction_Set()
+	if err == nil {
+		ret = keyFileGetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_key_file_get_boolean_list' : parameter 'length' of type 'gsize' not supported
 
@@ -4360,9 +5066,72 @@ func (recv *KeyFile) GetValue(groupName string, key string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_has_group' : return type 'gboolean' not supported
+var keyFileHasGroupFunction *gi.Function
+var keyFileHasGroupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_key_file_has_key' : return type 'gboolean' not supported
+func keyFileHasGroupFunction_Set() error {
+	var err error
+	keyFileHasGroupFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileHasGroupFunction, err = keyFileStruct.InvokerNew("has_group")
+	})
+	return err
+}
+
+// HasGroup is a representation of the C type g_key_file_has_group.
+func (recv *KeyFile) HasGroup(groupName string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := keyFileHasGroupFunction_Set()
+	if err == nil {
+		ret = keyFileHasGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var keyFileHasKeyFunction *gi.Function
+var keyFileHasKeyFunction_Once sync.Once
+
+func keyFileHasKeyFunction_Set() error {
+	var err error
+	keyFileHasKeyFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileHasKeyFunction, err = keyFileStruct.InvokerNew("has_key")
+	})
+	return err
+}
+
+// HasKey is a representation of the C type g_key_file_has_key.
+func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var ret gi.Argument
+
+	err := keyFileHasKeyFunction_Set()
+	if err == nil {
+		ret = keyFileHasKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_key_file_load_from_bytes' : parameter 'bytes' of type 'Bytes' not supported
 
@@ -4406,19 +5175,207 @@ func (recv *KeyFile) Ref() (*KeyFile, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_remove_comment' : return type 'gboolean' not supported
+var keyFileRemoveCommentFunction *gi.Function
+var keyFileRemoveCommentFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_key_file_remove_group' : return type 'gboolean' not supported
+func keyFileRemoveCommentFunction_Set() error {
+	var err error
+	keyFileRemoveCommentFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileRemoveCommentFunction, err = keyFileStruct.InvokerNew("remove_comment")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_key_file_remove_key' : return type 'gboolean' not supported
+// RemoveComment is a representation of the C type g_key_file_remove_comment.
+func (recv *KeyFile) RemoveComment(groupName string, key string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
 
-// UNSUPPORTED : C value 'g_key_file_save_to_file' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_key_file_set_boolean' : parameter 'value' of type 'gboolean' not supported
+	err := keyFileRemoveCommentFunction_Set()
+	if err == nil {
+		ret = keyFileRemoveCommentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var keyFileRemoveGroupFunction *gi.Function
+var keyFileRemoveGroupFunction_Once sync.Once
+
+func keyFileRemoveGroupFunction_Set() error {
+	var err error
+	keyFileRemoveGroupFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileRemoveGroupFunction, err = keyFileStruct.InvokerNew("remove_group")
+	})
+	return err
+}
+
+// RemoveGroup is a representation of the C type g_key_file_remove_group.
+func (recv *KeyFile) RemoveGroup(groupName string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := keyFileRemoveGroupFunction_Set()
+	if err == nil {
+		ret = keyFileRemoveGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var keyFileRemoveKeyFunction *gi.Function
+var keyFileRemoveKeyFunction_Once sync.Once
+
+func keyFileRemoveKeyFunction_Set() error {
+	var err error
+	keyFileRemoveKeyFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileRemoveKeyFunction, err = keyFileStruct.InvokerNew("remove_key")
+	})
+	return err
+}
+
+// RemoveKey is a representation of the C type g_key_file_remove_key.
+func (recv *KeyFile) RemoveKey(groupName string, key string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var ret gi.Argument
+
+	err := keyFileRemoveKeyFunction_Set()
+	if err == nil {
+		ret = keyFileRemoveKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var keyFileSaveToFileFunction *gi.Function
+var keyFileSaveToFileFunction_Once sync.Once
+
+func keyFileSaveToFileFunction_Set() error {
+	var err error
+	keyFileSaveToFileFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileSaveToFileFunction, err = keyFileStruct.InvokerNew("save_to_file")
+	})
+	return err
+}
+
+// SaveToFile is a representation of the C type g_key_file_save_to_file.
+func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(filename)
+
+	var ret gi.Argument
+
+	err := keyFileSaveToFileFunction_Set()
+	if err == nil {
+		ret = keyFileSaveToFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var keyFileSetBooleanFunction *gi.Function
+var keyFileSetBooleanFunction_Once sync.Once
+
+func keyFileSetBooleanFunction_Set() error {
+	var err error
+	keyFileSetBooleanFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileSetBooleanFunction, err = keyFileStruct.InvokerNew("set_boolean")
+	})
+	return err
+}
+
+// SetBoolean is a representation of the C type g_key_file_set_boolean.
+func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) error {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+	inArgs[3].SetBoolean(value)
+
+	err := keyFileSetBooleanFunction_Set()
+	if err == nil {
+		keyFileSetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_key_file_set_boolean_list' : parameter 'list' has no type
 
-// UNSUPPORTED : C value 'g_key_file_set_comment' : return type 'gboolean' not supported
+var keyFileSetCommentFunction *gi.Function
+var keyFileSetCommentFunction_Once sync.Once
+
+func keyFileSetCommentFunction_Set() error {
+	var err error
+	keyFileSetCommentFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileSetCommentFunction, err = keyFileStruct.InvokerNew("set_comment")
+	})
+	return err
+}
+
+// SetComment is a representation of the C type g_key_file_set_comment.
+func (recv *KeyFile) SetComment(groupName string, key string, comment string) (bool, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+	inArgs[3].SetString(comment)
+
+	var ret gi.Argument
+
+	err := keyFileSetCommentFunction_Set()
+	if err == nil {
+		ret = keyFileSetCommentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_key_file_set_double' : parameter 'value' of type 'gdouble' not supported
 
@@ -4757,7 +5714,37 @@ func MainContextNew() (*MainContext, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_main_context_acquire' : return type 'gboolean' not supported
+var mainContextAcquireFunction *gi.Function
+var mainContextAcquireFunction_Once sync.Once
+
+func mainContextAcquireFunction_Set() error {
+	var err error
+	mainContextAcquireFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextAcquireFunction, err = mainContextStruct.InvokerNew("acquire")
+	})
+	return err
+}
+
+// Acquire is a representation of the C type g_main_context_acquire.
+func (recv *MainContext) Acquire() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mainContextAcquireFunction_Set()
+	if err == nil {
+		ret = mainContextAcquireFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_main_context_add_poll' : parameter 'fd' of type 'PollFD' not supported
 
@@ -4834,11 +5821,102 @@ func (recv *MainContext) FindSourceById(sourceId uint32) (*Source, error) {
 
 // UNSUPPORTED : C value 'g_main_context_invoke_full' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_main_context_is_owner' : return type 'gboolean' not supported
+var mainContextIsOwnerFunction *gi.Function
+var mainContextIsOwnerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_main_context_iteration' : parameter 'may_block' of type 'gboolean' not supported
+func mainContextIsOwnerFunction_Set() error {
+	var err error
+	mainContextIsOwnerFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextIsOwnerFunction, err = mainContextStruct.InvokerNew("is_owner")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_main_context_pending' : return type 'gboolean' not supported
+// IsOwner is a representation of the C type g_main_context_is_owner.
+func (recv *MainContext) IsOwner() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mainContextIsOwnerFunction_Set()
+	if err == nil {
+		ret = mainContextIsOwnerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var mainContextIterationFunction *gi.Function
+var mainContextIterationFunction_Once sync.Once
+
+func mainContextIterationFunction_Set() error {
+	var err error
+	mainContextIterationFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextIterationFunction, err = mainContextStruct.InvokerNew("iteration")
+	})
+	return err
+}
+
+// Iteration is a representation of the C type g_main_context_iteration.
+func (recv *MainContext) Iteration(mayBlock bool) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(mayBlock)
+
+	var ret gi.Argument
+
+	err := mainContextIterationFunction_Set()
+	if err == nil {
+		ret = mainContextIterationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var mainContextPendingFunction *gi.Function
+var mainContextPendingFunction_Once sync.Once
+
+func mainContextPendingFunction_Set() error {
+	var err error
+	mainContextPendingFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextPendingFunction, err = mainContextStruct.InvokerNew("pending")
+	})
+	return err
+}
+
+// Pending is a representation of the C type g_main_context_pending.
+func (recv *MainContext) Pending() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mainContextPendingFunction_Set()
+	if err == nil {
+		ret = mainContextPendingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var mainContextPopThreadDefaultFunction *gi.Function
 var mainContextPopThreadDefaultFunction_Once sync.Once
@@ -4868,7 +5946,39 @@ func (recv *MainContext) PopThreadDefault() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_main_context_prepare' : return type 'gboolean' not supported
+var mainContextPrepareFunction *gi.Function
+var mainContextPrepareFunction_Once sync.Once
+
+func mainContextPrepareFunction_Set() error {
+	var err error
+	mainContextPrepareFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextPrepareFunction, err = mainContextStruct.InvokerNew("prepare")
+	})
+	return err
+}
+
+// Prepare is a representation of the C type g_main_context_prepare.
+func (recv *MainContext) Prepare() (bool, int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := mainContextPrepareFunction_Set()
+	if err == nil {
+		ret = mainContextPrepareFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+
+	return retGo, out0, err
+}
 
 var mainContextPushThreadDefaultFunction *gi.Function
 var mainContextPushThreadDefaultFunction_Once sync.Once
@@ -5071,7 +6181,37 @@ func (recv *MainLoop) GetContext() (*MainContext, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_main_loop_is_running' : return type 'gboolean' not supported
+var mainLoopIsRunningFunction *gi.Function
+var mainLoopIsRunningFunction_Once sync.Once
+
+func mainLoopIsRunningFunction_Set() error {
+	var err error
+	mainLoopIsRunningFunction_Once.Do(func() {
+		err = mainLoopStruct_Set()
+		if err != nil {
+			return
+		}
+		mainLoopIsRunningFunction, err = mainLoopStruct.InvokerNew("is_running")
+	})
+	return err
+}
+
+// IsRunning is a representation of the C type g_main_loop_is_running.
+func (recv *MainLoop) IsRunning() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mainLoopIsRunningFunction_Set()
+	if err == nil {
+		ret = mainLoopIsRunningFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var mainLoopQuitFunction *gi.Function
 var mainLoopQuitFunction_Once sync.Once
@@ -5206,7 +6346,38 @@ type MappedFile struct {
 
 // UNSUPPORTED : C value 'g_mapped_file_new' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_mapped_file_new_from_fd' : parameter 'writable' of type 'gboolean' not supported
+var mappedFileNewFromFdFunction *gi.Function
+var mappedFileNewFromFdFunction_Once sync.Once
+
+func mappedFileNewFromFdFunction_Set() error {
+	var err error
+	mappedFileNewFromFdFunction_Once.Do(func() {
+		err = mappedFileStruct_Set()
+		if err != nil {
+			return
+		}
+		mappedFileNewFromFdFunction, err = mappedFileStruct.InvokerNew("new_from_fd")
+	})
+	return err
+}
+
+// MappedFileNewFromFd is a representation of the C type g_mapped_file_new_from_fd.
+func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(fd)
+	inArgs[1].SetBoolean(writable)
+
+	var ret gi.Argument
+
+	err := mappedFileNewFromFdFunction_Set()
+	if err == nil {
+		ret = mappedFileNewFromFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &MappedFile{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var mappedFileFreeFunction *gi.Function
 var mappedFileFreeFunction_Once sync.Once
@@ -5379,7 +6550,37 @@ type MarkupParseContext struct {
 
 // UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'parser' of type 'MarkupParser' not supported
 
-// UNSUPPORTED : C value 'g_markup_parse_context_end_parse' : return type 'gboolean' not supported
+var markupParseContextEndParseFunction *gi.Function
+var markupParseContextEndParseFunction_Once sync.Once
+
+func markupParseContextEndParseFunction_Set() error {
+	var err error
+	markupParseContextEndParseFunction_Once.Do(func() {
+		err = markupParseContextStruct_Set()
+		if err != nil {
+			return
+		}
+		markupParseContextEndParseFunction, err = markupParseContextStruct.InvokerNew("end_parse")
+	})
+	return err
+}
+
+// EndParse is a representation of the C type g_markup_parse_context_end_parse.
+func (recv *MarkupParseContext) EndParse() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := markupParseContextEndParseFunction_Set()
+	if err == nil {
+		ret = markupParseContextEndParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var markupParseContextFreeFunction *gi.Function
 var markupParseContextFreeFunction_Once sync.Once
@@ -5475,7 +6676,39 @@ func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) 
 
 // UNSUPPORTED : C value 'g_markup_parse_context_get_user_data' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_markup_parse_context_parse' : return type 'gboolean' not supported
+var markupParseContextParseFunction *gi.Function
+var markupParseContextParseFunction_Once sync.Once
+
+func markupParseContextParseFunction_Set() error {
+	var err error
+	markupParseContextParseFunction_Once.Do(func() {
+		err = markupParseContextStruct_Set()
+		if err != nil {
+			return
+		}
+		markupParseContextParseFunction, err = markupParseContextStruct.InvokerNew("parse")
+	})
+	return err
+}
+
+// Parse is a representation of the C type g_markup_parse_context_parse.
+func (recv *MarkupParseContext) Parse(text string, textLen int32) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(text)
+	inArgs[2].SetInt32(textLen)
+
+	var ret gi.Argument
+
+	err := markupParseContextParseFunction_Set()
+	if err == nil {
+		ret = markupParseContextParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_markup_parse_context_pop' : return type 'gpointer' not supported
 
@@ -5703,9 +6936,77 @@ func (recv *MatchInfo) FetchNamed(name string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_match_info_fetch_named_pos' : return type 'gboolean' not supported
+var matchInfoFetchNamedPosFunction *gi.Function
+var matchInfoFetchNamedPosFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_match_info_fetch_pos' : return type 'gboolean' not supported
+func matchInfoFetchNamedPosFunction_Set() error {
+	var err error
+	matchInfoFetchNamedPosFunction_Once.Do(func() {
+		err = matchInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		matchInfoFetchNamedPosFunction, err = matchInfoStruct.InvokerNew("fetch_named_pos")
+	})
+	return err
+}
+
+// FetchNamedPos is a representation of the C type g_match_info_fetch_named_pos.
+func (recv *MatchInfo) FetchNamedPos(name string) (bool, int32, int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := matchInfoFetchNamedPosFunction_Set()
+	if err == nil {
+		ret = matchInfoFetchNamedPosFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return retGo, out0, out1, err
+}
+
+var matchInfoFetchPosFunction *gi.Function
+var matchInfoFetchPosFunction_Once sync.Once
+
+func matchInfoFetchPosFunction_Set() error {
+	var err error
+	matchInfoFetchPosFunction_Once.Do(func() {
+		err = matchInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		matchInfoFetchPosFunction, err = matchInfoStruct.InvokerNew("fetch_pos")
+	})
+	return err
+}
+
+// FetchPos is a representation of the C type g_match_info_fetch_pos.
+func (recv *MatchInfo) FetchPos(matchNum int32) (bool, int32, int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(matchNum)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := matchInfoFetchPosFunction_Set()
+	if err == nil {
+		ret = matchInfoFetchPosFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return retGo, out0, out1, err
+}
 
 var matchInfoFreeFunction *gi.Function
 var matchInfoFreeFunction_Once sync.Once
@@ -5831,11 +7132,101 @@ func (recv *MatchInfo) GetString() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_match_info_is_partial_match' : return type 'gboolean' not supported
+var matchInfoIsPartialMatchFunction *gi.Function
+var matchInfoIsPartialMatchFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_match_info_matches' : return type 'gboolean' not supported
+func matchInfoIsPartialMatchFunction_Set() error {
+	var err error
+	matchInfoIsPartialMatchFunction_Once.Do(func() {
+		err = matchInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		matchInfoIsPartialMatchFunction, err = matchInfoStruct.InvokerNew("is_partial_match")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_match_info_next' : return type 'gboolean' not supported
+// IsPartialMatch is a representation of the C type g_match_info_is_partial_match.
+func (recv *MatchInfo) IsPartialMatch() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := matchInfoIsPartialMatchFunction_Set()
+	if err == nil {
+		ret = matchInfoIsPartialMatchFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var matchInfoMatchesFunction *gi.Function
+var matchInfoMatchesFunction_Once sync.Once
+
+func matchInfoMatchesFunction_Set() error {
+	var err error
+	matchInfoMatchesFunction_Once.Do(func() {
+		err = matchInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		matchInfoMatchesFunction, err = matchInfoStruct.InvokerNew("matches")
+	})
+	return err
+}
+
+// Matches is a representation of the C type g_match_info_matches.
+func (recv *MatchInfo) Matches() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := matchInfoMatchesFunction_Set()
+	if err == nil {
+		ret = matchInfoMatchesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var matchInfoNextFunction *gi.Function
+var matchInfoNextFunction_Once sync.Once
+
+func matchInfoNextFunction_Set() error {
+	var err error
+	matchInfoNextFunction_Once.Do(func() {
+		err = matchInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		matchInfoNextFunction, err = matchInfoStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type g_match_info_next.
+func (recv *MatchInfo) Next() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := matchInfoNextFunction_Set()
+	if err == nil {
+		ret = matchInfoNextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var matchInfoRefFunction *gi.Function
 var matchInfoRefFunction_Once sync.Once
@@ -6435,11 +7826,71 @@ func (recv *OptionContext) GetDescription() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_option_context_get_help' : parameter 'main_help' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_option_context_get_help' : parameter 'group' of type 'OptionGroup' not supported
 
-// UNSUPPORTED : C value 'g_option_context_get_help_enabled' : return type 'gboolean' not supported
+var optionContextGetHelpEnabledFunction *gi.Function
+var optionContextGetHelpEnabledFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_option_context_get_ignore_unknown_options' : return type 'gboolean' not supported
+func optionContextGetHelpEnabledFunction_Set() error {
+	var err error
+	optionContextGetHelpEnabledFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextGetHelpEnabledFunction, err = optionContextStruct.InvokerNew("get_help_enabled")
+	})
+	return err
+}
+
+// GetHelpEnabled is a representation of the C type g_option_context_get_help_enabled.
+func (recv *OptionContext) GetHelpEnabled() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := optionContextGetHelpEnabledFunction_Set()
+	if err == nil {
+		ret = optionContextGetHelpEnabledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var optionContextGetIgnoreUnknownOptionsFunction *gi.Function
+var optionContextGetIgnoreUnknownOptionsFunction_Once sync.Once
+
+func optionContextGetIgnoreUnknownOptionsFunction_Set() error {
+	var err error
+	optionContextGetIgnoreUnknownOptionsFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextGetIgnoreUnknownOptionsFunction, err = optionContextStruct.InvokerNew("get_ignore_unknown_options")
+	})
+	return err
+}
+
+// GetIgnoreUnknownOptions is a representation of the C type g_option_context_get_ignore_unknown_options.
+func (recv *OptionContext) GetIgnoreUnknownOptions() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := optionContextGetIgnoreUnknownOptionsFunction_Set()
+	if err == nil {
+		ret = optionContextGetIgnoreUnknownOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var optionContextGetMainGroupFunction *gi.Function
 var optionContextGetMainGroupFunction_Once sync.Once
@@ -6473,7 +7924,37 @@ func (recv *OptionContext) GetMainGroup() (*OptionGroup, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_option_context_get_strict_posix' : return type 'gboolean' not supported
+var optionContextGetStrictPosixFunction *gi.Function
+var optionContextGetStrictPosixFunction_Once sync.Once
+
+func optionContextGetStrictPosixFunction_Set() error {
+	var err error
+	optionContextGetStrictPosixFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextGetStrictPosixFunction, err = optionContextStruct.InvokerNew("get_strict_posix")
+	})
+	return err
+}
+
+// GetStrictPosix is a representation of the C type g_option_context_get_strict_posix.
+func (recv *OptionContext) GetStrictPosix() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := optionContextGetStrictPosixFunction_Set()
+	if err == nil {
+		ret = optionContextGetStrictPosixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var optionContextGetSummaryFunction *gi.Function
 var optionContextGetSummaryFunction_Once sync.Once
@@ -6540,13 +8021,94 @@ func (recv *OptionContext) SetDescription(description string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_option_context_set_help_enabled' : parameter 'help_enabled' of type 'gboolean' not supported
+var optionContextSetHelpEnabledFunction *gi.Function
+var optionContextSetHelpEnabledFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_option_context_set_ignore_unknown_options' : parameter 'ignore_unknown' of type 'gboolean' not supported
+func optionContextSetHelpEnabledFunction_Set() error {
+	var err error
+	optionContextSetHelpEnabledFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextSetHelpEnabledFunction, err = optionContextStruct.InvokerNew("set_help_enabled")
+	})
+	return err
+}
+
+// SetHelpEnabled is a representation of the C type g_option_context_set_help_enabled.
+func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(helpEnabled)
+
+	err := optionContextSetHelpEnabledFunction_Set()
+	if err == nil {
+		optionContextSetHelpEnabledFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var optionContextSetIgnoreUnknownOptionsFunction *gi.Function
+var optionContextSetIgnoreUnknownOptionsFunction_Once sync.Once
+
+func optionContextSetIgnoreUnknownOptionsFunction_Set() error {
+	var err error
+	optionContextSetIgnoreUnknownOptionsFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextSetIgnoreUnknownOptionsFunction, err = optionContextStruct.InvokerNew("set_ignore_unknown_options")
+	})
+	return err
+}
+
+// SetIgnoreUnknownOptions is a representation of the C type g_option_context_set_ignore_unknown_options.
+func (recv *OptionContext) SetIgnoreUnknownOptions(ignoreUnknown bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(ignoreUnknown)
+
+	err := optionContextSetIgnoreUnknownOptionsFunction_Set()
+	if err == nil {
+		optionContextSetIgnoreUnknownOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_option_context_set_main_group' : parameter 'group' of type 'OptionGroup' not supported
 
-// UNSUPPORTED : C value 'g_option_context_set_strict_posix' : parameter 'strict_posix' of type 'gboolean' not supported
+var optionContextSetStrictPosixFunction *gi.Function
+var optionContextSetStrictPosixFunction_Once sync.Once
+
+func optionContextSetStrictPosixFunction_Set() error {
+	var err error
+	optionContextSetStrictPosixFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextSetStrictPosixFunction, err = optionContextStruct.InvokerNew("set_strict_posix")
+	})
+	return err
+}
+
+// SetStrictPosix is a representation of the C type g_option_context_set_strict_posix.
+func (recv *OptionContext) SetStrictPosix(strictPosix bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(strictPosix)
+
+	err := optionContextSetStrictPosixFunction_Set()
+	if err == nil {
+		optionContextSetStrictPosixFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var optionContextSetSummaryFunction *gi.Function
 var optionContextSetSummaryFunction_Once sync.Once
@@ -7063,7 +8625,37 @@ func (recv *Queue) Init() error {
 
 // UNSUPPORTED : C value 'g_queue_insert_sorted' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_queue_is_empty' : return type 'gboolean' not supported
+var queueIsEmptyFunction *gi.Function
+var queueIsEmptyFunction_Once sync.Once
+
+func queueIsEmptyFunction_Set() error {
+	var err error
+	queueIsEmptyFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queueIsEmptyFunction, err = queueStruct.InvokerNew("is_empty")
+	})
+	return err
+}
+
+// IsEmpty is a representation of the C type g_queue_is_empty.
+func (recv *Queue) IsEmpty() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := queueIsEmptyFunction_Set()
+	if err == nil {
+		ret = queueIsEmptyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_queue_link_index' : parameter 'link_' of type 'GLib.List' not supported
 
@@ -7238,7 +8830,37 @@ func (recv *RWLock) ReaderLock() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_rw_lock_reader_trylock' : return type 'gboolean' not supported
+var rWLockReaderTrylockFunction *gi.Function
+var rWLockReaderTrylockFunction_Once sync.Once
+
+func rWLockReaderTrylockFunction_Set() error {
+	var err error
+	rWLockReaderTrylockFunction_Once.Do(func() {
+		err = rWLockStruct_Set()
+		if err != nil {
+			return
+		}
+		rWLockReaderTrylockFunction, err = rWLockStruct.InvokerNew("reader_trylock")
+	})
+	return err
+}
+
+// ReaderTrylock is a representation of the C type g_rw_lock_reader_trylock.
+func (recv *RWLock) ReaderTrylock() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := rWLockReaderTrylockFunction_Set()
+	if err == nil {
+		ret = rWLockReaderTrylockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var rWLockReaderUnlockFunction *gi.Function
 var rWLockReaderUnlockFunction_Once sync.Once
@@ -7296,7 +8918,37 @@ func (recv *RWLock) WriterLock() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_rw_lock_writer_trylock' : return type 'gboolean' not supported
+var rWLockWriterTrylockFunction *gi.Function
+var rWLockWriterTrylockFunction_Once sync.Once
+
+func rWLockWriterTrylockFunction_Set() error {
+	var err error
+	rWLockWriterTrylockFunction_Once.Do(func() {
+		err = rWLockStruct_Set()
+		if err != nil {
+			return
+		}
+		rWLockWriterTrylockFunction, err = rWLockStruct.InvokerNew("writer_trylock")
+	})
+	return err
+}
+
+// WriterTrylock is a representation of the C type g_rw_lock_writer_trylock.
+func (recv *RWLock) WriterTrylock() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := rWLockWriterTrylockFunction_Set()
+	if err == nil {
+		ret = rWLockWriterTrylockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var rWLockWriterUnlockFunction *gi.Function
 var rWLockWriterUnlockFunction_Once sync.Once
@@ -7629,7 +9281,37 @@ func (recv *RecMutex) Lock() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_rec_mutex_trylock' : return type 'gboolean' not supported
+var recMutexTrylockFunction *gi.Function
+var recMutexTrylockFunction_Once sync.Once
+
+func recMutexTrylockFunction_Set() error {
+	var err error
+	recMutexTrylockFunction_Once.Do(func() {
+		err = recMutexStruct_Set()
+		if err != nil {
+			return
+		}
+		recMutexTrylockFunction, err = recMutexStruct.InvokerNew("trylock")
+	})
+	return err
+}
+
+// Trylock is a representation of the C type g_rec_mutex_trylock.
+func (recv *RecMutex) Trylock() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := recMutexTrylockFunction_Set()
+	if err == nil {
+		ret = recMutexTrylockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var recMutexUnlockFunction *gi.Function
 var recMutexUnlockFunction_Once sync.Once
@@ -7710,7 +9392,37 @@ func (recv *Regex) GetCaptureCount() (int32, error) {
 
 // UNSUPPORTED : C value 'g_regex_get_compile_flags' : return type 'RegexCompileFlags' not supported
 
-// UNSUPPORTED : C value 'g_regex_get_has_cr_or_lf' : return type 'gboolean' not supported
+var regexGetHasCrOrLfFunction *gi.Function
+var regexGetHasCrOrLfFunction_Once sync.Once
+
+func regexGetHasCrOrLfFunction_Set() error {
+	var err error
+	regexGetHasCrOrLfFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexGetHasCrOrLfFunction, err = regexStruct.InvokerNew("get_has_cr_or_lf")
+	})
+	return err
+}
+
+// GetHasCrOrLf is a representation of the C type g_regex_get_has_cr_or_lf.
+func (recv *Regex) GetHasCrOrLf() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := regexGetHasCrOrLfFunction_Set()
+	if err == nil {
+		ret = regexGetHasCrOrLfFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_regex_get_match_flags' : return type 'RegexMatchFlags' not supported
 
@@ -8064,7 +9776,37 @@ func (recv *Scanner) Destroy() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_scanner_eof' : return type 'gboolean' not supported
+var scannerEofFunction *gi.Function
+var scannerEofFunction_Once sync.Once
+
+func scannerEofFunction_Set() error {
+	var err error
+	scannerEofFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerEofFunction, err = scannerStruct.InvokerNew("eof")
+	})
+	return err
+}
+
+// Eof is a representation of the C type g_scanner_eof.
+func (recv *Scanner) Eof() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := scannerEofFunction_Set()
+	if err == nil {
+		ret = scannerEofFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_scanner_error' : parameter '...' has no type
 
@@ -8455,7 +10197,37 @@ func (recv *Sequence) GetLength() (int32, error) {
 
 // UNSUPPORTED : C value 'g_sequence_insert_sorted_iter' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_sequence_is_empty' : return type 'gboolean' not supported
+var sequenceIsEmptyFunction *gi.Function
+var sequenceIsEmptyFunction_Once sync.Once
+
+func sequenceIsEmptyFunction_Set() error {
+	var err error
+	sequenceIsEmptyFunction_Once.Do(func() {
+		err = sequenceStruct_Set()
+		if err != nil {
+			return
+		}
+		sequenceIsEmptyFunction, err = sequenceStruct.InvokerNew("is_empty")
+	})
+	return err
+}
+
+// IsEmpty is a representation of the C type g_sequence_is_empty.
+func (recv *Sequence) IsEmpty() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := sequenceIsEmptyFunction_Set()
+	if err == nil {
+		ret = sequenceIsEmptyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_sequence_lookup' : parameter 'data' of type 'gpointer' not supported
 
@@ -8552,9 +10324,69 @@ func (recv *SequenceIter) GetSequence() (*Sequence, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_sequence_iter_is_begin' : return type 'gboolean' not supported
+var sequenceIterIsBeginFunction *gi.Function
+var sequenceIterIsBeginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_sequence_iter_is_end' : return type 'gboolean' not supported
+func sequenceIterIsBeginFunction_Set() error {
+	var err error
+	sequenceIterIsBeginFunction_Once.Do(func() {
+		err = sequenceIterStruct_Set()
+		if err != nil {
+			return
+		}
+		sequenceIterIsBeginFunction, err = sequenceIterStruct.InvokerNew("is_begin")
+	})
+	return err
+}
+
+// IsBegin is a representation of the C type g_sequence_iter_is_begin.
+func (recv *SequenceIter) IsBegin() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := sequenceIterIsBeginFunction_Set()
+	if err == nil {
+		ret = sequenceIterIsBeginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var sequenceIterIsEndFunction *gi.Function
+var sequenceIterIsEndFunction_Once sync.Once
+
+func sequenceIterIsEndFunction_Set() error {
+	var err error
+	sequenceIterIsEndFunction_Once.Do(func() {
+		err = sequenceIterStruct_Set()
+		if err != nil {
+			return
+		}
+		sequenceIterIsEndFunction, err = sequenceIterStruct.InvokerNew("is_end")
+	})
+	return err
+}
+
+// IsEnd is a representation of the C type g_sequence_iter_is_end.
+func (recv *SequenceIter) IsEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := sequenceIterIsEndFunction_Set()
+	if err == nil {
+		ret = sequenceIterIsEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var sequenceIterMoveFunction *gi.Function
 var sequenceIterMoveFunction_Once sync.Once
@@ -8706,7 +10538,37 @@ func (recv *Source) Destroy() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_source_get_can_recurse' : return type 'gboolean' not supported
+var sourceGetCanRecurseFunction *gi.Function
+var sourceGetCanRecurseFunction_Once sync.Once
+
+func sourceGetCanRecurseFunction_Set() error {
+	var err error
+	sourceGetCanRecurseFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceGetCanRecurseFunction, err = sourceStruct.InvokerNew("get_can_recurse")
+	})
+	return err
+}
+
+// GetCanRecurse is a representation of the C type g_source_get_can_recurse.
+func (recv *Source) GetCanRecurse() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := sourceGetCanRecurseFunction_Set()
+	if err == nil {
+		ret = sourceGetCanRecurseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var sourceGetContextFunction *gi.Function
 var sourceGetContextFunction_Once sync.Once
@@ -8902,7 +10764,37 @@ func (recv *Source) GetTime() (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_source_is_destroyed' : return type 'gboolean' not supported
+var sourceIsDestroyedFunction *gi.Function
+var sourceIsDestroyedFunction_Once sync.Once
+
+func sourceIsDestroyedFunction_Set() error {
+	var err error
+	sourceIsDestroyedFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceIsDestroyedFunction, err = sourceStruct.InvokerNew("is_destroyed")
+	})
+	return err
+}
+
+// IsDestroyed is a representation of the C type g_source_is_destroyed.
+func (recv *Source) IsDestroyed() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := sourceIsDestroyedFunction_Set()
+	if err == nil {
+		ret = sourceIsDestroyedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_source_modify_unix_fd' : parameter 'tag' of type 'gpointer' not supported
 
@@ -8950,7 +10842,34 @@ func (recv *Source) Ref() (*Source, error) {
 
 // UNSUPPORTED : C value 'g_source_set_callback_indirect' : parameter 'callback_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_source_set_can_recurse' : parameter 'can_recurse' of type 'gboolean' not supported
+var sourceSetCanRecurseFunction *gi.Function
+var sourceSetCanRecurseFunction_Once sync.Once
+
+func sourceSetCanRecurseFunction_Set() error {
+	var err error
+	sourceSetCanRecurseFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceSetCanRecurseFunction, err = sourceStruct.InvokerNew("set_can_recurse")
+	})
+	return err
+}
+
+// SetCanRecurse is a representation of the C type g_source_set_can_recurse.
+func (recv *Source) SetCanRecurse(canRecurse bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(canRecurse)
+
+	err := sourceSetCanRecurseFunction_Set()
+	if err == nil {
+		sourceSetCanRecurseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_source_set_funcs' : parameter 'funcs' of type 'SourceFuncs' not supported
 
@@ -9258,7 +11177,40 @@ func (recv *String) AppendLen(val string, len int32) (*String, error) {
 
 // UNSUPPORTED : C value 'g_string_append_unichar' : parameter 'wc' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_string_append_uri_escaped' : parameter 'allow_utf8' of type 'gboolean' not supported
+var stringAppendUriEscapedFunction *gi.Function
+var stringAppendUriEscapedFunction_Once sync.Once
+
+func stringAppendUriEscapedFunction_Set() error {
+	var err error
+	stringAppendUriEscapedFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringAppendUriEscapedFunction, err = string_Struct.InvokerNew("append_uri_escaped")
+	})
+	return err
+}
+
+// AppendUriEscaped is a representation of the C type g_string_append_uri_escaped.
+func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed string, allowUtf8 bool) (*String, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(unescaped)
+	inArgs[2].SetString(reservedCharsAllowed)
+	inArgs[3].SetBoolean(allowUtf8)
+
+	var ret gi.Argument
+
+	err := stringAppendUriEscapedFunction_Set()
+	if err == nil {
+		ret = stringAppendUriEscapedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_string_append_vprintf' : parameter 'args' of type 'va_list' not supported
 
@@ -9427,7 +11379,38 @@ func (recv *String) Erase(pos int32, len int32) (*String, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_string_free' : parameter 'free_segment' of type 'gboolean' not supported
+var stringFreeFunction *gi.Function
+var stringFreeFunction_Once sync.Once
+
+func stringFreeFunction_Set() error {
+	var err error
+	stringFreeFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringFreeFunction, err = string_Struct.InvokerNew("free")
+	})
+	return err
+}
+
+// Free is a representation of the C type g_string_free.
+func (recv *String) Free(freeSegment bool) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(freeSegment)
+
+	var ret gi.Argument
+
+	err := stringFreeFunction_Set()
+	if err == nil {
+		ret = stringFreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var stringFreeToBytesFunction *gi.Function
 var stringFreeToBytesFunction_Once sync.Once
@@ -9942,13 +11925,13 @@ func testConfigStruct_Set() error {
 }
 
 type TestConfig struct {
-	native uintptr
-	// UNSUPPORTED : C value 'test_initialized' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'test_quick' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'test_perf' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'test_verbose' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'test_quiet' : no Go type for 'gboolean'
-	// UNSUPPORTED : C value 'test_undefined' : no Go type for 'gboolean'
+	native          uintptr
+	TestInitialized bool
+	TestQuick       bool
+	TestPerf        bool
+	TestVerbose     bool
+	TestQuiet       bool
+	TestUndefined   bool
 }
 
 var testLogBufferStruct *gi.Struct
@@ -10219,10 +12202,38 @@ type ThreadPool struct {
 	native uintptr
 	// UNSUPPORTED : C value 'func' : no Go type for 'Func'
 	// UNSUPPORTED : C value 'user_data' : no Go type for 'gpointer'
-	// UNSUPPORTED : C value 'exclusive' : no Go type for 'gboolean'
+	Exclusive bool
 }
 
-// UNSUPPORTED : C value 'g_thread_pool_free' : parameter 'immediate' of type 'gboolean' not supported
+var threadPoolFreeFunction *gi.Function
+var threadPoolFreeFunction_Once sync.Once
+
+func threadPoolFreeFunction_Set() error {
+	var err error
+	threadPoolFreeFunction_Once.Do(func() {
+		err = threadPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		threadPoolFreeFunction, err = threadPoolStruct.InvokerNew("free")
+	})
+	return err
+}
+
+// Free is a representation of the C type g_thread_pool_free.
+func (recv *ThreadPool) Free(immediate bool, wait bool) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(immediate)
+	inArgs[2].SetBoolean(wait)
+
+	err := threadPoolFreeFunction_Set()
+	if err == nil {
+		threadPoolFreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var threadPoolGetMaxThreadsFunction *gi.Function
 var threadPoolGetMaxThreadsFunction_Once sync.Once
@@ -10292,7 +12303,38 @@ func (recv *ThreadPool) GetNumThreads() (uint32, error) {
 
 // UNSUPPORTED : C value 'g_thread_pool_push' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_thread_pool_set_max_threads' : return type 'gboolean' not supported
+var threadPoolSetMaxThreadsFunction *gi.Function
+var threadPoolSetMaxThreadsFunction_Once sync.Once
+
+func threadPoolSetMaxThreadsFunction_Set() error {
+	var err error
+	threadPoolSetMaxThreadsFunction_Once.Do(func() {
+		err = threadPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		threadPoolSetMaxThreadsFunction, err = threadPoolStruct.InvokerNew("set_max_threads")
+	})
+	return err
+}
+
+// SetMaxThreads is a representation of the C type g_thread_pool_set_max_threads.
+func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(maxThreads)
+
+	var ret gi.Argument
+
+	err := threadPoolSetMaxThreadsFunction_Set()
+	if err == nil {
+		ret = threadPoolSetMaxThreadsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_thread_pool_set_sort_function' : parameter 'func' of type 'CompareDataFunc' not supported
 
@@ -10647,7 +12689,38 @@ func (recv *TimeZone) GetOffset(interval int32) (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_time_zone_is_dst' : return type 'gboolean' not supported
+var timeZoneIsDstFunction *gi.Function
+var timeZoneIsDstFunction_Once sync.Once
+
+func timeZoneIsDstFunction_Set() error {
+	var err error
+	timeZoneIsDstFunction_Once.Do(func() {
+		err = timeZoneStruct_Set()
+		if err != nil {
+			return
+		}
+		timeZoneIsDstFunction, err = timeZoneStruct.InvokerNew("is_dst")
+	})
+	return err
+}
+
+// IsDst is a representation of the C type g_time_zone_is_dst.
+func (recv *TimeZone) IsDst(interval int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(interval)
+
+	var ret gi.Argument
+
+	err := timeZoneIsDstFunction_Set()
+	if err == nil {
+		ret = timeZoneIsDstFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var timeZoneRefFunction *gi.Function
 var timeZoneRefFunction_Once sync.Once
@@ -10782,7 +12855,37 @@ func (recv *Timer) Destroy() error {
 
 // UNSUPPORTED : C value 'g_timer_elapsed' : return type 'gdouble' not supported
 
-// UNSUPPORTED : C value 'g_timer_is_active' : return type 'gboolean' not supported
+var timerIsActiveFunction *gi.Function
+var timerIsActiveFunction_Once sync.Once
+
+func timerIsActiveFunction_Set() error {
+	var err error
+	timerIsActiveFunction_Once.Do(func() {
+		err = timerStruct_Set()
+		if err != nil {
+			return
+		}
+		timerIsActiveFunction, err = timerStruct.InvokerNew("is_active")
+	})
+	return err
+}
+
+// IsActive is a representation of the C type g_timer_is_active.
+func (recv *Timer) IsActive() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := timerIsActiveFunction_Set()
+	if err == nil {
+		ret = timerIsActiveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var timerResetFunction *gi.Function
 var timerResetFunction_Once sync.Once
@@ -11088,7 +13191,37 @@ type Variant struct {
 
 // UNSUPPORTED : C value 'g_variant_new_array' : parameter 'child_type' of type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_boolean' : parameter 'value' of type 'gboolean' not supported
+var variantNewBooleanFunction *gi.Function
+var variantNewBooleanFunction_Once sync.Once
+
+func variantNewBooleanFunction_Set() error {
+	var err error
+	variantNewBooleanFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewBooleanFunction, err = variantStruct.InvokerNew("new_boolean")
+	})
+	return err
+}
+
+// VariantNewBoolean is a representation of the C type g_variant_new_boolean.
+func VariantNewBoolean(value bool) (*Variant, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(value)
+
+	var ret gi.Argument
+
+	err := variantNewBooleanFunction_Set()
+	if err == nil {
+		ret = variantNewBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantNewByteFunction *gi.Function
 var variantNewByteFunction_Once sync.Once
@@ -11538,7 +13671,39 @@ func (recv *Variant) Byteswap() (*Variant, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_check_format_string' : parameter 'copy_only' of type 'gboolean' not supported
+var variantCheckFormatStringFunction *gi.Function
+var variantCheckFormatStringFunction_Once sync.Once
+
+func variantCheckFormatStringFunction_Set() error {
+	var err error
+	variantCheckFormatStringFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantCheckFormatStringFunction, err = variantStruct.InvokerNew("check_format_string")
+	})
+	return err
+}
+
+// CheckFormatString is a representation of the C type g_variant_check_format_string.
+func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(formatString)
+	inArgs[2].SetBoolean(copyOnly)
+
+	var ret gi.Argument
+
+	err := variantCheckFormatStringFunction_Set()
+	if err == nil {
+		ret = variantCheckFormatStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_classify' : return type 'VariantClass' not supported
 
@@ -11558,7 +13723,37 @@ func (recv *Variant) Byteswap() (*Variant, error) {
 
 // UNSUPPORTED : C value 'g_variant_get' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_get_boolean' : return type 'gboolean' not supported
+var variantGetBooleanFunction *gi.Function
+var variantGetBooleanFunction_Once sync.Once
+
+func variantGetBooleanFunction_Set() error {
+	var err error
+	variantGetBooleanFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetBooleanFunction, err = variantStruct.InvokerNew("get_boolean")
+	})
+	return err
+}
+
+// GetBoolean is a representation of the C type g_variant_get_boolean.
+func (recv *Variant) GetBoolean() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantGetBooleanFunction_Set()
+	if err == nil {
+		ret = variantGetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantGetByteFunction *gi.Function
 var variantGetByteFunction_Once sync.Once
@@ -12090,11 +14285,101 @@ func (recv *Variant) Hash() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_is_container' : return type 'gboolean' not supported
+var variantIsContainerFunction *gi.Function
+var variantIsContainerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_is_floating' : return type 'gboolean' not supported
+func variantIsContainerFunction_Set() error {
+	var err error
+	variantIsContainerFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantIsContainerFunction, err = variantStruct.InvokerNew("is_container")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_variant_is_normal_form' : return type 'gboolean' not supported
+// IsContainer is a representation of the C type g_variant_is_container.
+func (recv *Variant) IsContainer() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantIsContainerFunction_Set()
+	if err == nil {
+		ret = variantIsContainerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantIsFloatingFunction *gi.Function
+var variantIsFloatingFunction_Once sync.Once
+
+func variantIsFloatingFunction_Set() error {
+	var err error
+	variantIsFloatingFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantIsFloatingFunction, err = variantStruct.InvokerNew("is_floating")
+	})
+	return err
+}
+
+// IsFloating is a representation of the C type g_variant_is_floating.
+func (recv *Variant) IsFloating() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantIsFloatingFunction_Set()
+	if err == nil {
+		ret = variantIsFloatingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantIsNormalFormFunction *gi.Function
+var variantIsNormalFormFunction_Once sync.Once
+
+func variantIsNormalFormFunction_Set() error {
+	var err error
+	variantIsNormalFormFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantIsNormalFormFunction, err = variantStruct.InvokerNew("is_normal_form")
+	})
+	return err
+}
+
+// IsNormalForm is a representation of the C type g_variant_is_normal_form.
+func (recv *Variant) IsNormalForm() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantIsNormalFormFunction_Set()
+	if err == nil {
+		ret = variantIsNormalFormFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_is_of_type' : parameter 'type' of type 'VariantType' not supported
 
@@ -12136,7 +14421,38 @@ func (recv *Variant) IterNew() (*VariantIter, error) {
 
 // UNSUPPORTED : C value 'g_variant_n_children' : return type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_variant_print' : parameter 'type_annotate' of type 'gboolean' not supported
+var variantPrintFunction *gi.Function
+var variantPrintFunction_Once sync.Once
+
+func variantPrintFunction_Set() error {
+	var err error
+	variantPrintFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantPrintFunction, err = variantStruct.InvokerNew("print")
+	})
+	return err
+}
+
+// Print is a representation of the C type g_variant_print.
+func (recv *Variant) Print(typeAnnotate bool) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(typeAnnotate)
+
+	var ret gi.Argument
+
+	err := variantPrintFunction_Set()
+	if err == nil {
+		ret = variantPrintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_print_string' : parameter 'string' of type 'String' not supported
 
@@ -12486,7 +14802,38 @@ func (recv *VariantDict) Clear() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_variant_dict_contains' : return type 'gboolean' not supported
+var variantDictContainsFunction *gi.Function
+var variantDictContainsFunction_Once sync.Once
+
+func variantDictContainsFunction_Set() error {
+	var err error
+	variantDictContainsFunction_Once.Do(func() {
+		err = variantDictStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDictContainsFunction, err = variantDictStruct.InvokerNew("contains")
+	})
+	return err
+}
+
+// Contains is a representation of the C type g_variant_dict_contains.
+func (recv *VariantDict) Contains(key string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := variantDictContainsFunction_Set()
+	if err == nil {
+		ret = variantDictContainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantDictEndFunction *gi.Function
 var variantDictEndFunction_Once sync.Once
@@ -12562,7 +14909,38 @@ func (recv *VariantDict) Ref() (*VariantDict, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_dict_remove' : return type 'gboolean' not supported
+var variantDictRemoveFunction *gi.Function
+var variantDictRemoveFunction_Once sync.Once
+
+func variantDictRemoveFunction_Set() error {
+	var err error
+	variantDictRemoveFunction_Once.Do(func() {
+		err = variantDictStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDictRemoveFunction, err = variantDictStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_variant_dict_remove.
+func (recv *VariantDict) Remove(key string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := variantDictRemoveFunction_Set()
+	if err == nil {
+		ret = variantDictRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantDictUnrefFunction *gi.Function
 var variantDictUnrefFunction_Once sync.Once
@@ -12954,23 +15332,263 @@ func (recv *VariantType) Hash() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_is_array' : return type 'gboolean' not supported
+var variantTypeIsArrayFunction *gi.Function
+var variantTypeIsArrayFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_type_is_basic' : return type 'gboolean' not supported
+func variantTypeIsArrayFunction_Set() error {
+	var err error
+	variantTypeIsArrayFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsArrayFunction, err = variantTypeStruct.InvokerNew("is_array")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_variant_type_is_container' : return type 'gboolean' not supported
+// IsArray is a representation of the C type g_variant_type_is_array.
+func (recv *VariantType) IsArray() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'g_variant_type_is_definite' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_variant_type_is_dict_entry' : return type 'gboolean' not supported
+	err := variantTypeIsArrayFunction_Set()
+	if err == nil {
+		ret = variantTypeIsArrayFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_variant_type_is_maybe' : return type 'gboolean' not supported
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeIsBasicFunction *gi.Function
+var variantTypeIsBasicFunction_Once sync.Once
+
+func variantTypeIsBasicFunction_Set() error {
+	var err error
+	variantTypeIsBasicFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsBasicFunction, err = variantTypeStruct.InvokerNew("is_basic")
+	})
+	return err
+}
+
+// IsBasic is a representation of the C type g_variant_type_is_basic.
+func (recv *VariantType) IsBasic() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsBasicFunction_Set()
+	if err == nil {
+		ret = variantTypeIsBasicFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeIsContainerFunction *gi.Function
+var variantTypeIsContainerFunction_Once sync.Once
+
+func variantTypeIsContainerFunction_Set() error {
+	var err error
+	variantTypeIsContainerFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsContainerFunction, err = variantTypeStruct.InvokerNew("is_container")
+	})
+	return err
+}
+
+// IsContainer is a representation of the C type g_variant_type_is_container.
+func (recv *VariantType) IsContainer() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsContainerFunction_Set()
+	if err == nil {
+		ret = variantTypeIsContainerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeIsDefiniteFunction *gi.Function
+var variantTypeIsDefiniteFunction_Once sync.Once
+
+func variantTypeIsDefiniteFunction_Set() error {
+	var err error
+	variantTypeIsDefiniteFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsDefiniteFunction, err = variantTypeStruct.InvokerNew("is_definite")
+	})
+	return err
+}
+
+// IsDefinite is a representation of the C type g_variant_type_is_definite.
+func (recv *VariantType) IsDefinite() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsDefiniteFunction_Set()
+	if err == nil {
+		ret = variantTypeIsDefiniteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeIsDictEntryFunction *gi.Function
+var variantTypeIsDictEntryFunction_Once sync.Once
+
+func variantTypeIsDictEntryFunction_Set() error {
+	var err error
+	variantTypeIsDictEntryFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsDictEntryFunction, err = variantTypeStruct.InvokerNew("is_dict_entry")
+	})
+	return err
+}
+
+// IsDictEntry is a representation of the C type g_variant_type_is_dict_entry.
+func (recv *VariantType) IsDictEntry() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsDictEntryFunction_Set()
+	if err == nil {
+		ret = variantTypeIsDictEntryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeIsMaybeFunction *gi.Function
+var variantTypeIsMaybeFunction_Once sync.Once
+
+func variantTypeIsMaybeFunction_Set() error {
+	var err error
+	variantTypeIsMaybeFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsMaybeFunction, err = variantTypeStruct.InvokerNew("is_maybe")
+	})
+	return err
+}
+
+// IsMaybe is a representation of the C type g_variant_type_is_maybe.
+func (recv *VariantType) IsMaybe() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsMaybeFunction_Set()
+	if err == nil {
+		ret = variantTypeIsMaybeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_type_is_subtype_of' : parameter 'supertype' of type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_is_tuple' : return type 'gboolean' not supported
+var variantTypeIsTupleFunction *gi.Function
+var variantTypeIsTupleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_type_is_variant' : return type 'gboolean' not supported
+func variantTypeIsTupleFunction_Set() error {
+	var err error
+	variantTypeIsTupleFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsTupleFunction, err = variantTypeStruct.InvokerNew("is_tuple")
+	})
+	return err
+}
+
+// IsTuple is a representation of the C type g_variant_type_is_tuple.
+func (recv *VariantType) IsTuple() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsTupleFunction_Set()
+	if err == nil {
+		ret = variantTypeIsTupleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeIsVariantFunction *gi.Function
+var variantTypeIsVariantFunction_Once sync.Once
+
+func variantTypeIsVariantFunction_Set() error {
+	var err error
+	variantTypeIsVariantFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsVariantFunction, err = variantTypeStruct.InvokerNew("is_variant")
+	})
+	return err
+}
+
+// IsVariant is a representation of the C type g_variant_type_is_variant.
+func (recv *VariantType) IsVariant() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsVariantFunction_Set()
+	if err == nil {
+		ret = variantTypeIsVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantTypeKeyFunction *gi.Function
 var variantTypeKeyFunction_Once sync.Once

@@ -97,7 +97,7 @@ import (
 
 // UNSUPPORTED : C value 'g_gtype_get_type' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_boolean' : parameter 'default_value' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_param_spec_boolean' : parameter 'flags' of type 'ParamFlags' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_boxed' : parameter 'boxed_type' of type 'GType' not supported
 
@@ -127,7 +127,33 @@ import (
 
 // UNSUPPORTED : C value 'g_param_spec_pointer' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_pool_new' : parameter 'type_prefixing' of type 'gboolean' not supported
+var paramSpecPoolNewFunction *gi.Function
+var paramSpecPoolNewFunction_Once sync.Once
+
+func paramSpecPoolNewFunction_Set() error {
+	var err error
+	paramSpecPoolNewFunction_Once.Do(func() {
+		paramSpecPoolNewFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_pool_new")
+	})
+	return err
+}
+
+// ParamSpecPoolNew is a representation of the C type g_param_spec_pool_new.
+func ParamSpecPoolNew(typePrefixing bool) (*ParamSpecPool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(typePrefixing)
+
+	var ret gi.Argument
+
+	err := paramSpecPoolNewFunction_Set()
+	if err == nil {
+		ret = paramSpecPoolNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ParamSpecPool{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_param_spec_string' : parameter 'flags' of type 'ParamFlags' not supported
 

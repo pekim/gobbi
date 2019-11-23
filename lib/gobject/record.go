@@ -932,9 +932,69 @@ func (recv *Value) DupString() (string, error) {
 
 // UNSUPPORTED : C value 'g_value_dup_variant' : return type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_value_fits_pointer' : return type 'gboolean' not supported
+var valueFitsPointerFunction *gi.Function
+var valueFitsPointerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_get_boolean' : return type 'gboolean' not supported
+func valueFitsPointerFunction_Set() error {
+	var err error
+	valueFitsPointerFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueFitsPointerFunction, err = valueStruct.InvokerNew("fits_pointer")
+	})
+	return err
+}
+
+// FitsPointer is a representation of the C type g_value_fits_pointer.
+func (recv *Value) FitsPointer() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueFitsPointerFunction_Set()
+	if err == nil {
+		ret = valueFitsPointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var valueGetBooleanFunction *gi.Function
+var valueGetBooleanFunction_Once sync.Once
+
+func valueGetBooleanFunction_Set() error {
+	var err error
+	valueGetBooleanFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetBooleanFunction, err = valueStruct.InvokerNew("get_boolean")
+	})
+	return err
+}
+
+// GetBoolean is a representation of the C type g_value_get_boolean.
+func (recv *Value) GetBoolean() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueGetBooleanFunction_Set()
+	if err == nil {
+		ret = valueGetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_value_get_boxed' : return type 'gpointer' not supported
 
@@ -1374,7 +1434,34 @@ func (recv *Value) Reset() (*Value, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_value_set_boolean' : parameter 'v_boolean' of type 'gboolean' not supported
+var valueSetBooleanFunction *gi.Function
+var valueSetBooleanFunction_Once sync.Once
+
+func valueSetBooleanFunction_Set() error {
+	var err error
+	valueSetBooleanFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetBooleanFunction, err = valueStruct.InvokerNew("set_boolean")
+	})
+	return err
+}
+
+// SetBoolean is a representation of the C type g_value_set_boolean.
+func (recv *Value) SetBoolean(vBoolean bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(vBoolean)
+
+	err := valueSetBooleanFunction_Set()
+	if err == nil {
+		valueSetBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_value_set_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
 

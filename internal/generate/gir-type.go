@@ -41,8 +41,9 @@ var jenGoTypes = map[string]*jen.Statement{
 	"gulong":  jen.Uint64(),
 	"guint64": jen.Uint64(),
 
-	"gsize": jen.Uintptr(),
-	"utf8":  jen.String(),
+	"gboolean": jen.Bool(),
+	"gsize":    jen.Uintptr(),
+	"utf8":     jen.String(),
 }
 
 func (t *Type) jenGoType() (*jen.Statement, error) {

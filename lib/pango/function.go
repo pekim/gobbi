@@ -65,7 +65,33 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) (*Attribute, error
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_attr_fallback_new' : parameter 'enable_fallback' of type 'gboolean' not supported
+var attrFallbackNewFunction *gi.Function
+var attrFallbackNewFunction_Once sync.Once
+
+func attrFallbackNewFunction_Set() error {
+	var err error
+	attrFallbackNewFunction_Once.Do(func() {
+		attrFallbackNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_fallback_new")
+	})
+	return err
+}
+
+// AttrFallbackNew is a representation of the C type pango_attr_fallback_new.
+func AttrFallbackNew(enableFallback bool) (*Attribute, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(enableFallback)
+
+	var ret gi.Argument
+
+	err := attrFallbackNewFunction_Set()
+	if err == nil {
+		ret = attrFallbackNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var attrFamilyNewFunction *gi.Function
 var attrFamilyNewFunction_Once sync.Once
@@ -247,7 +273,33 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) (*Attribut
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_attr_strikethrough_new' : parameter 'strikethrough' of type 'gboolean' not supported
+var attrStrikethroughNewFunction *gi.Function
+var attrStrikethroughNewFunction_Once sync.Once
+
+func attrStrikethroughNewFunction_Set() error {
+	var err error
+	attrStrikethroughNewFunction_Once.Do(func() {
+		attrStrikethroughNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_strikethrough_new")
+	})
+	return err
+}
+
+// AttrStrikethroughNew is a representation of the C type pango_attr_strikethrough_new.
+func AttrStrikethroughNew(strikethrough bool) (*Attribute, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(strikethrough)
+
+	var ret gi.Argument
+
+	err := attrStrikethroughNewFunction_Set()
+	if err == nil {
+		ret = attrStrikethroughNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'pango_attr_style_new' : parameter 'style' of type 'Style' not supported
 
@@ -597,7 +649,36 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32, error)
 
 // UNSUPPORTED : C value 'pango_reorder_items' : parameter 'logical_items' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'pango_scan_int' : return type 'gboolean' not supported
+var scanIntFunction *gi.Function
+var scanIntFunction_Once sync.Once
+
+func scanIntFunction_Set() error {
+	var err error
+	scanIntFunction_Once.Do(func() {
+		scanIntFunction, err = gi.FunctionInvokerNew("Pango", "scan_int")
+	})
+	return err
+}
+
+// ScanInt is a representation of the C type pango_scan_int.
+func ScanInt(pos string) (bool, string, int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(pos)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := scanIntFunction_Set()
+	if err == nil {
+		ret = scanIntFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].Int32()
+
+	return retGo, out0, out1, err
+}
 
 // UNSUPPORTED : C value 'pango_scan_string' : parameter 'out' of type 'GLib.String' not supported
 
@@ -611,7 +692,35 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32, error)
 
 // UNSUPPORTED : C value 'pango_shape_full' : parameter 'analysis' of type 'Analysis' not supported
 
-// UNSUPPORTED : C value 'pango_skip_space' : return type 'gboolean' not supported
+var skipSpaceFunction *gi.Function
+var skipSpaceFunction_Once sync.Once
+
+func skipSpaceFunction_Set() error {
+	var err error
+	skipSpaceFunction_Once.Do(func() {
+		skipSpaceFunction, err = gi.FunctionInvokerNew("Pango", "skip_space")
+	})
+	return err
+}
+
+// SkipSpace is a representation of the C type pango_skip_space.
+func SkipSpace(pos string) (bool, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(pos)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := skipSpaceFunction_Set()
+	if err == nil {
+		ret = skipSpaceFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0, err
+}
 
 var splitFileListFunction *gi.Function
 var splitFileListFunction_Once sync.Once

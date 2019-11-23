@@ -234,15 +234,163 @@ func (recv *PixbufFormat) GetName() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_format_is_disabled' : return type 'gboolean' not supported
+var pixbufFormatIsDisabledFunction *gi.Function
+var pixbufFormatIsDisabledFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_format_is_save_option_supported' : return type 'gboolean' not supported
+func pixbufFormatIsDisabledFunction_Set() error {
+	var err error
+	pixbufFormatIsDisabledFunction_Once.Do(func() {
+		err = pixbufFormatStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufFormatIsDisabledFunction, err = pixbufFormatStruct.InvokerNew("is_disabled")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_format_is_scalable' : return type 'gboolean' not supported
+// IsDisabled is a representation of the C type gdk_pixbuf_format_is_disabled.
+func (recv *PixbufFormat) IsDisabled() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'gdk_pixbuf_format_is_writable' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gdk_pixbuf_format_set_disabled' : parameter 'disabled' of type 'gboolean' not supported
+	err := pixbufFormatIsDisabledFunction_Set()
+	if err == nil {
+		ret = pixbufFormatIsDisabledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var pixbufFormatIsSaveOptionSupportedFunction *gi.Function
+var pixbufFormatIsSaveOptionSupportedFunction_Once sync.Once
+
+func pixbufFormatIsSaveOptionSupportedFunction_Set() error {
+	var err error
+	pixbufFormatIsSaveOptionSupportedFunction_Once.Do(func() {
+		err = pixbufFormatStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufFormatIsSaveOptionSupportedFunction, err = pixbufFormatStruct.InvokerNew("is_save_option_supported")
+	})
+	return err
+}
+
+// IsSaveOptionSupported is a representation of the C type gdk_pixbuf_format_is_save_option_supported.
+func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(optionKey)
+
+	var ret gi.Argument
+
+	err := pixbufFormatIsSaveOptionSupportedFunction_Set()
+	if err == nil {
+		ret = pixbufFormatIsSaveOptionSupportedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var pixbufFormatIsScalableFunction *gi.Function
+var pixbufFormatIsScalableFunction_Once sync.Once
+
+func pixbufFormatIsScalableFunction_Set() error {
+	var err error
+	pixbufFormatIsScalableFunction_Once.Do(func() {
+		err = pixbufFormatStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufFormatIsScalableFunction, err = pixbufFormatStruct.InvokerNew("is_scalable")
+	})
+	return err
+}
+
+// IsScalable is a representation of the C type gdk_pixbuf_format_is_scalable.
+func (recv *PixbufFormat) IsScalable() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufFormatIsScalableFunction_Set()
+	if err == nil {
+		ret = pixbufFormatIsScalableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var pixbufFormatIsWritableFunction *gi.Function
+var pixbufFormatIsWritableFunction_Once sync.Once
+
+func pixbufFormatIsWritableFunction_Set() error {
+	var err error
+	pixbufFormatIsWritableFunction_Once.Do(func() {
+		err = pixbufFormatStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufFormatIsWritableFunction, err = pixbufFormatStruct.InvokerNew("is_writable")
+	})
+	return err
+}
+
+// IsWritable is a representation of the C type gdk_pixbuf_format_is_writable.
+func (recv *PixbufFormat) IsWritable() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := pixbufFormatIsWritableFunction_Set()
+	if err == nil {
+		ret = pixbufFormatIsWritableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var pixbufFormatSetDisabledFunction *gi.Function
+var pixbufFormatSetDisabledFunction_Once sync.Once
+
+func pixbufFormatSetDisabledFunction_Set() error {
+	var err error
+	pixbufFormatSetDisabledFunction_Once.Do(func() {
+		err = pixbufFormatStruct_Set()
+		if err != nil {
+			return
+		}
+		pixbufFormatSetDisabledFunction, err = pixbufFormatStruct.InvokerNew("set_disabled")
+	})
+	return err
+}
+
+// SetDisabled is a representation of the C type gdk_pixbuf_format_set_disabled.
+func (recv *PixbufFormat) SetDisabled(disabled bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(disabled)
+
+	err := pixbufFormatSetDisabledFunction_Set()
+	if err == nil {
+		pixbufFormatSetDisabledFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var pixbufLoaderClassStruct *gi.Struct
 var pixbufLoaderClassStruct_Once sync.Once

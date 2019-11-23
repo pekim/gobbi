@@ -9,7 +9,34 @@ import (
 
 // UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : parameter 'group' of type 'GLib.OptionGroup' not supported
 
-// UNSUPPORTED : C value 'gdk_atom_intern' : parameter 'only_if_exists' of type 'gboolean' not supported
+var atomInternFunction *gi.Function
+var atomInternFunction_Once sync.Once
+
+func atomInternFunction_Set() error {
+	var err error
+	atomInternFunction_Once.Do(func() {
+		atomInternFunction, err = gi.FunctionInvokerNew("Gdk", "atom_intern")
+	})
+	return err
+}
+
+// AtomIntern is a representation of the C type gdk_atom_intern.
+func AtomIntern(atomName string, onlyIfExists bool) (*Atom, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(atomName)
+	inArgs[1].SetBoolean(onlyIfExists)
+
+	var ret gi.Argument
+
+	err := atomInternFunction_Set()
+	if err == nil {
+		ret = atomInternFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Atom{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var atomInternStaticStringFunction *gi.Function
 var atomInternStaticStringFunction_Once sync.Once
@@ -219,7 +246,31 @@ func ErrorTrapPush() error {
 
 // UNSUPPORTED : C value 'gdk_events_get_distance' : parameter 'event1' of type 'Event' not supported
 
-// UNSUPPORTED : C value 'gdk_events_pending' : return type 'gboolean' not supported
+var eventsPendingFunction *gi.Function
+var eventsPendingFunction_Once sync.Once
+
+func eventsPendingFunction_Set() error {
+	var err error
+	eventsPendingFunction_Once.Do(func() {
+		eventsPendingFunction, err = gi.FunctionInvokerNew("Gdk", "events_pending")
+	})
+	return err
+}
+
+// EventsPending is a representation of the C type gdk_events_pending.
+func EventsPending() (bool, error) {
+
+	var ret gi.Argument
+
+	err := eventsPendingFunction_Set()
+	if err == nil {
+		ret = eventsPendingFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var flushFunction *gi.Function
 var flushFunction_Once sync.Once
@@ -323,7 +374,31 @@ func GetProgramClass() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gdk_get_show_events' : return type 'gboolean' not supported
+var getShowEventsFunction *gi.Function
+var getShowEventsFunction_Once sync.Once
+
+func getShowEventsFunction_Set() error {
+	var err error
+	getShowEventsFunction_Once.Do(func() {
+		getShowEventsFunction, err = gi.FunctionInvokerNew("Gdk", "get_show_events")
+	})
+	return err
+}
+
+// GetShowEvents is a representation of the C type gdk_get_show_events.
+func GetShowEvents() (bool, error) {
+
+	var ret gi.Argument
+
+	err := getShowEventsFunction_Set()
+	if err == nil {
+		ret = getShowEventsFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gdk_gl_error_quark' : return type 'GLib.Quark' not supported
 
@@ -414,9 +489,61 @@ func KeyvalFromName(keyvalName string) (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gdk_keyval_is_lower' : return type 'gboolean' not supported
+var keyvalIsLowerFunction *gi.Function
+var keyvalIsLowerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_keyval_is_upper' : return type 'gboolean' not supported
+func keyvalIsLowerFunction_Set() error {
+	var err error
+	keyvalIsLowerFunction_Once.Do(func() {
+		keyvalIsLowerFunction, err = gi.FunctionInvokerNew("Gdk", "keyval_is_lower")
+	})
+	return err
+}
+
+// KeyvalIsLower is a representation of the C type gdk_keyval_is_lower.
+func KeyvalIsLower(keyval uint32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(keyval)
+
+	var ret gi.Argument
+
+	err := keyvalIsLowerFunction_Set()
+	if err == nil {
+		ret = keyvalIsLowerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var keyvalIsUpperFunction *gi.Function
+var keyvalIsUpperFunction_Once sync.Once
+
+func keyvalIsUpperFunction_Set() error {
+	var err error
+	keyvalIsUpperFunction_Once.Do(func() {
+		keyvalIsUpperFunction, err = gi.FunctionInvokerNew("Gdk", "keyval_is_upper")
+	})
+	return err
+}
+
+// KeyvalIsUpper is a representation of the C type gdk_keyval_is_upper.
+func KeyvalIsUpper(keyval uint32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(keyval)
+
+	var ret gi.Argument
+
+	err := keyvalIsUpperFunction_Set()
+	if err == nil {
+		ret = keyvalIsUpperFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var keyvalNameFunction *gi.Function
 var keyvalNameFunction_Once sync.Once
@@ -602,7 +729,31 @@ func NotifyStartupCompleteWithId(startupId string) error {
 
 // UNSUPPORTED : C value 'gdk_pointer_grab' : parameter 'window' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_pointer_is_grabbed' : return type 'gboolean' not supported
+var pointerIsGrabbedFunction *gi.Function
+var pointerIsGrabbedFunction_Once sync.Once
+
+func pointerIsGrabbedFunction_Set() error {
+	var err error
+	pointerIsGrabbedFunction_Once.Do(func() {
+		pointerIsGrabbedFunction, err = gi.FunctionInvokerNew("Gdk", "pointer_is_grabbed")
+	})
+	return err
+}
+
+// PointerIsGrabbed is a representation of the C type gdk_pointer_is_grabbed.
+func PointerIsGrabbed() (bool, error) {
+
+	var ret gi.Argument
+
+	err := pointerIsGrabbedFunction_Set()
+	if err == nil {
+		ret = pointerIsGrabbedFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var pointerUngrabFunction *gi.Function
 var pointerUngrabFunction_Once sync.Once
@@ -748,7 +899,29 @@ func SetProgramClass(programClass string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gdk_set_show_events' : parameter 'show_events' of type 'gboolean' not supported
+var setShowEventsFunction *gi.Function
+var setShowEventsFunction_Once sync.Once
+
+func setShowEventsFunction_Set() error {
+	var err error
+	setShowEventsFunction_Once.Do(func() {
+		setShowEventsFunction, err = gi.FunctionInvokerNew("Gdk", "set_show_events")
+	})
+	return err
+}
+
+// SetShowEvents is a representation of the C type gdk_set_show_events.
+func SetShowEvents(showEvents bool) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(showEvents)
+
+	err := setShowEventsFunction_Set()
+	if err == nil {
+		setShowEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'gdk_setting_get' : parameter 'value' of type 'GObject.Value' not supported
 

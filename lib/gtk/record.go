@@ -4717,7 +4717,37 @@ func (recv *IconSource) Free() error {
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_direction' : return type 'TextDirection' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_direction_wildcarded' : return type 'gboolean' not supported
+var iconSourceGetDirectionWildcardedFunction *gi.Function
+var iconSourceGetDirectionWildcardedFunction_Once sync.Once
+
+func iconSourceGetDirectionWildcardedFunction_Set() error {
+	var err error
+	iconSourceGetDirectionWildcardedFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetDirectionWildcardedFunction, err = iconSourceStruct.InvokerNew("get_direction_wildcarded")
+	})
+	return err
+}
+
+// GetDirectionWildcarded is a representation of the C type gtk_icon_source_get_direction_wildcarded.
+func (recv *IconSource) GetDirectionWildcarded() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetDirectionWildcardedFunction_Set()
+	if err == nil {
+		ret = iconSourceGetDirectionWildcardedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_filename' : return type 'filename' not supported
 
@@ -4757,15 +4787,102 @@ func (recv *IconSource) GetIconName() (string, error) {
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_size' : return type 'IconSize' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_size_wildcarded' : return type 'gboolean' not supported
+var iconSourceGetSizeWildcardedFunction *gi.Function
+var iconSourceGetSizeWildcardedFunction_Once sync.Once
+
+func iconSourceGetSizeWildcardedFunction_Set() error {
+	var err error
+	iconSourceGetSizeWildcardedFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetSizeWildcardedFunction, err = iconSourceStruct.InvokerNew("get_size_wildcarded")
+	})
+	return err
+}
+
+// GetSizeWildcarded is a representation of the C type gtk_icon_source_get_size_wildcarded.
+func (recv *IconSource) GetSizeWildcarded() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetSizeWildcardedFunction_Set()
+	if err == nil {
+		ret = iconSourceGetSizeWildcardedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_icon_source_get_state' : return type 'StateType' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_state_wildcarded' : return type 'gboolean' not supported
+var iconSourceGetStateWildcardedFunction *gi.Function
+var iconSourceGetStateWildcardedFunction_Once sync.Once
+
+func iconSourceGetStateWildcardedFunction_Set() error {
+	var err error
+	iconSourceGetStateWildcardedFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetStateWildcardedFunction, err = iconSourceStruct.InvokerNew("get_state_wildcarded")
+	})
+	return err
+}
+
+// GetStateWildcarded is a representation of the C type gtk_icon_source_get_state_wildcarded.
+func (recv *IconSource) GetStateWildcarded() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iconSourceGetStateWildcardedFunction_Set()
+	if err == nil {
+		ret = iconSourceGetStateWildcardedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_direction' : parameter 'direction' of type 'TextDirection' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_direction_wildcarded' : parameter 'setting' of type 'gboolean' not supported
+var iconSourceSetDirectionWildcardedFunction *gi.Function
+var iconSourceSetDirectionWildcardedFunction_Once sync.Once
+
+func iconSourceSetDirectionWildcardedFunction_Set() error {
+	var err error
+	iconSourceSetDirectionWildcardedFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetDirectionWildcardedFunction, err = iconSourceStruct.InvokerNew("set_direction_wildcarded")
+	})
+	return err
+}
+
+// SetDirectionWildcarded is a representation of the C type gtk_icon_source_set_direction_wildcarded.
+func (recv *IconSource) SetDirectionWildcarded(setting bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(setting)
+
+	err := iconSourceSetDirectionWildcardedFunction_Set()
+	if err == nil {
+		iconSourceSetDirectionWildcardedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_filename' : parameter 'filename' of type 'filename' not supported
 
@@ -4802,11 +4919,65 @@ func (recv *IconSource) SetIconName(iconName string) error {
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_size' : parameter 'size' of type 'IconSize' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_size_wildcarded' : parameter 'setting' of type 'gboolean' not supported
+var iconSourceSetSizeWildcardedFunction *gi.Function
+var iconSourceSetSizeWildcardedFunction_Once sync.Once
+
+func iconSourceSetSizeWildcardedFunction_Set() error {
+	var err error
+	iconSourceSetSizeWildcardedFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetSizeWildcardedFunction, err = iconSourceStruct.InvokerNew("set_size_wildcarded")
+	})
+	return err
+}
+
+// SetSizeWildcarded is a representation of the C type gtk_icon_source_set_size_wildcarded.
+func (recv *IconSource) SetSizeWildcarded(setting bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(setting)
+
+	err := iconSourceSetSizeWildcardedFunction_Set()
+	if err == nil {
+		iconSourceSetSizeWildcardedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'gtk_icon_source_set_state' : parameter 'state' of type 'StateType' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_state_wildcarded' : parameter 'setting' of type 'gboolean' not supported
+var iconSourceSetStateWildcardedFunction *gi.Function
+var iconSourceSetStateWildcardedFunction_Once sync.Once
+
+func iconSourceSetStateWildcardedFunction_Set() error {
+	var err error
+	iconSourceSetStateWildcardedFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetStateWildcardedFunction, err = iconSourceStruct.InvokerNew("set_state_wildcarded")
+	})
+	return err
+}
+
+// SetStateWildcarded is a representation of the C type gtk_icon_source_set_state_wildcarded.
+func (recv *IconSource) SetStateWildcarded(setting bool) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(setting)
+
+	err := iconSourceSetStateWildcardedFunction_Set()
+	if err == nil {
+		iconSourceSetStateWildcardedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var iconThemeClassStruct *gi.Struct
 var iconThemeClassStruct_Once sync.Once
@@ -6623,11 +6794,71 @@ func (recv *PaperSize) GetPpdName() (string, error) {
 
 // UNSUPPORTED : C value 'gtk_paper_size_get_width' : parameter 'unit' of type 'Unit' not supported
 
-// UNSUPPORTED : C value 'gtk_paper_size_is_custom' : return type 'gboolean' not supported
+var paperSizeIsCustomFunction *gi.Function
+var paperSizeIsCustomFunction_Once sync.Once
+
+func paperSizeIsCustomFunction_Set() error {
+	var err error
+	paperSizeIsCustomFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeIsCustomFunction, err = paperSizeStruct.InvokerNew("is_custom")
+	})
+	return err
+}
+
+// IsCustom is a representation of the C type gtk_paper_size_is_custom.
+func (recv *PaperSize) IsCustom() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := paperSizeIsCustomFunction_Set()
+	if err == nil {
+		ret = paperSizeIsCustomFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_paper_size_is_equal' : parameter 'size2' of type 'PaperSize' not supported
 
-// UNSUPPORTED : C value 'gtk_paper_size_is_ipp' : return type 'gboolean' not supported
+var paperSizeIsIppFunction *gi.Function
+var paperSizeIsIppFunction_Once sync.Once
+
+func paperSizeIsIppFunction_Set() error {
+	var err error
+	paperSizeIsIppFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeIsIppFunction, err = paperSizeStruct.InvokerNew("is_ipp")
+	})
+	return err
+}
+
+// IsIpp is a representation of the C type gtk_paper_size_is_ipp.
+func (recv *PaperSize) IsIpp() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := paperSizeIsIppFunction_Set()
+	if err == nil {
+		ret = paperSizeIsIppFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_paper_size_set_size' : parameter 'width' of type 'gdouble' not supported
 
@@ -7425,7 +7656,7 @@ type RecentData struct {
 	AppName     string
 	AppExec     string
 	// UNSUPPORTED : C value 'groups' : missing Type
-	// UNSUPPORTED : C value 'is_private' : no Go type for 'gboolean'
+	IsPrivate bool
 }
 
 var recentFilterInfoStruct *gi.Struct
@@ -7467,7 +7698,37 @@ type RecentInfo struct {
 
 // UNSUPPORTED : C value 'gtk_recent_info_create_app_info' : return type 'Gio.AppInfo' not supported
 
-// UNSUPPORTED : C value 'gtk_recent_info_exists' : return type 'gboolean' not supported
+var recentInfoExistsFunction *gi.Function
+var recentInfoExistsFunction_Once sync.Once
+
+func recentInfoExistsFunction_Set() error {
+	var err error
+	recentInfoExistsFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoExistsFunction, err = recentInfoStruct.InvokerNew("exists")
+	})
+	return err
+}
+
+// Exists is a representation of the C type gtk_recent_info_exists.
+func (recv *RecentInfo) Exists() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := recentInfoExistsFunction_Set()
+	if err == nil {
+		ret = recentInfoExistsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var recentInfoGetAddedFunction *gi.Function
 var recentInfoGetAddedFunction_Once sync.Once
@@ -7533,7 +7794,42 @@ func (recv *RecentInfo) GetAge() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_get_application_info' : return type 'gboolean' not supported
+var recentInfoGetApplicationInfoFunction *gi.Function
+var recentInfoGetApplicationInfoFunction_Once sync.Once
+
+func recentInfoGetApplicationInfoFunction_Set() error {
+	var err error
+	recentInfoGetApplicationInfoFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetApplicationInfoFunction, err = recentInfoStruct.InvokerNew("get_application_info")
+	})
+	return err
+}
+
+// GetApplicationInfo is a representation of the C type gtk_recent_info_get_application_info.
+func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32, int64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(appName)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := recentInfoGetApplicationInfoFunction_Set()
+	if err == nil {
+		ret = recentInfoGetApplicationInfoFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(false)
+	out1 := outArgs[1].Uint32()
+	out2 := outArgs[2].Int64()
+
+	return retGo, out0, out1, out2, err
+}
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_applications' : parameter 'length' of type 'gsize' not supported
 
@@ -7671,7 +7967,37 @@ func (recv *RecentInfo) GetModified() (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_get_private_hint' : return type 'gboolean' not supported
+var recentInfoGetPrivateHintFunction *gi.Function
+var recentInfoGetPrivateHintFunction_Once sync.Once
+
+func recentInfoGetPrivateHintFunction_Set() error {
+	var err error
+	recentInfoGetPrivateHintFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetPrivateHintFunction, err = recentInfoStruct.InvokerNew("get_private_hint")
+	})
+	return err
+}
+
+// GetPrivateHint is a representation of the C type gtk_recent_info_get_private_hint.
+func (recv *RecentInfo) GetPrivateHint() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := recentInfoGetPrivateHintFunction_Set()
+	if err == nil {
+		ret = recentInfoGetPrivateHintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var recentInfoGetShortNameFunction *gi.Function
 var recentInfoGetShortNameFunction_Once sync.Once
@@ -7801,11 +8127,103 @@ func (recv *RecentInfo) GetVisited() (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_has_application' : return type 'gboolean' not supported
+var recentInfoHasApplicationFunction *gi.Function
+var recentInfoHasApplicationFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_recent_info_has_group' : return type 'gboolean' not supported
+func recentInfoHasApplicationFunction_Set() error {
+	var err error
+	recentInfoHasApplicationFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoHasApplicationFunction, err = recentInfoStruct.InvokerNew("has_application")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_recent_info_is_local' : return type 'gboolean' not supported
+// HasApplication is a representation of the C type gtk_recent_info_has_application.
+func (recv *RecentInfo) HasApplication(appName string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(appName)
+
+	var ret gi.Argument
+
+	err := recentInfoHasApplicationFunction_Set()
+	if err == nil {
+		ret = recentInfoHasApplicationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var recentInfoHasGroupFunction *gi.Function
+var recentInfoHasGroupFunction_Once sync.Once
+
+func recentInfoHasGroupFunction_Set() error {
+	var err error
+	recentInfoHasGroupFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoHasGroupFunction, err = recentInfoStruct.InvokerNew("has_group")
+	})
+	return err
+}
+
+// HasGroup is a representation of the C type gtk_recent_info_has_group.
+func (recv *RecentInfo) HasGroup(groupName string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := recentInfoHasGroupFunction_Set()
+	if err == nil {
+		ret = recentInfoHasGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var recentInfoIsLocalFunction *gi.Function
+var recentInfoIsLocalFunction_Once sync.Once
+
+func recentInfoIsLocalFunction_Set() error {
+	var err error
+	recentInfoIsLocalFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoIsLocalFunction, err = recentInfoStruct.InvokerNew("is_local")
+	})
+	return err
+}
+
+// IsLocal is a representation of the C type gtk_recent_info_is_local.
+func (recv *RecentInfo) IsLocal() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := recentInfoIsLocalFunction_Set()
+	if err == nil {
+		ret = recentInfoIsLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var recentInfoLastApplicationFunction *gi.Function
 var recentInfoLastApplicationFunction_Once sync.Once
@@ -8665,17 +9083,140 @@ func (recv *SelectionData) GetUris() error {
 
 // UNSUPPORTED : C value 'gtk_selection_data_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_data_set_text' : return type 'gboolean' not supported
+var selectionDataSetTextFunction *gi.Function
+var selectionDataSetTextFunction_Once sync.Once
+
+func selectionDataSetTextFunction_Set() error {
+	var err error
+	selectionDataSetTextFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataSetTextFunction, err = selectionDataStruct.InvokerNew("set_text")
+	})
+	return err
+}
+
+// SetText is a representation of the C type gtk_selection_data_set_text.
+func (recv *SelectionData) SetText(str string, len int32) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(str)
+	inArgs[2].SetInt32(len)
+
+	var ret gi.Argument
+
+	err := selectionDataSetTextFunction_Set()
+	if err == nil {
+		ret = selectionDataSetTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' has no type
 
-// UNSUPPORTED : C value 'gtk_selection_data_targets_include_image' : parameter 'writable' of type 'gboolean' not supported
+var selectionDataTargetsIncludeImageFunction *gi.Function
+var selectionDataTargetsIncludeImageFunction_Once sync.Once
+
+func selectionDataTargetsIncludeImageFunction_Set() error {
+	var err error
+	selectionDataTargetsIncludeImageFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataTargetsIncludeImageFunction, err = selectionDataStruct.InvokerNew("targets_include_image")
+	})
+	return err
+}
+
+// TargetsIncludeImage is a representation of the C type gtk_selection_data_targets_include_image.
+func (recv *SelectionData) TargetsIncludeImage(writable bool) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(writable)
+
+	var ret gi.Argument
+
+	err := selectionDataTargetsIncludeImageFunction_Set()
+	if err == nil {
+		ret = selectionDataTargetsIncludeImageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_selection_data_targets_include_rich_text' : parameter 'buffer' of type 'TextBuffer' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_data_targets_include_text' : return type 'gboolean' not supported
+var selectionDataTargetsIncludeTextFunction *gi.Function
+var selectionDataTargetsIncludeTextFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_selection_data_targets_include_uri' : return type 'gboolean' not supported
+func selectionDataTargetsIncludeTextFunction_Set() error {
+	var err error
+	selectionDataTargetsIncludeTextFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataTargetsIncludeTextFunction, err = selectionDataStruct.InvokerNew("targets_include_text")
+	})
+	return err
+}
+
+// TargetsIncludeText is a representation of the C type gtk_selection_data_targets_include_text.
+func (recv *SelectionData) TargetsIncludeText() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := selectionDataTargetsIncludeTextFunction_Set()
+	if err == nil {
+		ret = selectionDataTargetsIncludeTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var selectionDataTargetsIncludeUriFunction *gi.Function
+var selectionDataTargetsIncludeUriFunction_Once sync.Once
+
+func selectionDataTargetsIncludeUriFunction_Set() error {
+	var err error
+	selectionDataTargetsIncludeUriFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataTargetsIncludeUriFunction, err = selectionDataStruct.InvokerNew("targets_include_uri")
+	})
+	return err
+}
+
+// TargetsIncludeUri is a representation of the C type gtk_selection_data_targets_include_uri.
+func (recv *SelectionData) TargetsIncludeUri() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := selectionDataTargetsIncludeUriFunction_Set()
+	if err == nil {
+		ret = selectionDataTargetsIncludeUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var separatorClassStruct *gi.Struct
 var separatorClassStruct_Once sync.Once
@@ -9994,9 +10535,37 @@ type TargetList struct {
 
 // UNSUPPORTED : C value 'gtk_target_list_add' : parameter 'target' of type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_target_list_add_image_targets' : parameter 'writable' of type 'gboolean' not supported
+var targetListAddImageTargetsFunction *gi.Function
+var targetListAddImageTargetsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_target_list_add_rich_text_targets' : parameter 'deserializable' of type 'gboolean' not supported
+func targetListAddImageTargetsFunction_Set() error {
+	var err error
+	targetListAddImageTargetsFunction_Once.Do(func() {
+		err = targetListStruct_Set()
+		if err != nil {
+			return
+		}
+		targetListAddImageTargetsFunction, err = targetListStruct.InvokerNew("add_image_targets")
+	})
+	return err
+}
+
+// AddImageTargets is a representation of the C type gtk_target_list_add_image_targets.
+func (recv *TargetList) AddImageTargets(info uint32, writable bool) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(info)
+	inArgs[2].SetBoolean(writable)
+
+	err := targetListAddImageTargetsFunction_Set()
+	if err == nil {
+		targetListAddImageTargetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+// UNSUPPORTED : C value 'gtk_target_list_add_rich_text_targets' : parameter 'buffer' of type 'TextBuffer' not supported
 
 // UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' has no type
 
@@ -10487,47 +11056,566 @@ type TextIter struct {
 
 // UNSUPPORTED : C value 'gtk_text_iter_assign' : parameter 'other' of type 'TextIter' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_char' : return type 'gboolean' not supported
+var textIterBackwardCharFunction *gi.Function
+var textIterBackwardCharFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_chars' : return type 'gboolean' not supported
+func textIterBackwardCharFunction_Set() error {
+	var err error
+	textIterBackwardCharFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardCharFunction, err = textIterStruct.InvokerNew("backward_char")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_cursor_position' : return type 'gboolean' not supported
+// BackwardChar is a representation of the C type gtk_text_iter_backward_char.
+func (recv *TextIter) BackwardChar() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_cursor_positions' : return type 'gboolean' not supported
+	var ret gi.Argument
+
+	err := textIterBackwardCharFunction_Set()
+	if err == nil {
+		ret = textIterBackwardCharFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardCharsFunction *gi.Function
+var textIterBackwardCharsFunction_Once sync.Once
+
+func textIterBackwardCharsFunction_Set() error {
+	var err error
+	textIterBackwardCharsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardCharsFunction, err = textIterStruct.InvokerNew("backward_chars")
+	})
+	return err
+}
+
+// BackwardChars is a representation of the C type gtk_text_iter_backward_chars.
+func (recv *TextIter) BackwardChars(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardCharsFunction_Set()
+	if err == nil {
+		ret = textIterBackwardCharsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardCursorPositionFunction *gi.Function
+var textIterBackwardCursorPositionFunction_Once sync.Once
+
+func textIterBackwardCursorPositionFunction_Set() error {
+	var err error
+	textIterBackwardCursorPositionFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardCursorPositionFunction, err = textIterStruct.InvokerNew("backward_cursor_position")
+	})
+	return err
+}
+
+// BackwardCursorPosition is a representation of the C type gtk_text_iter_backward_cursor_position.
+func (recv *TextIter) BackwardCursorPosition() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardCursorPositionFunction_Set()
+	if err == nil {
+		ret = textIterBackwardCursorPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardCursorPositionsFunction *gi.Function
+var textIterBackwardCursorPositionsFunction_Once sync.Once
+
+func textIterBackwardCursorPositionsFunction_Set() error {
+	var err error
+	textIterBackwardCursorPositionsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardCursorPositionsFunction, err = textIterStruct.InvokerNew("backward_cursor_positions")
+	})
+	return err
+}
+
+// BackwardCursorPositions is a representation of the C type gtk_text_iter_backward_cursor_positions.
+func (recv *TextIter) BackwardCursorPositions(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardCursorPositionsFunction_Set()
+	if err == nil {
+		ret = textIterBackwardCursorPositionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_backward_find_char' : parameter 'pred' of type 'TextCharPredicate' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_line' : return type 'gboolean' not supported
+var textIterBackwardLineFunction *gi.Function
+var textIterBackwardLineFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_lines' : return type 'gboolean' not supported
+func textIterBackwardLineFunction_Set() error {
+	var err error
+	textIterBackwardLineFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardLineFunction, err = textIterStruct.InvokerNew("backward_line")
+	})
+	return err
+}
+
+// BackwardLine is a representation of the C type gtk_text_iter_backward_line.
+func (recv *TextIter) BackwardLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardLineFunction_Set()
+	if err == nil {
+		ret = textIterBackwardLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardLinesFunction *gi.Function
+var textIterBackwardLinesFunction_Once sync.Once
+
+func textIterBackwardLinesFunction_Set() error {
+	var err error
+	textIterBackwardLinesFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardLinesFunction, err = textIterStruct.InvokerNew("backward_lines")
+	})
+	return err
+}
+
+// BackwardLines is a representation of the C type gtk_text_iter_backward_lines.
+func (recv *TextIter) BackwardLines(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardLinesFunction_Set()
+	if err == nil {
+		ret = textIterBackwardLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_backward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_sentence_start' : return type 'gboolean' not supported
+var textIterBackwardSentenceStartFunction *gi.Function
+var textIterBackwardSentenceStartFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_sentence_starts' : return type 'gboolean' not supported
+func textIterBackwardSentenceStartFunction_Set() error {
+	var err error
+	textIterBackwardSentenceStartFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardSentenceStartFunction, err = textIterStruct.InvokerNew("backward_sentence_start")
+	})
+	return err
+}
+
+// BackwardSentenceStart is a representation of the C type gtk_text_iter_backward_sentence_start.
+func (recv *TextIter) BackwardSentenceStart() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardSentenceStartFunction_Set()
+	if err == nil {
+		ret = textIterBackwardSentenceStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardSentenceStartsFunction *gi.Function
+var textIterBackwardSentenceStartsFunction_Once sync.Once
+
+func textIterBackwardSentenceStartsFunction_Set() error {
+	var err error
+	textIterBackwardSentenceStartsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardSentenceStartsFunction, err = textIterStruct.InvokerNew("backward_sentence_starts")
+	})
+	return err
+}
+
+// BackwardSentenceStarts is a representation of the C type gtk_text_iter_backward_sentence_starts.
+func (recv *TextIter) BackwardSentenceStarts(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardSentenceStartsFunction_Set()
+	if err == nil {
+		ret = textIterBackwardSentenceStartsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_backward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_cursor_position' : return type 'gboolean' not supported
+var textIterBackwardVisibleCursorPositionFunction *gi.Function
+var textIterBackwardVisibleCursorPositionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_cursor_positions' : return type 'gboolean' not supported
+func textIterBackwardVisibleCursorPositionFunction_Set() error {
+	var err error
+	textIterBackwardVisibleCursorPositionFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardVisibleCursorPositionFunction, err = textIterStruct.InvokerNew("backward_visible_cursor_position")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_line' : return type 'gboolean' not supported
+// BackwardVisibleCursorPosition is a representation of the C type gtk_text_iter_backward_visible_cursor_position.
+func (recv *TextIter) BackwardVisibleCursorPosition() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_lines' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_word_start' : return type 'gboolean' not supported
+	err := textIterBackwardVisibleCursorPositionFunction_Set()
+	if err == nil {
+		ret = textIterBackwardVisibleCursorPositionFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_visible_word_starts' : return type 'gboolean' not supported
+	retGo := ret.Boolean()
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_word_start' : return type 'gboolean' not supported
+	return retGo, err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_word_starts' : return type 'gboolean' not supported
+var textIterBackwardVisibleCursorPositionsFunction *gi.Function
+var textIterBackwardVisibleCursorPositionsFunction_Once sync.Once
+
+func textIterBackwardVisibleCursorPositionsFunction_Set() error {
+	var err error
+	textIterBackwardVisibleCursorPositionsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardVisibleCursorPositionsFunction, err = textIterStruct.InvokerNew("backward_visible_cursor_positions")
+	})
+	return err
+}
+
+// BackwardVisibleCursorPositions is a representation of the C type gtk_text_iter_backward_visible_cursor_positions.
+func (recv *TextIter) BackwardVisibleCursorPositions(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardVisibleCursorPositionsFunction_Set()
+	if err == nil {
+		ret = textIterBackwardVisibleCursorPositionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardVisibleLineFunction *gi.Function
+var textIterBackwardVisibleLineFunction_Once sync.Once
+
+func textIterBackwardVisibleLineFunction_Set() error {
+	var err error
+	textIterBackwardVisibleLineFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardVisibleLineFunction, err = textIterStruct.InvokerNew("backward_visible_line")
+	})
+	return err
+}
+
+// BackwardVisibleLine is a representation of the C type gtk_text_iter_backward_visible_line.
+func (recv *TextIter) BackwardVisibleLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardVisibleLineFunction_Set()
+	if err == nil {
+		ret = textIterBackwardVisibleLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardVisibleLinesFunction *gi.Function
+var textIterBackwardVisibleLinesFunction_Once sync.Once
+
+func textIterBackwardVisibleLinesFunction_Set() error {
+	var err error
+	textIterBackwardVisibleLinesFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardVisibleLinesFunction, err = textIterStruct.InvokerNew("backward_visible_lines")
+	})
+	return err
+}
+
+// BackwardVisibleLines is a representation of the C type gtk_text_iter_backward_visible_lines.
+func (recv *TextIter) BackwardVisibleLines(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardVisibleLinesFunction_Set()
+	if err == nil {
+		ret = textIterBackwardVisibleLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardVisibleWordStartFunction *gi.Function
+var textIterBackwardVisibleWordStartFunction_Once sync.Once
+
+func textIterBackwardVisibleWordStartFunction_Set() error {
+	var err error
+	textIterBackwardVisibleWordStartFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardVisibleWordStartFunction, err = textIterStruct.InvokerNew("backward_visible_word_start")
+	})
+	return err
+}
+
+// BackwardVisibleWordStart is a representation of the C type gtk_text_iter_backward_visible_word_start.
+func (recv *TextIter) BackwardVisibleWordStart() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardVisibleWordStartFunction_Set()
+	if err == nil {
+		ret = textIterBackwardVisibleWordStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardVisibleWordStartsFunction *gi.Function
+var textIterBackwardVisibleWordStartsFunction_Once sync.Once
+
+func textIterBackwardVisibleWordStartsFunction_Set() error {
+	var err error
+	textIterBackwardVisibleWordStartsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardVisibleWordStartsFunction, err = textIterStruct.InvokerNew("backward_visible_word_starts")
+	})
+	return err
+}
+
+// BackwardVisibleWordStarts is a representation of the C type gtk_text_iter_backward_visible_word_starts.
+func (recv *TextIter) BackwardVisibleWordStarts(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardVisibleWordStartsFunction_Set()
+	if err == nil {
+		ret = textIterBackwardVisibleWordStartsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardWordStartFunction *gi.Function
+var textIterBackwardWordStartFunction_Once sync.Once
+
+func textIterBackwardWordStartFunction_Set() error {
+	var err error
+	textIterBackwardWordStartFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardWordStartFunction, err = textIterStruct.InvokerNew("backward_word_start")
+	})
+	return err
+}
+
+// BackwardWordStart is a representation of the C type gtk_text_iter_backward_word_start.
+func (recv *TextIter) BackwardWordStart() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterBackwardWordStartFunction_Set()
+	if err == nil {
+		ret = textIterBackwardWordStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterBackwardWordStartsFunction *gi.Function
+var textIterBackwardWordStartsFunction_Once sync.Once
+
+func textIterBackwardWordStartsFunction_Set() error {
+	var err error
+	textIterBackwardWordStartsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardWordStartsFunction, err = textIterStruct.InvokerNew("backward_word_starts")
+	})
+	return err
+}
+
+// BackwardWordStarts is a representation of the C type gtk_text_iter_backward_word_starts.
+func (recv *TextIter) BackwardWordStarts(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterBackwardWordStartsFunction_Set()
+	if err == nil {
+		ret = textIterBackwardWordStartsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_begins_tag' : parameter 'tag' of type 'TextTag' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_can_insert' : parameter 'default_editability' of type 'gboolean' not supported
+var textIterCanInsertFunction *gi.Function
+var textIterCanInsertFunction_Once sync.Once
+
+func textIterCanInsertFunction_Set() error {
+	var err error
+	textIterCanInsertFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterCanInsertFunction, err = textIterStruct.InvokerNew("can_insert")
+	})
+	return err
+}
+
+// CanInsert is a representation of the C type gtk_text_iter_can_insert.
+func (recv *TextIter) CanInsert(defaultEditability bool) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(defaultEditability)
+
+	var ret gi.Argument
+
+	err := textIterCanInsertFunction_Set()
+	if err == nil {
+		ret = textIterCanInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_compare' : parameter 'rhs' of type 'TextIter' not supported
 
@@ -10563,37 +11651,402 @@ func (recv *TextIter) Copy() (*TextIter, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_editable' : parameter 'default_setting' of type 'gboolean' not supported
+var textIterEditableFunction *gi.Function
+var textIterEditableFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_ends_line' : return type 'gboolean' not supported
+func textIterEditableFunction_Set() error {
+	var err error
+	textIterEditableFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterEditableFunction, err = textIterStruct.InvokerNew("editable")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_ends_sentence' : return type 'gboolean' not supported
+// Editable is a representation of the C type gtk_text_iter_editable.
+func (recv *TextIter) Editable(defaultSetting bool) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(defaultSetting)
+
+	var ret gi.Argument
+
+	err := textIterEditableFunction_Set()
+	if err == nil {
+		ret = textIterEditableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterEndsLineFunction *gi.Function
+var textIterEndsLineFunction_Once sync.Once
+
+func textIterEndsLineFunction_Set() error {
+	var err error
+	textIterEndsLineFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterEndsLineFunction, err = textIterStruct.InvokerNew("ends_line")
+	})
+	return err
+}
+
+// EndsLine is a representation of the C type gtk_text_iter_ends_line.
+func (recv *TextIter) EndsLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterEndsLineFunction_Set()
+	if err == nil {
+		ret = textIterEndsLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterEndsSentenceFunction *gi.Function
+var textIterEndsSentenceFunction_Once sync.Once
+
+func textIterEndsSentenceFunction_Set() error {
+	var err error
+	textIterEndsSentenceFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterEndsSentenceFunction, err = textIterStruct.InvokerNew("ends_sentence")
+	})
+	return err
+}
+
+// EndsSentence is a representation of the C type gtk_text_iter_ends_sentence.
+func (recv *TextIter) EndsSentence() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterEndsSentenceFunction_Set()
+	if err == nil {
+		ret = textIterEndsSentenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_ends_tag' : parameter 'tag' of type 'TextTag' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_ends_word' : return type 'gboolean' not supported
+var textIterEndsWordFunction *gi.Function
+var textIterEndsWordFunction_Once sync.Once
+
+func textIterEndsWordFunction_Set() error {
+	var err error
+	textIterEndsWordFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterEndsWordFunction, err = textIterStruct.InvokerNew("ends_word")
+	})
+	return err
+}
+
+// EndsWord is a representation of the C type gtk_text_iter_ends_word.
+func (recv *TextIter) EndsWord() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterEndsWordFunction_Set()
+	if err == nil {
+		ret = textIterEndsWordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_equal' : parameter 'rhs' of type 'TextIter' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_char' : return type 'gboolean' not supported
+var textIterForwardCharFunction *gi.Function
+var textIterForwardCharFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_chars' : return type 'gboolean' not supported
+func textIterForwardCharFunction_Set() error {
+	var err error
+	textIterForwardCharFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardCharFunction, err = textIterStruct.InvokerNew("forward_char")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_cursor_position' : return type 'gboolean' not supported
+// ForwardChar is a representation of the C type gtk_text_iter_forward_char.
+func (recv *TextIter) ForwardChar() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_cursor_positions' : return type 'gboolean' not supported
+	var ret gi.Argument
+
+	err := textIterForwardCharFunction_Set()
+	if err == nil {
+		ret = textIterForwardCharFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardCharsFunction *gi.Function
+var textIterForwardCharsFunction_Once sync.Once
+
+func textIterForwardCharsFunction_Set() error {
+	var err error
+	textIterForwardCharsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardCharsFunction, err = textIterStruct.InvokerNew("forward_chars")
+	})
+	return err
+}
+
+// ForwardChars is a representation of the C type gtk_text_iter_forward_chars.
+func (recv *TextIter) ForwardChars(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardCharsFunction_Set()
+	if err == nil {
+		ret = textIterForwardCharsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardCursorPositionFunction *gi.Function
+var textIterForwardCursorPositionFunction_Once sync.Once
+
+func textIterForwardCursorPositionFunction_Set() error {
+	var err error
+	textIterForwardCursorPositionFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardCursorPositionFunction, err = textIterStruct.InvokerNew("forward_cursor_position")
+	})
+	return err
+}
+
+// ForwardCursorPosition is a representation of the C type gtk_text_iter_forward_cursor_position.
+func (recv *TextIter) ForwardCursorPosition() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardCursorPositionFunction_Set()
+	if err == nil {
+		ret = textIterForwardCursorPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardCursorPositionsFunction *gi.Function
+var textIterForwardCursorPositionsFunction_Once sync.Once
+
+func textIterForwardCursorPositionsFunction_Set() error {
+	var err error
+	textIterForwardCursorPositionsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardCursorPositionsFunction, err = textIterStruct.InvokerNew("forward_cursor_positions")
+	})
+	return err
+}
+
+// ForwardCursorPositions is a representation of the C type gtk_text_iter_forward_cursor_positions.
+func (recv *TextIter) ForwardCursorPositions(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardCursorPositionsFunction_Set()
+	if err == nil {
+		ret = textIterForwardCursorPositionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_find_char' : parameter 'pred' of type 'TextCharPredicate' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_line' : return type 'gboolean' not supported
+var textIterForwardLineFunction *gi.Function
+var textIterForwardLineFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_lines' : return type 'gboolean' not supported
+func textIterForwardLineFunction_Set() error {
+	var err error
+	textIterForwardLineFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardLineFunction, err = textIterStruct.InvokerNew("forward_line")
+	})
+	return err
+}
+
+// ForwardLine is a representation of the C type gtk_text_iter_forward_line.
+func (recv *TextIter) ForwardLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardLineFunction_Set()
+	if err == nil {
+		ret = textIterForwardLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardLinesFunction *gi.Function
+var textIterForwardLinesFunction_Once sync.Once
+
+func textIterForwardLinesFunction_Set() error {
+	var err error
+	textIterForwardLinesFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardLinesFunction, err = textIterStruct.InvokerNew("forward_lines")
+	})
+	return err
+}
+
+// ForwardLines is a representation of the C type gtk_text_iter_forward_lines.
+func (recv *TextIter) ForwardLines(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardLinesFunction_Set()
+	if err == nil {
+		ret = textIterForwardLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_sentence_end' : return type 'gboolean' not supported
+var textIterForwardSentenceEndFunction *gi.Function
+var textIterForwardSentenceEndFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_sentence_ends' : return type 'gboolean' not supported
+func textIterForwardSentenceEndFunction_Set() error {
+	var err error
+	textIterForwardSentenceEndFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardSentenceEndFunction, err = textIterStruct.InvokerNew("forward_sentence_end")
+	})
+	return err
+}
+
+// ForwardSentenceEnd is a representation of the C type gtk_text_iter_forward_sentence_end.
+func (recv *TextIter) ForwardSentenceEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardSentenceEndFunction_Set()
+	if err == nil {
+		ret = textIterForwardSentenceEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardSentenceEndsFunction *gi.Function
+var textIterForwardSentenceEndsFunction_Once sync.Once
+
+func textIterForwardSentenceEndsFunction_Set() error {
+	var err error
+	textIterForwardSentenceEndsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardSentenceEndsFunction, err = textIterStruct.InvokerNew("forward_sentence_ends")
+	})
+	return err
+}
+
+// ForwardSentenceEnds is a representation of the C type gtk_text_iter_forward_sentence_ends.
+func (recv *TextIter) ForwardSentenceEnds(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardSentenceEndsFunction_Set()
+	if err == nil {
+		ret = textIterForwardSentenceEndsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var textIterForwardToEndFunction *gi.Function
 var textIterForwardToEndFunction_Once sync.Once
@@ -10623,25 +12076,299 @@ func (recv *TextIter) ForwardToEnd() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_to_line_end' : return type 'gboolean' not supported
+var textIterForwardToLineEndFunction *gi.Function
+var textIterForwardToLineEndFunction_Once sync.Once
+
+func textIterForwardToLineEndFunction_Set() error {
+	var err error
+	textIterForwardToLineEndFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardToLineEndFunction, err = textIterStruct.InvokerNew("forward_to_line_end")
+	})
+	return err
+}
+
+// ForwardToLineEnd is a representation of the C type gtk_text_iter_forward_to_line_end.
+func (recv *TextIter) ForwardToLineEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardToLineEndFunction_Set()
+	if err == nil {
+		ret = textIterForwardToLineEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_forward_to_tag_toggle' : parameter 'tag' of type 'TextTag' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_cursor_position' : return type 'gboolean' not supported
+var textIterForwardVisibleCursorPositionFunction *gi.Function
+var textIterForwardVisibleCursorPositionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_cursor_positions' : return type 'gboolean' not supported
+func textIterForwardVisibleCursorPositionFunction_Set() error {
+	var err error
+	textIterForwardVisibleCursorPositionFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardVisibleCursorPositionFunction, err = textIterStruct.InvokerNew("forward_visible_cursor_position")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_line' : return type 'gboolean' not supported
+// ForwardVisibleCursorPosition is a representation of the C type gtk_text_iter_forward_visible_cursor_position.
+func (recv *TextIter) ForwardVisibleCursorPosition() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_lines' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_word_end' : return type 'gboolean' not supported
+	err := textIterForwardVisibleCursorPositionFunction_Set()
+	if err == nil {
+		ret = textIterForwardVisibleCursorPositionFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_visible_word_ends' : return type 'gboolean' not supported
+	retGo := ret.Boolean()
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_word_end' : return type 'gboolean' not supported
+	return retGo, err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_word_ends' : return type 'gboolean' not supported
+var textIterForwardVisibleCursorPositionsFunction *gi.Function
+var textIterForwardVisibleCursorPositionsFunction_Once sync.Once
+
+func textIterForwardVisibleCursorPositionsFunction_Set() error {
+	var err error
+	textIterForwardVisibleCursorPositionsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardVisibleCursorPositionsFunction, err = textIterStruct.InvokerNew("forward_visible_cursor_positions")
+	})
+	return err
+}
+
+// ForwardVisibleCursorPositions is a representation of the C type gtk_text_iter_forward_visible_cursor_positions.
+func (recv *TextIter) ForwardVisibleCursorPositions(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardVisibleCursorPositionsFunction_Set()
+	if err == nil {
+		ret = textIterForwardVisibleCursorPositionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardVisibleLineFunction *gi.Function
+var textIterForwardVisibleLineFunction_Once sync.Once
+
+func textIterForwardVisibleLineFunction_Set() error {
+	var err error
+	textIterForwardVisibleLineFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardVisibleLineFunction, err = textIterStruct.InvokerNew("forward_visible_line")
+	})
+	return err
+}
+
+// ForwardVisibleLine is a representation of the C type gtk_text_iter_forward_visible_line.
+func (recv *TextIter) ForwardVisibleLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardVisibleLineFunction_Set()
+	if err == nil {
+		ret = textIterForwardVisibleLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardVisibleLinesFunction *gi.Function
+var textIterForwardVisibleLinesFunction_Once sync.Once
+
+func textIterForwardVisibleLinesFunction_Set() error {
+	var err error
+	textIterForwardVisibleLinesFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardVisibleLinesFunction, err = textIterStruct.InvokerNew("forward_visible_lines")
+	})
+	return err
+}
+
+// ForwardVisibleLines is a representation of the C type gtk_text_iter_forward_visible_lines.
+func (recv *TextIter) ForwardVisibleLines(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardVisibleLinesFunction_Set()
+	if err == nil {
+		ret = textIterForwardVisibleLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardVisibleWordEndFunction *gi.Function
+var textIterForwardVisibleWordEndFunction_Once sync.Once
+
+func textIterForwardVisibleWordEndFunction_Set() error {
+	var err error
+	textIterForwardVisibleWordEndFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardVisibleWordEndFunction, err = textIterStruct.InvokerNew("forward_visible_word_end")
+	})
+	return err
+}
+
+// ForwardVisibleWordEnd is a representation of the C type gtk_text_iter_forward_visible_word_end.
+func (recv *TextIter) ForwardVisibleWordEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardVisibleWordEndFunction_Set()
+	if err == nil {
+		ret = textIterForwardVisibleWordEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardVisibleWordEndsFunction *gi.Function
+var textIterForwardVisibleWordEndsFunction_Once sync.Once
+
+func textIterForwardVisibleWordEndsFunction_Set() error {
+	var err error
+	textIterForwardVisibleWordEndsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardVisibleWordEndsFunction, err = textIterStruct.InvokerNew("forward_visible_word_ends")
+	})
+	return err
+}
+
+// ForwardVisibleWordEnds is a representation of the C type gtk_text_iter_forward_visible_word_ends.
+func (recv *TextIter) ForwardVisibleWordEnds(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardVisibleWordEndsFunction_Set()
+	if err == nil {
+		ret = textIterForwardVisibleWordEndsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardWordEndFunction *gi.Function
+var textIterForwardWordEndFunction_Once sync.Once
+
+func textIterForwardWordEndFunction_Set() error {
+	var err error
+	textIterForwardWordEndFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardWordEndFunction, err = textIterStruct.InvokerNew("forward_word_end")
+	})
+	return err
+}
+
+// ForwardWordEnd is a representation of the C type gtk_text_iter_forward_word_end.
+func (recv *TextIter) ForwardWordEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterForwardWordEndFunction_Set()
+	if err == nil {
+		ret = textIterForwardWordEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterForwardWordEndsFunction *gi.Function
+var textIterForwardWordEndsFunction_Once sync.Once
+
+func textIterForwardWordEndsFunction_Set() error {
+	var err error
+	textIterForwardWordEndsFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardWordEndsFunction, err = textIterStruct.InvokerNew("forward_word_ends")
+	})
+	return err
+}
+
+// ForwardWordEnds is a representation of the C type gtk_text_iter_forward_word_ends.
+func (recv *TextIter) ForwardWordEnds(count int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(count)
+
+	var ret gi.Argument
+
+	err := textIterForwardWordEndsFunction_Set()
+	if err == nil {
+		ret = textIterForwardWordEndsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var textIterFreeFunction *gi.Function
 var textIterFreeFunction_Once sync.Once
@@ -10883,7 +12610,7 @@ func (recv *TextIter) GetOffset() (int32, error) {
 
 // UNSUPPORTED : C value 'gtk_text_iter_get_text' : parameter 'end' of type 'TextIter' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_get_toggled_tags' : parameter 'toggled_on' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'gtk_text_iter_get_toggled_tags' : return type 'GLib.SList' not supported
 
 var textIterGetVisibleLineIndexFunction *gi.Function
 var textIterGetVisibleLineIndexFunction_Once sync.Once
@@ -10957,15 +12684,165 @@ func (recv *TextIter) GetVisibleLineOffset() (int32, error) {
 
 // UNSUPPORTED : C value 'gtk_text_iter_in_range' : parameter 'start' of type 'TextIter' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_inside_sentence' : return type 'gboolean' not supported
+var textIterInsideSentenceFunction *gi.Function
+var textIterInsideSentenceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_inside_word' : return type 'gboolean' not supported
+func textIterInsideSentenceFunction_Set() error {
+	var err error
+	textIterInsideSentenceFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterInsideSentenceFunction, err = textIterStruct.InvokerNew("inside_sentence")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_text_iter_is_cursor_position' : return type 'gboolean' not supported
+// InsideSentence is a representation of the C type gtk_text_iter_inside_sentence.
+func (recv *TextIter) InsideSentence() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'gtk_text_iter_is_end' : return type 'gboolean' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_text_iter_is_start' : return type 'gboolean' not supported
+	err := textIterInsideSentenceFunction_Set()
+	if err == nil {
+		ret = textIterInsideSentenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterInsideWordFunction *gi.Function
+var textIterInsideWordFunction_Once sync.Once
+
+func textIterInsideWordFunction_Set() error {
+	var err error
+	textIterInsideWordFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterInsideWordFunction, err = textIterStruct.InvokerNew("inside_word")
+	})
+	return err
+}
+
+// InsideWord is a representation of the C type gtk_text_iter_inside_word.
+func (recv *TextIter) InsideWord() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterInsideWordFunction_Set()
+	if err == nil {
+		ret = textIterInsideWordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterIsCursorPositionFunction *gi.Function
+var textIterIsCursorPositionFunction_Once sync.Once
+
+func textIterIsCursorPositionFunction_Set() error {
+	var err error
+	textIterIsCursorPositionFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterIsCursorPositionFunction, err = textIterStruct.InvokerNew("is_cursor_position")
+	})
+	return err
+}
+
+// IsCursorPosition is a representation of the C type gtk_text_iter_is_cursor_position.
+func (recv *TextIter) IsCursorPosition() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterIsCursorPositionFunction_Set()
+	if err == nil {
+		ret = textIterIsCursorPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterIsEndFunction *gi.Function
+var textIterIsEndFunction_Once sync.Once
+
+func textIterIsEndFunction_Set() error {
+	var err error
+	textIterIsEndFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterIsEndFunction, err = textIterStruct.InvokerNew("is_end")
+	})
+	return err
+}
+
+// IsEnd is a representation of the C type gtk_text_iter_is_end.
+func (recv *TextIter) IsEnd() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterIsEndFunction_Set()
+	if err == nil {
+		ret = textIterIsEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterIsStartFunction *gi.Function
+var textIterIsStartFunction_Once sync.Once
+
+func textIterIsStartFunction_Set() error {
+	var err error
+	textIterIsStartFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterIsStartFunction, err = textIterStruct.InvokerNew("is_start")
+	})
+	return err
+}
+
+// IsStart is a representation of the C type gtk_text_iter_is_start.
+func (recv *TextIter) IsStart() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterIsStartFunction_Set()
+	if err == nil {
+		ret = textIterIsStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_order' : parameter 'second' of type 'TextIter' not supported
 
@@ -11143,13 +13020,103 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_starts_line' : return type 'gboolean' not supported
+var textIterStartsLineFunction *gi.Function
+var textIterStartsLineFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_iter_starts_sentence' : return type 'gboolean' not supported
+func textIterStartsLineFunction_Set() error {
+	var err error
+	textIterStartsLineFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterStartsLineFunction, err = textIterStruct.InvokerNew("starts_line")
+	})
+	return err
+}
+
+// StartsLine is a representation of the C type gtk_text_iter_starts_line.
+func (recv *TextIter) StartsLine() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterStartsLineFunction_Set()
+	if err == nil {
+		ret = textIterStartsLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var textIterStartsSentenceFunction *gi.Function
+var textIterStartsSentenceFunction_Once sync.Once
+
+func textIterStartsSentenceFunction_Set() error {
+	var err error
+	textIterStartsSentenceFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterStartsSentenceFunction, err = textIterStruct.InvokerNew("starts_sentence")
+	})
+	return err
+}
+
+// StartsSentence is a representation of the C type gtk_text_iter_starts_sentence.
+func (recv *TextIter) StartsSentence() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterStartsSentenceFunction_Set()
+	if err == nil {
+		ret = textIterStartsSentenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_starts_tag' : parameter 'tag' of type 'TextTag' not supported
 
-// UNSUPPORTED : C value 'gtk_text_iter_starts_word' : return type 'gboolean' not supported
+var textIterStartsWordFunction *gi.Function
+var textIterStartsWordFunction_Once sync.Once
+
+func textIterStartsWordFunction_Set() error {
+	var err error
+	textIterStartsWordFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterStartsWordFunction, err = textIterStruct.InvokerNew("starts_word")
+	})
+	return err
+}
+
+// StartsWord is a representation of the C type gtk_text_iter_starts_word.
+func (recv *TextIter) StartsWord() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := textIterStartsWordFunction_Set()
+	if err == nil {
+		ret = textIterStartsWordFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_text_iter_toggles_tag' : parameter 'tag' of type 'TextTag' not supported
 
@@ -11430,7 +13397,7 @@ type ToggleActionEntry struct {
 	Accelerator string
 	Tooltip     string
 	// UNSUPPORTED : C value 'callback' : no Go type for 'GObject.Callback'
-	// UNSUPPORTED : C value 'is_active' : no Go type for 'gboolean'
+	IsActive bool
 }
 
 var toggleActionPrivateStruct *gi.Struct
@@ -12396,7 +14363,37 @@ func (recv *TreePath) PrependIndex(index int32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gtk_tree_path_prev' : return type 'gboolean' not supported
+var treePathPrevFunction *gi.Function
+var treePathPrevFunction_Once sync.Once
+
+func treePathPrevFunction_Set() error {
+	var err error
+	treePathPrevFunction_Once.Do(func() {
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathPrevFunction, err = treePathStruct.InvokerNew("prev")
+	})
+	return err
+}
+
+// Prev is a representation of the C type gtk_tree_path_prev.
+func (recv *TreePath) Prev() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := treePathPrevFunction_Set()
+	if err == nil {
+		ret = treePathPrevFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var treePathToStringFunction *gi.Function
 var treePathToStringFunction_Once sync.Once
@@ -12430,7 +14427,37 @@ func (recv *TreePath) ToString() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_tree_path_up' : return type 'gboolean' not supported
+var treePathUpFunction *gi.Function
+var treePathUpFunction_Once sync.Once
+
+func treePathUpFunction_Set() error {
+	var err error
+	treePathUpFunction_Once.Do(func() {
+		err = treePathStruct_Set()
+		if err != nil {
+			return
+		}
+		treePathUpFunction, err = treePathStruct.InvokerNew("up")
+	})
+	return err
+}
+
+// Up is a representation of the C type gtk_tree_path_up.
+func (recv *TreePath) Up() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := treePathUpFunction_Set()
+	if err == nil {
+		ret = treePathUpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var treeRowReferenceStruct *gi.Struct
 var treeRowReferenceStruct_Once sync.Once
@@ -12545,7 +14572,37 @@ func (recv *TreeRowReference) GetPath() (*TreePath, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_valid' : return type 'gboolean' not supported
+var treeRowReferenceValidFunction *gi.Function
+var treeRowReferenceValidFunction_Once sync.Once
+
+func treeRowReferenceValidFunction_Set() error {
+	var err error
+	treeRowReferenceValidFunction_Once.Do(func() {
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceValidFunction, err = treeRowReferenceStruct.InvokerNew("valid")
+	})
+	return err
+}
+
+// Valid is a representation of the C type gtk_tree_row_reference_valid.
+func (recv *TreeRowReference) Valid() (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := treeRowReferenceValidFunction_Set()
+	if err == nil {
+		ret = treeRowReferenceValidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var treeSelectionClassStruct *gi.Struct
 var treeSelectionClassStruct_Once sync.Once
@@ -13089,7 +15146,36 @@ type WidgetClass struct {
 
 // UNSUPPORTED : C value 'gtk_widget_class_bind_template_callback_full' : parameter 'callback_symbol' of type 'GObject.Callback' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_class_bind_template_child_full' : parameter 'internal_child' of type 'gboolean' not supported
+var widgetClassBindTemplateChildFullFunction *gi.Function
+var widgetClassBindTemplateChildFullFunction_Once sync.Once
+
+func widgetClassBindTemplateChildFullFunction_Set() error {
+	var err error
+	widgetClassBindTemplateChildFullFunction_Once.Do(func() {
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassBindTemplateChildFullFunction, err = widgetClassStruct.InvokerNew("bind_template_child_full")
+	})
+	return err
+}
+
+// BindTemplateChildFull is a representation of the C type gtk_widget_class_bind_template_child_full.
+func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, structOffset int32) error {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(name)
+	inArgs[2].SetBoolean(internalChild)
+	inArgs[3].SetInt32(structOffset)
+
+	err := widgetClassBindTemplateChildFullFunction_Set()
+	if err == nil {
+		widgetClassBindTemplateChildFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'gtk_widget_class_find_style_property' : return type 'GObject.ParamSpec' not supported
 
@@ -13585,9 +15671,73 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) (*WidgetPath, error) {
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_get_state' : return type 'StateFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_class' : return type 'gboolean' not supported
+var widgetPathIterHasClassFunction *gi.Function
+var widgetPathIterHasClassFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_name' : return type 'gboolean' not supported
+func widgetPathIterHasClassFunction_Set() error {
+	var err error
+	widgetPathIterHasClassFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterHasClassFunction, err = widgetPathStruct.InvokerNew("iter_has_class")
+	})
+	return err
+}
+
+// IterHasClass is a representation of the C type gtk_widget_path_iter_has_class.
+func (recv *WidgetPath) IterHasClass(pos int32, name string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	var ret gi.Argument
+
+	err := widgetPathIterHasClassFunction_Set()
+	if err == nil {
+		ret = widgetPathIterHasClassFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var widgetPathIterHasNameFunction *gi.Function
+var widgetPathIterHasNameFunction_Once sync.Once
+
+func widgetPathIterHasNameFunction_Set() error {
+	var err error
+	widgetPathIterHasNameFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterHasNameFunction, err = widgetPathStruct.InvokerNew("iter_has_name")
+	})
+	return err
+}
+
+// IterHasName is a representation of the C type gtk_widget_path_iter_has_name.
+func (recv *WidgetPath) IterHasName(pos int32, name string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	var ret gi.Argument
+
+	err := widgetPathIterHasNameFunction_Set()
+	if err == nil {
+		ret = widgetPathIterHasNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_has_qclass' : parameter 'qname' of type 'GLib.Quark' not supported
 

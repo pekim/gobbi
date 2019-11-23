@@ -99,9 +99,71 @@ func AsciiStrdown(str string, len int32) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_ascii_string_to_signed' : return type 'gboolean' not supported
+var asciiStringToSignedFunction *gi.Function
+var asciiStringToSignedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_ascii_string_to_unsigned' : return type 'gboolean' not supported
+func asciiStringToSignedFunction_Set() error {
+	var err error
+	asciiStringToSignedFunction_Once.Do(func() {
+		asciiStringToSignedFunction, err = gi.FunctionInvokerNew("GLib", "ascii_string_to_signed")
+	})
+	return err
+}
+
+// AsciiStringToSigned is a representation of the C type g_ascii_string_to_signed.
+func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, int64, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetUint32(base)
+	inArgs[2].SetInt64(min)
+	inArgs[3].SetInt64(max)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := asciiStringToSignedFunction_Set()
+	if err == nil {
+		ret = asciiStringToSignedFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int64()
+
+	return retGo, out0, err
+}
+
+var asciiStringToUnsignedFunction *gi.Function
+var asciiStringToUnsignedFunction_Once sync.Once
+
+func asciiStringToUnsignedFunction_Set() error {
+	var err error
+	asciiStringToUnsignedFunction_Once.Do(func() {
+		asciiStringToUnsignedFunction, err = gi.FunctionInvokerNew("GLib", "ascii_string_to_unsigned")
+	})
+	return err
+}
+
+// AsciiStringToUnsigned is a representation of the C type g_ascii_string_to_unsigned.
+func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (bool, uint64, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetUint32(base)
+	inArgs[2].SetUint64(min)
+	inArgs[3].SetUint64(max)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := asciiStringToUnsignedFunction_Set()
+	if err == nil {
+		ret = asciiStringToUnsignedFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 'n' of type 'gsize' not supported
 
@@ -461,9 +523,63 @@ func AtomicIntAnd(atomic uint32, val uint32) (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_atomic_int_compare_and_exchange' : return type 'gboolean' not supported
+var atomicIntCompareAndExchangeFunction *gi.Function
+var atomicIntCompareAndExchangeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_atomic_int_dec_and_test' : return type 'gboolean' not supported
+func atomicIntCompareAndExchangeFunction_Set() error {
+	var err error
+	atomicIntCompareAndExchangeFunction_Once.Do(func() {
+		atomicIntCompareAndExchangeFunction, err = gi.FunctionInvokerNew("GLib", "atomic_int_compare_and_exchange")
+	})
+	return err
+}
+
+// AtomicIntCompareAndExchange is a representation of the C type g_atomic_int_compare_and_exchange.
+func AtomicIntCompareAndExchange(atomic int32, oldval int32, newval int32) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(atomic)
+	inArgs[1].SetInt32(oldval)
+	inArgs[2].SetInt32(newval)
+
+	var ret gi.Argument
+
+	err := atomicIntCompareAndExchangeFunction_Set()
+	if err == nil {
+		ret = atomicIntCompareAndExchangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var atomicIntDecAndTestFunction *gi.Function
+var atomicIntDecAndTestFunction_Once sync.Once
+
+func atomicIntDecAndTestFunction_Set() error {
+	var err error
+	atomicIntDecAndTestFunction_Once.Do(func() {
+		atomicIntDecAndTestFunction, err = gi.FunctionInvokerNew("GLib", "atomic_int_dec_and_test")
+	})
+	return err
+}
+
+// AtomicIntDecAndTest is a representation of the C type g_atomic_int_dec_and_test.
+func AtomicIntDecAndTest(atomic int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(atomic)
+
+	var ret gi.Argument
+
+	err := atomicIntDecAndTestFunction_Set()
+	if err == nil {
+		ret = atomicIntDecAndTestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var atomicIntExchangeAndAddFunction *gi.Function
 var atomicIntExchangeAndAddFunction_Once sync.Once
@@ -657,9 +773,62 @@ func AtomicIntXor(atomic uint32, val uint32) (uint32, error) {
 
 // UNSUPPORTED : C value 'g_atomic_rc_box_release_full' : parameter 'mem_block' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_atomic_ref_count_compare' : return type 'gboolean' not supported
+var atomicRefCountCompareFunction *gi.Function
+var atomicRefCountCompareFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_atomic_ref_count_dec' : return type 'gboolean' not supported
+func atomicRefCountCompareFunction_Set() error {
+	var err error
+	atomicRefCountCompareFunction_Once.Do(func() {
+		atomicRefCountCompareFunction, err = gi.FunctionInvokerNew("GLib", "atomic_ref_count_compare")
+	})
+	return err
+}
+
+// AtomicRefCountCompare is a representation of the C type g_atomic_ref_count_compare.
+func AtomicRefCountCompare(arc int32, val int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(arc)
+	inArgs[1].SetInt32(val)
+
+	var ret gi.Argument
+
+	err := atomicRefCountCompareFunction_Set()
+	if err == nil {
+		ret = atomicRefCountCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var atomicRefCountDecFunction *gi.Function
+var atomicRefCountDecFunction_Once sync.Once
+
+func atomicRefCountDecFunction_Set() error {
+	var err error
+	atomicRefCountDecFunction_Once.Do(func() {
+		atomicRefCountDecFunction, err = gi.FunctionInvokerNew("GLib", "atomic_ref_count_dec")
+	})
+	return err
+}
+
+// AtomicRefCountDec is a representation of the C type g_atomic_ref_count_dec.
+func AtomicRefCountDec(arc int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(arc)
+
+	var ret gi.Argument
+
+	err := atomicRefCountDecFunction_Set()
+	if err == nil {
+		ret = atomicRefCountDecFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var atomicRefCountIncFunction *gi.Function
 var atomicRefCountIncFunction_Once sync.Once
@@ -717,7 +886,7 @@ func AtomicRefCountInit(arc int32) error {
 
 // UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' has no type
 
-// UNSUPPORTED : C value 'g_base64_encode_close' : parameter 'break_lines' of type 'gboolean' not supported
+// UNSUPPORTED : C value 'g_base64_encode_close' : parameter 'out' has no type
 
 // UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' has no type
 
@@ -834,7 +1003,34 @@ func BitStorage(number uint64) (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_bit_trylock' : return type 'gboolean' not supported
+var bitTrylockFunction *gi.Function
+var bitTrylockFunction_Once sync.Once
+
+func bitTrylockFunction_Set() error {
+	var err error
+	bitTrylockFunction_Once.Do(func() {
+		bitTrylockFunction, err = gi.FunctionInvokerNew("GLib", "bit_trylock")
+	})
+	return err
+}
+
+// BitTrylock is a representation of the C type g_bit_trylock.
+func BitTrylock(address int32, lockBit int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(address)
+	inArgs[1].SetInt32(lockBit)
+
+	var ret gi.Argument
+
+	err := bitTrylockFunction_Set()
+	if err == nil {
+		ret = bitTrylockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var bitUnlockFunction *gi.Function
 var bitUnlockFunction_Once sync.Once
@@ -971,7 +1167,33 @@ func ClearError() error {
 
 // UNSUPPORTED : C value 'g_clear_pointer' : parameter 'pp' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_close' : return type 'gboolean' not supported
+var closeFunction *gi.Function
+var closeFunction_Once sync.Once
+
+func closeFunction_Set() error {
+	var err error
+	closeFunction_Once.Do(func() {
+		closeFunction, err = gi.FunctionInvokerNew("GLib", "close")
+	})
+	return err
+}
+
+// Close is a representation of the C type g_close.
+func Close(fd int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(fd)
+
+	var ret gi.Argument
+
+	err := closeFunction_Set()
+	if err == nil {
+		ret = closeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_compute_checksum_for_bytes' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
@@ -1047,7 +1269,33 @@ func ClearError() error {
 
 // UNSUPPORTED : C value 'g_date_valid_dmy' : parameter 'day' of type 'DateDay' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_julian' : return type 'gboolean' not supported
+var dateValidJulianFunction *gi.Function
+var dateValidJulianFunction_Once sync.Once
+
+func dateValidJulianFunction_Set() error {
+	var err error
+	dateValidJulianFunction_Once.Do(func() {
+		dateValidJulianFunction, err = gi.FunctionInvokerNew("GLib", "date_valid_julian")
+	})
+	return err
+}
+
+// DateValidJulian is a representation of the C type g_date_valid_julian.
+func DateValidJulian(julianDate uint32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(julianDate)
+
+	var ret gi.Argument
+
+	err := dateValidJulianFunction_Set()
+	if err == nil {
+		ret = dateValidJulianFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_date_valid_month' : parameter 'month' of type 'DateMonth' not supported
 
@@ -1309,7 +1557,33 @@ func GetApplicationName() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_get_charset' : return type 'gboolean' not supported
+var getCharsetFunction *gi.Function
+var getCharsetFunction_Once sync.Once
+
+func getCharsetFunction_Set() error {
+	var err error
+	getCharsetFunction_Once.Do(func() {
+		getCharsetFunction, err = gi.FunctionInvokerNew("GLib", "get_charset")
+	})
+	return err
+}
+
+// GetCharset is a representation of the C type g_get_charset.
+func GetCharset() (bool, string, error) {
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := getCharsetFunction_Set()
+	if err == nil {
+		ret = getCharsetFunction.Invoke(nil, outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0, err
+}
 
 var getCodesetFunction *gi.Function
 var getCodesetFunction_Once sync.Once
@@ -1337,7 +1611,33 @@ func GetCodeset() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_get_console_charset' : return type 'gboolean' not supported
+var getConsoleCharsetFunction *gi.Function
+var getConsoleCharsetFunction_Once sync.Once
+
+func getConsoleCharsetFunction_Set() error {
+	var err error
+	getConsoleCharsetFunction_Once.Do(func() {
+		getConsoleCharsetFunction, err = gi.FunctionInvokerNew("GLib", "get_console_charset")
+	})
+	return err
+}
+
+// GetConsoleCharset is a representation of the C type g_get_console_charset.
+func GetConsoleCharset() (bool, string, error) {
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := getConsoleCharsetFunction_Set()
+	if err == nil {
+		ret = getConsoleCharsetFunction.Invoke(nil, outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
@@ -1671,11 +1971,89 @@ func GetSystemDataDirs() error {
 
 // UNSUPPORTED : C value 'g_hook_unref' : parameter 'hook_list' of type 'HookList' not supported
 
-// UNSUPPORTED : C value 'g_hostname_is_ascii_encoded' : return type 'gboolean' not supported
+var hostnameIsAsciiEncodedFunction *gi.Function
+var hostnameIsAsciiEncodedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_hostname_is_ip_address' : return type 'gboolean' not supported
+func hostnameIsAsciiEncodedFunction_Set() error {
+	var err error
+	hostnameIsAsciiEncodedFunction_Once.Do(func() {
+		hostnameIsAsciiEncodedFunction, err = gi.FunctionInvokerNew("GLib", "hostname_is_ascii_encoded")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_hostname_is_non_ascii' : return type 'gboolean' not supported
+// HostnameIsAsciiEncoded is a representation of the C type g_hostname_is_ascii_encoded.
+func HostnameIsAsciiEncoded(hostname string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(hostname)
+
+	var ret gi.Argument
+
+	err := hostnameIsAsciiEncodedFunction_Set()
+	if err == nil {
+		ret = hostnameIsAsciiEncodedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var hostnameIsIpAddressFunction *gi.Function
+var hostnameIsIpAddressFunction_Once sync.Once
+
+func hostnameIsIpAddressFunction_Set() error {
+	var err error
+	hostnameIsIpAddressFunction_Once.Do(func() {
+		hostnameIsIpAddressFunction, err = gi.FunctionInvokerNew("GLib", "hostname_is_ip_address")
+	})
+	return err
+}
+
+// HostnameIsIpAddress is a representation of the C type g_hostname_is_ip_address.
+func HostnameIsIpAddress(hostname string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(hostname)
+
+	var ret gi.Argument
+
+	err := hostnameIsIpAddressFunction_Set()
+	if err == nil {
+		ret = hostnameIsIpAddressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var hostnameIsNonAsciiFunction *gi.Function
+var hostnameIsNonAsciiFunction_Once sync.Once
+
+func hostnameIsNonAsciiFunction_Set() error {
+	var err error
+	hostnameIsNonAsciiFunction_Once.Do(func() {
+		hostnameIsNonAsciiFunction, err = gi.FunctionInvokerNew("GLib", "hostname_is_non_ascii")
+	})
+	return err
+}
+
+// HostnameIsNonAscii is a representation of the C type g_hostname_is_non_ascii.
+func HostnameIsNonAscii(hostname string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(hostname)
+
+	var ret gi.Argument
+
+	err := hostnameIsNonAsciiFunction_Set()
+	if err == nil {
+		ret = hostnameIsNonAsciiFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var hostnameToAsciiFunction *gi.Function
 var hostnameToAsciiFunction_Once sync.Once
@@ -1951,13 +2329,65 @@ func LogRemoveHandler(logDomain string, handlerId uint32) error {
 
 // UNSUPPORTED : C value 'g_log_writer_format_fields' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_is_journald' : return type 'gboolean' not supported
+var logWriterIsJournaldFunction *gi.Function
+var logWriterIsJournaldFunction_Once sync.Once
+
+func logWriterIsJournaldFunction_Set() error {
+	var err error
+	logWriterIsJournaldFunction_Once.Do(func() {
+		logWriterIsJournaldFunction, err = gi.FunctionInvokerNew("GLib", "log_writer_is_journald")
+	})
+	return err
+}
+
+// LogWriterIsJournald is a representation of the C type g_log_writer_is_journald.
+func LogWriterIsJournald(outputFd int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(outputFd)
+
+	var ret gi.Argument
+
+	err := logWriterIsJournaldFunction_Set()
+	if err == nil {
+		ret = logWriterIsJournaldFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_log_writer_journald' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
 // UNSUPPORTED : C value 'g_log_writer_standard_streams' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_supports_color' : return type 'gboolean' not supported
+var logWriterSupportsColorFunction *gi.Function
+var logWriterSupportsColorFunction_Once sync.Once
+
+func logWriterSupportsColorFunction_Set() error {
+	var err error
+	logWriterSupportsColorFunction_Once.Do(func() {
+		logWriterSupportsColorFunction, err = gi.FunctionInvokerNew("GLib", "log_writer_supports_color")
+	})
+	return err
+}
+
+// LogWriterSupportsColor is a representation of the C type g_log_writer_supports_color.
+func LogWriterSupportsColor(outputFd int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(outputFd)
+
+	var ret gi.Argument
+
+	err := logWriterSupportsColorFunction_Set()
+	if err == nil {
+		ret = logWriterSupportsColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_logv' : parameter 'log_level' of type 'LogLevelFlags' not supported
 
@@ -2136,7 +2566,31 @@ func MarkupEscapeText(text string, length int32) (string, error) {
 
 // UNSUPPORTED : C value 'g_markup_vprintf_escaped' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_mem_is_system_malloc' : return type 'gboolean' not supported
+var memIsSystemMallocFunction *gi.Function
+var memIsSystemMallocFunction_Once sync.Once
+
+func memIsSystemMallocFunction_Set() error {
+	var err error
+	memIsSystemMallocFunction_Once.Do(func() {
+		memIsSystemMallocFunction, err = gi.FunctionInvokerNew("GLib", "mem_is_system_malloc")
+	})
+	return err
+}
+
+// MemIsSystemMalloc is a representation of the C type g_mem_is_system_malloc.
+func MemIsSystemMalloc() (bool, error) {
+
+	var ret gi.Argument
+
+	err := memIsSystemMallocFunction_Set()
+	if err == nil {
+		ret = memIsSystemMallocFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var memProfileFunction *gi.Function
 var memProfileFunction_Once sync.Once
@@ -2244,7 +2698,34 @@ func OnErrorStackTrace(prgName string) error {
 
 // UNSUPPORTED : C value 'g_pattern_match' : parameter 'pspec' of type 'PatternSpec' not supported
 
-// UNSUPPORTED : C value 'g_pattern_match_simple' : return type 'gboolean' not supported
+var patternMatchSimpleFunction *gi.Function
+var patternMatchSimpleFunction_Once sync.Once
+
+func patternMatchSimpleFunction_Set() error {
+	var err error
+	patternMatchSimpleFunction_Once.Do(func() {
+		patternMatchSimpleFunction, err = gi.FunctionInvokerNew("GLib", "pattern_match_simple")
+	})
+	return err
+}
+
+// PatternMatchSimple is a representation of the C type g_pattern_match_simple.
+func PatternMatchSimple(pattern string, string_ string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(pattern)
+	inArgs[1].SetString(string_)
+
+	var ret gi.Argument
+
+	err := patternMatchSimpleFunction_Set()
+	if err == nil {
+		ret = patternMatchSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_pattern_match_string' : parameter 'pspec' of type 'PatternSpec' not supported
 
@@ -2385,9 +2866,62 @@ func RandomSetSeed(seed uint32) error {
 
 // UNSUPPORTED : C value 'g_realloc_n' : parameter 'mem' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_ref_count_compare' : return type 'gboolean' not supported
+var refCountCompareFunction *gi.Function
+var refCountCompareFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_ref_count_dec' : return type 'gboolean' not supported
+func refCountCompareFunction_Set() error {
+	var err error
+	refCountCompareFunction_Once.Do(func() {
+		refCountCompareFunction, err = gi.FunctionInvokerNew("GLib", "ref_count_compare")
+	})
+	return err
+}
+
+// RefCountCompare is a representation of the C type g_ref_count_compare.
+func RefCountCompare(rc int32, val int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(rc)
+	inArgs[1].SetInt32(val)
+
+	var ret gi.Argument
+
+	err := refCountCompareFunction_Set()
+	if err == nil {
+		ret = refCountCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var refCountDecFunction *gi.Function
+var refCountDecFunction_Once sync.Once
+
+func refCountDecFunction_Set() error {
+	var err error
+	refCountDecFunction_Once.Do(func() {
+		refCountDecFunction, err = gi.FunctionInvokerNew("GLib", "ref_count_dec")
+	})
+	return err
+}
+
+// RefCountDec is a representation of the C type g_ref_count_dec.
+func RefCountDec(rc int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(rc)
+
+	var ret gi.Argument
+
+	err := refCountDecFunction_Set()
+	if err == nil {
+		ret = refCountDecFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var refCountIncFunction *gi.Function
 var refCountIncFunction_Once sync.Once
@@ -2576,7 +3110,35 @@ func RefStringRelease(str string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_regex_check_replacement' : parameter 'has_references' of type 'gboolean' not supported
+var regexCheckReplacementFunction *gi.Function
+var regexCheckReplacementFunction_Once sync.Once
+
+func regexCheckReplacementFunction_Set() error {
+	var err error
+	regexCheckReplacementFunction_Once.Do(func() {
+		regexCheckReplacementFunction, err = gi.FunctionInvokerNew("GLib", "regex_check_replacement")
+	})
+	return err
+}
+
+// RegexCheckReplacement is a representation of the C type g_regex_check_replacement.
+func RegexCheckReplacement(replacement string) (bool, bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(replacement)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := regexCheckReplacementFunction_Set()
+	if err == nil {
+		ret = regexCheckReplacementFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Boolean()
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'g_regex_error_quark' : return type 'Quark' not supported
 
@@ -2767,7 +3329,33 @@ func SetPrgname(prgname string) error {
 
 // UNSUPPORTED : C value 'g_snprintf' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_source_remove' : return type 'gboolean' not supported
+var sourceRemoveFunction *gi.Function
+var sourceRemoveFunction_Once sync.Once
+
+func sourceRemoveFunction_Set() error {
+	var err error
+	sourceRemoveFunction_Once.Do(func() {
+		sourceRemoveFunction, err = gi.FunctionInvokerNew("GLib", "source_remove")
+	})
+	return err
+}
+
+// SourceRemove is a representation of the C type g_source_remove.
+func SourceRemove(tag uint32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(tag)
+
+	var ret gi.Argument
+
+	err := sourceRemoveFunction_Set()
+	if err == nil {
+		ret = sourceRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : parameter 'funcs' of type 'SourceFuncs' not supported
 
@@ -2832,7 +3420,33 @@ func SpacedPrimesClosest(num uint32) (uint32, error) {
 
 // UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'working_directory' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_spawn_check_exit_status' : return type 'gboolean' not supported
+var spawnCheckExitStatusFunction *gi.Function
+var spawnCheckExitStatusFunction_Once sync.Once
+
+func spawnCheckExitStatusFunction_Set() error {
+	var err error
+	spawnCheckExitStatusFunction_Once.Do(func() {
+		spawnCheckExitStatusFunction, err = gi.FunctionInvokerNew("GLib", "spawn_check_exit_status")
+	})
+	return err
+}
+
+// SpawnCheckExitStatus is a representation of the C type g_spawn_check_exit_status.
+func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(exitStatus)
+
+	var ret gi.Argument
+
+	err := spawnCheckExitStatusFunction_Set()
+	if err == nil {
+		ret = spawnCheckExitStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_spawn_close_pid' : parameter 'pid' of type 'Pid' not supported
 
@@ -2879,15 +3493,123 @@ func Stpcpy(dest string, src string) (string, error) {
 
 // UNSUPPORTED : C value 'g_str_equal' : parameter 'v1' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_str_has_prefix' : return type 'gboolean' not supported
+var strHasPrefixFunction *gi.Function
+var strHasPrefixFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_str_has_suffix' : return type 'gboolean' not supported
+func strHasPrefixFunction_Set() error {
+	var err error
+	strHasPrefixFunction_Once.Do(func() {
+		strHasPrefixFunction, err = gi.FunctionInvokerNew("GLib", "str_has_prefix")
+	})
+	return err
+}
+
+// StrHasPrefix is a representation of the C type g_str_has_prefix.
+func StrHasPrefix(str string, prefix string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetString(prefix)
+
+	var ret gi.Argument
+
+	err := strHasPrefixFunction_Set()
+	if err == nil {
+		ret = strHasPrefixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var strHasSuffixFunction *gi.Function
+var strHasSuffixFunction_Once sync.Once
+
+func strHasSuffixFunction_Set() error {
+	var err error
+	strHasSuffixFunction_Once.Do(func() {
+		strHasSuffixFunction, err = gi.FunctionInvokerNew("GLib", "str_has_suffix")
+	})
+	return err
+}
+
+// StrHasSuffix is a representation of the C type g_str_has_suffix.
+func StrHasSuffix(str string, suffix string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetString(suffix)
+
+	var ret gi.Argument
+
+	err := strHasSuffixFunction_Set()
+	if err == nil {
+		ret = strHasSuffixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_str_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_str_is_ascii' : return type 'gboolean' not supported
+var strIsAsciiFunction *gi.Function
+var strIsAsciiFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_str_match_string' : parameter 'accept_alternates' of type 'gboolean' not supported
+func strIsAsciiFunction_Set() error {
+	var err error
+	strIsAsciiFunction_Once.Do(func() {
+		strIsAsciiFunction, err = gi.FunctionInvokerNew("GLib", "str_is_ascii")
+	})
+	return err
+}
+
+// StrIsAscii is a representation of the C type g_str_is_ascii.
+func StrIsAscii(str string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	var ret gi.Argument
+
+	err := strIsAsciiFunction_Set()
+	if err == nil {
+		ret = strIsAsciiFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var strMatchStringFunction *gi.Function
+var strMatchStringFunction_Once sync.Once
+
+func strMatchStringFunction_Set() error {
+	var err error
+	strMatchStringFunction_Once.Do(func() {
+		strMatchStringFunction, err = gi.FunctionInvokerNew("GLib", "str_match_string")
+	})
+	return err
+}
+
+// StrMatchString is a representation of the C type g_str_match_string.
+func StrMatchString(searchTerm string, potentialHit string, acceptAlternates bool) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(searchTerm)
+	inArgs[1].SetString(potentialHit)
+	inArgs[2].SetBoolean(acceptAlternates)
+
+	var ret gi.Argument
+
+	err := strMatchStringFunction_Set()
+	if err == nil {
+		ret = strMatchStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var strToAsciiFunction *gi.Function
 var strToAsciiFunction_Once sync.Once
@@ -3673,9 +4395,63 @@ func Strup(string_ string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_strv_contains' : return type 'gboolean' not supported
+var strvContainsFunction *gi.Function
+var strvContainsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_strv_equal' : return type 'gboolean' not supported
+func strvContainsFunction_Set() error {
+	var err error
+	strvContainsFunction_Once.Do(func() {
+		strvContainsFunction, err = gi.FunctionInvokerNew("GLib", "strv_contains")
+	})
+	return err
+}
+
+// StrvContains is a representation of the C type g_strv_contains.
+func StrvContains(strv string, str string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(strv)
+	inArgs[1].SetString(str)
+
+	var ret gi.Argument
+
+	err := strvContainsFunction_Set()
+	if err == nil {
+		ret = strvContainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var strvEqualFunction *gi.Function
+var strvEqualFunction_Once sync.Once
+
+func strvEqualFunction_Set() error {
+	var err error
+	strvEqualFunction_Once.Do(func() {
+		strvEqualFunction, err = gi.FunctionInvokerNew("GLib", "strv_equal")
+	})
+	return err
+}
+
+// StrvEqual is a representation of the C type g_strv_equal.
+func StrvEqual(strv1 string, strv2 string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(strv1)
+	inArgs[1].SetString(strv2)
+
+	var ret gi.Argument
+
+	err := strvEqualFunction_Set()
+	if err == nil {
+		ret = strvEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
 
@@ -3846,7 +4622,31 @@ func TestFail() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_test_failed' : return type 'gboolean' not supported
+var testFailedFunction *gi.Function
+var testFailedFunction_Once sync.Once
+
+func testFailedFunction_Set() error {
+	var err error
+	testFailedFunction_Once.Do(func() {
+		testFailedFunction, err = gi.FunctionInvokerNew("GLib", "test_failed")
+	})
+	return err
+}
+
+// TestFailed is a representation of the C type g_test_failed.
+func TestFailed() (bool, error) {
+
+	var ret gi.Argument
+
+	err := testFailedFunction_Set()
+	if err == nil {
+		ret = testFailedFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_test_get_dir' : parameter 'file_type' of type 'TestFileType' not supported
 
@@ -4051,7 +4851,31 @@ func TestSkip(msg string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_test_subprocess' : return type 'gboolean' not supported
+var testSubprocessFunction *gi.Function
+var testSubprocessFunction_Once sync.Once
+
+func testSubprocessFunction_Set() error {
+	var err error
+	testSubprocessFunction_Once.Do(func() {
+		testSubprocessFunction, err = gi.FunctionInvokerNew("GLib", "test_subprocess")
+	})
+	return err
+}
+
+// TestSubprocess is a representation of the C type g_test_subprocess.
+func TestSubprocess() (bool, error) {
+
+	var ret gi.Argument
+
+	err := testSubprocessFunction_Set()
+	if err == nil {
+		ret = testSubprocessFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var testSummaryFunction *gi.Function
 var testSummaryFunction_Once sync.Once
@@ -4134,9 +4958,57 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 
 // UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'test_trap_flags' of type 'TestTrapFlags' not supported
 
-// UNSUPPORTED : C value 'g_test_trap_has_passed' : return type 'gboolean' not supported
+var testTrapHasPassedFunction *gi.Function
+var testTrapHasPassedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_test_trap_reached_timeout' : return type 'gboolean' not supported
+func testTrapHasPassedFunction_Set() error {
+	var err error
+	testTrapHasPassedFunction_Once.Do(func() {
+		testTrapHasPassedFunction, err = gi.FunctionInvokerNew("GLib", "test_trap_has_passed")
+	})
+	return err
+}
+
+// TestTrapHasPassed is a representation of the C type g_test_trap_has_passed.
+func TestTrapHasPassed() (bool, error) {
+
+	var ret gi.Argument
+
+	err := testTrapHasPassedFunction_Set()
+	if err == nil {
+		ret = testTrapHasPassedFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var testTrapReachedTimeoutFunction *gi.Function
+var testTrapReachedTimeoutFunction_Once sync.Once
+
+func testTrapReachedTimeoutFunction_Set() error {
+	var err error
+	testTrapReachedTimeoutFunction_Once.Do(func() {
+		testTrapReachedTimeoutFunction, err = gi.FunctionInvokerNew("GLib", "test_trap_reached_timeout")
+	})
+	return err
+}
+
+// TestTrapReachedTimeout is a representation of the C type g_test_trap_reached_timeout.
+func TestTrapReachedTimeout() (bool, error) {
+
+	var ret gi.Argument
+
+	err := testTrapReachedTimeoutFunction_Set()
+	if err == nil {
+		ret = testTrapReachedTimeoutFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_test_trap_subprocess' : parameter 'test_flags' of type 'TestSubprocessFlags' not supported
 
@@ -4510,9 +5382,63 @@ func TimeoutSourceNewSeconds(interval uint32) (*Source, error) {
 
 // UNSUPPORTED : C value 'g_unix_fd_source_new' : parameter 'condition' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_unix_open_pipe' : return type 'gboolean' not supported
+var unixOpenPipeFunction *gi.Function
+var unixOpenPipeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unix_set_fd_nonblocking' : parameter 'nonblock' of type 'gboolean' not supported
+func unixOpenPipeFunction_Set() error {
+	var err error
+	unixOpenPipeFunction_Once.Do(func() {
+		unixOpenPipeFunction, err = gi.FunctionInvokerNew("GLib", "unix_open_pipe")
+	})
+	return err
+}
+
+// UnixOpenPipe is a representation of the C type g_unix_open_pipe.
+func UnixOpenPipe(fds int32, flags int32) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(fds)
+	inArgs[1].SetInt32(flags)
+
+	var ret gi.Argument
+
+	err := unixOpenPipeFunction_Set()
+	if err == nil {
+		ret = unixOpenPipeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var unixSetFdNonblockingFunction *gi.Function
+var unixSetFdNonblockingFunction_Once sync.Once
+
+func unixSetFdNonblockingFunction_Set() error {
+	var err error
+	unixSetFdNonblockingFunction_Once.Do(func() {
+		unixSetFdNonblockingFunction, err = gi.FunctionInvokerNew("GLib", "unix_set_fd_nonblocking")
+	})
+	return err
+}
+
+// UnixSetFdNonblocking is a representation of the C type g_unix_set_fd_nonblocking.
+func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(fd)
+	inArgs[1].SetBoolean(nonblock)
+
+	var ret gi.Argument
+
+	err := unixSetFdNonblockingFunction_Set()
+	if err == nil {
+		ret = unixSetFdNonblockingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_signal_add' : parameter 'handler' of type 'SourceFunc' not supported
 
@@ -4550,7 +5476,35 @@ func UnixSignalSourceNew(signum int32) (*Source, error) {
 
 // UNSUPPORTED : C value 'g_unsetenv' : parameter 'variable' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_uri_escape_string' : parameter 'allow_utf8' of type 'gboolean' not supported
+var uriEscapeStringFunction *gi.Function
+var uriEscapeStringFunction_Once sync.Once
+
+func uriEscapeStringFunction_Set() error {
+	var err error
+	uriEscapeStringFunction_Once.Do(func() {
+		uriEscapeStringFunction, err = gi.FunctionInvokerNew("GLib", "uri_escape_string")
+	})
+	return err
+}
+
+// UriEscapeString is a representation of the C type g_uri_escape_string.
+func UriEscapeString(unescaped string, reservedCharsAllowed string, allowUtf8 bool) (string, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(unescaped)
+	inArgs[1].SetString(reservedCharsAllowed)
+	inArgs[2].SetBoolean(allowUtf8)
+
+	var ret gi.Argument
+
+	err := uriEscapeStringFunction_Set()
+	if err == nil {
+		ret = uriEscapeStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var uriListExtractUrisFunction *gi.Function
 var uriListExtractUrisFunction_Once sync.Once
@@ -5208,7 +6162,33 @@ func Utf8ToUtf16(str string, len int64) (uint16, int64, int64, error) {
 
 // UNSUPPORTED : C value 'g_utf8_validate_len' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_uuid_string_is_valid' : return type 'gboolean' not supported
+var uuidStringIsValidFunction *gi.Function
+var uuidStringIsValidFunction_Once sync.Once
+
+func uuidStringIsValidFunction_Set() error {
+	var err error
+	uuidStringIsValidFunction_Once.Do(func() {
+		uuidStringIsValidFunction, err = gi.FunctionInvokerNew("GLib", "uuid_string_is_valid")
+	})
+	return err
+}
+
+// UuidStringIsValid is a representation of the C type g_uuid_string_is_valid.
+func UuidStringIsValid(str string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	var ret gi.Argument
+
+	err := uuidStringIsValidFunction_Set()
+	if err == nil {
+		ret = uuidStringIsValidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var uuidStringRandomFunction *gi.Function
 var uuidStringRandomFunction_Once sync.Once
@@ -5238,9 +6218,61 @@ func UuidStringRandom() (string, error) {
 
 // UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_variant_is_object_path' : return type 'gboolean' not supported
+var variantIsObjectPathFunction *gi.Function
+var variantIsObjectPathFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_is_signature' : return type 'gboolean' not supported
+func variantIsObjectPathFunction_Set() error {
+	var err error
+	variantIsObjectPathFunction_Once.Do(func() {
+		variantIsObjectPathFunction, err = gi.FunctionInvokerNew("GLib", "variant_is_object_path")
+	})
+	return err
+}
+
+// VariantIsObjectPath is a representation of the C type g_variant_is_object_path.
+func VariantIsObjectPath(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := variantIsObjectPathFunction_Set()
+	if err == nil {
+		ret = variantIsObjectPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantIsSignatureFunction *gi.Function
+var variantIsSignatureFunction_Once sync.Once
+
+func variantIsSignatureFunction_Set() error {
+	var err error
+	variantIsSignatureFunction_Once.Do(func() {
+		variantIsSignatureFunction, err = gi.FunctionInvokerNew("GLib", "variant_is_signature")
+	})
+	return err
+}
+
+// VariantIsSignature is a representation of the C type g_variant_is_signature.
+func VariantIsSignature(string_ string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := variantIsSignatureFunction_Set()
+	if err == nil {
+		ret = variantIsSignatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_parse' : parameter 'type' of type 'VariantType' not supported
 
@@ -5280,9 +6312,64 @@ func VariantTypeChecked(arg0 string) (*VariantType, error) {
 
 // UNSUPPORTED : C value 'g_variant_type_string_get_depth_' : return type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_variant_type_string_is_valid' : return type 'gboolean' not supported
+var variantTypeStringIsValidFunction *gi.Function
+var variantTypeStringIsValidFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_type_string_scan' : return type 'gboolean' not supported
+func variantTypeStringIsValidFunction_Set() error {
+	var err error
+	variantTypeStringIsValidFunction_Once.Do(func() {
+		variantTypeStringIsValidFunction, err = gi.FunctionInvokerNew("GLib", "variant_type_string_is_valid")
+	})
+	return err
+}
+
+// VariantTypeStringIsValid is a representation of the C type g_variant_type_string_is_valid.
+func VariantTypeStringIsValid(typeString string) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(typeString)
+
+	var ret gi.Argument
+
+	err := variantTypeStringIsValidFunction_Set()
+	if err == nil {
+		ret = variantTypeStringIsValidFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var variantTypeStringScanFunction *gi.Function
+var variantTypeStringScanFunction_Once sync.Once
+
+func variantTypeStringScanFunction_Set() error {
+	var err error
+	variantTypeStringScanFunction_Once.Do(func() {
+		variantTypeStringScanFunction, err = gi.FunctionInvokerNew("GLib", "variant_type_string_scan")
+	})
+	return err
+}
+
+// VariantTypeStringScan is a representation of the C type g_variant_type_string_scan.
+func VariantTypeStringScan(string_ string, limit string) (bool, string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetString(limit)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := variantTypeStringScanFunction_Set()
+	if err == nil {
+		ret = variantTypeStringScanFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'g_vasprintf' : parameter 'args' of type 'va_list' not supported
 
