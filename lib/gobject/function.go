@@ -459,3 +459,25 @@ func TypeInit() error {
 // UNSUPPORTED : C value 'g_value_type_compatible' : parameter 'src_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_value_type_transformable' : parameter 'src_type' of type 'GType' not supported
+
+var badFunction *gi.Function
+var badFunction_Once sync.Once
+
+func badFunction_Set() error {
+	var err error
+	badFunction_Once.Do(func() {
+		badFunction, err = gi.FunctionInvokerNew("GObject", "bad")
+	})
+	return err
+}
+
+// Bad is a representation of the C type g_bad.
+func Bad() error {
+
+	err := badFunction_Set()
+	if err == nil {
+		badFunction.Invoke(nil, nil)
+	}
+
+	return err
+}
