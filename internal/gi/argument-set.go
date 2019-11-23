@@ -40,6 +40,14 @@ func (a *Argument) SetUint64(value uint64) {
 	(*(*uint64)(unsafe.Pointer(a))) = value
 }
 
+func (a *Argument) SetFloat32(value float32) {
+	(*(*float32)(unsafe.Pointer(a))) = value
+}
+
+func (a *Argument) SetFloat64(value float64) {
+	(*(*float64)(unsafe.Pointer(a))) = value
+}
+
 func (a *Argument) SetBoolean(value bool) {
 	var cValue C.gboolean = C.FALSE
 	if value {

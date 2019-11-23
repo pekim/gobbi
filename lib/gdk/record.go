@@ -264,14 +264,14 @@ type EventButton struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 	SendEvent int8
 	Time      uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
+	X         float64
+	Y         float64
+	Axes      float64
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 	Button uint32
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
+	XRoot float64
+	YRoot float64
 }
 
 var eventConfigureStruct *gi.Struct
@@ -313,11 +313,11 @@ type EventCrossing struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 	SendEvent int8
 	// UNSUPPORTED : C value 'subwindow' : no Go type for 'Window'
-	Time uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
+	Time  uint32
+	X     float64
+	Y     float64
+	XRoot float64
+	YRoot float64
 	// UNSUPPORTED : C value 'mode' : no Go type for 'CrossingMode'
 	// UNSUPPORTED : C value 'detail' : no Go type for 'NotifyType'
 	Focus bool
@@ -450,14 +450,14 @@ type EventMotion struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 	SendEvent int8
 	Time      uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
+	X         float64
+	Y         float64
+	Axes      float64
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 	IsHint int16
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
+	XRoot float64
+	YRoot float64
 }
 
 var eventOwnerChangeStruct *gi.Struct
@@ -503,7 +503,7 @@ type EventPadAxis struct {
 	Group     uint32
 	Index     uint32
 	Mode      uint32
-	// UNSUPPORTED : C value 'value' : no Go type for 'gdouble'
+	Value     float64
 }
 
 var eventPadButtonStruct *gi.Struct
@@ -607,15 +607,15 @@ type EventScroll struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 	SendEvent int8
 	Time      uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
+	X         float64
+	Y         float64
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 	// UNSUPPORTED : C value 'direction' : no Go type for 'ScrollDirection'
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'delta_x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'delta_y' : no Go type for 'gdouble'
+	XRoot  float64
+	YRoot  float64
+	DeltaX float64
+	DeltaY float64
 	IsStop uint32
 }
 
@@ -694,15 +694,15 @@ type EventTouch struct {
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
 	SendEvent int8
 	Time      uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'axes' : no Go type for 'gdouble'
+	X         float64
+	Y         float64
+	Axes      float64
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 	Sequence         *EventSequence
 	EmulatingPointer bool
 	// UNSUPPORTED : C value 'device' : no Go type for 'Device'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
+	XRoot float64
+	YRoot float64
 }
 
 var eventTouchpadPinchStruct *gi.Struct
@@ -720,18 +720,18 @@ type EventTouchpadPinch struct {
 	native uintptr
 	// UNSUPPORTED : C value 'type' : no Go type for 'EventType'
 	// UNSUPPORTED : C value 'window' : no Go type for 'Window'
-	SendEvent int8
-	Phase     int8
-	NFingers  int8
-	Time      uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'dx' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'dy' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'angle_delta' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'scale' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
+	SendEvent  int8
+	Phase      int8
+	NFingers   int8
+	Time       uint32
+	X          float64
+	Y          float64
+	Dx         float64
+	Dy         float64
+	AngleDelta float64
+	Scale      float64
+	XRoot      float64
+	YRoot      float64
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 }
 
@@ -754,12 +754,12 @@ type EventTouchpadSwipe struct {
 	Phase     int8
 	NFingers  int8
 	Time      uint32
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'dx' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'dy' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'x_root' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y_root' : no Go type for 'gdouble'
+	X         float64
+	Y         float64
+	Dx        float64
+	Dy        float64
+	XRoot     float64
+	YRoot     float64
 	// UNSUPPORTED : C value 'state' : no Go type for 'ModifierType'
 }
 
@@ -1120,8 +1120,8 @@ type Geometry struct {
 	BaseHeight int32
 	WidthInc   int32
 	HeightInc  int32
-	// UNSUPPORTED : C value 'min_aspect' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'max_aspect' : no Go type for 'gdouble'
+	MinAspect  float64
+	MaxAspect  float64
 	// UNSUPPORTED : C value 'win_gravity' : no Go type for 'Gravity'
 }
 
@@ -1188,10 +1188,10 @@ func rGBAStruct_Set() error {
 
 type RGBA struct {
 	native uintptr
-	// UNSUPPORTED : C value 'red' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'green' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'blue' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'alpha' : no Go type for 'gdouble'
+	Red    float64
+	Green  float64
+	Blue   float64
+	Alpha  float64
 }
 
 var rGBACopyFunction *gi.Function

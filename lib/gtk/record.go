@@ -3911,11 +3911,79 @@ type Gradient struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'gtk_gradient_new_linear' : parameter 'x0' of type 'gdouble' not supported
+var gradientNewLinearFunction *gi.Function
+var gradientNewLinearFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_gradient_new_radial' : parameter 'x0' of type 'gdouble' not supported
+func gradientNewLinearFunction_Set() error {
+	var err error
+	gradientNewLinearFunction_Once.Do(func() {
+		err = gradientStruct_Set()
+		if err != nil {
+			return
+		}
+		gradientNewLinearFunction, err = gradientStruct.InvokerNew("new_linear")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_gradient_add_color_stop' : parameter 'offset' of type 'gdouble' not supported
+// GradientNewLinear is a representation of the C type gtk_gradient_new_linear.
+func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) (*Gradient, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetFloat64(x0)
+	inArgs[1].SetFloat64(y0)
+	inArgs[2].SetFloat64(x1)
+	inArgs[3].SetFloat64(y1)
+
+	var ret gi.Argument
+
+	err := gradientNewLinearFunction_Set()
+	if err == nil {
+		ret = gradientNewLinearFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Gradient{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var gradientNewRadialFunction *gi.Function
+var gradientNewRadialFunction_Once sync.Once
+
+func gradientNewRadialFunction_Set() error {
+	var err error
+	gradientNewRadialFunction_Once.Do(func() {
+		err = gradientStruct_Set()
+		if err != nil {
+			return
+		}
+		gradientNewRadialFunction, err = gradientStruct.InvokerNew("new_radial")
+	})
+	return err
+}
+
+// GradientNewRadial is a representation of the C type gtk_gradient_new_radial.
+func GradientNewRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 float64, radius1 float64) (*Gradient, error) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetFloat64(x0)
+	inArgs[1].SetFloat64(y0)
+	inArgs[2].SetFloat64(radius0)
+	inArgs[3].SetFloat64(x1)
+	inArgs[4].SetFloat64(y1)
+	inArgs[5].SetFloat64(radius1)
+
+	var ret gi.Argument
+
+	err := gradientNewRadialFunction_Set()
+	if err == nil {
+		ret = gradientNewRadialFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Gradient{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'gtk_gradient_add_color_stop' : parameter 'color' of type 'SymbolicColor' not supported
 
 var gradientRefFunction *gi.Function
 var gradientRefFunction_Once sync.Once
@@ -6616,15 +6684,80 @@ func PaperSizeNew(name string) (*PaperSize, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_new_custom' : parameter 'width' of type 'gdouble' not supported
+// UNSUPPORTED : C value 'gtk_paper_size_new_custom' : parameter 'unit' of type 'Unit' not supported
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_from_gvariant' : parameter 'variant' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'gtk_paper_size_new_from_ipp' : parameter 'width' of type 'gdouble' not supported
+var paperSizeNewFromIppFunction *gi.Function
+var paperSizeNewFromIppFunction_Once sync.Once
+
+func paperSizeNewFromIppFunction_Set() error {
+	var err error
+	paperSizeNewFromIppFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeNewFromIppFunction, err = paperSizeStruct.InvokerNew("new_from_ipp")
+	})
+	return err
+}
+
+// PaperSizeNewFromIpp is a representation of the C type gtk_paper_size_new_from_ipp.
+func PaperSizeNewFromIpp(ippName string, width float64, height float64) (*PaperSize, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(ippName)
+	inArgs[1].SetFloat64(width)
+	inArgs[2].SetFloat64(height)
+
+	var ret gi.Argument
+
+	err := paperSizeNewFromIppFunction_Set()
+	if err == nil {
+		ret = paperSizeNewFromIppFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PaperSize{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_paper_size_new_from_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
 
-// UNSUPPORTED : C value 'gtk_paper_size_new_from_ppd' : parameter 'width' of type 'gdouble' not supported
+var paperSizeNewFromPpdFunction *gi.Function
+var paperSizeNewFromPpdFunction_Once sync.Once
+
+func paperSizeNewFromPpdFunction_Set() error {
+	var err error
+	paperSizeNewFromPpdFunction_Once.Do(func() {
+		err = paperSizeStruct_Set()
+		if err != nil {
+			return
+		}
+		paperSizeNewFromPpdFunction, err = paperSizeStruct.InvokerNew("new_from_ppd")
+	})
+	return err
+}
+
+// PaperSizeNewFromPpd is a representation of the C type gtk_paper_size_new_from_ppd.
+func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, height float64) (*PaperSize, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(ppdName)
+	inArgs[1].SetString(ppdDisplayName)
+	inArgs[2].SetFloat64(width)
+	inArgs[3].SetFloat64(height)
+
+	var ret gi.Argument
+
+	err := paperSizeNewFromPpdFunction_Set()
+	if err == nil {
+		ret = paperSizeNewFromPpdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &PaperSize{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var paperSizeCopyFunction *gi.Function
 var paperSizeCopyFunction_Once sync.Once
@@ -6860,7 +6993,7 @@ func (recv *PaperSize) IsIpp() (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_set_size' : parameter 'width' of type 'gdouble' not supported
+// UNSUPPORTED : C value 'gtk_paper_size_set_size' : parameter 'unit' of type 'Unit' not supported
 
 // UNSUPPORTED : C value 'gtk_paper_size_to_gvariant' : return type 'GLib.Variant' not supported
 
@@ -10784,7 +10917,7 @@ type TextAttributes struct {
 	// UNSUPPORTED : C value 'justification' : no Go type for 'Justification'
 	// UNSUPPORTED : C value 'direction' : no Go type for 'TextDirection'
 	// UNSUPPORTED : C value 'font' : no Go type for 'Pango.FontDescription'
-	// UNSUPPORTED : C value 'font_scale' : no Go type for 'gdouble'
+	FontScale        float64
 	LeftMargin       int32
 	RightMargin      int32
 	Indent           int32

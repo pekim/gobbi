@@ -117,7 +117,35 @@ func OptionsGetBoolean(option string) (bool, bool, error) {
 	return retGo, out0, err
 }
 
-// UNSUPPORTED : C value 'jsc_options_get_double' : parameter 'value' of type 'gdouble' not supported
+var optionsGetDoubleFunction *gi.Function
+var optionsGetDoubleFunction_Once sync.Once
+
+func optionsGetDoubleFunction_Set() error {
+	var err error
+	optionsGetDoubleFunction_Once.Do(func() {
+		optionsGetDoubleFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_double")
+	})
+	return err
+}
+
+// OptionsGetDouble is a representation of the C type jsc_options_get_double.
+func OptionsGetDouble(option string) (bool, float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetDoubleFunction_Set()
+	if err == nil {
+		ret = optionsGetDoubleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Float64()
+
+	return retGo, out0, err
+}
 
 var optionsGetIntFunction *gi.Function
 var optionsGetIntFunction_Once sync.Once
@@ -272,7 +300,34 @@ func OptionsSetBoolean(option string, value bool) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'jsc_options_set_double' : parameter 'value' of type 'gdouble' not supported
+var optionsSetDoubleFunction *gi.Function
+var optionsSetDoubleFunction_Once sync.Once
+
+func optionsSetDoubleFunction_Set() error {
+	var err error
+	optionsSetDoubleFunction_Once.Do(func() {
+		optionsSetDoubleFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_double")
+	})
+	return err
+}
+
+// OptionsSetDouble is a representation of the C type jsc_options_set_double.
+func OptionsSetDouble(option string, value float64) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetFloat64(value)
+
+	var ret gi.Argument
+
+	err := optionsSetDoubleFunction_Set()
+	if err == nil {
+		ret = optionsSetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var optionsSetIntFunction *gi.Function
 var optionsSetIntFunction_Once sync.Once

@@ -41,6 +41,10 @@ var jenGoTypes = map[string]*jen.Statement{
 	"gulong":  jen.Uint64(),
 	"guint64": jen.Uint64(),
 
+	// floats
+	"gfloat":  jen.Float32(),
+	"gdouble": jen.Float64(),
+
 	"gboolean": jen.Bool(),
 	"gsize":    jen.Uintptr(),
 	"utf8":     jen.String(),
@@ -80,9 +84,12 @@ func (t *Type) jenValue(stringValue string) (*jen.Statement, error) {
 		return t.jenValueInt(stringValue)
 	case "guchar", "guint8", "gushort", "guint16", "guint", "guint32", "gulong", "guint64":
 		return t.jenValueUint(stringValue)
+	case "gfloat":
+		value, err := strconv.ParseFloat(stringValue, 32)
+		return jen.Lit(float32(value)), err
 	case "gdouble":
 		value, err := strconv.ParseFloat(stringValue, 64)
-		return jen.Lit(value), err
+		return jen.Lit(float64(value)), err
 	case "gboolean":
 		return jen.Lit(stringValue == "true"), nil
 	case "utf8":
@@ -144,7 +151,7 @@ func (t *Type) argumentValueGetFunctionName() string {
 	panic(fmt.Sprintf("Cannot determine argumentGetFunctionName for %s", t.Name))
 }
 
-func (t *Type) argumentSetFunctionName() string {
+func (t *Type) argumentValueSetFunctionName() string {
 	if setFunctionName, ok := argumentSetFunctionNames[t.Name]; ok {
 		return setFunctionName
 	}
@@ -153,7 +160,7 @@ func (t *Type) argumentSetFunctionName() string {
 		return generator.argumentSetFunctionName()
 	}
 
-	panic(fmt.Sprintf("Cannot determine argumentSetFunctionName for %s", t.Name))
+	panic(fmt.Sprintf("Cannot determine argumentValueSetFunctionName for %s", t.Name))
 }
 
 func (t *Type) createFromArgumentFunction() func(s *jen.Statement, arg *jen.Statement) {

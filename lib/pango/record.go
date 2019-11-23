@@ -81,7 +81,7 @@ func attrFloatStruct_Set() error {
 type AttrFloat struct {
 	native uintptr
 	Attr   *Attribute
-	// UNSUPPORTED : C value 'value' : no Go type for 'gdouble'
+	Value  float64
 }
 
 var attrFontDescStruct *gi.Struct
@@ -1315,7 +1315,34 @@ func (recv *FontDescription) Hash() (uint32, error) {
 
 // UNSUPPORTED : C value 'pango_font_description_merge_static' : parameter 'desc_to_merge' of type 'FontDescription' not supported
 
-// UNSUPPORTED : C value 'pango_font_description_set_absolute_size' : parameter 'size' of type 'gdouble' not supported
+var fontDescriptionSetAbsoluteSizeFunction *gi.Function
+var fontDescriptionSetAbsoluteSizeFunction_Once sync.Once
+
+func fontDescriptionSetAbsoluteSizeFunction_Set() error {
+	var err error
+	fontDescriptionSetAbsoluteSizeFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionSetAbsoluteSizeFunction, err = fontDescriptionStruct.InvokerNew("set_absolute_size")
+	})
+	return err
+}
+
+// SetAbsoluteSize is a representation of the C type pango_font_description_set_absolute_size.
+func (recv *FontDescription) SetAbsoluteSize(size float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(size)
+
+	err := fontDescriptionSetAbsoluteSizeFunction_Set()
+	if err == nil {
+		fontDescriptionSetAbsoluteSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var fontDescriptionSetFamilyFunction *gi.Function
 var fontDescriptionSetFamilyFunction_Once sync.Once
@@ -3472,12 +3499,12 @@ func matrixStruct_Set() error {
 
 type Matrix struct {
 	native uintptr
-	// UNSUPPORTED : C value 'xx' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'xy' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'yx' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'yy' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'x0' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y0' : no Go type for 'gdouble'
+	Xx     float64
+	Xy     float64
+	Yx     float64
+	Yy     float64
+	X0     float64
+	Y0     float64
 }
 
 // UNSUPPORTED : C value 'pango_matrix_concat' : parameter 'new_matrix' of type 'Matrix' not supported
@@ -3542,23 +3569,233 @@ func (recv *Matrix) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_matrix_get_font_scale_factor' : return type 'gdouble' not supported
+var matrixGetFontScaleFactorFunction *gi.Function
+var matrixGetFontScaleFactorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_matrix_get_font_scale_factors' : parameter 'xscale' of type 'gdouble' not supported
+func matrixGetFontScaleFactorFunction_Set() error {
+	var err error
+	matrixGetFontScaleFactorFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixGetFontScaleFactorFunction, err = matrixStruct.InvokerNew("get_font_scale_factor")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'pango_matrix_rotate' : parameter 'degrees' of type 'gdouble' not supported
+// GetFontScaleFactor is a representation of the C type pango_matrix_get_font_scale_factor.
+func (recv *Matrix) GetFontScaleFactor() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'pango_matrix_scale' : parameter 'scale_x' of type 'gdouble' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'pango_matrix_transform_distance' : parameter 'dx' of type 'gdouble' not supported
+	err := matrixGetFontScaleFactorFunction_Set()
+	if err == nil {
+		ret = matrixGetFontScaleFactorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
+
+var matrixGetFontScaleFactorsFunction *gi.Function
+var matrixGetFontScaleFactorsFunction_Once sync.Once
+
+func matrixGetFontScaleFactorsFunction_Set() error {
+	var err error
+	matrixGetFontScaleFactorsFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixGetFontScaleFactorsFunction, err = matrixStruct.InvokerNew("get_font_scale_factors")
+	})
+	return err
+}
+
+// GetFontScaleFactors is a representation of the C type pango_matrix_get_font_scale_factors.
+func (recv *Matrix) GetFontScaleFactors() (float64, float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := matrixGetFontScaleFactorsFunction_Set()
+	if err == nil {
+		matrixGetFontScaleFactorsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Float64()
+	out1 := outArgs[1].Float64()
+
+	return out0, out1, err
+}
+
+var matrixRotateFunction *gi.Function
+var matrixRotateFunction_Once sync.Once
+
+func matrixRotateFunction_Set() error {
+	var err error
+	matrixRotateFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixRotateFunction, err = matrixStruct.InvokerNew("rotate")
+	})
+	return err
+}
+
+// Rotate is a representation of the C type pango_matrix_rotate.
+func (recv *Matrix) Rotate(degrees float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(degrees)
+
+	err := matrixRotateFunction_Set()
+	if err == nil {
+		matrixRotateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var matrixScaleFunction *gi.Function
+var matrixScaleFunction_Once sync.Once
+
+func matrixScaleFunction_Set() error {
+	var err error
+	matrixScaleFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixScaleFunction, err = matrixStruct.InvokerNew("scale")
+	})
+	return err
+}
+
+// Scale is a representation of the C type pango_matrix_scale.
+func (recv *Matrix) Scale(scaleX float64, scaleY float64) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(scaleX)
+	inArgs[2].SetFloat64(scaleY)
+
+	err := matrixScaleFunction_Set()
+	if err == nil {
+		matrixScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var matrixTransformDistanceFunction *gi.Function
+var matrixTransformDistanceFunction_Once sync.Once
+
+func matrixTransformDistanceFunction_Set() error {
+	var err error
+	matrixTransformDistanceFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixTransformDistanceFunction, err = matrixStruct.InvokerNew("transform_distance")
+	})
+	return err
+}
+
+// TransformDistance is a representation of the C type pango_matrix_transform_distance.
+func (recv *Matrix) TransformDistance(dx float64, dy float64) (float64, float64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(dx)
+	inArgs[2].SetFloat64(dy)
+
+	var outArgs [2]gi.Argument
+
+	err := matrixTransformDistanceFunction_Set()
+	if err == nil {
+		matrixTransformDistanceFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Float64()
+	out1 := outArgs[1].Float64()
+
+	return out0, out1, err
+}
 
 // UNSUPPORTED : C value 'pango_matrix_transform_pixel_rectangle' : parameter 'rect' of type 'Rectangle' not supported
 
-// UNSUPPORTED : C value 'pango_matrix_transform_point' : parameter 'x' of type 'gdouble' not supported
+var matrixTransformPointFunction *gi.Function
+var matrixTransformPointFunction_Once sync.Once
+
+func matrixTransformPointFunction_Set() error {
+	var err error
+	matrixTransformPointFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixTransformPointFunction, err = matrixStruct.InvokerNew("transform_point")
+	})
+	return err
+}
+
+// TransformPoint is a representation of the C type pango_matrix_transform_point.
+func (recv *Matrix) TransformPoint(x float64, y float64) (float64, float64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(x)
+	inArgs[2].SetFloat64(y)
+
+	var outArgs [2]gi.Argument
+
+	err := matrixTransformPointFunction_Set()
+	if err == nil {
+		matrixTransformPointFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Float64()
+	out1 := outArgs[1].Float64()
+
+	return out0, out1, err
+}
 
 // UNSUPPORTED : C value 'pango_matrix_transform_rectangle' : parameter 'rect' of type 'Rectangle' not supported
 
-// UNSUPPORTED : C value 'pango_matrix_translate' : parameter 'tx' of type 'gdouble' not supported
+var matrixTranslateFunction *gi.Function
+var matrixTranslateFunction_Once sync.Once
+
+func matrixTranslateFunction_Set() error {
+	var err error
+	matrixTranslateFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixTranslateFunction, err = matrixStruct.InvokerNew("translate")
+	})
+	return err
+}
+
+// Translate is a representation of the C type pango_matrix_translate.
+func (recv *Matrix) Translate(tx float64, ty float64) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(tx)
+	inArgs[2].SetFloat64(ty)
+
+	err := matrixTranslateFunction_Set()
+	if err == nil {
+		matrixTranslateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var rectangleStruct *gi.Struct
 var rectangleStruct_Once sync.Once

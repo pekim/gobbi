@@ -431,7 +431,39 @@ type Range struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'atk_range_new' : parameter 'lower_limit' of type 'gdouble' not supported
+var rangeNewFunction *gi.Function
+var rangeNewFunction_Once sync.Once
+
+func rangeNewFunction_Set() error {
+	var err error
+	rangeNewFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeNewFunction, err = rangeStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// RangeNew is a representation of the C type atk_range_new.
+func RangeNew(lowerLimit float64, upperLimit float64, description string) (*Range, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetFloat64(lowerLimit)
+	inArgs[1].SetFloat64(upperLimit)
+	inArgs[2].SetString(description)
+
+	var ret gi.Argument
+
+	err := rangeNewFunction_Set()
+	if err == nil {
+		ret = rangeNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Range{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var rangeCopyFunction *gi.Function
 var rangeCopyFunction_Once sync.Once
@@ -525,9 +557,69 @@ func (recv *Range) GetDescription() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'atk_range_get_lower_limit' : return type 'gdouble' not supported
+var rangeGetLowerLimitFunction *gi.Function
+var rangeGetLowerLimitFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_range_get_upper_limit' : return type 'gdouble' not supported
+func rangeGetLowerLimitFunction_Set() error {
+	var err error
+	rangeGetLowerLimitFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeGetLowerLimitFunction, err = rangeStruct.InvokerNew("get_lower_limit")
+	})
+	return err
+}
+
+// GetLowerLimit is a representation of the C type atk_range_get_lower_limit.
+func (recv *Range) GetLowerLimit() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := rangeGetLowerLimitFunction_Set()
+	if err == nil {
+		ret = rangeGetLowerLimitFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
+
+var rangeGetUpperLimitFunction *gi.Function
+var rangeGetUpperLimitFunction_Once sync.Once
+
+func rangeGetUpperLimitFunction_Set() error {
+	var err error
+	rangeGetUpperLimitFunction_Once.Do(func() {
+		err = rangeStruct_Set()
+		if err != nil {
+			return
+		}
+		rangeGetUpperLimitFunction, err = rangeStruct.InvokerNew("get_upper_limit")
+	})
+	return err
+}
+
+// GetUpperLimit is a representation of the C type atk_range_get_upper_limit.
+func (recv *Range) GetUpperLimit() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := rangeGetUpperLimitFunction_Set()
+	if err == nil {
+		ret = rangeGetUpperLimitFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var rectangleStruct *gi.Struct
 var rectangleStruct_Once sync.Once

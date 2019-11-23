@@ -72,7 +72,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 	g.
 		Id("inArgs").
 		Index(jen.Lit(index)).
-		Dot(p.Type.argumentSetFunctionName()).
+		Dot(p.Type.argumentValueSetFunctionName()).
 		Call(jen.Id(p.goVarName))
 }
 

@@ -239,7 +239,33 @@ func AttrRiseNew(rise int32) (*Attribute, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_attr_scale_new' : parameter 'scale_factor' of type 'gdouble' not supported
+var attrScaleNewFunction *gi.Function
+var attrScaleNewFunction_Once sync.Once
+
+func attrScaleNewFunction_Set() error {
+	var err error
+	attrScaleNewFunction_Once.Do(func() {
+		attrScaleNewFunction, err = gi.FunctionInvokerNew("Pango", "attr_scale_new")
+	})
+	return err
+}
+
+// AttrScaleNew is a representation of the C type pango_attr_scale_new.
+func AttrScaleNew(scaleFactor float64) (*Attribute, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetFloat64(scaleFactor)
+
+	var ret gi.Argument
+
+	err := attrScaleNewFunction_Set()
+	if err == nil {
+		ret = attrScaleNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Attribute{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'pango_attr_stretch_new' : parameter 'stretch' of type 'Stretch' not supported
 
@@ -776,9 +802,61 @@ func TrimString(str string) (string, error) {
 
 // UNSUPPORTED : C value 'pango_unichar_direction' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_units_from_double' : parameter 'd' of type 'gdouble' not supported
+var unitsFromDoubleFunction *gi.Function
+var unitsFromDoubleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_units_to_double' : return type 'gdouble' not supported
+func unitsFromDoubleFunction_Set() error {
+	var err error
+	unitsFromDoubleFunction_Once.Do(func() {
+		unitsFromDoubleFunction, err = gi.FunctionInvokerNew("Pango", "units_from_double")
+	})
+	return err
+}
+
+// UnitsFromDouble is a representation of the C type pango_units_from_double.
+func UnitsFromDouble(d float64) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetFloat64(d)
+
+	var ret gi.Argument
+
+	err := unitsFromDoubleFunction_Set()
+	if err == nil {
+		ret = unitsFromDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+var unitsToDoubleFunction *gi.Function
+var unitsToDoubleFunction_Once sync.Once
+
+func unitsToDoubleFunction_Set() error {
+	var err error
+	unitsToDoubleFunction_Once.Do(func() {
+		unitsToDoubleFunction, err = gi.FunctionInvokerNew("Pango", "units_to_double")
+	})
+	return err
+}
+
+// UnitsToDouble is a representation of the C type pango_units_to_double.
+func UnitsToDouble(i int32) (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(i)
+
+	var ret gi.Argument
+
+	err := unitsToDoubleFunction_Set()
+	if err == nil {
+		ret = unitsToDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var versionFunction *gi.Function
 var versionFunction_Once sync.Once

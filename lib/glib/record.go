@@ -2551,7 +2551,42 @@ func DateTimeNewFromUnixUtc(t int64) (*DateTime, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_new_local' : parameter 'seconds' of type 'gdouble' not supported
+var dateTimeNewLocalFunction *gi.Function
+var dateTimeNewLocalFunction_Once sync.Once
+
+func dateTimeNewLocalFunction_Set() error {
+	var err error
+	dateTimeNewLocalFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewLocalFunction, err = dateTimeStruct.InvokerNew("new_local")
+	})
+	return err
+}
+
+// DateTimeNewLocal is a representation of the C type g_date_time_new_local.
+func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int32, seconds float64) (*DateTime, error) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetInt32(year)
+	inArgs[1].SetInt32(month)
+	inArgs[2].SetInt32(day)
+	inArgs[3].SetInt32(hour)
+	inArgs[4].SetInt32(minute)
+	inArgs[5].SetFloat64(seconds)
+
+	var ret gi.Argument
+
+	err := dateTimeNewLocalFunction_Set()
+	if err == nil {
+		ret = dateTimeNewLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_date_time_new_now' : parameter 'tz' of type 'TimeZone' not supported
 
@@ -2615,7 +2650,42 @@ func DateTimeNewNowUtc() (*DateTime, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_new_utc' : parameter 'seconds' of type 'gdouble' not supported
+var dateTimeNewUtcFunction *gi.Function
+var dateTimeNewUtcFunction_Once sync.Once
+
+func dateTimeNewUtcFunction_Set() error {
+	var err error
+	dateTimeNewUtcFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewUtcFunction, err = dateTimeStruct.InvokerNew("new_utc")
+	})
+	return err
+}
+
+// DateTimeNewUtc is a representation of the C type g_date_time_new_utc.
+func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32, seconds float64) (*DateTime, error) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetInt32(year)
+	inArgs[1].SetInt32(month)
+	inArgs[2].SetInt32(day)
+	inArgs[3].SetInt32(hour)
+	inArgs[4].SetInt32(minute)
+	inArgs[5].SetFloat64(seconds)
+
+	var ret gi.Argument
+
+	err := dateTimeNewUtcFunction_Set()
+	if err == nil {
+		ret = dateTimeNewUtcFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_date_time_add' : parameter 'timespan' of type 'TimeSpan' not supported
 
@@ -2652,7 +2722,43 @@ func (recv *DateTime) AddDays(days int32) (*DateTime, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_add_full' : parameter 'seconds' of type 'gdouble' not supported
+var dateTimeAddFullFunction *gi.Function
+var dateTimeAddFullFunction_Once sync.Once
+
+func dateTimeAddFullFunction_Set() error {
+	var err error
+	dateTimeAddFullFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeAddFullFunction, err = dateTimeStruct.InvokerNew("add_full")
+	})
+	return err
+}
+
+// AddFull is a representation of the C type g_date_time_add_full.
+func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32, minutes int32, seconds float64) (*DateTime, error) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(years)
+	inArgs[2].SetInt32(months)
+	inArgs[3].SetInt32(days)
+	inArgs[4].SetInt32(hours)
+	inArgs[5].SetInt32(minutes)
+	inArgs[6].SetFloat64(seconds)
+
+	var ret gi.Argument
+
+	err := dateTimeAddFullFunction_Set()
+	if err == nil {
+		ret = dateTimeAddFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var dateTimeAddHoursFunction *gi.Function
 var dateTimeAddHoursFunction_Once sync.Once
@@ -2753,7 +2859,38 @@ func (recv *DateTime) AddMonths(months int32) (*DateTime, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_add_seconds' : parameter 'seconds' of type 'gdouble' not supported
+var dateTimeAddSecondsFunction *gi.Function
+var dateTimeAddSecondsFunction_Once sync.Once
+
+func dateTimeAddSecondsFunction_Set() error {
+	var err error
+	dateTimeAddSecondsFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeAddSecondsFunction, err = dateTimeStruct.InvokerNew("add_seconds")
+	})
+	return err
+}
+
+// AddSeconds is a representation of the C type g_date_time_add_seconds.
+func (recv *DateTime) AddSeconds(seconds float64) (*DateTime, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(seconds)
+
+	var ret gi.Argument
+
+	err := dateTimeAddSecondsFunction_Set()
+	if err == nil {
+		ret = dateTimeAddSecondsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var dateTimeAddWeeksFunction *gi.Function
 var dateTimeAddWeeksFunction_Once sync.Once
@@ -3144,7 +3281,37 @@ func (recv *DateTime) GetSecond() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_get_seconds' : return type 'gdouble' not supported
+var dateTimeGetSecondsFunction *gi.Function
+var dateTimeGetSecondsFunction_Once sync.Once
+
+func dateTimeGetSecondsFunction_Set() error {
+	var err error
+	dateTimeGetSecondsFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeGetSecondsFunction, err = dateTimeStruct.InvokerNew("get_seconds")
+	})
+	return err
+}
+
+// GetSeconds is a representation of the C type g_date_time_get_seconds.
+func (recv *DateTime) GetSeconds() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateTimeGetSecondsFunction_Set()
+	if err == nil {
+		ret = dateTimeGetSecondsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var dateTimeGetTimezoneFunction *gi.Function
 var dateTimeGetTimezoneFunction_Once sync.Once
@@ -4780,7 +4947,39 @@ func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_double' : return type 'gdouble' not supported
+var keyFileGetDoubleFunction *gi.Function
+var keyFileGetDoubleFunction_Once sync.Once
+
+func keyFileGetDoubleFunction_Set() error {
+	var err error
+	keyFileGetDoubleFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetDoubleFunction, err = keyFileStruct.InvokerNew("get_double")
+	})
+	return err
+}
+
+// GetDouble is a representation of the C type g_key_file_get_double.
+func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var ret gi.Argument
+
+	err := keyFileGetDoubleFunction_Set()
+	if err == nil {
+		ret = keyFileGetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_key_file_get_double_list' : parameter 'length' of type 'gsize' not supported
 
@@ -5377,7 +5576,36 @@ func (recv *KeyFile) SetComment(groupName string, key string, comment string) (b
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_double' : parameter 'value' of type 'gdouble' not supported
+var keyFileSetDoubleFunction *gi.Function
+var keyFileSetDoubleFunction_Once sync.Once
+
+func keyFileSetDoubleFunction_Set() error {
+	var err error
+	keyFileSetDoubleFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileSetDoubleFunction, err = keyFileStruct.InvokerNew("set_double")
+	})
+	return err
+}
+
+// SetDouble is a representation of the C type g_key_file_set_double.
+func (recv *KeyFile) SetDouble(groupName string, key string, value float64) error {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+	inArgs[3].SetFloat64(value)
+
+	err := keyFileSetDoubleFunction_Set()
+	if err == nil {
+		keyFileSetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_key_file_set_double_list' : parameter 'list' has no type
 
@@ -9025,9 +9253,71 @@ func (recv *Rand) Copy() (*Rand, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_rand_double' : return type 'gdouble' not supported
+var randDoubleFunction *gi.Function
+var randDoubleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_rand_double_range' : parameter 'begin' of type 'gdouble' not supported
+func randDoubleFunction_Set() error {
+	var err error
+	randDoubleFunction_Once.Do(func() {
+		err = randStruct_Set()
+		if err != nil {
+			return
+		}
+		randDoubleFunction, err = randStruct.InvokerNew("double")
+	})
+	return err
+}
+
+// Double is a representation of the C type g_rand_double.
+func (recv *Rand) Double() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := randDoubleFunction_Set()
+	if err == nil {
+		ret = randDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
+
+var randDoubleRangeFunction *gi.Function
+var randDoubleRangeFunction_Once sync.Once
+
+func randDoubleRangeFunction_Set() error {
+	var err error
+	randDoubleRangeFunction_Once.Do(func() {
+		err = randStruct_Set()
+		if err != nil {
+			return
+		}
+		randDoubleRangeFunction, err = randStruct.InvokerNew("double_range")
+	})
+	return err
+}
+
+// DoubleRange is a representation of the C type g_rand_double_range.
+func (recv *Rand) DoubleRange(begin float64, end float64) (float64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(begin)
+	inArgs[2].SetFloat64(end)
+
+	var ret gi.Argument
+
+	err := randDoubleRangeFunction_Set()
+	if err == nil {
+		ret = randDoubleRangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var randFreeFunction *gi.Function
 var randFreeFunction_Once sync.Once
@@ -12853,7 +13143,38 @@ func (recv *Timer) Destroy() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_timer_elapsed' : return type 'gdouble' not supported
+var timerElapsedFunction *gi.Function
+var timerElapsedFunction_Once sync.Once
+
+func timerElapsedFunction_Set() error {
+	var err error
+	timerElapsedFunction_Once.Do(func() {
+		err = timerStruct_Set()
+		if err != nil {
+			return
+		}
+		timerElapsedFunction, err = timerStruct.InvokerNew("elapsed")
+	})
+	return err
+}
+
+// Elapsed is a representation of the C type g_timer_elapsed.
+func (recv *Timer) Elapsed(microseconds uint64) (float64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(microseconds)
+
+	var ret gi.Argument
+
+	err := timerElapsedFunction_Set()
+	if err == nil {
+		ret = timerElapsedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var timerIsActiveFunction *gi.Function
 var timerIsActiveFunction_Once sync.Once
@@ -13261,7 +13582,37 @@ func VariantNewByte(value uint8) (*Variant, error) {
 
 // UNSUPPORTED : C value 'g_variant_new_dict_entry' : parameter 'key' of type 'Variant' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_double' : parameter 'value' of type 'gdouble' not supported
+var variantNewDoubleFunction *gi.Function
+var variantNewDoubleFunction_Once sync.Once
+
+func variantNewDoubleFunction_Set() error {
+	var err error
+	variantNewDoubleFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewDoubleFunction, err = variantStruct.InvokerNew("new_double")
+	})
+	return err
+}
+
+// VariantNewDouble is a representation of the C type g_variant_new_double.
+func VariantNewDouble(value float64) (*Variant, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetFloat64(value)
+
+	var ret gi.Argument
+
+	err := variantNewDoubleFunction_Set()
+	if err == nil {
+		ret = variantNewDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_new_fixed_array' : parameter 'element_type' of type 'VariantType' not supported
 
@@ -13855,7 +14206,37 @@ func (recv *Variant) GetDataAsBytes() (*Bytes, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_get_double' : return type 'gdouble' not supported
+var variantGetDoubleFunction *gi.Function
+var variantGetDoubleFunction_Once sync.Once
+
+func variantGetDoubleFunction_Set() error {
+	var err error
+	variantGetDoubleFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetDoubleFunction, err = variantStruct.InvokerNew("get_double")
+	})
+	return err
+}
+
+// GetDouble is a representation of the C type g_variant_get_double.
+func (recv *Variant) GetDouble() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantGetDoubleFunction_Set()
+	if err == nil {
+		ret = variantGetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_get_fixed_array' : parameter 'n_elements' of type 'gsize' not supported
 

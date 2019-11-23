@@ -170,10 +170,10 @@ func rectangleStruct_Set() error {
 
 type Rectangle struct {
 	native uintptr
-	// UNSUPPORTED : C value 'x' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'y' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'width' : no Go type for 'gdouble'
-	// UNSUPPORTED : C value 'height' : no Go type for 'gdouble'
+	X      float64
+	Y      float64
+	Width  float64
+	Height float64
 }
 
 var rectangleIntStruct *gi.Struct

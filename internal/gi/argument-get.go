@@ -40,6 +40,14 @@ func (a Argument) Uint64() uint64 {
 	return (uint64)(*(*C.guint)(unsafe.Pointer(&a)))
 }
 
+func (a Argument) Float32() float32 {
+	return (float32)(*(*C.guint)(unsafe.Pointer(&a)))
+}
+
+func (a Argument) Float64() float64 {
+	return (float64)(*(*C.guint)(unsafe.Pointer(&a)))
+}
+
 func (a Argument) Boolean() bool {
 	value := *(*C.gboolean)(unsafe.Pointer(&a))
 	return value == C.TRUE

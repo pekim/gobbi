@@ -37,9 +37,66 @@ func AsciiDigitValue(c int8) (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_ascii_dtostr' : parameter 'd' of type 'gdouble' not supported
+var asciiDtostrFunction *gi.Function
+var asciiDtostrFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_ascii_formatd' : parameter 'd' of type 'gdouble' not supported
+func asciiDtostrFunction_Set() error {
+	var err error
+	asciiDtostrFunction_Once.Do(func() {
+		asciiDtostrFunction, err = gi.FunctionInvokerNew("GLib", "ascii_dtostr")
+	})
+	return err
+}
+
+// AsciiDtostr is a representation of the C type g_ascii_dtostr.
+func AsciiDtostr(buffer string, bufLen int32, d float64) (string, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(buffer)
+	inArgs[1].SetInt32(bufLen)
+	inArgs[2].SetFloat64(d)
+
+	var ret gi.Argument
+
+	err := asciiDtostrFunction_Set()
+	if err == nil {
+		ret = asciiDtostrFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var asciiFormatdFunction *gi.Function
+var asciiFormatdFunction_Once sync.Once
+
+func asciiFormatdFunction_Set() error {
+	var err error
+	asciiFormatdFunction_Once.Do(func() {
+		asciiFormatdFunction, err = gi.FunctionInvokerNew("GLib", "ascii_formatd")
+	})
+	return err
+}
+
+// AsciiFormatd is a representation of the C type g_ascii_formatd.
+func AsciiFormatd(buffer string, bufLen int32, format string, d float64) (string, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(buffer)
+	inArgs[1].SetInt32(bufLen)
+	inArgs[2].SetString(format)
+	inArgs[3].SetFloat64(d)
+
+	var ret gi.Argument
+
+	err := asciiFormatdFunction_Set()
+	if err == nil {
+		ret = asciiFormatdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var asciiStrcasecmpFunction *gi.Function
 var asciiStrcasecmpFunction_Once sync.Once
@@ -167,7 +224,35 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 
 // UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 'n' of type 'gsize' not supported
 
-// UNSUPPORTED : C value 'g_ascii_strtod' : return type 'gdouble' not supported
+var asciiStrtodFunction *gi.Function
+var asciiStrtodFunction_Once sync.Once
+
+func asciiStrtodFunction_Set() error {
+	var err error
+	asciiStrtodFunction_Once.Do(func() {
+		asciiStrtodFunction, err = gi.FunctionInvokerNew("GLib", "ascii_strtod")
+	})
+	return err
+}
+
+// AsciiStrtod is a representation of the C type g_ascii_strtod.
+func AsciiStrtod(nptr string) (float64, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(nptr)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := asciiStrtodFunction_Set()
+	if err == nil {
+		ret = asciiStrtodFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Float64()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0, err
+}
 
 var asciiStrtollFunction *gi.Function
 var asciiStrtollFunction_Once sync.Once
@@ -2765,9 +2850,60 @@ func PatternMatchSimple(pattern string, string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_quark_try_string' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_random_double' : return type 'gdouble' not supported
+var randomDoubleFunction *gi.Function
+var randomDoubleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_random_double_range' : parameter 'begin' of type 'gdouble' not supported
+func randomDoubleFunction_Set() error {
+	var err error
+	randomDoubleFunction_Once.Do(func() {
+		randomDoubleFunction, err = gi.FunctionInvokerNew("GLib", "random_double")
+	})
+	return err
+}
+
+// RandomDouble is a representation of the C type g_random_double.
+func RandomDouble() (float64, error) {
+
+	var ret gi.Argument
+
+	err := randomDoubleFunction_Set()
+	if err == nil {
+		ret = randomDoubleFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
+
+var randomDoubleRangeFunction *gi.Function
+var randomDoubleRangeFunction_Once sync.Once
+
+func randomDoubleRangeFunction_Set() error {
+	var err error
+	randomDoubleRangeFunction_Once.Do(func() {
+		randomDoubleRangeFunction, err = gi.FunctionInvokerNew("GLib", "random_double_range")
+	})
+	return err
+}
+
+// RandomDoubleRange is a representation of the C type g_random_double_range.
+func RandomDoubleRange(begin float64, end float64) (float64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetFloat64(begin)
+	inArgs[1].SetFloat64(end)
+
+	var ret gi.Argument
+
+	err := randomDoubleRangeFunction_Set()
+	if err == nil {
+		ret = randomDoubleRangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var randomIntFunction *gi.Function
 var randomIntFunction_Once sync.Once
@@ -4365,7 +4501,35 @@ func StrstrLen(haystack string, haystackLen int32, needle string) (string, error
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_strtod' : return type 'gdouble' not supported
+var strtodFunction *gi.Function
+var strtodFunction_Once sync.Once
+
+func strtodFunction_Set() error {
+	var err error
+	strtodFunction_Once.Do(func() {
+		strtodFunction, err = gi.FunctionInvokerNew("GLib", "strtod")
+	})
+	return err
+}
+
+// Strtod is a representation of the C type g_strtod.
+func Strtod(nptr string) (float64, string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(nptr)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := strtodFunction_Set()
+	if err == nil {
+		ret = strtodFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Float64()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0, err
+}
 
 var strupFunction *gi.Function
 var strupFunction_Once sync.Once
@@ -4708,19 +4872,70 @@ func TestIncomplete(msg string) error {
 
 // UNSUPPORTED : C value 'g_test_log_type_name' : parameter 'log_type' of type 'TestLogType' not supported
 
-// UNSUPPORTED : C value 'g_test_maximized_result' : parameter 'maximized_quantity' of type 'gdouble' not supported
+// UNSUPPORTED : C value 'g_test_maximized_result' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_test_message' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_test_minimized_result' : parameter 'minimized_quantity' of type 'gdouble' not supported
+// UNSUPPORTED : C value 'g_test_minimized_result' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_test_queue_destroy' : parameter 'destroy_func' of type 'DestroyNotify' not supported
 
 // UNSUPPORTED : C value 'g_test_queue_free' : parameter 'gfree_pointer' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_test_rand_double' : return type 'gdouble' not supported
+var testRandDoubleFunction *gi.Function
+var testRandDoubleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_test_rand_double_range' : parameter 'range_start' of type 'gdouble' not supported
+func testRandDoubleFunction_Set() error {
+	var err error
+	testRandDoubleFunction_Once.Do(func() {
+		testRandDoubleFunction, err = gi.FunctionInvokerNew("GLib", "test_rand_double")
+	})
+	return err
+}
+
+// TestRandDouble is a representation of the C type g_test_rand_double.
+func TestRandDouble() (float64, error) {
+
+	var ret gi.Argument
+
+	err := testRandDoubleFunction_Set()
+	if err == nil {
+		ret = testRandDoubleFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
+
+var testRandDoubleRangeFunction *gi.Function
+var testRandDoubleRangeFunction_Once sync.Once
+
+func testRandDoubleRangeFunction_Set() error {
+	var err error
+	testRandDoubleRangeFunction_Once.Do(func() {
+		testRandDoubleRangeFunction, err = gi.FunctionInvokerNew("GLib", "test_rand_double_range")
+	})
+	return err
+}
+
+// TestRandDoubleRange is a representation of the C type g_test_rand_double_range.
+func TestRandDoubleRange(rangeStart float64, rangeEnd float64) (float64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetFloat64(rangeStart)
+	inArgs[1].SetFloat64(rangeEnd)
+
+	var ret gi.Argument
+
+	err := testRandDoubleRangeFunction_Set()
+	if err == nil {
+		ret = testRandDoubleRangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var testRandIntFunction *gi.Function
 var testRandIntFunction_Once sync.Once
@@ -4901,9 +5116,57 @@ func TestSummary(summary string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_test_timer_elapsed' : return type 'gdouble' not supported
+var testTimerElapsedFunction *gi.Function
+var testTimerElapsedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_test_timer_last' : return type 'gdouble' not supported
+func testTimerElapsedFunction_Set() error {
+	var err error
+	testTimerElapsedFunction_Once.Do(func() {
+		testTimerElapsedFunction, err = gi.FunctionInvokerNew("GLib", "test_timer_elapsed")
+	})
+	return err
+}
+
+// TestTimerElapsed is a representation of the C type g_test_timer_elapsed.
+func TestTimerElapsed() (float64, error) {
+
+	var ret gi.Argument
+
+	err := testTimerElapsedFunction_Set()
+	if err == nil {
+		ret = testTimerElapsedFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
+
+var testTimerLastFunction *gi.Function
+var testTimerLastFunction_Once sync.Once
+
+func testTimerLastFunction_Set() error {
+	var err error
+	testTimerLastFunction_Once.Do(func() {
+		testTimerLastFunction, err = gi.FunctionInvokerNew("GLib", "test_timer_last")
+	})
+	return err
+}
+
+// TestTimerLast is a representation of the C type g_test_timer_last.
+func TestTimerLast() (float64, error) {
+
+	var ret gi.Argument
+
+	err := testTimerLastFunction_Set()
+	if err == nil {
+		ret = testTimerLastFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var testTimerStartFunction *gi.Function
 var testTimerStartFunction_Once sync.Once

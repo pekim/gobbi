@@ -897,7 +897,37 @@ func RcReparseAll() (bool, error) {
 
 // UNSUPPORTED : C value 'gtk_render_slider' : parameter 'context' of type 'StyleContext' not supported
 
-// UNSUPPORTED : C value 'gtk_rgb_to_hsv' : parameter 'r' of type 'gdouble' not supported
+var rgbToHsvFunction *gi.Function
+var rgbToHsvFunction_Once sync.Once
+
+func rgbToHsvFunction_Set() error {
+	var err error
+	rgbToHsvFunction_Once.Do(func() {
+		rgbToHsvFunction, err = gi.FunctionInvokerNew("Gtk", "rgb_to_hsv")
+	})
+	return err
+}
+
+// RgbToHsv is a representation of the C type gtk_rgb_to_hsv.
+func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetFloat64(r)
+	inArgs[1].SetFloat64(g)
+	inArgs[2].SetFloat64(b)
+
+	var outArgs [3]gi.Argument
+
+	err := rgbToHsvFunction_Set()
+	if err == nil {
+		rgbToHsvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Float64()
+	out1 := outArgs[1].Float64()
+	out2 := outArgs[2].Float64()
+
+	return out0, out1, out2, err
+}
 
 // UNSUPPORTED : C value 'gtk_selection_add_target' : parameter 'widget' of type 'Widget' not supported
 

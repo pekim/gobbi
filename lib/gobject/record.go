@@ -1030,7 +1030,37 @@ func (recv *Value) GetChar() (int8, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_value_get_double' : return type 'gdouble' not supported
+var valueGetDoubleFunction *gi.Function
+var valueGetDoubleFunction_Once sync.Once
+
+func valueGetDoubleFunction_Set() error {
+	var err error
+	valueGetDoubleFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetDoubleFunction, err = valueStruct.InvokerNew("get_double")
+	})
+	return err
+}
+
+// GetDouble is a representation of the C type g_value_get_double.
+func (recv *Value) GetDouble() (float64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueGetDoubleFunction_Set()
+	if err == nil {
+		ret = valueGetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float64()
+
+	return retGo, err
+}
 
 var valueGetEnumFunction *gi.Function
 var valueGetEnumFunction_Once sync.Once
@@ -1096,7 +1126,37 @@ func (recv *Value) GetFlags() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_value_get_float' : return type 'gfloat' not supported
+var valueGetFloatFunction *gi.Function
+var valueGetFloatFunction_Once sync.Once
+
+func valueGetFloatFunction_Set() error {
+	var err error
+	valueGetFloatFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetFloatFunction, err = valueStruct.InvokerNew("get_float")
+	})
+	return err
+}
+
+// GetFloat is a representation of the C type g_value_get_float.
+func (recv *Value) GetFloat() (float32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := valueGetFloatFunction_Set()
+	if err == nil {
+		ret = valueGetFloatFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Float32()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_value_get_gtype' : return type 'GType' not supported
 
@@ -1496,7 +1556,34 @@ func (recv *Value) SetChar(vChar int8) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_value_set_double' : parameter 'v_double' of type 'gdouble' not supported
+var valueSetDoubleFunction *gi.Function
+var valueSetDoubleFunction_Once sync.Once
+
+func valueSetDoubleFunction_Set() error {
+	var err error
+	valueSetDoubleFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetDoubleFunction, err = valueStruct.InvokerNew("set_double")
+	})
+	return err
+}
+
+// SetDouble is a representation of the C type g_value_set_double.
+func (recv *Value) SetDouble(vDouble float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(vDouble)
+
+	err := valueSetDoubleFunction_Set()
+	if err == nil {
+		valueSetDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var valueSetEnumFunction *gi.Function
 var valueSetEnumFunction_Once sync.Once
@@ -1556,7 +1643,34 @@ func (recv *Value) SetFlags(vFlags uint32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_value_set_float' : parameter 'v_float' of type 'gfloat' not supported
+var valueSetFloatFunction *gi.Function
+var valueSetFloatFunction_Once sync.Once
+
+func valueSetFloatFunction_Set() error {
+	var err error
+	valueSetFloatFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetFloatFunction, err = valueStruct.InvokerNew("set_float")
+	})
+	return err
+}
+
+// SetFloat is a representation of the C type g_value_set_float.
+func (recv *Value) SetFloat(vFloat float32) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat32(vFloat)
+
+	err := valueSetFloatFunction_Set()
+	if err == nil {
+		valueSetFloatFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_value_set_gtype' : parameter 'v_gtype' of type 'GType' not supported
 

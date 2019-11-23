@@ -103,13 +103,13 @@ import (
 
 // UNSUPPORTED : C value 'g_param_spec_char' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_double' : parameter 'minimum' of type 'gdouble' not supported
+// UNSUPPORTED : C value 'g_param_spec_double' : parameter 'flags' of type 'ParamFlags' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_enum' : parameter 'enum_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_flags' : parameter 'flags_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_float' : parameter 'minimum' of type 'gfloat' not supported
+// UNSUPPORTED : C value 'g_param_spec_float' : parameter 'flags' of type 'ParamFlags' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_gtype' : parameter 'is_a_type' of type 'GType' not supported
 

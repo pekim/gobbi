@@ -21,6 +21,9 @@ var argumentGetFunctionNames = map[string]string{
 	"gulong":  "Uint64",
 	"guint64": "Uint64",
 
+	"gfloat":  "Float32",
+	"gdouble": "Float64",
+
 	"gboolean": "Boolean",
 	"utf8":     "String",
 }
@@ -45,6 +48,9 @@ var argumentSetFunctionNames = map[string]string{
 	"guint32": "SetUint32",
 	"gulong":  "SetUint64",
 	"guint64": "SetUint64",
+
+	"gfloat":  "SetFloat32",
+	"gdouble": "SetFloat64",
 
 	"gboolean": "SetBoolean",
 	"utf8":     "SetString",

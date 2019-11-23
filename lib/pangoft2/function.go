@@ -13,7 +13,7 @@ import (
 
 // UNSUPPORTED : C value 'pango_ft2_font_get_kerning' : parameter 'font' of type 'Pango.Font' not supported
 
-// UNSUPPORTED : C value 'pango_ft2_get_context' : parameter 'dpi_x' of type 'gdouble' not supported
+// UNSUPPORTED : C value 'pango_ft2_get_context' : return type 'Pango.Context' not supported
 
 // UNSUPPORTED : C value 'pango_ft2_get_unknown_glyph' : parameter 'font' of type 'Pango.Font' not supported
 

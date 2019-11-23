@@ -1020,7 +1020,39 @@ type GeolocationPosition struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'webkit_geolocation_position_new' : parameter 'latitude' of type 'gdouble' not supported
+var geolocationPositionNewFunction *gi.Function
+var geolocationPositionNewFunction_Once sync.Once
+
+func geolocationPositionNewFunction_Set() error {
+	var err error
+	geolocationPositionNewFunction_Once.Do(func() {
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionNewFunction, err = geolocationPositionStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// GeolocationPositionNew is a representation of the C type webkit_geolocation_position_new.
+func GeolocationPositionNew(latitude float64, longitude float64, accuracy float64) (*GeolocationPosition, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetFloat64(latitude)
+	inArgs[1].SetFloat64(longitude)
+	inArgs[2].SetFloat64(accuracy)
+
+	var ret gi.Argument
+
+	err := geolocationPositionNewFunction_Set()
+	if err == nil {
+		ret = geolocationPositionNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &GeolocationPosition{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var geolocationPositionCopyFunction *gi.Function
 var geolocationPositionCopyFunction_Once sync.Once
@@ -1082,13 +1114,121 @@ func (recv *GeolocationPosition) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'webkit_geolocation_position_set_altitude' : parameter 'altitude' of type 'gdouble' not supported
+var geolocationPositionSetAltitudeFunction *gi.Function
+var geolocationPositionSetAltitudeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_geolocation_position_set_altitude_accuracy' : parameter 'altitude_accuracy' of type 'gdouble' not supported
+func geolocationPositionSetAltitudeFunction_Set() error {
+	var err error
+	geolocationPositionSetAltitudeFunction_Once.Do(func() {
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionSetAltitudeFunction, err = geolocationPositionStruct.InvokerNew("set_altitude")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_geolocation_position_set_heading' : parameter 'heading' of type 'gdouble' not supported
+// SetAltitude is a representation of the C type webkit_geolocation_position_set_altitude.
+func (recv *GeolocationPosition) SetAltitude(altitude float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(altitude)
 
-// UNSUPPORTED : C value 'webkit_geolocation_position_set_speed' : parameter 'speed' of type 'gdouble' not supported
+	err := geolocationPositionSetAltitudeFunction_Set()
+	if err == nil {
+		geolocationPositionSetAltitudeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var geolocationPositionSetAltitudeAccuracyFunction *gi.Function
+var geolocationPositionSetAltitudeAccuracyFunction_Once sync.Once
+
+func geolocationPositionSetAltitudeAccuracyFunction_Set() error {
+	var err error
+	geolocationPositionSetAltitudeAccuracyFunction_Once.Do(func() {
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionSetAltitudeAccuracyFunction, err = geolocationPositionStruct.InvokerNew("set_altitude_accuracy")
+	})
+	return err
+}
+
+// SetAltitudeAccuracy is a representation of the C type webkit_geolocation_position_set_altitude_accuracy.
+func (recv *GeolocationPosition) SetAltitudeAccuracy(altitudeAccuracy float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(altitudeAccuracy)
+
+	err := geolocationPositionSetAltitudeAccuracyFunction_Set()
+	if err == nil {
+		geolocationPositionSetAltitudeAccuracyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var geolocationPositionSetHeadingFunction *gi.Function
+var geolocationPositionSetHeadingFunction_Once sync.Once
+
+func geolocationPositionSetHeadingFunction_Set() error {
+	var err error
+	geolocationPositionSetHeadingFunction_Once.Do(func() {
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionSetHeadingFunction, err = geolocationPositionStruct.InvokerNew("set_heading")
+	})
+	return err
+}
+
+// SetHeading is a representation of the C type webkit_geolocation_position_set_heading.
+func (recv *GeolocationPosition) SetHeading(heading float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(heading)
+
+	err := geolocationPositionSetHeadingFunction_Set()
+	if err == nil {
+		geolocationPositionSetHeadingFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var geolocationPositionSetSpeedFunction *gi.Function
+var geolocationPositionSetSpeedFunction_Once sync.Once
+
+func geolocationPositionSetSpeedFunction_Set() error {
+	var err error
+	geolocationPositionSetSpeedFunction_Once.Do(func() {
+		err = geolocationPositionStruct_Set()
+		if err != nil {
+			return
+		}
+		geolocationPositionSetSpeedFunction, err = geolocationPositionStruct.InvokerNew("set_speed")
+	})
+	return err
+}
+
+// SetSpeed is a representation of the C type webkit_geolocation_position_set_speed.
+func (recv *GeolocationPosition) SetSpeed(speed float64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetFloat64(speed)
+
+	err := geolocationPositionSetSpeedFunction_Set()
+	if err == nil {
+		geolocationPositionSetSpeedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var geolocationPositionSetTimestampFunction *gi.Function
 var geolocationPositionSetTimestampFunction_Once sync.Once
