@@ -30,7 +30,9 @@ func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
 	)
 
 	if invoker == nil {
-		return nil, fmt.Errorf("Failed to find function '%s' in namespace '%s'", funcName, namespace)
+		err := fmt.Errorf("Failed to find function '%s' in namespace '%s'", funcName, namespace)
+		handleError(err)
+		return nil, err
 	}
 
 	return &Function{
