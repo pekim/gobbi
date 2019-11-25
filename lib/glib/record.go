@@ -1794,7 +1794,7 @@ func DateNew() (*Date, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_new_dmy' : parameter 'day' of type 'DateDay' not supported
+// UNSUPPORTED : C value 'g_date_new_dmy' : parameter 'month' of type 'DateMonth' not supported
 
 var dateNewJulianFunction *gi.Function
 var dateNewJulianFunction_Once sync.Once
@@ -2244,9 +2244,36 @@ func (recv *Date) IsLastOfMonth() (bool, error) {
 
 // UNSUPPORTED : C value 'g_date_order' : parameter 'date2' of type 'Date' not supported
 
-// UNSUPPORTED : C value 'g_date_set_day' : parameter 'day' of type 'DateDay' not supported
+var dateSetDayFunction *gi.Function
+var dateSetDayFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_set_dmy' : parameter 'day' of type 'DateDay' not supported
+func dateSetDayFunction_Set() error {
+	var err error
+	dateSetDayFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateSetDayFunction, err = dateStruct.InvokerNew("set_day")
+	})
+	return err
+}
+
+// SetDay is a representation of the C type g_date_set_day.
+func (recv *Date) SetDay(day DateDay) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint8(uint8(day))
+
+	err := dateSetDayFunction_Set()
+	if err == nil {
+		dateSetDayFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+// UNSUPPORTED : C value 'g_date_set_dmy' : parameter 'month' of type 'DateMonth' not supported
 
 var dateSetJulianFunction *gi.Function
 var dateSetJulianFunction_Once sync.Once
@@ -2308,7 +2335,34 @@ func (recv *Date) SetParse(str string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_date_set_time' : parameter 'time_' of type 'Time' not supported
+var dateSetTimeFunction *gi.Function
+var dateSetTimeFunction_Once sync.Once
+
+func dateSetTimeFunction_Set() error {
+	var err error
+	dateSetTimeFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateSetTimeFunction, err = dateStruct.InvokerNew("set_time")
+	})
+	return err
+}
+
+// SetTime is a representation of the C type g_date_set_time.
+func (recv *Date) SetTime(time Time) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(int32(time))
+
+	err := dateSetTimeFunction_Set()
+	if err == nil {
+		dateSetTimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var dateSetTimeTFunction *gi.Function
 var dateSetTimeTFunction_Once sync.Once
@@ -2341,7 +2395,34 @@ func (recv *Date) SetTimeT(timet int64) error {
 
 // UNSUPPORTED : C value 'g_date_set_time_val' : parameter 'timeval' of type 'TimeVal' not supported
 
-// UNSUPPORTED : C value 'g_date_set_year' : parameter 'year' of type 'DateYear' not supported
+var dateSetYearFunction *gi.Function
+var dateSetYearFunction_Once sync.Once
+
+func dateSetYearFunction_Set() error {
+	var err error
+	dateSetYearFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateSetYearFunction, err = dateStruct.InvokerNew("set_year")
+	})
+	return err
+}
+
+// SetYear is a representation of the C type g_date_set_year.
+func (recv *Date) SetYear(year DateYear) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint16(uint16(year))
+
+	err := dateSetYearFunction_Set()
+	if err == nil {
+		dateSetYearFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var dateSubtractDaysFunction *gi.Function
 var dateSubtractDaysFunction_Once sync.Once
@@ -2687,7 +2768,38 @@ func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_add' : parameter 'timespan' of type 'TimeSpan' not supported
+var dateTimeAddFunction *gi.Function
+var dateTimeAddFunction_Once sync.Once
+
+func dateTimeAddFunction_Set() error {
+	var err error
+	dateTimeAddFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeAddFunction, err = dateTimeStruct.InvokerNew("add")
+	})
+	return err
+}
+
+// Add is a representation of the C type g_date_time_add.
+func (recv *DateTime) Add(timespan TimeSpan) (*DateTime, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt64(int64(timespan))
+
+	var ret gi.Argument
+
+	err := dateTimeAddFunction_Set()
+	if err == nil {
+		ret = dateTimeAddFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var dateTimeAddDaysFunction *gi.Function
 var dateTimeAddDaysFunction_Once sync.Once
@@ -3809,11 +3921,43 @@ type Error struct {
 	Message string
 }
 
-// UNSUPPORTED : C value 'g_error_new' : parameter 'domain' of type 'Quark' not supported
+// UNSUPPORTED : C value 'g_error_new' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_error_new_literal' : parameter 'domain' of type 'Quark' not supported
+var errorNewLiteralFunction *gi.Function
+var errorNewLiteralFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_error_new_valist' : parameter 'domain' of type 'Quark' not supported
+func errorNewLiteralFunction_Set() error {
+	var err error
+	errorNewLiteralFunction_Once.Do(func() {
+		err = errorStruct_Set()
+		if err != nil {
+			return
+		}
+		errorNewLiteralFunction, err = errorStruct.InvokerNew("new_literal")
+	})
+	return err
+}
+
+// ErrorNewLiteral is a representation of the C type g_error_new_literal.
+func ErrorNewLiteral(domain Quark, code int32, message string) (*Error, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint32(uint32(domain))
+	inArgs[1].SetInt32(code)
+	inArgs[2].SetString(message)
+
+	var ret gi.Argument
+
+	err := errorNewLiteralFunction_Set()
+	if err == nil {
+		ret = errorNewLiteralFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Error{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_error_new_valist' : parameter 'args' of type 'va_list' not supported
 
 var errorCopyFunction *gi.Function
 var errorCopyFunction_Once sync.Once
@@ -3875,7 +4019,39 @@ func (recv *Error) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_error_matches' : parameter 'domain' of type 'Quark' not supported
+var errorMatchesFunction *gi.Function
+var errorMatchesFunction_Once sync.Once
+
+func errorMatchesFunction_Set() error {
+	var err error
+	errorMatchesFunction_Once.Do(func() {
+		err = errorStruct_Set()
+		if err != nil {
+			return
+		}
+		errorMatchesFunction, err = errorStruct.InvokerNew("matches")
+	})
+	return err
+}
+
+// Matches is a representation of the C type g_error_matches.
+func (recv *Error) Matches(domain Quark, code int32) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(uint32(domain))
+	inArgs[2].SetInt32(code)
+
+	var ret gi.Argument
+
+	err := errorMatchesFunction_Set()
+	if err == nil {
+		ret = errorMatchesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var hashTableStruct *gi.Struct
 var hashTableStruct_Once sync.Once

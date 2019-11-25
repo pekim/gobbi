@@ -151,12 +151,22 @@ func (t *Type) argumentValueGetFunctionName() string {
 	panic(fmt.Sprintf("Cannot determine argumentGetFunctionName for %s", t.Name))
 }
 
+func (t *Type) resolvedType() *Type {
+	alias, isAlias := t.namespace.Aliases.findByName(t.Name)
+	if isAlias {
+		return alias.Type
+	}
+	return t
+}
+
 func (t *Type) argumentValueSetFunctionName() string {
-	if setFunctionName, ok := argumentSetFunctionNames[t.Name]; ok {
+	name := t.resolvedType().Name
+
+	if setFunctionName, ok := argumentSetFunctionNames[name]; ok {
 		return setFunctionName
 	}
 
-	if generator, ok := t.namespace.outParameterGeneratorByName(t.Name); ok {
+	if generator, ok := t.namespace.outParameterGeneratorByName(name); ok {
 		return generator.argumentSetFunctionName()
 	}
 
@@ -169,4 +179,9 @@ func (t *Type) createFromArgumentFunction() func(s *jen.Statement, arg *jen.Stat
 	}
 
 	return nil
+}
+
+func (t *Type) isAlias() bool {
+	_, found := t.namespace.Aliases.findByName(t.Name)
+	return found
 }

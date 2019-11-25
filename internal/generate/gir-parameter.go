@@ -69,11 +69,21 @@ func (p *Parameter) generateInDeclaration(g *jen.Group) {
 }
 
 func (p Parameter) generateInArg(g *jen.Group, index int) {
+	goVar := jen.Id(p.goVarName)
+
+	if p.Type.isAlias() {
+		typ := p.Type.resolvedType()
+
+		goVar = jen.
+			Add(jenGoTypes[typ.Name]).
+			Parens(goVar)
+	}
+
 	g.
 		Id("inArgs").
 		Index(jen.Lit(index)).
 		Dot(p.Type.argumentValueSetFunctionName()).
-		Call(jen.Id(p.goVarName))
+		Call(goVar)
 }
 
 func (p Parameter) generateOutValue(g *jen.Group, varNamePrefix string, index int) {

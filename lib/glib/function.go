@@ -1220,11 +1220,37 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 // UNSUPPORTED : C value 'g_checksum_type_get_length' : parameter 'checksum_type' of type 'ChecksumType' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_add' : parameter 'pid' of type 'Pid' not supported
+// UNSUPPORTED : C value 'g_child_watch_add' : parameter 'function' of type 'ChildWatchFunc' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_add_full' : parameter 'pid' of type 'Pid' not supported
+// UNSUPPORTED : C value 'g_child_watch_add_full' : parameter 'function' of type 'ChildWatchFunc' not supported
 
-// UNSUPPORTED : C value 'g_child_watch_source_new' : parameter 'pid' of type 'Pid' not supported
+var childWatchSourceNewFunction *gi.Function
+var childWatchSourceNewFunction_Once sync.Once
+
+func childWatchSourceNewFunction_Set() error {
+	var err error
+	childWatchSourceNewFunction_Once.Do(func() {
+		childWatchSourceNewFunction, err = gi.FunctionInvokerNew("GLib", "child_watch_source_new")
+	})
+	return err
+}
+
+// ChildWatchSourceNew is a representation of the C type g_child_watch_source_new.
+func ChildWatchSourceNew(pid Pid) (*Source, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(pid))
+
+	var ret gi.Argument
+
+	err := childWatchSourceNewFunction_Set()
+	if err == nil {
+		ret = childWatchSourceNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var clearErrorFunction *gi.Function
 var clearErrorFunction_Once sync.Once
@@ -1336,11 +1362,89 @@ func Close(fd int32) (bool, error) {
 
 // UNSUPPORTED : C value 'g_date_get_days_in_month' : parameter 'month' of type 'DateMonth' not supported
 
-// UNSUPPORTED : C value 'g_date_get_monday_weeks_in_year' : parameter 'year' of type 'DateYear' not supported
+var dateGetMondayWeeksInYearFunction *gi.Function
+var dateGetMondayWeeksInYearFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_get_sunday_weeks_in_year' : parameter 'year' of type 'DateYear' not supported
+func dateGetMondayWeeksInYearFunction_Set() error {
+	var err error
+	dateGetMondayWeeksInYearFunction_Once.Do(func() {
+		dateGetMondayWeeksInYearFunction, err = gi.FunctionInvokerNew("GLib", "date_get_monday_weeks_in_year")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_date_is_leap_year' : parameter 'year' of type 'DateYear' not supported
+// DateGetMondayWeeksInYear is a representation of the C type g_date_get_monday_weeks_in_year.
+func DateGetMondayWeeksInYear(year DateYear) (uint8, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateGetMondayWeeksInYearFunction_Set()
+	if err == nil {
+		ret = dateGetMondayWeeksInYearFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint8()
+
+	return retGo, err
+}
+
+var dateGetSundayWeeksInYearFunction *gi.Function
+var dateGetSundayWeeksInYearFunction_Once sync.Once
+
+func dateGetSundayWeeksInYearFunction_Set() error {
+	var err error
+	dateGetSundayWeeksInYearFunction_Once.Do(func() {
+		dateGetSundayWeeksInYearFunction, err = gi.FunctionInvokerNew("GLib", "date_get_sunday_weeks_in_year")
+	})
+	return err
+}
+
+// DateGetSundayWeeksInYear is a representation of the C type g_date_get_sunday_weeks_in_year.
+func DateGetSundayWeeksInYear(year DateYear) (uint8, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateGetSundayWeeksInYearFunction_Set()
+	if err == nil {
+		ret = dateGetSundayWeeksInYearFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint8()
+
+	return retGo, err
+}
+
+var dateIsLeapYearFunction *gi.Function
+var dateIsLeapYearFunction_Once sync.Once
+
+func dateIsLeapYearFunction_Set() error {
+	var err error
+	dateIsLeapYearFunction_Once.Do(func() {
+		dateIsLeapYearFunction, err = gi.FunctionInvokerNew("GLib", "date_is_leap_year")
+	})
+	return err
+}
+
+// DateIsLeapYear is a representation of the C type g_date_is_leap_year.
+func DateIsLeapYear(year DateYear) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateIsLeapYearFunction_Set()
+	if err == nil {
+		ret = dateIsLeapYearFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_date_strftime' : parameter 'slen' of type 'gsize' not supported
 
@@ -1350,9 +1454,35 @@ func Close(fd int32) (bool, error) {
 
 // UNSUPPORTED : C value 'g_date_time_hash' : parameter 'datetime' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_day' : parameter 'day' of type 'DateDay' not supported
+var dateValidDayFunction *gi.Function
+var dateValidDayFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_valid_dmy' : parameter 'day' of type 'DateDay' not supported
+func dateValidDayFunction_Set() error {
+	var err error
+	dateValidDayFunction_Once.Do(func() {
+		dateValidDayFunction, err = gi.FunctionInvokerNew("GLib", "date_valid_day")
+	})
+	return err
+}
+
+// DateValidDay is a representation of the C type g_date_valid_day.
+func DateValidDay(day DateDay) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint8(uint8(day))
+
+	var ret gi.Argument
+
+	err := dateValidDayFunction_Set()
+	if err == nil {
+		ret = dateValidDayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_date_valid_dmy' : parameter 'month' of type 'DateMonth' not supported
 
 var dateValidJulianFunction *gi.Function
 var dateValidJulianFunction_Once sync.Once
@@ -1386,7 +1516,33 @@ func DateValidJulian(julianDate uint32) (bool, error) {
 
 // UNSUPPORTED : C value 'g_date_valid_weekday' : parameter 'weekday' of type 'DateWeekday' not supported
 
-// UNSUPPORTED : C value 'g_date_valid_year' : parameter 'year' of type 'DateYear' not supported
+var dateValidYearFunction *gi.Function
+var dateValidYearFunction_Once sync.Once
+
+func dateValidYearFunction_Set() error {
+	var err error
+	dateValidYearFunction_Once.Do(func() {
+		dateValidYearFunction, err = gi.FunctionInvokerNew("GLib", "date_valid_year")
+	})
+	return err
+}
+
+// DateValidYear is a representation of the C type g_date_valid_year.
+func DateValidYear(year DateYear) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint16(uint16(year))
+
+	var ret gi.Argument
+
+	err := dateValidYearFunction_Set()
+	if err == nil {
+		ret = dateValidYearFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var dcgettextFunction *gi.Function
 var dcgettextFunction_Once sync.Once
@@ -2846,7 +3002,33 @@ func PatternMatchSimple(pattern string, string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_quark_from_string' : return type 'Quark' not supported
 
-// UNSUPPORTED : C value 'g_quark_to_string' : parameter 'quark' of type 'Quark' not supported
+var quarkToStringFunction *gi.Function
+var quarkToStringFunction_Once sync.Once
+
+func quarkToStringFunction_Set() error {
+	var err error
+	quarkToStringFunction_Once.Do(func() {
+		quarkToStringFunction, err = gi.FunctionInvokerNew("GLib", "quark_to_string")
+	})
+	return err
+}
+
+// QuarkToString is a representation of the C type g_quark_to_string.
+func QuarkToString(quark Quark) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint32(uint32(quark))
+
+	var ret gi.Argument
+
+	err := quarkToStringFunction_Set()
+	if err == nil {
+		ret = quarkToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_quark_try_string' : return type 'Quark' not supported
 
@@ -3584,7 +3766,29 @@ func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_spawn_close_pid' : parameter 'pid' of type 'Pid' not supported
+var spawnClosePidFunction *gi.Function
+var spawnClosePidFunction_Once sync.Once
+
+func spawnClosePidFunction_Set() error {
+	var err error
+	spawnClosePidFunction_Once.Do(func() {
+		spawnClosePidFunction, err = gi.FunctionInvokerNew("GLib", "spawn_close_pid")
+	})
+	return err
+}
+
+// SpawnClosePid is a representation of the C type g_spawn_close_pid.
+func SpawnClosePid(pid Pid) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(pid))
+
+	err := spawnClosePidFunction_Set()
+	if err == nil {
+		spawnClosePidFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_spawn_command_line_async' : parameter 'command_line' of type 'filename' not supported
 

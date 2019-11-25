@@ -1,6 +1,8 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+)
 
 type Argument struct {
 	TransferOwnership string `xml:"transfer-ownership,attr"`
@@ -49,11 +51,13 @@ func (a Argument) supportedAsOutParameter() bool {
 }
 
 func (a Argument) supportedAsInParameter() bool {
-	if a.Type == nil || a.Type.Name == "" {
+	typ := a.Type.resolvedType()
+
+	if typ == nil || typ.Name == "" {
 		return false
 	}
 
-	if _, ok := argumentSetFunctionNames[a.Type.Name]; ok {
+	if _, ok := argumentSetFunctionNames[typ.Name]; ok {
 		return true
 	}
 
