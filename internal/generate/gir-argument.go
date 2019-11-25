@@ -2,6 +2,7 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
+	"strings"
 )
 
 type Argument struct {
@@ -12,11 +13,19 @@ type Argument struct {
 }
 
 func (a *Argument) generateValue(s *jen.Statement, argVar *jen.Statement) {
+	typ := a.Type.resolvedType()
+
 	argValue := argVar.
-		Dot(a.Type.argumentValueGetFunctionName()).
+		Dot(typ.argumentValueGetFunctionName()).
 		CallFunc(a.transferOwnershipJen)
 
-	createFromArgument := a.Type.createFromArgumentFunction()
+	if a.Type.isAlias() {
+		argValue = jen.
+			Id(a.Type.Name).
+			Parens(argValue)
+	}
+
+	createFromArgument := typ.createFromArgumentFunction()
 
 	if createFromArgument != nil {
 		createFromArgument(s, argValue)
@@ -39,11 +48,19 @@ func (a Argument) supportedAsOutParameter() bool {
 		return true
 	}
 
-	if _, ok := argumentGetFunctionNames[a.Type.Name]; ok {
+	typ := a.Type.resolvedType()
+	if typ != a.Type {
+		// do not yet support pointers here
+		if strings.HasSuffix(a.Type.CType, "*") {
+			return false
+		}
+	}
+
+	if _, ok := argumentGetFunctionNames[typ.Name]; ok {
 		return true
 	}
 
-	if _, ok := a.Type.namespace.outParameterGeneratorByName(a.Type.Name); ok {
+	if _, ok := typ.namespace.outParameterGeneratorByName(typ.Name); ok {
 		return true
 	}
 

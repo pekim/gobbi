@@ -131,15 +131,6 @@ func (n *Namespace) giFile(f *file) {
 }
 
 func (n *Namespace) outParameterGeneratorByName(name string) (outParameterGenerator, bool) {
-	if alias, found := n.Aliases.byName(name); found {
-		if alias.Type.argumentValueGetFunctionName() == "Pointer" {
-			// Only simple alias types are supported for now.
-			return nil, false
-		}
-
-		return alias, true
-	}
-
 	if record, found := n.Records.byName(name); found {
 		return record, true
 	}

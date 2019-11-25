@@ -45,6 +45,7 @@ var jenGoTypes = map[string]*jen.Statement{
 	"gfloat":  jen.Float32(),
 	"gdouble": jen.Float64(),
 
+	// misc.
 	"gboolean": jen.Bool(),
 	"gsize":    jen.Uintptr(),
 	"utf8":     jen.String(),
@@ -54,9 +55,6 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 	if t == nil {
 		return nil, errors.New("missing Type")
 	}
-	//if t.CType == "" {
-	//	return nil, errors.New("missing Type.Name")
-	//}
 
 	if jenType, found := jenGoTypes[t.Name]; found {
 		return jenType, nil
