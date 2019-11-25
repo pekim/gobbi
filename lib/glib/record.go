@@ -2010,7 +2010,37 @@ func (recv *Date) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_date_get_day' : return type 'DateDay' not supported
+var dateGetDayFunction *gi.Function
+var dateGetDayFunction_Once sync.Once
+
+func dateGetDayFunction_Set() error {
+	var err error
+	dateGetDayFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateGetDayFunction, err = dateStruct.InvokerNew("get_day")
+	})
+	return err
+}
+
+// GetDay is a representation of the C type g_date_get_day.
+func (recv *Date) GetDay() (DateDay, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateGetDayFunction_Set()
+	if err == nil {
+		ret = dateGetDayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DateDay(ret.Uint8())
+
+	return retGo, err
+}
 
 var dateGetDayOfYearFunction *gi.Function
 var dateGetDayOfYearFunction_Once sync.Once
@@ -2176,7 +2206,37 @@ func (recv *Date) GetSundayWeekOfYear() (uint32, error) {
 
 // UNSUPPORTED : C value 'g_date_get_weekday' : return type 'DateWeekday' not supported
 
-// UNSUPPORTED : C value 'g_date_get_year' : return type 'DateYear' not supported
+var dateGetYearFunction *gi.Function
+var dateGetYearFunction_Once sync.Once
+
+func dateGetYearFunction_Set() error {
+	var err error
+	dateGetYearFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateGetYearFunction, err = dateStruct.InvokerNew("get_year")
+	})
+	return err
+}
+
+// GetYear is a representation of the C type g_date_get_year.
+func (recv *Date) GetYear() (DateYear, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateGetYearFunction_Set()
+	if err == nil {
+		ret = dateGetYearFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DateYear(ret.Uint16())
+
+	return retGo, err
+}
 
 var dateIsFirstOfMonthFunction *gi.Function
 var dateIsFirstOfMonthFunction_Once sync.Once
@@ -3489,7 +3549,37 @@ func (recv *DateTime) GetTimezoneAbbreviation() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_get_utc_offset' : return type 'TimeSpan' not supported
+var dateTimeGetUtcOffsetFunction *gi.Function
+var dateTimeGetUtcOffsetFunction_Once sync.Once
+
+func dateTimeGetUtcOffsetFunction_Set() error {
+	var err error
+	dateTimeGetUtcOffsetFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeGetUtcOffsetFunction, err = dateTimeStruct.InvokerNew("get_utc_offset")
+	})
+	return err
+}
+
+// GetUtcOffset is a representation of the C type g_date_time_get_utc_offset.
+func (recv *DateTime) GetUtcOffset() (TimeSpan, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := dateTimeGetUtcOffsetFunction_Set()
+	if err == nil {
+		ret = dateTimeGetUtcOffsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TimeSpan(ret.Int64())
+
+	return retGo, err
+}
 
 var dateTimeGetWeekNumberingYearFunction *gi.Function
 var dateTimeGetWeekNumberingYearFunction_Once sync.Once

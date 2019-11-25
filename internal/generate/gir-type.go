@@ -152,7 +152,7 @@ func (t *Type) argumentValueGetFunctionName() string {
 }
 
 func (t *Type) resolvedType() *Type {
-	alias, isAlias := t.namespace.Aliases.findByName(t.Name)
+	alias, isAlias := t.namespace.Aliases.byName(t.Name)
 	if isAlias {
 		return alias.Type
 	}
@@ -182,6 +182,6 @@ func (t *Type) createFromArgumentFunction() func(s *jen.Statement, arg *jen.Stat
 }
 
 func (t *Type) isAlias() bool {
-	_, found := t.namespace.Aliases.findByName(t.Name)
+	_, found := t.namespace.Aliases.byName(t.Name)
 	return found
 }

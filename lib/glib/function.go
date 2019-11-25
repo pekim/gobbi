@@ -1142,7 +1142,31 @@ func BitUnlock(address int32, lockBit int32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_error_quark' : return type 'Quark' not supported
+var bookmarkFileErrorQuarkFunction *gi.Function
+var bookmarkFileErrorQuarkFunction_Once sync.Once
+
+func bookmarkFileErrorQuarkFunction_Set() error {
+	var err error
+	bookmarkFileErrorQuarkFunction_Once.Do(func() {
+		bookmarkFileErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "bookmark_file_error_quark")
+	})
+	return err
+}
+
+// BookmarkFileErrorQuark is a representation of the C type g_bookmark_file_error_quark.
+func BookmarkFileErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := bookmarkFileErrorQuarkFunction_Set()
+	if err == nil {
+		ret = bookmarkFileErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_build_filename' : parameter 'first_element' of type 'filename' not supported
 
@@ -1320,7 +1344,31 @@ func Close(fd int32) (bool, error) {
 
 // UNSUPPORTED : C value 'g_convert' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_convert_error_quark' : return type 'Quark' not supported
+var convertErrorQuarkFunction *gi.Function
+var convertErrorQuarkFunction_Once sync.Once
+
+func convertErrorQuarkFunction_Set() error {
+	var err error
+	convertErrorQuarkFunction_Once.Do(func() {
+		convertErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "convert_error_quark")
+	})
+	return err
+}
+
+// ConvertErrorQuark is a representation of the C type g_convert_error_quark.
+func ConvertErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := convertErrorQuarkFunction_Set()
+	if err == nil {
+		ret = convertErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_convert_with_fallback' : parameter 'str' has no type
 
@@ -1684,7 +1732,31 @@ func Dpgettext2(domain string, context string, msgid string) (string, error) {
 
 // UNSUPPORTED : C value 'g_file_error_from_errno' : return type 'FileError' not supported
 
-// UNSUPPORTED : C value 'g_file_error_quark' : return type 'Quark' not supported
+var fileErrorQuarkFunction *gi.Function
+var fileErrorQuarkFunction_Once sync.Once
+
+func fileErrorQuarkFunction_Set() error {
+	var err error
+	fileErrorQuarkFunction_Once.Do(func() {
+		fileErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "file_error_quark")
+	})
+	return err
+}
+
+// FileErrorQuark is a representation of the C type g_file_error_quark.
+func FileErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := fileErrorQuarkFunction_Set()
+	if err == nil {
+		ret = fileErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_file_get_contents' : parameter 'filename' of type 'filename' not supported
 
@@ -2485,11 +2557,59 @@ func InternString(string_ string) (string, error) {
 
 // UNSUPPORTED : C value 'g_io_channel_error_from_errno' : return type 'IOChannelError' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_error_quark' : return type 'Quark' not supported
+var ioChannelErrorQuarkFunction *gi.Function
+var ioChannelErrorQuarkFunction_Once sync.Once
+
+func ioChannelErrorQuarkFunction_Set() error {
+	var err error
+	ioChannelErrorQuarkFunction_Once.Do(func() {
+		ioChannelErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "io_channel_error_quark")
+	})
+	return err
+}
+
+// IoChannelErrorQuark is a representation of the C type g_io_channel_error_quark.
+func IoChannelErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := ioChannelErrorQuarkFunction_Set()
+	if err == nil {
+		ret = ioChannelErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_io_create_watch' : parameter 'channel' of type 'IOChannel' not supported
 
-// UNSUPPORTED : C value 'g_key_file_error_quark' : return type 'Quark' not supported
+var keyFileErrorQuarkFunction *gi.Function
+var keyFileErrorQuarkFunction_Once sync.Once
+
+func keyFileErrorQuarkFunction_Set() error {
+	var err error
+	keyFileErrorQuarkFunction_Once.Do(func() {
+		keyFileErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "key_file_error_quark")
+	})
+	return err
+}
+
+// KeyFileErrorQuark is a representation of the C type g_key_file_error_quark.
+func KeyFileErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := keyFileErrorQuarkFunction_Set()
+	if err == nil {
+		ret = keyFileErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var listenvFunction *gi.Function
 var listenvFunction_Once sync.Once
@@ -2772,7 +2892,31 @@ func MainDepth() (int32, error) {
 
 // UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'error' of type 'Error' not supported
 
-// UNSUPPORTED : C value 'g_markup_error_quark' : return type 'Quark' not supported
+var markupErrorQuarkFunction *gi.Function
+var markupErrorQuarkFunction_Once sync.Once
+
+func markupErrorQuarkFunction_Set() error {
+	var err error
+	markupErrorQuarkFunction_Once.Do(func() {
+		markupErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "markup_error_quark")
+	})
+	return err
+}
+
+// MarkupErrorQuark is a representation of the C type g_markup_error_quark.
+func MarkupErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := markupErrorQuarkFunction_Set()
+	if err == nil {
+		ret = markupErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var markupEscapeTextFunction *gi.Function
 var markupEscapeTextFunction_Once sync.Once
@@ -2871,7 +3015,31 @@ func MemProfile() error {
 
 // UNSUPPORTED : C value 'g_nullify_pointer' : parameter 'nullify_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_number_parser_error_quark' : return type 'Quark' not supported
+var numberParserErrorQuarkFunction *gi.Function
+var numberParserErrorQuarkFunction_Once sync.Once
+
+func numberParserErrorQuarkFunction_Set() error {
+	var err error
+	numberParserErrorQuarkFunction_Once.Do(func() {
+		numberParserErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "number_parser_error_quark")
+	})
+	return err
+}
+
+// NumberParserErrorQuark is a representation of the C type g_number_parser_error_quark.
+func NumberParserErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := numberParserErrorQuarkFunction_Set()
+	if err == nil {
+		ret = numberParserErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var onErrorQueryFunction *gi.Function
 var onErrorQueryFunction_Once sync.Once
@@ -2925,7 +3093,31 @@ func OnErrorStackTrace(prgName string) error {
 
 // UNSUPPORTED : C value 'g_once_init_leave' : parameter 'location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_option_error_quark' : return type 'Quark' not supported
+var optionErrorQuarkFunction *gi.Function
+var optionErrorQuarkFunction_Once sync.Once
+
+func optionErrorQuarkFunction_Set() error {
+	var err error
+	optionErrorQuarkFunction_Once.Do(func() {
+		optionErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "option_error_quark")
+	})
+	return err
+}
+
+// OptionErrorQuark is a representation of the C type g_option_error_quark.
+func OptionErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := optionErrorQuarkFunction_Set()
+	if err == nil {
+		ret = optionErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'keys' has no type
 
@@ -2998,9 +3190,61 @@ func PatternMatchSimple(pattern string, string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'pbase' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_quark_from_static_string' : return type 'Quark' not supported
+var quarkFromStaticStringFunction *gi.Function
+var quarkFromStaticStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_quark_from_string' : return type 'Quark' not supported
+func quarkFromStaticStringFunction_Set() error {
+	var err error
+	quarkFromStaticStringFunction_Once.Do(func() {
+		quarkFromStaticStringFunction, err = gi.FunctionInvokerNew("GLib", "quark_from_static_string")
+	})
+	return err
+}
+
+// QuarkFromStaticString is a representation of the C type g_quark_from_static_string.
+func QuarkFromStaticString(string_ string) (Quark, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := quarkFromStaticStringFunction_Set()
+	if err == nil {
+		ret = quarkFromStaticStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
+
+var quarkFromStringFunction *gi.Function
+var quarkFromStringFunction_Once sync.Once
+
+func quarkFromStringFunction_Set() error {
+	var err error
+	quarkFromStringFunction_Once.Do(func() {
+		quarkFromStringFunction, err = gi.FunctionInvokerNew("GLib", "quark_from_string")
+	})
+	return err
+}
+
+// QuarkFromString is a representation of the C type g_quark_from_string.
+func QuarkFromString(string_ string) (Quark, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := quarkFromStringFunction_Set()
+	if err == nil {
+		ret = quarkFromStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var quarkToStringFunction *gi.Function
 var quarkToStringFunction_Once sync.Once
@@ -3030,7 +3274,33 @@ func QuarkToString(quark Quark) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_quark_try_string' : return type 'Quark' not supported
+var quarkTryStringFunction *gi.Function
+var quarkTryStringFunction_Once sync.Once
+
+func quarkTryStringFunction_Set() error {
+	var err error
+	quarkTryStringFunction_Once.Do(func() {
+		quarkTryStringFunction, err = gi.FunctionInvokerNew("GLib", "quark_try_string")
+	})
+	return err
+}
+
+// QuarkTryString is a representation of the C type g_quark_try_string.
+func QuarkTryString(string_ string) (Quark, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := quarkTryStringFunction_Set()
+	if err == nil {
+		ret = quarkTryStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var randomDoubleFunction *gi.Function
 var randomDoubleFunction_Once sync.Once
@@ -3458,7 +3728,31 @@ func RegexCheckReplacement(replacement string) (bool, bool, error) {
 	return retGo, out0, err
 }
 
-// UNSUPPORTED : C value 'g_regex_error_quark' : return type 'Quark' not supported
+var regexErrorQuarkFunction *gi.Function
+var regexErrorQuarkFunction_Once sync.Once
+
+func regexErrorQuarkFunction_Set() error {
+	var err error
+	regexErrorQuarkFunction_Once.Do(func() {
+		regexErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "regex_error_quark")
+	})
+	return err
+}
+
+// RegexErrorQuark is a representation of the C type g_regex_error_quark.
+func RegexErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := regexErrorQuarkFunction_Set()
+	if err == nil {
+		ret = regexErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var regexEscapeNulFunction *gi.Function
 var regexEscapeNulFunction_Once sync.Once
@@ -3621,7 +3915,31 @@ func SetPrgname(prgname string) error {
 
 // UNSUPPORTED : C value 'g_setenv' : parameter 'variable' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_shell_error_quark' : return type 'Quark' not supported
+var shellErrorQuarkFunction *gi.Function
+var shellErrorQuarkFunction_Once sync.Once
+
+func shellErrorQuarkFunction_Set() error {
+	var err error
+	shellErrorQuarkFunction_Once.Do(func() {
+		shellErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "shell_error_quark")
+	})
+	return err
+}
+
+// ShellErrorQuark is a representation of the C type g_shell_error_quark.
+func ShellErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := shellErrorQuarkFunction_Set()
+	if err == nil {
+		ret = shellErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'command_line' of type 'filename' not supported
 
@@ -3794,9 +4112,57 @@ func SpawnClosePid(pid Pid) error {
 
 // UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'command_line' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_spawn_error_quark' : return type 'Quark' not supported
+var spawnErrorQuarkFunction *gi.Function
+var spawnErrorQuarkFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_spawn_exit_error_quark' : return type 'Quark' not supported
+func spawnErrorQuarkFunction_Set() error {
+	var err error
+	spawnErrorQuarkFunction_Once.Do(func() {
+		spawnErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "spawn_error_quark")
+	})
+	return err
+}
+
+// SpawnErrorQuark is a representation of the C type g_spawn_error_quark.
+func SpawnErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := spawnErrorQuarkFunction_Set()
+	if err == nil {
+		ret = spawnErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
+
+var spawnExitErrorQuarkFunction *gi.Function
+var spawnExitErrorQuarkFunction_Once sync.Once
+
+func spawnExitErrorQuarkFunction_Set() error {
+	var err error
+	spawnExitErrorQuarkFunction_Once.Do(func() {
+		spawnExitErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "spawn_exit_error_quark")
+	})
+	return err
+}
+
+// SpawnExitErrorQuark is a representation of the C type g_spawn_exit_error_quark.
+func SpawnExitErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := spawnExitErrorQuarkFunction_Set()
+	if err == nil {
+		ret = spawnExitErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_spawn_sync' : parameter 'working_directory' of type 'filename' not supported
 
@@ -5479,7 +5845,31 @@ func TestTrapReachedTimeout() (bool, error) {
 
 // UNSUPPORTED : C value 'g_test_trap_subprocess' : parameter 'test_flags' of type 'TestSubprocessFlags' not supported
 
-// UNSUPPORTED : C value 'g_thread_error_quark' : return type 'Quark' not supported
+var threadErrorQuarkFunction *gi.Function
+var threadErrorQuarkFunction_Once sync.Once
+
+func threadErrorQuarkFunction_Set() error {
+	var err error
+	threadErrorQuarkFunction_Once.Do(func() {
+		threadErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "thread_error_quark")
+	})
+	return err
+}
+
+// ThreadErrorQuark is a representation of the C type g_thread_error_quark.
+func ThreadErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := threadErrorQuarkFunction_Set()
+	if err == nil {
+		ret = threadErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_thread_exit' : parameter 'retval' of type 'gpointer' not supported
 
@@ -5841,7 +6231,31 @@ func TimeoutSourceNewSeconds(interval uint32) (*Source, error) {
 
 // UNSUPPORTED : C value 'g_unicode_script_to_iso15924' : parameter 'script' of type 'UnicodeScript' not supported
 
-// UNSUPPORTED : C value 'g_unix_error_quark' : return type 'Quark' not supported
+var unixErrorQuarkFunction *gi.Function
+var unixErrorQuarkFunction_Once sync.Once
+
+func unixErrorQuarkFunction_Set() error {
+	var err error
+	unixErrorQuarkFunction_Once.Do(func() {
+		unixErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "unix_error_quark")
+	})
+	return err
+}
+
+// UnixErrorQuark is a representation of the C type g_unix_error_quark.
+func UnixErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := unixErrorQuarkFunction_Set()
+	if err == nil {
+		ret = unixErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_fd_add' : parameter 'condition' of type 'IOCondition' not supported
 
@@ -6745,9 +7159,57 @@ func VariantIsSignature(string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_variant_parse_error_print_context' : parameter 'error' of type 'Error' not supported
 
-// UNSUPPORTED : C value 'g_variant_parse_error_quark' : return type 'Quark' not supported
+var variantParseErrorQuarkFunction *gi.Function
+var variantParseErrorQuarkFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_parser_get_error_quark' : return type 'Quark' not supported
+func variantParseErrorQuarkFunction_Set() error {
+	var err error
+	variantParseErrorQuarkFunction_Once.Do(func() {
+		variantParseErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "variant_parse_error_quark")
+	})
+	return err
+}
+
+// VariantParseErrorQuark is a representation of the C type g_variant_parse_error_quark.
+func VariantParseErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := variantParseErrorQuarkFunction_Set()
+	if err == nil {
+		ret = variantParseErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
+
+var variantParserGetErrorQuarkFunction *gi.Function
+var variantParserGetErrorQuarkFunction_Once sync.Once
+
+func variantParserGetErrorQuarkFunction_Set() error {
+	var err error
+	variantParserGetErrorQuarkFunction_Once.Do(func() {
+		variantParserGetErrorQuarkFunction, err = gi.FunctionInvokerNew("GLib", "variant_parser_get_error_quark")
+	})
+	return err
+}
+
+// VariantParserGetErrorQuark is a representation of the C type g_variant_parser_get_error_quark.
+func VariantParserGetErrorQuark() (Quark, error) {
+
+	var ret gi.Argument
+
+	err := variantParserGetErrorQuarkFunction_Set()
+	if err == nil {
+		ret = variantParserGetErrorQuarkFunction.Invoke(nil, nil)
+	}
+
+	retGo := Quark(ret.Uint32())
+
+	return retGo, err
+}
 
 var variantTypeCheckedFunction *gi.Function
 var variantTypeCheckedFunction_Once sync.Once

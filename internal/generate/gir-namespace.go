@@ -88,7 +88,7 @@ func (n *Namespace) generateFile(name string, generateContent func(f *file)) {
 }
 
 func (n *Namespace) haveType(typeName string) bool {
-	if _, found := n.Aliases.findByName(typeName); found {
+	if _, found := n.Aliases.byName(typeName); found {
 		return true
 	}
 	if _, found := n.Constants.findByName(typeName); found {
@@ -131,6 +131,15 @@ func (n *Namespace) giFile(f *file) {
 }
 
 func (n *Namespace) outParameterGeneratorByName(name string) (outParameterGenerator, bool) {
+	if alias, found := n.Aliases.byName(name); found {
+		if alias.Type.argumentValueGetFunctionName() == "Pointer" {
+			// Only simple alias types are supported for now.
+			return nil, false
+		}
+
+		return alias, true
+	}
+
 	if record, found := n.Records.byName(name); found {
 		return record, true
 	}

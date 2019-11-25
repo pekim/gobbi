@@ -14,7 +14,7 @@ func (aa Aliases) generate(f *file) {
 	}
 }
 
-func (aa Aliases) findByName(name string) (*Alias, bool) {
+func (aa Aliases) byName(name string) (*Alias, bool) {
 	for _, alias := range aa {
 		if alias.Name == name {
 			return alias, true
