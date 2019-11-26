@@ -5,18 +5,8 @@ import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strconv"
+	"strings"
 )
-
-type Type struct {
-	Name  string `xml:"name,attr"`
-	CType string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
-
-	namespace *Namespace
-}
-
-func (t *Type) init(ns *Namespace) {
-	t.namespace = ns
-}
 
 var jenGoTypes = map[string]*jen.Statement{
 	// signed
@@ -51,6 +41,55 @@ var jenGoTypes = map[string]*jen.Statement{
 	"utf8":     jen.String(),
 }
 
+type Type struct {
+	Name  string `xml:"name,attr"`
+	CType string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
+
+	namespace        *Namespace
+	foreignNamespace *Namespace
+	foreignName      string
+}
+
+func (t *Type) init(ns *Namespace) {
+	t.namespace = ns
+	t.analyseName()
+}
+
+func (t *Type) analyseName() {
+	parts := strings.Split(t.Name, ".")
+
+	if len(parts) == 1 {
+		return
+	}
+
+	if len(parts) != 2 {
+		panic(fmt.Sprintf("Unsupported Type name %s", t.Name))
+	}
+
+	ns, found := t.namespace.namespaces.byName(parts[0])
+	if !found {
+		panic(fmt.Sprintf("Namespace % referenced in Type name %s not found", parts[0], t.Name))
+	}
+	t.foreignNamespace = ns
+	t.foreignName = parts[1]
+}
+
+func (t *Type) isQualifiedName() bool {
+	return t.foreignNamespace != nil
+}
+
+func (t *Type) jenGoTypeForTypeName() (*jen.Statement, bool) {
+	if t.isQualifiedName() {
+		return nil, false
+	}
+
+	if t.namespace.haveType(t.Name) {
+		return jen.Id(t.Name), true
+	}
+
+	return nil, false
+}
+
 func (t *Type) jenGoType() (*jen.Statement, error) {
 	if t == nil {
 		return nil, errors.New("missing Type")
@@ -60,7 +99,7 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return jenType, nil
 	}
 
-	goType, ok := t.namespace.jenGoTypeForTypeName(t.Name)
+	goType, ok := t.jenGoTypeForTypeName()
 	if ok {
 		return goType, nil
 	}
