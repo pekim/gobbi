@@ -67,14 +67,14 @@ func (a Argument) supportedAsOutParameter() bool {
 	return false
 }
 
-func (a Argument) supportedAsInParameter() bool {
+func (a Argument) isSupported() bool {
 	typ := a.Type.resolvedType()
 
 	if typ == nil || typ.Name == "" {
 		return false
 	}
 
-	if _, ok := argumentSetFunctionNames[typ.Name]; ok {
+	if _, ok := typ.jenGoTypeForTypeName(); ok {
 		return true
 	}
 

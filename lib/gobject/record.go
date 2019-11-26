@@ -562,7 +562,34 @@ type TypeClass struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_type_class_add_private' : parameter 'private_size' of type 'gsize' not supported
+var typeClassAddPrivateFunction *gi.Function
+var typeClassAddPrivateFunction_Once sync.Once
+
+func typeClassAddPrivateFunction_Set() error {
+	var err error
+	typeClassAddPrivateFunction_Once.Do(func() {
+		err = typeClassStruct_Set()
+		if err != nil {
+			return
+		}
+		typeClassAddPrivateFunction, err = typeClassStruct.InvokerNew("add_private")
+	})
+	return err
+}
+
+// AddPrivate is a representation of the C type g_type_class_add_private.
+func (recv *TypeClass) AddPrivate(privateSize uint64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(privateSize)
+
+	err := typeClassAddPrivateFunction_Set()
+	if err == nil {
+		typeClassAddPrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var typeClassGetInstancePrivateOffsetFunction *gi.Function
 var typeClassGetInstancePrivateOffsetFunction_Once sync.Once

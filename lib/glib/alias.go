@@ -35,4 +35,4 @@ type Time int32
 type TimeSpan int64
 
 // Type is a representation of the C type Type.
-type Type uintptr
+type Type uint64

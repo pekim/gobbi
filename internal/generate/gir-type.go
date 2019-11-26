@@ -30,6 +30,7 @@ var jenGoTypes = map[string]*jen.Statement{
 	"guint32": jen.Uint32(),
 	"gulong":  jen.Uint64(),
 	"guint64": jen.Uint64(),
+	"gsize":   jen.Uint64(),
 
 	// floats
 	"gfloat":  jen.Float32(),
@@ -37,7 +38,6 @@ var jenGoTypes = map[string]*jen.Statement{
 
 	// misc.
 	"gboolean": jen.Bool(),
-	"gsize":    jen.Uintptr(),
 	"utf8":     jen.String(),
 }
 
@@ -79,8 +79,16 @@ func (t *Type) isQualifiedName() bool {
 }
 
 func (t *Type) jenGoTypeForTypeName() (*jen.Statement, bool) {
+	if t == nil {
+		return nil, false
+	}
+
 	if t.isQualifiedName() {
 		return nil, false
+	}
+
+	if jenType, found := jenGoTypes[t.Name]; found {
+		return jenType, true
 	}
 
 	if t.namespace.haveType(t.Name) {

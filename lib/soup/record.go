@@ -162,7 +162,7 @@ func bufferStruct_Set() error {
 type Buffer struct {
 	native uintptr
 	// UNSUPPORTED : C value 'data' : no Go type for 'gpointer'
-	Length uintptr
+	Length uint64
 }
 
 // UNSUPPORTED : C value 'soup_buffer_new' : parameter 'use' of type 'MemoryUse' not supported
@@ -237,7 +237,39 @@ func (recv *Buffer) Free() error {
 
 // UNSUPPORTED : C value 'soup_buffer_get_owner' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'soup_buffer_new_subbuffer' : parameter 'offset' of type 'gsize' not supported
+var bufferNewSubbufferFunction *gi.Function
+var bufferNewSubbufferFunction_Once sync.Once
+
+func bufferNewSubbufferFunction_Set() error {
+	var err error
+	bufferNewSubbufferFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferNewSubbufferFunction, err = bufferStruct.InvokerNew("new_subbuffer")
+	})
+	return err
+}
+
+// NewSubbuffer is a representation of the C type soup_buffer_new_subbuffer.
+func (recv *Buffer) NewSubbuffer(offset uint64, length uint64) (*Buffer, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(offset)
+	inArgs[2].SetUint64(length)
+
+	var ret gi.Argument
+
+	err := bufferNewSubbufferFunction_Set()
+	if err == nil {
+		ret = bufferNewSubbufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Buffer{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var cacheClassStruct *gi.Struct
 var cacheClassStruct_Once sync.Once

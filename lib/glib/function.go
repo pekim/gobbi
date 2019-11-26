@@ -222,7 +222,35 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 	return retGo, out0, err
 }
 
-// UNSUPPORTED : C value 'g_ascii_strncasecmp' : parameter 'n' of type 'gsize' not supported
+var asciiStrncasecmpFunction *gi.Function
+var asciiStrncasecmpFunction_Once sync.Once
+
+func asciiStrncasecmpFunction_Set() error {
+	var err error
+	asciiStrncasecmpFunction_Once.Do(func() {
+		asciiStrncasecmpFunction, err = gi.FunctionInvokerNew("GLib", "ascii_strncasecmp")
+	})
+	return err
+}
+
+// AsciiStrncasecmp is a representation of the C type g_ascii_strncasecmp.
+func AsciiStrncasecmp(s1 string, s2 string, n uint64) (int32, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(s1)
+	inArgs[1].SetString(s2)
+	inArgs[2].SetUint64(n)
+
+	var ret gi.Argument
+
+	err := asciiStrncasecmpFunction_Set()
+	if err == nil {
+		ret = asciiStrncasecmpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var asciiStrtodFunction *gi.Function
 var asciiStrtodFunction_Once sync.Once
@@ -846,11 +874,11 @@ func AtomicIntXor(atomic uint32, val uint32) (uint32, error) {
 
 // UNSUPPORTED : C value 'g_atomic_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_alloc' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_atomic_rc_box_alloc' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_alloc0' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_atomic_rc_box_alloc0' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_dup' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_atomic_rc_box_dup' : parameter 'mem_block' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_atomic_rc_box_get_size' : parameter 'mem_block' of type 'gpointer' not supported
 
@@ -963,7 +991,33 @@ func AtomicRefCountInit(arc int32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_base64_decode' : parameter 'out_len' of type 'gsize' not supported
+var base64DecodeFunction *gi.Function
+var base64DecodeFunction_Once sync.Once
+
+func base64DecodeFunction_Set() error {
+	var err error
+	base64DecodeFunction_Once.Do(func() {
+		base64DecodeFunction, err = gi.FunctionInvokerNew("GLib", "base64_decode")
+	})
+	return err
+}
+
+// Base64Decode is a representation of the C type g_base64_decode.
+func Base64Decode(text string) (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(text)
+
+	var outArgs [1]gi.Argument
+
+	err := base64DecodeFunction_Set()
+	if err == nil {
+		base64DecodeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 // UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' has no type
 
@@ -1494,7 +1548,7 @@ func DateIsLeapYear(year DateYear) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_strftime' : parameter 'slen' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_date_strftime' : parameter 'date' of type 'Date' not supported
 
 // UNSUPPORTED : C value 'g_date_time_compare' : parameter 'dt1' of type 'gpointer' not supported
 
@@ -1692,7 +1746,35 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) (strin
 
 // UNSUPPORTED : C value 'g_double_hash' : parameter 'v' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_dpgettext' : parameter 'msgidoffset' of type 'gsize' not supported
+var dpgettextFunction *gi.Function
+var dpgettextFunction_Once sync.Once
+
+func dpgettextFunction_Set() error {
+	var err error
+	dpgettextFunction_Once.Do(func() {
+		dpgettextFunction, err = gi.FunctionInvokerNew("GLib", "dpgettext")
+	})
+	return err
+}
+
+// Dpgettext is a representation of the C type g_dpgettext.
+func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) (string, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(msgctxtid)
+	inArgs[2].SetUint64(msgidoffset)
+
+	var ret gi.Argument
+
+	err := dpgettextFunction_Set()
+	if err == nil {
+		ret = dpgettextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 var dpgettext2Function *gi.Function
 var dpgettext2Function_Once sync.Once
@@ -1774,7 +1856,7 @@ func FileErrorQuark() (Quark, error) {
 
 // UNSUPPORTED : C value 'g_filename_from_uri' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_filename_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_filename_from_utf8' : return type 'filename' not supported
 
 // UNSUPPORTED : C value 'g_filename_to_uri' : parameter 'filename' of type 'filename' not supported
 
@@ -2633,7 +2715,35 @@ func Listenv() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_locale_from_utf8' : parameter 'bytes_read' of type 'gsize' not supported
+var localeFromUtf8Function *gi.Function
+var localeFromUtf8Function_Once sync.Once
+
+func localeFromUtf8Function_Set() error {
+	var err error
+	localeFromUtf8Function_Once.Do(func() {
+		localeFromUtf8Function, err = gi.FunctionInvokerNew("GLib", "locale_from_utf8")
+	})
+	return err
+}
+
+// LocaleFromUtf8 is a representation of the C type g_locale_from_utf8.
+func LocaleFromUtf8(utf8string string, len int32) (uint64, uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(utf8string)
+	inArgs[1].SetInt32(len)
+
+	var outArgs [2]gi.Argument
+
+	err := localeFromUtf8Function_Set()
+	if err == nil {
+		localeFromUtf8Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return out0, out1, err
+}
 
 // UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' has no type
 
@@ -2882,13 +2992,13 @@ func MainDepth() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_malloc' : parameter 'n_bytes' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_malloc' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_malloc0' : parameter 'n_bytes' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_malloc0' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_malloc0_n' : parameter 'n_blocks' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_malloc0_n' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_malloc_n' : parameter 'n_blocks' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_malloc_n' : return type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'error' of type 'Error' not supported
 
@@ -3438,11 +3548,11 @@ func RandomSetSeed(seed uint32) error {
 
 // UNSUPPORTED : C value 'g_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_rc_box_alloc' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_rc_box_alloc' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_rc_box_alloc0' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_rc_box_alloc0' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_rc_box_dup' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_rc_box_dup' : parameter 'mem_block' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_rc_box_get_size' : parameter 'mem_block' of type 'gpointer' not supported
 
@@ -3587,7 +3697,33 @@ func RefStringAcquire(str string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_ref_string_length' : return type 'gsize' not supported
+var refStringLengthFunction *gi.Function
+var refStringLengthFunction_Once sync.Once
+
+func refStringLengthFunction_Set() error {
+	var err error
+	refStringLengthFunction_Once.Do(func() {
+		refStringLengthFunction, err = gi.FunctionInvokerNew("GLib", "ref_string_length")
+	})
+	return err
+}
+
+// RefStringLength is a representation of the C type g_ref_string_length.
+func RefStringLength(str string) (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	var ret gi.Argument
+
+	err := refStringLengthFunction_Set()
+	if err == nil {
+		ret = refStringLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var refStringNewFunction *gi.Function
 var refStringNewFunction_Once sync.Once
@@ -3947,15 +4083,15 @@ func ShellErrorQuark() (Quark, error) {
 
 // UNSUPPORTED : C value 'g_shell_unquote' : parameter 'quoted_string' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_slice_alloc' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_slice_alloc' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_slice_alloc0' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_slice_alloc0' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_slice_copy' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_slice_copy' : parameter 'mem_block' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_slice_free1' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_slice_free1' : parameter 'mem_block' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_slice_free_chain_with_offset' : parameter 'block_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_slice_free_chain_with_offset' : parameter 'mem_chain' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_slice_get_config' : parameter 'ckey' of type 'SliceConfig' not supported
 
@@ -4774,7 +4910,33 @@ func StringNewLen(init string, len int32) (*String, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_string_sized_new' : parameter 'dfl_size' of type 'gsize' not supported
+var stringSizedNewFunction *gi.Function
+var stringSizedNewFunction_Once sync.Once
+
+func stringSizedNewFunction_Set() error {
+	var err error
+	stringSizedNewFunction_Once.Do(func() {
+		stringSizedNewFunction, err = gi.FunctionInvokerNew("GLib", "string_sized_new")
+	})
+	return err
+}
+
+// StringSizedNew is a representation of the C type g_string_sized_new.
+func StringSizedNew(dflSize uint64) (*String, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(dflSize)
+
+	var ret gi.Argument
+
+	err := stringSizedNewFunction_Set()
+	if err == nil {
+		ret = stringSizedNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var stripContextFunction *gi.Function
 var stripContextFunction_Once sync.Once
@@ -4836,9 +4998,65 @@ func Strjoinv(separator string, strArray string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_strlcat' : parameter 'dest_size' of type 'gsize' not supported
+var strlcatFunction *gi.Function
+var strlcatFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_strlcpy' : parameter 'dest_size' of type 'gsize' not supported
+func strlcatFunction_Set() error {
+	var err error
+	strlcatFunction_Once.Do(func() {
+		strlcatFunction, err = gi.FunctionInvokerNew("GLib", "strlcat")
+	})
+	return err
+}
+
+// Strlcat is a representation of the C type g_strlcat.
+func Strlcat(dest string, src string, destSize uint64) (uint64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(dest)
+	inArgs[1].SetString(src)
+	inArgs[2].SetUint64(destSize)
+
+	var ret gi.Argument
+
+	err := strlcatFunction_Set()
+	if err == nil {
+		ret = strlcatFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
+
+var strlcpyFunction *gi.Function
+var strlcpyFunction_Once sync.Once
+
+func strlcpyFunction_Set() error {
+	var err error
+	strlcpyFunction_Once.Do(func() {
+		strlcpyFunction, err = gi.FunctionInvokerNew("GLib", "strlcpy")
+	})
+	return err
+}
+
+// Strlcpy is a representation of the C type g_strlcpy.
+func Strlcpy(dest string, src string, destSize uint64) (uint64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(dest)
+	inArgs[1].SetString(src)
+	inArgs[2].SetUint64(destSize)
+
+	var ret gi.Argument
+
+	err := strlcpyFunction_Set()
+	if err == nil {
+		ret = strlcpyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var strncasecmpFunction *gi.Function
 var strncasecmpFunction_Once sync.Once
@@ -4870,9 +5088,63 @@ func Strncasecmp(s1 string, s2 string, n uint32) (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_strndup' : parameter 'n' of type 'gsize' not supported
+var strndupFunction *gi.Function
+var strndupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_strnfill' : parameter 'length' of type 'gsize' not supported
+func strndupFunction_Set() error {
+	var err error
+	strndupFunction_Once.Do(func() {
+		strndupFunction, err = gi.FunctionInvokerNew("GLib", "strndup")
+	})
+	return err
+}
+
+// Strndup is a representation of the C type g_strndup.
+func Strndup(str string, n uint64) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetUint64(n)
+
+	var ret gi.Argument
+
+	err := strndupFunction_Set()
+	if err == nil {
+		ret = strndupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var strnfillFunction *gi.Function
+var strnfillFunction_Once sync.Once
+
+func strnfillFunction_Set() error {
+	var err error
+	strnfillFunction_Once.Do(func() {
+		strnfillFunction, err = gi.FunctionInvokerNew("GLib", "strnfill")
+	})
+	return err
+}
+
+// Strnfill is a representation of the C type g_strnfill.
+func Strnfill(length uint64, fillChar int8) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(length)
+	inArgs[1].SetInt8(fillChar)
+
+	var ret gi.Argument
+
+	err := strnfillFunction_Set()
+	if err == nil {
+		ret = strnfillFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var strreverseFunction *gi.Function
 var strreverseFunction_Once sync.Once
@@ -5223,7 +5495,7 @@ func StrvLength(strArray string) (uint32, error) {
 
 // UNSUPPORTED : C value 'g_test_add_func' : parameter 'test_func' of type 'TestFunc' not supported
 
-// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'data_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'test_data' of type 'gpointer' not supported
 
 var testAssertExpectedMessagesInternalFunction *gi.Function
 var testAssertExpectedMessagesInternalFunction_Once sync.Once
@@ -5302,7 +5574,7 @@ func TestBugBase(uriPattern string) error {
 
 // UNSUPPORTED : C value 'g_test_build_filename' : parameter 'file_type' of type 'TestFileType' not supported
 
-// UNSUPPORTED : C value 'g_test_create_case' : parameter 'data_size' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_test_create_case' : parameter 'test_data' of type 'gpointer' not supported
 
 var testCreateSuiteFunction *gi.Function
 var testCreateSuiteFunction_Once sync.Once
@@ -6143,13 +6415,13 @@ func TimeoutSourceNewSeconds(interval uint32) (*Source, error) {
 
 // UNSUPPORTED : C value 'g_trash_stack_push' : parameter 'stack_p' of type 'TrashStack' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc' : parameter 'n_bytes' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_try_malloc' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc0' : parameter 'n_bytes' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_try_malloc0' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc0_n' : parameter 'n_blocks' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_try_malloc0_n' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_try_malloc_n' : parameter 'n_blocks' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_try_malloc_n' : return type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_try_realloc' : parameter 'mem' of type 'gpointer' not supported
 
@@ -6911,7 +7183,35 @@ func Utf8Strlen(p string, max int32) (int64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_utf8_strncpy' : parameter 'n' of type 'gsize' not supported
+var utf8StrncpyFunction *gi.Function
+var utf8StrncpyFunction_Once sync.Once
+
+func utf8StrncpyFunction_Set() error {
+	var err error
+	utf8StrncpyFunction_Once.Do(func() {
+		utf8StrncpyFunction, err = gi.FunctionInvokerNew("GLib", "utf8_strncpy")
+	})
+	return err
+}
+
+// Utf8Strncpy is a representation of the C type g_utf8_strncpy.
+func Utf8Strncpy(dest string, src string, n uint64) (string, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(dest)
+	inArgs[1].SetString(src)
+	inArgs[2].SetUint64(n)
+
+	var ret gi.Argument
+
+	err := utf8StrncpyFunction_Set()
+	if err == nil {
+		ret = utf8StrncpyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_utf8_strrchr' : parameter 'c' of type 'gunichar' not supported
 
@@ -7239,7 +7539,33 @@ func VariantTypeChecked(arg0 string) (*VariantType, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_string_get_depth_' : return type 'gsize' not supported
+var variantTypeStringGetDepthFunction *gi.Function
+var variantTypeStringGetDepthFunction_Once sync.Once
+
+func variantTypeStringGetDepthFunction_Set() error {
+	var err error
+	variantTypeStringGetDepthFunction_Once.Do(func() {
+		variantTypeStringGetDepthFunction, err = gi.FunctionInvokerNew("GLib", "variant_type_string_get_depth_")
+	})
+	return err
+}
+
+// VariantTypeStringGetDepth is a representation of the C type g_variant_type_string_get_depth_.
+func VariantTypeStringGetDepth(typeString string) (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(typeString)
+
+	var ret gi.Argument
+
+	err := variantTypeStringGetDepthFunction_Set()
+	if err == nil {
+		ret = variantTypeStringGetDepthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var variantTypeStringIsValidFunction *gi.Function
 var variantTypeStringIsValidFunction_Once sync.Once

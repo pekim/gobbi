@@ -209,7 +209,35 @@ func OptionsGetRangeString(option string) (bool, string, error) {
 	return retGo, out0, err
 }
 
-// UNSUPPORTED : C value 'jsc_options_get_size' : parameter 'value' of type 'gsize' not supported
+var optionsGetSizeFunction *gi.Function
+var optionsGetSizeFunction_Once sync.Once
+
+func optionsGetSizeFunction_Set() error {
+	var err error
+	optionsGetSizeFunction_Once.Do(func() {
+		optionsGetSizeFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_size")
+	})
+	return err
+}
+
+// OptionsGetSize is a representation of the C type jsc_options_get_size.
+func OptionsGetSize(option string) (bool, uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(option)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionsGetSizeFunction_Set()
+	if err == nil {
+		ret = optionsGetSizeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
 
 var optionsGetStringFunction *gi.Function
 var optionsGetStringFunction_Once sync.Once
@@ -387,7 +415,34 @@ func OptionsSetRangeString(option string, value string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'jsc_options_set_size' : parameter 'value' of type 'gsize' not supported
+var optionsSetSizeFunction *gi.Function
+var optionsSetSizeFunction_Once sync.Once
+
+func optionsSetSizeFunction_Set() error {
+	var err error
+	optionsSetSizeFunction_Once.Do(func() {
+		optionsSetSizeFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_set_size")
+	})
+	return err
+}
+
+// OptionsSetSize is a representation of the C type jsc_options_set_size.
+func OptionsSetSize(option string, value uint64) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(option)
+	inArgs[1].SetUint64(value)
+
+	var ret gi.Argument
+
+	err := optionsSetSizeFunction_Set()
+	if err == nil {
+		ret = optionsSetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var optionsSetStringFunction *gi.Function
 var optionsSetStringFunction_Once sync.Once

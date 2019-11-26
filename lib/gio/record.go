@@ -3252,7 +3252,7 @@ type InputMessage struct {
 	// UNSUPPORTED : C value 'address' : no Go type for 'SocketAddress'
 	// UNSUPPORTED : C value 'vectors' : missing Type
 	NumVectors    uint32
-	BytesReceived uintptr
+	BytesReceived uint64
 	Flags         int32
 	// UNSUPPORTED : C value 'control_messages' : missing Type
 	NumControlMessages uint32
@@ -3317,7 +3317,7 @@ func inputVectorStruct_Set() error {
 type InputVector struct {
 	native uintptr
 	// UNSUPPORTED : C value 'buffer' : no Go type for 'gpointer'
-	Size uintptr
+	Size uint64
 }
 
 var listModelInterfaceStruct *gi.Struct
@@ -3854,7 +3854,7 @@ func outputVectorStruct_Set() error {
 type OutputVector struct {
 	native uintptr
 	// UNSUPPORTED : C value 'buffer' : no Go type for 'gpointer'
-	Size uintptr
+	Size uint64
 }
 
 var permissionClassStruct *gi.Struct

@@ -51,6 +51,10 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 }
 
 func (f *Function) supported() (bool, string) {
+	if f.Name == "" && f.MovedTo != "" {
+		return false, fmt.Sprintf("moved to %s", f.MovedTo)
+	}
+
 	if supported, reason := f.Parameters.supported(); !supported {
 		return false, reason
 	}

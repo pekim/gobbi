@@ -7964,7 +7964,37 @@ func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32
 	return retGo, out0, out1, out2, err
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_get_applications' : parameter 'length' of type 'gsize' not supported
+var recentInfoGetApplicationsFunction *gi.Function
+var recentInfoGetApplicationsFunction_Once sync.Once
+
+func recentInfoGetApplicationsFunction_Set() error {
+	var err error
+	recentInfoGetApplicationsFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetApplicationsFunction, err = recentInfoStruct.InvokerNew("get_applications")
+	})
+	return err
+}
+
+// GetApplications is a representation of the C type gtk_recent_info_get_applications.
+func (recv *RecentInfo) GetApplications() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := recentInfoGetApplicationsFunction_Set()
+	if err == nil {
+		recentInfoGetApplicationsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var recentInfoGetDescriptionFunction *gi.Function
 var recentInfoGetDescriptionFunction_Once sync.Once
@@ -8032,7 +8062,37 @@ func (recv *RecentInfo) GetDisplayName() (string, error) {
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_gicon' : return type 'Gio.Icon' not supported
 
-// UNSUPPORTED : C value 'gtk_recent_info_get_groups' : parameter 'length' of type 'gsize' not supported
+var recentInfoGetGroupsFunction *gi.Function
+var recentInfoGetGroupsFunction_Once sync.Once
+
+func recentInfoGetGroupsFunction_Set() error {
+	var err error
+	recentInfoGetGroupsFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetGroupsFunction, err = recentInfoStruct.InvokerNew("get_groups")
+	})
+	return err
+}
+
+// GetGroups is a representation of the C type gtk_recent_info_get_groups.
+func (recv *RecentInfo) GetGroups() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := recentInfoGetGroupsFunction_Set()
+	if err == nil {
+		recentInfoGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 // UNSUPPORTED : C value 'gtk_recent_info_get_icon' : return type 'GdkPixbuf.Pixbuf' not supported
 

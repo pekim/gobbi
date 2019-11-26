@@ -164,9 +164,73 @@ func (recv *StringRef) Unref() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'JSStringGetMaximumUTF8CStringSize' : return type 'gsize' not supported
+var stringRefGetMaximumUTF8CStringSizeFunction *gi.Function
+var stringRefGetMaximumUTF8CStringSizeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'JSStringGetUTF8CString' : parameter 'buffer_size' of type 'gsize' not supported
+func stringRefGetMaximumUTF8CStringSizeFunction_Set() error {
+	var err error
+	stringRefGetMaximumUTF8CStringSizeFunction_Once.Do(func() {
+		err = stringRefStruct_Set()
+		if err != nil {
+			return
+		}
+		stringRefGetMaximumUTF8CStringSizeFunction, err = stringRefStruct.InvokerNew("GetMaximumUTF8CStringSize")
+	})
+	return err
+}
+
+// GetMaximumUTF8CStringSize is a representation of the C type JSStringGetMaximumUTF8CStringSize.
+func (recv *StringRef) GetMaximumUTF8CStringSize() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := stringRefGetMaximumUTF8CStringSizeFunction_Set()
+	if err == nil {
+		ret = stringRefGetMaximumUTF8CStringSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
+
+var stringRefGetUTF8CStringJSStringGetUTF8CStringFunction *gi.Function
+var stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Once sync.Once
+
+func stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Set() error {
+	var err error
+	stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Once.Do(func() {
+		err = stringRefStruct_Set()
+		if err != nil {
+			return
+		}
+		stringRefGetUTF8CStringJSStringGetUTF8CStringFunction, err = stringRefStruct.InvokerNew("GetUTF8CStringJSStringGetUTF8CString")
+	})
+	return err
+}
+
+// GetUTF8CStringJSStringGetUTF8CString is a representation of the C type JSStringGetUTF8CString.
+func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, bufferSize uint64) (uint64, string, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(buffer)
+	inArgs[2].SetUint64(bufferSize)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Set()
+	if err == nil {
+		ret = stringRefGetUTF8CStringJSStringGetUTF8CStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint64()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0, err
+}
 
 var classClassStruct *gi.Struct
 var classClassStruct_Once sync.Once

@@ -7,4 +7,4 @@ package gobject
 // UNSUPPORTED : C value 'SignalCVaMarshaller' : no Go type for 'VaClosureMarshal'
 
 // Type is a representation of the C type Type.
-type Type uintptr
+type Type uint64

@@ -494,7 +494,7 @@ func DbusAddressEscapeValue(string_ string) (string, error) {
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'quark_volatile' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'entries' has no type
 
 // UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : parameter 'error' of type 'GLib.Error' not supported
 

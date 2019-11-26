@@ -486,7 +486,38 @@ func (recv *BookmarkFile) GetAppInfo(uri string, name string) (bool, string, uin
 	return retGo, out0, out1, out2, err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_get_applications' : parameter 'length' of type 'gsize' not supported
+var bookmarkFileGetApplicationsFunction *gi.Function
+var bookmarkFileGetApplicationsFunction_Once sync.Once
+
+func bookmarkFileGetApplicationsFunction_Set() error {
+	var err error
+	bookmarkFileGetApplicationsFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileGetApplicationsFunction, err = bookmarkFileStruct.InvokerNew("get_applications")
+	})
+	return err
+}
+
+// GetApplications is a representation of the C type g_bookmark_file_get_applications.
+func (recv *BookmarkFile) GetApplications(uri string) (uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var outArgs [1]gi.Argument
+
+	err := bookmarkFileGetApplicationsFunction_Set()
+	if err == nil {
+		bookmarkFileGetApplicationsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var bookmarkFileGetDescriptionFunction *gi.Function
 var bookmarkFileGetDescriptionFunction_Once sync.Once
@@ -521,7 +552,38 @@ func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_get_groups' : parameter 'length' of type 'gsize' not supported
+var bookmarkFileGetGroupsFunction *gi.Function
+var bookmarkFileGetGroupsFunction_Once sync.Once
+
+func bookmarkFileGetGroupsFunction_Set() error {
+	var err error
+	bookmarkFileGetGroupsFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileGetGroupsFunction, err = bookmarkFileStruct.InvokerNew("get_groups")
+	})
+	return err
+}
+
+// GetGroups is a representation of the C type g_bookmark_file_get_groups.
+func (recv *BookmarkFile) GetGroups(uri string) (uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(uri)
+
+	var outArgs [1]gi.Argument
+
+	err := bookmarkFileGetGroupsFunction_Set()
+	if err == nil {
+		bookmarkFileGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var bookmarkFileGetIconFunction *gi.Function
 var bookmarkFileGetIconFunction_Once sync.Once
@@ -723,7 +785,37 @@ func (recv *BookmarkFile) GetTitle(uri string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_get_uris' : parameter 'length' of type 'gsize' not supported
+var bookmarkFileGetUrisFunction *gi.Function
+var bookmarkFileGetUrisFunction_Once sync.Once
+
+func bookmarkFileGetUrisFunction_Set() error {
+	var err error
+	bookmarkFileGetUrisFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileGetUrisFunction, err = bookmarkFileStruct.InvokerNew("get_uris")
+	})
+	return err
+}
+
+// GetUris is a representation of the C type g_bookmark_file_get_uris.
+func (recv *BookmarkFile) GetUris() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := bookmarkFileGetUrisFunction_Set()
+	if err == nil {
+		bookmarkFileGetUrisFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var bookmarkFileGetVisitedFunction *gi.Function
 var bookmarkFileGetVisitedFunction_Once sync.Once
@@ -1280,7 +1372,37 @@ func (recv *BookmarkFile) SetVisited(uri string, visited int64) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_to_data' : parameter 'length' of type 'gsize' not supported
+var bookmarkFileToDataFunction *gi.Function
+var bookmarkFileToDataFunction_Once sync.Once
+
+func bookmarkFileToDataFunction_Set() error {
+	var err error
+	bookmarkFileToDataFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileToDataFunction, err = bookmarkFileStruct.InvokerNew("to_data")
+	})
+	return err
+}
+
+// ToData is a representation of the C type g_bookmark_file_to_data.
+func (recv *BookmarkFile) ToData() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := bookmarkFileToDataFunction_Set()
+	if err == nil {
+		bookmarkFileToDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 // UNSUPPORTED : C value 'g_bookmark_file_to_file' : parameter 'filename' of type 'filename' not supported
 
@@ -1328,9 +1450,69 @@ type Bytes struct {
 
 // UNSUPPORTED : C value 'g_bytes_equal' : parameter 'bytes2' of type 'Bytes' not supported
 
-// UNSUPPORTED : C value 'g_bytes_get_data' : parameter 'size' of type 'gsize' not supported
+var bytesGetDataFunction *gi.Function
+var bytesGetDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bytes_get_size' : return type 'gsize' not supported
+func bytesGetDataFunction_Set() error {
+	var err error
+	bytesGetDataFunction_Once.Do(func() {
+		err = bytesStruct_Set()
+		if err != nil {
+			return
+		}
+		bytesGetDataFunction, err = bytesStruct.InvokerNew("get_data")
+	})
+	return err
+}
+
+// GetData is a representation of the C type g_bytes_get_data.
+func (recv *Bytes) GetData() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := bytesGetDataFunction_Set()
+	if err == nil {
+		bytesGetDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var bytesGetSizeFunction *gi.Function
+var bytesGetSizeFunction_Once sync.Once
+
+func bytesGetSizeFunction_Set() error {
+	var err error
+	bytesGetSizeFunction_Once.Do(func() {
+		err = bytesStruct_Set()
+		if err != nil {
+			return
+		}
+		bytesGetSizeFunction, err = bytesStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type g_bytes_get_size.
+func (recv *Bytes) GetSize() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := bytesGetSizeFunction_Set()
+	if err == nil {
+		ret = bytesGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var bytesHashFunction *gi.Function
 var bytesHashFunction_Once sync.Once
@@ -1364,7 +1546,39 @@ func (recv *Bytes) Hash() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_bytes_new_from_bytes' : parameter 'offset' of type 'gsize' not supported
+var bytesNewFromBytesFunction *gi.Function
+var bytesNewFromBytesFunction_Once sync.Once
+
+func bytesNewFromBytesFunction_Set() error {
+	var err error
+	bytesNewFromBytesFunction_Once.Do(func() {
+		err = bytesStruct_Set()
+		if err != nil {
+			return
+		}
+		bytesNewFromBytesFunction, err = bytesStruct.InvokerNew("new_from_bytes")
+	})
+	return err
+}
+
+// NewFromBytes is a representation of the C type g_bytes_new_from_bytes.
+func (recv *Bytes) NewFromBytes(offset uint64, length uint64) (*Bytes, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(offset)
+	inArgs[2].SetUint64(length)
+
+	var ret gi.Argument
+
+	err := bytesNewFromBytesFunction_Set()
+	if err == nil {
+		ret = bytesNewFromBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Bytes{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var bytesRefFunction *gi.Function
 var bytesRefFunction_Once sync.Once
@@ -1454,7 +1668,37 @@ func (recv *Bytes) UnrefToArray() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_bytes_unref_to_data' : parameter 'size' of type 'gsize' not supported
+var bytesUnrefToDataFunction *gi.Function
+var bytesUnrefToDataFunction_Once sync.Once
+
+func bytesUnrefToDataFunction_Set() error {
+	var err error
+	bytesUnrefToDataFunction_Once.Do(func() {
+		err = bytesStruct_Set()
+		if err != nil {
+			return
+		}
+		bytesUnrefToDataFunction, err = bytesStruct.InvokerNew("unref_to_data")
+	})
+	return err
+}
+
+// UnrefToData is a representation of the C type g_bytes_unref_to_data.
+func (recv *Bytes) UnrefToData() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := bytesUnrefToDataFunction_Set()
+	if err == nil {
+		bytesUnrefToDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var checksumStruct *gi.Struct
 var checksumStruct_Once sync.Once
@@ -4561,7 +4805,7 @@ type IConv struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_iconv' : parameter 'inbytes_left' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_iconv' : moved to iconv
 
 var iConvCloseFunction *gi.Function
 var iConvCloseFunction_Once sync.Once
@@ -4676,7 +4920,37 @@ func (recv *IOChannel) Close() error {
 
 // UNSUPPORTED : C value 'g_io_channel_get_buffer_condition' : return type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_get_buffer_size' : return type 'gsize' not supported
+var iOChannelGetBufferSizeFunction *gi.Function
+var iOChannelGetBufferSizeFunction_Once sync.Once
+
+func iOChannelGetBufferSizeFunction_Set() error {
+	var err error
+	iOChannelGetBufferSizeFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelGetBufferSizeFunction, err = iOChannelStruct.InvokerNew("get_buffer_size")
+	})
+	return err
+}
+
+// GetBufferSize is a representation of the C type g_io_channel_get_buffer_size.
+func (recv *IOChannel) GetBufferSize() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := iOChannelGetBufferSizeFunction_Set()
+	if err == nil {
+		ret = iOChannelGetBufferSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var iOChannelGetBufferedFunction *gi.Function
 var iOChannelGetBufferedFunction_Once sync.Once
@@ -4837,11 +5111,11 @@ func (recv *IOChannel) Init() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_io_channel_read' : parameter 'count' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_io_channel_read' : return type 'IOError' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_read_chars' : parameter 'buf' has no type
 
-// UNSUPPORTED : C value 'g_io_channel_read_line' : parameter 'length' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_io_channel_read_line' : return type 'IOStatus' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_read_line_string' : parameter 'buffer' of type 'String' not supported
 
@@ -4885,7 +5159,34 @@ func (recv *IOChannel) Ref() (*IOChannel, error) {
 
 // UNSUPPORTED : C value 'g_io_channel_seek_position' : parameter 'type' of type 'SeekType' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_set_buffer_size' : parameter 'size' of type 'gsize' not supported
+var iOChannelSetBufferSizeFunction *gi.Function
+var iOChannelSetBufferSizeFunction_Once sync.Once
+
+func iOChannelSetBufferSizeFunction_Set() error {
+	var err error
+	iOChannelSetBufferSizeFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSetBufferSizeFunction, err = iOChannelStruct.InvokerNew("set_buffer_size")
+	})
+	return err
+}
+
+// SetBufferSize is a representation of the C type g_io_channel_set_buffer_size.
+func (recv *IOChannel) SetBufferSize(size uint64) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(size)
+
+	err := iOChannelSetBufferSizeFunction_Set()
+	if err == nil {
+		iOChannelSetBufferSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var iOChannelSetBufferedFunction *gi.Function
 var iOChannelSetBufferedFunction_Once sync.Once
@@ -5041,7 +5342,7 @@ func (recv *IOChannel) Unref() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_io_channel_write' : parameter 'count' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_io_channel_write' : return type 'IOError' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_write_chars' : parameter 'buf' has no type
 
@@ -5177,7 +5478,39 @@ func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_boolean_list' : parameter 'length' of type 'gsize' not supported
+var keyFileGetBooleanListFunction *gi.Function
+var keyFileGetBooleanListFunction_Once sync.Once
+
+func keyFileGetBooleanListFunction_Set() error {
+	var err error
+	keyFileGetBooleanListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetBooleanListFunction, err = keyFileStruct.InvokerNew("get_boolean_list")
+	})
+	return err
+}
+
+// GetBooleanList is a representation of the C type g_key_file_get_boolean_list.
+func (recv *KeyFile) GetBooleanList(groupName string, key string) (uint64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetBooleanListFunction_Set()
+	if err == nil {
+		keyFileGetBooleanListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var keyFileGetCommentFunction *gi.Function
 var keyFileGetCommentFunction_Once sync.Once
@@ -5247,9 +5580,71 @@ func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_double_list' : parameter 'length' of type 'gsize' not supported
+var keyFileGetDoubleListFunction *gi.Function
+var keyFileGetDoubleListFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_key_file_get_groups' : parameter 'length' of type 'gsize' not supported
+func keyFileGetDoubleListFunction_Set() error {
+	var err error
+	keyFileGetDoubleListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetDoubleListFunction, err = keyFileStruct.InvokerNew("get_double_list")
+	})
+	return err
+}
+
+// GetDoubleList is a representation of the C type g_key_file_get_double_list.
+func (recv *KeyFile) GetDoubleList(groupName string, key string) (uint64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetDoubleListFunction_Set()
+	if err == nil {
+		keyFileGetDoubleListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var keyFileGetGroupsFunction *gi.Function
+var keyFileGetGroupsFunction_Once sync.Once
+
+func keyFileGetGroupsFunction_Set() error {
+	var err error
+	keyFileGetGroupsFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetGroupsFunction, err = keyFileStruct.InvokerNew("get_groups")
+	})
+	return err
+}
+
+// GetGroups is a representation of the C type g_key_file_get_groups.
+func (recv *KeyFile) GetGroups() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetGroupsFunction_Set()
+	if err == nil {
+		keyFileGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var keyFileGetInt64Function *gi.Function
 var keyFileGetInt64Function_Once sync.Once
@@ -5319,9 +5714,72 @@ func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_integer_list' : parameter 'length' of type 'gsize' not supported
+var keyFileGetIntegerListFunction *gi.Function
+var keyFileGetIntegerListFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_key_file_get_keys' : parameter 'length' of type 'gsize' not supported
+func keyFileGetIntegerListFunction_Set() error {
+	var err error
+	keyFileGetIntegerListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetIntegerListFunction, err = keyFileStruct.InvokerNew("get_integer_list")
+	})
+	return err
+}
+
+// GetIntegerList is a representation of the C type g_key_file_get_integer_list.
+func (recv *KeyFile) GetIntegerList(groupName string, key string) (uint64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetIntegerListFunction_Set()
+	if err == nil {
+		keyFileGetIntegerListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var keyFileGetKeysFunction *gi.Function
+var keyFileGetKeysFunction_Once sync.Once
+
+func keyFileGetKeysFunction_Set() error {
+	var err error
+	keyFileGetKeysFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetKeysFunction, err = keyFileStruct.InvokerNew("get_keys")
+	})
+	return err
+}
+
+// GetKeys is a representation of the C type g_key_file_get_keys.
+func (recv *KeyFile) GetKeys(groupName string) (uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetKeysFunction_Set()
+	if err == nil {
+		keyFileGetKeysFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var keyFileGetLocaleForKeyFunction *gi.Function
 var keyFileGetLocaleForKeyFunction_Once sync.Once
@@ -5393,7 +5851,40 @@ func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_locale_string_list' : parameter 'length' of type 'gsize' not supported
+var keyFileGetLocaleStringListFunction *gi.Function
+var keyFileGetLocaleStringListFunction_Once sync.Once
+
+func keyFileGetLocaleStringListFunction_Set() error {
+	var err error
+	keyFileGetLocaleStringListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetLocaleStringListFunction, err = keyFileStruct.InvokerNew("get_locale_string_list")
+	})
+	return err
+}
+
+// GetLocaleStringList is a representation of the C type g_key_file_get_locale_string_list.
+func (recv *KeyFile) GetLocaleStringList(groupName string, key string, locale string) (uint64, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+	inArgs[3].SetString(locale)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetLocaleStringListFunction_Set()
+	if err == nil {
+		keyFileGetLocaleStringListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var keyFileGetStartGroupFunction *gi.Function
 var keyFileGetStartGroupFunction_Once sync.Once
@@ -5461,7 +5952,39 @@ func (recv *KeyFile) GetString(groupName string, key string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_get_string_list' : parameter 'length' of type 'gsize' not supported
+var keyFileGetStringListFunction *gi.Function
+var keyFileGetStringListFunction_Once sync.Once
+
+func keyFileGetStringListFunction_Set() error {
+	var err error
+	keyFileGetStringListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileGetStringListFunction, err = keyFileStruct.InvokerNew("get_string_list")
+	})
+	return err
+}
+
+// GetStringList is a representation of the C type g_key_file_get_string_list.
+func (recv *KeyFile) GetStringList(groupName string, key string) (uint64, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+
+	var outArgs [1]gi.Argument
+
+	err := keyFileGetStringListFunction_Set()
+	if err == nil {
+		keyFileGetStringListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var keyFileGetUint64Function *gi.Function
 var keyFileGetUint64Function_Once sync.Once
@@ -5600,7 +6123,7 @@ func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_key_file_load_from_bytes' : parameter 'bytes' of type 'Bytes' not supported
 
-// UNSUPPORTED : C value 'g_key_file_load_from_data' : parameter 'length' of type 'gsize' not supported
+// UNSUPPORTED : C value 'g_key_file_load_from_data' : parameter 'flags' of type 'KeyFileFlags' not supported
 
 // UNSUPPORTED : C value 'g_key_file_load_from_data_dirs' : parameter 'file' of type 'filename' not supported
 
@@ -6097,7 +6620,39 @@ func (recv *KeyFile) SetValue(groupName string, key string, value string) error 
 	return err
 }
 
-// UNSUPPORTED : C value 'g_key_file_to_data' : parameter 'length' of type 'gsize' not supported
+var keyFileToDataFunction *gi.Function
+var keyFileToDataFunction_Once sync.Once
+
+func keyFileToDataFunction_Set() error {
+	var err error
+	keyFileToDataFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileToDataFunction, err = keyFileStruct.InvokerNew("to_data")
+	})
+	return err
+}
+
+// ToData is a representation of the C type g_key_file_to_data.
+func (recv *KeyFile) ToData() (string, uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := keyFileToDataFunction_Set()
+	if err == nil {
+		ret = keyFileToDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
 
 var keyFileUnrefFunction *gi.Function
 var keyFileUnrefFunction_Once sync.Once
@@ -6965,7 +7520,37 @@ func (recv *MappedFile) GetContents() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_mapped_file_get_length' : return type 'gsize' not supported
+var mappedFileGetLengthFunction *gi.Function
+var mappedFileGetLengthFunction_Once sync.Once
+
+func mappedFileGetLengthFunction_Set() error {
+	var err error
+	mappedFileGetLengthFunction_Once.Do(func() {
+		err = mappedFileStruct_Set()
+		if err != nil {
+			return
+		}
+		mappedFileGetLengthFunction, err = mappedFileStruct.InvokerNew("get_length")
+	})
+	return err
+}
+
+// GetLength is a representation of the C type g_mapped_file_get_length.
+func (recv *MappedFile) GetLength() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := mappedFileGetLengthFunction_Set()
+	if err == nil {
+		ret = mappedFileGetLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var mappedFileRefFunction *gi.Function
 var mappedFileRefFunction_Once sync.Once
@@ -11625,8 +12210,8 @@ func string_Struct_Set() error {
 type String struct {
 	native       uintptr
 	Str          string
-	Len          uintptr
-	AllocatedLen uintptr
+	Len          uint64
+	AllocatedLen uint64
 }
 
 var stringAppendFunction *gi.Function
@@ -12137,9 +12722,74 @@ func (recv *String) InsertLen(pos int32, val string, len int32) (*String, error)
 
 // UNSUPPORTED : C value 'g_string_insert_unichar' : parameter 'wc' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_string_overwrite' : parameter 'pos' of type 'gsize' not supported
+var stringOverwriteFunction *gi.Function
+var stringOverwriteFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_string_overwrite_len' : parameter 'pos' of type 'gsize' not supported
+func stringOverwriteFunction_Set() error {
+	var err error
+	stringOverwriteFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringOverwriteFunction, err = string_Struct.InvokerNew("overwrite")
+	})
+	return err
+}
+
+// Overwrite is a representation of the C type g_string_overwrite.
+func (recv *String) Overwrite(pos uint64, val string) (*String, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(pos)
+	inArgs[2].SetString(val)
+
+	var ret gi.Argument
+
+	err := stringOverwriteFunction_Set()
+	if err == nil {
+		ret = stringOverwriteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var stringOverwriteLenFunction *gi.Function
+var stringOverwriteLenFunction_Once sync.Once
+
+func stringOverwriteLenFunction_Set() error {
+	var err error
+	stringOverwriteLenFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringOverwriteLenFunction, err = string_Struct.InvokerNew("overwrite_len")
+	})
+	return err
+}
+
+// OverwriteLen is a representation of the C type g_string_overwrite_len.
+func (recv *String) OverwriteLen(pos uint64, val string, len int32) (*String, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(pos)
+	inArgs[2].SetString(val)
+	inArgs[3].SetInt32(len)
+
+	var ret gi.Argument
+
+	err := stringOverwriteLenFunction_Set()
+	if err == nil {
+		ret = stringOverwriteLenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var stringPrependFunction *gi.Function
 var stringPrependFunction_Once sync.Once
@@ -12245,9 +12895,71 @@ func (recv *String) PrependLen(val string, len int32) (*String, error) {
 
 // UNSUPPORTED : C value 'g_string_printf' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_string_set_size' : parameter 'len' of type 'gsize' not supported
+var stringSetSizeFunction *gi.Function
+var stringSetSizeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_string_truncate' : parameter 'len' of type 'gsize' not supported
+func stringSetSizeFunction_Set() error {
+	var err error
+	stringSetSizeFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringSetSizeFunction, err = string_Struct.InvokerNew("set_size")
+	})
+	return err
+}
+
+// SetSize is a representation of the C type g_string_set_size.
+func (recv *String) SetSize(len uint64) (*String, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(len)
+
+	var ret gi.Argument
+
+	err := stringSetSizeFunction_Set()
+	if err == nil {
+		ret = stringSetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var stringTruncateFunction *gi.Function
+var stringTruncateFunction_Once sync.Once
+
+func stringTruncateFunction_Set() error {
+	var err error
+	stringTruncateFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringTruncateFunction, err = string_Struct.InvokerNew("truncate")
+	})
+	return err
+}
+
+// Truncate is a representation of the C type g_string_truncate.
+func (recv *String) Truncate(len uint64) (*String, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(len)
+
+	var ret gi.Argument
+
+	err := stringTruncateFunction_Set()
+	if err == nil {
+		ret = stringTruncateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var stringUpFunction *gi.Function
 var stringUpFunction_Once sync.Once
@@ -14326,15 +15038,167 @@ func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) (bool
 
 // UNSUPPORTED : C value 'g_variant_compare' : parameter 'two' of type 'Variant' not supported
 
-// UNSUPPORTED : C value 'g_variant_dup_bytestring' : parameter 'length' of type 'gsize' not supported
+var variantDupBytestringFunction *gi.Function
+var variantDupBytestringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_dup_bytestring_array' : parameter 'length' of type 'gsize' not supported
+func variantDupBytestringFunction_Set() error {
+	var err error
+	variantDupBytestringFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDupBytestringFunction, err = variantStruct.InvokerNew("dup_bytestring")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_variant_dup_objv' : parameter 'length' of type 'gsize' not supported
+// DupBytestring is a representation of the C type g_variant_dup_bytestring.
+func (recv *Variant) DupBytestring() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'g_variant_dup_string' : parameter 'length' of type 'gsize' not supported
+	var outArgs [1]gi.Argument
 
-// UNSUPPORTED : C value 'g_variant_dup_strv' : parameter 'length' of type 'gsize' not supported
+	err := variantDupBytestringFunction_Set()
+	if err == nil {
+		variantDupBytestringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var variantDupBytestringArrayFunction *gi.Function
+var variantDupBytestringArrayFunction_Once sync.Once
+
+func variantDupBytestringArrayFunction_Set() error {
+	var err error
+	variantDupBytestringArrayFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDupBytestringArrayFunction, err = variantStruct.InvokerNew("dup_bytestring_array")
+	})
+	return err
+}
+
+// DupBytestringArray is a representation of the C type g_variant_dup_bytestring_array.
+func (recv *Variant) DupBytestringArray() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := variantDupBytestringArrayFunction_Set()
+	if err == nil {
+		variantDupBytestringArrayFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var variantDupObjvFunction *gi.Function
+var variantDupObjvFunction_Once sync.Once
+
+func variantDupObjvFunction_Set() error {
+	var err error
+	variantDupObjvFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDupObjvFunction, err = variantStruct.InvokerNew("dup_objv")
+	})
+	return err
+}
+
+// DupObjv is a representation of the C type g_variant_dup_objv.
+func (recv *Variant) DupObjv() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := variantDupObjvFunction_Set()
+	if err == nil {
+		variantDupObjvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var variantDupStringFunction *gi.Function
+var variantDupStringFunction_Once sync.Once
+
+func variantDupStringFunction_Set() error {
+	var err error
+	variantDupStringFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDupStringFunction, err = variantStruct.InvokerNew("dup_string")
+	})
+	return err
+}
+
+// DupString is a representation of the C type g_variant_dup_string.
+func (recv *Variant) DupString() (string, uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := variantDupStringFunction_Set()
+	if err == nil {
+		ret = variantDupStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
+
+var variantDupStrvFunction *gi.Function
+var variantDupStrvFunction_Once sync.Once
+
+func variantDupStrvFunction_Set() error {
+	var err error
+	variantDupStrvFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDupStrvFunction, err = variantStruct.InvokerNew("dup_strv")
+	})
+	return err
+}
+
+// DupStrv is a representation of the C type g_variant_dup_strv.
+func (recv *Variant) DupStrv() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := variantDupStrvFunction_Set()
+	if err == nil {
+		variantDupStrvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 // UNSUPPORTED : C value 'g_variant_equal' : parameter 'two' of type 'Variant' not supported
 
@@ -14432,11 +15296,72 @@ func (recv *Variant) GetBytestring() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_variant_get_bytestring_array' : parameter 'length' of type 'gsize' not supported
+var variantGetBytestringArrayFunction *gi.Function
+var variantGetBytestringArrayFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_get_child' : parameter 'index_' of type 'gsize' not supported
+func variantGetBytestringArrayFunction_Set() error {
+	var err error
+	variantGetBytestringArrayFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetBytestringArrayFunction, err = variantStruct.InvokerNew("get_bytestring_array")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_variant_get_child_value' : parameter 'index_' of type 'gsize' not supported
+// GetBytestringArray is a representation of the C type g_variant_get_bytestring_array.
+func (recv *Variant) GetBytestringArray() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := variantGetBytestringArrayFunction_Set()
+	if err == nil {
+		variantGetBytestringArrayFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+// UNSUPPORTED : C value 'g_variant_get_child' : parameter '...' has no type
+
+var variantGetChildValueFunction *gi.Function
+var variantGetChildValueFunction_Once sync.Once
+
+func variantGetChildValueFunction_Set() error {
+	var err error
+	variantGetChildValueFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetChildValueFunction, err = variantStruct.InvokerNew("get_child_value")
+	})
+	return err
+}
+
+// GetChildValue is a representation of the C type g_variant_get_child_value.
+func (recv *Variant) GetChildValue(index uint64) (*Variant, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(index)
+
+	var ret gi.Argument
+
+	err := variantGetChildValueFunction_Set()
+	if err == nil {
+		ret = variantGetChildValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_get_data' : return type 'gpointer' not supported
 
@@ -14504,7 +15429,38 @@ func (recv *Variant) GetDouble() (float64, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_get_fixed_array' : parameter 'n_elements' of type 'gsize' not supported
+var variantGetFixedArrayFunction *gi.Function
+var variantGetFixedArrayFunction_Once sync.Once
+
+func variantGetFixedArrayFunction_Set() error {
+	var err error
+	variantGetFixedArrayFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetFixedArrayFunction, err = variantStruct.InvokerNew("get_fixed_array")
+	})
+	return err
+}
+
+// GetFixedArray is a representation of the C type g_variant_get_fixed_array.
+func (recv *Variant) GetFixedArray(elementSize uint64) (uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint64(elementSize)
+
+	var outArgs [1]gi.Argument
+
+	err := variantGetFixedArrayFunction_Set()
+	if err == nil {
+		variantGetFixedArrayFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var variantGetHandleFunction *gi.Function
 var variantGetHandleFunction_Once sync.Once
@@ -14698,13 +15654,135 @@ func (recv *Variant) GetNormalForm() (*Variant, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_get_objv' : parameter 'length' of type 'gsize' not supported
+var variantGetObjvFunction *gi.Function
+var variantGetObjvFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_get_size' : return type 'gsize' not supported
+func variantGetObjvFunction_Set() error {
+	var err error
+	variantGetObjvFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetObjvFunction, err = variantStruct.InvokerNew("get_objv")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_variant_get_string' : parameter 'length' of type 'gsize' not supported
+// GetObjv is a representation of the C type g_variant_get_objv.
+func (recv *Variant) GetObjv() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
 
-// UNSUPPORTED : C value 'g_variant_get_strv' : parameter 'length' of type 'gsize' not supported
+	var outArgs [1]gi.Argument
+
+	err := variantGetObjvFunction_Set()
+	if err == nil {
+		variantGetObjvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
+
+var variantGetSizeFunction *gi.Function
+var variantGetSizeFunction_Once sync.Once
+
+func variantGetSizeFunction_Set() error {
+	var err error
+	variantGetSizeFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetSizeFunction, err = variantStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type g_variant_get_size.
+func (recv *Variant) GetSize() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantGetSizeFunction_Set()
+	if err == nil {
+		ret = variantGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
+
+var variantGetStringFunction *gi.Function
+var variantGetStringFunction_Once sync.Once
+
+func variantGetStringFunction_Set() error {
+	var err error
+	variantGetStringFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetStringFunction, err = variantStruct.InvokerNew("get_string")
+	})
+	return err
+}
+
+// GetString is a representation of the C type g_variant_get_string.
+func (recv *Variant) GetString() (string, uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := variantGetStringFunction_Set()
+	if err == nil {
+		ret = variantGetStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(false)
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0, err
+}
+
+var variantGetStrvFunction *gi.Function
+var variantGetStrvFunction_Once sync.Once
+
+func variantGetStrvFunction_Set() error {
+	var err error
+	variantGetStrvFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetStrvFunction, err = variantStruct.InvokerNew("get_strv")
+	})
+	return err
+}
+
+// GetStrv is a representation of the C type g_variant_get_strv.
+func (recv *Variant) GetStrv() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := variantGetStrvFunction_Set()
+	if err == nil {
+		variantGetStrvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0, err
+}
 
 var variantGetTypeFunction *gi.Function
 var variantGetTypeFunction_Once sync.Once
@@ -15066,7 +16144,37 @@ func (recv *Variant) IterNew() (*VariantIter, error) {
 
 // UNSUPPORTED : C value 'g_variant_lookup_value' : parameter 'expected_type' of type 'VariantType' not supported
 
-// UNSUPPORTED : C value 'g_variant_n_children' : return type 'gsize' not supported
+var variantNChildrenFunction *gi.Function
+var variantNChildrenFunction_Once sync.Once
+
+func variantNChildrenFunction_Set() error {
+	var err error
+	variantNChildrenFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNChildrenFunction, err = variantStruct.InvokerNew("n_children")
+	})
+	return err
+}
+
+// NChildren is a representation of the C type g_variant_n_children.
+func (recv *Variant) NChildren() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantNChildrenFunction_Set()
+	if err == nil {
+		ret = variantNChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var variantPrintFunction *gi.Function
 var variantPrintFunction_Once sync.Once
@@ -15696,7 +16804,37 @@ func (recv *VariantIter) Free() error {
 
 // UNSUPPORTED : C value 'g_variant_iter_loop' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_iter_n_children' : return type 'gsize' not supported
+var variantIterNChildrenFunction *gi.Function
+var variantIterNChildrenFunction_Once sync.Once
+
+func variantIterNChildrenFunction_Set() error {
+	var err error
+	variantIterNChildrenFunction_Once.Do(func() {
+		err = variantIterStruct_Set()
+		if err != nil {
+			return
+		}
+		variantIterNChildrenFunction, err = variantIterStruct.InvokerNew("n_children")
+	})
+	return err
+}
+
+// NChildren is a representation of the C type g_variant_iter_n_children.
+func (recv *VariantIter) NChildren() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantIterNChildrenFunction_Set()
+	if err == nil {
+		ret = variantIterNChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_iter_next' : parameter '...' has no type
 
@@ -15945,7 +17083,37 @@ func (recv *VariantType) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_get_string_length' : return type 'gsize' not supported
+var variantTypeGetStringLengthFunction *gi.Function
+var variantTypeGetStringLengthFunction_Once sync.Once
+
+func variantTypeGetStringLengthFunction_Set() error {
+	var err error
+	variantTypeGetStringLengthFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeGetStringLengthFunction, err = variantTypeStruct.InvokerNew("get_string_length")
+	})
+	return err
+}
+
+// GetStringLength is a representation of the C type g_variant_type_get_string_length.
+func (recv *VariantType) GetStringLength() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeGetStringLengthFunction_Set()
+	if err == nil {
+		ret = variantTypeGetStringLengthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var variantTypeHashFunction *gi.Function
 var variantTypeHashFunction_Once sync.Once
@@ -16269,7 +17437,37 @@ func (recv *VariantType) Key() (*VariantType, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_n_items' : return type 'gsize' not supported
+var variantTypeNItemsFunction *gi.Function
+var variantTypeNItemsFunction_Once sync.Once
+
+func variantTypeNItemsFunction_Set() error {
+	var err error
+	variantTypeNItemsFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeNItemsFunction, err = variantTypeStruct.InvokerNew("n_items")
+	})
+	return err
+}
+
+// NItems is a representation of the C type g_variant_type_n_items.
+func (recv *VariantType) NItems() (uint64, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var ret gi.Argument
+
+	err := variantTypeNItemsFunction_Set()
+	if err == nil {
+		ret = variantTypeNItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var variantTypeNextFunction *gi.Function
 var variantTypeNextFunction_Once sync.Once
