@@ -13,8 +13,6 @@ type repository struct {
 	Version string   `xml:"Version,attr"`
 	//Includes  []Include  `xml:"http://www.gtk.org/introspection/core/1.0 include"`
 	Namespace *Namespace `xml:"namespace"`
-
-	addenda *repository
 }
 
 func (r *repository) loadFromFile(filename string, required bool) {
@@ -37,12 +35,8 @@ func (r *repository) loadFromFile(filename string, required bool) {
 func repositoryFromFile(spec RepositorySpec) *repository {
 	fullname := spec.Name + "-" + spec.Version
 
-	r := &repository{
-		addenda: &repository{},
-	}
+	r := &repository{}
 	r.loadFromFile(fullname+".gir", true)
-	r.addenda.loadFromFile(fullname+"-addenda.gir", false)
 
-	//fmt.Println(r.Namespace.Name, r.Namespace.Version)
 	return r
 }
