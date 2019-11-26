@@ -214,7 +214,7 @@ func (recv *AttrIterator) Destroy() error {
 
 // UNSUPPORTED : C value 'pango_attr_iterator_get_attrs' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'pango_attr_iterator_get_font' : parameter 'desc' of type 'FontDescription' not supported
+// UNSUPPORTED : C value 'pango_attr_iterator_get_font' : parameter 'extra_attrs' of type 'GLib.SList' not supported
 
 var attrIteratorNextFunction *gi.Function
 var attrIteratorNextFunction_Once sync.Once
@@ -343,7 +343,34 @@ func AttrListNew() (*AttrList, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_attr_list_change' : parameter 'attr' of type 'Attribute' not supported
+var attrListChangeFunction *gi.Function
+var attrListChangeFunction_Once sync.Once
+
+func attrListChangeFunction_Set() error {
+	var err error
+	attrListChangeFunction_Once.Do(func() {
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListChangeFunction, err = attrListStruct.InvokerNew("change")
+	})
+	return err
+}
+
+// Change is a representation of the C type pango_attr_list_change.
+func (recv *AttrList) Change(attr *Attribute) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(attr.native)
+
+	err := attrListChangeFunction_Set()
+	if err == nil {
+		attrListChangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var attrListCopyFunction *gi.Function
 var attrListCopyFunction_Once sync.Once
@@ -411,9 +438,63 @@ func (recv *AttrList) GetIterator() (*AttrIterator, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_attr_list_insert' : parameter 'attr' of type 'Attribute' not supported
+var attrListInsertFunction *gi.Function
+var attrListInsertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_attr_list_insert_before' : parameter 'attr' of type 'Attribute' not supported
+func attrListInsertFunction_Set() error {
+	var err error
+	attrListInsertFunction_Once.Do(func() {
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListInsertFunction, err = attrListStruct.InvokerNew("insert")
+	})
+	return err
+}
+
+// Insert is a representation of the C type pango_attr_list_insert.
+func (recv *AttrList) Insert(attr *Attribute) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(attr.native)
+
+	err := attrListInsertFunction_Set()
+	if err == nil {
+		attrListInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var attrListInsertBeforeFunction *gi.Function
+var attrListInsertBeforeFunction_Once sync.Once
+
+func attrListInsertBeforeFunction_Set() error {
+	var err error
+	attrListInsertBeforeFunction_Once.Do(func() {
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListInsertBeforeFunction, err = attrListStruct.InvokerNew("insert_before")
+	})
+	return err
+}
+
+// InsertBefore is a representation of the C type pango_attr_list_insert_before.
+func (recv *AttrList) InsertBefore(attr *Attribute) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(attr.native)
+
+	err := attrListInsertBeforeFunction_Set()
+	if err == nil {
+		attrListInsertBeforeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var attrListRefFunction *gi.Function
 var attrListRefFunction_Once sync.Once
@@ -447,7 +528,36 @@ func (recv *AttrList) Ref() (*AttrList, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_attr_list_splice' : parameter 'other' of type 'AttrList' not supported
+var attrListSpliceFunction *gi.Function
+var attrListSpliceFunction_Once sync.Once
+
+func attrListSpliceFunction_Set() error {
+	var err error
+	attrListSpliceFunction_Once.Do(func() {
+		err = attrListStruct_Set()
+		if err != nil {
+			return
+		}
+		attrListSpliceFunction, err = attrListStruct.InvokerNew("splice")
+	})
+	return err
+}
+
+// Splice is a representation of the C type pango_attr_list_splice.
+func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) error {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(other.native)
+	inArgs[2].SetInt32(pos)
+	inArgs[3].SetInt32(len)
+
+	err := attrListSpliceFunction_Set()
+	if err == nil {
+		attrListSpliceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var attrListUnrefFunction *gi.Function
 var attrListUnrefFunction_Once sync.Once
@@ -611,9 +721,67 @@ func (recv *Attribute) Destroy() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_attribute_equal' : parameter 'attr2' of type 'Attribute' not supported
+var attributeEqualFunction *gi.Function
+var attributeEqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_attribute_init' : parameter 'klass' of type 'AttrClass' not supported
+func attributeEqualFunction_Set() error {
+	var err error
+	attributeEqualFunction_Once.Do(func() {
+		err = attributeStruct_Set()
+		if err != nil {
+			return
+		}
+		attributeEqualFunction, err = attributeStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type pango_attribute_equal.
+func (recv *Attribute) Equal(attr2 *Attribute) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(attr2.native)
+
+	var ret gi.Argument
+
+	err := attributeEqualFunction_Set()
+	if err == nil {
+		ret = attributeEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var attributeInitFunction *gi.Function
+var attributeInitFunction_Once sync.Once
+
+func attributeInitFunction_Set() error {
+	var err error
+	attributeInitFunction_Once.Do(func() {
+		err = attributeStruct_Set()
+		if err != nil {
+			return
+		}
+		attributeInitFunction, err = attributeStruct.InvokerNew("init")
+	})
+	return err
+}
+
+// Init is a representation of the C type pango_attribute_init.
+func (recv *Attribute) Init(klass *AttrClass) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(klass.native)
+
+	err := attributeInitFunction_Set()
+	if err == nil {
+		attributeInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var colorStruct *gi.Struct
 var colorStruct_Once sync.Once
@@ -822,7 +990,34 @@ func (recv *Coverage) Copy() (*Coverage, error) {
 
 // UNSUPPORTED : C value 'pango_coverage_get' : return type 'CoverageLevel' not supported
 
-// UNSUPPORTED : C value 'pango_coverage_max' : parameter 'other' of type 'Coverage' not supported
+var coverageMaxFunction *gi.Function
+var coverageMaxFunction_Once sync.Once
+
+func coverageMaxFunction_Set() error {
+	var err error
+	coverageMaxFunction_Once.Do(func() {
+		err = coverageStruct_Set()
+		if err != nil {
+			return
+		}
+		coverageMaxFunction, err = coverageStruct.InvokerNew("max")
+	})
+	return err
+}
+
+// Max is a representation of the C type pango_coverage_max.
+func (recv *Coverage) Max(other *Coverage) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(other.native)
+
+	err := coverageMaxFunction_Set()
+	if err == nil {
+		coverageMaxFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var coverageRefFunction *gi.Function
 var coverageRefFunction_Once sync.Once
@@ -1043,7 +1238,39 @@ func FontDescriptionNew() (*FontDescription, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_font_description_better_match' : parameter 'old_match' of type 'FontDescription' not supported
+var fontDescriptionBetterMatchFunction *gi.Function
+var fontDescriptionBetterMatchFunction_Once sync.Once
+
+func fontDescriptionBetterMatchFunction_Set() error {
+	var err error
+	fontDescriptionBetterMatchFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionBetterMatchFunction, err = fontDescriptionStruct.InvokerNew("better_match")
+	})
+	return err
+}
+
+// BetterMatch is a representation of the C type pango_font_description_better_match.
+func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *FontDescription) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(oldMatch.native)
+	inArgs[2].SetPointer(newMatch.native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionBetterMatchFunction_Set()
+	if err == nil {
+		ret = fontDescriptionBetterMatchFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var fontDescriptionCopyFunction *gi.Function
 var fontDescriptionCopyFunction_Once sync.Once
@@ -1109,7 +1336,38 @@ func (recv *FontDescription) CopyStatic() (*FontDescription, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_font_description_equal' : parameter 'desc2' of type 'FontDescription' not supported
+var fontDescriptionEqualFunction *gi.Function
+var fontDescriptionEqualFunction_Once sync.Once
+
+func fontDescriptionEqualFunction_Set() error {
+	var err error
+	fontDescriptionEqualFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionEqualFunction, err = fontDescriptionStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type pango_font_description_equal.
+func (recv *FontDescription) Equal(desc2 *FontDescription) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(desc2.native)
+
+	var ret gi.Argument
+
+	err := fontDescriptionEqualFunction_Set()
+	if err == nil {
+		ret = fontDescriptionEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var fontDescriptionFreeFunction *gi.Function
 var fontDescriptionFreeFunction_Once sync.Once
@@ -1311,9 +1569,65 @@ func (recv *FontDescription) Hash() (uint32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_font_description_merge' : parameter 'desc_to_merge' of type 'FontDescription' not supported
+var fontDescriptionMergeFunction *gi.Function
+var fontDescriptionMergeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_font_description_merge_static' : parameter 'desc_to_merge' of type 'FontDescription' not supported
+func fontDescriptionMergeFunction_Set() error {
+	var err error
+	fontDescriptionMergeFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionMergeFunction, err = fontDescriptionStruct.InvokerNew("merge")
+	})
+	return err
+}
+
+// Merge is a representation of the C type pango_font_description_merge.
+func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting bool) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(descToMerge.native)
+	inArgs[2].SetBoolean(replaceExisting)
+
+	err := fontDescriptionMergeFunction_Set()
+	if err == nil {
+		fontDescriptionMergeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var fontDescriptionMergeStaticFunction *gi.Function
+var fontDescriptionMergeStaticFunction_Once sync.Once
+
+func fontDescriptionMergeStaticFunction_Set() error {
+	var err error
+	fontDescriptionMergeStaticFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionMergeStaticFunction, err = fontDescriptionStruct.InvokerNew("merge_static")
+	})
+	return err
+}
+
+// MergeStatic is a representation of the C type pango_font_description_merge_static.
+func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceExisting bool) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(descToMerge.native)
+	inArgs[2].SetBoolean(replaceExisting)
+
+	err := fontDescriptionMergeStaticFunction_Set()
+	if err == nil {
+		fontDescriptionMergeStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var fontDescriptionSetAbsoluteSizeFunction *gi.Function
 var fontDescriptionSetAbsoluteSizeFunction_Once sync.Once
@@ -2086,7 +2400,7 @@ type GlyphItem struct {
 	Glyphs *GlyphString
 }
 
-// UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : parameter 'list' of type 'AttrList' not supported
+// UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : return type 'GLib.SList' not supported
 
 var glyphItemCopyFunction *gi.Function
 var glyphItemCopyFunction_Once sync.Once
@@ -2269,9 +2583,73 @@ func (recv *GlyphItemIter) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_glyph_item_iter_init_end' : parameter 'glyph_item' of type 'GlyphItem' not supported
+var glyphItemIterInitEndFunction *gi.Function
+var glyphItemIterInitEndFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_glyph_item_iter_init_start' : parameter 'glyph_item' of type 'GlyphItem' not supported
+func glyphItemIterInitEndFunction_Set() error {
+	var err error
+	glyphItemIterInitEndFunction_Once.Do(func() {
+		err = glyphItemIterStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemIterInitEndFunction, err = glyphItemIterStruct.InvokerNew("init_end")
+	})
+	return err
+}
+
+// InitEnd is a representation of the C type pango_glyph_item_iter_init_end.
+func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(glyphItem.native)
+	inArgs[2].SetString(text)
+
+	var ret gi.Argument
+
+	err := glyphItemIterInitEndFunction_Set()
+	if err == nil {
+		ret = glyphItemIterInitEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var glyphItemIterInitStartFunction *gi.Function
+var glyphItemIterInitStartFunction_Once sync.Once
+
+func glyphItemIterInitStartFunction_Set() error {
+	var err error
+	glyphItemIterInitStartFunction_Once.Do(func() {
+		err = glyphItemIterStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemIterInitStartFunction, err = glyphItemIterStruct.InvokerNew("init_start")
+	})
+	return err
+}
+
+// InitStart is a representation of the C type pango_glyph_item_iter_init_start.
+func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(glyphItem.native)
+	inArgs[2].SetString(text)
+
+	var ret gi.Argument
+
+	err := glyphItemIterInitStartFunction_Set()
+	if err == nil {
+		ret = glyphItemIterInitStartFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var glyphItemIterNextClusterFunction *gi.Function
 var glyphItemIterNextClusterFunction_Once sync.Once
@@ -2483,7 +2861,42 @@ func (recv *GlyphString) GetWidth() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_glyph_string_index_to_x' : parameter 'analysis' of type 'Analysis' not supported
+var glyphStringIndexToXFunction *gi.Function
+var glyphStringIndexToXFunction_Once sync.Once
+
+func glyphStringIndexToXFunction_Set() error {
+	var err error
+	glyphStringIndexToXFunction_Once.Do(func() {
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringIndexToXFunction, err = glyphStringStruct.InvokerNew("index_to_x")
+	})
+	return err
+}
+
+// IndexToX is a representation of the C type pango_glyph_string_index_to_x.
+func (recv *GlyphString) IndexToX(text string, length int32, analysis *Analysis, index int32, trailing bool) (int32, error) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(text)
+	inArgs[2].SetInt32(length)
+	inArgs[3].SetPointer(analysis.native)
+	inArgs[4].SetInt32(index)
+	inArgs[5].SetBoolean(trailing)
+
+	var outArgs [1]gi.Argument
+
+	err := glyphStringIndexToXFunction_Set()
+	if err == nil {
+		glyphStringIndexToXFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0, err
+}
 
 var glyphStringSetSizeFunction *gi.Function
 var glyphStringSetSizeFunction_Once sync.Once
@@ -2514,7 +2927,42 @@ func (recv *GlyphString) SetSize(newLen int32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'pango_glyph_string_x_to_index' : parameter 'analysis' of type 'Analysis' not supported
+var glyphStringXToIndexFunction *gi.Function
+var glyphStringXToIndexFunction_Once sync.Once
+
+func glyphStringXToIndexFunction_Set() error {
+	var err error
+	glyphStringXToIndexFunction_Once.Do(func() {
+		err = glyphStringStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphStringXToIndexFunction, err = glyphStringStruct.InvokerNew("x_to_index")
+	})
+	return err
+}
+
+// XToIndex is a representation of the C type pango_glyph_string_x_to_index.
+func (recv *GlyphString) XToIndex(text string, length int32, analysis *Analysis, xPos int32) (int32, int32, error) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(text)
+	inArgs[2].SetInt32(length)
+	inArgs[3].SetPointer(analysis.native)
+	inArgs[4].SetInt32(xPos)
+
+	var outArgs [2]gi.Argument
+
+	err := glyphStringXToIndexFunction_Set()
+	if err == nil {
+		glyphStringXToIndexFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+
+	return out0, out1, err
+}
 
 var glyphVisAttrStruct *gi.Struct
 var glyphVisAttrStruct_Once sync.Once
@@ -2994,9 +3442,70 @@ func (recv *LayoutIter) GetBaseline() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_char_extents' : parameter 'logical_rect' of type 'Rectangle' not supported
+var layoutIterGetCharExtentsFunction *gi.Function
+var layoutIterGetCharExtentsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_cluster_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
+func layoutIterGetCharExtentsFunction_Set() error {
+	var err error
+	layoutIterGetCharExtentsFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetCharExtentsFunction, err = layoutIterStruct.InvokerNew("get_char_extents")
+	})
+	return err
+}
+
+// GetCharExtents is a representation of the C type pango_layout_iter_get_char_extents.
+func (recv *LayoutIter) GetCharExtents() (*Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [1]gi.Argument
+
+	err := layoutIterGetCharExtentsFunction_Set()
+	if err == nil {
+		layoutIterGetCharExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
+
+var layoutIterGetClusterExtentsFunction *gi.Function
+var layoutIterGetClusterExtentsFunction_Once sync.Once
+
+func layoutIterGetClusterExtentsFunction_Set() error {
+	var err error
+	layoutIterGetClusterExtentsFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetClusterExtentsFunction, err = layoutIterStruct.InvokerNew("get_cluster_extents")
+	})
+	return err
+}
+
+// GetClusterExtents is a representation of the C type pango_layout_iter_get_cluster_extents.
+func (recv *LayoutIter) GetClusterExtents() (*Rectangle, *Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := layoutIterGetClusterExtentsFunction_Set()
+	if err == nil {
+		layoutIterGetClusterExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1, err
+}
 
 var layoutIterGetIndexFunction *gi.Function
 var layoutIterGetIndexFunction_Once sync.Once
@@ -3032,7 +3541,38 @@ func (recv *LayoutIter) GetIndex() (int32, error) {
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_layout' : return type 'Layout' not supported
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_layout_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
+var layoutIterGetLayoutExtentsFunction *gi.Function
+var layoutIterGetLayoutExtentsFunction_Once sync.Once
+
+func layoutIterGetLayoutExtentsFunction_Set() error {
+	var err error
+	layoutIterGetLayoutExtentsFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetLayoutExtentsFunction, err = layoutIterStruct.InvokerNew("get_layout_extents")
+	})
+	return err
+}
+
+// GetLayoutExtents is a representation of the C type pango_layout_iter_get_layout_extents.
+func (recv *LayoutIter) GetLayoutExtents() (*Rectangle, *Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := layoutIterGetLayoutExtentsFunction_Set()
+	if err == nil {
+		layoutIterGetLayoutExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1, err
+}
 
 var layoutIterGetLineFunction *gi.Function
 var layoutIterGetLineFunction_Once sync.Once
@@ -3066,7 +3606,38 @@ func (recv *LayoutIter) GetLine() (*LayoutLine, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_line_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
+var layoutIterGetLineExtentsFunction *gi.Function
+var layoutIterGetLineExtentsFunction_Once sync.Once
+
+func layoutIterGetLineExtentsFunction_Set() error {
+	var err error
+	layoutIterGetLineExtentsFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetLineExtentsFunction, err = layoutIterStruct.InvokerNew("get_line_extents")
+	})
+	return err
+}
+
+// GetLineExtents is a representation of the C type pango_layout_iter_get_line_extents.
+func (recv *LayoutIter) GetLineExtents() (*Rectangle, *Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := layoutIterGetLineExtentsFunction_Set()
+	if err == nil {
+		layoutIterGetLineExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1, err
+}
 
 var layoutIterGetLineReadonlyFunction *gi.Function
 var layoutIterGetLineReadonlyFunction_Once sync.Once
@@ -3135,7 +3706,38 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32, error) {
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_run' : return type 'LayoutRun' not supported
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_run_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
+var layoutIterGetRunExtentsFunction *gi.Function
+var layoutIterGetRunExtentsFunction_Once sync.Once
+
+func layoutIterGetRunExtentsFunction_Set() error {
+	var err error
+	layoutIterGetRunExtentsFunction_Once.Do(func() {
+		err = layoutIterStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutIterGetRunExtentsFunction, err = layoutIterStruct.InvokerNew("get_run_extents")
+	})
+	return err
+}
+
+// GetRunExtents is a representation of the C type pango_layout_iter_get_run_extents.
+func (recv *LayoutIter) GetRunExtents() (*Rectangle, *Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := layoutIterGetRunExtentsFunction_Set()
+	if err == nil {
+		layoutIterGetRunExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1, err
+}
 
 // UNSUPPORTED : C value 'pango_layout_iter_get_run_readonly' : return type 'LayoutRun' not supported
 
@@ -3288,9 +3890,71 @@ type LayoutLine struct {
 	ResolvedDir      uint32
 }
 
-// UNSUPPORTED : C value 'pango_layout_line_get_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
+var layoutLineGetExtentsFunction *gi.Function
+var layoutLineGetExtentsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_layout_line_get_pixel_extents' : parameter 'ink_rect' of type 'Rectangle' not supported
+func layoutLineGetExtentsFunction_Set() error {
+	var err error
+	layoutLineGetExtentsFunction_Once.Do(func() {
+		err = layoutLineStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutLineGetExtentsFunction, err = layoutLineStruct.InvokerNew("get_extents")
+	})
+	return err
+}
+
+// GetExtents is a representation of the C type pango_layout_line_get_extents.
+func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := layoutLineGetExtentsFunction_Set()
+	if err == nil {
+		layoutLineGetExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1, err
+}
+
+var layoutLineGetPixelExtentsFunction *gi.Function
+var layoutLineGetPixelExtentsFunction_Once sync.Once
+
+func layoutLineGetPixelExtentsFunction_Set() error {
+	var err error
+	layoutLineGetPixelExtentsFunction_Once.Do(func() {
+		err = layoutLineStruct_Set()
+		if err != nil {
+			return
+		}
+		layoutLineGetPixelExtentsFunction, err = layoutLineStruct.InvokerNew("get_pixel_extents")
+	})
+	return err
+}
+
+// GetPixelExtents is a representation of the C type pango_layout_line_get_pixel_extents.
+func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+
+	var outArgs [2]gi.Argument
+
+	err := layoutLineGetPixelExtentsFunction_Set()
+	if err == nil {
+		layoutLineGetPixelExtentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+	out1 := &Rectangle{native: outArgs[1].Pointer()}
+
+	return out0, out1, err
+}
 
 // UNSUPPORTED : C value 'pango_layout_line_get_x_ranges' : parameter 'ranges' has no type
 
@@ -3507,7 +4171,34 @@ type Matrix struct {
 	Y0     float64
 }
 
-// UNSUPPORTED : C value 'pango_matrix_concat' : parameter 'new_matrix' of type 'Matrix' not supported
+var matrixConcatFunction *gi.Function
+var matrixConcatFunction_Once sync.Once
+
+func matrixConcatFunction_Set() error {
+	var err error
+	matrixConcatFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixConcatFunction, err = matrixStruct.InvokerNew("concat")
+	})
+	return err
+}
+
+// Concat is a representation of the C type pango_matrix_concat.
+func (recv *Matrix) Concat(newMatrix *Matrix) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(newMatrix.native)
+
+	err := matrixConcatFunction_Set()
+	if err == nil {
+		matrixConcatFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var matrixCopyFunction *gi.Function
 var matrixCopyFunction_Once sync.Once
@@ -3728,7 +4419,38 @@ func (recv *Matrix) TransformDistance(dx float64, dy float64) (float64, float64,
 	return out0, out1, err
 }
 
-// UNSUPPORTED : C value 'pango_matrix_transform_pixel_rectangle' : parameter 'rect' of type 'Rectangle' not supported
+var matrixTransformPixelRectangleFunction *gi.Function
+var matrixTransformPixelRectangleFunction_Once sync.Once
+
+func matrixTransformPixelRectangleFunction_Set() error {
+	var err error
+	matrixTransformPixelRectangleFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixTransformPixelRectangleFunction, err = matrixStruct.InvokerNew("transform_pixel_rectangle")
+	})
+	return err
+}
+
+// TransformPixelRectangle is a representation of the C type pango_matrix_transform_pixel_rectangle.
+func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) (*Rectangle, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(rect.native)
+
+	var outArgs [1]gi.Argument
+
+	err := matrixTransformPixelRectangleFunction_Set()
+	if err == nil {
+		matrixTransformPixelRectangleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
 
 var matrixTransformPointFunction *gi.Function
 var matrixTransformPointFunction_Once sync.Once
@@ -3765,7 +4487,38 @@ func (recv *Matrix) TransformPoint(x float64, y float64) (float64, float64, erro
 	return out0, out1, err
 }
 
-// UNSUPPORTED : C value 'pango_matrix_transform_rectangle' : parameter 'rect' of type 'Rectangle' not supported
+var matrixTransformRectangleFunction *gi.Function
+var matrixTransformRectangleFunction_Once sync.Once
+
+func matrixTransformRectangleFunction_Set() error {
+	var err error
+	matrixTransformRectangleFunction_Once.Do(func() {
+		err = matrixStruct_Set()
+		if err != nil {
+			return
+		}
+		matrixTransformRectangleFunction, err = matrixStruct.InvokerNew("transform_rectangle")
+	})
+	return err
+}
+
+// TransformRectangle is a representation of the C type pango_matrix_transform_rectangle.
+func (recv *Matrix) TransformRectangle(rect *Rectangle) (*Rectangle, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(rect.native)
+
+	var outArgs [1]gi.Argument
+
+	err := matrixTransformRectangleFunction_Set()
+	if err == nil {
+		matrixTransformRectangleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
 
 var matrixTranslateFunction *gi.Function
 var matrixTranslateFunction_Once sync.Once

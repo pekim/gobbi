@@ -34,6 +34,10 @@ type Record struct {
 func (r *Record) init(ns *Namespace) {
 	r.namespace = ns
 	r.goName = r.Name
+	if r.namespace.Name == "GObject" && r.goName == "SignalQuery" {
+		// avoid name clash with a function of the same name
+		r.goName = "SignalQuery_"
+	}
 	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
 	r.structInfoGoName = fmt.Sprintf("%sStruct", makeUnexportedGoName(r.Name))
@@ -130,7 +134,7 @@ func (r *Record) argumentGetFunctionName() string {
 }
 
 func (r *Record) argumentSetFunctionName() string {
-	return "TODOsfn"
+	return "SetPointer"
 }
 
 func (r *Record) createFromArgument(s *jen.Statement, argValue *jen.Statement) {

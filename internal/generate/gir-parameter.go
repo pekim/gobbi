@@ -79,6 +79,10 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 			Parens(goVar)
 	}
 
+	if p.Type.isRecord() {
+		goVar = goVar.Dot("native")
+	}
+
 	g.
 		Id("inArgs").
 		Index(jen.Lit(index)).

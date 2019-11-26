@@ -31,13 +31,13 @@ import (
 
 // UNSUPPORTED : C value 'gtk_alternative_dialog_button_order' : parameter 'screen' of type 'Gdk.Screen' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_add_signal_from_string' : parameter 'binding_set' of type 'BindingSet' not supported
+// UNSUPPORTED : C value 'gtk_binding_entry_add_signal_from_string' : return type 'GLib.TokenType' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_add_signall' : parameter 'binding_set' of type 'BindingSet' not supported
+// UNSUPPORTED : C value 'gtk_binding_entry_add_signall' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_remove' : parameter 'binding_set' of type 'BindingSet' not supported
+// UNSUPPORTED : C value 'gtk_binding_entry_remove' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_entry_skip' : parameter 'binding_set' of type 'BindingSet' not supported
+// UNSUPPORTED : C value 'gtk_binding_entry_skip' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
 // UNSUPPORTED : C value 'gtk_binding_set_by_class' : parameter 'object_class' of type 'gpointer' not supported
 
@@ -165,7 +165,35 @@ func DisableSetlocale() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'gtk_distribute_natural_allocation' : parameter 'sizes' of type 'RequestedSize' not supported
+var distributeNaturalAllocationFunction *gi.Function
+var distributeNaturalAllocationFunction_Once sync.Once
+
+func distributeNaturalAllocationFunction_Set() error {
+	var err error
+	distributeNaturalAllocationFunction_Once.Do(func() {
+		distributeNaturalAllocationFunction, err = gi.FunctionInvokerNew("Gtk", "distribute_natural_allocation")
+	})
+	return err
+}
+
+// DistributeNaturalAllocation is a representation of the C type gtk_distribute_natural_allocation.
+func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes *RequestedSize) (int32, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(extraSpace)
+	inArgs[1].SetUint32(nRequestedSizes)
+	inArgs[2].SetPointer(sizes.native)
+
+	var ret gi.Argument
+
+	err := distributeNaturalAllocationFunction_Set()
+	if err == nil {
+		ret = distributeNaturalAllocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'gtk_drag_cancel' : parameter 'context' of type 'Gdk.DragContext' not supported
 
@@ -979,13 +1007,67 @@ func SetDebugFlags(flags uint32) error {
 
 // UNSUPPORTED : C value 'gtk_stock_list_ids' : return type 'GLib.SList' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_lookup' : parameter 'item' of type 'StockItem' not supported
+var stockLookupFunction *gi.Function
+var stockLookupFunction_Once sync.Once
+
+func stockLookupFunction_Set() error {
+	var err error
+	stockLookupFunction_Once.Do(func() {
+		stockLookupFunction, err = gi.FunctionInvokerNew("Gtk", "stock_lookup")
+	})
+	return err
+}
+
+// StockLookup is a representation of the C type gtk_stock_lookup.
+func StockLookup(stockId string) (bool, *StockItem, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(stockId)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := stockLookupFunction_Set()
+	if err == nil {
+		ret = stockLookupFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &StockItem{native: outArgs[0].Pointer()}
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'func' of type 'TranslateFunc' not supported
 
 // UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' has no type
 
-// UNSUPPORTED : C value 'gtk_target_table_new_from_list' : parameter 'list' of type 'TargetList' not supported
+var targetTableNewFromListFunction *gi.Function
+var targetTableNewFromListFunction_Once sync.Once
+
+func targetTableNewFromListFunction_Set() error {
+	var err error
+	targetTableNewFromListFunction_Once.Do(func() {
+		targetTableNewFromListFunction, err = gi.FunctionInvokerNew("Gtk", "target_table_new_from_list")
+	})
+	return err
+}
+
+// TargetTableNewFromList is a representation of the C type gtk_target_table_new_from_list.
+func TargetTableNewFromList(list *TargetList) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(list.native)
+
+	var outArgs [1]gi.Argument
+
+	err := targetTableNewFromListFunction_Set()
+	if err == nil {
+		targetTableNewFromListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+
+	return out0, err
+}
 
 // UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' has no type
 
@@ -1073,7 +1155,7 @@ func TestRegisterAllTypes() error {
 
 // UNSUPPORTED : C value 'gtk_test_widget_wait_for_draw' : parameter 'widget' of type 'Widget' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_get_row_drag_data' : parameter 'selection_data' of type 'SelectionData' not supported
+// UNSUPPORTED : C value 'gtk_tree_get_row_drag_data' : parameter 'tree_model' of type 'TreeModel' not supported
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_deleted' : parameter 'proxy' of type 'GObject.Object' not supported
 
@@ -1081,7 +1163,7 @@ func TestRegisterAllTypes() error {
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_reordered' : parameter 'proxy' of type 'GObject.Object' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : parameter 'selection_data' of type 'SelectionData' not supported
+// UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : parameter 'tree_model' of type 'TreeModel' not supported
 
 var trueFunction *gi.Function
 var trueFunction_Once sync.Once

@@ -902,9 +902,53 @@ func NetworkingInit() error {
 
 // UNSUPPORTED : C value 'g_resources_open_stream' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
 
-// UNSUPPORTED : C value 'g_resources_register' : parameter 'resource' of type 'Resource' not supported
+var resourcesRegisterFunction *gi.Function
+var resourcesRegisterFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_resources_unregister' : parameter 'resource' of type 'Resource' not supported
+func resourcesRegisterFunction_Set() error {
+	var err error
+	resourcesRegisterFunction_Once.Do(func() {
+		resourcesRegisterFunction, err = gi.FunctionInvokerNew("Gio", "resources_register")
+	})
+	return err
+}
+
+// ResourcesRegister is a representation of the C type g_resources_register.
+func ResourcesRegister(resource *Resource) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(resource.native)
+
+	err := resourcesRegisterFunction_Set()
+	if err == nil {
+		resourcesRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var resourcesUnregisterFunction *gi.Function
+var resourcesUnregisterFunction_Once sync.Once
+
+func resourcesUnregisterFunction_Set() error {
+	var err error
+	resourcesUnregisterFunction_Once.Do(func() {
+		resourcesUnregisterFunction, err = gi.FunctionInvokerNew("Gio", "resources_unregister")
+	})
+	return err
+}
+
+// ResourcesUnregister is a representation of the C type g_resources_unregister.
+func ResourcesUnregister(resource *Resource) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(resource.native)
+
+	err := resourcesUnregisterFunction_Set()
+	if err == nil {
+		resourcesUnregisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var settingsSchemaSourceGetDefaultFunction *gi.Function
 var settingsSchemaSourceGetDefaultFunction_Once sync.Once
@@ -1010,37 +1054,320 @@ func UnixIsSystemFsType(fsType string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_unix_mount_at' : parameter 'mount_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_compare' : parameter 'mount1' of type 'UnixMountEntry' not supported
+var unixMountCompareFunction *gi.Function
+var unixMountCompareFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unix_mount_copy' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+func unixMountCompareFunction_Set() error {
+	var err error
+	unixMountCompareFunction_Once.Do(func() {
+		unixMountCompareFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_compare")
+	})
+	return err
+}
+
+// UnixMountCompare is a representation of the C type g_unix_mount_compare.
+func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(mount1.native)
+	inArgs[1].SetPointer(mount2.native)
+
+	var ret gi.Argument
+
+	err := unixMountCompareFunction_Set()
+	if err == nil {
+		ret = unixMountCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+var unixMountCopyFunction *gi.Function
+var unixMountCopyFunction_Once sync.Once
+
+func unixMountCopyFunction_Set() error {
+	var err error
+	unixMountCopyFunction_Once.Do(func() {
+		unixMountCopyFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_copy")
+	})
+	return err
+}
+
+// UnixMountCopy is a representation of the C type g_unix_mount_copy.
+func UnixMountCopy(mountEntry *UnixMountEntry) (*UnixMountEntry, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountCopyFunction_Set()
+	if err == nil {
+		ret = unixMountCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &UnixMountEntry{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_unix_mount_for' : parameter 'file_path' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_free' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+var unixMountFreeFunction *gi.Function
+var unixMountFreeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unix_mount_get_device_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+func unixMountFreeFunction_Set() error {
+	var err error
+	unixMountFreeFunction_Once.Do(func() {
+		unixMountFreeFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_free")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_unix_mount_get_fs_type' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+// UnixMountFree is a representation of the C type g_unix_mount_free.
+func UnixMountFree(mountEntry *UnixMountEntry) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
 
-// UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+	err := unixMountFreeFunction_Set()
+	if err == nil {
+		unixMountFreeFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_unix_mount_get_options' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+	return err
+}
 
-// UNSUPPORTED : C value 'g_unix_mount_get_root_path' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+// UNSUPPORTED : C value 'g_unix_mount_get_device_path' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_can_eject' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+var unixMountGetFsTypeFunction *gi.Function
+var unixMountGetFsTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_icon' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+func unixMountGetFsTypeFunction_Set() error {
+	var err error
+	unixMountGetFsTypeFunction_Once.Do(func() {
+		unixMountGetFsTypeFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_get_fs_type")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_name' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+// UnixMountGetFsType is a representation of the C type g_unix_mount_get_fs_type.
+func UnixMountGetFsType(mountEntry *UnixMountEntry) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_should_display' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+	err := unixMountGetFsTypeFunction_Set()
+	if err == nil {
+		ret = unixMountGetFsTypeFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_unix_mount_is_readonly' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+	retGo := ret.String(false)
 
-// UNSUPPORTED : C value 'g_unix_mount_is_system_internal' : parameter 'mount_entry' of type 'UnixMountEntry' not supported
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_get_mount_path' : return type 'filename' not supported
+
+var unixMountGetOptionsFunction *gi.Function
+var unixMountGetOptionsFunction_Once sync.Once
+
+func unixMountGetOptionsFunction_Set() error {
+	var err error
+	unixMountGetOptionsFunction_Once.Do(func() {
+		unixMountGetOptionsFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_get_options")
+	})
+	return err
+}
+
+// UnixMountGetOptions is a representation of the C type g_unix_mount_get_options.
+func UnixMountGetOptions(mountEntry *UnixMountEntry) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGetOptionsFunction_Set()
+	if err == nil {
+		ret = unixMountGetOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var unixMountGetRootPathFunction *gi.Function
+var unixMountGetRootPathFunction_Once sync.Once
+
+func unixMountGetRootPathFunction_Set() error {
+	var err error
+	unixMountGetRootPathFunction_Once.Do(func() {
+		unixMountGetRootPathFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_get_root_path")
+	})
+	return err
+}
+
+// UnixMountGetRootPath is a representation of the C type g_unix_mount_get_root_path.
+func UnixMountGetRootPath(mountEntry *UnixMountEntry) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGetRootPathFunction_Set()
+	if err == nil {
+		ret = unixMountGetRootPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo, err
+}
+
+var unixMountGuessCanEjectFunction *gi.Function
+var unixMountGuessCanEjectFunction_Once sync.Once
+
+func unixMountGuessCanEjectFunction_Set() error {
+	var err error
+	unixMountGuessCanEjectFunction_Once.Do(func() {
+		unixMountGuessCanEjectFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_guess_can_eject")
+	})
+	return err
+}
+
+// UnixMountGuessCanEject is a representation of the C type g_unix_mount_guess_can_eject.
+func UnixMountGuessCanEject(mountEntry *UnixMountEntry) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGuessCanEjectFunction_Set()
+	if err == nil {
+		ret = unixMountGuessCanEjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_guess_icon' : return type 'Icon' not supported
+
+var unixMountGuessNameFunction *gi.Function
+var unixMountGuessNameFunction_Once sync.Once
+
+func unixMountGuessNameFunction_Set() error {
+	var err error
+	unixMountGuessNameFunction_Once.Do(func() {
+		unixMountGuessNameFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_guess_name")
+	})
+	return err
+}
+
+// UnixMountGuessName is a representation of the C type g_unix_mount_guess_name.
+func UnixMountGuessName(mountEntry *UnixMountEntry) (string, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGuessNameFunction_Set()
+	if err == nil {
+		ret = unixMountGuessNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
+
+var unixMountGuessShouldDisplayFunction *gi.Function
+var unixMountGuessShouldDisplayFunction_Once sync.Once
+
+func unixMountGuessShouldDisplayFunction_Set() error {
+	var err error
+	unixMountGuessShouldDisplayFunction_Once.Do(func() {
+		unixMountGuessShouldDisplayFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_guess_should_display")
+	})
+	return err
+}
+
+// UnixMountGuessShouldDisplay is a representation of the C type g_unix_mount_guess_should_display.
+func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountGuessShouldDisplayFunction_Set()
+	if err == nil {
+		ret = unixMountGuessShouldDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : return type 'Icon' not supported
+
+var unixMountIsReadonlyFunction *gi.Function
+var unixMountIsReadonlyFunction_Once sync.Once
+
+func unixMountIsReadonlyFunction_Set() error {
+	var err error
+	unixMountIsReadonlyFunction_Once.Do(func() {
+		unixMountIsReadonlyFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_is_readonly")
+	})
+	return err
+}
+
+// UnixMountIsReadonly is a representation of the C type g_unix_mount_is_readonly.
+func UnixMountIsReadonly(mountEntry *UnixMountEntry) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountIsReadonlyFunction_Set()
+	if err == nil {
+		ret = unixMountIsReadonlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var unixMountIsSystemInternalFunction *gi.Function
+var unixMountIsSystemInternalFunction_Once sync.Once
+
+func unixMountIsSystemInternalFunction_Set() error {
+	var err error
+	unixMountIsSystemInternalFunction_Once.Do(func() {
+		unixMountIsSystemInternalFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_is_system_internal")
+	})
+	return err
+}
+
+// UnixMountIsSystemInternal is a representation of the C type g_unix_mount_is_system_internal.
+func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) (bool, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.native)
+
+	var ret gi.Argument
+
+	err := unixMountIsSystemInternalFunction_Set()
+	if err == nil {
+		ret = unixMountIsSystemInternalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var unixMountPointsChangedSinceFunction *gi.Function
 var unixMountPointsChangedSinceFunction_Once sync.Once

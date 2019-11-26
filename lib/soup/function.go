@@ -45,7 +45,34 @@ func CheckVersion(major uint32, minor uint32, micro uint32) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_parse' : parameter 'origin' of type 'URI' not supported
+var cookieParseFunction *gi.Function
+var cookieParseFunction_Once sync.Once
+
+func cookieParseFunction_Set() error {
+	var err error
+	cookieParseFunction_Once.Do(func() {
+		cookieParseFunction, err = gi.FunctionInvokerNew("Soup", "cookie_parse")
+	})
+	return err
+}
+
+// CookieParse is a representation of the C type soup_cookie_parse.
+func CookieParse(header string, origin *URI) (*Cookie, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(header)
+	inArgs[1].SetPointer(origin.native)
+
+	var ret gi.Argument
+
+	err := cookieParseFunction_Set()
+	if err == nil {
+		ret = cookieParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Cookie{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'soup_cookies_free' : parameter 'cookies' of type 'GLib.SList' not supported
 
@@ -77,7 +104,7 @@ func CheckVersion(major uint32, minor uint32, micro uint32) (bool, error) {
 
 // UNSUPPORTED : C value 'soup_form_request_new_from_hash' : parameter 'form_data_set' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : parameter 'multipart' of type 'Multipart' not supported
+// UNSUPPORTED : C value 'soup_form_request_new_from_multipart' : return type 'Message' not supported
 
 var getMajorVersionFunction *gi.Function
 var getMajorVersionFunction_Once sync.Once
@@ -206,17 +233,71 @@ func HeaderContains(header string, token string) (bool, error) {
 
 // UNSUPPORTED : C value 'soup_header_parse_semi_param_list_strict' : return type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'soup_headers_parse' : parameter 'dest' of type 'MessageHeaders' not supported
+var headersParseFunction *gi.Function
+var headersParseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_headers_parse_request' : parameter 'req_headers' of type 'MessageHeaders' not supported
+func headersParseFunction_Set() error {
+	var err error
+	headersParseFunction_Once.Do(func() {
+		headersParseFunction, err = gi.FunctionInvokerNew("Soup", "headers_parse")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_headers_parse_response' : parameter 'headers' of type 'MessageHeaders' not supported
+// HeadersParse is a representation of the C type soup_headers_parse.
+func HeadersParse(str string, len int32, dest *MessageHeaders) (bool, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetPointer(dest.native)
+
+	var ret gi.Argument
+
+	err := headersParseFunction_Set()
+	if err == nil {
+		ret = headersParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'soup_headers_parse_request' : parameter 'ver' of type 'HTTPVersion' not supported
+
+// UNSUPPORTED : C value 'soup_headers_parse_response' : parameter 'ver' of type 'HTTPVersion' not supported
 
 // UNSUPPORTED : C value 'soup_headers_parse_status_line' : parameter 'ver' of type 'HTTPVersion' not supported
 
 // UNSUPPORTED : C value 'soup_http_error_quark' : return type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'soup_message_headers_iter_init' : parameter 'iter' of type 'MessageHeadersIter' not supported
+var messageHeadersIterInitFunction *gi.Function
+var messageHeadersIterInitFunction_Once sync.Once
+
+func messageHeadersIterInitFunction_Set() error {
+	var err error
+	messageHeadersIterInitFunction_Once.Do(func() {
+		messageHeadersIterInitFunction, err = gi.FunctionInvokerNew("Soup", "message_headers_iter_init")
+	})
+	return err
+}
+
+// MessageHeadersIterInit is a representation of the C type soup_message_headers_iter_init.
+func MessageHeadersIterInit(hdrs *MessageHeaders) (*MessageHeadersIter, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(hdrs.native)
+
+	var outArgs [1]gi.Argument
+
+	err := messageHeadersIterInitFunction_Set()
+	if err == nil {
+		messageHeadersIterInitFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &MessageHeadersIter{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
 
 // UNSUPPORTED : C value 'soup_request_error_quark' : return type 'GLib.Quark' not supported
 
@@ -502,7 +583,36 @@ func UriNormalize(part string, unescapeExtra string) (string, error) {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_parse_method_response' : parameter 'value' of type 'GObject.Value' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_request' : parameter 'params' of type 'XMLRPCParams' not supported
+var xmlrpcParseRequestFunction *gi.Function
+var xmlrpcParseRequestFunction_Once sync.Once
+
+func xmlrpcParseRequestFunction_Set() error {
+	var err error
+	xmlrpcParseRequestFunction_Once.Do(func() {
+		xmlrpcParseRequestFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_parse_request")
+	})
+	return err
+}
+
+// XmlrpcParseRequest is a representation of the C type soup_xmlrpc_parse_request.
+func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(methodCall)
+	inArgs[1].SetInt32(length)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := xmlrpcParseRequestFunction_Set()
+	if err == nil {
+		ret = xmlrpcParseRequestFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := &XMLRPCParams{native: outArgs[0].Pointer()}
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'soup_xmlrpc_parse_response' : return type 'GLib.Variant' not supported
 
@@ -514,4 +624,4 @@ func UriNormalize(part string, unescapeExtra string) (string, error) {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_variant_get_datetime' : parameter 'variant' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_variant_new_datetime' : parameter 'date' of type 'Date' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_variant_new_datetime' : return type 'GLib.Variant' not supported

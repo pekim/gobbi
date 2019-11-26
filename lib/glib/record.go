@@ -215,9 +215,9 @@ func (recv *AsyncQueue) RefUnlocked() error {
 
 // UNSUPPORTED : C value 'g_async_queue_sort_unlocked' : parameter 'func' of type 'CompareDataFunc' not supported
 
-// UNSUPPORTED : C value 'g_async_queue_timed_pop' : parameter 'end_time' of type 'TimeVal' not supported
+// UNSUPPORTED : C value 'g_async_queue_timed_pop' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_async_queue_timed_pop_unlocked' : parameter 'end_time' of type 'TimeVal' not supported
+// UNSUPPORTED : C value 'g_async_queue_timed_pop_unlocked' : return type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_async_queue_timeout_pop' : return type 'gpointer' not supported
 
@@ -1446,9 +1446,71 @@ type Bytes struct {
 
 // UNSUPPORTED : C value 'g_bytes_new_with_free_func' : parameter 'data' has no type
 
-// UNSUPPORTED : C value 'g_bytes_compare' : parameter 'bytes2' of type 'Bytes' not supported
+var bytesCompareFunction *gi.Function
+var bytesCompareFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bytes_equal' : parameter 'bytes2' of type 'Bytes' not supported
+func bytesCompareFunction_Set() error {
+	var err error
+	bytesCompareFunction_Once.Do(func() {
+		err = bytesStruct_Set()
+		if err != nil {
+			return
+		}
+		bytesCompareFunction, err = bytesStruct.InvokerNew("compare")
+	})
+	return err
+}
+
+// Compare is a representation of the C type g_bytes_compare.
+func (recv *Bytes) Compare(bytes2 *Bytes) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(bytes2.native)
+
+	var ret gi.Argument
+
+	err := bytesCompareFunction_Set()
+	if err == nil {
+		ret = bytesCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+var bytesEqualFunction *gi.Function
+var bytesEqualFunction_Once sync.Once
+
+func bytesEqualFunction_Set() error {
+	var err error
+	bytesEqualFunction_Once.Do(func() {
+		err = bytesStruct_Set()
+		if err != nil {
+			return
+		}
+		bytesEqualFunction, err = bytesStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_bytes_equal.
+func (recv *Bytes) Equal(bytes2 *Bytes) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(bytes2.native)
+
+	var ret gi.Argument
+
+	err := bytesEqualFunction_Set()
+	if err == nil {
+		ret = bytesEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var bytesGetDataFunction *gi.Function
 var bytesGetDataFunction_Once sync.Once
@@ -2159,7 +2221,35 @@ func (recv *Date) AddYears(nYears uint32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_date_clamp' : parameter 'min_date' of type 'Date' not supported
+var dateClampFunction *gi.Function
+var dateClampFunction_Once sync.Once
+
+func dateClampFunction_Set() error {
+	var err error
+	dateClampFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateClampFunction, err = dateStruct.InvokerNew("clamp")
+	})
+	return err
+}
+
+// Clamp is a representation of the C type g_date_clamp.
+func (recv *Date) Clamp(minDate *Date, maxDate *Date) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(minDate.native)
+	inArgs[2].SetPointer(maxDate.native)
+
+	err := dateClampFunction_Set()
+	if err == nil {
+		dateClampFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var dateClearFunction *gi.Function
 var dateClearFunction_Once sync.Once
@@ -2190,7 +2280,38 @@ func (recv *Date) Clear(nDates uint32) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_date_compare' : parameter 'rhs' of type 'Date' not supported
+var dateCompareFunction *gi.Function
+var dateCompareFunction_Once sync.Once
+
+func dateCompareFunction_Set() error {
+	var err error
+	dateCompareFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateCompareFunction, err = dateStruct.InvokerNew("compare")
+	})
+	return err
+}
+
+// Compare is a representation of the C type g_date_compare.
+func (recv *Date) Compare(rhs *Date) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(rhs.native)
+
+	var ret gi.Argument
+
+	err := dateCompareFunction_Set()
+	if err == nil {
+		ret = dateCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var dateCopyFunction *gi.Function
 var dateCopyFunction_Once sync.Once
@@ -2224,7 +2345,38 @@ func (recv *Date) Copy() (*Date, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_days_between' : parameter 'date2' of type 'Date' not supported
+var dateDaysBetweenFunction *gi.Function
+var dateDaysBetweenFunction_Once sync.Once
+
+func dateDaysBetweenFunction_Set() error {
+	var err error
+	dateDaysBetweenFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateDaysBetweenFunction, err = dateStruct.InvokerNew("days_between")
+	})
+	return err
+}
+
+// DaysBetween is a representation of the C type g_date_days_between.
+func (recv *Date) DaysBetween(date2 *Date) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(date2.native)
+
+	var ret gi.Argument
+
+	err := dateDaysBetweenFunction_Set()
+	if err == nil {
+		ret = dateDaysBetweenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var dateFreeFunction *gi.Function
 var dateFreeFunction_Once sync.Once
@@ -2546,7 +2698,34 @@ func (recv *Date) IsLastOfMonth() (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_order' : parameter 'date2' of type 'Date' not supported
+var dateOrderFunction *gi.Function
+var dateOrderFunction_Once sync.Once
+
+func dateOrderFunction_Set() error {
+	var err error
+	dateOrderFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateOrderFunction, err = dateStruct.InvokerNew("order")
+	})
+	return err
+}
+
+// Order is a representation of the C type g_date_order.
+func (recv *Date) Order(date2 *Date) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(date2.native)
+
+	err := dateOrderFunction_Set()
+	if err == nil {
+		dateOrderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var dateSetDayFunction *gi.Function
 var dateSetDayFunction_Once sync.Once
@@ -2697,7 +2876,34 @@ func (recv *Date) SetTimeT(timet int64) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_date_set_time_val' : parameter 'timeval' of type 'TimeVal' not supported
+var dateSetTimeValFunction *gi.Function
+var dateSetTimeValFunction_Once sync.Once
+
+func dateSetTimeValFunction_Set() error {
+	var err error
+	dateSetTimeValFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateSetTimeValFunction, err = dateStruct.InvokerNew("set_time_val")
+	})
+	return err
+}
+
+// SetTimeVal is a representation of the C type g_date_set_time_val.
+func (recv *Date) SetTimeVal(timeval *TimeVal) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(timeval.native)
+
+	err := dateSetTimeValFunction_Set()
+	if err == nil {
+		dateSetTimeValFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var dateSetYearFunction *gi.Function
 var dateSetYearFunction_Once sync.Once
@@ -2864,13 +3070,140 @@ type DateTime struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_date_time_new' : parameter 'tz' of type 'TimeZone' not supported
+var dateTimeNewFunction *gi.Function
+var dateTimeNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_time_new_from_iso8601' : parameter 'default_tz' of type 'TimeZone' not supported
+func dateTimeNewFunction_Set() error {
+	var err error
+	dateTimeNewFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewFunction, err = dateTimeStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_date_time_new_from_timeval_local' : parameter 'tv' of type 'TimeVal' not supported
+// DateTimeNew is a representation of the C type g_date_time_new.
+func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) (*DateTime, error) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(tz.native)
+	inArgs[1].SetInt32(year)
+	inArgs[2].SetInt32(month)
+	inArgs[3].SetInt32(day)
+	inArgs[4].SetInt32(hour)
+	inArgs[5].SetInt32(minute)
+	inArgs[6].SetFloat64(seconds)
 
-// UNSUPPORTED : C value 'g_date_time_new_from_timeval_utc' : parameter 'tv' of type 'TimeVal' not supported
+	var ret gi.Argument
+
+	err := dateTimeNewFunction_Set()
+	if err == nil {
+		ret = dateTimeNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var dateTimeNewFromIso8601Function *gi.Function
+var dateTimeNewFromIso8601Function_Once sync.Once
+
+func dateTimeNewFromIso8601Function_Set() error {
+	var err error
+	dateTimeNewFromIso8601Function_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewFromIso8601Function, err = dateTimeStruct.InvokerNew("new_from_iso8601")
+	})
+	return err
+}
+
+// DateTimeNewFromIso8601 is a representation of the C type g_date_time_new_from_iso8601.
+func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) (*DateTime, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetPointer(defaultTz.native)
+
+	var ret gi.Argument
+
+	err := dateTimeNewFromIso8601Function_Set()
+	if err == nil {
+		ret = dateTimeNewFromIso8601Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var dateTimeNewFromTimevalLocalFunction *gi.Function
+var dateTimeNewFromTimevalLocalFunction_Once sync.Once
+
+func dateTimeNewFromTimevalLocalFunction_Set() error {
+	var err error
+	dateTimeNewFromTimevalLocalFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewFromTimevalLocalFunction, err = dateTimeStruct.InvokerNew("new_from_timeval_local")
+	})
+	return err
+}
+
+// DateTimeNewFromTimevalLocal is a representation of the C type g_date_time_new_from_timeval_local.
+func DateTimeNewFromTimevalLocal(tv *TimeVal) (*DateTime, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(tv.native)
+
+	var ret gi.Argument
+
+	err := dateTimeNewFromTimevalLocalFunction_Set()
+	if err == nil {
+		ret = dateTimeNewFromTimevalLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var dateTimeNewFromTimevalUtcFunction *gi.Function
+var dateTimeNewFromTimevalUtcFunction_Once sync.Once
+
+func dateTimeNewFromTimevalUtcFunction_Set() error {
+	var err error
+	dateTimeNewFromTimevalUtcFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewFromTimevalUtcFunction, err = dateTimeStruct.InvokerNew("new_from_timeval_utc")
+	})
+	return err
+}
+
+// DateTimeNewFromTimevalUtc is a representation of the C type g_date_time_new_from_timeval_utc.
+func DateTimeNewFromTimevalUtc(tv *TimeVal) (*DateTime, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(tv.native)
+
+	var ret gi.Argument
+
+	err := dateTimeNewFromTimevalUtcFunction_Set()
+	if err == nil {
+		ret = dateTimeNewFromTimevalUtcFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var dateTimeNewFromUnixLocalFunction *gi.Function
 var dateTimeNewFromUnixLocalFunction_Once sync.Once
@@ -2973,7 +3306,37 @@ func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_new_now' : parameter 'tz' of type 'TimeZone' not supported
+var dateTimeNewNowFunction *gi.Function
+var dateTimeNewNowFunction_Once sync.Once
+
+func dateTimeNewNowFunction_Set() error {
+	var err error
+	dateTimeNewNowFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeNewNowFunction, err = dateTimeStruct.InvokerNew("new_now")
+	})
+	return err
+}
+
+// DateTimeNewNow is a representation of the C type g_date_time_new_now.
+func DateTimeNewNow(tz *TimeZone) (*DateTime, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(tz.native)
+
+	var ret gi.Argument
+
+	err := dateTimeNewNowFunction_Set()
+	if err == nil {
+		ret = dateTimeNewNowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var dateTimeNewNowLocalFunction *gi.Function
 var dateTimeNewNowLocalFunction_Once sync.Once
@@ -3374,7 +3737,38 @@ func (recv *DateTime) AddYears(years int32) (*DateTime, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_difference' : parameter 'begin' of type 'DateTime' not supported
+var dateTimeDifferenceFunction *gi.Function
+var dateTimeDifferenceFunction_Once sync.Once
+
+func dateTimeDifferenceFunction_Set() error {
+	var err error
+	dateTimeDifferenceFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeDifferenceFunction, err = dateTimeStruct.InvokerNew("difference")
+	})
+	return err
+}
+
+// Difference is a representation of the C type g_date_time_difference.
+func (recv *DateTime) Difference(begin *DateTime) (TimeSpan, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(begin.native)
+
+	var ret gi.Argument
+
+	err := dateTimeDifferenceFunction_Set()
+	if err == nil {
+		ret = dateTimeDifferenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TimeSpan(ret.Int64())
+
+	return retGo, err
+}
 
 var dateTimeFormatFunction *gi.Function
 var dateTimeFormatFunction_Once sync.Once
@@ -4051,9 +4445,71 @@ func (recv *DateTime) ToLocal() (*DateTime, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_time_to_timeval' : parameter 'tv' of type 'TimeVal' not supported
+var dateTimeToTimevalFunction *gi.Function
+var dateTimeToTimevalFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_time_to_timezone' : parameter 'tz' of type 'TimeZone' not supported
+func dateTimeToTimevalFunction_Set() error {
+	var err error
+	dateTimeToTimevalFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeToTimevalFunction, err = dateTimeStruct.InvokerNew("to_timeval")
+	})
+	return err
+}
+
+// ToTimeval is a representation of the C type g_date_time_to_timeval.
+func (recv *DateTime) ToTimeval(tv *TimeVal) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tv.native)
+
+	var ret gi.Argument
+
+	err := dateTimeToTimevalFunction_Set()
+	if err == nil {
+		ret = dateTimeToTimevalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var dateTimeToTimezoneFunction *gi.Function
+var dateTimeToTimezoneFunction_Once sync.Once
+
+func dateTimeToTimezoneFunction_Set() error {
+	var err error
+	dateTimeToTimezoneFunction_Once.Do(func() {
+		err = dateTimeStruct_Set()
+		if err != nil {
+			return
+		}
+		dateTimeToTimezoneFunction, err = dateTimeStruct.InvokerNew("to_timezone")
+	})
+	return err
+}
+
+// ToTimezone is a representation of the C type g_date_time_to_timezone.
+func (recv *DateTime) ToTimezone(tz *TimeZone) (*DateTime, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(tz.native)
+
+	var ret gi.Argument
+
+	err := dateTimeToTimezoneFunction_Set()
+	if err == nil {
+		ret = dateTimeToTimezoneFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &DateTime{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var dateTimeToUnixFunction *gi.Function
 var dateTimeToUnixFunction_Once sync.Once
@@ -4647,7 +5103,38 @@ type Hook struct {
 	// UNSUPPORTED : C value 'destroy' : no Go type for 'DestroyNotify'
 }
 
-// UNSUPPORTED : C value 'g_hook_compare_ids' : parameter 'sibling' of type 'Hook' not supported
+var hookCompareIdsFunction *gi.Function
+var hookCompareIdsFunction_Once sync.Once
+
+func hookCompareIdsFunction_Set() error {
+	var err error
+	hookCompareIdsFunction_Once.Do(func() {
+		err = hookStruct_Set()
+		if err != nil {
+			return
+		}
+		hookCompareIdsFunction, err = hookStruct.InvokerNew("compare_ids")
+	})
+	return err
+}
+
+// CompareIds is a representation of the C type g_hook_compare_ids.
+func (recv *Hook) CompareIds(sibling *Hook) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(sibling.native)
+
+	var ret gi.Argument
+
+	err := hookCompareIdsFunction_Set()
+	if err == nil {
+		ret = hookCompareIdsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var hookListStruct *gi.Struct
 var hookListStruct_Once sync.Once
@@ -5117,7 +5604,7 @@ func (recv *IOChannel) Init() error {
 
 // UNSUPPORTED : C value 'g_io_channel_read_line' : return type 'IOStatus' not supported
 
-// UNSUPPORTED : C value 'g_io_channel_read_line_string' : parameter 'buffer' of type 'String' not supported
+// UNSUPPORTED : C value 'g_io_channel_read_line_string' : return type 'IOStatus' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_read_to_end' : parameter 'str_return' has no type
 
@@ -6121,7 +6608,7 @@ func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_key_file_load_from_bytes' : parameter 'bytes' of type 'Bytes' not supported
+// UNSUPPORTED : C value 'g_key_file_load_from_bytes' : parameter 'flags' of type 'KeyFileFlags' not supported
 
 // UNSUPPORTED : C value 'g_key_file_load_from_data' : parameter 'flags' of type 'KeyFileFlags' not supported
 
@@ -6795,7 +7282,35 @@ func (recv *MainContext) Acquire() (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_main_context_add_poll' : parameter 'fd' of type 'PollFD' not supported
+var mainContextAddPollFunction *gi.Function
+var mainContextAddPollFunction_Once sync.Once
+
+func mainContextAddPollFunction_Set() error {
+	var err error
+	mainContextAddPollFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextAddPollFunction, err = mainContextStruct.InvokerNew("add_poll")
+	})
+	return err
+}
+
+// AddPoll is a representation of the C type g_main_context_add_poll.
+func (recv *MainContext) AddPoll(fd *PollFD, priority int32) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
+	inArgs[2].SetInt32(priority)
+
+	err := mainContextAddPollFunction_Set()
+	if err == nil {
+		mainContextAddPollFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_main_context_check' : parameter 'fds' has no type
 
@@ -6827,7 +7342,7 @@ func (recv *MainContext) Dispatch() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_main_context_find_source_by_funcs_user_data' : parameter 'funcs' of type 'SourceFuncs' not supported
+// UNSUPPORTED : C value 'g_main_context_find_source_by_funcs_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
 var mainContextFindSourceByIdFunction *gi.Function
 var mainContextFindSourceByIdFunction_Once sync.Once
@@ -7119,7 +7634,34 @@ func (recv *MainContext) Release() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_main_context_remove_poll' : parameter 'fd' of type 'PollFD' not supported
+var mainContextRemovePollFunction *gi.Function
+var mainContextRemovePollFunction_Once sync.Once
+
+func mainContextRemovePollFunction_Set() error {
+	var err error
+	mainContextRemovePollFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextRemovePollFunction, err = mainContextStruct.InvokerNew("remove_poll")
+	})
+	return err
+}
+
+// RemovePoll is a representation of the C type g_main_context_remove_poll.
+func (recv *MainContext) RemovePoll(fd *PollFD) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
+
+	err := mainContextRemovePollFunction_Set()
+	if err == nil {
+		mainContextRemovePollFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_main_context_set_poll_func' : parameter 'func' of type 'PollFunc' not supported
 
@@ -7151,7 +7693,7 @@ func (recv *MainContext) Unref() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_main_context_wait' : parameter 'cond' of type 'Cond' not supported
+// UNSUPPORTED : C value 'g_main_context_wait' : parameter 'mutex' of type 'Mutex' not supported
 
 var mainContextWakeupFunction *gi.Function
 var mainContextWakeupFunction_Once sync.Once
@@ -7196,7 +7738,38 @@ type MainLoop struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_main_loop_new' : parameter 'context' of type 'MainContext' not supported
+var mainLoopNewFunction *gi.Function
+var mainLoopNewFunction_Once sync.Once
+
+func mainLoopNewFunction_Set() error {
+	var err error
+	mainLoopNewFunction_Once.Do(func() {
+		err = mainLoopStruct_Set()
+		if err != nil {
+			return
+		}
+		mainLoopNewFunction, err = mainLoopStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// MainLoopNew is a representation of the C type g_main_loop_new.
+func MainLoopNew(context *MainContext, isRunning bool) (*MainLoop, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.native)
+	inArgs[1].SetBoolean(isRunning)
+
+	var ret gi.Argument
+
+	err := mainLoopNewFunction_Set()
+	if err == nil {
+		ret = mainLoopNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &MainLoop{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var mainLoopGetContextFunction *gi.Function
 var mainLoopGetContextFunction_Once sync.Once
@@ -7627,7 +8200,7 @@ type MarkupParseContext struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'parser' of type 'MarkupParser' not supported
+// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'flags' of type 'MarkupParseFlags' not supported
 
 var markupParseContextEndParseFunction *gi.Function
 var markupParseContextEndParseFunction_Once sync.Once
@@ -7791,7 +8364,7 @@ func (recv *MarkupParseContext) Parse(text string, textLen int32) (bool, error) 
 
 // UNSUPPORTED : C value 'g_markup_parse_context_pop' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_markup_parse_context_push' : parameter 'parser' of type 'MarkupParser' not supported
+// UNSUPPORTED : C value 'g_markup_parse_context_push' : parameter 'user_data' of type 'gpointer' not supported
 
 var markupParseContextRefFunction *gi.Function
 var markupParseContextRefFunction_Once sync.Once
@@ -8410,7 +8983,38 @@ type Node struct {
 
 // UNSUPPORTED : C value 'g_node_child_index' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_node_child_position' : parameter 'child' of type 'Node' not supported
+var nodeChildPositionFunction *gi.Function
+var nodeChildPositionFunction_Once sync.Once
+
+func nodeChildPositionFunction_Set() error {
+	var err error
+	nodeChildPositionFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeChildPositionFunction, err = nodeStruct.InvokerNew("child_position")
+	})
+	return err
+}
+
+// ChildPosition is a representation of the C type g_node_child_position.
+func (recv *Node) ChildPosition(child *Node) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(child.native)
+
+	var ret gi.Argument
+
+	err := nodeChildPositionFunction_Set()
+	if err == nil {
+		ret = nodeChildPositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_node_children_foreach' : parameter 'flags' of type 'TraverseFlags' not supported
 
@@ -8576,13 +9180,140 @@ func (recv *Node) GetRoot() (*Node, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_node_insert' : parameter 'node' of type 'Node' not supported
+var nodeInsertFunction *gi.Function
+var nodeInsertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_node_insert_after' : parameter 'sibling' of type 'Node' not supported
+func nodeInsertFunction_Set() error {
+	var err error
+	nodeInsertFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeInsertFunction, err = nodeStruct.InvokerNew("insert")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_node_insert_before' : parameter 'sibling' of type 'Node' not supported
+// Insert is a representation of the C type g_node_insert.
+func (recv *Node) Insert(position int32, node *Node) (*Node, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(position)
+	inArgs[2].SetPointer(node.native)
 
-// UNSUPPORTED : C value 'g_node_is_ancestor' : parameter 'descendant' of type 'Node' not supported
+	var ret gi.Argument
+
+	err := nodeInsertFunction_Set()
+	if err == nil {
+		ret = nodeInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Node{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var nodeInsertAfterFunction *gi.Function
+var nodeInsertAfterFunction_Once sync.Once
+
+func nodeInsertAfterFunction_Set() error {
+	var err error
+	nodeInsertAfterFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeInsertAfterFunction, err = nodeStruct.InvokerNew("insert_after")
+	})
+	return err
+}
+
+// InsertAfter is a representation of the C type g_node_insert_after.
+func (recv *Node) InsertAfter(sibling *Node, node *Node) (*Node, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(sibling.native)
+	inArgs[2].SetPointer(node.native)
+
+	var ret gi.Argument
+
+	err := nodeInsertAfterFunction_Set()
+	if err == nil {
+		ret = nodeInsertAfterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Node{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var nodeInsertBeforeFunction *gi.Function
+var nodeInsertBeforeFunction_Once sync.Once
+
+func nodeInsertBeforeFunction_Set() error {
+	var err error
+	nodeInsertBeforeFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeInsertBeforeFunction, err = nodeStruct.InvokerNew("insert_before")
+	})
+	return err
+}
+
+// InsertBefore is a representation of the C type g_node_insert_before.
+func (recv *Node) InsertBefore(sibling *Node, node *Node) (*Node, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(sibling.native)
+	inArgs[2].SetPointer(node.native)
+
+	var ret gi.Argument
+
+	err := nodeInsertBeforeFunction_Set()
+	if err == nil {
+		ret = nodeInsertBeforeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Node{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var nodeIsAncestorFunction *gi.Function
+var nodeIsAncestorFunction_Once sync.Once
+
+func nodeIsAncestorFunction_Set() error {
+	var err error
+	nodeIsAncestorFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeIsAncestorFunction, err = nodeStruct.InvokerNew("is_ancestor")
+	})
+	return err
+}
+
+// IsAncestor is a representation of the C type g_node_is_ancestor.
+func (recv *Node) IsAncestor(descendant *Node) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(descendant.native)
+
+	var ret gi.Argument
+
+	err := nodeIsAncestorFunction_Set()
+	if err == nil {
+		ret = nodeIsAncestorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var nodeLastChildFunction *gi.Function
 var nodeLastChildFunction_Once sync.Once
@@ -8747,7 +9478,38 @@ func (recv *Node) NthChild(n uint32) (*Node, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_node_prepend' : parameter 'node' of type 'Node' not supported
+var nodePrependFunction *gi.Function
+var nodePrependFunction_Once sync.Once
+
+func nodePrependFunction_Set() error {
+	var err error
+	nodePrependFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodePrependFunction, err = nodeStruct.InvokerNew("prepend")
+	})
+	return err
+}
+
+// Prepend is a representation of the C type g_node_prepend.
+func (recv *Node) Prepend(node *Node) (*Node, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(node.native)
+
+	var ret gi.Argument
+
+	err := nodePrependFunction_Set()
+	if err == nil {
+		ret = nodePrependFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Node{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var nodeReverseChildrenFunction *gi.Function
 var nodeReverseChildrenFunction_Once sync.Once
@@ -8841,9 +9603,64 @@ type OptionContext struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_option_context_add_group' : parameter 'group' of type 'OptionGroup' not supported
+var optionContextAddGroupFunction *gi.Function
+var optionContextAddGroupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_option_context_add_main_entries' : parameter 'entries' of type 'OptionEntry' not supported
+func optionContextAddGroupFunction_Set() error {
+	var err error
+	optionContextAddGroupFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextAddGroupFunction, err = optionContextStruct.InvokerNew("add_group")
+	})
+	return err
+}
+
+// AddGroup is a representation of the C type g_option_context_add_group.
+func (recv *OptionContext) AddGroup(group *OptionGroup) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
+
+	err := optionContextAddGroupFunction_Set()
+	if err == nil {
+		optionContextAddGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var optionContextAddMainEntriesFunction *gi.Function
+var optionContextAddMainEntriesFunction_Once sync.Once
+
+func optionContextAddMainEntriesFunction_Set() error {
+	var err error
+	optionContextAddMainEntriesFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextAddMainEntriesFunction, err = optionContextStruct.InvokerNew("add_main_entries")
+	})
+	return err
+}
+
+// AddMainEntries is a representation of the C type g_option_context_add_main_entries.
+func (recv *OptionContext) AddMainEntries(entries *OptionEntry, translationDomain string) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(entries.native)
+	inArgs[2].SetString(translationDomain)
+
+	err := optionContextAddMainEntriesFunction_Set()
+	if err == nil {
+		optionContextAddMainEntriesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var optionContextFreeFunction *gi.Function
 var optionContextFreeFunction_Once sync.Once
@@ -8905,7 +9722,39 @@ func (recv *OptionContext) GetDescription() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_option_context_get_help' : parameter 'group' of type 'OptionGroup' not supported
+var optionContextGetHelpFunction *gi.Function
+var optionContextGetHelpFunction_Once sync.Once
+
+func optionContextGetHelpFunction_Set() error {
+	var err error
+	optionContextGetHelpFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextGetHelpFunction, err = optionContextStruct.InvokerNew("get_help")
+	})
+	return err
+}
+
+// GetHelp is a representation of the C type g_option_context_get_help.
+func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) (string, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetBoolean(mainHelp)
+	inArgs[2].SetPointer(group.native)
+
+	var ret gi.Argument
+
+	err := optionContextGetHelpFunction_Set()
+	if err == nil {
+		ret = optionContextGetHelpFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var optionContextGetHelpEnabledFunction *gi.Function
 var optionContextGetHelpEnabledFunction_Once sync.Once
@@ -9158,7 +10007,34 @@ func (recv *OptionContext) SetIgnoreUnknownOptions(ignoreUnknown bool) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_option_context_set_main_group' : parameter 'group' of type 'OptionGroup' not supported
+var optionContextSetMainGroupFunction *gi.Function
+var optionContextSetMainGroupFunction_Once sync.Once
+
+func optionContextSetMainGroupFunction_Set() error {
+	var err error
+	optionContextSetMainGroupFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextSetMainGroupFunction, err = optionContextStruct.InvokerNew("set_main_group")
+	})
+	return err
+}
+
+// SetMainGroup is a representation of the C type g_option_context_set_main_group.
+func (recv *OptionContext) SetMainGroup(group *OptionGroup) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(group.native)
+
+	err := optionContextSetMainGroupFunction_Set()
+	if err == nil {
+		optionContextSetMainGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var optionContextSetStrictPosixFunction *gi.Function
 var optionContextSetStrictPosixFunction_Once sync.Once
@@ -9288,7 +10164,34 @@ type OptionGroup struct {
 
 // UNSUPPORTED : C value 'g_option_group_new' : parameter 'user_data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_option_group_add_entries' : parameter 'entries' of type 'OptionEntry' not supported
+var optionGroupAddEntriesFunction *gi.Function
+var optionGroupAddEntriesFunction_Once sync.Once
+
+func optionGroupAddEntriesFunction_Set() error {
+	var err error
+	optionGroupAddEntriesFunction_Once.Do(func() {
+		err = optionGroupStruct_Set()
+		if err != nil {
+			return
+		}
+		optionGroupAddEntriesFunction, err = optionGroupStruct.InvokerNew("add_entries")
+	})
+	return err
+}
+
+// AddEntries is a representation of the C type g_option_group_add_entries.
+func (recv *OptionGroup) AddEntries(entries *OptionEntry) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(entries.native)
+
+	err := optionGroupAddEntriesFunction_Set()
+	if err == nil {
+		optionGroupAddEntriesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var optionGroupFreeFunction *gi.Function
 var optionGroupFreeFunction_Once sync.Once
@@ -9428,7 +10331,38 @@ type PatternSpec struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_pattern_spec_equal' : parameter 'pspec2' of type 'PatternSpec' not supported
+var patternSpecEqualFunction *gi.Function
+var patternSpecEqualFunction_Once sync.Once
+
+func patternSpecEqualFunction_Set() error {
+	var err error
+	patternSpecEqualFunction_Once.Do(func() {
+		err = patternSpecStruct_Set()
+		if err != nil {
+			return
+		}
+		patternSpecEqualFunction, err = patternSpecStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_pattern_spec_equal.
+func (recv *PatternSpec) Equal(pspec2 *PatternSpec) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(pspec2.native)
+
+	var ret gi.Argument
+
+	err := patternSpecEqualFunction_Set()
+	if err == nil {
+		ret = patternSpecEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var patternSpecFreeFunction *gi.Function
 var patternSpecFreeFunction_Once sync.Once
@@ -11399,7 +12333,38 @@ type SequenceIter struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_sequence_iter_compare' : parameter 'b' of type 'SequenceIter' not supported
+var sequenceIterCompareFunction *gi.Function
+var sequenceIterCompareFunction_Once sync.Once
+
+func sequenceIterCompareFunction_Set() error {
+	var err error
+	sequenceIterCompareFunction_Once.Do(func() {
+		err = sequenceIterStruct_Set()
+		if err != nil {
+			return
+		}
+		sequenceIterCompareFunction, err = sequenceIterStruct.InvokerNew("compare")
+	})
+	return err
+}
+
+// Compare is a representation of the C type g_sequence_iter_compare.
+func (recv *SequenceIter) Compare(b *SequenceIter) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(b.native)
+
+	var ret gi.Argument
+
+	err := sequenceIterCompareFunction_Set()
+	if err == nil {
+		ret = sequenceIterCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var sequenceIterGetPositionFunction *gi.Function
 var sequenceIterGetPositionFunction_Once sync.Once
@@ -11641,15 +12606,131 @@ type Source struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_source_new' : parameter 'source_funcs' of type 'SourceFuncs' not supported
+var sourceNewFunction *gi.Function
+var sourceNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_source_add_child_source' : parameter 'child_source' of type 'Source' not supported
+func sourceNewFunction_Set() error {
+	var err error
+	sourceNewFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceNewFunction, err = sourceStruct.InvokerNew("new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_source_add_poll' : parameter 'fd' of type 'PollFD' not supported
+// SourceNew is a representation of the C type g_source_new.
+func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) (*Source, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(sourceFuncs.native)
+	inArgs[1].SetUint32(structSize)
+
+	var ret gi.Argument
+
+	err := sourceNewFunction_Set()
+	if err == nil {
+		ret = sourceNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Source{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var sourceAddChildSourceFunction *gi.Function
+var sourceAddChildSourceFunction_Once sync.Once
+
+func sourceAddChildSourceFunction_Set() error {
+	var err error
+	sourceAddChildSourceFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceAddChildSourceFunction, err = sourceStruct.InvokerNew("add_child_source")
+	})
+	return err
+}
+
+// AddChildSource is a representation of the C type g_source_add_child_source.
+func (recv *Source) AddChildSource(childSource *Source) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(childSource.native)
+
+	err := sourceAddChildSourceFunction_Set()
+	if err == nil {
+		sourceAddChildSourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var sourceAddPollFunction *gi.Function
+var sourceAddPollFunction_Once sync.Once
+
+func sourceAddPollFunction_Set() error {
+	var err error
+	sourceAddPollFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceAddPollFunction, err = sourceStruct.InvokerNew("add_poll")
+	})
+	return err
+}
+
+// AddPoll is a representation of the C type g_source_add_poll.
+func (recv *Source) AddPoll(fd *PollFD) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
+
+	err := sourceAddPollFunction_Set()
+	if err == nil {
+		sourceAddPollFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_source_add_unix_fd' : parameter 'events' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_source_attach' : parameter 'context' of type 'MainContext' not supported
+var sourceAttachFunction *gi.Function
+var sourceAttachFunction_Once sync.Once
+
+func sourceAttachFunction_Set() error {
+	var err error
+	sourceAttachFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceAttachFunction, err = sourceStruct.InvokerNew("attach")
+	})
+	return err
+}
+
+// Attach is a representation of the C type g_source_attach.
+func (recv *Source) Attach(context *MainContext) (uint32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(context.native)
+
+	var ret gi.Argument
+
+	err := sourceAttachFunction_Set()
+	if err == nil {
+		ret = sourceAttachFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo, err
+}
 
 var sourceDestroyFunction *gi.Function
 var sourceDestroyFunction_Once sync.Once
@@ -11743,7 +12824,34 @@ func (recv *Source) GetContext() (*MainContext, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_source_get_current_time' : parameter 'timeval' of type 'TimeVal' not supported
+var sourceGetCurrentTimeFunction *gi.Function
+var sourceGetCurrentTimeFunction_Once sync.Once
+
+func sourceGetCurrentTimeFunction_Set() error {
+	var err error
+	sourceGetCurrentTimeFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceGetCurrentTimeFunction, err = sourceStruct.InvokerNew("get_current_time")
+	})
+	return err
+}
+
+// GetCurrentTime is a representation of the C type g_source_get_current_time.
+func (recv *Source) GetCurrentTime(timeval *TimeVal) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(timeval.native)
+
+	err := sourceGetCurrentTimeFunction_Set()
+	if err == nil {
+		sourceGetCurrentTimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var sourceGetIdFunction *gi.Function
 var sourceGetIdFunction_Once sync.Once
@@ -11973,9 +13081,63 @@ func (recv *Source) Ref() (*Source, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_source_remove_child_source' : parameter 'child_source' of type 'Source' not supported
+var sourceRemoveChildSourceFunction *gi.Function
+var sourceRemoveChildSourceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_source_remove_poll' : parameter 'fd' of type 'PollFD' not supported
+func sourceRemoveChildSourceFunction_Set() error {
+	var err error
+	sourceRemoveChildSourceFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceRemoveChildSourceFunction, err = sourceStruct.InvokerNew("remove_child_source")
+	})
+	return err
+}
+
+// RemoveChildSource is a representation of the C type g_source_remove_child_source.
+func (recv *Source) RemoveChildSource(childSource *Source) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(childSource.native)
+
+	err := sourceRemoveChildSourceFunction_Set()
+	if err == nil {
+		sourceRemoveChildSourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var sourceRemovePollFunction *gi.Function
+var sourceRemovePollFunction_Once sync.Once
+
+func sourceRemovePollFunction_Set() error {
+	var err error
+	sourceRemovePollFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceRemovePollFunction, err = sourceStruct.InvokerNew("remove_poll")
+	})
+	return err
+}
+
+// RemovePoll is a representation of the C type g_source_remove_poll.
+func (recv *Source) RemovePoll(fd *PollFD) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fd.native)
+
+	err := sourceRemovePollFunction_Set()
+	if err == nil {
+		sourceRemovePollFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_source_remove_unix_fd' : parameter 'tag' of type 'gpointer' not supported
 
@@ -12012,7 +13174,34 @@ func (recv *Source) SetCanRecurse(canRecurse bool) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_source_set_funcs' : parameter 'funcs' of type 'SourceFuncs' not supported
+var sourceSetFuncsFunction *gi.Function
+var sourceSetFuncsFunction_Once sync.Once
+
+func sourceSetFuncsFunction_Set() error {
+	var err error
+	sourceSetFuncsFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceSetFuncsFunction, err = sourceStruct.InvokerNew("set_funcs")
+	})
+	return err
+}
+
+// SetFuncs is a representation of the C type g_source_set_funcs.
+func (recv *Source) SetFuncs(funcs *SourceFuncs) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(funcs.native)
+
+	err := sourceSetFuncsFunction_Set()
+	if err == nil {
+		sourceSetFuncsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var sourceSetNameFunction *gi.Function
 var sourceSetNameFunction_Once sync.Once
@@ -12484,7 +13673,38 @@ func (recv *String) Down() (*String, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_string_equal' : parameter 'v2' of type 'String' not supported
+var stringEqualFunction *gi.Function
+var stringEqualFunction_Once sync.Once
+
+func stringEqualFunction_Set() error {
+	var err error
+	stringEqualFunction_Once.Do(func() {
+		err = string_Struct_Set()
+		if err != nil {
+			return
+		}
+		stringEqualFunction, err = string_Struct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_string_equal.
+func (recv *String) Equal(v2 *String) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(v2.native)
+
+	var ret gi.Argument
+
+	err := stringEqualFunction_Set()
+	if err == nil {
+		ret = stringEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var stringEraseFunction *gi.Function
 var stringEraseFunction_Once sync.Once
@@ -13370,9 +14590,63 @@ type TestSuite struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_test_suite_add' : parameter 'test_case' of type 'TestCase' not supported
+var testSuiteAddFunction *gi.Function
+var testSuiteAddFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_test_suite_add_suite' : parameter 'nestedsuite' of type 'TestSuite' not supported
+func testSuiteAddFunction_Set() error {
+	var err error
+	testSuiteAddFunction_Once.Do(func() {
+		err = testSuiteStruct_Set()
+		if err != nil {
+			return
+		}
+		testSuiteAddFunction, err = testSuiteStruct.InvokerNew("add")
+	})
+	return err
+}
+
+// Add is a representation of the C type g_test_suite_add.
+func (recv *TestSuite) Add(testCase *TestCase) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(testCase.native)
+
+	err := testSuiteAddFunction_Set()
+	if err == nil {
+		testSuiteAddFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var testSuiteAddSuiteFunction *gi.Function
+var testSuiteAddSuiteFunction_Once sync.Once
+
+func testSuiteAddSuiteFunction_Set() error {
+	var err error
+	testSuiteAddSuiteFunction_Once.Do(func() {
+		err = testSuiteStruct_Set()
+		if err != nil {
+			return
+		}
+		testSuiteAddSuiteFunction, err = testSuiteStruct.InvokerNew("add_suite")
+	})
+	return err
+}
+
+// AddSuite is a representation of the C type g_test_suite_add_suite.
+func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(nestedsuite.native)
+
+	err := testSuiteAddSuiteFunction_Set()
+	if err == nil {
+		testSuiteAddSuiteFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var threadStruct *gi.Struct
 var threadStruct_Once sync.Once
@@ -14488,7 +15762,7 @@ type Variant struct {
 
 // UNSUPPORTED : C value 'g_variant_new' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_new_array' : parameter 'child_type' of type 'VariantType' not supported
+// UNSUPPORTED : C value 'g_variant_new_array' : parameter 'children' has no type
 
 var variantNewBooleanFunction *gi.Function
 var variantNewBooleanFunction_Once sync.Once
@@ -14558,7 +15832,38 @@ func VariantNewByte(value uint8) (*Variant, error) {
 
 // UNSUPPORTED : C value 'g_variant_new_bytestring_array' : parameter 'strv' has no type
 
-// UNSUPPORTED : C value 'g_variant_new_dict_entry' : parameter 'key' of type 'Variant' not supported
+var variantNewDictEntryFunction *gi.Function
+var variantNewDictEntryFunction_Once sync.Once
+
+func variantNewDictEntryFunction_Set() error {
+	var err error
+	variantNewDictEntryFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewDictEntryFunction, err = variantStruct.InvokerNew("new_dict_entry")
+	})
+	return err
+}
+
+// VariantNewDictEntry is a representation of the C type g_variant_new_dict_entry.
+func VariantNewDictEntry(key *Variant, value *Variant) (*Variant, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(key.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := variantNewDictEntryFunction_Set()
+	if err == nil {
+		ret = variantNewDictEntryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantNewDoubleFunction *gi.Function
 var variantNewDoubleFunction_Once sync.Once
@@ -14592,11 +15897,43 @@ func VariantNewDouble(value float64) (*Variant, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_new_fixed_array' : parameter 'element_type' of type 'VariantType' not supported
+// UNSUPPORTED : C value 'g_variant_new_fixed_array' : parameter 'elements' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_from_bytes' : parameter 'type' of type 'VariantType' not supported
+var variantNewFromBytesFunction *gi.Function
+var variantNewFromBytesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_new_from_data' : parameter 'type' of type 'VariantType' not supported
+func variantNewFromBytesFunction_Set() error {
+	var err error
+	variantNewFromBytesFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewFromBytesFunction, err = variantStruct.InvokerNew("new_from_bytes")
+	})
+	return err
+}
+
+// VariantNewFromBytes is a representation of the C type g_variant_new_from_bytes.
+func VariantNewFromBytes(type_ *VariantType, bytes *Bytes, trusted bool) (*Variant, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(type_.native)
+	inArgs[1].SetPointer(bytes.native)
+	inArgs[2].SetBoolean(trusted)
+
+	var ret gi.Argument
+
+	err := variantNewFromBytesFunction_Set()
+	if err == nil {
+		ret = variantNewFromBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_variant_new_from_data' : parameter 'data' has no type
 
 var variantNewHandleFunction *gi.Function
 var variantNewHandleFunction_Once sync.Once
@@ -14726,7 +16063,38 @@ func VariantNewInt64(value int64) (*Variant, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_new_maybe' : parameter 'child_type' of type 'VariantType' not supported
+var variantNewMaybeFunction *gi.Function
+var variantNewMaybeFunction_Once sync.Once
+
+func variantNewMaybeFunction_Set() error {
+	var err error
+	variantNewMaybeFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewMaybeFunction, err = variantStruct.InvokerNew("new_maybe")
+	})
+	return err
+}
+
+// VariantNewMaybe is a representation of the C type g_variant_new_maybe.
+func VariantNewMaybe(childType *VariantType, child *Variant) (*Variant, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(childType.native)
+	inArgs[1].SetPointer(child.native)
+
+	var ret gi.Argument
+
+	err := variantNewMaybeFunction_Set()
+	if err == nil {
+		ret = variantNewMaybeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantNewObjectPathFunction *gi.Function
 var variantNewObjectPathFunction_Once sync.Once
@@ -14966,7 +16334,37 @@ func VariantNewUint64(value uint64) (*Variant, error) {
 
 // UNSUPPORTED : C value 'g_variant_new_va' : parameter 'app' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_variant_new_variant' : parameter 'value' of type 'Variant' not supported
+var variantNewVariantFunction *gi.Function
+var variantNewVariantFunction_Once sync.Once
+
+func variantNewVariantFunction_Set() error {
+	var err error
+	variantNewVariantFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewVariantFunction, err = variantStruct.InvokerNew("new_variant")
+	})
+	return err
+}
+
+// VariantNewVariant is a representation of the C type g_variant_new_variant.
+func VariantNewVariant(value *Variant) (*Variant, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := variantNewVariantFunction_Set()
+	if err == nil {
+		ret = variantNewVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantByteswapFunction *gi.Function
 var variantByteswapFunction_Once sync.Once
@@ -15036,7 +16434,38 @@ func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) (bool
 
 // UNSUPPORTED : C value 'g_variant_classify' : return type 'VariantClass' not supported
 
-// UNSUPPORTED : C value 'g_variant_compare' : parameter 'two' of type 'Variant' not supported
+var variantCompareFunction *gi.Function
+var variantCompareFunction_Once sync.Once
+
+func variantCompareFunction_Set() error {
+	var err error
+	variantCompareFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantCompareFunction, err = variantStruct.InvokerNew("compare")
+	})
+	return err
+}
+
+// Compare is a representation of the C type g_variant_compare.
+func (recv *Variant) Compare(two *Variant) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(two.native)
+
+	var ret gi.Argument
+
+	err := variantCompareFunction_Set()
+	if err == nil {
+		ret = variantCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var variantDupBytestringFunction *gi.Function
 var variantDupBytestringFunction_Once sync.Once
@@ -15200,7 +16629,38 @@ func (recv *Variant) DupStrv() (uint64, error) {
 	return out0, err
 }
 
-// UNSUPPORTED : C value 'g_variant_equal' : parameter 'two' of type 'Variant' not supported
+var variantEqualFunction *gi.Function
+var variantEqualFunction_Once sync.Once
+
+func variantEqualFunction_Set() error {
+	var err error
+	variantEqualFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantEqualFunction, err = variantStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_variant_equal.
+func (recv *Variant) Equal(two *Variant) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(two.native)
+
+	var ret gi.Argument
+
+	err := variantEqualFunction_Set()
+	if err == nil {
+		ret = variantEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_get' : parameter '...' has no type
 
@@ -16106,7 +17566,38 @@ func (recv *Variant) IsNormalForm() (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_is_of_type' : parameter 'type' of type 'VariantType' not supported
+var variantIsOfTypeFunction *gi.Function
+var variantIsOfTypeFunction_Once sync.Once
+
+func variantIsOfTypeFunction_Set() error {
+	var err error
+	variantIsOfTypeFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantIsOfTypeFunction, err = variantStruct.InvokerNew("is_of_type")
+	})
+	return err
+}
+
+// IsOfType is a representation of the C type g_variant_is_of_type.
+func (recv *Variant) IsOfType(type_ *VariantType) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type_.native)
+
+	var ret gi.Argument
+
+	err := variantIsOfTypeFunction_Set()
+	if err == nil {
+		ret = variantIsOfTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantIterNewFunction *gi.Function
 var variantIterNewFunction_Once sync.Once
@@ -16142,7 +17633,39 @@ func (recv *Variant) IterNew() (*VariantIter, error) {
 
 // UNSUPPORTED : C value 'g_variant_lookup' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_lookup_value' : parameter 'expected_type' of type 'VariantType' not supported
+var variantLookupValueFunction *gi.Function
+var variantLookupValueFunction_Once sync.Once
+
+func variantLookupValueFunction_Set() error {
+	var err error
+	variantLookupValueFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantLookupValueFunction, err = variantStruct.InvokerNew("lookup_value")
+	})
+	return err
+}
+
+// LookupValue is a representation of the C type g_variant_lookup_value.
+func (recv *Variant) LookupValue(key string, expectedType *VariantType) (*Variant, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(expectedType.native)
+
+	var ret gi.Argument
+
+	err := variantLookupValueFunction_Set()
+	if err == nil {
+		ret = variantLookupValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantNChildrenFunction *gi.Function
 var variantNChildrenFunction_Once sync.Once
@@ -16209,7 +17732,39 @@ func (recv *Variant) Print(typeAnnotate bool) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_print_string' : parameter 'string' of type 'String' not supported
+var variantPrintStringFunction *gi.Function
+var variantPrintStringFunction_Once sync.Once
+
+func variantPrintStringFunction_Set() error {
+	var err error
+	variantPrintStringFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantPrintStringFunction, err = variantStruct.InvokerNew("print_string")
+	})
+	return err
+}
+
+// PrintString is a representation of the C type g_variant_print_string.
+func (recv *Variant) PrintString(string_ *String, typeAnnotate bool) (*String, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(string_.native)
+	inArgs[2].SetBoolean(typeAnnotate)
+
+	var ret gi.Argument
+
+	err := variantPrintStringFunction_Set()
+	if err == nil {
+		ret = variantPrintStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &String{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantRefFunction *gi.Function
 var variantRefFunction_Once sync.Once
@@ -16352,13 +17907,70 @@ type VariantBuilder struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_variant_builder_new' : parameter 'type' of type 'VariantType' not supported
+var variantBuilderNewFunction *gi.Function
+var variantBuilderNewFunction_Once sync.Once
+
+func variantBuilderNewFunction_Set() error {
+	var err error
+	variantBuilderNewFunction_Once.Do(func() {
+		err = variantBuilderStruct_Set()
+		if err != nil {
+			return
+		}
+		variantBuilderNewFunction, err = variantBuilderStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// VariantBuilderNew is a representation of the C type g_variant_builder_new.
+func VariantBuilderNew(type_ *VariantType) (*VariantBuilder, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(type_.native)
+
+	var ret gi.Argument
+
+	err := variantBuilderNewFunction_Set()
+	if err == nil {
+		ret = variantBuilderNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &VariantBuilder{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_builder_add' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_variant_builder_add_parsed' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_builder_add_value' : parameter 'value' of type 'Variant' not supported
+var variantBuilderAddValueFunction *gi.Function
+var variantBuilderAddValueFunction_Once sync.Once
+
+func variantBuilderAddValueFunction_Set() error {
+	var err error
+	variantBuilderAddValueFunction_Once.Do(func() {
+		err = variantBuilderStruct_Set()
+		if err != nil {
+			return
+		}
+		variantBuilderAddValueFunction, err = variantBuilderStruct.InvokerNew("add_value")
+	})
+	return err
+}
+
+// AddValue is a representation of the C type g_variant_builder_add_value.
+func (recv *VariantBuilder) AddValue(value *Variant) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(value.native)
+
+	err := variantBuilderAddValueFunction_Set()
+	if err == nil {
+		variantBuilderAddValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var variantBuilderClearFunction *gi.Function
 var variantBuilderClearFunction_Once sync.Once
@@ -16448,9 +18060,63 @@ func (recv *VariantBuilder) End() (*Variant, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_builder_init' : parameter 'type' of type 'VariantType' not supported
+var variantBuilderInitFunction *gi.Function
+var variantBuilderInitFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_builder_open' : parameter 'type' of type 'VariantType' not supported
+func variantBuilderInitFunction_Set() error {
+	var err error
+	variantBuilderInitFunction_Once.Do(func() {
+		err = variantBuilderStruct_Set()
+		if err != nil {
+			return
+		}
+		variantBuilderInitFunction, err = variantBuilderStruct.InvokerNew("init")
+	})
+	return err
+}
+
+// Init is a representation of the C type g_variant_builder_init.
+func (recv *VariantBuilder) Init(type_ *VariantType) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type_.native)
+
+	err := variantBuilderInitFunction_Set()
+	if err == nil {
+		variantBuilderInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var variantBuilderOpenFunction *gi.Function
+var variantBuilderOpenFunction_Once sync.Once
+
+func variantBuilderOpenFunction_Set() error {
+	var err error
+	variantBuilderOpenFunction_Once.Do(func() {
+		err = variantBuilderStruct_Set()
+		if err != nil {
+			return
+		}
+		variantBuilderOpenFunction, err = variantBuilderStruct.InvokerNew("open")
+	})
+	return err
+}
+
+// Open is a representation of the C type g_variant_builder_open.
+func (recv *VariantBuilder) Open(type_ *VariantType) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type_.native)
+
+	err := variantBuilderOpenFunction_Set()
+	if err == nil {
+		variantBuilderOpenFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var variantBuilderRefFunction *gi.Function
 var variantBuilderRefFunction_Once sync.Once
@@ -16527,7 +18193,37 @@ type VariantDict struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_variant_dict_new' : parameter 'from_asv' of type 'Variant' not supported
+var variantDictNewFunction *gi.Function
+var variantDictNewFunction_Once sync.Once
+
+func variantDictNewFunction_Set() error {
+	var err error
+	variantDictNewFunction_Once.Do(func() {
+		err = variantDictStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDictNewFunction, err = variantDictStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// VariantDictNew is a representation of the C type g_variant_dict_new.
+func VariantDictNew(fromAsv *Variant) (*VariantDict, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(fromAsv.native)
+
+	var ret gi.Argument
+
+	err := variantDictNewFunction_Set()
+	if err == nil {
+		ret = variantDictNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &VariantDict{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantDictClearFunction *gi.Function
 var variantDictClearFunction_Once sync.Once
@@ -16622,15 +18318,102 @@ func (recv *VariantDict) End() (*Variant, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_dict_init' : parameter 'from_asv' of type 'Variant' not supported
+var variantDictInitFunction *gi.Function
+var variantDictInitFunction_Once sync.Once
+
+func variantDictInitFunction_Set() error {
+	var err error
+	variantDictInitFunction_Once.Do(func() {
+		err = variantDictStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDictInitFunction, err = variantDictStruct.InvokerNew("init")
+	})
+	return err
+}
+
+// Init is a representation of the C type g_variant_dict_init.
+func (recv *VariantDict) Init(fromAsv *Variant) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(fromAsv.native)
+
+	err := variantDictInitFunction_Set()
+	if err == nil {
+		variantDictInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_variant_dict_insert' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_dict_insert_value' : parameter 'value' of type 'Variant' not supported
+var variantDictInsertValueFunction *gi.Function
+var variantDictInsertValueFunction_Once sync.Once
+
+func variantDictInsertValueFunction_Set() error {
+	var err error
+	variantDictInsertValueFunction_Once.Do(func() {
+		err = variantDictStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDictInsertValueFunction, err = variantDictStruct.InvokerNew("insert_value")
+	})
+	return err
+}
+
+// InsertValue is a representation of the C type g_variant_dict_insert_value.
+func (recv *VariantDict) InsertValue(key string, value *Variant) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(value.native)
+
+	err := variantDictInsertValueFunction_Set()
+	if err == nil {
+		variantDictInsertValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_variant_dict_lookup' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_variant_dict_lookup_value' : parameter 'expected_type' of type 'VariantType' not supported
+var variantDictLookupValueFunction *gi.Function
+var variantDictLookupValueFunction_Once sync.Once
+
+func variantDictLookupValueFunction_Set() error {
+	var err error
+	variantDictLookupValueFunction_Once.Do(func() {
+		err = variantDictStruct_Set()
+		if err != nil {
+			return
+		}
+		variantDictLookupValueFunction, err = variantDictStruct.InvokerNew("lookup_value")
+	})
+	return err
+}
+
+// LookupValue is a representation of the C type g_variant_dict_lookup_value.
+func (recv *VariantDict) LookupValue(key string, expectedType *VariantType) (*Variant, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(expectedType.native)
+
+	var ret gi.Argument
+
+	err := variantDictLookupValueFunction_Set()
+	if err == nil {
+		ret = variantDictLookupValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var variantDictRefFunction *gi.Function
 var variantDictRefFunction_Once sync.Once
@@ -16800,7 +18583,38 @@ func (recv *VariantIter) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_variant_iter_init' : parameter 'value' of type 'Variant' not supported
+var variantIterInitFunction *gi.Function
+var variantIterInitFunction_Once sync.Once
+
+func variantIterInitFunction_Set() error {
+	var err error
+	variantIterInitFunction_Once.Do(func() {
+		err = variantIterStruct_Set()
+		if err != nil {
+			return
+		}
+		variantIterInitFunction, err = variantIterStruct.InvokerNew("init")
+	})
+	return err
+}
+
+// Init is a representation of the C type g_variant_iter_init.
+func (recv *VariantIter) Init(value *Variant) (uint64, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := variantIterInitFunction_Set()
+	if err == nil {
+		ret = variantIterInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_iter_loop' : parameter '...' has no type
 
@@ -16917,11 +18731,102 @@ func VariantTypeNew(typeString string) (*VariantType, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_new_array' : parameter 'element' of type 'VariantType' not supported
+var variantTypeNewArrayFunction *gi.Function
+var variantTypeNewArrayFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_type_new_dict_entry' : parameter 'key' of type 'VariantType' not supported
+func variantTypeNewArrayFunction_Set() error {
+	var err error
+	variantTypeNewArrayFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeNewArrayFunction, err = variantTypeStruct.InvokerNew("new_array")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_variant_type_new_maybe' : parameter 'element' of type 'VariantType' not supported
+// VariantTypeNewArray is a representation of the C type g_variant_type_new_array.
+func VariantTypeNewArray(element *VariantType) (*VariantType, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(element.native)
+
+	var ret gi.Argument
+
+	err := variantTypeNewArrayFunction_Set()
+	if err == nil {
+		ret = variantTypeNewArrayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &VariantType{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var variantTypeNewDictEntryFunction *gi.Function
+var variantTypeNewDictEntryFunction_Once sync.Once
+
+func variantTypeNewDictEntryFunction_Set() error {
+	var err error
+	variantTypeNewDictEntryFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeNewDictEntryFunction, err = variantTypeStruct.InvokerNew("new_dict_entry")
+	})
+	return err
+}
+
+// VariantTypeNewDictEntry is a representation of the C type g_variant_type_new_dict_entry.
+func VariantTypeNewDictEntry(key *VariantType, value *VariantType) (*VariantType, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(key.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := variantTypeNewDictEntryFunction_Set()
+	if err == nil {
+		ret = variantTypeNewDictEntryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &VariantType{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var variantTypeNewMaybeFunction *gi.Function
+var variantTypeNewMaybeFunction_Once sync.Once
+
+func variantTypeNewMaybeFunction_Set() error {
+	var err error
+	variantTypeNewMaybeFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeNewMaybeFunction, err = variantTypeStruct.InvokerNew("new_maybe")
+	})
+	return err
+}
+
+// VariantTypeNewMaybe is a representation of the C type g_variant_type_new_maybe.
+func VariantTypeNewMaybe(element *VariantType) (*VariantType, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(element.native)
+
+	var ret gi.Argument
+
+	err := variantTypeNewMaybeFunction_Set()
+	if err == nil {
+		ret = variantTypeNewMaybeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &VariantType{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_variant_type_new_tuple' : parameter 'items' has no type
 
@@ -17021,7 +18926,38 @@ func (recv *VariantType) Element() (*VariantType, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_equal' : parameter 'type2' of type 'VariantType' not supported
+var variantTypeEqualFunction *gi.Function
+var variantTypeEqualFunction_Once sync.Once
+
+func variantTypeEqualFunction_Set() error {
+	var err error
+	variantTypeEqualFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeEqualFunction, err = variantTypeStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_variant_type_equal.
+func (recv *VariantType) Equal(type2 *VariantType) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(type2.native)
+
+	var ret gi.Argument
+
+	err := variantTypeEqualFunction_Set()
+	if err == nil {
+		ret = variantTypeEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantTypeFirstFunction *gi.Function
 var variantTypeFirstFunction_Once sync.Once
@@ -17339,7 +19275,38 @@ func (recv *VariantType) IsMaybe() (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_type_is_subtype_of' : parameter 'supertype' of type 'VariantType' not supported
+var variantTypeIsSubtypeOfFunction *gi.Function
+var variantTypeIsSubtypeOfFunction_Once sync.Once
+
+func variantTypeIsSubtypeOfFunction_Set() error {
+	var err error
+	variantTypeIsSubtypeOfFunction_Once.Do(func() {
+		err = variantTypeStruct_Set()
+		if err != nil {
+			return
+		}
+		variantTypeIsSubtypeOfFunction, err = variantTypeStruct.InvokerNew("is_subtype_of")
+	})
+	return err
+}
+
+// IsSubtypeOf is a representation of the C type g_variant_type_is_subtype_of.
+func (recv *VariantType) IsSubtypeOf(supertype *VariantType) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(supertype.native)
+
+	var ret gi.Argument
+
+	err := variantTypeIsSubtypeOfFunction_Set()
+	if err == nil {
+		ret = variantTypeIsSubtypeOfFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var variantTypeIsTupleFunction *gi.Function
 var variantTypeIsTupleFunction_Once sync.Once

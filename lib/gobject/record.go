@@ -80,7 +80,7 @@ func (recv *Closure) Invalidate() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_closure_invoke' : parameter 'return_value' of type 'Value' not supported
+// UNSUPPORTED : C value 'g_closure_invoke' : parameter 'param_values' has no type
 
 var closureRefFunction *gi.Function
 var closureRefFunction_Once sync.Once
@@ -536,7 +536,7 @@ func signalQueryStruct_Set() error {
 	return err
 }
 
-type SignalQuery struct {
+type SignalQuery_ struct {
 	native     uintptr
 	SignalId   uint32
 	SignalName string
@@ -917,7 +917,34 @@ type Value struct {
 	// UNSUPPORTED : C value 'data' : missing Type
 }
 
-// UNSUPPORTED : C value 'g_value_copy' : parameter 'dest_value' of type 'Value' not supported
+var valueCopyFunction *gi.Function
+var valueCopyFunction_Once sync.Once
+
+func valueCopyFunction_Set() error {
+	var err error
+	valueCopyFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueCopyFunction, err = valueStruct.InvokerNew("copy")
+	})
+	return err
+}
+
+// Copy is a representation of the C type g_value_copy.
+func (recv *Value) Copy(destValue *Value) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(destValue.native)
+
+	err := valueCopyFunction_Set()
+	if err == nil {
+		valueCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_value_dup_boxed' : return type 'gpointer' not supported
 
@@ -1485,7 +1512,34 @@ func (recv *Value) GetUlong() (uint64, error) {
 
 // UNSUPPORTED : C value 'g_value_init' : parameter 'g_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_value_init_from_instance' : parameter 'instance' of type 'TypeInstance' not supported
+var valueInitFromInstanceFunction *gi.Function
+var valueInitFromInstanceFunction_Once sync.Once
+
+func valueInitFromInstanceFunction_Set() error {
+	var err error
+	valueInitFromInstanceFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueInitFromInstanceFunction, err = valueStruct.InvokerNew("init_from_instance")
+	})
+	return err
+}
+
+// InitFromInstance is a representation of the C type g_value_init_from_instance.
+func (recv *Value) InitFromInstance(instance *TypeInstance) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(instance.native)
+
+	err := valueInitFromInstanceFunction_Set()
+	if err == nil {
+		valueInitFromInstanceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_value_peek_pointer' : return type 'gpointer' not supported
 
@@ -2073,7 +2127,38 @@ func (recv *Value) TakeString(vString string) error {
 
 // UNSUPPORTED : C value 'g_value_take_variant' : parameter 'variant' of type 'GLib.Variant' not supported
 
-// UNSUPPORTED : C value 'g_value_transform' : parameter 'dest_value' of type 'Value' not supported
+var valueTransformFunction *gi.Function
+var valueTransformFunction_Once sync.Once
+
+func valueTransformFunction_Set() error {
+	var err error
+	valueTransformFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueTransformFunction, err = valueStruct.InvokerNew("transform")
+	})
+	return err
+}
+
+// Transform is a representation of the C type g_value_transform.
+func (recv *Value) Transform(destValue *Value) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(destValue.native)
+
+	var ret gi.Argument
+
+	err := valueTransformFunction_Set()
+	if err == nil {
+		ret = valueTransformFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var valueUnsetFunction *gi.Function
 var valueUnsetFunction_Once sync.Once
@@ -2152,7 +2237,38 @@ func ValueArrayNew(nPrealloced uint32) (*ValueArray, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_value_array_append' : parameter 'value' of type 'Value' not supported
+var valueArrayAppendFunction *gi.Function
+var valueArrayAppendFunction_Once sync.Once
+
+func valueArrayAppendFunction_Set() error {
+	var err error
+	valueArrayAppendFunction_Once.Do(func() {
+		err = valueArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		valueArrayAppendFunction, err = valueArrayStruct.InvokerNew("append")
+	})
+	return err
+}
+
+// Append is a representation of the C type g_value_array_append.
+func (recv *ValueArray) Append(value *Value) (*ValueArray, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := valueArrayAppendFunction_Set()
+	if err == nil {
+		ret = valueArrayAppendFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ValueArray{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var valueArrayCopyFunction *gi.Function
 var valueArrayCopyFunction_Once sync.Once
@@ -2247,9 +2363,72 @@ func (recv *ValueArray) GetNth(index uint32) (*Value, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_value_array_insert' : parameter 'value' of type 'Value' not supported
+var valueArrayInsertFunction *gi.Function
+var valueArrayInsertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_array_prepend' : parameter 'value' of type 'Value' not supported
+func valueArrayInsertFunction_Set() error {
+	var err error
+	valueArrayInsertFunction_Once.Do(func() {
+		err = valueArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		valueArrayInsertFunction, err = valueArrayStruct.InvokerNew("insert")
+	})
+	return err
+}
+
+// Insert is a representation of the C type g_value_array_insert.
+func (recv *ValueArray) Insert(index uint32, value *Value) (*ValueArray, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetUint32(index)
+	inArgs[2].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := valueArrayInsertFunction_Set()
+	if err == nil {
+		ret = valueArrayInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ValueArray{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var valueArrayPrependFunction *gi.Function
+var valueArrayPrependFunction_Once sync.Once
+
+func valueArrayPrependFunction_Set() error {
+	var err error
+	valueArrayPrependFunction_Once.Do(func() {
+		err = valueArrayStruct_Set()
+		if err != nil {
+			return
+		}
+		valueArrayPrependFunction, err = valueArrayStruct.InvokerNew("prepend")
+	})
+	return err
+}
+
+// Prepend is a representation of the C type g_value_array_prepend.
+func (recv *ValueArray) Prepend(value *Value) (*ValueArray, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(value.native)
+
+	var ret gi.Argument
+
+	err := valueArrayPrependFunction_Set()
+	if err == nil {
+		ret = valueArrayPrependFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &ValueArray{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var valueArrayRemoveFunction *gi.Function
 var valueArrayRemoveFunction_Once sync.Once

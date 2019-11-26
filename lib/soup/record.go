@@ -546,7 +546,38 @@ func CookieNew(name string, value string, domain string, path string, maxAge int
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_applies_to_uri' : parameter 'uri' of type 'URI' not supported
+var cookieAppliesToUriFunction *gi.Function
+var cookieAppliesToUriFunction_Once sync.Once
+
+func cookieAppliesToUriFunction_Set() error {
+	var err error
+	cookieAppliesToUriFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieAppliesToUriFunction, err = cookieStruct.InvokerNew("applies_to_uri")
+	})
+	return err
+}
+
+// AppliesToUri is a representation of the C type soup_cookie_applies_to_uri.
+func (recv *Cookie) AppliesToUri(uri *URI) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(uri.native)
+
+	var ret gi.Argument
+
+	err := cookieAppliesToUriFunction_Set()
+	if err == nil {
+		ret = cookieAppliesToUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var cookieCopyFunction *gi.Function
 var cookieCopyFunction_Once sync.Once
@@ -613,7 +644,38 @@ func (recv *Cookie) DomainMatches(host string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_equal' : parameter 'cookie2' of type 'Cookie' not supported
+var cookieEqualFunction *gi.Function
+var cookieEqualFunction_Once sync.Once
+
+func cookieEqualFunction_Set() error {
+	var err error
+	cookieEqualFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieEqualFunction, err = cookieStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type soup_cookie_equal.
+func (recv *Cookie) Equal(cookie2 *Cookie) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(cookie2.native)
+
+	var ret gi.Argument
+
+	err := cookieEqualFunction_Set()
+	if err == nil {
+		ret = cookieEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var cookieFreeFunction *gi.Function
 var cookieFreeFunction_Once sync.Once
@@ -896,7 +958,34 @@ func (recv *Cookie) SetDomain(domain string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_cookie_set_expires' : parameter 'expires' of type 'Date' not supported
+var cookieSetExpiresFunction *gi.Function
+var cookieSetExpiresFunction_Once sync.Once
+
+func cookieSetExpiresFunction_Set() error {
+	var err error
+	cookieSetExpiresFunction_Once.Do(func() {
+		err = cookieStruct_Set()
+		if err != nil {
+			return
+		}
+		cookieSetExpiresFunction, err = cookieStruct.InvokerNew("set_expires")
+	})
+	return err
+}
+
+// SetExpires is a representation of the C type soup_cookie_set_expires.
+func (recv *Cookie) SetExpires(expires *Date) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(expires.native)
+
+	err := cookieSetExpiresFunction_Set()
+	if err == nil {
+		cookieSetExpiresFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var cookieSetHttpOnlyFunction *gi.Function
 var cookieSetHttpOnlyFunction_Once sync.Once
@@ -1866,7 +1955,40 @@ func HSTSPolicyNew(domain string, maxAge uint64, includeSubdomains bool) (*HSTSP
 
 // UNSUPPORTED : C value 'soup_hsts_policy_new_from_response' : parameter 'msg' of type 'Message' not supported
 
-// UNSUPPORTED : C value 'soup_hsts_policy_new_full' : parameter 'expires' of type 'Date' not supported
+var hSTSPolicyNewFullFunction *gi.Function
+var hSTSPolicyNewFullFunction_Once sync.Once
+
+func hSTSPolicyNewFullFunction_Set() error {
+	var err error
+	hSTSPolicyNewFullFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyNewFullFunction, err = hSTSPolicyStruct.InvokerNew("new_full")
+	})
+	return err
+}
+
+// HSTSPolicyNewFull is a representation of the C type soup_hsts_policy_new_full.
+func HSTSPolicyNewFull(domain string, maxAge uint64, expires *Date, includeSubdomains bool) (*HSTSPolicy, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetUint64(maxAge)
+	inArgs[2].SetPointer(expires.native)
+	inArgs[3].SetBoolean(includeSubdomains)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyNewFullFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyNewFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &HSTSPolicy{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var hSTSPolicyNewSessionPolicyFunction *gi.Function
 var hSTSPolicyNewSessionPolicyFunction_Once sync.Once
@@ -1933,7 +2055,38 @@ func (recv *HSTSPolicy) Copy() (*HSTSPolicy, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_hsts_policy_equal' : parameter 'policy2' of type 'HSTSPolicy' not supported
+var hSTSPolicyEqualFunction *gi.Function
+var hSTSPolicyEqualFunction_Once sync.Once
+
+func hSTSPolicyEqualFunction_Set() error {
+	var err error
+	hSTSPolicyEqualFunction_Once.Do(func() {
+		err = hSTSPolicyStruct_Set()
+		if err != nil {
+			return
+		}
+		hSTSPolicyEqualFunction, err = hSTSPolicyStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type soup_hsts_policy_equal.
+func (recv *HSTSPolicy) Equal(policy2 *HSTSPolicy) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(policy2.native)
+
+	var ret gi.Argument
+
+	err := hSTSPolicyEqualFunction_Set()
+	if err == nil {
+		ret = hSTSPolicyEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var hSTSPolicyFreeFunction *gi.Function
 var hSTSPolicyFreeFunction_Once sync.Once
@@ -2160,7 +2313,34 @@ func MessageBodyNew() (*MessageBody, error) {
 
 // UNSUPPORTED : C value 'soup_message_body_append' : parameter 'use' of type 'MemoryUse' not supported
 
-// UNSUPPORTED : C value 'soup_message_body_append_buffer' : parameter 'buffer' of type 'Buffer' not supported
+var messageBodyAppendBufferFunction *gi.Function
+var messageBodyAppendBufferFunction_Once sync.Once
+
+func messageBodyAppendBufferFunction_Set() error {
+	var err error
+	messageBodyAppendBufferFunction_Once.Do(func() {
+		err = messageBodyStruct_Set()
+		if err != nil {
+			return
+		}
+		messageBodyAppendBufferFunction, err = messageBodyStruct.InvokerNew("append_buffer")
+	})
+	return err
+}
+
+// AppendBuffer is a representation of the C type soup_message_body_append_buffer.
+func (recv *MessageBody) AppendBuffer(buffer *Buffer) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(buffer.native)
+
+	err := messageBodyAppendBufferFunction_Set()
+	if err == nil {
+		messageBodyAppendBufferFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'soup_message_body_append_take' : parameter 'data' has no type
 
@@ -2317,7 +2497,34 @@ func (recv *MessageBody) GetChunk(offset int64) (*Buffer, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_message_body_got_chunk' : parameter 'chunk' of type 'Buffer' not supported
+var messageBodyGotChunkFunction *gi.Function
+var messageBodyGotChunkFunction_Once sync.Once
+
+func messageBodyGotChunkFunction_Set() error {
+	var err error
+	messageBodyGotChunkFunction_Once.Do(func() {
+		err = messageBodyStruct_Set()
+		if err != nil {
+			return
+		}
+		messageBodyGotChunkFunction, err = messageBodyStruct.InvokerNew("got_chunk")
+	})
+	return err
+}
+
+// GotChunk is a representation of the C type soup_message_body_got_chunk.
+func (recv *MessageBody) GotChunk(chunk *Buffer) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(chunk.native)
+
+	err := messageBodyGotChunkFunction_Set()
+	if err == nil {
+		messageBodyGotChunkFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var messageBodySetAccumulateFunction *gi.Function
 var messageBodySetAccumulateFunction_Once sync.Once
@@ -2376,7 +2583,34 @@ func (recv *MessageBody) Truncate() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_message_body_wrote_chunk' : parameter 'chunk' of type 'Buffer' not supported
+var messageBodyWroteChunkFunction *gi.Function
+var messageBodyWroteChunkFunction_Once sync.Once
+
+func messageBodyWroteChunkFunction_Set() error {
+	var err error
+	messageBodyWroteChunkFunction_Once.Do(func() {
+		err = messageBodyStruct_Set()
+		if err != nil {
+			return
+		}
+		messageBodyWroteChunkFunction, err = messageBodyStruct.InvokerNew("wrote_chunk")
+	})
+	return err
+}
+
+// WroteChunk is a representation of the C type soup_message_body_wrote_chunk.
+func (recv *MessageBody) WroteChunk(chunk *Buffer) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(chunk.native)
+
+	err := messageBodyWroteChunkFunction_Set()
+	if err == nil {
+		messageBodyWroteChunkFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var messageClassStruct *gi.Struct
 var messageClassStruct_Once sync.Once
@@ -2541,7 +2775,34 @@ func (recv *MessageHeaders) Free() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_free_ranges' : parameter 'ranges' of type 'Range' not supported
+var messageHeadersFreeRangesFunction *gi.Function
+var messageHeadersFreeRangesFunction_Once sync.Once
+
+func messageHeadersFreeRangesFunction_Set() error {
+	var err error
+	messageHeadersFreeRangesFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersFreeRangesFunction, err = messageHeadersStruct.InvokerNew("free_ranges")
+	})
+	return err
+}
+
+// FreeRanges is a representation of the C type soup_message_headers_free_ranges.
+func (recv *MessageHeaders) FreeRanges(ranges *Range) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(ranges.native)
+
+	err := messageHeadersFreeRangesFunction_Set()
+	if err == nil {
+		messageHeadersFreeRangesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var messageHeadersGetFunction *gi.Function
 var messageHeadersGetFunction_Once sync.Once
@@ -2947,7 +3208,35 @@ func (recv *MessageHeaders) SetRange(start int64, end int64) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_set_ranges' : parameter 'ranges' of type 'Range' not supported
+var messageHeadersSetRangesFunction *gi.Function
+var messageHeadersSetRangesFunction_Once sync.Once
+
+func messageHeadersSetRangesFunction_Set() error {
+	var err error
+	messageHeadersSetRangesFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersSetRangesFunction, err = messageHeadersStruct.InvokerNew("set_ranges")
+	})
+	return err
+}
+
+// SetRanges is a representation of the C type soup_message_headers_set_ranges.
+func (recv *MessageHeaders) SetRanges(ranges *Range, length int32) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(ranges.native)
+	inArgs[2].SetInt32(length)
+
+	err := messageHeadersSetRangesFunction_Set()
+	if err == nil {
+		messageHeadersSetRangesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var messageHeadersIterStruct *gi.Struct
 var messageHeadersIterStruct_Once sync.Once
@@ -3076,9 +3365,70 @@ func MultipartNew(mimeType string) (*Multipart, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_multipart_new_from_message' : parameter 'headers' of type 'MessageHeaders' not supported
+var multipartNewFromMessageFunction *gi.Function
+var multipartNewFromMessageFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_multipart_append_form_file' : parameter 'body' of type 'Buffer' not supported
+func multipartNewFromMessageFunction_Set() error {
+	var err error
+	multipartNewFromMessageFunction_Once.Do(func() {
+		err = multipartStruct_Set()
+		if err != nil {
+			return
+		}
+		multipartNewFromMessageFunction, err = multipartStruct.InvokerNew("new_from_message")
+	})
+	return err
+}
+
+// MultipartNewFromMessage is a representation of the C type soup_multipart_new_from_message.
+func MultipartNewFromMessage(headers *MessageHeaders, body *MessageBody) (*Multipart, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(headers.native)
+	inArgs[1].SetPointer(body.native)
+
+	var ret gi.Argument
+
+	err := multipartNewFromMessageFunction_Set()
+	if err == nil {
+		ret = multipartNewFromMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Multipart{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var multipartAppendFormFileFunction *gi.Function
+var multipartAppendFormFileFunction_Once sync.Once
+
+func multipartAppendFormFileFunction_Set() error {
+	var err error
+	multipartAppendFormFileFunction_Once.Do(func() {
+		err = multipartStruct_Set()
+		if err != nil {
+			return
+		}
+		multipartAppendFormFileFunction, err = multipartStruct.InvokerNew("append_form_file")
+	})
+	return err
+}
+
+// AppendFormFile is a representation of the C type soup_multipart_append_form_file.
+func (recv *Multipart) AppendFormFile(controlName string, filename string, contentType string, body *Buffer) error {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetString(controlName)
+	inArgs[2].SetString(filename)
+	inArgs[3].SetString(contentType)
+	inArgs[4].SetPointer(body.native)
+
+	err := multipartAppendFormFileFunction_Set()
+	if err == nil {
+		multipartAppendFormFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var multipartAppendFormStringFunction *gi.Function
 var multipartAppendFormStringFunction_Once sync.Once
@@ -3110,7 +3460,35 @@ func (recv *Multipart) AppendFormString(controlName string, data string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'soup_multipart_append_part' : parameter 'headers' of type 'MessageHeaders' not supported
+var multipartAppendPartFunction *gi.Function
+var multipartAppendPartFunction_Once sync.Once
+
+func multipartAppendPartFunction_Set() error {
+	var err error
+	multipartAppendPartFunction_Once.Do(func() {
+		err = multipartStruct_Set()
+		if err != nil {
+			return
+		}
+		multipartAppendPartFunction, err = multipartStruct.InvokerNew("append_part")
+	})
+	return err
+}
+
+// AppendPart is a representation of the C type soup_multipart_append_part.
+func (recv *Multipart) AppendPart(headers *MessageHeaders, body *Buffer) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(headers.native)
+	inArgs[2].SetPointer(body.native)
+
+	err := multipartAppendPartFunction_Set()
+	if err == nil {
+		multipartAppendPartFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var multipartFreeFunction *gi.Function
 var multipartFreeFunction_Once sync.Once
@@ -3172,9 +3550,71 @@ func (recv *Multipart) GetLength() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_multipart_get_part' : parameter 'headers' of type 'MessageHeaders' not supported
+var multipartGetPartFunction *gi.Function
+var multipartGetPartFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_multipart_to_message' : parameter 'dest_headers' of type 'MessageHeaders' not supported
+func multipartGetPartFunction_Set() error {
+	var err error
+	multipartGetPartFunction_Once.Do(func() {
+		err = multipartStruct_Set()
+		if err != nil {
+			return
+		}
+		multipartGetPartFunction, err = multipartStruct.InvokerNew("get_part")
+	})
+	return err
+}
+
+// GetPart is a representation of the C type soup_multipart_get_part.
+func (recv *Multipart) GetPart(part int32) (bool, *MessageHeaders, *Buffer, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetInt32(part)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := multipartGetPartFunction_Set()
+	if err == nil {
+		ret = multipartGetPartFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &MessageHeaders{native: outArgs[0].Pointer()}
+	out1 := &Buffer{native: outArgs[1].Pointer()}
+
+	return retGo, out0, out1, err
+}
+
+var multipartToMessageFunction *gi.Function
+var multipartToMessageFunction_Once sync.Once
+
+func multipartToMessageFunction_Set() error {
+	var err error
+	multipartToMessageFunction_Once.Do(func() {
+		err = multipartStruct_Set()
+		if err != nil {
+			return
+		}
+		multipartToMessageFunction, err = multipartStruct.InvokerNew("to_message")
+	})
+	return err
+}
+
+// ToMessage is a representation of the C type soup_multipart_to_message.
+func (recv *Multipart) ToMessage(destHeaders *MessageHeaders, destBody *MessageBody) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(destHeaders.native)
+	inArgs[2].SetPointer(destBody.native)
+
+	err := multipartToMessageFunction_Set()
+	if err == nil {
+		multipartToMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var multipartInputStreamClassStruct *gi.Struct
 var multipartInputStreamClassStruct_Once sync.Once
@@ -3653,7 +4093,38 @@ func URINew(uriString string) (*URI, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_uri_new_with_base' : parameter 'base' of type 'URI' not supported
+var uRINewWithBaseFunction *gi.Function
+var uRINewWithBaseFunction_Once sync.Once
+
+func uRINewWithBaseFunction_Set() error {
+	var err error
+	uRINewWithBaseFunction_Once.Do(func() {
+		err = uRIStruct_Set()
+		if err != nil {
+			return
+		}
+		uRINewWithBaseFunction, err = uRIStruct.InvokerNew("new_with_base")
+	})
+	return err
+}
+
+// URINewWithBase is a representation of the C type soup_uri_new_with_base.
+func URINewWithBase(base *URI, uriString string) (*URI, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(base.native)
+	inArgs[1].SetString(uriString)
+
+	var ret gi.Argument
+
+	err := uRINewWithBaseFunction_Set()
+	if err == nil {
+		ret = uRINewWithBaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &URI{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var uRICopyFunction *gi.Function
 var uRICopyFunction_Once sync.Once
@@ -3719,7 +4190,38 @@ func (recv *URI) CopyHost() (*URI, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_uri_equal' : parameter 'uri2' of type 'URI' not supported
+var uRIEqualFunction *gi.Function
+var uRIEqualFunction_Once sync.Once
+
+func uRIEqualFunction_Set() error {
+	var err error
+	uRIEqualFunction_Once.Do(func() {
+		err = uRIStruct_Set()
+		if err != nil {
+			return
+		}
+		uRIEqualFunction, err = uRIStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type soup_uri_equal.
+func (recv *URI) Equal(uri2 *URI) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(uri2.native)
+
+	var ret gi.Argument
+
+	err := uRIEqualFunction_Set()
+	if err == nil {
+		ret = uRIEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var uRIFreeFunction *gi.Function
 var uRIFreeFunction_Once sync.Once
@@ -4005,7 +4507,38 @@ func (recv *URI) GetUser() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'soup_uri_host_equal' : parameter 'v2' of type 'URI' not supported
+var uRIHostEqualFunction *gi.Function
+var uRIHostEqualFunction_Once sync.Once
+
+func uRIHostEqualFunction_Set() error {
+	var err error
+	uRIHostEqualFunction_Once.Do(func() {
+		err = uRIStruct_Set()
+		if err != nil {
+			return
+		}
+		uRIHostEqualFunction, err = uRIStruct.InvokerNew("host_equal")
+	})
+	return err
+}
+
+// HostEqual is a representation of the C type soup_uri_host_equal.
+func (recv *URI) HostEqual(v2 *URI) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(v2.native)
+
+	var ret gi.Argument
+
+	err := uRIHostEqualFunction_Set()
+	if err == nil {
+		ret = uRIHostEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var uRIHostHashFunction *gi.Function
 var uRIHostHashFunction_Once sync.Once

@@ -371,7 +371,7 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) (*Attribute, e
 
 // UNSUPPORTED : C value 'pango_bidi_type_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_break' : parameter 'analysis' of type 'Analysis' not supported
+// UNSUPPORTED : C value 'pango_break' : parameter 'attrs' has no type
 
 var configKeyGetFunction *gi.Function
 var configKeyGetFunction_Once sync.Once
@@ -429,13 +429,90 @@ func ConfigKeyGetSystem(key string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_default_break' : parameter 'analysis' of type 'Analysis' not supported
+var defaultBreakFunction *gi.Function
+var defaultBreakFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_extents_to_pixels' : parameter 'inclusive' of type 'Rectangle' not supported
+func defaultBreakFunction_Set() error {
+	var err error
+	defaultBreakFunction_Once.Do(func() {
+		defaultBreakFunction, err = gi.FunctionInvokerNew("Pango", "default_break")
+	})
+	return err
+}
+
+// DefaultBreak is a representation of the C type pango_default_break.
+func DefaultBreak(text string, length int32, analysis *Analysis, attrs *LogAttr, attrsLen int32) error {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetInt32(length)
+	inArgs[2].SetPointer(analysis.native)
+	inArgs[3].SetPointer(attrs.native)
+	inArgs[4].SetInt32(attrsLen)
+
+	err := defaultBreakFunction_Set()
+	if err == nil {
+		defaultBreakFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var extentsToPixelsFunction *gi.Function
+var extentsToPixelsFunction_Once sync.Once
+
+func extentsToPixelsFunction_Set() error {
+	var err error
+	extentsToPixelsFunction_Once.Do(func() {
+		extentsToPixelsFunction, err = gi.FunctionInvokerNew("Pango", "extents_to_pixels")
+	})
+	return err
+}
+
+// ExtentsToPixels is a representation of the C type pango_extents_to_pixels.
+func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(inclusive.native)
+	inArgs[1].SetPointer(nearest.native)
+
+	err := extentsToPixelsFunction_Set()
+	if err == nil {
+		extentsToPixelsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'pango_find_base_dir' : return type 'Direction' not supported
 
-// UNSUPPORTED : C value 'pango_find_map' : parameter 'language' of type 'Language' not supported
+var findMapFunction *gi.Function
+var findMapFunction_Once sync.Once
+
+func findMapFunction_Set() error {
+	var err error
+	findMapFunction_Once.Do(func() {
+		findMapFunction, err = gi.FunctionInvokerNew("Pango", "find_map")
+	})
+	return err
+}
+
+// FindMap is a representation of the C type pango_find_map.
+func FindMap(language *Language, engineTypeId uint32, renderTypeId uint32) (*Map, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(language.native)
+	inArgs[1].SetUint32(engineTypeId)
+	inArgs[2].SetUint32(renderTypeId)
+
+	var ret gi.Argument
+
+	err := findMapFunction_Set()
+	if err == nil {
+		ret = findMapFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Map{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var findParagraphBoundaryFunction *gi.Function
 var findParagraphBoundaryFunction_Once sync.Once
@@ -521,7 +598,7 @@ func GetLibSubdirectory() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'language' of type 'Language' not supported
+// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'log_attrs' has no type
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : parameter 'ch' of type 'gunichar' not supported
 
@@ -551,7 +628,7 @@ func GetSysconfSubdirectory() (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : parameter 'matrix' of type 'Matrix' not supported
+// UNSUPPORTED : C value 'pango_gravity_get_for_matrix' : return type 'Gravity' not supported
 
 // UNSUPPORTED : C value 'pango_gravity_get_for_script' : parameter 'script' of type 'Script' not supported
 
@@ -627,7 +704,29 @@ func LanguageGetDefault() (*Language, error) {
 
 // UNSUPPORTED : C value 'pango_markup_parser_new' : parameter 'accel_marker' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_module_register' : parameter 'module' of type 'IncludedModule' not supported
+var moduleRegisterFunction *gi.Function
+var moduleRegisterFunction_Once sync.Once
+
+func moduleRegisterFunction_Set() error {
+	var err error
+	moduleRegisterFunction_Once.Do(func() {
+		moduleRegisterFunction, err = gi.FunctionInvokerNew("Pango", "module_register")
+	})
+	return err
+}
+
+// ModuleRegister is a representation of the C type pango_module_register.
+func ModuleRegister(module *IncludedModule) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(module.native)
+
+	err := moduleRegisterFunction_Set()
+	if err == nil {
+		moduleRegisterFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'pango_parse_enum' : parameter 'type' of type 'GType' not supported
 
@@ -714,9 +813,61 @@ func ScanInt(pos string) (bool, string, int32, error) {
 
 // UNSUPPORTED : C value 'pango_script_get_sample_language' : parameter 'script' of type 'Script' not supported
 
-// UNSUPPORTED : C value 'pango_shape' : parameter 'analysis' of type 'Analysis' not supported
+var shapeFunction *gi.Function
+var shapeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_shape_full' : parameter 'analysis' of type 'Analysis' not supported
+func shapeFunction_Set() error {
+	var err error
+	shapeFunction_Once.Do(func() {
+		shapeFunction, err = gi.FunctionInvokerNew("Pango", "shape")
+	})
+	return err
+}
+
+// Shape is a representation of the C type pango_shape.
+func Shape(text string, length int32, analysis *Analysis, glyphs *GlyphString) error {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetInt32(length)
+	inArgs[2].SetPointer(analysis.native)
+	inArgs[3].SetPointer(glyphs.native)
+
+	err := shapeFunction_Set()
+	if err == nil {
+		shapeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var shapeFullFunction *gi.Function
+var shapeFullFunction_Once sync.Once
+
+func shapeFullFunction_Set() error {
+	var err error
+	shapeFullFunction_Once.Do(func() {
+		shapeFullFunction, err = gi.FunctionInvokerNew("Pango", "shape_full")
+	})
+	return err
+}
+
+// ShapeFull is a representation of the C type pango_shape_full.
+func ShapeFull(itemText string, itemLength int32, paragraphText string, paragraphLength int32, analysis *Analysis, glyphs *GlyphString) error {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(itemText)
+	inArgs[1].SetInt32(itemLength)
+	inArgs[2].SetString(paragraphText)
+	inArgs[3].SetInt32(paragraphLength)
+	inArgs[4].SetPointer(analysis.native)
+	inArgs[5].SetPointer(glyphs.native)
+
+	err := shapeFullFunction_Set()
+	if err == nil {
+		shapeFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var skipSpaceFunction *gi.Function
 var skipSpaceFunction_Once sync.Once

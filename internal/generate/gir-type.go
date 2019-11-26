@@ -230,3 +230,8 @@ func (t *Type) isAlias() bool {
 	_, found := t.namespace.Aliases.byName(t.Name)
 	return found
 }
+
+func (t *Type) isRecord() bool {
+	_, found := t.namespace.Records.byName(t.Name)
+	return found
+}

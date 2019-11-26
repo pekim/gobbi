@@ -105,7 +105,38 @@ func (recv *Color) Copy() (*Color, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gdk_color_equal' : parameter 'colorb' of type 'Color' not supported
+var colorEqualFunction *gi.Function
+var colorEqualFunction_Once sync.Once
+
+func colorEqualFunction_Set() error {
+	var err error
+	colorEqualFunction_Once.Do(func() {
+		err = colorStruct_Set()
+		if err != nil {
+			return
+		}
+		colorEqualFunction, err = colorStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type gdk_color_equal.
+func (recv *Color) Equal(colorb *Color) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(colorb.native)
+
+	var ret gi.Argument
+
+	err := colorEqualFunction_Set()
+	if err == nil {
+		ret = colorEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var colorFreeFunction *gi.Function
 var colorFreeFunction_Once sync.Once
@@ -1226,7 +1257,38 @@ func (recv *RGBA) Copy() (*RGBA, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'gdk_rgba_equal' : parameter 'p2' of type 'RGBA' not supported
+var rGBAEqualFunction *gi.Function
+var rGBAEqualFunction_Once sync.Once
+
+func rGBAEqualFunction_Set() error {
+	var err error
+	rGBAEqualFunction_Once.Do(func() {
+		err = rGBAStruct_Set()
+		if err != nil {
+			return
+		}
+		rGBAEqualFunction, err = rGBAStruct.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type gdk_rgba_equal.
+func (recv *RGBA) Equal(p2 *RGBA) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(p2.native)
+
+	var ret gi.Argument
+
+	err := rGBAEqualFunction_Set()
+	if err == nil {
+		ret = rGBAEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var rGBAFreeFunction *gi.Function
 var rGBAFreeFunction_Once sync.Once
@@ -1372,11 +1434,106 @@ type Rectangle struct {
 	Height int32
 }
 
-// UNSUPPORTED : C value 'gdk_rectangle_equal' : parameter 'rect2' of type 'Rectangle' not supported
+var rectangleEqualFunction *gi.Function
+var rectangleEqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_rectangle_intersect' : parameter 'src2' of type 'Rectangle' not supported
+func rectangleEqualFunction_Set() error {
+	var err error
+	rectangleEqualFunction_Once.Do(func() {
+		err = rectangleStruct_Set()
+		if err != nil {
+			return
+		}
+		rectangleEqualFunction, err = rectangleStruct.InvokerNew("equal")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_rectangle_union' : parameter 'src2' of type 'Rectangle' not supported
+// Equal is a representation of the C type gdk_rectangle_equal.
+func (recv *Rectangle) Equal(rect2 *Rectangle) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(rect2.native)
+
+	var ret gi.Argument
+
+	err := rectangleEqualFunction_Set()
+	if err == nil {
+		ret = rectangleEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var rectangleIntersectFunction *gi.Function
+var rectangleIntersectFunction_Once sync.Once
+
+func rectangleIntersectFunction_Set() error {
+	var err error
+	rectangleIntersectFunction_Once.Do(func() {
+		err = rectangleStruct_Set()
+		if err != nil {
+			return
+		}
+		rectangleIntersectFunction, err = rectangleStruct.InvokerNew("intersect")
+	})
+	return err
+}
+
+// Intersect is a representation of the C type gdk_rectangle_intersect.
+func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(src2.native)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := rectangleIntersectFunction_Set()
+	if err == nil {
+		ret = rectangleIntersectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+
+	return retGo, out0, err
+}
+
+var rectangleUnionFunction *gi.Function
+var rectangleUnionFunction_Once sync.Once
+
+func rectangleUnionFunction_Set() error {
+	var err error
+	rectangleUnionFunction_Once.Do(func() {
+		err = rectangleStruct_Set()
+		if err != nil {
+			return
+		}
+		rectangleUnionFunction, err = rectangleStruct.InvokerNew("union")
+	})
+	return err
+}
+
+// Union is a representation of the C type gdk_rectangle_union.
+func (recv *Rectangle) Union(src2 *Rectangle) (*Rectangle, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(src2.native)
+
+	var outArgs [1]gi.Argument
+
+	err := rectangleUnionFunction_Set()
+	if err == nil {
+		rectangleUnionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Rectangle{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
 
 var timeCoordStruct *gi.Struct
 var timeCoordStruct_Once sync.Once

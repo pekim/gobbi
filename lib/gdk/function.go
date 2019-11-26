@@ -112,7 +112,35 @@ func Beep() error {
 
 // UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
 
-// UNSUPPORTED : C value 'gdk_color_parse' : parameter 'color' of type 'Color' not supported
+var colorParseFunction *gi.Function
+var colorParseFunction_Once sync.Once
+
+func colorParseFunction_Set() error {
+	var err error
+	colorParseFunction_Once.Do(func() {
+		colorParseFunction, err = gi.FunctionInvokerNew("Gdk", "color_parse")
+	})
+	return err
+}
+
+// ColorParse is a representation of the C type gdk_color_parse.
+func ColorParse(spec string) (bool, *Color, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(spec)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := colorParseFunction_Set()
+	if err == nil {
+		ret = colorParseFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &Color{native: outArgs[0].Pointer()}
+
+	return retGo, out0, err
+}
 
 var disableMultideviceFunction *gi.Function
 var disableMultideviceFunction_Once sync.Once
@@ -238,7 +266,29 @@ func ErrorTrapPush() error {
 
 // UNSUPPORTED : C value 'gdk_event_peek' : return type 'Event' not supported
 
-// UNSUPPORTED : C value 'gdk_event_request_motions' : parameter 'event' of type 'EventMotion' not supported
+var eventRequestMotionsFunction *gi.Function
+var eventRequestMotionsFunction_Once sync.Once
+
+func eventRequestMotionsFunction_Set() error {
+	var err error
+	eventRequestMotionsFunction_Once.Do(func() {
+		eventRequestMotionsFunction, err = gi.FunctionInvokerNew("Gdk", "event_request_motions")
+	})
+	return err
+}
+
+// EventRequestMotions is a representation of the C type gdk_event_request_motions.
+func EventRequestMotions(event *EventMotion) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(event.native)
+
+	err := eventRequestMotionsFunction_Set()
+	if err == nil {
+		eventRequestMotionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'gdk_events_get_angle' : parameter 'event1' of type 'Event' not supported
 
@@ -813,7 +863,7 @@ func PreParseLibgtkOnly() error {
 
 // UNSUPPORTED : C value 'gdk_selection_convert' : parameter 'requestor' of type 'Window' not supported
 
-// UNSUPPORTED : C value 'gdk_selection_owner_get' : parameter 'selection' of type 'Atom' not supported
+// UNSUPPORTED : C value 'gdk_selection_owner_get' : return type 'Window' not supported
 
 // UNSUPPORTED : C value 'gdk_selection_owner_get_for_display' : parameter 'display' of type 'Display' not supported
 

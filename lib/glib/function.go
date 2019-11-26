@@ -546,7 +546,36 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func_ string
 	return err
 }
 
-// UNSUPPORTED : C value 'g_assertion_message_error' : parameter 'error' of type 'Error' not supported
+var assertionMessageErrorFunction *gi.Function
+var assertionMessageErrorFunction_Once sync.Once
+
+func assertionMessageErrorFunction_Set() error {
+	var err error
+	assertionMessageErrorFunction_Once.Do(func() {
+		assertionMessageErrorFunction, err = gi.FunctionInvokerNew("GLib", "assertion_message_error")
+	})
+	return err
+}
+
+// AssertionMessageError is a representation of the C type g_assertion_message_error.
+func AssertionMessageError(domain string, file string, line int32, func_ string, expr string, error *Error, errorDomain Quark, errorCode int32) error {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetString(domain)
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(line)
+	inArgs[3].SetString(func_)
+	inArgs[4].SetString(expr)
+	inArgs[5].SetPointer(error.native)
+	inArgs[6].SetUint32(uint32(errorDomain))
+	inArgs[7].SetInt32(errorCode)
+
+	err := assertionMessageErrorFunction_Set()
+	if err == nil {
+		assertionMessageErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var assertionMessageExprFunction *gi.Function
 var assertionMessageExprFunction_Once sync.Once
@@ -1428,29 +1457,145 @@ func ConvertErrorQuark() (Quark, error) {
 
 // UNSUPPORTED : C value 'g_convert_with_iconv' : parameter 'str' has no type
 
-// UNSUPPORTED : C value 'g_datalist_clear' : parameter 'datalist' of type 'Data' not supported
+var datalistClearFunction *gi.Function
+var datalistClearFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_datalist_foreach' : parameter 'datalist' of type 'Data' not supported
+func datalistClearFunction_Set() error {
+	var err error
+	datalistClearFunction_Once.Do(func() {
+		datalistClearFunction, err = gi.FunctionInvokerNew("GLib", "datalist_clear")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_datalist_get_data' : parameter 'datalist' of type 'Data' not supported
+// DatalistClear is a representation of the C type g_datalist_clear.
+func DatalistClear(datalist *Data) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(datalist.native)
 
-// UNSUPPORTED : C value 'g_datalist_get_flags' : parameter 'datalist' of type 'Data' not supported
+	err := datalistClearFunction_Set()
+	if err == nil {
+		datalistClearFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_datalist_id_dup_data' : parameter 'datalist' of type 'Data' not supported
+	return err
+}
 
-// UNSUPPORTED : C value 'g_datalist_id_get_data' : parameter 'datalist' of type 'Data' not supported
+// UNSUPPORTED : C value 'g_datalist_foreach' : parameter 'func' of type 'DataForeachFunc' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_remove_no_notify' : parameter 'datalist' of type 'Data' not supported
+// UNSUPPORTED : C value 'g_datalist_get_data' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_replace_data' : parameter 'datalist' of type 'Data' not supported
+var datalistGetFlagsFunction *gi.Function
+var datalistGetFlagsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_datalist_id_set_data_full' : parameter 'datalist' of type 'Data' not supported
+func datalistGetFlagsFunction_Set() error {
+	var err error
+	datalistGetFlagsFunction_Once.Do(func() {
+		datalistGetFlagsFunction, err = gi.FunctionInvokerNew("GLib", "datalist_get_flags")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_datalist_init' : parameter 'datalist' of type 'Data' not supported
+// DatalistGetFlags is a representation of the C type g_datalist_get_flags.
+func DatalistGetFlags(datalist *Data) (uint32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(datalist.native)
 
-// UNSUPPORTED : C value 'g_datalist_set_flags' : parameter 'datalist' of type 'Data' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_datalist_unset_flags' : parameter 'datalist' of type 'Data' not supported
+	err := datalistGetFlagsFunction_Set()
+	if err == nil {
+		ret = datalistGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_datalist_id_dup_data' : parameter 'dup_func' of type 'DuplicateFunc' not supported
+
+// UNSUPPORTED : C value 'g_datalist_id_get_data' : return type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_datalist_id_remove_no_notify' : return type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_datalist_id_replace_data' : parameter 'oldval' of type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_datalist_id_set_data_full' : parameter 'data' of type 'gpointer' not supported
+
+var datalistInitFunction *gi.Function
+var datalistInitFunction_Once sync.Once
+
+func datalistInitFunction_Set() error {
+	var err error
+	datalistInitFunction_Once.Do(func() {
+		datalistInitFunction, err = gi.FunctionInvokerNew("GLib", "datalist_init")
+	})
+	return err
+}
+
+// DatalistInit is a representation of the C type g_datalist_init.
+func DatalistInit(datalist *Data) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(datalist.native)
+
+	err := datalistInitFunction_Set()
+	if err == nil {
+		datalistInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var datalistSetFlagsFunction *gi.Function
+var datalistSetFlagsFunction_Once sync.Once
+
+func datalistSetFlagsFunction_Set() error {
+	var err error
+	datalistSetFlagsFunction_Once.Do(func() {
+		datalistSetFlagsFunction, err = gi.FunctionInvokerNew("GLib", "datalist_set_flags")
+	})
+	return err
+}
+
+// DatalistSetFlags is a representation of the C type g_datalist_set_flags.
+func DatalistSetFlags(datalist *Data, flags uint32) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datalist.native)
+	inArgs[1].SetUint32(flags)
+
+	err := datalistSetFlagsFunction_Set()
+	if err == nil {
+		datalistSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var datalistUnsetFlagsFunction *gi.Function
+var datalistUnsetFlagsFunction_Once sync.Once
+
+func datalistUnsetFlagsFunction_Set() error {
+	var err error
+	datalistUnsetFlagsFunction_Once.Do(func() {
+		datalistUnsetFlagsFunction, err = gi.FunctionInvokerNew("GLib", "datalist_unset_flags")
+	})
+	return err
+}
+
+// DatalistUnsetFlags is a representation of the C type g_datalist_unset_flags.
+func DatalistUnsetFlags(datalist *Data, flags uint32) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datalist.native)
+	inArgs[1].SetUint32(flags)
+
+	err := datalistUnsetFlagsFunction_Set()
+	if err == nil {
+		datalistUnsetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_dataset_destroy' : parameter 'dataset_location' of type 'gpointer' not supported
 
@@ -1548,7 +1693,36 @@ func DateIsLeapYear(year DateYear) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_date_strftime' : parameter 'date' of type 'Date' not supported
+var dateStrftimeFunction *gi.Function
+var dateStrftimeFunction_Once sync.Once
+
+func dateStrftimeFunction_Set() error {
+	var err error
+	dateStrftimeFunction_Once.Do(func() {
+		dateStrftimeFunction, err = gi.FunctionInvokerNew("GLib", "date_strftime")
+	})
+	return err
+}
+
+// DateStrftime is a representation of the C type g_date_strftime.
+func DateStrftime(s string, slen uint64, format string, date *Date) (uint64, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(s)
+	inArgs[1].SetUint64(slen)
+	inArgs[2].SetString(format)
+	inArgs[3].SetPointer(date.native)
+
+	var ret gi.Argument
+
+	err := dateStrftimeFunction_Set()
+	if err == nil {
+		ret = dateStrftimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_date_time_compare' : parameter 'dt1' of type 'gpointer' not supported
 
@@ -2036,7 +2210,29 @@ func GetConsoleCharset() (bool, string, error) {
 
 // UNSUPPORTED : C value 'g_get_current_dir' : return type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_get_current_time' : parameter 'result' of type 'TimeVal' not supported
+var getCurrentTimeFunction *gi.Function
+var getCurrentTimeFunction_Once sync.Once
+
+func getCurrentTimeFunction_Set() error {
+	var err error
+	getCurrentTimeFunction_Once.Do(func() {
+		getCurrentTimeFunction, err = gi.FunctionInvokerNew("GLib", "get_current_time")
+	})
+	return err
+}
+
+// GetCurrentTime is a representation of the C type g_get_current_time.
+func GetCurrentTime(result *TimeVal) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(result.native)
+
+	err := getCurrentTimeFunction_Set()
+	if err == nil {
+		getCurrentTimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var getEnvironFunction *gi.Function
 var getEnvironFunction_Once sync.Once
@@ -2354,17 +2550,160 @@ func GetSystemDataDirs() error {
 
 // UNSUPPORTED : C value 'g_hash_table_unref' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hook_destroy' : parameter 'hook_list' of type 'HookList' not supported
+var hookDestroyFunction *gi.Function
+var hookDestroyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_hook_destroy_link' : parameter 'hook_list' of type 'HookList' not supported
+func hookDestroyFunction_Set() error {
+	var err error
+	hookDestroyFunction_Once.Do(func() {
+		hookDestroyFunction, err = gi.FunctionInvokerNew("GLib", "hook_destroy")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_hook_free' : parameter 'hook_list' of type 'HookList' not supported
+// HookDestroy is a representation of the C type g_hook_destroy.
+func HookDestroy(hookList *HookList, hookId uint64) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(hookList.native)
+	inArgs[1].SetUint64(hookId)
 
-// UNSUPPORTED : C value 'g_hook_insert_before' : parameter 'hook_list' of type 'HookList' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_hook_prepend' : parameter 'hook_list' of type 'HookList' not supported
+	err := hookDestroyFunction_Set()
+	if err == nil {
+		ret = hookDestroyFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_hook_unref' : parameter 'hook_list' of type 'HookList' not supported
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
+
+var hookDestroyLinkFunction *gi.Function
+var hookDestroyLinkFunction_Once sync.Once
+
+func hookDestroyLinkFunction_Set() error {
+	var err error
+	hookDestroyLinkFunction_Once.Do(func() {
+		hookDestroyLinkFunction, err = gi.FunctionInvokerNew("GLib", "hook_destroy_link")
+	})
+	return err
+}
+
+// HookDestroyLink is a representation of the C type g_hook_destroy_link.
+func HookDestroyLink(hookList *HookList, hook *Hook) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(hookList.native)
+	inArgs[1].SetPointer(hook.native)
+
+	err := hookDestroyLinkFunction_Set()
+	if err == nil {
+		hookDestroyLinkFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var hookFreeFunction *gi.Function
+var hookFreeFunction_Once sync.Once
+
+func hookFreeFunction_Set() error {
+	var err error
+	hookFreeFunction_Once.Do(func() {
+		hookFreeFunction, err = gi.FunctionInvokerNew("GLib", "hook_free")
+	})
+	return err
+}
+
+// HookFree is a representation of the C type g_hook_free.
+func HookFree(hookList *HookList, hook *Hook) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(hookList.native)
+	inArgs[1].SetPointer(hook.native)
+
+	err := hookFreeFunction_Set()
+	if err == nil {
+		hookFreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var hookInsertBeforeFunction *gi.Function
+var hookInsertBeforeFunction_Once sync.Once
+
+func hookInsertBeforeFunction_Set() error {
+	var err error
+	hookInsertBeforeFunction_Once.Do(func() {
+		hookInsertBeforeFunction, err = gi.FunctionInvokerNew("GLib", "hook_insert_before")
+	})
+	return err
+}
+
+// HookInsertBefore is a representation of the C type g_hook_insert_before.
+func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(hookList.native)
+	inArgs[1].SetPointer(sibling.native)
+	inArgs[2].SetPointer(hook.native)
+
+	err := hookInsertBeforeFunction_Set()
+	if err == nil {
+		hookInsertBeforeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var hookPrependFunction *gi.Function
+var hookPrependFunction_Once sync.Once
+
+func hookPrependFunction_Set() error {
+	var err error
+	hookPrependFunction_Once.Do(func() {
+		hookPrependFunction, err = gi.FunctionInvokerNew("GLib", "hook_prepend")
+	})
+	return err
+}
+
+// HookPrepend is a representation of the C type g_hook_prepend.
+func HookPrepend(hookList *HookList, hook *Hook) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(hookList.native)
+	inArgs[1].SetPointer(hook.native)
+
+	err := hookPrependFunction_Set()
+	if err == nil {
+		hookPrependFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var hookUnrefFunction *gi.Function
+var hookUnrefFunction_Once sync.Once
+
+func hookUnrefFunction_Set() error {
+	var err error
+	hookUnrefFunction_Once.Do(func() {
+		hookUnrefFunction, err = gi.FunctionInvokerNew("GLib", "hook_unref")
+	})
+	return err
+}
+
+// HookUnref is a representation of the C type g_hook_unref.
+func HookUnref(hookList *HookList, hook *Hook) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(hookList.native)
+	inArgs[1].SetPointer(hook.native)
+
+	err := hookUnrefFunction_Set()
+	if err == nil {
+		hookUnrefFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var hostnameIsAsciiEncodedFunction *gi.Function
 var hostnameIsAsciiEncodedFunction_Once sync.Once
@@ -2506,7 +2845,37 @@ func HostnameToUnicode(hostname string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_iconv' : parameter 'converter' of type 'IConv' not supported
+var iconvFunction *gi.Function
+var iconvFunction_Once sync.Once
+
+func iconvFunction_Set() error {
+	var err error
+	iconvFunction_Once.Do(func() {
+		iconvFunction, err = gi.FunctionInvokerNew("GLib", "iconv")
+	})
+	return err
+}
+
+// Iconv is a representation of the C type g_iconv.
+func Iconv(converter *IConv, inbuf string, inbytesLeft uint64, outbuf string, outbytesLeft uint64) (uint64, error) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(converter.native)
+	inArgs[1].SetString(inbuf)
+	inArgs[2].SetUint64(inbytesLeft)
+	inArgs[3].SetString(outbuf)
+	inArgs[4].SetUint64(outbytesLeft)
+
+	var ret gi.Argument
+
+	err := iconvFunction_Set()
+	if err == nil {
+		ret = iconvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo, err
+}
 
 var iconvOpenFunction *gi.Function
 var iconvOpenFunction_Once sync.Once
@@ -2633,9 +3002,9 @@ func InternString(string_ string) (string, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_io_add_watch' : parameter 'channel' of type 'IOChannel' not supported
+// UNSUPPORTED : C value 'g_io_add_watch' : parameter 'condition' of type 'IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'channel' of type 'IOChannel' not supported
+// UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'condition' of type 'IOCondition' not supported
 
 // UNSUPPORTED : C value 'g_io_channel_error_from_errno' : return type 'IOChannelError' not supported
 
@@ -2665,7 +3034,7 @@ func IoChannelErrorQuark() (Quark, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_io_create_watch' : parameter 'channel' of type 'IOChannel' not supported
+// UNSUPPORTED : C value 'g_io_create_watch' : parameter 'condition' of type 'IOCondition' not supported
 
 var keyFileErrorQuarkFunction *gi.Function
 var keyFileErrorQuarkFunction_Once sync.Once
@@ -3000,7 +3369,7 @@ func MainDepth() (int32, error) {
 
 // UNSUPPORTED : C value 'g_malloc_n' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'error' of type 'Error' not supported
+// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'first_type' of type 'MarkupCollectType' not supported
 
 var markupErrorQuarkFunction *gi.Function
 var markupErrorQuarkFunction_Once sync.Once
@@ -3109,7 +3478,29 @@ func MemProfile() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_mem_set_vtable' : parameter 'vtable' of type 'MemVTable' not supported
+var memSetVtableFunction *gi.Function
+var memSetVtableFunction_Once sync.Once
+
+func memSetVtableFunction_Set() error {
+	var err error
+	memSetVtableFunction_Once.Do(func() {
+		memSetVtableFunction, err = gi.FunctionInvokerNew("GLib", "mem_set_vtable")
+	})
+	return err
+}
+
+// MemSetVtable is a representation of the C type g_mem_set_vtable.
+func MemSetVtable(vtable *MemVTable) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(vtable.native)
+
+	err := memSetVtableFunction_Set()
+	if err == nil {
+		memSetVtableFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 // UNSUPPORTED : C value 'g_memdup' : parameter 'mem' of type 'gpointer' not supported
 
@@ -3239,7 +3630,36 @@ func OptionErrorQuark() (Quark, error) {
 
 // UNSUPPORTED : C value 'g_path_skip_root' : parameter 'file_name' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_pattern_match' : parameter 'pspec' of type 'PatternSpec' not supported
+var patternMatchFunction *gi.Function
+var patternMatchFunction_Once sync.Once
+
+func patternMatchFunction_Set() error {
+	var err error
+	patternMatchFunction_Once.Do(func() {
+		patternMatchFunction, err = gi.FunctionInvokerNew("GLib", "pattern_match")
+	})
+	return err
+}
+
+// PatternMatch is a representation of the C type g_pattern_match.
+func PatternMatch(pspec *PatternSpec, stringLength uint32, string_ string, stringReversed string) (bool, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetUint32(stringLength)
+	inArgs[2].SetString(string_)
+	inArgs[3].SetString(stringReversed)
+
+	var ret gi.Argument
+
+	err := patternMatchFunction_Set()
+	if err == nil {
+		ret = patternMatchFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 var patternMatchSimpleFunction *gi.Function
 var patternMatchSimpleFunction_Once sync.Once
@@ -3270,7 +3690,34 @@ func PatternMatchSimple(pattern string, string_ string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_pattern_match_string' : parameter 'pspec' of type 'PatternSpec' not supported
+var patternMatchStringFunction *gi.Function
+var patternMatchStringFunction_Once sync.Once
+
+func patternMatchStringFunction_Set() error {
+	var err error
+	patternMatchStringFunction_Once.Do(func() {
+		patternMatchStringFunction, err = gi.FunctionInvokerNew("GLib", "pattern_match_string")
+	})
+	return err
+}
+
+// PatternMatchString is a representation of the C type g_pattern_match_string.
+func PatternMatchString(pspec *PatternSpec, string_ string) (bool, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(pspec.native)
+	inArgs[1].SetString(string_)
+
+	var ret gi.Argument
+
+	err := patternMatchStringFunction_Set()
+	if err == nil {
+		ret = patternMatchStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo, err
+}
 
 // UNSUPPORTED : C value 'g_pointer_bit_lock' : parameter 'address' of type 'gpointer' not supported
 
@@ -3278,9 +3725,37 @@ func PatternMatchSimple(pattern string, string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_pointer_bit_unlock' : parameter 'address' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_poll' : parameter 'fds' of type 'PollFD' not supported
+var pollFunction *gi.Function
+var pollFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_prefix_error' : parameter 'err' of type 'Error' not supported
+func pollFunction_Set() error {
+	var err error
+	pollFunction_Once.Do(func() {
+		pollFunction, err = gi.FunctionInvokerNew("GLib", "poll")
+	})
+	return err
+}
+
+// Poll is a representation of the C type g_poll.
+func Poll(fds *PollFD, nfds uint32, timeout int32) (int32, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(fds.native)
+	inArgs[1].SetUint32(nfds)
+	inArgs[2].SetInt32(timeout)
+
+	var ret gi.Argument
+
+	err := pollFunction_Set()
+	if err == nil {
+		ret = pollFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_prefix_error' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_print' : parameter '...' has no type
 
@@ -3290,9 +3765,35 @@ func PatternMatchSimple(pattern string, string_ string) (bool, error) {
 
 // UNSUPPORTED : C value 'g_printf_string_upper_bound' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_propagate_error' : parameter 'dest' of type 'Error' not supported
+var propagateErrorFunction *gi.Function
+var propagateErrorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter 'dest' of type 'Error' not supported
+func propagateErrorFunction_Set() error {
+	var err error
+	propagateErrorFunction_Once.Do(func() {
+		propagateErrorFunction, err = gi.FunctionInvokerNew("GLib", "propagate_error")
+	})
+	return err
+}
+
+// PropagateError is a representation of the C type g_propagate_error.
+func PropagateError(src *Error) (*Error, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(src.native)
+
+	var outArgs [1]gi.Argument
+
+	err := propagateErrorFunction_Set()
+	if err == nil {
+		propagateErrorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Error{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
+
+// UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter '...' has no type
 
 // UNSUPPORTED : C value 'g_ptr_array_find' : parameter 'haystack' has no type
 
@@ -3975,23 +4476,165 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 
 // UNSUPPORTED : C value 'g_rmdir' : parameter 'filename' of type 'filename' not supported
 
-// UNSUPPORTED : C value 'g_sequence_get' : parameter 'iter' of type 'SequenceIter' not supported
+// UNSUPPORTED : C value 'g_sequence_get' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_sequence_insert_before' : parameter 'iter' of type 'SequenceIter' not supported
+// UNSUPPORTED : C value 'g_sequence_insert_before' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_sequence_move' : parameter 'src' of type 'SequenceIter' not supported
+var sequenceMoveFunction *gi.Function
+var sequenceMoveFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_sequence_move_range' : parameter 'dest' of type 'SequenceIter' not supported
+func sequenceMoveFunction_Set() error {
+	var err error
+	sequenceMoveFunction_Once.Do(func() {
+		sequenceMoveFunction, err = gi.FunctionInvokerNew("GLib", "sequence_move")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_sequence_range_get_midpoint' : parameter 'begin' of type 'SequenceIter' not supported
+// SequenceMove is a representation of the C type g_sequence_move.
+func SequenceMove(src *SequenceIter, dest *SequenceIter) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(src.native)
+	inArgs[1].SetPointer(dest.native)
 
-// UNSUPPORTED : C value 'g_sequence_remove' : parameter 'iter' of type 'SequenceIter' not supported
+	err := sequenceMoveFunction_Set()
+	if err == nil {
+		sequenceMoveFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_sequence_remove_range' : parameter 'begin' of type 'SequenceIter' not supported
+	return err
+}
 
-// UNSUPPORTED : C value 'g_sequence_set' : parameter 'iter' of type 'SequenceIter' not supported
+var sequenceMoveRangeFunction *gi.Function
+var sequenceMoveRangeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_sequence_swap' : parameter 'a' of type 'SequenceIter' not supported
+func sequenceMoveRangeFunction_Set() error {
+	var err error
+	sequenceMoveRangeFunction_Once.Do(func() {
+		sequenceMoveRangeFunction, err = gi.FunctionInvokerNew("GLib", "sequence_move_range")
+	})
+	return err
+}
+
+// SequenceMoveRange is a representation of the C type g_sequence_move_range.
+func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIter) error {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(dest.native)
+	inArgs[1].SetPointer(begin.native)
+	inArgs[2].SetPointer(end.native)
+
+	err := sequenceMoveRangeFunction_Set()
+	if err == nil {
+		sequenceMoveRangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var sequenceRangeGetMidpointFunction *gi.Function
+var sequenceRangeGetMidpointFunction_Once sync.Once
+
+func sequenceRangeGetMidpointFunction_Set() error {
+	var err error
+	sequenceRangeGetMidpointFunction_Once.Do(func() {
+		sequenceRangeGetMidpointFunction, err = gi.FunctionInvokerNew("GLib", "sequence_range_get_midpoint")
+	})
+	return err
+}
+
+// SequenceRangeGetMidpoint is a representation of the C type g_sequence_range_get_midpoint.
+func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) (*SequenceIter, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(begin.native)
+	inArgs[1].SetPointer(end.native)
+
+	var ret gi.Argument
+
+	err := sequenceRangeGetMidpointFunction_Set()
+	if err == nil {
+		ret = sequenceRangeGetMidpointFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &SequenceIter{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var sequenceRemoveFunction *gi.Function
+var sequenceRemoveFunction_Once sync.Once
+
+func sequenceRemoveFunction_Set() error {
+	var err error
+	sequenceRemoveFunction_Once.Do(func() {
+		sequenceRemoveFunction, err = gi.FunctionInvokerNew("GLib", "sequence_remove")
+	})
+	return err
+}
+
+// SequenceRemove is a representation of the C type g_sequence_remove.
+func SequenceRemove(iter *SequenceIter) error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(iter.native)
+
+	err := sequenceRemoveFunction_Set()
+	if err == nil {
+		sequenceRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+var sequenceRemoveRangeFunction *gi.Function
+var sequenceRemoveRangeFunction_Once sync.Once
+
+func sequenceRemoveRangeFunction_Set() error {
+	var err error
+	sequenceRemoveRangeFunction_Once.Do(func() {
+		sequenceRemoveRangeFunction, err = gi.FunctionInvokerNew("GLib", "sequence_remove_range")
+	})
+	return err
+}
+
+// SequenceRemoveRange is a representation of the C type g_sequence_remove_range.
+func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(begin.native)
+	inArgs[1].SetPointer(end.native)
+
+	err := sequenceRemoveRangeFunction_Set()
+	if err == nil {
+		sequenceRemoveRangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
+
+// UNSUPPORTED : C value 'g_sequence_set' : parameter 'data' of type 'gpointer' not supported
+
+var sequenceSwapFunction *gi.Function
+var sequenceSwapFunction_Once sync.Once
+
+func sequenceSwapFunction_Set() error {
+	var err error
+	sequenceSwapFunction_Once.Do(func() {
+		sequenceSwapFunction, err = gi.FunctionInvokerNew("GLib", "sequence_swap")
+	})
+	return err
+}
+
+// SequenceSwap is a representation of the C type g_sequence_swap.
+func SequenceSwap(a *SequenceIter, b *SequenceIter) error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(a.native)
+	inArgs[1].SetPointer(b.native)
+
+	err := sequenceSwapFunction_Set()
+	if err == nil {
+		sequenceSwapFunction.Invoke(inArgs[:], nil)
+	}
+
+	return err
+}
 
 var setApplicationNameFunction *gi.Function
 var setApplicationNameFunction_Once sync.Once
@@ -4017,9 +4660,37 @@ func SetApplicationName(applicationName string) error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_set_error' : parameter 'err' of type 'Error' not supported
+// UNSUPPORTED : C value 'g_set_error' : parameter '...' has no type
 
-// UNSUPPORTED : C value 'g_set_error_literal' : parameter 'err' of type 'Error' not supported
+var setErrorLiteralFunction *gi.Function
+var setErrorLiteralFunction_Once sync.Once
+
+func setErrorLiteralFunction_Set() error {
+	var err error
+	setErrorLiteralFunction_Once.Do(func() {
+		setErrorLiteralFunction, err = gi.FunctionInvokerNew("GLib", "set_error_literal")
+	})
+	return err
+}
+
+// SetErrorLiteral is a representation of the C type g_set_error_literal.
+func SetErrorLiteral(domain Quark, code int32, message string) (*Error, error) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint32(uint32(domain))
+	inArgs[1].SetInt32(code)
+	inArgs[2].SetString(message)
+
+	var outArgs [1]gi.Argument
+
+	err := setErrorLiteralFunction_Set()
+	if err == nil {
+		setErrorLiteralFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := &Error{native: outArgs[0].Pointer()}
+
+	return out0, err
+}
 
 var setPrgnameFunction *gi.Function
 var setPrgnameFunction_Once sync.Once
@@ -4129,7 +4800,7 @@ func SourceRemove(tag uint32) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : parameter 'funcs' of type 'SourceFuncs' not supported
+// UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_source_remove_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
 
@@ -5860,7 +6531,33 @@ func TestRun() (int32, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_test_run_suite' : parameter 'suite' of type 'TestSuite' not supported
+var testRunSuiteFunction *gi.Function
+var testRunSuiteFunction_Once sync.Once
+
+func testRunSuiteFunction_Set() error {
+	var err error
+	testRunSuiteFunction_Once.Do(func() {
+		testRunSuiteFunction, err = gi.FunctionInvokerNew("GLib", "test_run_suite")
+	})
+	return err
+}
+
+// TestRunSuite is a representation of the C type g_test_run_suite.
+func TestRunSuite(suite *TestSuite) (int32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(suite.native)
+
+	var ret gi.Argument
+
+	err := testRunSuiteFunction_Set()
+	if err == nil {
+		ret = testRunSuiteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var testSetNonfatalAssertionsFunction *gi.Function
 var testSetNonfatalAssertionsFunction_Once sync.Once
@@ -6341,7 +7038,35 @@ func ThreadYield() error {
 	return err
 }
 
-// UNSUPPORTED : C value 'g_time_val_from_iso8601' : parameter 'time_' of type 'TimeVal' not supported
+var timeValFromIso8601Function *gi.Function
+var timeValFromIso8601Function_Once sync.Once
+
+func timeValFromIso8601Function_Set() error {
+	var err error
+	timeValFromIso8601Function_Once.Do(func() {
+		timeValFromIso8601Function, err = gi.FunctionInvokerNew("GLib", "time_val_from_iso8601")
+	})
+	return err
+}
+
+// TimeValFromIso8601 is a representation of the C type g_time_val_from_iso8601.
+func TimeValFromIso8601(isoDate string) (bool, *TimeVal, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(isoDate)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := timeValFromIso8601Function_Set()
+	if err == nil {
+		ret = timeValFromIso8601Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := &TimeVal{native: outArgs[0].Pointer()}
+
+	return retGo, out0, err
+}
 
 // UNSUPPORTED : C value 'g_timeout_add' : parameter 'function' of type 'SourceFunc' not supported
 
@@ -6407,13 +7132,39 @@ func TimeoutSourceNewSeconds(interval uint32) (*Source, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_trash_stack_height' : parameter 'stack_p' of type 'TrashStack' not supported
+var trashStackHeightFunction *gi.Function
+var trashStackHeightFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_trash_stack_peek' : parameter 'stack_p' of type 'TrashStack' not supported
+func trashStackHeightFunction_Set() error {
+	var err error
+	trashStackHeightFunction_Once.Do(func() {
+		trashStackHeightFunction, err = gi.FunctionInvokerNew("GLib", "trash_stack_height")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_trash_stack_pop' : parameter 'stack_p' of type 'TrashStack' not supported
+// TrashStackHeight is a representation of the C type g_trash_stack_height.
+func TrashStackHeight(stackP *TrashStack) (uint32, error) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(stackP.native)
 
-// UNSUPPORTED : C value 'g_trash_stack_push' : parameter 'stack_p' of type 'TrashStack' not supported
+	var ret gi.Argument
+
+	err := trashStackHeightFunction_Set()
+	if err == nil {
+		ret = trashStackHeightFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo, err
+}
+
+// UNSUPPORTED : C value 'g_trash_stack_peek' : return type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_trash_stack_pop' : return type 'gpointer' not supported
+
+// UNSUPPORTED : C value 'g_trash_stack_push' : parameter 'data_p' of type 'gpointer' not supported
 
 // UNSUPPORTED : C value 'g_try_malloc' : return type 'gpointer' not supported
 
@@ -7455,9 +8206,65 @@ func VariantIsSignature(string_ string) (bool, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_variant_parse' : parameter 'type' of type 'VariantType' not supported
+var variantParseFunction *gi.Function
+var variantParseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_variant_parse_error_print_context' : parameter 'error' of type 'Error' not supported
+func variantParseFunction_Set() error {
+	var err error
+	variantParseFunction_Once.Do(func() {
+		variantParseFunction, err = gi.FunctionInvokerNew("GLib", "variant_parse")
+	})
+	return err
+}
+
+// VariantParse is a representation of the C type g_variant_parse.
+func VariantParse(type_ *VariantType, text string, limit string, endptr string) (*Variant, error) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(type_.native)
+	inArgs[1].SetString(text)
+	inArgs[2].SetString(limit)
+	inArgs[3].SetString(endptr)
+
+	var ret gi.Argument
+
+	err := variantParseFunction_Set()
+	if err == nil {
+		ret = variantParseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &Variant{native: ret.Pointer()}
+
+	return retGo, err
+}
+
+var variantParseErrorPrintContextFunction *gi.Function
+var variantParseErrorPrintContextFunction_Once sync.Once
+
+func variantParseErrorPrintContextFunction_Set() error {
+	var err error
+	variantParseErrorPrintContextFunction_Once.Do(func() {
+		variantParseErrorPrintContextFunction, err = gi.FunctionInvokerNew("GLib", "variant_parse_error_print_context")
+	})
+	return err
+}
+
+// VariantParseErrorPrintContext is a representation of the C type g_variant_parse_error_print_context.
+func VariantParseErrorPrintContext(error *Error, sourceStr string) (string, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(error.native)
+	inArgs[1].SetString(sourceStr)
+
+	var ret gi.Argument
+
+	err := variantParseErrorPrintContextFunction_Set()
+	if err == nil {
+		ret = variantParseErrorPrintContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo, err
+}
 
 var variantParseErrorQuarkFunction *gi.Function
 var variantParseErrorQuarkFunction_Once sync.Once

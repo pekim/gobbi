@@ -2299,7 +2299,38 @@ func (recv *FileAttributeMatcher) Ref() (*FileAttributeMatcher, error) {
 	return retGo, err
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_matcher_subtract' : parameter 'subtract' of type 'FileAttributeMatcher' not supported
+var fileAttributeMatcherSubtractFunction *gi.Function
+var fileAttributeMatcherSubtractFunction_Once sync.Once
+
+func fileAttributeMatcherSubtractFunction_Set() error {
+	var err error
+	fileAttributeMatcherSubtractFunction_Once.Do(func() {
+		err = fileAttributeMatcherStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeMatcherSubtractFunction, err = fileAttributeMatcherStruct.InvokerNew("subtract")
+	})
+	return err
+}
+
+// Subtract is a representation of the C type g_file_attribute_matcher_subtract.
+func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) (*FileAttributeMatcher, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(subtract.native)
+
+	var ret gi.Argument
+
+	err := fileAttributeMatcherSubtractFunction_Set()
+	if err == nil {
+		ret = fileAttributeMatcherSubtractFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := &FileAttributeMatcher{native: ret.Pointer()}
+
+	return retGo, err
+}
 
 var fileAttributeMatcherToStringFunction *gi.Function
 var fileAttributeMatcherToStringFunction_Once sync.Once
@@ -6208,7 +6239,38 @@ type UnixMountPoint struct {
 	native uintptr
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_point_compare' : parameter 'mount2' of type 'UnixMountPoint' not supported
+var unixMountPointCompareFunction *gi.Function
+var unixMountPointCompareFunction_Once sync.Once
+
+func unixMountPointCompareFunction_Set() error {
+	var err error
+	unixMountPointCompareFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointCompareFunction, err = unixMountPointStruct.InvokerNew("compare")
+	})
+	return err
+}
+
+// Compare is a representation of the C type g_unix_mount_point_compare.
+func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) (int32, error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.native)
+	inArgs[1].SetPointer(mount2.native)
+
+	var ret gi.Argument
+
+	err := unixMountPointCompareFunction_Set()
+	if err == nil {
+		ret = unixMountPointCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo, err
+}
 
 var unixMountPointCopyFunction *gi.Function
 var unixMountPointCopyFunction_Once sync.Once

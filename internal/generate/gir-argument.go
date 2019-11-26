@@ -74,7 +74,7 @@ func (a Argument) isSupported() bool {
 		return false
 	}
 
-	if _, ok := typ.jenGoTypeForTypeName(); ok {
+	if _, err := typ.jenGoType(); err == nil {
 		return true
 	}
 
