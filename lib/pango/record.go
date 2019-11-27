@@ -3704,37 +3704,7 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32, error) {
 	return out0, out1, err
 }
 
-var layoutIterGetRunFunction *gi.Function
-var layoutIterGetRunFunction_Once sync.Once
-
-func layoutIterGetRunFunction_Set() error {
-	var err error
-	layoutIterGetRunFunction_Once.Do(func() {
-		err = layoutIterStruct_Set()
-		if err != nil {
-			return
-		}
-		layoutIterGetRunFunction, err = layoutIterStruct.InvokerNew("get_run")
-	})
-	return err
-}
-
-// GetRun is a representation of the C type pango_layout_iter_get_run.
-func (recv *LayoutIter) GetRun() (LayoutRun, error) {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-
-	var ret gi.Argument
-
-	err := layoutIterGetRunFunction_Set()
-	if err == nil {
-		ret = layoutIterGetRunFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := &GlyphItem{native: LayoutRun(ret.Pointer())}
-
-	return retGo, err
-}
+// UNSUPPORTED : C value 'pango_layout_iter_get_run' : return type 'LayoutRun' not supported
 
 var layoutIterGetRunExtentsFunction *gi.Function
 var layoutIterGetRunExtentsFunction_Once sync.Once
@@ -3769,37 +3739,7 @@ func (recv *LayoutIter) GetRunExtents() (*Rectangle, *Rectangle, error) {
 	return out0, out1, err
 }
 
-var layoutIterGetRunReadonlyFunction *gi.Function
-var layoutIterGetRunReadonlyFunction_Once sync.Once
-
-func layoutIterGetRunReadonlyFunction_Set() error {
-	var err error
-	layoutIterGetRunReadonlyFunction_Once.Do(func() {
-		err = layoutIterStruct_Set()
-		if err != nil {
-			return
-		}
-		layoutIterGetRunReadonlyFunction, err = layoutIterStruct.InvokerNew("get_run_readonly")
-	})
-	return err
-}
-
-// GetRunReadonly is a representation of the C type pango_layout_iter_get_run_readonly.
-func (recv *LayoutIter) GetRunReadonly() (LayoutRun, error) {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-
-	var ret gi.Argument
-
-	err := layoutIterGetRunReadonlyFunction_Set()
-	if err == nil {
-		ret = layoutIterGetRunReadonlyFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := &GlyphItem{native: LayoutRun(ret.Pointer())}
-
-	return retGo, err
-}
+// UNSUPPORTED : C value 'pango_layout_iter_get_run_readonly' : return type 'LayoutRun' not supported
 
 var layoutIterNextCharFunction *gi.Function
 var layoutIterNextCharFunction_Once sync.Once

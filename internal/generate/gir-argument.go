@@ -2,6 +2,7 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
+	"strings"
 )
 
 type Argument struct {
@@ -45,6 +46,14 @@ func (a Argument) supportedAsOutParameter() bool {
 	if a.Type == nil || a.Type.Name == "none" {
 		// return type is void
 		return true
+	}
+
+	if a.Type.isAlias() {
+		alias, _ := a.Type.namespace.Aliases.byName(a.Type.Name)
+		if !strings.HasPrefix(alias.Type.Name, "g") {
+			// Alias that is not a simple type is not yet supported.
+			return false
+		}
 	}
 
 	return a.isSupported()
