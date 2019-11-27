@@ -4,8 +4,11 @@ import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"github.com/pekim/gobbi/internal/gi"
+	"io/ioutil"
 	"os"
 	"path"
+	"path/filepath"
+	"regexp"
 	"strings"
 )
 
@@ -28,10 +31,11 @@ type Namespace struct {
 	//	Interfaces                    Interfaces   `xml:"interface"`
 	//	GenerateGobjectclassGotypeMap bool         `xml:"generate-gobjectclass-gotype-map,attr"`
 
-	libDir          string
-	namespaces      namespaces
-	goPackageName   string
-	cSymbolPrefixes []string
+	libDir           string
+	namespaces       namespaces
+	goPackageName    string
+	cSymbolPrefixes  []string
+	unsupportedCount int
 }
 
 func (n *Namespace) init(namespaces namespaces) {
@@ -59,6 +63,8 @@ func (n *Namespace) generate() {
 	n.generateFile("enumeration", n.Enumerations.generate)
 	n.generateFile("function", n.Functions.generate)
 	n.generateFile("record", n.Records.generate)
+
+	n.setUnsupportedCount()
 }
 
 func (n *Namespace) generateLibDir() {
@@ -113,4 +119,25 @@ func (n *Namespace) outParameterGeneratorByName(name string) (outParameterGenera
 	}
 
 	return nil, false
+}
+
+func (n *Namespace) setUnsupportedCount() {
+	re := regexp.MustCompile(`\/\/ UNSUPPORTED `)
+
+	infos, err := ioutil.ReadDir(n.libDir)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, info := range infos {
+		path := filepath.Join(n.libDir, info.Name())
+		bytes, err := ioutil.ReadFile(path)
+		if err != nil {
+			panic(err)
+		}
+
+		content := string(bytes)
+		matches := re.FindAllString(content, -1)
+		n.unsupportedCount += len(matches)
+	}
 }

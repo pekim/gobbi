@@ -48,22 +48,26 @@ func Generate(specs []RepositorySpec) {
 	}
 
 	// Generate files for all namespaces
+	unsupportedCount := 0
 	for _, r := range rr {
 		wg.Add(1)
 
-		go func() {
+		go func(r *repository) {
 			r.Namespace.generate()
 
 			mu.Lock()
 			defer mu.Unlock()
+
+			unsupportedCount += r.Namespace.unsupportedCount
 			incrementProgress()
 
 			wg.Done()
-		}()
+		}(r)
 	}
 	wg.Wait()
 
 	clearProgressLine(progressLineLen)
+	fmt.Printf("%d unsupported\n", unsupportedCount)
 }
 
 func lineOfChars(char string, len int) {

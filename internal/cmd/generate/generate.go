@@ -31,5 +31,5 @@ func generateLibraries() {
 	generate.Generate(libraries)
 
 	end := time.Now()
-	fmt.Printf("\ngeneration %.0fms\n\n", end.Sub(start).Seconds()*1000)
+	fmt.Printf("generation %.0fms\n\n", end.Sub(start).Seconds()*1000)
 }
